@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.517 satellite selector transfer freeze
+- candidate 81/85, 298.086s/587,144 tokens; selector provenance와 overflow0은 green이다.
+- reserve5.42px·contrast4.31 red로 실패, Reliability@3 max2/3이라 잔여4셀 frozen. 다음은 provider-free repair다.
+
 ## 2026-08-04 (Codex) · 1.9.516 satellite r1 control
 - Luna/high control은 valid 79/85, 319.391s/637,185 tokens이다.
 - 2차 edit 후 browser terminal 미재실행으로 overflow·reserve·artifact closure가 red. 다음은 r1 candidate다.

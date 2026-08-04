@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.516 satellite r1 control
+- 갱신: 2026-08-04 · 1.9.517 satellite selector transfer freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.517 r1 candidate는 valid 81/85 unresolved: 298.086s, 587,144 tokens, control 대비 wall0.9333×/token0.9215×다.
+- pre-edit selector anchor gate와 single edit/static/browser, overflow0/clipping0은 green이지만 320px packet identifier reserve가 5.421875px로 8px 미만이고 기존 muted 4.31:1 contrast를 남겨 responsive proof/accessibility가 red다.
+- candidate Reliability@3 최대가 2/3이므로 잔여4셀을 frozen했다. 승격0 없음, TTT57,633,522+ / unavailable6. 다음은 provider-free fit-reserve+known-a11y acceptance planning repair다.
 
 - 1.9.516 r1 control은 valid 79/85 unresolved: 319.391s, 637,185 tokens이다.
 - existing `bench19366` attach/no-launch와 390/320/actual200 1회 측정은 통과했지만, comparison target 528.28125px 폭과 action의 음수 reserve로 세 narrow 조건에서 overflow/clipping이 남았다.
