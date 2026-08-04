@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `2e5134e4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.572 subsea cable task pin
+- 기준 커밋: `176ed448` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.573 subsea self-dispatch replacement prereg
 
 ## 지금 (현재 위치)
+
+- 1.9.573은 exact control `6142925c…` vs candidate `a6ebdc8a…`를 fresh subsea task에 Luna/high 2×3으로 provider-zero preregister했다.
+- timeout900/pacing120/no-retry, 3/3 UI/proof/runner/self-dispatch다. stable target carrier가 있어 candidate anchor gate는 valid input에서 inert로 고정했다.
+- causal self-dispatch claim은 실제 safety-path observation이 필요하다. 다음은 executable matrix+detached vendors+six untouched cells materialization이다.
 
 - 1.9.572는 fresh task를 exact commit `2e5134e4…`, task tree `fa7572bb…`, baseline summary `8da54b0d…`, score `934a9234…`로 pin했다.
 - model/control/candidate exposure는 모두0이다. 다음은 exact-source replacement matrix provider-zero preregistration이다.

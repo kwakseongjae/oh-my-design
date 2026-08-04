@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.573 subsea replacement prereg
+- exact control/candidate, Luna high2×3, 900s/120s/no-retry/3-of-3을 provider0 고정했다.
+- 다음 executable matrix+detached vendors+six untouched cells다.
+
 ## 2026-08-04 (Codex) · 1.9.572 subsea cable task pin
 - exact commit `2e5134e4…`, task tree `fa7572bb…`, model exposure0으로 pin했다.
 - 다음 exact-source replacement preregistration이다.

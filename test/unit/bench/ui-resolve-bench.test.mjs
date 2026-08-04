@@ -3712,6 +3712,30 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("preregisters the provider-zero subsea self-dispatch replacement", () => {
+    const plan = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-runner-self-dispatch-replacement-luna-1.9.573/PREREGISTRATION.json",
+    ), "utf8"));
+    expect(plan).toMatchObject({
+      product_version: "1.9.573",
+      status: "PREREGISTERED_PROVIDER_ZERO",
+      provider_calls: 0,
+      tokens_to_target: { attempt_order: 42, prior_observed_provider_tokens_minimum: 80707017 },
+      task: { id: "subsea-cable-splice-clearance-v0.1", model_exposures: 0 },
+      sources: {
+        control: { source_commit: "6142925c153dbf9e8c17f7f456279c86c539c8e8", plain_python_self_dispatch: false },
+        candidate: { source_commit: "a6ebdc8a923538a997d2724f90a09e1eb63f46f2", plain_python_self_dispatch: true, snapshot_carrier_anchor_gate: true },
+      },
+      inertness_contract: {
+        candidate_anchor_gate_expected_to_activate: false,
+        causal_transfer_claim_requires_plain_python_self_dispatch_observed: true,
+      },
+      matrix: { model_id: "gpt-5.6-luna", effort: "high", scheduled_cells: 6, timeout_seconds: 900, inter_cell_delay_seconds: 120, retry_policy: "none-primary" },
+      promotion_gates: { candidate_ui_resolved_trials_required: 3, candidate_runner_self_dispatch_trials_required: 3, freeze_when_three_of_three_unreachable: true },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
