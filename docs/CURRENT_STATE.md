@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.518 acceptance-debt + fit-margin provider-free repair
+- 갱신: 2026-08-04 · 1.9.519 acceptance-debt + fit-margin immutable pin
 
 ## 지금 (현재 위치)
+
+- 1.9.519는 1.9.518 수리를 exact commit `8d647987…`, skill tree `dc065afc…`, skill/helper/test hash로 pin했다.
+- 새 competitor는 `omd-acceptance-debt-fit-margin-candidate`, vendor dir `omd-1.9.518`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
 
 - 1.9.518은 baseline/측정 failure를 첫 제품 edit 전에 machine-readable `acceptance_debt_ledger`로 고정한다.
 - debt guardrail은 global static manifest에 동일 assertion이 있어야 하고 browser debt는 pre-edit row group에 결박된다. unresolved debt는 closure를 차단한다.
@@ -2573,9 +2576,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.518을 exact commit/tree/helper/test hash로 pin하고 competitor variant를 등록한다.
-2. genuinely unseen task를 provider 전에 lock하고 untouched baseline을 측정한다.
-3. exact control/candidate Reliability@3를 사전등록한 뒤 fresh cells를 준비한다.
+1. genuinely unseen task를 provider 전에 lock하고 untouched baseline을 측정한다.
+2. exact historical control/candidate Reliability@3를 사전등록한다.
+3. detached vendors와 fresh six cells를 준비하고 equality/preflight를 증명한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
