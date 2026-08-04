@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.635 cold-chain unseen baseline
+- model-unseen cold-chain disposition task를 provider 노출 전 생성·평가했다.
+- raw baseline75/85, responsive/a11y red, task tree e3b30391, score82b26b6d다.
+- provider0/exposure0; 다음은 task exact pin이다.
+
 ## 2026-08-05 (Codex) · 1.9.634 measured-plan reconcile exact pin
 - repair commit e4b0c890, source tree d479bfd2, skill tree b2e622bb를 exact candidate로 등록했다.
 - provider0/promotion false이며 fresh transfer 전 공개 claim을 금지했다.

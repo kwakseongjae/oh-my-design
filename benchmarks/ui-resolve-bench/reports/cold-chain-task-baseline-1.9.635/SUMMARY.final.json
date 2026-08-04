@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.635",
+  "task_id": "cold-chain-excursion-disposition-v0.1",
+  "status": "FRESH_UNSEEN_TASK_BASELINED",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "task_tree_sha256": "e3b30391ed802cd61dc6780f53941cbe3b8b07d30f9f9cf4e9c007f868f75773",
+  "baseline": {
+    "variant_id": "raw-design-md",
+    "score_sha256": "82b26b6d5280cf1a134ea7f79bd0820f05f8b01bdf6a7477f0fd480634ec1728",
+    "objective_score": 75,
+    "objective_max": 85,
+    "automated_gate_pass": false,
+    "critical_gates": {
+      "task_contract": true,
+      "state_journey": true,
+      "responsive": false,
+      "accessibility": false,
+      "design_grounding": true,
+      "evidence_honesty": true
+    },
+    "document_widths": {
+      "desktop": {"scroll": 1440, "client": 1440},
+      "mobile": {"scroll": 1115, "client": 390},
+      "narrow_320": {"scroll": 1115, "client": 320},
+      "actual_200pct": {"scroll": 2230, "client": 640}
+    },
+    "fragmented_target_tokens_each_narrow_condition": 2,
+    "wrapped_short_atomic_rows": {"mobile": 2, "narrow_320": 2, "actual_200pct": 2},
+    "axe_serious_or_critical_each_viewport": 1,
+    "contrast_ratio_observed": 2.79
+  },
+  "locked_facts": {
+    "shipment_lots": 4,
+    "sensor_records": 6,
+    "custody_windows": 2,
+    "view_controls": 3,
+    "target_only_pre_edit_carrier": "[data-bench-decision-carrier='target']",
+    "protected_hook_mismatches": 0
+  },
+  "deterministic_evaluator_attestation": {
+    "workspace": "/private/tmp/u19635-cold-chain-baseline",
+    "variant": "raw-design-md",
+    "runtime": "codex",
+    "network": "disabled",
+    "status": "completed"
+  },
+  "unknown_boundary": [
+    "quality release",
+    "custody verification",
+    "excursion acceptance",
+    "sensor calibration",
+    "carrier notification",
+    "CAPA closure",
+    "inventory release",
+    "disposition approval"
+  ],
+  "freshness": {
+    "prompt_sha256": "ad0e8e06d993332cd1f6f0cc4d561494f4a87a767ef5f833925f77b1dad3eb88",
+    "task_contract_sha256": "cc200f99ae69a353951724271f66b050a11dc1b3c92f97e1e5185606336422a1",
+    "starter_design_sha256": "d74ee799c88db9a1b40e4101e02f2bc61aafc78140a6f6b85d7e82150043518d",
+    "starter_product_sha256": "a97b1ca9ab1d4c0e753c07af66a9ba4fac9c0a893f9f69654f2fc1f9ae628693"
+  },
+  "tokens_to_target": {
+    "cumulative_observed_provider_tokens_minimum": 111241511,
+    "usage_unavailable_cells": 6,
+    "goal_status": "right-censored-open"
+  },
+  "next": "Commit and exact-pin the unseen task before any model or compared skill sees it."
+}
