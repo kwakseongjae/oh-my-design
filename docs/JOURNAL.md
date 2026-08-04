@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.561 spent-fuel matrix freeze
+- candidate는 UI85/85, 443.875s/1,612,523 tokens이나 plain-Python plan runner 오용으로 proof red다.
+- target inventory는 exact lock; R@3 최대2/3으로 잔여4셀 frozen, TTT78,112,464+; 다음 runner self-dispatch repair다.
+
 ## 2026-08-04 (Codex) · 1.9.560 spent-fuel r1 control
 - Luna/high control은 valid UI85/85, 543.074s/2,987,256 tokens이나 carrier2 instances가 unbound evidence row를 포함해 proof red다.
 - edit1/static1/browser1, TTT76,499,941+; 다음 fixed pacing 뒤 r1 candidate다.

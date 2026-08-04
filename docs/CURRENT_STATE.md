@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `f2e5158e` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.560 spent-fuel r1 control
+- 기준 커밋: `2098aeac` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.561 spent-fuel matrix freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.561 r1 candidate는 UI85/85, 443.875s/1,612,523 tokens, control 대비 wall0.8173×/token0.5398×이나 proof red다.
+- target row+distinct target-only carrier는 exact lock됐지만 plan runner를 `browser-harness < runner` 대신 plain Python으로 실행해 `ensure_real_tab` undefined 후 red plan 상태에서 edit했다.
+- candidate proof R@3 최대2/3이라 잔여4셀 frozen, TTT78,112,464+ / unavailable6이다. 다음은 provider-free shipped-runner self-dispatch repair다.
 
 - 1.9.560 Luna/high r1 control은 valid UI-resolved85/85, 543.074s, 2,987,256 tokens다.
 - edit1/static1/browser1과 모든 objective surface는 green이나 `.stations .carrier` 2개가 bound identifier 외 separately registered transfer-window evidence도 포함해 artifact unresolved/proof red다.
