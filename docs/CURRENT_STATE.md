@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `3802e55d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.622 runway r1 control checkpoint
+- 기준 커밋: `6513e19a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.623 runway matrix freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.623 r1 candidate는 valid83/85, 323,525ms, 973,726 tokens지만 pre-edit fit plan을 실행하지 않고 제품을 수정했다. static-open/browser0/shipped-runner0로 content-box verifier에 도달하지 못했다.
+- candidate는 실제 preflight가 ready였던 named browser를 unavailable이라 보고했다. UI/proof/content-box 3/3 최대치가2로 내려가 remaining4를 untouched freeze했다.
+- 효율 ratio wall0.849/tokens0.737은 green이나 quality/proof가 red라 인과 효율 주장은 금지한다. 누적 TTT107,050,263+ / unavailable6다.
+- 다음은 provider-free로 pre-edit measurement self-dispatch와 product-mutation-before-plan 차단을 수리한다. 이 matrix는 재개하지 않는다.
 
 - 1.9.622 r1 control은 valid83/85, 381,138ms, 1,321,493 tokens다. narrow/actual200/a11y는 green이지만 desktop target/action separation 하나가 red다.
 - proof는 static1/browser1/shipped-runner/attached-existing까지 지켰으나 border-box full-row가4/4 false이고 closure-window carrier도 unresolved라 artifact-open이다.

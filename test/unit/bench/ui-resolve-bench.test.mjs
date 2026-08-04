@@ -4881,6 +4881,55 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("freezes the runway matrix when candidate pre-edit proof never runs", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/runway-content-box-transfer-luna-1.9.619/SUMMARY.final.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.623",
+      status: "FROZEN_PROMOTION_UNREACHABLE_PRE_EDIT_PROOF_NOT_RUN",
+      promotion: false,
+      provider_calls: 2,
+      completed_cells: 2,
+      r1: {
+        control: { score: 83, ui_resolved: false, proof_pass: false, wall_time_ms: 381138, tokens: 1321493 },
+        candidate: { score: 83, ui_resolved: false, proof_pass: false, wall_time_ms: 323525, tokens: 973726 },
+      },
+      candidate_failure: {
+        pre_edit_fit_plan_state: "pending",
+        product_edit_count: 1,
+        static_closure_state: "open",
+        browser_attempts: 0,
+        shipped_runner_invoked: false,
+        content_box_verifier_reached: false,
+        reported_named_browser_unavailable: true,
+        runtime_preflight_named_browser_ready: true,
+        failure_is_not_evidence_against_content_box_formula: true,
+      },
+      promotion_reachability: {
+        candidate_ui_resolved_observed: 0,
+        maximum_reachable_ui_resolved_trials: 2,
+        candidate_proof_compliant_observed: 0,
+        maximum_reachable_proof_compliant_trials: 2,
+        candidate_content_box_attested_observed: 0,
+        maximum_reachable_content_box_attested_trials: 2,
+        required_each: 3,
+        promotion_reachable: false,
+      },
+      paired_efficiency: {
+        wall_time_gate: true,
+        token_gate: true,
+        causal_efficiency_claim_allowed: false,
+      },
+      tokens_to_target: {
+        cumulative_observed_provider_tokens_minimum: 107050263,
+        usage_unavailable_cells: 6,
+      },
+    });
+    expect(result.frozen_unstarted_cells).toHaveLength(4);
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.623 runway matrix freeze
+- candidate83/85, 323525ms, 973726 tokens지만 pre-edit plan pending에서 edit해 browser0/static-open이다.
+- content-box verifier 미도달, 실제 ready browser unavailable 오보고; remaining4 untouched freeze다.
+- 누적 TTT107050263+; 다음은 provider-free pre-edit self-dispatch/편집차단 repair다.
+
 ## 2026-08-05 (Codex) · 1.9.622 runway r1 control
 - valid83/85, 381138ms, 1321493 tokens; narrow/a11y green, desktop action separation red다.
 - proof는 shipped runner를 썼지만 border-box full-row4/4 false+closure-window carrier unresolved로 artifact-open이다.
