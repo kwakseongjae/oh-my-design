@@ -4189,6 +4189,26 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("preregisters the archive contained-budget replacement without provider exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/archive-contained-budget-replacement-luna-1.9.591/PREREGISTRATION.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.591",
+      status: "PREREGISTERED_PROVIDER_ZERO",
+      provider_calls: 0,
+      tokens_to_target: { attempt_order: 44, prior_observed_provider_tokens_minimum: 89713443, prior_usage_unavailable_cells: 6 },
+      task: { id: "archive-film-element-custody-v0.1", source_commit: "6bdcd79d552c36d61238880044a41c1252e97a0f", model_exposures: 0 },
+      sources: {
+        control: { source_commit: "853db7bfe0939e0c58b1c8d01e7d2348100a14c8", carrier_budget: "raw live content-box width" },
+        candidate: { source_commit: "5f78f1c5a23148778a49bdc54f6f6026a7b8c1d2", carrier_budget: "min(raw live content-box width, contained document budget)" },
+      },
+      matrix: { model_id: "gpt-5.6-luna", effort: "high", scheduled_cells: 6, timeout_seconds: 900, inter_cell_delay_seconds: 120, retry_policy: "none-primary" },
+      promotion_gates: { candidate_ui_resolved_trials_required: 3, candidate_proof_compliant_trials_required: 3, candidate_contained_budget_plan_trials_required: 3, candidate_invalid_raw_overflow_budget_trials_allowed: 0 },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

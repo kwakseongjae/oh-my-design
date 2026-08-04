@@ -1,0 +1,84 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.591",
+  "experiment_id": "archive-contained-budget-replacement-luna-1.9.591",
+  "status": "PREREGISTERED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "execution_purpose": "contained-carrier-budget-transfer-reliability-replacement",
+  "tokens_to_target": {
+    "goal_id": "omd-2.0.0-frontier-gates-from-1.9.278",
+    "attempt_order": 44,
+    "prior_observed_provider_tokens_minimum": 89713443,
+    "prior_usage_unavailable_cells": 6,
+    "count_all_scheduled_spend": true,
+    "unmet_goal_disposition": "right-censored"
+  },
+  "task": {
+    "id": "archive-film-element-custody-v0.1",
+    "pin_id": "archive-film-element-custody-1.9.590",
+    "source_commit": "6bdcd79d552c36d61238880044a41c1252e97a0f",
+    "task_tree": "5cfeab67793c3ad0f9f5b2b4266dc5fa79f8a97b",
+    "baseline_score_sha256": "0fa0e770e57b4af387b7190123458f2ff3608448808527cd82e3146a6330bb40",
+    "model_exposures": 0,
+    "stable_target_carrier": "[data-bench-decision-carrier='target']"
+  },
+  "sources": {
+    "control": {
+      "system_id": "luna-raw-carrier-inner-control",
+      "source_commit": "853db7bfe0939e0c58b1c8d01e7d2348100a14c8",
+      "pin_id": "carrier-inner-fit-feasibility-1.9.580",
+      "skill_tree": "8657f27858b85de9af0f31f943628e110d38d31d",
+      "artifact_helper_sha256": "df16a41b4eba03e1054100e0520ba77395e0a50b6150ae9b099a72ead96f50f4",
+      "browser_runner_sha256": "050f28dffd59a913a25e3a6195e8169a9fbc4419e46f8ea60768c6b4cacbf2a1",
+      "carrier_budget": "raw live content-box width"
+    },
+    "candidate": {
+      "system_id": "luna-contained-carrier-budget-candidate",
+      "source_commit": "5f78f1c5a23148778a49bdc54f6f6026a7b8c1d2",
+      "pin_id": "contained-carrier-budget-1.9.588",
+      "skill_tree": "0370e28452f51f957a05624eee3d4f6e82d88e9d",
+      "artifact_helper_sha256": "df16a41b4eba03e1054100e0520ba77395e0a50b6150ae9b099a72ead96f50f4",
+      "browser_runner_sha256": "5a4097b982af9f552b0cddc194e5f81842c81b4d7d3ea5b92cf9cd47f83097ad",
+      "carrier_budget": "min(raw live content-box width, contained document budget)"
+    }
+  },
+  "isolated_delta_contract": {
+    "shared_artifact_consumer": true,
+    "shared_runner_self_dispatch": true,
+    "shared_snapshot_carrier_anchor_gate": true,
+    "shared_aggregate_outer_width_gate": true,
+    "shared_carrier_local_row_fit_gate": true,
+    "control_available_carrier_inner_width": "raw live content-box width",
+    "candidate_available_carrier_inner_width": "min(live inner, document width - horizontal chrome - horizontal margin)",
+    "causal_transfer_claim_requires_candidate_contained_budget_observed": true
+  },
+  "matrix": {
+    "runtime": "codex",
+    "model_id": "gpt-5.6-luna",
+    "effort": "high",
+    "trials_per_arm": 3,
+    "scheduled_cells": 6,
+    "order": ["r1-control","r1-candidate","r2-candidate","r2-control","r3-control","r3-candidate"],
+    "timeout_seconds": 900,
+    "max_concurrency": 1,
+    "inter_cell_delay_seconds": 120,
+    "retry_policy": "none-primary",
+    "temperature_policy": "runtime-default-frozen",
+    "browser_connection": "bench19366",
+    "allow_browser_launch": false
+  },
+  "promotion_gates": {
+    "candidate_ui_resolved_trials_required": 3,
+    "candidate_proof_compliant_trials_required": 3,
+    "candidate_shipped_runner_trials_required": 3,
+    "candidate_contained_budget_plan_trials_required": 3,
+    "candidate_invalid_raw_overflow_budget_trials_allowed": 0,
+    "paired_objective_losses_allowed": 0,
+    "serious_or_critical_contrast_trials_allowed": 0,
+    "candidate_mean_wall_time_ratio_max": 1.1,
+    "candidate_mean_provider_tokens_ratio_max": 1.1,
+    "freeze_when_three_of_three_unreachable": true
+  },
+  "claim_boundary": "The task and sources are pinned, but no cell has run. UI direction from the frozen orbital experiment is not transfer proof for this experiment.",
+  "next": "Materialize the executable locked matrix, exact detached vendors, and six untouched cells without calling a provider."
+}

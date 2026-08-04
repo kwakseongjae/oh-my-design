@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.591 archive contained-budget prereg
+- exact853db7bf raw-inner vs5f78f1c5 contained-budget, Luna/high2×3을 provider0 고정했다.
+- 900s/120s/no-retry, 3/3 UI+proof+runner+contained-plan; attempt44다.
+- prior TTT89,713,443+; 다음 executable matrix+detached six cells다.
+
 ## 2026-08-05 (Codex) · 1.9.590 archive film task pin
 - task commit6bdcd79d/git tree5cfeab67/portable54f5c61c/score0fa0e770을 pin했다.
 - model/control/candidate exposure0, 이후 task mutation 금지다.
