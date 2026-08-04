@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.639 cold-chain exact-cell preparation
+- exact detached clean control/candidate와 six untouched Luna/high cells를 준비했다.
+- prompt/starter/product/runtime/model/effort/timeout equality6/6, provider0다.
+- 다음은 preflight 뒤 luna-cold-r1-control 단일 no-retry 실행이다.
+
 ## 2026-08-05 (Codex) · 1.9.638 cold-chain executable matrix lock
 - schema0.3 C/T/T/C/C/T, Luna/high, 900s/120s/no-retry matrix를 잠갔다.
 - shared snapshot/content-box 계약 대비 measured reconcile+mutation/static stamp delta만 유지했다.
