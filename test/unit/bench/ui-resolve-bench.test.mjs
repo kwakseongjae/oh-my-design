@@ -61,6 +61,7 @@ const genomicSequencingReleaseTaskId = "genomic-sequencing-run-release-v0.1";
 const semiconductorWaferDispositionTaskId = "semiconductor-wafer-disposition-v0.1";
 const waterTreatmentBatchReleaseTaskId = "water-treatment-batch-release-v0.1";
 const flightRecorderDownloadTaskId = "flight-recorder-download-review-v0.1";
+const gridDisturbanceWaveformTaskId = "grid-disturbance-waveform-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1743,6 +1744,43 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("AIRFRAME-N782KL + RECORDER-CVR-905184");
     expect(starter).toContain("4 airframes · 6 recorder segments · 2 acquisition stations");
     expect(starter).not.toContain("BATCH-NORTH-048271");
+  });
+
+  it("locks an unseen grid-disturbance waveform family before computed-type transfer", () => {
+    const task = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/tasks",
+      gridDisturbanceWaveformTaskId,
+      "task.json",
+    ), "utf8"));
+    expect(validateTaskContract(task)).toMatchObject({
+      id: gridDisturbanceWaveformTaskId,
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      protected_hook_counts: {
+        "[data-bench='substation-case']": 4,
+        "[data-bench='substation-id']": 4,
+        "[data-bench='waveform-file-id']": 6,
+        "[data-bench='station-id']": 2,
+        "[data-bench='capture-window']": 2,
+      },
+      text_geometry_oracle: {
+        scope_selectors: [
+          "[data-bench-design-role='substation-manifest']",
+          "[data-bench='relay-terminal-strip']",
+          "[data-bench-decision-role='context']",
+        ],
+      },
+    });
+    const out = prepareVariant("raw-design-md", {
+      task: gridDisturbanceWaveformTaskId,
+      outputName: "grid-disturbance-waveform-lock",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/data-bench="substation-case"/g)).toHaveLength(4);
+    expect(starter.match(/data-bench="waveform-file-id"/g)).toHaveLength(6);
+    expect(starter).toContain("SUBSTATION-DELTA-782 + WAVEFORM-C37-905184");
+    expect(starter).toContain("4 substations · 6 waveform files · 2 relay terminals");
   });
 
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {

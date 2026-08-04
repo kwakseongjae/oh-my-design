@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.499 grid-disturbance task lock
+- fresh grid task는 4 substations/6 waveforms/2 relay terminals, 세 관계 carrier를 보존한다.
+- baseline 75/85, narrow overflow·compound/state wrap·contrast 4.02; provider/task exposure 0이다.
+- 다음은 exact control/candidate Reliability@3 preregistration이다.
+
 ## 2026-08-04 (Codex) · 1.9.498 computed type + target-only carrier pin
 - exact `14ed7765…`/skill tree `c8ebc909…`와 세 source hash로 candidate를 고정했다.
 - provider 0/promotion false. 다음은 genuinely unseen task lock이다.

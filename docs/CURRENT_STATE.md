@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `14ed7765` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.498 computed type + target-only carrier exact pin
+- 기준 커밋: `3e2c1bd4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.499 grid-disturbance waveform task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.499는 fresh `grid-disturbance-waveform-review-v0.1`을 provider 전에 lock했다.
+- 4 substation/6 waveform file/2 relay terminal과 substation manifest·relay-terminal strip·waveform decision 세 carrier를 보존한다.
+- untouched baseline은 75/85: 390/320/actual200 overflow 615/685/1370px, compound target 4줄·state wrap·atomic fragmentation, muted contrast 4.02만 red다.
+- task contract/focused preparation/browser baseline green, provider/task exposure 0이다. 다음은 exact 1.9.490 control vs exact 1.9.497 candidate preregistration이다.
 
 - 1.9.498은 1.9.497을 exact commit `14ed7765…`, skill tree `c8ebc909…`, skill/runner/helper sha256으로 pin했다.
 - 새 competitor는 `omd-computed-type-target-carrier-candidate`, vendor dir `omd-1.9.497`, provider 0/promotion false다. 다음은 genuinely unseen task lock이다.
@@ -2490,9 +2495,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. genuinely unseen task를 provider 노출 전에 lock한다.
-2. exact 1.9.490 control 대비 1.9.497 candidate Reliability@3를 사전등록한다.
-3. fresh detached vendors/cells를 준비한 뒤 모델 실행을 재개한다.
+1. exact 1.9.490 control 대비 1.9.497 candidate Reliability@3를 사전등록한다.
+2. fresh detached vendors와 six untouched cells를 준비하고 equality/browser/auth/CLI preflight를 검증한다.
+3. r1 control부터 no-retry로 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
