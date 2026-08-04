@@ -3377,6 +3377,61 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(new Set(matrix.cells.map((cell) => `${cell.model_id}/${cell.effort}`))).toEqual(new Set(["gpt-5.6-luna/high"]));
   });
 
+  it("preregisters exact runner self-dispatch on the unseen organ custody task", () => {
+    const matrix = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/organ-custody-runner-self-dispatch-luna-1.9.565/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(matrix).toMatchObject({
+      product_version: "1.9.565",
+      status: "locked-awaiting-fresh-preparation",
+      tokens_to_target_contract: {
+        attempt_order: 41,
+        prior_observed_provider_tokens_minimum: 78112464,
+        prior_usage_unavailable_cells: 6,
+      },
+      task_lock_contract: {
+        task_id: "organ-transport-custody-review-v0.1",
+        source_commit: "faf3e4a8270b023d1a317d362d428bb3de802344",
+        scored_model_exposure_before_replacement: false,
+        prior_control_exposures: 0,
+        prior_candidate_exposures: 0,
+      },
+      control_source_contract: {
+        pin_id: "decision-target-inventory-1.9.556",
+        source_commit: "6142925c153dbf9e8c17f7f456279c86c539c8e8",
+      },
+      candidate_source_contract: {
+        pin_id: "runner-self-dispatch-1.9.563",
+        source_commit: "bec454d5a452bdc3bc772173d754dec30d548564",
+      },
+      runner_self_dispatch_contract: {
+        candidate_required: true,
+        control_required: false,
+        plain_python_invocation_routes_before_artifact_access: true,
+        dispatch_target: "browser-harness stdin",
+        browser_launch_fallback_allowed: false,
+      },
+      promotion_gates: {
+        candidate_system_id: "luna-runner-self-dispatch-candidate",
+        ui_resolved_trials_required: 3,
+        proof_compliant_trials_required: 3,
+        runner_self_dispatch_trials_required: 3,
+      },
+    });
+    expect(matrix.cells).toHaveLength(6);
+    expect(matrix.cells.map((cell) => cell.variant_id)).toEqual([
+      "omd-decision-target-inventory-candidate",
+      "omd-runner-self-dispatch-candidate",
+      "omd-runner-self-dispatch-candidate",
+      "omd-decision-target-inventory-candidate",
+      "omd-decision-target-inventory-candidate",
+      "omd-runner-self-dispatch-candidate",
+    ]);
+    expect(new Set(matrix.cells.map((cell) => cell.task_id))).toEqual(new Set(["organ-transport-custody-review-v0.1"]));
+    expect(new Set(matrix.cells.map((cell) => `${cell.model_id}/${cell.effort}`))).toEqual(new Set(["gpt-5.6-luna/high"]));
+  });
+
   it("prepares six untouched spent-fuel decision-target cells from exact detached sources", () => {
     const preparation = JSON.parse(readFileSync(join(
       repoRoot,

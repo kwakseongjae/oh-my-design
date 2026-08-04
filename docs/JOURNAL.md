@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.565 organ custody runner self-dispatch prereg
+- exact 1.9.555 control vs 1.9.562 candidate를 Luna/high 2×3, timeout900/pacing120/no-retry로 고정했다.
+- attempt41/TTT78,112,464+/provider0; 다음 detached vendors+six cells다.
+
 ## 2026-08-04 (Codex) · 1.9.564 organ transport custody task lock
 - fresh organ container/custody scan/receiving bay task를 provider 노출0에서 잠갔다.
 - baseline75/85, narrow overflow685/755/1510px, target6+3/6+5/6+5줄, contrast3.81; 다음 exact prereg다.

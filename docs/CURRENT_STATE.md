@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `8b530e1e` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.564 organ transport custody task lock
+- 기준 커밋: `faf3e4a8` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.565 organ custody runner self-dispatch preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.565는 exact 1.9.555 control `6142925c…` vs exact 1.9.562 candidate `bec454d5…`를 fresh organ custody task에 Luna/high 2×3으로 사전등록했다.
+- 양 arm은 target inventory+measured row/aggregate plan+fit feasibility+checklist가 같고 candidate만 plain-Python runner self-dispatch를 추가한다. timeout900/pacing120/no-retry/R@3다.
+- attempt41, prior TTT78,112,464+ / unavailable6, provider0이다. 다음은 exact detached vendors와 six untouched cells preparation이다.
 
 - 1.9.564는 fresh `organ-transport-custody-review-v0.1`을 provider/candidate 노출 전 lock했다.
 - 4 container/6 custody scan/2 receiving bay와 register·bay strip·handoff decision을 보존한다. baseline75/85, narrow overflow685/755/1510px, target6+3/6+5/6+5줄, contrast3.81이다.
