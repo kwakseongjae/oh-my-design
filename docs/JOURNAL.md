@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.577 subsea r1 control
+- valid81/85, 485.680s, 2,403,089 tokens; responsive/proof red다.
+- plain Python runner가 static2/browser0으로 닫혀 historical control boundary를 재현했다.
+- 누적83,110,106+; 다음 120s pacing 뒤 r1 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.576 browser active-line compat
 - exact named connection의 concise/legacy 출력 둘을 허용하고 wrong-name/zero/endpoint gates는 유지했다.
 - 첫 provider 셀 전 preflight stop이므로 spend0, six cells untouched다.

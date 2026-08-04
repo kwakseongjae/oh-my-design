@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `6a4c4109` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.576 browser-harness active-line compatibility
+- 기준 커밋: `48b6ae54` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.577 subsea r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.577 r1 control은 valid complete, UI81/85, wall485,680ms, provider2,403,089 tokens다. contract/state/a11y/design/evidence는 green, responsive는 red다.
+- plain-Python shipped runner가 browser-harness에 진입하지 못해 static2/duplicate1/browser0/artifact-open으로 proof red다. 누적 TTT는 83,110,106+ / unavailable6이다.
+- candidate 3/3 가능성은 유지된다. 다음은 exact 120s pacing 뒤 untouched `luna-subsea-cable-r1-candidate` 단일 no-retry 실행이다.
 
 - 1.9.576 provider-free runtime repair는 browser-harness 0.1.5의 exact named concise line `bench19366 — active`와 legacy `active page:` 형식을 모두 인정한다.
 - daemon/active-count/exact-name/CDP endpoint 요구는 유지하고 wrong-name concise/legacy를 모두 거부한다. 첫 provider 셀은 시작되지 않았고 6셀은 untouched다.
@@ -2805,7 +2809,7 @@
 
 ## 막힘 / 대기 (없으면 "없음")
 
-- named browser `bench19366`은 실제 active지만 browser-harness 0.1.5 concise 출력 호환 repair를 commit·재검증해야 한다. 모델 셀은 아직 시작하지 않았다.
+- named browser `bench19366`과 CDP endpoint preflight는 green이다. matrix는 checkpoint1이며 fixed 120s pacing 뒤 r1 candidate가 unlock된다.
 - Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다. locked benchmark payload의 외부 전송은 standing-approved다.
 - Cursor Composer Provider가 1.9.51/1.9.52와 1.9.56에서 `resource_exhausted`를 반환했다. account-wide quota는 short Composer/Grok probes로 배제했지만 long-form Composer lane은 deferred다.
 - Cursor Grok 4.5 High도 1.9.57에서 4개 long-form cell 뒤 `resource_exhausted`로 stop됐다. immediate Grok replacement는 금지한다.

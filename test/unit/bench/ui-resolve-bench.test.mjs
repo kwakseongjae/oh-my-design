@@ -3818,6 +3818,40 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(plan.execution_forbidden_until).toContain("competitor_sources_refreshed_and_frozen");
   });
 
+  it("records the subsea r1 control as a valid responsive and proof failure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-runner-self-dispatch-replacement-luna-1.9.573/R1-CONTROL.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.577",
+      cell_id: "luna-subsea-cable-r1-control",
+      status: "CHECKPOINTED_VALID_CONTROL_FAILURE",
+      validity: "valid",
+      wall_time_ms: 485680,
+      provider_tokens: { comparison_total: 2403089 },
+      objective: {
+        score: 81,
+        max: 85,
+        ui_resolved: false,
+        responsive: false,
+        evidence_honesty: true,
+      },
+      proof: {
+        analyzable: true,
+        static_closure_count: 2,
+        duplicate_static_closure_count: 1,
+        browser_mechanism_count: 0,
+        shipped_runner_invoked: false,
+        compliance_pass: false,
+      },
+      tokens_to_target: {
+        observed_provider_tokens_minimum_after_cell: 83110106,
+        goal_status: "right-censored",
+      },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
