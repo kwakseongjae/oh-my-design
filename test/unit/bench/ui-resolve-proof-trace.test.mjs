@@ -421,5 +421,15 @@ describe("proof trace contract", () => {
       systemId: "candidate",
       expectedConnectionName: "bench-test",
     }).reasons).toContain("reflow-locked-typography-changed");
+
+    artifact.row_groups[0].final.measurements[1].observed_line_height_px = 27.9;
+    artifact.row_groups[0].final.measurements[1].pre_edit_font_size_px = null;
+    const unresolvedSelector = evaluateProofExecutionGate(trace, gate, {
+      reflowArtifact: artifact,
+      systemId: "candidate",
+      expectedConnectionName: "bench-test",
+    }).reasons;
+    expect(unresolvedSelector).toContain("reflow-pre-edit-selector-unresolved");
+    expect(unresolvedSelector).not.toContain("reflow-locked-typography-changed");
   });
 });

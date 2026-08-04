@@ -104,6 +104,56 @@ function validateTypographyContract(row, preEditProductSnapshot) {
   return value;
 }
 
+function preEditSelectorAnchors(selector) {
+  const positiveSelector = selector.replace(/:not\([^)]*\)/gu, "");
+  const anchors = [];
+  for (const match of positiveSelector.matchAll(/\.([_a-zA-Z][\w-]*)/gu)) {
+    anchors.push({ type: "class", name: match[1], value: null });
+  }
+  for (const match of positiveSelector.matchAll(/#([_a-zA-Z][\w-]*)/gu)) {
+    anchors.push({ type: "id", name: match[1], value: null });
+  }
+  for (const match of positiveSelector.matchAll(/\[([^\]\s~|^$*!=]+)(?:\s*[~|^$*]?=\s*["']?([^"'\]\s]+)["']?)?\]/gu)) {
+    anchors.push({ type: "attribute", name: match[1], value: match[2] ?? null });
+  }
+  return anchors;
+}
+
+function preEditSourceFacts(snapshot) {
+  const source = Buffer.from(snapshot.source_base64, "base64").toString("utf8");
+  const classes = new Set();
+  const ids = new Set();
+  const attributes = new Map();
+  for (const match of source.matchAll(/\b([A-Za-z_:][\w:.-]*)\s*=\s*(["'])(.*?)\2/gsu)) {
+    const [, name, , value] = match;
+    if (!attributes.has(name)) attributes.set(name, new Set());
+    attributes.get(name).add(value);
+    if (name === "class") for (const token of value.split(/\s+/u).filter(Boolean)) classes.add(token);
+    if (name === "id") ids.add(value);
+  }
+  return { classes, ids, attributes };
+}
+
+function validatePreEditSelector(row, snapshot) {
+  const anchors = preEditSelectorAnchors(row.selector);
+  if (!anchors.length) {
+    fail(`row group ${row.id} deterministic typography selector must use a stable pre-edit class, id, or attribute anchor`);
+  }
+  const facts = preEditSourceFacts(snapshot);
+  const missing = anchors.filter((anchor) => {
+    if (anchor.type === "class") return !facts.classes.has(anchor.name);
+    if (anchor.type === "id") return !facts.ids.has(anchor.name);
+    if (!facts.attributes.has(anchor.name)) return true;
+    return anchor.value !== null && !facts.attributes.get(anchor.name).has(anchor.value);
+  });
+  if (missing.length) {
+    const labels = missing.map((anchor) => anchor.value == null
+      ? `${anchor.type}:${anchor.name}`
+      : `${anchor.type}:${anchor.name}=${anchor.value}`);
+    fail(`row group ${row.id} deterministic typography selector is unresolved in the pre-edit snapshot (${labels.join(", ")})`);
+  }
+}
+
 function productSnapshot(source, productPath) {
   return {
     product_path: productPath,
@@ -302,6 +352,9 @@ export function lockArtifact(input) {
     const atomicParts = validateAtomicParts(row);
     if (atomicParts) row.atomic_parts = atomicParts;
     validateTypographyContract(row, artifact.pre_edit_product_snapshot);
+    if (row.typography_contract.source === PRE_EDIT_SNAPSHOT_SOURCE) {
+      validatePreEditSelector(row, artifact.pre_edit_product_snapshot);
+    }
     if (row.required_fit_reserve_css_px !== REQUIRED_FIT_RESERVE_CSS_PX) {
       fail(`row group ${row.id} required_fit_reserve_css_px must be ${REQUIRED_FIT_RESERVE_CSS_PX}`);
     }
@@ -663,6 +716,7 @@ function staticEditGuardrails(artifact) {
     count_literals: artifact.static_closure_manifest.count_literals,
     forbidden_pattern_semantics: "absence-required-delete-matching-declaration",
     neutral_values_still_forbidden: ["normal", "initial", "unset", "revert", "inherit"],
+    pre_edit_selector_semantics: "every snapshot-backed row selector is anchored in the snapshotted pre-edit product; never register a class, id, or attribute introduced by the product edit",
   };
 }
 

@@ -478,6 +478,29 @@ describe("compact reflow artifact helper", () => {
       .toThrow(/deterministic pre-edit typography role/);
   });
 
+  it("rejects a snapshot typography selector introduced only by the product edit", () => {
+    const input = draft();
+    const source = '<form class="form-card" data-bench="event-log-form"><button>Save</button></form>';
+    input.pre_edit_product_snapshot = {
+      product_path: "index.html",
+      sha256: createHash("sha256").update(source).digest("hex"),
+      source_base64: Buffer.from(source).toString("base64"),
+    };
+    input.row_groups = [{
+      ...input.row_groups[0],
+      id: "form-save",
+      selector: ".event-log-form button",
+      expected_count: 1,
+      longest_value: "Save",
+      typography_contract: { source: "deterministic-pre-edit-snapshot" },
+    }];
+    input.carriers = [{ id: "form", selector: '[data-bench="event-log-form"]', expected_count: 1, binds_row_groups: ["form-save"] }];
+
+    expect(() => lockArtifact(input)).toThrow(/selector is unresolved in the pre-edit snapshot.*class:event-log-form/);
+    input.row_groups[0].selector = '[data-bench="event-log-form"] button';
+    expect(lockArtifact(input).row_groups[0].selector).toBe('[data-bench="event-log-form"] button');
+  });
+
   it("requires resolved compound rows to prove passive text is not the scroll container", () => {
     const locked = lockArtifact({
       ...draft(),

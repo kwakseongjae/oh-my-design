@@ -198,6 +198,9 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("task 전체 deterministic static-close helper 1회 + task 전체 browser-harness command 1회");
     expect(skill).toContain("static_edit_guardrails");
     expect(skill).toContain("word-break: normal");
+    expect(skill).toContain("snapshot-backed row selector");
+    expect(skill).toContain("제품 edit에서 새로 붙일 `.event-log-form` 같은 class");
+    expect(skill).toContain("selector provenance");
     expect(skill).toContain("첫 product edit 뒤 첫 shell command 하나가 static closure 전체");
     expect(skill).toContain("두 번째 shell command는 duplicate static closure");
     expect(skill).toContain("static_closure.state: passed");

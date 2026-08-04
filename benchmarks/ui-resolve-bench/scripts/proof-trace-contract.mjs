@@ -319,16 +319,25 @@ function artifactProofReasons(artifact, gate, context) {
     reasons.push("reflow-pre-edit-product-snapshot-invalid");
   }
   if (gate.require_locked_typography === true || gate.require_computed_pre_edit_typography === true) {
+    let unresolvedPreEditSelector = false;
     const changed = (artifact.row_groups ?? []).some((row) => {
       const measurements = row?.final?.measurements;
       if (!Array.isArray(measurements) || measurements.length !== REQUIRED_REFLOW_CONDITIONS.length) return true;
       if (row.typography_contract?.source === "deterministic-pre-edit-snapshot") {
-        return !snapshotHashValid || measurements.some((value) => (
+        if (!snapshotHashValid) return true;
+        const unresolved = measurements.some((value) => (
           value.pre_edit_snapshot_sha256 !== snapshot.sha256
           || !Number.isFinite(value.pre_edit_font_size_px)
           || !Number.isFinite(value.pre_edit_line_height_px)
           || value.pre_edit_font_weight === undefined
-          || value.observed_font_size_px !== value.pre_edit_font_size_px
+          || value.pre_edit_font_weight === null
+        ));
+        if (unresolved) {
+          unresolvedPreEditSelector = true;
+          return false;
+        }
+        return measurements.some((value) => (
+          value.observed_font_size_px !== value.pre_edit_font_size_px
           || value.observed_line_height_px !== value.pre_edit_line_height_px
           || String(value.observed_font_weight) !== String(value.pre_edit_font_weight)
         ));
@@ -339,6 +348,7 @@ function artifactProofReasons(artifact, gate, context) {
         || String(value.observed_font_weight) !== String(row.typography_contract?.font_weight)
       ));
     });
+    if (unresolvedPreEditSelector) reasons.push("reflow-pre-edit-selector-unresolved");
     if (changed) reasons.push("reflow-locked-typography-changed");
   }
   if (gate.comparison_scroll_requires_target_only_registered_carrier === true) {

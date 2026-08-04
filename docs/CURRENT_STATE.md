@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `44661e2d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.510 rail matrix frozen
+- 기준 커밋: `509ca378` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.511 selector provenance repair
 
 ## 지금 (현재 위치)
+
+- 1.9.511 provider-free repair는 snapshot-backed row selector의 class/id/attribute anchor가 pre-edit source에 실제 존재하는지 lock에서 검사한다.
+- tag-only/post-edit-only selector는 제품 edit 전에 거절하고, evaluator는 null 기준값을 `reflow-pre-edit-selector-unresolved`로 분리한다. frozen candidate가 새 사유로 정확히 재분류됐다.
+- focused55/55, experiment parity1/1, lint green이다. full suite는 552 pass/4 red이며 1건은 mirror 수리 전 관찰, 2건은 외부 vendor git 부재, 1건은 기존 timeout attribution expectation이다. 다음은 exact immutable pin이다.
 
 - 1.9.510 r1 candidate는 valid UI-resolved 85/85지만 proof fail이다: 269.608s, 719,791 tokens, control 대비 wall1.0395×/token1.2405×다.
 - static absence guardrail은 exactly-once close를 통과했다. 그러나 edit에서 새로 만든 `.event-log-form` class를 pre-edit selector로 등록해 form-save 기준값이 null이 됐고 artifact가 open이다.

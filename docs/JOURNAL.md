@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.511 selector provenance repair
+- pre-edit에 없는 snapshot selector를 lock에서 거절하고 evaluator 실패 사유를 분리했다.
+- frozen artifact 재분류, focused55/55+parity1/1+lint green. 다음은 exact pin이다.
+
 ## 2026-08-04 (Codex) · 1.9.510 rail matrix frozen
 - candidate 85/85지만 post-edit-only selector가 pre-edit type을 null로 만들어 proof fail했다.
 - static absence objective는 green; 잔여4셀 frozen, TTT56,409,193+. 다음은 provider-free selector provenance repair다.
