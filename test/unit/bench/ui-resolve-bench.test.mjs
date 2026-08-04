@@ -3253,6 +3253,57 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(matrix.cells.every((cell) => cell.model_id === "gpt-5.6-luna" && cell.effort === "high")).toBe(true);
   });
 
+  it("preregisters exact decision-target inventory closure on the unseen spent-fuel task", () => {
+    const matrix = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/spent-fuel-decision-target-luna-1.9.558/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(matrix).toMatchObject({
+      product_version: "1.9.558",
+      status: "locked-awaiting-fresh-preparation",
+      tokens_to_target_contract: {
+        attempt_order: 40,
+        prior_observed_provider_tokens_minimum: 73512685,
+        prior_usage_unavailable_cells: 6,
+      },
+      task_lock_contract: {
+        task_id: "spent-fuel-cask-transfer-review-v0.1",
+        scored_model_exposure_before_replacement: false,
+        prior_control_exposures: 0,
+        prior_candidate_exposures: 0,
+      },
+      control_source_contract: {
+        source_commit: "84329948762fc75b33de39e13e68535d89fd3447",
+      },
+      candidate_source_contract: {
+        source_commit: "6142925c153dbf9e8c17f7f456279c86c539c8e8",
+      },
+      protected_decision_target_inventory_contract: {
+        candidate_required: true,
+        control_required: false,
+        exact_target_row_groups: 1,
+        distinct_target_only_carrier_required: true,
+        failure_boundary: "before-plan-close",
+      },
+      promotion_gates: {
+        ui_resolved_trials_required: 3,
+        proof_compliant_trials_required: 3,
+        protected_decision_target_inventory_trials_required: 3,
+      },
+    });
+    expect(matrix.cells).toHaveLength(6);
+    expect(matrix.cells.map((cell) => cell.variant_id)).toEqual([
+      "omd-fit-strategy-feasibility-candidate",
+      "omd-decision-target-inventory-candidate",
+      "omd-decision-target-inventory-candidate",
+      "omd-fit-strategy-feasibility-candidate",
+      "omd-fit-strategy-feasibility-candidate",
+      "omd-decision-target-inventory-candidate",
+    ]);
+    expect(new Set(matrix.cells.map((cell) => cell.task_id))).toEqual(new Set(["spent-fuel-cask-transfer-review-v0.1"]));
+    expect(new Set(matrix.cells.map((cell) => `${cell.model_id}/${cell.effort}`))).toEqual(new Set(["gpt-5.6-luna/high"]));
+  });
+
   it("preregisters exact measured pre-edit fit planning on the unseen observatory task", () => {
     const matrix = JSON.parse(readFileSync(join(
       repoRoot,

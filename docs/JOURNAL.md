@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.558 spent-fuel decision-target prereg
+- exact 1.9.548 control vs 1.9.555 candidate를 Luna/high 2×3, timeout900/pacing120/no-retry로 고정했다.
+- attempt40/TTT73,512,685+/provider0; 다음 detached vendors+six cells다.
+
 ## 2026-08-04 (Codex) · 1.9.557 spent-fuel cask transfer task lock
 - fresh cask/surveillance/handling-station task를 provider 노출0에서 잠갔다.
 - baseline75/85, narrow overflow685/755/1510px, target4+4줄, contrast3.81; 다음 exact prereg다.
