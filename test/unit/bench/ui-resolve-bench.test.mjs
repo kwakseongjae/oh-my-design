@@ -5785,6 +5785,47 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("records the deterministic complete plan-reconcile diagnosis repair", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/deterministic-plan-reconcile-diagnostic-1.9.642/REPAIR.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.642",
+      status: "PROVIDER_FREE_REPAIR_GREEN",
+      provider_calls: 0,
+      source_failure: {
+        experiment_id: "cold-chain-plan-reconcile-luna-1.9.637",
+        artifact_only_reconcile_invocations: 5,
+        artifact_only_reconcile_successes: 0,
+      },
+      repair: {
+        deterministic_command: "plan-diagnose",
+        non_mutating: true,
+        browser_rerun_allowed: false,
+        outputs: ["ready", "patch-required", "irreconcilable"],
+        complete_patch_in_one_response: true,
+        aggregate_issue_list_in_one_response: true,
+        plan_reconcile_rejects_non_ready_diagnosis: true,
+        product_mutation_before_ready_forbidden: true,
+        empty_host_state_directory_is_not_browser_proof: true,
+      },
+      frozen_artifact_replay: {
+        status: "irreconcilable",
+        issues: [{ code: "nested-registered-carrier", row_id: "decision-evidence" }],
+        compatible_patch_rows_also_reported: ["assessor-note-control"],
+        would_abort_before_product_edit: true,
+      },
+      verification: {
+        focused_tests_passed: 60,
+        python_compile: "pass",
+        typescript_lint: "pass",
+        skill_quick_validate: "pass",
+        diff_check: "pass",
+      },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

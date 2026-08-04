@@ -710,9 +710,11 @@ if mode == "plan":
         raise SystemExit(
             "OMD_PLAN_MEASURED_RECONCILE_REQUIRED: the one browser measurement is persisted, "
             "but semantic plan closure failed. Do not edit the product and do not rerun the browser. "
-            "Correct artifact bookkeeping without changing the measured row/carrier id sets, then run "
-            f"`node {helper_path} plan-reconcile {artifact_path}`. "
-            "If reconciliation requires a new row or carrier, abort this run."
+            "Run the deterministic diagnosis once: "
+            f"`node {helper_path} plan-diagnose {artifact_path}`. "
+            "If it returns patch-required, apply the complete row_groups patch once without changing the measured id sets, then run "
+            f"`node {helper_path} plan-reconcile {artifact_path}` once. "
+            "If it returns irreconcilable, abort this run before any product edit."
             + (f" Helper output: {detail}" if detail else "")
         )
     raise SystemExit(0)

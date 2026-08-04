@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.642 deterministic reconcile diagnostic
+- plan-diagnose가 모든 measured carrier/row 충돌과 complete patch를 한 번에 non-mutating 반환한다.
+- frozen cold-chain replay는 nested carrier를 즉시 irreconcilable로 판정해 5회 추측 loop를 제거했다.
+- focused60/60 + py/lint/skill/diff green, provider0; 다음은 exact pin+unseen task다.
+
 ## 2026-08-05 (Codex) · 1.9.641 cold-chain reconcile frozen
 - candidate valid85/85, 536007ms/2182215 tokens지만 reconcile5회 전부 실패해 plan-close0/proof red다.
 - browser rerun0은 지켰지만 plan close 전 제품을 수정했고 static/final browser closure도 막혔다.

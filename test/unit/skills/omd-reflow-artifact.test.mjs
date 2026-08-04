@@ -5,6 +5,7 @@ import { chmodSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync 
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
+  diagnosePlanReconcile,
   deliveryMarker,
   executeStaticClosure,
   finalizeArtifact,
@@ -219,6 +220,9 @@ describe("compact reflow artifact helper", () => {
     expect(runner).toContain("const contentWidth = context.clientWidth - paddingInline");
     expect(runner).toContain("const carrierWidth = carrier.offsetWidth");
     expect(runner).toContain("OMD_PLAN_MEASURED_RECONCILE_REQUIRED");
+    expect(runner).toContain("plan-diagnose");
+    expect(runner).toContain("complete row_groups patch");
+    expect(runner).toContain("If it returns irreconcilable, abort this run before any product edit");
     expect(runner).toContain("plan-reconcile");
     expect(runner).toContain("context_content_width_css_px: contentWidth");
     expect(runner).not.toContain("contextRect.width - parseFloat(contextStyle.paddingLeft)");
@@ -537,6 +541,83 @@ describe("compact reflow artifact helper", () => {
       decision: "comparison-scroll",
       intrinsically_carrier_unfit: true,
     });
+  });
+
+  it("diagnoses every compatible measured row patch at once without mutating the artifact", () => {
+    const input = draft();
+    for (const [index, row] of input.pre_edit_fit_plan.rows.entries()) {
+      row.measurements[1].intrinsic_text_width_css_px = 300 + index;
+      row.measurements[1].required_carrier_inner_width_css_px = 316 + index;
+    }
+    const before = JSON.stringify(input);
+    const diagnosis = diagnosePlanReconcile(input);
+    expect(diagnosis).toMatchObject({
+      status: "patch-required",
+      browser_rerun_allowed: false,
+      product_edit_allowed: false,
+      issues: [],
+      complete_patch: {
+        row_groups: [
+          { row_id: "identifier", carrier_id: "plan", decision: "comparison-scroll", requires_existing_accessible_name: true },
+          { row_id: "status", carrier_id: "handoff", decision: "comparison-scroll", requires_existing_accessible_name: true },
+        ],
+      },
+    });
+    expect(JSON.stringify(input)).toBe(before);
+  });
+
+  it("returns one irreconcilable verdict for a measured nested-carrier graph", () => {
+    const input = draft();
+    input.pre_edit_fit_plan.rows[0].measurements[1].intrinsic_text_width_css_px = 300;
+    input.pre_edit_fit_plan.rows[0].measurements[1].required_carrier_inner_width_css_px = 316;
+    input.pre_edit_fit_plan.carriers[0].contained_carrier_ids = ["handoff"];
+    const diagnosis = diagnosePlanReconcile(input);
+    expect(diagnosis).toMatchObject({
+      status: "irreconcilable",
+      browser_rerun_allowed: false,
+      product_edit_allowed: false,
+      issues: [{
+        code: "nested-registered-carrier",
+        row_id: "identifier",
+        carrier_id: "plan",
+        contained_carrier_ids: ["handoff"],
+      }],
+      complete_patch: { row_groups: [] },
+    });
+  });
+
+  it("makes plan-reconcile fail once with the complete deterministic patch", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-plan-complete-patch-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const input = draft();
+    input.pre_edit_fit_plan = { state: "pending" };
+    writeFileSync(artifactPath, JSON.stringify(input));
+    writeFileSync(productPath, '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""><span role="status">Ground review open</span></div>');
+    execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "snapshot",
+      artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    const measured = JSON.parse(readFileSync(artifactPath, "utf8"));
+    measured.pre_edit_fit_plan = measuredFitPlan(measured.row_groups, measured.carriers);
+    for (const [index, row] of measured.pre_edit_fit_plan.rows.entries()) {
+      row.measurements[1].intrinsic_text_width_css_px = 300 + index;
+      row.measurements[1].required_carrier_inner_width_css_px = 316 + index;
+    }
+    writeFileSync(artifactPath, JSON.stringify(measured));
+
+    const result = spawnSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "plan-reconcile",
+      artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("plan reconciliation patch-required");
+    expect(result.stderr).toContain('"row_id":"identifier"');
+    expect(result.stderr).toContain('"row_id":"status"');
+    expect(readFileSync(artifactPath, "utf8")).toBe(JSON.stringify(measured));
   });
 
   it("refuses plan reconciliation after the product source changes", () => {

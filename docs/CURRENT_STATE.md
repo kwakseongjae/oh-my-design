@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `10aec323` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.641 cold-chain plan-reconcile frozen
+- 기준 커밋: `a2562cc4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.642 deterministic reconcile diagnostic repair
 
 ## 지금 (현재 위치)
+
+- 1.9.642는 measured-plan semantic conflict를 한 건씩 throw하던 `plan-reconcile` 앞에 non-mutating `plan-diagnose`를 추가했다. 모든 충돌과 complete row patch를 한 번에 내며 `ready|patch-required|irreconcilable`로 판정한다.
+- frozen cold-chain artifact replay는 nested carrier 때문에 즉시 irreconcilable을 반환하면서 별도 compatible patch row도 함께 보고했다. 이전 5회 추측 loop 대신 product edit 전 한 번에 중단할 수 있다.
+- focused60/60 + py compile + lint + skill quick-validate + diff green, provider0다. 다음은 exact repair pin 후 세 diagnosis 상태를 구분하는 genuinely unseen task 생성이다.
 
 - 1.9.641 r1 candidate는 valid85/85, UI-resolved, 536,007ms, 2,182,215 tokens지만 proof gate red다. measured plan1을 보존하고 browser rerun0은 지켰으나 artifact-only reconcile5회가 모두 실패해 successful plan-close0인 채 제품을 수정했다.
 - control/candidate 모두 proof red이고 candidate proof/plan-close 최대 도달치가2/3으로 내려가 remaining4는 untouched freeze했다. 관측 wall0.640×/tokens0.472×는 proof 실패 때문에 홍보 근거가 아니다.

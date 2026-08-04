@@ -612,6 +612,96 @@ function validatePreEditFitPlan(value, rows, carriers, { allowPending = false } 
   return value;
 }
 
+export function diagnosePlanReconcile(artifact) {
+  const plan = artifact?.pre_edit_fit_plan;
+  if (plan?.state !== "measured" || plan.attempts !== 1) {
+    fail("plan reconciliation diagnosis requires one persisted measured fit plan");
+  }
+  const rows = Array.isArray(artifact.row_groups) ? artifact.row_groups : [];
+  const carriers = Array.isArray(artifact.carriers) ? artifact.carriers : [];
+  const measuredRows = new Map((plan.rows ?? []).map((row) => [row.id, row]));
+  const measuredCarriers = new Map((plan.carriers ?? []).map((carrier) => [carrier.id, carrier]));
+  const issues = [];
+  const patchRows = [];
+
+  for (const row of rows) {
+    const bindings = carriers.filter((carrier) => carrier.binds_row_groups?.includes(row.id));
+    if (bindings.length !== 1) {
+      issues.push({ code: "row-binding-cardinality", row_id: row.id, carrier_ids: bindings.map((carrier) => carrier.id), message: "each measured row must remain bound to exactly one registered carrier" });
+      continue;
+    }
+    const carrier = bindings[0];
+    const rowPlan = measuredRows.get(row.id);
+    const carrierPlan = measuredCarriers.get(carrier.id);
+    if (!rowPlan || !carrierPlan) {
+      issues.push({ code: "measured-id-set-mismatch", row_id: row.id, carrier_id: carrier.id, message: "the persisted measured row/carrier id set cannot be changed during reconciliation" });
+      continue;
+    }
+    const conditions = (rowPlan.measurements ?? []).map((measurement, index) => {
+      const available = carrierPlan.measurements?.[index]?.available_carrier_inner_width_css_px;
+      return {
+        id: measurement.id,
+        required_carrier_inner_width_css_px: measurement.required_carrier_inner_width_css_px,
+        available_carrier_inner_width_css_px: available,
+        requires_comparison_scroll: Number.isFinite(available) && measurement.required_carrier_inner_width_css_px > available,
+      };
+    });
+    if (!conditions.some((condition) => condition.requires_comparison_scroll)) continue;
+
+    const containedCarrierIds = carrierPlan.contained_carrier_ids ?? [];
+    const sharedRows = carrier.binds_row_groups.map((id) => rows.find((candidate) => candidate.id === id)).filter(Boolean);
+    if (containedCarrierIds.length) {
+      issues.push({ code: "nested-registered-carrier", row_id: row.id, carrier_id: carrier.id, contained_carrier_ids: containedCarrierIds, message: "a measured comparison carrier cannot contain another registered carrier without changing the locked measurement graph" });
+      continue;
+    }
+    if (sharedRows.length > 1 && sharedRows.some((candidate) => candidate.role !== "identifier")) {
+      issues.push({ code: "shared-non-passive-row", row_id: row.id, carrier_id: carrier.id, shared_row_ids: sharedRows.map((candidate) => candidate.id), message: "a shared comparison carrier may contain only passive identifier rows" });
+      continue;
+    }
+    if (carrier.selector === row.selector) {
+      issues.push({ code: "passive-text-is-carrier", row_id: row.id, carrier_id: carrier.id, message: "the protected passive text selector cannot itself become the scroll carrier" });
+      continue;
+    }
+    const contract = row.scroll_contract;
+    if (
+      row.decision !== "comparison-scroll"
+      || contract?.container_selector !== carrier.selector
+      || typeof contract?.accessible_name !== "string"
+      || !contract.accessible_name
+      || contract.keyboard_reachable !== true
+      || contract.focus_visible !== true
+      || contract.passive_text_scroll_container !== false
+    ) {
+      patchRows.push({
+        row_id: row.id,
+        carrier_id: carrier.id,
+        decision: "comparison-scroll",
+        scroll_contract: {
+          container_selector: carrier.selector,
+          accessible_name: contract?.accessible_name ?? null,
+          keyboard_reachable: true,
+          focus_visible: true,
+          passive_text_scroll_container: false,
+        },
+        requires_existing_accessible_name: !(typeof contract?.accessible_name === "string" && contract.accessible_name),
+        conditions,
+      });
+    }
+  }
+
+  const status = issues.length ? "irreconcilable" : patchRows.length ? "patch-required" : "ready";
+  return {
+    schema_version: "0.1",
+    status,
+    browser_rerun_allowed: false,
+    product_edit_allowed: status === "ready",
+    measured_row_ids: [...measuredRows.keys()],
+    measured_carrier_ids: [...measuredCarriers.keys()],
+    issues,
+    complete_patch: { row_groups: patchRows },
+  };
+}
+
 function validateFitStrategy(row) {
   if (!FIT_STRATEGIES.has(row.decision)) {
     fail(`row group ${row.id} decision must be ${[...FIT_STRATEGIES].join(", ")}`);
@@ -1245,8 +1335,8 @@ function staticEditGuardrails(artifact) {
 
 function main() {
   const [command, rawPath, rawProductPath] = process.argv.slice(2);
-  if (!command || !rawPath || !["snapshot", "lock", "plan-close", "plan-reconcile", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
-    console.error("usage: reflow-artifact.mjs <snapshot|lock|plan-close|plan-reconcile|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <artifact.json> [product-file]");
+  if (!command || !rawPath || !["snapshot", "lock", "plan-close", "plan-reconcile", "plan-diagnose", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
+    console.error("usage: reflow-artifact.mjs <snapshot|lock|plan-close|plan-reconcile|plan-diagnose|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <artifact.json> [product-file]");
     process.exitCode = 2;
     return;
   }
@@ -1255,7 +1345,7 @@ function main() {
   const defaultHostStateDir = resolve(process.cwd(), ".omd/proof-policy");
   const hostStateDir = process.env.OMD_PROOF_POLICY_STATE_DIR
     ? resolve(process.env.OMD_PROOF_POLICY_STATE_DIR)
-    : existsSync(defaultHostStateDir)
+    : existsSync(resolve(defaultHostStateDir, "state.json"))
       ? defaultHostStateDir
       : null;
   let result;
@@ -1282,7 +1372,17 @@ function main() {
         artifact.static_closure_manifest.product_path,
       ),
     }, "lock");
-  } else if (["plan-close", "plan-reconcile"].includes(command)) {
+  } else if (command === "plan-diagnose") {
+    assertPreEditProductUnchanged(artifact);
+    console.log(JSON.stringify({ command, path, diagnosis: diagnosePlanReconcile(artifact) }));
+    return;
+  } else if (command === "plan-reconcile") {
+    const diagnosis = diagnosePlanReconcile(artifact);
+    if (diagnosis.status !== "ready") {
+      fail(`plan reconciliation ${diagnosis.status}: ${JSON.stringify(diagnosis)}`);
+    }
+    result = closePlan(artifact, command);
+  } else if (command === "plan-close") {
     result = closePlan(artifact, command);
   } else if (command === "static-close") {
     if (!rawProductPath) fail("static-close requires the locked product file");
@@ -1322,5 +1422,6 @@ function main() {
 
 if (
   process.argv[1]
+  && existsSync(resolve(process.argv[1]))
   && realpathSync(resolve(process.argv[1])) === realpathSync(fileURLToPath(import.meta.url))
 ) main();
