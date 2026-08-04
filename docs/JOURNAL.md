@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.546 offshore r1 control
+- Luna/high control은 valid83/85, 523.863s/2,169,742 tokens; narrow surface checks는 green이다.
+- inline reserve3그룹+desktop action gap red로 proof fail, TTT68,726,572+; 다음 r1 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.545 offshore matrix preparation
 - exact detached control/candidate와 six untouched cells, equality6/6+guardrail9/9를 확인했다.
 - provider0; 다음 runtime/browser/auth preflight 뒤 r1 control이다.

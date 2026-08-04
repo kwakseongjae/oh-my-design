@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7dffde41` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.545 offshore checklist matrix preparation
+- 갱신: 2026-08-04 · 1.9.546 offshore r1 aggregate control
 
 ## 지금 (현재 위치)
+
+- 1.9.546 Luna/high r1 aggregate control은 valid83/85, 523.863s, 2,169,742 tokens다.
+- 모든 viewport overflow/fragmentation/clipping/axe는0이나 desktop action separation이 red다. register/desk에 horizontal scroll을 써 identifier 3그룹의 inline reserve가 부족해 artifact unresolved/proof fail이다.
+- edit1/static1/browser1, recovery0이며 TTT68,726,572+ / unavailable6이다. 다음은 fixed pacing 뒤 r1 candidate no-retry다.
 
 - 1.9.545는 `/private/tmp/u19544-vendors` exact detached control/candidate와 `/private/tmp/u19544` six untouched cells를 준비했다.
 - equality6/6, product tree identical6, detached+clean2, identical runner와 candidate structured-checklist guardrail9/9를 확인했다. provider0다.
