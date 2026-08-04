@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `9d398232` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.592 archive executable matrix lock
+- 기준 커밋: `db931098` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.593 archive six-cell preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.593은 `/private/tmp/u19592-vendors`의 exact detached clean sources와 `/private/tmp/u19592`의 six untouched Luna/high cells를 준비했다.
+- core/prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이며 control은 contained formula0/3, candidate는3/3이다. provider0다.
+- 다음은 runtime preflight 후 `luna-archive-r1-control`을 no-retry로 한 번 실행한다.
 
 - 1.9.592는 competitor `omd-contained-carrier-budget-candidate`를 exact commit5f78f1c5/vendor1.9.587로 등록하고 executable schema0.3 matrix를 잠갔다.
 - validateRunMatrixPlan green, cells order control/candidate/candidate/control/control/candidate, proof gate는 양 arm 모두 적용된다. provider0다.

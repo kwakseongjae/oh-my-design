@@ -4235,6 +4235,44 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ]);
   });
 
+  it("prepares six untouched archive contained-budget cells from exact detached sources", () => {
+    const preparation = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/archive-contained-budget-replacement-luna-1.9.591/PREPARATION.json",
+    ), "utf8"));
+    expect(preparation).toMatchObject({
+      product_version: "1.9.593",
+      status: "SIX_CELLS_PREPARED",
+      provider_calls: 0,
+      locked_plan_sha256: "678cd22681f068497bca810dfabedd7e50fcb7f7dbb6d0149fbbd5e245a3d418",
+      equality: {
+        scheduled_cells: 6,
+        prepared_cells: 6,
+        core_prompt_equal: 6,
+        prompt_equal: 6,
+        starter_equal: 6,
+        product_tree_equal: 6,
+        runtime_equal: 6,
+        model_equal: 6,
+        effort_equal: 6,
+        timeout_equal: 6,
+      },
+      source_attestation: {
+        control: { commit: "853db7bfe0939e0c58b1c8d01e7d2348100a14c8", detached: true, clean: true },
+        candidate: { commit: "5f78f1c5a23148778a49bdc54f6f6026a7b8c1d2", detached: true, clean: true },
+      },
+      isolated_delta_guardrail: {
+        control_contained_budget_formula_absent: true,
+        control_contained_budget_field_absent: true,
+        candidate_contained_budget_formula_present: true,
+        candidate_contained_budget_field_present: true,
+        all_three_control_cells_match: true,
+        all_three_candidate_cells_match: true,
+      },
+      execution_contract: { next_cell: "luna-archive-r1-control", max_new_cells: 1, retry: false, inter_cell_delay_seconds: 120 },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

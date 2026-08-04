@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.593 archive matrix preparation
+- exact detached clean control/candidate와 six untouched Luna/high cells를 준비했다.
+- 입력·실행핀 equality6/6, control raw-only3/3, candidate contained-budget3/3, provider0다.
+- 다음 runtime preflight 뒤 r1 control no-retry다.
+
 ## 2026-08-05 (Codex) · 1.9.592 archive executable matrix lock
 - exact candidate competitor와 valid schema0.3 six-cell matrix를 등록했다.
 - order C/K/K/C/C/K, 양 arm proof gate, provider0다.
