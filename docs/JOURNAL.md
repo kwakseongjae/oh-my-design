@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.567 organ custody r1 control
+- valid complete UI79/85 · 523,045ms · 1,900,170 tokens; responsive/proof closure 실패를 no-retry 동결했다.
+- TTT80,012,634+; 다음 fixed pacing 뒤 untouched r1 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.566 organ custody matrix preparation
 - exact detached control/candidate와 six untouched cells, equality6/6+shared/self-dispatch guardrail을 확인했다.
 - provider0; 다음 runtime/browser/auth preflight 후 r1 control이다.

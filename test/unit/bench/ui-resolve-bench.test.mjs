@@ -3519,6 +3519,51 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("freezes the organ custody r1 control as a valid no-retry system failure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/organ-custody-runner-self-dispatch-luna-1.9.565/R1-CONTROL.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.567",
+      cell_id: "luna-organ-r1-control",
+      validity: "valid",
+      run_status: "complete",
+      ui_resolved: false,
+      objective_score: 79,
+      objective_max: 85,
+      wall_time_ms: 523045,
+      provider_tokens: 1900170,
+      proof_trace: {
+        analyzable: true,
+        compliance_pass: true,
+        product_edit_count: 1,
+        product_revision_count: 1,
+        static_closure_count: 1,
+        browser_mechanism_count: 1,
+        browser_recovery_count: 0,
+      },
+      proof_execution_gate: {
+        pass: false,
+        artifact_present: true,
+        static_closure_state: "open",
+        browser_attempts: 0,
+        closure_state: "open",
+        shipped_runner_invoked: true,
+      },
+      failure_boundary: {
+        class: "control-runner-missing-plain-python-self-dispatch",
+        expected_by_preregistration: true,
+        retry: false,
+      },
+      tokens_to_target: {
+        attempt_order: 41,
+        cumulative_observed_provider_tokens_minimum: 80012634,
+        goal_status: "right-censored-open",
+      },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

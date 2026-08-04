@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `b393a8d1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.566 organ custody matrix preparation
+- 기준 커밋: `e4010e80` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.567 organ custody r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.567 r1 control은 valid complete, UI79/85, wall523,045ms, provider1,900,170 tokens다. contract/state/a11y/design/evidence는 통과했고 responsive는 실패했다.
+- proof trace는 analyzable/one edit/one static/one browser/no recovery였지만 plain-Python runner에서 helper 부재로 plan measurement가 열려 static/browser closure가 실패했다. preregistered control failure이며 retry하지 않는다.
+- 누적 TTT는 80,012,634+ / unavailable6이다. 다음 허용 provider call은 fixed pacing 뒤 untouched `luna-organ-r1-candidate` 한 셀이다.
 
 - 1.9.566은 `/private/tmp/u19565-vendors` exact detached control/candidate와 `/private/tmp/u19565` six untouched cells를 준비했다.
 - equality6/6, product tree identical6, detached+clean2, shared target/checklist/feasibility guardrail6/6과 candidate self-dispatch guardrail6/6을 확인했다. provider0이다.
