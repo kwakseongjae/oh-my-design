@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.612 museum matrix preparation
+- exact detached clean control/candidate와 six untouched Luna/high cells를 준비했다.
+- equality7종6/6, isolated desktop/nesting/default delta를 재확인했다.
+- provider0; 다음 runtime preflight+r1 control no-retry다.
+
 ## 2026-08-05 (Codex) · 1.9.611 museum executable matrix lock
 - schema0.3, Luna/high2×3, order C/T/T/C/C/T를 잠갔다.
 - candidate-only desktop final+missing fail-close+nested containment gate, provider0다.

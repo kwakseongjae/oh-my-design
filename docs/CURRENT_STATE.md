@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `e77c3d8a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.611 museum desktop-context executable matrix lock
+- 갱신: 2026-08-05 · 1.9.612 museum desktop-context matrix prepared
 
 ## 지금 (현재 위치)
+
+- 1.9.612는 `/private/tmp/u19611-vendors` exact detached clean sources와 `/private/tmp/u19611` six untouched Luna/high cells를 준비했다.
+- prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이다. control은 desktop/nesting gate가 없고 missing default가 있으며 candidate는 반대다. provider0다.
+- 다음은 browser/CLI/auth/evaluator preflight 후 `luna-museum-r1-control` no-retry 단일 실행이다.
 
 - 1.9.611은 executable schema0.3 matrix를 잠갔다. order C/T/T/C/C/T, Luna/high, timeout900, pacing120, no-retry다.
 - 양 arm에 shared proof/runner/context 계약을 적용하고 candidate만 desktop final+missing fail-close+nested containment gate를 요구한다. provider0다.
