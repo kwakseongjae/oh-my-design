@@ -4509,6 +4509,30 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("locks a valid executable museum desktop-context matrix", () => {
+    const matrix = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/museum-desktop-decision-context-luna-1.9.609/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(() => validateRunMatrixPlan(matrix, competitors)).not.toThrow();
+    expect(matrix).toMatchObject({
+      product_version: "1.9.611",
+      status: "locked-awaiting-fresh-preparation",
+      tokens_to_target_contract: { attempt_order: 46, prior_observed_provider_tokens_minimum: 101844158 },
+      task_lock_contract: { task_id: "museum-loan-crate-release-v0.1", prior_control_exposures: 0, prior_candidate_exposures: 0 },
+      decision_context_closure_contract: { candidate_desktop_final_measurement_required: true, candidate_missing_observation_fail_closed_required: true, candidate_nested_carrier_inventory_closed_required: true },
+      promotion_gates: { candidate_desktop_decision_context_observed_trials_required: 3, candidate_nested_carrier_inventory_closed_trials_required: 3 },
+    });
+    expect(matrix.cells.map((cell) => cell.variant_id)).toEqual([
+      "omd-decision-context-closure-candidate",
+      "omd-desktop-decision-context-candidate",
+      "omd-desktop-decision-context-candidate",
+      "omd-decision-context-closure-candidate",
+      "omd-decision-context-closure-candidate",
+      "omd-desktop-decision-context-candidate",
+    ]);
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

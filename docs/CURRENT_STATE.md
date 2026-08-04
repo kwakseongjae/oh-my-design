@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `e77c3d8a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.610 Luna Max one-prompt plan advanced
+- 갱신: 2026-08-05 · 1.9.611 museum desktop-context executable matrix lock
 
 ## 지금 (현재 위치)
+
+- 1.9.611은 executable schema0.3 matrix를 잠갔다. order C/T/T/C/C/T, Luna/high, timeout900, pacing120, no-retry다.
+- 양 arm에 shared proof/runner/context 계약을 적용하고 candidate만 desktop final+missing fail-close+nested containment gate를 요구한다. provider0다.
+- 다음은 `/private/tmp/u19611-vendors` exact detached sources와 `/private/tmp/u19611` six untouched cells preparation/equality attestation이다.
 
 - 1.9.610은 Luna Max 원프롬프트 비교의 runtime을 codex-cli0.144.1/binary134063e1로 pin했다. `gpt-5.6-luna`/max는 아직 candidate이며 public attribution은 금지다.
 - isolated read-only provider preflight, silent downgrade 금지, stateful task gate, intervention ledger, blinded desktop/mobile/state gallery 계약을 추가했다. provider0다.

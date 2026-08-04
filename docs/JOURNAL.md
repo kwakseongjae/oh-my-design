@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.611 museum executable matrix lock
+- schema0.3, Luna/high2×3, order C/T/T/C/C/T를 잠갔다.
+- candidate-only desktop final+missing fail-close+nested containment gate, provider0다.
+- 다음 exact detached vendors+six untouched cells preparation이다.
+
 ## 2026-08-05 (Codex) · 1.9.610 Luna Max one-prompt plan advance
 - codex-cli0.144.1/binary134063e1을 pin하고 Luna/max를 unverified candidate로 명시했다.
 - isolated preflight+no downgrade+stateful task+intervention ledger+blinded gallery를 fail-closed 계약으로 추가했다.
