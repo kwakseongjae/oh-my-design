@@ -4753,6 +4753,42 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("locks a valid executable runway content-box transfer matrix", () => {
+    const matrix = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/runway-content-box-transfer-luna-1.9.619/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(() => validateRunMatrixPlan(matrix)).not.toThrow();
+    expect(matrix).toMatchObject({
+      schema_version: "0.3",
+      product_version: "1.9.620",
+      status: "locked-awaiting-fresh-preparation",
+      task_lock_contract: {
+        task_id: "runway-lighting-return-to-service-v0.1",
+        source_commit: "1816fd834ada8d415cebb85fd883f7dda0a3cdcf",
+        prior_control_exposures: 0,
+        prior_candidate_exposures: 0,
+      },
+      control_source_contract: {
+        source_commit: "e8a6f083f5cb278d18d1ab812b7d154a486a8c1b",
+        context_width_coordinate: "border-box-minus-padding",
+      },
+      candidate_source_contract: {
+        source_commit: "0c4af9273a19bbb7cdcf6a17ef2a58f3627f1419",
+        context_width_coordinate: "clientWidth-minus-padding-vs-offsetWidth",
+      },
+    });
+    expect(matrix.cells).toHaveLength(6);
+    expect(matrix.cells.map((cell) => cell.id)).toEqual([
+      "luna-runway-r1-control",
+      "luna-runway-r1-candidate",
+      "luna-runway-r2-candidate",
+      "luna-runway-r2-control",
+      "luna-runway-r3-control",
+      "luna-runway-r3-candidate",
+    ]);
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

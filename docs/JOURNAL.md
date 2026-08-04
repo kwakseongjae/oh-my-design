@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.620 runway content-box matrix lock
+- executable schema0.3 C/T/T/C/C/T Luna/high matrix를 잠갔다.
+- 양 arm은 동일 proof/UI 계약이며 candidate만 content-box 좌표계를 사용한다. provider0다.
+- 다음은 exact detached vendors와 six untouched cells preparation이다.
+
 ## 2026-08-05 (Codex) · 1.9.619 runway content-box preregistration
 - exact e8a6f083 border-box control vs 0c4af927 content-box candidate를 Luna/high2×3으로 provider0 사전등록했다.
 - isolated delta는 context border 제외+layout CSS pixel 좌표계뿐이며 UI/proof/content-box 3/3 gate다.
