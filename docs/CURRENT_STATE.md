@@ -3,10 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `7df5be63` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.644 airworthiness unseen task baseline
+- 기준 커밋: `7a6ea21a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.645 airworthiness task pin
 
 ## 지금 (현재 위치)
+
+- 1.9.645는 task commit `7a6ea21a...`, git task tree `6881d781...`, portable tree `124ca2c4...`, baseline score `5d59ea7c...`를 exact pin했다.
+- model/control/candidate exposure0이며 이후 task mutation은 금지다. 다음은 exact historical reconcile control vs complete diagnostic candidate 사전등록이다.
 
 - 1.9.644는 model-unseen `airworthiness-release-review-v0.1`을 provider 노출 전에 생성·평가했다. task tree `124ca2c4...`, score `5d59ea7c...`, exposure0이다.
 - raw baseline75/85: contract/state/design/evidence green, responsive/a11y red다. widths1440/1135/1135/2270, target fragments2, short wraps1/1/1, contrast2.61다.

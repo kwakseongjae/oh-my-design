@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.645 airworthiness task pin
+- task commit/git tree/portable tree/baseline score를 model exposure0에서 exact pin했다.
+- 이후 task/prompt/starter/evaluator mutation은 금지다.
+- 다음은 exact control/candidate transfer preregistration이다.
+
 ## 2026-08-05 (Codex) · 1.9.644 airworthiness unseen task baseline
 - provider 노출 전 신규 airworthiness task를 생성·결정론 baseline했다.
 - raw75/85, responsive/a11y red, task tree124ca2c4, score5d59ea7c, exposure0다.
