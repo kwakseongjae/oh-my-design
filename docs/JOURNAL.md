@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.595 archive matrix freeze
+- candidate proof는 green/contained plan 관찰됐지만 UI79/85로 concise evidence2줄·desktop target/action overlap이다.
+- UI3/3 최대2라 remaining4 untouched freeze; wall1.108×/tokens1.221×도 red다.
+- TTT96,173,681+; 다음 decision inventory+unfit target full-row provider-free repair다.
+
 ## 2026-08-05 (Codex) · 1.9.594 archive r1 control
 - valid81/85, 575.655s, 2,908,997 tokens; narrow/actual200 atomic wrap로 UI red다.
 - post-edit ad-hoc static command 때문에 static2/browser0/runner0/artifact-open으로 proof red다.

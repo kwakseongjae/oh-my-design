@@ -4292,6 +4292,30 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("freezes archive replacement after proof transfer without UI reliability", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/archive-contained-budget-replacement-luna-1.9.591/SUMMARY.final.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.595",
+      status: "FROZEN_PROMOTION_UNREACHABLE",
+      promotion: false,
+      provider_calls: 2,
+      completed_cells: 2,
+      r1: {
+        control: { score: 81, ui_resolved: false, proof_pass: false, tokens: 2908997 },
+        candidate: { score: 79, ui_resolved: false, proof_pass: true, contained_budget_plan_observed: true, tokens: 3551241 },
+      },
+      candidate_contained_budget_evidence: { artifact_closed: true, static_closure_count: 1, browser_mechanism_count: 1, shipped_runner_invoked: true, source_reel_register_budgets: [368, 298, 298], invalid_raw_overflow_budget_count: 0 },
+      candidate_ui_failure: { narrow_320_lines: 2, actual_200pct_lines: 2, desktop_target_action_spatial_separation: false },
+      promotion_reachability: { candidate_ui_resolved_observed: 0, maximum_reachable_ui_resolved_trials: 2, promotion_reachable: false },
+      paired_efficiency: { wall_time_gate: false, token_gate: false, causal_efficiency_claim_allowed: false },
+      tokens_to_target: { cumulative_observed_provider_tokens_minimum: 96173681, usage_unavailable_cells: 6, goal_status: "right-censored-open" },
+    });
+    expect(result.frozen_unstarted_cells).toHaveLength(4);
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `ffa09c4c` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.594 archive r1 control
+- 기준 커밋: `12f12fca` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.595 archive matrix freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.595 r1 candidate는 proof green(static1/browser1/closed/contained plan)이지만 UI79/85다. concise decision evidence가 320/actual200에서2줄이고 desktop target/action 공간이 겹쳤다.
+- candidate UI3/3 최대치가2로 내려가 remaining4를 untouched 동결했다. wall1.108×/tokens1.221×로 efficiency1.1 gate도 red다.
+- contained-budget transfer 자체는 관찰됐지만 quality promotion은 false다. 누적 TTT96,173,681+ / unavailable6; 다음은 decision evidence inventory+unfit target full-row 규칙의 provider-free 수리다.
 
 - 1.9.594 r1 control은 valid81/85, 575,655ms, 2,908,997 tokens다. overflow0·a11y green이지만 320/actual200 atomic wrap 각1로 responsive red다.
 - 제품 edit 뒤 ad-hoc `rg`가 proof budget을 소비해 static2/duplicate1/browser0/shipped-runner0/artifact-open으로 proof red다. retry하지 않는다.
