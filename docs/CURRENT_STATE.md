@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `a6ebdc8a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.570 pre-edit carrier anchor source pin
+- 기준 커밋: `9911b600` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.571 fresh subsea cable task baseline
 
 ## 지금 (현재 위치)
+
+- 1.9.571은 model-unseen `subsea-cable-splice-clearance-v0.1`을 생성하고 raw baseline을 결정론 평가했다. provider0이다.
+- baseline75/85, contract/state/design/evidence green, responsive/a11y red다. scroll 390→1075, 320→1075, actual200→2150, contrast3.78이며 protected mismatch0이다.
+- target-only stable pre-edit carrier hook을 task source에 포함했다. 다음은 exact task source pin이다.
 
 - 1.9.570은 carrier anchor repair를 exact commit `a6ebdc8a…`, source tree `6546fa5d…`, skill tree `5f6b8ea8…`로 pin했다.
 - artifact helper `276020bd…`, self-dispatch runner `b57a2a40…`이다. quality promotion은 아니다.

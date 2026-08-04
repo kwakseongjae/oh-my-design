@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.571 fresh subsea cable task
+- model-unseen task provider0 baseline75/85; responsive/a11y red, contract/state/design/evidence green이다.
+- stable target-only pre-edit carrier 포함; 다음 exact task pin이다.
+
 ## 2026-08-04 (Codex) · 1.9.570 carrier anchor source pin
 - exact commit `a6ebdc8a…`, source `6546fa5d…`, skill `5f6b8ea8…`로 repair를 pin했다.
 - 다음 fresh unseen task 생성·baseline lock이다.

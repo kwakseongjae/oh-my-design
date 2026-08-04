@@ -3654,6 +3654,44 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("locks a fresh unseen subsea cable task with a failing deterministic baseline", () => {
+    const summary = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-cable-task-baseline-1.9.571/SUMMARY.final.json",
+    ), "utf8"));
+    expect(summary).toMatchObject({
+      product_version: "1.9.571",
+      task_id: "subsea-cable-splice-clearance-v0.1",
+      status: "FRESH_UNSEEN_TASK_BASELINED",
+      provider_calls: 0,
+      baseline: {
+        objective_score: 75,
+        objective_max: 85,
+        automated_gate_pass: false,
+        critical_gates: {
+          task_contract: true,
+          state_journey: true,
+          responsive: false,
+          accessibility: false,
+          design_grounding: true,
+          evidence_honesty: true,
+        },
+        document_widths: {
+          mobile: { scroll: 1075, client: 390 },
+          narrow_320: { scroll: 1075, client: 320 },
+          actual_200pct: { scroll: 2150, client: 640 },
+        },
+      },
+      locked_facts: {
+        cable_sections: 4,
+        optical_traces: 6,
+        splice_bays: 2,
+        target_only_pre_edit_carrier: "[data-bench-decision-carrier='target']",
+        protected_hook_mismatches: 0,
+      },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
