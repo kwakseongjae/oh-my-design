@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.491 visible atomic-fit exact pin
+- 1.9.490을 exact commit/tree/file hashes와 detached vendor identity로 등록했다.
+- provider 0. 다음은 another genuinely unseen task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.490 inventory + reserve repair
 - carrier padding을 fit reserve에 포함하고 atomic inventory를 visible non-empty/explicit one-line으로 좁혔다.
 - frozen UI 재생은 12 carrier/28 row, unresolved0, DELIVERY_READY다. 다음은 exact pin이다.

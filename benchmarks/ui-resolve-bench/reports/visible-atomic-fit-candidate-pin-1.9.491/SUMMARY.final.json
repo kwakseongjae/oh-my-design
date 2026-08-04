@@ -1,0 +1,11 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.491",
+  "experiment_id": "visible-atomic-fit-candidate-pin-1.9.491",
+  "status": "EXACT_CANDIDATE_PINNED",
+  "provider_calls": 0,
+  "promotion": false,
+  "candidate": {"id":"omd-visible-atomic-fit-candidate","vendor_dir":"omd-1.9.490","commit":"931e124c9d15c5e2c4e561db5a880775acf8031c","skill_tree":"c9ba15d7c4e1d200fc098417a9fb0cd9451e3c48"},
+  "source_sha256": {"skill":"b7b8632d12aadf3e0fbb552a7b849998a962cbe972d21968c8e0522964823c9e","browser_runner":"3d0caae4ba57c86dd6e69d473cbbc681ab2a805911a0b33a040d04bc08dd40aa","artifact_helper":"169efc3cf4a42dc35900d2bbca807d2ef7b36ed62c5e40dd0c333ceba8d19796"},
+  "next": "Lock another genuinely unseen task before exact control-versus-candidate transfer."
+}
