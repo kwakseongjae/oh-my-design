@@ -344,7 +344,7 @@ function validateAcceptanceDebtLedger(value, manifest, knownRows) {
   return value;
 }
 
-function validatePreEditFitPlan(value, rows, { allowPending = false } = {}) {
+function validatePreEditFitPlan(value, rows, carriers, { allowPending = false } = {}) {
   if (allowPending && value?.state === "pending") return { state: "pending" };
   if (
     value?.state !== "measured"
@@ -384,6 +384,43 @@ function validatePreEditFitPlan(value, rows, { allowPending = false } = {}) {
           - PLANNED_FIT_RESERVE_CSS_PX
         ) >= 0.01
       ) fail(`pre_edit_fit_plan row ${row.id} must bind intrinsic width to the ${PLANNED_FIT_RESERVE_CSS_PX}px planning margin`);
+    }
+  }
+  if (!Array.isArray(value.carriers) || value.carriers.length !== carriers.length) {
+    fail("pre_edit_fit_plan.carriers must cover every carrier group exactly once");
+  }
+  uniqueStrings(value.carriers.map((carrier) => carrier?.id), "pre-edit fit-plan carrier ids");
+  const carrierPlans = new Map(value.carriers.map((carrier) => [carrier.id, carrier]));
+  for (const carrier of carriers) {
+    const plan = carrierPlans.get(carrier.id);
+    if (!plan) fail(`pre_edit_fit_plan is missing carrier group ${carrier.id}`);
+    if (!Array.isArray(plan.measurements) || plan.measurements.length !== REQUIRED_MEASUREMENT_CONDITIONS.length) {
+      fail(`pre_edit_fit_plan carrier ${carrier.id} must cover every condition`);
+    }
+    for (const [index, condition] of REQUIRED_MEASUREMENT_CONDITIONS.entries()) {
+      const measurement = plan.measurements[index];
+      if (measurement?.id !== condition.id) {
+        fail(`pre_edit_fit_plan carrier ${carrier.id} measurement ${index} must be ${condition.id}`);
+      }
+      if (
+        !Number.isFinite(measurement.intrinsic_outer_width_css_px)
+        || measurement.intrinsic_outer_width_css_px <= 0
+        || !Number.isFinite(measurement.horizontal_chrome_css_px)
+        || measurement.horizontal_chrome_css_px < 0
+        || !Number.isFinite(measurement.inter_item_gap_css_px)
+        || measurement.inter_item_gap_css_px < 0
+        || !Number.isFinite(measurement.required_outer_width_css_px)
+        || Math.abs(
+          measurement.required_outer_width_css_px
+          - measurement.intrinsic_outer_width_css_px
+          - PLANNED_FIT_RESERVE_CSS_PX
+        ) >= 0.01
+        || !Number.isFinite(measurement.available_document_width_css_px)
+        || measurement.available_document_width_css_px <= 0
+        || measurement.requires_reflow !== (
+          measurement.required_outer_width_css_px > measurement.available_document_width_css_px
+        )
+      ) fail(`pre_edit_fit_plan carrier ${carrier.id} must bind aggregate outer width, chrome, gap, available width, and the ${PLANNED_FIT_RESERVE_CSS_PX}px planning margin`);
     }
   }
   return value;
@@ -472,6 +509,15 @@ export function lockArtifact(input, { allowPendingFitPlan = false } = {}) {
     if (carrier.binds_row_groups.some((id) => !knownRows.has(id))) fail(`carrier ${carrier.id} binds an unknown row group`);
     delete carrier.final;
   }
+  const carrierBindings = new Map(rowGroupIds.map((id) => [id, []]));
+  for (const carrier of artifact.carriers) {
+    for (const rowId of carrier.binds_row_groups) carrierBindings.get(rowId).push(carrier.id);
+  }
+  for (const [rowId, bindings] of carrierBindings) {
+    if (bindings.length !== 1) {
+      fail(`row group ${rowId} must bind to exactly one aggregate fit-plan carrier; received ${bindings.length}`);
+    }
+  }
   for (const row of artifact.row_groups) {
     if (typeof row.selector !== "string" || !row.selector) fail(`row group ${row.id} selector is required`);
     if (typeof row.role !== "string" || !row.role) fail(`row group ${row.id} role is required`);
@@ -501,6 +547,7 @@ export function lockArtifact(input, { allowPendingFitPlan = false } = {}) {
   artifact.pre_edit_fit_plan = validatePreEditFitPlan(
     artifact.pre_edit_fit_plan,
     artifact.row_groups,
+    artifact.carriers,
     { allowPending: allowPendingFitPlan },
   );
   for (const row of artifact.row_groups.filter((entry) => entry.decision === "comparison-scroll")) {
@@ -886,12 +933,26 @@ function staticEditGuardrails(artifact) {
     planned_fit_reserve_css_px: PLANNED_FIT_RESERVE_CSS_PX,
     measured_fit_reserve_css_px: REQUIRED_FIT_RESERVE_CSS_PX,
     pre_edit_fit_plan: artifact.pre_edit_fit_plan.state === "measured"
-      ? artifact.pre_edit_fit_plan.rows.map((row) => ({
-          id: row.id,
-          required_carrier_inner_width_css_px: Object.fromEntries(
-            row.measurements.map((measurement) => [measurement.id, measurement.required_carrier_inner_width_css_px]),
-          ),
-        }))
+      ? {
+          rows: artifact.pre_edit_fit_plan.rows.map((row) => ({
+            id: row.id,
+            required_carrier_inner_width_css_px: Object.fromEntries(
+              row.measurements.map((measurement) => [measurement.id, measurement.required_carrier_inner_width_css_px]),
+            ),
+          })),
+          carriers: artifact.pre_edit_fit_plan.carriers.map((carrier) => ({
+            id: carrier.id,
+            required_outer_width_css_px: Object.fromEntries(
+              carrier.measurements.map((measurement) => [measurement.id, measurement.required_outer_width_css_px]),
+            ),
+            available_document_width_css_px: Object.fromEntries(
+              carrier.measurements.map((measurement) => [measurement.id, measurement.available_document_width_css_px]),
+            ),
+            requires_reflow: Object.fromEntries(
+              carrier.measurements.map((measurement) => [measurement.id, measurement.requires_reflow]),
+            ),
+          })),
+        }
       : { state: artifact.pre_edit_fit_plan.state },
   };
 }

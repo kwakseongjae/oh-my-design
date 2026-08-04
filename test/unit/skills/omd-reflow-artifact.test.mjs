@@ -31,7 +31,7 @@ function hostState(browser_attempts, browser_proof) {
   return root;
 }
 
-function measuredFitPlan(rows) {
+function measuredFitPlan(rows, carriers) {
   return {
     state: "measured",
     attempts: 1,
@@ -52,6 +52,26 @@ function measuredFitPlan(rows) {
         intrinsic_text_width_css_px: 100 + rowIndex + conditionIndex,
         required_carrier_inner_width_css_px: 116 + rowIndex + conditionIndex,
       })),
+    })),
+    carriers: carriers.map((carrier, carrierIndex) => ({
+      id: carrier.id,
+      measurements: [
+        { id: "390", available: 390 },
+        { id: "320", available: 320 },
+        { id: "200pct", available: 160 },
+      ].map(({ id, available }, conditionIndex) => {
+        const intrinsic = 180 + carrierIndex + conditionIndex;
+        const required = intrinsic + 16;
+        return {
+          id,
+          intrinsic_outer_width_css_px: intrinsic,
+          horizontal_chrome_css_px: 24,
+          inter_item_gap_css_px: 8,
+          required_outer_width_css_px: required,
+          available_document_width_css_px: available,
+          requires_reflow: required > available,
+        };
+      }),
     })),
   };
 }
@@ -102,7 +122,7 @@ function draft() {
       },
     ],
     carriers: [
-      { id: "plan", selector: "[data-plan]", expected_count: 1, binds_row_groups: ["identifier", "status"] },
+      { id: "plan", selector: "[data-plan]", expected_count: 1, binds_row_groups: ["identifier"] },
       { id: "handoff", selector: "[data-handoff]", expected_count: 1, binds_row_groups: ["status"] },
     ],
     row_groups: [
@@ -116,7 +136,7 @@ function draft() {
       no_text_hack: true,
     },
   };
-  artifact.pre_edit_fit_plan = measuredFitPlan(artifact.row_groups);
+  artifact.pre_edit_fit_plan = measuredFitPlan(artifact.row_groups, artifact.carriers);
   return artifact;
 }
 
@@ -176,6 +196,11 @@ describe("compact reflow artifact helper", () => {
     expect(runner).toContain('FIT_PLAN_ORACLE = "intrinsic-nowrap-text-width"');
     expect(runner).toContain('mode = os.environ.get("OMD_REFLOW_MODE", "final")');
     expect(runner).toContain("browser_fit_plan_script");
+    expect(runner).toContain("intrinsicCarrierWidth");
+    expect(runner).toContain("intrinsic_outer_width_css_px");
+    expect(runner).toContain("required_outer_width_css_px");
+    expect(runner).toContain("available_document_width_css_px");
+    expect(runner).toContain("width: 'max-content'");
     expect(runner).toContain('"plan-close"');
     expect(runner).toContain('PRE_EDIT_SNAPSHOT_SOURCE = "deterministic-pre-edit-snapshot"');
     expect(runner).toContain("browser_typography_script");
@@ -271,9 +296,15 @@ describe("compact reflow artifact helper", () => {
       artifactPath,
     ], { cwd: root, encoding: "utf8" });
     const summary = JSON.parse(stdout);
-    expect(summary.static_edit_guardrails.pre_edit_fit_plan[0]).toMatchObject({
+    expect(summary.static_edit_guardrails.pre_edit_fit_plan.rows[0]).toMatchObject({
       id: "identifier",
       required_carrier_inner_width_css_px: { "390": 116, "320": 117, "200pct": 118 },
+    });
+    expect(summary.static_edit_guardrails.pre_edit_fit_plan.carriers[0]).toMatchObject({
+      id: "plan",
+      required_outer_width_css_px: { "390": 196, "320": 197, "200pct": 198 },
+      available_document_width_css_px: { "390": 390, "320": 320, "200pct": 160 },
+      requires_reflow: { "390": false, "320": false, "200pct": true },
     });
     expect(JSON.parse(readFileSync(artifactPath, "utf8")).pre_edit_fit_plan.state).toBe("measured");
   });
@@ -320,6 +351,24 @@ describe("compact reflow artifact helper", () => {
     const invalidArithmetic = draft();
     invalidArithmetic.pre_edit_fit_plan.rows[0].measurements[0].required_carrier_inner_width_css_px = 115;
     expect(() => lockArtifact(invalidArithmetic)).toThrow(/must bind intrinsic width to the 16px planning margin/);
+
+    const invalidCarrierArithmetic = draft();
+    invalidCarrierArithmetic.pre_edit_fit_plan.carriers[0].measurements[0].required_outer_width_css_px = 195;
+    expect(() => lockArtifact(invalidCarrierArithmetic)).toThrow(/must bind aggregate outer width/);
+
+    const invalidCarrierDecision = draft();
+    invalidCarrierDecision.pre_edit_fit_plan.carriers[1].measurements[2].requires_reflow = false;
+    expect(() => lockArtifact(invalidCarrierDecision)).toThrow(/must bind aggregate outer width/);
+  });
+
+  it("binds every row to exactly one aggregate fit-plan carrier", () => {
+    const missing = draft();
+    missing.carriers[0].binds_row_groups = ["status"];
+    expect(() => lockArtifact(missing)).toThrow(/row group identifier must bind to exactly one aggregate fit-plan carrier; received 0/);
+
+    const duplicated = draft();
+    duplicated.carriers[0].binds_row_groups.push("status");
+    expect(() => lockArtifact(duplicated)).toThrow(/row group status must bind to exactly one aggregate fit-plan carrier; received 2/);
   });
 
   it("locks a declarative static closure manifest before product editing", () => {
@@ -555,6 +604,9 @@ describe("compact reflow artifact helper", () => {
       expected_count: 1,
       binds_row_groups: ["identifier"],
     });
+    invalid.carriers[0].binds_row_groups = [];
+    invalid.carriers = invalid.carriers.filter((carrier) => carrier.binds_row_groups.length > 0);
+    invalid.pre_edit_fit_plan = measuredFitPlan(invalid.row_groups, invalid.carriers);
     expect(lockArtifact(invalid).carriers.at(-1)).toMatchObject({
       id: "identifier-comparison",
       binds_row_groups: ["identifier"],
@@ -620,7 +672,7 @@ describe("compact reflow artifact helper", () => {
     input.carriers = [{ id: "form", selector: '[data-bench="event-log-form"]', expected_count: 1, binds_row_groups: ["form-save"] }];
     input.acceptance_debt_ledger[0].selector = '[data-bench="event-log-form"] button';
     input.acceptance_debt_ledger[0].bound_row_group_ids = ["form-save"];
-    input.pre_edit_fit_plan = measuredFitPlan(input.row_groups);
+    input.pre_edit_fit_plan = measuredFitPlan(input.row_groups, input.carriers);
 
     expect(() => lockArtifact(input)).toThrow(/selector is unresolved in the pre-edit snapshot.*class:event-log-form/);
     input.row_groups[0].selector = '[data-bench="event-log-form"] button';
@@ -644,7 +696,7 @@ describe("compact reflow artifact helper", () => {
         binds_row_groups: ["identifier"],
       }],
     };
-    input.pre_edit_fit_plan = measuredFitPlan(input.row_groups);
+    input.pre_edit_fit_plan = measuredFitPlan(input.row_groups, input.carriers);
     const locked = lockArtifact(input);
     locked.carriers[0].final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
     locked.row_groups[0].final = {

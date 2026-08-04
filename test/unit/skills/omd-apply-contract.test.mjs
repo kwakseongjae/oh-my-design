@@ -120,6 +120,11 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("OMD_REFLOW_MODE=plan");
     expect(skill).toContain("pre_edit_fit_plan: { state: pending }");
     expect(skill).toContain("intrinsic + 16px");
+    expect(skill).toContain("가장 작은 stable existing layout carrier");
+    expect(skill).toContain("각 row group은 정확히 한 aggregate carrier에만 결박");
+    expect(skill).toContain("aggregate carrier outer width");
+    expect(skill).toContain("required_outer_width_css_px = intrinsic_outer + 16px");
+    expect(skill).toContain("row의 16px budget만 green이어도 aggregate carrier가 available width를 넘으면 계획은 red");
     expect(skill).toContain("reflow-artifact.mjs finalize");
     expect(skill).toContain("finalize-unresolved");
     expect(skill).toContain("등록 row/carrier 하나라도 unresolved면 resolved finalize를 거부");

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.532 observatory transfer freeze
+- 갱신: 2026-08-04 · 1.9.533 aggregate carrier fit-plan repair
 
 ## 지금 (현재 위치)
+
+- 1.9.533은 row text-only pre-edit plan을 exact-one aggregate carrier plan으로 확장했다. carrier max-content clone이 sibling copy·control·padding·border·gap·margin과 available document width를 세 조건에서 잠근다.
+- live named-browser smoke는 row 36.5547+16px와 carrier 462.9297+16px를 분리해 390/320/actual200 모두 `requires_reflow`로 정확히 판정했다. focused43+parity1+installer1+lint+AST green, full562 pass/1 skip/기존3 red, provider0다.
+- observatory frozen matrix는 재개하지 않는다. 다음은 exact immutable pin 뒤 genuinely unseen task lock이다.
 
 - 1.9.532 r2 candidate는 81/85 proof fail: 385.022s, 861,995 tokens다. 320/actual200 overflow29/58px+clipped1/1, artifact open이다.
 - row text 124.5234+16px plan은 green이었지만 button padding·adjacent copy·gap·shell padding의 aggregate carrier 350px를 305px consumer에 맞추지 못했다. terminal 뒤 edit2/static2는 재폐쇄 불가다.
@@ -2627,9 +2631,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. provider/candidate에 노출되지 않은 fresh unseen task를 lock한다.
-2. exact prior control vs measured-fit-plan candidate Reliability@3를 사전등록한다.
-3. detached vendors와 untouched cells를 준비한 뒤 runtime preflight로 간다.
+1. 1.9.533 repair를 exact commit/tree/hash로 immutable pin한다.
+2. provider/candidate에 노출되지 않은 fresh unseen task를 lock한다.
+3. exact prior control vs aggregate-carrier candidate Reliability@3를 사전등록한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

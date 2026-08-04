@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.533 aggregate carrier fit-plan repair
+- row exact-one carrier binding과 max-content aggregate plan을 추가해 sibling/control/chrome/gap 누락을 차단했다.
+- live smoke는 row52.55px 대 carrier478.93px를 분리해 세 조건 reflow를 선판정; focused45 green, provider0다.
+
 ## 2026-08-04 (Codex) · 1.9.532 observatory transfer freeze
 - r2 candidate 81/85, 385.022s/861,995 tokens; 320/200% overflow29/58+clipped1/1, proof red다.
 - row plan이 aggregate carrier를 놓쳐 max2/3; 잔여3셀 frozen, TTT63,373,931+다.

@@ -134,10 +134,36 @@ def browser_fit_plan_script(measurement_payload, zoom):
       fontFeatureSettings: style.fontFeatureSettings, fontVariationSettings: style.fontVariationSettings,
       letterSpacing: style.letterSpacing, textTransform: style.textTransform,
     }});
-    document.body.appendChild(probe);
+    (element.parentElement || document.body).appendChild(probe);
     const width = probe.getBoundingClientRect().width / zoom;
     probe.remove();
     return width;
+  }};
+  const intrinsicCarrierWidth = (element) => {{
+    const sourceStyle = getComputedStyle(element);
+    const number = (value) => Number.isFinite(parseFloat(value)) ? parseFloat(value) : 0;
+    const horizontalMargin = number(sourceStyle.marginLeft) + number(sourceStyle.marginRight);
+    const probe = element.cloneNode(true);
+    probe.querySelectorAll('[id]').forEach((item) => item.removeAttribute('id'));
+    probe.removeAttribute('id');
+    probe.setAttribute('aria-hidden', 'true');
+    Object.assign(probe.style, {{
+      position: 'fixed', left: '-100000px', top: '0', visibility: 'hidden',
+      width: 'max-content', maxWidth: 'none', minWidth: '0',
+      margin: '0', overflow: 'visible', flex: 'none',
+    }});
+    (element.parentElement || document.body).appendChild(probe);
+    const style = getComputedStyle(probe);
+    const horizontalChrome = number(style.paddingLeft) + number(style.paddingRight) +
+      number(style.borderLeftWidth) + number(style.borderRightWidth);
+    const gap = Math.max(number(style.columnGap), number(style.gap));
+    const outerWidth = probe.getBoundingClientRect().width / zoom + horizontalMargin;
+    probe.remove();
+    return {{
+      intrinsic_outer_width_css_px: outerWidth,
+      horizontal_chrome_css_px: horizontalChrome,
+      inter_item_gap_css_px: gap,
+    }};
   }};
   const rows = Object.fromEntries(packet.rows.map((row) => {{
     const elements = [...document.querySelectorAll(row.selector)].filter(visible);
@@ -147,6 +173,19 @@ def browser_fit_plan_script(measurement_payload, zoom):
       intrinsic_text_width_css_px: widths.length ? Math.max(...widths) : null,
     }}];
   }}));
+  const carriers = Object.fromEntries(packet.carriers.map((carrier) => {{
+    const elements = [...document.querySelectorAll(carrier.selector)].filter(visible);
+    const measurements = elements.map(intrinsicCarrierWidth);
+    const maximum = (key) => measurements.length
+      ? Math.max(...measurements.map((measurement) => measurement[key]))
+      : null;
+    return [carrier.id, {{
+      count: elements.length,
+      intrinsic_outer_width_css_px: maximum('intrinsic_outer_width_css_px'),
+      horizontal_chrome_css_px: maximum('horizontal_chrome_css_px'),
+      inter_item_gap_css_px: maximum('inter_item_gap_css_px'),
+    }}];
+  }}));
   return JSON.stringify({{
     observed_document_zoom: parseFloat(getComputedStyle(document.documentElement).zoom || '1'),
     document_scroll_width: document.documentElement.scrollWidth,
@@ -154,6 +193,7 @@ def browser_fit_plan_script(measurement_payload, zoom):
     body_scroll_width: document.body.scrollWidth,
     body_client_width: document.body.clientWidth,
     rows,
+    carriers,
   }});
 }})()
 """
@@ -360,6 +400,7 @@ def failed_fit_plan(error):
         "oracle": FIT_PLAN_ORACLE,
         "conditions": [],
         "rows": [],
+        "carriers": [],
         "error": str(error),
     }
     artifact_path.write_text(json.dumps(artifact, indent=2) + "\n")
@@ -387,6 +428,10 @@ if mode == "plan":
                 result = observed["rows"][row["id"]]
                 if result["count"] != row["expected_count"] or not result["intrinsic_text_width_css_px"]:
                     raise RuntimeError(f"pre-edit fit-plan row {row['id']} did not resolve its locked instances")
+            for carrier in artifact["carriers"]:
+                result = observed["carriers"][carrier["id"]]
+                if result["count"] != carrier["expected_count"] or not result["intrinsic_outer_width_css_px"]:
+                    raise RuntimeError(f"pre-edit fit-plan carrier {carrier['id']} did not resolve its locked instances")
             plan_observations.append({**condition, **observed})
     except Exception as error:
         raise SystemExit(failed_fit_plan(error))
@@ -429,6 +474,39 @@ if mode == "plan":
                 ],
             }
             for row in artifact["row_groups"]
+        ],
+        "carriers": [
+            {
+                "id": carrier["id"],
+                "measurements": [
+                    {
+                        "id": observation["id"],
+                        "intrinsic_outer_width_css_px": round(
+                            observation["carriers"][carrier["id"]]["intrinsic_outer_width_css_px"], 4
+                        ),
+                        "horizontal_chrome_css_px": round(
+                            observation["carriers"][carrier["id"]]["horizontal_chrome_css_px"], 4
+                        ),
+                        "inter_item_gap_css_px": round(
+                            observation["carriers"][carrier["id"]]["inter_item_gap_css_px"], 4
+                        ),
+                        "required_outer_width_css_px": round(
+                            observation["carriers"][carrier["id"]]["intrinsic_outer_width_css_px"]
+                            + PLANNED_FIT_RESERVE_CSS_PX, 4
+                        ),
+                        "available_document_width_css_px": round(
+                            observation["document_client_width"] / observation["observed_document_zoom"], 4
+                        ),
+                        "requires_reflow": (
+                            observation["carriers"][carrier["id"]]["intrinsic_outer_width_css_px"]
+                            + PLANNED_FIT_RESERVE_CSS_PX
+                            > observation["document_client_width"] / observation["observed_document_zoom"]
+                        ),
+                    }
+                    for observation in plan_observations
+                ],
+            }
+            for carrier in artifact["carriers"]
         ],
     }
     artifact_path.write_text(json.dumps(artifact, indent=2) + "\n")

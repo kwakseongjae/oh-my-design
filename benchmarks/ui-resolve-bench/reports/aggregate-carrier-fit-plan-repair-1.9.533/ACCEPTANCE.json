@@ -1,0 +1,104 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.533",
+  "change": "aggregate-carrier-fit-plan-repair",
+  "status": "provider-free-candidate-repair-accepted",
+  "source_incident": {
+    "report": "benchmarks/ui-resolve-bench/reports/observatory-measured-fit-plan-luna-1.9.528/SUMMARY.final.json",
+    "candidate_trial": "luna-observatory-r2-candidate",
+    "objective_score": "81/85",
+    "row_plan": "124.5234px intrinsic + 16px",
+    "missed_layout_costs": [
+      "button padding",
+      "adjacent optional copy",
+      "flex gap",
+      "shell padding"
+    ],
+    "observed_overflow_css_px": {
+      "320": 29,
+      "200pct": 58
+    }
+  },
+  "contract": {
+    "row_binding": "Every registered row group binds to exactly one aggregate carrier group.",
+    "carrier_boundary": "The carrier is the smallest stable existing layout scope that includes every sibling, control, gap, border, and padding competing for the row's width.",
+    "pre_edit_measurement": "The named consumer browser measures every visible carrier clone at max-content under 390, 320, and actual 200% conditions before the product edit.",
+    "carrier_fields": [
+      "intrinsic_outer_width_css_px",
+      "horizontal_chrome_css_px",
+      "inter_item_gap_css_px",
+      "required_outer_width_css_px",
+      "available_document_width_css_px",
+      "requires_reflow"
+    ],
+    "planning_margin_css_px": 16,
+    "fail_closed": "A green row text budget cannot close planning when its aggregate carrier requires reflow."
+  },
+  "provider_free_browser_smoke": {
+    "connection_name": "bench19366",
+    "attached_existing": true,
+    "launched_browser": false,
+    "row_intrinsic_text_width_css_px": 36.5547,
+    "row_required_inner_width_css_px": 52.5547,
+    "carrier_intrinsic_outer_width_css_px": {
+      "390": 462.9297,
+      "320": 462.9297,
+      "200pct": 462.9375
+    },
+    "carrier_required_outer_width_css_px": {
+      "390": 478.9297,
+      "320": 478.9297,
+      "200pct": 478.9375
+    },
+    "available_document_width_css_px": {
+      "390": 390,
+      "320": 320,
+      "200pct": 320
+    },
+    "requires_reflow": {
+      "390": true,
+      "320": true,
+      "200pct": true
+    },
+    "horizontal_chrome_css_px": 34,
+    "inter_item_gap_css_px": 12
+  },
+  "validation": {
+    "focused_tests": {
+      "passed": 43,
+      "failed": 0
+    },
+    "experimental_parity": {
+      "passed": 1,
+      "failed": 0
+    },
+    "installer_smoke": {
+      "passed": 1,
+      "failed": 0,
+      "channels": 3
+    },
+    "full_suite": {
+      "passed": 562,
+      "failed": 3,
+      "skipped": 1
+    },
+    "known_environment_failures": [
+      "/tmp/omd-ui-skills-bench/vendors/taste-skill is not a Git repository",
+      "/tmp/omd-ui-skills-bench/vendors/ui-ux-pro-max is not a Git repository"
+    ],
+    "known_unrelated_test_failure": "preregistered timeout fixture expects validity=valid but runtime currently classifies it invalid-attribution",
+    "python_ast": "pass",
+    "lint": "pass",
+    "diff_check": "pass"
+  },
+  "sha256": {
+    "canonical_skill": "d35bf40401a56d7312653c63c2c37636b9d55cb24aedcd8f32a5d5b055267cb2",
+    "reflow_helper": "def49405314c22a186c6d9baddd4ebb9b241dd898c1bd28af5632993d4a56a7e",
+    "browser_runner": "4649a04a84f616a7943a31e9d7d14117b534c60a1810d950987f6632d676ce94",
+    "focused_test": "708d8f99947ae5434620710b17cecfea0f5e23a82ec5bd906fb2376a29246a8c"
+  },
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "same_task_retry_allowed": false,
+  "next": "Commit and exact-pin this provider-free repair, then lock a genuinely unseen task before preregistering the next Reliability@3 transfer. Frozen observatory cells remain frozen."
+}

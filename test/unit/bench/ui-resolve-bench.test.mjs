@@ -2979,6 +2979,43 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("repairs pre-edit planning with exactly-one aggregate carrier coverage", () => {
+    const acceptance = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/aggregate-carrier-fit-plan-repair-1.9.533/ACCEPTANCE.json",
+    ), "utf8"));
+    expect(acceptance).toMatchObject({
+      product_version: "1.9.533",
+      status: "provider-free-candidate-repair-accepted",
+      contract: {
+        planning_margin_css_px: 16,
+        fail_closed: "A green row text budget cannot close planning when its aggregate carrier requires reflow.",
+      },
+      provider_free_browser_smoke: {
+        attached_existing: true,
+        launched_browser: false,
+        row_intrinsic_text_width_css_px: 36.5547,
+        carrier_intrinsic_outer_width_css_px: {
+          "390": 462.9297,
+          "320": 462.9297,
+          "200pct": 462.9375,
+        },
+        requires_reflow: { "390": true, "320": true, "200pct": true },
+      },
+      provider_calls: 0,
+      quality_promotion: false,
+      same_task_retry_allowed: false,
+    });
+    expect(acceptance.contract.carrier_fields).toEqual([
+      "intrinsic_outer_width_css_px",
+      "horizontal_chrome_css_px",
+      "inter_item_gap_css_px",
+      "required_outer_width_css_px",
+      "available_document_width_css_px",
+      "requires_reflow",
+    ]);
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);
