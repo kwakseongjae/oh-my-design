@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.568 organ custody matrix frozen
+- r1 candidate도 UI79/85/proof fail; pre-edit에 없는 target carrier selector가 plan에서 0개였다.
+- 3/3 최대2로 남은4셀 동결, TTT80,707,017+; 다음 provider-free snapshot selector gate다.
+
 ## 2026-08-04 (Codex) · 1.9.567 organ custody r1 control
 - valid complete UI79/85 · 523,045ms · 1,900,170 tokens; responsive/proof closure 실패를 no-retry 동결했다.
 - TTT80,012,634+; 다음 fixed pacing 뒤 untouched r1 candidate다.

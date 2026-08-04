@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `e4010e80` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.567 organ custody r1 control
+- 기준 커밋: `a86f7328` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.568 organ custody matrix frozen
 
 ## 지금 (현재 위치)
+
+- 1.9.568 r1 candidate는 valid complete, UI79/85, wall303,228ms, provider694,383 tokens지만 proof fail이다. self-dispatch는 호출되지 않았고 pre-edit에 없는 `.decision-target-carrier`가 plan에서 0개로 resolve됐다.
+- candidate 첫 trial 실패로 3/3 UI/proof/self-dispatch gate의 최대 도달치는 2/3이다. 남은 4셀은 실행하지 않고 matrix를 동결했다. paired 효율비는 causal 비교 대상이 아니다.
+- 누적 TTT는 80,707,017+ / unavailable6이다. 다음은 provider-free snapshot-time pre-edit carrier selector resolvability gate 구현·pin 후 fresh unseen task replacement다.
 
 - 1.9.567 r1 control은 valid complete, UI79/85, wall523,045ms, provider1,900,170 tokens다. contract/state/a11y/design/evidence는 통과했고 responsive는 실패했다.
 - proof trace는 analyzable/one edit/one static/one browser/no recovery였지만 plain-Python runner에서 helper 부재로 plan measurement가 열려 static/browser closure가 실패했다. preregistered control failure이며 retry하지 않는다.

@@ -3564,6 +3564,43 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("freezes the organ custody matrix when 3-of-3 promotion becomes unreachable", () => {
+    const summary = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/organ-custody-runner-self-dispatch-luna-1.9.565/SUMMARY.final.json",
+    ), "utf8"));
+    expect(summary).toMatchObject({
+      product_version: "1.9.568",
+      status: "FROZEN_PROMOTION_UNREACHABLE",
+      provider_calls: 2,
+      completed_cells: 2,
+      frozen_unstarted_cells: [
+        "luna-organ-r2-candidate",
+        "luna-organ-r2-control",
+        "luna-organ-r3-control",
+        "luna-organ-r3-candidate",
+      ],
+      promotion_reachability: {
+        required_candidate_ui_resolved_trials: 3,
+        observed_candidate_ui_resolved_trials: 0,
+        remaining_candidate_trials: 2,
+        maximum_reachable_per_gate: 2,
+        promotion_reachable: false,
+      },
+      causal_conclusion: {
+        runner_self_dispatch_transfer_proven: false,
+        paired_efficiency_eligible: false,
+      },
+      root_cause: {
+        class: "pre-edit-carrier-registration-not-statically-resolved",
+      },
+      tokens_to_target: {
+        cumulative_observed_provider_tokens_minimum: 80707017,
+        goal_status: "right-censored-open",
+      },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
