@@ -3,10 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `4ac756df` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.626 rail-signal unseen task baseline
+- 기준 커밋: `e41f7daf` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.627 rail-signal task pin
 
 ## 지금 (현재 위치)
+
+- 1.9.627은 rail-signal task commit `e41f7daf...`, git task tree `02f724df...`, portable tree `474d984e...`, baseline score `c3bf6115...`를 exact pin했다.
+- model/control/candidate exposure0이며 이후 task mutation은 금지다. 다음은 exact historical content-box control vs plan-self-bootstrap candidate Luna/high2×3 preregistration이다.
 
 - 1.9.626은 model-unseen `rail-signal-speed-restriction-release-v0.1`을 provider 노출 전에 생성·평가했다. task tree `474d984e...`, score `c3bf6115...`, exposure0이다.
 - raw baseline75/85: contract/state/design/evidence green, responsive/a11y red다. widths1440/1115/1115/2230, target fragments2, short wraps2/2/2, contrast2.79다.
@@ -2995,9 +2998,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. rail-signal task commit/tree와 deterministic baseline hash를 exact pin한다.
-2. exact historical content-box control 대 1.9.624 candidate의 replacement Luna/high matrix를 provider0 사전등록한다.
-3. executable matrix와 detached vendors/six untouched cells를 준비한다.
+1. exact historical content-box control 대 1.9.624 candidate의 replacement Luna/high matrix를 provider0 사전등록한다.
+2. executable matrix를 잠그고 exact detached vendors와 six untouched cells를 준비한다.
+3. runtime preflight 후 no-retry Reliability@3 execution을 시작한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

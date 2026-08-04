@@ -5058,6 +5058,34 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(result.unknown_boundary).toHaveLength(8);
   });
 
+  it("pins the rail-signal task and baseline before model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/rail-signal-task-pin-1.9.627/TASK-PIN.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.627",
+      status: "TASK_PINNED_BEFORE_MODEL_EXPOSURE",
+      provider_calls: 0,
+      model_exposures: 0,
+      task: {
+        id: "rail-signal-speed-restriction-release-v0.1",
+        source_commit: "e41f7daf89dde48e5aabd35af0c2961ec5a1eea8",
+        source_tree: "4370b3608386c5f0565a35ef9929ce8ed343e314",
+        git_task_tree: "02f724df21e9da668ed8aea0014dc7a252a07219",
+        portable_task_tree_sha256: "474d984e11a7cc3d2496e63399f61ff12b75d45a136c3ddb80cd01ebf60d15e5",
+        baseline_summary_sha256: "331a2a2b329c9018d4a40671c87d8311e2ee964a5b675c1ab832aa8c1b1185cf",
+        baseline_score_sha256: "c3bf6115094ca92178b448c882ccca85f53ba1d158e947dd4558d06ac90e5b1f",
+      },
+      immutability: {
+        prompt_mutation_allowed: false,
+        task_contract_mutation_allowed: false,
+        starter_mutation_allowed: false,
+        baseline_mutation_allowed: false,
+      },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

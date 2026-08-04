@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.627 rail-signal task pin
+- task commit e41f7daf/git tree02f724df/portable474d984e/score c3bf6115를 exact pin했다.
+- model/control/candidate exposure0, task mutation 금지다.
+- 다음은 exact control vs plan-self-bootstrap candidate Luna/high2×3 preregistration이다.
+
 ## 2026-08-05 (Codex) · 1.9.626 rail-signal unseen task baseline
 - fresh rail-signal task raw75/85, widths1440/1115/1115/2230, contrast2.79, exposure0이다.
 - task tree474d984e/score c3bf6115; browser-harness attach는 infrastructure red라 시각 claim0이다.
