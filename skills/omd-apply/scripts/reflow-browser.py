@@ -127,11 +127,11 @@ def browser_measurement_script(measurement_payload, zoom):
       .sort((a, b) => a.getBoundingClientRect().width - b.getBoundingClientRect().width)[0] ?? element;
     const carrierStyle = getComputedStyle(carrier);
     const carrierRect = carrier.getBoundingClientRect();
-    const contentRight = carrierRect.right - parseFloat(carrierStyle.paddingRight) * zoom;
+    const fitRight = carrierRect.right - parseFloat(carrierStyle.borderRightWidth) * zoom;
     const lineRight = Math.max(rect.left, ...[...lines.values()].map((line) => line.right));
     return {{
       line_count: lines.size,
-      inline_reserve_css_px: (contentRight - lineRight) / zoom,
+      inline_reserve_css_px: (fitRight - lineRight) / zoom,
       font_size_px: parseFloat(style.fontSize),
       line_height_px: parseFloat(style.lineHeight),
       font_weight: style.fontWeight,

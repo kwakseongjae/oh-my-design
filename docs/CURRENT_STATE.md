@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `51456ecf` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.489 water-treatment transfer stopped
+- 기준 커밋: `0654e182` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.490 visible atomic inventory + fit reserve repair
 
 ## 지금 (현재 위치)
+
+- 1.9.490은 fit reserve를 carrier inner border까지 측정해 intentional padding을 포함하고 border는 제외한다.
+- atomic inventory는 측정 시작 state의 visible non-empty state와 explicit one-line + 48자 이하 evidence만 허용한다.
+- frozen water replay에서 operator reserve 1→16px, unresolved 3→2; repaired inventory replay는 12 carriers/28 rows, 세 조건, unresolved0, DELIVERY_READY다.
+- lint, focused 72/72, experimental mirror 1/1, diff green, provider 0이다. 다음은 exact immutable pin이다.
 
 - 1.9.489 r1 candidate는 valid 85/85 UI-resolved: 393.400s, 609,088 tokens, control 대비 wall 1.4435×/token 1.0358×다.
 - existing attach true/no-launch/browser1/390·320·actual200 measured/static1/recovery0는 모두 green이며 socket repair는 실전 검증됐다.

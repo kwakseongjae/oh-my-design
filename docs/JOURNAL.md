@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.490 inventory + reserve repair
+- carrier padding을 fit reserve에 포함하고 atomic inventory를 visible non-empty/explicit one-line으로 좁혔다.
+- frozen UI 재생은 12 carrier/28 row, unresolved0, DELIVERY_READY다. 다음은 exact pin이다.
+
 ## 2026-08-04 (Codex) · 1.9.489 water transfer stopped
 - candidate는 85/85·exact attach/세 조건 실측이나 reserve/inventory 경계 3행이 unresolved라 proof fail이다.
 - 4셀 frozen. 다음은 provider-free carrier padding reserve + visible one-line inventory repair다.

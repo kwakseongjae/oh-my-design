@@ -131,7 +131,10 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("decision: full-row|stack|relocate|comparison-scroll|keep|unresolved");
     expect(skill).toContain("passive_text_scroll_container: false");
     expect(skill).toContain("1. **INVENTORY.**");
-    expect(skill).toContain("render function/template/state map의 가장 긴 실제 값");
+    expect(skill).toContain("측정 시작 state에서 non-empty로 보이는");
+    expect(skill).toContain("rendered text가 48자 이하이고 제품 계약이 명시적으로 one-line을 요구");
+    expect(skill).toContain("현재 비어 있거나 hidden인 status는 row가 아니라 carrier 안의 보존 콘텐츠");
+    expect(skill).toContain("측정 시작 state에서 실제 렌더되는 값 중 가장 긴 값");
     expect(skill).toContain("ordered `atomic_parts`");
     expect(skill).toContain("`line_contract: parent-one-line`");
     expect(skill).toContain("character-range-line-tops");

@@ -127,6 +127,8 @@ describe("compact reflow artifact helper", () => {
     expect(runner).not.toContain("if not connection_name or not cdp_url");
     expect(runner).toContain('"Emulation.setDeviceMetricsOverride"');
     expect(runner).toContain('ORACLE = "character-range-line-tops"');
+    expect(runner).toContain("carrierStyle.borderRightWidth");
+    expect(runner).not.toContain("carrierStyle.paddingRight");
     expect(runner).toContain('finalize_command = "finalize" if all_pass else "finalize-measured-unresolved"');
     expect(runner).toContain('["node", str(helper_path), finalize_command, str(artifact_path)]');
     expect(runner).not.toMatch(/chromium\.launch|launch_persistent_context|connect_over_cdp/u);
