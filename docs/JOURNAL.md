@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.610 Luna Max one-prompt plan advance
+- codex-cli0.144.1/binary134063e1을 pin하고 Luna/max를 unverified candidate로 명시했다.
+- isolated preflight+no downgrade+stateful task+intervention ledger+blinded gallery를 fail-closed 계약으로 추가했다.
+- provider0; current transfer matrix checkpoint 뒤 acceptance preflight 1회가 다음 외부 단계다.
+
 ## 2026-08-05 (Codex) · 1.9.609 museum desktop-context prereg
 - exact5eaa26c9 control vs e8a6f083 candidate, Luna/high2×3을 provider0 고정했다.
 - delta는 desktop final proof+missing fail-close+nested-carrier rejection, attempt46다.

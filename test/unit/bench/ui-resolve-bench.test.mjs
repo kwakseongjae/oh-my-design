@@ -4482,6 +4482,33 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("advances the Luna Max one-prompt plan without making a model claim", () => {
+    const plan = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/plans/luna-max-one-prompt-v0.1.json",
+    ), "utf8"));
+    const report = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/luna-max-one-prompt-plan-1.9.610/PLAN-ADVANCE.json",
+    ), "utf8"));
+    expect(plan).toMatchObject({
+      status: "RUNTIME_PINNED_MODEL_PREFLIGHT_OPEN",
+      provider_calls: 0,
+      model_contract: { exact_model_selector: null, exact_model_selector_candidate: "gpt-5.6-luna", runtime_version: "codex-cli 0.144.1", native_effort: null, native_effort_candidate: "max" },
+      provider_preflight: { status: "not_run", counts_as_benchmark_trial: false, counts_as_provider_spend: true },
+      task_contract: { showcase_quality_gate: { decorative_landing_only_forbidden: true, visual_solution_prescription_in_prompt_forbidden: true } },
+      intervention_ledger: { manual_product_edit_invalidates_primary_cell: true, clarification_invalidates_one_prompt_label: true },
+      gallery_contract: { labels_blinded_until_vote_export: true, median_and_range_summary: true },
+    });
+    expect(report).toMatchObject({
+      product_version: "1.9.610",
+      status: "PLAN_ADVANCED_PROVIDER_ZERO",
+      provider_calls: 0,
+      unverified_candidates: { model_selector: "gpt-5.6-luna", native_effort: "max", public_attribution_allowed: false },
+      new_fail_closed_gates: { provider_preflight_before_any_arm: true, silent_model_or_effort_downgrade_forbidden: true },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

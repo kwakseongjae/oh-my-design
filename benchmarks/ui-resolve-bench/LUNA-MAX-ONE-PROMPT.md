@@ -37,6 +37,8 @@ No provider cell may start until all unresolved fields in `plans/luna-max-one-pr
 5. Preview runs use three independent trials per arm. A Verified public comparison uses ten per task and the complete hidden-suite denominator.
 6. Preserve every success, failure, timeout, raw response, product diff, screenshot, manifest, and evaluator result.
 
+The current runtime pin is `codex-cli 0.144.1`, binary SHA-256 `134063e1…`. `gpt-5.6-luna` and native effort `max` are candidates, not yet public attribution. One isolated read-only provider preflight must prove that this exact runtime accepts both values and exposes unambiguous model and usage telemetry. That preflight is provider spend but not a benchmark trial. Failure stops the shootout; it never silently falls back to `high` or another model alias.
+
 ## Prompt design
 
 The shootout prompt should be short enough to resemble an X/Threads request but precise enough to evaluate. It names the product audience, primary task, required states, and non-negotiable behavior; it does not prescribe a visual solution or name a competitor.
@@ -44,6 +46,8 @@ The shootout prompt should be short enough to resemble an X/Threads request but 
 The public prompt is frozen before any arm runs. A separate hidden oracle defines protected behavior, responsive conditions, accessibility, known facts, unresolved facts, and any screenshot-fidelity target. The oracle is never included in the model-readable workspace.
 
 A useful first prompt family is a stateful product surface rather than a decorative hero: one primary journey, a compact data relationship, empty/error/success states, and a narrow-screen decision boundary. This still produces an inspectable visual result while exposing whether a skill preserves functionality and hierarchy.
+
+The public task selection gate also requires inspectable desktop and mobile results, at least three states, a real completion path, and one meaningful relationship that can break under reflow. A decorative landing page alone is ineligible even if it looks more shareable. The prompt stays solution-agnostic; the hidden oracle, not the prompt, owns exact behavior and accessibility requirements.
 
 ## What is scored
 
@@ -65,6 +69,12 @@ The shareable claim format is:
 > Same frozen prompt and starter. Exact Luna Max selector `[model]`, native effort `[effort]`, three independent runs per portable skill, no manual edits and no retry. `[system]` reached UI-Resolved in `[x/3]` runs; median `[time]`, `[tokens]` provider-reported tokens. All outputs and failures are public.
 
 “Built in N hours / M tokens” may describe one run only when it is explicitly labelled as that run. The comparison headline uses the median and shows the range. Long-term OmD R&D Tokens-to-Target is reported separately and must never be presented as the cost of generating the showcased UI.
+
+Every run also carries an intervention ledger. Authentication-only steps do not count as product intervention, infrastructure recovery is shown separately, a manual product edit invalidates the primary cell, and any task clarification invalidates the “one prompt” label for that cell.
+
+## Gallery package
+
+Each cell ships desktop, mobile, and required-state captures; the frozen prompt and starter; raw response, product diff, evaluator result, failure log, wall time, and token telemetry. Labels remain blinded until the vote export is sealed. The public summary shows the denominator and median with range, while each individual result keeps its own time/token badge. This makes a strong result shareable without hiding unstable or expensive runs.
 
 ## Publication ladder
 
