@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.542 first-edit checklist exact pin
+- 1.9.541을 exact commit/tree/artifact hashes와 `omd-1.9.541` vendor id로 고정했다.
+- provider0/promotion false; 다음은 genuinely unseen task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.541 first-edit checklist repair
 - structured CSS assertion이 safe zero reset과 positive lock을 구분하고 plan-close checklist가 첫 edit 전체 계약을 출력한다.
 - focused44/44+lint green, full567 pass/1 skip/기존4 red, provider0; 다음 exact pin이다.

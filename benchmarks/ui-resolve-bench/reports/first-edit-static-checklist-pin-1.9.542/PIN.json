@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.542",
+  "pin_id": "first-edit-static-checklist-1.9.542",
+  "source_commit": "28f9620035fc1adae32b17965a7f51312c3ca2f5",
+  "skill_tree": "d80cfd623d1967457987eef7c7bbd73f1b007a73",
+  "status": "PINNED",
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "competitor": {
+    "id": "omd-first-edit-static-checklist-candidate",
+    "vendor_directory": "omd-1.9.541",
+    "exact_source_required": true
+  },
+  "artifacts": {
+    "skills/omd-apply/SKILL.md": "de55c712a0673ecdf6ef66f990a699903e5b357e9c6859263b675161ef25dcc0",
+    "skills/omd-apply/scripts/reflow-artifact.mjs": "a807e33e79e150b2c286781325010d05d224d01213b74018f9f24f0015589ad6",
+    "skills/omd-apply/scripts/reflow-browser.py": "4649a04a84f616a7943a31e9d7d14117b534c60a1810d950987f6632d676ce94",
+    "benchmarks/ui-resolve-bench/experimental-skills/omd-decision-context-closure/SKILL.md": "c0363f52bd7f998b810c1697ebc5883b0f21e48bc364ae60bc030251e4c798ca",
+    "test/unit/skills/omd-reflow-artifact.test.mjs": "053e0c29158c7fc1f9ec94e954ff0309ce7ae8138a85075a0049d5201f29f391",
+    "test/unit/skills/omd-apply-contract.test.mjs": "09118f0066a1a69c3a6cc80c99adb4c145722aa15f0b7750011a1221ebce150c",
+    "benchmarks/ui-resolve-bench/reports/first-edit-static-checklist-repair-1.9.541/ACCEPTANCE.json": "bca99dae530c978c349ed67d33e0536ff67b52fb8b6c09eeb5fbe7102d6bc7a7"
+  },
+  "acceptance": {
+    "structured_css_declarations": true,
+    "safe_zero_containment_reset": true,
+    "positive_fixed_length_rejected": true,
+    "exact_selector_property_rejected": true,
+    "acceptance_debt_manifest_binding": true,
+    "ordered_first_edit_checklist": true,
+    "exactly_once_static_close": true,
+    "provider_calls": 0
+  },
+  "next": "Lock a genuinely unseen task before provider exposure, then preregister exact aggregate-fit control against omd-1.9.541 under Reliability@3."
+}

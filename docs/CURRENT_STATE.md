@@ -3,10 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `956a7b89` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.541 first-edit static checklist repair
+- 기준 커밋: `28f96200` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.542 first-edit static checklist exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.542는 1.9.541 수리를 exact commit `28f96200…`, skill tree `d80cfd62…`, skill/helper/runner/test/report 해시로 pin했다.
+- 새 competitor는 `omd-first-edit-static-checklist-candidate`, vendor dir `omd-1.9.541`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
 
 - 1.9.541 provider-free repair는 CSS 금지를 structured `positive-length|any-declaration` assertion으로 분리해 safe `min-width:0` 오탐을 제거했다.
 - `plan-close`가 required/forbidden/regex/CSS/count 전체를 ordered `first_edit_checklist`로 출력하고 한 edit에서 모두 충족한 뒤에만 static-close하도록 skill을 고정했다.
