@@ -4147,6 +4147,29 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("records the fresh archive film task before model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/archive-film-task-baseline-1.9.589/SUMMARY.final.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.589",
+      task_id: "archive-film-element-custody-v0.1",
+      status: "FRESH_UNSEEN_TASK_BASELINED",
+      provider_calls: 0,
+      model_exposures: 0,
+      task_tree_sha256: "54f5c61c23c6aa76080fa3b8d13c30252120925d2f625beb4d50d6eaceb18b8e",
+      baseline: {
+        objective_score: 75,
+        objective_max: 85,
+        critical_gates: { task_contract: true, state_journey: true, responsive: false, accessibility: false, design_grounding: true, evidence_honesty: true },
+        document_widths: { mobile: { scroll: 1115, client: 390 }, actual_200pct: { scroll: 2230, client: 640 } },
+        contrast_ratio_observed: 3.71,
+      },
+      locked_facts: { source_reels: 4, chain_labels: 6, vault_bays: 2, view_controls: 3, protected_hook_mismatches: 0 },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

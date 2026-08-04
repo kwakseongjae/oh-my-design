@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.589 archive film unseen task baseline
+- model-unseen archive film custody task를 raw baseline75/85로 잠갔다.
+- contract/state/design/evidence green, responsive/a11y red; widths1115/1115/2230, contrast3.71이다.
+- task tree54f5c61c/score0fa0e770/exposure0; 다음 exact task pin이다.
+
 ## 2026-08-05 (Codex) · 1.9.588 contained carrier budget pin
 - repair commit5f78f1c5/source tree83823662/skill tree0370e284를 exact pin했다.
 - system `omd-contained-carrier-budget-candidate`, vendor `omd-1.9.587`, provider0다.

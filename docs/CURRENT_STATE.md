@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `5f78f1c5` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.588 contained carrier budget pin
+- 기준 커밋: `d37b7564` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.589 archive film unseen task baseline
 
 ## 지금 (현재 위치)
+
+- 1.9.589는 model-unseen `archive-film-element-custody-v0.1`을 provider 노출 전에 생성·평가했다. task tree `54f5c61c...`, score `0fa0e770...`, exposure0이다.
+- raw baseline75/85: contract/state/design/evidence green, responsive/a11y red. widths1440/1115/1115/2230, target fragments2, short wraps2, contrast3.71이다.
+- 다음은 task source exact commit/tree와 baseline hash pin이다. 모델 실행은 그 뒤에만 허용한다.
 
 - 1.9.588은 repair commit `5f78f1c5a23148778a49bdc54f6f6026a7b8c1d2`, source tree `83823662...`, skill tree `0370e284...`를 exact pin했다. provider0다.
 - candidate system id는 `omd-contained-carrier-budget-candidate`, vendor는 `omd-1.9.587`다. 아직 fresh model transfer 승격 주장은 없다.
