@@ -5192,6 +5192,57 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ]);
   });
 
+  it("prepares six equal untouched rail-signal cells from exact detached sources", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/rail-signal-plan-bootstrap-luna-1.9.628/PREPARATION.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.630",
+      status: "PREPARED_PROVIDER_ZERO",
+      provider_calls: 0,
+      scheduled_cells: 6,
+      prepared_cells: 6,
+      equality_attestation: {
+        core_prompt_equal: 6,
+        starter_equal: 6,
+        product_tree_equal: 6,
+        runtime_equal: 6,
+        model_equal: 6,
+        effort_equal: 6,
+        timeout_equal: 6,
+      },
+      source_attestation: {
+        control: {
+          commit: "0c4af9273a19bbb7cdcf6a17ef2a58f3627f1419",
+          detached: true,
+          clean: true,
+        },
+        candidate: {
+          commit: "4ac756df227d4f0cf42dc77d722819242d07d6b8",
+          detached: true,
+          clean: true,
+        },
+      },
+      isolated_delta_guardrail: {
+        shared_context_client_width: true,
+        shared_carrier_offset_width: true,
+        control_requires_external_snapshot_before_runner: true,
+        candidate_bootstraps_missing_snapshot_before_navigation: true,
+        candidate_emits_zero_attempt_marker_for_pre_navigation_validation: true,
+        candidate_blocks_product_edit_until_plan_close_and_guardrails: true,
+        all_three_control_cells_match: true,
+        all_three_candidate_cells_match: true,
+      },
+      execution_contract: {
+        next_cell: "luna-rail-r1-control",
+        max_new_cells: 1,
+        retry: false,
+        inter_cell_delay_seconds: 120,
+      },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

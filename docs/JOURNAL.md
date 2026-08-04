@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.630 rail-signal exact-cell preparation
+- exact detached clean control/candidate와 six untouched Luna/high cells를 준비했다.
+- prompt/starter/product/runtime/model/effort/timeout equality는 6/6, provider0다.
+- 다음은 runtime/proof-policy preflight 후 r1 control no-retry 단일 실행이다.
+
 ## 2026-08-05 (Codex) · 1.9.629 rail-signal executable matrix lock
 - schema0.3 matrix C/T/T/C/C/T, Luna/high, 900s/120s/no-retry를 잠갔다.
 - candidate-only delta는 atomic snapshot bootstrap+zero-attempt marker+pre-edit mutation gate다.
