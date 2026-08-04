@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.607 museum loan unseen task baseline
+- museum loan-crate release task를 model exposure0에서 baseline75/85로 잠갔다.
+- responsive/a11y red, target fragments2·short wraps2·contrast2.94; browser-harness desktop attestation도 완료했다.
+- task tree ed1e594b/score c9ed447f; 다음 exact task source pin이다.
+
 ## 2026-08-05 (Codex) · 1.9.606 desktop decision-context source pin
 - repair commit e8a6f083/source tree3a55a636/skill tree38eee231을 exact pin했다.
 - candidate `omd-desktop-decision-context-candidate`, vendor1.9.605, provider0/promotion false다.

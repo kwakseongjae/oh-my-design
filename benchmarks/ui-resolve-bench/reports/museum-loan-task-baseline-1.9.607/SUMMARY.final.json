@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.607",
+  "task_id": "museum-loan-crate-release-v0.1",
+  "status": "FRESH_UNSEEN_TASK_BASELINED",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "task_tree_sha256": "ed1e594ba1bd8724e866cf3c4a3c1835a6058e4183305e95ec1948c0441e09ad",
+  "baseline": {
+    "variant_id": "raw-design-md",
+    "score_sha256": "c9ed447f5ad203a15033ec13e5bc3fee7034cccaf385ffbb56e69165db6ed2c4",
+    "objective_score": 75,
+    "objective_max": 85,
+    "automated_gate_pass": false,
+    "critical_gates": {
+      "task_contract": true,
+      "state_journey": true,
+      "responsive": false,
+      "accessibility": false,
+      "design_grounding": true,
+      "evidence_honesty": true
+    },
+    "document_widths": {
+      "desktop": {"scroll": 1440, "client": 1440},
+      "mobile": {"scroll": 1115, "client": 390},
+      "narrow_320": {"scroll": 1115, "client": 320},
+      "actual_200pct": {"scroll": 2230, "client": 640}
+    },
+    "fragmented_target_tokens_each_narrow_condition": 2,
+    "wrapped_short_atomic_rows": {
+      "mobile": 2,
+      "narrow_320": 2,
+      "actual_200pct": 2
+    },
+    "axe_serious_or_critical_each_viewport": 1,
+    "contrast_ratio_observed": 2.94
+  },
+  "locked_facts": {
+    "loan_crates": 4,
+    "condition_reports": 6,
+    "gallery_zones": 2,
+    "view_controls": 3,
+    "target_only_pre_edit_carrier": "[data-bench-decision-carrier='target']",
+    "protected_hook_mismatches": 0
+  },
+  "browser_harness_attestation": {
+    "connection_name": "bench19366",
+    "url": "http://127.0.0.1:4781/",
+    "viewport": {"width": 1440, "height": 1000},
+    "page_scroll_width": 1440,
+    "page_client_width": 1440,
+    "target_and_evidence_exact": true,
+    "screenshot_sha256": "a3d3ec90b24d8ba4af501643226d021c2be8a7bd2fa481a42fe264b80327b577"
+  },
+  "unknown_boundary": [
+    "conservation clearance",
+    "insurer approval",
+    "environmental stability",
+    "crate-seal integrity",
+    "courier availability",
+    "gallery readiness",
+    "installation approval",
+    "public-display release"
+  ],
+  "freshness": {
+    "prompt_sha256": "5a6950d05a16d142acdbb882883857a44fc490ff2e73acacecee84996a2de32d",
+    "task_contract_sha256": "240d507c19555917a8b8ce029c548cc1d50455ca98f9c02899af96d31d8b95d3",
+    "starter_design_sha256": "ff9b8f95e29294849c24e18c1e45fff7851e42475cc16d26713e0cf1436ed0ff",
+    "starter_product_sha256": "554229643a3fc906ef3506bf0a42b3e59381c0cdc4a0dd9c36c92498fab7cb74"
+  },
+  "next": "Commit and exact-pin the unseen task before any model or compared skill sees it."
+}

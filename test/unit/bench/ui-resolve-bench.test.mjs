@@ -4417,6 +4417,30 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("records the fresh museum loan task before model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/museum-loan-task-baseline-1.9.607/SUMMARY.final.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.607",
+      task_id: "museum-loan-crate-release-v0.1",
+      status: "FRESH_UNSEEN_TASK_BASELINED",
+      provider_calls: 0,
+      model_exposures: 0,
+      task_tree_sha256: "ed1e594ba1bd8724e866cf3c4a3c1835a6058e4183305e95ec1948c0441e09ad",
+      baseline: {
+        objective_score: 75,
+        objective_max: 85,
+        critical_gates: { task_contract: true, state_journey: true, responsive: false, accessibility: false, design_grounding: true, evidence_honesty: true },
+        document_widths: { mobile: { scroll: 1115, client: 390 }, actual_200pct: { scroll: 2230, client: 640 } },
+        contrast_ratio_observed: 2.94,
+      },
+      locked_facts: { loan_crates: 4, condition_reports: 6, gallery_zones: 2, view_controls: 3, protected_hook_mismatches: 0 },
+      browser_harness_attestation: { connection_name: "bench19366", target_and_evidence_exact: true },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
