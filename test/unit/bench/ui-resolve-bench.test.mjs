@@ -60,6 +60,7 @@ const satelliteTelemetryReleaseTaskId = "satellite-telemetry-release-review-v0.1
 const genomicSequencingReleaseTaskId = "genomic-sequencing-run-release-v0.1";
 const semiconductorWaferDispositionTaskId = "semiconductor-wafer-disposition-v0.1";
 const waterTreatmentBatchReleaseTaskId = "water-treatment-batch-release-v0.1";
+const flightRecorderDownloadTaskId = "flight-recorder-download-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1697,6 +1698,34 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("BATCH-NORTH-048271 + SAMPLE-MICRO-905184");
     expect(starter).toContain("5 treatment batches · 7 laboratory samples · 3 treatment trains");
     expect(starter).not.toContain("LOT-ETCH-048271");
+  });
+
+  it("locks an unseen flight-recorder download family before visible atomic-fit transfer", () => {
+    const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", flightRecorderDownloadTaskId, "task.json"), "utf8"));
+    expect(validateTaskContract(task)).toMatchObject({
+      id: flightRecorderDownloadTaskId,
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      journey_oracle: {
+        choice: { values: ["airframe-manifest", "acquisition-stations", "download-decision"], initial: "airframe-manifest", selected: "acquisition-stations" },
+        form: { valid_value: "Flight 782 recorder download" },
+      },
+      protected_hook_counts: {
+        "[data-bench='airframe-case']": 4,
+        "[data-bench='airframe-id']": 4,
+        "[data-bench='recorder-segment-id']": 6,
+        "[data-bench='station-id']": 2,
+        "[data-bench='acquisition-window']": 2,
+      },
+    });
+    const out = prepareVariant("raw-design-md", { task: flightRecorderDownloadTaskId, outputName: "flight-recorder-download-lock" });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/data-bench="airframe-case"/g)).toHaveLength(4);
+    expect(starter.match(/data-bench="recorder-segment-id"/g)).toHaveLength(6);
+    expect(starter.match(/data-bench="acquisition-window"/g)).toHaveLength(2);
+    expect(starter).toContain("AIRFRAME-N782KL + RECORDER-CVR-905184");
+    expect(starter).toContain("4 airframes · 6 recorder segments · 2 acquisition stations");
+    expect(starter).not.toContain("BATCH-NORTH-048271");
   });
 
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {

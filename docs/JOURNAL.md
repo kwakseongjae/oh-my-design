@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.492 flight-recorder task lock
+- 4 airframe/6 recorder segment/2 station의 fresh task를 provider 전에 잠그고 untouched 75/85 난이도를 측정했다.
+- task exposure/provider 0. 다음은 exact 1.9.483 vs 1.9.490 Reliability@3 사전등록이다.
+
 ## 2026-08-04 (Codex) · 1.9.491 visible atomic-fit exact pin
 - 1.9.490을 exact commit/tree/file hashes와 detached vendor identity로 등록했다.
 - provider 0. 다음은 another genuinely unseen task lock이다.

@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.492",
+  "experiment_id": "flight-recorder-download-task-lock-1.9.492",
+  "status": "TASK_LOCKED_BEFORE_PROVIDER",
+  "provider_calls": 0,
+  "candidate_task_exposure": 0,
+  "promotion": false,
+  "task": {
+    "id": "flight-recorder-download-review-v0.1",
+    "version": "0.1.0",
+    "domain": "flight-recorder download review",
+    "registered_airframes": 4,
+    "registered_recorder_segments": 6,
+    "registered_acquisition_stations": 2,
+    "relationship_carriers": ["airframe-manifest", "acquisition-station-strip", "download-decision"]
+  },
+  "untouched_baseline": {
+    "objective_score": 75,
+    "objective_max": 85,
+    "desktop_overflow_px": 0,
+    "mobile_overflow_px": 615,
+    "narrow_320_overflow_px": 685,
+    "actual_200pct_overflow_px": 1370,
+    "compound_target_wraps": true,
+    "state_wraps": true,
+    "fragmented_atomic_parts": true,
+    "muted_contrast_ratio": 4.02,
+    "passive_protected_text_scroll_containers": 0
+  },
+  "next": "Preregister exact 1.9.483 historical control versus exact 1.9.490 visible atomic-fit candidate on Luna/high Reliability@3 before preparing any provider workspace."
+}

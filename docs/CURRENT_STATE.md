@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `931e124c` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.491 visible atomic-fit exact pin
+- 기준 커밋: `75e9416e` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.492 flight-recorder download task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.492는 fresh `flight-recorder-download-review-v0.1`을 provider 전에 lock했다.
+- 4 airframe/6 recorder segment/2 acquisition station과 manifest·station strip·download decision 세 carrier를 보존한다.
+- untouched baseline은 75/85: 390/320/actual200 overflow 615/685/1370px, compound target·state wrap, atomic fragmentation, muted contrast 4.02만 red다.
+- long evidence와 initially-empty status는 atomic inventory가 아니며 task contract/focused preparation green, provider/task exposure 0이다. 다음은 exact 1.9.483 control vs exact 1.9.490 candidate preregistration이다.
 
 - 1.9.491은 1.9.490을 exact commit `931e124c…`, skill tree `c9ba15d7…`, skill/runner/helper hashes로 pin했다.
 - 새 competitor는 `omd-visible-atomic-fit-candidate`, vendor dir `omd-1.9.490`, provider 0/promotion false다.
