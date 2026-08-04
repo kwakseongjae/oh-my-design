@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `7a6ea21a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.645 airworthiness task pin
+- 기준 커밋: `d2e6e03d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.646 airworthiness complete-diagnostic preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.646은 exact manual-reconcile control `e4b0c890...` vs complete-diagnostic candidate `7df5be63...`를 pinned airworthiness task에서 Luna/high2×3으로 provider0 사전등록했다.
+- isolated delta는 one-shot aggregate diagnosis, complete patch/irreconcilable verdict, non-ready reconcile rejection이다. 900s/120s/no-retry/concurrency1, UI/proof/plan3/3이며 diagnosis/reconcile 각 최대1회다.
+- attempt50, prior TTT118,047,296+ / unavailable6다. 다음은 executable matrix lock이다.
 
 - 1.9.645는 task commit `7a6ea21a...`, git task tree `6881d781...`, portable tree `124ca2c4...`, baseline score `5d59ea7c...`를 exact pin했다.
 - model/control/candidate exposure0이며 이후 task mutation은 금지다. 다음은 exact historical reconcile control vs complete diagnostic candidate 사전등록이다.

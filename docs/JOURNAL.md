@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.646 airworthiness diagnostic preregistration
+- exact manual reconcile control vs complete diagnostic candidate Luna/high2×3을 provider0 사전등록했다.
+- diagnosis/reconcile 각 최대1회, UI/proof/plan3/3, 900s/120s/no-retry다.
+- attempt50, TTT118047296+; 다음은 executable matrix lock이다.
+
 ## 2026-08-05 (Codex) · 1.9.645 airworthiness task pin
 - task commit/git tree/portable tree/baseline score를 model exposure0에서 exact pin했다.
 - 이후 task/prompt/starter/evaluator mutation은 금지다.

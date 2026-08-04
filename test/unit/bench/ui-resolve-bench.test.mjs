@@ -5914,6 +5914,32 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("preregisters complete-plan diagnosis transfer on the pinned airworthiness task", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/airworthiness-complete-plan-diagnostic-luna-1.9.646/PREREGISTRATION.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.646",
+      status: "PREREGISTERED_PROVIDER_ZERO",
+      provider_calls: 0,
+      execution_purpose: "complete-plan-diagnostic-transfer-reliability",
+      tokens_to_target: { attempt_order: 50, prior_observed_provider_tokens_minimum: 118047296, prior_usage_unavailable_cells: 6 },
+      task: { id: "airworthiness-release-review-v0.1", model_exposures: 0, task_tree: "6881d7810d5587cea82e5f938c69b4a083b81504" },
+      sources: {
+        control: { variant_id: "omd-measured-plan-reconcile-candidate", source_commit: "e4b0c890ccdcc1e736cc70babcfbc1a5b72b7391" },
+        candidate: { variant_id: "omd-complete-plan-diagnostic-candidate", source_commit: "7df5be63beff5083265e0013f2f51f72e8c4bef9" },
+      },
+      isolated_delta_contract: {
+        candidate_aggregates_all_reconcile_conflicts: true,
+        candidate_returns_complete_patch_or_irreconcilable: true,
+        candidate_rejects_non_ready_plan_reconcile: true,
+      },
+      matrix: { model_id: "gpt-5.6-luna", effort: "high", trials_per_arm: 3, scheduled_cells: 6, timeout_seconds: 900, max_concurrency: 1, inter_cell_delay_seconds: 120 },
+      promotion_gates: { candidate_ui_resolved_trials_required: 3, candidate_proof_compliant_trials_required: 3, candidate_successful_plan_close_trials_required: 3, candidate_single_diagnosis_invocations_max_per_trial: 1, candidate_plan_reconcile_invocations_max_per_trial: 1 },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
