@@ -3629,6 +3629,31 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("pins the exact pre-edit carrier anchor repair source", () => {
+    const pin = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/pre-edit-carrier-anchor-pin-1.9.570/SOURCE-PIN.json",
+    ), "utf8"));
+    expect(pin).toMatchObject({
+      product_version: "1.9.570",
+      pin_id: "pre-edit-carrier-anchor-1.9.570",
+      status: "PINNED",
+      source_commit: "a6ebdc8a923538a997d2724f90a09e1eb63f46f2",
+      source_tree: "6546fa5d7ddb35e7647020dd2967bd7b185f8fd5",
+      skill_tree: "5f6b8ea8df9a5646166a33d36d3fa497f0f156d7",
+      files: {
+        artifact_helper: { sha256: "276020bdd2e699df0ee4af1fd34d83723edb045e92ee37c7a5de5e0781c95ac1" },
+        browser_runner: { sha256: "b57a2a405fcbac8493d69df7e17f5d4d45685467df98bb3c1cdc14517d219927" },
+      },
+      claims: {
+        plain_python_runner_self_dispatch: true,
+        snapshot_time_carrier_anchor_gate: true,
+        post_edit_only_carrier_anchor_rejected_before_browser: true,
+        quality_promotion: false,
+      },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

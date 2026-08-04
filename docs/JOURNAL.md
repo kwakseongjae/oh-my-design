@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.570 carrier anchor source pin
+- exact commit `a6ebdc8a…`, source `6546fa5d…`, skill `5f6b8ea8…`로 repair를 pin했다.
+- 다음 fresh unseen task 생성·baseline lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.569 pre-edit carrier anchor gate
 - snapshot이 모든 carrier의 pre-edit anchor를 browser plan 전에 검증하도록 수리했다.
 - frozen replay provider0, focused40/40+lint/diff green; 다음 exact pin+fresh unseen task다.
