@@ -4488,3 +4488,7 @@
 - executable schema0.3, Luna/high2×3, order C/T/T/C/C/T를 고정했다.
 - shared contained-budget/proof/runner와 candidate-only evidence+target hierarchy gate를 잠갔다.
 - provider0; 다음 exact detached vendors와 six untouched cells preparation이다.
+## 2026-08-05 (Codex) · 1.9.602 backup decision-context preparation
+- exact detached control/candidate와 six untouched Luna/high cells를 준비했다.
+- equality8종6/6, source clean/detached, isolated decision-context delta를 재확인했다.
+- provider0; 다음 runtime preflight와 r1 control no-retry다.

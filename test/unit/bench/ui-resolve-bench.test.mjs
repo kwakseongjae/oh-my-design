@@ -4278,6 +4278,45 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ]);
   });
 
+  it("prepares six untouched backup decision-context cells from exact detached sources", () => {
+    const preparation = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/backup-decision-context-replacement-luna-1.9.600/PREPARATION.json",
+    ), "utf8"));
+    expect(preparation).toMatchObject({
+      product_version: "1.9.602",
+      status: "SIX_CELLS_PREPARED",
+      provider_calls: 0,
+      locked_plan_sha256: "f5630841fd1f414ff63ed1345442c9378451fdcbac20932665356fdb76e983d1",
+      equality: {
+        scheduled_cells: 6,
+        prepared_cells: 6,
+        core_prompt_equal: 6,
+        prompt_equal: 6,
+        starter_equal: 6,
+        product_tree_equal: 6,
+        runtime_equal: 6,
+        model_equal: 6,
+        effort_equal: 6,
+        timeout_equal: 6,
+      },
+      source_attestation: {
+        control: { commit: "5f78f1c5a23148778a49bdc54f6f6026a7b8c1d2", detached: true, clean: true },
+        candidate: { commit: "5eaa26c9739a9e697f4707b06c31a32773706c16", detached: true, clean: true },
+      },
+      isolated_delta_guardrail: {
+        shared_contained_budget_formula_present: true,
+        control_decision_evidence_inventory_absent: true,
+        candidate_decision_evidence_inventory_present: true,
+        control_final_decision_context_gate_absent: true,
+        candidate_final_decision_context_gate_present: true,
+        all_three_control_cells_match: true,
+        all_three_candidate_cells_match: true,
+      },
+      execution_contract: { next_cell: "luna-backup-r1-control", max_new_cells: 1, retry: false, inter_cell_delay_seconds: 120 },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
