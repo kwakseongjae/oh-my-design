@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `ca80846c` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.630 rail-signal exact-cell preparation
+- 기준 커밋: `54749710` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.631 rail-signal r1 control checkpoint
 
 ## 지금 (현재 위치)
+
+- 1.9.631 r1 control은 valid85/85, UI-resolved, 628,966ms, 2,871,023 tokens다. responsive/a11y/evidence와 proof gate가 모두 green이다.
+- control은 제품 edit 전에 measured plan을 닫았지만 external snapshot 명령에서 validation failure8/success2, plan runner failure2/success1을 소비했다. candidate가 제거하려는 orchestration debt의 실제 기준선이다.
+- browser-harness는 provider 호출 전 0.1.5 named-socket red를 0.1.8 명시 재설치로 복구했다. 누적 TTT109,921,286+ / unavailable6. 다음은 fixed120s 뒤 untouched r1 candidate no-retry 단일 실행이다.
 
 - 1.9.630은 `/private/tmp/u19629-vendors` exact detached clean control/candidate와 `/private/tmp/u19629` six untouched Luna/high cells를 준비했다.
 - prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이며 control은 external snapshot-before-runner, candidate는 atomic snapshot-before-navigation이다. provider0다.
@@ -3010,9 +3014,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. browser/CLI/auth/evaluator/proof-policy preflight를 수행한다.
-2. `luna-rail-r1-control`을 no-retry로 한 번 실행한다.
-3. 결과를 checkpoint하고 fixed 120s pacing 뒤 r1 candidate를 판단한다.
+1. fixed120s pacing 뒤 browser/CLI/auth/evaluator preflight를 다시 확인한다.
+2. `luna-rail-r1-candidate`를 no-retry로 한 번 실행한다.
+3. r1 pair의 UI/proof/plan-order/efficiency를 checkpoint하고 promotion reachability를 판단한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

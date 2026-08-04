@@ -5243,6 +5243,62 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("checkpoints a green rail-signal control with non-atomic plan setup debt", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/rail-signal-plan-bootstrap-luna-1.9.628/R1-CONTROL.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.631",
+      status: "CHECKPOINTED_VALID_CONTROL_GREEN",
+      provider_calls: 1,
+      validity: "valid",
+      retry_count: 0,
+      objective: {
+        score: 85,
+        max: 85,
+        ui_resolved: true,
+        responsive: true,
+        accessibility: true,
+        evidence_honesty: true,
+      },
+      efficiency: {
+        wall_time_ms: 628966,
+        provider_tokens: 2871023,
+      },
+      proof: {
+        analyzable: true,
+        product_edit_count: 1,
+        artifact_closed: true,
+        shipped_runner_invoked: true,
+        execution_gate_pass: true,
+      },
+      pre_edit_plan: {
+        state: "measured",
+        external_snapshot_before_runner_required: true,
+        snapshot_command_failures_before_final_lock: 8,
+        snapshot_command_successes: 2,
+        plan_runner_invocations: 3,
+        plan_runner_failures: 2,
+        plan_runner_successes: 1,
+        product_edit_after_successful_plan_close: true,
+        atomic_runner_snapshot_bootstrap: false,
+        zero_attempt_validation_marker_available: false,
+      },
+      browser_harness_preflight: {
+        initial_version: "0.1.5",
+        initial_named_socket_ready: false,
+        repaired_version: "0.1.8",
+        final_named_socket_ready: true,
+        provider_calls_before_ready: 0,
+      },
+      tokens_to_target: {
+        observed_provider_tokens_minimum_after_cell: 109921286,
+        usage_unavailable_cells: 6,
+      },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

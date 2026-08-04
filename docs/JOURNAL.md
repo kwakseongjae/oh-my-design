@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.631 rail-signal r1 control checkpoint
+- r1 control은 valid85/85, proof green, 628966ms, 2871023 tokens다.
+- external snapshot validation failure8/success2와 plan runner failure2/success1 뒤 pre-edit plan을 닫았다.
+- browser-harness0.1.5 red는 provider0에서 0.1.8로 복구; 다음은 fixed120s 뒤 r1 candidate다.
+
 ## 2026-08-05 (Codex) · 1.9.630 rail-signal exact-cell preparation
 - exact detached clean control/candidate와 six untouched Luna/high cells를 준비했다.
 - prompt/starter/product/runtime/model/effort/timeout equality는 6/6, provider0다.
