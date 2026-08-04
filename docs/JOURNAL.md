@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.572 subsea cable task pin
+- exact commit `2e5134e4…`, task tree `fa7572bb…`, model exposure0으로 pin했다.
+- 다음 exact-source replacement preregistration이다.
+
 ## 2026-08-04 (Codex) · 1.9.571 fresh subsea cable task
 - model-unseen task provider0 baseline75/85; responsive/a11y red, contract/state/design/evidence green이다.
 - stable target-only pre-edit carrier 포함; 다음 exact task pin이다.

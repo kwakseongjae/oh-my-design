@@ -3692,6 +3692,26 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("pins the fresh subsea cable task before model exposure", () => {
+    const pin = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-cable-task-pin-1.9.572/TASK-PIN.json",
+    ), "utf8"));
+    expect(pin).toMatchObject({
+      product_version: "1.9.572",
+      pin_id: "subsea-cable-splice-clearance-1.9.572",
+      status: "PINNED_MODEL_UNSEEN",
+      task_id: "subsea-cable-splice-clearance-v0.1",
+      source_commit: "2e5134e43214b27dd90afbc94d9449dc906211dc",
+      task_tree: "fa7572bb015297ad2afce89eb6f43535987c0634",
+      baseline_summary_sha256: "8da54b0dd9aeb6f31f83e72774e6b5940e97d547c541415cb85a770c31b1ecc7",
+      baseline_score_sha256: "934a92340f02b482bbc5d702758798701460627d7296c0a9c563e24d91b45795",
+      prior_model_exposures: 0,
+      prior_control_exposures: 0,
+      prior_candidate_exposures: 0,
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
