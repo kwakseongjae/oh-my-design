@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.537 pharmaceutical aggregate-carrier preparation
+- 기준 커밋: `b700e9fe` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.538 pharmaceutical r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.538 Luna/high r1 row-only control은 valid 79/85 unresolved: 489.213s, 1,131,127 tokens다.
+- desktop은 green이나 390/320/actual200 overflow508/578/1155px, clipping/fragmentation/axe0이다. 첫 browser terminal 뒤 edit2를 했으나 exactly-once static/browser를 재폐쇄할 수 없어 artifact open/proof fail이다.
+- TTT64,505,058+ / unavailable6이다. 다음은 fixed pacing 뒤 r1 aggregate-carrier candidate no-retry다.
 
 - 1.9.537은 `/private/tmp/u19536-vendors` exact detached control/candidate와 `/private/tmp/u19536` six untouched cells를 준비했다.
 - equality6/6, product tree identical6, source detached+clean2, exact runner/helper hashes와 candidate aggregate guardrail9/9를 확인했다. provider0다.

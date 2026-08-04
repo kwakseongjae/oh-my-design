@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.538 pharma r1 control
+- Luna/high row-only control은 79/85, 489.213s/1,131,127 tokens; narrow overflow508/578/1155px다.
+- terminal 뒤 edit2로 artifact가 open/proof red; TTT64,505,058+, 다음은 r1 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.537 pharma matrix preparation
 - exact detached 1.9.525/1.9.533 vendors와 six untouched cells를 준비했다.
 - equality6/6, detached+clean2, runner/helper hash와 aggregate guardrail9/9, provider0다.
