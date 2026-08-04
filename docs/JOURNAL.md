@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.515 satellite matrix preparation
+- exact detached sources와 six untouched cells, equality6/6, product tree identical6을 준비했다.
+- runner6/6, candidate selector guardrail3/3, provider0. 다음은 r1 control이다.
+
 ## 2026-08-04 (Codex) · 1.9.514 satellite selector provenance preregistration
 - exact 1.9.504 control vs 1.9.511 candidate를 Luna/high 2×3으로 잠갔다.
 - snapshot selector anchor·runner·actual200·static1/browser1, provider/exposure0다. 다음은 preparation이다.
