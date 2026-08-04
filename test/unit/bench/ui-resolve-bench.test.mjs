@@ -4170,6 +4170,25 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("pins the archive film task before model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/archive-film-task-pin-1.9.590/TASK-PIN.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.590",
+      status: "TASK_PINNED_PROVIDER_ZERO",
+      provider_calls: 0,
+      model_exposures: 0,
+      task_id: "archive-film-element-custody-v0.1",
+      source_commit: "6bdcd79d552c36d61238880044a41c1252e97a0f",
+      task_git_tree: "5cfeab67793c3ad0f9f5b2b4266dc5fa79f8a97b",
+      portable_task_tree_sha256: "54f5c61c23c6aa76080fa3b8d13c30252120925d2f625beb4d50d6eaceb18b8e",
+      baseline_score_sha256: "0fa0e770e57b4af387b7190123458f2ff3608448808527cd82e3146a6330bb40",
+      freshness_contract: { model_seen: false, control_seen: false, candidate_seen: false, task_mutation_after_pin_allowed: false },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `d37b7564` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.589 archive film unseen task baseline
+- 기준 커밋: `6bdcd79d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.590 archive film task pin
 
 ## 지금 (현재 위치)
+
+- 1.9.590은 task commit `6bdcd79d552c36d61238880044a41c1252e97a0f`, git tree `5cfeab67...`, portable tree `54f5c61c...`, score `0fa0e770...`를 pin했다.
+- model/control/candidate exposure0이며 이제 task mutation은 금지다.
+- 다음은 exact historical control vs exact contained-carrier candidate Luna/high2×3 preregistration(provider0)이다.
 
 - 1.9.589는 model-unseen `archive-film-element-custody-v0.1`을 provider 노출 전에 생성·평가했다. task tree `54f5c61c...`, score `0fa0e770...`, exposure0이다.
 - raw baseline75/85: contract/state/design/evidence green, responsive/a11y red. widths1440/1115/1115/2230, target fragments2, short wraps2, contrast3.71이다.

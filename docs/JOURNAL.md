@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.590 archive film task pin
+- task commit6bdcd79d/git tree5cfeab67/portable54f5c61c/score0fa0e770을 pin했다.
+- model/control/candidate exposure0, 이후 task mutation 금지다.
+- 다음 exact historical control vs contained candidate prereg다.
+
 ## 2026-08-05 (Codex) · 1.9.589 archive film unseen task baseline
 - model-unseen archive film custody task를 raw baseline75/85로 잠갔다.
 - contract/state/design/evidence green, responsive/a11y red; widths1115/1115/2230, contrast3.71이다.
