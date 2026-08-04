@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.498 computed type + target-only carrier pin
+- exact `14ed7765…`/skill tree `c8ebc909…`와 세 source hash로 candidate를 고정했다.
+- provider 0/promotion false. 다음은 genuinely unseen task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.497 computed type + target-only carrier repair
 - pre-edit snapshot computed type과 target-only comparison carrier를 helper/runner/skill에 고정했다.
 - fresh flight replay는 carriers6/rows22, static1, 세 조건, unresolved0, `OMD_DELIVERY_READY`; provider 0이다.
