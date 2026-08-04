@@ -24,6 +24,7 @@ CONDITIONS = (
     {"id": "320", "viewport_width": 320, "zoom": 1},
     {"id": "200pct", "viewport_width": 640, "zoom": 2},
 )
+DESKTOP_DECISION_CONDITION = {"id": "desktop", "viewport_width": 1440, "zoom": 1}
 
 
 def dispatch_through_browser_harness_when_needed():
@@ -133,6 +134,11 @@ payload = {
             "selector": carrier["selector"],
             "expected_count": carrier["expected_count"],
             "binds_row_groups": carrier["binds_row_groups"],
+            "other_carriers": [
+                {"id": other["id"], "selector": other["selector"]}
+                for other in artifact["carriers"]
+                if other["id"] != carrier["id"]
+            ],
         }
         for carrier in artifact["carriers"]
     ],
@@ -217,6 +223,10 @@ def browser_fit_plan_script(measurement_payload, zoom):
   const carriers = Object.fromEntries(packet.carriers.map((carrier) => {{
     const elements = [...document.querySelectorAll(carrier.selector)].filter(visible);
     const measurements = elements.map(intrinsicCarrierWidth);
+    const containedCarrierIds = [...new Set(elements.flatMap((element) =>
+      carrier.other_carriers.filter((other) =>
+        [...document.querySelectorAll(other.selector)].some((candidate) => element.contains(candidate)))
+        .map((other) => other.id)))];
     const maximum = (key) => measurements.length
       ? Math.max(...measurements.map((measurement) => measurement[key]))
       : null;
@@ -229,6 +239,7 @@ def browser_fit_plan_script(measurement_payload, zoom):
       horizontal_chrome_css_px: maximum('horizontal_chrome_css_px'),
       inter_item_gap_css_px: maximum('inter_item_gap_css_px'),
       available_inner_width_css_px: minimum('available_inner_width_css_px'),
+      contained_carrier_ids: containedCarrierIds,
     }}];
   }}));
   const decisionContext = (() => {{
@@ -299,6 +310,49 @@ def browser_typography_script(measurement_payload):
     return [row.id, {{ count: elements.length, uniform, type: first }}];
   }}));
   return JSON.stringify({{ rows }});
+}})()
+"""
+
+
+def browser_decision_context_script(measurement_payload):
+    encoded = json.dumps(measurement_payload)
+    return f"""
+(() => {{
+  const packet = {encoded};
+  const visible = (element) => {{
+    const style = getComputedStyle(element);
+    const rect = element.getBoundingClientRect();
+    return style.display !== 'none' && style.visibility !== 'hidden' &&
+      style.opacity !== '0' && rect.width > 0 && rect.height > 0;
+  }};
+  const targetRows = packet.rows.filter((row) => row.role === 'target' && row.comparison_scroll);
+  if (!targetRows.length) return JSON.stringify({{ required: false, pass: true, targets: [] }});
+  const targets = targetRows.map((row) => {{
+    const target = document.querySelector(row.selector);
+    const carrier = document.querySelector(row.scroll_contract.container_selector);
+    const context = target?.closest('[data-bench-decision-role="context"]') ?? carrier?.parentElement;
+    const supporting = context ? [...context.querySelectorAll(
+      '[data-bench-decision-role="evidence"], [data-bench-decision-role="state"], [data-bench-decision-role="action"]'
+    )].filter(visible) : [];
+    if (!target || !carrier || !context || !supporting.length) {{
+      return {{ id: row.id, full_row: false, precedes_supporting: false, spatially_separated: false, pass: false }};
+    }}
+    const carrierRect = carrier.getBoundingClientRect();
+    const contextRect = context.getBoundingClientRect();
+    const contextStyle = getComputedStyle(context);
+    const contentWidth = contextRect.width - parseFloat(contextStyle.paddingLeft) - parseFloat(contextStyle.paddingRight);
+    const fullRow = carrierRect.width + 1 >= contentWidth;
+    const precedesSupporting = supporting.every((item) =>
+      Boolean(carrier.compareDocumentPosition(item) & Node.DOCUMENT_POSITION_FOLLOWING));
+    const spatiallySeparated = supporting.every((item) => {{
+      const rect = item.getBoundingClientRect();
+      return carrierRect.bottom <= rect.top + 0.5 || rect.bottom <= carrierRect.top + 0.5 ||
+        carrierRect.right <= rect.left + 0.5 || rect.right <= carrierRect.left + 0.5;
+    }});
+    return {{ id: row.id, full_row: fullRow, precedes_supporting: precedesSupporting,
+      spatially_separated: spatiallySeparated, pass: fullRow && precedesSupporting && spatiallySeparated }};
+  }});
+  return JSON.stringify({{ required: true, pass: targets.every((target) => target.pass), targets }});
 }})()
 """
 
@@ -554,6 +608,10 @@ if mode == "plan":
         "carriers": [
             {
                 "id": carrier["id"],
+                "contained_carrier_ids": sorted(set().union(*[
+                    set(observation["carriers"][carrier["id"]]["contained_carrier_ids"])
+                    for observation in plan_observations
+                ])),
                 "measurements": [
                     {
                         "id": observation["id"],
@@ -621,6 +679,22 @@ try:
 except Exception:
     raise SystemExit(unresolved_attempt())
 
+try:
+    cdp(
+        "Emulation.setDeviceMetricsOverride",
+        width=DESKTOP_DECISION_CONDITION["viewport_width"],
+        height=1000,
+        deviceScaleFactor=1,
+        mobile=False,
+    )
+    goto_url(product_path.as_uri())
+    if not wait_for_load(timeout=15):
+        raise RuntimeError("desktop decision-context route did not finish loading")
+    js("document.documentElement.style.zoom = '1'")
+    desktop_decision_context = json.loads(js(browser_decision_context_script(payload)))
+except Exception:
+    raise SystemExit(unresolved_attempt())
+
 for condition in CONDITIONS:
     baseline_typography = {}
     if snapshot_path is not None:
@@ -659,6 +733,7 @@ for condition in CONDITIONS:
             condition["zoom"],
             baseline_typography,
         )))
+        observed["decision_context"] = json.loads(js(browser_decision_context_script(payload)))
     except Exception as error:
         artifact["browser_attempt"] = {
             "attempts": 1,
@@ -699,6 +774,13 @@ artifact["browser_attempt"] = {
         )}
         for observation in observations
     ],
+    "decision_context_conditions": [
+        {"id": "desktop", **desktop_decision_context},
+        *[
+            {"id": observation["id"], **observation["decision_context"]}
+            for observation in observations
+        ],
+    ],
 }
 
 condition_field = {"390": "outcome_390", "320": "outcome_320", "200pct": "outcome_200pct"}
@@ -706,8 +788,16 @@ all_pass = True
 for carrier in artifact["carriers"]:
     carrier["final"] = {}
     for observation in observations:
-        passed = observation["carriers"][carrier["id"]]["pass"]
+        carrier_result = observation["carriers"][carrier["id"]]
+        passed = carrier_result["pass"]
         carrier["final"][condition_field[observation["id"]]] = "pass" if passed else "unresolved"
+        carrier["final"].setdefault("diagnostics", []).append({
+            "id": observation["id"],
+            "count": carrier_result["count"],
+            "visible": carrier_result["visible"],
+            "bound": carrier_result["bound"],
+            "scroll_and_focus": carrier_result["scroll_and_focus"],
+        })
         all_pass = all_pass and passed
 
 for row in artifact["row_groups"]:
@@ -736,17 +826,22 @@ for row in artifact["row_groups"]:
         "measurements": measurements,
     }
 
+decision_observations = [
+    {"id": "desktop", "decision_context": desktop_decision_context},
+    *observations,
+]
 decision_context_final = {}
-for observation in observations:
-    passed = observation.get("decision_context", {}).get("pass", True)
-    decision_context_final[condition_field[observation["id"]]] = "pass" if passed else "unresolved"
+decision_condition_field = {"desktop": "outcome_desktop", **condition_field}
+for observation in decision_observations:
+    passed = observation["decision_context"]["pass"]
+    decision_context_final[decision_condition_field[observation["id"]]] = "pass" if passed else "unresolved"
     all_pass = all_pass and passed
 artifact["decision_context_final"] = {
     **decision_context_final,
     "status": "pass" if all(value == "pass" for value in decision_context_final.values()) else "unresolved",
     "conditions": [
-        {"id": observation["id"], **observation.get("decision_context", {"required": False, "pass": True})}
-        for observation in observations
+        {"id": observation["id"], **observation["decision_context"]}
+        for observation in decision_observations
     ],
 }
 

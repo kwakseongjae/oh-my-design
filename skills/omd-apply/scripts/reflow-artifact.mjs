@@ -32,10 +32,10 @@ function fail(message) {
   throw new Error(`reflow artifact: ${message}`);
 }
 
-function uniqueStrings(value, label) {
+function uniqueStrings(value, label, { allowEmpty = false } = {}) {
   if (
     !Array.isArray(value)
-    || value.length === 0
+    || (!allowEmpty && value.length === 0)
     || value.some((item) => typeof item !== "string" || item.length === 0)
     || new Set(value).size !== value.length
   ) fail(`${label} must be unique non-empty strings`);
@@ -485,6 +485,14 @@ function validatePreEditFitPlan(value, rows, carriers, { allowPending = false } 
   for (const carrier of carriers) {
     const plan = carrierPlans.get(carrier.id);
     if (!plan) fail(`pre_edit_fit_plan is missing carrier group ${carrier.id}`);
+    const containedCarrierIds = uniqueStrings(
+      plan.contained_carrier_ids,
+      `pre-edit fit-plan carrier ${carrier.id} contained carrier ids`,
+      { allowEmpty: true },
+    );
+    if (containedCarrierIds.includes(carrier.id) || containedCarrierIds.some((id) => !carrierPlans.has(id))) {
+      fail(`pre_edit_fit_plan carrier ${carrier.id} must name only other registered contained carriers`);
+    }
     if (!Array.isArray(plan.measurements) || plan.measurements.length !== REQUIRED_MEASUREMENT_CONDITIONS.length) {
       fail(`pre_edit_fit_plan carrier ${carrier.id} must cover every condition`);
     }
@@ -548,6 +556,14 @@ function validatePreEditFitPlan(value, rows, carriers, { allowPending = false } 
       conditions,
     };
   });
+  const carrierBySelector = new Map(carriers.map((carrier) => [carrier.selector, carrier]));
+  for (const row of rows.filter((entry) => entry.decision === "comparison-scroll")) {
+    const carrier = carrierBySelector.get(row.scroll_contract?.container_selector);
+    const contained = carrierPlans.get(carrier?.id)?.contained_carrier_ids ?? [];
+    if (contained.length) {
+      fail(`comparison-scroll carrier ${carrier.id} must not contain nested registered carriers; bind every protected passive row to the outer relationship carrier`);
+    }
+  }
   return value;
 }
 

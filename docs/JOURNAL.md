@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.605 desktop decision-context repair
+- final product의 desktop+narrow target hierarchy proof를 필수화하고 missing proof pass 기본값을 제거했다.
+- comparison-scroll 안 nested registered carrier를 pre-edit containment inventory로 거부한다.
+- actual failed artifact replay fail-closed, focused52/52+lint+skill validate green; 다음 exact source pin이다.
+
 ## 2026-08-05 (Codex) · 1.9.597 decision-context source pin
 - repair commit5eaa26c9/source tree0a5b004b/skill treeae1306fe를 exact pin했다.
 - candidate `omd-decision-context-closure-candidate`, vendor1.9.596, provider0/promotion false다.

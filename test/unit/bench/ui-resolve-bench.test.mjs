@@ -4360,6 +4360,33 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(result.frozen_unstarted_cells).toHaveLength(4);
   });
 
+  it("repairs desktop decision-context and nested comparison-carrier proof provider-free", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/decision-context-desktop-nesting-repair-1.9.605/REPAIR.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.605",
+      status: "PROVIDER_FREE_REPAIR_GREEN",
+      promotion: false,
+      provider_calls: 0,
+      source_failure: {
+        desktop_target_action_spatially_separated: false,
+        decision_context_required_flags: [false, false, false],
+        unresolved_carrier_id: "recovery-region-strip",
+      },
+      repair_contract: {
+        desktop_decision_context_condition: { viewport_width: 1440, zoom: 1 },
+        desktop_and_narrow_decision_context_measured_from_final_product: true,
+        missing_final_decision_context_fails_closed: true,
+        comparison_scroll_rejects_nested_registered_carriers_before_edit: true,
+      },
+      actual_failed_artifact_replay: { result: "rejected-before-edit", original_artifact_mutated: false },
+      verification: { python_compile: "pass", focused_tests_passed: 52, typescript_lint: "pass", skill_quick_validate: "pass", diff_check: "pass" },
+      tokens_to_target: { cumulative_observed_provider_tokens_minimum: 101844158, usage_unavailable_cells: 6, goal_status: "right-censored-open" },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

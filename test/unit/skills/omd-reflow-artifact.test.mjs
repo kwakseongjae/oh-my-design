@@ -55,6 +55,7 @@ function measuredFitPlan(rows, carriers) {
     })),
     carriers: carriers.map((carrier, carrierIndex) => ({
       id: carrier.id,
+      contained_carrier_ids: [],
       measurements: [
         { id: "390", available: 390 },
         { id: "320", available: 320 },
@@ -209,6 +210,12 @@ describe("compact reflow artifact helper", () => {
     expect(runner).not.toContain("if not connection_name or not cdp_url");
     expect(runner).toContain('"Emulation.setDeviceMetricsOverride"');
     expect(runner).toContain("decision_context: decisionContext");
+    expect(runner).toContain("browser_decision_context_script");
+    expect(runner).toContain('DESKTOP_DECISION_CONDITION = {"id": "desktop", "viewport_width": 1440, "zoom": 1}');
+    expect(runner).toContain('"decision_context_conditions"');
+    expect(runner).toContain('"outcome_desktop"');
+    expect(runner).toContain("contained_carrier_ids");
+    expect(runner).toContain('"scroll_and_focus": carrier_result["scroll_and_focus"]');
     expect(runner).toContain("full_row: fullRow");
     expect(runner).toContain("precedes_supporting: precedesSupporting");
     expect(runner).toContain("spatially_separated: spatiallySeparated");
@@ -759,6 +766,26 @@ describe("compact reflow artifact helper", () => {
 
     shared.row_groups[1].role = "state";
     expect(() => lockArtifact(shared)).toThrow(/only passive identifier rows/);
+  });
+
+  it("rejects nested registered carriers inside a comparison-scroll relationship before edit", () => {
+    const invalid = draft();
+    invalid.carriers = [
+      { id: "plan", selector: "[data-plan]", expected_count: 1, binds_row_groups: ["identifier"] },
+      { id: "nested-status", selector: "[data-handoff]", expected_count: 1, binds_row_groups: ["status"] },
+    ];
+    invalid.row_groups[0].decision = "comparison-scroll";
+    invalid.row_groups[0].scroll_contract = {
+      container_selector: "[data-plan]",
+      accessible_name: "Protected identifier register",
+      keyboard_reachable: true,
+      focus_visible: true,
+      passive_text_scroll_container: false,
+    };
+    invalid.pre_edit_fit_plan = measuredFitPlan(invalid.row_groups, invalid.carriers);
+    invalid.pre_edit_fit_plan.carriers[0].contained_carrier_ids = ["nested-status"];
+
+    expect(() => lockArtifact(invalid)).toThrow(/must not contain nested registered carriers/);
   });
 
   it("fails closed when a protected decision target is omitted from the pre-edit inventory", () => {

@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `76da0d1b` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.604 backup matrix frozen
+- 기준 커밋: `2162d03f` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.605 desktop decision-context + nested-carrier repair green
 
 ## 지금 (현재 위치)
+
+- 1.9.605 provider-free repair는 final product의 desktop1440+390+320+actual200%에서 target full-row/order/spatial separation을 필수 측정하며 missing proof를 더 이상 pass로 간주하지 않는다.
+- pre-edit plan은 comparison-scroll outer carrier 안의 nested registered carrier를 기록하고 edit 전에 거부한다. 기존 실패 artifact replay도 새 containment attestation 부재로 fail-closed했다.
+- focused52/52+py compile+lint+skill validate+diff green, provider0, 누적 TTT101,844,158+ / unavailable6이다. 다음은 repair exact commit/tree pin 후 fresh unseen task다.
 
 - 1.9.604 r1 candidate는 valid83/85, 514,958ms, 2,987,373 tokens다. concise evidence one-line transfer는 관찰됐지만 UI/proof는 red다.
 - desktop target/action separation은 여전히 false인데 runner가 comparison-scroll target을 required:false로 면제했고 desktop 조건도 proof에서 빠졌다. recovery-region carrier도 unresolved다.
