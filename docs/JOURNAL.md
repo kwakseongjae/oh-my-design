@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.531 observatory r1 candidate
+- Luna/high candidate 85/85+proof pass, 487.890s/958,166 tokens; wall0.9779×/token0.8235×다.
+- measured plan10+16px green. pre-edit inventory 교정1회, TTT62,511,936+다.
+
 ## 2026-08-04 (Codex) · 1.9.530 observatory r1 control
 - Luna/high control 85/85+proof pass, 498.897s/1,163,464 tokens다.
 - edit1/static1/browser1, overflow·clipping·fragmentation·axe0, TTT61,553,770+다.
