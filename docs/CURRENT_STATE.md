@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `0c4af927` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.616 content-box decision-context exact pin
+- 기준 커밋: `b5051347` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.617 fresh runway-lighting task baseline
 
 ## 지금 (현재 위치)
+
+- 1.9.617은 model-unseen `runway-lighting-return-to-service-v0.1`을 provider 노출 전에 생성·평가했다. task tree `54cdacba...`, score `0a0f7d44...`, exposure0이다.
+- raw baseline75/85: contract/state/design/evidence green, responsive/a11y red다. widths1440/1115/1115/2230, target fragments2, short wraps1/2/2, contrast2.78이다.
+- browser-harness `bench19366`로 실제 desktop surface도 확인했다. 다음은 task exact commit/tree와 baseline hash pin이다.
 
 - 1.9.616은 repair commit `0c4af927...`, source tree `24cbffc7...`, skill tree `300b89c7...`를 exact pin했다.
 - 새 candidate는 `omd-content-box-decision-context-candidate`, vendor `omd-1.9.615`, provider0/promotion false다. 다음 genuinely unseen task baseline이다.

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.617 fresh runway-lighting task
+- model-unseen runway-lighting return-to-service task를 provider 노출 전에 만들고 baseline75/85로 평가했다.
+- contract/state/design/evidence green, responsive/a11y red; task tree54cdacba, exposure0다.
+- 다음은 exact task commit/tree와 baseline score pin이다.
+
 ## 2026-08-05 (Codex) · 1.9.616 content-box source pin
 - repair commit0c4af927/source tree24cbffc7/skill tree300b89c7을 exact pin했다.
 - candidate `omd-content-box-decision-context-candidate`, vendor1.9.615, provider0다.
