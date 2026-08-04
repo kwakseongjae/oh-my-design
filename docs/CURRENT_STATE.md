@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `7498f53d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.602 backup decision-context preparation
+- 기준 커밋: `94746f40` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.603 backup r1 control checkpoint
 
 ## 지금 (현재 위치)
+
+- 1.9.603 r1 control은 valid79/85, 526,814ms, 2,683,104 tokens다. a11y/overflow/evidence는 green이지만 responsive와 proof가 red다.
+- concise evidence가 320/actual200에서 각2줄이고 desktop target/action spatial separation이 false다. shipped runner는 썼으나 `review-controls` carrier unresolved1로 artifact가 open이다.
+- 누적 TTT98,856,785+ / unavailable6. retry하지 않으며 fixed120s pacing 뒤 untouched `luna-backup-r1-candidate` 단일 실행이다.
 
 - 1.9.602는 `/private/tmp/u19601-vendors` exact detached clean sources와 `/private/tmp/u19601` six untouched Luna/high cells를 준비했다.
 - core/prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이며 control에는 새 evidence/final-context gate가 없고 candidate에는 있다. provider0다.
@@ -2901,9 +2905,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. named browser `bench19366`, Luna/high CLI/auth, evaluator dependency를 preflight한다.
-2. `luna-backup-r1-control`을 no-retry 한 번 실행한다.
-3. 결과 기록과 fixed120s pacing 뒤 untouched r1 candidate를 실행한다.
+1. fixed120s pacing이 충족됐는지 execution state로 확인한다.
+2. untouched `luna-backup-r1-candidate`를 no-retry 한 번 실행한다.
+3. UI+proof+evidence+target hierarchy와 control 대비 time/token ratio를 기록한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

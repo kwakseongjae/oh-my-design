@@ -4317,6 +4317,25 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("checkpoints the valid failed backup r1 control without retry", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/backup-decision-context-replacement-luna-1.9.600/R1-CONTROL.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.603",
+      cell_id: "luna-backup-r1-control",
+      status: "CHECKPOINTED_VALID_CONTROL_FAILED",
+      validity: "valid",
+      retry_count: 0,
+      wall_time_ms: 526814,
+      provider_tokens: { comparison_total: 2683104 },
+      objective: { score: 79, max: 85, ui_resolved: false, responsive: false, accessibility: true, narrow_atomic_wraps: 1, actual_200pct_atomic_wraps: 1, desktop_target_action_spatially_separated: false },
+      proof: { analyzable: true, static_closure_count: 1, browser_mechanism_count: 1, browser_recovery_count: 0, shipped_runner_invoked: true, artifact_closed: false, execution_gate_pass: false, unresolved_carrier_id: "review-controls" },
+      tokens_to_target: { observed_provider_tokens_minimum_after_cell: 98856785, usage_unavailable_cells: 6, goal_status: "right-censored" },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

@@ -4492,3 +4492,7 @@
 - exact detached control/candidate와 six untouched Luna/high cells를 준비했다.
 - equality8종6/6, source clean/detached, isolated decision-context delta를 재확인했다.
 - provider0; 다음 runtime preflight와 r1 control no-retry다.
+## 2026-08-05 (Codex) · 1.9.603 backup r1 control checkpoint
+- valid79/85, 526814ms, 2683104 tokens; a11y/overflow/evidence green이다.
+- evidence 320/200pct wrap, desktop target/action separation false, review-controls carrier unresolved다.
+- no retry, 누적 TTT98856785+; 다음 fixed120s 뒤 r1 candidate다.
