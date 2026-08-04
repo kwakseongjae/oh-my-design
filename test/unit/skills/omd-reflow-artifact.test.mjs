@@ -217,6 +217,10 @@ describe("compact reflow artifact helper", () => {
     expect(runner).toContain("required_outer_width_css_px");
     expect(runner).toContain("available_document_width_css_px");
     expect(runner).toContain("available_carrier_inner_width_css_px");
+    expect(runner).toContain("live_inner_width_css_px");
+    expect(runner).toContain("contained_document_budget_css_px");
+    expect(runner).toContain("Math.min(liveInnerWidth, containedDocumentBudget)");
+    expect(runner).toContain("document.documentElement.clientWidth / zoom - sourceHorizontalChrome - horizontalMargin");
     expect(runner).toContain("width: 'max-content'");
     expect(runner).toContain('"plan-close"');
     expect(runner).toContain('PRE_EDIT_SNAPSHOT_SOURCE = "deterministic-pre-edit-snapshot"');

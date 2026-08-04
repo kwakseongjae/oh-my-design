@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.587 contained carrier budget repair
+- raw overflowing inner width를 contained document budget으로 clamp했다.
+- actual failed artifact replay가 1038→368/298/298로 lock pass, nested target budget은 보존했다.
+- focused50/50+lint+diff green, provider0; 다음 exact pin+fresh unseen replacement다.
+
 ## 2026-08-05 (Codex) · 1.9.586 orbital matrix freeze
 - r1 candidate는 UI85/85(+2)지만 proof red: overflowed live inner1038 > document390으로 static closure가 fail-close했다.
 - provider2/cells2 뒤 proof 3/3가 불가능해 remaining4를 untouched freeze했다.

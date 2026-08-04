@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `9ba93751` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.586 orbital matrix freeze
+- 기준 커밋: `207fe2a0` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.587 contained carrier budget repair
 
 ## 지금 (현재 위치)
+
+- 1.9.587은 pre-edit carrier budget을 `min(live inner, document - chrome - margin)`으로 clamp한다. overflowed register1038은 390/320/200pct에서 368/298/298, nested target151.5/116.5/116.5는 그대로다.
+- 실제 실패 artifact를 새 formula로 memory replay해 current lockArtifact가 pass했다. focused50/50+lint+diff green, provider0다.
+- 다음은 exact repair commit/tree를 pin하고 fresh unseen replacement task를 preregister한다. frozen orbital cells는 재개하지 않는다.
 
 - 1.9.586 r1 candidate는 valid85/85, 652,673ms, 3,392,946 tokens였지만 proof red다. carrier-inner plan은 관찰됐으나 static closure가 pre-edit register 1038px > document390px를 거부해 browser0/open으로 끝났다.
 - candidate는 control83보다 UI +2지만 proof0/3이라 남은 candidate2로 3/3가 불가능하다. remaining4는 untouched freeze, causal transfer/efficiency claim은 금지한다.

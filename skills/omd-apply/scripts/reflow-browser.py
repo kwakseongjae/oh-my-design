@@ -174,7 +174,12 @@ def browser_fit_plan_script(measurement_payload, zoom):
     const horizontalMargin = number(sourceStyle.marginLeft) + number(sourceStyle.marginRight);
     const sourceHorizontalChrome = number(sourceStyle.paddingLeft) + number(sourceStyle.paddingRight) +
       number(sourceStyle.borderLeftWidth) + number(sourceStyle.borderRightWidth);
-    const availableInnerWidth = Math.max(0, element.getBoundingClientRect().width / zoom - sourceHorizontalChrome);
+    const liveInnerWidth = Math.max(0, element.getBoundingClientRect().width / zoom - sourceHorizontalChrome);
+    const containedDocumentBudget = Math.max(
+      0,
+      document.documentElement.clientWidth / zoom - sourceHorizontalChrome - horizontalMargin,
+    );
+    const availableInnerWidth = Math.min(liveInnerWidth, containedDocumentBudget);
     const probe = element.cloneNode(true);
     probe.querySelectorAll('[id]').forEach((item) => item.removeAttribute('id'));
     probe.removeAttribute('id');
@@ -195,6 +200,8 @@ def browser_fit_plan_script(measurement_payload, zoom):
       intrinsic_outer_width_css_px: outerWidth,
       horizontal_chrome_css_px: horizontalChrome,
       inter_item_gap_css_px: gap,
+      live_inner_width_css_px: liveInnerWidth,
+      contained_document_budget_css_px: containedDocumentBudget,
       available_inner_width_css_px: availableInnerWidth,
     }};
   }};

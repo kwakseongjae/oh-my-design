@@ -4110,6 +4110,24 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(result.frozen_unstarted_cells).toHaveLength(4);
   });
 
+  it("records the provider-free contained carrier budget repair", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/carrier-contained-budget-repair-1.9.587/REPAIR.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.587",
+      status: "PROVIDER_FREE_REPAIR_GREEN",
+      provider_calls: 0,
+      actual_failure_artifact_replay: {
+        result: "pass",
+        before: { "canister-register": [1038, 1038, 1038] },
+        after: { "canister-register": [368, 298, 298], "custody-decision-target": [151.5, 116.5, 116.5] },
+      },
+      verification: { focused_skill_tests: "50/50 pass", actual_artifact_replay: "pass", provider_tokens: 0 },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
