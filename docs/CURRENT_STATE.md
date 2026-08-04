@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `f71c75b3` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.494 flight transfer preparation
+- 기준 커밋: `7bbe6b75` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.495 flight r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.495 r1 control은 valid 79/85 unresolved: 294.458s, 562,494 tokens다.
+- contrast와 atomic wrap은 green이나 390/320/actual200 overflow 33/103/206px가 남았다.
+- bare boolean `data-primary-action` cardinality assertion이 helper 문법을 위반해 static closure open/browser attempts0/shipped runner false/proof fail이다.
+- TTT 50,999,080+ / unavailable 6. 다음은 fixed 120s pacing 뒤 r1 candidate no-retry다.
 
 - 1.9.494는 `/private/tmp/u19493-vendors` exact detached control/candidate와 `/private/tmp/u19493` six untouched cells를 준비했다.
 - equality 6/6, product tree 동일, source detached+clean, both-arm runner 3/3과 shared artifact gate를 검증했다.

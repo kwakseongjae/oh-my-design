@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.495 flight r1 control
+- exact control은 79/85, 294.458s, 562,494 tokens; narrow overflow가 남고 static assertion 문법 실패로 browser proof가 없었다.
+- 다음은 fixed pacing 뒤 exact visible atomic-fit r1 candidate no-retry다.
+
 ## 2026-08-04 (Codex) · 1.9.494 flight transfer preparation
 - detached exact sources와 six untouched cells/equality/runner isolation/browser/CLI/auth preflight를 완료했다.
 - provider 0. 다음은 Luna/high r1 control no-retry다.
