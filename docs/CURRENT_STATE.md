@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `54749710` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.631 rail-signal r1 control checkpoint
+- 기준 커밋: `545ec6a1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.632 rail-signal matrix freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.632 r1 candidate는 valid83/85, 407,942ms, 1,320,225 tokens다. zero-attempt marker2는 작동했지만 measured plan-close rejection 뒤 성공 plan0, 제품 edit1, static/browser closure red다.
+- desktop action separation도 false라 UI-resolved가 아니며 candidate UI/proof/plan 3/3 최대치가 각각2로 내려갔다. remaining4는 untouched freeze했다.
+- wall0.649×/tokens0.460×는 품질·proof red라 효율 홍보 근거가 아니다. 누적 TTT111,241,511+ / unavailable6. 다음은 measured plan 결과 보존+재측정 없는 reconcile+pre-edit enforcement 수리다.
 
 - 1.9.631 r1 control은 valid85/85, UI-resolved, 628,966ms, 2,871,023 tokens다. responsive/a11y/evidence와 proof gate가 모두 green이다.
 - control은 제품 edit 전에 measured plan을 닫았지만 external snapshot 명령에서 validation failure8/success2, plan runner failure2/success1을 소비했다. candidate가 제거하려는 orchestration debt의 실제 기준선이다.
@@ -3014,9 +3018,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fixed120s pacing 뒤 browser/CLI/auth/evaluator preflight를 다시 확인한다.
-2. `luna-rail-r1-candidate`를 no-retry로 한 번 실행한다.
-3. r1 pair의 UI/proof/plan-order/efficiency를 checkpoint하고 promotion reachability를 판단한다.
+1. provider-free로 measured fit-plan 결과를 semantic close 실패 전 artifact에 보존한다.
+2. browser 재측정 없이 artifact만 고쳐 plan을 reconcile하는 명령을 추가한다.
+3. reconciled plan-close+guardrails 전 제품 mutation을 fail-closed하고 실제 r1 artifact로 회귀 검증한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

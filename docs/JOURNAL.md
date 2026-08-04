@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.632 rail-signal matrix freeze
+- r1 candidate는 valid83/85, proof red, 407942ms, 1320225 tokens다.
+- zero-attempt marker2는 동작했지만 measured plan-close rejection 뒤 제품을 수정해 closure를 잃었다.
+- remaining4 freeze, TTT111241511+; 다음은 measured-plan persist+reconcile+pre-edit enforcement 수리다.
+
 ## 2026-08-05 (Codex) · 1.9.631 rail-signal r1 control checkpoint
 - r1 control은 valid85/85, proof green, 628966ms, 2871023 tokens다.
 - external snapshot validation failure8/success2와 plan runner failure2/success1 뒤 pre-edit plan을 닫았다.

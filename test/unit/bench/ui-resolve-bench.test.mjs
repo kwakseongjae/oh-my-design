@@ -5299,6 +5299,59 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("freezes the rail-signal matrix when the candidate loses plan closure and UI quality", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/rail-signal-plan-bootstrap-luna-1.9.628/SUMMARY.final.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.632",
+      status: "FROZEN_PROMOTION_UNREACHABLE_PLAN_CLOSE_AND_UI_RED",
+      promotion: false,
+      provider_calls: 2,
+      completed_cells: 2,
+      r1: {
+        control: { score: 85, ui_resolved: true, proof_pass: true, wall_time_ms: 628966, tokens: 2871023 },
+        candidate: { score: 83, ui_resolved: false, proof_pass: false, wall_time_ms: 407942, tokens: 1320225 },
+      },
+      candidate_plan_behavior: {
+        zero_attempt_validation_markers: 2,
+        measured_plan_attempts: 1,
+        measured_plan_close_rejections: 1,
+        forbidden_measured_attempt_reruns: 1,
+        successful_plan_closes: 0,
+        product_edit_before_successful_plan_close: 1,
+        static_closure_state: "open",
+        final_browser_attempts: 0,
+        artifact_closed: false,
+        shipped_runner_invoked: true,
+      },
+      candidate_objective_failure: {
+        responsive_pass: false,
+        desktop_action_spatially_separated: false,
+      },
+      promotion_reachability: {
+        maximum_reachable_ui_resolved_trials: 2,
+        maximum_reachable_proof_compliant_trials: 2,
+        maximum_reachable_successful_plan_close_trials: 2,
+        candidate_product_edit_before_plan_violations: 1,
+        required_each: 3,
+        promotion_reachable: false,
+      },
+      paired_efficiency: {
+        candidate_control_wall_time_ratio: 0.649,
+        candidate_control_token_ratio: 0.46,
+        causal_efficiency_claim_allowed: false,
+      },
+      tokens_to_target: {
+        cumulative_observed_provider_tokens_minimum: 111241511,
+        usage_unavailable_cells: 6,
+        goal_status: "right-censored-open",
+      },
+    });
+    expect(result.frozen_unstarted_cells).toHaveLength(4);
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
