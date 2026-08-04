@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.510 rail matrix frozen
+- candidate 85/85지만 post-edit-only selector가 pre-edit type을 null로 만들어 proof fail했다.
+- static absence objective는 green; 잔여4셀 frozen, TTT56,409,193+. 다음은 provider-free selector provenance repair다.
+
 ## 2026-08-04 (Codex) · 1.9.509 rail r1 control
 - control 85/85+proof pass, 259.353s/580,237 tokens; exact attach와 세 조건 모두 green이다.
 - TTT55,689,402+; 다음은 fixed pacing 뒤 r1 candidate no-retry다.

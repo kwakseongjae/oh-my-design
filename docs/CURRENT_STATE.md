@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `44661e2d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.509 rail r1 control
+- 갱신: 2026-08-04 · 1.9.510 rail matrix frozen
 
 ## 지금 (현재 위치)
+
+- 1.9.510 r1 candidate는 valid UI-resolved 85/85지만 proof fail이다: 269.608s, 719,791 tokens, control 대비 wall1.0395×/token1.2405×다.
+- static absence guardrail은 exactly-once close를 통과했다. 그러나 edit에서 새로 만든 `.event-log-form` class를 pre-edit selector로 등록해 form-save 기준값이 null이 됐고 artifact가 open이다.
+- candidate Reliability@3 최대 2/3이라 잔여4셀을 frozen했다. TTT56,409,193+ / unavailable6. 다음은 provider-free selector provenance lock/evaluator repair다.
 
 - 1.9.509 r1 control은 valid UI-resolved+proof pass 85/85: 259.353s, 580,237 tokens다.
 - edit1/static1/browser1, existing attach/no-launch, 390/320/actual200, recovery0/duplicate0/post-ready0, closure closed다.
