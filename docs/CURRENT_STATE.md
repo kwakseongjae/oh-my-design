@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `7eda8559` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.501 grid waveform matrix preparation
+- 기준 커밋: `0b6aaf1a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.502 grid r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.502 r1 control은 valid UI-resolved 85/85: 313.635s, 644,344 tokens다.
+- edit1/static1/browser1, existing attach/no-launch, 세 조건, recovery0/duplicate0/post-ready0는 green이다.
+- control이 capture-window actual weight700을 400으로 추정했고 긴 decision evidence를 atomic row로 넣어 artifact가 open, proof fail이다. TTT 52,378,352+ / unavailable6이다.
+- 다음은 preregistered 120s pacing 뒤 r1 candidate no-retry다.
 
 - 1.9.501은 `/private/tmp/u19500-vendors` exact detached control/candidate와 `/private/tmp/u19500` six untouched cells를 준비했다.
 - equality 6/6, product tree identical6, source detached+clean2, control/candidate shipped runner 3/3, candidate snapshot/computed-type/target-only gate 3/3다.
@@ -2503,9 +2508,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. r1 control을 Luna/high, 900s, no-retry로 실행한다.
-2. fixed 120s pacing 뒤 r1 candidate를 실행한다.
-3. pair 결과로 Reliability@3 continuation 또는 mathematical freeze를 결정한다.
+1. fixed 120s pacing 뒤 r1 candidate를 Luna/high, 900s, no-retry로 실행한다.
+2. pair 결과로 Reliability@3 continuation 또는 mathematical freeze를 결정한다.
+3. proof root cause가 새롭다면 provider-free repair, 아니면 preregistered continuation을 수행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
