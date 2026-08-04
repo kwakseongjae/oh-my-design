@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `9d619f2f` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.574 subsea self-dispatch matrix preparation
+- 기준 커밋: `10fe231c` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.575 Luna Max one-prompt comparison plan
 
 ## 지금 (현재 위치)
+
+- Luna Max 원프롬프트 비교는 `benchmarks/ui-resolve-bench/LUNA-MAX-ONE-PROMPT.md`와 machine plan v0.1로 분리 설계했다.
+- portable skill 7-arm×3 Preview와 Harness Pareto를 분리하고 exact model attribution/source refresh/task+prompt pin 전 실행 금지, 전 결과·실패 공개, median+range 시간/토큰 문구를 고정했다. provider0이다.
+- 이는 바이럴 Preview 기획이며 24 hidden×10×3 model-family 2.0.0 Verified gate를 대체하지 않는다.
 
 - 1.9.574는 `/private/tmp/u19573-vendors` exact detached control/candidate와 `/private/tmp/u19573` six untouched cells를 준비했다.
 - equality6/6, product tree identical6, detached+clean2, candidate self-dispatch+pre-edit carrier anchor guardrail을 확인했다. provider0이다.
@@ -2797,6 +2801,7 @@
 
 ## 막힘 / 대기 (없으면 "없음")
 
+- named browser `bench19366` preflight는 Chrome remote debugging 연결이 없어 red다. 모델 셀은 시작하지 않았으며 Chrome에서 remote debugging을 허용한 뒤 동일 preflight를 재실행한다.
 - Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다. locked benchmark payload의 외부 전송은 standing-approved다.
 - Cursor Composer Provider가 1.9.51/1.9.52와 1.9.56에서 `resource_exhausted`를 반환했다. account-wide quota는 short Composer/Grok probes로 배제했지만 long-form Composer lane은 deferred다.
 - Cursor Grok 4.5 High도 1.9.57에서 4개 long-form cell 뒤 `resource_exhausted`로 stop됐다. immediate Grok replacement는 금지한다.

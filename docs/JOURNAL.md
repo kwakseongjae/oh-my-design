@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · Luna Max one-prompt plan v0.1
+- portable 7-arm Preview와 Harness Track을 분리하고 실행 전 attribution/source/task pin gates를 고정했다.
+- median+range 시간/토큰, all-run 공개, no-retry/no-manual-edit다; provider0.
+- `bench19366`은 Chrome remote-debugging 부재로 preflight red, 셀 실행0이다.
+
 ## 2026-08-04 (Codex) · 1.9.574 subsea matrix preparation
 - exact detached control/candidate와 untouched Luna/high 2×3 cells를 준비했다.
 - equality6/6, provider0; 다음 r1 control 전 runtime preflight다.

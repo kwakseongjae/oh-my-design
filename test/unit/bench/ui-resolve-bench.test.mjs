@@ -3775,6 +3775,49 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("keeps the Luna Max one-prompt preview honest and separate from Verified claims", () => {
+    const plan = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/plans/luna-max-one-prompt-v0.1.json",
+    ), "utf8"));
+    expect(plan).toMatchObject({
+      status: "DRAFT_PROVIDER_ZERO",
+      provider_calls: 0,
+      model_contract: {
+        marketing_label: "Luna Max",
+        exact_model_selector: null,
+        attribution_required_for_publication: true,
+      },
+      portable_skill_track: {
+        trials_per_arm_preview: 3,
+        trials_per_task_verified: 10,
+        max_concurrency: 1,
+        retry_policy: "none-primary",
+        manual_product_edits_allowed: false,
+        hooks_allowed: false,
+      },
+      harness_track: { separate_from_portable_ranking: true },
+      publication: {
+        publish_all_runs: true,
+        publish_failures_and_timeouts: true,
+        headline_statistic: "median with min/max and success denominator",
+        best_of_cherry_pick_forbidden: true,
+        global_best_claim_allowed: false,
+      },
+    });
+    expect(plan.portable_skill_track.arms).toEqual([
+      "baseline",
+      "raw-design-md",
+      "anthropic-frontend-design",
+      "taste-skill",
+      "impeccable-prompt-only",
+      "ui-ux-pro-max",
+      "omd-portable",
+    ]);
+    expect(plan.execution_forbidden_until).toContain("exact_model_selector_pinned");
+    expect(plan.execution_forbidden_until).toContain("competitor_sources_refreshed_and_frozen");
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
