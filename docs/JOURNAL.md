@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.522 wafer matrix preparation
+- exact detached control/candidate와 six untouched cells를 준비했다.
+- equality6/6, clean2, shared runner6/6, candidate guardrail5/5, provider0다.
+
 ## 2026-08-04 (Codex) · 1.9.521 wafer transfer preregistration
 - exact 1.9.511 control vs 1.9.518 candidate를 Luna/high 2×3으로 고정했다.
 - debt binding·planning16/measurement8·static1/browser1, attempt35/provider0다.

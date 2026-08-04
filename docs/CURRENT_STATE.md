@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.521 wafer acceptance-debt transfer preregistration
+- 갱신: 2026-08-04 · 1.9.522 wafer matrix preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.522는 `/private/tmp/u19521-vendors` exact detached control/candidate와 `/private/tmp/u19521` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, source detached+clean2, shared runner6/6, candidate debt/manifest/row/16px guardrail5/5다. provider0이다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
 
 - 1.9.521은 exact 1.9.511 control `b0aa9d5a…` vs exact 1.9.518 candidate `8d647987…`를 fresh wafer task에 Luna/high 2×3으로 사전등록했다.
 - both-arm shipped runner, named consumer/no-launch, pre-edit debt+selector binding, planning16px/measurement8px, static1/browser1을 고정했다.
@@ -2584,9 +2588,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. exact detached control/candidate vendors와 fresh six cells를 준비한다.
-2. source clean/detached, product equality6/6, shipped runner/debt guardrail parity를 증명한다.
-3. runtime browser/CLI/auth preflight 뒤 r1 control을 no-retry로 실행한다.
+1. exact named consumer browser와 Codex/Luna auth를 preflight한다.
+2. `luna-wafer-r1-control`을 Luna/high 900s no-retry로 실행한다.
+3. 결과를 독립 평가·proof trace·TTT에 반영하고 120s pacing 뒤 candidate로 진행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

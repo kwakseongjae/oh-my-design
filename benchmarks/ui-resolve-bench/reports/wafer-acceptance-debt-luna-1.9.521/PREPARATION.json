@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.522",
+  "experiment_id": "wafer-acceptance-debt-luna-1.9.521",
+  "status": "SIX_CELLS_PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19521",
+  "vendors_root": "/private/tmp/u19521-vendors",
+  "locked_plan_sha256": "cd84edc8b37b95c73a698a4dc43d3dfe1bdb6796efbcaecd4b90d8d9f819b344",
+  "equality": {
+    "scheduled_cells": 6,
+    "prepared_cells": 6,
+    "core_prompt_equal": 6,
+    "prompt_equal": 6,
+    "starter_equal": 6,
+    "product_tree_equal": 6,
+    "runtime_equal": 6,
+    "model_equal": 6,
+    "effort_equal": 6,
+    "timeout_equal": 6
+  },
+  "source_attestation": {
+    "control": {
+      "commit": "b0aa9d5a95b3e60bd2c1652cc13773e51954820c",
+      "detached": true,
+      "clean": true
+    },
+    "candidate": {
+      "commit": "8d647987fbcacabcf406c6eb393d8d40330ced05",
+      "detached": true,
+      "clean": true
+    }
+  },
+  "installed_source_sha256": {
+    "control_skill": "7bae4d81a4388442ae31643b11fa28450486f43bd3e252586924e2bc3f7c94ba",
+    "candidate_skill": "69a01441a61768751b46d5992b5b646c53410b0804be3c58a6c602785aca67e1",
+    "shared_browser_runner": "bbd1b2629037381873d230ce15c07a1b97275fc04ab327e51f0d6df1d4b309b3",
+    "control_artifact_helper": "89f254c5f44a6338dacecee1a7b81675158b26b0587775ae5a5197172fd8843f",
+    "candidate_artifact_helper": "f913682ecc5796866467d9bb296c7c01be075e021a321249bd9eec6d7e501025"
+  },
+  "candidate_guardrail_presence": {
+    "skill_acceptance_debt_rule": true,
+    "helper_debt_manifest_binding": true,
+    "helper_browser_debt_row_binding": true,
+    "planned_fit_reserve_16": true,
+    "measured_fit_reserve_8": true
+  },
+  "next": "Run luna-wafer-r1-control once with Luna/high and no retry; runtime preflight must confirm the exact named consumer browser and auth before provider execution."
+}
