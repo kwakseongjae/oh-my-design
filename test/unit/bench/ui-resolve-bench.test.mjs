@@ -2870,6 +2870,49 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).not.toMatch(/<wbr\b|<br\b|&shy;|\u200b/i);
   });
 
+  it("preregisters exact measured pre-edit fit planning on the unseen observatory task", () => {
+    const matrix = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/observatory-measured-fit-plan-luna-1.9.528/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(matrix).toMatchObject({
+      product_version: "1.9.528",
+      status: "locked-awaiting-fresh-preparation",
+      task_lock_contract: {
+        task_id: "observatory-frame-calibration-review-v0.1",
+        source_commit: "ff00df37143e615b1e50e6540b11929cf913793a",
+        prior_control_exposures: 0,
+        prior_candidate_exposures: 0,
+      },
+      control_source_contract: { source_commit: "8d647987fbcacabcf406c6eb393d8d40330ced05" },
+      candidate_source_contract: { source_commit: "b3b83bf7cc3808c643beb34934ad1096ee334270" },
+      pre_edit_fit_plan_contract: {
+        candidate_required: true,
+        control_required: false,
+        browser_snapshot_before_product_edit: true,
+        named_plan_mode_required: true,
+        oracle: "intrinsic-nowrap-text-width",
+        planning_reserve_css_px: 16,
+        plan_close_before_product_edit: true,
+      },
+      promotion_gates: {
+        candidate_system_id: "luna-measured-pre-edit-fit-plan-candidate",
+        ui_resolved_trials_required: 3,
+        proof_compliant_trials_required: 3,
+        measured_fit_plan_trials_required: 3,
+      },
+    });
+    expect(matrix.cells).toHaveLength(6);
+    expect(matrix.cells.map((cell) => cell.system_id)).toEqual([
+      "luna-acceptance-debt-control",
+      "luna-measured-pre-edit-fit-plan-candidate",
+      "luna-measured-pre-edit-fit-plan-candidate",
+      "luna-acceptance-debt-control",
+      "luna-acceptance-debt-control",
+      "luna-measured-pre-edit-fit-plan-candidate",
+    ]);
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);
