@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 
 const IGNORED_EDIT_DIRECTORIES = new Set([
@@ -250,7 +251,10 @@ function artifactProofReasons(artifact, gate, context) {
     || gate.require_exact_named_consumer_attachment === true
     || gate.require_actual_zoom_observation === true
     || gate.require_character_range_line_oracle === true
-    || gate.require_locked_typography === true;
+    || gate.require_locked_typography === true
+    || gate.require_pre_edit_product_snapshot === true
+    || gate.require_computed_pre_edit_typography === true
+    || gate.comparison_scroll_requires_target_only_registered_carrier === true;
   if (!enabled) return { reasons: [], observed: null };
   if (!artifact || typeof artifact !== "object" || Array.isArray(artifact)) {
     return { reasons: ["reflow-artifact-missing"], observed: { artifact_present: false } };
@@ -304,10 +308,31 @@ function artifactProofReasons(artifact, gate, context) {
     ));
     if (!conditions.length || overflow) reasons.push("reflow-document-overflow-limit");
   }
-  if (gate.require_locked_typography === true) {
+  const snapshot = artifact.pre_edit_product_snapshot;
+  const snapshotSource = typeof snapshot?.source_base64 === "string"
+    ? Buffer.from(snapshot.source_base64, "base64")
+    : null;
+  const snapshotHashValid = snapshotSource !== null
+    && /^[a-f0-9]{64}$/u.test(String(snapshot?.sha256 ?? ""))
+    && createHash("sha256").update(snapshotSource).digest("hex") === snapshot.sha256;
+  if (gate.require_pre_edit_product_snapshot === true && !snapshotHashValid) {
+    reasons.push("reflow-pre-edit-product-snapshot-invalid");
+  }
+  if (gate.require_locked_typography === true || gate.require_computed_pre_edit_typography === true) {
     const changed = (artifact.row_groups ?? []).some((row) => {
       const measurements = row?.final?.measurements;
       if (!Array.isArray(measurements) || measurements.length !== REQUIRED_REFLOW_CONDITIONS.length) return true;
+      if (row.typography_contract?.source === "deterministic-pre-edit-snapshot") {
+        return !snapshotHashValid || measurements.some((value) => (
+          value.pre_edit_snapshot_sha256 !== snapshot.sha256
+          || !Number.isFinite(value.pre_edit_font_size_px)
+          || !Number.isFinite(value.pre_edit_line_height_px)
+          || value.pre_edit_font_weight === undefined
+          || value.observed_font_size_px !== value.pre_edit_font_size_px
+          || value.observed_line_height_px !== value.pre_edit_line_height_px
+          || String(value.observed_font_weight) !== String(value.pre_edit_font_weight)
+        ));
+      }
       return measurements.some((value) => (
         value.observed_font_size_px !== row.typography_contract?.font_size_px
         || value.observed_line_height_px !== row.typography_contract?.line_height_px
@@ -315,6 +340,22 @@ function artifactProofReasons(artifact, gate, context) {
       ));
     });
     if (changed) reasons.push("reflow-locked-typography-changed");
+  }
+  if (gate.comparison_scroll_requires_target_only_registered_carrier === true) {
+    const invalidCarrier = (artifact.row_groups ?? [])
+      .filter((row) => row.decision === "comparison-scroll")
+      .some((row) => {
+        const selector = row.scroll_contract?.container_selector;
+        const carriers = (artifact.carriers ?? []).filter((carrier) => carrier.selector === selector);
+        return !selector
+          || selector === row.selector
+          || carriers.length !== 1
+          || carriers[0].expected_count !== 1
+          || !Array.isArray(carriers[0].binds_row_groups)
+          || carriers[0].binds_row_groups.length !== 1
+          || carriers[0].binds_row_groups[0] !== row.id;
+      });
+    if (invalidCarrier) reasons.push("reflow-target-only-carrier-contract-missing");
   }
   if (Number.isFinite(gate.minimum_inline_fit_reserve_css_px)) {
     const insufficient = (artifact.row_groups ?? []).some((row) => (

@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { describe, expect, it } from "vitest";
 import {
   classifyProofCommand,
@@ -322,5 +323,103 @@ describe("proof trace contract", () => {
         "reflow-artifact-not-closed",
       ]),
     });
+  });
+
+  it("accepts sha-verified snapshot typography and a registered target-only comparison carrier", () => {
+    const source = Buffer.from("<p>pre-edit product</p>");
+    const sha256 = createHash("sha256").update(source).digest("hex");
+    const conditions = [
+      { id: "390", viewport_width: 390, zoom: 1, observed_document_zoom: 1, document_scroll_width: 390, document_client_width: 390, body_scroll_width: 390, body_client_width: 390 },
+      { id: "320", viewport_width: 320, zoom: 1, observed_document_zoom: 1, document_scroll_width: 320, document_client_width: 320, body_scroll_width: 320, body_client_width: 320 },
+      { id: "200pct", viewport_width: 640, zoom: 2, observed_document_zoom: 2, document_scroll_width: 320, document_client_width: 320, body_scroll_width: 320, body_client_width: 320 },
+    ];
+    const artifact = {
+      pre_edit_product_snapshot: {
+        product_path: "index.html",
+        sha256,
+        source_base64: source.toString("base64"),
+      },
+      static_closure: { state: "passed", attempts: 1 },
+      browser_attempt: {
+        attempts: 1,
+        outcome: "measured",
+        oracle: "character-range-line-tops",
+        connection: { connection_name: "bench-test", attached_existing: true, launched_browser: false },
+        conditions,
+      },
+      invariants: { all_registered_carriers_closed: true },
+      closure: { state: "closed" },
+      known_failure_closure: { state: "closed" },
+      carriers: [{
+        id: "target-comparison",
+        selector: "[data-target-comparison]",
+        expected_count: 1,
+        binds_row_groups: ["target"],
+      }],
+      row_groups: [{
+        id: "target",
+        selector: "[data-target]",
+        decision: "comparison-scroll",
+        scroll_contract: { container_selector: "[data-target-comparison]" },
+        typography_contract: { source: "deterministic-pre-edit-snapshot" },
+        final: {
+          passive_text_scroll_container: false,
+          measurements: conditions.map(({ id }) => ({
+            id,
+            observed_font_size_px: 18,
+            observed_line_height_px: 27.9,
+            observed_font_weight: "700",
+            pre_edit_snapshot_sha256: sha256,
+            pre_edit_font_size_px: 18,
+            pre_edit_line_height_px: 27.9,
+            pre_edit_font_weight: "700",
+            inline_reserve_css_px: -120,
+          })),
+        },
+      }],
+    };
+    const trace = {
+      analyzable: true,
+      browser_recovery_count: 0,
+      duplicate_static_closure_count: 0,
+      verification_after_ready_count: 0,
+      revisions: [{
+        commands: [{ browser: true, command: "browser-harness < /skill/scripts/reflow-browser.py" }],
+      }],
+    };
+    const gate = {
+      enforcement: "promotion-report",
+      require_analyzable: true,
+      max_browser_recovery_count: 0,
+      max_duplicate_static_closure_count: 0,
+      max_verification_after_ready_count: 0,
+      require_closed_reflow_artifact: true,
+      require_measured_browser_attempt: true,
+      require_character_range_line_oracle: true,
+      require_actual_zoom_observation: true,
+      require_exact_named_consumer_attachment: true,
+      forbid_launched_browser: true,
+      require_locked_typography: true,
+      require_pre_edit_product_snapshot: true,
+      require_computed_pre_edit_typography: true,
+      comparison_scroll_requires_target_only_registered_carrier: true,
+      minimum_inline_fit_reserve_css_px: 8,
+      max_document_overflow_px: 0,
+      max_passive_protected_text_scroll_containers: 0,
+      shipped_runner_system_ids: ["candidate"],
+      shipped_runner_command_suffix: "scripts/reflow-browser.py",
+    };
+    expect(evaluateProofExecutionGate(trace, gate, {
+      reflowArtifact: artifact,
+      systemId: "candidate",
+      expectedConnectionName: "bench-test",
+    })).toMatchObject({ pass: true, reasons: [] });
+
+    artifact.row_groups[0].final.measurements[1].observed_line_height_px = 21.7;
+    expect(evaluateProofExecutionGate(trace, gate, {
+      reflowArtifact: artifact,
+      systemId: "candidate",
+      expectedConnectionName: "bench-test",
+    }).reasons).toContain("reflow-locked-typography-changed");
   });
 });

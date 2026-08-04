@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.503 grid r1 candidate + evaluator repair
+- candidate 85/85+proof pass, 312.356s/824,978 tokens; computed type·target-only carrier·unresolved0가 green이다.
+- snapshot contract를 legacy contract로 읽던 evaluator false negative를 provider/model/product mutation 없이 수리했다.
+- TTT 53,203,330+; 다음은 preregistered r2 candidate no-retry다.
+
 ## 2026-08-04 (Codex) · 1.9.502 grid r1 control
 - control 85/85, 313.635s/644,344 tokens; trace와 consumer browser attach는 green이다.
 - capture-window weight 추정 오류+긴 evidence atomic 오분류로 artifact open/proof fail, TTT 52,378,352+다.
