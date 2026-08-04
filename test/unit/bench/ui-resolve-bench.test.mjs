@@ -4789,6 +4789,47 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ]);
   });
 
+  it("prepares six equal untouched runway cells from exact detached sources", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/runway-content-box-transfer-luna-1.9.619/PREPARATION.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.621",
+      status: "PREPARED_PROVIDER_ZERO",
+      provider_calls: 0,
+      scheduled_cells: 6,
+      prepared_cells: 6,
+      equality_attestation: {
+        core_prompt_equal: 6,
+        starter_equal: 6,
+        product_tree_equal: 6,
+        runtime_equal: 6,
+        model_equal: 6,
+        effort_equal: 6,
+        timeout_equal: 6,
+      },
+      source_attestation: {
+        control: { commit: "e8a6f083f5cb278d18d1ab812b7d154a486a8c1b", detached: true, clean: true },
+        candidate: { commit: "0c4af9273a19bbb7cdcf6a17ef2a58f3627f1419", detached: true, clean: true },
+      },
+      isolated_delta_guardrail: {
+        control_uses_context_rect_width: true,
+        control_uses_carrier_rect_width: true,
+        candidate_uses_context_client_width: true,
+        candidate_uses_carrier_offset_width: true,
+        all_three_control_cells_match: true,
+        all_three_candidate_cells_match: true,
+      },
+      execution_contract: {
+        next_cell: "luna-runway-r1-control",
+        max_new_cells: 1,
+        retry: false,
+        inter_cell_delay_seconds: 120,
+      },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

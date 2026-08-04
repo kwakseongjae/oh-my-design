@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.621 runway matrix preparation
+- exact detached clean vendors2와 six untouched Luna/high cells를 준비했다.
+- equality6/6이며 control rect/rect, candidate clientWidth/offsetWidth isolated delta를 확인했다. provider0다.
+- 다음은 preflight 후 r1 control no-retry 단일 실행이다.
+
 ## 2026-08-05 (Codex) · 1.9.620 runway content-box matrix lock
 - executable schema0.3 C/T/T/C/C/T Luna/high matrix를 잠갔다.
 - 양 arm은 동일 proof/UI 계약이며 candidate만 content-box 좌표계를 사용한다. provider0다.

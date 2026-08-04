@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `101ac26a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.620 runway content-box executable matrix lock
+- 기준 커밋: `39894708` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.621 runway content-box matrix preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.621은 `/private/tmp/u19620-vendors` exact detached clean sources와 `/private/tmp/u19620` six untouched Luna/high cells를 준비했다.
+- prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이며 control은 rect/rect, candidate는 clientWidth/offsetWidth다. provider0다.
+- 다음은 browser/CLI/auth/evaluator/proof-policy preflight 후 `luna-runway-r1-control` no-retry 단일 실행이다.
 
 - 1.9.620은 executable schema0.3 matrix를 잠갔다. order C/T/T/C/C/T, Luna/high, timeout900, pacing120, no-retry다.
 - 양 arm의 desktop/narrow/fail-closed/nested/contained/evidence 계약은 같고 candidate만 content-box 좌표계가 다르다. provider0다.
