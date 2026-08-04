@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.616 content-box source pin
+- repair commit0c4af927/source tree24cbffc7/skill tree300b89c7을 exact pin했다.
+- candidate `omd-content-box-decision-context-candidate`, vendor1.9.615, provider0다.
+- 다음 genuinely unseen task baseline이다.
+
 ## 2026-08-05 (Codex) · 1.9.615 content-box verifier repair
 - context clientWidth-padding와 carrier offsetWidth로 border/zoom 좌표계 false negative를 제거했다.
 - actual failed candidate replay가 4조건 full-row pass+OMD_DELIVERY_READY다.

@@ -3,10 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `b2b71a23` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.615 decision-context content-box repair green
+- 기준 커밋: `0c4af927` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.616 content-box decision-context exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.616은 repair commit `0c4af927...`, source tree `24cbffc7...`, skill tree `300b89c7...`를 exact pin했다.
+- 새 candidate는 `omd-content-box-decision-context-candidate`, vendor `omd-1.9.615`, provider0/promotion false다. 다음 genuinely unseen task baseline이다.
 
 - 1.9.615 provider-free repair는 context를 `clientWidth-padding`, carrier를 `offsetWidth`로 비교해 border와 zoom 좌표계 오판을 제거했다.
 - 실제 실패 candidate artifact copy replay가 desktop1068=1068, 390 320=320, 320/actual200 250=250으로 모두 pass하고 `OMD_DELIVERY_READY`가 됐다.

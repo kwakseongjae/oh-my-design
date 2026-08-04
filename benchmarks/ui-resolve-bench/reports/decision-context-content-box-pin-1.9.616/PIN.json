@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.616",
+  "status": "PINNED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "candidate": {
+    "system_id": "omd-content-box-decision-context-candidate",
+    "vendor_version": "omd-1.9.615",
+    "source_commit": "0c4af9273a19bbb7cdcf6a17ef2a58f3627f1419",
+    "source_tree": "24cbffc73ca56036cb73e13f33c69bcb9b9f8aa0",
+    "skill_tree": "300b89c75a5c075c07ea82446185334005b91808",
+    "artifacts": {
+      "skill_sha256": "5fbcfe16dae90f0cc9333378b0026128a90ddf8ba9169e4201086eddb7046bbd",
+      "reflow_artifact_sha256": "6b9ac983903e1fff18f4a6b6048e3f5ded761b5904c72ad4d23aa1542b02e665",
+      "reflow_browser_sha256": "e3ba580adda4c7be774e870bca599a05cc97e82275fca31672b0109c6c48f368"
+    }
+  },
+  "repair_contract": {
+    "desktop_final_decision_context": true,
+    "missing_final_observation_fails_closed": true,
+    "nested_comparison_carrier_rejected_pre_edit": true,
+    "context_width_uses_client_width_minus_padding": true,
+    "carrier_width_uses_offset_width": true,
+    "zoom_coordinate_space_consistent": true
+  },
+  "claim_boundary": "This pin identifies the exact provider-free verifier repair. It has not passed a fresh model-run transfer matrix.",
+  "next": "Create and baseline a genuinely unseen task before exposing it to either the historical control or this candidate."
+}

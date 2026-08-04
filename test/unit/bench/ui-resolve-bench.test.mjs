@@ -4617,6 +4617,30 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("pins the exact content-box decision-context candidate before fresh model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/decision-context-content-box-pin-1.9.616/PIN.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.616",
+      status: "PINNED_PROVIDER_ZERO",
+      provider_calls: 0,
+      candidate: {
+        system_id: "omd-content-box-decision-context-candidate",
+        vendor_version: "omd-1.9.615",
+        source_commit: "0c4af9273a19bbb7cdcf6a17ef2a58f3627f1419",
+        source_tree: "24cbffc73ca56036cb73e13f33c69bcb9b9f8aa0",
+        skill_tree: "300b89c75a5c075c07ea82446185334005b91808",
+      },
+      repair_contract: { context_width_uses_client_width_minus_padding: true, carrier_width_uses_offset_width: true, zoom_coordinate_space_consistent: true },
+    });
+    expect(competitors.variants["omd-content-box-decision-context-candidate"]).toMatchObject({
+      vendor_dir: "omd-1.9.615",
+      commit: "0c4af9273a19bbb7cdcf6a17ef2a58f3627f1419",
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
