@@ -1,0 +1,15 @@
+{
+  "schema_version":"0.1","product_version":"1.9.563","pin_id":"runner-self-dispatch-1.9.563","source_commit":"bec454d5a452bdc3bc772173d754dec30d548564","source_tree":"babe4eb90ff3197503553f837475c11eafd0bb84","skill_tree":"b1c0bfac77b8c3ead7e82de30f2c1803030183f5","status":"PINNED","provider_calls":0,"quality_promotion":false,
+  "competitor":{"id":"omd-runner-self-dispatch-candidate","vendor_directory":"omd-1.9.562","exact_source_required":true},
+  "artifacts":{
+    "skills/omd-apply/SKILL.md":"ccd849758dee58f2abbb885f922801bb0d7cf58e10550231b8355fd217dc7401",
+    "skills/omd-apply/scripts/reflow-artifact.mjs":"1a3976a4bcef3ed448d9162ba059ad9e4876eda4a0e15ad89b0ea343641b8c5d",
+    "skills/omd-apply/scripts/reflow-browser.py":"b57a2a405fcbac8493d69df7e17f5d4d45685467df98bb3c1cdc14517d219927",
+    "benchmarks/ui-resolve-bench/experimental-skills/omd-decision-context-closure/SKILL.md":"8830c055ed16a4bc07c898114324d50e9d11dc48f795a829046a236aaffa4b7b",
+    "test/unit/skills/omd-reflow-artifact.test.mjs":"58c200121c556d9c040f93ffa89b6c3802da02814fb7f231b7fb2315995722ff",
+    "test/unit/skills/omd-apply-contract.test.mjs":"705e0b9b7bcc2795d7f423995dbe2bdca64fc9b6c081b9da6e4f535ee3c993f7",
+    "benchmarks/ui-resolve-bench/reports/runner-self-dispatch-1.9.562/SUMMARY.final.json":"360fc71e0aa93ec537fcd20aad23a3efa1430ee487cd37898a44699645f0e422"
+  },
+  "acceptance":{"plain_python_self_dispatch_before_artifact_access":true,"exact_named_browser_harness_path":true,"recursion_latch":true,"browser_launch_fallback":false,"provider_calls":0},
+  "next":"Lock a genuinely unseen task before provider exposure, then preregister an exact historical control against omd-1.9.562 under Reliability@3."
+}

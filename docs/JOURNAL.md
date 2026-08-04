@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.563 runner self-dispatch exact pin
+- 1.9.562를 exact commit/source tree/skill tree/artifact hashes와 `omd-1.9.562` vendor id로 고정했다.
+- provider0/promotion false; 다음 genuinely unseen task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.562 runner self-dispatch repair
 - plain-Python runner 오용을 artifact access 전 exact browser-harness stdin으로 self-dispatch하도록 수리했다.
 - focused89+parity1+lint green, full582 pass/1 skip/기존3 red, provider0; 다음 exact pin이다.

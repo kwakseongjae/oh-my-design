@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `6583bfef` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.562 runner self-dispatch repair
+- 기준 커밋: `bec454d5` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.563 runner self-dispatch exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.563은 1.9.562를 exact commit `bec454d5…`, source tree `babe4eb9…`, skill tree `b1c0bfac…`로 pin했다.
+- 새 competitor는 `omd-runner-self-dispatch-candidate`, vendor dir `omd-1.9.562`, provider0/promotion false다.
+- 다음은 genuinely unseen task를 provider 노출 전 lock한다.
 
 - 1.9.562 provider-free repair는 shipped runner를 plain Python으로 실수 호출해도 artifact access 전 exact `browser-harness` stdin으로 self-dispatch한다.
 - recursion latch를 두고 새 browser/engine fallback은 추가하지 않았다. focused89+parity1+lint+diff green, full582 pass/1 skip/기존3 red, provider0이다.
