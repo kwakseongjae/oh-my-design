@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.516 satellite r1 control
+- Luna/high control은 valid 79/85, 319.391s/637,185 tokens이다.
+- 2차 edit 후 browser terminal 미재실행으로 overflow·reserve·artifact closure가 red. 다음은 r1 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.515 satellite matrix preparation
 - exact detached sources와 six untouched cells, equality6/6, product tree identical6을 준비했다.
 - runner6/6, candidate selector guardrail3/3, provider0. 다음은 r1 control이다.

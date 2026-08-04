@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.515 satellite matrix preparation
+- 갱신: 2026-08-04 · 1.9.516 satellite r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.516 r1 control은 valid 79/85 unresolved: 319.391s, 637,185 tokens이다.
+- existing `bench19366` attach/no-launch와 390/320/actual200 1회 측정은 통과했지만, comparison target 528.28125px 폭과 action의 음수 reserve로 세 narrow 조건에서 overflow/clipping이 남았다.
+- 두 번째 product edit 후 static-close만 재실행하고 browser terminal을 재실행하지 않아 artifact open/proof fail이다. TTT57,046,378+ / unavailable6. 다음은 fixed 120s pacing 후 r1 candidate no-retry다.
 
 - 1.9.515는 `/private/tmp/u19514-vendors` exact detached control/candidate와 `/private/tmp/u19514` six untouched cells를 준비했다.
 - equality6/6, product tree identical6, source detached+clean2, shared runner6/6, candidate selector guardrail3/3다. provider0이다.
