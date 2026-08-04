@@ -3540,6 +3540,39 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("freezes subsea transfer when the decision target is omitted from the fit inventory", () => {
+    const summary = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-fit-strategy-luna-1.9.551/SUMMARY.final.json",
+    ), "utf8"));
+    expect(summary).toMatchObject({
+      product_version: "1.9.554",
+      status: "FROZEN_PROMOTION_IMPOSSIBLE",
+      promotion: false,
+      provider_calls: 2,
+      completed_cells: 2,
+      frozen_cells: 4,
+      candidate_reliability_at_3: {
+        observed_trials: 1,
+        proof_compliant_trials: 0,
+        maximum_possible_proof_compliant_trials: 2,
+        required: 3,
+        gate: "failed",
+      },
+      paired_r1: {
+        control: { objective: 77, ui_resolved: false, proof: false },
+        candidate: { objective: 85, ui_resolved: true, proof: false },
+        candidate_wall_time_ratio: 0.77,
+        candidate_token_ratio: 1.1984,
+      },
+      unresolved_failure: {
+        class: "decision-target-inventory-omission",
+        first_terminal_overflow_px: { "390": 69, "320": 139, actual_200pct_document: 264 },
+      },
+      tokens_to_target: { minimum: 73512685, usage_unavailable_cells: 6 },
+    });
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);

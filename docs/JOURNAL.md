@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.554 subsea transfer freeze
+- candidate UI85/85, 421.974s/1,884,435 tokens이나 decision target inventory 누락→terminal overflow→edit2로 proof red다.
+- R@3 최대2/3, 잔여4셀 frozen, TTT73,512,685+; 다음 target inventory completeness repair다.
+
 ## 2026-08-04 (Codex) · 1.9.553 subsea r1 control
 - Luna/high control은 valid77/85, 547.996s/1,572,472 tokens; direct-python plan misuse로 artifact/proof open이다.
 - narrow clipping4+target emphasis red, TTT71,628,250+; 다음 fixed pacing 뒤 r1 candidate다.

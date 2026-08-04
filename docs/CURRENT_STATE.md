@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `fb6aac1a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.553 subsea r1 control
+- 기준 커밋: `cc1637b9` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.554 subsea fit-strategy transfer freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.554 r1 candidate는 UI85/85, 421.974s/1,884,435 tokens로 control 대비 wall0.7700×/token1.1984×이나 proof red다.
+- feasibility8행과 identifier comparison carrier는 작동했지만 compound decision target을 inventory에서 누락해 첫 terminal document overflow69/139/264px, 이후 edit2로 UI만 green이고 artifact open이다.
+- candidate proof R@3 최대2/3이라 잔여4셀 frozen, TTT73,512,685+ / unavailable6이다. 다음은 provider-free decision-target inventory completeness gate다.
 
 - 1.9.553 Luna/high r1 control은 valid77/85, 547.996s, 1,572,472 tokens다. overflow/fragmentation/axe0이나 narrow clipping4+target emphasis red다.
 - 첫 plan을 `python3 runner`로 직접 실행해 `ensure_real_tab` undefined로 artifact를 infrastructure-error에 잠갔고, 이후 correct browser-harness도 pending이 아니어서 plan/static/browser proof가 open이다.
