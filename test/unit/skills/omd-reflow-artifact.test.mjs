@@ -239,6 +239,11 @@ describe("compact reflow artifact helper", () => {
     expect(runner).toContain("width: 'max-content'");
     expect(runner).toContain('"plan-close"');
     expect(runner).toContain('PRE_EDIT_SNAPSHOT_SOURCE = "deterministic-pre-edit-snapshot"');
+    expect(runner).toContain("OMD_PLAN_NOT_ATTEMPTED:");
+    expect(runner).toContain("the one measured pre-edit fit-plan attempt is already recorded; do not rerun it");
+    expect(runner).toContain('["node", str(helper_path), "snapshot", str(artifact_path)]');
+    expect(runner.indexOf('["node", str(helper_path), "snapshot", str(artifact_path)]'))
+      .toBeLessThan(runner.indexOf("ensure_real_tab()", runner.indexOf('if mode == "plan":')));
     expect(runner).toContain("browser_typography_script");
     expect(runner).toContain("pre_edit_snapshot_sha256");
     expect(runner).toContain("allowedScrollSelectors");
@@ -271,6 +276,98 @@ describe("compact reflow artifact helper", () => {
     expect(result.status).toBe(23);
     expect(result.stderr).toBe("");
     expect(readFileSync(capturePath, "utf8")).toBe(readFileSync(browserRunnerPath, "utf8"));
+  });
+
+  it("bootstraps a missing pre-edit snapshot before the measured browser attempt", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-plan-bootstrap-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const runnerPath = join(root, "instrumented-runner.py");
+    const browserMarker = join(root, "browser-called");
+    const input = draft();
+    input.pre_edit_fit_plan = { state: "pending" };
+    writeFileSync(artifactPath, JSON.stringify(input));
+    writeFileSync(
+      productPath,
+      '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""><span role="status">Ground review open</span></div>',
+    );
+    writeFileSync(
+      runnerPath,
+      `def ensure_real_tab():\n    Path(os.environ["OMD_TEST_BROWSER_MARKER"]).write_text("called")\n    raise RuntimeError("measured-browser-sentinel")\n\n${readFileSync(browserRunnerPath, "utf8")}`,
+    );
+
+    const result = spawnSync("python3", [runnerPath], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        BU_NAME: "bench-test",
+        OMD_REFLOW_MODE: "plan",
+        OMD_REFLOW_ARTIFACT: artifactPath,
+        OMD_REFLOW_PRODUCT: productPath,
+        OMD_REFLOW_HELPER: join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+        OMD_TEST_BROWSER_MARKER: browserMarker,
+      },
+    });
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).not.toContain("OMD_PLAN_NOT_ATTEMPTED");
+    expect(readFileSync(browserMarker, "utf8")).toBe("called");
+    const bootstrapped = JSON.parse(readFileSync(artifactPath, "utf8"));
+    expect(bootstrapped.pre_edit_product_snapshot).toMatchObject({
+      product_path: "index.html",
+      sha256: createHash("sha256").update(readFileSync(productPath, "utf8")).digest("hex"),
+    });
+    expect(bootstrapped.pre_edit_fit_plan).toMatchObject({
+      state: "infrastructure-error",
+      attempts: 1,
+      error: "measured-browser-sentinel",
+    });
+  });
+
+  it("does not consume the measured plan attempt when snapshot validation fails before navigation", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-plan-not-attempted-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const runnerPath = join(root, "instrumented-runner.py");
+    const browserMarker = join(root, "browser-called");
+    const input = draft();
+    input.pre_edit_fit_plan = { state: "pending" };
+    input.row_groups[0].selector = ".post-edit-only";
+    input.row_groups[0].typography_contract = { source: "deterministic-pre-edit-snapshot" };
+    writeFileSync(artifactPath, JSON.stringify(input));
+    writeFileSync(
+      productPath,
+      '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""><span role="status">Ground review open</span></div>',
+    );
+    writeFileSync(
+      runnerPath,
+      `def ensure_real_tab():\n    Path(os.environ["OMD_TEST_BROWSER_MARKER"]).write_text("called")\n\n${readFileSync(browserRunnerPath, "utf8")}`,
+    );
+
+    const result = spawnSync("python3", [runnerPath], {
+      cwd: root,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        BU_NAME: "bench-test",
+        OMD_REFLOW_MODE: "plan",
+        OMD_REFLOW_ARTIFACT: artifactPath,
+        OMD_REFLOW_PRODUCT: productPath,
+        OMD_REFLOW_HELPER: join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+        OMD_TEST_BROWSER_MARKER: browserMarker,
+      },
+    });
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("OMD_PLAN_NOT_ATTEMPTED:");
+    expect(result.stderr).toContain("does not consume the one measured plan attempt");
+    expect(() => readFileSync(browserMarker, "utf8")).toThrow();
+    const unchanged = JSON.parse(readFileSync(artifactPath, "utf8"));
+    expect(unchanged.pre_edit_product_snapshot).toBeUndefined();
+    expect(unchanged.pre_edit_fit_plan).toEqual({ state: "pending" });
   });
 
   it("accepts an exact named socket when the controller withholds the raw CDP endpoint", () => {

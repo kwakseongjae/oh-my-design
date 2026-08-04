@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `6513e19a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.623 runway matrix freeze
+- 기준 커밋: `051469e7` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.624 pre-edit plan self-bootstrap repair
 
 ## 지금 (현재 위치)
+
+- 1.9.624 provider-free repair는 plan runner가 missing snapshot을 browser navigation 전에 내부 helper로 원자적으로 잠그게 했다. pre-navigation validation red는 `OMD_PLAN_NOT_ATTEMPTED`로 분리되어 measured attempt0이며 artifact만 고쳐 exact plan command를 재실행할 수 있다.
+- 성공한 `plan-close`와 `static_edit_guardrails`가 없으면 product edit 금지다. valid-missing snapshot replay는 browser sentinel 전 snapshot lock, invalid selector replay는 browser0/artifact pending/no snapshot을 확인했다.
+- focused54/54 + report1/1 + py compile + lint + skill validate + diff green, provider0, 누적 TTT107,050,263+ / unavailable6이다. 전체 bench 파일의 4 red는 historical canonical-equality2 및 local vendor git metadata2로 이번 repair와 무관하다.
+- 다음은 repair exact source pin 후 genuinely unseen task 생성·baseline이다.
 
 - 1.9.623 r1 candidate는 valid83/85, 323,525ms, 973,726 tokens지만 pre-edit fit plan을 실행하지 않고 제품을 수정했다. static-open/browser0/shipped-runner0로 content-box verifier에 도달하지 못했다.
 - candidate는 실제 preflight가 ready였던 named browser를 unavailable이라 보고했다. UI/proof/content-box 3/3 최대치가2로 내려가 remaining4를 untouched freeze했다.
@@ -2983,9 +2988,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. actual candidate artifact로 decision-context required:false와 recovery-region carrier unresolved 원인을 재현한다.
-2. runner/helper/skill을 provider-free로 fail-closed 수리하고 focused tests+artifact replay를 통과시킨다.
-3. exact source를 pin한 뒤 또 다른 unseen task에서 replacement matrix를 구성한다.
+1. 1.9.624 repair commit/source tree/skill tree를 exact candidate로 pin한다.
+2. 이 candidate에 노출되지 않은 genuinely unseen decision-context task를 작성하고 baseline을 잠근다.
+3. exact historical control 대 1.9.624 candidate의 replacement Luna/high matrix를 provider0 사전등록한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

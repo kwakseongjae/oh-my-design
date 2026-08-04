@@ -4930,6 +4930,49 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(result.frozen_unstarted_cells).toHaveLength(4);
   });
 
+  it("repairs pre-edit plan ordering without consuming a browser attempt", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/pre-edit-plan-self-bootstrap-repair-1.9.624/REPAIR.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.624",
+      status: "PROVIDER_FREE_REPAIR_VERIFIED",
+      provider_calls: 0,
+      source_failure: {
+        candidate_cell: "luna-runway-r1-candidate",
+        pre_edit_fit_plan_state: "pending",
+        product_edit_count: 1,
+        browser_attempts: 0,
+        runtime_preflight_named_browser_ready: true,
+      },
+      root_cause: {
+        class: "pre-navigation-artifact-validation-misclassified-as-measured-attempt",
+        content_box_formula_implicated: false,
+        provider_or_browser_capacity_implicated: false,
+      },
+      repair_contract: {
+        zero_attempt_marker: "OMD_PLAN_NOT_ATTEMPTED",
+        measured_or_infrastructure_attempt_rerun_allowed: false,
+        product_mutation_gate: "successful plan-close stdout plus static_edit_guardrails",
+        browser_unavailable_claim_for_pre_navigation_validation: false,
+        silent_fallback: false,
+      },
+      verification: {
+        focused_tests: { passed: 54, failed: 0 },
+        python_compile: "pass",
+        typescript_lint: "pass",
+        diff_check: "pass",
+      },
+      tokens_to_target: {
+        cumulative_observed_provider_tokens_minimum: 107050263,
+        usage_unavailable_cells: 6,
+        tokens_added_by_repair: 0,
+      },
+    });
+    expect(result.verification.behavioral_replays).toHaveLength(2);
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

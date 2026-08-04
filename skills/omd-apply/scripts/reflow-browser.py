@@ -78,10 +78,42 @@ if mode not in {"plan", "final"}:
     raise RuntimeError("OMD_REFLOW_MODE must be plan or final")
 
 artifact = json.loads(artifact_path.read_text())
+
+
+def plan_not_attempted(message):
+    """Identify failures that happen before browser navigation or measurement."""
+    raise SystemExit(
+        "OMD_PLAN_NOT_ATTEMPTED: "
+        f"{message} Correct the artifact bookkeeping and rerun the exact plan command; "
+        "this does not consume the one measured plan attempt."
+    )
+
+
+if mode == "plan" and not artifact.get("pre_edit_product_snapshot"):
+    snapshot_result = subprocess.run(
+        ["node", str(helper_path), "snapshot", str(artifact_path)],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if snapshot_result.returncode != 0:
+        detail = (snapshot_result.stderr or snapshot_result.stdout).strip()
+        plan_not_attempted(
+            "artifact snapshot validation failed before browser navigation."
+            + (f" Helper output: {detail}" if detail else "")
+        )
+    artifact = json.loads(artifact_path.read_text())
+
 if artifact.get("schema_version") != "0.3":
+    if mode == "plan":
+        plan_not_attempted("reflow artifact schema 0.3 is required before browser navigation.")
     raise RuntimeError("reflow artifact schema 0.3 is required")
-if mode == "plan" and artifact.get("pre_edit_fit_plan", {}).get("state") != "pending":
-    raise RuntimeError("plan mode requires a pending pre-edit fit plan")
+if mode == "plan":
+    fit_plan_state = artifact.get("pre_edit_fit_plan", {}).get("state")
+    if fit_plan_state in {"measured", "infrastructure-error"}:
+        raise RuntimeError("the one measured pre-edit fit-plan attempt is already recorded; do not rerun it")
+    if fit_plan_state != "pending":
+        plan_not_attempted("plan mode requires a pending pre-edit fit plan before browser navigation.")
 if mode == "final" and artifact.get("static_closure", {}).get("state") != "passed":
     raise RuntimeError("one passed deterministic static closure is required")
 if mode == "final" and artifact.get("pre_edit_fit_plan", {}).get("state") != "measured":
@@ -95,12 +127,24 @@ snapshot_rows = [
 snapshot_path = None
 if snapshot_rows:
     if not snapshot_contract:
+        if mode == "plan":
+            plan_not_attempted("deterministic typography rows require a pre-edit product snapshot.")
         raise RuntimeError("deterministic typography rows require a pre-edit product snapshot")
-    snapshot_source = base64.b64decode(snapshot_contract["source_base64"]).decode("utf-8")
-    if hashlib.sha256(snapshot_source.encode("utf-8")).hexdigest() != snapshot_contract["sha256"]:
+    try:
+        snapshot_source = base64.b64decode(
+            snapshot_contract["source_base64"], validate=True
+        ).decode("utf-8")
+        snapshot_sha256 = snapshot_contract["sha256"]
+    except (KeyError, ValueError, UnicodeDecodeError) as error:
+        if mode == "plan":
+            plan_not_attempted(f"pre-edit product snapshot is invalid: {error}.")
+        raise RuntimeError("pre-edit product snapshot is invalid") from error
+    if hashlib.sha256(snapshot_source.encode("utf-8")).hexdigest() != snapshot_sha256:
+        if mode == "plan":
+            plan_not_attempted("pre-edit product snapshot sha256 mismatch before browser navigation.")
         raise RuntimeError("pre-edit product snapshot sha256 mismatch")
     snapshot_path = product_path.with_name(
-        f".omd-reflow-pre-edit-{snapshot_contract['sha256'][:12]}{product_path.suffix}"
+        f".omd-reflow-pre-edit-{snapshot_sha256[:12]}{product_path.suffix}"
     )
     if snapshot_path.exists():
         raise RuntimeError(f"refusing to overwrite pre-edit snapshot path: {snapshot_path}")

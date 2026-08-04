@@ -116,7 +116,9 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("required_literals:");
     expect(skill).toContain("forbidden_patterns:");
     expect(skill).toContain("count_literals:");
-    expect(skill).toContain("reflow-artifact.mjs snapshot");
+    expect(skill).toContain("runner가 필요한 snapshot을 먼저 잠근다");
+    expect(skill).toContain("OMD_PLAN_NOT_ATTEMPTED");
+    expect(skill).toContain("plan-close`와 `static_edit_guardrails`");
     expect(skill).toContain("OMD_REFLOW_MODE=plan");
     expect(skill).toContain("pre_edit_fit_plan: { state: pending }");
     expect(skill).toContain("intrinsic + 16px");
@@ -131,7 +133,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("reflow-artifact.mjs finalize");
     expect(skill).toContain("finalize-unresolved");
     expect(skill).toContain("등록 row/carrier 하나라도 unresolved면 resolved finalize를 거부");
-    expect(skill).toContain("browser를 시도하지 않았거나 제품 결함을 발견한 상태는 unresolved accounting으로 우회할 수 없다");
+    expect(skill).toContain("browser를 실제 시도하지 않았거나 제품 결함을 발견한 상태는 unresolved accounting으로 우회할 수 없다");
     expect(skill).toContain("row_group_ids:");
     expect(skill).toContain("carriers:");
     expect(skill).toContain('id: "stable relationship scope id"');

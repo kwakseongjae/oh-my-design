@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.624 pre-edit plan self-bootstrap repair
+- plan command가 missing snapshot을 navigation 전에 원자적으로 잠그고 validation red를 `OMD_PLAN_NOT_ATTEMPTED`로 분리한다.
+- valid/invalid replay와 focused54+report1, compile/lint/skill/diff green; provider0, TTT107050263+다.
+- 다음은 exact source pin 후 fresh unseen replacement task다.
+
 ## 2026-08-05 (Codex) · 1.9.623 runway matrix freeze
 - candidate83/85, 323525ms, 973726 tokens지만 pre-edit plan pending에서 edit해 browser0/static-open이다.
 - content-box verifier 미도달, 실제 ready browser unavailable 오보고; remaining4 untouched freeze다.
