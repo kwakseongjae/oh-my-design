@@ -3343,6 +3343,37 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/spent-fuel-decision-target-luna-1.9.558/R1-CONTROL.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.560",
+      cell_id: "luna-spent-fuel-r1-control",
+      validity: "valid",
+      retry_count: 0,
+      objective: { score: 85, max: 85, ui_resolved: true },
+      efficiency: { wall_time_ms: 543074, provider_tokens: 2987256 },
+      proof: {
+        pass: false,
+        reason: "reflow-artifact-not-closed",
+        product_edit_count: 1,
+        static_closure_count: 1,
+        browser_mechanism_count: 1,
+        closure_state: "unresolved",
+        unresolved_carrier_instances: 2,
+        unresolved_rows: 0,
+      },
+      failure: {
+        class: "comparison-carrier-contains-separately-registered-evidence-row",
+        carrier_selector: ".stations .carrier",
+        unbound_contained_row: "transfer-windows",
+      },
+      tokens_to_target: { cumulative_observed_provider_tokens_minimum: 76499941, usage_unavailable_cells: 6 },
+    });
+  });
+
   it("preregisters exact measured pre-edit fit planning on the unseen observatory task", () => {
     const matrix = JSON.parse(readFileSync(join(
       repoRoot,

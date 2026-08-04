@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `f7bc6099` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.559 spent-fuel decision-target matrix preparation
+- 기준 커밋: `f2e5158e` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.560 spent-fuel r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.560 Luna/high r1 control은 valid UI-resolved85/85, 543.074s, 2,987,256 tokens다.
+- edit1/static1/browser1과 모든 objective surface는 green이나 `.stations .carrier` 2개가 bound identifier 외 separately registered transfer-window evidence도 포함해 artifact unresolved/proof red다.
+- TTT76,499,941+ / unavailable6다. 다음은 fixed 120s pacing 뒤 r1 candidate no-retry다.
 
 - 1.9.559는 `/private/tmp/u19558-vendors` exact detached control/candidate와 `/private/tmp/u19558` six untouched cells를 준비했다.
 - equality6/6, product tree identical6, detached+clean2, candidate target-inventory guardrail9/9와 identical runner를 확인했다. provider0다.

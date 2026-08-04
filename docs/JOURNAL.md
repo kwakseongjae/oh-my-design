@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.560 spent-fuel r1 control
+- Luna/high control은 valid UI85/85, 543.074s/2,987,256 tokens이나 carrier2 instances가 unbound evidence row를 포함해 proof red다.
+- edit1/static1/browser1, TTT76,499,941+; 다음 fixed pacing 뒤 r1 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.559 spent-fuel matrix preparation
 - exact detached control/candidate와 six untouched cells, equality6/6+target guardrail9/9를 확인했다.
 - provider0; 다음 runtime/browser/auth preflight 뒤 r1 control이다.
