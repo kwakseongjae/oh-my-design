@@ -3736,6 +3736,45 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("prepares six untouched subsea self-dispatch replacement cells", () => {
+    const preparation = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-runner-self-dispatch-replacement-luna-1.9.573/PREPARATION.json",
+    ), "utf8"));
+    expect(preparation).toMatchObject({
+      product_version: "1.9.574",
+      status: "SIX_CELLS_PREPARED",
+      provider_calls: 0,
+      equality: {
+        scheduled_cells: 6,
+        prepared_cells: 6,
+        core_prompt_equal: 6,
+        starter_equal: 6,
+        product_tree_equal: 6,
+        runtime_equal: 6,
+        model_equal: 6,
+        effort_equal: 6,
+        timeout_equal: 6,
+      },
+      source_attestation: {
+        control: { commit: "6142925c153dbf9e8c17f7f456279c86c539c8e8", detached: true, clean: true },
+        candidate: { commit: "a6ebdc8a923538a997d2724f90a09e1eb63f46f2", detached: true, clean: true },
+      },
+      candidate_self_dispatch_guardrail: {
+        dispatch_function_present: true,
+        plain_python_detection_before_artifact_access: true,
+        exact_browser_harness_stdin_target: true,
+        recursion_latch_present: true,
+      },
+      candidate_anchor_guardrail: {
+        snapshot_time_validation_present: true,
+        class_id_attribute_anchors_checked: true,
+        post_edit_only_anchor_rejected_before_browser: true,
+        expected_inert_on_supplied_task: true,
+      },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

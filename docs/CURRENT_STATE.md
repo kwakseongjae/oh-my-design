@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `176ed448` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.573 subsea self-dispatch replacement prereg
+- 기준 커밋: `9d619f2f` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.574 subsea self-dispatch matrix preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.574는 `/private/tmp/u19573-vendors` exact detached control/candidate와 `/private/tmp/u19573` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, detached+clean2, candidate self-dispatch+pre-edit carrier anchor guardrail을 확인했다. provider0이다.
+- 다음은 runtime browser/CLI/auth/evaluator preflight 후 `luna-subsea-cable-r1-control` 단일 no-retry 실행이다.
 
 - 1.9.573은 exact control `6142925c…` vs candidate `a6ebdc8a…`를 fresh subsea task에 Luna/high 2×3으로 provider-zero preregister했다.
 - timeout900/pacing120/no-retry, 3/3 UI/proof/runner/self-dispatch다. stable target carrier가 있어 candidate anchor gate는 valid input에서 inert로 고정했다.
