@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `40d0e4b8` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.579 carrier-inner fit repair
+- 기준 커밋: `853db7bf` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.580 carrier-inner fit source pin
 
 ## 지금 (현재 위치)
+
+- 1.9.580은 1.9.579 repair를 exact commit `853db7bf…`, source tree `18b80a41…`, skill tree `8657f278…`로 pin했다.
+- 새 competitor는 `omd-carrier-inner-fit-candidate`, vendor dir `omd-1.9.579`, provider0/promotion false다.
+- 다음은 genuinely unseen nested-carrier task를 provider 노출 전에 lock한다.
 
 - 1.9.579 provider-free repair는 pre-edit에서 registered carrier의 실제 content-box 최소 폭을 `available_carrier_inner_width_css_px`로 실측한다.
 - row의 intrinsic+16px를 document width가 아니라 bound carrier inner width와 비교해, 320px 문서 안의 260px carrier에 316px row를 `stack`으로 통과시키던 결함을 edit 전에 거부한다.

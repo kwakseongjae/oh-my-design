@@ -3917,6 +3917,37 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("pins carrier-inner fit feasibility separately from pre-edit carrier anchors", () => {
+    const previous = competitors.variants["omd-pre-edit-carrier-anchor-candidate"];
+    const candidate = competitors.variants["omd-carrier-inner-fit-candidate"];
+    const pin = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/carrier-inner-fit-feasibility-pin-1.9.580/PIN.json",
+    ), "utf8"));
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.579",
+      source_path: "skills/omd-apply",
+      install_adapter: previous.install_adapter,
+      install_root: previous.install_root,
+      install_dir: previous.install_dir,
+      declared_name: "omd:apply",
+      commit: "853db7bfe0939e0c58b1c8d01e7d2348100a14c8",
+    });
+    expect(candidate.commit).not.toBe(previous.commit);
+    expect(pin).toMatchObject({
+      product_version: "1.9.580",
+      source_commit: candidate.commit,
+      source_tree: "18b80a41e0ddca61a82e4d059d33bf41cd6f80c4",
+      skill_tree: "8657f27858b85de9af0f31f943628e110d38d31d",
+      status: "PINNED",
+      provider_calls: 0,
+      quality_promotion: false,
+      competitor: { id: "omd-carrier-inner-fit-candidate", vendor_directory: "omd-1.9.579", exact_source_required: true },
+      acceptance: { carrier_content_box_measured_before_product_edit: true, row_feasibility_bound_to_carrier_inner_width: true },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

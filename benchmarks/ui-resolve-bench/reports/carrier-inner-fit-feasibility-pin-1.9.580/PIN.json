@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.580",
+  "pin_id": "carrier-inner-fit-feasibility-1.9.580",
+  "source_commit": "853db7bfe0939e0c58b1c8d01e7d2348100a14c8",
+  "source_tree": "18b80a41e0ddca61a82e4d059d33bf41cd6f80c4",
+  "skill_tree": "8657f27858b85de9af0f31f943628e110d38d31d",
+  "status": "PINNED",
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "competitor": {
+    "id": "omd-carrier-inner-fit-candidate",
+    "vendor_directory": "omd-1.9.579",
+    "exact_source_required": true
+  },
+  "artifacts": {
+    "skills/omd-apply/SKILL.md": "0e02b9ef0b056d51a4cbc93ad3f7752d4c6471d446d7e4a650f002c6f8c18429",
+    "skills/omd-apply/scripts/reflow-artifact.mjs": "df16a41b4eba03e1054100e0520ba77395e0a50b6150ae9b099a72ead96f50f4",
+    "skills/omd-apply/scripts/reflow-browser.py": "050f28dffd59a913a25e3a6195e8169a9fbc4419e46f8ea60768c6b4cacbf2a1",
+    "test/unit/skills/omd-reflow-artifact.test.mjs": "957db736329d1a2bef337f516501bd583c404b1b4a8783c8e947b6d3d0365ca3",
+    "test/unit/skills/omd-apply-contract.test.mjs": "a5959cc5a4a73addf11fdb20b1a1474621081add1856b08bb41a00523d12bb5c",
+    "benchmarks/ui-resolve-bench/reports/carrier-inner-fit-feasibility-repair-1.9.579/REPAIR.json": "84cf364b3cf0fb6499dfc55d54872c5b44a751173246f84dd6d6f680d9f2be86"
+  },
+  "acceptance": {
+    "carrier_content_box_measured_before_product_edit": true,
+    "minimum_width_across_carrier_instances": true,
+    "row_feasibility_bound_to_carrier_inner_width": true,
+    "aggregate_outer_width_gate_retained": true,
+    "plain_python_self_dispatch_retained": true,
+    "provider_calls": 0
+  },
+  "next": "Lock a genuinely unseen nested-carrier task before provider exposure, then preregister an exact historical control against omd-1.9.579 under Reliability@3."
+}

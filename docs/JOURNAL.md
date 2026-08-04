@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.580 carrier-inner source pin
+- exact commit `853db7bf…`, source tree `18b80a41…`, skill tree `8657f278…`로 수리를 고정했다.
+- competitor `omd-carrier-inner-fit-candidate`, provider0/promotion false다.
+- 다음 genuinely unseen nested-carrier task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.579 carrier-inner fit repair
 - carrier content-box 최소 폭을 pre-edit에서 실측하고 row feasibility를 그 local budget에 결박했다.
 - document320/carrier260/row316 회귀가 edit 전 comparison-scroll 요구로 red다.
