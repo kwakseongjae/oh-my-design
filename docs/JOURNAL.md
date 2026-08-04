@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.584 orbital matrix preparation
+- exact detached control/candidate와 six untouched Luna/high cells를 준비했다.
+- equality6/6, shared gates와 candidate-only carrier-inner delta를 확인했다.
+- provider0; 다음 runtime preflight+r1 control이다.
+
 ## 2026-08-04 (Codex) · 1.9.583 orbital carrier-inner prereg
 - exact `a6ebdc8a…` vs `853db7bf…`, Luna/high2×3을 provider0 고정했다.
 - isolated delta는 document width 대비 bound carrier content-box width feasibility다.

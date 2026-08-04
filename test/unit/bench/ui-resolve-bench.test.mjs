@@ -4051,6 +4051,26 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ]);
   });
 
+  it("prepares six untouched orbital carrier-inner cells from exact sources", () => {
+    const preparation = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/orbital-carrier-inner-fit-replacement-luna-1.9.583/PREPARATION.json",
+    ), "utf8"));
+    expect(preparation).toMatchObject({
+      product_version: "1.9.584",
+      status: "SIX_CELLS_PREPARED",
+      provider_calls: 0,
+      locked_plan_sha256: "4b4027e7eb28a77279601faaadcb7091ea6fe0dd3136406559b352cd2cf14cc5",
+      equality: { scheduled_cells: 6, prepared_cells: 6, core_prompt_equal: 6, prompt_equal: 6, starter_equal: 6, product_tree_equal: 6, runtime_equal: 6, model_equal: 6, effort_equal: 6, timeout_equal: 6 },
+      source_attestation: {
+        control: { commit: "a6ebdc8a923538a997d2724f90a09e1eb63f46f2", detached: true, clean: true },
+        candidate: { commit: "853db7bfe0939e0c58b1c8d01e7d2348100a14c8", detached: true, clean: true },
+      },
+      shared_guardrail_presence: { runner_self_dispatch: true, snapshot_carrier_anchor_validation: true, aggregate_outer_width_gate: true },
+      isolated_delta_guardrail: { control_carrier_inner_width_field_absent: true, candidate_carrier_inner_width_field_present: true, candidate_feasibility_uses_bound_carrier_inner_width: true },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
