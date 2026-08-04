@@ -3,10 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `e8a6f083` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.607 museum loan unseen task baseline
+- 기준 커밋: `e77c3d8a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.608 museum loan task exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.608은 task commit `e77c3d8a...`, git tree `f50c6925...`, portable tree `ed1e594b...`, baseline score `c9ed447f...`를 exact pin했다.
+- model/control/candidate exposure0이며 이후 task mutation은 금지다. 다음은 exact historical control vs desktop decision-context candidate preregistration이다.
 
 - 1.9.607은 model-unseen `museum-loan-crate-release-v0.1`을 provider 노출 전에 생성·평가했다. task tree `ed1e594b...`, score `c9ed447f...`, exposure0이다.
 - raw baseline75/85: contract/state/design/evidence green, responsive/a11y red. widths1440/1115/1115/2230, target fragments2, short wraps2, contrast2.94다.

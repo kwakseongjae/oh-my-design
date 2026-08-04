@@ -4441,6 +4441,26 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("pins the museum loan task before model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/museum-loan-task-pin-1.9.608/TASK-PIN.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.608",
+      status: "TASK_PINNED_PROVIDER_ZERO",
+      provider_calls: 0,
+      model_exposures: 0,
+      task_id: "museum-loan-crate-release-v0.1",
+      source_commit: "e77c3d8ae959078b3cb51f5ea1960b8a30f14dcc",
+      task_git_tree: "f50c6925588f8fef4a3a84d3d306146bef91ce4d",
+      portable_task_tree_sha256: "ed1e594ba1bd8724e866cf3c4a3c1835a6058e4183305e95ec1948c0441e09ad",
+      baseline_score_sha256: "c9ed447f5ad203a15033ec13e5bc3fee7034cccaf385ffbb56e69165db6ed2c4",
+      baseline_summary_sha256: "db1377692474072778af7ed0228b6c45359c09bfc94210e78f99cc60cd3a23df",
+      freshness_contract: { model_seen: false, control_seen: false, candidate_seen: false, task_mutation_after_pin_allowed: false },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

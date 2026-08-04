@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.608 museum loan task pin
+- task commit e77c3d8a/git tree f50c6925/portable ed1e594b/baseline c9ed447f를 exact pin했다.
+- model/control/candidate exposure0이며 이후 task mutation 금지다.
+- 다음 exact historical control vs desktop decision-context candidate prereg다.
+
 ## 2026-08-05 (Codex) · 1.9.607 museum loan unseen task baseline
 - museum loan-crate release task를 model exposure0에서 baseline75/85로 잠갔다.
 - responsive/a11y red, target fragments2·short wraps2·contrast2.94; browser-harness desktop attestation도 완료했다.
