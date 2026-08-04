@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.622 runway r1 control
+- valid83/85, 381138ms, 1321493 tokens; narrow/a11y green, desktop action separation red다.
+- proof는 shipped runner를 썼지만 border-box full-row4/4 false+closure-window carrier unresolved로 artifact-open이다.
+- 누적 TTT106076537+; 다음은 paced untouched r1 candidate다.
+
 ## 2026-08-05 (Codex) · 1.9.621 runway matrix preparation
 - exact detached clean vendors2와 six untouched Luna/high cells를 준비했다.
 - equality6/6이며 control rect/rect, candidate clientWidth/offsetWidth isolated delta를 확인했다. provider0다.

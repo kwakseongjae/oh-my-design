@@ -4830,6 +4830,57 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("checkpoints the valid runway control with separate UI and proof debt", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/runway-content-box-transfer-luna-1.9.619/R1-CONTROL.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.622",
+      cell_id: "luna-runway-r1-control",
+      status: "CHECKPOINTED_VALID_CONTROL_UI_AND_PROOF_RED",
+      validity: "valid",
+      retry_count: 0,
+      wall_time_ms: 381138,
+      provider_tokens: { comparison_total: 1321493 },
+      objective: {
+        score: 83,
+        max: 85,
+        ui_resolved: false,
+        accessibility: true,
+        responsive: false,
+        narrow_atomic_wraps: 0,
+        actual_200pct_atomic_wraps: 0,
+        desktop_target_action_spatially_separated: false,
+      },
+      proof: {
+        analyzable: true,
+        static_closure_count: 1,
+        browser_mechanism_count: 1,
+        browser_recovery_count: 0,
+        shipped_runner_invoked: true,
+        artifact_closed: false,
+        execution_gate_pass: false,
+      },
+      decision_context_observation: {
+        required_flags: [true, true, true, true],
+        full_row_flags: [false, false, false, false],
+        precedes_supporting_flags: [true, true, true, true],
+        spatially_separated_flags: [true, true, true, true],
+      },
+      additional_artifact_debt: {
+        closure_window_carrier_outcomes: ["unresolved", "unresolved", "unresolved"],
+        closure_window_carrier_visible_and_bound: true,
+        closure_window_carrier_scroll_and_focus: false,
+        must_not_be_misattributed_to_content_box_delta: true,
+      },
+      tokens_to_target: {
+        observed_provider_tokens_minimum_after_cell: 106076537,
+        usage_unavailable_cells: 6,
+      },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

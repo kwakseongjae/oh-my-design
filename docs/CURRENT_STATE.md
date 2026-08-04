@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `39894708` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.621 runway content-box matrix preparation
+- 기준 커밋: `3802e55d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.622 runway r1 control checkpoint
 
 ## 지금 (현재 위치)
+
+- 1.9.622 r1 control은 valid83/85, 381,138ms, 1,321,493 tokens다. narrow/actual200/a11y는 green이지만 desktop target/action separation 하나가 red다.
+- proof는 static1/browser1/shipped-runner/attached-existing까지 지켰으나 border-box full-row가4/4 false이고 closure-window carrier도 unresolved라 artifact-open이다.
+- 누적 TTT106,076,537+ / unavailable6. fixed120s pacing 뒤 untouched `luna-runway-r1-candidate` no-retry 단일 실행이다.
 
 - 1.9.621은 `/private/tmp/u19620-vendors` exact detached clean sources와 `/private/tmp/u19620` six untouched Luna/high cells를 준비했다.
 - prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이며 control은 rect/rect, candidate는 clientWidth/offsetWidth다. provider0다.
