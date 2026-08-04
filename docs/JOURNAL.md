@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.523 wafer r1 control
+- Luna/high control 81/85, 424.499s/999,293 tokens; a11y와 390px은 green이다.
+- 320/200% overflow27/53·target reserve 음수, 2차 edit 후 browser 미재실행으로 proof fail이다.
+
 ## 2026-08-04 (Codex) · 1.9.522 wafer matrix preparation
 - exact detached control/candidate와 six untouched cells를 준비했다.
 - equality6/6, clean2, shared runner6/6, candidate guardrail5/5, provider0다.

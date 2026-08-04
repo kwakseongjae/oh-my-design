@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.522 wafer matrix preparation
+- 갱신: 2026-08-04 · 1.9.523 wafer r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.523 Luna/high r1 control은 valid 81/85 unresolved: 424.499s, 999,293 tokens다.
+- contrast는 green이고 390px도 overflow0이지만 320/actual200에 27/53px overflow와 clipped control1씩, target reserve -56.73/-49.23px가 남았다.
+- 두 번째 edit+static-close 뒤 browser terminal을 재실행하지 않아 artifact open/proof fail이다. TTT58,632,815+ / unavailable6. 다음은 120s pacing 뒤 r1 candidate no-retry다.
 
 - 1.9.522는 `/private/tmp/u19521-vendors` exact detached control/candidate와 `/private/tmp/u19521` six untouched cells를 준비했다.
 - equality6/6, product tree identical6, source detached+clean2, shared runner6/6, candidate debt/manifest/row/16px guardrail5/5다. provider0이다.
@@ -2588,9 +2592,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. exact named consumer browser와 Codex/Luna auth를 preflight한다.
-2. `luna-wafer-r1-control`을 Luna/high 900s no-retry로 실행한다.
-3. 결과를 독립 평가·proof trace·TTT에 반영하고 120s pacing 뒤 candidate로 진행한다.
+1. fixed 120s pacing 뒤 `luna-wafer-r1-candidate`를 Luna/high 900s no-retry로 실행한다.
+2. pair 결과로 Reliability@3 continuation 또는 mathematical freeze를 결정한다.
+3. 새 root cause면 provider-free repair, 아니면 preregistered continuation을 수행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

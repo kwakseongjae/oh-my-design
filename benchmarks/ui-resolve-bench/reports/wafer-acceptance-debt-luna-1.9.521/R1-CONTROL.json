@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.523",
+  "experiment_id": "wafer-acceptance-debt-luna-1.9.521",
+  "cell_id": "luna-wafer-r1-control",
+  "status": "VALID_UNRESOLVED_PROOF_FAILED",
+  "provider_calls": 1,
+  "runtime": "codex",
+  "model_id": "gpt-5.6-luna",
+  "effort": "high",
+  "objective": {
+    "score": 81,
+    "max": 85,
+    "ui_resolved": false
+  },
+  "efficiency": {
+    "wall_time_seconds": 424.499,
+    "provider_tokens": 999293
+  },
+  "objective_observation": {
+    "accessibility": "pass",
+    "desktop_overflow_px": 0,
+    "mobile_overflow_px": 0,
+    "narrow_320_overflow_px": 27,
+    "actual_200pct_overflow_px": 53,
+    "clipped_controls_narrow_320": 1,
+    "clipped_controls_actual_200pct": 1
+  },
+  "proof_trace": {
+    "product_edits": 2,
+    "static_closures": 2,
+    "browser_mechanisms": 1,
+    "browser_recovery": 0,
+    "duplicate_static_closure": 0,
+    "verification_after_ready": 0,
+    "trace_compliance": true,
+    "shipped_runner_invoked": true,
+    "attached_existing": true,
+    "launched_browser": false,
+    "measured_conditions": ["390", "320", "200pct"]
+  },
+  "artifact_gate": {
+    "pass": false,
+    "reasons": [
+      "reflow-document-overflow-limit",
+      "reflow-inline-fit-reserve-insufficient",
+      "reflow-artifact-not-closed"
+    ],
+    "static_closure_state": "passed",
+    "browser_attempts": 1,
+    "browser_outcome": "measured",
+    "closure_state": "open"
+  },
+  "root_cause": {
+    "first_revision": "The target row kept a 528.734375px requirement. It passed at 390px but retained -56.734375px at 320px and -49.23046875px at actual 200% reflow, leaving document overflow and one clipped control in each failing condition.",
+    "second_revision": "The model split the compound target into two child spans after browser measurement and reran static-close, but did not rerun the terminal browser mechanism after that second product revision.",
+    "classification": "control execution failure; the candidate-only acceptance-debt and 16px planning-margin contract was not present"
+  },
+  "tokens_to_target_observed_minimum": 58632815,
+  "tokens_to_target_usage_unavailable_cells": 6,
+  "next": "After the preregistered 120-second pacing boundary, run luna-wafer-r1-candidate once with no retry."
+}
