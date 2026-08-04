@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `e77c3d8a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.608 museum loan task exact pin
+- 갱신: 2026-08-05 · 1.9.609 museum desktop decision-context preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.609는 exact old decision-context control `5eaa26c9...` vs desktop+nested candidate `e8a6f083...`를 pinned museum task에서 Luna/high2×3으로 provider0 사전등록했다.
+- isolated delta는 desktop final measurement+missing observation fail-close+nested carrier pre-edit rejection이다. 900s/120s/no-retry/concurrency1, UI/proof/context/nesting 3/3다.
+- attempt46, prior TTT101,844,158+ / unavailable6다. 다음은 executable matrix와 exact detached six cells materialization이다.
 
 - 1.9.608은 task commit `e77c3d8a...`, git tree `f50c6925...`, portable tree `ed1e594b...`, baseline score `c9ed447f...`를 exact pin했다.
 - model/control/candidate exposure0이며 이후 task mutation은 금지다. 다음은 exact historical control vs desktop decision-context candidate preregistration이다.

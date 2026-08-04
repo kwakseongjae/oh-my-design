@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.609 museum desktop-context prereg
+- exact5eaa26c9 control vs e8a6f083 candidate, Luna/high2×3을 provider0 고정했다.
+- delta는 desktop final proof+missing fail-close+nested-carrier rejection, attempt46다.
+- prior TTT101844158+/unavailable6; 다음 executable matrix+six cells다.
+
 ## 2026-08-05 (Codex) · 1.9.608 museum loan task pin
 - task commit e77c3d8a/git tree f50c6925/portable ed1e594b/baseline c9ed447f를 exact pin했다.
 - model/control/candidate exposure0이며 이후 task mutation 금지다.
