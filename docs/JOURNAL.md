@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.634 measured-plan reconcile exact pin
+- repair commit e4b0c890, source tree d479bfd2, skill tree b2e622bb를 exact candidate로 등록했다.
+- provider0/promotion false이며 fresh transfer 전 공개 claim을 금지했다.
+- 다음은 이 candidate에 노출되지 않은 genuinely unseen task 생성·baseline이다.
+
 ## 2026-08-05 (Codex) · 1.9.633 measured-plan reconcile repair
 - measured semantic-close 실패 뒤 browser 재측정 없이 bookkeeping만 고치는 plan-reconcile을 추가했다.
 - plan stamp/hash와 pre-edit product hash를 fail-closed하며 실제 1.9.632 실패 artifact의 사후 세탁을 거부했다.

@@ -5406,6 +5406,38 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("pins the measured-plan reconcile repair before fresh model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/measured-plan-reconcile-pin-1.9.634/PIN.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.634",
+      status: "PINNED_PROVIDER_ZERO",
+      provider_calls: 0,
+      candidate: {
+        system_id: "omd-measured-plan-reconcile-candidate",
+        vendor_version: "omd-1.9.633",
+        source_commit: "e4b0c890ccdcc1e736cc70babcfbc1a5b72b7391",
+        source_tree: "d479bfd24603865bd9d38f5d7d730df08c2cf9c6",
+        skill_tree: "b2e622bb788769268bc4b9b1001102d7355f598e",
+      },
+      repair_contract: {
+        atomic_snapshot_bootstrap_preserved: true,
+        zero_attempt_validation_preserved: true,
+        measured_plan_persisted_before_semantic_close: true,
+        measured_plan_browser_rerun_allowed: false,
+        artifact_only_plan_reconcile_available: true,
+        pre_edit_product_hash_enforced_until_plan_close: true,
+        static_close_requires_plan_stamp_and_measured_plan_hash: true,
+      },
+    });
+    expect(competitors.variants["omd-measured-plan-reconcile-candidate"]).toMatchObject({
+      vendor_dir: "omd-1.9.633",
+      commit: "e4b0c890ccdcc1e736cc70babcfbc1a5b72b7391",
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

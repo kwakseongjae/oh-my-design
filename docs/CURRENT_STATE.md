@@ -3,10 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `9aa95ef8` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.633 measured-plan reconcile provider-free repair
+- 기준 커밋: `e4b0c890` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.634 measured-plan reconcile exact source pin
 
 ## 지금 (현재 위치)
+
+- 1.9.634는 repair commit `e4b0c890...`, source tree `d479bfd2...`, skill tree `b2e622bb...`를 `omd-measured-plan-reconcile-candidate`로 exact pin했다.
+- provider0/promotion false이며 fresh transfer 전 공개 우위 주장은 금지다. 다음은 이 exact candidate에 노출되지 않은 genuinely unseen task 생성·baseline이다.
 
 - 1.9.633은 한 번 측정된 pre-edit fit plan을 semantic close 실패 전에 보존하고, browser 재측정 없이 artifact bookkeeping만 고치는 `plan-reconcile`을 추가했다.
 - helper-issued plan closure stamp와 measured-plan hash가 없으면 static-close를 거부하며, 성공 plan-close 전 product hash가 snapshot과 달라지면 run을 폐기한다. 실제 1.9.632 실패 artifact replay도 수정된 product를 감지해 거부했다.
@@ -3022,8 +3025,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.633 repair commit/tree/skill hash를 exact candidate variant로 pin한다.
-2. exact candidate에 노출되지 않은 genuinely unseen task를 생성하고 deterministic baseline을 잠근다.
+1. exact candidate에 노출되지 않은 genuinely unseen task를 생성하고 deterministic baseline을 잠근다.
+2. task commit/tree/baseline hash를 model exposure 전에 별도 pin한다.
 3. 이후 Luna/high no-retry transfer matrix를 사전등록하되 frozen rail-signal matrix는 재개하지 않는다.
 
 ## 막힘 / 대기 (없으면 "없음")
