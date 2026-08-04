@@ -218,6 +218,8 @@ describe("compact reflow artifact helper", () => {
     expect(runner).toContain('"scroll_and_focus": carrier_result["scroll_and_focus"]');
     expect(runner).toContain("const contentWidth = context.clientWidth - paddingInline");
     expect(runner).toContain("const carrierWidth = carrier.offsetWidth");
+    expect(runner).toContain("OMD_PLAN_MEASURED_RECONCILE_REQUIRED");
+    expect(runner).toContain("plan-reconcile");
     expect(runner).toContain("context_content_width_css_px: contentWidth");
     expect(runner).not.toContain("contextRect.width - parseFloat(contextStyle.paddingLeft)");
     expect(runner).toContain("full_row: fullRow");
@@ -468,6 +470,120 @@ describe("compact reflow artifact helper", () => {
       requires_reflow: { "390": false, "320": false, "200pct": true },
     });
     expect(JSON.parse(readFileSync(artifactPath, "utf8")).pre_edit_fit_plan.state).toBe("measured");
+    expect(JSON.parse(readFileSync(artifactPath, "utf8")).plan_closure).toMatchObject({
+      state: "closed",
+      command: "plan-close",
+      pre_edit_product_sha256: createHash("sha256")
+        .update(readFileSync(productPath, "utf8"))
+        .digest("hex"),
+    });
+  });
+
+  it("reconciles a persisted measured plan without another browser attempt", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-plan-reconcile-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const input = draft();
+    input.pre_edit_fit_plan = { state: "pending" };
+    writeFileSync(artifactPath, JSON.stringify(input));
+    writeFileSync(productPath, '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""><span role="status">Ground review open</span></div>');
+
+    execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "snapshot",
+      artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    const measured = JSON.parse(readFileSync(artifactPath, "utf8"));
+    measured.pre_edit_fit_plan = measuredFitPlan(measured.row_groups, measured.carriers);
+    measured.pre_edit_fit_plan.rows[0].measurements[1].intrinsic_text_width_css_px = 300;
+    measured.pre_edit_fit_plan.rows[0].measurements[1].required_carrier_inner_width_css_px = 316;
+    writeFileSync(artifactPath, JSON.stringify(measured));
+
+    const failedClose = spawnSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "plan-close",
+      artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(failedClose.status).toBe(1);
+    expect(failedClose.stderr).toContain("must declare comparison-scroll before the product edit");
+    const persisted = JSON.parse(readFileSync(artifactPath, "utf8"));
+    expect(persisted.pre_edit_fit_plan.state).toBe("measured");
+    expect(persisted.plan_closure).toBeUndefined();
+
+    persisted.row_groups[0].decision = "comparison-scroll";
+    persisted.row_groups[0].scroll_contract = {
+      container_selector: "[data-plan]",
+      accessible_name: "Identifier comparison",
+      keyboard_reachable: true,
+      focus_visible: true,
+      passive_text_scroll_container: false,
+    };
+    writeFileSync(artifactPath, JSON.stringify(persisted));
+    const stdout = execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "plan-reconcile",
+      artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    const summary = JSON.parse(stdout);
+    expect(summary).toMatchObject({
+      command: "plan-reconcile",
+      plan_closure: { state: "closed", command: "plan-reconcile" },
+    });
+    const reconciled = JSON.parse(readFileSync(artifactPath, "utf8"));
+    expect(reconciled.pre_edit_fit_plan.attempts).toBe(1);
+    expect(reconciled.pre_edit_fit_plan.fit_strategy_feasibility[0]).toMatchObject({
+      id: "identifier",
+      decision: "comparison-scroll",
+      intrinsically_carrier_unfit: true,
+    });
+  });
+
+  it("refuses plan reconciliation after the product source changes", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-plan-drift-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const input = draft();
+    input.pre_edit_fit_plan = { state: "pending" };
+    writeFileSync(artifactPath, JSON.stringify(input));
+    writeFileSync(productPath, '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""><span role="status">Ground review open</span></div>');
+    execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "snapshot",
+      artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    const measured = JSON.parse(readFileSync(artifactPath, "utf8"));
+    measured.pre_edit_fit_plan = measuredFitPlan(measured.row_groups, measured.carriers);
+    writeFileSync(artifactPath, JSON.stringify(measured));
+    writeFileSync(productPath, `${readFileSync(productPath, "utf8")}<!-- edited -->`);
+
+    const result = spawnSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "plan-reconcile",
+      artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("product source changed before successful plan closure");
+  });
+
+  it("refuses CLI static closure without a helper-issued plan closure stamp", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-plan-stamp-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    writeFileSync(artifactPath, JSON.stringify(lockArtifact(draft())));
+    const preEditSource = '<div data-plan=""><div data-id="fixture">required-fact</div></div><div data-handoff=""><span role="status">Ground review open</span></div>';
+    writeFileSync(productPath, preEditSource);
+
+    const result = spawnSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "static-close",
+      artifactPath,
+      productPath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("successful plan closure");
   });
 
   it("rejects a 200pct condition that only widens the viewport without applying zoom", () => {
@@ -604,8 +720,23 @@ describe("compact reflow artifact helper", () => {
     temporaryRoots.push(root);
     const artifactPath = join(root, "artifact.json");
     const productPath = join(root, "index.html");
-    writeFileSync(artifactPath, JSON.stringify(lockArtifact(draft())));
-    writeFileSync(productPath, '<div data-id="fixture">required-fact forbidden-claim</div>');
+    const preEditSource = '<div data-plan=""><div data-id="fixture">required-fact</div></div><div data-handoff=""><span role="status">Ground review open</span></div>';
+    writeFileSync(artifactPath, JSON.stringify(draft()));
+    writeFileSync(productPath, preEditSource);
+    execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "snapshot",
+      artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    const snapshotted = JSON.parse(readFileSync(artifactPath, "utf8"));
+    snapshotted.pre_edit_fit_plan = measuredFitPlan(snapshotted.row_groups, snapshotted.carriers);
+    writeFileSync(artifactPath, JSON.stringify(snapshotted));
+    execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "plan-close",
+      artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    writeFileSync(productPath, preEditSource.replace("required-fact", "required-fact forbidden-claim"));
 
     const result = spawnSync(process.execPath, [
       join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),

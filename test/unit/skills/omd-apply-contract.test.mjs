@@ -118,7 +118,10 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("count_literals:");
     expect(skill).toContain("runner가 필요한 snapshot을 먼저 잠근다");
     expect(skill).toContain("OMD_PLAN_NOT_ATTEMPTED");
-    expect(skill).toContain("plan-close`와 `static_edit_guardrails`");
+    expect(skill).toContain("`plan-close|plan-reconcile` 성공 stdout");
+    expect(skill).toContain("OMD_PLAN_MEASURED_RECONCILE_REQUIRED");
+    expect(skill).toContain("plan-reconcile");
+    expect(skill).toContain("plan_closure.state: closed");
     expect(skill).toContain("OMD_REFLOW_MODE=plan");
     expect(skill).toContain("pre_edit_fit_plan: { state: pending }");
     expect(skill).toContain("intrinsic + 16px");

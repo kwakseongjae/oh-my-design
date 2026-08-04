@@ -697,8 +697,25 @@ if mode == "plan":
         ],
     }
     artifact_path.write_text(json.dumps(artifact, indent=2) + "\n")
-    result = subprocess.run(["node", str(helper_path), "plan-close", str(artifact_path)], check=False)
-    raise SystemExit(result.returncode)
+    result = subprocess.run(
+        ["node", str(helper_path), "plan-close", str(artifact_path)],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.stdout:
+        print(result.stdout, end="")
+    if result.returncode != 0:
+        detail = (result.stderr or result.stdout).strip()
+        raise SystemExit(
+            "OMD_PLAN_MEASURED_RECONCILE_REQUIRED: the one browser measurement is persisted, "
+            "but semantic plan closure failed. Do not edit the product and do not rerun the browser. "
+            "Correct artifact bookkeeping without changing the measured row/carrier id sets, then run "
+            f"`node {helper_path} plan-reconcile {artifact_path}`. "
+            "If reconciliation requires a new row or carrier, abort this run."
+            + (f" Helper output: {detail}" if detail else "")
+        )
+    raise SystemExit(0)
 
 
 def unresolved_attempt():

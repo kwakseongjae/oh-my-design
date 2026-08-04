@@ -32,6 +32,51 @@ function fail(message) {
   throw new Error(`reflow artifact: ${message}`);
 }
 
+function sha256Source(source) {
+  return createHash("sha256").update(source).digest("hex");
+}
+
+function assertPreEditProductUnchanged(artifact) {
+  const snapshot = validatePreEditProductSnapshot(
+    artifact.pre_edit_product_snapshot,
+    artifact.static_closure_manifest,
+  );
+  const productPath = resolve(artifact.static_closure_manifest?.product_path ?? "");
+  if (!existsSync(productPath)) fail("plan closure requires the locked pre-edit product file");
+  const observedSha256 = sha256Source(readFileSync(productPath, "utf8"));
+  if (observedSha256 !== snapshot.sha256) {
+    fail("product source changed before successful plan closure; discard this run without editing further");
+  }
+  return snapshot;
+}
+
+function closePlan(artifact, command) {
+  const snapshot = assertPreEditProductUnchanged(artifact);
+  const result = lockArtifact(artifact);
+  result.plan_closure = {
+    state: "closed",
+    command,
+    pre_edit_product_sha256: snapshot.sha256,
+    measured_fit_plan_sha256: createHash("sha256")
+      .update(JSON.stringify(result.pre_edit_fit_plan))
+      .digest("hex"),
+  };
+  return result;
+}
+
+function validatePlanClosure(artifact) {
+  const closure = artifact.plan_closure;
+  if (
+    closure?.state !== "closed"
+    || !["lock", "plan-close", "plan-reconcile"].includes(closure.command)
+    || closure.pre_edit_product_sha256 !== artifact.pre_edit_product_snapshot?.sha256
+    || closure.measured_fit_plan_sha256 !== createHash("sha256")
+      .update(JSON.stringify(artifact.pre_edit_fit_plan))
+      .digest("hex")
+  ) fail("static closure requires a helper-issued successful plan closure and unchanged measured fit plan");
+  return closure;
+}
+
 function uniqueStrings(value, label, { allowEmpty = false } = {}) {
   if (
     !Array.isArray(value)
@@ -1200,8 +1245,8 @@ function staticEditGuardrails(artifact) {
 
 function main() {
   const [command, rawPath, rawProductPath] = process.argv.slice(2);
-  if (!command || !rawPath || !["snapshot", "lock", "plan-close", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
-    console.error("usage: reflow-artifact.mjs <snapshot|lock|plan-close|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <artifact.json> [product-file]");
+  if (!command || !rawPath || !["snapshot", "lock", "plan-close", "plan-reconcile", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
+    console.error("usage: reflow-artifact.mjs <snapshot|lock|plan-close|plan-reconcile|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <artifact.json> [product-file]");
     process.exitCode = 2;
     return;
   }
@@ -1230,17 +1275,18 @@ function main() {
     const productPath = resolve(artifact.static_closure_manifest?.product_path ?? "");
     if (!existsSync(productPath)) fail("lock requires the pre-edit product file from static_closure_manifest.product_path");
     const source = readFileSync(productPath, "utf8");
-    result = lockArtifact({
+    result = closePlan({
       ...artifact,
       pre_edit_product_snapshot: productSnapshot(
         source,
         artifact.static_closure_manifest.product_path,
       ),
-    });
-  } else if (command === "plan-close") {
-    result = lockArtifact(artifact);
+    }, "lock");
+  } else if (["plan-close", "plan-reconcile"].includes(command)) {
+    result = closePlan(artifact, command);
   } else if (command === "static-close") {
     if (!rawProductPath) fail("static-close requires the locked product file");
+    validatePlanClosure(artifact);
     const productPath = resolve(rawProductPath);
     result = executeStaticClosure(artifact, {
       productPath,
@@ -1267,7 +1313,8 @@ function main() {
     quality_pass: result.closure_manifest?.quality_pass ?? null,
     unresolved_known_failures: result.known_failure_closure?.unresolved ?? null,
     static_closure: result.static_closure,
-    static_edit_guardrails: ["lock", "plan-close"].includes(command) ? staticEditGuardrails(result) : undefined,
+    plan_closure: result.plan_closure ?? null,
+    static_edit_guardrails: ["lock", "plan-close", "plan-reconcile"].includes(command) ? staticEditGuardrails(result) : undefined,
   }));
   if (command === "static-close" && result.static_closure.state !== "passed") process.exitCode = 1;
   if (["finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) console.log(deliveryMarker(result));

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.633 measured-plan reconcile repair
+- measured semantic-close 실패 뒤 browser 재측정 없이 bookkeeping만 고치는 plan-reconcile을 추가했다.
+- plan stamp/hash와 pre-edit product hash를 fail-closed하며 실제 1.9.632 실패 artifact의 사후 세탁을 거부했다.
+- focused57/57+report1/1 green, provider0, TTT111241511+; 다음은 exact source pin과 unseen task다.
+
 ## 2026-08-05 (Codex) · 1.9.632 rail-signal matrix freeze
 - r1 candidate는 valid83/85, proof red, 407942ms, 1320225 tokens다.
 - zero-attempt marker2는 동작했지만 measured plan-close rejection 뒤 제품을 수정해 closure를 잃었다.

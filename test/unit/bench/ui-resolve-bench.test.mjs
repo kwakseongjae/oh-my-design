@@ -5352,6 +5352,60 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(result.frozen_unstarted_cells).toHaveLength(4);
   });
 
+  it("repairs measured plan reconciliation without a second browser attempt", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/measured-plan-reconcile-repair-1.9.633/REPAIR.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.633",
+      status: "PROVIDER_FREE_REPAIR_GREEN",
+      promotion: false,
+      provider_calls: 0,
+      source_failure: {
+        objective_score: 83,
+        ui_resolved: false,
+        proof_pass: false,
+        measured_plan_attempts: 1,
+        measured_plan_close_rejections: 1,
+        product_edit_before_successful_plan_close: 1,
+      },
+      root_cause: {
+        measurement_persisted_before_semantic_close: true,
+        deterministic_non_browser_recovery_was_available: false,
+        instructions_alone_prevented_product_edit: false,
+        measured_browser_rerun_was_attempted: true,
+      },
+      repair_contract: {
+        one_browser_measurement_persists_before_semantic_validation: true,
+        plan_reconcile_changes_artifact_bookkeeping_only: true,
+        measured_row_and_carrier_id_sets_are_immutable: true,
+        new_row_or_carrier_requires_run_abort: true,
+        product_hash_must_equal_pre_edit_snapshot_until_plan_close: true,
+        static_close_requires_helper_plan_closure_stamp: true,
+        static_close_requires_unchanged_measured_plan_hash: true,
+        browser_rerun_after_measured_rejection_allowed: false,
+      },
+      actual_failed_artifact_replay: {
+        result: "REJECTED_PRODUCT_EDIT_BEFORE_PLAN_CLOSE",
+        original_product_mutated: false,
+        original_artifact_mutated: false,
+      },
+      verification: {
+        python_compile: "pass",
+        focused_tests_passed: 57,
+        typescript_lint: "pass",
+        skill_quick_validate: "pass",
+        diff_check: "pass",
+      },
+      tokens_to_target: {
+        cumulative_observed_provider_tokens_minimum: 111241511,
+        usage_unavailable_cells: 6,
+        goal_status: "right-censored-open",
+      },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
