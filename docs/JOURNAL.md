@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.626 rail-signal unseen task baseline
+- fresh rail-signal task raw75/85, widths1440/1115/1115/2230, contrast2.79, exposure0이다.
+- task tree474d984e/score c3bf6115; browser-harness attach는 infrastructure red라 시각 claim0이다.
+- 다음은 task exact pin 후 replacement Luna/high matrix다.
+
 ## 2026-08-05 (Codex) · 1.9.625 pre-edit plan self-bootstrap pin
 - repair commit4ac756df/source tree5ab481aa/skill tree62e7df31를 provider0 exact pin했다.
 - candidate `omd-plan-self-bootstrap-candidate`, vendor1.9.624, promotion false다.

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `4ac756df` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.625 pre-edit plan self-bootstrap pin
+- 갱신: 2026-08-05 · 1.9.626 rail-signal unseen task baseline
 
 ## 지금 (현재 위치)
+
+- 1.9.626은 model-unseen `rail-signal-speed-restriction-release-v0.1`을 provider 노출 전에 생성·평가했다. task tree `474d984e...`, score `c3bf6115...`, exposure0이다.
+- raw baseline75/85: contract/state/design/evidence green, responsive/a11y red다. widths1440/1115/1115/2230, target fragments2, short wraps2/2/2, contrast2.79다.
+- browser-harness named socket은 1회 attach infrastructure red라 시각 claim을 만들지 않았다. deterministic evaluator는 정상 완료했다. 다음은 task exact commit/tree와 baseline hash pin이다.
 
 - 1.9.625는 repair commit `4ac756df...`, source tree `5ab481aa...`, skill tree `62e7df31...`를 exact pin했다. candidate는 `omd-plan-self-bootstrap-candidate`, vendor는 `omd-1.9.624`, provider0/promotion false다.
 - 다음은 이 exact candidate에 노출되지 않은 genuinely unseen decision-context task 생성·baseline이다.
@@ -2991,9 +2995,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.624 candidate에 노출되지 않은 genuinely unseen decision-context task를 작성하고 baseline을 잠근다.
-2. task commit/tree와 deterministic baseline hash를 exact pin한다.
-3. exact historical control 대 1.9.624 candidate의 replacement Luna/high matrix를 provider0 사전등록한다.
+1. rail-signal task commit/tree와 deterministic baseline hash를 exact pin한다.
+2. exact historical content-box control 대 1.9.624 candidate의 replacement Luna/high matrix를 provider0 사전등록한다.
+3. executable matrix와 detached vendors/six untouched cells를 준비한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

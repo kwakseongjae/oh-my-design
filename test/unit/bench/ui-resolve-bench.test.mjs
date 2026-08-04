@@ -5004,6 +5004,60 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("baselines a fresh unseen rail-signal decision task before model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/rail-signal-task-baseline-1.9.626/SUMMARY.final.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.626",
+      task_id: "rail-signal-speed-restriction-release-v0.1",
+      status: "FRESH_UNSEEN_TASK_BASELINED",
+      provider_calls: 0,
+      model_exposures: 0,
+      task_tree_sha256: "474d984e11a7cc3d2496e63399f61ff12b75d45a136c3ddb80cd01ebf60d15e5",
+      baseline: {
+        variant_id: "raw-design-md",
+        score_sha256: "c3bf6115094ca92178b448c882ccca85f53ba1d158e947dd4558d06ac90e5b1f",
+        objective_score: 75,
+        objective_max: 85,
+        automated_gate_pass: false,
+        critical_gates: {
+          task_contract: true,
+          state_journey: true,
+          responsive: false,
+          accessibility: false,
+          design_grounding: true,
+          evidence_honesty: true,
+        },
+        document_widths: {
+          desktop: { scroll: 1440, client: 1440 },
+          mobile: { scroll: 1115, client: 390 },
+          narrow_320: { scroll: 1115, client: 320 },
+          actual_200pct: { scroll: 2230, client: 640 },
+        },
+        fragmented_target_tokens_each_narrow_condition: 2,
+        wrapped_short_atomic_rows: { mobile: 2, narrow_320: 2, actual_200pct: 2 },
+        axe_serious_or_critical_each_viewport: 1,
+        contrast_ratio_observed: 2.79,
+      },
+      locked_facts: {
+        signal_assets: 4,
+        inspection_records: 6,
+        possession_windows: 2,
+        view_controls: 3,
+        protected_hook_mismatches: 0,
+      },
+      browser_harness_attestation: {
+        connection_name: "bench19366",
+        attempts: 1,
+        status: "infrastructure-error",
+        visual_claim_allowed: false,
+      },
+    });
+    expect(result.unknown_boundary).toHaveLength(8);
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
