@@ -1783,6 +1783,50 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter).toContain("4 substations · 6 waveform files · 2 relay terminals");
   });
 
+  it("preregisters exact visible-atomic control versus computed-type target carrier", () => {
+    const matrix = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/grid-waveform-computed-type-luna-1.9.500/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(matrix).toMatchObject({
+      product_version: "1.9.500",
+      status: "locked-awaiting-fresh-preparation",
+      task_lock_contract: {
+        task_id: gridDisturbanceWaveformTaskId,
+        source_commit: "24c7fcb6488e06810277c9d55f6e5f478b2d376a",
+        acceptance_sha256: "3408b9456fbeb08a74d7ab98a6f417fb0b77e12b8d8ce432c593480b6d4e46c1",
+        prior_control_exposures: 0,
+        prior_candidate_exposures: 0,
+      },
+      control_source_contract: {
+        source_commit: "931e124c9d15c5e2c4e561db5a880775acf8031c",
+      },
+      candidate_source_contract: {
+        source_commit: "14ed77650e7353e4f98dcb105660266102c01abc",
+      },
+      promotion_gates: {
+        candidate_system_id: "luna-computed-type-target-carrier-candidate",
+        ui_resolved_trials_required: 3,
+        proof_compliant_trials_required: 3,
+      },
+    });
+    expect(matrix.cells).toHaveLength(6);
+    expect(matrix.cells.map((cell) => cell.system_id)).toEqual([
+      "luna-visible-atomic-fit-control",
+      "luna-computed-type-target-carrier-candidate",
+      "luna-computed-type-target-carrier-candidate",
+      "luna-visible-atomic-fit-control",
+      "luna-visible-atomic-fit-control",
+      "luna-computed-type-target-carrier-candidate",
+    ]);
+    expect(matrix.reflow_oracle_contract).toMatchObject({
+      pre_edit_product_snapshot_required: true,
+      typography_comparison: "same-consumer-computed-pre-edit-versus-edited",
+      comparison_scroll_carrier_boundary: "registered-target-only",
+      comparison_scroll_focusable_descendants_allowed: false,
+    });
+  });
+
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {
     const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", editorialBriefTaskId, "task.json"), "utf8"));
     expect(task).toMatchObject({

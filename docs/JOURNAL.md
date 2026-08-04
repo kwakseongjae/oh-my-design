@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.500 grid computed-type preregistration
+- exact 1.9.490 control vs 1.9.497 candidate를 Luna/high 2×3, fixed pacing/no-retry로 잠갔다.
+- snapshot computed type·target-only carrier·clipped focus0를 artifact gate로 고정, exposure/provider 0이다.
+- 다음은 detached vendors와 six untouched cells preparation이다.
+
 ## 2026-08-04 (Codex) · 1.9.499 grid-disturbance task lock
 - fresh grid task는 4 substations/6 waveforms/2 relay terminals, 세 관계 carrier를 보존한다.
 - baseline 75/85, narrow overflow·compound/state wrap·contrast 4.02; provider/task exposure 0이다.

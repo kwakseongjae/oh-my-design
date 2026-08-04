@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `3e2c1bd4` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.499 grid-disturbance waveform task lock
+- 기준 커밋: `24c7fcb6` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.500 grid waveform computed-type preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.500은 exact 1.9.490 visible atomic-fit control `931e124c…` vs exact 1.9.497 computed-type target-carrier candidate `14ed7765…`를 fresh grid task에 Luna/high 2×3으로 사전등록했다.
+- both-arm shipped runner, exact named consumer/no-launch, snapshot sha+computed type, actual200, target-only carrier, focusable clipping0, static1/browser1을 artifact gate로 고정했다.
+- attempt 32, prior TTT 51,734,008+ / unavailable6, task exposure/provider 0이다. 다음은 detached vendors와 six untouched cells preparation이다.
 
 - 1.9.499는 fresh `grid-disturbance-waveform-review-v0.1`을 provider 전에 lock했다.
 - 4 substation/6 waveform file/2 relay terminal과 substation manifest·relay-terminal strip·waveform decision 세 carrier를 보존한다.
@@ -2495,9 +2499,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. exact 1.9.490 control 대비 1.9.497 candidate Reliability@3를 사전등록한다.
-2. fresh detached vendors와 six untouched cells를 준비하고 equality/browser/auth/CLI preflight를 검증한다.
-3. r1 control부터 no-retry로 실행한다.
+1. fresh detached vendors와 six untouched cells를 준비하고 equality/browser/auth/CLI preflight를 검증한다.
+2. r1 control을 Luna/high, 900s, no-retry로 실행한다.
+3. fixed 120s pacing 뒤 r1 candidate를 실행한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
