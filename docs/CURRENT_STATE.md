@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `b144c6d0` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.513 satellite telemetry task lock
+- 기준 커밋: `7614fd19` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.514 satellite selector provenance preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.514는 exact 1.9.504 control `86546d5a…` vs exact 1.9.511 candidate `b0aa9d5a…`를 fresh satellite task에 Luna/high 2×3으로 사전등록했다.
+- both-arm shipped runner, exact named consumer/no-launch, snapshot selector anchor, actual200, static1/browser1을 고정했다.
+- attempt34, prior TTT56,409,193+ / unavailable6, task exposure/provider0다. 다음은 detached vendors와 six untouched cells preparation이다.
 
 - 1.9.513은 fresh `satellite-telemetry-pass-review-v0.1`을 provider 전에 lock했다.
 - 4 orbit pass/6 telemetry packet/2 ground station과 manifest·station strip·decision 세 carrier, exact behavior/fact boundary를 보존한다.

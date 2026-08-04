@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.514 satellite selector provenance preregistration
+- exact 1.9.504 control vs 1.9.511 candidate를 Luna/high 2×3으로 잠갔다.
+- snapshot selector anchor·runner·actual200·static1/browser1, provider/exposure0다. 다음은 preparation이다.
+
 ## 2026-08-04 (Codex) · 1.9.513 satellite telemetry task lock
 - fresh task는 4 passes/6 packets/2 stations와 세 carrier를 보존하며 baseline75/85다.
 - narrow overflow615/685/1370px, target/state/contrast red; provider/exposure0. 다음은 preregistration이다.
