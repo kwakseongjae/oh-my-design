@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.526 measured-fit-plan exact pin
+- 1.9.525를 exact commit/tree/hash와 `omd-measured-pre-edit-fit-plan-candidate`로 pin했다.
+- provider0/promotion false. 다음은 genuinely unseen task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.525 measured pre-edit fit plan
 - exact browser가 편집 전 intrinsic width+16px를 row/condition별로 잠근 뒤 첫 edit을 허용한다.
 - focused42+parity1+installer1+lint+live smoke green; full556/기존3 red, provider0. 다음은 exact pin이다.

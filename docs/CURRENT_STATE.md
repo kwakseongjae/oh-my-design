@@ -4,9 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.525 measured pre-edit fit-plan repair
+- 갱신: 2026-08-04 · 1.9.526 measured pre-edit fit-plan exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.526은 1.9.525 수리를 exact commit `b3b83bf7…`, skill tree `b56ca22e…`, skill/helper/runner/test hashes로 pin했다.
+- 새 competitor는 `omd-measured-pre-edit-fit-plan-candidate`, vendor dir `omd-1.9.525`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
 
 - 1.9.525는 선언형 16px margin을 exact named consumer의 편집 전 실측 폭 예산으로 교체했다.
 - `snapshot → OMD_REFLOW_MODE=plan → plan-close`가 모든 row/390/320/actual200의 intrinsic nowrap width+16px를 inventory digest에 잠근 뒤에만 product edit을 허용한다.
@@ -2600,9 +2603,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.525 repair를 exact immutable competitor로 pin한다.
-2. provider/candidate에 노출되지 않은 fresh unseen task를 lock한다.
-3. exact prior control vs measured-fit-plan candidate Reliability@3를 사전등록한다.
+1. provider/candidate에 노출되지 않은 fresh unseen task를 lock한다.
+2. exact prior control vs measured-fit-plan candidate Reliability@3를 사전등록한다.
+3. detached vendors와 untouched cells를 준비한 뒤 runtime preflight로 간다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
