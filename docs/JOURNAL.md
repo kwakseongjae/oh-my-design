@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.530 observatory r1 control
+- Luna/high control 85/85+proof pass, 498.897s/1,163,464 tokens다.
+- edit1/static1/browser1, overflow·clipping·fragmentation·axe0, TTT61,553,770+다.
+
 ## 2026-08-04 (Codex) · 1.9.529 observatory matrix preparation
 - exact detached control/candidate와 six untouched cells를 준비했다.
 - equality6/6, clean2, exact runner/helper, candidate guardrail7/7, provider0다.

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.529 observatory six-cell preparation
+- 갱신: 2026-08-04 · 1.9.530 observatory r1 control
 
 ## 지금 (현재 위치)
+
+- 1.9.530 Luna/high r1 control은 valid UI-resolved+proof pass 85/85: 498.897s, 1,163,464 tokens다.
+- edit1/static1/browser1, existing attach/no-launch, overflow/clipping/fragmentation/axe0, recovery0/duplicate0/post-ready0, closure closed다.
+- TTT61,553,770+ / unavailable6. 다음은 fixed 120s pacing 뒤 r1 measured-fit-plan candidate no-retry다.
 
 - 1.9.529는 `/private/tmp/u19528-vendors` exact detached control/candidate와 `/private/tmp/u19528` six untouched cells를 준비했다.
 - equality6/6, product tree identical6, source detached+clean2, exact runner/helper hashes, candidate measured-plan guardrail7/7이다. provider0이다.
