@@ -19,6 +19,8 @@ const FIT_STRATEGIES = new Set(["full-row", "stack", "relocate", "comparison-scr
 const REQUIRED_POST_EDIT_COMMANDS = ["consolidated-static-closure", "browser-harness-terminal"];
 const NAMED_CONSUMER_MECHANISM = "browser-harness named consumer CDP attachment";
 const REQUIRED_FIT_RESERVE_CSS_PX = 8;
+const PLANNED_FIT_RESERVE_CSS_PX = 16;
+const ACCEPTANCE_DEBT_PROOF_MODES = new Set(["static-fail-close", "browser-row"]);
 const REQUIRED_MEASUREMENT_CONDITIONS = [
   { id: "390", viewport_width: 390, zoom: 1 },
   { id: "320", viewport_width: 320, zoom: 1 },
@@ -264,6 +266,83 @@ function validateStaticClosureManifest(value) {
   return value;
 }
 
+function manifestContainsAll(manifest, field, values, label) {
+  const known = new Set(manifest[field]);
+  for (const value of values) {
+    if (!known.has(value)) fail(`${label} must also appear in static_closure_manifest.${field}`);
+  }
+}
+
+function validateAcceptanceDebtLedger(value, manifest, knownRows) {
+  if (!Array.isArray(value) || value.length === 0) {
+    fail("acceptance_debt_ledger must enumerate every supplied or measured baseline failure");
+  }
+  uniqueStrings(value.map((entry) => entry?.id), "acceptance debt ids");
+  for (const debt of value) {
+    if (typeof debt.gate !== "string" || !debt.gate) fail(`acceptance debt ${debt.id} gate is required`);
+    if (typeof debt.selector !== "string" || !debt.selector) fail(`acceptance debt ${debt.id} selector is required`);
+    if (typeof debt.baseline_evidence !== "string" || !debt.baseline_evidence) {
+      fail(`acceptance debt ${debt.id} baseline_evidence is required`);
+    }
+    if (typeof debt.required_correction !== "string" || !debt.required_correction) {
+      fail(`acceptance debt ${debt.id} required_correction is required`);
+    }
+    if (typeof debt.required_outcome !== "string" || !debt.required_outcome) {
+      fail(`acceptance debt ${debt.id} required_outcome is required`);
+    }
+    if (debt.status !== "must-fix-before-static-close") {
+      fail(`acceptance debt ${debt.id} status must be must-fix-before-static-close`);
+    }
+    if (!ACCEPTANCE_DEBT_PROOF_MODES.has(debt.proof_mode)) {
+      fail(`acceptance debt ${debt.id} proof_mode must be static-fail-close or browser-row`);
+    }
+    const boundRows = stringList(
+      debt.bound_row_group_ids ?? [],
+      `acceptance debt ${debt.id} bound_row_group_ids`,
+      { allowEmpty: true },
+    );
+    if (boundRows.some((id) => !knownRows.has(id))) {
+      fail(`acceptance debt ${debt.id} binds an unknown row group`);
+    }
+    if (debt.proof_mode === "browser-row" && boundRows.length === 0) {
+      fail(`acceptance debt ${debt.id} browser-row proof requires a bound row group`);
+    }
+    if (debt.proof_mode === "static-fail-close" && boundRows.length !== 0) {
+      fail(`acceptance debt ${debt.id} static-fail-close proof cannot bind row groups`);
+    }
+    const guardrail = debt.static_guardrail;
+    if (!guardrail || typeof guardrail !== "object") {
+      fail(`acceptance debt ${debt.id} static_guardrail is required`);
+    }
+    guardrail.required_literals = stringList(
+      guardrail.required_literals ?? [],
+      `acceptance debt ${debt.id} static_guardrail.required_literals`,
+      { allowEmpty: true },
+    );
+    guardrail.forbidden_literals = stringList(
+      guardrail.forbidden_literals ?? [],
+      `acceptance debt ${debt.id} static_guardrail.forbidden_literals`,
+      { allowEmpty: true },
+    );
+    guardrail.forbidden_patterns = stringList(
+      guardrail.forbidden_patterns ?? [],
+      `acceptance debt ${debt.id} static_guardrail.forbidden_patterns`,
+      { allowEmpty: true },
+    );
+    if (
+      guardrail.required_literals.length
+      + guardrail.forbidden_literals.length
+      + guardrail.forbidden_patterns.length === 0
+    ) fail(`acceptance debt ${debt.id} static_guardrail must contain at least one assertion`);
+    manifestContainsAll(manifest, "required_literals", guardrail.required_literals, `acceptance debt ${debt.id} required literals`);
+    manifestContainsAll(manifest, "forbidden_literals", guardrail.forbidden_literals, `acceptance debt ${debt.id} forbidden literals`);
+    manifestContainsAll(manifest, "forbidden_patterns", guardrail.forbidden_patterns, `acceptance debt ${debt.id} forbidden patterns`);
+    debt.bound_row_group_ids = boundRows;
+    delete debt.final;
+  }
+  return value;
+}
+
 function validateFitStrategy(row) {
   if (!FIT_STRATEGIES.has(row.decision)) {
     fail(`row group ${row.id} decision must be ${[...FIT_STRATEGIES].join(", ")}`);
@@ -295,6 +374,7 @@ export function inventoryDigest(artifact) {
     acceptance_sequence: artifact.acceptance_sequence,
     static_closure_manifest: artifact.static_closure_manifest,
     pre_edit_product_snapshot_sha256: artifact.pre_edit_product_snapshot?.sha256 ?? null,
+    acceptance_debt_ledger: artifact.acceptance_debt_ledger,
     carrier_ids: artifact.inventory.carrier_ids,
     carrier_groups: artifact.carriers.map((carrier) => ({
       id: carrier.id,
@@ -312,6 +392,7 @@ export function inventoryDigest(artifact) {
       line_contract: row.line_contract,
       typography_contract: row.typography_contract,
       required_fit_reserve_css_px: row.required_fit_reserve_css_px,
+      planned_fit_reserve_css_px: row.planned_fit_reserve_css_px,
       decision: row.decision,
       scroll_contract: row.scroll_contract ?? null,
     })),
@@ -358,10 +439,18 @@ export function lockArtifact(input) {
     if (row.required_fit_reserve_css_px !== REQUIRED_FIT_RESERVE_CSS_PX) {
       fail(`row group ${row.id} required_fit_reserve_css_px must be ${REQUIRED_FIT_RESERVE_CSS_PX}`);
     }
+    if (row.planned_fit_reserve_css_px !== PLANNED_FIT_RESERVE_CSS_PX) {
+      fail(`row group ${row.id} planned_fit_reserve_css_px must be ${PLANNED_FIT_RESERVE_CSS_PX}`);
+    }
     const scrollContract = validateFitStrategy(row);
     if (scrollContract) row.scroll_contract = scrollContract;
     delete row.final;
   }
+  artifact.acceptance_debt_ledger = validateAcceptanceDebtLedger(
+    artifact.acceptance_debt_ledger,
+    artifact.static_closure_manifest,
+    knownRows,
+  );
   for (const row of artifact.row_groups.filter((entry) => entry.decision === "comparison-scroll")) {
     const carrier = artifact.carriers.filter((entry) => entry.selector === row.scroll_contract.container_selector);
     if (
@@ -641,8 +730,22 @@ export function finalizeArtifact(input, {
   const unresolvedRowCount = artifact.row_groups
     .filter((row) => row.final.status !== "pass" || ["outcome_390", "outcome_320", "outcome_200pct"].some((field) => row.final[field] !== "pass"))
     .reduce((sum, row) => sum + row.expected_count, 0);
-  if (!unresolvedClosure && (unresolvedCarrierCount > 0 || unresolvedRowCount > 0)) {
-    fail("resolved closure requires zero unresolved carriers and rows");
+  const rowsById = new Map(artifact.row_groups.map((row) => [row.id, row]));
+  for (const debt of artifact.acceptance_debt_ledger) {
+    const browserRowsPass = debt.bound_row_group_ids.every((id) => {
+      const row = rowsById.get(id);
+      return row?.final?.status === "pass"
+        && ["outcome_390", "outcome_320", "outcome_200pct"].every((field) => row.final[field] === "pass");
+    });
+    const pass = !unresolved
+      && artifact.static_closure.state === "passed"
+      && (debt.proof_mode === "static-fail-close" || browserRowsPass);
+    debt.final = { status: pass ? "pass" : "unresolved" };
+  }
+  const unresolvedDebtCount = artifact.acceptance_debt_ledger
+    .filter((debt) => debt.final.status !== "pass").length;
+  if (!unresolvedClosure && (unresolvedCarrierCount > 0 || unresolvedRowCount > 0 || unresolvedDebtCount > 0)) {
+    fail("resolved closure requires zero unresolved acceptance debts, carriers, and rows");
   }
   if (unresolved) {
     const attempt = artifact.browser_attempt;
@@ -677,11 +780,11 @@ export function finalizeArtifact(input, {
       fail("resolved closure requires one host-observed browser attempt");
     }
   }
-  const qualityPass = unresolvedCarrierCount === 0 && unresolvedRowCount === 0;
+  const qualityPass = unresolvedDebtCount === 0 && unresolvedCarrierCount === 0 && unresolvedRowCount === 0;
   artifact.closure = { state: qualityPass ? "closed" : "unresolved" };
   artifact.known_failure_closure = {
     state: qualityPass ? "closed" : "unresolved",
-    unresolved: unresolvedCarrierCount + unresolvedRowCount,
+    unresolved: unresolvedDebtCount + unresolvedCarrierCount + unresolvedRowCount,
   };
   artifact.closure_manifest = {
     registered_carrier_groups: artifact.carriers.length,
@@ -693,6 +796,8 @@ export function finalizeArtifact(input, {
     measured_200pct: passedCarrierCount("outcome_200pct"),
     unresolved_carriers: unresolvedCarrierCount,
     unresolved_rows: unresolvedRowCount,
+    registered_acceptance_debts: artifact.acceptance_debt_ledger.length,
+    unresolved_acceptance_debts: unresolvedDebtCount,
     quality_pass: qualityPass,
     browser_attempt: artifact.browser_attempt,
     inventory_sha256: artifact.inventory.sha256,
@@ -717,6 +822,17 @@ function staticEditGuardrails(artifact) {
     forbidden_pattern_semantics: "absence-required-delete-matching-declaration",
     neutral_values_still_forbidden: ["normal", "initial", "unset", "revert", "inherit"],
     pre_edit_selector_semantics: "every snapshot-backed row selector is anchored in the snapshotted pre-edit product; never register a class, id, or attribute introduced by the product edit",
+    acceptance_debts: artifact.acceptance_debt_ledger.map((debt) => ({
+      id: debt.id,
+      gate: debt.gate,
+      selector: debt.selector,
+      required_correction: debt.required_correction,
+      required_outcome: debt.required_outcome,
+      proof_mode: debt.proof_mode,
+      bound_row_group_ids: debt.bound_row_group_ids,
+    })),
+    planned_fit_reserve_css_px: PLANNED_FIT_RESERVE_CSS_PX,
+    measured_fit_reserve_css_px: REQUIRED_FIT_RESERVE_CSS_PX,
   };
 }
 

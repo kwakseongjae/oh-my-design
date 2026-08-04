@@ -58,13 +58,31 @@ function draft() {
       { id: "320", viewport_width: 320, zoom: 1 },
       { id: "200pct", viewport_width: 640, zoom: 2 },
     ],
+    acceptance_debt_ledger: [
+      {
+        id: "identifier-fit",
+        gate: "inline-fit-reserve",
+        selector: "[data-id]",
+        baseline_evidence: "supplied identifier can overflow the narrow carrier",
+        required_correction: "reflow the existing carrier without shrinking or breaking the identifier",
+        required_outcome: "all instances retain at least 8 CSS px reserve at 390, 320, and 200pct",
+        proof_mode: "browser-row",
+        bound_row_group_ids: ["identifier"],
+        status: "must-fix-before-static-close",
+        static_guardrail: {
+          required_literals: ["required-fact"],
+          forbidden_literals: [],
+          forbidden_patterns: ["word-break\\s*:"],
+        },
+      },
+    ],
     carriers: [
       { id: "plan", selector: "[data-plan]", expected_count: 1, binds_row_groups: ["identifier", "status"] },
       { id: "handoff", selector: "[data-handoff]", expected_count: 1, binds_row_groups: ["status"] },
     ],
     row_groups: [
-      { id: "identifier", selector: "[data-id]", role: "identifier", expected_count: 8, longest_value: "ULD-AKE-73102", line_contract: "single-token", typography_contract: { font_size_px: 14, line_height_px: 20, font_weight: "400" }, required_fit_reserve_css_px: 8, decision: "keep" },
-      { id: "status", selector: "[role=status]", role: "state", expected_count: 1, longest_value: "Ground review open", line_contract: "single-token", typography_contract: { font_size_px: 14, line_height_px: 20, font_weight: "600" }, required_fit_reserve_css_px: 8, decision: "keep" },
+      { id: "identifier", selector: "[data-id]", role: "identifier", expected_count: 8, longest_value: "ULD-AKE-73102", line_contract: "single-token", typography_contract: { font_size_px: 14, line_height_px: 20, font_weight: "400" }, required_fit_reserve_css_px: 8, planned_fit_reserve_css_px: 16, decision: "keep" },
+      { id: "status", selector: "[role=status]", role: "state", expected_count: 1, longest_value: "Ground review open", line_contract: "single-token", typography_contract: { font_size_px: 14, line_height_px: 20, font_weight: "600" }, required_fit_reserve_css_px: 8, planned_fit_reserve_css_px: 16, decision: "keep" },
     ],
     invariants: {
       same_row_count: true,
@@ -209,6 +227,30 @@ describe("compact reflow artifact helper", () => {
     expect(() => lockArtifact(invalid)).toThrow(/acceptance_sequence/);
   });
 
+  it("requires a static-bound acceptance debt ledger before product editing", () => {
+    const missing = draft();
+    delete missing.acceptance_debt_ledger;
+    expect(() => lockArtifact(missing)).toThrow(/acceptance_debt_ledger must enumerate/);
+
+    const unboundGuardrail = draft();
+    unboundGuardrail.acceptance_debt_ledger[0].static_guardrail.required_literals = ["not-in-manifest"];
+    expect(() => lockArtifact(unboundGuardrail)).toThrow(/must also appear in static_closure_manifest.required_literals/);
+
+    const noBrowserRow = draft();
+    noBrowserRow.acceptance_debt_ledger[0].bound_row_group_ids = [];
+    expect(() => lockArtifact(noBrowserRow)).toThrow(/browser-row proof requires a bound row group/);
+  });
+
+  it("requires a 16px planning margin while preserving the measured 8px gate", () => {
+    const missingPlan = draft();
+    delete missingPlan.row_groups[0].planned_fit_reserve_css_px;
+    expect(() => lockArtifact(missingPlan)).toThrow(/planned_fit_reserve_css_px must be 16/);
+
+    const loweredPlan = draft();
+    loweredPlan.row_groups[0].planned_fit_reserve_css_px = 8;
+    expect(() => lockArtifact(loweredPlan)).toThrow(/planned_fit_reserve_css_px must be 16/);
+  });
+
   it("locks a declarative static closure manifest before product editing", () => {
     const invalid = draft();
     invalid.static_closure_manifest.product_path = "../index.html";
@@ -295,6 +337,14 @@ describe("compact reflow artifact helper", () => {
       forbidden_patterns: ["word-break\\s*:"],
       forbidden_pattern_semantics: "absence-required-delete-matching-declaration",
       neutral_values_still_forbidden: ["normal", "initial", "unset", "revert", "inherit"],
+      planned_fit_reserve_css_px: 16,
+      measured_fit_reserve_css_px: 8,
+      acceptance_debts: [{
+        id: "identifier-fit",
+        gate: "inline-fit-reserve",
+        proof_mode: "browser-row",
+        bound_row_group_ids: ["identifier"],
+      }],
     });
   });
 
@@ -310,7 +360,7 @@ describe("compact reflow artifact helper", () => {
     };
     const result = finalizeArtifact(staticClosed(locked), { unresolved: true, env: browserEnv });
     expect(result.closure).toEqual({ state: "unresolved" });
-    expect(result.known_failure_closure).toEqual({ state: "unresolved", unresolved: 11 });
+    expect(result.known_failure_closure).toEqual({ state: "unresolved", unresolved: 12 });
     expect(result.closure_manifest).toMatchObject({
       registered_carrier_groups: 2,
       registered_carriers: 2,
@@ -321,6 +371,8 @@ describe("compact reflow artifact helper", () => {
       measured_200pct: 0,
       unresolved_carriers: 2,
       unresolved_rows: 9,
+      registered_acceptance_debts: 1,
+      unresolved_acceptance_debts: 1,
       quality_pass: false,
       browser_attempt: locked.browser_attempt,
       inventory_sha256: result.inventory.sha256,
@@ -495,6 +547,8 @@ describe("compact reflow artifact helper", () => {
       typography_contract: { source: "deterministic-pre-edit-snapshot" },
     }];
     input.carriers = [{ id: "form", selector: '[data-bench="event-log-form"]', expected_count: 1, binds_row_groups: ["form-save"] }];
+    input.acceptance_debt_ledger[0].selector = '[data-bench="event-log-form"] button';
+    input.acceptance_debt_ledger[0].bound_row_group_ids = ["form-save"];
 
     expect(() => lockArtifact(input)).toThrow(/selector is unresolved in the pre-edit snapshot.*class:event-log-form/);
     input.row_groups[0].selector = '[data-bench="event-log-form"] button';
@@ -554,7 +608,7 @@ describe("compact reflow artifact helper", () => {
     }
     locked.browser_attempt = measuredAttempt();
     locked.row_groups[1].final.outcome_320 = "unresolved";
-    expect(() => finalizeArtifact(staticClosed(locked), { env: browserEnv })).toThrow(/zero unresolved carriers and rows/);
+    expect(() => finalizeArtifact(staticClosed(locked), { env: browserEnv })).toThrow(/zero unresolved acceptance debts, carriers, and rows/);
   });
 
   it("rejects resolved closure without a measured character-range browser attempt", () => {

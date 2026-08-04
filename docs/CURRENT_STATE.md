@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.517 satellite selector transfer freeze
+- 갱신: 2026-08-04 · 1.9.518 acceptance-debt + fit-margin provider-free repair
 
 ## 지금 (현재 위치)
+
+- 1.9.518은 baseline/측정 failure를 첫 제품 edit 전에 machine-readable `acceptance_debt_ledger`로 고정한다.
+- debt guardrail은 global static manifest에 동일 assertion이 있어야 하고 browser debt는 pre-edit row group에 결박된다. unresolved debt는 closure를 차단한다.
+- fit planning reserve는 16px, 독립 측정 pass line은 기존 8px로 분리했다. focused82/82+parity1/1+focused70/70+lint green, full 555 pass/1 skip/기존3 red, provider0다. 다음은 exact immutable pin이다.
 
 - 1.9.517 r1 candidate는 valid 81/85 unresolved: 298.086s, 587,144 tokens, control 대비 wall0.9333×/token0.9215×다.
 - pre-edit selector anchor gate와 single edit/static/browser, overflow0/clipping0은 green이지만 320px packet identifier reserve가 5.421875px로 8px 미만이고 기존 muted 4.31:1 contrast를 남겨 responsive proof/accessibility가 red다.
@@ -2569,9 +2573,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fixed 120s pacing 뒤 r1 candidate를 Luna/high, 900s, no-retry로 실행한다.
-2. pair 결과로 Reliability@3 continuation 또는 mathematical freeze를 결정한다.
-3. proof root cause가 새롭다면 provider-free repair, 아니면 preregistered continuation을 수행한다.
+1. 1.9.518을 exact commit/tree/helper/test hash로 pin하고 competitor variant를 등록한다.
+2. genuinely unseen task를 provider 전에 lock하고 untouched baseline을 측정한다.
+3. exact control/candidate Reliability@3를 사전등록한 뒤 fresh cells를 준비한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

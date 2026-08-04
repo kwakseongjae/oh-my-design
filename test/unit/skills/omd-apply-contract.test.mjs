@@ -53,6 +53,9 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("known_failure_ledger:");
     expect(skill).toContain("every supplied baseline failure and every pre-edit measured failing critical gate");
     expect(skill).toContain("known_failure_ledger AND foreground_change AND comparison_carrier_set");
+    expect(skill).toContain("acceptance_debt_ledger");
+    expect(skill).toContain("직접 언급한 모든 실패 범주");
+    expect(skill).toContain("must-fix-before-static-close");
     expect(skill).toContain("measured-but-unchanged");
     expect(skill).toContain("measured_but_unchanged: 0");
     expect(skill).toContain("unresolved_known_failures: 0");
@@ -98,6 +101,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("scripts/reflow-browser.py");
     expect(skill).toContain("OMD_REFLOW_ARTIFACT=.omd/reflow-closure.json");
     expect(skill).toContain("required_fit_reserve_css_px: 8");
+    expect(skill).toContain("planned_fit_reserve_css_px: 16");
+    expect(skill).toContain("경계 8px에 맞추는 계획");
     expect(skill).toContain("typography_contract:");
     expect(skill).toContain("typography_contract: { source: deterministic-pre-edit-snapshot }");
     expect(skill).toContain("편집 전 product source와 sha256을 artifact 안에 자동 snapshot");

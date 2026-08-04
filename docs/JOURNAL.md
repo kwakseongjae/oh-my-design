@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.518 acceptance-debt + fit-margin repair
+- known a11y/fit failure를 edit 전 machine debt로 결박하고 unresolved debt가 closure를 막게 했다.
+- planning16px/measurement8px로 분리, focused153/153+lint green; full은 555 pass/기존3 red, provider0다.
+
 ## 2026-08-04 (Codex) · 1.9.517 satellite selector transfer freeze
 - candidate 81/85, 298.086s/587,144 tokens; selector provenance와 overflow0은 green이다.
 - reserve5.42px·contrast4.31 red로 실패, Reliability@3 max2/3이라 잔여4셀 frozen. 다음은 provider-free repair다.
