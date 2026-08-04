@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.501 grid matrix preparation
+- exact detached control/candidate와 six untouched cells, equality6/6를 준비했다.
+- browser/CLI/auth ready, candidate snapshot/computed-type/target-only gates 3/3, provider0이다.
+- 다음은 r1 control Luna/high no-retry다.
+
 ## 2026-08-04 (Codex) · 1.9.500 grid computed-type preregistration
 - exact 1.9.490 control vs 1.9.497 candidate를 Luna/high 2×3, fixed pacing/no-retry로 잠갔다.
 - snapshot computed type·target-only carrier·clipped focus0를 artifact gate로 고정, exposure/provider 0이다.
