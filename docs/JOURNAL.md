@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.536 pharma aggregate prereg
+- exact 1.9.525 control vs 1.9.533 candidate를 Luna/high 2×3, timeout900/pacing120/no-retry로 고정했다.
+- candidate exact-one aggregate carrier/max-content+16px, attempt37/TTT63,373,931+/provider0다.
+
 ## 2026-08-04 (Codex) · 1.9.535 pharmaceutical task lock
 - fresh batch-deviation task를 provider 전 lock; 4 batch/6 deviation/2 desk와 세 carrier를 보존했다.
 - baseline75/85, overflow665/735/1470, target3+3줄/state2줄/contrast3.88, provider0다.

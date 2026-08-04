@@ -3122,6 +3122,57 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ]);
   });
 
+  it("preregisters exact aggregate-carrier planning on the unseen pharmaceutical task", () => {
+    const matrix = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/pharmaceutical-aggregate-carrier-luna-1.9.536/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(validateRunMatrixPlan(matrix, { competitors })).toMatchObject({
+      product_version: "1.9.536",
+      execution_purpose: "internal-aggregate-carrier-fit-plan-transfer-reliability",
+      output_root: "/private/tmp/u19536",
+      vendors_root: "/private/tmp/u19536-vendors",
+      control_contract: {
+        timeout_seconds: 900,
+        max_concurrency: 1,
+        retry_policy: "none-primary",
+        task_order_policy: "balanced-rotation",
+        pacing: { inter_cell_delay_seconds: 120 },
+      },
+      task_lock_contract: {
+        task_id: "pharmaceutical-batch-deviation-review-v0.1",
+        source_commit: "85a309d91ae99de33014437ed704d313a37c74f7",
+        scored_model_exposure_before_replacement: false,
+      },
+      control_source_contract: { source_commit: "b3b83bf7cc3808c643beb34934ad1096ee334270" },
+      candidate_source_contract: { source_commit: "0b93fa971c5d4e086b2645f2de9dd09fe1b365fe" },
+      aggregate_carrier_fit_plan_contract: {
+        candidate_required: true,
+        control_required: false,
+        every_row_exactly_one_aggregate_carrier: true,
+        max_content_clone_measurement: true,
+        row_green_carrier_red_must_reflow: true,
+      },
+      promotion_gates: {
+        candidate_system_id: "luna-aggregate-carrier-fit-plan-candidate",
+        ui_resolved_trials_required: 3,
+        proof_compliant_trials_required: 3,
+        aggregate_carrier_fit_plan_trials_required: 3,
+      },
+    });
+    expect(matrix.cells).toHaveLength(6);
+    expect(matrix.cells.map((cell) => cell.system_id)).toEqual([
+      "luna-row-only-fit-plan-control",
+      "luna-aggregate-carrier-fit-plan-candidate",
+      "luna-aggregate-carrier-fit-plan-candidate",
+      "luna-row-only-fit-plan-control",
+      "luna-row-only-fit-plan-control",
+      "luna-aggregate-carrier-fit-plan-candidate",
+    ]);
+    expect(new Set(matrix.cells.map((cell) => `${cell.model_id}/${cell.effort}`)))
+      .toEqual(new Set(["gpt-5.6-luna/high"]));
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);

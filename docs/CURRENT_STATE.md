@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.535 pharmaceutical batch-deviation task lock
+- 갱신: 2026-08-04 · 1.9.536 pharmaceutical aggregate-carrier preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.536은 exact 1.9.525 row-only control `b3b83bf7…` vs exact 1.9.533 aggregate candidate `0b93fa97…`를 fresh pharma task에 Luna/high 2×3으로 사전등록했다.
+- both arm snapshot→plan→single edit→static1→final browser, candidate exact-one aggregate carrier/max-content+16px, timeout900/pacing120/no-retry/Reliability@3를 고정했다.
+- attempt37, prior TTT63,373,931+ / unavailable6, provider0다. 다음은 detached vendors와 six untouched cells preparation이다.
 
 - 1.9.535는 fresh `pharmaceutical-batch-deviation-review-v0.1`을 provider/candidate 노출 전에 lock했다.
 - 4 manufacturing batch/6 deviation record/2 quality desk와 ledger·desk strip·disposition decision 세 carrier를 보존한다. untouched baseline 75/85, narrow overflow665/735/1470px, target3+3줄, state2줄, contrast3.88이다.
@@ -2638,8 +2642,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. exact row-only control vs aggregate-carrier candidate Reliability@3를 사전등록한다.
-2. detached vendors와 untouched cells를 준비한다.
+1. exact detached control/candidate vendors와 six untouched cells를 준비한다.
+2. equality/source-detached-clean/runner+contract hash를 preflight한다.
 3. runtime/browser/provider preflight 뒤 preregistered 첫 control cell로 간다.
 
 ## 막힘 / 대기 (없으면 "없음")
