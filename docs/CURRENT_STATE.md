@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `6142925c` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.556 decision-target inventory exact pin
+- 기준 커밋: `3531d36d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.557 spent-fuel cask transfer task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.557은 fresh `spent-fuel-cask-transfer-review-v0.1`을 provider/candidate 노출 전에 lock했다.
+- 4 cask/6 surveillance packet/2 handling station과 register·station strip·transfer decision을 보존한다. untouched baseline75/85, narrow overflow685/755/1510px, target4+4줄, state2줄, contrast3.81이다.
+- task contract/state/design/evidence green, provider/task exposure0다. 다음은 exact 1.9.548 control vs 1.9.555 candidate Reliability@3 preregistration이다.
 
 - 1.9.556은 1.9.555를 exact commit `6142925c…`, source/skill tree와 skill/helper/test/report 해시로 pin했다.
 - 새 competitor는 `omd-decision-target-inventory-candidate`, vendor dir `omd-1.9.555`, provider0/promotion false다.

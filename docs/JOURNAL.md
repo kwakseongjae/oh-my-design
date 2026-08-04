@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.557 spent-fuel cask transfer task lock
+- fresh cask/surveillance/handling-station task를 provider 노출0에서 잠갔다.
+- baseline75/85, narrow overflow685/755/1510px, target4+4줄, contrast3.81; 다음 exact prereg다.
+
 ## 2026-08-04 (Codex) · 1.9.556 decision-target inventory exact pin
 - 1.9.555를 exact commit/source tree/skill tree/artifact hashes와 `omd-1.9.555` vendor id로 고정했다.
 - provider0/promotion false; 다음은 genuinely unseen transfer task lock이다.
