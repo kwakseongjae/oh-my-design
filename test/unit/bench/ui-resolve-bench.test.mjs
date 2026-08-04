@@ -3499,6 +3499,47 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("prepares six untouched subsea fit-strategy cells from exact detached sources", () => {
+    const preparation = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-fit-strategy-luna-1.9.551/PREPARATION.json",
+    ), "utf8"));
+    expect(preparation).toMatchObject({
+      product_version: "1.9.552",
+      status: "SIX_CELLS_PREPARED",
+      provider_calls: 0,
+      output_root: "/private/tmp/u19551",
+      vendors_root: "/private/tmp/u19551-vendors",
+      equality: {
+        scheduled_cells: 6,
+        prepared_cells: 6,
+        core_prompt_equal: 6,
+        prompt_equal: 6,
+        starter_equal: 6,
+        product_tree_equal: 6,
+        runtime_equal: 6,
+        model_equal: 6,
+        effort_equal: 6,
+        timeout_equal: 6,
+      },
+      source_attestation: {
+        control: { commit: "28f9620035fc1adae32b17965a7f51312c3ca2f5", detached: true, clean: true },
+        candidate: { commit: "84329948762fc75b33de39e13e68535d89fd3447", detached: true, clean: true },
+      },
+      candidate_guardrail_presence: {
+        fit_strategy_feasibility_derived: true,
+        intrinsic_document_unfit_gate: true,
+        comparison_scroll_before_edit: true,
+        shared_passive_identifier_only: true,
+        decision_target_only_retained: true,
+        focusable_action_excluded: true,
+        structured_first_edit_checklist_retained: true,
+        aggregate_carrier_plan_retained: true,
+        browser_runner_identical: true,
+      },
+    });
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);

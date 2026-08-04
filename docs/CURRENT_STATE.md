@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `ed7433c9` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.551 subsea fit-strategy preregistration
+- 기준 커밋: `4a5cf11c` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.552 subsea fit-strategy matrix preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.552는 `/private/tmp/u19551-vendors` exact detached control/candidate와 `/private/tmp/u19551` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, detached+clean2, candidate feasibility guardrail9/9와 identical runner를 확인했다. provider0다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
 
 - 1.9.551은 exact 1.9.541 control `28f96200…` vs exact 1.9.548 candidate `84329948…`를 fresh subsea task에 Luna/high 2×3으로 사전등록했다.
 - 양 arm은 aggregate plan+structured checklist+browser/static budget이 같고 candidate만 measured feasibility와 passive identifier shared-carrier rule을 추가한다. timeout900/pacing120/no-retry/R@3다.
