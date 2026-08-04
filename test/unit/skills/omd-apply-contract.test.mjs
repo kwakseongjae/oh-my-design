@@ -150,7 +150,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("passive_text_scroll_container: false");
     expect(skill).toContain("1. **INVENTORY.**");
     expect(skill).toContain("측정 시작 state에서 non-empty로 보이는");
-    expect(skill).toContain("rendered text가 48자 이하이고 제품 계약이 명시적으로 one-line을 요구");
+    expect(skill).toContain("52자 이하의 concise evidence fact");
+    expect(skill).toContain("`role: evidence` atomic row로 반드시 등록");
     expect(skill).toContain("현재 비어 있거나 hidden인 status는 row가 아니라 carrier 안의 보존 콘텐츠");
     expect(skill).toContain("측정 시작 state에서 실제 렌더되는 값 중 가장 긴 값");
     expect(skill).toContain("ordered `atomic_parts`");
@@ -167,6 +168,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("parent selector 전체의 non-space character top 고유값이 정확히 1");
     expect(skill).toContain("row selector와 다른 **named 관계 carrier**를 `comparison-scroll`로 쓴다");
     expect(skill).toContain("decision target은 evidence·state·action을 포함하지 않는 target-only carrier");
+    expect(skill).toContain("supporting evidence/state/action보다 먼저 놓이는 dedicated full-row relationship row");
     expect(skill).toContain('protected decision-target hook가 있으면 정확히 하나의 `role: target` row');
     expect(skill).toContain("target-only carrier 하나를 `plan-close` 전에 등록한다");
     expect(skill).toContain("shared carrier를 쓸 수 있지만");

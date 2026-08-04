@@ -217,6 +217,25 @@ function validateProtectedDecisionTargetInventory(snapshot, rows, carriers) {
   }
 }
 
+function validateProtectedDecisionEvidenceInventory(snapshot, rows) {
+  if (snapshot == null) return;
+  const source = Buffer.from(snapshot.source_base64, "base64").toString("utf8");
+  const protectedEvidenceCount = [...source.matchAll(/\bdata-bench-decision-role\s*=\s*(["'])evidence\1/gu)].length;
+  if (protectedEvidenceCount === 0) return;
+
+  const evidenceRows = rows.filter((row) => {
+    if (row.role !== "evidence") return false;
+    return preEditSelectorAnchors(row.selector).some((anchor) => (
+      anchor.type === "attribute"
+      && anchor.name === "data-bench-decision-role"
+      && anchor.value === "evidence"
+    ));
+  });
+  if (evidenceRows.length !== 1 || evidenceRows[0].expected_count !== protectedEvidenceCount) {
+    fail("protected concise decision evidence requires one evidence row group with exact pre-edit cardinality");
+  }
+}
+
 function validateAtomicParts(row) {
   const compound = COMPOUND_ATOMIC_SEPARATOR.test(row.longest_value);
   if (!LINE_CONTRACTS.has(row.line_contract)) {
@@ -652,6 +671,10 @@ export function lockArtifact(input, { allowPendingFitPlan = false } = {}) {
     artifact.pre_edit_product_snapshot,
     artifact.row_groups,
     artifact.carriers,
+  );
+  validateProtectedDecisionEvidenceInventory(
+    artifact.pre_edit_product_snapshot,
+    artifact.row_groups,
   );
   artifact.acceptance_debt_ledger = validateAcceptanceDebtLedger(
     artifact.acceptance_debt_ledger,

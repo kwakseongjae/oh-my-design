@@ -4316,6 +4316,23 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(result.frozen_unstarted_cells).toHaveLength(4);
   });
 
+  it("records the provider-free decision-context closure repair", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/decision-context-closure-repair-1.9.596/REPAIR.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.596",
+      status: "PROVIDER_FREE_REPAIR_GREEN",
+      provider_calls: 0,
+      source_failure: { cell_id: "luna-archive-r1-candidate", objective_score: 79, proof_pass: true, concise_evidence_lines: { "320": 2, "200pct": 2 }, desktop_target_action_spatial_separation: false },
+      repair_contract: { long_form_evidence_can_wrap: true, unknown_fact_fallback_allowed: false },
+      deterministic_enforcement: { snapshot_rejects_missing_protected_evidence_row: true, final_runner_checks_target_full_row: true, final_runner_checks_target_precedes_supporting: true, final_runner_checks_target_supporting_spatial_separation: true, actual_failed_artifact_replay: { result: "rejected-before-plan-close" } },
+      verification: { focused_tests: "51/51 pass", python_compile: "pass", typescript_lint: "pass", skill_validation: "pass", diff_check: "pass", provider_tokens: 0 },
+      quality_promotion: false,
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

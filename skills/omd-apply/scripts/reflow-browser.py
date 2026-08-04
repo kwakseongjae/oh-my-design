@@ -111,6 +111,7 @@ payload = {
         {
             "id": row["id"],
             "selector": row["selector"],
+            "role": row["role"],
             "expected_count": row["expected_count"],
             "line_contract": row["line_contract"],
             "longest_value": row["longest_value"],
@@ -230,6 +231,36 @@ def browser_fit_plan_script(measurement_payload, zoom):
       available_inner_width_css_px: minimum('available_inner_width_css_px'),
     }}];
   }}));
+  const decisionContext = (() => {{
+    const targetRows = packet.rows.filter((row) => row.role === 'target' && row.comparison_scroll);
+    if (!targetRows.length) return {{ required: false, pass: true, targets: [] }};
+    const targets = targetRows.map((row) => {{
+      const target = document.querySelector(row.selector);
+      const carrier = document.querySelector(row.scroll_contract.container_selector);
+      const context = target?.closest('[data-bench-decision-role="context"]') ?? carrier?.parentElement;
+      const supporting = context ? [...context.querySelectorAll(
+        '[data-bench-decision-role="evidence"], [data-bench-decision-role="state"], [data-bench-decision-role="action"]'
+      )].filter(visible) : [];
+      if (!target || !carrier || !context || !supporting.length) {{
+        return {{ id: row.id, full_row: false, precedes_supporting: false, spatially_separated: false, pass: false }};
+      }}
+      const carrierRect = carrier.getBoundingClientRect();
+      const contextRect = context.getBoundingClientRect();
+      const contextStyle = getComputedStyle(context);
+      const contentWidth = contextRect.width - parseFloat(contextStyle.paddingLeft) - parseFloat(contextStyle.paddingRight);
+      const fullRow = carrierRect.width + 1 >= contentWidth;
+      const precedesSupporting = supporting.every((item) =>
+        Boolean(carrier.compareDocumentPosition(item) & Node.DOCUMENT_POSITION_FOLLOWING));
+      const spatiallySeparated = supporting.every((item) => {{
+        const rect = item.getBoundingClientRect();
+        return carrierRect.bottom <= rect.top + 0.5 || rect.bottom <= carrierRect.top + 0.5 ||
+          carrierRect.right <= rect.left + 0.5 || rect.right <= carrierRect.left + 0.5;
+      }});
+      return {{ id: row.id, full_row: fullRow, precedes_supporting: precedesSupporting,
+        spatially_separated: spatiallySeparated, pass: fullRow && precedesSupporting && spatiallySeparated }};
+    }});
+    return {{ required: true, pass: targets.every((target) => target.pass), targets }};
+  }})();
   return JSON.stringify({{
     observed_document_zoom: parseFloat(getComputedStyle(document.documentElement).zoom || '1'),
     document_scroll_width: document.documentElement.scrollWidth,
@@ -238,6 +269,7 @@ def browser_fit_plan_script(measurement_payload, zoom):
     body_client_width: document.body.clientWidth,
     rows,
     carriers,
+    decision_context: decisionContext,
   }});
 }})()
 """
@@ -703,6 +735,20 @@ for row in artifact["row_groups"]:
         "passive_text_scroll_container": False,
         "measurements": measurements,
     }
+
+decision_context_final = {}
+for observation in observations:
+    passed = observation.get("decision_context", {}).get("pass", True)
+    decision_context_final[condition_field[observation["id"]]] = "pass" if passed else "unresolved"
+    all_pass = all_pass and passed
+artifact["decision_context_final"] = {
+    **decision_context_final,
+    "status": "pass" if all(value == "pass" for value in decision_context_final.values()) else "unresolved",
+    "conditions": [
+        {"id": observation["id"], **observation.get("decision_context", {"required": False, "pass": True})}
+        for observation in observations
+    ],
+}
 
 artifact["invariants"]["all_registered_carriers_closed"] = all_pass
 artifact["known_failure_closure"] = {"state": "closed" if all_pass else "unresolved", "unresolved": 0 if all_pass else 1}

@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `12f12fca` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.595 archive matrix freeze
+- 기준 커밋: `d068698a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.596 decision-context closure repair
 
 ## 지금 (현재 위치)
+
+- 1.9.596 provider-free repair는 decision/approval/handoff의 concise evidence≤52를 measured evidence row로 강제한다. 장문 evidence는 계속 wrap 가능하다.
+- comparison-scroll target은 모든 측정 조건에서 supporting evidence/state/action보다 앞선 dedicated full-row여야 하고 runner가 full-width/order/spatial separation을 측정한다.
+- 실제 r1 candidate artifact replay는 누락 evidence를 plan-close 전에 거부했다. focused51/51+py compile+lint+skill validate+diff green, provider0; 다음 exact source pin이다.
 
 - 1.9.595 r1 candidate는 proof green(static1/browser1/closed/contained plan)이지만 UI79/85다. concise decision evidence가 320/actual200에서2줄이고 desktop target/action 공간이 겹쳤다.
 - candidate UI3/3 최대치가2로 내려가 remaining4를 untouched 동결했다. wall1.108×/tokens1.221×로 efficiency1.1 gate도 red다.

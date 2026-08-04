@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.596 decision-context closure repair
+- concise decision evidence≤52를 inventory로, unfit target을 supporting roles 앞 dedicated full-row로 강제했다.
+- helper는 missing evidence를 pre-edit 거부하고 runner는 full-width/order/spatial separation을 측정한다.
+- focused51/51+compile/lint/skill validate green, provider0; 다음 exact source pin이다.
+
 ## 2026-08-05 (Codex) · 1.9.595 archive matrix freeze
 - candidate proof는 green/contained plan 관찰됐지만 UI79/85로 concise evidence2줄·desktop target/action overlap이다.
 - UI3/3 최대2라 remaining4 untouched freeze; wall1.108×/tokens1.221×도 red다.

@@ -208,6 +208,10 @@ describe("compact reflow artifact helper", () => {
     expect(runner).toContain('os.environ.get("BU_CDP_URL")');
     expect(runner).not.toContain("if not connection_name or not cdp_url");
     expect(runner).toContain('"Emulation.setDeviceMetricsOverride"');
+    expect(runner).toContain("decision_context: decisionContext");
+    expect(runner).toContain("full_row: fullRow");
+    expect(runner).toContain("precedes_supporting: precedesSupporting");
+    expect(runner).toContain("spatially_separated: spatiallySeparated");
     expect(runner).toContain('ORACLE = "character-range-line-tops"');
     expect(runner).toContain('FIT_PLAN_ORACLE = "intrinsic-nowrap-text-width"');
     expect(runner).toContain('mode = os.environ.get("OMD_REFLOW_MODE", "final")');
@@ -789,6 +793,34 @@ describe("compact reflow artifact helper", () => {
     input.carriers.at(-1).selector = "[data-target-carrier]";
     input.pre_edit_fit_plan = measuredFitPlan(input.row_groups, input.carriers);
     expect(lockArtifact(input).inventory.row_group_ids).toContain("decision-target");
+  });
+
+  it("fails closed when protected concise decision evidence is omitted from the row inventory", () => {
+    const input = draft();
+    const source = '<div data-plan=""><div data-id="fixture">required-fact</div></div><div data-handoff=""></div><div data-evidence-carrier=""><span data-bench-decision-role="evidence">4 reels · 6 labels · 2 bays</span></div>';
+    replacePreEditSnapshotSource(input, source);
+    expect(() => lockArtifact(input)).toThrow(/protected concise decision evidence requires one evidence row group/);
+
+    input.row_groups.push({
+      id: "decision-evidence",
+      selector: '[data-bench-decision-role="evidence"]',
+      role: "evidence",
+      expected_count: 1,
+      longest_value: "4 reels · 6 labels · 2 bays",
+      line_contract: "single-token",
+      typography_contract: { source: "deterministic-pre-edit-snapshot" },
+      required_fit_reserve_css_px: 8,
+      planned_fit_reserve_css_px: 16,
+      decision: "keep",
+    });
+    input.carriers.push({
+      id: "decision-evidence-carrier",
+      selector: "[data-evidence-carrier]",
+      expected_count: 1,
+      binds_row_groups: ["decision-evidence"],
+    });
+    input.pre_edit_fit_plan = measuredFitPlan(input.row_groups, input.carriers);
+    expect(lockArtifact(input).inventory.row_group_ids).toContain("decision-evidence");
   });
 
   it("compares snapshot-backed typography without trusting model-entered pixel values", () => {
