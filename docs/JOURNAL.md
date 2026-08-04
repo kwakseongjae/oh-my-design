@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.513 satellite telemetry task lock
+- fresh task는 4 passes/6 packets/2 stations와 세 carrier를 보존하며 baseline75/85다.
+- narrow overflow615/685/1370px, target/state/contrast red; provider/exposure0. 다음은 preregistration이다.
+
 ## 2026-08-04 (Codex) · 1.9.512 selector provenance exact pin
 - 1.9.511을 commit/tree/artifact hashes와 새 competitor id로 고정했다.
 - provider0/promotion false. 다음은 genuinely unseen transfer task lock이다.
