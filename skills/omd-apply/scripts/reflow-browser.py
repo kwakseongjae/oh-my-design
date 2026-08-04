@@ -172,6 +172,9 @@ def browser_fit_plan_script(measurement_payload, zoom):
     const sourceStyle = getComputedStyle(element);
     const number = (value) => Number.isFinite(parseFloat(value)) ? parseFloat(value) : 0;
     const horizontalMargin = number(sourceStyle.marginLeft) + number(sourceStyle.marginRight);
+    const sourceHorizontalChrome = number(sourceStyle.paddingLeft) + number(sourceStyle.paddingRight) +
+      number(sourceStyle.borderLeftWidth) + number(sourceStyle.borderRightWidth);
+    const availableInnerWidth = Math.max(0, element.getBoundingClientRect().width / zoom - sourceHorizontalChrome);
     const probe = element.cloneNode(true);
     probe.querySelectorAll('[id]').forEach((item) => item.removeAttribute('id'));
     probe.removeAttribute('id');
@@ -192,6 +195,7 @@ def browser_fit_plan_script(measurement_payload, zoom):
       intrinsic_outer_width_css_px: outerWidth,
       horizontal_chrome_css_px: horizontalChrome,
       inter_item_gap_css_px: gap,
+      available_inner_width_css_px: availableInnerWidth,
     }};
   }};
   const rows = Object.fromEntries(packet.rows.map((row) => {{
@@ -208,11 +212,15 @@ def browser_fit_plan_script(measurement_payload, zoom):
     const maximum = (key) => measurements.length
       ? Math.max(...measurements.map((measurement) => measurement[key]))
       : null;
+    const minimum = (key) => measurements.length
+      ? Math.min(...measurements.map((measurement) => measurement[key]))
+      : null;
     return [carrier.id, {{
       count: elements.length,
       intrinsic_outer_width_css_px: maximum('intrinsic_outer_width_css_px'),
       horizontal_chrome_css_px: maximum('horizontal_chrome_css_px'),
       inter_item_gap_css_px: maximum('inter_item_gap_css_px'),
+      available_inner_width_css_px: minimum('available_inner_width_css_px'),
     }}];
   }}));
   return JSON.stringify({{
@@ -525,6 +533,9 @@ if mode == "plan":
                         ),
                         "available_document_width_css_px": round(
                             observation["document_client_width"] / observation["observed_document_zoom"], 4
+                        ),
+                        "available_carrier_inner_width_css_px": round(
+                            observation["carriers"][carrier["id"]]["available_inner_width_css_px"], 4
                         ),
                         "requires_reflow": (
                             observation["carriers"][carrier["id"]]["intrinsic_outer_width_css_px"]

@@ -124,7 +124,9 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("각 row group은 정확히 한 aggregate carrier에만 결박");
     expect(skill).toContain("aggregate carrier outer width");
     expect(skill).toContain("required_outer_width_css_px = intrinsic_outer + 16px");
-    expect(skill).toContain("row의 16px budget만 green이어도 aggregate carrier가 available width를 넘으면 계획은 red");
+    expect(skill).toContain("row의 16px budget만 green이어도 aggregate carrier가 available document width를 넘으면 계획은 red");
+    expect(skill).toContain("실제 bound carrier inner width");
+    expect(skill).toContain("available_carrier_inner_width_css_px");
     expect(skill).toContain("reflow-artifact.mjs finalize");
     expect(skill).toContain("finalize-unresolved");
     expect(skill).toContain("등록 row/carrier 하나라도 unresolved면 resolved finalize를 거부");

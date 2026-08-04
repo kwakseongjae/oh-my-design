@@ -489,10 +489,13 @@ function validatePreEditFitPlan(value, rows, carriers, { allowPending = false } 
         ) >= 0.01
         || !Number.isFinite(measurement.available_document_width_css_px)
         || measurement.available_document_width_css_px <= 0
+        || !Number.isFinite(measurement.available_carrier_inner_width_css_px)
+        || measurement.available_carrier_inner_width_css_px <= 0
+        || measurement.available_carrier_inner_width_css_px > measurement.available_document_width_css_px + 0.01
         || measurement.requires_reflow !== (
           measurement.required_outer_width_css_px > measurement.available_document_width_css_px
         )
-      ) fail(`pre_edit_fit_plan carrier ${carrier.id} must bind aggregate outer width, chrome, gap, available width, and the ${PLANNED_FIT_RESERVE_CSS_PX}px planning margin`);
+      ) fail(`pre_edit_fit_plan carrier ${carrier.id} must bind aggregate outer width, chrome, gap, document width, carrier inner width, and the ${PLANNED_FIT_RESERVE_CSS_PX}px planning margin`);
     }
   }
   const boundCarrierByRow = new Map();
@@ -505,24 +508,24 @@ function validatePreEditFitPlan(value, rows, carriers, { allowPending = false } 
     const carrierPlan = carrierPlans.get(carrierId);
     if (!carrierPlan) fail(`pre_edit_fit_plan row ${row.id} has no measured aggregate carrier`);
     const conditions = rowPlan.measurements.map((measurement, index) => {
-      const available = carrierPlan.measurements[index].available_document_width_css_px;
+      const available = carrierPlan.measurements[index].available_carrier_inner_width_css_px;
       const requiresComparisonScroll = measurement.required_carrier_inner_width_css_px > available;
       return {
         id: measurement.id,
         required_carrier_inner_width_css_px: measurement.required_carrier_inner_width_css_px,
-        available_document_width_css_px: available,
+        available_carrier_inner_width_css_px: available,
         requires_comparison_scroll: requiresComparisonScroll,
       };
     });
-    const intrinsicallyDocumentUnfit = conditions.some((condition) => condition.requires_comparison_scroll);
-    if (intrinsicallyDocumentUnfit && row.decision !== "comparison-scroll") {
-      fail(`row group ${row.id} intrinsically exceeds the available document width and must declare comparison-scroll before the product edit`);
+    const intrinsicallyCarrierUnfit = conditions.some((condition) => condition.requires_comparison_scroll);
+    if (intrinsicallyCarrierUnfit && row.decision !== "comparison-scroll") {
+      fail(`row group ${row.id} intrinsically exceeds its bound carrier inner width and must declare comparison-scroll before the product edit`);
     }
     return {
       id: row.id,
       carrier_id: carrierId,
       decision: row.decision,
-      intrinsically_document_unfit: intrinsicallyDocumentUnfit,
+      intrinsically_carrier_unfit: intrinsicallyCarrierUnfit,
       conditions,
     };
   });
@@ -1143,6 +1146,9 @@ function staticEditGuardrails(artifact) {
             ),
             available_document_width_css_px: Object.fromEntries(
               carrier.measurements.map((measurement) => [measurement.id, measurement.available_document_width_css_px]),
+            ),
+            available_carrier_inner_width_css_px: Object.fromEntries(
+              carrier.measurements.map((measurement) => [measurement.id, measurement.available_carrier_inner_width_css_px]),
             ),
             requires_reflow: Object.fromEntries(
               carrier.measurements.map((measurement) => [measurement.id, measurement.requires_reflow]),

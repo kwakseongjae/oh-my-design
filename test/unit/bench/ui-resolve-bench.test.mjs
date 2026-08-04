@@ -3891,6 +3891,32 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(summary.frozen_unstarted_cells).toHaveLength(4);
   });
 
+  it("records the provider-free carrier-inner fit feasibility repair", () => {
+    const repair = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/carrier-inner-fit-feasibility-repair-1.9.579/REPAIR.json",
+    ), "utf8"));
+    expect(repair).toMatchObject({
+      product_version: "1.9.579",
+      status: "PROVIDER_FREE_REPAIR_VALIDATED",
+      provider_calls: 0,
+      source_failure: {
+        cell_id: "luna-subsea-cable-r1-candidate",
+        row_group: "decision-evidence",
+        required_carrier_inner_width_css_px: 316.3672,
+        old_comparison_budget: "available_document_width_css_px",
+      },
+      deterministic_regression: {
+        document_width_css_px: 320,
+        carrier_inner_width_css_px: 260,
+        row_required_inner_width_css_px: 316,
+        new_result: "rejected-before-product-edit-requires-comparison-scroll",
+      },
+      validation: { focused_tests: { passed: 50, failed: 0 }, typescript: "passed", provider_runs: 0 },
+      promotion: false,
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.579 carrier-inner fit repair
+- carrier content-box 최소 폭을 pre-edit에서 실측하고 row feasibility를 그 local budget에 결박했다.
+- document320/carrier260/row316 회귀가 edit 전 comparison-scroll 요구로 red다.
+- focused50/50+lint+diff green, provider0; 다음 exact pin이다.
+
 ## 2026-08-04 (Codex) · 1.9.578 subsea matrix frozen
 - r1 candidate valid81/85, 444.242s, 1,615,647 tokens; responsive/artifact closure red다.
 - self-dispatch0·UI0·proof0/1로 3/3 최대2, 잔여4셀 untouched 동결했다.

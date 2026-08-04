@@ -69,6 +69,7 @@ function measuredFitPlan(rows, carriers) {
           inter_item_gap_css_px: 8,
           required_outer_width_css_px: required,
           available_document_width_css_px: available,
+          available_carrier_inner_width_css_px: available - 32,
           requires_reflow: required > available,
         };
       }),
@@ -215,6 +216,7 @@ describe("compact reflow artifact helper", () => {
     expect(runner).toContain("intrinsic_outer_width_css_px");
     expect(runner).toContain("required_outer_width_css_px");
     expect(runner).toContain("available_document_width_css_px");
+    expect(runner).toContain("available_carrier_inner_width_css_px");
     expect(runner).toContain("width: 'max-content'");
     expect(runner).toContain('"plan-close"');
     expect(runner).toContain('PRE_EDIT_SNAPSHOT_SOURCE = "deterministic-pre-edit-snapshot"');
@@ -339,13 +341,14 @@ describe("compact reflow artifact helper", () => {
       fit_strategy_feasibility: {
         carrier_id: "plan",
         decision: "keep",
-        intrinsically_document_unfit: false,
+        intrinsically_carrier_unfit: false,
       },
     });
     expect(summary.static_edit_guardrails.pre_edit_fit_plan.carriers[0]).toMatchObject({
       id: "plan",
       required_outer_width_css_px: { "390": 196, "320": 197, "200pct": 198 },
       available_document_width_css_px: { "390": 390, "320": 320, "200pct": 160 },
+      available_carrier_inner_width_css_px: { "390": 358, "320": 288, "200pct": 128 },
       requires_reflow: { "390": false, "320": false, "200pct": true },
     });
     expect(JSON.parse(readFileSync(artifactPath, "utf8")).pre_edit_fit_plan.state).toBe("measured");
@@ -694,11 +697,11 @@ describe("compact reflow artifact helper", () => {
     });
   });
 
-  it("rejects a stack strategy when measured atomic content cannot fit the document", () => {
+  it("rejects a stack strategy when measured atomic content cannot fit its bound carrier", () => {
     const invalid = draft();
     invalid.pre_edit_fit_plan.rows[0].measurements[2].intrinsic_text_width_css_px = 180;
     invalid.pre_edit_fit_plan.rows[0].measurements[2].required_carrier_inner_width_css_px = 196;
-    expect(() => lockArtifact(invalid)).toThrow(/intrinsically exceeds the available document width/);
+    expect(() => lockArtifact(invalid)).toThrow(/intrinsically exceeds its bound carrier inner width/);
 
     invalid.row_groups[0].decision = "comparison-scroll";
     invalid.row_groups[0].scroll_contract = {
@@ -713,8 +716,17 @@ describe("compact reflow artifact helper", () => {
       id: "identifier",
       carrier_id: "plan",
       decision: "comparison-scroll",
-      intrinsically_document_unfit: true,
+      intrinsically_carrier_unfit: true,
     });
+  });
+
+  it("rejects a stack strategy when nested carrier chrome makes a document-fitting row impossible", () => {
+    const invalid = draft();
+    invalid.pre_edit_fit_plan.rows[0].measurements[1].intrinsic_text_width_css_px = 300;
+    invalid.pre_edit_fit_plan.rows[0].measurements[1].required_carrier_inner_width_css_px = 316;
+    invalid.pre_edit_fit_plan.carriers[0].measurements[1].available_document_width_css_px = 320;
+    invalid.pre_edit_fit_plan.carriers[0].measurements[1].available_carrier_inner_width_css_px = 260;
+    expect(() => lockArtifact(invalid)).toThrow(/bound carrier inner width/);
   });
 
   it("allows a shared comparison carrier only for passive identifier rows", () => {
