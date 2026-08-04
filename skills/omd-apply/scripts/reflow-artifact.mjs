@@ -137,10 +137,10 @@ function preEditSourceFacts(snapshot) {
   return { classes, ids, attributes };
 }
 
-function validatePreEditSelector(row, snapshot) {
-  const anchors = preEditSelectorAnchors(row.selector);
+function validatePreEditSelector(entry, snapshot, label = `row group ${entry.id}`) {
+  const anchors = preEditSelectorAnchors(entry.selector);
   if (!anchors.length) {
-    fail(`row group ${row.id} deterministic typography selector must use a stable pre-edit class, id, or attribute anchor`);
+    fail(`${label} selector must use a stable pre-edit class, id, or attribute anchor`);
   }
   const facts = preEditSourceFacts(snapshot);
   const missing = anchors.filter((anchor) => {
@@ -153,7 +153,7 @@ function validatePreEditSelector(row, snapshot) {
     const labels = missing.map((anchor) => anchor.value == null
       ? `${anchor.type}:${anchor.name}`
       : `${anchor.type}:${anchor.name}=${anchor.value}`);
-    fail(`row group ${row.id} deterministic typography selector is unresolved in the pre-edit snapshot (${labels.join(", ")})`);
+    fail(`${label} selector is unresolved in the pre-edit snapshot (${labels.join(", ")})`);
   }
 }
 
@@ -607,6 +607,9 @@ export function lockArtifact(input, { allowPendingFitPlan = false } = {}) {
   }
   for (const carrier of artifact.carriers) {
     if (typeof carrier.selector !== "string" || !carrier.selector) fail(`carrier ${carrier.id} selector is required`);
+    if (artifact.pre_edit_product_snapshot) {
+      validatePreEditSelector(carrier, artifact.pre_edit_product_snapshot, `carrier ${carrier.id}`);
+    }
     positiveInteger(carrier.expected_count, `carrier ${carrier.id} expected_count`);
     uniqueStrings(carrier.binds_row_groups, `carrier ${carrier.id} binds_row_groups`);
     if (carrier.binds_row_groups.some((id) => !knownRows.has(id))) fail(`carrier ${carrier.id} binds an unknown row group`);
@@ -630,7 +633,7 @@ export function lockArtifact(input, { allowPendingFitPlan = false } = {}) {
     if (atomicParts) row.atomic_parts = atomicParts;
     validateTypographyContract(row, artifact.pre_edit_product_snapshot);
     if (row.typography_contract.source === PRE_EDIT_SNAPSHOT_SOURCE) {
-      validatePreEditSelector(row, artifact.pre_edit_product_snapshot);
+      validatePreEditSelector(row, artifact.pre_edit_product_snapshot, `row group ${row.id} deterministic typography`);
     }
     if (row.required_fit_reserve_css_px !== REQUIRED_FIT_RESERVE_CSS_PX) {
       fail(`row group ${row.id} required_fit_reserve_css_px must be ${REQUIRED_FIT_RESERVE_CSS_PX}`);

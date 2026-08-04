@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.569 pre-edit carrier anchor gate
+- snapshot이 모든 carrier의 pre-edit anchor를 browser plan 전에 검증하도록 수리했다.
+- frozen replay provider0, focused40/40+lint/diff green; 다음 exact pin+fresh unseen task다.
+
 ## 2026-08-04 (Codex) · 1.9.568 organ custody matrix frozen
 - r1 candidate도 UI79/85/proof fail; pre-edit에 없는 target carrier selector가 plan에서 0개였다.
 - 3/3 최대2로 남은4셀 동결, TTT80,707,017+; 다음 provider-free snapshot selector gate다.

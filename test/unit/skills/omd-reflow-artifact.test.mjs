@@ -289,7 +289,7 @@ describe("compact reflow artifact helper", () => {
     temporaryRoots.push(root);
     const artifactPath = join(root, "artifact.json");
     const productPath = join(root, "index.html");
-    const source = '<div data-id="fixture">required-fact</div>';
+    const source = '<div data-plan=""><div data-id="fixture">required-fact</div></div><div data-handoff=""></div>';
     writeFileSync(artifactPath, JSON.stringify(draft()));
     writeFileSync(productPath, source);
 
@@ -316,7 +316,7 @@ describe("compact reflow artifact helper", () => {
     const input = draft();
     delete input.pre_edit_fit_plan;
     writeFileSync(artifactPath, JSON.stringify(input));
-    writeFileSync(productPath, '<div data-id="fixture">required-fact</div>');
+    writeFileSync(productPath, '<div data-plan=""><div data-id="fixture">required-fact</div></div><div data-handoff=""></div>');
 
     execFileSync(process.execPath, [
       join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
@@ -509,7 +509,7 @@ describe("compact reflow artifact helper", () => {
     const artifactPath = join(root, "artifact.json");
     const productPath = join(root, "index.html");
     writeFileSync(artifactPath, JSON.stringify(draft()));
-    writeFileSync(productPath, '<div data-id="fixture">required-fact</div>');
+    writeFileSync(productPath, '<div data-plan=""><div data-id="fixture">required-fact</div></div><div data-handoff=""></div>');
 
     const stdout = execFileSync(process.execPath, [
       join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
@@ -743,7 +743,7 @@ describe("compact reflow artifact helper", () => {
 
   it("fails closed when a protected decision target is omitted from the pre-edit inventory", () => {
     const input = draft();
-    const source = '<div data-id="fixture">required-fact</div><section data-target-carrier><strong data-bench-decision-role="target">VALVE-A + VALVE-B</strong></section>';
+    const source = '<div data-plan=""><div data-id="fixture">required-fact</div></div><div data-handoff=""></div><section data-target-carrier=""><strong data-bench-decision-role="target">VALVE-A + VALVE-B</strong></section>';
     replacePreEditSnapshotSource(input, source);
 
     expect(() => lockArtifact(input)).toThrow(/exactly one target row group/);
@@ -777,7 +777,7 @@ describe("compact reflow artifact helper", () => {
 
   it("compares snapshot-backed typography without trusting model-entered pixel values", () => {
     const input = draft();
-    const source = '<div data-id="fixture">required-fact</div>';
+    const source = '<div data-plan=""><div data-id="fixture">required-fact</div></div><div data-handoff=""></div>';
     input.pre_edit_product_snapshot = {
       product_path: "index.html",
       sha256: createHash("sha256").update(source).digest("hex"),
@@ -839,6 +839,38 @@ describe("compact reflow artifact helper", () => {
     expect(() => lockArtifact(input)).toThrow(/selector is unresolved in the pre-edit snapshot.*class:event-log-form/);
     input.row_groups[0].selector = '[data-bench="event-log-form"] button';
     expect(lockArtifact(input).row_groups[0].selector).toBe('[data-bench="event-log-form"] button');
+  });
+
+  it("rejects an aggregate carrier anchor introduced only by the product edit", () => {
+    const input = draft();
+    const source = '<section data-bench-decision-role="context"><div><strong data-bench-decision-role="target">VALVE-A + VALVE-B</strong></div></section><div data-plan=""></div><div data-handoff=""></div><div data-id="fixture">required-fact</div>';
+    replacePreEditSnapshotSource(input, source);
+    input.row_groups = [{
+      ...input.row_groups[0],
+      id: "decision-target",
+      selector: '[data-bench-decision-role="target"]',
+      role: "target",
+      expected_count: 1,
+      longest_value: "VALVE-A + VALVE-B",
+      atomic_parts: ["VALVE-A", "VALVE-B"],
+      line_contract: "parent-one-line",
+      typography_contract: { source: "deterministic-pre-edit-snapshot" },
+    }];
+    input.carriers = [{
+      id: "decision-target-carrier",
+      selector: '[data-bench-decision-role="context"] > .decision-target-carrier',
+      expected_count: 1,
+      binds_row_groups: ["decision-target"],
+    }];
+    input.acceptance_debt_ledger[0].bound_row_group_ids = ["decision-target"];
+    input.pre_edit_fit_plan = measuredFitPlan(input.row_groups, input.carriers);
+
+    expect(() => lockArtifact(input)).toThrow(
+      /carrier decision-target-carrier selector is unresolved in the pre-edit snapshot.*class:decision-target-carrier/,
+    );
+    input.carriers[0].selector = '[data-bench-decision-role="context"] > div';
+    input.pre_edit_fit_plan = measuredFitPlan(input.row_groups, input.carriers);
+    expect(lockArtifact(input).carriers[0].selector).toBe('[data-bench-decision-role="context"] > div');
   });
 
   it("requires resolved compound rows to prove passive text is not the scroll container", () => {

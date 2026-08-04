@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `a86f7328` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.568 organ custody matrix frozen
+- 기준 커밋: `763762ae` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.569 pre-edit carrier anchor gate
 
 ## 지금 (현재 위치)
+
+- 1.9.569 provider-free repair는 snapshot이 있을 때 모든 aggregate carrier의 class/id/attribute anchor가 pre-edit source에 존재해야 lock되도록 했다.
+- frozen r1 candidate artifact replay는 post-edit-only `.decision-target-carrier`를 browser plan 전에 거부했다. provider0, focused40/40, lint/diff green이다.
+- 다음은 exact repair source pin 후 fresh unseen task lock이다. quality promotion은 아직 아니다.
 
 - 1.9.568 r1 candidate는 valid complete, UI79/85, wall303,228ms, provider694,383 tokens지만 proof fail이다. self-dispatch는 호출되지 않았고 pre-edit에 없는 `.decision-target-carrier`가 plan에서 0개로 resolve됐다.
 - candidate 첫 trial 실패로 3/3 UI/proof/self-dispatch gate의 최대 도달치는 2/3이다. 남은 4셀은 실행하지 않고 matrix를 동결했다. paired 효율비는 causal 비교 대상이 아니다.

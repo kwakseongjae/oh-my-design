@@ -3601,6 +3601,34 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("records the provider-free pre-edit carrier anchor repair", () => {
+    const summary = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/pre-edit-carrier-anchor-gate-1.9.569/SUMMARY.final.json",
+    ), "utf8"));
+    expect(summary).toMatchObject({
+      product_version: "1.9.569",
+      status: "PROVIDER_FREE_REPAIR_COMPLETE",
+      provider_calls: 0,
+      repair: {
+        snapshot_time_carrier_anchor_gate: true,
+        all_carriers_checked_when_pre_edit_snapshot_present: true,
+        missing_class_id_or_attribute_anchor_rejected: true,
+        browser_plan_consumed_before_rejection: false,
+      },
+      frozen_candidate_replay: {
+        status: "rejected-before-browser",
+        provider_calls: 0,
+      },
+      verification: {
+        focused_tests_passed: 40,
+        focused_tests_failed: 0,
+        lint: "passed",
+        diff_check: "passed",
+      },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
