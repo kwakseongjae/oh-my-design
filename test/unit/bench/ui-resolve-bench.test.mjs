@@ -3120,6 +3120,66 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("preregisters exact fit-strategy feasibility on the unseen subsea task", () => {
+    const matrix = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-fit-strategy-luna-1.9.551/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(matrix).toMatchObject({
+      product_version: "1.9.551",
+      status: "locked-awaiting-fresh-preparation",
+      tokens_to_target_contract: {
+        attempt_order: 39,
+        prior_observed_provider_tokens_minimum: 70055778,
+        prior_usage_unavailable_cells: 6,
+      },
+      control_contract: {
+        timeout_seconds: 900,
+        max_concurrency: 1,
+        retry_policy: "none-primary",
+        pacing: { inter_cell_delay_seconds: 120 },
+      },
+      task_lock_contract: {
+        task_id: "subsea-valve-intervention-review-v0.1",
+        source_commit: "ed7433c979e2f29a9b8bb8ec297e865cacc48586",
+        prior_control_exposures: 0,
+        prior_candidate_exposures: 0,
+      },
+      control_source_contract: {
+        pin_id: "first-edit-static-checklist-1.9.542",
+        source_commit: "28f9620035fc1adae32b17965a7f51312c3ca2f5",
+      },
+      candidate_source_contract: {
+        pin_id: "fit-strategy-feasibility-1.9.549",
+        source_commit: "84329948762fc75b33de39e13e68535d89fd3447",
+      },
+      fit_strategy_feasibility_contract: {
+        candidate_required: true,
+        control_required: false,
+        derived_at_plan_close: true,
+        intrinsically_document_unfit_requires: "comparison-scroll",
+        shared_comparison_carrier_allowed_roles: ["identifier"],
+        focusable_actions_in_shared_carrier_allowed: false,
+      },
+      promotion_gates: {
+        candidate_system_id: "luna-fit-strategy-feasibility-candidate",
+        ui_resolved_trials_required: 3,
+        proof_compliant_trials_required: 3,
+        fit_strategy_feasibility_trials_required: 3,
+      },
+    });
+    expect(matrix.cells).toHaveLength(6);
+    expect(matrix.cells.map((cell) => cell.id)).toEqual([
+      "luna-subsea-r1-control",
+      "luna-subsea-r1-candidate",
+      "luna-subsea-r2-candidate",
+      "luna-subsea-r2-control",
+      "luna-subsea-r3-control",
+      "luna-subsea-r3-candidate",
+    ]);
+    expect(matrix.cells.every((cell) => cell.model_id === "gpt-5.6-luna" && cell.effort === "high")).toBe(true);
+  });
+
   it("preregisters exact measured pre-edit fit planning on the unseen observatory task", () => {
     const matrix = JSON.parse(readFileSync(join(
       repoRoot,

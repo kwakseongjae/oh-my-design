@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.551 subsea fit-strategy prereg
+- exact 1.9.541 control vs 1.9.548 candidate를 Luna/high 2×3, timeout900/pacing120/no-retry로 고정했다.
+- attempt39/TTT70,055,778+/provider0; 다음 detached vendors+six cells다.
+
 ## 2026-08-04 (Codex) · 1.9.550 subsea task lock
 - fresh valve/anomaly/intervention-console task를 provider 노출0에서 잠갔다.
 - baseline75/85, narrow overflow685/755/1510px, contrast3.88; 다음 exact prereg다.
