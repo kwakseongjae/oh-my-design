@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `213e9d71` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.640 cold-chain r1 control checkpoint
+- 기준 커밋: `10aec323` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.641 cold-chain plan-reconcile frozen
 
 ## 지금 (현재 위치)
+
+- 1.9.641 r1 candidate는 valid85/85, UI-resolved, 536,007ms, 2,182,215 tokens지만 proof gate red다. measured plan1을 보존하고 browser rerun0은 지켰으나 artifact-only reconcile5회가 모두 실패해 successful plan-close0인 채 제품을 수정했다.
+- control/candidate 모두 proof red이고 candidate proof/plan-close 최대 도달치가2/3으로 내려가 remaining4는 untouched freeze했다. 관측 wall0.640×/tokens0.472×는 proof 실패 때문에 홍보 근거가 아니다.
+- 누적 TTT118,047,296+ / unavailable6. 다음은 provider-free로 row별 추측형 reconcile을 전체 호환 패치 또는 단일 irreconcilable verdict를 내는 deterministic diagnostic으로 교체하는 수리다.
 
 - 1.9.640 r1 control은 valid85/85, UI-resolved, 837,070ms, 4,623,570 tokens지만 proof gate red다.
 - zero-attempt validation9 뒤 measured plan1이 semantic close에서 거부됐고 successful close0인 채 제품을 수정했다. static command1은 closure attempt0/open, final browser0, shipped runner0이다.

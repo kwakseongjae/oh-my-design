@@ -5731,6 +5731,60 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("freezes cold-chain reconcile after the candidate solves UI but cannot close proof", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/cold-chain-plan-reconcile-luna-1.9.637/SUMMARY.final.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.641",
+      status: "FROZEN_PROMOTION_UNREACHABLE_RECONCILE_NOT_CLOSED",
+      promotion: false,
+      provider_calls: 2,
+      completed_cells: 2,
+      frozen_unstarted_cells: [
+        "luna-cold-r2-candidate",
+        "luna-cold-r2-control",
+        "luna-cold-r3-control",
+        "luna-cold-r3-candidate",
+      ],
+      r1: {
+        control: { score: 85, ui_resolved: true, proof_pass: false },
+        candidate: { score: 85, ui_resolved: true, proof_pass: false },
+      },
+      candidate_plan_behavior: {
+        plan_runner_invocations: 3,
+        zero_attempt_validation_markers: 2,
+        measured_plan_attempts: 1,
+        browser_reruns_after_measured_rejection: 0,
+        artifact_only_reconcile_invocations: 5,
+        artifact_only_reconcile_successes: 0,
+        successful_plan_closes: 0,
+        product_edit_before_successful_plan_close: 1,
+        static_closure_state: "open",
+        final_browser_attempts: 0,
+        artifact_closed: false,
+        shipped_runner_invoked: true,
+      },
+      promotion_reachability: {
+        maximum_reachable_proof_compliant_trials: 2,
+        maximum_reachable_successful_plan_close_trials: 2,
+        required_each: 3,
+        promotion_reachable: false,
+      },
+      paired_efficiency: {
+        candidate_control_wall_time_ratio: 0.64,
+        candidate_control_token_ratio: 0.472,
+        causal_efficiency_claim_allowed: false,
+      },
+      tokens_to_target: {
+        cumulative_observed_provider_tokens_minimum: 118047296,
+        usage_unavailable_cells: 6,
+        goal_status: "right-censored-open",
+      },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

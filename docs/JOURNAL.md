@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.641 cold-chain reconcile frozen
+- candidate valid85/85, 536007ms/2182215 tokens지만 reconcile5회 전부 실패해 plan-close0/proof red다.
+- browser rerun0은 지켰지만 plan close 전 제품을 수정했고 static/final browser closure도 막혔다.
+- remaining4 untouched freeze, TTT118047296+; 다음은 deterministic complete reconcile diagnostic 수리다.
+
 ## 2026-08-05 (Codex) · 1.9.640 cold-chain r1 control checkpoint
 - r1 control valid85/85, UI green, 837070ms/4623570 tokens지만 proof red다.
 - measured close rejection 뒤 제품 edit, successful plan0/static open/final browser0/shipped runner0다.
