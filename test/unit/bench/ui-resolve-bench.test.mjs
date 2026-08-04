@@ -1882,6 +1882,50 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("preregisters exact computed-type control versus static-absence guardrails", () => {
+    const matrix = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/rail-static-absence-luna-1.9.507/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(matrix).toMatchObject({
+      product_version: "1.9.507",
+      status: "locked-awaiting-fresh-preparation",
+      task_lock_contract: {
+        task_id: railInterlockingEventLogTaskId,
+        source_commit: "d1994c7182e9eb38baff35ead229e9c4ea5640d4",
+        acceptance_sha256: "0cf61fbf3c6fe29b01eb4575490590d5f643d5edeb720f2697ea809d0f2ecf04",
+        prior_control_exposures: 0,
+        prior_candidate_exposures: 0,
+      },
+      control_source_contract: {
+        source_commit: "14ed77650e7353e4f98dcb105660266102c01abc",
+        source_pin_sha256: "8c82458713c10b859a579fbe5f4dd605847613340ba95072820e1fe6c089d4f9",
+      },
+      candidate_source_contract: {
+        source_commit: "86546d5af67d4a71f0b6a867ec3869ec299f3159",
+        source_pin_sha256: "096139b058e71abe0e9cdac7aed2e9b7962f933ced289620bafeff21ccb46e66",
+      },
+      static_closure_contract: {
+        lock_stdout_static_edit_guardrails_required: true,
+        forbidden_pattern_semantics: "absence-required-delete-matching-declaration",
+      },
+      promotion_gates: {
+        candidate_system_id: "luna-static-absence-guardrail-candidate",
+        ui_resolved_trials_required: 3,
+        proof_compliant_trials_required: 3,
+      },
+    });
+    expect(matrix.cells).toHaveLength(6);
+    expect(matrix.cells.map((cell) => cell.variant_id)).toEqual([
+      "omd-computed-type-target-carrier-candidate",
+      "omd-static-absence-guardrail-candidate",
+      "omd-static-absence-guardrail-candidate",
+      "omd-computed-type-target-carrier-candidate",
+      "omd-computed-type-target-carrier-candidate",
+      "omd-static-absence-guardrail-candidate",
+    ]);
+  });
+
   it("locks an unseen editorial routing family with explicit atomic and compact-copy scopes", () => {
     const task = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/tasks", editorialBriefTaskId, "task.json"), "utf8"));
     expect(task).toMatchObject({

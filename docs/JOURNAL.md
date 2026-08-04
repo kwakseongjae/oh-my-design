@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.507 rail static-absence preregistration
+- exact 1.9.497 control vs 1.9.504 candidate를 fresh rail task에 Luna/high 2×3으로 잠갔다.
+- static absence guardrail·snapshot type·target-only carrier·shipped runner, provider/exposure0이다.
+- 다음은 detached vendors와 six untouched cells preparation이다.
+
 ## 2026-08-04 (Codex) · 1.9.506 rail interlocking task lock
 - fresh rail task는 4 signal zones/6 event logs/2 desks와 세 관계 carrier를 보존한다.
 - untouched 75/85, overflow615/685/1370·compound4/5/5줄·contrast4.02; provider/exposure0이다.
