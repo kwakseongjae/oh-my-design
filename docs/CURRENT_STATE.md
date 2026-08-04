@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `7bbe6b75` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.495 flight r1 control
+- 기준 커밋: `681c56fb` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.496 flight transfer stopped
 
 ## 지금 (현재 위치)
+
+- 1.9.496 r1 candidate는 valid 79/85 unresolved: 324.563s, 734,928 tokens, control 대비 wall 1.1022×/token 1.3066×다.
+- exact attach/no-launch/세 조건/overflow0/atomic0/contrast0, visible inventory와 padding reserve는 green이나 action이 세 narrow 조건에서 clipped됐다.
+- target의 pre-edit line-height를 27.9가 아닌 21.7로 잘못 lock했고 target reserve -57.27/-127.27/-127.27px, action reserve 2.16px라 proof fail이다.
+- candidate UI-Resolved 3/3이 불가능해 4셀 frozen, TTT 51,734,008+ / unavailable 6이다. 다음은 provider-free computed-type capture + target-only comparison carrier planning repair다.
 
 - 1.9.495 r1 control은 valid 79/85 unresolved: 294.458s, 562,494 tokens다.
 - contrast와 atomic wrap은 green이나 390/320/actual200 overflow 33/103/206px가 남았다.

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.496 flight transfer stopped
+- candidate 79/85, exact consumer 측정 green이나 compound target type/reserve와 clipped action이 red다.
+- 4셀 frozen. 다음은 provider-free computed type + target-only comparison carrier repair다.
+
 ## 2026-08-04 (Codex) · 1.9.495 flight r1 control
 - exact control은 79/85, 294.458s, 562,494 tokens; narrow overflow가 남고 static assertion 문법 실패로 browser proof가 없었다.
 - 다음은 fixed pacing 뒤 exact visible atomic-fit r1 candidate no-retry다.
