@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `1aa9320d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.539 pharmaceutical r1 candidate
+- 기준 커밋: `efdedfaa` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.540 pharmaceutical aggregate transfer freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.540 r2 candidate는 valid 79/85 unresolved: 409.819s, 1,029,760 tokens, narrow overflow103/173/345px+clipped1/1/1이다.
+- aggregate carrier 분류3/3은 green이나 첫 edit에 forbidden decision `grid-template-columns`를 남겨 static exactly-once가 red, 후속 edit은 재폐쇄 불가다.
+- candidate proof R@3 최대1/3이라 잔여3셀 frozen, TTT66,556,830+ / unavailable6이다. 다음은 provider-free precise guardrail + first-edit checklist repair다.
 
 - 1.9.539 Luna/high r1 aggregate candidate는 valid UI-resolved 85/85: 492.340s, 1,022,012 tokens, control 대비 wall1.0064×/token0.9035×다.
 - aggregate plan이 carrier5의 320px 필요 폭 508.67/1304.03/803/1798.27/196.30px와 reflow4/5를 정확히 분류해 모든 viewport overflow/clipping/fragmentation/axe0를 만들었다.

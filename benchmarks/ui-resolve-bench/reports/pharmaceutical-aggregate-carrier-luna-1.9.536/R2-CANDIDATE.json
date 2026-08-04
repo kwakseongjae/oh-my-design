@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.540",
+  "experiment_id": "pharmaceutical-aggregate-carrier-luna-1.9.536",
+  "cell_id": "luna-pharma-r2-candidate",
+  "status": "VALID_UI_UNRESOLVED_PROOF_FAILED",
+  "provider_calls": 1,
+  "runtime": "codex",
+  "model_id": "gpt-5.6-luna",
+  "effort": "high",
+  "objective": {"score": 79, "max": 85, "ui_resolved": false},
+  "efficiency": {
+    "wall_time_seconds": 409.819,
+    "provider_tokens": 1029760,
+    "input_tokens": 1008442,
+    "cached_input_tokens": 939264,
+    "output_tokens": 21318,
+    "reasoning_output_tokens": 11188
+  },
+  "objective_observation": {
+    "accessibility": "pass",
+    "desktop_overflow_px": 0,
+    "mobile_overflow_px": 103,
+    "narrow_320_overflow_px": 173,
+    "actual_200pct_overflow_px": 345,
+    "clipped_controls_mobile": 1,
+    "clipped_controls_narrow_320": 1,
+    "clipped_controls_actual_200pct": 1,
+    "fragmented_tokens_all_viewports": 0,
+    "serious_or_critical_axe_violations": 0
+  },
+  "aggregate_plan_observation": {
+    "registered_rows": 6,
+    "registered_carriers": 3,
+    "carrier_required_outer_width_css_px_320": {
+      "manufacturing-batch-ledger": 1304.0312,
+      "quality-desk-strip": 803,
+      "disposition-decision": 1798.2656
+    },
+    "correct_reflow_classification_at_320": 3
+  },
+  "proof_trace": {
+    "product_edits": 2,
+    "product_revisions": 2,
+    "static_closures": 2,
+    "browser_mechanisms": 1,
+    "browser_recovery": 0,
+    "duplicate_static_closure": 0,
+    "verification_after_ready": 0,
+    "trace_compliance": true,
+    "shipped_runner_invoked": true
+  },
+  "artifact_gate": {
+    "pass": false,
+    "reasons": [
+      "reflow-static-closure-not-passed",
+      "reflow-browser-attempt-not-measured",
+      "reflow-exact-consumer-attachment-missing",
+      "reflow-browser-launch-detected",
+      "reflow-measurement-conditions-incomplete",
+      "reflow-document-overflow-limit",
+      "reflow-locked-typography-changed",
+      "reflow-artifact-not-closed"
+    ],
+    "static_closure_state": "failed",
+    "browser_attempts": 0,
+    "browser_outcome": "not-run",
+    "closure_state": "open"
+  },
+  "root_cause": {
+    "planning_gap": "Aggregate width detection transferred, but the single edit retained a decision grid-template-columns declaration explicitly forbidden by the locked narrow-hierarchy contract.",
+    "terminal_failure": "The exactly-once static close consumed the proof budget before the declaration was removed. The later edit could not be reclosed or terminally measured, and the official evaluator retained narrow overflow and clipping.",
+    "classification": "candidate transfer failure; aggregate measurement alone does not guarantee first-edit guardrail compliance"
+  },
+  "tokens_to_target_observed_minimum": 66556830,
+  "tokens_to_target_usage_unavailable_cells": 6,
+  "next": "Freeze the remaining three cells because candidate proof Reliability@3 can now reach at most 1/3; repair guardrail precision and first-edit closure planning without provider calls."
+}

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.540 pharma transfer freeze
+- r2 candidate 79/85, 409.819s/1,029,760 tokens; decision static guardrail을 첫 edit에서 놓쳐 proof red다.
+- candidate R@3 최대1/3로 3셀 frozen, TTT66,556,830+; 다음은 provider-free guardrail/checklist repair다.
+
 ## 2026-08-04 (Codex) · 1.9.539 pharma r1 candidate
 - aggregate candidate는 85/85, overflow/clipping/fragmentation/axe0, 492.340s/1,022,012 tokens다.
 - `min-width:0` guardrail false positive로 proof red; R@3 0/1(max2), TTT65,527,070+, 다음 r2 candidate다.
