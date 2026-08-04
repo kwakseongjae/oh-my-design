@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.556 decision-target inventory exact pin
+- 1.9.555를 exact commit/source tree/skill tree/artifact hashes와 `omd-1.9.555` vendor id로 고정했다.
+- provider0/promotion false; 다음은 genuinely unseen transfer task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.555 decision-target inventory repair
 - protected target hook를 exact target row/cardinality+distinct target-only carrier에 결박해 omission을 plan-close 전 차단했다.
 - focused47/47+lint green, full578 pass/1 skip/기존3 red, provider0/frozen matrix 유지; 다음 exact pin이다.

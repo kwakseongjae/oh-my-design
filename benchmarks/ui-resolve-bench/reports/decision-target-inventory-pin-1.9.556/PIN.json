@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.556",
+  "pin_id": "decision-target-inventory-1.9.556",
+  "source_commit": "6142925c153dbf9e8c17f7f456279c86c539c8e8",
+  "source_tree": "0b340b2716904fc9b1d8cfecbffff4e72957e762",
+  "skill_tree": "a0bec8f93e9cf3f85b14d303c79fe9100f3131a8",
+  "status": "PINNED",
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "competitor": {
+    "id": "omd-decision-target-inventory-candidate",
+    "vendor_directory": "omd-1.9.555",
+    "exact_source_required": true
+  },
+  "artifacts": {
+    "skills/omd-apply/SKILL.md": "c40c6a712c69ceb68685426c7e5a99f364a1de0d4743c28bf0a47a792194e8e0",
+    "skills/omd-apply/scripts/reflow-artifact.mjs": "1a3976a4bcef3ed448d9162ba059ad9e4876eda4a0e15ad89b0ea343641b8c5d",
+    "skills/omd-apply/scripts/reflow-browser.py": "4649a04a84f616a7943a31e9d7d14117b534c60a1810d950987f6632d676ce94",
+    "benchmarks/ui-resolve-bench/experimental-skills/omd-decision-context-closure/SKILL.md": "d38a5fcc319bcbe1f7d97dd43982ca27f5eb2411598b13cdc05c493a83a7a028",
+    "test/unit/skills/omd-reflow-artifact.test.mjs": "44bb02ebeb912b5fc216a8172b5d60994b6ff44895ab11f0a03cdba993f10c46",
+    "test/unit/skills/omd-apply-contract.test.mjs": "705e0b9b7bcc2795d7f423995dbe2bdca64fc9b6c081b9da6e4f535ee3c993f7",
+    "benchmarks/ui-resolve-bench/reports/decision-target-inventory-repair-1.9.555/ACCEPTANCE.json": "61405fa67032e9d51462b7bae9e804ce02092211788697ab3701125296f2f0e4"
+  },
+  "acceptance": {
+    "protected_target_presence_witnessed_by_snapshot": true,
+    "exact_target_row_and_cardinality": true,
+    "stable_target_selector_anchor": true,
+    "distinct_target_only_carrier": true,
+    "provider_calls": 0
+  },
+  "next": "Lock a genuinely unseen task before provider exposure, then preregister exact fit-strategy control against omd-1.9.555 under Reliability@3."
+}
