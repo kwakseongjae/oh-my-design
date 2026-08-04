@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.494 flight transfer preparation
+- detached exact sources와 six untouched cells/equality/runner isolation/browser/CLI/auth preflight를 완료했다.
+- provider 0. 다음은 Luna/high r1 control no-retry다.
+
 ## 2026-08-04 (Codex) · 1.9.493 visible atomic-fit transfer preregistration
 - exact 1.9.483 vs 1.9.490을 fresh flight task에 Luna/high 2×3, artifact-backed proof로 고정했다.
 - provider 0. 다음은 detached vendors와 six untouched cells preparation이다.
