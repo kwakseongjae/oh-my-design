@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `48b6ae54` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.577 subsea r1 control
+- 기준 커밋: `865ff4c2` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.578 subsea matrix frozen
 
 ## 지금 (현재 위치)
+
+- 1.9.578 r1 candidate는 valid81/85, 444,242ms, 1,615,647 tokens다. shipped runner/browser/static budget은 지켰지만 responsive와 artifact closure가 red였고 plain-Python self-dispatch는 관찰되지 않았다.
+- 3/3 UI/proof/self-dispatch 최대치가 2/3으로 내려가 잔여4셀은 untouched 동결했다. 누적 TTT84,725,753+ / unavailable6이다.
+- root cause는 row 필요 폭을 실제 bound carrier inner width가 아니라 document width와 비교한 것이다. 다음은 provider-free carrier-local fit budget 수리다.
 
 - 1.9.577 r1 control은 valid complete, UI81/85, wall485,680ms, provider2,403,089 tokens다. contract/state/a11y/design/evidence는 green, responsive는 red다.
 - plain-Python shipped runner가 browser-harness에 진입하지 못해 static2/duplicate1/browser0/artifact-open으로 proof red다. 누적 TTT는 83,110,106+ / unavailable6이다.

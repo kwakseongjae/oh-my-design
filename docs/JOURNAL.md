@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.578 subsea matrix frozen
+- r1 candidate valid81/85, 444.242s, 1,615,647 tokens; responsive/artifact closure red다.
+- self-dispatch0·UI0·proof0/1로 3/3 최대2, 잔여4셀 untouched 동결했다.
+- root cause는 document width 대신 실제 carrier inner width를 써야 하는 fit feasibility다.
+
 ## 2026-08-04 (Codex) · 1.9.577 subsea r1 control
 - valid81/85, 485.680s, 2,403,089 tokens; responsive/proof red다.
 - plain Python runner가 static2/browser0으로 닫혀 historical control boundary를 재현했다.

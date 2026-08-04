@@ -3852,6 +3852,45 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("freezes the subsea replacement after the r1 candidate makes three-of-three unreachable", () => {
+    const reportDir = join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-runner-self-dispatch-replacement-luna-1.9.573",
+    );
+    const candidate = JSON.parse(readFileSync(join(reportDir, "R1-CANDIDATE.json"), "utf8"));
+    const summary = JSON.parse(readFileSync(join(reportDir, "SUMMARY.final.json"), "utf8"));
+    expect(candidate).toMatchObject({
+      product_version: "1.9.578",
+      validity: "valid",
+      wall_time_ms: 444242,
+      provider_tokens: { comparison_total: 1615647 },
+      objective: { score: 81, max: 85, ui_resolved: false, responsive: false },
+      proof: {
+        static_closure_count: 1,
+        browser_mechanism_count: 1,
+        shipped_runner_invoked: true,
+        plain_python_self_dispatch_observed: false,
+        execution_gate_pass: false,
+      },
+      root_cause: { class: "row-fit-compared-to-document-instead-of-carrier-inner-width" },
+    });
+    expect(summary).toMatchObject({
+      product_version: "1.9.578",
+      status: "FROZEN_PROMOTION_UNREACHABLE",
+      provider_calls: 2,
+      completed_cells: 2,
+      promotion_reachability: {
+        observed_candidate_ui_resolved_trials: 0,
+        observed_candidate_proof_compliant_trials: 0,
+        observed_candidate_runner_self_dispatch_trials: 0,
+        maximum_reachable_per_gate: 2,
+        promotion_reachable: false,
+      },
+      tokens_to_target: { cumulative_observed_provider_tokens_minimum: 84725753 },
+    });
+    expect(summary.frozen_unstarted_cells).toHaveLength(4);
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
