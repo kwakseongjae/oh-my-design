@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.588 contained carrier budget pin
+- repair commit5f78f1c5/source tree83823662/skill tree0370e284를 exact pin했다.
+- system `omd-contained-carrier-budget-candidate`, vendor `omd-1.9.587`, provider0다.
+- 다음은 fresh unseen mixed aggregate+nested carrier task다.
+
 ## 2026-08-05 (Codex) · 1.9.587 contained carrier budget repair
 - raw overflowing inner width를 contained document budget으로 clamp했다.
 - actual failed artifact replay가 1038→368/298/298로 lock pass, nested target budget은 보존했다.

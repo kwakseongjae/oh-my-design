@@ -4128,6 +4128,25 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("pins the exact contained carrier budget candidate", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/carrier-contained-budget-pin-1.9.588/PIN.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.588",
+      status: "PINNED_PROVIDER_ZERO",
+      provider_calls: 0,
+      candidate: {
+        system_id: "omd-contained-carrier-budget-candidate",
+        source_commit: "5f78f1c5a23148778a49bdc54f6f6026a7b8c1d2",
+        source_tree: "83823662df28f80480a3a2d1f2d512ed7ead9e92",
+        skill_tree: "0370e28452f51f957a05624eee3d4f6e82d88e9d",
+      },
+      repair_contract: { nested_live_width_preserved_when_smaller: true, overflowing_live_width_never_promoted_as_available: true },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

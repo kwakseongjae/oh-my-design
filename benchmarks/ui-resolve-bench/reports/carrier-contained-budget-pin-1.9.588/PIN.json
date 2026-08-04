@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.588",
+  "status": "PINNED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "candidate": {
+    "system_id": "omd-contained-carrier-budget-candidate",
+    "vendor_version": "omd-1.9.587",
+    "source_commit": "5f78f1c5a23148778a49bdc54f6f6026a7b8c1d2",
+    "source_tree": "83823662df28f80480a3a2d1f2d512ed7ead9e92",
+    "skill_tree": "0370e28452f51f957a05624eee3d4f6e82d88e9d",
+    "artifacts": {
+      "reflow_browser_sha256": "5a4097b982af9f552b0cddc194e5f81842c81b4d7d3ea5b92cf9cd47f83097ad",
+      "reflow_artifact_sha256": "df16a41b4eba03e1054100e0520ba77395e0a50b6150ae9b099a72ead96f50f4",
+      "skill_sha256": "b92088079db782ddc4f3d02bc8a3e34bafb7b1c889781846876a3ee2e9c855d1"
+    }
+  },
+  "repair_contract": {
+    "carrier_budget": "min(live-inner, document-width - horizontal-chrome - horizontal-margin)",
+    "nested_live_width_preserved_when_smaller": true,
+    "overflowing_live_width_never_promoted_as_available": true,
+    "document_overflow_gate_retained": true,
+    "carrier_local_row_fit_gate_retained": true
+  },
+  "claim_boundary": "This pin identifies the exact provider-free repair candidate. It has not yet passed a fresh model-run transfer matrix.",
+  "next": "Author and baseline a fresh unseen task with a fixed overflowing aggregate carrier and a separately constrained nested relationship carrier."
+}
