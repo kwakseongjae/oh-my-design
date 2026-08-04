@@ -4333,6 +4333,26 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("pins the exact decision-context closure candidate before fresh model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/decision-context-closure-pin-1.9.597/PIN.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.597",
+      status: "PINNED_PROVIDER_ZERO",
+      provider_calls: 0,
+      candidate: {
+        system_id: "omd-decision-context-closure-candidate",
+        vendor_version: "omd-1.9.596",
+        source_commit: "5eaa26c9739a9e697f4707b06c31a32773706c16",
+        source_tree: "0a5b004b3406695ad870ed484cef73def77ac188",
+        skill_tree: "ae1306fe525395086836f2b95a1312152fb0eb28",
+      },
+      repair_contract: { concise_decision_evidence_inventory: true, decision_target_dedicated_full_row: true, decision_target_precedes_supporting_roles: true, decision_target_supporting_spatial_separation: true, contained_carrier_budget_retained: true },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.597 decision-context source pin
+- repair commit5eaa26c9/source tree0a5b004b/skill treeae1306fe를 exact pin했다.
+- candidate `omd-decision-context-closure-candidate`, vendor1.9.596, provider0/promotion false다.
+- 다음 genuinely unseen decision-context task 생성·baseline이다.
+
 ## 2026-08-05 (Codex) · 1.9.596 decision-context closure repair
 - concise decision evidence≤52를 inventory로, unfit target을 supporting roles 앞 dedicated full-row로 강제했다.
 - helper는 missing evidence를 pre-edit 거부하고 runner는 full-width/order/spatial separation을 측정한다.
