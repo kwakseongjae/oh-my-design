@@ -162,10 +162,11 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("`atomic_parts`는 separator wrap 허가가 아니다");
     expect(skill).toContain("parts와 separator 전체를 한 atomic group으로 유지");
     expect(skill).toContain("parent selector 전체의 non-space character top 고유값이 정확히 1");
-    expect(skill).toContain("row selector와 다른 **target-only 관계 carrier**를 named `comparison-scroll`로 쓴다");
-    expect(skill).toContain("**target-only 관계 carrier**");
-    expect(skill).toContain("target-only carrier 바깥에 evidence·state·action");
-    expect(skill).toContain("comparison carrier 안의 다른 registered row·focusable descendant");
+    expect(skill).toContain("row selector와 다른 **named 관계 carrier**를 `comparison-scroll`로 쓴다");
+    expect(skill).toContain("decision target은 evidence·state·action을 포함하지 않는 target-only carrier");
+    expect(skill).toContain("shared carrier를 쓸 수 있지만");
+    expect(skill).toContain("passive `identifier` 역할뿐");
+    expect(skill).toContain("comparison carrier 안의 focusable descendant");
     expect(skill).toContain("protected target/identifier/state 같은 passive text 자체의 computed overflow가 `auto|scroll`이면");
     expect(skill).toContain("기존 carrier 자체를 relocate");
     expect(skill).toContain("generated content·`data-*`·aria-label·hook 없는 span 복제");

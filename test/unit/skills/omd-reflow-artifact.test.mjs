@@ -306,6 +306,11 @@ describe("compact reflow artifact helper", () => {
     expect(summary.static_edit_guardrails.pre_edit_fit_plan.rows[0]).toMatchObject({
       id: "identifier",
       required_carrier_inner_width_css_px: { "390": 116, "320": 117, "200pct": 118 },
+      fit_strategy_feasibility: {
+        carrier_id: "plan",
+        decision: "keep",
+        intrinsically_document_unfit: false,
+      },
     });
     expect(summary.static_edit_guardrails.pre_edit_fit_plan.carriers[0]).toMatchObject({
       id: "plan",
@@ -632,7 +637,7 @@ describe("compact reflow artifact helper", () => {
     expect(() => lockArtifact(invalid)).toThrow(/distinct named, keyboard-reachable/);
   });
 
-  it("requires a registered target-only carrier for comparison scrolling", () => {
+  it("requires the registered relationship carrier for comparison scrolling", () => {
     const invalid = draft();
     invalid.row_groups[0].decision = "comparison-scroll";
     invalid.row_groups[0].scroll_contract = {
@@ -642,7 +647,7 @@ describe("compact reflow artifact helper", () => {
       focus_visible: true,
       passive_text_scroll_container: false,
     };
-    expect(() => lockArtifact(invalid)).toThrow(/target-only carrier/);
+    expect(() => lockArtifact(invalid)).toThrow(/registered relationship carrier/);
 
     invalid.carriers.push({
       id: "identifier-comparison",
@@ -657,6 +662,53 @@ describe("compact reflow artifact helper", () => {
       id: "identifier-comparison",
       binds_row_groups: ["identifier"],
     });
+  });
+
+  it("rejects a stack strategy when measured atomic content cannot fit the document", () => {
+    const invalid = draft();
+    invalid.pre_edit_fit_plan.rows[0].measurements[2].intrinsic_text_width_css_px = 180;
+    invalid.pre_edit_fit_plan.rows[0].measurements[2].required_carrier_inner_width_css_px = 196;
+    expect(() => lockArtifact(invalid)).toThrow(/intrinsically exceeds the available document width/);
+
+    invalid.row_groups[0].decision = "comparison-scroll";
+    invalid.row_groups[0].scroll_contract = {
+      container_selector: "[data-plan]",
+      accessible_name: "Identifier register comparison",
+      keyboard_reachable: true,
+      focus_visible: true,
+      passive_text_scroll_container: false,
+    };
+    const locked = lockArtifact(invalid);
+    expect(locked.pre_edit_fit_plan.fit_strategy_feasibility[0]).toMatchObject({
+      id: "identifier",
+      carrier_id: "plan",
+      decision: "comparison-scroll",
+      intrinsically_document_unfit: true,
+    });
+  });
+
+  it("allows a shared comparison carrier only for passive identifier rows", () => {
+    const shared = draft();
+    shared.carriers = [{
+      id: "shared-register",
+      selector: "[data-register]",
+      expected_count: 1,
+      binds_row_groups: ["identifier", "status"],
+    }];
+    shared.row_groups[0].decision = "comparison-scroll";
+    shared.row_groups[0].scroll_contract = {
+      container_selector: "[data-register]",
+      accessible_name: "Shared identifier register",
+      keyboard_reachable: true,
+      focus_visible: true,
+      passive_text_scroll_container: false,
+    };
+    shared.row_groups[1].role = "identifier";
+    shared.pre_edit_fit_plan = measuredFitPlan(shared.row_groups, shared.carriers);
+    expect(lockArtifact(shared).carriers[0].binds_row_groups).toEqual(["identifier", "status"]);
+
+    shared.row_groups[1].role = "state";
+    expect(() => lockArtifact(shared)).toThrow(/only passive identifier rows/);
   });
 
   it("compares snapshot-backed typography without trusting model-entered pixel values", () => {

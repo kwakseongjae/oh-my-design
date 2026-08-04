@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.548 fit-strategy feasibility repair
+- plan-close가 intrinsic+16px/document width로 stack 불가능 row를 비교 scroll 계약에 강제 결박한다.
+- shared carrier는 passive identifier만 허용; focused46/46+lint green, provider0/frozen matrix 유지다.
+
 ## 2026-08-04 (Codex) · 1.9.547 offshore transfer freeze
 - candidate83/85, 430.143s/1,329,206 tokens; checklist/static은 green이나 stack↔local-scroll 전략 불일치로 proof red다.
 - R@3 최대2/3, 잔여4셀 frozen, TTT70,055,778+; 다음 fit-strategy feasibility repair다.

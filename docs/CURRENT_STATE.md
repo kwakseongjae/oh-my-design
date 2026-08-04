@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `7dffde41` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.547 offshore checklist transfer freeze
+- 기준 커밋: `cce573b2` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.548 measured fit-strategy feasibility repair
 
 ## 지금 (현재 위치)
+
+- 1.9.548 provider-free repair는 row intrinsic+16px가 available document width를 넘으면 `plan-close`에서 `comparison-scroll` 선언을 강제한다.
+- decision target은 target-only를 유지하고, shared 관계 carrier는 passive identifier만 허용해 register 의미는 보존하면서 state/action 혼입을 차단한다.
+- focused46/46+lint+diff green, full573 pass/1 skip/기존3 red, provider0·frozen4셀 유지다. 다음은 exact pin 뒤 genuinely unseen transfer task lock이다.
 
 - 1.9.547 r1 candidate는 valid83/85, 430.143s/1,329,206 tokens, control 대비 wall0.8211×/token0.6126×다.
 - structured checklist/static1은 green이나 intrinsic+reserve가 document보다 큰 identifier3그룹을 `stack`으로 선언하고 CSS는 local scroll을 써 전략 불일치로 artifact unresolved다. desktop action gap도 red다.

@@ -465,6 +465,37 @@ function validatePreEditFitPlan(value, rows, carriers, { allowPending = false } 
       ) fail(`pre_edit_fit_plan carrier ${carrier.id} must bind aggregate outer width, chrome, gap, available width, and the ${PLANNED_FIT_RESERVE_CSS_PX}px planning margin`);
     }
   }
+  const boundCarrierByRow = new Map();
+  for (const carrier of carriers) {
+    for (const rowId of carrier.binds_row_groups) boundCarrierByRow.set(rowId, carrier.id);
+  }
+  value.fit_strategy_feasibility = rows.map((row) => {
+    const rowPlan = plans.get(row.id);
+    const carrierId = boundCarrierByRow.get(row.id);
+    const carrierPlan = carrierPlans.get(carrierId);
+    if (!carrierPlan) fail(`pre_edit_fit_plan row ${row.id} has no measured aggregate carrier`);
+    const conditions = rowPlan.measurements.map((measurement, index) => {
+      const available = carrierPlan.measurements[index].available_document_width_css_px;
+      const requiresComparisonScroll = measurement.required_carrier_inner_width_css_px > available;
+      return {
+        id: measurement.id,
+        required_carrier_inner_width_css_px: measurement.required_carrier_inner_width_css_px,
+        available_document_width_css_px: available,
+        requires_comparison_scroll: requiresComparisonScroll,
+      };
+    });
+    const intrinsicallyDocumentUnfit = conditions.some((condition) => condition.requires_comparison_scroll);
+    if (intrinsicallyDocumentUnfit && row.decision !== "comparison-scroll") {
+      fail(`row group ${row.id} intrinsically exceeds the available document width and must declare comparison-scroll before the product edit`);
+    }
+    return {
+      id: row.id,
+      carrier_id: carrierId,
+      decision: row.decision,
+      intrinsically_document_unfit: intrinsicallyDocumentUnfit,
+      conditions,
+    };
+  });
   return value;
 }
 
@@ -592,14 +623,15 @@ export function lockArtifact(input, { allowPendingFitPlan = false } = {}) {
     artifact.carriers,
     { allowPending: allowPendingFitPlan },
   );
+  const rowsById = new Map(artifact.row_groups.map((row) => [row.id, row]));
   for (const row of artifact.row_groups.filter((entry) => entry.decision === "comparison-scroll")) {
     const carrier = artifact.carriers.filter((entry) => entry.selector === row.scroll_contract.container_selector);
-    if (
-      carrier.length !== 1
-      || carrier[0].binds_row_groups.length !== 1
-      || carrier[0].binds_row_groups[0] !== row.id
-    ) {
-      fail(`row group ${row.id} comparison-scroll must use one registered target-only carrier`);
+    if (carrier.length !== 1 || !carrier[0].binds_row_groups.includes(row.id)) {
+      fail(`row group ${row.id} comparison-scroll must use its one registered relationship carrier`);
+    }
+    const sharedRows = carrier[0].binds_row_groups.map((id) => rowsById.get(id));
+    if (sharedRows.length > 1 && sharedRows.some((entry) => entry?.role !== "identifier")) {
+      fail(`row group ${row.id} shared comparison-scroll carrier may contain only passive identifier rows`);
     }
   }
   artifact.inventory = {
@@ -1063,6 +1095,8 @@ function staticEditGuardrails(artifact) {
             required_carrier_inner_width_css_px: Object.fromEntries(
               row.measurements.map((measurement) => [measurement.id, measurement.required_carrier_inner_width_css_px]),
             ),
+            fit_strategy_feasibility: artifact.pre_edit_fit_plan.fit_strategy_feasibility
+              .find((entry) => entry.id === row.id),
           })),
           carriers: artifact.pre_edit_fit_plan.carriers.map((carrier) => ({
             id: carrier.id,
