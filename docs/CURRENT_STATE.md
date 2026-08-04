@@ -3,10 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `f6bc8fc0` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.504 grid repro frozen + static guardrail repair
+- 기준 커밋: `86546d5a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.505 static absence guardrail pin
 
 ## 지금 (현재 위치)
+
+- 1.9.505는 provider-free repair를 exact commit `86546d5a…`, skill tree `73f56442…`, skill/runner/helper sha256으로 pin했다.
+- 새 competitor는 `omd-static-absence-guardrail-candidate`, vendor dir `omd-1.9.504`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
 
 - 1.9.504 clean repro는 control 85/85 353.206s/1,134,209 tokens, candidate 85/85 310.876s/771,626 tokens다.
 - candidate wall 0.8802×/token 0.6803×지만 patch에 `word-break: normal`을 넣어 exactly-once static close가 red; 수정 뒤 정직하게 retry하지 않아 proof fail이다.

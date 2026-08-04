@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.505 static absence guardrail pin
+- 1.9.504를 exact commit/tree/file hashes와 `omd-1.9.504` vendor identity로 고정했다.
+- provider0/promotion false. 다음은 genuinely unseen task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.504 grid repro frozen + static guardrail repair
 - clean repro control/candidate 모두 85/85; candidate 0.8802× wall/0.6803× tokens이나 static proof가 red다.
 - `word-break: normal`도 forbidden pattern이라는 absence semantics를 lock stdout+skill에 고정, 4셀 frozen했다.

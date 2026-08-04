@@ -1405,6 +1405,23 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(candidate.commit).not.toBe(previous.commit);
   });
 
+  it("pins static absence guardrails separately from computed type carriers", () => {
+    const previous = competitors.variants["omd-computed-type-target-carrier-candidate"];
+    const candidate = competitors.variants["omd-static-absence-guardrail-candidate"];
+    expect(candidate).toMatchObject({
+      kind: "local-skill",
+      vendor_dir: "omd-1.9.504",
+      source_path: "skills/omd-apply",
+      install_adapter: previous.install_adapter,
+      install_root: previous.install_root,
+      install_dir: previous.install_dir,
+      declared_name: "omd:apply",
+      commit: "86546d5af67d4a71f0b6a867ec3869ec299f3159",
+      activation: previous.activation,
+    });
+    expect(candidate.commit).not.toBe(previous.commit);
+  });
+
   it("locks an unseen spatial aircraft load-plan family before runtime artifact validation", () => {
     const task = JSON.parse(readFileSync(join(
       repoRoot,
