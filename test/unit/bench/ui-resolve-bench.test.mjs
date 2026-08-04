@@ -4574,6 +4574,30 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("freezes the museum matrix after a border-box verifier false negative", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/museum-desktop-decision-context-luna-1.9.609/SUMMARY.final.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.614",
+      status: "FROZEN_PROMOTION_UNREACHABLE_VERIFIER_FALSE_NEGATIVE",
+      promotion: false,
+      provider_calls: 2,
+      completed_cells: 2,
+      r1: {
+        control: { score: 85, ui_resolved: true, proof_pass: true, tokens: 1062466 },
+        candidate: { score: 85, ui_resolved: true, proof_pass: false, tokens: 1848420 },
+      },
+      candidate_transfer_evidence: { desktop_decision_context_observed: true, decision_context_required_flags: [true, true, true, true], nested_carrier_containment_attested: true, objective_ui_resolved: true, artifact_quality_pass: true, promotion_proof_pass: false },
+      verifier_false_negative: { reported_full_row: false, precedes_supporting: true, spatially_separated: true, browser_harness_desktop_measurement: { context_border_box_width_px: 1108, context_client_width_px: 1106, target_width_px: 1067.9921875, old_full_row: false, border_aware_full_row: true }, candidate_product_regression: false },
+      promotion_reachability: { candidate_ui_resolved_observed: 1, maximum_reachable_ui_resolved_trials: 3, candidate_proof_compliant_observed: 0, maximum_reachable_proof_compliant_trials: 2, promotion_reachable: false },
+      paired_efficiency: { wall_time_gate: false, token_gate: false, causal_efficiency_claim_allowed: false },
+      tokens_to_target: { cumulative_observed_provider_tokens_minimum: 104755044, usage_unavailable_cells: 6, goal_status: "right-censored-open" },
+    });
+    expect(result.frozen_unstarted_cells).toHaveLength(4);
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

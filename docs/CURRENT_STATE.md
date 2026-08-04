@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `e77c3d8a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.613 museum r1 control checkpoint
+- 갱신: 2026-08-05 · 1.9.614 museum matrix frozen on verifier false negative
 
 ## 지금 (현재 위치)
+
+- 1.9.614 r1 candidate는 valid85/85, UI-resolved, 424,791ms, 1,848,420 tokens지만 proof red다. desktop+narrow required true와 nesting attestation은 전이됐다.
+- browser-harness 실측상 target1067.992px는 true content1068px full-row다. verifier가 border-box1108-padding38=1070으로 계산해 border2px를 누락한 false negative다.
+- proof3/3 최대치가2라 remaining4 untouched freeze, wall1.138×/tokens1.740× red, 누적 TTT104,755,044+ / unavailable6다. 다음은 content-box 측정 provider-free repair다.
 
 - 1.9.613 r1 control은 valid85/85, UI-resolved, 373,337ms, 1,062,466 tokens다. responsive/a11y/design/evidence와 old proof gate가 모두 green이다.
 - 실제 구현은 dedicated target+outer gallery carrier로 올바르지만 old artifact의 decision required flags는 false×3, desktop final/nested containment attestation은 없다. proof blind spot을 숨기지 않는다.

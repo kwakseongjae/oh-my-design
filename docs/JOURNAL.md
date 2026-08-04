@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.614 museum matrix freeze
+- candidate85/85/UI green but proof red; required true×4와 nesting attestation은 전이됐다.
+- browser-harness가 border2px 누락 false negative를 확정했다; remaining4 untouched freeze다.
+- TTT104755044+; 다음 content-box full-row verifier provider-free repair다.
+
 ## 2026-08-05 (Codex) · 1.9.613 museum r1 control
 - valid85/85, UI/proof green, 373337ms, 1062466 tokens다.
 - 구현은 올바르지만 old proof required=false×3, desktop/nesting attestation 없음도 기록했다.
