@@ -62,6 +62,7 @@ const semiconductorWaferDispositionTaskId = "semiconductor-wafer-disposition-v0.
 const waterTreatmentBatchReleaseTaskId = "water-treatment-batch-release-v0.1";
 const flightRecorderDownloadTaskId = "flight-recorder-download-review-v0.1";
 const gridDisturbanceWaveformTaskId = "grid-disturbance-waveform-review-v0.1";
+const railInterlockingEventLogTaskId = "rail-interlocking-event-log-review-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -1798,6 +1799,43 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(starter.match(/data-bench="waveform-file-id"/g)).toHaveLength(6);
     expect(starter).toContain("SUBSTATION-DELTA-782 + WAVEFORM-C37-905184");
     expect(starter).toContain("4 substations · 6 waveform files · 2 relay terminals");
+  });
+
+  it("locks an unseen rail-interlocking event-log family before static-absence transfer", () => {
+    const task = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/tasks",
+      railInterlockingEventLogTaskId,
+      "task.json",
+    ), "utf8"));
+    expect(validateTaskContract(task)).toMatchObject({
+      id: railInterlockingEventLogTaskId,
+      version: "0.1.0",
+      behavior_adapter: "onboarding-v1",
+      protected_hook_counts: {
+        "[data-bench='signal-zone-case']": 4,
+        "[data-bench='signal-zone-id']": 4,
+        "[data-bench='event-log-id']": 6,
+        "[data-bench='station-id']": 2,
+        "[data-bench='review-window']": 2,
+      },
+      text_geometry_oracle: {
+        scope_selectors: [
+          "[data-bench-design-role='signal-zone-manifest']",
+          "[data-bench='interlocking-desk-strip']",
+          "[data-bench-decision-role='context']",
+        ],
+      },
+    });
+    const out = prepareVariant("raw-design-md", {
+      task: railInterlockingEventLogTaskId,
+      outputName: "rail-interlocking-event-log-lock",
+    });
+    const starter = readFileSync(join(out, "index.html"), "utf8");
+    expect(starter.match(/data-bench="signal-zone-case"/g)).toHaveLength(4);
+    expect(starter.match(/data-bench="event-log-id"/g)).toHaveLength(6);
+    expect(starter).toContain("SIGNAL-ZONE-DELTA-782 + EVENT-LOG-C37-905184");
+    expect(starter).toContain("4 signal zones · 6 event logs · 2 interlocking desks");
   });
 
   it("preregisters exact visible-atomic control versus computed-type target carrier", () => {

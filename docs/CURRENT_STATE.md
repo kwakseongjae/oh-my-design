@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `86546d5a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.505 static absence guardrail pin
+- 기준 커밋: `99df038d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.506 rail interlocking task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.506은 fresh `rail-interlocking-event-log-review-v0.1`을 provider 전에 lock했다.
+- 4 signal zone/6 event log/2 interlocking desk와 manifest·desk strip·decision 세 carrier, exact behavior/fact boundary를 보존한다.
+- untouched baseline 75/85: 390/320/actual200 overflow 615/685/1370px, compound 4/5/5줄, state wrap, contrast4.02다. provider/task exposure0이다.
+- 다음은 exact computed-type control vs exact static-absence candidate Reliability@3 preregistration이다.
 
 - 1.9.505는 provider-free repair를 exact commit `86546d5a…`, skill tree `73f56442…`, skill/runner/helper sha256으로 pin했다.
 - 새 competitor는 `omd-static-absence-guardrail-candidate`, vendor dir `omd-1.9.504`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.

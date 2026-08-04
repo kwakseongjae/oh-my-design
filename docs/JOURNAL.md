@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.506 rail interlocking task lock
+- fresh rail task는 4 signal zones/6 event logs/2 desks와 세 관계 carrier를 보존한다.
+- untouched 75/85, overflow615/685/1370·compound4/5/5줄·contrast4.02; provider/exposure0이다.
+- 다음은 exact control/candidate Reliability@3 사전등록이다.
+
 ## 2026-08-04 (Codex) · 1.9.505 static absence guardrail pin
 - 1.9.504를 exact commit/tree/file hashes와 `omd-1.9.504` vendor identity로 고정했다.
 - provider0/promotion false. 다음은 genuinely unseen task lock이다.
