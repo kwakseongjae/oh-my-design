@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.594",
+  "experiment_id": "archive-contained-budget-replacement-luna-1.9.591",
+  "cell_id": "luna-archive-r1-control",
+  "status": "CHECKPOINTED_VALID_CONTROL_FAILED",
+  "validity": "valid",
+  "retry_count": 0,
+  "wall_time_ms": 575655,
+  "provider_tokens": {
+    "input": 2880908,
+    "cached_input": 2763520,
+    "output": 28089,
+    "reasoning_output": 13762,
+    "comparison_total": 2908997
+  },
+  "objective": {
+    "score": 81,
+    "max": 85,
+    "ui_resolved": false,
+    "task_contract": true,
+    "state_journey": true,
+    "responsive": false,
+    "accessibility": true,
+    "design_grounding": true,
+    "evidence_honesty": true,
+    "document_overflow_px": 0,
+    "narrow_atomic_wraps": 1,
+    "actual_200pct_atomic_wraps": 1
+  },
+  "proof": {
+    "analyzable": true,
+    "product_edit_count": 1,
+    "static_closure_count": 2,
+    "browser_mechanism_count": 0,
+    "browser_recovery_count": 0,
+    "duplicate_static_closure_count": 1,
+    "shipped_runner_invoked": false,
+    "artifact_closed": false,
+    "execution_gate_pass": false,
+    "failure_class": "post-edit-ad-hoc-static-command-consumed-proof-budget"
+  },
+  "artifact_hashes": {
+    "run_result_sha256": "2ff905d98df3eb60b6ce22e459273c01695acc63774703fc620183bceeaa08ac",
+    "score_sha256": "c1ebd3bb3b800bf48b67544fa5a3492a65882f9380579e780aaf22316e80f426",
+    "run_record_sha256": "0d70b3987ad512e7d90b9ce52f57a5ae17c8c6ae8d7740e88c2bcff3ecd75cbc",
+    "proof_trace_sha256": "15e8ddacbaef3ef0c1eda61e2ba74340c214c6f2d376904b2687faa9f42d8894",
+    "benchmark_tree_sha256": "64ff74466ea02b88b1c09c60f825729ebcc23d95433b58248b6c96da610208cb"
+  },
+  "tokens_to_target": {
+    "prior_observed_provider_tokens_minimum": 89713443,
+    "observed_provider_tokens_minimum_after_cell": 92622440,
+    "usage_unavailable_cells": 6,
+    "goal_status": "right-censored"
+  },
+  "next": "After the fixed 120-second pacing interval, run luna-archive-r1-candidate once with no retry."
+}

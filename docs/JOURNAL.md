@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.594 archive r1 control
+- valid81/85, 575.655s, 2,908,997 tokens; narrow/actual200 atomic wrap로 UI red다.
+- post-edit ad-hoc static command 때문에 static2/browser0/runner0/artifact-open으로 proof red다.
+- TTT92,622,440+; 다음 fixed120s 뒤 r1 candidate no-retry다.
+
 ## 2026-08-05 (Codex) · 1.9.593 archive matrix preparation
 - exact detached clean control/candidate와 six untouched Luna/high cells를 준비했다.
 - 입력·실행핀 equality6/6, control raw-only3/3, candidate contained-budget3/3, provider0다.

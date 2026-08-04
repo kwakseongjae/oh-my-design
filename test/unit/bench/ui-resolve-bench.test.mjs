@@ -4273,6 +4273,25 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("records the archive r1 control as valid but UI and proof unresolved", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/archive-contained-budget-replacement-luna-1.9.591/R1-CONTROL.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.594",
+      cell_id: "luna-archive-r1-control",
+      status: "CHECKPOINTED_VALID_CONTROL_FAILED",
+      validity: "valid",
+      retry_count: 0,
+      wall_time_ms: 575655,
+      provider_tokens: { comparison_total: 2908997 },
+      objective: { score: 81, max: 85, ui_resolved: false, responsive: false, accessibility: true, document_overflow_px: 0, narrow_atomic_wraps: 1, actual_200pct_atomic_wraps: 1 },
+      proof: { analyzable: true, product_edit_count: 1, static_closure_count: 2, browser_mechanism_count: 0, duplicate_static_closure_count: 1, shipped_runner_invoked: false, artifact_closed: false, execution_gate_pass: false },
+      tokens_to_target: { observed_provider_tokens_minimum_after_cell: 92622440, usage_unavailable_cells: 6, goal_status: "right-censored" },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
