@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.545 offshore matrix preparation
+- exact detached control/candidate와 six untouched cells, equality6/6+guardrail9/9를 확인했다.
+- provider0; 다음 runtime/browser/auth preflight 뒤 r1 control이다.
+
 ## 2026-08-04 (Codex) · 1.9.544 offshore checklist prereg
 - exact 1.9.533 control vs 1.9.541 candidate를 Luna/high 2×3, timeout900/pacing120/no-retry로 고정했다.
 - attempt38/TTT66,556,830+/provider0; 다음 detached vendors+six cells다.

@@ -3326,6 +3326,47 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("prepares six untouched offshore checklist cells from exact detached sources", () => {
+    const preparation = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/offshore-first-edit-checklist-luna-1.9.544/PREPARATION.json",
+    ), "utf8"));
+    expect(preparation).toMatchObject({
+      product_version: "1.9.545",
+      status: "SIX_CELLS_PREPARED",
+      provider_calls: 0,
+      output_root: "/private/tmp/u19544",
+      vendors_root: "/private/tmp/u19544-vendors",
+      equality: {
+        scheduled_cells: 6,
+        prepared_cells: 6,
+        core_prompt_equal: 6,
+        prompt_equal_within_arm: 6,
+        starter_equal: 6,
+        product_tree_equal: 6,
+        runtime_equal: 6,
+        model_equal: 6,
+        effort_equal: 6,
+        timeout_equal: 6,
+      },
+      source_attestation: {
+        control: { commit: "0b93fa971c5d4e086b2645f2de9dd09fe1b365fe", detached: true, clean: true },
+        candidate: { commit: "28f9620035fc1adae32b17965a7f51312c3ca2f5", detached: true, clean: true },
+      },
+      candidate_guardrail_presence: {
+        structured_css_declaration_schema: true,
+        positive_length_contract: true,
+        any_declaration_contract: true,
+        safe_zero_reset_semantics: true,
+        acceptance_debt_manifest_binding: true,
+        ordered_first_edit_checklist: true,
+        checklist_contract_terminal_red: true,
+        aggregate_carrier_plan_retained: true,
+        browser_runner_identical: true,
+      },
+    });
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);

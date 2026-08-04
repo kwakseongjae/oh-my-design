@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7dffde41` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.544 offshore first-edit checklist preregistration
+- 갱신: 2026-08-04 · 1.9.545 offshore checklist matrix preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.545는 `/private/tmp/u19544-vendors` exact detached control/candidate와 `/private/tmp/u19544` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, detached+clean2, identical runner와 candidate structured-checklist guardrail9/9를 확인했다. provider0다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
 
 - 1.9.544는 exact 1.9.533 aggregate control `0b93fa97…` vs exact 1.9.541 checklist candidate `28f96200…`를 fresh offshore task에 Luna/high 2×3으로 사전등록했다.
 - 양 arm은 aggregate plan/browser/static budget이 같고 candidate만 structured CSS+ordered first-edit checklist를 추가한다. timeout900/pacing120/no-retry/Reliability@3다.
