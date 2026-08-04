@@ -171,6 +171,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("supporting evidence/state/action보다 먼저 놓이는 dedicated full-row relationship row");
     expect(skill).toContain("comparison-scroll carrier 안의 protected passive row를 별도 nested registered carrier로 쪼개지 않는다");
     expect(skill).toContain("nested registered carrier를 발견하면 edit 전에 실패");
+    expect(skill).toContain("실제 content box(`clientWidth - inline padding`)");
     expect(skill).toContain('protected decision-target hook가 있으면 정확히 하나의 `role: target` row');
     expect(skill).toContain("target-only carrier 하나를 `plan-close` 전에 등록한다");
     expect(skill).toContain("shared carrier를 쓸 수 있지만");

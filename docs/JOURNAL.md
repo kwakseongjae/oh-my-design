@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.615 content-box verifier repair
+- context clientWidth-padding와 carrier offsetWidth로 border/zoom 좌표계 false negative를 제거했다.
+- actual failed candidate replay가 4조건 full-row pass+OMD_DELIVERY_READY다.
+- focused52/52+lint+skill validate green, provider0; 다음 exact source pin이다.
+
 ## 2026-08-05 (Codex) · 1.9.614 museum matrix freeze
 - candidate85/85/UI green but proof red; required true×4와 nesting attestation은 전이됐다.
 - browser-harness가 border2px 누락 false negative를 확정했다; remaining4 untouched freeze다.

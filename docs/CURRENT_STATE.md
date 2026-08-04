@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `e77c3d8a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.614 museum matrix frozen on verifier false negative
+- 기준 커밋: `b2b71a23` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.615 decision-context content-box repair green
 
 ## 지금 (현재 위치)
+
+- 1.9.615 provider-free repair는 context를 `clientWidth-padding`, carrier를 `offsetWidth`로 비교해 border와 zoom 좌표계 오판을 제거했다.
+- 실제 실패 candidate artifact copy replay가 desktop1068=1068, 390 320=320, 320/actual200 250=250으로 모두 pass하고 `OMD_DELIVERY_READY`가 됐다.
+- focused52/52+compile+lint+skill validate+diff green, provider0, TTT104,755,044+ / unavailable6이다. 다음 exact source pin 후 fresh unseen task다.
 
 - 1.9.614 r1 candidate는 valid85/85, UI-resolved, 424,791ms, 1,848,420 tokens지만 proof red다. desktop+narrow required true와 nesting attestation은 전이됐다.
 - browser-harness 실측상 target1067.992px는 true content1068px full-row다. verifier가 border-box1108-padding38=1070으로 계산해 border2px를 누락한 false negative다.

@@ -256,10 +256,11 @@ def browser_fit_plan_script(measurement_payload, zoom):
         return {{ id: row.id, full_row: false, precedes_supporting: false, spatially_separated: false, pass: false }};
       }}
       const carrierRect = carrier.getBoundingClientRect();
-      const contextRect = context.getBoundingClientRect();
       const contextStyle = getComputedStyle(context);
-      const contentWidth = contextRect.width - parseFloat(contextStyle.paddingLeft) - parseFloat(contextStyle.paddingRight);
-      const fullRow = carrierRect.width + 1 >= contentWidth;
+      const paddingInline = parseFloat(contextStyle.paddingLeft) + parseFloat(contextStyle.paddingRight);
+      const contentWidth = context.clientWidth - paddingInline;
+      const carrierWidth = carrier.offsetWidth;
+      const fullRow = carrierWidth + 1 >= contentWidth;
       const precedesSupporting = supporting.every((item) =>
         Boolean(carrier.compareDocumentPosition(item) & Node.DOCUMENT_POSITION_FOLLOWING));
       const spatiallySeparated = supporting.every((item) => {{
@@ -268,7 +269,9 @@ def browser_fit_plan_script(measurement_payload, zoom):
           carrierRect.right <= rect.left + 0.5 || rect.right <= carrierRect.left + 0.5;
       }});
       return {{ id: row.id, full_row: fullRow, precedes_supporting: precedesSupporting,
-        spatially_separated: spatiallySeparated, pass: fullRow && precedesSupporting && spatiallySeparated }};
+        spatially_separated: spatiallySeparated, carrier_width_css_px: carrierWidth,
+        context_client_width_css_px: context.clientWidth, context_content_width_css_px: contentWidth,
+        pass: fullRow && precedesSupporting && spatiallySeparated }};
     }});
     return {{ required: true, pass: targets.every((target) => target.pass), targets }};
   }})();
@@ -338,10 +341,11 @@ def browser_decision_context_script(measurement_payload):
       return {{ id: row.id, full_row: false, precedes_supporting: false, spatially_separated: false, pass: false }};
     }}
     const carrierRect = carrier.getBoundingClientRect();
-    const contextRect = context.getBoundingClientRect();
     const contextStyle = getComputedStyle(context);
-    const contentWidth = contextRect.width - parseFloat(contextStyle.paddingLeft) - parseFloat(contextStyle.paddingRight);
-    const fullRow = carrierRect.width + 1 >= contentWidth;
+    const paddingInline = parseFloat(contextStyle.paddingLeft) + parseFloat(contextStyle.paddingRight);
+    const contentWidth = context.clientWidth - paddingInline;
+    const carrierWidth = carrier.offsetWidth;
+    const fullRow = carrierWidth + 1 >= contentWidth;
     const precedesSupporting = supporting.every((item) =>
       Boolean(carrier.compareDocumentPosition(item) & Node.DOCUMENT_POSITION_FOLLOWING));
     const spatiallySeparated = supporting.every((item) => {{
@@ -350,7 +354,9 @@ def browser_decision_context_script(measurement_payload):
         carrierRect.right <= rect.left + 0.5 || rect.right <= carrierRect.left + 0.5;
     }});
     return {{ id: row.id, full_row: fullRow, precedes_supporting: precedesSupporting,
-      spatially_separated: spatiallySeparated, pass: fullRow && precedesSupporting && spatiallySeparated }};
+      spatially_separated: spatiallySeparated, carrier_width_css_px: carrierWidth,
+      context_client_width_css_px: context.clientWidth, context_content_width_css_px: contentWidth,
+      pass: fullRow && precedesSupporting && spatiallySeparated }};
   }});
   return JSON.stringify({{ required: true, pass: targets.every((target) => target.pass), targets }});
 }})()

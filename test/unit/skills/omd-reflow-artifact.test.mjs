@@ -216,6 +216,10 @@ describe("compact reflow artifact helper", () => {
     expect(runner).toContain('"outcome_desktop"');
     expect(runner).toContain("contained_carrier_ids");
     expect(runner).toContain('"scroll_and_focus": carrier_result["scroll_and_focus"]');
+    expect(runner).toContain("const contentWidth = context.clientWidth - paddingInline");
+    expect(runner).toContain("const carrierWidth = carrier.offsetWidth");
+    expect(runner).toContain("context_content_width_css_px: contentWidth");
+    expect(runner).not.toContain("contextRect.width - parseFloat(contextStyle.paddingLeft)");
     expect(runner).toContain("full_row: fullRow");
     expect(runner).toContain("precedes_supporting: precedesSupporting");
     expect(runner).toContain("spatially_separated: spatiallySeparated");

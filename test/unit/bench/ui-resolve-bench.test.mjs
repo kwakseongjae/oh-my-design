@@ -4598,6 +4598,25 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(result.frozen_unstarted_cells).toHaveLength(4);
   });
 
+  it("repairs decision-context full-row proof in one CSS coordinate space", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/decision-context-content-box-repair-1.9.615/REPAIR.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.615",
+      status: "PROVIDER_FREE_REPAIR_GREEN",
+      promotion: false,
+      provider_calls: 0,
+      source_failure: { objective_score: 85, ui_resolved: true, proof_pass: false },
+      root_cause: { border_box_width_used_for_context: 1108, borders_not_subtracted: 2, incorrect_required_width: 1070, true_content_width: 1068, target_width: 1068, zoom_coordinate_space_mismatch_discovered_during_repair: true },
+      repair_contract: { context_content_width_formula: "context.clientWidth - inline padding", carrier_width_formula: "carrier.offsetWidth", context_border_excluded: true, carrier_and_context_use_layout_css_pixels: true },
+      actual_failed_artifact_replay: { result: "OMD_DELIVERY_READY", decision_context_status: "pass", conditions: { desktop: { carrier_width_css_px: 1068, context_content_width_css_px: 1068, pass: true }, "200pct": { carrier_width_css_px: 250, context_content_width_css_px: 250, pass: true } }, original_product_mutated: false, original_artifact_mutated: false },
+      verification: { python_compile: "pass", focused_tests_passed: 52, typescript_lint: "pass", skill_quick_validate: "pass", diff_check: "pass" },
+      tokens_to_target: { cumulative_observed_provider_tokens_minimum: 104755044, usage_unavailable_cells: 6, goal_status: "right-censored-open" },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
