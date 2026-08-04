@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.592 archive executable matrix lock
+- exact candidate competitor와 valid schema0.3 six-cell matrix를 등록했다.
+- order C/K/K/C/C/K, 양 arm proof gate, provider0다.
+- 다음 detached vendors+six untouched cells preparation이다.
+
 ## 2026-08-05 (Codex) · 1.9.591 archive contained-budget prereg
 - exact853db7bf raw-inner vs5f78f1c5 contained-budget, Luna/high2×3을 provider0 고정했다.
 - 900s/120s/no-retry, 3/3 UI+proof+runner+contained-plan; attempt44다.

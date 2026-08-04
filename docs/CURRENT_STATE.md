@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `9604736b` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.591 archive contained-budget prereg
+- 기준 커밋: `9d398232` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.592 archive executable matrix lock
 
 ## 지금 (현재 위치)
+
+- 1.9.592는 competitor `omd-contained-carrier-budget-candidate`를 exact commit5f78f1c5/vendor1.9.587로 등록하고 executable schema0.3 matrix를 잠갔다.
+- validateRunMatrixPlan green, cells order control/candidate/candidate/control/control/candidate, proof gate는 양 arm 모두 적용된다. provider0다.
+- 다음은 `/private/tmp/u19592-vendors` detached exact sources와 `/private/tmp/u19592` six untouched cells preparation/equality attestation이다.
 
 - 1.9.591은 exact raw-inner control `853db7bf...` vs contained candidate `5f78f1c5...`를 pinned archive task에서 Luna/high2×3으로 provider0 사전등록했다.
 - isolated delta는 raw live content-box budget 대비 `min(live, document-chrome-margin)` budget이다. 900s/120s/no-retry/concurrency1, 3/3 UI+proof+runner+contained-plan이다.

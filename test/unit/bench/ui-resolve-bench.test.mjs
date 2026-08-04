@@ -4209,6 +4209,32 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("locks a valid executable archive contained-budget matrix", () => {
+    const matrix = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/archive-contained-budget-replacement-luna-1.9.591/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(() => validateRunMatrixPlan(matrix)).not.toThrow();
+    expect(matrix).toMatchObject({
+      schema_version: "0.3",
+      product_version: "1.9.591",
+      status: "locked-awaiting-fresh-preparation",
+      task_lock_contract: { task_id: "archive-film-element-custody-v0.1", prior_control_exposures: 0, prior_candidate_exposures: 0 },
+      control_source_contract: { source_commit: "853db7bfe0939e0c58b1c8d01e7d2348100a14c8" },
+      candidate_source_contract: { source_commit: "5f78f1c5a23148778a49bdc54f6f6026a7b8c1d2" },
+      contained_carrier_budget_contract: { candidate_required: true, control_required: false, raw_overflow_budget_allowed: false },
+    });
+    expect(matrix.cells).toHaveLength(6);
+    expect(matrix.cells.map((cell) => cell.variant_id)).toEqual([
+      "omd-carrier-inner-fit-candidate",
+      "omd-contained-carrier-budget-candidate",
+      "omd-contained-carrier-budget-candidate",
+      "omd-carrier-inner-fit-candidate",
+      "omd-carrier-inner-fit-candidate",
+      "omd-contained-carrier-budget-candidate",
+    ]);
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
