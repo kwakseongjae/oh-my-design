@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.629 rail-signal executable matrix lock
+- schema0.3 matrix C/T/T/C/C/T, Luna/high, 900s/120s/no-retry를 잠갔다.
+- candidate-only delta는 atomic snapshot bootstrap+zero-attempt marker+pre-edit mutation gate다.
+- provider0; 다음은 exact detached vendors+six untouched cells preparation이다.
+
 ## 2026-08-05 (Codex) · 1.9.628 rail-signal plan-bootstrap preregistration
 - exact control0c4af927 vs candidate4ac756df를 rail-signal Luna/high2×3으로 provider0 prereg했다.
 - isolated delta는 atomic snapshot bootstrap+zero-attempt validation+pre-edit mutation gate다.

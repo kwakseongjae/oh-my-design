@@ -5149,6 +5149,49 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("locks a valid executable rail-signal plan-bootstrap matrix", () => {
+    const matrix = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/rail-signal-plan-bootstrap-luna-1.9.628/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(() => validateRunMatrixPlan(matrix)).not.toThrow();
+    expect(matrix).toMatchObject({
+      schema_version: "0.3",
+      product_version: "1.9.629",
+      status: "locked-awaiting-fresh-preparation",
+      task_lock_contract: {
+        task_id: "rail-signal-speed-restriction-release-v0.1",
+        source_commit: "e41f7daf89dde48e5aabd35af0c2961ec5a1eea8",
+        prior_control_exposures: 0,
+        prior_candidate_exposures: 0,
+      },
+      control_source_contract: {
+        source_commit: "0c4af9273a19bbb7cdcf6a17ef2a58f3627f1419",
+        plan_order: "separate-snapshot-before-runner",
+      },
+      candidate_source_contract: {
+        source_commit: "4ac756df227d4f0cf42dc77d722819242d07d6b8",
+        plan_order: "runner-atomic-snapshot-before-navigation",
+      },
+      plan_bootstrap_contract: {
+        candidate_missing_snapshot_bootstrapped_before_navigation: true,
+        candidate_pre_navigation_validation_attempt_count: 0,
+        candidate_zero_attempt_marker: "OMD_PLAN_NOT_ATTEMPTED",
+        candidate_product_edit_requires_plan_close_and_guardrails: true,
+        candidate_measured_or_infrastructure_attempt_rerun_allowed: false,
+      },
+    });
+    expect(matrix.cells).toHaveLength(6);
+    expect(matrix.cells.map((cell) => cell.id)).toEqual([
+      "luna-rail-r1-control",
+      "luna-rail-r1-candidate",
+      "luna-rail-r2-candidate",
+      "luna-rail-r2-control",
+      "luna-rail-r3-control",
+      "luna-rail-r3-candidate",
+    ]);
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

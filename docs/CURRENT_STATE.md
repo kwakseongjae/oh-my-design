@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `a3cbdc81` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.628 rail-signal plan-bootstrap preregistration
+- 기준 커밋: `27494558` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.629 rail-signal executable matrix lock
 
 ## 지금 (현재 위치)
+
+- 1.9.629는 executable schema0.3 matrix를 잠갔다. order C/T/T/C/C/T, Luna/high, timeout900, pacing120, no-retry다.
+- 양 arm의 content-box/decision-context/proof 계약은 같고 candidate만 atomic snapshot bootstrap+zero-attempt marker+pre-edit mutation gate가 다르다. provider0다.
+- 다음은 `/private/tmp/u19629-vendors` exact detached sources와 `/private/tmp/u19629` six untouched cells preparation/equality attestation이다.
 
 - 1.9.628은 exact content-box control `0c4af927...` vs plan-self-bootstrap candidate `4ac756df...`를 pinned rail-signal task에서 Luna/high2×3으로 provider0 사전등록했다.
 - isolated delta는 shared content-box/decision-context 계약 대비 atomic snapshot bootstrap+zero-attempt validation+pre-edit mutation gate다. 900s/120s/no-retry/concurrency1, UI/proof/measured-plan 3/3다.
@@ -3002,9 +3006,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. executable matrix를 잠그고 schema validator를 통과시킨다.
-2. exact detached vendors와 six untouched cells를 준비하고 equality를 attest한다.
-3. runtime preflight 후 no-retry Reliability@3 execution을 시작한다.
+1. exact detached vendors와 six untouched cells를 준비하고 equality를 attest한다.
+2. browser/CLI/auth/evaluator/proof-policy preflight를 수행한다.
+3. r1 control부터 no-retry Reliability@3 execution을 시작한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
