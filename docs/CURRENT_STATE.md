@@ -3,10 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `051469e7` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.624 pre-edit plan self-bootstrap repair
+- 기준 커밋: `4ac756df` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.625 pre-edit plan self-bootstrap pin
 
 ## 지금 (현재 위치)
+
+- 1.9.625는 repair commit `4ac756df...`, source tree `5ab481aa...`, skill tree `62e7df31...`를 exact pin했다. candidate는 `omd-plan-self-bootstrap-candidate`, vendor는 `omd-1.9.624`, provider0/promotion false다.
+- 다음은 이 exact candidate에 노출되지 않은 genuinely unseen decision-context task 생성·baseline이다.
 
 - 1.9.624 provider-free repair는 plan runner가 missing snapshot을 browser navigation 전에 내부 helper로 원자적으로 잠그게 했다. pre-navigation validation red는 `OMD_PLAN_NOT_ATTEMPTED`로 분리되어 measured attempt0이며 artifact만 고쳐 exact plan command를 재실행할 수 있다.
 - 성공한 `plan-close`와 `static_edit_guardrails`가 없으면 product edit 금지다. valid-missing snapshot replay는 browser sentinel 전 snapshot lock, invalid selector replay는 browser0/artifact pending/no snapshot을 확인했다.
@@ -2988,8 +2991,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.624 repair commit/source tree/skill tree를 exact candidate로 pin한다.
-2. 이 candidate에 노출되지 않은 genuinely unseen decision-context task를 작성하고 baseline을 잠근다.
+1. 1.9.624 candidate에 노출되지 않은 genuinely unseen decision-context task를 작성하고 baseline을 잠근다.
+2. task commit/tree와 deterministic baseline hash를 exact pin한다.
 3. exact historical control 대 1.9.624 candidate의 replacement Luna/high matrix를 provider0 사전등록한다.
 
 ## 막힘 / 대기 (없으면 "없음")

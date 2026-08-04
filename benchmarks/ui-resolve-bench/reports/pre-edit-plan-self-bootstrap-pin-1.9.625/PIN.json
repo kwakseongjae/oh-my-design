@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.625",
+  "status": "PINNED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "candidate": {
+    "system_id": "omd-plan-self-bootstrap-candidate",
+    "vendor_version": "omd-1.9.624",
+    "source_commit": "4ac756df227d4f0cf42dc77d722819242d07d6b8",
+    "source_tree": "5ab481aa5290e718ec147dd767d8806e7db720c9",
+    "skill_tree": "62e7df31829a09793c1be5d9f449d97bb57e76dd",
+    "artifacts": {
+      "skill_sha256": "253d0bb4ad6eabc773f3dd3f220ad73cd6701a54354b0af0346d47b3bbf93646",
+      "reflow_artifact_sha256": "6b9ac983903e1fff18f4a6b6048e3f5ded761b5904c72ad4d23aa1542b02e665",
+      "reflow_browser_sha256": "b54d244269afcf82c56fd1b1119661933398e67585634805be85c8020a49e95b"
+    }
+  },
+  "repair_contract": {
+    "content_box_decision_context_proof_preserved": true,
+    "missing_snapshot_bootstrapped_before_navigation": true,
+    "pre_navigation_validation_attempts": 0,
+    "zero_attempt_marker": "OMD_PLAN_NOT_ATTEMPTED",
+    "product_edit_requires_plan_close_and_guardrails": true,
+    "measured_or_infrastructure_attempt_rerun_allowed": false
+  },
+  "claim_boundary": "This pin identifies the exact provider-free plan-ordering repair. It has not passed a fresh model-run transfer matrix and is not promoted.",
+  "next": "Create and baseline a genuinely unseen decision-context task before exposing it to either the historical control or this candidate."
+}

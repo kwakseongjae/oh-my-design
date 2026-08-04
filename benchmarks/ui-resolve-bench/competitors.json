@@ -959,6 +959,21 @@
       "eligible_tracks": ["creation", "landing-redesign", "repair", "evidence-unknown"],
       "activation": "Use the installed $omd:apply skill for this task."
     },
+    "omd-plan-self-bootstrap-candidate": {
+      "label": "oh-my-design apply skill with atomic pre-edit plan bootstrap and zero-attempt validation",
+      "kind": "local-skill",
+      "vendor_dir": "omd-1.9.624",
+      "source_path": "skills/omd-apply",
+      "install_adapter": "omd-channel-name-v1",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "omd-apply",
+      "declared_name": "omd:apply",
+      "commit": "4ac756df227d4f0cf42dc77d722819242d07d6b8",
+      "license": "MIT",
+      "eligible_tracks": ["creation", "landing-redesign", "repair", "evidence-unknown"],
+      "activation": "Use the installed $omd:apply skill for this task."
+    },
     "omd-reflow-integrity-experimental": {
       "label": "oh-my-design apply skill + reflow integrity closure",
       "kind": "local-skill-experimental",

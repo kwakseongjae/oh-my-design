@@ -4973,6 +4973,37 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(result.verification.behavioral_replays).toHaveLength(2);
   });
 
+  it("pins the exact pre-edit plan self-bootstrap candidate before fresh model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/pre-edit-plan-self-bootstrap-pin-1.9.625/PIN.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.625",
+      status: "PINNED_PROVIDER_ZERO",
+      provider_calls: 0,
+      candidate: {
+        system_id: "omd-plan-self-bootstrap-candidate",
+        vendor_version: "omd-1.9.624",
+        source_commit: "4ac756df227d4f0cf42dc77d722819242d07d6b8",
+        source_tree: "5ab481aa5290e718ec147dd767d8806e7db720c9",
+        skill_tree: "62e7df31829a09793c1be5d9f449d97bb57e76dd",
+      },
+      repair_contract: {
+        content_box_decision_context_proof_preserved: true,
+        missing_snapshot_bootstrapped_before_navigation: true,
+        pre_navigation_validation_attempts: 0,
+        zero_attempt_marker: "OMD_PLAN_NOT_ATTEMPTED",
+        product_edit_requires_plan_close_and_guardrails: true,
+        measured_or_infrastructure_attempt_rerun_allowed: false,
+      },
+    });
+    expect(competitors.variants["omd-plan-self-bootstrap-candidate"]).toMatchObject({
+      vendor_dir: "omd-1.9.624",
+      commit: "4ac756df227d4f0cf42dc77d722819242d07d6b8",
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

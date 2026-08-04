@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.625 pre-edit plan self-bootstrap pin
+- repair commit4ac756df/source tree5ab481aa/skill tree62e7df31를 provider0 exact pin했다.
+- candidate `omd-plan-self-bootstrap-candidate`, vendor1.9.624, promotion false다.
+- 다음은 fresh unseen decision-context task baseline이다.
+
 ## 2026-08-05 (Codex) · 1.9.624 pre-edit plan self-bootstrap repair
 - plan command가 missing snapshot을 navigation 전에 원자적으로 잠그고 validation red를 `OMD_PLAN_NOT_ATTEMPTED`로 분리한다.
 - valid/invalid replay와 focused54+report1, compile/lint/skill/diff green; provider0, TTT107050263+다.
