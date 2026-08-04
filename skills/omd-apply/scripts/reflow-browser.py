@@ -2,9 +2,12 @@
 
 This file is executed by `browser-harness`, whose helpers are pre-imported.
 Required environment: OMD_REFLOW_ARTIFACT, OMD_REFLOW_PRODUCT,
-OMD_REFLOW_HELPER, BU_NAME, and BU_CDP_URL.
+OMD_REFLOW_HELPER, and BU_NAME. BU_CDP_URL is optional connection metadata.
 """
 
+import atexit
+import base64
+import hashlib
 import json
 import os
 import subprocess
@@ -13,6 +16,7 @@ from pathlib import Path
 
 MECHANISM = "browser-harness named consumer CDP attachment"
 ORACLE = "character-range-line-tops"
+PRE_EDIT_SNAPSHOT_SOURCE = "deterministic-pre-edit-snapshot"
 CONDITIONS = (
     {"id": "390", "viewport_width": 390, "zoom": 1},
     {"id": "320", "viewport_width": 320, "zoom": 1},
@@ -44,6 +48,26 @@ if artifact.get("schema_version") != "0.3":
 if artifact.get("static_closure", {}).get("state") != "passed":
     raise RuntimeError("one passed deterministic static closure is required")
 
+snapshot_contract = artifact.get("pre_edit_product_snapshot")
+snapshot_rows = [
+    row for row in artifact["row_groups"]
+    if row.get("typography_contract", {}).get("source") == PRE_EDIT_SNAPSHOT_SOURCE
+]
+snapshot_path = None
+if snapshot_rows:
+    if not snapshot_contract:
+        raise RuntimeError("deterministic typography rows require a pre-edit product snapshot")
+    snapshot_source = base64.b64decode(snapshot_contract["source_base64"]).decode("utf-8")
+    if hashlib.sha256(snapshot_source.encode("utf-8")).hexdigest() != snapshot_contract["sha256"]:
+        raise RuntimeError("pre-edit product snapshot sha256 mismatch")
+    snapshot_path = product_path.with_name(
+        f".omd-reflow-pre-edit-{snapshot_contract['sha256'][:12]}{product_path.suffix}"
+    )
+    if snapshot_path.exists():
+        raise RuntimeError(f"refusing to overwrite pre-edit snapshot path: {snapshot_path}")
+    snapshot_path.write_text(snapshot_source)
+    atexit.register(lambda: snapshot_path.unlink(missing_ok=True))
+
 payload = {
     "rows": [
         {
@@ -55,6 +79,7 @@ payload = {
             "typography_contract": row["typography_contract"],
             "required_fit_reserve_css_px": row["required_fit_reserve_css_px"],
             "comparison_scroll": row["decision"] == "comparison-scroll",
+            "scroll_contract": row.get("scroll_contract"),
             "carrier_selectors": [
                 carrier["selector"]
                 for carrier in artifact["carriers"]
@@ -75,11 +100,41 @@ payload = {
 }
 
 
-def browser_measurement_script(measurement_payload, zoom):
+def browser_typography_script(measurement_payload):
     encoded = json.dumps(measurement_payload)
     return f"""
 (() => {{
   const packet = {encoded};
+  const normalizeWeight = (value) => String(value ?? '');
+  const rows = Object.fromEntries(packet.rows.map((row) => {{
+    const elements = [...document.querySelectorAll(row.selector)];
+    const types = elements.map((element) => {{
+      const style = getComputedStyle(element);
+      return {{
+        font_size_px: parseFloat(style.fontSize),
+        line_height_px: parseFloat(style.lineHeight),
+        font_weight: normalizeWeight(style.fontWeight),
+      }};
+    }});
+    const first = types[0] ?? null;
+    const uniform = first !== null && types.every((item) =>
+      Math.abs(item.font_size_px - first.font_size_px) < 0.01 &&
+      Math.abs(item.line_height_px - first.line_height_px) < 0.01 &&
+      item.font_weight === first.font_weight);
+    return [row.id, {{ count: elements.length, uniform, type: first }}];
+  }}));
+  return JSON.stringify({{ rows }});
+}})()
+"""
+
+
+def browser_measurement_script(measurement_payload, zoom, baseline_typography):
+    encoded = json.dumps(measurement_payload)
+    baseline = json.dumps(baseline_typography)
+    return f"""
+(() => {{
+  const packet = {encoded};
+  const baseline = {baseline};
   const zoom = {json.dumps(zoom)};
   const visible = (element) => {{
     const style = getComputedStyle(element);
@@ -144,8 +199,12 @@ def browser_measurement_script(measurement_payload, zoom):
     const normalize = (value) => String(value ?? '').replace(/\\s+/gu, ' ').trim();
     const containsLongestValue = elements.some((element) =>
       normalize(element.textContent || element.value || element.getAttribute('aria-label')) === normalize(row.longest_value));
-    const type = row.typography_contract;
+    const snapshotType = baseline[row.id]?.type ?? null;
+    const type = row.typography_contract.source === {json.dumps(PRE_EDIT_SNAPSHOT_SOURCE)}
+      ? snapshotType
+      : row.typography_contract;
     const exactType = instances.every((item) =>
+      type !== null &&
       Math.abs(item.font_size_px - Number(type.font_size_px)) < 0.01 &&
       Math.abs(item.line_height_px - Number(type.line_height_px)) < 0.01 &&
       String(item.font_weight) === String(type.font_weight));
@@ -157,12 +216,21 @@ def browser_measurement_script(measurement_payload, zoom):
       observed_font_size_px: instances[0]?.font_size_px ?? null,
       observed_line_height_px: instances[0]?.line_height_px ?? null,
       observed_font_weight: instances[0]?.font_weight ?? null,
+      pre_edit_snapshot_sha256: row.typography_contract.source === {json.dumps(PRE_EDIT_SNAPSHOT_SOURCE)}
+        ? {json.dumps(snapshot_contract["sha256"] if snapshot_contract else None)} : null,
+      pre_edit_font_size_px: type?.font_size_px ?? null,
+      pre_edit_line_height_px: type?.line_height_px ?? null,
+      pre_edit_font_weight: type?.font_weight ?? null,
       inline_reserve_css_px: Number.isFinite(reserve) ? reserve : null,
       pass: elements.length === row.expected_count && containsLongestValue && instances.every((item) => item.visible) &&
-        oneLine && exactType && (row.comparison_scroll || reserve >= row.required_fit_reserve_css_px),
+        baseline[row.id]?.uniform !== false && oneLine && exactType &&
+        (row.comparison_scroll || reserve >= row.required_fit_reserve_css_px),
     }}];
   }}));
   const rowById = Object.fromEntries(packet.rows.map((row) => [row.id, row]));
+  const allowedScrollSelectors = new Set(packet.rows
+    .filter((row) => row.comparison_scroll)
+    .map((row) => row.scroll_contract.container_selector));
   const carriers = Object.fromEntries(packet.carriers.map((carrier) => {{
     const elements = [...document.querySelectorAll(carrier.selector)];
     const bound = carrier.binds_row_groups.every((id) => {{
@@ -171,11 +239,38 @@ def browser_measurement_script(measurement_payload, zoom):
       return [...document.querySelectorAll(row.selector)].every((item) =>
         elements.some((container) => container === item || container.contains(item)));
     }});
+    const scrollAndFocus = elements.every((element) => {{
+      const style = getComputedStyle(element);
+      const rect = element.getBoundingClientRect();
+      const overflowing = element.scrollWidth > element.clientWidth + 0.5;
+      const scrollAllowed = !overflowing || allowedScrollSelectors.has(carrier.selector);
+      const focusables = [...element.querySelectorAll('button, a[href], input, select, textarea, [tabindex]')]
+        .filter((item) => visible(item));
+      const focusablesUnclipped = focusables.every((item) => {{
+        const itemRect = item.getBoundingClientRect();
+        return itemRect.left >= Math.max(0, rect.left) - 0.5 &&
+          itemRect.right <= Math.min(innerWidth, rect.right) + 0.5;
+      }});
+      if (!allowedScrollSelectors.has(carrier.selector)) return scrollAllowed && focusablesUnclipped;
+      const comparisonRows = packet.rows.filter((row) =>
+        row.comparison_scroll && row.scroll_contract.container_selector === carrier.selector);
+      const accessibleName = element.getAttribute('aria-label') ||
+        (element.getAttribute('aria-labelledby')
+          ? document.getElementById(element.getAttribute('aria-labelledby'))?.textContent?.trim()
+          : '');
+      const namesMatch = comparisonRows.every((row) => accessibleName === row.scroll_contract.accessible_name);
+      const onlyTargetRows = packet.rows.every((row) =>
+        comparisonRows.some((candidate) => candidate.id === row.id) ||
+        [...document.querySelectorAll(row.selector)].every((item) => !element.contains(item)));
+      const noFocusableDescendants = focusables.length === 0;
+      return scrollAllowed && element.tabIndex >= 0 && namesMatch && onlyTargetRows && noFocusableDescendants;
+    }});
     return [carrier.id, {{
       count: elements.length,
       visible: elements.every(visible),
       bound,
-      pass: elements.length === carrier.expected_count && elements.every(visible) && bound,
+      scroll_and_focus: scrollAndFocus,
+      pass: elements.length === carrier.expected_count && elements.every(visible) && bound && scrollAndFocus,
     }}];
   }}));
   return JSON.stringify({{
@@ -220,6 +315,23 @@ except Exception:
     raise SystemExit(unresolved_attempt())
 
 for condition in CONDITIONS:
+    baseline_typography = {}
+    if snapshot_path is not None:
+        try:
+            cdp(
+                "Emulation.setDeviceMetricsOverride",
+                width=condition["viewport_width"],
+                height=1000,
+                deviceScaleFactor=1,
+                mobile=False,
+            )
+            goto_url(snapshot_path.as_uri())
+            if not wait_for_load(timeout=15):
+                raise RuntimeError("pre-edit snapshot did not finish loading")
+            js(f"document.documentElement.style.zoom = {json.dumps(str(condition['zoom']))}")
+            baseline_typography = json.loads(js(browser_typography_script(payload)))["rows"]
+        except Exception:
+            raise SystemExit(unresolved_attempt())
     try:
         cdp(
             "Emulation.setDeviceMetricsOverride",
@@ -235,7 +347,11 @@ for condition in CONDITIONS:
     except Exception:
         raise SystemExit(unresolved_attempt())
     try:
-        observed = json.loads(js(browser_measurement_script(payload, condition["zoom"])))
+        observed = json.loads(js(browser_measurement_script(
+            payload,
+            condition["zoom"],
+            baseline_typography,
+        )))
     except Exception as error:
         artifact["browser_attempt"] = {
             "attempts": 1,
@@ -299,6 +415,10 @@ for row in artifact["row_groups"]:
             "observed_font_size_px": result["observed_font_size_px"],
             "observed_line_height_px": result["observed_line_height_px"],
             "observed_font_weight": result["observed_font_weight"],
+            "pre_edit_snapshot_sha256": result["pre_edit_snapshot_sha256"],
+            "pre_edit_font_size_px": result["pre_edit_font_size_px"],
+            "pre_edit_line_height_px": result["pre_edit_line_height_px"],
+            "pre_edit_font_weight": result["pre_edit_font_weight"],
             "inline_reserve_css_px": result["inline_reserve_css_px"],
         })
         all_pass = all_pass and passed

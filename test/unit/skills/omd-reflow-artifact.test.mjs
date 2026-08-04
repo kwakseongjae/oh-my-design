@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { execFileSync, spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -127,6 +128,12 @@ describe("compact reflow artifact helper", () => {
     expect(runner).not.toContain("if not connection_name or not cdp_url");
     expect(runner).toContain('"Emulation.setDeviceMetricsOverride"');
     expect(runner).toContain('ORACLE = "character-range-line-tops"');
+    expect(runner).toContain('PRE_EDIT_SNAPSHOT_SOURCE = "deterministic-pre-edit-snapshot"');
+    expect(runner).toContain("browser_typography_script");
+    expect(runner).toContain("pre_edit_snapshot_sha256");
+    expect(runner).toContain("allowedScrollSelectors");
+    expect(runner).toContain("focusablesUnclipped");
+    expect(runner).toContain("noFocusableDescendants");
     expect(runner).toContain("carrierStyle.borderRightWidth");
     expect(runner).not.toContain("carrierStyle.paddingRight");
     expect(runner).toContain('finalize_command = "finalize" if all_pass else "finalize-measured-unresolved"');
@@ -164,6 +171,30 @@ describe("compact reflow artifact helper", () => {
     });
     expect(result.inventory.sha256).toBe(inventoryDigest(result));
     expect(result.closure).toEqual({ state: "open" });
+  });
+
+  it("captures the pre-edit product source and hash through the CLI lock", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-snapshot-cli-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const source = '<div data-id="fixture">required-fact</div>';
+    writeFileSync(artifactPath, JSON.stringify(draft()));
+    writeFileSync(productPath, source);
+
+    execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "lock",
+      artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+
+    const locked = JSON.parse(readFileSync(artifactPath, "utf8"));
+    expect(locked.pre_edit_product_snapshot).toMatchObject({
+      product_path: "index.html",
+      sha256: createHash("sha256").update(source).digest("hex"),
+      source_base64: Buffer.from(source).toString("base64"),
+    });
+    expect(locked.inventory.sha256).toBe(inventoryDigest(locked));
   });
 
   it("rejects a 200pct condition that only widens the viewport without applying zoom", () => {
@@ -205,10 +236,11 @@ describe("compact reflow artifact helper", () => {
     input.static_closure_manifest.count_literals = [
       { literal: 'data-bench="review-view-option"', expected_count: 2 },
       { literal: "data-id=", expected_count: 1 },
+      { literal: "data-primary-action", expected_count: 1 },
     ];
     const source = `
       <p>required-fact</p>
-      <button data-bench="review-view-option" data-id="first">One</button>
+      <button data-bench="review-view-option" data-id="first" data-primary-action>One</button>
       <button data-bench='review-view-option'>Two</button>
       <script>
         document.querySelectorAll('[data-bench="review-view-option"]');
@@ -359,6 +391,70 @@ describe("compact reflow artifact helper", () => {
       passive_text_scroll_container: false,
     };
     expect(() => lockArtifact(invalid)).toThrow(/distinct named, keyboard-reachable/);
+  });
+
+  it("requires a registered target-only carrier for comparison scrolling", () => {
+    const invalid = draft();
+    invalid.row_groups[0].decision = "comparison-scroll";
+    invalid.row_groups[0].scroll_contract = {
+      container_selector: "[data-compare]",
+      accessible_name: "Identifier comparison",
+      keyboard_reachable: true,
+      focus_visible: true,
+      passive_text_scroll_container: false,
+    };
+    expect(() => lockArtifact(invalid)).toThrow(/target-only carrier/);
+
+    invalid.carriers.push({
+      id: "identifier-comparison",
+      selector: "[data-compare]",
+      expected_count: 1,
+      binds_row_groups: ["identifier"],
+    });
+    expect(lockArtifact(invalid).carriers.at(-1)).toMatchObject({
+      id: "identifier-comparison",
+      binds_row_groups: ["identifier"],
+    });
+  });
+
+  it("compares snapshot-backed typography without trusting model-entered pixel values", () => {
+    const input = draft();
+    const source = '<div data-id="fixture">required-fact</div>';
+    input.pre_edit_product_snapshot = {
+      product_path: "index.html",
+      sha256: createHash("sha256").update(source).digest("hex"),
+      source_base64: Buffer.from(source).toString("base64"),
+    };
+    input.row_groups[0].typography_contract = { source: "deterministic-pre-edit-snapshot" };
+    const locked = lockArtifact(input);
+    for (const carrier of locked.carriers) {
+      carrier.final = { outcome_390: "pass", outcome_320: "pass", outcome_200pct: "pass" };
+    }
+    for (const row of locked.row_groups) row.final = resolvedRowFinal(row);
+    locked.row_groups[0].final = {
+      status: "pass",
+      outcome_390: "pass",
+      outcome_320: "pass",
+      outcome_200pct: "pass",
+      measurements: ["390", "320", "200pct"].map((id) => ({
+        id,
+        observed_font_size_px: 18,
+        observed_line_height_px: 27.9,
+        observed_font_weight: "700",
+        pre_edit_snapshot_sha256: input.pre_edit_product_snapshot.sha256,
+        pre_edit_font_size_px: 18,
+        pre_edit_line_height_px: 27.9,
+        pre_edit_font_weight: "700",
+        inline_reserve_css_px: 8,
+      })),
+    };
+    locked.browser_attempt = measuredAttempt();
+    expect(finalizeArtifact(staticClosed(locked), { env: browserEnv }).closure)
+      .toEqual({ state: "closed" });
+
+    locked.row_groups[0].final.measurements[1].observed_line_height_px = 21.7;
+    expect(() => finalizeArtifact(staticClosed(locked), { env: browserEnv }))
+      .toThrow(/deterministic pre-edit typography role/);
   });
 
   it("requires resolved compound rows to prove passive text is not the scroll container", () => {

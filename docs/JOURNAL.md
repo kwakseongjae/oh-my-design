@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.497 computed type + target-only carrier repair
+- pre-edit snapshot computed type과 target-only comparison carrier를 helper/runner/skill에 고정했다.
+- fresh flight replay는 carriers6/rows22, static1, 세 조건, unresolved0, `OMD_DELIVERY_READY`; provider 0이다.
+- 다음은 exact pin 뒤 genuinely unseen task transfer다.
+
 ## 2026-08-04 (Codex) · 1.9.496 flight transfer stopped
 - candidate 79/85, exact consumer 측정 green이나 compound target type/reserve와 clipped action이 red다.
 - 4셀 frozen. 다음은 provider-free computed type + target-only comparison carrier repair다.

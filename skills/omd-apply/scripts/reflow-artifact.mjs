@@ -12,6 +12,7 @@ const INVARIANTS = [
   "no_text_hack",
 ];
 const CHARACTER_RANGE_ORACLE = "character-range-line-tops";
+const PRE_EDIT_SNAPSHOT_SOURCE = "deterministic-pre-edit-snapshot";
 const COMPOUND_ATOMIC_SEPARATOR = /\s(?:\+|→|←|↔)\s/u;
 const LINE_CONTRACTS = new Set(["single-token", "parent-one-line"]);
 const FIT_STRATEGIES = new Set(["full-row", "stack", "relocate", "comparison-scroll", "keep", "unresolved"]);
@@ -85,8 +86,14 @@ function validateBrowserConnectionContract(value) {
   return value;
 }
 
-function validateTypographyContract(row) {
+function validateTypographyContract(row, preEditProductSnapshot) {
   const value = row.typography_contract;
+  if (value?.source === PRE_EDIT_SNAPSHOT_SOURCE) {
+    if (!preEditProductSnapshot) {
+      fail(`row group ${row.id} deterministic typography requires a pre-edit product snapshot`);
+    }
+    return value;
+  }
   if (
     !Number.isFinite(value?.font_size_px)
     || value.font_size_px <= 0
@@ -94,6 +101,36 @@ function validateTypographyContract(row) {
     || value.line_height_px <= 0
     || !(typeof value?.font_weight === "string" || Number.isFinite(value?.font_weight))
   ) fail(`row group ${row.id} typography_contract must lock pre-edit font size, line height, and weight`);
+  return value;
+}
+
+function productSnapshot(source, productPath) {
+  return {
+    product_path: productPath,
+    sha256: createHash("sha256").update(source).digest("hex"),
+    source_base64: Buffer.from(source, "utf8").toString("base64"),
+  };
+}
+
+function validatePreEditProductSnapshot(value, manifest) {
+  if (value == null) return null;
+  if (
+    typeof value !== "object"
+    || value.product_path !== manifest.product_path
+    || typeof value.sha256 !== "string"
+    || !/^[a-f0-9]{64}$/u.test(value.sha256)
+    || typeof value.source_base64 !== "string"
+    || !value.source_base64
+  ) fail("pre_edit_product_snapshot must bind the locked product path, source, and sha256");
+  let source;
+  try {
+    source = Buffer.from(value.source_base64, "base64").toString("utf8");
+  } catch {
+    fail("pre_edit_product_snapshot source_base64 is invalid");
+  }
+  if (createHash("sha256").update(source).digest("hex") !== value.sha256) {
+    fail("pre_edit_product_snapshot sha256 does not match its source");
+  }
   return value;
 }
 
@@ -207,6 +244,7 @@ export function inventoryDigest(artifact) {
     browser_connection_contract: artifact.browser_connection_contract,
     acceptance_sequence: artifact.acceptance_sequence,
     static_closure_manifest: artifact.static_closure_manifest,
+    pre_edit_product_snapshot_sha256: artifact.pre_edit_product_snapshot?.sha256 ?? null,
     carrier_ids: artifact.inventory.carrier_ids,
     carrier_groups: artifact.carriers.map((carrier) => ({
       id: carrier.id,
@@ -239,6 +277,10 @@ export function lockArtifact(input) {
   validateBrowserConnectionContract(artifact.browser_connection_contract);
   validateAcceptanceSequence(artifact.acceptance_sequence);
   validateStaticClosureManifest(artifact.static_closure_manifest);
+  artifact.pre_edit_product_snapshot = validatePreEditProductSnapshot(
+    artifact.pre_edit_product_snapshot,
+    artifact.static_closure_manifest,
+  );
   const carrierIds = uniqueStrings(artifact.carriers.map((carrier) => carrier?.id), "carrier ids");
   const rowGroupIds = uniqueStrings(artifact.row_groups.map((row) => row?.id), "row group ids");
   const knownRows = new Set(rowGroupIds);
@@ -259,13 +301,23 @@ export function lockArtifact(input) {
     if (typeof row.longest_value !== "string" || !row.longest_value) fail(`row group ${row.id} longest_value is required`);
     const atomicParts = validateAtomicParts(row);
     if (atomicParts) row.atomic_parts = atomicParts;
-    validateTypographyContract(row);
+    validateTypographyContract(row, artifact.pre_edit_product_snapshot);
     if (row.required_fit_reserve_css_px !== REQUIRED_FIT_RESERVE_CSS_PX) {
       fail(`row group ${row.id} required_fit_reserve_css_px must be ${REQUIRED_FIT_RESERVE_CSS_PX}`);
     }
     const scrollContract = validateFitStrategy(row);
     if (scrollContract) row.scroll_contract = scrollContract;
     delete row.final;
+  }
+  for (const row of artifact.row_groups.filter((entry) => entry.decision === "comparison-scroll")) {
+    const carrier = artifact.carriers.filter((entry) => entry.selector === row.scroll_contract.container_selector);
+    if (
+      carrier.length !== 1
+      || carrier[0].binds_row_groups.length !== 1
+      || carrier[0].binds_row_groups[0] !== row.id
+    ) {
+      fail(`row group ${row.id} comparison-scroll must use one registered target-only carrier`);
+    }
   }
   artifact.inventory = {
     state: "locked",
@@ -341,7 +393,7 @@ function htmlStartTags(source) {
 }
 
 function attributeAssertion(literal) {
-  const match = literal.match(/^([^\s=<>"']+)\s*=\s*(?:(["'])(.*?)\2)?$/u);
+  const match = literal.match(/^([^\s=<>"']+)(?:\s*=\s*(?:(["'])(.*?)\2)?)?$/u);
   if (!match) fail(`static_closure_manifest count literal must be an HTML attribute assertion: ${literal}`);
   return { name: match[1], value: match[3] };
 }
@@ -416,7 +468,10 @@ function completeOutcome(value, label, { compound = false, unresolved = false } 
   }
 }
 
-function validateResolvedRowMeasurements(row, { allowFailedFit = false } = {}) {
+function validateResolvedRowMeasurements(row, {
+  allowFailedFit = false,
+  preEditProductSnapshot = null,
+} = {}) {
   const values = row.final?.measurements;
   if (!Array.isArray(values) || values.length !== REQUIRED_MEASUREMENT_CONDITIONS.length) {
     fail(`row group ${row.id}.final.measurements must cover every condition`);
@@ -424,7 +479,18 @@ function validateResolvedRowMeasurements(row, { allowFailedFit = false } = {}) {
   for (const [index, expected] of REQUIRED_MEASUREMENT_CONDITIONS.entries()) {
     const value = values[index];
     if (value?.id !== expected.id) fail(`row group ${row.id}.final.measurements[${index}] must be ${expected.id}`);
-    if (
+    if (row.typography_contract.source === PRE_EDIT_SNAPSHOT_SOURCE) {
+      if (
+        !preEditProductSnapshot
+        || value.pre_edit_snapshot_sha256 !== preEditProductSnapshot.sha256
+        || !Number.isFinite(value.pre_edit_font_size_px)
+        || !Number.isFinite(value.pre_edit_line_height_px)
+        || !(typeof value.pre_edit_font_weight === "string" || Number.isFinite(value.pre_edit_font_weight))
+        || Math.abs(value.observed_font_size_px - value.pre_edit_font_size_px) >= 0.01
+        || Math.abs(value.observed_line_height_px - value.pre_edit_line_height_px) >= 0.01
+        || String(value.observed_font_weight) !== String(value.pre_edit_font_weight)
+      ) fail(`row group ${row.id} changed its deterministic pre-edit typography role`);
+    } else if (
       value.observed_font_size_px !== row.typography_contract.font_size_px
       || value.observed_line_height_px !== row.typography_contract.line_height_px
       || String(value.observed_font_weight) !== String(row.typography_contract.font_weight)
@@ -503,7 +569,10 @@ export function finalizeArtifact(input, {
       unresolved: unresolvedClosure,
     });
     if (!OUTCOMES.has(row.final.status)) fail(`row group ${row.id}.status must be pass or unresolved`);
-    if (!unresolved) validateResolvedRowMeasurements(row, { allowFailedFit: measuredUnresolved });
+    if (!unresolved) validateResolvedRowMeasurements(row, {
+      allowFailedFit: measuredUnresolved,
+      preEditProductSnapshot: artifact.pre_edit_product_snapshot,
+    });
   }
   if (!unresolvedClosure && INVARIANTS.some((field) => artifact.invariants[field] !== true)) {
     fail("resolved closure requires every invariant to pass");
@@ -603,7 +672,16 @@ function main() {
       : null;
   let result;
   if (command === "lock") {
-    result = lockArtifact(artifact);
+    const productPath = resolve(artifact.static_closure_manifest?.product_path ?? "");
+    if (!existsSync(productPath)) fail("lock requires the pre-edit product file from static_closure_manifest.product_path");
+    const source = readFileSync(productPath, "utf8");
+    result = lockArtifact({
+      ...artifact,
+      pre_edit_product_snapshot: productSnapshot(
+        source,
+        artifact.static_closure_manifest.product_path,
+      ),
+    });
   } else if (command === "static-close") {
     if (!rawProductPath) fail("static-close requires the locked product file");
     const productPath = resolve(rawProductPath);

@@ -99,6 +99,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("OMD_REFLOW_ARTIFACT=.omd/reflow-closure.json");
     expect(skill).toContain("required_fit_reserve_css_px: 8");
     expect(skill).toContain("typography_contract:");
+    expect(skill).toContain("typography_contract: { source: deterministic-pre-edit-snapshot }");
+    expect(skill).toContain("편집 전 product source와 sha256을 artifact 안에 자동 snapshot");
     expect(skill).toContain('measurement_conditions:');
     expect(skill).toContain('{ id: "200pct", viewport_width: 640, zoom: 2 }');
     expect(skill).toContain("acceptance_sequence:");
@@ -147,7 +149,10 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("`atomic_parts`는 separator wrap 허가가 아니다");
     expect(skill).toContain("parts와 separator 전체를 한 atomic group으로 유지");
     expect(skill).toContain("parent selector 전체의 non-space character top 고유값이 정확히 1");
-    expect(skill).toContain("row selector와 다른 **관계 carrier**를 named `comparison-scroll`로 쓴다");
+    expect(skill).toContain("row selector와 다른 **target-only 관계 carrier**를 named `comparison-scroll`로 쓴다");
+    expect(skill).toContain("**target-only 관계 carrier**");
+    expect(skill).toContain("target-only carrier 바깥에 evidence·state·action");
+    expect(skill).toContain("comparison carrier 안의 다른 registered row·focusable descendant");
     expect(skill).toContain("protected target/identifier/state 같은 passive text 자체의 computed overflow가 `auto|scroll`이면");
     expect(skill).toContain("기존 carrier 자체를 relocate");
     expect(skill).toContain("generated content·`data-*`·aria-label·hook 없는 span 복제");

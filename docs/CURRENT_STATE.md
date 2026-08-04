@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `681c56fb` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.496 flight transfer stopped
+- 기준 커밋: `262b245e` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.497 computed type + target-only carrier repair
 
 ## 지금 (현재 위치)
+
+- 1.9.497은 provider-free로 lock 시 pre-edit product source+sha256을 snapshot하고 shipped runner가 같은 consumer browser·같은 세 조건에서 편집 전/후 computed font size·line-height·weight를 직접 비교한다.
+- comparison-scroll은 별도 등록된 target-only carrier 하나에만 허용하며 evidence/state/action, 다른 registered row, focusable descendant를 carrier 밖에 둔다. runtime은 unregistered overflow와 clipped focusable을 실패 처리한다.
+- bare boolean `data-primary-action` static cardinality가 통과한다. fresh flight replay는 existing `bench19366` attach/no-launch, carriers6/rows22, static1, 390/320/actual200, quality true, unresolved0, `OMD_DELIVERY_READY`다.
+- focused 52/52와 lint가 green, provider 0이며 frozen 1.9.493 실험은 변경하지 않았다. 다음은 exact immutable pin 뒤 genuinely unseen task transfer다.
 
 - 1.9.496 r1 candidate는 valid 79/85 unresolved: 324.563s, 734,928 tokens, control 대비 wall 1.1022×/token 1.3066×다.
 - exact attach/no-launch/세 조건/overflow0/atomic0/contrast0, visible inventory와 padding reserve는 green이나 action이 세 narrow 조건에서 clipped됐다.
@@ -2482,9 +2487,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. passive protected text의 scroll-container화를 금지하고 accessible atomic-fit priority를 skill/helper contract에 고정한다.
-2. exploratory inspection과 final acceptance를 구분하는 explicit final-revision static latch를 결정론적으로 만든다.
-3. focused contract/evaluator tests와 exact pin 뒤 다른 fresh unseen task로 transfer를 재검증한다.
+1. 1.9.497 computed-type + target-only carrier repair를 exact immutable candidate로 pin한다.
+2. genuinely unseen task를 provider 노출 전에 lock하고 historical control 대비 Reliability@3를 사전등록한다.
+3. fresh detached vendors/cells를 준비한 뒤 모델 실행을 재개한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
