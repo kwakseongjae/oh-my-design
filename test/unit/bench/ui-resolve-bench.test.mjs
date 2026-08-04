@@ -4680,6 +4680,34 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("pins the exact unseen runway-lighting task before compared-system exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/runway-lighting-task-pin-1.9.618/TASK-PIN.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.618",
+      status: "TASK_PINNED_PROVIDER_ZERO",
+      provider_calls: 0,
+      model_exposures: 0,
+      task_id: "runway-lighting-return-to-service-v0.1",
+      source_commit: "1816fd834ada8d415cebb85fd883f7dda0a3cdcf",
+      source_tree: "8975897a3327b0c386998c5f161ea4de12ce64b2",
+      portable_task_tree_sha256: "54cdacba72bc516c08ca844d11e6f1bcb5819294d0e9d139cdcdffcab0e4848b",
+      baseline_score_sha256: "0a0f7d4420cffd54016a9429983f65307da15a5303d8c109006aae19174c518c",
+      baseline: {
+        objective_score: 75,
+        objective_max: 85,
+        task_contract: true,
+        state_journey: true,
+        design_grounding: true,
+        evidence_honesty: true,
+        responsive: false,
+        accessibility: false,
+      },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

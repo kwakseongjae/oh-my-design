@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.618 runway-lighting task pin
+- task commit1816fd83/git tree8975897a/portable tree54cdacba/baseline0a0f7d44를 exact pin했다.
+- model/control/candidate exposure0이며 이후 task mutation은 금지다.
+- 다음은 old desktop-context control vs content-box candidate Luna/high2×3 preregistration이다.
+
 ## 2026-08-05 (Codex) · 1.9.617 fresh runway-lighting task
 - model-unseen runway-lighting return-to-service task를 provider 노출 전에 만들고 baseline75/85로 평가했다.
 - contract/state/design/evidence green, responsive/a11y red; task tree54cdacba, exposure0다.
