@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `b06b5281` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.531 observatory r1 candidate
+- 갱신: 2026-08-04 · 1.9.532 observatory transfer freeze
 
 ## 지금 (현재 위치)
+
+- 1.9.532 r2 candidate는 81/85 proof fail: 385.022s, 861,995 tokens다. 320/actual200 overflow29/58px+clipped1/1, artifact open이다.
+- row text 124.5234+16px plan은 green이었지만 button padding·adjacent copy·gap·shell padding의 aggregate carrier 350px를 305px consumer에 맞추지 못했다. terminal 뒤 edit2/static2는 재폐쇄 불가다.
+- candidate Reliability@3 최대2/3이라 잔여3셀 frozen, TTT63,373,931+ / unavailable6이다. 다음은 provider-free aggregate carrier fit-plan repair다.
 
 - 1.9.531 Luna/high r1 candidate는 valid UI-resolved+proof pass 85/85: 487.890s, 958,166 tokens다.
 - control 대비 wall0.9779×/token0.8235×, measured fit plan10 rows+16px, overflow/clipping/fragmentation/axe/debt0, edit1/static1/final-browser1이다.

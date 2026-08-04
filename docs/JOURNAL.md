@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.532 observatory transfer freeze
+- r2 candidate 81/85, 385.022s/861,995 tokens; 320/200% overflow29/58+clipped1/1, proof red다.
+- row plan이 aggregate carrier를 놓쳐 max2/3; 잔여3셀 frozen, TTT63,373,931+다.
+
 ## 2026-08-04 (Codex) · 1.9.531 observatory r1 candidate
 - Luna/high candidate 85/85+proof pass, 487.890s/958,166 tokens; wall0.9779×/token0.8235×다.
 - measured plan10+16px green. pre-edit inventory 교정1회, TTT62,511,936+다.

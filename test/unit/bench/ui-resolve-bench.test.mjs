@@ -2949,6 +2949,36 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("freezes observatory transfer when row plans miss aggregate carrier width", () => {
+    const summary = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/observatory-measured-fit-plan-luna-1.9.528/SUMMARY.final.json",
+    ), "utf8"));
+    expect(summary).toMatchObject({
+      product_version: "1.9.532",
+      status: "FROZEN_NO_PROMOTION",
+      provider_calls: 3,
+      scheduled_cells: 6,
+      completed_cells: 3,
+      frozen_cells: 3,
+      arms: {
+        control: { completed: 1, ui_resolved: 1, proof_compliant: 1 },
+        candidate: {
+          completed: 2,
+          ui_resolved: 1,
+          proof_compliant: 1,
+          measured_fit_plan_complete: 2,
+          proof_reliability_at_3_max: "2/3",
+        },
+      },
+      measured_fit_plan_transfer: {
+        pre_edit_measurement_executed_trials: 2,
+        aggregate_carrier_plan_complete_trials: 1,
+      },
+      promotion: false,
+    });
+  });
+
   it("keeps model, skill, harness, prompt arena, and transfer results in separate families", () => {
     expect(Object.keys(families.families)).toEqual(["model", "skill", "harness", "prompt-arena", "factorial"]);
     expect(families.families.model.skills_allowed).toBe(false);
