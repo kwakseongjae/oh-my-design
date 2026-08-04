@@ -164,6 +164,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("parent selector 전체의 non-space character top 고유값이 정확히 1");
     expect(skill).toContain("row selector와 다른 **named 관계 carrier**를 `comparison-scroll`로 쓴다");
     expect(skill).toContain("decision target은 evidence·state·action을 포함하지 않는 target-only carrier");
+    expect(skill).toContain('protected decision-target hook가 있으면 정확히 하나의 `role: target` row');
+    expect(skill).toContain("target-only carrier 하나를 `plan-close` 전에 등록한다");
     expect(skill).toContain("shared carrier를 쓸 수 있지만");
     expect(skill).toContain("passive `identifier` 역할뿐");
     expect(skill).toContain("comparison carrier 안의 focusable descendant");

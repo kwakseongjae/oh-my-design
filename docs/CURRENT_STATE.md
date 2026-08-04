@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `cc1637b9` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.554 subsea fit-strategy transfer freeze
+- 기준 커밋: `8ad423aa` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.555 decision-target inventory repair
 
 ## 지금 (현재 위치)
+
+- 1.9.555 provider-free repair는 pre-edit source의 protected decision target hook를 exact `role: target` row/cardinality와 distinct target-only carrier에 결박한다.
+- 누락·selector/count drift·row 자체 carrier·shared evidence/state/action carrier는 `plan-close` 전에 fail-closed다. focused47/47+lint+diff green, full578 pass/1 skip/기존3 red다.
+- subsea frozen4셀은 재개하지 않았고 provider0다. 다음은 exact immutable pin 뒤 genuinely unseen transfer task lock이다.
 
 - 1.9.554 r1 candidate는 UI85/85, 421.974s/1,884,435 tokens로 control 대비 wall0.7700×/token1.1984×이나 proof red다.
 - feasibility8행과 identifier comparison carrier는 작동했지만 compound decision target을 inventory에서 누락해 첫 terminal document overflow69/139/264px, 이후 edit2로 UI만 green이고 artifact open이다.

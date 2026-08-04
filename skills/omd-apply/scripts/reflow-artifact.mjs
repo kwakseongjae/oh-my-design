@@ -187,6 +187,36 @@ function validatePreEditProductSnapshot(value, manifest) {
   return value;
 }
 
+function validateProtectedDecisionTargetInventory(snapshot, rows, carriers) {
+  if (snapshot == null) return;
+  const source = Buffer.from(snapshot.source_base64, "base64").toString("utf8");
+  const protectedTargetCount = [...source.matchAll(/\bdata-bench-decision-role\s*=\s*(["'])target\1/gu)].length;
+  if (protectedTargetCount === 0) return;
+
+  const targetRows = rows.filter((row) => row.role === "target");
+  if (targetRows.length !== 1) {
+    fail("protected decision target requires exactly one target row group");
+  }
+  const targetRow = targetRows[0];
+  const hasProtectedTargetAnchor = preEditSelectorAnchors(targetRow.selector).some((anchor) => (
+    anchor.type === "attribute"
+    && anchor.name === "data-bench-decision-role"
+    && anchor.value === "target"
+  ));
+  if (!hasProtectedTargetAnchor || targetRow.expected_count !== protectedTargetCount) {
+    fail("protected decision target row must match the pre-edit protected target hook and count");
+  }
+
+  const targetCarriers = carriers.filter((carrier) => carrier.binds_row_groups.includes(targetRow.id));
+  if (
+    targetCarriers.length !== 1
+    || targetCarriers[0].binds_row_groups.length !== 1
+    || targetCarriers[0].selector === targetRow.selector
+  ) {
+    fail("protected decision target requires one distinct target-only carrier before plan-close");
+  }
+}
+
 function validateAtomicParts(row) {
   const compound = COMPOUND_ATOMIC_SEPARATOR.test(row.longest_value);
   if (!LINE_CONTRACTS.has(row.line_contract)) {
@@ -612,6 +642,11 @@ export function lockArtifact(input, { allowPendingFitPlan = false } = {}) {
     if (scrollContract) row.scroll_contract = scrollContract;
     delete row.final;
   }
+  validateProtectedDecisionTargetInventory(
+    artifact.pre_edit_product_snapshot,
+    artifact.row_groups,
+    artifact.carriers,
+  );
   artifact.acceptance_debt_ledger = validateAcceptanceDebtLedger(
     artifact.acceptance_debt_ledger,
     artifact.static_closure_manifest,

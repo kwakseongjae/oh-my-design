@@ -154,6 +154,14 @@ function staticClosed(artifact, source = '<div data-id="fixture">required-fact</
   });
 }
 
+function replacePreEditSnapshotSource(artifact, source) {
+  artifact.pre_edit_product_snapshot = {
+    product_path: "index.html",
+    sha256: createHash("sha256").update(source).digest("hex"),
+    source_base64: Buffer.from(source).toString("base64"),
+  };
+}
+
 function measuredConditions() {
   return [
     { id: "390", viewport_width: 390, zoom: 1, observed_document_zoom: 1, document_scroll_width: 390, document_client_width: 390, body_scroll_width: 390, body_client_width: 390 },
@@ -709,6 +717,40 @@ describe("compact reflow artifact helper", () => {
 
     shared.row_groups[1].role = "state";
     expect(() => lockArtifact(shared)).toThrow(/only passive identifier rows/);
+  });
+
+  it("fails closed when a protected decision target is omitted from the pre-edit inventory", () => {
+    const input = draft();
+    const source = '<div data-id="fixture">required-fact</div><section data-target-carrier><strong data-bench-decision-role="target">VALVE-A + VALVE-B</strong></section>';
+    replacePreEditSnapshotSource(input, source);
+
+    expect(() => lockArtifact(input)).toThrow(/exactly one target row group/);
+
+    input.row_groups.push({
+      id: "decision-target",
+      selector: '[data-bench-decision-role="target"]',
+      role: "target",
+      expected_count: 1,
+      longest_value: "VALVE-A + VALVE-B",
+      atomic_parts: ["VALVE-A", "VALVE-B"],
+      line_contract: "parent-one-line",
+      typography_contract: { source: "deterministic-pre-edit-snapshot" },
+      required_fit_reserve_css_px: 8,
+      planned_fit_reserve_css_px: 16,
+      decision: "stack",
+    });
+    input.carriers.push({
+      id: "decision-target-carrier",
+      selector: '[data-bench-decision-role="target"]',
+      expected_count: 1,
+      binds_row_groups: ["decision-target"],
+    });
+    input.pre_edit_fit_plan = measuredFitPlan(input.row_groups, input.carriers);
+    expect(() => lockArtifact(input)).toThrow(/distinct target-only carrier/);
+
+    input.carriers.at(-1).selector = "[data-target-carrier]";
+    input.pre_edit_fit_plan = measuredFitPlan(input.row_groups, input.carriers);
+    expect(lockArtifact(input).inventory.row_group_ids).toContain("decision-target");
   });
 
   it("compares snapshot-backed typography without trusting model-entered pixel values", () => {

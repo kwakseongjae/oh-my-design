@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.555",
+  "change": "protected-decision-target-inventory-completeness-gate",
+  "status": "accepted-provider-free",
+  "provider_calls": 0,
+  "frozen_matrix_reopened": false,
+  "source_failure": {
+    "experiment_id": "subsea-fit-strategy-luna-1.9.551",
+    "class": "protected-decision-target-inventory-omission",
+    "detail": "The candidate registered eight fit rows but omitted the compound protected decision target, so the helper validated only the submitted subset and the first terminal browser proof exposed document overflow before a forbidden second edit."
+  },
+  "contract": {
+    "protected_hook": "data-bench-decision-role=target",
+    "exact_target_row_group": true,
+    "hook_cardinality_locked": true,
+    "stable_selector_anchor_required": true,
+    "distinct_target_only_carrier_required": true,
+    "failure_boundary": "before-plan-close"
+  },
+  "validation": {
+    "focused_tests": {"passed": 47, "failed": 0},
+    "lint": "passed",
+    "diff_check": "passed",
+    "full_suite": {"passed": 578, "failed": 3, "skipped": 1},
+    "known_unrelated_failures": [
+      "two external vendor fixtures are not Git repositories",
+      "one existing timeout attribution expectation expects valid instead of invalid-attribution"
+    ]
+  },
+  "next": "Pin this repair immutably before locking a genuinely unseen transfer task."
+}

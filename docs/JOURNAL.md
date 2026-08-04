@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.555 decision-target inventory repair
+- protected target hook를 exact target row/cardinality+distinct target-only carrier에 결박해 omission을 plan-close 전 차단했다.
+- focused47/47+lint green, full578 pass/1 skip/기존3 red, provider0/frozen matrix 유지; 다음 exact pin이다.
+
 ## 2026-08-04 (Codex) · 1.9.554 subsea transfer freeze
 - candidate UI85/85, 421.974s/1,884,435 tokens이나 decision target inventory 누락→terminal overflow→edit2로 proof red다.
 - R@3 최대2/3, 잔여4셀 frozen, TTT73,512,685+; 다음 target inventory completeness repair다.
