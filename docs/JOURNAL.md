@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.619 runway content-box preregistration
+- exact e8a6f083 border-box control vs 0c4af927 content-box candidate를 Luna/high2×3으로 provider0 사전등록했다.
+- isolated delta는 context border 제외+layout CSS pixel 좌표계뿐이며 UI/proof/content-box 3/3 gate다.
+- 다음은 executable matrix lock이다.
+
 ## 2026-08-05 (Codex) · 1.9.618 runway-lighting task pin
 - task commit1816fd83/git tree8975897a/portable tree54cdacba/baseline0a0f7d44를 exact pin했다.
 - model/control/candidate exposure0이며 이후 task mutation은 금지다.

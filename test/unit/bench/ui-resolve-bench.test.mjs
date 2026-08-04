@@ -4708,6 +4708,51 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("preregisters the runway content-box replacement without provider exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/runway-content-box-transfer-luna-1.9.619/PREREGISTRATION.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.619",
+      status: "PREREGISTERED_PROVIDER_ZERO",
+      provider_calls: 0,
+      tokens_to_target: {
+        attempt_order: 47,
+        prior_observed_provider_tokens_minimum: 104755044,
+        prior_usage_unavailable_cells: 6,
+      },
+      task: {
+        id: "runway-lighting-return-to-service-v0.1",
+        source_commit: "1816fd834ada8d415cebb85fd883f7dda0a3cdcf",
+        model_exposures: 0,
+      },
+      sources: {
+        control: {
+          source_commit: "e8a6f083f5cb278d18d1ab812b7d154a486a8c1b",
+          decision_context_width_contract: "context border-box width minus padding compared against carrier CSS width",
+        },
+        candidate: {
+          source_commit: "0c4af9273a19bbb7cdcf6a17ef2a58f3627f1419",
+          decision_context_width_contract: "context clientWidth minus padding compared against carrier offsetWidth in layout CSS pixels",
+        },
+      },
+      matrix: {
+        model_id: "gpt-5.6-luna",
+        effort: "high",
+        scheduled_cells: 6,
+        timeout_seconds: 900,
+        inter_cell_delay_seconds: 120,
+        retry_policy: "none-primary",
+      },
+      promotion_gates: {
+        candidate_ui_resolved_trials_required: 3,
+        candidate_proof_compliant_trials_required: 3,
+        candidate_content_box_coordinate_attested_trials_required: 3,
+      },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
