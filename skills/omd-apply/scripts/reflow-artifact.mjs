@@ -241,12 +241,36 @@ function stringList(value, label, { allowEmpty = false } = {}) {
   return value;
 }
 
+const FORBIDDEN_CSS_VALUE_CONTRACTS = new Set(["positive-length", "any-declaration"]);
+
+function validateForbiddenCssDeclarations(value, label) {
+  if (!Array.isArray(value)) fail(`${label} must be an array`);
+  const seen = new Set();
+  for (const entry of value) {
+    if (typeof entry?.selector !== "string" || !entry.selector.trim()) fail(`${label} selector is required`);
+    if (typeof entry?.property !== "string" || !/^[a-z-]+$/u.test(entry.property)) fail(`${label} property is required`);
+    if (!FORBIDDEN_CSS_VALUE_CONTRACTS.has(entry.value_contract)) {
+      fail(`${label} value_contract must be positive-length or any-declaration`);
+    }
+    entry.selector = entry.selector.trim().replace(/\s+/gu, " ");
+    entry.property = entry.property.toLowerCase();
+    const key = `${entry.selector}\u0000${entry.property}\u0000${entry.value_contract}`;
+    if (seen.has(key)) fail(`${label} entries must be unique`);
+    seen.add(key);
+  }
+  return value;
+}
+
 function validateStaticClosureManifest(value) {
   if (!value || typeof value !== "object") fail("static_closure_manifest is required");
   value.product_path = relativeProductPath(value.product_path, "static_closure_manifest.product_path");
   value.required_literals = stringList(value.required_literals, "static_closure_manifest.required_literals");
   value.forbidden_literals = stringList(value.forbidden_literals ?? [], "static_closure_manifest.forbidden_literals", { allowEmpty: true });
   value.forbidden_patterns = stringList(value.forbidden_patterns ?? [], "static_closure_manifest.forbidden_patterns", { allowEmpty: true });
+  value.forbidden_css_declarations = validateForbiddenCssDeclarations(
+    value.forbidden_css_declarations ?? [],
+    "static_closure_manifest.forbidden_css_declarations",
+  );
   for (const pattern of value.forbidden_patterns) {
     try {
       new RegExp(pattern, "u");
@@ -271,6 +295,13 @@ function manifestContainsAll(manifest, field, values, label) {
   const known = new Set(manifest[field]);
   for (const value of values) {
     if (!known.has(value)) fail(`${label} must also appear in static_closure_manifest.${field}`);
+  }
+}
+
+function manifestContainsAllObjects(manifest, field, values, label) {
+  const known = new Set(manifest[field].map((value) => JSON.stringify(value)));
+  for (const value of values) {
+    if (!known.has(JSON.stringify(value))) fail(`${label} must also appear in static_closure_manifest.${field}`);
   }
 }
 
@@ -330,14 +361,25 @@ function validateAcceptanceDebtLedger(value, manifest, knownRows) {
       `acceptance debt ${debt.id} static_guardrail.forbidden_patterns`,
       { allowEmpty: true },
     );
+    guardrail.forbidden_css_declarations = validateForbiddenCssDeclarations(
+      guardrail.forbidden_css_declarations ?? [],
+      `acceptance debt ${debt.id} static_guardrail.forbidden_css_declarations`,
+    );
     if (
       guardrail.required_literals.length
       + guardrail.forbidden_literals.length
-      + guardrail.forbidden_patterns.length === 0
+      + guardrail.forbidden_patterns.length
+      + guardrail.forbidden_css_declarations.length === 0
     ) fail(`acceptance debt ${debt.id} static_guardrail must contain at least one assertion`);
     manifestContainsAll(manifest, "required_literals", guardrail.required_literals, `acceptance debt ${debt.id} required literals`);
     manifestContainsAll(manifest, "forbidden_literals", guardrail.forbidden_literals, `acceptance debt ${debt.id} forbidden literals`);
     manifestContainsAll(manifest, "forbidden_patterns", guardrail.forbidden_patterns, `acceptance debt ${debt.id} forbidden patterns`);
+    manifestContainsAllObjects(
+      manifest,
+      "forbidden_css_declarations",
+      guardrail.forbidden_css_declarations,
+      `acceptance debt ${debt.id} forbidden CSS declarations`,
+    );
     debt.bound_row_group_ids = boundRows;
     delete debt.final;
   }
@@ -660,6 +702,54 @@ function comparablePath(value) {
   return existsSync(absolute) ? realpathSync(absolute) : absolute;
 }
 
+function normalizedCssSelector(value) {
+  return value.trim().replace(/\s+/gu, " ");
+}
+
+function cssRuleBlocks(source) {
+  const blocks = [];
+  const pattern = /([^{}]+)\{([^{}]*)\}/gu;
+  const embedded = [...source.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/giu)].map((match) => match[1]);
+  const stylesheets = embedded.length ? embedded : [source];
+  for (const stylesheet of stylesheets) {
+    for (const match of stylesheet.matchAll(pattern)) {
+      const selectors = match[1].split(",").map(normalizedCssSelector);
+      const declarations = new Map();
+      for (const raw of match[2].split(";")) {
+        const separator = raw.indexOf(":");
+        if (separator < 0) continue;
+        const property = raw.slice(0, separator).trim().toLowerCase();
+        const value = raw.slice(separator + 1).trim().replace(/\s*!important\s*$/u, "");
+        if (property) declarations.set(property, value);
+      }
+      blocks.push({ selectors, declarations });
+    }
+  }
+  return blocks;
+}
+
+function isPositiveCssLength(value) {
+  const match = value.match(/^\+?(\d*\.?\d+)(?:px|rem|em|ch|ex|vw|vh|vmin|vmax|%|cm|mm|in|pt|pc|q)?$/iu);
+  return Boolean(match && Number(match[1]) > 0);
+}
+
+function forbiddenCssDeclarationFailures(source, assertions) {
+  const blocks = cssRuleBlocks(source);
+  const failures = [];
+  for (const assertion of assertions) {
+    for (const block of blocks) {
+      if (!block.selectors.includes(assertion.selector)) continue;
+      const value = block.declarations.get(assertion.property);
+      if (value === undefined) continue;
+      const forbidden = assertion.value_contract === "any-declaration" || isPositiveCssLength(value);
+      if (forbidden) {
+        failures.push(`matched forbidden CSS declaration: ${assertion.selector} { ${assertion.property}: ${value} } (${assertion.value_contract})`);
+      }
+    }
+  }
+  return failures;
+}
+
 export function executeStaticClosure(input, { productPath, source }) {
   const artifact = structuredClone(input);
   const locked = lockArtifact({
@@ -684,6 +774,10 @@ export function executeStaticClosure(input, { productPath, source }) {
   for (const pattern of artifact.static_closure_manifest.forbidden_patterns) {
     if (new RegExp(pattern, "u").test(source)) failures.push(`matched forbidden pattern: ${pattern}`);
   }
+  failures.push(...forbiddenCssDeclarationFailures(
+    source,
+    artifact.static_closure_manifest.forbidden_css_declarations,
+  ));
   for (const entry of artifact.static_closure_manifest.count_literals) {
     const observed = attributeCount(source, entry.literal);
     if (observed !== entry.expected_count) {
@@ -913,11 +1007,41 @@ function write(path, artifact) {
 }
 
 function staticEditGuardrails(artifact) {
+  const firstEditChecklist = [
+    ...artifact.static_closure_manifest.required_literals.map((assertion, index) => ({
+      id: `required-literal-${index + 1}`,
+      contract: "must-include",
+      assertion,
+    })),
+    ...artifact.static_closure_manifest.forbidden_literals.map((assertion, index) => ({
+      id: `forbidden-literal-${index + 1}`,
+      contract: "must-not-include",
+      assertion,
+    })),
+    ...artifact.static_closure_manifest.forbidden_patterns.map((assertion, index) => ({
+      id: `forbidden-pattern-${index + 1}`,
+      contract: "must-not-match",
+      assertion,
+    })),
+    ...artifact.static_closure_manifest.forbidden_css_declarations.map((assertion, index) => ({
+      id: `forbidden-css-declaration-${index + 1}`,
+      contract: "must-not-match-css-declaration",
+      assertion,
+    })),
+    ...artifact.static_closure_manifest.count_literals.map((assertion, index) => ({
+      id: `count-literal-${index + 1}`,
+      contract: "must-have-exact-count",
+      assertion,
+    })),
+  ];
   return {
     required_literals: artifact.static_closure_manifest.required_literals,
     forbidden_literals: artifact.static_closure_manifest.forbidden_literals,
     forbidden_patterns: artifact.static_closure_manifest.forbidden_patterns,
+    forbidden_css_declarations: artifact.static_closure_manifest.forbidden_css_declarations,
     count_literals: artifact.static_closure_manifest.count_literals,
+    first_edit_checklist: firstEditChecklist,
+    first_edit_checklist_contract: "satisfy every item in the single product edit before consuming static-close; a red static-close is terminal",
     forbidden_pattern_semantics: "absence-required-delete-matching-declaration",
     neutral_values_still_forbidden: ["normal", "initial", "unset", "revert", "inherit"],
     pre_edit_selector_semantics: "every snapshot-backed row selector is anchored in the snapshotted pre-edit product; never register a class, id, or attribute introduced by the product edit",

@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.541 first-edit checklist repair
+- structured CSS assertion이 safe zero reset과 positive lock을 구분하고 plan-close checklist가 첫 edit 전체 계약을 출력한다.
+- focused44/44+lint green, full567 pass/1 skip/기존4 red, provider0; 다음 exact pin이다.
+
 ## 2026-08-04 (Codex) · 1.9.540 pharma transfer freeze
 - r2 candidate 79/85, 409.819s/1,029,760 tokens; decision static guardrail을 첫 edit에서 놓쳐 proof red다.
 - candidate R@3 최대1/3로 3셀 frozen, TTT66,556,830+; 다음은 provider-free guardrail/checklist repair다.

@@ -96,6 +96,10 @@ function draft() {
       required_literals: ["required-fact"],
       forbidden_literals: ["forbidden-claim"],
       forbidden_patterns: ["word-break\\s*:"],
+      forbidden_css_declarations: [
+        { selector: ".ledger", property: "min-width", value_contract: "positive-length" },
+        { selector: ".decision", property: "grid-template-columns", value_contract: "any-declaration" },
+      ],
       count_literals: [{ literal: "data-id=", expected_count: 1 }],
     },
     measurement_conditions: [
@@ -118,6 +122,9 @@ function draft() {
           required_literals: ["required-fact"],
           forbidden_literals: [],
           forbidden_patterns: ["word-break\\s*:"],
+          forbidden_css_declarations: [
+            { selector: ".ledger", property: "min-width", value_contract: "positive-length" },
+          ],
         },
       },
     ],
@@ -393,6 +400,28 @@ describe("compact reflow artifact helper", () => {
     expect(() => staticClosed(failed)).toThrow(/exactly-once/);
   });
 
+  it("forbids positive fixed widths while allowing a zero-width containment reset", () => {
+    const locked = lockArtifact(draft());
+    const safe = staticClosed(locked, '<style>.ledger { min-width: 0; }</style><div data-id="fixture">required-fact</div>');
+    expect(safe.static_closure).toMatchObject({ state: "passed", failures: [] });
+
+    const unsafe = staticClosed(
+      lockArtifact(draft()),
+      '<style>.ledger { min-width: 1060px; }</style><div data-id="fixture">required-fact</div>',
+    );
+    expect(unsafe.static_closure.failures).toContain(
+      "matched forbidden CSS declaration: .ledger { min-width: 1060px } (positive-length)",
+    );
+
+    const forbiddenProperty = staticClosed(
+      lockArtifact(draft()),
+      '<style>.decision { grid-template-columns: 1fr; }</style><div data-id="fixture">required-fact</div>',
+    );
+    expect(forbiddenProperty.static_closure.failures).toContain(
+      "matched forbidden CSS declaration: .decision { grid-template-columns: 1fr } (any-declaration)",
+    );
+  });
+
   it("counts actual HTML attributes without counting selector strings in scripts", () => {
     const input = draft();
     input.static_closure_manifest.count_literals = [
@@ -457,6 +486,10 @@ describe("compact reflow artifact helper", () => {
       forbidden_patterns: ["word-break\\s*:"],
       forbidden_pattern_semantics: "absence-required-delete-matching-declaration",
       neutral_values_still_forbidden: ["normal", "initial", "unset", "revert", "inherit"],
+      forbidden_css_declarations: [
+        { selector: ".ledger", property: "min-width", value_contract: "positive-length" },
+        { selector: ".decision", property: "grid-template-columns", value_contract: "any-declaration" },
+      ],
       planned_fit_reserve_css_px: 16,
       measured_fit_reserve_css_px: 8,
       acceptance_debts: [{
@@ -466,6 +499,19 @@ describe("compact reflow artifact helper", () => {
         bound_row_group_ids: ["identifier"],
       }],
     });
+    expect(summary.static_edit_guardrails.first_edit_checklist).toEqual(expect.arrayContaining([
+      {
+        id: "forbidden-css-declaration-1",
+        contract: "must-not-match-css-declaration",
+        assertion: { selector: ".ledger", property: "min-width", value_contract: "positive-length" },
+      },
+      {
+        id: "count-literal-1",
+        contract: "must-have-exact-count",
+        assertion: { literal: "data-id=", expected_count: 1 },
+      },
+    ]));
+    expect(summary.static_edit_guardrails.first_edit_checklist_contract).toMatch(/single product edit/);
   });
 
   it("closes honest unresolved accounting across expanded instance counts", () => {

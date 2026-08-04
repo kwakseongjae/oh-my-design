@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `efdedfaa` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.540 pharmaceutical aggregate transfer freeze
+- 기준 커밋: `956a7b89` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.541 first-edit static checklist repair
 
 ## 지금 (현재 위치)
+
+- 1.9.541 provider-free repair는 CSS 금지를 structured `positive-length|any-declaration` assertion으로 분리해 safe `min-width:0` 오탐을 제거했다.
+- `plan-close`가 required/forbidden/regex/CSS/count 전체를 ordered `first_edit_checklist`로 출력하고 한 edit에서 모두 충족한 뒤에만 static-close하도록 skill을 고정했다.
+- focused44/44+lint green, full567 pass/1 skip/기존4 red, provider0다. 다음은 exact pin 뒤 genuinely unseen task lock이다.
 
 - 1.9.540 r2 candidate는 valid 79/85 unresolved: 409.819s, 1,029,760 tokens, narrow overflow103/173/345px+clipped1/1/1이다.
 - aggregate carrier 분류3/3은 green이나 첫 edit에 forbidden decision `grid-template-columns`를 남겨 static exactly-once가 red, 후속 edit은 재폐쇄 불가다.
