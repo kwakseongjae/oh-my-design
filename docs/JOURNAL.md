@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.512 selector provenance exact pin
+- 1.9.511을 commit/tree/artifact hashes와 새 competitor id로 고정했다.
+- provider0/promotion false. 다음은 genuinely unseen transfer task lock이다.
+
 ## 2026-08-04 (Codex) · 1.9.511 selector provenance repair
 - pre-edit에 없는 snapshot selector를 lock에서 거절하고 evaluator 실패 사유를 분리했다.
 - frozen artifact 재분류, focused55/55+parity1/1+lint green. 다음은 exact pin이다.
