@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.582 orbital task pin
+- exact commit `536aa793…`, task tree `32800908…`, baseline hashes로 task를 pin했다.
+- model/control/candidate exposure0이다.
+- 다음 exact-source carrier-inner replacement preregistration이다.
+
 ## 2026-08-04 (Codex) · 1.9.581 orbital sample unseen task
 - model-unseen orbital custody task를 생성하고 raw baseline75/85로 잠갔다.
 - contract/state/design/evidence green, responsive/a11y red; 1075/1075/2150px overflow다.

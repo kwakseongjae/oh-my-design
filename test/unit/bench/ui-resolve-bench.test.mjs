@@ -3989,6 +3989,28 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("pins the orbital sample-return task before model exposure", () => {
+    const pin = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/orbital-sample-task-pin-1.9.582/TASK-PIN.json",
+    ), "utf8"));
+    expect(pin).toMatchObject({
+      product_version: "1.9.582",
+      pin_id: "orbital-sample-return-custody-1.9.582",
+      status: "PINNED_MODEL_UNSEEN",
+      provider_calls: 0,
+      task_id: "orbital-sample-return-custody-v0.1",
+      source_commit: "536aa793d851d178827c4780bb8adccd98c1da65",
+      task_tree: "32800908687f398cf4a00ed3bbb6520034905426",
+      baseline_summary_sha256: "2e3354401d5cb441c00a54729141bafa25aea0be6611d6c4b9864bde12e56b06",
+      baseline_score_sha256: "bb82f178c52703b693ed4975c4c28509c9fe071f28dc672df0ef98c7f4530a44",
+      prior_model_exposures: 0,
+      prior_control_exposures: 0,
+      prior_candidate_exposures: 0,
+      locked_contract: { return_canisters: 4, custody_seals: 6, quarantine_bays: 2, raw_objective_score: 75 },
+    });
+  });
+
   it("records the spent-fuel r1 control as UI-resolved but proof-unresolved", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,

@@ -3,10 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `b47be531` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.581 orbital sample unseen task
+- 기준 커밋: `536aa793` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.582 orbital task pin
 
 ## 지금 (현재 위치)
+
+- 1.9.582는 orbital sample task를 exact commit `536aa793…`, task tree `32800908…`, baseline summary `2e335440…`, score `bb82f178…`로 pin했다.
+- model/control/candidate exposure는 모두0이다. 다음은 exact historical anchor control vs carrier-inner candidate Reliability@3 preregistration이다.
 
 - 1.9.581은 model-unseen `orbital-sample-return-custody-v0.1`을 provider 노출 전에 생성·기준선 평가했다.
 - baseline75/85, contract/state/design/evidence green, responsive/a11y red다. narrow document1075/1075/2150px, target token2개+state1개가 각 narrow 조건에서 깨지고 contrast3.78이다.
