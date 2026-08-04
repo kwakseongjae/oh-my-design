@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.539 pharma r1 candidate
+- aggregate candidate는 85/85, overflow/clipping/fragmentation/axe0, 492.340s/1,022,012 tokens다.
+- `min-width:0` guardrail false positive로 proof red; R@3 0/1(max2), TTT65,527,070+, 다음 r2 candidate다.
+
 ## 2026-08-04 (Codex) · 1.9.538 pharma r1 control
 - Luna/high row-only control은 79/85, 489.213s/1,131,127 tokens; narrow overflow508/578/1155px다.
 - terminal 뒤 edit2로 artifact가 open/proof red; TTT64,505,058+, 다음은 r1 candidate다.

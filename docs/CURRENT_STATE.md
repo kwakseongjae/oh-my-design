@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `b700e9fe` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.538 pharmaceutical r1 control
+- 기준 커밋: `1aa9320d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.539 pharmaceutical r1 candidate
 
 ## 지금 (현재 위치)
+
+- 1.9.539 Luna/high r1 aggregate candidate는 valid UI-resolved 85/85: 492.340s, 1,022,012 tokens, control 대비 wall1.0064×/token0.9035×다.
+- aggregate plan이 carrier5의 320px 필요 폭 508.67/1304.03/803/1798.27/196.30px와 reflow4/5를 정확히 분류해 모든 viewport overflow/clipping/fragmentation/axe0를 만들었다.
+- 다만 static forbidden pattern이 안전한 `min-width:0`까지 잡아 exactly-once closure가 red; proof fail, Reliability@3 0/1(max2/3), TTT65,527,070+다. 다음은 r2 candidate no-retry다.
 
 - 1.9.538 Luna/high r1 row-only control은 valid 79/85 unresolved: 489.213s, 1,131,127 tokens다.
 - desktop은 green이나 390/320/actual200 overflow508/578/1155px, clipping/fragmentation/axe0이다. 첫 browser terminal 뒤 edit2를 했으나 exactly-once static/browser를 재폐쇄할 수 없어 artifact open/proof fail이다.
