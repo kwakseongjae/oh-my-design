@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `7df5be63` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.643 complete diagnostic candidate pin
+- 갱신: 2026-08-05 · 1.9.644 airworthiness unseen task baseline
 
 ## 지금 (현재 위치)
+
+- 1.9.644는 model-unseen `airworthiness-release-review-v0.1`을 provider 노출 전에 생성·평가했다. task tree `124ca2c4...`, score `5d59ea7c...`, exposure0이다.
+- raw baseline75/85: contract/state/design/evidence green, responsive/a11y red다. widths1440/1135/1135/2270, target fragments2, short wraps1/1/1, contrast2.61다.
+- 다음은 task exact commit/tree와 baseline hash를 별도 pin해 이후 mutation을 금지하는 단계다.
 
 - 1.9.643은 repair commit `7df5be63...`, source tree `40880b48...`, skill tree `c282458d...`를 `omd-complete-plan-diagnostic-candidate`로 exact pin했다.
 - provider0/promotion false이며 fresh transfer 전 공개 우위 주장은 금지다. 다음은 이 exact candidate에 노출되지 않은 genuinely unseen task 생성·baseline이다.

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.644 airworthiness unseen task baseline
+- provider 노출 전 신규 airworthiness task를 생성·결정론 baseline했다.
+- raw75/85, responsive/a11y red, task tree124ca2c4, score5d59ea7c, exposure0다.
+- 다음은 exact task commit/tree pin이다.
+
 ## 2026-08-05 (Codex) · 1.9.643 complete diagnostic pin
 - repair commit/source tree/skill tree와 3-state diagnosis contract를 exact candidate로 고정했다.
 - provider0/promotion false; fresh unseen task 전 공개 우위 주장은 금지다.

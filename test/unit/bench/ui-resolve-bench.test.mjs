@@ -5856,6 +5856,38 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("baselines the unseen airworthiness release task before model exposure", () => {
+    const result = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/airworthiness-task-baseline-1.9.644/SUMMARY.final.json",
+    ), "utf8"));
+    expect(result).toMatchObject({
+      product_version: "1.9.644",
+      task_id: "airworthiness-release-review-v0.1",
+      status: "FRESH_UNSEEN_TASK_BASELINED",
+      provider_calls: 0,
+      model_exposures: 0,
+      baseline: {
+        variant_id: "raw-design-md",
+        objective_score: 75,
+        objective_max: 85,
+        automated_gate_pass: false,
+        critical_gates: { task_contract: true, state_journey: true, responsive: false, accessibility: false, design_grounding: true, evidence_honesty: true },
+        document_widths: {
+          desktop: { scroll: 1440, client: 1440 },
+          mobile: { scroll: 1135, client: 390 },
+          narrow_320: { scroll: 1135, client: 320 },
+          actual_200pct: { scroll: 2270, client: 640 },
+        },
+        fragmented_target_tokens_each_narrow_condition: 2,
+        wrapped_short_atomic_rows: { mobile: 1, narrow_320: 1, actual_200pct: 1 },
+        contrast_ratio_observed: 2.61,
+      },
+      locked_facts: { work_orders: 4, inspection_records: 6, maintenance_windows: 2, view_controls: 3, protected_hook_mismatches: 0 },
+      tokens_to_target: { cumulative_observed_provider_tokens_minimum: 118047296, usage_unavailable_cells: 6, goal_status: "right-censored-open" },
+    });
+  });
+
   it("preregisters the archive contained-budget replacement without provider exposure", () => {
     const result = JSON.parse(readFileSync(join(
       repoRoot,
