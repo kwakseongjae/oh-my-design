@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.521 wafer transfer preregistration
+- exact 1.9.511 control vs 1.9.518 candidate를 Luna/high 2×3으로 고정했다.
+- debt binding·planning16/measurement8·static1/browser1, attempt35/provider0다.
+
 ## 2026-08-04 (Codex) · 1.9.520 semiconductor wafer-lot task lock
 - fresh 4 lot/6 packet/2 station task를 provider/candidate 전에 잠갔다.
 - baseline75/85, narrow overflow635/705/1410px·target5/6/6줄·contrast4.1, provider0다.
