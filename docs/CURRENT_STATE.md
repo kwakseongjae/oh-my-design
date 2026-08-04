@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `faf3e4a8` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-04 · 1.9.565 organ custody runner self-dispatch preregistration
+- 기준 커밋: `b393a8d1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-04 · 1.9.566 organ custody matrix preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.566은 `/private/tmp/u19565-vendors` exact detached control/candidate와 `/private/tmp/u19565` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, detached+clean2, shared target/checklist/feasibility guardrail6/6과 candidate self-dispatch guardrail6/6을 확인했다. provider0이다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
 
 - 1.9.565는 exact 1.9.555 control `6142925c…` vs exact 1.9.562 candidate `bec454d5…`를 fresh organ custody task에 Luna/high 2×3으로 사전등록했다.
 - 양 arm은 target inventory+measured row/aggregate plan+fit feasibility+checklist가 같고 candidate만 plain-Python runner self-dispatch를 추가한다. timeout900/pacing120/no-retry/R@3다.

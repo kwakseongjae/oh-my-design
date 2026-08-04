@@ -5,6 +5,10 @@
 
 ---
 
+## 2026-08-04 (Codex) · 1.9.566 organ custody matrix preparation
+- exact detached control/candidate와 six untouched cells, equality6/6+shared/self-dispatch guardrail을 확인했다.
+- provider0; 다음 runtime/browser/auth preflight 후 r1 control이다.
+
 ## 2026-08-04 (Codex) · 1.9.565 organ custody runner self-dispatch prereg
 - exact 1.9.555 control vs 1.9.562 candidate를 Luna/high 2×3, timeout900/pacing120/no-retry로 고정했다.
 - attempt41/TTT78,112,464+/provider0; 다음 detached vendors+six cells다.

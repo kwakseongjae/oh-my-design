@@ -3405,6 +3405,10 @@ describe("UI-Resolve Bench sandbox preparation", () => {
         pin_id: "runner-self-dispatch-1.9.563",
         source_commit: "bec454d5a452bdc3bc772173d754dec30d548564",
       },
+      shipped_runner_contract: {
+        control_script_sha256: "4649a04a84f616a7943a31e9d7d14117b534c60a1810d950987f6632d676ce94",
+        candidate_script_sha256: "b57a2a405fcbac8493d69df7e17f5d4d45685467df98bb3c1cdc14517d219927",
+      },
       runner_self_dispatch_contract: {
         candidate_required: true,
         control_required: false,
@@ -3467,6 +3471,50 @@ describe("UI-Resolve Bench sandbox preparation", () => {
         fit_strategy_feasibility_retained: true,
         structured_first_edit_checklist_retained: true,
         browser_runner_identical: true,
+      },
+    });
+  });
+
+  it("prepares six untouched organ custody self-dispatch cells from exact detached sources", () => {
+    const preparation = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/organ-custody-runner-self-dispatch-luna-1.9.565/PREPARATION.json",
+    ), "utf8"));
+    expect(preparation).toMatchObject({
+      product_version: "1.9.566",
+      status: "SIX_CELLS_PREPARED",
+      provider_calls: 0,
+      equality: {
+        scheduled_cells: 6,
+        prepared_cells: 6,
+        core_prompt_equal: 6,
+        prompt_equal: 6,
+        starter_equal: 6,
+        product_tree_equal: 6,
+        runtime_equal: 6,
+        model_equal: 6,
+        effort_equal: 6,
+        timeout_equal: 6,
+      },
+      source_attestation: {
+        control: { commit: "6142925c153dbf9e8c17f7f456279c86c539c8e8", detached: true, clean: true },
+        candidate: { commit: "bec454d5a452bdc3bc772173d754dec30d548564", detached: true, clean: true },
+      },
+      shared_guardrail_presence: {
+        snapshot_target_presence_witness: true,
+        exact_one_target_row: true,
+        distinct_target_only_carrier: true,
+        fit_strategy_feasibility_retained: true,
+        structured_first_edit_checklist_retained: true,
+        artifact_helper_identical: true,
+      },
+      candidate_self_dispatch_guardrail: {
+        dispatch_function_present: true,
+        plain_python_detection_before_artifact_access: true,
+        exact_browser_harness_stdin_target: true,
+        unchanged_runner_source_forwarded: true,
+        recursion_latch_present: true,
+        browser_launch_fallback_absent: true,
       },
     });
   });
