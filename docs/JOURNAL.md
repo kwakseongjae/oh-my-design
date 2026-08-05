@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.703/704 canonical CSS packet
+- fresh wildlife Luna/high 셀은 UI85/85·revision1이지만 exact static-close failed1로 proof red다.
+- 유효 CSS에 `.decision` prefix를 붙인 verifier-incompatible selector rewrite가 원인이었다.
+- exact grouped selector를 복사하는 `canonical_css_source`와 prefix/alias 금지 계약을 추가했다.
+- focused112·lint/diff green; clean commit 뒤 full regression 재고정이 다음이다.
+
 ## 2026-08-05 (Codex) · 1.9.702 fresh wildlife task
 - 미노출 fictional wildlife acoustic-media custody repair task를 provider exposure0으로 작성했다.
 - 79-task validator/mutation green; raw starter75/85, responsive+a11y만 red다.

@@ -931,6 +931,12 @@ describe("compact reflow artifact helper", () => {
     expect(opened.static_edit_guardrails.source_fallback_patch_contract).toMatchObject({
       apply_order: expect.stringContaining("single product edit"),
       terminal_failure: expect.stringContaining("stop without another product edit"),
+      selector_contract: expect.stringContaining("ancestor prefixes"),
+      canonical_css_source: [
+        '[data-omd-source-fallback-carrier="target"],[data-omd-source-fallback-carrier="evidence"] { overflow-x: auto; }',
+        '[data-omd-source-fallback-carrier="target"]:focus-visible,[data-omd-source-fallback-carrier="evidence"]:focus-visible { outline: 2px solid currentColor; }',
+        '[data-bench-decision-role="target"],[data-bench-decision-role="evidence"] { white-space: nowrap; }',
+      ].join("\n"),
       html: [
         {
           role: "target",

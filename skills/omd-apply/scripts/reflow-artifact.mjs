@@ -1522,9 +1522,18 @@ function write(path, artifact) {
 
 function staticEditGuardrails(artifact) {
   const sourceFallbackRelationships = artifact.source_fallback_relationships ?? [];
+  const sourceFallbackCssSource = sourceFallbackRelationships.length > 0
+    ? [
+      `${sourceFallbackRelationships.map((relationship) => relationship.marker_selector).join(",")} { overflow-x: auto; }`,
+      `${sourceFallbackRelationships.map((relationship) => `${relationship.marker_selector}:focus-visible`).join(",")} { outline: 2px solid currentColor; }`,
+      `${sourceFallbackRelationships.map((relationship) => relationship.row_selector).join(",")} { white-space: nowrap; }`,
+    ].join("\n")
+    : null;
   const sourceFallbackPatchContract = sourceFallbackRelationships.length > 0 ? {
     apply_order: "apply every html and css entry before the single product edit is submitted; then consume static-close once",
     terminal_failure: "if static-close returns red, stop without another product edit or proof attempt",
+    selector_contract: "copy each canonical selector exactly; grouping exact selectors is allowed, but ancestor prefixes, suffixes, aliases, and substitutions are forbidden",
+    canonical_css_source: sourceFallbackCssSource,
     html: sourceFallbackRelationships.map((relationship) => ({
       role: relationship.role,
       existing_carrier_selector: relationship.carrier_selector,
