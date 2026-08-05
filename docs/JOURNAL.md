@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.653 frozen plan diagnostic replay
+- canonical pre-edit snapshot을 복구할 수 있는 frozen10 artifacts만 non-mutating 재생했다.
+- ready6/irreconcilable3/not-diagnosable1이며 historical patch-required는0이라 그대로 기록했다.
+- broader local90 replay와 focused222 pass/skip2/fail0, provider0/model exposure0이다.
+- 다음은 fail-closed operator decision packet과 no-rerun patch application proof다.
+
 ## 2026-08-05 (Codex) · 1.9.652 benchmark test baseline hygiene
 - 기존4 red를 historical base drift1, Luna plan status drift1, invalid vendor cache2로 분리했다.
 - explicit experiment base commit과 현재 preflight state를 test에 반영하고 invalid Git stubs를 설치됨으로 보지 않는다.

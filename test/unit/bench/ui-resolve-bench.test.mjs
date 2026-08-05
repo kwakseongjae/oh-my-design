@@ -22,6 +22,10 @@ import {
   remoteExecutionHoldReason,
   validateLocalBrowserEvidenceAdmission,
 } from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
+import {
+  discoverPlanDiagnosticWorkspaces,
+  replayPlanDiagnostic,
+} from "../../../benchmarks/ui-resolve-bench/scripts/replay-plan-diagnostic.mjs";
 
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const prepare = join(repoRoot, "benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs");
@@ -7531,5 +7535,66 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
     expect(summary.resolved_failures.map((failure) => failure.count)).toEqual([1, 1, 2]);
     expect(summary.claim_boundary).toContain("no competitor behavior claim");
+  });
+
+  it("recovers frozen plan evidence only from the exact canonical pre-edit source", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-plan-replay-"));
+    try {
+      const repo = join(root, "repo");
+      const workspace = join(root, "u19-fixture", "cell-a");
+      const starter = join(repo, "benchmarks/ui-resolve-bench/tasks/task-a/starter");
+      mkdirSync(starter, { recursive: true });
+      mkdirSync(join(workspace, ".omd"), { recursive: true });
+      mkdirSync(join(workspace, ".benchmark"), { recursive: true });
+      writeFileSync(join(starter, "index.html"), "<main>canonical</main>");
+      writeFileSync(join(workspace, ".benchmark/matrix-cell.json"), JSON.stringify({
+        task_id: "task-a",
+        variant_id: "candidate-a",
+      }));
+      writeFileSync(join(workspace, ".omd/reflow-closure.json"), JSON.stringify({
+        pre_edit_product_snapshot: { sha256: "not-the-canonical-hash" },
+        pre_edit_fit_plan: { state: "measured", attempts: 1 },
+      }));
+
+      expect(discoverPlanDiagnosticWorkspaces(root)).toEqual([workspace]);
+      expect(replayPlanDiagnostic(workspace, { repoRoot: repo })).toMatchObject({
+        status: "source-not-recoverable",
+        reason: "task-starter-does-not-match-pre-edit-snapshot",
+        snapshot_sha256: "not-the-canonical-hash",
+      });
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it("records the provider-zero frozen plan replay without inventing a patch-required case", () => {
+    const summary = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/frozen-plan-diagnostic-replay-1.9.653/SUMMARY.final.json",
+    ), "utf8"));
+    expect(summary).toMatchObject({
+      product_version: "1.9.653",
+      status: "PROVIDER_ZERO_FROZEN_PLAN_REPLAY_ACCEPTED",
+      provider_calls: 0,
+      model_exposures: 0,
+      mutation_allowed: false,
+      selected_frozen_matrices: {
+        artifacts: 10,
+        counts: {
+          ready: 6,
+          irreconcilable: 3,
+          "not-diagnosable": 1,
+          "patch-required": 0,
+        },
+        all_snapshot_hashes_match_canonical_starters: true,
+        all_current_products_changed_after_snapshot: true,
+      },
+    });
+    expect(summary.outcomes).toHaveLength(10);
+    expect(summary.patch_required_coverage).toMatchObject({
+      historical_observation: "not observed in the recoverable frozen sample",
+      synthetic_history_claimed: false,
+    });
+    expect(summary.claim_boundary).toContain("does not establish candidate transfer");
   });
 });

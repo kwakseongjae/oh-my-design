@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `10c00158` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.652 benchmark test baseline hygiene
+- 기준 커밋: `96df4a58` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.653 frozen measured-plan diagnostic replay
 
 ## 지금 (현재 위치)
+
+- 1.9.653은 canonical starter hash가 pre-edit snapshot과 일치하는 frozen artifact만 현재 complete diagnostic으로 non-mutating 재생한다. 현재 수정된 product는 진단 입력에서 제외한다.
+- 선택된5 matrix/10 artifact 결과는 ready6, irreconcilable3, measured plan 부재1, historical patch-required0이다. 더 넓은 `/private/tmp/u19*` 90개 스캔도 patch-required0이며 없는 사례를 합성 historical evidence로 꾸미지 않았다.
+- focused bench unit222 pass/optional skip2/fail0, provider0/model exposure0이다. 다음은 이 verdict를 사람이 재해석하지 않아도 되는 fail-closed operator decision packet으로 만들고, patch-required unit fixture에서 browser 재측정·모델 추측 없이 한 번 적용되는지 검증하는 1.9.654다.
 
 - 1.9.652는 benchmark full unit의 기존4 red를 provider0으로 정리했다. historical experiment는 explicit base commit과 비교하고, Luna Max test는 runtime-pinned preflight-open 상태를 반영한다.
 - empty `.git` stub만 남은 optional Taste/UI UX Pro Max caches는 valid work tree가 아니면 설치 test를 skip한다. 최종 220 pass / 2 optional skip / 0 fail이며 product regression은 없었다.
