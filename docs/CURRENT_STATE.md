@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.688` remote-reopen checkpoint (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.688 authorized remote Skill Lift reopen
+- 기준 커밋: 현재 `1.9.689` depot Skill Lift result checkpoint (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.689 Luna depot Skill Lift complete, no promotion
 
 ## 지금 (현재 위치)
+
+- 1.9.689 fresh Luna/high six-cell 실행이 6/6 valid로 끝났다. Raw는 UI resolved0/3·scores73/73/79, exact current OmD는2/3·85/85/75로 paired W/T/L=2/1/0, observed resolved lift+66.7pp다.
+- 95% paired lower bound0, Reliability@3=0, OmD proof compliant1/3라 `verified-skill-lift`는 open→partial로 전진했지만 frontier gate pass=false다. 2.0 readiness는 partial4/open3/external2/pass0으로 계속 차단된다.
+- OmD mean wall289.7s vs Raw327.1s(0.886x), mean tokens592.0k vs486.1k(1.218x), total provider tokens3,234,125다. 단일 task/model의 descriptive evidence일 뿐 public 우위 주장이 아니다.
+- OmD third failure는 Chrome remote-debugging permission에서 사용자 개입을 요청하고 product edit0으로 끝난 valid harness failure다. 다음은 browser permission을 human checkpoint로 바꾸지 않고 source-backed bounded repair를 계속하는 1.9.690 skill 계약 수리다.
 
 - 1.9.688은 이전 `local_only_mode`를 standing user authorization에 맞게 해제하되, non-local action class와 active gate를 감사 가능한 필드로 제한한다. 현재 허용 범위는 `remote-model-execution`의 `verified-skill-lift` 1개다.
 - boundary auditor는 historical local-only pause와 새 remote-authorized mode를 모두 검증하며 unauthorized gate 실행을 거부한다. 2.0 readiness는 여전히 pass0/9이고 실행 허용 자체는 승격 증거가 아니다.
@@ -3237,9 +3242,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.688 checkpoint를 커밋하고 `/private/tmp/omd-investigational-product-matrix-1.9.688`을 current epoch로 fresh prepare한다.
-2. prepared-admission parity와 exact current OmD source attestation을 확인한다.
-3. Luna/high six cells를 serial/no-retry/fixed-pacing으로 실행하고 objective/package admission 뒤 readiness를 갱신한다.
+1. `omd:apply`가 non-interactive browser permission/attach failure에서 사용자를 부르지 않도록 contract를 수리한다.
+2. known baseline failure가 있으면 source-backed bounded edit+existing deterministic closure를 계속하고 browser proof만 unresolved로 분리한다.
+3. focused/full acceptance 뒤 exact repaired skill을 새 commit/hash로 pin하고 fresh transfer task에서 재검증한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

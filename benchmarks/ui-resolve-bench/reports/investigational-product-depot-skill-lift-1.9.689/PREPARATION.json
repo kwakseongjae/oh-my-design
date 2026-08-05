@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1",
+  "status": "PREPARED_PROVIDER_ZERO",
+  "output_root": "/private/tmp/omd-investigational-product-matrix-1.9.689",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "locked_plan_sha256": "3babf1fa0ac2cca4eb10fa2c57ca9981a17f8a44c112ccf3a9829af6278fa791",
+  "preparation_state_sha256": "398eb0173bba851669f9a764789657aff0690e0c4a5ab6fa907226a4eab8b91e",
+  "normalization": {
+    "task_prompt_product_runtime_model_effort_timeout": "6/6",
+    "objective_evaluator": "6/6",
+    "untouched_product_trees": 6
+  },
+  "source_attestation": {
+    "source_commit": "b109d4133ee94303058cb3b97469a5fb2813624f",
+    "skill_sha256": "cd1e35c17c13770843d221118b4ac5aa9afabf62fe1ff4f38e50f46aefce3682",
+    "publishable": true
+  },
+  "execution_admission": {"allowed": true, "execution_artifacts_absent_before_run": true}
+}

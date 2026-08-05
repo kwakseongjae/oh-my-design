@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.689 Luna depot Skill Lift
+- six cells6/6 valid; Raw0/3(73/73/79), OmD2/3(85/85/75), paired2W1T0L다.
+- lift CI lower0·Reliability@3 0·proof1/3라 gate는 partial이며 promotion false다.
+- 총3,234,125 tokens; 다음은 browser permission human-request failure를 skill에서 제거한다.
+
 ## 2026-08-05 (Codex) · 1.9.688 remote Skill Lift reopen
 - local-only 해석을 해제하고 remote-model/verified-skill-lift만 명시적으로 허용했다.
 - auditor가 local pause와 authorized execution을 모두 fail-close하며 2.0 pass는 여전히0/9다.

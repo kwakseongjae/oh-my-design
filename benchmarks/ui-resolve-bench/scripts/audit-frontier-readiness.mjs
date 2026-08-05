@@ -16,7 +16,7 @@ const EXPECTED_GATE_IDS = [
   "routing-ownership-reverify",
 ];
 const EXPECTED_PASS_EVIDENCE = {
-  "verified-skill-lift": ["benchmarks/ui-resolve-bench/reports/investigational-product-depot-comparison-plan-1.9.680/PREPARATION.json", "/execution_admission/allowed", true],
+  "verified-skill-lift": ["benchmarks/ui-resolve-bench/reports/investigational-product-depot-skill-lift-1.9.689/SUMMARY.final.json", "/frontier_gate_pass", true],
   "three-model-positive-lift": ["benchmarks/ui-resolve-bench/reports/three-model-transfer-1.9.6/SUMMARY.final.json", "/benchmark_status", "Verified"],
   "harness-pareto": ["benchmarks/ui-resolve-bench/reports/harness-efficiency-replacement-1.9.22/SUMMARY.final.json", "/frontier_gate_pass", true],
   "hidden-task-coverage": ["benchmarks/ui-resolve-bench/reports/hidden-task-coverage-audit-1.9.682/COVERAGE.json", "/gate_pass", true],
