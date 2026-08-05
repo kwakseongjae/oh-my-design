@@ -7386,4 +7386,59 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ]);
     expect(plan.cells.every((cell) => cell.timeout_seconds === 900)).toBe(true);
   });
+
+  it("prepares six equal untouched airworthiness cells without spending a provider call", () => {
+    const preparation = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/airworthiness-complete-plan-diagnostic-luna-1.9.646/PREPARATION.json",
+    ), "utf8"));
+    expect(preparation).toMatchObject({
+      product_version: "1.9.649",
+      status: "PREPARED_PROVIDER_ZERO_REMOTE_EXECUTION_DEFERRED",
+      provider_calls: 0,
+      model_exposures: 0,
+      scheduled_cells: 6,
+      prepared_cells: 6,
+      equality_attestation: {
+        core_prompt_equal: 6,
+        starter_equal: 6,
+        product_tree_equal: 6,
+        runtime_equal: 6,
+        model_equal: 6,
+        effort_equal: 6,
+        timeout_equal: 6,
+      },
+      source_attestation: {
+        control: {
+          commit: "e4b0c890ccdcc1e736cc70babcfbc1a5b72b7391",
+          detached: true,
+          clean: true,
+        },
+        candidate: {
+          commit: "7df5be63beff5083265e0013f2f51f72e8c4bef9",
+          detached: true,
+          clean: true,
+        },
+      },
+      local_in_app_preflight: {
+        surface: "codex-in-app-browser",
+        authentication_required: false,
+        counts_as_model_transfer: false,
+      },
+      execution_hold: {
+        remote_execution_authorized: false,
+        next_cell_when_reauthorized: "luna-air-r1-control",
+        max_new_cells: 1,
+        retry: false,
+        prepared_workspaces_must_remain_untouched: true,
+      },
+    });
+    expect(preparation.equality_attestation.product_tree_sha256).toBe(
+      preparation.equality_attestation.starter_sha256,
+    );
+    expect(preparation.source_attestation.control.prepared_skill_sha256).not.toBe(
+      preparation.source_attestation.candidate.prepared_skill_sha256,
+    );
+    expect(preparation.claim_boundary).toContain("no model has seen the task");
+  });
 });

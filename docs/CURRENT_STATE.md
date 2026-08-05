@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `59d26122` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.648 airworthiness executable matrix lock
+- 기준 커밋: `22867767` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.649 airworthiness exact-cell preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.649는 `/private/tmp/u19648-vendors` exact detached clean control/candidate와 `/private/tmp/u19648` six untouched cells를 provider0/model exposure0으로 준비했다.
+- prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이며 locked plan/state/source hashes를 기록했다. 1.9.647 인앱 검수는 starter preflight일 뿐 transfer가 아니다.
+- remote execution은 명시적으로 hold되어 있고 six cells는 untouched로 유지한다. 다음은 provider-free 2.0.0 작업을 로컬+인앱 브라우저로 계속한다.
 
 - 1.9.648은 airworthiness complete-diagnostic schema0.3 matrix를 C/T/T/C/C/T, Luna/high, timeout900, pacing120, no-retry로 잠갔다. 상태는 `locked-local-preparation-only-remote-execution-deferred`이며 실행은 금지다.
 - exact task/control/candidate와 complete diagnosis 1회+reconcile 1회, UI/proof/plan3/3 계약을 유지했다. 1.9.647 인앱 브라우저 검수를 local preflight로 연결하되 model transfer 증거로 간주하지 않는다.

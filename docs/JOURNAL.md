@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.649 airworthiness exact-cell preparation
+- exact detached clean sources와 six untouched cells를 provider0/model exposure0으로 준비했다.
+- prompt/starter/product/runtime/model/effort/timeout equality6/6과 source/plan/state hashes를 고정했다.
+- local in-app preflight는 starter evidence일 뿐 transfer가 아니며 remote execution은 hold다.
+- 다음은 six cells를 보존하고 provider-free 2.0.0 로컬 작업을 계속한다.
+
 ## 2026-08-05 (Codex) · 1.9.648 airworthiness executable matrix lock
 - schema0.3 C/T/T/C/C/T, Luna/high, 900s/120s/no-retry matrix를 exact pins로 잠갔다.
 - complete diagnosis/reconcile 각1회와 UI/proof/plan3/3 계약을 유지했다.
