@@ -1,9 +1,10 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
   buildRoutedPrompt,
   loadWorkflowManifest,
+  runWorkflows,
   selectWorkflow,
   selectWorkflowDecision,
 } from '../../../src/cli/workflows.js';
@@ -82,6 +83,40 @@ describe('omd workflows', () => {
       reason: 'change-intent-without-surface',
       ambiguous: true,
     });
+  });
+
+  it('keeps JSON backward compatible while exposing the machine-readable decision', async () => {
+    const output: string[] = [];
+    const log = vi.spyOn(console, 'log').mockImplementation((value = '') => output.push(String(value)));
+    try {
+      await expect(runWorkflows('Make it better', { json: true })).resolves.toBe(0);
+    } finally {
+      log.mockRestore();
+    }
+    const parsed = JSON.parse(output.join('\n'));
+    expect(parsed.selected_workflow).toBe('repair-existing-ui');
+    expect(parsed.selected_workflow_decision).toEqual({
+      workflow_id: 'repair-existing-ui',
+      confidence: 'low',
+      reason: 'default-repair-fallback',
+      matched_signals: [],
+      ambiguous: true,
+    });
+  });
+
+  it('shows a scope hint only for ambiguous interactive routing', async () => {
+    const output: string[] = [];
+    const log = vi.spyOn(console, 'log').mockImplementation((value = '') => output.push(String(value)));
+    try {
+      await expect(runWorkflows('Make it better', { lang: 'en' })).resolves.toBe(0);
+      expect(output.join('\n')).toContain('Routing confidence low');
+      output.length = 0;
+      await expect(runWorkflows('Use DESIGN.md to fix the existing pricing page', { lang: 'en' }))
+        .resolves.toBe(0);
+      expect(output.join('\n')).not.toContain('Routing confidence');
+    } finally {
+      log.mockRestore();
+    }
   });
 
   it('does not promote advisory prose or post-tool feedback as host enforcement', () => {

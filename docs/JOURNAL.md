@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.668 workflow routing distribution acceptance
+- built workflows/route CLI의 legacy JSON+structured decision 호환을 검증했다.
+- ambiguous에만 scope hint, unambiguous에는 warning 없음 계약을 닫았다.
+- provider0/model0; provider-free routing lane 완료다.
+
 ## 2026-08-05 (Codex) · 1.9.667 workflow routing confidence
 - router가 confidence/reason/signals/ambiguity를 구조화해 반환하도록 확장했다.
 - 불명확한 fallback은 low/medium으로 노출하고 interactive CLI에만 범위 힌트를 낸다.
