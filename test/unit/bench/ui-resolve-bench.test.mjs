@@ -17,6 +17,7 @@ import { renderManagedHook } from "../../../src/cli/hook-contract.ts";
 import { treeManifest } from "../../../benchmarks/ui-resolve-bench/scripts/_lib.mjs";
 import { evaluateApprovalDecisionObservation } from "../../../benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs";
 import { validateTaskContract } from "../../../benchmarks/ui-resolve-bench/scripts/task-contract.mjs";
+import { validateLocalBrowserEvidence } from "../../../benchmarks/ui-resolve-bench/scripts/validate-local-browser-evidence.mjs";
 
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const prepare = join(repoRoot, "benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs");
@@ -7440,5 +7441,31 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       preparation.source_attestation.candidate.prepared_skill_sha256,
     );
     expect(preparation.claim_boundary).toContain("no model has seen the task");
+  });
+
+  it("fails closed when in-app viewport clamping is mislabeled as actual 200 percent proof", () => {
+    const report = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/airworthiness-local-inapp-validation-1.9.647/LOCAL-BROWSER-VALIDATION.json",
+    ), "utf8"));
+    expect(validateLocalBrowserEvidence(report)).toMatchObject({
+      valid: true,
+      provider_calls: 0,
+      model_exposures: 0,
+      responsive_baseline: "red-confirmed",
+      transfer_claim_allowed: false,
+    });
+
+    const mislabeled = structuredClone(report);
+    delete mislabeled.observations[3].acceptance_use;
+    expect(() => validateLocalBrowserEvidence(mislabeled)).toThrow(
+      /must fail closed when the requested viewport is clamped/,
+    );
+
+    const falseTransfer = structuredClone(report);
+    falseTransfer.claim_boundary = "candidate transfer is proven";
+    expect(() => validateLocalBrowserEvidence(falseTransfer)).toThrow(
+      /must not be promoted as model transfer/,
+    );
   });
 });

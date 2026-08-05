@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.650 deterministic local-browser evidence gate
+- 인앱 브라우저 report의 필수 conditions/overflow/interaction/cross-check를 provider-free 검증한다.
+- viewport clamp를 actual200% 증거로 오인하거나 starter evidence를 model transfer로 승격하면 fail-closed한다.
+- focused test/CLI replay/lint green; remote hold와 six untouched cells는 유지했다.
+- 다음은 local evidence gate를 matrix admission에 연결한다.
+
 ## 2026-08-05 (Codex) · 1.9.649 airworthiness exact-cell preparation
 - exact detached clean sources와 six untouched cells를 provider0/model exposure0으로 준비했다.
 - prompt/starter/product/runtime/model/effort/timeout equality6/6과 source/plan/state hashes를 고정했다.

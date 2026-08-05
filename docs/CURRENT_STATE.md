@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `22867767` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.649 airworthiness exact-cell preparation
+- 기준 커밋: `b95b947c` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.650 deterministic local-browser evidence gate
 
 ## 지금 (현재 위치)
+
+- 1.9.650은 Codex 인앱 브라우저 관측 report를 provider-free로 검증하는 `validate-local-browser-evidence.mjs`를 추가했다. desktop/390/320 필수 조건, measured overflow 일치, interaction/cross-check, transfer claim 금지를 fail-closed한다.
+- 요청 viewport가 실제 CSS viewport로 clamp되면 `not an actual-200-percent substitute` 경계가 없을 때 거부한다. airworthiness report replay와 negative fixtures가 green이며 lint도 green이다.
+- 다음은 이 local evidence gate를 prepared-matrix admission에 연결하되 remote execution hold는 계속 유지하는 단계다.
 
 - 1.9.649는 `/private/tmp/u19648-vendors` exact detached clean control/candidate와 `/private/tmp/u19648` six untouched cells를 provider0/model exposure0으로 준비했다.
 - prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이며 locked plan/state/source hashes를 기록했다. 1.9.647 인앱 검수는 starter preflight일 뿐 transfer가 아니다.
