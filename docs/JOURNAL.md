@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.681 machine frontier readiness
+- 2.0 normative 9 gates를 machine snapshot+auditor로 잠그고 증거 경로17개를 확인했다.
+- 현재 pass0/partial3/open4/external2로 `BLOCK_2_0_PROMOTION`이다.
+- 9/9 evidence-backed pass 전에는 승격 불가; full732 pass·3 skip이고 all-pass도 사용자 release decision까지만 허용한다.
+
 ## 2026-08-05 (Codex) · 1.9.680 unseen holdout comparison preparation
 - frozen depot task를 Raw/current OmD 각3회 balanced matrix로 provider0 준비했다.
 - 6/6 untouched·모든 normalization green, exact OmD source와 evaluator epoch를 고정했다.

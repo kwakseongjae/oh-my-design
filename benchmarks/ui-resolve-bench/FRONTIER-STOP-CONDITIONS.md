@@ -85,24 +85,25 @@ payload remains a hard pause condition.
 
 | Gate | Current evidence | State |
 |---|---|---|
-| Verified Skill Lift | Small internal slices; fresh Cursor lane prepared | Open |
-| Positive lift across 3 model families | Compatibility smoke only; no verified lower bound | Open |
-| Harness Pareto | 1.9.22 internal 3-task repeated matrix, non-dominated | Partial |
-| 24 hidden tasks | Task plan exists; calibrated/executed coverage is smaller | Open |
-| 10 runs/task + downloadable packages | Aggregator/package path exists; scale incomplete | Open |
-| 10-practitioner blind review | Assignment/gallery machinery exists; panel absent | External |
-| Independent task audit <5% | Audit rules exist; independent audit absent | External |
-| Activation + seven-day reuse | Day-8 technical survivability 4/4 channels and 20/20 locale routes; behavioral lift remains unobserved | Partial |
-| Routing/ownership/reverify | Product contract implemented; broader repeated proof pending | Partial |
+| Verified Skill Lift | 1.9.679 unseen task frozen; 1.9.680 balanced Raw/OmD six-cell matrix admitted, execution deferred | Open |
+| Positive lift across 3 model families | Historical calibration only; no current-epoch three-family lower bound | Open |
+| Harness Pareto | 1.9.22 internal 3-task repeated matrix, non-dominated; frontier transfer incomplete | Partial |
+| 24 hidden tasks | 78 task directories exist; hidden, independent-audit, five-locale Verified denominator is not locked | Open |
+| 10 runs/task + downloadable packages | Aggregator/export path exists; 24×10 current-epoch scale incomplete | Open |
+| 10-practitioner blind review | Assignment/gallery/operations machinery exists; panel absent | External |
+| Independent task audit <5% | Contract and deterministic audit rules exist; independent auditor sample absent | External |
+| Activation + seven-day reuse | Day-8 technical survivability 4/4 channels, 20/20 locale routes, and local first-loop pass; behavioral lift unobserved | Partial |
+| Routing/ownership/reverify | Product contract and local four-channel loop pass; broader model-runtime proof pending | Partial |
 
 ## Immediate queue
 
-1. Run the fresh schema `0.5` / suite `ui-resolve-v0.2` Cursor Grok 4.5 Skill
-   Lift replacement as 1.9.47.
-2. If the bounded Skill Lift passes, calibrate `composer-2.5` on the same
-   controller and evaluator; otherwise repair only the newly named cluster.
-3. Expand within-runtime model slices before cross-runtime presentation.
-4. Fill the 12-task internal pack and mutation/audit blockers.
-5. Run Preview scale (12 tasks × 5) before Verified scale (24 × 10).
-6. Stop at the first external-only gate package and hand the user a concrete
-   recruitment/deployment checklist, not another internal patch number.
+1. Run `audit-frontier-readiness.mjs` at every checkpoint and refuse `2.0.0`
+   promotion while any normative gate is not `pass`.
+2. Preserve the 1.9.679 task and 1.9.680 six-cell matrix unchanged. Under the
+   current no-remote rule, do not synthesize scored Skill Lift.
+3. Close provider-free gaps in hidden-task denominator, package completeness,
+   mutation coverage, and public claim boundaries.
+4. When remote execution is allowed again, reprepare under the then-current
+   evaluator epoch and run Preview scale before Verified 24×10 scale.
+5. Stop at the first genuinely external-only package and hand the user a
+   concrete practitioner/auditor or production-observation checklist.

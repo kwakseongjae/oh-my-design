@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.680` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.680 unseen holdout normalized comparison preparation
+- 기준 커밋: 현재 `1.9.681` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.681 machine-audited 2.0 frontier readiness
 
 ## 지금 (현재 위치)
+
+- 1.9.681은 2.0.0의 normative 9 gates를 machine-readable snapshot과 fail-close auditor로 고정했다. gate 누락/중복/개명, 잘못된 status, missing/absolute/repo-escaping evidence를 거부하고 9/9 pass 전에는 promotion을 차단한다.
+- 현재 판정은 pass0/partial3/open4/external2, evidence ref17개 존재, `BLOCK_2_0_PROMOTION`이다. all-pass가 되더라도 자동 배포가 아니라 `READY_FOR_USER_RELEASE_DECISION`까지만 허용한다.
+- 1.9.680 준비는 Skill Lift 결과로 승격되지 않았다. provider0/model0이며 focused3와 full732 pass/3 skip, lint/diff green이다. 다음 provider-free 큐는 hidden denominator·artifact completeness·mutation coverage·claim package를 닫는 것이다.
 
 - 1.9.680은 frozen investigational-product holdout을 Raw DESIGN.md/current exact `omd:apply` 각3회, 총6 cell로 balanced preregistration했다. task/prompt/starter/product/runtime/model/effort/timeout/evaluator parity가 모두 true이고 OmD는 publishable `f3c90aaf…`, skill `cd1e35c1…`에 고정됐다.
 - provider0/model0/execution0 상태로 6/6 untouched preparation과 admission을 통과했다. runner 직접 시도도 `matrix-execution-hold:remote-execution-deferred`로 실행 전에 멈췄고 재감사에서 execution artifact0을 확인했다.
