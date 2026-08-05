@@ -7654,4 +7654,36 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
     expect(summary.claim_boundary).toContain("does not prove host-model compliance");
   });
+
+  it("pins the exact guarded plan packet candidate before fresh model exposure", () => {
+    const pin = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/guarded-plan-packet-pin-1.9.656/PIN.json",
+    ), "utf8"));
+    expect(pin).toMatchObject({
+      product_version: "1.9.656",
+      status: "PINNED_PROVIDER_ZERO",
+      provider_calls: 0,
+      model_exposures: 0,
+      promotion: false,
+      candidate: {
+        system_id: "omd-guarded-plan-packet-candidate",
+        vendor_version: "omd-1.9.655",
+        source_commit: "1a3beca8279d36e10c457760e11b582e6a9a08fa",
+        source_tree: "6f17099c47cfafec8477decce8e3f6e02ec7df87",
+        skill_tree: "f3519ea2df4e9e7d32bc23c57108f2e69d90ecbf",
+      },
+      next_exposure_contract: {
+        task_must_be_genuinely_unseen: true,
+        control: "omd-complete-plan-diagnostic-candidate",
+        candidate: "omd-guarded-plan-packet-candidate",
+        claim_before_transfer: "forbidden",
+      },
+    });
+    expect(competitors.variants["omd-guarded-plan-packet-candidate"]).toMatchObject({
+      vendor_dir: "omd-1.9.655",
+      commit: "1a3beca8279d36e10c457760e11b582e6a9a08fa",
+    });
+    expect(pin.claim_boundary).toContain("not a promotion");
+  });
 });

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.656 guarded packet exact pin
+- candidate를 commit/source tree/skill tree와 source hashes로 immutable pin했다.
+- provider0/model0/promotion false이며 fresh transfer 전 우위 주장은 금지다.
+- 다음은 genuinely unseen task 생성·deterministic baseline·task pin이다.
+
 ## 2026-08-05 (Codex) · 1.9.655 guarded packet distribution acceptance
 - Claude Code/Codex/OpenCode 설치본 모두 packet skill/helper/runner를 포함한다.
 - channel frontmatter는 native adaptation, helper+runner bytes는 동일 hash로 검증했다.
