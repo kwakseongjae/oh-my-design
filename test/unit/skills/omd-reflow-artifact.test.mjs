@@ -5,6 +5,8 @@ import { chmodSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync 
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
+  applyPlanDecisionPacket,
+  createPlanDecisionPacket,
   diagnosePlanReconcile,
   deliveryMarker,
   executeStaticClosure,
@@ -220,10 +222,10 @@ describe("compact reflow artifact helper", () => {
     expect(runner).toContain("const contentWidth = context.clientWidth - paddingInline");
     expect(runner).toContain("const carrierWidth = carrier.offsetWidth");
     expect(runner).toContain("OMD_PLAN_MEASURED_RECONCILE_REQUIRED");
-    expect(runner).toContain("plan-diagnose");
-    expect(runner).toContain("complete row_groups patch");
-    expect(runner).toContain("If it returns irreconcilable, abort this run before any product edit");
-    expect(runner).toContain("plan-reconcile");
+    expect(runner).toContain("plan-packet");
+    expect(runner).toContain("operator_inputs");
+    expect(runner).toContain("If the packet verdict is irreconcilable, abort this run before any product edit");
+    expect(runner).toContain("plan-apply");
     expect(runner).toContain("context_content_width_css_px: contentWidth");
     expect(runner).not.toContain("contextRect.width - parseFloat(contextStyle.paddingLeft)");
     expect(runner).toContain("full_row: fullRow");
@@ -564,6 +566,124 @@ describe("compact reflow artifact helper", () => {
       },
     });
     expect(JSON.stringify(input)).toBe(before);
+  });
+
+  it("applies one guarded decision packet without another browser measurement or model guess", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-plan-decision-packet-"));
+    temporaryRoots.push(root);
+    const productPath = join(root, "index.html");
+    const source = '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""><span role="status">Ground review open</span></div>';
+    writeFileSync(productPath, source);
+    const input = draft();
+    input.static_closure_manifest.product_path = "index.html";
+    input.pre_edit_product_snapshot = {
+      product_path: "index.html",
+      sha256: createHash("sha256").update(source).digest("hex"),
+      source_base64: Buffer.from(source).toString("base64"),
+    };
+    for (const [index, row] of input.pre_edit_fit_plan.rows.entries()) {
+      row.measurements[1].intrinsic_text_width_css_px = 300 + index;
+      row.measurements[1].required_carrier_inner_width_css_px = 316 + index;
+    }
+
+    const packet = createPlanDecisionPacket(input);
+    expect(packet).toMatchObject({
+      verdict: "patch-required",
+      browser_rerun_allowed: false,
+      product_edit_allowed_before_apply: false,
+      action: "apply-complete-patch-and-close",
+      operator_inputs: { accessible_names: { identifier: null, status: null } },
+    });
+    expect(() => applyPlanDecisionPacket(input, packet)).toThrow(
+      /requires accessible name for row identifier/,
+    );
+
+    packet.operator_inputs.accessible_names = {
+      identifier: "Identifier comparison",
+      status: "Status comparison",
+    };
+    const previousCwd = process.cwd();
+    try {
+      process.chdir(root);
+      const closed = applyPlanDecisionPacket(input, packet);
+      expect(closed).toMatchObject({
+        pre_edit_fit_plan: { state: "measured", attempts: 1 },
+        plan_closure: { state: "closed", command: "plan-reconcile" },
+        row_groups: [
+          { id: "identifier", decision: "comparison-scroll", scroll_contract: { accessible_name: "Identifier comparison" } },
+          { id: "status", decision: "comparison-scroll", scroll_contract: { accessible_name: "Status comparison" } },
+        ],
+      });
+      expect(closed.browser_attempt).toMatchObject({ attempts: 0, outcome: "not-run" });
+      expect(diagnosePlanReconcile(closed).status).toBe("ready");
+
+      const drifted = structuredClone(input);
+      drifted.row_groups[0].longest_value = "changed-after-packet";
+      expect(() => applyPlanDecisionPacket(drifted, packet)).toThrow(
+        /does not match the current measured artifact/,
+      );
+    } finally {
+      process.chdir(previousCwd);
+    }
+  });
+
+  it("runs the guarded plan-packet and plan-apply CLI as one provider-free handoff", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-plan-packet-cli-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const packetPath = join(root, "plan-decision.json");
+    const productPath = join(root, "index.html");
+    const source = '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""><span role="status">Ground review open</span></div>';
+    writeFileSync(productPath, source);
+    const input = draft();
+    input.static_closure_manifest.product_path = "index.html";
+    input.pre_edit_product_snapshot = {
+      product_path: "index.html",
+      sha256: createHash("sha256").update(source).digest("hex"),
+      source_base64: Buffer.from(source).toString("base64"),
+    };
+    for (const [index, row] of input.pre_edit_fit_plan.rows.entries()) {
+      row.measurements[1].intrinsic_text_width_css_px = 300 + index;
+      row.measurements[1].required_carrier_inner_width_css_px = 316 + index;
+    }
+    writeFileSync(artifactPath, JSON.stringify(input));
+    const artifactBeforePacket = readFileSync(artifactPath, "utf8");
+
+    const packetStdout = execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "plan-packet",
+      artifactPath,
+      packetPath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(JSON.parse(packetStdout)).toMatchObject({
+      command: "plan-packet",
+      packet: { verdict: "patch-required", browser_rerun_allowed: false },
+    });
+    expect(readFileSync(artifactPath, "utf8")).toBe(artifactBeforePacket);
+    const packet = JSON.parse(readFileSync(packetPath, "utf8"));
+    packet.operator_inputs.accessible_names = {
+      identifier: "Identifier comparison",
+      status: "Status comparison",
+    };
+    writeFileSync(packetPath, JSON.stringify(packet));
+
+    const applyStdout = execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"),
+      "plan-apply",
+      artifactPath,
+      packetPath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(JSON.parse(applyStdout)).toMatchObject({
+      command: "plan-apply",
+      plan_closure: { state: "closed", command: "plan-reconcile" },
+    });
+    const applied = JSON.parse(readFileSync(artifactPath, "utf8"));
+    expect(applied.pre_edit_fit_plan).toMatchObject({ state: "measured", attempts: 1 });
+    expect(applied.browser_attempt).toMatchObject({ attempts: 0, outcome: "not-run" });
+    expect(applied.row_groups.map((row) => row.decision)).toEqual([
+      "comparison-scroll",
+      "comparison-scroll",
+    ]);
   });
 
   it("returns one irreconcilable verdict for a measured nested-carrier graph", () => {

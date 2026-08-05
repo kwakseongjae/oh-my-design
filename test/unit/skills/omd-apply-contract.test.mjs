@@ -118,12 +118,12 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("count_literals:");
     expect(skill).toContain("runner가 필요한 snapshot을 먼저 잠근다");
     expect(skill).toContain("OMD_PLAN_NOT_ATTEMPTED");
-    expect(skill).toContain("`plan-close|plan-reconcile` 성공 stdout");
+    expect(skill).toContain("`plan-close|plan-apply` 성공 stdout");
     expect(skill).toContain("OMD_PLAN_MEASURED_RECONCILE_REQUIRED");
-    expect(skill).toContain("`plan-diagnose`를 정확히 한 번 실행");
-    expect(skill).toContain("complete `row_groups` patch");
+    expect(skill).toContain("`plan-packet <artifact> <packet>`을 정확히 한 번 실행");
+    expect(skill).toContain("null인 `operator_inputs.accessible_names`");
     expect(skill).toContain("`irreconcilable`이면 새 row/carrier를 만들거나 제품을 수정하지 않고 run을 즉시 중단");
-    expect(skill).toContain("plan-reconcile");
+    expect(skill).toContain("plan-apply");
     expect(skill).toContain("plan_closure.state: closed");
     expect(skill).toContain("OMD_REFLOW_MODE=plan");
     expect(skill).toContain("pre_edit_fit_plan: { state: pending }");

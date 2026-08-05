@@ -702,6 +702,83 @@ export function diagnosePlanReconcile(artifact) {
   };
 }
 
+function planDecisionContextSha256(artifact) {
+  return sha256Source(JSON.stringify({
+    pre_edit_product_snapshot_sha256: artifact.pre_edit_product_snapshot?.sha256 ?? null,
+    pre_edit_fit_plan: artifact.pre_edit_fit_plan,
+    carriers: artifact.carriers,
+    row_groups: artifact.row_groups,
+  }));
+}
+
+export function createPlanDecisionPacket(artifact) {
+  const diagnosis = diagnosePlanReconcile(artifact);
+  const requiredAccessibleNames = diagnosis.complete_patch.row_groups
+    .filter((row) => row.requires_existing_accessible_name)
+    .map((row) => row.row_id);
+  return {
+    schema_version: "0.1",
+    kind: "omd-plan-reconcile-decision",
+    verdict: diagnosis.status,
+    artifact_guard_sha256: planDecisionContextSha256(artifact),
+    diagnosis_sha256: sha256Source(JSON.stringify(diagnosis)),
+    browser_rerun_allowed: false,
+    product_edit_allowed_before_apply: false,
+    action: diagnosis.status === "ready"
+      ? "close-measured-plan"
+      : diagnosis.status === "patch-required"
+        ? "apply-complete-patch-and-close"
+        : "discard-run",
+    complete_patch: diagnosis.complete_patch,
+    issues: diagnosis.issues,
+    operator_inputs: {
+      accessible_names: Object.fromEntries(requiredAccessibleNames.map((rowId) => [rowId, null])),
+    },
+  };
+}
+
+export function applyPlanDecisionPacket(artifact, packet) {
+  if (packet?.schema_version !== "0.1" || packet?.kind !== "omd-plan-reconcile-decision") {
+    fail("plan decision packet must use schema 0.1 and kind omd-plan-reconcile-decision");
+  }
+  if (packet.artifact_guard_sha256 !== planDecisionContextSha256(artifact)) {
+    fail("plan decision packet does not match the current measured artifact");
+  }
+  const diagnosis = diagnosePlanReconcile(artifact);
+  if (
+    packet.verdict !== diagnosis.status
+    || packet.diagnosis_sha256 !== sha256Source(JSON.stringify(diagnosis))
+    || JSON.stringify(packet.complete_patch) !== JSON.stringify(diagnosis.complete_patch)
+    || JSON.stringify(packet.issues) !== JSON.stringify(diagnosis.issues)
+  ) fail("plan decision packet diagnosis or complete patch was modified");
+  if (diagnosis.status === "irreconcilable") {
+    fail("irreconcilable plan decision packets require discarding the run");
+  }
+  if (diagnosis.status === "ready") return closePlan(artifact, "plan-reconcile");
+
+  const patched = structuredClone(artifact);
+  const rows = new Map(patched.row_groups.map((row) => [row.id, row]));
+  for (const patch of diagnosis.complete_patch.row_groups) {
+    const row = rows.get(patch.row_id);
+    if (!row) fail(`plan decision packet row ${patch.row_id} is missing`);
+    const suppliedName = packet.operator_inputs?.accessible_names?.[patch.row_id];
+    const accessibleName = patch.scroll_contract.accessible_name ?? suppliedName;
+    if (typeof accessibleName !== "string" || !accessibleName.trim()) {
+      fail(`plan decision packet requires accessible name for row ${patch.row_id}`);
+    }
+    row.decision = patch.decision;
+    row.scroll_contract = {
+      ...patch.scroll_contract,
+      accessible_name: accessibleName.trim(),
+    };
+  }
+  const postPatchDiagnosis = diagnosePlanReconcile(patched);
+  if (postPatchDiagnosis.status !== "ready") {
+    fail(`plan decision packet did not produce one ready measured plan: ${JSON.stringify(postPatchDiagnosis)}`);
+  }
+  return closePlan(patched, "plan-reconcile");
+}
+
 function validateFitStrategy(row) {
   if (!FIT_STRATEGIES.has(row.decision)) {
     fail(`row group ${row.id} decision must be ${[...FIT_STRATEGIES].join(", ")}`);
@@ -1334,9 +1411,9 @@ function staticEditGuardrails(artifact) {
 }
 
 function main() {
-  const [command, rawPath, rawProductPath] = process.argv.slice(2);
-  if (!command || !rawPath || !["snapshot", "lock", "plan-close", "plan-reconcile", "plan-diagnose", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
-    console.error("usage: reflow-artifact.mjs <snapshot|lock|plan-close|plan-reconcile|plan-diagnose|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <artifact.json> [product-file]");
+  const [command, rawPath, rawAuxiliaryPath] = process.argv.slice(2);
+  if (!command || !rawPath || !["snapshot", "lock", "plan-close", "plan-reconcile", "plan-diagnose", "plan-packet", "plan-apply", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
+    console.error("usage: reflow-artifact.mjs <snapshot|lock|plan-close|plan-reconcile|plan-diagnose|plan-packet|plan-apply|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <artifact.json> [product-or-packet-file]");
     process.exitCode = 2;
     return;
   }
@@ -1376,6 +1453,17 @@ function main() {
     assertPreEditProductUnchanged(artifact);
     console.log(JSON.stringify({ command, path, diagnosis: diagnosePlanReconcile(artifact) }));
     return;
+  } else if (command === "plan-packet") {
+    assertPreEditProductUnchanged(artifact);
+    const packet = createPlanDecisionPacket(artifact);
+    if (rawAuxiliaryPath) writeFileSync(resolve(rawAuxiliaryPath), `${JSON.stringify(packet, null, 2)}\n`, "utf8");
+    console.log(JSON.stringify({ command, path, packet_path: rawAuxiliaryPath ? resolve(rawAuxiliaryPath) : null, packet }));
+    return;
+  } else if (command === "plan-apply") {
+    if (!rawAuxiliaryPath) fail("plan-apply requires the decision packet file");
+    assertPreEditProductUnchanged(artifact);
+    const packet = JSON.parse(readFileSync(resolve(rawAuxiliaryPath), "utf8"));
+    result = applyPlanDecisionPacket(artifact, packet);
   } else if (command === "plan-reconcile") {
     const diagnosis = diagnosePlanReconcile(artifact);
     if (diagnosis.status !== "ready") {
@@ -1385,9 +1473,9 @@ function main() {
   } else if (command === "plan-close") {
     result = closePlan(artifact, command);
   } else if (command === "static-close") {
-    if (!rawProductPath) fail("static-close requires the locked product file");
+    if (!rawAuxiliaryPath) fail("static-close requires the locked product file");
     validatePlanClosure(artifact);
-    const productPath = resolve(rawProductPath);
+    const productPath = resolve(rawAuxiliaryPath);
     result = executeStaticClosure(artifact, {
       productPath,
       source: readFileSync(productPath, "utf8"),
@@ -1414,7 +1502,7 @@ function main() {
     unresolved_known_failures: result.known_failure_closure?.unresolved ?? null,
     static_closure: result.static_closure,
     plan_closure: result.plan_closure ?? null,
-    static_edit_guardrails: ["lock", "plan-close", "plan-reconcile"].includes(command) ? staticEditGuardrails(result) : undefined,
+    static_edit_guardrails: ["lock", "plan-close", "plan-reconcile", "plan-apply"].includes(command) ? staticEditGuardrails(result) : undefined,
   }));
   if (command === "static-close" && result.static_closure.state !== "passed") process.exitCode = 1;
   if (["finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) console.log(deliveryMarker(result));

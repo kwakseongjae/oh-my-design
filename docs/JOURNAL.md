@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.654 guarded operator decision packet
+- 수동 complete-patch 번역을 hash-guarded `plan-packet` → `plan-apply`로 교체했다.
+- operator는 null accessible name만 채울 수 있고 drift/tamper/irreconcilable은 fail-closed한다.
+- CLI proof는 measured1 유지/browser0/model0/plan closed; focused62+bench223 pass/skip2다.
+- 다음은 provider-free distribution acceptance와 exact source pin이다.
+
 ## 2026-08-05 (Codex) · 1.9.653 frozen plan diagnostic replay
 - canonical pre-edit snapshot을 복구할 수 있는 frozen10 artifacts만 non-mutating 재생했다.
 - ready6/irreconcilable3/not-diagnosable1이며 historical patch-required는0이라 그대로 기록했다.

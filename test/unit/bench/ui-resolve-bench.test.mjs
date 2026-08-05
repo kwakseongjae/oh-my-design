@@ -7597,4 +7597,34 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
     expect(summary.claim_boundary).toContain("does not establish candidate transfer");
   });
+
+  it("records one guarded operator packet application without browser or model reuse", () => {
+    const repair = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/operator-plan-decision-packet-1.9.654/REPAIR.json",
+    ), "utf8"));
+    expect(repair).toMatchObject({
+      product_version: "1.9.654",
+      status: "PROVIDER_FREE_REPAIR_GREEN",
+      provider_calls: 0,
+      model_exposures: 0,
+      repair: {
+        packet_command: "plan-packet",
+        apply_command: "plan-apply",
+        only_editable_operator_field: "operator_inputs.accessible_names",
+        browser_rerun_allowed: false,
+        product_edit_before_closed_plan_allowed: false,
+      },
+      cli_proof: {
+        input_plan_attempts: 1,
+        artifact_mutated_by_packet_command: false,
+        apply_invocations: 1,
+        output_plan_attempts: 1,
+        output_plan_closure: "closed",
+        post_packet_browser_attempts: 0,
+        model_guesses: 0,
+      },
+    });
+    expect(repair.claim_boundary).toContain("controlled patch-required fixture");
+  });
 });

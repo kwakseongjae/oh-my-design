@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `96df4a58` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.653 frozen measured-plan diagnostic replay
+- 기준 커밋: `de296734` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.654 guarded operator plan decision packet
 
 ## 지금 (현재 위치)
+
+- 1.9.654는 complete diagnosis를 수동 row patch로 옮기던 마지막 추측 구간을 `plan-packet` → `plan-apply`로 교체했다. packet은 artifact context/diagnosis/complete patch hash를 잠그며 operator가 바꿀 수 있는 값은 null인 accessible name뿐이다.
+- controlled patch-required CLI replay는 packet 생성 artifact mutation0, apply1, measured attempt1 유지, 추가 browser0/model0, plan closure closed다. drift/tamper/irreconcilable은 fail-closed한다.
+- focused62 pass, full bench223 pass/optional skip2/fail0, py compile/lint/diff green이다. 다음은 exact source pin 후 이 candidate에 노출되지 않은 task에서 transfer 여부를 보기 전, packet UX와 error taxonomy가 host skill 설치본에도 동일하게 전달되는지 provider-free distribution acceptance를 닫는 1.9.655다.
 
 - 1.9.653은 canonical starter hash가 pre-edit snapshot과 일치하는 frozen artifact만 현재 complete diagnostic으로 non-mutating 재생한다. 현재 수정된 product는 진단 입력에서 제외한다.
 - 선택된5 matrix/10 artifact 결과는 ready6, irreconcilable3, measured plan 부재1, historical patch-required0이다. 더 넓은 `/private/tmp/u19*` 90개 스캔도 patch-required0이며 없는 사례를 합성 historical evidence로 꾸미지 않았다.
