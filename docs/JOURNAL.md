@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.651 local evidence admission + remote hold
+- prepared runner가 provider 전에 local in-app evidence를 검증하도록 admission을 연결했다.
+- `remote-execution-deferred` status는 실행 hold이며 exact prepared root도 provider0에서 예상 중단했다.
+- focused test/lint/diff green, six cells untouched다.
+- 다음은 provider-free 2.0.0 local repair queue다.
+
 ## 2026-08-05 (Codex) · 1.9.650 deterministic local-browser evidence gate
 - 인앱 브라우저 report의 필수 conditions/overflow/interaction/cross-check를 provider-free 검증한다.
 - viewport clamp를 actual200% 증거로 오인하거나 starter evidence를 model transfer로 승격하면 fail-closed한다.

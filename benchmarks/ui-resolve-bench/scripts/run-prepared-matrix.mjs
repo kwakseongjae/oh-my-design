@@ -42,6 +42,7 @@ import {
   inspectCodexCliRuntime,
   installedCodexPolicyToolModeStopReason,
 } from "./codex-tool-mode-contract.mjs";
+import { validateLocalBrowserEvidence } from "./validate-local-browser-evidence.mjs";
 
 const MAX_BUFFER = 64 * 1024 * 1024;
 const PACING_MAX_OVERSHOOT_MS = 5_000;
@@ -50,6 +51,34 @@ const STOP_SENTINEL = "STOP";
 const INVOCATION_LEASE = ".matrix-execution.lock";
 const REPO_ROOT = resolve(fileURLToPath(new URL("../../..", import.meta.url)));
 const BENCHMARK_RUNTIME_IGNORE = ["browser-harness", "codex-home"];
+
+export function validateLocalBrowserEvidenceAdmission(
+  plan,
+  { evidenceRoot = REPO_ROOT } = {},
+) {
+  const validationId = plan?.browser_execution_contract?.local_in_app_preflight;
+  if (!validationId) return { status: "not-required", transfer_claim_allowed: false };
+  const reportPath = join(
+    resolve(evidenceRoot),
+    "benchmarks/ui-resolve-bench/reports",
+    validationId,
+    "LOCAL-BROWSER-VALIDATION.json",
+  );
+  if (!existsSync(reportPath)) {
+    throw new Error(`runtime-preflight-failure:local-in-app-evidence-missing:${validationId}`);
+  }
+  const result = validateLocalBrowserEvidence(readJson(reportPath));
+  if (result.validation_id !== validationId) {
+    throw new Error(`runtime-preflight-failure:local-in-app-evidence-id-mismatch:${validationId}`);
+  }
+  return { status: "ready", report_path: reportPath, ...result };
+}
+
+export function remoteExecutionHoldReason(plan) {
+  return String(plan?.status ?? "").includes("remote-execution-deferred")
+    ? "matrix-execution-hold:remote-execution-deferred"
+    : null;
+}
 
 export function benchmarkArtifactManifest(benchmarkDir) {
   return treeManifest(benchmarkDir, { ignore: BENCHMARK_RUNTIME_IGNORE });
@@ -1040,6 +1069,9 @@ function executePreparedMatrixWithLease(root, {
   }
   const plan = readJson(lockedPlanPath);
   const preparation = readJson(preparationStatePath);
+  validateLocalBrowserEvidenceAdmission(plan);
+  const executionHold = remoteExecutionHoldReason(plan);
+  if (executionHold) throw new Error(executionHold);
   const lockedPlanSha256 = fileSha256(lockedPlanPath);
   const preparationStateSha256 = fileSha256(preparationStatePath);
   if (preparation.status !== "prepared" || preparation.prepared_cells !== plan.cells.length) {

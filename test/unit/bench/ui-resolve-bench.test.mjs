@@ -18,6 +18,10 @@ import { treeManifest } from "../../../benchmarks/ui-resolve-bench/scripts/_lib.
 import { evaluateApprovalDecisionObservation } from "../../../benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs";
 import { validateTaskContract } from "../../../benchmarks/ui-resolve-bench/scripts/task-contract.mjs";
 import { validateLocalBrowserEvidence } from "../../../benchmarks/ui-resolve-bench/scripts/validate-local-browser-evidence.mjs";
+import {
+  remoteExecutionHoldReason,
+  validateLocalBrowserEvidenceAdmission,
+} from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
 
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const prepare = join(repoRoot, "benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs");
@@ -7467,5 +7471,23 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(() => validateLocalBrowserEvidence(falseTransfer)).toThrow(
       /must not be promoted as model transfer/,
     );
+  });
+
+  it("admits the local in-app evidence but keeps the prepared remote matrix on hold", () => {
+    const plan = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/airworthiness-complete-plan-diagnostic-luna-1.9.646/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(validateLocalBrowserEvidenceAdmission(plan, { evidenceRoot: repoRoot })).toMatchObject({
+      status: "ready",
+      validation_id: "airworthiness-local-inapp-validation-1.9.647",
+      provider_calls: 0,
+      model_exposures: 0,
+      transfer_claim_allowed: false,
+    });
+    expect(remoteExecutionHoldReason(plan)).toBe(
+      "matrix-execution-hold:remote-execution-deferred",
+    );
+    expect(remoteExecutionHoldReason({ ...plan, status: "prepared-for-explicit-execution" })).toBeNull();
   });
 });

@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `b95b947c` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.650 deterministic local-browser evidence gate
+- 기준 커밋: `7c866f20` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.651 local evidence admission + remote hold
 
 ## 지금 (현재 위치)
+
+- 1.9.651은 prepared runner가 model/provider 진입 전에 1.9.647 local in-app evidence를 결정론 검증하도록 admission을 연결했다. validation id/path/hash contract가 어긋나면 즉시 중단한다.
+- matrix status의 `remote-execution-deferred`를 실행 hold로 강제한다. 실제 `/private/tmp/u19648 --max-new-cells1` dry admission은 provider0에서 `matrix-execution-hold:remote-execution-deferred`로 예상 중단했다.
+- focused test/lint/diff green이며 six cells는 untouched다. 다음은 2.0.0 provider-free local repair queue로 복귀한다.
 
 - 1.9.650은 Codex 인앱 브라우저 관측 report를 provider-free로 검증하는 `validate-local-browser-evidence.mjs`를 추가했다. desktop/390/320 필수 조건, measured overflow 일치, interaction/cross-check, transfer claim 금지를 fail-closed한다.
 - 요청 viewport가 실제 CSS viewport로 clamp되면 `not an actual-200-percent substitute` 경계가 없을 때 거부한다. airworthiness report replay와 negative fixtures가 green이며 lint도 green이다.
