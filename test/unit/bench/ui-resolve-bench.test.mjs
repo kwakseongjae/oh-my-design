@@ -7302,4 +7302,51 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     symlinkSync("/tmp", join(root, "escape"));
     expect(() => treeManifest(root)).toThrow(/symlink is not allowed/);
   });
+
+  it("records the frozen airworthiness baseline through the Codex in-app browser without promoting it as model transfer", () => {
+    const report = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/airworthiness-local-inapp-validation-1.9.647/LOCAL-BROWSER-VALIDATION.json",
+    ), "utf8"));
+    expect(report).toMatchObject({
+      status: "LOCAL_IN_APP_BROWSER_VALIDATED",
+      provider_calls: 0,
+      model_exposures: 0,
+      remote_execution: "deferred-by-user",
+      browser: {
+        surface: "codex-in-app-browser",
+        authentication_required: false,
+        external_browser_used: false,
+        console_errors_or_warnings: 0,
+      },
+      interaction_check: {
+        initial_pressed: false,
+        pressed_after_click: true,
+        result: "pass",
+      },
+      cross_check: {
+        deterministic_baseline_responsive_gate: "red",
+        deterministic_baseline_accessibility_gate: "red",
+        in_app_horizontal_overflow_at_390: true,
+        in_app_horizontal_overflow_at_320: true,
+        agreement: true,
+      },
+    });
+    expect(report.observations.map((item) => item.condition)).toEqual([
+      "desktop-1440",
+      "narrow-390",
+      "mobile-320",
+      "minimum-in-app-width-probe",
+    ]);
+    expect(report.observations[0].horizontal_overflow).toBe(false);
+    expect(report.observations[1].document_scroll_width).toBeGreaterThan(
+      report.observations[1].actual_css_viewport_width,
+    );
+    expect(report.observations[2].target_text_lines).toBeGreaterThan(1);
+    expect(report.observations[3].actual_css_viewport_width).not.toBe(
+      report.observations[3].requested_viewport.width,
+    );
+    expect(report.observations[3].acceptance_use).toContain("not an actual-200-percent substitute");
+    expect(report.claim_boundary).toContain("does not measure candidate transfer");
+  });
 });

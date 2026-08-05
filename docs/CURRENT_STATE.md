@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `d2e6e03d` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.646 airworthiness complete-diagnostic preregistration
+- 기준 커밋: `8d8eba1a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.647 airworthiness local in-app validation
 
 ## 지금 (현재 위치)
+
+- 1.9.647은 frozen airworthiness starter를 Codex 인앱 브라우저에서 provider0/model exposure0으로 검수했다. desktop1440은 overflow0, narrow390/320은 scrollWidth1135로 overflow red이며 target은 각각4/10/13줄이다.
+- `Maintenance windows` pressed interaction과 console warning/error0을 확인했다. 인앱 최소 폭 probe는 요청195가 실제240으로 clamp되어 actual200% 증거로 쓰지 않았고, remote preregistration도 실행하지 않았다.
+- 다음은 원격 호출 없이 executable matrix와 exact detached six cells를 materialize/equality 검증하는 provider-zero 준비 단계다.
 
 - 1.9.646은 exact manual-reconcile control `e4b0c890...` vs complete-diagnostic candidate `7df5be63...`를 pinned airworthiness task에서 Luna/high2×3으로 provider0 사전등록했다.
 - isolated delta는 one-shot aggregate diagnosis, complete patch/irreconcilable verdict, non-ready reconcile rejection이다. 900s/120s/no-retry/concurrency1, UI/proof/plan3/3이며 diagnosis/reconcile 각 최대1회다.

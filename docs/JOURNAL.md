@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.647 airworthiness local in-app validation
+- frozen starter를 Codex 인앱 브라우저 desktop1440/390/320에서 provider0으로 검수했다.
+- desktop overflow0, narrow scrollWidth1135, target4/10/13줄로 deterministic responsive red와 일치했다.
+- pressed interaction green, console error0; 195 요청은240 clamp라 actual200 증거에서 제외했다.
+- remote prereg는 untouched; 다음 provider-zero matrix/cell materialization이다.
+
 ## 2026-08-05 (Codex) · 1.9.646 airworthiness diagnostic preregistration
 - exact manual reconcile control vs complete diagnostic candidate Luna/high2×3을 provider0 사전등록했다.
 - diagnosis/reconcile 각 최대1회, UI/proof/plan3/3, 900s/120s/no-retry다.
