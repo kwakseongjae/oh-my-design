@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.716 egress approval gate
+- Luna/high 단일 실행은 외부 전송 auto-review에서 provider 전 거부됐다.
+- provider/model exposure0이고 prepared root는 untouched다.
+- exact workspace payload와 Luna destination의 사용자 명시 승인 후에만 재개한다.
+
 ## 2026-08-06 (Codex) · 1.9.716 prepared and attested
 - fresh root는 provider/model0·untouched product로 admission을 통과했다.
 - sealed artifact/source contract/inventory hash와 provider non-mutable이 attested다.
