@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.708 fresh volcanic task
+- 미노출 volcanic gas-sampler custody task를 provider exposure0으로 잠갔다.
+- 81-task validator/mutation green; raw baseline75/85, responsive+a11y red다.
+- exact task `4dc07e93`/tree `a1d4db2f…`와 baseline hash를 report로 보존했다.
+- 다음은 exact 1.9.707 Luna/high1셀 transfer 준비·실행이다.
+
 ## 2026-08-05 (Codex) · 1.9.706/707 static-close path
 - fresh cave Luna/high는 UI85/85·revision1이고 canonical selector static-close가 성공했다.
 - 첫 helper 호출의 product path 누락이 failed static1을 만들어 proof는 red다.

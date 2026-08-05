@@ -8,6 +8,8 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.708 신규 `volcanic-gas-sampler-custody-v0.1`은 exact task commit `4dc07e93`, tree `a1d4db2f…`, provider exposure0으로 잠겼다. 5 samplers/7 sample canisters/4 intake windows와 3 states, technician toggle, form, evidence boundary를 보존한다. 81 task validator+11 mutation green이고 raw baseline75/85다.
+- 다음은 exact 1.9.707 skill을 새 task에서 Luna/high1셀·timeout720s·retry0로 검증한다. success는85/85+revision1+successful static closure1+failed0+proof compliance다. 같은 task 재실행·ranking·2.0 gate 반영은 금지다.
 - 1.9.706 exact Luna/high 단일 진단은 valid85/85, resolved=true, 491,459ms, 2,404,824 tokens다. canonical CSS packet이 exact grouped selector로 전이해 product revision1과 successful static closure1을 만들었고 user handoff0·unsupported claim0이다.
 - 그러나 첫 post-edit `static-close`에서 product path 인자를 빠뜨려 helper가 product read 전 exit1했고, 이어 path를 붙인 successful closure와 실패한 browser attempt가 발생했다. proof는 failed static1 때문에 compliance=false다. 이는 1.9.703 selector 원인의 반복이 아니므로 hard pause가 아니다.
 - 1.9.707 clean commit `8b216c5f`는 `static-close <artifact>`가 manifest의 locked `product_path`를 기본값으로 사용하게 하고 skill의 canonical command에서 별도 path 인자를 제거한다. focused112, clean full755 pass/3 skip, lint/diff green이다. 같은 cave task 재실행은 금지하며 다음 transfer는 새 provider0 task만 허용된다.

@@ -1,0 +1,13 @@
+{
+  "schema_version": "0.1",
+  "task_id": "volcanic-gas-sampler-custody-v0.1",
+  "status": "LOCKED_PROVIDER_ZERO",
+  "task_source_commit": "4dc07e93884d49d7399572caf39e67c78f52e37e",
+  "task_git_tree": "a1d4db2fd38047d6b72f5b7e091f1cfd17f08ff3",
+  "prompt_sha256": "bd28764b0ba07889d70e070c4e377f7112ee142ef56530b3ba9a313afe4e5f00",
+  "task_contract_sha256": "f380deac71a20e1f7c9b332ee93f40d7942652b707518882843dd798c9827e9b",
+  "design_sha256": "93cc840a80072a301ddfad1ed9edc13fc74e48eeb2e600eeb6688f0353b2632c",
+  "starter_index_sha256": "daf7f8283221864df0f21b4e7d9ee18d7186f347c5136110f8c79baceece3dc3",
+  "provider_calls": 0,
+  "model_exposures": 0
+}
