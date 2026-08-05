@@ -1,0 +1,12 @@
+{
+  "schema_version": "0.1",
+  "expected_runs_per_task_system": 10,
+  "allowed_run_statuses": ["complete", "failed", "timed_out"],
+  "base_artifact_roles": ["manifest", "run_result", "run_record"],
+  "status_artifact_roles": {
+    "complete": ["score", "screenshots_manifest", "product_archive"],
+    "failed": ["stderr"],
+    "timed_out": ["stderr"]
+  },
+  "claim_policy": "A run is downloadable only when every status-specific artifact exists and matches its declared hash. Verified scale additionally requires ten unique trials per task/system and a representative complete artifact in every group."
+}

@@ -3,7 +3,7 @@
   "target_version": "2.0.0",
   "baseline_version": "1.9.0",
   "required_gate_count": 9,
-  "snapshot_patch": "1.9.683",
+  "snapshot_patch": "1.9.684",
   "claim_policy": "Promotion is allowed only when all nine gates are pass and every gate retains repository evidence.",
   "gates": [
     {
@@ -38,8 +38,8 @@
       "id": "verified-scale-artifacts",
       "status": "open",
       "requirement": "Verified rows have ten runs per task and downloadable successes, failures, timeouts, manifests, and representative artifacts.",
-      "current_boundary": "Packaging and aggregation paths exist; 24 by 10 completed current-epoch rows do not.",
-      "evidence_refs": ["benchmarks/ui-resolve-bench/scripts/aggregate-results.mjs", "benchmarks/ui-resolve-bench/scripts/export-run-record.mjs"]
+      "current_boundary": "Hash-verified success/failure/timeout package admission exists; real 24 by 10 completed current-epoch groups remain zero.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/scripts/aggregate-results.mjs", "benchmarks/ui-resolve-bench/reports/downloadable-verified-package-boundary-1.9.684"]
     },
     {
       "id": "practitioner-blind-review",

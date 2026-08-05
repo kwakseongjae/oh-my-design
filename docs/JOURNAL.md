@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.684 downloadable Verified package boundary
+- complete/fail/timeout별 필수 artifact와 sha256, unique trial, representative 규칙을 fail-close했다.
+- exact 10-run positive와 partial/missing/tamper/duplicate/mislabel negative를 검증했다.
+- real Verified package0이라 gate5는 open; 다음은 mutation coverage와 readiness linkage다.
+
 ## 2026-08-05 (Codex) · 1.9.683 private hidden-task registry boundary
 - hidden bundle 원문은 repo 밖, public에는 opaque alias+hash+coverage만 남기는 registry builder를 만들었다.
 - repo source/incomplete/ineligible/duplicate를 fail-close하고 private name·prompt·path 비노출을 테스트했다.

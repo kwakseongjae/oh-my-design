@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.683` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.683 private hidden-task registry boundary
+- 기준 커밋: 현재 `1.9.684` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.684 downloadable Verified package boundary
 
 ## 지금 (현재 위치)
+
+- 1.9.684는 downloadable success/failure/timeout package를 hash-validate하는 계약/auditor를 추가했다. 모든 run은 manifest/result/record, complete는 score/screenshots manifest/product archive, fail/timeout은 stderr가 필수다.
+- task/system/trial 중복을 차단하고 Verified group은 exact trials1–10+complete representative가 있어야 한다. positive10-run fixture와 partial/missing/tamper/duplicate/misleading representative negative가 통과했다.
+- real Verified groups packaged0이라 gate5는 open이다. focused3 pass/lint/diff green, provider0/model0이다. 다음 provider-free 큐는 evaluator/package mutation coverage와 gate snapshot 연동이다.
 
 - 1.9.683은 hidden task 원문을 repo 밖 private root에 유지하면서 public에는 opaque alias+bundle/contract hash+locale/dimensions만 남기는 commitment registry builder를 추가했다.
 - repo 내부 source, incomplete/ineligible bundle, unsupported locale, duplicate commitment를 거부한다. positive tests에서 task name/prompt/source path가 public registry에 없음을 확인했다.
