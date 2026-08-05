@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import {
   buildRoutedPrompt,
   loadWorkflowManifest,
+  normalizeWorkflowLanguage,
   runWorkflows,
   selectWorkflow,
   selectWorkflowDecision,
@@ -21,7 +22,28 @@ describe('omd workflows', () => {
       expect(workflow.stages.length).toBeGreaterThan(2);
       expect(workflow.prompt_en.length).toBeGreaterThan(30);
       expect(workflow.prompt_ko.length).toBeGreaterThan(20);
+      for (const locale of ['ja', 'zh-CN', 'zh-TW'] as const) {
+        expect(workflow.locales[locale].label.length).toBeGreaterThan(3);
+        expect(workflow.locales[locale].prompt.length).toBeGreaterThan(20);
+        expect(workflow.locales[locale].route_suffix.length).toBeGreaterThan(20);
+      }
     }
+    expect(manifest.locale_contract).toEqual({
+      source_locale: 'ko',
+      source_revision: 'workflow-capabilities-ko-v1',
+      supported_locales: ['en', 'ko', 'ja', 'zh-CN', 'zh-TW'],
+    });
+  });
+
+  it('normalizes all five supported locale flags without falling back', () => {
+    expect(normalizeWorkflowLanguage('en')).toBe('en');
+    expect(normalizeWorkflowLanguage('ko')).toBe('ko');
+    expect(normalizeWorkflowLanguage('ja')).toBe('ja');
+    expect(normalizeWorkflowLanguage('zh-cn')).toBe('zh-CN');
+    expect(normalizeWorkflowLanguage('zh_Hans')).toBe('zh-CN');
+    expect(normalizeWorkflowLanguage('zh-tw')).toBe('zh-TW');
+    expect(normalizeWorkflowLanguage('zh_Hant')).toBe('zh-TW');
+    expect(normalizeWorkflowLanguage('fr')).toBeNull();
   });
 
   it.each([
@@ -117,6 +139,29 @@ describe('omd workflows', () => {
     } finally {
       log.mockRestore();
     }
+  });
+
+  it.each([
+    ['ja', 'OmDの作業フロー', 'AIコーディングツールに入力', '既存UIを改善'],
+    ['zh-CN', 'OmD 工作流程', 'AI 编程助手', '改进现有界面'],
+    ['zh-TW', 'OmD 工作流程', 'AI 程式助理', '改善現有介面'],
+  ] as const)('prints independently adapted %s workflow copy', async (lang, heading, agentTerm, label) => {
+    const output: string[] = [];
+    const log = vi.spyOn(console, 'log').mockImplementation((value = '') => output.push(String(value)));
+    try {
+      await expect(runWorkflows('Use DESIGN.md to fix the existing pricing page', { lang }))
+        .resolves.toBe(0);
+    } finally {
+      log.mockRestore();
+    }
+    const rendered = output.join('\n');
+    expect(rendered).toContain(heading);
+    expect(rendered).toContain(agentTerm);
+    expect(rendered).toContain(label);
+    expect(rendered).toContain('DESIGN.md');
+    expect(rendered).toContain('320px');
+    expect(rendered).toContain('200%');
+    expect(rendered).not.toContain('Paste inside your coding agent');
   });
 
   it('does not promote advisory prose or post-tool feedback as host enforcement', () => {

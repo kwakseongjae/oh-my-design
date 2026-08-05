@@ -367,6 +367,10 @@ function coreIssues(
         !isJsonObject(workflows.execution_assurance.benchmark_controller) ||
         workflows.execution_assurance.benchmark_controller.enforcement !== 'promotion-report' ||
         workflows.execution_assurance.benchmark_controller.execution_blocking !== false ||
+        !isJsonObject(workflows.locale_contract) ||
+        workflows.locale_contract.source_locale !== 'ko' ||
+        typeof workflows.locale_contract.source_revision !== 'string' ||
+        JSON.stringify(workflows.locale_contract.supported_locales) !== JSON.stringify(['en', 'ko', 'ja', 'zh-CN', 'zh-TW']) ||
         !Array.isArray(workflows.workflows) ||
         workflows.workflows.length === 0 ||
         workflows.workflows.some(
@@ -374,7 +378,8 @@ function coreIssues(
             !isJsonObject(workflow) ||
             typeof workflow.id !== 'string' ||
             typeof workflow.entry_skill !== 'string' ||
-            !Array.isArray(workflow.stages),
+            !Array.isArray(workflow.stages) ||
+            !hasCompleteWorkflowLocales(workflow.locales),
         )
       ) {
         issues.push('workflow-capabilities.json has an invalid workflow contract');
@@ -488,6 +493,17 @@ type JsonObject = Record<string, unknown>;
 
 function isJsonObject(value: unknown): value is JsonObject {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function hasCompleteWorkflowLocales(value: unknown): boolean {
+  if (!isJsonObject(value)) return false;
+  return ['ja', 'zh-CN', 'zh-TW'].every((locale) => {
+    const copy = value[locale];
+    return isJsonObject(copy) &&
+      typeof copy.label === 'string' &&
+      typeof copy.prompt === 'string' &&
+      typeof copy.route_suffix === 'string';
+  });
 }
 
 const CLAUDE_HOOK_EVENTS: Record<(typeof REQUIRED_CLAUDE_HOOKS)[number], string> = {

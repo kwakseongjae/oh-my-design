@@ -15,11 +15,23 @@ export interface WorkflowDefinition {
   prompt_ko: string;
   route_suffix_en: string;
   route_suffix_ko: string;
+  locales: Record<'ja' | 'zh-CN' | 'zh-TW', {
+    label: string;
+    prompt: string;
+    route_suffix: string;
+  }>;
 }
+
+export type WorkflowLanguage = 'en' | 'ko' | 'ja' | 'zh-CN' | 'zh-TW';
 
 export interface WorkflowManifest {
   schema_version: number;
   product_version: string;
+  locale_contract: {
+    source_locale: 'ko';
+    source_revision: string;
+    supported_locales: WorkflowLanguage[];
+  };
   principles: string[];
   execution_assurance: {
     contract_version: number;
@@ -73,7 +85,7 @@ export interface WorkflowManifest {
 
 export interface WorkflowOptions {
   json?: boolean;
-  lang?: 'en' | 'ko';
+  lang?: WorkflowLanguage;
 }
 
 export interface WorkflowDecision {
@@ -192,24 +204,79 @@ export function selectWorkflow(task: string, manifest = loadWorkflowManifest()):
   return selectWorkflowDecision(task, manifest).workflow;
 }
 
-function promptFor(workflow: WorkflowDefinition, lang: 'en' | 'ko'): string {
-  return lang === 'ko' ? workflow.prompt_ko : workflow.prompt_en;
+export function normalizeWorkflowLanguage(value: string): WorkflowLanguage | null {
+  const normalized = value.trim().toLocaleLowerCase();
+  if (normalized === 'en' || normalized === 'ko' || normalized === 'ja') return normalized;
+  if (normalized === 'zh-cn' || normalized === 'zh_hans' || normalized === 'zh-hans') return 'zh-CN';
+  if (normalized === 'zh-tw' || normalized === 'zh_hant' || normalized === 'zh-hant') return 'zh-TW';
+  return null;
+}
+
+function localizedWorkflowCopy(workflow: WorkflowDefinition, lang: WorkflowLanguage) {
+  if (lang === 'en') return { label: workflow.label, prompt: workflow.prompt_en, routeSuffix: workflow.route_suffix_en };
+  if (lang === 'ko') return { label: workflow.label_ko, prompt: workflow.prompt_ko, routeSuffix: workflow.route_suffix_ko };
+  const copy = workflow.locales[lang];
+  return { label: copy.label, prompt: copy.prompt, routeSuffix: copy.route_suffix };
+}
+
+function promptFor(workflow: WorkflowDefinition, lang: WorkflowLanguage): string {
+  return localizedWorkflowCopy(workflow, lang).prompt;
 }
 
 export function buildRoutedPrompt(
   task: string,
   workflow: WorkflowDefinition,
-  lang: 'en' | 'ko',
+  lang: WorkflowLanguage,
 ): string {
   const normalizedTask = task.trim().replace(/[.!?。！？]+$/, '');
-  const suffix = lang === 'ko' ? workflow.route_suffix_ko : workflow.route_suffix_en;
+  const suffix = localizedWorkflowCopy(workflow, lang).routeSuffix;
   return `${normalizedTask}. ${suffix}`;
 }
 
-function printWorkflow(workflow: WorkflowDefinition, lang: 'en' | 'ko', task?: string): void {
-  const label = lang === 'ko' ? workflow.label_ko : workflow.label;
+const CHROME: Record<WorkflowLanguage, {
+  heading: string;
+  paste: string;
+  terminal: string;
+  ambiguous: (confidence: string) => string;
+}> = {
+  en: {
+    heading: 'OmD workflows',
+    paste: 'Paste these prompts into Claude Code, Codex, OpenCode, or Cursor — not your terminal.',
+    terminal: 'Use the terminal only for setup and diagnosis: npx oh-my-design-cli@latest · omd doctor',
+    ambiguous: (confidence) => `Routing confidence ${confidence}: treating this as an existing UI repair. Name new surface, audit only, localization, or DESIGN.md setup for a more exact route.`,
+  },
+  ko: {
+    heading: 'OmD 작업 경로',
+    paste: '아래 문장은 터미널이 아니라 Claude Code, Codex, OpenCode 또는 Cursor 대화창에 입력하세요.',
+    terminal: '터미널은 설치와 진단에만 사용: npx oh-my-design-cli@latest · omd doctor',
+    ambiguous: (confidence) => `경로 확신도 ${confidence}: 기존 UI 개선으로 처리합니다. 새 화면·검수만·현지화·DESIGN.md 구축 중 원하는 범위를 문장에 넣으면 더 정확해집니다.`,
+  },
+  ja: {
+    heading: 'OmDの作業フロー',
+    paste: '以下の依頼文はターミナルではなく、Claude Code、Codex、OpenCode、Cursorのチャットに入力してください。',
+    terminal: 'ターミナルはセットアップと診断にのみ使用します: npx oh-my-design-cli@latest · omd doctor',
+    ambiguous: (confidence) => `判定の確度は${confidence}です。既存UIの改善として進めます。新規画面、確認のみ、ローカライズ、DESIGN.mdの作成など、目的を依頼文に加えると正確に選べます。`,
+  },
+  'zh-CN': {
+    heading: 'OmD 工作流程',
+    paste: '请把下面的任务说明发给 Claude Code、Codex、OpenCode 或 Cursor，不要粘贴到终端。',
+    terminal: '终端只用于安装和诊断：npx oh-my-design-cli@latest · omd doctor',
+    ambiguous: (confidence) => `当前路由置信度为 ${confidence}，将按改进现有界面处理。请注明新建页面、仅检查、本地化或建立 DESIGN.md，以便选择更准确的流程。`,
+  },
+  'zh-TW': {
+    heading: 'OmD 工作流程',
+    paste: '請把下方工作說明傳給 Claude Code、Codex、OpenCode 或 Cursor，不要貼到終端機。',
+    terminal: '終端機只用於安裝與診斷：npx oh-my-design-cli@latest · omd doctor',
+    ambiguous: (confidence) => `目前的流程判定信心為 ${confidence}，將以改善現有介面處理。請註明新增頁面、只做檢查、在地化或建立 DESIGN.md，系統就能選擇更準確的流程。`,
+  },
+};
+
+function printWorkflow(workflow: WorkflowDefinition, lang: WorkflowLanguage, task?: string): void {
+  const copy = localizedWorkflowCopy(workflow, lang);
+  const pasteLabel = lang === 'ko' ? 'AI 코딩 도구에 입력:' : lang === 'ja' ? 'AIコーディングツールに入力:' : lang === 'zh-CN' ? '发送给 AI 编程助手：' : lang === 'zh-TW' ? '傳給 AI 程式助理：' : 'Paste inside your coding agent:';
+  const label = copy.label;
   console.log(`${pc.bold(label)}  ${pc.dim(workflow.id)}`);
-  console.log(`  ${pc.dim(lang === 'ko' ? '에이전트 안에서 입력:' : 'Paste inside your coding agent:')}`);
+  console.log(`  ${pc.dim(pasteLabel)}`);
   console.log(`  ${pc.cyan(task ? buildRoutedPrompt(task, workflow, lang) : promptFor(workflow, lang))}`);
   console.log(`  ${pc.dim(`path: ${workflow.entry_skill} → ${workflow.stages.join(' → ')}`)}`);
 }
@@ -235,26 +302,18 @@ export async function runWorkflows(task?: string, opts: WorkflowOptions = {}): P
     return 0;
   }
 
-  console.log(pc.bold(lang === 'ko' ? 'OmD 작업 경로' : 'OmD workflows'));
-  console.log(pc.dim(
-    lang === 'ko'
-      ? '아래 문장은 터미널이 아니라 Claude Code, Codex, OpenCode 또는 Cursor 대화창에 입력하세요.'
-      : 'Paste these prompts into Claude Code, Codex, OpenCode, or Cursor — not your terminal.',
-  ));
+  console.log(pc.bold(CHROME[lang].heading));
+  console.log(pc.dim(CHROME[lang].paste));
   console.log('');
 
   if (selected) {
     printWorkflow(selected, lang, task);
     console.log('');
     if (decision?.ambiguous) {
-      console.log(pc.yellow(lang === 'ko'
-        ? `경로 확신도 ${decision.confidence}: 기존 UI 개선으로 처리합니다. 새 화면·검수만·현지화·DESIGN.md 구축 중 원하는 범위를 문장에 넣으면 더 정확해집니다.`
-        : `Routing confidence ${decision.confidence}: treating this as an existing UI repair. Name new surface, audit only, localization, or DESIGN.md setup for a more exact route.`));
+      console.log(pc.yellow(CHROME[lang].ambiguous(decision.confidence)));
       console.log('');
     }
-    console.log(pc.dim(lang === 'ko'
-      ? '터미널은 설치와 진단에만 사용: npx oh-my-design-cli@latest · omd doctor'
-      : 'Use the terminal only for setup and diagnosis: npx oh-my-design-cli@latest · omd doctor'));
+    console.log(pc.dim(CHROME[lang].terminal));
     return 0;
   }
 

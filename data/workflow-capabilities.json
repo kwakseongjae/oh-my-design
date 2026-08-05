@@ -1,6 +1,11 @@
 {
   "schema_version": 1,
   "product_version": "1.9.18-candidate",
+  "locale_contract": {
+    "source_locale": "ko",
+    "source_revision": "workflow-capabilities-ko-v1",
+    "supported_locales": ["en", "ko", "ja", "zh-CN", "zh-TW"]
+  },
   "principles": [
     "natural-language-first",
     "smallest-capable-workflow",
@@ -149,7 +154,24 @@
       "prompt_en": "Improve the existing pricing page using our DESIGN.md. Preserve behavior-bearing controls and states, implement the smallest high-impact changes, then verify the same route at desktop, mobile, 320px, and 200% zoom.",
       "prompt_ko": "기존 가격 페이지를 DESIGN.md에 맞게 개선해줘. 동작을 가진 control과 state를 보존하고 효과가 큰 최소 변경을 구현한 뒤 같은 경로를 데스크톱·모바일·320px·200% zoom에서 다시 검증해줘.",
       "route_suffix_en": "Use our DESIGN.md, lock the observable behavior contract before editing, implement the smallest high-impact changes, then reverify the same route, states, contrast, 320px, and 200% zoom.",
-      "route_suffix_ko": "DESIGN.md를 적용하고 편집 전에 관찰 가능한 동작 계약을 잠가. 효과가 큰 최소 변경을 구현한 뒤 같은 경로·viewport·state에서 contrast·320px·200% zoom을 다시 검증해줘."
+      "route_suffix_ko": "DESIGN.md를 적용하고 편집 전에 관찰 가능한 동작 계약을 잠가. 효과가 큰 최소 변경을 구현한 뒤 같은 경로·viewport·state에서 contrast·320px·200% zoom을 다시 검증해줘.",
+      "locales": {
+        "ja": {
+          "label": "既存UIを改善",
+          "prompt": "既存の料金ページをDESIGN.mdに沿って改善してください。操作できる要素と状態を維持し、効果の大きい変更だけを実装したうえで、同じ画面をデスクトップ、モバイル、320px、200%表示で確認してください。",
+          "route_suffix": "DESIGN.mdを基準に、編集前に画面の動作を固定してください。効果の大きい変更だけを実装し、同じ画面と状態でコントラスト、320px、200%表示を再確認してください。"
+        },
+        "zh-CN": {
+          "label": "改进现有界面",
+          "prompt": "按照 DESIGN.md 改进现有定价页面。保留控件行为和页面状态，只实现影响最大的必要修改，然后在桌面端、移动端、320px 和 200% 缩放下检查同一页面。",
+          "route_suffix": "以 DESIGN.md 为依据，修改前先锁定可观察的交互行为。只实现影响最大的必要修改，再检查同一页面和状态下的对比度、320px 与 200% 缩放。"
+        },
+        "zh-TW": {
+          "label": "改善現有介面",
+          "prompt": "依照 DESIGN.md 改善現有定價頁面。保留控制項行為與頁面狀態，只實作影響最大的必要修改，再於桌面、行動裝置、320px 與 200% 縮放下檢查同一頁面。",
+          "route_suffix": "以 DESIGN.md 為依據，修改前先鎖定可觀察的互動行為。只實作影響最大的必要修改，再檢查同一頁面與狀態下的對比、320px 與 200% 縮放。"
+        }
+      }
     },
     {
       "id": "audit-existing-ui",
@@ -162,7 +184,24 @@
       "prompt_en": "Audit the existing onboarding route. Separate AI-slop patterns, measurable defects, and valid design preferences. Do not change code.",
       "prompt_ko": "기존 온보딩 경로를 검수해줘. AI slop 패턴, 측정 가능한 결함, 유효한 디자인 취향을 구분하고 코드는 바꾸지 마.",
       "route_suffix_en": "Separate AI-slop patterns, measurable defects, and valid design preferences. Cite evidence and do not change code.",
-      "route_suffix_ko": "AI slop 패턴, 측정 가능한 결함, 유효한 디자인 취향을 구분하고 근거를 남겨. 코드는 바꾸지 마."
+      "route_suffix_ko": "AI slop 패턴, 측정 가능한 결함, 유효한 디자인 취향을 구분하고 근거를 남겨. 코드는 바꾸지 마.",
+      "locales": {
+        "ja": {
+          "label": "コードを変更せずにUIを確認",
+          "prompt": "既存のオンボーディング画面を確認してください。AI生成UIに偏りやすい表現、測定できる不具合、妥当なデザイン上の選択を分け、コードは変更しないでください。",
+          "route_suffix": "AI生成UIに偏りやすい表現、測定できる不具合、妥当なデザイン上の選択を分けて根拠を示してください。コードは変更しないでください。"
+        },
+        "zh-CN": {
+          "label": "只检查现有界面",
+          "prompt": "检查现有引导流程。区分常见的 AI 生成界面模式、可测量的缺陷和合理的设计选择，不要修改代码。",
+          "route_suffix": "区分常见的 AI 生成界面模式、可测量的缺陷和合理的设计选择，附上依据，不要修改代码。"
+        },
+        "zh-TW": {
+          "label": "只檢查現有介面",
+          "prompt": "檢查現有的新手引導流程。區分常見的 AI 生成介面模式、可測量的缺陷與合理的設計選擇，不要修改程式碼。",
+          "route_suffix": "區分常見的 AI 生成介面模式、可測量的缺陷與合理的設計選擇，附上依據，不要修改程式碼。"
+        }
+      }
     },
     {
       "id": "create-new-surface",
@@ -182,7 +221,24 @@
       "prompt_en": "Design and implement a new family meal-planning home screen from scratch. Use the OmD harness, stop at its required checkpoints, then integrate the approved result into the real route.",
       "prompt_ko": "가족 식단 앱의 새 홈 화면을 처음부터 디자인하고 구현해줘. OmD 하네스를 사용하고 필수 체크포인트에서 멈춘 뒤 승인된 결과를 실제 경로에 반영해줘.",
       "route_suffix_en": "Use the OmD harness, stop at every required checkpoint, then integrate the approved result into the real product route.",
-      "route_suffix_ko": "OmD 하네스를 사용하고 모든 필수 체크포인트에서 멈춘 뒤 승인된 결과를 실제 제품 경로에 반영해줘."
+      "route_suffix_ko": "OmD 하네스를 사용하고 모든 필수 체크포인트에서 멈춘 뒤 승인된 결과를 실제 제품 경로에 반영해줘.",
+      "locales": {
+        "ja": {
+          "label": "新しい製品画面を設計",
+          "prompt": "家族向け献立アプリの新しいホーム画面を一から設計し、実装してください。OmDハーネスを使い、必須チェックポイントごとに確認を待ってから、承認された内容を実際の製品画面に反映してください。",
+          "route_suffix": "OmDハーネスを使い、必須チェックポイントごとに停止してください。承認された内容だけを実際の製品画面に反映してください。"
+        },
+        "zh-CN": {
+          "label": "设计新的产品页面",
+          "prompt": "从头设计并实现家庭膳食规划应用的新首页。使用 OmD 设计流程，在每个必需检查点等待确认，再把获批结果集成到实际产品页面。",
+          "route_suffix": "使用 OmD 设计流程，在每个必需检查点等待确认，再把获批结果集成到实际产品页面。"
+        },
+        "zh-TW": {
+          "label": "設計新的產品頁面",
+          "prompt": "從零開始設計並實作家庭餐點規劃應用程式的新首頁。使用 OmD 設計流程，在每個必要檢查點等待確認，再把核准結果整合進實際產品頁面。",
+          "route_suffix": "使用 OmD 設計流程，在每個必要檢查點等待確認，再把核准結果整合進實際產品頁面。"
+        }
+      }
     },
     {
       "id": "establish-design-system",
@@ -195,7 +251,24 @@
       "prompt_en": "Set up a project-owned design system for this repository. Query the local quality-graded catalog, use non-verified matches only as context until reverified, keep unknown product facts absent, and create DESIGN.md with explicit deltas.",
       "prompt_ko": "이 저장소에 프로젝트 소유 디자인 시스템을 구축해줘. 로컬 품질 등급 카탈로그를 조회하고, 미검증 매치는 재검증 전까지 맥락으로만 사용하며, 모르는 제품 사실은 비워둔 채 명시적 차이를 담은 DESIGN.md를 만들어줘.",
       "route_suffix_en": "Query the local quality-graded catalog, use non-verified matches only as context until reverified, keep unknown product facts absent, and create a project-owned DESIGN.md with explicit deltas.",
-      "route_suffix_ko": "로컬 품질 등급 카탈로그를 조회하고 미검증 매치는 재검증 전까지 맥락으로만 사용해. 모르는 제품 사실은 비워둔 채 명시적 차이가 있는 프로젝트 소유 DESIGN.md를 만들어줘."
+      "route_suffix_ko": "로컬 품질 등급 카탈로그를 조회하고 미검증 매치는 재검증 전까지 맥락으로만 사용해. 모르는 제품 사실은 비워둔 채 명시적 차이가 있는 프로젝트 소유 DESIGN.md를 만들어줘.",
+      "locales": {
+        "ja": {
+          "label": "DESIGN.mdを作成・更新",
+          "prompt": "このリポジトリ専用のデザインシステムを整備してください。ローカルの品質評価付きカタログを検索し、未検証の候補は再確認するまで参考情報としてのみ扱ってください。不明な製品情報は補わず、プロジェクト固有の差分を記したDESIGN.mdを作成してください。",
+          "route_suffix": "ローカルの品質評価付きカタログを検索し、未検証の候補は再確認するまで参考情報としてのみ扱ってください。不明な製品情報は補わず、プロジェクト固有の差分を記したDESIGN.mdを作成してください。"
+        },
+        "zh-CN": {
+          "label": "创建或更新 DESIGN.md",
+          "prompt": "为此代码仓库建立项目专用设计系统。查询本地质量分级目录，未验证的匹配项在重新检查前只作为参考；未知的产品事实保持空缺，并在 DESIGN.md 中写明项目差异。",
+          "route_suffix": "查询本地质量分级目录，未验证的匹配项在重新检查前只作为参考。未知的产品事实保持空缺，并创建写明项目差异的 DESIGN.md。"
+        },
+        "zh-TW": {
+          "label": "建立或更新 DESIGN.md",
+          "prompt": "為這個程式碼儲存庫建立專案專用的設計系統。查詢本機的品質分級目錄，未驗證的比對結果在重新檢查前只作為參考；未知的產品資訊保持空缺，並在 DESIGN.md 中寫明專案差異。",
+          "route_suffix": "查詢本機的品質分級目錄，未驗證的比對結果在重新檢查前只作為參考。未知的產品資訊保持空缺，並建立寫明專案差異的 DESIGN.md。"
+        }
+      }
     },
     {
       "id": "localize-product-language",
@@ -208,7 +281,24 @@
       "prompt_en": "Adapt this product flow into Korean, English, Japanese, Simplified Chinese, and Traditional Chinese. Preserve facts and behavior, then verify every real locale route.",
       "prompt_ko": "이 제품 흐름을 한국어·영어·일본어·중국어 간체·번체로 현지화해줘. 사실과 동작을 보존하고 실제 locale 경로를 각각 검증해줘.",
       "route_suffix_en": "Preserve facts and behavior, adapt rather than translate literally, then verify every real locale route.",
-      "route_suffix_ko": "사실과 동작을 보존하고 직역이 아닌 현지화를 적용한 뒤 실제 locale 경로를 각각 검증해줘."
+      "route_suffix_ko": "사실과 동작을 보존하고 직역이 아닌 현지화를 적용한 뒤 실제 locale 경로를 각각 검증해줘.",
+      "locales": {
+        "ja": {
+          "label": "製品文言を各言語向けに調整",
+          "prompt": "この製品フローを韓国語、英語、日本語、簡体字中国語、繁体字中国語向けに調整してください。事実と動作を維持し、各言語の実際の製品画面を確認してください。",
+          "route_suffix": "事実と動作を維持し、直訳ではなく各言語に合う文面に整えてください。その後、各言語の実際の製品画面を確認してください。"
+        },
+        "zh-CN": {
+          "label": "调整产品语言",
+          "prompt": "将此产品流程分别适配为韩语、英语、日语、简体中文和繁体中文。保留事实与交互行为，并检查每个语言版本的实际产品页面。",
+          "route_suffix": "保留事实与交互行为，按各语言的使用习惯重新组织文案，不做逐字翻译，然后检查每个语言版本的实际产品页面。"
+        },
+        "zh-TW": {
+          "label": "調整產品語言",
+          "prompt": "將這個產品流程分別調整為韓文、英文、日文、簡體中文與繁體中文。保留事實與互動行為，並檢查每個語言版本的實際產品頁面。",
+          "route_suffix": "保留事實與互動行為，依各語言的使用習慣重新安排文案，不做逐字翻譯，再檢查每個語言版本的實際產品頁面。"
+        }
+      }
     }
   ]
 }

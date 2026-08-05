@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `60ad136a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.668 workflow routing distribution acceptance
+- 기준 커밋: `42f6a02a` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.669 five-locale workflow CLI
 
 ## 지금 (현재 위치)
+
+- 1.9.669는 workflows CLI의 언어를 EN/KO에서 EN/KO/JA/ZH-CN/ZH-TW로 확장했다. JA·간체·대만 번체는 영어 fallback이나 상호 글자 변환이 아니라 독립된 제품 문체다.
+- KO canonical revision과 supported locale manifest를 추가하고 doctor가 locale bundle 누락을 fail-close한다. DESIGN.md/skill ids/commands/320px/200% 보호 구간은 유지한다.
+- 다음은 실제 built CLI에서 다섯 flag를 모두 실행하고 설치되는 workflow-capabilities bytes/hash parity를 검증하는 1.9.670이다.
 
 - 1.9.668은 built `omd workflows`/`route` surface에서 기존 `selected_workflow`를 보존하면서 structured decision을 내보내고, ambiguous interactive 요청에만 scope hint가 보이는지 검증한다.
 - low fallback은 ambiguous, high existing-surface route는 warning 없음이며 terminal-vs-agent 안내와 route alias도 유지한다. provider0/model0이다.

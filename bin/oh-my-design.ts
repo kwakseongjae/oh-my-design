@@ -106,16 +106,17 @@ program
   .alias('route')
   .description('Show what to ask your coding agent, or route one natural-language UI task to the smallest capable OmD workflow.')
   .argument('[task]', 'Natural-language UI task to route')
-  .option('--lang <lang>', 'Output language (en | ko)', 'en')
+  .option('--lang <lang>', 'Output language (en | ko | ja | zh-CN | zh-TW)', 'en')
   .option('--json', 'Print the capability graph and selected workflow as JSON')
   .action(async (task: string | undefined, opts: { lang?: string; json?: boolean }) => {
-    if (opts.lang !== 'en' && opts.lang !== 'ko') {
-      console.error('omd workflows: --lang must be en or ko');
+    const { normalizeWorkflowLanguage, runWorkflows } = await import('../src/cli/workflows.js');
+    const lang = normalizeWorkflowLanguage(opts.lang ?? 'en');
+    if (!lang) {
+      console.error('omd workflows: --lang must be en, ko, ja, zh-CN, or zh-TW');
       process.exit(1);
     }
-    const { runWorkflows } = await import('../src/cli/workflows.js');
     const code = await runWorkflows(task, {
-      lang: opts.lang,
+      lang,
       json: opts.json,
     });
     if (code !== 0) process.exit(code);

@@ -85,8 +85,13 @@ describe('omd doctor', () => {
           : file === 'reference-quality.json'
             ? '{"count":1,"items":[{"id":"toss","status":"verified_v2"}]}'
           : file === 'workflow-capabilities.json'
-            ? JSON.stringify({
+              ? JSON.stringify({
                 schema_version: 1,
+                locale_contract: {
+                  source_locale: 'ko',
+                  source_revision: 'doctor-fixture-ko-v1',
+                  supported_locales: ['en', 'ko', 'ja', 'zh-CN', 'zh-TW'],
+                },
                 execution_assurance: {
                   contract_version: 1,
                   channels: ['claude-code', 'codex', 'opencode', 'cursor'].map((id) => ({
@@ -106,6 +111,23 @@ describe('omd doctor', () => {
                   id: 'repair-existing-ui',
                   entry_skill: 'omd:apply',
                   stages: ['inspect', 'implement', 'verify'],
+                  locales: {
+                    ja: {
+                      label: '既存UIを改善',
+                      prompt: '既存画面を点検して改善します。',
+                      route_suffix: 'DESIGN.mdに従って作業してください。',
+                    },
+                    'zh-CN': {
+                      label: '改进现有 UI',
+                      prompt: '检查并改进现有界面。',
+                      route_suffix: '请按 DESIGN.md 执行。',
+                    },
+                    'zh-TW': {
+                      label: '改善現有 UI',
+                      prompt: '檢查並改善現有畫面。',
+                      route_suffix: '請依 DESIGN.md 執行。',
+                    },
+                  },
                 }],
               })
             : '{}',
@@ -722,6 +744,20 @@ Read .claude/skills/omd-final-qa/SKILL.md.
     const opencode = report.channels.find((channel) => channel.id === 'opencode');
     expect(report.state).toBe('incomplete');
     expect(opencode?.issues).toContain('catalog mismatch: declared 2 fingerprints but items contains 1');
+  });
+
+  it('rejects an installed workflow catalog when one supported locale is incomplete', () => {
+    installProductSkills(join(root, '.opencode', 'skills'), 'opencode');
+    installCatalog(join(root, '.opencode', 'data'));
+    const workflowPath = join(root, '.opencode', 'data', 'workflow-capabilities.json');
+    const manifest = JSON.parse(readFileSync(workflowPath, 'utf8'));
+    delete manifest.workflows[0].locales['zh-TW'];
+    writeFileSync(workflowPath, JSON.stringify(manifest));
+
+    const report = collectDoctorReport({ dir: root });
+    const opencode = report.channels.find((channel) => channel.id === 'opencode');
+    expect(report.state).toBe('incomplete');
+    expect(opencode?.issues).toContain('workflow-capabilities.json has an invalid workflow contract');
   });
 
   it('requires the full sub-agent set, not only omd-master', () => {

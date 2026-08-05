@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.669 five-locale workflow CLI
+- workflows --lang을 EN/KO/JA/ZH-CN/ZH-TW로 확장하고 세 locale 원고를 독립 adaptation했다.
+- locale manifest와 doctor fail-closed validation을 추가했다.
+- provider0/model0; 다음은 built CLI와 설치 채널 hash parity다.
+
 ## 2026-08-05 (Codex) · 1.9.668 workflow routing distribution acceptance
 - built workflows/route CLI의 legacy JSON+structured decision 호환을 검증했다.
 - ambiguous에만 scope hint, unambiguous에는 warning 없음 계약을 닫았다.
