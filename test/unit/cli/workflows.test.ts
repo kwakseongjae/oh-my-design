@@ -5,6 +5,7 @@ import {
   buildRoutedPrompt,
   loadWorkflowManifest,
   selectWorkflow,
+  selectWorkflowDecision,
 } from '../../../src/cli/workflows.js';
 
 describe('omd workflows', () => {
@@ -57,6 +58,30 @@ describe('omd workflows', () => {
     expect(manifest.work_packet.repair_advisory.first_transaction)
       .toBe('targeted-acceptance-relevant-edit');
     expect(manifest.work_packet.specialist_response).toContain('first_safe_edit');
+  });
+
+  it('exposes routing confidence and ambiguity instead of hiding a fallback', () => {
+    expect(selectWorkflowDecision('DESIGN.md를 적용해서 기존 홈 화면을 고쳐줘', manifest))
+      .toMatchObject({
+        workflow: { id: 'repair-existing-ui' },
+        confidence: 'high',
+        reason: 'design-context-existing-surface-change',
+        matched_signals: ['design-system-context', 'change', 'existing-surface'],
+        ambiguous: false,
+      });
+    expect(selectWorkflowDecision('Make it better', manifest)).toMatchObject({
+      workflow: { id: 'repair-existing-ui' },
+      confidence: 'low',
+      reason: 'default-repair-fallback',
+      matched_signals: [],
+      ambiguous: true,
+    });
+    expect(selectWorkflowDecision('Please improve this', manifest)).toMatchObject({
+      workflow: { id: 'repair-existing-ui' },
+      confidence: 'medium',
+      reason: 'change-intent-without-surface',
+      ambiguous: true,
+    });
   });
 
   it('does not promote advisory prose or post-tool feedback as host enforcement', () => {

@@ -76,6 +76,14 @@ export interface WorkflowOptions {
   lang?: 'en' | 'ko';
 }
 
+export interface WorkflowDecision {
+  workflow: WorkflowDefinition;
+  confidence: 'high' | 'medium' | 'low';
+  reason: string;
+  matched_signals: string[];
+  ambiguous: boolean;
+}
+
 function bundleRoot(): string {
   let current = dirname(fileURLToPath(import.meta.url));
   for (let depth = 0; depth < 8; depth += 1) {
@@ -104,7 +112,10 @@ function includesAny(value: string, signals: string[]): boolean {
   return signals.some((signal) => value.includes(signal));
 }
 
-export function selectWorkflow(task: string, manifest = loadWorkflowManifest()): WorkflowDefinition {
+export function selectWorkflowDecision(
+  task: string,
+  manifest = loadWorkflowManifest(),
+): WorkflowDecision {
   const value = task.toLocaleLowerCase();
   const byId = (id: string): WorkflowDefinition => {
     const workflow = manifest.workflows.find((item) => item.id === id);
@@ -122,13 +133,19 @@ export function selectWorkflow(task: string, manifest = loadWorkflowManifest()):
     '现有', '現有', '当前', '當前', '页面', '頁面', '画面', '流程', '定价', '定價', '结算', '結算', '设置', '設定',
   ]);
 
-  if (includesAny(value, [
+  const localized = includesAny(value, [
     'translate', 'localize', 'localise', 'locale', '번역', '현지화', '다국어', '翻訳', 'ローカライズ', '本地化', '在地化',
-  ])) return byId('localize-product-language');
+  ]);
+  if (localized) return {
+    workflow: byId('localize-product-language'), confidence: 'high', reason: 'explicit-localization-intent', matched_signals: ['localization'], ambiguous: false,
+  };
 
-  if (includesAny(value, [
+  const newSurface = includesAny(value, [
     'from scratch', 'new surface', 'new landing', 'new home', 'prototype', '처음부터', '새 화면', '새로운 화면', '새 랜딩', '프로토타입', '一から', '新しい画面', '從頭', '新頁面',
-  ])) return byId('create-new-surface');
+  ]);
+  if (newSurface) return {
+    workflow: byId('create-new-surface'), confidence: 'high', reason: 'explicit-new-surface-intent', matched_signals: ['new-surface'], ambiguous: false,
+  };
 
   const changeRequested = includesAny(value, [
     'fix', 'improve', 'change', 'implement', 'build', 'redesign', '고쳐', '개선', '바꿔', '수정', '구현', '만들어', '直して', '改善', '実装', '修正', '改善', '實作',
@@ -142,13 +159,37 @@ export function selectWorkflow(task: string, manifest = loadWorkflowManifest()):
     '変更しない', '変更せず', '修正しない', '読み取り専用',
     '不要修改', '不修改', '不要變更', '不變更', '只读', '唯讀',
   ]);
-  if (auditRequested && (noChangeRequested || !changeRequested)) return byId('audit-existing-ui');
+  if (auditRequested && (noChangeRequested || !changeRequested)) return {
+    workflow: byId('audit-existing-ui'),
+    confidence: noChangeRequested ? 'high' : 'medium',
+    reason: noChangeRequested ? 'explicit-audit-without-change' : 'audit-without-change-signal',
+    matched_signals: ['audit', ...(noChangeRequested ? ['no-change'] : []), ...(existingSurfaceMentioned ? ['existing-surface'] : [])],
+    ambiguous: !noChangeRequested && !existingSurfaceMentioned,
+  };
 
   if (designSystemMentioned && !(changeRequested && existingSurfaceMentioned)) {
-    return byId('establish-design-system');
+    return {
+      workflow: byId('establish-design-system'), confidence: 'high', reason: 'explicit-design-system-intent', matched_signals: ['design-system'], ambiguous: false,
+    };
   }
 
-  return byId('repair-existing-ui');
+  if (changeRequested && existingSurfaceMentioned) return {
+    workflow: byId('repair-existing-ui'),
+    confidence: 'high',
+    reason: designSystemMentioned ? 'design-context-existing-surface-change' : 'explicit-existing-surface-change',
+    matched_signals: [...(designSystemMentioned ? ['design-system-context'] : []), 'change', 'existing-surface'],
+    ambiguous: false,
+  };
+  if (changeRequested) return {
+    workflow: byId('repair-existing-ui'), confidence: 'medium', reason: 'change-intent-without-surface', matched_signals: ['change'], ambiguous: true,
+  };
+  return {
+    workflow: byId('repair-existing-ui'), confidence: 'low', reason: 'default-repair-fallback', matched_signals: [], ambiguous: true,
+  };
+}
+
+export function selectWorkflow(task: string, manifest = loadWorkflowManifest()): WorkflowDefinition {
+  return selectWorkflowDecision(task, manifest).workflow;
 }
 
 function promptFor(workflow: WorkflowDefinition, lang: 'en' | 'ko'): string {
@@ -176,12 +217,20 @@ function printWorkflow(workflow: WorkflowDefinition, lang: 'en' | 'ko', task?: s
 export async function runWorkflows(task?: string, opts: WorkflowOptions = {}): Promise<number> {
   const manifest = loadWorkflowManifest();
   const lang = opts.lang ?? 'en';
-  const selected = task?.trim() ? selectWorkflow(task, manifest) : null;
+  const decision = task?.trim() ? selectWorkflowDecision(task, manifest) : null;
+  const selected = decision?.workflow ?? null;
 
   if (opts.json) {
     console.log(JSON.stringify({
       ...manifest,
       selected_workflow: selected?.id ?? null,
+      selected_workflow_decision: decision ? {
+        workflow_id: decision.workflow.id,
+        confidence: decision.confidence,
+        reason: decision.reason,
+        matched_signals: decision.matched_signals,
+        ambiguous: decision.ambiguous,
+      } : null,
     }, null, 2));
     return 0;
   }
@@ -197,6 +246,12 @@ export async function runWorkflows(task?: string, opts: WorkflowOptions = {}): P
   if (selected) {
     printWorkflow(selected, lang, task);
     console.log('');
+    if (decision?.ambiguous) {
+      console.log(pc.yellow(lang === 'ko'
+        ? `경로 확신도 ${decision.confidence}: 기존 UI 개선으로 처리합니다. 새 화면·검수만·현지화·DESIGN.md 구축 중 원하는 범위를 문장에 넣으면 더 정확해집니다.`
+        : `Routing confidence ${decision.confidence}: treating this as an existing UI repair. Name new surface, audit only, localization, or DESIGN.md setup for a more exact route.`));
+      console.log('');
+    }
     console.log(pc.dim(lang === 'ko'
       ? '터미널은 설치와 진단에만 사용: npx oh-my-design-cli@latest · omd doctor'
       : 'Use the terminal only for setup and diagnosis: npx oh-my-design-cli@latest · omd doctor'));

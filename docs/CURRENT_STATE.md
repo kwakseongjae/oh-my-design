@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `9b364123` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.666 DESIGN.md existing-surface routing precedence
+- 기준 커밋: `078158c5` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.667 workflow routing confidence
 
 ## 지금 (현재 위치)
+
+- 1.9.667은 workflow 선택을 id만 반환하던 black box에서 `{confidence, reason, matched_signals, ambiguous}` decision으로 확장한다. 기존 `selectWorkflow` API는 유지한다.
+- 명확한 DESIGN.md+기존화면 수정은 high, surface 없는 change는 medium ambiguous, 단서 없는 fallback은 low ambiguous다. JSON은 machine-readable decision을, interactive CLI는 ambiguous일 때만 범위 힌트를 낸다.
+- 다음은 packaged CLI의 JSON/text 출력과 설치 채널에서 이 decision schema가 실제로 유지되는지 provider-free distribution acceptance를 닫는 1.9.668이다.
 
 - 1.9.666은 `DESIGN.md` 언급을 무조건 `omd:init`으로 보내던 routing 오류를 고쳤다. 기존 화면의 명시적 수정은 `omd:apply`, no-change 검수는 `omd:slop-audit`가 우선한다.
 - EN/KO/JA/ZH mixed-intent 회귀 케이스를 추가하면서 명시적 design-system 생성, 신규 화면, locale 경로는 보존했다. provider0/model0이다.

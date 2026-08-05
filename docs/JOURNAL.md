@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.667 workflow routing confidence
+- router가 confidence/reason/signals/ambiguity를 구조화해 반환하도록 확장했다.
+- 불명확한 fallback은 low/medium으로 노출하고 interactive CLI에만 범위 힌트를 낸다.
+- provider0/model0; 다음은 packaged CLI distribution acceptance다.
+
 ## 2026-08-05 (Codex) · 1.9.666 DESIGN.md routing precedence
 - DESIGN.md 언급이 기존 화면 수정·검수를 omd:init으로 탈선시키던 오류를 수리했다.
 - EN/KO/JA/ZH mixed-intent는 apply/audit로, explicit system creation은 init으로 유지한다.
