@@ -1670,7 +1670,23 @@ function main() {
   } else if (command === "plan-close") {
     result = closePlan(artifact, command);
   } else if (command === "source-fallback-open") {
-    result = openSourceFallback(artifact);
+    let fallbackArtifact = artifact;
+    if (fallbackArtifact.pre_edit_product_snapshot == null) {
+      const productPath = resolve(fallbackArtifact.static_closure_manifest?.product_path ?? "");
+      if (!existsSync(productPath)) {
+        fail("source fallback requires the pre-edit product file from static_closure_manifest.product_path");
+      }
+      const source = readFileSync(productPath, "utf8");
+      fallbackArtifact = {
+        ...fallbackArtifact,
+        pre_edit_product_snapshot: productSnapshot(
+          source,
+          fallbackArtifact.static_closure_manifest.product_path,
+        ),
+      };
+      write(path, fallbackArtifact);
+    }
+    result = openSourceFallback(fallbackArtifact);
   } else if (command === "static-close") {
     if (!rawAuxiliaryPath) fail("static-close requires the locked product file");
     validatePlanClosure(artifact);

@@ -833,7 +833,7 @@ describe("compact reflow artifact helper", () => {
     expect(closed.static_closure).toMatchObject({ state: "passed", attempts: 1, failures: [] });
   });
 
-  it("rejects source fallback without a helper-captured pre-edit snapshot", () => {
+  it("captures a missing pre-edit snapshot when the browser wrapper failed before running stdin", () => {
     const root = mkdtempSync(join(tmpdir(), "omd-reflow-source-no-snapshot-"));
     temporaryRoots.push(root);
     const artifactPath = join(root, "artifact.json");
@@ -841,12 +841,15 @@ describe("compact reflow artifact helper", () => {
     input.pre_edit_fit_plan = { state: "pending" };
     writeFileSync(artifactPath, JSON.stringify(input));
     writeFileSync(join(root, "index.html"), '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""></div>');
-    const result = spawnSync(process.execPath, [
+    const result = JSON.parse(execFileSync(process.execPath, [
       join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "source-fallback-open", artifactPath,
-    ], { cwd: root, encoding: "utf8" });
-    expect(result.status).toBe(1);
-    expect(result.stderr).toContain("source fallback requires a helper-captured pre-edit product snapshot");
-    expect(result.stderr).not.toContain("TypeError");
+    ], { cwd: root, encoding: "utf8" }));
+    expect(result.source_fallback_closure).toMatchObject({ state: "opened" });
+    const captured = JSON.parse(readFileSync(artifactPath, "utf8"));
+    expect(captured.pre_edit_product_snapshot).toMatchObject({
+      product_path: "index.html",
+      sha256: createHash("sha256").update(readFileSync(join(root, "index.html"), "utf8")).digest("hex"),
+    });
   });
 
   it("fail-closes target and evidence source fallback unless each has a distinct named relationship carrier", () => {
@@ -960,14 +963,14 @@ describe("compact reflow artifact helper", () => {
     const source = '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""><span role="status">Ground review open</span></div>';
     writeFileSync(artifactPath, JSON.stringify(input));
     writeFileSync(productPath, source);
-    execFileSync(process.execPath, [
-      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "snapshot", artifactPath,
-    ], { cwd: root, encoding: "utf8" });
     const result = spawnSync(process.execPath, [
       join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "source-fallback-open", artifactPath,
     ], { cwd: root, encoding: "utf8" });
     expect(result.status).toBe(1);
     expect(result.stderr).toContain("source fallback evidence row requires one distinct named comparison-scroll carrier");
+    expect(JSON.parse(readFileSync(artifactPath, "utf8")).pre_edit_product_snapshot).toMatchObject({
+      sha256: createHash("sha256").update(source).digest("hex"),
+    });
   });
 
   it("refuses source fallback when a measured plan already exists", () => {

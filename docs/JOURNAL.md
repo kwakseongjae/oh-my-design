@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.698/699 fallback snapshot
+- Luna 진단은 weak UI81/85를 failed closure/compliance false로 정확히 차단했다.
+- browser wrapper가 stdin 전 실패해 snapshot이 없다는 다음 실행 병목을 확인했다.
+- fallback-open이 snapshot을 먼저 persist하게 했고 focused69 green; full/commit/transfer pending이다.
+
 ## 2026-08-05 (Codex) · 1.9.696/697 relationship verifier
 - Luna 진단은 fallback lifecycle proof를 통과했지만 UI는81/85로 carrier 전이가 실패했다.
 - model manifest의 규범 누락을 찾아 helper가 target/evidence carrier 구조를 직접 검증하게 했다.

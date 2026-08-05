@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.697` relationship-carrier verifier candidate (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.696 diagnostic complete, 1.9.697 focused regression green
+- 기준 커밋: 현재 `1.9.699` fallback snapshot bootstrap candidate (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.698 diagnostic complete, 1.9.699 focused regression green
 
 ## 지금 (현재 위치)
+
+- 1.9.697 clean-commit full regression은 755 pass/3 skip, lint/diff green이다.
+- 1.9.698 exact `3ec07131` Luna/high 단일 진단은 valid81/85, resolved=false다. weak UI의 static-close는 successful0/failed1/compliance=false로 바뀌어 false proof 차단은 전이됐다.
+- 다만 local browser-harness wrapper가 supplied stdin 실행 전 실패해 runner snapshot이 없었고 `source-fallback-open`도 snapshot 부재로 red가 되어 relationship contract 자체는 실행되지 않았다. model은 stamp 없이 edit했고 static-close가 이를 정직하게 거부했다.
+- 1.9.699 candidate는 `source-fallback-open` 자체가 snapshot 부재 시 현재 product를 먼저 잠그고 즉시 persist한다. 관계 artifact validation이 red여도 snapshot은 남아 artifact-only correction/retry가 가능하며 product edit은 opening stamp 전까지 금지다. focused69 green, full/clean commit/fresh transfer pending이다.
 
 - 1.9.695 clean-commit full regression은 752 pass/3 skip, lint/diff green으로 확정됐다.
 - 1.9.696 exact `5faf4830` Luna/high 단일 진단은 valid81/85, resolved=false다. helper-issued fallback opening→product revision1→successful static closure1, failed closure0, user handoff0, browser recovery0, proof compliance=true로 lifecycle 수리는 전이됐다.
@@ -3257,9 +3262,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.697 candidate full suite/lint/diff를 실행하고 clean commit으로 고정한다.
+1. 1.9.699 candidate full suite/lint/diff를 실행하고 clean commit으로 고정한다.
 2. exact repaired skill commit/hash를 fresh root에 pin한다.
-3. fresh single-arm Luna diagnostic에서 helper-stamped target/evidence carrier contract와 85/85 responsive resolution을 함께 재검증한다.
+3. fresh single-arm Luna diagnostic에서 fallback snapshot→artifact-only reconcile→opening stamp→target/evidence carrier→85/85를 재검증한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

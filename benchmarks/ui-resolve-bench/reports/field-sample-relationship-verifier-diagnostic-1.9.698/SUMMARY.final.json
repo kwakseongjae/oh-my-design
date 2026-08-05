@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.698",
+  "experiment_id": "field-sample-relationship-verifier-diagnostic-1.9.698",
+  "status": "COMPLETE_FAIL_CLOSED_SNAPSHOT_BOOTSTRAP_REOPEN",
+  "provider_calls": 1,
+  "model_exposures": 1,
+  "scheduled_cells": 1,
+  "completed_cells": 1,
+  "valid_cells": 1,
+  "model": "gpt-5.6-luna",
+  "effort": "high",
+  "source_commit": "3ec07131c579f6e7db5408ace33a2c3916df3712",
+  "skill_sha256": "cf0f53d5d1da0f8bc6c478a0f9b22b74d6dbac4768cea5f4e60c60c2f9865807",
+  "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+  "result": {
+    "ui_resolved": false,
+    "objective_score": 81,
+    "objective_max": 85,
+    "wall_time_ms": 308680,
+    "provider_tokens": 739620,
+    "critical_gate_failure": "responsive",
+    "failed_conditions": ["narrow-320", "css-zoom-surrogate-200"]
+  },
+  "proof_acceptance": {
+    "product_revision_count": 1,
+    "successful_static_closure_count": 0,
+    "failed_static_closure_count": 1,
+    "browser_recovery_count": 0,
+    "compliance_pass": false,
+    "weak_manifest_received_credit": false,
+    "fail_close_transferred": true
+  },
+  "source_fallback_opening": {
+    "browser_wrapper_failed_before_stdin": true,
+    "pre_edit_snapshot_present_after_plan_failure": false,
+    "opening_succeeded": false,
+    "failure": "source fallback requires a helper-captured pre-edit product snapshot",
+    "relationship_contract_exercised": false
+  },
+  "frontier_gate_pass": false,
+  "promotion": false,
+  "claim_boundary": "This is a single-arm diagnostic on an exposed public task. It cannot enter Skill Lift ranking or advance a 2.0 promotion gate."
+}
