@@ -3,14 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `a3656dfd` 1.9.704 canonical fallback CSS packet (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.703 Luna/high diagnostic archived, 1.9.704 clean full regression green
+- 기준 커밋: `8b216c5f` 1.9.707 manifest-default static closure (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.706 Luna/high diagnostic archived, 1.9.707 clean full regression green
 
 ## 지금 (현재 위치)
 
 - 1.9.706 exact Luna/high 단일 진단은 valid85/85, resolved=true, 491,459ms, 2,404,824 tokens다. canonical CSS packet이 exact grouped selector로 전이해 product revision1과 successful static closure1을 만들었고 user handoff0·unsupported claim0이다.
 - 그러나 첫 post-edit `static-close`에서 product path 인자를 빠뜨려 helper가 product read 전 exit1했고, 이어 path를 붙인 successful closure와 실패한 browser attempt가 발생했다. proof는 failed static1 때문에 compliance=false다. 이는 1.9.703 selector 원인의 반복이 아니므로 hard pause가 아니다.
-- 1.9.707 candidate는 `static-close <artifact>`가 manifest의 locked `product_path`를 기본값으로 사용하게 하고 skill의 canonical command에서 별도 path 인자를 제거한다. 같은 cave task 재실행은 금지하며 focused/full clean 검증 뒤 다음 fresh transfer 여부를 판단한다.
+- 1.9.707 clean commit `8b216c5f`는 `static-close <artifact>`가 manifest의 locked `product_path`를 기본값으로 사용하게 하고 skill의 canonical command에서 별도 path 인자를 제거한다. focused112, clean full755 pass/3 skip, lint/diff green이다. 같은 cave task 재실행은 금지하며 다음 transfer는 새 provider0 task만 허용된다.
 - 1.9.705 신규 `cave-climate-sensor-custody-v0.1`은 exact task commit `4bd03c7b`, tree `fe3bb646…`, provider exposure0으로 잠겼다. 5 probes/7 data cartridges/4 collection windows와 3 states를 보존하며 climate verification·calibration·integrity·acceptance·publication 추론을 금지한다. 80 task validator+11 mutation이 green이다.
 - raw DESIGN.md baseline은 75/85로 contract/state/design/evidence green, responsive/a11y red다. 좁은 화면의 fixed-width carrier, atomic fragmentation, short decision wrapping, contrast4.18이 재현됐다.
 - 1.9.706 canary는 exact task `4bd03c7b`/tree `fe3bb646…`, exact clean skill `984180ff`/hash `97b50cba…`, Luna/high1셀, timeout720s, retry0으로 준비됐다. locked plan `315fc216…`, prepared state `dd21d349…`, provider0/model exposure0이다. success는85/85+revision1+successful static closure1+failed0+proof compliance이며 같은 selector 원인 재실패 시 hard pause다.

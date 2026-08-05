@@ -8,8 +8,8 @@
 ## 2026-08-05 (Codex) · 1.9.706/707 static-close path
 - fresh cave Luna/high는 UI85/85·revision1이고 canonical selector static-close가 성공했다.
 - 첫 helper 호출의 product path 누락이 failed static1을 만들어 proof는 red다.
-- helper가 manifest의 locked product path를 기본 사용하도록 1.9.707 candidate를 구현했다.
-- 같은 task 재실행은 금지; focused/full clean 검증과 commit이 다음이다.
+- helper가 manifest의 locked product path를 기본 사용하도록 `8b216c5f`에 구현했다.
+- focused112·clean full755 pass/3 skip·lint/diff green; 다음 transfer는 fresh task만 허용된다.
 
 ## 2026-08-05 (Codex) · 1.9.705 fresh cave task
 - 미노출 cave climate-sensor custody task를 provider exposure0으로 작성·잠갔다.
