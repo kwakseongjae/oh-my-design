@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.716 sealed-admission preregistration
+- 1.9.715 non-executed root를 보존하고 새 attested root를 잠갔다.
+- task/baseline/skill/model/effort/timeout/no-retry는 그대로다.
+- provider/model exposure0이며 다음은 commit→prepare→audit→single run이다.
+
 ## 2026-08-06 (Codex) · sealed preparation admission hardening
 - admission이 sealed artifact/hash/inventory/provider immutability를 재검증하게 했다.
 - 1-byte artifact tamper를 실행 전에 거부하는 integration test를 추가했다.
