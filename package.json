@@ -59,6 +59,7 @@
     "dev": "tsup --watch",
     "start": "node dist/bin/oh-my-design.js",
     "test": "vitest run",
+    "test:activation-funnel": "npm run build && node scripts/activation/run-local-funnel.mjs",
     "test:watch": "vitest",
     "lint": "tsc --noEmit",
     "prepare": "npm run build",

@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.673",
+  "status": "LOCAL_ACTIVATION_FUNNEL_ACCEPTED",
+  "unresolved_frontier_gate": "activation-and-seven-day-reuse",
+  "bounded_hypothesis": "The packaged CLI can take every supported host from a fresh install to an unambiguous actionable repair workflow and same-surface reverify contract without a human operator or provider call.",
+  "candidate_delta": "Add a reusable built-CLI activation runner and fail-closed report validator for install, pre-DESIGN diagnosis, establish routing, deterministic DESIGN fixture, ready diagnosis, repair routing, and reverify ownership.",
+  "frozen_denominator": {
+    "channels": ["claude-code", "codex", "opencode", "cursor"],
+    "channel_locales": {
+      "claude-code": "en",
+      "codex": "ko",
+      "opencode": "zh-CN",
+      "cursor": "ja"
+    },
+    "automated_steps_per_channel": 5,
+    "human_interventions": 0,
+    "provider_calls": 0,
+    "model_exposures": 0,
+    "timeout_ms": 30000
+  },
+  "observed": {
+    "elapsed_ms": 1584,
+    "pre_design_needs_design_md": "4/4",
+    "establish_design_system_route": "4/4",
+    "post_fixture_ready": "4/4",
+    "repair_existing_ui_route": "4/4",
+    "repair_unambiguous": "4/4",
+    "same_surface_reverification_contract": "4/4"
+  },
+  "focused_test": {
+    "files": [
+      "test/unit/activation-funnel.test.mjs",
+      "test/unit/cli/activation-reuse.test.ts",
+      "test/unit/cli/workflows.test.ts"
+    ],
+    "passed": 30,
+    "failed": 0
+  },
+  "first_failure_rule": "Any channel, state transition, workflow selection, ambiguity, reverify contract, hidden human step, provider call, or over-30-second run fails the funnel.",
+  "rollback_gate": "Revert if the built CLI cannot reproduce the four-channel funnel from a clean temporary project.",
+  "claim_boundary": "The runner injects a deterministic DESIGN.md fixture. It proves install-to-actionable-workflow orchestration, not model-generated UI quality or a resolved surface.",
+  "decision": "Close the provider-free technical activation funnel. The next resolved-surface evidence must include an actual model runtime and evaluator rather than relabeling the deterministic fixture."
+}

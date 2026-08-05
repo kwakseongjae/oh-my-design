@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `4b824b20` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.672 time-compressed activation reuse
+- 기준 커밋: `9efca40b` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.673 local activation funnel
 
 ## 지금 (현재 위치)
+
+- 1.9.673은 built CLI를 사용해 4개 host에서 설치→pre-DESIGN doctor→design-system route→deterministic DESIGN fixture→ready doctor→existing-UI repair route→same-surface reverify 계약을 자동 실행한다.
+- Claude Code/EN, Codex/KO, OpenCode/ZH-CN, Cursor/JA가 4/4 통과했고 repair ambiguity0, human0, provider0, model exposure0, 최종 관측1,584ms다. validator는 channel/state/route/reverify/human/provider/30s budget을 fail-close한다.
+- deterministic fixture를 모델 생성 UI라고 부르지 않는다. provider-free technical activation funnel은 닫혔고, first resolved surface는 실제 model runtime+evaluator가 있어야만 증거로 인정한다.
 
 - 1.9.672는 사용자가 실제 7일을 기다리거나 수동 사용하지 않아도 되도록 Claude Code·Codex·OpenCode·Cursor를 새로 설치한 뒤 파일 상태를 day8로 aging하는 압축 cohort를 추가했다.
 - 재설치 전 ready4/4, content tree 불변4/4, 5 locale route×4 channel 20/20 unambiguous, 안전 refresh4/4와 refresh 후 ready4/4다. cohort가 영어 `repair`와 중국어 `修改/改进/改進` 라우팅 누락을 발견해 수리했다.

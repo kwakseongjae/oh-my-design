@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.673 local activation funnel
+- built CLI의 install→doctor→establish→fixture→ready→repair/reverify를 4 host에서 자동 실행했다.
+- 4/4, human0/provider0/model0, 최종1,584ms이며 fail-closed validator와 npm script를 추가했다.
+- technical funnel만 accepted; deterministic fixture를 resolved UI로 과장하지 않는다.
+
 ## 2026-08-05 (Codex) · 1.9.672 time-compressed activation reuse
 - 4개 채널 설치 상태를 day8로 압축해 재설치 없이 ready/bytes/routing을 검증했다.
 - 20/20 locale routes와 safe refresh4/4가 green이고 repair/修改 계열 누락을 수리했다.
