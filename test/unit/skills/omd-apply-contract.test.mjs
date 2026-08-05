@@ -14,6 +14,15 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("유일한 infrastructure 예외");
   });
 
+  it("fails closed on unmeasured compound one-line fit with a named relationship carrier", () => {
+    expect(skill).toContain("contained fit을 수치로 증명할 수 없으면");
+    expect(skill).toContain("distinct named relationship carrier");
+    expect(skill).toContain("row selector/passive text 자체나 action을 포함한 decision container를 scroll시키지 않는다");
+    expect(skill).toContain("accessible name, `tabindex=\"0\"`, visible `:focus-visible`");
+    expect(skill).toContain("target과 evidence를 한 scroller로 합치거나 state/action을 넣지 않는다");
+    expect(skill).toContain("실제 reserve·scrollWidth·keyboard 동작은 계속 `unresolved`");
+  });
+
   it("keeps implementation ownership with the main agent", () => {
     expect(skill).toContain("본 에이전트가 실제 편집과 검증을 끝까지 소유");
     expect(skill).toContain("audit/advice 요청만 자문 결과 요약으로 종료할 수 있다");
