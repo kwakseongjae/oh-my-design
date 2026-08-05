@@ -14,6 +14,7 @@ import {
   writeJson,
 } from "./_lib.mjs";
 import { validateTaskContract } from "./task-contract.mjs";
+import { currentObjectiveMethodology } from "./objective-methodology-contract.mjs";
 
 const args = parseArgs();
 const taskId = args.get("task");
@@ -373,6 +374,7 @@ const initialProductTree = treeManifest(out, { ignore: productIgnore });
 const manifest = {
   schema_version: "0.1",
   prepared_at: new Date().toISOString(),
+  objective_evaluator: currentObjectiveMethodology(),
   runtime_target: runtime,
   task: {
     id: task.id,

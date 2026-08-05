@@ -8,6 +8,10 @@ import {
   HOST_POLICY_MODES,
   prepareHostPolicyCell,
 } from "./host-policy-contract.mjs";
+import {
+  assertObjectiveMethodologyPin,
+  currentObjectiveMethodology,
+} from "./objective-methodology-contract.mjs";
 
 const VALID_RUNTIMES = new Set(["codex", "claude-code", "cursor"]);
 const VALID_EFFORTS = new Set(["low", "medium", "high", "xhigh"]);
@@ -473,6 +477,8 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
   if (existsSync(root)) throw new Error(`refusing to overwrite an existing matrix root: ${root}`);
   mkdirSync(root, { recursive: true });
 
+  const objectiveEvaluator = currentObjectiveMethodology();
+  const lockedPlan = { ...plan, output_root: root, objective_evaluator: objectiveEvaluator };
   const state = {
     schema_version: plan.schema_version,
     experiment_id: plan.experiment_id,
@@ -483,9 +489,10 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
     output_root: root,
     scheduled_cells: plan.cells.length,
     prepared_cells: 0,
+    objective_evaluator: objectiveEvaluator,
     cells: [],
   };
-  writeJson(join(root, "RUN-MATRIX.locked.json"), { ...plan, output_root: root });
+  writeJson(join(root, "RUN-MATRIX.locked.json"), lockedPlan);
   writeJson(join(root, "matrix-state.json"), state);
 
   const prepareScript = resolve(fileURLToPath(new URL("./prepare-sandbox.mjs", import.meta.url)));
@@ -500,6 +507,7 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
         stdio: "pipe",
       });
       const manifest = readJson(join(workspace, ".benchmark", "manifest.json"));
+      assertObjectiveMethodologyPin(manifest.objective_evaluator, `${cell.id}:manifest`);
       const hostPolicyConfig = plan.host_policy_comparison ?? plan.shared_host_policy ?? null;
       const hostPolicy = hostPolicyConfig
         ? prepareHostPolicyCell(
@@ -534,6 +542,7 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
         agent_bundle_sha256: manifest.agents?.sha256 ?? null,
         source_commit: manifest.skill?.source_commit ?? null,
         source_publishable: manifest.skill?.source_attestation?.publishable ?? true,
+        objective_evaluator: objectiveEvaluator,
       };
       writeJson(join(workspace, ".benchmark", "matrix-cell.json"), matrixCell);
       if (hostPolicy) {

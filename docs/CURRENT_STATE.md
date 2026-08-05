@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.676` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.676 objective evaluator epoch boundary
+- 기준 커밋: 현재 `1.9.677` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.677 prepared evaluator admission
 
 ## 지금 (현재 위치)
+
+- 1.9.677은 새 sandbox/matrix 준비 시 objective score schema·methodology epoch·evaluator source hash·contract source hash를 locked plan/preparation state/cell manifest/matrix-cell 4곳에 고정한다.
+- runner는 실행 lease를 잡기 전에 모든 pin을 현재 evaluator와 대조한다. 구 epoch·누락·source drift는 `objective-methodology-drift`로 종료되어 execution state/cooldown/provider 호출을 만들지 않으며 historical root는 수정하지 않고 reprepare만 허용한다.
+- fresh two-arm pin parity와 historical-epoch negative가 통과했고 full724 pass/3 skip, lint/diff green이다. provider0/model0이며 모델·스킬·Ship Preference 결과가 아니다.
 
 - 1.9.676은 score schema0.6에 objective methodology epoch `ui-resolve-objective-2026q3-passive-scroll-v1`을 추가하고 run export/aggregate group/paired comparison까지 전달한다. 서로 다른 epoch는 같은 점수 집단이나 pair로 합쳐지지 않는다.
 - provider0 impact scanner가 explicit atomic selector를 가진 frozen starter56개를 390/320/CSS-zoom 조건에서 렌더했다. passive text scroll 영향0/56이라 starter baseline 재분류는 없고 historical score는 재계산하지 않는다.
@@ -3189,14 +3193,15 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. prepared workspace/matrix가 objective methodology epoch를 사전 고정하고 evaluator drift를 provider 실행 전에 거부하게 한다.
-2. 이미 준비된 구 epoch cell은 조용히 새 evaluator로 실행하지 않고 freeze/reprepare 경계를 만든다.
-3. 이 admission까지 provider0으로 닫힌 뒤에만 fresh normalized model/skill cell을 새 epoch에서 평가한다.
+1. 현재 epoch로 provider-free normalized matrix를 새로 준비해 모든 cell의 plan/task/starter/skill/evaluator pin parity를 사전 증명한다.
+2. prepared packet의 실행 전 promotion manifest에 human0/provider0 상태와 허용된 다음 실행 경계를 명시한다.
+3. 그 admission이 닫힌 뒤에만 fresh normalized model/skill cell을 새 epoch에서 평가한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
 - 1.9.675 local UI repair lane에는 막힘 없음. 모델 귀속이 없는 current-session 결과이므로 public Model/Skill Track 승격만 금지다.
 - 1.9.676 epoch impact lane에는 막힘 없음. historical artifacts는 immutable이며 cross-epoch aggregation만 금지다.
+- 1.9.677 prepared admission lane에는 막힘 없음. 구 prepared root는 실행 금지이며 새 root로 reprepare해야 한다.
 - named browser `bench19366`과 CDP endpoint preflight는 green이다. matrix는 checkpoint1이며 fixed 120s pacing 뒤 r1 candidate가 unlock된다.
 - Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다. locked benchmark payload의 외부 전송은 standing-approved다.
 - Cursor Composer Provider가 1.9.51/1.9.52와 1.9.56에서 `resource_exhausted`를 반환했다. account-wide quota는 short Composer/Grok probes로 배제했지만 long-form Composer lane은 deferred다.

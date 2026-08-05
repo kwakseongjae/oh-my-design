@@ -140,6 +140,14 @@ schema 0.6 carry methodology epoch
 `ui-resolve-objective-2026q3-passive-scroll-v1`; aggregation separates this
 epoch from older records instead of silently pooling them.
 
+Every newly prepared sandbox and matrix also pins that epoch, the objective
+score schema, and the SHA-256 hashes of the evaluator entrypoint and its
+methodology contract. The prepared-matrix runner rechecks all four copies
+(locked plan, preparation state, cell manifest, and matrix-cell record) before
+it acquires an execution lease or invokes a provider. Missing or stale pins are
+an explicit re-prepare boundary; historical workspaces remain immutable and
+are never silently run under a newer evaluator.
+
 High-consequence tasks may additionally register a marker-backed hierarchy
 inside the same viewport-geometry gate:
 

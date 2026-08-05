@@ -1328,6 +1328,25 @@ if (process.argv.includes("--preflight")) {
       .toThrow();
   });
 
+  it("rejects a prepared evaluator epoch drift before lease, pacing, or provider work", () => {
+    const temp = mkdtempSync(join(tmpdir(), "omd-objective-epoch-drift-"));
+    const root = join(temp, "matrix");
+    installFakeRuntimes(temp);
+    prepareRunMatrix(calibrationPlan(root));
+    const lockedPath = join(root, "RUN-MATRIX.locked.json");
+    const locked = JSON.parse(readFileSync(lockedPath, "utf8"));
+    locked.objective_evaluator.epoch = "historical-objective-methodology";
+    writeFileSync(lockedPath, JSON.stringify(locked), "utf8");
+
+    expect(() => executePreparedMatrix(root)).toThrow(
+      "objective-methodology-drift:locked-plan:epoch:historical-objective-methodology",
+    );
+    expect(invocationCount(root, "fake-claude", "claude")).toBe(0);
+    expect(invocationCount(root, "fake-codex", "codex")).toBe(0);
+    expect(() => readFileSync(join(root, ".matrix-execution.lock"), "utf8")).toThrow();
+    expect(() => readFileSync(join(root, "execution-state.json"), "utf8")).toThrow();
+  });
+
   it("freezes later cells as not-started after the first fake runtime failure", () => {
     const temp = mkdtempSync(join(tmpdir(), "omd-provider-freeze-"));
     const root = join(temp, "matrix");

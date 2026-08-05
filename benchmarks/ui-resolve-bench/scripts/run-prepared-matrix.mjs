@@ -43,6 +43,10 @@ import {
   installedCodexPolicyToolModeStopReason,
 } from "./codex-tool-mode-contract.mjs";
 import { validateLocalBrowserEvidence } from "./validate-local-browser-evidence.mjs";
+import {
+  assertObjectiveMethodologyPin,
+  currentObjectiveMethodology,
+} from "./objective-methodology-contract.mjs";
 
 const MAX_BUFFER = 64 * 1024 * 1024;
 const PACING_MAX_OVERSHOOT_MS = 5_000;
@@ -51,6 +55,22 @@ const STOP_SENTINEL = "STOP";
 const INVOCATION_LEASE = ".matrix-execution.lock";
 const REPO_ROOT = resolve(fileURLToPath(new URL("../../..", import.meta.url)));
 const BENCHMARK_RUNTIME_IGNORE = ["browser-harness", "codex-home"];
+
+export function assertPreparedObjectiveMethodology(matrixRoot) {
+  const root = resolve(matrixRoot);
+  const plan = readJson(join(root, "RUN-MATRIX.locked.json"));
+  const preparation = readJson(join(root, "matrix-state.json"));
+  assertObjectiveMethodologyPin(plan.objective_evaluator, "locked-plan");
+  assertObjectiveMethodologyPin(preparation.objective_evaluator, "preparation-state");
+  for (const cell of plan.cells ?? []) {
+    const workspace = join(root, cell.id);
+    const manifest = readJson(join(workspace, ".benchmark", "manifest.json"));
+    const matrixCell = readJson(join(workspace, ".benchmark", "matrix-cell.json"));
+    assertObjectiveMethodologyPin(manifest.objective_evaluator, `${cell.id}:manifest`);
+    assertObjectiveMethodologyPin(matrixCell.objective_evaluator, `${cell.id}:matrix-cell`);
+  }
+  return currentObjectiveMethodology();
+}
 
 export function validateLocalBrowserEvidenceAdmission(
   plan,
@@ -1067,6 +1087,7 @@ function executePreparedMatrixWithLease(root, {
   if (!existsSync(lockedPlanPath) || !existsSync(preparationStatePath)) {
     throw new Error("matrix root is missing locked plan or preparation state");
   }
+  assertPreparedObjectiveMethodology(matrixRoot);
   const plan = readJson(lockedPlanPath);
   const preparation = readJson(preparationStatePath);
   validateLocalBrowserEvidenceAdmission(plan);
@@ -1636,6 +1657,7 @@ function executePreparedMatrixWithLease(root, {
 
 export function executePreparedMatrix(root, options = {}) {
   const matrixRoot = resolve(root);
+  assertPreparedObjectiveMethodology(matrixRoot);
   const lease = acquireInvocationLease(matrixRoot);
   try {
     return executePreparedMatrixWithLease(matrixRoot, options);

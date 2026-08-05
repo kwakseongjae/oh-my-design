@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.677 prepared evaluator admission
+- score schema/epoch/evaluator+contract hash를 plan/state/manifest/cell 4곳에 고정했다.
+- 구·누락·drift pin은 lease/cooldown/provider보다 먼저 거부되고 historical root는 그대로 보존된다.
+- fresh parity와 negative가 통과했고 full724 pass·3 skip, lint green이다.
+
 ## 2026-08-05 (Codex) · 1.9.676 objective evaluator epoch
 - schema0.6/run export/aggregate에 passive-scroll objective epoch를 연결해 cross-epoch pooling을 차단했다.
 - frozen starter56개를 provider0 렌더 감사했고 새 gate 영향은0/56이다.

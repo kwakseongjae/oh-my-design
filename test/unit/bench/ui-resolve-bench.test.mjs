@@ -6786,6 +6786,21 @@ describe("UI-Resolve Bench sandbox preparation", () => {
         expect(manifests[0].task.core_prompt_sha256).toBe(manifests[1].task.core_prompt_sha256);
         expect(manifests[0].variant.activation_delta).toBe(manifests[1].variant.activation_delta);
         expect(manifests[0].skill.sha256).not.toBe(manifests[1].skill.sha256);
+        expect(manifests.every((manifest) => (
+          manifest.objective_evaluator?.score_schema_version === "0.6"
+          && manifest.objective_evaluator?.epoch === "ui-resolve-objective-2026q3-passive-scroll-v1"
+        ))).toBe(true);
+        const locked = JSON.parse(readFileSync(join(root, "RUN-MATRIX.locked.json"), "utf8"));
+        const preparation = JSON.parse(readFileSync(join(root, "matrix-state.json"), "utf8"));
+        const matrixCells = ["cell-a", "cell-b"].map((cell) => JSON.parse(readFileSync(
+          join(root, cell, ".benchmark/matrix-cell.json"),
+          "utf8",
+        )));
+        expect(locked.objective_evaluator).toEqual(manifests[0].objective_evaluator);
+        expect(preparation.objective_evaluator).toEqual(manifests[0].objective_evaluator);
+        expect(matrixCells.every((cell) => (
+          JSON.stringify(cell.objective_evaluator) === JSON.stringify(manifests[0].objective_evaluator)
+        ))).toBe(true);
       } finally {
         rmSync(parent, { recursive: true, force: true });
       }
