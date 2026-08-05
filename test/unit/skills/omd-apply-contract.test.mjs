@@ -122,6 +122,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("OMD_PLAN_MEASURED_RECONCILE_REQUIRED");
     expect(skill).toContain("`plan-packet <artifact> <packet>`을 정확히 한 번 실행");
     expect(skill).toContain("null인 `operator_inputs.accessible_names`");
+    expect(skill).toContain("key를 추가·누락하거나 다른 operator field를 넣으면 적용은 product mutation 전에 중단");
     expect(skill).toContain("`irreconcilable`이면 새 row/carrier를 만들거나 제품을 수정하지 않고 run을 즉시 중단");
     expect(skill).toContain("plan-apply");
     expect(skill).toContain("plan_closure.state: closed");

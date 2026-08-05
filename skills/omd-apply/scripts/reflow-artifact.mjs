@@ -751,6 +751,24 @@ export function applyPlanDecisionPacket(artifact, packet) {
     || JSON.stringify(packet.complete_patch) !== JSON.stringify(diagnosis.complete_patch)
     || JSON.stringify(packet.issues) !== JSON.stringify(diagnosis.issues)
   ) fail("plan decision packet diagnosis or complete patch was modified");
+  const expectedAccessibleNameIds = diagnosis.complete_patch.row_groups
+    .filter((row) => row.requires_existing_accessible_name)
+    .map((row) => row.row_id)
+    .sort();
+  const operatorInputs = packet.operator_inputs;
+  if (
+    !operatorInputs
+    || typeof operatorInputs !== "object"
+    || Array.isArray(operatorInputs)
+    || JSON.stringify(Object.keys(operatorInputs).sort()) !== JSON.stringify(["accessible_names"])
+    || !operatorInputs.accessible_names
+    || typeof operatorInputs.accessible_names !== "object"
+    || Array.isArray(operatorInputs.accessible_names)
+  ) fail("plan decision packet operator inputs must contain only accessible_names");
+  const suppliedAccessibleNameIds = Object.keys(operatorInputs.accessible_names).sort();
+  if (JSON.stringify(suppliedAccessibleNameIds) !== JSON.stringify(expectedAccessibleNameIds)) {
+    fail(`plan decision packet accessible name rows must exactly match ${JSON.stringify(expectedAccessibleNameIds)}`);
+  }
   if (diagnosis.status === "irreconcilable") {
     fail("irreconcilable plan decision packets require discarding the run");
   }
@@ -761,7 +779,7 @@ export function applyPlanDecisionPacket(artifact, packet) {
   for (const patch of diagnosis.complete_patch.row_groups) {
     const row = rows.get(patch.row_id);
     if (!row) fail(`plan decision packet row ${patch.row_id} is missing`);
-    const suppliedName = packet.operator_inputs?.accessible_names?.[patch.row_id];
+    const suppliedName = operatorInputs.accessible_names[patch.row_id];
     const accessibleName = patch.scroll_contract.accessible_name ?? suppliedName;
     if (typeof accessibleName !== "string" || !accessibleName.trim()) {
       fail(`plan decision packet requires accessible name for row ${patch.row_id}`);

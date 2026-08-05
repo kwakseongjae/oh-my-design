@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.663 strict packet operator boundary
+- plan-apply가 diagnosis-required accessible-name key만 정확히 받도록 fail-close했다.
+- surplus/missing row와 다른 operator field를 mutation 전에 거부한다.
+- provider0/model0/browser0; 다음은 full acceptance와 exact source pin이다.
+
 ## 2026-08-05 (Codex) · 1.9.662 guarded packet pre-provider hold
 - runner를 호출해 remote hold가 provider/cell/workspace 전에 중단됨을 재현했다.
 - provider0/model0/cell0, state hash 동일, run/score0, original index6/6이다.

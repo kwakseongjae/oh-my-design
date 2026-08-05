@@ -587,6 +587,7 @@ describe("compact reflow artifact helper", () => {
     }
 
     const packet = createPlanDecisionPacket(input);
+    const inputBeforeRejectedPackets = JSON.stringify(input);
     expect(packet).toMatchObject({
       verdict: "patch-required",
       browser_rerun_allowed: false,
@@ -597,6 +598,25 @@ describe("compact reflow artifact helper", () => {
     expect(() => applyPlanDecisionPacket(input, packet)).toThrow(
       /requires accessible name for row identifier/,
     );
+
+    const surplusRowPacket = structuredClone(packet);
+    surplusRowPacket.operator_inputs.accessible_names.unmeasured = "Ignore me";
+    expect(() => applyPlanDecisionPacket(input, surplusRowPacket)).toThrow(
+      /accessible name rows must exactly match \["identifier","status"\]/,
+    );
+
+    const surplusOperatorPacket = structuredClone(packet);
+    surplusOperatorPacket.operator_inputs.fit_strategy = "force-scroll";
+    expect(() => applyPlanDecisionPacket(input, surplusOperatorPacket)).toThrow(
+      /operator inputs must contain only accessible_names/,
+    );
+
+    const missingRowPacket = structuredClone(packet);
+    delete missingRowPacket.operator_inputs.accessible_names.status;
+    expect(() => applyPlanDecisionPacket(input, missingRowPacket)).toThrow(
+      /accessible name rows must exactly match \["identifier","status"\]/,
+    );
+    expect(JSON.stringify(input)).toBe(inputBeforeRejectedPackets);
 
     packet.operator_inputs.accessible_names = {
       identifier: "Identifier comparison",
