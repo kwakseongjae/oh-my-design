@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.652 benchmark test baseline hygiene
+- 기존4 red를 historical base drift1, Luna plan status drift1, invalid vendor cache2로 분리했다.
+- explicit experiment base commit과 현재 preflight state를 test에 반영하고 invalid Git stubs를 설치됨으로 보지 않는다.
+- full unit 220 pass / optional skip2 / fail0, provider0, product regression0이다.
+- 다음은 frozen reconcile artifact batch replay다.
+
 ## 2026-08-05 (Codex) · 1.9.651 local evidence admission + remote hold
 - prepared runner가 provider 전에 local in-app evidence를 검증하도록 admission을 연결했다.
 - `remote-execution-deferred` status는 실행 hold이며 exact prepared root도 provider0에서 예상 중단했다.

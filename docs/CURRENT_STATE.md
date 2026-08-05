@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `7c866f20` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.651 local evidence admission + remote hold
+- 기준 커밋: `10c00158` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.652 benchmark test baseline hygiene
 
 ## 지금 (현재 위치)
+
+- 1.9.652는 benchmark full unit의 기존4 red를 provider0으로 정리했다. historical experiment는 explicit base commit과 비교하고, Luna Max test는 runtime-pinned preflight-open 상태를 반영한다.
+- empty `.git` stub만 남은 optional Taste/UI UX Pro Max caches는 valid work tree가 아니면 설치 test를 skip한다. 최종 220 pass / 2 optional skip / 0 fail이며 product regression은 없었다.
+- 다음은 frozen measured-plan failure artifacts를 complete diagnostic으로 일괄 replay해 ready/patch-required/irreconcilable 정확도를 수치화하는 1.9.653이다.
 
 - 1.9.651은 prepared runner가 model/provider 진입 전에 1.9.647 local in-app evidence를 결정론 검증하도록 admission을 연결했다. validation id/path/hash contract가 어긋나면 즉시 중단한다.
 - matrix status의 `remote-execution-deferred`를 실행 hold로 강제한다. 실제 `/private/tmp/u19648 --max-new-cells1` dry admission은 provider0에서 `matrix-execution-hold:remote-execution-deferred`로 예상 중단했다.

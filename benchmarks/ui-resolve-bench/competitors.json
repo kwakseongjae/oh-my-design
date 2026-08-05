@@ -1037,6 +1037,7 @@
     "omd-decision-context-experimental": {
       "label": "oh-my-design apply skill",
       "kind": "local-skill-experimental",
+      "experiment_base_commit": "bec454d5a452bdc3bc772173d754dec30d548564",
       "source_path": "benchmarks/ui-resolve-bench/experimental-skills/omd-decision-context-closure",
       "install_adapter": "omd-channel-name-v1",
       "install_platform": "agents",

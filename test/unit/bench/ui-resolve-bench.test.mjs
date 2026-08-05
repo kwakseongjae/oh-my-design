@@ -29,6 +29,15 @@ const competitors = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolv
 const families = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/benchmark-families.json"), "utf8"));
 const releaseTrain = JSON.parse(readFileSync(join(repoRoot, "benchmarks/ui-resolve-bench/release-train.json"), "utf8"));
 const pinnedVendors = "/tmp/omd-ui-skills-bench/vendors";
+
+function isValidPinnedVendor(vendorId) {
+  const vendor = join(pinnedVendors, vendorId);
+  if (!existsSync(join(vendor, ".git"))) return false;
+  const result = spawnSync("git", ["-C", vendor, "rev-parse", "--is-inside-work-tree"], {
+    encoding: "utf8",
+  });
+  return result.status === 0 && result.stdout.trim() === "true";
+}
 const taskIds = ["pricing-conversion-v0.1", "onboarding-setup-v0.1", "incident-operations-v0.1"];
 const localeTaskId = "locale-cli-handoff-v0.1";
 const accessReviewTaskId = "access-review-v0.1";
@@ -744,7 +753,12 @@ describe("UI-Resolve Bench sandbox preparation", () => {
   });
 
   it("keeps the decision-context experiment bounded to one non-canonical rule", () => {
-    const canonical = readFileSync(join(repoRoot, "skills/omd-apply/SKILL.md"), "utf8");
+    const variant = competitors.variants["omd-decision-context-experimental"];
+    const canonical = execFileSync(
+      "git",
+      ["show", `${variant.experiment_base_commit}:skills/omd-apply/SKILL.md`],
+      { cwd: repoRoot, encoding: "utf8" },
+    );
     const experimentPath = join(
       repoRoot,
       "benchmarks/ui-resolve-bench/experimental-skills/omd-decision-context-closure/SKILL.md",
@@ -758,6 +772,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(experimental.split("\n").filter((line) => !line.startsWith(boundedRulePrefix)).join("\n"))
       .toBe(canonical);
     expect(canonical).not.toContain("decision-context hierarchy closure");
+    expect(variant.experiment_base_commit).toMatch(/^[a-f0-9]{40}$/);
 
     const out = prepareVariant("omd-decision-context-experimental", {
       task: deletionApprovalTaskId,
@@ -3786,11 +3801,15 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       "benchmarks/ui-resolve-bench/plans/luna-max-one-prompt-v0.1.json",
     ), "utf8"));
     expect(plan).toMatchObject({
-      status: "DRAFT_PROVIDER_ZERO",
+      status: "RUNTIME_PINNED_MODEL_PREFLIGHT_OPEN",
       provider_calls: 0,
       model_contract: {
         marketing_label: "Luna Max",
         exact_model_selector: null,
+        exact_model_selector_candidate: "gpt-5.6-luna",
+        runtime_version: "codex-cli 0.144.1",
+        native_effort: null,
+        native_effort_candidate: "max",
         attribution_required_for_publication: true,
       },
       portable_skill_track: {
@@ -3819,7 +3838,8 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       "ui-ux-pro-max",
       "omd-portable",
     ]);
-    expect(plan.execution_forbidden_until).toContain("exact_model_selector_pinned");
+    expect(plan.execution_forbidden_until).toContain("exact_model_selector_acceptance_preflight_green");
+    expect(plan.execution_forbidden_until).toContain("native_effort_acceptance_preflight_green");
     expect(plan.execution_forbidden_until).toContain("competitor_sources_refreshed_and_frozen");
   });
 
@@ -7254,7 +7274,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
-  it.runIf(existsSync(join(pinnedVendors, "taste-skill/.git")))(
+  it.runIf(isValidPinnedVendor("taste-skill"))(
     "installs Taste under its declared activation name instead of the repository folder name",
     () => {
       const out = prepareVariant("taste-skill", { vendors: pinnedVendors });
@@ -7271,7 +7291,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     },
   );
 
-  it.runIf(existsSync(join(pinnedVendors, "ui-ux-pro-max/.git")))(
+  it.runIf(isValidPinnedVendor("ui-ux-pro-max"))(
     "renders the reviewed official UI UX Pro Max Codex bundle without using its Claude template",
     () => {
       const out = prepareVariant("ui-ux-pro-max", { vendors: pinnedVendors });
@@ -7489,5 +7509,27 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       "matrix-execution-hold:remote-execution-deferred",
     );
     expect(remoteExecutionHoldReason({ ...plan, status: "prepared-for-explicit-execution" })).toBeNull();
+  });
+
+  it("records a green provider-zero benchmark test baseline without hiding invalid vendor caches", () => {
+    const summary = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/test-baseline-hygiene-1.9.652/SUMMARY.final.json",
+    ), "utf8"));
+    expect(summary).toMatchObject({
+      product_version: "1.9.652",
+      status: "PROVIDER_ZERO_TEST_BASELINE_GREEN",
+      provider_calls: 0,
+      remote_models_used: false,
+      initial_failures: 4,
+      verification: {
+        tests_passed: 220,
+        tests_skipped: 2,
+        tests_failed: 0,
+        product_regression_found: false,
+      },
+    });
+    expect(summary.resolved_failures.map((failure) => failure.count)).toEqual([1, 1, 2]);
+    expect(summary.claim_boundary).toContain("no competitor behavior claim");
   });
 });
