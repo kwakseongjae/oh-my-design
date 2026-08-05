@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `8b216c5f` 1.9.707 manifest-default static closure (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.706 Luna/high diagnostic archived, 1.9.707 clean full regression green
+- 갱신: 2026-08-05 · 1.9.712 polar structured CSS canary prepared, provider/model exposure 0
 
 ## 지금 (현재 위치)
 
+- 1.9.712 `polar-structured-css-canary`는 exact task `2a3749ad`/tree `22c26500…`, exact clean prepared skill source `0fd0f1f2`/hash `e2486660…`(repair origin `f10983ce`), Luna/high 1셀, timeout720s, retry0으로 준비됐다. locked plan `cc65fca6…`, state `c430032c…`, provider0/model exposure0이다.
+- success는85/85+product revision1+successful static closure1+failed0+user handoff0+proof compliance다. 같은 task 재실행·replacement·ranking·2.0 gate 반영은 금지다. 같은 structured-packet completeness 원인이 재발하면 frontier hard pause다.
 - 1.9.711 신규 `polar-ice-core-vial-custody-v0.1`은 exact task commit `2a3749ad`, tree `22c26500…`, provider exposure0으로 잠겼다. 5 cores/7 archive vials/4 accession windows와 3 states, curator toggle, form, evidence boundary를 보존한다. 82 task validator+mutation green이고 raw baseline75/85, responsive+a11y red다.
 - 다음은 exact 1.9.710 skill을 새 polar task에서 Luna/high1셀·timeout720s·retry0로 검증한다. success는85/85+revision1+successful static closure1+failed0+proof compliance이며 같은 task 재실행·ranking·2.0 gate 반영은 금지다.
 - 1.9.710 clean commit `f10983ce`는 CSS acceptance obligation을 `required_css_declarations`로 구조화했다. `exact-value`는 값까지, `any-value`는 선언 존재만 static-close가 검증하고 둘 다 권장값을 `canonical_acceptance_css_source`로 짧은 fallback packet에 제공한다. 관계 CSS와 debt CSS를 첫 edit 전에 같은 copy-ready packet으로 받는다. clean full756 pass/3 skip, lint/diff green이다.

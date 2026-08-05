@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.712 polar canary prepared
+- fresh polar task와 clean structured-CSS skill을 Luna/high1셀에 결박했다.
+- timeout720s·retry0·diagnostic only이며 provider/model exposure는0이다.
+- plan `cc65fca6…`, prepared state `c430032c…`; exact same task replay는 금지다.
+- 다음은 prereg commit 뒤 단 한 번 실행하고 terminal 결과를 보존한다.
+
 ## 2026-08-05 (Codex) · 1.9.711 fresh polar task
 - 미노출 polar ice-core custody task를 provider exposure0으로 잠갔다.
 - 82-task validator/mutation green; raw baseline75/85, responsive+a11y red다.
