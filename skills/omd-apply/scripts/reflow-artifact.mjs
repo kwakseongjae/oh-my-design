@@ -1731,9 +1731,12 @@ function main() {
     }
     result = openSourceFallback(fallbackArtifact);
   } else if (command === "static-close") {
-    if (!rawAuxiliaryPath) fail("static-close requires the locked product file");
+    const lockedProductPath = rawAuxiliaryPath ?? artifact.static_closure_manifest?.product_path;
+    if (typeof lockedProductPath !== "string" || !lockedProductPath) {
+      fail("static-close requires the locked product file");
+    }
     validatePlanClosure(artifact);
-    const productPath = resolve(rawAuxiliaryPath);
+    const productPath = resolve(lockedProductPath);
     result = executeStaticClosure(artifact, {
       productPath,
       source: readFileSync(productPath, "utf8"),

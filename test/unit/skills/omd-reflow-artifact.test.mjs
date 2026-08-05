@@ -828,7 +828,7 @@ describe("compact reflow artifact helper", () => {
 
     writeFileSync(productPath, `${preEditSource}<!-- bounded source repair -->`);
     const closed = JSON.parse(execFileSync(process.execPath, [
-      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "static-close", artifactPath, productPath,
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "static-close", artifactPath,
     ], { cwd: root, encoding: "utf8" }));
     expect(closed.static_closure).toMatchObject({ state: "passed", attempts: 1, failures: [] });
   });
