@@ -7736,4 +7736,27 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
     expect(baseline.claim_boundary).toContain("does not predict either arm");
   });
+
+  it("pins the unseen subsea cable task and baseline before compared-system exposure", () => {
+    const pin = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-cable-task-pin-1.9.658/PIN.json",
+    ), "utf8"));
+    expect(pin).toMatchObject({
+      product_version: "1.9.658",
+      status: "TASK_PINNED_BEFORE_MODEL_EXPOSURE",
+      provider_calls: 0,
+      model_exposures: 0,
+      task: {
+        id: subseaCableSpliceTaskId,
+        source_commit: "a3d7d567f7279f2e65e0f1355268435daf45ac68",
+        repository_tree: "8dd1ad70a98368032c19fffb7e11590a679d8d9b",
+        git_task_tree: "c0dc2a27ff486e77f359106083f42cea91baeccf",
+        portable_tree_sha256: "b12c6f827b23d72e1a17907d5549fcc78dc14398efd28ff160a9f9d224f99196",
+        baseline_score_sha256: "e90083188c8f0c5d1ab2c6af43db7237dc31da9ede960d96a681f52c6184c95c",
+      },
+      mutation_policy: { changes_after_pin_allowed: false },
+    });
+    expect(pin.claim_boundary).toContain("No model result");
+  });
 });

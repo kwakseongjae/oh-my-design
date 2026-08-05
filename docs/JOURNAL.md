@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.658 subsea cable task exact pin
+- task source commit/repository tree/git task tree/portable tree/baseline hash를 고정했다.
+- model exposure0이며 task/prompt/starter/evaluator mutation은 금지다.
+- 다음은 exact control/candidate provider-zero preregistration이다.
+
 ## 2026-08-05 (Codex) · 1.9.657 model-unseen subsea cable baseline
 - neutral new task를 provider exposure0에서 생성하고 deterministic evaluator로 baseline했다.
 - raw75/85, responsive/a11y red, narrow fragment6/short-wrap2/contrast-node4다.

@@ -3,10 +3,13 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `d8bdc0ef` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.657 model-unseen subsea cable task baseline
+- 기준 커밋: `a3d7d567` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.658 subsea cable task exact pin
 
 ## 지금 (현재 위치)
+
+- 1.9.658은 신규 task를 source commit `a3d7d567...`, repository tree `8dd1ad70...`, git task tree `c0dc2a27...`, portable tree `b12c6f82...`, baseline score `e9008318...`로 model exposure0에서 pin했다.
+- prompt/task/starter/evaluator는 이후 mutation 금지다. 다음은 exact complete-diagnostic control vs guarded-packet candidate를 같은 task/model/runtime/effort/timeout으로 preregister하되 remote execution hold를 유지하는 1.9.659다.
 
 - 1.9.657은 `subsea-cable-splice-handoff-v0.1`을 provider 노출 전에 생성·평가했다. prompt는 arm/packet command를 전혀 명명하지 않고 같은 task/starter/evaluator를 강제한다.
 - raw baseline은75/85로 contract/state/design/evidence green, responsive/a11y red다. desktop1440은 overflow0, 390/320은 scroll1135, actual200은 scroll2270이며 narrow fragmented token6/short wrap2/contrast failure node4다.
