@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.679 unseen holdout task lock
+- investigational-product depot repair 과제를 provider0/model0/human0으로 만들고 baseline75/85를 동결했다.
+- 정확한 evidence/interaction은 보존하고 narrow geometry·atomic text·contrast 실패만 국소화했다.
+- in-app interaction cross-check와 full728 pass·3 skip/lint green; 다음은 frozen task balanced preparation이다.
+
 ## 2026-08-05 (Codex) · 1.9.678 normalized preparation canary
 - Raw DESIGN.md/current OmD 3×2 matrix를 새 epoch로 provider0 준비하고 모든 비교 입력 parity를 확인했다.
 - admission auditor가 계약·untouched tree·source·execution absence를 fail-close한다.

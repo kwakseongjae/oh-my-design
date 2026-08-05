@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.678` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.678 normalized provider-zero canary
+- 기준 커밋: 현재 `1.9.679` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.679 unseen holdout task lock
 
 ## 지금 (현재 위치)
+
+- 1.9.679는 기존 suite와 다른 investigational-product depot release repair 과제를 provider0/model0/human0 상태에서 새로 만들고 prompt/starter/contract/initial score를 동결했다. baseline은75/85 fail이며 task/design/state/evidence는 통과하고 responsive·accessibility만 의도적으로 실패한다.
+- 4 kits/6 logs/2 depots/3 views, exact known evidence, unknown regulatory/clinical claim 차단, interaction/form/keyboard/console/network 계약을 보존한다. 실패는 390/320/zoom overflow·atomic wrapping/fragmentation·2.71:1 muted contrast로 국소화돼 있다.
+- Codex in-app browser로 view/toggle/invalid+valid form과 exact cardinality를 교차 확인했다. viewport emulation은 current binding에 없어 390/320/zoom 판정은 external deterministic evaluator가 담당한다. full728 pass/3 skip, lint green이며 비교·모델·스킬 우위 주장은 없다.
+- 다음 큐: 이 frozen holdout으로 Raw DESIGN.md/current exact OmD 3회씩 balanced matrix를 provider-free 준비·admission하고, no-remote 조건에서는 실행하지 않은 상태를 증거화한다.
 
 - 1.9.678은 Raw DESIGN.md와 exact current `omd:apply`를 3 trial/6 cell로 balanced 준비하는 새-epoch canary를 만들었다. prompt/starter/product/runtime/model/effort/timeout/evaluator parity가 전부 true이고 OmD source는 publishable commit `c73950c0…`, skill hash `cd1e35c1…`다.
 - reusable prepared-admission auditor가 plan/cell/manifest 계약, untouched product tree, cross-arm normalization, source publishability, execution artifact absence를 fail-close한다. 실제 runner hold도 `matrix-execution-hold:remote-execution-deferred`로 확인했다.
