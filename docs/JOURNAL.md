@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.691 browser fallback transfer
+- Luna field-sample 6/6 valid; Raw77/75/77, OmD79/81/81, 양쪽 resolved0/3이다.
+- OmD는 user handoff0·edit1·closure1·proof3/3로 1.9.690 process fix를 전달했다.
+- 320px/200% compound one-line fit이 남아 다음은 named carrier fail-close다.
+
 ## 2026-08-05 (Codex) · 1.9.689 Luna depot Skill Lift
 - six cells6/6 valid; Raw0/3(73/73/79), OmD2/3(85/85/75), paired2W1T0L다.
 - lift CI lower0·Reliability@3 0·proof1/3라 gate는 partial이며 promotion false다.

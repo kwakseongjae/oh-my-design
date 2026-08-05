@@ -3,16 +3,16 @@
   "target_version": "2.0.0",
   "baseline_version": "1.9.0",
   "required_gate_count": 9,
-  "snapshot_patch": "1.9.689",
+  "snapshot_patch": "1.9.691",
   "claim_policy": "Promotion is allowed only when all nine gates are pass and every gate retains repository evidence.",
   "gates": [
     {
       "id": "verified-skill-lift",
       "status": "partial",
       "requirement": "OmD is statistically first or tied for first on the Verified Skill Lift track.",
-      "current_boundary": "A fresh unseen Luna matrix completed 6/6 valid cells. OmD won two pairs and tied one, but resolved 2/3, the paired lower bound remained zero, and proof compliance was 1/3.",
-      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/investigational-product-depot-skill-lift-1.9.689"],
-      "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/investigational-product-depot-skill-lift-1.9.689/SUMMARY.final.json", "pointer": "/frontier_gate_pass", "equals": true}
+      "current_boundary": "The fresh Luna depot matrix showed OmD 2/3 resolved but an unstable proof path. The 1.9.691 public-task transfer then made the repaired browser fallback proof-compliant in 3/3 trials with zero user handoffs, but OmD resolved 0/3 and Reliability@3 remained zero.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/investigational-product-depot-skill-lift-1.9.689", "benchmarks/ui-resolve-bench/reports/field-sample-browser-fallback-transfer-1.9.691"],
+      "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/field-sample-browser-fallback-transfer-1.9.691/SUMMARY.final.json", "pointer": "/frontier_gate_pass", "equals": true}
     },
     {
       "id": "three-model-positive-lift",

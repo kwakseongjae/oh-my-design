@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.689` depot Skill Lift result checkpoint (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.689 Luna depot Skill Lift complete, no promotion
+- 기준 커밋: 현재 `1.9.691` field-sample browser fallback transfer checkpoint (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.691 Luna transfer complete, process pass / quality gate fail
 
 ## 지금 (현재 위치)
+
+- 1.9.690에서 non-interactive browser permission/attach failure를 사용자 checkpoint로 바꾸지 않고 source-backed bounded repair로 계속하는 `omd:apply` 계약을 커밋했다. full747 pass/3 skip, lint green이다.
+- 1.9.691 Luna/high field-sample transfer는 6/6 valid다. Raw 77/75/77, OmD 79/81/81이며 양쪽 resolved0/3이다. OmD objective pair는 3/3 우세(+2.35~+7.06pp)지만 resolved lift0, Reliability@3=0이라 frontier gate는 partial을 유지한다.
+- browser fallback 자체는 OmD3/3에서 사용자 요청0, product edit1회, static closure1회, browser recovery0, proof compliance3/3로 전달됐다. 남은 공통 결함은 320px·actual 200%에서 compound target/concise evidence의 contained one-line fit을 보장하지 못한 것이다.
+- 다음은 측정 불가 시 compound target/evidence를 passive-text scroll이나 action 포함 carrier가 아닌 distinct named relationship carrier로 fail-close하는 1.9.692 source-derived fit contract다.
 
 - 1.9.689 fresh Luna/high six-cell 실행이 6/6 valid로 끝났다. Raw는 UI resolved0/3·scores73/73/79, exact current OmD는2/3·85/85/75로 paired W/T/L=2/1/0, observed resolved lift+66.7pp다.
 - 95% paired lower bound0, Reliability@3=0, OmD proof compliant1/3라 `verified-skill-lift`는 open→partial로 전진했지만 frontier gate pass=false다. 2.0 readiness는 partial4/open3/external2/pass0으로 계속 차단된다.
@@ -3242,9 +3247,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `omd:apply`가 non-interactive browser permission/attach failure에서 사용자를 부르지 않도록 contract를 수리한다.
-2. known baseline failure가 있으면 source-backed bounded edit+existing deterministic closure를 계속하고 browser proof만 unresolved로 분리한다.
-3. focused/full acceptance 뒤 exact repaired skill을 새 commit/hash로 pin하고 fresh transfer task에서 재검증한다.
+1. non-interactive fallback에서 protected compound target/concise evidence의 fit을 증명할 수 없으면 distinct named relationship carrier comparison-scroll로 fail-close한다.
+2. passive text 자체, action 포함 decision carrier, typography shrink, word-break, page overflow를 계속 금지한다.
+3. focused/full acceptance 뒤 exact repaired skill을 새 commit/hash로 pin하고 fresh transfer cell에서 UI resolved까지 재검증한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
