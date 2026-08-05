@@ -1,0 +1,5 @@
+Improve the supplied wildlife acoustic-media custody review so field technicians can inspect deployment-to-media-card assignments, station retrieval windows, and the custody decision confidently on desktop and narrow screens.
+
+Preserve all five deployment identifiers, all seven media-card identifiers and their exact deployment assignments, all four supplied retrieval windows, the three review views, the observer-note toggle, the custody-review form, and all stated summary evidence. Do not invent species confirmation, recording completeness, device calibration, habitat clearance, media integrity, transfer acceptance, archive publication, or chain-of-custody closure. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The deployment register, separate retrieval-window strip, and separate custody decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.
