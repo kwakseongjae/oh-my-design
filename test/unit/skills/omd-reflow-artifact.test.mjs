@@ -814,6 +814,13 @@ describe("compact reflow artifact helper", () => {
     const productPath = join(root, "index.html");
     const input = draft();
     input.pre_edit_fit_plan = { state: "pending" };
+    input.static_closure_manifest.required_css_declarations = [
+      { selector: ".intake-strip", property: "grid-template-columns", value: "repeat(4,minmax(0,1fr))", value_contract: "any-value" },
+      { selector: ".muted", property: "color", value: "var(--ink)", value_contract: "exact-value" },
+    ];
+    input.acceptance_debt_ledger[0].static_guardrail.required_css_declarations = structuredClone(
+      input.static_closure_manifest.required_css_declarations,
+    );
     const preEditSource = '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""><span role="status">Ground review open</span></div>';
     writeFileSync(artifactPath, JSON.stringify(input));
     writeFileSync(productPath, preEditSource);
@@ -825,8 +832,19 @@ describe("compact reflow artifact helper", () => {
       join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "source-fallback-open", artifactPath,
     ], { cwd: root, encoding: "utf8" }));
     expect(opened.source_fallback_closure).toMatchObject({ state: "opened", command: "source-fallback-open" });
+    expect(opened.static_edit_guardrails.source_fallback_patch_contract).toMatchObject({
+      canonical_acceptance_css_source: [
+        ".intake-strip { grid-template-columns: repeat(4,minmax(0,1fr)); }",
+        ".muted { color: var(--ink); }",
+      ].join("\n"),
+      acceptance_css: input.static_closure_manifest.required_css_declarations,
+    });
+    expect(opened.static_edit_guardrails.first_edit_checklist).toContainEqual(expect.objectContaining({
+      contract: "must-include-css-declaration",
+      assertion: expect.objectContaining({ selector: ".intake-strip", value_contract: "any-value" }),
+    }));
 
-    writeFileSync(productPath, `${preEditSource}<!-- bounded source repair -->`);
+    writeFileSync(productPath, `<style>.intake-strip{grid-template-columns:repeat(4,minmax(180px,1fr))}.muted{color:var(--ink)}</style>${preEditSource}<!-- bounded source repair -->`);
     const closed = JSON.parse(execFileSync(process.execPath, [
       join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "static-close", artifactPath,
     ], { cwd: root, encoding: "utf8" }));
@@ -1143,6 +1161,30 @@ describe("compact reflow artifact helper", () => {
     );
     expect(forbiddenProperty.static_closure.failures).toContain(
       "matched forbidden CSS declaration: .decision { grid-template-columns: 1fr } (any-declaration)",
+    );
+  });
+
+  it("accepts a semantic CSS value while fail-closing a required exact value", () => {
+    const semantic = draft();
+    semantic.static_closure_manifest.required_css_declarations = [
+      { selector: ".intake-strip", property: "grid-template-columns", value: "repeat(4,minmax(0,1fr))", value_contract: "any-value" },
+      { selector: ".muted", property: "color", value: "var(--ink)", value_contract: "exact-value" },
+    ];
+    semantic.acceptance_debt_ledger[0].static_guardrail.required_css_declarations = structuredClone(
+      semantic.static_closure_manifest.required_css_declarations,
+    );
+    const passed = staticClosed(
+      lockArtifact(semantic),
+      '<style>.intake-strip{grid-template-columns:repeat(4,minmax(180px,1fr))}.muted{color:var(--ink)}</style><div data-id="fixture">required-fact</div>',
+    );
+    expect(passed.static_closure).toMatchObject({ state: "passed", failures: [] });
+
+    const wrongExact = staticClosed(
+      lockArtifact(semantic),
+      '<style>.intake-strip{grid-template-columns:repeat(4,minmax(180px,1fr))}.muted{color:var(--muted)}</style><div data-id="fixture">required-fact</div>',
+    );
+    expect(wrongExact.static_closure.failures).toContain(
+      "required CSS declaration value mismatch: .muted { color: var(--muted) }, expected var(--ink)",
     );
   });
 

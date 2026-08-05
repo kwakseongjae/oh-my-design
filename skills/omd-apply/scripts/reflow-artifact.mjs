@@ -412,6 +412,27 @@ function stringList(value, label, { allowEmpty = false } = {}) {
 }
 
 const FORBIDDEN_CSS_VALUE_CONTRACTS = new Set(["positive-length", "any-declaration"]);
+const REQUIRED_CSS_VALUE_CONTRACTS = new Set(["exact-value", "any-value"]);
+
+function validateRequiredCssDeclarations(value, label) {
+  if (!Array.isArray(value)) fail(`${label} must be an array`);
+  const seen = new Set();
+  for (const entry of value) {
+    if (typeof entry?.selector !== "string" || !entry.selector.trim()) fail(`${label} selector is required`);
+    if (typeof entry?.property !== "string" || !/^[a-z-]+$/u.test(entry.property)) fail(`${label} property is required`);
+    if (typeof entry?.value !== "string" || !entry.value.trim()) fail(`${label} recommended value is required`);
+    if (!REQUIRED_CSS_VALUE_CONTRACTS.has(entry.value_contract)) {
+      fail(`${label} value_contract must be exact-value or any-value`);
+    }
+    entry.selector = entry.selector.trim().replace(/\s+/gu, " ");
+    entry.property = entry.property.toLowerCase();
+    entry.value = entry.value.trim();
+    const key = `${entry.selector}\u0000${entry.property}`;
+    if (seen.has(key)) fail(`${label} selector/property pairs must be unique`);
+    seen.add(key);
+  }
+  return value;
+}
 
 function validateForbiddenCssDeclarations(value, label) {
   if (!Array.isArray(value)) fail(`${label} must be an array`);
@@ -435,6 +456,10 @@ function validateStaticClosureManifest(value) {
   if (!value || typeof value !== "object") fail("static_closure_manifest is required");
   value.product_path = relativeProductPath(value.product_path, "static_closure_manifest.product_path");
   value.required_literals = stringList(value.required_literals, "static_closure_manifest.required_literals");
+  value.required_css_declarations = validateRequiredCssDeclarations(
+    value.required_css_declarations ?? [],
+    "static_closure_manifest.required_css_declarations",
+  );
   value.forbidden_literals = stringList(value.forbidden_literals ?? [], "static_closure_manifest.forbidden_literals", { allowEmpty: true });
   value.forbidden_patterns = stringList(value.forbidden_patterns ?? [], "static_closure_manifest.forbidden_patterns", { allowEmpty: true });
   value.forbidden_css_declarations = validateForbiddenCssDeclarations(
@@ -521,6 +546,10 @@ function validateAcceptanceDebtLedger(value, manifest, knownRows) {
       `acceptance debt ${debt.id} static_guardrail.required_literals`,
       { allowEmpty: true },
     );
+    guardrail.required_css_declarations = validateRequiredCssDeclarations(
+      guardrail.required_css_declarations ?? [],
+      `acceptance debt ${debt.id} static_guardrail.required_css_declarations`,
+    );
     guardrail.forbidden_literals = stringList(
       guardrail.forbidden_literals ?? [],
       `acceptance debt ${debt.id} static_guardrail.forbidden_literals`,
@@ -537,11 +566,18 @@ function validateAcceptanceDebtLedger(value, manifest, knownRows) {
     );
     if (
       guardrail.required_literals.length
+      + guardrail.required_css_declarations.length
       + guardrail.forbidden_literals.length
       + guardrail.forbidden_patterns.length
       + guardrail.forbidden_css_declarations.length === 0
     ) fail(`acceptance debt ${debt.id} static_guardrail must contain at least one assertion`);
     manifestContainsAll(manifest, "required_literals", guardrail.required_literals, `acceptance debt ${debt.id} required literals`);
+    manifestContainsAllObjects(
+      manifest,
+      "required_css_declarations",
+      guardrail.required_css_declarations,
+      `acceptance debt ${debt.id} required CSS declarations`,
+    );
     manifestContainsAll(manifest, "forbidden_literals", guardrail.forbidden_literals, `acceptance debt ${debt.id} forbidden literals`);
     manifestContainsAll(manifest, "forbidden_patterns", guardrail.forbidden_patterns, `acceptance debt ${debt.id} forbidden patterns`);
     manifestContainsAllObjects(
@@ -1168,6 +1204,25 @@ function forbiddenCssDeclarationFailures(source, assertions) {
   return failures;
 }
 
+function requiredCssDeclarationFailures(source, assertions) {
+  const blocks = cssRuleBlocks(source);
+  const failures = [];
+  for (const assertion of assertions) {
+    const values = blocks
+      .filter((block) => block.selectors.includes(assertion.selector))
+      .map((block) => block.declarations.get(assertion.property))
+      .filter((value) => value !== undefined);
+    if (values.length === 0) {
+      failures.push(`missing required CSS declaration: ${assertion.selector} { ${assertion.property} }`);
+      continue;
+    }
+    if (assertion.value_contract === "exact-value" && !values.includes(assertion.value)) {
+      failures.push(`required CSS declaration value mismatch: ${assertion.selector} { ${assertion.property}: ${values.join(" | ")} }, expected ${assertion.value}`);
+    }
+  }
+  return failures;
+}
+
 function htmlAttributeValue(startTag, name) {
   const escaped = name.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
   const match = startTag.match(new RegExp(`(?:^|\\s)${escaped}\\s*=\\s*(?:\"([^\"]*)\"|'([^']*)'|([^\\s\"'=<>` + "`" + `]+))`, "u"));
@@ -1275,6 +1330,10 @@ export function executeStaticClosure(input, { productPath, source }) {
   for (const literal of artifact.static_closure_manifest.required_literals) {
     if (!source.includes(literal)) failures.push(`missing required literal: ${literal}`);
   }
+  failures.push(...requiredCssDeclarationFailures(
+    source,
+    artifact.static_closure_manifest.required_css_declarations,
+  ));
   for (const literal of artifact.static_closure_manifest.forbidden_literals) {
     if (source.includes(literal)) failures.push(`found forbidden literal: ${literal}`);
   }
@@ -1522,6 +1581,9 @@ function write(path, artifact) {
 
 function staticEditGuardrails(artifact) {
   const sourceFallbackRelationships = artifact.source_fallback_relationships ?? [];
+  const acceptanceCssSource = artifact.static_closure_manifest.required_css_declarations
+    .map((assertion) => `${assertion.selector} { ${assertion.property}: ${assertion.value}; }`)
+    .join("\n");
   const sourceFallbackCssSource = sourceFallbackRelationships.length > 0
     ? [
       `${sourceFallbackRelationships.map((relationship) => relationship.marker_selector).join(",")} { overflow-x: auto; }`,
@@ -1529,11 +1591,13 @@ function staticEditGuardrails(artifact) {
       `${sourceFallbackRelationships.map((relationship) => relationship.row_selector).join(",")} { white-space: nowrap; }`,
     ].join("\n")
     : null;
-  const sourceFallbackPatchContract = sourceFallbackRelationships.length > 0 ? {
+  const sourceFallbackPatchContract = sourceFallbackRelationships.length > 0 || acceptanceCssSource ? {
     apply_order: "apply every html and css entry before the single product edit is submitted; then consume static-close once",
     terminal_failure: "if static-close returns red, stop without another product edit or proof attempt",
     selector_contract: "copy each canonical selector exactly; grouping exact selectors is allowed, but ancestor prefixes, suffixes, aliases, and substitutions are forbidden",
     canonical_css_source: sourceFallbackCssSource,
+    canonical_acceptance_css_source: acceptanceCssSource || null,
+    acceptance_css: artifact.static_closure_manifest.required_css_declarations,
     html: sourceFallbackRelationships.map((relationship) => ({
       role: relationship.role,
       existing_carrier_selector: relationship.carrier_selector,
@@ -1575,6 +1639,11 @@ function staticEditGuardrails(artifact) {
       contract: "must-include",
       assertion,
     })),
+    ...artifact.static_closure_manifest.required_css_declarations.map((assertion, index) => ({
+      id: `required-css-declaration-${index + 1}`,
+      contract: "must-include-css-declaration",
+      assertion,
+    })),
     ...artifact.static_closure_manifest.forbidden_literals.map((assertion, index) => ({
       id: `forbidden-literal-${index + 1}`,
       contract: "must-not-include",
@@ -1598,6 +1667,7 @@ function staticEditGuardrails(artifact) {
   ];
   return {
     required_literals: artifact.static_closure_manifest.required_literals,
+    required_css_declarations: artifact.static_closure_manifest.required_css_declarations,
     forbidden_literals: artifact.static_closure_manifest.forbidden_literals,
     forbidden_patterns: artifact.static_closure_manifest.forbidden_patterns,
     forbidden_css_declarations: artifact.static_closure_manifest.forbidden_css_declarations,

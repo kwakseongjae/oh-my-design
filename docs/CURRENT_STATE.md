@@ -8,6 +8,7 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.710 candidate는 CSS acceptance obligation을 `required_css_declarations`로 구조화했다. `exact-value`는 값까지, `any-value`는 선언 존재만 static-close가 검증하고 둘 다 권장값을 `canonical_acceptance_css_source`로 짧은 fallback packet에 제공한다. 관계 CSS와 debt CSS를 첫 edit 전에 같은 copy-ready packet으로 받는다. focused70·lint/diff green이며 full/clean commit이 남았다.
 - 1.9.709 exact Luna/high 단일 진단은 valid85/85, resolved=true, 483,490ms, 2,122,570 tokens다. product edit/revision1, user handoff0이며 manifest-default path가 `index.html`로 정상 해석돼 1.9.707 path repair는 전이됐다.
 - static-close는 새 원인으로 failed1/success0/proof false다. 편집은 responsive 4-column→1-column을 구현해 objective85를 통과했지만 model-authored exact literal `repeat(4,minmax(0,1fr))` 대신 의미상 유효한 `repeat(4,minmax(180px,1fr))`를 썼다. terminal red 뒤 재편집·재검증 없이 종료했다.
 - 이는 missing-path 반복이 아니므로 hard pause가 아니다. 다음 bounded repair는 relationship canonical packet에 흩어진 acceptance-debt CSS 의무까지 짧은 copy-ready packet으로 승격한다. volcanic task 재실행·ranking·2.0 gate 반영은 금지다.
