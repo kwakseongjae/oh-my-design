@@ -160,7 +160,7 @@ export function selectWorkflowDecision(
   };
 
   const changeRequested = includesAny(value, [
-    'fix', 'improve', 'change', 'implement', 'build', 'redesign', '고쳐', '개선', '바꿔', '수정', '구현', '만들어', '直して', '改善', '実装', '修正', '改善', '實作',
+    'fix', 'repair', 'improve', 'change', 'implement', 'build', 'redesign', '고쳐', '개선', '바꿔', '수정', '구현', '만들어', '直して', '改善', '実装', '修正', '修改', '改进', '改進', '實作',
   ]);
   const auditRequested = includesAny(value, [
     'audit', 'review', 'analyze', 'analyse', 'diagnose', '검수', '감사', '리뷰', '분석', '진단', '監査', 'レビュー', '分析', '審查', '檢查',

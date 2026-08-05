@@ -92,7 +92,7 @@ payload remains a hard pause condition.
 | 10 runs/task + downloadable packages | Aggregator/package path exists; scale incomplete | Open |
 | 10-practitioner blind review | Assignment/gallery machinery exists; panel absent | External |
 | Independent task audit <5% | Audit rules exist; independent audit absent | External |
-| Activation + seven-day reuse | Instrumentation/calibration exists; production window pending | External |
+| Activation + seven-day reuse | Day-8 technical survivability 4/4 channels and 20/20 locale routes; behavioral lift remains unobserved | Partial |
 | Routing/ownership/reverify | Product contract implemented; broader repeated proof pending | Partial |
 
 ## Immediate queue

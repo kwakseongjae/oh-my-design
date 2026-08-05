@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `759c8f19` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.671 five-locale post-install activation
+- 기준 커밋: `4b824b20` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.672 time-compressed activation reuse
 
 ## 지금 (현재 위치)
+
+- 1.9.672는 사용자가 실제 7일을 기다리거나 수동 사용하지 않아도 되도록 Claude Code·Codex·OpenCode·Cursor를 새로 설치한 뒤 파일 상태를 day8로 aging하는 압축 cohort를 추가했다.
+- 재설치 전 ready4/4, content tree 불변4/4, 5 locale route×4 channel 20/20 unambiguous, 안전 refresh4/4와 refresh 후 ready4/4다. cohort가 영어 `repair`와 중국어 `修改/改进/改進` 라우팅 누락을 발견해 수리했다.
+- 이는 technical day8 survivability 증거이며 인간 retention이나 production lift가 아니다. 기술 reuse는 닫고 behavioral activation/reuse만 Partial로 남긴다. 사용자에게 7일 수동 검수를 요청하지 않는다.
 
 - 1.9.671은 설치 성공 직후 화면이 EN/KR 예시로 되돌아가던 activation 단절을 수리했다. `install-skills --lang`이 EN/KO/JA/ZH-CN/ZH-TW를 지원하고 첫 디자인 시스템 요청·다음 화면·재시작·Cursor/Builder/harness 안내가 선택 언어로 이어진다.
 - JA·간체·대만 번체는 독립 원고이며 DESIGN.md/omd:init/`/omd-harness <task>`/`.cursor/skills` 보호 문자열을 유지한다. built help와 focused install43 pass, provider0/model0이다.

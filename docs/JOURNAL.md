@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.672 time-compressed activation reuse
+- 4개 채널 설치 상태를 day8로 압축해 재설치 없이 ready/bytes/routing을 검증했다.
+- 20/20 locale routes와 safe refresh4/4가 green이고 repair/修改 계열 누락을 수리했다.
+- technical reuse만 accepted; 사용자 수동 7일 검수 없이 behavioral lift는 별도 경계로 유지한다.
+
 ## 2026-08-05 (Codex) · 1.9.671 five-locale post-install activation
 - install-skills --lang을 5개 언어로 열고 설치 직후 EN/KR 고정 안내를 제거했다.
 - 첫 prompt·continuation·restart·Cursor/Builder/harness 안내를 locale별 독립 원고로 연결했다.
