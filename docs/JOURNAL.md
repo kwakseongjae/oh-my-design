@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.709 result
+- fresh volcanic Luna/high는 UI85/85·revision1이고 manifest-default path는 전이됐다.
+- exact intake grid literal 불일치로 static success0/fail1·proof false다.
+- terminal red 뒤 재편집·재검증 없이 종료했고 동일 task 재실행은 금지했다.
+- 새 원인은 acceptance-debt CSS가 짧은 canonical packet 밖에 흩어진 packet completeness다.
+
 ## 2026-08-05 (Codex) · 1.9.709 preregistration
 - volcanic fresh task에 exact clean 1.9.707 skill을 결박한 Luna/high 1셀을 준비했다.
 - timeout720s·retry0·diagnostic only이며 provider/model exposure는0이다.

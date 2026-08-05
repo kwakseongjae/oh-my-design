@@ -8,6 +8,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.709 exact Luna/high 단일 진단은 valid85/85, resolved=true, 483,490ms, 2,122,570 tokens다. product edit/revision1, user handoff0이며 manifest-default path가 `index.html`로 정상 해석돼 1.9.707 path repair는 전이됐다.
+- static-close는 새 원인으로 failed1/success0/proof false다. 편집은 responsive 4-column→1-column을 구현해 objective85를 통과했지만 model-authored exact literal `repeat(4,minmax(0,1fr))` 대신 의미상 유효한 `repeat(4,minmax(180px,1fr))`를 썼다. terminal red 뒤 재편집·재검증 없이 종료했다.
+- 이는 missing-path 반복이 아니므로 hard pause가 아니다. 다음 bounded repair는 relationship canonical packet에 흩어진 acceptance-debt CSS 의무까지 짧은 copy-ready packet으로 승격한다. volcanic task 재실행·ranking·2.0 gate 반영은 금지다.
 - 1.9.709 canary는 exact fresh task `4dc07e93`/tree `a1d4db2f…`, exact clean skill source `264dc191`/hash `1980315c…`, Luna/high 1셀, timeout720s, retry0으로 준비됐다. locked plan `66bfbd4d…`, prepared state `990524f5…`, provider0/model exposure0이다. success는85/85+revision1+successful static closure1+failed0+proof compliance이며 같은 path omission 재발 시 hard pause다.
 - 1.9.708 신규 `volcanic-gas-sampler-custody-v0.1`은 exact task commit `4dc07e93`, tree `a1d4db2f…`, provider exposure0으로 잠겼다. 5 samplers/7 sample canisters/4 intake windows와 3 states, technician toggle, form, evidence boundary를 보존한다. 81 task validator+11 mutation green이고 raw baseline75/85다.
 - 다음은 exact 1.9.707 skill을 새 task에서 Luna/high1셀·timeout720s·retry0로 검증한다. success는85/85+revision1+successful static closure1+failed0+proof compliance다. 같은 task 재실행·ranking·2.0 gate 반영은 금지다.
