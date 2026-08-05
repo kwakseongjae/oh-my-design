@@ -3,14 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `36e8a038` 1.9.703 wildlife packet canary preregistration (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.703 Luna/high diagnostic complete, 1.9.704 canonical CSS packet candidate focused green
+- 기준 커밋: `a3656dfd` 1.9.704 canonical fallback CSS packet (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.703 Luna/high diagnostic archived, 1.9.704 clean full regression green
 
 ## 지금 (현재 위치)
 
 - 1.9.703 exact Luna/high 단일 진단은 valid85/85, resolved=true, 418,286ms, 2,156,519 tokens다. task/design/state/responsive/a11y/evidence gate가 모두 green이고 product edit/revision은 정확히1회, user handoff/browser retry는0이다.
 - source fallback opening과 relationship packet은 첫 edit 전에 전이됐다. 모델은 필요한 marker/name/tabindex/overflow/focus/nowrap를 모두 구현했지만 packet의 exact selector 앞에 `.decision` context를 붙였다. 최종 UI는 통과했으나 exact static-close가 CSS6건을 failed1/success0으로 거부해 proof compliance=false다. terminal failure 뒤 추가 edit은 하지 않아 stop 계약은 지켰다.
-- 같은 wildlife task는 재실행하지 않는다. 1.9.704 candidate는 target/evidence용 exact grouped selector를 완성된 `canonical_css_source`로 제공하고 ancestor prefix/suffix/alias/substitution을 명시적으로 금지한다. focused112·lint/diff green이다. dirty skill source 때문에 full suite의 preregistered-timeout attribution1건이 의도대로 invalid가 됐으므로 clean commit 뒤 full regression을 다시 고정해야 한다.
+- 같은 wildlife task는 재실행하지 않는다. 1.9.704 clean commit `a3656dfd`는 target/evidence용 exact grouped selector를 완성된 `canonical_css_source`로 제공하고 ancestor prefix/suffix/alias/substitution을 명시적으로 금지한다. focused112, clean full755 pass/3 skip, lint/diff green이다.
 - 1.9.699 clean commit `b5230a70`은 full755 pass/3 skip, lint/diff green으로 고정됐다.
 - 1.9.700 exact `b5230a70` Luna/high 단일 진단은 valid81/85, resolved=false, 689,553ms, 4,134,638 tokens다. snapshot bootstrap→artifact-only reconcile→fallback opening은 전이됐고 target/evidence distinct relationship carrier 계약도 실행됐다.
 - 첫 product edit은 carrier marker/name/tabindex를 적용했지만 overflow/focus/nowrap 6개 CSS 의무를 누락했다. static-close는 failed1/success0으로 정확히 거부했고, model은 terminal failure 뒤 두 번째 edit으로 CSS를 보완해 proof compliance=false다. 최종 UI의 objective 미해결 원인은 serious color contrast다.
