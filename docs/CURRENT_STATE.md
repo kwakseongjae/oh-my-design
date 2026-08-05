@@ -8,6 +8,7 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.709 canary는 exact fresh task `4dc07e93`/tree `a1d4db2f…`, exact clean skill source `264dc191`/hash `1980315c…`, Luna/high 1셀, timeout720s, retry0으로 준비됐다. locked plan `66bfbd4d…`, prepared state `990524f5…`, provider0/model exposure0이다. success는85/85+revision1+successful static closure1+failed0+proof compliance이며 같은 path omission 재발 시 hard pause다.
 - 1.9.708 신규 `volcanic-gas-sampler-custody-v0.1`은 exact task commit `4dc07e93`, tree `a1d4db2f…`, provider exposure0으로 잠겼다. 5 samplers/7 sample canisters/4 intake windows와 3 states, technician toggle, form, evidence boundary를 보존한다. 81 task validator+11 mutation green이고 raw baseline75/85다.
 - 다음은 exact 1.9.707 skill을 새 task에서 Luna/high1셀·timeout720s·retry0로 검증한다. success는85/85+revision1+successful static closure1+failed0+proof compliance다. 같은 task 재실행·ranking·2.0 gate 반영은 금지다.
 - 1.9.706 exact Luna/high 단일 진단은 valid85/85, resolved=true, 491,459ms, 2,404,824 tokens다. canonical CSS packet이 exact grouped selector로 전이해 product revision1과 successful static closure1을 만들었고 user handoff0·unsupported claim0이다.

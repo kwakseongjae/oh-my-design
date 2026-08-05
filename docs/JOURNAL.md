@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.709 preregistration
+- volcanic fresh task에 exact clean 1.9.707 skill을 결박한 Luna/high 1셀을 준비했다.
+- timeout720s·retry0·diagnostic only이며 provider/model exposure는0이다.
+- success는85/85·revision1·static success1/fail0·proof true로 고정했다.
+- 같은 missing-path 원인 재발 시 hard pause하고 이 셀은 재실행하지 않는다.
+
 ## 2026-08-05 (Codex) · 1.9.708 fresh volcanic task
 - 미노출 volcanic gas-sampler custody task를 provider exposure0으로 잠갔다.
 - 81-task validator/mutation green; raw baseline75/85, responsive+a11y red다.
