@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.674",
+  "status": "CLI_ACTIVATION_COMPARISON_ACCEPTED",
+  "unresolved_frontier_gate": "activation-and-seven-day-reuse",
+  "bounded_hypothesis": "Current OmD should provide a machine-checkable actionable workflow after install and doctor where the exact v1.9.0 release required an external documentation or agent-inference step.",
+  "frozen_denominator": {
+    "baseline": {
+      "tag": "v1.9.0",
+      "commit": "ce6636c1f1bb82ee50311f1383cebe8c9ceb3f69"
+    },
+    "candidate": {
+      "commit": "6d17a669c62d7704929e9733c782cb3e09401556"
+    },
+    "channel": "codex",
+    "locale": "ko",
+    "trials_per_system": 3,
+    "order": ["baseline", "candidate", "candidate", "baseline", "baseline", "candidate"],
+    "human_interventions": 0,
+    "provider_calls": 0,
+    "model_exposures": 0
+  },
+  "baseline": {
+    "install_success": "3/3",
+    "needs_design_md_doctor": "3/3",
+    "structured_route_success": "0/3",
+    "steps_to_actionable_workflow": null,
+    "median_install_ms": 133,
+    "median_total_ms_until_route_failure": 196
+  },
+  "candidate": {
+    "install_success": "3/3",
+    "needs_design_md_doctor": "3/3",
+    "structured_route_success": "3/3",
+    "selected_workflow": "repair-existing-ui",
+    "ambiguous": false,
+    "steps_to_actionable_workflow": 3,
+    "median_install_ms": 157,
+    "median_total_ms_to_actionable_workflow": 224
+  },
+  "decision": "Current closes the local structured-routing activation gap. Baseline time and step count are right-censored because the route command does not exist; do not claim a speed ratio.",
+  "first_failure_rule": "Any install failure, candidate route failure, ambiguous candidate route, hidden human step, or provider call fails the comparison.",
+  "claim_boundary": "This compares CLI capability and local orchestration only. It does not compare generated UI quality, human comprehension, retention, or model performance.",
+  "focused_test": {
+    "file": "test/unit/cli-funnel-comparison.test.mjs",
+    "passed": 2,
+    "failed": 0
+  }
+}

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.674 CLI activation comparison
+- exact v1.9.0 vs current를 Codex/KO 3회씩 B/C/C/B/B/C로 로컬 비교했다.
+- baseline route0/3 right-censored, current actionable route3/3·3 steps·median224ms다.
+- 속도/UI 품질 우위는 주장하지 않고 structured activation gap만 닫았다.
+
 ## 2026-08-05 (Codex) · 1.9.673 local activation funnel
 - built CLI의 install→doctor→establish→fixture→ready→repair/reverify를 4 host에서 자동 실행했다.
 - 4/4, human0/provider0/model0, 최종1,584ms이며 fail-closed validator와 npm script를 추가했다.

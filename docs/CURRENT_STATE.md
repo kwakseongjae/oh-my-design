@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `9efca40b` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.673 local activation funnel
+- 기준 커밋: `6d17a669` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.674 CLI activation comparison
 
 ## 지금 (현재 위치)
+
+- 1.9.674는 exact v1.9.0 tag와 current를 Codex/KO 동일 조건에서 B/C/C/B/B/C 3회씩 비교했다. 양쪽 install과 needs-DESIGN doctor는3/3이다.
+- v1.9.0은 route command가 없어 actionable workflow0/3·step/time right-censored다. current는 repair-existing-ui3/3, ambiguity0, actionable workflow까지3 steps, median224ms다. install median은 baseline133ms/current157ms지만 baseline은 route failure라 속도 비율을 주장하지 않는다.
+- local structured-routing activation gap만 닫혔다. UI 품질·이해도·retention·model performance 비교가 아니며 사용자 개입0/provider0/model0이다.
 
 - 1.9.673은 built CLI를 사용해 4개 host에서 설치→pre-DESIGN doctor→design-system route→deterministic DESIGN fixture→ready doctor→existing-UI repair route→same-surface reverify 계약을 자동 실행한다.
 - Claude Code/EN, Codex/KO, OpenCode/ZH-CN, Cursor/JA가 4/4 통과했고 repair ambiguity0, human0, provider0, model exposure0, 최종 관측1,584ms다. validator는 channel/state/route/reverify/human/provider/30s budget을 fail-close한다.
