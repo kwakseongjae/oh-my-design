@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.665 strict packet exact source pin
+- strict packet candidate를 exact commit/source tree/skill tree로 고정했다.
+- provider0/model0/promotion false, fresh transfer 전 우위 주장은 금지다.
+- no-remote 조건에서 local lane 완료; 사용자 visual review는 필요 없다.
+
 ## 2026-08-05 (Codex) · 1.9.664 source-attestation cache hygiene
 - py_compile 생성 `__pycache__`가 skill source를 dirty로 오판시키는 원인을 확인했다.
 - interpreter-version 무관 generic ignore로 attribution 오염을 차단했다.

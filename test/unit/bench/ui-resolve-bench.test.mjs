@@ -7688,6 +7688,44 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(pin.claim_boundary).toContain("not a promotion");
   });
 
+  it("pins the exact strict packet operator boundary before fresh model exposure", () => {
+    const pin = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/strict-plan-packet-pin-1.9.665/PIN.json",
+    ), "utf8"));
+    expect(pin).toMatchObject({
+      product_version: "1.9.665",
+      status: "PINNED_PROVIDER_ZERO",
+      provider_calls: 0,
+      model_exposures: 0,
+      promotion: false,
+      candidate: {
+        system_id: "omd-strict-plan-packet-candidate",
+        vendor_version: "omd-1.9.664",
+        source_commit: "28bcd9fced81eb84dd38eab0df48041b09494bfd",
+        source_tree: "98c295bcb3609c5a4988ddab455afb2250f1f9a3",
+        skill_tree: "de59c6331f4202d23d5307fcac0ea2ebda759cbc",
+      },
+      repair_contract: {
+        accessible_name_rows_exactly_match_diagnosis: true,
+        surplus_row_rejected: true,
+        missing_row_rejected: true,
+        surplus_operator_field_rejected: true,
+        rejection_before_artifact_mutation: true,
+      },
+      next_exposure_contract: {
+        control: "omd-guarded-plan-packet-candidate",
+        candidate: "omd-strict-plan-packet-candidate",
+        claim_before_transfer: "forbidden",
+      },
+    });
+    expect(competitors.variants["omd-strict-plan-packet-candidate"]).toMatchObject({
+      vendor_dir: "omd-1.9.664",
+      commit: "28bcd9fced81eb84dd38eab0df48041b09494bfd",
+    });
+    expect(pin.claim_boundary).toContain("not a promotion");
+  });
+
   it("locks a neutral model-unseen subsea cable handoff task with a meaningfully red baseline", () => {
     const task = JSON.parse(readFileSync(join(
       repoRoot,

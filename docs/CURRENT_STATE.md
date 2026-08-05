@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `15bdbc96` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.664 source-attestation Python cache hygiene
+- 기준 커밋: `28bcd9fc` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.665 strict packet exact source pin
 
 ## 지금 (현재 위치)
+
+- 1.9.665는 strict packet source를 commit `28bcd9fc...`, source tree `98c295bc...`, skill tree `de59c633...`로 exact pin했다. system id는 `omd-strict-plan-packet-candidate`다.
+- provider0/model0/promotion false이며 fresh transfer 전 우위 주장은 금지다. future control은 exact `omd-guarded-plan-packet-candidate`다.
+- no-remote 조건에서 이 repair의 의미 있는 다음 증거는 만들 수 없다. 현재 사용자 검수도 필요 없다.
 
 - 1.9.664는 Python interpreter version별 `__pycache__`가 committed skill source를 dirty/non-publishable로 오판하게 하던 attestation 오염을 generic ignore로 막는다.
 - 발견 계기는 full suite의 preregistered timeout validity가 valid에서 invalid-attribution으로 바뀐 것이며, 제품/timeout 정책을 수정하지 않고 생성 캐시 경계만 바로잡았다.
