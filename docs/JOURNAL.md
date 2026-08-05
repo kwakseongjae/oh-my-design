@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.716 prepared and attested
+- fresh root는 provider/model0·untouched product로 admission을 통과했다.
+- sealed artifact/source contract/inventory hash와 provider non-mutable이 attested다.
+- plan `7c152911…`, state `ca255f95…`; commit 뒤 단일 셀을 실행한다.
+
 ## 2026-08-06 (Codex) · 1.9.716 sealed-admission preregistration
 - 1.9.715 non-executed root를 보존하고 새 attested root를 잠갔다.
 - task/baseline/skill/model/effort/timeout/no-retry는 그대로다.

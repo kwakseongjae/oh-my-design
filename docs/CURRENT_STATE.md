@@ -8,6 +8,8 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.716 fresh root는 prepared-provider-zero admission을 통과했다. locked plan `7c152911…`, state `ca255f95…`, skill `92057d24…`, sealed artifact `51f3ade9…`, source contract `cbeffd2d…`, inventory `9ff364fe…`이며 deterministic_reflow normalization/attestation이 true다.
+- 다음은 PREPARATION checkpoint를 commit한 뒤 `max-new-cells=1`로 단일 provider execution을 시작한다. 실행 중간 변경·retry·replacement·같은 task replay는 금지다.
 - 1.9.716은 non-executed 1.9.715 root를 대체하는 새 sealed-admission canary다. task/baseline/skill bytes/model/effort/timeout/no-retry는 같고, 새 root만 admission hash attestation 이후에 다시 잠근다. provider/model exposure는0이다.
 - 1.9.715 preparation audit를 강화해 task가 요구한 sealed artifact의 byte hash, source-contract hash, inventory hash, provider_mutable=false를 admission에서 다시 검증한다. artifact 1-byte tamper negative가 fail-close하고 focused5·lint/diff가 green이다.
 - 최초 prepared root는 이 새 auditor/manifest bit 이전 산출물이므로 폐기하지 않고 non-executed smoke로 남긴다. 다음은 이 admission hardening을 clean commit한 뒤 새 output root/새 experiment suffix로 다시 preregister해야 하며 기존 root 실행은 금지다.
