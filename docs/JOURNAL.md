@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.700/701 first-edit packet
+- Luna 진단은 snapshot/opening/carrier 계약까지 전이했지만 첫 edit에서 CSS6개를 누락했다.
+- failed static-close 뒤 second edit을 해 compliance=false; 최종81/85는 contrast gate도 실패했다.
+- exact HTML/CSS `source_fallback_patch_contract`를 우선 packet으로 추가했고 focused69 green이다.
+- 같은 공개 task 반복은 중단하고 clean commit 뒤 full attribution regression을 재실행한다.
+
 ## 2026-08-05 (Codex) · 1.9.698/699 fallback snapshot
 - Luna 진단은 weak UI81/85를 failed closure/compliance false로 정확히 차단했다.
 - browser wrapper가 stdin 전 실패해 snapshot이 없다는 다음 실행 병목을 확인했다.

@@ -249,6 +249,9 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("새 browser나 fallback을 만들지 않는다");
     expect(skill).toContain("pre-edit fit-plan browser 1회 + task 전체 deterministic static-close helper 1회 + post-edit acceptance browser 1회");
     expect(skill).toContain("static_edit_guardrails");
+    expect(skill).toContain("static_edit_guardrails.source_fallback_patch_contract");
+    expect(skill).toContain("literal first-edit payload");
+    expect(skill).toContain("두 번째 product edit은 금지한다");
     expect(skill).toContain("word-break: normal");
     expect(skill).toContain("snapshot-backed row selector");
     expect(skill).toContain("제품 edit에서 새로 붙일 `.event-log-form` 같은 class");

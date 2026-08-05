@@ -921,9 +921,49 @@ describe("compact reflow artifact helper", () => {
     ], { cwd: root, encoding: "utf8" }));
     expect(opened.static_edit_guardrails.source_fallback_relationships).toHaveLength(2);
     expect(opened.static_edit_guardrails.first_edit_checklist).toContainEqual(expect.objectContaining({
-      contract: "must-satisfy-relationship-carrier",
+      contract: "must-apply-source-fallback-patch",
       assertion: expect.objectContaining({ role: "target", accessible_name: "Custody target relationship" }),
     }));
+    expect(opened.static_edit_guardrails.first_edit_checklist[0]).toMatchObject({
+      id: "source-fallback-relationship-1",
+      contract: "must-apply-source-fallback-patch",
+    });
+    expect(opened.static_edit_guardrails.source_fallback_patch_contract).toMatchObject({
+      apply_order: expect.stringContaining("single product edit"),
+      terminal_failure: expect.stringContaining("stop without another product edit"),
+      html: [
+        {
+          role: "target",
+          existing_carrier_selector: "[data-decision] > .target-carrier",
+          required_attributes: {
+            "data-omd-source-fallback-carrier": "target",
+            "aria-label": "Custody target relationship",
+            tabindex: "0",
+          },
+          must_contain_only_decision_roles: ["target"],
+          must_exclude_decision_roles: ["evidence", "state", "action"],
+        },
+        expect.objectContaining({ role: "evidence" }),
+      ],
+      css: expect.arrayContaining([
+        {
+          role: "target",
+          selector: '[data-omd-source-fallback-carrier="target"]',
+          required_declarations: { "overflow-x": "auto" },
+        },
+        {
+          role: "target",
+          selector: '[data-omd-source-fallback-carrier="target"]:focus-visible',
+          required_declarations: { outline: "2px solid currentColor" },
+        },
+        {
+          role: "target",
+          selector: '[data-bench-decision-role="target"]',
+          required_declarations: { "white-space": "nowrap" },
+          forbidden_declarations: { "overflow-x": ["auto", "scroll"] },
+        },
+      ]),
+    });
 
     const validSource = `<style>[data-bench-decision-role="target"], [data-bench-decision-role="evidence"] { white-space: nowrap; }\n[data-omd-source-fallback-carrier="target"], [data-omd-source-fallback-carrier="evidence"] { overflow-x: auto; }\n[data-omd-source-fallback-carrier="target"]:focus-visible, [data-omd-source-fallback-carrier="evidence"]:focus-visible { outline: 2px solid currentColor; }</style>${preEditSource}`
       .replace(

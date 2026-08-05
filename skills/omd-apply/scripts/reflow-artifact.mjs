@@ -1522,7 +1522,45 @@ function write(path, artifact) {
 
 function staticEditGuardrails(artifact) {
   const sourceFallbackRelationships = artifact.source_fallback_relationships ?? [];
+  const sourceFallbackPatchContract = sourceFallbackRelationships.length > 0 ? {
+    apply_order: "apply every html and css entry before the single product edit is submitted; then consume static-close once",
+    terminal_failure: "if static-close returns red, stop without another product edit or proof attempt",
+    html: sourceFallbackRelationships.map((relationship) => ({
+      role: relationship.role,
+      existing_carrier_selector: relationship.carrier_selector,
+      required_attributes: {
+        "data-omd-source-fallback-carrier": relationship.role,
+        "aria-label": relationship.accessible_name,
+        tabindex: "0",
+      },
+      must_contain_only_decision_roles: [relationship.role],
+      must_exclude_decision_roles: relationship.excluded_roles,
+    })),
+    css: sourceFallbackRelationships.flatMap((relationship) => ([
+      {
+        role: relationship.role,
+        selector: relationship.marker_selector,
+        required_declarations: { "overflow-x": "auto" },
+      },
+      {
+        role: relationship.role,
+        selector: `${relationship.marker_selector}:focus-visible`,
+        required_declarations: { outline: "2px solid currentColor" },
+      },
+      {
+        role: relationship.role,
+        selector: relationship.row_selector,
+        required_declarations: { "white-space": "nowrap" },
+        forbidden_declarations: { "overflow-x": ["auto", "scroll"] },
+      },
+    ])),
+  } : null;
   const firstEditChecklist = [
+    ...sourceFallbackRelationships.map((assertion, index) => ({
+      id: `source-fallback-relationship-${index + 1}`,
+      contract: "must-apply-source-fallback-patch",
+      assertion,
+    })),
     ...artifact.static_closure_manifest.required_literals.map((assertion, index) => ({
       id: `required-literal-${index + 1}`,
       contract: "must-include",
@@ -1548,11 +1586,6 @@ function staticEditGuardrails(artifact) {
       contract: "must-have-exact-count",
       assertion,
     })),
-    ...sourceFallbackRelationships.map((assertion, index) => ({
-      id: `source-fallback-relationship-${index + 1}`,
-      contract: "must-satisfy-relationship-carrier",
-      assertion,
-    })),
   ];
   return {
     required_literals: artifact.static_closure_manifest.required_literals,
@@ -1561,6 +1594,7 @@ function staticEditGuardrails(artifact) {
     forbidden_css_declarations: artifact.static_closure_manifest.forbidden_css_declarations,
     count_literals: artifact.static_closure_manifest.count_literals,
     source_fallback_relationships: sourceFallbackRelationships,
+    source_fallback_patch_contract: sourceFallbackPatchContract,
     first_edit_checklist: firstEditChecklist,
     first_edit_checklist_contract: "satisfy every item in the single product edit before consuming static-close; a red static-close is terminal",
     forbidden_pattern_semantics: "absence-required-delete-matching-declaration",
