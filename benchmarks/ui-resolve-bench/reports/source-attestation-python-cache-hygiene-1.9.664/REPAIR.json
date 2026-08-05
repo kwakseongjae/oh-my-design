@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.664",
+  "status": "LOCAL_SOURCE_ATTESTATION_HYGIENE_ACCEPTED",
+  "unresolved_frontier_gate": "verified-skill-lift",
+  "bounded_hypothesis": "If interpreter-generated Python cache directories are ignored generically, deterministic syntax checks cannot make an otherwise committed skill source unpublished or invalidate unrelated benchmark attribution.",
+  "candidate_delta": "Add the standard recursive __pycache__/ ignore rule instead of relying on one interpreter-specific pyc entry.",
+  "observed_failure": {
+    "test": "scores and checkpoints a preregistered timeout without replaying its provider",
+    "expected_validity": "valid",
+    "observed_validity_before_repair": "invalid-attribution",
+    "root_cause": "an untracked Python-version-specific cache file made the local skill source attestation dirty and non-publishable"
+  },
+  "acceptance": {
+    "python_cache_ignored_across_interpreter_versions": true,
+    "source_attestation_not_changed_by_py_compile": true,
+    "timeout_policy_contract_unchanged": true,
+    "generated_cache_not_committed": true
+  },
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "rollback_gate": "Revert if canonical Python source or intentional fixtures become ignored.",
+  "claim_boundary": "This repairs local source-attestation hygiene only. It creates no model-quality or skill-lift evidence.",
+  "next": "Rerun the full suite from the committed strict-packet source, then pin the exact repaired candidate."
+}

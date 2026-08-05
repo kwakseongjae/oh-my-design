@@ -4,6 +4,7 @@ dist/
 /skills/omd-reference-capture/scripts/
 .next/
 *.tsbuildinfo
+__pycache__/
 .DS_Store
 .env
 .env.local

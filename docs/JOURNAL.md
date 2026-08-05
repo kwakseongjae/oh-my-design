@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.664 source-attestation cache hygiene
+- py_compile 생성 `__pycache__`가 skill source를 dirty로 오판시키는 원인을 확인했다.
+- interpreter-version 무관 generic ignore로 attribution 오염을 차단했다.
+- provider0/model0; 다음은 full suite 재검증과 exact repair pin이다.
+
 ## 2026-08-05 (Codex) · 1.9.663 strict packet operator boundary
 - plan-apply가 diagnosis-required accessible-name key만 정확히 받도록 fail-close했다.
 - surplus/missing row와 다른 operator field를 mutation 전에 거부한다.

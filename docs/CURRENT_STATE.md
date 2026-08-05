@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `4e2e6a3e` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.663 strict packet operator boundary
+- 기준 커밋: `15bdbc96` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.664 source-attestation Python cache hygiene
 
 ## 지금 (현재 위치)
+
+- 1.9.664는 Python interpreter version별 `__pycache__`가 committed skill source를 dirty/non-publishable로 오판하게 하던 attestation 오염을 generic ignore로 막는다.
+- 발견 계기는 full suite의 preregistered timeout validity가 valid에서 invalid-attribution으로 바뀐 것이며, 제품/timeout 정책을 수정하지 않고 생성 캐시 경계만 바로잡았다.
+- 다음은 full suite를 다시 통과시킨 뒤 strict packet repair를 exact commit/tree로 pin하는 1.9.665다.
 
 - 1.9.663은 `plan-apply`가 diagnosis가 요구한 accessible-name row key의 정확한 집합만 받도록 fail-close한다. surplus/missing row와 다른 operator field는 artifact mutation 전에 거부한다.
 - bounded fixture에서 정상 exact packet은 그대로 close되고 세 변조 유형은 모두 거부된다. provider0/model0/browser0이며 기존 hash guard와 no-edit-before-close 계약은 유지된다.
