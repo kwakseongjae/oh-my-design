@@ -8,6 +8,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.714 신규 `abyssal-sediment-core-custody-v0.1`은 provider/model exposure0으로 잠겼다. 83-task validator와 source-contract admission이 green이며 raw baseline75/85로 contract/state/design/evidence green, responsive+a11y red다.
+- 실제 `prepare-sandbox`가 clean `1f267b3c` OmD skill에서 provider-sealed artifact `51f3ade9…`, source contract `cbeffd2d…`, inventory `9ff364fe…`를 생성했다. `source-packet` 전후 artifact hash는 동일했고 structured relationship/acceptance CSS가 모두 출력됐다.
+- 다음은 1.9.714 task lock을 clean commit한 뒤 exact task/tree와 exact 1.9.713 skill을 Luna/high 단일 canary에 preregister한다. timeout720s·retry0·public ranking 제외이며 success는85/85+revision1+static success1/fail0+user handoff0+proof compliance다.
 - 사용자 승인으로 repeated-root hard pause의 다음 범위를 **모델 작성 manifest 제거**로 재설정했다. 1.9.713은 task의 `omd_reflow_source_contract`를 provider/model 실행 전에 OmD helper가 `.omd/reflow-closure.json`으로 결정론 봉인한다. 모델은 read-only `source-packet`을 소비하고 product를 한 번만 고친 뒤 `static-close`만 실행한다.
 - sealer는 acceptance debt의 CSS를 structured declarations로 병합하며 canonical fallback CSS를 스스로 금지하는 literal/pattern을 provider 노출 전에 거부한다. task validator는 schema0.1·entry 일치·nonempty carrier/row/debt·debt별 structured CSS를 admission에서 검사한다.
 - prepare-sandbox는 exact OmD variant에만 sealed artifact와 immutable instruction/attestation을 주입한다. legacy 일반 프로젝트의 model-authored `source-fallback-open`은 호환 경로로만 남는다. focused119와 lint/diff는 green이고 full suite는 762 pass/3 skip, clean-tree attribution fixture1건만 dirty source 때문에 예상대로 red였다.

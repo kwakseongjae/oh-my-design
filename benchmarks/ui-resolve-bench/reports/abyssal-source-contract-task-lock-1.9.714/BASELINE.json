@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.714",
+  "task_id": "abyssal-sediment-core-custody-v0.1",
+  "variant_id": "omd-portable",
+  "deterministic_score": 75,
+  "deterministic_max": 85,
+  "critical_gates": {
+    "task_contract": true,
+    "state_journey": true,
+    "responsive": false,
+    "accessibility": false,
+    "design_grounding": true,
+    "evidence_honesty": true
+  },
+  "intended_failures": [
+    "fixed-width core and intake grids overflow narrow conditions",
+    "decision relationship minimum widths collide with the action",
+    "short action copy exceeds the one-line budget under constrained conditions",
+    "muted canvas copy has 4.47:1 contrast"
+  ]
+}

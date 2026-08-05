@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.714 fresh sealed-contract task
+- abyssal sediment custody task를 provider/model exposure0으로 새로 잠갔다.
+- raw baseline75/85이며 responsive+a11y만 의도적으로 red다.
+- prepare-sandbox가 sealed artifact를 만들고 source-packet hash 불변을 확인했다.
+- 다음은 clean task commit 뒤 Luna/high 단일 preregistration이다.
+
 ## 2026-08-06 (Codex) · 1.9.713 provider-sealed source contract
 - model-authored verification manifest를 provider 전 deterministic sealer로 교체했다.
 - source-packet은 read-only이고 acceptance CSS 병합·자기모순 금지는 실행 전에 fail-close한다.
