@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.693/694 named-carrier diagnostic
+- Luna 단일 진단은 valid81/85, resolved=false로 named carrier 전이가 실패했다.
+- static-close exit1을 성공으로 센 proof false-positive를 발견해 completion status 기반으로 차단했다.
+- full749 pass/3 skip·lint green; 다음은 helper-supported source fallback closure다.
+
 ## 2026-08-05 (Codex) · 1.9.691 browser fallback transfer
 - Luna field-sample 6/6 valid; Raw77/75/77, OmD79/81/81, 양쪽 resolved0/3이다.
 - OmD는 user handoff0·edit1·closure1·proof3/3로 1.9.690 process fix를 전달했다.

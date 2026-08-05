@@ -105,6 +105,7 @@ function codexAction(event, index) {
   if (item.type === "command_execution") {
     return {
       index,
+      event_id: item.id ?? null,
       kind: "command",
       runtime: "codex",
       command: String(item.command ?? ""),
@@ -126,9 +127,20 @@ function codexAction(event, index) {
 }
 
 export function normalizeProofTrace(events) {
+  const codexCommandOutcomes = new Map(events.flatMap((event) => {
+    const item = event?.item ?? {};
+    if (event?.type !== "item.completed" || item.type !== "command_execution" || !item.id) return [];
+    const failed = item.status === "failed" || (Number.isInteger(item.exit_code) && item.exit_code !== 0);
+    const succeeded = item.status === "completed" && item.exit_code === 0;
+    return [[item.id, failed ? "failed" : succeeded ? "succeeded" : "unknown"]];
+  }));
   return events.flatMap((event, index) => {
     const action = cursorAction(event, index) ?? codexAction(event, index);
-    return action ? [action] : [];
+    if (!action) return [];
+    if (action.runtime === "codex" && action.kind === "command") {
+      action.command_outcome = codexCommandOutcomes.get(action.event_id) ?? "unknown";
+    }
+    return [action];
   });
 }
 
@@ -179,6 +191,7 @@ export function classifyProofTrace(events) {
       index: action.index,
       command: action.kind === "native-tool" ? action.tool : action.command,
       mechanism: action.kind === "native-tool" ? "native-tool" : "shell",
+      ...(action.kind === "command" ? { command_outcome: action.command_outcome ?? "unknown" } : {}),
       ...classification,
     });
   }
@@ -186,12 +199,18 @@ export function classifyProofTrace(events) {
   for (const revision of revisions) {
     const browserCommands = revision.commands.filter((action) => action.browser);
     const recoveryProbes = revision.commands.filter((action) => action.recovery_probe);
-    const staticCommands = revision.commands.filter((action) => action.static_verification);
+    const staticCommands = revision.commands.filter(
+      (action) => action.static_verification && action.command_outcome !== "failed",
+    );
+    const failedStaticCommands = revision.commands.filter(
+      (action) => action.static_verification && action.command_outcome === "failed",
+    );
     const firstBrowserIndex = browserCommands.at(0)?.index ?? null;
     const afterReady = firstBrowserIndex == null
       ? []
       : revision.commands.filter((action) => action.index > firstBrowserIndex && !action.neutral);
     revision.static_closure_count = staticCommands.length;
+    revision.failed_static_closure_count = failedStaticCommands.length;
     revision.browser_mechanism_count = browserCommands.length;
     revision.browser_recovery_probe_count = recoveryProbes.length;
     revision.browser_recovery_count = recoveryProbes.length + Math.max(0, browserCommands.length - 1);
@@ -203,10 +222,12 @@ export function classifyProofTrace(events) {
   const postEditCommands = revisions.flatMap((revision) => revision.commands);
   const browserRecoveryCount = sum("browser_recovery_count");
   const duplicateStaticClosureCount = sum("duplicate_static_closure_count");
+  const failedStaticClosureCount = sum("failed_static_closure_count");
   const verificationAfterReadyCount = sum("verification_after_ready_count");
   const analyzable = runtimes.length === 1 && productEdits.length > 0;
   const compliancePass = analyzable
     && browserRecoveryCount === 0
+    && failedStaticClosureCount === 0
     && duplicateStaticClosureCount === 0
     && verificationAfterReadyCount === 0;
 
@@ -219,6 +240,7 @@ export function classifyProofTrace(events) {
     last_product_edit_event_index: lastProductEditIndex,
     post_edit_command_count: postEditCommands.length,
     static_closure_count: sum("static_closure_count"),
+    failed_static_closure_count: failedStaticClosureCount,
     browser_mechanism_count: sum("browser_mechanism_count"),
     browser_recovery_probe_count: sum("browser_recovery_probe_count"),
     browser_recovery_count: browserRecoveryCount,

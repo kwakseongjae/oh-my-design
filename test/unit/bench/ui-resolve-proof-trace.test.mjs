@@ -27,9 +27,14 @@ const codexEdit = (path = "/tmp/run/index.html") => ({
   item: { type: "file_change", changes: [{ path, kind: "update" }] },
 });
 
-const codexCommand = (command) => ({
+const codexCommand = (command, id) => ({
   type: "item.started",
-  item: { type: "command_execution", command },
+  item: { id, type: "command_execution", command },
+});
+
+const codexCommandCompleted = (id, { exitCode = 0, status = "completed" } = {}) => ({
+  type: "item.completed",
+  item: { id, type: "command_execution", command: "ignored", exit_code: exitCode, status },
 });
 
 const codexNativeBrowser = (tool, server = "agent-browser") => ({
@@ -159,6 +164,24 @@ describe("proof trace contract", () => {
       duplicate_static_closure_count: 0,
       verification_after_ready_count: 0,
       compliance_pass: true,
+    });
+  });
+
+  it("does not promote a failed static closure command to proof compliance", () => {
+    const result = classifyProofTrace([
+      codexEdit(),
+      codexCommand("node reflow-artifact.mjs static-close .omd/reflow-closure.json index.html", "static-1"),
+      codexCommandCompleted("static-1", { exitCode: 1, status: "failed" }),
+      codexCommand("browser-harness capture_screenshot", "browser-1"),
+      codexCommandCompleted("browser-1"),
+    ]);
+    expect(result).toMatchObject({
+      runtime: "codex",
+      analyzable: true,
+      static_closure_count: 0,
+      failed_static_closure_count: 1,
+      browser_mechanism_count: 1,
+      compliance_pass: false,
     });
   });
 

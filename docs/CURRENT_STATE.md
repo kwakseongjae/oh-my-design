@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.691` field-sample browser fallback transfer checkpoint (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.691 Luna transfer complete, process pass / quality gate fail
+- 기준 커밋: 현재 `1.9.694` failed-proof auditor repair checkpoint (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.693 diagnostic complete, 1.9.694 proof false-positive closed
 
 ## 지금 (현재 위치)
+
+- 1.9.693 exact `37f3bde` Luna/high 단일 진단은 valid 81/85, resolved=false다. named target/evidence carrier가 실제 구현되지 않았고 320px·200%에서 concise evidence wrap과 document overflow가 남았다. 공개 과제 단일-arm 진단이라 frontier gate와 public ranking에는 반영하지 않는다.
+- 같은 run에서 `static-close`가 exit1인데 proof trace가 invocation만 세어 compliance pass로 잘못 승격하는 auditor 결함을 발견했다. 1.9.694는 Codex command completion status를 결합해 successful static closure0·failed static closure1·compliance false로 fail-close한다. full749 pass/3 skip, lint green이다.
+- browser plan infrastructure 실패 뒤 source-backed edit은 허용하면서 후속 `static-close`는 measured plan closure를 요구하는 내부 계약 모순이 남았다. 다음은 별도 우회 verifier가 아니라 shipped helper에 machine-observed source-fallback closure를 추가하고 named target/evidence carrier 계약을 정적으로 고정하는 것이다.
 
 - 1.9.690에서 non-interactive browser permission/attach failure를 사용자 checkpoint로 바꾸지 않고 source-backed bounded repair로 계속하는 `omd:apply` 계약을 커밋했다. full747 pass/3 skip, lint green이다.
 - 1.9.691 Luna/high field-sample transfer는 6/6 valid다. Raw 77/75/77, OmD 79/81/81이며 양쪽 resolved0/3이다. OmD objective pair는 3/3 우세(+2.35~+7.06pp)지만 resolved lift0, Reliability@3=0이라 frontier gate는 partial을 유지한다.
@@ -3247,9 +3251,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. non-interactive fallback에서 protected compound target/concise evidence의 fit을 증명할 수 없으면 distinct named relationship carrier comparison-scroll로 fail-close한다.
-2. passive text 자체, action 포함 decision carrier, typography shrink, word-break, page overflow를 계속 금지한다.
-3. focused/full acceptance 뒤 exact repaired skill을 새 commit/hash로 pin하고 fresh transfer cell에서 UI resolved까지 재검증한다.
+1. plan browser가 navigation 전에 infrastructure error로 끝난 경우에만 여는 shipped `source-fallback-open`/static closure state를 설계한다. pre-edit product hash와 manifest를 helper가 잠그고 수동 성공 표시는 허용하지 않는다.
+2. fallback manifest가 target/evidence 각각의 distinct named carrier, exact text/nowrap, accessible name, tabindex/focus-visible, state/action exclusion을 정적으로 검증하게 한다.
+3. focused/full acceptance 뒤 exact repaired skill을 새 commit/hash로 pin하고 fresh single-arm diagnostic에서 proof compliance와 UI resolved를 함께 재검증한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
