@@ -25,6 +25,7 @@ export function collectTextGeometryInPage(textGeometryOracle) {
     short_atomic_text_wraps: [],
     short_control_label_wraps: [],
     generated_content_overflow: [],
+    passive_text_scrollers: [],
     missing_scope_selectors: [],
   };
   if (!textGeometryOracle) return empty;
@@ -66,11 +67,25 @@ export function collectTextGeometryInPage(textGeometryOracle) {
     [...document.querySelectorAll(selector)].filter(visible).length === 0);
   const roots = uniqueVisibleRoots(scopeSelectors);
   const atomicRoots = uniqueVisibleRoots([...atomicScopeSelectors, ...compactCopySelectors]);
+  const passiveTextRoots = Array.isArray(textGeometryOracle.atomic_scope_selectors)
+    ? uniqueVisibleRoots(textGeometryOracle.atomic_scope_selectors)
+    : [];
   if (roots.length === 0 || atomicRoots.length === 0) return {
     ...empty,
     missing_scope_selectors: missingScopeSelectors.length ? missingScopeSelectors : requiredSelectors,
   };
   empty.missing_scope_selectors = missingScopeSelectors;
+  for (const root of passiveTextRoots) {
+    const style = getComputedStyle(root);
+    if (!["auto", "scroll"].includes(style.overflowX) &&
+      !["auto", "scroll"].includes(style.overflowY)) continue;
+    empty.passive_text_scrollers.push({
+      tag: root.tagName,
+      text: (root.textContent || "").trim().slice(0, 120),
+      overflow_x: style.overflowX,
+      overflow_y: style.overflowY,
+    });
+  }
 
   const maxChars = Number.isFinite(textGeometryOracle.max_short_text_chars)
     ? textGeometryOracle.max_short_text_chars
@@ -635,6 +650,9 @@ export function evaluateViewportGeometry(viewport, textGeometryOracle, decisionH
       generated_content_fits_declared_box:
         Array.isArray(viewport?.text_geometry?.generated_content_overflow) &&
         viewport.text_geometry.generated_content_overflow.length === 0,
+      no_passive_text_scrollers:
+        Array.isArray(viewport?.text_geometry?.passive_text_scrollers) &&
+        viewport.text_geometry.passive_text_scrollers.length === 0,
     });
   }
   if (decisionHierarchyOracle) {

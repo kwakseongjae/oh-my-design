@@ -44,6 +44,7 @@ try {
       .context { width: 280px; }
       h1 { width: 260px; font: 400 34px/38px Georgia, serif; }
       .atomic, .compact-copy { display: block; width: 112px; font: 700 16px/20px Arial, sans-serif; }
+      .atomic { overflow-x: auto; }
     </style></head><body>
       <article class="context">
         <h1>Route supplied field samples for review.</h1>
@@ -64,6 +65,12 @@ try {
   assert(scopedTexts.includes("Preserve source context"));
   assert(!scopedTexts.includes("Route supplied field samples for review."));
   assert.deepEqual(scoped.missing_scope_selectors, []);
+  assert.deepEqual(scoped.passive_text_scrollers, [{
+    tag: "P",
+    text: "3 supplied samples",
+    overflow_x: "auto",
+    overflow_y: "auto",
+  }]);
 
   const legacy = await page.evaluate(collectTextGeometryInPage, {
     scope_selectors: [".context"],
@@ -84,7 +91,7 @@ try {
   console.log(JSON.stringify({
     event: "text-geometry-scope-check",
     status: "pass",
-    assertions: 6,
+    assertions: 7,
   }));
 } finally {
   await browser.close();

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.675 local UI repair/evaluator calibration
+- frozen museum-loan을 provider0으로 수리해 baseline75→85/85, in-app 320px overflow0을 확인했다.
+- passive text 자체 scroll로 점수를 맞추는 첫 구현을 폐기하고 named relationship carrier3개로 교정했다.
+- evaluator에 passive-text-scroll fail gate를 추가했다; negative73 fail/final85 pass, full722 pass/3 skip이다.
+
 ## 2026-08-05 (Codex) · 1.9.674 CLI activation comparison
 - exact v1.9.0 vs current를 Codex/KO 3회씩 B/C/C/B/B/C로 로컬 비교했다.
 - baseline route0/3 right-censored, current actionable route3/3·3 steps·median224ms다.

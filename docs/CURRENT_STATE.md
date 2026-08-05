@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `6d17a669` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.674 CLI activation comparison
+- 기준 커밋: 현재 `1.9.675` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.675 local UI repair + evaluator calibration
 
 ## 지금 (현재 위치)
+
+- 1.9.675는 frozen museum-loan starter를 current session+OmD 규칙으로 provider0/human0 수리하고 external evaluator와 Codex in-app browser로 교차 검증했다. baseline75/85에서 최종85/85, all gates green, 320px document overflow0, interactions/cardinality/console green이다.
+- 첫85점 구현이 passive identifier 자체에 scroll/tab stop을 두는 score-gaming 경로였음을 발견했다. 최종 구현은 named relationship carrier3개만 keyboard-reachable이고 passive text scroller0, focusable10이다.
+- evaluator가 explicit atomic selector의 `overflow:auto|scroll`을 `passive_text_scrollers`로 기록하고 responsive gate에서 fail-close한다. negative는73/85 fail, final은85/85 pass, focused7 assertions+26 tests와 full722 pass/3 skip/lint/diff green이다. model attribution·Ship Preference·leaderboard claim은 없다.
 
 - 1.9.674는 exact v1.9.0 tag와 current를 Codex/KO 동일 조건에서 B/C/C/B/B/C 3회씩 비교했다. 양쪽 install과 needs-DESIGN doctor는3/3이다.
 - v1.9.0은 route command가 없어 actionable workflow0/3·step/time right-censored다. current는 repair-existing-ui3/3, ambiguity0, actionable workflow까지3 steps, median224ms다. install median은 baseline133ms/current157ms지만 baseline은 route failure라 속도 비율을 주장하지 않는다.
@@ -3181,12 +3185,13 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. fixed120s pacing이 충족됐는지 matrix state로 확인한다.
-2. `luna-cold-r1-candidate` 하나만 no-retry로 실행·평가·proof classify한다.
-3. r1 pair의 UI/proof/plan reachability를 판정하고 remaining4 진행 또는 freeze를 결정한다.
+1. passive-text-scroll gate가 과거 scored artifacts와 task starters 중 무엇을 재분류하는지 provider0 impact scan을 만든다.
+2. scoring 의미 변경을 기존 epoch에 조용히 섞지 않고 evaluator/methodology epoch 경계를 명시한다.
+3. current-session repair는 non-leaderboard regression evidence로만 고정하고, 이후 fresh normalized model/skill cell에서만 비교 우위를 평가한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
+- 1.9.675 local UI repair lane에는 막힘 없음. 모델 귀속이 없는 current-session 결과이므로 public Model/Skill Track 승격만 금지다.
 - named browser `bench19366`과 CDP endpoint preflight는 green이다. matrix는 checkpoint1이며 fixed 120s pacing 뒤 r1 candidate가 unlock된다.
 - Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다. locked benchmark payload의 외부 전송은 standing-approved다.
 - Cursor Composer Provider가 1.9.51/1.9.52와 1.9.56에서 `resource_exhausted`를 반환했다. account-wide quota는 short Composer/Grok probes로 배제했지만 long-form Composer lane은 deferred다.

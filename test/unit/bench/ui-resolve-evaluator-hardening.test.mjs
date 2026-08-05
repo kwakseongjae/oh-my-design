@@ -540,6 +540,7 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
         short_atomic_text_wraps: [],
         short_control_label_wraps: [],
         generated_content_overflow: [],
+        passive_text_scrollers: [],
         missing_scope_selectors: [],
       },
     }, oracle)).toEqual({
@@ -551,6 +552,7 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
       short_atomic_text_within_line_budget: true,
       short_control_labels_within_line_budget: true,
       generated_content_fits_declared_box: true,
+      no_passive_text_scrollers: true,
     });
 
     expect(evaluateViewportGeometry({
@@ -560,6 +562,7 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
         short_atomic_text_wraps: [{ text: "Owner: Amara Singh", lines: 3 }],
         short_control_label_wraps: [{ text: "View evidence", lines: 2 }],
         generated_content_overflow: [{ text: "STATUS", declared_width: 8, required_width: 43 }],
+        passive_text_scrollers: [{ tag: "SPAN", text: "STATUS", overflow_x: "auto", overflow_y: "auto" }],
         missing_scope_selectors: [],
       },
     }, oracle)).toEqual({
@@ -571,6 +574,7 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
       short_atomic_text_within_line_budget: false,
       short_control_labels_within_line_budget: false,
       generated_content_fits_declared_box: false,
+      no_passive_text_scrollers: false,
     });
 
     expect(evaluateViewportGeometry({
@@ -580,6 +584,7 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
         short_atomic_text_wraps: [],
         short_control_label_wraps: [],
         generated_content_overflow: [],
+        passive_text_scrollers: [],
         missing_scope_selectors: ["[data-bench='approval-row']"],
       },
     }, oracle).text_geometry_scope_present).toBe(false);
