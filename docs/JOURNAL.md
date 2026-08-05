@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.680 unseen holdout comparison preparation
+- frozen depot task를 Raw/current OmD 각3회 balanced matrix로 provider0 준비했다.
+- 6/6 untouched·모든 normalization green, exact OmD source와 evaluator epoch를 고정했다.
+- runner hold와 execution artifact0을 재확인했다; full729 pass·3 skip이며 이는 결과가 아닌 실행 준비 증거다.
+
 ## 2026-08-05 (Codex) · 1.9.679 unseen holdout task lock
 - investigational-product depot repair 과제를 provider0/model0/human0으로 만들고 baseline75/85를 동결했다.
 - 정확한 evidence/interaction은 보존하고 narrow geometry·atomic text·contrast 실패만 국소화했다.

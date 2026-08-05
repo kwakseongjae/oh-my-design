@@ -12,6 +12,10 @@ const reportRoot = resolve(
   repoRoot,
   "benchmarks/ui-resolve-bench/reports/investigational-product-depot-task-lock-1.9.679",
 );
+const comparisonReportRoot = resolve(
+  repoRoot,
+  "benchmarks/ui-resolve-bench/reports/investigational-product-depot-comparison-plan-1.9.680",
+);
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
@@ -84,5 +88,41 @@ describe("investigational-product depot holdout", () => {
       serious_color_contrast: true,
     });
     expect(baseline.claim_boundary).toContain("not a model or skill result");
+  });
+
+  it("preregisters a balanced provider-zero Raw versus OmD matrix", () => {
+    const plan = readJson(resolve(comparisonReportRoot, "RUN-MATRIX.json"));
+    const preparation = readJson(resolve(comparisonReportRoot, "PREPARATION.json"));
+    expect(plan.status).toBe("local-admission-only-remote-execution-deferred");
+    expect(plan.cells).toHaveLength(6);
+    expect(plan.cells.map((cell) => cell.system_id)).toEqual([
+      "raw-design-md",
+      "omd-apply-current",
+      "omd-apply-current",
+      "raw-design-md",
+      "raw-design-md",
+      "omd-apply-current",
+    ]);
+    expect(new Set(plan.cells.map((cell) => cell.task_id))).toEqual(
+      new Set(["investigational-product-depot-release-v0.1"]),
+    );
+    expect(preparation).toMatchObject({
+      status: "PREPARED_PROVIDER_ZERO_EXECUTION_DEFERRED",
+      provider_calls: 0,
+      model_exposures: 0,
+      scheduled_cells: 6,
+      prepared_cells: 6,
+      normalization: {
+        task_prompt_sha256: true,
+        starter_sha256: true,
+        product_initial_sha256: true,
+        objective_evaluator: true,
+      },
+      execution_admission: {
+        allowed: false,
+        reason: "locked-plan-remote-execution-deferred",
+        execution_artifacts_absent: true,
+      },
+    });
   });
 });
