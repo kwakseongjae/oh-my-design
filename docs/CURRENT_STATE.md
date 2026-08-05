@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `1a3beca8` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.656 guarded plan packet exact source pin
+- 기준 커밋: `d8bdc0ef` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.657 model-unseen subsea cable task baseline
 
 ## 지금 (현재 위치)
+
+- 1.9.657은 `subsea-cable-splice-handoff-v0.1`을 provider 노출 전에 생성·평가했다. prompt는 arm/packet command를 전혀 명명하지 않고 같은 task/starter/evaluator를 강제한다.
+- raw baseline은75/85로 contract/state/design/evidence green, responsive/a11y red다. desktop1440은 overflow0, 390/320은 scroll1135, actual200은 scroll2270이며 narrow fragmented token6/short wrap2/contrast failure node4다.
+- provider0/model exposure0이다. 다음은 task commit/git tree/portable tree/baseline score를 별도 exact pin해 이후 mutation을 금지하는 1.9.658이다.
 
 - 1.9.656은 guarded packet candidate를 commit `1a3beca8...`, source tree `6f17099c...`, skill tree `f3519ea2...`로 exact pin했다. system id는 `omd-guarded-plan-packet-candidate`, vendor는 `omd-1.9.655`다.
 - provider0/model exposure0/promotion false이며 fresh transfer 전 우위 주장은 금지다. control은 exact `omd-complete-plan-diagnostic-candidate`다.

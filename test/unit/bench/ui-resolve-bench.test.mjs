@@ -81,6 +81,7 @@ const waterTreatmentBatchReleaseTaskId = "water-treatment-batch-release-v0.1";
 const flightRecorderDownloadTaskId = "flight-recorder-download-review-v0.1";
 const gridDisturbanceWaveformTaskId = "grid-disturbance-waveform-review-v0.1";
 const railInterlockingEventLogTaskId = "rail-interlocking-event-log-review-v0.1";
+const subseaCableSpliceTaskId = "subsea-cable-splice-handoff-v0.1";
 const versionedOmdVariants = ["omd-portable-slate", "omd-portable-ember"];
 
 function prepareVariant(variant, {
@@ -7685,5 +7686,54 @@ describe("UI-Resolve Bench sandbox preparation", () => {
       commit: "1a3beca8279d36e10c457760e11b582e6a9a08fa",
     });
     expect(pin.claim_boundary).toContain("not a promotion");
+  });
+
+  it("locks a neutral model-unseen subsea cable handoff task with a meaningfully red baseline", () => {
+    const task = JSON.parse(readFileSync(join(
+      repoRoot,
+      `benchmarks/ui-resolve-bench/tasks/${subseaCableSpliceTaskId}/task.json`,
+    ), "utf8"));
+    expect(() => validateTaskContract(task)).not.toThrow();
+    expect(task).toMatchObject({
+      id: subseaCableSpliceTaskId,
+      version: "0.1.0",
+      track: "repair",
+      network: "disabled",
+      protected_hook_counts: {
+        "[data-bench='cable-span-case']": 4,
+        "[data-bench='cable-span-id']": 4,
+        "[data-bench='joint-test-id']": 6,
+        "[data-bench='vessel-window-id']": 2,
+        "[data-bench='review-view-option']": 3,
+      },
+    });
+    const prompt = readFileSync(join(
+      repoRoot,
+      `benchmarks/ui-resolve-bench/tasks/${subseaCableSpliceTaskId}/PROMPT.md`,
+    ), "utf8");
+    expect(prompt).not.toMatch(/plan-packet|plan-apply|omd-complete-plan-diagnostic-candidate|omd-guarded-plan-packet-candidate/iu);
+
+    const baseline = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-cable-task-baseline-1.9.657/SUMMARY.final.json",
+    ), "utf8"));
+    expect(baseline).toMatchObject({
+      product_version: "1.9.657",
+      status: "MODEL_UNSEEN_TASK_BASELINED",
+      provider_calls: 0,
+      model_exposures: 0,
+      task: {
+        id: subseaCableSpliceTaskId,
+        portable_tree_sha256: "b12c6f827b23d72e1a17907d5549fcc78dc14398efd28ff160a9f9d224f99196",
+      },
+      baseline: {
+        score: 75,
+        max: 85,
+        critical_gates: { responsive: false, accessibility: false },
+        narrow_fragmented_tokens: 6,
+        narrow_short_atomic_wraps: 2,
+      },
+    });
+    expect(baseline.claim_boundary).toContain("does not predict either arm");
   });
 });

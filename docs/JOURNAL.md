@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.657 model-unseen subsea cable baseline
+- neutral new task를 provider exposure0에서 생성하고 deterministic evaluator로 baseline했다.
+- raw75/85, responsive/a11y red, narrow fragment6/short-wrap2/contrast-node4다.
+- 다음은 task exact commit/tree/baseline pin이다.
+
 ## 2026-08-05 (Codex) · 1.9.656 guarded packet exact pin
 - candidate를 commit/source tree/skill tree와 source hashes로 immutable pin했다.
 - provider0/model0/promotion false이며 fresh transfer 전 우위 주장은 금지다.
