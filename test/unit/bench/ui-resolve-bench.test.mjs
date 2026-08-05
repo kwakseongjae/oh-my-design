@@ -7349,4 +7349,41 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     expect(report.observations[3].acceptance_use).toContain("not an actual-200-percent substitute");
     expect(report.claim_boundary).toContain("does not measure candidate transfer");
   });
+
+  it("locks the airworthiness diagnostic matrix while deferring every remote execution", async () => {
+    const plan = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/airworthiness-complete-plan-diagnostic-luna-1.9.646/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(() => validateRunMatrixPlan(plan)).not.toThrow();
+    expect(plan).toMatchObject({
+      product_version: "1.9.648",
+      status: "locked-local-preparation-only-remote-execution-deferred",
+      output_root: "/private/tmp/u19648",
+      vendors_root: "/private/tmp/u19648-vendors",
+      browser_execution_contract: {
+        local_in_app_preflight: "airworthiness-local-inapp-validation-1.9.647",
+        local_in_app_preflight_is_model_transfer: false,
+      },
+      complete_plan_diagnostic_contract: {
+        candidate_diagnosis_is_non_mutating: true,
+        candidate_diagnosis_collects_all_conflicts: true,
+        candidate_returns_complete_patch_or_irreconcilable: true,
+        candidate_diagnosis_invocations_max: 1,
+        candidate_plan_reconcile_invocations_max: 1,
+        candidate_measured_browser_rerun_allowed: false,
+        candidate_product_edit_before_plan_close_allowed: false,
+        candidate_rejects_non_ready_plan_reconcile: true,
+      },
+    });
+    expect(plan.cells.map((cell) => cell.id)).toEqual([
+      "luna-air-r1-control",
+      "luna-air-r1-candidate",
+      "luna-air-r2-candidate",
+      "luna-air-r2-control",
+      "luna-air-r3-control",
+      "luna-air-r3-candidate",
+    ]);
+    expect(plan.cells.every((cell) => cell.timeout_seconds === 900)).toBe(true);
+  });
 });

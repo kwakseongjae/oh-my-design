@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.648 airworthiness executable matrix lock
+- schema0.3 C/T/T/C/C/T, Luna/high, 900s/120s/no-retry matrix를 exact pins로 잠갔다.
+- complete diagnosis/reconcile 각1회와 UI/proof/plan3/3 계약을 유지했다.
+- local in-app preflight는 연결했지만 model transfer가 아니며 remote execution은 deferred다.
+- 다음은 이미 provider0 준비된 six cells의 equality attestation 고정이다.
+
 ## 2026-08-05 (Codex) · 1.9.647 airworthiness local in-app validation
 - frozen starter를 Codex 인앱 브라우저 desktop1440/390/320에서 provider0으로 검수했다.
 - desktop overflow0, narrow scrollWidth1135, target4/10/13줄로 deterministic responsive red와 일치했다.
