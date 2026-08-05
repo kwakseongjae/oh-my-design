@@ -158,6 +158,7 @@ function installOfficialUiUxCodexBundle(vendorRoot, destination, installRoot, va
 }
 
 let skill = null;
+let installedSkillDestination = null;
 if (variant.declared_name) {
   if (!variant.install_root || !variant.install_dir || !variant.install_platform) {
     throw new Error(`${variantId} has an incomplete install contract`);
@@ -235,6 +236,7 @@ if (variant.declared_name) {
   }
   const installRoot = assertInside(out, join(out, runtimeInstall.root));
   const destination = assertInside(installRoot, join(installRoot, variant.install_dir));
+  installedSkillDestination = destination;
   let bundledSkills = [];
   if (variant.install_adapter === "official-codex-template-v2.5.0") {
     if (!vendorRoot) throw new Error(`${variantId} adapter requires a pinned vendor checkout`);
@@ -336,6 +338,33 @@ if ((variant.agent_bundle ?? []).length) {
   };
 }
 
+let deterministicReflow = null;
+if (variant.declared_name === "omd:apply" && task.omd_reflow_source_contract) {
+  if (!installedSkillDestination) throw new Error("provider-sealed reflow requires the installed omd:apply skill");
+  const helperPath = join(installedSkillDestination, "scripts", "reflow-artifact.mjs");
+  if (!existsSync(helperPath)) throw new Error("provider-sealed reflow helper is missing from the installed skill");
+  const omdRoot = join(out, ".omd");
+  const contractPath = join(omdRoot, ".reflow-source-contract.json");
+  const artifactPath = join(omdRoot, "reflow-closure.json");
+  mkdirSync(omdRoot, { recursive: true });
+  writeJson(contractPath, task.omd_reflow_source_contract);
+  const sealed = JSON.parse(execFileSync(
+    process.execPath,
+    [helperPath, "source-seal", contractPath, artifactPath],
+    { cwd: out, encoding: "utf8" },
+  ));
+  rmSync(contractPath, { force: true });
+  deterministicReflow = {
+    mode: "provider-sealed-source-contract",
+    artifact_path: ".omd/reflow-closure.json",
+    artifact_sha256: sha256(readFileSync(artifactPath)),
+    source_contract_sha256: sealed.source_contract.sha256,
+    inventory_sha256: sealed.inventory_sha256,
+    provider_mutable: false,
+    helper_path: relative(out, helperPath),
+  };
+}
+
 const activationDelta = variant.activation
   ? runtime === "cursor"
     ? variant.activation.replace(
@@ -355,6 +384,10 @@ writeFileSync(join(out, instructionFile), [
   "Work only in this directory. Do not install packages, access the network, or read files outside this workspace.",
   "Follow the task in `.benchmark/PROMPT.md`. If it names an installed skill, read that skill completely and apply it.",
   `Do not alter \`.benchmark/\`, \`${instructionFile}\`, or any \`data-bench\` hook.`,
+  ...(deterministicReflow ? [
+    "A provider-sealed `.omd/reflow-closure.json` is present. It is immutable benchmark input; never edit it.",
+    `Before the single product edit, run \`node ${deterministicReflow.helper_path} source-packet .omd/reflow-closure.json\` exactly once. After that edit, run the same helper with \`static-close .omd/reflow-closure.json\` exactly once.`,
+  ] : []),
   "",
 ].join("\n"), "utf8");
 
@@ -400,6 +433,7 @@ const manifest = {
   },
   skill,
   agents,
+  deterministic_reflow: deterministicReflow,
   workspace: {
     name: basename(out),
     initial_sha256: initialTree.sha256,

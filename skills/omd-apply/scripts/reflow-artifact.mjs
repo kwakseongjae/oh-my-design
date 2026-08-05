@@ -27,6 +27,7 @@ const REQUIRED_MEASUREMENT_CONDITIONS = [
   { id: "320", viewport_width: 320, zoom: 1 },
   { id: "200pct", viewport_width: 640, zoom: 2 },
 ];
+const SOURCE_CONTRACT_SCHEMA_VERSION = "0.1";
 
 function fail(message) {
   throw new Error(`reflow artifact: ${message}`);
@@ -34,6 +35,89 @@ function fail(message) {
 
 function sha256Source(source) {
   return createHash("sha256").update(source).digest("hex");
+}
+
+function uniqueObjects(values) {
+  const seen = new Set();
+  return values.filter((value) => {
+    const key = JSON.stringify(value);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function sourceContractArtifact(contract, source) {
+  if (contract?.schema_version !== SOURCE_CONTRACT_SCHEMA_VERSION) {
+    fail(`source contract schema_version must be ${SOURCE_CONTRACT_SCHEMA_VERSION}`);
+  }
+  if (contract.structured_css_only !== true) {
+    fail("source contract must require structured_css_only");
+  }
+  if (typeof contract.product_path !== "string" || !contract.product_path) {
+    fail("source contract product_path is required");
+  }
+  if (!Array.isArray(contract.acceptance_debt_ledger) || !contract.acceptance_debt_ledger.length) {
+    fail("source contract acceptance_debt_ledger is required");
+  }
+  const debtCss = contract.acceptance_debt_ledger.flatMap((debt) => (
+    debt?.static_guardrail?.required_css_declarations ?? []
+  ));
+  if (!debtCss.length) {
+    fail("source contract must bind acceptance debt to required_css_declarations");
+  }
+  const artifact = {
+    schema_version: "0.3",
+    source_contract: {
+      state: "provider-sealed",
+      schema_version: SOURCE_CONTRACT_SCHEMA_VERSION,
+      sha256: sha256Source(JSON.stringify(contract)),
+    },
+    browser_connection_contract: {
+      transport: "existing-cdp",
+      connection_name_env: "BU_NAME",
+      cdp_url_env: "BU_CDP_URL",
+      allow_browser_launch: false,
+      mechanism: NAMED_CONSUMER_MECHANISM,
+    },
+    measurement_conditions: structuredClone(REQUIRED_MEASUREMENT_CONDITIONS),
+    acceptance_sequence: {
+      source_inspection_complete: true,
+      product_edit_transaction: "single-planned-transaction",
+      post_edit_commands: structuredClone(REQUIRED_POST_EDIT_COMMANDS),
+    },
+    pre_edit_fit_plan: { state: "pending" },
+    pre_edit_product_snapshot: productSnapshot(source, contract.product_path),
+    acceptance_debt_ledger: structuredClone(contract.acceptance_debt_ledger),
+    static_closure_manifest: {
+      product_path: contract.product_path,
+      required_literals: structuredClone(contract.required_literals ?? []),
+      required_css_declarations: uniqueObjects([
+        ...(contract.required_css_declarations ?? []),
+        ...debtCss,
+      ]),
+      forbidden_literals: structuredClone(contract.forbidden_literals ?? []),
+      forbidden_patterns: structuredClone(contract.forbidden_patterns ?? []),
+      forbidden_css_declarations: uniqueObjects([
+        ...(contract.forbidden_css_declarations ?? []),
+        ...contract.acceptance_debt_ledger.flatMap((debt) => (
+          debt?.static_guardrail?.forbidden_css_declarations ?? []
+        )),
+      ]),
+      count_literals: structuredClone(contract.count_literals ?? []),
+    },
+    carriers: structuredClone(contract.carriers),
+    row_groups: structuredClone(contract.row_groups),
+    invariants: structuredClone(contract.invariants),
+  };
+  return artifact;
+}
+
+export function sealSourceContract(contract, { source }) {
+  if (typeof source !== "string") fail("source contract product source is required");
+  const artifact = sourceContractArtifact(contract, source);
+  const opened = openSourceFallback(artifact);
+  return opened;
 }
 
 function assertPreEditProductUnchanged(artifact) {
@@ -150,6 +234,21 @@ function openSourceFallback(artifact) {
     inventory_sha256: result.inventory.sha256,
     relationship_contract_sha256: sha256Source(JSON.stringify(result.source_fallback_relationships)),
   };
+  const patchContract = staticEditGuardrails(result).source_fallback_patch_contract;
+  const canonicalSources = [
+    patchContract?.canonical_css_source,
+    patchContract?.canonical_acceptance_css_source,
+  ].filter(Boolean).join("\n");
+  for (const literal of result.static_closure_manifest.forbidden_literals) {
+    if (canonicalSources.includes(literal)) {
+      fail(`source contract forbids its own canonical fallback literal: ${literal}`);
+    }
+  }
+  for (const pattern of result.static_closure_manifest.forbidden_patterns) {
+    if (new RegExp(pattern, "u").test(canonicalSources)) {
+      fail(`source contract forbids its own canonical fallback CSS: ${pattern}`);
+    }
+  }
   return result;
 }
 
@@ -935,6 +1034,7 @@ function validateFitStrategy(row) {
 
 export function inventoryDigest(artifact) {
   return createHash("sha256").update(JSON.stringify({
+    source_contract: artifact.source_contract ?? null,
     measurement_conditions: artifact.measurement_conditions,
     browser_connection_contract: artifact.browser_connection_contract,
     acceptance_sequence: artifact.acceptance_sequence,
@@ -1722,13 +1822,44 @@ function staticEditGuardrails(artifact) {
 
 function main() {
   const [command, rawPath, rawAuxiliaryPath] = process.argv.slice(2);
-  if (!command || !rawPath || !["snapshot", "lock", "plan-close", "plan-reconcile", "plan-diagnose", "plan-packet", "plan-apply", "source-fallback-open", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
-    console.error("usage: reflow-artifact.mjs <snapshot|lock|plan-close|plan-reconcile|plan-diagnose|plan-packet|plan-apply|source-fallback-open|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <artifact.json> [product-or-packet-file]");
+  if (!command || !rawPath || !["source-seal", "source-packet", "snapshot", "lock", "plan-close", "plan-reconcile", "plan-diagnose", "plan-packet", "plan-apply", "source-fallback-open", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
+    console.error("usage: reflow-artifact.mjs <source-seal|source-packet|snapshot|lock|plan-close|plan-reconcile|plan-diagnose|plan-packet|plan-apply|source-fallback-open|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <contract-or-artifact.json> [artifact-or-product-or-packet-file]");
     process.exitCode = 2;
     return;
   }
   const path = resolve(rawPath);
   const artifact = JSON.parse(readFileSync(path, "utf8"));
+  if (command === "source-seal") {
+    if (!rawAuxiliaryPath) fail("source-seal requires an output artifact path");
+    const productPath = resolve(artifact.product_path ?? "");
+    if (!existsSync(productPath)) fail("source-seal requires the source contract product file");
+    const result = sealSourceContract(artifact, { source: readFileSync(productPath, "utf8") });
+    const outputPath = resolve(rawAuxiliaryPath);
+    write(outputPath, result);
+    console.log(JSON.stringify({
+      command,
+      contract_path: path,
+      path: outputPath,
+      source_contract: result.source_contract,
+      inventory_sha256: result.inventory.sha256,
+      static_edit_guardrails: staticEditGuardrails(result),
+    }));
+    return;
+  }
+  if (command === "source-packet") {
+    assertPreEditProductUnchanged(artifact);
+    const locked = lockArtifact(artifact, { allowPendingFitPlan: true });
+    if (artifact.inventory?.sha256 !== locked.inventory.sha256) fail("immutable inventory hash changed");
+    validatePlanClosure(artifact);
+    console.log(JSON.stringify({
+      command,
+      path,
+      source_contract: artifact.source_contract ?? null,
+      inventory_sha256: artifact.inventory.sha256,
+      static_edit_guardrails: staticEditGuardrails(artifact),
+    }));
+    return;
+  }
   const defaultHostStateDir = resolve(process.cwd(), ".omd/proof-policy");
   const hostStateDir = process.env.OMD_PROOF_POLICY_STATE_DIR
     ? resolve(process.env.OMD_PROOF_POLICY_STATE_DIR)

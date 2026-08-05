@@ -25,6 +25,13 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("source_fallback_closure.state: opened");
   });
 
+  it("treats provider-sealed reflow input as immutable", () => {
+    expect(skill).toContain("source_contract.state: provider-sealed");
+    expect(skill).toContain("source-packet .omd/reflow-closure.json");
+    expect(skill).toContain("sealed artifact는 모델의 작업물이 아니며");
+    expect(skill).toContain("provider 실행 전에 거부한다");
+  });
+
   it("keeps implementation ownership with the main agent", () => {
     expect(skill).toContain("본 에이전트가 실제 편집과 검증을 끝까지 소유");
     expect(skill).toContain("audit/advice 요청만 자문 결과 요약으로 종료할 수 있다");

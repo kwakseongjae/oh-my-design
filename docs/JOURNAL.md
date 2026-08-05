@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.713 provider-sealed source contract
+- model-authored verification manifest를 provider 전 deterministic sealer로 교체했다.
+- source-packet은 read-only이고 acceptance CSS 병합·자기모순 금지는 실행 전에 fail-close한다.
+- task admission과 sandbox attestation까지 연결했으며 focused119·lint/diff가 green이다.
+- dirty-source attribution fixture만 clean commit 뒤 full regression 재확인한다.
+
 ## 2026-08-05 (Codex) · 1.9.712 repeated-root hard pause
 - fresh polar Luna/high는 valid63/85·revision1·static fail1·proof false였다.
 - structured CSS array가 비어 short packet이 없고 global/local overflow 계약도 충돌했다.

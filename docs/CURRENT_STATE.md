@@ -3,11 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `8b216c5f` 1.9.707 manifest-default static closure (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.712 polar structured CSS canary archived, repeated-root hard pause
+- 기준 커밋: `f3fbbb22` 1.9.712 polar canary archive (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-06 · 1.9.713 provider-sealed source contract locally complete, clean commit pending
 
 ## 지금 (현재 위치)
 
+- 사용자 승인으로 repeated-root hard pause의 다음 범위를 **모델 작성 manifest 제거**로 재설정했다. 1.9.713은 task의 `omd_reflow_source_contract`를 provider/model 실행 전에 OmD helper가 `.omd/reflow-closure.json`으로 결정론 봉인한다. 모델은 read-only `source-packet`을 소비하고 product를 한 번만 고친 뒤 `static-close`만 실행한다.
+- sealer는 acceptance debt의 CSS를 structured declarations로 병합하며 canonical fallback CSS를 스스로 금지하는 literal/pattern을 provider 노출 전에 거부한다. task validator는 schema0.1·entry 일치·nonempty carrier/row/debt·debt별 structured CSS를 admission에서 검사한다.
+- prepare-sandbox는 exact OmD variant에만 sealed artifact와 immutable instruction/attestation을 주입한다. legacy 일반 프로젝트의 model-authored `source-fallback-open`은 호환 경로로만 남는다. focused119와 lint/diff는 green이고 full suite는 762 pass/3 skip, clean-tree attribution fixture1건만 dirty source 때문에 예상대로 red였다.
+- 다음은 상태/저널을 포함해 1.9.713을 clean commit하고 full suite를 재실행한다. 그 뒤에만 완전히 새 provider0 task를 source contract와 함께 preregister한다. polar/volcanic/cave/wildlife replay는 계속 금지다.
 - 1.9.712 exact Luna/high 단일 진단은 valid63/85, resolved=false, 379,176ms, 1,518,861 tokens다. product edit/revision1, user handoff0이며 task-contract/responsive/a11y critical gate와 static closure가 red다.
 - 모델 작성 artifact는 CSS 의무를 계속 generic literal로 두어 `required_css_declarations: []`, `canonical_acceptance_css_source: null`을 만들었다. 동시에 global `overflow-x:auto|scroll` 금지와 local fallback carrier의 `overflow-x:auto` 요구를 함께 잠갔고, lock 뒤 그 충돌을 제거하면서 immutable inventory hash가 바뀌어 static-close가 failed1/success0/proof false로 종료됐다.
 - 이는 1.9.710 이후 structured-packet completeness 클래스의 재발이다. preregistered repeated-root stop에 따라 frontier lane은 **hard pause**다. polar 재실행·replacement model·새 fresh task·ranking·2.0 gate 반영은 금지하며, 다음 진행은 scope를 재설정하는 명시적 결정이 필요하다.

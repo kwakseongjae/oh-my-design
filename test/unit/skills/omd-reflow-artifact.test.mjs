@@ -152,6 +152,74 @@ function draft() {
   return artifact;
 }
 
+function sourceContract({ forbiddenPatterns = [] } = {}) {
+  return {
+    schema_version: "0.1",
+    structured_css_only: true,
+    product_path: "index.html",
+    required_literals: ["required-fact"],
+    forbidden_literals: [],
+    forbidden_patterns: forbiddenPatterns,
+    forbidden_css_declarations: [],
+    count_literals: [{ literal: 'data-bench-decision-role="target"', expected_count: 1 }],
+    acceptance_debt_ledger: [{
+      id: "target-fit",
+      gate: "inline-fit-reserve",
+      selector: '[data-bench-decision-role="target"]',
+      baseline_evidence: "target relationship can exceed the narrow carrier",
+      required_correction: "preserve the relationship in a named horizontal carrier",
+      required_outcome: "the target remains intact",
+      proof_mode: "browser-row",
+      bound_row_group_ids: ["target"],
+      status: "must-fix-before-static-close",
+      static_guardrail: {
+        required_literals: ["required-fact"],
+        forbidden_literals: [],
+        forbidden_patterns: [],
+        required_css_declarations: [{
+          selector: ".ledger",
+          property: "grid-template-columns",
+          value: "1fr",
+          value_contract: "any-value",
+        }],
+        forbidden_css_declarations: [],
+      },
+    }],
+    carriers: [{
+      id: "target-carrier",
+      selector: "[data-decision] > .target-carrier",
+      expected_count: 1,
+      binds_row_groups: ["target"],
+    }],
+    row_groups: [{
+      id: "target",
+      selector: '[data-bench-decision-role="target"]',
+      role: "target",
+      expected_count: 1,
+      longest_value: "FS-TC-24-017 + BAG-SEAL-884021",
+      atomic_parts: ["FS-TC-24-017", "BAG-SEAL-884021"],
+      line_contract: "parent-one-line",
+      typography_contract: { source: "deterministic-pre-edit-snapshot" },
+      required_fit_reserve_css_px: 8,
+      planned_fit_reserve_css_px: 16,
+      decision: "comparison-scroll",
+      scroll_contract: {
+        container_selector: "[data-decision] > .target-carrier",
+        accessible_name: "Custody target relationship",
+        keyboard_reachable: true,
+        focus_visible: true,
+        passive_text_scroll_container: false,
+      },
+    }],
+    invariants: {
+      same_row_count: true,
+      same_decision_boundary: true,
+      all_registered_carriers_closed: true,
+      no_text_hack: true,
+    },
+  };
+}
+
 function staticClosed(artifact, source = '<div data-id="fixture">required-fact</div>') {
   return executeStaticClosure(artifact, {
     productPath: join(process.cwd(), "index.html"),
@@ -849,6 +917,62 @@ describe("compact reflow artifact helper", () => {
       join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "static-close", artifactPath,
     ], { cwd: root, encoding: "utf8" }));
     expect(closed.static_closure).toMatchObject({ state: "passed", attempts: 1, failures: [] });
+  });
+
+  it("seals a provider-owned source contract before execution and exposes a read-only patch packet", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-source-sealed-"));
+    temporaryRoots.push(root);
+    const contractPath = join(root, "contract.json");
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const helper = join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs");
+    const preEditSource = '<section data-decision=""><div class="target-carrier"><strong data-bench-decision-role="target">FS-TC-24-017 + BAG-SEAL-884021</strong></div></section><p>required-fact</p>';
+    writeFileSync(contractPath, JSON.stringify(sourceContract()));
+    writeFileSync(productPath, preEditSource);
+
+    const sealed = JSON.parse(execFileSync(process.execPath, [
+      helper, "source-seal", contractPath, artifactPath,
+    ], { cwd: root, encoding: "utf8" }));
+    expect(sealed.source_contract).toMatchObject({ state: "provider-sealed", schema_version: "0.1" });
+    expect(sealed.static_edit_guardrails.source_fallback_patch_contract.acceptance_css).toContainEqual(
+      expect.objectContaining({ selector: ".ledger", property: "grid-template-columns" }),
+    );
+    const beforePacket = createHash("sha256").update(readFileSync(artifactPath)).digest("hex");
+    const packet = JSON.parse(execFileSync(process.execPath, [
+      helper, "source-packet", artifactPath,
+    ], { cwd: root, encoding: "utf8" }));
+    expect(packet.source_contract.state).toBe("provider-sealed");
+    expect(createHash("sha256").update(readFileSync(artifactPath)).digest("hex")).toBe(beforePacket);
+
+    const edited = `<style>.ledger { grid-template-columns: 1fr; }\n[data-omd-source-fallback-carrier="target"] { overflow-x: auto; }\n[data-omd-source-fallback-carrier="target"]:focus-visible { outline: 2px solid currentColor; }\n[data-bench-decision-role="target"] { white-space: nowrap; }</style>${preEditSource}`
+      .replace(
+        '<div class="target-carrier">',
+        '<div class="target-carrier" data-omd-source-fallback-carrier="target" aria-label="Custody target relationship" tabindex="0">',
+      );
+    writeFileSync(productPath, edited);
+    const closed = JSON.parse(execFileSync(process.execPath, [
+      helper, "static-close", artifactPath,
+    ], { cwd: root, encoding: "utf8" }));
+    expect(closed.static_closure).toMatchObject({ state: "passed", attempts: 1, failures: [] });
+  });
+
+  it("rejects a source contract that forbids its own canonical fallback CSS", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-source-conflict-"));
+    temporaryRoots.push(root);
+    const contractPath = join(root, "contract.json");
+    const artifactPath = join(root, "artifact.json");
+    const helper = join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs");
+    writeFileSync(contractPath, JSON.stringify(sourceContract({
+      forbiddenPatterns: ["overflow-x\\s*:\\s*(auto|scroll)"],
+    })));
+    writeFileSync(join(root, "index.html"), '<section data-decision=""><div class="target-carrier"><strong data-bench-decision-role="target">FS-TC-24-017 + BAG-SEAL-884021</strong></div></section><p>required-fact</p>');
+    const result = spawnSync(process.execPath, [helper, "source-seal", contractPath, artifactPath], {
+      cwd: root,
+      encoding: "utf8",
+    });
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("forbids its own canonical fallback CSS");
+    expect(() => readFileSync(artifactPath)).toThrow();
   });
 
   it("captures a missing pre-edit snapshot when the browser wrapper failed before running stdin", () => {

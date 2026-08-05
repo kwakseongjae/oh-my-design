@@ -28,6 +28,47 @@ function requireSelectorList(value, label) {
   }
 }
 
+function requireStructuredCssDeclarations(value, label) {
+  if (!Array.isArray(value) || !value.length) {
+    throw new Error(`${label} must declare at least one structured CSS declaration`);
+  }
+  for (const [index, declaration] of value.entries()) {
+    requireObject(declaration, `${label}[${index}]`);
+    requireNonEmptyString(declaration.selector, `${label}[${index}].selector`);
+    requireNonEmptyString(declaration.property, `${label}[${index}].property`);
+    requireNonEmptyString(declaration.value, `${label}[${index}].value`);
+    if (!new Set(["any-value", "exact-value"]).has(declaration.value_contract)) {
+      throw new Error(`${label}[${index}].value_contract must be any-value or exact-value`);
+    }
+  }
+}
+
+export function validateOmdReflowSourceContract(task) {
+  if (task.omd_reflow_source_contract === undefined) return task;
+  const contract = requireObject(task.omd_reflow_source_contract, "omd_reflow_source_contract");
+  if (contract.schema_version !== "0.1") throw new Error("omd_reflow_source_contract.schema_version must be 0.1");
+  if (contract.structured_css_only !== true) throw new Error("omd_reflow_source_contract must require structured_css_only");
+  if (contract.product_path !== task.entry) throw new Error("omd_reflow_source_contract.product_path must match task.entry");
+  for (const field of ["carriers", "row_groups", "acceptance_debt_ledger"]) {
+    if (!Array.isArray(contract[field]) || !contract[field].length) {
+      throw new Error(`omd_reflow_source_contract.${field} must not be empty`);
+    }
+  }
+  requireObject(contract.invariants, "omd_reflow_source_contract.invariants");
+  contract.acceptance_debt_ledger.forEach((debt, index) => {
+    requireObject(debt, `omd_reflow_source_contract.acceptance_debt_ledger[${index}]`);
+    const guardrail = requireObject(
+      debt.static_guardrail,
+      `omd_reflow_source_contract.acceptance_debt_ledger[${index}].static_guardrail`,
+    );
+    requireStructuredCssDeclarations(
+      guardrail.required_css_declarations,
+      `omd_reflow_source_contract.acceptance_debt_ledger[${index}].static_guardrail.required_css_declarations`,
+    );
+  });
+  return task;
+}
+
 export function validateTextGeometryContract(task) {
   if (task.text_geometry_oracle === undefined) return task;
   const text = requireObject(task.text_geometry_oracle, "text_geometry_oracle");
@@ -150,6 +191,7 @@ export function validateTaskContract(task, options = {}) {
   }
   validateCoreTaskContract(task, options);
   validateTextGeometryContract(task);
+  validateOmdReflowSourceContract(task);
   if (task.behavior_adapter === "approval-v1") validateApprovalStructuralContract(task);
   return task;
 }
