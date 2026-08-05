@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.659 guarded packet transfer preregistration
+- exact complete-diagnostic control vs guarded-packet candidate Luna/high2×3을 provider0 등록했다.
+- isolated delta는 manual patch translation 대 hash-guarded packet/apply다.
+- remote execution forbidden; 다음은 executable matrix lock이다.
+
 ## 2026-08-05 (Codex) · 1.9.658 subsea cable task exact pin
 - task source commit/repository tree/git task tree/portable tree/baseline hash를 고정했다.
 - model exposure0이며 task/prompt/starter/evaluator mutation은 금지다.

@@ -7759,4 +7759,46 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
     expect(pin.claim_boundary).toContain("No model result");
   });
+
+  it("preregisters exact complete-diagnostic control versus guarded packet candidate without provider exposure", () => {
+    const prereg = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-cable-guarded-plan-packet-luna-1.9.659/PREREGISTRATION.json",
+    ), "utf8"));
+    expect(prereg).toMatchObject({
+      product_version: "1.9.659",
+      status: "PREREGISTERED_PROVIDER_ZERO_REMOTE_EXECUTION_DEFERRED",
+      provider_calls: 0,
+      model_exposures: 0,
+      tokens_to_target: { attempt_order: 51 },
+      task: {
+        id: subseaCableSpliceTaskId,
+        source_commit: "a3d7d567f7279f2e65e0f1355268435daf45ac68",
+        model_exposures: 0,
+      },
+      sources: {
+        control: {
+          variant_id: "omd-complete-plan-diagnostic-candidate",
+          source_commit: "7df5be63beff5083265e0013f2f51f72e8c4bef9",
+        },
+        candidate: {
+          variant_id: "omd-guarded-plan-packet-candidate",
+          source_commit: "1a3beca8279d36e10c457760e11b582e6a9a08fa",
+        },
+      },
+      isolated_delta_contract: {
+        shared_complete_non_mutating_diagnosis: true,
+        candidate_hash_guards_artifact_diagnosis_and_complete_patch: true,
+        candidate_operator_input_limited_to_accessible_names: true,
+        candidate_apply_invocations_max: 1,
+      },
+      matrix: {
+        model_id: "gpt-5.6-luna",
+        effort: "high",
+        scheduled_cells: 6,
+        remote_execution_authorized: false,
+      },
+    });
+    expect(prereg.claim_boundary).toContain("remote execution remains forbidden");
+  });
 });

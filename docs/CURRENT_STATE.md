@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `a3d7d567` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.658 subsea cable task exact pin
+- 기준 커밋: `9b727a24` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.659 guarded packet transfer preregistration
 
 ## 지금 (현재 위치)
+
+- 1.9.659는 exact complete-diagnostic control `7df5be63...` vs guarded packet candidate `1a3beca8...`를 pinned subsea task에서 Luna/high2×3으로 provider0 사전등록했다.
+- isolated delta는 complete diagnosis 이후 수동 patch 번역 대 hash-guarded packet/apply다. 900s/120s/no-retry/concurrency1, UI/proof/plan/packet3/3이며 remote execution은 명시적으로 forbidden이다.
+- attempt51, prior TTT118,047,296+ / unavailable6이다. 다음은 executable matrix를 잠그되 실행 hold를 유지하는 1.9.660이다.
 
 - 1.9.658은 신규 task를 source commit `a3d7d567...`, repository tree `8dd1ad70...`, git task tree `c0dc2a27...`, portable tree `b12c6f82...`, baseline score `e9008318...`로 model exposure0에서 pin했다.
 - prompt/task/starter/evaluator는 이후 mutation 금지다. 다음은 exact complete-diagnostic control vs guarded-packet candidate를 같은 task/model/runtime/effort/timeout으로 preregister하되 remote execution hold를 유지하는 1.9.659다.
