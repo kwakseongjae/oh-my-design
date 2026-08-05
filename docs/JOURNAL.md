@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.670 five-locale workflow distribution acceptance
+- built CLI에서 5개 locale flag를 모두 실행하고 native chrome과 보호 문자열을 확인했다.
+- Claude Code·Codex·OpenCode·Cursor 설치 manifest가 source bytes/hash와 4/4 동일했다.
+- provider0/model0; routing/locale provider-free lane을 닫았다.
+
 ## 2026-08-05 (Codex) · 1.9.669 five-locale workflow CLI
 - workflows --lang을 EN/KO/JA/ZH-CN/ZH-TW로 확장하고 세 locale 원고를 독립 adaptation했다.
 - locale manifest와 doctor fail-closed validation을 추가했다.

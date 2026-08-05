@@ -872,6 +872,35 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.claude/agents'))).toBe(false);
   });
 
+  it('installs the exact five-locale workflow manifest bytes in every supported channel', async () => {
+    const source = readFileSync(join(process.cwd(), 'data/workflow-capabilities.json'), 'utf8');
+    const expectedHash = createHash('sha256').update(source).digest('hex');
+    const channels = [
+      ['claude-code', '.claude/data'],
+      ['codex', '.codex/data'],
+      ['opencode', '.opencode/data'],
+      ['cursor', '.claude/data'],
+    ] as const;
+    const observedHashes: string[] = [];
+
+    for (const [channel, dataRoot] of channels) {
+      const channelRoot = join(root, channel);
+      expect(await runInstallSkills({
+        dir: channelRoot,
+        agents: [channel],
+        skillsFilter: ['omd-init'],
+      })).toBe(0);
+      const installed = readFileSync(
+        join(channelRoot, dataRoot, 'workflow-capabilities.json'),
+        'utf8',
+      );
+      expect(installed).toBe(source);
+      observedHashes.push(createHash('sha256').update(installed).digest('hex'));
+    }
+
+    expect(new Set(observedHashes)).toEqual(new Set([expectedHash]));
+  });
+
   it('cursor --cursor-rule-only preserves the explicit legacy compatibility mode', async () => {
     expect(await runInstallSkills({
       dir: root,
