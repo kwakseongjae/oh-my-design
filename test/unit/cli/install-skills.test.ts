@@ -18,6 +18,7 @@ import {
   dataDirFor,
   skillInvocationName,
   targetsAvailableForScope,
+  postInstallGuidance,
 } from '../../../src/cli/install-skills.js';
 
 describe('install-skills', () => {
@@ -54,6 +55,33 @@ describe('install-skills', () => {
     expect(skillInvocationName('omd-apply', 'claude-code')).toBe('omd:apply');
     expect(skillInvocationName('omd-apply', 'codex')).toBe('omd:apply');
     expect(skillInvocationName('claude-design', 'claude-code')).toBe('claude-design');
+  });
+
+  it('renders independent five-locale post-install activation guidance', () => {
+    const expected = {
+      en: ['Restart your coding agent', 'Using this DESIGN.md'],
+      ko: ['코딩 에이전트를 다시 시작', '이 DESIGN.md를 기준으로'],
+      ja: ['コーディングエージェントを再起動', 'このDESIGN.mdを基準に'],
+      'zh-CN': ['重启编程助手', '以这份 DESIGN.md 为依据'],
+      'zh-TW': ['重新啟動程式助理', '以這份 DESIGN.md 為依據'],
+    } as const;
+
+    for (const [lang, phrases] of Object.entries(expected)) {
+      const guidance = postInstallGuidance(
+        lang as keyof typeof expected,
+        { cursorOnly: false },
+      );
+      for (const phrase of phrases) expect(guidance.body).toContain(phrase);
+      expect(guidance.body).toContain('omd:init');
+      expect(guidance.body).toContain('/omd-harness <task>');
+      expect(guidance.body).not.toContain('EN  ');
+      expect(guidance.body).not.toContain('KR  ');
+    }
+
+    const cursorJa = postInstallGuidance('ja', { cursorOnly: true });
+    expect(cursorJa.body).toContain('.cursor/skills');
+    expect(cursorJa.body).toContain('DESIGN.md');
+    expect(cursorJa.body).toContain('Cursorを再起動');
   });
 
   it('installs all 5 skills × 3 agents when no agents detected (fallback)', async () => {

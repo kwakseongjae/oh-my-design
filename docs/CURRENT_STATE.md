@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `539ce081` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.670 five-locale workflow distribution acceptance
+- 기준 커밋: `759c8f19` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.671 five-locale post-install activation
 
 ## 지금 (현재 위치)
+
+- 1.9.671은 설치 성공 직후 화면이 EN/KR 예시로 되돌아가던 activation 단절을 수리했다. `install-skills --lang`이 EN/KO/JA/ZH-CN/ZH-TW를 지원하고 첫 디자인 시스템 요청·다음 화면·재시작·Cursor/Builder/harness 안내가 선택 언어로 이어진다.
+- JA·간체·대만 번체는 독립 원고이며 DESIGN.md/omd:init/`/omd-harness <task>`/`.cursor/skills` 보호 문자열을 유지한다. built help와 focused install43 pass, provider0/model0이다.
+- 이 수리는 deterministic activation UX만 닫는다. 실제 install→first surface와 7일 재사용 증거는 배포 후 관측 전까지 open이다.
 
 - 1.9.670은 실제 build 산출물에서 EN/KO/JA/ZH-CN/ZH-TW flag를 전부 실행하고, Claude Code·Codex·OpenCode·Cursor가 canonical workflow manifest와 정확히 같은 bytes/hash를 설치하는지 검증했다.
 - source sha256 `c82c122a...`, 설치 4/4 exact match, distinct hash1, focused install42 pass다. provider0/model0이며 packaged CLI와 설치 데이터의 다국어 parity가 닫혔다.

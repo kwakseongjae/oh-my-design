@@ -29,6 +29,7 @@ import {
   removeProofPolicy,
   type ProofPolicyTarget,
 } from './proof-policy.js';
+import type { WorkflowLanguage } from './workflows.js';
 
 export type SkillTarget = 'claude-code' | 'codex' | 'opencode' | 'cursor';
 
@@ -85,6 +86,140 @@ export interface InstallSkillsOptions {
    *  Writes skills + sub-agents (+ data); never touches global hooks/settings.
    *  When unset and interactive, the TUI asks project-vs-global. */
   global?: boolean;
+  /** Language used for the post-install activation guidance. */
+  lang?: WorkflowLanguage;
+}
+
+interface PostInstallCopy {
+  title: string;
+  restartAgent: string;
+  restartCursor: string;
+  designSystemPrompt: string;
+  homePrompt: string;
+  routeExplanation: string;
+  walkthrough: string;
+  powerUser: string;
+  sessionWarning: string;
+  cursorSessionWarning: string;
+  cursorNative: string;
+  cursorCompatibility: string;
+  builder: string;
+}
+
+const POST_INSTALL_COPY: Record<WorkflowLanguage, PostInstallCopy> = {
+  en: {
+    title: 'Next',
+    restartAgent: 'Restart your coding agent, then send this prompt:',
+    restartCursor: 'Restart Cursor, then establish or apply DESIGN.md:',
+    designSystemPrompt: 'Set up a Toss-inspired design system for a family meal-tracking app. Ask before writing DESIGN.md.',
+    homePrompt: 'Using this DESIGN.md, design the home screen.',
+    routeExplanation: 'OmD routes the request through omd:init and writes DESIGN.md only after confirmation. Then continue with:',
+    walkthrough: 'Full walkthrough: “Your first 60 seconds” in the README. Routing is automatic; no slash command is required.',
+    powerUser: 'Power user: /omd-harness <task> opens the full checkpointed pipeline.',
+    sessionWarning: 'Already running? Restart the coding agent. Codex must also trust the project before loading project-local roles.',
+    cursorSessionWarning: 'Already running? Restart Cursor so it reloads the project rule.',
+    cursorNative: 'Cursor loads OmD Agent Skills from .cursor/skills and keeps DESIGN.md precedence in a small bootstrap rule.',
+    cursorCompatibility: 'Compatibility mode uses the installed rule and local catalog directly.',
+    builder: 'You can also choose a reference in Builder, download DESIGN.md, and then ask Cursor to build.',
+  },
+  ko: {
+    title: '다음 단계',
+    restartAgent: '코딩 에이전트를 다시 시작한 뒤, 대화창에 이 요청을 입력하세요:',
+    restartCursor: 'Cursor를 다시 시작한 뒤 DESIGN.md를 만들거나 적용하세요:',
+    designSystemPrompt: '토스 스타일로 가족 식단 공유 앱의 디자인 시스템을 제안하고, DESIGN.md를 쓰기 전에 확인해줘.',
+    homePrompt: '이 DESIGN.md를 기준으로 홈 화면을 디자인해줘.',
+    routeExplanation: 'OmD가 요청을 omd:init으로 연결하고 확인을 받은 뒤 DESIGN.md를 작성합니다. 이어서 이렇게 요청하세요:',
+    walkthrough: '전체 사용법은 README의 “첫 60초”에서 볼 수 있습니다. 라우팅은 자동이라 슬래시 명령을 외울 필요가 없습니다.',
+    powerUser: '고급 사용: /omd-harness <task>로 체크포인트가 있는 전체 파이프라인을 시작합니다.',
+    sessionWarning: '이미 실행 중이었다면 코딩 에이전트를 다시 시작하세요. Codex는 프로젝트를 신뢰해야 로컬 역할을 불러옵니다.',
+    cursorSessionWarning: '이미 실행 중이었다면 Cursor를 다시 시작해 프로젝트 규칙을 새로 불러오세요.',
+    cursorNative: 'Cursor는 .cursor/skills의 OmD Agent Skills를 읽고, 작은 부트스트랩 규칙으로 DESIGN.md 우선순위를 지킵니다.',
+    cursorCompatibility: '호환 모드에서는 설치된 규칙과 로컬 카탈로그를 바로 사용합니다.',
+    builder: 'Builder에서 레퍼런스를 고르고 DESIGN.md를 내려받은 뒤 Cursor에 구현을 요청해도 됩니다.',
+  },
+  ja: {
+    title: '次の手順',
+    restartAgent: 'コーディングエージェントを再起動し、チャットに次の依頼を入力してください:',
+    restartCursor: 'Cursorを再起動し、DESIGN.mdを作成または適用してください:',
+    designSystemPrompt: 'Tossを参考に、家族向け食事記録アプリのデザインシステムを提案してください。DESIGN.mdを書く前に確認を取ってください。',
+    homePrompt: 'このDESIGN.mdを基準にホーム画面をデザインしてください。',
+    routeExplanation: 'OmDは依頼をomd:initに振り分け、確認後にDESIGN.mdを作成します。続けて次のように依頼してください:',
+    walkthrough: '詳しい手順はREADMEの「最初の60秒」を参照してください。振り分けは自動なので、スラッシュコマンドを覚える必要はありません。',
+    powerUser: '上級者向け: /omd-harness <task> でチェックポイント付きの全工程を開始できます。',
+    sessionWarning: 'すでに起動中の場合はエージェントを再起動してください。Codexでは、プロジェクトを信頼するとローカルの役割が読み込まれます。',
+    cursorSessionWarning: 'すでに起動中の場合は、Cursorを再起動してプロジェクトルールを読み直してください。',
+    cursorNative: 'Cursorは.cursor/skillsのOmD Agent Skillsを読み込み、小さな起動ルールでDESIGN.mdの優先順位を保ちます。',
+    cursorCompatibility: '互換モードでは、インストール済みのルールとローカルカタログを直接使用します。',
+    builder: 'Builderでリファレンスを選び、DESIGN.mdをダウンロードしてからCursorに実装を依頼することもできます。',
+  },
+  'zh-CN': {
+    title: '下一步',
+    restartAgent: '重启编程助手，然后在对话框中发送下面的任务:',
+    restartCursor: '重启 Cursor，然后创建或应用 DESIGN.md:',
+    designSystemPrompt: '参考 Toss，为家庭饮食记录应用设计一套设计系统。写入 DESIGN.md 前先向我确认。',
+    homePrompt: '以这份 DESIGN.md 为依据，设计首页。',
+    routeExplanation: 'OmD 会把任务交给 omd:init，并在确认后写入 DESIGN.md。接着发送:',
+    walkthrough: '完整步骤见 README 的“最初 60 秒”。任务会自动分流，不需要记忆斜杠命令。',
+    powerUser: '进阶用法: /omd-harness <task> 可启动带检查点的完整流程。',
+    sessionWarning: '如果助手已经在运行，请重启。Codex 还需要信任项目，才能加载项目内的角色。',
+    cursorSessionWarning: '如果 Cursor 已经在运行，请重启以重新加载项目规则。',
+    cursorNative: 'Cursor 从 .cursor/skills 加载 OmD Agent Skills，并用一条精简的启动规则确保 DESIGN.md 优先。',
+    cursorCompatibility: '兼容模式会直接使用已安装的规则和本地参考库。',
+    builder: '也可以先在 Builder 选择参考、下载 DESIGN.md，再让 Cursor 开始实现。',
+  },
+  'zh-TW': {
+    title: '下一步',
+    restartAgent: '重新啟動程式助理，接著在對話框傳送以下工作:',
+    restartCursor: '重新啟動 Cursor，接著建立或套用 DESIGN.md:',
+    designSystemPrompt: '參考 Toss，為家庭飲食記錄應用設計一套設計系統。寫入 DESIGN.md 前先向我確認。',
+    homePrompt: '以這份 DESIGN.md 為依據，設計首頁。',
+    routeExplanation: 'OmD 會把工作交給 omd:init，並在確認後寫入 DESIGN.md。接著傳送:',
+    walkthrough: '完整步驟請見 README 的「最初 60 秒」。工作會自動分流，不需要記住斜線指令。',
+    powerUser: '進階用法: /omd-harness <task> 可啟動含檢查點的完整流程。',
+    sessionWarning: '若助理已在執行，請重新啟動。Codex 還需要信任專案，才能載入專案內的角色。',
+    cursorSessionWarning: '若 Cursor 已在執行，請重新啟動以重新載入專案規則。',
+    cursorNative: 'Cursor 會從 .cursor/skills 載入 OmD Agent Skills，並以精簡的啟動規則確保 DESIGN.md 優先。',
+    cursorCompatibility: '相容模式會直接使用已安裝的規則與本機參考庫。',
+    builder: '也可以先在 Builder 選擇參考、下載 DESIGN.md，再請 Cursor 開始實作。',
+  },
+};
+
+export function postInstallGuidance(
+  lang: WorkflowLanguage,
+  options: { cursorOnly: boolean; cursorRuleOnly?: boolean },
+): { title: string; body: string } {
+  const copy = POST_INSTALL_COPY[lang];
+  if (options.cursorOnly) {
+    return {
+      title: copy.title,
+      body: [
+        copy.restartCursor,
+        '',
+        `  ${copy.designSystemPrompt}`,
+        '',
+        options.cursorRuleOnly ? copy.cursorCompatibility : copy.cursorNative,
+        copy.builder,
+        '',
+        `⚠ ${copy.cursorSessionWarning}`,
+      ].join('\n'),
+    };
+  }
+  return {
+    title: copy.title,
+    body: [
+      copy.restartAgent,
+      '',
+      `  ${copy.designSystemPrompt}`,
+      '',
+      copy.routeExplanation,
+      `  ${copy.homePrompt}`,
+      '',
+      copy.walkthrough,
+      copy.powerUser,
+      '',
+      `⚠ ${copy.sessionWarning}`,
+    ].join('\n'),
+  };
 }
 
 interface InstallPlan {
@@ -1759,40 +1894,14 @@ export async function runInstallSkills(
     return 0;
   }
 
-  // Friendly next-step nudge after successful install.
-  // The first prompt is kept identical to the README's "Your first 60 seconds"
-  // block so the README, the terminal, and the postinstall message all teach
-  // the same activation moment. Bilingual (EN + KR) so an English reader is not
-  // handed a Korean-only outro.
+  // Friendly next-step nudge after successful install. Keep this in the
+  // operator-selected locale so the first activation moment does not fall back
+  // to an EN/KR-only block after a five-locale install.
   const cursorOnly = targets.length === 1 && targets[0] === 'cursor';
-  const nextSteps = cursorOnly
-    ? [
-        `${pc.bold('Restart Cursor, then establish or apply DESIGN.md:')}`,
-        '',
-        `  ${pc.cyan('EN')}  ${pc.dim('Set up our design system — Toss-style, for a family meal-tracking app. Ask before writing DESIGN.md.')}`,
-        `  ${pc.cyan('KR')}  ${pc.dim('토스 스타일로 가족 식단 공유 앱 디자인 시스템을 제안하고 DESIGN.md 작성 전에 확인해줘')}`,
-        '',
-        opts.cursorRuleOnly
-          ? `${pc.dim('Compatibility mode uses the installed rule + local catalog directly.')}`
-          : `${pc.dim('Cursor loads OmD Agent Skills from .cursor/skills and keeps DESIGN.md precedence in a small bootstrap rule.')}`,
-        `${pc.dim('You can also choose a reference in the Builder and download DESIGN.md before asking Cursor to build.')}`,
-        '',
-        `${pc.yellow('⚠ Already-running session?')} ${pc.dim('Restart Cursor so it reloads the project rule.')}`,
-      ].join('\n')
-    : [
-        `${pc.bold('Restart your agent, then type your first prompt:')}`,
-        '',
-        `  ${pc.cyan('EN')}  ${pc.dim('Set up our design system — Toss-style, for a family meal-tracking app.')}`,
-        `  ${pc.cyan('KR')}  ${pc.dim('토스 스타일로 가족 식단 공유 앱 디자인 시스템 잡아줘')}`,
-        '',
-        `${pc.dim('Your agent routes through omd:init and writes DESIGN.md after confirmation. Then build against it:')}`,
-        `  ${pc.cyan('EN')}  ${pc.dim('Design the home screen.')}   ${pc.cyan('KR')}  ${pc.dim('홈 화면 디자인해줘')}`,
-        '',
-        `${pc.dim('Full walkthrough → "Your first 60 seconds" in the README. Routing is automatic — no slash command needed.')}`,
-        `${pc.dim('Power user: ')}${pc.cyan('/omd-harness <task>')}${pc.dim(' — jump straight into the pipeline.')}`,
-        '',
-        `${pc.yellow('⚠ Already-running session?')} ${pc.dim('Restart the coding agent after install. Codex must also trust the project before it loads project-local .codex/agents roles.')}`,
-      ].join('\n');
+  const nextSteps = postInstallGuidance(opts.lang ?? 'en', {
+    cursorOnly,
+    cursorRuleOnly: opts.cursorRuleOnly,
+  });
   if (opts.proofPolicy) {
     p.note(
       [
@@ -1803,7 +1912,7 @@ export async function runInstallSkills(
       'Execution guard',
     );
   }
-  p.note(nextSteps, 'Next');
+  p.note(nextSteps.body, nextSteps.title);
 
   // Counts derived from what was actually resolved/installed — never hardcoded,
   // so the outro can't drift from the real skill/agent/hook set (or the README).

@@ -51,6 +51,7 @@ program
   .option('--proof-policy', 'Opt in to the project-local Claude Code/Codex proof-execution blocker')
   .option('--remove-proof-policy', 'Remove the managed proof-policy blocker while preserving other hooks')
   .option('--global', 'Install to each channel\'s user-level discovery directory instead of this project. Writes skills + sub-agents + catalog; never touches global hooks/settings.')
+  .option('--lang <lang>', 'Post-install guidance language (en | ko | ja | zh-CN | zh-TW)', 'en')
   .action(
     async (opts: {
       dir?: string;
@@ -65,8 +66,15 @@ program
       proofPolicy?: boolean;
       removeProofPolicy?: boolean;
       global?: boolean;
+      lang?: string;
     }) => {
       const { runInstallSkills } = await import('../src/cli/install-skills.js');
+      const { normalizeWorkflowLanguage } = await import('../src/cli/workflows.js');
+      const lang = normalizeWorkflowLanguage(opts.lang ?? 'en');
+      if (!lang) {
+        console.error('omd install-skills: --lang must be en, ko, ja, zh-CN, or zh-TW');
+        process.exit(1);
+      }
       type Agent = 'claude-code' | 'codex' | 'opencode' | 'cursor';
       // Keep raw values until runInstallSkills validates them. Silently
       // filtering an invalid channel used to produce a successful 0-file install.
@@ -84,6 +92,7 @@ program
         proofPolicy: opts.proofPolicy,
         removeProofPolicy: opts.removeProofPolicy,
         global: opts.global,
+        lang,
       });
       if (code !== 0) process.exit(code);
     }

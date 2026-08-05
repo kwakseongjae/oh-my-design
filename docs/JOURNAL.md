@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.671 five-locale post-install activation
+- install-skills --lang을 5개 언어로 열고 설치 직후 EN/KR 고정 안내를 제거했다.
+- 첫 prompt·continuation·restart·Cursor/Builder/harness 안내를 locale별 독립 원고로 연결했다.
+- provider0/model0; 실제 activation/reuse lift는 배포 후 관측 gate로 남긴다.
+
 ## 2026-08-05 (Codex) · 1.9.670 five-locale workflow distribution acceptance
 - built CLI에서 5개 locale flag를 모두 실행하고 native chrome과 보호 문자열을 확인했다.
 - Claude Code·Codex·OpenCode·Cursor 설치 manifest가 source bytes/hash와 4/4 동일했다.
