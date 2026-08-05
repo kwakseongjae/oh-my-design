@@ -77,6 +77,7 @@
     "bench:ui:claude:run": "node benchmarks/ui-resolve-bench/scripts/run-claude.mjs",
     "bench:ui:record": "node benchmarks/ui-resolve-bench/scripts/record-in-app-run.mjs",
     "bench:ui:evaluate": "node benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs",
+    "bench:ui:audit-epoch": "node benchmarks/ui-resolve-bench/scripts/audit-evaluator-epoch-impact.mjs",
     "bench:ui:summarize": "node benchmarks/ui-resolve-bench/scripts/summarize-pilot.mjs",
     "bench:ui:aggregate": "node benchmarks/ui-resolve-bench/scripts/aggregate-results.mjs",
     "bench:ui:collect": "node benchmarks/ui-resolve-bench/scripts/collect-run-records.mjs",

@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.675` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.675 local UI repair + evaluator calibration
+- 기준 커밋: 현재 `1.9.676` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.676 objective evaluator epoch boundary
 
 ## 지금 (현재 위치)
+
+- 1.9.676은 score schema0.6에 objective methodology epoch `ui-resolve-objective-2026q3-passive-scroll-v1`을 추가하고 run export/aggregate group/paired comparison까지 전달한다. 서로 다른 epoch는 같은 점수 집단이나 pair로 합쳐지지 않는다.
+- provider0 impact scanner가 explicit atomic selector를 가진 frozen starter56개를 390/320/CSS-zoom 조건에서 렌더했다. passive text scroll 영향0/56이라 starter baseline 재분류는 없고 historical score는 재계산하지 않는다.
+- run-record schema는 v0.3, focused33 pass, full723 pass/3 skip, lint/diff green이다. 이 epoch는 deterministic objective 전용이며 Ship Preference epoch나 모델/스킬 우위와 별개다.
 
 - 1.9.675는 frozen museum-loan starter를 current session+OmD 규칙으로 provider0/human0 수리하고 external evaluator와 Codex in-app browser로 교차 검증했다. baseline75/85에서 최종85/85, all gates green, 320px document overflow0, interactions/cardinality/console green이다.
 - 첫85점 구현이 passive identifier 자체에 scroll/tab stop을 두는 score-gaming 경로였음을 발견했다. 최종 구현은 named relationship carrier3개만 keyboard-reachable이고 passive text scroller0, focusable10이다.
@@ -3185,13 +3189,14 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. passive-text-scroll gate가 과거 scored artifacts와 task starters 중 무엇을 재분류하는지 provider0 impact scan을 만든다.
-2. scoring 의미 변경을 기존 epoch에 조용히 섞지 않고 evaluator/methodology epoch 경계를 명시한다.
-3. current-session repair는 non-leaderboard regression evidence로만 고정하고, 이후 fresh normalized model/skill cell에서만 비교 우위를 평가한다.
+1. prepared workspace/matrix가 objective methodology epoch를 사전 고정하고 evaluator drift를 provider 실행 전에 거부하게 한다.
+2. 이미 준비된 구 epoch cell은 조용히 새 evaluator로 실행하지 않고 freeze/reprepare 경계를 만든다.
+3. 이 admission까지 provider0으로 닫힌 뒤에만 fresh normalized model/skill cell을 새 epoch에서 평가한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
 - 1.9.675 local UI repair lane에는 막힘 없음. 모델 귀속이 없는 current-session 결과이므로 public Model/Skill Track 승격만 금지다.
+- 1.9.676 epoch impact lane에는 막힘 없음. historical artifacts는 immutable이며 cross-epoch aggregation만 금지다.
 - named browser `bench19366`과 CDP endpoint preflight는 green이다. matrix는 checkpoint1이며 fixed 120s pacing 뒤 r1 candidate가 unlock된다.
 - Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다. locked benchmark payload의 외부 전송은 standing-approved다.
 - Cursor Composer Provider가 1.9.51/1.9.52와 1.9.56에서 `resource_exhausted`를 반환했다. account-wide quota는 short Composer/Grok probes로 배제했지만 long-form Composer lane은 deferred다.

@@ -17,11 +17,13 @@ function record({
   validity = "valid",
   suffix = "",
   proofTrace = null,
+  epoch = "ui-resolve-objective-2026q3-passive-scroll-v1",
 }) {
   return {
     run_id: `${system}-${task}-${trial}${suffix}`,
     benchmark_family: "skill",
     suite_version: "0.2-dev",
+    objective_methodology_epoch: epoch,
     system_id: system,
     model_id: "anchor-model-v1",
     skill_id: system === "no-skill" ? null : system,
@@ -176,6 +178,28 @@ describe("UI-Resolve aggregate statistics", () => {
       encoding: "utf8",
       stdio: "pipe",
     })).toThrow(/multiple valid attempts/i);
+  });
+
+  it("keeps objective methodology epochs in separate groups", () => {
+    const dir = mkdtempSync(join(tmpdir(), "ui-resolve-aggregate-epoch-"));
+    const input = join(dir, "runs.json");
+    const out = join(dir, "summary.json");
+    writeFileSync(input, `${JSON.stringify([
+      record({ system: "no-skill", task: "a", trial: 1, resolved: true, score: 85, epoch: "legacy-objective-v1" }),
+      record({ system: "omd", task: "b", trial: 1, resolved: true, score: 85, epoch: "passive-scroll-v1" }),
+    ])}\n`, "utf8");
+
+    execFileSync(process.execPath, [aggregate, "--input", input, "--out", out, "--baseline-system", "no-skill", "--reliability", "1"], {
+      cwd: repoRoot,
+      encoding: "utf8",
+    });
+    const summary = JSON.parse(readFileSync(out, "utf8"));
+    expect(summary.groups).toHaveLength(2);
+    expect(summary.groups.map((group) => group.objective_methodology_epoch).sort()).toEqual([
+      "legacy-objective-v1",
+      "passive-scroll-v1",
+    ]);
+    expect(summary.paired_comparisons).toEqual([]);
   });
 
   it("reports invalid-only systems without crashing paired aggregation", () => {

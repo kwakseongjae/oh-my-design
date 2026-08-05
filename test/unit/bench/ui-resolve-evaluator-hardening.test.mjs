@@ -704,7 +704,8 @@ describe("UI-Resolve benchmark evaluator hardening", () => {
     expect(evaluator).not.toContain("[tabindex]:not([tabindex='-1'])");
     expect(evaluator).not.toContain("zoom_reflow_geometry");
     expect(evaluator).toContain("automated_gate_pass");
-    expect(evaluator).toContain('schema_version: "0.5"');
+    expect(evaluator).toContain('schema_version: "0.6"');
+    expect(evaluator).toContain('methodology_epoch: OBJECTIVE_METHODOLOGY_EPOCH');
     expect(evaluator).not.toContain("provisional_ui_resolved");
     expect(evaluator).not.toContain("public_ui_resolved");
   });

@@ -130,9 +130,15 @@ the score schema or retroactively changing historical runs:
 Inside the registered scopes the evaluator fails the existing viewport-geometry
 gate when it observes a token split across lines, short atomic text or a short
 control label exceeding the line budget, generated `::before` label text wider
-than its declared box, or a missing registered scope. Ordinary paragraph and
+than its declared box, a protected passive atomic text node acting as its own
+`overflow:auto|scroll` region, or a missing registered scope. Long values may
+use a separately named, keyboard-reachable relationship carrier; the passive
+identifier/target itself may not become the scroller. Ordinary paragraph and
 headline wrapping outside the scopes is not judged. Historical tasks without
-the oracle retain their exact geometry contract.
+the oracle retain their exact geometry contract. Scores produced from evaluator
+schema 0.6 carry methodology epoch
+`ui-resolve-objective-2026q3-passive-scroll-v1`; aggregation separates this
+epoch from older records instead of silently pooling them.
 
 High-consequence tasks may additionally register a marker-backed hierarchy
 inside the same viewport-geometry gate:

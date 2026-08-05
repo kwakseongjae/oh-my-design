@@ -48,6 +48,8 @@ const run = {
 };
 
 const score = {
+  schema_version: "0.6",
+  methodology_epoch: "ui-resolve-objective-2026q3-passive-scroll-v1",
   status: { automated_gate_pass: true },
   points: { deterministic_total: 81, deterministic_max: 85 },
 };
@@ -68,6 +70,7 @@ describe("UI-Resolve normalized run exporter", () => {
     expect(record).toMatchObject({
       run_id: "run-001",
       benchmark_family: "skill",
+      objective_methodology_epoch: "ui-resolve-objective-2026q3-passive-scroll-v1",
       system_id: "omd-portable",
       model_id: "gpt-5.6-terra",
       skill_id: "omd:apply",

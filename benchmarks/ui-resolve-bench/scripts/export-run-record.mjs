@@ -137,6 +137,8 @@ export function buildRunRecord({
     run_id: basename(workspace),
     benchmark_family: family,
     suite_version: suiteVersion,
+    objective_methodology_epoch:
+      score?.methodology_epoch ?? `legacy-score-schema-${score?.schema_version ?? "unknown"}`,
     system_id: systemId,
     model_id: run?.runtime?.model_requested ?? run?.runtime?.model ?? null,
     skill_id: family === "skill" || family === "factorial"

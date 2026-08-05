@@ -30,6 +30,10 @@ function validateRecord(record, index) {
   if (!ALLOWED_FAMILIES.has(record.benchmark_family)) throw new Error(`${label}.benchmark_family is invalid`);
   if (!ALLOWED_STATUSES.has(record.run_status)) throw new Error(`${label}.run_status is invalid`);
   if (!VALIDITY_VALUES.has(record.validity)) throw new Error(`${label}.validity is invalid`);
+  record.objective_methodology_epoch ??= `legacy-unversioned:${record.suite_version}`;
+  if (typeof record.objective_methodology_epoch !== "string" || !record.objective_methodology_epoch) {
+    throw new Error(`${label}.objective_methodology_epoch must be a non-empty string`);
+  }
   if (!Number.isInteger(record.trial_index) || record.trial_index < 1) throw new Error(`${label}.trial_index must be a positive integer`);
   if (record.validity === "valid" && typeof record.ui_resolved !== "boolean") {
     throw new Error(`${label}.ui_resolved must be boolean for a valid run`);
@@ -72,6 +76,7 @@ function groupKey(record) {
   return [
     record.benchmark_family,
     record.suite_version,
+    record.objective_methodology_epoch,
     record.system_id,
     record.model_id ?? "",
     record.skill_id ?? "",
@@ -84,6 +89,7 @@ function comparisonKey(record) {
   return [
     record.benchmark_family,
     record.suite_version,
+    record.objective_methodology_epoch,
     record.model_id ?? "",
     record.budget_tier ?? "standard",
   ].join("\u0000");
@@ -273,6 +279,7 @@ function summarizeGroup(records, options) {
   return {
     benchmark_family: sample.benchmark_family,
     suite_version: sample.suite_version,
+    objective_methodology_epoch: sample.objective_methodology_epoch,
     system_id: sample.system_id,
     model_id: sample.model_id ?? null,
     skill_id: sample.skill_id ?? null,
@@ -389,6 +396,7 @@ function pairedComparisons(groupedRecords, baselineSystem, options) {
       output.push({
         benchmark_family: records[0].benchmark_family,
         suite_version: records[0].suite_version,
+        objective_methodology_epoch: records[0].objective_methodology_epoch,
         model_id: records[0].model_id ?? null,
         budget_tier: records[0].budget_tier ?? "standard",
         candidate_system_id: systemId,

@@ -7,6 +7,8 @@ import { extname, join, normalize, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, repoRoot, writeJson } from "./_lib.mjs";
 
+export const OBJECTIVE_METHODOLOGY_EPOCH = "ui-resolve-objective-2026q3-passive-scroll-v1";
+
 export const normalizeColor = (value) => {
   const numbers = String(value).match(/[\d.]+/g)?.slice(0, 3).map(Number);
   if (!numbers || numbers.length !== 3) return String(value).toUpperCase();
@@ -1760,7 +1762,8 @@ async function main() {
   };
 
   const score = {
-    schema_version: "0.5",
+    schema_version: "0.6",
+    methodology_epoch: OBJECTIVE_METHODOLOGY_EPOCH,
     task_id: task.id,
     variant_id: manifest.variant.id,
     evaluated_at: new Date().toISOString(),

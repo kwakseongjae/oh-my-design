@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.676 objective evaluator epoch
+- schema0.6/run export/aggregate에 passive-scroll objective epoch를 연결해 cross-epoch pooling을 차단했다.
+- frozen starter56개를 provider0 렌더 감사했고 새 gate 영향은0/56이다.
+- historical score는 재계산하지 않는다; focused33/full723 pass·3 skip·lint green이다.
+
 ## 2026-08-05 (Codex) · 1.9.675 local UI repair/evaluator calibration
 - frozen museum-loan을 provider0으로 수리해 baseline75→85/85, in-app 320px overflow0을 확인했다.
 - passive text 자체 scroll로 점수를 맞추는 첫 구현을 폐기하고 named relationship carrier3개로 교정했다.

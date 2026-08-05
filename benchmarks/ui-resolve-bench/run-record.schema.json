@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://oh-my-design.kr/schemas/ui-resolve-run-record-v0.2.json",
+  "$id": "https://oh-my-design.kr/schemas/ui-resolve-run-record-v0.3.json",
   "title": "UI-Resolve run record",
   "type": "object",
   "additionalProperties": true,
@@ -8,6 +8,7 @@
     "run_id",
     "benchmark_family",
     "suite_version",
+    "objective_methodology_epoch",
     "system_id",
     "task_id",
     "trial_index",
@@ -18,6 +19,7 @@
     "run_id": { "type": "string", "minLength": 1 },
     "benchmark_family": { "enum": ["model", "skill", "harness", "prompt-arena", "factorial"] },
     "suite_version": { "type": "string", "minLength": 1 },
+    "objective_methodology_epoch": { "type": "string", "minLength": 1 },
     "system_id": { "type": "string", "minLength": 1 },
     "model_id": { "type": ["string", "null"] },
     "skill_id": { "type": ["string", "null"] },
