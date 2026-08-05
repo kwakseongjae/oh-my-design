@@ -101,6 +101,11 @@ changing a narrative status cannot make a gate pass.
 
 ## Immediate queue
 
+1.9.687 reaches the local-only hard pause: all nine unresolved gates require
+remote execution, private durable storage, external practitioners/auditors, or
+production observation. Do not create another local patch until one of those
+resources is available.
+
 1. Run `audit-frontier-readiness.mjs` at every checkpoint and refuse `2.0.0`
    promotion while any normative gate is not `pass`.
 2. Preserve the 1.9.679 task and 1.9.680 six-cell matrix unchanged. Under the

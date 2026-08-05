@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.686` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.686 frontier machine-evidence cross-audit
+- 기준 커밋: 현재 `1.9.687` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.687 local-only frontier hard pause
 
 ## 지금 (현재 위치)
+
+- 1.9.687은 unresolved9 gates의 next evidence class를 exact map으로 고정했다. remote model4+multi-model1, private storage/audit1, practitioner1, independent auditor1, production observation1이며 locally closable0이다.
+- local preparation은 complete7/partial2지만 machine pass0/9다. boundary auditor는 누락/중복/거짓 local mapping을 거부하고 `PAUSE_LOCAL_PATCH_TRAIN_FOR_NON_LOCAL_EVIDENCE`를 반환한다.
+- 현재 no-remote 조건에서 의미 있는 로컬 패치 큐는 종료됐다. 다음 최소 권한은 frozen depot task의 Raw/current OmD six-cell을 fresh root로 재준비한 뒤 remote model 실행을 허용하는 것이다. 기존1.9.680 root는 보존한다.
 
 - 1.9.686은 9 frontier gates 각각에 immutable JSON ref/pointer/expected pass predicate를 고정했다. narrative status만 pass로 바꾸거나 expected를 현재 실패값에 맞추면 auditor가 거부한다.
 - 현재 machine pass evidence0/9, narrative pass0/9가 일치해 `BLOCK_2_0_PROMOTION`이다. missing/escape evidence도 계속 fail-close한다.

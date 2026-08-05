@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.687 local-only frontier hard pause
+- unresolved9를 remote4+multi1/private1/practitioner1/auditor1/production1로 exact 분류했다.
+- locally closable0, local prep complete7/partial2라 의미 없는 patch churn을 중단한다.
+- 다음 최소 권한은 fresh six-cell remote execution 허용이며 기존1.9.680 root는 보존한다.
+
 ## 2026-08-05 (Codex) · 1.9.686 frontier machine-evidence cross-audit
 - 9 gates 모두에 pinned JSON pass predicate를 연결했고 현재 machine readiness0/9다.
 - status relabel과 expected-value manipulation을 fail-close한다.
