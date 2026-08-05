@@ -9,7 +9,8 @@
 ## 지금 (현재 위치)
 
 - 1.9.705 신규 `cave-climate-sensor-custody-v0.1`은 exact task commit `4bd03c7b`, tree `fe3bb646…`, provider exposure0으로 잠겼다. 5 probes/7 data cartridges/4 collection windows와 3 states를 보존하며 climate verification·calibration·integrity·acceptance·publication 추론을 금지한다. 80 task validator+11 mutation이 green이다.
-- raw DESIGN.md baseline은 75/85로 contract/state/design/evidence green, responsive/a11y red다. 좁은 화면의 fixed-width carrier, atomic fragmentation, short decision wrapping, contrast4.18이 재현됐다. 다음은 exact 1.9.704 skill을 Luna/high1셀·timeout720s·retry0로 준비하는 1.9.706 transfer canary다.
+- raw DESIGN.md baseline은 75/85로 contract/state/design/evidence green, responsive/a11y red다. 좁은 화면의 fixed-width carrier, atomic fragmentation, short decision wrapping, contrast4.18이 재현됐다.
+- 1.9.706 canary는 exact task `4bd03c7b`/tree `fe3bb646…`, exact clean skill `984180ff`/hash `97b50cba…`, Luna/high1셀, timeout720s, retry0으로 준비됐다. locked plan `315fc216…`, prepared state `dd21d349…`, provider0/model exposure0이다. success는85/85+revision1+successful static closure1+failed0+proof compliance이며 같은 selector 원인 재실패 시 hard pause다.
 - 1.9.703 exact Luna/high 단일 진단은 valid85/85, resolved=true, 418,286ms, 2,156,519 tokens다. task/design/state/responsive/a11y/evidence gate가 모두 green이고 product edit/revision은 정확히1회, user handoff/browser retry는0이다.
 - source fallback opening과 relationship packet은 첫 edit 전에 전이됐다. 모델은 필요한 marker/name/tabindex/overflow/focus/nowrap를 모두 구현했지만 packet의 exact selector 앞에 `.decision` context를 붙였다. 최종 UI는 통과했으나 exact static-close가 CSS6건을 failed1/success0으로 거부해 proof compliance=false다. terminal failure 뒤 추가 edit은 하지 않아 stop 계약은 지켰다.
 - 같은 wildlife task는 재실행하지 않는다. 1.9.704 clean commit `a3656dfd`는 target/evidence용 exact grouped selector를 완성된 `canonical_css_source`로 제공하고 ancestor prefix/suffix/alias/substitution을 명시적으로 금지한다. focused112, clean full755 pass/3 skip, lint/diff green이다.

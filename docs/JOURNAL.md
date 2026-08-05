@@ -9,7 +9,7 @@
 - 미노출 cave climate-sensor custody task를 provider exposure0으로 작성·잠갔다.
 - 80-task validator/mutation green; raw starter75/85, responsive+a11y만 red다.
 - exact task `4bd03c7b`/tree `fe3bb646…`와 baseline hash를 report로 보존했다.
-- 다음은 exact 1.9.704 Luna/high1셀 transfer canary 준비다.
+- exact clean skill `984180ff` Luna/high1셀을 provider0으로 준비했다; 다음은 단 한 번 실행이다.
 
 ## 2026-08-05 (Codex) · 1.9.703/704 canonical CSS packet
 - fresh wildlife Luna/high 셀은 UI85/85·revision1이지만 exact static-close failed1로 proof red다.
