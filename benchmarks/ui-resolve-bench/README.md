@@ -148,6 +148,17 @@ it acquires an execution lease or invokes a provider. Missing or stale pins are
 an explicit re-prepare boundary; historical workspaces remain immutable and
 are never silently run under a newer evaluator.
 
+Before any prepared root is considered for execution, generate a provider-zero
+admission report:
+
+```bash
+npm run bench:ui:audit-prepared -- --root /absolute/path/to/prepared-matrix
+```
+
+The audit requires exact plan/cell/manifest agreement, untouched product
+trees, equal prompt/starter/runtime/model/effort/timeout/evaluator inputs across
+comparison arms, a publishable skill source, and no execution artifacts.
+
 High-consequence tasks may additionally register a marker-backed hierarchy
 inside the same viewport-geometry gate:
 

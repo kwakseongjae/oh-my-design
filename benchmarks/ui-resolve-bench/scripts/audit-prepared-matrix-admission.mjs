@@ -1,0 +1,134 @@
+#!/usr/bin/env node
+import { existsSync, readFileSync } from "node:fs";
+import { join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { parseArgs, readJson, sha256, treeManifest, writeJson } from "./_lib.mjs";
+import { assertPreparedObjectiveMethodology } from "./run-prepared-matrix.mjs";
+
+function allEqual(values) {
+  return values.length > 0 && new Set(values.map((value) => JSON.stringify(value))).size === 1;
+}
+
+export function auditPreparedMatrixAdmission(root) {
+  const matrixRoot = resolve(root);
+  const planPath = join(matrixRoot, "RUN-MATRIX.locked.json");
+  const statePath = join(matrixRoot, "matrix-state.json");
+  const plan = readJson(planPath);
+  const state = readJson(statePath);
+  const objectiveEvaluator = assertPreparedObjectiveMethodology(matrixRoot);
+  if (state.status !== "prepared" || state.prepared_cells !== plan.cells.length) {
+    throw new Error("prepared-matrix-admission:incomplete-preparation");
+  }
+
+  const cells = plan.cells.map((cell) => {
+    const workspace = join(matrixRoot, cell.id);
+    const manifest = readJson(join(workspace, ".benchmark", "manifest.json"));
+    const matrixCell = readJson(join(workspace, ".benchmark", "matrix-cell.json"));
+    for (const field of [
+      "id", "task_id", "variant_id", "system_id", "runtime", "model_id",
+      "effort", "timeout_seconds", "trial_index",
+    ]) {
+      if (matrixCell[field] !== cell[field]) {
+        throw new Error(`prepared-matrix-admission:cell-contract-drift:${cell.id}:${field}`);
+      }
+    }
+    if (manifest.task.id !== cell.task_id || manifest.variant.id !== cell.variant_id
+      || manifest.runtime_target !== cell.runtime) {
+      throw new Error(`prepared-matrix-admission:manifest-contract-drift:${cell.id}`);
+    }
+    const product = treeManifest(workspace, {
+      ignore: manifest.workspace.product_ignore,
+    });
+    const untouched = product.sha256 === manifest.workspace.product_initial_sha256;
+    if (!untouched) throw new Error(`prepared-matrix-admission:product-drift:${cell.id}`);
+    return {
+      id: cell.id,
+      task_id: cell.task_id,
+      system_id: cell.system_id,
+      runtime: cell.runtime,
+      model_id: cell.model_id,
+      effort: cell.effort,
+      timeout_seconds: cell.timeout_seconds,
+      task_prompt_sha256: matrixCell.task_prompt_sha256,
+      starter_sha256: matrixCell.starter_sha256,
+      product_initial_sha256: manifest.workspace.product_initial_sha256,
+      skill_sha256: matrixCell.skill_sha256,
+      source_commit: matrixCell.source_commit,
+      source_publishable: matrixCell.source_publishable,
+      objective_evaluator: matrixCell.objective_evaluator,
+      untouched,
+    };
+  });
+  const equality = {
+    cell_contract: true,
+    task_id: allEqual(cells.map((cell) => cell.task_id)),
+    task_prompt_sha256: allEqual(cells.map((cell) => cell.task_prompt_sha256)),
+    starter_sha256: allEqual(cells.map((cell) => cell.starter_sha256)),
+    product_initial_sha256: allEqual(cells.map((cell) => cell.product_initial_sha256)),
+    runtime: allEqual(cells.map((cell) => cell.runtime)),
+    model_id: allEqual(cells.map((cell) => cell.model_id)),
+    effort: allEqual(cells.map((cell) => cell.effort)),
+    timeout_seconds: allEqual(cells.map((cell) => cell.timeout_seconds)),
+    objective_evaluator: allEqual(cells.map((cell) => cell.objective_evaluator)),
+  };
+  if (!Object.values(equality).every(Boolean)) {
+    throw new Error("prepared-matrix-admission:normalization-mismatch");
+  }
+  if (cells.some((cell) => cell.system_id !== "raw-design-md" && !cell.source_publishable)) {
+    throw new Error("prepared-matrix-admission:non-publishable-source");
+  }
+
+  const blockedByPlan = String(plan.status ?? "").includes("remote-execution-deferred");
+  const executionArtifactsAbsent = !existsSync(join(matrixRoot, "execution-state.json"))
+    && !existsSync(join(matrixRoot, ".matrix-execution.lock"))
+    && cells.every((cell) => !existsSync(join(matrixRoot, cell.id, ".benchmark", "run-result.json")));
+  if (!executionArtifactsAbsent) throw new Error("prepared-matrix-admission:execution-artifact-present");
+
+  return {
+    schema_version: "0.1",
+    experiment_id: plan.experiment_id,
+    status: blockedByPlan ? "PREPARED_PROVIDER_ZERO_EXECUTION_DEFERRED" : "PREPARED_PROVIDER_ZERO",
+    provider_calls: 0,
+    model_exposures: 0,
+    scheduled_cells: plan.cells.length,
+    prepared_cells: state.prepared_cells,
+    locked_plan_sha256: sha256(readFileSync(planPath)),
+    preparation_state_sha256: sha256(readFileSync(statePath)),
+    objective_evaluator: objectiveEvaluator,
+    normalization: equality,
+    systems: [...new Set(cells.map((cell) => cell.system_id))],
+    trials: [...new Set(plan.cells.map((cell) => cell.trial_index))].sort((a, b) => a - b),
+    source_attestation: Object.fromEntries(cells
+      .filter((cell) => cell.skill_sha256)
+      .map((cell) => [cell.system_id, {
+        source_commit: cell.source_commit,
+        skill_sha256: cell.skill_sha256,
+        publishable: cell.source_publishable,
+      }])),
+    execution_admission: {
+      allowed: !blockedByPlan,
+      reason: blockedByPlan ? "locked-plan-remote-execution-deferred" : null,
+      execution_artifacts_absent: executionArtifactsAbsent,
+      reprepare_on_objective_methodology_drift: true,
+    },
+    cells,
+  };
+}
+
+async function main() {
+  const args = parseArgs();
+  const root = args.get("root") ? resolve(String(args.get("root"))) : null;
+  const out = args.get("out") ? resolve(String(args.get("out"))) : null;
+  if (!root) {
+    console.error("usage: audit-prepared-matrix-admission.mjs --root <prepared-root> [--out <report.json>]");
+    process.exitCode = 2;
+    return;
+  }
+  const report = auditPreparedMatrixAdmission(root);
+  if (out) writeJson(out, report);
+  console.log(JSON.stringify(report, null, 2));
+}
+
+if (resolve(process.argv[1] ?? "") === fileURLToPath(import.meta.url)) {
+  await main();
+}

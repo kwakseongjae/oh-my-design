@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.677` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.677 prepared evaluator admission
+- 기준 커밋: 현재 `1.9.678` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.678 normalized provider-zero canary
 
 ## 지금 (현재 위치)
+
+- 1.9.678은 Raw DESIGN.md와 exact current `omd:apply`를 3 trial/6 cell로 balanced 준비하는 새-epoch canary를 만들었다. prompt/starter/product/runtime/model/effort/timeout/evaluator parity가 전부 true이고 OmD source는 publishable commit `c73950c0…`, skill hash `cd1e35c1…`다.
+- reusable prepared-admission auditor가 plan/cell/manifest 계약, untouched product tree, cross-arm normalization, source publishability, execution artifact absence를 fail-close한다. 실제 runner hold도 `matrix-execution-hold:remote-execution-deferred`로 확인했다.
+- 이 canary는 provider0/model0/execution0이며 benchmark 우위 증거가 아니다. full725 pass/3 skip, lint/diff green이다.
 
 - 1.9.677은 새 sandbox/matrix 준비 시 objective score schema·methodology epoch·evaluator source hash·contract source hash를 locked plan/preparation state/cell manifest/matrix-cell 4곳에 고정한다.
 - runner는 실행 lease를 잡기 전에 모든 pin을 현재 evaluator와 대조한다. 구 epoch·누락·source drift는 `objective-methodology-drift`로 종료되어 execution state/cooldown/provider 호출을 만들지 않으며 historical root는 수정하지 않고 reprepare만 허용한다.
@@ -3193,15 +3197,16 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 현재 epoch로 provider-free normalized matrix를 새로 준비해 모든 cell의 plan/task/starter/skill/evaluator pin parity를 사전 증명한다.
-2. prepared packet의 실행 전 promotion manifest에 human0/provider0 상태와 허용된 다음 실행 경계를 명시한다.
-3. 그 admission이 닫힌 뒤에만 fresh normalized model/skill cell을 새 epoch에서 평가한다.
+1. genuinely unseen claim-eligible holdout task를 새로 만들고 provider/model 노출 전에 deterministic baseline과 evaluator scope를 잠근다.
+2. 그 task에 exact Raw DESIGN.md/current OmD 2-arm source pin과 promotion/failure stop rule을 사전 등록한다.
+3. no-remote 조건이 유지되는 동안은 provider 실행 없이 preparation까지 닫고, 명시적으로 허용된 시점에만 새 epoch scored cell을 시작한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
 - 1.9.675 local UI repair lane에는 막힘 없음. 모델 귀속이 없는 current-session 결과이므로 public Model/Skill Track 승격만 금지다.
 - 1.9.676 epoch impact lane에는 막힘 없음. historical artifacts는 immutable이며 cross-epoch aggregation만 금지다.
 - 1.9.677 prepared admission lane에는 막힘 없음. 구 prepared root는 실행 금지이며 새 root로 reprepare해야 한다.
+- 1.9.678 canary는 의도적으로 execution-deferred다. 우위 판단이나 public leaderboard에는 사용할 수 없다.
 - named browser `bench19366`과 CDP endpoint preflight는 green이다. matrix는 checkpoint1이며 fixed 120s pacing 뒤 r1 candidate가 unlock된다.
 - Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다. locked benchmark payload의 외부 전송은 standing-approved다.
 - Cursor Composer Provider가 1.9.51/1.9.52와 1.9.56에서 `resource_exhausted`를 반환했다. account-wide quota는 short Composer/Grok probes로 배제했지만 long-form Composer lane은 deferred다.

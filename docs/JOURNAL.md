@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.678 normalized preparation canary
+- Raw DESIGN.md/current OmD 3×2 matrix를 새 epoch로 provider0 준비하고 모든 비교 입력 parity를 확인했다.
+- admission auditor가 계약·untouched tree·source·execution absence를 fail-close한다.
+- 실제 runner hold green, full725 pass·3 skip, lint green이며 score claim은 없다.
+
 ## 2026-08-05 (Codex) · 1.9.677 prepared evaluator admission
 - score schema/epoch/evaluator+contract hash를 plan/state/manifest/cell 4곳에 고정했다.
 - 구·누락·drift pin은 lease/cooldown/provider보다 먼저 거부되고 historical root는 그대로 보존된다.
