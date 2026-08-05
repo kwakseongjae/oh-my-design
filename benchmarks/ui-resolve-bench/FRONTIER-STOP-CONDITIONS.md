@@ -88,7 +88,7 @@ payload remains a hard pause condition.
 | Verified Skill Lift | 1.9.679 unseen task frozen; 1.9.680 balanced Raw/OmD six-cell matrix admitted, execution deferred | Open |
 | Positive lift across 3 model families | Historical calibration only; no current-epoch three-family lower bound | Open |
 | Harness Pareto | 1.9.22 internal 3-task repeated matrix, non-dominated; frontier transfer incomplete | Partial |
-| 24 hidden tasks | 1.9.682 audit: 78 public inventory tasks, 0 hidden audit-eligible; EN/KO only; creation/fidelity/open-brief absent | Open |
+| 24 hidden tasks | 1.9.682: eligible0; 1.9.683: private commitment boundary ready, real private denominator still0 | Open |
 | 10 runs/task + downloadable packages | Aggregator/export path exists; 24×10 current-epoch scale incomplete | Open |
 | 10-practitioner blind review | Assignment/gallery/operations machinery exists; panel absent | External |
 | Independent task audit <5% | Contract and deterministic audit rules exist; independent auditor sample absent | External |

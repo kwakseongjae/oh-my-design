@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.683 private hidden-task registry boundary
+- hidden bundle 원문은 repo 밖, public에는 opaque alias+hash+coverage만 남기는 registry builder를 만들었다.
+- repo source/incomplete/ineligible/duplicate를 fail-close하고 private name·prompt·path 비노출을 테스트했다.
+- real private task0이라 gate4는 그대로 open; 다음은 package completeness/mutation coverage다.
+
 ## 2026-08-05 (Codex) · 1.9.682 hidden denominator audit
 - 공개 inventory78과 hidden Verified denominator를 분리하는 coverage auditor를 추가했다.
 - 실제 eligible0, EN/KO only, creation/fidelity/open-brief0이라 gate4를 fail-close했다.

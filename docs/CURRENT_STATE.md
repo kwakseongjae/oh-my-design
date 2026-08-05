@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.682` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.682 hidden-task denominator audit
+- 기준 커밋: 현재 `1.9.683` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.683 private hidden-task registry boundary
 
 ## 지금 (현재 위치)
+
+- 1.9.683은 hidden task 원문을 repo 밖 private root에 유지하면서 public에는 opaque alias+bundle/contract hash+locale/dimensions만 남기는 commitment registry builder를 추가했다.
+- repo 내부 source, incomplete/ineligible bundle, unsupported locale, duplicate commitment를 거부한다. positive tests에서 task name/prompt/source path가 public registry에 없음을 확인했다.
+- 실제 private tasks는0이며 gate4는 open이다. focused5 pass/lint/diff green, provider0/model0이다. 다음은 real private authoring location이 없는 동안 artifact-package completeness/mutation coverage로 이동한다.
 
 - 1.9.682는 공개 task inventory와 hidden Verified denominator를 분리하는 coverage contract/auditor를 추가했다. task가 `benchmark_visibility:hidden`+`independent_audit:eligible`일 때만 24-task gate에 들어간다.
 - 실제 감사는 inventory78, eligible hidden0, locale EN/KO only, creation0/screenshot-fidelity0/open-brief0으로 `BLOCK_HIDDEN_TASK_COVERAGE_CLAIM`이다. 기존 공개 과제를 unseen으로 재라벨하지 않는다.

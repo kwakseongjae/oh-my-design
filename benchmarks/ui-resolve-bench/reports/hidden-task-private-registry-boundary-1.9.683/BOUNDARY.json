@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1",
+  "target_version": "2.0.0",
+  "snapshot_patch": "1.9.683",
+  "status": "PRIVATE_SOURCE_BOUNDARY_READY_DENOMINATOR_EMPTY",
+  "public_task_content_reuse_allowed": false,
+  "private_source_must_be_outside_repository": true,
+  "required_bundle_files": ["task.json", "PROMPT.md", "starter/DESIGN.md", "starter/index.html"],
+  "published_fields": [
+    "task_alias",
+    "bundle_sha256",
+    "contract_sha256",
+    "file_count",
+    "locale",
+    "dimensions"
+  ],
+  "forbidden_public_fields": ["source_path", "task_id", "prompt", "starter_content", "design_md_content"],
+  "private_tasks_committed": 0,
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "gate_pass": false,
+  "claim_boundary": "The registry mechanism is ready; no real private task denominator has been authored, committed, audited, or scored."
+}

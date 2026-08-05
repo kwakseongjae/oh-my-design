@@ -3,7 +3,7 @@ import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-function dimensionFlags(task) {
+export function dimensionFlags(task) {
   const viewportNames = new Set((task.viewports ?? []).map((viewport) => viewport?.name));
   return {
     creation: task.track === "creation",
