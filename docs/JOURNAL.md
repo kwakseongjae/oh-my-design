@@ -9,6 +9,7 @@
 - 미노출 fictional wildlife acoustic-media custody repair task를 provider exposure0으로 작성했다.
 - 79-task validator/mutation green; raw starter75/85, responsive+a11y만 red다.
 - `b51649c5` task commit/full755 pass/3 skip; exact lock+baseline report 뒤 1.9.701 canary preregistration이다.
+- 1.9.703 exact Luna/high1셀, timeout720s/retry0 canary가 provider0으로 준비됐다.
 
 ## 2026-08-05 (Codex) · 1.9.700/701 first-edit packet
 - Luna 진단은 snapshot/opening/carrier 계약까지 전이했지만 첫 edit에서 CSS6개를 누락했다.

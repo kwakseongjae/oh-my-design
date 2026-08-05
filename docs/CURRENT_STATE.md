@@ -15,6 +15,7 @@
 - 다음 transfer 후보를 감사한 결과 현재 public task78개는 모두 historical report에 최소1회 등장해 완전 미노출 과제가0개다. 기존 과제를 unseen으로 재라벨하지 않는다. 다음 provider call 전 새 fictional development task를 작성하고 core validator+mutation acceptance를 통과시켜야 한다.
 - 1.9.702 신규 `wildlife-acoustic-media-custody-v0.1`은 exact task commit `b51649c5`, tree `e273008f…`, provider exposure0으로 잠겼다. 5 deployments/7 media cards/4 retrieval windows와 3 interaction states를 보존하며 species·calibration·integrity·acceptance·publication 추론을 금지한다. 79 task 전수 validator+11 mutation, full755 pass/3 skip, lint/diff가 green이다.
 - raw DESIGN.md starter baseline은 75/85로 contract/state/design/evidence green, responsive/a11y red다. desktop은 green이고 390/320/200%에서 document overflow와 atomic fragmentation이 재현되며 contrast4.18이다. task lock/baseline report가 고정됐고 provider0다.
+- 1.9.703 canary는 exact task `b51649c5`/tree `e273008f…`, exact skill `76c2e530`/hash `228db37f…`, Luna/high1셀, timeout720s, retry0으로 준비됐다. locked plan `1a77e71f…`, prepared state `aa7e0988…`, provider0/model exposure0이다.
 
 - 1.9.697 clean-commit full regression은 755 pass/3 skip, lint/diff green이다.
 - 1.9.698 exact `3ec07131` Luna/high 단일 진단은 valid81/85, resolved=false다. weak UI의 static-close는 successful0/failed1/compliance=false로 바뀌어 false proof 차단은 전이됐다.
@@ -3271,8 +3272,8 @@
 ## 다음 (즉시 착수 가능)
 
 1. 같은 공개 task 재호출 없이 local fixture의 single-edit closure 계약을 유지한다.
-2. wildlife task lock/baseline report를 clean commit으로 고정한다.
-3. exact 1.9.701 skill, provider 비용 상한, stop condition을 사전등록해 fresh-task 전이만 측정한다. 단일 diagnostic은 Skill Lift ranking이나 2.0 gate에 반영하지 않는다.
+2. 1.9.703 exact prepared canary를 clean commit으로 고정한다.
+3. 한 셀만 실행해 85/85+revision1+successful closure1+proof compliance를 측정한다. retry·replacement·ranking·2.0 gate 반영은 금지다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
