@@ -1,0 +1,5 @@
+Improve the supplied cave climate-sensor custody review so field technicians can inspect probe-to-data-cartridge assignments, chamber collection windows, and the custody decision confidently on desktop and narrow screens.
+
+Preserve all five probe identifiers, all seven data-cartridge identifiers and their exact probe assignments, all four supplied collection windows, the three review views, the technician-note toggle, the custody-review form, and all stated summary evidence. Do not invent climate verification, data completeness, sensor calibration, cave safety clearance, data-cartridge integrity, transfer acceptance, archive publication, or chain-of-custody closure. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The probe register, separate collection-window strip, and separate custody decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.
