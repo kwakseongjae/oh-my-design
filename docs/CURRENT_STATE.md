@@ -13,8 +13,8 @@
 - 첫 product edit은 carrier marker/name/tabindex를 적용했지만 overflow/focus/nowrap 6개 CSS 의무를 누락했다. static-close는 failed1/success0으로 정확히 거부했고, model은 terminal failure 뒤 두 번째 edit으로 CSS를 보완해 proof compliance=false다. 최종 UI의 objective 미해결 원인은 serious color contrast다.
 - 같은 공개 과제 반복은 오염·4.13M token 비용 때문에 중단한다. 1.9.701 clean commit `270d9b62`는 relationship 계약을 generic 50+ item checklist 뒤가 아니라 exact selector/attribute/CSS의 짧은 `source_fallback_patch_contract`로 맨 앞에 제공하고 red 뒤 second edit 금지를 packet 자체에 넣었다. clean-source full755 pass/3 skip, lint/diff green이다.
 - 다음 transfer 후보를 감사한 결과 현재 public task78개는 모두 historical report에 최소1회 등장해 완전 미노출 과제가0개다. 기존 과제를 unseen으로 재라벨하지 않는다. 다음 provider call 전 새 fictional development task를 작성하고 core validator+mutation acceptance를 통과시켜야 한다.
-- 1.9.702 신규 `wildlife-acoustic-media-custody-v0.1`을 provider exposure0 상태로 작성했다. 5 deployments/7 media cards/4 retrieval windows와 3 interaction states를 잠그며 species·calibration·integrity·acceptance·publication 추론을 금지한다. 79 task 전수 validator+11 mutation은 green이다.
-- raw DESIGN.md starter baseline은 75/85로 contract/state/design/evidence green, responsive/a11y red다. desktop은 green이고 390/320/200%에서 document overflow와 atomic fragmentation이 재현되며 contrast4.18이다. task clean commit/full regression은 pending이다.
+- 1.9.702 신규 `wildlife-acoustic-media-custody-v0.1`은 exact task commit `b51649c5`, tree `e273008f…`, provider exposure0으로 잠겼다. 5 deployments/7 media cards/4 retrieval windows와 3 interaction states를 보존하며 species·calibration·integrity·acceptance·publication 추론을 금지한다. 79 task 전수 validator+11 mutation, full755 pass/3 skip, lint/diff가 green이다.
+- raw DESIGN.md starter baseline은 75/85로 contract/state/design/evidence green, responsive/a11y red다. desktop은 green이고 390/320/200%에서 document overflow와 atomic fragmentation이 재현되며 contrast4.18이다. task lock/baseline report가 고정됐고 provider0다.
 
 - 1.9.697 clean-commit full regression은 755 pass/3 skip, lint/diff green이다.
 - 1.9.698 exact `3ec07131` Luna/high 단일 진단은 valid81/85, resolved=false다. weak UI의 static-close는 successful0/failed1/compliance=false로 바뀌어 false proof 차단은 전이됐다.
@@ -3271,8 +3271,8 @@
 ## 다음 (즉시 착수 가능)
 
 1. 같은 공개 task 재호출 없이 local fixture의 single-edit closure 계약을 유지한다.
-2. 신규 wildlife task와 79-task inventory expectations를 clean commit하고 full regression을 확정한다.
-3. task lock/baseline report 뒤 exact `270d9b62`, provider 비용 상한, stop condition을 사전등록해 fresh-task 전이만 측정한다. 단일 diagnostic은 Skill Lift ranking이나 2.0 gate에 반영하지 않는다.
+2. wildlife task lock/baseline report를 clean commit으로 고정한다.
+3. exact 1.9.701 skill, provider 비용 상한, stop condition을 사전등록해 fresh-task 전이만 측정한다. 단일 diagnostic은 Skill Lift ranking이나 2.0 gate에 반영하지 않는다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
