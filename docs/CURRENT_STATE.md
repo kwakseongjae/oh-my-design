@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `28bcd9fc` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.665 strict packet exact source pin
+- 기준 커밋: `9b364123` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.666 DESIGN.md existing-surface routing precedence
 
 ## 지금 (현재 위치)
+
+- 1.9.666은 `DESIGN.md` 언급을 무조건 `omd:init`으로 보내던 routing 오류를 고쳤다. 기존 화면의 명시적 수정은 `omd:apply`, no-change 검수는 `omd:slop-audit`가 우선한다.
+- EN/KO/JA/ZH mixed-intent 회귀 케이스를 추가하면서 명시적 design-system 생성, 신규 화면, locale 경로는 보존했다. provider0/model0이다.
+- 다음은 workflow/CLI/full suite acceptance 뒤, genuinely underspecified task를 repair로 조용히 보내는 default를 confidence/ambiguity 정보로 노출하는 provider-free routing 수리다.
 
 - 1.9.665는 strict packet source를 commit `28bcd9fc...`, source tree `98c295bc...`, skill tree `de59c633...`로 exact pin했다. system id는 `omd-strict-plan-packet-candidate`다.
 - provider0/model0/promotion false이며 fresh transfer 전 우위 주장은 금지다. future control은 exact `omd-guarded-plan-packet-candidate`다.

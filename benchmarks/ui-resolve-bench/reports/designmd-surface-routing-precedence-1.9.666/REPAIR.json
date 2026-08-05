@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.666",
+  "status": "LOCAL_ROUTING_REPAIR_ACCEPTED",
+  "unresolved_frontier_gate": "routing-ownership-reverify",
+  "bounded_hypothesis": "If DESIGN.md is treated as context rather than an unconditional establish-system intent, mixed requests will route to the smallest workflow that actually performs the requested existing-surface work.",
+  "observed_failure": "Any task containing DESIGN.md was routed to establish-design-system before existing-surface change or audit intent was considered.",
+  "candidate_delta": "Recognize existing product-surface context across EN/KO/JA/ZH and let explicit audit or change intent win over a passive DESIGN.md mention; retain establish-design-system when no existing-surface change is requested.",
+  "frozen_cases": {
+    "new_establish_cases": 0,
+    "existing_regression_cases": 6,
+    "new_mixed_intent_cases": 5,
+    "languages": ["en", "ko", "ja", "zh"]
+  },
+  "acceptance": {
+    "explicit_existing_surface_change_routes_to_apply": true,
+    "explicit_no_change_audit_routes_to_slop_audit": true,
+    "explicit_design_system_creation_routes_to_init": true,
+    "new_surface_and_locale_precedence_preserved": true,
+    "same_surface_reverify_suffix_preserved": true
+  },
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "rollback_gate": "Revert if explicit design-system creation stops routing to omd:init or if new-surface/localization routes regress.",
+  "first_failure_rule": "Any mixed existing-surface task routed to establish-design-system fails the repair.",
+  "claim_boundary": "This repairs deterministic CLI routing only. It does not prove model routing reliability or complete the broader 2.0 routing gate.",
+  "next": "Run workflow, CLI, and full-suite acceptance; then add ambiguity reporting instead of silently defaulting genuinely underspecified tasks."
+}

@@ -29,6 +29,12 @@ describe('omd workflows', () => {
     ['이 저장소에 DESIGN.md와 디자인 시스템 만들어줘', 'establish-design-system'],
     ['Translate and localize the docs into five languages', 'localize-product-language'],
     ['이 온보딩 UI를 검수하고 바로 고쳐줘', 'repair-existing-ui'],
+    ['Use DESIGN.md to fix the existing pricing page', 'repair-existing-ui'],
+    ['DESIGN.md를 적용해서 기존 홈 화면을 고쳐줘', 'repair-existing-ui'],
+    ['DESIGN.mdを使って既存の設定画面を改善して', 'repair-existing-ui'],
+    ['使用 DESIGN.md 改善现有结算页面', 'repair-existing-ui'],
+    ['Audit the existing checkout UI against DESIGN.md and do not change code', 'audit-existing-ui'],
+    ['DESIGN.md 기준으로 기존 설정 화면을 검수하되 코드는 수정하지 마', 'audit-existing-ui'],
   ])('routes %s to %s', (task, expected) => {
     expect(selectWorkflow(task, manifest).id).toBe(expected);
   });

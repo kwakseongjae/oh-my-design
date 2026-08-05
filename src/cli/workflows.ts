@@ -112,9 +112,15 @@ export function selectWorkflow(task: string, manifest = loadWorkflowManifest()):
     return workflow;
   };
 
-  if (includesAny(value, [
-    'design.md', 'design md', 'design system', '디자인 시스템', '디자인시스템', 'デザインシステム', '設計系統',
-  ])) return byId('establish-design-system');
+  const designSystemMentioned = includesAny(value, [
+    'design.md', 'design md', 'design system', '디자인 시스템', '디자인시스템', 'デザインシステム', '設計系統', '设计系统',
+  ]);
+  const existingSurfaceMentioned = includesAny(value, [
+    'existing', 'current', 'page', 'screen', 'ui', 'route', 'flow', 'pricing', 'checkout', 'home', 'settings',
+    '기존', '현재', '페이지', '화면', '경로', '플로우', '가격', '결제', '홈', '설정',
+    '既存', '現在', 'ページ', '画面', '経路', 'フロー', '料金', '決済', '設定',
+    '现有', '現有', '当前', '當前', '页面', '頁面', '画面', '流程', '定价', '定價', '结算', '結算', '设置', '設定',
+  ]);
 
   if (includesAny(value, [
     'translate', 'localize', 'localise', 'locale', '번역', '현지화', '다국어', '翻訳', 'ローカライズ', '本地化', '在地化',
@@ -127,9 +133,20 @@ export function selectWorkflow(task: string, manifest = loadWorkflowManifest()):
   const changeRequested = includesAny(value, [
     'fix', 'improve', 'change', 'implement', 'build', 'redesign', '고쳐', '개선', '바꿔', '수정', '구현', '만들어', '直して', '改善', '実装', '修正', '改善', '實作',
   ]);
-  if (!changeRequested && includesAny(value, [
+  const auditRequested = includesAny(value, [
     'audit', 'review', 'analyze', 'analyse', 'diagnose', '검수', '감사', '리뷰', '분석', '진단', '監査', 'レビュー', '分析', '審查', '檢查',
-  ])) return byId('audit-existing-ui');
+  ]);
+  const noChangeRequested = includesAny(value, [
+    'do not change', "don't change", 'without changing', 'no code changes', 'read only', 'read-only',
+    '바꾸지 마', '변경하지 마', '수정하지 마', '코드 변경 없이', '읽기 전용',
+    '変更しない', '変更せず', '修正しない', '読み取り専用',
+    '不要修改', '不修改', '不要變更', '不變更', '只读', '唯讀',
+  ]);
+  if (auditRequested && (noChangeRequested || !changeRequested)) return byId('audit-existing-ui');
+
+  if (designSystemMentioned && !(changeRequested && existingSurfaceMentioned)) {
+    return byId('establish-design-system');
+  }
 
   return byId('repair-existing-ui');
 }

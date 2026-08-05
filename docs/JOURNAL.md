@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.666 DESIGN.md routing precedence
+- DESIGN.md 언급이 기존 화면 수정·검수를 omd:init으로 탈선시키던 오류를 수리했다.
+- EN/KO/JA/ZH mixed-intent는 apply/audit로, explicit system creation은 init으로 유지한다.
+- provider0/model0; 다음은 full acceptance와 ambiguity reporting이다.
+
 ## 2026-08-05 (Codex) · 1.9.665 strict packet exact source pin
 - strict packet candidate를 exact commit/source tree/skill tree로 고정했다.
 - provider0/model0/promotion false, fresh transfer 전 우위 주장은 금지다.
