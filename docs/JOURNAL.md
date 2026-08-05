@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.660 guarded packet matrix lock
+- schema0.3 C/T/T/C/C/T Luna/high2×3 matrix를 exact pins로 잠갔다.
+- candidate delta는 packet hash guard/explicit name/single apply뿐이다.
+- remote execution hold 유지; 다음은 provider0 cell materialization이다.
+
 ## 2026-08-05 (Codex) · 1.9.659 guarded packet transfer preregistration
 - exact complete-diagnostic control vs guarded-packet candidate Luna/high2×3을 provider0 등록했다.
 - isolated delta는 manual patch translation 대 hash-guarded packet/apply다.

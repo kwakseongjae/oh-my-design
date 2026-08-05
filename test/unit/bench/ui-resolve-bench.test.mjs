@@ -7801,4 +7801,36 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
     expect(prereg.claim_boundary).toContain("remote execution remains forbidden");
   });
+
+  it("locks the guarded packet matrix while deferring every remote execution", () => {
+    const plan = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-cable-guarded-plan-packet-luna-1.9.659/RUN-MATRIX.json",
+    ), "utf8"));
+    expect(() => validateRunMatrixPlan(plan)).not.toThrow();
+    expect(plan).toMatchObject({
+      product_version: "1.9.660",
+      status: "locked-local-preparation-only-remote-execution-deferred",
+      output_root: "/private/tmp/u19660",
+      vendors_root: "/private/tmp/u19660-vendors",
+      guarded_plan_packet_contract: {
+        shared_complete_diagnosis: true,
+        candidate_packet_invocations_max: 1,
+        candidate_apply_invocations_max: 1,
+        candidate_packet_generation_mutates_artifact: false,
+        candidate_hash_guards_artifact_diagnosis_and_patch: true,
+        candidate_operator_input_keys_allowed: ["accessible_names"],
+        candidate_rejects_drift_tamper_and_irreconcilable: true,
+      },
+    });
+    expect(plan.cells.map((cell) => cell.id)).toEqual([
+      "luna-cable-r1-control",
+      "luna-cable-r1-candidate",
+      "luna-cable-r2-candidate",
+      "luna-cable-r2-control",
+      "luna-cable-r3-control",
+      "luna-cable-r3-candidate",
+    ]);
+    expect(remoteExecutionHoldReason(plan)).toBe("matrix-execution-hold:remote-execution-deferred");
+  });
 });

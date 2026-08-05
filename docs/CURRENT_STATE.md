@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `9b727a24` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.659 guarded packet transfer preregistration
+- 기준 커밋: `d25ff209` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.660 guarded packet executable matrix lock
 
 ## 지금 (현재 위치)
+
+- 1.9.660은 executable schema0.3 matrix를 C/T/T/C/C/T로 잠갔다. Luna/high, timeout900, pacing120, no-retry, concurrency1이다.
+- 양 arm의 task/complete diagnosis/browser/proof 계약은 같고 candidate만 packet hash guard+explicit accessible-name input+single apply가 다르다. status와 runner 모두 remote-execution-deferred를 강제한다.
+- 다음은 exact detached clean vendors와 six untouched cells를 provider0으로 materialize/equality attestation하는 1.9.661이다.
 
 - 1.9.659는 exact complete-diagnostic control `7df5be63...` vs guarded packet candidate `1a3beca8...`를 pinned subsea task에서 Luna/high2×3으로 provider0 사전등록했다.
 - isolated delta는 complete diagnosis 이후 수동 patch 번역 대 hash-guarded packet/apply다. 900s/120s/no-retry/concurrency1, UI/proof/plan/packet3/3이며 remote execution은 명시적으로 forbidden이다.
