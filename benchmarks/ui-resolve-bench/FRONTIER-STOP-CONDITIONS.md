@@ -83,6 +83,10 @@ payload remains a hard pause condition.
 
 ## Current gate map
 
+The machine snapshot in `frontier-readiness.json` is authoritative for release
+admission. Since 1.9.686, every row also has a pinned JSON evidence predicate;
+changing a narrative status cannot make a gate pass.
+
 | Gate | Current evidence | State |
 |---|---|---|
 | Verified Skill Lift | 1.9.679 unseen task frozen; 1.9.680 balanced Raw/OmD six-cell matrix admitted, execution deferred | Open |

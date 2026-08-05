@@ -20,13 +20,17 @@ describe("2.0 frontier readiness audit", () => {
     expect(report.evidence_refs_checked).toBeGreaterThanOrEqual(14);
   });
 
-  it("allows a release decision only when all nine evidence-backed gates pass", () => {
+  it("rejects relabeling all gates pass while machine evidence remains false", () => {
     const complete = structuredClone(manifest);
     complete.gates.forEach((gate) => { gate.status = "pass"; });
-    const report = evaluateFrontierReadiness(complete, repoRoot);
-    expect(report.promotion_allowed).toBe(true);
-    expect(report.decision).toBe("READY_FOR_USER_RELEASE_DECISION");
-    expect(report.unresolved_gate_ids).toEqual([]);
+    expect(() => evaluateFrontierReadiness(complete, repoRoot)).toThrow(/cannot be pass/);
+  });
+
+  it("rejects changing the pinned pass predicate to fit current evidence", () => {
+    const manipulated = structuredClone(manifest);
+    manipulated.gates[0].pass_evidence.equals = false;
+    manipulated.gates[0].status = "pass";
+    expect(() => evaluateFrontierReadiness(manipulated, repoRoot)).toThrow(/pass_evidence contract drift/);
   });
 
   it("rejects missing or repository-escaping evidence", () => {

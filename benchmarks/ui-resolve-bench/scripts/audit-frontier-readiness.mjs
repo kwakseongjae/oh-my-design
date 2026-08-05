@@ -15,9 +15,45 @@ const EXPECTED_GATE_IDS = [
   "activation-and-seven-day-reuse",
   "routing-ownership-reverify",
 ];
+const EXPECTED_PASS_EVIDENCE = {
+  "verified-skill-lift": ["benchmarks/ui-resolve-bench/reports/investigational-product-depot-comparison-plan-1.9.680/PREPARATION.json", "/execution_admission/allowed", true],
+  "three-model-positive-lift": ["benchmarks/ui-resolve-bench/reports/three-model-transfer-1.9.6/SUMMARY.final.json", "/benchmark_status", "Verified"],
+  "harness-pareto": ["benchmarks/ui-resolve-bench/reports/harness-efficiency-replacement-1.9.22/SUMMARY.final.json", "/frontier_gate_pass", true],
+  "hidden-task-coverage": ["benchmarks/ui-resolve-bench/reports/hidden-task-coverage-audit-1.9.682/COVERAGE.json", "/gate_pass", true],
+  "verified-scale-artifacts": ["benchmarks/ui-resolve-bench/reports/downloadable-verified-package-boundary-1.9.684/BOUNDARY.json", "/gate_pass", true],
+  "practitioner-blind-review": ["benchmarks/ui-resolve-bench/reports/reviewer-operations-package-1.9.77/SUMMARY.final.json", "/frontier_gate_pass", true],
+  "independent-task-audit": ["benchmarks/ui-resolve-bench/reports/task-contract-mutation-audit-1.9.685/AUDIT.json", "/gate_pass", true],
+  "activation-and-seven-day-reuse": ["benchmarks/ui-resolve-bench/reports/time-compressed-activation-reuse-1.9.672/ACCEPTANCE.json", "/frontier_gate_pass", true],
+  "routing-ownership-reverify": ["benchmarks/ui-resolve-bench/reports/local-activation-funnel-1.9.673/ACCEPTANCE.json", "/frontier_gate_pass", true],
+};
 
 function assertNonEmptyString(value, label) {
   if (typeof value !== "string" || !value.trim()) throw new Error(`${label} must be a non-empty string`);
+}
+
+function requireObject(value, label) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`${label} must be an object`);
+  return value;
+}
+
+function resolveArtifactWithinRepo(root, reference, label) {
+  if (isAbsolute(reference) || reference.split(/[\\/]/).includes("..")) {
+    throw new Error(`${label} must be repository-relative`);
+  }
+  const path = resolve(root, reference);
+  if (path !== root && !path.startsWith(`${root}${sep}`)) throw new Error(`${label} escapes repository`);
+  if (!existsSync(path)) throw new Error(`${label} is missing: ${reference}`);
+  return path;
+}
+
+function readJsonPointer(value, pointer) {
+  if (pointer === "") return value;
+  if (typeof pointer !== "string" || !pointer.startsWith("/")) throw new Error("pass_evidence.pointer must be a JSON pointer");
+  return pointer.slice(1).split("/").reduce((current, segment) => {
+    if (current === undefined || current === null) return undefined;
+    const key = segment.replace(/~1/g, "/").replace(/~0/g, "~");
+    return current[key];
+  }, value);
 }
 
 export function evaluateFrontierReadiness(manifest, repoRoot) {
@@ -59,7 +95,33 @@ export function evaluateFrontierReadiness(manifest, repoRoot) {
     if (evidence.some((item) => !item.exists)) {
       throw new Error(`${gate.id} has missing evidence: ${evidence.filter((item) => !item.exists).map((item) => item.reference).join(", ")}`);
     }
-    return { id: gate.id, status: gate.status, evidence };
+    const passEvidence = requireObject(gate.pass_evidence, `${gate.id}.pass_evidence`);
+    assertNonEmptyString(passEvidence.ref, `${gate.id}.pass_evidence.ref`);
+    const [expectedRef, expectedPointer, expectedValue] = EXPECTED_PASS_EVIDENCE[gate.id];
+    if (passEvidence.ref !== expectedRef || passEvidence.pointer !== expectedPointer ||
+      JSON.stringify(passEvidence.equals) !== JSON.stringify(expectedValue)) {
+      throw new Error(`${gate.id} pass_evidence contract drift`);
+    }
+    const passEvidencePath = resolveArtifactWithinRepo(root, passEvidence.ref, `${gate.id}.pass_evidence.ref`);
+    const passEvidenceDocument = JSON.parse(readFileSync(passEvidencePath, "utf8"));
+    const observed = readJsonPointer(passEvidenceDocument, passEvidence.pointer);
+    const normalizedObserved = observed === undefined ? null : observed;
+    const ready = JSON.stringify(normalizedObserved) === JSON.stringify(passEvidence.equals);
+    if (gate.status === "pass" && !ready) {
+      throw new Error(`${gate.id} cannot be pass: machine evidence does not satisfy ${passEvidence.pointer}`);
+    }
+    return {
+      id: gate.id,
+      status: gate.status,
+      evidence,
+      pass_evidence: {
+        ref: passEvidence.ref,
+        pointer: passEvidence.pointer,
+        expected: passEvidence.equals,
+        observed: normalizedObserved,
+        ready,
+      },
+    };
   });
 
   const counts = Object.fromEntries([...ALLOWED_STATUSES].map((status) => [status, gates.filter((gate) => gate.status === status).length]));

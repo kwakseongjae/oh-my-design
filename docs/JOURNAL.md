@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.686 frontier machine-evidence cross-audit
+- 9 gates 모두에 pinned JSON pass predicate를 연결했고 현재 machine readiness0/9다.
+- status relabel과 expected-value manipulation을 fail-close한다.
+- 새 결과를 만들지 않았고 full743 pass·3 skip; promotion 차단 상태에서 remaining boundary를 재분류한다.
+
 ## 2026-08-05 (Codex) · 1.9.685 task-contract mutation audit
 - core task admission을 강화해 public78/78을 확인하고 11 mutation을 전부 kill했다.
 - identity/network/path/viewport/hook/evidence/design/directory drift를 준비 전 차단한다.
