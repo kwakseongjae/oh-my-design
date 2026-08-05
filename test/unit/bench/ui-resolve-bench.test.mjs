@@ -7880,4 +7880,33 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
     expect(preparation.claim_boundary).toContain("does not measure control or candidate transfer");
   });
+
+  it("blocks the guarded-packet matrix before provider entry and preserves all six cells", () => {
+    const hold = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-cable-guarded-plan-packet-luna-1.9.659/EXECUTION-HOLD.json",
+    ), "utf8"));
+    expect(hold).toMatchObject({
+      product_version: "1.9.662",
+      status: "REMOTE_EXECUTION_BLOCKED_BEFORE_PROVIDER_ENTRY",
+      expected_exit_code: 1,
+      observed_error: "matrix-execution-hold:remote-execution-deferred",
+      provider_calls: 0,
+      model_exposures: 0,
+      cells_started: 0,
+      untouched_after_hold: {
+        cells_without_run_record: 6,
+        cells_without_score: 6,
+        cells_with_original_index_sha256: 6,
+      },
+      execution_boundary: {
+        hold_checked_before_provider_resolution: true,
+        hold_checked_before_cell_lease: true,
+        hold_checked_before_workspace_mutation: true,
+        remote_execution_authorized: false,
+      },
+    });
+    expect(hold.state_after_sha256).toBe(hold.state_before_sha256);
+    expect(hold.claim_boundary).toContain("does not establish model transfer");
+  });
 });

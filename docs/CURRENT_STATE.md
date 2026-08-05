@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `5efb1536` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.661 guarded packet exact cell preparation
+- 기준 커밋: `c7c3bb91` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.662 guarded packet pre-provider execution hold
 
 ## 지금 (현재 위치)
+
+- 1.9.662는 prepared runner를 실제 호출해 `matrix-execution-hold:remote-execution-deferred`가 provider resolution/cell lease/workspace mutation 전에 중단하는지 확인했다.
+- provider0/model0/cell0이며 matrix state hash는 전후 동일하다. run/score0, original index6/6로 여섯 셀은 untouched다.
+- provider-free transfer 준비 lane은 닫혔다. no-remote 제약을 유지하는 동안 이 matrix의 다음 의미 있는 단계는 없다. 다음은 별도 local 2.0.0 product repair를 고르거나 remote 허용 뒤 r1 control부터 실행하는 것이다.
 
 - 1.9.661은 exact detached clean control/candidate vendor와 Luna/high six cells를 provider0/model exposure0으로 준비했다. prompt/starter/product/runtime/model/effort/timeout equality는 모두 6/6이다.
 - 여섯 셀 모두 run record/score가 없고 prepared product가 starter와 같다. 다음 셀은 `luna-cable-r1-control`이지만 no-remote hold 때문에 실행하지 않는다.

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.662 guarded packet pre-provider hold
+- runner를 호출해 remote hold가 provider/cell/workspace 전에 중단됨을 재현했다.
+- provider0/model0/cell0, state hash 동일, run/score0, original index6/6이다.
+- provider-free transfer 준비 lane 완료; six cells는 untouched로 보존한다.
+
 ## 2026-08-05 (Codex) · 1.9.661 guarded packet exact cell preparation
 - exact detached clean vendors와 Luna/high six cells를 provider0/model0으로 준비했다.
 - prompt/starter/product/runtime/model/effort/timeout equality 6/6, run/score0이다.
