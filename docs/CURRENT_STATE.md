@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `d25ff209` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.660 guarded packet executable matrix lock
+- 기준 커밋: `5efb1536` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.661 guarded packet exact cell preparation
 
 ## 지금 (현재 위치)
+
+- 1.9.661은 exact detached clean control/candidate vendor와 Luna/high six cells를 provider0/model exposure0으로 준비했다. prompt/starter/product/runtime/model/effort/timeout equality는 모두 6/6이다.
+- 여섯 셀 모두 run record/score가 없고 prepared product가 starter와 같다. 다음 셀은 `luna-cable-r1-control`이지만 no-remote hold 때문에 실행하지 않는다.
+- 다음은 실제 provider 호출 없이 runner가 이 새 matrix도 model 진입 전에 hold하는지 재현하고, prepared workspaces가 그대로 untouched인지 증명하는 1.9.662다.
 
 - 1.9.660은 executable schema0.3 matrix를 C/T/T/C/C/T로 잠갔다. Luna/high, timeout900, pacing120, no-retry, concurrency1이다.
 - 양 arm의 task/complete diagnosis/browser/proof 계약은 같고 candidate만 packet hash guard+explicit accessible-name input+single apply가 다르다. status와 runner 모두 remote-execution-deferred를 강제한다.

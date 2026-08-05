@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.661 guarded packet exact cell preparation
+- exact detached clean vendors와 Luna/high six cells를 provider0/model0으로 준비했다.
+- prompt/starter/product/runtime/model/effort/timeout equality 6/6, run/score0이다.
+- remote hold 유지; 다음은 runner pre-provider hold와 untouched 재검증이다.
+
 ## 2026-08-05 (Codex) · 1.9.660 guarded packet matrix lock
 - schema0.3 C/T/T/C/C/T Luna/high2×3 matrix를 exact pins로 잠갔다.
 - candidate delta는 packet hash guard/explicit name/single apply뿐이다.

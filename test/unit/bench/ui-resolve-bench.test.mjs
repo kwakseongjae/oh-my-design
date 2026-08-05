@@ -7833,4 +7833,51 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     ]);
     expect(remoteExecutionHoldReason(plan)).toBe("matrix-execution-hold:remote-execution-deferred");
   });
+
+  it("prepares six equal untouched guarded-packet cells without provider exposure", () => {
+    const preparation = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/subsea-cable-guarded-plan-packet-luna-1.9.659/PREPARATION.json",
+    ), "utf8"));
+    expect(preparation).toMatchObject({
+      product_version: "1.9.661",
+      status: "PREPARED_PROVIDER_ZERO_REMOTE_EXECUTION_DEFERRED",
+      provider_calls: 0,
+      model_exposures: 0,
+      scheduled_cells: 6,
+      prepared_cells: 6,
+      equality_attestation: {
+        core_prompt_equal: 6,
+        full_prompt_equal: 6,
+        starter_equal: 6,
+        product_tree_equal: 6,
+        runtime_equal: 6,
+        model_equal: 6,
+        effort_equal: 6,
+        timeout_equal: 6,
+      },
+      source_attestation: {
+        control: {
+          commit: "7df5be63beff5083265e0013f2f51f72e8c4bef9",
+          detached: true,
+          clean: true,
+        },
+        candidate: {
+          commit: "1a3beca8279d36e10c457760e11b582e6a9a08fa",
+          detached: true,
+          clean: true,
+        },
+      },
+      untouched_attestation: {
+        cells_without_run_record: 6,
+        cells_without_score: 6,
+        prepared_product_matches_starter: 6,
+      },
+      execution_hold: {
+        remote_execution_authorized: false,
+        next_cell_when_reauthorized: "luna-cable-r1-control",
+      },
+    });
+    expect(preparation.claim_boundary).toContain("does not measure control or candidate transfer");
+  });
 });
