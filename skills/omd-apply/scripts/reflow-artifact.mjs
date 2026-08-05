@@ -66,15 +66,41 @@ function closePlan(artifact, command) {
 
 function validatePlanClosure(artifact) {
   const closure = artifact.plan_closure;
-  if (
+  const measuredPlanClosed = (
     closure?.state !== "closed"
     || !["lock", "plan-close", "plan-reconcile"].includes(closure.command)
     || closure.pre_edit_product_sha256 !== artifact.pre_edit_product_snapshot?.sha256
     || closure.measured_fit_plan_sha256 !== createHash("sha256")
       .update(JSON.stringify(artifact.pre_edit_fit_plan))
       .digest("hex")
-  ) fail("static closure requires a helper-issued successful plan closure and unchanged measured fit plan");
-  return closure;
+  ) === false;
+  const fallback = artifact.source_fallback_closure;
+  const sourceFallbackOpened = (
+    artifact.pre_edit_fit_plan?.state === "pending"
+    && fallback?.state === "opened"
+    && fallback.command === "source-fallback-open"
+    && fallback.pre_edit_product_sha256 === artifact.pre_edit_product_snapshot?.sha256
+    && fallback.inventory_sha256 === artifact.inventory?.sha256
+  );
+  if (!measuredPlanClosed && !sourceFallbackOpened) {
+    fail("static closure requires a helper-issued measured plan closure or source fallback opening");
+  }
+  return measuredPlanClosed ? closure : fallback;
+}
+
+function openSourceFallback(artifact) {
+  assertPreEditProductUnchanged(artifact);
+  if (artifact.pre_edit_fit_plan?.state !== "pending") {
+    fail("source fallback opens only after an unmeasured pending fit plan");
+  }
+  const result = lockArtifact(artifact, { allowPendingFitPlan: true });
+  result.source_fallback_closure = {
+    state: "opened",
+    command: "source-fallback-open",
+    pre_edit_product_sha256: result.pre_edit_product_snapshot.sha256,
+    inventory_sha256: result.inventory.sha256,
+  };
+  return result;
 }
 
 function uniqueStrings(value, label, { allowEmpty = false } = {}) {
@@ -1094,11 +1120,12 @@ function forbiddenCssDeclarationFailures(source, assertions) {
 
 export function executeStaticClosure(input, { productPath, source }) {
   const artifact = structuredClone(input);
+  const sourceFallback = artifact.source_fallback_closure?.state === "opened";
   const locked = lockArtifact({
     ...artifact,
     carriers: artifact.carriers,
     row_groups: artifact.row_groups,
-  });
+  }, { allowPendingFitPlan: sourceFallback });
   if (artifact.inventory?.sha256 !== locked.inventory.sha256) fail("immutable inventory hash changed");
   if (artifact.static_closure?.state !== "open" || artifact.static_closure?.attempts !== 0) {
     fail("static closure is exactly-once and has already been attempted");
@@ -1222,11 +1249,12 @@ export function finalizeArtifact(input, {
   if (unresolved && measuredUnresolved) fail("finalization mode cannot be both infrastructure and measured unresolved");
   const unresolvedClosure = unresolved || measuredUnresolved;
   const artifact = structuredClone(input);
+  const sourceFallback = artifact.source_fallback_closure?.state === "opened";
   const locked = lockArtifact({
     ...artifact,
     carriers: artifact.carriers,
     row_groups: artifact.row_groups,
-  });
+  }, { allowPendingFitPlan: sourceFallback });
   if (artifact.inventory?.sha256 !== locked.inventory.sha256) fail("immutable inventory hash changed");
   if (artifact.static_closure?.state !== "passed" || artifact.static_closure?.attempts !== 1) {
     fail("finalization requires one passed deterministic static closure");
@@ -1430,8 +1458,8 @@ function staticEditGuardrails(artifact) {
 
 function main() {
   const [command, rawPath, rawAuxiliaryPath] = process.argv.slice(2);
-  if (!command || !rawPath || !["snapshot", "lock", "plan-close", "plan-reconcile", "plan-diagnose", "plan-packet", "plan-apply", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
-    console.error("usage: reflow-artifact.mjs <snapshot|lock|plan-close|plan-reconcile|plan-diagnose|plan-packet|plan-apply|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <artifact.json> [product-or-packet-file]");
+  if (!command || !rawPath || !["snapshot", "lock", "plan-close", "plan-reconcile", "plan-diagnose", "plan-packet", "plan-apply", "source-fallback-open", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
+    console.error("usage: reflow-artifact.mjs <snapshot|lock|plan-close|plan-reconcile|plan-diagnose|plan-packet|plan-apply|source-fallback-open|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <artifact.json> [product-or-packet-file]");
     process.exitCode = 2;
     return;
   }
@@ -1490,6 +1518,8 @@ function main() {
     result = closePlan(artifact, command);
   } else if (command === "plan-close") {
     result = closePlan(artifact, command);
+  } else if (command === "source-fallback-open") {
+    result = openSourceFallback(artifact);
   } else if (command === "static-close") {
     if (!rawAuxiliaryPath) fail("static-close requires the locked product file");
     validatePlanClosure(artifact);
@@ -1520,7 +1550,8 @@ function main() {
     unresolved_known_failures: result.known_failure_closure?.unresolved ?? null,
     static_closure: result.static_closure,
     plan_closure: result.plan_closure ?? null,
-    static_edit_guardrails: ["lock", "plan-close", "plan-reconcile", "plan-apply"].includes(command) ? staticEditGuardrails(result) : undefined,
+    source_fallback_closure: result.source_fallback_closure ?? null,
+    static_edit_guardrails: ["lock", "plan-close", "plan-reconcile", "plan-apply", "source-fallback-open"].includes(command) ? staticEditGuardrails(result) : undefined,
   }));
   if (command === "static-close" && result.static_closure.state !== "passed") process.exitCode = 1;
   if (["finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) console.log(deliveryMarker(result));

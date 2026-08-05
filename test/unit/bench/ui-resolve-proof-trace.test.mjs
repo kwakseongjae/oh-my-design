@@ -74,6 +74,15 @@ describe("proof trace contract", () => {
     });
   });
 
+  it("keeps the pre-edit source fallback opening outside the post-edit proof budget", () => {
+    expect(classifyProofCommand("node skills/omd-apply/scripts/reflow-artifact.mjs source-fallback-open .omd/reflow-closure.json")).toMatchObject({
+      browser: false,
+      recovery_probe: false,
+      static_verification: false,
+      neutral: true,
+    });
+  });
+
   it("treats a fresh browser launch inside browser-harness as forbidden recovery", () => {
     const result = classifyProofCommand("browser-harness <<'PY'\nbrowser = p.chromium.launch(headless=True)\nPY");
     expect(result.browser).toBe(true);

@@ -19,7 +19,7 @@ const OTHER_BROWSER_MECHANISM = /(?:google(?:\s+|\\\s*)chrome[^\n]*(?:--headless
 const BROWSER_DISCOVERY = /(?:browser-harness\s+--doctor|command\s+-v\s+(?:chrom|google-chrome|playwright)|which\s+(?:chrom|google-chrome|playwright|osascript)|ls\s+[^\n]*(?:google\\?\s*chrome|chromium)|find\s+[^\n]*playwright|require\.resolve\(['"]playwright|import\s+playwright)/i;
 const FORBIDDEN_BROWSER_LAUNCH = /(?:\b(?:chromium|firefox|webkit)\.launch(?:_persistent_context)?\s*\(|\bp\.(?:chromium|firefox|webkit)\.launch(?:_persistent_context)?\s*\()/i;
 const BROWSER_INSTRUCTION_READ = /(?:sed|cat|head|tail|less|rg)\b[^\n]*browser-harness[^\n]*SKILL\.md/i;
-const REFLOW_ARTIFACT_LIFECYCLE = /^\s*(?:node\s+)?(?:["']?[^;\n|&]*\/)?reflow-artifact\.mjs["']?\s+(?:lock|finalize|finalize-unresolved)\s+["']?[^;\n|&]+["']?\s*$/i;
+const REFLOW_ARTIFACT_LIFECYCLE = /^\s*(?:node\s+)?(?:["']?[^;\n|&]*\/)?reflow-artifact\.mjs["']?\s+(?:lock|source-fallback-open|finalize|finalize-unresolved)\s+["']?[^;\n|&]+["']?\s*$/i;
 const NATIVE_BROWSER_TOOL = /^mcp__(?:agent-browser|browser-harness|browser)__browser_(?!new_session$|close(?:_|$)|list(?:_|$)|get_url$)/i;
 const NATIVE_BROWSER_NEUTRAL_TOOL = /^mcp__(?:agent-browser|browser-harness|browser)__browser_(?:new_session|close(?:_|$)|list(?:_|$)|get_url$)/i;
 

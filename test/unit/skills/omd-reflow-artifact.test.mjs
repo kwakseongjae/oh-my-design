@@ -804,7 +804,54 @@ describe("compact reflow artifact helper", () => {
       productPath,
     ], { cwd: root, encoding: "utf8" });
     expect(result.status).toBe(1);
-    expect(result.stderr).toContain("successful plan closure");
+    expect(result.stderr).toContain("measured plan closure or source fallback opening");
+  });
+
+  it("opens one helper-issued source fallback after an unmeasured plan and closes its static contract", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-source-fallback-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const input = draft();
+    input.pre_edit_fit_plan = { state: "pending" };
+    const preEditSource = '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""><span role="status">Ground review open</span></div>';
+    writeFileSync(artifactPath, JSON.stringify(input));
+    writeFileSync(productPath, preEditSource);
+    execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "snapshot", artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+
+    const opened = JSON.parse(execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "source-fallback-open", artifactPath,
+    ], { cwd: root, encoding: "utf8" }));
+    expect(opened.source_fallback_closure).toMatchObject({ state: "opened", command: "source-fallback-open" });
+
+    writeFileSync(productPath, `${preEditSource}<!-- bounded source repair -->`);
+    const closed = JSON.parse(execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "static-close", artifactPath, productPath,
+    ], { cwd: root, encoding: "utf8" }));
+    expect(closed.static_closure).toMatchObject({ state: "passed", attempts: 1, failures: [] });
+  });
+
+  it("refuses source fallback when a measured plan already exists", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-source-fallback-measured-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    writeFileSync(artifactPath, JSON.stringify(draft()));
+    writeFileSync(productPath, '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""><span role="status">Ground review open</span></div>');
+    execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "snapshot", artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    const artifact = JSON.parse(readFileSync(artifactPath, "utf8"));
+    artifact.pre_edit_fit_plan = measuredFitPlan(artifact.row_groups, artifact.carriers);
+    writeFileSync(artifactPath, JSON.stringify(artifact));
+
+    const result = spawnSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "source-fallback-open", artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("only after an unmeasured pending fit plan");
   });
 
   it("rejects a 200pct condition that only widens the viewport without applying zoom", () => {

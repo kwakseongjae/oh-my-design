@@ -323,7 +323,7 @@ describe('install-skills', () => {
       ).digest('hex'));
       const usage = spawnSync(process.execPath, [helper], { encoding: 'utf8' });
       expect(usage.status).toBe(2);
-      expect(usage.stderr).toContain('plan-diagnose|plan-packet|plan-apply|static-close');
+      expect(usage.stderr).toContain('plan-diagnose|plan-packet|plan-apply|source-fallback-open|static-close');
     }
     expect(new Set(installedHashes).size).toBe(1);
   });

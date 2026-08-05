@@ -21,6 +21,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("accessible name, `tabindex=\"0\"`, visible `:focus-visible`");
     expect(skill).toContain("target과 evidence를 한 scroller로 합치거나 state/action을 넣지 않는다");
     expect(skill).toContain("실제 reserve·scrollWidth·keyboard 동작은 계속 `unresolved`");
+    expect(skill).toContain("source-fallback-open .omd/reflow-closure.json");
+    expect(skill).toContain("source_fallback_closure.state: opened");
   });
 
   it("keeps implementation ownership with the main agent", () => {

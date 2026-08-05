@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.695 source fallback helper
+- shipped helper에 pending-plan 전용 `source-fallback-open`과 pre-edit hash stamp를 추가했다.
+- measured plan/post-edit opening을 거부하고 fallback static-close를 exactly-once로 유지한다.
+- focused84·lint green; clean commit 뒤 full attribution regression을 재실행한다.
+
 ## 2026-08-05 (Codex) · 1.9.693/694 named-carrier diagnostic
 - Luna 단일 진단은 valid81/85, resolved=false로 named carrier 전이가 실패했다.
 - static-close exit1을 성공으로 센 proof false-positive를 발견해 completion status 기반으로 차단했다.
