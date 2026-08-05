@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.685 task-contract mutation audit
+- core task admission을 강화해 public78/78을 확인하고 11 mutation을 전부 kill했다.
+- identity/network/path/viewport/hook/evidence/design/directory drift를 준비 전 차단한다.
+- independent auditor0이라 gate7은 external/open; 다음은 readiness report drift cross-audit다.
+
 ## 2026-08-05 (Codex) · 1.9.684 downloadable Verified package boundary
 - complete/fail/timeout별 필수 artifact와 sha256, unique trial, representative 규칙을 fail-close했다.
 - exact 10-run positive와 partial/missing/tamper/duplicate/mislabel negative를 검증했다.

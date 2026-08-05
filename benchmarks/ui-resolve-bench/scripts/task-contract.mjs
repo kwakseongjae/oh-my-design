@@ -1,5 +1,9 @@
 const APPROVAL_ROLE_NAMES = ["container", "target", "evidence", "state", "action"];
 
+function requireNonEmptyString(value, label) {
+  if (typeof value !== "string" || !value.trim()) throw new Error(`${label} must be a non-empty string`);
+}
+
 function requireObject(value, label) {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
     throw new Error(`${label} is required`);
@@ -89,10 +93,62 @@ export function validateApprovalStructuralContract(task) {
   return task;
 }
 
-export function validateTaskContract(task) {
+export function validateCoreTaskContract(task, { expectedId = null } = {}) {
+  requireNonEmptyString(task.id, "task.id");
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*-v\d+\.\d+$/.test(task.id)) {
+    throw new Error("task.id must be a versioned kebab-case identifier");
+  }
+  if (expectedId !== null && task.id !== expectedId) throw new Error(`task.id does not match directory: ${expectedId}`);
+  requireNonEmptyString(task.version, "task.version");
+  if (!/^\d+\.\d+\.\d+$/.test(task.version)) throw new Error("task.version must be semver");
+  for (const field of ["track", "grounding", "locale", "behavior_adapter"]) {
+    requireNonEmptyString(task[field], `task.${field}`);
+  }
+  if (task.network !== "disabled") throw new Error("task.network must be disabled");
+  requireNonEmptyString(task.entry, "task.entry");
+  if (task.entry.startsWith("/") || task.entry.split(/[\\/]/).includes("..") || !task.entry.endsWith(".html")) {
+    throw new Error("task.entry must be a repository-relative HTML file");
+  }
+  requireObject(task.semantic_oracle, "semantic_oracle");
+  requireObject(task.design_oracle, "design_oracle");
+  if (!Array.isArray(task.viewports) || !task.viewports.length) throw new Error("viewports must not be empty");
+  const viewportNames = task.viewports.map((viewport, index) => {
+    requireObject(viewport, `viewports[${index}]`);
+    requireNonEmptyString(viewport.name, `viewports[${index}].name`);
+    for (const field of ["width", "height"]) {
+      if (!Number.isFinite(viewport[field]) || viewport[field] <= 0) throw new Error(`viewports[${index}].${field} must be positive`);
+    }
+    if (viewport.zoom !== undefined && (!Number.isFinite(viewport.zoom) || viewport.zoom <= 0)) {
+      throw new Error(`viewports[${index}].zoom must be positive`);
+    }
+    return viewport.name;
+  });
+  if (new Set(viewportNames).size !== viewportNames.length) throw new Error("viewport names must be unique");
+
+  requireSelectorList(task.protected_selectors, "protected_selectors");
+  const counts = requireObject(task.protected_hook_counts, "protected_hook_counts");
+  const countSelectors = Object.keys(counts);
+  if (countSelectors.length !== task.protected_selectors.length ||
+    task.protected_selectors.some((selector) => !Object.hasOwn(counts, selector))) {
+    throw new Error("protected_hook_counts must match protected_selectors exactly");
+  }
+  for (const [selector, expected] of Object.entries(counts)) {
+    if (Number.isInteger(expected) && expected > 0) continue;
+    if (expected && typeof expected === "object" && !Array.isArray(expected) &&
+      Number.isInteger(expected.total) && expected.total > 0 &&
+      Number.isInteger(expected.visible) && expected.visible >= 0 && expected.visible <= expected.total) continue;
+    throw new Error(`protected_hook_counts has invalid expectation: ${selector}`);
+  }
+  requireSelectorList(task.protected_unknown_patterns, "protected_unknown_patterns");
+  requireSelectorList(task.protected_unknown_selectors, "protected_unknown_selectors");
+  return task;
+}
+
+export function validateTaskContract(task, options = {}) {
   if (!task || typeof task !== "object" || Array.isArray(task)) {
     throw new Error("task contract must be an object");
   }
+  validateCoreTaskContract(task, options);
   validateTextGeometryContract(task);
   if (task.behavior_adapter === "approval-v1") validateApprovalStructuralContract(task);
   return task;

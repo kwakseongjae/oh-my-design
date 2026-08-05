@@ -3,7 +3,7 @@
   "target_version": "2.0.0",
   "baseline_version": "1.9.0",
   "required_gate_count": 9,
-  "snapshot_patch": "1.9.684",
+  "snapshot_patch": "1.9.685",
   "claim_policy": "Promotion is allowed only when all nine gates are pass and every gate retains repository evidence.",
   "gates": [
     {
@@ -52,8 +52,8 @@
       "id": "independent-task-audit",
       "status": "external",
       "requirement": "An independent task audit estimates fewer than 5% broken or ambiguous tasks and retires flagged tasks before ranking.",
-      "current_boundary": "Task contracts and deterministic validation exist; an independent auditor sample has not been observed.",
-      "evidence_refs": ["benchmarks/ui-resolve-bench/scripts/task-contract.mjs", "benchmarks/ui-resolve-bench/scripts/audit-prepared-matrix-admission.mjs"]
+      "current_boundary": "All 78 public tasks pass core validation and 11 contract mutations are killed; an independent auditor sample and broken-rate estimate remain absent.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/task-contract-mutation-audit-1.9.685", "benchmarks/ui-resolve-bench/scripts/audit-prepared-matrix-admission.mjs"]
     },
     {
       "id": "activation-and-seven-day-reuse",

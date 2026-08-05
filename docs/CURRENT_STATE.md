@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.684` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.684 downloadable Verified package boundary
+- 기준 커밋: 현재 `1.9.685` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.685 task-contract mutation audit
 
 ## 지금 (현재 위치)
+
+- 1.9.685는 core task validator를 강화해 id/version/track/grounding/locale/adapter/network/entry/viewports/design/unknown/protected-hook exactness를 admission에서 fail-close한다.
+- public tasks78/78 green이며 identity/network/path/viewport/hook/evidence/design/directory 11 mutation을 모두 kill했다. focused238 pass/2 skip, lint/diff green, provider0/model0이다.
+- 이는 local robustness이며 independent auditor0·broken-rate 없음으로 gate7은 external/open이다. 다음은 readiness snapshot이 machine reports의 실제 결과와 drift하지 않도록 cross-audit한다.
 
 - 1.9.684는 downloadable success/failure/timeout package를 hash-validate하는 계약/auditor를 추가했다. 모든 run은 manifest/result/record, complete는 score/screenshots manifest/product archive, fail/timeout은 stderr가 필수다.
 - task/system/trial 중복을 차단하고 Verified group은 exact trials1–10+complete representative가 있어야 한다. positive10-run fixture와 partial/missing/tamper/duplicate/misleading representative negative가 통과했다.

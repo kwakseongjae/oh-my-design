@@ -91,7 +91,7 @@ payload remains a hard pause condition.
 | 24 hidden tasks | 1.9.682: eligible0; 1.9.683: private commitment boundary ready, real private denominator still0 | Open |
 | 10 runs/task + downloadable packages | 1.9.684 hash-validates complete/fail/timeout packages and 10-trial groups; real Verified groups0 | Open |
 | 10-practitioner blind review | Assignment/gallery/operations machinery exists; panel absent | External |
-| Independent task audit <5% | Contract and deterministic audit rules exist; independent auditor sample absent | External |
+| Independent task audit <5% | 1.9.685 checks 78 tasks and kills 11 local contract mutations; independent sample/rate absent | External |
 | Activation + seven-day reuse | Day-8 technical survivability 4/4 channels, 20/20 locale routes, and local first-loop pass; behavioral lift unobserved | Partial |
 | Routing/ownership/reverify | Product contract and local four-channel loop pass; broader model-runtime proof pending | Partial |
 
