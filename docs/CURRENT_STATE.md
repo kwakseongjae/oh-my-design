@@ -12,6 +12,7 @@
 - 1.9.700 exact `b5230a70` Luna/high 단일 진단은 valid81/85, resolved=false, 689,553ms, 4,134,638 tokens다. snapshot bootstrap→artifact-only reconcile→fallback opening은 전이됐고 target/evidence distinct relationship carrier 계약도 실행됐다.
 - 첫 product edit은 carrier marker/name/tabindex를 적용했지만 overflow/focus/nowrap 6개 CSS 의무를 누락했다. static-close는 failed1/success0으로 정확히 거부했고, model은 terminal failure 뒤 두 번째 edit으로 CSS를 보완해 proof compliance=false다. 최종 UI의 objective 미해결 원인은 serious color contrast다.
 - 같은 공개 과제 반복은 오염·4.13M token 비용 때문에 중단한다. 1.9.701 clean commit `270d9b62`는 relationship 계약을 generic 50+ item checklist 뒤가 아니라 exact selector/attribute/CSS의 짧은 `source_fallback_patch_contract`로 맨 앞에 제공하고 red 뒤 second edit 금지를 packet 자체에 넣었다. clean-source full755 pass/3 skip, lint/diff green이다.
+- 다음 transfer 후보를 감사한 결과 현재 public task78개는 모두 historical report에 최소1회 등장해 완전 미노출 과제가0개다. 기존 과제를 unseen으로 재라벨하지 않는다. 다음 provider call 전 새 fictional development task를 작성하고 core validator+mutation acceptance를 통과시켜야 한다.
 
 - 1.9.697 clean-commit full regression은 755 pass/3 skip, lint/diff green이다.
 - 1.9.698 exact `3ec07131` Luna/high 단일 진단은 valid81/85, resolved=false다. weak UI의 static-close는 successful0/failed1/compliance=false로 바뀌어 false proof 차단은 전이됐다.
@@ -3268,8 +3269,8 @@
 ## 다음 (즉시 착수 가능)
 
 1. 같은 공개 task 재호출 없이 local fixture의 single-edit closure 계약을 유지한다.
-2. 미노출 task를 고르고 exact `270d9b62`를 pin한 최소 canary/multi-trial 계획을 사전등록한다.
-3. provider 비용 상한과 stop condition을 먼저 잠근 뒤 fresh-task 전이만 측정한다. 단일 diagnostic은 Skill Lift ranking이나 2.0 gate에 반영하지 않는다.
+2. 새 fictional development task를 작성해 core validator와 contract mutation acceptance를 통과시키고 provider exposure0을 잠근다.
+3. exact `270d9b62`, provider 비용 상한, stop condition을 사전등록한 뒤 fresh-task 전이만 측정한다. 단일 diagnostic은 Skill Lift ranking이나 2.0 gate에 반영하지 않는다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

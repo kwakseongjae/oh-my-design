@@ -10,6 +10,7 @@
 - failed static-close 뒤 second edit을 해 compliance=false; 최종81/85는 contrast gate도 실패했다.
 - exact HTML/CSS `source_fallback_patch_contract`를 우선 packet으로 추가했고 focused69 green이다.
 - `270d9b62` clean source에서 full755 pass/3 skip·lint/diff green; 다음은 fresh task preregistration이다.
+- public task78개 모두 historical exposure가 있어, 다음은 새 fictional task authoring+mutation acceptance다.
 
 ## 2026-08-05 (Codex) · 1.9.698/699 fallback snapshot
 - Luna 진단은 weak UI81/85를 failed closure/compliance false로 정확히 차단했다.
