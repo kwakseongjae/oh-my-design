@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.655 guarded packet distribution acceptance
+- Claude Code/Codex/OpenCode 설치본 모두 packet skill/helper/runner를 포함한다.
+- channel frontmatter는 native adaptation, helper+runner bytes는 동일 hash로 검증했다.
+- provider0/model0, focused distribution green; 다음은 exact source pin이다.
+
 ## 2026-08-05 (Codex) · 1.9.654 guarded operator decision packet
 - 수동 complete-patch 번역을 hash-guarded `plan-packet` → `plan-apply`로 교체했다.
 - operator는 null accessible name만 채울 수 있고 drift/tamper/irreconcilable은 fail-closed한다.

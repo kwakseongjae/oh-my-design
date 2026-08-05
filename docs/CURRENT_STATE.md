@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `de296734` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.654 guarded operator plan decision packet
+- 기준 커밋: `666daf26` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.655 plan decision packet distribution acceptance
 
 ## 지금 (현재 위치)
+
+- 1.9.655는 `omd-apply`의 guarded packet workflow가 Claude Code/Codex/OpenCode 세 설치 경로에 모두 도달하는지 provider0으로 검증했다. channel-native frontmatter 차이는 허용하되 helper+runner bytes는 동일하다.
+- installed skill은 operator input boundary를, helper는 packet create/apply를, runner는 packet command handoff를 모두 포함한다. composite hash는 `5c5c7168...`이며 focused distribution test와 full bench224 pass/skip2/fail0가 green이다.
+- 다음은 이 source를 exact commit/tree로 pin하는 1.9.656이다. 그 뒤에만 truly unseen task를 만들어 fresh transfer 여부를 평가한다.
 
 - 1.9.654는 complete diagnosis를 수동 row patch로 옮기던 마지막 추측 구간을 `plan-packet` → `plan-apply`로 교체했다. packet은 artifact context/diagnosis/complete patch hash를 잠그며 operator가 바꿀 수 있는 값은 null인 accessible name뿐이다.
 - controlled patch-required CLI replay는 packet 생성 artifact mutation0, apply1, measured attempt1 유지, 추가 browser0/model0, plan closure closed다. drift/tamper/irreconcilable은 fail-closed한다.

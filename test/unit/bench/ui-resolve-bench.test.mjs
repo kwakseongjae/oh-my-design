@@ -7627,4 +7627,31 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
     expect(repair.claim_boundary).toContain("controlled patch-required fixture");
   });
+
+  it("accepts the same guarded packet helper and runner across every supported host channel", () => {
+    const summary = JSON.parse(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/reports/plan-decision-packet-distribution-1.9.655/SUMMARY.final.json",
+    ), "utf8"));
+    expect(summary).toMatchObject({
+      product_version: "1.9.655",
+      status: "PROVIDER_ZERO_DISTRIBUTION_ACCEPTED",
+      provider_calls: 0,
+      model_exposures: 0,
+      channels: ["claude-code", "codex", "opencode"],
+      contract: {
+        installed_skill_mentions_operator_input_boundary: true,
+        installed_helper_exports_packet_create_and_apply: true,
+        installed_runner_routes_to_packet_commands: true,
+        helper_and_runner_identical_across_channels: true,
+        channel_native_skill_frontmatter_allowed: true,
+      },
+      verification: {
+        three_channel_install: "pass",
+        channel_hash_equality: "pass",
+        installed_helper_usage: "pass",
+      },
+    });
+    expect(summary.claim_boundary).toContain("does not prove host-model compliance");
+  });
 });

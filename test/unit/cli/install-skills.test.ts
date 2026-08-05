@@ -271,6 +271,7 @@ describe('install-skills', () => {
     });
 
     expect(code).toBe(0);
+    const installedHashes: string[] = [];
     for (const channelRoot of [
       join(root, '.claude', 'skills'),
       join(root, '.agents', 'skills'),
@@ -278,12 +279,25 @@ describe('install-skills', () => {
     ]) {
       const helper = join(channelRoot, 'omd-apply', 'scripts', 'reflow-artifact.mjs');
       const browserRunner = join(channelRoot, 'omd-apply', 'scripts', 'reflow-browser.py');
+      const skillPath = join(channelRoot, 'omd-apply', 'SKILL.md');
       expect(existsSync(helper), helper).toBe(true);
       expect(existsSync(browserRunner), browserRunner).toBe(true);
+      const helperSource = readFileSync(helper, 'utf8');
+      const runnerSource = readFileSync(browserRunner, 'utf8');
+      const skillSource = readFileSync(skillPath, 'utf8');
+      expect(helperSource).toContain('createPlanDecisionPacket');
+      expect(helperSource).toContain('applyPlanDecisionPacket');
+      expect(runnerSource).toContain('plan-packet');
+      expect(runnerSource).toContain('plan-apply');
+      expect(skillSource).toContain('operator_inputs.accessible_names');
+      installedHashes.push(createHash('sha256').update(
+        [helperSource, runnerSource].join('\n--omd-distribution-boundary--\n'),
+      ).digest('hex'));
       const usage = spawnSync(process.execPath, [helper], { encoding: 'utf8' });
       expect(usage.status).toBe(2);
-      expect(usage.stderr).toContain('reflow-artifact.mjs <snapshot|lock|plan-close|static-close|finalize|finalize-unresolved|finalize-measured-unresolved>');
+      expect(usage.stderr).toContain('plan-diagnose|plan-packet|plan-apply|static-close');
     }
+    expect(new Set(installedHashes).size).toBe(1);
   });
 
   it('skips drift on existing user-edited files without marker', async () => {
