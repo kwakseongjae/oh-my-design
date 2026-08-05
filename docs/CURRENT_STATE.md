@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `8b216c5f` 1.9.707 manifest-default static closure (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.712 polar structured CSS canary prepared, provider/model exposure 0
+- 갱신: 2026-08-05 · 1.9.712 polar structured CSS canary archived, repeated-root hard pause
 
 ## 지금 (현재 위치)
 
+- 1.9.712 exact Luna/high 단일 진단은 valid63/85, resolved=false, 379,176ms, 1,518,861 tokens다. product edit/revision1, user handoff0이며 task-contract/responsive/a11y critical gate와 static closure가 red다.
+- 모델 작성 artifact는 CSS 의무를 계속 generic literal로 두어 `required_css_declarations: []`, `canonical_acceptance_css_source: null`을 만들었다. 동시에 global `overflow-x:auto|scroll` 금지와 local fallback carrier의 `overflow-x:auto` 요구를 함께 잠갔고, lock 뒤 그 충돌을 제거하면서 immutable inventory hash가 바뀌어 static-close가 failed1/success0/proof false로 종료됐다.
+- 이는 1.9.710 이후 structured-packet completeness 클래스의 재발이다. preregistered repeated-root stop에 따라 frontier lane은 **hard pause**다. polar 재실행·replacement model·새 fresh task·ranking·2.0 gate 반영은 금지하며, 다음 진행은 scope를 재설정하는 명시적 결정이 필요하다.
 - 1.9.712 `polar-structured-css-canary`는 exact task `2a3749ad`/tree `22c26500…`, exact clean prepared skill source `0fd0f1f2`/hash `e2486660…`(repair origin `f10983ce`), Luna/high 1셀, timeout720s, retry0으로 준비됐다. locked plan `cc65fca6…`, state `c430032c…`, provider0/model exposure0이다.
 - success는85/85+product revision1+successful static closure1+failed0+user handoff0+proof compliance다. 같은 task 재실행·replacement·ranking·2.0 gate 반영은 금지다. 같은 structured-packet completeness 원인이 재발하면 frontier hard pause다.
 - 1.9.711 신규 `polar-ice-core-vial-custody-v0.1`은 exact task commit `2a3749ad`, tree `22c26500…`, provider exposure0으로 잠겼다. 5 cores/7 archive vials/4 accession windows와 3 states, curator toggle, form, evidence boundary를 보존한다. 82 task validator+mutation green이고 raw baseline75/85, responsive+a11y red다.
@@ -3297,6 +3300,7 @@
 
 ## 막힘 / 대기 (없으면 "없음")
 
+- 1.9.712 structured-CSS transfer lane은 같은 packet-completeness 클래스가 tested repair 뒤 재발해 hard pause다. 같은 polar task 또는 replacement/fresh-task provider 실행은 명시적 scope 결정 전 금지한다.
 - 1.9.675 local UI repair lane에는 막힘 없음. 모델 귀속이 없는 current-session 결과이므로 public Model/Skill Track 승격만 금지다.
 - 1.9.676 epoch impact lane에는 막힘 없음. historical artifacts는 immutable이며 cross-epoch aggregation만 금지다.
 - 1.9.677 prepared admission lane에는 막힘 없음. 구 prepared root는 실행 금지이며 새 root로 reprepare해야 한다.

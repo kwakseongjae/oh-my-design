@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.712 repeated-root hard pause
+- fresh polar Luna/high는 valid63/85·revision1·static fail1·proof false였다.
+- structured CSS array가 비어 short packet이 없고 global/local overflow 계약도 충돌했다.
+- tested repair 뒤 packet-completeness 클래스가 재발해 prereg rule대로 hard pause했다.
+- polar replay·replacement·새 provider task는 scope 재결정 전 금지한다.
+
 ## 2026-08-05 (Codex) · 1.9.712 polar canary prepared
 - fresh polar task와 clean structured-CSS skill을 Luna/high1셀에 결박했다.
 - timeout720s·retry0·diagnostic only이며 provider/model exposure는0이다.
