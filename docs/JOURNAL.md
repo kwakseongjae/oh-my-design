@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.688 remote Skill Lift reopen
+- local-only 해석을 해제하고 remote-model/verified-skill-lift만 명시적으로 허용했다.
+- auditor가 local pause와 authorized execution을 모두 fail-close하며 2.0 pass는 여전히0/9다.
+- fresh Luna/high six-cell plan을 잠갔고 다음은 새 root preparation과 실제 실행이다.
+
 ## 2026-08-05 (Codex) · 1.9.687 local-only frontier hard pause
 - unresolved9를 remote4+multi1/private1/practitioner1/auditor1/production1로 exact 분류했다.
 - locally closable0, local prep complete7/partial2라 의미 없는 patch churn을 중단한다.

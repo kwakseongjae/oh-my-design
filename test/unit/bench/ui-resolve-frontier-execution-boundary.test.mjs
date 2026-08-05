@@ -8,14 +8,17 @@ const boundary = JSON.parse(readFileSync(resolve(repoRoot, "benchmarks/ui-resolv
 const readiness = JSON.parse(readFileSync(resolve(repoRoot, "benchmarks/ui-resolve-bench/frontier-readiness.json"), "utf8"));
 
 describe("frontier non-local execution boundary", () => {
-  it("halts local patch churn when all unresolved gates require non-local evidence", () => {
+  it("admits only the explicitly authorized non-local gate", () => {
     const report = auditFrontierExecutionBoundary(boundary, readiness, repoRoot);
     expect(report).toMatchObject({
       unresolved_gate_count: 9,
       locally_closable_gate_ids: [],
       local_preparation_counts: { complete: 7, partial: 2 },
-      hard_pause_required: true,
-      decision: "PAUSE_LOCAL_PATCH_TRAIN_FOR_NON_LOCAL_EVIDENCE",
+      local_only_mode: false,
+      authorized_action_classes: ["remote-model-execution"],
+      active_gate_ids: ["verified-skill-lift"],
+      hard_pause_required: false,
+      decision: "RUN_AUTHORIZED_NON_LOCAL_GATE_EVIDENCE",
     });
     expect(report.non_local_action_classes["remote-model-execution"]).toHaveLength(4);
     expect(report.non_local_action_classes["external-practitioner-panel"]).toEqual(["practitioner-blind-review"]);
@@ -33,5 +36,20 @@ describe("frontier non-local execution boundary", () => {
     const local = structuredClone(boundary);
     local.gates[0].next_action_class = "local-implementation";
     expect(() => auditFrontierExecutionBoundary(local, readiness, repoRoot)).toThrow(/unsupported or local/);
+
+    const unauthorized = structuredClone(boundary);
+    unauthorized.active_gate_ids = ["three-model-positive-lift"];
+    expect(() => auditFrontierExecutionBoundary(unauthorized, readiness, repoRoot)).toThrow(/not authorized/);
+  });
+
+  it("retains the historical local-only hard pause semantics", () => {
+    const localOnly = structuredClone(boundary);
+    localOnly.local_only_mode = true;
+    delete localOnly.authorized_action_classes;
+    delete localOnly.active_gate_ids;
+    expect(auditFrontierExecutionBoundary(localOnly, readiness, repoRoot)).toMatchObject({
+      hard_pause_required: true,
+      decision: "PAUSE_LOCAL_PATCH_TRAIN_FOR_NON_LOCAL_EVIDENCE",
+    });
   });
 });

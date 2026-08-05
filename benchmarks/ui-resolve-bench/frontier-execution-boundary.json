@@ -1,9 +1,13 @@
 {
   "schema_version": "0.1",
-  "snapshot_patch": "1.9.687",
-  "local_only_mode": true,
+  "snapshot_patch": "1.9.688",
+  "local_only_mode": false,
+  "authorized_action_classes": ["remote-model-execution"],
+  "active_gate_ids": ["verified-skill-lift"],
   "rules": {
-    "no_remote_model_execution": true,
+    "no_remote_model_execution": false,
+    "fresh_root_required": true,
+    "historical_deferred_roots_immutable": true,
     "no_public_task_relabel_as_hidden": true,
     "no_synthetic_human_or_production_observation": true,
     "no_patch_without_gate-changing_evidence": true

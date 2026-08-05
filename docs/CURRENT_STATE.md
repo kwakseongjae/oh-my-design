@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.687` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.687 local-only frontier hard pause
+- 기준 커밋: 현재 `1.9.688` remote-reopen checkpoint (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.688 authorized remote Skill Lift reopen
 
 ## 지금 (현재 위치)
+
+- 1.9.688은 이전 `local_only_mode`를 standing user authorization에 맞게 해제하되, non-local action class와 active gate를 감사 가능한 필드로 제한한다. 현재 허용 범위는 `remote-model-execution`의 `verified-skill-lift` 1개다.
+- boundary auditor는 historical local-only pause와 새 remote-authorized mode를 모두 검증하며 unauthorized gate 실행을 거부한다. 2.0 readiness는 여전히 pass0/9이고 실행 허용 자체는 승격 증거가 아니다.
+- fresh 1.9.688 Luna/high Raw DESIGN.md 대 current OmD six-cell 계획을 잠갔다. 다음은 이 checkpoint를 커밋한 뒤 새 root를 준비·감사하고 provider 실행을 시작하는 것이다. 1.9.680 deferred root는 immutable이다.
 
 - 1.9.687은 unresolved9 gates의 next evidence class를 exact map으로 고정했다. remote model4+multi-model1, private storage/audit1, practitioner1, independent auditor1, production observation1이며 locally closable0이다.
 - local preparation은 complete7/partial2지만 machine pass0/9다. boundary auditor는 누락/중복/거짓 local mapping을 거부하고 `PAUSE_LOCAL_PATCH_TRAIN_FOR_NON_LOCAL_EVIDENCE`를 반환한다.
@@ -3233,9 +3237,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. genuinely unseen claim-eligible holdout task를 새로 만들고 provider/model 노출 전에 deterministic baseline과 evaluator scope를 잠근다.
-2. 그 task에 exact Raw DESIGN.md/current OmD 2-arm source pin과 promotion/failure stop rule을 사전 등록한다.
-3. no-remote 조건이 유지되는 동안은 provider 실행 없이 preparation까지 닫고, 명시적으로 허용된 시점에만 새 epoch scored cell을 시작한다.
+1. 1.9.688 checkpoint를 커밋하고 `/private/tmp/omd-investigational-product-matrix-1.9.688`을 current epoch로 fresh prepare한다.
+2. prepared-admission parity와 exact current OmD source attestation을 확인한다.
+3. Luna/high six cells를 serial/no-retry/fixed-pacing으로 실행하고 objective/package admission 뒤 readiness를 갱신한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

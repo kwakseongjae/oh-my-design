@@ -14,7 +14,9 @@ const NON_LOCAL_ACTIONS = new Set([
 ]);
 
 export function auditFrontierExecutionBoundary(boundary, readinessManifest, repoRoot) {
-  if (boundary?.local_only_mode !== true) throw new Error("frontier boundary must describe current local-only mode");
+  if (typeof boundary?.local_only_mode !== "boolean") {
+    throw new Error("frontier boundary local_only_mode must be boolean");
+  }
   const readiness = evaluateFrontierReadiness(readinessManifest, repoRoot);
   const unresolved = new Set(readiness.unresolved_gate_ids);
   if (!Array.isArray(boundary.gates) || boundary.gates.length !== unresolved.size) {
@@ -35,6 +37,23 @@ export function auditFrontierExecutionBoundary(boundary, readinessManifest, repo
     gates.filter((gate) => gate.next_action_class === actionClass).map((gate) => gate.id),
   ]).filter(([, gateIds]) => gateIds.length));
   const locallyClosable = gates.filter((gate) => gate.next_action_class === "local-implementation").map((gate) => gate.id);
+  const authorizedActionClasses = boundary.local_only_mode
+    ? []
+    : boundary.authorized_action_classes;
+  const activeGateIds = boundary.local_only_mode ? [] : boundary.active_gate_ids;
+  if (!Array.isArray(authorizedActionClasses) || authorizedActionClasses.some((item) => !NON_LOCAL_ACTIONS.has(item))) {
+    throw new Error("remote frontier boundary authorized_action_classes are invalid");
+  }
+  if (!Array.isArray(activeGateIds) || (!boundary.local_only_mode && !activeGateIds.length) || new Set(activeGateIds).size !== activeGateIds.length) {
+    throw new Error("remote frontier boundary active_gate_ids must be a non-empty unique array");
+  }
+  for (const gateId of activeGateIds) {
+    const gate = gates.find((item) => item.id === gateId);
+    if (!gate || !authorizedActionClasses.includes(gate.next_action_class)) {
+      throw new Error(`${gateId} is not authorized for remote frontier execution`);
+    }
+  }
+  const hardPauseRequired = boundary.local_only_mode && unresolved.size > 0 && locallyClosable.length === 0;
   return {
     schema_version: "0.1",
     snapshot_patch: boundary.snapshot_patch,
@@ -46,10 +65,15 @@ export function auditFrontierExecutionBoundary(boundary, readinessManifest, repo
       complete: gates.filter((gate) => gate.local_preparation === "complete").length,
       partial: gates.filter((gate) => gate.local_preparation === "partial").length,
     },
-    hard_pause_required: unresolved.size > 0 && locallyClosable.length === 0,
-    decision: unresolved.size > 0 && locallyClosable.length === 0
+    local_only_mode: boundary.local_only_mode,
+    authorized_action_classes: authorizedActionClasses,
+    active_gate_ids: activeGateIds,
+    hard_pause_required: hardPauseRequired,
+    decision: hardPauseRequired
       ? "PAUSE_LOCAL_PATCH_TRAIN_FOR_NON_LOCAL_EVIDENCE"
-      : "CONTINUE_LOCAL_GATE_WORK",
+      : activeGateIds.length
+        ? "RUN_AUTHORIZED_NON_LOCAL_GATE_EVIDENCE"
+        : "CONTINUE_LOCAL_GATE_WORK",
     gates,
   };
 }
