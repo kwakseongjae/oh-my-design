@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.696/697 relationship verifier
+- Luna 진단은 fallback lifecycle proof를 통과했지만 UI는81/85로 carrier 전이가 실패했다.
+- model manifest의 규범 누락을 찾아 helper가 target/evidence carrier 구조를 직접 검증하게 했다.
+- focused130·lint green; 다음은 full regression, clean commit, fresh transfer다.
+
 ## 2026-08-05 (Codex) · 1.9.695 source fallback helper
 - shipped helper에 pending-plan 전용 `source-fallback-open`과 pre-edit hash stamp를 추가했다.
 - measured plan/post-edit opening을 거부하고 fallback static-close를 exactly-once로 유지한다.

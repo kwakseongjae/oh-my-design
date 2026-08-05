@@ -41,6 +41,9 @@ function assertPreEditProductUnchanged(artifact) {
     artifact.pre_edit_product_snapshot,
     artifact.static_closure_manifest,
   );
+  if (snapshot == null) {
+    fail("source fallback requires a helper-captured pre-edit product snapshot");
+  }
   const productPath = resolve(artifact.static_closure_manifest?.product_path ?? "");
   if (!existsSync(productPath)) fail("plan closure requires the locked pre-edit product file");
   const observedSha256 = sha256Source(readFileSync(productPath, "utf8"));
@@ -75,17 +78,62 @@ function validatePlanClosure(artifact) {
       .digest("hex")
   ) === false;
   const fallback = artifact.source_fallback_closure;
+  const relationshipContractSha256 = sha256Source(JSON.stringify(
+    artifact.source_fallback_relationships ?? [],
+  ));
   const sourceFallbackOpened = (
     artifact.pre_edit_fit_plan?.state === "pending"
     && fallback?.state === "opened"
     && fallback.command === "source-fallback-open"
     && fallback.pre_edit_product_sha256 === artifact.pre_edit_product_snapshot?.sha256
     && fallback.inventory_sha256 === artifact.inventory?.sha256
+    && fallback.relationship_contract_sha256 === relationshipContractSha256
   );
   if (!measuredPlanClosed && !sourceFallbackOpened) {
     fail("static closure requires a helper-issued measured plan closure or source fallback opening");
   }
   return measuredPlanClosed ? closure : fallback;
+}
+
+function sourceFallbackRelationships(artifact) {
+  const rows = artifact.row_groups.filter((row) => ["target", "evidence"].includes(row.role));
+  const roles = rows.map((row) => row.role);
+  if (new Set(roles).size !== roles.length) {
+    fail("source fallback permits at most one target row and one concise evidence row");
+  }
+  const relationships = rows.map((row) => {
+    const carriers = artifact.carriers.filter((carrier) => carrier.binds_row_groups.includes(row.id));
+    if (
+      row.decision !== "comparison-scroll"
+      || carriers.length !== 1
+      || carriers[0].binds_row_groups.length !== 1
+      || carriers[0].selector === row.selector
+      || row.scroll_contract?.container_selector !== carriers[0].selector
+      || typeof row.scroll_contract?.accessible_name !== "string"
+      || !row.scroll_contract.accessible_name.trim()
+      || row.scroll_contract.keyboard_reachable !== true
+      || row.scroll_contract.focus_visible !== true
+      || row.scroll_contract.passive_text_scroll_container !== false
+    ) {
+      fail(`source fallback ${row.role} row requires one distinct named comparison-scroll carrier bound only to that row`);
+    }
+    return {
+      role: row.role,
+      row_id: row.id,
+      row_selector: row.selector,
+      row_expected_count: row.expected_count,
+      carrier_id: carriers[0].id,
+      carrier_selector: carriers[0].selector,
+      marker_attribute: `data-omd-source-fallback-carrier=\"${row.role}\"`,
+      marker_selector: `[data-omd-source-fallback-carrier=\"${row.role}\"]`,
+      accessible_name: row.scroll_contract.accessible_name.trim(),
+      excluded_roles: ["target", "evidence", "state", "action"].filter((role) => role !== row.role),
+    };
+  });
+  if (new Set(relationships.map((entry) => entry.carrier_selector)).size !== relationships.length) {
+    fail("source fallback target and evidence must use distinct relationship carriers");
+  }
+  return relationships;
 }
 
 function openSourceFallback(artifact) {
@@ -94,11 +142,13 @@ function openSourceFallback(artifact) {
     fail("source fallback opens only after an unmeasured pending fit plan");
   }
   const result = lockArtifact(artifact, { allowPendingFitPlan: true });
+  result.source_fallback_relationships = sourceFallbackRelationships(result);
   result.source_fallback_closure = {
     state: "opened",
     command: "source-fallback-open",
     pre_edit_product_sha256: result.pre_edit_product_snapshot.sha256,
     inventory_sha256: result.inventory.sha256,
+    relationship_contract_sha256: sha256Source(JSON.stringify(result.source_fallback_relationships)),
   };
   return result;
 }
@@ -1118,6 +1168,94 @@ function forbiddenCssDeclarationFailures(source, assertions) {
   return failures;
 }
 
+function htmlAttributeValue(startTag, name) {
+  const escaped = name.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+  const match = startTag.match(new RegExp(`(?:^|\\s)${escaped}\\s*=\\s*(?:\"([^\"]*)\"|'([^']*)'|([^\\s\"'=<>` + "`" + `]+))`, "u"));
+  return match?.[1] ?? match?.[2] ?? match?.[3] ?? null;
+}
+
+function elementFragmentForMarker(source, markerName, markerValue) {
+  const starts = [];
+  for (const match of source.matchAll(/<([A-Za-z][\w:-]*)\b([^>]*)>/gu)) {
+    if (htmlAttributeValue(match[0], markerName) === markerValue) {
+      starts.push({ tagName: match[1], start: match.index, opening: match[0], contentStart: match.index + match[0].length });
+    }
+  }
+  if (starts.length !== 1) return { count: starts.length, fragment: null, opening: starts[0]?.opening ?? null };
+  const found = starts[0];
+  const tagPattern = new RegExp(`<\\/?${found.tagName}\\b[^>]*>`, "giu");
+  tagPattern.lastIndex = found.start;
+  let depth = 0;
+  for (const match of source.matchAll(tagPattern)) {
+    if (match.index < found.start) continue;
+    const closing = /^<\//u.test(match[0]);
+    const selfClosing = /\/>$/u.test(match[0]);
+    if (closing) depth -= 1;
+    else if (!selfClosing) depth += 1;
+    if (depth === 0) {
+      return {
+        count: 1,
+        opening: found.opening,
+        fragment: source.slice(found.start, match.index + match[0].length),
+      };
+    }
+  }
+  return { count: 1, opening: found.opening, fragment: null };
+}
+
+function sourceFallbackRelationshipFailures(source, relationships) {
+  const failures = [];
+  const blocks = cssRuleBlocks(source);
+  for (const relationship of relationships) {
+    const markerName = "data-omd-source-fallback-carrier";
+    const markerValue = relationship.role;
+    const element = elementFragmentForMarker(source, markerName, markerValue);
+    if (element.count !== 1) {
+      failures.push(`source fallback ${relationship.role} carrier count ${element.count}, expected 1`);
+      continue;
+    }
+    if (!element.fragment) {
+      failures.push(`source fallback ${relationship.role} carrier must have a matching closing element`);
+      continue;
+    }
+    if (htmlAttributeValue(element.opening, "aria-label") !== relationship.accessible_name) {
+      failures.push(`source fallback ${relationship.role} carrier must preserve its exact accessible name`);
+    }
+    if (htmlAttributeValue(element.opening, "tabindex") !== "0") {
+      failures.push(`source fallback ${relationship.role} carrier must be keyboard reachable with tabindex=0`);
+    }
+    const observedOwnRole = attributeCount(
+      element.fragment,
+      `data-bench-decision-role=\"${relationship.role}\"`,
+    );
+    if (observedOwnRole !== relationship.row_expected_count) {
+      failures.push(`source fallback ${relationship.role} carrier row count ${observedOwnRole}, expected ${relationship.row_expected_count}`);
+    }
+    for (const excludedRole of relationship.excluded_roles) {
+      if (attributeCount(element.fragment, `data-bench-decision-role=\"${excludedRole}\"`) > 0) {
+        failures.push(`source fallback ${relationship.role} carrier must exclude ${excludedRole}`);
+      }
+    }
+    const carrierBlock = blocks.find((block) => block.selectors.includes(relationship.marker_selector));
+    if (!carrierBlock || !["auto", "scroll"].includes(carrierBlock.declarations.get("overflow-x"))) {
+      failures.push(`source fallback ${relationship.role} carrier must declare overflow-x:auto or scroll`);
+    }
+    const focusBlock = blocks.find((block) => block.selectors.includes(`${relationship.marker_selector}:focus-visible`));
+    const outline = focusBlock?.declarations.get("outline");
+    if (!outline || /^(?:none|0(?:px)?)$/iu.test(outline)) {
+      failures.push(`source fallback ${relationship.role} carrier must declare a visible focus outline`);
+    }
+    const rowBlocks = blocks.filter((block) => block.selectors.includes(relationship.row_selector));
+    if (!rowBlocks.some((block) => block.declarations.get("white-space") === "nowrap")) {
+      failures.push(`source fallback ${relationship.role} row must declare white-space:nowrap`);
+    }
+    if (rowBlocks.some((block) => ["auto", "scroll"].includes(block.declarations.get("overflow-x")))) {
+      failures.push(`source fallback ${relationship.role} passive row must not be the scroll container`);
+    }
+  }
+  return failures;
+}
+
 export function executeStaticClosure(input, { productPath, source }) {
   const artifact = structuredClone(input);
   const sourceFallback = artifact.source_fallback_closure?.state === "opened";
@@ -1147,6 +1285,12 @@ export function executeStaticClosure(input, { productPath, source }) {
     source,
     artifact.static_closure_manifest.forbidden_css_declarations,
   ));
+  if (sourceFallback) {
+    failures.push(...sourceFallbackRelationshipFailures(
+      source,
+      artifact.source_fallback_relationships ?? [],
+    ));
+  }
   for (const entry of artifact.static_closure_manifest.count_literals) {
     const observed = attributeCount(source, entry.literal);
     if (observed !== entry.expected_count) {
@@ -1377,6 +1521,7 @@ function write(path, artifact) {
 }
 
 function staticEditGuardrails(artifact) {
+  const sourceFallbackRelationships = artifact.source_fallback_relationships ?? [];
   const firstEditChecklist = [
     ...artifact.static_closure_manifest.required_literals.map((assertion, index) => ({
       id: `required-literal-${index + 1}`,
@@ -1403,6 +1548,11 @@ function staticEditGuardrails(artifact) {
       contract: "must-have-exact-count",
       assertion,
     })),
+    ...sourceFallbackRelationships.map((assertion, index) => ({
+      id: `source-fallback-relationship-${index + 1}`,
+      contract: "must-satisfy-relationship-carrier",
+      assertion,
+    })),
   ];
   return {
     required_literals: artifact.static_closure_manifest.required_literals,
@@ -1410,6 +1560,7 @@ function staticEditGuardrails(artifact) {
     forbidden_patterns: artifact.static_closure_manifest.forbidden_patterns,
     forbidden_css_declarations: artifact.static_closure_manifest.forbidden_css_declarations,
     count_literals: artifact.static_closure_manifest.count_literals,
+    source_fallback_relationships: sourceFallbackRelationships,
     first_edit_checklist: firstEditChecklist,
     first_edit_checklist_contract: "satisfy every item in the single product edit before consuming static-close; a red static-close is terminal",
     forbidden_pattern_semantics: "absence-required-delete-matching-declaration",

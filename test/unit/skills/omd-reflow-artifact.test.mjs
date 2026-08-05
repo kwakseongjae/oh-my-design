@@ -833,6 +833,143 @@ describe("compact reflow artifact helper", () => {
     expect(closed.static_closure).toMatchObject({ state: "passed", attempts: 1, failures: [] });
   });
 
+  it("rejects source fallback without a helper-captured pre-edit snapshot", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-source-no-snapshot-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const input = draft();
+    input.pre_edit_fit_plan = { state: "pending" };
+    writeFileSync(artifactPath, JSON.stringify(input));
+    writeFileSync(join(root, "index.html"), '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""></div>');
+    const result = spawnSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "source-fallback-open", artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("source fallback requires a helper-captured pre-edit product snapshot");
+    expect(result.stderr).not.toContain("TypeError");
+  });
+
+  it("fail-closes target and evidence source fallback unless each has a distinct named relationship carrier", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-source-relationships-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const input = draft();
+    input.pre_edit_fit_plan = { state: "pending" };
+    input.carriers = [
+      { id: "target-carrier", selector: "[data-decision] > .target-carrier", expected_count: 1, binds_row_groups: ["target"] },
+      { id: "evidence-carrier", selector: "[data-decision] > .evidence-carrier", expected_count: 1, binds_row_groups: ["evidence"] },
+    ];
+    input.row_groups = [
+      {
+        id: "target",
+        selector: '[data-bench-decision-role="target"]',
+        role: "target",
+        expected_count: 1,
+        longest_value: "FS-TC-24-017 + BAG-SEAL-884021",
+        atomic_parts: ["FS-TC-24-017", "BAG-SEAL-884021"],
+        line_contract: "parent-one-line",
+        typography_contract: { source: "deterministic-pre-edit-snapshot" },
+        required_fit_reserve_css_px: 8,
+        planned_fit_reserve_css_px: 16,
+        decision: "comparison-scroll",
+        scroll_contract: {
+          container_selector: "[data-decision] > .target-carrier",
+          accessible_name: "Custody target relationship",
+          keyboard_reachable: true,
+          focus_visible: true,
+          passive_text_scroll_container: false,
+        },
+      },
+      {
+        id: "evidence",
+        selector: '[data-bench-decision-role="evidence"]',
+        role: "evidence",
+        expected_count: 1,
+        longest_value: "6 samples · 8 seals · 4 intake windows",
+        line_contract: "single-token",
+        typography_contract: { source: "deterministic-pre-edit-snapshot" },
+        required_fit_reserve_css_px: 8,
+        planned_fit_reserve_css_px: 16,
+        decision: "comparison-scroll",
+        scroll_contract: {
+          container_selector: "[data-decision] > .evidence-carrier",
+          accessible_name: "Custody evidence relationship",
+          keyboard_reachable: true,
+          focus_visible: true,
+          passive_text_scroll_container: false,
+        },
+      },
+    ];
+    input.acceptance_debt_ledger[0].bound_row_group_ids = ["target", "evidence"];
+    input.static_closure_manifest.count_literals = [
+      { literal: 'data-bench-decision-role="target"', expected_count: 1 },
+      { literal: 'data-bench-decision-role="evidence"', expected_count: 1 },
+    ];
+    const preEditSource = `<section data-decision=""><div class="target-carrier"><strong data-bench-decision-role="target">FS-TC-24-017 + BAG-SEAL-884021</strong></div><div class="evidence-carrier"><span data-bench-decision-role="evidence">6 samples · 8 seals · 4 intake windows</span></div><span data-bench-decision-role="state">Open</span><button data-bench-decision-role="action">Review</button></section><p>required-fact</p>`;
+    writeFileSync(artifactPath, JSON.stringify(input));
+    writeFileSync(productPath, preEditSource);
+    execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "snapshot", artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+
+    const opened = JSON.parse(execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "source-fallback-open", artifactPath,
+    ], { cwd: root, encoding: "utf8" }));
+    expect(opened.static_edit_guardrails.source_fallback_relationships).toHaveLength(2);
+    expect(opened.static_edit_guardrails.first_edit_checklist).toContainEqual(expect.objectContaining({
+      contract: "must-satisfy-relationship-carrier",
+      assertion: expect.objectContaining({ role: "target", accessible_name: "Custody target relationship" }),
+    }));
+
+    const validSource = `<style>[data-bench-decision-role="target"], [data-bench-decision-role="evidence"] { white-space: nowrap; }\n[data-omd-source-fallback-carrier="target"], [data-omd-source-fallback-carrier="evidence"] { overflow-x: auto; }\n[data-omd-source-fallback-carrier="target"]:focus-visible, [data-omd-source-fallback-carrier="evidence"]:focus-visible { outline: 2px solid currentColor; }</style>${preEditSource}`
+      .replace(
+        '<div class="target-carrier">',
+        '<div class="target-carrier" data-omd-source-fallback-carrier="target" aria-label="Custody target relationship" tabindex="0">',
+      )
+      .replace(
+        '<div class="evidence-carrier">',
+        '<div class="evidence-carrier" data-omd-source-fallback-carrier="evidence" aria-label="Custody evidence relationship" tabindex="0">',
+      );
+    const valid = executeStaticClosure(JSON.parse(readFileSync(artifactPath, "utf8")), {
+      productPath: join(process.cwd(), "index.html"),
+      source: validSource,
+    });
+    expect(valid.static_closure).toMatchObject({ state: "passed", attempts: 1, failures: [] });
+
+    const weakSource = preEditSource.replace("<p>required-fact</p>", "<p>required-fact</p><!-- edited without relationship carriers -->");
+    writeFileSync(productPath, weakSource);
+    const weak = spawnSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "static-close", artifactPath, productPath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(weak.status).toBe(1);
+    const weakArtifact = JSON.parse(readFileSync(artifactPath, "utf8"));
+    expect(weakArtifact.static_closure.failures).toContain("source fallback target carrier count 0, expected 1");
+    expect(weakArtifact.static_closure.failures).toContain("source fallback evidence carrier count 0, expected 1");
+  });
+
+  it("rejects a weak source fallback contract before editing when concise evidence shares a carrier", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-source-weak-contract-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const input = draft();
+    input.pre_edit_fit_plan = { state: "pending" };
+    input.row_groups[0].role = "evidence";
+    input.row_groups[0].decision = "keep";
+    const source = '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""><span role="status">Ground review open</span></div>';
+    writeFileSync(artifactPath, JSON.stringify(input));
+    writeFileSync(productPath, source);
+    execFileSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "snapshot", artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    const result = spawnSync(process.execPath, [
+      join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs"), "source-fallback-open", artifactPath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("source fallback evidence row requires one distinct named comparison-scroll carrier");
+  });
+
   it("refuses source fallback when a measured plan already exists", () => {
     const root = mkdtempSync(join(tmpdir(), "omd-reflow-source-fallback-measured-"));
     temporaryRoots.push(root);

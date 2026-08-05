@@ -3,10 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.695` helper-issued source fallback candidate (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.695 source fallback helper code complete, clean-commit regression pending
+- 기준 커밋: 현재 `1.9.697` relationship-carrier verifier candidate (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.696 diagnostic complete, 1.9.697 focused regression green
 
 ## 지금 (현재 위치)
+
+- 1.9.695 clean-commit full regression은 752 pass/3 skip, lint/diff green으로 확정됐다.
+- 1.9.696 exact `5faf4830` Luna/high 단일 진단은 valid81/85, resolved=false다. helper-issued fallback opening→product revision1→successful static closure1, failed closure0, user handoff0, browser recovery0, proof compliance=true로 lifecycle 수리는 전이됐다.
+- 그러나 model-authored manifest가 target/evidence 관계 carrier를 실제로 요구하지 않아 두 값은 기존 decision grid cell로 남았고 320px·200%에서 evidence wrap/document overflow가 반복됐다. 단일 공개 과제 진단이므로 frontier gate/public ranking 변화는 없다.
+- 1.9.697 candidate는 source fallback target/evidence row를 각각 distinct pre-edit carrier에 단독 결박한 `comparison-scroll`로 강제한다. helper가 relationship contract hash를 찍고 static-close가 carrier count, exact accessible name, tabindex0, overflow-x, row nowrap, visible focus, peer/state/action 배제를 직접 검사한다. pre-edit snapshot 부재는 TypeError가 아니라 bounded failure다. focused130·lint green, full/clean commit/fresh transfer pending이다.
 
 - 1.9.693 exact `37f3bde` Luna/high 단일 진단은 valid 81/85, resolved=false다. named target/evidence carrier가 실제 구현되지 않았고 320px·200%에서 concise evidence wrap과 document overflow가 남았다. 공개 과제 단일-arm 진단이라 frontier gate와 public ranking에는 반영하지 않는다.
 - 같은 run에서 `static-close`가 exit1인데 proof trace가 invocation만 세어 compliance pass로 잘못 승격하는 auditor 결함을 발견했다. 1.9.694는 Codex command completion status를 결합해 successful static closure0·failed static closure1·compliance false로 fail-close한다. full749 pass/3 skip, lint green이다.
@@ -3252,9 +3257,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.695 candidate를 clean commit으로 고정하고 full suite를 다시 실행해 dirty-attribution timeout을 해소한다.
+1. 1.9.697 candidate full suite/lint/diff를 실행하고 clean commit으로 고정한다.
 2. exact repaired skill commit/hash를 fresh root에 pin한다.
-3. fresh single-arm Luna diagnostic에서 helper opening→one edit→passed static-close→no user handoff와 UI resolved를 함께 재검증한다.
+3. fresh single-arm Luna diagnostic에서 helper-stamped target/evidence carrier contract와 85/85 responsive resolution을 함께 재검증한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
