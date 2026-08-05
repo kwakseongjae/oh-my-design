@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.711 fresh polar task
+- 미노출 polar ice-core custody task를 provider exposure0으로 잠갔다.
+- 82-task validator/mutation green; raw baseline75/85, responsive+a11y red다.
+- exact task `2a3749ad`/tree `22c26500…`와 baseline hash를 report로 보존했다.
+- 다음은 exact 1.9.710 Luna/high1셀 structured CSS transfer다.
+
 ## 2026-08-05 (Codex) · 1.9.710 structured CSS packet
 - acceptance-debt CSS를 required declaration 구조로 분리했다.
 - exact-value/any-value 검증과 copy-ready 권장 CSS source를 helper에 추가했다.

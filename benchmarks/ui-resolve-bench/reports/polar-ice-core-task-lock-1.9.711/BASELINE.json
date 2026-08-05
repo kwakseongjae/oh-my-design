@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.1",
+  "task_id": "polar-ice-core-vial-custody-v0.1",
+  "variant_id": "raw-design-md",
+  "status": "BASELINE_COMPLETE_PROVIDER_ZERO",
+  "score_sha256": "44eb63b99a33fd8ed442e9e58f5cf6d5bb338c40b1fac03298c7cdd22893a769",
+  "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+  "deterministic_score": 75,
+  "deterministic_max": 85,
+  "ui_resolved": false,
+  "critical_gates": {
+    "task_contract": true,
+    "state_journey": true,
+    "responsive": false,
+    "accessibility": false,
+    "design_grounding": true,
+    "evidence_honesty": true
+  },
+  "provider_calls": 0,
+  "model_exposures": 0
+}
