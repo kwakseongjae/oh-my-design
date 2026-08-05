@@ -1,0 +1,5 @@
+Improve the supplied polar ice-core vial custody review so field curators can inspect core-to-archive-vial assignments, cold-room accession windows, and the custody decision confidently on desktop and narrow screens.
+
+Preserve all five core identifiers, all seven archive-vial identifiers and their exact core assignments, all four supplied accession windows, the three review views, the curator-note toggle, the custody-review form, and all stated summary evidence. Do not invent isotope-analysis verification, core completeness, depth calibration, field-provenance validation, vial-seal integrity, archive accession acceptance, catalog publication, or curatorial custody closure. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The core register, separate accession-window strip, and separate custody decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.
