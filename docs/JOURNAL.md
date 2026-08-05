@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-05 (Codex) · 1.9.682 hidden denominator audit
+- 공개 inventory78과 hidden Verified denominator를 분리하는 coverage auditor를 추가했다.
+- 실제 eligible0, EN/KO only, creation/fidelity/open-brief0이라 gate4를 fail-close했다.
+- 공개 과제를 unseen으로 재라벨하지 않는다; 다음은 private registry와 missing family authoring boundary다.
+
 ## 2026-08-05 (Codex) · 1.9.681 machine frontier readiness
 - 2.0 normative 9 gates를 machine snapshot+auditor로 잠그고 증거 경로17개를 확인했다.
 - 현재 pass0/partial3/open4/external2로 `BLOCK_2_0_PROMOTION`이다.

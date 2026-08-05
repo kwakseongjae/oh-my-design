@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1",
+  "target_version": "2.0.0",
+  "snapshot_patch": "1.9.682",
+  "inventory_task_count": 78,
+  "inventory_locales": ["en", "ko"],
+  "inventory_dimension_counts": {
+    "creation": 0,
+    "repair": 77,
+    "stateful-flow": 77,
+    "responsive": 78,
+    "accessibility": 78,
+    "evidence-unknown": 78,
+    "screenshot-fidelity": 0,
+    "open-brief": 0
+  },
+  "eligible_hidden_task_count": 0,
+  "required_hidden_task_count": 24,
+  "eligible_locales": [],
+  "required_locales": ["en", "ko", "ja", "zh-cn", "zh-tw"],
+  "missing_locales": ["en", "ko", "ja", "zh-cn", "zh-tw"],
+  "missing_dimensions": [
+    "creation",
+    "repair",
+    "stateful-flow",
+    "responsive",
+    "accessibility",
+    "evidence-unknown",
+    "screenshot-fidelity",
+    "open-brief"
+  ],
+  "gate_pass": false,
+  "decision": "BLOCK_HIDDEN_TASK_COVERAGE_CLAIM",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "claim_boundary": "The 78 public task directories are inventory, not a hidden Verified denominator."
+}

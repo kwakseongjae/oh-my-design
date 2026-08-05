@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: 현재 `1.9.681` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-05 · 1.9.681 machine-audited 2.0 frontier readiness
+- 기준 커밋: 현재 `1.9.682` checkpoint HEAD (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-05 · 1.9.682 hidden-task denominator audit
 
 ## 지금 (현재 위치)
+
+- 1.9.682는 공개 task inventory와 hidden Verified denominator를 분리하는 coverage contract/auditor를 추가했다. task가 `benchmark_visibility:hidden`+`independent_audit:eligible`일 때만 24-task gate에 들어간다.
+- 실제 감사는 inventory78, eligible hidden0, locale EN/KO only, creation0/screenshot-fidelity0/open-brief0으로 `BLOCK_HIDDEN_TASK_COVERAGE_CLAIM`이다. 기존 공개 과제를 unseen으로 재라벨하지 않는다.
+- positive fixture는 24 tasks/5 locales/8 dimensions가 모두 있어야 pass함을 확인한다. focused2 pass/lint/diff green, provider0/model0이다. 다음은 private denominator registry와 missing task-family authoring boundary를 설계한다.
 
 - 1.9.681은 2.0.0의 normative 9 gates를 machine-readable snapshot과 fail-close auditor로 고정했다. gate 누락/중복/개명, 잘못된 status, missing/absolute/repo-escaping evidence를 거부하고 9/9 pass 전에는 promotion을 차단한다.
 - 현재 판정은 pass0/partial3/open4/external2, evidence ref17개 존재, `BLOCK_2_0_PROMOTION`이다. all-pass가 되더라도 자동 배포가 아니라 `READY_FOR_USER_RELEASE_DECISION`까지만 허용한다.

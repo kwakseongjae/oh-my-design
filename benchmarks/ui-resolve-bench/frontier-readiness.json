@@ -3,7 +3,7 @@
   "target_version": "2.0.0",
   "baseline_version": "1.9.0",
   "required_gate_count": 9,
-  "snapshot_patch": "1.9.681",
+  "snapshot_patch": "1.9.682",
   "claim_policy": "Promotion is allowed only when all nine gates are pass and every gate retains repository evidence.",
   "gates": [
     {
@@ -31,8 +31,8 @@
       "id": "hidden-task-coverage",
       "status": "open",
       "requirement": "At least 24 hidden tasks cover creation, repair, state, responsive, accessibility, evidence/unknown, screenshot fidelity, open briefs, and five locales.",
-      "current_boundary": "The repository has a broad task inventory, but 24 tasks are not yet locked as hidden, independently audited, five-locale Verified coverage.",
-      "evidence_refs": ["benchmarks/ui-resolve-bench/tasks", "benchmarks/ui-resolve-bench/tasks/investigational-product-depot-release-v0.1"]
+      "current_boundary": "The inventory has 78 public tasks but zero hidden audit-eligible tasks, only EN/KO, and no creation, screenshot-fidelity, or open-brief contract.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/tasks", "benchmarks/ui-resolve-bench/reports/hidden-task-coverage-audit-1.9.682"]
     },
     {
       "id": "verified-scale-artifacts",
