@@ -6,6 +6,14 @@ const repoRoot = resolve(import.meta.dirname, "../../..");
 const skill = readFileSync(resolve(repoRoot, "skills/omd-apply/SKILL.md"), "utf8");
 
 describe("omd:apply delivery contract", () => {
+  it("does not turn browser permission gates into unplanned human intervention", () => {
+    expect(skill).toContain("Non-interactive browser-infrastructure rule");
+    expect(skill).toContain("사용자에게 remote debugging 허용, permission dialog 클릭, 로그인, browser attach, 재개 응답을 요구하지 않는다");
+    expect(skill).toContain("한 번의 product edit + 저장소에 이미 있는 결정론 static evaluator/closure 한 번");
+    expect(skill).toContain("plan-close 전 product edit 금지");
+    expect(skill).toContain("유일한 infrastructure 예외");
+  });
+
   it("keeps implementation ownership with the main agent", () => {
     expect(skill).toContain("본 에이전트가 실제 편집과 검증을 끝까지 소유");
     expect(skill).toContain("audit/advice 요청만 자문 결과 요약으로 종료할 수 있다");

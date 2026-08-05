@@ -167,6 +167,17 @@ DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 
 
 시각적 확장보다 먼저 기존 제품 계약을 잠근다. 목적은 디자인을 보수적으로 만드는 것이 아니라, 더 나은 화면을 만들면서 이미 동작하는 제품을 다른 제품으로 바꾸지 않는 것이다.
 
+### Non-interactive browser-infrastructure rule (browser-gated 절차보다 우선)
+
+자동화·benchmark·non-interactive run에서는 사용자에게 remote debugging 허용, permission dialog 클릭, 로그인, browser attach, 재개 응답을 요구하지 않는다. Chrome 권한 팝업, remote debugging disabled, named socket unavailable, attach denial처럼 **route navigation 전에 막힌 한 번의 준비된 browser command**는 즉시 `browser_infrastructure_unavailable`로 분류한다. 같은 browser·port·runtime을 재시도하거나 사용자를 불러 대기하지 않는다.
+
+- implement/change 요청이고 prompt·task packet·baseline이 구체적인 `must_fix`를 이미 제공했다면, pre-edit browser plan 불가가 제품 수정을 취소하는 이유가 아니다. 기존 source·DESIGN.md token·protected ledger·명시된 failure만 사용해 bounded static repair를 계속한다. 브라우저에서만 알 수 있는 width·ratio·state를 측정한 것처럼 만들지 않고, 새 carrier·token·값을 추측하지 않는다.
+- 이 infrastructure branch에서는 browser-derived `plan-close`와 fit budget을 `unresolved`로 남기고, **한 번의 product edit + 저장소에 이미 있는 결정론 static evaluator/closure 한 번**으로 알려진 결함을 닫는다. browser proof는 `unresolved`, source-backed static proof만 `verified`로 분리한다. 완전 검증·browser pass라고 표현하지 않는다.
+- source-backed correction조차 결정할 수 없으면 speculative edit을 만들지 않고 해당 field/gate만 `unresolved`로 전달한다. 하지만 이미 알려진 수정까지 버리거나 audit-only 응답으로 종료하지 않는다.
+- 최종 응답은 사용자의 추가 동작을 조건으로 삼지 않고 `implemented / verified / unresolved`를 즉시 구분해 전달한다.
+
+이 절은 아래의 “plan-close 전 product edit 금지” 규칙에 대한 유일한 infrastructure 예외다. 정상적으로 browser plan이 실행된 경우에는 기존 measured-plan 절차를 그대로 따른다.
+
 ### Release-blocker pass — polish보다 먼저 한 번만 닫기
 
 아래 세 항목은 서로 다른 문서 작업이 아니라 **첫 edit transaction의 완료 조건**이다. 긴 ledger를 다시 설명하거나 검증을 반복하지 말고, 제품을 읽을 때 위험을 표시한 뒤 한 번의 edit으로 같이 고친다.
