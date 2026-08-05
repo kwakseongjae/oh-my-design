@@ -8,6 +8,8 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.715 canary plan은 새 abyssal task, exact clean 1.9.713 skill, Codex/Luna/high1셀, timeout720s, retry0으로 잠겼다. provider/model exposure는 아직0이고 이 셀은 ranking·2.0 gate promotion에 사용할 수 없다.
+- success는85/85+product revision1+successful static closure1+failed0+user handoff0+proof compliance이며 artifact inventory drift·second edit·unsupported claim은 terminal failure다. 다음은 prereg commit 뒤 fresh root 준비·admission audit·단일 실행이다.
 - 1.9.714 신규 `abyssal-sediment-core-custody-v0.1`은 provider/model exposure0으로 잠겼다. 83-task validator와 source-contract admission이 green이며 raw baseline75/85로 contract/state/design/evidence green, responsive+a11y red다.
 - 실제 `prepare-sandbox`가 clean `1f267b3c` OmD skill에서 provider-sealed artifact `51f3ade9…`, source contract `cbeffd2d…`, inventory `9ff364fe…`를 생성했다. `source-packet` 전후 artifact hash는 동일했고 structured relationship/acceptance CSS가 모두 출력됐다.
 - 다음은 1.9.714 task lock을 clean commit한 뒤 exact task/tree와 exact 1.9.713 skill을 Luna/high 단일 canary에 preregister한다. timeout720s·retry0·public ranking 제외이며 success는85/85+revision1+static success1/fail0+user handoff0+proof compliance다.

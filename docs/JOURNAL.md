@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.715 canary preregistration
+- fresh abyssal task와 exact 1.9.713 skill을 Luna/high 단일 셀로 결박했다.
+- timeout720s·retry0·diagnostic only이며 provider/model exposure는0이다.
+- success는85/85·revision1·static success1/fail0·handoff0·proof true다.
+- prereg commit 뒤 fresh root 준비·감사·단일 실행한다.
+
 ## 2026-08-06 (Codex) · 1.9.714 fresh sealed-contract task
 - abyssal sediment custody task를 provider/model exposure0으로 새로 잠갔다.
 - raw baseline75/85이며 responsive+a11y만 의도적으로 red다.
