@@ -8,6 +8,8 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.715 preparation audit를 강화해 task가 요구한 sealed artifact의 byte hash, source-contract hash, inventory hash, provider_mutable=false를 admission에서 다시 검증한다. artifact 1-byte tamper negative가 fail-close하고 focused5·lint/diff가 green이다.
+- 최초 prepared root는 이 새 auditor/manifest bit 이전 산출물이므로 폐기하지 않고 non-executed smoke로 남긴다. 다음은 이 admission hardening을 clean commit한 뒤 새 output root/새 experiment suffix로 다시 preregister해야 하며 기존 root 실행은 금지다.
 - 1.9.715 canary plan은 새 abyssal task, exact clean 1.9.713 skill, Codex/Luna/high1셀, timeout720s, retry0으로 잠겼다. provider/model exposure는 아직0이고 이 셀은 ranking·2.0 gate promotion에 사용할 수 없다.
 - success는85/85+product revision1+successful static closure1+failed0+user handoff0+proof compliance이며 artifact inventory drift·second edit·unsupported claim은 terminal failure다. 다음은 prereg commit 뒤 fresh root 준비·admission audit·단일 실행이다.
 - 1.9.714 신규 `abyssal-sediment-core-custody-v0.1`은 provider/model exposure0으로 잠겼다. 83-task validator와 source-contract admission이 green이며 raw baseline75/85로 contract/state/design/evidence green, responsive+a11y red다.

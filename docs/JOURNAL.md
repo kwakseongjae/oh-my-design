@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · sealed preparation admission hardening
+- admission이 sealed artifact/hash/inventory/provider immutability를 재검증하게 했다.
+- 1-byte artifact tamper를 실행 전에 거부하는 integration test를 추가했다.
+- 기존 prepared root는 provider0 smoke로만 보존하고 실행하지 않는다.
+- clean commit 뒤 새 experiment/root를 다시 preregister한다.
+
 ## 2026-08-06 (Codex) · 1.9.715 canary preregistration
 - fresh abyssal task와 exact 1.9.713 skill을 Luna/high 단일 셀로 결박했다.
 - timeout720s·retry0·diagnostic only이며 provider/model exposure는0이다.

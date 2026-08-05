@@ -41,6 +41,31 @@ export function auditPreparedMatrixAdmission(root) {
     });
     const untouched = product.sha256 === manifest.workspace.product_initial_sha256;
     if (!untouched) throw new Error(`prepared-matrix-admission:product-drift:${cell.id}`);
+    let deterministicReflow = null;
+    if (manifest.task.deterministic_reflow_required || manifest.deterministic_reflow) {
+      const sealed = manifest.deterministic_reflow;
+      if (!sealed || sealed.mode !== "provider-sealed-source-contract" || sealed.provider_mutable !== false) {
+        throw new Error(`prepared-matrix-admission:deterministic-reflow-contract-missing:${cell.id}`);
+      }
+      const artifactPath = join(workspace, sealed.artifact_path ?? "");
+      if (!existsSync(artifactPath) || sha256(readFileSync(artifactPath)) !== sealed.artifact_sha256) {
+        throw new Error(`prepared-matrix-admission:deterministic-reflow-artifact-drift:${cell.id}`);
+      }
+      const artifact = readJson(artifactPath);
+      if (artifact.source_contract?.state !== "provider-sealed"
+        || artifact.source_contract?.sha256 !== sealed.source_contract_sha256
+        || artifact.inventory?.sha256 !== sealed.inventory_sha256) {
+        throw new Error(`prepared-matrix-admission:deterministic-reflow-inventory-drift:${cell.id}`);
+      }
+      deterministicReflow = {
+        mode: sealed.mode,
+        artifact_sha256: sealed.artifact_sha256,
+        source_contract_sha256: sealed.source_contract_sha256,
+        inventory_sha256: sealed.inventory_sha256,
+        provider_mutable: false,
+        attested: true,
+      };
+    }
     return {
       id: cell.id,
       task_id: cell.task_id,
@@ -56,6 +81,7 @@ export function auditPreparedMatrixAdmission(root) {
       source_commit: matrixCell.source_commit,
       source_publishable: matrixCell.source_publishable,
       objective_evaluator: matrixCell.objective_evaluator,
+      deterministic_reflow: deterministicReflow,
       untouched,
     };
   });
@@ -70,6 +96,7 @@ export function auditPreparedMatrixAdmission(root) {
     effort: allEqual(cells.map((cell) => cell.effort)),
     timeout_seconds: allEqual(cells.map((cell) => cell.timeout_seconds)),
     objective_evaluator: allEqual(cells.map((cell) => cell.objective_evaluator)),
+    deterministic_reflow: allEqual(cells.map((cell) => cell.deterministic_reflow)),
   };
   if (!Object.values(equality).every(Boolean)) {
     throw new Error("prepared-matrix-admission:normalization-mismatch");

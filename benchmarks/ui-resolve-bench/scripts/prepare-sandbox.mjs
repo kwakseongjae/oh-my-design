@@ -413,6 +413,7 @@ const manifest = {
     id: task.id,
     version: task.version,
     track: taskTrack,
+    deterministic_reflow_required: Boolean(task.omd_reflow_source_contract && variant.declared_name === "omd:apply"),
     core_prompt_sha256: sha256(promptFile),
     prompt_sha256: sha256(prompt),
     starter_sha256: treeManifest(starterRoot).sha256,

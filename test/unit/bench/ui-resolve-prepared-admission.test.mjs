@@ -55,4 +55,31 @@ describe("prepared matrix admission audit", () => {
       "prepared-matrix-admission:cell-contract-drift:control-r1:runtime",
     );
   });
+
+  it("attests a required provider-sealed reflow artifact and rejects tampering", () => {
+    const root = join(mkdtempSync(join(tmpdir(), "omd-prepared-sealed-")), "matrix");
+    const sealedPlan = plan(root);
+    sealedPlan.status = "locked-diagnostic-only";
+    sealedPlan.cells[0] = {
+      ...sealedPlan.cells[0],
+      id: "sealed-r1",
+      task_id: "abyssal-sediment-core-custody-v0.1",
+      variant_id: "omd-portable",
+      system_id: "omd-apply-current",
+    };
+    prepareRunMatrix(sealedPlan);
+    const admission = auditPreparedMatrixAdmission(root);
+    expect(admission.cells[0].deterministic_reflow).toMatchObject({
+      mode: "provider-sealed-source-contract",
+      provider_mutable: false,
+      attested: true,
+    });
+    expect(admission.normalization.deterministic_reflow).toBe(true);
+
+    const artifactPath = join(root, "sealed-r1/.omd/reflow-closure.json");
+    writeFileSync(artifactPath, `${readFileSync(artifactPath, "utf8")}\n`);
+    expect(() => auditPreparedMatrixAdmission(root)).toThrow(
+      "prepared-matrix-admission:deterministic-reflow-artifact-drift:sealed-r1",
+    );
+  });
 });
