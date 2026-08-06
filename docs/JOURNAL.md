@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.721 Reliability@3 preregistered
+- exact fresh task3개와 clean OmD skill을 Luna/high3셀로 고정했다.
+- fixed order·timeout720s·concurrency1·retry/replacement0이다.
+- cell success는85/85+single-edit/static/proof/inventory, suite pass는3/3이다.
+- commit 뒤 fresh root preparation·admission audit로 간다; provider/model0이다.
+
 ## 2026-08-06 (Codex) · 1.9.720 Reliability@3 task lock
 - fresh domain/cardinality/token variation3개를 provider/model0으로 잠갔다.
 - raw baseline은 모두75/85, accessibility+responsive exact red다.
