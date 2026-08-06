@@ -29,13 +29,16 @@ describe("council effectiveness pilot", () => {
       model_requested: "cursor-grok-4.5-high",
       retry_budget: 0,
       case_count: 3,
+      baseline_question_count: 6,
+      council_question_count: 6,
+      baseline_human_handoff_count: 3,
+      council_human_handoff_count: 3,
       authority_retained: true,
       expected_blocked_retained: true,
       forbidden_auto_count: 0,
     });
     expect(summary.lane_call_count).toBeGreaterThan(0);
     expect(summary.lane_call_count).toBeLessThanOrEqual(12);
-    expect(summary.council_question_count).toBe(summary.baseline_question_count);
     expect(summary.results.every((item) => item.lane_runs.every((run) => run.exit_code === null))).toBe(true);
   });
 });

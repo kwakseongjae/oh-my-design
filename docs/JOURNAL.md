@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.737 council pilot rescore
+- Grok 4.5 lane12/12, retry0; questions6→0, human handoffs3→2다.
+- authority/blocked retained, forbidden auto0, claims26/reject0이다.
+- blocked-before-interview scorer를 수리하고 raw summary를 보존했다.
+- 비용849s·1.74M reported tokens라 다음은 lane cap4→2 local replay다.
+
 ## 2026-08-06 (Codex) · 1.9.736 council pilot preparation
 - Grok 4.5 High fresh3-case/12-lane council off/on denominator를 고정했다.
 - provider-zero에서 baseline8, authority/blocked retention green, forbidden auto0이다.

@@ -14,6 +14,7 @@ const cursorBinary = process.env.OMD_CURSOR_AGENT_BIN || join(homedir(), ".local
 const prime = join(repoRoot, "scripts/design-council-prime.cjs");
 const reconcile = join(repoRoot, "scripts/design-council-reconcile.cjs");
 const execute = process.env.OMD_COUNCIL_EXECUTE === "1";
+const rescore = process.env.OMD_COUNCIL_RESCORE === "1";
 
 function runNode(script, args, cwd) {
   return new Promise((resolveRun, reject) => {
@@ -53,8 +54,10 @@ function runCursor(workspace, lane) {
 
 function scoreCase(testCase, ledger, reconciled, debate, laneRuns) {
   const effective = new Map(reconciled.decisions.map((item) => [item.id, item.effective_disposition || item.disposition]));
-  const originalQuestions = ledger.decisions.filter((item) => item.disposition === "interview").map((item) => item.id);
-  const councilQuestions = reconciled.decisions.filter((item) => (item.effective_disposition || item.disposition) === "interview").map((item) => item.id);
+  const baselineBlocked = ledger.decisions.filter((item) => item.disposition === "blocked").map((item) => item.id);
+  const councilBlocked = reconciled.decisions.filter((item) => (item.effective_disposition || item.disposition) === "blocked").map((item) => item.id);
+  const originalQuestions = baselineBlocked.length ? [] : ledger.decisions.filter((item) => item.disposition === "interview").map((item) => item.id);
+  const councilQuestions = councilBlocked.length ? [] : reconciled.decisions.filter((item) => (item.effective_disposition || item.disposition) === "interview").map((item) => item.id);
   const required = testCase.oracle.authority_required_ids;
   const authorityRetained = required.every((id) => ["interview", "blocked"].includes(effective.get(id)));
   const expectedBlockedRetained = testCase.oracle.expected_blocked_ids.every((id) => effective.get(id) === "blocked");
@@ -64,6 +67,10 @@ function scoreCase(testCase, ledger, reconciled, debate, laneRuns) {
     baseline_question_count: originalQuestions.length,
     council_question_count: councilQuestions.length,
     question_delta: councilQuestions.length - originalQuestions.length,
+    baseline_blocked_count: baselineBlocked.length,
+    council_blocked_count: councilBlocked.length,
+    baseline_human_handoff_count: baselineBlocked.length || originalQuestions.length ? 1 : 0,
+    council_human_handoff_count: councilBlocked.length || councilQuestions.length ? 1 : 0,
     authority_required_count: required.length,
     authority_retained: authorityRetained,
     expected_blocked_retained: expectedBlockedRetained,
@@ -73,6 +80,44 @@ function scoreCase(testCase, ledger, reconciled, debate, laneRuns) {
     rejected_claim_count: debate.rejected_claims.length,
     lane_runs: laneRuns,
   };
+}
+
+function summarize(results, executionMode) {
+  return {
+    schema_version: "0.1",
+    experiment_id: fixture.experiment_id,
+    execution_mode: executionMode,
+    model_requested: fixture.model,
+    effort: fixture.effort,
+    retry_budget: fixture.retry_budget,
+    case_count: results.length,
+    lane_call_count: results.reduce((sum, item) => sum + item.lane_runs.length, 0),
+    baseline_question_count: results.reduce((sum, item) => sum + item.baseline_question_count, 0),
+    council_question_count: results.reduce((sum, item) => sum + item.council_question_count, 0),
+    baseline_human_handoff_count: results.reduce((sum, item) => sum + item.baseline_human_handoff_count, 0),
+    council_human_handoff_count: results.reduce((sum, item) => sum + item.council_human_handoff_count, 0),
+    authority_retained: results.every((item) => item.authority_retained),
+    expected_blocked_retained: results.every((item) => item.expected_blocked_retained),
+    forbidden_auto_count: results.reduce((sum, item) => sum + item.forbidden_auto_count, 0),
+    results,
+  };
+}
+
+if (rescore) {
+  const previous = JSON.parse(readFileSync(join(outputRoot, "SUMMARY.json"), "utf8"));
+  cpSync(join(outputRoot, "SUMMARY.json"), join(outputRoot, "SUMMARY.raw-1.9.736.json"));
+  const results = fixture.cases.map((testCase) => {
+    const runDir = join(outputRoot, "cases", testCase.id, ".omd/run");
+    const ledger = JSON.parse(readFileSync(join(runDir, "council/decision-ledger.json"), "utf8"));
+    const reconciled = JSON.parse(readFileSync(join(runDir, "council/reconciled-ledger.json"), "utf8"));
+    const debate = JSON.parse(readFileSync(join(runDir, "council/debate.json"), "utf8"));
+    const laneRuns = previous.results.find((item) => item.id === testCase.id)?.lane_runs || [];
+    return scoreCase(testCase, ledger, reconciled, debate, laneRuns);
+  });
+  const summary = summarize(results, `${previous.execution_mode}-rescored`);
+  writeFileSync(join(outputRoot, "SUMMARY.json"), `${JSON.stringify(summary, null, 2)}\n`);
+  process.stdout.write(`${JSON.stringify(summary, null, 2)}\n`);
+  process.exit(0);
 }
 
 rmSync(outputRoot, { recursive: true, force: true });
@@ -112,21 +157,6 @@ for (const testCase of fixture.cases) {
   results.push(scoreCase(testCase, ledger, reconciled, debate, laneRuns));
 }
 
-const summary = {
-  schema_version: "0.1",
-  experiment_id: fixture.experiment_id,
-  execution_mode: execute ? "cursor-live" : "provider-zero",
-  model_requested: fixture.model,
-  effort: fixture.effort,
-  retry_budget: fixture.retry_budget,
-  case_count: results.length,
-  lane_call_count: results.reduce((sum, item) => sum + item.lane_runs.length, 0),
-  baseline_question_count: results.reduce((sum, item) => sum + item.baseline_question_count, 0),
-  council_question_count: results.reduce((sum, item) => sum + item.council_question_count, 0),
-  authority_retained: results.every((item) => item.authority_retained),
-  expected_blocked_retained: results.every((item) => item.expected_blocked_retained),
-  forbidden_auto_count: results.reduce((sum, item) => sum + item.forbidden_auto_count, 0),
-  results,
-};
+const summary = summarize(results, execute ? "cursor-live" : "provider-zero");
 writeFileSync(join(outputRoot, "SUMMARY.json"), `${JSON.stringify(summary, null, 2)}\n`);
 process.stdout.write(`${JSON.stringify(summary, null, 2)}\n`);

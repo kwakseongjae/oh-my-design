@@ -4,13 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.736 council effectiveness provider-zero ready
+- 갱신: 2026-08-06 · 1.9.737 council pilot complete and rescored
 
 ## 지금 (현재 위치)
 
-- 1.9.736은 Grok 4.5 High 동일모델 council off/on pilot을 provider-zero로 고정했다. fresh 3 cases, selected lane12 calls, retry/replacement0이며 oracle은 lane workspace에 노출하지 않는다.
-- baseline questions8, provider-zero council questions8, authority retention/expected blocked retention green, forbidden auto0이다. 이는 실행 전 denominator 검증일 뿐 효과 증거가 아니다.
-- prep root `/private/tmp/omd-council-effectiveness-1.9.736-prep`은 provider-zero immutable이다. checkpoint commit 뒤 새 live root에서 exact12회를 실행하고 첫 safety/provider 실패 시 남은 셀을 동결한다.
+- 1.9.736 Grok 4.5 High pilot은 isolated lane12/12, retry/replacement0으로 완료됐다. cited claims26, reject0, forbidden auto0이며 authority와 missing-official blocked를 모두 보존했다.
+- 1.9.737은 blocked ledger에서도 interview를 세던 scorer를 실제 state machine(`blocked → interview 전 halt`)에 맞춰 수리했다. raw summary는 live root에 보존하고 provider 재호출 없이 재채점했다.
+- 최종은 questions6→0, batched human handoffs3→2다. 단 regulated pricing은 사용자 권한을 blocker로 좁혔고, 비용은 sequential849,118ms·combined reported tokens1,743,331이라 Pareto 경쟁력이 없다.
+- 다음은 기존 26 claims를 replay해 기본 lane cap4→2가 disposition/safety를 동일하게 보존하는지 local로 증명하는 1.9.738이다. 그 전에는 provider를 다시 호출하지 않는다.
 - 1.9.735는 non-auto 결정에만 relevant lane을 최대4개·1회·retry0으로 선택하는 bounded dispatch와 reconciler를 구현했다. 모든 agent는 read-only 자문이며 `omd-master`만 구현한다.
 - claim은 실제 repo/run-relative evidence가 있어야 하며 lane 밖 결정·무인용·auto 승격은 reject된다. auto snapshot은 SHA-256으로 동결되고 변조 시 fail-close한다.
 - reconciled ledger는 original/effective disposition과 debate receipt를 함께 보존한다. council은 `interview|defer|blocked`만 keep/narrow하며 mandatory checkpoint를 다시 열 수 없다. pre-ship contrarian도 최대1회·retry0이다.

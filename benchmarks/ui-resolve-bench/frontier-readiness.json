@@ -3,7 +3,7 @@
   "target_version": "2.0.0",
   "baseline_version": "1.9.0",
   "required_gate_count": 10,
-  "snapshot_patch": "1.9.735",
+  "snapshot_patch": "1.9.737",
   "claim_policy": "Promotion is allowed only when all ten gates are pass and every gate retains repository evidence.",
   "gates": [
     {
@@ -82,8 +82,8 @@
       "id": "council-first-human-escalation",
       "status": "partial",
       "requirement": "The harness investigates and debates before intake, auto-decides only evidence-backed reversible choices, and asks the user only for authority-bearing decisions while retaining a reconstructable decision ledger.",
-      "current_boundary": "1.9.735 implements the bounded advisory dispatch and reconciliation contract: relevant lanes only, max four pre-intake calls, one pre-ship contrarian, no retry, cited claims, frozen auto values, and one implementation owner. Live multi-lane effectiveness and repeated human-intervention lift remain unproven.",
-      "evidence_refs": ["research/harness-design/24-council-first-interview-gate.md", "scripts/design-council-prime.cjs", "scripts/design-council-reconcile.cjs", "skills/omd-harness/SKILL.md", "benchmarks/ui-resolve-bench/reports/council-first-intake-1.9.733", "benchmarks/ui-resolve-bench/reports/council-intake-calibration-1.9.734", "benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735"],
+      "current_boundary": "The 1.9.736 Grok 4.5 pilot completed 12/12 bounded lanes with no retry: questions 6→0, human handoffs 3→2, authority and blocked decisions retained, forbidden auto zero. The 1.9.737 scorer correction preserves the raw summary and honors blocked-before-interview. Twelve-lane cost (849s sequential, 1.74M combined reported tokens) is not Pareto competitive and repeated-task lift remains unproven.",
+      "evidence_refs": ["research/harness-design/24-council-first-interview-gate.md", "scripts/design-council-prime.cjs", "scripts/design-council-reconcile.cjs", "skills/omd-harness/SKILL.md", "benchmarks/ui-resolve-bench/reports/council-first-intake-1.9.733", "benchmarks/ui-resolve-bench/reports/council-intake-calibration-1.9.734", "benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735", "benchmarks/ui-resolve-bench/reports/council-effectiveness-pilot-1.9.736"],
       "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735/ACCEPTANCE.json", "pointer": "/frontier_gate_pass", "equals": true}
     }
   ]
