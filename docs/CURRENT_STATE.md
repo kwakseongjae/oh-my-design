@@ -3,11 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `7811eeb0`의 1.9.722 Reliability@3 hard-stop (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.723 provider-sealed candidate preflight repair
+- 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-06 · 1.9.724 cascade-effective Reliability@3 task lock
 
 ## 지금 (현재 위치)
 
+- 1.9.724는 terminal 1.9.722 task를 재사용하지 않고 benthic sample transfer, conservation frame loan, wind-tunnel model handoff의 새 task3개를 provider/model0으로 잠갔다.
+- raw DESIGN.md baseline은 모두75/85이고 false gate는 accessibility+responsive exact다. 접근성 red node는 `.guidance-copy`와 `footer`뿐이며 surface-local muted copy는 green이다.
+- contrast contract는 `.muted`보다 specificity가 높은 `header > p.guidance-copy`와 `footer`를 사용한다. schema0.2 debt coverage와 provider-zero sealed artifact/inventory/structured CSS6건이3/3 complete다.
+- focused303 pass/2 skip·lint green이다. 다음은 exact task hash와 clean 1.9.723 skill을 새 no-retry Reliability@3 plan에 preregister하는 단계이며 아직 provider execution/ranking/2.0 promotion은 없다.
 - 1.9.723 local repair는 complete candidate bytes를 product edit 전에 동일 static evaluator로 반복 검증한다. preview는 product와 sealed artifact를 바꾸지 않는다.
 - 최신 preview 결과는 별도 receipt에 pass/fail, candidate/source-contract/inventory hash로 기록된다. provider-sealed static-close는 최종 product bytes가 최신 passed receipt와 정확히 같지 않으면 closure를 소비하기 전에 거부한다.
 - prepare-sandbox instruction은 source-packet→candidate preview green→동일 bytes single edit→static-close exact1회 순서를 직접 주입한다. focused352 pass/2 skip, lint green, provider/model0이다. user-owned `web/public/llms-full.txt` dirty는 보존해 attribution-sensitive full-suite red4는 clean-source 증거로 승격하지 않는다.

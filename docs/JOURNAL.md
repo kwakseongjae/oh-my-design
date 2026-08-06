@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.724 cascade-effective task lock
+- fresh fictional task3개를 provider/model0으로 생성·봉인했다.
+- raw baseline은 모두75/85, red는 accessibility+responsive exact다.
+- contrast red는 guidance/footer만 남고 stronger selector가 contract에 잠겼다.
+- focused303 pass/2 skip·lint green; 다음은 clean preregistration이다.
+
 ## 2026-08-06 (Codex) · 1.9.723 candidate preflight repair
 - complete candidate를 product edit 전에 동일 static evaluator로 반복 검증한다.
 - 최신 passed receipt와 최종 product bytes를 hash로 결박한다.
