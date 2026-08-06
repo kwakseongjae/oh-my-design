@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.747 browser preflight omission frozen
+- 갱신: 2026-08-06 · 1.9.748 isolated-browser task lock ready
 
 ## 지금 (현재 위치)
+
+- 1.9.748은 1.9.747에서 미노출로 동결된 manuscript/geology와 fresh herbarium을 새 Reliability@3 분모로 잠갔다. microscopy는 replay하지 않는다.
+- 세 baseline 모두75/85이며 responsive+accessibility만 red다. inventory101, selected task provider/model0이다.
+- dedicated local headless Chrome(no user profile/cloud)를 `omd1748`로 등록했고 browser-harness daemon/active connection1/named connection이 green이다. 다음은 exact task commit 뒤 이 preflight를 plan 필수 계약으로 잠근다.
 
 - 1.9.747 첫 Luna 셀은85/85 resolved, revision1, candidate/final exact지만 proof가 fail했다. wall222,767ms, tokens879,083, retry/replacement0이다.
 - runner 호출법은 맞았으나 browser-harness daemon의 active browser connection이0이었다. plan에 `browser_execution_contract`가 없어 provider 전 isolated named-browser preflight가 실행되지 않은 것이 root cause다.

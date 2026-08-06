@@ -1,0 +1,20 @@
+{
+  "schema_version":"0.1",
+  "product_version":"1.9.748",
+  "experiment_id":"browser-preflight-reliability-task-lock-1.9.748",
+  "status":"TWO_UNEXPOSED_FROZEN_TASKS_PLUS_ONE_FRESH_TASK_LOCKED_PROVIDER_ZERO",
+  "provider_calls":0,
+  "model_exposures":0,
+  "skill":{"source_commit":"b174309b45b19a44460877a37ed21fb5032efa4a","effective_council_tree_sha256":"b792a4e8bcd5b594cbd864bfb69fbf07f53c98338f32a4aa8b63adaa5d80cb9e","browser_proof":"scripts/reflow-browser-runner.sh","provider_mutable":false},
+  "tasks":[
+    {"task_id":"manuscript-folio-transfer-v0.1","provenance":"unexposed-frozen-cell-from-1.9.747","prior_model_exposures":0,"task_tree_sha256":"2b920faeabae81d52677282eed5393ba5d8a28adbc7bee2264b9599697fafe36","prompt_sha256":"420803d58974a8afeb8aaa18aede1656186e86d079ec8785f230969321ba6ba7","starter_sha256":"6f195ae7b4cd5670f3223b4dda281b2ae817a2ad3afa97376bc2731423cb4aee","baseline_evidence_sha256":"3043139dba5cd0068b67b61a07e8fb7a0d979fc7774c4f560a6c0ea32468953e","source_contract_sha256":"e075cfa9ba0c023df02f8cff6bd683a868df30532c045827a947ce7da9f19e70"},
+    {"task_id":"geology-section-loan-v0.1","provenance":"unexposed-frozen-cell-from-1.9.747","prior_model_exposures":0,"task_tree_sha256":"82d342d2a73877ff7c70fc9b2790bfe417dd00cd603891f6d6b9231aa6486a4a","prompt_sha256":"aba9b3fc8603314f33a7a013ca5b04af8fbf400e88e3f6882f15411b745fa5fb","starter_sha256":"296b3c90c008b025c72d2c42842a254b2d319f7c7ff7dbdbbff83230e8da37cc","baseline_evidence_sha256":"42276f9de4418db6317259d6ef616c94430fddb48edffb0bd7172929f83a48db","source_contract_sha256":"11c22f1abec6a62d782bc0a77d408a20a817411ff2a6a8b1c97a7c9363c3f7f3"},
+    {"task_id":"herbarium-sheet-return-v0.1","provenance":"fresh-provider-zero-1.9.748","prior_model_exposures":0,"task_tree_sha256":"ef4426bf7518da2a9f12ec5262b9aacf7b8c04d944715140d33389e7c5ce3475","prompt_sha256":"0a0ea1a9a863e1834e79ec50bfccd0269d2f9a4381891d30a42d9bdcf7769afe","starter_sha256":"e390c5d0a31dcad030bcb0d456bd155500b4b2ca11a8494ce3c66e622b5ded9c","baseline_evidence_sha256":"8f0ef39e3d55913df08ac294bc127a75e3fe3d0ac3ec2c61ddc01a97b2cfcc97","source_contract_sha256":"d463dd937d86eab3f8a2848f33299065a01639376efd54e3b9e9234b64ec0972"}
+  ],
+  "raw_baseline":{"scores":[75,75,75],"objective_max":85,"failed_critical_gates":["accessibility","responsive"],"coverage_complete":true},
+  "local_browser_preflight":{"provider_calls":0,"connection_name":"omd1748","endpoint_scope":"127.0.0.1 dedicated headless Chrome","user_profile":"none","cloud_browser":"not_used","daemon_alive":true,"active_browser_connections":1,"named_connection_active":true},
+  "acceptance":{"required_objective_score":"85/85","required_resolution":true,"required_proof_compliance":true,"required_reliability":"3/3","retry":0,"replacement":0,"hard_stop_on_lifecycle_failure":true},
+  "validation":{"fresh_provider_free_browser_baseline":"pass","task_inventory":101,"provider_calls":0},
+  "execution_allowed":false,
+  "next_gate":"Commit exact task bytes, then preregister a fresh browser_execution_contract root that must preflight the isolated named connection before provider exposure."
+}

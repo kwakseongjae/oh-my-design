@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.748 isolated-browser task lock
+- 미노출 manuscript/geology+fresh herbarium의 새3-task 분모를 만들었다.
+- 모두75/85, responsive+accessibility만 red이며 provider/model0이다.
+- local isolated `omd1748` active connection1을 plan preflight로 잠글 차례다.
+
 ## 2026-08-06 (Codex) · 1.9.747 terminal freeze
 - 첫 셀은85/85였지만 browser active connection0으로 proof fail했다.
 - plan의 browser preflight 누락이 원인이며 남은2셀은 provider0 동결됐다.

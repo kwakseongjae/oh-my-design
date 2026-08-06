@@ -12,8 +12,9 @@ const v4BaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1
 const v5BaselineRoot = "/private/tmp/omd-frontier-comparison-baselines-1.9.732-v5";
 const v6BaselineRoot = "/private/tmp/omd-council-product-baselines-1.9.742-v6";
 const v7BaselineRoot = "/private/tmp/omd-terminal-runner-reliability-baselines-1.9.746-v7";
+const v8BaselineRoot = "/private/tmp/omd-browser-preflight-reliability-baselines-1.9.748-v8";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
-const taskSet = process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -206,7 +207,16 @@ const v7Cases = [
   },
 ];
 
-const cases = taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v8Cases = [
+  {
+    id: "herbarium-sheet-return-v0.1", title: "Herbarium sheet return review", eyebrow: "Botanical archive · sheet return", heading: "Herbarium-sheet return review", recordHeading: "Sheet register", recordSummary: "Five supplied plant groups mapped to seven archival folders.",
+    records: [["SHEET-ALP-6124",["FOLDER-87510","FOLDER-87511"]],["SHEET-RIP-6238",["FOLDER-87512"]],["SHEET-FEN-6351",["FOLDER-87513","FOLDER-87514"]],["SHEET-DRY-6467",["FOLDER-87515"]],["SHEET-MNT-6580",["FOLDER-87516"]]],
+    windows: [["VAULT-B2","07:20–07:40"],["VAULT-D5","10:05–10:25"],["VAULT-F1","13:15–13:35"],["VAULT-H4","15:55–16:15"]], views: [["sheets","Sheet register"],["windows","Vault windows"],["decision","Return decision"]], toggle: "Include mounting-note copy", fieldLabel: "Return curator", validValue: "SHEET-ALP-6124 return review", target: "SHEET-ALP-6124 + FOLDER-87510", evidence: "5 plant groups · 7 archival folders · 4 vault windows", state: "Review open", action: "Open return record", footer: "Botanical archive · supplied return evidence only",
+    unknowns: ["species verified","sheet stable","mounting calibrated","provenance validated","folder seal verified","vault accepted","catalog published","return approved"], palette: {canvas:"#EDF3F4",surface:"#FCFEFF",ink:"#24342B",muted:"#69757A",border:"#9DA9A0",primary:"#3E6250",accent:"#745A69"}, columns: "repeat(3,288px)", windowColumns: "repeat(4,220px)", decisionMin: "570px", cardRadius: 4, domain: "herbarium sheet-return ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -293,7 +303,9 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v7"
+  const baselineRoot = taskSet === "v8"
+    ? v8BaselineRoot
+    : taskSet === "v7"
     ? v7BaselineRoot
     : taskSet === "v6"
     ? v6BaselineRoot
