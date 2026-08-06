@@ -54,7 +54,8 @@
     "scripts/postinstall.cjs",
     "scripts/context.cjs",
     "scripts/ctx-prime.cjs",
-    "scripts/design-council-prime.cjs"
+    "scripts/design-council-prime.cjs",
+    "scripts/design-council-reconcile.cjs"
   ],
   "scripts": {
     "build": "tsup",

@@ -6,6 +6,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const crypto = require('node:crypto');
 
 const cwd = path.resolve(process.argv[2] || process.cwd());
 const runDir = path.resolve(process.argv[3] || path.join(cwd, '.omd'));
@@ -313,8 +314,84 @@ const ledger = {
   created_at: new Date().toISOString(),
 };
 
+const laneReasons = new Map();
+function requestLane(laneId, decisionId) {
+  const ids = laneReasons.get(laneId) || [];
+  if (!ids.includes(decisionId)) ids.push(decisionId);
+  laneReasons.set(laneId, ids);
+}
+
+for (const item of decisions) {
+  if (item.disposition === 'auto') continue;
+  requestLane('ambiguity_contrarian', item.id);
+  if (['audience', 'cta_primary', 'regulated_commitment', 'required_factual_claim'].includes(item.slot)) {
+    requestLane('product_context', item.id);
+  }
+  if (item.slot === 'exit_scope') {
+    requestLane('code_context', item.id);
+    requestLane('architecture_implications', item.id);
+  }
+  if (['wow_moment', 'visual_grounding', 'brand_reference_commitment'].includes(item.slot)) {
+    requestLane('reference_evidence', item.id);
+  }
+  if (['wow_moment', 'visual_grounding'].includes(item.slot)) {
+    requestLane('ux_quality', item.id);
+  }
+}
+
+const lanePriority = [
+  'ambiguity_contrarian',
+  'product_context',
+  'reference_evidence',
+  'code_context',
+  'architecture_implications',
+  'ux_quality',
+];
+const selectedLanes = lanePriority
+  .filter((laneId) => laneReasons.has(laneId))
+  .slice(0, 4)
+  .map((laneId) => ({
+    ...lanes.find((lane) => lane.id === laneId),
+    decision_ids: laneReasons.get(laneId),
+    role: laneId === 'ambiguity_contrarian'
+      ? 'omd-critic'
+      : laneId === 'reference_evidence' || laneId === 'product_context'
+        ? 'omd-ux-researcher'
+        : 'omd-ux-engineer',
+    output: `council/lanes/${laneId}.json`,
+  }));
+const autoSnapshot = decisions
+  .filter((item) => item.disposition === 'auto')
+  .map((item) => ({ id: item.id, proposed_value: item.proposed_value, evidence: item.evidence }));
+const autoSnapshotSha256 = crypto.createHash('sha256').update(JSON.stringify(autoSnapshot)).digest('hex');
+const dispatchPlan = {
+  schema_version: '0.1',
+  policy: 'bounded-advisory-frozen-auto',
+  dispatch_required: selectedLanes.length > 0,
+  max_pre_intake_calls: 4,
+  max_pre_ship_contrarian_calls: 1,
+  retry_budget: 0,
+  auto_snapshot_sha256: autoSnapshotSha256,
+  selected_lanes: selectedLanes,
+  transition_policy: {
+    auto: ['keep'],
+    interview: ['interview', 'defer', 'blocked'],
+    defer: ['defer', 'interview', 'blocked'],
+    blocked: ['blocked'],
+    auto_promotion_requires: 'fresh-user-stated-evidence',
+  },
+  claim_contract: {
+    evidence_required: true,
+    uncited_claims: 'reject',
+    unknown_means_absent: true,
+    sole_implementation_owner: 'omd-master',
+  },
+};
+
 const packetPath = path.join(councilDir, 'context-packet.json');
 const ledgerPath = path.join(councilDir, 'decision-ledger.json');
+const dispatchPath = path.join(councilDir, 'dispatch-plan.json');
 fs.writeFileSync(packetPath, `${JSON.stringify(contextPacket, null, 2)}\n`, 'utf8');
 fs.writeFileSync(ledgerPath, `${JSON.stringify(ledger, null, 2)}\n`, 'utf8');
+fs.writeFileSync(dispatchPath, `${JSON.stringify(dispatchPlan, null, 2)}\n`, 'utf8');
 process.stdout.write(`${ledgerPath}\n`);

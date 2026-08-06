@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.735 bounded council dispatch
+- relevant lane만 최대4개·1회·retry0으로 호출하는 dispatch plan과 reconciler를 구현했다.
+- cited claim만 수용하고 auto snapshot은 SHA-256으로 동결하며 master만 구현한다.
+- focused49/49, full788 pass/3 skip, lint/build/count green이다.
+- 다음은 Grok 4.5 동일모델 council off/on 반복 비교다.
+
 ## 2026-08-06 (Codex) · 1.9.734 council intake calibration
 - 22 briefs/5 locales에서 auto57, unsupported0, disposition/value failure0이다.
 - `started→star` 오탐과 negation/surface/wow conflict, blocked dead path를 교정했다.

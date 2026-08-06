@@ -362,6 +362,7 @@ describe('install-skills', () => {
     // ctx-prime helper copied so harness CTX-PRIME works without the package dir.
     expect(existsSync(join(root, '.claude/data/scripts/ctx-prime.cjs'))).toBe(true);
     expect(existsSync(join(root, '.claude/data/scripts/design-council-prime.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.claude/data/scripts/design-council-reconcile.cjs'))).toBe(true);
   });
 
   it('installs self-contained Codex roles with only the native project skill path', async () => {
@@ -475,6 +476,7 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.opencode/data/references/toss/DESIGN.md'))).toBe(true);
     expect(existsSync(join(root, '.opencode/data/scripts/ctx-prime.cjs'))).toBe(true);
     expect(existsSync(join(root, '.opencode/data/scripts/design-council-prime.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.opencode/data/scripts/design-council-reconcile.cjs'))).toBe(true);
     expect(dataDirFor('opencode', ['opencode'])).toBe('.opencode');
   });
 
@@ -555,6 +557,7 @@ describe('install-skills', () => {
       expect(existsSync(join(globalRoot, 'data', 'references', 'toss', 'DESIGN.md'))).toBe(true);
       expect(existsSync(join(globalRoot, 'data', 'scripts', 'ctx-prime.cjs'))).toBe(true);
       expect(existsSync(join(globalRoot, 'data', 'scripts', 'design-council-prime.cjs'))).toBe(true);
+      expect(existsSync(join(globalRoot, 'data', 'scripts', 'design-council-reconcile.cjs'))).toBe(true);
       expect(existsSync(join(root, '.opencode'))).toBe(false);
     } finally {
       if (previousHome === undefined) delete process.env.HOME;

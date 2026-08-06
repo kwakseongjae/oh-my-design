@@ -26,7 +26,7 @@ const EXPECTED_PASS_EVIDENCE = {
   "independent-task-audit": ["benchmarks/ui-resolve-bench/reports/task-contract-mutation-audit-1.9.685/AUDIT.json", "/gate_pass", true],
   "activation-and-seven-day-reuse": ["benchmarks/ui-resolve-bench/reports/time-compressed-activation-reuse-1.9.672/ACCEPTANCE.json", "/frontier_gate_pass", true],
   "routing-ownership-reverify": ["benchmarks/ui-resolve-bench/reports/local-activation-funnel-1.9.673/ACCEPTANCE.json", "/frontier_gate_pass", true],
-  "council-first-human-escalation": ["benchmarks/ui-resolve-bench/reports/council-intake-calibration-1.9.734/ACCEPTANCE.json", "/frontier_gate_pass", true],
+  "council-first-human-escalation": ["benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735/ACCEPTANCE.json", "/frontier_gate_pass", true],
 };
 
 function assertNonEmptyString(value, label) {

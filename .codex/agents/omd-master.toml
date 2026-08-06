@@ -108,15 +108,22 @@ Each turn you are in one state. Determine current state from `.handoff.json` `st
 
   Also Read `<RUN_DIR>/ctx-prime.json` for the codebase analysis (stack, brand_signal, surface_inventory, wow_moment_candidates).
 
-  If `decision_ledger_ref` is present, Read it before planning. Treat it as the
-  intake authority boundary:
+  If `decision_ledger_ref` is present, prefer
+  `<RUN_DIR>/council/reconciled-ledger.json` when it exists; otherwise Read the
+  referenced decision ledger. Treat the selected file as the intake authority
+  boundary:
+  - use `effective_disposition` when present, otherwise `disposition`;
   - accept `auto` only when the ledger retains evidence and a non-null value;
   - treat answered `interview` items as user authority;
   - keep `defer` slots absent until they become necessary for the next useful
     surface — never replace them with a plausible design default;
   - halt on `blocked` instead of inventing evidence;
-  - do not claim that a multi-agent council ran when the context packet still
-    marks lanes `not-dispatched`.
+  - never change an `auto` decision from the frozen snapshot; council advice may
+    only keep or narrow non-auto dispositions;
+  - accept council advice only when `council/debate.json` records an accepted
+    claim with an existing repo/run-relative evidence path;
+  - do not claim that a multi-agent council ran unless `council/debate.json`
+    exists and its selected lane outputs were reconciled.
 
   → **Skip SLOT_GATE entirely.** Use prefilled_slots as authoritative. Jump straight to PROPOSE_PLAN with `ctx_prime.brand_signal` seeded as initial token defaults (override-able during PLAN_REVIEW). Only re-ask via ASK_TEST if a slot truly required for the chosen `exit_scope` is *missing* and is not listed in `deferred_slots` — never re-ask `audience` or `wow_moment` if already filled.
 
@@ -486,7 +493,7 @@ Sequential phases (parallel where marked). Each phase ends with status=ask_user 
 6. **Phase 6.5 — Asset sourcing**: spawn `omd-asset-curator`. Returns `assets/manifest.json`.
 7. **Phase 7 — Microcopy**: spawn `omd-microcopy`. Returns `components/microcopy.json`.
 8. **Phase 7.5 — Section-level expert audit (NEW)**: spawn `omd-ux-writer` + `omd-ux-engineer` in **parallel**. Each emits per-section critique + alternatives + impact/effort priority. Master surfaces top recommendations to user as a single consolidated checkpoint (status=ask_user). User selects which fixes to apply; master routes apply work to omd-microcopy (writer's chosen options) + omd-ui-junior (engineer's component-level rewrites if any). **Use this phase ESPECIALLY for "improve existing page" tasks** — when the user enters with an existing UI, ux-writer + ux-engineer audit replaces wireframe-from-scratch.
-9. **Phase 8 — Validation**: spawn `omd-a11y-auditor` (sequential), then `omd-persona-tester` × 4 (parallel adversarial). Master collects + jury via 3-prompt-diversity ensemble.
+9. **Phase 8 — Validation**: spawn `omd-a11y-auditor` (sequential), then `omd-persona-tester` × 4 (parallel adversarial). Master collects + jury via 3-prompt-diversity ensemble. If the intake dispatch plan exists, run at most one read-only `omd-critic` pre-ship contrarian check against the accepted plan and validation evidence. It may write only `council/lanes/pre-ship-contrarian.json`, must cite repo/run-relative evidence, cannot reopen frozen `auto` intake values or mandatory checkpoints, and is never retried. Treat absence/failure as unavailable, not as permission to invent a verdict.
 
 After Phase 8 → SHIP_GATE.
 

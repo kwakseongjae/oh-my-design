@@ -20,6 +20,7 @@ function fixture(task: string, ctx: Record<string, unknown>) {
   return {
     packet: JSON.parse(readFileSync(join(run, 'council/context-packet.json'), 'utf8')),
     ledger: JSON.parse(readFileSync(join(run, 'council/decision-ledger.json'), 'utf8')),
+    dispatch: JSON.parse(readFileSync(join(run, 'council/dispatch-plan.json'), 'utf8')),
   };
 }
 
@@ -29,7 +30,7 @@ afterEach(() => {
 
 describe('design-council-prime', () => {
   it('auto-decides explicit user intent and keeps one implementation owner', () => {
-    const { packet, ledger } = fixture(
+    const { packet, ledger, dispatch } = fixture(
       '개발자용 CLI 풀 랜딩. GitHub star를 primary CTA로 사용해줘.',
       {
         surface_inventory: [{ path: 'app/page.tsx', kind: 'landing' }],
@@ -48,10 +49,16 @@ describe('design-council-prime', () => {
       proposed_value: 'GitHub star / View source', disposition: 'auto',
     });
     expect(ledger.summary.interview_required).toBe(false);
+    expect(dispatch).toMatchObject({
+      dispatch_required: false,
+      selected_lanes: [],
+      max_pre_intake_calls: 4,
+      retry_budget: 0,
+    });
   });
 
   it('escalates product decisions but never promotes a generic wow fallback', () => {
-    const { ledger } = fixture('새 서비스 화면을 디자인해줘', {
+    const { ledger, dispatch } = fixture('새 서비스 화면을 디자인해줘', {
       surface_inventory: [],
       audience_hypothesis: [
         { label: '신규 사용자', confidence: 0.6, evidence: 'surface inventory empty' },
@@ -68,5 +75,9 @@ describe('design-council-prime', () => {
       proposed_value: null, disposition: 'defer', evidence: [], confidence_basis: 'generic-default-rejected',
     });
     expect(ledger.summary).toMatchObject({ interview: 3, defer: 2, question_budget: 3 });
+    expect(dispatch.dispatch_required).toBe(true);
+    expect(dispatch.selected_lanes.length).toBeLessThanOrEqual(4);
+    expect(dispatch.selected_lanes.map((lane: { id: string }) => lane.id)).toContain('ambiguity_contrarian');
+    expect(dispatch.transition_policy.interview).not.toContain('auto');
   });
 });

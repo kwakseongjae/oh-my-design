@@ -207,6 +207,40 @@ truth다. 아래 2.5.2–2.5.3 고정 picker는 실행하지 않는다.
 intake 분류이며 multi-agent council이 실행됐다고 표현하지 않는다. helper
 누락·실패 때만 아래 legacy path를 사용한다.
 
+### 2.5.1c — Bounded advisory council (v1.9.735+)
+
+`council/dispatch-plan.json`을 읽는다. `dispatch_required: false`면 agent를
+호출하지 않고 2.5.1b의 ledger를 그대로 사용한다. `true`면 아래 계약으로
+**선택된 lane만**, **한 번**, **최대 4개** 병렬 실행한다.
+
+1. `selected_lanes`의 `role`과 `decision_ids`를 그대로 사용한다. 전체 역할을
+   관성적으로 호출하거나 선택되지 않은 쟁점을 추가하지 않는다.
+2. 각 agent는 제품 파일을 수정하지 않는 read-only 자문이다. 유일한 write
+   ownership은 `council/lanes/<lane_id>.json`이다.
+3. 출력은 `{ "lane_id": "...", "claims": [...] }`이고, 각 claim은
+   `decision_id`, `recommendation`, `reason`, `evidence`를 포함한다.
+   `evidence`는 실제 존재하는 repo/run-relative 경로여야 한다. 인용할 근거가
+   없으면 claim을 만들지 않는다.
+4. agent/role을 사용할 수 없거나 실행이 실패하면 재시도하거나 다른 모델의
+   의견을 꾸며내지 않는다. 해당 lane에
+   `{ "lane_id": "...", "status": "unavailable", "claims": [] }`를 쓰고
+   원래 disposition을 보존한다.
+5. 모든 lane 종료 뒤 council-prime과 같은 폴더의 reconciler를 한 번 실행한다:
+
+```bash
+RECONCILE_HELPER="$(dirname "$COUNCIL_HELPER")/design-council-reconcile.cjs"
+[ -f "$RECONCILE_HELPER" ] && node "$RECONCILE_HELPER" "$(pwd)" "${RUN_DIR}"
+```
+
+이후 `council/reconciled-ledger.json`을 intake authority로 사용한다. council은
+`interview ↔ defer/blocked` 범위의 자문만 할 수 있고, 이미 확정된 `auto` 값은
+snapshot hash로 동결된다. 어떤 자문도 `auto`로 승격할 수 없다. `blocked`가
+남으면 정확히 필요한 evidence/authority만 알리고 중단한다. 각 항목은
+`effective_disposition`을 우선 사용하며 없으면 원래 `disposition`을 쓴다.
+`interview`만 한
+번의 최대 4-question batch로 묻는다. 실제 `council/debate.json`이 생성되지
+않았으면 council이 실행됐다고 표현하지 않는다.
+
 ### 2.5.2 — Legacy: ctx-prime.json Read + 사용자 picker 게이트
 
 Read 툴로 `${RUN_DIR}/ctx-prime.json` 로드. 다음 필드만 사용자에게 한 줄로 brief:

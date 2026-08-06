@@ -4,17 +4,20 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.734 council intake calibration complete
+- 갱신: 2026-08-06 · 1.9.735 bounded council dispatch complete
 
 ## 지금 (현재 위치)
 
+- 1.9.735는 non-auto 결정에만 relevant lane을 최대4개·1회·retry0으로 선택하는 bounded dispatch와 reconciler를 구현했다. 모든 agent는 read-only 자문이며 `omd-master`만 구현한다.
+- claim은 실제 repo/run-relative evidence가 있어야 하며 lane 밖 결정·무인용·auto 승격은 reject된다. auto snapshot은 SHA-256으로 동결되고 변조 시 fail-close한다.
+- reconciled ledger는 original/effective disposition과 debate receipt를 함께 보존한다. council은 `interview|defer|blocked`만 keep/narrow하며 mandatory checkpoint를 다시 열 수 없다. pre-ship contrarian도 최대1회·retry0이다.
+- 설치 경로 Claude Code/Codex/OpenCode 모두 prime+reconcile helper를 받는다. 검증은 focused49/49, full788 pass/3 skip, lint/build/count green이다.
+- 다음은 Grok 4.5 동일 모델·동일 task에서 council off/on 반복 비교다. unplanned questions, decision reversal, resolved outcome, elapsed time, reported tokens를 측정하기 전까지 효과와 2.0 gate pass를 주장하지 않는다.
 - 1.9.734는 22개 synthetic brief/5 locales에서 disposition과 proposed value를 함께 교정했다. auto57, unsupported auto0, expectation failure0이며 `blocked`, regulated authority, negation, mixed surface, dual-wow, missing ctx를 포함한다.
-- 첫 교정에서 `Get started` 안의 `star`가 GitHub CTA로 오탐되는 결함을 발견·수리했다. negated signal과 marketing/product 충돌은 자동 승격하지 않으며 exact official source/product metric 부재는 typed `blocked`다.
-- Cursor Grok 4.5 High read-only review(session `724dda20-1ad3-44d0-b93b-ce0ef4e35728`)는 `ADMIT_BOUNDED_COUNCIL`을 판정했다. 단, 다음 1.9.735는 advisory-only이며 `interview|defer|blocked → auto` 승격을 금지한다.
-- 검증은 focused11/11, full786 pass/3 skip, lint/build/count green이다. 다음은 one intake council round + one pre-ship contrarian round의 bounded dispatch contract다.
+- Cursor Grok 4.5 High read-only review(session `724dda20-1ad3-44d0-b93b-ce0ef4e35728`)는 `ADMIT_BOUNDED_COUNCIL`을 판정했고 auto 승격 금지를 요구했다.
 - 2.0.0 frontier 계약은 10개 게이트다. 새 `council-first-human-escalation` 게이트는 `partial`: 에이전트가 근거를 먼저 모으고 불필요한 질문을 제거하며 사용자 권한 결정만 인터뷰하는 방향을 정식 목표에 포함했다.
 - 1.9.733 Slice A는 `design-council-prime.cjs`로 run-scoped evidence packet과 `auto|interview|defer|blocked` 결정 원장을 만든다. 명시적 사용자 의도와 근거 있는 저위험·가역 결정만 auto이며, unknown과 generic wow fallback은 비워 둔다.
-- Grok 4.5 High read-only review는 ledger-first 도입을 지지하고 즉시 6-lane fan-out은 반대했다. 따라서 여섯 자문 lane은 현재 `not-dispatched`, 구현 owner는 `omd-master` 한 명이며 plan/DESIGN.md/validation mandatory checkpoints는 유지한다.
+- Grok 4.5 High read-only review는 ledger-first 도입을 지지하고 6-lane 기본 fan-out은 반대했다. 따라서 실제 dispatch는 관련 lane 최대4개만 선택하며 plan/DESIGN.md/validation mandatory checkpoints는 유지한다.
 - 1.9.733 검증은 focused52/52, full784 pass/3 skip, lint/build/count green이었다.
 - user-owned `web/public/llms-full.txt` dirty는 이번 작업에서 건드리지 않고 보존한다.
 - 1.9.732 exact6-cell comparison은 `COMPLETE_INTERNAL_PREVIEW`다. provider calls6, retries0, replacements0; OmD는85/85×3 resolved3/3, Impeccable prompt-only는75/75/79 unresolved0/3이다.
