@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.736 council pilot preparation
+- Grok 4.5 High fresh3-case/12-lane council off/on denominator를 고정했다.
+- provider-zero에서 baseline8, authority/blocked retention green, forbidden auto0이다.
+- oracle 격리, lane별 isolated workspace, retry/replacement0과 hard-stop을 사전등록했다.
+- 다음은 checkpoint commit 뒤 새 live root exact12회 실행이다.
+
 ## 2026-08-06 (Codex) · 1.9.735 bounded council dispatch
 - relevant lane만 최대4개·1회·retry0으로 호출하는 dispatch plan과 reconciler를 구현했다.
 - cited claim만 수용하고 auto snapshot은 SHA-256으로 동결하며 master만 구현한다.
