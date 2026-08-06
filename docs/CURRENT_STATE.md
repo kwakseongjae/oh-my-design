@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `fcd2d15d`의 1.9.722 cross-task reliability admission repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.722 Reliability@3 prepared provider-zero
+- 기준 커밋: `6947cec8`의 1.9.722 Reliability@3 prepared checkpoint (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-06 · 1.9.722 Reliability@3 contract hard-stop
 
 ## 지금 (현재 위치)
 
@@ -14,7 +14,10 @@
 - 1.9.722 fresh root는 scheduled/prepared3/3, provider/model0으로 admission green이다. plan `268b98a4…`, state `aed7746c…`, source commit `fcd2d15d…`, clean skill `d76b114b…`이며 task별 prompt/starter/baseline/source-contract hash가 exact다.
 - normalization required13개는 모두 true이고 intentional task/prompt/starter/product/artifact differences는 policy상 분리 보고된다. 세 product tree는 untouched, schema0.2 debt coverage는3/3 complete다.
 - cell pass는85/85+resolved+revision1+static success1/fail0+handoff0+proof true+sealed inventory 불변, Reliability@3 pass는3/3이다. contract hard-stop이면 남은 셀을 동결한다.
-- 다음은 PREPARATION checkpoint를 commit하고 orbital 첫 셀을 `max-new-cells=1`로 실행한다. 아직 1.9.722 provider call/model exposure는0이다.
+- orbital 첫 셀은 exact1회 valid81/85, 177,191ms, 558,228 tokens다. edit/revision1·inventory 불변·responsive green이지만 static closure0/failed1·proof false·accessibility red다.
+- model은 `.decision>div`/`header>p`로 sealed exact selector를 minify했고 header rule을 `.muted`보다 앞에 둬 4.47:1 contrast debt가4 viewport에서 남았다. red closure 뒤 second edit/browser/handoff 없이 terminal stop은 지켰다.
+- prereg hard-stop에 따라 seed-vault/audio 셀은 unexecuted frozen이며 이 3 task replay/retry/replacement는 금지다. provider calls1/model exposure1, Reliability@3 pass0/3이다.
+- 다음은 provider/model0 candidate preflight를 설계해 `.omd` candidate bytes가 exact sealed CSS와 cascade-effective contrast를 통과한 뒤에만 single product edit을 허용한다. transfer는 새 task ids/bytes에서만 한다.
 - 1.9.720은 fresh fictional task3개(orbital optics, seed vault, audio archive)를 provider/model0으로 잠갔다. 도메인·palette·cardinality·identifier length·grid density가 다르며 meteorite replay가 아니다.
 - raw DESIGN.md baseline은 세 과제 모두75/85, false critical gates=`accessibility,responsive` exact다. baseline bytes hash와 debt coverage가 3/3 완전 일치한다.
 - provider-free sealed smoke3/3이 schema0.2 artifact, immutable inventory, parent containment, register/window/decision reflow, contrast obligations를 생성했다. focused6/6·lint green이며 full suite762 pass/3 skip 뒤 system-load timeout2건은 exact targeted rerun에서 모두 pass했다.

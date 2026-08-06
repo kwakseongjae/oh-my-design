@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.722 Reliability@3 hard-stop
+- orbital은 valid81/85, responsive green이나 accessibility red다.
+- edit1 뒤 static closure가 exact selector2건으로 red, proof false였다.
+- seed/audio는 prereg대로 unexecuted frozen; retry/replay/replacement0이다.
+- 다음은 candidate preflight local repair 뒤 완전히 새 tasks만 허용한다.
+
 ## 2026-08-06 (Codex) · 1.9.722 Reliability@3 prepared
 - 새 root가 cross-task reliability admission required13/13을 통과했다.
 - 세 task lock과 schema0.2 debt coverage는 exact, product tree는 untouched다.
