@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.722 cross-task admission repair
+- 1.9.721 provider-zero root는 exact-task normalization mismatch로 frozen됐다.
+- 새 policy가 task별 hash와 공통 실행·contract 축을 분리해 attestation한다.
+- positive+tamper negative 포함 focused29/29, lint green이다.
+- 동일 task/model/success 조건을 새 1.9.722 root에 preregister했다; provider0이다.
+
 ## 2026-08-06 (Codex) · 1.9.721 Reliability@3 preregistered
 - exact fresh task3개와 clean OmD skill을 Luna/high3셀로 고정했다.
 - fixed order·timeout720s·concurrency1·retry/replacement0이다.

@@ -79,6 +79,7 @@ export function auditPreparedMatrixAdmission(root) {
     return {
       id: cell.id,
       task_id: cell.task_id,
+      variant_id: cell.variant_id,
       system_id: cell.system_id,
       runtime: cell.runtime,
       model_id: cell.model_id,
@@ -95,20 +96,78 @@ export function auditPreparedMatrixAdmission(root) {
       untouched,
     };
   });
+  const normalizationPolicy = plan.control_contract?.admission_normalization_policy
+    ?? "exact-task-cross-arm";
+  const deterministicReflowContract = (sealed) => sealed && ({
+    mode: sealed.mode,
+    provider_mutable: sealed.provider_mutable,
+    failed_critical_gates: sealed.baseline_critical_gate_coverage?.failed_critical_gates,
+    covered_critical_gates: sealed.baseline_critical_gate_coverage?.covered_critical_gates,
+    coverage_complete: sealed.baseline_critical_gate_coverage?.complete,
+    attested: sealed.attested,
+  });
+  const taskLocks = new Map((plan.task_lock_contract?.tasks ?? [])
+    .map((task) => [task.task_id, task]));
+  const taskLockAttested = cells.every((cell) => {
+    const lock = taskLocks.get(cell.task_id);
+    return lock
+      && lock.prompt_sha256 === cell.task_prompt_sha256
+      && lock.starter_sha256 === cell.starter_sha256
+      && lock.baseline_evidence_sha256
+        === cell.deterministic_reflow?.baseline_critical_gate_coverage?.sha256
+      && lock.source_contract_sha256 === cell.deterministic_reflow?.source_contract_sha256;
+  });
   const equality = {
     cell_contract: true,
     task_id: allEqual(cells.map((cell) => cell.task_id)),
+    task_id_distinct: new Set(cells.map((cell) => cell.task_id)).size === cells.length,
     task_prompt_sha256: allEqual(cells.map((cell) => cell.task_prompt_sha256)),
     starter_sha256: allEqual(cells.map((cell) => cell.starter_sha256)),
     product_initial_sha256: allEqual(cells.map((cell) => cell.product_initial_sha256)),
+    variant_id: allEqual(cells.map((cell) => cell.variant_id)),
+    system_id: allEqual(cells.map((cell) => cell.system_id)),
     runtime: allEqual(cells.map((cell) => cell.runtime)),
     model_id: allEqual(cells.map((cell) => cell.model_id)),
     effort: allEqual(cells.map((cell) => cell.effort)),
     timeout_seconds: allEqual(cells.map((cell) => cell.timeout_seconds)),
+    skill_sha256: allEqual(cells.map((cell) => cell.skill_sha256)),
+    source_publishable: cells.every((cell) => cell.source_publishable === true),
     objective_evaluator: allEqual(cells.map((cell) => cell.objective_evaluator)),
     deterministic_reflow: allEqual(cells.map((cell) => cell.deterministic_reflow)),
+    deterministic_reflow_contract: allEqual(cells
+      .map((cell) => deterministicReflowContract(cell.deterministic_reflow))),
+    task_lock_attested: taskLockAttested,
   };
-  if (!Object.values(equality).every(Boolean)) {
+  const requiredNormalization = normalizationPolicy === "cross-task-reliability"
+    ? [
+      "cell_contract",
+      "task_id_distinct",
+      "variant_id",
+      "system_id",
+      "runtime",
+      "model_id",
+      "effort",
+      "timeout_seconds",
+      "skill_sha256",
+      "source_publishable",
+      "objective_evaluator",
+      "deterministic_reflow_contract",
+      "task_lock_attested",
+    ]
+    : [
+      "cell_contract",
+      "task_id",
+      "task_prompt_sha256",
+      "starter_sha256",
+      "product_initial_sha256",
+      "runtime",
+      "model_id",
+      "effort",
+      "timeout_seconds",
+      "objective_evaluator",
+      "deterministic_reflow",
+    ];
+  if (!requiredNormalization.every((field) => equality[field])) {
     throw new Error("prepared-matrix-admission:normalization-mismatch");
   }
   if (cells.some((cell) => cell.system_id !== "raw-design-md" && !cell.source_publishable)) {
@@ -132,6 +191,8 @@ export function auditPreparedMatrixAdmission(root) {
     locked_plan_sha256: sha256(readFileSync(planPath)),
     preparation_state_sha256: sha256(readFileSync(statePath)),
     objective_evaluator: objectiveEvaluator,
+    normalization_policy: normalizationPolicy,
+    required_normalization: requiredNormalization,
     normalization: equality,
     systems: [...new Set(cells.map((cell) => cell.system_id))],
     trials: [...new Set(plan.cells.map((cell) => cell.trial_index))].sort((a, b) => a - b),

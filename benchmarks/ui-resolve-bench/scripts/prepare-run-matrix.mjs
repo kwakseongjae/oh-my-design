@@ -19,6 +19,10 @@ const VALID_BENCHMARK_FAMILIES = new Set(["model", "skill", "harness", "prompt-a
 const VALID_COMPARISON_MODES = new Set(["native-capability", "iso-external-budget", "effort-scaling"]);
 const VALID_BUDGET_MODES = new Set(["hard-cap", "observed-only"]);
 const VALID_PACING_POLICIES = new Set(["none", "fixed-inter-cell"]);
+const VALID_ADMISSION_NORMALIZATION_POLICIES = new Set([
+  "exact-task-cross-arm",
+  "cross-task-reliability",
+]);
 const VALID_ATTRIBUTION_SCOPES = new Set([
   "provider-observed-only",
   "internal-registered-display-name",
@@ -77,6 +81,17 @@ export function validateControlContract(plan) {
   }
   if (!["balanced-rotation", "fixed-preregistered"].includes(control.task_order_policy)) {
     throw new Error("matrix control_contract.task_order_policy is invalid");
+  }
+  const admissionNormalizationPolicy = control.admission_normalization_policy
+    ?? "exact-task-cross-arm";
+  if (!VALID_ADMISSION_NORMALIZATION_POLICIES.has(admissionNormalizationPolicy)) {
+    throw new Error("matrix control_contract.admission_normalization_policy is invalid");
+  }
+  if (
+    admissionNormalizationPolicy === "cross-task-reliability"
+    && control.task_order_policy !== "fixed-preregistered"
+  ) {
+    throw new Error("matrix cross-task reliability requires fixed-preregistered task order");
   }
   if (control.pacing !== undefined) {
     const pacing = control.pacing;
@@ -386,6 +401,33 @@ export function validateRunMatrixPlan(plan) {
     const pairKey = `${cell.task_id}\0${cell.trial_index}\0${cell.system_id}`;
     if (pairKeys.has(pairKey)) throw new Error(`duplicate task/trial/system cell: ${pairKey.replaceAll("\0", "/")}`);
     pairKeys.add(pairKey);
+  }
+  if (plan.control_contract?.admission_normalization_policy === "cross-task-reliability") {
+    const taskIds = plan.cells.map((cell) => cell.task_id);
+    if (taskIds.length < 2 || new Set(taskIds).size !== taskIds.length) {
+      throw new Error("matrix cross-task reliability requires at least two unique tasks");
+    }
+    const lockedTasks = plan.task_lock_contract?.tasks;
+    if (!Array.isArray(lockedTasks) || lockedTasks.length !== taskIds.length) {
+      throw new Error("matrix cross-task reliability requires one task lock per cell");
+    }
+    const lockedIds = lockedTasks.map((task) => task?.task_id);
+    if (JSON.stringify(lockedIds) !== JSON.stringify(taskIds)) {
+      throw new Error("matrix cross-task reliability task locks must match fixed cell order");
+    }
+    for (const [index, task] of lockedTasks.entries()) {
+      for (const field of [
+        "task_tree_sha256",
+        "prompt_sha256",
+        "starter_sha256",
+        "baseline_evidence_sha256",
+        "source_contract_sha256",
+      ]) {
+        if (typeof task?.[field] !== "string" || !/^[a-f0-9]{64}$/.test(task[field])) {
+          throw new Error(`matrix cross-task reliability task lock ${index + 1}.${field} is invalid`);
+        }
+      }
+    }
   }
   if (plan.proof_execution_gates) {
     const targeted = plan.cells.filter((cell) => plan.proof_execution_gates.system_ids.includes(cell.system_id));

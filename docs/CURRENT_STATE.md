@@ -3,15 +3,16 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `e93e59c8`의 1.9.720 Reliability@3 task lock (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.721 Reliability@3 preregistration
+- 기준 커밋: `5eead516`의 1.9.721 Reliability@3 preregistration (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-06 · 1.9.722 cross-task reliability admission repair
 
 ## 지금 (현재 위치)
 
-- 1.9.721은 exact `e93e59c…` task bytes와 clean OmD skill `d76b114b…`를 Luna/high3셀·task당1회·retry/replacement0으로 사전등록했다. 순서는 orbital → seed vault → audio archive이며 timeout720s, concurrency1이다.
-- cell pass는85/85+resolved+revision1+static success1/fail0+handoff0+proof true+sealed inventory 불변, Reliability@3 pass는3/3이다. inventory drift·second edit·failed closure·contract proof 위반이면 남은 셀을 동결한다.
-- objective UI failure라도 lifecycle 계약이 깨지지 않으면 failure로 기록하고 다음 셀로 진행한다. 결과는 diagnostic-only이며 ranking·provider superiority·2.0 gate 승격에 단독 사용하지 않는다.
-- 다음은 preregistration checkpoint를 commit한 뒤 fresh root를 prepare/audit하고 exact egress payload를 잠근다. 아직 1.9.721 provider call/model exposure는0이다.
+- 1.9.721 provider-zero preparation은3 workspace를 만들었지만 기존 admission이 exact-task cross-arm만 지원해 intentional distinct task hash를 normalization mismatch로 차단했다. root는 frozen이며 provider/model exposure0이다.
+- 1.9.722는 `exact-task-cross-arm`과 `cross-task-reliability` admission을 명시적으로 분리한다. 후자는 task id/prompt/starter/artifact hash가 서로 다름을 허용하되 task lock exact attestation과 variant/system/runtime/model/effort/timeout/skill/evaluator/source-contract shape 동일성을 요구한다.
+- 새 policy의 positive/lock-tamper negative를 포함한 focused29/29와 lint가 green이다. 1.9.721 task/model/success bytes는 바꾸지 않고 새 experiment/root `1.9.722`로만 사전등록했다.
+- cell pass는85/85+resolved+revision1+static success1/fail0+handoff0+proof true+sealed inventory 불변, Reliability@3 pass는3/3이다. contract hard-stop이면 남은 셀을 동결한다.
+- 다음은 1.9.722 code+plan checkpoint를 commit하고 새 root를 prepare/audit한다. 아직 1.9.722 provider call/model exposure는0이다.
 - 1.9.720은 fresh fictional task3개(orbital optics, seed vault, audio archive)를 provider/model0으로 잠갔다. 도메인·palette·cardinality·identifier length·grid density가 다르며 meteorite replay가 아니다.
 - raw DESIGN.md baseline은 세 과제 모두75/85, false critical gates=`accessibility,responsive` exact다. baseline bytes hash와 debt coverage가 3/3 완전 일치한다.
 - provider-free sealed smoke3/3이 schema0.2 artifact, immutable inventory, parent containment, register/window/decision reflow, contrast obligations를 생성했다. focused6/6·lint green이며 full suite762 pass/3 skip 뒤 system-load timeout2건은 exact targeted rerun에서 모두 pass했다.

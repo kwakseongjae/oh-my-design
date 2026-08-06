@@ -115,4 +115,97 @@ describe("prepared matrix admission audit", () => {
       "prepared-matrix-admission:deterministic-reflow-debt-coverage-drift:coverage-r1",
     );
   });
+
+  it("admits locked cross-task reliability while preserving task-specific hashes", () => {
+    const root = join(mkdtempSync(join(tmpdir(), "omd-prepared-reliability-")), "matrix");
+    const reliabilityPlan = {
+      ...plan(root),
+      schema_version: "0.3",
+      suite_version: "ui-resolve-v0.2",
+      product_version: "fixture",
+      execution_purpose: "cross-task-reliability-fixture",
+      family: "skill",
+      status: "locked-diagnostic-only",
+      control_contract: {
+        comparison_mode: "native-capability",
+        effort_semantics: "runtime-native-ordinal-not-cross-provider-equivalent",
+        temperature_policy: "runtime-default-frozen",
+        timeout_seconds: 20,
+        max_concurrency: 1,
+        latency_comparison: "descriptive-only",
+        retry_policy: "none-primary",
+        timeout_policy: "count-as-valid-failure",
+        infrastructure_policy: "retain-freeze-and-repreregister",
+        task_order_policy: "fixed-preregistered",
+        admission_normalization_policy: "cross-task-reliability",
+        token_budget: {
+          mode: "observed-only",
+          limit_tokens: null,
+          usage_required: true,
+          account_components: ["input", "cached_input", "output", "reasoning_output"],
+          cached_input_separate: true,
+          cost_policy: "provider-reported-or-pinned-price-equivalent",
+        },
+        step_budget: { mode: "observed-only", limit_steps: null },
+      },
+      task_lock_contract: {
+        tasks: [
+          {
+            task_id: "orbital-optics-transfer-v0.1",
+            task_tree_sha256: "9d5c2773344b14b064275b8748d49ad4b5c7dbe527d3d1dbdad2d030d5d75fd8",
+            prompt_sha256: "579166df05a6ce574deddb63be05b20fe6e20b19dc45be7698d7832eb894f0a1",
+            starter_sha256: "9bc0699e6a21031d805b4bc0a81e5300fd0c461780b156ea7ad5672d897354d5",
+            baseline_evidence_sha256: "21deeeda8381833c071160aceaefc1e842bf02a7fe7de9833a3a7a4a5e41aea6",
+            source_contract_sha256: "3d5259f353cd2a44ea80139d7ee940d49fb26da614416f6bc0a1f52c789ccc9d",
+          },
+          {
+            task_id: "seed-vault-accession-v0.1",
+            task_tree_sha256: "a8884db39170445b429ba24892600e96d5a6e59ffa92d79defa92dbe855ac69c",
+            prompt_sha256: "61f5ddf2e9bfe5bdfcdd923e6a8218063001ee2fa445f66121da7ddc9e282922",
+            starter_sha256: "581c61546c93eaa05cb6b5cf67e22f2c76cf61c7cfc1d1703329b924dfdacea9",
+            baseline_evidence_sha256: "8b928e0f078f7ac170cc403fde3878b27953d6b84cd3d9ef87779268c69f6480",
+            source_contract_sha256: "f4c14eb9de8ed9f4a9e02c5ac92c6b3210193c841b7dfc59adb4cdb0a3fcbd6b",
+          },
+        ],
+      },
+      cells: [
+        {
+          ...plan(root).cells[0],
+          id: "orbital-r1",
+          task_id: "orbital-optics-transfer-v0.1",
+          variant_id: "omd-portable",
+          system_id: "omd-apply-current",
+        },
+        {
+          ...plan(root).cells[0],
+          id: "seed-r1",
+          task_id: "seed-vault-accession-v0.1",
+          variant_id: "omd-portable",
+          system_id: "omd-apply-current",
+        },
+      ],
+    };
+    prepareRunMatrix(reliabilityPlan);
+    const admission = auditPreparedMatrixAdmission(root);
+    expect(admission).toMatchObject({
+      status: "PREPARED_PROVIDER_ZERO",
+      normalization_policy: "cross-task-reliability",
+      normalization: {
+        task_id: false,
+        task_id_distinct: true,
+        task_lock_attested: true,
+        deterministic_reflow: false,
+        deterministic_reflow_contract: true,
+      },
+      execution_admission: { allowed: true },
+    });
+
+    const lockedPath = join(root, "RUN-MATRIX.locked.json");
+    const locked = JSON.parse(readFileSync(lockedPath, "utf8"));
+    locked.task_lock_contract.tasks[1].starter_sha256 = "0".repeat(64);
+    writeFileSync(lockedPath, JSON.stringify(locked), "utf8");
+    expect(() => auditPreparedMatrixAdmission(root)).toThrow(
+      "prepared-matrix-admission:normalization-mismatch",
+    );
+  });
 });
