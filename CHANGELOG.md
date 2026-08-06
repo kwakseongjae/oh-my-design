@@ -10,6 +10,8 @@ After any release: run `npx oh-my-design-cli@latest`, keep the detected channels
 
 **Natural-language workflow routing, one implementation owner, and same-surface verification for UI delivery.**
 
+- `npx oh-my-design-cli@latest update` now refreshes an existing installation without changing project/global scope, installed channels, Cursor rule-only mode, optional policies, or user-owned files. It refuses fresh-install and unsafe/manual-review cases, never implies `--force`, and runs a post-update doctor check.
+- The new `omd:update` skill lets users ask their coding agent to perform that same fail-closed refresh. The shipped bundle is now 21 product skills for Claude Code, Codex, and OpenCode, and 20 compatible Agent Skills for Cursor.
 - `omd workflows [task]` (alias `omd route`) now turns a rough product request into the smallest capable OmD workflow and a ready-to-paste coding-agent prompt. The command explicitly separates terminal steps (install and doctor) from agent-chat work.
 - `omd:apply`, `omd:harness`, and `omd:orchestrator` now share one work-packet contract. Specialists return evidence and advice to a single implementation owner; completion requires the real consumer route, viewport, and state to be reverified after the product edit.
 - Full-harness runs now bridge approved artifacts back into the product after checkpoint #3 instead of treating an archived run directory as delivery. The package ships portable OpenAI skill metadata for the three core workflows.

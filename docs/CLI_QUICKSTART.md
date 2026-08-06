@@ -5,7 +5,7 @@ oh-my-design gives your existing AI coding environment two things it can reuse a
 - a local catalog of 440+ real-company `DESIGN.md` references; and
 - skills and specialist roles for creating, applying, reviewing, and maintaining your own `DESIGN.md`.
 
-The CLI is the installer and health check. It does not generate a UI by itself and it does not call a separate AI service. Claude Code, Codex, and OpenCode receive OmD skills and specialist roles. Cursor 2.4+ receives 19 compatible Agent Skills, a small project bootstrap rule, and the catalog; it does not receive OmD's separately generated sub-agent definitions.
+The CLI is the installer, updater, and health check. It does not generate a UI by itself and it does not call a separate AI service. Claude Code, Codex, and OpenCode receive OmD skills and specialist roles. Cursor 2.4+ receives 20 compatible Agent Skills, a small project bootstrap rule, and the catalog; it does not receive OmD's separately generated sub-agent definitions.
 
 When you do not know what to ask next, route one sentence locally:
 
@@ -79,7 +79,7 @@ The rule's minimal contract is deliberate: `DESIGN.md` has first priority, pendi
 | Claude Code | `.claude/skills/`, `.claude/agents/`, `.claude/data/`, and managed hooks | Skills, specialist roles, local references, and natural-language activation |
 | Codex | `.agents/skills/`, `.codex/agents/`, and `.codex/data/` | Skills, embedded specialist-role definitions, and local references |
 | OpenCode | `.opencode/skills/`, `.opencode/agents/`, and `.opencode/data/` | Skills, native sub-agents, and an offline-capable local reference catalog |
-| Cursor | `.cursor/skills/`, `.cursor/rules/omd-design.mdc`, and shared references in `.claude/data/` | 19 native Agent Skills plus a small DESIGN.md bootstrap; no OmD sub-agent definitions or hooks |
+| Cursor | `.cursor/skills/`, `.cursor/rules/omd-design.mdc`, and shared references in `.claude/data/` | 20 native Agent Skills plus a small DESIGN.md bootstrap; no OmD sub-agent definitions or hooks |
 
 The interactive installer detects available channels. To select one explicitly:
 
@@ -100,6 +100,16 @@ npx oh-my-design-cli@latest doctor --global
 ```
 
 Global installation does not modify global hooks or settings. Each project still needs its own `DESIGN.md`.
+
+## Update an existing installation
+
+Run this in the same project root you originally installed into:
+
+```bash
+npx oh-my-design-cli@latest update
+```
+
+The updater preserves project/global scope, installed channels, Cursor rule-only mode, optional policies, and user-owned files. It never enables `--force`. Use `--global` only for an existing global installation, restart the coding agent after success, then run `npx oh-my-design-cli@latest doctor`.
 
 ## Optional proof-execution guard
 

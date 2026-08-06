@@ -323,7 +323,7 @@ describe('install-skills', () => {
       ).digest('hex'));
       const usage = spawnSync(process.execPath, [helper], { encoding: 'utf8' });
       expect(usage.status).toBe(2);
-      expect(usage.stderr).toContain('plan-diagnose|plan-packet|plan-apply|source-fallback-open|static-preview|static-close');
+      expect(usage.stderr).toContain('plan-diagnose|plan-packet|plan-apply|source-fallback-open|static-preview|static-promote|static-close');
     }
     expect(new Set(installedHashes).size).toBe(1);
   });
@@ -838,7 +838,7 @@ describe('install-skills', () => {
     const installedSkills = readdirSync(skillsRoot)
       .filter((skill) => existsSync(join(skillsRoot, skill, 'SKILL.md')))
       .sort();
-    expect(installedSkills).toHaveLength(19);
+    expect(installedSkills).toHaveLength(20);
     expect(installedSkills).not.toContain('claude-design');
     expect(installedSkills).toContain('omd-apply');
     const applySkill = readFileSync(join(skillsRoot, 'omd-apply', 'SKILL.md'), 'utf8');

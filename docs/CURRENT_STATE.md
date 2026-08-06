@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.731 terminal Reliability 3/3
+- 갱신: 2026-08-06 · safe `omd update` + 21st shipped skill complete
 
 ## 지금 (현재 위치)
 
+- 사용자-facing update lane이 complete다. `npx oh-my-design-cli@latest update`가 기존 project/global scope, 설치 채널, Cursor rule-only, optional policy와 user-owned files를 보존하고 `--force` 없이 managed bundle만 갱신한 뒤 doctor를 다시 실행한다.
+- `omd:update`가 21번째 shipped product skill로 추가됐다. Claude Code/Codex/OpenCode는21개, Cursor는 `claude-design`을 제외한20개를 받으며 README·5-locale docs·llms·SEO count가 같은 계약을 사용한다.
+- focused82/82, full781 pass/3 skip, lint/build/count green이다. clean Codex fixture는 install→update→doctor에서21 skills/18 roles/440 refs를 유지했고 별도 `user-owned.txt` bytes도 보존했다.
+- 다음은 이 변경을 clean commit한 뒤 1.9.732 comparative suite를 provider-zero로 사전등록하는 일이다. 1.9.731 task replay는 금지하며 fresh tasks, frozen competitor, 동일 Luna/high·runtime·effort·trial budget을 사용한다.
 - 1.9.731은 terminal `COMPLETE_RELIABILITY_PASS`다. provider/model exact3회, retry/replacement0, archaeology·paleontology·textile 모두85/85와 lifecycle 계약을 만족해 Reliability3/3이다.
 - 세 셀 모두 product revision1, static success1/fail0, proof true, sealed inventory 불변, candidate/final exact다. 총513,977ms·2,253,260 tokens(cached input2,020,608), 중앙값154,608ms·686,001 tokens다.
 - 완료 root 재개 감사는 provider 호출 전에 `not resumable: complete`로 fail-close했다. 이 결과는 deterministic promotion repair 증거이며 ranking/model·skill 우위/2.0 gate 승격에는 직접 사용하지 않는다.

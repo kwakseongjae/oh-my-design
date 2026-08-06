@@ -111,6 +111,24 @@ program
   });
 
 program
+  .command('update')
+  .description('Refresh the existing OmD installation in place, preserving its scope, channels, and user-owned files.')
+  .option('--dir <path>', 'Project root (defaults to cwd)')
+  .option('--global', 'Update the user-level installation instead of this project')
+  .option('--lang <lang>', 'Post-update guidance language (en | ko | ja | zh-CN | zh-TW)', 'en')
+  .action(async (opts: { dir?: string; global?: boolean; lang?: string }) => {
+    const { normalizeWorkflowLanguage } = await import('../src/cli/workflows.js');
+    const { runUpdate } = await import('../src/cli/update.js');
+    const lang = normalizeWorkflowLanguage(opts.lang ?? 'en');
+    if (!lang) {
+      console.error('omd update: --lang must be en, ko, ja, zh-CN, or zh-TW');
+      process.exit(1);
+    }
+    const code = await runUpdate({ dir: opts.dir, global: opts.global, lang });
+    if (code !== 0) process.exit(code);
+  });
+
+program
   .command('workflows')
   .alias('route')
   .description('Show what to ask your coding agent, or route one natural-language UI task to the smallest capable OmD workflow.')

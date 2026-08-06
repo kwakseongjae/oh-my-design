@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · safe update lane complete
+- `omd update`와 `omd:update` 21번째 skill을 구현했다.
+- 현재 scope/channel/optional mode와 user-owned files를 보존하고 force 없이 doctor까지 실행한다.
+- focused82/82, full781 pass/3 skip, lint/build/count와 clean fixture가 green이다.
+- 다음은 fresh-task frozen-competitor 1.9.732 provider-zero preregistration이다.
+
 ## 2026-08-06 (Codex) · 1.9.731 terminal Reliability 3/3
 - 세 과제 모두85/85, revision1, static1/0, proof·byte binding green이다.
 - exact provider/model3회, retry/replacement0; total2,253,260 tokens다.

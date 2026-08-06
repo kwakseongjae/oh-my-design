@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>AI 코딩 에이전트가 프로젝트의 DESIGN.md를 기준으로 일하게 하세요.</strong> 안내형 설치와 doctor, 재사용 가능한 스킬 20개, 전문 역할 18개, 품질 등급을 매긴 기업 레퍼런스 440개 이상을 함께 제공합니다. 로컬 워크플로에는 별도 API 키나 MCP 서버가 필요 없습니다.
+  <strong>AI 코딩 에이전트가 프로젝트의 DESIGN.md를 기준으로 일하게 하세요.</strong> 안내형 설치와 doctor, 재사용 가능한 스킬 21개, 전문 역할 18개, 품질 등급을 매긴 기업 레퍼런스 440개 이상을 함께 제공합니다. 로컬 워크플로에는 별도 API 키나 MCP 서버가 필요 없습니다.
 </p>
 
 <p align="center">
@@ -84,7 +84,7 @@ Cursor 2.4+는 `.cursor/skills/`에서 호환 OmD Agent Skills 19개를 읽습�
 
 ## 패키지 구성
 
-**20 스킬 · 18 서브에이전트 · 440개 이상의 품질 등급형 레퍼런스 · 활성화 hooks**가 전체 번들입니다. Cursor에는 이식 가능한 스킬 19개가 설치되며 `claude-design`, 별도 서브에이전트 정의, 활성화 hooks는 채널별로 제한됩니다.
+**21 스킬 · 18 서브에이전트 · 440개 이상의 품질 등급형 레퍼런스 · 활성화 hooks**가 전체 번들입니다. Cursor에는 이식 가능한 스킬 20개가 설치되며 `claude-design`, 별도 서브에이전트 정의, 활성화 hooks는 채널별로 제한됩니다.
 
 - **스킬** — core flow (`omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:remember` / `omd:learn` / `omd:taste` — "내 취향 보여줘" 한마디로 루프가 배운 것·대기 중·보류된 것을 한 뷰로), 라이브 캡처 + 에셋 (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), 글쓰기와 리뷰 (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), 인터페이스 품질 (`omd:feel` / `omd:slop-audit`), 그리고 터미널에서 claude.ai/design을 구동하는 단독 스킬 `claude-design`.
 - **서브에이전트** — `omd-master` + 17 스페셜리스트 (UX 리서치, UI 생성, 에셋 큐레이션, 문장 다듬기, slop 감사, a11y 감사, 페르소나 테스트, 비평, …).

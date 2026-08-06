@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>Give your coding agent a project-owned DESIGN.md workflow.</strong> Guided installer + doctor, 20 reusable skills, 18 specialist roles, and 440+ quality-graded company references. Local workflows need no separate API key or MCP server.
+  <strong>Give your coding agent a project-owned DESIGN.md workflow.</strong> Guided installer + doctor, 21 reusable skills, 18 specialist roles, and 440+ quality-graded company references. Local workflows need no separate API key or MCP server.
 </p>
 
 <p align="center">
@@ -81,21 +81,21 @@ Don't want Toss? Any brand works — `Stripe-style`, `Linear-clone B2B SaaS`, `K
 | **Claude Code** | `--agent claude-code` (default) | Full bundle — skills, 18 sub-agents, hooks, data under `.claude/` |
 | **Codex** | `--agent codex` | Skills at `.agents/skills/`, embedded sub-agent roles under `.codex/agents/`, and the local catalog under `.codex/data/` |
 | **OpenCode** | `--agent opencode` | Project: skills, native sub-agents, and catalog under `.opencode/{skills,agents,data}/`; global: the same bundle under `~/.config/opencode/{skills,agents,data}/` |
-| **Cursor** | `--agent cursor` | 19 compatible Agent Skills under `.cursor/skills/`, a small `.cursor/rules/omd-design.mdc` bootstrap, and the shared `.claude/data` catalog; no OmD sub-agent definitions or hooks |
+| **Cursor** | `--agent cursor` | 20 compatible Agent Skills under `.cursor/skills/`, a small `.cursor/rules/omd-design.mdc` bootstrap, and the shared `.claude/data` catalog; no OmD sub-agent definitions or hooks |
 
 The default install targets every detected agent. For one non-interactive channel, run `npx oh-my-design-cli@latest install-skills --agent <name> --all`.
 
 ### Cursor's supported path
 
-Cursor 2.4+ discovers the 19 compatible OmD Agent Skills from `.cursor/skills/`. Restart Cursor after installation, then ask naturally: `Set up our design system — Toss-style, for a family meal-tracking app.` Cursor can route through `omd-init`, or you can invoke `/omd-init` explicitly. The small always-on rule keeps the non-negotiable contract in scope: `DESIGN.md` first, pending `.omd/preferences.md` corrections second, framework defaults last, and unknown facts absent.
+Cursor 2.4+ discovers the 20 compatible OmD Agent Skills from `.cursor/skills/`. Restart Cursor after installation, then ask naturally: `Set up our design system — Toss-style, for a family meal-tracking app.` Cursor can route through `omd-init`, or you can invoke `/omd-init` explicitly. The small always-on rule keeps the non-negotiable contract in scope: `DESIGN.md` first, pending `.omd/preferences.md` corrections second, framework defaults last, and unknown facts absent.
 
 For older Cursor clients, `--cursor-rule-only` installs the historical rule + catalog compatibility mode without Agent Skills. OmD's separately generated specialist sub-agent definitions and hooks remain unavailable in Cursor.
 
 ## What's inside
 
-**20 skills · 18 sub-agents · 440+ quality-graded references · activation hooks** make up the full bundle. Cursor receives the 19 portable skills; `claude-design`, OmD sub-agent definitions, and activation hooks remain channel-specific.
+**21 skills · 18 sub-agents · 440+ quality-graded references · activation hooks** make up the full bundle. Cursor receives the 20 portable skills; `claude-design`, OmD sub-agent definitions, and activation hooks remain channel-specific.
 
-- **Skills** — core flow (`omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the writing and review layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), interface quality (`omd:feel` / `omd:slop-audit`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
+- **Skills** — core flow (`omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:update` / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the writing and review layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), interface quality (`omd:feel` / `omd:slop-audit`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
 - **Sub-agents** — `omd-master` + 17 specialists (UX research, UI generation, asset curation, copy humanization, slop auditing, a11y audit, persona testing, critique, …).
 - **References** — 440+ company `DESIGN.md` files with explicit evidence and quality status. Every reference is also served as raw markdown at `oh-my-design.kr/<id>/design.md`, so agents can fetch it directly.
 - **Hooks** — UserPromptSubmit / SessionStart / PostToolUse activation so the skills trigger on natural language, not just slash commands.
@@ -107,10 +107,10 @@ The old catalog MCP transport is retired. Skills and agents consume the local ca
 ## Upgrading
 
 ```bash
-npx oh-my-design-cli@latest
+npx oh-my-design-cli@latest update
 ```
 
-Idempotent. Managed files (those carrying OmD markers/hashes) are refreshed in place; files you edited are left untouched (`skipped-drift`). Run `doctor` and prefer the exact scoped repair command it prints. For stale managed Claude hooks that command includes `--repair-hooks`, which does not overwrite other unmarked files. Use `--force` only after reviewing intentional local drift. Restart your agent after re-running, then verify the refreshed bundle:
+The updater detects the current project/global scope and installed channels, then refreshes only that managed bundle. It does not add channels, enable optional hooks, or use `--force`. Files you edited remain untouched (`skipped-drift`); follow the exact scoped action when local drift needs a decision. Restart your agent after updating, then verify the refreshed bundle:
 
 ```bash
 npx oh-my-design-cli@latest doctor

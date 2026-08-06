@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>讓 AI 程式助理依照專案自己的 DESIGN.md 工作。</strong> 內含引導式安裝與 doctor、20 個可重複使用的 skills、18 個專業角色，以及 440 個以上經過品質分級的企業參考。使用本機工作流程不需要另外申請 API 金鑰或架設 MCP 伺服器。
+  <strong>讓 AI 程式助理依照專案自己的 DESIGN.md 工作。</strong> 內含引導式安裝與 doctor、21 個可重複使用的 skills、18 個專業角色，以及 440 個以上經過品質分級的企業參考。使用本機工作流程不需要另外申請 API 金鑰或架設 MCP 伺服器。
 </p>
 
 <p align="center">
@@ -80,7 +80,7 @@ Cursor 2.4+ 會從 `.cursor/skills/` 載入 19 個相容 OmD Agent Skills。安�
 
 ## 套件內容
 
-**20 個 skills · 18 個子代理角色 · 440 個以上附品質與依據狀態的參考 · 啟動 hooks** 是完整套件。Cursor 會取得 19 個可攜 skills；`claude-design`、獨立子代理定義與啟動 hooks 仍依通道而定。
+**21 個 skills · 18 個子代理角色 · 440 個以上附品質與依據狀態的參考 · 啟動 hooks** 是完整套件。Cursor 會取得 20 個可攜 skills；`claude-design`、獨立子代理定義與啟動 hooks 仍依通道而定。
 
 每個參考也以 raw markdown 形式提供於 `oh-my-design.kr/<id>/design.md`，AI 程式助理可以直接讀取。完整的 skill 與 agent 參考文件：**[oh-my-design.kr/docs/zh-tw](https://oh-my-design.kr/docs/zh-tw)**。
 

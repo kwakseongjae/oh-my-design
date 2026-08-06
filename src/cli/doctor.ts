@@ -67,6 +67,7 @@ export const REQUIRED_PRODUCT_SKILLS = [
   'omd-slop-audit',
   'omd-sync',
   'omd-taste',
+  'omd-update',
 ] as const;
 export const REQUIRED_AGENT_IDS = [
   'omd-a11y-auditor',

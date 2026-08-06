@@ -324,7 +324,7 @@ describe('omd doctor', () => {
     expect(report.channels.find((channel) => channel.id === 'cursor')).toMatchObject({
       installed: true,
       ready: true,
-      skills: 19,
+      skills: 20,
       references: 440,
       issues: [],
     });
