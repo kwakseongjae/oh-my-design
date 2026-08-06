@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.744 Luna fallback prepared
+- Luna root 2/2의 provider-zero admission이 green이다.
+- plan `3d93b9de…` / state `30972407…`, exact normalization과 on question/lane0를 잠갔다.
+- checkpoint commit 뒤 off/on exact 2회를 실행하고 채점한다.
+
 ## 2026-08-06 (Codex) · 1.9.740 maintenance defer
 - existing surface+grounded audience+single scope를 auto 없이 deterministic defer한다.
 - settled audience/scope는 council에 보내지 않아 planned calls6→4다.
