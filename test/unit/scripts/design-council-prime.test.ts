@@ -80,4 +80,20 @@ describe('design-council-prime', () => {
     expect(dispatch.selected_lanes.map((lane: { id: string }) => lane.id)).toContain('ambiguity_contrarian');
     expect(dispatch.transition_policy.interview).not.toContain('auto');
   });
+
+  it('defers settled audience and scope for repository-backed maintenance work', () => {
+    const { ledger, dispatch } = fixture('기존 CLI docs 설치 카드를 개선해줘', {
+      surface_inventory: [{ path: 'docs/getting-started.tsx', kind: 'docs' }],
+      audience_hypothesis: [{ label: '개발자', confidence: 0.88, evidence: 'product brief' }],
+      wow_moment_candidates: [{ label: 'Install flow', evidence: 'docs/getting-started.tsx' }],
+    });
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'primary-audience')).toMatchObject({
+      disposition: 'defer', proposed_value: null, confidence_basis: 'existing-surface-preservation',
+    });
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'exit-scope')).toMatchObject({
+      disposition: 'defer', proposed_value: null, confidence_basis: 'existing-surface-preservation',
+    });
+    expect(dispatch.selected_lanes.flatMap((lane: { decision_ids: string[] }) => lane.decision_ids)).not.toContain('primary-audience');
+    expect(dispatch.selected_lanes.flatMap((lane: { decision_ids: string[] }) => lane.decision_ids)).not.toContain('exit-scope');
+  });
 });

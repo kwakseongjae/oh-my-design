@@ -12,15 +12,15 @@ describe("frontier non-local execution boundary", () => {
     const report = auditFrontierExecutionBoundary(boundary, readiness, repoRoot);
     expect(report).toMatchObject({
       unresolved_gate_count: 10,
-      locally_closable_gate_ids: ["council-first-human-escalation"],
-      local_preparation_counts: { complete: 7, partial: 3 },
+      locally_closable_gate_ids: [],
+      local_preparation_counts: { complete: 8, partial: 2 },
       local_only_mode: false,
       authorized_action_classes: ["remote-model-execution"],
       active_gate_ids: ["verified-skill-lift"],
       hard_pause_required: false,
       decision: "RUN_AUTHORIZED_NON_LOCAL_GATE_EVIDENCE",
     });
-    expect(report.non_local_action_classes["remote-model-execution"]).toHaveLength(4);
+    expect(report.non_local_action_classes["remote-model-execution"]).toHaveLength(5);
     expect(report.non_local_action_classes["external-practitioner-panel"]).toEqual(["practitioner-blind-review"]);
   });
 
@@ -49,8 +49,8 @@ describe("frontier non-local execution boundary", () => {
     delete localOnly.authorized_action_classes;
     delete localOnly.active_gate_ids;
     expect(auditFrontierExecutionBoundary(localOnly, readiness, repoRoot)).toMatchObject({
-      hard_pause_required: false,
-      decision: "CONTINUE_LOCAL_GATE_WORK",
+      hard_pause_required: true,
+      decision: "PAUSE_LOCAL_PATCH_TRAIN_FOR_NON_LOCAL_EVIDENCE",
     });
   });
 });

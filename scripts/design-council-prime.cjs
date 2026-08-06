@@ -87,6 +87,13 @@ const ctaMatches = matchedSignals([
   { pattern: /(book demo|contact sales|문의|데모 예약|デモ予約|お問い合わせ|聯絡銷售|联系销售|預約示範|预约演示)/i, value: 'Book demo / Contact sales' },
 ]);
 const ctaSignal = ctaMatches.length === 1 && !ctaMatches[0].negated ? ctaMatches[0] : null;
+const existingSurfaceMaintenance = ctxAvailable && surfaces.length > 0
+  && /(existing|current|preserve|improve|update|기존|현재|개선|유지|修正|改善|既存|現有|改进|優化|优化)/i.test(task);
+const backedAudience = audiences[0]
+  && typeof audiences[0].label === 'string'
+  && typeof audiences[0].evidence === 'string'
+  && audiences[0].evidence.trim()
+  && Number(audiences[0].confidence) >= 0.75;
 
 const decisions = [];
 
@@ -97,6 +104,15 @@ decisions.push(explicitAudience
       confidence_basis: 'user-explicit',
       authority: 'user-stated', disposition: 'auto',
       reason: 'The task explicitly names the audience; no factual question is needed.',
+    })
+  : existingSurfaceMaintenance && backedAudience
+  ? decision({
+      id: 'primary-audience', slot: 'audience', proposed_value: null,
+      evidence: ['ctx-prime.json#/audience_hypothesis/0'],
+      confidence: audiences[0].confidence, impact: 'high', reversibility: 'easy',
+      confidence_basis: 'existing-surface-preservation', authority: 'product',
+      disposition: 'defer',
+      reason: 'The task improves an existing surface and repository evidence identifies its audience; preserve it without reopening product direction.',
     })
   : decision({
       id: 'primary-audience', slot: 'audience', proposed_value: audiences[0]?.label ?? null,
@@ -121,6 +137,14 @@ decisions.push(scopeSignal
       confidence_basis: 'user-explicit',
       authority: 'user-stated', disposition: 'auto',
       reason: 'The requested delivery scope is explicit in the task.',
+    })
+  : existingSurfaceMaintenance && backedAudience && surfaces.length === 1
+  ? decision({
+      id: 'exit-scope', slot: 'exit_scope', proposed_value: null,
+      evidence: ['ctx-prime.json#/surface_inventory/0'], confidence: 0.8,
+      impact: 'high', reversibility: 'easy', authority: 'product',
+      confidence_basis: 'existing-surface-preservation', disposition: 'defer',
+      reason: 'The task improves one existing surface; preserve that boundary without reopening delivery scope.',
     })
   : decision({
       id: 'exit-scope', slot: 'exit_scope', proposed_value: null,
@@ -323,6 +347,7 @@ function requestLane(laneId, decisionId) {
 
 for (const item of decisions) {
   if (item.disposition === 'auto') continue;
+  if (item.confidence_basis === 'existing-surface-preservation') continue;
   requestLane('ambiguity_contrarian', item.id);
   if (['audience', 'cta_primary', 'regulated_commitment', 'required_factual_claim'].includes(item.slot)) {
     requestLane('product_context', item.id);

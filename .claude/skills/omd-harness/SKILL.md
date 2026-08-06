@@ -209,6 +209,11 @@ truth다. 아래 2.5.2–2.5.3 고정 picker는 실행하지 않는다.
 intake 분류이며 multi-agent council이 실행됐다고 표현하지 않는다. helper
 누락·실패 때만 아래 legacy path를 사용한다.
 
+기존/current surface의 개선 작업에서 ctx-prime이 confidence 0.75 이상의
+audience evidence와 단일 surface를 함께 보유하면 audience와 scope는 값을 새로
+확정하지 않고 `defer`한다. 두 decision은 council에도 보내지 않는다. 이는 기존
+제품 방향을 보존하는 것이며 unknown을 채우거나 새 사실을 auto하는 규칙이 아니다.
+
 ### 2.5.1c — Bounded advisory council (v1.9.735+)
 
 `council/dispatch-plan.json`을 읽는다. `dispatch_required: false`면 agent를

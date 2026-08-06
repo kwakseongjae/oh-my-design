@@ -3,7 +3,7 @@
   "target_version": "2.0.0",
   "baseline_version": "1.9.0",
   "required_gate_count": 10,
-  "snapshot_patch": "1.9.739",
+  "snapshot_patch": "1.9.740",
   "claim_policy": "Promotion is allowed only when all ten gates are pass and every gate retains repository evidence.",
   "gates": [
     {
@@ -82,8 +82,8 @@
       "id": "council-first-human-escalation",
       "status": "partial",
       "requirement": "The harness investigates and debates before intake, auto-decides only evidence-backed reversible choices, and asks the user only for authority-bearing decisions while retaining a reconstructable decision ledger.",
-      "current_boundary": "The full 1.9.736 pilot reduced questions 6→0 and handoffs 3→2 safely but was expensive. The 1.9.739 fresh two-lane run completed 6/6 with safety green, questions 6→1, wall -45.1%, and reported tokens -53.6%, but exact disposition retention failed on two decisions and human handoffs stayed 3→3. Maintenance evidence must be deterministically deferred before further live repetition.",
-      "evidence_refs": ["research/harness-design/24-council-first-interview-gate.md", "scripts/design-council-prime.cjs", "scripts/design-council-reconcile.cjs", "skills/omd-harness/SKILL.md", "benchmarks/ui-resolve-bench/reports/council-first-intake-1.9.733", "benchmarks/ui-resolve-bench/reports/council-intake-calibration-1.9.734", "benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735", "benchmarks/ui-resolve-bench/reports/council-effectiveness-pilot-1.9.736", "benchmarks/ui-resolve-bench/reports/council-lane-cap-replay-1.9.738", "benchmarks/ui-resolve-bench/reports/compact-council-live-1.9.739"],
+      "current_boundary": "The full pilot was safe but expensive; the compact live run cut wall 45.1% and tokens 53.6% but did not improve handoffs. 1.9.740 now deterministically defers repository-backed audience and single-surface scope for maintenance work without auto promotion or council dispatch. Provider-zero planned calls fall 6→4 and handoffs 3→2 while five-locale calibration and safety remain green. Fresh repeated runtime remains unproven.",
+      "evidence_refs": ["research/harness-design/24-council-first-interview-gate.md", "scripts/design-council-prime.cjs", "scripts/design-council-reconcile.cjs", "skills/omd-harness/SKILL.md", "benchmarks/ui-resolve-bench/reports/council-first-intake-1.9.733", "benchmarks/ui-resolve-bench/reports/council-intake-calibration-1.9.734", "benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735", "benchmarks/ui-resolve-bench/reports/council-effectiveness-pilot-1.9.736", "benchmarks/ui-resolve-bench/reports/council-lane-cap-replay-1.9.738", "benchmarks/ui-resolve-bench/reports/compact-council-live-1.9.739", "benchmarks/ui-resolve-bench/reports/maintenance-defer-1.9.740"],
       "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735/ACCEPTANCE.json", "pointer": "/frontier_gate_pass", "equals": true}
     }
   ]

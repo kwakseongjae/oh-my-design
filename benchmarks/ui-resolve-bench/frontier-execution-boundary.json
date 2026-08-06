@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "snapshot_patch": "1.9.739",
+  "snapshot_patch": "1.9.740",
   "local_only_mode": false,
   "authorized_action_classes": ["remote-model-execution"],
   "active_gate_ids": ["verified-skill-lift"],
@@ -22,7 +22,7 @@
     {"id": "independent-task-audit", "next_action_class": "external-independent-audit", "local_preparation": "complete", "required_input": "Have an independent auditor sample tasks and estimate the broken or ambiguous rate."},
     {"id": "activation-and-seven-day-reuse", "next_action_class": "production-observation", "local_preparation": "complete", "required_input": "Observe real install-to-resolved-surface and seven-day behavioral reuse against 1.9.0."},
     {"id": "routing-ownership-reverify", "next_action_class": "remote-model-execution", "local_preparation": "complete", "required_input": "Repeat the routing, single-owner edit, and same-route reverify contract with real model runtimes."},
-    {"id": "council-first-human-escalation", "next_action_class": "local-implementation", "local_preparation": "partial", "required_input": "Deterministically defer repository-backed audience and single-surface scope for existing-surface maintenance tasks, excluding those settled decisions from council dispatch."}
+    {"id": "council-first-human-escalation", "next_action_class": "remote-model-execution", "local_preparation": "complete", "required_input": "Confirm the four-call maintenance-aware compact policy on fresh repeated tasks, then measure full task completion quality and exact-route verification rather than intake alone."}
   ],
   "hard_pause_policy": "When every unresolved gate requires non-local evidence, stop creating local patches and request only the smallest missing authority or resource."
 }

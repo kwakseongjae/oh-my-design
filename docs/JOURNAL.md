@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.740 maintenance defer
+- existing surface+grounded audience+single scope를 auto 없이 deterministic defer한다.
+- settled audience/scope는 council에 보내지 않아 planned calls6→4다.
+- provider-zero questions2/handoffs2, safety와 5-locale calibration green이다.
+- 다음은 fresh product-task full completion + exact-route evidence다.
+
 ## 2026-08-06 (Codex) · 1.9.739 compact council live
 - fresh Grok6/6, retry0; questions6→1, wall-45.1%, tokens-53.6%다.
 - safety green이나 disposition2개 불일치, human handoff3→3이라 retention fail이다.
