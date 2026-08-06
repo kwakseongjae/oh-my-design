@@ -10,8 +10,9 @@ const v2BaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1
 const v3BaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1.9.727-v3";
 const v4BaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1.9.730-v4";
 const v5BaselineRoot = "/private/tmp/omd-frontier-comparison-baselines-1.9.732-v5";
+const v6BaselineRoot = "/private/tmp/omd-council-product-baselines-1.9.742-v6";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
-const taskSet = process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -174,7 +175,16 @@ const v5Cases = [
   },
 ];
 
-const cases = taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v6Cases = [
+  {
+    id: "oceanographic-cast-custody-v0.1", title: "Oceanographic cast custody review", eyebrow: "Ocean survey · cast custody", heading: "Water-column cast custody review", recordHeading: "Cast register", recordSummary: "Five supplied cast groups mapped to seven sample carriers.",
+    records: [["CAST-ABY-1842",["CARRIER-86120","CARRIER-86121"]],["CAST-SHL-1967",["CARRIER-86122"]],["CAST-TRM-2084",["CARRIER-86123","CARRIER-86124"]],["CAST-RDG-2195",["CARRIER-86125"]],["CAST-BSN-2278",["CARRIER-86126"]]],
+    windows: [["LAB-W2","07:40–08:00"],["LAB-C5","10:25–10:45"],["LAB-E1","13:35–13:55"],["LAB-G4","16:10–16:30"]], views: [["casts","Cast register"],["windows","Lab windows"],["decision","Custody decision"]], toggle: "Include sensor-log note", fieldLabel: "Custody reviewer", validValue: "CAST-ABY-1842 custody review", target: "CAST-ABY-1842 + CARRIER-86120", evidence: "5 cast groups · 7 sample carriers · 4 lab windows", state: "Review open", action: "Open custody record", footer: "Ocean survey · supplied custody evidence only",
+    unknowns: ["sensor verified","sample complete","depth calibrated","station provenance validated","carrier seal verified","lab accepted","catalog published","custody approved"], palette: {canvas:"#EDF3F4",surface:"#FCFEFF",ink:"#173039",muted:"#69757A",border:"#98AAB1",primary:"#1D6073",accent:"#76586B"}, columns: "repeat(3,286px)", windowColumns: "repeat(4,221px)", decisionMin: "572px", cardRadius: 4, domain: "oceanographic cast-custody ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -261,7 +271,9 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v5"
+  const baselineRoot = taskSet === "v6"
+    ? v6BaselineRoot
+    : taskSet === "v5"
     ? v5BaselineRoot
     : taskSet === "v4"
     ? v4BaselineRoot

@@ -1107,6 +1107,25 @@
       "eligible_tracks": ["creation", "landing-redesign", "repair", "evidence-unknown"],
       "activation": "Use the installed $omd:apply skill for this task."
     },
+    "omd-portable-council-gate": {
+      "label": "oh-my-design apply skill with maintenance-aware council gate",
+      "kind": "local-skill",
+      "source_path": "skills/omd-apply",
+      "install_adapter": "omd-channel-name-v1",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "omd-apply",
+      "declared_name": "omd:apply",
+      "license": "MIT",
+      "eligible_tracks": [
+        "creation",
+        "landing-redesign",
+        "repair",
+        "evidence-unknown"
+      ],
+      "council_intake_mode": "prime-only-no-dispatch",
+      "activation": "Use the installed $omd:apply skill for this task. Read .omd/run/council/decision-ledger.json before working. Preserve typed defer decisions without inventing values or asking questions. The prepared dispatch plan requires no model lane; do not simulate a council or contact the user."
+    },
     "omd-locale-handoff": {
       "label": "oh-my-design locale handoff",
       "kind": "locale-skill-stack",

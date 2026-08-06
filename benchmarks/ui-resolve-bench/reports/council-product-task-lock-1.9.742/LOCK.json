@@ -1,0 +1,17 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-product-task-lock-1.9.742",
+  "status": "PROVIDER_ZERO_TASK_LOCKED",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "task_id": "oceanographic-cast-custody-v0.1",
+  "task_tree_sha256": "12a5ad0d950d6248808d0001159e0356caa820a234d996b32bb41aabb2c2a582",
+  "prompt_sha256": "6337aaddbe63c85cdddb3fcb497dfb2a1b60d7032a9b3993ed727b8014a13f1d",
+  "starter_sha256": "e0cdd30b5fd9579b8a1759a5af87e0ba4dcb818cb57b657313901e885768099e",
+  "baseline_evidence_sha256": "557c87bbf1038d4a8b92c0c4b977037897e6b6afd64975ed0f41408fd0c89746",
+  "source_contract_sha256": "67254617e3b433301146e76f81299c67be5bf315285aa55ae4c28e4d90766135",
+  "raw_objective_score": 75,
+  "raw_objective_max": 85,
+  "raw_red_gates": ["accessibility", "responsive"],
+  "frontier_gate_pass": false
+}

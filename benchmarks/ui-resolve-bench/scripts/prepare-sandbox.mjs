@@ -396,6 +396,48 @@ const activation = activationDelta ? `\n\n## Variant activation\n\n${activationD
 const prompt = `${promptSource}${activation}\n`;
 mkdirSync(join(out, ".benchmark"), { recursive: true });
 writeFileSync(join(out, ".benchmark", "PROMPT.md"), prompt, "utf8");
+
+let councilIntake = null;
+if (variant.council_intake_mode !== undefined) {
+  if (variant.council_intake_mode !== "prime-only-no-dispatch") {
+    throw new Error(`${variantId} has an unsupported council_intake_mode`);
+  }
+  const runDir = join(out, ".omd/run");
+  mkdirSync(runDir, { recursive: true });
+  writeFileSync(join(runDir, "task.md"), `# Harness Task\n\n${promptSource}\n\n---\n- benchmark: true\n`, "utf8");
+  const designPath = join(out, "DESIGN.md");
+  if (existsSync(designPath)) {
+    writeFileSync(join(runDir, "product-brief.md"), readFileSync(designPath), "utf8");
+  }
+  execFileSync(process.execPath, [join(repoRoot, "scripts/ctx-prime.cjs"), out, runDir], {
+    cwd: out,
+    stdio: "pipe",
+  });
+  execFileSync(process.execPath, [join(repoRoot, "scripts/design-council-prime.cjs"), out, runDir], {
+    cwd: out,
+    stdio: "pipe",
+  });
+  const ledgerPath = join(runDir, "council/decision-ledger.json");
+  const planPath = join(runDir, "council/dispatch-plan.json");
+  const ledger = readJson(ledgerPath);
+  const plan = readJson(planPath);
+  if (plan.dispatch_required !== false || plan.selected_lanes.length !== 0) {
+    throw new Error(`${variantId} prime-only preparation requires a zero-dispatch task`);
+  }
+  councilIntake = {
+    mode: variant.council_intake_mode,
+    ledger_path: relative(out, ledgerPath),
+    ledger_sha256: sha256(readFileSync(ledgerPath)),
+    dispatch_plan_path: relative(out, planPath),
+    dispatch_plan_sha256: sha256(readFileSync(planPath)),
+    question_count: ledger.summary.interview,
+    deferred_decisions: ledger.decisions
+      .filter((item) => item.disposition === "defer")
+      .map((item) => item.id),
+    model_lane_calls: 0,
+    provider_mutable: false,
+  };
+}
 const instructionFile = runtime === "claude-code" ? "CLAUDE.md" : "AGENTS.md";
 writeFileSync(join(out, instructionFile), [
   "# UI-Resolve Bench sandbox",
@@ -452,8 +494,9 @@ const manifest = {
     },
   },
   skill,
-  agents,
-  deterministic_reflow: deterministicReflow,
+    agents,
+    council_intake: councilIntake,
+    deterministic_reflow: deterministicReflow,
   workspace: {
     name: basename(out),
     initial_sha256: initialTree.sha256,

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.741 static-surface maintenance intake complete
+- 갱신: 2026-08-06 · 1.9.742 fresh council product task locked
 
 ## 지금 (현재 위치)
+
+- 1.9.742는 provider/model 미노출 fresh `oceanographic-cast-custody-v0.1` task를 잠갔다. raw baseline75/85이며 responsive+accessibility만 red다.
+- 같은 Grok 4.5 High에서 current apply와 zero-dispatch maintenance ledger apply를 2-cell/no-retry로 비교할 준비가 됐다. task/starter/source contract는 exact hash로 고정됐다.
+- 다음 1.9.743은 clean commit에서 paired provider-zero preparation/admission을 만든 뒤 두 셀을 순차 실행하고 objective/exact-route/evidence/wall/token을 채점한다.
 
 - 1.9.741은 root `index.html`을 실제 surface inventory에 포함하고, 기존 surface 개선에서 action 변경 요청이 없으면 primary CTA도 값을 만들지 않는 typed defer로 보존한다.
 - provider-zero meteorite probe는 questions3→0, planned council calls2→0이다. audience/scope/CTA는 모두 absent defer이고 forbidden auto0이다.

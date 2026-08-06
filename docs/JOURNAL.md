@@ -5314,3 +5314,7 @@
 - root `index.html`을 surface로 인식하고 기존 action contract를 typed defer로 보존했다.
 - provider-zero probe는 questions3→0, planned lanes2→0, forbidden auto0이다.
 - focused49/49와 lint가 green이며 다음은 fresh council off/on full product task다.
+# 2026-08-06 — 1.9.742 fresh council product task lock
+- oceanographic cast-custody fresh task를 provider/model0으로 고정했다.
+- raw baseline75/85, red는 responsive+accessibility exact다.
+- 다음은 Grok4.5 High council off/on 2-cell no-retry preparation과 실행이다.
