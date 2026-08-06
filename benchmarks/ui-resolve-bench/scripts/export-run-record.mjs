@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { existsSync, readFileSync } from "node:fs";
-import { basename, join, resolve } from "node:path";
+import { basename, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, sha256, writeJson } from "./_lib.mjs";
 import { summarizeClaudeToolErrors } from "./check-claude-runner.mjs";
@@ -100,11 +100,18 @@ export function summarizeTokenUsage(run) {
 }
 
 export function inspectCandidatePreflight(workspace, reflowArtifact) {
+  const workspaceRoot = resolve(workspace);
   const required = reflowArtifact?.source_contract?.state === "provider-sealed";
-  const receiptPath = join(workspace, ".omd", "static-preview-receipt.json");
-  const productPath = reflowArtifact?.static_closure_manifest?.product_path
-    ? resolve(reflowArtifact.static_closure_manifest.product_path)
+  const receiptPath = join(workspaceRoot, ".omd", "static-preview-receipt.json");
+  const productCandidate = reflowArtifact?.static_closure_manifest?.product_path
+    ? resolve(workspaceRoot, reflowArtifact.static_closure_manifest.product_path)
     : null;
+  const productRelative = productCandidate ? relative(workspaceRoot, productCandidate) : null;
+  const productPath = productRelative
+    && productRelative !== ".."
+    && !productRelative.startsWith(`..${sep}`)
+      ? productCandidate
+      : null;
   const receipt = existsSync(receiptPath) ? readJson(receiptPath) : null;
   const productPresent = Boolean(productPath && existsSync(productPath));
   const finalProductSha256 = productPresent ? sha256(readFileSync(productPath)) : null;

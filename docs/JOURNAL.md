@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.725 infrastructure freeze / 1.9.726 repair
+- benthic는85/85·revision1·closure1·proof true·candidate/final exact match였다.
+- relative product path를 repo cwd에서 읽은 exporter가 false mismatch를 냈다.
+- root는 invalid-infrastructure로 동결; 뒤2셀은 unexposed 상태다.
+- path를 workspace-bound로 고쳤고 focused37/37·lint green이다.
+
 ## 2026-08-06 (Codex) · 1.9.725 provider-zero admission
 - fresh root를 prepared3/3, provider/model0으로 만들었다.
 - normalization13/13, task locks, schema0.2 coverage, untouched products가 green이다.

@@ -4,13 +4,17 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.725 Reliability@3 provider-zero admission
+- 갱신: 2026-08-06 · 1.9.725 first-cell infrastructure freeze / 1.9.726 repair
 
 ## 지금 (현재 위치)
 
+- 1.9.725 benthic 첫 셀은 provider exact1회로 valid85/85, resolved=true, 270,341ms, 1,271,410 tokens(cached input1,099,520)을 만들었다. revision1, static success1/fail0, browser recovery0, proof compliance true다.
+- passed receipt candidate hash와 실제 final `index.html` hash는 둘 다 `4ec448fe…`로 exact match다. 그러나 exporter가 artifact의 relative `product_path`를 cell workspace가 아닌 repo cwd에서 해석해 product absent/byte mismatch를 잘못 기록했다.
+- prereg hard-stop대로 1.9.725 root는 infrastructure-invalid로 동결했다. benthic replay/retry/replacement는 금지하고 conservation/wind는 provider/model0 unexposed 상태로 보존한다. Reliability pass는0/3이며 ranking/2.0 gate에 반영하지 않는다.
+- 1.9.726 local repair는 relative product path를 cell workspace 안에서만 resolve하고 workspace escape를 거부한다. focused37/37·lint green이다. 다음은 repair commit 뒤 conservation+wind+fresh task1개를 새 provider-zero Reliability@3으로 잠그는 단계다.
 - 1.9.725 fresh root는 scheduled/prepared3/3, provider calls0/model exposures0으로 admission green이다. plan `2ed014dd…`, state `8fb75a14…`, exact skill origin `73716105…`/hash `4f02726f…`이며 execution artifact는 전부 absent다.
 - required normalization13/13이 true다. task별 prompt/starter/product/artifact/source-contract 차이는 의도적으로 분리되고, task lock·schema0.2 debt coverage·provider_mutable=false·untouched product는3/3 exact다.
-- 다음은 PREPARATION checkpoint를 clean commit한 뒤 fixed order의 첫 benthic 셀만 `max-new-cells=1`로 실행하는 단계다. 결과가 candidate receipt/lifecycle hard-stop을 건드리면 conservation/wind는 unexecuted frozen된다.
+- PREPARATION checkpoint 뒤 benthic 셀은 exact1회 실행됐고 controller instrumentation hard-stop으로 terminal frozen됐다.
 - 1.9.725는 fresh 1.9.724 task3개를 benthic→conservation→wind 순서로 고정하고 Codex/Luna/high, timeout720s, concurrency1, retry/replacement0으로 사전등록했다. 아직 provider/model exposure0이다.
 - cell success는85/85+resolved+revision1+static success1/fail0+handoff0+proof true+inventory 불변에 더해 passed candidate receipt와 candidate/final exact-byte equality를 요구한다. receipt 부재/실패, source-contract·inventory mismatch, final byte mismatch는 남은 셀 hard-stop이다.
 - exporter가 provider-sealed receipt와 최종 product hash를 독립 대조하고 matrix runner가 사전등록 조건을 실제 실행 게이트로 강제한다. focused54/54·lint green이다.

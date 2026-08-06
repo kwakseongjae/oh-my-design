@@ -78,7 +78,7 @@ describe("UI-Resolve normalized run exporter", () => {
     expect(inspectCandidatePreflight(workspace, {
       source_contract: { state: "provider-sealed", sha256: "source-sha" },
       inventory: { sha256: "inventory-sha" },
-      static_closure_manifest: { product_path: productPath },
+      static_closure_manifest: { product_path: "index.html" },
     })).toMatchObject({
       required: true,
       receipt_present: true,
