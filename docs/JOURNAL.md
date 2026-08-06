@@ -5330,3 +5330,7 @@
 - off 셀은 Cursor Grok usage limit으로 7.46s/exit1, product/workspace change0이다.
 - on 셀은 provider/model0 상태로 controller가 동결했고 retry/replacement0이다.
 - 다음은 새 1.9.744 root에서 Codex/Luna/high fallback 비교다.
+# 2026-08-06 — 1.9.744 Luna fallback comparison preregistered
+- frozen Grok root와 분리한 Codex/Luna/high off/on 2-cell plan을 만들었다.
+- prior Grok prompt1/output0/change0, prior Luna0을 명시했다.
+- 다음은 provider-zero admission 후 Luna exact2회 실행이다.

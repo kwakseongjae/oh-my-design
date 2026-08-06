@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.743 Grok product comparison frozen
+- 갱신: 2026-08-06 · 1.9.744 Luna fallback comparison preregistered
 
 ## 지금 (현재 위치)
+
+- 1.9.744는 frozen Grok root를 건드리지 않고 새 root에서 Codex/Luna/high council off/on 2-cell fallback을 잠갔다.
+- task prior Grok prompt exposure1/output0/product change0, prior Luna exposure0을 공개한다. 나머지 task/skill/runtime/effort/proof 조건은 arms 간 exact다.
+- 다음은 provider-zero preparation/admission과 checkpoint commit 뒤 Luna 두 셀을 exact1회씩 실행하는 일이다.
 
 - 1.9.743 Grok off 셀은 7.46s 뒤 Cursor usage limit으로 process exit1이다. product/workspace change0, usage/final/objective0이며 retry/replacement0이다.
 - prereg controller가 on 셀을 provider 전 동결했다. 이 root는 재개하지 않으며 council/model/2.0 evidence가 아니다.
