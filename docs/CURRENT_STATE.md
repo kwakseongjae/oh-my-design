@@ -4,10 +4,16 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.732 paired comparison provider-zero admission green
+- 갱신: 2026-08-06 · 1.9.732 fresh paired comparison complete
 
 ## 지금 (현재 위치)
 
+- 1.9.732 exact6-cell comparison은 `COMPLETE_INTERNAL_PREVIEW`다. provider calls6, retries0, replacements0; OmD는85/85×3 resolved3/3, Impeccable prompt-only는75/75/79 unresolved0/3이다.
+- paired objective W/T/L은 OmD3/0/0(+10,+10,+6)이다. OmD total2,035,476 tokens/604,932ms, Impeccable1,825,904 tokens/798,003ms다. OmD가 total tokens11.5% 더 썼지만 total wall time24.2% 낮았다; median은 OmD가 더 무겁다.
+- OmD는 revision1/1/1, proof3/3, candidate/final exact3/3이다. Impeccable proof는1/3이나 이는 native helper 차이라 공통 UI 우위 근거와 분리한다.
+- 결과는 Internal Preview만 허용한다. industry-best/model superiority/public leaderboard/2.0 gate 주장은 금지하며 runtime의 provider-reported model identity가 없어 public model attribution도 금지다.
+- 보고서는 `benchmarks/ui-resolve-bench/reports/fresh-frontier-skill-comparison-1.9.732/RESULTS.md`와 `RESULTS.json`이다. 다음 evidence step은 더 큰 task set+independent visual preference+추가 frontier skill arm이다.
+- terminal verification은 full782 pass/3 skip, lint/build/count green이다.
 - 1.9.732 paired6-cell matrix가 `/private/tmp/omd-fresh-frontier-comparison-1.9.732-v2`에 provider-zero prepared6/6, model exposure0, execution artifacts absent로 admission green이다. locked plan `4126ab5a…`, state `10dcc6d5…`다.
 - benchmark admission에 `paired-cross-task-comparison`을 추가했다. 각 task 내부 prompt/starter/product/model/runtime/effort/timeout equality와 모든 task의 동일 arm set, frozen task locks를 함께 검사한다; focused238 pass/2 skip이다.
 - 첫 `/private/tmp/omd-fresh-frontier-comparison-1.9.732` root는 기존 exact-task 감사가 새 paired 설계를 거부한 provider-zero 준비 흔적이며 실행 금지·보존한다. 실제 실행 대상은 `-v2`뿐이다.

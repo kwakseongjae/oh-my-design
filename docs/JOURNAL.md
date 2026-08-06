@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.732 paired comparison complete
+- exact6 calls, retry/replacement0; OmD85×3 resolved3/3, Impeccable75/75/79 resolved0/3이다.
+- paired W/T/L3/0/0; OmD total2.04M tokens/604.9s, Impeccable1.83M/798.0s다.
+- OmD revision1×3, proof3/3, candidate/final exact3/3이다.
+- Internal Preview only; public model/industry-best/2.0 gate claims는 금지다.
+
 ## 2026-08-06 (Codex) · 1.9.732 paired admission green
 - paired-cross-task normalization을 구현해 task별 동일 조건과 동일 arm set을 검증한다.
 - exact OmD/Impeccable × fresh3 tasks =6 cells가 provider-zero prepared/admitted됐다.
