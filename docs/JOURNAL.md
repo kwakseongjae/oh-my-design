@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.748 user-requested pause
+- manuscript는 provider 노출+candidate 작성 뒤 중단됐고 결과 파일은 없다.
+- 관련 실행기/provider/전용 Chrome을 종료하고 root·stale lease를 증거로 동결했다.
+- 재개는 1.9.749 새 root에서 미노출2+fresh1로 시작한다. manuscript replay는 금지한다.
+
 ## 2026-08-06 (Codex) · 1.9.748 prepared
 - provider-zero3/3 admission과 exact effective skill lock이 green이다.
 - 동일 sandbox에서 `omd1748` browser+Codex auth runtime preflight도 green이다.

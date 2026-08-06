@@ -3,10 +3,14 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.748 provider-zero + runtime preflight green
+- 기준 커밋: `fa18d12d`의 1.9.748 isolated-browser admission (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-06 · 1.9.748 사용자 요청 중단 및 재개 지점 동결
 
 ## 지금 (현재 위치)
+
+- 사용자 요청으로 1.9.748 첫 manuscript 셀을 중단했다. 모델은 노출됐고 candidate까지 작성했지만 `run-result.json`은 없으며 objective/proof 결과도 없다. 실행기·provider·전용 Chrome 프로세스는 모두 종료됐다.
+- retry/replacement0 계약상 같은 root/셀을 재실행할 수 없다. stale lease와 불완전 execution-state는 변조하지 않고 증거로 보존했으며 `reports/isolated-browser-reliability-canary-1.9.748/PAUSE.json`이 정확한 해시와 상태를 기록한다.
+- 재개 시 1.9.748은 영구 동결한다. 1.9.749에서 미노출 geology+herbarium과 새 provider-zero task 1개를 잠그고, 새 isolated named browser/root를 만든 뒤 provider-zero admission부터 반복한다. manuscript는 이 evidence series에서 replay하지 않는다.
 
 - 1.9.748 root는 prepared3/3, provider/model0, execution artifacts0이며 task/effective skill/source/evaluator admission이 green이다. plan `7c1de6f4…`, state `196d4d9f…`다.
 - 동일 Codex sandbox 경로의 runtime preflight도 exact `omd1748` browser-harness connection ready + isolated Codex auth ready다. council intake는 questions0/model lanes0/provider mutable false다.
