@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.728 Reliability@3 provider-zero admission
+- 갱신: 2026-08-06 · 1.9.728 Reliability@3 checkpoint 1/3
 
 ## 지금 (현재 위치)
 
+- 1.9.728 conservation 첫 셀은 exact1회에 valid85/85, resolved=true, revision1, static success1/fail0, proof compliance true, candidate/final exact match로 Reliability pass다. 293,929ms, 800,851 tokens(cached input711,168)이며 retry/replacement는0이다.
+- model의 별도 browser-harness 후검증 명령은 실패했지만 recovery/retry는 없고, 독립 objective evaluator·sealed static closure·candidate preflight는 모두 green이다. 사전등록 lifecycle 계약상 유효하며 checkpoint1/3으로 고정한다.
+- 다음은 CHECKPOINT-1 commit 뒤 wind 셀만 `max-new-cells=1`로 실행한다. conservation은 다시 실행하지 않는다.
 - 1.9.728 fresh root는 scheduled/prepared3/3, provider calls0/model exposures0, execution artifacts absent로 admission green이다. plan `4a975162…`, state `f20b4273…`, exact skill origin `73716105…`/hash `4f02726f…`다.
 - normalization required13/13, task-lock attestation, schema0.2 debt coverage, provider_mutable=false, untouched product가3/3 exact다. 다음은 PREPARATION checkpoint commit 뒤 conservation 첫 셀만 `max-new-cells=1`로 실행한다.
 - 1.9.728은 conservation→wind→archaeology fixed order, exact task hashes, clean 1.9.723 skill, Codex/Luna/high, timeout720s, concurrency1, retry/replacement0을 사전등록했다. provider/model exposure는 아직0이다.

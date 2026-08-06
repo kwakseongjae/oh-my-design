@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.728 Reliability checkpoint 1/3
+- conservation은 exact1회 85/85, revision1, static1/0, proof·candidate binding green이다.
+- 293,929ms, 800,851 tokens(cached711,168), retry/replacement0이다.
+- 모델의 후속 browser command 실패는 독립 gate 결과를 바꾸지 않았다.
+- CHECKPOINT-1 commit 뒤 wind 셀만 실행한다.
+
 ## 2026-08-06 (Codex) · 1.9.728 provider-zero admission
 - fresh root는 prepared3/3, provider/model0, execution artifacts absent다.
 - normalization13/13과 task/source/skill locks가 green이다.
