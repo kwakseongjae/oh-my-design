@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.731 Reliability checkpoint 1/3
+- archaeology는 exact1회85/85, revision1, static1/0, proof·byte binding green이다.
+- 148,128ms, 686,001 tokens(cached619,008), retry/replacement0이다.
+- static-promote가 retyping·second edit 없이 후보 bytes를 승격했다.
+- CHECKPOINT-1 commit 뒤 paleontology 셀만 실행한다.
+
 ## 2026-08-06 (Codex) · 1.9.731 provider-zero admission
 - fresh root는 prepared3/3, provider/model0, execution artifact absent다.
 - normalization13/13과 task/source/skill/debt locks가 green이다.
