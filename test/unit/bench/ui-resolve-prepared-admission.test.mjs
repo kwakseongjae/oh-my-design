@@ -82,4 +82,37 @@ describe("prepared matrix admission audit", () => {
       "prepared-matrix-admission:deterministic-reflow-artifact-drift:sealed-r1",
     );
   });
+
+  it("attests schema 0.2 baseline gate coverage and rejects coverage drift", () => {
+    const root = join(mkdtempSync(join(tmpdir(), "omd-prepared-debt-coverage-")), "matrix");
+    const sealedPlan = plan(root);
+    sealedPlan.status = "locked-diagnostic-only";
+    sealedPlan.cells[0] = {
+      ...sealedPlan.cells[0],
+      id: "coverage-r1",
+      task_id: "meteorite-section-loan-v0.1",
+      variant_id: "omd-portable",
+      system_id: "omd-apply-current",
+    };
+    prepareRunMatrix(sealedPlan);
+    const admission = auditPreparedMatrixAdmission(root);
+    expect(admission.cells[0].deterministic_reflow).toMatchObject({
+      mode: "provider-sealed-source-contract",
+      provider_mutable: false,
+      baseline_critical_gate_coverage: {
+        failed_critical_gates: ["accessibility", "responsive"],
+        covered_critical_gates: ["accessibility", "responsive"],
+        complete: true,
+      },
+      attested: true,
+    });
+
+    const manifestPath = join(root, "coverage-r1/.benchmark/manifest.json");
+    const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+    manifest.deterministic_reflow.baseline_critical_gate_coverage.covered_critical_gates = ["responsive"];
+    writeFileSync(manifestPath, JSON.stringify(manifest), "utf8");
+    expect(() => auditPreparedMatrixAdmission(root)).toThrow(
+      "prepared-matrix-admission:deterministic-reflow-debt-coverage-drift:coverage-r1",
+    );
+  });
 });
