@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `c14bb953` 1.9.719 meteorite canary preregistration (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.719 source-contract0.2 prepared-provider-zero admission 완료
+- 갱신: 2026-08-06 · 1.9.719 prepared-provider-zero, 새 payload 명시 승인 대기
 
 ## 지금 (현재 위치)
 
@@ -17,6 +17,8 @@
 - 1.9.718 신규 `meteorite-section-loan-v0.1`은 provider0/model0, raw75/85이며 accessibility+responsive만 red다. sealed packet은 register/return/decision/parent containment/contrast 6개 CSS 의무를 모두 포함한다.
 - 1.9.719 Luna/high1셀은 fresh root에 prepared됐다. plan `5c1a912c…`, state `098f9afd…`, artifact `fa050f35…`, source contract `2532fd02…`, inventory `1f14673d…`, baseline evidence `bfd2d4e7…`이며 failed=covered=`accessibility,responsive`, admission allowed, provider/model0이다.
 - 다음은 PREPARATION checkpoint commit 뒤 단일 execution만 허용한다. retry/replacement/same-task replay/ranking/2.0 promotion은 금지다.
+- 1.9.719 execution 명령은 provider 호출 전에 외부 egress 정책 게이트에서 거부됐다. 이전 1.9.716 명시 승인은 이 새 payload에 적용되지 않는다고 판정됐으며, 우회·간접 실행·재시도는 금지다. root/product/artifact는 untouched이고 provider/model exposure0이다.
+- 재개에는 1.9.719 cell의 `index.html`, `DESIGN.md`, `.benchmark/PROMPT.md`/metadata, `AGENTS.md`, `.agents/skills/omd-apply/**`, provider-sealed `.omd/reflow-closure.json`을 `gpt-5.6-luna` high에 1회 전송·실행한다는 사용자의 새 명시 승인이 필요하다.
 - 1.9.716 fresh root는 prepared-provider-zero admission을 통과했다. locked plan `7c152911…`, state `ca255f95…`, skill `92057d24…`, sealed artifact `51f3ade9…`, source contract `cbeffd2d…`, inventory `9ff364fe…`이며 deterministic_reflow normalization/attestation이 true다.
 - 다음은 PREPARATION checkpoint를 commit한 뒤 `max-new-cells=1`로 단일 provider execution을 시작한다. 실행 중간 변경·retry·replacement·같은 task replay는 금지다.
 - 1.9.716은 non-executed 1.9.715 root를 대체하는 새 sealed-admission canary다. task/baseline/skill bytes/model/effort/timeout/no-retry는 같고, 새 root만 admission hash attestation 이후에 다시 잠근다. provider/model exposure는0이다.

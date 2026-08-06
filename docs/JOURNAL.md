@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.719 explicit egress gate
+- 새 meteorite payload 실행은 provider 전 정책 게이트에서 거부됐다.
+- 이전 1.9.716 승인은 새 payload에 적용되지 않는다는 판정이다.
+- root/product/artifact untouched, provider/model exposure0이다.
+- exact 1.9.719 payload와 Luna/high의 새 명시 승인만 대기한다.
+
 ## 2026-08-06 (Codex) · 1.9.719 meteorite prepared
 - schema0.2가 baseline false gate와 debt coverage exact set을 admission에서 증명한다.
 - fresh meteorite task는 raw75/85, provider/model0으로 잠겼다.
