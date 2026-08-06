@@ -1,3 +1,5 @@
+import { createHash } from "node:crypto";
+
 const APPROVAL_ROLE_NAMES = ["container", "target", "evidence", "state", "action"];
 
 function requireNonEmptyString(value, label) {
@@ -159,6 +161,29 @@ export function validateOmdReflowBaselineCoverage(task, baselineScore) {
     failed_critical_gates: failedGates,
     covered_critical_gates: coveredGates,
     complete: true,
+  };
+}
+
+export function validateOmdReflowBaselineEvidence(task, baselineBytes) {
+  const contract = task.omd_reflow_source_contract;
+  if (contract?.schema_version !== "0.2") return null;
+  if (!Buffer.isBuffer(baselineBytes) && !(baselineBytes instanceof Uint8Array)) {
+    throw new Error("omd_reflow_source_contract baseline evidence bytes are required");
+  }
+  const observedSha256 = createHash("sha256").update(baselineBytes).digest("hex");
+  if (observedSha256 !== contract.baseline_evidence.sha256) {
+    throw new Error(`omd_reflow_source_contract baseline evidence hash mismatch: ${contract.baseline_evidence.path}`);
+  }
+  let baselineScore;
+  try {
+    baselineScore = JSON.parse(Buffer.from(baselineBytes).toString("utf8"));
+  } catch {
+    throw new Error(`omd_reflow_source_contract baseline evidence must be valid JSON: ${contract.baseline_evidence.path}`);
+  }
+  return {
+    ...validateOmdReflowBaselineCoverage(task, baselineScore),
+    path: contract.baseline_evidence.path,
+    sha256: observedSha256,
   };
 }
 

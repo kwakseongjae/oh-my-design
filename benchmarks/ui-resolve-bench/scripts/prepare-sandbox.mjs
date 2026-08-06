@@ -13,7 +13,7 @@ import {
   treeManifest,
   writeJson,
 } from "./_lib.mjs";
-import { validateOmdReflowBaselineCoverage, validateTaskContract } from "./task-contract.mjs";
+import { validateOmdReflowBaselineEvidence, validateTaskContract } from "./task-contract.mjs";
 import { currentObjectiveMethodology } from "./objective-methodology-contract.mjs";
 
 const args = parseArgs();
@@ -45,15 +45,7 @@ if (task.omd_reflow_source_contract?.schema_version === "0.2") {
   const baselinePath = assertInside(taskRoot, join(taskRoot, evidence.path));
   if (!existsSync(baselinePath)) throw new Error(`provider-sealed reflow baseline evidence is missing: ${evidence.path}`);
   const baselineBytes = readFileSync(baselinePath);
-  const baselineSha256 = sha256(baselineBytes);
-  if (baselineSha256 !== evidence.sha256) {
-    throw new Error(`provider-sealed reflow baseline evidence hash mismatch: ${evidence.path}`);
-  }
-  reflowBaselineCoverage = {
-    ...validateOmdReflowBaselineCoverage(task, JSON.parse(baselineBytes.toString("utf8"))),
-    path: evidence.path,
-    sha256: baselineSha256,
-  };
+  reflowBaselineCoverage = validateOmdReflowBaselineEvidence(task, baselineBytes);
 }
 const promptFile = readFileSync(join(taskRoot, "PROMPT.md"), "utf8");
 const promptSource = promptFile.trim();

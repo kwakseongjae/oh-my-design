@@ -1,8 +1,10 @@
+import { createHash } from "node:crypto";
 import { readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   validateOmdReflowBaselineCoverage,
+  validateOmdReflowBaselineEvidence,
   validateTaskContract,
 } from "../../../benchmarks/ui-resolve-bench/scripts/task-contract.mjs";
 
@@ -75,11 +77,17 @@ describe("task contract mutation coverage", () => {
 
   it("requires schema 0.2 to cover every failed baseline gate and contain nowrap carriers", () => {
     const original = readTask("investigational-product-depot-release-v0.1");
+    const baselineBytes = Buffer.from(JSON.stringify({
+      critical_gates: { task_contract: true, responsive: false, accessibility: false },
+    }));
     const contract = {
       schema_version: "0.2",
       structured_css_only: true,
       product_path: original.entry,
-      baseline_evidence: { path: "baseline-score.json", sha256: "a".repeat(64) },
+      baseline_evidence: {
+        path: "baseline-score.json",
+        sha256: createHash("sha256").update(baselineBytes).digest("hex"),
+      },
       critical_gate_debt_coverage: [
         { gate: "responsive", debt_ids: ["fit"] },
         { gate: "accessibility", debt_ids: ["contrast"] },
@@ -130,6 +138,14 @@ describe("task contract mutation coverage", () => {
       covered_critical_gates: ["accessibility", "responsive"],
       complete: true,
     });
+    expect(validateOmdReflowBaselineEvidence(task, baselineBytes)).toEqual({
+      failed_critical_gates: ["accessibility", "responsive"],
+      covered_critical_gates: ["accessibility", "responsive"],
+      complete: true,
+      path: "baseline-score.json",
+      sha256: contract.baseline_evidence.sha256,
+    });
+    expect(() => validateOmdReflowBaselineEvidence(task, Buffer.from("{}"))).toThrow(/hash mismatch/);
     expect(() => validateOmdReflowBaselineCoverage({
       ...task,
       omd_reflow_source_contract: {
