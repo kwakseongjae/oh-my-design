@@ -689,6 +689,42 @@ export function candidatePreflightStopReason(plan, record) {
   return null;
 }
 
+export function reliabilityHardStopReason(plan, summary) {
+  const hardStops = new Set(plan?.reliability_contract?.contract_hard_stop ?? []);
+  if (hardStops.size === 0) return null;
+  const proof = summary?.proof_trace;
+  const candidate = summary?.candidate_preflight;
+  const success = plan?.cell_success_contract ?? {};
+  if (
+    hardStops.has("sealed-inventory-drift")
+    && candidate
+    && candidate.sealed_inventory_sha256_match !== true
+  ) return "sealed-inventory-drift";
+  if (
+    hardStops.has("second-product-edit")
+    && Number(proof?.product_edit_count ?? proof?.product_revision_count ?? 0)
+      > Number(success.product_revision_count ?? 1)
+  ) return "second-product-edit";
+  if (
+    hardStops.has("failed-static-closure")
+    && Number(proof?.failed_static_closure_count ?? 0)
+      > Number(success.failed_static_closure_count ?? 0)
+  ) return "failed-static-closure";
+  if (
+    hardStops.has("contract-proof-noncompliance")
+    && proof?.compliance_pass !== true
+  ) return "contract-proof-noncompliance";
+  if (
+    hardStops.has("candidate-preview-receipt-missing-or-failed")
+    && (!candidate?.receipt_present || !candidate?.receipt_valid || candidate?.receipt_state !== "passed")
+  ) return "candidate-preview-receipt-missing-or-failed";
+  if (
+    hardStops.has("candidate-final-byte-mismatch")
+    && candidate?.candidate_final_bytes_match !== true
+  ) return "candidate-final-byte-mismatch";
+  return null;
+}
+
 function positiveIntegerOrThrow(value, label = "maxNewCells") {
   if (!Number.isSafeInteger(value) || value < 1) {
     throw new Error(`${label} must be a positive integer`);
@@ -1139,6 +1175,21 @@ function executePreparedMatrixWithLease(root, {
       lockedPlanSha256,
       preparationStateSha256,
     );
+    const priorReliabilityStop = existing.cells
+      .map((entry) => reliabilityHardStopReason(plan, entry))
+      .find(Boolean);
+    if (priorReliabilityStop) {
+      stopBeforeProvider(
+        existing,
+        plan,
+        existing.completed_cells,
+        matrixRoot,
+        priorReliabilityStop,
+        executionStatePath,
+        null,
+        nowFn(),
+      );
+    }
   } else if (existing?.status === "stopped-preregistered") {
     throw new Error(`matrix is frozen after preregistered stop: ${existing.stop_reason}`);
   } else if (bounded) {
@@ -1598,6 +1649,19 @@ function executePreparedMatrixWithLease(root, {
           ? { completedInInvocation: invocation.invocation }
           : { includeArtifactHashes: false },
       );
+    }
+    const reliabilityStopReason = reliabilityHardStopReason(plan, admittedSummary);
+    if (reliabilityStopReason) {
+      upsertCell(state, admittedSummary);
+      state.completed_cells = state.cells.filter((entry) => entry.status === "complete").length;
+      state.status = "stopped-preregistered";
+      state.stop_reason = reliabilityStopReason;
+      state.current_cell = null;
+      stopCurrentInvocation(reliabilityStopReason);
+      freezeRemainingCells(state, plan, index, matrixRoot, reliabilityStopReason);
+      writeJson(executionStatePath, state);
+      console.log(JSON.stringify({ event: "cell-complete", ...admittedSummary }));
+      throw new Error(`preregistered stop at ${cell.id}: ${reliabilityStopReason}`);
     }
     upsertCell(state, admittedSummary);
     state.completed_cells = state.cells.filter((entry) => entry.status === "complete").length;

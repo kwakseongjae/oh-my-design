@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · Reliability lifecycle hard-stop repair
+- wind는85/85지만 revision2/static1실패/proof false로 reliability fail이다.
+- archaeology는 provider/model0 상태로 동결한다; wind replay도 금지다.
+- runner가 lifecycle breach를 checkpoint한 누락을 current/resume hard-stop으로 고쳤다.
+- focused27/27·lint green; repair commit 뒤 provider-zero resume audit한다.
+
 ## 2026-08-06 (Codex) · 1.9.728 Reliability checkpoint 1/3
 - conservation은 exact1회 85/85, revision1, static1/0, proof·candidate binding green이다.
 - 293,929ms, 800,851 tokens(cached711,168), retry/replacement0이다.

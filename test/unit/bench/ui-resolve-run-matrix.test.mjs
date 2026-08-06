@@ -13,6 +13,7 @@ import {
   lastAdvisoryToFirstProductWriteMs,
   preflightRuntimeEnvironment,
   preregisteredStopReason,
+  reliabilityHardStopReason,
   replacementVerifierAuthorship,
   runArgsForCell,
   validPreparedCellAttestation,
@@ -56,6 +57,53 @@ const validRun = {
 };
 
 describe("UI-Resolve prepared matrix execution", () => {
+  it("hard-stops a reliability matrix when the lifecycle contract is breached", () => {
+    const plan = {
+      cell_success_contract: {
+        product_revision_count: 1,
+        failed_static_closure_count: 0,
+      },
+      reliability_contract: {
+        contract_hard_stop: [
+          "sealed-inventory-drift",
+          "second-product-edit",
+          "failed-static-closure",
+          "contract-proof-noncompliance",
+          "candidate-preview-receipt-missing-or-failed",
+          "candidate-final-byte-mismatch",
+        ],
+      },
+    };
+    const clean = {
+      proof_trace: {
+        product_edit_count: 1,
+        product_revision_count: 1,
+        failed_static_closure_count: 0,
+        compliance_pass: true,
+      },
+      candidate_preflight: {
+        receipt_present: true,
+        receipt_valid: true,
+        receipt_state: "passed",
+        sealed_inventory_sha256_match: true,
+        candidate_final_bytes_match: true,
+      },
+    };
+    expect(reliabilityHardStopReason(plan, clean)).toBeNull();
+    expect(reliabilityHardStopReason(plan, {
+      ...clean,
+      proof_trace: { ...clean.proof_trace, product_edit_count: 2, product_revision_count: 2 },
+    })).toBe("second-product-edit");
+    expect(reliabilityHardStopReason(plan, {
+      ...clean,
+      proof_trace: { ...clean.proof_trace, failed_static_closure_count: 1 },
+    })).toBe("failed-static-closure");
+    expect(reliabilityHardStopReason(plan, {
+      ...clean,
+      proof_trace: { ...clean.proof_trace, compliance_pass: false },
+    })).toBe("contract-proof-noncompliance");
+  });
+
   it("hard-stops a preregistered candidate preflight on missing or mismatched evidence", () => {
     const plan = { candidate_preflight_contract: { required: true } };
     expect(candidatePreflightStopReason(plan, { runtime_diagnostics: {} }))
