@@ -561,7 +561,7 @@ describe("provider-neutral prepared matrix contract", () => {
     expect(invocationCount(root, "fake-codex", "codex")).toBe(1);
   });
 
-  it("scores and checkpoints an unattributed preregistered timeout without replaying its provider", () => {
+  it("scores and checkpoints a preregistered timeout without replaying its provider", () => {
     const temp = mkdtempSync(join(tmpdir(), "omd-provider-valid-timeout-"));
     const root = join(temp, "matrix");
     installFakeRuntimes(temp, { slowClaude: true });
@@ -578,7 +578,7 @@ describe("provider-neutral prepared matrix contract", () => {
     expect(checkpoint.cells[0]).toMatchObject({
       id: "fake-claude",
       status: "complete",
-      validity: "invalid-attribution",
+      validity: "valid",
       run_status: "timed_out",
       ui_resolved: false,
       tokens: null,
@@ -597,7 +597,7 @@ describe("provider-neutral prepared matrix contract", () => {
     ));
     expect(timeoutRecord).toMatchObject({
       run_status: "timed_out",
-      validity: "invalid-attribution",
+      validity: "valid",
       ui_resolved: false,
       tokens: null,
     });

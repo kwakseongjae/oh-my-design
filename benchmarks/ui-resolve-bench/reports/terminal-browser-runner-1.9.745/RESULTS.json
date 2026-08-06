@@ -18,7 +18,8 @@
     "channels": ["claude-code", "codex", "opencode"],
     "shell_syntax": "pass",
     "typescript": "pass",
-    "provider_calls": 0
+    "provider_calls": 0,
+    "full_suite": "794 passed, 3 skipped"
   },
-  "next": "Commit the repair, rerun the full suite from a source-clean checkpoint, then use only fresh tasks for any live reliability comparison."
+  "next": "Use only fresh tasks for a no-retry Reliability@3 comparison that requires both objective resolution and proof compliance."
 }

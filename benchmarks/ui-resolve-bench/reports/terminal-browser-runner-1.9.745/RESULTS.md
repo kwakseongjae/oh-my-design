@@ -11,4 +11,6 @@ Agents now execute only:
 
 The runner reads the locked product path from the sealed artifact, derives its sibling helper and Python source, and performs one `exec browser-harness`. The proof classifier recognizes the runner as browser work, while `command -v browser-harness` is explicitly a recovery probe rather than a second static closure.
 
-Provider-free checks passed: 53 proof/skill/runner tests, 43 install-channel tests across Claude Code, Codex, and OpenCode, shell syntax, and TypeScript. No model was called. A clean-checkpoint full suite is the remaining closure step.
+Provider-free checks passed: 53 proof/skill/runner tests, 43 install-channel tests across Claude Code, Codex, and OpenCode, shell syntax, TypeScript, and the full suite at 794 passed / 3 skipped. No model was called.
+
+The next evidence step uses only fresh tasks and requires objective resolution and proof compliance together; the 1.9.744 task will not be replayed.
