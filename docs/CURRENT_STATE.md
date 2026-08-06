@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.737 council pilot complete and rescored
+- 갱신: 2026-08-06 · 1.9.738 two-lane council replay pass
 
 ## 지금 (현재 위치)
 
+- 1.9.738은 retained 1.9.736 claims를 provider-free replay해 lane cap4→2에서도 세 사례의 모든 effective disposition이 exact match함을 확인했다. changed decisions0이다.
+- 기본 dispatch cap을2로 낮췄다. retained-call 기준 projected wall849,118→481,744ms(-43.3%), combined reported tokens1,743,331→891,673(-48.9%)다. fresh 측정 전까지 projection으로만 표기한다.
+- 다음은 새 two-lane plan으로 Grok 4.5 High fresh6 calls, retry/replacement0 실행이다. authority/blocker/forbidden-auto와 disposition retention을 모두 통과해야 compact policy의 live evidence가 된다.
 - 1.9.736 Grok 4.5 High pilot은 isolated lane12/12, retry/replacement0으로 완료됐다. cited claims26, reject0, forbidden auto0이며 authority와 missing-official blocked를 모두 보존했다.
 - 1.9.737은 blocked ledger에서도 interview를 세던 scorer를 실제 state machine(`blocked → interview 전 halt`)에 맞춰 수리했다. raw summary는 live root에 보존하고 provider 재호출 없이 재채점했다.
 - 최종은 questions6→0, batched human handoffs3→2다. 단 regulated pricing은 사용자 권한을 blocker로 좁혔고, 비용은 sequential849,118ms·combined reported tokens1,743,331이라 Pareto 경쟁력이 없다.

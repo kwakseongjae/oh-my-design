@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.738 two-lane council replay
+- retained claims로 cap4→2를 replay해 세 사례 disposition exact match, changed0이다.
+- projected wall -43.3%, combined reported tokens -48.9%다.
+- 기본 dispatch를 ambiguity+relevant specialist 최대2개로 축소했다.
+- 다음은 fresh Grok 4.5 compact6 calls live confirmation이다.
+
 ## 2026-08-06 (Codex) · 1.9.737 council pilot rescore
 - Grok 4.5 lane12/12, retry0; questions6→0, human handoffs3→2다.
 - authority/blocked retained, forbidden auto0, claims26/reject0이다.

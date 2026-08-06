@@ -52,7 +52,7 @@ describe('design-council-prime', () => {
     expect(dispatch).toMatchObject({
       dispatch_required: false,
       selected_lanes: [],
-      max_pre_intake_calls: 4,
+      max_pre_intake_calls: 2,
       retry_budget: 0,
     });
   });
@@ -76,7 +76,7 @@ describe('design-council-prime', () => {
     });
     expect(ledger.summary).toMatchObject({ interview: 3, defer: 2, question_budget: 3 });
     expect(dispatch.dispatch_required).toBe(true);
-    expect(dispatch.selected_lanes.length).toBeLessThanOrEqual(4);
+    expect(dispatch.selected_lanes.length).toBeLessThanOrEqual(2);
     expect(dispatch.selected_lanes.map((lane: { id: string }) => lane.id)).toContain('ambiguity_contrarian');
     expect(dispatch.transition_policy.interview).not.toContain('auto');
   });

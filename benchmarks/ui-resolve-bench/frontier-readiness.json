@@ -3,7 +3,7 @@
   "target_version": "2.0.0",
   "baseline_version": "1.9.0",
   "required_gate_count": 10,
-  "snapshot_patch": "1.9.737",
+  "snapshot_patch": "1.9.738",
   "claim_policy": "Promotion is allowed only when all ten gates are pass and every gate retains repository evidence.",
   "gates": [
     {
@@ -82,8 +82,8 @@
       "id": "council-first-human-escalation",
       "status": "partial",
       "requirement": "The harness investigates and debates before intake, auto-decides only evidence-backed reversible choices, and asks the user only for authority-bearing decisions while retaining a reconstructable decision ledger.",
-      "current_boundary": "The 1.9.736 Grok 4.5 pilot completed 12/12 bounded lanes with no retry: questions 6→0, human handoffs 3→2, authority and blocked decisions retained, forbidden auto zero. The 1.9.737 scorer correction preserves the raw summary and honors blocked-before-interview. Twelve-lane cost (849s sequential, 1.74M combined reported tokens) is not Pareto competitive and repeated-task lift remains unproven.",
-      "evidence_refs": ["research/harness-design/24-council-first-interview-gate.md", "scripts/design-council-prime.cjs", "scripts/design-council-reconcile.cjs", "skills/omd-harness/SKILL.md", "benchmarks/ui-resolve-bench/reports/council-first-intake-1.9.733", "benchmarks/ui-resolve-bench/reports/council-intake-calibration-1.9.734", "benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735", "benchmarks/ui-resolve-bench/reports/council-effectiveness-pilot-1.9.736"],
+      "current_boundary": "The 1.9.736 Grok 4.5 pilot completed 12/12 lanes with questions 6→0, human handoffs 3→2, authority/blockers retained, and forbidden auto zero; 1.9.737 corrected blocked-before-interview scoring. The 1.9.738 provider-free replay reproduces every disposition with two lanes instead of four, projecting 43.3% wall and 48.9% token reduction. Fresh compact runtime and repeated-task lift remain unproven.",
+      "evidence_refs": ["research/harness-design/24-council-first-interview-gate.md", "scripts/design-council-prime.cjs", "scripts/design-council-reconcile.cjs", "skills/omd-harness/SKILL.md", "benchmarks/ui-resolve-bench/reports/council-first-intake-1.9.733", "benchmarks/ui-resolve-bench/reports/council-intake-calibration-1.9.734", "benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735", "benchmarks/ui-resolve-bench/reports/council-effectiveness-pilot-1.9.736", "benchmarks/ui-resolve-bench/reports/council-lane-cap-replay-1.9.738"],
       "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735/ACCEPTANCE.json", "pointer": "/frontier_gate_pass", "equals": true}
     }
   ]

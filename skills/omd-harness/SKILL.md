@@ -211,7 +211,7 @@ intake 분류이며 multi-agent council이 실행됐다고 표현하지 않는�
 
 `council/dispatch-plan.json`을 읽는다. `dispatch_required: false`면 agent를
 호출하지 않고 2.5.1b의 ledger를 그대로 사용한다. `true`면 아래 계약으로
-**선택된 lane만**, **한 번**, **최대 4개** 병렬 실행한다.
+**선택된 lane만**, **한 번**, **최대 2개** 병렬 실행한다.
 
 1. `selected_lanes`의 `role`과 `decision_ids`를 그대로 사용한다. 전체 역할을
    관성적으로 호출하거나 선택되지 않은 쟁점을 추가하지 않는다.
