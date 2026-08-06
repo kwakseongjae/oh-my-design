@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.728 preregistration
+- conservation→wind→archaeology를 Luna/high/no-retry fixed order로 잠갔다.
+- 1.9.726 workspace-bound product-path repair를 controller lock에 고정했다.
+- candidate receipt exact-byte success/hard-stop 계약은 유지한다.
+- provider/model0; 다음은 fresh provider-zero preparation이다.
+
 ## 2026-08-06 (Codex) · 1.9.727 task lock
 - unexposed conservation/wind bytes를 보존하고 fresh archaeology task를 추가했다.
 - 세 baseline은75/85, red accessibility+responsive exact다.

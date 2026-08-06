@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.727 replacement-free Reliability task lock
+- 갱신: 2026-08-06 · 1.9.728 workspace-bound Reliability@3 preregistration
 
 ## 지금 (현재 위치)
 
+- 1.9.728은 conservation→wind→archaeology fixed order, exact task hashes, clean 1.9.723 skill, Codex/Luna/high, timeout720s, concurrency1, retry/replacement0을 사전등록했다. provider/model exposure는 아직0이다.
+- controller lock은 1.9.726 repair `bcc78df4…`를 가리키며 relative artifact product path를 prepared cell workspace에서 resolve하고 escape를 거부한다. success/hard-stop은 candidate receipt exact-byte binding을 포함한다.
+- 다음은 preregistration을 commit한 뒤 fresh root를 provider-zero prepare/admission하고 PREPARATION checkpoint를 별도 commit하는 단계다. 그 전 provider execution은 금지다.
 - 1.9.727은 1.9.725에서 provider에 노출되지 않은 conservation/wind exact bytes를 보존하고 fresh archaeology tray-release task1개를 추가했다. exposed benthic는 포함하지 않으며 replay/replacement가 아니다.
 - 세 task raw baseline은75/85 exact, red gate는 accessibility+responsive exact다. archaeology의 contrast red target은 `.guidance-copy`/`footer`이고 schema0.2 debt coverage, sealed artifact/inventory, structured CSS6건이 provider/model0으로 complete다.
 - task inventory91, focused239 pass/2 skip·lint green이다. 다음은 exact task set을 commit하고 1.9.726 path repair를 포함한 새 candidate-bound Reliability@3 plan을 preregister하는 단계다.
