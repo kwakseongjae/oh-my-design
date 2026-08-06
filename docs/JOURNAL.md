@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.732 fresh comparison fixtures
+- cartography/numismatics/entomology fresh tasks를 provider-zero로 만들었다.
+- raw baseline은 모두75/85, red gate는 responsive+accessibility exact다.
+- exact OmD 1.9.731과 official Impeccable pinned sources를 detached/clean 복원했다.
+- focused237 pass/2 skip; 다음은 clean commit 후 paired6-cell preregistration이다.
+
 ## 2026-08-06 (Codex) · safe update lane complete
 - `omd update`와 `omd:update` 21번째 skill을 구현했다.
 - 현재 scope/channel/optional mode와 user-owned files를 보존하고 force 없이 doctor까지 실행한다.

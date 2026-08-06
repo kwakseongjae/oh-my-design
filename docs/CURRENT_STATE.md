@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · safe `omd update` + 21st shipped skill complete
+- 갱신: 2026-08-06 · 1.9.732 fresh-task comparison fixtures ready
 
 ## 지금 (현재 위치)
 
+- 1.9.732 정직 비교용 fresh task 3개(cartography/numismatics/entomology)를 추가했다. 각 raw baseline은75/85이며 responsive+accessibility만 red다; provider/model exposure는0이다.
+- 비교 arms는 exact OmD 1.9.731 commit `4e9514b9…`와 official Impeccable prompt-only commit `4d849eb7…`로 detached/clean 복원됐다. 같은 Luna/high·Codex·720s, retry/replacement0으로 3개 task를 paired 실행할 예정이다.
+- task inventory는96이며 focused237 pass/2 skip이다. 다음은 task/competitor bytes를 clean commit하고 6-cell matrix를 preregister→provider-zero prepare/admission하는 일이다.
 - 사용자-facing update lane이 complete다. `npx oh-my-design-cli@latest update`가 기존 project/global scope, 설치 채널, Cursor rule-only, optional policy와 user-owned files를 보존하고 `--force` 없이 managed bundle만 갱신한 뒤 doctor를 다시 실행한다.
 - `omd:update`가 21번째 shipped product skill로 추가됐다. Claude Code/Codex/OpenCode는21개, Cursor는 `claude-design`을 제외한20개를 받으며 README·5-locale docs·llms·SEO count가 같은 계약을 사용한다.
 - focused82/82, full781 pass/3 skip, lint/build/count green이다. clean Codex fixture는 install→update→doctor에서21 skills/18 roles/440 refs를 유지했고 별도 `user-owned.txt` bytes도 보존했다.

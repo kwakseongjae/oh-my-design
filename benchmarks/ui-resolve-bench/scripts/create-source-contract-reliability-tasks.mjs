@@ -9,8 +9,9 @@ const legacyBaselineRoot = "/private/tmp/omd-source-contract-reliability-baselin
 const v2BaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1.9.724-v2";
 const v3BaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1.9.727-v3";
 const v4BaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1.9.730-v4";
+const v5BaselineRoot = "/private/tmp/omd-frontier-comparison-baselines-1.9.732-v5";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
-const taskSet = process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -152,7 +153,28 @@ const v4Cases = [
   },
 ];
 
-const cases = taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v5Cases = [
+  {
+    id: "cartography-sheet-transfer-v0.1", title: "Cartography sheet transfer review", eyebrow: "Map archive · sheet transfer", heading: "Survey-sheet transfer review", recordHeading: "Sheet register", recordSummary: "Five supplied survey groups mapped to seven archival sleeves.",
+    records: [["SHEET-RDG-7142",["SLEEVE-52041","SLEEVE-52042"]],["SHEET-BSN-7285",["SLEEVE-52043"]],["SHEET-RIV-7398",["SLEEVE-52044","SLEEVE-52045"]],["SHEET-TRG-7461",["SLEEVE-52046"]],["SHEET-CTL-7594",["SLEEVE-52047"]]],
+    windows: [["VAULT-C2","07:50–08:10"],["VAULT-E5","10:35–10:55"],["VAULT-G1","13:40–14:00"],["VAULT-J4","16:05–16:25"]], views: [["sheets","Sheet register"],["windows","Vault windows"],["decision","Transfer decision"]], toggle: "Include annotation-note copy", fieldLabel: "Transfer cartographer", validValue: "SHEET-RDG-7142 transfer review", target: "SHEET-RDG-7142 + SLEEVE-52041", evidence: "5 survey groups · 7 archival sleeves · 4 vault windows", state: "Review open", action: "Open transfer record", footer: "Map archive · supplied transfer evidence only",
+    unknowns: ["datum verified","scale certified","annotation complete","provenance validated","sleeve seal verified","vault accepted","catalog published","transfer approved"], palette: {canvas:"#EEF2EF",surface:"#FCFFFD",ink:"#233029",muted:"#68736D",border:"#9CAAA2",primary:"#355F4F",accent:"#765D49"}, columns: "repeat(3,287px)", windowColumns: "repeat(4,221px)", decisionMin: "572px", cardRadius: 4, domain: "cartography sheet-transfer ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "numismatics-tray-accession-v0.1", title: "Numismatics tray accession review", eyebrow: "Coin cabinet · tray accession", heading: "Coin-tray accession review", recordHeading: "Object register", recordSummary: "Four supplied object groups mapped to six cabinet trays.",
+    records: [["COIN-REP-8246",["TRAY-64130","TRAY-64131"]],["COIN-MED-8371",["TRAY-64132"]],["COIN-TOK-8495",["TRAY-64133","TRAY-64134"]],["COIN-SEAL-8568",["TRAY-64135"]]],
+    windows: [["CABINET-N3","08:20–08:40"],["CABINET-E6","11:15–11:35"],["CABINET-S2","14:45–15:05"]], views: [["objects","Object register"],["windows","Cabinet windows"],["decision","Accession decision"]], toggle: "Include mount-note copy", fieldLabel: "Accession curator", validValue: "COIN-REP-8246 accession review", target: "COIN-REP-8246 + TRAY-64130", evidence: "4 object groups · 6 cabinet trays · 3 cabinet windows", state: "Review open", action: "Open accession record", footer: "Coin cabinet · supplied accession evidence only",
+    unknowns: ["alloy verified","date certified","mount calibrated","provenance validated","tray seal verified","cabinet accepted","catalog published","accession approved"], palette: {canvas:"#F2F0EB",surface:"#FFFEFA",ink:"#302D26",muted:"#706E68",border:"#AAA49A",primary:"#62563E",accent:"#685D78"}, columns: "repeat(2,389px)", windowColumns: "repeat(3,275px)", decisionMin: "556px", cardRadius: 6, domain: "numismatics tray-accession ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "entomology-drawer-loan-v0.1", title: "Entomology drawer loan review", eyebrow: "Insect collection · drawer loan", heading: "Specimen-drawer loan review", recordHeading: "Specimen register", recordSummary: "Six supplied specimen groups mapped to eight collection drawers.",
+    records: [["SPEC-LEP-9140",["DRAWER-73120","DRAWER-73121"]],["SPEC-COL-9253",["DRAWER-73122"]],["SPEC-DIP-9376",["DRAWER-73123","DRAWER-73124"]],["SPEC-HYM-9482",["DRAWER-73125"]],["SPEC-ODO-9567",["DRAWER-73126"]],["SPEC-HEM-9691",["DRAWER-73127"]]],
+    windows: [["STORE-A2","06:55–07:15"],["STORE-C5","09:30–09:50"],["STORE-F3","12:50–13:10"],["STORE-H6","15:35–15:55"]], views: [["specimens","Specimen register"],["windows","Store windows"],["decision","Loan decision"]], toggle: "Include pinning-note copy", fieldLabel: "Loan registrar", validValue: "SPEC-LEP-9140 loan review", target: "SPEC-LEP-9140 + DRAWER-73120", evidence: "6 specimen groups · 8 collection drawers · 4 store windows", state: "Review open", action: "Open loan record", footer: "Insect collection · supplied loan evidence only",
+    unknowns: ["species verified","specimen stable","pinning calibrated","provenance validated","drawer seal verified","store accepted","catalog published","loan approved"], palette: {canvas:"#EFF2F0",surface:"#FDFFFE",ink:"#24302A",muted:"#68736E",border:"#9FAAA4",primary:"#3E6150",accent:"#725A67"}, columns: "repeat(3,289px)", windowColumns: "repeat(4,219px)", decisionMin: "576px", cardRadius: 3, domain: "entomology drawer-loan ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -239,7 +261,9 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v4"
+  const baselineRoot = taskSet === "v5"
+    ? v5BaselineRoot
+    : taskSet === "v4"
     ? v4BaselineRoot
     : taskSet === "v3"
       ? v3BaselineRoot
