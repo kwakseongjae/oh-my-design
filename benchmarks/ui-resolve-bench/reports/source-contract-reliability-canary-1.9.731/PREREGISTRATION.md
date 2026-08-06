@@ -11,3 +11,9 @@ A cell passes only at 85/85 with resolved UI, one product revision, one successf
 Any lifecycle hard-stop freezes the remaining cells. The result is diagnostic only: it cannot enter ranking, establish model or skill superiority, or promote the 2.0 release gate without the later preregistered comparative suite.
 
 Provider execution is forbidden until this plan is committed and a fresh root passes provider-zero preparation and admission. Preparation must attest the exact task, skill, evaluator, source-contract, and sealed inventory hashes recorded here.
+
+## Terminal result
+
+The preregistered run completed at Reliability 3/3. Every cell reached 85/85 with exactly one product revision, one successful and zero failed static closures, proof compliance, unchanged sealed inventory, and exact candidate-to-final byte equality. There were three provider/model exposures, no retries, and no replacements.
+
+This validates the deterministic candidate-promotion repair across three distinct tasks. It remains diagnostic evidence, not a public ranking or a claim that Luna or OmD is superior to another model or skill.

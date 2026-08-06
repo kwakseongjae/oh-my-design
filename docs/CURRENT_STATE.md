@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.731 Reliability checkpoint 2/3
+- 갱신: 2026-08-06 · 1.9.731 terminal Reliability 3/3
 
 ## 지금 (현재 위치)
 
+- 1.9.731은 terminal `COMPLETE_RELIABILITY_PASS`다. provider/model exact3회, retry/replacement0, archaeology·paleontology·textile 모두85/85와 lifecycle 계약을 만족해 Reliability3/3이다.
+- 세 셀 모두 product revision1, static success1/fail0, proof true, sealed inventory 불변, candidate/final exact다. 총513,977ms·2,253,260 tokens(cached input2,020,608), 중앙값154,608ms·686,001 tokens다.
+- 완료 root 재개 감사는 provider 호출 전에 `not resumable: complete`로 fail-close했다. 이 결과는 deterministic promotion repair 증거이며 ranking/model·skill 우위/2.0 gate 승격에는 직접 사용하지 않는다.
+- 다음은 이 수리된 skill을 고정한 preregistered comparative suite로 이동해 다른 skill/harness 대비 정직 비교를 시작하는 단계다. 1.9.731 세 셀 replay는 금지다.
 - 1.9.731 paleontology 두 번째 셀도 exact1회 valid85/85, revision1, static success1/fail0, proof true, candidate/final exact로 Reliability pass다.
 - 211,241ms, 638,316 tokens(cached input559,360), retry/replacement0이다. 누적 Reliability2/3이며 CHECKPOINT-2 commit 뒤 textile 마지막 셀만 실행한다.
 - 1.9.731 archaeology 첫 셀은 exact1회에 valid85/85, resolved=true, revision1, static success1/fail0, proof compliance true, candidate/final exact match로 Reliability pass다.
