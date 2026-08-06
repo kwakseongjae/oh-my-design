@@ -3,13 +3,16 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `f3fbbb22` 1.9.712 polar canary archive (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.713 provider-sealed source contract locally complete, clean commit pending
+- 기준 커밋: `1e93b708` 1.9.716 prepared egress gate (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-06 · 1.9.716 Luna/high 단일 진단 완료, archive commit pending
 
 ## 지금 (현재 위치)
 
-- 1.9.716 단일 execution 명령은 외부 egress auto-review에서 **실행 전 거부**됐다. provider calls0/model exposures0이며 root/product/artifact는 untouched다. 우회·간접 실행은 금지한다.
-- 재개에 필요한 명시 승인은 Cursor가 아니라 Codex/Luna high에 이 1셀 workspace의 `index.html`, `DESIGN.md`, `.benchmark/PROMPT.md`, `AGENTS.md`, `.agents/skills/omd-apply/**`, provider-sealed `.omd/reflow-closure.json`을 전송하는 것이다. destination은 `gpt-5.6-luna`, timeout720s, retry0이다.
+- 사용자 명시 승인 뒤 1.9.716 Luna/high 단일 셀이 retry/replacement 없이 valid complete됐다. provider calls1/model exposures1이며 같은 abyssal task 재실행은 금지다.
+- 결과는 77/85, resolved=false, 109,514ms, 361,341 tokens다. task/design/state/evidence는 green, responsive/accessibility는 red다.
+- provider-sealed lifecycle은 전이됐다: source-packet pre-edit 소비, product edit/revision1, successful static closure1/failed0, browser recovery0, proof compliance true, source contract/inventory hash 보존이다.
+- 남은 실패는 계약 완전성이다. nowrap carrier의 parent grid item containment 의무가 없어 320px에서17px·200% surrogate에서34px overflow가 남았고, raw baseline의 muted-text 4.47:1 contrast debt가 sealed ledger에서 빠졌다.
+- 다음은 provider 호출 없이 admission이 raw critical-gate debt coverage를 증명하게 하고 parent containment를 static guardrail로 고정하는 local repair다. 그 뒤에도 transfer는 새 fictional task·새 preregistration·새 root만 허용한다.
 - 1.9.716 fresh root는 prepared-provider-zero admission을 통과했다. locked plan `7c152911…`, state `ca255f95…`, skill `92057d24…`, sealed artifact `51f3ade9…`, source contract `cbeffd2d…`, inventory `9ff364fe…`이며 deterministic_reflow normalization/attestation이 true다.
 - 다음은 PREPARATION checkpoint를 commit한 뒤 `max-new-cells=1`로 단일 provider execution을 시작한다. 실행 중간 변경·retry·replacement·같은 task replay는 금지다.
 - 1.9.716은 non-executed 1.9.715 root를 대체하는 새 sealed-admission canary다. task/baseline/skill bytes/model/effort/timeout/no-retry는 같고, 새 root만 admission hash attestation 이후에 다시 잠근다. provider/model exposure는0이다.
