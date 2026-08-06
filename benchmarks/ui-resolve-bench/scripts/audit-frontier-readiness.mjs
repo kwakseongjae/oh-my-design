@@ -14,6 +14,7 @@ const EXPECTED_GATE_IDS = [
   "independent-task-audit",
   "activation-and-seven-day-reuse",
   "routing-ownership-reverify",
+  "council-first-human-escalation",
 ];
 const EXPECTED_PASS_EVIDENCE = {
   "verified-skill-lift": ["benchmarks/ui-resolve-bench/reports/field-sample-browser-fallback-transfer-1.9.691/SUMMARY.final.json", "/frontier_gate_pass", true],
@@ -25,6 +26,7 @@ const EXPECTED_PASS_EVIDENCE = {
   "independent-task-audit": ["benchmarks/ui-resolve-bench/reports/task-contract-mutation-audit-1.9.685/AUDIT.json", "/gate_pass", true],
   "activation-and-seven-day-reuse": ["benchmarks/ui-resolve-bench/reports/time-compressed-activation-reuse-1.9.672/ACCEPTANCE.json", "/frontier_gate_pass", true],
   "routing-ownership-reverify": ["benchmarks/ui-resolve-bench/reports/local-activation-funnel-1.9.673/ACCEPTANCE.json", "/frontier_gate_pass", true],
+  "council-first-human-escalation": ["benchmarks/ui-resolve-bench/reports/council-first-intake-1.9.733/ACCEPTANCE.json", "/frontier_gate_pass", true],
 };
 
 function assertNonEmptyString(value, label) {
@@ -70,7 +72,7 @@ export function evaluateFrontierReadiness(manifest, repoRoot) {
 
   const ids = manifest.gates.map((gate) => gate?.id);
   if (new Set(ids).size !== ids.length || EXPECTED_GATE_IDS.some((id) => !ids.includes(id))) {
-    throw new Error("frontier readiness gate IDs must match the normative nine-gate contract");
+    throw new Error("frontier readiness gate IDs must match the normative ten-gate contract");
   }
 
   const root = resolve(repoRoot);

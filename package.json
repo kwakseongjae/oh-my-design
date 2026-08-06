@@ -53,7 +53,8 @@
     ".github/assets/logo-bg.png",
     "scripts/postinstall.cjs",
     "scripts/context.cjs",
-    "scripts/ctx-prime.cjs"
+    "scripts/ctx-prime.cjs",
+    "scripts/design-council-prime.cjs"
   ],
   "scripts": {
     "build": "tsup",

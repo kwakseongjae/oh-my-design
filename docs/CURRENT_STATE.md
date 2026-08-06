@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.732 fresh paired comparison complete
+- 갱신: 2026-08-06 · 1.9.733 council-first intake Slice A complete
 
 ## 지금 (현재 위치)
 
+- 2.0.0 frontier 계약은 10개 게이트다. 새 `council-first-human-escalation` 게이트는 `partial`: 에이전트가 근거를 먼저 모으고 불필요한 질문을 제거하며 사용자 권한 결정만 인터뷰하는 방향을 정식 목표에 포함했다.
+- 1.9.733 Slice A는 `design-council-prime.cjs`로 run-scoped evidence packet과 `auto|interview|defer|blocked` 결정 원장을 만든다. 명시적 사용자 의도와 근거 있는 저위험·가역 결정만 auto이며, unknown과 generic wow fallback은 비워 둔다.
+- Grok 4.5 High read-only review는 ledger-first 도입을 지지하고 즉시 6-lane fan-out은 반대했다. 따라서 여섯 자문 lane은 현재 `not-dispatched`, 구현 owner는 `omd-master` 한 명이며 plan/DESIGN.md/validation mandatory checkpoints는 유지한다.
+- 검증은 focused52/52, full784 pass/3 skip, lint/build/count green이다. 다음은 1.9.734 disposition calibration(충돌·다국어·근거 누락 brief)이며 unsupported auto0 확인 뒤에만 1.9.735 bounded Grok 4.5 council dispatch를 연다.
+- user-owned `web/public/llms-full.txt` dirty는 이번 작업에서 건드리지 않고 보존한다.
 - 1.9.732 exact6-cell comparison은 `COMPLETE_INTERNAL_PREVIEW`다. provider calls6, retries0, replacements0; OmD는85/85×3 resolved3/3, Impeccable prompt-only는75/75/79 unresolved0/3이다.
 - paired objective W/T/L은 OmD3/0/0(+10,+10,+6)이다. OmD total2,035,476 tokens/604,932ms, Impeccable1,825,904 tokens/798,003ms다. OmD가 total tokens11.5% 더 썼지만 total wall time24.2% 낮았다; median은 OmD가 더 무겁다.
 - OmD는 revision1/1/1, proof3/3, candidate/final exact3/3이다. Impeccable proof는1/3이나 이는 native helper 차이라 공통 UI 우위 근거와 분리한다.

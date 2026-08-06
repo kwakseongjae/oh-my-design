@@ -11,9 +11,9 @@ describe("frontier non-local execution boundary", () => {
   it("admits only the explicitly authorized non-local gate", () => {
     const report = auditFrontierExecutionBoundary(boundary, readiness, repoRoot);
     expect(report).toMatchObject({
-      unresolved_gate_count: 9,
-      locally_closable_gate_ids: [],
-      local_preparation_counts: { complete: 7, partial: 2 },
+      unresolved_gate_count: 10,
+      locally_closable_gate_ids: ["council-first-human-escalation"],
+      local_preparation_counts: { complete: 7, partial: 3 },
       local_only_mode: false,
       authorized_action_classes: ["remote-model-execution"],
       active_gate_ids: ["verified-skill-lift"],
@@ -35,7 +35,8 @@ describe("frontier non-local execution boundary", () => {
 
     const local = structuredClone(boundary);
     local.gates[0].next_action_class = "local-implementation";
-    expect(() => auditFrontierExecutionBoundary(local, readiness, repoRoot)).toThrow(/unsupported or local/);
+    local.gates[0].next_action_class = "made-up-action";
+    expect(() => auditFrontierExecutionBoundary(local, readiness, repoRoot)).toThrow(/unsupported/);
 
     const unauthorized = structuredClone(boundary);
     unauthorized.active_gate_ids = ["three-model-positive-lift"];
@@ -48,8 +49,8 @@ describe("frontier non-local execution boundary", () => {
     delete localOnly.authorized_action_classes;
     delete localOnly.active_gate_ids;
     expect(auditFrontierExecutionBoundary(localOnly, readiness, repoRoot)).toMatchObject({
-      hard_pause_required: true,
-      decision: "PAUSE_LOCAL_PATCH_TRAIN_FOR_NON_LOCAL_EVIDENCE",
+      hard_pause_required: false,
+      decision: "CONTINUE_LOCAL_GATE_WORK",
     });
   });
 });

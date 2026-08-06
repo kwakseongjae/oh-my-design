@@ -418,6 +418,9 @@ All must pass:
 9. Natural-language routing selects the smallest capable workflow; specialists
    return evidence-backed advice, one main agent owns edits, and implementation
    is not complete until the same consumer route is reverified.
+10. The harness investigates before intake, records a typed decision ledger,
+    auto-decides only evidence-backed reversible choices, and asks the user only
+    for decisions that require human product authority.
 
 `1.9.9` is a checkpoint, not a deadline. If any gate remains unresolved, continue
 with `1.9.10`, `1.9.11`, and as many bounded `1.9.x` experiments as required.

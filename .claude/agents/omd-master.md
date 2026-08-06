@@ -101,7 +101,17 @@ Each turn you are in one state. Determine current state from `.handoff.json` `st
 
   Also Read `<RUN_DIR>/ctx-prime.json` for the codebase analysis (stack, brand_signal, surface_inventory, wow_moment_candidates).
 
-  → **Skip SLOT_GATE entirely.** Use prefilled_slots as authoritative. Jump straight to PROPOSE_PLAN with `ctx_prime.brand_signal` seeded as initial token defaults (override-able during PLAN_REVIEW). Only re-ask via ASK_TEST if a slot truly required for the chosen `exit_scope` is *missing* from prefilled_slots — never re-ask `audience` or `wow_moment` if already filled.
+  If `decision_ledger_ref` is present, Read it before planning. Treat it as the
+  intake authority boundary:
+  - accept `auto` only when the ledger retains evidence and a non-null value;
+  - treat answered `interview` items as user authority;
+  - keep `defer` slots absent until they become necessary for the next useful
+    surface — never replace them with a plausible design default;
+  - halt on `blocked` instead of inventing evidence;
+  - do not claim that a multi-agent council ran when the context packet still
+    marks lanes `not-dispatched`.
+
+  → **Skip SLOT_GATE entirely.** Use prefilled_slots as authoritative. Jump straight to PROPOSE_PLAN with `ctx_prime.brand_signal` seeded as initial token defaults (override-able during PLAN_REVIEW). Only re-ask via ASK_TEST if a slot truly required for the chosen `exit_scope` is *missing* and is not listed in `deferred_slots` — never re-ask `audience` or `wow_moment` if already filled.
 
   Acknowledge the handoff in your first user-facing prose: "분석 결과 + 페르소나 답 받았어요 — {audience} / {wow_moment} 방향으로 plan 잡을게요." Don't re-interrogate.
 

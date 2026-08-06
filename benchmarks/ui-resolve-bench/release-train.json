@@ -54,6 +54,7 @@
     "unknown-means-absent",
     "quality-graded-reference-query",
     "same-surface-reverification",
-    "harness-to-product-delivery"
+    "harness-to-product-delivery",
+    "council-first-human-escalation"
   ]
 }

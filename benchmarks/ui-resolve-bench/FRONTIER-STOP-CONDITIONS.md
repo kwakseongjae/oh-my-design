@@ -27,6 +27,9 @@ Promote `2.0.0` only when every gate in `RELEASE-TRAIN.md` passes:
 9. Natural-language routing chooses the smallest capable workflow, specialists
    advise with evidence, one agent owns edits, and the consumer route is
    reverified.
+10. The harness investigates before intake, auto-decides only grounded and
+    reversible choices, and escalates only authority-bearing decisions through
+    a reconstructable decision ledger.
 
 The version number, calendar, number of commits, and amount of work completed
 cannot substitute for these gates.
@@ -63,7 +66,7 @@ Pause for user direction only when:
    tested repair, leaving materially different design directions;
 4. the next gate requires the user's practitioner recruitment, production
    observation window, or access to a runtime/account that is unavailable;
-5. all nine frontier gates pass, in which case stop before publishing or
+5. all ten frontier gates pass, in which case stop before publishing or
    tagging `2.0.0` and present the final evidence package.
 
 Auth/quota/network failures freeze the current denominator. They do not justify
@@ -98,21 +101,26 @@ changing a narrative status cannot make a gate pass.
 | Independent task audit <5% | 1.9.685 checks 78 tasks and kills 11 local contract mutations; independent sample/rate absent | External |
 | Activation + seven-day reuse | Day-8 technical survivability 4/4 channels, 20/20 locale routes, and local first-loop pass; behavioral lift unobserved | Partial |
 | Routing/ownership/reverify | Product contract and local four-channel loop pass; broader model-runtime proof pending | Partial |
+| Council-first human escalation | 1.9.733 deterministic decision ledger is implemented; bounded multi-lane dispatch and repeated intervention lift remain pending | Partial |
 
 ## Immediate queue
 
-1.9.687 reaches the local-only hard pause: all nine unresolved gates require
-remote execution, private durable storage, external practitioners/auditors, or
-production observation. Do not create another local patch until one of those
-resources is available.
+1.9.733 reopens one bounded local capability lane. The deterministic decision
+ledger now separates `auto`, `interview`, `defer`, and `blocked` outcomes before
+the harness asks a question. The remaining local work is calibration against
+explicit, ambiguous, conflicting, and unsupported briefs; multi-lane council
+dispatch stays closed until unsupported automatic decisions remain at zero.
 
 1. Run `audit-frontier-readiness.mjs` at every checkpoint and refuse `2.0.0`
    promotion while any normative gate is not `pass`.
 2. Preserve the 1.9.679 task and 1.9.680 six-cell matrix unchanged. Under the
    current no-remote rule, do not synthesize scored Skill Lift.
-3. Close provider-free gaps in hidden-task denominator, package completeness,
+3. Calibrate the decision ledger locally, then use Grok 4.5 for a bounded,
+   read-only council comparison. Do not claim council effectiveness from the
+   deterministic preflight alone.
+4. Close provider-free gaps in hidden-task denominator, package completeness,
    mutation coverage, and public claim boundaries.
-4. When remote execution is allowed again, reprepare under the then-current
+5. When remote execution is allowed again, reprepare under the then-current
    evaluator epoch and run Preview scale before Verified 24×10 scale.
-5. Stop at the first genuinely external-only package and hand the user a
+6. Stop at the first genuinely external-only package and hand the user a
    concrete practitioner/auditor or production-observation checklist.

@@ -184,7 +184,32 @@ ctx-prime.cjs는 활성 host의 `.codex/data/scripts/`, `.claude/data/scripts/`,
 
 `CTX_PRIME_MISSING` (모든 local/global 경로 miss) → Step 3로 직진 (legacy path).
 
-### 2.5.2 — ctx-prime.json Read + 사용자 picker 게이트
+### 2.5.1b — Council-prime decision ledger (v1.9.733+)
+
+고정된 audience + 4문항을 바로 묻지 않는다. 먼저 `design-council-prime.cjs`를
+`ctx-prime.cjs`와 같은 resolution order로 찾아 실행한다:
+
+```bash
+COUNCIL_HELPER="$(dirname "$HELPER")/design-council-prime.cjs"
+[ -f "$COUNCIL_HELPER" ] && node "$COUNCIL_HELPER" "$(pwd)" "${RUN_DIR}"
+```
+
+`council/decision-ledger.json`이 생성되면 이것이 intake의 단일 source of
+truth다. 아래 2.5.2–2.5.3 고정 picker는 실행하지 않는다.
+
+1. `auto`이면서 `proposed_value`가 있는 항목만 `prefilled_slots[slot]`에 적재.
+2. `interview` 항목만 한 번의 최대 4-question batch로 질문. ledger의
+   `options`와 `reason`을 사용하고 근거 없는 추천 표시는 만들지 않는다.
+3. `defer`는 묻거나 채우지 않고 `deferred_slots`에 id/slot/reason을 보존.
+4. `blocked`가 하나라도 있으면 진행하지 않고 필요한 evidence/authority만 알림.
+5. auto 값과 사용자 답을 slot에 매핑해 handoff에
+   `decision_ledger_ref: "council/decision-ledger.json"`와 함께 기록.
+
+`interview`가 0개면 질문 없이 Step 3으로 간다. 이 단계는 deterministic
+intake 분류이며 multi-agent council이 실행됐다고 표현하지 않는다. helper
+누락·실패 때만 아래 legacy path를 사용한다.
+
+### 2.5.2 — Legacy: ctx-prime.json Read + 사용자 picker 게이트
 
 Read 툴로 `${RUN_DIR}/ctx-prime.json` 로드. 다음 필드만 사용자에게 한 줄로 brief:
 
@@ -214,7 +239,7 @@ options: ctx-prime.audience_hypothesis 상위 3개 → label/description 매핑
 }
 ```
 
-### 2.5.3 — Interview-lite (2-4 picker 묶음)
+### 2.5.3 — Legacy: Interview-lite (2-4 picker 묶음)
 
 페르소나 확정 직후 **AskUserQuestion 1번 더, 최대 4개 question 묶음**. ctx-prime 결과를 활용해 picker option을 동적 구성:
 

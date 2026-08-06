@@ -1782,13 +1782,13 @@ export async function runInstallSkills(
     }
   }
 
-  // Copy ctx-prime.cjs (+ its companion context.cjs) into each selected skill
+  // Copy deterministic harness helpers into each selected skill
   // channel's scoped data tree so /omd-harness works after either a project or
   // global install. Cursor shares `.claude/data`, including these helpers.
   for (const target of targets) {
     const cd = dataDirForScope(target, targets, scope);
     if (!cd) continue;
-    for (const helper of ['ctx-prime.cjs', 'context.cjs']) {
+    for (const helper of ['ctx-prime.cjs', 'context.cjs', 'design-council-prime.cjs']) {
       const srcHelper = join(packageRoot, 'scripts', helper);
       if (!existsSync(srcHelper)) continue;
       const destHelper = join(installRoot, cd, 'data', 'scripts', helper);

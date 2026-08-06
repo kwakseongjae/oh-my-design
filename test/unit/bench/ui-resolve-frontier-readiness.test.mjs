@@ -10,12 +10,12 @@ describe("2.0 frontier readiness audit", () => {
   it("fails closed while any normative gate remains unresolved", () => {
     const report = evaluateFrontierReadiness(manifest, repoRoot);
     expect(report).toMatchObject({
-      required_gate_count: 9,
+      required_gate_count: 10,
       promotion_allowed: false,
       decision: "BLOCK_2_0_PROMOTION",
-      counts: { open: 3, partial: 4, external: 2, pass: 0 },
+      counts: { open: 3, partial: 5, external: 2, pass: 0 },
     });
-    expect(report.unresolved_gate_ids).toHaveLength(9);
+    expect(report.unresolved_gate_ids).toHaveLength(10);
     expect(report.external_gate_ids).toEqual(["practitioner-blind-review", "independent-task-audit"]);
     expect(report.evidence_refs_checked).toBeGreaterThanOrEqual(14);
   });

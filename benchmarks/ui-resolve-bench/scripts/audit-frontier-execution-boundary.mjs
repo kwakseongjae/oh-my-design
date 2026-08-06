@@ -12,6 +12,7 @@ const NON_LOCAL_ACTIONS = new Set([
   "external-independent-audit",
   "production-observation",
 ]);
+const SUPPORTED_ACTIONS = new Set([...NON_LOCAL_ACTIONS, "local-implementation"]);
 
 export function auditFrontierExecutionBoundary(boundary, readinessManifest, repoRoot) {
   if (typeof boundary?.local_only_mode !== "boolean") {
@@ -27,7 +28,7 @@ export function auditFrontierExecutionBoundary(boundary, readinessManifest, repo
     throw new Error("execution boundary IDs must equal unresolved frontier gate IDs");
   }
   const gates = boundary.gates.map((gate) => {
-    if (!NON_LOCAL_ACTIONS.has(gate.next_action_class)) throw new Error(`${gate.id} has unsupported or local next action`);
+    if (!SUPPORTED_ACTIONS.has(gate.next_action_class)) throw new Error(`${gate.id} has unsupported next action`);
     if (!["partial", "complete"].includes(gate.local_preparation)) throw new Error(`${gate.id} has invalid local preparation state`);
     if (typeof gate.required_input !== "string" || !gate.required_input.trim()) throw new Error(`${gate.id} required_input is missing`);
     return gate;
