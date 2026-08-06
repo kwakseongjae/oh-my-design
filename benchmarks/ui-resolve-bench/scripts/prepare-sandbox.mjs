@@ -189,6 +189,7 @@ if (variant.declared_name) {
   }
   let sourceRoot;
   let sourceCommit;
+  let workspaceCommit = null;
   let vendorRoot = null;
   let sourceGitRoot;
   let sourceDetached;
@@ -207,11 +208,19 @@ if (variant.declared_name) {
     sourceGitRoot = vendorRoot;
   } else {
     sourceRoot = assertInside(repoRoot, join(repoRoot, variant.source_path));
-    sourceCommit = execFileSync("git", ["-C", repoRoot, "rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+    workspaceCommit = execFileSync("git", ["-C", repoRoot, "rev-parse", "HEAD"], { encoding: "utf8" }).trim();
     sourceGitRoot = repoRoot;
     sourceDetached = gitHeadDetached(repoRoot);
   }
   const sourcePathspec = variant.vendor_dir ? "." : relative(sourceGitRoot, sourceRoot);
+  if (!variant.vendor_dir) {
+    sourceCommit = execFileSync(
+      "git",
+      ["-C", sourceGitRoot, "log", "-1", "--format=%H", "--", sourcePathspec],
+      { encoding: "utf8" },
+    ).trim();
+    if (!sourceCommit) throw new Error(`${variantId} source path has no committed provenance`);
+  }
   const sourceStatus = execFileSync(
     "git",
     ["-C", sourceGitRoot, "status", "--porcelain=v1", "--untracked-files=all", "--", sourcePathspec],
@@ -295,6 +304,7 @@ if (variant.declared_name) {
       status_sha256: sha256(sourceStatus),
       publishable: !sourceDirty,
       detached: sourceDetached,
+      workspace_commit: workspaceCommit,
     },
     sha256: skillTree.sha256,
     files: skillTree.files.length,

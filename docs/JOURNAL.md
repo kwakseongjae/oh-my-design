@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · skill provenance split
+- local skill의 마지막 변경 commit과 준비 당시 workspace HEAD를 분리했다.
+- 1.9.723 exact skill lock이 후속 report commit에 잘못 귀속되는 문제를 차단했다.
+- focused250 pass/2 skip·lint green이다.
+- 다음은 1.9.725 provider-zero prepare/admission이다.
+
 ## 2026-08-06 (Codex) · 1.9.725 candidate-bound preregistration
 - fresh task3개와 Luna/high/no-retry fixed order를 preregister했다.
 - passed preview receipt와 final product exact bytes를 execution gate로 승격했다.
