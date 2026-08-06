@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.748 isolated-browser task lock ready
+- 갱신: 2026-08-06 · 1.9.748 isolated-browser Reliability@3 preregistered
 
 ## 지금 (현재 위치)
+
+- 1.9.748 plan은 manuscript→geology→herbarium, Luna/high, council-on, timeout720s, concurrency1, pacing30s, retry/replacement0으로 잠겼다.
+- 새 `browser_execution_contract`가 shared runtime+exact `omd1748` socket+attach-only를 provider 전 요구한다. 모델은 CDP endpoint를 받지 않고 controller가 준비한 named socket만 받는다.
+- 다음은 plan checkpoint commit 뒤 fresh root prepare/admission, 이어서 `BU_NAME=omd1748`+local CDP 환경에서 runtime preflight만 먼저 통과시키는 단계다.
 
 - 1.9.748은 1.9.747에서 미노출로 동결된 manuscript/geology와 fresh herbarium을 새 Reliability@3 분모로 잠갔다. microscopy는 replay하지 않는다.
 - 세 baseline 모두75/85이며 responsive+accessibility만 red다. inventory101, selected task provider/model0이다.

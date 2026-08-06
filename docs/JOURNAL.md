@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.748 browser-preflight preregistration
+- 새3셀과 exact `omd1748` attach-only browser contract를 잠갔다.
+- 모델은 CDP endpoint 없이 shared named socket만 사용한다.
+- checkpoint 뒤 prepare/admission/runtime preflight로 간다.
+
 ## 2026-08-06 (Codex) · 1.9.748 isolated-browser task lock
 - 미노출 manuscript/geology+fresh herbarium의 새3-task 분모를 만들었다.
 - 모두75/85, responsive+accessibility만 red이며 provider/model0이다.
