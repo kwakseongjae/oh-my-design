@@ -11,6 +11,7 @@ import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 import { diffTreeManifests, parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
 import {
+  assertProviderRoute,
   cursorModelEvidenceMode,
   isCursorLiveModelAllowed,
 } from "./runtime-contract.mjs";
@@ -40,6 +41,13 @@ const manifest = readJson(manifestPath);
 if (manifest.runtime_target !== "cursor") {
   throw new Error("workspace was not prepared with --runtime cursor");
 }
+const routeDecision = assertProviderRoute({
+  runtime: "cursor",
+  model,
+  billingType: process.env.OMD_CURSOR_BILLING_TYPE ?? null,
+  confirmation: process.env.OMD_CURSOR_INCLUDED_USAGE_CONFIRMED ?? null,
+  fakeRuntime,
+});
 
 const cursorBinary = process.env.OMD_CURSOR_AGENT_BIN
   ?? join(homedir(), ".local", "bin", "cursor-agent");
@@ -191,6 +199,12 @@ const result = {
     provider_effort_argument: null,
     auth_mode: fakeRuntime ? "fake-calibration" : "cursor-account",
     provider_route: fakeRuntime ? "fake-calibration" : "cursor",
+    billing_type: routeDecision.billing_type,
+    billing_guard: {
+      policy: "included-only-cursor-grok",
+      decision: routeDecision.mode,
+      confirmation_required: !fakeRuntime,
+    },
     model,
     effort,
     sandbox: "cursor-enabled",

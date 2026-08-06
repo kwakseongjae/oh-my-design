@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · Cursor billing fail-closed setup
+- Cursor를 `Included` 확인 전에는 실행하지 않도록 provider routing policy를 추가했다.
+- Luna/Sol은 Codex runtime만, Cursor live는 Grok만 허용한다.
+- 누락·unknown·On-Demand는 Cursor spawn 전에 차단하며 fake calibration도 live Grok 우회가 불가하다.
+
 ## 2026-08-06 (Codex) · 1.9.748 user-requested pause
 - manuscript는 provider 노출+candidate 작성 뒤 중단됐고 결과 파일은 없다.
 - 관련 실행기/provider/전용 Chrome을 종료하고 root·stale lease를 증거로 동결했다.

@@ -13,7 +13,12 @@ import { homedir } from "node:os";
 import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, sha256, writeJson } from "./_lib.mjs";
-import { CURSOR_RUNTIME_DISPLAY_LABELS, isCursorLiveModelAllowed } from "./runtime-contract.mjs";
+import {
+  assertProviderRoute,
+  CURSOR_INCLUDED_USAGE_CONFIRMATION,
+  CURSOR_RUNTIME_DISPLAY_LABELS,
+  isCursorLiveModelAllowed,
+} from "./runtime-contract.mjs";
 
 const AXES = Object.freeze(["functionality", "usability", "fidelity", "ship_preference"]);
 const CHOICES = new Set(["a", "b", "tie", "both_fail"]);
@@ -119,6 +124,12 @@ function finalMessageFromEvents(stdout) {
 }
 
 async function liveCursorInvocation({ packetRoot, model, timeoutMs }) {
+  const routeDecision = assertProviderRoute({
+    runtime: "cursor",
+    model,
+    billingType: process.env.OMD_CURSOR_BILLING_TYPE ?? null,
+    confirmation: process.env.OMD_CURSOR_INCLUDED_USAGE_CONFIRMED ?? null,
+  });
   const cursorBinary = process.env.OMD_CURSOR_AGENT_BIN ?? join(homedir(), ".local", "bin", "cursor-agent");
   const versionProbe = spawnSync(cursorBinary, ["--version"], { encoding: "utf8" });
   if (versionProbe.status !== 0) fail("cursor-agent version probe failed");
@@ -137,7 +148,13 @@ async function liveCursorInvocation({ packetRoot, model, timeoutMs }) {
   for (const key of ["HOME", "PATH", "TMPDIR", "LANG", "LC_ALL", "TERM", "USER", "SHELL"]) {
     if (process.env[key]) env[key] = process.env[key];
   }
-  Object.assign(env, { DISABLE_TELEMETRY: "1", DO_NOT_TRACK: "1", CI: "1" });
+  Object.assign(env, {
+    DISABLE_TELEMETRY: "1",
+    DO_NOT_TRACK: "1",
+    CI: "1",
+    OMD_CURSOR_BILLING_TYPE: routeDecision.billing_type,
+    OMD_CURSOR_INCLUDED_USAGE_CONFIRMED: CURSOR_INCLUDED_USAGE_CONFIRMATION,
+  });
   const startedNs = process.hrtime.bigint();
   let stdout = "";
   let stderr = "";
@@ -273,6 +290,19 @@ export async function runAutomatedReviewRound({
   wait = (ms) => new Promise((done) => setTimeout(done, ms)),
 }) {
   if (!isCursorLiveModelAllowed(model)) fail(`model is outside Cursor allowlist: ${model}`);
+  let routeDecision = { mode: "test-injected", billing_type: null };
+  if (invoke === liveCursorInvocation) {
+    try {
+      routeDecision = assertProviderRoute({
+        runtime: "cursor",
+        model,
+        billingType: process.env.OMD_CURSOR_BILLING_TYPE ?? null,
+        confirmation: process.env.OMD_CURSOR_INCLUDED_USAGE_CONFIRMED ?? null,
+      });
+    } catch (error) {
+      fail(error.message);
+    }
+  }
   const manifest = readJson(manifestPath);
   if (
     manifest.schema_version !== "0.1"
@@ -379,6 +409,11 @@ export async function runAutomatedReviewRound({
         wall_ms: raw.wall_ms,
       },
       usage: parsed.usage,
+      billing_type: routeDecision.billing_type,
+      billing_guard: {
+        policy: "included-only-cursor-grok",
+        decision: routeDecision.mode,
+      },
       final_message_source: parsed.finalMessageSource,
       judgment,
       stop_reason: stopReason,

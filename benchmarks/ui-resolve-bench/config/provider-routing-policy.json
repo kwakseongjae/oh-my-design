@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1",
+  "default_action": "deny",
+  "known_models": {
+    "gpt-5.6-luna": {
+      "required_runtime": "codex",
+      "billing_type": "codex-native"
+    },
+    "gpt-5.6-sol": {
+      "required_runtime": "codex",
+      "billing_type": "codex-native"
+    },
+    "cursor-grok-4.5-high": {
+      "required_runtime": "cursor",
+      "billing_type": "included",
+      "confirmation_env": "OMD_CURSOR_INCLUDED_USAGE_CONFIRMED",
+      "confirmation_value": "I_CONFIRM_CURSOR_INCLUDED_USAGE"
+    }
+  },
+  "cursor_live": {
+    "allowed_models": ["cursor-grok-4.5-high"],
+    "billing_env": "OMD_CURSOR_BILLING_TYPE",
+    "required_billing_type": "included",
+    "confirmation_env": "OMD_CURSOR_INCLUDED_USAGE_CONFIRMED",
+    "confirmation_value": "I_CONFIRM_CURSOR_INCLUDED_USAGE",
+    "fake_runtime_bypass_env": "OMD_BENCH_FAKE_RUNTIME",
+    "fake_runtime_bypass_value": "1"
+  },
+  "safety": {
+    "on_demand_is_always_denied": true,
+    "unknown_billing_is_denied": true,
+    "luna_sol_cursor_route_is_denied": true,
+    "cursor_non_grok_route_is_denied": true
+  }
+}

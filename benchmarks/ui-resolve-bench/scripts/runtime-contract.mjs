@@ -1,5 +1,13 @@
+import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+
+const PROVIDER_ROUTING_POLICY_PATH = fileURLToPath(
+  new URL("../config/provider-routing-policy.json", import.meta.url),
+);
+export const PROVIDER_ROUTING_POLICY = Object.freeze(JSON.parse(
+  readFileSync(PROVIDER_ROUTING_POLICY_PATH, "utf8"),
+));
 
 export const CURSOR_LIVE_MODEL_ALLOWLIST = Object.freeze([
   "cursor-grok-4.5-high",
@@ -17,6 +25,88 @@ export const CURSOR_RUNTIME_DISPLAY_LABELS = Object.freeze({
 
 export function isCursorLiveModelAllowed(model) {
   return CURSOR_LIVE_MODEL_ALLOWLIST.includes(model);
+}
+
+export const CURSOR_INCLUDED_USAGE_CONFIRMATION =
+  PROVIDER_ROUTING_POLICY.cursor_live.confirmation_value;
+
+export function cursorDispatchDecision({
+  model,
+  billingType = process.env.OMD_CURSOR_BILLING_TYPE ?? null,
+  confirmation = process.env.OMD_CURSOR_INCLUDED_USAGE_CONFIRMED ?? null,
+  fakeRuntime = process.env.OMD_BENCH_FAKE_RUNTIME === "1",
+} = {}) {
+  const live = PROVIDER_ROUTING_POLICY.cursor_live;
+  if (fakeRuntime) {
+    if (live.allowed_models.includes(model)) {
+      return {
+        allowed: false,
+        mode: "fake-calibration",
+        billing_type: "fake-calibration",
+        reason: "fake-runtime-cannot-use-live-cursor-model",
+      };
+    }
+    return {
+      allowed: true,
+      mode: "fake-calibration",
+      billing_type: "fake-calibration",
+      reason: null,
+    };
+  }
+  if (!live.allowed_models.includes(model)) {
+    return {
+      allowed: false,
+      mode: "live",
+      billing_type: billingType,
+      reason: `cursor-model-denied:${model ?? "missing"}`,
+    };
+  }
+  if (billingType !== live.required_billing_type) {
+    return {
+      allowed: false,
+      mode: "live",
+      billing_type: billingType,
+      reason: `cursor-billing-not-included:${billingType ?? "missing"}`,
+    };
+  }
+  if (confirmation !== live.confirmation_value) {
+    return {
+      allowed: false,
+      mode: "live",
+      billing_type: billingType,
+      reason: "cursor-included-usage-confirmation-missing",
+    };
+  }
+  return {
+    allowed: true,
+    mode: "live-included",
+    billing_type: billingType,
+    reason: null,
+  };
+}
+
+export function assertProviderRoute({
+  runtime,
+  model,
+  billingType,
+  confirmation,
+  fakeRuntime = process.env.OMD_BENCH_FAKE_RUNTIME === "1",
+} = {}) {
+  const known = PROVIDER_ROUTING_POLICY.known_models[model];
+  if (known && runtime !== known.required_runtime) {
+    throw new Error(
+      `provider route denied: ${model} must use ${known.required_runtime}, not ${runtime ?? "missing"}`,
+    );
+  }
+  if (runtime !== "cursor") return { allowed: true, mode: known?.billing_type ?? "runtime-native" };
+  const decision = cursorDispatchDecision({ model, billingType, confirmation, fakeRuntime });
+  if (!decision.allowed) {
+    throw new Error(
+      `provider route denied before Cursor spawn: ${decision.reason}; `
+      + "Cursor is included-only and reserved for Grok",
+    );
+  }
+  return decision;
 }
 
 export function cursorModelEvidenceMode(requested, reported) {

@@ -15,10 +15,13 @@ import {
   preregisteredStopReason,
 } from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
 import {
+  assertProviderRoute,
   CURSOR_LIVE_MODEL_ALLOWLIST,
   CURSOR_RUNTIME_DISPLAY_LABELS,
+  CURSOR_INCLUDED_USAGE_CONFIRMATION,
   cursorModelEvidenceMode,
   isCursorLiveModelAllowed,
+  PROVIDER_ROUTING_POLICY,
   runnerSpecForCell,
 } from "../../../benchmarks/ui-resolve-bench/scripts/runtime-contract.mjs";
 
@@ -115,6 +118,51 @@ fs.writeFileSync(path.join(workspace, ".benchmark", "score.json"), JSON.stringif
 }
 
 describe("Cursor Agent fake runtime contract", () => {
+  it("fails closed on Cursor billing and model routing before any spawn", () => {
+    expect(PROVIDER_ROUTING_POLICY.cursor_live.allowed_models)
+      .toEqual(["cursor-grok-4.5-high"]);
+    expect(() => assertProviderRoute({
+      runtime: "cursor",
+      model: "gpt-5.6-sol",
+      billingType: "included",
+      confirmation: CURSOR_INCLUDED_USAGE_CONFIRMATION,
+    })).toThrow(/must use codex/);
+    expect(() => assertProviderRoute({
+      runtime: "cursor",
+      model: "cursor-grok-4.5-high",
+      billingType: "on-demand",
+      confirmation: CURSOR_INCLUDED_USAGE_CONFIRMATION,
+    })).toThrow(/cursor-billing-not-included/);
+    expect(() => assertProviderRoute({
+      runtime: "cursor",
+      model: "cursor-grok-4.5-high",
+      billingType: "included",
+    })).toThrow(/confirmation-missing/);
+    expect(assertProviderRoute({
+      runtime: "cursor",
+      model: "cursor-grok-4.5-high",
+      billingType: "included",
+      confirmation: CURSOR_INCLUDED_USAGE_CONFIRMATION,
+    })).toMatchObject({ mode: "live-included", billing_type: "included" });
+    expect(assertProviderRoute({ runtime: "codex", model: "gpt-5.6-luna" }))
+      .toMatchObject({ mode: "codex-native" });
+    expect(assertProviderRoute({ runtime: "codex", model: "gpt-5.6-sol" }))
+      .toMatchObject({ mode: "codex-native" });
+  });
+
+  it("allows fake Cursor calibration without representing real billing", () => {
+    expect(assertProviderRoute({
+      runtime: "cursor",
+      model: "cursor-fake-4-5",
+      fakeRuntime: true,
+    })).toMatchObject({ mode: "fake-calibration", billing_type: "fake-calibration" });
+    expect(() => assertProviderRoute({
+      runtime: "cursor",
+      model: "cursor-grok-4.5-high",
+      fakeRuntime: true,
+    })).toThrow(/fake-runtime-cannot-use-live-cursor-model/);
+  });
+
   it("selects only the Cursor adapter and does not expose a provider effort flag", () => {
     const spec = runnerSpecForCell(cell(), "/tmp/fake-cursor");
     expect(spec.runner.endsWith("run-cursor.mjs")).toBe(true);
