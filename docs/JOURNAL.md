@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.728 provider-zero admission
+- fresh root는 prepared3/3, provider/model0, execution artifacts absent다.
+- normalization13/13과 task/source/skill locks가 green이다.
+- plan4a975162/statef20b4273/skill4f02726f로 잠겼다.
+- PREPARATION commit 뒤 conservation 첫 셀만 실행한다.
+
 ## 2026-08-06 (Codex) · 1.9.728 preregistration
 - conservation→wind→archaeology를 Luna/high/no-retry fixed order로 잠갔다.
 - 1.9.726 workspace-bound product-path repair를 controller lock에 고정했다.
