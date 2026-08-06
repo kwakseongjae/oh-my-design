@@ -4,15 +4,18 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.725 candidate-preflight-bound Reliability@3 preregistration
+- 갱신: 2026-08-06 · 1.9.725 Reliability@3 provider-zero admission
 
 ## 지금 (현재 위치)
 
+- 1.9.725 fresh root는 scheduled/prepared3/3, provider calls0/model exposures0으로 admission green이다. plan `2ed014dd…`, state `8fb75a14…`, exact skill origin `73716105…`/hash `4f02726f…`이며 execution artifact는 전부 absent다.
+- required normalization13/13이 true다. task별 prompt/starter/product/artifact/source-contract 차이는 의도적으로 분리되고, task lock·schema0.2 debt coverage·provider_mutable=false·untouched product는3/3 exact다.
+- 다음은 PREPARATION checkpoint를 clean commit한 뒤 fixed order의 첫 benthic 셀만 `max-new-cells=1`로 실행하는 단계다. 결과가 candidate receipt/lifecycle hard-stop을 건드리면 conservation/wind는 unexecuted frozen된다.
 - 1.9.725는 fresh 1.9.724 task3개를 benthic→conservation→wind 순서로 고정하고 Codex/Luna/high, timeout720s, concurrency1, retry/replacement0으로 사전등록했다. 아직 provider/model exposure0이다.
 - cell success는85/85+resolved+revision1+static success1/fail0+handoff0+proof true+inventory 불변에 더해 passed candidate receipt와 candidate/final exact-byte equality를 요구한다. receipt 부재/실패, source-contract·inventory mismatch, final byte mismatch는 남은 셀 hard-stop이다.
 - exporter가 provider-sealed receipt와 최종 product hash를 독립 대조하고 matrix runner가 사전등록 조건을 실제 실행 게이트로 강제한다. focused54/54·lint green이다.
 - local skill provenance는 이제 저장소 HEAD가 아니라 해당 skill path의 마지막 변경 commit을 `source_commit`으로, 준비 시점 HEAD를 `workspace_commit`으로 분리한다. 따라서 exact 1.9.723 skill lock이 이후 report-only commit에 의해 잘못 귀속되지 않는다. focused250 pass/2 skip·lint green이다.
-- 다음은 이 preregistration을 clean commit한 뒤 fresh root를 provider-zero prepare/admission하고 그 PREPARATION checkpoint를 별도 commit하는 일이다. 그 전 provider execution은 금지다.
+- preregistration과 provenance repair는 clean commit됐다. provider execution은 PREPARATION checkpoint commit 전까지 금지다.
 - 1.9.724는 terminal 1.9.722 task를 재사용하지 않고 benthic sample transfer, conservation frame loan, wind-tunnel model handoff의 새 task3개를 provider/model0으로 잠갔다.
 - raw DESIGN.md baseline은 모두75/85이고 false gate는 accessibility+responsive exact다. 접근성 red node는 `.guidance-copy`와 `footer`뿐이며 surface-local muted copy는 green이다.
 - contrast contract는 `.muted`보다 specificity가 높은 `header > p.guidance-copy`와 `footer`를 사용한다. schema0.2 debt coverage와 provider-zero sealed artifact/inventory/structured CSS6건이3/3 complete다.

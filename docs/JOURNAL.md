@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.725 provider-zero admission
+- fresh root를 prepared3/3, provider/model0으로 만들었다.
+- normalization13/13, task locks, schema0.2 coverage, untouched products가 green이다.
+- plan2ed014dd/state8fb75a14/skill4f02726f로 잠겼다.
+- PREPARATION commit 뒤 benthic 첫 셀만 실행한다.
+
 ## 2026-08-06 (Codex) · skill provenance split
 - local skill의 마지막 변경 commit과 준비 당시 workspace HEAD를 분리했다.
 - 1.9.723 exact skill lock이 후속 report commit에 잘못 귀속되는 문제를 차단했다.
