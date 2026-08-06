@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.731 provider-zero admission
+- fresh root는 prepared3/3, provider/model0, execution artifact absent다.
+- normalization13/13과 task/source/skill/debt locks가 green이다.
+- plan a7cb53eb/state89311290/skill05d0259e로 잠겼다.
+- PREPARATION commit 뒤 archaeology 첫 셀만 실행한다.
+
 ## 2026-08-06 (Codex) · 1.9.731 Reliability@3 preregistration
 - archaeology→paleontology→textile, Luna/high, exact1회씩으로 고정했다.
 - static-promote를 필수화하고 model candidate retyping을 금지했다.
