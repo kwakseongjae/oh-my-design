@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.742 fresh council product task locked
+- 갱신: 2026-08-06 · 1.9.743 council product comparison preregistered
 
 ## 지금 (현재 위치)
+
+- 1.9.743은 fresh oceanographic task에서 council off/on 2-cell 비교를 사전등록했다. Cursor/Grok4.5 High, high, 720s, concurrency1, retry/replacement0, fixed order와 30s pacing이다.
+- on arm은 같은 omd:apply에 provider-sealed zero-dispatch ledger만 추가한다. questions0/model lanes0가 준비 단계 hard gate다.
+- 다음은 clean prereg commit 뒤 `/private/tmp/omd-council-product-comparison-1.9.743` provider-zero preparation/admission, 이어서 두 셀 실행과 objective/proof/cost 채점이다.
 
 - 1.9.742는 provider/model 미노출 fresh `oceanographic-cast-custody-v0.1` task를 잠갔다. raw baseline75/85이며 responsive+accessibility만 red다.
 - 같은 Grok 4.5 High에서 current apply와 zero-dispatch maintenance ledger apply를 2-cell/no-retry로 비교할 준비가 됐다. task/starter/source contract는 exact hash로 고정됐다.
