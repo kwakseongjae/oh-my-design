@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.745 terminal browser runner complete
+- 갱신: 2026-08-06 · 1.9.746 fresh Reliability@3 task lock complete
 
 ## 지금 (현재 위치)
+
+- 1.9.746은 provider/model 미노출 fresh task 3개(microscopy/manuscript/geology)를 잠갔다. raw baseline은 모두75/85이며 red gate는 responsive+accessibility exact다.
+- exact task/contract/baseline/skill hash와 shipped `reflow-browser-runner.sh` proof 경로를 고정했다. inventory100, focused235 pass/2 skip, lint green, provider call0이다.
+- 다음은 clean task-lock commit에서 Luna/high council-on 3셀, 720s, fixed order, concurrency1, retry/replacement0을 사전등록하고 provider-zero admission을 통과시키는 단계다. 성공은85/85+resolved+proof compliance 3/3을 모두 요구한다.
 
 - 1.9.745는 transcription-prone 긴 browser 명령을 shipped `reflow-browser-runner.sh` 한 줄로 대체했다. artifact locked product와 sibling helper/Python source는 runner가 직접 결박한다.
 - proof classifier는 runner를 browser 1회로, `command -v browser-harness`를 recovery probe로 분류한다. focused53 + install43, full794 pass/3 skip, shell syntax, lint가 green이며 provider call0이다.

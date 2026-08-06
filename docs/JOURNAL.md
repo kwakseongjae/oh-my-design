@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.746 Reliability@3 task lock
+- fresh microscopy/manuscript/geology 과제를 provider/model0으로 잠갔다.
+- 세 raw baseline 모두75/85, responsive+accessibility만 red다.
+- 다음은 clean commit 뒤 Luna/high council-on 3셀의 사전등록·admission이다.
+
 ## 2026-08-06 (Codex) · 1.9.745 terminal browser runner
 - 긴 browser 명령을 shipped runner 한 줄로 축약했다.
 - proof/skill/runner53, install43, full794 pass/3 skip, lint가 green이다.

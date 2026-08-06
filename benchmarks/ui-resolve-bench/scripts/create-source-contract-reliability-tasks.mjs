@@ -11,8 +11,9 @@ const v3BaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1
 const v4BaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1.9.730-v4";
 const v5BaselineRoot = "/private/tmp/omd-frontier-comparison-baselines-1.9.732-v5";
 const v6BaselineRoot = "/private/tmp/omd-council-product-baselines-1.9.742-v6";
+const v7BaselineRoot = "/private/tmp/omd-terminal-runner-reliability-baselines-1.9.746-v7";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
-const taskSet = process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -184,7 +185,28 @@ const v6Cases = [
   },
 ];
 
-const cases = taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v7Cases = [
+  {
+    id: "microscopy-slide-custody-v0.1", title: "Microscopy slide custody review", eyebrow: "Pathology archive · slide custody", heading: "Microscopy-slide custody review", recordHeading: "Slide register", recordSummary: "Five supplied specimen groups mapped to seven slide carriers.",
+    records: [["SLIDE-REN-3142",["CARRIER-97210","CARRIER-97211"]],["SLIDE-HEP-3267",["CARRIER-97212"]],["SLIDE-PUL-3384",["CARRIER-97213","CARRIER-97214"]],["SLIDE-DER-3495",["CARRIER-97215"]],["SLIDE-NEU-3578",["CARRIER-97216"]]],
+    windows: [["BENCH-M2","07:45–08:05"],["BENCH-C5","10:30–10:50"],["BENCH-E1","13:40–14:00"],["BENCH-G4","16:15–16:35"]], views: [["slides","Slide register"],["windows","Bench windows"],["decision","Custody decision"]], toggle: "Include stain-log note", fieldLabel: "Custody registrar", validValue: "SLIDE-REN-3142 custody review", target: "SLIDE-REN-3142 + CARRIER-97210", evidence: "5 specimen groups · 7 slide carriers · 4 bench windows", state: "Review open", action: "Open custody record", footer: "Pathology archive · supplied custody evidence only",
+    unknowns: ["diagnosis verified","stain complete","scanner calibrated","patient provenance validated","carrier seal verified","bench accepted","catalog published","custody approved"], palette: {canvas:"#EDF3F4",surface:"#FCFEFF",ink:"#2D2638",muted:"#69757A",border:"#A39AAD",primary:"#59436E",accent:"#795F42"}, columns: "repeat(3,286px)", windowColumns: "repeat(4,221px)", decisionMin: "572px", cardRadius: 5, domain: "microscopy slide-custody ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "manuscript-folio-transfer-v0.1", title: "Manuscript folio transfer review", eyebrow: "Rare-book room · folio transfer", heading: "Manuscript-folio transfer review", recordHeading: "Folio register", recordSummary: "Four supplied folio groups mapped to six archival folders.",
+    records: [["FOLIO-GOS-4126",["FOLDER-58320","FOLDER-58321"]],["FOLIO-CHR-4271",["FOLDER-58322"]],["FOLIO-MAR-4395",["FOLDER-58323","FOLDER-58324"]],["FOLIO-COL-4468",["FOLDER-58325"]]],
+    windows: [["ROOM-N3","08:15–08:35"],["ROOM-E6","11:20–11:40"],["ROOM-S2","14:50–15:10"]], views: [["folios","Folio register"],["windows","Room windows"],["decision","Transfer decision"]], toggle: "Include binding-note copy", fieldLabel: "Transfer librarian", validValue: "FOLIO-GOS-4126 transfer review", target: "FOLIO-GOS-4126 + FOLDER-58320", evidence: "4 folio groups · 6 archival folders · 3 room windows", state: "Review open", action: "Open transfer record", footer: "Rare-book room · supplied transfer evidence only",
+    unknowns: ["script verified","folio complete","humidity calibrated","provenance validated","folder seal verified","room accepted","catalog published","transfer approved"], palette: {canvas:"#EDF3F4",surface:"#FCFEFF",ink:"#352B25",muted:"#69757A",border:"#AA9D95",primary:"#6A4B39",accent:"#5B657B"}, columns: "repeat(2,389px)", windowColumns: "repeat(3,275px)", decisionMin: "556px", cardRadius: 3, domain: "manuscript folio-transfer ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "geology-section-loan-v0.1", title: "Geology section loan review", eyebrow: "Earth-science collection · section loan", heading: "Thin-section loan review", recordHeading: "Section register", recordSummary: "Six supplied rock groups mapped to eight section cases.",
+    records: [["SECTION-BAS-5140",["CASE-76420","CASE-76421"]],["SECTION-GRN-5253",["CASE-76422"]],["SECTION-SCH-5376",["CASE-76423","CASE-76424"]],["SECTION-LMS-5482",["CASE-76425"]],["SECTION-SST-5567",["CASE-76426"]],["SECTION-GAB-5691",["CASE-76427"]]],
+    windows: [["STORE-A2","06:55–07:15"],["STORE-C5","09:35–09:55"],["STORE-F3","12:55–13:15"],["STORE-H6","15:40–16:00"]], views: [["sections","Section register"],["windows","Store windows"],["decision","Loan decision"]], toggle: "Include polish-note copy", fieldLabel: "Loan curator", validValue: "SECTION-BAS-5140 loan review", target: "SECTION-BAS-5140 + CASE-76420", evidence: "6 rock groups · 8 section cases · 4 store windows", state: "Review open", action: "Open loan record", footer: "Earth-science collection · supplied loan evidence only",
+    unknowns: ["mineral verified","section stable","polish calibrated","provenance validated","case seal verified","store accepted","catalog published","loan approved"], palette: {canvas:"#EDF3F4",surface:"#FCFEFF",ink:"#21333A",muted:"#69757A",border:"#99A9AD",primary:"#315E69",accent:"#75604B"}, columns: "repeat(3,290px)", windowColumns: "repeat(4,220px)", decisionMin: "574px", cardRadius: 4, domain: "geology thin-section loan ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -271,7 +293,9 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v6"
+  const baselineRoot = taskSet === "v7"
+    ? v7BaselineRoot
+    : taskSet === "v6"
     ? v6BaselineRoot
     : taskSet === "v5"
     ? v5BaselineRoot

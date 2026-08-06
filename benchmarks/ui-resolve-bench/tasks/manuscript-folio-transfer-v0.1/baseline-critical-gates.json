@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.1",
+  "source": "provider-free raw-design-md objective evaluation",
+  "source_score_sha256": "f222636ae20b146045b7adcfd26414a225f589d00d7017dbf269187466d924fe",
+  "methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+  "task_id": "manuscript-folio-transfer-v0.1",
+  "variant_id": "raw-design-md",
+  "points": {
+    "task_contract": 25,
+    "design_grounding": 20,
+    "state_journey": 15,
+    "responsive": 4,
+    "accessibility": 6,
+    "evidence_honesty": 5,
+    "deterministic_total": 75,
+    "deterministic_max": 85
+  },
+  "critical_gates": {
+    "task_contract": true,
+    "state_journey": true,
+    "responsive": false,
+    "accessibility": false,
+    "design_grounding": true,
+    "evidence_honesty": true
+  },
+  "failed_evidence": {
+    "responsive": [
+      "narrow viewport page-level overflow or protected text geometry failure",
+      "320px page-level overflow or protected text geometry failure",
+      "200% surrogate page-level overflow or protected text geometry failure"
+    ],
+    "accessibility": [
+      "serious color contrast on normal-size canvas guidance"
+    ]
+  }
+}

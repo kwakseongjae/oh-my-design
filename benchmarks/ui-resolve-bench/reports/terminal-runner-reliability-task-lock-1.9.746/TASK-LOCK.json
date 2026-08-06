@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.746",
+  "experiment_id": "terminal-runner-reliability-task-lock-1.9.746",
+  "status": "FRESH_TASK_RELIABILITY_3_LOCKED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "skill": {
+    "source_commit": "b174309b45b19a44460877a37ed21fb5032efa4a",
+    "tree_sha256": "eeabca49b89755888ba0707196ab6f00987dbe5327f9ce84a87c84a09fef96d2",
+    "browser_proof": "scripts/reflow-browser-runner.sh",
+    "candidate_promotion": "static-promote",
+    "provider_mutable": false
+  },
+  "tasks": [
+    {
+      "task_id": "microscopy-slide-custody-v0.1",
+      "provenance": "fresh-provider-zero-1.9.746",
+      "task_tree_sha256": "fb18b1049ae57ae11d95d384a570a6673f526ca5de7f6ab78fd7b3fd439d3cad",
+      "task_json_sha256": "0d2d403197cd4c267603cb51a4c2809f06218d209ec8a13f3d1bb8e1840e22f2",
+      "prompt_sha256": "37294262b12bdd5a63c112ae53ee41ae2064871fa3c347c74eef3cbdf56f13c8",
+      "starter_sha256": "9c75d491b1a2f2f67abc019ba92cc92dc021a219da5d75fa7127da19a69cb485",
+      "baseline_evidence_sha256": "6b6786d06946c090f1b000054638a3f47d1ca7e9ac75f9ca5fd6dceb20258ec6",
+      "baseline_source_score_sha256": "cbd4d84255207110d16e3a9c4fc5fabd0640638eaae99a378f7b7c7fba3c56ca",
+      "source_contract_sha256": "1e128c4f5e35d2da37f7e647cd13800cba991ff12aafe42731efae9ed097a162"
+    },
+    {
+      "task_id": "manuscript-folio-transfer-v0.1",
+      "provenance": "fresh-provider-zero-1.9.746",
+      "task_tree_sha256": "2b920faeabae81d52677282eed5393ba5d8a28adbc7bee2264b9599697fafe36",
+      "task_json_sha256": "026c81827c8af777a80612c3313a644763d2e91e00d20269f2802ff794820965",
+      "prompt_sha256": "420803d58974a8afeb8aaa18aede1656186e86d079ec8785f230969321ba6ba7",
+      "starter_sha256": "6f195ae7b4cd5670f3223b4dda281b2ae817a2ad3afa97376bc2731423cb4aee",
+      "baseline_evidence_sha256": "3043139dba5cd0068b67b61a07e8fb7a0d979fc7774c4f560a6c0ea32468953e",
+      "baseline_source_score_sha256": "f222636ae20b146045b7adcfd26414a225f589d00d7017dbf269187466d924fe",
+      "source_contract_sha256": "e075cfa9ba0c023df02f8cff6bd683a868df30532c045827a947ce7da9f19e70"
+    },
+    {
+      "task_id": "geology-section-loan-v0.1",
+      "provenance": "fresh-provider-zero-1.9.746",
+      "task_tree_sha256": "82d342d2a73877ff7c70fc9b2790bfe417dd00cd603891f6d6b9231aa6486a4a",
+      "task_json_sha256": "1275f1375bc16f0835972a57b77285c41e30afd149c32c79499d92fd4fb7d4cc",
+      "prompt_sha256": "aba9b3fc8603314f33a7a013ca5b04af8fbf400e88e3f6882f15411b745fa5fb",
+      "starter_sha256": "296b3c90c008b025c72d2c42842a254b2d319f7c7ff7dbdbbff83230e8da37cc",
+      "baseline_evidence_sha256": "42276f9de4418db6317259d6ef616c94430fddb48edffb0bd7172929f83a48db",
+      "baseline_source_score_sha256": "7537d3d63a5da4d86e11568231a6a43f224f5d9ddc64d14cb2162a6d50cd16f2",
+      "source_contract_sha256": "11c22f1abec6a62d782bc0a77d408a20a817411ff2a6a8b1c97a7c9363c3f7f3"
+    }
+  ],
+  "raw_baseline": {
+    "scores": [75, 75, 75],
+    "objective_max": 85,
+    "failed_critical_gates": ["accessibility", "responsive"],
+    "accessibility_failure_targets": [".guidance-copy", "footer"],
+    "coverage_complete": true
+  },
+  "acceptance": {
+    "trials": 3,
+    "required_objective_score": "85/85",
+    "required_resolution": true,
+    "required_proof_compliance": true,
+    "required_reliability": "3/3",
+    "retry": 0,
+    "replacement": 0,
+    "hard_stop_on_lifecycle_failure": true
+  },
+  "validation": {
+    "task_contracts": "pass",
+    "fresh_provider_free_browser_baseline": "pass",
+    "task_inventory": 100,
+    "provider_calls": 0
+  },
+  "execution_allowed": false,
+  "next_gate": "Commit these exact task bytes, then preregister and admit a fresh Luna/high council-on Reliability@3 root."
+}
