@@ -9,3 +9,7 @@ A cell passes only at 85/85 with every critical gate resolved, one product revis
 Any lifecycle failure freezes the remaining cells. Objective failure may continue only when the lifecycle remains clean. Results are internal diagnostic evidence; they do not establish model superiority, a general council lift, an industry-leading claim, or the 2.0 release gate by themselves.
 
 Provider execution is forbidden until this exact plan is committed and a fresh root passes provider-zero preparation and admission.
+
+## Provider-zero preparation result
+
+Preparation exposed a preregistration defect before any provider call. The plan locked the base `omd-apply` tree, while the installed council-gate variant includes a deterministic activation delta and therefore has a different effective skill hash. The admission auditor now rejects this mismatch. This root is permanently frozen at provider/model exposure zero and is replaced only by a corrected 1.9.747 preregistration.

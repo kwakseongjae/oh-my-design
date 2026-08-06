@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "terminal-runner-reliability-canary-1.9.746",
+  "status": "FROZEN_PROVIDER_ZERO_SKILL_LOCK_MISMATCH",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "scheduled_cells": 3,
+  "prepared_cells": 3,
+  "locked_plan_sha256": "a29e9f45751e985226f07998d75e241cffd6978e0a84f9322d26b2a30f0c0ce8",
+  "preparation_state_sha256": "cb33c1835734a8cae2d0dd3f355e357988f30bba4e02365121c66e62d981dca9",
+  "declared_skill_tree_sha256": "eeabca49b89755888ba0707196ab6f00987dbe5327f9ce84a87c84a09fef96d2",
+  "installed_effective_skill_sha256": "b792a4e8bcd5b594cbd864bfb69fbf07f53c98338f32a4aa8b63adaa5d80cb9e",
+  "council_intake": {
+    "question_count": 0,
+    "model_lane_calls": 0,
+    "provider_mutable": false
+  },
+  "execution_admission": {
+    "allowed": false,
+    "reason": "declared skill lock did not include the council-gate activation delta",
+    "execution_artifacts_absent": true
+  },
+  "disposition": "Preserve this provider-zero root and preregister a corrected 1.9.747 root. Never execute or resume 1.9.746."
+}

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.746 skill-lock freeze
+- council activation delta 때문에 plan base hash와 effective installed hash가 달랐다.
+- provider/model0에서 root를 동결하고 admission을 fail-close로 수리했다.
+- 다음 1.9.747은 effective hash를 잠근 새 root다.
+
 ## 2026-08-06 (Codex) · 1.9.746 Reliability@3 preregistration
 - Luna/high council-on fresh3셀을 shipped terminal runner 조건으로 잠갔다.
 - 85/85+resolved+proof+runner recovery0의3/3과 lifecycle hard-stop을 사전등록했다.

@@ -119,6 +119,13 @@ export function auditPreparedMatrixAdmission(root) {
       === cell.deterministic_reflow.baseline_critical_gate_coverage?.sha256
       && lock.source_contract_sha256 === cell.deterministic_reflow.source_contract_sha256;
   });
+  const skillLock = plan.skill_lock_contract ?? null;
+  const skillLockAttested = !skillLock || cells
+    .filter((cell) => cell.system_id !== "raw-design-md")
+    .every((cell) => (
+      skillLock.source_commit === cell.source_commit
+      && skillLock.skill_tree_sha256 === cell.skill_sha256
+    ));
   const pairedGroups = new Map();
   for (const cell of cells) {
     const key = `${cell.task_id}\0${plan.cells.find((planned) => planned.id === cell.id)?.trial_index}`;
@@ -158,6 +165,7 @@ export function auditPreparedMatrixAdmission(root) {
     deterministic_reflow_contract: allEqual(cells
       .map((cell) => deterministicReflowContract(cell.deterministic_reflow))),
     task_lock_attested: taskLockAttested,
+    skill_lock_attested: skillLockAttested,
     paired_task_contracts: pairedTaskContracts,
     paired_arm_rotation: pairedArmSets.length > 0
       && allEqual(pairedArmSets)
@@ -179,6 +187,7 @@ export function auditPreparedMatrixAdmission(root) {
       "objective_evaluator",
       "deterministic_reflow_contract",
       "task_lock_attested",
+      "skill_lock_attested",
     ]
     : normalizationPolicy === "paired-cross-task-comparison"
       ? [
@@ -190,6 +199,7 @@ export function auditPreparedMatrixAdmission(root) {
         "source_publishable",
         "objective_evaluator",
         "task_lock_attested",
+        "skill_lock_attested",
         "paired_task_contracts",
         "paired_arm_rotation",
       ]

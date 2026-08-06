@@ -194,6 +194,7 @@ describe("prepared matrix admission audit", () => {
         task_id: false,
         task_id_distinct: true,
         task_lock_attested: true,
+        skill_lock_attested: true,
         deterministic_reflow: false,
         deterministic_reflow_contract: true,
       },
@@ -204,6 +205,83 @@ describe("prepared matrix admission audit", () => {
     const locked = JSON.parse(readFileSync(lockedPath, "utf8"));
     locked.task_lock_contract.tasks[1].starter_sha256 = "0".repeat(64);
     writeFileSync(lockedPath, JSON.stringify(locked), "utf8");
+    expect(() => auditPreparedMatrixAdmission(root)).toThrow(
+      "prepared-matrix-admission:normalization-mismatch",
+    );
+  });
+
+  it("rejects a declared skill lock that does not match the installed effective skill", () => {
+    const root = join(mkdtempSync(join(tmpdir(), "omd-prepared-skill-lock-")), "matrix");
+    const reliabilityPlan = {
+      ...plan(root),
+      schema_version: "0.3",
+      suite_version: "ui-resolve-v0.2",
+      product_version: "fixture",
+      execution_purpose: "skill-lock-fixture",
+      family: "skill",
+      status: "locked-diagnostic-only",
+      control_contract: {
+        comparison_mode: "native-capability",
+        effort_semantics: "runtime-native-ordinal-not-cross-provider-equivalent",
+        temperature_policy: "runtime-default-frozen",
+        timeout_seconds: 20,
+        max_concurrency: 1,
+        latency_comparison: "descriptive-only",
+        retry_policy: "none-primary",
+        timeout_policy: "count-as-valid-failure",
+        infrastructure_policy: "retain-freeze-and-repreregister",
+        task_order_policy: "fixed-preregistered",
+        admission_normalization_policy: "cross-task-reliability",
+        token_budget: {
+          mode: "observed-only",
+          limit_tokens: null,
+          usage_required: true,
+          account_components: ["input", "cached_input", "output", "reasoning_output"],
+          cached_input_separate: true,
+          cost_policy: "provider-reported-or-pinned-price-equivalent",
+        },
+        step_budget: { mode: "observed-only", limit_steps: null },
+      },
+      skill_lock_contract: {
+        source_commit: "0".repeat(40),
+        skill_tree_sha256: "0".repeat(64),
+      },
+      task_lock_contract: {
+        tasks: ["orbital-optics-transfer-v0.1", "seed-vault-accession-v0.1"].map((task_id) => ({
+          task_id,
+          task_tree_sha256: "1".repeat(64),
+          prompt_sha256: "1".repeat(64),
+          starter_sha256: "1".repeat(64),
+          baseline_evidence_sha256: "1".repeat(64),
+          source_contract_sha256: "1".repeat(64),
+        })),
+      },
+      cells: [
+        ["orbital-r1", "orbital-optics-transfer-v0.1"],
+        ["seed-r1", "seed-vault-accession-v0.1"],
+      ].map(([id, task_id]) => ({
+        ...plan(root).cells[0], id, task_id,
+        variant_id: "omd-portable", system_id: "omd-apply-current",
+      })),
+    };
+    prepareRunMatrix(reliabilityPlan);
+    const lockedPath = join(root, "RUN-MATRIX.locked.json");
+    const locked = JSON.parse(readFileSync(lockedPath, "utf8"));
+    for (const taskLock of locked.task_lock_contract.tasks) {
+      const cell = locked.cells.find((entry) => entry.task_id === taskLock.task_id);
+      const matrixCell = JSON.parse(readFileSync(
+        join(root, cell.id, ".benchmark/matrix-cell.json"), "utf8",
+      ));
+      const manifest = JSON.parse(readFileSync(
+        join(root, cell.id, ".benchmark/manifest.json"), "utf8",
+      ));
+      taskLock.prompt_sha256 = matrixCell.task_prompt_sha256;
+      taskLock.starter_sha256 = matrixCell.starter_sha256;
+      taskLock.baseline_evidence_sha256 = manifest.deterministic_reflow.baseline_critical_gate_coverage.sha256;
+      taskLock.source_contract_sha256 = manifest.deterministic_reflow.source_contract_sha256;
+    }
+    writeFileSync(lockedPath, JSON.stringify(locked), "utf8");
+
     expect(() => auditPreparedMatrixAdmission(root)).toThrow(
       "prepared-matrix-admission:normalization-mismatch",
     );
