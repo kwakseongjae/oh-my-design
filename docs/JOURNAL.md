@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.747 corrected preregistration
+- task와 실행 조건은 유지하고 effective council-gate skill hash를 잠갔다.
+- 새 admission은 선언된 skill lock과 설치 bytes를 직접 대조한다.
+- checkpoint 뒤 fresh provider-zero root를 준비한다.
+
 ## 2026-08-06 (Codex) · 1.9.746 skill-lock freeze
 - council activation delta 때문에 plan base hash와 effective installed hash가 달랐다.
 - provider/model0에서 root를 동결하고 admission을 fail-close로 수리했다.

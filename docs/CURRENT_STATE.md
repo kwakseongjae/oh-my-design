@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.746 provider-zero skill-lock mismatch frozen
+- 갱신: 2026-08-06 · 1.9.747 effective-skill Reliability@3 preregistered
 
 ## 지금 (현재 위치)
+
+- 1.9.747은 동결된 1.9.746과 task/조건을 그대로 유지하고 council activation delta가 포함된 effective installed skill `b792a4e8…`을 정확히 잠갔다.
+- fresh3, Luna/high, council-on, shipped runner, fixed order, 30s pacing, concurrency1, retry/replacement0과85/85+resolved+proof+recovery0의3/3 계약은 그대로다.
+- 다음은 plan checkpoint commit 뒤 새 `/private/tmp/omd-terminal-runner-reliability-1.9.747` root를 prepare하고 새 `skill_lock_attested` gate까지 provider-zero admission하는 단계다.
 
 - 1.9.746 prepare에서 plan의 base skill hash와 council-gate activation delta가 포함된 effective installed skill hash가 다름을 발견했다. provider/model0, execution artifact0 상태로 root를 영구 동결했다.
 - admission은 선언된 `skill_lock_contract`의 source commit+effective tree hash를 실제 모든 non-raw cell과 fail-close 비교하도록 수리했다. focused6/6, lint green이고 기존 1.9.746 root를 normalization mismatch로 거부한다.
