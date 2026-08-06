@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.748 isolated-browser Reliability@3 preregistered
+- 갱신: 2026-08-06 · 1.9.748 provider-zero + runtime preflight green
 
 ## 지금 (현재 위치)
+
+- 1.9.748 root는 prepared3/3, provider/model0, execution artifacts0이며 task/effective skill/source/evaluator admission이 green이다. plan `7c1de6f4…`, state `196d4d9f…`다.
+- 동일 Codex sandbox 경로의 runtime preflight도 exact `omd1748` browser-harness connection ready + isolated Codex auth ready다. council intake는 questions0/model lanes0/provider mutable false다.
+- 다음은 PREPARATION checkpoint commit 뒤 manuscript 첫 셀만 exact1회 실행한다. lifecycle clean일 때만 다음 셀로 간다.
 
 - 1.9.748 plan은 manuscript→geology→herbarium, Luna/high, council-on, timeout720s, concurrency1, pacing30s, retry/replacement0으로 잠겼다.
 - 새 `browser_execution_contract`가 shared runtime+exact `omd1748` socket+attach-only를 provider 전 요구한다. 모델은 CDP endpoint를 받지 않고 controller가 준비한 named socket만 받는다.

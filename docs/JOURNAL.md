@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.748 prepared
+- provider-zero3/3 admission과 exact effective skill lock이 green이다.
+- 동일 sandbox에서 `omd1748` browser+Codex auth runtime preflight도 green이다.
+- checkpoint 뒤 manuscript 첫 셀 exact1회로 간다.
+
 ## 2026-08-06 (Codex) · 1.9.748 browser-preflight preregistration
 - 새3셀과 exact `omd1748` attach-only browser contract를 잠갔다.
 - 모델은 CDP endpoint 없이 shared named socket만 사용한다.
