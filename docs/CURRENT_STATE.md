@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.730 fresh promotion reliability task lock
+- 갱신: 2026-08-06 · 1.9.731 deterministic promotion Reliability@3 preregistration
 
 ## 지금 (현재 위치)
 
+- 1.9.731은 archaeology→paleontology→textile fixed order, clean `4e9514b9` skill, Codex/Luna/high, timeout720s, concurrency1, retry/replacement0으로 사전등록했다. 아직 provider/model exposure0이다.
+- 각 셀은 candidate preview green 뒤 `static-promote`로 exact bytes를 한 번만 product에 승격해야 한다. model retyping은 금지하며85/85+revision1+static1/0+proof+candidate/final exact를 모두 요구한다.
+- lifecycle hard-stop은 남은 셀을 동결한다. 이 실험은 diagnostic only이며 provider execution 전에 fresh root의 provider-zero preparation/admission과 checkpoint commit이 필요하다.
 - 1.9.730은 1.9.728에서 provider/model에 노출되지 않은 archaeology 한 과제와 완전히 새 paleontology/textile 두 과제를 묶었다. conservation/wind 결과는 재실행하지 않는다.
 - 세 과제 raw baseline은 모두75/85이고 red gate는 accessibility+responsive exact다. schema0.2 debt coverage, sealed artifact/inventory, `provider_mutable=false`, 설치된 `static-promote`가 provider/model0으로 complete다.
 - skill은 clean `4e9514b9`/`05d0259e…`로 동일하며 task inventory는93이다. exact task bytes를 commit한 뒤 fresh no-retry Reliability@3 plan을 사전등록한다.

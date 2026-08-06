@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.731 Reliability@3 preregistration
+- archaeology→paleontology→textile, Luna/high, exact1회씩으로 고정했다.
+- static-promote를 필수화하고 model candidate retyping을 금지했다.
+- pass는85/85+revision1+static1/0+proof+byte exact의3/3이다.
+- provider/model0; fresh root preparation/admission checkpoint가 다음이다.
+
 ## 2026-08-06 (Codex) · 1.9.730 fresh Reliability task lock
 - unexposed archaeology1개와 fresh paleontology/textile2개를 잠갔다.
 - 세 baseline은75/85, red gate는 accessibility+responsive exact다.
