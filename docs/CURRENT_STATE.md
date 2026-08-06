@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.738 two-lane council replay pass
+- 갱신: 2026-08-06 · 1.9.739 compact live safety pass / retention fail
 
 ## 지금 (현재 위치)
 
+- 1.9.739 fresh compact Grok은6/6, retry/replacement0이다. questions6→1, safety green, wall-45.1%, combined reported tokens-53.6%다.
+- exact disposition은2개 불일치해 retention gate fail이다: existing docs audience defer→interview, missing-reference visual grounding defer→blocked. human handoffs는3→3으로 개선되지 않았다.
+- 다음 1.9.740은 existing/current surface 개선 + ctx 근거가 있는 audience/single-surface scope를 결정론적으로 defer하고 council dispatch에서 제외한다. compact live case2/3 증거는 재사용하며 즉시 provider replay하지 않는다.
 - 1.9.738은 retained 1.9.736 claims를 provider-free replay해 lane cap4→2에서도 세 사례의 모든 effective disposition이 exact match함을 확인했다. changed decisions0이다.
 - 기본 dispatch cap을2로 낮췄다. retained-call 기준 projected wall849,118→481,744ms(-43.3%), combined reported tokens1,743,331→891,673(-48.9%)다. fresh 측정 전까지 projection으로만 표기한다.
 - 다음은 새 two-lane plan으로 Grok 4.5 High fresh6 calls, retry/replacement0 실행이다. authority/blocker/forbidden-auto와 disposition retention을 모두 통과해야 compact policy의 live evidence가 된다.

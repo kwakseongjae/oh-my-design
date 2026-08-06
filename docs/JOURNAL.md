@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.739 compact council live
+- fresh Grok6/6, retry0; questions6→1, wall-45.1%, tokens-53.6%다.
+- safety green이나 disposition2개 불일치, human handoff3→3이라 retention fail이다.
+- 모델 변동 대신 existing-surface 근거 질문을 deterministic defer해야 한다.
+- 다음은 1.9.740 maintenance defer이며 즉시 provider replay는 없다.
+
 ## 2026-08-06 (Codex) · 1.9.738 two-lane council replay
 - retained claims로 cap4→2를 replay해 세 사례 disposition exact match, changed0이다.
 - projected wall -43.3%, combined reported tokens -48.9%다.

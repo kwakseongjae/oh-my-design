@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "compact-council-live-1.9.739",
+  "status": "COMPLETE_SAFETY_PASS_RETENTION_FAIL",
+  "provider_calls": 6,
+  "successful_calls": 6,
+  "retries": 0,
+  "replacements": 0,
+  "baseline_question_count": 6,
+  "compact_question_count": 1,
+  "baseline_human_handoff_count": 3,
+  "compact_human_handoff_count": 3,
+  "authority_retained": true,
+  "expected_blocked_retained": true,
+  "forbidden_auto_count": 0,
+  "exact_disposition_match": false,
+  "changed_decisions": [
+    "existing-docs-card/primary-audience:defer->interview",
+    "missing-official-reference/visual-grounding:defer->blocked"
+  ],
+  "total_wall_ms": 466365,
+  "combined_reported_tokens": 809100,
+  "wall_reduction_ratio_vs_full": 0.45076,
+  "token_reduction_ratio_vs_full": 0.53589,
+  "frontier_gate_pass": false
+}
