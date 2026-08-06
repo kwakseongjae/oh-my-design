@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.746 Reliability@3 preregistration
+- Luna/high council-on fresh3셀을 shipped terminal runner 조건으로 잠갔다.
+- 85/85+resolved+proof+runner recovery0의3/3과 lifecycle hard-stop을 사전등록했다.
+- 다음은 clean checkpoint에서 provider-zero prepare/admission이다.
+
 ## 2026-08-06 (Codex) · 1.9.746 Reliability@3 task lock
 - fresh microscopy/manuscript/geology 과제를 provider/model0으로 잠갔다.
 - 세 raw baseline 모두75/85, responsive+accessibility만 red다.

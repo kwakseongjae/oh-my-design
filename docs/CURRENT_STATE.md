@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.746 fresh Reliability@3 task lock complete
+- 갱신: 2026-08-06 · 1.9.746 Reliability@3 preregistration locked
 
 ## 지금 (현재 위치)
+
+- 1.9.746 실행 계획은 fresh3 tasks, Codex/Luna/high, council-on, shipped terminal runner, timeout720s, fixed order, concurrency1, 30s pacing, retry/replacement0으로 잠겼다.
+- 셀 성공은85/85+resolved+proof compliance+runner recovery0+revision1+static1/0+candidate/final exact이며 Reliability는3/3이다. lifecycle 실패 시 남은 셀을 동결한다.
+- 다음은 이 plan checkpoint를 commit한 뒤 `/private/tmp/omd-terminal-runner-reliability-1.9.746`을 provider-zero prepare/admission하고 실행 흔적이 없음을 확인하는 단계다.
 
 - 1.9.746은 provider/model 미노출 fresh task 3개(microscopy/manuscript/geology)를 잠갔다. raw baseline은 모두75/85이며 red gate는 responsive+accessibility exact다.
 - exact task/contract/baseline/skill hash와 shipped `reflow-browser-runner.sh` proof 경로를 고정했다. inventory100, focused235 pass/2 skip, lint green, provider call0이다.
