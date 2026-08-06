@@ -1,0 +1,41 @@
+{
+  "schema_version":"0.1",
+  "experiment_id":"terminal-runner-reliability-canary-1.9.747",
+  "status":"FROZEN_PREREGISTERED_BROWSER_PREFLIGHT_OMISSION",
+  "provider_calls":1,
+  "model_exposures":1,
+  "retry_count":0,
+  "replacement_count":0,
+  "completed_cells":1,
+  "reliability_passes":0,
+  "required_reliability_passes":3,
+  "cell":{
+    "id":"luna-microscopy-slide-custody-r1",
+    "runtime":"codex",
+    "model_requested":"gpt-5.6-luna",
+    "model_reported":null,
+    "effort_requested":"high",
+    "wall_time_ms":222767,
+    "provider_reported_tokens":879083,
+    "objective_score":"85/85",
+    "ui_resolved":true,
+    "product_revision_count":1,
+    "candidate_final_bytes_match":true,
+    "proof_compliance":false,
+    "browser_attempts_measured":0,
+    "runner_exit_code":1,
+    "runner_output":"browser-harness listener started, but no active browser connection was available",
+    "hard_stop_reason":"failed-static-closure"
+  },
+  "frozen_cells":[
+    "luna-manuscript-folio-transfer-r1",
+    "luna-geology-section-loan-r1"
+  ],
+  "root_cause":{
+    "runner_contract":"correct stdin invocation",
+    "browser_harness_doctor":"daemon alive; active browser connections 0",
+    "plan_defect":"browser_execution_contract was omitted, so runtime preflight did not reject the unavailable named browser before provider exposure",
+    "product_defect":false
+  },
+  "disposition":"Never resume or replay this root. Add isolated named-browser preflight to a fresh plan; do not count this as runner Reliability evidence."
+}

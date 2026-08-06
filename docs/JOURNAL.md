@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.747 terminal freeze
+- 첫 셀은85/85였지만 browser active connection0으로 proof fail했다.
+- plan의 browser preflight 누락이 원인이며 남은2셀은 provider0 동결됐다.
+- 다음 1.9.748은 dedicated CDP+exact named socket을 provider 전에 강제한다.
+
 ## 2026-08-06 (Codex) · 1.9.747 prepared
 - provider-zero3/3 admission과 effective skill lock attestation이 green이다.
 - council questions0/model lanes0/provider mutable false도 확인했다.

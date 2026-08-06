@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.747 provider-zero admission green
+- 갱신: 2026-08-06 · 1.9.747 browser preflight omission frozen
 
 ## 지금 (현재 위치)
+
+- 1.9.747 첫 Luna 셀은85/85 resolved, revision1, candidate/final exact지만 proof가 fail했다. wall222,767ms, tokens879,083, retry/replacement0이다.
+- runner 호출법은 맞았으나 browser-harness daemon의 active browser connection이0이었다. plan에 `browser_execution_contract`가 없어 provider 전 isolated named-browser preflight가 실행되지 않은 것이 root cause다.
+- hard-stop이 manuscript/geology를 provider/model0으로 동결했다. 이 root는 Reliability 증거가 아니며 재개/replay하지 않는다. 다음은 controller가 dedicated CDP browser를 먼저 준비하고 exact named socket을 admission하는 1.9.748이다.
 
 - 1.9.747 fresh root는 scheduled/prepared3/3, provider/model0, execution artifacts0으로 admission green이다. plan `7189aef2…`, state `b2aa1d99…`다.
 - effective `skill_lock_attested=true`, task lock, source contract, evaluator, publishable source가 모두 green이다. council intake도 세 셀 모두 questions0/model lanes0/provider mutable false다.
