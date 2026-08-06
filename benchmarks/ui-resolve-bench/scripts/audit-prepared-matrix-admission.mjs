@@ -110,13 +110,34 @@ export function auditPreparedMatrixAdmission(root) {
     .map((task) => [task.task_id, task]));
   const taskLockAttested = cells.every((cell) => {
     const lock = taskLocks.get(cell.task_id);
-    return lock
+    const taskBytesMatch = lock
       && lock.prompt_sha256 === cell.task_prompt_sha256
-      && lock.starter_sha256 === cell.starter_sha256
-      && lock.baseline_evidence_sha256
-        === cell.deterministic_reflow?.baseline_critical_gate_coverage?.sha256
-      && lock.source_contract_sha256 === cell.deterministic_reflow?.source_contract_sha256;
+      && lock.starter_sha256 === cell.starter_sha256;
+    if (!taskBytesMatch) return false;
+    if (!cell.deterministic_reflow) return true;
+    return lock.baseline_evidence_sha256
+      === cell.deterministic_reflow.baseline_critical_gate_coverage?.sha256
+      && lock.source_contract_sha256 === cell.deterministic_reflow.source_contract_sha256;
   });
+  const pairedGroups = new Map();
+  for (const cell of cells) {
+    const key = `${cell.task_id}\0${plan.cells.find((planned) => planned.id === cell.id)?.trial_index}`;
+    if (!pairedGroups.has(key)) pairedGroups.set(key, []);
+    pairedGroups.get(key).push(cell);
+  }
+  const pairedTaskContracts = [...pairedGroups.values()].every((group) => [
+    "task_prompt_sha256",
+    "starter_sha256",
+    "product_initial_sha256",
+    "runtime",
+    "model_id",
+    "effort",
+    "timeout_seconds",
+    "objective_evaluator",
+  ].every((field) => allEqual(group.map((cell) => cell[field]))));
+  const pairedArmSets = [...pairedGroups.values()].map((group) => group
+    .map((cell) => `${cell.variant_id}\0${cell.system_id}`)
+    .sort());
   const equality = {
     cell_contract: true,
     task_id: allEqual(cells.map((cell) => cell.task_id)),
@@ -137,6 +158,11 @@ export function auditPreparedMatrixAdmission(root) {
     deterministic_reflow_contract: allEqual(cells
       .map((cell) => deterministicReflowContract(cell.deterministic_reflow))),
     task_lock_attested: taskLockAttested,
+    paired_task_contracts: pairedTaskContracts,
+    paired_arm_rotation: pairedArmSets.length > 0
+      && allEqual(pairedArmSets)
+      && pairedArmSets[0].length >= 2
+      && new Set(pairedArmSets[0]).size === pairedArmSets[0].length,
   };
   const requiredNormalization = normalizationPolicy === "cross-task-reliability"
     ? [
@@ -154,7 +180,20 @@ export function auditPreparedMatrixAdmission(root) {
       "deterministic_reflow_contract",
       "task_lock_attested",
     ]
-    : [
+    : normalizationPolicy === "paired-cross-task-comparison"
+      ? [
+        "cell_contract",
+        "runtime",
+        "model_id",
+        "effort",
+        "timeout_seconds",
+        "source_publishable",
+        "objective_evaluator",
+        "task_lock_attested",
+        "paired_task_contracts",
+        "paired_arm_rotation",
+      ]
+      : [
       "cell_contract",
       "task_id",
       "task_prompt_sha256",
@@ -166,7 +205,7 @@ export function auditPreparedMatrixAdmission(root) {
       "timeout_seconds",
       "objective_evaluator",
       "deterministic_reflow",
-    ];
+      ];
   if (!requiredNormalization.every((field) => equality[field])) {
     throw new Error("prepared-matrix-admission:normalization-mismatch");
   }

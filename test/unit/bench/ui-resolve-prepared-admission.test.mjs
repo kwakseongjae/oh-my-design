@@ -208,4 +208,90 @@ describe("prepared matrix admission audit", () => {
       "prepared-matrix-admission:normalization-mismatch",
     );
   });
+
+  it("admits paired systems across fresh tasks without requiring identical skill artifacts", () => {
+    const root = join(mkdtempSync(join(tmpdir(), "omd-prepared-paired-")), "matrix");
+    const pairedPlan = {
+      ...plan(root),
+      schema_version: "0.3",
+      suite_version: "ui-resolve-v0.2",
+      product_version: "fixture",
+      execution_purpose: "paired-cross-task-comparison-fixture",
+      family: "skill",
+      status: "locked-diagnostic-only",
+      control_contract: {
+        comparison_mode: "native-capability",
+        effort_semantics: "runtime-native-ordinal-not-cross-provider-equivalent",
+        temperature_policy: "runtime-default-frozen",
+        timeout_seconds: 20,
+        max_concurrency: 1,
+        latency_comparison: "descriptive-only",
+        retry_policy: "none-primary",
+        timeout_policy: "count-as-valid-failure",
+        infrastructure_policy: "retain-freeze-and-repreregister",
+        task_order_policy: "fixed-preregistered",
+        admission_normalization_policy: "paired-cross-task-comparison",
+        token_budget: {
+          mode: "observed-only",
+          limit_tokens: null,
+          usage_required: true,
+          account_components: ["input", "cached_input", "output", "reasoning_output"],
+          cached_input_separate: true,
+          cost_policy: "provider-reported-or-pinned-price-equivalent",
+        },
+        step_budget: { mode: "observed-only", limit_steps: null },
+      },
+      task_lock_contract: {
+        tasks: ["cartography-sheet-transfer-v0.1", "numismatics-tray-accession-v0.1"].map((task_id) => ({
+          task_id,
+          task_tree_sha256: "1".repeat(64),
+          prompt_sha256: "1".repeat(64),
+          starter_sha256: "1".repeat(64),
+          baseline_evidence_sha256: "1".repeat(64),
+          source_contract_sha256: "1".repeat(64),
+        })),
+      },
+      cells: [
+        ["cartography-a", "cartography-sheet-transfer-v0.1", "raw-design-md", "arm-a"],
+        ["cartography-b", "cartography-sheet-transfer-v0.1", "omd-portable", "arm-b"],
+        ["numismatics-b", "numismatics-tray-accession-v0.1", "omd-portable", "arm-b"],
+        ["numismatics-a", "numismatics-tray-accession-v0.1", "raw-design-md", "arm-a"],
+      ].map(([id, task_id, variant_id, system_id]) => ({
+        ...plan(root).cells[0], id, task_id, variant_id, system_id,
+      })),
+    };
+    prepareRunMatrix(pairedPlan);
+
+    const lockedPath = join(root, "RUN-MATRIX.locked.json");
+    const locked = JSON.parse(readFileSync(lockedPath, "utf8"));
+    for (const taskLock of locked.task_lock_contract.tasks) {
+      const cells = locked.cells.filter((cell) => cell.task_id === taskLock.task_id);
+      const matrixCell = JSON.parse(readFileSync(
+        join(root, cells[0].id, ".benchmark/matrix-cell.json"), "utf8",
+      ));
+      const omdCell = cells.find((cell) => cell.variant_id === "omd-portable");
+      const manifest = JSON.parse(readFileSync(
+        join(root, omdCell.id, ".benchmark/manifest.json"), "utf8",
+      ));
+      taskLock.prompt_sha256 = matrixCell.task_prompt_sha256;
+      taskLock.starter_sha256 = matrixCell.starter_sha256;
+      taskLock.baseline_evidence_sha256 = manifest.deterministic_reflow.baseline_critical_gate_coverage.sha256;
+      taskLock.source_contract_sha256 = manifest.deterministic_reflow.source_contract_sha256;
+    }
+    writeFileSync(lockedPath, JSON.stringify(locked), "utf8");
+
+    expect(auditPreparedMatrixAdmission(root)).toMatchObject({
+      status: "PREPARED_PROVIDER_ZERO",
+      normalization_policy: "paired-cross-task-comparison",
+      normalization: {
+        variant_id: false,
+        system_id: false,
+        skill_sha256: false,
+        paired_task_contracts: true,
+        paired_arm_rotation: true,
+        task_lock_attested: true,
+      },
+      execution_admission: { allowed: true },
+    });
+  });
 });

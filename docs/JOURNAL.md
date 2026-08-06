@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.732 paired admission green
+- paired-cross-task normalization을 구현해 task별 동일 조건과 동일 arm set을 검증한다.
+- exact OmD/Impeccable × fresh3 tasks =6 cells가 provider-zero prepared/admitted됐다.
+- plan `4126ab5a…`, state `10dcc6d5…`, exposure0; focused238 pass/2 skip이다.
+- 다음은 clean checkpoint 뒤 Luna/high exact6회 no-retry 실행이다.
+
 ## 2026-08-06 (Codex) · 1.9.732 fresh comparison fixtures
 - cartography/numismatics/entomology fresh tasks를 provider-zero로 만들었다.
 - raw baseline은 모두75/85, red gate는 responsive+accessibility exact다.

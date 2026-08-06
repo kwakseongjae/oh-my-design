@@ -22,6 +22,7 @@ const VALID_PACING_POLICIES = new Set(["none", "fixed-inter-cell"]);
 const VALID_ADMISSION_NORMALIZATION_POLICIES = new Set([
   "exact-task-cross-arm",
   "cross-task-reliability",
+  "paired-cross-task-comparison",
 ]);
 const VALID_ATTRIBUTION_SCOPES = new Set([
   "provider-observed-only",
@@ -88,10 +89,10 @@ export function validateControlContract(plan) {
     throw new Error("matrix control_contract.admission_normalization_policy is invalid");
   }
   if (
-    admissionNormalizationPolicy === "cross-task-reliability"
+    ["cross-task-reliability", "paired-cross-task-comparison"].includes(admissionNormalizationPolicy)
     && control.task_order_policy !== "fixed-preregistered"
   ) {
-    throw new Error("matrix cross-task reliability requires fixed-preregistered task order");
+    throw new Error("matrix cross-task normalization requires fixed-preregistered task order");
   }
   if (control.pacing !== undefined) {
     const pacing = control.pacing;
@@ -445,6 +446,47 @@ export function validateRunMatrixPlan(plan) {
       ]) {
         if (typeof task?.[field] !== "string" || !/^[a-f0-9]{64}$/.test(task[field])) {
           throw new Error(`matrix cross-task reliability task lock ${index + 1}.${field} is invalid`);
+        }
+      }
+    }
+  }
+  if (plan.control_contract?.admission_normalization_policy === "paired-cross-task-comparison") {
+    const taskOrder = [...new Set(plan.cells.map((cell) => cell.task_id))];
+    if (taskOrder.length < 2) {
+      throw new Error("matrix paired cross-task comparison requires at least two unique tasks");
+    }
+    const groups = new Map();
+    for (const cell of plan.cells) {
+      const key = `${cell.task_id}\0${cell.trial_index}`;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(cell);
+    }
+    const armSignatures = [...groups.values()].map((group) => group
+      .map((cell) => `${cell.variant_id}\0${cell.system_id}`)
+      .sort());
+    if (armSignatures.some((arms) => arms.length < 2 || new Set(arms).size !== arms.length)) {
+      throw new Error("matrix paired cross-task comparison requires at least two distinct arms per task/trial");
+    }
+    if (new Set(armSignatures.map((arms) => JSON.stringify(arms))).size !== 1) {
+      throw new Error("matrix paired cross-task comparison requires the same arms for every task/trial");
+    }
+    const lockedTasks = plan.task_lock_contract?.tasks;
+    if (!Array.isArray(lockedTasks) || lockedTasks.length !== taskOrder.length) {
+      throw new Error("matrix paired cross-task comparison requires one task lock per unique task");
+    }
+    if (JSON.stringify(lockedTasks.map((task) => task?.task_id)) !== JSON.stringify(taskOrder)) {
+      throw new Error("matrix paired cross-task comparison task locks must match first task occurrence order");
+    }
+    for (const [index, task] of lockedTasks.entries()) {
+      for (const field of [
+        "task_tree_sha256",
+        "prompt_sha256",
+        "starter_sha256",
+        "baseline_evidence_sha256",
+        "source_contract_sha256",
+      ]) {
+        if (typeof task?.[field] !== "string" || !/^[a-f0-9]{64}$/.test(task[field])) {
+          throw new Error(`matrix paired cross-task comparison task lock ${index + 1}.${field} is invalid`);
         }
       }
     }
