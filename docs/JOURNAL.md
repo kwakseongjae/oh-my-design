@@ -5326,3 +5326,7 @@
 - `/private/tmp/omd-council-product-comparison-1.9.743` 2/2 provider-zero admission이 green이다.
 - plan c2eae26b/state782e792d, normalization exact, execution artifacts0이다.
 - checkpoint commit 뒤 Grok4.5 High off/on을 exact1회씩 실행한다.
+# 2026-08-06 — 1.9.743 Grok product comparison frozen
+- off 셀은 Cursor Grok usage limit으로 7.46s/exit1, product/workspace change0이다.
+- on 셀은 provider/model0 상태로 controller가 동결했고 retry/replacement0이다.
+- 다음은 새 1.9.744 root에서 Codex/Luna/high fallback 비교다.
