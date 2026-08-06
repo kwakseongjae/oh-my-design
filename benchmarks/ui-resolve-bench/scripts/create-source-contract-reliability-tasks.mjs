@@ -7,8 +7,9 @@ const repoRoot = resolve(import.meta.dirname, "../../..");
 const tasksRoot = join(repoRoot, "benchmarks/ui-resolve-bench/tasks");
 const legacyBaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1.9.720";
 const v2BaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1.9.724-v2";
+const v3BaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1.9.727-v3";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
-const taskSet = process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -126,7 +127,16 @@ const v2Cases = [
   },
 ];
 
-const cases = taskSet === "v2" ? v2Cases : legacyCases;
+const v3Cases = [
+  {
+    id: "archaeology-tray-release-v0.1", title: "Archaeology tray release review", eyebrow: "Field archive · tray release", heading: "Finds-tray release review", recordHeading: "Find register", recordSummary: "Five supplied find groups mapped to seven archive trays.",
+    records: [["FIND-TMB-4817",["TRAY-30581","TRAY-30582"]],["FIND-STR-4932",["TRAY-30583"]],["FIND-PIT-5074",["TRAY-30584","TRAY-30585"]],["FIND-WAL-5188",["TRAY-30586"]],["FIND-DRN-5261",["TRAY-30587"]]],
+    windows: [["STORE-B4","07:45–08:05"],["STORE-D2","10:30–10:50"],["STORE-F6","13:55–14:15"],["STORE-H1","16:20–16:40"]], views: [["finds","Find register"],["windows","Store windows"],["decision","Release decision"]], toggle: "Include packing-note copy", fieldLabel: "Release archivist", validValue: "FIND-TMB-4817 release review", target: "FIND-TMB-4817 + TRAY-30581", evidence: "5 find groups · 7 archive trays · 4 store windows", state: "Review open", action: "Open release record", footer: "Field archive · supplied release evidence only",
+    unknowns: ["object stable","material verified","packing calibrated","provenance validated","tray seal verified","store accepted","catalog published","release approved"], palette: {canvas:"#F3F0E9",surface:"#FFFDF8",ink:"#302C25",muted:"#6B7377",border:"#ACA398",primary:"#67503B",accent:"#655F7D"}, columns: "repeat(3,286px)", windowColumns: "repeat(4,224px)", decisionMin: "568px", cardRadius: 5, domain: "archaeology tray-release ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -213,7 +223,11 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v2" ? v2BaselineRoot : legacyBaselineRoot;
+  const baselineRoot = taskSet === "v3"
+    ? v3BaselineRoot
+    : taskSet === "v2"
+      ? v2BaselineRoot
+      : legacyBaselineRoot;
   const root = c.id === "audio-archive-ingest-v0.1" ? `${baselineRoot}-audio-v2` : baselineRoot;
   return join(root,c.id,".benchmark/score.json");
 }

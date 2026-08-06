@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.727 task lock
+- unexposed conservation/wind bytes를 보존하고 fresh archaeology task를 추가했다.
+- 세 baseline은75/85, red accessibility+responsive exact다.
+- archaeology sealed artifact/debt coverage는 provider/model0으로 complete다.
+- focused239 pass/2 skip·lint green; 다음은 fresh preregistration이다.
+
 ## 2026-08-06 (Codex) · 1.9.725 infrastructure freeze / 1.9.726 repair
 - benthic는85/85·revision1·closure1·proof true·candidate/final exact match였다.
 - relative product path를 repo cwd에서 읽은 exporter가 false mismatch를 냈다.

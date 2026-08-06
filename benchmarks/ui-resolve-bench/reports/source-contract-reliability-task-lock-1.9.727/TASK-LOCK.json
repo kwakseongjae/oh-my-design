@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.727",
+  "experiment_id": "source-contract-reliability-task-lock-1.9.727",
+  "status": "TWO_UNEXPOSED_TASKS_PLUS_ONE_FRESH_TASK_LOCKED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "tasks": [
+    {
+      "id": "conservation-frame-loan-v0.1",
+      "provenance": "unexposed-frozen-cell-from-1.9.725",
+      "task_tree_sha256": "06ef67cd9a41866aa0d09a9c7d6ce351ae7179a4db3df51eac6e1f43639200a2",
+      "task_json_sha256": "32b5b0f6c502cde2fa955261260465efc027e054bfba3323360109ef50f343a4",
+      "prompt_sha256": "6848c99cb1c758b4dc416b333a53f55471757e5f0863affa6a3d1236bc603ffd",
+      "starter_sha256": "21bc22f849a1c019f2af6b63c002d3661433b3be2683b5d7b75eb916d480bb33",
+      "baseline_evidence_sha256": "1114ca267da38381a940e8f12b06c31b888d74ca7b07c69712029d88bc090973",
+      "source_contract_sha256": "f3a64e12d6877a05de860d12a719c93242af91bf8cee114a1cf0b57b3c27cc0b",
+      "sealed_artifact_sha256": "8a9c8cedb8323a9b79519c91c3ce7b7cf50b1ff88a9afb65dd469007ff87391a",
+      "sealed_inventory_sha256": "e36e16f3f85714bc0df89853c12eaecf24cd6b028d3e8fe944b8101da3a360e8"
+    },
+    {
+      "id": "wind-tunnel-model-handoff-v0.1",
+      "provenance": "unexposed-frozen-cell-from-1.9.725",
+      "task_tree_sha256": "7e8e86359a1b2adad6fe5f7898c9e068ac59c8c39b3e136358ff53a484e5be3a",
+      "task_json_sha256": "2b80bb9755edf3c33dc10e987485fd69321a9278d440e2867007abbf3985d36c",
+      "prompt_sha256": "36fe4f0a14b1251b954cb97d1f555c8736dadab858b7fbec951067861379dec8",
+      "starter_sha256": "a9e33e3ed9d440ba97f4591477c2bed4982bdb59edc9ceebc164de485a4c67be",
+      "baseline_evidence_sha256": "a16d320120d570458309901e8f9875b4df257d682c011452bc4ed322eb4216aa",
+      "source_contract_sha256": "d326bb2b10c0cc52fa8e01f5667374c43305975d155659d75374eec081149435",
+      "sealed_artifact_sha256": "f4f02b995a4a426c70ef15a03ef4950fc86b24889eb9d0f97cb3136f8c10f990",
+      "sealed_inventory_sha256": "2aeafa93378794b97e1cc8d91df6d71e4a633c9d46b58478ec57d141a9cb9ae1"
+    },
+    {
+      "id": "archaeology-tray-release-v0.1",
+      "provenance": "fresh-provider-zero-1.9.727",
+      "task_tree_sha256": "6127be579d6043070ad460b366b0b896a2888d733529fbf70f82d70810037e18",
+      "task_json_sha256": "602f89c16972806d48f26c589404842f126b86dd16210f79163f91e8e9548489",
+      "prompt_sha256": "8ade1625572bd9d2f0fb61ef670cfdf96670d7673593b64914ce60726f5b4283",
+      "starter_sha256": "8cb46a66bdfdf7e1142a81004d992557ae38310bd3822f43075fbb420ccbef2f",
+      "baseline_evidence_sha256": "a00d79ab8aacd9aa13f5cddae049e75eb48b317e17284d1aed429625631420de",
+      "source_contract_sha256": "873b415aa7f38e83a69de597604cc3c2d9511c7bc1edbf9159b235ef8096b68e",
+      "sealed_artifact_sha256": "e58aea91c02a93981ac0911c0ea8fff94bebffbdba70fc98cdccb687f6ca347d",
+      "sealed_inventory_sha256": "63ebd861af88b36920057a3346ae92a92de13fc1f3557f13055d95db64eece28"
+    }
+  ],
+  "raw_baseline": {
+    "scores": [75, 75, 75],
+    "objective_max": 85,
+    "failed_critical_gates": ["accessibility", "responsive"],
+    "accessibility_failure_targets": [".guidance-copy", "footer"],
+    "coverage_complete": true
+  },
+  "validation": {
+    "task_contracts": "pass",
+    "fresh_provider_free_browser_baseline": "pass",
+    "fresh_provider_sealed_smoke": "pass",
+    "focused_tests": "239 pass / 2 skip",
+    "typescript": "pass",
+    "provider_calls": 0
+  },
+  "execution_allowed": false,
+  "next_gate": "Commit the exact task set, then preregister a fresh candidate-bound no-retry Reliability@3 plan."
+}

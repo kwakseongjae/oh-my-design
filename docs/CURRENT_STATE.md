@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.725 first-cell infrastructure freeze / 1.9.726 repair
+- 갱신: 2026-08-06 · 1.9.727 replacement-free Reliability task lock
 
 ## 지금 (현재 위치)
 
+- 1.9.727은 1.9.725에서 provider에 노출되지 않은 conservation/wind exact bytes를 보존하고 fresh archaeology tray-release task1개를 추가했다. exposed benthic는 포함하지 않으며 replay/replacement가 아니다.
+- 세 task raw baseline은75/85 exact, red gate는 accessibility+responsive exact다. archaeology의 contrast red target은 `.guidance-copy`/`footer`이고 schema0.2 debt coverage, sealed artifact/inventory, structured CSS6건이 provider/model0으로 complete다.
+- task inventory91, focused239 pass/2 skip·lint green이다. 다음은 exact task set을 commit하고 1.9.726 path repair를 포함한 새 candidate-bound Reliability@3 plan을 preregister하는 단계다.
 - 1.9.725 benthic 첫 셀은 provider exact1회로 valid85/85, resolved=true, 270,341ms, 1,271,410 tokens(cached input1,099,520)을 만들었다. revision1, static success1/fail0, browser recovery0, proof compliance true다.
 - passed receipt candidate hash와 실제 final `index.html` hash는 둘 다 `4ec448fe…`로 exact match다. 그러나 exporter가 artifact의 relative `product_path`를 cell workspace가 아닌 repo cwd에서 해석해 product absent/byte mismatch를 잘못 기록했다.
 - prereg hard-stop대로 1.9.725 root는 infrastructure-invalid로 동결했다. benthic replay/retry/replacement는 금지하고 conservation/wind는 provider/model0 unexposed 상태로 보존한다. Reliability pass는0/3이며 ranking/2.0 gate에 반영하지 않는다.
