@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.747 prepared
+- provider-zero3/3 admission과 effective skill lock attestation이 green이다.
+- council questions0/model lanes0/provider mutable false도 확인했다.
+- checkpoint 뒤 microscopy 첫 셀 exact1회로 진행한다.
+
 ## 2026-08-06 (Codex) · 1.9.747 corrected preregistration
 - task와 실행 조건은 유지하고 effective council-gate skill hash를 잠갔다.
 - 새 admission은 선언된 skill lock과 설치 bytes를 직접 대조한다.

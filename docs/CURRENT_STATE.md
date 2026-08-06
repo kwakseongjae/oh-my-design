@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.747 effective-skill Reliability@3 preregistered
+- 갱신: 2026-08-06 · 1.9.747 provider-zero admission green
 
 ## 지금 (현재 위치)
+
+- 1.9.747 fresh root는 scheduled/prepared3/3, provider/model0, execution artifacts0으로 admission green이다. plan `7189aef2…`, state `b2aa1d99…`다.
+- effective `skill_lock_attested=true`, task lock, source contract, evaluator, publishable source가 모두 green이다. council intake도 세 셀 모두 questions0/model lanes0/provider mutable false다.
+- 다음은 PREPARATION checkpoint commit 뒤 microscopy 첫 셀만 exact1회 실행한다. lifecycle hard-stop이면 나머지를 동결하고, clean이면 checkpoint 후 다음 셀로 이어간다.
 
 - 1.9.747은 동결된 1.9.746과 task/조건을 그대로 유지하고 council activation delta가 포함된 effective installed skill `b792a4e8…`을 정확히 잠갔다.
 - fresh3, Luna/high, council-on, shipped runner, fixed order, 30s pacing, concurrency1, retry/replacement0과85/85+resolved+proof+recovery0의3/3 계약은 그대로다.
