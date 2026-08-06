@@ -956,6 +956,54 @@ describe("compact reflow artifact helper", () => {
     expect(closed.static_closure).toMatchObject({ state: "passed", attempts: 1, failures: [] });
   });
 
+  it("seals schema 0.2 only with critical-gate coverage and exact carrier containment", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-source-v02-"));
+    temporaryRoots.push(root);
+    const contractPath = join(root, "contract.json");
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const helper = join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs");
+    const contract = sourceContract();
+    contract.schema_version = "0.2";
+    contract.baseline_evidence = { path: "baseline-score.json", sha256: "a".repeat(64) };
+    contract.critical_gate_debt_coverage = [{ gate: "responsive", debt_ids: ["target-fit"] }];
+    contract.carriers[0].containment_guardrail = {
+      selector: "[data-decision] > div",
+      property: "min-width",
+      value: "0",
+      value_contract: "exact-value",
+    };
+    const preEditSource = '<section data-decision=""><div><div class="target-carrier"><strong data-bench-decision-role="target">FS-TC-24-017 + BAG-SEAL-884021</strong></div></div></section><p>required-fact</p>';
+    writeFileSync(contractPath, JSON.stringify(contract));
+    writeFileSync(productPath, preEditSource);
+
+    const sealed = JSON.parse(execFileSync(process.execPath, [
+      helper, "source-seal", contractPath, artifactPath,
+    ], { cwd: root, encoding: "utf8" }));
+    expect(sealed.source_contract).toMatchObject({
+      state: "provider-sealed",
+      schema_version: "0.2",
+      baseline_evidence_sha256: "a".repeat(64),
+      covered_critical_gates: ["responsive"],
+    });
+    expect(sealed.static_edit_guardrails.source_fallback_patch_contract.acceptance_css).toContainEqual({
+      selector: "[data-decision] > div",
+      property: "min-width",
+      value: "0",
+      value_contract: "exact-value",
+    });
+
+    const invalid = structuredClone(contract);
+    delete invalid.carriers[0].containment_guardrail;
+    writeFileSync(contractPath, JSON.stringify(invalid));
+    const rejected = spawnSync(process.execPath, [helper, "source-seal", contractPath, join(root, "invalid.json")], {
+      cwd: root,
+      encoding: "utf8",
+    });
+    expect(rejected.status).toBe(1);
+    expect(rejected.stderr).toContain("comparison-scroll containment must require exact min-width: 0");
+  });
+
   it("rejects a source contract that forbids its own canonical fallback CSS", () => {
     const root = mkdtempSync(join(tmpdir(), "omd-reflow-source-conflict-"));
     temporaryRoots.push(root);

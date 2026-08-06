@@ -57,12 +57,22 @@ export function auditPreparedMatrixAdmission(root) {
         || artifact.inventory?.sha256 !== sealed.inventory_sha256) {
         throw new Error(`prepared-matrix-admission:deterministic-reflow-inventory-drift:${cell.id}`);
       }
+      const baselineCoverage = sealed.baseline_critical_gate_coverage;
+      if (artifact.source_contract?.schema_version === "0.2") {
+        if (baselineCoverage?.complete !== true
+          || baselineCoverage.sha256 !== artifact.source_contract.baseline_evidence_sha256
+          || JSON.stringify(baselineCoverage.covered_critical_gates) !==
+            JSON.stringify(artifact.source_contract.covered_critical_gates)) {
+          throw new Error(`prepared-matrix-admission:deterministic-reflow-debt-coverage-drift:${cell.id}`);
+        }
+      }
       deterministicReflow = {
         mode: sealed.mode,
         artifact_sha256: sealed.artifact_sha256,
         source_contract_sha256: sealed.source_contract_sha256,
         inventory_sha256: sealed.inventory_sha256,
         provider_mutable: false,
+        baseline_critical_gate_coverage: baselineCoverage,
         attested: true,
       };
     }

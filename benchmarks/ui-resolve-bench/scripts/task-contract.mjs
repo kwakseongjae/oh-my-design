@@ -43,10 +43,25 @@ function requireStructuredCssDeclarations(value, label) {
   }
 }
 
+function requireSha256(value, label) {
+  if (typeof value !== "string" || !/^[a-f0-9]{64}$/.test(value)) {
+    throw new Error(`${label} must be a lowercase SHA-256`);
+  }
+}
+
+function requireUniqueNonEmptyStrings(value, label) {
+  if (!Array.isArray(value) || !value.length || new Set(value).size !== value.length ||
+    value.some((entry) => typeof entry !== "string" || !entry.trim())) {
+    throw new Error(`${label} must declare unique non-empty strings`);
+  }
+}
+
 export function validateOmdReflowSourceContract(task) {
   if (task.omd_reflow_source_contract === undefined) return task;
   const contract = requireObject(task.omd_reflow_source_contract, "omd_reflow_source_contract");
-  if (contract.schema_version !== "0.1") throw new Error("omd_reflow_source_contract.schema_version must be 0.1");
+  if (!new Set(["0.1", "0.2"]).has(contract.schema_version)) {
+    throw new Error("omd_reflow_source_contract.schema_version must be 0.1 or 0.2");
+  }
   if (contract.structured_css_only !== true) throw new Error("omd_reflow_source_contract must require structured_css_only");
   if (contract.product_path !== task.entry) throw new Error("omd_reflow_source_contract.product_path must match task.entry");
   for (const field of ["carriers", "row_groups", "acceptance_debt_ledger"]) {
@@ -66,7 +81,85 @@ export function validateOmdReflowSourceContract(task) {
       `omd_reflow_source_contract.acceptance_debt_ledger[${index}].static_guardrail.required_css_declarations`,
     );
   });
+  if (contract.schema_version === "0.2") {
+    const evidence = requireObject(contract.baseline_evidence, "omd_reflow_source_contract.baseline_evidence");
+    requireNonEmptyString(evidence.path, "omd_reflow_source_contract.baseline_evidence.path");
+    if (evidence.path.startsWith("/") || evidence.path.split(/[\\/]/).includes("..") || !evidence.path.endsWith(".json")) {
+      throw new Error("omd_reflow_source_contract.baseline_evidence.path must be a task-relative JSON file");
+    }
+    requireSha256(evidence.sha256, "omd_reflow_source_contract.baseline_evidence.sha256");
+
+    if (!Array.isArray(contract.critical_gate_debt_coverage) || !contract.critical_gate_debt_coverage.length) {
+      throw new Error("omd_reflow_source_contract.critical_gate_debt_coverage must not be empty");
+    }
+    const debtIds = new Set(contract.acceptance_debt_ledger.map((debt, index) => {
+      requireNonEmptyString(debt.id, `omd_reflow_source_contract.acceptance_debt_ledger[${index}].id`);
+      return debt.id;
+    }));
+    if (debtIds.size !== contract.acceptance_debt_ledger.length) {
+      throw new Error("omd_reflow_source_contract acceptance debt ids must be unique");
+    }
+    const coveredGates = contract.critical_gate_debt_coverage.map((coverage, index) => {
+      requireObject(coverage, `omd_reflow_source_contract.critical_gate_debt_coverage[${index}]`);
+      requireNonEmptyString(coverage.gate, `omd_reflow_source_contract.critical_gate_debt_coverage[${index}].gate`);
+      requireUniqueNonEmptyStrings(
+        coverage.debt_ids,
+        `omd_reflow_source_contract.critical_gate_debt_coverage[${index}].debt_ids`,
+      );
+      for (const debtId of coverage.debt_ids) {
+        if (!debtIds.has(debtId)) {
+          throw new Error(`omd_reflow_source_contract critical gate coverage references unknown debt: ${debtId}`);
+        }
+      }
+      return coverage.gate;
+    });
+    if (new Set(coveredGates).size !== coveredGates.length) {
+      throw new Error("omd_reflow_source_contract critical gate coverage must use unique gates");
+    }
+
+    const comparisonScrollRows = contract.row_groups.filter((row) => row?.decision === "comparison-scroll");
+    for (const row of comparisonScrollRows) {
+      const carriers = contract.carriers.filter((carrier) => carrier?.binds_row_groups?.includes(row.id));
+      if (carriers.length !== 1) {
+        throw new Error(`omd_reflow_source_contract comparison-scroll row requires exactly one carrier: ${row.id}`);
+      }
+      const containment = requireObject(
+        carriers[0].containment_guardrail,
+        `omd_reflow_source_contract carrier containment_guardrail: ${carriers[0].id}`,
+      );
+      if (containment.property !== "min-width" || containment.value !== "0" ||
+        containment.value_contract !== "exact-value") {
+        throw new Error("omd_reflow_source_contract comparison-scroll containment must require exact min-width: 0");
+      }
+      requireNonEmptyString(containment.selector, "omd_reflow_source_contract containment_guardrail.selector");
+    }
+  }
   return task;
+}
+
+export function validateOmdReflowBaselineCoverage(task, baselineScore) {
+  const contract = task.omd_reflow_source_contract;
+  if (contract?.schema_version !== "0.2") return null;
+  const score = requireObject(baselineScore, "omd_reflow_source_contract baseline score");
+  const criticalGates = requireObject(score.critical_gates, "omd_reflow_source_contract baseline critical_gates");
+  const failedGates = Object.entries(criticalGates)
+    .filter(([, passed]) => passed === false)
+    .map(([gate]) => gate)
+    .sort();
+  if (!failedGates.length) {
+    throw new Error("omd_reflow_source_contract baseline must expose at least one failed critical gate");
+  }
+  const coveredGates = contract.critical_gate_debt_coverage.map((coverage) => coverage.gate).sort();
+  if (JSON.stringify(coveredGates) !== JSON.stringify(failedGates)) {
+    throw new Error(
+      `omd_reflow_source_contract critical gate debt coverage mismatch: baseline=${failedGates.join(",")} covered=${coveredGates.join(",")}`,
+    );
+  }
+  return {
+    failed_critical_gates: failedGates,
+    covered_critical_gates: coveredGates,
+    complete: true,
+  };
 }
 
 export function validateTextGeometryContract(task) {

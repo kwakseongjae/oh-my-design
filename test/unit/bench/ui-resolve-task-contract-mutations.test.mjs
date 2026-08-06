@@ -1,7 +1,10 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-import { validateTaskContract } from "../../../benchmarks/ui-resolve-bench/scripts/task-contract.mjs";
+import {
+  validateOmdReflowBaselineCoverage,
+  validateTaskContract,
+} from "../../../benchmarks/ui-resolve-bench/scripts/task-contract.mjs";
 
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const tasksRoot = resolve(repoRoot, "benchmarks/ui-resolve-bench/tasks");
@@ -68,5 +71,80 @@ describe("task contract mutation coverage", () => {
       ...original,
       omd_reflow_source_contract: { ...contract, product_path: "other.html" },
     })).toThrow(/must match task.entry/);
+  });
+
+  it("requires schema 0.2 to cover every failed baseline gate and contain nowrap carriers", () => {
+    const original = readTask("investigational-product-depot-release-v0.1");
+    const contract = {
+      schema_version: "0.2",
+      structured_css_only: true,
+      product_path: original.entry,
+      baseline_evidence: { path: "baseline-score.json", sha256: "a".repeat(64) },
+      critical_gate_debt_coverage: [
+        { gate: "responsive", debt_ids: ["fit"] },
+        { gate: "accessibility", debt_ids: ["contrast"] },
+      ],
+      carriers: [{
+        id: "carrier",
+        binds_row_groups: ["row"],
+        containment_guardrail: {
+          selector: ".decision > div",
+          property: "min-width",
+          value: "0",
+          value_contract: "exact-value",
+        },
+      }],
+      row_groups: [{ id: "row", decision: "comparison-scroll" }],
+      invariants: { same_row_count: true },
+      acceptance_debt_ledger: [
+        {
+          id: "fit",
+          static_guardrail: {
+            required_css_declarations: [{
+              selector: ".ledger",
+              property: "grid-template-columns",
+              value: "1fr",
+              value_contract: "any-value",
+            }],
+          },
+        },
+        {
+          id: "contrast",
+          static_guardrail: {
+            required_css_declarations: [{
+              selector: "header > p",
+              property: "color",
+              value: "var(--ink)",
+              value_contract: "exact-value",
+            }],
+          },
+        },
+      ],
+    };
+    const task = { ...original, omd_reflow_source_contract: contract };
+    expect(validateTaskContract(task)).toBeTruthy();
+    expect(validateOmdReflowBaselineCoverage(task, {
+      critical_gates: { task_contract: true, responsive: false, accessibility: false },
+    })).toEqual({
+      failed_critical_gates: ["accessibility", "responsive"],
+      covered_critical_gates: ["accessibility", "responsive"],
+      complete: true,
+    });
+    expect(() => validateOmdReflowBaselineCoverage({
+      ...task,
+      omd_reflow_source_contract: {
+        ...contract,
+        critical_gate_debt_coverage: [{ gate: "responsive", debt_ids: ["fit"] }],
+      },
+    }, {
+      critical_gates: { responsive: false, accessibility: false },
+    })).toThrow(/critical gate debt coverage mismatch/);
+    expect(() => validateTaskContract({
+      ...task,
+      omd_reflow_source_contract: {
+        ...contract,
+        carriers: [{ id: "carrier", binds_row_groups: ["row"] }],
+      },
+    })).toThrow(/containment_guardrail/);
   });
 });

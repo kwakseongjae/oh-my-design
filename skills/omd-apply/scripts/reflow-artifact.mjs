@@ -27,7 +27,7 @@ const REQUIRED_MEASUREMENT_CONDITIONS = [
   { id: "320", viewport_width: 320, zoom: 1 },
   { id: "200pct", viewport_width: 640, zoom: 2 },
 ];
-const SOURCE_CONTRACT_SCHEMA_VERSION = "0.1";
+const SOURCE_CONTRACT_SCHEMA_VERSIONS = new Set(["0.1", "0.2"]);
 
 function fail(message) {
   throw new Error(`reflow artifact: ${message}`);
@@ -48,8 +48,8 @@ function uniqueObjects(values) {
 }
 
 function sourceContractArtifact(contract, source) {
-  if (contract?.schema_version !== SOURCE_CONTRACT_SCHEMA_VERSION) {
-    fail(`source contract schema_version must be ${SOURCE_CONTRACT_SCHEMA_VERSION}`);
+  if (!SOURCE_CONTRACT_SCHEMA_VERSIONS.has(contract?.schema_version)) {
+    fail("source contract schema_version must be 0.1 or 0.2");
   }
   if (contract.structured_css_only !== true) {
     fail("source contract must require structured_css_only");
@@ -66,12 +66,54 @@ function sourceContractArtifact(contract, source) {
   if (!debtCss.length) {
     fail("source contract must bind acceptance debt to required_css_declarations");
   }
+  let containmentCss = [];
+  if (contract.schema_version === "0.2") {
+    if (typeof contract.baseline_evidence?.path !== "string" ||
+      !/^[a-f0-9]{64}$/.test(contract.baseline_evidence?.sha256 ?? "")) {
+      fail("source contract 0.2 requires hashed baseline_evidence");
+    }
+    const debtIds = new Set(contract.acceptance_debt_ledger.map((debt) => debt?.id));
+    if (debtIds.has(undefined) || debtIds.size !== contract.acceptance_debt_ledger.length) {
+      fail("source contract 0.2 requires unique acceptance debt ids");
+    }
+    if (!Array.isArray(contract.critical_gate_debt_coverage) || !contract.critical_gate_debt_coverage.length) {
+      fail("source contract 0.2 requires critical_gate_debt_coverage");
+    }
+    const coveredGates = new Set();
+    for (const coverage of contract.critical_gate_debt_coverage) {
+      if (typeof coverage?.gate !== "string" || !coverage.gate || coveredGates.has(coverage.gate) ||
+        !Array.isArray(coverage.debt_ids) || !coverage.debt_ids.length ||
+        coverage.debt_ids.some((id) => !debtIds.has(id))) {
+        fail("source contract 0.2 critical gate debt coverage is invalid");
+      }
+      coveredGates.add(coverage.gate);
+    }
+    containmentCss = contract.row_groups
+      .filter((row) => row?.decision === "comparison-scroll")
+      .map((row) => {
+        const carriers = contract.carriers.filter((carrier) => carrier?.binds_row_groups?.includes(row.id));
+        if (carriers.length !== 1) {
+          fail(`source contract 0.2 comparison-scroll row requires exactly one carrier: ${row.id}`);
+        }
+        const containment = carriers[0].containment_guardrail;
+        if (typeof containment?.selector !== "string" || !containment.selector ||
+          containment.property !== "min-width" || containment.value !== "0" ||
+          containment.value_contract !== "exact-value") {
+          fail("source contract 0.2 comparison-scroll containment must require exact min-width: 0");
+        }
+        return containment;
+      });
+  }
   const artifact = {
     schema_version: "0.3",
     source_contract: {
       state: "provider-sealed",
-      schema_version: SOURCE_CONTRACT_SCHEMA_VERSION,
+      schema_version: contract.schema_version,
       sha256: sha256Source(JSON.stringify(contract)),
+      baseline_evidence_sha256: contract.baseline_evidence?.sha256 ?? null,
+      covered_critical_gates: contract.critical_gate_debt_coverage
+        ?.map((entry) => entry.gate)
+        .sort() ?? null,
     },
     browser_connection_contract: {
       transport: "existing-cdp",
@@ -95,6 +137,7 @@ function sourceContractArtifact(contract, source) {
       required_css_declarations: uniqueObjects([
         ...(contract.required_css_declarations ?? []),
         ...debtCss,
+        ...containmentCss,
       ]),
       forbidden_literals: structuredClone(contract.forbidden_literals ?? []),
       forbidden_patterns: structuredClone(contract.forbidden_patterns ?? []),
