@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.728 terminal result
+- objective2/2지만 Reliability1/3; wind가 second-product-edit로 hard-stop됐다.
+- conservation pass, wind fail, archaeology provider/model0 frozen이다.
+- workspace-relative candidate binding repair는 두 실행 모두 exact match로 검증됐다.
+- 다음은 candidate 단계에 수정을 흡수해 product write를1회로 제한하는 local repair다.
+
 ## 2026-08-06 (Codex) · Reliability lifecycle hard-stop repair
 - wind는85/85지만 revision2/static1실패/proof false로 reliability fail이다.
 - archaeology는 provider/model0 상태로 동결한다; wind replay도 금지다.

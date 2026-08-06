@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.728 Reliability lifecycle hard-stop repair
+- 갱신: 2026-08-06 · 1.9.728 terminal Reliability result
 
 ## 지금 (현재 위치)
 
+- 1.9.728은 terminal `FROZEN_PREREGISTERED_LIFECYCLE_STOP`이다. provider/model exact2회, retry/replacement0, objective2/2 pass지만 Reliability는1/3이다. conservation pass, wind `second-product-edit` fail, archaeology provider/model0 frozen이다.
+- workspace-bound candidate collector repair는 검증됐다. 두 실행 모두 candidate/final exact match이고 false path mismatch는 재발하지 않았다. 남은 제품 결함은 failed closure 뒤 product를 두 번째로 수정하는 경로다.
+- runner repair `3830c1c4`를 적용한 resume audit는 provider 호출 전에 `second-product-edit`를 감지해 archaeology를 동결했다. 1.9.728은 ranking/2.0 gate evidence로 승격하지 않는다.
+- 다음은 omd-apply candidate workflow가 모든 수정을 candidate 단계에서 끝내고 product를 정확히 한 번만 쓰도록 local contract와 instruction을 교정한 뒤, replay 없는 fresh Reliability@3를 사전등록하는 일이다.
 - 1.9.728 wind 두 번째 셀은 objective85/85와 candidate binding은 green이지만 product edit/revision2, static success1/fail1, proof compliance false다. 사전등록 hard-stop `second-product-edit`에 해당하므로 Reliability 실패이며 archaeology는 provider/model0 상태로 동결해야 한다.
 - runner가 candidate binding만 실행 hard-stop으로 강제하고 reliability lifecycle 목록을 checkpoint 전에 검사하지 않아 wind를 잘못 checkpoint했다. local repair는 second edit, failed closure, proof noncompliance, inventory/receipt/final-byte 위반을 현재 셀과 resume prefix 모두에서 provider 전 hard-stop한다. focused27/27·lint green이다.
 - 다음은 repair commit 뒤 기존 checkpoint를 resume-audit해 provider 호출 없이 archaeology를 frozen으로 기록하고 1.9.728 terminal report를 만든다. wind 재실행과 archaeology 실행은 금지다.
