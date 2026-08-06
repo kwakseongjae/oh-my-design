@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "snapshot_patch": "1.9.733",
+  "snapshot_patch": "1.9.734",
   "local_only_mode": false,
   "authorized_action_classes": ["remote-model-execution"],
   "active_gate_ids": ["verified-skill-lift"],

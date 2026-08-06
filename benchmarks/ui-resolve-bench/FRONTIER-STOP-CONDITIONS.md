@@ -101,23 +101,22 @@ changing a narrative status cannot make a gate pass.
 | Independent task audit <5% | 1.9.685 checks 78 tasks and kills 11 local contract mutations; independent sample/rate absent | External |
 | Activation + seven-day reuse | Day-8 technical survivability 4/4 channels, 20/20 locale routes, and local first-loop pass; behavioral lift unobserved | Partial |
 | Routing/ownership/reverify | Product contract and local four-channel loop pass; broader model-runtime proof pending | Partial |
-| Council-first human escalation | 1.9.733 deterministic decision ledger is implemented; bounded multi-lane dispatch and repeated intervention lift remain pending | Partial |
+| Council-first human escalation | 1.9.734 passes 22-case/5-locale disposition+value calibration; advisory-only bounded dispatch and repeated intervention lift remain pending | Partial |
 
 ## Immediate queue
 
-1.9.733 reopens one bounded local capability lane. The deterministic decision
-ledger now separates `auto`, `interview`, `defer`, and `blocked` outcomes before
-the harness asks a question. The remaining local work is calibration against
-explicit, ambiguous, conflicting, and unsupported briefs; multi-lane council
-dispatch stays closed until unsupported automatic decisions remain at zero.
+1.9.734 closes deterministic calibration with 22 cases across five locales,
+57 automatic decisions, zero unsupported autos, and zero expectation failures.
+Grok 4.5 admits the next lane only as bounded advisory dispatch: it cannot
+promote `interview`, `defer`, or `blocked` decisions toward `auto`.
 
 1. Run `audit-frontier-readiness.mjs` at every checkpoint and refuse `2.0.0`
    promotion while any normative gate is not `pass`.
 2. Preserve the 1.9.679 task and 1.9.680 six-cell matrix unchanged. Under the
    current no-remote rule, do not synthesize scored Skill Lift.
-3. Calibrate the decision ledger locally, then use Grok 4.5 for a bounded,
-   read-only council comparison. Do not claim council effectiveness from the
-   deterministic preflight alone.
+3. Implement one bounded read-only council round before intake and one
+   contrarian round before ship. Reject uncited claims and freeze all automatic
+   disposition promotion. Do not claim council effectiveness yet.
 4. Close provider-free gaps in hidden-task denominator, package completeness,
    mutation coverage, and public claim boundaries.
 5. When remote execution is allowed again, reprepare under the then-current

@@ -3,7 +3,7 @@
   "target_version": "2.0.0",
   "baseline_version": "1.9.0",
   "required_gate_count": 10,
-  "snapshot_patch": "1.9.733",
+  "snapshot_patch": "1.9.734",
   "claim_policy": "Promotion is allowed only when all ten gates are pass and every gate retains repository evidence.",
   "gates": [
     {
@@ -82,9 +82,9 @@
       "id": "council-first-human-escalation",
       "status": "partial",
       "requirement": "The harness investigates and debates before intake, auto-decides only evidence-backed reversible choices, and asks the user only for authority-bearing decisions while retaining a reconstructable decision ledger.",
-      "current_boundary": "1.9.733 adds the deterministic decision-ledger boundary and removes fixed intake questions when the ledger is available. Multi-lane council dispatch, calibration, and repeated human-intervention lift remain unproven.",
-      "evidence_refs": ["research/harness-design/24-council-first-interview-gate.md", "scripts/design-council-prime.cjs", "skills/omd-harness/SKILL.md", "benchmarks/ui-resolve-bench/reports/council-first-intake-1.9.733"],
-      "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/council-first-intake-1.9.733/ACCEPTANCE.json", "pointer": "/frontier_gate_pass", "equals": true}
+      "current_boundary": "1.9.734 passes 22-case five-locale synthetic disposition/value calibration and admits advisory-only bounded dispatch. Multi-lane council effectiveness and repeated human-intervention lift remain unproven.",
+      "evidence_refs": ["research/harness-design/24-council-first-interview-gate.md", "scripts/design-council-prime.cjs", "skills/omd-harness/SKILL.md", "benchmarks/ui-resolve-bench/reports/council-first-intake-1.9.733", "benchmarks/ui-resolve-bench/reports/council-intake-calibration-1.9.734"],
+      "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/council-intake-calibration-1.9.734/ACCEPTANCE.json", "pointer": "/frontier_gate_pass", "equals": true}
     }
   ]
 }

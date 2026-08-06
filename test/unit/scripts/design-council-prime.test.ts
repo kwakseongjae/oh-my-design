@@ -67,6 +67,6 @@ describe('design-council-prime', () => {
     expect(ledger.decisions.find((item: { id: string }) => item.id === 'wow-moment')).toMatchObject({
       proposed_value: null, disposition: 'defer', evidence: [], confidence_basis: 'generic-default-rejected',
     });
-    expect(ledger.summary).toMatchObject({ interview: 3, defer: 1, question_budget: 3 });
+    expect(ledger.summary).toMatchObject({ interview: 3, defer: 2, question_budget: 3 });
   });
 });

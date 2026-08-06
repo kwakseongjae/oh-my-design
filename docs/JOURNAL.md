@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.734 council intake calibration
+- 22 briefs/5 locales에서 auto57, unsupported0, disposition/value failure0이다.
+- `started→star` 오탐과 negation/surface/wow conflict, blocked dead path를 교정했다.
+- Grok 4.5는 advisory-only bounded council 진입을 승인하고 auto 승격은 금지했다.
+- full786 pass/3 skip, lint/build/count green; 다음은 1.9.735 bounded dispatch다.
+
 ## 2026-08-06 (Codex) · 1.9.733 council-first intake Slice A
 - 2.0.0에 council-first human escalation을 10번째 frontier gate로 추가했다.
 - typed decision ledger가 explicit intent만 auto하고 product decisions는 interview, unknown은 defer한다.
