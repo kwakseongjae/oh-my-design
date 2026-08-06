@@ -8,8 +8,9 @@ const tasksRoot = join(repoRoot, "benchmarks/ui-resolve-bench/tasks");
 const legacyBaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1.9.720";
 const v2BaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1.9.724-v2";
 const v3BaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1.9.727-v3";
+const v4BaselineRoot = "/private/tmp/omd-source-contract-reliability-baselines-1.9.730-v4";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
-const taskSet = process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -136,7 +137,22 @@ const v3Cases = [
   },
 ];
 
-const cases = taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v4Cases = [
+  {
+    id: "paleontology-jacket-accession-v0.1", title: "Paleontology jacket accession review", eyebrow: "Research collection · jacket accession", heading: "Field-jacket accession review", recordHeading: "Specimen register", recordSummary: "Five supplied specimen groups mapped to seven field jackets.",
+    records: [["SPEC-RIV-5418",["JACKET-38210","JACKET-38211"]],["SPEC-MSA-5572",["JACKET-38212"]],["SPEC-BED-5689",["JACKET-38213","JACKET-38214"]],["SPEC-QRY-5746",["JACKET-38215"]],["SPEC-CLI-5891",["JACKET-38216"]]],
+    windows: [["LAB-B3","07:35–07:55"],["LAB-D6","10:20–10:40"],["LAB-F2","13:45–14:05"],["LAB-H5","16:15–16:35"]], views: [["specimens","Specimen register"],["windows","Lab windows"],["decision","Accession decision"]], toggle: "Include matrix-note copy", fieldLabel: "Accession registrar", validValue: "SPEC-RIV-5418 accession review", target: "SPEC-RIV-5418 + JACKET-38210", evidence: "5 specimen groups · 7 field jackets · 4 lab windows", state: "Review open", action: "Open accession record", footer: "Research collection · supplied accession evidence only",
+    unknowns: ["specimen stable","matrix verified","preparation calibrated","provenance validated","jacket seal verified","lab accepted","catalog published","accession approved"], palette: {canvas:"#F1EFEA",surface:"#FFFDF8",ink:"#302D28",muted:"#6B7377",border:"#AAA298",primary:"#61503F",accent:"#69607D"}, columns: "repeat(3,288px)", windowColumns: "repeat(4,222px)", decisionMin: "570px", cardRadius: 4, domain: "paleontology jacket-accession ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "textile-roll-conservation-v0.1", title: "Textile roll conservation review", eyebrow: "Textile archive · roll conservation", heading: "Textile-roll conservation review", recordHeading: "Textile register", recordSummary: "Four supplied textile groups mapped to six storage rolls.",
+    records: [["TEXT-WVN-6124",["ROLL-90431","ROLL-90432"]],["TEXT-DYE-6287",["ROLL-90433"]],["TEXT-LCE-6395",["ROLL-90434","ROLL-90435"]],["TEXT-EMB-6478",["ROLL-90436"]]],
+    windows: [["STUDIO-N4","08:05–08:25"],["STUDIO-E1","11:30–11:50"],["STUDIO-S7","14:55–15:15"]], views: [["textiles","Textile register"],["windows","Studio windows"],["decision","Conservation decision"]], toggle: "Include lining-note copy", fieldLabel: "Conservation registrar", validValue: "TEXT-WVN-6124 conservation review", target: "TEXT-WVN-6124 + ROLL-90431", evidence: "4 textile groups · 6 storage rolls · 3 studio windows", state: "Review open", action: "Open conservation record", footer: "Textile archive · supplied conservation evidence only",
+    unknowns: ["fiber stable","dye verified","humidity calibrated","provenance validated","roll seal verified","studio accepted","catalog published","conservation approved"], palette: {canvas:"#F2F0F1",surface:"#FFFDFF",ink:"#302B30",muted:"#6B7377",border:"#ADA1AA",primary:"#624B5D",accent:"#6B6650"}, columns: "repeat(2,388px)", windowColumns: "repeat(3,276px)", decisionMin: "554px", cardRadius: 6, domain: "textile roll-conservation ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -223,8 +239,10 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v3"
-    ? v3BaselineRoot
+  const baselineRoot = taskSet === "v4"
+    ? v4BaselineRoot
+    : taskSet === "v3"
+      ? v3BaselineRoot
     : taskSet === "v2"
       ? v2BaselineRoot
       : legacyBaselineRoot;

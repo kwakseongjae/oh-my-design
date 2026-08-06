@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.729 deterministic candidate promotion
+- 갱신: 2026-08-06 · 1.9.730 fresh promotion reliability task lock
 
 ## 지금 (현재 위치)
 
+- 1.9.730은 1.9.728에서 provider/model에 노출되지 않은 archaeology 한 과제와 완전히 새 paleontology/textile 두 과제를 묶었다. conservation/wind 결과는 재실행하지 않는다.
+- 세 과제 raw baseline은 모두75/85이고 red gate는 accessibility+responsive exact다. schema0.2 debt coverage, sealed artifact/inventory, `provider_mutable=false`, 설치된 `static-promote`가 provider/model0으로 complete다.
+- skill은 clean `4e9514b9`/`05d0259e…`로 동일하며 task inventory는93이다. exact task bytes를 commit한 뒤 fresh no-retry Reliability@3 plan을 사전등록한다.
 - 1.9.729 local repair는 preview를 통과한 candidate를 모델이 다시 읽고 product patch로 재작성하지 않는다. 새 `static-promote` helper가 receipt의 candidate/source-contract/inventory hash를 검증한 뒤 exact bytes를 locked product에 한 번 복사한다.
 - proof tracer는 성공한 `static-promote`를 한 번의 product edit/revision으로 기록한다. failed promotion은 edit으로 세지 않는다. benchmark sandbox instruction도 source-packet→candidate→preview→static-promote→static-close 순서를 직접 주입한다.
 - trailing newline을 포함한 byte-exact promotion, receipt 부재 fail-close, proof revision accounting을 추가했다. focused330 pass/2 skip·lint green이다. 다음은 provider-zero sealed smoke와 exact skill/task lock을 거쳐 replay 없는 fresh Reliability@3를 사전등록하는 단계다.

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.730 fresh Reliability task lock
+- unexposed archaeology1개와 fresh paleontology/textile2개를 잠갔다.
+- 세 baseline은75/85, red gate는 accessibility+responsive exact다.
+- sealed smoke는 clean 1.9.729 skill과 static-promote를3/3 포함한다.
+- provider/model0; exact commit 뒤 fresh no-retry Reliability@3를 사전등록한다.
+
 ## 2026-08-06 (Codex) · 1.9.729 deterministic candidate promotion
 - static-promote가 passed candidate bytes를 receipt 검증 뒤 product에 그대로 승격한다.
 - model retyping/trailing-newline drift와 두 번째 product edit 경로를 제거했다.
