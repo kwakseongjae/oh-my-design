@@ -129,8 +129,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("reflow_work_packet:");
     expect(skill).toContain('schema_version: "0.3"');
     expect(skill).toContain("browser-harness named consumer CDP attachment");
-    expect(skill).toContain("scripts/reflow-browser.py");
-    expect(skill).toContain("OMD_REFLOW_ARTIFACT=.omd/reflow-closure.json");
+    expect(skill).toContain("scripts/reflow-browser-runner.sh");
+    expect(skill).toContain("runner가 artifact의 locked product path와 helper path를 직접 읽고");
     expect(skill).toContain("required_fit_reserve_css_px: 8");
     expect(skill).toContain("planned_fit_reserve_css_px: 16");
     expect(skill).toContain("intrinsic nowrap width");
@@ -147,7 +147,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("required_literals:");
     expect(skill).toContain("forbidden_patterns:");
     expect(skill).toContain("count_literals:");
-    expect(skill).toContain("runner가 필요한 snapshot을 먼저 잠근다");
+    expect(skill).toContain("필요한 snapshot을 먼저 잠근다");
     expect(skill).toContain("OMD_PLAN_NOT_ATTEMPTED");
     expect(skill).toContain("`plan-close|plan-apply` 성공 stdout");
     expect(skill).toContain("OMD_PLAN_MEASURED_RECONCILE_REQUIRED");
@@ -255,7 +255,9 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("helper를 고쳐서 다시 실행하지 않고");
     expect(skill).toContain("`--doctor`, `--help`, executable/process/port discovery, 직접 Chrome launch");
     expect(skill).toContain("준비된 mechanism은 같은 shipped runner를 exact named consumer connection에서 pre-edit plan 1회와 post-edit acceptance 1회 실행하는 두 단계");
-    expect(skill).toContain("browser-harness < <current-skill-dir>/scripts/reflow-browser.py");
+    expect(skill).toContain("OMD_REFLOW_MODE=plan sh <current-skill-dir>/scripts/reflow-browser-runner.sh");
+    expect(skill).toContain("post-edit command는 `sh <current-skill-dir>/scripts/reflow-browser-runner.sh`");
+    expect(skill).toContain("환경변수·redirect를 재조립하지 않는다");
     expect(skill).toContain("`p.chromium.launch()`");
     expect(skill).toContain("document/body `scrollWidth`와 `clientWidth`");
     expect(skill).toContain("새 browser나 fallback을 만들지 않는다");

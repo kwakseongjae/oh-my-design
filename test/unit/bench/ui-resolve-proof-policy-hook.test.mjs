@@ -157,6 +157,24 @@ describe("proof policy host hook mapper", () => {
     expect(state.violations.duplicate_static_closure).toBe(0);
   });
 
+  it("treats the shipped reflow runner as the one browser proof command", () => {
+    const browser = "sh .agents/skills/omd-apply/scripts/reflow-browser-runner.sh";
+    const state = run([
+      edit("Edit", { file_path: "/tmp/run/index.html" }),
+      pre("node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-close .omd/reflow-closure.json"),
+      post("node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-close .omd/reflow-closure.json"),
+      pre(browser),
+      post(browser, { exit_code: 1 }),
+    ]);
+    expect(state).toMatchObject({
+      static_closure: "closed",
+      browser_proof: "unresolved",
+      browser_attempts: 1,
+      violations: { duplicate_static_closure: 0, browser_recovery: 0 },
+      delivery: "ready",
+    });
+  });
+
   it("does not consume browser proof when the agent only reads browser-harness instructions", () => {
     const state = run([
       edit("Edit", { file_path: "/tmp/run/index.html" }),

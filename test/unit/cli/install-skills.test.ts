@@ -307,19 +307,24 @@ describe('install-skills', () => {
     ]) {
       const helper = join(channelRoot, 'omd-apply', 'scripts', 'reflow-artifact.mjs');
       const browserRunner = join(channelRoot, 'omd-apply', 'scripts', 'reflow-browser.py');
+      const browserEntrypoint = join(channelRoot, 'omd-apply', 'scripts', 'reflow-browser-runner.sh');
       const skillPath = join(channelRoot, 'omd-apply', 'SKILL.md');
       expect(existsSync(helper), helper).toBe(true);
       expect(existsSync(browserRunner), browserRunner).toBe(true);
+      expect(existsSync(browserEntrypoint), browserEntrypoint).toBe(true);
       const helperSource = readFileSync(helper, 'utf8');
       const runnerSource = readFileSync(browserRunner, 'utf8');
+      const entrypointSource = readFileSync(browserEntrypoint, 'utf8');
       const skillSource = readFileSync(skillPath, 'utf8');
       expect(helperSource).toContain('createPlanDecisionPacket');
       expect(helperSource).toContain('applyPlanDecisionPacket');
       expect(runnerSource).toContain('plan-packet');
       expect(runnerSource).toContain('plan-apply');
+      expect(entrypointSource).toContain('exec browser-harness');
+      expect(entrypointSource).toContain('static_closure_manifest?.product_path');
       expect(skillSource).toContain('operator_inputs.accessible_names');
       installedHashes.push(createHash('sha256').update(
-        [helperSource, runnerSource].join('\n--omd-distribution-boundary--\n'),
+        [helperSource, runnerSource, entrypointSource].join('\n--omd-distribution-boundary--\n'),
       ).digest('hex'));
       const usage = spawnSync(process.execPath, [helper], { encoding: 'utf8' });
       expect(usage.status).toBe(2);

@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.744 Luna comparison complete
+- 갱신: 2026-08-06 · 1.9.745 terminal browser runner implemented
 
 ## 지금 (현재 위치)
+
+- 1.9.745는 transcription-prone 긴 browser 명령을 shipped `reflow-browser-runner.sh` 한 줄로 대체했다. artifact locked product와 sibling helper/Python source는 runner가 직접 결박한다.
+- proof classifier는 runner를 browser 1회로, `command -v browser-harness`를 recovery probe로 분류한다. focused53 + install43, shell syntax, lint가 green이며 provider call0이다.
+- 다음은 이 repair를 clean commit하고 full suite를 다시 실행한다. green이면 fresh-task Reliability@3 이상에서 council 품질 신호와 proof compliance를 함께 확인한다.
 
 - 1.9.744 Luna exact2셀은 retry/replacement0으로 완료됐다. off는81/85 unresolved, on은85/85 resolved이며 accessibility contrast4점을 회복했다.
 - on은 wall +9,104ms(+3.9%), tokens +91,045(+10.8%)이고, 잘못 쓴 terminal browser 명령 뒤 discovery+재시도로 proof compliance가 fail이다. 단일 task라 public/general claim은 금지다.

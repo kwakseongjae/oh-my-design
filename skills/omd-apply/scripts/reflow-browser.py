@@ -1,6 +1,7 @@
 """Terminal browser-harness runner for a locked OmD schema 0.3 reflow artifact.
 
-This file is executed by `browser-harness`, whose helpers are pre-imported.
+This file is executed by the shipped `reflow-browser-runner.sh`, which invokes
+`browser-harness` with its helpers pre-imported.
 Required environment: OMD_REFLOW_ARTIFACT, OMD_REFLOW_PRODUCT,
 OMD_REFLOW_HELPER, and BU_NAME. BU_CDP_URL is optional connection metadata.
 """

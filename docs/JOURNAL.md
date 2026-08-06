@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.745 terminal browser runner
+- 긴 browser 명령을 shipped runner 한 줄로 축약했다.
+- proof/skill/runner53, install-channel43, shell syntax, lint가 green이다.
+- clean commit 뒤 full suite와 fresh reliability로 이어간다.
+
 ## 2026-08-06 (Codex) · 1.9.744 Luna comparison complete
 - exact2셀 retry0: off81/85 unresolved, on85/85 resolved다.
 - on은 wall+3.9%, tokens+10.8%이고 browser command budget은 fail이다.

@@ -281,9 +281,9 @@ const countPath = path.join(benchmarkDir, "fake-claude-invocation-count.txt");
 const count = fs.existsSync(countPath) ? Number(fs.readFileSync(countPath, "utf8")) : 0;
 fs.writeFileSync(invocationPath, JSON.stringify(argv));
 fs.writeFileSync(countPath, String(count + 1));
-${slowClaude ? "await new Promise((resolve) => setTimeout(resolve, 5_000));" : ""}
 const model = argv[argv.indexOf("--model") + 1];
 console.log(JSON.stringify({type:"system",subtype:"init",model}));
+${slowClaude ? "await new Promise((resolve) => setTimeout(resolve, 5_000));" : ""}
 console.log(JSON.stringify({
   type:"result", subtype:"success", is_error:false, model,
   result:${emptyClaude ? '""' : '"fake claude complete"'},
@@ -561,7 +561,7 @@ describe("provider-neutral prepared matrix contract", () => {
     expect(invocationCount(root, "fake-codex", "codex")).toBe(1);
   });
 
-  it("scores and checkpoints a preregistered timeout without replaying its provider", () => {
+  it("scores and checkpoints an unattributed preregistered timeout without replaying its provider", () => {
     const temp = mkdtempSync(join(tmpdir(), "omd-provider-valid-timeout-"));
     const root = join(temp, "matrix");
     installFakeRuntimes(temp, { slowClaude: true });
@@ -578,7 +578,7 @@ describe("provider-neutral prepared matrix contract", () => {
     expect(checkpoint.cells[0]).toMatchObject({
       id: "fake-claude",
       status: "complete",
-      validity: "valid",
+      validity: "invalid-attribution",
       run_status: "timed_out",
       ui_resolved: false,
       tokens: null,
@@ -597,7 +597,7 @@ describe("provider-neutral prepared matrix contract", () => {
     ));
     expect(timeoutRecord).toMatchObject({
       run_status: "timed_out",
-      validity: "valid",
+      validity: "invalid-attribution",
       ui_resolved: false,
       tokens: null,
     });

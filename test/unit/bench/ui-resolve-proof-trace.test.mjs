@@ -66,6 +66,18 @@ describe("proof trace contract", () => {
     expect(classifyProofCommand("browser-harness capture_screenshot").browser).toBe(true);
     expect(classifyProofCommand("/opt/homebrew/bin/zsh -lc \"browser-harness <<'PY'\ncapture_screenshot()\nPY\"").browser).toBe(true);
     expect(classifyProofCommand("BU_NAME=smoke browser-harness capture_screenshot").browser).toBe(true);
+    expect(classifyProofCommand("sh .agents/skills/omd-apply/scripts/reflow-browser-runner.sh")).toMatchObject({
+      browser: true,
+      recovery_probe: false,
+      static_verification: false,
+      neutral: false,
+    });
+    expect(classifyProofCommand("OMD_REFLOW_MODE=plan sh /tmp/skill/scripts/reflow-browser-runner.sh").browser).toBe(true);
+    expect(classifyProofCommand("command -v browser-harness")).toMatchObject({
+      browser: false,
+      recovery_probe: true,
+      static_verification: false,
+    });
     expect(classifyProofCommand("sed -n '1,240p' /Users/me/Developer/browser-harness/SKILL.md")).toMatchObject({
       browser: false,
       recovery_probe: false,
