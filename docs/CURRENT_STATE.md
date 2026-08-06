@@ -4,10 +4,12 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.731 Reliability checkpoint 1/3
+- 갱신: 2026-08-06 · 1.9.731 Reliability checkpoint 2/3
 
 ## 지금 (현재 위치)
 
+- 1.9.731 paleontology 두 번째 셀도 exact1회 valid85/85, revision1, static success1/fail0, proof true, candidate/final exact로 Reliability pass다.
+- 211,241ms, 638,316 tokens(cached input559,360), retry/replacement0이다. 누적 Reliability2/3이며 CHECKPOINT-2 commit 뒤 textile 마지막 셀만 실행한다.
 - 1.9.731 archaeology 첫 셀은 exact1회에 valid85/85, resolved=true, revision1, static success1/fail0, proof compliance true, candidate/final exact match로 Reliability pass다.
 - 148,128ms, 686,001 tokens(cached input619,008), retry/replacement0이다. 별도 browser-harness 명령은 실패했지만 recovery0이고 독립 objective·sealed closure는 green이다.
 - deterministic `static-promote`가 1.9.728의 model retyping/second-edit 결함을 첫 fresh 셀에서 재현 없이 닫았다. CHECKPOINT-1 commit 뒤 paleontology 한 셀만 실행한다.

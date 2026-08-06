@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.731 Reliability checkpoint 2/3
+- paleontology도 exact1회85/85, revision1, static1/0, proof·byte binding green이다.
+- 211,241ms, 638,316 tokens(cached559,360), retry/replacement0이다.
+- 누적 Reliability2/3이다.
+- CHECKPOINT-2 commit 뒤 textile 마지막 셀만 실행한다.
+
 ## 2026-08-06 (Codex) · 1.9.731 Reliability checkpoint 1/3
 - archaeology는 exact1회85/85, revision1, static1/0, proof·byte binding green이다.
 - 148,128ms, 686,001 tokens(cached619,008), retry/replacement0이다.
