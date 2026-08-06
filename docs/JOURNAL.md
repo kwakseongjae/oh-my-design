@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.744 Luna comparison complete
+- exact2셀 retry0: off81/85 unresolved, on85/85 resolved다.
+- on은 wall+3.9%, tokens+10.8%이고 browser command budget은 fail이다.
+- 다음은 terminal browser를 단일 shipped runner로 잠그는 provider-free 1.9.745다.
+
 ## 2026-08-06 (Codex) · 1.9.744 Luna fallback prepared
 - Luna root 2/2의 provider-zero admission이 green이다.
 - plan `3d93b9de…` / state `30972407…`, exact normalization과 on question/lane0를 잠갔다.

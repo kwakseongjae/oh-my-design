@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.744 Luna fallback comparison prepared
+- 갱신: 2026-08-06 · 1.9.744 Luna comparison complete
 
 ## 지금 (현재 위치)
+
+- 1.9.744 Luna exact2셀은 retry/replacement0으로 완료됐다. off는81/85 unresolved, on은85/85 resolved이며 accessibility contrast4점을 회복했다.
+- on은 wall +9,104ms(+3.9%), tokens +91,045(+10.8%)이고, 잘못 쓴 terminal browser 명령 뒤 discovery+재시도로 proof compliance가 fail이다. 단일 task라 public/general claim은 금지다.
+- 다음 1.9.745는 품질 신호를 보존하면서 transcription-prone browser 명령을 shipped runner 하나로 축약하고 proof classifier/contract를 provider-free로 잠근다. 그 전에는 model replay를 하지 않는다.
 
 - 1.9.744 Luna root는 scheduled/prepared2/2, provider/Luna exposure0, execution artifacts absent로 admission green이다. plan `3d93b9de…`, state `30972407…`다.
 - exact-task normalization, source publishable, task lock, reflow source contract, on questions0/model lanes0가 모두 green이다.
