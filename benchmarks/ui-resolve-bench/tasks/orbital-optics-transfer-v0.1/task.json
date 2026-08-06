@@ -1,0 +1,482 @@
+{
+  "id": "orbital-optics-transfer-v0.1",
+  "version": "0.1.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "onboarding-v1",
+  "review_brief": "A observatory transfer ledger. Preserve 5 record identifiers, 7 assigned container identifiers and exact assignments, the separate 4-window operational strip, three review views, note setting, reviewer name, and supplied summary facts without inventing alignment verified, coating intact, optic calibrated, flight certified, cradle seal verified, bay accepted, manifest published, transfer approved.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": {
+    "landmarks": {
+      "h1_count": {
+        "exact": 1
+      },
+      "main_count": {
+        "exact": 1
+      },
+      "nav_count": {
+        "min": 1
+      },
+      "footer_count": {
+        "min": 1
+      }
+    }
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "name": "narrow-320",
+      "width": 320,
+      "height": 720
+    },
+    {
+      "name": "css-zoom-surrogate-200",
+      "width": 640,
+      "height": 900,
+      "zoom": 2
+    }
+  ],
+  "protected_selectors": [
+    "[data-bench='routing-view-option']",
+    "[data-bench='note-toggle']",
+    "[data-bench='review-form']",
+    "[data-bench='reviewer-name']",
+    "[data-bench='form-status']",
+    "[data-bench='record-case']",
+    "[data-bench='record-id']",
+    "[data-bench='unit-id']",
+    "[data-bench='window-strip']",
+    "[data-bench='window-owner']",
+    "[data-bench='window-id']",
+    "[data-bench='compact-control-copy']",
+    "[data-bench-design-role='record-register']",
+    "[data-bench-decision-role='context']",
+    "[data-bench-decision-role='target']",
+    "[data-bench-decision-role='evidence']",
+    "[data-bench-decision-role='state']",
+    "[data-bench-decision-role='action']"
+  ],
+  "protected_hook_counts": {
+    "[data-bench='routing-view-option']": 3,
+    "[data-bench='note-toggle']": 1,
+    "[data-bench='review-form']": 1,
+    "[data-bench='reviewer-name']": 1,
+    "[data-bench='form-status']": 1,
+    "[data-bench='record-case']": 5,
+    "[data-bench='record-id']": 5,
+    "[data-bench='unit-id']": 7,
+    "[data-bench='window-strip']": 1,
+    "[data-bench='window-owner']": 4,
+    "[data-bench='window-id']": 4,
+    "[data-bench='compact-control-copy']": 1,
+    "[data-bench-design-role='record-register']": 1,
+    "[data-bench-decision-role='context']": 1,
+    "[data-bench-decision-role='target']": 1,
+    "[data-bench-decision-role='evidence']": 1,
+    "[data-bench-decision-role='state']": 1,
+    "[data-bench-decision-role='action']": 1
+  },
+  "journey_oracle": {
+    "choice": {
+      "selector": "[data-bench='routing-view-option']",
+      "value_attribute": "data-view",
+      "body_dataset": "view",
+      "values": [
+        "optics",
+        "windows",
+        "decision"
+      ],
+      "count": 3,
+      "initial": "optics",
+      "selected": "windows"
+    },
+    "toggle": {
+      "selector": "[data-bench='note-toggle']"
+    },
+    "form": {
+      "form_selector": "[data-bench='review-form']",
+      "field_selector": "[data-bench='reviewer-name']",
+      "status_selector": "[data-bench='form-status']",
+      "invalid_value": "",
+      "valid_value": "OPT-NAC-0174 transfer review"
+    }
+  },
+  "text_geometry_oracle": {
+    "viewports": [
+      "mobile",
+      "narrow-320",
+      "css-zoom-surrogate-200"
+    ],
+    "scope_selectors": [
+      "[data-bench-design-role='record-register']",
+      "[data-bench='window-strip']",
+      "[data-bench-decision-role='context']"
+    ],
+    "atomic_scope_selectors": [
+      "[data-bench='record-id']",
+      "[data-bench='unit-id']",
+      "[data-bench='window-owner']",
+      "[data-bench='window-id']",
+      "[data-bench-decision-role='target']",
+      "[data-bench-decision-role='evidence']",
+      "[data-bench-decision-role='state']"
+    ],
+    "compact_copy_selectors": [
+      "[data-bench='compact-control-copy']"
+    ],
+    "max_short_text_chars": 56,
+    "max_short_text_lines": 1
+  },
+  "decision_hierarchy_oracle": {
+    "viewports": [
+      "desktop",
+      "mobile",
+      "narrow-320",
+      "css-zoom-surrogate-200"
+    ],
+    "minimum_action_gap_px": 8,
+    "roles": {
+      "container": "[data-bench-decision-role='context']",
+      "target": "[data-bench-decision-role='target']",
+      "evidence": "[data-bench-decision-role='evidence']",
+      "state": "[data-bench-decision-role='state']",
+      "action": "[data-bench-decision-role='action']"
+    }
+  },
+  "protected_unknown_patterns": [
+    "\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b",
+    "\\b(?:alignment verified|coating intact|optic calibrated|flight certified|cradle seal verified|bay accepted|manifest published|transfer approved)\\b",
+    "\\btrusted by\\b",
+    "[★☆]{3,}"
+  ],
+  "protected_known_patterns": [
+    "OPT-NAC-0174 + CRADLE-88031",
+    "5 optics · 7 transport cradles · 4 transfer windows"
+  ],
+  "protected_unknown_selectors": [
+    "blockquote",
+    "[class*='testimonial' i]",
+    "[class*='logo-wall' i]",
+    "[class*='social-proof' i]"
+  ],
+  "design_oracle": {
+    "page_background": "#EDF2F3",
+    "primary_action": "#185A6B",
+    "accent": "#7A5367",
+    "ink": "#172A31",
+    "surface": "#FCFEFF",
+    "border": "#98A9B0",
+    "muted_text": "#61717A",
+    "card_radius_px": 3,
+    "control_radius_px": 3,
+    "font_family": {
+      "body_any": [
+        "Arial"
+      ],
+      "display_any": [
+        "Georgia"
+      ]
+    },
+    "selectors": {
+      "primary_action": "[data-primary-action]",
+      "card": "[data-bench-design-role='record-register']",
+      "display": "h1"
+    }
+  },
+  "omd_reflow_source_contract": {
+    "schema_version": "0.2",
+    "structured_css_only": true,
+    "product_path": "index.html",
+    "required_literals": [
+      "OPT-NAC-0174 + CRADLE-88031",
+      "5 optics · 7 transport cradles · 4 transfer windows"
+    ],
+    "forbidden_literals": [
+      "alignment verified",
+      "coating intact",
+      "optic calibrated",
+      "flight certified",
+      "cradle seal verified",
+      "bay accepted",
+      "manifest published",
+      "transfer approved"
+    ],
+    "forbidden_patterns": [
+      "word-break\\s*:",
+      "overflow-wrap\\s*:\\s*(?:anywhere|break-word)"
+    ],
+    "forbidden_css_declarations": [
+      {
+        "selector": ".decision-target",
+        "property": "min-width",
+        "value_contract": "positive-length"
+      },
+      {
+        "selector": ".decision-evidence",
+        "property": "min-width",
+        "value_contract": "positive-length"
+      }
+    ],
+    "count_literals": [
+      {
+        "literal": "data-bench-decision-role=\"target\"",
+        "expected_count": 1
+      },
+      {
+        "literal": "data-bench-decision-role=\"evidence\"",
+        "expected_count": 1
+      }
+    ],
+    "acceptance_debt_ledger": [
+      {
+        "id": "record-register-reflow",
+        "gate": "responsive",
+        "selector": ".record-grid",
+        "baseline_evidence": "fixed repeat(3,280px) register escapes narrow carriers",
+        "required_correction": "reflow the supplied register without changing assignments",
+        "required_outcome": "the complete register remains contained",
+        "proof_mode": "browser-row",
+        "bound_row_group_ids": [
+          "target"
+        ],
+        "status": "must-fix-before-static-close",
+        "static_guardrail": {
+          "required_literals": [
+            "OPT-NAC-0174 + CRADLE-88031"
+          ],
+          "forbidden_literals": [],
+          "forbidden_patterns": [],
+          "required_css_declarations": [
+            {
+              "selector": ".record-grid",
+              "property": "grid-template-columns",
+              "value": "1fr",
+              "value_contract": "any-value"
+            }
+          ],
+          "forbidden_css_declarations": []
+        }
+      },
+      {
+        "id": "window-strip-reflow",
+        "gate": "responsive",
+        "selector": ".window-strip",
+        "baseline_evidence": "fixed repeat(4,220px) window strip escapes narrow pages",
+        "required_correction": "reflow the separate operational window strip",
+        "required_outcome": "every supplied window remains visible",
+        "proof_mode": "browser-row",
+        "bound_row_group_ids": [
+          "evidence"
+        ],
+        "status": "must-fix-before-static-close",
+        "static_guardrail": {
+          "required_literals": [
+            "5 optics · 7 transport cradles · 4 transfer windows"
+          ],
+          "forbidden_literals": [],
+          "forbidden_patterns": [],
+          "required_css_declarations": [
+            {
+              "selector": ".window-strip",
+              "property": "grid-template-columns",
+              "value": "1fr",
+              "value_contract": "any-value"
+            }
+          ],
+          "forbidden_css_declarations": []
+        }
+      },
+      {
+        "id": "decision-reflow",
+        "gate": "responsive",
+        "selector": ".decision",
+        "baseline_evidence": "fixed relationship widths collide with the action and escape the page",
+        "required_correction": "preserve separate target, evidence, state, and action hierarchy in a contained column",
+        "required_outcome": "the decision remains readable without page overflow or action wrapping",
+        "proof_mode": "browser-row",
+        "bound_row_group_ids": [
+          "target",
+          "evidence"
+        ],
+        "status": "must-fix-before-static-close",
+        "static_guardrail": {
+          "required_literals": [],
+          "forbidden_literals": [],
+          "forbidden_patterns": [],
+          "required_css_declarations": [
+            {
+              "selector": ".decision",
+              "property": "grid-template-columns",
+              "value": "1fr",
+              "value_contract": "any-value"
+            },
+            {
+              "selector": ".decision > div",
+              "property": "min-width",
+              "value": "0",
+              "value_contract": "exact-value"
+            }
+          ],
+          "forbidden_css_declarations": [
+            {
+              "selector": ".decision-target",
+              "property": "min-width",
+              "value_contract": "positive-length"
+            },
+            {
+              "selector": ".decision-evidence",
+              "property": "min-width",
+              "value_contract": "positive-length"
+            }
+          ]
+        }
+      },
+      {
+        "id": "canvas-text-contrast",
+        "gate": "accessibility",
+        "selector": "header > p, footer",
+        "baseline_evidence": "muted normal-size guidance does not reach 4.5:1 on the canvas",
+        "required_correction": "use the verified ink role for canvas guidance",
+        "required_outcome": "header guidance and footer reach at least 4.5:1",
+        "proof_mode": "static-fail-close",
+        "bound_row_group_ids": [],
+        "status": "must-fix-before-static-close",
+        "static_guardrail": {
+          "required_literals": [],
+          "forbidden_literals": [],
+          "forbidden_patterns": [],
+          "required_css_declarations": [
+            {
+              "selector": "header > p",
+              "property": "color",
+              "value": "var(--ink)",
+              "value_contract": "exact-value"
+            },
+            {
+              "selector": "footer",
+              "property": "color",
+              "value": "var(--ink)",
+              "value_contract": "exact-value"
+            }
+          ],
+          "forbidden_css_declarations": []
+        }
+      }
+    ],
+    "carriers": [
+      {
+        "id": "target-carrier",
+        "selector": "[data-bench-decision-role='context'] > div > .decision-target",
+        "expected_count": 1,
+        "binds_row_groups": [
+          "target"
+        ],
+        "containment_guardrail": {
+          "selector": ".decision > div",
+          "property": "min-width",
+          "value": "0",
+          "value_contract": "exact-value"
+        }
+      },
+      {
+        "id": "evidence-carrier",
+        "selector": "[data-bench-decision-role='context'] > div > .decision-evidence",
+        "expected_count": 1,
+        "binds_row_groups": [
+          "evidence"
+        ],
+        "containment_guardrail": {
+          "selector": ".decision > div",
+          "property": "min-width",
+          "value": "0",
+          "value_contract": "exact-value"
+        }
+      }
+    ],
+    "row_groups": [
+      {
+        "id": "target",
+        "selector": "[data-bench-decision-role='target']",
+        "role": "target",
+        "expected_count": 1,
+        "longest_value": "OPT-NAC-0174 + CRADLE-88031",
+        "atomic_parts": [
+          "OPT-NAC-0174",
+          "CRADLE-88031"
+        ],
+        "line_contract": "parent-one-line",
+        "typography_contract": {
+          "source": "deterministic-pre-edit-snapshot"
+        },
+        "required_fit_reserve_css_px": 8,
+        "planned_fit_reserve_css_px": 16,
+        "decision": "comparison-scroll",
+        "scroll_contract": {
+          "container_selector": "[data-bench-decision-role='context'] > div > .decision-target",
+          "accessible_name": "Record and container relationship",
+          "keyboard_reachable": true,
+          "focus_visible": true,
+          "passive_text_scroll_container": false
+        }
+      },
+      {
+        "id": "evidence",
+        "selector": "[data-bench-decision-role='evidence']",
+        "role": "evidence",
+        "expected_count": 1,
+        "longest_value": "5 optics · 7 transport cradles · 4 transfer windows",
+        "line_contract": "single-token",
+        "typography_contract": {
+          "source": "deterministic-pre-edit-snapshot"
+        },
+        "required_fit_reserve_css_px": 8,
+        "planned_fit_reserve_css_px": 16,
+        "decision": "comparison-scroll",
+        "scroll_contract": {
+          "container_selector": "[data-bench-decision-role='context'] > div > .decision-evidence",
+          "accessible_name": "Supplied operational evidence",
+          "keyboard_reachable": true,
+          "focus_visible": true,
+          "passive_text_scroll_container": false
+        }
+      }
+    ],
+    "invariants": {
+      "same_row_count": true,
+      "same_decision_boundary": true,
+      "all_registered_carriers_closed": true,
+      "no_text_hack": true
+    },
+    "baseline_evidence": {
+      "path": "baseline-critical-gates.json",
+      "sha256": "21deeeda8381833c071160aceaefc1e842bf02a7fe7de9833a3a7a4a5e41aea6"
+    },
+    "critical_gate_debt_coverage": [
+      {
+        "gate": "responsive",
+        "debt_ids": [
+          "record-register-reflow",
+          "window-strip-reflow",
+          "decision-reflow"
+        ]
+      },
+      {
+        "gate": "accessibility",
+        "debt_ids": [
+          "canvas-text-contrast"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.720",
+  "experiment_id": "source-contract-reliability-task-lock-1.9.720",
+  "status": "THREE_TASKS_LOCKED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "tasks": [
+    {
+      "id": "orbital-optics-transfer-v0.1",
+      "task_tree_sha256": "9d5c2773344b14b064275b8748d49ad4b5c7dbe527d3d1dbdad2d030d5d75fd8",
+      "task_json_sha256": "cb726273cbd2859f63863f885b9b09a352d71b22735aca6e33655876003f5286",
+      "prompt_sha256": "579166df05a6ce574deddb63be05b20fe6e20b19dc45be7698d7832eb894f0a1",
+      "starter_sha256": "9bc0699e6a21031d805b4bc0a81e5300fd0c461780b156ea7ad5672d897354d5",
+      "baseline_evidence_sha256": "21deeeda8381833c071160aceaefc1e842bf02a7fe7de9833a3a7a4a5e41aea6",
+      "source_contract_sha256": "3d5259f353cd2a44ea80139d7ee940d49fb26da614416f6bc0a1f52c789ccc9d",
+      "sealed_artifact_sha256": "ea15b80e6b06bde5b7ef54f825297c89fb21175caf7a5ad68b329adf8e4e58a9",
+      "sealed_inventory_sha256": "44c737d24380a3dc373c5591b1f0614d712f82e97d504669a892ec6b00b0f662"
+    },
+    {
+      "id": "seed-vault-accession-v0.1",
+      "task_tree_sha256": "a8884db39170445b429ba24892600e96d5a6e59ffa92d79defa92dbe855ac69c",
+      "task_json_sha256": "1e8bbc72a1391ad90021cb87bd0a688e18139dc89f67c59388aefd7696b130c7",
+      "prompt_sha256": "61f5ddf2e9bfe5bdfcdd923e6a8218063001ee2fa445f66121da7ddc9e282922",
+      "starter_sha256": "581c61546c93eaa05cb6b5cf67e22f2c76cf61c7cfc1d1703329b924dfdacea9",
+      "baseline_evidence_sha256": "8b928e0f078f7ac170cc403fde3878b27953d6b84cd3d9ef87779268c69f6480",
+      "source_contract_sha256": "f4c14eb9de8ed9f4a9e02c5ac92c6b3210193c841b7dfc59adb4cdb0a3fcbd6b",
+      "sealed_artifact_sha256": "9c888885c605e29289969eb87f93f9679a09de7a52f6a643ff418b1a4467afbc",
+      "sealed_inventory_sha256": "f29a8f2244a3234a594bbcc31f46950b42bd9d718bb2db7370943f5e8ed82afc"
+    },
+    {
+      "id": "audio-archive-ingest-v0.1",
+      "task_tree_sha256": "70029168aaef9bd06bec6d774cf42ce6255cf6afe95212755e2fa50c9bbfba39",
+      "task_json_sha256": "a99380c46b7a32162604f2d5f8729279ab880e08278d0bfb20d276f02ee5db65",
+      "prompt_sha256": "aa3cc9aac476b0be840c5a65c1bef1a34133c0de4e18ff07bc6dea8043c74a4f",
+      "starter_sha256": "99a54b4c4c34bfc2fd7a230b8dbfce31531cc67f9c05615f6f99c5463ecd8fd8",
+      "baseline_evidence_sha256": "461afdceafc297192126deacf75117ccff370ad98d2d30bdf7b7015464f3371b",
+      "source_contract_sha256": "a26b70c55c4930fa36cc8afaa16d83be47ac2f2f55c7252f24ad5349c49098d7",
+      "sealed_artifact_sha256": "0dd364c56f626aa5ec2cdc0d2c7a3247c66236444be44f4d0d041d91f5a299a6",
+      "sealed_inventory_sha256": "2ee4eba87964a63a2d50f7909dd2298b774da8671ce32baf88cd0115a25bc2ca"
+    }
+  ],
+  "raw_baseline": {
+    "scores": [75, 75, 75],
+    "objective_max": 85,
+    "failed_critical_gates": ["accessibility", "responsive"],
+    "coverage_complete": true
+  },
+  "validation": {
+    "task_contracts": "pass",
+    "provider_free_browser_baselines": "pass",
+    "provider_sealed_smoke": "pass",
+    "focused_tests": "6/6 pass",
+    "typescript": "pass",
+    "provider_calls": 0
+  },
+  "execution_allowed": false,
+  "next_gate": "Commit the exact three tasks, then preregister their exact source commit in a no-retry Luna/high three-cell reliability plan."
+}

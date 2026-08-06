@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.720 Reliability@3 task lock
+- fresh domain/cardinality/token variation3개를 provider/model0으로 잠갔다.
+- raw baseline은 모두75/85, accessibility+responsive exact red다.
+- schema0.2 baseline coverage와 sealed smoke가3/3 green이다.
+- commit 뒤 exact Luna/high3셀 no-retry preregistration으로 간다.
+
 ## 2026-08-06 (Codex) · 1.9.719 meteorite transfer accepted
 - 승인된 Luna/high 단일 셀은 retry/replacement 없이 valid85/85로 끝났다.
 - edit1/static pass1/proof true/inventory 불변이며 모든 prereg success를 통과했다.

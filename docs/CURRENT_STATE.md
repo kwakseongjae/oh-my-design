@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: 현재 `HEAD`의 1.9.719 meteorite debt canary archive (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.719 meteorite source-contract0.2 transfer accepted-diagnostic
+- 갱신: 2026-08-06 · 1.9.720 Reliability@3 three-task provider-zero lock
 
 ## 지금 (현재 위치)
 
+- 1.9.720은 fresh fictional task3개(orbital optics, seed vault, audio archive)를 provider/model0으로 잠갔다. 도메인·palette·cardinality·identifier length·grid density가 다르며 meteorite replay가 아니다.
+- raw DESIGN.md baseline은 세 과제 모두75/85, false critical gates=`accessibility,responsive` exact다. baseline bytes hash와 debt coverage가 3/3 완전 일치한다.
+- provider-free sealed smoke3/3이 schema0.2 artifact, immutable inventory, parent containment, register/window/decision reflow, contrast obligations를 생성했다. focused6/6·lint green이고 full suite는 새 inventory count fixture 2건만84→87로 교정 후 재실행 대기다.
+- 다음은 exact task bytes를 clean commit한 뒤 그 source commit과 exact clean OmD skill을 Luna/high3셀·task당1회·retry/replacement0으로 preregister한다. 아직 provider call/model exposure/reliability claim은0이다.
 - 사용자가 exact payload를 승인해 1.9.719 Luna/high 단일 셀이 retry/replacement 없이 valid complete됐다. provider calls1/model exposures1이며 meteorite 재실행은 금지다.
 - 결과는 raw75→85/85, resolved=true, 178,868ms, 652,505 tokens(그중 cached input585,472)다. 6 critical gates가 모두 green이다.
 - prereg success contract는 edit/revision1, static success1/fail0, handoff0, proof true, sealed inventory `1f14673d…` 불변으로 전부 통과했다.
