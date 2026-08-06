@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { createHash } from "node:crypto";
-import { existsSync, readdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, readdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
 import { dirname, isAbsolute, normalize, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -1742,11 +1742,16 @@ function writeStaticPreviewReceipt(artifactPath, artifact, candidatePath, source
   return { receipt, receiptPath };
 }
 
-function assertPassedStaticPreviewReceipt(artifactPath, artifact, source) {
-  if (artifact.source_contract?.state !== "provider-sealed") return null;
+function assertPassedStaticPreviewReceipt(
+  artifactPath,
+  artifact,
+  source,
+  { required = artifact.source_contract?.state === "provider-sealed", candidatePath = null } = {},
+) {
+  if (!required) return null;
   const receiptPath = staticPreviewReceiptPath(artifactPath);
   if (!existsSync(receiptPath)) {
-    fail("provider-sealed static closure requires a passed static-preview receipt");
+    fail("candidate promotion and provider-sealed static closure require a passed static-preview receipt");
   }
   const receipt = JSON.parse(readFileSync(receiptPath, "utf8"));
   if (
@@ -1756,6 +1761,7 @@ function assertPassedStaticPreviewReceipt(artifactPath, artifact, source) {
     || receipt.source_contract_sha256 !== artifact.source_contract.sha256
     || receipt.inventory_sha256 !== artifact.inventory.sha256
     || receipt.candidate_sha256 !== sha256Source(source)
+    || (candidatePath !== null && resolve(receipt.candidate_path ?? "") !== candidatePath)
   ) {
     fail("provider-sealed product bytes must exactly match the passed static-preview candidate");
   }
@@ -1905,8 +1911,8 @@ function staticEditGuardrails(artifact) {
 
 function main() {
   const [command, rawPath, rawAuxiliaryPath] = process.argv.slice(2);
-  if (!command || !rawPath || !["source-seal", "source-packet", "snapshot", "lock", "plan-close", "plan-reconcile", "plan-diagnose", "plan-packet", "plan-apply", "source-fallback-open", "static-preview", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
-    console.error("usage: reflow-artifact.mjs <source-seal|source-packet|snapshot|lock|plan-close|plan-reconcile|plan-diagnose|plan-packet|plan-apply|source-fallback-open|static-preview|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <contract-or-artifact.json> [artifact-or-product-or-packet-file]");
+  if (!command || !rawPath || !["source-seal", "source-packet", "snapshot", "lock", "plan-close", "plan-reconcile", "plan-diagnose", "plan-packet", "plan-apply", "source-fallback-open", "static-preview", "static-promote", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
+    console.error("usage: reflow-artifact.mjs <source-seal|source-packet|snapshot|lock|plan-close|plan-reconcile|plan-diagnose|plan-packet|plan-apply|source-fallback-open|static-preview|static-promote|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <contract-or-artifact.json> [artifact-or-product-or-packet-file]");
     process.exitCode = 2;
     return;
   }
@@ -1986,6 +1992,48 @@ function main() {
       product_mutated: false,
     }));
     if (preview.state !== "passed") process.exitCode = 1;
+    return;
+  }
+  if (command === "static-promote") {
+    if (!rawAuxiliaryPath) fail("static-promote requires the passed candidate product file");
+    assertPreEditProductUnchanged(artifact);
+    validatePlanClosure(artifact);
+    const candidatePath = resolve(rawAuxiliaryPath);
+    const artifactDir = dirname(path);
+    const relativeCandidate = relative(artifactDir, candidatePath);
+    if (
+      !relativeCandidate
+      || relativeCandidate === ".."
+      || relativeCandidate.startsWith(`..${sep}`)
+      || isAbsolute(relativeCandidate)
+    ) fail("static-promote candidate must stay inside the artifact directory");
+    if (!existsSync(candidatePath)) fail("static-promote requires the passed candidate product file");
+    const productPath = resolve(artifact.static_closure_manifest?.product_path ?? "");
+    if (!productPath || candidatePath === productPath || candidatePath === path) {
+      fail("static-promote candidate must not be the locked product or artifact");
+    }
+    const source = readFileSync(candidatePath, "utf8");
+    const { receiptPath } = assertPassedStaticPreviewReceipt(path, artifact, source, {
+      required: true,
+      candidatePath,
+    });
+    copyFileSync(candidatePath, productPath);
+    const productSource = readFileSync(productPath, "utf8");
+    if (sha256Source(productSource) !== sha256Source(source)) {
+      fail("static-promote failed to preserve candidate bytes");
+    }
+    console.log(JSON.stringify({
+      command,
+      path,
+      candidate_path: candidatePath,
+      product_path: productPath,
+      receipt_path: receiptPath,
+      candidate_sha256: sha256Source(source),
+      product_sha256: sha256Source(productSource),
+      exact_bytes: true,
+      artifact_mutated: false,
+      product_mutated: true,
+    }));
     return;
   }
   const defaultHostStateDir = resolve(process.cwd(), ".omd/proof-policy");

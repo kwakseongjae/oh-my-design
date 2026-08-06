@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.729 deterministic candidate promotion
+- static-promote가 passed candidate bytes를 receipt 검증 뒤 product에 그대로 승격한다.
+- model retyping/trailing-newline drift와 두 번째 product edit 경로를 제거했다.
+- proof trace는 성공 promotion을 정확히1 revision으로 기록한다.
+- focused330 pass/2 skip·lint green; 다음은 provider-zero smoke/task lock이다.
+
 ## 2026-08-06 (Codex) · 1.9.728 terminal result
 - objective2/2지만 Reliability1/3; wind가 second-product-edit로 hard-stop됐다.
 - conservation pass, wind fail, archaeology provider/model0 frozen이다.

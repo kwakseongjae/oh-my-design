@@ -29,6 +29,8 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("source_contract.state: provider-sealed");
     expect(skill).toContain("source-packet .omd/reflow-closure.json");
     expect(skill).toContain("static-preview .omd/reflow-closure.json .omd/product-candidate.html");
+    expect(skill).toContain("static-promote .omd/reflow-closure.json .omd/product-candidate.html");
+    expect(skill).toContain("candidate를 다시 읽거나 모델 edit으로 재작성하지 않고");
     expect(skill).toContain("static-preview-receipt.json");
     expect(skill).toContain("provider-sealed `static-close`는 이 결박이 없거나 다르면 closure를 소비하지 않고 거부한다");
     expect(skill).toContain("sealed artifact는 모델의 작업물이 아니며");

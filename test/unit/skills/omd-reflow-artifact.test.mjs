@@ -1006,6 +1006,68 @@ describe("compact reflow artifact helper", () => {
     expect(JSON.parse(readFileSync(artifactPath, "utf8")).static_closure).toMatchObject({ state: "open", attempts: 0 });
   });
 
+  it("promotes the passed candidate to the locked product without changing a byte", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-static-promote-"));
+    temporaryRoots.push(root);
+    const contractPath = join(root, "contract.json");
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const candidatePath = join(root, "candidate.html");
+    const helper = join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs");
+    const preEditSource = '<section data-decision=""><div class="target-carrier"><strong data-bench-decision-role="target">FS-TC-24-017 + BAG-SEAL-884021</strong></div></section><p>required-fact</p>\n';
+    writeFileSync(contractPath, JSON.stringify(sourceContract()));
+    writeFileSync(productPath, preEditSource);
+    execFileSync(process.execPath, [helper, "source-seal", contractPath, artifactPath], { cwd: root, encoding: "utf8" });
+    const acceptedCandidate = `<style>.ledger { grid-template-columns: 1fr; }\n[data-omd-source-fallback-carrier="target"] { overflow-x: auto; }\n[data-omd-source-fallback-carrier="target"]:focus-visible { outline: 2px solid currentColor; }\n[data-bench-decision-role="target"] { white-space: nowrap; }</style>${preEditSource}`
+      .replace(
+        '<div class="target-carrier">',
+        '<div class="target-carrier" data-omd-source-fallback-carrier="target" aria-label="Custody target relationship" tabindex="0">',
+      );
+    writeFileSync(candidatePath, acceptedCandidate);
+    execFileSync(process.execPath, [helper, "static-preview", artifactPath, candidatePath], { cwd: root, encoding: "utf8" });
+
+    const promoted = JSON.parse(execFileSync(process.execPath, [
+      helper, "static-promote", artifactPath, candidatePath,
+    ], { cwd: root, encoding: "utf8" }));
+    expect(promoted).toMatchObject({
+      command: "static-promote",
+      exact_bytes: true,
+      artifact_mutated: false,
+      product_mutated: true,
+    });
+    expect(readFileSync(productPath)).toEqual(readFileSync(candidatePath));
+    expect(promoted.product_sha256).toBe(promoted.candidate_sha256);
+
+    const closed = JSON.parse(execFileSync(process.execPath, [helper, "static-close", artifactPath], {
+      cwd: root,
+      encoding: "utf8",
+    }));
+    expect(closed.static_closure).toMatchObject({ state: "passed", attempts: 1, failures: [] });
+  });
+
+  it("refuses candidate promotion without a matching passed receipt", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-static-promote-red-"));
+    temporaryRoots.push(root);
+    const contractPath = join(root, "contract.json");
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const candidatePath = join(root, "candidate.html");
+    const helper = join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs");
+    const preEditSource = '<section data-decision=""><div class="target-carrier"><strong data-bench-decision-role="target">FS-TC-24-017 + BAG-SEAL-884021</strong></div></section><p>required-fact</p>';
+    writeFileSync(contractPath, JSON.stringify(sourceContract()));
+    writeFileSync(productPath, preEditSource);
+    writeFileSync(candidatePath, `${preEditSource}\n`);
+    execFileSync(process.execPath, [helper, "source-seal", contractPath, artifactPath], { cwd: root, encoding: "utf8" });
+
+    const rejected = spawnSync(process.execPath, [helper, "static-promote", artifactPath, candidatePath], {
+      cwd: root,
+      encoding: "utf8",
+    });
+    expect(rejected.status).toBe(1);
+    expect(rejected.stderr).toContain("require a passed static-preview receipt");
+    expect(readFileSync(productPath, "utf8")).toBe(preEditSource);
+  });
+
   it("seals a provider-owned source contract before execution and exposes a read-only patch packet", () => {
     const root = mkdtempSync(join(tmpdir(), "omd-reflow-source-sealed-"));
     temporaryRoots.push(root);

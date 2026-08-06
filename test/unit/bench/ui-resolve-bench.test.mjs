@@ -6647,7 +6647,8 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     const instructions = readFileSync(join(out, "AGENTS.md"), "utf8");
     expect(instructions).toContain("source-packet .omd/reflow-closure.json");
     expect(instructions).toContain("static-preview .omd/reflow-closure.json .omd/product-candidate.html");
-    expect(instructions).toContain("Apply those exact candidate bytes to the product once");
+    expect(instructions).toContain("Do not read or retype the passed candidate");
+    expect(instructions).toContain("static-promote .omd/reflow-closure.json .omd/product-candidate.html");
     expect(instructions).toContain("static-close .omd/reflow-closure.json");
   });
 

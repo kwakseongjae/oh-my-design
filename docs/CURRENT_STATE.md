@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.728 terminal Reliability result
+- 갱신: 2026-08-06 · 1.9.729 deterministic candidate promotion
 
 ## 지금 (현재 위치)
 
+- 1.9.729 local repair는 preview를 통과한 candidate를 모델이 다시 읽고 product patch로 재작성하지 않는다. 새 `static-promote` helper가 receipt의 candidate/source-contract/inventory hash를 검증한 뒤 exact bytes를 locked product에 한 번 복사한다.
+- proof tracer는 성공한 `static-promote`를 한 번의 product edit/revision으로 기록한다. failed promotion은 edit으로 세지 않는다. benchmark sandbox instruction도 source-packet→candidate→preview→static-promote→static-close 순서를 직접 주입한다.
+- trailing newline을 포함한 byte-exact promotion, receipt 부재 fail-close, proof revision accounting을 추가했다. focused330 pass/2 skip·lint green이다. 다음은 provider-zero sealed smoke와 exact skill/task lock을 거쳐 replay 없는 fresh Reliability@3를 사전등록하는 단계다.
 - 1.9.728은 terminal `FROZEN_PREREGISTERED_LIFECYCLE_STOP`이다. provider/model exact2회, retry/replacement0, objective2/2 pass지만 Reliability는1/3이다. conservation pass, wind `second-product-edit` fail, archaeology provider/model0 frozen이다.
 - workspace-bound candidate collector repair는 검증됐다. 두 실행 모두 candidate/final exact match이고 false path mismatch는 재발하지 않았다. 남은 제품 결함은 failed closure 뒤 product를 두 번째로 수정하는 경로다.
 - runner repair `3830c1c4`를 적용한 resume audit는 provider 호출 전에 `second-product-edit`를 감지해 archaeology를 동결했다. 1.9.728은 ranking/2.0 gate evidence로 승격하지 않는다.

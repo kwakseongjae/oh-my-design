@@ -157,6 +157,28 @@ describe("proof trace contract", () => {
     });
   });
 
+  it("counts a successful deterministic candidate promotion as the single product edit", () => {
+    const result = classifyProofTrace([
+      codexCommand(
+        "node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-promote .omd/reflow-closure.json .omd/product-candidate.html",
+        "promote-1",
+      ),
+      codexCommandCompleted("promote-1"),
+      codexCommand("node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-close .omd/reflow-closure.json", "close-1"),
+      codexCommandCompleted("close-1"),
+      codexCommand("browser-harness capture_screenshot", "browser-1"),
+      codexCommandCompleted("browser-1"),
+    ]);
+    expect(result).toMatchObject({
+      analyzable: true,
+      product_edit_count: 1,
+      product_revision_count: 1,
+      static_closure_count: 1,
+      browser_mechanism_count: 1,
+      compliance_pass: true,
+    });
+  });
+
   it("passes one static closure followed by one browser mechanism", () => {
     const result = classifyProofTrace([
       cursorCommand("ls -la"),
