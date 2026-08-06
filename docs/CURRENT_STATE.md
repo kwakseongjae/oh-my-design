@@ -3,11 +3,17 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `c14bb953` 1.9.719 meteorite canary preregistration (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.719 prepared-provider-zero, 새 payload 명시 승인 대기
+- 기준 커밋: 현재 `HEAD`의 1.9.719 meteorite debt canary archive (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-06 · 1.9.719 meteorite source-contract0.2 transfer accepted-diagnostic
 
 ## 지금 (현재 위치)
 
+- 사용자가 exact payload를 승인해 1.9.719 Luna/high 단일 셀이 retry/replacement 없이 valid complete됐다. provider calls1/model exposures1이며 meteorite 재실행은 금지다.
+- 결과는 raw75→85/85, resolved=true, 178,868ms, 652,505 tokens(그중 cached input585,472)다. 6 critical gates가 모두 green이다.
+- prereg success contract는 edit/revision1, static success1/fail0, handoff0, proof true, sealed inventory `1f14673d…` 불변으로 전부 통과했다.
+- desktop/390/320/200% surrogate 모두 scroll=client, clipped/overlap/text-geometry failure/serious axe0이며 decision roles는 singular·visible·contained다.
+- 모델 내부 browser-harness는 Chrome remote-debugging 승인 infrastructure에서 navigation 전 실패했지만 retry/handoff 없이 종료했다. 독립 evaluator가 interaction/keyboard/geometry/a11y를 재검증했으므로 objective 판정은 유효하다.
+- schema0.2의 exact baseline debt coverage+parent containment+contrast 의무가 fresh task에 전이됐다. 단일 진단이라 ranking/우위/Ship Preference/2.0 gate는 변하지 않는다. 다음은 동일 셀 replay가 아니라 새 unseen tasks의 preregistered reliability 검증이다.
 - 사용자 명시 승인 뒤 1.9.716 Luna/high 단일 셀이 retry/replacement 없이 valid complete됐다. provider calls1/model exposures1이며 같은 abyssal task 재실행은 금지다.
 - 결과는 77/85, resolved=false, 109,514ms, 361,341 tokens다. task/design/state/evidence는 green, responsive/accessibility는 red다.
 - provider-sealed lifecycle은 전이됐다: source-packet pre-edit 소비, product edit/revision1, successful static closure1/failed0, browser recovery0, proof compliance true, source contract/inventory hash 보존이다.
