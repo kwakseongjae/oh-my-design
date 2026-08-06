@@ -395,7 +395,7 @@ writeFileSync(join(out, instructionFile), [
   `Do not alter \`.benchmark/\`, \`${instructionFile}\`, or any \`data-bench\` hook.`,
   ...(deterministicReflow ? [
     "A provider-sealed `.omd/reflow-closure.json` is present. It is immutable benchmark input; never edit it.",
-    `Before the single product edit, run \`node ${deterministicReflow.helper_path} source-packet .omd/reflow-closure.json\` exactly once. After that edit, run the same helper with \`static-close .omd/reflow-closure.json\` exactly once.`,
+    `Before the single product edit, run \`node ${deterministicReflow.helper_path} source-packet .omd/reflow-closure.json\` exactly once. Write the complete proposed product to \`.omd/product-candidate.html\`, then run \`node ${deterministicReflow.helper_path} static-preview .omd/reflow-closure.json .omd/product-candidate.html\` until it passes while leaving the product and sealed artifact unchanged. Apply those exact candidate bytes to the product once, then run the same helper with \`static-close .omd/reflow-closure.json\` exactly once.`,
   ] : []),
   "",
 ].join("\n"), "utf8");

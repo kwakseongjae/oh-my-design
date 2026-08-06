@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.723 candidate preflight repair
+- complete candidate를 product edit 전에 동일 static evaluator로 반복 검증한다.
+- 최신 passed receipt와 최종 product bytes를 hash로 결박한다.
+- provider-sealed static-close는 결박 불일치 시 closure 소비 전 fail-close한다.
+- focused352 pass/2 skip·lint green; 다음은 fresh cascade-effective tasks다.
+
 ## 2026-08-06 (Codex) · 1.9.722 Reliability@3 hard-stop
 - orbital은 valid81/85, responsive green이나 accessibility red다.
 - edit1 뒤 static closure가 exact selector2건으로 red, proof false였다.

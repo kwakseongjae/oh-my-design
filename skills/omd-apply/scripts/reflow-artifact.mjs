@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
-import { isAbsolute, normalize, resolve, sep } from "node:path";
+import { dirname, isAbsolute, normalize, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const OUTCOMES = new Set(["pass", "unresolved"]);
@@ -1722,6 +1722,46 @@ function write(path, artifact) {
   writeFileSync(path, `${JSON.stringify(artifact, null, 2)}\n`, "utf8");
 }
 
+function staticPreviewReceiptPath(artifactPath) {
+  return resolve(dirname(artifactPath), "static-preview-receipt.json");
+}
+
+function writeStaticPreviewReceipt(artifactPath, artifact, candidatePath, source, preview) {
+  const receipt = {
+    schema_version: "0.1",
+    kind: "omd-static-preview-receipt",
+    state: preview.state,
+    candidate_path: candidatePath,
+    candidate_sha256: sha256Source(source),
+    source_contract_sha256: artifact.source_contract?.sha256 ?? null,
+    inventory_sha256: artifact.inventory.sha256,
+    failures: preview.failures,
+  };
+  const receiptPath = staticPreviewReceiptPath(artifactPath);
+  write(receiptPath, receipt);
+  return { receipt, receiptPath };
+}
+
+function assertPassedStaticPreviewReceipt(artifactPath, artifact, source) {
+  if (artifact.source_contract?.state !== "provider-sealed") return null;
+  const receiptPath = staticPreviewReceiptPath(artifactPath);
+  if (!existsSync(receiptPath)) {
+    fail("provider-sealed static closure requires a passed static-preview receipt");
+  }
+  const receipt = JSON.parse(readFileSync(receiptPath, "utf8"));
+  if (
+    receipt?.schema_version !== "0.1"
+    || receipt.kind !== "omd-static-preview-receipt"
+    || receipt.state !== "passed"
+    || receipt.source_contract_sha256 !== artifact.source_contract.sha256
+    || receipt.inventory_sha256 !== artifact.inventory.sha256
+    || receipt.candidate_sha256 !== sha256Source(source)
+  ) {
+    fail("provider-sealed product bytes must exactly match the passed static-preview candidate");
+  }
+  return { receipt, receiptPath };
+}
+
 function staticEditGuardrails(artifact) {
   const sourceFallbackRelationships = artifact.source_fallback_relationships ?? [];
   const acceptanceCssSource = artifact.static_closure_manifest.required_css_declarations
@@ -1865,8 +1905,8 @@ function staticEditGuardrails(artifact) {
 
 function main() {
   const [command, rawPath, rawAuxiliaryPath] = process.argv.slice(2);
-  if (!command || !rawPath || !["source-seal", "source-packet", "snapshot", "lock", "plan-close", "plan-reconcile", "plan-diagnose", "plan-packet", "plan-apply", "source-fallback-open", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
-    console.error("usage: reflow-artifact.mjs <source-seal|source-packet|snapshot|lock|plan-close|plan-reconcile|plan-diagnose|plan-packet|plan-apply|source-fallback-open|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <contract-or-artifact.json> [artifact-or-product-or-packet-file]");
+  if (!command || !rawPath || !["source-seal", "source-packet", "snapshot", "lock", "plan-close", "plan-reconcile", "plan-diagnose", "plan-packet", "plan-apply", "source-fallback-open", "static-preview", "static-close", "finalize", "finalize-unresolved", "finalize-measured-unresolved"].includes(command)) {
+    console.error("usage: reflow-artifact.mjs <source-seal|source-packet|snapshot|lock|plan-close|plan-reconcile|plan-diagnose|plan-packet|plan-apply|source-fallback-open|static-preview|static-close|finalize|finalize-unresolved|finalize-measured-unresolved> <contract-or-artifact.json> [artifact-or-product-or-packet-file]");
     process.exitCode = 2;
     return;
   }
@@ -1901,6 +1941,51 @@ function main() {
       inventory_sha256: artifact.inventory.sha256,
       static_edit_guardrails: staticEditGuardrails(artifact),
     }));
+    return;
+  }
+  if (command === "static-preview") {
+    if (!rawAuxiliaryPath) fail("static-preview requires a candidate product file");
+    assertPreEditProductUnchanged(artifact);
+    validatePlanClosure(artifact);
+    const candidatePath = resolve(rawAuxiliaryPath);
+    const artifactDir = dirname(path);
+    const relativeCandidate = relative(artifactDir, candidatePath);
+    if (
+      !relativeCandidate
+      || relativeCandidate === ".."
+      || relativeCandidate.startsWith(`..${sep}`)
+      || isAbsolute(relativeCandidate)
+    ) fail("static-preview candidate must stay inside the artifact directory");
+    if (!existsSync(candidatePath)) fail("static-preview requires the candidate product file");
+    const expectedProductPath = resolve(artifact.static_closure_manifest?.product_path ?? "");
+    if (candidatePath === expectedProductPath || candidatePath === path) {
+      fail("static-preview candidate must not be the locked product or artifact");
+    }
+    const source = readFileSync(candidatePath, "utf8");
+    const preview = executeStaticClosure(artifact, {
+      productPath: artifact.static_closure_manifest.product_path,
+      source,
+    }).static_closure;
+    const { receipt, receiptPath } = writeStaticPreviewReceipt(
+      path,
+      artifact,
+      candidatePath,
+      source,
+      preview,
+    );
+    console.log(JSON.stringify({
+      command,
+      path,
+      candidate_path: candidatePath,
+      candidate_sha256: sha256Source(source),
+      receipt_path: receiptPath,
+      receipt_state: receipt.state,
+      inventory_sha256: artifact.inventory.sha256,
+      static_preview: preview,
+      artifact_mutated: false,
+      product_mutated: false,
+    }));
+    if (preview.state !== "passed") process.exitCode = 1;
     return;
   }
   const defaultHostStateDir = resolve(process.cwd(), ".omd/proof-policy");
@@ -1981,9 +2066,12 @@ function main() {
     }
     validatePlanClosure(artifact);
     const productPath = resolve(lockedProductPath);
+    if (!existsSync(productPath)) fail("static-close requires the locked product file");
+    const source = readFileSync(productPath, "utf8");
+    assertPassedStaticPreviewReceipt(path, artifact, source);
     result = executeStaticClosure(artifact, {
       productPath,
-      source: readFileSync(productPath, "utf8"),
+      source,
     });
   } else {
     result = finalizeArtifact(artifact, {

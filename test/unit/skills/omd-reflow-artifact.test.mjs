@@ -919,6 +919,93 @@ describe("compact reflow artifact helper", () => {
     expect(closed.static_closure).toMatchObject({ state: "passed", attempts: 1, failures: [] });
   });
 
+  it("previews complete candidate bytes without consuming closure or mutating the product", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-static-preview-"));
+    temporaryRoots.push(root);
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const candidatePath = join(root, "candidate.html");
+    const helper = join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs");
+    const input = draft();
+    input.pre_edit_fit_plan = { state: "pending" };
+    input.static_closure_manifest.required_css_declarations = [
+      { selector: ".ledger > div", property: "min-width", value: "0", value_contract: "exact-value" },
+    ];
+    input.acceptance_debt_ledger[0].static_guardrail.required_css_declarations = structuredClone(
+      input.static_closure_manifest.required_css_declarations,
+    );
+    const preEditSource = '<div data-plan=""><span data-id="fixture">required-fact</span></div><div data-handoff=""><span role="status">Ground review open</span></div>';
+    writeFileSync(artifactPath, JSON.stringify(input));
+    writeFileSync(productPath, preEditSource);
+    execFileSync(process.execPath, [helper, "snapshot", artifactPath], { cwd: root, encoding: "utf8" });
+    execFileSync(process.execPath, [helper, "source-fallback-open", artifactPath], { cwd: root, encoding: "utf8" });
+    const artifactBefore = createHash("sha256").update(readFileSync(artifactPath)).digest("hex");
+    const productBefore = createHash("sha256").update(readFileSync(productPath)).digest("hex");
+
+    writeFileSync(candidatePath, `<style>.ledger>div{min-width:0}</style>${preEditSource}`);
+    const failed = spawnSync(process.execPath, [
+      helper, "static-preview", artifactPath, candidatePath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(failed.status).toBe(1);
+    expect(JSON.parse(failed.stdout).static_preview).toMatchObject({
+      state: "failed",
+      attempts: 1,
+      failures: ["missing required CSS declaration: .ledger > div { min-width }"],
+    });
+    expect(createHash("sha256").update(readFileSync(artifactPath)).digest("hex")).toBe(artifactBefore);
+    expect(createHash("sha256").update(readFileSync(productPath)).digest("hex")).toBe(productBefore);
+
+    const acceptedCandidate = `<style>.ledger > div { min-width: 0; }</style>${preEditSource}`;
+    writeFileSync(candidatePath, acceptedCandidate);
+    const preview = JSON.parse(execFileSync(process.execPath, [
+      helper, "static-preview", artifactPath, candidatePath,
+    ], { cwd: root, encoding: "utf8" }));
+    expect(preview).toMatchObject({
+      artifact_mutated: false,
+      product_mutated: false,
+      receipt_state: "passed",
+      static_preview: { state: "passed", attempts: 1, failures: [] },
+    });
+    expect(createHash("sha256").update(readFileSync(artifactPath)).digest("hex")).toBe(artifactBefore);
+    expect(createHash("sha256").update(readFileSync(productPath)).digest("hex")).toBe(productBefore);
+
+    writeFileSync(productPath, acceptedCandidate);
+    const closed = JSON.parse(execFileSync(process.execPath, [
+      helper, "static-close", artifactPath,
+    ], { cwd: root, encoding: "utf8" }));
+    expect(closed.static_closure).toMatchObject({ state: "passed", attempts: 1, failures: [] });
+  });
+
+  it("binds a provider-sealed static close to the exact passed candidate bytes", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-preview-binding-"));
+    temporaryRoots.push(root);
+    const contractPath = join(root, "contract.json");
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const candidatePath = join(root, "candidate.html");
+    const helper = join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs");
+    const preEditSource = '<section data-decision=""><div class="target-carrier"><strong data-bench-decision-role="target">FS-TC-24-017 + BAG-SEAL-884021</strong></div></section><p>required-fact</p>';
+    writeFileSync(contractPath, JSON.stringify(sourceContract()));
+    writeFileSync(productPath, preEditSource);
+    execFileSync(process.execPath, [helper, "source-seal", contractPath, artifactPath], { cwd: root, encoding: "utf8" });
+    const acceptedCandidate = `<style>.ledger { grid-template-columns: 1fr; }\n[data-omd-source-fallback-carrier="target"] { overflow-x: auto; }\n[data-omd-source-fallback-carrier="target"]:focus-visible { outline: 2px solid currentColor; }\n[data-bench-decision-role="target"] { white-space: nowrap; }</style>${preEditSource}`
+      .replace(
+        '<div class="target-carrier">',
+        '<div class="target-carrier" data-omd-source-fallback-carrier="target" aria-label="Custody target relationship" tabindex="0">',
+      );
+    writeFileSync(candidatePath, acceptedCandidate);
+    execFileSync(process.execPath, [helper, "static-preview", artifactPath, candidatePath], { cwd: root, encoding: "utf8" });
+
+    writeFileSync(productPath, `${acceptedCandidate}<!-- drift -->`);
+    const rejected = spawnSync(process.execPath, [helper, "static-close", artifactPath], {
+      cwd: root,
+      encoding: "utf8",
+    });
+    expect(rejected.status).toBe(1);
+    expect(rejected.stderr).toContain("must exactly match the passed static-preview candidate");
+    expect(JSON.parse(readFileSync(artifactPath, "utf8")).static_closure).toMatchObject({ state: "open", attempts: 0 });
+  });
+
   it("seals a provider-owned source contract before execution and exposes a read-only patch packet", () => {
     const root = mkdtempSync(join(tmpdir(), "omd-reflow-source-sealed-"));
     temporaryRoots.push(root);
@@ -949,6 +1036,10 @@ describe("compact reflow artifact helper", () => {
         '<div class="target-carrier">',
         '<div class="target-carrier" data-omd-source-fallback-carrier="target" aria-label="Custody target relationship" tabindex="0">',
       );
+    writeFileSync(join(root, "candidate.html"), edited);
+    execFileSync(process.execPath, [
+      helper, "static-preview", artifactPath, join(root, "candidate.html"),
+    ], { cwd: root, encoding: "utf8" });
     writeFileSync(productPath, edited);
     const closed = JSON.parse(execFileSync(process.execPath, [
       helper, "static-close", artifactPath,

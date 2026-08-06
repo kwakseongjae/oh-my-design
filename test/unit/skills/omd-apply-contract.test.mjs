@@ -28,6 +28,9 @@ describe("omd:apply delivery contract", () => {
   it("treats provider-sealed reflow input as immutable", () => {
     expect(skill).toContain("source_contract.state: provider-sealed");
     expect(skill).toContain("source-packet .omd/reflow-closure.json");
+    expect(skill).toContain("static-preview .omd/reflow-closure.json .omd/product-candidate.html");
+    expect(skill).toContain("static-preview-receipt.json");
+    expect(skill).toContain("provider-sealed `static-close`는 이 결박이 없거나 다르면 closure를 소비하지 않고 거부한다");
     expect(skill).toContain("sealed artifact는 모델의 작업물이 아니며");
     expect(skill).toContain("provider 실행 전에 거부한다");
   });
@@ -229,7 +232,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("unresolved_rows: 0");
     expect(skill).toContain("unresolved_carriers: 0");
     expect(skill).toContain("page_overflow: 0");
-    expect(skill).toContain("helper 전 일부 확인 명령도 범위와 결과에 관계없이 이미 static budget을 소비한 것");
+    expect(skill).toContain("preview는 artifact의 attempts/state를 쓰지 않고 제품도 바꾸지 않으므로 candidate 단계에서 반복할 수 있다");
     expect(skill).not.toContain("implicit_one_line_selector");
     expect(skill).not.toContain("source_claim_without_selector_decision");
   });
@@ -246,7 +249,7 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("verification_after_ready: 0");
     expect(skill).toContain("reflow-artifact.mjs static-close .omd/reflow-closure.json");
     expect(skill).toContain("model이 post-edit `node - <<`, inline JS");
-    expect(skill).toContain("helper가 red면 exactly-once static budget이 소비된다");
+    expect(skill).toContain("`static-close`가 red면 exactly-once static budget이 소비된다");
     expect(skill).toContain("helper를 고쳐서 다시 실행하지 않고");
     expect(skill).toContain("`--doctor`, `--help`, executable/process/port discovery, 직접 Chrome launch");
     expect(skill).toContain("준비된 mechanism은 같은 shipped runner를 exact named consumer connection에서 pre-edit plan 1회와 post-edit acceptance 1회 실행하는 두 단계");
@@ -254,12 +257,12 @@ describe("omd:apply delivery contract", () => {
     expect(skill).toContain("`p.chromium.launch()`");
     expect(skill).toContain("document/body `scrollWidth`와 `clientWidth`");
     expect(skill).toContain("새 browser나 fallback을 만들지 않는다");
-    expect(skill).toContain("pre-edit fit-plan browser 1회 + task 전체 deterministic static-close helper 1회 + post-edit acceptance browser 1회");
+    expect(skill).toContain("pre-edit fit-plan browser 1회 + pre-edit candidate static-preview(제품/계약 비변경) + task 전체 deterministic static-close helper 1회 + post-edit acceptance browser 1회");
     expect(skill).toContain("static_edit_guardrails");
     expect(skill).toContain("static_edit_guardrails.source_fallback_patch_contract");
     expect(skill).toContain("canonical_acceptance_css_source");
     expect(skill).toContain("required_css_declarations");
-    expect(skill).toContain("literal first-edit payload");
+    expect(skill).toContain("canonical_acceptance_css_source`를 candidate에 먼저 적용");
     expect(skill).toContain("두 번째 product edit은 금지한다");
     expect(skill).toContain("word-break: normal");
     expect(skill).toContain("snapshot-backed row selector");

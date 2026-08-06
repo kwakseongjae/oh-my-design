@@ -6642,6 +6642,15 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     });
   });
 
+  it("instructs provider-sealed runs to preview complete bytes before the single product edit", () => {
+    const out = prepareVariant("omd-portable", { task: "orbital-optics-transfer-v0.1" });
+    const instructions = readFileSync(join(out, "AGENTS.md"), "utf8");
+    expect(instructions).toContain("source-packet .omd/reflow-closure.json");
+    expect(instructions).toContain("static-preview .omd/reflow-closure.json .omd/product-candidate.html");
+    expect(instructions).toContain("Apply those exact candidate bytes to the product once");
+    expect(instructions).toContain("static-close .omd/reflow-closure.json");
+  });
+
   it("prepares clean pinned OmD skill versions without prompt identity leakage", () => {
     const expectedCommits = {
       "omd-portable-slate": "c285d25515ec8959e66ceeb7703417aad531cd95",

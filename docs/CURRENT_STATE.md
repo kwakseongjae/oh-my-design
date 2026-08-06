@@ -3,11 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `6947cec8`의 1.9.722 Reliability@3 prepared checkpoint (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.722 Reliability@3 contract hard-stop
+- 기준 커밋: `7811eeb0`의 1.9.722 Reliability@3 hard-stop (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-06 · 1.9.723 provider-sealed candidate preflight repair
 
 ## 지금 (현재 위치)
 
+- 1.9.723 local repair는 complete candidate bytes를 product edit 전에 동일 static evaluator로 반복 검증한다. preview는 product와 sealed artifact를 바꾸지 않는다.
+- 최신 preview 결과는 별도 receipt에 pass/fail, candidate/source-contract/inventory hash로 기록된다. provider-sealed static-close는 최종 product bytes가 최신 passed receipt와 정확히 같지 않으면 closure를 소비하기 전에 거부한다.
+- prepare-sandbox instruction은 source-packet→candidate preview green→동일 bytes single edit→static-close exact1회 순서를 직접 주입한다. focused352 pass/2 skip, lint green, provider/model0이다. user-owned `web/public/llms-full.txt` dirty는 보존해 attribution-sensitive full-suite red4는 clean-source 증거로 승격하지 않는다.
+- 기존 1.9.722 task bytes와 terminal 결과는 불변이다. 다음은 `.muted` specificity를 이기지 못한 `header > p` 계약을 새 task generator에서 cascade-effective selector로 교정하고, 완전히 새 task ids/bytes에 provider-zero baseline+sealed smoke를 만드는 일이다.
 - 1.9.721 provider-zero preparation은3 workspace를 만들었지만 기존 admission이 exact-task cross-arm만 지원해 intentional distinct task hash를 normalization mismatch로 차단했다. root는 frozen이며 provider/model exposure0이다.
 - 1.9.722는 `exact-task-cross-arm`과 `cross-task-reliability` admission을 명시적으로 분리한다. 후자는 task id/prompt/starter/artifact hash가 서로 다름을 허용하되 task lock exact attestation과 variant/system/runtime/model/effort/timeout/skill/evaluator/source-contract shape 동일성을 요구한다.
 - 새 policy의 positive/lock-tamper negative를 포함한 focused29/29와 lint가 green이다. 1.9.721 task/model/success bytes는 바꾸지 않고 새 experiment/root `1.9.722`로만 사전등록했다.
