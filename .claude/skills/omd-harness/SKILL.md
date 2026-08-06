@@ -211,8 +211,10 @@ intake 분류이며 multi-agent council이 실행됐다고 표현하지 않는�
 
 기존/current surface의 개선 작업에서 ctx-prime이 confidence 0.75 이상의
 audience evidence와 단일 surface를 함께 보유하면 audience와 scope는 값을 새로
-확정하지 않고 `defer`한다. 두 decision은 council에도 보내지 않는다. 이는 기존
-제품 방향을 보존하는 것이며 unknown을 채우거나 새 사실을 auto하는 규칙이 아니다.
+확정하지 않고 `defer`한다. 사용자가 action 변경을 요청하지 않았다면 primary CTA도
+같은 surface evidence에 묶어 `defer`한다. 이 decision들은 council에도 보내지
+않는다. 이는 기존 제품 방향과 행동 계약을 보존하는 것이며 unknown을 채우거나 새
+사실을 auto하는 규칙이 아니다. root `index.html`도 하나의 실제 surface로 센다.
 
 ### 2.5.1c — Bounded advisory council (v1.9.735+)
 

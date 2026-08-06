@@ -167,13 +167,13 @@ function classifySurface(p) {
   if (/setting|profile|account/.test(parent)) return 'settings';
   if (/playground|sandbox|test|qa-/.test(parent)) return 'playground';
   // top-level page = landing
-  if (/page\.(tsx|jsx|vue|svelte)$|index\.(tsx|jsx|vue|svelte)$|App\.(tsx|jsx|vue|svelte)$/.test(lc) &&
+  if (/page\.(tsx|jsx|vue|svelte)$|index\.(html|tsx|jsx|vue|svelte)$|App\.(tsx|jsx|vue|svelte)$/.test(lc) &&
       seg.length <= 4) return 'landing';
   return 'other';
 }
 
-const routeFiles = walk(cwd, { exts: ['.tsx', '.jsx', '.vue', '.svelte'], max: 400, maxDepth: 8 })
-  .filter((f) => /page\.(tsx|jsx|vue|svelte)$|index\.(tsx|jsx|vue|svelte)$|App\.(tsx|jsx|vue|svelte)$|\/(pages|routes)\//.test(f.path));
+const routeFiles = walk(cwd, { exts: ['.html', '.tsx', '.jsx', '.vue', '.svelte'], max: 400, maxDepth: 8 })
+  .filter((f) => /page\.(tsx|jsx|vue|svelte)$|index\.(html|tsx|jsx|vue|svelte)$|App\.(tsx|jsx|vue|svelte)$|\/(pages|routes)\//.test(f.path));
 const pageFiles = routeFiles
   .slice(0, 30)
   .map((f) => ({ path: f.path, kind: classifySurface(f.path), size_kb: +(f.size / 1024).toFixed(1) }));

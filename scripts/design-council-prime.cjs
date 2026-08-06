@@ -196,6 +196,14 @@ decisions.push(ctaSignal
       authority: 'user-stated', disposition: 'auto',
       reason: 'The task explicitly identifies the primary action.',
     })
+  : existingSurfaceMaintenance && backedAudience && surfaces.length > 0
+  ? decision({
+      id: 'primary-cta', slot: 'cta_primary', proposed_value: null,
+      evidence: [`${surfaces[0].path}`], confidence: 0.8,
+      impact: 'high', reversibility: 'easy', authority: 'product',
+      confidence_basis: 'existing-surface-preservation', disposition: 'defer',
+      reason: 'The task improves an existing surface without requesting an action change; preserve the current action contract instead of reopening it.',
+    })
   : decision({
       id: 'primary-cta', slot: 'cta_primary', proposed_value: null,
       evidence: [], confidence: 0, impact: 'high', reversibility: 'moderate',

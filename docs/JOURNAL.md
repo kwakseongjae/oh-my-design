@@ -5310,3 +5310,7 @@
 - candidate83/85, 514958ms, 2987373 tokens; evidence one-line은 전이됐지만 UI/proof red다.
 - desktop target separation을 required:false로 면제했고 recovery-region carrier unresolved, token ratio1.113 red다.
 - remaining4 untouched freeze, 누적 TTT101844158+; 다음 provider-free proof/closure repair다.
+# 2026-08-06 — 1.9.741 static-surface maintenance intake
+- root `index.html`을 surface로 인식하고 기존 action contract를 typed defer로 보존했다.
+- provider-zero probe는 questions3→0, planned lanes2→0, forbidden auto0이다.
+- focused49/49와 lint가 green이며 다음은 fresh council off/on full product task다.

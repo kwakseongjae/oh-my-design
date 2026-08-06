@@ -4,9 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `73716105`의 1.9.723 provider-sealed candidate preflight repair (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.740 repository-backed maintenance defer complete
+- 갱신: 2026-08-06 · 1.9.741 static-surface maintenance intake complete
 
 ## 지금 (현재 위치)
+
+- 1.9.741은 root `index.html`을 실제 surface inventory에 포함하고, 기존 surface 개선에서 action 변경 요청이 없으면 primary CTA도 값을 만들지 않는 typed defer로 보존한다.
+- provider-zero meteorite probe는 questions3→0, planned council calls2→0이다. audience/scope/CTA는 모두 absent defer이고 forbidden auto0이다.
+- 다음 1.9.742는 fresh product task를 council off/on 동일 Grok 4.5 High 조건으로 끝까지 실행해 objective quality, exact-route proof, accessibility/evidence honesty, wall/token overhead를 비교한다.
 
 - 1.9.740은 existing/current surface 개선 + confidence≥0.75 audience evidence + single surface이면 audience/scope를 auto하지 않고 typed defer하며 council dispatch에서도 제외한다.
 - frozen 3-case provider-zero는 planned calls6→4, questions2, handoffs2, authority/blocked retained, forbidden auto0이다. 22-case/5-locale calibration도 green이다.
