@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `1e93b708` 1.9.716 prepared egress gate (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.716 Luna/high 단일 진단 완료, archive commit pending
+- 기준 커밋: `c14bb953` 1.9.719 meteorite canary preregistration (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-06 · 1.9.719 source-contract0.2 prepared-provider-zero admission 완료
 
 ## 지금 (현재 위치)
 
@@ -12,7 +12,11 @@
 - 결과는 77/85, resolved=false, 109,514ms, 361,341 tokens다. task/design/state/evidence는 green, responsive/accessibility는 red다.
 - provider-sealed lifecycle은 전이됐다: source-packet pre-edit 소비, product edit/revision1, successful static closure1/failed0, browser recovery0, proof compliance true, source contract/inventory hash 보존이다.
 - 남은 실패는 계약 완전성이다. nowrap carrier의 parent grid item containment 의무가 없어 320px에서17px·200% surrogate에서34px overflow가 남았고, raw baseline의 muted-text 4.47:1 contrast debt가 sealed ledger에서 빠졌다.
-- 다음은 provider 호출 없이 admission이 raw critical-gate debt coverage를 증명하게 하고 parent containment를 static guardrail로 고정하는 local repair다. 그 뒤에도 transfer는 새 fictional task·새 preregistration·새 root만 허용한다.
+- 이 원인은 1.9.717 local repair로 닫았고, transfer는 새 fictional task·새 preregistration·새 root만 허용한다.
+- 1.9.717 local repair는 source-contract0.2에서 hash-locked baseline bytes의 false critical-gate exact set과 debt coverage를 대조하고, comparison-scroll carrier마다 exact parent `min-width:0` containment를 요구한다. full suite764 pass/3 skip, lint green이다.
+- 1.9.718 신규 `meteorite-section-loan-v0.1`은 provider0/model0, raw75/85이며 accessibility+responsive만 red다. sealed packet은 register/return/decision/parent containment/contrast 6개 CSS 의무를 모두 포함한다.
+- 1.9.719 Luna/high1셀은 fresh root에 prepared됐다. plan `5c1a912c…`, state `098f9afd…`, artifact `fa050f35…`, source contract `2532fd02…`, inventory `1f14673d…`, baseline evidence `bfd2d4e7…`이며 failed=covered=`accessibility,responsive`, admission allowed, provider/model0이다.
+- 다음은 PREPARATION checkpoint commit 뒤 단일 execution만 허용한다. retry/replacement/same-task replay/ranking/2.0 promotion은 금지다.
 - 1.9.716 fresh root는 prepared-provider-zero admission을 통과했다. locked plan `7c152911…`, state `ca255f95…`, skill `92057d24…`, sealed artifact `51f3ade9…`, source contract `cbeffd2d…`, inventory `9ff364fe…`이며 deterministic_reflow normalization/attestation이 true다.
 - 다음은 PREPARATION checkpoint를 commit한 뒤 `max-new-cells=1`로 단일 provider execution을 시작한다. 실행 중간 변경·retry·replacement·같은 task replay는 금지다.
 - 1.9.716은 non-executed 1.9.715 root를 대체하는 새 sealed-admission canary다. task/baseline/skill bytes/model/effort/timeout/no-retry는 같고, 새 root만 admission hash attestation 이후에 다시 잠근다. provider/model exposure는0이다.
