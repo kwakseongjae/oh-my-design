@@ -5322,3 +5322,7 @@
 - fresh ocean task council off/on 2-cell을 Cursor/Grok4.5 High로 잠갔다.
 - timeout720s, concurrency1, no-retry, 30s pacing, exact-task admission이다.
 - 다음은 clean commit에서 provider-zero preparation/admission 후 두 셀 실행이다.
+# 2026-08-06 — 1.9.743 council product comparison prepared
+- `/private/tmp/omd-council-product-comparison-1.9.743` 2/2 provider-zero admission이 green이다.
+- plan c2eae26b/state782e792d, normalization exact, execution artifacts0이다.
+- checkpoint commit 뒤 Grok4.5 High off/on을 exact1회씩 실행한다.
