@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.722 Reliability@3 prepared
+- 새 root가 cross-task reliability admission required13/13을 통과했다.
+- 세 task lock과 schema0.2 debt coverage는 exact, product tree는 untouched다.
+- plan268b98a4/stateaed7746c/sourcefcd2d15d/skilld76b114b로 잠겼다.
+- preparation commit 뒤 orbital 첫 셀을 max-new-cells1로 실행한다; provider0이다.
+
 ## 2026-08-06 (Codex) · 1.9.722 cross-task admission repair
 - 1.9.721 provider-zero root는 exact-task normalization mismatch로 frozen됐다.
 - 새 policy가 task별 hash와 공통 실행·contract 축을 분리해 attestation한다.
