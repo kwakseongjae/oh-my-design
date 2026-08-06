@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-06 (Codex) · 1.9.725 candidate-bound preregistration
+- fresh task3개와 Luna/high/no-retry fixed order를 preregister했다.
+- passed preview receipt와 final product exact bytes를 execution gate로 승격했다.
+- receipt/source/inventory/byte mismatch는 남은 셀을 hard-stop한다.
+- focused54/54·lint green; 다음은 provider-zero preparation/admission이다.
+
 ## 2026-08-06 (Codex) · 1.9.724 cascade-effective task lock
 - fresh fictional task3개를 provider/model0으로 생성·봉인했다.
 - raw baseline은 모두75/85, red는 accessibility+responsive exact다.

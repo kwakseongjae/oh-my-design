@@ -1,8 +1,13 @@
 import { describe, expect, it } from "vitest";
+import { createHash } from "node:crypto";
+import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import {
   buildRunRecord,
   classifyRunStatus,
   classifyValidity,
+  inspectCandidatePreflight,
   summarizeTokenUsage,
 } from "../../../benchmarks/ui-resolve-bench/scripts/export-run-record.mjs";
 
@@ -55,6 +60,36 @@ const score = {
 };
 
 describe("UI-Resolve normalized run exporter", () => {
+  it("binds a passed provider-sealed candidate receipt to the final product bytes", () => {
+    const workspace = mkdtempSync(join(tmpdir(), "omd-candidate-preflight-"));
+    mkdirSync(join(workspace, ".omd"));
+    const productPath = join(workspace, "index.html");
+    const product = "<!doctype html><title>bound</title>\n";
+    writeFileSync(productPath, product);
+    const productSha = createHash("sha256").update(product).digest("hex");
+    writeFileSync(join(workspace, ".omd", "static-preview-receipt.json"), JSON.stringify({
+      schema_version: "0.1",
+      kind: "omd-static-preview-receipt",
+      state: "passed",
+      candidate_sha256: productSha,
+      source_contract_sha256: "source-sha",
+      inventory_sha256: "inventory-sha",
+    }));
+    expect(inspectCandidatePreflight(workspace, {
+      source_contract: { state: "provider-sealed", sha256: "source-sha" },
+      inventory: { sha256: "inventory-sha" },
+      static_closure_manifest: { product_path: productPath },
+    })).toMatchObject({
+      required: true,
+      receipt_present: true,
+      receipt_valid: true,
+      source_contract_sha256_match: true,
+      sealed_inventory_sha256_match: true,
+      candidate_final_bytes_match: true,
+      pass: true,
+    });
+  });
+
   it("exports a valid skill-family record with delivery evidence", () => {
     const record = buildRunRecord({
       workspace: "/tmp/run-001",

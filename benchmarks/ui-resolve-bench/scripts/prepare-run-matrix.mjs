@@ -185,6 +185,26 @@ export function validateRunMatrixPlan(plan) {
   }
   if (!Array.isArray(plan.cells) || !plan.cells.length) throw new Error("matrix cells are required");
 
+  if (plan.candidate_preflight_contract !== undefined) {
+    const contract = plan.candidate_preflight_contract;
+    if (!contract || typeof contract !== "object" || Array.isArray(contract)) {
+      throw new Error("matrix candidate_preflight_contract must be an object");
+    }
+    for (const field of [
+      "required",
+      "complete_candidate_bytes",
+      "same_static_evaluator",
+      "passed_receipt_required_before_product_edit",
+      "candidate_sha256_must_equal_final_product_sha256",
+      "source_contract_sha256_must_match",
+      "sealed_inventory_sha256_must_match",
+    ]) {
+      if (contract[field] !== true) {
+        throw new Error(`matrix candidate_preflight_contract.${field} must be true`);
+      }
+    }
+  }
+
   if (plan.harness_delivery_gates !== undefined) {
     const gates = plan.harness_delivery_gates;
     if (!gates || typeof gates !== "object" || Array.isArray(gates)) {

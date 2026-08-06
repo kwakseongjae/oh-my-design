@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
   benchmarkArtifactManifest,
+  candidatePreflightStopReason,
   directBrowserCommandCount,
   completedCellSummary,
   harnessDeliveryStopReason,
@@ -55,6 +56,38 @@ const validRun = {
 };
 
 describe("UI-Resolve prepared matrix execution", () => {
+  it("hard-stops a preregistered candidate preflight on missing or mismatched evidence", () => {
+    const plan = { candidate_preflight_contract: { required: true } };
+    expect(candidatePreflightStopReason(plan, { runtime_diagnostics: {} }))
+      .toBe("candidate-preview-receipt-missing");
+    expect(candidatePreflightStopReason(plan, {
+      runtime_diagnostics: {
+        candidate_preflight: {
+          receipt_present: true,
+          receipt_valid: true,
+          receipt_state: "passed",
+          source_contract_sha256_match: true,
+          sealed_inventory_sha256_match: true,
+          product_present: true,
+          candidate_final_bytes_match: false,
+        },
+      },
+    })).toBe("candidate-final-byte-mismatch");
+    expect(candidatePreflightStopReason(plan, {
+      runtime_diagnostics: {
+        candidate_preflight: {
+          receipt_present: true,
+          receipt_valid: true,
+          receipt_state: "passed",
+          source_contract_sha256_match: true,
+          sealed_inventory_sha256_match: true,
+          product_present: true,
+          candidate_final_bytes_match: true,
+        },
+      },
+    })).toBeNull();
+  });
+
   it("pins controller observation to the exact Codex CLI and post-run execution-home profile", () => {
     const plan = {
       controller_observation_contract: {

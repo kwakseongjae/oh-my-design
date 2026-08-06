@@ -2,7 +2,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { basename, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { parseArgs, readJson, writeJson } from "./_lib.mjs";
+import { parseArgs, readJson, sha256, writeJson } from "./_lib.mjs";
 import { summarizeClaudeToolErrors } from "./check-claude-runner.mjs";
 import { classifyProofTrace, evaluateProofExecutionGate } from "./proof-trace-contract.mjs";
 import { CURSOR_RUNTIME_DISPLAY_LABELS } from "./runtime-contract.mjs";
@@ -99,6 +99,55 @@ export function summarizeTokenUsage(run) {
   };
 }
 
+export function inspectCandidatePreflight(workspace, reflowArtifact) {
+  const required = reflowArtifact?.source_contract?.state === "provider-sealed";
+  const receiptPath = join(workspace, ".omd", "static-preview-receipt.json");
+  const productPath = reflowArtifact?.static_closure_manifest?.product_path
+    ? resolve(reflowArtifact.static_closure_manifest.product_path)
+    : null;
+  const receipt = existsSync(receiptPath) ? readJson(receiptPath) : null;
+  const productPresent = Boolean(productPath && existsSync(productPath));
+  const finalProductSha256 = productPresent ? sha256(readFileSync(productPath)) : null;
+  const receiptValid = Boolean(
+    receipt
+    && receipt.schema_version === "0.1"
+    && receipt.kind === "omd-static-preview-receipt"
+    && receipt.state === "passed"
+  );
+  const sourceContractMatch = Boolean(
+    receiptValid
+    && receipt.source_contract_sha256 === reflowArtifact?.source_contract?.sha256
+  );
+  const inventoryMatch = Boolean(
+    receiptValid
+    && receipt.inventory_sha256 === reflowArtifact?.inventory?.sha256
+  );
+  const candidateFinalBytesMatch = Boolean(
+    receiptValid
+    && finalProductSha256
+    && receipt.candidate_sha256 === finalProductSha256
+  );
+  return {
+    required,
+    receipt_present: receipt !== null,
+    receipt_state: receipt?.state ?? null,
+    receipt_valid: receiptValid,
+    product_present: productPresent,
+    candidate_sha256: receipt?.candidate_sha256 ?? null,
+    final_product_sha256: finalProductSha256,
+    source_contract_sha256_match: sourceContractMatch,
+    sealed_inventory_sha256_match: inventoryMatch,
+    candidate_final_bytes_match: candidateFinalBytesMatch,
+    pass: !required || (
+      receiptValid
+      && productPresent
+      && sourceContractMatch
+      && inventoryMatch
+      && candidateFinalBytesMatch
+    ),
+  };
+}
+
 export function buildRunRecord({
   workspace,
   manifest,
@@ -114,6 +163,7 @@ export function buildRunRecord({
   proofTrace = null,
   proofExecutionGate = null,
   hostPolicy = null,
+  candidatePreflight = null,
 }) {
   if (!FAMILIES.has(family)) throw new Error(`unsupported benchmark family: ${family}`);
   if (!Number.isInteger(trialIndex) || trialIndex < 1) throw new Error("trial index must be a positive integer");
@@ -205,6 +255,7 @@ export function buildRunRecord({
       proof_trace: proofTrace,
       proof_execution_gate: proofExecutionGate,
       host_policy: hostPolicy,
+      candidate_preflight: candidatePreflight,
     },
     attribution: {
       runtime: {
@@ -242,6 +293,9 @@ export function buildRunRecord({
       screenshots: score ? ".benchmark/screenshots" : null,
       proof_trace: proofTrace ? ".benchmark/proof-trace.json" : null,
       host_policy_state: hostPolicy ? ".benchmark/host-policy-state.json" : null,
+      candidate_preflight_receipt: candidatePreflight?.receipt_present
+        ? ".omd/static-preview-receipt.json"
+        : null,
     },
   };
 }
@@ -291,6 +345,7 @@ async function main() {
   const matrixCell = existsSync(matrixCellPath) ? readJson(matrixCellPath) : null;
   const reflowArtifactPath = join(workspace, ".omd", "reflow-closure.json");
   const reflowArtifact = existsSync(reflowArtifactPath) ? readJson(reflowArtifactPath) : null;
+  const candidatePreflight = inspectCandidatePreflight(workspace, reflowArtifact);
   const proofExecutionGate = evaluateProofExecutionGate(
     proofTrace,
     matrixCell?.proof_execution_gate ?? null,
@@ -331,6 +386,7 @@ async function main() {
     proofTrace,
     proofExecutionGate,
     hostPolicy,
+    candidatePreflight,
   });
   const out = args.get("out")
     ? resolve(String(args.get("out")))

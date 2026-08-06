@@ -665,12 +665,28 @@ export function completedCellSummary(
     host_policy: record.runtime_diagnostics?.host_policy ?? null,
     host_policy_gate: record.runtime_diagnostics?.host_policy?.gate ?? null,
     host_policy_admission: record.runtime_diagnostics?.host_policy_admission ?? null,
+    candidate_preflight: record.runtime_diagnostics?.candidate_preflight ?? null,
   };
   if (includeArtifactHashes) summary.artifact_hashes = cellArtifactHashes(benchmarkDir);
   if (completedInInvocation !== undefined) {
     summary.completed_in_invocation = completedInInvocation;
   }
   return summary;
+}
+
+export function candidatePreflightStopReason(plan, record) {
+  if (plan?.candidate_preflight_contract?.required !== true) return null;
+  const preflight = record?.runtime_diagnostics?.candidate_preflight;
+  if (!preflight?.receipt_present) return "candidate-preview-receipt-missing";
+  if (!preflight.receipt_valid || preflight.receipt_state !== "passed") {
+    return "candidate-preview-receipt-failed";
+  }
+  if (!preflight.source_contract_sha256_match) return "candidate-preview-source-contract-mismatch";
+  if (!preflight.sealed_inventory_sha256_match) return "candidate-preview-inventory-mismatch";
+  if (!preflight.product_present || !preflight.candidate_final_bytes_match) {
+    return "candidate-final-byte-mismatch";
+  }
+  return null;
 }
 
 function positiveIntegerOrThrow(value, label = "maxNewCells") {
@@ -1506,6 +1522,24 @@ function executePreparedMatrixWithLease(root, {
         writeJson(executionStatePath, state);
         throw new Error(reason);
       }
+    }
+
+    const candidatePreflightReason = candidatePreflightStopReason(plan, readJson(recordPath));
+    if (candidatePreflightReason) {
+      state.status = "stopped-preregistered";
+      state.stop_reason = candidatePreflightReason;
+      state.current_cell = null;
+      stopCurrentInvocation(candidatePreflightReason);
+      upsertCell(state, {
+        id: cell.id,
+        order: index + 1,
+        status: "stopped",
+        workspace,
+        reason: candidatePreflightReason,
+      });
+      freezeRemainingCells(state, plan, index, matrixRoot, candidatePreflightReason);
+      writeJson(executionStatePath, state);
+      throw new Error(`preregistered stop at ${cell.id}: ${candidatePreflightReason}`);
     }
 
     const summary = completedCellSummary(
