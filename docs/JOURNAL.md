@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.790 frontier readiness sync
+- 1.9.789 fresh Luna/high UI 결과를 normative10-gate snapshot에 연결했다.
+- audit는 pass0·partial5·open3·external2, 2.0 promotion BLOCK을 유지한다.
+- zero-question plan path만 닫혔고 interview/block/advisory dispatch는 미증명이다.
+- 다음은 actual routed-state fresh experiment를 사전등록한다.
+
 ## 2026-08-09 (Codex) · 1.9.789 Luna state-routing complete
 - current85/81/85 vs candidate85/85/85, candidate W/T/L1/2/0이다.
 - candidate3/3, paired loss0, proof/revision/bytes6/6, recovery/question0이다.
