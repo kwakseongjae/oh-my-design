@@ -14,6 +14,18 @@ describe('OmD cross-skill delivery contract', () => {
   const orchestrator = read('skills/omd-orchestrator/SKILL.md');
   const master = read('agents/omd-master.md');
 
+  it('ships every deterministic harness helper in the npm package', () => {
+    const pkg = JSON.parse(read('package.json'));
+    for (const helper of [
+      'scripts/design-council-prime.cjs',
+      'scripts/design-council-reconcile.cjs',
+      'scripts/design-council-handoff.cjs',
+      'scripts/design-harness-context-plan.cjs',
+    ]) {
+      expect(pkg.files).toContain(helper);
+    }
+  });
+
   it('bridges approved harness artifacts into real product delivery', () => {
     expect(harness).toContain('Step 5 — Delivery bridge');
     expect(harness).toContain('main-agent-after-checkpoint-3');

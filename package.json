@@ -55,7 +55,9 @@
     "scripts/context.cjs",
     "scripts/ctx-prime.cjs",
     "scripts/design-council-prime.cjs",
-    "scripts/design-council-reconcile.cjs"
+    "scripts/design-council-reconcile.cjs",
+    "scripts/design-council-handoff.cjs",
+    "scripts/design-harness-context-plan.cjs"
   ],
   "scripts": {
     "build": "tsup",

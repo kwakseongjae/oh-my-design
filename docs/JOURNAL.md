@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.777 npm contents gate
+- dry-run이 handoff/context planner helper 2개의 tarball 누락을 발견해 allowlist를 수정했다.
+- 재검증은 entry565, required5/5, missing0이다.
+- package contract test로 helper4개 포함을 고정했고 기존 npm cache 권한은 건드리지 않았다.
+- 다음은 2.0 promotion rubric 갱신과 다음 quality gap 선정이다.
+
 ## 2026-08-08 (Codex) · 1.9.776 doctor self-test
 - `doctor --self-test`가 packaged planner의 provider-zero ready plan을 실행 검증한다.
 - byte가 다른 로컬 helper는 실행하지 않고 fail-close한다.
