@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.794 routed lifecycle executor
+- matrix lane 격리·artifact validation·reconcile·handoff executor를 추가했다.
+- provider-zero route3/3·lane4/4, checkpoint 전 product write0이다.
+- blocker dispatch/edit0, Cursor0, unit1/1+lint green이다.
+- 다음은 exact Luna/high lane4+implementation2 preregistration이다.
+
 ## 2026-08-09 (Codex) · 1.9.793 routed lifecycle controller
 - provider-zero route3/3, checkpoint 전/total product write0이다.
 - interview는 exact receipt 후만 resume, blocker는 dispatch/answer/master0이다.

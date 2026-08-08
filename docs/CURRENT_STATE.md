@@ -4,11 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.793 council routed lifecycle provider-zero controller 완료
+- 갱신: 2026-08-09 · 1.9.794 council routed lifecycle lane executor 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.794는 matrix의 declared read-only lane을 실행·격리·artifact validate·reconcile하고 interview receipt 뒤에만 master를 재개하는 executor를 추가했다. provider-zero route3/3·lane4/4·checkpoint 전 product write0·blocker dispatch/edit0·Cursor0이다.
+- executor unit1/1+lint green이다. 이 결과는 ordering 증거이며 model advice/UI 효과 증거가 아니므로 execution_allowed=false다. 다음은 exact Luna/high lane4+implementation2 no-retry run을 별도 사전등록한다.
 - 1.9.793 provider-zero controller는 routed3/3, checkpoint 전 product write0, total product write0, provider/model/Cursor0으로 통과했다. controller unit1/1+lint green이다.
 - interview는 advisory2→exact `regulated-commitment` relay(master=false)→ledger/question hash receipt apply→resume_master다. blocker는 dispatch0→relay_blocked→answer0/master0이다. advisory-ready는 declared lane2 reconcile 후만 resume_master다.
 - 이 패치의 empty lane artifact는 ordering controller placeholder이지 model advice/effectiveness 증거가 아니다. execution_allowed=false를 유지한다.

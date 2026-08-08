@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-routed-lifecycle-executor-1.9.794",
+  "execution_mode": "provider-zero",
+  "source_commit": "c9555f09",
+  "task_lock_ref": "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-task-lock-1.9.792/TASK-LOCK.json",
+  "executable_tasks": [
+    "papyrus-leaf-return-v0.1",
+    "ceramic-sherd-return-v0.1"
+  ],
+  "blocker_task": "photographic-proof-return-v0.1",
+  "route_count": 3,
+  "lane_calls": 4,
+  "provider_calls": 0,
+  "model_calls": 0,
+  "cursor_calls": 0,
+  "pre_implementation_product_write_count": 0,
+  "interview_answer_receipt_applied": true,
+  "blocker_dispatch_count": 0,
+  "blocker_product_write_count": 0,
+  "gate": true,
+  "verification": {
+    "focused_tests": "1/1",
+    "lint": "pass"
+  },
+  "execution_allowed": false
+}
