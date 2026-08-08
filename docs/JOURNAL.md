@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.751 preregistered
+- Luna/high only, photographic→architectural→ceramic exact matrix를 잠갔다.
+- exact `omd1751`, preplan3/3, cascade exact-value, retry/replacement0 계약이다.
+- focused239 pass/2 skip+lint green; 다음은 provider-zero prepare/admission이다.
+
 ## 2026-08-08 (Codex) · 1.9.751 denominator lock
 - photographic→architectural→ceramic의 provider/model0 세 task를 잠갔다.
 - 세 baseline은75/85, responsive+accessibility only red; Cursor forbidden이다.
