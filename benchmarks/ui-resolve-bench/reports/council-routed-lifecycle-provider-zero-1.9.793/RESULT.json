@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.793",
+  "experiment_id": "council-routed-lifecycle-provider-zero-1.9.793",
+  "status": "PROVIDER_ZERO_ROUTE_GATE_PASS",
+  "task_count": 3,
+  "provider_calls": 0,
+  "model_calls": 0,
+  "cursor_calls": 0,
+  "route_gate": true,
+  "implementation_before_checkpoint_count": 0,
+  "total_product_write_count": 0,
+  "routes": {
+    "product_authority_interview": {
+      "task_id": "papyrus-leaf-return-v0.1",
+      "selected_lane_ids": ["ambiguity_contrarian", "product_context"],
+      "initial_action": "relay_questions",
+      "question_ids": ["regulated-commitment"],
+      "initial_master_required": false,
+      "simulated_answer_receipt_applied": true,
+      "post_answer_action": "resume_master",
+      "post_answer_master_required": true,
+      "product_write_count": 0,
+      "gate": true
+    },
+    "external_evidence_blocker": {
+      "task_id": "photographic-proof-return-v0.1",
+      "selected_lane_ids": [],
+      "initial_action": "relay_blocked",
+      "blocking_ids": ["required-factual-claim"],
+      "master_required": false,
+      "answer_receipt_applied": false,
+      "product_write_count": 0,
+      "gate": true
+    },
+    "bounded_advisory_ready": {
+      "task_id": "ceramic-sherd-return-v0.1",
+      "selected_lane_ids": ["ambiguity_contrarian", "reference_evidence"],
+      "post_advisory_action": "resume_master",
+      "master_required": true,
+      "product_write_count": 0,
+      "gate": true
+    }
+  },
+  "execution_allowed": false,
+  "next_gate": "Preregister exact Luna/high lane and implementation execution from a fresh prepared root."
+}

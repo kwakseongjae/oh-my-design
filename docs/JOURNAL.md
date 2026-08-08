@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.793 routed lifecycle controller
+- provider-zero route3/3, checkpoint 전/total product write0이다.
+- interview는 exact receipt 후만 resume, blocker는 dispatch/answer/master0이다.
+- advisory-ready는 declared lane reconcile 후만 resume한다.
+- unit1/1+lint, provider/model/Cursor0; 다음은 Luna exact prereg이다.
+
 ## 2026-08-09 (Codex) · 1.9.792 routed lifecycle task lock
 - source commit4f1fe866의 fresh3·oracle·helper·adapter·skill hash를 잠그었다.
 - interview/block/advisory 각 stop/write 계약을 machine lock으로 고정했다.
