@@ -9,6 +9,7 @@ const runner = join(repoRoot, "benchmarks/ui-resolve-bench/scripts/run-council-e
 const fixture = join(repoRoot, "benchmarks/ui-resolve-bench/fixtures/council-effectiveness-pilot.json");
 const lunaFixture = join(repoRoot, "benchmarks/ui-resolve-bench/fixtures/council-effectiveness-luna-1.9.757.json");
 const selectivityFixture = join(repoRoot, "benchmarks/ui-resolve-bench/fixtures/council-selectivity-luna-1.9.758.json");
+const authorityMatrixFixture = join(repoRoot, "benchmarks/ui-resolve-bench/fixtures/council-authority-matrix-luna-1.9.761.json");
 const roots = [];
 
 afterEach(() => {
@@ -100,6 +101,39 @@ describe("council effectiveness pilot", () => {
       expected_deferred_count: 3,
       correctly_deferred_count: 0,
       selectivity_gate: false,
+    });
+  });
+
+  it("prepares a multi-case authority matrix with exact disposition accounting", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-council-authority-matrix-"));
+    roots.push(root);
+    const result = spawnSync(process.execPath, [runner, authorityMatrixFixture, root], {
+      cwd: repoRoot,
+      encoding: "utf8",
+      env: { ...process.env, OMD_COUNCIL_EXECUTE: "0" },
+    });
+    expect(result.status, result.stderr).toBe(0);
+    const summary = JSON.parse(readFileSync(join(root, "SUMMARY.json"), "utf8"));
+    expect(summary).toMatchObject({
+      execution_mode: "provider-zero",
+      case_count: 3,
+      lane_call_count: 4,
+      provider_calls: 0,
+      cursor_calls: 0,
+      expected_effective_disposition_count: 8,
+      exact_disposition_mismatch_count: 3,
+      exact_disposition_gate: false,
+      mandatory_interview_loss_count: 0,
+      expected_deferred_count: 3,
+      selectivity_gate: false,
+    });
+    expect(summary.results.find((item) => item.id === "no-dispatch-existing-docs")).toMatchObject({
+      lane_runs: [],
+      exact_disposition_gate: true,
+    });
+    expect(summary.results.find((item) => item.id === "external-unverifiable-brand")).toMatchObject({
+      exact_disposition_gate: true,
+      expected_blocked_retained: true,
     });
   });
 

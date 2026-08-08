@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.761 authority matrix prepared
+- no-dispatch/preserve, user-answerable interview, external-unverifiable block 3 cases를 잠갔다.
+- exact disposition8, defer3, mandatory1, blocked1 계약이다.
+- provider-zero lane4, provider/model/Cursor0, unit10/10 green이다.
+- checkpoint 뒤 Luna/high exact lane4가 다음이다.
+
 ## 2026-08-08 (Codex) · 1.9.760 selectivity pass
 - 질문4→1, defer3/3, mandatory pricing interview 보존으로 exact gate를 통과했다.
 - Luna/high lane2/2 clean, forbidden-auto/write/timeout/retry/Cursor0이다.

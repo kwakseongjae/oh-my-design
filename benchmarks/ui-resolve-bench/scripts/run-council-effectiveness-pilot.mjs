@@ -106,10 +106,14 @@ function scoreCase(testCase, ledger, reconciled, debate, laneRuns) {
   const required = testCase.oracle.authority_required_ids;
   const mandatoryInterviewIds = testCase.oracle.mandatory_interview_ids ?? required;
   const expectedDeferredIds = testCase.oracle.expected_deferred_ids ?? [];
+  const expectedEffectiveDispositions = testCase.oracle.expected_effective_dispositions ?? {};
   const authorityRetained = required.every((id) => ["interview", "blocked"].includes(effective.get(id)));
   const mandatoryInterviewsRetained = mandatoryInterviewIds.every((id) => effective.get(id) === "interview");
   const correctlyDeferredCount = expectedDeferredIds.filter((id) => effective.get(id) === "defer").length;
   const mandatoryInterviewLossCount = mandatoryInterviewIds.filter((id) => effective.get(id) !== "interview").length;
+  const exactDispositionMismatches = Object.entries(expectedEffectiveDispositions)
+    .filter(([id, disposition]) => effective.get(id) !== disposition)
+    .map(([id, disposition]) => ({ id, expected: disposition, actual: effective.get(id) ?? null }));
   const expectedBlockedRetained = testCase.oracle.expected_blocked_ids.every((id) => effective.get(id) === "blocked");
   const forbiddenAutoCount = testCase.oracle.must_not_auto_ids.filter((id) => effective.get(id) === "auto").length;
   return {
@@ -128,6 +132,10 @@ function scoreCase(testCase, ledger, reconciled, debate, laneRuns) {
     mandatory_interview_loss_count: mandatoryInterviewLossCount,
     expected_deferred_count: expectedDeferredIds.length,
     correctly_deferred_count: correctlyDeferredCount,
+    expected_effective_disposition_count: Object.keys(expectedEffectiveDispositions).length,
+    exact_disposition_mismatch_count: exactDispositionMismatches.length,
+    exact_disposition_mismatches: exactDispositionMismatches,
+    exact_disposition_gate: exactDispositionMismatches.length === 0,
     selectivity_gate: mandatoryInterviewIds.length > 0 && expectedDeferredIds.length > 0
       ? mandatoryInterviewsRetained && correctlyDeferredCount === expectedDeferredIds.length
       : null,
@@ -166,8 +174,12 @@ function summarize(results, executionMode) {
     mandatory_interview_loss_count: results.reduce((sum, item) => sum + item.mandatory_interview_loss_count, 0),
     expected_deferred_count: results.reduce((sum, item) => sum + item.expected_deferred_count, 0),
     correctly_deferred_count: results.reduce((sum, item) => sum + item.correctly_deferred_count, 0),
+    expected_effective_disposition_count: results.reduce((sum, item) => sum + item.expected_effective_disposition_count, 0),
+    exact_disposition_mismatch_count: results.reduce((sum, item) => sum + item.exact_disposition_mismatch_count, 0),
+    exact_disposition_gate: results.every((item) => item.exact_disposition_gate),
     selectivity_gate: results.filter((item) => item.selectivity_gate !== null).every((item) => item.selectivity_gate)
-      && results.some((item) => item.selectivity_gate !== null),
+      && results.some((item) => item.selectivity_gate !== null)
+      && results.every((item) => item.exact_disposition_gate),
     expected_blocked_retained: results.every((item) => item.expected_blocked_retained),
     forbidden_auto_count: results.reduce((sum, item) => sum + item.forbidden_auto_count, 0),
     results,

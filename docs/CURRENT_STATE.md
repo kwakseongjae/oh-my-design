@@ -22,7 +22,9 @@
 - 1.9.760 provider-zero는 external-unverifiable=blocked, user-answerable product choice=interview, preserve-existing=defer를 reconciler가 검증하도록 잠갔다. unit9/9 green이다.
 - 1.9.760 live는 Luna/high lane2/2, artifact2/2, write/timeout/retry/Cursor0으로 exact gate를 통과했다. 질문4→1, defer3/3, mandatory pricing interview 보존, forbidden-auto0이다.
 - input106,424(cached82,432), output2,939, reasoning1,548, wall76,539ms; correct deferral당 input35,474.67이다. 단일 calibration이라 일반 효과 주장은 금지다.
-- 다음 1.9.761은 preserve-existing/user-answerable/external-unverifiable/no-dispatch를 별도 사례로 갖는 fresh multi-case denominator를 provider-zero로 준비한다.
+- 1.9.761 authority matrix provider-zero가 준비됐다. no-dispatch control, mixed user-answerable pricing, external-unverifiable brand 3 cases와 exact disposition8개를 잠갔다.
+- selected lane4(0+2+2), provider/model/Cursor0, expected defer3, mandatory interview1, blocked1이다. provider-zero mismatch3은 mixed defer가 아직 실행되지 않은 정상 denominator다. unit10/10 green이다.
+- 다음은 checkpoint commit 뒤 Luna/high exact lane4 실행이며 exact8/8 + defer3/3 + mandatory-loss0 + blocked-retained를 함께 요구한다.
 - 1.9.756 paired comparison 6/6이 complete다. objective는 양 arm3/3, promotion proof는 current2/3 vs council3/3이며 pair outcome은 council lift1/tie2/loss0이다. 모든 셀 revision1, candidate/final exact, recovery/duplicate/Cursor0이다.
 - council은 current 대비 합산 wall -64,809ms(-11.03%), tokens -329,626(-14.95%)였지만 n=3 descriptive-only다. prereg 전체 gate는 양 arm Reliability3/3 요구 때문에 current2/3로 false; candidate Reliability3/3과 paired-loss0는 true다.
 - post-complete 재호출은 provider0에서 `not resumable: complete`로 fail-close했다. 다음은 fresh full-product hierarchy repeat와, 별도 bounded-dispatch(읽기전용 specialist debate) 실험을 분리 사전등록하는 1.9.757이다.
