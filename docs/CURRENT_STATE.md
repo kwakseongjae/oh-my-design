@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.755 첫 prepare는 provider/model/Cursor/workspace0 상태에서 설명형 task-order enum을 거부했다. 실패를 `PLAN-VALIDATION-FAILURE.json`에 보존하고 exact cell order/denominator는 그대로 둔 채 정식 `fixed-preregistered`로 교정했다.
+- 다음은 교정 commit 뒤 같은 exact `omd1755`에서 provider-zero prepare/admission/preplan6/6을 다시 시작한다.
+
 - 1.9.755 paired plan을 사전등록했다. fresh3×current/council2 arms, Luna/high, exact balanced order, concurrency1, pacing30s, max-new-cell1, retry/replacement0이며 Cursor는 금지다.
 - 두 arm은 effective installed skill을 공유하고 activation+council intake만 다르다. 양 arm Reliability3/3, candidate paired loss0가 내부 gate이며 일반 council lift/2.0 승격 주장은 금지다.
 - 다음은 plan commit 뒤 exact `omd1755` isolated browser를 준비하고 fresh root provider-zero prepare/admission/preplan6/6을 닫는 단계다.

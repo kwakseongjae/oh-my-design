@@ -5527,6 +5527,12 @@
 - Carried forward provider-zero geology/herbarium and added fresh photographic negative-return.
 - Fresh raw baseline is 75/85 with responsive+accessibility red; inventory102, focused2/2.
 - Next: commit exact bytes, then preregister Codex Luna/high with a new isolated named browser/root.
+## 2026-08-08 (Codex) · 1.9.755 provider-zero plan enum repair
+- 첫 prepare가 비표준 task-order enum을 provider/workspace0에서 거부했다.
+- exact cell order/denominator는 불변이고 enum만 fixed-preregistered로 교정했다.
+- failure JSON을 보존했으며 model/Cursor call0이다.
+- 다음은 교정 commit 뒤 prepare/admission/preplan6/6이다.
+
 ## 2026-08-08 (Codex) · 1.9.755 Luna paired plan
 - fresh3×current/council2 arm의 balanced2×3 plan을 사전등록했다.
 - Luna/high, checkpoint1셀, pacing30s, retry/replacement0, Cursor forbidden이다.

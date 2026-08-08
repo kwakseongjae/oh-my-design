@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-checkpoint-comparison-luna-1.9.755",
+  "status": "PROVIDER_ZERO_PLAN_ENUM_REJECTED_AND_CORRECTED",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "cursor_calls": 0,
+  "workspaces_created": 0,
+  "rejected_value": "fixed-balanced-cross-arm",
+  "accepted_value": "fixed-preregistered",
+  "cell_order_changed": false,
+  "denominator_changed": false,
+  "reason": "prepare-run-matrix accepts only balanced-rotation or fixed-preregistered; the exact balanced cell array remains preregistered and unchanged"
+}
