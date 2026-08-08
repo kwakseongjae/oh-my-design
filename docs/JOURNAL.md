@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.750 preplan3/3 ready
+- exact `omd1750`에서 controller preplan3/3을 provider0/model0/Cursor0으로 닫았다.
+- 전 셀 measured attempt1, attach-existing, launch false, product bytes unchanged다.
+- PREPARATION commit 뒤 herbarium Luna/high exact1회가 다음이다.
+
 ## 2026-08-08 (Codex) · provider-zero preplan checkpoint
 - controller pre-edit plan을 provider 실행과 분리하는 one-shot prepare script를 추가했다.
 - exact browser preflight+3-cell receipts 후 모델 실행기는 검증만 하고 재측정하지 않는다.

@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.750 controller preplan은3/3 provider0/model0/Cursor0으로 완료됐다. 각 셀은 exact `omd1750` attach, measured attempt1, browser launch false, 제품 byte 불변이며 Codex auth도 green이다.
+- root plan hash `1a5c4184…`, preparation hash `e075fa53…`; 다음은 PREPARATION commit 뒤 herbarium Luna/high 셀 exact1회만 실행한다. lifecycle 실패 시 나머지2셀을 동결한다.
+
 - provider 호출과 분리된 `prepare-controller-pre-edit-plans.mjs`를 추가했다. exact browser/runtime preflight 뒤 세 셀의 shipped runner plan mode를 provider0/model0/Cursor0으로 실행하고 one-shot root receipt를 남긴다.
 - fresh 실행기는 이미 존재하는 유효 receipt를 재실행하지 않고 검증만 하므로 provider 시작 전 선행 측정을 독립 checkpoint로 고정할 수 있다. focused29/29와 lint green이다.
 - 1.9.750 plan은 commit됐고 root preparation/admission3/3도 green이다. exact `omd1750` browser가 active이며 다음은 controller preplan3/3 실행·receipt commit이다.
