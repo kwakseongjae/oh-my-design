@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.753 preplan3/3 ready
+- provider-zero admission+exact `omd1753` preplan3/3을 닫았다.
+- attempt1, attach-existing, launch false, product unchanged, Cursor0이다.
+- PREPARATION commit 뒤 architectural Luna/high exact1회가 다음이다.
+
 ## 2026-08-08 (Codex) · 1.9.753 preregistered
 - architectural→ceramic→glass Luna/high exact matrix를 잠갔다.
 - `omd1753`, repaired checkpoint receipts, pacing30s, Cursor0 계약이다.

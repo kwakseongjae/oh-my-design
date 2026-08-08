@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.753 provider-zero admission3/3과 exact `omd1753` preplan3/3이 green이다. 전 셀 attempt1, attach-existing, launch false, product unchanged, provider/model/Cursor0이다.
+- plan `9c9cf6cf…`, preparation `78205d67…`, preplan state `78ee9889…`다. 다음은 PREPARATION commit 뒤 architectural Luna/high exact1회다.
+
 - 1.9.753 Luna/high plan을 architectural→ceramic→glass 순으로 사전등록했다. exact `omd1753`, concurrency1, pacing30s, retry/replacement0, Cursor forbidden이며 repaired checkpoint receipt semantics를 명시했다.
 - 다음은 plan commit 뒤 fresh root provider-zero prepare/admission과 preplan3/3이다.
 
