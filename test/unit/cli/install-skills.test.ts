@@ -514,7 +514,14 @@ describe('install-skills', () => {
       expect(harness).toContain('if handoff.status == "blocked"');
       expect(harness).toContain('ledger_sha256');
       expect(harness).toContain('questions_sha256');
+      expect(harness).toContain('references/master-visual-grounding.md');
     }
+    const groundingSidecars = [
+      join(root, '.claude/skills/omd-harness/references/master-visual-grounding.md'),
+      join(root, '.agents/skills/omd-harness/references/master-visual-grounding.md'),
+      join(root, '.opencode/skills/omd-harness/references/master-visual-grounding.md'),
+    ].map((file) => readFileSync(file, 'utf8'));
+    expect(groundingSidecars.every((content) => content.includes('Unknown means absent'))).toBe(true);
 
     const masters = [
       join(root, '.claude/agents/omd-master.md'),

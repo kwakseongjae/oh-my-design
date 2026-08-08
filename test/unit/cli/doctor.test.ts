@@ -46,6 +46,13 @@ describe('omd doctor', () => {
           '#!/usr/bin/env node\n',
         );
       }
+      if (skill === 'omd-harness') {
+        mkdirSync(join(channelRoot, skill, 'references'), { recursive: true });
+        writeFileSync(
+          join(channelRoot, skill, 'references', 'master-visual-grounding.md'),
+          '# Master visual grounding contract\n',
+        );
+      }
     }
   }
 

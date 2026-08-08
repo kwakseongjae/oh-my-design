@@ -7,6 +7,7 @@ const read = (path) => readFileSync(resolve(root, path), 'utf8');
 
 describe('OmD cross-skill delivery contract', () => {
   const harness = read('skills/omd-harness/SKILL.md');
+  const grounding = read('skills/omd-harness/references/master-visual-grounding.md');
   const orchestrator = read('skills/omd-orchestrator/SKILL.md');
   const master = read('agents/omd-master.md');
 
@@ -46,5 +47,14 @@ describe('OmD cross-skill delivery contract', () => {
     expect(master).toContain('Never report a blocked item as a retained user');
     expect(master).toContain('Skip SLOT_GATE entirely only when no effective `blocked` item remains');
     expect(master).toContain('`blocked` — launcher relays the missing external evidence');
+  });
+
+  it('loads visual grounding progressively without weakening the evidence contract', () => {
+    expect(harness).toContain('references/master-visual-grounding.md');
+    expect(harness).not.toContain('DiceBear 전체 스타일 카탈로그');
+    expect(grounding).toContain('Unknown means absent');
+    expect(grounding).toContain('Do not hand-draw character SVGs');
+    expect(grounding).toContain('IntersectionObserver reveal');
+    expect(grounding).toContain('Do not paste this entire file');
   });
 });

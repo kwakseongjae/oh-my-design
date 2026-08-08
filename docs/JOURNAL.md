@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.767 progressive disclosure
+- visual grounding을 phase-only sidecar로 분리하고 asset catalog 중복을 제거했다.
+- initial harness 48,736B→30,194B(-38.0%); semantics는 sidecar에 보존했다.
+- doctor sidecar gate와 관련93/93, lint green; provider/Cursor0이다.
+- 다음은 동일 exact3 Luna/high fresh 비교다.
+
 ## 2026-08-08 (Codex) · 1.9.766 Luna checkpoint pass
 - Luna/high exact3/3, write/timeout/retry/Cursor0으로 authority checkpoint를 지켰다.
 - input457,473(cached355,840), output3,924, wall107,962ms다.

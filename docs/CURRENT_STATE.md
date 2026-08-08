@@ -4,14 +4,17 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `9a351591`의 Cursor fail-close guard (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-08 · 1.9.766 installed-harness Luna/high canary 3/3 통과
+- 갱신: 2026-08-08 · 1.9.767 harness progressive disclosure 1차 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.767은 visual/component/prototype에서만 필요한 grounding·asset·hero·motion detail을 `references/master-visual-grounding.md`로 분리했다. intake/checkpoint relay는 sidecar를 읽지 않는다.
+- 초기 `omd-harness/SKILL.md`는 48,736B/873줄→30,194B/629줄로 38.0%/28.0% 감소했다. sidecar 포함 정본은34,857B이며 중복 CDN catalog는 `omd-asset-fetch`로 단일화했다.
+- doctor는 새 sidecar 누락을 invalid skill sidecar로 진단한다. workflow/catalog/doctor/install/handoff93/93, lint/diff-check green, provider/Cursor0이다.
+- 다음 1.9.768은 동일 exact3 Luna/high checkpoint canary를 fresh hash/experiment로 재사전등록해 compliance 유지와 input token 변화를 비교한다.
 - 1.9.766 live는 Luna/high exact3/3이다. ready→propose_plan, user-answerable→registered question4, external source→blocked를 정확히 지켰고 unauthorized write/timeout/retry/Cursor0이다.
 - provider3, input457,473(cached355,840), output3,924, reasoning1,508, summed wall107,962ms다. 첫 ready case input249,300으로 full harness/master contract context가 과도하다는 비용 경고가 확인됐다.
-- 다음 1.9.767은 UI/authority 기능을 바꾸지 않고 `omd-harness`의 phase detail을 progressive-disclosure sidecar로 분리한다. provider-zero 설치/doctor/contract parity 뒤 같은 exact3 oracle을 다시 잠가 input cost를 비교한다.
 - 1.9.766은 integrated harness checkpoint compliance만 보는 fresh3 canary를 사전등록했다. ready→propose_plan, user-answerable→exact4 relay_questions, missing brand source→halt_blocked가 oracle이다.
 - runtime Codex native, Luna/high, case당1회, concurrency1, retry/replacement0, timeout300s, Cursor 금지다. provider-zero deterministic3/3, provider/model/Cursor0이며 fixture/runner/harness/master/prime/handoff hash를 잠갔다.
 - 1.9.765는 council intake answer에 checkpoint/ledger/questions SHA-256 receipt를 요구한다. 질문 뒤 ledger가 바뀌거나 question packet이 stale하거나 동일 답을 두 번 적용하면 fail-close한다.
