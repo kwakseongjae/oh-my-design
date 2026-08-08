@@ -1,0 +1,345 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-checkpoint-comparison-luna-1.9.756",
+  "status": "PREPARED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "locked_plan_sha256": "e7ce11d6a08122a4b36a5fd654a002a207b733648362456431e61acd282ec41d",
+  "preparation_state_sha256": "116deda5fe2c3f8100b1a6ec3d919afd61f415b8b73eb0625c9d1f47a6a3c146",
+  "objective_evaluator": {
+    "score_schema_version": "0.6",
+    "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+    "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+  },
+  "normalization_policy": "paired-cross-task-comparison",
+  "required_normalization": [
+    "cell_contract",
+    "runtime",
+    "model_id",
+    "effort",
+    "timeout_seconds",
+    "source_publishable",
+    "objective_evaluator",
+    "task_lock_attested",
+    "skill_lock_attested",
+    "paired_task_contracts",
+    "paired_arm_rotation"
+  ],
+  "normalization": {
+    "cell_contract": true,
+    "task_id": false,
+    "task_id_distinct": false,
+    "task_prompt_sha256": false,
+    "starter_sha256": false,
+    "product_initial_sha256": false,
+    "variant_id": false,
+    "system_id": false,
+    "runtime": true,
+    "model_id": true,
+    "effort": true,
+    "timeout_seconds": true,
+    "skill_sha256": true,
+    "source_publishable": true,
+    "objective_evaluator": true,
+    "deterministic_reflow": false,
+    "deterministic_reflow_contract": true,
+    "task_lock_attested": true,
+    "skill_lock_attested": true,
+    "paired_task_contracts": true,
+    "paired_arm_rotation": true
+  },
+  "systems": [
+    "luna-high-omd-current",
+    "luna-high-omd-council"
+  ],
+  "trials": [
+    1
+  ],
+  "source_attestation": {
+    "luna-high-omd-current": {
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "skill_sha256": "f46c9859a2765599a394f37ce9b9b43a2dc244f7da674b1a41a89680f42a33e0",
+      "publishable": true
+    },
+    "luna-high-omd-council": {
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "skill_sha256": "f46c9859a2765599a394f37ce9b9b43a2dc244f7da674b1a41a89680f42a33e0",
+      "publishable": true
+    }
+  },
+  "execution_admission": {
+    "allowed": true,
+    "reason": null,
+    "execution_artifacts_absent": true,
+    "reprepare_on_objective_methodology_drift": true
+  },
+  "cells": [
+    {
+      "id": "album-luna-r1-council-off",
+      "task_id": "photograph-album-return-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "luna-high-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "task_prompt_sha256": "63d44614b468d773b69d7d5887eac883b0ea00ceb3c4efb3591d3f844361cdcc",
+      "starter_sha256": "2ded990cbcd383b83cc138f436d4a97b3880c645949122ea6a88d4b4d6b40b49",
+      "product_initial_sha256": "2ded990cbcd383b83cc138f436d4a97b3880c645949122ea6a88d4b4d6b40b49",
+      "skill_sha256": "f46c9859a2765599a394f37ce9b9b43a2dc244f7da674b1a41a89680f42a33e0",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "81d79d177c0446942a94531ded64a5872d2c415c90e2b98920a76794481bd1c2",
+        "source_contract_sha256": "30a1d8d75f64610b91890423a141fc96bbe589b8c69aac50e63557746657c9ff",
+        "inventory_sha256": "d779b7d28533dee9272a2956dd57aae6bae549522244cdefec24af990465a558",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "6b499ee62b8c245593a627536702678faa113b934d8d3786fc59d64503fc91a1"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "mineral-luna-r1-council-on",
+      "task_id": "mineral-drawer-return-v0.1",
+      "variant_id": "omd-portable-council-gate",
+      "system_id": "luna-high-omd-council",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "task_prompt_sha256": "c7db2ef3d22d8069d3f1f5056a682764e6faaa9f2547bb6d2a8b58938b77420d",
+      "starter_sha256": "037908902082a9940fa1d1c2a4d73895119e32553300f1096181713f555b7b1f",
+      "product_initial_sha256": "037908902082a9940fa1d1c2a4d73895119e32553300f1096181713f555b7b1f",
+      "skill_sha256": "f46c9859a2765599a394f37ce9b9b43a2dc244f7da674b1a41a89680f42a33e0",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "4d614e8c4cb20f491aa92850f020c45727c731735b604b1c409220cd6f63663d",
+        "source_contract_sha256": "1f323a1ecc86f8c6e09b9e2160dff96f4a797a245bb2917081f9d9dabea54dd9",
+        "inventory_sha256": "30e2fe6bd26c12be680a26fe6bfa22adaa39351a0d22c7bbc595510254d36fd6",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "89345ca7e02c6dbcc028c4b24d6c97530b6945889575ef1df1925e151c345da5"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "cylinder-luna-r1-council-off",
+      "task_id": "wax-cylinder-return-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "luna-high-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "task_prompt_sha256": "75d7158ec7c2fd4e68459a2dc19fad30118b72a15ba5bf5801f76e0e7e2f51db",
+      "starter_sha256": "e7bbe3bb56f82ae19dabbf19a36d4703d93d0e7644e051d538f9b0bd20b52521",
+      "product_initial_sha256": "e7bbe3bb56f82ae19dabbf19a36d4703d93d0e7644e051d538f9b0bd20b52521",
+      "skill_sha256": "f46c9859a2765599a394f37ce9b9b43a2dc244f7da674b1a41a89680f42a33e0",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "cba6c604a928a27890f40085d987c6467fa77a8db1b35690cb73db308019867f",
+        "source_contract_sha256": "2334e709c77f8f47c0399d4be383edd185215a11767b0c87a2dc90afa8b15dd4",
+        "inventory_sha256": "d47304d3274b4ad9c93e27085c35cc3b3f224d3e4bf01f4ba607b1b1f25cffd9",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "4b852d86a38f540f9dd8583a6a86ecb54a8c89b4d1e6000840ef5d3c714fde6c"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "album-luna-r1-council-on",
+      "task_id": "photograph-album-return-v0.1",
+      "variant_id": "omd-portable-council-gate",
+      "system_id": "luna-high-omd-council",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "task_prompt_sha256": "63d44614b468d773b69d7d5887eac883b0ea00ceb3c4efb3591d3f844361cdcc",
+      "starter_sha256": "2ded990cbcd383b83cc138f436d4a97b3880c645949122ea6a88d4b4d6b40b49",
+      "product_initial_sha256": "2ded990cbcd383b83cc138f436d4a97b3880c645949122ea6a88d4b4d6b40b49",
+      "skill_sha256": "f46c9859a2765599a394f37ce9b9b43a2dc244f7da674b1a41a89680f42a33e0",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "81d79d177c0446942a94531ded64a5872d2c415c90e2b98920a76794481bd1c2",
+        "source_contract_sha256": "30a1d8d75f64610b91890423a141fc96bbe589b8c69aac50e63557746657c9ff",
+        "inventory_sha256": "d779b7d28533dee9272a2956dd57aae6bae549522244cdefec24af990465a558",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "6b499ee62b8c245593a627536702678faa113b934d8d3786fc59d64503fc91a1"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "mineral-luna-r1-council-off",
+      "task_id": "mineral-drawer-return-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "luna-high-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "task_prompt_sha256": "c7db2ef3d22d8069d3f1f5056a682764e6faaa9f2547bb6d2a8b58938b77420d",
+      "starter_sha256": "037908902082a9940fa1d1c2a4d73895119e32553300f1096181713f555b7b1f",
+      "product_initial_sha256": "037908902082a9940fa1d1c2a4d73895119e32553300f1096181713f555b7b1f",
+      "skill_sha256": "f46c9859a2765599a394f37ce9b9b43a2dc244f7da674b1a41a89680f42a33e0",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "4d614e8c4cb20f491aa92850f020c45727c731735b604b1c409220cd6f63663d",
+        "source_contract_sha256": "1f323a1ecc86f8c6e09b9e2160dff96f4a797a245bb2917081f9d9dabea54dd9",
+        "inventory_sha256": "30e2fe6bd26c12be680a26fe6bfa22adaa39351a0d22c7bbc595510254d36fd6",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "89345ca7e02c6dbcc028c4b24d6c97530b6945889575ef1df1925e151c345da5"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "cylinder-luna-r1-council-on",
+      "task_id": "wax-cylinder-return-v0.1",
+      "variant_id": "omd-portable-council-gate",
+      "system_id": "luna-high-omd-council",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "task_prompt_sha256": "75d7158ec7c2fd4e68459a2dc19fad30118b72a15ba5bf5801f76e0e7e2f51db",
+      "starter_sha256": "e7bbe3bb56f82ae19dabbf19a36d4703d93d0e7644e051d538f9b0bd20b52521",
+      "product_initial_sha256": "e7bbe3bb56f82ae19dabbf19a36d4703d93d0e7644e051d538f9b0bd20b52521",
+      "skill_sha256": "f46c9859a2765599a394f37ce9b9b43a2dc244f7da674b1a41a89680f42a33e0",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "cba6c604a928a27890f40085d987c6467fa77a8db1b35690cb73db308019867f",
+        "source_contract_sha256": "2334e709c77f8f47c0399d4be383edd185215a11767b0c87a2dc90afa8b15dd4",
+        "inventory_sha256": "d47304d3274b4ad9c93e27085c35cc3b3f224d3e4bf01f4ba607b1b1f25cffd9",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "4b852d86a38f540f9dd8583a6a86ecb54a8c89b4d1e6000840ef5d3c714fde6c"
+        },
+        "attested": true
+      },
+      "untouched": true
+    }
+  ]
+}

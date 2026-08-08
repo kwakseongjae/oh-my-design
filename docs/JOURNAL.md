@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.756 preplan6/6 ready
+- paired-cross-task admission6/6과 exact omd1756 preplan6/6이 provider/model/Cursor0으로 통과했다.
+- task/skill/evaluator/pair rotation lock, product byte 불변, attach-only가 모두 green이다.
+- preparation commit 뒤 album council-off Luna/high exact1회가 다음이다.
+
 ## 2026-08-08 (Codex) · 1.9.753 checkpoint2 pass
 - repaired continuation+30,004ms pacing이 통과했고 ceramic도85/85 proof true다.
 - wall176,480ms, tokens649,940, revision1, recovery/duplicate/Cursor0이다.

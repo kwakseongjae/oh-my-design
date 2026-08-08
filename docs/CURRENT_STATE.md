@@ -4,10 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `9a351591`의 Cursor fail-close guard (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-08 · 1.9.750 첫 Luna 셀 동결 및 proof classifier 교정
+- 갱신: 2026-08-08 · 1.9.756 paired council 비교 provider-zero 준비 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.756 fresh root는 `paired-cross-task-comparison` admission6/6과 exact `omd1756` controller preplan6/6이 green이다. 전 셀 product byte 불변, attempt1, attach-existing, launch false이며 provider/model/Cursor0이다.
+- plan `e7ce11d6…`, preparation `116deda5…`, admission `715d152e…`, controller state `c82bbc30…`다. 다음은 preparation checkpoint commit 뒤 album council-off Luna/high 셀 exact1회이며 lifecycle clean일 때만 고정 순서로 나머지5셀을 계속한다.
 
 - 1.9.755 provider-zero prepare6/6 뒤 admission이 `normalization-mismatch`로 fail-close했다. run-result/model/Cursor0이며 root는 동결했다. single-task용 exact-task-cross-arm을 3-task paired 비교에 쓴 plan 결함이다.
 - 1.9.756은 task/arms/cell order를 그대로 유지하고 정식 `paired-cross-task-comparison`, fresh root, exact `omd1756`으로 재사전등록했다. 다음은 commit 뒤 새 browser+prepare/admission/preplan6/6이다.
