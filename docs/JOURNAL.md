@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.787 Luna state-routing checkpoint4
+- folio candidate도85/85로 첫 pair는 품질 동률이다.
+- candidate wall+20.1%, tokens+35.5%로 이 pair 효율은 열세다.
+- arm pass2:2, recovery/revision/proof 위반0이다.
+- 다음은 slide current 1셀이다.
+
 ## 2026-08-09 (Codex) · 1.9.786 Luna state-routing checkpoint3
 - tape current도 85/85·revision1·proof/candidate exact로 통과했다.
 - recovery0, wall245,521ms, tokens1,412,630; arm pass2:1이다.
