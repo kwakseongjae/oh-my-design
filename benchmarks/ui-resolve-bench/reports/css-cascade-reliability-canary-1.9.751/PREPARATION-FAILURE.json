@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "css-cascade-reliability-canary-1.9.751",
+  "status": "FROZEN_PROVIDER_ZERO_ADMISSION_FAILURE",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "cursor_calls": 0,
+  "prepared_cells": 3,
+  "execution_artifacts": 0,
+  "failure": "prepared-matrix-admission:normalization-mismatch",
+  "root_cause": {
+    "classification": "effective-skill-lock-mismatch",
+    "declared_skill_tree_sha256": "9e4f519840f81619e23479396c13224a856d242e6113b1da5a404b261a4a0311",
+    "prepared_effective_skill_tree_sha256": "f46c9859a2765599a394f37ce9b9b43a2dc244f7da674b1a41a89680f42a33e0",
+    "detail": "The plan locked the source skill tree. The prepared council-gate arm includes the deterministic activation delta, so admission correctly requires the effective installed tree hash instead."
+  },
+  "artifact_hashes": {
+    "matrix_state_sha256": "b0bfdc288006517398e03e159696d854bab38c472cc3bbfb16757026ad7218dc",
+    "locked_plan_sha256": "80b072fa54708cee6f03e70618800f5937bad12a1dbb41084d894ccf0ef4ea7d"
+  },
+  "replay_allowed": false,
+  "next_action": "Preregister a fresh 1.9.752 root with the observed effective installed skill hash before any provider execution."
+}

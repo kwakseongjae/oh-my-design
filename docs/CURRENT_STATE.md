@@ -9,6 +9,10 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.751 provider-zero prepare3/3 뒤 admission이 effective skill lock mismatch로 fail-close했다. provider/model/Cursor0, execution artifacts0이며 root는 재사용하지 않는다.
+- plan은 source skill tree `9e4f…`를 잠갔지만 council activation이 적용된 prepared effective tree는 `f46c…`였다. task bytes는 Luna에 노출되지 않았으므로 같은 denominator를 fresh 1.9.752에서 사용할 수 있다.
+- 다음은 failure evidence commit 뒤 effective installed hash `f46c…`를 사전등록한 1.9.752 plan과 새 exact browser/root로 provider-zero admission을 반복한다.
+
 - 1.9.751 plan을 Codex `gpt-5.6-luna`/high 전용으로 사전등록했다. fixed order photographic→architectural→ceramic, timeout720s, concurrency1, pacing30s, retry/replacement0이며 Cursor는 금지다.
 - browser contract는 exact `omd1751`, controller-started local Chrome, attach-only다. exact CSS cascade 계약과 controller provider-zero preplan을 모두 요구하며 focused239 pass/2 skip와 lint가 green이다.
 - 다음은 plan commit 뒤 새 `/private/tmp/omd-css-cascade-reliability-1.9.751` root를 provider-zero prepare/admission하고, exact `omd1751` browser와 preplan3/3을 먼저 닫는 단계다.

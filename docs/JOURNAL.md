@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.751 provider-zero freeze
+- prepare3/3 뒤 source/effective skill hash mismatch로 admission이 fail-close했다.
+- provider/model/Cursor0, execution artifacts0이며 root는 frozen이다.
+- 다음은 effective hash `f46c…`를 잠근 fresh 1.9.752다.
+
 ## 2026-08-08 (Codex) · 1.9.751 preregistered
 - Luna/high only, photographic→architectural→ceramic exact matrix를 잠갔다.
 - exact `omd1751`, preplan3/3, cascade exact-value, retry/replacement0 계약이다.
