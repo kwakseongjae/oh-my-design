@@ -16,8 +16,9 @@ const v8BaselineRoot = "/private/tmp/omd-browser-preflight-reliability-baselines
 const v9BaselineRoot = "/private/tmp/omd-isolated-browser-reliability-baselines-1.9.749-v9";
 const v10BaselineRoot = "/private/tmp/omd-controller-plan-reliability-baselines-1.9.750-v10";
 const v11BaselineRoot = "/private/tmp/omd-css-cascade-reliability-baselines-1.9.751-v11";
+const v12BaselineRoot = "/private/tmp/omd-checkpoint-reliability-baselines-1.9.753-v12";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
-const taskSet = process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v12") ? "v12" : process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -246,7 +247,16 @@ const v11Cases = [
   },
 ];
 
-const cases = taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v12Cases = [
+  {
+    id: "glass-plate-return-v0.1", title: "Glass plate return review", eyebrow: "Image archive · plate return", heading: "Glass-plate return review", recordHeading: "Plate register", recordSummary: "Five supplied plate groups mapped to seven archival boxes.",
+    records: [["PLATE-EMU-1124",["BOX-32910","BOX-32911"]],["PLATE-ORT-1238",["BOX-32912"]],["PLATE-PAN-1351",["BOX-32913","BOX-32914"]],["PLATE-STR-1467",["BOX-32915"]],["PLATE-ARC-1580",["BOX-32916"]]],
+    windows: [["VAULT-A2","07:05–07:25"],["VAULT-C5","09:45–10:05"],["VAULT-F1","12:55–13:15"],["VAULT-H4","15:35–15:55"]], views: [["plates","Plate register"],["windows","Vault windows"],["decision","Return decision"]], toggle: "Include emulsion-note copy", fieldLabel: "Return conservator", validValue: "PLATE-EMU-1124 return review", target: "PLATE-EMU-1124 + BOX-32910", evidence: "5 plate groups · 7 archival boxes · 4 vault windows", state: "Review open", action: "Open return record", footer: "Image archive · supplied return evidence only",
+    unknowns: ["image verified","plate stable","emulsion calibrated","provenance validated","box seal verified","vault accepted","catalog published","return approved"], palette: {canvas:"#EEF1F2",surface:"#FCFEFF",ink:"#273238",muted:"#6A7479",border:"#9FA9AE",primary:"#455E69",accent:"#765B68"}, columns: "repeat(3,288px)", windowColumns: "repeat(4,220px)", decisionMin: "570px", cardRadius: 3, domain: "glass plate-return ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v12" ? v12Cases : taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -333,7 +343,9 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v11"
+  const baselineRoot = taskSet === "v12"
+    ? v12BaselineRoot
+    : taskSet === "v11"
     ? v11BaselineRoot
     : taskSet === "v10"
     ? v10BaselineRoot

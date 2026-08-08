@@ -10,7 +10,7 @@ const contract = JSON.parse(readFileSync(resolve(repoRoot, "benchmarks/ui-resolv
 describe("hidden task coverage audit", () => {
   it("does not confuse the public task inventory with eligible hidden coverage", () => {
     const report = auditHiddenTaskCoverage(contract, resolve(repoRoot, "benchmarks/ui-resolve-bench/tasks"));
-    expect(report.inventory_task_count).toBe(104);
+    expect(report.inventory_task_count).toBe(105);
     expect(report.inventory_locales).toEqual(["en", "ko"]);
     expect(report.eligible_hidden_task_count).toBe(0);
     expect(report.missing_locales).toEqual(["en", "ko", "ja", "zh-cn", "zh-tw"]);
