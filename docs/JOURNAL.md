@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.766 Luna checkpoint pass
+- Luna/high exact3/3, write/timeout/retry/Cursor0으로 authority checkpoint를 지켰다.
+- input457,473(cached355,840), output3,924, wall107,962ms다.
+- full harness/master 노출이 첫 case input249,300을 소비해 context-cost 경고가 생겼다.
+- 다음은 progressive disclosure refactor 후 동일 oracle 재검증이다.
+
 ## 2026-08-08 (Codex) · 1.9.766 canary prepared
 - ready/interview/blocked exact checkpoint oracle 3개를 잠갔다.
 - Codex Luna/high, 1회/셀, retry0, Cursor 금지 계약이다.
