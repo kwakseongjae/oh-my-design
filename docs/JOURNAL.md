@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.784 Luna state-routing checkpoint1
+- folio current가 85/85·UI-Resolved·revision1·proof/candidate exact로 통과했다.
+- browser recovery0, wall152,098ms, tokens535,519, Cursor0이다.
+- root는 checkpoint1이며 completed cell은 재실행하지 않는다.
+- 다음은 slide state-routed 1셀이다.
+
 ## 2026-08-09 (Codex) · 1.9.783 state-routing matrix prepared
 - paired admission6/6과 exact omd1782 preplan6/6이 통과했다.
 - task/skill/rotation/product untouched/browser attach가 모두 attested됐다.

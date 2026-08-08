@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.784",
+  "experiment_id": "council-state-routing-luna-1.9.782",
+  "checkpoint": 1,
+  "status": "checkpointed",
+  "completed_cells": 1,
+  "provider_calls": 1,
+  "cursor_calls": 0,
+  "cell": {
+    "id": "folio-luna-r1-current",
+    "arm": "current",
+    "validity": "valid",
+    "run_status": "complete",
+    "ui_resolved": true,
+    "objective_score": 85,
+    "objective_max": 85,
+    "wall_time_ms": 152098,
+    "tokens": 535519,
+    "product_revision_count": 1,
+    "proof_compliance": true,
+    "browser_recovery_count": 0,
+    "candidate_final_bytes_match": true,
+    "run_result_sha256": "2e4073831fee033500201263aa03d6d48a215f9366d16e1fb32ba4a3a6dd2172",
+    "score_sha256": "260b45d4e388194eb942442c4fb9b5c8e5b8412191acadce8811e744a02dbff1"
+  },
+  "next_cell": "slide-luna-r1-state-routed",
+  "same_root_retry": false
+}
