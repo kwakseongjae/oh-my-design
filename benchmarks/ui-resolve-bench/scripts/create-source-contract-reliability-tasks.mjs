@@ -18,8 +18,9 @@ const v10BaselineRoot = "/private/tmp/omd-controller-plan-reliability-baselines-
 const v11BaselineRoot = "/private/tmp/omd-css-cascade-reliability-baselines-1.9.751-v11";
 const v12BaselineRoot = "/private/tmp/omd-checkpoint-reliability-baselines-1.9.753-v12";
 const v13BaselineRoot = "/private/tmp/omd-council-comparison-baselines-1.9.754-v13";
+const v14BaselineRoot = "/private/tmp/omd-council-state-routing-baselines-1.9.779-v14";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
-const taskSet = process.argv.includes("--v13") ? "v13" : process.argv.includes("--v12") ? "v12" : process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v14") ? "v14" : process.argv.includes("--v13") ? "v13" : process.argv.includes("--v12") ? "v12" : process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -278,7 +279,28 @@ const v13Cases = [
   },
 ];
 
-const cases = taskSet === "v13" ? v13Cases : taskSet === "v12" ? v12Cases : taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v14Cases = [
+  {
+    id: "manuscript-folio-return-v0.1", title: "Manuscript folio return review", eyebrow: "Manuscript archive · folio return", heading: "Manuscript-folio return review", recordHeading: "Folio register", recordSummary: "Four supplied folio groups mapped to six archival boxes.",
+    records: [["FOLIO-ILL-5124",["BOX-76310","BOX-76311"]],["FOLIO-MUS-5238",["BOX-76312"]],["FOLIO-NOT-5351",["BOX-76313","BOX-76314"]],["FOLIO-LTR-5467",["BOX-76315"]]],
+    windows: [["ROOM-B2","08:05–08:25"],["ROOM-E4","11:10–11:30"],["ROOM-H1","14:35–14:55"]], views: [["folios","Folio register"],["windows","Room windows"],["decision","Return decision"]], toggle: "Include collation-note copy", fieldLabel: "Return conservator", validValue: "FOLIO-ILL-5124 return review", target: "FOLIO-ILL-5124 + BOX-76310", evidence: "4 folio groups · 6 archival boxes · 3 room windows", state: "Review open", action: "Open return record", footer: "Manuscript archive · supplied return evidence only",
+    unknowns: ["text verified","folio stable","collation calibrated","provenance validated","box seal verified","room accepted","catalog published","return approved"], palette: {canvas:"#F2F0EC",surface:"#FFFDF9",ink:"#312D28",muted:"#716F6A",border:"#ABA49A",primary:"#665343",accent:"#695D78"}, columns: "repeat(2,390px)", windowColumns: "repeat(3,276px)", decisionMin: "560px", cardRadius: 4, domain: "manuscript folio-return ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "botanical-slide-return-v0.1", title: "Botanical slide return review", eyebrow: "Botany collection · slide return", heading: "Botanical-slide return review", recordHeading: "Slide register", recordSummary: "Five supplied specimen groups mapped to seven slide cabinets.",
+    records: [["SLIDE-FRN-6124",["CABINET-87410","CABINET-87411"]],["SLIDE-MOS-6238",["CABINET-87412"]],["SLIDE-ALG-6351",["CABINET-87413","CABINET-87414"]],["SLIDE-SED-6467",["CABINET-87415"]],["SLIDE-POL-6580",["CABINET-87416"]]],
+    windows: [["LAB-A3","07:15–07:35"],["LAB-D6","10:00–10:20"],["LAB-G2","13:20–13:40"],["LAB-J5","15:55–16:15"]], views: [["slides","Slide register"],["windows","Lab windows"],["decision","Return decision"]], toggle: "Include mount-note copy", fieldLabel: "Return botanist", validValue: "SLIDE-FRN-6124 return review", target: "SLIDE-FRN-6124 + CABINET-87410", evidence: "5 specimen groups · 7 slide cabinets · 4 lab windows", state: "Review open", action: "Open return record", footer: "Botany collection · supplied return evidence only",
+    unknowns: ["species verified","slide stable","mount calibrated","provenance validated","cabinet seal verified","lab accepted","catalog published","return approved"], palette: {canvas:"#EEF2EF",surface:"#FCFFFD",ink:"#29342E",muted:"#6B746F",border:"#9FAAA4",primary:"#496052",accent:"#765B58"}, columns: "repeat(3,289px)", windowColumns: "repeat(4,221px)", decisionMin: "573px", cardRadius: 3, domain: "botanical slide-return ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "magnetic-tape-return-v0.1", title: "Magnetic tape return review", eyebrow: "Media archive · tape return", heading: "Magnetic-tape return review", recordHeading: "Tape register", recordSummary: "Six supplied recording groups mapped to eight preservation cases.",
+    records: [["TAPE-INT-7124",["CASE-98510","CASE-98511"]],["TAPE-RAD-7238",["CASE-98512"]],["TAPE-FLD-7351",["CASE-98513","CASE-98514"]],["TAPE-SPK-7467",["CASE-98515"]],["TAPE-MUS-7580",["CASE-98516"]],["TAPE-ORL-7694",["CASE-98517"]]],
+    windows: [["SUITE-C1","07:00–07:20"],["SUITE-E4","09:40–10:00"],["SUITE-H2","12:50–13:10"],["SUITE-K5","15:30–15:50"]], views: [["tapes","Tape register"],["windows","Suite windows"],["decision","Return decision"]], toggle: "Include leader-note copy", fieldLabel: "Return engineer", validValue: "TAPE-INT-7124 return review", target: "TAPE-INT-7124 + CASE-98510", evidence: "6 recording groups · 8 preservation cases · 4 suite windows", state: "Review open", action: "Open return record", footer: "Media archive · supplied return evidence only",
+    unknowns: ["recording verified","tape stable","playback calibrated","rights validated","case seal verified","suite accepted","catalog published","return approved"], palette: {canvas:"#F0F1F3",surface:"#FEFEFF",ink:"#2C2E35",muted:"#6F727A",border:"#A4A7B0",primary:"#50596C",accent:"#775D62"}, columns: "repeat(3,291px)", windowColumns: "repeat(4,220px)", decisionMin: "575px", cardRadius: 5, domain: "magnetic tape-return ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v14" ? v14Cases : taskSet === "v13" ? v13Cases : taskSet === "v12" ? v12Cases : taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -365,7 +387,9 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v13"
+  const baselineRoot = taskSet === "v14"
+    ? v14BaselineRoot
+    : taskSet === "v13"
     ? v13BaselineRoot
     : taskSet === "v12"
     ? v12BaselineRoot

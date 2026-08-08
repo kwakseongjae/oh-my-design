@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.779 council state-routing fresh tasks
+- folio/slide/tape return 3개를 provider/model/Cursor0으로 생성·finalize했다.
+- raw baseline은 전부75/85, responsive+accessibility only red다.
+- inventory111, focused6/6+lint green; 다음은 exact hash lock 후 Luna/high 2×3 prereg다.
+
 ## 2026-08-08 (Codex) · 1.9.778 frontier snapshot
 - 2.0 10-gate snapshot에 1.9.773–777 routing/council 증거를 반영했다.
 - machine audit는 pass0, partial5, open3, external2로 promotion BLOCK이다.

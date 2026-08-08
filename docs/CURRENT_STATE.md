@@ -4,11 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-08 · 1.9.778 2.0 frontier readiness snapshot 갱신 완료
+- 갱신: 2026-08-09 · 1.9.779 council state-routing fresh denominator 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.779 council state-routing fresh denominator로 manuscript-folio/botanical-slide/magnetic-tape return 3개를 provider/model/Cursor0으로 생성·finalize했다. raw baseline은 전부 75/85이며 responsive+accessibility만 red, inventory111, focused6/6+lint green이다.
+- 다음은 이 task bytes commit을 source authority로 삼아 exact tree/prompt/starter/baseline/source-contract hash를 잠그고, current vs state-routed council-first Luna/high 2×3 단일변수 비교를 사전등록한다.
 - 1.9.778은 2.0 normative10-gate snapshot을 1.9.777 증거까지 갱신했다. machine audit 결과 pass0/10, partial5, open3, external2이며 promotion은 계속 BLOCK이다.
 - routing gate에는 3-host install/update/doctor self-test를, council gate에는 1.9.773 exact3/3·provider3→1 결과를 반영했다. 둘 다 partial 유지이며 작은 checkpoint canary를 UI 품질/반복 end-to-end 증거로 과장하지 않았다.
 - 다음 내부 최우선 gap은 `council-first-human-escalation`의 fresh repeated end-to-end runtime이다. provider 전 unseen tasks·oracle·human-intervention·UI resolved 조건을 고정하고 Luna/high no-retry matrix를 별도 사전등록한다.
