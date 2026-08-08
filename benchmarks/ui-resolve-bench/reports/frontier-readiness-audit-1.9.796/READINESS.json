@@ -1,0 +1,317 @@
+{
+  "schema_version": "0.1",
+  "target_version": "2.0.0",
+  "snapshot_patch": "1.9.796",
+  "required_gate_count": 10,
+  "counts": {
+    "open": 3,
+    "partial": 3,
+    "external": 2,
+    "pass": 2
+  },
+  "promotion_allowed": false,
+  "decision": "BLOCK_2_0_PROMOTION",
+  "unresolved_gate_ids": [
+    "verified-skill-lift",
+    "three-model-positive-lift",
+    "harness-pareto",
+    "hidden-task-coverage",
+    "verified-scale-artifacts",
+    "practitioner-blind-review",
+    "independent-task-audit",
+    "activation-and-seven-day-reuse"
+  ],
+  "external_gate_ids": [
+    "practitioner-blind-review",
+    "independent-task-audit"
+  ],
+  "evidence_refs_checked": 39,
+  "gates": [
+    {
+      "id": "verified-skill-lift",
+      "status": "partial",
+      "evidence": [
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/investigational-product-depot-skill-lift-1.9.689",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/field-sample-browser-fallback-transfer-1.9.691",
+          "exists": true
+        }
+      ],
+      "pass_evidence": {
+        "ref": "benchmarks/ui-resolve-bench/reports/field-sample-browser-fallback-transfer-1.9.691/SUMMARY.final.json",
+        "pointer": "/frontier_gate_pass",
+        "expected": true,
+        "observed": false,
+        "ready": false
+      }
+    },
+    {
+      "id": "three-model-positive-lift",
+      "status": "open",
+      "evidence": [
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/three-model-transfer-1.9.6",
+          "exists": true
+        }
+      ],
+      "pass_evidence": {
+        "ref": "benchmarks/ui-resolve-bench/reports/three-model-transfer-1.9.6/SUMMARY.final.json",
+        "pointer": "/benchmark_status",
+        "expected": "Verified",
+        "observed": "Internal",
+        "ready": false
+      }
+    },
+    {
+      "id": "harness-pareto",
+      "status": "partial",
+      "evidence": [
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/harness-efficiency-replacement-1.9.22",
+          "exists": true
+        }
+      ],
+      "pass_evidence": {
+        "ref": "benchmarks/ui-resolve-bench/reports/harness-efficiency-replacement-1.9.22/SUMMARY.final.json",
+        "pointer": "/frontier_gate_pass",
+        "expected": true,
+        "observed": null,
+        "ready": false
+      }
+    },
+    {
+      "id": "hidden-task-coverage",
+      "status": "open",
+      "evidence": [
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/hidden-task-coverage-audit-1.9.682",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/hidden-task-private-registry-boundary-1.9.683",
+          "exists": true
+        }
+      ],
+      "pass_evidence": {
+        "ref": "benchmarks/ui-resolve-bench/reports/hidden-task-coverage-audit-1.9.682/COVERAGE.json",
+        "pointer": "/gate_pass",
+        "expected": true,
+        "observed": false,
+        "ready": false
+      }
+    },
+    {
+      "id": "verified-scale-artifacts",
+      "status": "open",
+      "evidence": [
+        {
+          "reference": "benchmarks/ui-resolve-bench/scripts/aggregate-results.mjs",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/downloadable-verified-package-boundary-1.9.684",
+          "exists": true
+        }
+      ],
+      "pass_evidence": {
+        "ref": "benchmarks/ui-resolve-bench/reports/downloadable-verified-package-boundary-1.9.684/BOUNDARY.json",
+        "pointer": "/gate_pass",
+        "expected": true,
+        "observed": false,
+        "ready": false
+      }
+    },
+    {
+      "id": "practitioner-blind-review",
+      "status": "external",
+      "evidence": [
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/reviewer-operations-package-1.9.77",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/automated-blind-review-runner-1.9.87",
+          "exists": true
+        }
+      ],
+      "pass_evidence": {
+        "ref": "benchmarks/ui-resolve-bench/reports/reviewer-operations-package-1.9.77/SUMMARY.final.json",
+        "pointer": "/frontier_gate_pass",
+        "expected": true,
+        "observed": null,
+        "ready": false
+      }
+    },
+    {
+      "id": "independent-task-audit",
+      "status": "external",
+      "evidence": [
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/task-contract-mutation-audit-1.9.685",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/scripts/audit-prepared-matrix-admission.mjs",
+          "exists": true
+        }
+      ],
+      "pass_evidence": {
+        "ref": "benchmarks/ui-resolve-bench/reports/task-contract-mutation-audit-1.9.685/AUDIT.json",
+        "pointer": "/gate_pass",
+        "expected": true,
+        "observed": false,
+        "ready": false
+      }
+    },
+    {
+      "id": "activation-and-seven-day-reuse",
+      "status": "partial",
+      "evidence": [
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/time-compressed-activation-reuse-1.9.672",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/local-activation-funnel-1.9.673",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/cli-activation-comparison-1.9.674",
+          "exists": true
+        }
+      ],
+      "pass_evidence": {
+        "ref": "benchmarks/ui-resolve-bench/reports/time-compressed-activation-reuse-1.9.672/ACCEPTANCE.json",
+        "pointer": "/frontier_gate_pass",
+        "expected": true,
+        "observed": null,
+        "ready": false
+      }
+    },
+    {
+      "id": "routing-ownership-reverify",
+      "status": "pass",
+      "evidence": [
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/local-activation-funnel-1.9.673",
+          "exists": true
+        },
+        {
+          "reference": "skills/omd-orchestrator/SKILL.md",
+          "exists": true
+        },
+        {
+          "reference": "skills/omd-apply/SKILL.md",
+          "exists": true
+        },
+        {
+          "reference": "test/unit/cli/installed-harness-context-plan.test.ts",
+          "exists": true
+        },
+        {
+          "reference": "test/unit/cli/doctor-context-planner-self-test.test.ts",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-luna-1.9.795/ACCEPTANCE.json",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-luna-1.9.795/FINDINGS.md",
+          "exists": true
+        }
+      ],
+      "pass_evidence": {
+        "ref": "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-luna-1.9.795/ACCEPTANCE.json",
+        "pointer": "/frontier_gate_passes/routing-ownership-reverify",
+        "expected": true,
+        "observed": true,
+        "ready": true
+      }
+    },
+    {
+      "id": "council-first-human-escalation",
+      "status": "pass",
+      "evidence": [
+        {
+          "reference": "research/harness-design/24-council-first-interview-gate.md",
+          "exists": true
+        },
+        {
+          "reference": "scripts/design-council-prime.cjs",
+          "exists": true
+        },
+        {
+          "reference": "scripts/design-council-reconcile.cjs",
+          "exists": true
+        },
+        {
+          "reference": "scripts/design-council-handoff.cjs",
+          "exists": true
+        },
+        {
+          "reference": "scripts/design-harness-context-plan.cjs",
+          "exists": true
+        },
+        {
+          "reference": "skills/omd-harness/SKILL.md",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/council-first-intake-1.9.733",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/council-intake-calibration-1.9.734",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/council-effectiveness-pilot-1.9.736",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/council-lane-cap-replay-1.9.738",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/compact-council-live-1.9.739",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/maintenance-defer-1.9.740",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/installed-harness-checkpoint-luna-1.9.773/RESULT.json",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/council-state-routing-luna-1.9.782/RESULT.json",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-luna-1.9.795/ACCEPTANCE.json",
+          "exists": true
+        },
+        {
+          "reference": "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-luna-1.9.795/FINDINGS.md",
+          "exists": true
+        }
+      ],
+      "pass_evidence": {
+        "ref": "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-luna-1.9.795/ACCEPTANCE.json",
+        "pointer": "/frontier_gate_passes/council-first-human-escalation",
+        "expected": true,
+        "observed": true,
+        "ready": true
+      }
+    }
+  ]
+}

@@ -25,8 +25,8 @@ const EXPECTED_PASS_EVIDENCE = {
   "practitioner-blind-review": ["benchmarks/ui-resolve-bench/reports/reviewer-operations-package-1.9.77/SUMMARY.final.json", "/frontier_gate_pass", true],
   "independent-task-audit": ["benchmarks/ui-resolve-bench/reports/task-contract-mutation-audit-1.9.685/AUDIT.json", "/gate_pass", true],
   "activation-and-seven-day-reuse": ["benchmarks/ui-resolve-bench/reports/time-compressed-activation-reuse-1.9.672/ACCEPTANCE.json", "/frontier_gate_pass", true],
-  "routing-ownership-reverify": ["benchmarks/ui-resolve-bench/reports/local-activation-funnel-1.9.673/ACCEPTANCE.json", "/frontier_gate_pass", true],
-  "council-first-human-escalation": ["benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735/ACCEPTANCE.json", "/frontier_gate_pass", true],
+  "routing-ownership-reverify": ["benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-luna-1.9.795/ACCEPTANCE.json", "/frontier_gate_passes/routing-ownership-reverify", true],
+  "council-first-human-escalation": ["benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-luna-1.9.795/ACCEPTANCE.json", "/frontier_gate_passes/council-first-human-escalation", true],
 };
 
 function assertNonEmptyString(value, label) {

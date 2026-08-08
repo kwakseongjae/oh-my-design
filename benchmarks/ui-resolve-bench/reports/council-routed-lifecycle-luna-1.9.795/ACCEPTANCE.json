@@ -87,6 +87,10 @@
   },
   "reliability": "2/2",
   "overall_gate": true,
+  "frontier_gate_passes": {
+    "routing-ownership-reverify": true,
+    "council-first-human-escalation": true
+  },
   "visual_review": "not_run",
   "claim_scope": "fresh routed lifecycle acceptance only; not model ranking or 2.0 promotion by itself"
 }

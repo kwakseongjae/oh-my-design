@@ -11,16 +11,16 @@ describe("frontier non-local execution boundary", () => {
   it("admits only the explicitly authorized non-local gate", () => {
     const report = auditFrontierExecutionBoundary(boundary, readiness, repoRoot);
     expect(report).toMatchObject({
-      unresolved_gate_count: 10,
+      unresolved_gate_count: 8,
       locally_closable_gate_ids: [],
-      local_preparation_counts: { complete: 8, partial: 2 },
+      local_preparation_counts: { complete: 6, partial: 2 },
       local_only_mode: false,
       authorized_action_classes: ["remote-model-execution"],
       active_gate_ids: ["verified-skill-lift"],
       hard_pause_required: false,
       decision: "RUN_AUTHORIZED_NON_LOCAL_GATE_EVIDENCE",
     });
-    expect(report.non_local_action_classes["remote-model-execution"]).toHaveLength(5);
+    expect(report.non_local_action_classes["remote-model-execution"]).toHaveLength(3);
     expect(report.non_local_action_classes["external-practitioner-panel"]).toEqual(["practitioner-blind-review"]);
   });
 

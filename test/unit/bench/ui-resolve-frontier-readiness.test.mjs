@@ -13,9 +13,9 @@ describe("2.0 frontier readiness audit", () => {
       required_gate_count: 10,
       promotion_allowed: false,
       decision: "BLOCK_2_0_PROMOTION",
-      counts: { open: 3, partial: 5, external: 2, pass: 0 },
+      counts: { open: 3, partial: 3, external: 2, pass: 2 },
     });
-    expect(report.unresolved_gate_ids).toHaveLength(10);
+    expect(report.unresolved_gate_ids).toHaveLength(8);
     expect(report.external_gate_ids).toEqual(["practitioner-blind-review", "independent-task-audit"]);
     expect(report.evidence_refs_checked).toBeGreaterThanOrEqual(14);
   });

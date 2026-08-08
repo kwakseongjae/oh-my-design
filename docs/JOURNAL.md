@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.796 readiness sync
+- routing ownership와 council human escalation 2개 gate를 pass로 승격했다.
+- readiness는 pass2·partial3·open3·external2, 2.0은 계속 BLOCK이다.
+- fresh lifecycle artifact를 machine pass predicate로 고정했다.
+- 다음 내부 우선순위는 verified skill lift다.
+
 ## 2026-08-09 (Codex) · 1.9.795 lifecycle Luna complete
 - live route3/3, implementation2/2 각85/85로 통과했다.
 - lane4+owner2=provider6, blocker provider/edit0+starter exact다.

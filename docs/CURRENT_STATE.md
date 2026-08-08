@@ -4,11 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.795 council routed lifecycle Luna/high 완료
+- 갱신: 2026-08-09 · 1.9.796 frontier readiness sync 진행
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.796은 1.9.795 fresh lifecycle 증거로 `routing-ownership-reverify`와 `council-first-human-escalation`을 pass로 승격한다. readiness는 pass2·partial3·open3·external2이며 전체 2.0 promotion은 계속 BLOCK이다.
+- 다음 내부 최우선은 `verified-skill-lift`다. strongest eligible frontier skill과 current-epoch fresh paired reliability를 먼저 고정하며 hidden scale·three-model lift는 그 뒤다.
 - 1.9.795 live는 routed lifecycle route3/3·implementation2/2(각85/85)로 통과했다. lane4+owner2=provider6, pre-implementation write0, blocker provider/edit0+starter exact, unplanned question/retry/replacement/fallback/Cursor0이다.
 - 두 구현 셀은 revision1·static closure1·measured exact `omd1795` browser1·recovery0·candidate/final byte exact다. 합산 input3,459,785(cached3,210,752), output32,685, reasoning15,254, wall715,027ms이며 descriptive-only다.
 - 이 결과는 fresh interview/block/advisory lifecycle denominator를 닫지만 subjective preference나 전체 2.0 gate를 단독 승격하지 않는다. 다음은 normative readiness snapshot에 반영하고 다음 내부 gap을 선정한다.
