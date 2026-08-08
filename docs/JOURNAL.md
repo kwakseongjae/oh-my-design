@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.759 preservation mode prepared
+- lane claim에 preserve-existing/choose-new/unknown 분류를 강제했다.
+- defer는 preserve-existing만 accept하며 conservative reconcile은 유지했다.
+- provider-zero lane2, provider/model/Cursor0, unit8/8 green이다.
+- checkpoint 뒤 Luna/high exact lane2가 다음이다.
+
 ## 2026-08-08 (Codex) · 1.9.758 selectivity fail
 - Luna/high lane2/2 clean, mandatory pricing 보존, 질문4→3이다.
 - correct defer1/3이라 gate fail; product-context가 기존 audience/CTA 보존을 새 결정으로 오인했다.

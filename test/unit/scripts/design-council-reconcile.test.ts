@@ -45,12 +45,14 @@ describe('design-council-reconcile', () => {
         : decision.disposition === 'blocked' ? 'blocked' : 'defer';
       const claims = [{
         decision_id: decision.id,
+        decision_mode: allowedRecommendation === 'defer' ? 'preserve-existing' : 'choose-new',
         recommendation: allowedRecommendation,
         evidence: ['task.md'],
         reason: 'Task evidence preserves the existing disposition.',
       }];
       if (lane === plan.selected_lanes[0]) claims.push({
         decision_id: decision.id,
+        decision_mode: 'choose-new',
         recommendation: 'auto',
         evidence: ['task.md'],
         reason: 'Forbidden promotion attempt.',
@@ -71,6 +73,34 @@ describe('design-council-reconcile', () => {
     });
     expect(reconciled.decisions.every((item: { disposition: string; effective_disposition: string }) =>
       item.disposition !== 'auto' || item.effective_disposition === 'auto')).toBe(true);
+  });
+
+  it('rejects a defer recommendation that does not prove preservation mode', () => {
+    const { root, run } = preparedRun();
+    const councilDir = join(run, 'council');
+    const plan = JSON.parse(readFileSync(join(councilDir, 'dispatch-plan.json'), 'utf8'));
+    const lanesDir = join(councilDir, 'lanes');
+    mkdirSync(lanesDir, { recursive: true });
+
+    for (const lane of plan.selected_lanes) {
+      writeFileSync(join(lanesDir, `${lane.id}.json`), JSON.stringify({
+        lane_id: lane.id,
+        claims: [{
+          decision_id: lane.decision_ids[0],
+          decision_mode: 'unknown',
+          recommendation: 'defer',
+          evidence: ['task.md'],
+          reason: 'Unsupported deferral mode.',
+        }],
+      }));
+    }
+
+    const result = spawnSync(process.execPath, [reconcile, root, run], { encoding: 'utf8' });
+    expect(result.status, result.stderr).toBe(0);
+    const debate = JSON.parse(readFileSync(join(councilDir, 'debate.json'), 'utf8'));
+    expect(debate.accepted_claims).toHaveLength(0);
+    expect(debate.rejected_claims).toHaveLength(plan.selected_lanes.length);
+    expect(debate.rejected_claims.every((claim: { rejection: string }) => claim.rejection === 'forbidden-disposition-expansion')).toBe(true);
   });
 
   it('fails closed when an automatic decision changes after planning', () => {

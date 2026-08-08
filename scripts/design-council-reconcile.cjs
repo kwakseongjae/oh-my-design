@@ -47,12 +47,17 @@ for (const lane of plan.selected_lanes) {
     const evidence = Array.isArray(claim.evidence) ? claim.evidence : [];
     const cited = evidence.length > 0 && evidence.every(evidenceExists);
     const allowedRecommendations = plan.transition_policy[decision?.disposition] || [];
-    const transitionAllowed = allowedDecision && allowedRecommendations.includes(claim.recommendation);
+    const decisionMode = ['preserve-existing', 'choose-new', 'unknown'].includes(claim.decision_mode)
+      ? claim.decision_mode
+      : 'unknown';
+    const modeSupportsTransition = claim.recommendation !== 'defer' || decisionMode === 'preserve-existing';
+    const transitionAllowed = allowedDecision && allowedRecommendations.includes(claim.recommendation) && modeSupportsTransition;
     const autoValueStable = decision?.disposition !== 'auto'
       || (claim.recommendation === 'keep' && claim.proposed_value === decision.proposed_value);
     const normalized = {
       lane_id: lane.id,
       decision_id: claim.decision_id,
+      decision_mode: decisionMode,
       recommendation: claim.recommendation,
       proposed_value: claim.proposed_value ?? null,
       evidence,
