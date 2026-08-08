@@ -3,11 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `fa18d12d`의 1.9.748 isolated-browser admission (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-06 · 1.9.748 사용자 요청 중단 및 재개 지점 동결
+- 기준 커밋: `9a351591`의 Cursor fail-close guard (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-08 · 1.9.749 provider-zero 3-task lock 준비
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.749 분모를 geology(미노출), herbarium(미노출), fresh photographic negative-return으로 잠갔다. manuscript는 1.9.748에서 Luna에 노출됐으므로 제외하며 1.9.748 root는 재개하지 않는다.
+- fresh task raw baseline은75/85, responsive+accessibility만 red이고 provider/model call0이다. inventory102와 focused hidden-coverage2/2가 green이다.
+- 이번 실행은 Cursor를 전면 금지한다. 다음은 exact task bytes를 commit한 뒤 Codex `gpt-5.6-luna`/high 전용 1.9.749 plan과 새 isolated named browser/root를 사전등록하는 단계다.
 
 - 사용자 요청으로 1.9.748 첫 manuscript 셀을 중단했다. 모델은 노출됐고 candidate까지 작성했지만 `run-result.json`은 없으며 objective/proof 결과도 없다. 실행기·provider·전용 Chrome 프로세스는 모두 종료됐다.
 - retry/replacement0 계약상 같은 root/셀을 재실행할 수 없다. stale lease와 불완전 execution-state는 변조하지 않고 증거로 보존했으며 `reports/isolated-browser-reliability-canary-1.9.748/PAUSE.json`이 정확한 해시와 상태를 기록한다.

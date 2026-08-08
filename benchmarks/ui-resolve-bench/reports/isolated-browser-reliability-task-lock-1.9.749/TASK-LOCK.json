@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.749",
+  "experiment_id": "isolated-browser-reliability-task-lock-1.9.749",
+  "status": "TWO_UNEXPOSED_TASKS_PLUS_ONE_FRESH_TASK_LOCKED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "cursor_execution_allowed": false,
+  "runtime_policy": "Codex gpt-5.6-luna only",
+  "skill": {
+    "source_commit": "b174309b45b19a44460877a37ed21fb5032efa4a",
+    "effective_council_tree_sha256": "b792a4e8bcd5b594cbd864bfb69fbf07f53c98338f32a4aa8b63adaa5d80cb9e",
+    "browser_proof": "scripts/reflow-browser-runner.sh",
+    "provider_mutable": false
+  },
+  "tasks": [
+    {
+      "task_id": "geology-section-loan-v0.1",
+      "provenance": "unexposed-frozen-cell-from-1.9.747-and-1.9.748",
+      "prior_model_exposures": 0,
+      "task_tree_sha256": "82d342d2a73877ff7c70fc9b2790bfe417dd00cd603891f6d6b9231aa6486a4a",
+      "prompt_sha256": "aba9b3fc8603314f33a7a013ca5b04af8fbf400e88e3f6882f15411b745fa5fb",
+      "starter_sha256": "296b3c90c008b025c72d2c42842a254b2d319f7c7ff7dbdbbff83230e8da37cc",
+      "baseline_evidence_sha256": "42276f9de4418db6317259d6ef616c94430fddb48edffb0bd7172929f83a48db",
+      "source_contract_sha256": "11c22f1abec6a62d782bc0a77d408a20a817411ff2a6a8b1c97a7c9363c3f7f3"
+    },
+    {
+      "task_id": "herbarium-sheet-return-v0.1",
+      "provenance": "unexposed-frozen-cell-from-1.9.748",
+      "prior_model_exposures": 0,
+      "task_tree_sha256": "ef4426bf7518da2a9f12ec5262b9aacf7b8c04d944715140d33389e7c5ce3475",
+      "prompt_sha256": "0a0ea1a9a863e1834e79ec50bfccd0269d2f9a4381891d30a42d9bdcf7769afe",
+      "starter_sha256": "e390c5d0a31dcad030bcb0d456bd155500b4b2ca11a8494ce3c66e622b5ded9c",
+      "baseline_evidence_sha256": "8f0ef39e3d55913df08ac294bc127a75e3fe3d0ac3ec2c61ddc01a97b2cfcc97",
+      "source_contract_sha256": "d463dd937d86eab3f8a2848f33299065a01639376efd54e3b9e9234b64ec0972"
+    },
+    {
+      "task_id": "photographic-negative-return-v0.1",
+      "provenance": "fresh-provider-zero-1.9.749",
+      "prior_model_exposures": 0,
+      "task_tree_sha256": "44fdee6d4361f56b3808ea6baa436afdd0fa03a5dddaf5437d9e3785872481e7",
+      "prompt_sha256": "9b98dd4ca43050ec07966090257b80b1cf891ef8acb164471a93bdee4590f6af",
+      "starter_sha256": "20737914abb87ee40eb96e6e07fb777fb985101176dd4c9668a28180a4536a0b",
+      "baseline_evidence_sha256": "19a684478dcb4c995ca43561e9621e15c3a626500fdbbacfa13574dde2a3f47a",
+      "source_contract_sha256": "54c6ea5a3bb21233be73b0a5c73cafefbbc44adf308aef79e34c91d32c168ff2"
+    }
+  ],
+  "raw_baseline": {
+    "scores": [75, 75, 75],
+    "objective_max": 85,
+    "failed_critical_gates": ["accessibility", "responsive"],
+    "coverage_complete": true
+  },
+  "acceptance": {
+    "required_objective_score": "85/85",
+    "required_resolution": true,
+    "required_proof_compliance": true,
+    "required_reliability": "3/3",
+    "retry": 0,
+    "replacement": 0,
+    "hard_stop_on_lifecycle_failure": true
+  },
+  "validation": {
+    "fresh_provider_free_baseline": "pass",
+    "task_inventory": 102,
+    "provider_calls": 0
+  },
+  "execution_allowed": false,
+  "next_gate": "Commit exact task bytes before preregistering a new isolated named-browser root."
+}

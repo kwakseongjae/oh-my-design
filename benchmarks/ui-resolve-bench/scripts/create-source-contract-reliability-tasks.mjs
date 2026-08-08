@@ -13,8 +13,9 @@ const v5BaselineRoot = "/private/tmp/omd-frontier-comparison-baselines-1.9.732-v
 const v6BaselineRoot = "/private/tmp/omd-council-product-baselines-1.9.742-v6";
 const v7BaselineRoot = "/private/tmp/omd-terminal-runner-reliability-baselines-1.9.746-v7";
 const v8BaselineRoot = "/private/tmp/omd-browser-preflight-reliability-baselines-1.9.748-v8";
+const v9BaselineRoot = "/private/tmp/omd-isolated-browser-reliability-baselines-1.9.749-v9";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
-const taskSet = process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -216,7 +217,16 @@ const v8Cases = [
   },
 ];
 
-const cases = taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v9Cases = [
+  {
+    id: "photographic-negative-return-v0.1", title: "Photographic negative return review", eyebrow: "Photographic archive · negative return", heading: "Film-negative return review", recordHeading: "Negative register", recordSummary: "Four supplied negative groups mapped to six archival envelopes.",
+    records: [["NEG-GLS-7124",["ENVELOPE-98610","ENVELOPE-98611"]],["NEG-STR-7238",["ENVELOPE-98612"]],["NEG-PRT-7351",["ENVELOPE-98613","ENVELOPE-98614"]],["NEG-ARC-7467",["ENVELOPE-98615"]]],
+    windows: [["VAULT-N2","08:10–08:30"],["VAULT-E5","11:05–11:25"],["VAULT-S1","14:35–14:55"]], views: [["negatives","Negative register"],["windows","Vault windows"],["decision","Return decision"]], toggle: "Include sleeve-note copy", fieldLabel: "Return registrar", validValue: "NEG-GLS-7124 return review", target: "NEG-GLS-7124 + ENVELOPE-98610", evidence: "4 negative groups · 6 archival envelopes · 3 vault windows", state: "Review open", action: "Open return record", footer: "Photographic archive · supplied return evidence only",
+    unknowns: ["image verified","negative stable","density calibrated","provenance validated","envelope seal verified","vault accepted","catalog published","return approved"], palette: {canvas:"#EDF3F4",surface:"#FCFEFF",ink:"#2E2B33",muted:"#69757A",border:"#A49EA8",primary:"#544C62",accent:"#765B4D"}, columns: "repeat(2,389px)", windowColumns: "repeat(3,275px)", decisionMin: "558px", cardRadius: 3, domain: "photographic negative-return ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -303,7 +313,9 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v8"
+  const baselineRoot = taskSet === "v9"
+    ? v9BaselineRoot
+    : taskSet === "v8"
     ? v8BaselineRoot
     : taskSet === "v7"
     ? v7BaselineRoot
