@@ -9,6 +9,8 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.756 mineral council-on 둘째 셀은85/85, proof true, revision1, candidate/final exact, recovery/duplicate/Cursor0으로 clean pass했다. wall189,076ms, tokens610,167이며 pacing은30,006.08ms다.
+- matrix checkpoint2다. 다음은 commit 뒤 cylinder council-off exact1회이며, 현재 arm별 proof는 current0/1, council1/1이라 task-paired 결론은 아직 불가하다.
 - 1.9.756 album council-off 첫 셀은 objective85/85, revision1, candidate/final exact, recovery/duplicate/Cursor0이지만 desktop decision context가 full-row가 아니어서 `all_registered_carriers_closed=false`; promotion proof는 fail이다. wall262,928ms, tokens880,352다.
 - proof trace lifecycle은 compliance true이고 사전등록 정책이 objective/proof failure를 기록 후 계속하도록 허용하므로 root는 checkpoint1이다. 다음은 checkpoint commit 뒤 mineral council-on exact1회이며, 일반 council 우위 주장은 아직 불가하다.
 - 1.9.756 fresh root는 `paired-cross-task-comparison` admission6/6과 exact `omd1756` controller preplan6/6이 green이다. 전 셀 product byte 불변, attempt1, attach-existing, launch false이며 provider/model/Cursor0이다.

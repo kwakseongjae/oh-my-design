@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.756 checkpoint2 pass
+- mineral council-on은85/85, proof true, revision1, candidate exact다.
+- wall189,076ms, tokens610,167, pacing30,006ms, recovery/duplicate/Cursor0이다.
+- commit 뒤 cylinder council-off exact1회가 다음이다.
+
 ## 2026-08-08 (Codex) · 1.9.756 checkpoint1 proof fail
 - album council-off는85/85·revision1·candidate exact지만 desktop decision context가 full-row가 아니어서 proof fail이다.
 - lifecycle compliance는 clean, wall262,928ms, tokens880,352, recovery/duplicate/Cursor0이다.
