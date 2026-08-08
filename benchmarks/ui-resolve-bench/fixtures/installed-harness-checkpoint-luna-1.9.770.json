@@ -1,0 +1,42 @@
+{
+  "experiment_id": "installed-harness-checkpoint-luna-1.9.770",
+  "runtime": "codex",
+  "model": "gpt-5.6-luna",
+  "effort": "high",
+  "timeout_seconds": 300,
+  "retry_budget": 0,
+  "cases": [
+    {
+      "id": "ready-existing-surface",
+      "task": "기존 CLI 설치 카드를 개선해줘",
+      "ctx": {
+        "surface_inventory": [{ "path": "docs/getting-started.tsx", "kind": "docs" }],
+        "audience_hypothesis": [{ "label": "개발자", "confidence": 0.88, "evidence": "product brief" }],
+        "wow_moment_candidates": [{ "label": "Install flow", "evidence": "docs/getting-started.tsx" }]
+      },
+      "expected": { "action": "propose_plan", "question_ids": [], "blocking_ids": [], "may_proceed": true }
+    },
+    {
+      "id": "user-answerable-pricing",
+      "task": "새 서비스 화면을 디자인하고 가격을 알아서 결정해줘.",
+      "ctx": { "surface_inventory": [], "audience_hypothesis": [], "wow_moment_candidates": [] },
+      "expected": {
+        "action": "relay_questions",
+        "question_ids": ["primary-audience", "exit-scope", "primary-cta", "regulated-commitment"],
+        "blocking_ids": [],
+        "may_proceed": false
+      }
+    },
+    {
+      "id": "external-brand-source",
+      "task": "Create a single screen exactly matching the official Acme design system.",
+      "ctx": { "surface_inventory": [], "audience_hypothesis": [], "wow_moment_candidates": [] },
+      "expected": {
+        "action": "halt_blocked",
+        "question_ids": [],
+        "blocking_ids": ["brand-reference-commitment"],
+        "may_proceed": false
+      }
+    }
+  ]
+}

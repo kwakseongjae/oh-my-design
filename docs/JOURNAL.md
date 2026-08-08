@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.770 repeat prepared
+- 동일 exact3 Luna/high checkpoint repeat를 fresh fixture로 잠갔다.
+- provider-zero3/3, provider/model/Cursor0; retry0이다.
+- master22,378B(-39.94%)와 sidecar/helper hashes를 고정했다.
+- 다음은 Luna/high 각1회 실행이다.
+
 ## 2026-08-08 (Codex) · 1.9.769 thin master kernel
 - master를 37,261B→22,378B(-39.9%)로 줄이고 phase detail을 sidecar 2개로 분리했다.
 - mandatory checkpoint와 authority/unknown-route 계약은 유지했다.

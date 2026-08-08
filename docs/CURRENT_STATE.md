@@ -4,11 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `9a351591`의 Cursor fail-close guard (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-08 · 1.9.769 thin master kernel 검증 완료
+- 갱신: 2026-08-08 · 1.9.770 thin-master Luna repeat 준비 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.770은 1.9.768과 task/oracle/order/model/effort/prompt가 동일한 exact3 repeat를 fresh fixture로 잠갔다. provider-zero3/3, provider/model/Cursor0이다.
+- candidate master는22,378B(-39.94%)이며 legacy/execution sidecar를 포함한 fixture/runner/harness/master/helper hash를 잠갔다. 다음은 Luna/high 각1회, concurrency1, retry0이다.
 - 1.9.769는 `agents/omd-master.md`를 authority/handoff kernel과 conditional phase sidecar 2개로 분리했다. 37,261B/619줄→22,378B/381줄(-39.9%/-38.4%)이다.
 - legacy/URL/Figma/production은 `master-legacy-production.md`, plan/design/ship/archive는 `master-execution-phases.md`에서 해당 상태일 때만 읽는다. mandatory checkpoint #1/#2/#3와 unknown-route fail-close는 보존됐다.
 - Claude/Codex/OpenCode 설치본의 sidecar 경로를 각 채널 native root로 정규화했다. doctor/install/workflow/catalog 88/88, lint/diff-check green, provider/Cursor0이다.
