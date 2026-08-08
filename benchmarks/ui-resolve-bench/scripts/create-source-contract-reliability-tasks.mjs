@@ -17,8 +17,9 @@ const v9BaselineRoot = "/private/tmp/omd-isolated-browser-reliability-baselines-
 const v10BaselineRoot = "/private/tmp/omd-controller-plan-reliability-baselines-1.9.750-v10";
 const v11BaselineRoot = "/private/tmp/omd-css-cascade-reliability-baselines-1.9.751-v11";
 const v12BaselineRoot = "/private/tmp/omd-checkpoint-reliability-baselines-1.9.753-v12";
+const v13BaselineRoot = "/private/tmp/omd-council-comparison-baselines-1.9.754-v13";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
-const taskSet = process.argv.includes("--v12") ? "v12" : process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v13") ? "v13" : process.argv.includes("--v12") ? "v12" : process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -256,7 +257,28 @@ const v12Cases = [
   },
 ];
 
-const cases = taskSet === "v12" ? v12Cases : taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v13Cases = [
+  {
+    id: "photograph-album-return-v0.1", title: "Photograph album return review", eyebrow: "Social-history archive · album return", heading: "Photograph-album return review", recordHeading: "Album register", recordSummary: "Four supplied album groups mapped to six archival cases.",
+    records: [["ALBUM-FAM-2124",["CASE-43010","CASE-43011"]],["ALBUM-CIV-2238",["CASE-43012"]],["ALBUM-IND-2351",["CASE-43013","CASE-43014"]],["ALBUM-TRV-2467",["CASE-43015"]]],
+    windows: [["VAULT-B3","08:10–08:30"],["VAULT-E6","11:15–11:35"],["VAULT-H2","14:45–15:05"]], views: [["albums","Album register"],["windows","Vault windows"],["decision","Return decision"]], toggle: "Include interleaf-note copy", fieldLabel: "Return archivist", validValue: "ALBUM-FAM-2124 return review", target: "ALBUM-FAM-2124 + CASE-43010", evidence: "4 album groups · 6 archival cases · 3 vault windows", state: "Review open", action: "Open return record", footer: "Social-history archive · supplied return evidence only",
+    unknowns: ["sitter verified","album stable","interleaf calibrated","provenance validated","case seal verified","vault accepted","catalog published","return approved"], palette: {canvas:"#F1F0ED",surface:"#FFFDF9",ink:"#312E29",muted:"#706F6B",border:"#AAA49C",primary:"#625548",accent:"#675D78"}, columns: "repeat(2,389px)", windowColumns: "repeat(3,275px)", decisionMin: "558px", cardRadius: 4, domain: "photograph album-return ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "mineral-drawer-return-v0.1", title: "Mineral drawer return review", eyebrow: "Mineralogy collection · drawer return", heading: "Mineral-drawer return review", recordHeading: "Specimen register", recordSummary: "Five supplied mineral groups mapped to seven cabinet drawers.",
+    records: [["MIN-QUA-3124",["DRAWER-54110","DRAWER-54111"]],["MIN-FEL-3238",["DRAWER-54112"]],["MIN-MIC-3351",["DRAWER-54113","DRAWER-54114"]],["MIN-CAL-3467",["DRAWER-54115"]],["MIN-GAR-3580",["DRAWER-54116"]]],
+    windows: [["CABINET-A2","07:20–07:40"],["CABINET-D5","10:05–10:25"],["CABINET-F1","13:25–13:45"],["CABINET-J4","16:00–16:20"]], views: [["specimens","Specimen register"],["windows","Cabinet windows"],["decision","Return decision"]], toggle: "Include mount-note copy", fieldLabel: "Return curator", validValue: "MIN-QUA-3124 return review", target: "MIN-QUA-3124 + DRAWER-54110", evidence: "5 mineral groups · 7 cabinet drawers · 4 cabinet windows", state: "Review open", action: "Open return record", footer: "Mineralogy collection · supplied return evidence only",
+    unknowns: ["species verified","specimen stable","hardness calibrated","provenance validated","drawer seal verified","cabinet accepted","catalog published","return approved"], palette: {canvas:"#EEF2F1",surface:"#FCFFFE",ink:"#283432",muted:"#697572",border:"#9EAAA7",primary:"#45615B",accent:"#785D55"}, columns: "repeat(3,288px)", windowColumns: "repeat(4,220px)", decisionMin: "572px", cardRadius: 3, domain: "mineral drawer-return ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "wax-cylinder-return-v0.1", title: "Wax cylinder return review", eyebrow: "Sound archive · cylinder return", heading: "Wax-cylinder return review", recordHeading: "Cylinder register", recordSummary: "Six supplied recording groups mapped to eight storage canisters.",
+    records: [["CYL-VOX-4124",["CAN-65210","CAN-65211"]],["CYL-MUS-4238",["CAN-65212"]],["CYL-ORL-4351",["CAN-65213","CAN-65214"]],["CYL-ENV-4467",["CAN-65215"]],["CYL-LNG-4580",["CAN-65216"]],["CYL-CER-4694",["CAN-65217"]]],
+    windows: [["ROOM-C2","07:10–07:30"],["ROOM-E5","09:50–10:10"],["ROOM-G1","13:00–13:20"],["ROOM-K4","15:40–16:00"]], views: [["cylinders","Cylinder register"],["windows","Room windows"],["decision","Return decision"]], toggle: "Include playback-note copy", fieldLabel: "Return engineer", validValue: "CYL-VOX-4124 return review", target: "CYL-VOX-4124 + CAN-65210", evidence: "6 recording groups · 8 canisters · 4 room windows", state: "Review open", action: "Open return record", footer: "Sound archive · supplied return evidence only",
+    unknowns: ["recording verified","cylinder stable","speed calibrated","provenance validated","canister seal verified","room accepted","catalog published","return approved"], palette: {canvas:"#F0F1F3",surface:"#FEFEFF",ink:"#2B2D35",muted:"#6E717A",border:"#A3A6B0",primary:"#4E566C",accent:"#765C61"}, columns: "repeat(3,290px)", windowColumns: "repeat(4,220px)", decisionMin: "574px", cardRadius: 5, domain: "wax cylinder-return ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v13" ? v13Cases : taskSet === "v12" ? v12Cases : taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -343,7 +365,9 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v12"
+  const baselineRoot = taskSet === "v13"
+    ? v13BaselineRoot
+    : taskSet === "v12"
     ? v12BaselineRoot
     : taskSet === "v11"
     ? v11BaselineRoot

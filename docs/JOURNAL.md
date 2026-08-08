@@ -5527,6 +5527,12 @@
 - Carried forward provider-zero geology/herbarium and added fresh photographic negative-return.
 - Fresh raw baseline is 75/85 with responsive+accessibility red; inventory102, focused2/2.
 - Next: commit exact bytes, then preregister Codex Luna/high with a new isolated named browser/root.
+## 2026-08-08 (Codex) · 1.9.754 fresh comparative tasks
+- photograph-album/mineral-drawer/wax-cylinder task를 provider-zero로 추가했다.
+- raw baseline은 모두75/85, responsive+accessibility only red다.
+- inventory108, focused74/74+lint green; Cursor/model call0이다.
+- 다음은 exact bytes commit 뒤 Luna council-off/on paired lock이다.
+
 ## 2026-08-08 (Codex) · 1.9.753 Reliability@3 complete
 - Luna/high 3셀 모두85/85·revision1·proof/candidate exact로 통과했다.
 - checkpoint continuation0→1→2→3, pacing30s×2, recovery/duplicate/Cursor0이다.

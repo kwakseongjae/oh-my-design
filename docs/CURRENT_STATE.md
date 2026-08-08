@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.754 fresh comparative denominator용 provider-zero task3개를 추가·finalize했다: photograph-album/mineral-drawer/wax-cylinder return. 전부 raw75/85이며 responsive+accessibility만 red, provider/model/Cursor0, inventory108이다.
+- v13 generator와 inventory assertions를108로 동기화했고 focused74/74+lint가 green이다. 다음은 exact task bytes를 commit한 뒤 council-off/on paired lock을 사전등록한다.
+
 - 1.9.753 checkpoint-continuation Reliability@3가 Codex-native `gpt-5.6-luna`/high로 3/3 통과했다. architectural/ceramic/glass 모두85/85, revision1, proof true, candidate/final exact, recovery/duplicate/Cursor0이다.
 - 세 invocation은 정확히0→1→2→3으로 진행됐고 pacing은30,004.49ms/30,002.70ms다. wall 합542,960ms, tokens 합2,140,479이며 완료 root 재호출은 provider0 상태에서 `not resumable: complete`로 fail-close했다.
 - 결과는 `reports/checkpoint-reliability-canary-1.9.753/{CHECKPOINT-3,RESULT,FINDINGS}`에 동결했다. ranking/model·skill superiority/2.0 단독 promotion 근거는 아니다. 다음은 이 계약을 fresh comparative denominator에 적용하는 단계다.
