@@ -4,11 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.809 frontier skill qualification checkpoint 10 완료
+- 갱신: 2026-08-09 · 1.9.810 frontier skill qualification checkpoint 11 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.810 checkpoint11 `seed-luna-r1-impeccable`은 valid complete지만79/85·UI-Resolved false다. revision1·static closure3(실패1)·browser0·proof false, wall244,357ms·tokens243,744다.
+- seed task4/4는 OmD85/Anthropic81/Impeccable79/UIUX73이며 OmD만 UI-Resolved+proof compliant다. Impeccable은 OmD 대비 objective-6·wall-4.03%·tokens-62.53%의 cost advantage를 보였다. 마지막 셀은 `score-luna-r1-uiux`다.
 - 1.9.809 checkpoint10 `astro-luna-r1-anthropic`은 valid complete지만73/85·UI-Resolved false다. revision4·static closure19(실패4)·browser3·recovery4·proof false, wall460,983ms·tokens1,872,641이다.
 - astro task4/4는 OmD85/Impeccable77/Anthropic73/UIUX70이며 OmD만 UI-Resolved+proof compliant다. 이 task-local 결과도 qualification evidence일 뿐 public ranking은 아니다. 다음은 `seed-luna-r1-impeccable`이다.
 - 1.9.808 checkpoint9 `score-luna-r1-omd`는85/85·UI-Resolved·revision1·static closure1·browser proof1·candidate exact로 통과했다. wall212,581ms·tokens956,605, recovery0이다.
