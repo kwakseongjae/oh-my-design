@@ -7257,6 +7257,12 @@ describe("UI-Resolve Bench sandbox preparation", () => {
 
   it("pins current-epoch frontier skill snapshots without rewriting historical arms", () => {
     expect(competitors.observed_at).toBe("2026-08-09");
+    expect(competitors.variants["omd-portable-1.9.799-current"]).toMatchObject({
+      commit: "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      source_tree_sha256: "8118f827d711f8dc9d2ab848d4b3ded3ec562c7427358a175a456c7e0e097dcd",
+      source_path: "skills/omd-apply",
+      license: "MIT",
+    });
     expect(competitors.variants["anthropic-frontend-design-2026-08"]).toMatchObject({
       commit: "f17010c9bb483898c1d9c9f42dde2b3a98889434",
       source_tree_sha256: "15a1fec6da5799be52a4c142157fa6f3e4e47b4c8f87354332914caa50e66465",

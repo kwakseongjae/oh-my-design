@@ -5914,3 +5914,8 @@
 - checkpoint continuation0→1→2→3, pacing30s×2, recovery/duplicate/Cursor0이다.
 - wall542,960ms, tokens2,140,479이며 complete root replay는 provider0 fail-close다.
 - 다음은 fresh comparative denominator이며 이 결과만으로 2.0 승격하지 않는다.
+## 2026-08-09 (Codex) · 1.9.799 frontier qualification preregistration
+- exact current OmD+경쟁3 × fresh3의 Luna/high 12셀을 사전등록했다.
+- provider-zero 준비12/12, exact source/task admission12/12이다.
+- retry/replacement/fallback/model substitution/Cursor0을 fail-close했다.
+- 다음은 frozen order 첫 셀 `astro-luna-r1-omd` 단독 실행이다.

@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.799",
+  "experiment_id": "frontier-skill-qualification-luna-1.9.799",
+  "status": "PREPARED_PROVIDER_ZERO",
+  "scheduled_cells": 12,
+  "prepared_cells": 12,
+  "tasks": 3,
+  "arms": 4,
+  "trials_per_task_arm": 1,
+  "objective_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+  "locks": {
+    "run_matrix_sha256": "90d7f3fdb52f75f5e5a5146d1a56f0db22737f22a1b44ec04211840cf0d893cc",
+    "matrix_state_sha256": "2bdb7ab6d8e7a76783aea1f0ae61a34c5143dd9d078f5804c58e59a7504b227d"
+  },
+  "source_admission": {
+    "detached": "12/12",
+    "clean": "12/12",
+    "publishable": "12/12",
+    "commit_match": "12/12",
+    "source_tree_match": "12/12",
+    "task_pairing_match": "12/12",
+    "third_party_installer_executed": 0,
+    "hooks_enabled": 0
+  },
+  "provider_contract": {
+    "runtime": "codex",
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "serial": true,
+    "timeout_seconds": 720,
+    "inter_cell_delay_seconds": 30,
+    "retry": 0,
+    "replacement": 0,
+    "fallback": 0,
+    "model_substitution": 0,
+    "cursor_calls": 0
+  },
+  "browser_contract": {
+    "connection": "omd1795",
+    "cdp_port": 9355,
+    "launch_allowed": false,
+    "proof_owner": "external benchmark controller"
+  },
+  "provider_calls": 0,
+  "model_calls": 0,
+  "cursor_calls": 0,
+  "next": "Execute one cell per checkpoint in frozen order; do not retry or replace a failed cell."
+}

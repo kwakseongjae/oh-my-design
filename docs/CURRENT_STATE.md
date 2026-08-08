@@ -4,16 +4,18 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.798 frontier skill qualification task lock 진행
+- 갱신: 2026-08-09 · 1.9.799 frontier skill qualification 사전등록·provider-zero 준비 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.799는 exact current OmD+Anthropic current+Impeccable4.0.4 bounded+UI UX Pro Max2.13.0 × fresh3의 Luna/high Stage A 12셀을 사전등록했다. serial·timeout720s·pacing30s·checkpoint1셀·retry/replacement/fallback/model substitution/Cursor0이다.
+- provider-zero prepare는 12/12이며 detached/clean/publishable/commit/source-tree/task-pairing 전부12/12다. OmD는 dirty workspace가 아니라 commit `c7031e2c`의 exact 5-file tree를 사용하며 provider/model/Cursor 호출은 아직0이다.
+- qualification은 Verified 승격·public best-skill·statistical-superiority 근거가 아니다. 다음 허용 작업은 frozen order 첫 셀 `astro-luna-r1-omd` 단독 실행이며 실패 시 재시도·대체 셀을 만들지 않는다.
 - 1.9.798은 current-epoch frontier skill 비교용 fresh repair3을 provider/model 노출 전에 잠갔다. astronomical/seed/orchestral은 raw DESIGN.md 모두75/85이며 responsive+accessibility만 red, record density4/5/6이다.
 - exact task tree·prompt·starter·DESIGN·baseline hash를 고정했다. browser-harness `omd1795`로 3/3 load·h1/main/view exact와 raw overflow107/185/194px를 확인했고 provider/model/Cursor0이다.
 - 1.9.797은 Anthropic current, Impeccable4.0.4, UI UX Pro Max2.13.0 official snapshot을 exact commit+source-tree hash+license로 고정했다. detached/clean/install smoke3/3, third-party installer/hook/provider/Cursor0이다.
 - Impeccable 최신판은 prompt-only가 아니므로 full 152-file local workflow를 허용하되 hook/live/network/self-browser만 차단한 별도 current-epoch arm으로 분리했다. historical arms/reports는 유지하고 cross-epoch aggregation은 금지한다.
-- 다음은 exact current OmD+3 competitor × fresh3 = 12-cell Luna/high Stage A를 사전등록·provider-zero prepare한다. 이 단계는 qualification이며 Verified 승격이나 public best-skill claim 근거가 아니다.
 - 1.9.796은 1.9.795 fresh lifecycle 증거로 `routing-ownership-reverify`와 `council-first-human-escalation`을 pass로 승격한다. readiness는 pass2·partial3·open3·external2이며 전체 2.0 promotion은 계속 BLOCK이다.
 - 다음 내부 최우선은 `verified-skill-lift`다. strongest eligible frontier skill과 current-epoch fresh paired reliability를 먼저 고정하며 hidden scale·three-model lift는 그 뒤다.
 - 1.9.795 live는 routed lifecycle route3/3·implementation2/2(각85/85)로 통과했다. lane4+owner2=provider6, pre-implementation write0, blocker provider/edit0+starter exact, unplanned question/retry/replacement/fallback/Cursor0이다.
