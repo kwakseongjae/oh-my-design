@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.789 Luna state-routing complete
+- current85/81/85 vs candidate85/85/85, candidate W/T/L1/2/0이다.
+- candidate3/3, paired loss0, proof/revision/bytes6/6, recovery/question0이다.
+- wall-6.01%, tokens-11.52% descriptive; overall gate는 current2/3로 false다.
+- 다음은 actual interview/block state end-to-end evidence다.
+
 ## 2026-08-09 (Codex) · 1.9.788 Luna state-routing checkpoint5
 - slide current는 lifecycle clean이나81/85·UI-Resolved false다.
 - 동일 slide candidate85로 candidate paired+4다.

@@ -4,11 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.788 Luna state-routing checkpoint5 완료
+- 갱신: 2026-08-09 · 1.9.789 Luna state-routing comparison 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.789 matrix는 6/6 valid complete다. current85/81/85(2/3), state-routed85/85/85(3/3), candidate W/T/L1/2/0·paired loss0·revision/proof/candidate exact6/6·recovery0·unplanned question0이다.
+- candidate total wall-6.01%, tokens-11.52%지만 descriptive only다. current가 Reliability@3에 실패해 prereg overall gate는 false이며, 이 결과만으로 2.0을 승격하지 않는다.
+- closed scope는 zero-question PROPOSE_PLAN path다. 다음 핵심 gap은 실제 product-authority interview와 external-evidence blocker에서 구현 모델이 checkpoint 뒤로 진행하지 않는 fresh state-routed end-to-end evidence다.
 - 1.9.788 checkpoint5 `slide-luna-r1-current`는 lifecycle/proof/revision/candidate exact는 clean이나 81/85·UI-Resolved false다. 동일 slide candidate85이므로 candidate paired +4이며 objective-failure-continue 계약으로 마지막 셀을 진행한다.
 - current Reliability@3는 이미 실패했으므로 overall prereg gate는 false가 확정됐다. 다음은 결과 해석을 완결할 `tape-luna-r1-state-routed`다.
 - 1.9.787 checkpoint4 `folio-luna-r1-state-routed`도 85/85·revision1·proof/candidate exact로 통과해 첫 pair는 85↔85다. candidate는 이 pair에서 wall+20.1%, tokens+35.5%로 효율 열세다.

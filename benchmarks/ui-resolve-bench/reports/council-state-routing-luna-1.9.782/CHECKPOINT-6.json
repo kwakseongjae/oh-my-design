@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.789",
+  "experiment_id": "council-state-routing-luna-1.9.782",
+  "checkpoint": 6,
+  "status": "complete",
+  "completed_cells": 6,
+  "provider_calls": 6,
+  "cursor_calls": 0,
+  "latest_cell": {
+    "id": "tape-luna-r1-state-routed",
+    "ui_resolved": true,
+    "objective_score": 85,
+    "objective_max": 85,
+    "wall_time_ms": 216854,
+    "tokens": 916217,
+    "product_revision_count": 1,
+    "proof_compliance": true,
+    "browser_recovery_count": 0,
+    "candidate_final_bytes_match": true,
+    "run_result_sha256": "38a0c805e2c1077430df1607964f6f6291a66ce2e1f89c251f1cb116c029ef31",
+    "score_sha256": "05fe4ef4d938f76c2f22223a96796eabf4d2f7845d986605a5c509a451d08024"
+  },
+  "execution_state_sha256": "ddc33ff69aa2714450aac4f56507853df502464dfc700e829a7a45d2e07de057",
+  "summary_sha256": "4f090b2b2ff919e20cc5650f36d93cbe614118fc8332991da8ee711c11137c2f",
+  "same_root_retry": false
+}
