@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.778 frontier snapshot
+- 2.0 10-gate snapshot에 1.9.773–777 routing/council 증거를 반영했다.
+- machine audit는 pass0, partial5, open3, external2로 promotion BLOCK이다.
+- 작은 checkpoint canary를 UI quality/end-to-end 증거로 과장하지 않았다.
+- 다음은 fresh repeated council end-to-end Luna/high plan 사전등록이다.
+
 ## 2026-08-08 (Codex) · 1.9.777 npm contents gate
 - dry-run이 handoff/context planner helper 2개의 tarball 누락을 발견해 allowlist를 수정했다.
 - 재검증은 entry565, required5/5, missing0이다.

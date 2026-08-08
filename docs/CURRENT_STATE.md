@@ -3,16 +3,19 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `70ec789a`의 provider-zero doctor self-test (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-08 · 1.9.777 npm package contents gate 완료
+- 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-08 · 1.9.778 2.0 frontier readiness snapshot 갱신 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.778은 2.0 normative10-gate snapshot을 1.9.777 증거까지 갱신했다. machine audit 결과 pass0/10, partial5, open3, external2이며 promotion은 계속 BLOCK이다.
+- routing gate에는 3-host install/update/doctor self-test를, council gate에는 1.9.773 exact3/3·provider3→1 결과를 반영했다. 둘 다 partial 유지이며 작은 checkpoint canary를 UI 품질/반복 end-to-end 증거로 과장하지 않았다.
+- 다음 내부 최우선 gap은 `council-first-human-escalation`의 fresh repeated end-to-end runtime이다. provider 전 unseen tasks·oracle·human-intervention·UI resolved 조건을 고정하고 Luna/high no-retry matrix를 별도 사전등록한다.
 - 1.9.777 npm dry-run이 `design-council-handoff.cjs`와 `design-harness-context-plan.cjs`가 package allowlist에서 빠진 실제 배포 차단 결함을 발견했다. 두 helper를 `package.json#files`에 추가했다.
 - 재실행 tarball은 entry565, required5/5, missing0이다. workflow contract에 deterministic helper4개 package assertion을 추가해 재발을 막았다.
 - 첫 dry-run은 사용자 npm cache의 root-owned 파일로 EPERM이었고 기존 권한은 건드리지 않았다. 격리 `/private/tmp` cache로 검증을 완료했다.
-- 다음은 1.9.773–777을 2.0 promotion rubric에 반영하고, 다음 quality gap을 고르는 단계다. 현재 routing/update/doctor/package 경로에는 사용자 검수가 필요 없다.
+- 1.9.777 다음 목표였던 2.0 rubric 갱신과 gap 선정은 1.9.778에서 완료됐다.
 - 1.9.776은 `omd doctor --self-test`를 추가했다. 설치 planner가 packaged source와 byte-identical일 때만 임시 PROPOSE_PLAN fixture로 실행해 master+execution plan을 검사한다.
 - 수정된 로컬 helper는 절대 실행하지 않고 drift issue로 fail-close한다. self-test focused4/4, doctor/update37/37, lint/diff-check green이며 provider/model/network/Cursor0이다.
 - update skill의 사후 진단과 CLI quickstart를 `doctor --self-test`로 연결했다. npm contents smoke는 1.9.777에서 완료됐다.

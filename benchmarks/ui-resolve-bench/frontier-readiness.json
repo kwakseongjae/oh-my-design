@@ -3,7 +3,7 @@
   "target_version": "2.0.0",
   "baseline_version": "1.9.0",
   "required_gate_count": 10,
-  "snapshot_patch": "1.9.740",
+  "snapshot_patch": "1.9.777",
   "claim_policy": "Promotion is allowed only when all ten gates are pass and every gate retains repository evidence.",
   "gates": [
     {
@@ -74,16 +74,16 @@
       "id": "routing-ownership-reverify",
       "status": "partial",
       "requirement": "Natural-language routing selects the smallest capable workflow, specialists advise with evidence, one main agent owns edits, and the same consumer route is reverified.",
-      "current_boundary": "The product contract and local multi-channel route loop pass; broader repeated model-runtime proof is incomplete.",
-      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/local-activation-funnel-1.9.673", "skills/omd-orchestrator/SKILL.md", "skills/omd-apply/SKILL.md"],
+      "current_boundary": "The product contract and local multi-channel route loop pass. 1.9.774-776 execute the same provider-zero ready/question/blocked routing contract in installed Claude Code, Codex, and OpenCode trees, recover it through safe update, and diagnose it through a fail-closed self-test. Broader repeated model-runtime proof and same-consumer-route UI re-verification remain incomplete.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/local-activation-funnel-1.9.673", "skills/omd-orchestrator/SKILL.md", "skills/omd-apply/SKILL.md", "test/unit/cli/installed-harness-context-plan.test.ts", "test/unit/cli/doctor-context-planner-self-test.test.ts"],
       "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/local-activation-funnel-1.9.673/ACCEPTANCE.json", "pointer": "/frontier_gate_pass", "equals": true}
     },
     {
       "id": "council-first-human-escalation",
       "status": "partial",
       "requirement": "The harness investigates and debates before intake, auto-decides only evidence-backed reversible choices, and asks the user only for authority-bearing decisions while retaining a reconstructable decision ledger.",
-      "current_boundary": "The full pilot was safe but expensive; the compact live run cut wall 45.1% and tokens 53.6% but did not improve handoffs. 1.9.740 now deterministically defers repository-backed audience and single-surface scope for maintenance work without auto promotion or council dispatch. Provider-zero planned calls fall 6→4 and handoffs 3→2 while five-locale calibration and safety remain green. Fresh repeated runtime remains unproven.",
-      "evidence_refs": ["research/harness-design/24-council-first-interview-gate.md", "scripts/design-council-prime.cjs", "scripts/design-council-reconcile.cjs", "skills/omd-harness/SKILL.md", "benchmarks/ui-resolve-bench/reports/council-first-intake-1.9.733", "benchmarks/ui-resolve-bench/reports/council-intake-calibration-1.9.734", "benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735", "benchmarks/ui-resolve-bench/reports/council-effectiveness-pilot-1.9.736", "benchmarks/ui-resolve-bench/reports/council-lane-cap-replay-1.9.738", "benchmarks/ui-resolve-bench/reports/compact-council-live-1.9.739", "benchmarks/ui-resolve-bench/reports/maintenance-defer-1.9.740"],
+      "current_boundary": "The full pilot was safe but expensive; later authority calibration separated preserve-existing/defer, user-answerable/interview, and external-unverifiable/blocked. In 1.9.773 a fixed Luna/high checkpoint canary preserved the ready/interview/blocked oracle 3/3 while state routing reduced provider calls 3→1: exact registered questions and external blockers were relayed without a model, and only the ready design-judgment cell resumed the master. This is a small checkpoint canary, not fresh repeated end-to-end council effectiveness or UI-quality proof.",
+      "evidence_refs": ["research/harness-design/24-council-first-interview-gate.md", "scripts/design-council-prime.cjs", "scripts/design-council-reconcile.cjs", "scripts/design-council-handoff.cjs", "scripts/design-harness-context-plan.cjs", "skills/omd-harness/SKILL.md", "benchmarks/ui-resolve-bench/reports/council-first-intake-1.9.733", "benchmarks/ui-resolve-bench/reports/council-intake-calibration-1.9.734", "benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735", "benchmarks/ui-resolve-bench/reports/council-effectiveness-pilot-1.9.736", "benchmarks/ui-resolve-bench/reports/council-lane-cap-replay-1.9.738", "benchmarks/ui-resolve-bench/reports/compact-council-live-1.9.739", "benchmarks/ui-resolve-bench/reports/maintenance-defer-1.9.740", "benchmarks/ui-resolve-bench/reports/installed-harness-checkpoint-luna-1.9.773/RESULT.json", "benchmarks/ui-resolve-bench/reports/installed-harness-checkpoint-luna-1.9.773/FINDINGS.md"],
       "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735/ACCEPTANCE.json", "pointer": "/frontier_gate_pass", "equals": true}
     }
   ]
