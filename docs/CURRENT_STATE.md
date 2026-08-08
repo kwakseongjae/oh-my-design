@@ -9,6 +9,10 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.753 checkpoint-continuation Reliability@3가 Codex-native `gpt-5.6-luna`/high로 3/3 통과했다. architectural/ceramic/glass 모두85/85, revision1, proof true, candidate/final exact, recovery/duplicate/Cursor0이다.
+- 세 invocation은 정확히0→1→2→3으로 진행됐고 pacing은30,004.49ms/30,002.70ms다. wall 합542,960ms, tokens 합2,140,479이며 완료 root 재호출은 provider0 상태에서 `not resumable: complete`로 fail-close했다.
+- 결과는 `reports/checkpoint-reliability-canary-1.9.753/{CHECKPOINT-3,RESULT,FINDINGS}`에 동결했다. ranking/model·skill superiority/2.0 단독 promotion 근거는 아니다. 다음은 이 계약을 fresh comparative denominator에 적용하는 단계다.
+
 - 1.9.753 checkpoint continuation이 실제로 통과했고 fixed pacing은30,004.49ms다. ceramic Luna 셀도85/85, revision1, proof true, candidate/final exact, recovery/duplicate/Cursor0으로 pass했다.
 - wall176,480ms, tokens649,940이며 matrix checkpoint2다. fresh glass만 provider/model0으로 남았다. 다음은 checkpoint2 commit 뒤 glass exact1회다.
 
@@ -3598,9 +3602,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 같은 공개 task 재호출 없이 local fixture의 single-edit closure 계약을 유지한다.
-2. 1.9.703 exact prepared canary를 clean commit으로 고정한다.
-3. 한 셀만 실행해 85/85+revision1+successful closure1+proof compliance를 측정한다. retry·replacement·ranking·2.0 gate 반영은 금지다.
+1. 1.9.753 root와 세 노출 task를 재사용하지 않고 fresh council-off/on 비교 분모를 provider-zero로 잠근다.
+2. Codex-native `gpt-5.6-luna`/high, Cursor 금지, exact checkpoint/cascade/browser 계약으로 paired plan을 사전등록한다.
+3. provider-zero admission과 pre-edit plan을 먼저 동결한 뒤 한 셀씩 실행한다. 비교는 internal diagnostic이며 2.0 gate 승격은 별도 Verified 근거가 필요하다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

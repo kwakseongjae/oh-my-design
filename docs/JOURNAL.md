@@ -5527,3 +5527,8 @@
 - Carried forward provider-zero geology/herbarium and added fresh photographic negative-return.
 - Fresh raw baseline is 75/85 with responsive+accessibility red; inventory102, focused2/2.
 - Next: commit exact bytes, then preregister Codex Luna/high with a new isolated named browser/root.
+## 2026-08-08 (Codex) · 1.9.753 Reliability@3 complete
+- Luna/high 3셀 모두85/85·revision1·proof/candidate exact로 통과했다.
+- checkpoint continuation0→1→2→3, pacing30s×2, recovery/duplicate/Cursor0이다.
+- wall542,960ms, tokens2,140,479이며 complete root replay는 provider0 fail-close다.
+- 다음은 fresh comparative denominator이며 이 결과만으로 2.0 승격하지 않는다.
