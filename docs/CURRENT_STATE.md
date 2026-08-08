@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- fresh 1.9.752 plan은 1.9.751 provider-zero prepare에서 관찰한 effective installed skill hash `f46c…`를 정확히 잠갔다. task denominator와 Luna/high/cascade 계약은 유지하고 exact browser만 `omd1752`로 교체했다.
+- 다음은 plan commit 뒤 fresh root prepare/admission이다. 1.9.751 root는 재실행하지 않는다.
+
 - 1.9.751 provider-zero prepare3/3 뒤 admission이 effective skill lock mismatch로 fail-close했다. provider/model/Cursor0, execution artifacts0이며 root는 재사용하지 않는다.
 - plan은 source skill tree `9e4f…`를 잠갔지만 council activation이 적용된 prepared effective tree는 `f46c…`였다. task bytes는 Luna에 노출되지 않았으므로 같은 denominator를 fresh 1.9.752에서 사용할 수 있다.
 - 다음은 failure evidence commit 뒤 effective installed hash `f46c…`를 사전등록한 1.9.752 plan과 새 exact browser/root로 provider-zero admission을 반복한다.

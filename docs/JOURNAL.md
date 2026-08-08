@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.752 preregistered
+- effective installed council skill hash `f46c…`를 exact lock했다.
+- same provider-zero tasks, Luna/high, exact cascade, new `omd1752` 계약이다.
+- 다음은 fresh root prepare/admission+preplan3/3이다.
+
 ## 2026-08-08 (Codex) · 1.9.751 provider-zero freeze
 - prepare3/3 뒤 source/effective skill hash mismatch로 admission이 fail-close했다.
 - provider/model/Cursor0, execution artifacts0이며 root는 frozen이다.
