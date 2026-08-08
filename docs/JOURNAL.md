@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.774 installed-host routing smoke
+- Claude/Codex/OpenCode 실제 설치본 helper를 3상태씩 실행했다.
+- ready만 master+execution, 질문/blocked는 master0+sidecar0로 동일했다.
+- smoke1/1+lint green, provider/model/Cursor0이다.
+- 다음은 update 경로의 기존 설치 보존 smoke다.
+
 ## 2026-08-08 (Codex) · 1.9.773 Luna pass
 - exact3/3을 유지하며 Luna/high 호출을3→1(-66.67%)로 줄였다.
 - 질문/blocked는 provider0 exact relay, Cursor/timeout/retry/write0이다.

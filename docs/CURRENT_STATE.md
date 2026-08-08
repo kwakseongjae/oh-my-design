@@ -3,17 +3,20 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `7758acb9`의 state-routed checkpoint canary preparation (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-08 · 1.9.773 state-routed checkpoint Luna/high 검증 완료
+- 기준 커밋: `fe751e6e`의 state-routed checkpoint Luna result (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-08 · 1.9.774 installed-host routing smoke 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.774는 실제 임시 프로젝트에 Claude Code·Codex·OpenCode용 `omd-harness`/master를 설치하고, 각 host의 native data helper로 ready/questions/blocked 3상태를 실행했다.
+- 3 host×3 state 모두 동일했다: ready만 master+execution sidecar, questions/blocked는 master0+sidecar0 exact relay. provider/model/Cursor0이며 새 production smoke1/1+lint/diff-check green이다.
+- 다음은 이 host parity를 `omd doctor`의 실행형 진단으로 승격할지 판단하기 전, update 경로로 설치한 기존 프로젝트에서도 같은 contract가 보존되는지 provider-zero smoke를 추가하는 단계다.
 - 1.9.773은 checkpoint runner가 `context-plan.json`을 실제 소비하도록 연결했다. ask_user/blocked는 provider0 exact relay, PROPOSE_PLAN만 master kernel+execution sidecar로 Luna/high 1회를 사용한다.
 - 동일 exact3 live는3/3, provider3→1(-66.67%), Cursor/timeout/retry/unauthorized write0이다. 질문4개와 external blocker를 provider 없이 정확히 보존했다.
 - ready 동종 셀은 input137,095→106,596(-22.25%), output-6.12%, reasoning+26.81%, wall-2.21%다. 단일 replay/cache/runtime 변동이므로 causal 효율 주장은 금지다.
 - master byte gate≤12KB, master+execution≤18KB와 unselected sidecar 금지 prompt를 추가했다. focused9/9, install/doctor77/77, lint/diff-check green이다.
-- 다음은 2.0 promotion rubric에서 이 routing contract를 production harness smoke로 승격하고, 실제 사용자 인터뷰 시 model-free relay가 유지되는지 host별로 검증하는 단계다.
+- 1.9.773 다음 목표였던 installed-host production smoke는 1.9.774에서 완료됐다.
 - 1.9.772는 `design-harness-context-plan.cjs`로 handoff state→최소 context를 결정론화했다. ask_user/blocked는 master0+sidecar0 exact relay, plan은 execution, slot conversation은 conversation, visual generation만 visual sidecar를 추가한다.
 - helper는 provider/model 호출 없이 `handoff/context-plan.json`을 쓰며 harness launcher가 이를 따른다. Claude/Codex/OpenCode 설치 data tree와 doctor 필수 helper에 포함됐다.
 - context planner6-state matrix + workflow/catalog/doctor/install 총90/90, lint/diff-check green, provider/Cursor0이다.
