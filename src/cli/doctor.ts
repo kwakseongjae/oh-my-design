@@ -102,6 +102,7 @@ export const REQUIRED_HARNESS_HELPERS = [
   'design-council-prime.cjs',
   'design-council-reconcile.cjs',
   'design-council-handoff.cjs',
+  'design-harness-context-plan.cjs',
 ] as const;
 const REQUIRED_SKILL_SIDECARS = [
   ['omd-init', 'scripts/query-references.mjs'],

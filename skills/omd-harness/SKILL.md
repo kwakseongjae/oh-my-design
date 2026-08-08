@@ -217,6 +217,19 @@ HANDOFF_HELPER="$(dirname "$COUNCIL_HELPER")/design-council-handoff.cjs"
 - `status: ask_user` → `questions_file`의 product-authority 질문만 한 batch로 제시.
 - `state: PROPOSE_PLAN` → 질문 없이 Step 3으로 진행.
 
+checkpoint materialize 직후 같은 helper dir의 context planner를 실행한다:
+
+```bash
+CONTEXT_HELPER="$(dirname "$COUNCIL_HELPER")/design-harness-context-plan.cjs"
+[ -f "$CONTEXT_HELPER" ] && node "$CONTEXT_HELPER" "$(pwd)" "${RUN_DIR}" relay
+```
+
+`${RUN_DIR}/handoff/context-plan.json`을 읽고 그대로 따른다. `relay_blocked`와
+`relay_questions`는 master를 spawn하지 않고 launcher가 기존 artifact를 exact relay한다.
+`resume_master`/`run_master`만 master를 호출하며, `sidecars`에 적힌 파일만 active
+channel skill tree에서 추가로 읽는다. planner가 없는 legacy install에서만 master의
+내장 conditional pointer를 사용한다. sidecar를 관성적으로 전부 로드하지 않는다.
+
 질문 답은 `${RUN_DIR}/checkpoints/council-intake.answers.json`에 저장한다. 답변
 객체에는 handoff의 `checkpoint_id`, `ledger_sha256`, `questions_sha256`를 그대로
 복사하고 `answers` 아래 decision id별 응답을 넣는다. 이 receipt가 없거나 현재

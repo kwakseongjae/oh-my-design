@@ -369,6 +369,7 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.claude/data/scripts/design-council-prime.cjs'))).toBe(true);
     expect(existsSync(join(root, '.claude/data/scripts/design-council-reconcile.cjs'))).toBe(true);
     expect(existsSync(join(root, '.claude/data/scripts/design-council-handoff.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.claude/data/scripts/design-harness-context-plan.cjs'))).toBe(true);
   });
 
   it('installs self-contained Codex roles with only the native project skill path', async () => {
@@ -386,6 +387,7 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.agents/skills/omd-init/scripts/query-references.mjs'))).toBe(true);
     expect(existsSync(join(root, '.codex/data/references/toss/DESIGN.md'))).toBe(true);
     expect(existsSync(join(root, '.codex/data/scripts/design-council-handoff.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.codex/data/scripts/design-harness-context-plan.cjs'))).toBe(true);
 
     const harness = readFileSync(join(root, '.agents/skills/omd-harness/SKILL.md'), 'utf8');
     expect(harness).toContain('dispatch_suppressed_by_blocked: true');
@@ -491,6 +493,7 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.opencode/data/scripts/design-council-prime.cjs'))).toBe(true);
     expect(existsSync(join(root, '.opencode/data/scripts/design-council-reconcile.cjs'))).toBe(true);
     expect(existsSync(join(root, '.opencode/data/scripts/design-council-handoff.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.opencode/data/scripts/design-harness-context-plan.cjs'))).toBe(true);
     expect(dataDirFor('opencode', ['opencode'])).toBe('.opencode');
   });
 
@@ -509,6 +512,7 @@ describe('install-skills', () => {
     ].map((file) => readFileSync(file, 'utf8'));
     for (const harness of harnesses) {
       expect(harness).toContain('design-council-handoff.cjs');
+      expect(harness).toContain('design-harness-context-plan.cjs');
       expect(harness).toContain('choose-new/user-answerable/interview');
       expect(harness).toContain('external-unverifiable/blocked');
       expect(harness).toContain('if handoff.status == "blocked"');
@@ -547,6 +551,9 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.claude/data/scripts/design-council-handoff.cjs'))).toBe(true);
     expect(existsSync(join(root, '.codex/data/scripts/design-council-handoff.cjs'))).toBe(true);
     expect(existsSync(join(root, '.opencode/data/scripts/design-council-handoff.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.claude/data/scripts/design-harness-context-plan.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.codex/data/scripts/design-harness-context-plan.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.opencode/data/scripts/design-harness-context-plan.cjs'))).toBe(true);
   });
 
   it('uses native OpenCode project skill paths in portable sub-agent bodies', async () => {

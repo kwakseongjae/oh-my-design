@@ -43,6 +43,8 @@ describe('OmD cross-skill delivery contract', () => {
     expect(harness).toContain('external-unverifiable/blocked');
     expect(harness).toMatch(/`blocked`(?:가|는) interview와\n?같은 것으로 세지 않는다/);
     expect(harness).toContain('design-council-handoff.cjs');
+    expect(harness).toContain('design-harness-context-plan.cjs');
+    expect(harness).toContain('sidecar를 관성적으로 전부 로드하지 않는다');
     expect(harness).toContain('if handoff.status == "blocked"');
     expect(harness).toContain('ledger_sha256');
     expect(harness).toContain('questions_sha256');

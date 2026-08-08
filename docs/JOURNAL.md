@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.772 context planner
+- handoff state→최소 master/sidecar context를 provider-zero helper로 결정론화했다.
+- 질문/blocked는 master0, plan/conversation/visual은 active sidecar만 선택한다.
+- 3-host install/doctor 포함90/90+lint green, provider/Cursor0이다.
+- 다음은 installed byte/leakage gate와 runner 연결이다.
+
 ## 2026-08-08 (Codex) · 1.9.771 conversation sidecar
 - inactive persona/slot/question policy를 conditional sidecar로 분리했다.
 - kernel22,378B→11,218B; original 대비-69.89%다.
