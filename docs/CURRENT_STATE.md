@@ -4,11 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.791 council routed lifecycle provider-zero 준비 완료
+- 갱신: 2026-08-09 · 1.9.792 council routed lifecycle task lock 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.792는 1.9.791 source commit `4f1fe866`을 authority로 fresh3의 task tree/prompt/starter/DESIGN/task/baseline/source-contract/council-oracle와 council helper·adapter·skill hash를 잠그었다. model exposure/provider/Cursor0이다.
+- lifecycle contract은 interview=exact answer receipt 전 write0, blocker=dispatch/write/answer0+starter byte exact, advisory=all read-only lane reconcile 전 write0, 실행 가능 route만 single owner revision1을 강제한다.
+- lock test1/1+lint green이며 execution_allowed=false다. 다음은 provider-zero lifecycle controller를 구현·검증한 뒤 exact Luna/high matrix를 별도 사전등록한다.
 - 1.9.791은 fresh UI 3개로 actual routed lifecycle denominator를 추가했다: papyrus=authority interview, photographic-proof=external blocker, ceramic=bounded advisory-ready다. raw baseline은 모두75/85·responsive/accessibility red로 정렬됐다.
 - full lifecycle adapter는 await_advisory/question/block/resume를 분리한다. interview/advisory는 reconcile 전 implementation=false, blocker는 dispatch0·relay_blocked·master=false다. focused10/10+lint green, provider/model/Cursor0이다.
 - browser-harness `omd1791` local CDP로 3/3 load·record count4/5/6을 확인했다. raw overflow110/188/194px는 baseline에 사전 기록된 의도된 responsive debt다.

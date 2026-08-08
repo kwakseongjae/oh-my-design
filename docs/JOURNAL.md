@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.792 routed lifecycle task lock
+- source commit4f1fe866의 fresh3·oracle·helper·adapter·skill hash를 잠그었다.
+- interview/block/advisory 각 stop/write 계약을 machine lock으로 고정했다.
+- lock test1/1+lint green, provider/model/Cursor0이다.
+- 다음은 provider-zero lifecycle controller와 exact Luna preregistration이다.
+
 ## 2026-08-09 (Codex) · 1.9.791 routed lifecycle provider-zero
 - interview/block/advisory-ready fresh UI task3개를 75/85 baseline으로 추가했다.
 - lifecycle adapter가 checkpoint 전 implementation을 fail-close한다.
