@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.773 Luna pass
+- exact3/3을 유지하며 Luna/high 호출을3→1(-66.67%)로 줄였다.
+- 질문/blocked는 provider0 exact relay, Cursor/timeout/retry/write0이다.
+- ready input-22.25%, reasoning+26.81%; 단일 replay라 causal 주장은 금지다.
+- 다음은 routing contract의 installed-host production smoke다.
+
 ## 2026-08-08 (Codex) · 1.9.773 state-routed canary prepared
 - runner가 context plan을 소비해 질문/blocked를 provider0 exact relay한다.
 - 동일 exact3 provider-zero3/3, provider/Cursor0; master byte/leakage gate가 green이다.
