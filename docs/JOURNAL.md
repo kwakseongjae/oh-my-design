@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.770 Luna repeat pass
+- exact3/3과 write/timeout/retry/Cursor0을 유지했다.
+- input+4.44%, cached+4.90%, reasoning-11.32%, wall-9.03%다.
+- master 축소의 causal token 절감 주장은 기각하고 구조 개선만 인정했다.
+- 다음은 inactive conversation detail sidecar 분리다.
+
 ## 2026-08-08 (Codex) · 1.9.770 repeat prepared
 - 동일 exact3 Luna/high checkpoint repeat를 fresh fixture로 잠갔다.
 - provider-zero3/3, provider/model/Cursor0; retry0이다.
