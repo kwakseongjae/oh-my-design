@@ -1,11 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { mkdtempSync, mkdirSync, symlinkSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
   benchmarkArtifactManifest,
   candidatePreflightStopReason,
   directBrowserCommandCount,
+  executeControllerPreEditPlan,
   completedCellSummary,
   harnessDeliveryStopReason,
   firstProductWriteTransaction,
@@ -19,6 +21,49 @@ import {
   validPreparedCellAttestation,
   validateRunPreparedMatrixCliArgs,
 } from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
+
+function digest(value) {
+  return createHash("sha256").update(value).digest("hex");
+}
+
+function controllerPlanFixture() {
+  const workspace = mkdtempSync(join(tmpdir(), "omd-controller-plan-"));
+  const product = "<!doctype html><title>sealed</title>\n";
+  mkdirSync(join(workspace, ".omd"), { recursive: true });
+  mkdirSync(join(workspace, ".agents/skills/omd-apply/scripts"), { recursive: true });
+  writeFileSync(join(workspace, "index.html"), product, "utf8");
+  writeFileSync(
+    join(workspace, ".agents/skills/omd-apply/scripts/reflow-browser-runner.sh"),
+    "#!/bin/sh\nexit 0\n",
+    "utf8",
+  );
+  const artifactPath = join(workspace, ".omd/reflow-closure.json");
+  const artifact = {
+    source_contract: { state: "provider-sealed" },
+    pre_edit_fit_plan: { state: "pending" },
+    pre_edit_product_snapshot: {
+      product_path: "index.html",
+      sha256: digest(product),
+    },
+  };
+  writeFileSync(artifactPath, JSON.stringify(artifact), "utf8");
+  const plan = {
+    browser_execution_contract: { require_browser_proof: true },
+    controller_pre_edit_plan_contract: {
+      mode: "provider-zero-shipped-runner",
+      required: true,
+      artifact_path: ".omd/reflow-closure.json",
+      runner_path: ".agents/skills/omd-apply/scripts/reflow-browser-runner.sh",
+      reflow_mode: "plan",
+      measured_attempts: 1,
+      provider_calls: 0,
+      cursor_calls: 0,
+      timeout_seconds: 120,
+    },
+  };
+  const env = { BU_NAME: "omd-test", BU_CDP_URL: "http://127.0.0.1:9339" };
+  return { workspace, product, artifact, artifactPath, plan, env };
+}
 
 const cell = {
   runtime: "claude-code",
@@ -57,6 +102,71 @@ const validRun = {
 };
 
 describe("UI-Resolve prepared matrix execution", () => {
+  it("measures and attests the pre-edit fit plan before provider exposure", () => {
+    const fixture = controllerPlanFixture();
+    const calls = [];
+    const receipt = executeControllerPreEditPlan(fixture.workspace, fixture.plan, {
+      env: fixture.env,
+      spawnFn(executable, args, options) {
+        calls.push({ executable, args, options });
+        const measured = {
+          ...fixture.artifact,
+          pre_edit_fit_plan: {
+            state: "measured",
+            attempts: 1,
+            connection: {
+              connection_name: fixture.env.BU_NAME,
+              cdp_url: fixture.env.BU_CDP_URL,
+              attached_existing: true,
+              launched_browser: false,
+            },
+          },
+        };
+        writeFileSync(fixture.artifactPath, JSON.stringify(measured), "utf8");
+        return { status: 0, stdout: "plan-close\n", stderr: "" };
+      },
+    });
+
+    expect(calls).toHaveLength(1);
+    expect(calls[0].executable).toBe("sh");
+    expect(calls[0].args[0]).toMatch(/reflow-browser-runner\.sh$/);
+    expect(calls[0].options.env.OMD_REFLOW_MODE).toBe("plan");
+    expect(receipt).toMatchObject({
+      provider_calls: 0,
+      cursor_calls: 0,
+      plan_state: "measured",
+      plan_attempts: 1,
+      connection_name: "omd-test",
+      attached_existing: true,
+      launched_browser: false,
+      product_sha256: digest(fixture.product),
+    });
+  });
+
+  it("fails closed before provider exposure when the controller plan mutates product bytes", () => {
+    const fixture = controllerPlanFixture();
+    expect(() => executeControllerPreEditPlan(fixture.workspace, fixture.plan, {
+      env: fixture.env,
+      spawnFn() {
+        writeFileSync(join(fixture.workspace, "index.html"), "mutated\n", "utf8");
+        writeFileSync(fixture.artifactPath, JSON.stringify({
+          ...fixture.artifact,
+          pre_edit_fit_plan: {
+            state: "measured",
+            attempts: 1,
+            connection: {
+              connection_name: fixture.env.BU_NAME,
+              cdp_url: fixture.env.BU_CDP_URL,
+              attached_existing: true,
+              launched_browser: false,
+            },
+          },
+        }), "utf8");
+        return { status: 0, stdout: "plan-close\n", stderr: "" };
+      },
+    })).toThrow("controller-pre-edit-plan-mutated-product");
+  });
+
   it("hard-stops a reliability matrix when the lifecycle contract is breached", () => {
     const plan = {
       cell_success_contract: {

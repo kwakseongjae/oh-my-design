@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · controller-owned pre-edit plan
+- shipped browser runner의 plan mode를 provider 노출 전 controller 단계로 이동했다.
+- provider0/Cursor0·exact CDP·attempt1·제품 byte 불변 receipt와 artifact checkpoint hash를 추가했다.
+- focused74/74와 lint green; 다음은 fresh 1.9.750 Luna-only root다.
+
 ## 2026-08-06 (Codex) · Cursor billing fail-closed setup
 - Cursor를 `Included` 확인 전에는 실행하지 않도록 provider routing policy를 추가했다.
 - Luna/Sol은 Codex runtime만, Cursor live는 Grok만 허용한다.

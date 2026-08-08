@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `9a351591`의 Cursor fail-close guard (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-08 · 1.9.749 provider-zero 3-task lock 준비
+- 갱신: 2026-08-08 · controller-owned pre-edit plan 수리 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.749 실패 원인인 pre-edit plan ownership을 수리했다. 새 `controller_pre_edit_plan_contract`는 격리 browser runtime preflight 뒤 provider 노출 전에 shipped runner를 `OMD_REFLOW_MODE=plan`으로 실행한다.
+- controller receipt는 provider0/Cursor0, exact named CDP attachment, measured attempt1, 제품 byte 불변을 봉인한다. reflow artifact hash도 checkpoint attestation에 포함해 이후 drift를 차단한다.
+- focused74/74와 lint가 green이다. 다음은 이 수리를 commit하고 herbarium+photographic+fresh1의 1.9.750 root를 새로 사전등록·prepare한 뒤 provider-zero controller plan 3/3을 확인하는 단계다. Cursor는 사용하지 않는다.
 
 - 1.9.749 geology Luna 셀은 단일 수정+candidate/final exact였지만81/85, proof fail이다. final runner가 measured pre-edit fit plan 부재로 exit1했고 preregistered hard-stop이 나머지2셀을 provider/model0으로 동결했다.
 - exact `omd1749`와 Codex auth는 실행 직전 green이었고 Cursor call0이다. root cause는 deterministic pre-edit plan을 controller가 아니라 모델에 맡긴 orchestration ownership 결함이다.

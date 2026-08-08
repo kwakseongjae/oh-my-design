@@ -519,6 +519,144 @@ function runNode(script, args, cwd) {
   });
 }
 
+function controllerPreEditPlanContract(plan) {
+  const contract = plan?.controller_pre_edit_plan_contract;
+  if (!contract) return null;
+  if (
+    contract.mode !== "provider-zero-shipped-runner"
+    || contract.required !== true
+    || contract.artifact_path !== ".omd/reflow-closure.json"
+    || contract.runner_path !== ".agents/skills/omd-apply/scripts/reflow-browser-runner.sh"
+    || contract.reflow_mode !== "plan"
+    || contract.measured_attempts !== 1
+    || contract.provider_calls !== 0
+    || contract.cursor_calls !== 0
+  ) {
+    throw new Error("controller-pre-edit-plan-contract-invalid");
+  }
+  return contract;
+}
+
+function controllerPreEditPlanReceipt(workspace, contract, env) {
+  const artifactPath = join(workspace, contract.artifact_path);
+  const receiptPath = join(workspace, ".omd", "controller-pre-edit-plan.json");
+  if (!existsSync(artifactPath) || !existsSync(receiptPath)) {
+    throw new Error("controller-pre-edit-plan-evidence-missing");
+  }
+  const artifactSource = readFileSync(artifactPath, "utf8");
+  const artifact = JSON.parse(artifactSource);
+  const receipt = readJson(receiptPath);
+  const productPath = join(workspace, artifact.pre_edit_product_snapshot?.product_path ?? "");
+  const expectedConnection = String(env.BU_NAME ?? "").trim();
+  const expectedEndpoint = String(env.BU_CDP_URL ?? env.BU_CDP_WS ?? "").trim();
+  const connection = artifact.pre_edit_fit_plan?.connection;
+  if (
+    artifact.source_contract?.state !== "provider-sealed"
+    || artifact.pre_edit_fit_plan?.state !== "measured"
+    || artifact.pre_edit_fit_plan?.attempts !== contract.measured_attempts
+    || connection?.connection_name !== expectedConnection
+    || connection?.cdp_url !== expectedEndpoint
+    || connection?.attached_existing !== true
+    || connection?.launched_browser !== false
+    || !existsSync(productPath)
+    || sha256(readFileSync(productPath)) !== artifact.pre_edit_product_snapshot?.sha256
+  ) {
+    throw new Error("controller-pre-edit-plan-evidence-invalid");
+  }
+  const expected = {
+    schema_version: "0.1",
+    mode: contract.mode,
+    provider_calls: 0,
+    cursor_calls: 0,
+    product_path: artifact.pre_edit_product_snapshot.product_path,
+    product_sha256: artifact.pre_edit_product_snapshot.sha256,
+    artifact_sha256: sha256(artifactSource),
+    plan_state: artifact.pre_edit_fit_plan.state,
+    plan_attempts: artifact.pre_edit_fit_plan.attempts,
+    connection_name: connection.connection_name,
+    cdp_url: connection.cdp_url,
+    attached_existing: connection.attached_existing,
+    launched_browser: connection.launched_browser,
+  };
+  if (!isDeepStrictEqual(receipt, expected)) {
+    throw new Error("controller-pre-edit-plan-receipt-invalid");
+  }
+  return expected;
+}
+
+export function executeControllerPreEditPlan(
+  workspace,
+  plan,
+  {
+    env = process.env,
+    spawnFn = spawnSync,
+  } = {},
+) {
+  const contract = controllerPreEditPlanContract(plan);
+  if (!contract) return { status: "not-required" };
+  if (plan?.browser_execution_contract?.require_browser_proof !== true) {
+    throw new Error("controller-pre-edit-plan-browser-contract-required");
+  }
+  const root = resolve(workspace);
+  const artifactPath = join(root, contract.artifact_path);
+  const runnerPath = join(root, contract.runner_path);
+  if (!existsSync(artifactPath) || !existsSync(runnerPath)) {
+    throw new Error("controller-pre-edit-plan-input-missing");
+  }
+  const beforeArtifact = readJson(artifactPath);
+  if (
+    beforeArtifact.source_contract?.state !== "provider-sealed"
+    || beforeArtifact.pre_edit_fit_plan?.state !== "pending"
+  ) {
+    throw new Error("controller-pre-edit-plan-input-state-invalid");
+  }
+  const productPath = join(root, beforeArtifact.pre_edit_product_snapshot?.product_path ?? "");
+  if (!existsSync(productPath)) throw new Error("controller-pre-edit-plan-product-missing");
+  const productBefore = sha256(readFileSync(productPath));
+  if (productBefore !== beforeArtifact.pre_edit_product_snapshot?.sha256) {
+    throw new Error("controller-pre-edit-plan-product-snapshot-mismatch");
+  }
+  const executed = spawnFn("sh", [runnerPath], {
+    cwd: root,
+    env: { ...env, OMD_REFLOW_MODE: contract.reflow_mode },
+    encoding: "utf8",
+    maxBuffer: MAX_BUFFER,
+    stdio: ["ignore", "pipe", "pipe"],
+    timeout: Number(contract.timeout_seconds ?? 120) * 1000,
+  });
+  if (executed?.error || executed?.status !== 0) {
+    const detail = String(executed?.stderr || executed?.stdout || executed?.error?.message || "unavailable")
+      .trim()
+      .replace(/\s+/g, " ")
+      .slice(0, 240);
+    throw new Error(`controller-pre-edit-plan-runner-failed:${detail || `exit-${executed?.status}`}`);
+  }
+  if (sha256(readFileSync(productPath)) !== productBefore) {
+    throw new Error("controller-pre-edit-plan-mutated-product");
+  }
+  const artifactSource = readFileSync(artifactPath, "utf8");
+  const artifact = JSON.parse(artifactSource);
+  const connection = artifact.pre_edit_fit_plan?.connection;
+  const receipt = {
+    schema_version: "0.1",
+    mode: contract.mode,
+    provider_calls: 0,
+    cursor_calls: 0,
+    product_path: beforeArtifact.pre_edit_product_snapshot.product_path,
+    product_sha256: productBefore,
+    artifact_sha256: sha256(artifactSource),
+    plan_state: artifact.pre_edit_fit_plan?.state ?? null,
+    plan_attempts: artifact.pre_edit_fit_plan?.attempts ?? null,
+    connection_name: connection?.connection_name ?? null,
+    cdp_url: connection?.cdp_url ?? null,
+    attached_existing: connection?.attached_existing ?? null,
+    launched_browser: connection?.launched_browser ?? null,
+  };
+  mkdirSync(join(root, ".omd"), { recursive: true });
+  writeJson(join(root, ".omd", "controller-pre-edit-plan.json"), receipt);
+  return controllerPreEditPlanReceipt(root, contract, env);
+}
+
 function upsertCell(state, value) {
   const index = state.cells.findIndex((cell) => cell.id === value.id);
   if (index === -1) state.cells.push(value);
@@ -748,12 +886,16 @@ function untouchedCellPaths(workspace) {
 
 function preparedCellAttestation(workspace) {
   const manifest = readJson(join(workspace, ".benchmark", "manifest.json"));
+  const reflowArtifactPath = join(workspace, ".omd", "reflow-closure.json");
   const currentProduct = treeManifest(workspace, {
     ignore: [...new Set([...(manifest.workspace?.product_ignore ?? [".benchmark"]), ".t"])],
   });
   return {
     benchmark_tree_sha256: benchmarkArtifactManifest(join(workspace, ".benchmark")).sha256,
     product_tree_sha256: currentProduct.sha256,
+    ...(existsSync(reflowArtifactPath)
+      ? { reflow_artifact_sha256: sha256(readFileSync(reflowArtifactPath)) }
+      : {}),
     ...(manifest.host_policy
       ? { host_policy: inspectPreparedHostPolicy(REPO_ROOT, workspace, manifest.host_policy.mode) }
       : {}),
@@ -761,9 +903,11 @@ function preparedCellAttestation(workspace) {
 }
 
 export function validPreparedCellAttestation(value, { hostPolicy = false } = {}) {
+  const hasReflowArtifact = Object.hasOwn(value ?? {}, "reflow_artifact_sha256");
   const expectedKeys = [
     "benchmark_tree_sha256",
     "product_tree_sha256",
+    ...(hasReflowArtifact ? ["reflow_artifact_sha256"] : []),
     ...(hostPolicy ? ["host_policy"] : []),
   ].sort();
   return Boolean(
@@ -773,6 +917,7 @@ export function validPreparedCellAttestation(value, { hostPolicy = false } = {})
     && isDeepStrictEqual(Object.keys(value).sort(), expectedKeys)
     && /^[a-f0-9]{64}$/.test(value.benchmark_tree_sha256)
     && /^[a-f0-9]{64}$/.test(value.product_tree_sha256)
+    && (!hasReflowArtifact || /^[a-f0-9]{64}$/.test(value.reflow_artifact_sha256))
     && (
       !hostPolicy
       || (
@@ -1192,12 +1337,6 @@ function executePreparedMatrixWithLease(root, {
     }
   } else if (existing?.status === "stopped-preregistered") {
     throw new Error(`matrix is frozen after preregistered stop: ${existing.stop_reason}`);
-  } else if (bounded) {
-    for (const cell of plan.cells) {
-      const workspace = join(matrixRoot, cell.id);
-      assertUntouchedCell(workspace);
-      freshPreparedCellAttestations[cell.id] = preparedCellAttestation(workspace);
-    }
   }
   const runtimePreflight = preflightRuntimeEnvironment(plan, {
     ...runtimePreflightOptions,
@@ -1205,6 +1344,43 @@ function executePreparedMatrixWithLease(root, {
       ?? join(matrixRoot, plan.cells[existing?.completed_cells ?? 0]?.id ?? ""),
   });
   console.log(JSON.stringify({ event: "runtime-preflight-complete", ...runtimePreflight }));
+  const controllerPlanContract = controllerPreEditPlanContract(plan);
+  let controllerPreEditPlans = null;
+  if (controllerPlanContract) {
+    controllerPreEditPlans = {};
+    if (existing) {
+      for (const cell of plan.cells) {
+        const workspace = join(matrixRoot, cell.id);
+        controllerPreEditPlans[cell.id] = controllerPreEditPlanReceipt(
+          workspace,
+          controllerPlanContract,
+          runtimePreflightOptions?.browserEnv ?? process.env,
+        );
+      }
+      if (!isDeepStrictEqual(existing.controller_pre_edit_plans, controllerPreEditPlans)) {
+        throw new Error("controller-pre-edit-plan-checkpoint-drift");
+      }
+    } else {
+      for (const cell of plan.cells) {
+        const workspace = join(matrixRoot, cell.id);
+        assertUntouchedCell(workspace);
+        controllerPreEditPlans[cell.id] = executeControllerPreEditPlan(workspace, plan, {
+          env: runtimePreflightOptions?.browserEnv ?? process.env,
+        });
+        assertUnstartedWorkspace(
+          workspace,
+          readJson(join(workspace, ".benchmark", "manifest.json")),
+        );
+      }
+    }
+  }
+  if (bounded && !existing) {
+    for (const cell of plan.cells) {
+      const workspace = join(matrixRoot, cell.id);
+      assertUntouchedCell(workspace);
+      freshPreparedCellAttestations[cell.id] = preparedCellAttestation(workspace);
+    }
+  }
   const state = existing ?? {
     schema_version: plan.schema_version ?? "0.1",
     experiment_id: plan.experiment_id,
@@ -1217,6 +1393,7 @@ function executePreparedMatrixWithLease(root, {
     current_cell: null,
     cells: [],
   };
+  if (controllerPreEditPlans) state.controller_pre_edit_plans = controllerPreEditPlans;
   if (bounded && !existing) {
     state.execution_contract = {
       mode: "checkpoint-bounded",
