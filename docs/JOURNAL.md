@@ -5527,6 +5527,12 @@
 - Carried forward provider-zero geology/herbarium and added fresh photographic negative-return.
 - Fresh raw baseline is 75/85 with responsive+accessibility red; inventory102, focused2/2.
 - Next: commit exact bytes, then preregister Codex Luna/high with a new isolated named browser/root.
+## 2026-08-08 (Codex) · 1.9.755 freeze → 1.9.756 normalization repair
+- 1.9.755 prepare6/6 뒤 paired normalization mismatch로 provider0 동결됐다.
+- task/arms/order는 불변, policy만 paired-cross-task-comparison으로 교정했다.
+- 1.9.756 fresh root+exact omd1756을 사전등록했고 Cursor/model call0이다.
+- 다음은 새 browser+prepare/admission/preplan6/6이다.
+
 ## 2026-08-08 (Codex) · 1.9.755 provider-zero plan enum repair
 - 첫 prepare가 비표준 task-order enum을 provider/workspace0에서 거부했다.
 - exact cell order/denominator는 불변이고 enum만 fixed-preregistered로 교정했다.
