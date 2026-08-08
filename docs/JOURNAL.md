@@ -5914,6 +5914,12 @@
 - checkpoint continuation0→1→2→3, pacing30s×2, recovery/duplicate/Cursor0이다.
 - wall542,960ms, tokens2,140,479이며 complete root replay는 provider0 fail-close다.
 - 다음은 fresh comparative denominator이며 이 결과만으로 2.0 승격하지 않는다.
+## 2026-08-09 (Codex) · 1.9.811 frontier qualification complete
+- Luna/high Stage A 12/12 valid, retry/replacement/fallback/Cursor0이다.
+- OmD만3/3 UI-Resolved+proof; 경쟁3개는 모두0/3이다.
+- OmD 평균85·216.7s·713,108t, 전체 사용8,860,037t다.
+- 다음은 별도 frozen Reliability@3 확장 사전등록이다.
+
 ## 2026-08-09 (Codex) · 1.9.810 frontier qualification checkpoint 11
 - Impeccable seed는79/85·UI-Resolved false, tokens243,744다.
 - OmD 대비 score-6·wall-4.03%·tokens-62.53%다.
