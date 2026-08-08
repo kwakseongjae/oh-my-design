@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.762 blocked-first prepared
+- pre-intake blocked가 있으면 advisory dispatch0으로 suppress한다.
+- exact8 matrix lane4→2, provider-zero provider/model/Cursor0이다.
+- prime/reconcile/runner focused unit14/14 green이다.
+- checkpoint 뒤 Luna/high mixed lane2만 실행한다.
+
 ## 2026-08-08 (Codex) · 1.9.761 authority matrix pass
 - exact8/8, defer3/3, mandatory-loss0, blocked-retained로 matrix gate를 통과했다.
 - Luna/high lane4/4 clean, forbidden-auto/write/timeout/retry/Cursor0이다.

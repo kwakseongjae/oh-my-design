@@ -380,9 +380,10 @@ const lanePriority = [
   'architecture_implications',
   'ux_quality',
 ];
-const selectedLanes = lanePriority
+const blockingDecisionIds = decisions.filter((item) => item.disposition === 'blocked').map((item) => item.id);
+const selectedLanes = (blockingDecisionIds.length > 0 ? [] : lanePriority
   .filter((laneId) => laneReasons.has(laneId))
-  .slice(0, 2)
+  .slice(0, 2))
   .map((laneId) => ({
     ...lanes.find((lane) => lane.id === laneId),
     decision_ids: laneReasons.get(laneId),
@@ -401,6 +402,8 @@ const dispatchPlan = {
   schema_version: '0.1',
   policy: 'bounded-advisory-frozen-auto',
   dispatch_required: selectedLanes.length > 0,
+  dispatch_suppressed_by_blocked: blockingDecisionIds.length > 0,
+  blocking_decision_ids: blockingDecisionIds,
   max_pre_intake_calls: 2,
   max_pre_ship_contrarian_calls: 1,
   retry_budget: 0,

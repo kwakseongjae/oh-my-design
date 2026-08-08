@@ -26,7 +26,8 @@
 - selected lane4(0+2+2), provider/model/Cursor0, expected defer3, mandatory interview1, blocked1이다. provider-zero mismatch3은 mixed defer가 아직 실행되지 않은 정상 denominator다. unit10/10 green이다.
 - 1.9.761 live는 exact8/8, defer3/3, mandatory-loss0, blocked-retained, forbidden-auto0으로 matrix gate를 통과했다. Luna/high lane4/4, artifact4/4, write/timeout/retry/Cursor0이다.
 - input214,151(cached166,912), output5,962, reasoning3,195, wall154,464ms; deferral당 input71,383.67이다. missing-brand는 이미 blocked인데도 lane2를 소비했다.
-- 다음 1.9.762는 pre-intake blocked가 있으면 advisory dispatch0으로 fail-fast하는 cost gate를 추가하고 동일 exact8 oracle을 provider-zero로 검증한다.
+- 1.9.762 provider-zero는 pre-intake blocked가 있으면 advisory dispatch를 suppress한다. 동일 exact8 matrix에서 lane4→2(no-dispatch0, mixed2, blocked0), provider/model/Cursor0이다.
+- blocked dispatch suppression unit 포함 14/14 green이다. 다음은 checkpoint commit 뒤 Luna/high mixed lane2만 실행해 exact8/8과 1.9.761 대비 provider call -50%를 검증한다.
 - 1.9.756 paired comparison 6/6이 complete다. objective는 양 arm3/3, promotion proof는 current2/3 vs council3/3이며 pair outcome은 council lift1/tie2/loss0이다. 모든 셀 revision1, candidate/final exact, recovery/duplicate/Cursor0이다.
 - council은 current 대비 합산 wall -64,809ms(-11.03%), tokens -329,626(-14.95%)였지만 n=3 descriptive-only다. prereg 전체 gate는 양 arm Reliability3/3 요구 때문에 current2/3로 false; candidate Reliability3/3과 paired-loss0는 true다.
 - post-complete 재호출은 provider0에서 `not resumable: complete`로 fail-close했다. 다음은 fresh full-product hierarchy repeat와, 별도 bounded-dispatch(읽기전용 specialist debate) 실험을 분리 사전등록하는 1.9.757이다.

@@ -101,4 +101,21 @@ describe('design-council-prime', () => {
     expect(dispatch.selected_lanes.flatMap((lane: { decision_ids: string[] }) => lane.decision_ids)).not.toContain('exit-scope');
     expect(dispatch.selected_lanes.flatMap((lane: { decision_ids: string[] }) => lane.decision_ids)).not.toContain('primary-cta');
   });
+
+  it('suppresses advisory dispatch while a deterministic blocker is unresolved', () => {
+    const { ledger, dispatch } = fixture('Create a single screen exactly matching the official Acme design system.', {
+      surface_inventory: [],
+      audience_hypothesis: [],
+      wow_moment_candidates: [],
+    });
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'brand-reference-commitment')).toMatchObject({
+      disposition: 'blocked',
+    });
+    expect(dispatch).toMatchObject({
+      dispatch_required: false,
+      dispatch_suppressed_by_blocked: true,
+      blocking_decision_ids: ['brand-reference-commitment'],
+      selected_lanes: [],
+    });
+  });
 });

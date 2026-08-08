@@ -9,7 +9,7 @@ const runner = join(repoRoot, "benchmarks/ui-resolve-bench/scripts/run-council-e
 const fixture = join(repoRoot, "benchmarks/ui-resolve-bench/fixtures/council-effectiveness-pilot.json");
 const lunaFixture = join(repoRoot, "benchmarks/ui-resolve-bench/fixtures/council-effectiveness-luna-1.9.757.json");
 const selectivityFixture = join(repoRoot, "benchmarks/ui-resolve-bench/fixtures/council-selectivity-luna-1.9.758.json");
-const authorityMatrixFixture = join(repoRoot, "benchmarks/ui-resolve-bench/fixtures/council-authority-matrix-luna-1.9.761.json");
+const authorityMatrixFixture = join(repoRoot, "benchmarks/ui-resolve-bench/fixtures/council-authority-matrix-luna-1.9.762.json");
 const roots = [];
 
 afterEach(() => {
@@ -117,7 +117,7 @@ describe("council effectiveness pilot", () => {
     expect(summary).toMatchObject({
       execution_mode: "provider-zero",
       case_count: 3,
-      lane_call_count: 4,
+      lane_call_count: 2,
       provider_calls: 0,
       cursor_calls: 0,
       expected_effective_disposition_count: 8,
@@ -168,13 +168,13 @@ describe("council effectiveness pilot", () => {
     expect(summary).toMatchObject({
       execution_mode: "codex-live",
       runtime: "codex",
-      invocation_attempt_count: 4,
+      invocation_attempt_count: 2,
       provider_calls: 0,
       model_lane_calls: 0,
       cursor_calls: 0,
     });
     const laneRuns = summary.results.flatMap((item) => item.lane_runs);
-    expect(laneRuns).toHaveLength(4);
+    expect(laneRuns).toHaveLength(2);
     expect(laneRuns.every((run) => run.exit_code === null && run.spawn_error?.includes("ENOENT") && run.provider_call_started === false)).toBe(true);
     expect(laneRuns.every((run) => run.artifact_valid === false)).toBe(true);
   });
