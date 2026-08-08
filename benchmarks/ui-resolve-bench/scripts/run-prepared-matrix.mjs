@@ -1364,9 +1364,16 @@ function executePreparedMatrixWithLease(root, {
       for (const cell of plan.cells) {
         const workspace = join(matrixRoot, cell.id);
         assertUntouchedCell(workspace);
-        controllerPreEditPlans[cell.id] = executeControllerPreEditPlan(workspace, plan, {
-          env: runtimePreflightOptions?.browserEnv ?? process.env,
-        });
+        const receiptPath = join(workspace, ".omd", "controller-pre-edit-plan.json");
+        controllerPreEditPlans[cell.id] = existsSync(receiptPath)
+          ? controllerPreEditPlanReceipt(
+              workspace,
+              controllerPlanContract,
+              runtimePreflightOptions?.browserEnv ?? process.env,
+            )
+          : executeControllerPreEditPlan(workspace, plan, {
+              env: runtimePreflightOptions?.browserEnv ?? process.env,
+            });
         assertUnstartedWorkspace(
           workspace,
           readJson(join(workspace, ".benchmark", "manifest.json")),

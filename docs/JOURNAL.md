@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · provider-zero preplan checkpoint
+- controller pre-edit plan을 provider 실행과 분리하는 one-shot prepare script를 추가했다.
+- exact browser preflight+3-cell receipts 후 모델 실행기는 검증만 하고 재측정하지 않는다.
+- focused29/29, lint, prepared admission3/3 green; `omd1750` preplan 실행이 다음이다.
+
 ## 2026-08-08 (Codex) · 1.9.750 fresh task
 - architectural drawing-return provider-zero task를 추가했다.
 - raw75/85, responsive+accessibility only red, inventory103이다.
