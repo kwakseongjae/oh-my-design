@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.783 state-routing matrix prepared
+- paired admission6/6과 exact omd1782 preplan6/6이 통과했다.
+- task/skill/rotation/product untouched/browser attach가 모두 attested됐다.
+- provider/model/Cursor0이며 next는 folio current Luna/high 1셀이다.
+- retry/replacement/fallback/model substitution은 금지한다.
+
 ## 2026-08-09 (Codex) · 1.9.782 Luna state-routing prereg
 - current vs state-routed Luna/high fresh3×2 fixed matrix를 잠갔다.
 - serial/720s/pacing30s/checkpoint1/retry·replacement·fallback·Cursor0이다.

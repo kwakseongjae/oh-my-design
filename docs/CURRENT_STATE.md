@@ -4,11 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.782 Luna state-routing 2×3 preregistration 완료
+- 갱신: 2026-08-09 · 1.9.783 Luna state-routing provider-zero preparation 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.783은 1.9.782 matrix의 paired admission6/6과 exact omd1782 preplan6/6을 provider/model/Cursor0으로 통과했다. task/skill lock, paired rotation, product untouched, shipped runner measured1, existing browser attach가 모두 attested됐다.
+- 다음은 checkpoint당 1셀씩 Luna/high를 실행한다. root retry/replacement/fallback/model substitution은 금지하며 첫 셀은 `folio-luna-r1-current`다.
 - 1.9.782는 current vs state-routed council-first Luna/high 2×3을 사전등록했다. fresh3 paired/fixed order, serial, timeout720s, pacing30s, checkpoint1셀, retry/replacement/fallback/Cursor0이며 유일한 arm delta는 activation+provider-zero context packet이다.
 - gate는 양 arm Reliability@3, cell85/85·UI-Resolved·revision1·proof/candidate exact, paired loss0, unplanned question0이다. 다음은 exact local browser socket을 준비하고 provider-zero matrix preparation/admission/preplan6/6을 수행한다.
 - 1.9.781은 benchmark candidate에 ledger→handoff→minimum context-plan provider-zero preparation을 추가했다. fresh3 전부 PROPOSE_PLAN→resume_master, registered question0, defer2, model lane/provider/Cursor0이며 non-executable state는 fail-close한다. focused7/7+lint green이다.
