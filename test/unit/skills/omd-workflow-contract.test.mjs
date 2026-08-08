@@ -78,5 +78,7 @@ describe('OmD cross-skill delivery contract', () => {
     expect(conversation).toContain('Ask 1–4 tightly coupled questions');
     expect(conversation).toContain('The launcher renders the artifact');
     expect(master).not.toContain('scoreCandidatesForModifier');
+    expect(Buffer.byteLength(master)).toBeLessThanOrEqual(12_000);
+    expect(Buffer.byteLength(master) + Buffer.byteLength(execution)).toBeLessThanOrEqual(18_000);
   });
 });

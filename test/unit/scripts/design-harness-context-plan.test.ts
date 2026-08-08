@@ -33,6 +33,9 @@ describe('design-harness-context-plan', () => {
   });
 
   it('loads only the active master phase contract', () => {
+    expect(plan({ state: 'PROPOSE_PLAN', prefilled_slots: { audience: 'dev' } }, 'relay')).toMatchObject({
+      action: 'resume_master', master_required: true, sidecars: ['master-execution-phases.md'],
+    });
     expect(plan({ state: 'PROPOSE_PLAN', prefilled_slots: { audience: 'dev' } }).sidecars)
       .toEqual(['master-execution-phases.md']);
     expect(plan({ state: 'SLOT_GATE' }).sidecars).toEqual(['master-conversation.md']);

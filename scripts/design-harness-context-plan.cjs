@@ -29,6 +29,7 @@ if (status === 'blocked') {
   action = 'relay_questions';
 } else if (purpose === 'relay' && state === 'PROPOSE_PLAN') {
   action = 'resume_master';
+  sidecars.push('master-execution-phases.md');
 } else if (['PROPOSE_PLAN', 'PLAN_REVIEW', 'DESIGN_GENERATION', 'SHIP_GATE', 'ARCHIVE_RUN'].includes(state)) {
   sidecars.push('master-execution-phases.md');
   if (state === 'DESIGN_GENERATION' && handoff.visual_grounding_required === true) {

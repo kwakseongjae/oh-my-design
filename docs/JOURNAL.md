@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.773 state-routed canary prepared
+- runner가 context plan을 소비해 질문/blocked를 provider0 exact relay한다.
+- 동일 exact3 provider-zero3/3, provider/Cursor0; master byte/leakage gate가 green이다.
+- live 목표는 ready Luna/high1회만 호출해 provider3→1을 검증하는 것이다.
+- 다음은 preparation commit 뒤 Codex-native Luna/high exact1회다.
+
 ## 2026-08-08 (Codex) · 1.9.772 context planner
 - handoff state→최소 master/sidecar context를 provider-zero helper로 결정론화했다.
 - 질문/blocked는 master0, plan/conversation/visual은 active sidecar만 선택한다.

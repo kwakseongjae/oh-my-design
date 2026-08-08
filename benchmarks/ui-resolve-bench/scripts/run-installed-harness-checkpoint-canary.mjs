@@ -14,6 +14,7 @@ const execute = process.env.OMD_HARNESS_CANARY_EXECUTE === '1';
 const codexBinary = process.env.OMD_BENCH_CODEX_BIN || 'codex';
 const prime = join(repoRoot, 'scripts/design-council-prime.cjs');
 const materialize = join(repoRoot, 'scripts/design-council-handoff.cjs');
+const contextPlanner = join(repoRoot, 'scripts/design-harness-context-plan.cjs');
 
 function runNode(script, args, cwd) {
   return new Promise((resolveRun, reject) => {
@@ -47,11 +48,12 @@ function expectedFromHandoff(handoff) {
   return { action: 'propose_plan', question_ids: [], blocking_ids: [], may_proceed: handoff.state === 'PROPOSE_PLAN' };
 }
 
-function promptFor(testCase) {
-  return `You are validating the installed OmD harness checkpoint contract for case ${testCase.id}.\n\nRead contract/omd-harness.SKILL.md, contract/omd-master.md, .omd/run/handoff/.handoff.json, and its questions_file only when present. Do not design UI, do not answer product decisions, and do not edit any existing file.\n\nWrite exactly one file: .omd/run/council/master-decision.json. JSON shape: {"case_id":"${testCase.id}","action":"propose_plan|relay_questions|halt_blocked","question_ids":[],"blocking_ids":[],"may_proceed":true|false,"reason":"..."}.\n\nRules: PROPOSE_PLAN means propose_plan and may_proceed true. ask_user/product-authority means relay_questions with exactly the question ids from questions_file and may_proceed false. blocked/external-evidence means halt_blocked with exactly blocking_items ids, no question ids, and may_proceed false. Never turn blocked evidence into an interview and never proceed behind it.`;
+function promptFor(testCase, contextPlan) {
+  const selected = contextPlan.sidecars.map((file) => `contract/${file}`).join(', ');
+  return `You are validating the installed OmD harness checkpoint contract for case ${testCase.id}.\n\nRead contract/omd-harness.SKILL.md, contract/omd-master.md, .omd/run/handoff/.handoff.json, .omd/run/handoff/context-plan.json${selected ? `, and only these selected sidecars: ${selected}` : ''}. Read questions_file only when present. Do not read unselected sidecars, design UI, answer product decisions, or edit any existing file.\n\nWrite exactly one file: .omd/run/council/master-decision.json. JSON shape: {"case_id":"${testCase.id}","action":"propose_plan|relay_questions|halt_blocked","question_ids":[],"blocking_ids":[],"may_proceed":true|false,"reason":"..."}.\n\nRules: PROPOSE_PLAN means propose_plan and may_proceed true. ask_user/product-authority means relay_questions with exactly the question ids from questions_file and may_proceed false. blocked/external-evidence means halt_blocked with exactly blocking_items ids, no question ids, and may_proceed false. Never turn blocked evidence into an interview and never proceed behind it.`;
 }
 
-function runCodex(workspace, testCase) {
+function runCodex(workspace, testCase, contextPlan) {
   const started = process.hrtime.bigint();
   return new Promise((resolveRun) => {
     let settled = false;
@@ -82,7 +84,7 @@ function runCodex(workspace, testCase) {
     child.stdout.on('data', (chunk) => { stdout += chunk; });
     child.stderr.on('data', (chunk) => { stderr += chunk; });
     child.stdin.on('error', () => {});
-    child.stdin.end(promptFor(testCase));
+    child.stdin.end(promptFor(testCase, contextPlan));
     child.on('error', (error) => finish({ code: null, timed_out: false, stdout, stderr, usage: [], provider_call_started: false, spawn_error: error.message }));
     child.on('close', (code) => {
       const events = stdout.split('\n').filter(Boolean).flatMap((line) => { try { return [JSON.parse(line)]; } catch { return []; } });
@@ -115,16 +117,21 @@ for (const testCase of fixture.cases) {
   writeFileSync(join(runDir, 'ctx-prime.json'), `${JSON.stringify(testCase.ctx, null, 2)}\n`);
   cpSync(join(repoRoot, 'skills/omd-harness/SKILL.md'), join(workspace, 'contract/omd-harness.SKILL.md'));
   cpSync(join(repoRoot, 'agents/omd-master.md'), join(workspace, 'contract/omd-master.md'));
+  for (const file of ['master-conversation.md', 'master-legacy-production.md', 'master-execution-phases.md', 'master-visual-grounding.md']) {
+    cpSync(join(repoRoot, 'skills/omd-harness/references', file), join(workspace, 'contract', file));
+  }
   await runNode(prime, [workspace, runDir], workspace);
   await runNode(materialize, [workspace, runDir, 'prepare'], workspace);
+  await runNode(contextPlanner, [workspace, runDir, 'relay'], workspace);
   const handoff = JSON.parse(readFileSync(join(runDir, 'handoff/.handoff.json'), 'utf8'));
+  const contextPlan = JSON.parse(readFileSync(join(runDir, 'handoff/context-plan.json'), 'utf8'));
   const deterministic = expectedFromHandoff(handoff);
   const deterministicGate = arraysEqual(deterministic, testCase.expected);
   const artifactPath = join(runDir, 'council/master-decision.json');
   const ignored = ['.omd/run/council/master-decision.json'];
   const before = treeManifest(workspace, { ignore: ignored });
   let run = { code: null, timed_out: false, wall_ms: 0, stdout: '', stderr: 'provider execution disabled', usage: [], provider_call_started: false, spawn_error: null };
-  if (execute) run = await runCodex(workspace, testCase);
+  if (execute && contextPlan.master_required) run = await runCodex(workspace, testCase, contextPlan);
   const after = treeManifest(workspace, { ignore: ignored });
   const unauthorized = diffTreeManifests(before, after);
   let artifact = null;
@@ -132,12 +139,14 @@ for (const testCase of fixture.cases) {
     try { artifact = JSON.parse(readFileSync(artifactPath, 'utf8')); } catch { artifact = null; }
   }
   const liveGate = execute
-    ? run.code === 0 && !run.timed_out && unauthorized.length === 0 && artifact !== null
-      && artifact.case_id === testCase.id
-      && artifact.action === testCase.expected.action
-      && arraysEqual(artifact.question_ids, testCase.expected.question_ids)
-      && arraysEqual(artifact.blocking_ids, testCase.expected.blocking_ids)
-      && artifact.may_proceed === testCase.expected.may_proceed
+    ? contextPlan.master_required
+      ? run.code === 0 && !run.timed_out && unauthorized.length === 0 && artifact !== null
+        && artifact.case_id === testCase.id
+        && artifact.action === testCase.expected.action
+        && arraysEqual(artifact.question_ids, testCase.expected.question_ids)
+        && arraysEqual(artifact.blocking_ids, testCase.expected.blocking_ids)
+        && artifact.may_proceed === testCase.expected.may_proceed
+      : deterministicGate && unauthorized.length === 0 && !run.provider_call_started
     : null;
   writeFileSync(join(outputRoot, `${testCase.id}.events.jsonl`), run.stdout);
   writeFileSync(join(outputRoot, `${testCase.id}.stderr.log`), run.stderr);
@@ -146,6 +155,7 @@ for (const testCase of fixture.cases) {
     deterministic_gate: deterministicGate,
     expected: testCase.expected,
     observed_handoff: deterministic,
+    context_plan: contextPlan,
     live_gate: liveGate,
     provider_call_started: run.provider_call_started,
     exit_code: run.code,
