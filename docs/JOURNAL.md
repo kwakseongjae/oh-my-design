@@ -5914,6 +5914,12 @@
 - checkpoint continuation0→1→2→3, pacing30s×2, recovery/duplicate/Cursor0이다.
 - wall542,960ms, tokens2,140,479이며 complete root replay는 provider0 fail-close다.
 - 다음은 fresh comparative denominator이며 이 결과만으로 2.0 승격하지 않는다.
+## 2026-08-09 (Codex) · 1.9.803 frontier qualification checkpoint 4
+- UI UX Pro Max astro는 valid complete지만70/85·UI-Resolved false다.
+- revision2·browser proof0·proof compliance false, tokens612,082다.
+- arm당 1회는 cross-task라 ranking하지 않는다.
+- 다음 frozen 셀은 OmD seed다.
+
 ## 2026-08-09 (Codex) · 1.9.802 frontier qualification checkpoint 3
 - Impeccable score는 valid complete지만75/85·UI-Resolved false다.
 - revision4·browser proof0·proof compliance false, tokens937,192다.

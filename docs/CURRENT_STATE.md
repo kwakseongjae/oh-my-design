@@ -4,11 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.802 frontier skill qualification checkpoint 3 완료
+- 갱신: 2026-08-09 · 1.9.803 frontier skill qualification checkpoint 4 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.803 checkpoint4 `astro-luna-r1-uiux`는 valid complete지만70/85·UI-Resolved false다. revision2·static closure3(실패2)·browser mechanism0·proof compliance false, wall394,333ms·tokens612,082다.
+- 4/12에서 각 arm 1회가 관측됐지만 서로 다른 task이므로 direct ranking은 금지한다. 현재 frozen order의 다음 셀은 동일 seed task의 OmD arm `seed-luna-r1-omd`다.
 - 1.9.802 checkpoint3 `score-luna-r1-impeccable`은 valid complete지만75/85·UI-Resolved false다. revision4·static closure3(실패2)·browser mechanism0·proof compliance false이며 wall487,925ms·tokens937,192다.
 - Impeccable 결과도 no-retry 표본으로 보존한다. task가 서로 달라 현재 OmD/Anthropic/Impeccable 단일 관측을 직접 arm 우열로 비교하지 않는다. 다음 frozen cell은 `astro-luna-r1-uiux`다.
 - 1.9.801 checkpoint2 `seed-luna-r1-anthropic`은 valid complete지만81/85·UI-Resolved false다. content/evidence는 통과했으나 static closure4(실패1)·browser recovery1·proof compliance false이며 wall257,491ms·tokens393,406이다.
