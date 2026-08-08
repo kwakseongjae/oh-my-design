@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.762 blocked-first pass
+- exact8/8과 authority gate를 유지하면서 provider calls4→2로 줄였다.
+- input -49.83%, summed wall -53.4%; blocked case lane0 exact pass다.
+- selected Luna/high lane2/2 clean, write/timeout/retry/Cursor0이다.
+- 다음은 실제 omd-harness/master handoff 통합 1.9.763이다.
+
 ## 2026-08-08 (Codex) · 1.9.762 blocked-first prepared
 - pre-intake blocked가 있으면 advisory dispatch0으로 suppress한다.
 - exact8 matrix lane4→2, provider-zero provider/model/Cursor0이다.
