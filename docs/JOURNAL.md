@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.756 checkpoint4 pair1
+- album council-on은85/85·proof true로 current의 desktop full-row 실패를 회복했다.
+- wall176,125ms, tokens722,312, pacing30,009ms, Cursor0이다.
+- 단일 pair 결론은 금지하며 mineral council-off로 둘째 pair를 닫는다.
+
 ## 2026-08-08 (Codex) · 1.9.756 checkpoint3 pass
 - cylinder council-off는85/85, proof true, revision1, candidate exact다.
 - wall180,158ms, tokens634,801, pacing30,009ms, Cursor0이다.

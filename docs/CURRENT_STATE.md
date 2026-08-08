@@ -9,6 +9,8 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.756 album council-on 넷째 셀은85/85, proof true, revision1, candidate/final exact, recovery/duplicate/Cursor0이다. wall176,125ms, tokens722,312, pacing30,008.78ms다.
+- 첫 exact task pair가 닫혔고 album에서 council은 current가 놓친 desktop full-row invariant를 회복했다(proof0→1). 단일 pair이므로 우위 결론은 금지하며 다음 mineral council-off로 둘째 pair를 닫는다.
 - 1.9.756 cylinder council-off 셋째 셀은85/85, proof true, revision1, candidate/final exact, recovery/duplicate/Cursor0으로 pass했다. wall180,158ms, tokens634,801, pacing30,008.59ms다.
 - checkpoint3이며 current arm은 objective3/3·proof2/3이다. 다음은 album council-on으로 첫 exact task pair를 닫는다.
 - 1.9.756 mineral council-on 둘째 셀은85/85, proof true, revision1, candidate/final exact, recovery/duplicate/Cursor0으로 clean pass했다. wall189,076ms, tokens610,167이며 pacing은30,006.08ms다.
