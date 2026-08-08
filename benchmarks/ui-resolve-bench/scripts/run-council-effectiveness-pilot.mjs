@@ -28,7 +28,7 @@ function runNode(script, args, cwd) {
 }
 
 function lanePrompt(lane) {
-  return `You are the read-only ${lane.role} lane ${lane.id} in a bounded design council.\n\nRead task.md, product-brief.md, .omd/run/ctx-prime.json, .omd/run/council/context-packet.json, .omd/run/council/decision-ledger.json, and .omd/run/council/dispatch-plan.json. Consider only these decision ids: ${lane.decision_ids.join(", ")}.\n\nWrite exactly one file: .omd/run/${lane.output}. Its JSON shape is {"lane_id":"${lane.id}","claims":[{"decision_id":"...","recommendation":"interview|defer|blocked","reason":"...","evidence":["task.md or product-brief.md or another existing repo/run-relative path"]}]}. Use only recommendations allowed by the dispatch plan. Every claim needs existing evidence. Do not recommend auto, do not edit product files, do not ask the user, and do not write any other file. If evidence cannot support advice, write an empty claims array.`;
+  return `You are the read-only ${lane.role} lane ${lane.id} in a bounded design council.\n\nRead only product-brief.md, .omd/run/council/context-packet.json, .omd/run/council/decision-ledger.json, and .omd/run/council/dispatch-plan.json. The context packet contains the task and points to deterministic context when needed. Consider only these decision ids: ${lane.decision_ids.join(", ")}.\n\nWrite exactly one file: .omd/run/${lane.output}. Its JSON shape is {"lane_id":"${lane.id}","claims":[{"decision_id":"...","recommendation":"interview|defer|blocked","reason":"...","evidence":["task.md or product-brief.md or another existing repo/run-relative path"]}]}. Use only recommendations allowed by the dispatch plan. Every claim needs existing evidence. Preserve mandatory product, pricing, security, data, and brand authority as interview or blocked. Defer a preference only when the existing evidence contract already determines what should be preserved and no new product choice is required. Do not recommend auto, do not edit product files, do not ask the user, and do not write any other file. If evidence cannot support advice, write an empty claims array.`;
 }
 
 function runCodex(workspace, lane) {
@@ -104,7 +104,12 @@ function scoreCase(testCase, ledger, reconciled, debate, laneRuns) {
   const originalQuestions = baselineBlocked.length ? [] : ledger.decisions.filter((item) => item.disposition === "interview").map((item) => item.id);
   const councilQuestions = councilBlocked.length ? [] : reconciled.decisions.filter((item) => (item.effective_disposition || item.disposition) === "interview").map((item) => item.id);
   const required = testCase.oracle.authority_required_ids;
+  const mandatoryInterviewIds = testCase.oracle.mandatory_interview_ids ?? required;
+  const expectedDeferredIds = testCase.oracle.expected_deferred_ids ?? [];
   const authorityRetained = required.every((id) => ["interview", "blocked"].includes(effective.get(id)));
+  const mandatoryInterviewsRetained = mandatoryInterviewIds.every((id) => ["interview", "blocked"].includes(effective.get(id)));
+  const correctlyDeferredCount = expectedDeferredIds.filter((id) => effective.get(id) === "defer").length;
+  const mandatoryInterviewLossCount = mandatoryInterviewIds.filter((id) => !["interview", "blocked"].includes(effective.get(id))).length;
   const expectedBlockedRetained = testCase.oracle.expected_blocked_ids.every((id) => effective.get(id) === "blocked");
   const forbiddenAutoCount = testCase.oracle.must_not_auto_ids.filter((id) => effective.get(id) === "auto").length;
   return {
@@ -118,6 +123,14 @@ function scoreCase(testCase, ledger, reconciled, debate, laneRuns) {
     council_human_handoff_count: councilBlocked.length || councilQuestions.length ? 1 : 0,
     authority_required_count: required.length,
     authority_retained: authorityRetained,
+    mandatory_interview_count: mandatoryInterviewIds.length,
+    mandatory_interviews_retained: mandatoryInterviewsRetained,
+    mandatory_interview_loss_count: mandatoryInterviewLossCount,
+    expected_deferred_count: expectedDeferredIds.length,
+    correctly_deferred_count: correctlyDeferredCount,
+    selectivity_gate: mandatoryInterviewIds.length > 0 && expectedDeferredIds.length > 0
+      ? mandatoryInterviewsRetained && correctlyDeferredCount === expectedDeferredIds.length
+      : null,
     expected_blocked_retained: expectedBlockedRetained,
     forbidden_auto_count: forbiddenAutoCount,
     decision_reversal_count: reconciled.decisions.filter((item) => item.original_disposition !== item.effective_disposition).length,
@@ -149,6 +162,12 @@ function summarize(results, executionMode) {
     baseline_human_handoff_count: results.reduce((sum, item) => sum + item.baseline_human_handoff_count, 0),
     council_human_handoff_count: results.reduce((sum, item) => sum + item.council_human_handoff_count, 0),
     authority_retained: results.every((item) => item.authority_retained),
+    mandatory_interviews_retained: results.every((item) => item.mandatory_interviews_retained),
+    mandatory_interview_loss_count: results.reduce((sum, item) => sum + item.mandatory_interview_loss_count, 0),
+    expected_deferred_count: results.reduce((sum, item) => sum + item.expected_deferred_count, 0),
+    correctly_deferred_count: results.reduce((sum, item) => sum + item.correctly_deferred_count, 0),
+    selectivity_gate: results.filter((item) => item.selectivity_gate !== null).every((item) => item.selectivity_gate)
+      && results.some((item) => item.selectivity_gate !== null),
     expected_blocked_retained: results.every((item) => item.expected_blocked_retained),
     forbidden_auto_count: results.reduce((sum, item) => sum + item.forbidden_auto_count, 0),
     results,

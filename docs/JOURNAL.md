@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.758 selectivity prepared
+- mixed case는 baseline interview4: defer 기대3 + mandatory pricing1이다.
+- provider-zero lane2, provider/model/Cursor0, mandatory-loss0, forbidden-auto0이다.
+- compact packet과 tokens-per-correct-deferral metric을 사전등록했다.
+- checkpoint 뒤 Luna/high exact lane2 실행이 다음이다.
+
 ## 2026-08-08 (Codex) · 1.9.757 bounded council complete
 - Luna/high lane4/4, artifact4/4, write/timeout/retry/Cursor0으로 safe-advisory gate를 통과했다.
 - authority/blocked true, forbidden-auto0이나 질문1→1·handoff2→2라 효율 개선은 없었다.

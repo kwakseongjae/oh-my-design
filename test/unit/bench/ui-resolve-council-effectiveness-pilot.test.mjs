@@ -8,6 +8,7 @@ const repoRoot = resolve(import.meta.dirname, "../../..");
 const runner = join(repoRoot, "benchmarks/ui-resolve-bench/scripts/run-council-effectiveness-pilot.mjs");
 const fixture = join(repoRoot, "benchmarks/ui-resolve-bench/fixtures/council-effectiveness-pilot.json");
 const lunaFixture = join(repoRoot, "benchmarks/ui-resolve-bench/fixtures/council-effectiveness-luna-1.9.757.json");
+const selectivityFixture = join(repoRoot, "benchmarks/ui-resolve-bench/fixtures/council-selectivity-luna-1.9.758.json");
 const roots = [];
 
 afterEach(() => {
@@ -69,6 +70,36 @@ describe("council effectiveness pilot", () => {
       authority_retained: true,
       expected_blocked_retained: true,
       forbidden_auto_count: 0,
+    });
+  });
+
+  it("prepares a mixed mandatory and deferrable selectivity denominator", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-council-selectivity-"));
+    roots.push(root);
+    const result = spawnSync(process.execPath, [runner, selectivityFixture, root], {
+      cwd: repoRoot,
+      encoding: "utf8",
+      env: { ...process.env, OMD_COUNCIL_EXECUTE: "0" },
+    });
+    expect(result.status, result.stderr).toBe(0);
+    const summary = JSON.parse(readFileSync(join(root, "SUMMARY.json"), "utf8"));
+    expect(summary).toMatchObject({
+      execution_mode: "provider-zero",
+      case_count: 1,
+      lane_call_count: 2,
+      provider_calls: 0,
+      cursor_calls: 0,
+      mandatory_interviews_retained: true,
+      mandatory_interview_loss_count: 0,
+      expected_deferred_count: 3,
+      correctly_deferred_count: 0,
+      selectivity_gate: false,
+    });
+    expect(summary.results[0]).toMatchObject({
+      mandatory_interview_count: 1,
+      expected_deferred_count: 3,
+      correctly_deferred_count: 0,
+      selectivity_gate: false,
     });
   });
 
