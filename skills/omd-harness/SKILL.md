@@ -205,6 +205,26 @@ truth다. 아래 2.5.2–2.5.3 고정 picker는 실행하지 않는다.
 5. auto 값과 사용자 답을 slot에 매핑해 handoff에
    `decision_ledger_ref: "council/decision-ledger.json"`와 함께 기록.
 
+이 분류를 host가 prose로 다시 구현하지 않는다. council helper와 같은 폴더의
+`design-council-handoff.cjs`를 사용해 checkpoint를 materialize한다:
+
+```bash
+HANDOFF_HELPER="$(dirname "$COUNCIL_HELPER")/design-council-handoff.cjs"
+[ -f "$HANDOFF_HELPER" ] && node "$HANDOFF_HELPER" "$(pwd)" "${RUN_DIR}" prepare
+```
+
+- `status: blocked` → 질문을 만들지 않고 `blocking_items`만 사용자에게 알린 뒤 중단.
+- `status: ask_user` → `questions_file`의 product-authority 질문만 한 batch로 제시.
+- `state: PROPOSE_PLAN` → 질문 없이 Step 3으로 진행.
+
+질문 답은 `${RUN_DIR}/checkpoints/council-intake.answers.json`에 저장한 뒤 다음처럼
+병합한다. helper는 모든 required interview가 답변됐을 때만 PROPOSE_PLAN을 쓴다.
+
+```bash
+node "$HANDOFF_HELPER" "$(pwd)" "${RUN_DIR}" apply \
+  "${RUN_DIR}/checkpoints/council-intake.answers.json"
+```
+
 `interview`가 0개면 질문 없이 Step 3으로 간다. 이 단계는 deterministic
 intake 분류이며 multi-agent council이 실행됐다고 표현하지 않는다. helper
 누락·실패 때만 아래 legacy path를 사용한다.
@@ -740,9 +760,10 @@ while spawn_count < 12 (safety cap):
   if handoff.user_prose:
     print handoff.user_prose to user
 
-  if handoff.status == "done": break to Step 5
-  if handoff.status == "error": halt + show
-  if handoff.status == "ask_user":
+   if handoff.status == "done": break to Step 5
+   if handoff.status == "error": halt + show
+   if handoff.status == "blocked": relay handoff.user_prose + blocking_items; halt
+   if handoff.status == "ask_user":
     questions = JSON.parse(Read(handoff.questions_file))
     answers = AskUserQuestion({ questions: questions.questions })
     answers_file = "<RUN_DIR>/checkpoints/<handoff.checkpoint_id>.answers.json"

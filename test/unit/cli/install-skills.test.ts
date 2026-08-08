@@ -368,6 +368,7 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.claude/data/scripts/ctx-prime.cjs'))).toBe(true);
     expect(existsSync(join(root, '.claude/data/scripts/design-council-prime.cjs'))).toBe(true);
     expect(existsSync(join(root, '.claude/data/scripts/design-council-reconcile.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.claude/data/scripts/design-council-handoff.cjs'))).toBe(true);
   });
 
   it('installs self-contained Codex roles with only the native project skill path', async () => {
@@ -384,6 +385,7 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.codex/data/reference-quality.json'))).toBe(true);
     expect(existsSync(join(root, '.agents/skills/omd-init/scripts/query-references.mjs'))).toBe(true);
     expect(existsSync(join(root, '.codex/data/references/toss/DESIGN.md'))).toBe(true);
+    expect(existsSync(join(root, '.codex/data/scripts/design-council-handoff.cjs'))).toBe(true);
 
     const harness = readFileSync(join(root, '.agents/skills/omd-harness/SKILL.md'), 'utf8');
     expect(harness).toContain('dispatch_suppressed_by_blocked: true');
@@ -488,7 +490,44 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.opencode/data/scripts/ctx-prime.cjs'))).toBe(true);
     expect(existsSync(join(root, '.opencode/data/scripts/design-council-prime.cjs'))).toBe(true);
     expect(existsSync(join(root, '.opencode/data/scripts/design-council-reconcile.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.opencode/data/scripts/design-council-handoff.cjs'))).toBe(true);
     expect(dataDirFor('opencode', ['opencode'])).toBe('.opencode');
+  });
+
+  it('keeps council authority semantics identical across Claude, Codex, and OpenCode installs', async () => {
+    await runInstallSkills({
+      dir: root,
+      agents: ['claude-code', 'codex', 'opencode'],
+      skillsFilter: ['omd-harness'],
+      agentsFilter: ['omd-master'],
+    });
+
+    const harnesses = [
+      join(root, '.claude/skills/omd-harness/SKILL.md'),
+      join(root, '.agents/skills/omd-harness/SKILL.md'),
+      join(root, '.opencode/skills/omd-harness/SKILL.md'),
+    ].map((file) => readFileSync(file, 'utf8'));
+    for (const harness of harnesses) {
+      expect(harness).toContain('design-council-handoff.cjs');
+      expect(harness).toContain('choose-new/user-answerable/interview');
+      expect(harness).toContain('external-unverifiable/blocked');
+      expect(harness).toContain('if handoff.status == "blocked"');
+    }
+
+    const masters = [
+      join(root, '.claude/agents/omd-master.md'),
+      join(root, '.codex/agents/omd-master.toml'),
+      join(root, '.opencode/agents/omd-master.md'),
+    ].map((file) => readFileSync(file, 'utf8'));
+    for (const master of masters) {
+      expect(master).toContain('dispatch_suppressed_by_blocked: true');
+      expect(master).toContain('Never report a blocked item as a retained user');
+      expect(master).toContain('`blocked` — launcher relays the missing external evidence');
+    }
+
+    expect(existsSync(join(root, '.claude/data/scripts/design-council-handoff.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.codex/data/scripts/design-council-handoff.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.opencode/data/scripts/design-council-handoff.cjs'))).toBe(true);
   });
 
   it('uses native OpenCode project skill paths in portable sub-agent bodies', async () => {
@@ -569,6 +608,7 @@ describe('install-skills', () => {
       expect(existsSync(join(globalRoot, 'data', 'scripts', 'ctx-prime.cjs'))).toBe(true);
       expect(existsSync(join(globalRoot, 'data', 'scripts', 'design-council-prime.cjs'))).toBe(true);
       expect(existsSync(join(globalRoot, 'data', 'scripts', 'design-council-reconcile.cjs'))).toBe(true);
+      expect(existsSync(join(globalRoot, 'data', 'scripts', 'design-council-handoff.cjs'))).toBe(true);
       expect(existsSync(join(root, '.opencode'))).toBe(false);
     } finally {
       if (previousHome === undefined) delete process.env.HOME;

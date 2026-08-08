@@ -430,6 +430,7 @@ You write `<run_dir>/.handoff.json` after each turn:
 
 Status values:
 - `ask_user` — launcher calls AskUserQuestion(questions_file), saves answers.json, re-spawns master
+- `blocked` — launcher relays the missing external evidence in `blocking_items` and halts; no product-authority question is created
 - `done` — launcher relays user_prose, ends turn
 - `error` — launcher relays user_prose with error indication
 

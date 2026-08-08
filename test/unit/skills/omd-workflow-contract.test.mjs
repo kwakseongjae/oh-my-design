@@ -38,8 +38,11 @@ describe('OmD cross-skill delivery contract', () => {
     expect(harness).toContain('choose-new/user-answerable/interview');
     expect(harness).toContain('external-unverifiable/blocked');
     expect(harness).toMatch(/`blocked`(?:가|는) interview와\n?같은 것으로 세지 않는다/);
+    expect(harness).toContain('design-council-handoff.cjs');
+    expect(harness).toContain('if handoff.status == "blocked"');
     expect(master).toContain('dispatch_suppressed_by_blocked: true');
     expect(master).toContain('Never report a blocked item as a retained user');
     expect(master).toContain('Skip SLOT_GATE entirely only when no effective `blocked` item remains');
+    expect(master).toContain('`blocked` — launcher relays the missing external evidence');
   });
 });

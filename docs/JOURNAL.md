@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.764 deterministic handoff
+- ledger→questions/blocked/PROPOSE_PLAN 변환을 provider-zero helper로 고정했다.
+- fresh ready/interview/blocked run이 정확한 checkpoint shape로 분리된다.
+- Claude/Codex/OpenCode parity, focused17/17, install44/44, lint green; Cursor0이다.
+- 다음은 answer receipt 재진입 fail-close와 doctor helper 진단이다.
+
 ## 2026-08-08 (Codex) · 1.9.763 installed authority contract
 - authority mode와 blocked/interview 분리를 canonical harness/master에 통합했다.
 - blocker가 있으면 council lane과 plan을 먼저 억제하고 외부 근거만 요청한다.
