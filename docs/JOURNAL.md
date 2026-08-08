@@ -5404,6 +5404,12 @@
 - frozen Grok root와 분리한 Codex/Luna/high off/on 2-cell plan을 만들었다.
 - prior Grok prompt1/output0/change0, prior Luna0을 명시했다.
 - 다음은 provider-zero admission 후 Luna exact2회 실행이다.
+# 2026-08-08 — 1.9.749 frozen after first Luna cell
+- Geology completed one exact candidate/final revision but scored81/85 and proof failed.
+- Final runner lacked a measured pre-edit plan; hard-stop kept herbarium/photo provider-zero.
+- `omd1749` and Codex auth were ready, Cursor calls0; controller plan ownership is the defect.
+- Provider-free copy probe closed the plan; next is controller preplan + fresh preregistration.
+
 # 2026-08-08 — 1.9.749 provider-zero admission
 - Fresh root prepared3/3 with task/skill/source/evaluator locks attested.
 - Council intake is questions0/model lanes0/provider mutable false.

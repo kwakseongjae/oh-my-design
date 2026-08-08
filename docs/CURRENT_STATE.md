@@ -9,6 +9,10 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.749 geology Luna 셀은 단일 수정+candidate/final exact였지만81/85, proof fail이다. final runner가 measured pre-edit fit plan 부재로 exit1했고 preregistered hard-stop이 나머지2셀을 provider/model0으로 동결했다.
+- exact `omd1749`와 Codex auth는 실행 직전 green이었고 Cursor call0이다. root cause는 deterministic pre-edit plan을 controller가 아니라 모델에 맡긴 orchestration ownership 결함이다.
+- provider-free 복제 probe에서 `OMD_REFLOW_MODE=plan` shipped runner는 같은 `omd1749`에 성공했다. 다음은 controller가 provider 전 plan을 실행·attest하도록 수리하고, herbarium+photographic+fresh1로 새 root를 사전등록하는 단계다. 1.9.749는 재실행하지 않는다.
+
 - 1.9.749 fresh root는 scheduled/prepared3/3, provider/model0, execution artifacts0으로 admission green이다. task/skill/source/evaluator locks와 council questions0/model lanes0도 green이다.
 - exact `omd1749` isolated browser-harness 연결과 격리 Codex auth runtime preflight가 ready이며 Cursor 호출0이다. 다음은 PREPARATION commit 뒤 geology 첫 Luna 셀만 exact1회 실행한다.
 
