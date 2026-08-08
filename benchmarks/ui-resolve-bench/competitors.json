@@ -1126,6 +1126,25 @@
       "council_intake_mode": "prime-only-no-dispatch",
       "activation": "Use the installed $omd:apply skill for this task. Read .omd/run/council/decision-ledger.json before working. Preserve typed defer decisions without inventing values or asking questions. The prepared dispatch plan requires no model lane; do not simulate a council or contact the user."
     },
+    "omd-portable-state-routed-council-first": {
+      "label": "oh-my-design apply skill with state-routed council-first intake",
+      "kind": "local-skill",
+      "source_path": "skills/omd-apply",
+      "install_adapter": "omd-channel-name-v1",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "omd-apply",
+      "declared_name": "omd:apply",
+      "license": "MIT",
+      "eligible_tracks": [
+        "creation",
+        "landing-redesign",
+        "repair",
+        "evidence-unknown"
+      ],
+      "council_intake_mode": "state-routed-council-first",
+      "activation": "Use the installed $omd:apply skill for this task. Read .omd/run/council/decision-ledger.json, .omd/run/handoff/.handoff.json, and .omd/run/handoff/context-plan.json before working. Follow the prepared context-plan action exactly. Continue with the product edit only for resume_master. Preserve typed auto and defer decisions, never turn external-evidence blockers into questions, and never ask an unregistered question. The prepared dispatch plan requires no model lane; do not simulate additional council advice."
+    },
     "omd-locale-handoff": {
       "label": "oh-my-design locale handoff",
       "kind": "locale-skill-stack",

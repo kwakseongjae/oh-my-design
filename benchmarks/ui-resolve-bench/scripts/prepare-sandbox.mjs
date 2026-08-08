@@ -399,7 +399,11 @@ writeFileSync(join(out, ".benchmark", "PROMPT.md"), prompt, "utf8");
 
 let councilIntake = null;
 if (variant.council_intake_mode !== undefined) {
-  if (variant.council_intake_mode !== "prime-only-no-dispatch") {
+  const supportedCouncilModes = new Set([
+    "prime-only-no-dispatch",
+    "state-routed-council-first",
+  ]);
+  if (!supportedCouncilModes.has(variant.council_intake_mode)) {
     throw new Error(`${variantId} has an unsupported council_intake_mode`);
   }
   const runDir = join(out, ".omd/run");
@@ -422,7 +426,7 @@ if (variant.council_intake_mode !== undefined) {
   const ledger = readJson(ledgerPath);
   const plan = readJson(planPath);
   if (plan.dispatch_required !== false || plan.selected_lanes.length !== 0) {
-    throw new Error(`${variantId} prime-only preparation requires a zero-dispatch task`);
+    throw new Error(`${variantId} provider-zero preparation requires a zero-dispatch task`);
   }
   councilIntake = {
     mode: variant.council_intake_mode,
@@ -437,6 +441,39 @@ if (variant.council_intake_mode !== undefined) {
     model_lane_calls: 0,
     provider_mutable: false,
   };
+  if (variant.council_intake_mode === "state-routed-council-first") {
+    const handoffHelper = join(repoRoot, "scripts/design-council-handoff.cjs");
+    const contextPlanner = join(repoRoot, "scripts/design-harness-context-plan.cjs");
+    execFileSync(process.execPath, [handoffHelper, out, runDir, "prepare"], {
+      cwd: out,
+      stdio: "pipe",
+    });
+    execFileSync(process.execPath, [contextPlanner, out, runDir, "relay"], {
+      cwd: out,
+      stdio: "pipe",
+    });
+    const handoffPath = join(runDir, "handoff/.handoff.json");
+    const contextPlanPath = join(runDir, "handoff/context-plan.json");
+    const handoff = readJson(handoffPath);
+    const contextPlan = readJson(contextPlanPath);
+    if (contextPlan.action !== "resume_master" || contextPlan.master_required !== true) {
+      throw new Error(`${variantId} prepared a non-executable state: ${contextPlan.action}`);
+    }
+    councilIntake = {
+      ...councilIntake,
+      handoff_path: relative(out, handoffPath),
+      handoff_sha256: sha256(readFileSync(handoffPath)),
+      handoff_state: handoff.state,
+      handoff_status: handoff.status ?? null,
+      context_plan_path: relative(out, contextPlanPath),
+      context_plan_sha256: sha256(readFileSync(contextPlanPath)),
+      context_action: contextPlan.action,
+      master_required: contextPlan.master_required,
+      registered_question_count: councilIntake.question_count,
+      unplanned_question_count_max: 0,
+      blocked_external_evidence_is_not_interview: true,
+    };
+  }
 }
 const instructionFile = runtime === "claude-code" ? "CLAUDE.md" : "AGENTS.md";
 writeFileSync(join(out, instructionFile), [

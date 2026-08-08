@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.781 provider-zero state routing
+- candidate preparation이 ledger→handoff→minimum context-plan을 실제 생성한다.
+- fresh3 모두 PROPOSE_PLAN→resume_master, question0/defer2/lane0이다.
+- non-executable state fail-close, provider/model/Cursor0, focused7/7+lint green이다.
+- 다음은 exact adapter pin과 Luna/high 2×3 preregistration이다.
+
 ## 2026-08-09 (Codex) · 1.9.780 council state-routing task lock
 - fresh3 exact tree/prompt/starter/baseline/source-contract hash를 잠갔다.
 - registered/unplanned/authority/blocker/handoff intervention 계약도 고정했다.
