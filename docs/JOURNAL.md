@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.775 update recovery smoke
+- 세 host의 helper+execution sidecar 누락을 `omd update`로 복구했다.
+- 복구 후 native helper가 ready→master+execution을 동일하게 생성했다.
+- installed/update smoke2/2+lint green, provider/model/Cursor0이다.
+- 다음은 doctor의 provider-zero helper self-test 설계다.
+
 ## 2026-08-08 (Codex) · 1.9.774 installed-host routing smoke
 - Claude/Codex/OpenCode 실제 설치본 helper를 3상태씩 실행했다.
 - ready만 master+execution, 질문/blocked는 master0+sidecar0로 동일했다.
