@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.782 Luna state-routing prereg
+- current vs state-routed Luna/high fresh3×2 fixed matrix를 잠갔다.
+- serial/720s/pacing30s/checkpoint1/retry·replacement·fallback·Cursor0이다.
+- gate는 양 arm Reliability@3, paired loss0, unplanned question0이다.
+- 다음은 exact browser + provider-zero prepare/admission/preplan6/6이다.
+
 ## 2026-08-09 (Codex) · 1.9.781 provider-zero state routing
 - candidate preparation이 ledger→handoff→minimum context-plan을 실제 생성한다.
 - fresh3 모두 PROPOSE_PLAN→resume_master, question0/defer2/lane0이다.
