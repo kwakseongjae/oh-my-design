@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.751",
+  "experiment_id": "css-cascade-reliability-task-lock-1.9.751",
+  "status": "TWO_REVISED_UNEXPOSED_TASKS_PLUS_ONE_FRESH_TASK_LOCKED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "cursor_execution_allowed": false,
+  "runtime_policy": "Codex gpt-5.6-luna only",
+  "task_source_commit": "8a5878ef21cbe59086524efc505c0fe95616c43a",
+  "tasks": [
+    {
+      "task_id": "photographic-negative-return-v0.1",
+      "provenance": "unexposed-frozen-cell-from-1.9.749-and-1.9.750-revised-provider-zero",
+      "prior_model_exposures": 0,
+      "task_tree_sha256": "abbe376e0ee2d72dceede64b219cb8c5d8f575be4e9eb01b9f10c29c82cf2280",
+      "prompt_sha256": "9b98dd4ca43050ec07966090257b80b1cf891ef8acb164471a93bdee4590f6af",
+      "starter_sha256": "20737914abb87ee40eb96e6e07fb777fb985101176dd4c9668a28180a4536a0b",
+      "baseline_evidence_sha256": "19a684478dcb4c995ca43561e9621e15c3a626500fdbbacfa13574dde2a3f47a",
+      "source_contract_sha256": "aa1c3780d75151513695b6d25b1791047f08f8d8119f4c860c8c289a6bf0e22d"
+    },
+    {
+      "task_id": "architectural-drawing-return-v0.1",
+      "provenance": "unexposed-frozen-cell-from-1.9.750-revised-provider-zero",
+      "prior_model_exposures": 0,
+      "task_tree_sha256": "8f2db6cb24eee9d61002e2992238791eaefa7e0ef57e4e41bf0175aae250ae2c",
+      "prompt_sha256": "0e4461019987722f59fc2106073fbc93528e13536eebf5882c9fdb8edd1cd387",
+      "starter_sha256": "5e08c602c62f0ffcb7aa5d374a2f952596d0308218447f2cd50686cba4dfe60f",
+      "baseline_evidence_sha256": "f1d4586bba82c381d2fd40b28d96e897d8a6998e75621b9f7863220fc7057e39",
+      "source_contract_sha256": "fd82f513acabc34b95c9a1c8ce26dde79a43fa233b52acf493dfa843530a45a9"
+    },
+    {
+      "task_id": "ceramic-vessel-return-v0.1",
+      "provenance": "fresh-provider-zero-1.9.751",
+      "prior_model_exposures": 0,
+      "task_tree_sha256": "110c9642dfe47bebec36687c6e8ba2812b680fa20589ddaf204e480dc6f4d826",
+      "prompt_sha256": "508cdb75afe7939958f0158f41181358b4a01e7b9c296eeacf2906465d2f5fd4",
+      "starter_sha256": "7f0850dfdce51fa34d6fcdd9b0a13858e537ae35e8ff3ff942d77dfc3d4c48ed",
+      "baseline_evidence_sha256": "28cde2292a56a1ba1ba9c8fe6789432bc54ac70c6222c8470e2c771b4d85b100",
+      "source_contract_sha256": "02d2dbf56057e90b3a9c3dc14a5eec3099344984d11dfaaf788f1a297516a012"
+    }
+  ],
+  "raw_baseline": {
+    "scores": [75, 75, 75],
+    "objective_max": 85,
+    "failed_critical_gates": ["accessibility", "responsive"],
+    "coverage_complete": true
+  },
+  "validation": {
+    "task_inventory": 104,
+    "provider_calls": 0,
+    "cursor_calls": 0
+  },
+  "execution_allowed": false,
+  "next_gate": "Commit this lock, then preregister the exact Luna-only CSS-cascade reliability matrix."
+}

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.751 denominator lock
+- photographic→architectural→ceramic의 provider/model0 세 task를 잠갔다.
+- 세 baseline은75/85, responsive+accessibility only red; Cursor forbidden이다.
+- 다음은 Luna/high exact matrix+isolated `omd1751` 사전등록이다.
+
 ## 2026-08-08 (Codex) · 1.9.751 fresh task
 - ceramic vessel-return provider-zero task를 추가·finalize했다.
 - raw75/85, responsive+accessibility only red, inventory104다.
