@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.761 authority matrix pass
+- exact8/8, defer3/3, mandatory-loss0, blocked-retained로 matrix gate를 통과했다.
+- Luna/high lane4/4 clean, forbidden-auto/write/timeout/retry/Cursor0이다.
+- input214,151(cached166,912), output5,962, wall154,464ms다.
+- 다음은 already-blocked case dispatch를 2→0으로 줄이는 1.9.762다.
+
 ## 2026-08-08 (Codex) · 1.9.761 authority matrix prepared
 - no-dispatch/preserve, user-answerable interview, external-unverifiable block 3 cases를 잠갔다.
 - exact disposition8, defer3, mandatory1, blocked1 계약이다.
