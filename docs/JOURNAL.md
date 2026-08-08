@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.757 bounded council complete
+- Luna/high lane4/4, artifact4/4, write/timeout/retry/Cursor0으로 safe-advisory gate를 통과했다.
+- authority/blocked true, forbidden-auto0이나 질문1→1·handoff2→2라 효율 개선은 없었다.
+- input474,376(cached405,248), output7,600, summed wall201,038ms로 context 비용이 크다.
+- 다음은 mixed mandatory/deferrable + compact packet 1.9.758 provider-zero 설계다.
+
 ## 2026-08-08 (Codex) · 1.9.757 attempt1 infra-invalid
 - parent sandbox가 Codex state DB를 열지 못해 invocation4가 provider 전 종료됐다.
 - provider/model/Cursor/artifact/unauthorized-write0이며 결과는 infra-invalid로 동결했다.

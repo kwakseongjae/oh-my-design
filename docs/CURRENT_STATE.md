@@ -11,8 +11,9 @@
 
 - 1.9.757은 기존 Cursor-hardcoded council pilot을 Codex-native Luna/high bounded runner로 교체했다. live는 runtime=codex + gpt-5.6-luna만 허용하고 Cursor fixture는 spawn 전 fail-close한다.
 - provider-zero는 case3, selected lane4, provider/model/Cursor0이다. baseline/council question1/1, handoff2/2, authority·blocked 보존 true, forbidden-auto0이다. lane은 max2·retry0·선언 artifact 외 write0 계약이다.
-- live attempt1은 parent sandbox가 Codex state DB를 열지 못해 4 invocation이 53~62ms에 종료됐다. event/artifact/provider/model/Cursor/write 모두0이라 infrastructure-invalid-before-provider로 동결했다.
-- accounting은 invocation과 actual provider-start를 분리했고 spawn ENOENT 포함 unit4/4가 green이다. 다음은 실패 checkpoint commit 뒤 parent command만 승격해 동일 task/oracle의 Codex-native Luna/high 실행이다.
+- live attempt1은 parent sandbox가 Codex state DB를 열지 못해 provider 전 infra-invalid로 동결했다. 권한만 교정한 live2는 Luna/high lane4/4 정상, artifact4/4, timeout/retry/unauthorized-write/Cursor0이다.
+- safety gate는 authority·blocked 보존 true, forbidden-auto0이다. 질문1→1, handoff2→2, reversal0이라 interruption 감소는 입증하지 못했다. input474,376(cached405,248), output7,600, reasoning2,718, summed wall201,038ms다.
+- 1.9.757은 safe-advisory까지만 지지하고 effectiveness/UI lift 주장은 금지다. 다음 1.9.758은 mandatory-authority와 deferrable-preference를 같은 denominator에 넣고 compact packet의 정확한 선별력·token/removed-interruption을 provider-zero로 먼저 사전등록한다.
 - 1.9.756 paired comparison 6/6이 complete다. objective는 양 arm3/3, promotion proof는 current2/3 vs council3/3이며 pair outcome은 council lift1/tie2/loss0이다. 모든 셀 revision1, candidate/final exact, recovery/duplicate/Cursor0이다.
 - council은 current 대비 합산 wall -64,809ms(-11.03%), tokens -329,626(-14.95%)였지만 n=3 descriptive-only다. prereg 전체 gate는 양 arm Reliability3/3 요구 때문에 current2/3로 false; candidate Reliability3/3과 paired-loss0는 true다.
 - post-complete 재호출은 provider0에서 `not resumable: complete`로 fail-close했다. 다음은 fresh full-product hierarchy repeat와, 별도 bounded-dispatch(읽기전용 specialist debate) 실험을 분리 사전등록하는 1.9.757이다.
