@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.760 selectivity pass
+- 질문4→1, defer3/3, mandatory pricing interview 보존으로 exact gate를 통과했다.
+- Luna/high lane2/2 clean, forbidden-auto/write/timeout/retry/Cursor0이다.
+- input106,424(cached82,432), output2,939, wall76,539ms다.
+- 다음은 3 authority mode + no-dispatch multi-case 1.9.761이다.
+
 ## 2026-08-08 (Codex) · 1.9.760 authority source prepared
 - claim authority를 preserve/user-answerable/external-unverifiable/unknown으로 분리했다.
 - blocked는 external-unverifiable만, defer는 preserve-existing만 허용한다.
