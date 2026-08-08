@@ -6,6 +6,7 @@ import { join } from "node:path";
 import {
   benchmarkArtifactManifest,
   candidatePreflightStopReason,
+  completedControllerPreEditPlanReceipt,
   directBrowserCommandCount,
   executeControllerPreEditPlan,
   completedCellSummary,
@@ -102,6 +103,24 @@ const validRun = {
 };
 
 describe("UI-Resolve prepared matrix execution", () => {
+  it("keeps the checkpointed controller-plan receipt for a completed cell", () => {
+    const receipt = {
+      schema_version: "0.1",
+      provider_calls: 0,
+      cursor_calls: 0,
+      artifact_sha256: "a".repeat(64),
+    };
+    const existing = {
+      cells: [
+        { id: "done", status: "complete" },
+        { id: "next", status: "not-started" },
+      ],
+      controller_pre_edit_plans: { done: receipt },
+    };
+    expect(completedControllerPreEditPlanReceipt(existing, "done")).toBe(receipt);
+    expect(completedControllerPreEditPlanReceipt(existing, "next")).toBeNull();
+  });
+
   it("measures and attests the pre-edit fit plan before provider exposure", () => {
     const fixture = controllerPlanFixture();
     const calls = [];

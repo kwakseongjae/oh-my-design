@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.752 continuation freeze
+- second provider 전 completed-cell preplan 재검증 bug로 fail-close했다.
+- architectural+ceramic은 model0; 완료 receipt 보존+unstarted live revalidation으로 controller를 고쳤다.
+- focused30/30+lint green; 다음은 fresh v12와 1.9.753이다.
+
 ## 2026-08-08 (Codex) · 1.9.752 checkpoint1 pass
 - photographic Luna는85/85, revision1, proof true, candidate/final exact로 pass했다.
 - wall213,336ms, tokens766,998, recovery/duplicate/Cursor0이다.

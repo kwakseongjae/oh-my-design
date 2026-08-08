@@ -9,6 +9,10 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.752 checkpoint continuation은 두 번째 provider 호출 전에 `controller-pre-edit-plan-evidence-invalid`로 fail-close했다. 첫 photographic pass는 valid지만 root는 동결하며 architectural+ceramic은 여전히 provider/model0이다.
+- 원인은 완료 셀의 final closure artifact를 초기 preplan hash로 다시 검사한 controller bug다. 완료 셀은 checkpointed zero-call receipt를 유지하고 미실행 셀만 live preplan evidence를 재검증하도록 수리했으며 focused30/30+lint가 green이다.
+- 다음은 이 freeze+repair를 commit하고 architectural+ceramic+fresh v12를 1.9.753 denominator로 잠그는 단계다. 1.9.752는 재개하지 않는다.
+
 - 1.9.752 photographic Luna/high 첫 셀은85/85 resolved, revision1, static closure1, shipped browser1, proof compliance true, candidate/final exact로 clean pass했다. wall213,336ms, total tokens766,998, Cursor0이다.
 - exact cascade gate가 desktop 재오버라이드 없이 닫혔고 browser recovery/duplicate static은0이다. matrix는 checkpoint1이며 architectural+ceramic은 아직 provider/model0이다.
 - 다음은 CHECKPOINT-1 commit과 고정30초 pacing 뒤 architectural 셀 exact1회다.

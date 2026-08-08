@@ -584,6 +584,16 @@ function controllerPreEditPlanReceipt(workspace, contract, env) {
   return expected;
 }
 
+export function completedControllerPreEditPlanReceipt(existing, cellId) {
+  const completed = existing?.cells?.some((cell) => cell.id === cellId && cell.status === "complete");
+  if (!completed) return null;
+  const receipt = existing?.controller_pre_edit_plans?.[cellId];
+  if (!receipt || receipt.schema_version !== "0.1" || receipt.provider_calls !== 0 || receipt.cursor_calls !== 0) {
+    throw new Error("controller-pre-edit-plan-completed-receipt-invalid");
+  }
+  return receipt;
+}
+
 export function executeControllerPreEditPlan(
   workspace,
   plan,
@@ -1350,12 +1360,12 @@ function executePreparedMatrixWithLease(root, {
     controllerPreEditPlans = {};
     if (existing) {
       for (const cell of plan.cells) {
-        const workspace = join(matrixRoot, cell.id);
-        controllerPreEditPlans[cell.id] = controllerPreEditPlanReceipt(
-          workspace,
-          controllerPlanContract,
-          runtimePreflightOptions?.browserEnv ?? process.env,
-        );
+        controllerPreEditPlans[cell.id] = completedControllerPreEditPlanReceipt(existing, cell.id)
+          ?? controllerPreEditPlanReceipt(
+            join(matrixRoot, cell.id),
+            controllerPlanContract,
+            runtimePreflightOptions?.browserEnv ?? process.env,
+          );
       }
       if (!isDeepStrictEqual(existing.controller_pre_edit_plans, controllerPreEditPlans)) {
         throw new Error("controller-pre-edit-plan-checkpoint-drift");

@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "css-cascade-reliability-canary-1.9.752",
+  "status": "FROZEN_AFTER_CHECKPOINT_CONTINUATION_PREFLIGHT_FAILURE",
+  "provider_calls_in_failed_continuation": 0,
+  "model_exposures_in_failed_continuation": 0,
+  "cursor_calls": 0,
+  "completed_valid_cells": 1,
+  "unexposed_cells": 2,
+  "failure": "controller-pre-edit-plan-evidence-invalid",
+  "root_cause": {
+    "classification": "completed-cell-preplan-revalidation",
+    "detail": "Checkpoint continuation revalidated every cell against its initial pre-edit artifact hash. A completed cell legitimately has a final closure artifact, so its original controller receipt must be retained from the checkpoint while only unstarted cells are revalidated against live pre-edit evidence."
+  },
+  "repair": {
+    "completed_cells": "reuse the checkpointed provider-zero receipt after validating its sealed zero-call shape",
+    "unstarted_cells": "revalidate the live artifact and receipt before provider exposure",
+    "focused_tests": "30/30",
+    "lint": "passed"
+  },
+  "replay_same_root_allowed": false,
+  "next_action": "Use the two unexposed cells plus one fresh provider-zero task in a new 1.9.753 root with the repaired controller."
+}
