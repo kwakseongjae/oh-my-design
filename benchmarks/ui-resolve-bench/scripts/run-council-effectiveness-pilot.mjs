@@ -107,9 +107,9 @@ function scoreCase(testCase, ledger, reconciled, debate, laneRuns) {
   const mandatoryInterviewIds = testCase.oracle.mandatory_interview_ids ?? required;
   const expectedDeferredIds = testCase.oracle.expected_deferred_ids ?? [];
   const authorityRetained = required.every((id) => ["interview", "blocked"].includes(effective.get(id)));
-  const mandatoryInterviewsRetained = mandatoryInterviewIds.every((id) => ["interview", "blocked"].includes(effective.get(id)));
+  const mandatoryInterviewsRetained = mandatoryInterviewIds.every((id) => effective.get(id) === "interview");
   const correctlyDeferredCount = expectedDeferredIds.filter((id) => effective.get(id) === "defer").length;
-  const mandatoryInterviewLossCount = mandatoryInterviewIds.filter((id) => !["interview", "blocked"].includes(effective.get(id))).length;
+  const mandatoryInterviewLossCount = mandatoryInterviewIds.filter((id) => effective.get(id) !== "interview").length;
   const expectedBlockedRetained = testCase.oracle.expected_blocked_ids.every((id) => effective.get(id) === "blocked");
   const forbiddenAutoCount = testCase.oracle.must_not_auto_ids.filter((id) => effective.get(id) === "auto").length;
   return {

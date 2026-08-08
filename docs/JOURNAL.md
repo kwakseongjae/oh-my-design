@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.759 exact gate fail
+- preserve-existing 분류로 defer3/3은 달성했지만 pricing interview를 blocked로 바꿨다.
+- raw evaluator false positive를 rescore해 exact interview loss1, gate fail로 교정했다.
+- lane2/2 clean, Cursor0, input106,941, wall72,041ms다.
+- 다음은 user-answerable interview와 external-unverifiable blocked 경계다.
+
 ## 2026-08-08 (Codex) · 1.9.759 preservation mode prepared
 - lane claim에 preserve-existing/choose-new/unknown 분류를 강제했다.
 - defer는 preserve-existing만 accept하며 conservative reconcile은 유지했다.

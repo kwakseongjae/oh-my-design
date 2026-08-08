@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-selectivity-luna-1.9.759",
+  "status": "complete-gate-failed",
+  "execution_mode": "codex-live-rescored",
+  "runtime": "codex",
+  "model_requested": "gpt-5.6-luna",
+  "effort": "high",
+  "retry_budget": 0,
+  "selected_lane_count": 2,
+  "provider_calls": 2,
+  "cursor_calls": 0,
+  "valid_artifact_count": 2,
+  "unauthorized_write_count": 0,
+  "baseline_question_count": 4,
+  "council_question_count": 0,
+  "correctly_deferred_count": 3,
+  "expected_deferred_count": 3,
+  "mandatory_interviews_retained": false,
+  "mandatory_interview_loss_count": 1,
+  "council_blocked_count": 1,
+  "selectivity_gate": false,
+  "forbidden_auto_count": 0,
+  "total_lane_wall_ms": 72041,
+  "token_usage": {
+    "input_tokens": 106941,
+    "cached_input_tokens": 83456,
+    "output_tokens": 2797,
+    "reasoning_output_tokens": 1391
+  },
+  "effective_dispositions": {
+    "primary-audience": "defer",
+    "exit-scope": "defer",
+    "primary-cta": "defer",
+    "regulated-commitment": "blocked"
+  },
+  "evaluation_correction": "The raw evaluator treated blocked as retaining a mandatory interview. Provider-zero rescoring corrected the gate to require the exact interview disposition.",
+  "general_effectiveness_claim_allowed": false
+}
