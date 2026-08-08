@@ -40,4 +40,42 @@ describe("state-routed council-first sandbox preparation", () => {
       rmSync(parent, { recursive: true, force: true });
     }
   });
+
+  it.each([
+    ["papyrus-leaf-return-v0.1", { lifecycle_stage: "await_advisory", pre_reconcile_state: "product_authority_pending", registered_question_count: 1 }],
+    ["ceramic-sherd-return-v0.1", { lifecycle_stage: "await_advisory", pre_reconcile_state: "advisory_ready", registered_question_count: 0 }],
+    ["photographic-proof-return-v0.1", { lifecycle_stage: "checkpoint_hold", context_action: "relay_blocked", implementation_allowed: false }],
+  ])("prepares the full routed lifecycle for %s", (taskId, expected) => {
+    const parent = mkdtempSync(join(tmpdir(), "omd-council-lifecycle-"));
+    const out = join(parent, "run");
+    try {
+      execFileSync(process.execPath, [
+        prepare,
+        "--task", taskId,
+        "--variant", "omd-portable-state-routed-council-lifecycle",
+        "--runtime", "codex",
+        "--out", out,
+        "--allow-dirty-source",
+      ], { cwd: repoRoot, encoding: "utf8" });
+      const manifest = JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8"));
+      expect(manifest.council_intake).toMatchObject({
+        mode: "state-routed-council-lifecycle",
+        model_lane_calls: 0,
+        provider_mutable: false,
+        unplanned_question_count_max: 0,
+        blocked_external_evidence_is_not_interview: true,
+        ...expected,
+      });
+      if (expected.lifecycle_stage === "await_advisory") {
+        expect(manifest.council_intake.dispatch_required).toBe(true);
+        expect(manifest.council_intake.selected_lanes.length).toBeGreaterThan(0);
+        expect(manifest.council_intake.implementation_allowed).toBe(false);
+      } else {
+        expect(manifest.council_intake.dispatch_required).toBe(false);
+        expect(manifest.council_intake.master_required).toBe(false);
+      }
+    } finally {
+      rmSync(parent, { recursive: true, force: true });
+    }
+  });
 });

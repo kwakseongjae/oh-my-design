@@ -18,7 +18,7 @@ function readTask(id) {
 describe("task contract mutation coverage", () => {
   it("admits all current public task contracts with exact directory identity", () => {
     const taskIds = readdirSync(tasksRoot).sort();
-    expect(taskIds).toHaveLength(111);
+    expect(taskIds).toHaveLength(114);
     for (const id of taskIds) expect(validateTaskContract(readTask(id), { expectedId: id })).toBeTruthy();
   });
 

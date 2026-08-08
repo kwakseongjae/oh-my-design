@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.791 routed lifecycle provider-zero
+- interview/block/advisory-ready fresh UI task3개를 75/85 baseline으로 추가했다.
+- lifecycle adapter가 checkpoint 전 implementation을 fail-close한다.
+- blocker는 dispatch0·relay_blocked, 나머지는 await_advisory다.
+- focused10/10+lint, browser-harness3/3, provider/model/Cursor0이다.
+
 ## 2026-08-09 (Codex) · 1.9.790 frontier readiness sync
 - 1.9.789 fresh Luna/high UI 결과를 normative10-gate snapshot에 연결했다.
 - audit는 pass0·partial5·open3·external2, 2.0 promotion BLOCK을 유지한다.

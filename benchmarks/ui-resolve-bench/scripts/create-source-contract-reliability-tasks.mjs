@@ -19,8 +19,10 @@ const v11BaselineRoot = "/private/tmp/omd-css-cascade-reliability-baselines-1.9.
 const v12BaselineRoot = "/private/tmp/omd-checkpoint-reliability-baselines-1.9.753-v12";
 const v13BaselineRoot = "/private/tmp/omd-council-comparison-baselines-1.9.754-v13";
 const v14BaselineRoot = "/private/tmp/omd-council-state-routing-baselines-1.9.779-v14";
+const v15BaselineRoot = "/private/tmp/omd-council-routed-lifecycle-baselines-1.9.791-v15";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
-const taskSet = process.argv.includes("--v14") ? "v14" : process.argv.includes("--v13") ? "v13" : process.argv.includes("--v12") ? "v12" : process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const resumeDraft = process.argv.includes("--resume-draft");
+const taskSet = process.argv.includes("--v15") ? "v15" : process.argv.includes("--v14") ? "v14" : process.argv.includes("--v13") ? "v13" : process.argv.includes("--v12") ? "v12" : process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -300,7 +302,34 @@ const v14Cases = [
   },
 ];
 
-const cases = taskSet === "v14" ? v14Cases : taskSet === "v13" ? v13Cases : taskSet === "v12" ? v12Cases : taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v15Cases = [
+  {
+    id: "papyrus-leaf-return-v0.1", title: "Papyrus leaf return review", eyebrow: "Papyrus archive · leaf return", heading: "Papyrus-leaf return review", recordHeading: "Leaf register", recordSummary: "Four supplied leaf groups mapped to six archival folders.",
+    records: [["LEAF-SCR-8124",["FOLDER-19310","FOLDER-19311"]],["LEAF-ILL-8238",["FOLDER-19312"]],["LEAF-LTR-8351",["FOLDER-19313","FOLDER-19314"]],["LEAF-FRG-8467",["FOLDER-19315"]]],
+    windows: [["ROOM-A2","08:15–08:35"],["ROOM-D4","11:20–11:40"],["ROOM-G1","14:45–15:05"]], views: [["leaves","Leaf register"],["windows","Room windows"],["decision","Return decision"]], toggle: "Include fiber-note copy", fieldLabel: "Return curator", validValue: "LEAF-SCR-8124 return review", target: "LEAF-SCR-8124 + FOLDER-19310", evidence: "4 leaf groups · 6 archival folders · 3 room windows", state: "Review open", action: "Open return record", footer: "Papyrus archive · supplied return evidence only",
+    unknowns: ["script verified","leaf stable","fiber calibrated","provenance validated","folder seal verified","room accepted","catalog published","return approved"], palette: {canvas:"#F3F0EA",surface:"#FFFDF8",ink:"#332E27",muted:"#736F68",border:"#ACA296",primary:"#69523D",accent:"#6E5E79"}, columns: "repeat(2,392px)", windowColumns: "repeat(3,278px)", decisionMin: "562px", cardRadius: 4, domain: "papyrus leaf-return ledger", guidanceSelector: "header > p.guidance-copy",
+    councilInstruction: "The product owner must choose the data-retention policy before implementation; do not decide that regulated commitment on their behalf.",
+    councilRoutingOracle: { initial_state:"ask_user", required_question_ids:["regulated-commitment"], simulated_answers:{"regulated-commitment":"Retain reviewer records for 30 days, then delete them."}, post_answer_state:"resume_master", implementation_allowed_before_answer:false },
+  },
+  {
+    id: "photographic-proof-return-v0.1", title: "Photographic proof return review", eyebrow: "Photo archive · proof return", heading: "Photographic proof return review", recordHeading: "Proof register", recordSummary: "Five supplied proof groups mapped to seven archival sleeves.",
+    records: [["NEG-GLS-9124",["SLEEVE-20410","SLEEVE-20411"]],["NEG-FLM-9238",["SLEEVE-20412"]],["NEG-PLT-9351",["SLEEVE-20413","SLEEVE-20414"]],["NEG-COL-9467",["SLEEVE-20415"]],["NEG-PAN-9580",["SLEEVE-20416"]]],
+    windows: [["VAULT-B3","07:25–07:45"],["VAULT-E6","10:10–10:30"],["VAULT-H2","13:30–13:50"],["VAULT-K5","16:05–16:25"]], views: [["negatives","Negative register"],["windows","Vault windows"],["decision","Return decision"]], toggle: "Include emulsion-note copy", fieldLabel: "Return archivist", validValue: "NEG-GLS-9124 return review", target: "NEG-GLS-9124 + SLEEVE-20410", evidence: "5 negative groups · 7 archival sleeves · 4 vault windows", state: "Review open", action: "Open return record", footer: "Photo archive · supplied return evidence only",
+    unknowns: ["image verified","negative stable","emulsion calibrated","provenance validated","sleeve seal verified","vault accepted","catalog published","return approved"], palette: {canvas:"#EEF1F2",surface:"#FCFEFF",ink:"#283238",muted:"#6C7479",border:"#A0A9AE",primary:"#475F69",accent:"#755B67"}, columns: "repeat(3,290px)", windowColumns: "repeat(4,222px)", decisionMin: "574px", cardRadius: 3, domain: "photographic negative-return ledger", guidanceSelector: "header > p.guidance-copy",
+    councilInstruction: "The finished page must state the actual conversion rate even though no measured conversion source is supplied.",
+    councilRoutingOracle: { initial_state:"blocked", required_blocking_ids:["required-factual-claim"], post_answer_state:null, implementation_allowed_before_answer:false },
+  },
+  {
+    id: "ceramic-sherd-return-v0.1", title: "Ceramic sherd return review", eyebrow: "Ceramics archive · sherd return", heading: "Ceramic-sherd return review", recordHeading: "Sherd register", recordSummary: "Six supplied sherd groups mapped to eight archival trays.",
+    records: [["SHERD-RIM-1124",["TRAY-31510","TRAY-31511"]],["SHERD-BDY-1238",["TRAY-31512"]],["SHERD-BSE-1351",["TRAY-31513","TRAY-31514"]],["SHERD-HND-1467",["TRAY-31515"]],["SHERD-DEC-1580",["TRAY-31516"]],["SHERD-GLZ-1694",["TRAY-31517"]]],
+    windows: [["STORE-C1","07:10–07:30"],["STORE-F4","09:50–10:10"],["STORE-I2","13:00–13:20"],["STORE-L5","15:40–16:00"]], views: [["sherds","Sherd register"],["windows","Store windows"],["decision","Return decision"]], toggle: "Include fabric-note copy", fieldLabel: "Return registrar", validValue: "SHERD-RIM-1124 return review", target: "SHERD-RIM-1124 + TRAY-31510", evidence: "6 sherd groups · 8 archival trays · 4 store windows", state: "Review open", action: "Open return record", footer: "Ceramics archive · supplied return evidence only",
+    unknowns: ["ware verified","sherd stable","fabric calibrated","provenance validated","tray seal verified","store accepted","catalog published","return approved"], palette: {canvas:"#F2EFEC",surface:"#FFFDFB",ink:"#332D2A",muted:"#746F6C",border:"#ACA19B",primary:"#685047",accent:"#655F79"}, columns: "repeat(3,292px)", windowColumns: "repeat(4,222px)", decisionMin: "576px", cardRadius: 5, domain: "ceramic sherd-return ledger", guidanceSelector: "header > p.guidance-copy",
+    councilInstruction: "Blend dashboard and home composition cues while preserving this existing operational screen; resolve only evidence-backed, reversible visual choices.",
+    councilRoutingOracle: { initial_state:"await_advisory", required_dispatch_min:1, post_advisory_state:"resume_master", implementation_allowed_before_advisory:false },
+  },
+];
+
+const cases = taskSet === "v15" ? v15Cases : taskSet === "v14" ? v14Cases : taskSet === "v13" ? v13Cases : taskSet === "v12" ? v12Cases : taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -364,6 +393,7 @@ function task(c, contract) {
     protected_known_patterns:[c.target,c.evidence], protected_unknown_selectors:["blockquote","[class*='testimonial' i]","[class*='logo-wall' i]","[class*='social-proof' i]"],
     design_oracle:{page_background:c.palette.canvas,primary_action:c.palette.primary,accent:c.palette.accent,ink:c.palette.ink,surface:c.palette.surface,border:c.palette.border,muted_text:c.palette.muted,card_radius_px:c.cardRadius,control_radius_px:c.cardRadius,font_family:{body_any:["Arial"],display_any:["Georgia"]},selectors:{primary_action:"[data-primary-action]",card:"[data-bench-design-role='record-register']",display:"h1"}},
     omd_reflow_source_contract:contract,
+    ...(c.councilRoutingOracle ? { council_routing_oracle:c.councilRoutingOracle } : {}),
   };
 }
 
@@ -383,11 +413,14 @@ function design(c) {
 
 function prompt(c) {
   const unitCount=c.records.reduce((sum,[,units])=>sum+units.length,0);
-  return `Improve the supplied ${c.domain} so operators can inspect assignments, operational windows, and the decision confidently on desktop and narrow screens.\n\nPreserve all ${c.records.length} record identifiers, all ${unitCount} assigned container identifiers and their exact assignments, all ${c.windows.length} supplied windows, the three review views, the note toggle, the reviewer form, and all stated summary evidence. Do not invent ${c.unknowns.join(", ")}. Use the existing DESIGN.md as ground truth.\n\nFinish the implementation in \`index.html\`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The record register, separate window strip, and separate decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.\n`;
+  const councilInstruction = c.councilInstruction ? `${c.councilInstruction}\n\n` : "";
+  return `Improve the supplied ${c.domain} so operators can inspect assignments, operational windows, and the decision confidently on desktop and narrow screens.\n\n${councilInstruction}Preserve all ${c.records.length} record identifiers, all ${unitCount} assigned container identifiers and their exact assignments, all ${c.windows.length} supplied windows, the three review views, the note toggle, the reviewer form, and all stated summary evidence. Do not invent ${c.unknowns.join(", ")}. Use the existing DESIGN.md as ground truth.\n\nFinish the implementation in \`index.html\`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The record register, separate window strip, and separate decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.\n`;
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v14"
+  const baselineRoot = taskSet === "v15"
+    ? v15BaselineRoot
+    : taskSet === "v14"
     ? v14BaselineRoot
     : taskSet === "v13"
     ? v13BaselineRoot
@@ -442,7 +475,13 @@ function normalizeBaseline(c, score) {
 for (const c of cases) {
   const root=join(tasksRoot,c.id);
   if (phase === "draft") {
-    if (existsSync(root)) throw new Error(`refusing to overwrite existing task: ${c.id}`);
+    if (existsSync(root)) {
+      if (resumeDraft) {
+        console.log(`skipped existing ${c.id}`);
+        continue;
+      }
+      throw new Error(`refusing to overwrite existing task: ${c.id}`);
+    }
     mkdirSync(join(root,"starter"),{recursive:true});
     writeFileSync(join(root,"PROMPT.md"),prompt(c));
     writeFileSync(join(root,"starter","DESIGN.md"),design(c));

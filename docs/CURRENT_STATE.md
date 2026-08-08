@@ -4,11 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.790 frontier readiness evidence sync 완료
+- 갱신: 2026-08-09 · 1.9.791 council routed lifecycle provider-zero 준비 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.791은 fresh UI 3개로 actual routed lifecycle denominator를 추가했다: papyrus=authority interview, photographic-proof=external blocker, ceramic=bounded advisory-ready다. raw baseline은 모두75/85·responsive/accessibility red로 정렬됐다.
+- full lifecycle adapter는 await_advisory/question/block/resume를 분리한다. interview/advisory는 reconcile 전 implementation=false, blocker는 dispatch0·relay_blocked·master=false다. focused10/10+lint green, provider/model/Cursor0이다.
+- browser-harness `omd1791` local CDP로 3/3 load·record count4/5/6을 확인했다. raw overflow110/188/194px는 baseline에 사전 기록된 의도된 responsive debt다.
+- 다음은 task/prompt/starter/oracle/helper/source hash를 잠그고, simulated answer receipt 후만 interview implementation을 허용하는 Luna/high no-retry lifecycle matrix를 사전등록한다.
 - 1.9.790은 1.9.789 Luna/high fresh UI matrix를 2.0 normative readiness에 반영했다. audit는 pass0/10·partial5·open3·external2, promotion BLOCK을 유지한다.
 - council gate에서 닫힌 범위는 zero-question `PROPOSE_PLAN` 3/3·paired loss0·unplanned question0이다. actual authority interview, external-evidence blocker, live bounded advisory dispatch는 미증명이므로 status를 partial로 유지했다.
 - 다음은 fresh 3-state experiment를 새 root에서 사전등록한다: interview는 simulated registered answer receipt 전까지 implementation0, blocker는 product edit0, advisory-ready는 bounded read-only dispatch 후 single owner만 실행한다.

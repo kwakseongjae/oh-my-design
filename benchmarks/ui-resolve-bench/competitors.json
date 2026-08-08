@@ -1145,6 +1145,25 @@
       "council_intake_mode": "state-routed-council-first",
       "activation": "Use the installed $omd:apply skill for this task. Read .omd/run/council/decision-ledger.json, .omd/run/handoff/.handoff.json, and .omd/run/handoff/context-plan.json before working. Follow the prepared context-plan action exactly. Continue with the product edit only for resume_master. Preserve typed auto and defer decisions, never turn external-evidence blockers into questions, and never ask an unregistered question. The prepared dispatch plan requires no model lane; do not simulate additional council advice."
     },
+    "omd-portable-state-routed-council-lifecycle": {
+      "label": "oh-my-design apply skill with full state-routed council lifecycle",
+      "kind": "local-skill",
+      "source_path": "skills/omd-apply",
+      "install_adapter": "omd-channel-name-v1",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "omd-apply",
+      "declared_name": "omd:apply",
+      "license": "MIT",
+      "eligible_tracks": [
+        "creation",
+        "landing-redesign",
+        "repair",
+        "evidence-unknown"
+      ],
+      "council_intake_mode": "state-routed-council-lifecycle",
+      "activation": "Use the installed $omd:apply skill only after the lifecycle controller has written .omd/run/handoff/context-plan.json. Follow its action exactly. Never edit before bounded advisory work is reconciled, never edit while the action is relay_questions or relay_blocked, and continue only for resume_master after a valid answer receipt when one was required. Do not ask unregistered questions. One main agent owns the eventual product edit."
+    },
     "omd-locale-handoff": {
       "label": "oh-my-design locale handoff",
       "kind": "locale-skill-stack",
