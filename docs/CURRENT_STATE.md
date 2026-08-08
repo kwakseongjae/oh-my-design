@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.749 plan은 geology→herbarium→photographic, Codex/Luna/high, council-on, timeout720s, concurrency1, pacing30s, retry/replacement0으로 사전등록했다. Cursor는 명시적으로 금지했다.
+- 새 browser contract는 exact `omd1749` named socket, controller-started local Chrome, attach-only, profile/cloud none을 요구한다. 다음은 plan commit 뒤 provider-zero root prepare/admission과 runtime preflight다.
+
 - 1.9.749 분모를 geology(미노출), herbarium(미노출), fresh photographic negative-return으로 잠갔다. manuscript는 1.9.748에서 Luna에 노출됐으므로 제외하며 1.9.748 root는 재개하지 않는다.
 - fresh task raw baseline은75/85, responsive+accessibility만 red이고 provider/model call0이다. inventory102와 focused hidden-coverage2/2가 green이다.
 - 이번 실행은 Cursor를 전면 금지한다. 다음은 exact task bytes를 commit한 뒤 Codex `gpt-5.6-luna`/high 전용 1.9.749 plan과 새 isolated named browser/root를 사전등록하는 단계다.

@@ -5404,6 +5404,12 @@
 - frozen Grok root와 분리한 Codex/Luna/high off/on 2-cell plan을 만들었다.
 - prior Grok prompt1/output0/change0, prior Luna0을 명시했다.
 - 다음은 provider-zero admission 후 Luna exact2회 실행이다.
+# 2026-08-08 — 1.9.749 Luna plan preregistered
+- Locked geology → herbarium → photographic at Codex Luna/high, 720s, concurrency1, pacing30s.
+- Cursor is forbidden; exact isolated `omd1749` named attachment is mandatory.
+- Retry/replacement remain zero and lifecycle failure freezes the remainder.
+- Next: commit plan, then prepare/admit a fresh provider-zero root and runtime.
+
 # 2026-08-08 — 1.9.749 provider-zero task lock
 - Frozen 1.9.748 remains unreplayed; manuscript was excluded after Luna exposure.
 - Carried forward provider-zero geology/herbarium and added fresh photographic negative-return.
