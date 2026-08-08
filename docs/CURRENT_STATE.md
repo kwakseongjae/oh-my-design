@@ -9,6 +9,10 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.752 photographic Luna/high 첫 셀은85/85 resolved, revision1, static closure1, shipped browser1, proof compliance true, candidate/final exact로 clean pass했다. wall213,336ms, total tokens766,998, Cursor0이다.
+- exact cascade gate가 desktop 재오버라이드 없이 닫혔고 browser recovery/duplicate static은0이다. matrix는 checkpoint1이며 architectural+ceramic은 아직 provider/model0이다.
+- 다음은 CHECKPOINT-1 commit과 고정30초 pacing 뒤 architectural 셀 exact1회다.
+
 - 1.9.752 fresh root는 provider-zero admission3/3 green이고 exact `omd1752` controller preplan도3/3 완료됐다. 전 셀 measured attempt1, attach-existing, launch false, product unchanged, provider/model/Cursor0이다.
 - locked plan `4d37034d…`, preparation `abad0dd2…`, controller plan state `92d29590…`다. 다음은 PREPARATION commit 뒤 photographic Luna/high 첫 셀만 exact1회 실행한다.
 

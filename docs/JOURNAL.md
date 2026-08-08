@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.752 checkpoint1 pass
+- photographic Luna는85/85, revision1, proof true, candidate/final exact로 pass했다.
+- wall213,336ms, tokens766,998, recovery/duplicate/Cursor0이다.
+- checkpoint commit+30s pacing 뒤 architectural exact1회가 다음이다.
+
 ## 2026-08-08 (Codex) · 1.9.752 preplan3/3 ready
 - provider-zero admission과 exact `omd1752` preplan3/3을 닫았다.
 - 전 셀 attempt1, attach-existing, launch false, product unchanged, Cursor0이다.
