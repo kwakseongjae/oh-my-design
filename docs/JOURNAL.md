@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.788 Luna state-routing checkpoint5
+- slide current는 lifecycle clean이나81/85·UI-Resolved false다.
+- 동일 slide candidate85로 candidate paired+4다.
+- current Reliability@3 실패로 overall gate false는 확정됐다.
+- 계약대로 마지막 tape candidate를 실행한다.
+
 ## 2026-08-09 (Codex) · 1.9.787 Luna state-routing checkpoint4
 - folio candidate도85/85로 첫 pair는 품질 동률이다.
 - candidate wall+20.1%, tokens+35.5%로 이 pair 효율은 열세다.
