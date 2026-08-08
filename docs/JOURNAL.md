@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · exact-value cascade gate
+- exact CSS 계약을 일부 일치가 아니라 모든 matching declaration 일치로 강화했다.
+- `.decision`은 viewport 전체 `grid-template-columns:1fr` exact 계약으로 바꿨다.
+- focused85/85와 lint green; 다음은 provider-zero task2개 재생성+fresh v11이다.
+
 ## 2026-08-08 (Codex) · 1.9.750 proof stop
 - herbarium Luna는 revision1·objective85/85였지만 desktop `.decision` 재오버라이드로 browser invariant가 fail했다.
 - quote classifier false reason 2개를 provider-free regression으로 고쳤고 frozen evidence는 변조하지 않았다.

@@ -1511,6 +1511,14 @@ describe("compact reflow artifact helper", () => {
     expect(wrongExact.static_closure.failures).toContain(
       "required CSS declaration value mismatch: .muted { color: var(--muted) }, expected var(--ink)",
     );
+
+    const laterOverride = staticClosed(
+      lockArtifact(semantic),
+      '<style>.intake-strip{grid-template-columns:repeat(4,minmax(180px,1fr))}.muted{color:var(--ink)}@media(min-width:900px){.muted{color:var(--muted)}}</style><div data-id="fixture">required-fact</div>',
+    );
+    expect(laterOverride.static_closure.failures).toContain(
+      "required CSS declaration value mismatch: .muted { color: var(--ink) | var(--muted) }, expected var(--ink)",
+    );
   });
 
   it("counts actual HTML attributes without counting selector strings in scripts", () => {

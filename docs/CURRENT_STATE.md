@@ -9,6 +9,10 @@
 
 ## 지금 (현재 위치)
 
+- exact-value CSS 계약은 이제 같은 selector/property의 모든 선언이 exact 값과 일치해야 통과한다. base 선언 뒤 media query에서 다른 값을 재선언하면 static closure가 fail-close하며 focused85/85와 lint가 green이다.
+- source-contract task generator의 `.decision { grid-template-columns }`도 `any-value`에서 viewport 전체 `exact-value: 1fr`로 강화했다. record/window grid는 desktop 다열 복원이 허용되므로 any-value를 유지한다.
+- 다음은 이 결정론 수리를 commit하고 photographic+architectural의 provider-zero task 계약을 재생성한 뒤 fresh v11 task를 추가하는 단계다.
+
 - 1.9.750 herbarium Luna/high 셀은 revision1·candidate/final exact·objective85/85였지만 prereg proof gate가 matrix를 동결했다. Cursor0, wall187,567ms, tokens593,251이며 photographic+architectural은 provider/model0이다. 이 root는 재실행하지 않는다.
 - shell quote 때문에 shipped runner를 static command로 오분류한 false reason 2개는 provider-free regression test로 교정했다. 실제 남은 실패는 Luna가 desktop media query에서 `.decision`을 다시 2열로 덮어써 `all_registered_carriers_closed=false`가 된 static cascade 계약 공백이다.
 - 다음은 exact-value CSS 계약을 모든 일치 선언에 적용하고 `.decision` single-column을 viewport 전체 exact로 고정하는 결정론 수리다. photographic+architectural 계약을 provider-zero로 강화하고 fresh v11 task를 더해 1.9.751을 새로 사전등록한다.

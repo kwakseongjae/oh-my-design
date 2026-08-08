@@ -1359,7 +1359,7 @@ function requiredCssDeclarationFailures(source, assertions) {
       failures.push(`missing required CSS declaration: ${assertion.selector} { ${assertion.property} }`);
       continue;
     }
-    if (assertion.value_contract === "exact-value" && !values.includes(assertion.value)) {
+    if (assertion.value_contract === "exact-value" && values.some((value) => value !== assertion.value)) {
       failures.push(`required CSS declaration value mismatch: ${assertion.selector} { ${assertion.property}: ${values.join(" | ")} }, expected ${assertion.value}`);
     }
   }
