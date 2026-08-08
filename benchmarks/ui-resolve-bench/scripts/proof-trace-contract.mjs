@@ -15,7 +15,7 @@ const IGNORED_EDIT_BASENAMES = new Set([
 ]);
 
 const BROWSER_HARNESS_INVOCATION = /(?:^|[\n;&|()"'`])\s*(?:[A-Z_][A-Z0-9_]*=\S+\s+)*(?:\S*\/)?browser-harness(?:\s+(?!--doctor\b)|\s*$)/i;
-const REFLOW_BROWSER_RUNNER = /(?:^|[\n;&|()"'`])\s*(?:[A-Z_][A-Z0-9_]*=\S+\s+)*(?:sh\s+)?(?:\S*\/)?reflow-browser-runner\.sh(?:\s|$)/i;
+const REFLOW_BROWSER_RUNNER = /(?:^|[\n;&|()"'`])\s*(?:[A-Z_][A-Z0-9_]*=\S+\s+)*(?:sh\s+)?(?:\S*\/)?reflow-browser-runner\.sh(?=[\s"'`]|$)/i;
 const OTHER_BROWSER_MECHANISM = /(?:google(?:\s+|\\\s*)chrome[^\n]*(?:--headless|--screenshot)|chromium[^\n]*(?:\.launch|--headless|--screenshot)|playwright[^\n]*(?:\.launch|screenshot|capture)|osascript[^\n]*(?:google\s+chrome|chromium|safari)[^\n]*(?:open\s+location|execute\s+javascript|active\s+tab|url)|screenshot=)/i;
 const BROWSER_DISCOVERY = /(?:browser-harness\s+--doctor|command\s+-v\s+(?:browser-harness|browser_harness|chrom|google-chrome|playwright)|which\s+(?:browser-harness|browser_harness|chrom|google-chrome|playwright|osascript)|ls\s+[^\n]*(?:google\\?\s*chrome|chromium)|find\s+[^\n]*playwright|require\.resolve\(['"]playwright|import\s+playwright)/i;
 const FORBIDDEN_BROWSER_LAUNCH = /(?:\b(?:chromium|firefox|webkit)\.launch(?:_persistent_context)?\s*\(|\bp\.(?:chromium|firefox|webkit)\.launch(?:_persistent_context)?\s*\()/i;

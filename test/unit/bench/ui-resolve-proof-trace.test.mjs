@@ -73,6 +73,12 @@ describe("proof trace contract", () => {
       neutral: false,
     });
     expect(classifyProofCommand("OMD_REFLOW_MODE=plan sh /tmp/skill/scripts/reflow-browser-runner.sh").browser).toBe(true);
+    expect(classifyProofCommand("/opt/homebrew/bin/zsh -lc 'sh .agents/skills/omd-apply/scripts/reflow-browser-runner.sh'")).toMatchObject({
+      browser: true,
+      recovery_probe: false,
+      static_verification: false,
+      neutral: false,
+    });
     expect(classifyProofCommand("command -v browser-harness")).toMatchObject({
       browser: false,
       recovery_probe: true,

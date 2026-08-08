@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.750 proof stop
+- herbarium Luna는 revision1·objective85/85였지만 desktop `.decision` 재오버라이드로 browser invariant가 fail했다.
+- quote classifier false reason 2개를 provider-free regression으로 고쳤고 frozen evidence는 변조하지 않았다.
+- photographic+architectural은 provider/model0이며 다음은 exact-value cascade fail-close와 fresh 1.9.751이다.
+
 ## 2026-08-08 (Codex) · 1.9.750 preplan3/3 ready
 - exact `omd1750`에서 controller preplan3/3을 provider0/model0/Cursor0으로 닫았다.
 - 전 셀 measured attempt1, attach-existing, launch false, product bytes unchanged다.

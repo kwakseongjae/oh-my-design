@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `9a351591`의 Cursor fail-close guard (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-08 · controller-owned pre-edit plan 수리 완료
+- 갱신: 2026-08-08 · 1.9.750 첫 Luna 셀 동결 및 proof classifier 교정
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.750 herbarium Luna/high 셀은 revision1·candidate/final exact·objective85/85였지만 prereg proof gate가 matrix를 동결했다. Cursor0, wall187,567ms, tokens593,251이며 photographic+architectural은 provider/model0이다. 이 root는 재실행하지 않는다.
+- shell quote 때문에 shipped runner를 static command로 오분류한 false reason 2개는 provider-free regression test로 교정했다. 실제 남은 실패는 Luna가 desktop media query에서 `.decision`을 다시 2열로 덮어써 `all_registered_carriers_closed=false`가 된 static cascade 계약 공백이다.
+- 다음은 exact-value CSS 계약을 모든 일치 선언에 적용하고 `.decision` single-column을 viewport 전체 exact로 고정하는 결정론 수리다. photographic+architectural 계약을 provider-zero로 강화하고 fresh v11 task를 더해 1.9.751을 새로 사전등록한다.
 
 - 1.9.750 controller preplan은3/3 provider0/model0/Cursor0으로 완료됐다. 각 셀은 exact `omd1750` attach, measured attempt1, browser launch false, 제품 byte 불변이며 Codex auth도 green이다.
 - root plan hash `1a5c4184…`, preparation hash `e075fa53…`; 다음은 PREPARATION commit 뒤 herbarium Luna/high 셀 exact1회만 실행한다. lifecycle 실패 시 나머지2셀을 동결한다.
