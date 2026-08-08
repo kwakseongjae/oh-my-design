@@ -200,6 +200,8 @@ truth다. 아래 2.5.2–2.5.3 고정 picker는 실행하지 않는다.
    `options`와 `reason`을 사용하고 근거 없는 추천 표시는 만들지 않는다.
 3. `defer`는 묻거나 채우지 않고 `deferred_slots`에 id/slot/reason을 보존.
 4. `blocked`가 하나라도 있으면 진행하지 않고 필요한 evidence/authority만 알림.
+   `dispatch-plan.json`의 `dispatch_suppressed_by_blocked: true`는 이미 결정론적으로
+   blocker가 확인됐다는 뜻이다. blocker가 풀리기 전에는 자문 agent를 호출하지 않는다.
 5. auto 값과 사용자 답을 slot에 매핑해 handoff에
    `decision_ledger_ref: "council/decision-ledger.json"`와 함께 기록.
 
@@ -225,7 +227,16 @@ audience evidence와 단일 surface를 함께 보유하면 audience와 scope는 
 2. 각 agent는 제품 파일을 수정하지 않는 read-only 자문이다. 유일한 write
    ownership은 `council/lanes/<lane_id>.json`이다.
 3. 출력은 `{ "lane_id": "...", "claims": [...] }`이고, 각 claim은
-   `decision_id`, `recommendation`, `reason`, `evidence`를 포함한다.
+   `decision_id`, `decision_mode`, `authority_mode`, `recommendation`, `reason`,
+   `evidence`를 포함한다.
+   - `decision_mode`: `preserve-existing | choose-new | unknown`
+   - `authority_mode`: `preserve-existing | user-answerable | external-unverifiable | unknown`
+   - 기존 audience/scope/CTA 계약을 그대로 지키는 일은
+     `preserve-existing/defer`다. 새 제품 결정을 한 것이 아니다.
+   - 제품 소유자가 답할 수 있는 price/packaging/CTA/audience/scope/security/data
+     결정은 `choose-new/user-answerable/interview`다.
+   - 사용자 선호로 대체할 수 없는 공식 brand source나 측정 fact 부재만
+     `external-unverifiable/blocked`다.
    `evidence`는 실제 존재하는 repo/run-relative 경로여야 한다. 인용할 근거가
    없으면 claim을 만들지 않는다.
 4. agent/role을 사용할 수 없거나 실행이 실패하면 재시도하거나 다른 모델의
@@ -244,8 +255,10 @@ RECONCILE_HELPER="$(dirname "$COUNCIL_HELPER")/design-council-reconcile.cjs"
 snapshot hash로 동결된다. 어떤 자문도 `auto`로 승격할 수 없다. `blocked`가
 남으면 정확히 필요한 evidence/authority만 알리고 중단한다. 각 항목은
 `effective_disposition`을 우선 사용하며 없으면 원래 `disposition`을 쓴다.
-`interview`만 한
-번의 최대 4-question batch로 묻는다. 실제 `council/debate.json`이 생성되지
+`interview`만 한 번의 최대 4-question batch로 묻는다. `blocked`는 interview와
+같은 것으로 세지 않는다. blocked는 필요한 외부 근거를 알리고 멈추며,
+user-answerable 결정은 blocked로 바꾸지 않고 interview에 남긴다. 실제
+`council/debate.json`이 생성되지
 않았으면 council이 실행됐다고 표현하지 않는다.
 
 ### 2.5.2 — Legacy: ctx-prime.json Read + 사용자 picker 게이트

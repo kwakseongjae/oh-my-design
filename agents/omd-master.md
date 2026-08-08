@@ -115,10 +115,28 @@ Each turn you are in one state. Determine current state from `.handoff.json` `st
     only keep or narrow non-auto dispositions;
   - accept council advice only when `council/debate.json` records an accepted
     claim with an existing repo/run-relative evidence path;
+  - require accepted claims to retain both `decision_mode` and `authority_mode`:
+    `preserve-existing/defer` preserves a settled product contract,
+    `choose-new/user-answerable/interview` routes an answerable product decision
+    to the user, and only `external-unverifiable/blocked` stops on evidence the
+    user cannot replace with a preference;
+  - treat `blocked` and `interview` as different checkpoints. A blocked official
+    source or measured fact halts before planning; an interview is rendered in
+    the single question batch. Never report a blocked item as a retained user
+    question;
+  - if the dispatch plan says `dispatch_suppressed_by_blocked: true`, do not
+    spawn council lanes. Surface `blocking_decision_ids` first and resume
+    advisory dispatch only after that blocker is resolved;
   - do not claim that a multi-agent council ran unless `council/debate.json`
     exists and its selected lane outputs were reconciled.
 
-  → **Skip SLOT_GATE entirely.** Use prefilled_slots as authoritative. Jump straight to PROPOSE_PLAN with `ctx_prime.brand_signal` seeded as initial token defaults (override-able during PLAN_REVIEW). Only re-ask via ASK_TEST if a slot truly required for the chosen `exit_scope` is *missing* and is not listed in `deferred_slots` — never re-ask `audience` or `wow_moment` if already filled.
+  → **Skip SLOT_GATE entirely only when no effective `blocked` item remains.** Use
+  prefilled_slots as authoritative. If blocked remains, write an `ask_user`
+  handoff that names only the missing evidence and do not propose a plan. Otherwise
+  jump straight to PROPOSE_PLAN with `ctx_prime.brand_signal` seeded as initial
+  token defaults (override-able during PLAN_REVIEW). Only re-ask via ASK_TEST if
+  a slot truly required for the chosen `exit_scope` is *missing* and is not
+  listed in `deferred_slots` — never re-ask `audience` or `wow_moment` if already filled.
 
   Acknowledge the handoff in your first user-facing prose: "분석 결과 + 페르소나 답 받았어요 — {audience} / {wow_moment} 방향으로 plan 잡을게요." Don't re-interrogate.
 

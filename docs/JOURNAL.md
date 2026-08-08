@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.763 installed authority contract
+- authority mode와 blocked/interview 분리를 canonical harness/master에 통합했다.
+- blocker가 있으면 council lane과 plan을 먼저 억제하고 외부 근거만 요청한다.
+- installed Codex smoke, 관련55 tests, lint/diff-check green; provider/Cursor0이다.
+- 다음은 3 host 설치 parity와 handoff shape provider-zero 검증이다.
+
 ## 2026-08-08 (Codex) · 1.9.762 blocked-first pass
 - exact8/8과 authority gate를 유지하면서 provider calls4→2로 줄였다.
 - input -49.83%, summed wall -53.4%; blocked case lane0 exact pass다.

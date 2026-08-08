@@ -375,7 +375,7 @@ describe('install-skills', () => {
     await runInstallSkills({
       dir: root,
       agents: ['codex'],
-      skillsFilter: ['omd-init', 'omd-apply', 'omd-final-qa', 'omd-orchestrator'],
+      skillsFilter: ['omd-init', 'omd-apply', 'omd-final-qa', 'omd-harness', 'omd-orchestrator'],
       agentsFilter: roleIds,
     });
 
@@ -384,6 +384,11 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.codex/data/reference-quality.json'))).toBe(true);
     expect(existsSync(join(root, '.agents/skills/omd-init/scripts/query-references.mjs'))).toBe(true);
     expect(existsSync(join(root, '.codex/data/references/toss/DESIGN.md'))).toBe(true);
+
+    const harness = readFileSync(join(root, '.agents/skills/omd-harness/SKILL.md'), 'utf8');
+    expect(harness).toContain('dispatch_suppressed_by_blocked: true');
+    expect(harness).toContain('choose-new/user-answerable/interview');
+    expect(harness).toContain('external-unverifiable/blocked');
 
     const master = readFileSync(join(root, '.codex/agents/omd-master.toml'), 'utf8');
     expect(master).toMatch(/^name = "omd-master"$/m);
@@ -398,6 +403,7 @@ describe('install-skills', () => {
     expect(master).not.toContain('omd init prepare');
     expect(master).not.toMatch(/\bomd remember\b/);
     expect(master).toContain('The OmD CLI exposes installation and diagnostics only');
+    expect(master).toContain('dispatch_suppressed_by_blocked: true');
     expect(existsSync(join(root, '.claude', 'skills'))).toBe(false);
 
     for (const roleId of roleIds) {

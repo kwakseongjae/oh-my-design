@@ -31,4 +31,15 @@ describe('OmD cross-skill delivery contract', () => {
     expect(harness).toContain('mandatory checkpoint를 건너뛰지 않는다');
     expect(harness).toContain('사용자 체크포인트를 자동 승인하지 말 것');
   });
+
+  it('routes council advice by authority source without wasting calls behind blockers', () => {
+    expect(harness).toContain('dispatch_suppressed_by_blocked: true');
+    expect(harness).toContain('preserve-existing/defer');
+    expect(harness).toContain('choose-new/user-answerable/interview');
+    expect(harness).toContain('external-unverifiable/blocked');
+    expect(harness).toMatch(/`blocked`(?:가|는) interview와\n?같은 것으로 세지 않는다/);
+    expect(master).toContain('dispatch_suppressed_by_blocked: true');
+    expect(master).toContain('Never report a blocked item as a retained user');
+    expect(master).toContain('Skip SLOT_GATE entirely only when no effective `blocked` item remains');
+  });
 });
