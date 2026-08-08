@@ -9,6 +9,10 @@
 
 ## 지금 (현재 위치)
 
+- fresh provider-zero v11 `ceramic-vessel-return-v0.1`을 추가·finalize했다. raw DESIGN.md baseline은75/85, responsive+accessibility만 red이며 inventory104다.
+- 1.9.750에서 미노출인 photographic+architectural의 `.decision` 계약도 provider/model0 상태에서 exact-value로 강화했다. hidden coverage2/2, bench235 pass/2 skip, reflow66/66, lint가 green이다.
+- 다음은 이 task bytes를 commit하고 photographic→architectural→ceramic의 fresh 1.9.751 denominator를 잠근 뒤 Luna/high 전용 plan을 사전등록하는 단계다.
+
 - exact-value CSS 계약은 이제 같은 selector/property의 모든 선언이 exact 값과 일치해야 통과한다. base 선언 뒤 media query에서 다른 값을 재선언하면 static closure가 fail-close하며 focused85/85와 lint가 green이다.
 - source-contract task generator의 `.decision { grid-template-columns }`도 `any-value`에서 viewport 전체 `exact-value: 1fr`로 강화했다. record/window grid는 desktop 다열 복원이 허용되므로 any-value를 유지한다.
 - 다음은 이 결정론 수리를 commit하고 photographic+architectural의 provider-zero task 계약을 재생성한 뒤 fresh v11 task를 추가하는 단계다.

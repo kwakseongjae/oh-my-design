@@ -319,7 +319,7 @@
               "selector": ".decision",
               "property": "grid-template-columns",
               "value": "1fr",
-              "value_contract": "any-value"
+              "value_contract": "exact-value"
             },
             {
               "selector": ".decision > div",

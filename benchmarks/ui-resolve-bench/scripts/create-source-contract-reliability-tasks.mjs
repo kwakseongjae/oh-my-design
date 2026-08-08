@@ -15,8 +15,9 @@ const v7BaselineRoot = "/private/tmp/omd-terminal-runner-reliability-baselines-1
 const v8BaselineRoot = "/private/tmp/omd-browser-preflight-reliability-baselines-1.9.748-v8";
 const v9BaselineRoot = "/private/tmp/omd-isolated-browser-reliability-baselines-1.9.749-v9";
 const v10BaselineRoot = "/private/tmp/omd-controller-plan-reliability-baselines-1.9.750-v10";
+const v11BaselineRoot = "/private/tmp/omd-css-cascade-reliability-baselines-1.9.751-v11";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
-const taskSet = process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -236,7 +237,16 @@ const v10Cases = [
   },
 ];
 
-const cases = taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v11Cases = [
+  {
+    id: "ceramic-vessel-return-v0.1", title: "Ceramic vessel return review", eyebrow: "Ceramics archive · vessel return", heading: "Ceramic-vessel return review", recordHeading: "Vessel register", recordSummary: "Six supplied vessel groups mapped to eight archival crates.",
+    records: [["VESSEL-GLZ-9124",["CRATE-21810","CRATE-21811"]],["VESSEL-CLY-9238",["CRATE-21812"]],["VESSEL-FIR-9351",["CRATE-21813","CRATE-21814"]],["VESSEL-DEC-9467",["CRATE-21815"]],["VESSEL-RIM-9580",["CRATE-21816"]],["VESSEL-BAS-9694",["CRATE-21817"]]],
+    windows: [["STORE-C2","07:15–07:35"],["STORE-E5","09:55–10:15"],["STORE-G1","13:05–13:25"],["STORE-J4","15:45–16:05"]], views: [["vessels","Vessel register"],["windows","Store windows"],["decision","Return decision"]], toggle: "Include packing-note copy", fieldLabel: "Return registrar", validValue: "VESSEL-GLZ-9124 return review", target: "VESSEL-GLZ-9124 + CRATE-21810", evidence: "6 vessel groups · 8 archival crates · 4 store windows", state: "Review open", action: "Open return record", footer: "Ceramics archive · supplied return evidence only",
+    unknowns: ["fabric verified","vessel stable","firing calibrated","provenance validated","crate seal verified","store accepted","catalog published","return approved"], palette: {canvas:"#F3F0EB",surface:"#FFFDF9",ink:"#342E29",muted:"#706E69",border:"#AAA39B",primary:"#654F42",accent:"#6A6078"}, columns: "repeat(3,290px)", windowColumns: "repeat(4,220px)", decisionMin: "574px", cardRadius: 4, domain: "ceramic vessel-return ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -323,7 +333,9 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v10"
+  const baselineRoot = taskSet === "v11"
+    ? v11BaselineRoot
+    : taskSet === "v10"
     ? v10BaselineRoot
     : taskSet === "v9"
     ? v9BaselineRoot

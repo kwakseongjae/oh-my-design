@@ -1,11 +1,11 @@
 {
-  "id": "architectural-drawing-return-v0.1",
+  "id": "ceramic-vessel-return-v0.1",
   "version": "0.1.0",
   "track": "repair",
   "grounding": "design-md",
   "locale": "en",
   "behavior_adapter": "onboarding-v1",
-  "review_brief": "A architectural drawing-return ledger. Preserve 5 record identifiers, 7 assigned container identifiers and exact assignments, the separate 4-window operational strip, three review views, note setting, reviewer name, and supplied summary facts without inventing authorship verified, drawing stable, scale calibrated, provenance validated, tube seal verified, store accepted, catalog published, return approved.",
+  "review_brief": "A ceramic vessel-return ledger. Preserve 6 record identifiers, 8 assigned container identifiers and exact assignments, the separate 4-window operational strip, three review views, note setting, reviewer name, and supplied summary facts without inventing fabric verified, vessel stable, firing calibrated, provenance validated, crate seal verified, store accepted, catalog published, return approved.",
   "network": "disabled",
   "entry": "index.html",
   "semantic_oracle": {
@@ -73,9 +73,9 @@
     "[data-bench='review-form']": 1,
     "[data-bench='reviewer-name']": 1,
     "[data-bench='form-status']": 1,
-    "[data-bench='record-case']": 5,
-    "[data-bench='record-id']": 5,
-    "[data-bench='unit-id']": 7,
+    "[data-bench='record-case']": 6,
+    "[data-bench='record-id']": 6,
+    "[data-bench='unit-id']": 8,
     "[data-bench='window-strip']": 1,
     "[data-bench='window-owner']": 4,
     "[data-bench='window-id']": 4,
@@ -93,12 +93,12 @@
       "value_attribute": "data-view",
       "body_dataset": "view",
       "values": [
-        "drawings",
+        "vessels",
         "windows",
         "decision"
       ],
       "count": 3,
-      "initial": "drawings",
+      "initial": "vessels",
       "selected": "windows"
     },
     "toggle": {
@@ -109,7 +109,7 @@
       "field_selector": "[data-bench='reviewer-name']",
       "status_selector": "[data-bench='form-status']",
       "invalid_value": "",
-      "valid_value": "DRAW-PLN-8124 return review"
+      "valid_value": "VESSEL-GLZ-9124 return review"
     }
   },
   "text_geometry_oracle": {
@@ -156,13 +156,13 @@
   },
   "protected_unknown_patterns": [
     "\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b",
-    "\\b(?:authorship verified|drawing stable|scale calibrated|provenance validated|tube seal verified|store accepted|catalog published|return approved)\\b",
+    "\\b(?:fabric verified|vessel stable|firing calibrated|provenance validated|crate seal verified|store accepted|catalog published|return approved)\\b",
     "\\btrusted by\\b",
     "[★☆]{3,}"
   ],
   "protected_known_patterns": [
-    "DRAW-PLN-8124 + TUBE-10710",
-    "5 drawing groups · 7 archival tubes · 4 store windows"
+    "VESSEL-GLZ-9124 + CRATE-21810",
+    "6 vessel groups · 8 archival crates · 4 store windows"
   ],
   "protected_unknown_selectors": [
     "blockquote",
@@ -171,15 +171,15 @@
     "[class*='social-proof' i]"
   ],
   "design_oracle": {
-    "page_background": "#F1F2EF",
-    "primary_action": "#4C6255",
-    "accent": "#746054",
-    "ink": "#29312B",
-    "surface": "#FEFFFC",
-    "border": "#A0AAA3",
-    "muted_text": "#69736D",
-    "card_radius_px": 3,
-    "control_radius_px": 3,
+    "page_background": "#F3F0EB",
+    "primary_action": "#654F42",
+    "accent": "#6A6078",
+    "ink": "#342E29",
+    "surface": "#FFFDF9",
+    "border": "#AAA39B",
+    "muted_text": "#706E69",
+    "card_radius_px": 4,
+    "control_radius_px": 4,
     "font_family": {
       "body_any": [
         "Arial"
@@ -199,15 +199,15 @@
     "structured_css_only": true,
     "product_path": "index.html",
     "required_literals": [
-      "DRAW-PLN-8124 + TUBE-10710",
-      "5 drawing groups · 7 archival tubes · 4 store windows"
+      "VESSEL-GLZ-9124 + CRATE-21810",
+      "6 vessel groups · 8 archival crates · 4 store windows"
     ],
     "forbidden_literals": [
-      "authorship verified",
-      "drawing stable",
-      "scale calibrated",
+      "fabric verified",
+      "vessel stable",
+      "firing calibrated",
       "provenance validated",
-      "tube seal verified",
+      "crate seal verified",
       "store accepted",
       "catalog published",
       "return approved"
@@ -243,7 +243,7 @@
         "id": "record-register-reflow",
         "gate": "responsive",
         "selector": ".record-grid",
-        "baseline_evidence": "fixed repeat(3,288px) register escapes narrow carriers",
+        "baseline_evidence": "fixed repeat(3,290px) register escapes narrow carriers",
         "required_correction": "reflow the supplied register without changing assignments",
         "required_outcome": "the complete register remains contained",
         "proof_mode": "browser-row",
@@ -253,7 +253,7 @@
         "status": "must-fix-before-static-close",
         "static_guardrail": {
           "required_literals": [
-            "DRAW-PLN-8124 + TUBE-10710"
+            "VESSEL-GLZ-9124 + CRATE-21810"
           ],
           "forbidden_literals": [],
           "forbidden_patterns": [],
@@ -282,7 +282,7 @@
         "status": "must-fix-before-static-close",
         "static_guardrail": {
           "required_literals": [
-            "5 drawing groups · 7 archival tubes · 4 store windows"
+            "6 vessel groups · 8 archival crates · 4 store windows"
           ],
           "forbidden_literals": [],
           "forbidden_patterns": [],
@@ -410,10 +410,10 @@
         "selector": "[data-bench-decision-role='target']",
         "role": "target",
         "expected_count": 1,
-        "longest_value": "DRAW-PLN-8124 + TUBE-10710",
+        "longest_value": "VESSEL-GLZ-9124 + CRATE-21810",
         "atomic_parts": [
-          "DRAW-PLN-8124",
-          "TUBE-10710"
+          "VESSEL-GLZ-9124",
+          "CRATE-21810"
         ],
         "line_contract": "parent-one-line",
         "typography_contract": {
@@ -435,7 +435,7 @@
         "selector": "[data-bench-decision-role='evidence']",
         "role": "evidence",
         "expected_count": 1,
-        "longest_value": "5 drawing groups · 7 archival tubes · 4 store windows",
+        "longest_value": "6 vessel groups · 8 archival crates · 4 store windows",
         "line_contract": "single-token",
         "typography_contract": {
           "source": "deterministic-pre-edit-snapshot"
@@ -460,7 +460,7 @@
     },
     "baseline_evidence": {
       "path": "baseline-critical-gates.json",
-      "sha256": "f1d4586bba82c381d2fd40b28d96e897d8a6998e75621b9f7863220fc7057e39"
+      "sha256": "28cde2292a56a1ba1ba9c8fe6789432bc54ac70c6222c8470e2c771b4d85b100"
     },
     "critical_gate_debt_coverage": [
       {

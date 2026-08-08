@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.751 fresh task
+- ceramic vessel-return provider-zero task를 추가·finalize했다.
+- raw75/85, responsive+accessibility only red, inventory104다.
+- 미노출 photographic+architectural 계약도 exact로 강화; 다음은 denominator lock+Luna plan이다.
+
 ## 2026-08-08 (Codex) · exact-value cascade gate
 - exact CSS 계약을 일부 일치가 아니라 모든 matching declaration 일치로 강화했다.
 - `.decision`은 viewport 전체 `grid-template-columns:1fr` exact 계약으로 바꿨다.
