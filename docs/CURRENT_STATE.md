@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.753 architectural Luna/high 첫 셀은85/85 resolved, revision1, proof true, candidate/final exact, recovery/duplicate/Cursor0으로 clean pass했다. wall179,225ms, tokens602,971이다.
+- matrix checkpoint1이며 ceramic+glass는 provider/model0이다. 다음은 checkpoint commit 뒤 repaired continuation을 ceramic exact1회로 검증한다.
+
 - 1.9.753 provider-zero admission3/3과 exact `omd1753` preplan3/3이 green이다. 전 셀 attempt1, attach-existing, launch false, product unchanged, provider/model/Cursor0이다.
 - plan `9c9cf6cf…`, preparation `78205d67…`, preplan state `78ee9889…`다. 다음은 PREPARATION commit 뒤 architectural Luna/high exact1회다.
 

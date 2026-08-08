@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.753 checkpoint1 pass
+- architectural Luna는85/85, revision1, proof true, candidate/final exact다.
+- wall179,225ms, tokens602,971, recovery/duplicate/Cursor0이다.
+- checkpoint commit 뒤 ceramic continuation exact1회가 다음이다.
+
 ## 2026-08-08 (Codex) · 1.9.753 preplan3/3 ready
 - provider-zero admission+exact `omd1753` preplan3/3을 닫았다.
 - attempt1, attach-existing, launch false, product unchanged, Cursor0이다.
