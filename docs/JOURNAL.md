@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.766 canary prepared
+- ready/interview/blocked exact checkpoint oracle 3개를 잠갔다.
+- Codex Luna/high, 1회/셀, retry0, Cursor 금지 계약이다.
+- provider-zero deterministic3/3, provider/model/Cursor0, source hashes locked다.
+- 다음은 preparation commit 뒤 exact Luna/high 3회 실행이다.
+
 ## 2026-08-08 (Codex) · 1.9.765 receipt + doctor
 - answer apply를 ledger/questions SHA-256 receipt로 묶고 stale·duplicate를 거부한다.
 - doctor는 채널별 deterministic harness helper 5개 누락을 incomplete로 진단한다.
