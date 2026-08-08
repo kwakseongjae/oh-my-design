@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.769 thin master kernel
+- master를 37,261B→22,378B(-39.9%)로 줄이고 phase detail을 sidecar 2개로 분리했다.
+- mandatory checkpoint와 authority/unknown-route 계약은 유지했다.
+- 3-host native 경로, doctor/install/workflow/catalog 88/88, lint가 green이다.
+- 다음은 동일 exact3 Luna/high canary 1.9.770이다.
+
 ## 2026-08-08 (Codex) · 1.9.768 Luna repeat pass
 - exact3/3과 write/timeout/retry/Cursor0을 유지했다.
 - aggregate input-8.09%, reasoning-10.34%, wall+14.29%; case variance가 컸다.

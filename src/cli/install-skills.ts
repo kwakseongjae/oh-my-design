@@ -322,7 +322,17 @@ function parseCanonicalAgent(packageRoot: string, filename: string): ParsedAgent
  *  lines) breaks discovery. So we encode the managed-by-omd marker as a
  *  custom frontmatter field (`omd_managed: true`) instead of an HTML comment.
  */
-function renderClaudeAgent(a: ParsedAgent): string {
+function rewriteAgentSkillPaths(body: string, skillRoot: string): string {
+  return body.replace(
+    /(?:~\/)?\.(?:claude|agents|opencode)\/skills\//g,
+    `${skillRoot}/`,
+  );
+}
+
+function renderClaudeAgent(
+  a: ParsedAgent,
+  scope: 'project' | 'global',
+): string {
   const fm = [
     '---',
     `name: ${JSON.stringify(a.name)}`,
@@ -333,7 +343,8 @@ function renderClaudeAgent(a: ParsedAgent): string {
     '---',
     '',
   ].join('\n');
-  return fm + a.body;
+  const skillRoot = scope === 'global' ? '~/.claude/skills' : '.claude/skills';
+  return fm + rewriteAgentSkillPaths(a.body, skillRoot);
 }
 
 type NativeAgentChannel = 'codex' | 'opencode';
@@ -354,8 +365,7 @@ function nativeAgentBody(
     ? scope === 'global' ? '~/.agents/skills' : '.agents/skills'
     : scope === 'global' ? '~/.config/opencode/skills' : '.opencode/skills';
 
-  const nativeBody = body
-    .replace(/(?:~\/)?\.claude\/skills\//g, `${skillRoot}/`)
+  const nativeBody = rewriteAgentSkillPaths(body, skillRoot)
     .replace(/You are spawned as a Claude Code subagent/g, 'You run as a host-managed subagent')
     .replace(/Claude Code subagent/g, 'host-managed subagent')
     .replace(/the Agent tool/g, "the host's native sub-agent mechanism")
@@ -1077,7 +1087,7 @@ function installAgentFile(
       ? '.codex/data'
       : '.opencode/data';
   const rendered = channel === 'claude'
-    ? renderClaudeAgent(parsed)
+    ? renderClaudeAgent(parsed, scope)
     : channel === 'codex'
       ? renderCodexAgent(parsed, scope, nativeDataRoot)
       : renderOpenCodeAgent(parsed, scope, nativeDataRoot);

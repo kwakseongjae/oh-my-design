@@ -522,6 +522,11 @@ describe('install-skills', () => {
       join(root, '.opencode/skills/omd-harness/references/master-visual-grounding.md'),
     ].map((file) => readFileSync(file, 'utf8'));
     expect(groundingSidecars.every((content) => content.includes('Unknown means absent'))).toBe(true);
+    for (const sidecar of ['master-legacy-production.md', 'master-execution-phases.md']) {
+      expect(existsSync(join(root, '.claude/skills/omd-harness/references', sidecar))).toBe(true);
+      expect(existsSync(join(root, '.agents/skills/omd-harness/references', sidecar))).toBe(true);
+      expect(existsSync(join(root, '.opencode/skills/omd-harness/references', sidecar))).toBe(true);
+    }
 
     const masters = [
       join(root, '.claude/agents/omd-master.md'),
@@ -532,7 +537,11 @@ describe('install-skills', () => {
       expect(master).toContain('dispatch_suppressed_by_blocked: true');
       expect(master).toContain('Never report a blocked item as a retained user');
       expect(master).toContain('`blocked` — launcher relays the missing external evidence');
+      expect(master).toContain('master-execution-phases.md');
     }
+    expect(masters[0]).toContain('.claude/skills/omd-harness/references/master-execution-phases.md');
+    expect(masters[1]).toContain('.agents/skills/omd-harness/references/master-execution-phases.md');
+    expect(masters[2]).toContain('.opencode/skills/omd-harness/references/master-execution-phases.md');
 
     expect(existsSync(join(root, '.claude/data/scripts/design-council-handoff.cjs'))).toBe(true);
     expect(existsSync(join(root, '.codex/data/scripts/design-council-handoff.cjs'))).toBe(true);

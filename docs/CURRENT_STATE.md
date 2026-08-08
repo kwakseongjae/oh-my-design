@@ -4,14 +4,17 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `9a351591`의 Cursor fail-close guard (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-08 · 1.9.768 progressive-disclosure Luna repeat 3/3 통과
+- 갱신: 2026-08-08 · 1.9.769 thin master kernel 검증 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.769는 `agents/omd-master.md`를 authority/handoff kernel과 conditional phase sidecar 2개로 분리했다. 37,261B/619줄→22,378B/381줄(-39.9%/-38.4%)이다.
+- legacy/URL/Figma/production은 `master-legacy-production.md`, plan/design/ship/archive는 `master-execution-phases.md`에서 해당 상태일 때만 읽는다. mandatory checkpoint #1/#2/#3와 unknown-route fail-close는 보존됐다.
+- Claude/Codex/OpenCode 설치본의 sidecar 경로를 각 채널 native root로 정규화했다. doctor/install/workflow/catalog 88/88, lint/diff-check green, provider/Cursor0이다.
+- 다음 1.9.770은 1.9.766/768과 동일한 exact3 Luna/high checkpoint canary를 fresh fixture로 반복한다. compliance와 비용은 descriptive-only이며 UI 품질/2.0 승격 근거로 쓰지 않는다.
 - 1.9.768 Luna/high repeat는 exact3/3, unauthorized write/timeout/retry/Cursor0이다. checkpoint compliance는 유지됐다.
 - input457,473→420,483(-8.09%), cached-1.58%, reasoning-10.34%, output+0.82%지만 summed wall+14.29%다. ready는 크게 감소, interview는 증가해 task replay/cache/runtime variance가 크므로 causal cost claim은 금지다.
-- 다음 1.9.769는 항상 노출되는 `agents/omd-master.md` 37,261B를 authority/handoff kernel과 active-phase sidecar로 분리한다. provider-zero state-machine/install/doctor 계약을 먼저 닫는다.
 - 1.9.768은 1.9.766과 task/oracle/order/model/effort/prompt를 유지한 fresh exact3 repeat를 사전등록했다. task replay/cache confound 때문에 비용 변화는 descriptive-only다.
 - provider-zero deterministic3/3, provider/model/Cursor0이다. candidate initial harness30,194B(-38.05%)와 fixture/runner/harness/sidecar/master/helper hashes를 잠갔다.
 - 1.9.767은 visual/component/prototype에서만 필요한 grounding·asset·hero·motion detail을 `references/master-visual-grounding.md`로 분리했다. intake/checkpoint relay는 sidecar를 읽지 않는다.

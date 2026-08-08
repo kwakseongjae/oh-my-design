@@ -142,136 +142,22 @@ Each turn you are in one state. Determine current state from `.handoff.json` `st
 
   Continue from PROPOSE_PLAN.
 
-  **0.0.2 — Legacy fast path.** If no prefilled_slots, read `.omd/context.json` if it exists (skill caches via `node scripts/context.cjs` helper if available); else compute inline (Glob `**/package.json,**/*.{css,scss,tsx,jsx,vue,svelte}` + Read top files + grep for color/spacing literals). Decide INTAKE branch:
-  - empty folder + URL hint in task ("Stripe 같이" / "https://...") AND persona_signal_initial = `F` → **F-FAST PATH**: skip SLOT_GATE entirely, propose plan immediately with all defaults (audience=`[FILL IN]`, tone_seed from URL or `stripe`, exit_scope=`handoff-zip`, etc.). Founder smashes `go`, gets handoff zip ASAP.
-  - empty folder (no URL) → SLOT_GATE (greenfield mode)
-  - existing code → CONTEXT_DETECT brief, then SLOT_GATE
-  - URL given in task → URL_EXTRACT, then SLOT_GATE
-  - `.omd/runs/<prior>/...` exists → LOAD_STATE then CONTINUE
-  - persona_signal_initial = `V` (vibe coder) AND no URL hint → auto-pick top-1 reference from catalog (no separate ref question), proceed to SLOT_GATE with `tone_seed` pre-filled.
-- **URL_EXTRACT**: Run when task contains `https?://` (and not figma.com — that goes to FIGMA_GUIDANCE).
-  - WebFetch the URL and read the rendered CSS/HTML for color tokens (hex literals near brand-named CSS variables: `--brand-*`, `--primary-*`, `--accent-*`, plus Tailwind config if present), font families, base spacing.
-  - Token extraction is best-effort prose — record what you find with confidence ratings, flag anything uncertain rather than guessing.
-  - Success → populate `tone_seed = <url>`, `extracted_tokens = { color, type, spacing }`, `reference_url = <url>`. Continue to SLOT_GATE.
-  - Failure → fallback: catalog match the URL's domain name against the channel-aware resolved `reference-fingerprints.json` (e.g., stripe.com → stripe id). If no match, ask user to pick a closest catalog id from top-3 by name similarity.
+  **0.0.2 — Legacy/URL/Figma/production path.** Read
+  `.agents/skills/omd-harness/references/master-legacy-production.md` (or the
+  active channel equivalent) only when no deterministic prefilled handoff exists,
+  a URL/Figma input is present, or production keywords re-enter the workflow.
+  Do not read it for the normal prefilled checkpoint path.
 
-- **FIGMA_GUIDANCE**: User pasted Figma file URL.
-  - Tell user: "Figma URL은 v4에서 직접 추출이 안 돼요. 두 가지 방법이 있어요:
-    1. Tokens Studio 플러그인으로 JSON export → 그 path 알려주세요
-    2. 우리 reference catalog에서 가장 가까운 톤 골라서 시작 (catalog id로 답변)"
-  - Wait for user. Either parse JSON path → fold into `extracted_tokens`, or treat as catalog selection.
-
-- **PRODUCTION_TRANSITION** (CRITICAL — re-engage when user says "프로덕션화" / "production" / "ship" / "deploy" / "실배포" mid-flight): User just shifted from prototyping to productionizing. **Don't fall back to plain coding.** **Don't extract DESIGN.md mechanically from prototype HTML/CSS** — that produces generic spec without brand DNA. Curate via reference matching instead.
-
-  ### Step 1 — Light prototype read (signal, not source-of-truth)
-  Read prototype HTML/CSS/components briefly. Extract just enough signal:
-  - dominant color hex (1-2 most-used)
-  - font family
-  - motion vocabulary (e.g., "wave / splash / pulse" — what the prototype emphasizes)
-  - tone keywords from visible microcopy (e.g., "calm / encouraging / not-pushy" from "오늘 첫 잔으로 시작해요")
-  - 5 short adjectives describing the *atmosphere* (NOT a full token dump)
-
-  ### Step 2 — Reference matching (resolved catalog)
-  Score against the channel-aware resolved `reference-fingerprints.json` using the signal above + voice_fingerprint + tone_keywords. Identify top 2-3 closest references.
-
-  ### Step 3 — Curation proposal (the wow point)
-  Surface the matched references as a *curation question*, not a token dump:
-
-  ```
-  prototype 한 번 보고 왔어요. 톤은 calm-blue + 응원하는 듯한 친근함 + 잔잔한 모션 — resolved catalog 중 toss + lovable이 가장 가깝게 보여요.
-   • toss — 차분한 calm-cerulean + 숫자 강조 + 한국 핀테크 절제미
-   • lovable — parchment cream + 휴머니스트 + 응원하는 따뜻함
-
-  거기에 'Drop'(물 음용 유도, hydration habit) 도메인 성격을 delta로 가미해서 DESIGN.md 만들까요?
-
-  [picker]
-   - go (toss base + drop delta) — 추천
-   - lovable base + drop delta
-   - 둘 다 섞기 (toss 60 / lovable 40)
-   - 다른 reference 골라볼게 (catalog 목록 보여줘)
-   - 그냥 prototype에서 바로 추출 (덜 추천 — generic해질 수 있음)
-  ```
-
-  ### Step 4 — Hybrid DESIGN.md emit (인라인 prose, no CLI)
-
-  사용자 선택 → 다음 절차를 직접 수행 (1.0.0부터 `omd init prepare` CLI 폐기 — master prose가 source-of-truth).
-
-  **Step 4.1 — 기존 DESIGN.md 보호.** 프로젝트 root에 DESIGN.md 있으면 deprecation rename:
-  ```bash
-  TS=$(date -u +%Y-%m-%dT%H-%M-%SZ)
-  mv DESIGN.md "DESIGN.md.deprecated-${TS}.md"
-  ```
-  rename된 파일 첫 줄에 deprecation header 삽입:
-  ```
-  > Deprecated <ISO timestamp> — replaced by user-initiated omd hybrid emit. Reason: <reason>.
-  ```
-  (Edit 툴로 첫 줄 prepend.)
-
-  **Step 4.2 — Reference DESIGN.md Read.** chosen ref의 DESIGN.md를 다음 우선순위로 resolve (`<id>` = chosen_ref_id, omd:init Phase 4.1과 동일):
+  The master remains self-contained for reference resolution:
 
   <!-- omd:catalog-resolution-order — omd-init/omd-harness/omd-reference-capture SKILL.md 와 동일 순서 강제. drift guard: test/unit/core/catalog-resolution-order.test.ts -->
 
-  1. `.codex/data/references/<id>/DESIGN.md` (Codex installer copy)
-  2. `.claude/data/references/<id>/DESIGN.md` (Claude Code / Cursor installer copy)
-  3. `.opencode/data/references/<id>/DESIGN.md` (OpenCode installer copy)
-  4. `node_modules/oh-my-design-cli/web/references/<id>/DESIGN.md` (로컬 npm 설치 직접 경로)
-  5. `web/references/<id>/DESIGN.md` (개발 레포)
-  6. `https://oh-my-design.kr/<id>/design.md` 를 fetch (WebFetch 또는 `curl -fsSL`) — 1~5가 모두 없을 때. 200이면 본문이 곧 reference DESIGN.md. 가져온 내용은 **활성 채널의 첫 writable data dir** (`.codex/data`, `.claude/data`, `.opencode/data`) 아래 `references/<id>/DESIGN.md`에 캐시한다. 채널을 판별할 수 없으면 1→3 중 먼저 존재하고 쓸 수 있는 dir을 사용하고, 모두 없으면 활성 host 채널 dir을 생성한다.
-
-  6개 경로 전부 miss면 **DESIGN.md를 임의로 지어내지 말 것** — 사용자에게 reference 자료 누락을 알리고 종료. 카탈로그 안의 모든 ref에 DESIGN.md 있음.
-
-  **Step 4.3 — delta axes 추론.** 사용자 description + chosen ref base를 비교해서 다음 axes 중 사용자가 명시했거나 함의한 것만 shift 대상으로 표시:
-  - `hue_deg` (색상 각도, 예: +30 = warmer rotation)
-  - `satur_pct` (채도, 예: -10 = more muted)
-  - `radius_step` (코너 라운딩, 예: +2 = softer)
-  - `font_family` (typography swap)
-  - `weight_step` (heading weight 변화)
-  - `density` (spacing scale tightening / loosening)
-
-  **사용자가 명시 안 한 axes는 절대 임의 shift 금지.** "warmer + softer" 발화가 없으면 `hue_deg`/`radius_step` 손대지 말 것.
-
-  **Step 4.4 — Hybrid DESIGN.md write.** 다음 원칙으로 새 DESIGN.md를 Write 툴로 생성:
-  - **§1-9 (Visual Theme / Color / Typography / Spacing / Radius / Depth / States / Components / Templates)**: reference base + delta axes 적용. 색은 hue/sat 회전, radius는 step 가산, font는 swap.
-  - **§10-15 (Voice / Narrative / Principles / Personas / States / Motion)**: reference voice fingerprint **그대로 보존** — 본문 paraphrase 금지. Toss "breathing room around amounts", Lovable "warm encouragement" 같은 시그니처 문장은 verbatim 인용.
-  - **§11 Brand Narrative / §12 Principles / §13 Personas**: 사용자가 fact 제공 안 했으면 `[FILL IN — <안내 텍스트>]` placeholder. **자동 fact 생성 금지** (예: Drop이 Toss처럼 "2015년 창립" 으로 쓰면 거짓 brand claim).
-  - **§14 States / §15 Motion**: reference 그대로.
-  - **frontmatter**: `omd_version: 0.1`, `base_reference: <chosen_ref_id>`, `delta: { axis: value, ... }` (적용한 axes만), `created_at: <ISO>`.
-
-  **Step 4.5 — manifest 기록.** `<run_dir>/init-manifest.json` Write:
-  ```json
-  {
-    "base_reference": "<chosen_ref_id>",
-    "delta_applied": { "<axis>": "<value>", ... },
-    "voice_preserved_sections": ["§10", "§11 partial", "§14", "§15"],
-    "placeholders": ["§11", "§12", "§13"],
-    "created_at": "<ISO>",
-    "deprecated_predecessor": "DESIGN.md.deprecated-<ts>.md"
-  }
-  ```
-
-  **Step 4.6 — sync shim 갱신.** 새 DESIGN.md 작성 직후 omd-sync 스킬 트리거 (또는 master가 직접 Read/Write로 CLAUDE.md / AGENTS.md / .cursor/rules 3종 갱신 — omd-sync SKILL.md의 템플릿 사용).
-
-  **Quality 가드**: 작성 후 §10-15 본문이 reference의 §10-15와 비교해서 50% 이상 겹치는지 self-check. 안 겹치면 voice 망가진 것 — Step 4.4 다시.
-
-  ### Step 5 — Asset curation
-  DESIGN.md emit 직후 omd-asset-curator spawn. punch-list에 "favicon · og image · empty-state illustration · 12 icons · loading state" 등 production에 필요한 에셋 식별.
-
-  **2D 자산** (전부): fallback chain (Lucide / Unsplash / unDraw / 자체 SVG) 또는 self-fill brief 생성.
-
-  ### Step 6 — Microcopy + handoff
-  spawn omd-microcopy (§10 Voice 적용해서 prototype copy 정제) + a11y-auditor + handoff zip.
-
-  ### Punch-list picker
-
-  ```
-  [picker] 어디까지 한번에?
-   - 전부 — DESIGN.md (curated) + assets + microcopy + handoff zip (Recommended)
-   - DESIGN.md만
-   - DESIGN.md + assets만
-   - just deploy now (spec 없이 ship — postmortem에 기록됨)
-  ```
-
-  Never skip when production keywords detected. Never treat "프로덕션화" as routine code work. Never emit DESIGN.md by raw extraction without offering reference-curation first.
+  1. `.codex/data/references/<id>/DESIGN.md`
+  2. `.claude/data/references/<id>/DESIGN.md`
+  3. `.opencode/data/references/<id>/DESIGN.md`
+  4. `node_modules/oh-my-design-cli/web/references/<id>/DESIGN.md`
+  5. `web/references/<id>/DESIGN.md`
+  6. `https://oh-my-design.kr/<id>/design.md`
 
 - **SLOT_GATE**: All required slots filled? → PROPOSE_PLAN. Else pick the most-blocking unfilled slot → ASK_TEST.
 - **ASK_TEST**: Construct 1-4 questions for the chosen slot. Write `<run_dir>/checkpoints/<slot>.questions.json` and `.handoff.json` with `status=ask_user`.
@@ -465,140 +351,16 @@ Notes:
 - "(Recommended)" 표시는 첫 옵션 label 끝에. ⭐ 이모지 X.
 - multiSelect=true only when natural (target users / actions / anti-patterns / success criteria).
 
-## 6. PROPOSE_PLAN — write OMD-PLAN.md
+## 6–10. Active execution phases — progressive disclosure
 
-When SLOT_GATE says all required slots filled (or FAST_EXIT triggered):
+When state is `PROPOSE_PLAN`, `PLAN_REVIEW`, `DESIGN_GENERATION`, `SHIP_GATE`, or
+`ARCHIVE_RUN`, read `.agents/skills/omd-harness/references/master-execution-phases.md`
+(or the active channel equivalent) in full before acting. Do not read it during
+INTAKE, deterministic checkpoint relay, or blocked evidence handoff.
 
-1. Build `PlanInputs` from collected slots (use `src/core/plan-emitter.ts` schema)
-2. Bash `node -e "..."` or write inline — emit OMD-PLAN.md at project root
-3. Write `.handoff.json` with status=ask_user, questions_file=plan-review.questions.json
-4. Plan review questions:
-
-```json
-{
-  "checkpoint_id": "plan-review",
-  "questions": [
-    {
-      "header": "OMD-PLAN",
-      "question": "OMD-PLAN.md 봐주세요. 그대로 진행 OK?",
-      "multiSelect": false,
-      "options": [
-        { "label": "go (Recommended)", "description": "이대로 DESIGN.md 생성 진행" },
-        { "label": "edit (Other)", "description": "Other에 'OMD-PLAN.md 직접 편집했어' 라고 답하면 master가 다시 read" },
-        { "label": "restart", "description": "slot 다시 잡기" },
-        { "label": "stop", "description": "여기서 중단, run dir 보존" }
-      ]
-    }
-  ]
-}
-```
-
-## 7. DESIGN_GENERATION (post-plan)
-
-Sequential phases (parallel where marked). Each phase ends with status=ask_user only if user gate is mandatory.
-
-1. **Phase 2 — UX Research**: spawn `omd-ux-researcher` × 2-3 in parallel. Each researches one cluster (catalog / competitors / Tier-1 DS). Aggregate → `references-cited.md`.
-2. **Phase 3 — IA / Journey**: master writes `journey.mmd`. Validate every screen has entry/exit/error. **Mandatory gate**: status=ask_user.
-3. **Phase 4 — Wireframe**: spawn `omd-ui-junior`. Returns `wireframes/*.md`.
-4. **Phase 5 — System (DESIGN.md.patch)**: master inline hybrid emit (PRODUCTION_TRANSITION Step 4 절차) if DESIGN.md missing. Emit unified-diff patch. **Mandatory gate**: status=ask_user.
-5. **Phase 6 — Components**: spawn `omd-ui-junior`. Returns `components/manifest.json`.
-6. **Phase 6.5 — Asset sourcing**: spawn `omd-asset-curator`. Returns `assets/manifest.json`.
-7. **Phase 7 — Microcopy**: spawn `omd-microcopy`. Returns `components/microcopy.json`.
-8. **Phase 7.5 — Section-level expert audit (NEW)**: spawn `omd-ux-writer` + `omd-ux-engineer` in **parallel**. Each emits per-section critique + alternatives + impact/effort priority. Master surfaces top recommendations to user as a single consolidated checkpoint (status=ask_user). User selects which fixes to apply; master routes apply work to omd-microcopy (writer's chosen options) + omd-ui-junior (engineer's component-level rewrites if any). **Use this phase ESPECIALLY for "improve existing page" tasks** — when the user enters with an existing UI, ux-writer + ux-engineer audit replaces wireframe-from-scratch.
-9. **Phase 8 — Validation**: spawn `omd-a11y-auditor` (sequential), then `omd-persona-tester` × 4 (parallel adversarial). Master collects + jury via 3-prompt-diversity ensemble. If the intake dispatch plan exists, run at most one read-only `omd-critic` pre-ship contrarian check against the accepted plan and validation evidence. It may write only `council/lanes/pre-ship-contrarian.json`, must cite repo/run-relative evidence, cannot reopen frozen `auto` intake values or mandatory checkpoints, and is never retried. Treat absence/failure as unavailable, not as permission to invent a verdict.
-
-After Phase 8 → SHIP_GATE.
-
-## 8. SHIP_GATE
-
-Present 5-line validation summary + status=ask_user:
-
-```json
-{
-  "checkpoint_id": "ship-gate",
-  "questions": [
-    {
-      "header": "다음 액션",
-      "question": "검증 결과 보세요. ship할까요?",
-      "multiSelect": false,
-      "options": [
-        { "label": "go — ship (Recommended)", "description": "handoff zip 생성, 종료" },
-        { "label": "iterate (Other)", "description": "Other에 어떤 부분 보완할지 한 줄 (critic이 root cause 분석 후 lowest 영향 phase 재실행)" },
-        { "label": "stop", "description": "handoff 없이 종료, run dir 보존" }
-      ]
-    }
-  ]
-}
-```
-
-Decision logic:
-- `go` → ARCHIVE_RUN
-- `iterate` → spawn `omd-critic` → write `critique.md` → re-enter at lowest broken phase (cap 3 iterations total)
-- `stop` → ARCHIVE_RUN without zip
-
-ARCHIVE_RUN must write `<run_dir>/handoff/delivery.json` before `.handoff.json` reports `status: done`. Use this minimum contract:
-
-```json
-{
-  "intent": "implement | design-only",
-  "task": "<original task>",
-  "consumer_route": "<verified route or null>",
-  "acceptance": [],
-  "protected_behaviors": [],
-  "evidence": [],
-  "unknowns": [],
-  "implementation_owner": "main-agent-after-checkpoint-3 | none",
-  "artifacts": [],
-  "verification": { "routes": [], "viewports": [], "states": [], "commands": [] }
-}
-```
-
-Do not invent a consumer route. If it cannot be proven from the repository, keep it null and add the route lookup to `unknowns`.
-
-## 9. Tools you call (Bash / Agent)
-
-```bash
-# slot bootstrapping (1.0.0: inline prose)
-# - Phase A context: master uses Glob + Read + grep on package.json / top CSS file
-# - URL extraction: WebFetch + manual token reading
-# - DESIGN.md hybrid emit: master inline (PRODUCTION_TRANSITION Step 4)
-# - preference logging: trigger omd:remember skill; unavailable하면 같은 schema로 .omd/preferences.md를 직접 Edit (shell CLI 없음)
-# - shim sync: trigger omd:sync skill (Write CLAUDE.md / AGENTS.md / .cursor/rules)
-
-# patch application (Phase 5 after user approval)
-git apply DESIGN.md.patch
-```
-
-```ts
-// Sub-agent spawning (active host mechanism)
-Agent({ subagent_type: "omd-ux-researcher", description: "...", prompt: "..." })
-Agent({ subagent_type: "omd-ui-junior", description: "...", prompt: "..." })
-Agent({ subagent_type: "omd-microcopy", description: "...", prompt: "..." })
-Agent({ subagent_type: "omd-a11y-auditor", description: "...", prompt: "..." })
-Agent({ subagent_type: "omd-persona-tester", description: "...", prompt: "...persona spec..." })
-Agent({ subagent_type: "omd-asset-curator", description: "...", prompt: "..." })
-Agent({ subagent_type: "omd-critic", description: "...", prompt: "..." })
-Agent({ subagent_type: "omd-ux-writer", description: "...", prompt: "section-level UX writing audit + alternatives" })
-Agent({ subagent_type: "omd-ux-engineer", description: "...", prompt: "section-level interaction / motion / IA audit + code-level fixes" })
-```
-
-## 10. Trace logging
-
-Every turn append to `<run_dir>/trace.jsonl`:
-
-```json
-{
-  "ts": "2026-04-28T17:30:00Z",
-  "turn": 5,
-  "state_in": "AWAIT_USER",
-  "state_out": "ASK_TEST",
-  "user_response_signal": { "opt_out_kind": "none", "word_count": 12, ... },
-  "decision": "ask audience slot — 4 options",
-  "budget": { ... }
-}
-```
-
-Audit trail. Persists across master spawns within a run.
+The sidecar owns plan review, the three mandatory checkpoints, specialist write
+ownership, iteration cap, delivery packet, and trace schema. The kernel hard rules
+and handoff protocol remain authoritative if any wording conflicts.
 
 ## 11. Numbered-9s guardrails
 

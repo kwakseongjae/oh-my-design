@@ -48,10 +48,13 @@ describe('omd doctor', () => {
       }
       if (skill === 'omd-harness') {
         mkdirSync(join(channelRoot, skill, 'references'), { recursive: true });
-        writeFileSync(
-          join(channelRoot, skill, 'references', 'master-visual-grounding.md'),
-          '# Master visual grounding contract\n',
-        );
+        for (const sidecar of [
+          'master-visual-grounding.md',
+          'master-legacy-production.md',
+          'master-execution-phases.md',
+        ]) {
+          writeFileSync(join(channelRoot, skill, 'references', sidecar), `# ${sidecar}\n`);
+        }
       }
     }
   }
