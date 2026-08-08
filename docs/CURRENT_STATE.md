@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.752 fresh root는 provider-zero admission3/3 green이고 exact `omd1752` controller preplan도3/3 완료됐다. 전 셀 measured attempt1, attach-existing, launch false, product unchanged, provider/model/Cursor0이다.
+- locked plan `4d37034d…`, preparation `abad0dd2…`, controller plan state `92d29590…`다. 다음은 PREPARATION commit 뒤 photographic Luna/high 첫 셀만 exact1회 실행한다.
+
 - fresh 1.9.752 plan은 1.9.751 provider-zero prepare에서 관찰한 effective installed skill hash `f46c…`를 정확히 잠갔다. task denominator와 Luna/high/cascade 계약은 유지하고 exact browser만 `omd1752`로 교체했다.
 - 다음은 plan commit 뒤 fresh root prepare/admission이다. 1.9.751 root는 재실행하지 않는다.
 

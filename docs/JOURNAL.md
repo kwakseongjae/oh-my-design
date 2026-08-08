@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.752 preplan3/3 ready
+- provider-zero admission과 exact `omd1752` preplan3/3을 닫았다.
+- 전 셀 attempt1, attach-existing, launch false, product unchanged, Cursor0이다.
+- PREPARATION commit 뒤 photographic Luna/high exact1회가 다음이다.
+
 ## 2026-08-08 (Codex) · 1.9.752 preregistered
 - effective installed council skill hash `f46c…`를 exact lock했다.
 - same provider-zero tasks, Luna/high, exact cascade, new `omd1752` 계약이다.
