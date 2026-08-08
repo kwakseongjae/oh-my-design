@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-checkpoint-comparison-luna-1.9.756",
+  "status": "CHECKPOINTED_AFTER_CELL_5",
+  "cursor_calls": 0,
+  "completed_cells": 5,
+  "remaining_unexposed_cells": 1,
+  "pacing_after_cell_4_ms": 30004.793208,
+  "cell": {
+    "id": "mineral-luna-r1-council-off",
+    "arm": "omd-portable",
+    "validity": "valid",
+    "objective_score": "85/85",
+    "ui_resolved": true,
+    "wall_time_ms": 144349,
+    "token_usage": {
+      "input_tokens": 683059,
+      "cached_input_tokens": 619520,
+      "output_tokens": 6856,
+      "reasoning_output_tokens": 1989,
+      "total_tokens": 689915
+    },
+    "product_revision_count": 1,
+    "static_closure_count": 1,
+    "browser_recovery_count": 0,
+    "duplicate_static_closure_count": 0,
+    "proof_trace_compliance": true,
+    "proof_execution_gate_pass": true,
+    "candidate_final_bytes_match": true
+  },
+  "paired_mineral_result": {
+    "current_objective_pass": true,
+    "current_proof_pass": true,
+    "council_objective_pass": true,
+    "council_proof_pass": true,
+    "proof_delta": 0,
+    "interpretation": "tie"
+  },
+  "artifact_hashes": {
+    "execution_state_sha256": "636593d4f9e537eaec3f79e7695487fc2b6aeaba5a79494f34f5b648470948d2",
+    "run_result_sha256": "f7121817f44408792b77077b0b9a1298cac4df19e4c878c9618e8957d1217350",
+    "score_sha256": "bf85d60985688a4f3a455227dd4bf38cbd5e9f965cca930213c85d75c736e32b",
+    "proof_trace_sha256": "4e9338a68c2f73214aadfd256fcf25047ab3c3b323011ef1f632ba1c4d2a9d92",
+    "run_record_sha256": "ddcce79d5d9c3de4ba72689463a23a3b1328fea45285dba3d83aebc681770bb9"
+  },
+  "next_cell": "cylinder-luna-r1-council-on"
+}
