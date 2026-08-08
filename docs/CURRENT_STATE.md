@@ -4,11 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.779 council state-routing fresh denominator 완료
+- 갱신: 2026-08-09 · 1.9.780 council state-routing exact task lock 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.780은 1.9.779 source commit을 authority로 fresh3의 exact tree/prompt/starter/baseline/source-contract hash와 human-intervention contract를 provider/model/Cursor0으로 잠갔다. 아직 execution은 금지다.
+- 다음은 provider-zero `state-routed-council-first` sandbox 준비 모드를 구현·검증한 뒤 current vs candidate Luna/high 2×3 단일변수 matrix를 사전등록한다.
 - 1.9.779 council state-routing fresh denominator로 manuscript-folio/botanical-slide/magnetic-tape return 3개를 provider/model/Cursor0으로 생성·finalize했다. raw baseline은 전부 75/85이며 responsive+accessibility만 red, inventory111, focused6/6+lint green이다.
 - 다음은 이 task bytes commit을 source authority로 삼아 exact tree/prompt/starter/baseline/source-contract hash를 잠그고, current vs state-routed council-first Luna/high 2×3 단일변수 비교를 사전등록한다.
 - 1.9.778은 2.0 normative10-gate snapshot을 1.9.777 증거까지 갱신했다. machine audit 결과 pass0/10, partial5, open3, external2이며 promotion은 계속 BLOCK이다.

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.780 council state-routing task lock
+- fresh3 exact tree/prompt/starter/baseline/source-contract hash를 잠갔다.
+- registered/unplanned/authority/blocker/handoff intervention 계약도 고정했다.
+- provider/model/Cursor0이며 execution은 아직 금지다.
+- 다음은 provider-zero state-routed sandbox preparation 구현이다.
+
 ## 2026-08-09 (Codex) · 1.9.779 council state-routing fresh tasks
 - folio/slide/tape return 3개를 provider/model/Cursor0으로 생성·finalize했다.
 - raw baseline은 전부75/85, responsive+accessibility only red다.
