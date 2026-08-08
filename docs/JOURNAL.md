@@ -5914,6 +5914,12 @@
 - checkpoint continuation0→1→2→3, pacing30s×2, recovery/duplicate/Cursor0이다.
 - wall542,960ms, tokens2,140,479이며 complete root replay는 provider0 fail-close다.
 - 다음은 fresh comparative denominator이며 이 결과만으로 2.0 승격하지 않는다.
+## 2026-08-09 (Codex) · 1.9.801 frontier qualification checkpoint 2
+- Anthropic seed는 valid complete지만81/85·UI-Resolved false다.
+- static closure4·recovery1·proof compliance false를 그대로 보존했다.
+- 재시도·대체·Cursor0이며 비교 결론은 아직 금지한다.
+- 다음 frozen 셀은 Impeccable score다.
+
 ## 2026-08-09 (Codex) · 1.9.800 frontier qualification checkpoint 1
 - OmD astronomical 셀이85/85·UI-Resolved·revision1로 통과했다.
 - wall182.9s·tokens532,265, proof/candidate exact, recovery0이다.
