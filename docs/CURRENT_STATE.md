@@ -4,15 +4,17 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `9a351591`의 Cursor fail-close guard (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-08 · 1.9.767 harness progressive disclosure 1차 완료
+- 갱신: 2026-08-08 · 1.9.768 progressive-disclosure Luna repeat 준비 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.768은 1.9.766과 task/oracle/order/model/effort/prompt를 유지한 fresh exact3 repeat를 사전등록했다. task replay/cache confound 때문에 비용 변화는 descriptive-only다.
+- provider-zero deterministic3/3, provider/model/Cursor0이다. candidate initial harness30,194B(-38.05%)와 fixture/runner/harness/sidecar/master/helper hashes를 잠갔다.
+- 다음은 preparation commit 뒤 Luna/high exact3을 각1회 실행하고 compliance 유지와 input/cached/output/reasoning/wall 변화를 동결한다.
 - 1.9.767은 visual/component/prototype에서만 필요한 grounding·asset·hero·motion detail을 `references/master-visual-grounding.md`로 분리했다. intake/checkpoint relay는 sidecar를 읽지 않는다.
 - 초기 `omd-harness/SKILL.md`는 48,736B/873줄→30,194B/629줄로 38.0%/28.0% 감소했다. sidecar 포함 정본은34,857B이며 중복 CDN catalog는 `omd-asset-fetch`로 단일화했다.
 - doctor는 새 sidecar 누락을 invalid skill sidecar로 진단한다. workflow/catalog/doctor/install/handoff93/93, lint/diff-check green, provider/Cursor0이다.
-- 다음 1.9.768은 동일 exact3 Luna/high checkpoint canary를 fresh hash/experiment로 재사전등록해 compliance 유지와 input token 변화를 비교한다.
 - 1.9.766 live는 Luna/high exact3/3이다. ready→propose_plan, user-answerable→registered question4, external source→blocked를 정확히 지켰고 unauthorized write/timeout/retry/Cursor0이다.
 - provider3, input457,473(cached355,840), output3,924, reasoning1,508, summed wall107,962ms다. 첫 ready case input249,300으로 full harness/master contract context가 과도하다는 비용 경고가 확인됐다.
 - 1.9.766은 integrated harness checkpoint compliance만 보는 fresh3 canary를 사전등록했다. ready→propose_plan, user-answerable→exact4 relay_questions, missing brand source→halt_blocked가 oracle이다.

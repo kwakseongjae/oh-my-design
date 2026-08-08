@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.768 repeat prepared
+- 동일 exact3 Luna/high checkpoint repeat를 fresh root로 잠갔다.
+- provider-zero3/3, provider/model/Cursor0; retry0이다.
+- initial harness30,194B(-38.05%)와 모든 source hash를 고정했다.
+- 다음은 Luna/high 각1회와 descriptive token 비교다.
+
 ## 2026-08-08 (Codex) · 1.9.767 progressive disclosure
 - visual grounding을 phase-only sidecar로 분리하고 asset catalog 중복을 제거했다.
 - initial harness 48,736B→30,194B(-38.0%); semantics는 sidecar에 보존했다.
