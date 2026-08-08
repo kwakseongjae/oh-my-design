@@ -8,6 +8,7 @@ const read = (path) => readFileSync(resolve(root, path), 'utf8');
 describe('OmD cross-skill delivery contract', () => {
   const harness = read('skills/omd-harness/SKILL.md');
   const grounding = read('skills/omd-harness/references/master-visual-grounding.md');
+  const conversation = read('skills/omd-harness/references/master-conversation.md');
   const legacy = read('skills/omd-harness/references/master-legacy-production.md');
   const execution = read('skills/omd-harness/references/master-execution-phases.md');
   const orchestrator = read('skills/omd-orchestrator/SKILL.md');
@@ -63,6 +64,7 @@ describe('OmD cross-skill delivery contract', () => {
   it('keeps a thin master kernel and loads only the active phase contract', () => {
     expect(master).toContain('master-legacy-production.md');
     expect(master).toContain('master-execution-phases.md');
+    expect(master).toContain('master-conversation.md');
     expect(master).not.toContain('prototype 한 번 보고 왔어요');
     expect(legacy).toContain('Production transition');
     expect(legacy).toContain('Unmentioned axes remain unchanged');
@@ -70,5 +72,9 @@ describe('OmD cross-skill delivery contract', () => {
     expect(execution).toContain('mandatory checkpoint #2');
     expect(execution).toContain('mandatory checkpoint #3');
     expect(execution).toContain('Design archive completion is not product implementation completion');
+    expect(conversation).toContain('Do not guess');
+    expect(conversation).toContain('Ask 1–4 tightly coupled questions');
+    expect(conversation).toContain('The launcher renders the artifact');
+    expect(master).not.toContain('scoreCandidatesForModifier');
   });
 });

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.771 conversation sidecar
+- inactive persona/slot/question policy를 conditional sidecar로 분리했다.
+- kernel22,378B→11,218B; original 대비-69.89%다.
+- 3-host install/doctor/workflow/catalog88/88+lint green, provider/Cursor0이다.
+- 다음은 sidecar selection contract matrix다.
+
 ## 2026-08-08 (Codex) · 1.9.770 Luna repeat pass
 - exact3/3과 write/timeout/retry/Cursor0을 유지했다.
 - input+4.44%, cached+4.90%, reasoning-11.32%, wall-9.03%다.

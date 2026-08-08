@@ -50,6 +50,7 @@ describe('omd doctor', () => {
         mkdirSync(join(channelRoot, skill, 'references'), { recursive: true });
         for (const sidecar of [
           'master-visual-grounding.md',
+          'master-conversation.md',
           'master-legacy-production.md',
           'master-execution-phases.md',
         ]) {

@@ -106,6 +106,7 @@ export const REQUIRED_HARNESS_HELPERS = [
 const REQUIRED_SKILL_SIDECARS = [
   ['omd-init', 'scripts/query-references.mjs'],
   ['omd-harness', 'references/master-visual-grounding.md'],
+  ['omd-harness', 'references/master-conversation.md'],
   ['omd-harness', 'references/master-legacy-production.md'],
   ['omd-harness', 'references/master-execution-phases.md'],
 ] as const;
