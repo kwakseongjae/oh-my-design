@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.756 paired comparison complete
+- 6/6 complete: objective 양 arm3/3, proof current2/3 vs council3/3, lift1/tie2/loss0이다.
+- council은 descriptive wall -11.03%, tokens -14.95%; 모든 셀 revision1·recovery0·Cursor0다.
+- 전체 gate는 current Reliability2/3 때문에 false이며 다음은 fresh repeat와 bounded-dispatch 분리 실험이다.
+
 ## 2026-08-08 (Codex) · 1.9.756 checkpoint5 pair2
 - mineral council-off도85/85·proof true라 mineral pair는 동률이다.
 - wall144,349ms, tokens689,915, pacing30,005ms, Cursor0이다.

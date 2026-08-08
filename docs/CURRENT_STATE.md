@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.756 paired comparison 6/6이 complete다. objective는 양 arm3/3, promotion proof는 current2/3 vs council3/3이며 pair outcome은 council lift1/tie2/loss0이다. 모든 셀 revision1, candidate/final exact, recovery/duplicate/Cursor0이다.
+- council은 current 대비 합산 wall -64,809ms(-11.03%), tokens -329,626(-14.95%)였지만 n=3 descriptive-only다. prereg 전체 gate는 양 arm Reliability3/3 요구 때문에 current2/3로 false; candidate Reliability3/3과 paired-loss0는 true다.
+- post-complete 재호출은 provider0에서 `not resumable: complete`로 fail-close했다. 다음은 fresh full-product hierarchy repeat와, 별도 bounded-dispatch(읽기전용 specialist debate) 실험을 분리 사전등록하는 1.9.757이다.
 - 1.9.756 mineral council-off 다섯째 셀은85/85, proof true, revision1, candidate/final exact, recovery/duplicate/Cursor0이다. wall144,349ms, tokens689,915, pacing30,004.79ms다.
 - 둘째 mineral pair는 objective/proof 모두 tie다. checkpoint5이며 fresh cylinder council-on 한 셀만 남았다.
 - 1.9.756 album council-on 넷째 셀은85/85, proof true, revision1, candidate/final exact, recovery/duplicate/Cursor0이다. wall176,125ms, tokens722,312, pacing30,008.78ms다.
@@ -3631,9 +3634,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.753 root와 세 노출 task를 재사용하지 않고 fresh council-off/on 비교 분모를 provider-zero로 잠근다.
-2. Codex-native `gpt-5.6-luna`/high, Cursor 금지, exact checkpoint/cascade/browser 계약으로 paired plan을 사전등록한다.
-3. provider-zero admission과 pre-edit plan을 먼저 동결한 뒤 한 셀씩 실행한다. 비교는 internal diagnostic이며 2.0 gate 승격은 별도 Verified 근거가 필요하다.
+1. 1.9.756 결과를 final commit하고 current의 album desktop hierarchy 실패를 harness regression으로 환류한다.
+2. fresh full-product hierarchy task로 prime-only council Reliability를 반복 검증한다. 기존 1.9.756 task/root는 재사용하지 않는다.
+3. 그 뒤 read-only specialist lane이 실제로 dispatch되는 bounded council을 별도 사전등록한다. 질문 최소화, model-lane accounting, deterministic final owner를 hard gate로 둔다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

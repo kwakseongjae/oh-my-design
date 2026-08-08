@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-checkpoint-comparison-luna-1.9.756",
+  "status": "COMPLETE_AFTER_CELL_6",
+  "cursor_calls": 0,
+  "completed_cells": 6,
+  "remaining_unexposed_cells": 0,
+  "pacing_after_cell_5_ms": 30010.093125,
+  "cell": {
+    "id": "cylinder-luna-r1-council-on",
+    "arm": "omd-portable-council-gate",
+    "validity": "valid",
+    "objective_score": "85/85",
+    "ui_resolved": true,
+    "wall_time_ms": 157425,
+    "token_usage": {
+      "input_tokens": 536063,
+      "cached_input_tokens": 486400,
+      "output_tokens": 6900,
+      "reasoning_output_tokens": 2288,
+      "total_tokens": 542963
+    },
+    "product_revision_count": 1,
+    "static_closure_count": 1,
+    "browser_recovery_count": 0,
+    "duplicate_static_closure_count": 0,
+    "proof_trace_compliance": true,
+    "proof_execution_gate_pass": true,
+    "candidate_final_bytes_match": true
+  },
+  "paired_cylinder_result": {
+    "current_objective_pass": true,
+    "current_proof_pass": true,
+    "council_objective_pass": true,
+    "council_proof_pass": true,
+    "proof_delta": 0,
+    "interpretation": "tie"
+  },
+  "artifact_hashes": {
+    "execution_state_sha256": "93f48d55e9b693ee7b03c80ba084b193bc56fd1932d25095dcd5eabef2741a52",
+    "run_result_sha256": "16e255a7af6e7d08bdec8d82899f3d060ce2dfc16a72bb821e27844c0a20b85e",
+    "score_sha256": "98e51f28e50250064cfeb6fab1c0d3d9e82e5a7ac3863dd58f35ff42a1625c29",
+    "proof_trace_sha256": "0c1547298a1512ae122995514a4d99b8b339afb08b12286c880a3e78e9073882",
+    "run_record_sha256": "e4133963b14d245e7b299ffd27337bab48fc0abc3c8abfd372e8fac9037821b8"
+  },
+  "post_complete_resume": "failed-closed-before-provider: matrix execution state is not resumable: complete"
+}
