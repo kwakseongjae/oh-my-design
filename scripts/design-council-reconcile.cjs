@@ -50,14 +50,26 @@ for (const lane of plan.selected_lanes) {
     const decisionMode = ['preserve-existing', 'choose-new', 'unknown'].includes(claim.decision_mode)
       ? claim.decision_mode
       : 'unknown';
+    const authorityMode = ['preserve-existing', 'user-answerable', 'external-unverifiable', 'unknown'].includes(claim.authority_mode)
+      ? claim.authority_mode
+      : 'unknown';
     const modeSupportsTransition = claim.recommendation !== 'defer' || decisionMode === 'preserve-existing';
-    const transitionAllowed = allowedDecision && allowedRecommendations.includes(claim.recommendation) && modeSupportsTransition;
+    const authoritySupportsTransition = claim.recommendation === 'defer'
+      ? authorityMode === 'preserve-existing'
+      : claim.recommendation === 'blocked'
+        ? authorityMode === 'external-unverifiable'
+        : claim.recommendation === 'interview'
+          ? authorityMode === 'user-answerable' || authorityMode === 'unknown'
+          : true;
+    const transitionAllowed = allowedDecision && allowedRecommendations.includes(claim.recommendation)
+      && modeSupportsTransition && authoritySupportsTransition;
     const autoValueStable = decision?.disposition !== 'auto'
       || (claim.recommendation === 'keep' && claim.proposed_value === decision.proposed_value);
     const normalized = {
       lane_id: lane.id,
       decision_id: claim.decision_id,
       decision_mode: decisionMode,
+      authority_mode: authorityMode,
       recommendation: claim.recommendation,
       proposed_value: claim.proposed_value ?? null,
       evidence,

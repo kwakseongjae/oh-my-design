@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.760 authority source prepared
+- claim authority를 preserve/user-answerable/external-unverifiable/unknown으로 분리했다.
+- blocked는 external-unverifiable만, defer는 preserve-existing만 허용한다.
+- provider-zero lane2, provider/model/Cursor0, unit9/9 green이다.
+- checkpoint 뒤 Luna/high exact lane2가 다음이다.
+
 ## 2026-08-08 (Codex) · 1.9.759 exact gate fail
 - preserve-existing 분류로 defer3/3은 달성했지만 pricing interview를 blocked로 바꿨다.
 - raw evaluator false positive를 rescore해 exact interview loss1, gate fail로 교정했다.
