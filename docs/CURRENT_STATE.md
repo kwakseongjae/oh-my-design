@@ -9,6 +9,8 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.756 cylinder council-off 셋째 셀은85/85, proof true, revision1, candidate/final exact, recovery/duplicate/Cursor0으로 pass했다. wall180,158ms, tokens634,801, pacing30,008.59ms다.
+- checkpoint3이며 current arm은 objective3/3·proof2/3이다. 다음은 album council-on으로 첫 exact task pair를 닫는다.
 - 1.9.756 mineral council-on 둘째 셀은85/85, proof true, revision1, candidate/final exact, recovery/duplicate/Cursor0으로 clean pass했다. wall189,076ms, tokens610,167이며 pacing은30,006.08ms다.
 - matrix checkpoint2다. 다음은 commit 뒤 cylinder council-off exact1회이며, 현재 arm별 proof는 current0/1, council1/1이라 task-paired 결론은 아직 불가하다.
 - 1.9.756 album council-off 첫 셀은 objective85/85, revision1, candidate/final exact, recovery/duplicate/Cursor0이지만 desktop decision context가 full-row가 아니어서 `all_registered_carriers_closed=false`; promotion proof는 fail이다. wall262,928ms, tokens880,352다.
