@@ -5527,6 +5527,12 @@
 - Carried forward provider-zero geology/herbarium and added fresh photographic negative-return.
 - Fresh raw baseline is 75/85 with responsive+accessibility red; inventory102, focused2/2.
 - Next: commit exact bytes, then preregister Codex Luna/high with a new isolated named browser/root.
+## 2026-08-08 (Codex) · 1.9.754 council comparison task lock
+- fresh3 exact task/prompt/starter/baseline/source-contract hash를 잠갔다.
+- arm은 current portable vs zero-dispatch council gate, runtime은 Luna/high다.
+- provider/model/Cursor0이며 아직 quality result는 없다.
+- 다음은 balanced2×3 checkpoint-bounded plan 사전등록이다.
+
 ## 2026-08-08 (Codex) · 1.9.754 fresh comparative tasks
 - photograph-album/mineral-drawer/wax-cylinder task를 provider-zero로 추가했다.
 - raw baseline은 모두75/85, responsive+accessibility only red다.

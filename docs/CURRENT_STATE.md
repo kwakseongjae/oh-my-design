@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.754 fresh3의 exact task/prompt/starter/baseline/source-contract hash를 `council-checkpoint-comparison-task-lock-1.9.754`에 provider/model/Cursor0으로 잠갔다.
+- 비교 arm은 current `omd-portable` vs `omd-portable-council-gate`다. 다음은 task·runtime·proof 조건을 동일하게 유지한 balanced2×3 Luna/high plan을 사전등록하는 단계다.
+
 - 1.9.754 fresh comparative denominator용 provider-zero task3개를 추가·finalize했다: photograph-album/mineral-drawer/wax-cylinder return. 전부 raw75/85이며 responsive+accessibility만 red, provider/model/Cursor0, inventory108이다.
 - v13 generator와 inventory assertions를108로 동기화했고 focused74/74+lint가 green이다. 다음은 exact task bytes를 commit한 뒤 council-off/on paired lock을 사전등록한다.
 

@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.754",
+  "experiment_id": "council-checkpoint-comparison-task-lock-1.9.754",
+  "status": "THREE_FRESH_TASKS_LOCKED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "cursor_execution_allowed": false,
+  "runtime_policy": "Codex gpt-5.6-luna only",
+  "task_source_commit": "126b9a6f5b7d3f01079b1e4606a126c086d60047",
+  "comparison_arms": ["omd-portable", "omd-portable-council-gate"],
+  "tasks": [
+    {
+      "task_id": "photograph-album-return-v0.1",
+      "provenance": "fresh-provider-zero-1.9.754",
+      "prior_model_exposures": 0,
+      "task_tree_sha256": "4c3836fc3104a239b67c77f88454c797102488c788276867e3e33dd60454d976",
+      "prompt_sha256": "63d44614b468d773b69d7d5887eac883b0ea00ceb3c4efb3591d3f844361cdcc",
+      "starter_sha256": "2ded990cbcd383b83cc138f436d4a97b3880c645949122ea6a88d4b4d6b40b49",
+      "baseline_evidence_sha256": "6b499ee62b8c245593a627536702678faa113b934d8d3786fc59d64503fc91a1",
+      "source_contract_sha256": "30a1d8d75f64610b91890423a141fc96bbe589b8c69aac50e63557746657c9ff"
+    },
+    {
+      "task_id": "mineral-drawer-return-v0.1",
+      "provenance": "fresh-provider-zero-1.9.754",
+      "prior_model_exposures": 0,
+      "task_tree_sha256": "81a34598909425f6ce36e4a0c45ae4fbfed57720d6e764065e90e06bc38f65fb",
+      "prompt_sha256": "c7db2ef3d22d8069d3f1f5056a682764e6faaa9f2547bb6d2a8b58938b77420d",
+      "starter_sha256": "037908902082a9940fa1d1c2a4d73895119e32553300f1096181713f555b7b1f",
+      "baseline_evidence_sha256": "89345ca7e02c6dbcc028c4b24d6c97530b6945889575ef1df1925e151c345da5",
+      "source_contract_sha256": "1f323a1ecc86f8c6e09b9e2160dff96f4a797a245bb2917081f9d9dabea54dd9"
+    },
+    {
+      "task_id": "wax-cylinder-return-v0.1",
+      "provenance": "fresh-provider-zero-1.9.754",
+      "prior_model_exposures": 0,
+      "task_tree_sha256": "9a7d8d605631dca11fb740c927b46e343a66097bad28d238fd688fa3cd2dd765",
+      "prompt_sha256": "75d7158ec7c2fd4e68459a2dc19fad30118b72a15ba5bf5801f76e0e7e2f51db",
+      "starter_sha256": "e7bbe3bb56f82ae19dabbf19a36d4703d93d0e7644e051d538f9b0bd20b52521",
+      "baseline_evidence_sha256": "4b852d86a38f540f9dd8583a6a86ecb54a8c89b4d1e6000840ef5d3c714fde6c",
+      "source_contract_sha256": "2334e709c77f8f47c0399d4be383edd185215a11767b0c87a2dc90afa8b15dd4"
+    }
+  ],
+  "raw_baseline": {
+    "scores": [75, 75, 75],
+    "objective_max": 85,
+    "failed_critical_gates": ["accessibility", "responsive"],
+    "coverage_complete": true
+  },
+  "validation": {
+    "task_inventory": 108,
+    "provider_calls": 0,
+    "cursor_calls": 0,
+    "focused_tests": "74/74",
+    "typescript_lint": "pass"
+  },
+  "execution_allowed": false,
+  "next_gate": "Commit this lock, then preregister an exact paired council-off/on Luna matrix with balanced task order and the 1.9.753 checkpoint contracts."
+}
