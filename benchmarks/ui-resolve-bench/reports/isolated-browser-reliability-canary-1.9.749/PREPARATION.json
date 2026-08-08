@@ -1,0 +1,231 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "isolated-browser-reliability-canary-1.9.749",
+  "status": "PREPARED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "scheduled_cells": 3,
+  "prepared_cells": 3,
+  "locked_plan_sha256": "7086e34917a84db5803c2ee57c0c0adff803d53bf6e459c246daa57622fbc370",
+  "preparation_state_sha256": "6aef5ded2a38bf7c45bbaee495e321f1beb82fa0e4bebe61f96911af6ddbc6b5",
+  "objective_evaluator": {
+    "score_schema_version": "0.6",
+    "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+    "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+  },
+  "normalization_policy": "cross-task-reliability",
+  "required_normalization": [
+    "cell_contract",
+    "task_id_distinct",
+    "variant_id",
+    "system_id",
+    "runtime",
+    "model_id",
+    "effort",
+    "timeout_seconds",
+    "skill_sha256",
+    "source_publishable",
+    "objective_evaluator",
+    "deterministic_reflow_contract",
+    "task_lock_attested",
+    "skill_lock_attested"
+  ],
+  "normalization": {
+    "cell_contract": true,
+    "task_id": false,
+    "task_id_distinct": true,
+    "task_prompt_sha256": false,
+    "starter_sha256": false,
+    "product_initial_sha256": false,
+    "variant_id": true,
+    "system_id": true,
+    "runtime": true,
+    "model_id": true,
+    "effort": true,
+    "timeout_seconds": true,
+    "skill_sha256": true,
+    "source_publishable": true,
+    "objective_evaluator": true,
+    "deterministic_reflow": false,
+    "deterministic_reflow_contract": true,
+    "task_lock_attested": true,
+    "skill_lock_attested": true,
+    "paired_task_contracts": true,
+    "paired_arm_rotation": false
+  },
+  "systems": [
+    "luna-high-omd-council-isolated-browser"
+  ],
+  "trials": [
+    1
+  ],
+  "source_attestation": {
+    "luna-high-omd-council-isolated-browser": {
+      "source_commit": "b174309b45b19a44460877a37ed21fb5032efa4a",
+      "skill_sha256": "b792a4e8bcd5b594cbd864bfb69fbf07f53c98338f32a4aa8b63adaa5d80cb9e",
+      "publishable": true
+    }
+  },
+  "execution_admission": {
+    "allowed": true,
+    "reason": null,
+    "execution_artifacts_absent": true,
+    "reprepare_on_objective_methodology_drift": true
+  },
+  "runtime_preflight": {
+    "provider_calls": 0,
+    "status": "complete",
+    "cursor_invoked": false,
+    "browser_harness": {
+      "status": "ready",
+      "connection": "omd1749",
+      "sandbox": "external-workspace-openai-browser",
+      "active_connections": 1
+    },
+    "codex_auth": {
+      "status": "ready",
+      "sandbox": "external-workspace-openai-browser"
+    }
+  },
+  "council_intake_admission": {
+    "all_cells_question_count": 0,
+    "all_cells_model_lane_calls": 0,
+    "all_cells_provider_mutable": false,
+    "pass": true
+  },
+  "cells": [
+    {
+      "id": "luna-geology-section-loan-r1",
+      "task_id": "geology-section-loan-v0.1",
+      "variant_id": "omd-portable-council-gate",
+      "system_id": "luna-high-omd-council-isolated-browser",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "task_prompt_sha256": "aba9b3fc8603314f33a7a013ca5b04af8fbf400e88e3f6882f15411b745fa5fb",
+      "starter_sha256": "296b3c90c008b025c72d2c42842a254b2d319f7c7ff7dbdbbff83230e8da37cc",
+      "product_initial_sha256": "296b3c90c008b025c72d2c42842a254b2d319f7c7ff7dbdbbff83230e8da37cc",
+      "skill_sha256": "b792a4e8bcd5b594cbd864bfb69fbf07f53c98338f32a4aa8b63adaa5d80cb9e",
+      "source_commit": "b174309b45b19a44460877a37ed21fb5032efa4a",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "ecf2f2dd8a3b7adbade36e6c24ea0db45abc579df973fce23257973f5ccb19d7",
+        "source_contract_sha256": "11c22f1abec6a62d782bc0a77d408a20a817411ff2a6a8b1c97a7c9363c3f7f3",
+        "inventory_sha256": "e74cdc38f9c273dec61999700bfe0b42aec64f1a41935ecb4703f2a019bb3d99",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "42276f9de4418db6317259d6ef616c94430fddb48edffb0bd7172929f83a48db"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "luna-herbarium-sheet-return-r1",
+      "task_id": "herbarium-sheet-return-v0.1",
+      "variant_id": "omd-portable-council-gate",
+      "system_id": "luna-high-omd-council-isolated-browser",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "task_prompt_sha256": "0a0ea1a9a863e1834e79ec50bfccd0269d2f9a4381891d30a42d9bdcf7769afe",
+      "starter_sha256": "e390c5d0a31dcad030bcb0d456bd155500b4b2ca11a8494ce3c66e622b5ded9c",
+      "product_initial_sha256": "e390c5d0a31dcad030bcb0d456bd155500b4b2ca11a8494ce3c66e622b5ded9c",
+      "skill_sha256": "b792a4e8bcd5b594cbd864bfb69fbf07f53c98338f32a4aa8b63adaa5d80cb9e",
+      "source_commit": "b174309b45b19a44460877a37ed21fb5032efa4a",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "77ab6c415c9accc75e47b2aaa5279344a5223f28308a3aea9ca4910fc00c33df",
+        "source_contract_sha256": "d463dd937d86eab3f8a2848f33299065a01639376efd54e3b9e9234b64ec0972",
+        "inventory_sha256": "f04581d1ff8440b00f379408025a9cf81459f78a83ff8eee4871086e1e51d563",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "8f0ef39e3d55913df08ac294bc127a75e3fe3d0ac3ec2c61ddc01a97b2cfcc97"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "luna-photographic-negative-return-r1",
+      "task_id": "photographic-negative-return-v0.1",
+      "variant_id": "omd-portable-council-gate",
+      "system_id": "luna-high-omd-council-isolated-browser",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "task_prompt_sha256": "9b98dd4ca43050ec07966090257b80b1cf891ef8acb164471a93bdee4590f6af",
+      "starter_sha256": "20737914abb87ee40eb96e6e07fb777fb985101176dd4c9668a28180a4536a0b",
+      "product_initial_sha256": "20737914abb87ee40eb96e6e07fb777fb985101176dd4c9668a28180a4536a0b",
+      "skill_sha256": "b792a4e8bcd5b594cbd864bfb69fbf07f53c98338f32a4aa8b63adaa5d80cb9e",
+      "source_commit": "b174309b45b19a44460877a37ed21fb5032efa4a",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "fdba43a03ed4d6dee3ade122ff99408000eb7bf21b0a86cde7202ab90e5b4d57",
+        "source_contract_sha256": "54c6ea5a3bb21233be73b0a5c73cafefbbc44adf308aef79e34c91d32c168ff2",
+        "inventory_sha256": "89d3762c6b12fa8217b2a902adf01762b17c95f134bdc7f46a64a998bd1da3fa",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "19a684478dcb4c995ca43561e9621e15c3a626500fdbbacfa13574dde2a3f47a"
+        },
+        "attested": true
+      },
+      "untouched": true
+    }
+  ]
+}

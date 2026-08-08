@@ -5404,6 +5404,12 @@
 - frozen Grok root와 분리한 Codex/Luna/high off/on 2-cell plan을 만들었다.
 - prior Grok prompt1/output0/change0, prior Luna0을 명시했다.
 - 다음은 provider-zero admission 후 Luna exact2회 실행이다.
+# 2026-08-08 — 1.9.749 provider-zero admission
+- Fresh root prepared3/3 with task/skill/source/evaluator locks attested.
+- Council intake is questions0/model lanes0/provider mutable false.
+- Exact `omd1749` browser and isolated Codex auth preflight are ready; Cursor calls0.
+- Next: commit preparation, then execute the geology Luna cell exactly once.
+
 # 2026-08-08 — 1.9.749 Luna plan preregistered
 - Locked geology → herbarium → photographic at Codex Luna/high, 720s, concurrency1, pacing30s.
 - Cursor is forbidden; exact isolated `omd1749` named attachment is mandatory.

@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.749 fresh root는 scheduled/prepared3/3, provider/model0, execution artifacts0으로 admission green이다. task/skill/source/evaluator locks와 council questions0/model lanes0도 green이다.
+- exact `omd1749` isolated browser-harness 연결과 격리 Codex auth runtime preflight가 ready이며 Cursor 호출0이다. 다음은 PREPARATION commit 뒤 geology 첫 Luna 셀만 exact1회 실행한다.
+
 - 1.9.749 plan은 geology→herbarium→photographic, Codex/Luna/high, council-on, timeout720s, concurrency1, pacing30s, retry/replacement0으로 사전등록했다. Cursor는 명시적으로 금지했다.
 - 새 browser contract는 exact `omd1749` named socket, controller-started local Chrome, attach-only, profile/cloud none을 요구한다. 다음은 plan commit 뒤 provider-zero root prepare/admission과 runtime preflight다.
 
