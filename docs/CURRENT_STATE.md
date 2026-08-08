@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.753 denominator를 architectural→ceramic→fresh glass로 잠갔다. 세 task 모두 provider/model0, raw75/85, responsive+accessibility only red, inventory105이며 Cursor는 금지다.
+- 다음은 lock commit 뒤 repaired continuation controller와 effective skill hash를 포함한 Luna/high exact plan을 사전등록한다.
+
 - fresh provider-zero v12 `glass-plate-return-v0.1`을 추가·finalize했다. raw baseline75/85, responsive+accessibility only red, inventory105다.
 - controller continuation 수리와 fresh task를 합친 focused331 pass/2 skip+lint가 green이다. 다음은 exact task bytes commit 뒤 architectural→ceramic→glass의 1.9.753 denominator lock이다.
 

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.753 denominator lock
+- architectural→ceramic→glass provider/model0 세 task를 잠갔다.
+- raw75/85, exact cascade, inventory105, Cursor forbidden이다.
+- 다음은 repaired continuation Luna/high plan 사전등록이다.
+
 ## 2026-08-08 (Codex) · 1.9.753 fresh task
 - glass plate-return provider-zero task를 추가·finalize했다.
 - raw75/85, responsive+accessibility only red, inventory105다.
