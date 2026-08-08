@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.750의 fresh provider-zero task `architectural-drawing-return-v0.1`을 생성했다. raw baseline은75/85이며 responsive+accessibility만 red, inventory103, hidden coverage2/2와 bench235 pass/2 skip, lint green이다.
+- 다음은 exact task bytes commit 뒤 herbarium+photographic+architectural의 task lock과 controller-owned preplan 계약을 포함한 Luna/high 전용 1.9.750 plan을 사전등록한다.
+
 - 1.9.749 실패 원인인 pre-edit plan ownership을 수리했다. 새 `controller_pre_edit_plan_contract`는 격리 browser runtime preflight 뒤 provider 노출 전에 shipped runner를 `OMD_REFLOW_MODE=plan`으로 실행한다.
 - controller receipt는 provider0/Cursor0, exact named CDP attachment, measured attempt1, 제품 byte 불변을 봉인한다. reflow artifact hash도 checkpoint attestation에 포함해 이후 drift를 차단한다.
 - focused74/74와 lint가 green이다. 다음은 이 수리를 commit하고 herbarium+photographic+fresh1의 1.9.750 root를 새로 사전등록·prepare한 뒤 provider-zero controller plan 3/3을 확인하는 단계다. Cursor는 사용하지 않는다.

@@ -14,8 +14,9 @@ const v6BaselineRoot = "/private/tmp/omd-council-product-baselines-1.9.742-v6";
 const v7BaselineRoot = "/private/tmp/omd-terminal-runner-reliability-baselines-1.9.746-v7";
 const v8BaselineRoot = "/private/tmp/omd-browser-preflight-reliability-baselines-1.9.748-v8";
 const v9BaselineRoot = "/private/tmp/omd-isolated-browser-reliability-baselines-1.9.749-v9";
+const v10BaselineRoot = "/private/tmp/omd-controller-plan-reliability-baselines-1.9.750-v10";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
-const taskSet = process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -226,7 +227,16 @@ const v9Cases = [
   },
 ];
 
-const cases = taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v10Cases = [
+  {
+    id: "architectural-drawing-return-v0.1", title: "Architectural drawing return review", eyebrow: "Architecture archive · drawing return", heading: "Architectural-drawing return review", recordHeading: "Drawing register", recordSummary: "Five supplied drawing groups mapped to seven archival tubes.",
+    records: [["DRAW-PLN-8124",["TUBE-10710","TUBE-10711"]],["DRAW-SEC-8238",["TUBE-10712"]],["DRAW-ELE-8351",["TUBE-10713","TUBE-10714"]],["DRAW-DTL-8467",["TUBE-10715"]],["DRAW-SIT-8580",["TUBE-10716"]]],
+    windows: [["STORE-B2","07:25–07:45"],["STORE-D5","10:10–10:30"],["STORE-F1","13:20–13:40"],["STORE-H4","16:00–16:20"]], views: [["drawings","Drawing register"],["windows","Store windows"],["decision","Return decision"]], toggle: "Include condition-note copy", fieldLabel: "Return archivist", validValue: "DRAW-PLN-8124 return review", target: "DRAW-PLN-8124 + TUBE-10710", evidence: "5 drawing groups · 7 archival tubes · 4 store windows", state: "Review open", action: "Open return record", footer: "Architecture archive · supplied return evidence only",
+    unknowns: ["authorship verified","drawing stable","scale calibrated","provenance validated","tube seal verified","store accepted","catalog published","return approved"], palette: {canvas:"#F1F2EF",surface:"#FEFFFC",ink:"#29312B",muted:"#69736D",border:"#A0AAA3",primary:"#4C6255",accent:"#746054"}, columns: "repeat(3,288px)", windowColumns: "repeat(4,220px)", decisionMin: "570px", cardRadius: 3, domain: "architectural drawing-return ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -313,7 +323,9 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v9"
+  const baselineRoot = taskSet === "v10"
+    ? v10BaselineRoot
+    : taskSet === "v9"
     ? v9BaselineRoot
     : taskSet === "v8"
     ? v8BaselineRoot

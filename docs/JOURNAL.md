@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.750 fresh task
+- architectural drawing-return provider-zero task를 추가했다.
+- raw75/85, responsive+accessibility only red, inventory103이다.
+- hidden coverage와 bench235/2skip, lint green; exact task lock이 다음이다.
+
 ## 2026-08-08 (Codex) · controller-owned pre-edit plan
 - shipped browser runner의 plan mode를 provider 노출 전 controller 단계로 이동했다.
 - provider0/Cursor0·exact CDP·attempt1·제품 byte 불변 receipt와 artifact checkpoint hash를 추가했다.
