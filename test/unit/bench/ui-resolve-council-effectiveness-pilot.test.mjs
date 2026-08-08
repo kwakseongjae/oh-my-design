@@ -103,13 +103,14 @@ describe("council effectiveness pilot", () => {
     expect(summary).toMatchObject({
       execution_mode: "codex-live",
       runtime: "codex",
-      provider_calls: 4,
-      model_lane_calls: 4,
+      invocation_attempt_count: 4,
+      provider_calls: 0,
+      model_lane_calls: 0,
       cursor_calls: 0,
     });
     const laneRuns = summary.results.flatMap((item) => item.lane_runs);
     expect(laneRuns).toHaveLength(4);
-    expect(laneRuns.every((run) => run.exit_code === null && run.spawn_error?.includes("ENOENT"))).toBe(true);
+    expect(laneRuns.every((run) => run.exit_code === null && run.spawn_error?.includes("ENOENT") && run.provider_call_started === false)).toBe(true);
     expect(laneRuns.every((run) => run.artifact_valid === false)).toBe(true);
   });
 });

@@ -72,7 +72,7 @@ function runCodex(workspace, lane) {
     child.on("close", (code) => {
       const events = stdout.split("\n").filter(Boolean).flatMap((line) => { try { return [JSON.parse(line)]; } catch { return []; } });
       const usage = events.flatMap((event) => event.usage ? [event.usage] : event.token_usage ? [event.token_usage] : []);
-      finish({ code, timed_out: timedOut, stdout, stderr, usage, spawn_error: null });
+      finish({ code, timed_out: timedOut, stdout, stderr, usage, provider_call_started: events.length > 0, spawn_error: null });
     });
   });
 }
@@ -129,6 +129,7 @@ function scoreCase(testCase, ledger, reconciled, debate, laneRuns) {
 
 function summarize(results, executionMode) {
   const laneRuns = results.flatMap((item) => item.lane_runs);
+  const providerCalls = laneRuns.filter((item) => item.provider_call_started).length;
   return {
     schema_version: "0.1",
     experiment_id: fixture.experiment_id,
@@ -139,8 +140,9 @@ function summarize(results, executionMode) {
     runtime: execute ? fixture.runtime : "provider-zero",
     case_count: results.length,
     lane_call_count: laneRuns.length,
-    provider_calls: execute ? laneRuns.length : 0,
-    model_lane_calls: execute ? laneRuns.length : 0,
+    invocation_attempt_count: execute ? laneRuns.length : 0,
+    provider_calls: providerCalls,
+    model_lane_calls: providerCalls,
     cursor_calls: 0,
     baseline_question_count: results.reduce((sum, item) => sum + item.baseline_question_count, 0),
     council_question_count: results.reduce((sum, item) => sum + item.council_question_count, 0),
@@ -193,7 +195,7 @@ for (const testCase of fixture.cases) {
     cpSync(caseRoot, laneRoot, { recursive: true });
     const ignoredOutput = join(".omd/run", lane.output).replaceAll("\\", "/");
     const before = treeManifest(laneRoot, { ignore: [ignoredOutput] });
-    let run = { code: null, timed_out: false, wall_ms: 0, stdout: "", stderr: "provider execution disabled", usage: [], spawn_error: null };
+    let run = { code: null, timed_out: false, wall_ms: 0, stdout: "", stderr: "provider execution disabled", usage: [], provider_call_started: false, spawn_error: null };
     if (execute) run = await runCodex(laneRoot, lane);
     const after = treeManifest(laneRoot, { ignore: [ignoredOutput] });
     const unauthorizedChanges = diffTreeManifests(before, after);
@@ -210,6 +212,7 @@ for (const testCase of fixture.cases) {
       model: execute ? fixture.model : null,
       exit_code: run.code,
       spawn_error: run.spawn_error,
+      provider_call_started: run.provider_call_started ?? false,
       timed_out: run.timed_out,
       wall_ms: run.wall_ms,
       usage: run.usage,

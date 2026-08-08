@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.757 attempt1 infra-invalid
+- parent sandbox가 Codex state DB를 열지 못해 invocation4가 provider 전 종료됐다.
+- provider/model/Cursor/artifact/unauthorized-write0이며 결과는 infra-invalid로 동결했다.
+- invocation/provider-start accounting을 분리했고 unit4/4가 green이다.
+- checkpoint 뒤 동일 prereg를 Codex-native 권한으로 실행한다.
+
 ## 2026-08-08 (Codex) · 1.9.757 bounded council prepared
 - council runner를 Codex-native Luna/high 전용으로 바꾸고 Cursor live는 spawn 전 차단했다.
 - provider-zero case3/lane4, provider·model·Cursor0, authority/blocked true, forbidden-auto0이다.
