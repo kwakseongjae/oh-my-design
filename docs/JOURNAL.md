@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.786 Luna state-routing checkpoint3
+- tape current도 85/85·revision1·proof/candidate exact로 통과했다.
+- recovery0, wall245,521ms, tokens1,412,630; arm pass2:1이다.
+- 동일 task paired 비용만 결론에 사용한다.
+- 다음은 folio state-routed 1셀이다.
+
 ## 2026-08-09 (Codex) · 1.9.785 Luna state-routing checkpoint2
 - slide state-routed도 85/85·revision1·proof/candidate exact로 통과했다.
 - recovery0, wall197,295ms, tokens899,200; arm pass1:1이다.

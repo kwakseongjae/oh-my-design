@@ -4,11 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.785 Luna state-routing checkpoint2 완료
+- 갱신: 2026-08-09 · 1.9.786 Luna state-routing checkpoint3 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.786 checkpoint3 `tape-luna-r1-current`도 85/85·UI-Resolved·revision1·proof/candidate exact, recovery0으로 통과했다. wall245,521ms, tokens1,412,630이며 arm pass는 current2/candidate1이다.
+- 다음은 첫 exact pair를 닫는 `folio-luna-r1-state-routed` 1셀이다.
 - 1.9.785 checkpoint2 `slide-luna-r1-state-routed`도 85/85·UI-Resolved·revision1·proof/candidate exact, recovery0으로 통과했다. wall197,295ms, tokens899,200이며 현재 arm pass는 1:1이다.
 - 다음은 `tape-luna-r1-current` 1셀이다. cross-task raw 비용 비교는 결론에 사용하지 않고, 세 paired task가 끝난 뒤에만 별도 축으로 집계한다.
 - 1.9.784 checkpoint1 `folio-luna-r1-current`는 85/85·UI-Resolved·revision1·proof/candidate exact, browser recovery0으로 통과했다. wall152,098ms, reported tokens535,519, Cursor0이다.
