@@ -1,0 +1,6 @@
+{
+  "schema_version":"0.1","experiment_id":"checkpoint-reliability-canary-1.9.753","status":"CHECKPOINTED_AFTER_CELL_2","cursor_calls":0,"completed_cells":2,"remaining_unexposed_cells":1,"continuation_preflight_passed":true,"pacing_elapsed_ms":30004.488208,
+  "cell":{"id":"luna-ceramic-vessel-return-r1","validity":"valid","objective_score":"85/85","ui_resolved":true,"wall_time_ms":176480,"token_usage":{"input_tokens":641496,"cached_input_tokens":586496,"output_tokens":8444,"reasoning_output_tokens":2955,"total_tokens":649940},"product_revision_count":1,"static_closure_count":1,"browser_mechanism_count":1,"browser_recovery_count":0,"duplicate_static_closure_count":0,"proof_compliance":true,"candidate_final_bytes_match":true},
+  "artifact_hashes":{"execution_state_sha256":"730bb2cba6c6a6cfc7ee9171e377e1a860c2404c955bd44afd4567435c01476d","run_result_sha256":"b294f1b4e2ee6985ddebc261ecfd110154733afb674f56ac1f7e162be8945641","score_sha256":"731a86dc49c851551b87f07ac95eac81f540160bf28c313afe8341c726959c65","proof_trace_sha256":"368b7e77a940de27675b97be794d53e469dd4d6460d0b386419c1eec3994d39e"},
+  "next_gate":"Commit this checkpoint, preserve 30-second pacing, then execute only the fresh glass cell once."
+}

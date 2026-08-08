@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.753 checkpoint2 pass
+- repaired continuation+30,004ms pacing이 통과했고 ceramic도85/85 proof true다.
+- wall176,480ms, tokens649,940, revision1, recovery/duplicate/Cursor0이다.
+- checkpoint commit 뒤 fresh glass exact1회가 다음이다.
+
 ## 2026-08-08 (Codex) · 1.9.753 checkpoint1 pass
 - architectural Luna는85/85, revision1, proof true, candidate/final exact다.
 - wall179,225ms, tokens602,971, recovery/duplicate/Cursor0이다.

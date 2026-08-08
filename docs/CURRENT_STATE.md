@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.753 checkpoint continuation이 실제로 통과했고 fixed pacing은30,004.49ms다. ceramic Luna 셀도85/85, revision1, proof true, candidate/final exact, recovery/duplicate/Cursor0으로 pass했다.
+- wall176,480ms, tokens649,940이며 matrix checkpoint2다. fresh glass만 provider/model0으로 남았다. 다음은 checkpoint2 commit 뒤 glass exact1회다.
+
 - 1.9.753 architectural Luna/high 첫 셀은85/85 resolved, revision1, proof true, candidate/final exact, recovery/duplicate/Cursor0으로 clean pass했다. wall179,225ms, tokens602,971이다.
 - matrix checkpoint1이며 ceramic+glass는 provider/model0이다. 다음은 checkpoint commit 뒤 repaired continuation을 ceramic exact1회로 검증한다.
 
