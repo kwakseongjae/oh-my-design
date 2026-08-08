@@ -512,6 +512,8 @@ describe('install-skills', () => {
       expect(harness).toContain('choose-new/user-answerable/interview');
       expect(harness).toContain('external-unverifiable/blocked');
       expect(harness).toContain('if handoff.status == "blocked"');
+      expect(harness).toContain('ledger_sha256');
+      expect(harness).toContain('questions_sha256');
     }
 
     const masters = [

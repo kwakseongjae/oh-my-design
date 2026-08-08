@@ -129,7 +129,12 @@ describe('design-council-handoff', () => {
     expect(packet.pending_interview_ids).toEqual([]);
 
     const answersPath = join(run, 'checkpoints/council-intake.answers.json');
-    writeFileSync(answersPath, `${JSON.stringify({ answers: { pricing: 'Paid' } })}\n`);
+    writeFileSync(answersPath, `${JSON.stringify({
+      checkpoint_id: handoff.checkpoint_id,
+      ledger_sha256: handoff.ledger_sha256,
+      questions_sha256: handoff.questions_sha256,
+      answers: { pricing: 'Paid' },
+    })}\n`);
     const applied = spawnSync(process.execPath, [helper, root, run, 'apply', answersPath], { encoding: 'utf8' });
     expect(applied.status, applied.stderr).toBe(0);
     const finalHandoff = JSON.parse(readFileSync(join(run, 'handoff/.handoff.json'), 'utf8'));
@@ -141,6 +146,30 @@ describe('design-council-handoff', () => {
     expect(finalHandoff.deferred_slots).toEqual([
       { id: 'wow', slot: 'wow_moment', reason: 'No grounded visual opportunity.' },
     ]);
+    const duplicate = spawnSync(process.execPath, [helper, root, run, 'apply', answersPath], { encoding: 'utf8' });
+    expect(duplicate.status).not.toBe(0);
+    expect(duplicate.stderr).toContain('not awaiting answers');
+  });
+
+  it('rejects an answer receipt after the ledger changes', () => {
+    const { root, run, handoff } = fixture([
+      { id: 'pricing', slot: 'pricing', disposition: 'interview', reason: 'Choose pricing.' },
+    ]);
+    const answersPath = join(run, 'checkpoints/council-intake.answers.json');
+    writeFileSync(answersPath, `${JSON.stringify({
+      checkpoint_id: handoff.checkpoint_id,
+      ledger_sha256: handoff.ledger_sha256,
+      questions_sha256: handoff.questions_sha256,
+      answers: { pricing: 'Paid' },
+    })}\n`);
+    const ledgerPath = join(run, 'council/decision-ledger.json');
+    const ledger = JSON.parse(readFileSync(ledgerPath, 'utf8'));
+    ledger.decisions[0].reason = 'Changed after the question was prepared.';
+    writeFileSync(ledgerPath, `${JSON.stringify(ledger)}\n`);
+
+    const applied = spawnSync(process.execPath, [helper, root, run, 'apply', answersPath], { encoding: 'utf8' });
+    expect(applied.status).not.toBe(0);
+    expect(applied.stderr).toContain('stale or mismatched');
   });
 
   it('lets an external evidence blocker suppress every interview checkpoint', () => {

@@ -4,15 +4,17 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `9a351591`의 Cursor fail-close guard (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-08 · 1.9.764 deterministic intake handoff 통합 완료
+- 갱신: 2026-08-08 · 1.9.765 answer receipt + doctor gate 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.765는 council intake answer에 checkpoint/ledger/questions SHA-256 receipt를 요구한다. 질문 뒤 ledger가 바뀌거나 question packet이 stale하거나 동일 답을 두 번 적용하면 fail-close한다.
+- `omd doctor`는 각 채널 data root의 ctx/context/council prime/reconcile/handoff helper 5개를 필수 진단한다. handoff6/6, doctor33/33, install/update/workflow 포함92/92, lint/diff-check green이며 provider/Cursor0이다.
+- 다음 1.9.766은 integrated installed harness의 ready/interview/blocked 3-case 모델 canary를 Luna/high 전용으로 사전등록한다. 먼저 provider-zero prepare/admission을 닫고, exact checkpoint behavior만 측정하며 UI quality·superiority 주장은 분리한다.
 - 1.9.764는 ledger→checkpoint/questions/`.handoff.json` 변환을 `design-council-handoff.cjs`로 코드화했다. model/provider 호출 없이 prepare/apply 두 모드로 동작한다.
 - fresh prime run 세 종류가 정확히 분리된다: existing-preserve는 PROPOSE_PLAN, user-answerable은 최대4 product-authority 질문, external-unverifiable은 질문0 blocked다. defer는 값 없이 보존하고 auto만 prefill한다.
 - Claude/Codex/OpenCode 설치본 모두 같은 harness/master semantics와 helper를 포함한다. handoff focused17/17, install44/44, lint/diff-check green이며 provider/Cursor0이다.
-- 다음 1.9.765는 interrupted answer/apply 재진입과 stale/mismatched answer receipt를 fail-close하고, `omd doctor`가 세 host의 council helper 완전성을 진단하도록 연결한다.
 - 1.9.763은 1.9.760–762에서 검증한 `decision_mode`/`authority_mode`, blocked와 interview 분리, blocked-first dispatch 억제를 canonical `skills/omd-harness/SKILL.md`와 `agents/omd-master.md`에 통합했다.
 - installed Codex smoke는 `omd-harness`와 `omd-master.toml` 모두 새 계약을 포함한다. workflow contract4/4, 관련 council/install suite55/55, lint와 diff-check가 green이며 Cursor/provider 호출0이다.
 - blocked는 사용자 선호 질문으로 위장하지 않고 필요한 외부 근거만 밝힌 뒤 plan 전 중단한다. user-answerable 결정은 interview에 남고, pre-existing blocker가 있으면 advisory lane을 실행하지 않는다.

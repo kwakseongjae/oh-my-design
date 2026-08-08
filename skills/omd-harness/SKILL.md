@@ -217,8 +217,11 @@ HANDOFF_HELPER="$(dirname "$COUNCIL_HELPER")/design-council-handoff.cjs"
 - `status: ask_user` → `questions_file`의 product-authority 질문만 한 batch로 제시.
 - `state: PROPOSE_PLAN` → 질문 없이 Step 3으로 진행.
 
-질문 답은 `${RUN_DIR}/checkpoints/council-intake.answers.json`에 저장한 뒤 다음처럼
-병합한다. helper는 모든 required interview가 답변됐을 때만 PROPOSE_PLAN을 쓴다.
+질문 답은 `${RUN_DIR}/checkpoints/council-intake.answers.json`에 저장한다. 답변
+객체에는 handoff의 `checkpoint_id`, `ledger_sha256`, `questions_sha256`를 그대로
+복사하고 `answers` 아래 decision id별 응답을 넣는다. 이 receipt가 없거나 현재
+ledger/questions hash와 다르면 재질문 없이 fail-close한다. 이후 다음처럼 병합한다.
+helper는 모든 required interview가 답변됐을 때만 PROPOSE_PLAN을 쓴다.
 
 ```bash
 node "$HANDOFF_HELPER" "$(pwd)" "${RUN_DIR}" apply \

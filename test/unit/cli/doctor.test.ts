@@ -14,6 +14,7 @@ import { join } from 'node:path';
 import {
   collectDoctorReport,
   REQUIRED_AGENT_IDS,
+  REQUIRED_HARNESS_HELPERS,
   REQUIRED_PRODUCT_SKILLS,
 } from '../../../src/cli/doctor.js';
 import { runInstallSkills } from '../../../src/cli/install-skills.js';
@@ -133,6 +134,10 @@ describe('omd doctor', () => {
             : '{}',
       );
     }
+    mkdirSync(join(dataRoot, 'scripts'), { recursive: true });
+    for (const helper of REQUIRED_HARNESS_HELPERS) {
+      writeFileSync(join(dataRoot, 'scripts', helper), '#!/usr/bin/env node\n');
+    }
   }
 
   function installClaudeActivation(): void {
@@ -227,6 +232,19 @@ describe('omd doctor', () => {
       references: 1,
       issues: [],
     });
+  });
+
+  it('fails the channel readiness check when a deterministic harness helper is missing', () => {
+    installProductSkills(join(root, '.agents', 'skills'), 'codex');
+    installAgentSet(join(root, '.codex/agents'), 'codex');
+    installCatalog(join(root, '.codex', 'data'));
+    rmSync(join(root, '.codex/data/scripts/design-council-handoff.cjs'));
+
+    const report = collectDoctorReport({ dir: root });
+    const codex = report.channels.find((channel) => channel.id === 'codex');
+    expect(report.state).toBe('incomplete');
+    expect(codex?.ready).toBe(false);
+    expect(codex?.issues).toContain('missing harness helpers: design-council-handoff.cjs');
   });
 
   it('reports ready after DESIGN.md exists', () => {

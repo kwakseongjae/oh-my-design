@@ -4,6 +4,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const crypto = require('node:crypto');
 
 const cwd = path.resolve(process.argv[2] || process.cwd());
 const runDir = path.resolve(process.argv[3] || path.join(cwd, '.omd'));
@@ -23,6 +24,10 @@ function readJson(file) {
 function writeJson(file, value) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+}
+
+function sha256File(file) {
+  return crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 }
 
 function relativeToRun(file) {
@@ -98,6 +103,7 @@ function baseFromLedger(ledger, sourcePath) {
 function prepare() {
   const sourcePath = ledgerPath();
   const base = baseFromLedger(readJson(sourcePath), sourcePath);
+  const ledgerSha256 = sha256File(sourcePath);
   const createdAt = new Date().toISOString();
 
   if (base.blocking_items.length > 0) {
@@ -111,6 +117,7 @@ function prepare() {
       prefilled_slots: base.prefilled_slots,
       deferred_slots: base.deferred_slots,
       decision_ledger_ref: base.decision_ledger_ref,
+      ledger_sha256: ledgerSha256,
       ctx_prime_ref: base.ctx_prime_ref,
       created_at: createdAt,
     };
@@ -131,8 +138,10 @@ function prepare() {
       checkpoint_kind: 'product-authority',
       questions,
       pending_interview_ids: [],
+      ledger_sha256: ledgerSha256,
     };
     writeJson(questionsPath, questionPacket);
+    const questionsSha256 = sha256File(questionsPath);
     const handoff = {
       version: 1,
       state: 'AWAIT_USER',
@@ -140,9 +149,11 @@ function prepare() {
       checkpoint_id: 'council-intake',
       checkpoint_kind: 'product-authority',
       questions_file: questionsPath,
+      questions_sha256: questionsSha256,
       prefilled_slots: base.prefilled_slots,
       deferred_slots: base.deferred_slots,
       decision_ledger_ref: base.decision_ledger_ref,
+      ledger_sha256: ledgerSha256,
       ctx_prime_ref: base.ctx_prime_ref,
       created_at: createdAt,
     };
@@ -158,6 +169,7 @@ function prepare() {
     prefilled_slots: base.prefilled_slots,
     deferred_slots: base.deferred_slots,
     decision_ledger_ref: base.decision_ledger_ref,
+    ledger_sha256: ledgerSha256,
     ctx_prime_ref: base.ctx_prime_ref,
     created_at: createdAt,
   };
@@ -172,8 +184,25 @@ function applyAnswers() {
   const sourcePath = ledgerPath();
   const base = baseFromLedger(readJson(sourcePath), sourcePath);
   if (base.blocking_items.length > 0) throw new Error('blocked evidence cannot be replaced with interview answers');
+  if (!fs.existsSync(handoffPath)) throw new Error('prepared council intake handoff is missing');
+  const currentHandoff = readJson(handoffPath);
+  if (currentHandoff.status !== 'ask_user' || currentHandoff.checkpoint_id !== 'council-intake') {
+    throw new Error('council intake is not awaiting answers');
+  }
   const packet = readJson(questionsPath);
   const raw = readJson(answersPath);
+  const ledgerSha256 = sha256File(sourcePath);
+  const questionsSha256 = sha256File(questionsPath);
+  if (
+    currentHandoff.ledger_sha256 !== ledgerSha256 ||
+    currentHandoff.questions_sha256 !== questionsSha256 ||
+    packet.ledger_sha256 !== ledgerSha256 ||
+    raw.checkpoint_id !== 'council-intake' ||
+    raw.ledger_sha256 !== ledgerSha256 ||
+    raw.questions_sha256 !== questionsSha256
+  ) {
+    throw new Error('stale or mismatched council intake answer receipt');
+  }
   const answers = raw.answers && typeof raw.answers === 'object' ? raw.answers : raw;
   const prefilledSlots = { ...base.prefilled_slots };
   const answeredDecisions = [];
@@ -198,6 +227,7 @@ function applyAnswers() {
     deferred_slots: base.deferred_slots,
     answered_decisions: answeredDecisions,
     decision_ledger_ref: base.decision_ledger_ref,
+    ledger_sha256: ledgerSha256,
     ctx_prime_ref: base.ctx_prime_ref,
     answers_ref: relativeToRun(answersPath),
     created_at: new Date().toISOString(),

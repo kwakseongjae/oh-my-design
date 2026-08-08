@@ -96,6 +96,13 @@ const REQUIRED_DATA_FILES = [
   'vocabulary.json',
   'workflow-capabilities.json',
 ] as const;
+export const REQUIRED_HARNESS_HELPERS = [
+  'ctx-prime.cjs',
+  'context.cjs',
+  'design-council-prime.cjs',
+  'design-council-reconcile.cjs',
+  'design-council-handoff.cjs',
+] as const;
 const REQUIRED_SKILL_SIDECARS = [
   ['omd-init', 'scripts/query-references.mjs'],
 ] as const;
@@ -124,6 +131,10 @@ function missingProductSkills(skillsRoot: string, channel: SkillChannelId): stri
 
 function missingDataFiles(dataRoot: string): string[] {
   return REQUIRED_DATA_FILES.filter((file) => !existsSync(join(dataRoot, file)));
+}
+
+function missingHarnessHelpers(dataRoot: string): string[] {
+  return REQUIRED_HARNESS_HELPERS.filter((file) => !existsSync(join(dataRoot, 'scripts', file)));
 }
 
 function expectedSkillName(skill: string, channel: SkillChannelId): string {
@@ -197,6 +208,7 @@ function coreIssues(
   const issues: string[] = [];
   const unsafeDataPaths = [
     ...REQUIRED_DATA_FILES.map((file) => join(dataRoot, file)),
+    ...REQUIRED_HARNESS_HELPERS.map((file) => join(dataRoot, 'scripts', file)),
     join(dataRoot, 'references'),
   ].filter((path) => existsSync(path) && unsafeManagedPath(installRoot, path));
   if (unsafeDataPaths.length > 0) {
@@ -208,11 +220,13 @@ function coreIssues(
   }
   const missingSkills = missingProductSkills(skillsRoot, channel);
   const missingData = missingDataFiles(dataRoot);
+  const missingHelpers = missingHarnessHelpers(dataRoot);
   if (missingSkills.length > 0) {
     issues.push(`missing product skills: ${missingSkills.join(', ')}`);
   }
   issues.push(...skillContractIssues(installRoot, skillsRoot, channel));
   if (missingData.length > 0) issues.push(`missing catalog data: ${missingData.join(', ')}`);
+  if (missingHelpers.length > 0) issues.push(`missing harness helpers: ${missingHelpers.join(', ')}`);
   if (referenceIds.size === 0) issues.push('reference catalog is empty');
   let fingerprintIdsForQuality: Set<string> | null = null;
   const fingerprintsPath = join(dataRoot, 'reference-fingerprints.json');

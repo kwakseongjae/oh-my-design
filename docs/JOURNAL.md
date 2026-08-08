@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.765 receipt + doctor
+- answer apply를 ledger/questions SHA-256 receipt로 묶고 stale·duplicate를 거부한다.
+- doctor는 채널별 deterministic harness helper 5개 누락을 incomplete로 진단한다.
+- handoff6/6, doctor33/33, 통합92/92, lint green; provider/Cursor0이다.
+- 다음은 Luna/high installed-harness checkpoint canary 사전등록이다.
+
 ## 2026-08-08 (Codex) · 1.9.764 deterministic handoff
 - ledger→questions/blocked/PROPOSE_PLAN 변환을 provider-zero helper로 고정했다.
 - fresh ready/interview/blocked run이 정확한 checkpoint shape로 분리된다.
