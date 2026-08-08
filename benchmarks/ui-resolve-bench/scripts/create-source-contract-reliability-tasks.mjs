@@ -20,9 +20,10 @@ const v12BaselineRoot = "/private/tmp/omd-checkpoint-reliability-baselines-1.9.7
 const v13BaselineRoot = "/private/tmp/omd-council-comparison-baselines-1.9.754-v13";
 const v14BaselineRoot = "/private/tmp/omd-council-state-routing-baselines-1.9.779-v14";
 const v15BaselineRoot = "/private/tmp/omd-council-routed-lifecycle-baselines-1.9.791-v15";
+const v16BaselineRoot = "/private/tmp/omd-frontier-skill-qualification-baselines-1.9.798-v16";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
 const resumeDraft = process.argv.includes("--resume-draft");
-const taskSet = process.argv.includes("--v15") ? "v15" : process.argv.includes("--v14") ? "v14" : process.argv.includes("--v13") ? "v13" : process.argv.includes("--v12") ? "v12" : process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v16") ? "v16" : process.argv.includes("--v15") ? "v15" : process.argv.includes("--v14") ? "v14" : process.argv.includes("--v13") ? "v13" : process.argv.includes("--v12") ? "v12" : process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -329,7 +330,28 @@ const v15Cases = [
   },
 ];
 
-const cases = taskSet === "v15" ? v15Cases : taskSet === "v14" ? v14Cases : taskSet === "v13" ? v13Cases : taskSet === "v12" ? v12Cases : taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v16Cases = [
+  {
+    id: "astronomical-plate-dispatch-v0.1", title: "Astronomical plate dispatch review", eyebrow: "Observatory archive · plate dispatch", heading: "Astronomical-plate dispatch review", recordHeading: "Plate register", recordSummary: "Four supplied plate groups mapped to six transit boxes.",
+    records: [["PLATE-NEB-2714",["BOX-48120","BOX-48121"]],["PLATE-COM-2839",["BOX-48122"]],["PLATE-CLU-2965",["BOX-48123","BOX-48124"]],["PLATE-VAR-3078",["BOX-48125"]]],
+    windows: [["DOME-B2","08:20–08:40"],["DOME-E5","11:25–11:45"],["DOME-H1","14:50–15:10"]], views: [["plates","Plate register"],["windows","Dome windows"],["decision","Dispatch decision"]], toggle: "Include emulsion-log note", fieldLabel: "Dispatch registrar", validValue: "PLATE-NEB-2714 dispatch review", target: "PLATE-NEB-2714 + BOX-48120", evidence: "4 plate groups · 6 transit boxes · 3 dome windows", state: "Review open", action: "Open dispatch record", footer: "Observatory archive · supplied dispatch evidence only",
+    unknowns: ["exposure verified","plate stable","emulsion calibrated","provenance validated","box seal verified","dome accepted","catalog published","dispatch approved"], palette: {canvas:"#EEF1F3",surface:"#FDFEFF",ink:"#252E38",muted:"#6D747C",border:"#9EA8B2",primary:"#465D73",accent:"#745C70"}, columns: "repeat(2,391px)", windowColumns: "repeat(3,277px)", decisionMin: "561px", cardRadius: 3, domain: "astronomical plate-dispatch ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "seed-packet-accession-v0.1", title: "Seed packet accession review", eyebrow: "Agricultural archive · packet accession", heading: "Seed-packet accession review", recordHeading: "Packet register", recordSummary: "Five supplied accession groups mapped to seven cold-store trays.",
+    records: [["PACKET-RYE-3714",["TRAY-59210","TRAY-59211"]],["PACKET-OAT-3839",["TRAY-59212"]],["PACKET-FLX-3965",["TRAY-59213","TRAY-59214"]],["PACKET-PEA-4078",["TRAY-59215"]],["PACKET-MIL-4192",["TRAY-59216"]]],
+    windows: [["STORE-A3","07:15–07:35"],["STORE-D6","10:00–10:20"],["STORE-G2","13:20–13:40"],["STORE-J5","15:55–16:15"]], views: [["packets","Packet register"],["windows","Store windows"],["decision","Accession decision"]], toggle: "Include moisture-log note", fieldLabel: "Accession custodian", validValue: "PACKET-RYE-3714 accession review", target: "PACKET-RYE-3714 + TRAY-59210", evidence: "5 accession groups · 7 cold-store trays · 4 store windows", state: "Review open", action: "Open accession record", footer: "Agricultural archive · supplied accession evidence only",
+    unknowns: ["species verified","seed viable","moisture calibrated","origin validated","tray seal verified","store accepted","catalog published","accession approved"], palette: {canvas:"#EFF2ED",surface:"#FEFFFC",ink:"#29342C",muted:"#6D756F",border:"#9FAAA1",primary:"#49624F",accent:"#765F4E"}, columns: "repeat(3,289px)", windowColumns: "repeat(4,221px)", decisionMin: "573px", cardRadius: 4, domain: "seed packet-accession ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "orchestral-score-release-v0.1", title: "Orchestral score release review", eyebrow: "Music library · score release", heading: "Orchestral-score release review", recordHeading: "Score register", recordSummary: "Six supplied score groups mapped to eight performance folders.",
+    records: [["SCORE-STR-4714",["FOLDER-60310","FOLDER-60311"]],["SCORE-WND-4839",["FOLDER-60312"]],["SCORE-BRS-4965",["FOLDER-60313","FOLDER-60314"]],["SCORE-PRC-5078",["FOLDER-60315"]],["SCORE-HRP-5192",["FOLDER-60316"]],["SCORE-KEY-5206",["FOLDER-60317"]]],
+    windows: [["STAGE-C1","07:05–07:25"],["STAGE-F4","09:45–10:05"],["STAGE-I2","12:55–13:15"],["STAGE-L5","15:35–15:55"]], views: [["scores","Score register"],["windows","Stage windows"],["decision","Release decision"]], toggle: "Include marking-note copy", fieldLabel: "Release librarian", validValue: "SCORE-STR-4714 release review", target: "SCORE-STR-4714 + FOLDER-60310", evidence: "6 score groups · 8 performance folders · 4 stage windows", state: "Review open", action: "Open release record", footer: "Music library · supplied release evidence only",
+    unknowns: ["edition verified","score complete","markings cleared","rights validated","folder seal verified","stage accepted","catalog published","release approved"], palette: {canvas:"#F1F0F3",surface:"#FFFEFF",ink:"#2D2B35",muted:"#72717A",border:"#A5A2AE",primary:"#535069",accent:"#795D59"}, columns: "repeat(3,292px)", windowColumns: "repeat(4,222px)", decisionMin: "576px", cardRadius: 5, domain: "orchestral score-release ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v16" ? v16Cases : taskSet === "v15" ? v15Cases : taskSet === "v14" ? v14Cases : taskSet === "v13" ? v13Cases : taskSet === "v12" ? v12Cases : taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -418,7 +440,9 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v15"
+  const baselineRoot = taskSet === "v16"
+    ? v16BaselineRoot
+    : taskSet === "v15"
     ? v15BaselineRoot
     : taskSet === "v14"
     ? v14BaselineRoot

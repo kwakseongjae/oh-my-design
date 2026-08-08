@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.797–798 frontier skill refresh
+- 최신 Anthropic·Impeccable4.0.4·UI UX Pro Max2.13.0을 exact tree로 고정했다.
+- fresh repair3을 raw75/85·responsive/accessibility red로 정렬했다.
+- vendor install3/3, browser load3/3, provider/model/Cursor0이다.
+- 다음은 current OmD+경쟁3 × task3 Luna/high Stage A 사전등록이다.
+
 ## 2026-08-09 (Codex) · 1.9.796 readiness sync
 - routing ownership와 council human escalation 2개 gate를 pass로 승격했다.
 - readiness는 pass2·partial3·open3·external2, 2.0은 계속 BLOCK이다.
