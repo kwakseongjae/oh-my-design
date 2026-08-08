@@ -15,7 +15,9 @@
 - safety gate는 authority·blocked 보존 true, forbidden-auto0이다. 질문1→1, handoff2→2, reversal0이라 interruption 감소는 입증하지 못했다. input474,376(cached405,248), output7,600, reasoning2,718, summed wall201,038ms다.
 - 1.9.757은 safe-advisory까지만 지지하고 effectiveness/UI lift 주장은 금지다.
 - 1.9.758 mixed selectivity provider-zero가 준비됐다. 단일 case에서 baseline interview4 중 audience/scope/CTA 3개는 defer oracle, regulated pricing1개는 mandatory interview다. selected lane2, provider/model/Cursor0이다.
-- compact packet + max2 lane + retry0이며 acceptance는 correctly-deferred3/3, mandatory-loss0, forbidden-auto/write/timeout/Cursor0이다. fixture `f4488c24…`, runner `dd8245a5…`; 다음은 checkpoint commit 뒤 Luna/high exact lane2 실행이다.
+- 1.9.758 live는 Luna/high lane2/2, artifact2/2, timeout/retry/write/Cursor0이다. mandatory pricing은 보존했지만 질문4→3, correct defer1/3이라 selectivity gate는 fail이다.
+- critic은 audience/scope/CTA 모두 defer했으나 product-context가 audience/CTA를 interview로 유지했고 conservative reconcile이 충돌을 질문으로 남겼다. input107,539(cached74,496), output3,899, reasoning2,473, wall86,737ms다.
+- 다음 1.9.759는 reconcile 우선순위를 완화하지 않고 lane claim에 preserve-existing vs choose-new 분류를 강제해 같은 mixed oracle을 fresh hash로 재교정한다.
 - 1.9.756 paired comparison 6/6이 complete다. objective는 양 arm3/3, promotion proof는 current2/3 vs council3/3이며 pair outcome은 council lift1/tie2/loss0이다. 모든 셀 revision1, candidate/final exact, recovery/duplicate/Cursor0이다.
 - council은 current 대비 합산 wall -64,809ms(-11.03%), tokens -329,626(-14.95%)였지만 n=3 descriptive-only다. prereg 전체 gate는 양 arm Reliability3/3 요구 때문에 current2/3로 false; candidate Reliability3/3과 paired-loss0는 true다.
 - post-complete 재호출은 provider0에서 `not resumable: complete`로 fail-close했다. 다음은 fresh full-product hierarchy repeat와, 별도 bounded-dispatch(읽기전용 specialist debate) 실험을 분리 사전등록하는 1.9.757이다.

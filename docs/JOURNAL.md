@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.758 selectivity fail
+- Luna/high lane2/2 clean, mandatory pricing 보존, 질문4→3이다.
+- correct defer1/3이라 gate fail; product-context가 기존 audience/CTA 보존을 새 결정으로 오인했다.
+- input107,539(cached74,496), output3,899, wall86,737ms다.
+- 다음은 preserve-existing/choose-new claim 계약을 강제하는 fresh 1.9.759다.
+
 ## 2026-08-08 (Codex) · 1.9.758 selectivity prepared
 - mixed case는 baseline interview4: defer 기대3 + mandatory pricing1이다.
 - provider-zero lane2, provider/model/Cursor0, mandatory-loss0, forbidden-auto0이다.
