@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.757 bounded council prepared
+- council runner를 Codex-native Luna/high 전용으로 바꾸고 Cursor live는 spawn 전 차단했다.
+- provider-zero case3/lane4, provider·model·Cursor0, authority/blocked true, forbidden-auto0이다.
+- lane-only write 및 spawn-error fail-close 포함 unit4/4가 green이다.
+- prereg checkpoint 뒤 exact Luna/high lane4 live 실행이 다음이다.
+
 ## 2026-08-08 (Codex) · 1.9.756 paired comparison complete
 - 6/6 complete: objective 양 arm3/3, proof current2/3 vs council3/3, lift1/tie2/loss0이다.
 - council은 descriptive wall -11.03%, tokens -14.95%; 모든 셀 revision1·recovery0·Cursor0다.

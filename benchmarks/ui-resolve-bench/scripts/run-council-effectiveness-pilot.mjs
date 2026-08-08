@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 import { spawn } from "node:child_process";
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { homedir } from "node:os";
 import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { diffTreeManifests, treeManifest } from "./_lib.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(here, "../../..");
-const fixturePath = resolve(process.argv[2] || join(repoRoot, "benchmarks/ui-resolve-bench/fixtures/council-effectiveness-pilot.json"));
-const outputRoot = resolve(process.argv[3] || "/private/tmp/omd-council-effectiveness-1.9.736");
+const fixturePath = resolve(process.argv[2] || join(repoRoot, "benchmarks/ui-resolve-bench/fixtures/council-effectiveness-luna-1.9.757.json"));
+const outputRoot = resolve(process.argv[3] || "/private/tmp/omd-council-effectiveness-1.9.757");
 const fixture = JSON.parse(readFileSync(fixturePath, "utf8"));
-const cursorBinary = process.env.OMD_CURSOR_AGENT_BIN || join(homedir(), ".local/bin/cursor-agent");
+const codexBinary = process.env.OMD_BENCH_CODEX_BIN || "codex";
 const prime = join(repoRoot, "scripts/design-council-prime.cjs");
 const reconcile = join(repoRoot, "scripts/design-council-reconcile.cjs");
 const execute = process.env.OMD_COUNCIL_EXECUTE === "1";
@@ -31,25 +31,70 @@ function lanePrompt(lane) {
   return `You are the read-only ${lane.role} lane ${lane.id} in a bounded design council.\n\nRead task.md, product-brief.md, .omd/run/ctx-prime.json, .omd/run/council/context-packet.json, .omd/run/council/decision-ledger.json, and .omd/run/council/dispatch-plan.json. Consider only these decision ids: ${lane.decision_ids.join(", ")}.\n\nWrite exactly one file: .omd/run/${lane.output}. Its JSON shape is {"lane_id":"${lane.id}","claims":[{"decision_id":"...","recommendation":"interview|defer|blocked","reason":"...","evidence":["task.md or product-brief.md or another existing repo/run-relative path"]}]}. Use only recommendations allowed by the dispatch plan. Every claim needs existing evidence. Do not recommend auto, do not edit product files, do not ask the user, and do not write any other file. If evidence cannot support advice, write an empty claims array.`;
 }
 
-function runCursor(workspace, lane) {
+function runCodex(workspace, lane) {
   const prompt = lanePrompt(lane);
   const started = process.hrtime.bigint();
   return new Promise((resolveRun) => {
-    const child = spawn(cursorBinary, [
-      "-p", "--output-format", "stream-json", "--model", fixture.model,
-      "--sandbox", "enabled", "--trust", "--workspace", workspace, prompt,
-    ], { cwd: workspace, env: { ...process.env, DISABLE_TELEMETRY: "1", DO_NOT_TRACK: "1", CI: "1" }, stdio: ["ignore", "pipe", "pipe"] });
+    let settled = false;
+    let timer;
+    const finish = (result) => {
+      if (settled) return;
+      settled = true;
+      if (timer) clearTimeout(timer);
+      const wallMs = Math.round(Number(process.hrtime.bigint() - started) / 1_000_000);
+      resolveRun({ wall_ms: wallMs, ...result });
+    };
+    const child = spawn(codexBinary, [
+      "exec", "--ephemeral", "--ignore-user-config", "--skip-git-repo-check",
+      "--sandbox", "workspace-write", "--cd", workspace,
+      "--model", fixture.model, "--config", `model_reasoning_effort=\"${fixture.effort}\"`,
+      "--json", "-",
+    ], {
+      cwd: workspace,
+      detached: true,
+      env: { ...process.env, DISABLE_TELEMETRY: "1", DO_NOT_TRACK: "1", CI: "1" },
+      stdio: ["pipe", "pipe", "pipe"],
+    });
     let stdout = "";
     let stderr = "";
+    let timedOut = false;
+    timer = setTimeout(() => {
+      timedOut = true;
+      try { process.kill(-child.pid, "SIGTERM"); } catch { child.kill("SIGTERM"); }
+    }, Number(fixture.lane_timeout_seconds ?? 300) * 1000);
     child.stdout.on("data", (chunk) => { stdout += chunk; });
     child.stderr.on("data", (chunk) => { stderr += chunk; });
+    child.stdin.on("error", () => {});
+    child.stdin.end(prompt);
+    child.on("error", (error) => {
+      finish({ code: null, timed_out: false, stdout, stderr, usage: [], spawn_error: error.message });
+    });
     child.on("close", (code) => {
-      const wallMs = Math.round(Number(process.hrtime.bigint() - started) / 1_000_000);
       const events = stdout.split("\n").filter(Boolean).flatMap((line) => { try { return [JSON.parse(line)]; } catch { return []; } });
       const usage = events.flatMap((event) => event.usage ? [event.usage] : event.token_usage ? [event.token_usage] : []);
-      resolveRun({ code, wall_ms: wallMs, stdout, stderr, usage });
+      finish({ code, timed_out: timedOut, stdout, stderr, usage, spawn_error: null });
     });
   });
+}
+
+function assertLiveRuntimeAllowed() {
+  if (!execute) return;
+  if (fixture.runtime !== "codex") {
+    throw new Error(`live council execution requires runtime=codex; received ${fixture.runtime ?? "missing"}`);
+  }
+  if (!String(fixture.model ?? "").startsWith("gpt-5.6-luna")) {
+    throw new Error(`live council execution is locked to Codex-native gpt-5.6-luna; received ${fixture.model ?? "missing"}`);
+  }
+}
+
+function validLaneArtifact(path, lane) {
+  if (!existsSync(path)) return false;
+  try {
+    const value = JSON.parse(readFileSync(path, "utf8"));
+    return value?.lane_id === lane.id && Array.isArray(value.claims);
+  } catch {
+    return false;
+  }
 }
 
 function scoreCase(testCase, ledger, reconciled, debate, laneRuns) {
@@ -83,6 +128,7 @@ function scoreCase(testCase, ledger, reconciled, debate, laneRuns) {
 }
 
 function summarize(results, executionMode) {
+  const laneRuns = results.flatMap((item) => item.lane_runs);
   return {
     schema_version: "0.1",
     experiment_id: fixture.experiment_id,
@@ -90,8 +136,12 @@ function summarize(results, executionMode) {
     model_requested: fixture.model,
     effort: fixture.effort,
     retry_budget: fixture.retry_budget,
+    runtime: execute ? fixture.runtime : "provider-zero",
     case_count: results.length,
-    lane_call_count: results.reduce((sum, item) => sum + item.lane_runs.length, 0),
+    lane_call_count: laneRuns.length,
+    provider_calls: execute ? laneRuns.length : 0,
+    model_lane_calls: execute ? laneRuns.length : 0,
+    cursor_calls: 0,
     baseline_question_count: results.reduce((sum, item) => sum + item.baseline_question_count, 0),
     council_question_count: results.reduce((sum, item) => sum + item.council_question_count, 0),
     baseline_human_handoff_count: results.reduce((sum, item) => sum + item.baseline_human_handoff_count, 0),
@@ -102,6 +152,8 @@ function summarize(results, executionMode) {
     results,
   };
 }
+
+assertLiveRuntimeAllowed();
 
 if (rescore) {
   const previous = JSON.parse(readFileSync(join(outputRoot, "SUMMARY.json"), "utf8"));
@@ -139,14 +191,32 @@ for (const testCase of fixture.cases) {
   for (const lane of plan.selected_lanes) {
     const laneRoot = join(outputRoot, "lane-workspaces", testCase.id, lane.id);
     cpSync(caseRoot, laneRoot, { recursive: true });
-    let run = { code: null, wall_ms: 0, stdout: "", stderr: "provider execution disabled", usage: [] };
-    if (execute) run = await runCursor(laneRoot, lane);
+    const ignoredOutput = join(".omd/run", lane.output).replaceAll("\\", "/");
+    const before = treeManifest(laneRoot, { ignore: [ignoredOutput] });
+    let run = { code: null, timed_out: false, wall_ms: 0, stdout: "", stderr: "provider execution disabled", usage: [], spawn_error: null };
+    if (execute) run = await runCodex(laneRoot, lane);
+    const after = treeManifest(laneRoot, { ignore: [ignoredOutput] });
+    const unauthorizedChanges = diffTreeManifests(before, after);
     const generated = join(laneRoot, ".omd/run", lane.output);
     const target = join(runDir, lane.output);
     mkdirSync(dirname(target), { recursive: true });
-    if (execute && run.code === 0 && existsSync(generated)) cpSync(generated, target);
+    const artifactValid = validLaneArtifact(generated, lane);
+    if (execute && run.code === 0 && !run.timed_out && unauthorizedChanges.length === 0 && artifactValid) cpSync(generated, target);
     else writeFileSync(target, `${JSON.stringify({ lane_id: lane.id, status: execute ? "unavailable" : "not-executed", claims: [] }, null, 2)}\n`);
-    laneRuns.push({ lane_id: lane.id, role: lane.role, exit_code: run.code, wall_ms: run.wall_ms, usage: run.usage });
+    laneRuns.push({
+      lane_id: lane.id,
+      role: lane.role,
+      runtime: execute ? "codex" : null,
+      model: execute ? fixture.model : null,
+      exit_code: run.code,
+      spawn_error: run.spawn_error,
+      timed_out: run.timed_out,
+      wall_ms: run.wall_ms,
+      usage: run.usage,
+      artifact_valid: execute ? artifactValid : null,
+      unauthorized_write_count: unauthorizedChanges.length,
+      unauthorized_writes: unauthorizedChanges.map((item) => item.path),
+    });
     writeFileSync(join(outputRoot, "controller", `${testCase.id}-${lane.id}.events.jsonl`), run.stdout);
     writeFileSync(join(outputRoot, "controller", `${testCase.id}-${lane.id}.stderr.log`), run.stderr);
   }
@@ -157,6 +227,6 @@ for (const testCase of fixture.cases) {
   results.push(scoreCase(testCase, ledger, reconciled, debate, laneRuns));
 }
 
-const summary = summarize(results, execute ? "cursor-live" : "provider-zero");
+const summary = summarize(results, execute ? "codex-live" : "provider-zero");
 writeFileSync(join(outputRoot, "SUMMARY.json"), `${JSON.stringify(summary, null, 2)}\n`);
 process.stdout.write(`${JSON.stringify(summary, null, 2)}\n`);

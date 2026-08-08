@@ -4,11 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `9a351591`의 Cursor fail-close guard (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-08 · 1.9.756 paired council 비교 provider-zero 준비 완료
+- 갱신: 2026-08-08 · 1.9.757 bounded-dispatch Luna/high provider-zero 준비 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.757은 기존 Cursor-hardcoded council pilot을 Codex-native Luna/high bounded runner로 교체했다. live는 runtime=codex + gpt-5.6-luna만 허용하고 Cursor fixture는 spawn 전 fail-close한다.
+- provider-zero는 case3, selected lane4, provider/model/Cursor0이다. baseline/council question1/1, handoff2/2, authority·blocked 보존 true, forbidden-auto0이다. lane은 max2·retry0·선언 artifact 외 write0 계약이다.
+- spawn ENOENT도 hang 없이 unavailable artifact로 닫는 4/4 test가 green이다. prereg와 preparation은 `reports/council-effectiveness-luna-1.9.757/`에 동결했다. 다음은 checkpoint commit 뒤 exact Luna/high live lane4 실행이다.
 - 1.9.756 paired comparison 6/6이 complete다. objective는 양 arm3/3, promotion proof는 current2/3 vs council3/3이며 pair outcome은 council lift1/tie2/loss0이다. 모든 셀 revision1, candidate/final exact, recovery/duplicate/Cursor0이다.
 - council은 current 대비 합산 wall -64,809ms(-11.03%), tokens -329,626(-14.95%)였지만 n=3 descriptive-only다. prereg 전체 gate는 양 arm Reliability3/3 요구 때문에 current2/3로 false; candidate Reliability3/3과 paired-loss0는 true다.
 - post-complete 재호출은 provider0에서 `not resumable: complete`로 fail-close했다. 다음은 fresh full-product hierarchy repeat와, 별도 bounded-dispatch(읽기전용 specialist debate) 실험을 분리 사전등록하는 1.9.757이다.
