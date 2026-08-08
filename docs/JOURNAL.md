@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.756 checkpoint1 proof fail
+- album council-off는85/85·revision1·candidate exact지만 desktop decision context가 full-row가 아니어서 proof fail이다.
+- lifecycle compliance는 clean, wall262,928ms, tokens880,352, recovery/duplicate/Cursor0이다.
+- prereg 정책대로 실패를 기록하고 mineral council-on exact1회로 계속한다.
+
 ## 2026-08-08 (Codex) · 1.9.756 preplan6/6 ready
 - paired-cross-task admission6/6과 exact omd1756 preplan6/6이 provider/model/Cursor0으로 통과했다.
 - task/skill/evaluator/pair rotation lock, product byte 불변, attach-only가 모두 green이다.
