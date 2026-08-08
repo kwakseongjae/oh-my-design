@@ -7255,6 +7255,35 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     }
   });
 
+  it("pins current-epoch frontier skill snapshots without rewriting historical arms", () => {
+    expect(competitors.observed_at).toBe("2026-08-09");
+    expect(competitors.variants["anthropic-frontend-design-2026-08"]).toMatchObject({
+      commit: "f17010c9bb483898c1d9c9f42dde2b3a98889434",
+      source_tree_sha256: "15a1fec6da5799be52a4c142157fa6f3e4e47b4c8f87354332914caa50e66465",
+      source_path: "skills/frontend-design",
+      license: "Apache-2.0 (skill-specific)",
+    });
+    expect(competitors.variants["impeccable-4.0.4-bounded"]).toMatchObject({
+      commit: "aee6ce9352b842217b3f57c78296a7a4fa35a7f3",
+      source_tree_sha256: "c06dbad1c53a60ce3cfceafba0bd7d0189a018e85a47fee63c17c3f174711200",
+      source_path: ".agents/skills/impeccable",
+      license: "Apache-2.0",
+    });
+    expect(competitors.variants["impeccable-4.0.4-bounded"].activation).toContain(
+      "Browser proof is owned by the benchmark controller",
+    );
+    expect(competitors.variants["ui-ux-pro-max-2.13.0"]).toMatchObject({
+      commit: "abb7f2fd5a083fa1ff55c326a963ff0d95c33f99",
+      source_tree_sha256: "5d8a8030eedda77c2a37e6e512d741453b10c59092b5cabbab3be9422fe83d6b",
+      source_path: "cli/assets",
+      install_root: ".agents/skills",
+      license: "MIT",
+    });
+    expect(competitors.variants["impeccable-prompt-only"].commit).toBe(
+      "4d849eb75f216109ea7053ed21530a11fafcc786",
+    );
+  });
+
   it("installs the repair harness as a separate Claude agent-enabled arm", () => {
     const parent = mkdtempSync(join(tmpdir(), "ui-resolve-harness-"));
     const out = join(parent, "omd-repair-harness");

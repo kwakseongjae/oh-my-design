@@ -1,4 +1,4 @@
-# Frontier UI skill landscape — 2026-07-21
+# Frontier UI skill landscape — 2026-08-09
 
 This is a source-backed product comparison, not a leaderboard. Repository stars
 and registry installs describe distribution, not task quality. They must never
@@ -8,11 +8,11 @@ be converted into a benchmark score.
 
 | System | What it primarily does | Strongest advantage | Important comparison limit |
 |---|---|---|---|
-| [Anthropic Frontend Design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md) | concise art-direction guidance for generated frontend code | strong defaults with very little context overhead | one prompt skill; no project memory, provenance graph, deterministic verifier, or delivery orchestration |
+| [Anthropic Frontend Design](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md) | concise art-direction guidance for generated frontend code | strong, subject-specific visual planning with very little context overhead | one compact skill; no project memory, provenance graph, deterministic verifier, or delivery orchestration |
 | [Taste Skill](https://github.com/Leonxlnx/taste-skill) | anti-slop visual direction, aesthetic dials, landing/redesign workflows | immediate visual delta and an X-friendly vocabulary | v2 is experimental and explicitly does not target dashboards, data tables, or multi-step product UI; pin the commit |
-| [Impeccable](https://github.com/pbakaus/impeccable) | product/design context, commands, browser iteration, and deterministic pattern detection | closest end-to-end competitor; generation and inspection share one loop | prompt-only and hook/browser-enabled modes have different power and risk and must be separate arms |
+| [Impeccable 4.0.4](https://github.com/pbakaus/impeccable) | product/design context, task playbooks, bounded browser iteration, hooks, and deterministic pattern detection | closest end-to-end competitor; generation, context, and inspection share one loop | current full local workflow, hook-enabled, and live-browser modes have different power and risk and must be separate arms |
 | [Vercel Web Design Guidelines](https://github.com/vercel-labs/agent-skills/blob/main/skills/web-design-guidelines/SKILL.md) | review against current interface guidelines | focused accessibility, form, motion, navigation, and performance review | review rail, not greenfield generator; its default remote guideline fetch is mutable unless mirrored at a commit |
-| [UI UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | searchable style, palette, typography, chart, stack, and UX preset database | broad retrieval interface and platform coverage | product-type matching and preset counts are not company evidence or proof of correctness |
+| [UI UX Pro Max 2.13.0](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | searchable style, palette, typography, chart, stack, UX preset database, and bundled design skills | broad retrieval interface and platform coverage | product-type matching and preset counts are not company evidence or proof of correctness |
 | oh-my-design | quality-graded company references plus project DESIGN.md, skills, specialist roles, checkpoints, and validation | design ground truth and evidence-aware delivery across the repository lifecycle | slower to explain, weaker immediate wow, and no public paired benchmark yet |
 
 ## Defensible oh-my-design differentiation

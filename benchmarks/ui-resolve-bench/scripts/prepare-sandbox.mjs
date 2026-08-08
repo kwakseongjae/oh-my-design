@@ -221,6 +221,12 @@ if (variant.declared_name) {
     ).trim();
     if (!sourceCommit) throw new Error(`${variantId} source path has no committed provenance`);
   }
+  const sourceTree = treeManifest(sourceRoot);
+  if (variant.source_tree_sha256 && sourceTree.sha256 !== variant.source_tree_sha256) {
+    throw new Error(
+      `${variantId} source tree mismatch: expected ${variant.source_tree_sha256}, received ${sourceTree.sha256}`,
+    );
+  }
   const sourceStatus = execFileSync(
     "git",
     ["-C", sourceGitRoot, "status", "--porcelain=v1", "--untracked-files=all", "--", sourcePathspec],
@@ -296,6 +302,8 @@ if (variant.declared_name) {
     bundled_skills: bundledSkills,
     source_path: variant.source_path,
     source_commit: sourceCommit,
+    source_tree_sha256: sourceTree.sha256,
+    source_files: sourceTree.files.length,
     source_attestation: {
       vcs: "git",
       dirty: sourceDirty,
