@@ -104,7 +104,8 @@ program
   .option('--dir <path>', 'Project root (defaults to cwd)')
   .option('--global', 'Check the user-level installation instead of this project')
   .option('--json', 'Print a machine-readable report')
-  .action(async (opts: { dir?: string; global?: boolean; json?: boolean }) => {
+  .option('--self-test', 'Run a provider-zero harness context planner smoke test')
+  .action(async (opts: { dir?: string; global?: boolean; json?: boolean; selfTest?: boolean }) => {
     const { runDoctor } = await import('../src/cli/doctor.js');
     const code = await runDoctor(opts);
     if (code !== 0) process.exit(code);

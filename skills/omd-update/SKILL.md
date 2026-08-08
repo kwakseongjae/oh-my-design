@@ -23,7 +23,7 @@ Update only the OmD installation the user already has. Preserve its project/glob
 6. Tell the user to restart the coding agent, then run:
 
    ```bash
-   npx oh-my-design-cli@latest doctor
+  npx oh-my-design-cli@latest doctor --self-test
    ```
 
 ## Safety contract

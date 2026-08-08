@@ -5,6 +5,7 @@ import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { runInstallSkills } from '../../../src/cli/install-skills.js';
 import { runUpdate } from '../../../src/cli/update.js';
+import { collectDoctorReport } from '../../../src/cli/doctor.js';
 
 describe('installed harness context plan', () => {
   let root: string;
@@ -122,6 +123,10 @@ describe('installed harness context plan', () => {
     }
 
     expect(await runUpdate({ dir: root })).toBe(0);
+
+    const doctor = collectDoctorReport({ dir: root, selfTest: true });
+    expect(doctor.channels.filter((channel) => channel.installed)).toHaveLength(3);
+    expect(doctor.channels.filter((channel) => channel.installed).every((channel) => channel.ready)).toBe(true);
 
     for (const host of hosts) {
       const helper = join(root, host.data, 'scripts/design-harness-context-plan.cjs');

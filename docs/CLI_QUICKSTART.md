@@ -171,6 +171,16 @@ It checks the real files for each installed channel, the reference count and fin
 npx oh-my-design-cli@latest doctor --json
 ```
 
+For a deeper local check after an update, run:
+
+```bash
+npx oh-my-design-cli@latest doctor --self-test
+```
+
+This runs a provider-zero context-planner smoke test. It uses no model or network,
+accepts only a planner byte-identical to the packaged source, and refuses to
+execute a locally modified helper.
+
 Common recovery paths:
 
 - **No installation found:** run `npx oh-my-design-cli@latest` from the intended project root.

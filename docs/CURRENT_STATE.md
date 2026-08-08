@@ -3,15 +3,18 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `aae9e0c1`의 installed-host routing smoke (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-08 · 1.9.775 safe-update routing recovery smoke 완료
+- 기준 커밋: `a2b6e8ec`의 safe-update routing recovery smoke (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-08 · 1.9.776 provider-zero doctor self-test 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.776은 `omd doctor --self-test`를 추가했다. 설치 planner가 packaged source와 byte-identical일 때만 임시 PROPOSE_PLAN fixture로 실행해 master+execution plan을 검사한다.
+- 수정된 로컬 helper는 절대 실행하지 않고 drift issue로 fail-close한다. self-test focused4/4, doctor/update37/37, lint/diff-check green이며 provider/model/network/Cursor0이다.
+- update skill의 사후 진단과 CLI quickstart를 `doctor --self-test`로 연결했다. 다음은 build/package contents에서 새 flag와 helper가 실제 npm tarball에 포함되는지 release smoke를 수행하는 단계다.
 - 1.9.775는 Claude/Codex/OpenCode 설치본에서 context helper와 execution sidecar를 제거한 뒤 `omd update`를 실행했다. safe update가 세 host 모두 파일을 복구했고 native helper가 ready→master+execution 계획을 다시 생성했다.
 - installed+update smoke2/2, lint/diff-check green이며 provider/model/Cursor0이다. OmD 비관리 파일은 건드리지 않는 기존 update 계약을 그대로 사용했다.
-- 다음은 `omd doctor`가 파일 존재만 확인하지 않고 context helper의 provider-zero self-test를 선택적으로 수행하도록 좁은 진단 계약을 설계하는 단계다.
+- 1.9.775 다음 목표였던 선택적 doctor 실행 진단은 1.9.776에서 완료됐다.
 - 1.9.774는 실제 임시 프로젝트에 Claude Code·Codex·OpenCode용 `omd-harness`/master를 설치하고, 각 host의 native data helper로 ready/questions/blocked 3상태를 실행했다.
 - 3 host×3 state 모두 동일했다: ready만 master+execution sidecar, questions/blocked는 master0+sidecar0 exact relay. provider/model/Cursor0이며 새 production smoke1/1+lint/diff-check green이다.
 - 1.9.774 다음 목표였던 update 경로 보존 smoke는 1.9.775에서 완료됐다.

@@ -2,12 +2,17 @@ import * as p from '@clack/prompts';
 import pc from 'picocolors';
 import {
   existsSync,
+  mkdirSync,
+  mkdtempSync,
   readFileSync,
   readdirSync,
+  rmSync,
+  writeFileSync,
 } from 'node:fs';
-import { homedir } from 'node:os';
+import { homedir, tmpdir } from 'node:os';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
 import {
   CLAUDE_HOOK_PATHS,
   isCurrentManagedHook,
@@ -19,6 +24,7 @@ export interface DoctorOptions {
   dir?: string;
   global?: boolean;
   json?: boolean;
+  selfTest?: boolean;
 }
 
 export interface DoctorChannel {
@@ -209,6 +215,7 @@ function coreIssues(
   dataRoot: string,
   referenceIds: Set<string>,
   channel: SkillChannelId,
+  selfTest = false,
 ): string[] {
   const issues: string[] = [];
   const unsafeDataPaths = [
@@ -232,6 +239,10 @@ function coreIssues(
   issues.push(...skillContractIssues(installRoot, skillsRoot, channel));
   if (missingData.length > 0) issues.push(`missing catalog data: ${missingData.join(', ')}`);
   if (missingHelpers.length > 0) issues.push(`missing harness helpers: ${missingHelpers.join(', ')}`);
+  if (selfTest && missingHelpers.length === 0) {
+    const plannerIssue = harnessContextPlannerSelfTestIssue(installRoot, dataRoot);
+    if (plannerIssue) issues.push(plannerIssue);
+  }
   if (referenceIds.size === 0) issues.push('reference catalog is empty');
   let fingerprintIdsForQuality: Set<string> | null = null;
   const fingerprintsPath = join(dataRoot, 'reference-fingerprints.json');
@@ -599,6 +610,66 @@ function findBundleRoot(): string | null {
   return null;
 }
 
+export function harnessContextPlannerSelfTestIssue(
+  installRoot: string,
+  dataRoot: string,
+): string | null {
+  const installedPath = join(dataRoot, 'scripts', 'design-harness-context-plan.cjs');
+  if (!existsSync(installedPath)) return null;
+  if (unsafeManagedPath(installRoot, installedPath)) {
+    return 'harness context planner self-test skipped for unsafe managed path';
+  }
+  const bundleRoot = findBundleRoot();
+  const bundledPath = bundleRoot
+    ? join(bundleRoot, 'scripts', 'design-harness-context-plan.cjs')
+    : null;
+  if (!bundledPath || !existsSync(bundledPath)) {
+    return 'bundled harness context planner source is missing';
+  }
+  if (readFileSync(installedPath, 'utf8') !== readFileSync(bundledPath, 'utf8')) {
+    return 'installed harness context planner differs from the packaged source';
+  }
+
+  const scratch = mkdtempSync(join(tmpdir(), 'omd-doctor-context-plan-'));
+  const runDir = join(scratch, '.omd');
+  const handoffDir = join(runDir, 'handoff');
+  try {
+    // mkdir through the same helper invocation is intentionally avoided: the
+    // fixture exists before execution, and the helper may only add its plan.
+    mkdirSync(handoffDir, { recursive: true });
+    writeFileSync(
+      join(handoffDir, '.handoff.json'),
+      `${JSON.stringify({ state: 'PROPOSE_PLAN' }, null, 2)}\n`,
+      'utf8',
+    );
+    const result = spawnSync(process.execPath, [installedPath, scratch, runDir, 'relay'], {
+      cwd: scratch,
+      encoding: 'utf8',
+      timeout: 5_000,
+      env: { ...process.env, CI: '1', DISABLE_TELEMETRY: '1', DO_NOT_TRACK: '1' },
+    });
+    if (result.status !== 0 || result.error) {
+      return 'harness context planner self-test failed to execute';
+    }
+    const outputPath = join(handoffDir, 'context-plan.json');
+    if (!existsSync(outputPath)) return 'harness context planner self-test produced no plan';
+    const plan: unknown = JSON.parse(readFileSync(outputPath, 'utf8'));
+    if (
+      !isJsonObject(plan) ||
+      plan.action !== 'resume_master' ||
+      plan.master_required !== true ||
+      JSON.stringify(plan.sidecars) !== JSON.stringify(['master-execution-phases.md'])
+    ) {
+      return 'harness context planner self-test produced an invalid plan';
+    }
+    return null;
+  } catch {
+    return 'harness context planner self-test failed to validate output';
+  } finally {
+    rmSync(scratch, { recursive: true, force: true });
+  }
+}
+
 function bundledClaudeHookSource(hook: (typeof CLAUDE_HOOK_PATHS)[number]): string | null {
   const bundleRoot = findBundleRoot();
   if (!bundleRoot) return null;
@@ -916,6 +987,7 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
           claudeDataRoot,
           claudeReferenceIds,
           'claude-code',
+          opts.selfTest,
         ),
         ...claudeAgentIssues(root),
         ...(opts.global ? [] : claudeActivationIssues(root)),
@@ -930,6 +1002,7 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
           codexDataRoot,
           codexReferenceIds,
           'codex',
+          opts.selfTest,
         ),
         ...codexAgentIssues(root),
         ...(opts.global ? [] : proofPolicyIssues(root, 'codex')),
@@ -943,6 +1016,7 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
             opencodeDataRoot,
             opencodeReferenceIds,
             'opencode',
+            opts.selfTest,
           ),
           ...openCodeAgentIssues(root, opencodeAgentsRoot),
         ]
@@ -956,6 +1030,7 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
             claudeDataRoot,
             claudeReferenceIds,
             'cursor',
+            opts.selfTest,
           )
             .filter((issue) => !issue.startsWith('missing product skills:'))
             .filter((issue) => !issue.startsWith('invalid cursor skill definitions:'))
@@ -965,6 +1040,7 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
             claudeDataRoot,
             claudeReferenceIds,
             'cursor',
+            opts.selfTest,
           )
       ).concat(cursorRuleIssues(root, cursorSkills))
     : [];

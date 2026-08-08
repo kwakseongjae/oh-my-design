@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.776 doctor self-test
+- `doctor --self-test`가 packaged planner의 provider-zero ready plan을 실행 검증한다.
+- byte가 다른 로컬 helper는 실행하지 않고 fail-close한다.
+- focused4/4+doctor/update37/37+lint green, provider/model/network/Cursor0이다.
+- 다음은 build/npm tarball release smoke다.
+
 ## 2026-08-08 (Codex) · 1.9.775 update recovery smoke
 - 세 host의 helper+execution sidecar 누락을 `omd update`로 복구했다.
 - 복구 후 native helper가 ready→master+execution을 동일하게 생성했다.
