@@ -5527,6 +5527,12 @@
 - Carried forward provider-zero geology/herbarium and added fresh photographic negative-return.
 - Fresh raw baseline is 75/85 with responsive+accessibility red; inventory102, focused2/2.
 - Next: commit exact bytes, then preregister Codex Luna/high with a new isolated named browser/root.
+## 2026-08-08 (Codex) · 1.9.755 Luna paired plan
+- fresh3×current/council2 arm의 balanced2×3 plan을 사전등록했다.
+- Luna/high, checkpoint1셀, pacing30s, retry/replacement0, Cursor forbidden이다.
+- shared skill·exact proof/browser/continuation 계약과 council zero-dispatch를 고정했다.
+- 다음은 exact omd1755 browser + provider-zero prepare/admission/preplan6/6이다.
+
 ## 2026-08-08 (Codex) · 1.9.754 council comparison task lock
 - fresh3 exact task/prompt/starter/baseline/source-contract hash를 잠갔다.
 - arm은 current portable vs zero-dispatch council gate, runtime은 Luna/high다.

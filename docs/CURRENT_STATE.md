@@ -9,6 +9,10 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.755 paired plan을 사전등록했다. fresh3×current/council2 arms, Luna/high, exact balanced order, concurrency1, pacing30s, max-new-cell1, retry/replacement0이며 Cursor는 금지다.
+- 두 arm은 effective installed skill을 공유하고 activation+council intake만 다르다. 양 arm Reliability3/3, candidate paired loss0가 내부 gate이며 일반 council lift/2.0 승격 주장은 금지다.
+- 다음은 plan commit 뒤 exact `omd1755` isolated browser를 준비하고 fresh root provider-zero prepare/admission/preplan6/6을 닫는 단계다.
+
 - 1.9.754 fresh3의 exact task/prompt/starter/baseline/source-contract hash를 `council-checkpoint-comparison-task-lock-1.9.754`에 provider/model/Cursor0으로 잠갔다.
 - 비교 arm은 current `omd-portable` vs `omd-portable-council-gate`다. 다음은 task·runtime·proof 조건을 동일하게 유지한 balanced2×3 Luna/high plan을 사전등록하는 단계다.
 
