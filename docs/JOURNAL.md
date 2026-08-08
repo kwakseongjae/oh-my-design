@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.753 preregistered
+- architectural→ceramic→glass Luna/high exact matrix를 잠갔다.
+- `omd1753`, repaired checkpoint receipts, pacing30s, Cursor0 계약이다.
+- 다음은 provider-zero prepare/admission+preplan3/3이다.
+
 ## 2026-08-08 (Codex) · 1.9.753 denominator lock
 - architectural→ceramic→glass provider/model0 세 task를 잠갔다.
 - raw75/85, exact cascade, inventory105, Cursor forbidden이다.

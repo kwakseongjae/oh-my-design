@@ -9,6 +9,9 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.753 Luna/high plan을 architectural→ceramic→glass 순으로 사전등록했다. exact `omd1753`, concurrency1, pacing30s, retry/replacement0, Cursor forbidden이며 repaired checkpoint receipt semantics를 명시했다.
+- 다음은 plan commit 뒤 fresh root provider-zero prepare/admission과 preplan3/3이다.
+
 - 1.9.753 denominator를 architectural→ceramic→fresh glass로 잠갔다. 세 task 모두 provider/model0, raw75/85, responsive+accessibility only red, inventory105이며 Cursor는 금지다.
 - 다음은 lock commit 뒤 repaired continuation controller와 effective skill hash를 포함한 Luna/high exact plan을 사전등록한다.
 
