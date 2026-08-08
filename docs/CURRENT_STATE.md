@@ -4,14 +4,16 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `9a351591`의 Cursor fail-close guard (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-08 · 1.9.768 progressive-disclosure Luna repeat 준비 완료
+- 갱신: 2026-08-08 · 1.9.768 progressive-disclosure Luna repeat 3/3 통과
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.768 Luna/high repeat는 exact3/3, unauthorized write/timeout/retry/Cursor0이다. checkpoint compliance는 유지됐다.
+- input457,473→420,483(-8.09%), cached-1.58%, reasoning-10.34%, output+0.82%지만 summed wall+14.29%다. ready는 크게 감소, interview는 증가해 task replay/cache/runtime variance가 크므로 causal cost claim은 금지다.
+- 다음 1.9.769는 항상 노출되는 `agents/omd-master.md` 37,261B를 authority/handoff kernel과 active-phase sidecar로 분리한다. provider-zero state-machine/install/doctor 계약을 먼저 닫는다.
 - 1.9.768은 1.9.766과 task/oracle/order/model/effort/prompt를 유지한 fresh exact3 repeat를 사전등록했다. task replay/cache confound 때문에 비용 변화는 descriptive-only다.
 - provider-zero deterministic3/3, provider/model/Cursor0이다. candidate initial harness30,194B(-38.05%)와 fixture/runner/harness/sidecar/master/helper hashes를 잠갔다.
-- 다음은 preparation commit 뒤 Luna/high exact3을 각1회 실행하고 compliance 유지와 input/cached/output/reasoning/wall 변화를 동결한다.
 - 1.9.767은 visual/component/prototype에서만 필요한 grounding·asset·hero·motion detail을 `references/master-visual-grounding.md`로 분리했다. intake/checkpoint relay는 sidecar를 읽지 않는다.
 - 초기 `omd-harness/SKILL.md`는 48,736B/873줄→30,194B/629줄로 38.0%/28.0% 감소했다. sidecar 포함 정본은34,857B이며 중복 CDN catalog는 `omd-asset-fetch`로 단일화했다.
 - doctor는 새 sidecar 누락을 invalid skill sidecar로 진단한다. workflow/catalog/doctor/install/handoff93/93, lint/diff-check green, provider/Cursor0이다.

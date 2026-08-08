@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-08 (Codex) · 1.9.768 Luna repeat pass
+- exact3/3과 write/timeout/retry/Cursor0을 유지했다.
+- aggregate input-8.09%, reasoning-10.34%, wall+14.29%; case variance가 컸다.
+- causal 효율 주장은 금지하고 master 37KB를 다음 고정비로 확인했다.
+- 다음은 thin master kernel + phase sidecar refactor다.
+
 ## 2026-08-08 (Codex) · 1.9.768 repeat prepared
 - 동일 exact3 Luna/high checkpoint repeat를 fresh root로 잠갔다.
 - provider-zero3/3, provider/model/Cursor0; retry0이다.
