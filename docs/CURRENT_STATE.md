@@ -4,11 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.794 council routed lifecycle lane executor 완료
+- 갱신: 2026-08-09 · 1.9.795 council routed lifecycle Luna/high 사전등록
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.795는 fresh interview+advisory implementation2와 blocker sentinel1을 exact Luna/high로 사전등록했다. lane4+implementation2=provider6, serial, retry/replacement/fallback/model substitution/Cursor0을 잠갔다.
+- cell gate는85/85·revision1·proof/candidate exact이며 blocker는 provider/edit0·starter byte exact다. 다음은 fresh root provider-zero admission과 blocker 준비 후 lane executor live를 실행한다.
 - 1.9.794는 matrix의 declared read-only lane을 실행·격리·artifact validate·reconcile하고 interview receipt 뒤에만 master를 재개하는 executor를 추가했다. provider-zero route3/3·lane4/4·checkpoint 전 product write0·blocker dispatch/edit0·Cursor0이다.
 - executor unit1/1+lint green이다. 이 결과는 ordering 증거이며 model advice/UI 효과 증거가 아니므로 execution_allowed=false다. 다음은 exact Luna/high lane4+implementation2 no-retry run을 별도 사전등록한다.
 - 1.9.793 provider-zero controller는 routed3/3, checkpoint 전 product write0, total product write0, provider/model/Cursor0으로 통과했다. controller unit1/1+lint green이다.

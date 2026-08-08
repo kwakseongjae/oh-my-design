@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.795 lifecycle Luna prereg
+- fresh implementation2+blocker1을 Luna/high exact lifecycle로 잠갔다.
+- lane4+owner2=provider6, serial, retry/replacement/fallback/Cursor0이다.
+- cell85/85·revision1·proof exact, blocker provider/edit0이 gate다.
+- 다음은 provider-zero admission 뒤 live lane4를 실행한다.
+
 ## 2026-08-09 (Codex) · 1.9.794 routed lifecycle executor
 - matrix lane 격리·artifact validation·reconcile·handoff executor를 추가했다.
 - provider-zero route3/3·lane4/4, checkpoint 전 product write0이다.
