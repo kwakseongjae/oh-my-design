@@ -4,11 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.795 council routed lifecycle Luna/high 사전등록
+- 갱신: 2026-08-09 · 1.9.795 council routed lifecycle Luna/high 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.795 live는 routed lifecycle route3/3·implementation2/2(각85/85)로 통과했다. lane4+owner2=provider6, pre-implementation write0, blocker provider/edit0+starter exact, unplanned question/retry/replacement/fallback/Cursor0이다.
+- 두 구현 셀은 revision1·static closure1·measured exact `omd1795` browser1·recovery0·candidate/final byte exact다. 합산 input3,459,785(cached3,210,752), output32,685, reasoning15,254, wall715,027ms이며 descriptive-only다.
+- 이 결과는 fresh interview/block/advisory lifecycle denominator를 닫지만 subjective preference나 전체 2.0 gate를 단독 승격하지 않는다. 다음은 normative readiness snapshot에 반영하고 다음 내부 gap을 선정한다.
 - 1.9.795는 fresh interview+advisory implementation2와 blocker sentinel1을 exact Luna/high로 사전등록했다. lane4+implementation2=provider6, serial, retry/replacement/fallback/model substitution/Cursor0을 잠갔다.
 - cell gate는85/85·revision1·proof/candidate exact이며 blocker는 provider/edit0·starter byte exact다. 다음은 fresh root provider-zero admission과 blocker 준비 후 lane executor live를 실행한다.
 - 1.9.794는 matrix의 declared read-only lane을 실행·격리·artifact validate·reconcile하고 interview receipt 뒤에만 master를 재개하는 executor를 추가했다. provider-zero route3/3·lane4/4·checkpoint 전 product write0·blocker dispatch/edit0·Cursor0이다.
@@ -3750,9 +3753,9 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.756 결과를 final commit하고 current의 album desktop hierarchy 실패를 harness regression으로 환류한다.
-2. fresh full-product hierarchy task로 prime-only council Reliability를 반복 검증한다. 기존 1.9.756 task/root는 재사용하지 않는다.
-3. 그 뒤 read-only specialist lane이 실제로 dispatch되는 bounded council을 별도 사전등록한다. 질문 최소화, model-lane accounting, deterministic final owner를 hard gate로 둔다.
+1. 1.9.795 routed lifecycle evidence를 normative 2.0 readiness snapshot에 반영한다.
+2. council gate에서 아직 외부 검증이 필요한 subjective practitioner preference와 multi-provider repeat를 분리한다.
+3. 다음 내부-only gap을 machine-auditable criteria로 선정하고 fresh task lock 전에는 provider를 호출하지 않는다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

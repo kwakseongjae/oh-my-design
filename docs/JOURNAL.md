@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.795 lifecycle Luna complete
+- live route3/3, implementation2/2 각85/85로 통과했다.
+- lane4+owner2=provider6, blocker provider/edit0+starter exact다.
+- revision1·proof/candidate exact·recovery/question/retry/Cursor0이다.
+- 다음은 normative readiness에 반영하고 다음 2.0 gap을 선정한다.
+
 ## 2026-08-09 (Codex) · 1.9.795 lifecycle Luna prereg
 - fresh implementation2+blocker1을 Luna/high exact lifecycle로 잠갔다.
 - lane4+owner2=provider6, serial, retry/replacement/fallback/Cursor0이다.
