@@ -4,11 +4,13 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.799 frontier skill qualification 사전등록·provider-zero 준비 완료
+- 갱신: 2026-08-09 · 1.9.800 frontier skill qualification checkpoint 1 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.800 checkpoint1 `astro-luna-r1-omd`는 Luna/high에서85/85·UI-Resolved·revision1·static closure1·proof/candidate exact로 통과했다. wall182,948ms·tokens532,265이며 browser recovery/retry/replacement/fallback/Cursor0이다.
+- qualification 1/12만 완료됐으므로 arm 비교나 public claim은 금지한다. 다음 frozen cell은 `seed-luna-r1-anthropic`이며 30초 pacing을 충족한 뒤 같은 root에서 정확히 1셀만 실행한다.
 - 1.9.799는 exact current OmD+Anthropic current+Impeccable4.0.4 bounded+UI UX Pro Max2.13.0 × fresh3의 Luna/high Stage A 12셀을 사전등록했다. serial·timeout720s·pacing30s·checkpoint1셀·retry/replacement/fallback/model substitution/Cursor0이다.
 - provider-zero prepare는 12/12이며 detached/clean/publishable/commit/source-tree/task-pairing 전부12/12다. OmD는 dirty workspace가 아니라 commit `c7031e2c`의 exact 5-file tree를 사용하며 provider/model/Cursor 호출은 아직0이다.
 - qualification은 Verified 승격·public best-skill·statistical-superiority 근거가 아니다. 다음 허용 작업은 frozen order 첫 셀 `astro-luna-r1-omd` 단독 실행이며 실패 시 재시도·대체 셀을 만들지 않는다.

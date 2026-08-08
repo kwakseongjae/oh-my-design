@@ -5914,6 +5914,12 @@
 - checkpoint continuation0→1→2→3, pacing30s×2, recovery/duplicate/Cursor0이다.
 - wall542,960ms, tokens2,140,479이며 complete root replay는 provider0 fail-close다.
 - 다음은 fresh comparative denominator이며 이 결과만으로 2.0 승격하지 않는다.
+## 2026-08-09 (Codex) · 1.9.800 frontier qualification checkpoint 1
+- OmD astronomical 셀이85/85·UI-Resolved·revision1로 통과했다.
+- wall182.9s·tokens532,265, proof/candidate exact, recovery0이다.
+- retry/replacement/fallback/Cursor0이며 아직 비교 주장은 금지한다.
+- 다음 frozen 셀은 Anthropic seed다.
+
 ## 2026-08-09 (Codex) · 1.9.799 frontier qualification preregistration
 - exact current OmD+경쟁3 × fresh3의 Luna/high 12셀을 사전등록했다.
 - provider-zero 준비12/12, exact source/task admission12/12이다.
