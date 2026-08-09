@@ -460,7 +460,7 @@
     },
     "baseline_evidence": {
       "path": "baseline-critical-gates.json",
-      "sha256": "bfe71413c7738388a348ef4b33564ffdc8a050918fc345392fff19ff9d93ca9b"
+      "sha256": "95e36b662e5aaee346bc6f0bee0eea803b799575605bc689667263af3baf6ec9"
     },
     "critical_gate_debt_coverage": [
       {

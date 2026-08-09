@@ -179,16 +179,17 @@ describe("task contract mutation coverage", () => {
       const taskBytes = readFileSync(resolve(root, "task.json"));
       const promptBytes = readFileSync(resolve(root, "PROMPT.md"));
       const hash = (value) => createHash("sha256").update(value).digest("hex");
+      const methodology = currentObjectiveMethodology();
       expect(receipt).toMatchObject({
         schema_version: "0.1",
         kind: "provider-free-objective-score-deterministic-equivalent",
         task_id: id,
         variant_id: "raw-design-md",
         raw_score: {
-          schema_version: "0.6",
+          schema_version: methodology.score_schema_version,
           source_score_sha256: baseline.source_score_sha256,
           source_methodology: {
-            evaluator_source_sha256: "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+            evaluator_source_sha256: methodology.evaluator_source_sha256,
           },
         },
         expected: {
@@ -199,10 +200,10 @@ describe("task contract mutation coverage", () => {
         reproduction_contract: {
           provider_calls: 0,
           model_calls: 0,
-          evaluator_sha_delta_disposition: "recorded-not-overwritten",
+          evaluator_sha_delta_disposition: "none",
         },
       });
-      expect(receipt.methodology).toEqual(currentObjectiveMethodology());
+      expect(receipt.methodology).toEqual(methodology);
       expect(receipt.inputs).toMatchObject({
         prompt_sha256: hash(promptBytes),
         baseline_evidence_sha256: hash(baselineBytes),

@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1",
   "source": "provider-free raw-design-md objective evaluation",
-  "source_score_sha256": "707df59ff905336546fd9bbb2dc86c8cd5d3b410402a3a4e4a045727b6e9f247",
-  "methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+  "source_score_sha256": "5a92f644c5e5f3a773107e28f24cae0c6203d00a03ba2c7c887b2aa6720c888a",
+  "methodology_epoch": "ui-resolve-objective-2026q3-entry-identity-v1",
   "task_id": "pollen-slide-accession-v0.1",
   "variant_id": "raw-design-md",
   "points": {

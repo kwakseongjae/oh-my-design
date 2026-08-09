@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1",
   "source": "provider-free raw-design-md objective evaluation",
-  "source_score_sha256": "c34fc0e6ebc5552dad76e97c236eba013052b77b5a315c729c35696248732808",
-  "methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+  "source_score_sha256": "338b2550b061c9093d7aec07919c45bfae1d43dad7cc28c1b6b1a9e39d17cf82",
+  "methodology_epoch": "ui-resolve-objective-2026q3-entry-identity-v1",
   "task_id": "seismic-core-dispatch-v0.1",
   "variant_id": "raw-design-md",
   "points": {

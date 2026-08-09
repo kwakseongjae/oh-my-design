@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1",
   "source": "provider-free raw-design-md objective evaluation",
-  "source_score_sha256": "8b4cca0a25e283e956d0e99c68b656a7e7a5d438ed2c0052d17efeb4908d7852",
-  "methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+  "source_score_sha256": "5dbbd5790aee38247fa8bb56c52586bf9b2ca5c60a0c7a0f537d2de71baff092",
+  "methodology_epoch": "ui-resolve-objective-2026q3-entry-identity-v1",
   "task_id": "oral-history-reel-return-v0.1",
   "variant_id": "raw-design-md",
   "points": {
