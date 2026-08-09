@@ -11,7 +11,7 @@
 
 - 1.9.822는 Luna5·Terra6·Sol6 exact pair × provider-unseen v18 task3 = 51셀을 Codex-native complete block으로 실행한다. serial·720s·pacing30s·checkpoint1, retry/replacement/fallback/model·effort·task substitution/Cursor/Claude0이다.
 - hardening은 plan-byte prereg receipt, whole-task byte/mode+Git authority, immutable auth/cache copy, wrapper/native CLI pin, controller-owned score/record, exact routing/aggregation, terminal provider-failure continuation을 봉인했다. full test903/903·lint·build green이다.
-- immutable snapshot은 `/private/tmp/omd-codex-auth-pin-1.9.822`, vendor는 commit `bdafa946`의 `/private/tmp/omd-vendors-19822/omd-1.9.821`이다. 다음은 metadata commit→named local browser→fresh plan/prepare/admission→51셀 순차 실행이다.
+- immutable snapshot은 `/private/tmp/omd-codex-auth-pin-1.9.822`, vendor는 commit `bdafa946`의 `/private/tmp/omd-vendors-19822/omd-1.9.821`이다. exact plan SHA `b15ade46…`, task set `db9afcab…`, schedule `c23b0fbf…`로 51셀 prereg를 생성했으며 provider/model/Cursor/Claude0이다. 다음은 plan commit→prepare/admission→51셀 순차 실행이다.
 - 1.9.820 checkpoint4 `entomology-luna-r2-omd`는 objective85/85·candidate exact였지만 `.decision-target{font-size:17px}`가 pre-edit15px typography lock을 바꿔 proof gate가 red다. artifact는 measured browser1이지만 closure open이다.
 - 1.9.816 Reliability root는 `contract-proof-noncompliance` hard-stop으로 4/9에서 동결했다. 남은5셀은 provider-unexposed이며 same-root resume/retry/replacement가 금지된다; Reliability@3나 우위·2.0 pass claim을 만들 수 없다.
 - 실행은 Codex-native Luna/high만, serial·720s·pacing30s·checkpoint1셀·retry/replacement/fallback/substitution0이다. exact `omd1816` browser attach와 `/private/tmp/omd-codex-auth-pin-1.9.816` immutable catalog snapshot을 사용한다.

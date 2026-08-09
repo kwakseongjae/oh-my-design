@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.822 all-effort prereg
+- Luna5·Terra6·Sol6 × fresh3 = 51셀 exact plan/receipt를 생성했다.
+- local CDP `omd1822`, immutable auth/cache, pinned CLI·vendor를 잠갔다.
+- provider/model/Cursor/Claude0; 다음은 prepare/admission 뒤 1셀씩 실행이다.
+
 ## 2026-08-09 (Codex) · 1.9.822 all-effort sweep hardening
 - plan/task/auth/cache/CLI/controller artifact/routing/aggregate authority를 fail-close로 봉인했다.
 - complete-block provider failure는 terminal 표본으로 보존하고 authority·infra drift만 freeze한다.
