@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.823 all-effort prereg
+- source `bf935702`, browser-harness `omd1823`, immutable auth/cache로 plan을 생성했다.
+- plan `839f9a55…`, task set `db9afcab…`, schedule `c23b0fbf…`, exact51셀이다.
+- generation provider/model/browser/network/Cursor/Claude0; 다음은 prepare/admission이다.
+
 ## 2026-08-09 (Codex) · 1.9.823 catalog freeze
 - admission ordering fix를 `e2c9c05a`로 커밋했다.
 - immutable auth/cache snapshot과 Luna5·Terra6·Sol6 profile SHA를 재검증했다.

@@ -4,14 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `e2c9c05a`의 provider-before-runtime admission ordering fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · fresh 1.9.823 immutable catalog lock 생성
+- 갱신: 2026-08-09 · fresh 1.9.823 exact 51-cell plan 사전등록
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
 - 1.9.822 첫 runner 호출은 provider 전에 `prepared-matrix-admission:execution-artifact-present`로 중단됐다. runner가 lease를 만든 뒤 lease 부재를 요구하는 standalone audit를 호출한 자기충돌이며 provider/model/browser/Cursor/Claude 노출은 모두0이다. 해당 root는 동결하고 재사용하지 않는다.
 - 수정된 controller는 exclusive lease→정확한 owned-lease-aware preparation audit→immutable runtime preflight→runtime admission receipt atomic persist→controller pre-edit→provider 순서를 강제한다. standalone audit는 여전히 모든 lease를 거부하며 crash-resume과 receipt drift도 provider 전에 fail-close한다.
-- admission ordering 수정은 commit `e2c9c05a`, focused95/95, full test906/906(3 skip), lint, build, diff-check green이다. 1.9.823 auth/cache snapshot은 `/private/tmp/omd-codex-auth-pin-1.9.823`에 immutable regular files로 복사됐고 SHA는 1.9.822 authority와 exact-match한다. 다음은 catalog lock commit→fresh plan/root/browser→51셀 `--max-new-cells 1` 연속 실행이다.
+- admission ordering 수정은 commit `e2c9c05a`, focused95/95, full test906/906(3 skip), lint, build, diff-check green이다. 1.9.823 auth/cache snapshot은 `/private/tmp/omd-codex-auth-pin-1.9.823`에 immutable regular files로 복사됐고 SHA는 1.9.822 authority와 exact-match한다.
+- fresh plan은 source commit `bf935702`, local browser-harness `omd1823`/CDP9363, plan SHA `839f9a55…`, task set `db9afcab…`, schedule `c23b0fbf…`로 exact51셀을 사전등록했다. generation provider/model/browser/network/Cursor/Claude 호출은0이다. 다음은 plan commit→prepare/admission→51셀 `--max-new-cells 1` 연속 실행이다.
 - 51셀 계약은 Codex-native only, serial·720s·pacing30s·checkpoint1, retry/replacement/fallback/model·effort·task substitution/Cursor/Claude0이다. 1.9.822 exact plan SHA `b15ade46…`, task set `db9afcab…`, schedule `c23b0fbf…`는 실패 증적으로만 보존한다.
 - 1.9.820 checkpoint4 `entomology-luna-r2-omd`는 objective85/85·candidate exact였지만 `.decision-target{font-size:17px}`가 pre-edit15px typography lock을 바꿔 proof gate가 red다. artifact는 measured browser1이지만 closure open이다.
 - 1.9.816 Reliability root는 `contract-proof-noncompliance` hard-stop으로 4/9에서 동결했다. 남은5셀은 provider-unexposed이며 same-root resume/retry/replacement가 금지된다; Reliability@3나 우위·2.0 pass claim을 만들 수 없다.
