@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.816 Luna Reliability prereg
+- exact OmD current×fresh task3×trial3=9셀을 사전등록·준비했다.
+- repeated admission9/9, task/skill/catalog/browser locks가 green이다.
+- provider/model/Cursor0; 다음은 tidal-r1 1셀 no-retry 실행이다.
+
 ## 2026-08-09 (Codex) · 1.9.815 contract validation closure
 - historical helper lock은 source commit bytes를 검증하도록 바로잡았다.
 - full bench563/563·lint·diff-check가 green이다.

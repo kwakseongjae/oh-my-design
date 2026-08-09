@@ -4,11 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.815 Codex model-effort/repeated-reliability fail-close 완료
+- 갱신: 2026-08-09 · 1.9.816 Luna/high Reliability@3 provider-zero admission 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.816은 exact current OmD의 fresh task3×trial3=9셀 Reliability@3를 provider-zero로 사전등록·준비했다. admission9/9, repeated normalization/task/skill/source/evaluator lock 전부 green이며 provider/model/Cursor0이다.
+- 실행은 Codex-native Luna/high만, serial·720s·pacing30s·checkpoint1셀·retry/replacement/fallback/substitution0이다. exact `omd1816` browser attach와 `/private/tmp/omd-codex-auth-pin-1.9.816` immutable catalog snapshot을 사용한다.
+- 다음 허용 작업은 frozen order 첫 셀 `tidal-luna-r1-omd` 1회 실행이다. 결과와 무관하게 재실행하지 않고 lifecycle hard-stop이 없을 때만 다음 셀로 진행한다.
 - 1.9.815 runner는 exact Codex cache/profile을 잠근다. Luna5·Terra6·Sol6=17 pair를 지원하되 cache SHA/fetched-at/client-version, profile SHA/default/ordered effort 중 하나라도 drift하면 provider 전에 중단한다.
 - provider routing은 exact Luna/Terra/Sol만 Codex-native로 허용하고 unknown runtime/model, fabricated suffix, implicit migration을 default-deny한다. Cursor included-only guard는 유지되며 이번 검수는 Cursor0이다.
 - 새 `multi-task-repeated-reliability` normalization은 task≥2, 동일 trial set, exact single arm/model/effort/timeout/skill/evaluator/source-contract와 within-task byte equality를 admission에서 강제한다. bench suite563/563+lint green이다.
