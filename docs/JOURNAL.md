@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.820 Luna Reliability hard stop
+- entomology-r2는85/85였지만 target font15→17px drift로 proof red다.
+- 1.9.816 root를4/9에서 동결했고 남은5셀은 provider-unexposed다.
+- retry/replacement/Cursor0; 다음은 static-preview typography guard 보강이다.
+
 ## 2026-08-09 (Codex) · 1.9.819 Luna Reliability checkpoint 3
 - choreographic-r1도 85/85·UI-Resolved·measured browser proof로 통과했다.
 - trial1의 세 태스크가 3/3 proof pass, recovery·retry·replacement·Cursor0이다.
