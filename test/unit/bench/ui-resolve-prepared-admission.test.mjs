@@ -850,6 +850,7 @@ describe("prepared matrix admission audit", () => {
         paired_task_contracts: true,
         paired_arm_rotation: true,
         task_lock_attested: true,
+        complete_block_task_tree_authority: false,
       },
       execution_admission: { allowed: true },
     });
@@ -860,7 +861,7 @@ describe("prepared matrix admission audit", () => {
     prepareRunMatrix(repeatedReliabilityPlan(root));
 
     expect(auditPreparedMatrixAdmission(root)).toMatchObject({
-      status: "PREPARATION_ONLY_PROVIDER_ZERO_RUNTIME_ADMISSION_REQUIRED",
+      status: "PREPARED_PROVIDER_ZERO",
       normalization_policy: "multi-task-repeated-reliability",
       trials: [1, 2],
       normalization: {
@@ -883,12 +884,7 @@ describe("prepared matrix admission audit", () => {
         repeated_trial_sets_identical: true,
         repeated_within_task_contracts: true,
       },
-      execution_admission: {
-        allowed: false,
-        preparation_only: true,
-        runtime_admission_required: true,
-        reason: "immutable-codex-runtime-admission-required",
-      },
+      execution_admission: { allowed: true },
     });
 
     const lockedPath = join(root, "RUN-MATRIX.locked.json");

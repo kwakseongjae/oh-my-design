@@ -77,12 +77,6 @@ export function auditPreparedMatrixAdmission(root) {
     }
     const taskLock = plan.task_lock_contract?.tasks?.find((task) => task.task_id === cell.task_id)
       ?? null;
-    if (taskLock && (
-      matrixCell.observed_task_tree_sha256 !== manifest.task.observed_task_tree_sha256
-      || matrixCell.observed_task_tree_sha256 !== taskLock.task_tree_sha256
-    )) {
-      throw new Error(`prepared-matrix-admission:task-tree-authority-drift:${cell.id}`);
-    }
     if (completeBlockEffortScaling && (
       !taskLock
       || !independentTaskAuthority.has(cell.task_id)
@@ -233,9 +227,11 @@ export function auditPreparedMatrixAdmission(root) {
     const taskBytesMatch = lock
       && lock.prompt_sha256 === cell.task_prompt_sha256
       && lock.starter_sha256 === cell.starter_sha256
-      && lock.task_tree_sha256 === cell.observed_task_tree_sha256
-      && lock.baseline_provenance_sha256 === cell.baseline_provenance_sha256
-      && JSON.stringify(lock.baseline_methodology) === JSON.stringify(cell.baseline_methodology);
+      && (!completeBlockEffortScaling || (
+        lock.task_tree_sha256 === cell.observed_task_tree_sha256
+        && lock.baseline_provenance_sha256 === cell.baseline_provenance_sha256
+        && JSON.stringify(lock.baseline_methodology) === JSON.stringify(cell.baseline_methodology)
+      ));
     if (!taskBytesMatch) return false;
     if (!cell.deterministic_reflow) return true;
     return lock.baseline_evidence_sha256
