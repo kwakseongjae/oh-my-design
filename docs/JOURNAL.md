@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.825 checkpoint 1/51
+- `pollen-luna-medium-r1-omd`는85/85·UI-Resolved·proof/candidate exact로 통과했다.
+- routing attestation0.2와 immutable catalog 26 checks가 모두 true다.
+- wall201,954ms·tokens673,979; retry/replacement/fallback/Cursor/Claude0이다.
+- 다음은 frozen order 나머지50셀 자동 연속 실행이다.
+
 ## 2026-08-09 (Codex) · 1.9.825 all-effort prereg
 - source `2ccf90ec`, local catalog `77df9127…`, browser-harness `omd1825`로 exact51셀을 생성했다.
 - plan `b24b3175…`, task set `db9afcab…`, schedule `c23b0fbf…`를 봉인했다.
