@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.823 catalog freeze
+- admission ordering fix를 `e2c9c05a`로 커밋했다.
+- immutable auth/cache snapshot과 Luna5·Terra6·Sol6 profile SHA를 재검증했다.
+- provider/model/browser/Cursor/Claude0; 다음은 fresh plan 생성·prepare다.
+
 ## 2026-08-09 (Codex) · 1.9.822 pre-provider failure + admission fix
 - 첫 runner는 lease/audit 자기충돌로 provider 전에 중단됐고 호출은 전부0이다.
 - owned-lease audit→runtime seal→atomic admitted state 순서를 구현했다.
