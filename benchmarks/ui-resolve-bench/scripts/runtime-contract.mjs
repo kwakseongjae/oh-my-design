@@ -93,12 +93,30 @@ export function assertProviderRoute({
   fakeRuntime = process.env.OMD_BENCH_FAKE_RUNTIME === "1",
 } = {}) {
   const known = PROVIDER_ROUTING_POLICY.known_models[model];
+  const knownRuntimes = new Set(
+    Object.values(PROVIDER_ROUTING_POLICY.known_models)
+      .map((entry) => entry.required_runtime),
+  );
+  if (!knownRuntimes.has(runtime)) {
+    throw new Error(
+      `provider route denied by default_action=${PROVIDER_ROUTING_POLICY.default_action}: `
+      + `unknown runtime ${runtime ?? "missing"}`,
+    );
+  }
   if (known && runtime !== known.required_runtime) {
     throw new Error(
       `provider route denied: ${model} must use ${known.required_runtime}, not ${runtime ?? "missing"}`,
     );
   }
-  if (runtime !== "cursor") return { allowed: true, mode: known?.billing_type ?? "runtime-native" };
+  if (runtime !== "cursor") {
+    if (!known) {
+      throw new Error(
+        `provider route denied by default_action=${PROVIDER_ROUTING_POLICY.default_action}: `
+        + `unknown model ${model ?? "missing"} for ${runtime}`,
+      );
+    }
+    return { allowed: true, mode: known.billing_type };
+  }
   const decision = cursorDispatchDecision({ model, billingType, confirmation, fakeRuntime });
   if (!decision.allowed) {
     throw new Error(

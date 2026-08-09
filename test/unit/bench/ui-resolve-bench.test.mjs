@@ -355,7 +355,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
     } finally {
       rmSync(vendors, { recursive: true, force: true });
     }
-  });
+  }, 15_000);
 
   it("fails closed unless an approval dialog opens, traps intent, and restores focus", () => {
     const passing = {

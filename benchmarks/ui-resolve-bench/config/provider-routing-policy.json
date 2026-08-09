@@ -10,6 +10,10 @@
       "required_runtime": "codex",
       "billing_type": "codex-native"
     },
+    "gpt-5.6-terra": {
+      "required_runtime": "codex",
+      "billing_type": "codex-native"
+    },
     "cursor-grok-4.5-high": {
       "required_runtime": "cursor",
       "billing_type": "included",
@@ -29,7 +33,7 @@
   "safety": {
     "on_demand_is_always_denied": true,
     "unknown_billing_is_denied": true,
-    "luna_sol_cursor_route_is_denied": true,
+    "luna_terra_sol_cursor_route_is_denied": true,
     "cursor_non_grok_route_is_denied": true
   }
 }

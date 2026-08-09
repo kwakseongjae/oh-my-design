@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.814",
+  "status": "locked-unseen-provider-zero",
+  "purpose": "Freeze a protocol-defined three-task by three-trial Reliability@3 denominator for the sole Stage A eligible OmD arm before provider execution.",
+  "source_commit": "d8ffb76b54243f35484c4d8f1891ee6a57abb69d",
+  "tasks": [
+    {
+      "task_id": "tidal-chart-accession-v0.1",
+      "inventory": {"records": 4, "containers": 6, "windows": 3},
+      "browser_harness_observation": {"client_width_px": 756, "raw_overflow_px": 113},
+      "baseline": {"score": 75, "max": 85, "failed_gates": ["responsive", "accessibility"]},
+      "sha256": {
+        "tree": "6ede4ca0ea6d78ec1e221017de1f40120838a97ba86f88301c29c36ba4180f5f",
+        "task": "bf5df202c79f47956f229335eea97c9c7b97250f17c8caef8bb4890309b71a99",
+        "prompt": "cfa834f6d739fbf5632c812c6ef280ef43764bfab24d5ff0d569b97a5691105c",
+        "starter": "a34cb49a5f8ae144641aa942fe301eb1e438f2905826f078039de2a23bfa215a",
+        "baseline": "514dab5bf837b2d9a799dc85252e927838c4da9039c80fd1b716f2403dfbbc42",
+        "source_contract": "3c87a80fcf45f8e3d9a12f8b6bcf2e100ef30573f4aa325cbb3ed5838d8ac862"
+      }
+    },
+    {
+      "task_id": "entomology-tray-dispatch-v0.1",
+      "inventory": {"records": 5, "containers": 7, "windows": 4},
+      "browser_harness_observation": {"client_width_px": 756, "raw_overflow_px": 191},
+      "baseline": {"score": 75, "max": 85, "failed_gates": ["responsive", "accessibility"]},
+      "sha256": {
+        "tree": "c059c550e34fdfc71c257d373fbef4a209f191bc68e1dd0d6b4723f1337406cb",
+        "task": "356fae17261987ab64e62c1d79acf5f0f7015aae9ccb0aa9c6104eac6483d8d6",
+        "prompt": "4c389288e8e467c5fd0c082b8c6397f2a0f7d980b1d542410e351e069bf899a3",
+        "starter": "60b1101706cc506bcc176a183da024053f40dc4840eb0166562ff578d5e9f4a6",
+        "baseline": "0d2b44b3dd302bbbe9f5c686d12a6145784bc435519153921f6e66d585658163",
+        "source_contract": "4c458180c1b59f1096a7bd72f9e0e1f1c82d62da5e41f6910579a14543fdc89c"
+      }
+    },
+    {
+      "task_id": "choreographic-score-return-v0.1",
+      "inventory": {"records": 6, "containers": 8, "windows": 4},
+      "browser_harness_observation": {"client_width_px": 756, "raw_overflow_px": 197},
+      "baseline": {"score": 75, "max": 85, "failed_gates": ["responsive", "accessibility"]},
+      "sha256": {
+        "tree": "e739ae74ce9d31265e763cf9ed87a6234a7d304d9a51675abe07bc13f97a6915",
+        "task": "cf885df7408d7986b0e5ed20bcd6df1d0f5d1454c6bd16d3257bc71c5baaf7e9",
+        "prompt": "e9a335b10332680e813de24bed14cc8fe403d5679fa05cb40a52c6e7e095fe7f",
+        "starter": "5614362d6171ba625c21f35b9b2f93e6976d4d304bcd80afdf2f3926332d6040",
+        "baseline": "25fd4beebafd8ec9dd55653c4697f15c7b541b9b1b4ddd75c95d20eec0cdaa14",
+        "source_contract": "7caa90a1d9bb11ded2b8c7887d8f8cd71aa1634c036c1d07b50d40baf2152433"
+      }
+    }
+  ],
+  "task_contract": {
+    "track": "repair",
+    "locale": "en",
+    "network": "disabled",
+    "viewports": ["desktop", "390px", "320px", "200%-surrogate"],
+    "baseline_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "source_contract_schema": "0.2",
+    "same_objective_debt": true,
+    "different_record_density": true
+  },
+  "reliability_contract": {
+    "tasks": 3,
+    "independent_trials_per_task": 3,
+    "required_cells": 9,
+    "pass_rule": "all three tasks pass all three independent trials",
+    "diagnostic_three-one-shot_shorthand_allowed": false
+  },
+  "browser_harness": {
+    "connection": "omd1813",
+    "cdp": "http://127.0.0.1:9360",
+    "loaded_tasks": 3,
+    "record_counts": [4, 5, 6],
+    "view_count_each": 3,
+    "h1_count_each": 1,
+    "main_count_each": 1
+  },
+  "provider_calls": 0,
+  "model_calls": 0,
+  "cursor_calls": 0,
+  "next": "Commit this lock and the fail-closed repeated-reliability/model-effort runner contracts, then preregister the exact Luna/high nine-cell matrix."
+}

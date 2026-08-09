@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -27,7 +28,8 @@ describe("council routed lifecycle task lock", () => {
       expect(sha256(JSON.stringify(task.council_routing_oracle))).toBe(item.council_oracle_sha256);
     }
     for (const [path, expected] of Object.entries(lock.helper_hashes)) {
-      expect(sha256(readFileSync(resolve(repoRoot, path)))).toBe(expected);
+      const lockedBytes = execFileSync("git", ["-C", repoRoot, "show", `${lock.task_source_commit}:${path}`]);
+      expect(sha256(lockedBytes)).toBe(expected);
     }
   });
 });

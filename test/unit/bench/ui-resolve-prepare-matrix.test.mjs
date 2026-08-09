@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   prepareArgsForCell,
+  validateCodexModelEffortContract,
   validateControlContract,
   validateRunMatrixPlan,
 } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-run-matrix.mjs";
@@ -243,7 +244,7 @@ describe("UI-Resolve run matrix preparation", () => {
     expect(() => validateRunMatrixPlan(value)).toThrow("duplicate task/trial/system cell");
   });
 
-  it("rejects relative output roots and unsupported effort labels", () => {
+  it("rejects relative output roots and supports every current Codex effort label", () => {
     expect(() => validateRunMatrixPlan(plan({ output_root: "tmp/u197" }))).toThrow("absolute path");
     expect(() => validateRunMatrixPlan(plan({ vendors_root: "tmp/vendors" }))).toThrow("vendors_root");
     expect(() => validateRunMatrixPlan(plan({ attribution_scope: "public-display-name" })))
@@ -253,7 +254,115 @@ describe("UI-Resolve run matrix preparation", () => {
     })).attribution_scope).toBe("internal-registered-display-name");
     const value = plan();
     value.cells[0].effort = "ultra";
+    expect(validateRunMatrixPlan(value).cells[0].effort).toBe("ultra");
+    value.cells[0].effort = "extreme";
     expect(() => validateRunMatrixPlan(value)).toThrow("effort is invalid");
+  });
+
+  it("pins every schema 0.3 Codex cell to an exact model-effort profile", () => {
+    const contract = {
+      cache_sha256: "a".repeat(64),
+      cache_fetched_at: "2026-08-09T04:32:08Z",
+      cache_client_version: "0.146.1",
+      models: [{
+        model_id: "gpt-5.6-terra",
+        model_profile_sha256: "b".repeat(64),
+        default_effort: "medium",
+        supported_efforts: ["low", "medium", "high", "xhigh", "max", "ultra"],
+      }],
+    };
+    const current = plan({
+      schema_version: "0.3",
+      suite_version: "ui-resolve-v0.1",
+      product_version: "1.9.812",
+      execution_purpose: "codex-model-effort-validation",
+      family: "model",
+      control_contract: controlContract(),
+      codex_model_effort_contract: contract,
+      cells: [{
+        ...plan().cells[0],
+        id: "terra-ultra",
+        runtime: "codex",
+        model_id: "gpt-5.6-terra",
+        effort: "ultra",
+      }],
+    });
+    expect(validateCodexModelEffortContract(current)).toEqual(contract);
+    expect(validateRunMatrixPlan(current).cells[0].effort).toBe("ultra");
+
+    const absent = structuredClone(current);
+    absent.cells[0].model_id = "gpt-5.6-sol";
+    expect(() => validateRunMatrixPlan(absent)).toThrow("Codex model is absent");
+
+    const unsupported = structuredClone(current);
+    unsupported.codex_model_effort_contract.models[0].supported_efforts = ["low", "medium"];
+    expect(() => validateRunMatrixPlan(unsupported)).toThrow("Codex effort is unsupported");
+
+    const legacy = plan({ codex_model_effort_contract: contract });
+    expect(() => validateRunMatrixPlan(legacy)).toThrow("requires schema 0.3");
+  });
+
+  it("does not impose Codex profile pins on non-Codex cells", () => {
+    const current = plan({
+      schema_version: "0.3",
+      suite_version: "ui-resolve-v0.1",
+      product_version: "1.9.812",
+      execution_purpose: "non-codex-control",
+      family: "model",
+      control_contract: controlContract(),
+    });
+    expect(validateRunMatrixPlan(current).cells[0].runtime).toBe("claude-code");
+  });
+
+  it("validates one repeated reliability arm across identical task trial sets", () => {
+    const digestFields = (taskId, digit) => ({
+      task_id: taskId,
+      task_tree_sha256: digit.repeat(64),
+      prompt_sha256: digit.repeat(64),
+      starter_sha256: digit.repeat(64),
+      baseline_evidence_sha256: digit.repeat(64),
+      source_contract_sha256: digit.repeat(64),
+    });
+    const tasks = ["task-alpha-v0.1", "task-beta-v0.1"];
+    const cells = tasks.flatMap((taskId, taskIndex) => [1, 2, 3].map((trialIndex) => ({
+      id: `task-${taskIndex + 1}-trial-${trialIndex}`,
+      task_id: taskId,
+      variant_id: "omd-portable",
+      system_id: "omd-portable",
+      runtime: "codex",
+      model_id: "gpt-5.6-luna",
+      effort: "high",
+      timeout_seconds: 900,
+      trial_index: trialIndex,
+    })));
+    const current = plan({
+      schema_version: "0.3",
+      suite_version: "ui-resolve-v0.1",
+      product_version: "1.9.812",
+      execution_purpose: "multi-task-repeated-reliability",
+      family: "skill",
+      control_contract: controlContract({
+        task_order_policy: "fixed-preregistered",
+        admission_normalization_policy: "multi-task-repeated-reliability",
+      }),
+      task_lock_contract: {
+        tasks: [digestFields(tasks[0], "a"), digestFields(tasks[1], "b")],
+      },
+      cells,
+    });
+    expect(validateRunMatrixPlan(current).cells).toHaveLength(6);
+
+    const uneven = structuredClone(current);
+    uneven.cells.pop();
+    expect(() => validateRunMatrixPlan(uneven)).toThrow("identical positive trial sets");
+
+    const secondArm = structuredClone(current);
+    secondArm.cells[5].effort = "xhigh";
+    expect(() => validateRunMatrixPlan(secondArm)).toThrow("one shared arm");
+
+    const wrongLockOrder = structuredClone(current);
+    wrongLockOrder.task_lock_contract.tasks.reverse();
+    expect(() => validateRunMatrixPlan(wrongLockOrder)).toThrow("first task occurrence order");
   });
 
   it("validates optional harness delivery gates before workspace preparation", () => {

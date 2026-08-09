@@ -3,6 +3,9 @@ import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
+  CODEX_REASONING_EFFORTS,
+  inspectCodexModelEffortContract,
+  inspectCodexModelEffortProfile,
   inspectCodexModelToolMode,
   inspectCodexCliRuntime,
   installedCodexPolicyToolModeStopReason,
@@ -46,6 +49,66 @@ describe("Codex benchmark tool-mode admission", () => {
     expect(installedCodexPolicyToolModeStopReason(
       inspectCodexModelToolMode("direct-model", env),
     )).toBeNull();
+  });
+
+  it("inspects an ordered model-effort profile and builds an exact cache lock", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-codex-effort-profile-"));
+    mkdirSync(join(root, ".codex"));
+    writeFileSync(join(root, ".codex", "models_cache.json"), JSON.stringify({
+      fetched_at: "2026-08-09T04:32:08Z",
+      client_version: "0.146.1",
+      models: [{
+        slug: "gpt-5.6-terra",
+        default_reasoning_level: "medium",
+        supported_reasoning_levels: [
+          { effort: "low", description: "fast" },
+          { effort: "medium", description: "balanced" },
+          { effort: "ultra", description: "delegated" },
+        ],
+        tool_mode: "code_mode_only",
+      }],
+    }));
+    const env = { OMD_BENCH_AUTH_CODEX_HOME: join(root, ".codex") };
+    const profile = inspectCodexModelEffortProfile("gpt-5.6-terra", env);
+    expect(CODEX_REASONING_EFFORTS).toEqual(["low", "medium", "high", "xhigh", "max", "ultra"]);
+    expect(profile).toMatchObject({
+      ready: true,
+      default_effort: "medium",
+      supported_efforts: ["low", "medium", "ultra"],
+      cache_fetched_at: "2026-08-09T04:32:08Z",
+      cache_client_version: "0.146.1",
+    });
+    const lock = inspectCodexModelEffortContract(["gpt-5.6-terra"], env);
+    expect(lock.ready).toBe(true);
+    expect(lock.contract).toEqual({
+      cache_sha256: profile.cache_sha256,
+      cache_fetched_at: profile.cache_fetched_at,
+      cache_client_version: profile.cache_client_version,
+      models: [{
+        model_id: "gpt-5.6-terra",
+        model_profile_sha256: profile.model_profile_sha256,
+        default_effort: "medium",
+        supported_efforts: ["low", "medium", "ultra"],
+      }],
+    });
+  });
+
+  it("fails closed on malformed or unsupported cache effort profiles", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-codex-effort-invalid-"));
+    mkdirSync(join(root, ".codex"));
+    writeFileSync(join(root, ".codex", "models_cache.json"), JSON.stringify({
+      models: [{
+        slug: "invalid-model",
+        default_reasoning_level: "medium",
+        supported_reasoning_levels: [{ effort: "extreme" }],
+      }],
+    }));
+    expect(inspectCodexModelEffortProfile("invalid-model", {
+      OMD_BENCH_AUTH_CODEX_HOME: join(root, ".codex"),
+    })).toMatchObject({
+      ready: false,
+      reason: "reasoning-profile-invalid",
+    });
   });
 
   it("keeps the selected model profile pin stable across cache refresh metadata", () => {

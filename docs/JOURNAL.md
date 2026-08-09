@@ -5,6 +5,17 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.815 contract validation closure
+- historical helper lock은 source commit bytes를 검증하도록 바로잡았다.
+- full bench563/563·lint·diff-check가 green이다.
+- Cursor/provider/model0; 다음은 Luna/high Reliability 9셀 prereg·실행이다.
+
+## 2026-08-09 (Codex) · 1.9.814–815 runtime locks
+- fresh task3 source/hash/browser-harness evidence를 task-lock으로 봉인했다.
+- Codex cache/profile 기반 Luna5·Terra6·Sol6 exact pair 검사를 추가했다.
+- repeated Reliability task3×trial3 admission과 provider default-deny를 강제했다.
+- focused84/84, provider/model/Cursor0; 다음은 Luna/high9셀 prereg이다.
+
 ## 2026-08-09 (Codex) · 1.9.813 true Reliability denominator
 - fresh UI task3을 record4/5/6 밀도로 생성·finalize했다.
 - raw 기준점3/3은75/85, responsive+accessibility만 red다.

@@ -38,6 +38,7 @@ import {
   prepareIsolatedCodexHome,
 } from "./codex-browser-sandbox-contract.mjs";
 import {
+  inspectCodexModelEffortProfile,
   inspectCodexModelToolMode,
   inspectCodexCliRuntime,
   installedCodexPolicyToolModeStopReason,
@@ -113,6 +114,7 @@ export function preflightRuntimeEnvironment(
     browserProbe,
     codexProbe,
     codexToolModeProbe = inspectCodexModelToolMode,
+    codexModelEffortProbe = inspectCodexModelEffortProfile,
     codexCliProbe = inspectCodexCliRuntime,
     browserEnv = process.env,
   } = {},
@@ -127,6 +129,54 @@ export function preflightRuntimeEnvironment(
       (cell) => cell.host_policy_mode === "installed-opt-in",
     ));
   const controllerContract = plan?.controller_observation_contract;
+  const modelEffortContract = plan?.codex_model_effort_contract;
+  if (modelEffortContract) {
+    const profiles = new Map(modelEffortContract.models.map((profile) => [profile.model_id, profile]));
+    const codexCells = (plan?.cells ?? []).filter((cell) => cell.runtime === "codex");
+    for (const cell of codexCells) {
+      const pinned = profiles.get(cell.model_id);
+      if (!pinned) {
+        throw new Error(`runtime-preflight-failure:codex-model-effort-profile-not-pinned:${cell.model_id}`);
+      }
+      if (!pinned.supported_efforts.includes(cell.effort)) {
+        throw new Error(`runtime-preflight-failure:codex-model-effort-unsupported:${cell.model_id}:${cell.effort}`);
+      }
+    }
+    for (const pinned of modelEffortContract.models) {
+      const observed = codexModelEffortProbe(pinned.model_id, browserEnv);
+      if (!observed?.ready) {
+        throw new Error(`runtime-preflight-failure:codex-model-effort-profile-unavailable:${pinned.model_id}:${observed?.reason ?? "unknown"}`);
+      }
+      const cacheChecks = [
+        ["cache-sha256", observed.cache_sha256, modelEffortContract.cache_sha256],
+        ["cache-fetched-at", observed.cache_fetched_at, modelEffortContract.cache_fetched_at],
+        ["cache-client-version", observed.cache_client_version, modelEffortContract.cache_client_version],
+      ];
+      const cacheDrift = cacheChecks.find(([, actual, expected]) => actual !== expected);
+      if (cacheDrift) {
+        throw new Error(`runtime-preflight-failure:codex-model-effort-${cacheDrift[0]}-drift:${pinned.model_id}`);
+      }
+      if (observed.model_profile_sha256 !== pinned.model_profile_sha256) {
+        throw new Error(`runtime-preflight-failure:codex-model-effort-profile-sha256-drift:${pinned.model_id}`);
+      }
+      if (observed.default_effort !== pinned.default_effort) {
+        throw new Error(`runtime-preflight-failure:codex-model-effort-default-drift:${pinned.model_id}`);
+      }
+      if (!isDeepStrictEqual(observed.supported_efforts, pinned.supported_efforts)) {
+        throw new Error(`runtime-preflight-failure:codex-model-effort-support-drift:${pinned.model_id}`);
+      }
+      checks.push({
+        runtime: "codex",
+        resource: "model-effort-profile",
+        status: "pinned",
+        model_id: pinned.model_id,
+        default_effort: pinned.default_effort,
+        supported_efforts: pinned.supported_efforts,
+        cache_sha256: observed.cache_sha256,
+        model_profile_sha256: observed.model_profile_sha256,
+      });
+    }
+  }
   if (controllerContract && runtimes.includes("codex")) {
     const observed = codexCliProbe();
     if (!observed?.ready || observed.version !== controllerContract.codex_cli_version) {

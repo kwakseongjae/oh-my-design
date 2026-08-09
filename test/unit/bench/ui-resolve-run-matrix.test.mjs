@@ -498,6 +498,85 @@ describe("UI-Resolve prepared matrix execution", () => {
     });
   });
 
+  it("admits a Codex cell only when the live model-effort profile exactly matches its lock", () => {
+    const contract = {
+      cache_sha256: "a".repeat(64),
+      cache_fetched_at: "2026-08-09T04:32:08Z",
+      cache_client_version: "0.146.1",
+      models: [{
+        model_id: "gpt-5.6-terra",
+        model_profile_sha256: "b".repeat(64),
+        default_effort: "medium",
+        supported_efforts: ["low", "medium", "high", "xhigh", "max", "ultra"],
+      }],
+    };
+    const plan = {
+      codex_model_effort_contract: contract,
+      cells: [{ runtime: "codex", model_id: "gpt-5.6-terra", effort: "ultra" }],
+    };
+    const result = preflightRuntimeEnvironment(plan, {
+      codexModelEffortProbe: (modelId) => ({
+        ready: true,
+        model_id: modelId,
+        cache_sha256: "a".repeat(64),
+        cache_fetched_at: "2026-08-09T04:32:08Z",
+        cache_client_version: "0.146.1",
+        model_profile_sha256: "b".repeat(64),
+        default_effort: "medium",
+        supported_efforts: ["low", "medium", "high", "xhigh", "max", "ultra"],
+      }),
+    });
+    expect(result.checks).toContainEqual({
+      runtime: "codex",
+      resource: "model-effort-profile",
+      status: "pinned",
+      model_id: "gpt-5.6-terra",
+      default_effort: "medium",
+      supported_efforts: ["low", "medium", "high", "xhigh", "max", "ultra"],
+      cache_sha256: "a".repeat(64),
+      model_profile_sha256: "b".repeat(64),
+    });
+  });
+
+  it("fails before provider use on Codex cache, profile, or ordered effort drift", () => {
+    const plan = {
+      codex_model_effort_contract: {
+        cache_sha256: "a".repeat(64),
+        cache_fetched_at: "2026-08-09T04:32:08Z",
+        cache_client_version: "0.146.1",
+        models: [{
+          model_id: "gpt-5.6-sol",
+          model_profile_sha256: "b".repeat(64),
+          default_effort: "low",
+          supported_efforts: ["low", "medium", "high"],
+        }],
+      },
+      cells: [{ runtime: "codex", model_id: "gpt-5.6-sol", effort: "high" }],
+    };
+    const observation = {
+      ready: true,
+      model_id: "gpt-5.6-sol",
+      cache_sha256: "a".repeat(64),
+      cache_fetched_at: "2026-08-09T04:32:08Z",
+      cache_client_version: "0.146.1",
+      model_profile_sha256: "b".repeat(64),
+      default_effort: "low",
+      supported_efforts: ["low", "medium", "high"],
+    };
+    expect(() => preflightRuntimeEnvironment(plan, {
+      codexModelEffortProbe: () => ({ ...observation, cache_sha256: "c".repeat(64) }),
+    })).toThrow("codex-model-effort-cache-sha256-drift");
+    expect(() => preflightRuntimeEnvironment(plan, {
+      codexModelEffortProbe: () => ({ ...observation, model_profile_sha256: "c".repeat(64) }),
+    })).toThrow("codex-model-effort-profile-sha256-drift");
+    expect(() => preflightRuntimeEnvironment(plan, {
+      codexModelEffortProbe: () => ({
+        ...observation,
+        supported_efforts: ["medium", "low", "high"],
+      }),
+    })).toThrow("codex-model-effort-support-drift");
+  });
+
   it("accepts an exact, complete harness attribution", () => {
     expect(preregisteredStopReason(cell, manifest, validRun)).toBeNull();
   });

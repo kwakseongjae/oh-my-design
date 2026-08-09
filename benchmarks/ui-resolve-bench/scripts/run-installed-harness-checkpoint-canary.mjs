@@ -4,6 +4,7 @@ import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } fr
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { diffTreeManifests, treeManifest } from './_lib.mjs';
+import { assertProviderRoute } from './runtime-contract.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(here, '../../..');
@@ -99,8 +100,9 @@ function arraysEqual(a, b) {
 }
 
 if (execute) {
-  if (fixture.runtime !== 'codex' || !String(fixture.model).startsWith('gpt-5.6-luna')) {
-    throw new Error('live execution is locked to Codex-native gpt-5.6-luna');
+  assertProviderRoute({ runtime: fixture.runtime, model: fixture.model });
+  if (fixture.runtime !== 'codex' || fixture.model !== 'gpt-5.6-luna') {
+    throw new Error('live execution is locked to exact Codex-native gpt-5.6-luna');
   }
 }
 

@@ -148,6 +148,19 @@ describe("Cursor Agent fake runtime contract", () => {
       .toMatchObject({ mode: "codex-native" });
     expect(assertProviderRoute({ runtime: "codex", model: "gpt-5.6-sol" }))
       .toMatchObject({ mode: "codex-native" });
+    expect(assertProviderRoute({ runtime: "codex", model: "gpt-5.6-terra" }))
+      .toMatchObject({ mode: "codex-native" });
+    for (const model of [
+      "gpt-5.6-luna-preview",
+      "gpt-5.6-terra-xhigh",
+      "gpt-5.6-sol-on-demand",
+      "gpt-5.6-unknown",
+    ]) {
+      expect(() => assertProviderRoute({ runtime: "codex", model }))
+        .toThrow(/default_action=deny: unknown model/);
+    }
+    expect(() => assertProviderRoute({ runtime: "unknown", model: "gpt-5.6-luna" }))
+      .toThrow(/default_action=deny: unknown runtime/);
   });
 
   it("allows fake Cursor calibration without representing real billing", () => {

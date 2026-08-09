@@ -1,5 +1,5 @@
-import { execFileSync } from "node:child_process";
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { execFileSync, spawnSync } from "node:child_process";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -78,6 +78,35 @@ describe("council routed lifecycle lane executor", () => {
       });
       expect(summary.results.flatMap((item) => item.lane_runs)).toHaveLength(4);
       expect(summary.results.flatMap((item) => item.lane_runs).every((lane) => lane.artifact_valid && lane.unauthorized_write_count === 0)).toBe(true);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it("rejects a fabricated Luna suffix before any live lane can spawn", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-council-lane-route-deny-"));
+    try {
+      writeFileSync(join(root, "matrix-state.json"), `${JSON.stringify({
+        schema_version: "0.1",
+        cells: [],
+      }, null, 2)}\n`, "utf8");
+      const result = spawnSync(process.execPath, [
+        executeLanes,
+        "--root", root,
+        "--model", "gpt-5.6-luna-preview",
+        "--effort", "high",
+      ], {
+        cwd: repoRoot,
+        encoding: "utf8",
+        env: {
+          ...process.env,
+          OMD_COUNCIL_LANES_EXECUTE: "1",
+          OMD_BENCH_CODEX_BIN: "/definitely/missing/codex",
+        },
+      });
+      expect(result.status).not.toBe(0);
+      expect(result.stderr).toContain("default_action=deny: unknown model gpt-5.6-luna-preview");
+      expect(existsSync(join(root, "COUNCIL-LIFECYCLE.json"))).toBe(false);
     } finally {
       rmSync(root, { recursive: true, force: true });
     }

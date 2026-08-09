@@ -4,6 +4,7 @@ import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } fr
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { diffTreeManifests, parseArgs, treeManifest } from "./_lib.mjs";
+import { assertProviderRoute } from "./runtime-contract.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(here, "../../..");
@@ -20,8 +21,11 @@ const reconcile = join(repoRoot, "scripts/design-council-reconcile.cjs");
 const handoff = join(repoRoot, "scripts/design-council-handoff.cjs");
 const contextPlanner = join(repoRoot, "scripts/design-harness-context-plan.cjs");
 
-if (execute && (!model.startsWith("gpt-5.6-luna") || effort !== "high")) {
-  throw new Error("live council lanes are locked to Codex-native gpt-5.6-luna/high");
+if (execute) {
+  assertProviderRoute({ runtime: "codex", model });
+  if (model !== "gpt-5.6-luna" || effort !== "high") {
+    throw new Error("live council lanes are locked to exact Codex-native gpt-5.6-luna/high");
+  }
 }
 
 const readJson = (path) => JSON.parse(readFileSync(path, "utf8"));

@@ -12,9 +12,10 @@ import {
   assertObjectiveMethodologyPin,
   currentObjectiveMethodology,
 } from "./objective-methodology-contract.mjs";
+import { CODEX_REASONING_EFFORTS } from "./codex-tool-mode-contract.mjs";
 
 const VALID_RUNTIMES = new Set(["codex", "claude-code", "cursor"]);
-const VALID_EFFORTS = new Set(["low", "medium", "high", "xhigh"]);
+const VALID_EFFORTS = new Set(CODEX_REASONING_EFFORTS);
 const VALID_BENCHMARK_FAMILIES = new Set(["model", "skill", "harness", "prompt-arena", "factorial"]);
 const VALID_COMPARISON_MODES = new Set(["native-capability", "iso-external-budget", "effort-scaling"]);
 const VALID_BUDGET_MODES = new Set(["hard-cap", "observed-only"]);
@@ -22,12 +23,78 @@ const VALID_PACING_POLICIES = new Set(["none", "fixed-inter-cell"]);
 const VALID_ADMISSION_NORMALIZATION_POLICIES = new Set([
   "exact-task-cross-arm",
   "cross-task-reliability",
+  "multi-task-repeated-reliability",
   "paired-cross-task-comparison",
 ]);
 const VALID_ATTRIBUTION_SCOPES = new Set([
   "provider-observed-only",
   "internal-registered-display-name",
 ]);
+const SHA256_PATTERN = /^[a-f0-9]{64}$/;
+
+export function validateCodexModelEffortContract(plan) {
+  const contract = plan?.codex_model_effort_contract;
+  if (contract === undefined) return null;
+  if (plan?.schema_version !== "0.3") {
+    throw new Error("matrix codex_model_effort_contract requires schema 0.3");
+  }
+  if (!contract || typeof contract !== "object" || Array.isArray(contract)) {
+    throw new Error("matrix codex_model_effort_contract must be an object");
+  }
+  if (!SHA256_PATTERN.test(contract.cache_sha256 ?? "")) {
+    throw new Error("matrix codex_model_effort_contract.cache_sha256 is invalid");
+  }
+  for (const field of ["cache_fetched_at", "cache_client_version"]) {
+    if (typeof contract[field] !== "string" || !contract[field]) {
+      throw new Error(`matrix codex_model_effort_contract.${field} is required`);
+    }
+  }
+  if (!Array.isArray(contract.models) || !contract.models.length) {
+    throw new Error("matrix codex_model_effort_contract.models must be a non-empty array");
+  }
+  const profiles = new Map();
+  for (const [index, profile] of contract.models.entries()) {
+    const label = `matrix codex_model_effort_contract.models[${index}]`;
+    if (!profile || typeof profile !== "object" || Array.isArray(profile)) {
+      throw new Error(`${label} must be an object`);
+    }
+    if (typeof profile.model_id !== "string" || !profile.model_id) {
+      throw new Error(`${label}.model_id is required`);
+    }
+    if (profiles.has(profile.model_id)) {
+      throw new Error(`duplicate Codex model effort profile: ${profile.model_id}`);
+    }
+    if (!SHA256_PATTERN.test(profile.model_profile_sha256 ?? "")) {
+      throw new Error(`${label}.model_profile_sha256 is invalid`);
+    }
+    if (!VALID_EFFORTS.has(profile.default_effort)) {
+      throw new Error(`${label}.default_effort is invalid`);
+    }
+    if (
+      !Array.isArray(profile.supported_efforts)
+      || !profile.supported_efforts.length
+      || profile.supported_efforts.some((effort) => !VALID_EFFORTS.has(effort))
+      || new Set(profile.supported_efforts).size !== profile.supported_efforts.length
+    ) {
+      throw new Error(`${label}.supported_efforts is invalid`);
+    }
+    if (!profile.supported_efforts.includes(profile.default_effort)) {
+      throw new Error(`${label}.default_effort must be supported`);
+    }
+    profiles.set(profile.model_id, profile);
+  }
+  for (const cell of plan.cells ?? []) {
+    if (cell.runtime !== "codex") continue;
+    const profile = profiles.get(cell.model_id);
+    if (!profile) {
+      throw new Error(`cell ${cell.id ?? "<unknown>"} Codex model is absent from codex_model_effort_contract`);
+    }
+    if (!profile.supported_efforts.includes(cell.effort)) {
+      throw new Error(`cell ${cell.id ?? "<unknown>"} Codex effort is unsupported by pinned model profile`);
+    }
+  }
+  return contract;
+}
 
 function validateBudgetControl(value, label, limitField) {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
@@ -89,7 +156,11 @@ export function validateControlContract(plan) {
     throw new Error("matrix control_contract.admission_normalization_policy is invalid");
   }
   if (
-    ["cross-task-reliability", "paired-cross-task-comparison"].includes(admissionNormalizationPolicy)
+    [
+      "cross-task-reliability",
+      "multi-task-repeated-reliability",
+      "paired-cross-task-comparison",
+    ].includes(admissionNormalizationPolicy)
     && control.task_order_policy !== "fixed-preregistered"
   ) {
     throw new Error("matrix cross-task normalization requires fixed-preregistered task order");
@@ -166,6 +237,7 @@ export function validateRunMatrixPlan(plan) {
     }
     validateControlContract(plan);
   }
+  validateCodexModelEffortContract(plan);
   if (typeof plan.experiment_id !== "string" || !plan.experiment_id) {
     throw new Error("matrix experiment_id is required");
   }
@@ -446,6 +518,52 @@ export function validateRunMatrixPlan(plan) {
       ]) {
         if (typeof task?.[field] !== "string" || !/^[a-f0-9]{64}$/.test(task[field])) {
           throw new Error(`matrix cross-task reliability task lock ${index + 1}.${field} is invalid`);
+        }
+      }
+    }
+  }
+  if (plan.control_contract?.admission_normalization_policy === "multi-task-repeated-reliability") {
+    const taskOrder = [...new Set(plan.cells.map((cell) => cell.task_id))];
+    if (taskOrder.length < 2) {
+      throw new Error("matrix multi-task repeated reliability requires at least two unique tasks");
+    }
+    const armSignatures = new Set(plan.cells.map((cell) => JSON.stringify({
+      variant_id: cell.variant_id,
+      system_id: cell.system_id,
+      runtime: cell.runtime,
+      model_id: cell.model_id,
+      effort: cell.effort,
+    })));
+    if (armSignatures.size !== 1) {
+      throw new Error("matrix multi-task repeated reliability requires one shared arm");
+    }
+    const trialSets = taskOrder.map((taskId) => plan.cells
+      .filter((cell) => cell.task_id === taskId)
+      .map((cell) => cell.trial_index)
+      .sort((left, right) => left - right));
+    if (
+      trialSets.some((trials) => !trials.length || new Set(trials).size !== trials.length)
+      || new Set(trialSets.map((trials) => JSON.stringify(trials))).size !== 1
+    ) {
+      throw new Error("matrix multi-task repeated reliability requires identical positive trial sets per task");
+    }
+    const lockedTasks = plan.task_lock_contract?.tasks;
+    if (!Array.isArray(lockedTasks) || lockedTasks.length !== taskOrder.length) {
+      throw new Error("matrix multi-task repeated reliability requires one task lock per unique task");
+    }
+    if (JSON.stringify(lockedTasks.map((task) => task?.task_id)) !== JSON.stringify(taskOrder)) {
+      throw new Error("matrix multi-task repeated reliability task locks must match first task occurrence order");
+    }
+    for (const [index, task] of lockedTasks.entries()) {
+      for (const field of [
+        "task_tree_sha256",
+        "prompt_sha256",
+        "starter_sha256",
+        "baseline_evidence_sha256",
+        "source_contract_sha256",
+      ]) {
+        if (typeof task?.[field] !== "string" || !SHA256_PATTERN.test(task[field])) {
+          throw new Error(`matrix multi-task repeated reliability task lock ${index + 1}.${field} is invalid`);
         }
       }
     }

@@ -85,6 +85,7 @@ export function auditPreparedMatrixAdmission(root) {
       model_id: cell.model_id,
       effort: cell.effort,
       timeout_seconds: cell.timeout_seconds,
+      trial_index: cell.trial_index,
       task_prompt_sha256: matrixCell.task_prompt_sha256,
       starter_sha256: matrixCell.starter_sha256,
       product_initial_sha256: manifest.workspace.product_initial_sha256,
@@ -108,6 +109,12 @@ export function auditPreparedMatrixAdmission(root) {
   });
   const taskLocks = new Map((plan.task_lock_contract?.tasks ?? [])
     .map((task) => [task.task_id, task]));
+  const taskOrder = [...new Set(cells.map((cell) => cell.task_id))];
+  const declaredTaskLocks = plan.task_lock_contract?.tasks ?? [];
+  const taskLockExactUniqueOrder = Array.isArray(declaredTaskLocks)
+    && declaredTaskLocks.length === taskOrder.length
+    && new Set(declaredTaskLocks.map((task) => task?.task_id)).size === taskOrder.length
+    && JSON.stringify(declaredTaskLocks.map((task) => task?.task_id)) === JSON.stringify(taskOrder);
   const taskLockAttested = cells.every((cell) => {
     const lock = taskLocks.get(cell.task_id);
     const taskBytesMatch = lock
@@ -145,6 +152,22 @@ export function auditPreparedMatrixAdmission(root) {
   const pairedArmSets = [...pairedGroups.values()].map((group) => group
     .map((cell) => `${cell.variant_id}\0${cell.system_id}`)
     .sort());
+  const repeatedTaskGroups = taskOrder.map((taskId) => cells
+    .filter((cell) => cell.task_id === taskId));
+  const repeatedTrialSets = repeatedTaskGroups.map((group) => group
+    .map((cell) => cell.trial_index)
+    .sort((left, right) => left - right));
+  const identicalRepeatedTrialSets = taskOrder.length >= 2
+    && repeatedTrialSets.every((trials) => (
+      trials.length >= 2 && new Set(trials).size === trials.length
+    ))
+    && allEqual(repeatedTrialSets);
+  const withinTaskRepeatedContracts = repeatedTaskGroups.every((group) => [
+    "task_prompt_sha256",
+    "starter_sha256",
+    "product_initial_sha256",
+    "deterministic_reflow",
+  ].every((field) => allEqual(group.map((cell) => cell[field]))));
   const equality = {
     cell_contract: true,
     task_id: allEqual(cells.map((cell) => cell.task_id)),
@@ -165,12 +188,16 @@ export function auditPreparedMatrixAdmission(root) {
     deterministic_reflow_contract: allEqual(cells
       .map((cell) => deterministicReflowContract(cell.deterministic_reflow))),
     task_lock_attested: taskLockAttested,
+    task_lock_exact_unique_order: taskLockExactUniqueOrder,
     skill_lock_attested: skillLockAttested,
     paired_task_contracts: pairedTaskContracts,
     paired_arm_rotation: pairedArmSets.length > 0
       && allEqual(pairedArmSets)
       && pairedArmSets[0].length >= 2
       && new Set(pairedArmSets[0]).size === pairedArmSets[0].length,
+    repeated_task_count_at_least_two: taskOrder.length >= 2,
+    repeated_trial_sets_identical: identicalRepeatedTrialSets,
+    repeated_within_task_contracts: withinTaskRepeatedContracts,
   };
   const requiredNormalization = normalizationPolicy === "cross-task-reliability"
     ? [
@@ -189,6 +216,26 @@ export function auditPreparedMatrixAdmission(root) {
       "task_lock_attested",
       "skill_lock_attested",
     ]
+    : normalizationPolicy === "multi-task-repeated-reliability"
+      ? [
+        "cell_contract",
+        "variant_id",
+        "system_id",
+        "runtime",
+        "model_id",
+        "effort",
+        "timeout_seconds",
+        "skill_sha256",
+        "source_publishable",
+        "objective_evaluator",
+        "deterministic_reflow_contract",
+        "task_lock_attested",
+        "task_lock_exact_unique_order",
+        "skill_lock_attested",
+        "repeated_task_count_at_least_two",
+        "repeated_trial_sets_identical",
+        "repeated_within_task_contracts",
+      ]
     : normalizationPolicy === "paired-cross-task-comparison"
       ? [
         "cell_contract",
