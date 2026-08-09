@@ -6,10 +6,13 @@ import {
   constants as fsConstants,
   copyFileSync,
   existsSync,
+  fstatSync,
+  fsyncSync,
   mkdirSync,
   mkdtempSync,
   openSync,
   readFileSync,
+  renameSync,
   rmSync,
   unlinkSync,
   writeFileSync,
@@ -71,6 +74,28 @@ const COMPLETE_BLOCK_ROUTING_CHECK_KEYS = Object.freeze([
   "provider_route_accepted",
   "pinned_profile_supports_effort",
 ]);
+
+function writeJsonAtomically(path, value) {
+  const directory = dirname(path);
+  mkdirSync(directory, { recursive: true });
+  const temporaryPath = join(
+    directory,
+    `.${basename(path)}.${process.pid}.${randomUUID()}.tmp`,
+  );
+  let descriptor = null;
+  try {
+    descriptor = openSync(temporaryPath, "wx", 0o600);
+    writeFileSync(descriptor, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+    fsyncSync(descriptor);
+    closeSync(descriptor);
+    descriptor = null;
+    renameSync(temporaryPath, path);
+  } catch (error) {
+    if (descriptor !== null) closeSync(descriptor);
+    rmSync(temporaryPath, { force: true });
+    throw error;
+  }
+}
 
 export function assertPreparedObjectiveMethodology(matrixRoot) {
   const root = resolve(matrixRoot);
@@ -544,6 +569,7 @@ function runNode(script, args, cwd) {
 
 export function runCompleteBlockPreparedAdmissionAudit(matrixRoot, plan, {
   runNodeFn = runNode,
+  invocationLease = null,
 } = {}) {
   if (plan?.control_contract?.admission_normalization_policy !== "complete-block-effort-scaling") {
     return null;
@@ -551,7 +577,17 @@ export function runCompleteBlockPreparedAdmissionAudit(matrixRoot, plan, {
   const auditScript = resolve(fileURLToPath(
     new URL("./audit-prepared-matrix-admission.mjs", import.meta.url),
   ));
-  const audited = runNodeFn(auditScript, ["--root", resolve(matrixRoot)], REPO_ROOT);
+  const auditArgs = ["--root", resolve(matrixRoot)];
+  if (invocationLease) {
+    auditArgs.push(
+      "--authorized-controller-lease-token", invocationLease.token,
+      "--authorized-controller-lease-sha256", invocationLease.sha256,
+      "--authorized-controller-lease-pid", String(invocationLease.pid),
+      "--authorized-controller-lease-dev", String(invocationLease.dev),
+      "--authorized-controller-lease-ino", String(invocationLease.ino),
+    );
+  }
+  const audited = runNodeFn(auditScript, auditArgs, REPO_ROOT);
   if (audited.status !== 0) {
     throw new Error(
       `prepared-matrix-admission-audit-failure:${audited.stderr?.trim() || `exit-${audited.status}`}`,
@@ -564,8 +600,14 @@ export function runCompleteBlockPreparedAdmissionAudit(matrixRoot, plan, {
     throw new Error("prepared-matrix-admission-audit-invalid-output");
   }
   if (
-    report?.status !== "PREPARED_PROVIDER_ZERO"
-    || report?.execution_admission?.allowed !== true
+    report?.status !== "PREPARATION_ONLY_PROVIDER_ZERO_RUNTIME_ADMISSION_REQUIRED"
+    || report?.execution_admission?.allowed !== false
+    || report?.execution_admission?.preparation_only !== true
+    || report?.execution_admission?.runtime_admission_required !== true
+    || report?.execution_admission?.reason !== "immutable-codex-runtime-admission-required"
+    || report?.execution_admission?.execution_artifacts_absent !== true
+    || Boolean(report?.execution_admission?.authorized_controller_lease)
+      !== Boolean(invocationLease)
     || report?.normalization_policy !== "complete-block-effort-scaling"
     || report?.scheduled_cells !== plan.cells.length
     || report?.prepared_cells !== plan.cells.length
@@ -573,12 +615,100 @@ export function runCompleteBlockPreparedAdmissionAudit(matrixRoot, plan, {
   return {
     schema_version: "0.1",
     status: "passed",
+    admission_stage: "preparation-only",
+    execution_allowed: false,
+    runtime_admission_required: true,
+    authorized_controller_lease: report.execution_admission.authorized_controller_lease ?? null,
     locked_plan_sha256: report.locked_plan_sha256,
     preparation_state_sha256: report.preparation_state_sha256,
     task_set_sha256: report.task_set_sha256,
     schedule_sha256: report.schedule_sha256,
     normalization_policy: report.normalization_policy,
     report_sha256: sha256(JSON.stringify(report)),
+  };
+}
+
+function validCompleteBlockPreparedAdmissionReceipt(receipt, {
+  lockedPlanSha256,
+  preparationStateSha256,
+  taskSetSha256,
+  scheduleSha256,
+}) {
+  return Boolean(
+    receipt
+    && isDeepStrictEqual(Object.keys(receipt).sort(), [
+      "admission_stage",
+      "authorized_controller_lease",
+      "execution_allowed",
+      "locked_plan_sha256",
+      "normalization_policy",
+      "preparation_state_sha256",
+      "report_sha256",
+      "runtime_admission_required",
+      "schedule_sha256",
+      "schema_version",
+      "status",
+      "task_set_sha256",
+    ])
+    && receipt.schema_version === "0.1"
+    && receipt.status === "passed"
+    && receipt.admission_stage === "preparation-only"
+    && receipt.execution_allowed === false
+    && receipt.runtime_admission_required === true
+    && (
+      receipt.authorized_controller_lease === null
+      || (
+        isDeepStrictEqual(Object.keys(receipt.authorized_controller_lease).sort(), [
+          "dev", "ino", "pid", "schema_version", "sha256", "token_sha256",
+        ])
+        && receipt.authorized_controller_lease.schema_version === "0.1"
+        && Number.isSafeInteger(receipt.authorized_controller_lease.pid)
+        && /^[a-f0-9]{64}$/u.test(receipt.authorized_controller_lease.sha256)
+        && /^[a-f0-9]{64}$/u.test(receipt.authorized_controller_lease.token_sha256)
+        && /^\d+$/u.test(receipt.authorized_controller_lease.dev)
+        && /^\d+$/u.test(receipt.authorized_controller_lease.ino)
+      )
+    )
+    && receipt.normalization_policy === "complete-block-effort-scaling"
+    && receipt.locked_plan_sha256 === lockedPlanSha256
+    && receipt.preparation_state_sha256 === preparationStateSha256
+    && receipt.task_set_sha256 === taskSetSha256
+    && receipt.schedule_sha256 === scheduleSha256
+    && /^[a-f0-9]{64}$/u.test(receipt.report_sha256)
+  );
+}
+
+export function sealCompleteBlockRuntimeAdmission(plan, preparedAdmission, runtimePreflight, {
+  lockedPlanSha256,
+  preparationStateSha256,
+  taskSetSha256,
+  scheduleSha256,
+}) {
+  if (plan?.control_contract?.admission_normalization_policy !== "complete-block-effort-scaling") {
+    return null;
+  }
+  if (!validCompleteBlockPreparedAdmissionReceipt(preparedAdmission, {
+    lockedPlanSha256,
+    preparationStateSha256,
+    taskSetSha256,
+    scheduleSha256,
+  })) throw new Error("complete-block prepared admission receipt drifted");
+  if (runtimePreflight?.status !== "complete") {
+    throw new Error("complete-block runtime admission preflight did not pass");
+  }
+  return {
+    schema_version: "0.1",
+    status: "passed",
+    admission_stage: "runtime-preflight",
+    execution_allowed: true,
+    sealed_after_runtime_preflight: true,
+    locked_plan_sha256: lockedPlanSha256,
+    preparation_state_sha256: preparationStateSha256,
+    task_set_sha256: taskSetSha256,
+    schedule_sha256: scheduleSha256,
+    prepared_admission_report_sha256: preparedAdmission.report_sha256,
+    runtime_preflight_sha256: sha256(JSON.stringify(runtimePreflight)),
+    runtime_preflight: runtimePreflight,
   };
 }
 
@@ -803,7 +933,18 @@ function acquireInvocationLease(matrixRoot) {
     }
     throw error;
   }
-  return { path, descriptor, serialized: `${JSON.stringify(value)}\n` };
+  const serialized = `${JSON.stringify(value)}\n`;
+  const identity = fstatSync(descriptor);
+  return {
+    path,
+    descriptor,
+    serialized,
+    token,
+    pid: process.pid,
+    sha256: sha256(serialized),
+    dev: String(identity.dev),
+    ino: String(identity.ino),
+  };
 }
 
 function releaseInvocationLease(lease) {
@@ -1444,6 +1585,35 @@ function assertCheckpointedResume(state, plan, matrixRoot, planSha, preparationS
   return state.completed_cells;
 }
 
+function assertAdmittedResume(state, plan, matrixRoot, planSha, preparationSha) {
+  if (
+    state?.status !== "admitted"
+    || state.experiment_id !== plan.experiment_id
+    || state.scheduled_cells !== plan.cells.length
+    || state.locked_plan_sha256 !== planSha
+    || state.preparation_state_sha256 !== preparationSha
+    || state.execution_contract?.mode !== "checkpoint-bounded"
+    || state.execution_contract?.max_new_cells !== 1
+    || state.completed_cells !== 0
+    || state.current_cell !== null
+    || !Array.isArray(state.cells)
+    || state.cells.length !== 0
+    || !Array.isArray(state.invocation_history)
+    || state.invocation_history.length !== 0
+    || !Array.isArray(state.checkpoint_history)
+    || state.checkpoint_history.length !== 0
+    || !Array.isArray(state.evaluator_preflight_history)
+    || state.evaluator_preflight_history.length !== 0
+    || !Array.isArray(state.pacing_history)
+    || state.pacing_history.length !== 0
+    || state.pacing !== null
+  ) throw new Error("complete-block admitted checkpoint drifted");
+  for (const cell of plan.cells) {
+    assertUntouchedCell(join(matrixRoot, cell.id));
+  }
+  return 0;
+}
+
 function stopBeforeProvider(
   state,
   plan,
@@ -1501,7 +1671,8 @@ function executePreparedMatrixWithLease(root, {
   monotonicNowFn = () => performance.now(),
   maxNewCells,
   runtimePreflightOptions,
-} = {}) {
+  beforeControllerPreEditPlans,
+} = {}, initialCompleteBlockAdmission = null) {
   const matrixRoot = resolve(root);
   const lockedPlanPath = join(matrixRoot, "RUN-MATRIX.locked.json");
   const preparationStatePath = join(matrixRoot, "matrix-state.json");
@@ -1525,17 +1696,22 @@ function executePreparedMatrixWithLease(root, {
   validateCompleteBlockExecutionContract(plan, preparation, { lockedPlanSha256, maxNewCells });
   const existing = existsSync(executionStatePath) ? readJson(executionStatePath) : null;
   const completeBlockAdmission = existing?.complete_block_prepared_admission
-    ?? runCompleteBlockPreparedAdmissionAudit(matrixRoot, plan);
+    ?? initialCompleteBlockAdmission;
   if (
     plan?.control_contract?.admission_normalization_policy === "complete-block-effort-scaling"
-    && (
-      completeBlockAdmission?.status !== "passed"
-      || completeBlockAdmission.locked_plan_sha256 !== lockedPlanSha256
-      || completeBlockAdmission.preparation_state_sha256 !== preparationStateSha256
-      || completeBlockAdmission.task_set_sha256 !== preparation.task_set_sha256
-      || completeBlockAdmission.schedule_sha256 !== preparation.schedule_sha256
-    )
+    && !validCompleteBlockPreparedAdmissionReceipt(completeBlockAdmission, {
+      lockedPlanSha256,
+      preparationStateSha256,
+      taskSetSha256: preparation.task_set_sha256,
+      scheduleSha256: preparation.schedule_sha256,
+    })
   ) throw new Error("complete-block prepared admission receipt drifted");
+  if (
+    existing
+    && plan?.control_contract?.admission_normalization_policy === "complete-block-effort-scaling"
+    && existing.complete_block_runtime_admission === undefined
+  ) throw new Error("complete-block runtime admission receipt missing");
+  const admittedResume = existing?.status === "admitted";
   const freshPreparedCellAttestations = {};
   const existingCheckpointBounded = existing?.execution_contract?.mode === "checkpoint-bounded";
   if (existingCheckpointBounded && !bounded) {
@@ -1553,27 +1729,37 @@ function executePreparedMatrixWithLease(root, {
     throw new Error("cannot change an existing matrix to checkpoint-bounded execution");
   }
   if (bounded && existing) {
-    assertCheckpointedResume(
-      existing,
-      plan,
-      matrixRoot,
-      lockedPlanSha256,
-      preparationStateSha256,
-    );
-    const priorReliabilityStop = existing.cells
-      .map((entry) => reliabilityHardStopReason(plan, entry))
-      .find(Boolean);
-    if (priorReliabilityStop) {
-      stopBeforeProvider(
+    if (admittedResume) {
+      assertAdmittedResume(
         existing,
         plan,
-        existing.completed_cells,
         matrixRoot,
-        priorReliabilityStop,
-        executionStatePath,
-        null,
-        nowFn(),
+        lockedPlanSha256,
+        preparationStateSha256,
       );
+    } else {
+      assertCheckpointedResume(
+        existing,
+        plan,
+        matrixRoot,
+        lockedPlanSha256,
+        preparationStateSha256,
+      );
+      const priorReliabilityStop = existing.cells
+        .map((entry) => reliabilityHardStopReason(plan, entry))
+        .find(Boolean);
+      if (priorReliabilityStop) {
+        stopBeforeProvider(
+          existing,
+          plan,
+          existing.completed_cells,
+          matrixRoot,
+          priorReliabilityStop,
+          executionStatePath,
+          null,
+          nowFn(),
+        );
+      }
     }
   } else if (existing?.status === "stopped-preregistered") {
     throw new Error(`matrix is frozen after preregistered stop: ${existing.stop_reason}`);
@@ -1584,11 +1770,62 @@ function executePreparedMatrixWithLease(root, {
       ?? join(matrixRoot, plan.cells[existing?.completed_cells ?? 0]?.id ?? ""),
   });
   console.log(JSON.stringify({ event: "runtime-preflight-complete", ...runtimePreflight }));
+  const completeBlockRuntimeAdmission = sealCompleteBlockRuntimeAdmission(
+    plan,
+    completeBlockAdmission,
+    runtimePreflight,
+    {
+      lockedPlanSha256,
+      preparationStateSha256,
+      taskSetSha256: preparation.task_set_sha256,
+      scheduleSha256: preparation.schedule_sha256,
+    },
+  );
+  if (
+    existing?.complete_block_runtime_admission
+    && !isDeepStrictEqual(
+      existing.complete_block_runtime_admission,
+      completeBlockRuntimeAdmission,
+    )
+  ) throw new Error("complete-block runtime admission receipt drifted");
+  const state = existing ?? {
+    schema_version: plan.schema_version ?? "0.1",
+    experiment_id: plan.experiment_id,
+    suite_version: plan.suite_version ?? null,
+    product_version: plan.product_version ?? null,
+    execution_purpose: plan.execution_purpose ?? null,
+    status: completeBlockRuntimeAdmission ? "admitted" : "running",
+    scheduled_cells: plan.cells.length,
+    completed_cells: 0,
+    current_cell: null,
+    cells: [],
+  };
+  if (completeBlockAdmission) state.complete_block_prepared_admission = completeBlockAdmission;
+  if (completeBlockRuntimeAdmission) {
+    state.complete_block_runtime_admission = completeBlockRuntimeAdmission;
+  }
+  if (bounded && !existing) {
+    state.execution_contract = {
+      mode: "checkpoint-bounded",
+      max_new_cells: maxNewCells,
+    };
+    state.locked_plan_sha256 = lockedPlanSha256;
+    state.preparation_state_sha256 = preparationStateSha256;
+    state.invocation_history = [];
+    state.checkpoint_history = [];
+    state.evaluator_preflight_history = [];
+    state.pacing_history = [];
+    state.pacing = null;
+  }
+  if (completeBlockRuntimeAdmission && !existing) {
+    writeJsonAtomically(executionStatePath, state);
+  }
+  beforeControllerPreEditPlans?.({ matrixRoot, state });
   const controllerPlanContract = controllerPreEditPlanContract(plan);
   let controllerPreEditPlans = null;
   if (controllerPlanContract) {
     controllerPreEditPlans = {};
-    if (existing) {
+    if (existing && !admittedResume) {
       for (const cell of plan.cells) {
         controllerPreEditPlans[cell.id] = completedControllerPreEditPlanReceipt(existing, cell.id)
           ?? controllerPreEditPlanReceipt(
@@ -1619,42 +1856,26 @@ function executePreparedMatrixWithLease(root, {
           readJson(join(workspace, ".benchmark", "manifest.json")),
         );
       }
+      if (
+        existing?.controller_pre_edit_plans
+        && !isDeepStrictEqual(existing.controller_pre_edit_plans, controllerPreEditPlans)
+      ) throw new Error("controller-pre-edit-plan-admitted-checkpoint-drift");
     }
   }
-  if (bounded && !existing) {
+  if (bounded && (!existing || admittedResume)) {
     for (const cell of plan.cells) {
       const workspace = join(matrixRoot, cell.id);
       assertUntouchedCell(workspace);
       freshPreparedCellAttestations[cell.id] = preparedCellAttestation(workspace);
     }
   }
-  const state = existing ?? {
-    schema_version: plan.schema_version ?? "0.1",
-    experiment_id: plan.experiment_id,
-    suite_version: plan.suite_version ?? null,
-    product_version: plan.product_version ?? null,
-    execution_purpose: plan.execution_purpose ?? null,
-    status: "running",
-    scheduled_cells: plan.cells.length,
-    completed_cells: 0,
-    current_cell: null,
-    cells: [],
-  };
   if (controllerPreEditPlans) state.controller_pre_edit_plans = controllerPreEditPlans;
-  if (completeBlockAdmission) state.complete_block_prepared_admission = completeBlockAdmission;
-  if (bounded && !existing) {
-    state.execution_contract = {
-      mode: "checkpoint-bounded",
-      max_new_cells: maxNewCells,
-    };
-    state.locked_plan_sha256 = lockedPlanSha256;
-    state.preparation_state_sha256 = preparationStateSha256;
-    state.invocation_history = [];
-    state.checkpoint_history = [];
-    state.evaluator_preflight_history = [];
-    state.pacing_history = [];
-    state.pacing = null;
+  if (bounded && (!existing || admittedResume)) {
     state.prepared_cell_attestations = freshPreparedCellAttestations;
+  }
+  if (completeBlockRuntimeAdmission && (!existing || admittedResume)) {
+    state.status = "admitted";
+    writeJsonAtomically(executionStatePath, state);
   }
   const startingCompletedCells = bounded ? state.completed_cells : 0;
   const invocationStartedAt = bounded ? nowFn() : null;
@@ -2230,7 +2451,16 @@ export function executePreparedMatrix(root, options = {}) {
   assertPreparedObjectiveMethodology(matrixRoot);
   const lease = acquireInvocationLease(matrixRoot);
   try {
-    return executePreparedMatrixWithLease(matrixRoot, options);
+    const lockedPlanPath = join(matrixRoot, "RUN-MATRIX.locked.json");
+    const executionStatePath = join(matrixRoot, "execution-state.json");
+    const plan = readJson(lockedPlanPath);
+    const initialCompleteBlockAdmission = existsSync(executionStatePath)
+      ? null
+      : runCompleteBlockPreparedAdmissionAudit(matrixRoot, plan, {
+          runNodeFn: options.preparedAdmissionAuditRunNodeFn ?? runNode,
+          invocationLease: lease,
+        });
+    return executePreparedMatrixWithLease(matrixRoot, options, initialCompleteBlockAdmission);
   } finally {
     releaseInvocationLease(lease);
   }

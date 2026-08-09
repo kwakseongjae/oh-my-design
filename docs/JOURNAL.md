@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.822 pre-provider failure + admission fix
+- 첫 runner는 lease/audit 자기충돌로 provider 전에 중단됐고 호출은 전부0이다.
+- owned-lease audit→runtime seal→atomic admitted state 순서를 구현했다.
+- full test906/906(3 skip)·lint·build green; 1.9.822는 동결한다.
+- 다음은 fresh 1.9.823 plan/root로 exact 51셀을 1셀씩 연속 실행한다.
+
 ## 2026-08-09 (Codex) · 1.9.822 all-effort prereg
 - Luna5·Terra6·Sol6 × fresh3 = 51셀 exact plan/receipt를 생성했다.
 - local CDP `omd1822`, immutable auth/cache, pinned CLI·vendor를 잠갔다.

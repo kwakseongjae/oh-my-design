@@ -1,5 +1,14 @@
 import { execFileSync } from "node:child_process";
-import { cpSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import {
+  cpSync,
+  existsSync,
+  lstatSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  unlinkSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -8,6 +17,7 @@ import {
   prepareRunMatrix,
 } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-run-matrix.mjs";
 import { auditPreparedMatrixAdmission } from "../../../benchmarks/ui-resolve-bench/scripts/audit-prepared-matrix-admission.mjs";
+import { executePreparedMatrix } from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
 import {
   COMPLETE_BLOCK_BASE_PAIR_ORDER,
   COMPLETE_BLOCK_SCHEDULE_WAVES,
@@ -494,6 +504,85 @@ function prepareCompleteBlockEffortFixture(root) {
 }
 
 describe("prepared matrix admission audit", () => {
+  it("persists runtime admission before controller planning and rejects receipt drift on resume", () => {
+    const root = join(mkdtempSync(join(tmpdir(), "omd-runtime-admission-state-")), "matrix");
+    const locked = prepareCompleteBlockEffortFixture(root);
+    const profileById = new Map(
+      locked.codex_model_effort_contract.models.map((profile) => [profile.model_id, profile]),
+    );
+    const runtimePreflightOptions = {
+      codexModelEffortProbe(modelId) {
+        const profile = profileById.get(modelId);
+        return {
+          ready: true,
+          cache_sha256: locked.codex_model_effort_contract.cache_sha256,
+          cache_fetched_at: locked.codex_model_effort_contract.cache_fetched_at,
+          cache_client_version: locked.codex_model_effort_contract.cache_client_version,
+          model_profile_sha256: profile.model_profile_sha256,
+          default_effort: profile.default_effort,
+          supported_efforts: profile.supported_efforts,
+        };
+      },
+    };
+    let stateAtControllerBoundary = null;
+    expect(() => executePreparedMatrix(root, {
+      maxNewCells: 1,
+      runtimePreflightOptions,
+      beforeControllerPreEditPlans() {
+        stateAtControllerBoundary = JSON.parse(
+          readFileSync(join(root, "execution-state.json"), "utf8"),
+        );
+        throw new Error("controller-plan-boundary-sentinel");
+      },
+    })).toThrow("controller-plan-boundary-sentinel");
+    expect(stateAtControllerBoundary).toMatchObject({
+      status: "admitted",
+      completed_cells: 0,
+      current_cell: null,
+      complete_block_prepared_admission: {
+        status: "passed",
+        admission_stage: "preparation-only",
+        authorized_controller_lease: {
+          schema_version: "0.1",
+          sha256: expect.stringMatching(/^[a-f0-9]{64}$/u),
+        },
+      },
+      complete_block_runtime_admission: {
+        status: "passed",
+        admission_stage: "runtime-preflight",
+        execution_allowed: true,
+        sealed_after_runtime_preflight: true,
+      },
+    });
+    expect(() => readFileSync(join(root, ".matrix-execution.lock"), "utf8")).toThrow();
+    expect(locked.cells.every((cell) => (
+      !existsSync(join(root, cell.id, ".benchmark/run-result.json"))
+    ))).toBe(true);
+
+    const statePath = join(root, "execution-state.json");
+    let admittedResumeReachedControllerBoundary = false;
+    expect(() => executePreparedMatrix(root, {
+      maxNewCells: 1,
+      runtimePreflightOptions,
+      beforeControllerPreEditPlans() {
+        admittedResumeReachedControllerBoundary = true;
+        throw new Error("admitted-resume-controller-boundary-sentinel");
+      },
+    })).toThrow("admitted-resume-controller-boundary-sentinel");
+    expect(admittedResumeReachedControllerBoundary).toBe(true);
+
+    const drifted = JSON.parse(readFileSync(statePath, "utf8"));
+    drifted.complete_block_runtime_admission.runtime_preflight_sha256 = "0".repeat(64);
+    writeFileSync(statePath, JSON.stringify(drifted), "utf8");
+    expect(() => executePreparedMatrix(root, {
+      maxNewCells: 1,
+      runtimePreflightOptions,
+      beforeControllerPreEditPlans() {
+        throw new Error("must-not-reach-controller-planning");
+      },
+    })).toThrow("complete-block runtime admission receipt drifted");
+  });
+
   it("binds admission to the exact locked-plan bytes captured during preparation", () => {
     const root = join(mkdtempSync(join(tmpdir(), "omd-prepared-plan-sha-")), "matrix");
     prepareRunMatrix(plan(root));
@@ -1072,6 +1161,51 @@ describe("prepared matrix admission audit", () => {
         reason: "immutable-codex-runtime-admission-required",
       },
     });
+
+    const leasePath = join(root, ".matrix-execution.lock");
+    const lease = {
+      token: "owned-controller-lease",
+      pid: 4242,
+      acquired_at: "2026-08-09T00:00:00.000Z",
+    };
+    const leaseBytes = `${JSON.stringify(lease)}\n`;
+    writeFileSync(leasePath, leaseBytes, "utf8");
+    const leaseInfo = lstatSync(leasePath);
+    expect(() => auditPreparedMatrixAdmission(root)).toThrow(
+      "prepared-matrix-admission:execution-artifact-present",
+    );
+    const leaseAuthorization = {
+      token: lease.token,
+      sha256: sha256(leaseBytes),
+      pid: String(lease.pid),
+      dev: String(leaseInfo.dev),
+      ino: String(leaseInfo.ino),
+    };
+    expect(auditPreparedMatrixAdmission(root, {
+      authorizedControllerLease: leaseAuthorization,
+    })).toMatchObject({
+      status: "PREPARATION_ONLY_PROVIDER_ZERO_RUNTIME_ADMISSION_REQUIRED",
+      execution_admission: {
+        execution_artifacts_absent: true,
+        authorized_controller_lease: {
+          sha256: leaseAuthorization.sha256,
+          token_sha256: sha256(lease.token),
+          pid: lease.pid,
+          dev: leaseAuthorization.dev,
+          ino: leaseAuthorization.ino,
+        },
+      },
+    });
+    for (const drift of [
+      { ...leaseAuthorization, token: "wrong" },
+      { ...leaseAuthorization, sha256: "0".repeat(64) },
+      { ...leaseAuthorization, ino: String(Number(leaseAuthorization.ino) + 1) },
+    ]) {
+      expect(() => auditPreparedMatrixAdmission(root, {
+        authorizedControllerLease: drift,
+      })).toThrow("prepared-matrix-admission:execution-artifact-present");
+    }
+    unlinkSync(leasePath);
 
     const lockedPath = join(root, "RUN-MATRIX.locked.json");
     const restore = mutateJson(lockedPath, (locked) => {

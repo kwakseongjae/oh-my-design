@@ -29,6 +29,7 @@ import {
   replacementVerifierAuthorship,
   runCompleteBlockPreparedAdmissionAudit,
   runArgsForCell,
+  sealCompleteBlockRuntimeAdmission,
   validPreparedCellAttestation,
   validateCompleteBlockExecutionContract,
   validateRunPreparedMatrixCliArgs,
@@ -428,8 +429,14 @@ describe("UI-Resolve prepared matrix execution", () => {
     };
     let invocation = null;
     const report = {
-      status: "PREPARED_PROVIDER_ZERO",
-      execution_admission: { allowed: true },
+      status: "PREPARATION_ONLY_PROVIDER_ZERO_RUNTIME_ADMISSION_REQUIRED",
+      execution_admission: {
+        allowed: false,
+        preparation_only: true,
+        runtime_admission_required: true,
+        reason: "immutable-codex-runtime-admission-required",
+        execution_artifacts_absent: true,
+      },
       normalization_policy: "complete-block-effort-scaling",
       scheduled_cells: 2,
       prepared_cells: 2,
@@ -447,6 +454,9 @@ describe("UI-Resolve prepared matrix execution", () => {
     expect(invocation.args).toEqual(["--root", root]);
     expect(receipt).toMatchObject({
       status: "passed",
+      admission_stage: "preparation-only",
+      execution_allowed: false,
+      runtime_admission_required: true,
       locked_plan_sha256: report.locked_plan_sha256,
       preparation_state_sha256: report.preparation_state_sha256,
       normalization_policy: "complete-block-effort-scaling",
@@ -459,6 +469,121 @@ describe("UI-Resolve prepared matrix execution", () => {
         stderr: "",
       }),
     })).toThrow("prepared-matrix-admission-audit-rejected");
+  });
+
+  it("binds the provider-zero audit to the exact controller-owned execution lease", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-owned-lease-admission-"));
+    const plan = {
+      cells: [{ id: "a" }, { id: "b" }],
+      control_contract: { admission_normalization_policy: "complete-block-effort-scaling" },
+    };
+    const invocationLease = {
+      token: "controller-token",
+      sha256: "f".repeat(64),
+      pid: 4242,
+      dev: "11",
+      ino: "22",
+    };
+    const authorizedControllerLease = {
+      schema_version: "0.1",
+      sha256: invocationLease.sha256,
+      token_sha256: digest(invocationLease.token),
+      pid: invocationLease.pid,
+      dev: invocationLease.dev,
+      ino: invocationLease.ino,
+    };
+    let invocation = null;
+    const report = {
+      status: "PREPARATION_ONLY_PROVIDER_ZERO_RUNTIME_ADMISSION_REQUIRED",
+      execution_admission: {
+        allowed: false,
+        preparation_only: true,
+        runtime_admission_required: true,
+        reason: "immutable-codex-runtime-admission-required",
+        execution_artifacts_absent: true,
+        authorized_controller_lease: authorizedControllerLease,
+      },
+      normalization_policy: "complete-block-effort-scaling",
+      scheduled_cells: 2,
+      prepared_cells: 2,
+      locked_plan_sha256: "a".repeat(64),
+      preparation_state_sha256: "b".repeat(64),
+      task_set_sha256: "c".repeat(64),
+      schedule_sha256: "d".repeat(64),
+    };
+    const receipt = runCompleteBlockPreparedAdmissionAudit(root, plan, {
+      invocationLease,
+      runNodeFn: (_script, args) => {
+        invocation = args;
+        return { status: 0, stdout: JSON.stringify(report), stderr: "" };
+      },
+    });
+    expect(invocation).toEqual([
+      "--root", root,
+      "--authorized-controller-lease-token", invocationLease.token,
+      "--authorized-controller-lease-sha256", invocationLease.sha256,
+      "--authorized-controller-lease-pid", String(invocationLease.pid),
+      "--authorized-controller-lease-dev", invocationLease.dev,
+      "--authorized-controller-lease-ino", invocationLease.ino,
+    ]);
+    expect(receipt).toMatchObject({
+      admission_stage: "preparation-only",
+      execution_allowed: false,
+      runtime_admission_required: true,
+      authorized_controller_lease: authorizedControllerLease,
+    });
+  });
+
+  it("seals runtime admission only from a passed preflight bound to the prepared receipt", () => {
+    const plan = {
+      control_contract: { admission_normalization_policy: "complete-block-effort-scaling" },
+    };
+    const authority = {
+      lockedPlanSha256: "a".repeat(64),
+      preparationStateSha256: "b".repeat(64),
+      taskSetSha256: "c".repeat(64),
+      scheduleSha256: "d".repeat(64),
+    };
+    const prepared = {
+      schema_version: "0.1",
+      status: "passed",
+      admission_stage: "preparation-only",
+      execution_allowed: false,
+      runtime_admission_required: true,
+      authorized_controller_lease: null,
+      locked_plan_sha256: authority.lockedPlanSha256,
+      preparation_state_sha256: authority.preparationStateSha256,
+      task_set_sha256: authority.taskSetSha256,
+      schedule_sha256: authority.scheduleSha256,
+      normalization_policy: "complete-block-effort-scaling",
+      report_sha256: "e".repeat(64),
+    };
+    const runtimePreflight = {
+      status: "complete",
+      runtimes: ["codex"],
+      checks: [{ runtime: "codex", resource: "cli-runtime", status: "ready" }],
+    };
+    const receipt = sealCompleteBlockRuntimeAdmission(
+      plan,
+      prepared,
+      runtimePreflight,
+      authority,
+    );
+    expect(receipt).toMatchObject({
+      status: "passed",
+      admission_stage: "runtime-preflight",
+      execution_allowed: true,
+      sealed_after_runtime_preflight: true,
+      prepared_admission_report_sha256: prepared.report_sha256,
+      runtime_preflight: runtimePreflight,
+    });
+    expect(receipt.runtime_preflight_sha256).toMatch(/^[a-f0-9]{64}$/u);
+    expect(() => sealCompleteBlockRuntimeAdmission(
+      plan,
+      prepared,
+      { ...runtimePreflight, status: "failed" },
+      authority,
+    )).toThrow("complete-block runtime admission preflight did not pass");
   });
 
   it("never overwrites a compatibility artifact that predates controller promotion", () => {

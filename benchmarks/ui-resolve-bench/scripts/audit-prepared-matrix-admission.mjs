@@ -1,5 +1,12 @@
 #!/usr/bin/env node
-import { existsSync, lstatSync, readFileSync } from "node:fs";
+import {
+  closeSync,
+  existsSync,
+  fstatSync,
+  lstatSync,
+  openSync,
+  readFileSync,
+} from "node:fs";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { benchRoot, parseArgs, readJson, sha256, treeManifest, writeJson } from "./_lib.mjs";
@@ -14,7 +21,66 @@ function allEqual(values) {
   return values.length > 0 && new Set(values.map((value) => JSON.stringify(value))).size === 1;
 }
 
-export function auditPreparedMatrixAdmission(root) {
+function authorizedControllerLeaseObservation(matrixRoot, authorization) {
+  const path = join(matrixRoot, ".matrix-execution.lock");
+  if (!existsSync(path)) return { present: false, authorized: false, receipt: null };
+  const before = lstatSync(path);
+  if (!before.isFile() || before.isSymbolicLink()) {
+    return { present: true, authorized: false, receipt: null };
+  }
+  let descriptor = null;
+  let info;
+  let bytes;
+  let after;
+  try {
+    descriptor = openSync(path, "r");
+    info = fstatSync(descriptor);
+    bytes = readFileSync(descriptor);
+    after = lstatSync(path);
+  } catch {
+    return { present: true, authorized: false, receipt: null };
+  } finally {
+    if (descriptor !== null) closeSync(descriptor);
+  }
+  let value = null;
+  try {
+    value = JSON.parse(bytes.toString("utf8"));
+  } catch {
+    // Invalid lease bytes remain an unauthorized execution artifact.
+  }
+  const digest = sha256(bytes);
+  const authorized = Boolean(
+    authorization
+    && info.isFile()
+    && String(before.dev) === String(info.dev)
+    && String(before.ino) === String(info.ino)
+    && after.isFile()
+    && !after.isSymbolicLink()
+    && String(after.dev) === String(info.dev)
+    && String(after.ino) === String(info.ino)
+    && digest === authorization.sha256
+    && String(info.dev) === authorization.dev
+    && String(info.ino) === authorization.ino
+    && value?.token === authorization.token
+    && String(value?.pid) === authorization.pid
+  );
+  return {
+    present: true,
+    authorized,
+    receipt: authorized ? {
+      schema_version: "0.1",
+      sha256: digest,
+      token_sha256: sha256(String(value.token)),
+      pid: Number(value.pid),
+      dev: String(info.dev),
+      ino: String(info.ino),
+    } : null,
+  };
+}
+
+export function auditPreparedMatrixAdmission(root, {
+  authorizedControllerLease = null,
+} = {}) {
   const matrixRoot = resolve(root);
   const planPath = join(matrixRoot, "RUN-MATRIX.locked.json");
   const statePath = join(matrixRoot, "matrix-state.json");
@@ -458,8 +524,12 @@ export function auditPreparedMatrixAdmission(root) {
 
   const blockedByPlan = String(plan.status ?? "").includes("remote-execution-deferred");
   const runtimeAdmissionRequired = Boolean(completeBlockEffortScaling);
+  const leaseObservation = authorizedControllerLeaseObservation(
+    matrixRoot,
+    authorizedControllerLease,
+  );
   const executionArtifactsAbsent = !existsSync(join(matrixRoot, "execution-state.json"))
-    && !existsSync(join(matrixRoot, ".matrix-execution.lock"))
+    && (!leaseObservation.present || leaseObservation.authorized)
     && cells.every((cell) => !existsSync(join(matrixRoot, cell.id, ".benchmark", "run-result.json")));
   if (!executionArtifactsAbsent) throw new Error("prepared-matrix-admission:execution-artifact-present");
 
@@ -509,6 +579,7 @@ export function auditPreparedMatrixAdmission(root) {
           ? "immutable-codex-runtime-admission-required"
           : null,
       execution_artifacts_absent: executionArtifactsAbsent,
+      authorized_controller_lease: leaseObservation.receipt,
       reprepare_on_objective_methodology_drift: true,
     },
     cells,
@@ -524,7 +595,25 @@ async function main() {
     process.exitCode = 2;
     return;
   }
-  const report = auditPreparedMatrixAdmission(root);
+  const leaseKeys = [
+    "authorized-controller-lease-token",
+    "authorized-controller-lease-sha256",
+    "authorized-controller-lease-pid",
+    "authorized-controller-lease-dev",
+    "authorized-controller-lease-ino",
+  ];
+  const suppliedLeaseKeys = leaseKeys.filter((key) => args.has(key));
+  if (suppliedLeaseKeys.length !== 0 && suppliedLeaseKeys.length !== leaseKeys.length) {
+    throw new Error("authorized controller lease arguments must be supplied together");
+  }
+  const authorizedControllerLease = suppliedLeaseKeys.length === 0 ? null : {
+    token: String(args.get("authorized-controller-lease-token")),
+    sha256: String(args.get("authorized-controller-lease-sha256")),
+    pid: String(args.get("authorized-controller-lease-pid")),
+    dev: String(args.get("authorized-controller-lease-dev")),
+    ino: String(args.get("authorized-controller-lease-ino")),
+  };
+  const report = auditPreparedMatrixAdmission(root, { authorizedControllerLease });
   if (out) writeJson(out, report);
   console.log(JSON.stringify(report, null, 2));
 }
