@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.826 all-effort prereg
+- schema0.7 기준선3개를 provider-free로 재생성했고 모두75/85를 유지했다.
+- repaired skill `f1b5e219`과 task source `6acf2876`을 별도 detached snapshot으로 봉인했다.
+- plan `5fc88664…`, task set `1818b228…`, schedule `c23b0fbf…`의 exact51셀을 생성했다.
+- 다음은 plan commit→fresh prepare/admission→51셀 자동 연속 실행이다.
+
 ## 2026-08-09 (Codex) · 1.9.825 evaluator freeze RCA
 - checkpoint3 뒤 order4 Luna/max의 malformed inline JS가 native form navigation을 일으켜 evaluator가 context-loss로 동결됐다.
 - 유효3셀은 모두85/85·2,271,261tokens이고, 노출4셀은3,153,662tokens다.

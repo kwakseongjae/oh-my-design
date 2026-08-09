@@ -3,18 +3,17 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `1e7167b0`의 compatible catalog authority gate (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.825 immutable local model catalog 통합 검증 완료
+- 기준 소스: task baseline commit `6acf2876`, repaired skill/evaluator commit `f1b5e219` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-09 · fresh 1.9.826 exact 51-cell provider-zero preregistration 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
-- 1.9.825는 checkpoint3 뒤 order4 `pollen-luna-max-r1-omd`에서 `stopped-preregistered`로 영구 동결됐다. provider는 exit0·265,810ms·882,401tokens로 후보/proof까지 만들었지만 escaped backtick 때문에 inline JS가 SyntaxError였고, native form navigation이 evaluator context를 파괴해 score/record가 없다. 유효3셀 합계는735,130ms·2,271,261tokens, provider 노출4셀 합계는1,000,940ms·3,153,662tokens다. evaluator navigation을 모델 실패로 기록하는 schema0.7/entry-identity-v1 + static inline-script syntax gate를 회귀 수정한 뒤 fresh 1.9.826에서 51셀을 order1부터 재실행한다.
-- 1.9.825 checkpoint1 `pollen-luna-medium-r1-omd`는85/85·UI-Resolved·revision1·static closure1·browser proof1·candidate exact로 통과했다. wall201,954ms·tokens673,979이며 routing attestation0.2의 26 checks와 local catalog source/copy/profile authority가 전부 true다. 다음은 frozen order의 `seismic-terra-high-r1-omd`부터 나머지50셀을 같은 root에서 연속 실행한다.
-- fresh 1.9.825 preregistration은 source `2ccf90ec`, browser-harness `omd1825`/CDP9365, local catalog SHA `77df9127…6f5f`로 exact51셀을 생성했다. plan SHA `b24b3175…68ea`, task set `db9afcab…56f8`, schedule `c23b0fbf…ae57`이며 generation provider/model/browser/network/Cursor/Claude 호출은0이다. 다음은 plan commit→prepare/admission→연속 실행이다.
-- 1.9.825는 Codex0.146.1과 cache client0.146.1 exact-match를 유지하되 TTL300초 cache를 execution authority로 쓰지 않는다. `/private/tmp/omd-codex-auth-pin-1.9.825/model_catalog.json` SHA `77df9127…6f5f`의 immutable local catalog를 각 cell isolated home에 regular file로 복사하고 exact `model_catalog_json` config로만 사용한다.
-- generator→prepare→admission→runner→export v2→aggregate가 catalog source/copy SHA·bytes, Luna/Terra/Sol 전체 selected profile SHA, default/ordered efforts, config key, fallback0을 독립 검증한다. cache는 provenance-only다. `CATALOG-LOCK.json`도 같은 authority를 machine-validate하며 full test914/914(3 skip), lint, build, diff-check가 green이다.
-- next는 generated `RUN-MATRIX`/receipt를 커밋한 뒤 fresh root를 prepare·audit하고 `omd1825`/CDP9365에서 exact51셀을 `--max-new-cells 1`로 연속 실행하는 것이다. Cursor·Claude·retry·replacement·fallback·substitution은0이다.
+- fresh 1.9.826 preregistration은 repaired `omd-portable-1.9.826-effort-sweep`, task source `6acf2876`, browser-harness `omd1825`/CDP9365로 exact51셀을 생성했다. plan SHA `5fc88664…ab27`, task set `1818b228…7e0`, schedule `c23b0fbf…ae57`이며 generation provider/model/browser/network/Cursor/Claude 호출은0이다.
+- v18 raw 기준선3개는 schema0.7/`ui-resolve-objective-2026q3-entry-identity-v1`로 provider-free 재생성했고 모두75/85·responsive/accessibility만 red다. static receipt0.3의 classic-inline-script compile gate와 evaluator entry-identity critical gate를 함께 봉인했다.
+- 1.9.826은 Codex0.146.1/cache client0.146.1 exact-match, immutable local catalog SHA `77df9127…6f5f`, Luna5·Terra6·Sol6 exact17 pair만 허용한다. cache는 provenance-only, `model_catalog_json`만 execution authority이며 Cursor·Claude·retry·replacement·fallback·substitution은0이다.
+- 다음은 새 catalog lock+variant+RUN-MATRIX/receipt를 커밋하고 fresh `/private/tmp/omd-codex-all-effort-sweep-1.9.826`를 prepare/admit한 뒤 `--max-new-cells 1`로 order1부터 51셀을 연속 실행하는 것이다.
+- 1.9.825는 checkpoint3 뒤 order4 `pollen-luna-max-r1-omd`에서 evaluator context loss로 영구 동결됐다. 유효3셀 합계는735,130ms·2,271,261tokens, provider 노출4셀 합계는1,000,940ms·3,153,662tokens이며 order4는 score/record가 없어 결과에서 제외한다.
 - 1.9.824 first cell은 provider turn1회 뒤 routing authority에서 fail-close됐다. CLI0.146.1이 client0.147.0 cache를 `missing field base_instructions`로 거부하고 isolated cache를 0.146.1 형식으로 refresh해 pinned profile이 바뀌었다. 유효 완료0/51이며 root는 영구 동결·재사용 금지다.
 - 해당 셀은 candidate/final exact·browser acceptance·objective85/85였지만 `invalid-attribution`, `ui_resolved:false`다. 사용량은 input636,370(cached576,256), output5,372, reasoning970이며 model/route provider-report는 null이다. 결과를 집계·인용하지 않는다.
 - complete-block은 CLI version과 cache client version exact-match를 provider 전에 강제한다. 0.146.1 compatible cache의 Luna5·Terra6·Sol6 exact17 pair를 새 immutable catalog authority로 분리했으며, post-run cache TTL drift는 execution routing에서 제외하고 diagnostics로만 다룬다.
