@@ -28,6 +28,14 @@ const REQUIRED_MEASUREMENT_CONDITIONS = [
   { id: "200pct", viewport_width: 640, zoom: 2 },
 ];
 const SOURCE_CONTRACT_SCHEMA_VERSIONS = new Set(["0.1", "0.2"]);
+const STATIC_PREVIEW_GUARD_VERSION = "locked-typography-source-v1";
+const STATIC_PREVIEW_GUARD_SCOPE = "locked-typography-direct-declarations";
+const LOCKED_TYPOGRAPHY_PROPERTIES = new Set([
+  "font",
+  "font-size",
+  "font-weight",
+  "line-height",
+]);
 
 function fail(message) {
   throw new Error(`reflow artifact: ${message}`);
@@ -1325,6 +1333,322 @@ function cssRuleBlocks(source) {
   return blocks;
 }
 
+function isLockedTypographyProperty(property) {
+  return LOCKED_TYPOGRAPHY_PROPERTIES.has(property);
+}
+
+function normalizedCssValue(value) {
+  return value
+    .trim()
+    .replace(/\s+/gu, " ")
+    .replace(/\s*([,/])\s*/gu, "$1");
+}
+
+const HTML_VOID_ELEMENTS = new Set([
+  "area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta",
+  "param", "source", "track", "wbr",
+]);
+
+function htmlElementTree(source) {
+  const root = { tag_name: "#root", attributes: new Map(), parent: null, children: [] };
+  const nodes = [];
+  const stack = [root];
+  const lowerSource = source.toLowerCase();
+  let cursor = 0;
+  while ((cursor = source.indexOf("<", cursor)) >= 0) {
+    if (source.startsWith("<!--", cursor)) {
+      const end = source.indexOf("-->", cursor + 4);
+      cursor = end < 0 ? source.length : end + 3;
+      continue;
+    }
+    const next = source[cursor + 1];
+    if (!next) break;
+    let end = cursor + 2;
+    let quote = null;
+    for (; end < source.length; end += 1) {
+      const character = source[end];
+      if (quote) {
+        if (character === quote) quote = null;
+      } else if (character === '"' || character === "'") {
+        quote = character;
+      } else if (character === ">") {
+        break;
+      }
+    }
+    if (end >= source.length) break;
+    const raw = source.slice(cursor + 1, end).trim();
+    if (raw.startsWith("/")) {
+      const closingName = raw.slice(1).match(/^([^\s/>]+)/u)?.[1]?.toLowerCase();
+      if (closingName) {
+        const matchIndex = stack.findLastIndex((node) => node.tag_name === closingName);
+        if (matchIndex > 0) stack.length = matchIndex;
+      }
+      cursor = end + 1;
+      continue;
+    }
+    if (raw.startsWith("!") || raw.startsWith("?") || !/^[A-Za-z]/u.test(raw)) {
+      cursor = end + 1;
+      continue;
+    }
+    const tagName = raw.match(/^([^\s/>]+)/u)?.[1]?.toLowerCase();
+    if (!tagName) {
+      cursor = end + 1;
+      continue;
+    }
+    const attributes = new Map();
+    const attributesSource = raw.slice(tagName.length);
+    const pattern = /([^\s"'<>\/=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/gu;
+    for (const match of attributesSource.matchAll(pattern)) {
+      attributes.set(match[1].toLowerCase(), match[2] ?? match[3] ?? match[4] ?? "");
+    }
+    const parent = stack.at(-1);
+    const node = { tag_name: tagName, attributes, parent, children: [] };
+    parent.children.push(node);
+    nodes.push(node);
+    if (!raw.endsWith("/") && !HTML_VOID_ELEMENTS.has(tagName)) stack.push(node);
+    if (tagName === "script" || tagName === "style") {
+      const rawTextEnd = lowerSource.indexOf(`</${tagName}`, end + 1);
+      if (rawTextEnd < 0) break;
+      cursor = rawTextEnd;
+      continue;
+    }
+    cursor = end + 1;
+  }
+  return nodes;
+}
+
+function selectorSegments(selector) {
+  if (/[+~]/u.test(selector)) return null;
+  const segments = [];
+  let buffer = "";
+  let bracketDepth = 0;
+  let parenthesisDepth = 0;
+  let quote = null;
+  let pendingCombinator = null;
+  const flush = () => {
+    const compound = buffer.trim();
+    if (!compound) return;
+    segments.push({ compound, combinator: segments.length ? (pendingCombinator ?? " ") : null });
+    buffer = "";
+    pendingCombinator = null;
+  };
+  for (const character of selector.trim()) {
+    if (quote) {
+      buffer += character;
+      if (character === quote) quote = null;
+      continue;
+    }
+    if (character === '"' || character === "'") {
+      quote = character;
+      buffer += character;
+      continue;
+    }
+    if (character === "[") bracketDepth += 1;
+    if (character === "]") bracketDepth -= 1;
+    if (character === "(") parenthesisDepth += 1;
+    if (character === ")") parenthesisDepth -= 1;
+    if (bracketDepth === 0 && parenthesisDepth === 0 && character === ">") {
+      flush();
+      pendingCombinator = ">";
+      continue;
+    }
+    if (bracketDepth === 0 && parenthesisDepth === 0 && /\s/u.test(character)) {
+      flush();
+      if (pendingCombinator == null) pendingCombinator = " ";
+      continue;
+    }
+    buffer += character;
+  }
+  flush();
+  return segments.length ? segments : null;
+}
+
+function attributeSelectorMatches(node, raw) {
+  const match = raw.trim().match(
+    /^([^\s~|^$*!=]+)(?:\s*(=|~=|\|=|\^=|\$=|\*=)\s*(?:"([^"]*)"|'([^']*)'|([^\s]+)))?$/u,
+  );
+  if (!match) return false;
+  const name = match[1].toLowerCase();
+  if (!node.attributes.has(name)) return false;
+  if (!match[2]) return true;
+  const expected = match[3] ?? match[4] ?? match[5] ?? "";
+  const actual = node.attributes.get(name);
+  if (match[2] === "=") return actual === expected;
+  if (match[2] === "~=") return actual.split(/\s+/u).includes(expected);
+  if (match[2] === "|=") return actual === expected || actual.startsWith(`${expected}-`);
+  if (match[2] === "^=") return actual.startsWith(expected);
+  if (match[2] === "$=") return actual.endsWith(expected);
+  return actual.includes(expected);
+}
+
+function compoundSelectorMatches(node, compound) {
+  const rootRequired = /:root\b/u.test(compound);
+  let remaining = compound.replace(/:root\b/gu, "");
+  let bracketDepth = 0;
+  let quote = null;
+  for (const character of remaining) {
+    if (quote) {
+      if (character === quote) quote = null;
+      continue;
+    }
+    if (character === '"' || character === "'") {
+      quote = character;
+      continue;
+    }
+    if (character === "[") bracketDepth += 1;
+    if (character === "]") bracketDepth -= 1;
+    if (character === ":" && bracketDepth === 0) return false;
+  }
+  if (rootRequired && node.tag_name !== "html") return false;
+  const tag = remaining.match(/^(\*|[A-Za-z][\w-]*)/u)?.[1];
+  if (tag && tag !== "*" && node.tag_name !== tag.toLowerCase()) return false;
+  if (tag) remaining = remaining.slice(tag.length);
+  for (const match of remaining.matchAll(/#([\w-]+)/gu)) {
+    if (node.attributes.get("id") !== match[1]) return false;
+  }
+  const classes = new Set((node.attributes.get("class") ?? "").split(/\s+/u).filter(Boolean));
+  for (const match of remaining.matchAll(/\.([\w-]+)/gu)) {
+    if (!classes.has(match[1])) return false;
+  }
+  for (const match of remaining.matchAll(/\[([^\]]+)\]/gu)) {
+    if (!attributeSelectorMatches(node, match[1])) return false;
+  }
+  remaining = remaining
+    .replace(/#[\w-]+/gu, "")
+    .replace(/\.[\w-]+/gu, "")
+    .replace(/\[[^\]]+\]/gu, "")
+    .trim();
+  return remaining.length === 0;
+}
+
+function selectorMatchesNode(node, selector) {
+  const segments = selectorSegments(selector);
+  if (!segments) return false;
+  const matchAt = (candidate, index) => {
+    if (!candidate || candidate.tag_name === "#root" || !compoundSelectorMatches(candidate, segments[index].compound)) {
+      return false;
+    }
+    if (index === 0) return true;
+    if (segments[index].combinator === ">") return matchAt(candidate.parent, index - 1);
+    for (let ancestor = candidate.parent; ancestor?.tag_name !== "#root"; ancestor = ancestor.parent) {
+      if (matchAt(ancestor, index - 1)) return true;
+    }
+    return false;
+  };
+  return matchAt(node, segments.length - 1);
+}
+
+function lockedTypographyNodes(source, artifact) {
+  const nodes = htmlElementTree(source);
+  const locked = new Set();
+  const snapshotRows = artifact.row_groups.filter(
+    (row) => row.typography_contract?.source === PRE_EDIT_SNAPSHOT_SOURCE,
+  );
+  const boundRowIds = new Set(snapshotRows.map((row) => row.id));
+  const selectors = [
+    ...snapshotRows.map((row) => row.selector),
+    ...artifact.carriers
+      .filter((carrier) => carrier.binds_row_groups.some((id) => boundRowIds.has(id)))
+      .map((carrier) => carrier.selector),
+  ];
+  for (const node of nodes) {
+    if (!selectors.some((selector) => selectorMatchesNode(node, selector))) continue;
+    for (let current = node; current?.tag_name !== "#root"; current = current.parent) locked.add(current);
+  }
+  return locked;
+}
+
+function inlineStyleDeclarations(node) {
+  const declarations = new Map();
+  for (const raw of (node.attributes.get("style") ?? "").split(";")) {
+    const separator = raw.indexOf(":");
+    if (separator < 0) continue;
+    const property = raw.slice(0, separator).trim().toLowerCase();
+    const value = raw.slice(separator + 1).trim().replace(/\s*!important\s*$/u, "");
+    if (property) declarations.set(property, value);
+  }
+  return declarations;
+}
+
+function htmlNodePath(node) {
+  const segments = [];
+  for (let current = node; current?.tag_name !== "#root"; current = current.parent) {
+    const siblings = current.parent.children.filter((child) => child.tag_name === current.tag_name);
+    segments.push(`${current.tag_name}[${siblings.indexOf(current) + 1}]`);
+  }
+  return segments.reverse().join("/");
+}
+
+function typographyDeclarationSnapshot(source, lockedNodes) {
+  const declarations = new Map();
+  for (const block of cssRuleBlocks(source)) {
+    for (const selector of block.selectors) {
+      if (![...lockedNodes].some((node) => selectorMatchesNode(node, selector))) continue;
+      for (const [property, value] of block.declarations) {
+        if (!isLockedTypographyProperty(property)) continue;
+        const key = `${selector}\u0000${property}`;
+        if (!declarations.has(key)) declarations.set(key, []);
+        declarations.get(key).push(normalizedCssValue(value));
+      }
+    }
+  }
+  for (const node of lockedNodes) {
+    for (const [property, value] of inlineStyleDeclarations(node)) {
+      if (!isLockedTypographyProperty(property)) continue;
+      declarations.set(`@inline:${htmlNodePath(node)}\u0000${property}`, [normalizedCssValue(value)]);
+    }
+  }
+  return declarations;
+}
+
+function lockedTypographyDeclarationFailures(artifact, source) {
+  if (
+    artifact.source_contract?.state !== "provider-sealed"
+    || artifact.pre_edit_product_snapshot == null
+    || artifact.row_groups.every((row) => row.typography_contract?.source !== PRE_EDIT_SNAPSHOT_SOURCE)
+  ) return [];
+  const preEditSource = Buffer.from(
+    artifact.pre_edit_product_snapshot.source_base64,
+    "base64",
+  ).toString("utf8");
+  const before = typographyDeclarationSnapshot(
+    preEditSource,
+    lockedTypographyNodes(preEditSource, artifact),
+  );
+  const after = typographyDeclarationSnapshot(
+    source,
+    lockedTypographyNodes(source, artifact),
+  );
+  const explicitAuthority = new Map(
+    artifact.static_closure_manifest.required_css_declarations
+      .filter((entry) => (
+        isLockedTypographyProperty(entry.property)
+        && entry.value_contract === "exact-value"
+      ))
+      .map((entry) => [
+        `${entry.selector}\u0000${entry.property}`,
+        normalizedCssValue(entry.value),
+      ]),
+  );
+  const failures = [];
+  for (const key of new Set([...before.keys(), ...after.keys()])) {
+    const previous = before.get(key) ?? [];
+    const candidate = after.get(key) ?? [];
+    const authorizedValue = explicitAuthority.get(key);
+    if (
+      authorizedValue !== undefined
+      && candidate.length > 0
+      && candidate.every((value) => value === authorizedValue)
+    ) continue;
+    if (JSON.stringify(previous) === JSON.stringify(candidate)) continue;
+    const [selector, property] = key.split("\u0000");
+    failures.push(
+      `locked typography declaration changed without source-contract authority: ${selector} { ${property}: ${candidate.join(" | ") || "<removed>"} }`,
+    );
+  }
+  return failures;
+}
+
 function isPositiveCssLength(value) {
   const match = value.match(/^\+?(\d*\.?\d+)(?:px|rem|em|ch|ex|vw|vh|vmin|vmax|%|cm|mm|in|pt|pc|q)?$/iu);
   return Boolean(match && Number(match[1]) > 0);
@@ -1477,6 +1801,7 @@ export function executeStaticClosure(input, { productPath, source }) {
     source,
     artifact.static_closure_manifest.required_css_declarations,
   ));
+  failures.push(...lockedTypographyDeclarationFailures(artifact, source));
   for (const literal of artifact.static_closure_manifest.forbidden_literals) {
     if (source.includes(literal)) failures.push(`found forbidden literal: ${literal}`);
   }
@@ -1728,8 +2053,10 @@ function staticPreviewReceiptPath(artifactPath) {
 
 function writeStaticPreviewReceipt(artifactPath, artifact, candidatePath, source, preview) {
   const receipt = {
-    schema_version: "0.1",
+    schema_version: "0.2",
     kind: "omd-static-preview-receipt",
+    guard_version: STATIC_PREVIEW_GUARD_VERSION,
+    guard_scope: STATIC_PREVIEW_GUARD_SCOPE,
     state: preview.state,
     candidate_path: candidatePath,
     candidate_sha256: sha256Source(source),
@@ -1755,8 +2082,10 @@ function assertPassedStaticPreviewReceipt(
   }
   const receipt = JSON.parse(readFileSync(receiptPath, "utf8"));
   if (
-    receipt?.schema_version !== "0.1"
+    receipt?.schema_version !== "0.2"
     || receipt.kind !== "omd-static-preview-receipt"
+    || receipt.guard_version !== STATIC_PREVIEW_GUARD_VERSION
+    || receipt.guard_scope !== STATIC_PREVIEW_GUARD_SCOPE
     || receipt.state !== "passed"
     || receipt.source_contract_sha256 !== artifact.source_contract.sha256
     || receipt.inventory_sha256 !== artifact.inventory.sha256

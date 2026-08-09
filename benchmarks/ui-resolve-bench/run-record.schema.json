@@ -17,14 +17,23 @@
   ],
   "properties": {
     "run_id": { "type": "string", "minLength": 1 },
+    "record_kind": {
+      "enum": ["codex-complete-block-effort-scaling-v1"]
+    },
     "benchmark_family": { "enum": ["model", "skill", "harness", "prompt-arena", "factorial"] },
     "suite_version": { "type": "string", "minLength": 1 },
+    "experiment_id": { "type": "string", "minLength": 1 },
+    "task_set_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "matrix_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "cell_id": { "type": "string", "minLength": 1 },
     "objective_methodology_epoch": { "type": "string", "minLength": 1 },
     "system_id": { "type": "string", "minLength": 1 },
+    "variant_id": { "type": "string", "minLength": 1 },
     "model_id": { "type": ["string", "null"] },
     "skill_id": { "type": ["string", "null"] },
     "harness_id": { "type": ["string", "null"] },
     "budget_tier": { "type": "string", "default": "standard" },
+    "effort": { "type": "string", "minLength": 1 },
     "task_id": { "type": "string", "minLength": 1 },
     "trial_index": { "type": "integer", "minimum": 1 },
     "run_status": { "enum": ["complete", "failed", "timed_out", "incomplete"] },
@@ -50,6 +59,7 @@
         "timeout_seconds": { "type": "integer", "minimum": 1 },
         "max_concurrency": { "type": "integer", "minimum": 1 },
         "latency_comparison": { "enum": ["eligible", "descriptive-only"] },
+        "admission_normalization_policy": { "type": "string", "minLength": 1 },
         "retry_policy": { "const": "none-primary" },
         "timeout_policy": { "const": "count-as-valid-failure" },
         "infrastructure_policy": { "const": "retain-freeze-and-repreregister" }
@@ -100,6 +110,81 @@
         }
       }
     },
+    "attribution": {
+      "type": "object",
+      "properties": {
+        "runtime": {
+          "type": "object",
+          "properties": {
+            "routing_attestation": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "runtime",
+                "model_id",
+                "effort",
+                "provider_route",
+                "checks",
+                "pass"
+              ],
+              "properties": {
+                "schema_version": { "const": "0.1" },
+                "runtime": { "const": "codex" },
+                "model_id": { "type": "string", "minLength": 1 },
+                "effort": { "type": "string", "minLength": 1 },
+                "provider_route": { "const": "codex" },
+                "provider_route_mode": { "type": ["string", "null"] },
+                "provider_route_reported": { "type": ["string", "null"] },
+                "provider_effort_argument": { "type": ["string", "null"] },
+                "pinned_profile": {
+                  "type": "object",
+                  "required": [
+                    "model_profile_sha256",
+                    "cache_sha256",
+                    "default_effort",
+                    "supported_efforts"
+                  ],
+                  "properties": {
+                    "model_profile_sha256": { "type": "string", "minLength": 1 },
+                    "cache_sha256": { "type": "string", "minLength": 1 },
+                    "default_effort": { "type": "string", "minLength": 1 },
+                    "supported_efforts": {
+                      "type": "array",
+                      "minItems": 1,
+                      "uniqueItems": true,
+                      "items": { "type": "string", "minLength": 1 }
+                    }
+                  }
+                },
+                "checks": {
+                  "type": "object",
+                  "required": [
+                    "locked_cell_exact",
+                    "runtime_codex",
+                    "model_requested_exact",
+                    "effort_requested_exact",
+                    "provider_effort_argument_exact",
+                    "provider_route_accepted",
+                    "pinned_profile_supports_effort"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "locked_cell_exact": { "type": "boolean" },
+                    "runtime_codex": { "type": "boolean" },
+                    "model_requested_exact": { "type": "boolean" },
+                    "effort_requested_exact": { "type": "boolean" },
+                    "provider_effort_argument_exact": { "type": "boolean" },
+                    "provider_route_accepted": { "type": "boolean" },
+                    "pinned_profile_supports_effort": { "type": "boolean" }
+                  }
+                },
+                "pass": { "type": "boolean" }
+              }
+            }
+          }
+        }
+      }
+    },
     "runtime_diagnostics": {
       "type": "object",
       "required": ["child_exit_code", "tool_error_count", "sandbox_error_count", "sandbox_cwd_error_count"],
@@ -147,7 +232,79 @@
       }
     },
     "tool_calls": { "type": "number", "minimum": 0 },
-    "human_interventions": { "type": "number", "minimum": 0 }
+    "human_interventions": { "type": "number", "minimum": 0 },
+    "complete_block_outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "disposition", "reason", "tool_diagnostics"],
+      "properties": {
+        "schema_version": { "const": "0.1" },
+        "disposition": {
+          "enum": ["success", "terminal-provider-failure", "freeze-authority", "freeze-infrastructure"]
+        },
+        "reason": { "type": ["string", "null"] },
+        "tool_diagnostics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "availability",
+            "tool_error_count",
+            "recoverable_tool_error_count",
+            "agent_tool_call_count",
+            "agent_tool_error_count"
+          ],
+          "properties": {
+            "availability": { "type": ["object", "null"] },
+            "tool_error_count": { "type": ["number", "null"], "minimum": 0 },
+            "recoverable_tool_error_count": { "type": ["number", "null"], "minimum": 0 },
+            "agent_tool_call_count": { "type": ["number", "null"], "minimum": 0 },
+            "agent_tool_error_count": { "type": ["number", "null"], "minimum": 0 }
+          }
+        }
+      }
+    },
+    "sweep_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "experiment_id",
+        "locked_plan_sha256",
+        "schedule_sha256",
+        "suite_version",
+        "objective_methodology_epoch",
+        "objective_evaluator_contract_sha256",
+        "system_id",
+        "variant_id",
+        "skill_id",
+        "skill_source_commit",
+        "skill_source_tree_sha256",
+        "skill_tree_sha256",
+        "task_source_commit",
+        "task_git_tree_oid",
+        "task_tree_sha256",
+        "task_source_contract_sha256"
+      ],
+      "properties": {
+        "schema_version": { "const": "0.1" },
+        "experiment_id": { "type": "string", "minLength": 1 },
+        "locked_plan_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "schedule_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "suite_version": { "type": "string", "minLength": 1 },
+        "objective_methodology_epoch": { "type": "string", "minLength": 1 },
+        "objective_evaluator_contract_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "system_id": { "type": "string", "minLength": 1 },
+        "variant_id": { "type": "string", "minLength": 1 },
+        "skill_id": { "type": "string", "minLength": 1 },
+        "skill_source_commit": { "type": "string", "minLength": 1 },
+        "skill_source_tree_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "skill_tree_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "task_source_commit": { "type": "string", "minLength": 1 },
+        "task_git_tree_oid": { "type": "string", "minLength": 1 },
+        "task_tree_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "task_source_contract_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    }
   },
   "allOf": [
     {
@@ -157,6 +314,176 @@
     {
       "if": { "required": ["objective_score"] },
       "then": { "required": ["objective_max"] }
+    },
+    {
+      "if": {
+        "anyOf": [
+          {
+            "required": ["record_kind"],
+            "properties": {
+              "record_kind": { "const": "codex-complete-block-effort-scaling-v1" }
+            }
+          },
+          {
+            "required": ["execution_control"],
+            "properties": {
+              "execution_control": {
+                "type": "object",
+                "required": ["comparison_mode"],
+                "properties": {
+                  "comparison_mode": { "const": "effort-scaling" }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "then": {
+        "required": [
+          "record_kind",
+          "experiment_id",
+          "task_set_sha256",
+          "matrix_sha256",
+          "effort",
+          "cell_id",
+          "variant_id",
+          "sweep_identity",
+          "execution_control",
+          "attribution",
+          "complete_block_outcome"
+        ],
+        "properties": {
+          "record_kind": { "const": "codex-complete-block-effort-scaling-v1" },
+          "benchmark_family": { "const": "model" },
+          "trial_index": { "const": 1 },
+          "execution_control": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "comparison_mode",
+              "effort_semantics",
+              "temperature_policy",
+              "timeout_seconds",
+              "max_concurrency",
+              "latency_comparison",
+              "retry_policy",
+              "replacement_policy",
+              "fallback_policy",
+              "model_substitution_policy",
+              "effort_substitution_policy",
+              "task_substitution_policy",
+              "timeout_policy",
+              "infrastructure_policy",
+              "task_order_policy",
+              "admission_normalization_policy",
+              "pacing",
+              "token_budget",
+              "step_budget"
+            ],
+            "properties": {
+              "comparison_mode": { "const": "effort-scaling" },
+              "effort_semantics": { "const": "runtime-native-ordinal-not-cross-provider-equivalent" },
+              "temperature_policy": { "const": "runtime-default-frozen" },
+              "timeout_seconds": { "const": 720 },
+              "max_concurrency": { "const": 1 },
+              "latency_comparison": { "const": "descriptive-only" },
+              "retry_policy": { "const": "none-primary" },
+              "replacement_policy": { "const": "none" },
+              "fallback_policy": { "const": "none" },
+              "model_substitution_policy": { "const": "none" },
+              "effort_substitution_policy": { "const": "none" },
+              "task_substitution_policy": { "const": "none" },
+              "timeout_policy": { "const": "count-as-valid-failure" },
+              "infrastructure_policy": { "const": "retain-freeze-and-repreregister" },
+              "task_order_policy": { "const": "fixed-preregistered" },
+              "admission_normalization_policy": { "const": "complete-block-effort-scaling" },
+              "pacing": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "policy",
+                  "inter_cell_delay_seconds",
+                  "applies_between_cells_only",
+                  "counts_toward_cell_wall_time"
+                ],
+                "properties": {
+                  "policy": { "const": "fixed-inter-cell" },
+                  "inter_cell_delay_seconds": { "const": 30 },
+                  "applies_between_cells_only": { "const": true },
+                  "counts_toward_cell_wall_time": { "const": false }
+                }
+              },
+              "token_budget": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "mode",
+                  "limit_tokens",
+                  "usage_required",
+                  "account_components",
+                  "cached_input_separate",
+                  "cost_policy"
+                ],
+                "properties": {
+                  "mode": { "const": "observed-only" },
+                  "limit_tokens": { "const": null },
+                  "usage_required": { "const": true },
+                  "account_components": {
+                    "const": ["input", "cached_input", "output", "reasoning_output"]
+                  },
+                  "cached_input_separate": { "const": true },
+                  "cost_policy": { "const": "provider-reported-or-pinned-price-equivalent" }
+                }
+              },
+              "step_budget": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["mode", "limit_steps"],
+                "properties": {
+                  "mode": { "const": "observed-only" },
+                  "limit_steps": { "const": null }
+                }
+              }
+            }
+          },
+          "attribution": {
+            "required": ["runtime"],
+            "properties": {
+              "runtime": {
+                "required": ["routing_attestation"],
+                "properties": {
+                  "routing_attestation": {
+                    "required": ["pinned_profile"],
+                    "allOf": [
+                      {
+                        "if": {
+                          "required": ["pass"],
+                          "properties": { "pass": { "const": true } }
+                        },
+                        "then": {
+                          "properties": {
+                            "checks": {
+                              "properties": {
+                                "locked_cell_exact": { "const": true },
+                                "runtime_codex": { "const": true },
+                                "model_requested_exact": { "const": true },
+                                "effort_requested_exact": { "const": true },
+                                "provider_effort_argument_exact": { "const": true },
+                                "provider_route_accepted": { "const": true },
+                                "pinned_profile_supports_effort": { "const": true }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }

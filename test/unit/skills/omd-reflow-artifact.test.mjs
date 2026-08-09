@@ -152,7 +152,7 @@ function draft() {
   return artifact;
 }
 
-function sourceContract({ forbiddenPatterns = [] } = {}) {
+function sourceContract({ forbiddenPatterns = [], requiredTypography = null } = {}) {
   return {
     schema_version: "0.1",
     structured_css_only: true,
@@ -176,12 +176,15 @@ function sourceContract({ forbiddenPatterns = [] } = {}) {
         required_literals: ["required-fact"],
         forbidden_literals: [],
         forbidden_patterns: [],
-        required_css_declarations: [{
-          selector: ".ledger",
-          property: "grid-template-columns",
-          value: "1fr",
-          value_contract: "any-value",
-        }],
+        required_css_declarations: [
+          {
+            selector: ".ledger",
+            property: "grid-template-columns",
+            value: "1fr",
+            value_contract: "any-value",
+          },
+          ...(requiredTypography ? [requiredTypography] : []),
+        ],
         forbidden_css_declarations: [],
       },
     }],
@@ -974,6 +977,153 @@ describe("compact reflow artifact helper", () => {
       helper, "static-close", artifactPath,
     ], { cwd: root, encoding: "utf8" }));
     expect(closed.static_closure).toMatchObject({ state: "passed", attempts: 1, failures: [] });
+  });
+
+  it("rejects provider-sealed candidate typography drift before promotion", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-preview-typography-lock-"));
+    temporaryRoots.push(root);
+    const contractPath = join(root, "contract.json");
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const candidatePath = join(root, "candidate.html");
+    const helper = join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs");
+    const preEditSource = `<style>
+body { font: 15px/1.5 Arial, sans-serif; }
+h1 { letter-spacing: 0; }
+.window-owner { font-size: 15px; letter-spacing: 0; }
+.target-carrier { line-height: 1.5; }
+</style><h1>Unrelated heading</h1><span class="window-owner">Unrelated window</span><section data-decision=""><div class="target-carrier"><strong data-bench-decision-role="target">FS-TC-24-017 + BAG-SEAL-884021</strong></div></section><p>required-fact</p>`;
+    writeFileSync(contractPath, JSON.stringify(sourceContract()));
+    writeFileSync(productPath, preEditSource);
+    execFileSync(process.execPath, [helper, "source-seal", contractPath, artifactPath], { cwd: root, encoding: "utf8" });
+
+    const candidate = `<style>
+body{font:15px/1.5 Arial,sans-serif}
+h1 { letter-spacing: -0.02em; }
+.window-owner { font-size: 13px; letter-spacing: .04em; }
+.target-carrier { line-height: 1.5; font-size: 17px; }
+.target-carrier:hover { font-size: 19px; }
+.target-carrier::before { font-weight: 400; }
+.target-carrier:not(.active) { line-height: 2; }
+.ledger { grid-template-columns: 1fr; }
+[data-omd-source-fallback-carrier="target"] { overflow-x: auto; }
+[data-omd-source-fallback-carrier="target"]:focus-visible { outline: 2px solid currentColor; }
+[data-bench-decision-role="target"] { white-space: nowrap; }
+</style><h1>Unrelated heading</h1><span class="window-owner">Unrelated window</span><section data-decision=""><div class="target-carrier" data-omd-source-fallback-carrier="target" aria-label="Custody target relationship" tabindex="0"><strong data-bench-decision-role="target">FS-TC-24-017 + BAG-SEAL-884021</strong></div></section><p>required-fact</p>`;
+    writeFileSync(candidatePath, candidate);
+    const rejected = spawnSync(process.execPath, [
+      helper, "static-preview", artifactPath, candidatePath,
+    ], { cwd: root, encoding: "utf8" });
+
+    expect(rejected.status).toBe(1);
+    expect(JSON.parse(rejected.stdout).static_preview).toMatchObject({
+      state: "failed",
+      attempts: 1,
+      failures: [
+        "locked typography declaration changed without source-contract authority: .target-carrier { font-size: 17px }",
+      ],
+    });
+    expect(JSON.parse(readFileSync(join(root, "static-preview-receipt.json"), "utf8"))).toMatchObject({
+      schema_version: "0.2",
+      guard_version: "locked-typography-source-v1",
+      guard_scope: "locked-typography-direct-declarations",
+      state: "failed",
+    });
+    expect(readFileSync(productPath, "utf8")).toBe(preEditSource);
+    expect(JSON.parse(readFileSync(artifactPath, "utf8"))).not.toHaveProperty("static_closure.state", "passed");
+
+    const inlineCandidate = candidate
+      .replace("line-height: 1.5; font-size: 17px;", "line-height: 1.5;")
+      .replace('class="target-carrier" data-omd', 'class="target-carrier" style="font-size:17px" data-omd');
+    writeFileSync(candidatePath, inlineCandidate);
+    const inlineRejected = spawnSync(process.execPath, [
+      helper, "static-preview", artifactPath, candidatePath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(inlineRejected.status).toBe(1);
+    expect(JSON.parse(inlineRejected.stdout).static_preview.failures).toEqual([
+      expect.stringMatching(/^locked typography declaration changed without source-contract authority: @inline:.* \{ font-size: 17px \}$/u),
+    ]);
+
+    const artifact = JSON.parse(readFileSync(artifactPath, "utf8"));
+    writeFileSync(join(root, "static-preview-receipt.json"), JSON.stringify({
+      schema_version: "0.1",
+      kind: "omd-static-preview-receipt",
+      state: "passed",
+      candidate_path: candidatePath,
+      candidate_sha256: createHash("sha256").update(inlineCandidate).digest("hex"),
+      source_contract_sha256: artifact.source_contract.sha256,
+      inventory_sha256: artifact.inventory.sha256,
+      failures: [],
+    }));
+
+    const promotion = spawnSync(process.execPath, [
+      helper, "static-promote", artifactPath, candidatePath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(promotion.status).toBe(1);
+    expect(promotion.stderr).toContain("must exactly match the passed static-preview candidate");
+    expect(readFileSync(productPath, "utf8")).toBe(preEditSource);
+
+    const cleanCandidate = candidate.replace(
+      "line-height: 1.5; font-size: 17px;",
+      "line-height: 1.5;",
+    );
+    writeFileSync(candidatePath, cleanCandidate);
+    const accepted = JSON.parse(execFileSync(process.execPath, [
+      helper, "static-preview", artifactPath, candidatePath,
+    ], { cwd: root, encoding: "utf8" }));
+    expect(accepted.static_preview).toMatchObject({ state: "passed", failures: [] });
+    expect(readFileSync(productPath, "utf8")).toBe(preEditSource);
+  });
+
+  it("does not treat an any-value typography requirement as drift authority", () => {
+    const helper = join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs");
+    const preEditSource = `<style>
+body { font: 15px/1.5 Arial, sans-serif; }
+.target-carrier { line-height: 1.5; }
+</style><section data-decision=""><div class="target-carrier"><strong data-bench-decision-role="target">FS-TC-24-017 + BAG-SEAL-884021</strong></div></section><p>required-fact</p>`;
+    const candidate = `<style>
+body { font: 15px/1.5 Arial, sans-serif; }
+.target-carrier { line-height: 1.5; font-size: 17px; }
+.ledger { grid-template-columns: 1fr; }
+[data-omd-source-fallback-carrier="target"] { overflow-x: auto; }
+[data-omd-source-fallback-carrier="target"]:focus-visible { outline: 2px solid currentColor; }
+[data-bench-decision-role="target"] { white-space: nowrap; }
+</style><section data-decision=""><div class="target-carrier" data-omd-source-fallback-carrier="target" aria-label="Custody target relationship" tabindex="0"><strong data-bench-decision-role="target">FS-TC-24-017 + BAG-SEAL-884021</strong></div></section><p>required-fact</p>`;
+    const exercise = (valueContract) => {
+      const root = mkdtempSync(join(tmpdir(), `omd-reflow-typography-authority-${valueContract}-`));
+      temporaryRoots.push(root);
+      const contractPath = join(root, "contract.json");
+      const artifactPath = join(root, "artifact.json");
+      const productPath = join(root, "index.html");
+      const candidatePath = join(root, "candidate.html");
+      writeFileSync(contractPath, JSON.stringify(sourceContract({
+        requiredTypography: {
+          selector: ".target-carrier",
+          property: "font-size",
+          value: "17px",
+          value_contract: valueContract,
+        },
+      })));
+      writeFileSync(productPath, preEditSource);
+      writeFileSync(candidatePath, candidate);
+      execFileSync(process.execPath, [helper, "source-seal", contractPath, artifactPath], {
+        cwd: root,
+        encoding: "utf8",
+      });
+      return spawnSync(process.execPath, [
+        helper, "static-preview", artifactPath, candidatePath,
+      ], { cwd: root, encoding: "utf8" });
+    };
+
+    const anyValue = exercise("any-value");
+    expect(anyValue.status).toBe(1);
+    expect(JSON.parse(anyValue.stdout).static_preview.failures).toContain(
+      "locked typography declaration changed without source-contract authority: .target-carrier { font-size: 17px }",
+    );
+
+    const exactValue = exercise("exact-value");
+    expect(exactValue.status).toBe(0);
+    expect(JSON.parse(exactValue.stdout).static_preview).toMatchObject({ state: "passed", failures: [] });
   });
 
   it("binds a provider-sealed static close to the exact passed candidate bytes", () => {

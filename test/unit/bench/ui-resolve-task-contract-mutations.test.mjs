@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
@@ -7,6 +8,7 @@ import {
   validateOmdReflowBaselineEvidence,
   validateTaskContract,
 } from "../../../benchmarks/ui-resolve-bench/scripts/task-contract.mjs";
+import { currentObjectiveMethodology } from "../../../benchmarks/ui-resolve-bench/scripts/objective-methodology-contract.mjs";
 
 const repoRoot = resolve(import.meta.dirname, "../../..");
 const tasksRoot = resolve(repoRoot, "benchmarks/ui-resolve-bench/tasks");
@@ -18,7 +20,7 @@ function readTask(id) {
 describe("task contract mutation coverage", () => {
   it("admits all current public task contracts with exact directory identity", () => {
     const taskIds = readdirSync(tasksRoot).sort();
-    expect(taskIds).toHaveLength(120);
+    expect(taskIds).toHaveLength(123);
     for (const id of taskIds) expect(validateTaskContract(readTask(id), { expectedId: id })).toBeTruthy();
   });
 
@@ -162,5 +164,85 @@ describe("task contract mutation coverage", () => {
         carriers: [{ id: "carrier", binds_row_groups: ["row"] }],
       },
     })).toThrow(/containment_guardrail/);
+  });
+
+  it("binds every v18 baseline to a repository-local deterministic provenance receipt", () => {
+    for (const id of [
+      "pollen-slide-accession-v0.1",
+      "seismic-core-dispatch-v0.1",
+      "oral-history-reel-return-v0.1",
+    ]) {
+      const root = resolve(tasksRoot, id);
+      const receipt = JSON.parse(readFileSync(resolve(root, "baseline-provenance.json"), "utf8"));
+      const baselineBytes = readFileSync(resolve(root, "baseline-critical-gates.json"));
+      const baseline = JSON.parse(baselineBytes);
+      const taskBytes = readFileSync(resolve(root, "task.json"));
+      const promptBytes = readFileSync(resolve(root, "PROMPT.md"));
+      const hash = (value) => createHash("sha256").update(value).digest("hex");
+      expect(receipt).toMatchObject({
+        schema_version: "0.1",
+        kind: "provider-free-objective-score-deterministic-equivalent",
+        task_id: id,
+        variant_id: "raw-design-md",
+        raw_score: {
+          schema_version: "0.6",
+          source_score_sha256: baseline.source_score_sha256,
+          source_methodology: {
+            evaluator_source_sha256: "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+          },
+        },
+        expected: {
+          deterministic_total: 75,
+          deterministic_max: 85,
+          failed_critical_gates: ["accessibility", "responsive"],
+        },
+        reproduction_contract: {
+          provider_calls: 0,
+          model_calls: 0,
+          evaluator_sha_delta_disposition: "recorded-not-overwritten",
+        },
+      });
+      expect(receipt.methodology).toEqual(currentObjectiveMethodology());
+      expect(receipt.inputs).toMatchObject({
+        prompt_sha256: hash(promptBytes),
+        baseline_evidence_sha256: hash(baselineBytes),
+        task_contract_sha256: hash(taskBytes),
+      });
+      const projection = {
+        schema_version: "0.2",
+        task_id: receipt.task_id,
+        variant_id: receipt.variant_id,
+        source_score_sha256: baseline.source_score_sha256,
+        baseline_evidence: baseline,
+        inputs: receipt.inputs,
+        source_methodology: receipt.raw_score.source_methodology,
+        source_evaluator_repository: receipt.raw_score.source_evaluator_repository,
+        source_contract_repository: receipt.raw_score.source_contract_repository,
+        reproduction_methodology: receipt.methodology,
+        expected: receipt.expected,
+      };
+      expect(receipt.repository_reproduction).toMatchObject({
+        canonicalization: "sha256-json-stringify-repository-baseline-projection-v1",
+        projection_sha256: hash(JSON.stringify(projection)),
+        provider_calls: 0,
+        model_calls: 0,
+      });
+      for (const source of [
+        receipt.raw_score.source_evaluator_repository,
+        receipt.raw_score.source_contract_repository,
+      ]) {
+        const sourceBytes = execFileSync("git", [
+          "-C", repoRoot, "show", `${source.commit}:${source.path}`,
+        ]);
+        expect(hash(sourceBytes)).toBe(source.sha256);
+      }
+      for (const field of [
+        receipt.raw_score.checks_sha256,
+        receipt.raw_score.observations_sha256,
+        receipt.methodology.evaluator_source_sha256,
+        receipt.methodology.contract_source_sha256,
+        receipt.baseline_manifest_sha256,
+      ]) expect(field).toMatch(/^[a-f0-9]{64}$/);
+    }
   });
 });

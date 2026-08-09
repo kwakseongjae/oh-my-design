@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
-import { isAbsolute, join, resolve } from "node:path";
+import { existsSync, lstatSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
+import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
-import { parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
+import { parseArgs, readJson, sha256, treeManifest, writeJson } from "./_lib.mjs";
 import {
   HOST_POLICY_MODES,
   prepareHostPolicyCell,
@@ -13,6 +13,7 @@ import {
   currentObjectiveMethodology,
 } from "./objective-methodology-contract.mjs";
 import { CODEX_REASONING_EFFORTS } from "./codex-tool-mode-contract.mjs";
+import { assertProviderRoute } from "./runtime-contract.mjs";
 
 const VALID_RUNTIMES = new Set(["codex", "claude-code", "cursor"]);
 const VALID_EFFORTS = new Set(CODEX_REASONING_EFFORTS);
@@ -25,12 +26,618 @@ const VALID_ADMISSION_NORMALIZATION_POLICIES = new Set([
   "cross-task-reliability",
   "multi-task-repeated-reliability",
   "paired-cross-task-comparison",
+  "complete-block-effort-scaling",
 ]);
 const VALID_ATTRIBUTION_SCOPES = new Set([
   "provider-observed-only",
   "internal-registered-display-name",
 ]);
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
+const COMMIT_PATTERN = /^[a-f0-9]{40,64}$/;
+const COMPLETE_BLOCK_PREREGISTRATION_RECEIPT_REF = "PREREGISTRATION.receipt.json";
+export const COMPLETE_BLOCK_CODEX_PROFILES = Object.freeze([
+  Object.freeze({
+    model_id: "gpt-5.6-luna",
+    default_effort: "medium",
+    supported_efforts: Object.freeze(["low", "medium", "high", "xhigh", "max"]),
+  }),
+  Object.freeze({
+    model_id: "gpt-5.6-terra",
+    default_effort: "medium",
+    supported_efforts: Object.freeze(["low", "medium", "high", "xhigh", "max", "ultra"]),
+  }),
+  Object.freeze({
+    model_id: "gpt-5.6-sol",
+    default_effort: "low",
+    supported_efforts: Object.freeze(["low", "medium", "high", "xhigh", "max", "ultra"]),
+  }),
+]);
+const COMPLETE_BLOCK_CODEX_MODELS = Object.freeze(
+  COMPLETE_BLOCK_CODEX_PROFILES.map((profile) => profile.model_id),
+);
+export const COMPLETE_BLOCK_BASE_PAIR_ORDER = Object.freeze([
+  "gpt-5.6-luna/medium", "gpt-5.6-terra/high", "gpt-5.6-sol/max",
+  "gpt-5.6-luna/max", "gpt-5.6-terra/low", "gpt-5.6-sol/medium",
+  "gpt-5.6-luna/low", "gpt-5.6-terra/max", "gpt-5.6-sol/ultra",
+  "gpt-5.6-luna/xhigh", "gpt-5.6-terra/medium", "gpt-5.6-sol/low",
+  "gpt-5.6-luna/high", "gpt-5.6-terra/ultra", "gpt-5.6-sol/xhigh",
+  "gpt-5.6-terra/xhigh", "gpt-5.6-sol/high",
+]);
+export const COMPLETE_BLOCK_SCHEDULE_WAVES = Object.freeze([
+  Object.freeze({
+    rotation: 0,
+    task_assignments: Object.freeze([
+      "A", "B", "C", "A", "B", "C", "A", "B", "C",
+      "A", "B", "C", "A", "B", "C", "A", "B",
+    ]),
+  }),
+  Object.freeze({
+    rotation: 6,
+    task_assignments: Object.freeze([
+      "B", "C", "A", "B", "C", "A", "B", "C", "A",
+      "B", "C", "B", "C", "A", "B", "C", "A",
+    ]),
+  }),
+  Object.freeze({
+    rotation: 12,
+    task_assignments: Object.freeze([
+      "C", "A", "B", "C", "A", "C", "A", "B", "C",
+      "A", "B", "C", "A", "B", "C", "A", "B",
+    ]),
+  }),
+]);
+const COMPLETE_BLOCK_FORBIDDEN_CLAIMS = Object.freeze([
+  "model-superiority",
+  "model-ranking",
+  "cross-model-effort-equivalence",
+  "statistical-superiority",
+  "industry-leader",
+  "2.0-release-gate-from-this-test-alone",
+]);
+
+function canonicalSha256(value) {
+  return sha256(JSON.stringify(value));
+}
+
+function gitObservation(repo, args, options = {}) {
+  return execFileSync("git", ["-C", repo, ...args], {
+    encoding: options.encoding ?? "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+    maxBuffer: 16 * 1024 * 1024,
+  });
+}
+
+export function observeTaskSourceAuthority(taskRoot, sourceCommit) {
+  const exactTaskRoot = realpathSync(resolve(taskRoot));
+  if (!COMMIT_PATTERN.test(sourceCommit ?? "")) {
+    throw new Error("task source observation requires an exact source commit");
+  }
+  const repositoryRoot = realpathSync(
+    gitObservation(exactTaskRoot, ["rev-parse", "--show-toplevel"]).trim(),
+  );
+  const relativeTaskRoot = relative(repositoryRoot, exactTaskRoot).split(sep).join("/");
+  if (!relativeTaskRoot || relativeTaskRoot.startsWith("../") || isAbsolute(relativeTaskRoot)) {
+    throw new Error(`task source observation escapes repository: ${exactTaskRoot}`);
+  }
+  try {
+    gitObservation(repositoryRoot, ["cat-file", "-e", `${sourceCommit}^{commit}`]);
+    gitObservation(repositoryRoot, ["merge-base", "--is-ancestor", sourceCommit, "HEAD"]);
+  } catch {
+    throw new Error(`task source commit is not an ancestor of current HEAD: ${sourceCommit}`);
+  }
+  let gitTreeOid;
+  let entries;
+  try {
+    gitTreeOid = gitObservation(
+      repositoryRoot,
+      ["rev-parse", `${sourceCommit}:${relativeTaskRoot}`],
+    ).trim();
+    entries = gitObservation(
+      repositoryRoot,
+      ["ls-tree", "-r", "-z", "--full-tree", sourceCommit, "--", relativeTaskRoot],
+      { encoding: "buffer" },
+    );
+  } catch {
+    throw new Error(`task source commit does not contain ${relativeTaskRoot}`);
+  }
+  if (!COMMIT_PATTERN.test(gitTreeOid)) {
+    throw new Error(`task source tree OID is invalid: ${relativeTaskRoot}`);
+  }
+  const prefix = `${relativeTaskRoot}/`;
+  const committedFiles = entries.toString("utf8").split("\0").filter(Boolean).map((entry) => {
+    const match = /^(\d+) (\w+) ([a-f0-9]{40,64})\t(.+)$/.exec(entry);
+    if (!match || match[2] !== "blob" || !match[4].startsWith(prefix)) {
+      throw new Error(`unsupported committed task entry: ${entry}`);
+    }
+    if (!new Set(["100644", "100755"]).has(match[1])) {
+      throw new Error(`committed task entry must be a regular file: ${match[4]}`);
+    }
+    const bytes = gitObservation(
+      repositoryRoot,
+      ["cat-file", "blob", match[3]],
+      { encoding: "buffer" },
+    );
+    return {
+      path: match[4].slice(prefix.length),
+      mode: match[1] === "100755" ? 0o755 : 0o644,
+      bytes: bytes.length,
+      sha256: sha256(bytes),
+    };
+  }).sort((left, right) => (left.path < right.path ? -1 : left.path > right.path ? 1 : 0));
+  if (!committedFiles.length) throw new Error(`source commit task tree is empty: ${relativeTaskRoot}`);
+  const committed = {
+    files: committedFiles,
+    sha256: sha256(committedFiles
+      .map((file) => `${file.path}\0${file.mode}\0${file.sha256}`)
+      .join("\n")),
+  };
+  const working = treeManifest(exactTaskRoot);
+  return {
+    schema_version: "0.1",
+    repository_root: repositoryRoot,
+    task_root: exactTaskRoot,
+    repository_relative_task_root: relativeTaskRoot,
+    source_commit: sourceCommit,
+    current_head_commit: gitObservation(repositoryRoot, ["rev-parse", "HEAD"]).trim(),
+    source_commit_ancestor_of_current_head: true,
+    git_tree_oid: gitTreeOid,
+    working_tree: working,
+    committed_tree: committed,
+    exact_working_tree_match: working.sha256 === committed.sha256
+      && JSON.stringify(working.files) === JSON.stringify(committed.files),
+  };
+}
+
+export function validatePreregisteredPlanReceipt(plan, planBytes, receiptBytes) {
+  const authority = plan?.preregistration_authority_contract;
+  if (authority?.schema_version !== "0.1"
+    || authority.receipt_ref !== COMPLETE_BLOCK_PREREGISTRATION_RECEIPT_REF
+    || authority.binding !== "exact-plan-file-bytes-sha256"
+    || authority.receipt_required_before_preparation !== true
+    || authority.plan_mutation_allowed_after_receipt !== false) {
+    throw new Error("matrix complete-block preregistration authority contract drift");
+  }
+  let receipt;
+  try {
+    receipt = JSON.parse(receiptBytes.toString("utf8"));
+  } catch {
+    throw new Error("matrix complete-block preregistration receipt must be valid JSON");
+  }
+  const planSha256 = sha256(planBytes);
+  if (receipt?.schema_version !== "0.2"
+    || receipt.status !== "PREREGISTERED_PROVIDER_ZERO"
+    || receipt.binding !== authority.binding
+    || receipt.receipt_ref !== authority.receipt_ref
+    || receipt.plan_sha256 !== planSha256
+    || receipt.plan_bytes !== planBytes.length
+    || receipt.experiment_id !== plan.experiment_id
+    || receipt.scheduled_cells !== 51
+    || receipt.task_set_sha256 !== plan.effort_sweep_contract?.task_set_sha256
+    || receipt.schedule_sha256 !== plan.effort_sweep_contract?.schedule_sha256
+    || ["provider_calls", "model_calls", "browser_calls", "network_calls", "cursor_calls", "claude_calls"]
+      .some((field) => receipt[field] !== 0)) {
+    throw new Error("matrix complete-block preregistration receipt does not bind exact plan bytes");
+  }
+  return { receipt, plan_sha256: planSha256, receipt_sha256: sha256(receiptBytes) };
+}
+
+export function readPreregisteredPlanAuthority(plan, {
+  planPath,
+  expectedReceiptPath,
+} = {}) {
+  if (!planPath || !expectedReceiptPath) {
+    throw new Error("matrix complete-block preparation requires planPath and expectedReceiptPath");
+  }
+  const exactPlanPath = resolve(planPath);
+  const exactExpectedReceiptPath = resolve(expectedReceiptPath);
+  const expectedFromPlan = resolve(
+    dirname(exactPlanPath),
+    plan.preregistration_authority_contract?.receipt_ref ?? "",
+  );
+  if (exactExpectedReceiptPath !== expectedFromPlan) {
+    throw new Error("matrix complete-block expected preregistration receipt path drift");
+  }
+  for (const [path, label] of [
+    [exactPlanPath, "plan"],
+    [exactExpectedReceiptPath, "preregistration receipt"],
+  ]) {
+    if (!existsSync(path)) throw new Error(`matrix complete-block ${label} is missing`);
+    const info = lstatSync(path);
+    if (info.isSymbolicLink() || !info.isFile()) {
+      throw new Error(`matrix complete-block ${label} must be an exact regular-file artifact`);
+    }
+  }
+  const planBytes = readFileSync(exactPlanPath);
+  const parsed = JSON.parse(planBytes.toString("utf8"));
+  if (JSON.stringify(parsed) !== JSON.stringify(plan)) {
+    throw new Error("matrix complete-block plan object differs from exact preregistered plan bytes");
+  }
+  const receiptBytes = readFileSync(exactExpectedReceiptPath);
+  return {
+    ...validatePreregisteredPlanReceipt(plan, planBytes, receiptBytes),
+    plan_bytes: planBytes,
+    receipt_bytes: receiptBytes,
+    plan_path: exactPlanPath,
+    receipt_path: exactExpectedReceiptPath,
+  };
+}
+
+function taskLockProjection(task) {
+  return {
+    task_id: task.task_id,
+    task_tree_sha256: task.task_tree_sha256,
+    task_tree_files: task.task_tree_files,
+    prompt_sha256: task.prompt_sha256,
+    starter_sha256: task.starter_sha256,
+    baseline_evidence_sha256: task.baseline_evidence_sha256,
+    baseline_provenance_sha256: task.baseline_provenance_sha256,
+    baseline_methodology: task.baseline_methodology,
+    source_contract_sha256: task.source_contract_sha256,
+  };
+}
+
+function taskTreeSha256FromFiles(files) {
+  return sha256(files
+    .map((file) => `${file.path}\0${file.mode}\0${file.sha256}`)
+    .join("\n"));
+}
+
+export function completeBlockTaskSetSha256(tasks) {
+  if (!Array.isArray(tasks) || tasks.length !== 3) {
+    throw new Error("matrix complete-block task set must contain exactly three ordered task locks");
+  }
+  return canonicalSha256(tasks.map(taskLockProjection));
+}
+
+function scheduleProjection(cells) {
+  return cells.map((cell) => ({
+    id: cell.id,
+    wave: cell.schedule_wave,
+    position: cell.schedule_position,
+    task_label: cell.schedule_task_label,
+    task_id: cell.task_id,
+    model_id: cell.model_id,
+    effort: cell.effort,
+    trial_index: cell.trial_index,
+  }));
+}
+
+export function completeBlockScheduleSha256(cells) {
+  if (!Array.isArray(cells) || cells.length !== 51) {
+    throw new Error("matrix complete-block schedule must contain exactly 51 cells");
+  }
+  return canonicalSha256(scheduleProjection(cells));
+}
+
+function modelEffortPairKey(pair) {
+  return `${pair.model_id}\0${pair.effort}`;
+}
+
+function orderedModelEffortPairs(contract) {
+  return (contract?.models ?? []).flatMap((profile) => (
+    profile.supported_efforts.map((effort) => ({ model_id: profile.model_id, effort }))
+  ));
+}
+
+function assertExactOrderedPairs(actual, expected, label) {
+  if (!Array.isArray(actual)
+    || JSON.stringify(actual) !== JSON.stringify(expected)) {
+    throw new Error(`${label} must exactly match the ordered Codex model-effort expansion`);
+  }
+}
+
+function hasExactPairSet(actual, expected) {
+  if (actual.length !== expected.length) return false;
+  const actualKeys = actual.map(modelEffortPairKey).sort();
+  const expectedKeys = expected.map(modelEffortPairKey).sort();
+  return JSON.stringify(actualKeys) === JSON.stringify(expectedKeys)
+    && new Set(actualKeys).size === actualKeys.length;
+}
+
+function validateTaskLocks(plan, taskOrder, policyLabel) {
+  const lockedTasks = plan.task_lock_contract?.tasks;
+  if (!Array.isArray(lockedTasks) || lockedTasks.length !== taskOrder.length) {
+    throw new Error(`matrix ${policyLabel} requires one task lock per unique task`);
+  }
+  if (JSON.stringify(lockedTasks.map((task) => task?.task_id)) !== JSON.stringify(taskOrder)) {
+    throw new Error(`matrix ${policyLabel} task locks must match first task occurrence order`);
+  }
+  for (const [index, task] of lockedTasks.entries()) {
+    for (const field of [
+      "task_tree_sha256",
+      "prompt_sha256",
+      "starter_sha256",
+      "baseline_evidence_sha256",
+      "baseline_provenance_sha256",
+      "source_contract_sha256",
+    ]) {
+      if (typeof task?.[field] !== "string" || !SHA256_PATTERN.test(task[field])) {
+        throw new Error(`matrix ${policyLabel} task lock ${index + 1}.${field} is invalid`);
+      }
+    }
+    if (!Array.isArray(task.task_tree_files) || task.task_tree_files.length < 1
+      || task.task_tree_files.some((file) => (
+        typeof file?.path !== "string" || !file.path
+        || !Number.isInteger(file.mode) || !Number.isInteger(file.bytes)
+        || !SHA256_PATTERN.test(file.sha256 ?? "")
+      ))) {
+      throw new Error(`matrix ${policyLabel} task lock ${index + 1}.task_tree_files is invalid`);
+    }
+    if (taskTreeSha256FromFiles(task.task_tree_files) !== task.task_tree_sha256) {
+      throw new Error(`matrix ${policyLabel} task lock ${index + 1}.task_tree_files hash drift`);
+    }
+    assertObjectiveMethodologyPin(
+      task.baseline_methodology,
+      `${policyLabel}:task-lock-${index + 1}:baseline-methodology`,
+    );
+  }
+}
+
+function assertExactCompleteBlockSchedule(plan, taskOrder) {
+  const schedule = plan.schedule_contract;
+  const expectedLabels = Object.fromEntries(["A", "B", "C"].map((label, index) => [
+    label,
+    taskOrder[index],
+  ]));
+  if (!schedule || schedule.schema_version !== "0.1"
+    || schedule.policy !== "balanced-three-wave-interleaved"
+    || schedule.canonicalization !== "sha256-json-stringify-ordered-cell-schedule-v1"
+    || JSON.stringify(schedule.task_labels) !== JSON.stringify(expectedLabels)
+    || JSON.stringify(schedule.base_model_effort_pair_order) !== JSON.stringify(COMPLETE_BLOCK_BASE_PAIR_ORDER)
+    || JSON.stringify(schedule.wave_rotations)
+      !== JSON.stringify(COMPLETE_BLOCK_SCHEDULE_WAVES.map((wave) => wave.rotation))
+    || JSON.stringify(schedule.wave_task_assignments)
+      !== JSON.stringify(COMPLETE_BLOCK_SCHEDULE_WAVES.map((wave) => [...wave.task_assignments]))) {
+    throw new Error("matrix complete-block effort scaling schedule blueprint drift");
+  }
+  const taskByLabel = new Map(Object.entries(expectedLabels));
+  const expectedCells = COMPLETE_BLOCK_SCHEDULE_WAVES.flatMap((wave, waveIndex) => {
+    const pairs = [
+      ...COMPLETE_BLOCK_BASE_PAIR_ORDER.slice(wave.rotation),
+      ...COMPLETE_BLOCK_BASE_PAIR_ORDER.slice(0, wave.rotation),
+    ];
+    return pairs.map((pair, position) => {
+      const [modelId, effort] = pair.split("/");
+      const taskLabel = wave.task_assignments[position];
+      return {
+        wave: waveIndex + 1,
+        position: position + 1,
+        task_label: taskLabel,
+        task_id: taskByLabel.get(taskLabel),
+        model_id: modelId,
+        effort,
+        trial_index: 1,
+      };
+    });
+  });
+  const observedCells = plan.cells.map((cell) => ({
+    wave: cell.schedule_wave,
+    position: cell.schedule_position,
+    task_label: cell.schedule_task_label,
+    task_id: cell.task_id,
+    model_id: cell.model_id,
+    effort: cell.effort,
+    trial_index: cell.trial_index,
+  }));
+  if (JSON.stringify(observedCells) !== JSON.stringify(expectedCells)) {
+    throw new Error("matrix complete-block effort scaling cells must follow the exact ordered schedule blueprint");
+  }
+  const taskSetSha = completeBlockTaskSetSha256(plan.task_lock_contract.tasks);
+  if (plan.task_lock_contract.task_set_sha256 !== taskSetSha
+    || plan.effort_sweep_contract.task_set_sha256 !== taskSetSha
+    || plan.lock_manifest?.task_set_sha256 !== taskSetSha) {
+    throw new Error("matrix complete-block effort scaling task-set hash drift");
+  }
+  const scheduleSha = completeBlockScheduleSha256(plan.cells);
+  if (schedule.schedule_sha256 !== scheduleSha
+    || plan.effort_sweep_contract.schedule_sha256 !== scheduleSha
+    || plan.lock_manifest?.schedule_sha256 !== scheduleSha) {
+    throw new Error("matrix complete-block effort scaling schedule hash drift");
+  }
+  return { taskSetSha, scheduleSha };
+}
+
+export function validateCompleteBlockEffortScalingPlan(plan) {
+  const policy = plan?.control_contract?.admission_normalization_policy;
+  if (policy !== "complete-block-effort-scaling") return null;
+  if (plan.schema_version !== "0.3") {
+    throw new Error("matrix complete-block effort scaling requires schema 0.3");
+  }
+  if (plan.family !== "model" || plan.control_contract.comparison_mode !== "effort-scaling") {
+    throw new Error("matrix complete-block effort scaling requires model family and effort-scaling comparison mode");
+  }
+  if (plan.reliability_contract !== undefined) {
+    throw new Error("matrix complete-block effort scaling forbids a Reliability contract");
+  }
+  const preregistrationAuthority = plan.preregistration_authority_contract;
+  if (preregistrationAuthority?.schema_version !== "0.1"
+    || preregistrationAuthority.receipt_ref !== COMPLETE_BLOCK_PREREGISTRATION_RECEIPT_REF
+    || preregistrationAuthority.binding !== "exact-plan-file-bytes-sha256"
+    || preregistrationAuthority.receipt_required_before_preparation !== true
+    || preregistrationAuthority.plan_mutation_allowed_after_receipt !== false) {
+    throw new Error("matrix complete-block preregistration authority contract drift");
+  }
+
+  const sweep = plan.effort_sweep_contract;
+  if (!sweep || typeof sweep !== "object" || Array.isArray(sweep)) {
+    throw new Error("matrix effort_sweep_contract is required for complete-block effort scaling");
+  }
+  if (sweep.required_cells !== 51 || sweep.tasks !== 3
+    || sweep.trials_per_task_pair !== 1 || sweep.complete_block_required !== true
+    || sweep.reliability_metric !== null) {
+    throw new Error("matrix effort_sweep_contract must lock 51 cells, 3 tasks, one trial per task-pair, a complete block, and null reliability_metric");
+  }
+
+  const effortContract = plan.codex_model_effort_contract;
+  const profileProjection = effortContract?.models?.map((profile) => ({
+    model_id: profile.model_id,
+    default_effort: profile.default_effort,
+    supported_efforts: profile.supported_efforts,
+  }));
+  if (!effortContract || JSON.stringify(profileProjection)
+    !== JSON.stringify(COMPLETE_BLOCK_CODEX_PROFILES)) {
+    throw new Error("matrix complete-block effort scaling requires exact ordered Luna5, Terra6, and Sol6 profiles and defaults");
+  }
+  const expectedPairs = orderedModelEffortPairs(effortContract);
+  if (expectedPairs.length !== 17 || new Set(expectedPairs.map(modelEffortPairKey)).size !== 17) {
+    throw new Error("matrix complete-block effort scaling requires exactly 17 distinct model-effort pairs");
+  }
+  assertExactOrderedPairs(
+    sweep.ordered_model_effort_pairs,
+    expectedPairs,
+    "matrix effort_sweep_contract.ordered_model_effort_pairs",
+  );
+
+  const routing = plan.provider_routing_contract;
+  if (!routing || routing.cursor_allowed !== false || routing.allowed_runtime !== "codex"
+    || routing.claude_code_allowed !== false || routing.aliases_allowed !== false
+    || routing.retry_allowed !== false || routing.replacement_allowed !== false
+    || routing.fallback_allowed !== false || routing.model_substitution_allowed !== false
+    || routing.effort_substitution_allowed !== false || routing.task_substitution_allowed !== false
+    || routing.fail_closed !== true
+    || JSON.stringify(routing.allowed_model_ids) !== JSON.stringify(COMPLETE_BLOCK_CODEX_MODELS)) {
+    throw new Error("matrix complete-block effort scaling provider routing must exactly forbid aliases, fallback, model/effort/task substitution, Cursor, and Claude Code");
+  }
+  assertExactOrderedPairs(
+    routing.allowed_model_effort_pairs,
+    expectedPairs,
+    "matrix provider_routing_contract.allowed_model_effort_pairs",
+  );
+
+  const taskOrder = [...new Set(plan.cells.map((cell) => cell.task_id))];
+  if (taskOrder.length !== 3 || plan.cells.length !== 51) {
+    throw new Error("matrix complete-block effort scaling requires exactly 3 tasks × 17 pairs = 51 cells");
+  }
+  validateTaskLocks(plan, taskOrder, "complete-block effort scaling");
+  for (const [index, task] of plan.task_lock_contract.tasks.entries()) {
+    if (task.source_commit !== plan.task_lock_contract.source_commit
+      || !COMMIT_PATTERN.test(task.source_commit ?? "")
+      || !COMMIT_PATTERN.test(task.git_tree_oid ?? "")
+      || task.observed_task_tree_sha256 !== task.task_tree_sha256) {
+      throw new Error(`matrix complete-block effort scaling task lock ${index + 1} lacks exact source-commit/tree observation`);
+    }
+  }
+
+  const control = plan.control_contract;
+  if (control.timeout_seconds !== 720 || control.max_concurrency !== 1
+    || control.latency_comparison !== "descriptive-only"
+    || control.retry_policy !== "none-primary" || control.replacement_policy !== "none"
+    || control.fallback_policy !== "none" || control.model_substitution_policy !== "none"
+    || control.effort_substitution_policy !== "none" || control.task_substitution_policy !== "none"
+    || control.task_order_policy !== "fixed-preregistered"
+    || control.pacing?.policy !== "fixed-inter-cell"
+    || control.pacing.inter_cell_delay_seconds !== 30
+    || control.pacing.applies_between_cells_only !== true
+    || control.pacing.counts_toward_cell_wall_time !== false) {
+    throw new Error("matrix complete-block effort scaling execution contract drift");
+  }
+  const checkpoint = plan.checkpoint_continuation_contract;
+  if (checkpoint?.max_new_cells_per_invocation !== 1
+    || checkpoint.preserve_completed_cells !== true
+    || checkpoint.completed_root_not_resumable !== true) {
+    throw new Error("matrix complete-block effort scaling checkpoint contract must allow exactly one new cell");
+  }
+  const claim = plan.comparison_claim_contract;
+  if (claim?.claim !== "internal-effort-scaling-compatibility"
+    || claim.publication_tier !== "internal-effort-scaling-compatibility"
+    || claim.descriptive_only !== true || claim.requires_complete_51_cell_block !== true
+    || claim.cross_model_pooling_allowed !== false
+    || JSON.stringify(claim.forbid_claims) !== JSON.stringify(COMPLETE_BLOCK_FORBIDDEN_CLAIMS)) {
+    throw new Error("matrix complete-block effort scaling descriptive-only claim boundary drift");
+  }
+  const interpretation = plan.interpretation_contract;
+  if (!interpretation || interpretation.mode !== "complete-block-only"
+    || interpretation.interpretation_allowed_before_all_51_terminal !== false
+    || interpretation.incomplete_block_disposition !== "freeze-without-comparative-claim"
+    || interpretation.unit_of_analysis !== "task-specific-model-effort-cell"
+    || interpretation.cross_model_pooling_allowed !== false
+    || interpretation.reliability_interpretation_allowed !== false) {
+    throw new Error("matrix complete-block effort scaling interpretation block drift");
+  }
+  const exposure = plan.exposure_evidence_contract;
+  if (!exposure || exposure.scope !== "generator-invocation-only"
+    || exposure.evidence !== "generation_attestation"
+    || exposure.historical_task_exposure !== "unknown-not-asserted"
+    || exposure.prior_task_exposure_claim_made !== false) {
+    throw new Error("matrix complete-block effort scaling exposure evidence boundary drift");
+  }
+  const snapshot = plan.codex_catalog_snapshot_contract;
+  let authSnapshotValid = false;
+  if (isAbsolute(snapshot?.auth_json_source_path ?? "")
+    && existsSync(snapshot.auth_json_source_path)) {
+    const authInfo = lstatSync(snapshot.auth_json_source_path);
+    authSnapshotValid = authInfo.isFile()
+      && !authInfo.isSymbolicLink()
+      && authInfo.size === snapshot.auth_json_bytes
+      && sha256(readFileSync(snapshot.auth_json_source_path)) === snapshot.auth_json_sha256;
+  }
+  const cliCacheVersionsMatch = snapshot?.codex_cli?.version === effortContract.cache_client_version;
+  const cacheClientPolicyValid = snapshot?.cli_cache_client_version_policy === "require-exact-match"
+    ? cliCacheVersionsMatch
+      && snapshot.cli_cache_client_version_mismatch_justification === null
+    : snapshot?.cli_cache_client_version_policy === "explicit-locked-mismatch"
+      && !cliCacheVersionsMatch
+      && typeof snapshot.cli_cache_client_version_mismatch_justification === "string"
+      && snapshot.cli_cache_client_version_mismatch_justification.trim().length > 0;
+  if (!snapshot || snapshot.enforcement_mode !== "exact-runtime-per-invocation"
+    || !isAbsolute(snapshot.auth_json_source_path ?? "")
+    || snapshot.auth_json_source_mode !== "immutable-snapshot-only"
+    || !SHA256_PATTERN.test(snapshot.auth_json_sha256 ?? "")
+    || !Number.isInteger(snapshot.auth_json_bytes) || snapshot.auth_json_bytes < 1
+    || snapshot.auth_json_mode !== "isolated-copy-before-provider-execution"
+    || snapshot.mutable_auth_fallback_allowed !== false
+    || !authSnapshotValid
+    || !isAbsolute(snapshot.models_cache_source_path ?? "")
+    || snapshot.models_cache_sha256 !== effortContract.cache_sha256
+    || snapshot.models_cache_source_mode !== "immutable-snapshot-only"
+    || snapshot.mutable_models_cache_fallback_allowed !== false
+    || !isAbsolute(snapshot.codex_cli?.executable_path ?? "")
+    || !isAbsolute(snapshot.codex_cli?.native_executable_path ?? "")
+    || !SHA256_PATTERN.test(snapshot.codex_cli?.binary_sha256 ?? "")
+    || !SHA256_PATTERN.test(snapshot.codex_cli?.native_binary_sha256 ?? "")
+    || !cacheClientPolicyValid
+    || plan.lock_manifest?.codex_catalog_snapshot_contract_sha256
+      !== canonicalSha256(snapshot)) {
+    throw new Error("matrix complete-block effort scaling exact catalog/auth/cache/CLI binding drift");
+  }
+
+  const semanticFields = ["variant_id", "system_id", "runtime", "timeout_seconds", "allow_dirty_source"];
+  for (const field of semanticFields) {
+    if (new Set(plan.cells.map((cell) => JSON.stringify(cell[field] ?? null))).size !== 1) {
+      throw new Error(`matrix complete-block effort scaling allows only model_id and effort to vary across semantic arm field ${field}`);
+    }
+  }
+  if (plan.cells[0].runtime !== "codex") {
+    throw new Error("matrix complete-block effort scaling requires the Codex runtime");
+  }
+  if (new Set(plan.cells.map((cell) => cell.trial_index)).size !== 1) {
+    throw new Error("matrix complete-block effort scaling requires one shared trial index");
+  }
+
+  const skillLock = plan.skill_lock_contract;
+  if (!skillLock || !COMMIT_PATTERN.test(skillLock.source_commit ?? "")
+    || !SHA256_PATTERN.test(skillLock.source_tree_sha256 ?? "")
+    || !SHA256_PATTERN.test(skillLock.skill_tree_sha256 ?? "")) {
+    throw new Error("matrix complete-block effort scaling requires one exact skill/source lock");
+  }
+
+  for (const taskId of taskOrder) {
+    const group = plan.cells.filter((cell) => cell.task_id === taskId);
+    if (!hasExactPairSet(group, expectedPairs)) {
+      throw new Error(`matrix complete-block effort scaling task ${taskId} must contain the exact model-effort pair set`);
+    }
+  }
+  for (const cell of plan.cells) {
+    assertProviderRoute({ runtime: cell.runtime, model: cell.model_id });
+  }
+  const hashes = assertExactCompleteBlockSchedule(plan, taskOrder);
+  return {
+    task_order: taskOrder,
+    ordered_model_effort_pairs: expectedPairs,
+    task_set_sha256: hashes.taskSetSha,
+    schedule_sha256: hashes.scheduleSha,
+  };
+}
 
 export function validateCodexModelEffortContract(plan) {
   const contract = plan?.codex_model_effort_contract;
@@ -160,6 +767,7 @@ export function validateControlContract(plan) {
       "cross-task-reliability",
       "multi-task-repeated-reliability",
       "paired-cross-task-comparison",
+      "complete-block-effort-scaling",
     ].includes(admissionNormalizationPolicy)
     && control.task_order_policy !== "fixed-preregistered"
   ) {
@@ -491,10 +1099,20 @@ export function validateRunMatrixPlan(plan) {
     } else if (cell.host_policy_mode !== undefined) {
       throw new Error(`${label}.host_policy_mode requires matrix host policy configuration`);
     }
-    const pairKey = `${cell.task_id}\0${cell.trial_index}\0${cell.system_id}`;
-    if (pairKeys.has(pairKey)) throw new Error(`duplicate task/trial/system cell: ${pairKey.replaceAll("\0", "/")}`);
+    const completeBlockEffortScaling = plan.control_contract?.admission_normalization_policy
+      === "complete-block-effort-scaling";
+    const pairKey = completeBlockEffortScaling
+      ? `${cell.task_id}\0${cell.trial_index}\0${cell.system_id}\0${cell.model_id}\0${cell.effort}`
+      : `${cell.task_id}\0${cell.trial_index}\0${cell.system_id}`;
+    if (pairKeys.has(pairKey)) {
+      const tuple = completeBlockEffortScaling
+        ? "task/trial/system/model/effort"
+        : "task/trial/system";
+      throw new Error(`duplicate ${tuple} cell: ${pairKey.replaceAll("\0", "/")}`);
+    }
     pairKeys.add(pairKey);
   }
+  validateCompleteBlockEffortScalingPlan(plan);
   if (plan.control_contract?.admission_normalization_policy === "cross-task-reliability") {
     const taskIds = plan.cells.map((cell) => cell.task_id);
     if (taskIds.length < 2 || new Set(taskIds).size !== taskIds.length) {
@@ -652,12 +1270,22 @@ export function validateRunMatrixPlan(plan) {
   return plan;
 }
 
-export function prepareArgsForCell(cell, workspace, { vendorsRoot = null } = {}) {
+export function prepareArgsForCell(cell, workspace, {
+  vendorsRoot = null,
+  taskSourceCommit = null,
+  authSnapshot = null,
+} = {}) {
   return [
     "--task", cell.task_id,
     "--variant", cell.variant_id,
     "--runtime", cell.runtime,
     ...(vendorsRoot ? ["--vendors", vendorsRoot] : []),
+    ...(taskSourceCommit ? ["--task-source-commit", taskSourceCommit] : []),
+    ...(authSnapshot ? [
+      "--auth-json-source", authSnapshot.auth_json_source_path,
+      "--auth-json-sha256", authSnapshot.auth_json_sha256,
+      "--auth-json-bytes", String(authSnapshot.auth_json_bytes),
+    ] : []),
     "--out", workspace,
     ...(cell.allow_dirty_source === true ? ["--allow-dirty-source"] : []),
   ];
@@ -693,14 +1321,41 @@ export function sealPreparedGitBaseline(workspace) {
   };
 }
 
-export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
+export function prepareRunMatrix(plan, {
+  outputRoot = plan.output_root,
+  planPath = null,
+  expectedReceiptPath = null,
+} = {}) {
   validateRunMatrixPlan(plan);
+  const completeBlock = validateCompleteBlockEffortScalingPlan(plan);
   const root = resolve(outputRoot);
+  if (completeBlock && root !== resolve(plan.output_root)) {
+    throw new Error("complete-block preparation output root must match the preregistered plan");
+  }
+  const preregistrationAuthority = completeBlock
+    ? readPreregisteredPlanAuthority(plan, { planPath, expectedReceiptPath })
+    : null;
   if (existsSync(root)) throw new Error(`refusing to overwrite an existing matrix root: ${root}`);
   mkdirSync(root, { recursive: true });
 
   const objectiveEvaluator = currentObjectiveMethodology();
-  const lockedPlan = { ...plan, output_root: root, objective_evaluator: objectiveEvaluator };
+  const lockedPlan = completeBlock
+    ? plan
+    : { ...plan, output_root: root, objective_evaluator: objectiveEvaluator };
+  const lockedPlanPath = join(root, "RUN-MATRIX.locked.json");
+  if (completeBlock) {
+    writeFileSync(lockedPlanPath, preregistrationAuthority.plan_bytes);
+    writeFileSync(
+      join(root, plan.preregistration_authority_contract.receipt_ref),
+      preregistrationAuthority.receipt_bytes,
+    );
+  } else {
+    writeJson(lockedPlanPath, lockedPlan);
+  }
+  const lockedPlanSha256 = sha256(readFileSync(lockedPlanPath));
+  if (completeBlock && lockedPlanSha256 !== preregistrationAuthority.plan_sha256) {
+    throw new Error("complete-block locked plan no longer matches preregistration receipt");
+  }
   const state = {
     schema_version: plan.schema_version,
     experiment_id: plan.experiment_id,
@@ -711,10 +1366,14 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
     output_root: root,
     scheduled_cells: plan.cells.length,
     prepared_cells: 0,
+    locked_plan_sha256: lockedPlanSha256,
+    preregistration_receipt_sha256: preregistrationAuthority?.receipt_sha256 ?? null,
+    preregistration_plan_sha256: preregistrationAuthority?.plan_sha256 ?? null,
+    task_set_sha256: completeBlock?.task_set_sha256 ?? null,
+    schedule_sha256: completeBlock?.schedule_sha256 ?? null,
     objective_evaluator: objectiveEvaluator,
     cells: [],
   };
-  writeJson(join(root, "RUN-MATRIX.locked.json"), lockedPlan);
   writeJson(join(root, "matrix-state.json"), state);
 
   const prepareScript = resolve(fileURLToPath(new URL("./prepare-sandbox.mjs", import.meta.url)));
@@ -723,13 +1382,60 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
     try {
       execFileSync(process.execPath, [
         prepareScript,
-        ...prepareArgsForCell(cell, workspace, { vendorsRoot: plan.vendors_root ?? null }),
+        ...prepareArgsForCell(cell, workspace, {
+          vendorsRoot: plan.vendors_root ?? null,
+          taskSourceCommit: completeBlock ? plan.task_lock_contract.source_commit : null,
+          authSnapshot: completeBlock ? plan.codex_catalog_snapshot_contract : null,
+        }),
       ], {
         cwd: resolve(fileURLToPath(new URL("../../..", import.meta.url))),
         stdio: "pipe",
       });
       const manifest = readJson(join(workspace, ".benchmark", "manifest.json"));
       assertObjectiveMethodologyPin(manifest.objective_evaluator, `${cell.id}:manifest`);
+      const taskLock = plan.task_lock_contract?.tasks?.find((task) => task.task_id === cell.task_id)
+        ?? null;
+      const sourceObservation = manifest.task.source_observation ?? null;
+      const observedTaskTreeSha256 = sourceObservation?.working_tree?.sha256 ?? null;
+      const preparedAuthPath = join(workspace, ".codex", "auth.json");
+      const preparedAuthInfo = completeBlock && existsSync(preparedAuthPath)
+        ? lstatSync(preparedAuthPath)
+        : null;
+      if (completeBlock && (
+        !taskLock
+        || sourceObservation?.observer !== "prepare-sandbox-independent-task-root-byte-mode-v1"
+        || sourceObservation?.source_commit !== taskLock.source_commit
+        || sourceObservation?.git_tree_oid !== taskLock.git_tree_oid
+        || sourceObservation?.exact_working_tree_match !== true
+        || sourceObservation?.committed_tree?.sha256 !== taskLock.task_tree_sha256
+        || observedTaskTreeSha256 !== taskLock.task_tree_sha256
+        || JSON.stringify(sourceObservation?.working_tree?.files)
+          !== JSON.stringify(taskLock.task_tree_files)
+        || JSON.stringify(sourceObservation?.committed_tree?.files)
+          !== JSON.stringify(taskLock.task_tree_files)
+        || preparedAuthInfo?.isSymbolicLink() === true
+        || preparedAuthInfo?.isFile() !== true
+        || preparedAuthInfo.size !== plan.codex_catalog_snapshot_contract.auth_json_bytes
+        || sha256(readFileSync(preparedAuthPath))
+          !== plan.codex_catalog_snapshot_contract.auth_json_sha256
+        || manifest.runtime_auth_snapshot?.source_mode !== "immutable-snapshot-only"
+        || manifest.runtime_auth_snapshot?.copy_mode !== "isolated-regular-file"
+        || manifest.runtime_auth_snapshot?.sha256
+          !== plan.codex_catalog_snapshot_contract.auth_json_sha256
+        || manifest.runtime_auth_snapshot?.bytes
+          !== plan.codex_catalog_snapshot_contract.auth_json_bytes
+        || manifest.runtime_auth_snapshot?.mutable_fallback_allowed !== false
+        || manifest.runtime_auth_snapshot?.verified_before_provider_execution !== true
+        || manifest.task.baseline_provenance?.sha256 !== taskLock.baseline_provenance_sha256
+        || JSON.stringify(manifest.task.baseline_provenance?.methodology)
+          !== JSON.stringify(taskLock.baseline_methodology)
+      )) {
+        throw new Error(`${cell.id}:prepared task tree authority is missing or inconsistent`);
+      }
+      manifest.task.observed_task_tree_sha256 = observedTaskTreeSha256;
+      manifest.task.source_commit = sourceObservation?.source_commit ?? null;
+      manifest.task.git_tree_oid = sourceObservation?.git_tree_oid ?? null;
+      writeJson(join(workspace, ".benchmark", "manifest.json"), manifest);
       const hostPolicyConfig = plan.host_policy_comparison ?? plan.shared_host_policy ?? null;
       const hostPolicy = hostPolicyConfig
         ? prepareHostPolicyCell(
@@ -760,6 +1466,11 @@ export function prepareRunMatrix(plan, { outputRoot = plan.output_root } = {}) {
         task_version: manifest.task.version,
         task_prompt_sha256: manifest.task.core_prompt_sha256,
         starter_sha256: manifest.task.starter_sha256,
+        observed_task_tree_sha256: manifest.task.observed_task_tree_sha256,
+        task_source_commit: manifest.task.source_commit,
+        task_git_tree_oid: manifest.task.git_tree_oid,
+        baseline_provenance_sha256: manifest.task.baseline_provenance?.sha256 ?? null,
+        baseline_methodology: manifest.task.baseline_provenance?.methodology ?? null,
         skill_sha256: manifest.skill?.sha256 ?? null,
         agent_bundle_sha256: manifest.agents?.sha256 ?? null,
         source_commit: manifest.skill?.source_commit ?? null,
@@ -805,12 +1516,19 @@ async function main() {
   const planPath = args.get("plan") ? resolve(String(args.get("plan"))) : null;
   const outputRoot = args.get("out") ? resolve(String(args.get("out"))) : null;
   if (!planPath) {
-    console.error("usage: prepare-run-matrix.mjs --plan <matrix.json> [--out <new-root>]");
+    console.error("usage: prepare-run-matrix.mjs --plan <matrix.json> [--preregistration-receipt <receipt.json>] [--out <new-root>]");
     process.exitCode = 2;
     return;
   }
   const plan = readJson(planPath);
-  const state = prepareRunMatrix(plan, outputRoot ? { outputRoot } : undefined);
+  const expectedReceiptPath = args.get("preregistration-receipt")
+    ? resolve(String(args.get("preregistration-receipt")))
+    : null;
+  const state = prepareRunMatrix(plan, {
+    ...(outputRoot ? { outputRoot } : {}),
+    planPath,
+    expectedReceiptPath,
+  });
   console.log(JSON.stringify(state, null, 2));
 }
 

@@ -1,10 +1,26 @@
+import { execFileSync } from "node:child_process";
+import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
+  COMPLETE_BLOCK_BASE_PAIR_ORDER,
+  COMPLETE_BLOCK_SCHEDULE_WAVES,
+  completeBlockScheduleSha256,
+  completeBlockTaskSetSha256,
+  observeTaskSourceAuthority,
   prepareArgsForCell,
   validateCodexModelEffortContract,
   validateControlContract,
   validateRunMatrixPlan,
 } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-run-matrix.mjs";
+import { sha256 } from "../../../benchmarks/ui-resolve-bench/scripts/_lib.mjs";
+import { currentObjectiveMethodology } from "../../../benchmarks/ui-resolve-bench/scripts/objective-methodology-contract.mjs";
+
+const immutableAuthFixtureRoot = mkdtempSync(join(tmpdir(), "omd-auth-snapshot-"));
+const immutableAuthFixturePath = join(immutableAuthFixtureRoot, "auth.json");
+const immutableAuthFixtureBytes = Buffer.from('{"fixture":"immutable-auth"}\n');
+writeFileSync(immutableAuthFixturePath, immutableAuthFixtureBytes);
 
 function plan(overrides = {}) {
   return {
@@ -54,6 +70,212 @@ function controlContract(overrides = {}) {
     },
     ...overrides,
   };
+}
+
+function completeBlockEffortPlan() {
+  const models = [
+    ["gpt-5.6-luna", "medium", ["low", "medium", "high", "xhigh", "max"]],
+    ["gpt-5.6-terra", "medium", ["low", "medium", "high", "xhigh", "max", "ultra"]],
+    ["gpt-5.6-sol", "low", ["low", "medium", "high", "xhigh", "max", "ultra"]],
+  ].map(([model_id, default_effort, supported_efforts], index) => ({
+    model_id,
+    model_profile_sha256: String(index + 1).repeat(64),
+    default_effort,
+    supported_efforts,
+  }));
+  const orderedPairs = models.flatMap((model) => model.supported_efforts.map((effort) => ({
+    model_id: model.model_id,
+    effort,
+  })));
+  const tasks = ["task-alpha-v0.1", "task-beta-v0.1", "task-gamma-v0.1"];
+  const locks = tasks.map((task_id, index) => {
+    const digest = String(index + 4).repeat(64);
+    const task_tree_files = [{ path: "task.json", mode: 0o644, bytes: 2, sha256: digest }];
+    const task_tree_sha256 = sha256(`task.json\0${0o644}\0${digest}`);
+    return {
+      task_id,
+      source_commit: "b".repeat(40),
+      git_tree_oid: String(index + 7).repeat(40),
+      observed_task_tree_sha256: task_tree_sha256,
+      task_tree_sha256,
+      task_tree_files,
+      prompt_sha256: digest,
+      starter_sha256: digest,
+      baseline_evidence_sha256: digest,
+      baseline_provenance_sha256: digest,
+      baseline_methodology: currentObjectiveMethodology(),
+      source_contract_sha256: digest,
+    };
+  });
+  const taskByLabel = new Map(["A", "B", "C"].map((label, index) => [label, tasks[index]]));
+  const cells = COMPLETE_BLOCK_SCHEDULE_WAVES.flatMap((wave, waveIndex) => {
+    const pairs = [
+      ...COMPLETE_BLOCK_BASE_PAIR_ORDER.slice(wave.rotation),
+      ...COMPLETE_BLOCK_BASE_PAIR_ORDER.slice(0, wave.rotation),
+    ];
+    return pairs.map((key, position) => {
+      const [model_id, effort] = key.split("/");
+      const taskLabel = wave.task_assignments[position];
+      return {
+        id: `wave-${waveIndex + 1}-position-${position + 1}`,
+        task_id: taskByLabel.get(taskLabel),
+        variant_id: "omd-portable-current",
+        system_id: "omd-apply-current",
+        runtime: "codex",
+        model_id,
+        effort,
+        timeout_seconds: 720,
+        trial_index: 1,
+        schedule_wave: waveIndex + 1,
+        schedule_position: position + 1,
+        schedule_task_label: taskLabel,
+      };
+    });
+  });
+  const taskSetSha256 = completeBlockTaskSetSha256(locks);
+  const scheduleSha256 = completeBlockScheduleSha256(cells);
+  const snapshot = {
+    enforcement_mode: "exact-runtime-per-invocation",
+    auth_json_source_path: immutableAuthFixturePath,
+    auth_json_source_mode: "immutable-snapshot-only",
+    auth_json_sha256: sha256(immutableAuthFixtureBytes),
+    auth_json_bytes: immutableAuthFixtureBytes.length,
+    auth_json_mode: "isolated-copy-before-provider-execution",
+    mutable_auth_fallback_allowed: false,
+    models_cache_source_path: "/private/tmp/omd-auth-fixture/models_cache.json",
+    models_cache_sha256: "a".repeat(64),
+    models_cache_source_mode: "immutable-snapshot-only",
+    mutable_models_cache_fallback_allowed: false,
+    codex_cli: {
+      executable_path: "/private/tmp/omd-cli-fixture/codex",
+      native_executable_path: "/private/tmp/omd-cli-fixture/codex-native",
+      version: "0.147.0",
+      binary_sha256: "e".repeat(64),
+      native_binary_sha256: "f".repeat(64),
+    },
+    cli_cache_client_version_policy: "require-exact-match",
+    cli_cache_client_version_mismatch_justification: null,
+  };
+  return plan({
+    schema_version: "0.3",
+    suite_version: "ui-resolve-v0.2",
+    product_version: "fixture",
+    execution_purpose: "complete-block-effort-scaling",
+    preregistration_authority_contract: {
+      schema_version: "0.1",
+      receipt_ref: "PREREGISTRATION.receipt.json",
+      binding: "exact-plan-file-bytes-sha256",
+      receipt_required_before_preparation: true,
+      plan_mutation_allowed_after_receipt: false,
+    },
+    family: "model",
+    control_contract: controlContract({
+      comparison_mode: "effort-scaling",
+      task_order_policy: "fixed-preregistered",
+      admission_normalization_policy: "complete-block-effort-scaling",
+      timeout_seconds: 720,
+      latency_comparison: "descriptive-only",
+      replacement_policy: "none",
+      fallback_policy: "none",
+      model_substitution_policy: "none",
+      effort_substitution_policy: "none",
+      task_substitution_policy: "none",
+      pacing: {
+        policy: "fixed-inter-cell",
+        inter_cell_delay_seconds: 30,
+        applies_between_cells_only: true,
+        counts_toward_cell_wall_time: false,
+      },
+    }),
+    codex_model_effort_contract: {
+      cache_sha256: "a".repeat(64),
+      cache_fetched_at: "2026-08-09T04:32:08Z",
+      cache_client_version: "0.147.0",
+      models,
+    },
+    codex_catalog_snapshot_contract: snapshot,
+    effort_sweep_contract: {
+      required_cells: 51,
+      tasks: 3,
+      trials_per_task_pair: 1,
+      complete_block_required: true,
+      reliability_metric: null,
+      ordered_model_effort_pairs: orderedPairs,
+      task_set_sha256: taskSetSha256,
+      schedule_sha256: scheduleSha256,
+    },
+    provider_routing_contract: {
+      cursor_allowed: false,
+      claude_code_allowed: false,
+      allowed_runtime: "codex",
+      allowed_model_ids: models.map((model) => model.model_id),
+      allowed_model_effort_pairs: orderedPairs,
+      aliases_allowed: false,
+      retry_allowed: false,
+      replacement_allowed: false,
+      fallback_allowed: false,
+      model_substitution_allowed: false,
+      effort_substitution_allowed: false,
+      task_substitution_allowed: false,
+      fail_closed: true,
+    },
+    task_lock_contract: { source_commit: "b".repeat(40), task_set_sha256: taskSetSha256, tasks: locks },
+    skill_lock_contract: {
+      source_commit: "b".repeat(40),
+      source_tree_sha256: "c".repeat(64),
+      skill_tree_sha256: "d".repeat(64),
+    },
+    schedule_contract: {
+      schema_version: "0.1",
+      policy: "balanced-three-wave-interleaved",
+      canonicalization: "sha256-json-stringify-ordered-cell-schedule-v1",
+      task_labels: { A: tasks[0], B: tasks[1], C: tasks[2] },
+      base_model_effort_pair_order: [...COMPLETE_BLOCK_BASE_PAIR_ORDER],
+      wave_rotations: COMPLETE_BLOCK_SCHEDULE_WAVES.map((wave) => wave.rotation),
+      wave_task_assignments: COMPLETE_BLOCK_SCHEDULE_WAVES.map((wave) => [...wave.task_assignments]),
+      schedule_sha256: scheduleSha256,
+    },
+    checkpoint_continuation_contract: {
+      max_new_cells_per_invocation: 1,
+      preserve_completed_cells: true,
+      completed_root_not_resumable: true,
+    },
+    comparison_claim_contract: {
+      claim: "internal-effort-scaling-compatibility",
+      publication_tier: "internal-effort-scaling-compatibility",
+      descriptive_only: true,
+      requires_complete_51_cell_block: true,
+      cross_model_pooling_allowed: false,
+      forbid_claims: [
+        "model-superiority",
+        "model-ranking",
+        "cross-model-effort-equivalence",
+        "statistical-superiority",
+        "industry-leader",
+        "2.0-release-gate-from-this-test-alone",
+      ],
+    },
+    interpretation_contract: {
+      mode: "complete-block-only",
+      interpretation_allowed_before_all_51_terminal: false,
+      incomplete_block_disposition: "freeze-without-comparative-claim",
+      unit_of_analysis: "task-specific-model-effort-cell",
+      cross_model_pooling_allowed: false,
+      reliability_interpretation_allowed: false,
+    },
+    exposure_evidence_contract: {
+      scope: "generator-invocation-only",
+      evidence: "generation_attestation",
+      historical_task_exposure: "unknown-not-asserted",
+      prior_task_exposure_claim_made: false,
+    },
+    lock_manifest: {
+      task_set_sha256: taskSetSha256,
+      schedule_sha256: scheduleSha256,
+      codex_catalog_snapshot_contract_sha256: sha256(JSON.stringify(snapshot)),
+    },
+    cells,
+  });
 }
 
 describe("UI-Resolve run matrix preparation", () => {
@@ -238,9 +460,12 @@ describe("UI-Resolve run matrix preparation", () => {
     expect(() => validateRunMatrixPlan(current)).toThrow("requires zero delay");
   });
 
-  it("rejects duplicate task/trial/system cells", () => {
+  it("preserves legacy task/trial/system uniqueness outside effort scaling", () => {
     const value = plan();
     value.cells.push({ ...value.cells[0], id: "pricing-t1-portable-copy" });
+    expect(() => validateRunMatrixPlan(value)).toThrow("duplicate task/trial/system cell");
+
+    value.cells[1].effort = "high";
     expect(() => validateRunMatrixPlan(value)).toThrow("duplicate task/trial/system cell");
   });
 
@@ -365,6 +590,50 @@ describe("UI-Resolve run matrix preparation", () => {
     expect(() => validateRunMatrixPlan(wrongLockOrder)).toThrow("first task occurrence order");
   });
 
+  it("validates the exact 3-task × 17-pair complete effort block without Reliability semantics", () => {
+    const current = completeBlockEffortPlan();
+    expect(validateRunMatrixPlan(current).cells).toHaveLength(51);
+
+    const missingPair = structuredClone(current);
+    missingPair.cells.pop();
+    expect(() => validateRunMatrixPlan(missingPair)).toThrow("3 tasks × 17 pairs = 51 cells");
+
+    const interleaved = structuredClone(current);
+    const taskIds = interleaved.task_lock_contract.tasks.map((task) => task.task_id);
+    const taskGroups = taskIds.map((taskId, taskIndex) => {
+      const group = interleaved.cells.filter((cell) => cell.task_id === taskId);
+      return [...group.slice(taskIndex), ...group.slice(0, taskIndex)];
+    });
+    interleaved.cells = Array.from({ length: 17 }, (_, pairIndex) => (
+      taskGroups.map((group) => group[pairIndex])
+    )).flat();
+    expect(() => validateRunMatrixPlan(interleaved)).toThrow("exact ordered schedule blueprint");
+
+    const exactDuplicate = structuredClone(current);
+    exactDuplicate.cells[1] = {
+      ...exactDuplicate.cells[0],
+      id: exactDuplicate.cells[1].id,
+    };
+    expect(() => validateRunMatrixPlan(exactDuplicate))
+      .toThrow("duplicate task/trial/system/model/effort cell");
+
+    const semanticDrift = structuredClone(current);
+    semanticDrift.cells.at(-1).system_id = "model-specific-system";
+    expect(() => validateRunMatrixPlan(semanticDrift)).toThrow("semantic arm field system_id");
+
+    const reliability = structuredClone(current);
+    reliability.reliability_contract = { required_cells: 51 };
+    expect(() => validateRunMatrixPlan(reliability)).toThrow("forbids a Reliability contract");
+
+    const routingAlias = structuredClone(current);
+    routingAlias.provider_routing_contract.allowed_model_ids[0] = "gpt-5.6-luna-preview";
+    expect(() => validateRunMatrixPlan(routingAlias)).toThrow("provider routing must exactly forbid");
+
+    const pairExpansionDrift = structuredClone(current);
+    pairExpansionDrift.effort_sweep_contract.ordered_model_effort_pairs.reverse();
+    expect(() => validateRunMatrixPlan(pairExpansionDrift)).toThrow("ordered Codex model-effort expansion");
+  });
+
   it("validates optional harness delivery gates before workspace preparation", () => {
     const value = plan({
       harness_delivery_gates: {
@@ -470,5 +739,88 @@ describe("UI-Resolve run matrix preparation", () => {
       "--vendors", "/tmp/pinned-vendors",
       "--out", "/tmp/u197/pricing-t1-portable",
     ]);
+    expect(prepareArgsForCell(
+      plan().cells[0],
+      "/tmp/u197/pricing-t1-portable",
+      {
+        taskSourceCommit: "b".repeat(40),
+        authSnapshot: {
+          auth_json_source_path: immutableAuthFixturePath,
+          auth_json_sha256: sha256(immutableAuthFixtureBytes),
+          auth_json_bytes: immutableAuthFixtureBytes.length,
+        },
+      },
+    )).toEqual([
+      "--task", "pricing-conversion-v0.1",
+      "--variant", "omd-portable",
+      "--runtime", "claude-code",
+      "--task-source-commit", "b".repeat(40),
+      "--auth-json-source", immutableAuthFixturePath,
+      "--auth-json-sha256", sha256(immutableAuthFixtureBytes),
+      "--auth-json-bytes", String(immutableAuthFixtureBytes.length),
+      "--out", "/tmp/u197/pricing-t1-portable",
+    ]);
+  });
+
+  it("copies the immutable auth snapshot as exact regular-file bytes into isolated CODEX_HOME", () => {
+    const out = join(mkdtempSync(join(tmpdir(), "omd-auth-copy-")), "workspace");
+    const prepareSandbox = resolve(
+      "benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs",
+    );
+    execFileSync(process.execPath, [
+      prepareSandbox,
+      "--task", "pricing-conversion-v0.1",
+      "--variant", "raw-design-md",
+      "--runtime", "codex",
+      "--auth-json-source", immutableAuthFixturePath,
+      "--auth-json-sha256", sha256(immutableAuthFixtureBytes),
+      "--auth-json-bytes", String(immutableAuthFixtureBytes.length),
+      "--out", out,
+    ]);
+    expect(readFileSync(join(out, ".codex/auth.json"))).toEqual(immutableAuthFixtureBytes);
+    expect(JSON.parse(readFileSync(join(out, ".benchmark/manifest.json"), "utf8")))
+      .toMatchObject({
+        runtime_auth_snapshot: {
+          source_mode: "immutable-snapshot-only",
+          copy_mode: "isolated-regular-file",
+          sha256: sha256(immutableAuthFixtureBytes),
+          bytes: immutableAuthFixtureBytes.length,
+          mutable_fallback_allowed: false,
+          verified_before_provider_execution: true,
+        },
+      });
+  });
+
+  it("independently observes task-root bytes and modes against the source commit", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-task-authority-"));
+    const taskRoot = join(root, "tasks", "task-alpha-v0.1");
+    mkdirSync(join(taskRoot, "starter"), { recursive: true });
+    writeFileSync(join(taskRoot, "task.json"), "{}\n");
+    writeFileSync(join(taskRoot, "PROMPT.md"), "Prompt\n");
+    writeFileSync(join(taskRoot, "starter", "index.html"), "<main>alpha</main>\n");
+    execFileSync("git", ["-C", root, "init", "--quiet"]);
+    execFileSync("git", ["-C", root, "config", "user.name", "OmD Test"]);
+    execFileSync("git", ["-C", root, "config", "user.email", "omd-test@local.invalid"]);
+    execFileSync("git", ["-C", root, "add", "."]);
+    execFileSync("git", ["-C", root, "commit", "--quiet", "-m", "task authority"]);
+    const commit = execFileSync("git", ["-C", root, "rev-parse", "HEAD"], {
+      encoding: "utf8",
+    }).trim();
+
+    const clean = observeTaskSourceAuthority(taskRoot, commit);
+    expect(clean).toMatchObject({
+      source_commit: commit,
+      source_commit_ancestor_of_current_head: true,
+      exact_working_tree_match: true,
+    });
+    expect(clean.working_tree).toEqual(clean.committed_tree);
+
+    writeFileSync(
+      join(taskRoot, "task.json"),
+      `${readFileSync(join(taskRoot, "task.json"), "utf8").trim()} \n`,
+    );
+    const mutated = observeTaskSourceAuthority(taskRoot, commit);
+    expect(mutated.exact_working_tree_match).toBe(false);
+    expect(mutated.working_tree.sha256).not.toBe(mutated.committed_tree.sha256);
   });
 });

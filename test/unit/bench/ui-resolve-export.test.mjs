@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { createHash } from "node:crypto";
-import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
+import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 import {
+  buildCodexRoutingAttestation,
   buildRunRecord,
   classifyRunStatus,
   classifyValidity,
@@ -59,7 +60,417 @@ const score = {
   points: { deterministic_total: 81, deterministic_max: 85 },
 };
 
+function completeBlockFixture({ cellId = "task-a-luna-high", systemId = "luna-high" } = {}) {
+  const executionControl = {
+    comparison_mode: "effort-scaling",
+    admission_normalization_policy: "complete-block-effort-scaling",
+  };
+  const matrixCell = {
+    id: cellId,
+    task_id: manifest.task.id,
+    variant_id: manifest.variant.id,
+    system_id: systemId,
+    trial_index: 1,
+    runtime: "codex",
+    model_id: "gpt-5.6-luna",
+    effort: "high",
+    execution_control: executionControl,
+  };
+  return {
+    matrixCell,
+    lockedPlan: {
+      experiment_id: "codex-effort-sweep-fixture",
+      cells: [matrixCell],
+      effort_sweep_contract: {
+        task_set_sha256: "a".repeat(64),
+        schedule_sha256: "f".repeat(64),
+      },
+      lock_manifest: { objective_evaluator_contract_sha256: "1".repeat(64) },
+      task_lock_contract: {
+        tasks: [{
+          task_id: manifest.task.id,
+          source_commit: "2".repeat(40),
+          git_tree_oid: "3".repeat(40),
+          task_tree_sha256: "4".repeat(64),
+          source_contract_sha256: "5".repeat(64),
+        }],
+      },
+      skill_lock_contract: {
+        source_commit: "6".repeat(40),
+        source_tree_sha256: "7".repeat(64),
+        skill_tree_sha256: "8".repeat(64),
+      },
+      provider_routing_contract: {
+        cursor_allowed: false,
+        allowed_runtime: "codex",
+        allowed_model_ids: ["gpt-5.6-luna"],
+        allowed_model_effort_pairs: [{ model_id: "gpt-5.6-luna", effort: "high" }],
+        fail_closed: true,
+      },
+      codex_model_effort_contract: {
+        cache_sha256: "c".repeat(64),
+        models: [{
+          model_id: "gpt-5.6-luna",
+          model_profile_sha256: "d".repeat(64),
+          default_effort: "medium",
+          supported_efforts: ["low", "medium", "high"],
+        }],
+      },
+    },
+  };
+}
+
 describe("UI-Resolve normalized run exporter", () => {
+  it("omits sweep-only metadata for legacy direct exports", () => {
+    const record = buildRunRecord({
+      workspace: "/tmp/run-legacy",
+      manifest,
+      run,
+      score,
+      family: "skill",
+      systemId: "omd-portable",
+      trialIndex: 1,
+      suiteVersion: "0.2.0",
+      budgetTier: "standard",
+    });
+    expect(record.budget_tier).toBe("standard");
+    expect(record).not.toHaveProperty("effort");
+    expect(record).not.toHaveProperty("experiment_id");
+    expect(record).not.toHaveProperty("task_set_sha256");
+    expect(record).not.toHaveProperty("matrix_sha256");
+    expect(record.attribution.runtime).not.toHaveProperty("routing_attestation");
+  });
+
+  it("emits locked sweep identity and exact Codex routing evidence", () => {
+    const { matrixCell, lockedPlan } = completeBlockFixture();
+    const codexRun = structuredClone(run);
+    codexRun.runtime = {
+      runtime_target: "codex",
+      agent: "codex-cli",
+      model_requested: "gpt-5.6-luna",
+      model_reported: "gpt-5.6-luna",
+      model_evidence_mode: "provider-observed",
+      effort_requested: "high",
+      reasoning: "high",
+      provider_route: null,
+      model_tool_mode_evidence: {
+        cache_sha256: "c".repeat(64),
+        model_profile_sha256: "d".repeat(64),
+      },
+    };
+    const record = buildRunRecord({
+      workspace: "/tmp/task-a-luna-high",
+      manifest,
+      run: codexRun,
+      score,
+      family: "model",
+      systemId: "luna-high",
+      trialIndex: 1,
+      suiteVersion: "0.2.0",
+      budgetTier: "high",
+      executionControl: matrixCell.execution_control,
+      matrixCell,
+      lockedPlan,
+      executionState: { locked_plan_sha256: "b".repeat(64) },
+    });
+    expect(record).toMatchObject({
+      experiment_id: "codex-effort-sweep-fixture",
+      task_set_sha256: "a".repeat(64),
+      matrix_sha256: "b".repeat(64),
+      cell_id: "task-a-luna-high",
+      record_kind: "codex-complete-block-effort-scaling-v1",
+      variant_id: "omd-portable",
+      budget_tier: "high",
+      effort: "high",
+      sweep_identity: {
+        experiment_id: "codex-effort-sweep-fixture",
+        locked_plan_sha256: "b".repeat(64),
+        schedule_sha256: "f".repeat(64),
+        system_id: "luna-high",
+        variant_id: "omd-portable",
+        skill_id: "omd:apply",
+        task_tree_sha256: "4".repeat(64),
+      },
+      attribution: {
+        runtime: {
+          routing_attestation: {
+            runtime: "codex",
+            model_id: "gpt-5.6-luna",
+            effort: "high",
+            provider_route: "codex",
+            provider_effort_argument: "high",
+            checks: {
+              locked_cell_exact: true,
+              runtime_codex: true,
+              model_requested_exact: true,
+              effort_requested_exact: true,
+              provider_effort_argument_exact: true,
+              provider_route_accepted: true,
+              pinned_profile_supports_effort: true,
+            },
+            pass: true,
+          },
+        },
+      },
+      complete_block_outcome: {
+        disposition: "success",
+        reason: null,
+      },
+    });
+    expect(record.validity).toBe("valid");
+  });
+
+  it("normalizes complete-block candidate byte drift as a terminal provider failure", () => {
+    const { matrixCell, lockedPlan } = completeBlockFixture();
+    const codexRun = structuredClone(run);
+    codexRun.runtime = {
+      runtime_target: "codex",
+      model_requested: "gpt-5.6-luna",
+      model_reported: "gpt-5.6-luna",
+      model_evidence_mode: "provider-observed",
+      effort_requested: "high",
+      reasoning: "high",
+      provider_route: null,
+      model_tool_mode_evidence: {
+        cache_sha256: "c".repeat(64),
+        model_profile_sha256: "d".repeat(64),
+      },
+    };
+    const record = buildRunRecord({
+      workspace: "/tmp/task-a-luna-high",
+      manifest,
+      run: codexRun,
+      score,
+      family: "model",
+      systemId: "luna-high",
+      trialIndex: 1,
+      suiteVersion: "0.2.0",
+      budgetTier: "high",
+      executionControl: matrixCell.execution_control,
+      matrixCell,
+      lockedPlan,
+      executionState: { locked_plan_sha256: "b".repeat(64) },
+      candidatePreflight: {
+        required: true,
+        receipt_present: true,
+        receipt_valid: true,
+        receipt_state: "passed",
+        source_contract_sha256_match: true,
+        sealed_inventory_sha256_match: true,
+        product_present: true,
+        candidate_final_bytes_match: false,
+        pass: false,
+      },
+    });
+    expect(record).toMatchObject({
+      validity: "valid",
+      ui_resolved: false,
+      complete_block_outcome: {
+        disposition: "terminal-provider-failure",
+        reason: "candidate-final-byte-mismatch",
+      },
+    });
+  });
+
+  it("keeps top-level plan hashes as backward-compatible metadata fallbacks", () => {
+    const record = buildRunRecord({
+      workspace: "/tmp/run-legacy-hashes",
+      manifest,
+      run,
+      score,
+      family: "model",
+      systemId: "legacy",
+      trialIndex: 1,
+      suiteVersion: "0.2.0",
+      budgetTier: "standard",
+      lockedPlan: {
+        task_set_sha256: "e".repeat(64),
+        matrix_sha256: "f".repeat(64),
+      },
+    });
+    expect(record.task_set_sha256).toBe("e".repeat(64));
+    expect(record.matrix_sha256).toBe("f".repeat(64));
+  });
+
+  it("labels controller score authority separately from the workspace compatibility copy", () => {
+    const record = buildRunRecord({
+      workspace: "/tmp/matrix/cell-a",
+      manifest,
+      run,
+      score,
+      family: "model",
+      systemId: "terra-high",
+      trialIndex: 1,
+      suiteVersion: "0.2.0",
+      budgetTier: "high",
+      scoreEvidence: {
+        authority_path: "../.controller-artifacts/cell-a/score.json",
+        authority_role: "controller-authority",
+        compatibility_path: ".benchmark/score.json",
+      },
+    });
+    expect(record.evidence).toMatchObject({
+      score: "../.controller-artifacts/cell-a/score.json",
+      score_authority_role: "controller-authority",
+      score_compatibility: ".benchmark/score.json",
+    });
+  });
+
+  it("cannot mark a required failed candidate preflight UI-Resolved", () => {
+    const record = buildRunRecord({
+      workspace: "/tmp/candidate-outcome",
+      manifest,
+      run,
+      score,
+      family: "model",
+      systemId: "terra-low",
+      trialIndex: 1,
+      suiteVersion: "0.2.0",
+      budgetTier: "low",
+      candidatePreflight: { required: true, pass: false, receipt_present: false },
+    });
+    expect(record.validity).toBe("valid");
+    expect(record.ui_resolved).toBe(false);
+  });
+
+  it("surfaces an explicitly requested runtime effort without replacing budget_tier", () => {
+    const requestedRun = structuredClone(run);
+    requestedRun.runtime.effort_requested = "xhigh";
+    const record = buildRunRecord({
+      workspace: "/tmp/run-explicit-effort",
+      manifest,
+      run: requestedRun,
+      score,
+      family: "model",
+      systemId: "terra-xhigh",
+      trialIndex: 1,
+      suiteVersion: "0.2.0",
+      budgetTier: "legacy-xhigh-label",
+    });
+    expect(record.effort).toBe("xhigh");
+    expect(record.budget_tier).toBe("legacy-xhigh-label");
+  });
+
+  it("fails the Codex attestation when requested effort drifts", () => {
+    const matrixCell = {
+      id: "cell",
+      runtime: "codex",
+      model_id: "gpt-5.6-luna",
+      effort: "high",
+    };
+    const driftedRun = {
+      runtime: {
+        runtime_target: "codex",
+        model_requested: "gpt-5.6-luna",
+        effort_requested: "medium",
+        reasoning: "medium",
+      },
+    };
+    const attestation = buildCodexRoutingAttestation({
+      matrixCell,
+      run: driftedRun,
+      lockedPlan: {
+        cells: [matrixCell],
+        provider_routing_contract: {
+          cursor_allowed: false,
+          allowed_runtime: "codex",
+          allowed_model_ids: ["gpt-5.6-luna"],
+          allowed_model_effort_pairs: [{ model_id: "gpt-5.6-luna", effort: "high" }],
+          fail_closed: true,
+        },
+        codex_model_effort_contract: {
+          cache_sha256: "a".repeat(64),
+          models: [{
+            model_id: "gpt-5.6-luna",
+            model_profile_sha256: "b".repeat(64),
+            default_effort: "medium",
+            supported_efforts: ["high"],
+          }],
+        },
+      },
+    });
+    expect(attestation.checks.effort_requested_exact).toBe(false);
+    expect(attestation.checks.provider_effort_argument_exact).toBe(false);
+    expect(attestation.pass).toBe(false);
+  });
+
+  it("marks effort-scaling attribution invalid when routing attestation is missing or fails", () => {
+    const { matrixCell, lockedPlan } = completeBlockFixture({ cellId: "cell" });
+    const driftedRun = structuredClone(run);
+    driftedRun.runtime = {
+      runtime_target: "codex",
+      model_requested: "gpt-5.6-luna",
+      effort_requested: "medium",
+      reasoning: "medium",
+    };
+    const record = buildRunRecord({
+      workspace: "/tmp/cell",
+      manifest,
+      run: driftedRun,
+      score,
+      family: "model",
+      systemId: "luna-high",
+      trialIndex: 1,
+      suiteVersion: "0.2.0",
+      budgetTier: "high",
+      executionControl: {
+        comparison_mode: "effort-scaling",
+        admission_normalization_policy: "complete-block-effort-scaling",
+      },
+      matrixCell,
+      lockedPlan,
+      executionState: { locked_plan_sha256: "b".repeat(64) },
+    });
+    expect(record.validity).toBe("invalid-attribution");
+    expect(record.attribution.runtime.routing_attestation.pass).toBe(false);
+
+    expect(classifyValidity(
+      manifest,
+      "complete",
+      score,
+      run,
+      {
+        executionControl: {
+          comparison_mode: "effort-scaling",
+          admission_normalization_policy: "complete-block-effort-scaling",
+        },
+      },
+    )).toBe("invalid-attribution");
+  });
+
+  it("keeps the effort-scaling schema conditional and historical records optional", () => {
+    const schema = JSON.parse(readFileSync(
+      resolve("benchmarks/ui-resolve-bench/run-record.schema.json"),
+      "utf8",
+    ));
+    expect(schema.required).not.toContain("effort");
+    expect(schema.required).not.toContain("experiment_id");
+    const conditional = schema.allOf.find(
+      (item) => item.if?.anyOf?.some(
+        (branch) => branch.properties?.record_kind?.const
+          === "codex-complete-block-effort-scaling-v1",
+      ),
+    );
+    expect(conditional.then.required).toEqual(expect.arrayContaining([
+      "experiment_id",
+      "task_set_sha256",
+      "matrix_sha256",
+      "effort",
+      "cell_id",
+      "attribution",
+    ]));
+    expect(conditional.then.properties.attribution.properties.runtime.required)
+      .toContain("routing_attestation");
+
+    const routingSchema = conditional.then.properties.attribution.properties.runtime
+      .properties.routing_attestation;
+    const passConditional = routingSchema.allOf.find(
+      (item) => item.if?.properties?.pass?.const === true,
+    );
+    expect(Object.values(passConditional.then.properties.checks.properties))
+      .toEqual(Array(7).fill({ const: true }));
+  });
+
   it("binds a passed provider-sealed candidate receipt to the final product bytes", () => {
     const workspace = mkdtempSync(join(tmpdir(), "omd-candidate-preflight-"));
     mkdirSync(join(workspace, ".omd"));
@@ -68,8 +479,10 @@ describe("UI-Resolve normalized run exporter", () => {
     writeFileSync(productPath, product);
     const productSha = createHash("sha256").update(product).digest("hex");
     writeFileSync(join(workspace, ".omd", "static-preview-receipt.json"), JSON.stringify({
-      schema_version: "0.1",
+      schema_version: "0.2",
       kind: "omd-static-preview-receipt",
+      guard_version: "locked-typography-source-v1",
+      guard_scope: "locked-typography-direct-declarations",
       state: "passed",
       candidate_sha256: productSha,
       source_contract_sha256: "source-sha",
@@ -87,6 +500,28 @@ describe("UI-Resolve normalized run exporter", () => {
       sealed_inventory_sha256_match: true,
       candidate_final_bytes_match: true,
       pass: true,
+    });
+  });
+
+  it("keeps frozen v0.1 preview receipts legacy-unverifiable and promotion-ineligible", () => {
+    const workspace = mkdtempSync(join(tmpdir(), "omd-candidate-preflight-legacy-"));
+    mkdirSync(join(workspace, ".omd"));
+    writeFileSync(join(workspace, "index.html"), "<!doctype html><title>legacy</title>\n");
+    writeFileSync(join(workspace, ".omd", "static-preview-receipt.json"), JSON.stringify({
+      schema_version: "0.1",
+      kind: "omd-static-preview-receipt",
+      state: "passed",
+    }));
+    expect(inspectCandidatePreflight(workspace, {
+      source_contract: { state: "provider-sealed", sha256: "source-sha" },
+      inventory: { sha256: "inventory-sha" },
+      static_closure_manifest: { product_path: "index.html" },
+    })).toMatchObject({
+      required: true,
+      receipt_present: true,
+      receipt_trust: "legacy-unverifiable",
+      receipt_valid: false,
+      pass: false,
     });
   });
 
@@ -402,6 +837,31 @@ describe("UI-Resolve normalized run exporter", () => {
     expect(record.ui_resolved).toBe(false);
     expect(record.tokens).toBeNull();
     expect(record.usage_completeness.available).toBe(false);
+  });
+
+  it("finalizes host-policy admission before the authoritative record is written", () => {
+    const record = buildRunRecord({
+      workspace: "/tmp/export-host-policy-finalization",
+      manifest,
+      run,
+      score,
+      family: "model",
+      systemId: "terra-high",
+      trialIndex: 1,
+      suiteVersion: "1.9.8",
+      budgetTier: "high",
+      proofTrace: { analyzable: true },
+      hostPolicy: {
+        installation: { ready: true },
+        observed: { available: true, state_files: 1, valid_state_files: 0 },
+        gate: { pass: false, reasons: ["installed-policy-state-invalid"] },
+      },
+      lockedPlan: { shared_host_policy: { require_delivery_ready: true } },
+    });
+    expect(record.validity).toBe("invalid-infrastructure");
+    expect(record.ui_resolved).toBe(false);
+    expect(record.runtime_diagnostics.infrastructure_invalid_reason)
+      .toBe("installed-host-policy-gate-failed");
   });
 
   it("fails closed when an agent harness skips a preregistered specialist", () => {

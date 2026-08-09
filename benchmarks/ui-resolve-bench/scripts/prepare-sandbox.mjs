@@ -1,7 +1,16 @@
 #!/usr/bin/env node
 import { execFileSync, spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
-import { basename, dirname, join, relative, resolve } from "node:path";
+import {
+  existsSync,
+  lstatSync,
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  realpathSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
+import { basename, dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import {
   assertInside,
   benchRoot,
@@ -16,12 +25,179 @@ import {
 import { validateOmdReflowBaselineEvidence, validateTaskContract } from "./task-contract.mjs";
 import { currentObjectiveMethodology } from "./objective-methodology-contract.mjs";
 
+const COMMIT_PATTERN = /^[a-f0-9]{40,64}$/;
+
+function gitTaskObservation(repo, args, options = {}) {
+  return execFileSync("git", ["-C", repo, ...args], {
+    encoding: options.encoding ?? "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+    maxBuffer: 16 * 1024 * 1024,
+  });
+}
+
+// This intentionally does not share the preparation controller's observer. The
+// sandbox records its own byte/mode view so admission can compare two
+// independently collected observations against the preregistered task lock.
+function observeSandboxTaskSourceAuthority(taskRoot, sourceCommit) {
+  const exactTaskRoot = realpathSync(resolve(taskRoot));
+  if (!COMMIT_PATTERN.test(sourceCommit ?? "")) {
+    throw new Error("sandbox task source observation requires an exact source commit");
+  }
+  const repositoryRoot = realpathSync(
+    gitTaskObservation(exactTaskRoot, ["rev-parse", "--show-toplevel"]).trim(),
+  );
+  const relativeTaskRoot = relative(repositoryRoot, exactTaskRoot).split(sep).join("/");
+  if (!relativeTaskRoot || relativeTaskRoot.startsWith("../") || isAbsolute(relativeTaskRoot)) {
+    throw new Error(`sandbox task source observation escapes repository: ${exactTaskRoot}`);
+  }
+  try {
+    gitTaskObservation(repositoryRoot, ["cat-file", "-e", `${sourceCommit}^{commit}`]);
+    gitTaskObservation(repositoryRoot, ["merge-base", "--is-ancestor", sourceCommit, "HEAD"]);
+  } catch {
+    throw new Error(`sandbox task source commit is not an ancestor of current HEAD: ${sourceCommit}`);
+  }
+  let gitTreeOid;
+  let entries;
+  try {
+    gitTreeOid = gitTaskObservation(
+      repositoryRoot,
+      ["rev-parse", `${sourceCommit}:${relativeTaskRoot}`],
+    ).trim();
+    entries = gitTaskObservation(
+      repositoryRoot,
+      ["ls-tree", "-r", "-z", "--full-tree", sourceCommit, "--", relativeTaskRoot],
+      { encoding: "buffer" },
+    );
+  } catch {
+    throw new Error(`sandbox task source commit does not contain ${relativeTaskRoot}`);
+  }
+  if (!COMMIT_PATTERN.test(gitTreeOid)) {
+    throw new Error(`sandbox task source tree OID is invalid: ${relativeTaskRoot}`);
+  }
+  const prefix = `${relativeTaskRoot}/`;
+  const committedFiles = entries.toString("utf8").split("\0").filter(Boolean).map((entry) => {
+    const match = /^(\d+) (\w+) ([a-f0-9]{40,64})\t(.+)$/.exec(entry);
+    if (!match || match[2] !== "blob" || !match[4].startsWith(prefix)) {
+      throw new Error(`unsupported sandbox committed task entry: ${entry}`);
+    }
+    if (!new Set(["100644", "100755"]).has(match[1])) {
+      throw new Error(`sandbox committed task entry must be a regular file: ${match[4]}`);
+    }
+    const bytes = gitTaskObservation(
+      repositoryRoot,
+      ["cat-file", "blob", match[3]],
+      { encoding: "buffer" },
+    );
+    return {
+      path: match[4].slice(prefix.length),
+      mode: match[1] === "100755" ? 0o755 : 0o644,
+      bytes: bytes.length,
+      sha256: sha256(bytes),
+    };
+  }).sort((left, right) => (left.path < right.path ? -1 : left.path > right.path ? 1 : 0));
+  if (!committedFiles.length) {
+    throw new Error(`sandbox source commit task tree is empty: ${relativeTaskRoot}`);
+  }
+  const committedTree = {
+    files: committedFiles,
+    sha256: sha256(committedFiles
+      .map((file) => `${file.path}\0${file.mode}\0${file.sha256}`)
+      .join("\n")),
+  };
+  const workingTree = treeManifest(exactTaskRoot);
+  return {
+    schema_version: "0.1",
+    observer: "prepare-sandbox-independent-task-root-byte-mode-v1",
+    repository_root: repositoryRoot,
+    task_root: exactTaskRoot,
+    repository_relative_task_root: relativeTaskRoot,
+    source_commit: sourceCommit,
+    current_head_commit: gitTaskObservation(repositoryRoot, ["rev-parse", "HEAD"]).trim(),
+    source_commit_ancestor_of_current_head: true,
+    git_tree_oid: gitTreeOid,
+    working_tree: workingTree,
+    committed_tree: committedTree,
+    exact_working_tree_match: workingTree.sha256 === committedTree.sha256
+      && JSON.stringify(workingTree.files) === JSON.stringify(committedTree.files),
+  };
+}
+
+function verifyRepositorySourceReceipt(source, label) {
+  if (typeof source?.path !== "string" || !source.path
+    || !COMMIT_PATTERN.test(source.commit ?? "")
+    || !/^[a-f0-9]{64}$/.test(source.sha256 ?? "")) {
+    throw new Error(`${label} repository source receipt is invalid`);
+  }
+  let bytes;
+  try {
+    bytes = gitTaskObservation(repoRoot, ["show", `${source.commit}:${source.path}`], {
+      encoding: "buffer",
+    });
+  } catch {
+    throw new Error(`${label} repository source receipt is not reproducible`);
+  }
+  if (sha256(bytes) !== source.sha256) {
+    throw new Error(`${label} repository source receipt hash drift`);
+  }
+}
+
+function baselineRepositoryProjection({ provenance, baseline, inputs, expected }) {
+  return {
+    schema_version: "0.2",
+    task_id: provenance.task_id,
+    variant_id: provenance.variant_id,
+    source_score_sha256: baseline.source_score_sha256,
+    baseline_evidence: baseline,
+    inputs,
+    source_methodology: provenance.raw_score.source_methodology,
+    source_evaluator_repository: provenance.raw_score.source_evaluator_repository,
+    source_contract_repository: provenance.raw_score.source_contract_repository,
+    reproduction_methodology: provenance.methodology,
+    expected,
+  };
+}
+
 const args = parseArgs();
 const taskId = args.get("task");
 const variantId = args.get("variant");
 const out = args.get("out") ? resolve(String(args.get("out"))) : null;
 const vendorsRoot = args.get("vendors") ? resolve(String(args.get("vendors"))) : null;
 const runtime = String(args.get("runtime") ?? "codex");
+const taskSourceCommit = args.get("task-source-commit")
+  ? String(args.get("task-source-commit"))
+  : null;
+const authJsonSourcePath = args.get("auth-json-source")
+  ? resolve(String(args.get("auth-json-source")))
+  : null;
+const authJsonSha256 = args.get("auth-json-sha256")
+  ? String(args.get("auth-json-sha256"))
+  : null;
+const authJsonBytes = args.get("auth-json-bytes")
+  ? Number(args.get("auth-json-bytes"))
+  : null;
+
+const authSnapshotArgCount = [authJsonSourcePath, authJsonSha256, authJsonBytes]
+  .filter((value) => value !== null).length;
+if (![0, 3].includes(authSnapshotArgCount)) {
+  throw new Error("isolated Codex auth snapshot requires source path, SHA-256, and byte length");
+}
+let authSnapshotSourceBytes = null;
+if (authSnapshotArgCount === 3) {
+  if (!/^[a-f0-9]{64}$/.test(authJsonSha256)
+    || !Number.isInteger(authJsonBytes) || authJsonBytes < 1
+    || !existsSync(authJsonSourcePath)) {
+    throw new Error("isolated Codex auth snapshot contract is invalid");
+  }
+  const sourceInfo = lstatSync(authJsonSourcePath);
+  if (sourceInfo.isSymbolicLink() || !sourceInfo.isFile()) {
+    throw new Error("isolated Codex auth source must be an immutable regular-file snapshot");
+  }
+  authSnapshotSourceBytes = readFileSync(authJsonSourcePath);
+  if (authSnapshotSourceBytes.length !== authJsonBytes
+    || sha256(authSnapshotSourceBytes) !== authJsonSha256) {
+    throw new Error("isolated Codex auth source bytes do not match the preregistered snapshot");
+  }
+}
 
 if (!taskId || !variantId || !out) {
   console.error("usage: prepare-sandbox.mjs --task <id> --variant <id> --out <new-dir> [--runtime codex|claude-code|cursor] [--vendors <dir>] [--allow-off-label] [--allow-dirty-source]");
@@ -38,14 +214,105 @@ if (!variant) throw new Error(`unknown variant: ${variantId}`);
 
 const taskRoot = assertInside(join(benchRoot, "tasks"), join(benchRoot, "tasks", taskId));
 const starterRoot = join(taskRoot, "starter");
-const task = validateTaskContract(readJson(join(taskRoot, "task.json")));
+const taskBytes = readFileSync(join(taskRoot, "task.json"));
+const task = validateTaskContract(JSON.parse(taskBytes.toString("utf8")));
+const taskSourceObservation = taskSourceCommit
+  ? observeSandboxTaskSourceAuthority(taskRoot, taskSourceCommit)
+  : {
+      schema_version: "0.1",
+      source_commit: null,
+      working_tree: treeManifest(taskRoot),
+      committed_tree: null,
+      exact_working_tree_match: null,
+    };
 let reflowBaselineCoverage = null;
+let baselineProvenanceObservation = null;
 if (task.omd_reflow_source_contract?.schema_version === "0.2") {
   const evidence = task.omd_reflow_source_contract.baseline_evidence;
   const baselinePath = assertInside(taskRoot, join(taskRoot, evidence.path));
   if (!existsSync(baselinePath)) throw new Error(`provider-sealed reflow baseline evidence is missing: ${evidence.path}`);
   const baselineBytes = readFileSync(baselinePath);
   reflowBaselineCoverage = validateOmdReflowBaselineEvidence(task, baselineBytes);
+  if (taskSourceCommit) {
+    const provenancePath = join(taskRoot, "baseline-provenance.json");
+    if (!existsSync(provenancePath)) {
+      throw new Error("complete-block task baseline provenance receipt is missing");
+    }
+    const provenanceBytes = readFileSync(provenancePath);
+    const provenance = JSON.parse(provenanceBytes.toString("utf8"));
+    const baseline = JSON.parse(baselineBytes.toString("utf8"));
+    const methodology = currentObjectiveMethodology();
+    const starterFiles = ["DESIGN.md", "index.html"].map((name) => ({
+      path: name,
+      sha256: sha256(readFileSync(join(starterRoot, name))),
+    }));
+    const inputs = {
+      prompt_sha256: sha256(readFileSync(join(taskRoot, "PROMPT.md"))),
+      starter_tree_files: starterFiles,
+      baseline_evidence_sha256: sha256(baselineBytes),
+      task_contract_sha256: sha256(taskBytes),
+    };
+    const failedCriticalGates = Object.entries(baseline.critical_gates ?? {})
+      .filter(([, passed]) => passed === false)
+      .map(([gate]) => gate)
+      .sort();
+    const expected = {
+      deterministic_total: 75,
+      deterministic_max: 85,
+      failed_critical_gates: failedCriticalGates,
+    };
+    verifyRepositorySourceReceipt(
+      provenance.raw_score?.source_evaluator_repository,
+      "complete-block baseline evaluator",
+    );
+    verifyRepositorySourceReceipt(
+      provenance.raw_score?.source_contract_repository,
+      "complete-block baseline methodology contract",
+    );
+    const reproductionProjection = baselineRepositoryProjection({
+      provenance,
+      baseline,
+      inputs,
+      expected,
+    });
+    if (provenance?.schema_version !== "0.1"
+      || provenance.kind !== "provider-free-objective-score-deterministic-equivalent"
+      || provenance.task_id !== task.id || provenance.variant_id !== "raw-design-md"
+      || provenance.raw_score?.source_score_sha256
+        !== baseline.source_score_sha256
+      || provenance.raw_score?.source_methodology?.epoch !== baseline.methodology_epoch
+      || provenance.raw_score?.source_evaluator_repository?.sha256
+        !== provenance.raw_score?.source_methodology?.evaluator_source_sha256
+      || provenance.raw_score?.source_contract_repository?.sha256
+        !== provenance.raw_score?.source_methodology?.contract_source_sha256
+      || JSON.stringify(provenance.methodology) !== JSON.stringify(methodology)
+      || JSON.stringify(provenance.inputs) !== JSON.stringify(inputs)
+      || JSON.stringify(provenance.expected) !== JSON.stringify(expected)
+      || provenance.repository_reproduction?.canonicalization
+        !== "sha256-json-stringify-repository-baseline-projection-v1"
+      || provenance.repository_reproduction?.projection_sha256
+        !== sha256(JSON.stringify(reproductionProjection))
+      || JSON.stringify(provenance.repository_reproduction?.projection_fields)
+        !== JSON.stringify(Object.keys(reproductionProjection))
+      || provenance.repository_reproduction?.provider_calls !== 0
+      || provenance.repository_reproduction?.model_calls !== 0
+      || provenance.reproduction_contract?.provider_calls !== 0
+      || provenance.reproduction_contract?.model_calls !== 0
+      || provenance.reproduction_contract?.evaluator_sha_delta_disposition
+        !== (provenance.raw_score.source_methodology.evaluator_source_sha256
+          === methodology.evaluator_source_sha256 ? "none" : "recorded-not-overwritten")) {
+      throw new Error("complete-block task baseline provenance receipt drift");
+    }
+    baselineProvenanceObservation = {
+      path: "baseline-provenance.json",
+      sha256: sha256(provenanceBytes),
+      methodology: provenance.methodology,
+      source_score_sha256: provenance.raw_score.source_score_sha256,
+      repository_projection_sha256:
+        provenance.repository_reproduction.projection_sha256,
+      attested: true,
+    };
+  }
 }
 const promptFile = readFileSync(join(taskRoot, "PROMPT.md"), "utf8");
 const promptSource = promptFile.trim();
@@ -68,6 +335,30 @@ if (!trackEligible && !offLabelOptIn) {
 
 copyReviewedTree(starterRoot, out);
 if (variant.include_design_contract === false) rmSync(join(out, "DESIGN.md"), { force: true });
+let runtimeAuthSnapshot = null;
+if (authSnapshotSourceBytes) {
+  const codexHome = join(out, ".codex");
+  const authDestination = join(codexHome, "auth.json");
+  mkdirSync(codexHome, { recursive: false, mode: 0o700 });
+  writeFileSync(authDestination, authSnapshotSourceBytes, { flag: "wx", mode: 0o600 });
+  const copiedInfo = lstatSync(authDestination);
+  const copiedBytes = readFileSync(authDestination);
+  if (copiedInfo.isSymbolicLink() || !copiedInfo.isFile()
+    || copiedBytes.length !== authJsonBytes
+    || sha256(copiedBytes) !== authJsonSha256) {
+    throw new Error("isolated Codex auth copy failed exact byte verification");
+  }
+  runtimeAuthSnapshot = {
+    codex_home: ".codex",
+    auth_json_path: ".codex/auth.json",
+    source_mode: "immutable-snapshot-only",
+    copy_mode: "isolated-regular-file",
+    sha256: authJsonSha256,
+    bytes: authJsonBytes,
+    mutable_fallback_allowed: false,
+    verified_before_provider_execution: true,
+  };
+}
 
 function frontmatterName(skillFile) {
   const content = readFileSync(skillFile, "utf8");
@@ -570,6 +861,7 @@ const manifest = {
   prepared_at: new Date().toISOString(),
   objective_evaluator: currentObjectiveMethodology(),
   runtime_target: runtime,
+  runtime_auth_snapshot: runtimeAuthSnapshot,
   task: {
     id: task.id,
     version: task.version,
@@ -578,6 +870,8 @@ const manifest = {
     core_prompt_sha256: sha256(promptFile),
     prompt_sha256: sha256(prompt),
     starter_sha256: treeManifest(starterRoot).sha256,
+    source_observation: taskSourceObservation,
+    baseline_provenance: baselineProvenanceObservation,
   },
   variant: {
     id: variantId,

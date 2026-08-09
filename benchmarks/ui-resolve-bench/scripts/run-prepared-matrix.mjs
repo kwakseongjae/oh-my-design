@@ -3,6 +3,8 @@ import { spawnSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
 import {
   closeSync,
+  constants as fsConstants,
+  copyFileSync,
   existsSync,
   mkdirSync,
   mkdtempSync,
@@ -13,7 +15,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { homedir } from "node:os";
-import { join, resolve } from "node:path";
+import { basename, dirname, join, resolve } from "node:path";
 import { performance } from "node:perf_hooks";
 import { isDeepStrictEqual } from "node:util";
 import { fileURLToPath } from "node:url";
@@ -48,6 +50,10 @@ import {
   assertObjectiveMethodologyPin,
   currentObjectiveMethodology,
 } from "./objective-methodology-contract.mjs";
+import {
+  buildCodexRoutingAttestation,
+  hostPolicyAdmissionDisposition,
+} from "./export-run-record.mjs";
 
 const MAX_BUFFER = 64 * 1024 * 1024;
 const PACING_MAX_OVERSHOOT_MS = 5_000;
@@ -56,6 +62,15 @@ const STOP_SENTINEL = "STOP";
 const INVOCATION_LEASE = ".matrix-execution.lock";
 const REPO_ROOT = resolve(fileURLToPath(new URL("../../..", import.meta.url)));
 const BENCHMARK_RUNTIME_IGNORE = ["browser-harness", "codex-home"];
+const COMPLETE_BLOCK_ROUTING_CHECK_KEYS = Object.freeze([
+  "locked_cell_exact",
+  "runtime_codex",
+  "model_requested_exact",
+  "effort_requested_exact",
+  "provider_effort_argument_exact",
+  "provider_route_accepted",
+  "pinned_profile_supports_effort",
+]);
 
 export function assertPreparedObjectiveMethodology(matrixRoot) {
   const root = resolve(matrixRoot);
@@ -314,49 +329,7 @@ export function preflightRuntimeEnvironment(
   return { status: "complete", runtimes, checks };
 }
 
-const HOST_POLICY_INFRASTRUCTURE_REASONS = new Set([
-  "installed-policy-not-ready",
-  "installed-policy-state-missing",
-  "installed-policy-state-invalid",
-  "native-browser-unintercepted",
-  "proof-trace-not-analyzable",
-]);
-
-export function hostPolicyAdmissionDisposition(plan, summary) {
-  if (!plan?.shared_host_policy) return { disposition: "admit", reason: null };
-  if (summary?.run_status === "timed_out" && summary?.validity === "valid") {
-    return {
-      disposition: "valid-system-failure",
-      reason: "preregistered-valid-timeout",
-    };
-  }
-  const hostPolicy = summary?.host_policy;
-  const gate = summary?.host_policy_gate;
-  if (gate?.pass === true) return { disposition: "admit", reason: null };
-  if (!hostPolicy || !gate) {
-    return { disposition: "invalid-infrastructure", reason: "installed-host-policy-gate-missing" };
-  }
-  const installation = hostPolicy.installation;
-  const observed = hostPolicy.observed;
-  const proofTrace = summary?.proof_trace;
-  const reasons = Array.isArray(gate.reasons) ? gate.reasons : [];
-  const inconsistentInstallation = installation?.ready !== true
-    || observed?.available !== true
-    || Number(observed?.state_files ?? 0) < 1
-    || Number(observed?.valid_state_files ?? 0) !== Number(observed?.state_files ?? 0)
-    || proofTrace?.analyzable !== true
-    || reasons.some((reason) => (
-      HOST_POLICY_INFRASTRUCTURE_REASONS.has(reason)
-      || String(reason).endsWith("-unblocked-limit")
-    ));
-  if (inconsistentInstallation) {
-    return { disposition: "invalid-infrastructure", reason: "installed-host-policy-gate-failed" };
-  }
-  return {
-    disposition: "valid-system-failure",
-    reason: "installed-host-policy-rejected-system-output",
-  };
-}
+export { hostPolicyAdmissionDisposition };
 
 export function hostPolicyAdmissionStopReason(plan, summary) {
   const admission = hostPolicyAdmissionDisposition(plan, summary);
@@ -567,6 +540,46 @@ function runNode(script, args, cwd) {
     maxBuffer: MAX_BUFFER,
     stdio: ["ignore", "pipe", "pipe"],
   });
+}
+
+export function runCompleteBlockPreparedAdmissionAudit(matrixRoot, plan, {
+  runNodeFn = runNode,
+} = {}) {
+  if (plan?.control_contract?.admission_normalization_policy !== "complete-block-effort-scaling") {
+    return null;
+  }
+  const auditScript = resolve(fileURLToPath(
+    new URL("./audit-prepared-matrix-admission.mjs", import.meta.url),
+  ));
+  const audited = runNodeFn(auditScript, ["--root", resolve(matrixRoot)], REPO_ROOT);
+  if (audited.status !== 0) {
+    throw new Error(
+      `prepared-matrix-admission-audit-failure:${audited.stderr?.trim() || `exit-${audited.status}`}`,
+    );
+  }
+  let report;
+  try {
+    report = JSON.parse(audited.stdout);
+  } catch {
+    throw new Error("prepared-matrix-admission-audit-invalid-output");
+  }
+  if (
+    report?.status !== "PREPARED_PROVIDER_ZERO"
+    || report?.execution_admission?.allowed !== true
+    || report?.normalization_policy !== "complete-block-effort-scaling"
+    || report?.scheduled_cells !== plan.cells.length
+    || report?.prepared_cells !== plan.cells.length
+  ) throw new Error("prepared-matrix-admission-audit-rejected");
+  return {
+    schema_version: "0.1",
+    status: "passed",
+    locked_plan_sha256: report.locked_plan_sha256,
+    preparation_state_sha256: report.preparation_state_sha256,
+    task_set_sha256: report.task_set_sha256,
+    schedule_sha256: report.schedule_sha256,
+    normalization_policy: report.normalization_policy,
+    report_sha256: sha256(JSON.stringify(report)),
+  };
 }
 
 function controllerPreEditPlanContract(plan) {
@@ -808,18 +821,90 @@ function fileSha256(path) {
   return sha256(readFileSync(path));
 }
 
+export function controllerArtifactPaths(matrixRoot, cellId) {
+  const root = resolve(matrixRoot);
+  const artifactRoot = resolve(root, ".controller-artifacts", cellId);
+  if (dirname(dirname(artifactRoot)) !== root || basename(artifactRoot) !== cellId) {
+    throw new Error(`invalid controller artifact cell id: ${cellId}`);
+  }
+  return {
+    root: artifactRoot,
+    score: join(artifactRoot, "score.json"),
+    record: join(artifactRoot, "run-record.json"),
+  };
+}
+
+function controllerArtifactsForWorkspace(workspace) {
+  return controllerArtifactPaths(dirname(resolve(workspace)), basename(resolve(workspace)));
+}
+
+export function controllerArtifactTamperingReason(workspace) {
+  const benchmarkDir = join(workspace, ".benchmark");
+  const controller = controllerArtifactsForWorkspace(workspace);
+  const unexpected = [
+    ["score.json", join(benchmarkDir, "score.json")],
+    ["run-record.json", join(benchmarkDir, "run-record.json")],
+    ["controller-score.json", controller.score],
+    ["controller-run-record.json", controller.record],
+  ].find(([, path]) => existsSync(path));
+  return unexpected ? `provider-authored-controller-artifact:${unexpected[0]}` : null;
+}
+
+export function installTrustedCompatibilityArtifacts(workspace) {
+  const benchmarkDir = join(workspace, ".benchmark");
+  const controller = controllerArtifactsForWorkspace(workspace);
+  const copies = [
+    [controller.score, join(benchmarkDir, "score.json")],
+    [controller.record, join(benchmarkDir, "run-record.json")],
+  ];
+  if (copies.some(([source]) => !existsSync(source))) {
+    throw new Error("controller artifacts are incomplete");
+  }
+  if (copies.some(([, target]) => existsSync(target))) {
+    throw new Error("trusted compatibility artifact target already exists");
+  }
+  const installed = [];
+  try {
+    for (const [source, target] of copies) {
+      copyFileSync(source, target, fsConstants.COPYFILE_EXCL);
+      installed.push([source, target]);
+      if (fileSha256(source) !== fileSha256(target)) {
+        throw new Error(`trusted compatibility artifact hash mismatch: ${basename(target)}`);
+      }
+    }
+  } catch (error) {
+    for (const [source, target] of installed.reverse()) {
+      try {
+        if (existsSync(target) && fileSha256(source) === fileSha256(target)) unlinkSync(target);
+      } catch {
+        // A partially installed compatibility set remains fail-closed.
+      }
+    }
+    throw error;
+  }
+  return {
+    score_sha256: fileSha256(controller.score),
+    run_record_sha256: fileSha256(controller.record),
+  };
+}
+
 function cellArtifactHashes(benchmarkDir) {
   const resultPath = join(benchmarkDir, "run-result.json");
   const scorePath = join(benchmarkDir, "score.json");
   const recordPath = join(benchmarkDir, "run-record.json");
   const proofTracePath = join(benchmarkDir, "proof-trace.json");
   const hostPolicyStatePath = join(benchmarkDir, "host-policy-state.json");
+  const controller = controllerArtifactsForWorkspace(dirname(benchmarkDir));
   return {
     run_result_sha256: fileSha256(resultPath),
     score_sha256: fileSha256(scorePath),
     run_record_sha256: fileSha256(recordPath),
     ...(existsSync(proofTracePath) ? { proof_trace_sha256: fileSha256(proofTracePath) } : {}),
     ...(existsSync(hostPolicyStatePath) ? { host_policy_state_sha256: fileSha256(hostPolicyStatePath) } : {}),
+    ...(existsSync(controller.score) ? { controller_score_sha256: fileSha256(controller.score) } : {}),
+    ...(existsSync(controller.record)
+      ? { controller_run_record_sha256: fileSha256(controller.record) }
+      : {}),
     benchmark_tree_sha256: benchmarkArtifactManifest(benchmarkDir).sha256,
   };
 }
@@ -831,9 +916,24 @@ export function completedCellSummary(
   { completedInInvocation, includeArtifactHashes = true } = {},
 ) {
   const benchmarkDir = join(workspace, ".benchmark");
+  const controller = controllerArtifactsForWorkspace(workspace);
   const resultPath = join(benchmarkDir, "run-result.json");
-  const scorePath = join(benchmarkDir, "score.json");
-  const recordPath = join(benchmarkDir, "run-record.json");
+  const scorePath = existsSync(controller.score)
+    ? controller.score
+    : join(benchmarkDir, "score.json");
+  const recordPath = existsSync(controller.record)
+    ? controller.record
+    : join(benchmarkDir, "run-record.json");
+  for (const [authoritative, compatibility] of [
+    [controller.score, join(benchmarkDir, "score.json")],
+    [controller.record, join(benchmarkDir, "run-record.json")],
+  ]) {
+    if (
+      existsSync(authoritative)
+      && existsSync(compatibility)
+      && fileSha256(authoritative) !== fileSha256(compatibility)
+    ) throw new Error(`trusted compatibility artifact drifted: ${basename(compatibility)}`);
+  }
   const run = readJson(resultPath);
   const score = readJson(scorePath);
   const record = readJson(recordPath);
@@ -864,6 +964,7 @@ export function completedCellSummary(
     host_policy_gate: record.runtime_diagnostics?.host_policy?.gate ?? null,
     host_policy_admission: record.runtime_diagnostics?.host_policy_admission ?? null,
     candidate_preflight: record.runtime_diagnostics?.candidate_preflight ?? null,
+    complete_block_outcome: record.complete_block_outcome ?? null,
   };
   if (includeArtifactHashes) summary.artifact_hashes = cellArtifactHashes(benchmarkDir);
   if (completedInInvocation !== undefined) {
@@ -875,19 +976,73 @@ export function completedCellSummary(
 export function candidatePreflightStopReason(plan, record) {
   if (plan?.candidate_preflight_contract?.required !== true) return null;
   const preflight = record?.runtime_diagnostics?.candidate_preflight;
-  if (!preflight?.receipt_present) return "candidate-preview-receipt-missing";
+  const completeBlock = plan?.control_contract?.admission_normalization_policy
+    === "complete-block-effort-scaling";
+  if (!preflight?.receipt_present) {
+    return completeBlock ? null : "candidate-preview-receipt-missing";
+  }
   if (!preflight.receipt_valid || preflight.receipt_state !== "passed") {
-    return "candidate-preview-receipt-failed";
+    return completeBlock ? null : "candidate-preview-receipt-failed";
   }
   if (!preflight.source_contract_sha256_match) return "candidate-preview-source-contract-mismatch";
   if (!preflight.sealed_inventory_sha256_match) return "candidate-preview-inventory-mismatch";
-  if (!preflight.product_present || !preflight.candidate_final_bytes_match) {
-    return "candidate-final-byte-mismatch";
+  if (!preflight.product_present) {
+    return completeBlock ? null : "candidate-final-byte-mismatch";
+  }
+  if (!preflight.candidate_final_bytes_match) {
+    return completeBlock ? null : "candidate-final-byte-mismatch";
   }
   return null;
 }
 
+export function completeBlockRoutingStopReason(
+  plan,
+  record,
+  { matrixCell = null, run = null } = {},
+) {
+  if (plan?.control_contract?.admission_normalization_policy !== "complete-block-effort-scaling") {
+    return null;
+  }
+  const attestation = record?.attribution?.runtime?.routing_attestation;
+  const checks = attestation?.checks;
+  const recomputed = matrixCell && run
+    ? buildCodexRoutingAttestation({ matrixCell, run, lockedPlan: plan })
+    : null;
+  if (
+    record?.validity !== "valid"
+    || attestation?.pass !== true
+    || attestation.runtime !== "codex"
+    || attestation.provider_route !== "codex"
+    || !checks
+    || !isDeepStrictEqual(Object.keys(checks).sort(), [...COMPLETE_BLOCK_ROUTING_CHECK_KEYS].sort())
+    || Object.values(checks).some((value) => value !== true)
+    || recomputed?.pass !== true
+    || !isDeepStrictEqual(attestation, recomputed)
+  ) return "codex-effort-routing-attestation-failed";
+  return null;
+}
+
+export function validateCompleteBlockExecutionContract(
+  plan,
+  preparation,
+  { lockedPlanSha256, maxNewCells },
+) {
+  if (plan?.control_contract?.admission_normalization_policy !== "complete-block-effort-scaling") {
+    return { required: false };
+  }
+  if (maxNewCells !== 1) {
+    throw new Error("complete-block effort scaling requires --max-new-cells 1");
+  }
+  if (preparation?.locked_plan_sha256 !== lockedPlanSha256) {
+    throw new Error("complete-block effort scaling locked plan drifted after preparation");
+  }
+  return { required: true, locked_plan_sha256: lockedPlanSha256, max_new_cells: 1 };
+}
+
 export function reliabilityHardStopReason(plan, summary) {
+  if (plan?.control_contract?.admission_normalization_policy === "complete-block-effort-scaling") {
+    return null;
+  }
   const hardStops = new Set(plan?.reliability_contract?.contract_hard_stop ?? []);
   if (hardStops.size === 0) return null;
   const proof = summary?.proof_trace;
@@ -994,6 +1149,10 @@ export function validPreparedCellAttestation(value, { hostPolicy = false } = {})
 
 function assertUntouchedCell(workspace, expectedAttestation = undefined) {
   const manifest = readJson(join(workspace, ".benchmark", "manifest.json"));
+  const controllerTampering = controllerArtifactTamperingReason(workspace);
+  if (controllerTampering) {
+    throw new Error(`untouched checkpoint cell has controller artifact: ${workspace}:${controllerTampering}`);
+  }
   if (untouchedCellPaths(workspace).some((path) => existsSync(path))) {
     throw new Error(`untouched checkpoint cell has execution artifacts: ${workspace}`);
   }
@@ -1020,9 +1179,17 @@ function assertCompletedCell(entry, cell, index, matrixRoot) {
   const resultPath = join(benchmarkDir, "run-result.json");
   const scorePath = join(benchmarkDir, "score.json");
   const recordPath = join(benchmarkDir, "run-record.json");
+  const controller = controllerArtifactPaths(matrixRoot, cell.id);
   if (![resultPath, scorePath, recordPath].every((path) => existsSync(path))) {
     throw new Error(`checkpoint completed cell is missing run, score, or record: ${cell.id}`);
   }
+  if (![controller.score, controller.record].every((path) => existsSync(path))) {
+    throw new Error(`checkpoint completed cell is missing controller artifacts: ${cell.id}`);
+  }
+  if (
+    fileSha256(scorePath) !== fileSha256(controller.score)
+    || fileSha256(recordPath) !== fileSha256(controller.record)
+  ) throw new Error(`checkpoint completed cell compatibility artifact drifted: ${cell.id}`);
   const hashes = cellArtifactHashes(benchmarkDir);
   if (entry.artifact_hashes?.benchmark_tree_sha256 !== hashes.benchmark_tree_sha256) {
     throw new Error(`checkpoint completed cell benchmark tree drifted: ${cell.id}`);
@@ -1355,7 +1522,20 @@ function executePreparedMatrixWithLease(root, {
   if (preparation.status !== "prepared" || preparation.prepared_cells !== plan.cells.length) {
     throw new Error("matrix preparation is incomplete");
   }
+  validateCompleteBlockExecutionContract(plan, preparation, { lockedPlanSha256, maxNewCells });
   const existing = existsSync(executionStatePath) ? readJson(executionStatePath) : null;
+  const completeBlockAdmission = existing?.complete_block_prepared_admission
+    ?? runCompleteBlockPreparedAdmissionAudit(matrixRoot, plan);
+  if (
+    plan?.control_contract?.admission_normalization_policy === "complete-block-effort-scaling"
+    && (
+      completeBlockAdmission?.status !== "passed"
+      || completeBlockAdmission.locked_plan_sha256 !== lockedPlanSha256
+      || completeBlockAdmission.preparation_state_sha256 !== preparationStateSha256
+      || completeBlockAdmission.task_set_sha256 !== preparation.task_set_sha256
+      || completeBlockAdmission.schedule_sha256 !== preparation.schedule_sha256
+    )
+  ) throw new Error("complete-block prepared admission receipt drifted");
   const freshPreparedCellAttestations = {};
   const existingCheckpointBounded = existing?.execution_contract?.mode === "checkpoint-bounded";
   if (existingCheckpointBounded && !bounded) {
@@ -1461,6 +1641,7 @@ function executePreparedMatrixWithLease(root, {
     cells: [],
   };
   if (controllerPreEditPlans) state.controller_pre_edit_plans = controllerPreEditPlans;
+  if (completeBlockAdmission) state.complete_block_prepared_admission = completeBlockAdmission;
   if (bounded && !existing) {
     state.execution_contract = {
       mode: "checkpoint-bounded",
@@ -1707,6 +1888,7 @@ function executePreparedMatrixWithLease(root, {
     const eventsPath = join(benchmarkDir, "events.jsonl");
     const scorePath = join(benchmarkDir, "score.json");
     const recordPath = join(benchmarkDir, "run-record.json");
+    const controllerArtifacts = controllerArtifactPaths(matrixRoot, cell.id);
 
     state.current_cell = cell.id;
     upsertCell(state, { id: cell.id, order: index + 1, status: "running", workspace });
@@ -1756,6 +1938,22 @@ function executePreparedMatrixWithLease(root, {
         );
       }
       const executed = runNode(runnerSpec.runner, runnerSpec.args, repo);
+      const tamperingReason = controllerArtifactTamperingReason(workspace);
+      if (tamperingReason) {
+        state.status = "stopped-preregistered";
+        state.stop_reason = tamperingReason;
+        stopCurrentInvocation(tamperingReason);
+        upsertCell(state, {
+          id: cell.id,
+          order: index + 1,
+          status: "stopped",
+          workspace,
+          reason: tamperingReason,
+        });
+        freezeRemainingCells(state, plan, index, matrixRoot, tamperingReason);
+        writeJson(executionStatePath, state);
+        throw new Error(`preregistered stop at ${cell.id}: ${tamperingReason}`);
+      }
       if (!existsSync(resultPath)) {
         const reason = `runner-no-result:${executed.error?.message ?? executed.stderr?.trim() ?? `exit-${executed.status}`}`;
         state.status = "stopped-preregistered";
@@ -1766,6 +1964,23 @@ function executePreparedMatrixWithLease(root, {
         writeJson(executionStatePath, state);
         throw new Error(reason);
       }
+    }
+
+    const tamperingReason = controllerArtifactTamperingReason(workspace);
+    if (tamperingReason) {
+      state.status = "stopped-preregistered";
+      state.stop_reason = tamperingReason;
+      stopCurrentInvocation(tamperingReason);
+      upsertCell(state, {
+        id: cell.id,
+        order: index + 1,
+        status: "stopped",
+        workspace,
+        reason: tamperingReason,
+      });
+      freezeRemainingCells(state, plan, index, matrixRoot, tamperingReason);
+      writeJson(executionStatePath, state);
+      throw new Error(`preregistered stop at ${cell.id}: ${tamperingReason}`);
     }
 
     const run = readJson(resultPath);
@@ -1784,42 +1999,54 @@ function executePreparedMatrixWithLease(root, {
       throw new Error(`preregistered stop at ${cell.id}: ${stopReason}`);
     }
 
-    if (!existsSync(scorePath)) {
-      const evaluated = runNode(evaluateScript, ["--workspace", workspace], repo);
-      if (evaluated.status !== 0 || !existsSync(scorePath)) {
-        const reason = `evaluator-failure:${evaluated.stderr?.trim() || `exit-${evaluated.status}`}`;
-        state.status = "stopped-preregistered";
-        state.stop_reason = reason;
-        stopCurrentInvocation(reason);
-        upsertCell(state, { id: cell.id, order: index + 1, status: "stopped", workspace, reason });
-        freezeRemainingCells(state, plan, index, matrixRoot, reason);
-        writeJson(executionStatePath, state);
-        throw new Error(reason);
-      }
+    const evaluated = runNode(evaluateScript, [
+      "--workspace", workspace,
+      "--out", controllerArtifacts.score,
+    ], repo);
+    if (
+      evaluated.status !== 0
+      || !existsSync(controllerArtifacts.score)
+      || existsSync(scorePath)
+      || existsSync(recordPath)
+    ) {
+      const reason = `evaluator-failure:${evaluated.stderr?.trim() || `exit-${evaluated.status}`}`;
+      state.status = "stopped-preregistered";
+      state.stop_reason = reason;
+      stopCurrentInvocation(reason);
+      upsertCell(state, { id: cell.id, order: index + 1, status: "stopped", workspace, reason });
+      freezeRemainingCells(state, plan, index, matrixRoot, reason);
+      writeJson(executionStatePath, state);
+      throw new Error(reason);
     }
 
-    if (!existsSync(recordPath)) {
-      const exported = runNode(exportScript, [
-        "--workspace", workspace,
-        "--family", plan.family,
-        "--system", cell.system_id,
-        "--trial", String(cell.trial_index),
-        "--suite-version", plan.suite_version ?? "1.9.7",
-        "--budget-tier", cell.effort,
-      ], repo);
-      if (exported.status !== 0 || !existsSync(recordPath)) {
-        const reason = `export-failure:${exported.stderr?.trim() || `exit-${exported.status}`}`;
-        state.status = "stopped-preregistered";
-        state.stop_reason = reason;
-        stopCurrentInvocation(reason);
-        upsertCell(state, { id: cell.id, order: index + 1, status: "stopped", workspace, reason });
-        freezeRemainingCells(state, plan, index, matrixRoot, reason);
-        writeJson(executionStatePath, state);
-        throw new Error(reason);
-      }
+    const exported = runNode(exportScript, [
+      "--workspace", workspace,
+      "--family", plan.family,
+      "--system", cell.system_id,
+      "--trial", String(cell.trial_index),
+      "--suite-version", plan.suite_version ?? "1.9.7",
+      "--budget-tier", cell.effort,
+      "--score", controllerArtifacts.score,
+      "--out", controllerArtifacts.record,
+    ], repo);
+    if (
+      exported.status !== 0
+      || !existsSync(controllerArtifacts.record)
+      || existsSync(scorePath)
+      || existsSync(recordPath)
+    ) {
+      const reason = `export-failure:${exported.stderr?.trim() || `exit-${exported.status}`}`;
+      state.status = "stopped-preregistered";
+      state.stop_reason = reason;
+      stopCurrentInvocation(reason);
+      upsertCell(state, { id: cell.id, order: index + 1, status: "stopped", workspace, reason });
+      freezeRemainingCells(state, plan, index, matrixRoot, reason);
+      writeJson(executionStatePath, state);
+      throw new Error(reason);
     }
 
-    const candidatePreflightReason = candidatePreflightStopReason(plan, readJson(recordPath));
+    const exportedRecord = readJson(controllerArtifacts.record);
+    const candidatePreflightReason = candidatePreflightStopReason(plan, exportedRecord);
     if (candidatePreflightReason) {
       state.status = "stopped-preregistered";
       state.stop_reason = candidatePreflightReason;
@@ -1837,33 +2064,43 @@ function executePreparedMatrixWithLease(root, {
       throw new Error(`preregistered stop at ${cell.id}: ${candidatePreflightReason}`);
     }
 
+    const routingStopReason = completeBlockRoutingStopReason(plan, exportedRecord, {
+      matrixCell: cell,
+      run,
+    });
+    if (routingStopReason) {
+      state.status = "stopped-preregistered";
+      state.stop_reason = routingStopReason;
+      state.current_cell = null;
+      stopCurrentInvocation(routingStopReason);
+      upsertCell(state, {
+        id: cell.id,
+        order: index + 1,
+        status: "stopped",
+        workspace,
+        reason: routingStopReason,
+      });
+      freezeRemainingCells(state, plan, index, matrixRoot, routingStopReason);
+      writeJson(executionStatePath, state);
+      throw new Error(`preregistered stop at ${cell.id}: ${routingStopReason}`);
+    }
+
     const summary = completedCellSummary(
       cell,
       index,
       workspace,
-      bounded
-        ? { completedInInvocation: invocation.invocation }
-        : { includeArtifactHashes: false },
+      { includeArtifactHashes: false },
     );
     const hostPolicyAdmission = hostPolicyAdmissionDisposition(plan, summary);
     const hostPolicyStopReason = hostPolicyAdmission.disposition === "invalid-infrastructure"
       ? hostPolicyAdmission.reason
       : null;
     if (hostPolicyStopReason) {
-      const record = readJson(recordPath);
-      record.validity = "invalid-infrastructure";
-      record.runtime_diagnostics = {
-        ...(record.runtime_diagnostics ?? {}),
-        infrastructure_invalid_reason: hostPolicyStopReason,
-      };
-      writeJson(recordPath, record);
       const invalidSummary = completedCellSummary(
         cell,
         index,
         workspace,
-        bounded
-          ? { completedInInvocation: invocation.invocation }
-          : { includeArtifactHashes: false },
+        { includeArtifactHashes: false },
       );
       invalidSummary.status = "stopped";
       invalidSummary.reason = hostPolicyStopReason;
@@ -1876,24 +2113,15 @@ function executePreparedMatrixWithLease(root, {
       writeJson(executionStatePath, state);
       throw new Error(`preregistered stop at ${cell.id}: ${hostPolicyStopReason}`);
     }
-    let admittedSummary = summary;
-    if (hostPolicyAdmission.disposition === "valid-system-failure") {
-      const record = readJson(recordPath);
-      record.ui_resolved = false;
-      record.runtime_diagnostics = {
-        ...(record.runtime_diagnostics ?? {}),
-        host_policy_admission: hostPolicyAdmission,
-      };
-      writeJson(recordPath, record);
-      admittedSummary = completedCellSummary(
-        cell,
-        index,
-        workspace,
-        bounded
-          ? { completedInInvocation: invocation.invocation }
-          : { includeArtifactHashes: false },
-      );
-    }
+    installTrustedCompatibilityArtifacts(workspace);
+    const admittedSummary = completedCellSummary(
+      cell,
+      index,
+      workspace,
+      bounded
+        ? { completedInInvocation: invocation.invocation }
+        : { includeArtifactHashes: false },
+    );
     const reliabilityStopReason = reliabilityHardStopReason(plan, admittedSummary);
     if (reliabilityStopReason) {
       upsertCell(state, admittedSummary);

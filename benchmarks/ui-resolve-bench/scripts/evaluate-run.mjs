@@ -2,10 +2,10 @@
 import { execFileSync } from "node:child_process";
 import { createRequire } from "node:module";
 import { createServer } from "node:http";
-import { existsSync, mkdirSync, readFileSync } from "node:fs";
-import { extname, join, normalize, resolve } from "node:path";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, extname, join, normalize, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { parseArgs, readJson, repoRoot, writeJson } from "./_lib.mjs";
+import { parseArgs, readJson, repoRoot } from "./_lib.mjs";
 import {
   OBJECTIVE_METHODOLOGY_EPOCH,
   OBJECTIVE_SCORE_SCHEMA_VERSION,
@@ -733,7 +733,7 @@ async function main() {
 
   const workspace = args.get("workspace") ? resolve(String(args.get("workspace"))) : null;
   if (!workspace) {
-    console.error("usage: evaluate-run.mjs --workspace <completed-dir>");
+    console.error("usage: evaluate-run.mjs --workspace <completed-dir> [--out <controller-score.json>]");
     process.exitCode = 2;
     return;
   }
@@ -1813,7 +1813,14 @@ async function main() {
       unsupported_claims: unsupportedClaims,
     },
   };
-  writeJson(join(benchmarkDir, "score.json"), score);
+  const scorePath = args.get("out")
+    ? resolve(String(args.get("out")))
+    : join(benchmarkDir, "score.json");
+  mkdirSync(dirname(scorePath), { recursive: true });
+  writeFileSync(scorePath, `${JSON.stringify(score, null, 2)}\n`, {
+    encoding: "utf8",
+    flag: "wx",
+  });
   console.log(JSON.stringify(score, null, 2));
 }
 

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
@@ -22,11 +23,51 @@ const v14BaselineRoot = "/private/tmp/omd-council-state-routing-baselines-1.9.77
 const v15BaselineRoot = "/private/tmp/omd-council-routed-lifecycle-baselines-1.9.791-v15";
 const v16BaselineRoot = "/private/tmp/omd-frontier-skill-qualification-baselines-1.9.798-v16";
 const v17BaselineRoot = "/private/tmp/omd-eligible-reliability-baselines-1.9.813-v17";
+const v18BaselineRoot = "/private/tmp/omd-all-effort-sweep-baselines-1.9.817-v18";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
 const resumeDraft = process.argv.includes("--resume-draft");
-const taskSet = process.argv.includes("--v17") ? "v17" : process.argv.includes("--v16") ? "v16" : process.argv.includes("--v15") ? "v15" : process.argv.includes("--v14") ? "v14" : process.argv.includes("--v13") ? "v13" : process.argv.includes("--v12") ? "v12" : process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v18") ? "v18" : process.argv.includes("--v17") ? "v17" : process.argv.includes("--v16") ? "v16" : process.argv.includes("--v15") ? "v15" : process.argv.includes("--v14") ? "v14" : process.argv.includes("--v13") ? "v13" : process.argv.includes("--v12") ? "v12" : process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
+
+function git(args, options = {}) {
+  return execFileSync("git", ["-C", repoRoot, ...args], {
+    encoding: options.encoding ?? "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+    maxBuffer: 16 * 1024 * 1024,
+  });
+}
+
+function repositorySourceForSha(path, expectedSha256) {
+  const commits = git(["rev-list", "HEAD", "--", path]).trim().split("\n").filter(Boolean);
+  for (const commit of commits) {
+    let bytes;
+    try {
+      bytes = git(["show", `${commit}:${path}`], { encoding: "buffer" });
+    } catch {
+      continue;
+    }
+    if (sha256(bytes) === expectedSha256) {
+      return { path, commit, sha256: expectedSha256 };
+    }
+  }
+  throw new Error(`repository history does not contain ${path} at ${expectedSha256}`);
+}
+
+function currentObjectiveMethodology(score) {
+  return {
+    score_schema_version: score.schema_version,
+    epoch: score.methodology_epoch,
+    evaluator_source_sha256: sha256(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs",
+    ))),
+    contract_source_sha256: sha256(readFileSync(join(
+      repoRoot,
+      "benchmarks/ui-resolve-bench/scripts/objective-methodology-contract.mjs",
+    ))),
+  };
+}
 
 const legacyCases = [
   {
@@ -373,7 +414,28 @@ const v17Cases = [
   },
 ];
 
-const cases = taskSet === "v17" ? v17Cases : taskSet === "v16" ? v16Cases : taskSet === "v15" ? v15Cases : taskSet === "v14" ? v14Cases : taskSet === "v13" ? v13Cases : taskSet === "v12" ? v12Cases : taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v18Cases = [
+  {
+    id: "pollen-slide-accession-v0.1", title: "Pollen slide accession review", eyebrow: "Palynology archive · slide accession", heading: "Pollen-slide accession review", recordHeading: "Sample register", recordSummary: "Four supplied pollen groups mapped to six microscope slides.",
+    records: [["POLLEN-ALD-8414",["SLIDE-14720","SLIDE-14721"]],["POLLEN-PIN-8539",["SLIDE-14722"]],["POLLEN-GRA-8665",["SLIDE-14723","SLIDE-14724"]],["POLLEN-SED-8778",["SLIDE-14725"]]],
+    windows: [["CABINET-B2","08:05–08:25"],["CABINET-E5","11:10–11:30"],["CABINET-H1","14:35–14:55"]], views: [["samples","Sample register"],["windows","Cabinet windows"],["decision","Accession decision"]], toggle: "Include mountant-log note", fieldLabel: "Accession palynologist", validValue: "POLLEN-ALD-8414 accession review", target: "POLLEN-ALD-8414 + SLIDE-14720", evidence: "4 pollen groups · 6 microscope slides · 3 cabinet windows", state: "Review open", action: "Open accession record", footer: "Palynology archive · supplied accession evidence only",
+    unknowns: ["taxon verified","pollen viable","mountant calibrated","provenance validated","slide seal verified","cabinet accepted","catalog published","accession approved"], palette: {canvas:"#F1F2EC",surface:"#FFFFFB",ink:"#2E342C",muted:"#70766E",border:"#A3AAA0",primary:"#52644A",accent:"#775D58"}, columns: "repeat(2,395px)", windowColumns: "repeat(3,281px)", decisionMin: "565px", cardRadius: 3, domain: "palynology slide-accession ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "seismic-core-dispatch-v0.1", title: "Seismic core dispatch review", eyebrow: "Geoscience repository · core dispatch", heading: "Seismic-core dispatch review", recordHeading: "Core register", recordSummary: "Five supplied core groups mapped to seven transit cradles.",
+    records: [["CORE-FLT-9414",["CRADLE-25820","CRADLE-25821"]],["CORE-RFT-9539",["CRADLE-25822"]],["CORE-BSN-9665",["CRADLE-25823","CRADLE-25824"]],["CORE-SHL-9778",["CRADLE-25825"]],["CORE-FLD-9892",["CRADLE-25826"]]],
+    windows: [["BAY-A3","07:05–07:25"],["BAY-D6","09:50–10:10"],["BAY-G2","13:10–13:30"],["BAY-J5","15:45–16:05"]], views: [["cores","Core register"],["windows","Bay windows"],["decision","Dispatch decision"]], toggle: "Include vibration-log note", fieldLabel: "Dispatch geologist", validValue: "CORE-FLT-9414 dispatch review", target: "CORE-FLT-9414 + CRADLE-25820", evidence: "5 core groups · 7 transit cradles · 4 bay windows", state: "Review open", action: "Open dispatch record", footer: "Geoscience repository · supplied dispatch evidence only",
+    unknowns: ["strata verified","core stable","orientation calibrated","provenance validated","cradle seal verified","bay accepted","catalog published","dispatch approved"], palette: {canvas:"#EFF1F2",surface:"#FDFEFF",ink:"#293239",muted:"#6E757A",border:"#A0A9AF",primary:"#49606C",accent:"#785E52"}, columns: "repeat(3,292px)", windowColumns: "repeat(4,223px)", decisionMin: "577px", cardRadius: 4, domain: "seismic core-dispatch ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "oral-history-reel-return-v0.1", title: "Oral history reel return review", eyebrow: "Community archive · reel return", heading: "Oral-history reel return review", recordHeading: "Interview register", recordSummary: "Six supplied interview groups mapped to eight preservation canisters.",
+    records: [["REEL-MKT-1414",["CANISTER-36920","CANISTER-36921"]],["REEL-DOCK-1539",["CANISTER-36922"]],["REEL-MILL-1665",["CANISTER-36923","CANISTER-36924"]],["REEL-RAIL-1778",["CANISTER-36925"]],["REEL-FARM-1892",["CANISTER-36926"]],["REEL-STOR-1906",["CANISTER-36927"]]],
+    windows: [["SUITE-C1","06:55–07:15"],["SUITE-F4","09:35–09:55"],["SUITE-I2","12:45–13:05"],["SUITE-L5","15:25–15:45"]], views: [["reels","Interview register"],["windows","Suite windows"],["decision","Return decision"]], toggle: "Include leader-tape note", fieldLabel: "Return archivist", validValue: "REEL-MKT-1414 return review", target: "REEL-MKT-1414 + CANISTER-36920", evidence: "6 interview groups · 8 preservation canisters · 4 suite windows", state: "Review open", action: "Open return record", footer: "Community archive · supplied return evidence only",
+    unknowns: ["speaker verified","recording complete","azimuth calibrated","rights validated","canister seal verified","suite accepted","catalog published","return approved"], palette: {canvas:"#F2F0F1",surface:"#FFFEFF",ink:"#322D33",muted:"#767177",border:"#AAA1A8",primary:"#62505F",accent:"#6B6450"}, columns: "repeat(3,294px)", windowColumns: "repeat(4,224px)", decisionMin: "579px", cardRadius: 5, domain: "oral-history reel-return ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v18" ? v18Cases : taskSet === "v17" ? v17Cases : taskSet === "v16" ? v16Cases : taskSet === "v15" ? v15Cases : taskSet === "v14" ? v14Cases : taskSet === "v13" ? v13Cases : taskSet === "v12" ? v12Cases : taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -462,7 +524,9 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v17"
+  const baselineRoot = taskSet === "v18"
+    ? v18BaselineRoot
+    : taskSet === "v17"
     ? v17BaselineRoot
     : taskSet === "v16"
     ? v16BaselineRoot
@@ -499,6 +563,10 @@ function baselineScorePath(c) {
   return join(root,c.id,".benchmark/score.json");
 }
 
+function baselineManifestPath(c) {
+  return join(resolve(baselineScorePath(c), "../"), "manifest.json");
+}
+
 function normalizeBaseline(c, score) {
   const failed = Object.entries(score.critical_gates).filter(([,pass])=>pass===false).map(([gate])=>gate).sort();
   if (JSON.stringify(failed) !== JSON.stringify(["accessibility","responsive"])) {
@@ -516,6 +584,97 @@ function normalizeBaseline(c, score) {
     failed_evidence:{
       responsive:["narrow viewport page-level overflow or protected text geometry failure","320px page-level overflow or protected text geometry failure","200% surrogate page-level overflow or protected text geometry failure"],
       accessibility:["serious color contrast on normal-size canvas guidance"],
+    },
+  };
+}
+
+function baselineProvenance(c, score, evidenceBytes, taskBytes) {
+  if (!existsSync(baselineManifestPath(c))) {
+    throw new Error(`${c.id} baseline preparation manifest is missing`);
+  }
+  const baselineManifestBytes = readFileSync(baselineManifestPath(c));
+  const sourceMethodology = JSON.parse(baselineManifestBytes).objective_evaluator;
+  if (score.schema_version !== sourceMethodology.score_schema_version
+    || score.methodology_epoch !== sourceMethodology.epoch) {
+    throw new Error(`${c.id} baseline objective methodology drift`);
+  }
+  const methodology = currentObjectiveMethodology(score);
+  const sourceEvaluatorRepository = repositorySourceForSha(
+    "benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs",
+    sourceMethodology.evaluator_source_sha256,
+  );
+  const sourceContractRepository = repositorySourceForSha(
+    "benchmarks/ui-resolve-bench/scripts/objective-methodology-contract.mjs",
+    sourceMethodology.contract_source_sha256,
+  );
+  const evidence = JSON.parse(evidenceBytes);
+  const promptSha256 = sha256(prompt(c));
+  const starterTreeFiles = [
+    { path: "DESIGN.md", sha256: sha256(design(c)) },
+    { path: "index.html", sha256: sha256(html(c)) },
+  ];
+  const inputs = {
+    prompt_sha256: promptSha256,
+    starter_tree_files: starterTreeFiles,
+    baseline_evidence_sha256: sha256(evidenceBytes),
+    task_contract_sha256: sha256(taskBytes),
+  };
+  const expected = {
+    deterministic_total: 75,
+    deterministic_max: 85,
+    failed_critical_gates: ["accessibility", "responsive"],
+  };
+  const repositoryProjection = {
+    schema_version: "0.2",
+    task_id: c.id,
+    variant_id: "raw-design-md",
+    source_score_sha256: evidence.source_score_sha256,
+    baseline_evidence: evidence,
+    inputs,
+    source_methodology: sourceMethodology,
+    source_evaluator_repository: sourceEvaluatorRepository,
+    source_contract_repository: sourceContractRepository,
+    reproduction_methodology: methodology,
+    expected,
+  };
+  return {
+    schema_version: "0.1",
+    kind: "provider-free-objective-score-deterministic-equivalent",
+    task_id: c.id,
+    variant_id: "raw-design-md",
+    raw_score: {
+      schema_version: score.schema_version,
+      source_score_sha256: sha256(readFileSync(baselineScorePath(c))),
+      checks_sha256: sha256(JSON.stringify(score.checks)),
+      observations_sha256: sha256(JSON.stringify(score.observations)),
+      source_methodology: sourceMethodology,
+      source_evaluator_repository: sourceEvaluatorRepository,
+      source_contract_repository: sourceContractRepository,
+    },
+    methodology,
+    baseline_manifest_sha256: sha256(baselineManifestBytes),
+    inputs,
+    expected,
+    repository_reproduction: {
+      schema_version: "0.1",
+      canonicalization: "sha256-json-stringify-repository-baseline-projection-v1",
+      projection_sha256: sha256(JSON.stringify(repositoryProjection)),
+      projection_fields: Object.keys(repositoryProjection),
+      provider_calls: 0,
+      model_calls: 0,
+    },
+    reproduction_contract: {
+      provider_calls: 0,
+      model_calls: 0,
+      evaluator: "benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs",
+      historical_source_evaluator: "git-object-pinned",
+      current_reproduction_evaluator: "working-tree-byte-pinned",
+      evaluator_sha_delta_disposition: sourceMethodology.evaluator_source_sha256
+        === methodology.evaluator_source_sha256
+        ? "none"
+        : "recorded-not-overwritten",
+      compare: "repository baseline evidence/input/methodology canonical JSON projection",
+      historical_volatile_fields_excluded: ["evaluated_at", "observations", "checks"],
     },
   };
 }
@@ -542,7 +701,14 @@ for (const c of cases) {
   if (!existsSync(scorePath)) throw new Error(`missing provider-free baseline: ${scorePath}`);
   const score=JSON.parse(readFileSync(scorePath,"utf8"));
   const evidenceBytes=json(normalizeBaseline(c,score));
+  const taskBytes=json(task(c,sourceContract(c,"0.2",sha256(evidenceBytes))));
   writeFileSync(join(root,"baseline-critical-gates.json"),evidenceBytes);
-  writeFileSync(join(root,"task.json"),json(task(c,sourceContract(c,"0.2",sha256(evidenceBytes)))));
+  writeFileSync(join(root,"task.json"),taskBytes);
+  if (taskSet === "v18") {
+    writeFileSync(
+      join(root,"baseline-provenance.json"),
+      json(baselineProvenance(c,score,evidenceBytes,taskBytes)),
+    );
+  }
   console.log(`finalized ${c.id} baseline=${score.points.deterministic_total}/${score.points.deterministic_max}`);
 }

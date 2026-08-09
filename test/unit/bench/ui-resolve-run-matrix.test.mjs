@@ -1,11 +1,19 @@
 import { describe, expect, it } from "vitest";
-import { mkdtempSync, mkdirSync, symlinkSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdtempSync,
+  mkdirSync,
+  readFileSync,
+  symlinkSync,
+  writeFileSync,
+} from "node:fs";
 import { createHash } from "node:crypto";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
   benchmarkArtifactManifest,
   candidatePreflightStopReason,
+  completeBlockRoutingStopReason,
   completedControllerPreEditPlanReceipt,
   directBrowserCommandCount,
   executeControllerPreEditPlan,
@@ -13,15 +21,19 @@ import {
   harnessDeliveryStopReason,
   firstProductWriteTransaction,
   hostPolicyAdmissionDisposition,
+  installTrustedCompatibilityArtifacts,
   lastAdvisoryToFirstProductWriteMs,
   preflightRuntimeEnvironment,
   preregisteredStopReason,
   reliabilityHardStopReason,
   replacementVerifierAuthorship,
+  runCompleteBlockPreparedAdmissionAudit,
   runArgsForCell,
   validPreparedCellAttestation,
+  validateCompleteBlockExecutionContract,
   validateRunPreparedMatrixCliArgs,
 } from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
+import { buildCodexRoutingAttestation } from "../../../benchmarks/ui-resolve-bench/scripts/export-run-record.mjs";
 
 function digest(value) {
   return createHash("sha256").update(value).digest("hex");
@@ -265,6 +277,207 @@ describe("UI-Resolve prepared matrix execution", () => {
     })).toBeNull();
   });
 
+  it("records missing or failed candidate receipts as terminal outcomes in a complete effort block", () => {
+    const plan = {
+      candidate_preflight_contract: { required: true },
+      control_contract: { admission_normalization_policy: "complete-block-effort-scaling" },
+    };
+    expect(candidatePreflightStopReason(plan, { runtime_diagnostics: {} })).toBeNull();
+    expect(candidatePreflightStopReason(plan, {
+      runtime_diagnostics: {
+        candidate_preflight: {
+          receipt_present: true,
+          receipt_valid: false,
+          receipt_state: "failed",
+        },
+      },
+    })).toBeNull();
+    expect(reliabilityHardStopReason({
+      ...plan,
+      reliability_contract: {
+        contract_hard_stop: ["contract-proof-noncompliance", "candidate-final-byte-mismatch"],
+      },
+    }, {
+      proof_trace: { compliance_pass: false },
+      candidate_preflight: { candidate_final_bytes_match: false },
+    })).toBeNull();
+    expect(candidatePreflightStopReason(plan, {
+      runtime_diagnostics: {
+        candidate_preflight: {
+          receipt_present: true,
+          receipt_valid: true,
+          receipt_state: "passed",
+          source_contract_sha256_match: true,
+          sealed_inventory_sha256_match: false,
+          product_present: true,
+          candidate_final_bytes_match: true,
+        },
+      },
+    })).toBe("candidate-preview-inventory-mismatch");
+    expect(candidatePreflightStopReason(plan, {
+      runtime_diagnostics: {
+        candidate_preflight: {
+          receipt_present: true,
+          receipt_valid: true,
+          receipt_state: "passed",
+          source_contract_sha256_match: true,
+          sealed_inventory_sha256_match: true,
+          product_present: true,
+          candidate_final_bytes_match: false,
+        },
+      },
+    })).toBeNull();
+  });
+
+  it("fails a complete effort block closed unless every routing check is exact", () => {
+    const matrixCell = {
+      id: "cell",
+      runtime: "codex",
+      model_id: "gpt-5.6-luna",
+      effort: "high",
+    };
+    const plan = {
+      control_contract: { admission_normalization_policy: "complete-block-effort-scaling" },
+      cells: [matrixCell],
+      provider_routing_contract: {
+        cursor_allowed: false,
+        allowed_runtime: "codex",
+        allowed_model_ids: ["gpt-5.6-luna"],
+        allowed_model_effort_pairs: [{ model_id: "gpt-5.6-luna", effort: "high" }],
+        fail_closed: true,
+      },
+      codex_model_effort_contract: {
+        cache_sha256: "a".repeat(64),
+        models: [{
+          model_id: "gpt-5.6-luna",
+          model_profile_sha256: "b".repeat(64),
+          default_effort: "medium",
+          supported_efforts: ["high"],
+        }],
+      },
+    };
+    const run = {
+      runtime: {
+        runtime_target: "codex",
+        model_requested: "gpt-5.6-luna",
+        effort_requested: "high",
+        reasoning: "high",
+        model_tool_mode_evidence: {
+          cache_sha256: "a".repeat(64),
+          model_profile_sha256: "b".repeat(64),
+        },
+      },
+    };
+    const attestation = buildCodexRoutingAttestation({ matrixCell, run, lockedPlan: plan });
+    const exact = {
+      validity: "valid",
+      attribution: {
+        runtime: {
+          routing_attestation: attestation,
+        },
+      },
+    };
+    expect(completeBlockRoutingStopReason(plan, exact, { matrixCell, run })).toBeNull();
+    const drifted = structuredClone(exact);
+    drifted.attribution.runtime.routing_attestation.checks.effort_requested_exact = false;
+    expect(completeBlockRoutingStopReason(plan, drifted, { matrixCell, run }))
+      .toBe("codex-effort-routing-attestation-failed");
+    const extraKey = structuredClone(exact);
+    extraKey.attribution.runtime.routing_attestation.checks.extra = true;
+    expect(completeBlockRoutingStopReason(plan, extraKey, { matrixCell, run }))
+      .toBe("codex-effort-routing-attestation-failed");
+    expect(completeBlockRoutingStopReason(
+      plan,
+      { ...exact, validity: "invalid-attribution" },
+      { matrixCell, run },
+    ))
+      .toBe("codex-effort-routing-attestation-failed");
+    expect(completeBlockRoutingStopReason({}, {})).toBeNull();
+  });
+
+  it("binds complete-block execution to the preparation hash and one-cell checkpoints", () => {
+    const plan = {
+      control_contract: { admission_normalization_policy: "complete-block-effort-scaling" },
+    };
+    expect(validateCompleteBlockExecutionContract(
+      plan,
+      { locked_plan_sha256: "a".repeat(64) },
+      { lockedPlanSha256: "a".repeat(64), maxNewCells: 1 },
+    )).toMatchObject({ required: true, max_new_cells: 1 });
+    expect(() => validateCompleteBlockExecutionContract(
+      plan,
+      { locked_plan_sha256: "a".repeat(64) },
+      { lockedPlanSha256: "a".repeat(64), maxNewCells: 2 },
+    )).toThrow(/max-new-cells 1/u);
+    expect(() => validateCompleteBlockExecutionContract(
+      plan,
+      { locked_plan_sha256: "b".repeat(64) },
+      { lockedPlanSha256: "a".repeat(64), maxNewCells: 1 },
+    )).toThrow(/locked plan drifted/u);
+    expect(validateCompleteBlockExecutionContract({}, {}, {
+      lockedPlanSha256: null,
+      maxNewCells: undefined,
+    })).toEqual({ required: false });
+  });
+
+  it("audits the entire prepared complete block before provider exposure", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-prepared-audit-"));
+    const plan = {
+      cells: [{ id: "a" }, { id: "b" }],
+      control_contract: { admission_normalization_policy: "complete-block-effort-scaling" },
+    };
+    let invocation = null;
+    const report = {
+      status: "PREPARED_PROVIDER_ZERO",
+      execution_admission: { allowed: true },
+      normalization_policy: "complete-block-effort-scaling",
+      scheduled_cells: 2,
+      prepared_cells: 2,
+      locked_plan_sha256: "a".repeat(64),
+      preparation_state_sha256: "b".repeat(64),
+      task_set_sha256: "c".repeat(64),
+      schedule_sha256: "d".repeat(64),
+    };
+    const receipt = runCompleteBlockPreparedAdmissionAudit(root, plan, {
+      runNodeFn(script, args, cwd) {
+        invocation = { script, args, cwd };
+        return { status: 0, stdout: JSON.stringify(report), stderr: "" };
+      },
+    });
+    expect(invocation.args).toEqual(["--root", root]);
+    expect(receipt).toMatchObject({
+      status: "passed",
+      locked_plan_sha256: report.locked_plan_sha256,
+      preparation_state_sha256: report.preparation_state_sha256,
+      normalization_policy: "complete-block-effort-scaling",
+    });
+    expect(receipt.report_sha256).toMatch(/^[a-f0-9]{64}$/u);
+    expect(() => runCompleteBlockPreparedAdmissionAudit(root, plan, {
+      runNodeFn: () => ({
+        status: 0,
+        stdout: JSON.stringify({ ...report, prepared_cells: 1 }),
+        stderr: "",
+      }),
+    })).toThrow("prepared-matrix-admission-audit-rejected");
+  });
+
+  it("never overwrites a compatibility artifact that predates controller promotion", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-controller-copy-"));
+    const workspace = join(root, "cell-a");
+    const benchmark = join(workspace, ".benchmark");
+    const authority = join(root, ".controller-artifacts", "cell-a");
+    mkdirSync(benchmark, { recursive: true });
+    mkdirSync(authority, { recursive: true });
+    writeFileSync(join(authority, "score.json"), "{\"trusted\":\"score\"}\n");
+    writeFileSync(join(authority, "run-record.json"), "{\"trusted\":\"record\"}\n");
+    writeFileSync(join(benchmark, "score.json"), "{\"provider\":\"forged\"}\n");
+    expect(() => installTrustedCompatibilityArtifacts(workspace))
+      .toThrow("trusted compatibility artifact target already exists");
+    expect(readFileSync(join(benchmark, "score.json"), "utf8"))
+      .toBe("{\"provider\":\"forged\"}\n");
+    expect(existsSync(join(benchmark, "run-record.json"))).toBe(false);
+  });
+
   it("pins controller observation to the exact Codex CLI and post-run execution-home profile", () => {
     const plan = {
       controller_observation_contract: {
@@ -318,6 +531,18 @@ describe("UI-Resolve prepared matrix execution", () => {
       objective_max: 85,
       wall_time_ms: 565610,
       tokens: 1993652,
+      complete_block_outcome: {
+        schema_version: "0.1",
+        disposition: "terminal-provider-failure",
+        reason: "complete-block-provider-proof-noncompliance",
+        tool_diagnostics: {
+          availability: { available: true },
+          tool_error_count: 0,
+          recoverable_tool_error_count: 0,
+          agent_tool_call_count: 1,
+          agent_tool_error_count: 0,
+        },
+      },
       runtime_diagnostics: {
         host_policy: { gate: { pass: false } },
         host_policy_admission: {
@@ -326,12 +551,20 @@ describe("UI-Resolve prepared matrix execution", () => {
         },
       },
     }));
-    expect(completedCellSummary(
+    const checkpointSummary = completedCellSummary(
       { id: "control" },
       0,
       workspace,
       { includeArtifactHashes: false },
-    ).host_policy_admission).toEqual({
+    );
+    expect(checkpointSummary).toMatchObject({
+      status: "complete",
+      complete_block_outcome: {
+        disposition: "terminal-provider-failure",
+        reason: "complete-block-provider-proof-noncompliance",
+      },
+    });
+    expect(checkpointSummary.host_policy_admission).toEqual({
       disposition: "valid-system-failure",
       reason: "installed-host-policy-rejected-system-output",
     });
@@ -370,6 +603,35 @@ describe("UI-Resolve prepared matrix execution", () => {
       ...base,
       host_policy_gate: { pass: true, reasons: [] },
     })).toEqual({ disposition: "admit", reason: null });
+
+    const completeBlockPlan = {
+      ...plan,
+      control_contract: { admission_normalization_policy: "complete-block-effort-scaling" },
+    };
+    expect(hostPolicyAdmissionDisposition(completeBlockPlan, {
+      ...base,
+      proof_trace: { analyzable: false },
+      validity: "valid",
+      host_policy_gate: {
+        pass: false,
+        reasons: ["proof-trace-not-analyzable"],
+      },
+    })).toEqual({
+      disposition: "valid-system-failure",
+      reason: "complete-block-provider-proof-noncompliance",
+    });
+    expect(hostPolicyAdmissionDisposition(completeBlockPlan, {
+      ...base,
+      proof_trace: { analyzable: false },
+      validity: "valid",
+      host_policy_gate: {
+        pass: false,
+        reasons: ["native-browser-unintercepted"],
+      },
+    })).toEqual({
+      disposition: "invalid-infrastructure",
+      reason: "installed-host-policy-gate-failed",
+    });
   });
 
   it("rejects unknown CLI options instead of silently dropping checkpoint bounds", () => {

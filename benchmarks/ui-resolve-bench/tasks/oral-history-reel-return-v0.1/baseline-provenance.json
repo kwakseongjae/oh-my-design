@@ -1,0 +1,92 @@
+{
+  "schema_version": "0.1",
+  "kind": "provider-free-objective-score-deterministic-equivalent",
+  "task_id": "oral-history-reel-return-v0.1",
+  "variant_id": "raw-design-md",
+  "raw_score": {
+    "schema_version": "0.6",
+    "source_score_sha256": "8b4cca0a25e283e956d0e99c68b656a7e7a5d438ed2c0052d17efeb4908d7852",
+    "checks_sha256": "500a90c5a10199993f3563ab6a5ddf03709b00c84969802e7b93bc175c4b63dc",
+    "observations_sha256": "b1b0950a003b8454b2db457527fefca48e247e7e76e5ddeffb44bdda3d44aefe",
+    "source_methodology": {
+      "score_schema_version": "0.6",
+      "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+      "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+      "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+    },
+    "source_evaluator_repository": {
+      "path": "benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs",
+      "commit": "1ac3613973a021929aa5147fbea9eecf635a6b0b",
+      "sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5"
+    },
+    "source_contract_repository": {
+      "path": "benchmarks/ui-resolve-bench/scripts/objective-methodology-contract.mjs",
+      "commit": "1ac3613973a021929aa5147fbea9eecf635a6b0b",
+      "sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+    }
+  },
+  "methodology": {
+    "score_schema_version": "0.6",
+    "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "evaluator_source_sha256": "5412897d2acfe2482429ef7e049349accbb160a5367ffc6dc4ae3927f9a5b326",
+    "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+  },
+  "baseline_manifest_sha256": "9a8b6e626254b3baf3b963b78e5af75b761af5d0961d41cc3692ebe57ce30c63",
+  "inputs": {
+    "prompt_sha256": "efa23b4e91fbe5392fdcd859b519572b43ed597398e3ef25469c6e24cbd0f69a",
+    "starter_tree_files": [
+      {
+        "path": "DESIGN.md",
+        "sha256": "7ca15a689cc9bf9dc16fbd3c1e4d3e5db45357a45e44dcff14a7be530eeebbc2"
+      },
+      {
+        "path": "index.html",
+        "sha256": "699b8cf23faef646b430a6ee4a43cc91c97fbb9733b9b57e29a3cd2990fa3d48"
+      }
+    ],
+    "baseline_evidence_sha256": "bfe71413c7738388a348ef4b33564ffdc8a050918fc345392fff19ff9d93ca9b",
+    "task_contract_sha256": "5b310e8d62db88c7749073222e3b044619dddc1ca03e0dcabf806a67e9b63aaa"
+  },
+  "expected": {
+    "deterministic_total": 75,
+    "deterministic_max": 85,
+    "failed_critical_gates": [
+      "accessibility",
+      "responsive"
+    ]
+  },
+  "repository_reproduction": {
+    "schema_version": "0.1",
+    "canonicalization": "sha256-json-stringify-repository-baseline-projection-v1",
+    "projection_sha256": "f40597624ad0104d047591ee52c68f344a9116bc21792c2308ecc639a523f17b",
+    "projection_fields": [
+      "schema_version",
+      "task_id",
+      "variant_id",
+      "source_score_sha256",
+      "baseline_evidence",
+      "inputs",
+      "source_methodology",
+      "source_evaluator_repository",
+      "source_contract_repository",
+      "reproduction_methodology",
+      "expected"
+    ],
+    "provider_calls": 0,
+    "model_calls": 0
+  },
+  "reproduction_contract": {
+    "provider_calls": 0,
+    "model_calls": 0,
+    "evaluator": "benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs",
+    "historical_source_evaluator": "git-object-pinned",
+    "current_reproduction_evaluator": "working-tree-byte-pinned",
+    "evaluator_sha_delta_disposition": "recorded-not-overwritten",
+    "compare": "repository baseline evidence/input/methodology canonical JSON projection",
+    "historical_volatile_fields_excluded": [
+      "evaluated_at",
+      "observations",
+      "checks"
+    ]
+  }
+}

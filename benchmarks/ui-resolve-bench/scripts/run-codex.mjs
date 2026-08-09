@@ -5,8 +5,11 @@ import { join, resolve } from "node:path";
 import { diffTreeManifests, parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
 import {
   codexBrowserSandboxSpec,
+  isolatedCodexHome,
   prepareIsolatedCodexHome,
+  preparedExactCodexRuntimeContract,
   preparedWorkspaceRequiresBrowserProof,
+  verifyExactCodexCliRuntime,
 } from "./codex-browser-sandbox-contract.mjs";
 import { inspectCodexModelToolMode } from "./codex-tool-mode-contract.mjs";
 
@@ -38,7 +41,12 @@ const eventsPath = join(benchmarkDir, "events.jsonl");
 writeFileSync(eventsPath, "", "utf8");
 const maxLogBytes = 50 * 1024 * 1024;
 const browserProofRequired = preparedWorkspaceRequiresBrowserProof(workspace, { readJson });
-const sourceModelToolMode = inspectCodexModelToolMode(model);
+const exactRuntimeContract = preparedExactCodexRuntimeContract(workspace, { readJson });
+const exactCodexHome = exactRuntimeContract ? isolatedCodexHome(workspace) : null;
+const codexBin = exactRuntimeContract
+  ? exactRuntimeContract.catalog_snapshot_contract.codex_cli.executable_path
+  : process.env.OMD_BENCH_CODEX_BIN ?? "codex";
+const sourceModelToolMode = exactRuntimeContract ? null : inspectCodexModelToolMode(model);
 const innerCommand = [
   "exec",
   "--ephemeral",
@@ -58,16 +66,21 @@ const innerCommand = [
   "-",
 ];
 const execution = browserProofRequired
-  ? codexBrowserSandboxSpec({ workspace, innerArgs: innerCommand })
+  ? codexBrowserSandboxSpec({ workspace, innerArgs: innerCommand, codexBin })
   : {
-      executable: process.env.OMD_BENCH_CODEX_BIN ?? "codex",
+      executable: codexBin,
       args: innerCommand,
-      env: {},
+      env: exactRuntimeContract
+        ? { HOME: exactCodexHome, CODEX_HOME: exactCodexHome }
+        : {},
       sandbox: "workspace-write",
+      ...(exactRuntimeContract ? { codex_home: exactCodexHome } : {}),
     };
-if (browserProofRequired) {
+if (browserProofRequired && !exactRuntimeContract) {
   mkdirSync(execution.temp_dir, { recursive: true });
   prepareIsolatedCodexHome(workspace);
+} else if (browserProofRequired) {
+  mkdirSync(execution.temp_dir, { recursive: true });
 }
 
 const startedAt = new Date();
@@ -89,6 +102,20 @@ Object.assign(childEnv, {
   OMD_PROOF_POLICY_EVENTS_PATH: eventsPath,
   ...execution.env,
 });
+
+let exactCliRuntime = null;
+let exactPreRunModelToolMode = null;
+if (exactRuntimeContract) {
+  prepareIsolatedCodexHome(workspace, process.env, {
+    exactRuntimeContract,
+    modelId: model,
+    effort: reasoning,
+  });
+  exactPreRunModelToolMode = inspectCodexModelToolMode(model, {
+    OMD_BENCH_AUTH_CODEX_HOME: exactCodexHome,
+  });
+  exactCliRuntime = verifyExactCodexCliRuntime(exactRuntimeContract);
+}
 
 const appendCapped = (current, chunk) => {
   if (Buffer.byteLength(current) >= maxLogBytes) {
@@ -130,12 +157,20 @@ const exit = await new Promise((resolveExit) => {
 });
 
 const wallMs = Number(process.hrtime.bigint() - startedNs) / 1_000_000;
-const executionModelToolMode = browserProofRequired
+const executionModelToolMode = browserProofRequired || exactRuntimeContract
   ? inspectCodexModelToolMode(model, { OMD_BENCH_AUTH_CODEX_HOME: execution.codex_home })
   : sourceModelToolMode;
-const modelToolMode = executionModelToolMode.reason === "model-cache-missing"
-  ? sourceModelToolMode
-  : executionModelToolMode;
+const modelToolMode = exactRuntimeContract
+  ? executionModelToolMode
+  : executionModelToolMode.reason === "model-cache-missing"
+    ? sourceModelToolMode
+    : executionModelToolMode;
+const modelToolModeEvidenceScope = modelToolMode === executionModelToolMode
+  ? "execution-home-post-run"
+  : "auth-source-fallback";
+const modelToolModeBeforeRun = exactRuntimeContract
+  ? exactPreRunModelToolMode
+  : sourceModelToolMode;
 writeFileSync(eventsPath, stdout, "utf8");
 writeFileSync(join(benchmarkDir, "stderr.log"), stderr, "utf8");
 
@@ -180,32 +215,36 @@ const result = {
   runtime: {
     runtime_target: "codex",
     agent: "codex-cli",
-    agent_version: process.env.CODEX_VERSION ?? null,
+    agent_version: exactCliRuntime?.version ?? process.env.CODEX_VERSION ?? null,
+    ...(exactCliRuntime ? {
+      binary_sha256: exactCliRuntime.binary_sha256,
+      native_binary_sha256: exactCliRuntime.native_binary_sha256,
+    } : {}),
     model_requested: model,
     model_reported: modelReported,
     model_evidence_mode: modelReported ? "provider-observed" : "cli-argument",
     effort_requested: reasoning,
     model_tool_mode: modelToolMode.tool_mode,
     model_tool_mode_evidence: {
-      scope: modelToolMode === executionModelToolMode ? "execution-home-post-run" : "auth-source-fallback",
+      scope: modelToolModeEvidenceScope,
       cache_sha256: modelToolMode.cache_sha256,
       model_profile_sha256: modelToolMode.model_profile_sha256,
       cache_fetched_at: modelToolMode.cache_fetched_at,
       cache_client_version: modelToolMode.cache_client_version,
       auth_source_before_run: {
-        cache_sha256: sourceModelToolMode.cache_sha256,
-        model_profile_sha256: sourceModelToolMode.model_profile_sha256,
-        cache_fetched_at: sourceModelToolMode.cache_fetched_at,
-        cache_client_version: sourceModelToolMode.cache_client_version,
+        cache_sha256: modelToolModeBeforeRun.cache_sha256,
+        model_profile_sha256: modelToolModeBeforeRun.model_profile_sha256,
+        cache_fetched_at: modelToolModeBeforeRun.cache_fetched_at,
+        cache_client_version: modelToolModeBeforeRun.cache_client_version,
       },
     },
-    auth_mode: null,
+    auth_mode: exactRuntimeContract ? "immutable-snapshot-copy" : null,
     provider_route: null,
     model,
     reasoning,
     sandbox: execution.sandbox,
     browser_socket_scope: browserProofRequired ? execution.runtime_dir : null,
-    codex_home: browserProofRequired ? execution.codex_home : null,
+    codex_home: browserProofRequired || exactRuntimeContract ? execution.codex_home : null,
     browser_temp_dir: browserProofRequired ? execution.temp_dir : null,
     ephemeral: true,
     ignored_user_config: !loadUserConfig,

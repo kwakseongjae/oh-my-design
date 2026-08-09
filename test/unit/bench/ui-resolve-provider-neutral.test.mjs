@@ -1,6 +1,7 @@
 import { spawnSync } from "node:child_process";
 import {
   chmodSync,
+  existsSync,
   mkdtempSync,
   readFileSync,
   statSync,
@@ -270,7 +271,11 @@ process.exit(child.status ?? 1);
   return wrapper;
 }
 
-function installFakeRuntimes(root, { emptyClaude = false, slowClaude = false } = {}) {
+function installFakeRuntimes(root, {
+  emptyClaude = false,
+  slowClaude = false,
+  forgeClaudeControllerArtifacts = false,
+} = {}) {
   const claude = executable(join(root, "fake-claude.mjs"), `
 import fs from "node:fs";
 import path from "node:path";
@@ -281,6 +286,16 @@ const countPath = path.join(benchmarkDir, "fake-claude-invocation-count.txt");
 const count = fs.existsSync(countPath) ? Number(fs.readFileSync(countPath, "utf8")) : 0;
 fs.writeFileSync(invocationPath, JSON.stringify(argv));
 fs.writeFileSync(countPath, String(count + 1));
+${forgeClaudeControllerArtifacts ? `
+fs.writeFileSync(path.join(benchmarkDir, "score.json"), JSON.stringify({
+  status:{automated_gate_pass:true},
+  points:{deterministic_total:85,deterministic_max:85},
+  critical_gates:{evidence_honesty:true}
+}));
+fs.writeFileSync(path.join(benchmarkDir, "run-record.json"), JSON.stringify({
+  validity:"valid",ui_resolved:true,objective_score:85,objective_max:85
+}));
+` : ""}
 const model = argv[argv.indexOf("--model") + 1];
 console.log(JSON.stringify({type:"system",subtype:"init",model}));
 ${slowClaude ? "await new Promise((resolve) => setTimeout(resolve, 5_000));" : ""}
@@ -320,12 +335,14 @@ if (argv.includes("--preflight")) {
   process.exit(0);
 }
 const workspace = argv[argv.indexOf("--workspace") + 1];
+const out = argv[argv.indexOf("--out") + 1];
 increment(path.join(workspace, ".benchmark", "fake-evaluator-invocation-count.txt"));
-fs.writeFileSync(path.join(workspace, ".benchmark", "score.json"), JSON.stringify({
+fs.mkdirSync(path.dirname(out), {recursive:true});
+fs.writeFileSync(out, JSON.stringify({
   status:{automated_gate_pass:false},
   points:{deterministic_total:0,deterministic_max:85},
   critical_gates:{evidence_honesty:true}
-}));
+}), {flag:"wx"});
 `);
   process.env.OMD_BENCH_CLAUDE_BIN = claude;
   process.env.OMD_BENCH_CODEX_BIN = codex;
@@ -559,6 +576,35 @@ describe("provider-neutral prepared matrix contract", () => {
       .not.toBe(readFileSync(join(root, "fake-codex", ".benchmark", "events.jsonl"), "utf8"));
     expect(invocationCount(root, "fake-claude", "claude")).toBe(1);
     expect(invocationCount(root, "fake-codex", "codex")).toBe(1);
+  });
+
+  it("freezes when a provider forges controller score and record artifacts", () => {
+    const temp = mkdtempSync(join(tmpdir(), "omd-provider-controller-forgery-"));
+    const root = join(temp, "matrix");
+    installFakeRuntimes(temp, { forgeClaudeControllerArtifacts: true });
+    const plan = calibrationPlan(root);
+    plan.cells = [plan.cells[0]];
+    prepareRunMatrix(plan);
+
+    expect(() => executePreparedMatrix(root)).toThrow(
+      /provider-authored-controller-artifact:score\.json/u,
+    );
+    expect(invocationCount(root, "fake-claude", "claude")).toBe(1);
+    expect(evaluatorInvocationCount(root, "fake-claude")).toBe(0);
+    expect(exporterInvocationCount(root, "fake-claude")).toBe(0);
+    expect(existsSync(join(root, ".controller-artifacts", "fake-claude", "score.json")))
+      .toBe(false);
+    const state = JSON.parse(readFileSync(join(root, "execution-state.json"), "utf8"));
+    expect(state).toMatchObject({
+      status: "stopped-preregistered",
+      stop_reason: "provider-authored-controller-artifact:score.json",
+      completed_cells: 0,
+    });
+    expect(state.cells[0]).toMatchObject({
+      id: "fake-claude",
+      status: "stopped",
+      reason: "provider-authored-controller-artifact:score.json",
+    });
   });
 
   it("scores and checkpoints a preregistered timeout without replaying its provider", () => {
