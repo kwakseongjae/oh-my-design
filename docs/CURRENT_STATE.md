@@ -4,11 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.811 frontier skill qualification 12/12 완료
+- 갱신: 2026-08-09 · 1.9.813 true Reliability@3 fresh denominator 생성·기준점 봉인
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.813은 Stage A eligible OmD arm의 확장을 위해 fresh `tidal-chart-accession`/`entomology-tray-dispatch`/`choreographic-score-return`을 추가했다. 밀도는 record4/5/6·container6/7/8이며 provider/model/Cursor0이다.
+- 세 raw 기준점은 모두75/85이고 responsive+accessibility만 red, 나머지 task/journey/design/evidence gate는 green이다. 공개 metric 정의대로 다음 denominator는 task3×독립 trial3=9셀이고, 최근의 task3×one-shot 진단 shorthand와 분리한다.
+- exact task bytes를 먼저 commit한 뒤 별도 task-lock과 `multi-task-repeated-reliability` admission을 고정한다. 그 후 exact OmD current/Luna-high 9셀을 serial·720s·pacing30s·no-retry/no-replacement/no-fallback/Cursor0으로 실행한다.
+- 최종 모델 effort 검수는 별도 fresh root로 유지한다. 현재 Codex catalog의 exact 조합은 Luna5(low/medium/high/xhigh/max), Terra6(+ultra), Sol6(+ultra), 총17이며 alias/substitution은 금지한다.
 - 1.9.811 Stage A는 exact Luna/high 12/12 valid complete다. retry/replacement/fallback/model substitution/Cursor0이며 전체 wall3,926,266ms·tokens8,860,037이다.
 - arm 결과는 OmD3/3 UI-Resolved+proof(평균85,216.7s,713,108t), Anthropic0/3(77,335.8s,880,668t), Impeccable0/3(77,351.1s,513,473t), UIUX0/3(72.67,405.1s,846,097t)다.
 - frozen Stage A rule상 OmD만 별도 Reliability@3 확장 eligible이다. qualification은 public ranking/statistical superiority/2.0 release gate가 아니다. 다음은 exact eligible arm의 fresh Reliability@3를 별도 task/root로 사전등록한다.

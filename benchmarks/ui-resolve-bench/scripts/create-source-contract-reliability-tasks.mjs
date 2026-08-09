@@ -21,9 +21,10 @@ const v13BaselineRoot = "/private/tmp/omd-council-comparison-baselines-1.9.754-v
 const v14BaselineRoot = "/private/tmp/omd-council-state-routing-baselines-1.9.779-v14";
 const v15BaselineRoot = "/private/tmp/omd-council-routed-lifecycle-baselines-1.9.791-v15";
 const v16BaselineRoot = "/private/tmp/omd-frontier-skill-qualification-baselines-1.9.798-v16";
+const v17BaselineRoot = "/private/tmp/omd-eligible-reliability-baselines-1.9.813-v17";
 const phase = process.argv.includes("--finalize") ? "finalize" : "draft";
 const resumeDraft = process.argv.includes("--resume-draft");
-const taskSet = process.argv.includes("--v16") ? "v16" : process.argv.includes("--v15") ? "v15" : process.argv.includes("--v14") ? "v14" : process.argv.includes("--v13") ? "v13" : process.argv.includes("--v12") ? "v12" : process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
+const taskSet = process.argv.includes("--v17") ? "v17" : process.argv.includes("--v16") ? "v16" : process.argv.includes("--v15") ? "v15" : process.argv.includes("--v14") ? "v14" : process.argv.includes("--v13") ? "v13" : process.argv.includes("--v12") ? "v12" : process.argv.includes("--v11") ? "v11" : process.argv.includes("--v10") ? "v10" : process.argv.includes("--v9") ? "v9" : process.argv.includes("--v8") ? "v8" : process.argv.includes("--v7") ? "v7" : process.argv.includes("--v6") ? "v6" : process.argv.includes("--v5") ? "v5" : process.argv.includes("--v4") ? "v4" : process.argv.includes("--v3") ? "v3" : process.argv.includes("--v2") ? "v2" : "legacy";
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 
@@ -351,7 +352,28 @@ const v16Cases = [
   },
 ];
 
-const cases = taskSet === "v16" ? v16Cases : taskSet === "v15" ? v15Cases : taskSet === "v14" ? v14Cases : taskSet === "v13" ? v13Cases : taskSet === "v12" ? v12Cases : taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
+const v17Cases = [
+  {
+    id: "tidal-chart-accession-v0.1", title: "Tidal chart accession review", eyebrow: "Hydrographic archive · chart accession", heading: "Tidal-chart accession review", recordHeading: "Chart register", recordSummary: "Four supplied chart groups mapped to six archival tubes.",
+    records: [["CHART-EST-5814",["TUBE-71420","TUBE-71421"]],["CHART-BAY-5939",["TUBE-71422"]],["CHART-INL-6065",["TUBE-71423","TUBE-71424"]],["CHART-SHO-6178",["TUBE-71425"]]],
+    windows: [["ROOM-B2","08:10–08:30"],["ROOM-E5","11:15–11:35"],["ROOM-H1","14:40–15:00"]], views: [["charts","Chart register"],["windows","Room windows"],["decision","Accession decision"]], toggle: "Include datum-log note", fieldLabel: "Accession hydrographer", validValue: "CHART-EST-5814 accession review", target: "CHART-EST-5814 + TUBE-71420", evidence: "4 chart groups · 6 archival tubes · 3 room windows", state: "Review open", action: "Open accession record", footer: "Hydrographic archive · supplied accession evidence only",
+    unknowns: ["datum verified","chart current","scale calibrated","provenance validated","tube seal verified","room accepted","catalog published","accession approved"], palette: {canvas:"#EDF2F3",surface:"#FCFEFF",ink:"#243139",muted:"#6C757A",border:"#9DAAB0",primary:"#3F6170",accent:"#725D6C"}, columns: "repeat(2,393px)", windowColumns: "repeat(3,279px)", decisionMin: "563px", cardRadius: 3, domain: "hydrographic chart-accession ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "entomology-tray-dispatch-v0.1", title: "Entomology tray dispatch review", eyebrow: "Insect collection · tray dispatch", heading: "Entomology-tray dispatch review", recordHeading: "Specimen register", recordSummary: "Five supplied specimen groups mapped to seven transit drawers.",
+    records: [["SPEC-LEP-6814",["DRAWER-82520","DRAWER-82521"]],["SPEC-COL-6939",["DRAWER-82522"]],["SPEC-DIP-7065",["DRAWER-82523","DRAWER-82524"]],["SPEC-HYM-7178",["DRAWER-82525"]],["SPEC-ORT-7292",["DRAWER-82526"]]],
+    windows: [["CABINET-A3","07:10–07:30"],["CABINET-D6","09:55–10:15"],["CABINET-G2","13:15–13:35"],["CABINET-J5","15:50–16:10"]], views: [["specimens","Specimen register"],["windows","Cabinet windows"],["decision","Dispatch decision"]], toggle: "Include pin-condition note", fieldLabel: "Dispatch curator", validValue: "SPEC-LEP-6814 dispatch review", target: "SPEC-LEP-6814 + DRAWER-82520", evidence: "5 specimen groups · 7 transit drawers · 4 cabinet windows", state: "Review open", action: "Open dispatch record", footer: "Insect collection · supplied dispatch evidence only",
+    unknowns: ["species verified","specimen stable","pin calibrated","provenance validated","drawer seal verified","cabinet accepted","catalog published","dispatch approved"], palette: {canvas:"#F0F2ED",surface:"#FEFFFC",ink:"#2B342C",muted:"#6E756F",border:"#A0AAA1",primary:"#4B624E",accent:"#765E4D"}, columns: "repeat(3,291px)", windowColumns: "repeat(4,222px)", decisionMin: "575px", cardRadius: 4, domain: "entomology tray-dispatch ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+  {
+    id: "choreographic-score-return-v0.1", title: "Choreographic score return review", eyebrow: "Performance archive · score return", heading: "Choreographic-score return review", recordHeading: "Notation register", recordSummary: "Six supplied notation groups mapped to eight rehearsal folders.",
+    records: [["SCORE-GST-7814",["FOLDER-93620","FOLDER-93621"]],["SCORE-SPC-7939",["FOLDER-93622"]],["SCORE-RHY-8065",["FOLDER-93623","FOLDER-93624"]],["SCORE-ENS-8178",["FOLDER-93625"]],["SCORE-DUO-8292",["FOLDER-93626"]],["SCORE-SOL-8306",["FOLDER-93627"]]],
+    windows: [["STUDIO-C1","07:00–07:20"],["STUDIO-F4","09:40–10:00"],["STUDIO-I2","12:50–13:10"],["STUDIO-L5","15:30–15:50"]], views: [["scores","Notation register"],["windows","Studio windows"],["decision","Return decision"]], toggle: "Include annotation-note copy", fieldLabel: "Return archivist", validValue: "SCORE-GST-7814 return review", target: "SCORE-GST-7814 + FOLDER-93620", evidence: "6 notation groups · 8 rehearsal folders · 4 studio windows", state: "Review open", action: "Open return record", footer: "Performance archive · supplied return evidence only",
+    unknowns: ["notation verified","score complete","annotations cleared","rights validated","folder seal verified","studio accepted","catalog published","return approved"], palette: {canvas:"#F1F0F3",surface:"#FFFEFF",ink:"#2D2C35",muted:"#72717A",border:"#A5A2AE",primary:"#55516A",accent:"#785D60"}, columns: "repeat(3,293px)", windowColumns: "repeat(4,223px)", decisionMin: "577px", cardRadius: 5, domain: "choreographic score-return ledger", guidanceSelector: "header > p.guidance-copy",
+  },
+];
+
+const cases = taskSet === "v17" ? v17Cases : taskSet === "v16" ? v16Cases : taskSet === "v15" ? v15Cases : taskSet === "v14" ? v14Cases : taskSet === "v13" ? v13Cases : taskSet === "v12" ? v12Cases : taskSet === "v11" ? v11Cases : taskSet === "v10" ? v10Cases : taskSet === "v9" ? v9Cases : taskSet === "v8" ? v8Cases : taskSet === "v7" ? v7Cases : taskSet === "v6" ? v6Cases : taskSet === "v5" ? v5Cases : taskSet === "v4" ? v4Cases : taskSet === "v3" ? v3Cases : taskSet === "v2" ? v2Cases : legacyCases;
 
 function sourceContract(c, schema = "0.1", baselineSha = null) {
   const guidanceSelector = c.guidanceSelector ?? "header > p";
@@ -440,7 +462,9 @@ function prompt(c) {
 }
 
 function baselineScorePath(c) {
-  const baselineRoot = taskSet === "v16"
+  const baselineRoot = taskSet === "v17"
+    ? v17BaselineRoot
+    : taskSet === "v16"
     ? v16BaselineRoot
     : taskSet === "v15"
     ? v15BaselineRoot

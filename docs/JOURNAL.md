@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.813 true Reliability denominator
+- fresh UI task3을 record4/5/6 밀도로 생성·finalize했다.
+- raw 기준점3/3은75/85, responsive+accessibility만 red다.
+- 공식 Reliability@3는 task3×trial3=9셀로 잠그며 provider/model/Cursor0이다.
+- 다음은 source commit→task lock→repeated-reliability admission→Luna/high9셀이다.
+
 ## 2026-08-09 (Codex) · 1.9.797–798 frontier skill refresh
 - 최신 Anthropic·Impeccable4.0.4·UI UX Pro Max2.13.0을 exact tree로 고정했다.
 - fresh repair3을 raw75/85·responsive/accessibility red로 정렬했다.
