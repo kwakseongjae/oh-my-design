@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.817 Luna Reliability checkpoint 1
+- tidal-r1은 85/85·UI-Resolved·measured browser proof로 통과했다.
+- revision/static closure/browser 1/1/1, recovery·retry·replacement·fallback·Cursor0이다.
+- 1/9 완료; 다음은 frozen order의 entomology-r1이다.
+
 ## 2026-08-09 (Codex) · 1.9.816 Luna Reliability prereg
 - exact OmD current×fresh task3×trial3=9셀을 사전등록·준비했다.
 - repeated admission9/9, task/skill/catalog/browser locks가 green이다.
