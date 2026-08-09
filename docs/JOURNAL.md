@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.825 all-effort prereg
+- source `2ccf90ec`, local catalog `77df9127…`, browser-harness `omd1825`로 exact51셀을 생성했다.
+- plan `b24b3175…`, task set `db9afcab…`, schedule `c23b0fbf…`를 봉인했다.
+- generation provider/model/browser/network/Cursor/Claude0이다.
+- 다음은 plan commit→prepare/admission→1셀씩 연속 실행이다.
+
 ## 2026-08-09 (Codex) · 1.9.825 immutable model catalog ready
 - cache TTL300초를 확인해 cache를 provenance-only, local `model_catalog_json`을 execution authority로 분리했다.
 - source/copy/profile/effort/config/fallback을 plan·runtime·record v2·aggregate에서 독립 검증한다.

@@ -9,9 +9,10 @@
 
 ## 지금 (현재 위치)
 
+- fresh 1.9.825 preregistration은 source `2ccf90ec`, browser-harness `omd1825`/CDP9365, local catalog SHA `77df9127…6f5f`로 exact51셀을 생성했다. plan SHA `b24b3175…68ea`, task set `db9afcab…56f8`, schedule `c23b0fbf…ae57`이며 generation provider/model/browser/network/Cursor/Claude 호출은0이다. 다음은 plan commit→prepare/admission→연속 실행이다.
 - 1.9.825는 Codex0.146.1과 cache client0.146.1 exact-match를 유지하되 TTL300초 cache를 execution authority로 쓰지 않는다. `/private/tmp/omd-codex-auth-pin-1.9.825/model_catalog.json` SHA `77df9127…6f5f`의 immutable local catalog를 각 cell isolated home에 regular file로 복사하고 exact `model_catalog_json` config로만 사용한다.
 - generator→prepare→admission→runner→export v2→aggregate가 catalog source/copy SHA·bytes, Luna/Terra/Sol 전체 selected profile SHA, default/ordered efforts, config key, fallback0을 독립 검증한다. cache는 provenance-only다. `CATALOG-LOCK.json`도 같은 authority를 machine-validate하며 full test914/914(3 skip), lint, build, diff-check가 green이다.
-- next는 이 변경과 1.9.825 catalog report를 커밋한 뒤 source commit을 봉인해 fresh `RUN-MATRIX`/receipt/root를 생성·prepare·audit하고 `omd1825`/CDP9365에서 exact51셀을 `--max-new-cells 1`로 연속 실행하는 것이다. Cursor·Claude·retry·replacement·fallback·substitution은0이다.
+- next는 generated `RUN-MATRIX`/receipt를 커밋한 뒤 fresh root를 prepare·audit하고 `omd1825`/CDP9365에서 exact51셀을 `--max-new-cells 1`로 연속 실행하는 것이다. Cursor·Claude·retry·replacement·fallback·substitution은0이다.
 - 1.9.824 first cell은 provider turn1회 뒤 routing authority에서 fail-close됐다. CLI0.146.1이 client0.147.0 cache를 `missing field base_instructions`로 거부하고 isolated cache를 0.146.1 형식으로 refresh해 pinned profile이 바뀌었다. 유효 완료0/51이며 root는 영구 동결·재사용 금지다.
 - 해당 셀은 candidate/final exact·browser acceptance·objective85/85였지만 `invalid-attribution`, `ui_resolved:false`다. 사용량은 input636,370(cached576,256), output5,372, reasoning970이며 model/route provider-report는 null이다. 결과를 집계·인용하지 않는다.
 - complete-block은 CLI version과 cache client version exact-match를 provider 전에 강제한다. 0.146.1 compatible cache의 Luna5·Terra6·Sol6 exact17 pair를 새 immutable catalog authority로 분리했으며, post-run cache TTL drift는 execution routing에서 제외하고 diagnostics로만 다룬다.
