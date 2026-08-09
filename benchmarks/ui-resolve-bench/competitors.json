@@ -4,6 +4,7 @@
   "preregistered_variant_order": [
     "baseline",
     "raw-design-md",
+    "omd-portable-1.9.821-effort-sweep",
     "omd-portable-1.9.799-current",
     "anthropic-frontend-design-2026-08",
     "impeccable-4.0.4-bounded",
@@ -37,6 +38,22 @@
       "include_design_contract": true,
       "eligible_tracks": ["creation", "landing-redesign", "repair"],
       "activation": null
+    },
+    "omd-portable-1.9.821-effort-sweep": {
+      "label": "oh-my-design apply (1.9.821 effort sweep)",
+      "kind": "local-skill",
+      "vendor_dir": "omd-1.9.821",
+      "source_path": "skills/omd-apply",
+      "install_adapter": "omd-channel-name-v1",
+      "install_platform": "agents",
+      "install_root": ".agents/skills",
+      "install_dir": "omd-apply",
+      "declared_name": "omd:apply",
+      "commit": "bdafa94644bd1960c45fbeb1b4d6cd45b07fc625",
+      "source_tree_sha256": "9f1f5f4002a986d8732b6f7d548a0150f4f41b0906d449647e1c506e2e1a5a88",
+      "license": "MIT",
+      "eligible_tracks": ["creation", "landing-redesign", "repair", "evidence-unknown"],
+      "activation": "Use the installed $omd:apply skill for this task. Work only from the pinned local snapshot and benchmark-provided project files."
     },
     "omd-portable-1.9.799-current": {
       "label": "oh-my-design apply (current epoch)",

@@ -3,12 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.820 Luna/high Reliability 4/9 contract-hard-stop 동결
+- 기준 커밋: `ff08321a`의 exact Codex effort-sweep hardening + legacy admission compatibility (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-09 · 1.9.822 Luna/Terra/Sol 51-cell complete-block 실행 준비
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.822는 Luna5·Terra6·Sol6 exact pair × provider-unseen v18 task3 = 51셀을 Codex-native complete block으로 실행한다. serial·720s·pacing30s·checkpoint1, retry/replacement/fallback/model·effort·task substitution/Cursor/Claude0이다.
+- hardening은 plan-byte prereg receipt, whole-task byte/mode+Git authority, immutable auth/cache copy, wrapper/native CLI pin, controller-owned score/record, exact routing/aggregation, terminal provider-failure continuation을 봉인했다. full test903/903·lint·build green이다.
+- immutable snapshot은 `/private/tmp/omd-codex-auth-pin-1.9.822`, vendor는 commit `bdafa946`의 `/private/tmp/omd-vendors-19822/omd-1.9.821`이다. 다음은 metadata commit→named local browser→fresh plan/prepare/admission→51셀 순차 실행이다.
 - 1.9.820 checkpoint4 `entomology-luna-r2-omd`는 objective85/85·candidate exact였지만 `.decision-target{font-size:17px}`가 pre-edit15px typography lock을 바꿔 proof gate가 red다. artifact는 measured browser1이지만 closure open이다.
 - 1.9.816 Reliability root는 `contract-proof-noncompliance` hard-stop으로 4/9에서 동결했다. 남은5셀은 provider-unexposed이며 same-root resume/retry/replacement가 금지된다; Reliability@3나 우위·2.0 pass claim을 만들 수 없다.
 - 실행은 Codex-native Luna/high만, serial·720s·pacing30s·checkpoint1셀·retry/replacement/fallback/substitution0이다. exact `omd1816` browser attach와 `/private/tmp/omd-codex-auth-pin-1.9.816` immutable catalog snapshot을 사용한다.

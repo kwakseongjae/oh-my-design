@@ -104,12 +104,13 @@ if (argv.includes("--preflight")) {
   console.log(JSON.stringify({event:"fake-evaluator-preflight-complete"}));
   process.exit(0);
 }
-const workspace = argv[argv.indexOf("--workspace") + 1];
-fs.writeFileSync(path.join(workspace, ".benchmark", "score.json"), JSON.stringify({
+const out = argv[argv.indexOf("--out") + 1];
+fs.mkdirSync(path.dirname(out), {recursive:true});
+fs.writeFileSync(out, JSON.stringify({
   status:{automated_gate_pass:false},
   points:{deterministic_total:0,deterministic_max:85},
   critical_gates:{evidence_honesty:true}
-}));
+}), {flag:"wx"});
 `);
   process.env.OMD_CURSOR_AGENT_BIN = cursor;
   process.env.OMD_BENCH_FAKE_RUNTIME = "1";

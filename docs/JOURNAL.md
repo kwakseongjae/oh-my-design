@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.822 all-effort sweep hardening
+- plan/task/auth/cache/CLI/controller artifact/routing/aggregate authority를 fail-close로 봉인했다.
+- complete-block provider failure는 terminal 표본으로 보존하고 authority·infra drift만 freeze한다.
+- full test903/903·lint·build green; 다음은 fresh 51셀 Codex-native 실행이다.
+
 ## 2026-08-09 (Codex) · 1.9.820 Luna Reliability hard stop
 - entomology-r2는85/85였지만 target font15→17px drift로 proof red다.
 - 1.9.816 root를4/9에서 동결했고 남은5셀은 provider-unexposed다.
