@@ -4,22 +4,22 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `1c08553c`의 npm package contents fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · 1.9.817 Luna/high Reliability checkpoint 1/9 통과
+- 갱신: 2026-08-09 · 1.9.818 Luna/high Reliability checkpoint 2/9 통과
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
-- 1.9.817 checkpoint1 `tidal-luna-r1-omd`는 Luna/high에서 85/85·UI-Resolved·proof/candidate exact로 통과했다. revision1·static closure1·measured browser1·recovery/duplicate/verification-after-ready0, wall218,996ms·total1,031,674t이며 Cursor0이다.
-- 1.9.816 exact current OmD fresh task3×trial3 Reliability는 1/9 complete다. retry/replacement/fallback/substitution0이며 남은 8셀은 frozen order 그대로 진행한다.
+- 1.9.818 checkpoint2 `entomology-luna-r1-omd`는 85/85·UI-Resolved·proof/candidate exact로 통과했다. revision1·static closure1·measured browser1·recovery/duplicate/verification-after-ready0, wall214,704ms·total797,606t이다.
+- 1.9.816 exact current OmD fresh task3×trial3 Reliability는 2/9 complete다. 두 셀 모두 proof pass이며 retry/replacement/fallback/substitution/Cursor0, 남은 7셀은 frozen order 그대로 진행한다.
 - 실행은 Codex-native Luna/high만, serial·720s·pacing30s·checkpoint1셀·retry/replacement/fallback/substitution0이다. exact `omd1816` browser attach와 `/private/tmp/omd-codex-auth-pin-1.9.816` immutable catalog snapshot을 사용한다.
-- 다음 허용 작업은 frozen order 둘째 셀 `entomology-luna-r1-omd` 1회 실행이다. 첫 셀은 재실행하지 않고 lifecycle hard-stop이 없을 때만 다음 셀로 진행한다.
+- 다음 허용 작업은 frozen order 셋째 셀 `choreographic-luna-r1-omd` 1회 실행이다. 완료 셀은 재실행하지 않고 lifecycle hard-stop이 없을 때만 다음 셀로 진행한다.
 - 1.9.815 runner는 exact Codex cache/profile을 잠근다. Luna5·Terra6·Sol6=17 pair를 지원하되 cache SHA/fetched-at/client-version, profile SHA/default/ordered effort 중 하나라도 drift하면 provider 전에 중단한다.
 - provider routing은 exact Luna/Terra/Sol만 Codex-native로 허용하고 unknown runtime/model, fabricated suffix, implicit migration을 default-deny한다. Cursor included-only guard는 유지되며 이번 검수는 Cursor0이다.
 - 새 `multi-task-repeated-reliability` normalization은 task≥2, 동일 trial set, exact single arm/model/effort/timeout/skill/evaluator/source-contract와 within-task byte equality를 admission에서 강제한다. bench suite563/563+lint green이다.
 - 1.9.814 task-lock은 source commit `d8ffb76b`와 task/prompt/starter/baseline/source-contract hash를 봉인했다. browser-harness `omd1813`에서 h1/main/view exact, records4/5/6, raw overflow113/191/197px를 관측했고 provider/model/Cursor0이다.
 - 1.9.813은 Stage A eligible OmD arm의 확장을 위해 fresh `tidal-chart-accession`/`entomology-tray-dispatch`/`choreographic-score-return`을 추가했다. 밀도는 record4/5/6·container6/7/8이며 provider/model/Cursor0이다.
 - 세 raw 기준점은 모두75/85이고 responsive+accessibility만 red, 나머지 task/journey/design/evidence gate는 green이다. 공개 metric 정의대로 다음 denominator는 task3×독립 trial3=9셀이고, 최근의 task3×one-shot 진단 shorthand와 분리한다.
-- exact task bytes source commit과 별도 task-lock/admission 고정은 완료됐다. exact OmD current/Luna-high 남은 8셀을 serial·720s·pacing30s·no-retry/no-replacement/no-fallback/Cursor0으로 실행한다.
+- exact task bytes source commit과 별도 task-lock/admission 고정은 완료됐다. exact OmD current/Luna-high 남은 7셀을 serial·720s·pacing30s·no-retry/no-replacement/no-fallback/Cursor0으로 실행한다.
 - 최종 모델 effort 검수는 별도 fresh root로 유지한다. 현재 Codex catalog의 exact 조합은 Luna5(low/medium/high/xhigh/max), Terra6(+ultra), Sol6(+ultra), 총17이며 alias/substitution은 금지한다.
 - 1.9.811 Stage A는 exact Luna/high 12/12 valid complete다. retry/replacement/fallback/model substitution/Cursor0이며 전체 wall3,926,266ms·tokens8,860,037이다.
 - arm 결과는 OmD3/3 UI-Resolved+proof(평균85,216.7s,713,108t), Anthropic0/3(77,335.8s,880,668t), Impeccable0/3(77,351.1s,513,473t), UIUX0/3(72.67,405.1s,846,097t)다.

@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.818 Luna Reliability checkpoint 2
+- entomology-r1도 85/85·UI-Resolved·measured browser proof로 통과했다.
+- 2/9 모두 revision/static/browser 1/1/1, recovery·retry·replacement·Cursor0이다.
+- 다음은 frozen order의 choreographic-r1이다.
+
 ## 2026-08-09 (Codex) · 1.9.817 Luna Reliability checkpoint 1
 - tidal-r1은 85/85·UI-Resolved·measured browser proof로 통과했다.
 - revision/static closure/browser 1/1/1, recovery·retry·replacement·fallback·Cursor0이다.
