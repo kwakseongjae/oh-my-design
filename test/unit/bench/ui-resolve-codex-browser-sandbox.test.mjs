@@ -141,6 +141,9 @@ describe("Codex browser proof sandbox contract", () => {
         PATH: "/bin",
         BU_NAME: "bench-test",
         BU_CDP_URL: "http://127.0.0.1:9336",
+        BH_TELEMETRY: "1",
+        BROWSER_HARNESS_TELEMETRY: "true",
+        ANONYMIZED_TELEMETRY: "on",
       },
     });
     expect(spec.args).toEqual([
@@ -156,6 +159,9 @@ describe("Codex browser proof sandbox contract", () => {
       BH_RUNTIME_DIR_SHARED: "1",
       BH_TMP_DIR: "/tmp/matrix/.benchmark/browser-harness",
       BU_NAME: "bench-test",
+      BH_TELEMETRY: "0",
+      BROWSER_HARNESS_TELEMETRY: "0",
+      ANONYMIZED_TELEMETRY: "0",
     });
     expect(spec.env).not.toHaveProperty("BU_CDP_URL");
     expect(spec.browser_socket).toBe("/tmp/runtime/bu-bench-test.sock");
@@ -208,6 +214,46 @@ describe("Codex browser proof sandbox contract", () => {
     expect(lstatSync(join(target, "auth.json")).isSymbolicLink()).toBe(false);
     expect(readFileSync(join(target, "auth.json")))
       .toEqual(readFileSync(fixture.contract.catalog_snapshot_contract.auth_json_source_path));
+
+    const authIdentity = lstatSync(join(target, "auth.json"));
+    const cacheIdentity = lstatSync(targetCache);
+    expect(prepareIsolatedCodexHome(
+      fixture.workspace,
+      { OMD_BENCH_AUTH_CODEX_HOME: fixture.source },
+      {
+        exactRuntimeContract: fixture.contract,
+        modelId: "gpt-test-exact",
+        effort: "high",
+      },
+    )).toBe(target);
+    expect(lstatSync(join(target, "auth.json")).ino).toBe(authIdentity.ino);
+    expect(lstatSync(targetCache).ino).toBe(cacheIdentity.ino);
+  });
+
+  it("fails closed instead of converting a legacy auth symlink or foreign regular target", () => {
+    const symlinked = exactRuntimeFixture();
+    const symlinkedHome = isolatedCodexHome(symlinked.workspace);
+    mkdirSync(symlinkedHome, { recursive: true });
+    const symlinkedTarget = join(symlinkedHome, "auth.json");
+    symlinkSync(join(symlinked.source, "auth.json"), symlinkedTarget);
+    expect(() => prepareIsolatedCodexHome(
+      symlinked.workspace,
+      { OMD_BENCH_AUTH_CODEX_HOME: symlinked.source },
+      { exactRuntimeContract: symlinked.contract },
+    )).toThrow("isolated auth JSON must be a regular file");
+    expect(lstatSync(symlinkedTarget).isSymbolicLink()).toBe(true);
+
+    const foreign = exactRuntimeFixture();
+    const foreignHome = isolatedCodexHome(foreign.workspace);
+    mkdirSync(foreignHome, { recursive: true });
+    const foreignTarget = join(foreignHome, "auth.json");
+    writeFileSync(foreignTarget, "{\"auth\":false}\n");
+    expect(() => prepareIsolatedCodexHome(
+      foreign.workspace,
+      { OMD_BENCH_AUTH_CODEX_HOME: foreign.source },
+      { exactRuntimeContract: foreign.contract },
+    )).toThrow("isolated auth JSON drift");
+    expect(readFileSync(foreignTarget, "utf8")).toBe("{\"auth\":false}\n");
   });
 
   it("rejects mutable, symlinked, or hash-drifted exact auth sources", () => {
@@ -433,6 +479,8 @@ describe("Codex browser proof sandbox contract", () => {
     expect(profile).toContain("mode=\"limited\"");
     expect(profile).toContain("\"chatgpt.com\"=\"allow\"");
     expect(profile).toContain("\"*.openai.com\"=\"allow\"");
+    expect(profile).not.toContain("pypi.org");
+    expect(profile).not.toContain("posthog.com");
   });
 
   it("derives one exact Unix socket from the named browser connection", () => {

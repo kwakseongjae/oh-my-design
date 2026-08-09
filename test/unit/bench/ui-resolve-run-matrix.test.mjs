@@ -624,6 +624,101 @@ describe("UI-Resolve prepared matrix execution", () => {
       codexCliProbe: () => ({ ready: true, version: "0.146.0" }),
     })).toThrow("runtime-preflight-failure:codex-cli-version-mismatch:0.144.1:0.146.0");
   });
+  it("prepares exact snapshots before both doctors and pins both to the locked Codex wrapper", () => {
+    const workspace = "/tmp/omd-exact-runtime-preflight-cell";
+    const lockedWrapper = "/opt/locked/codex.js";
+    const cell = {
+      id: "cell-1",
+      runtime: "codex",
+      model_id: "gpt-5.6-luna",
+      effort: "medium",
+    };
+    const exactRuntimeContract = {
+      catalog_snapshot_contract: {
+        codex_cli: { executable_path: lockedWrapper },
+      },
+      model_effort_contract: { models: [] },
+      matrix_cell: cell,
+      locked_cell: cell,
+    };
+    const plan = {
+      browser_execution_contract: { require_browser_proof: true },
+      codex_catalog_snapshot_contract: {
+        enforcement_mode: "exact-runtime-per-invocation",
+      },
+      cells: [cell],
+    };
+    const prepared = [];
+    let browserSpec = null;
+    let authSpec = null;
+    const result = preflightRuntimeEnvironment(plan, {
+      workspaceRoot: workspace,
+      browserEnv: {
+        BH_RUNTIME_DIR: "/tmp/runtime",
+        BU_NAME: "exact-test",
+        BU_CDP_URL: "http://127.0.0.1:9336",
+      },
+      exactRuntimeContractProbe: (receivedWorkspace) => {
+        expect(receivedWorkspace).toBe(workspace);
+        return exactRuntimeContract;
+      },
+      codexHomePrepare: (...received) => prepared.push(received),
+      browserProbe: (spec) => {
+        browserSpec = spec;
+        return {
+          status: 0,
+          stdout: "[ok  ] daemon alive\n[ok  ] active browser connections — 1\n  exact-test — active page: about:blank",
+        };
+      },
+      codexProbe: (spec) => {
+        authSpec = spec;
+        return { status: 0, stderr: "Logged in using ChatGPT" };
+      },
+    });
+    expect(prepared).toEqual([[
+      workspace,
+      expect.objectContaining({ BU_NAME: "exact-test" }),
+      {
+        exactRuntimeContract,
+        modelId: "gpt-5.6-luna",
+        effort: "medium",
+      },
+    ]]);
+    expect(browserSpec.executable).toBe(lockedWrapper);
+    expect(authSpec.executable).toBe(lockedWrapper);
+    expect(authSpec.args).toContain(lockedWrapper);
+    expect(result.checks).toContainEqual({
+      runtime: "shared-host-policy",
+      resource: "codex-auth",
+      status: "ready",
+      sandbox: "external-workspace-openai-browser",
+    });
+  });
+  it("fails exact preflight before doctors or home mutation when the prepared lock is unavailable", () => {
+    let prepared = false;
+    let probed = false;
+    expect(() => preflightRuntimeEnvironment({
+      browser_execution_contract: { require_browser_proof: true },
+      codex_catalog_snapshot_contract: {
+        enforcement_mode: "exact-runtime-per-invocation",
+      },
+      cells: [{
+        runtime: "codex",
+        model_id: "gpt-5.6-luna",
+        effort: "medium",
+      }],
+    }, {
+      exactRuntimeContractProbe: () => null,
+      codexHomePrepare: () => { prepared = true; },
+      browserProbe: () => {
+        probed = true;
+        return { status: 0, stdout: "ready" };
+      },
+      codexProbe: () => ({ status: 0, stderr: "Logged in" }),
+    })).toThrow("runtime-preflight-failure:codex-exact-runtime-contract-unavailable");
+    expect(prepared).toBe(false);
+    expect(probed).toBe(false);
+  });
   it("excludes isolated Codex and browser runtime state from benchmark attestation", () => {
     const root = mkdtempSync(join(tmpdir(), "omd-runtime-attestation-"));
     const benchmark = join(root, ".benchmark");

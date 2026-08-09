@@ -41,6 +41,7 @@ import {
   codexAuthDoctorSpec,
   codexBrowserDoctorSpec,
   prepareIsolatedCodexHome,
+  preparedExactCodexRuntimeContract,
 } from "./codex-browser-sandbox-contract.mjs";
 import {
   inspectCodexModelEffortProfile,
@@ -156,6 +157,8 @@ export function preflightRuntimeEnvironment(
     codexToolModeProbe = inspectCodexModelToolMode,
     codexModelEffortProbe = inspectCodexModelEffortProfile,
     codexCliProbe = inspectCodexCliRuntime,
+    codexHomePrepare,
+    exactRuntimeContractProbe = preparedExactCodexRuntimeContract,
     browserEnv = process.env,
   } = {},
 ) {
@@ -255,7 +258,44 @@ export function preflightRuntimeEnvironment(
     }
   }
   if (browserProofRequired) {
-    const spec = codexBrowserDoctorSpec({ workspace: workspaceRoot, env: browserEnv });
+    const exactRuntimeRequired = plan?.codex_catalog_snapshot_contract?.enforcement_mode
+      === "exact-runtime-per-invocation";
+    const exactRuntimeContract = exactRuntimeRequired
+      ? exactRuntimeContractProbe(workspaceRoot)
+      : null;
+    if (exactRuntimeRequired && !exactRuntimeContract) {
+      throw new Error("runtime-preflight-failure:codex-exact-runtime-contract-unavailable");
+    }
+    const exactCell = exactRuntimeContract?.matrix_cell ?? null;
+    const exactCodexBin = exactRuntimeContract
+      ?.catalog_snapshot_contract?.codex_cli?.executable_path;
+    if (exactRuntimeContract && (!exactCell?.model_id || !exactCell?.effort || !exactCodexBin)) {
+      throw new Error("runtime-preflight-failure:codex-exact-runtime-contract-incomplete");
+    }
+
+    // Real preflight must materialize the exact locked auth/cache snapshots before either
+    // doctor runs. Probe-backed tests may inject a preparer to exercise the same routing.
+    // Never create the legacy auth symlink for an exact-runtime cell.
+    if (!browserProbe || codexHomePrepare || exactRuntimeContract) {
+      const prepareHome = codexHomePrepare ?? prepareIsolatedCodexHome;
+      prepareHome(
+        workspaceRoot,
+        browserEnv,
+        exactRuntimeContract
+          ? {
+              exactRuntimeContract,
+              modelId: exactCell.model_id,
+              effort: exactCell.effort,
+            }
+          : {},
+      );
+    }
+
+    const spec = codexBrowserDoctorSpec({
+      workspace: workspaceRoot,
+      env: browserEnv,
+      ...(exactCodexBin ? { codexBin: exactCodexBin } : {}),
+    });
     if (!browserProbe) {
       mkdirSync(spec.env.BH_TMP_DIR, { recursive: true });
       mkdirSync(spec.codex_home, { recursive: true });
@@ -302,9 +342,11 @@ export function preflightRuntimeEnvironment(
       connection: isolatedName,
     });
 
-    if (!browserProbe) prepareIsolatedCodexHome(workspaceRoot, browserEnv);
-
-    const authSpec = codexAuthDoctorSpec({ workspace: workspaceRoot, env: browserEnv });
+    const authSpec = codexAuthDoctorSpec({
+      workspace: workspaceRoot,
+      env: browserEnv,
+      ...(exactCodexBin ? { codexBin: exactCodexBin } : {}),
+    });
     const authProbe = codexProbe
       ? codexProbe(authSpec)
       : spawnSync(authSpec.executable, authSpec.args, {

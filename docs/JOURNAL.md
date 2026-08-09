@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.823 pre-provider auth freeze
+- 첫 셀은 legacy auth symlink를 exact installer가 거부해 provider spawn 전 중단됐다.
+- 완료0/51·provider/model/Cursor/Claude0이며 root는 영구 동결했다.
+- exact auth/cache를 doctor 전에 regular-file로 설치하는 fix가 full909/909·lint·build green이다.
+- 다음은 telemetry opt-out을 잠그고 fresh 1.9.824에서 51셀을 1셀씩 실행한다.
+
 ## 2026-08-09 (Codex) · 1.9.823 all-effort prereg
 - source `bf935702`, browser-harness `omd1823`, immutable auth/cache로 plan을 생성했다.
 - plan `839f9a55…`, task set `db9afcab…`, schedule `c23b0fbf…`, exact51셀이다.
