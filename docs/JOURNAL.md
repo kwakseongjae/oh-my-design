@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.825 immutable model catalog ready
+- cache TTL300초를 확인해 cache를 provenance-only, local `model_catalog_json`을 execution authority로 분리했다.
+- source/copy/profile/effort/config/fallback을 plan·runtime·record v2·aggregate에서 독립 검증한다.
+- full test914/914(3 skip), lint, build, diff-check green; provider/model/network/Cursor/Claude0이다.
+- 다음은 변경 커밋→fresh 51-cell prereg/prepare/audit→1셀씩 연속 실행이다.
+
 ## 2026-08-09 (Codex) · 1.9.824 routing-authority freeze
 - first cell은 operational85/85였지만 CLI0.146.1이 cache0.147.0을 refresh해 attribution이 invalid다.
 - 유효 완료0/51, provider turn1·Cursor/Claude0이며 root는 영구 동결했다.

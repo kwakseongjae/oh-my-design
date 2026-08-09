@@ -32,6 +32,38 @@ const immutableAuthFixturePath = join(immutableAuthFixtureRoot, "auth.json");
 const immutableAuthFixtureBytes = Buffer.from('{"fixture":"immutable-admission-auth"}\n');
 writeFileSync(immutableAuthFixturePath, immutableAuthFixtureBytes);
 
+function canonicalJson(value) {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.keys(value).sort().map((key) => (
+      `${JSON.stringify(key)}:${canonicalJson(value[key])}`
+    )).join(",")}}`;
+  }
+  return JSON.stringify(value);
+}
+
+const completeBlockRawModelProfiles = [
+  ["gpt-5.6-luna", "medium", ["low", "medium", "high", "xhigh", "max"]],
+  ["gpt-5.6-terra", "medium", ["low", "medium", "high", "xhigh", "max", "ultra"]],
+  ["gpt-5.6-sol", "low", ["low", "medium", "high", "xhigh", "max", "ultra"]],
+].map(([slug, default_reasoning_level, efforts]) => ({
+  slug,
+  default_reasoning_level,
+  supported_reasoning_levels: efforts.map((effort) => ({ effort })),
+}));
+const completeBlockModelCatalogPath = join(immutableAuthFixtureRoot, "model_catalog.json");
+const completeBlockModelCatalogBytes = Buffer.from(JSON.stringify({
+  models: completeBlockRawModelProfiles,
+}));
+writeFileSync(completeBlockModelCatalogPath, completeBlockModelCatalogBytes);
+const completeBlockModelsCachePath = join(immutableAuthFixtureRoot, "models_cache.json");
+const completeBlockModelsCacheBytes = Buffer.from(JSON.stringify({
+  fetched_at: "2026-08-09T04:32:08Z",
+  client_version: "0.147.0",
+  models: completeBlockRawModelProfiles,
+}));
+writeFileSync(completeBlockModelsCachePath, completeBlockModelsCacheBytes);
+
 function plan(root) {
   return {
     schema_version: "0.1",
@@ -151,15 +183,11 @@ function writeLockedPlan(path, value) {
 }
 
 function prepareCompleteBlockEffortFixture(root) {
-  const models = [
-    ["gpt-5.6-luna", "medium", ["low", "medium", "high", "xhigh", "max"]],
-    ["gpt-5.6-terra", "medium", ["low", "medium", "high", "xhigh", "max", "ultra"]],
-    ["gpt-5.6-sol", "low", ["low", "medium", "high", "xhigh", "max", "ultra"]],
-  ].map(([model_id, default_effort, supported_efforts], index) => ({
-    model_id,
-    model_profile_sha256: String(index + 1).repeat(64),
-    default_effort,
-    supported_efforts,
+  const models = completeBlockRawModelProfiles.map((profile) => ({
+    model_id: profile.slug,
+    model_profile_sha256: sha256(canonicalJson(profile)),
+    default_effort: profile.default_reasoning_level,
+    supported_efforts: profile.supported_reasoning_levels.map((entry) => entry.effort),
   }));
   const orderedPairs = models.flatMap((model) => model.supported_efforts.map((effort) => ({
     model_id: model.model_id,
@@ -296,16 +324,27 @@ function prepareCompleteBlockEffortFixture(root) {
   const scheduleSha256 = completeBlockScheduleSha256(cells);
   const snapshot = {
     enforcement_mode: "exact-runtime-per-invocation",
+    auth_source_home: immutableAuthFixtureRoot,
     auth_json_source_path: immutableAuthFixturePath,
     auth_json_source_mode: "immutable-snapshot-only",
     auth_json_sha256: sha256(immutableAuthFixtureBytes),
     auth_json_bytes: immutableAuthFixtureBytes.length,
     auth_json_mode: "isolated-copy-before-provider-execution",
     mutable_auth_fallback_allowed: false,
-    models_cache_source_path: "/private/tmp/omd-auth-fixture/models_cache.json",
-    models_cache_sha256: "a".repeat(64),
+    models_cache_source_path: completeBlockModelsCachePath,
+    models_cache_sha256: sha256(completeBlockModelsCacheBytes),
+    models_cache_bytes: completeBlockModelsCacheBytes.length,
     models_cache_source_mode: "immutable-snapshot-only",
+    models_cache_mode: "immutable-copy-before-provider-execution",
     mutable_models_cache_fallback_allowed: false,
+    models_cache_role: "provenance-only-not-execution-authority",
+    model_catalog_source_path: completeBlockModelCatalogPath,
+    model_catalog_sha256: sha256(completeBlockModelCatalogBytes),
+    model_catalog_bytes: completeBlockModelCatalogBytes.length,
+    model_catalog_source_mode: "immutable-snapshot-only",
+    model_catalog_mode: "isolated-copy-before-provider-execution",
+    mutable_model_catalog_fallback_allowed: false,
+    model_catalog_role: "execution-model-authority",
     codex_cli: {
       executable_path: "/private/tmp/omd-cli-fixture/codex",
       native_executable_path: "/private/tmp/omd-cli-fixture/codex-native",
@@ -366,7 +405,7 @@ function prepareCompleteBlockEffortFixture(root) {
       step_budget: { mode: "observed-only", limit_steps: null },
     },
     codex_model_effort_contract: {
-      cache_sha256: "a".repeat(64),
+      cache_sha256: sha256(completeBlockModelsCacheBytes),
       cache_fetched_at: "2026-08-09T04:32:08Z",
       cache_client_version: "0.147.0",
       models,
@@ -450,6 +489,7 @@ function prepareCompleteBlockEffortFixture(root) {
       task_set_sha256: taskSetSha256,
       schedule_sha256: scheduleSha256,
       codex_catalog_snapshot_contract_sha256: sha256(JSON.stringify(snapshot)),
+      model_catalog_file_sha256: sha256(completeBlockModelCatalogBytes),
     },
     skill_lock_contract: {
       source_commit: "c".repeat(40),

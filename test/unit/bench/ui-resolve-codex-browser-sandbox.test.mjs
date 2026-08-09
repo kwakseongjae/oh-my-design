@@ -25,6 +25,7 @@ import {
   preparedExactCodexRuntimeContract,
   preparedWorkspaceRequiresBrowserProof,
   verifyExactCodexCliRuntime,
+  verifyExactModelCatalogAuthority,
 } from "../../../benchmarks/ui-resolve-bench/scripts/codex-browser-sandbox-contract.mjs";
 import {
   inspectCodexModelEffortContract,
@@ -60,6 +61,9 @@ function exactRuntimeFixture() {
   const cachePath = join(source, "models_cache.json");
   const cacheBytes = Buffer.from(`${JSON.stringify(cache, null, 2)}\n`);
   writeFileSync(cachePath, cacheBytes);
+  const modelCatalogPath = join(source, "model_catalog.json");
+  const modelCatalogBytes = Buffer.from(`${JSON.stringify({ models: cache.models }, null, 2)}\n`);
+  writeFileSync(modelCatalogPath, modelCatalogBytes);
   writeFileSync(wrapper, "#!/usr/bin/env node\n// exact wrapper fixture\n");
   writeFileSync(native, "exact native fixture\n");
   const modelInspection = inspectCodexModelEffortContract(
@@ -80,7 +84,16 @@ function exactRuntimeFixture() {
       models_cache_source_mode: "immutable-snapshot-only",
       models_cache_mode: "immutable-copy-before-provider-execution",
       models_cache_sha256: sha256(cacheBytes),
+      models_cache_bytes: cacheBytes.length,
       mutable_models_cache_fallback_allowed: false,
+      models_cache_role: "provenance-only-not-execution-authority",
+      model_catalog_source_path: modelCatalogPath,
+      model_catalog_source_mode: "immutable-snapshot-only",
+      model_catalog_mode: "isolated-copy-before-provider-execution",
+      model_catalog_sha256: sha256(modelCatalogBytes),
+      model_catalog_bytes: modelCatalogBytes.length,
+      mutable_model_catalog_fallback_allowed: false,
+      model_catalog_role: "execution-model-authority",
       cli_cache_client_version_policy: "require-exact-match",
       cli_cache_client_version_mismatch_justification: null,
       codex_cli: {
@@ -93,7 +106,19 @@ function exactRuntimeFixture() {
     },
     model_effort_contract: modelInspection.contract,
   };
-  return { root, source, workspace, wrapper, native, cache, cachePath, cacheBytes, contract };
+  return {
+    root,
+    source,
+    workspace,
+    wrapper,
+    native,
+    cache,
+    cachePath,
+    cacheBytes,
+    modelCatalogPath,
+    modelCatalogBytes,
+    contract,
+  };
 }
 
 function readyCliProbe(version = "9.9.9") {
@@ -207,13 +232,38 @@ describe("Codex browser proof sandbox contract", () => {
       },
     );
     const targetCache = join(target, "models_cache.json");
+    const targetCatalog = join(target, "model_catalog.json");
     expect(lstatSync(targetCache).isFile()).toBe(true);
     expect(lstatSync(targetCache).isSymbolicLink()).toBe(false);
     expect(readFileSync(targetCache).equals(fixture.cacheBytes)).toBe(true);
+    expect(lstatSync(targetCatalog).isSymbolicLink()).toBe(false);
+    expect(readFileSync(targetCatalog).equals(fixture.modelCatalogBytes)).toBe(true);
     expect(lstatSync(join(target, "auth.json")).isFile()).toBe(true);
     expect(lstatSync(join(target, "auth.json")).isSymbolicLink()).toBe(false);
     expect(readFileSync(join(target, "auth.json")))
       .toEqual(readFileSync(fixture.contract.catalog_snapshot_contract.auth_json_source_path));
+    expect(verifyExactModelCatalogAuthority(fixture.workspace, fixture.contract, {
+      modelId: "gpt-test-exact",
+    })).toEqual({
+      schema_version: "0.1",
+      mode: "immutable-local-model-catalog-json",
+      config_key: "model_catalog_json",
+      source: {
+        path: fixture.modelCatalogPath,
+        sha256: sha256(fixture.modelCatalogBytes),
+        bytes: fixture.modelCatalogBytes.length,
+        source_mode: "immutable-snapshot-only",
+      },
+      isolated_copy: {
+        path: targetCatalog,
+        sha256: sha256(fixture.modelCatalogBytes),
+        bytes: fixture.modelCatalogBytes.length,
+        copy_mode: "isolated-regular-file",
+      },
+      selected_profile: fixture.contract.model_effort_contract.models[0],
+      verified_before_provider_execution: true,
+      mutable_fallback_allowed: false,
+    });
 
     const authIdentity = lstatSync(join(target, "auth.json"));
     const cacheIdentity = lstatSync(targetCache);
@@ -281,6 +331,11 @@ describe("Codex browser proof sandbox contract", () => {
       ".codex",
       "models_cache.json",
     );
+    mutable.contract.catalog_snapshot_contract.model_catalog_source_path = join(
+      resolve(homedir()),
+      ".codex",
+      "model_catalog.json",
+    );
     expect(() => prepareIsolatedCodexHome(
       mutable.workspace,
       {},
@@ -323,6 +378,48 @@ describe("Codex browser proof sandbox contract", () => {
       {},
       { exactRuntimeContract: drifted.contract },
     )).toThrow("models cache SHA drift");
+  });
+
+  it("fails closed on missing, symlinked, foreign, or tampered local model catalog authority", () => {
+    const missing = exactRuntimeFixture();
+    unlinkSync(missing.modelCatalogPath);
+    expect(() => prepareIsolatedCodexHome(
+      missing.workspace,
+      {},
+      { exactRuntimeContract: missing.contract },
+    )).toThrow("model catalog missing");
+
+    const linked = exactRuntimeFixture();
+    const realCatalog = join(linked.source, "model_catalog-real.json");
+    writeFileSync(realCatalog, linked.modelCatalogBytes);
+    unlinkSync(linked.modelCatalogPath);
+    symlinkSync(realCatalog, linked.modelCatalogPath);
+    expect(() => prepareIsolatedCodexHome(
+      linked.workspace,
+      {},
+      { exactRuntimeContract: linked.contract },
+    )).toThrow(/model catalog source must be a regular non-symlink file/u);
+
+    const sourceDrift = exactRuntimeFixture();
+    writeFileSync(sourceDrift.modelCatalogPath, `${sourceDrift.modelCatalogBytes.toString("utf8")}\n`);
+    expect(() => prepareIsolatedCodexHome(
+      sourceDrift.workspace,
+      {},
+      { exactRuntimeContract: sourceDrift.contract },
+    )).toThrow("model catalog source snapshot drift");
+
+    const copyDrift = exactRuntimeFixture();
+    const isolated = prepareIsolatedCodexHome(
+      copyDrift.workspace,
+      {},
+      { exactRuntimeContract: copyDrift.contract },
+    );
+    writeFileSync(join(isolated, "model_catalog.json"), '{"models":[]}\n');
+    expect(() => prepareIsolatedCodexHome(
+      copyDrift.workspace,
+      {},
+      { exactRuntimeContract: copyDrift.contract },
+    )).toThrow("isolated model catalog drift");
   });
 
   it("rejects profile, default-effort, and ordered-effort drift after the cache SHA matches", () => {

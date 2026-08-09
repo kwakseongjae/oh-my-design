@@ -11,7 +11,9 @@ const tasks = ["task-a", "task-b", "task-c"];
 const experimentId = "codex-effort-sweep-fixture";
 const taskSourceCommit = "a".repeat(40);
 const matrixLock = "b".repeat(64);
-const recordKind = "codex-complete-block-effort-scaling-v1";
+const recordKind = "codex-complete-block-effort-scaling-v2";
+const legacyRecordKind = "codex-complete-block-effort-scaling-v1";
+const fixtureOutputRoot = "/tmp/codex-effort-sweep-fixture";
 
 function hash(value) {
   return createHash("sha256").update(value).digest("hex");
@@ -163,11 +165,24 @@ function plan() {
   const pairs = contract().models.flatMap((profile) => (
     profile.supported_efforts.map((effort) => ({ model_id: profile.model_id, effort }))
   ));
+  const catalogSnapshot = {
+    model_catalog_source_path: "/tmp/codex-effort-catalog/model_catalog.json",
+    model_catalog_sha256: "9".repeat(64),
+    model_catalog_bytes: 4096,
+    model_catalog_source_mode: "immutable-snapshot-only",
+    model_catalog_mode: "isolated-copy-before-provider-execution",
+    mutable_model_catalog_fallback_allowed: false,
+    model_catalog_role: "execution-model-authority",
+    cli_cache_client_version_policy: "require-exact-match",
+    cli_cache_client_version_mismatch_justification: null,
+    codex_cli: { version: contract().cache_client_version },
+  };
   return {
     schema_version: "0.3",
     suite_version: "ui-resolve-v0.2",
     execution_purpose: "complete-block-effort-scaling",
     experiment_id: experimentId,
+    output_root: fixtureOutputRoot,
     family: "model",
     control_contract: control(),
     checkpoint_continuation_contract: {
@@ -176,6 +191,7 @@ function plan() {
       completed_root_not_resumable: true,
     },
     codex_model_effort_contract: contract(),
+    codex_catalog_snapshot_contract: catalogSnapshot,
     provider_routing_contract: {
       cursor_allowed: false,
       claude_code_allowed: false,
@@ -218,6 +234,8 @@ function plan() {
       schedule_sha256: scheduleSha256,
       skill_source_contract_sha256: canonicalHash(skillLock),
       objective_evaluator_contract_sha256: canonicalHash(evaluator),
+      model_catalog_file_sha256: catalogSnapshot.model_catalog_sha256,
+      codex_catalog_snapshot_contract_sha256: canonicalHash(catalogSnapshot),
     },
     cells: allCells,
   };
@@ -248,6 +266,37 @@ function sweepIdentity(lockedPlan, cell, lockedPlanSha256) {
 
 function record({ lockedPlan, cell, lockedPlanSha256 = matrixLock, index = 0 }) {
   const profile = contract().models.find((item) => item.model_id === cell.model_id);
+  const modelCatalogAuthority = {
+    schema_version: "0.1",
+    mode: "immutable-local-model-catalog-json",
+    config_key: "model_catalog_json",
+    source: {
+      path: lockedPlan.codex_catalog_snapshot_contract.model_catalog_source_path,
+      sha256: lockedPlan.codex_catalog_snapshot_contract.model_catalog_sha256,
+      bytes: lockedPlan.codex_catalog_snapshot_contract.model_catalog_bytes,
+      source_mode: "immutable-snapshot-only",
+    },
+    isolated_copy: {
+      path: join(
+        lockedPlan.output_root,
+        cell.id,
+        ".benchmark",
+        "codex-home",
+        "model_catalog.json",
+      ),
+      sha256: lockedPlan.codex_catalog_snapshot_contract.model_catalog_sha256,
+      bytes: lockedPlan.codex_catalog_snapshot_contract.model_catalog_bytes,
+      copy_mode: "isolated-regular-file",
+    },
+    selected_profile: {
+      model_id: cell.model_id,
+      model_profile_sha256: profile.model_profile_sha256,
+      default_effort: profile.default_effort,
+      supported_efforts: profile.supported_efforts,
+    },
+    verified_before_provider_execution: true,
+    mutable_fallback_allowed: false,
+  };
   return {
     record_kind: recordKind,
     run_id: cell.id,
@@ -307,8 +356,9 @@ function record({ lockedPlan, cell, lockedPlanSha256 = matrixLock, index = 0 }) 
         model_evidence_mode: "cli-argument",
         effort_requested: cell.effort,
         provider_effort_argument: cell.effort,
+        model_catalog_authority: modelCatalogAuthority,
         routing_attestation: {
-          schema_version: "0.1",
+          schema_version: "0.2",
           runtime: "codex",
           model_id: cell.model_id,
           effort: cell.effort,
@@ -327,6 +377,25 @@ function record({ lockedPlan, cell, lockedPlanSha256 = matrixLock, index = 0 }) 
             provider_effort_argument_exact: true,
             provider_route_accepted: true,
             pinned_profile_supports_effort: true,
+            model_catalog_authority_present: true,
+            model_catalog_schema_version_exact: true,
+            model_catalog_mode_exact: true,
+            model_catalog_config_key_exact: true,
+            model_catalog_source_path_exact: true,
+            model_catalog_source_sha256_exact: true,
+            model_catalog_source_bytes_exact: true,
+            model_catalog_source_mode_exact: true,
+            model_catalog_isolated_path_exact: true,
+            model_catalog_isolated_sha256_exact: true,
+            model_catalog_isolated_bytes_exact: true,
+            model_catalog_copy_mode_exact: true,
+            model_catalog_selected_model_exact: true,
+            model_catalog_selected_profile_sha256_exact: true,
+            model_catalog_selected_default_effort_exact: true,
+            model_catalog_selected_effort_order_exact: true,
+            model_catalog_selected_effort_supported: true,
+            model_catalog_verified_before_provider_execution: true,
+            model_catalog_mutable_fallback_forbidden: true,
           },
           pass: true,
         },
@@ -382,6 +451,9 @@ describe("Codex all-effort sweep aggregate authority", () => {
     ));
     expect(schema.required).not.toContain("record_kind");
     expect(schema.required).not.toContain("sweep_identity");
+    expect(schema.properties.record_kind.enum).toEqual(
+      expect.arrayContaining([legacyRecordKind, recordKind]),
+    );
     const branch = schema.allOf.find((item) => item.if?.anyOf?.some(
       (candidate) => candidate.properties?.record_kind?.const === recordKind,
     ));
@@ -440,6 +512,8 @@ describe("Codex all-effort sweep aggregate authority", () => {
       exact_sweep_lock_records: 51,
       declared_passing_routing_attestation_records: 51,
       exact_routing_attestation_records: 51,
+      observed_model_catalog_authority_records: 51,
+      exact_model_catalog_authority_records: 51,
       reasons: [],
     });
     expect(summary.within_model_default_effort_comparisons).toHaveLength(3);
@@ -476,6 +550,46 @@ describe("Codex all-effort sweep aggregate authority", () => {
     summary = aggregateCodexEffortSweep(forgedPass);
     expect(summary.interpretation_allowed).toBe(false);
     expect(summary.interpretation_gate.exact_routing_attestation_records).toBe(50);
+  });
+
+  it("rejects forged pass booleans when catalog bytes or selected profile drift", () => {
+    const catalogShaDrift = fixture();
+    catalogShaDrift.run_records[0].attribution.runtime.model_catalog_authority.source.sha256 =
+      "0".repeat(64);
+    let summary = aggregateCodexEffortSweep(catalogShaDrift);
+    expect(catalogShaDrift.run_records[0].attribution.runtime.routing_attestation.pass).toBe(true);
+    expect(summary.interpretation_allowed).toBe(false);
+    expect(summary.interpretation_gate).toMatchObject({
+      exact_model_catalog_authority_records: 50,
+      exact_routing_attestation_records: 50,
+    });
+    expect(summary.interpretation_gate.reasons).toEqual(expect.arrayContaining([
+      "not-all-model-catalog-authorities-exact",
+      "not-all-routing-attestations-exact",
+    ]));
+
+    const profileDrift = fixture();
+    profileDrift.run_records[0].attribution.runtime.model_catalog_authority
+      .selected_profile.model_profile_sha256 = "0".repeat(64);
+    summary = aggregateCodexEffortSweep(profileDrift);
+    expect(summary.interpretation_gate.exact_model_catalog_authority_records).toBe(50);
+
+    const orderDrift = fixture();
+    orderDrift.run_records[0].attribution.runtime.model_catalog_authority
+      .selected_profile.supported_efforts.reverse();
+    summary = aggregateCodexEffortSweep(orderDrift);
+    expect(summary.interpretation_gate.exact_model_catalog_authority_records).toBe(50);
+  });
+
+  it("keeps 1.9.824-era v1 records schema-readable but excludes them from a fresh v2 sweep", () => {
+    const historical = fixture();
+    historical.run_records.forEach((item) => {
+      item.record_kind = legacyRecordKind;
+      item.attribution.runtime.routing_attestation.schema_version = "0.1";
+      delete item.attribution.runtime.model_catalog_authority;
+    });
+    expect(() => aggregateCodexEffortSweep(historical))
+      .toThrow(/record_kind must be codex-complete-block-effort-scaling-v2/i);
   });
 
   it("blocks copied metadata, epoch drift, and omitted execution control", () => {

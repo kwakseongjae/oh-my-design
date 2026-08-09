@@ -40,6 +40,7 @@ import {
 import {
   codexAuthDoctorSpec,
   codexBrowserDoctorSpec,
+  inspectImmutableModelCatalogSource,
   prepareIsolatedCodexHome,
   preparedExactCodexRuntimeContract,
 } from "./codex-browser-sandbox-contract.mjs";
@@ -74,6 +75,25 @@ const COMPLETE_BLOCK_ROUTING_CHECK_KEYS = Object.freeze([
   "provider_effort_argument_exact",
   "provider_route_accepted",
   "pinned_profile_supports_effort",
+  "model_catalog_authority_present",
+  "model_catalog_schema_version_exact",
+  "model_catalog_mode_exact",
+  "model_catalog_config_key_exact",
+  "model_catalog_source_path_exact",
+  "model_catalog_source_sha256_exact",
+  "model_catalog_source_bytes_exact",
+  "model_catalog_source_mode_exact",
+  "model_catalog_isolated_path_exact",
+  "model_catalog_isolated_sha256_exact",
+  "model_catalog_isolated_bytes_exact",
+  "model_catalog_copy_mode_exact",
+  "model_catalog_selected_model_exact",
+  "model_catalog_selected_profile_sha256_exact",
+  "model_catalog_selected_default_effort_exact",
+  "model_catalog_selected_effort_order_exact",
+  "model_catalog_selected_effort_supported",
+  "model_catalog_verified_before_provider_execution",
+  "model_catalog_mutable_fallback_forbidden",
 ]);
 
 function writeJsonAtomically(path, value) {
@@ -1181,7 +1201,7 @@ export function candidatePreflightStopReason(plan, record) {
 export function completeBlockRoutingStopReason(
   plan,
   record,
-  { matrixCell = null, run = null } = {},
+  { workspace = null, matrixCell = null, run = null } = {},
 ) {
   if (plan?.control_contract?.admission_normalization_policy !== "complete-block-effort-scaling") {
     return null;
@@ -1189,7 +1209,7 @@ export function completeBlockRoutingStopReason(
   const attestation = record?.attribution?.runtime?.routing_attestation;
   const checks = attestation?.checks;
   const recomputed = matrixCell && run
-    ? buildCodexRoutingAttestation({ matrixCell, run, lockedPlan: plan })
+    ? buildCodexRoutingAttestation({ workspace, matrixCell, run, lockedPlan: plan })
     : null;
   if (
     record?.validity !== "valid"
@@ -1215,10 +1235,28 @@ export function validateCompleteBlockExecutionContract(
   }
   const snapshot = plan.codex_catalog_snapshot_contract;
   const cacheClientVersion = plan.codex_model_effort_contract?.cache_client_version;
+  let modelCatalog = null;
+  try {
+    modelCatalog = inspectImmutableModelCatalogSource(
+      snapshot?.model_catalog_source_path,
+      plan.codex_model_effort_contract,
+    );
+  } catch {
+    modelCatalog = null;
+  }
   if (
     snapshot?.cli_cache_client_version_policy !== "require-exact-match"
     || snapshot?.cli_cache_client_version_mismatch_justification !== null
     || snapshot?.codex_cli?.version !== cacheClientVersion
+    || snapshot?.models_cache_role !== "provenance-only-not-execution-authority"
+    || snapshot?.models_cache_mode !== "immutable-copy-before-provider-execution"
+    || snapshot?.model_catalog_source_mode !== "immutable-snapshot-only"
+    || snapshot?.model_catalog_mode !== "isolated-copy-before-provider-execution"
+    || snapshot?.mutable_model_catalog_fallback_allowed !== false
+    || snapshot?.model_catalog_role !== "execution-model-authority"
+    || modelCatalog?.sha256 !== snapshot?.model_catalog_sha256
+    || modelCatalog?.bytes !== snapshot?.model_catalog_bytes
+    || plan.lock_manifest?.model_catalog_file_sha256 !== snapshot?.model_catalog_sha256
   ) {
     throw new Error(
       "complete-block effort scaling requires exact CLI/cache client version authority",
@@ -2339,6 +2377,7 @@ function executePreparedMatrixWithLease(root, {
     }
 
     const routingStopReason = completeBlockRoutingStopReason(plan, exportedRecord, {
+      workspace,
       matrixCell: cell,
       run,
     });

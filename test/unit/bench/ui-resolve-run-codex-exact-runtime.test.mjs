@@ -74,6 +74,9 @@ function exactRunFixture({ observedVersion = "9.9.9", removeExecutionCache = fal
   const cacheBytes = Buffer.from(`${JSON.stringify(cache, null, 2)}\n`);
   const cachePath = join(sourceHome, "models_cache.json");
   writeFileSync(cachePath, cacheBytes);
+  const modelCatalogPath = join(sourceHome, "model_catalog.json");
+  const modelCatalogBytes = Buffer.from(`${JSON.stringify({ models: cache.models }, null, 2)}\n`);
+  writeFileSync(modelCatalogPath, modelCatalogBytes);
   const modelInspection = inspectCodexModelEffortContract(
     ["gpt-test-exact"],
     { OMD_BENCH_AUTH_CODEX_HOME: sourceHome },
@@ -158,7 +161,16 @@ process.exit(result.status ?? 1);
     models_cache_source_mode: "immutable-snapshot-only",
     models_cache_mode: "immutable-copy-before-provider-execution",
     models_cache_sha256: sha256(cacheBytes),
+    models_cache_bytes: cacheBytes.length,
     mutable_models_cache_fallback_allowed: false,
+    models_cache_role: "provenance-only-not-execution-authority",
+    model_catalog_source_path: modelCatalogPath,
+    model_catalog_source_mode: "immutable-snapshot-only",
+    model_catalog_mode: "isolated-copy-before-provider-execution",
+    model_catalog_sha256: sha256(modelCatalogBytes),
+    model_catalog_bytes: modelCatalogBytes.length,
+    mutable_model_catalog_fallback_allowed: false,
+    model_catalog_role: "execution-model-authority",
     cli_cache_client_version_policy: "require-exact-match",
     cli_cache_client_version_mismatch_justification: null,
     codex_cli: {
@@ -184,6 +196,8 @@ process.exit(result.status ?? 1);
     benchmark,
     sourceHome,
     cacheBytes,
+    modelCatalogPath,
+    modelCatalogBytes,
     wrapper,
     native,
     snapshot,
@@ -221,12 +235,18 @@ describe("run-codex exact catalog/runtime invocation", () => {
     const isolatedHome = join(fixture.benchmark, "codex-home");
     const copiedCache = join(isolatedHome, "models_cache.json");
     const copiedAuth = join(isolatedHome, "auth.json");
+    const copiedCatalog = join(isolatedHome, "model_catalog.json");
     expect(lstatSync(copiedCache).isSymbolicLink()).toBe(false);
     expect(readFileSync(copiedCache).equals(fixture.cacheBytes)).toBe(true);
     expect(lstatSync(copiedAuth).isSymbolicLink()).toBe(false);
     expect(sha256(readFileSync(copiedAuth))).toBe(fixture.snapshot.auth_json_sha256);
+    expect(lstatSync(copiedCatalog).isSymbolicLink()).toBe(false);
+    expect(readFileSync(copiedCatalog).equals(fixture.modelCatalogBytes)).toBe(true);
     expect(invocation.HOME).toBe(isolatedHome);
     expect(invocation.CODEX_HOME).toBe(isolatedHome);
+    expect(invocation.args).toContain(`model_catalog_json=${JSON.stringify(copiedCatalog)}`);
+    expect(invocation.args.filter((arg) => arg.startsWith("model_catalog_json=")))
+      .toEqual([`model_catalog_json=${JSON.stringify(copiedCatalog)}`]);
     expect(result.runtime).toMatchObject({
       agent_version: "9.9.9",
       binary_sha256: fixture.snapshot.codex_cli.binary_sha256,
@@ -235,6 +255,31 @@ describe("run-codex exact catalog/runtime invocation", () => {
       model_requested: "gpt-test-exact",
       effort_requested: "high",
       auth_mode: "immutable-snapshot-copy",
+      model_catalog_authority: {
+        schema_version: "0.1",
+        mode: "immutable-local-model-catalog-json",
+        config_key: "model_catalog_json",
+        source: {
+          path: fixture.modelCatalogPath,
+          sha256: fixture.snapshot.model_catalog_sha256,
+          bytes: fixture.modelCatalogBytes.length,
+          source_mode: "immutable-snapshot-only",
+        },
+        isolated_copy: {
+          path: copiedCatalog,
+          sha256: fixture.snapshot.model_catalog_sha256,
+          bytes: fixture.modelCatalogBytes.length,
+          copy_mode: "isolated-regular-file",
+        },
+        selected_profile: expect.objectContaining({
+          model_id: "gpt-test-exact",
+          model_profile_sha256: expect.stringMatching(/^[a-f0-9]{64}$/),
+          default_effort: "medium",
+          supported_efforts: ["low", "medium", "high"],
+        }),
+        verified_before_provider_execution: true,
+        mutable_fallback_allowed: false,
+      },
     });
     expect(result.runtime.model_tool_mode_evidence.scope).toBe("execution-home-post-run");
     expect(result.runtime.model_tool_mode_evidence.cache_sha256)
@@ -246,6 +291,16 @@ describe("run-codex exact catalog/runtime invocation", () => {
     const executed = runFixture(fixture);
     expect(executed.status).not.toBe(0);
     expect(executed.stderr).toContain("CLI wrapper version drift");
+    expect(existsSync(join(fixture.benchmark, "fake-codex-invocation.json"))).toBe(false);
+    expect(existsSync(join(fixture.benchmark, "run-result.json"))).toBe(false);
+  });
+
+  it("stops before the provider invocation when local model catalog bytes drift", () => {
+    const fixture = exactRunFixture();
+    writeFileSync(fixture.modelCatalogPath, `${fixture.modelCatalogBytes.toString("utf8")}\n`);
+    const executed = runFixture(fixture);
+    expect(executed.status).not.toBe(0);
+    expect(executed.stderr).toContain("model catalog source snapshot drift");
     expect(existsSync(join(fixture.benchmark, "fake-codex-invocation.json"))).toBe(false);
     expect(existsSync(join(fixture.benchmark, "run-result.json"))).toBe(false);
   });

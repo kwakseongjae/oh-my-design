@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://oh-my-design.kr/schemas/ui-resolve-run-record-v0.3.json",
+  "$id": "https://oh-my-design.kr/schemas/ui-resolve-run-record-v0.4.json",
   "title": "UI-Resolve run record",
   "type": "object",
   "additionalProperties": true,
@@ -18,7 +18,10 @@
   "properties": {
     "run_id": { "type": "string", "minLength": 1 },
     "record_kind": {
-      "enum": ["codex-complete-block-effort-scaling-v1"]
+      "enum": [
+        "codex-complete-block-effort-scaling-v1",
+        "codex-complete-block-effort-scaling-v2"
+      ]
     },
     "benchmark_family": { "enum": ["model", "skill", "harness", "prompt-arena", "factorial"] },
     "suite_version": { "type": "string", "minLength": 1 },
@@ -128,7 +131,7 @@
                 "pass"
               ],
               "properties": {
-                "schema_version": { "const": "0.1" },
+                "schema_version": { "enum": ["0.1", "0.2"] },
                 "runtime": { "const": "codex" },
                 "model_id": { "type": "string", "minLength": 1 },
                 "effort": { "type": "string", "minLength": 1 },
@@ -175,10 +178,93 @@
                     "effort_requested_exact": { "type": "boolean" },
                     "provider_effort_argument_exact": { "type": "boolean" },
                     "provider_route_accepted": { "type": "boolean" },
-                    "pinned_profile_supports_effort": { "type": "boolean" }
+                    "pinned_profile_supports_effort": { "type": "boolean" },
+                    "model_catalog_authority_present": { "type": "boolean" },
+                    "model_catalog_schema_version_exact": { "type": "boolean" },
+                    "model_catalog_mode_exact": { "type": "boolean" },
+                    "model_catalog_config_key_exact": { "type": "boolean" },
+                    "model_catalog_source_path_exact": { "type": "boolean" },
+                    "model_catalog_source_sha256_exact": { "type": "boolean" },
+                    "model_catalog_source_bytes_exact": { "type": "boolean" },
+                    "model_catalog_source_mode_exact": { "type": "boolean" },
+                    "model_catalog_isolated_path_exact": { "type": "boolean" },
+                    "model_catalog_isolated_sha256_exact": { "type": "boolean" },
+                    "model_catalog_isolated_bytes_exact": { "type": "boolean" },
+                    "model_catalog_copy_mode_exact": { "type": "boolean" },
+                    "model_catalog_selected_model_exact": { "type": "boolean" },
+                    "model_catalog_selected_profile_sha256_exact": { "type": "boolean" },
+                    "model_catalog_selected_default_effort_exact": { "type": "boolean" },
+                    "model_catalog_selected_effort_order_exact": { "type": "boolean" },
+                    "model_catalog_selected_effort_supported": { "type": "boolean" },
+                    "model_catalog_verified_before_provider_execution": { "type": "boolean" },
+                    "model_catalog_mutable_fallback_forbidden": { "type": "boolean" }
                   }
                 },
                 "pass": { "type": "boolean" }
+              }
+            },
+            "model_catalog_authority": {
+              "type": ["object", "null"],
+              "additionalProperties": false,
+              "required": [
+                "schema_version",
+                "mode",
+                "config_key",
+                "source",
+                "isolated_copy",
+                "selected_profile",
+                "verified_before_provider_execution",
+                "mutable_fallback_allowed"
+              ],
+              "properties": {
+                "schema_version": { "const": "0.1" },
+                "mode": { "const": "immutable-local-model-catalog-json" },
+                "config_key": { "const": "model_catalog_json" },
+                "source": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["path", "sha256", "bytes", "source_mode"],
+                  "properties": {
+                    "path": { "type": "string", "minLength": 1 },
+                    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+                    "bytes": { "type": "integer", "minimum": 0 },
+                    "source_mode": { "const": "immutable-snapshot-only" }
+                  }
+                },
+                "isolated_copy": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["path", "sha256", "bytes", "copy_mode"],
+                  "properties": {
+                    "path": { "type": "string", "minLength": 1 },
+                    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+                    "bytes": { "type": "integer", "minimum": 0 },
+                    "copy_mode": { "const": "isolated-regular-file" }
+                  }
+                },
+                "selected_profile": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "model_id",
+                    "model_profile_sha256",
+                    "default_effort",
+                    "supported_efforts"
+                  ],
+                  "properties": {
+                    "model_id": { "type": "string", "minLength": 1 },
+                    "model_profile_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+                    "default_effort": { "type": "string", "minLength": 1 },
+                    "supported_efforts": {
+                      "type": "array",
+                      "minItems": 1,
+                      "uniqueItems": true,
+                      "items": { "type": "string", "minLength": 1 }
+                    }
+                  }
+                },
+                "verified_before_provider_execution": { "const": true },
+                "mutable_fallback_allowed": { "const": false }
               }
             }
           }
@@ -325,6 +411,12 @@
             }
           },
           {
+            "required": ["record_kind"],
+            "properties": {
+              "record_kind": { "const": "codex-complete-block-effort-scaling-v2" }
+            }
+          },
+          {
             "required": ["execution_control"],
             "properties": {
               "execution_control": {
@@ -353,7 +445,12 @@
           "complete_block_outcome"
         ],
         "properties": {
-          "record_kind": { "const": "codex-complete-block-effort-scaling-v1" },
+          "record_kind": {
+            "enum": [
+              "codex-complete-block-effort-scaling-v1",
+              "codex-complete-block-effort-scaling-v2"
+            ]
+          },
           "benchmark_family": { "const": "model" },
           "trial_index": { "const": 1 },
           "execution_control": {
@@ -470,7 +567,26 @@
                                 "effort_requested_exact": { "const": true },
                                 "provider_effort_argument_exact": { "const": true },
                                 "provider_route_accepted": { "const": true },
-                                "pinned_profile_supports_effort": { "const": true }
+                                "pinned_profile_supports_effort": { "const": true },
+                                "model_catalog_authority_present": { "const": true },
+                                "model_catalog_schema_version_exact": { "const": true },
+                                "model_catalog_mode_exact": { "const": true },
+                                "model_catalog_config_key_exact": { "const": true },
+                                "model_catalog_source_path_exact": { "const": true },
+                                "model_catalog_source_sha256_exact": { "const": true },
+                                "model_catalog_source_bytes_exact": { "const": true },
+                                "model_catalog_source_mode_exact": { "const": true },
+                                "model_catalog_isolated_path_exact": { "const": true },
+                                "model_catalog_isolated_sha256_exact": { "const": true },
+                                "model_catalog_isolated_bytes_exact": { "const": true },
+                                "model_catalog_copy_mode_exact": { "const": true },
+                                "model_catalog_selected_model_exact": { "const": true },
+                                "model_catalog_selected_profile_sha256_exact": { "const": true },
+                                "model_catalog_selected_default_effort_exact": { "const": true },
+                                "model_catalog_selected_effort_order_exact": { "const": true },
+                                "model_catalog_selected_effort_supported": { "const": true },
+                                "model_catalog_verified_before_provider_execution": { "const": true },
+                                "model_catalog_mutable_fallback_forbidden": { "const": true }
                               }
                             }
                           }
@@ -478,6 +594,57 @@
                       }
                     ]
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["record_kind"],
+        "properties": {
+          "record_kind": { "const": "codex-complete-block-effort-scaling-v2" }
+        }
+      },
+      "then": {
+        "properties": {
+          "attribution": {
+            "required": ["runtime"],
+            "properties": {
+              "runtime": {
+                "required": ["routing_attestation", "model_catalog_authority"],
+                "properties": {
+                  "routing_attestation": {
+                    "properties": {
+                      "schema_version": { "const": "0.2" },
+                      "checks": {
+                        "required": [
+                          "model_catalog_authority_present",
+                          "model_catalog_schema_version_exact",
+                          "model_catalog_mode_exact",
+                          "model_catalog_config_key_exact",
+                          "model_catalog_source_path_exact",
+                          "model_catalog_source_sha256_exact",
+                          "model_catalog_source_bytes_exact",
+                          "model_catalog_source_mode_exact",
+                          "model_catalog_isolated_path_exact",
+                          "model_catalog_isolated_sha256_exact",
+                          "model_catalog_isolated_bytes_exact",
+                          "model_catalog_copy_mode_exact",
+                          "model_catalog_selected_model_exact",
+                          "model_catalog_selected_profile_sha256_exact",
+                          "model_catalog_selected_default_effort_exact",
+                          "model_catalog_selected_effort_order_exact",
+                          "model_catalog_selected_effort_supported",
+                          "model_catalog_verified_before_provider_execution",
+                          "model_catalog_mutable_fallback_forbidden"
+                        ]
+                      }
+                    }
+                  },
+                  "model_catalog_authority": {}
                 }
               }
             }

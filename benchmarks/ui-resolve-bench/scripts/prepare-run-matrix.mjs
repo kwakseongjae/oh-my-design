@@ -13,6 +13,7 @@ import {
   currentObjectiveMethodology,
 } from "./objective-methodology-contract.mjs";
 import { CODEX_REASONING_EFFORTS } from "./codex-tool-mode-contract.mjs";
+import { inspectImmutableModelCatalogSource } from "./codex-browser-sandbox-contract.mjs";
 import { assertProviderRoute } from "./runtime-contract.mjs";
 
 const VALID_RUNTIMES = new Set(["codex", "claude-code", "cursor"]);
@@ -563,6 +564,8 @@ export function validateCompleteBlockEffortScalingPlan(plan) {
   }
   const snapshot = plan.codex_catalog_snapshot_contract;
   let authSnapshotValid = false;
+  let cacheSnapshotValid = false;
+  let modelCatalogSnapshot = null;
   if (isAbsolute(snapshot?.auth_json_source_path ?? "")
     && existsSync(snapshot.auth_json_source_path)) {
     const authInfo = lstatSync(snapshot.auth_json_source_path);
@@ -571,12 +574,39 @@ export function validateCompleteBlockEffortScalingPlan(plan) {
       && authInfo.size === snapshot.auth_json_bytes
       && sha256(readFileSync(snapshot.auth_json_source_path)) === snapshot.auth_json_sha256;
   }
+  if (isAbsolute(snapshot?.models_cache_source_path ?? "")
+    && existsSync(snapshot.models_cache_source_path)) {
+    const cacheInfo = lstatSync(snapshot.models_cache_source_path);
+    cacheSnapshotValid = cacheInfo.isFile()
+      && !cacheInfo.isSymbolicLink()
+      && cacheInfo.size === snapshot.models_cache_bytes
+      && sha256(readFileSync(snapshot.models_cache_source_path)) === snapshot.models_cache_sha256;
+  }
+  if (isAbsolute(snapshot?.model_catalog_source_path ?? "")) {
+    try {
+      modelCatalogSnapshot = inspectImmutableModelCatalogSource(
+        snapshot.model_catalog_source_path,
+        effortContract,
+      );
+    } catch {
+      modelCatalogSnapshot = null;
+    }
+  }
   const cliCacheVersionsMatch = snapshot?.codex_cli?.version === effortContract.cache_client_version;
   const cacheClientPolicyValid = snapshot?.cli_cache_client_version_policy === "require-exact-match"
     && cliCacheVersionsMatch
     && snapshot.cli_cache_client_version_mismatch_justification === null;
+  const sourceHome = isAbsolute(snapshot?.auth_source_home ?? "")
+    ? resolve(snapshot.auth_source_home)
+    : null;
+  const modelCatalogRelative = sourceHome
+    && isAbsolute(snapshot?.model_catalog_source_path ?? "")
+    ? relative(sourceHome, resolve(snapshot.model_catalog_source_path))
+    : null;
   if (!snapshot || snapshot.enforcement_mode !== "exact-runtime-per-invocation"
+    || !sourceHome
     || !isAbsolute(snapshot.auth_json_source_path ?? "")
+    || resolve(snapshot.auth_json_source_path) !== join(sourceHome, "auth.json")
     || snapshot.auth_json_source_mode !== "immutable-snapshot-only"
     || !SHA256_PATTERN.test(snapshot.auth_json_sha256 ?? "")
     || !Number.isInteger(snapshot.auth_json_bytes) || snapshot.auth_json_bytes < 1
@@ -584,9 +614,24 @@ export function validateCompleteBlockEffortScalingPlan(plan) {
     || snapshot.mutable_auth_fallback_allowed !== false
     || !authSnapshotValid
     || !isAbsolute(snapshot.models_cache_source_path ?? "")
+    || resolve(snapshot.models_cache_source_path) !== join(sourceHome, "models_cache.json")
     || snapshot.models_cache_sha256 !== effortContract.cache_sha256
+    || !Number.isInteger(snapshot.models_cache_bytes) || snapshot.models_cache_bytes < 1
+    || !cacheSnapshotValid
     || snapshot.models_cache_source_mode !== "immutable-snapshot-only"
+    || snapshot.models_cache_mode !== "immutable-copy-before-provider-execution"
     || snapshot.mutable_models_cache_fallback_allowed !== false
+    || snapshot.models_cache_role !== "provenance-only-not-execution-authority"
+    || !isAbsolute(snapshot.model_catalog_source_path ?? "")
+    || !modelCatalogRelative || modelCatalogRelative === ".."
+    || modelCatalogRelative.startsWith(`..${sep}`)
+    || isAbsolute(modelCatalogRelative)
+    || snapshot.model_catalog_source_mode !== "immutable-snapshot-only"
+    || snapshot.model_catalog_mode !== "isolated-copy-before-provider-execution"
+    || snapshot.mutable_model_catalog_fallback_allowed !== false
+    || snapshot.model_catalog_role !== "execution-model-authority"
+    || modelCatalogSnapshot?.sha256 !== snapshot.model_catalog_sha256
+    || modelCatalogSnapshot?.bytes !== snapshot.model_catalog_bytes
     || !isAbsolute(snapshot.codex_cli?.executable_path ?? "")
     || !isAbsolute(snapshot.codex_cli?.native_executable_path ?? "")
     || !SHA256_PATTERN.test(snapshot.codex_cli?.binary_sha256 ?? "")
@@ -595,6 +640,9 @@ export function validateCompleteBlockEffortScalingPlan(plan) {
     || plan.lock_manifest?.codex_catalog_snapshot_contract_sha256
       !== canonicalSha256(snapshot)) {
     throw new Error("matrix complete-block effort scaling exact catalog/auth/cache/CLI binding drift");
+  }
+  if (plan.lock_manifest?.model_catalog_file_sha256 !== snapshot.model_catalog_sha256) {
+    throw new Error("matrix complete-block effort scaling local model catalog lock drift");
   }
 
   const semanticFields = ["variant_id", "system_id", "runtime", "timeout_seconds", "allow_dirty_source"];

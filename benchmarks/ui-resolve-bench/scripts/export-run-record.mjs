@@ -18,6 +18,8 @@ const FAMILIES = new Set(["model", "skill", "harness", "prompt-arena", "factoria
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
 const STATIC_PREVIEW_GUARD_VERSION = "locked-typography-source-v1";
 const STATIC_PREVIEW_GUARD_SCOPE = "locked-typography-direct-declarations";
+const COMPLETE_BLOCK_RECORD_KIND = "codex-complete-block-effort-scaling-v2";
+const ROUTING_ATTESTATION_SCHEMA_VERSION = "0.2";
 const HOST_POLICY_INFRASTRUCTURE_REASONS = new Set([
   "installed-policy-not-ready",
   "installed-policy-state-missing",
@@ -254,7 +256,65 @@ export function buildCompleteBlockSweepIdentity({
   };
 }
 
-export function buildCodexRoutingAttestation({ matrixCell, run, lockedPlan }) {
+function orderedStringArrayEqual(left, right) {
+  return Array.isArray(left)
+    && Array.isArray(right)
+    && left.length === right.length
+    && left.every((value, index) => value === right[index]);
+}
+
+function modelCatalogAuthorityChecks({ workspace, matrixCell, run, lockedPlan, profile }) {
+  const authority = run?.runtime?.model_catalog_authority ?? null;
+  const snapshot = lockedPlan?.codex_catalog_snapshot_contract ?? null;
+  const expectedIsolatedPath = workspace
+    ? join(resolve(workspace), ".benchmark", "codex-home", "model_catalog.json")
+    : null;
+  return {
+    model_catalog_authority_present: Boolean(authority),
+    model_catalog_schema_version_exact: authority?.schema_version === "0.1",
+    model_catalog_mode_exact:
+      authority?.mode === "immutable-local-model-catalog-json"
+      && snapshot?.model_catalog_mode === "isolated-copy-before-provider-execution"
+      && snapshot?.model_catalog_role === "execution-model-authority",
+    model_catalog_config_key_exact: authority?.config_key === "model_catalog_json",
+    model_catalog_source_path_exact:
+      authority?.source?.path === snapshot?.model_catalog_source_path,
+    model_catalog_source_sha256_exact:
+      authority?.source?.sha256 === snapshot?.model_catalog_sha256,
+    model_catalog_source_bytes_exact:
+      authority?.source?.bytes === snapshot?.model_catalog_bytes,
+    model_catalog_source_mode_exact:
+      authority?.source?.source_mode === "immutable-snapshot-only"
+      && snapshot?.model_catalog_source_mode === "immutable-snapshot-only",
+    model_catalog_isolated_path_exact:
+      expectedIsolatedPath !== null && authority?.isolated_copy?.path === expectedIsolatedPath,
+    model_catalog_isolated_sha256_exact:
+      authority?.isolated_copy?.sha256 === snapshot?.model_catalog_sha256,
+    model_catalog_isolated_bytes_exact:
+      authority?.isolated_copy?.bytes === snapshot?.model_catalog_bytes,
+    model_catalog_copy_mode_exact:
+      authority?.isolated_copy?.copy_mode === "isolated-regular-file",
+    model_catalog_selected_model_exact:
+      authority?.selected_profile?.model_id === matrixCell?.model_id,
+    model_catalog_selected_profile_sha256_exact:
+      authority?.selected_profile?.model_profile_sha256 === profile?.model_profile_sha256,
+    model_catalog_selected_default_effort_exact:
+      authority?.selected_profile?.default_effort === profile?.default_effort,
+    model_catalog_selected_effort_order_exact: orderedStringArrayEqual(
+      authority?.selected_profile?.supported_efforts,
+      profile?.supported_efforts,
+    ),
+    model_catalog_selected_effort_supported:
+      authority?.selected_profile?.supported_efforts?.includes(matrixCell?.effort) === true,
+    model_catalog_verified_before_provider_execution:
+      authority?.verified_before_provider_execution === true,
+    model_catalog_mutable_fallback_forbidden:
+      authority?.mutable_fallback_allowed === false
+      && snapshot?.mutable_model_catalog_fallback_allowed === false,
+  };
+}
+
+export function buildCodexRoutingAttestation({ workspace = null, matrixCell, run, lockedPlan }) {
   if (matrixCell?.runtime !== "codex") return null;
 
   const lockedCell = exactLockedCell(lockedPlan, matrixCell);
@@ -299,12 +359,15 @@ export function buildCodexRoutingAttestation({ matrixCell, run, lockedPlan }) {
     && lockedCell.effort === matrixCell.effort
   );
   const pinnedProfileSupportsEffort = Boolean(
-    profile
-    && profile.supported_efforts?.includes(matrixCell.effort)
-    && toolModeEvidence
-    && toolModeEvidence.cache_sha256 === effortContract?.cache_sha256
-    && toolModeEvidence.model_profile_sha256 === profile.model_profile_sha256
+    profile && profile.supported_efforts?.includes(matrixCell.effort)
   );
+  const catalogChecks = modelCatalogAuthorityChecks({
+    workspace,
+    matrixCell,
+    run,
+    lockedPlan,
+    profile,
+  });
   const checks = {
     locked_cell_exact: lockedCellExact,
     runtime_codex: run?.runtime?.runtime_target === "codex",
@@ -313,9 +376,10 @@ export function buildCodexRoutingAttestation({ matrixCell, run, lockedPlan }) {
     provider_effort_argument_exact: providerEffortArgument === matrixCell.effort,
     provider_route_accepted: providerRouteAccepted,
     pinned_profile_supports_effort: pinnedProfileSupportsEffort,
+    ...catalogChecks,
   };
   return {
-    schema_version: "0.1",
+    schema_version: ROUTING_ATTESTATION_SCHEMA_VERSION,
     runtime: "codex",
     model_id: matrixCell.model_id,
     effort: matrixCell.effort,
@@ -331,6 +395,7 @@ export function buildCodexRoutingAttestation({ matrixCell, run, lockedPlan }) {
       default_effort: profile.default_effort,
       supported_efforts: profile.supported_efforts,
     } : null,
+    model_tool_mode_evidence: toolModeEvidence,
     evidence_source: {
       matrix_cell: ".benchmark/matrix-cell.json",
       run_result: ".benchmark/run-result.json",
@@ -536,7 +601,7 @@ export function buildRunRecord({
   if (!FAMILIES.has(family)) throw new Error(`unsupported benchmark family: ${family}`);
   if (!Number.isInteger(trialIndex) || trialIndex < 1) throw new Error("trial index must be a positive integer");
   const runStatus = classifyRunStatus(run, score);
-  const routingAttestation = buildCodexRoutingAttestation({ matrixCell, run, lockedPlan });
+  const routingAttestation = buildCodexRoutingAttestation({ workspace, matrixCell, run, lockedPlan });
   const validity = classifyValidity(manifest, runStatus, score, run, {
     attributionScope,
     executionControl,
@@ -609,7 +674,7 @@ export function buildRunRecord({
   });
   return {
     run_id: basename(workspace),
-    ...(sweepIdentity ? { record_kind: "codex-complete-block-effort-scaling-v1" } : {}),
+    ...(sweepIdentity ? { record_kind: COMPLETE_BLOCK_RECORD_KIND } : {}),
     benchmark_family: family,
     suite_version: suiteVersion,
     ...(experimentId ? { experiment_id: experimentId } : {}),
@@ -715,6 +780,9 @@ export function buildRunRecord({
           ?? run?.runtime?.reasoning
           ?? null,
         ...(routingAttestation ? { routing_attestation: routingAttestation } : {}),
+        ...(sweepIdentity
+          ? { model_catalog_authority: run?.runtime?.model_catalog_authority ?? null }
+          : {}),
         hook_trust_bypassed: run?.runtime?.hook_trust_bypassed ?? false,
         usage_attribution: run?.output?.usage_attribution ?? null,
       },

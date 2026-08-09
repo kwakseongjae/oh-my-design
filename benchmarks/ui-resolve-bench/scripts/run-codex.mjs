@@ -10,6 +10,7 @@ import {
   preparedExactCodexRuntimeContract,
   preparedWorkspaceRequiresBrowserProof,
   verifyExactCodexCliRuntime,
+  verifyExactModelCatalogAuthority,
 } from "./codex-browser-sandbox-contract.mjs";
 import { inspectCodexModelToolMode } from "./codex-tool-mode-contract.mjs";
 
@@ -43,6 +44,7 @@ const maxLogBytes = 50 * 1024 * 1024;
 const browserProofRequired = preparedWorkspaceRequiresBrowserProof(workspace, { readJson });
 const exactRuntimeContract = preparedExactCodexRuntimeContract(workspace, { readJson });
 const exactCodexHome = exactRuntimeContract ? isolatedCodexHome(workspace) : null;
+const exactModelCatalogPath = exactCodexHome ? join(exactCodexHome, "model_catalog.json") : null;
 const codexBin = exactRuntimeContract
   ? exactRuntimeContract.catalog_snapshot_contract.codex_cli.executable_path
   : process.env.OMD_BENCH_CODEX_BIN ?? "codex";
@@ -60,6 +62,10 @@ const innerCommand = [
   model,
   "--config",
   `model_reasoning_effort=\"${reasoning}\"`,
+  ...(exactModelCatalogPath ? [
+    "--config",
+    `model_catalog_json=${JSON.stringify(exactModelCatalogPath)}`,
+  ] : []),
   "--json",
   "--output-last-message",
   finalMessagePath,
@@ -105,6 +111,7 @@ Object.assign(childEnv, {
 
 let exactCliRuntime = null;
 let exactPreRunModelToolMode = null;
+let exactModelCatalogAuthority = null;
 if (exactRuntimeContract) {
   prepareIsolatedCodexHome(workspace, process.env, {
     exactRuntimeContract,
@@ -114,6 +121,11 @@ if (exactRuntimeContract) {
   exactPreRunModelToolMode = inspectCodexModelToolMode(model, {
     OMD_BENCH_AUTH_CODEX_HOME: exactCodexHome,
   });
+  exactModelCatalogAuthority = verifyExactModelCatalogAuthority(
+    workspace,
+    exactRuntimeContract,
+    { modelId: model },
+  );
   exactCliRuntime = verifyExactCodexCliRuntime(exactRuntimeContract);
 }
 
@@ -239,6 +251,7 @@ const result = {
       },
     },
     auth_mode: exactRuntimeContract ? "immutable-snapshot-copy" : null,
+    model_catalog_authority: exactModelCatalogAuthority,
     provider_route: null,
     model,
     reasoning,

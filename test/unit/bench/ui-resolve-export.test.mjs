@@ -116,7 +116,49 @@ function completeBlockFixture({ cellId = "task-a-luna-high", systemId = "luna-hi
           supported_efforts: ["low", "medium", "high"],
         }],
       },
+      codex_catalog_snapshot_contract: {
+        model_catalog_source_path: "/tmp/catalog/model_catalog.json",
+        model_catalog_sha256: "9".repeat(64),
+        model_catalog_bytes: 2048,
+        model_catalog_source_mode: "immutable-snapshot-only",
+        model_catalog_mode: "isolated-copy-before-provider-execution",
+        model_catalog_role: "execution-model-authority",
+        mutable_model_catalog_fallback_allowed: false,
+      },
     },
+  };
+}
+
+function modelCatalogAuthority(workspace, {
+  modelId = "gpt-5.6-luna",
+  profileSha256 = "d".repeat(64),
+  defaultEffort = "medium",
+  supportedEfforts = ["low", "medium", "high"],
+} = {}) {
+  return {
+    schema_version: "0.1",
+    mode: "immutable-local-model-catalog-json",
+    config_key: "model_catalog_json",
+    source: {
+      path: "/tmp/catalog/model_catalog.json",
+      sha256: "9".repeat(64),
+      bytes: 2048,
+      source_mode: "immutable-snapshot-only",
+    },
+    isolated_copy: {
+      path: join(workspace, ".benchmark", "codex-home", "model_catalog.json"),
+      sha256: "9".repeat(64),
+      bytes: 2048,
+      copy_mode: "isolated-regular-file",
+    },
+    selected_profile: {
+      model_id: modelId,
+      model_profile_sha256: profileSha256,
+      default_effort: defaultEffort,
+      supported_efforts: supportedEfforts,
+    },
+    verified_before_provider_execution: true,
+    mutable_fallback_allowed: false,
   };
 }
 
@@ -157,6 +199,7 @@ describe("UI-Resolve normalized run exporter", () => {
         cache_sha256: "c".repeat(64),
         model_profile_sha256: "d".repeat(64),
       },
+      model_catalog_authority: modelCatalogAuthority("/tmp/task-a-luna-high"),
     };
     const record = buildRunRecord({
       workspace: "/tmp/task-a-luna-high",
@@ -178,7 +221,7 @@ describe("UI-Resolve normalized run exporter", () => {
       task_set_sha256: "a".repeat(64),
       matrix_sha256: "b".repeat(64),
       cell_id: "task-a-luna-high",
-      record_kind: "codex-complete-block-effort-scaling-v1",
+      record_kind: "codex-complete-block-effort-scaling-v2",
       variant_id: "omd-portable",
       budget_tier: "high",
       effort: "high",
@@ -194,6 +237,7 @@ describe("UI-Resolve normalized run exporter", () => {
       attribution: {
         runtime: {
           routing_attestation: {
+            schema_version: "0.2",
             runtime: "codex",
             model_id: "gpt-5.6-luna",
             effort: "high",
@@ -207,6 +251,25 @@ describe("UI-Resolve normalized run exporter", () => {
               provider_effort_argument_exact: true,
               provider_route_accepted: true,
               pinned_profile_supports_effort: true,
+              model_catalog_authority_present: true,
+              model_catalog_schema_version_exact: true,
+              model_catalog_mode_exact: true,
+              model_catalog_config_key_exact: true,
+              model_catalog_source_path_exact: true,
+              model_catalog_source_sha256_exact: true,
+              model_catalog_source_bytes_exact: true,
+              model_catalog_source_mode_exact: true,
+              model_catalog_isolated_path_exact: true,
+              model_catalog_isolated_sha256_exact: true,
+              model_catalog_isolated_bytes_exact: true,
+              model_catalog_copy_mode_exact: true,
+              model_catalog_selected_model_exact: true,
+              model_catalog_selected_profile_sha256_exact: true,
+              model_catalog_selected_default_effort_exact: true,
+              model_catalog_selected_effort_order_exact: true,
+              model_catalog_selected_effort_supported: true,
+              model_catalog_verified_before_provider_execution: true,
+              model_catalog_mutable_fallback_forbidden: true,
             },
             pass: true,
           },
@@ -235,6 +298,7 @@ describe("UI-Resolve normalized run exporter", () => {
         cache_sha256: "c".repeat(64),
         model_profile_sha256: "d".repeat(64),
       },
+      model_catalog_authority: modelCatalogAuthority("/tmp/task-a-luna-high"),
     };
     const record = buildRunRecord({
       workspace: "/tmp/task-a-luna-high",
@@ -394,6 +458,45 @@ describe("UI-Resolve normalized run exporter", () => {
     expect(attestation.pass).toBe(false);
   });
 
+  it("fails fresh routing authority on catalog SHA, selected-profile, or effort-order drift", () => {
+    const workspace = "/tmp/task-a-luna-high";
+    const { matrixCell, lockedPlan } = completeBlockFixture();
+    const baselineRuntime = {
+      runtime_target: "codex",
+      model_requested: matrixCell.model_id,
+      effort_requested: matrixCell.effort,
+      reasoning: matrixCell.effort,
+      model_catalog_authority: modelCatalogAuthority(workspace),
+    };
+    const mutations = [
+      ["model_catalog_source_sha256_exact", (authority) => {
+        authority.source.sha256 = "0".repeat(64);
+      }],
+      ["model_catalog_selected_profile_sha256_exact", (authority) => {
+        authority.selected_profile.model_profile_sha256 = "0".repeat(64);
+      }],
+      ["model_catalog_selected_effort_order_exact", (authority) => {
+        authority.selected_profile.supported_efforts.reverse();
+      }],
+      ["model_catalog_config_key_exact", (authority) => {
+        authority.config_key = "models_cache_json";
+      }],
+    ];
+    for (const [check, mutate] of mutations) {
+      const runtime = structuredClone(baselineRuntime);
+      mutate(runtime.model_catalog_authority);
+      const attestation = buildCodexRoutingAttestation({
+        workspace,
+        matrixCell,
+        run: { runtime },
+        lockedPlan,
+      });
+      expect(attestation.schema_version).toBe("0.2");
+      expect(attestation.checks[check]).toBe(false);
+      expect(attestation.pass).toBe(false);
+    }
+  });
+
   it("marks effort-scaling attribution invalid when routing attestation is missing or fails", () => {
     const { matrixCell, lockedPlan } = completeBlockFixture({ cellId: "cell" });
     const driftedRun = structuredClone(run);
@@ -467,8 +570,21 @@ describe("UI-Resolve normalized run exporter", () => {
     const passConditional = routingSchema.allOf.find(
       (item) => item.if?.properties?.pass?.const === true,
     );
-    expect(Object.values(passConditional.then.properties.checks.properties))
-      .toEqual(Array(7).fill({ const: true }));
+    expect(passConditional.then.properties.checks.properties).toMatchObject({
+      locked_cell_exact: { const: true },
+      pinned_profile_supports_effort: { const: true },
+      model_catalog_source_sha256_exact: { const: true },
+      model_catalog_selected_profile_sha256_exact: { const: true },
+      model_catalog_selected_effort_order_exact: { const: true },
+    });
+    const freshConditional = schema.allOf.find(
+      (item) => item.if?.properties?.record_kind?.const
+        === "codex-complete-block-effort-scaling-v2",
+    );
+    expect(freshConditional.then.properties.attribution.properties.runtime.required)
+      .toEqual(expect.arrayContaining(["routing_attestation", "model_catalog_authority"]));
+    expect(freshConditional.then.properties.attribution.properties.runtime.properties
+      .routing_attestation.properties.schema_version).toEqual({ const: "0.2" });
   });
 
   it("binds a passed provider-sealed candidate receipt to the final product bytes", () => {

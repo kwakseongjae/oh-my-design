@@ -6,6 +6,7 @@ import {
   mkdtempSync,
   readFileSync,
   symlinkSync,
+  unlinkSync,
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
@@ -30,7 +31,7 @@ import { sha256 } from "../../../benchmarks/ui-resolve-bench/scripts/_lib.mjs";
 const script = resolve(
   "benchmarks/ui-resolve-bench/scripts/create-codex-effort-sweep-plan.mjs",
 );
-const catalogLockPath = resolve(
+const baseCatalogLockPath = resolve(
   "benchmarks/ui-resolve-bench/reports/codex-model-effort-contract-1.9.815/CATALOG-LOCK.json",
 );
 const installedSkillSha256 = "76d7116df49a2896f2f22e264287ec66c79764c5b0f6581996df09778ec8e0ad";
@@ -38,6 +39,83 @@ const immutableAuthFixtureRoot = mkdtempSync(join(tmpdir(), "omd-effort-auth-sna
 const immutableAuthFixturePath = join(immutableAuthFixtureRoot, "auth.json");
 const immutableAuthFixtureBytes = Buffer.from('{"fixture":"immutable-effort-auth"}\n');
 writeFileSync(immutableAuthFixturePath, immutableAuthFixtureBytes);
+
+function canonicalJson(value) {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.keys(value).sort().map((key) => (
+      `${JSON.stringify(key)}:${canonicalJson(value[key])}`
+    )).join(",")}}`;
+  }
+  return JSON.stringify(value);
+}
+
+const modelCatalogModels = [
+  ["gpt-5.6-luna", "medium", ["low", "medium", "high", "xhigh", "max"]],
+  ["gpt-5.6-terra", "medium", ["low", "medium", "high", "xhigh", "max", "ultra"]],
+  ["gpt-5.6-sol", "low", ["low", "medium", "high", "xhigh", "max", "ultra"]],
+].map(([slug, default_reasoning_level, efforts]) => ({
+  slug,
+  display_name: `${slug} fixture`,
+  default_reasoning_level,
+  supported_reasoning_levels: efforts.map((effort) => ({ effort, description: effort })),
+  tool_mode: "function",
+}));
+const modelCatalogFixturePath = join(immutableAuthFixtureRoot, "model_catalog.json");
+const modelCatalogFixtureBytes = Buffer.from(`${JSON.stringify({ models: modelCatalogModels }, null, 2)}\n`);
+writeFileSync(modelCatalogFixturePath, modelCatalogFixtureBytes);
+const modelsCacheFixturePath = join(immutableAuthFixtureRoot, "models_cache.json");
+const modelsCacheFixtureBytes = Buffer.from(`${JSON.stringify({
+  fetched_at: "2026-08-09T04:39:36Z",
+  client_version: "0.147.0",
+  models: modelCatalogModels,
+}, null, 2)}\n`);
+writeFileSync(modelsCacheFixturePath, modelsCacheFixtureBytes);
+const catalogLockPath = join(immutableAuthFixtureRoot, "CATALOG-LOCK.json");
+const catalogFixture = JSON.parse(readFileSync(baseCatalogLockPath, "utf8"));
+catalogFixture.codex_model_effort_contract.cache_sha256 = sha256(modelsCacheFixtureBytes);
+catalogFixture.codex_model_effort_contract.cache_fetched_at = "2026-08-09T04:39:36Z";
+catalogFixture.codex_model_effort_contract.cache_client_version = "0.147.0";
+catalogFixture.codex_model_effort_contract.models = modelCatalogModels.map((profile) => ({
+  model_id: profile.slug,
+  model_profile_sha256: sha256(canonicalJson(profile)),
+  default_effort: profile.default_reasoning_level,
+  supported_efforts: profile.supported_reasoning_levels.map((entry) => entry.effort),
+}));
+catalogFixture.codex_model_catalog_authority_contract = {
+  schema_version: "0.1",
+  config_key: "model_catalog_json",
+  source: {
+    path: modelCatalogFixturePath,
+    sha256: sha256(modelCatalogFixtureBytes),
+    bytes: modelCatalogFixtureBytes.byteLength,
+    source_mode: "immutable-snapshot-only",
+  },
+  mode: "isolated-copy-before-provider-execution",
+  role: "execution-model-authority",
+  models_cache_role: "provenance-only-not-execution-authority",
+  mutable_fallback_allowed: false,
+  derived_from_cache_sha256: sha256(modelsCacheFixtureBytes),
+  models: structuredClone(catalogFixture.codex_model_effort_contract.models),
+};
+writeFileSync(catalogLockPath, `${JSON.stringify(catalogFixture, null, 2)}\n`);
+
+function writeCatalogAuthorityLock(root, modelCatalogPath, modelsCachePath) {
+  const lock = structuredClone(catalogFixture);
+  const catalogBytes = readFileSync(modelCatalogPath);
+  const cacheBytes = readFileSync(modelsCachePath);
+  lock.codex_model_effort_contract.cache_sha256 = sha256(cacheBytes);
+  lock.codex_model_catalog_authority_contract.source = {
+    path: modelCatalogPath,
+    sha256: sha256(catalogBytes),
+    bytes: catalogBytes.byteLength,
+    source_mode: "immutable-snapshot-only",
+  };
+  lock.codex_model_catalog_authority_contract.derived_from_cache_sha256 = sha256(cacheBytes);
+  const path = join(root, "CATALOG-LOCK.json");
+  writeFileSync(path, `${JSON.stringify(lock, null, 2)}\n`);
+  return path;
+}
 
 function createCommittedTaskSource() {
   const root = mkdtempSync(join(tmpdir(), "omd-effort-task-source-"));
@@ -77,7 +155,8 @@ function options(overrides = {}) {
     catalogLockPath,
     catalogAuthSourceHome: immutableAuthFixtureRoot,
     catalogAuthJsonSourcePath: immutableAuthFixturePath,
-    modelsCacheSourcePath: "/private/tmp/omd-codex-auth-pin-fixture/models_cache.json",
+    modelsCacheSourcePath: modelsCacheFixturePath,
+    modelCatalogSourcePath: modelCatalogFixturePath,
     codexCliExecutablePath: "/private/tmp/omd-codex-cli-fixture/codex",
     codexCliNativeExecutablePath: "/private/tmp/omd-codex-cli-fixture/codex-native",
     codexCliVersion: "0.147.0",
@@ -224,8 +303,17 @@ describe("Codex all-effort sweep preregistration generator", () => {
       auth_json_bytes: immutableAuthFixtureBytes.length,
       auth_json_mode: "isolated-copy-before-provider-execution",
       mutable_auth_fallback_allowed: false,
-      models_cache_source_path: "/private/tmp/omd-codex-auth-pin-fixture/models_cache.json",
+      models_cache_source_path: modelsCacheFixturePath,
       models_cache_sha256: plan.codex_model_effort_contract.cache_sha256,
+      models_cache_bytes: modelsCacheFixtureBytes.length,
+      models_cache_role: "provenance-only-not-execution-authority",
+      model_catalog_source_path: modelCatalogFixturePath,
+      model_catalog_sha256: sha256(modelCatalogFixtureBytes),
+      model_catalog_bytes: modelCatalogFixtureBytes.length,
+      model_catalog_source_mode: "immutable-snapshot-only",
+      model_catalog_mode: "isolated-copy-before-provider-execution",
+      mutable_model_catalog_fallback_allowed: false,
+      model_catalog_role: "execution-model-authority",
       codex_cli: {
         executable_path: "/private/tmp/omd-codex-cli-fixture/codex",
         native_executable_path: "/private/tmp/omd-codex-cli-fixture/codex-native",
@@ -248,7 +336,7 @@ describe("Codex all-effort sweep preregistration generator", () => {
       catalog_lock_file_sha256: plan.codex_catalog_snapshot_contract.catalog_lock_sha256,
     });
     expect(Object.values(plan.lock_manifest).filter((value) => /^[a-f0-9]{64}$/.test(value)))
-      .toHaveLength(9);
+      .toHaveLength(10);
     expect(plan).not.toHaveProperty("matrix_sha256");
     expect(JSON.stringify(plan)).not.toContain("locked_matrix_sha256");
     expect(plan).not.toHaveProperty("reliability_contract");
@@ -360,22 +448,96 @@ describe("Codex all-effort sweep preregistration generator", () => {
     const authRoot = mkdtempSync(join(tmpdir(), "omd-effort-auth-drift-"));
     const authTarget = join(authRoot, "auth-target.json");
     const authLink = join(authRoot, "auth.json");
+    const authRootCache = join(authRoot, "models_cache.json");
+    const authRootCatalog = join(authRoot, "model_catalog.json");
     writeFileSync(authTarget, '{"fixture":"auth"}\n');
+    writeFileSync(authRootCache, modelsCacheFixtureBytes);
+    writeFileSync(authRootCatalog, modelCatalogFixtureBytes);
+    const authRootCatalogLock = writeCatalogAuthorityLock(
+      authRoot,
+      authRootCatalog,
+      authRootCache,
+    );
     symlinkSync(authTarget, authLink);
     expect(() => createCodexEffortSweepPlan(options({
       catalogAuthSourceHome: authRoot,
       catalogAuthJsonSourcePath: authLink,
+      modelsCacheSourcePath: authRootCache,
+      modelCatalogSourcePath: authRootCatalog,
+      catalogLockPath: authRootCatalogLock,
     }))).toThrow("immutable regular-file snapshot");
 
-    const mutableAuthPath = join(authRoot, "mutable-auth.json");
-    writeFileSync(mutableAuthPath, '{"fixture":"before"}\n');
+    unlinkSync(authLink);
+    writeFileSync(authLink, '{"fixture":"before"}\n');
     const authBoundPlan = createCodexEffortSweepPlan(options({
       catalogAuthSourceHome: authRoot,
-      catalogAuthJsonSourcePath: mutableAuthPath,
+      catalogAuthJsonSourcePath: authLink,
+      modelsCacheSourcePath: authRootCache,
+      modelCatalogSourcePath: authRootCatalog,
+      catalogLockPath: authRootCatalogLock,
     }));
-    writeFileSync(mutableAuthPath, '{"fixture":"after"}\n');
+    writeFileSync(authLink, '{"fixture":"after"}\n');
     expect(() => validateGeneratedCodexEffortSweepPlan(authBoundPlan))
       .toThrow(/catalog\/auth\/(?:cache\/)?CLI (?:runtime )?binding drift/);
+
+    const catalogRoot = mkdtempSync(join(tmpdir(), "omd-effort-model-catalog-drift-"));
+    const catalogAuth = join(catalogRoot, "auth.json");
+    const catalogCache = join(catalogRoot, "models_cache.json");
+    const realCatalog = join(catalogRoot, "model_catalog-real.json");
+    const linkedCatalog = join(catalogRoot, "model_catalog.json");
+    writeFileSync(catalogAuth, immutableAuthFixtureBytes);
+    writeFileSync(catalogCache, modelsCacheFixtureBytes);
+    writeFileSync(realCatalog, modelCatalogFixtureBytes);
+    symlinkSync(realCatalog, linkedCatalog);
+    const linkedCatalogLock = writeCatalogAuthorityLock(
+      catalogRoot,
+      realCatalog,
+      catalogCache,
+    );
+    expect(() => createCodexEffortSweepPlan(options({
+      catalogAuthSourceHome: catalogRoot,
+      catalogAuthJsonSourcePath: catalogAuth,
+      modelsCacheSourcePath: catalogCache,
+      modelCatalogSourcePath: linkedCatalog,
+      catalogLockPath: linkedCatalogLock,
+    }))).toThrow(/model catalog source must be a regular non-symlink file/u);
+
+    const catalogBoundPath = join(catalogRoot, "model_catalog-bound.json");
+    writeFileSync(catalogBoundPath, modelCatalogFixtureBytes);
+    const catalogBoundLock = writeCatalogAuthorityLock(
+      catalogRoot,
+      catalogBoundPath,
+      catalogCache,
+    );
+    const catalogBoundPlan = createCodexEffortSweepPlan(options({
+      catalogAuthSourceHome: catalogRoot,
+      catalogAuthJsonSourcePath: catalogAuth,
+      modelsCacheSourcePath: catalogCache,
+      modelCatalogSourcePath: catalogBoundPath,
+      catalogLockPath: catalogBoundLock,
+    }));
+    writeFileSync(catalogBoundPath, `${modelCatalogFixtureBytes.toString("utf8")}\n`);
+    expect(() => validateGeneratedCodexEffortSweepPlan(catalogBoundPlan))
+      .toThrow(/catalog\/auth\/(?:cache\/)?CLI (?:runtime )?binding drift/u);
+
+    const cacheRoot = mkdtempSync(join(tmpdir(), "omd-effort-model-cache-drift-"));
+    const cacheAuth = join(cacheRoot, "auth.json");
+    const cacheSource = join(cacheRoot, "models_cache.json");
+    const cacheCatalog = join(cacheRoot, "model_catalog.json");
+    writeFileSync(cacheAuth, immutableAuthFixtureBytes);
+    writeFileSync(cacheSource, modelsCacheFixtureBytes);
+    writeFileSync(cacheCatalog, modelCatalogFixtureBytes);
+    const cacheBoundLock = writeCatalogAuthorityLock(cacheRoot, cacheCatalog, cacheSource);
+    const cacheBoundPlan = createCodexEffortSweepPlan(options({
+      catalogAuthSourceHome: cacheRoot,
+      catalogAuthJsonSourcePath: cacheAuth,
+      modelsCacheSourcePath: cacheSource,
+      modelCatalogSourcePath: cacheCatalog,
+      catalogLockPath: cacheBoundLock,
+    }));
+    writeFileSync(cacheSource, `${modelsCacheFixtureBytes.toString("utf8")}\n`);
+    expect(() => validateGeneratedCodexEffortSweepPlan(cacheBoundPlan))
+      .toThrow(/catalog\/auth\/(?:cache\/)?CLI (?:runtime )?binding drift/u);
   });
 
   it("writes only the plan and preregistration without starting a matrix or provider", () => {
@@ -386,8 +548,17 @@ describe("Codex all-effort sweep preregistration generator", () => {
     const preparedRoot = join(root, "prepared-matrix");
     const authRoot = join(root, "auth-snapshot");
     const authPath = join(authRoot, "auth.json");
+    const modelCatalogPath = join(authRoot, "model_catalog.json");
+    const modelsCachePath = join(authRoot, "models_cache.json");
     mkdirSync(authRoot, { recursive: true });
     writeFileSync(authPath, immutableAuthFixtureBytes);
+    writeFileSync(modelCatalogPath, modelCatalogFixtureBytes);
+    writeFileSync(modelsCachePath, modelsCacheFixtureBytes);
+    const cliCatalogLockPath = writeCatalogAuthorityLock(
+      authRoot,
+      modelCatalogPath,
+      modelsCachePath,
+    );
     const stdout = execFileSync(process.execPath, [
       script,
       "--product-version", "fixture",
@@ -398,10 +569,11 @@ describe("Codex all-effort sweep preregistration generator", () => {
       "--installed-skill-sha256", installedSkillSha256,
       "--task-source-commit", taskSource.commit,
       "--tasks-root", taskSource.tasksRoot,
-      "--catalog-lock", catalogLockPath,
+      "--catalog-lock", cliCatalogLockPath,
       "--catalog-auth-home", authRoot,
       "--catalog-auth-json-source", authPath,
-      "--models-cache-source", join(authRoot, "models_cache.json"),
+      "--models-cache-source", modelsCachePath,
+      "--model-catalog-source", modelCatalogPath,
       "--codex-cli-executable", join(root, "codex-not-touched/bin/codex"),
       "--codex-cli-native-executable", join(root, "codex-not-touched/bin/codex-native"),
       "--codex-cli-version", "0.147.0",

@@ -15,7 +15,7 @@ import {
 } from "node:fs";
 import { createRequire } from "node:module";
 import { homedir } from "node:os";
-import { dirname, isAbsolute, join, resolve } from "node:path";
+import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import {
   inspectCodexCliRuntime,
   inspectCodexModelEffortProfile,
@@ -26,6 +26,16 @@ const SHA256_PATTERN = /^[a-f0-9]{64}$/;
 
 function sha256(bytes) {
   return createHash("sha256").update(bytes).digest("hex");
+}
+
+function canonicalJson(value) {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.keys(value).sort().map((key) => (
+      `${JSON.stringify(key)}:${canonicalJson(value[key])}`
+    )).join(",")}}`;
+  }
+  return JSON.stringify(value);
 }
 
 function readJsonFile(path) {
@@ -90,6 +100,21 @@ function assertExactContractShape(contract) {
   if (snapshot.mutable_models_cache_fallback_allowed !== false) {
     throw new Error("codex exact runtime contract must forbid mutable models cache fallback");
   }
+  if (snapshot.models_cache_role !== "provenance-only-not-execution-authority") {
+    throw new Error("codex exact runtime contract models cache role is invalid");
+  }
+  if (snapshot.model_catalog_source_mode !== "immutable-snapshot-only") {
+    throw new Error("codex exact runtime contract requires an immutable local model catalog source");
+  }
+  if (snapshot.model_catalog_mode !== "isolated-copy-before-provider-execution") {
+    throw new Error("codex exact runtime contract model_catalog_mode is invalid");
+  }
+  if (snapshot.model_catalog_role !== "execution-model-authority") {
+    throw new Error("codex exact runtime contract model catalog role is invalid");
+  }
+  if (snapshot.mutable_model_catalog_fallback_allowed !== false) {
+    throw new Error("codex exact runtime contract must forbid mutable model catalog fallback");
+  }
 
   const authSourceHome = requireAbsolutePath(snapshot.auth_source_home, "auth_source_home");
   const authSourcePath = requireAbsolutePath(
@@ -100,11 +125,20 @@ function assertExactContractShape(contract) {
     snapshot.models_cache_source_path,
     "models_cache_source_path",
   );
+  const modelCatalogSourcePath = requireAbsolutePath(
+    snapshot.model_catalog_source_path,
+    "model_catalog_source_path",
+  );
   if (authSourcePath !== join(authSourceHome, "auth.json")) {
     throw new Error("codex exact runtime contract auth_json_source_path is not bound to auth_source_home");
   }
   if (cacheSourcePath !== join(authSourceHome, "models_cache.json")) {
     throw new Error("codex exact runtime contract models_cache_source_path is not bound to auth_source_home");
+  }
+  const modelCatalogRelative = relative(authSourceHome, modelCatalogSourcePath);
+  if (!modelCatalogRelative || modelCatalogRelative.startsWith(`..${sep}`)
+    || modelCatalogRelative === ".." || isAbsolute(modelCatalogRelative)) {
+    throw new Error("codex exact runtime contract model_catalog_source_path is not inside auth_source_home");
   }
   const mutableDefaultCache = join(resolve(homedir(), ".codex"), "models_cache.json");
   const mutableDefaultAuth = join(resolve(homedir(), ".codex"), "auth.json");
@@ -117,8 +151,15 @@ function assertExactContractShape(contract) {
 
   requireSha256(snapshot.auth_json_sha256, "auth_json_sha256");
   const cacheSha256 = requireSha256(snapshot.models_cache_sha256, "models_cache_sha256");
+  if (!Number.isInteger(snapshot.models_cache_bytes) || snapshot.models_cache_bytes < 1) {
+    throw new Error("codex exact runtime contract models_cache_bytes must be positive");
+  }
   if (cacheSha256 !== requireSha256(modelEffort.cache_sha256, "model_effort_contract.cache_sha256")) {
     throw new Error("codex exact runtime contract models cache SHA does not match the effort contract");
+  }
+  requireSha256(snapshot.model_catalog_sha256, "model_catalog_sha256");
+  if (!Number.isInteger(snapshot.model_catalog_bytes) || snapshot.model_catalog_bytes < 1) {
+    throw new Error("codex exact runtime contract model_catalog_bytes must be positive");
   }
   requireNonEmptyString(modelEffort.cache_fetched_at, "model_effort_contract.cache_fetched_at");
   requireNonEmptyString(modelEffort.cache_client_version, "model_effort_contract.cache_client_version");
@@ -277,6 +318,84 @@ function readLockedRegularFile(path, label) {
   }
 }
 
+function reasoningProfile(profile) {
+  const defaultEffort = profile?.default_reasoning_level;
+  const levels = profile?.supported_reasoning_levels;
+  const supportedEfforts = Array.isArray(levels) ? levels.map((entry) => entry?.effort) : [];
+  if (typeof defaultEffort !== "string" || !defaultEffort
+    || supportedEfforts.length === 0
+    || supportedEfforts.some((effort) => typeof effort !== "string" || !effort)
+    || new Set(supportedEfforts).size !== supportedEfforts.length
+    || !supportedEfforts.includes(defaultEffort)) {
+    throw new Error(`codex exact runtime model catalog reasoning profile invalid: ${profile?.slug ?? "unknown"}`);
+  }
+  return { default_effort: defaultEffort, supported_efforts: supportedEfforts };
+}
+
+/**
+ * Parse one immutable local Codex model catalog and bind its raw model profiles to the
+ * preregistered canonical profile hashes. This is deliberately provider/network free.
+ */
+export function inspectImmutableModelCatalogSource(
+  path,
+  modelEffort,
+  { label = "model catalog" } = {},
+) {
+  const sourcePath = requireAbsolutePath(path, `${label} path`);
+  if (!existsSync(sourcePath)) {
+    throw new Error(`codex exact runtime ${label} missing: ${sourcePath}`);
+  }
+  const bytes = readLockedRegularFile(sourcePath, label);
+  let catalog;
+  try {
+    catalog = JSON.parse(bytes.toString("utf8"));
+  } catch {
+    throw new Error(`codex exact runtime ${label} must be valid JSON: ${sourcePath}`);
+  }
+  if (!catalog || typeof catalog !== "object" || Array.isArray(catalog)
+    || !Array.isArray(catalog.models)) {
+    throw new Error(`codex exact runtime ${label} must contain a models array`);
+  }
+  if (!modelEffort || !Array.isArray(modelEffort.models) || modelEffort.models.length === 0) {
+    throw new Error(`codex exact runtime ${label} requires pinned model profiles`);
+  }
+  const duplicateSlugs = catalog.models
+    .map((profile) => profile?.slug)
+    .filter((slug, index, values) => typeof slug === "string" && values.indexOf(slug) !== index);
+  if (duplicateSlugs.length > 0) {
+    throw new Error(`codex exact runtime ${label} contains duplicate model profiles: ${duplicateSlugs[0]}`);
+  }
+  const profiles = modelEffort.models.map((pinned) => {
+    const raw = catalog.models.find((profile) => profile?.slug === pinned.model_id);
+    if (!raw) {
+      throw new Error(`codex exact runtime ${label} model profile missing: ${pinned.model_id}`);
+    }
+    const observed = reasoningProfile(raw);
+    const profileSha256 = sha256(canonicalJson(raw));
+    if (profileSha256 !== pinned.model_profile_sha256) {
+      throw new Error(`codex exact runtime ${label} model profile SHA drift: ${pinned.model_id}`);
+    }
+    if (observed.default_effort !== pinned.default_effort) {
+      throw new Error(`codex exact runtime ${label} default effort drift: ${pinned.model_id}`);
+    }
+    if (JSON.stringify(observed.supported_efforts) !== JSON.stringify(pinned.supported_efforts)) {
+      throw new Error(`codex exact runtime ${label} ordered efforts drift: ${pinned.model_id}`);
+    }
+    return {
+      model_id: pinned.model_id,
+      model_profile_sha256: profileSha256,
+      default_effort: observed.default_effort,
+      supported_efforts: observed.supported_efforts,
+    };
+  });
+  return {
+    path: sourcePath,
+    sha256: sha256(bytes),
+    bytes: bytes.length,
+    profiles,
+  };
+}
+
 function installExactSnapshot(targetPath, sourceBytes, expectedSha256, label) {
   if (existsSync(targetPath)) {
     const targetStat = lstatSync(targetPath);
@@ -335,6 +454,7 @@ function prepareExactIsolatedCodexHome(workspace, env, contract, { modelId, effo
 
   const sourceAuth = resolve(snapshot.auth_json_source_path);
   const sourceCache = resolve(snapshot.models_cache_source_path);
+  const sourceModelCatalog = resolve(snapshot.model_catalog_source_path);
   if (!existsSync(sourceAuth)) throw new Error(`codex benchmark auth missing: ${sourceAuth}`);
   if (realpathSync(sourceAuth) !== sourceAuth) {
     throw new Error(`codex exact runtime auth JSON source path must not traverse symlinks: ${sourceAuth}`);
@@ -360,6 +480,18 @@ function prepareExactIsolatedCodexHome(workspace, env, contract, { modelId, effo
       `codex exact runtime models cache SHA drift: expected ${snapshot.models_cache_sha256}, received ${observedSourceSha}`,
     );
   }
+  if (cacheBytes.length !== snapshot.models_cache_bytes) {
+    throw new Error("codex exact runtime models cache byte length drift");
+  }
+  const modelCatalogObservation = inspectImmutableModelCatalogSource(
+    sourceModelCatalog,
+    modelEffort,
+  );
+  if (modelCatalogObservation.sha256 !== snapshot.model_catalog_sha256
+    || modelCatalogObservation.bytes !== snapshot.model_catalog_bytes) {
+    throw new Error("codex exact runtime model catalog source snapshot drift");
+  }
+  const modelCatalogBytes = readLockedRegularFile(sourceModelCatalog, "model catalog");
 
   const target = isolatedCodexHome(workspace);
   if (target === sourceHome) {
@@ -374,14 +506,78 @@ function prepareExactIsolatedCodexHome(workspace, env, contract, { modelId, effo
   );
   const targetCache = join(target, "models_cache.json");
   installExactSnapshot(targetCache, cacheBytes, snapshot.models_cache_sha256, "models cache");
+  const targetModelCatalog = join(target, "model_catalog.json");
+  installExactSnapshot(
+    targetModelCatalog,
+    modelCatalogBytes,
+    snapshot.model_catalog_sha256,
+    "model catalog",
+  );
   if (!readLockedRegularFile(sourceAuth, "auth JSON").equals(authBytes)) {
     throw new Error(`codex exact runtime auth JSON source changed during isolation: ${sourceAuth}`);
   }
   if (!readLockedRegularFile(sourceCache, "models cache").equals(cacheBytes)) {
     throw new Error(`codex exact runtime models cache source changed during isolation: ${sourceCache}`);
   }
+  if (!readLockedRegularFile(sourceModelCatalog, "model catalog").equals(modelCatalogBytes)) {
+    throw new Error(`codex exact runtime model catalog source changed during isolation: ${sourceModelCatalog}`);
+  }
+  const copiedCatalog = inspectImmutableModelCatalogSource(
+    targetModelCatalog,
+    modelEffort,
+    { label: "isolated model catalog" },
+  );
+  if (copiedCatalog.sha256 !== snapshot.model_catalog_sha256
+    || copiedCatalog.bytes !== snapshot.model_catalog_bytes) {
+    throw new Error("codex exact runtime isolated model catalog copy drift");
+  }
   assertExactModelEffortProfiles(target, modelEffort);
   return target;
+}
+
+export function verifyExactModelCatalogAuthority(
+  workspace,
+  contract,
+  { modelId } = {},
+) {
+  const { snapshot, modelEffort } = exactContractParts(assertExactContractShape(contract));
+  const source = inspectImmutableModelCatalogSource(snapshot.model_catalog_source_path, modelEffort);
+  const isolatedPath = join(isolatedCodexHome(workspace), "model_catalog.json");
+  const isolated = inspectImmutableModelCatalogSource(
+    isolatedPath,
+    modelEffort,
+    { label: "isolated model catalog" },
+  );
+  if (source.sha256 !== snapshot.model_catalog_sha256
+    || source.bytes !== snapshot.model_catalog_bytes
+    || isolated.sha256 !== snapshot.model_catalog_sha256
+    || isolated.bytes !== snapshot.model_catalog_bytes) {
+    throw new Error("codex exact runtime model catalog authority drift");
+  }
+  const selected = source.profiles.find((profile) => profile.model_id === modelId);
+  if (!selected) {
+    throw new Error(`codex exact runtime selected model catalog profile missing: ${modelId ?? "unknown"}`);
+  }
+  return {
+    schema_version: "0.1",
+    mode: "immutable-local-model-catalog-json",
+    config_key: "model_catalog_json",
+    source: {
+      path: source.path,
+      sha256: source.sha256,
+      bytes: source.bytes,
+      source_mode: "immutable-snapshot-only",
+    },
+    isolated_copy: {
+      path: isolated.path,
+      sha256: isolated.sha256,
+      bytes: isolated.bytes,
+      copy_mode: "isolated-regular-file",
+    },
+    selected_profile: selected,
+    verified_before_provider_execution: true,
+    mutable_fallback_allowed: false,
+  };
 }
 
 export function prepareIsolatedCodexHome(

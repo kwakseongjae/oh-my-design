@@ -40,6 +40,16 @@ function digest(value) {
   return createHash("sha256").update(value).digest("hex");
 }
 
+function canonicalJson(value) {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.keys(value).sort().map((key) => (
+      `${JSON.stringify(key)}:${canonicalJson(value[key])}`
+    )).join(",")}}`;
+  }
+  return JSON.stringify(value);
+}
+
 function controllerPlanFixture() {
   const workspace = mkdtempSync(join(tmpdir(), "omd-controller-plan-"));
   const product = "<!doctype html><title>sealed</title>\n";
@@ -331,6 +341,7 @@ describe("UI-Resolve prepared matrix execution", () => {
   });
 
   it("fails a complete effort block closed unless every routing check is exact", () => {
+    const workspace = "/tmp/omd-routing-attestation-cell";
     const matrixCell = {
       id: "cell",
       runtime: "codex",
@@ -356,6 +367,15 @@ describe("UI-Resolve prepared matrix execution", () => {
           supported_efforts: ["high"],
         }],
       },
+      codex_catalog_snapshot_contract: {
+        model_catalog_source_path: "/tmp/immutable/model_catalog.json",
+        model_catalog_sha256: "c".repeat(64),
+        model_catalog_bytes: 123,
+        model_catalog_source_mode: "immutable-snapshot-only",
+        model_catalog_mode: "isolated-copy-before-provider-execution",
+        model_catalog_role: "execution-model-authority",
+        mutable_model_catalog_fallback_allowed: false,
+      },
     };
     const run = {
       runtime: {
@@ -367,9 +387,34 @@ describe("UI-Resolve prepared matrix execution", () => {
           cache_sha256: "a".repeat(64),
           model_profile_sha256: "b".repeat(64),
         },
+        model_catalog_authority: {
+          schema_version: "0.1",
+          mode: "immutable-local-model-catalog-json",
+          config_key: "model_catalog_json",
+          source: {
+            path: "/tmp/immutable/model_catalog.json",
+            sha256: "c".repeat(64),
+            bytes: 123,
+            source_mode: "immutable-snapshot-only",
+          },
+          isolated_copy: {
+            path: join(workspace, ".benchmark", "codex-home", "model_catalog.json"),
+            sha256: "c".repeat(64),
+            bytes: 123,
+            copy_mode: "isolated-regular-file",
+          },
+          selected_profile: {
+            model_id: "gpt-5.6-luna",
+            model_profile_sha256: "b".repeat(64),
+            default_effort: "medium",
+            supported_efforts: ["high"],
+          },
+          verified_before_provider_execution: true,
+          mutable_fallback_allowed: false,
+        },
       },
     };
-    const attestation = buildCodexRoutingAttestation({ matrixCell, run, lockedPlan: plan });
+    const attestation = buildCodexRoutingAttestation({ workspace, matrixCell, run, lockedPlan: plan });
     const exact = {
       validity: "valid",
       attribution: {
@@ -378,33 +423,62 @@ describe("UI-Resolve prepared matrix execution", () => {
         },
       },
     };
-    expect(completeBlockRoutingStopReason(plan, exact, { matrixCell, run })).toBeNull();
+    expect(completeBlockRoutingStopReason(plan, exact, { workspace, matrixCell, run })).toBeNull();
     const drifted = structuredClone(exact);
     drifted.attribution.runtime.routing_attestation.checks.effort_requested_exact = false;
-    expect(completeBlockRoutingStopReason(plan, drifted, { matrixCell, run }))
+    expect(completeBlockRoutingStopReason(plan, drifted, { workspace, matrixCell, run }))
       .toBe("codex-effort-routing-attestation-failed");
     const extraKey = structuredClone(exact);
     extraKey.attribution.runtime.routing_attestation.checks.extra = true;
-    expect(completeBlockRoutingStopReason(plan, extraKey, { matrixCell, run }))
+    expect(completeBlockRoutingStopReason(plan, extraKey, { workspace, matrixCell, run }))
       .toBe("codex-effort-routing-attestation-failed");
     expect(completeBlockRoutingStopReason(
       plan,
       { ...exact, validity: "invalid-attribution" },
-      { matrixCell, run },
+      { workspace, matrixCell, run },
     ))
       .toBe("codex-effort-routing-attestation-failed");
     expect(completeBlockRoutingStopReason({}, {})).toBeNull();
   });
 
   it("binds complete-block execution to the preparation hash and one-cell checkpoints", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-exact-model-catalog-admission-"));
+    const profile = {
+      slug: "gpt-5.6-luna",
+      default_reasoning_level: "medium",
+      supported_reasoning_levels: ["low", "medium", "high", "xhigh", "max"]
+        .map((effort) => ({ effort, description: effort })),
+      tool_mode: "function",
+    };
+    const catalogPath = join(root, "model_catalog.json");
+    const catalogBytes = Buffer.from(`${JSON.stringify({ models: [profile] }, null, 2)}\n`);
+    writeFileSync(catalogPath, catalogBytes);
     const plan = {
       control_contract: { admission_normalization_policy: "complete-block-effort-scaling" },
-      codex_model_effort_contract: { cache_client_version: "0.147.0" },
+      codex_model_effort_contract: {
+        cache_client_version: "0.147.0",
+        models: [{
+          model_id: profile.slug,
+          model_profile_sha256: digest(canonicalJson(profile)),
+          default_effort: profile.default_reasoning_level,
+          supported_efforts: profile.supported_reasoning_levels.map((entry) => entry.effort),
+        }],
+      },
       codex_catalog_snapshot_contract: {
         cli_cache_client_version_policy: "require-exact-match",
         cli_cache_client_version_mismatch_justification: null,
         codex_cli: { version: "0.147.0" },
+        models_cache_role: "provenance-only-not-execution-authority",
+        models_cache_mode: "immutable-copy-before-provider-execution",
+        model_catalog_source_path: catalogPath,
+        model_catalog_sha256: digest(catalogBytes),
+        model_catalog_bytes: catalogBytes.length,
+        model_catalog_source_mode: "immutable-snapshot-only",
+        model_catalog_mode: "isolated-copy-before-provider-execution",
+        mutable_model_catalog_fallback_allowed: false,
+        model_catalog_role: "execution-model-authority",
       },
+      lock_manifest: { model_catalog_file_sha256: digest(catalogBytes) },
     };
     expect(validateCompleteBlockExecutionContract(
       plan,

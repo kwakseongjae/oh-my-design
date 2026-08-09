@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { existsSync, lstatSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { dirname, join, resolve } from "node:path";
+import { dirname, isAbsolute, join, resolve } from "node:path";
 import { parseArgs, readJson, sha256, writeJson } from "./_lib.mjs";
 
 const TOKEN_COMPONENTS = [
@@ -23,9 +23,28 @@ const ROUTING_CHECKS = [
   "provider_effort_argument_exact",
   "provider_route_accepted",
   "pinned_profile_supports_effort",
+  "model_catalog_authority_present",
+  "model_catalog_schema_version_exact",
+  "model_catalog_mode_exact",
+  "model_catalog_config_key_exact",
+  "model_catalog_source_path_exact",
+  "model_catalog_source_sha256_exact",
+  "model_catalog_source_bytes_exact",
+  "model_catalog_source_mode_exact",
+  "model_catalog_isolated_path_exact",
+  "model_catalog_isolated_sha256_exact",
+  "model_catalog_isolated_bytes_exact",
+  "model_catalog_copy_mode_exact",
+  "model_catalog_selected_model_exact",
+  "model_catalog_selected_profile_sha256_exact",
+  "model_catalog_selected_default_effort_exact",
+  "model_catalog_selected_effort_order_exact",
+  "model_catalog_selected_effort_supported",
+  "model_catalog_verified_before_provider_execution",
+  "model_catalog_mutable_fallback_forbidden",
 ];
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
-const SWEEP_RECORD_KIND = "codex-complete-block-effort-scaling-v1";
+const SWEEP_RECORD_KIND = "codex-complete-block-effort-scaling-v2";
 const INTERPRETATION_AUTHORITY_SOURCE = "separate-locked-artifacts-v1";
 const EXPECTED_MODEL_PROFILES = Object.freeze([
   Object.freeze({
@@ -51,6 +70,15 @@ function canonicalSha256(value) {
 
 function jsonEqual(left, right) {
   return JSON.stringify(left) === JSON.stringify(right);
+}
+
+function exactObjectKeys(value, expected) {
+  return Boolean(
+    value
+    && typeof value === "object"
+    && !Array.isArray(value)
+    && jsonEqual(Object.keys(value).sort(), [...expected].sort()),
+  );
 }
 
 function requiredString(value, label) {
@@ -196,6 +224,40 @@ function asContract(contract) {
     cache_fetched_at: value.cache_fetched_at ?? null,
     cache_client_version: value.cache_client_version ?? null,
   };
+}
+
+function validateModelCatalogSnapshot(plan, contract) {
+  const snapshot = plan?.codex_catalog_snapshot_contract;
+  if (!snapshot || typeof snapshot !== "object" || Array.isArray(snapshot)) {
+    throw new Error("complete-block effort sweep requires a locked local model catalog snapshot");
+  }
+  if (!isAbsolute(snapshot.model_catalog_source_path ?? "")) {
+    throw new Error("model catalog snapshot source path must be absolute");
+  }
+  requiredSha256(snapshot.model_catalog_sha256, "model catalog snapshot SHA");
+  if (!Number.isSafeInteger(snapshot.model_catalog_bytes) || snapshot.model_catalog_bytes < 1) {
+    throw new Error("model catalog snapshot bytes must be a positive safe integer");
+  }
+  if (snapshot.model_catalog_source_mode !== "immutable-snapshot-only"
+    || snapshot.model_catalog_mode !== "isolated-copy-before-provider-execution"
+    || snapshot.mutable_model_catalog_fallback_allowed !== false
+    || snapshot.model_catalog_role !== "execution-model-authority") {
+    throw new Error("model catalog snapshot execution authority contract is invalid");
+  }
+  if (snapshot.cli_cache_client_version_policy !== "require-exact-match"
+    || snapshot.cli_cache_client_version_mismatch_justification !== null
+    || snapshot.codex_cli?.version !== contract.cache_client_version) {
+    throw new Error("model catalog snapshot CLI/client authority is not exact");
+  }
+  if (plan.lock_manifest?.model_catalog_file_sha256 !== snapshot.model_catalog_sha256
+    || plan.lock_manifest?.codex_catalog_snapshot_contract_sha256
+      !== canonicalSha256(snapshot)) {
+    throw new Error("model catalog snapshot lock drift");
+  }
+  if (!isAbsolute(plan.output_root ?? "")) {
+    throw new Error("complete-block effort sweep output_root must be absolute");
+  }
+  return snapshot;
 }
 
 function validateCells(matrix) {
@@ -361,6 +423,7 @@ function validateExactPlanContract(plan, matrix, contract) {
     || !jsonEqual(plan.effort_sweep_contract.ordered_model_effort_pairs, expectedPairs)) {
     throw new Error("matrix model/effort authority is not the exact Luna5/Terra6/Sol6 block");
   }
+  const modelCatalogSnapshot = validateModelCatalogSnapshot(plan, contract);
 
   const taskContract = plan.task_lock_contract;
   if (!taskContract || !Array.isArray(taskContract.tasks) || taskContract.tasks.length !== 3) {
@@ -416,6 +479,7 @@ function validateExactPlanContract(plan, matrix, contract) {
     skillContractSha256,
     taskSetSha256,
     scheduleSha256,
+    modelCatalogSnapshot,
   };
 }
 
@@ -606,6 +670,8 @@ function interpretationGate({
   let exactSweepLocks = 0;
   let declaredPassingRoutingAttestations = 0;
   let exactRoutingAttestations = 0;
+  let observedModelCatalogAuthorities = 0;
+  let exactModelCatalogAuthorities = 0;
   for (const cell of matrix.cells) {
     const record = indexed.recordFor(cell);
     if (!record) continue;
@@ -630,7 +696,13 @@ function interpretationGate({
     if (record?.attribution?.runtime?.routing_attestation?.pass === true) {
       declaredPassingRoutingAttestations += 1;
     }
-    if (recomputeRoutingAttestation(cell, record, profile, contract)) {
+    if (record?.attribution?.runtime?.model_catalog_authority != null) {
+      observedModelCatalogAuthorities += 1;
+    }
+    if (recomputeModelCatalogAuthority(cell, record, profile, plan, planAuthority)) {
+      exactModelCatalogAuthorities += 1;
+    }
+    if (recomputeRoutingAttestation(cell, record, profile, contract, plan, planAuthority)) {
       exactRoutingAttestations += 1;
     }
   }
@@ -644,6 +716,8 @@ function interpretationGate({
   if (exactSweepLocks !== expected) reasons.push("not-all-record-sweep-locks-exact");
   if (declaredPassingRoutingAttestations !== expected) reasons.push("not-all-routing-attestations-declare-pass");
   if (exactRoutingAttestations !== expected) reasons.push("not-all-routing-attestations-exact");
+  if (observedModelCatalogAuthorities !== expected) reasons.push("not-all-model-catalog-authorities-present");
+  if (exactModelCatalogAuthorities !== expected) reasons.push("not-all-model-catalog-authorities-exact");
   return {
     interpretation_allowed: reasons.length === 0,
     required_terminal_exact_records: 51,
@@ -657,6 +731,8 @@ function interpretationGate({
     exact_sweep_lock_records: exactSweepLocks,
     declared_passing_routing_attestation_records: declaredPassingRoutingAttestations,
     exact_routing_attestation_records: exactRoutingAttestations,
+    observed_model_catalog_authority_records: observedModelCatalogAuthorities,
+    exact_model_catalog_authority_records: exactModelCatalogAuthorities,
     execution_state: {
       status: executionState.status ?? null,
       scheduled_cells: executionState.scheduled_cells ?? null,
@@ -685,13 +761,58 @@ function tokenComponents(record) {
   }));
 }
 
-function recomputeRoutingAttestation(cell, record, profile, contract) {
+function recomputeModelCatalogAuthority(cell, record, profile, plan, planAuthority) {
+  const authority = record?.attribution?.runtime?.model_catalog_authority;
+  const snapshot = planAuthority?.modelCatalogSnapshot;
+  if (!authority || !profile || !snapshot) return false;
+  const expectedIsolatedPath = join(
+    resolve(plan.output_root),
+    cell.id,
+    ".benchmark",
+    "codex-home",
+    "model_catalog.json",
+  );
+  return Boolean(
+    exactObjectKeys(authority, [
+      "schema_version", "mode", "config_key", "source", "isolated_copy",
+      "selected_profile", "verified_before_provider_execution", "mutable_fallback_allowed",
+    ])
+    && authority.schema_version === "0.1"
+    && authority.mode === "immutable-local-model-catalog-json"
+    && authority.config_key === "model_catalog_json"
+    && exactObjectKeys(authority.source, ["path", "sha256", "bytes", "source_mode"])
+    && authority.source.path === snapshot.model_catalog_source_path
+    && authority.source.sha256 === snapshot.model_catalog_sha256
+    && authority.source.bytes === snapshot.model_catalog_bytes
+    && authority.source.source_mode === snapshot.model_catalog_source_mode
+    && authority.source.source_mode === "immutable-snapshot-only"
+    && exactObjectKeys(authority.isolated_copy, ["path", "sha256", "bytes", "copy_mode"])
+    && authority.isolated_copy.path === expectedIsolatedPath
+    && authority.isolated_copy.sha256 === snapshot.model_catalog_sha256
+    && authority.isolated_copy.bytes === snapshot.model_catalog_bytes
+    && authority.isolated_copy.copy_mode === "isolated-regular-file"
+    && exactObjectKeys(authority.selected_profile, [
+      "model_id", "model_profile_sha256", "default_effort", "supported_efforts",
+    ])
+    && authority.selected_profile.model_id === cell.model_id
+    && authority.selected_profile.model_profile_sha256 === profile.model_profile_sha256
+    && authority.selected_profile.default_effort === profile.default_effort
+    && jsonEqual(authority.selected_profile.supported_efforts, profile.supported_efforts)
+    && authority.selected_profile.supported_efforts.includes(cell.effort)
+    && authority.verified_before_provider_execution === true
+    && authority.mutable_fallback_allowed === false
+    && snapshot.mutable_model_catalog_fallback_allowed === false
+  );
+}
+
+function recomputeRoutingAttestation(cell, record, profile, contract, plan, planAuthority) {
   const runtime = record?.attribution?.runtime;
   const attestation = runtime?.routing_attestation;
   if (!attestation || !profile) return false;
   const pinnedProfile = attestation.pinned_profile;
   return Boolean(
-    attestation.schema_version === "0.1"
+    record.record_kind === SWEEP_RECORD_KIND
+    && attestation.schema_version === "0.2"
     && attestation.pass === true
     && attestation.runtime === "codex"
     && attestation.model_id === cell.model_id
@@ -709,13 +830,25 @@ function recomputeRoutingAttestation(cell, record, profile, contract) {
     && Array.isArray(pinnedProfile.supported_efforts)
     && JSON.stringify(pinnedProfile.supported_efforts) === JSON.stringify(profile.supported_efforts)
     && pinnedProfile.supported_efforts.includes(cell.effort)
+    && recomputeModelCatalogAuthority(cell, record, profile, plan, planAuthority)
   );
 }
 
-function evidenceFor(cell, record, locks, profile, contract) {
+function evidenceFor(cell, record, locks, profile, contract, plan, planAuthority) {
   const runtime = record?.attribution?.runtime ?? {};
   const routingAttestation = runtime.routing_attestation ?? null;
-  const recomputedRoutingPass = recomputeRoutingAttestation(cell, record, profile, contract);
+  const modelCatalogAuthority = runtime.model_catalog_authority ?? null;
+  const recomputedModelCatalogAuthority = record
+    ? recomputeModelCatalogAuthority(cell, record, profile, plan, planAuthority)
+    : null;
+  const recomputedRoutingPass = recomputeRoutingAttestation(
+    cell,
+    record,
+    profile,
+    contract,
+    plan,
+    planAuthority,
+  );
   const modelConfigMatch = record
     ? record.model_id === cell.model_id && runtime.model_requested === cell.model_id
     : null;
@@ -743,6 +876,7 @@ function evidenceFor(cell, record, locks, profile, contract) {
       provider_effort_argument: runtime.provider_effort_argument ?? null,
       public_model_attribution_eligible: publicEligible,
       routing_attestation: routingAttestation,
+      model_catalog_authority: modelCatalogAuthority,
       experiment_id: record.experiment_id ?? null,
       task_set_sha256: record.task_set_sha256 ?? null,
       matrix_sha256: record.matrix_sha256 ?? null,
@@ -761,6 +895,7 @@ function evidenceFor(cell, record, locks, profile, contract) {
       ? null
       : recomputedRoutingPass,
     routing_attestation_declared_pass: routingAttestation?.pass ?? null,
+    exact_model_catalog_authority: recomputedModelCatalogAuthority,
     exact_effort_config_match: record
       ? recordEffort(record) === cell.effort && runtime.effort_requested === cell.effort
       : null,
@@ -773,7 +908,7 @@ function evidenceFor(cell, record, locks, profile, contract) {
   };
 }
 
-function taskResult(cell, record, locks, profile, contract) {
+function taskResult(cell, record, locks, profile, contract, plan, planAuthority) {
   return {
     task_id: cell.task_id,
     cell_id: cell.id,
@@ -789,7 +924,15 @@ function taskResult(cell, record, locks, profile, contract) {
     proof: record?.runtime_diagnostics?.proof_trace ?? null,
     wall_time_ms: record?.wall_time_ms ?? null,
     token_components: tokenComponents(record),
-    configuration_evidence: evidenceFor(cell, record, locks, profile, contract),
+    configuration_evidence: evidenceFor(
+      cell,
+      record,
+      locks,
+      profile,
+      contract,
+      plan,
+      planAuthority,
+    ),
   };
 }
 
@@ -813,9 +956,26 @@ function rawCoverage(results, valueFor) {
   };
 }
 
-function summarizeGroup(cells, recordFor, profile, locks, contract, interpretationAllowed) {
+function summarizeGroup(
+  cells,
+  recordFor,
+  profile,
+  locks,
+  contract,
+  plan,
+  planAuthority,
+  interpretationAllowed,
+) {
   const orderedCells = [...cells].sort((left, right) => left.task_id.localeCompare(right.task_id));
-  const results = orderedCells.map((cell) => taskResult(cell, recordFor(cell), locks, profile, contract));
+  const results = orderedCells.map((cell) => taskResult(
+    cell,
+    recordFor(cell),
+    locks,
+    profile,
+    contract,
+    plan,
+    planAuthority,
+  ));
   const records = orderedCells.map((cell) => recordFor(cell)).filter(Boolean);
   const valid = records.filter((record) => record.validity === "valid");
   const resolved = results.filter((result) => result.ui_resolved === true).length;
@@ -839,6 +999,9 @@ function summarizeGroup(cells, recordFor, profile, locks, contract, interpretati
   ).length;
   const passingRoutingAttestations = results.filter(
     (result) => result.configuration_evidence.exact_passing_routing_attestation === true,
+  ).length;
+  const exactModelCatalogAuthorities = results.filter(
+    (result) => result.configuration_evidence.exact_model_catalog_authority === true,
   ).length;
   const summary = {
     model_id: cells[0].model_id,
@@ -872,6 +1035,9 @@ function summarizeGroup(cells, recordFor, profile, locks, contract, interpretati
       routing_attestation_records: routingAttestations,
       exact_passing_routing_attestation_records: passingRoutingAttestations,
       complete_exact_passing_routing_attestation: records.length === 3 && passingRoutingAttestations === 3,
+      exact_model_catalog_authority_records: exactModelCatalogAuthorities,
+      complete_exact_model_catalog_authority:
+        records.length === 3 && exactModelCatalogAuthorities === 3,
       attribution_scope: records.length === 0
         ? null
         : publiclyEligible === records.length && providerObservedModelMatches === records.length
@@ -1016,6 +1182,8 @@ export function aggregateCodexEffortSweep(input) {
       contract.profiles.get(cells[0].model_id),
       locks,
       contract,
+      input.matrix,
+      planAuthority,
       gate.interpretation_allowed,
     )
   ));
@@ -1092,6 +1260,15 @@ export function aggregateCodexEffortSweep(input) {
       cache_sha256: contract.cache_sha256,
       cache_fetched_at: contract.cache_fetched_at,
       cache_client_version: contract.cache_client_version,
+      execution_model_authority: {
+        mode: "immutable-local-model-catalog-json",
+        config_key: "model_catalog_json",
+        source_path: planAuthority.modelCatalogSnapshot.model_catalog_source_path,
+        sha256: planAuthority.modelCatalogSnapshot.model_catalog_sha256,
+        bytes: planAuthority.modelCatalogSnapshot.model_catalog_bytes,
+        mutable_fallback_allowed:
+          planAuthority.modelCatalogSnapshot.mutable_model_catalog_fallback_allowed,
+      },
     },
     sweep_metadata_evidence: indexed.metadataEvidence,
     dispatch_compatibility: dispatchCompatibility,

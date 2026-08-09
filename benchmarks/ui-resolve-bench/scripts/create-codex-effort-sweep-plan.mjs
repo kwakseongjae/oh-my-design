@@ -28,6 +28,7 @@ import {
   validateOmdReflowBaselineEvidence,
   validateTaskContract,
 } from "./task-contract.mjs";
+import { inspectImmutableModelCatalogSource } from "./codex-browser-sandbox-contract.mjs";
 
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
 const COMMIT_PATTERN = /^[a-f0-9]{40,64}$/;
@@ -369,6 +370,43 @@ function assertExactCatalogContract(lock) {
   return contract;
 }
 
+function assertExactModelCatalogAuthorityContract(lock, effortContract) {
+  const authority = lock.codex_model_catalog_authority_contract;
+  if (!authority || typeof authority !== "object" || Array.isArray(authority)) {
+    throw new Error("catalog lock codex_model_catalog_authority_contract is required");
+  }
+  const sourcePath = requireAbsolutePath(
+    authority.source?.path,
+    "catalog model catalog source path",
+  );
+  const sourceSha256 = requireSha256(
+    authority.source?.sha256,
+    "catalog model catalog source SHA-256",
+  );
+  if (!Number.isSafeInteger(authority.source?.bytes) || authority.source.bytes < 1) {
+    throw new Error("catalog model catalog source bytes must be positive");
+  }
+  if (authority.schema_version !== "0.1"
+    || authority.config_key !== "model_catalog_json"
+    || authority.source.source_mode !== "immutable-snapshot-only"
+    || authority.mode !== "isolated-copy-before-provider-execution"
+    || authority.role !== "execution-model-authority"
+    || authority.models_cache_role !== "provenance-only-not-execution-authority"
+    || authority.mutable_fallback_allowed !== false
+    || authority.derived_from_cache_sha256 !== effortContract.cache_sha256
+    || JSON.stringify(authority.models) !== JSON.stringify(effortContract.models)) {
+    throw new Error("catalog lock immutable model catalog authority contract drift");
+  }
+  return {
+    ...structuredClone(authority),
+    source: {
+      ...structuredClone(authority.source),
+      path: sourcePath,
+      sha256: sourceSha256,
+    },
+  };
+}
+
 function readCatalogLock(path) {
   const absolute = resolve(path);
   if (!existsSync(absolute) || !statSync(absolute).isFile()) {
@@ -382,11 +420,13 @@ function readCatalogLock(path) {
     throw new Error(`catalog lock must be valid JSON: ${absolute}`);
   }
   const contract = assertExactCatalogContract(lock);
+  const modelCatalogAuthority = assertExactModelCatalogAuthorityContract(lock, contract);
   return {
     absolute,
     ref: sourceRef(absolute),
     file_sha256: sha256(bytes),
     contract: structuredClone(contract),
+    model_catalog_authority: modelCatalogAuthority,
     lock,
   };
 }
@@ -727,6 +767,7 @@ function lockManifest({
   objectiveEvaluator,
   browserContract,
   catalog,
+  modelCatalog,
   controllerContract,
 }) {
   return {
@@ -737,6 +778,7 @@ function lockManifest({
     objective_evaluator_contract_sha256: canonicalSha256(objectiveEvaluator),
     browser_execution_contract_sha256: canonicalSha256(browserContract),
     catalog_lock_file_sha256: catalog.file_sha256,
+    model_catalog_file_sha256: modelCatalog.sha256,
     codex_model_effort_contract_sha256: canonicalSha256(catalog.contract),
     controller_pre_edit_plan_contract_sha256: canonicalSha256(controllerContract),
   };
@@ -759,6 +801,7 @@ export function createCodexEffortSweepPlan({
   catalogAuthSourceHome,
   catalogAuthJsonSourcePath,
   modelsCacheSourcePath,
+  modelCatalogSourcePath,
   codexCliExecutablePath,
   codexCliNativeExecutablePath,
   codexCliVersion,
@@ -780,14 +823,30 @@ export function createCodexEffortSweepPlan({
     "catalogAuthJsonSourcePath",
   );
   const authJsonSourcePath = authSnapshot.path;
-  const authRelativePath = relative(authSourceHome, authJsonSourcePath);
-  if (!authRelativePath || authRelativePath.startsWith("../") || isAbsolute(authRelativePath)) {
-    throw new Error("catalogAuthJsonSourcePath must be inside catalogAuthSourceHome");
+  if (authJsonSourcePath !== join(authSourceHome, "auth.json")) {
+    throw new Error("catalogAuthJsonSourcePath must be catalogAuthSourceHome/auth.json");
   }
   const exactModelsCacheSourcePath = requireAbsolutePath(
     modelsCacheSourcePath,
     "modelsCacheSourcePath",
   );
+  if (exactModelsCacheSourcePath !== join(authSourceHome, "models_cache.json")) {
+    throw new Error("modelsCacheSourcePath must be catalogAuthSourceHome/models_cache.json");
+  }
+  const modelsCacheSnapshot = immutableRegularFileSnapshot(
+    exactModelsCacheSourcePath,
+    "modelsCacheSourcePath",
+  );
+  const exactModelCatalogSourcePath = requireAbsolutePath(
+    modelCatalogSourcePath,
+    "modelCatalogSourcePath",
+  );
+  const modelCatalogRelativePath = relative(authSourceHome, exactModelCatalogSourcePath);
+  if (!modelCatalogRelativePath || modelCatalogRelativePath === ".."
+    || modelCatalogRelativePath.startsWith(`..${sep}`)
+    || isAbsolute(modelCatalogRelativePath)) {
+    throw new Error("modelCatalogSourcePath must be inside catalogAuthSourceHome");
+  }
   const exactCodexCliExecutablePath = requireAbsolutePath(
     codexCliExecutablePath,
     "codexCliExecutablePath",
@@ -813,8 +872,20 @@ export function createCodexEffortSweepPlan({
   if (!/^[a-z0-9][a-z0-9-]*$/.test(systemId)) throw new Error("systemId must be kebab-case");
 
   const catalog = readCatalogLock(catalogLockPath);
+  if (modelsCacheSnapshot.sha256 !== catalog.contract.cache_sha256) {
+    throw new Error("complete-block effort scaling models cache source SHA drift");
+  }
   if (codexCliVersion !== catalog.contract.cache_client_version) {
     throw new Error("complete-block effort scaling requires exact CLI/cache client version match");
+  }
+  const modelCatalog = inspectImmutableModelCatalogSource(
+    exactModelCatalogSourcePath,
+    catalog.contract,
+  );
+  if (catalog.model_catalog_authority.source.path !== exactModelCatalogSourcePath
+    || catalog.model_catalog_authority.source.sha256 !== modelCatalog.sha256
+    || catalog.model_catalog_authority.source.bytes !== modelCatalog.bytes) {
+    throw new Error("complete-block effort scaling model catalog source authority drift");
   }
   const orderedPairs = orderedCatalogPairs(catalog.contract);
   const taskSource = lockTaskSet(tasksRoot, taskSourceCommit);
@@ -846,6 +917,7 @@ export function createCodexEffortSweepPlan({
     objectiveEvaluator,
     browserContract,
     catalog,
+    modelCatalog,
     controllerContract,
   });
   const catalogSnapshotContract = {
@@ -861,9 +933,18 @@ export function createCodexEffortSweepPlan({
     mutable_auth_fallback_allowed: false,
     models_cache_source_path: exactModelsCacheSourcePath,
     models_cache_sha256: catalog.contract.cache_sha256,
+    models_cache_bytes: modelsCacheSnapshot.bytes,
     models_cache_source_mode: "immutable-snapshot-only",
     models_cache_mode: "immutable-copy-before-provider-execution",
     mutable_models_cache_fallback_allowed: false,
+    models_cache_role: "provenance-only-not-execution-authority",
+    model_catalog_source_path: exactModelCatalogSourcePath,
+    model_catalog_sha256: modelCatalog.sha256,
+    model_catalog_bytes: modelCatalog.bytes,
+    model_catalog_source_mode: "immutable-snapshot-only",
+    model_catalog_mode: "isolated-copy-before-provider-execution",
+    mutable_model_catalog_fallback_allowed: false,
+    model_catalog_role: "execution-model-authority",
     codex_cli: {
       executable_path: exactCodexCliExecutablePath,
       native_executable_path: exactCodexCliNativeExecutablePath,
@@ -1137,10 +1218,28 @@ export function validateGeneratedCodexEffortSweepPlan(plan) {
   }
   const snapshot = plan.codex_catalog_snapshot_contract;
   let observedAuthSnapshot = null;
+  let observedCacheSnapshot = null;
+  let observedModelCatalog = null;
   try {
     observedAuthSnapshot = immutableRegularFileSnapshot(
       snapshot?.auth_json_source_path,
       "codex catalog auth_json_source_path",
+    );
+  } catch {
+    throw new Error("generated effort sweep exact Codex catalog/auth/CLI runtime binding drift");
+  }
+  try {
+    observedCacheSnapshot = immutableRegularFileSnapshot(
+      snapshot?.models_cache_source_path,
+      "codex catalog models_cache_source_path",
+    );
+  } catch {
+    throw new Error("generated effort sweep exact Codex catalog/auth/CLI runtime binding drift");
+  }
+  try {
+    observedModelCatalog = inspectImmutableModelCatalogSource(
+      snapshot?.model_catalog_source_path,
+      plan.codex_model_effort_contract,
     );
   } catch {
     throw new Error("generated effort sweep exact Codex catalog/auth/CLI runtime binding drift");
@@ -1150,7 +1249,16 @@ export function validateGeneratedCodexEffortSweepPlan(plan) {
   const cacheClientPolicyValid = snapshot?.cli_cache_client_version_policy === "require-exact-match"
     && cliCacheVersionsMatch
     && snapshot.cli_cache_client_version_mismatch_justification === null;
+  const snapshotSourceHome = isAbsolute(snapshot?.auth_source_home ?? "")
+    ? resolve(snapshot.auth_source_home)
+    : null;
+  const snapshotCatalogRelative = snapshotSourceHome
+    && isAbsolute(snapshot?.model_catalog_source_path ?? "")
+    ? relative(snapshotSourceHome, resolve(snapshot.model_catalog_source_path))
+    : null;
   if (snapshot?.enforcement_mode !== "exact-runtime-per-invocation"
+    || !snapshotSourceHome
+    || resolve(snapshot.auth_json_source_path) !== join(snapshotSourceHome, "auth.json")
     || !isAbsolute(snapshot.auth_json_source_path ?? "")
     || snapshot.auth_json_source_mode !== "immutable-snapshot-only"
     || !SHA256_PATTERN.test(snapshot.auth_json_sha256 ?? "")
@@ -1160,9 +1268,25 @@ export function validateGeneratedCodexEffortSweepPlan(plan) {
     || observedAuthSnapshot.sha256 !== snapshot.auth_json_sha256
     || observedAuthSnapshot.bytes !== snapshot.auth_json_bytes
     || !isAbsolute(snapshot.models_cache_source_path ?? "")
+    || resolve(snapshot.models_cache_source_path) !== join(snapshotSourceHome, "models_cache.json")
     || snapshot.models_cache_sha256 !== plan.codex_model_effort_contract.cache_sha256
+    || !Number.isInteger(snapshot.models_cache_bytes) || snapshot.models_cache_bytes < 1
+    || observedCacheSnapshot.sha256 !== snapshot.models_cache_sha256
+    || observedCacheSnapshot.bytes !== snapshot.models_cache_bytes
     || snapshot.models_cache_source_mode !== "immutable-snapshot-only"
+    || snapshot.models_cache_mode !== "immutable-copy-before-provider-execution"
     || snapshot.mutable_models_cache_fallback_allowed !== false
+    || snapshot.models_cache_role !== "provenance-only-not-execution-authority"
+    || !isAbsolute(snapshot.model_catalog_source_path ?? "")
+    || !snapshotCatalogRelative || snapshotCatalogRelative === ".."
+    || snapshotCatalogRelative.startsWith(`..${sep}`)
+    || isAbsolute(snapshotCatalogRelative)
+    || snapshot.model_catalog_source_mode !== "immutable-snapshot-only"
+    || snapshot.model_catalog_mode !== "isolated-copy-before-provider-execution"
+    || snapshot.mutable_model_catalog_fallback_allowed !== false
+    || snapshot.model_catalog_role !== "execution-model-authority"
+    || observedModelCatalog.sha256 !== snapshot.model_catalog_sha256
+    || observedModelCatalog.bytes !== snapshot.model_catalog_bytes
     || !isAbsolute(snapshot.codex_cli?.executable_path ?? "")
     || !isAbsolute(snapshot.codex_cli?.native_executable_path ?? "")
     || typeof snapshot.codex_cli?.version !== "string" || !snapshot.codex_cli.version
@@ -1200,6 +1324,10 @@ export function validateGeneratedCodexEffortSweepPlan(plan) {
     !== plan.lock_manifest.catalog_lock_file_sha256) {
     throw new Error("generated effort sweep catalog lock SHA drift");
   }
+  if (plan.codex_catalog_snapshot_contract.model_catalog_sha256
+    !== plan.lock_manifest.model_catalog_file_sha256) {
+    throw new Error("generated effort sweep model catalog lock SHA drift");
+  }
   return plan;
 }
 
@@ -1220,6 +1348,7 @@ This is a complete-block, descriptive effort-scaling run for the exact OmD porta
 - Schedule: exact interleaved three-wave rotation \`0,+6,+12\`; every pair receives tasks A, B, and C exactly once.
 - Browser: attach only to \`${plan.browser_execution_contract.connection_name}\` on the controller-started exact local CDP socket; browser launch is forbidden.
 - Auth: copy only the immutable regular-file snapshot \`${plan.codex_catalog_snapshot_contract.auth_json_sha256}\` into each cell's isolated \`CODEX_HOME\`; mutable auth and symlink fallback are forbidden.
+- Model authority: pass only the byte-locked local \`model_catalog_json\` snapshot \`${plan.codex_catalog_snapshot_contract.model_catalog_sha256}\`; the cache remains provenance only and TTL refresh cannot select a model profile.
 - Controller plan: one provider-zero shipped-runner measured plan must exist before product editing.
 - Provider/model/browser/network/Cursor/Claude calls made by this generator: 0/0/0/0/0/0.
 - Exposure boundary: only this generator invocation is evidenced provider-zero; historical task exposure is unknown and is not asserted.
@@ -1232,6 +1361,7 @@ Locks:
 - task set: \`${plan.effort_sweep_contract.task_set_sha256}\`
 - schedule: \`${plan.effort_sweep_contract.schedule_sha256}\`
 - catalog file: \`${plan.lock_manifest.catalog_lock_file_sha256}\`
+- local model catalog: \`${plan.lock_manifest.model_catalog_file_sha256}\`
 - skill/source: \`${plan.lock_manifest.skill_source_contract_sha256}\`
 - evaluator: \`${plan.lock_manifest.objective_evaluator_contract_sha256}\`
 - browser: \`${plan.lock_manifest.browser_execution_contract_sha256}\`
@@ -1317,6 +1447,7 @@ function main(argv = process.argv.slice(2)) {
     catalogAuthSourceHome: requiredArg(args, "catalog-auth-home"),
     catalogAuthJsonSourcePath: requiredArg(args, "catalog-auth-json-source"),
     modelsCacheSourcePath: requiredArg(args, "models-cache-source"),
+    modelCatalogSourcePath: requiredArg(args, "model-catalog-source"),
     codexCliExecutablePath: requiredArg(args, "codex-cli-executable"),
     codexCliNativeExecutablePath: requiredArg(args, "codex-cli-native-executable"),
     codexCliVersion: requiredArg(args, "codex-cli-version"),
