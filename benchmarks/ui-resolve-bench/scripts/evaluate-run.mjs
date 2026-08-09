@@ -700,6 +700,42 @@ export function evaluateDesignObservation(observation, oracle = {}) {
   };
 }
 
+export function isNavigationExecutionContextError(error) {
+  const message = error instanceof Error ? error.message : String(error ?? "");
+  return /execution context was destroyed/i.test(message) && /navigation/i.test(message);
+}
+
+export function evaluateEntryIdentityObservation(viewports, expectedCount = null) {
+  const observations = Array.isArray(viewports)
+    ? viewports.map((viewport) => viewport?.entry_identity)
+    : [];
+  const observationsComplete =
+    observations.length > 0 &&
+    (expectedCount === null || observations.length === expectedCount) &&
+    observations.every((observation) =>
+      typeof observation?.initial_url === "string" &&
+      typeof observation?.final_url === "string" &&
+      Array.isArray(observation?.post_initial_main_frame_navigation_requests) &&
+      Array.isArray(observation?.post_initial_main_frame_navigation_commits) &&
+      Object.hasOwn(observation ?? {}, "behavior_error"));
+  return {
+    observations_complete: observationsComplete,
+    final_url_exact:
+      observationsComplete &&
+      observations.every((observation) => observation.final_url === observation.initial_url),
+    no_post_initial_navigation_requests:
+      observationsComplete &&
+      observations.every((observation) =>
+        observation.post_initial_main_frame_navigation_requests.length === 0),
+    no_post_initial_navigation_commits:
+      observationsComplete &&
+      observations.every((observation) =>
+        observation.post_initial_main_frame_navigation_commits.length === 0),
+    behavior_execution_stable:
+      observationsComplete && observations.every((observation) => observation.behavior_error === null),
+  };
+}
+
 const everyCheckPass = (checks) =>
   Boolean(checks) && Object.values(checks).length > 0 && Object.values(checks).every((value) => value === true);
 
@@ -790,6 +826,16 @@ async function main() {
   await new Promise((resolveListen) => server.listen(0, "127.0.0.1", resolveListen));
   const address = server.address();
   const origin = `http://127.0.0.1:${address.port}`;
+  const entryIdentityUrl = (value) => {
+    try {
+      const url = new URL(value);
+      return url.origin === origin
+        ? `${url.pathname}${url.search}${url.hash}`
+        : url.href;
+    } catch {
+      return String(value);
+    }
+  };
 
   const browser = await chromium.launch({
     executablePath: chromeExecutable(),
@@ -821,9 +867,31 @@ async function main() {
       }
       const page = await context.newPage();
       const consoleErrors = [];
+      const pageErrors = [];
       const externalRequests = [];
+      const postInitialNavigationRequests = [];
+      const postInitialNavigationCommits = [];
+      let initialLoadComplete = false;
       page.on("console", (message) => {
         if (message.type() === "error") consoleErrors.push(message.text());
+      });
+      page.on("pageerror", (error) => {
+        pageErrors.push({
+          name: error?.name ?? "Error",
+          message: error?.message ?? String(error),
+        });
+      });
+      page.on("request", (request) => {
+        if (!initialLoadComplete || !request.isNavigationRequest() || request.frame() !== page.mainFrame()) return;
+        postInitialNavigationRequests.push({
+          url: entryIdentityUrl(request.url()),
+          method: request.method(),
+          resource_type: request.resourceType(),
+        });
+      });
+      page.on("framenavigated", (frame) => {
+        if (!initialLoadComplete || frame !== page.mainFrame()) return;
+        postInitialNavigationCommits.push({ url: entryIdentityUrl(frame.url()) });
       });
       await page.route("**/*", async (route) => {
         const url = new URL(route.request().url());
@@ -835,6 +903,8 @@ async function main() {
         await route.continue();
       });
       await page.goto(origin, { waitUntil: "load" });
+      const initialEntryUrl = entryIdentityUrl(page.url());
+      initialLoadComplete = true;
       await page.emulateMedia({ reducedMotion: "reduce", colorScheme: "light" });
       if (viewport.zoom) {
         await page.evaluate((zoom) => { document.documentElement.style.zoom = String(zoom); }, viewport.zoom);
@@ -1104,20 +1174,65 @@ async function main() {
         if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
       });
       await page.screenshot({ path: join(screenshotsDir, `${viewport.name}.png`), fullPage: true });
-      viewportResults.push({
-        name: viewport.name,
-        width: viewport.width,
-        height: viewport.height,
-        zoom: viewport.zoom ?? 1,
-        ...snapshot,
-        axe,
-        keyboard,
-        console_errors: consoleErrors,
-        external_requests: externalRequests,
-      });
+      let behaviorExecutionError = null;
 
       if (viewport.name === "desktop") {
-        if (behaviorAdapter === "pricing-v1") behavior = await page.evaluate(async () => {
+        semantics = snapshot;
+        design = await page.evaluate((selectors) => {
+          const primary = document.querySelector(selectors.primary_action);
+          const plan = document.querySelector(selectors.card);
+          const display = document.querySelector(selectors.display);
+          return {
+            page_background: getComputedStyle(document.body).backgroundColor,
+            primary_action: primary ? getComputedStyle(primary).backgroundColor : null,
+            card_radius_px: plan ? parseFloat(getComputedStyle(plan).borderRadius) : null,
+            control_radius_px: primary ? parseFloat(getComputedStyle(primary).borderRadius) : null,
+            body_font: getComputedStyle(document.body).fontFamily,
+            display_font: display ? getComputedStyle(display).fontFamily : null,
+          };
+        }, task.design_oracle.selectors ?? {
+          primary_action: '[data-bench="signup-form"] button[type="submit"], .button.primary, [data-primary-action]',
+          card: ".plan",
+          display: "h1",
+        });
+        evidenceSources = await page.evaluate(() => {
+          const sources = [];
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+            acceptNode(node) {
+              const parent = node.parentElement;
+              if (!parent || parent.closest("script, style, template, noscript")) return NodeFilter.FILTER_REJECT;
+              return node.textContent.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+            },
+          });
+          while (walker.nextNode()) {
+            const parent = walker.currentNode.parentElement;
+            sources.push({
+              source: `text:${parent.tagName.toLowerCase()}${parent.id ? `#${parent.id}` : ""}`,
+              text: walker.currentNode.textContent.trim(),
+            });
+          }
+          for (const element of document.querySelectorAll("[aria-label], [title], [alt], [placeholder]")) {
+            for (const attribute of ["aria-label", "title", "alt", "placeholder"]) {
+              const text = element.getAttribute(attribute)?.trim();
+              if (text) sources.push({ source: `${attribute}:${element.tagName.toLowerCase()}`, text });
+            }
+          }
+          sources.push({ source: "document:title", text: document.title });
+          for (const meta of document.querySelectorAll('meta[name="description"], meta[property="og:title"], meta[property="og:description"]')) {
+            if (meta.content.trim()) sources.push({ source: `meta:${meta.getAttribute("name") ?? meta.getAttribute("property")}`, text: meta.content.trim() });
+          }
+          return sources;
+        });
+        unsupportedStructures = await page.evaluate((selectors) => selectors.flatMap((selector) =>
+          [...document.querySelectorAll(selector)].map((element) => ({
+            selector,
+            tag: element.tagName.toLowerCase(),
+            excerpt: (element.textContent || element.getAttribute("aria-label") || "").replace(/\s+/g, " ").trim().slice(0, 160),
+          })),
+        ), task.protected_unknown_selectors);
+
+        try {
+          if (behaviorAdapter === "pricing-v1") behavior = await page.evaluate(async () => {
           const visible = (element) => {
             const style = getComputedStyle(element);
             const rect = element.getBoundingClientRect();
@@ -1512,62 +1627,37 @@ async function main() {
           result.restored = state();
           return result;
         }, task.journey_oracle);
-        else throw new Error(`unsupported behavior adapter: ${behaviorAdapter}`);
-
-        semantics = snapshot;
-        design = await page.evaluate((selectors) => {
-          const primary = document.querySelector(selectors.primary_action);
-          const plan = document.querySelector(selectors.card);
-          const display = document.querySelector(selectors.display);
-          return {
-            page_background: getComputedStyle(document.body).backgroundColor,
-            primary_action: primary ? getComputedStyle(primary).backgroundColor : null,
-            card_radius_px: plan ? parseFloat(getComputedStyle(plan).borderRadius) : null,
-            control_radius_px: primary ? parseFloat(getComputedStyle(primary).borderRadius) : null,
-            body_font: getComputedStyle(document.body).fontFamily,
-            display_font: display ? getComputedStyle(display).fontFamily : null,
+          else throw new Error(`unsupported behavior adapter: ${behaviorAdapter}`);
+        } catch (error) {
+          if (!isNavigationExecutionContextError(error)) throw error;
+          behavior = null;
+          behaviorExecutionError = {
+            kind: "navigation-execution-context-destroyed",
+            name: error instanceof Error ? error.name : "Error",
+            message: error instanceof Error ? error.message : String(error),
           };
-        }, task.design_oracle.selectors ?? {
-          primary_action: '[data-bench="signup-form"] button[type="submit"], .button.primary, [data-primary-action]',
-          card: ".plan",
-          display: "h1",
-        });
-        evidenceSources = await page.evaluate(() => {
-          const sources = [];
-          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-            acceptNode(node) {
-              const parent = node.parentElement;
-              if (!parent || parent.closest("script, style, template, noscript")) return NodeFilter.FILTER_REJECT;
-              return node.textContent.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
-            },
-          });
-          while (walker.nextNode()) {
-            const parent = walker.currentNode.parentElement;
-            sources.push({
-              source: `text:${parent.tagName.toLowerCase()}${parent.id ? `#${parent.id}` : ""}`,
-              text: walker.currentNode.textContent.trim(),
-            });
-          }
-          for (const element of document.querySelectorAll("[aria-label], [title], [alt], [placeholder]")) {
-            for (const attribute of ["aria-label", "title", "alt", "placeholder"]) {
-              const text = element.getAttribute(attribute)?.trim();
-              if (text) sources.push({ source: `${attribute}:${element.tagName.toLowerCase()}`, text });
-            }
-          }
-          sources.push({ source: "document:title", text: document.title });
-          for (const meta of document.querySelectorAll('meta[name="description"], meta[property="og:title"], meta[property="og:description"]')) {
-            if (meta.content.trim()) sources.push({ source: `meta:${meta.getAttribute("name") ?? meta.getAttribute("property")}`, text: meta.content.trim() });
-          }
-          return sources;
-        });
-        unsupportedStructures = await page.evaluate((selectors) => selectors.flatMap((selector) =>
-          [...document.querySelectorAll(selector)].map((element) => ({
-            selector,
-            tag: element.tagName.toLowerCase(),
-            excerpt: (element.textContent || element.getAttribute("aria-label") || "").replace(/\s+/g, " ").trim().slice(0, 160),
-          })),
-        ), task.protected_unknown_selectors);
+        }
       }
+
+      viewportResults.push({
+        name: viewport.name,
+        width: viewport.width,
+        height: viewport.height,
+        zoom: viewport.zoom ?? 1,
+        ...snapshot,
+        axe,
+        keyboard,
+        console_errors: consoleErrors,
+        page_errors: pageErrors,
+        external_requests: externalRequests,
+        entry_identity: {
+          initial_url: initialEntryUrl,
+          final_url: entryIdentityUrl(page.url()),
+          post_initial_main_frame_navigation_requests: postInitialNavigationRequests,
+          post_initial_main_frame_navigation_commits: postInitialNavigationCommits,
+          behavior_error: behaviorExecutionError,
+        },
+      });
       await context.close();
     }
   } finally {
@@ -1677,13 +1767,16 @@ async function main() {
     design: Boolean(design),
   };
   const landmarkChecks = evaluateLandmarkObservation(semantics, task.semantic_oracle?.landmarks);
+  const entryIdentityChecks = evaluateEntryIdentityObservation(viewportResults, task.viewports.length);
   const contractChecks = {
     observations_complete: everyCheckPass(observationPresence),
+    entry_identity_exact: everyCheckPass(entryIdentityChecks),
     protected_hooks_exact: protectedHooks.exact,
     landmarks: everyCheckPass(landmarkChecks),
     console_clean:
       viewportResults.length === task.viewports.length &&
-      viewportResults.every((viewport) => viewport.console_errors.length === 0),
+      viewportResults.every((viewport) =>
+        viewport.console_errors.length === 0 && viewport.page_errors.length === 0),
     localhost_only:
       viewportResults.length === task.viewports.length &&
       viewportResults.every((viewport) => viewport.external_requests.length === 0),
@@ -1788,6 +1881,7 @@ async function main() {
     checks: {
       observation_presence: observationPresence,
       contract: contractChecks,
+      entry_identity_details: entryIdentityChecks,
       landmark_details: landmarkChecks,
       states: stateChecks,
       state_details: stateDetails,

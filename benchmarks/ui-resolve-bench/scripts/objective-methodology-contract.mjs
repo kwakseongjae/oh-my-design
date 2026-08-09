@@ -2,8 +2,8 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
-export const OBJECTIVE_SCORE_SCHEMA_VERSION = "0.6";
-export const OBJECTIVE_METHODOLOGY_EPOCH = "ui-resolve-objective-2026q3-passive-scroll-v1";
+export const OBJECTIVE_SCORE_SCHEMA_VERSION = "0.7";
+export const OBJECTIVE_METHODOLOGY_EPOCH = "ui-resolve-objective-2026q3-entry-identity-v1";
 
 function sourceSha256(relativeUrl) {
   return createHash("sha256")

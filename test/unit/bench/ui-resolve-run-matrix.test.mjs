@@ -34,7 +34,10 @@ import {
   validateCompleteBlockExecutionContract,
   validateRunPreparedMatrixCliArgs,
 } from "../../../benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs";
-import { buildCodexRoutingAttestation } from "../../../benchmarks/ui-resolve-bench/scripts/export-run-record.mjs";
+import {
+  buildCodexRoutingAttestation,
+  inspectCandidatePreflight,
+} from "../../../benchmarks/ui-resolve-bench/scripts/export-run-record.mjs";
 
 function digest(value) {
   return createHash("sha256").update(value).digest("hex");
@@ -48,6 +51,22 @@ function canonicalJson(value) {
     )).join(",")}}`;
   }
   return JSON.stringify(value);
+}
+
+function freshReceiptPreflightMetadata() {
+  return {
+    receipt_trust: "current",
+    receipt_schema_version: "0.3",
+    receipt_guard_version: "locked-typography-inline-script-syntax-v2",
+    receipt_guard_scope:
+      "locked-typography-direct-declarations+classic-inline-script-syntax",
+    receipt_shape_valid: true,
+    inline_script_syntax_shape_valid: true,
+    inline_script_syntax_contract_valid: true,
+    inline_script_syntax_counts_valid: true,
+    inline_script_syntax_failures_empty: true,
+    receipt_failures_empty: true,
+  };
 }
 
 function controllerPlanFixture() {
@@ -264,6 +283,7 @@ describe("UI-Resolve prepared matrix execution", () => {
       runtime_diagnostics: {
         candidate_preflight: {
           receipt_present: true,
+          ...freshReceiptPreflightMetadata(),
           receipt_valid: true,
           receipt_state: "passed",
           source_contract_sha256_match: true,
@@ -277,6 +297,7 @@ describe("UI-Resolve prepared matrix execution", () => {
       runtime_diagnostics: {
         candidate_preflight: {
           receipt_present: true,
+          ...freshReceiptPreflightMetadata(),
           receipt_valid: true,
           receipt_state: "passed",
           source_contract_sha256_match: true,
@@ -303,6 +324,17 @@ describe("UI-Resolve prepared matrix execution", () => {
         },
       },
     })).toBeNull();
+    expect(candidatePreflightStopReason(plan, {
+      runtime_diagnostics: {
+        candidate_preflight: {
+          receipt_present: true,
+          receipt_trust: "legacy-unverifiable",
+          receipt_schema_version: "0.2",
+          receipt_valid: true,
+          receipt_state: "passed",
+        },
+      },
+    })).toBe("candidate-preview-receipt-contract-mismatch");
     expect(reliabilityHardStopReason({
       ...plan,
       reliability_contract: {
@@ -316,6 +348,7 @@ describe("UI-Resolve prepared matrix execution", () => {
       runtime_diagnostics: {
         candidate_preflight: {
           receipt_present: true,
+          ...freshReceiptPreflightMetadata(),
           receipt_valid: true,
           receipt_state: "passed",
           source_contract_sha256_match: true,
@@ -329,6 +362,7 @@ describe("UI-Resolve prepared matrix execution", () => {
       runtime_diagnostics: {
         candidate_preflight: {
           receipt_present: true,
+          ...freshReceiptPreflightMetadata(),
           receipt_valid: true,
           receipt_state: "passed",
           source_contract_sha256_match: true,
@@ -338,6 +372,73 @@ describe("UI-Resolve prepared matrix execution", () => {
         },
       },
     })).toBeNull();
+  });
+
+  it("recomputes the complete-block receipt and rejects forged controller binding", () => {
+    const workspace = mkdtempSync(join(tmpdir(), "omd-controller-candidate-binding-"));
+    mkdirSync(join(workspace, ".omd"));
+    const product = "<!doctype html><title>controller bound</title>\n";
+    writeFileSync(join(workspace, "index.html"), product, "utf8");
+    const productSha = digest(product);
+    const reflowArtifact = {
+      source_contract: { state: "provider-sealed", sha256: "source-sha" },
+      inventory: { sha256: "inventory-sha" },
+      static_closure_manifest: { product_path: "index.html" },
+    };
+    writeFileSync(
+      join(workspace, ".omd", "reflow-closure.json"),
+      JSON.stringify(reflowArtifact),
+      "utf8",
+    );
+    const receipt = {
+      schema_version: "0.3",
+      kind: "omd-static-preview-receipt",
+      guard_version: "locked-typography-inline-script-syntax-v2",
+      guard_scope:
+        "locked-typography-direct-declarations+classic-inline-script-syntax",
+      state: "passed",
+      candidate_path: join(workspace, ".omd", "product-candidate.html"),
+      candidate_sha256: productSha,
+      source_contract_sha256: "source-sha",
+      inventory_sha256: "inventory-sha",
+      inline_script_syntax: {
+        contract: {
+          version: "classic-inline-node-vm-v1",
+          compiler: "node:vm.Script",
+          execution: "compile-only-never-run",
+          compiled:
+            "inline scripts without src whose type is absent, empty, or a JavaScript MIME essence",
+          skipped: "scripts with src, type=module, or a non-JavaScript data-block type",
+          malformed_markup: "fail-closed",
+        },
+        discovered_script_count: 0,
+        compiled_classic_inline_count: 0,
+        skipped_external_count: 0,
+        skipped_module_count: 0,
+        skipped_non_javascript_count: 0,
+        failures: [],
+      },
+      failures: [],
+    };
+    const receiptPath = join(workspace, ".omd", "static-preview-receipt.json");
+    writeFileSync(receiptPath, JSON.stringify(receipt), "utf8");
+    const preflight = inspectCandidatePreflight(workspace, reflowArtifact);
+    const plan = {
+      candidate_preflight_contract: { required: true },
+      control_contract: { admission_normalization_policy: "complete-block-effort-scaling" },
+    };
+    const record = { runtime_diagnostics: { candidate_preflight: preflight } };
+    expect(candidatePreflightStopReason(plan, record, { workspace })).toBeNull();
+
+    const forgedRecord = structuredClone(record);
+    forgedRecord.runtime_diagnostics.candidate_preflight.receipt_guard_version = "forged";
+    expect(candidatePreflightStopReason(plan, forgedRecord, { workspace }))
+      .toBe("candidate-preview-controller-binding-mismatch");
+
+    receipt.inline_script_syntax.failures.push("script syntax failure after export");
+    writeFileSync(receiptPath, JSON.stringify(receipt), "utf8");
+    expect(candidatePreflightStopReason(plan, record, { workspace }))
+      .toBe("candidate-preview-controller-binding-mismatch");
   });
 
   it("fails a complete effort block closed unless every routing check is exact", () => {

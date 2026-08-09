@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.825 evaluator freeze RCA
+- checkpoint3 뒤 order4 Luna/max의 malformed inline JS가 native form navigation을 일으켜 evaluator가 context-loss로 동결됐다.
+- 유효3셀은 모두85/85·2,271,261tokens이고, 노출4셀은3,153,662tokens다.
+- 1.9.825는 재사용하지 않으며 order4 score/record도 결과에 포함하지 않는다.
+- schema0.7 entry-identity + static script syntax gate 뒤 fresh 1.9.826 51셀로 재시작한다.
+
 ## 2026-08-09 (Codex) · 1.9.825 checkpoint 1/51
 - `pollen-luna-medium-r1-omd`는85/85·UI-Resolved·proof/candidate exact로 통과했다.
 - routing attestation0.2와 immutable catalog 26 checks가 모두 true다.

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, relative, resolve, sep } from "node:path";
+import { isDeepStrictEqual } from "node:util";
 import { fileURLToPath } from "node:url";
 import { parseArgs, readJson, sha256, writeJson } from "./_lib.mjs";
 import { summarizeClaudeToolErrors } from "./check-claude-runner.mjs";
@@ -16,8 +17,45 @@ import {
 
 const FAMILIES = new Set(["model", "skill", "harness", "prompt-arena", "factorial"]);
 const SHA256_PATTERN = /^[a-f0-9]{64}$/;
-const STATIC_PREVIEW_GUARD_VERSION = "locked-typography-source-v1";
-const STATIC_PREVIEW_GUARD_SCOPE = "locked-typography-direct-declarations";
+const STATIC_PREVIEW_RECEIPT_SCHEMA_VERSION = "0.3";
+const STATIC_PREVIEW_GUARD_VERSION = "locked-typography-inline-script-syntax-v2";
+const STATIC_PREVIEW_GUARD_SCOPE = "locked-typography-direct-declarations+classic-inline-script-syntax";
+const INLINE_SCRIPT_SYNTAX_CONTRACT = Object.freeze({
+  version: "classic-inline-node-vm-v1",
+  compiler: "node:vm.Script",
+  execution: "compile-only-never-run",
+  compiled: "inline scripts without src whose type is absent, empty, or a JavaScript MIME essence",
+  skipped: "scripts with src, type=module, or a non-JavaScript data-block type",
+  malformed_markup: "fail-closed",
+});
+const STATIC_PREVIEW_RECEIPT_KEYS = Object.freeze([
+  "candidate_path",
+  "candidate_sha256",
+  "failures",
+  "guard_scope",
+  "guard_version",
+  "inline_script_syntax",
+  "inventory_sha256",
+  "kind",
+  "schema_version",
+  "source_contract_sha256",
+  "state",
+]);
+const INLINE_SCRIPT_SYNTAX_KEYS = Object.freeze([
+  "compiled_classic_inline_count",
+  "contract",
+  "discovered_script_count",
+  "failures",
+  "skipped_external_count",
+  "skipped_module_count",
+  "skipped_non_javascript_count",
+]);
+const INLINE_SCRIPT_SYNTAX_COUNT_KEYS = Object.freeze([
+  "compiled_classic_inline_count",
+  "skipped_external_count",
+  "skipped_module_count",
+  "skipped_non_javascript_count",
+]);
 const COMPLETE_BLOCK_RECORD_KIND = "codex-complete-block-effort-scaling-v2";
 const ROUTING_ATTESTATION_SCHEMA_VERSION = "0.2";
 const HOST_POLICY_INFRASTRUCTURE_REASONS = new Set([
@@ -27,6 +65,90 @@ const HOST_POLICY_INFRASTRUCTURE_REASONS = new Set([
   "native-browser-unintercepted",
   "proof-trace-not-analyzable",
 ]);
+
+function exactObjectKeys(value, expectedKeys) {
+  return Boolean(
+    value
+    && typeof value === "object"
+    && !Array.isArray(value)
+    && isDeepStrictEqual(Object.keys(value).sort(), [...expectedKeys].sort()),
+  );
+}
+
+function inspectInlineScriptSyntaxContract(value) {
+  const shapeValid = exactObjectKeys(value, INLINE_SCRIPT_SYNTAX_KEYS);
+  const contractValid = shapeValid
+    && exactObjectKeys(value.contract, Object.keys(INLINE_SCRIPT_SYNTAX_CONTRACT))
+    && isDeepStrictEqual(value.contract, INLINE_SCRIPT_SYNTAX_CONTRACT);
+  const countsValid = shapeValid
+    && Number.isSafeInteger(value.discovered_script_count)
+    && value.discovered_script_count >= 0
+    && INLINE_SCRIPT_SYNTAX_COUNT_KEYS.every((key) => (
+      Number.isSafeInteger(value[key]) && value[key] >= 0
+    ))
+    && INLINE_SCRIPT_SYNTAX_COUNT_KEYS.reduce((total, key) => total + value[key], 0)
+      === value.discovered_script_count;
+  const failuresEmpty = shapeValid
+    && Array.isArray(value.failures)
+    && value.failures.length === 0;
+  return {
+    shape_valid: shapeValid,
+    contract_valid: contractValid,
+    counts_valid: countsValid,
+    failures_empty: failuresEmpty,
+    valid: shapeValid && contractValid && countsValid && failuresEmpty,
+  };
+}
+
+function inspectStaticPreviewReceiptContract(receipt) {
+  const shapeValid = exactObjectKeys(receipt, STATIC_PREVIEW_RECEIPT_KEYS);
+  const inlineScriptSyntax = inspectInlineScriptSyntaxContract(
+    shapeValid ? receipt.inline_script_syntax : null,
+  );
+  const failuresEmpty = shapeValid
+    && Array.isArray(receipt.failures)
+    && receipt.failures.length === 0;
+  const exactAuthority = Boolean(
+    shapeValid
+    && receipt.schema_version === STATIC_PREVIEW_RECEIPT_SCHEMA_VERSION
+    && receipt.kind === "omd-static-preview-receipt"
+    && receipt.guard_version === STATIC_PREVIEW_GUARD_VERSION
+    && receipt.guard_scope === STATIC_PREVIEW_GUARD_SCOPE
+    && receipt.state === "passed"
+    && typeof receipt.candidate_path === "string"
+    && receipt.candidate_path.length > 0
+    && typeof receipt.candidate_sha256 === "string"
+    && typeof receipt.source_contract_sha256 === "string"
+    && typeof receipt.inventory_sha256 === "string"
+    && inlineScriptSyntax.valid
+    && failuresEmpty
+  );
+  return {
+    shape_valid: shapeValid,
+    inline_script_syntax: inlineScriptSyntax,
+    failures_empty: failuresEmpty,
+    exact_authority: exactAuthority,
+  };
+}
+
+export function isCurrentStaticPreviewPreflight(preflight) {
+  return Boolean(
+    preflight
+    && preflight.receipt_present === true
+    && preflight.receipt_trust === "current"
+    && preflight.receipt_schema_version === STATIC_PREVIEW_RECEIPT_SCHEMA_VERSION
+    && preflight.receipt_guard_version === STATIC_PREVIEW_GUARD_VERSION
+    && preflight.receipt_guard_scope === STATIC_PREVIEW_GUARD_SCOPE
+    && preflight.receipt_shape_valid === true
+    && preflight.inline_script_syntax_shape_valid === true
+    && preflight.inline_script_syntax_contract_valid === true
+    && preflight.inline_script_syntax_counts_valid === true
+    && preflight.inline_script_syntax_failures_empty === true
+    && preflight.receipt_failures_empty === true
+    && preflight.receipt_valid === true
+    && preflight.receipt_state === "passed"
+  );
+}
 
 export function hostPolicyAdmissionDisposition(plan, summary) {
   if (!plan?.shared_host_policy) return { disposition: "admit", reason: null };
@@ -84,9 +206,7 @@ function completeBlockOutcome({
   let disposition = "success";
   let reason = null;
   const candidateAuthorityClaim = candidatePreflight?.required === true
-    && candidatePreflight?.receipt_present === true
-    && candidatePreflight?.receipt_valid === true
-    && candidatePreflight?.receipt_state === "passed";
+    && isCurrentStaticPreviewPreflight(candidatePreflight);
   if (routingAttestation?.pass !== true || validity === "invalid-attribution") {
     disposition = "freeze-authority";
     reason = "codex-effort-routing-attestation-failed";
@@ -108,11 +228,14 @@ function completeBlockOutcome({
   } else if (runStatus === "timed_out") {
     disposition = "terminal-provider-failure";
     reason = "preregistered-valid-timeout";
-  } else if (candidatePreflight?.required === true && candidatePreflight?.pass !== true) {
+  } else if (
+    candidatePreflight?.required === true
+    && (!isCurrentStaticPreviewPreflight(candidatePreflight) || candidatePreflight?.pass !== true)
+  ) {
     disposition = "terminal-provider-failure";
     reason = candidatePreflight?.receipt_present !== true
       ? "candidate-preview-receipt-missing"
-      : candidatePreflight?.receipt_valid !== true
+      : !isCurrentStaticPreviewPreflight(candidatePreflight)
         ? "candidate-preview-receipt-failed"
         : candidatePreflight?.product_present !== true
           ? "candidate-product-missing"
@@ -517,23 +640,17 @@ export function inspectCandidatePreflight(workspace, reflowArtifact) {
       ? productCandidate
       : null;
   const receipt = existsSync(receiptPath) ? readJson(receiptPath) : null;
-  const receiptTrust = receipt?.schema_version === "0.1"
+  const receiptTrust = ["0.1", "0.2"].includes(receipt?.schema_version)
     ? "legacy-unverifiable"
-    : receipt?.schema_version === "0.2"
+    : receipt?.schema_version === STATIC_PREVIEW_RECEIPT_SCHEMA_VERSION
       ? "current"
       : receipt
         ? "unsupported"
         : "absent";
   const productPresent = Boolean(productPath && existsSync(productPath));
   const finalProductSha256 = productPresent ? sha256(readFileSync(productPath)) : null;
-  const receiptValid = Boolean(
-    receipt
-    && receipt.schema_version === "0.2"
-    && receipt.kind === "omd-static-preview-receipt"
-    && receipt.guard_version === STATIC_PREVIEW_GUARD_VERSION
-    && receipt.guard_scope === STATIC_PREVIEW_GUARD_SCOPE
-    && receipt.state === "passed"
-  );
+  const receiptContract = inspectStaticPreviewReceiptContract(receipt);
+  const receiptValid = receiptContract.exact_authority;
   const sourceContractMatch = Boolean(
     receiptValid
     && receipt.source_contract_sha256 === reflowArtifact?.source_contract?.sha256
@@ -551,7 +668,20 @@ export function inspectCandidatePreflight(workspace, reflowArtifact) {
     required,
     receipt_present: receipt !== null,
     receipt_trust: receiptTrust,
+    receipt_schema_version: receipt?.schema_version ?? null,
+    receipt_guard_version: receipt?.guard_version ?? null,
+    receipt_guard_scope: receipt?.guard_scope ?? null,
     receipt_state: receipt?.state ?? null,
+    receipt_shape_valid: receiptContract.shape_valid,
+    inline_script_syntax_shape_valid:
+      receiptContract.inline_script_syntax.shape_valid,
+    inline_script_syntax_contract_valid:
+      receiptContract.inline_script_syntax.contract_valid,
+    inline_script_syntax_counts_valid:
+      receiptContract.inline_script_syntax.counts_valid,
+    inline_script_syntax_failures_empty:
+      receiptContract.inline_script_syntax.failures_empty,
+    receipt_failures_empty: receiptContract.failures_empty,
     receipt_valid: receiptValid,
     product_present: productPresent,
     candidate_sha256: receipt?.candidate_sha256 ?? null,
@@ -658,7 +788,13 @@ export function buildRunRecord({
   const admittedUiResolved = hostPolicyAdmission.disposition === "admit"
     && admittedValidity === "valid"
     && runStatus === "complete"
-    && (candidatePreflight?.required !== true || candidatePreflight?.pass === true)
+    && (
+      candidatePreflight?.required !== true
+      || (
+        isCurrentStaticPreviewPreflight(candidatePreflight)
+        && candidatePreflight?.pass === true
+      )
+    )
     ? automatedPass && productChanged
     : false;
   const normalizedCompleteBlockOutcome = completeBlockOutcome({

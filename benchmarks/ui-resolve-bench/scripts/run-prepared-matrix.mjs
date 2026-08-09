@@ -58,6 +58,8 @@ import {
 import {
   buildCodexRoutingAttestation,
   hostPolicyAdmissionDisposition,
+  inspectCandidatePreflight,
+  isCurrentStaticPreviewPreflight,
 } from "./export-run-record.mjs";
 
 const MAX_BUFFER = 64 * 1024 * 1024;
@@ -1176,16 +1178,35 @@ export function completedCellSummary(
   return summary;
 }
 
-export function candidatePreflightStopReason(plan, record) {
+export function candidatePreflightStopReason(
+  plan,
+  record,
+  { workspace = null, reflowArtifact = undefined } = {},
+) {
   if (plan?.candidate_preflight_contract?.required !== true) return null;
   const preflight = record?.runtime_diagnostics?.candidate_preflight;
   const completeBlock = plan?.control_contract?.admission_normalization_policy
     === "complete-block-effort-scaling";
+  if (completeBlock && workspace) {
+    const reflowArtifactPath = join(workspace, ".omd", "reflow-closure.json");
+    const controllerReflowArtifact = reflowArtifact === undefined
+      ? existsSync(reflowArtifactPath)
+        ? readJson(reflowArtifactPath)
+        : null
+      : reflowArtifact;
+    const controllerPreflight = inspectCandidatePreflight(workspace, controllerReflowArtifact);
+    if (!isDeepStrictEqual(preflight, controllerPreflight)) {
+      return "candidate-preview-controller-binding-mismatch";
+    }
+  }
   if (!preflight?.receipt_present) {
     return completeBlock ? null : "candidate-preview-receipt-missing";
   }
   if (!preflight.receipt_valid || preflight.receipt_state !== "passed") {
     return completeBlock ? null : "candidate-preview-receipt-failed";
+  }
+  if (completeBlock && !isCurrentStaticPreviewPreflight(preflight)) {
+    return "candidate-preview-receipt-contract-mismatch";
   }
   if (!preflight.source_contract_sha256_match) return "candidate-preview-source-contract-mismatch";
   if (!preflight.sealed_inventory_sha256_match) return "candidate-preview-inventory-mismatch";
@@ -2358,7 +2379,9 @@ function executePreparedMatrixWithLease(root, {
     }
 
     const exportedRecord = readJson(controllerArtifacts.record);
-    const candidatePreflightReason = candidatePreflightStopReason(plan, exportedRecord);
+    const candidatePreflightReason = candidatePreflightStopReason(plan, exportedRecord, {
+      workspace,
+    });
     if (candidatePreflightReason) {
       state.status = "stopped-preregistered";
       state.stop_reason = candidatePreflightReason;

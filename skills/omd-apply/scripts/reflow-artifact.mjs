@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { copyFileSync, existsSync, readdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
 import { dirname, isAbsolute, normalize, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
+import { Script } from "node:vm";
 
 const OUTCOMES = new Set(["pass", "unresolved"]);
 const INVARIANTS = [
@@ -28,8 +29,34 @@ const REQUIRED_MEASUREMENT_CONDITIONS = [
   { id: "200pct", viewport_width: 640, zoom: 2 },
 ];
 const SOURCE_CONTRACT_SCHEMA_VERSIONS = new Set(["0.1", "0.2"]);
-const STATIC_PREVIEW_GUARD_VERSION = "locked-typography-source-v1";
-const STATIC_PREVIEW_GUARD_SCOPE = "locked-typography-direct-declarations";
+const STATIC_PREVIEW_GUARD_VERSION = "locked-typography-inline-script-syntax-v2";
+const STATIC_PREVIEW_GUARD_SCOPE = "locked-typography-direct-declarations+classic-inline-script-syntax";
+const INLINE_SCRIPT_SYNTAX_CONTRACT = Object.freeze({
+  version: "classic-inline-node-vm-v1",
+  compiler: "node:vm.Script",
+  execution: "compile-only-never-run",
+  compiled: "inline scripts without src whose type is absent, empty, or a JavaScript MIME essence",
+  skipped: "scripts with src, type=module, or a non-JavaScript data-block type",
+  malformed_markup: "fail-closed",
+});
+const JAVASCRIPT_MIME_ESSENCES = new Set([
+  "application/ecmascript",
+  "application/javascript",
+  "application/x-ecmascript",
+  "application/x-javascript",
+  "text/ecmascript",
+  "text/javascript",
+  "text/javascript1.0",
+  "text/javascript1.1",
+  "text/javascript1.2",
+  "text/javascript1.3",
+  "text/javascript1.4",
+  "text/javascript1.5",
+  "text/jscript",
+  "text/livescript",
+  "text/x-ecmascript",
+  "text/x-javascript",
+]);
 const LOCKED_TYPOGRAPHY_PROPERTIES = new Set([
   "font",
   "font-size",
@@ -1280,6 +1307,130 @@ function htmlStartTags(source) {
   return tags;
 }
 
+function htmlTagEnd(source, start) {
+  let quote = null;
+  for (let index = start; index < source.length; index += 1) {
+    const character = source[index];
+    if (quote) {
+      if (character === quote) quote = null;
+    } else if (character === '"' || character === "'") {
+      quote = character;
+    } else if (character === ">") {
+      return index;
+    }
+  }
+  return -1;
+}
+
+function htmlStartTagAttributes(rawTag) {
+  const attributes = new Map();
+  const tagName = rawTag.match(/^\s*([^\s/>]+)/u)?.[1] ?? "";
+  const attributesSource = rawTag.slice(rawTag.indexOf(tagName) + tagName.length);
+  const pattern = /([^\s"'<>\/=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/gu;
+  for (const match of attributesSource.matchAll(pattern)) {
+    attributes.set(match[1].toLowerCase(), match[2] ?? match[3] ?? match[4] ?? "");
+  }
+  return attributes;
+}
+
+function nextScriptBoundary(source, lowerSource, cursor, closing = false) {
+  const prefix = closing ? "</script" : "<script";
+  let index = cursor;
+  while ((index = lowerSource.indexOf(prefix, index)) >= 0) {
+    const next = source[index + prefix.length];
+    if (next === undefined || /[\s/>]/u.test(next)) return index;
+    index += prefix.length;
+  }
+  return -1;
+}
+
+function inlineScriptSources(source) {
+  const lowerSource = source.toLowerCase();
+  const scripts = [];
+  const failures = [];
+  let cursor = 0;
+  let scriptIndex = 0;
+  while (cursor < source.length) {
+    const commentStart = source.indexOf("<!--", cursor);
+    const scriptStart = nextScriptBoundary(source, lowerSource, cursor);
+    if (scriptStart < 0) break;
+    if (commentStart >= 0 && commentStart < scriptStart) {
+      const commentEnd = source.indexOf("-->", commentStart + 4);
+      if (commentEnd < 0) break;
+      cursor = commentEnd + 3;
+      continue;
+    }
+    scriptIndex += 1;
+    const openingEnd = htmlTagEnd(source, scriptStart + 7);
+    if (openingEnd < 0) {
+      failures.push(`inline script ${scriptIndex} markup error: unterminated opening tag`);
+      break;
+    }
+    const closingStart = nextScriptBoundary(source, lowerSource, openingEnd + 1, true);
+    if (closingStart < 0) {
+      failures.push(`inline script ${scriptIndex} markup error: missing closing tag`);
+      break;
+    }
+    const closingEnd = htmlTagEnd(source, closingStart + 8);
+    if (closingEnd < 0) {
+      failures.push(`inline script ${scriptIndex} markup error: unterminated closing tag`);
+      break;
+    }
+    scripts.push({
+      index: scriptIndex,
+      attributes: htmlStartTagAttributes(source.slice(scriptStart + 1, openingEnd)),
+      source: source.slice(openingEnd + 1, closingStart),
+    });
+    cursor = closingEnd + 1;
+  }
+  return { scripts, failures };
+}
+
+function inlineScriptSyntaxGuard(source) {
+  const extracted = inlineScriptSources(source);
+  const failures = [...extracted.failures];
+  let compiledClassicInlineCount = 0;
+  let skippedExternalCount = 0;
+  let skippedModuleCount = 0;
+  let skippedNonJavaScriptCount = 0;
+  for (const inline of extracted.scripts) {
+    if (inline.attributes.has("src")) {
+      skippedExternalCount += 1;
+      continue;
+    }
+    const rawType = inline.attributes.get("type")?.trim().toLowerCase() ?? "";
+    const typeEssence = rawType.split(";", 1)[0].trim();
+    if (typeEssence === "module") {
+      skippedModuleCount += 1;
+      continue;
+    }
+    if (typeEssence && !JAVASCRIPT_MIME_ESSENCES.has(typeEssence)) {
+      skippedNonJavaScriptCount += 1;
+      continue;
+    }
+    compiledClassicInlineCount += 1;
+    try {
+      new Script(inline.source, {
+        filename: `omd-inline-script-${inline.index}.js`,
+        displayErrors: false,
+      });
+    } catch (error) {
+      const name = error instanceof Error ? error.name : "Error";
+      const message = error instanceof Error ? error.message.split("\n", 1)[0] : String(error);
+      failures.push(`inline classic script ${inline.index} syntax error: ${name}: ${message}`);
+    }
+  }
+  return {
+    contract: INLINE_SCRIPT_SYNTAX_CONTRACT,
+    discovered_script_count: extracted.scripts.length,
+    compiled_classic_inline_count: compiledClassicInlineCount,
+    skipped_external_count: skippedExternalCount,
+    skipped_module_count: skippedModuleCount,
+    skipped_non_javascript_count: skippedNonJavaScriptCount,
+    failures,
+  };
+}
+
 function attributeAssertion(literal) {
   const match = literal.match(/^([^\s=<>"']+)(?:\s*=\s*(?:(["'])(.*?)\2)?)?$/u);
   if (!match) fail(`static_closure_manifest count literal must be an HTML attribute assertion: ${literal}`);
@@ -1794,6 +1945,8 @@ export function executeStaticClosure(input, { productPath, source }) {
   if (comparablePath(productPath) !== expectedPath) fail("static closure product path does not match the locked manifest");
   if (typeof source !== "string") fail("static closure product source is required");
   const failures = [];
+  const inlineScriptSyntax = inlineScriptSyntaxGuard(source);
+  failures.push(...inlineScriptSyntax.failures);
   for (const literal of artifact.static_closure_manifest.required_literals) {
     if (!source.includes(literal)) failures.push(`missing required literal: ${literal}`);
   }
@@ -1829,6 +1982,7 @@ export function executeStaticClosure(input, { productPath, source }) {
     attempts: 1,
     failures,
     product_path: artifact.static_closure_manifest.product_path,
+    inline_script_syntax: inlineScriptSyntax,
   };
   return artifact;
 }
@@ -2053,7 +2207,7 @@ function staticPreviewReceiptPath(artifactPath) {
 
 function writeStaticPreviewReceipt(artifactPath, artifact, candidatePath, source, preview) {
   const receipt = {
-    schema_version: "0.2",
+    schema_version: "0.3",
     kind: "omd-static-preview-receipt",
     guard_version: STATIC_PREVIEW_GUARD_VERSION,
     guard_scope: STATIC_PREVIEW_GUARD_SCOPE,
@@ -2062,6 +2216,7 @@ function writeStaticPreviewReceipt(artifactPath, artifact, candidatePath, source
     candidate_sha256: sha256Source(source),
     source_contract_sha256: artifact.source_contract?.sha256 ?? null,
     inventory_sha256: artifact.inventory.sha256,
+    inline_script_syntax: preview.inline_script_syntax,
     failures: preview.failures,
   };
   const receiptPath = staticPreviewReceiptPath(artifactPath);
@@ -2082,7 +2237,7 @@ function assertPassedStaticPreviewReceipt(
   }
   const receipt = JSON.parse(readFileSync(receiptPath, "utf8"));
   if (
-    receipt?.schema_version !== "0.2"
+    receipt?.schema_version !== "0.3"
     || receipt.kind !== "omd-static-preview-receipt"
     || receipt.guard_version !== STATIC_PREVIEW_GUARD_VERSION
     || receipt.guard_scope !== STATIC_PREVIEW_GUARD_SCOPE
@@ -2090,6 +2245,8 @@ function assertPassedStaticPreviewReceipt(
     || receipt.source_contract_sha256 !== artifact.source_contract.sha256
     || receipt.inventory_sha256 !== artifact.inventory.sha256
     || receipt.candidate_sha256 !== sha256Source(source)
+    || JSON.stringify(receipt.inline_script_syntax?.contract) !== JSON.stringify(INLINE_SCRIPT_SYNTAX_CONTRACT)
+    || receipt.inline_script_syntax?.failures?.length !== 0
     || (candidatePath !== null && resolve(receipt.candidate_path ?? "") !== candidatePath)
   ) {
     fail("provider-sealed product bytes must exactly match the passed static-preview candidate");

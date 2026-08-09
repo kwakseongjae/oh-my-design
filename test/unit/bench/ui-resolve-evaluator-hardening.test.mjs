@@ -7,6 +7,7 @@ import {
   evaluateChoiceObservation,
   evaluateDecisionHierarchy,
   evaluateDesignObservation,
+  evaluateEntryIdentityObservation,
   evaluateFaqObservations,
   evaluateFilterObservation,
   evaluateFormObservation,
@@ -19,6 +20,7 @@ import {
   evaluateToggleObservation,
   evaluateViewportGeometry,
   findUnsupportedClaims,
+  isNavigationExecutionContextError,
 } from "../../../benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs";
 
 const repoRoot = resolve(import.meta.dirname, "../../..");
@@ -88,6 +90,64 @@ function validKeyboardTraversal() {
 }
 
 describe("UI-Resolve benchmark evaluator hardening", () => {
+  it("requires an exact, navigation-free entry identity for every viewport", () => {
+    const stableViewport = (name) => ({
+      name,
+      entry_identity: {
+        initial_url: "/",
+        final_url: "/",
+        post_initial_main_frame_navigation_requests: [],
+        post_initial_main_frame_navigation_commits: [],
+        behavior_error: null,
+      },
+    });
+    const passing = [stableViewport("desktop"), stableViewport("mobile")];
+    expect(evaluateEntryIdentityObservation(passing, 2)).toEqual({
+      observations_complete: true,
+      final_url_exact: true,
+      no_post_initial_navigation_requests: true,
+      no_post_initial_navigation_commits: true,
+      behavior_execution_stable: true,
+    });
+
+    const changedUrl = structuredClone(passing);
+    changedUrl[0].entry_identity.final_url = "/?email=builder%40example.com";
+    expect(evaluateEntryIdentityObservation(changedUrl, 2).final_url_exact).toBe(false);
+
+    const requestedNavigation = structuredClone(passing);
+    requestedNavigation[0].entry_identity.post_initial_main_frame_navigation_requests.push({
+      url: "/?email=builder%40example.com",
+      method: "GET",
+      resource_type: "document",
+    });
+    expect(evaluateEntryIdentityObservation(requestedNavigation, 2).no_post_initial_navigation_requests).toBe(false);
+
+    const committedNavigation = structuredClone(passing);
+    committedNavigation[0].entry_identity.post_initial_main_frame_navigation_commits.push({
+      url: "/?email=builder%40example.com",
+    });
+    expect(evaluateEntryIdentityObservation(committedNavigation, 2).no_post_initial_navigation_commits).toBe(false);
+
+    const interruptedBehavior = structuredClone(passing);
+    interruptedBehavior[0].entry_identity.behavior_error = {
+      kind: "navigation-execution-context-destroyed",
+    };
+    expect(evaluateEntryIdentityObservation(interruptedBehavior, 2).behavior_execution_stable).toBe(false);
+    expect(evaluateEntryIdentityObservation(passing.slice(0, 1), 2).observations_complete).toBe(false);
+  });
+
+  it("classifies only navigation-caused execution-context destruction as a scored browser failure", () => {
+    expect(isNavigationExecutionContextError(
+      new Error("page.evaluate: Execution context was destroyed, most likely because of a navigation"),
+    )).toBe(true);
+    expect(isNavigationExecutionContextError(
+      new Error("page.evaluate: Execution context was destroyed"),
+    )).toBe(false);
+    expect(isNavigationExecutionContextError(
+      new Error("page.evaluate: TypeError: Cannot read properties of null"),
+    )).toBe(false);
+  });
+
   it("uses task-owned landmark requirements instead of a universal nav rule", () => {
     const observation = { h1_count: 1, main_count: 1, nav_count: 0, footer_count: 1 };
     expect(evaluateLandmarkObservation(observation, {

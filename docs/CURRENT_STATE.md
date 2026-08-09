@@ -9,6 +9,7 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.825는 checkpoint3 뒤 order4 `pollen-luna-max-r1-omd`에서 `stopped-preregistered`로 영구 동결됐다. provider는 exit0·265,810ms·882,401tokens로 후보/proof까지 만들었지만 escaped backtick 때문에 inline JS가 SyntaxError였고, native form navigation이 evaluator context를 파괴해 score/record가 없다. 유효3셀 합계는735,130ms·2,271,261tokens, provider 노출4셀 합계는1,000,940ms·3,153,662tokens다. evaluator navigation을 모델 실패로 기록하는 schema0.7/entry-identity-v1 + static inline-script syntax gate를 회귀 수정한 뒤 fresh 1.9.826에서 51셀을 order1부터 재실행한다.
 - 1.9.825 checkpoint1 `pollen-luna-medium-r1-omd`는85/85·UI-Resolved·revision1·static closure1·browser proof1·candidate exact로 통과했다. wall201,954ms·tokens673,979이며 routing attestation0.2의 26 checks와 local catalog source/copy/profile authority가 전부 true다. 다음은 frozen order의 `seismic-terra-high-r1-omd`부터 나머지50셀을 같은 root에서 연속 실행한다.
 - fresh 1.9.825 preregistration은 source `2ccf90ec`, browser-harness `omd1825`/CDP9365, local catalog SHA `77df9127…6f5f`로 exact51셀을 생성했다. plan SHA `b24b3175…68ea`, task set `db9afcab…56f8`, schedule `c23b0fbf…ae57`이며 generation provider/model/browser/network/Cursor/Claude 호출은0이다. 다음은 plan commit→prepare/admission→연속 실행이다.
 - 1.9.825는 Codex0.146.1과 cache client0.146.1 exact-match를 유지하되 TTL300초 cache를 execution authority로 쓰지 않는다. `/private/tmp/omd-codex-auth-pin-1.9.825/model_catalog.json` SHA `77df9127…6f5f`의 immutable local catalog를 각 cell isolated home에 regular file로 복사하고 exact `model_catalog_json` config로만 사용한다.

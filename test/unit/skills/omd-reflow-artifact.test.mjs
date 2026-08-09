@@ -1024,9 +1024,9 @@ h1 { letter-spacing: -0.02em; }
       ],
     });
     expect(JSON.parse(readFileSync(join(root, "static-preview-receipt.json"), "utf8"))).toMatchObject({
-      schema_version: "0.2",
-      guard_version: "locked-typography-source-v1",
-      guard_scope: "locked-typography-direct-declarations",
+      schema_version: "0.3",
+      guard_version: "locked-typography-inline-script-syntax-v2",
+      guard_scope: "locked-typography-direct-declarations+classic-inline-script-syntax",
       state: "failed",
     });
     expect(readFileSync(productPath, "utf8")).toBe(preEditSource);
@@ -1073,6 +1073,95 @@ h1 { letter-spacing: -0.02em; }
     ], { cwd: root, encoding: "utf8" }));
     expect(accepted.static_preview).toMatchObject({ state: "passed", failures: [] });
     expect(readFileSync(productPath, "utf8")).toBe(preEditSource);
+  });
+
+  it("rejects escaped-backtick classic script syntax before promotion without touching the product", () => {
+    const root = mkdtempSync(join(tmpdir(), "omd-reflow-preview-inline-script-syntax-"));
+    temporaryRoots.push(root);
+    const contractPath = join(root, "contract.json");
+    const artifactPath = join(root, "artifact.json");
+    const productPath = join(root, "index.html");
+    const candidatePath = join(root, "candidate.html");
+    const helper = join(process.cwd(), "skills/omd-apply/scripts/reflow-artifact.mjs");
+    const preEditSource = '<section data-decision=""><div class="target-carrier"><strong data-bench-decision-role="target">FS-TC-24-017 + BAG-SEAL-884021</strong></div></section><p>required-fact</p>';
+    writeFileSync(contractPath, JSON.stringify(sourceContract()));
+    writeFileSync(productPath, preEditSource);
+    execFileSync(process.execPath, [helper, "source-seal", contractPath, artifactPath], { cwd: root, encoding: "utf8" });
+    const acceptedCandidate = `<style>.ledger { grid-template-columns: 1fr; }
+[data-omd-source-fallback-carrier="target"] { overflow-x: auto; }
+[data-omd-source-fallback-carrier="target"]:focus-visible { outline: 2px solid currentColor; }
+[data-bench-decision-role="target"] { white-space: nowrap; }</style>${preEditSource}`
+      .replace(
+        '<div class="target-carrier">',
+        '<div class="target-carrier" data-omd-source-fallback-carrier="target" aria-label="Custody target relationship" tabindex="0">',
+      );
+    const brokenScript = '<script>const value = "POLLEN"; const message = \\`Reviewer recorded: \\${value}\\`;</script>';
+    expect(brokenScript).toContain("\\`Reviewer recorded");
+    writeFileSync(candidatePath, `${acceptedCandidate}${brokenScript}`);
+    const productBeforeSha256 = createHash("sha256").update(readFileSync(productPath)).digest("hex");
+
+    const rejected = spawnSync(process.execPath, [
+      helper, "static-preview", artifactPath, candidatePath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(rejected.status).toBe(1);
+    const rejectedPreview = JSON.parse(rejected.stdout);
+    expect(rejectedPreview.static_preview).toMatchObject({
+      state: "failed",
+      inline_script_syntax: {
+        discovered_script_count: 1,
+        compiled_classic_inline_count: 1,
+        skipped_external_count: 0,
+        skipped_module_count: 0,
+        skipped_non_javascript_count: 0,
+      },
+    });
+    expect(rejectedPreview.static_preview.failures).toEqual([
+      expect.stringMatching(/^inline classic script 1 syntax error: SyntaxError:/u),
+    ]);
+    expect(JSON.parse(readFileSync(join(root, "static-preview-receipt.json"), "utf8"))).toMatchObject({
+      schema_version: "0.3",
+      state: "failed",
+      inline_script_syntax: {
+        contract: {
+          version: "classic-inline-node-vm-v1",
+          compiler: "node:vm.Script",
+          execution: "compile-only-never-run",
+          malformed_markup: "fail-closed",
+        },
+      },
+    });
+
+    const promotion = spawnSync(process.execPath, [
+      helper, "static-promote", artifactPath, candidatePath,
+    ], { cwd: root, encoding: "utf8" });
+    expect(promotion.status).toBe(1);
+    expect(promotion.stderr).toContain("must exactly match the passed static-preview candidate");
+    expect(createHash("sha256").update(readFileSync(productPath)).digest("hex")).toBe(productBeforeSha256);
+    expect(readFileSync(productPath, "utf8")).toBe(preEditSource);
+
+    const stableScripts = [
+      '<script>const value = "POLLEN"; const message = `Reviewer recorded: ${value}`;</script>',
+      '<script type="module">const intentionallyUncheckedModule = ;</script>',
+      '<script type="application/json">{"kind":"data-block"}</script>',
+      '<script src="/external.js">const intentionallyIgnoredExternalBody = ;</script>',
+    ].join("");
+    writeFileSync(candidatePath, `${acceptedCandidate}${stableScripts}`);
+    const accepted = JSON.parse(execFileSync(process.execPath, [
+      helper, "static-preview", artifactPath, candidatePath,
+    ], { cwd: root, encoding: "utf8" }));
+    expect(accepted.static_preview).toMatchObject({
+      state: "passed",
+      failures: [],
+      inline_script_syntax: {
+        discovered_script_count: 4,
+        compiled_classic_inline_count: 1,
+        skipped_external_count: 1,
+        skipped_module_count: 1,
+        skipped_non_javascript_count: 1,
+        failures: [],
+      },
+    });
+    expect(createHash("sha256").update(readFileSync(productPath)).digest("hex")).toBe(productBeforeSha256);
   });
 
   it("does not treat an any-value typography requirement as drift authority", () => {

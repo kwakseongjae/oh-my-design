@@ -162,6 +162,57 @@ function modelCatalogAuthority(workspace, {
   };
 }
 
+const inlineScriptSyntaxContract = {
+  version: "classic-inline-node-vm-v1",
+  compiler: "node:vm.Script",
+  execution: "compile-only-never-run",
+  compiled: "inline scripts without src whose type is absent, empty, or a JavaScript MIME essence",
+  skipped: "scripts with src, type=module, or a non-JavaScript data-block type",
+  malformed_markup: "fail-closed",
+};
+
+function freshReceiptPreflightMetadata() {
+  return {
+    receipt_trust: "current",
+    receipt_schema_version: "0.3",
+    receipt_guard_version: "locked-typography-inline-script-syntax-v2",
+    receipt_guard_scope:
+      "locked-typography-direct-declarations+classic-inline-script-syntax",
+    receipt_shape_valid: true,
+    inline_script_syntax_shape_valid: true,
+    inline_script_syntax_contract_valid: true,
+    inline_script_syntax_counts_valid: true,
+    inline_script_syntax_failures_empty: true,
+    receipt_failures_empty: true,
+  };
+}
+
+function currentStaticPreviewReceipt(workspace, productSha, overrides = {}) {
+  return {
+    schema_version: "0.3",
+    kind: "omd-static-preview-receipt",
+    guard_version: "locked-typography-inline-script-syntax-v2",
+    guard_scope:
+      "locked-typography-direct-declarations+classic-inline-script-syntax",
+    state: "passed",
+    candidate_path: join(workspace, ".omd", "product-candidate.html"),
+    candidate_sha256: productSha,
+    source_contract_sha256: "source-sha",
+    inventory_sha256: "inventory-sha",
+    inline_script_syntax: {
+      contract: { ...inlineScriptSyntaxContract },
+      discovered_script_count: 0,
+      compiled_classic_inline_count: 0,
+      skipped_external_count: 0,
+      skipped_module_count: 0,
+      skipped_non_javascript_count: 0,
+      failures: [],
+    },
+    failures: [],
+    ...overrides,
+  };
+}
+
 describe("UI-Resolve normalized run exporter", () => {
   it("omits sweep-only metadata for legacy direct exports", () => {
     const record = buildRunRecord({
@@ -317,6 +368,7 @@ describe("UI-Resolve normalized run exporter", () => {
       candidatePreflight: {
         required: true,
         receipt_present: true,
+        ...freshReceiptPreflightMetadata(),
         receipt_valid: true,
         receipt_state: "passed",
         source_contract_sha256_match: true,
@@ -392,6 +444,31 @@ describe("UI-Resolve normalized run exporter", () => {
       suiteVersion: "0.2.0",
       budgetTier: "low",
       candidatePreflight: { required: true, pass: false, receipt_present: false },
+    });
+    expect(record.validity).toBe("valid");
+    expect(record.ui_resolved).toBe(false);
+  });
+
+  it("does not make a legacy-shaped forged pass fresh-result eligible", () => {
+    const record = buildRunRecord({
+      workspace: "/tmp/candidate-forged-pass",
+      manifest,
+      run,
+      score,
+      family: "model",
+      systemId: "terra-low",
+      trialIndex: 1,
+      suiteVersion: "0.2.0",
+      budgetTier: "low",
+      candidatePreflight: {
+        required: true,
+        pass: true,
+        receipt_present: true,
+        receipt_trust: "legacy-unverifiable",
+        receipt_schema_version: "0.2",
+        receipt_valid: true,
+        receipt_state: "passed",
+      },
     });
     expect(record.validity).toBe("valid");
     expect(record.ui_resolved).toBe(false);
@@ -594,16 +671,10 @@ describe("UI-Resolve normalized run exporter", () => {
     const product = "<!doctype html><title>bound</title>\n";
     writeFileSync(productPath, product);
     const productSha = createHash("sha256").update(product).digest("hex");
-    writeFileSync(join(workspace, ".omd", "static-preview-receipt.json"), JSON.stringify({
-      schema_version: "0.2",
-      kind: "omd-static-preview-receipt",
-      guard_version: "locked-typography-source-v1",
-      guard_scope: "locked-typography-direct-declarations",
-      state: "passed",
-      candidate_sha256: productSha,
-      source_contract_sha256: "source-sha",
-      inventory_sha256: "inventory-sha",
-    }));
+    writeFileSync(
+      join(workspace, ".omd", "static-preview-receipt.json"),
+      JSON.stringify(currentStaticPreviewReceipt(workspace, productSha)),
+    );
     expect(inspectCandidatePreflight(workspace, {
       source_contract: { state: "provider-sealed", sha256: "source-sha" },
       inventory: { sha256: "inventory-sha" },
@@ -611,6 +682,17 @@ describe("UI-Resolve normalized run exporter", () => {
     })).toMatchObject({
       required: true,
       receipt_present: true,
+      receipt_trust: "current",
+      receipt_schema_version: "0.3",
+      receipt_guard_version: "locked-typography-inline-script-syntax-v2",
+      receipt_guard_scope:
+        "locked-typography-direct-declarations+classic-inline-script-syntax",
+      receipt_shape_valid: true,
+      inline_script_syntax_shape_valid: true,
+      inline_script_syntax_contract_valid: true,
+      inline_script_syntax_counts_valid: true,
+      inline_script_syntax_failures_empty: true,
+      receipt_failures_empty: true,
       receipt_valid: true,
       source_contract_sha256_match: true,
       sealed_inventory_sha256_match: true,
@@ -619,26 +701,108 @@ describe("UI-Resolve normalized run exporter", () => {
     });
   });
 
-  it("keeps frozen v0.1 preview receipts legacy-unverifiable and promotion-ineligible", () => {
-    const workspace = mkdtempSync(join(tmpdir(), "omd-candidate-preflight-legacy-"));
-    mkdirSync(join(workspace, ".omd"));
-    writeFileSync(join(workspace, "index.html"), "<!doctype html><title>legacy</title>\n");
-    writeFileSync(join(workspace, ".omd", "static-preview-receipt.json"), JSON.stringify({
-      schema_version: "0.1",
-      kind: "omd-static-preview-receipt",
-      state: "passed",
-    }));
-    expect(inspectCandidatePreflight(workspace, {
-      source_contract: { state: "provider-sealed", sha256: "source-sha" },
-      inventory: { sha256: "inventory-sha" },
-      static_closure_manifest: { product_path: "index.html" },
-    })).toMatchObject({
-      required: true,
-      receipt_present: true,
-      receipt_trust: "legacy-unverifiable",
-      receipt_valid: false,
-      pass: false,
-    });
+  it("keeps frozen v0.1 and v0.2 preview receipts legacy-unverifiable and ineligible", () => {
+    for (const schemaVersion of ["0.1", "0.2"]) {
+      const workspace = mkdtempSync(join(tmpdir(), "omd-candidate-preflight-legacy-"));
+      mkdirSync(join(workspace, ".omd"));
+      writeFileSync(join(workspace, "index.html"), "<!doctype html><title>legacy</title>\n");
+      writeFileSync(join(workspace, ".omd", "static-preview-receipt.json"), JSON.stringify({
+        schema_version: schemaVersion,
+        kind: "omd-static-preview-receipt",
+        state: "passed",
+      }));
+      expect(inspectCandidatePreflight(workspace, {
+        source_contract: { state: "provider-sealed", sha256: "source-sha" },
+        inventory: { sha256: "inventory-sha" },
+        static_closure_manifest: { product_path: "index.html" },
+      })).toMatchObject({
+        required: true,
+        receipt_present: true,
+        receipt_trust: "legacy-unverifiable",
+        receipt_schema_version: schemaVersion,
+        receipt_valid: false,
+        pass: false,
+      });
+    }
+  });
+
+  it("rejects missing, forged, and script-failed v0.3 preview receipts", () => {
+    const cases = [
+      {
+        name: "missing inline-script evidence",
+        mutate(receipt) {
+          delete receipt.inline_script_syntax;
+        },
+        expected: { receipt_shape_valid: false },
+      },
+      {
+        name: "forged inline-script compiler contract",
+        mutate(receipt) {
+          receipt.inline_script_syntax.contract.compiler = "forged-compiler";
+        },
+        expected: { inline_script_syntax_contract_valid: false },
+      },
+      {
+        name: "extra inline-script contract field",
+        mutate(receipt) {
+          receipt.inline_script_syntax.contract.unregistered = true;
+        },
+        expected: { inline_script_syntax_contract_valid: false },
+      },
+      {
+        name: "classic inline-script syntax failure",
+        mutate(receipt) {
+          receipt.inline_script_syntax.failures.push(
+            "inline classic script 1 syntax error: SyntaxError: Unexpected token '}'",
+          );
+        },
+        expected: { inline_script_syntax_failures_empty: false },
+      },
+      {
+        name: "forged script inventory counts",
+        mutate(receipt) {
+          receipt.inline_script_syntax.discovered_script_count = 1;
+        },
+        expected: { inline_script_syntax_counts_valid: false },
+      },
+      {
+        name: "top-level preview failure",
+        mutate(receipt) {
+          receipt.failures.push("inline classic script 1 syntax error");
+        },
+        expected: { receipt_failures_empty: false },
+      },
+      {
+        name: "forged receipt envelope field",
+        mutate(receipt) {
+          receipt.unregistered = true;
+        },
+        expected: { receipt_shape_valid: false },
+      },
+    ];
+    for (const scenario of cases) {
+      const workspace = mkdtempSync(join(tmpdir(), "omd-candidate-preflight-adversarial-"));
+      mkdirSync(join(workspace, ".omd"));
+      const product = `<!doctype html><title>${scenario.name}</title>\n`;
+      writeFileSync(join(workspace, "index.html"), product);
+      const productSha = createHash("sha256").update(product).digest("hex");
+      const receipt = currentStaticPreviewReceipt(workspace, productSha);
+      scenario.mutate(receipt);
+      writeFileSync(
+        join(workspace, ".omd", "static-preview-receipt.json"),
+        JSON.stringify(receipt),
+      );
+      expect(inspectCandidatePreflight(workspace, {
+        source_contract: { state: "provider-sealed", sha256: "source-sha" },
+        inventory: { sha256: "inventory-sha" },
+        static_closure_manifest: { product_path: "index.html" },
+      }), scenario.name).toMatchObject({
+        receipt_trust: "current",
+        receipt_valid: false,
+        pass: false,
+        ...scenario.expected,
+      });
+    }
   });
 
   it("exports a valid skill-family record with delivery evidence", () => {

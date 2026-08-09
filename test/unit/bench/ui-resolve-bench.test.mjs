@@ -16,6 +16,7 @@ import {
 import { renderManagedHook } from "../../../src/cli/hook-contract.ts";
 import { treeManifest } from "../../../benchmarks/ui-resolve-bench/scripts/_lib.mjs";
 import { evaluateApprovalDecisionObservation } from "../../../benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs";
+import { currentObjectiveMethodology } from "../../../benchmarks/ui-resolve-bench/scripts/objective-methodology-contract.mjs";
 import { validateTaskContract } from "../../../benchmarks/ui-resolve-bench/scripts/task-contract.mjs";
 import { validateLocalBrowserEvidence } from "../../../benchmarks/ui-resolve-bench/scripts/validate-local-browser-evidence.mjs";
 import {
@@ -6797,8 +6798,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
         expect(manifests[0].variant.activation_delta).toBe(manifests[1].variant.activation_delta);
         expect(manifests[0].skill.sha256).not.toBe(manifests[1].skill.sha256);
         expect(manifests.every((manifest) => (
-          manifest.objective_evaluator?.score_schema_version === "0.6"
-          && manifest.objective_evaluator?.epoch === "ui-resolve-objective-2026q3-passive-scroll-v1"
+          JSON.stringify(manifest.objective_evaluator) === JSON.stringify(currentObjectiveMethodology())
         ))).toBe(true);
         const locked = JSON.parse(readFileSync(join(root, "RUN-MATRIX.locked.json"), "utf8"));
         const preparation = JSON.parse(readFileSync(join(root, "matrix-state.json"), "utf8"));
