@@ -3,7 +3,7 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `f129e77d`의 1.9.823 exact sweep preregistration (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 기준 커밋: `50df3765`의 exact auth-before-doctor fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
 - 갱신: 2026-08-09 · 1.9.823 pre-provider auth failure 동결 및 1.9.824 재실행 준비
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
@@ -12,7 +12,7 @@
 - 1.9.823 첫 runner는 exact provider child spawn 전에 중단됐다. legacy preflight가 `.benchmark/codex-home/auth.json`을 symlink로 먼저 만든 뒤 exact installer가 regular-file 계약 위반을 올바르게 거부했다. 완료0/51, provider/model/Cursor/Claude0이며 해당 root는 `stopped-preregistered`로 영구 동결한다.
 - local preflight 범위에는 browser-harness doctor, Codex login status, `omd1823` controller pre-edit browser 측정1이 있었다. doctor의 built-in PyPI release check가 실행됐고 anonymous PostHog가 시도됐을 가능성은 있으나, benchmark prompt/page body/model request는 전송되지 않았다.
 - 수정본은 exact lock을 doctor보다 먼저 읽고 auth/cache를 isolated regular file로 설치하며 두 doctor를 locked Codex wrapper에 고정한다. symlink·foreign bytes·누락 lock은 mutation 없이 fail-close한다. full test909/909(3 skip), lint, build green이다.
-- 다음은 browser-harness telemetry opt-out을 OmD doctor env에 강제하고 수정·실패증적을 커밋한 뒤, fresh 1.9.824 plan/root/browser connection에서 exact51셀을 `--max-new-cells 1`로 연속 실행하는 것이다. 1.9.823 root 재사용은 금지한다.
+- browser-harness telemetry opt-out 3종은 OmD doctor env에서 강제되며 PyPI/PostHog는 Codex allowlist에 없다. 수정·실패증적은 `50df3765`에 커밋됐다. 다음은 fresh 1.9.824 plan/root/browser connection에서 exact51셀을 `--max-new-cells 1`로 연속 실행하는 것이다. 1.9.823 root 재사용은 금지한다.
 - 1.9.822 첫 runner 호출은 provider 전에 `prepared-matrix-admission:execution-artifact-present`로 중단됐다. runner가 lease를 만든 뒤 lease 부재를 요구하는 standalone audit를 호출한 자기충돌이며 provider/model/browser/Cursor/Claude 노출은 모두0이다. 해당 root는 동결하고 재사용하지 않는다.
 - 수정된 controller는 exclusive lease→정확한 owned-lease-aware preparation audit→immutable runtime preflight→runtime admission receipt atomic persist→controller pre-edit→provider 순서를 강제한다. standalone audit는 여전히 모든 lease를 거부하며 crash-resume과 receipt drift도 provider 전에 fail-close한다.
 - admission ordering 수정은 commit `e2c9c05a`, focused95/95, full test906/906(3 skip), lint, build, diff-check green이다. 1.9.823 auth/cache snapshot은 `/private/tmp/omd-codex-auth-pin-1.9.823`에 immutable regular files로 복사됐고 SHA는 1.9.822 authority와 exact-match한다.

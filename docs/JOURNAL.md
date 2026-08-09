@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.824 catalog freeze
+- exact auth-before-doctor fix와 1.9.823 실패 증적을 `50df3765`로 커밋했다.
+- doctor telemetry3종은 off, PyPI/PostHog는 allowlist 밖이며 full909/909·lint·build green이다.
+- Luna5·Terra6·Sol6 cache/profile을 새 1.9.824 catalog lock으로 다시 봉인했다.
+- 다음은 fresh browser/plan/root를 사전등록하고 51셀을 1셀씩 실행한다.
+
 ## 2026-08-09 (Codex) · 1.9.823 pre-provider auth freeze
 - 첫 셀은 legacy auth symlink를 exact installer가 거부해 provider spawn 전 중단됐다.
 - 완료0/51·provider/model/Cursor/Claude0이며 root는 영구 동결했다.
