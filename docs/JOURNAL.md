@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.824 all-effort prereg
+- source `2139a911`, browser-harness `omd1824`, immutable auth/cache로 plan을 생성했다.
+- plan `2bc8d6fa…`, task set `db9afcab…`, schedule `c23b0fbf…`, exact51셀이다.
+- generation provider/model/browser/network/Cursor/Claude0; 다음은 prepare/admission 뒤 1셀씩 실행이다.
+
 ## 2026-08-09 (Codex) · 1.9.824 catalog freeze
 - exact auth-before-doctor fix와 1.9.823 실패 증적을 `50df3765`로 커밋했다.
 - doctor telemetry3종은 off, PyPI/PostHog는 allowlist 밖이며 full909/909·lint·build green이다.
