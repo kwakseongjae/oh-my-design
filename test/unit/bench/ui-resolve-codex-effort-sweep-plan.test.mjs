@@ -350,15 +350,12 @@ describe("Codex all-effort sweep preregistration generator", () => {
     }))).toThrow(/baseline provenance receipt|working task tree does not exactly match source commit/);
 
     expect(() => createCodexEffortSweepPlan(options({ codexCliVersion: "0.146.1" })))
-      .toThrow("exact catalog/auth/cache/CLI binding drift");
-    expect(createCodexEffortSweepPlan(options({
+      .toThrow("requires exact CLI/cache client version match");
+    expect(() => createCodexEffortSweepPlan(options({
       codexCliVersion: "0.146.1",
       cliCacheClientVersionPolicy: "explicit-locked-mismatch",
       cliCacheClientVersionMismatchJustification: "wrapper 0.146.1 is pinned to the immutable 0.147.0 cache snapshot",
-    })).codex_catalog_snapshot_contract).toMatchObject({
-      cli_cache_client_version_policy: "explicit-locked-mismatch",
-      cli_cache_client_version_mismatch_justification: expect.stringContaining("pinned"),
-    });
+    }))).toThrow("requires cliCacheClientVersionPolicy=require-exact-match");
 
     const authRoot = mkdtempSync(join(tmpdir(), "omd-effort-auth-drift-"));
     const authTarget = join(authRoot, "auth-target.json");

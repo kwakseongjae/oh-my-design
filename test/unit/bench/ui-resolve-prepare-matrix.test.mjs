@@ -594,6 +594,19 @@ describe("UI-Resolve run matrix preparation", () => {
     const current = completeBlockEffortPlan();
     expect(validateRunMatrixPlan(current).cells).toHaveLength(51);
 
+    const mismatchedCliCache = structuredClone(current);
+    mismatchedCliCache.codex_catalog_snapshot_contract.codex_cli.version = "0.146.1";
+    mismatchedCliCache.codex_catalog_snapshot_contract.cli_cache_client_version_policy =
+      "explicit-locked-mismatch";
+    mismatchedCliCache.codex_catalog_snapshot_contract
+      .cli_cache_client_version_mismatch_justification =
+        "independently pinned without a compatibility claim";
+    mismatchedCliCache.lock_manifest.codex_catalog_snapshot_contract_sha256 = sha256(
+      JSON.stringify(mismatchedCliCache.codex_catalog_snapshot_contract),
+    );
+    expect(() => validateRunMatrixPlan(mismatchedCliCache))
+      .toThrow("exact catalog/auth/cache/CLI binding drift");
+
     const missingPair = structuredClone(current);
     missingPair.cells.pop();
     expect(() => validateRunMatrixPlan(missingPair)).toThrow("3 tasks × 17 pairs = 51 cells");

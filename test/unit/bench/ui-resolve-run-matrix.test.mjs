@@ -399,6 +399,12 @@ describe("UI-Resolve prepared matrix execution", () => {
   it("binds complete-block execution to the preparation hash and one-cell checkpoints", () => {
     const plan = {
       control_contract: { admission_normalization_policy: "complete-block-effort-scaling" },
+      codex_model_effort_contract: { cache_client_version: "0.147.0" },
+      codex_catalog_snapshot_contract: {
+        cli_cache_client_version_policy: "require-exact-match",
+        cli_cache_client_version_mismatch_justification: null,
+        codex_cli: { version: "0.147.0" },
+      },
     };
     expect(validateCompleteBlockExecutionContract(
       plan,
@@ -415,6 +421,17 @@ describe("UI-Resolve prepared matrix execution", () => {
       { locked_plan_sha256: "b".repeat(64) },
       { lockedPlanSha256: "a".repeat(64), maxNewCells: 1 },
     )).toThrow(/locked plan drifted/u);
+    const mismatched = structuredClone(plan);
+    mismatched.codex_catalog_snapshot_contract.codex_cli.version = "0.146.1";
+    mismatched.codex_catalog_snapshot_contract.cli_cache_client_version_policy =
+      "explicit-locked-mismatch";
+    mismatched.codex_catalog_snapshot_contract.cli_cache_client_version_mismatch_justification =
+      "no compatibility claim";
+    expect(() => validateCompleteBlockExecutionContract(
+      mismatched,
+      { locked_plan_sha256: "a".repeat(64) },
+      { lockedPlanSha256: "a".repeat(64), maxNewCells: 1 },
+    )).toThrow(/exact CLI\/cache client version authority/u);
     expect(validateCompleteBlockExecutionContract({}, {}, {
       lockedPlanSha256: null,
       maxNewCells: undefined,

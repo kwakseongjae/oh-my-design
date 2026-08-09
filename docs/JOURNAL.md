@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-09 (Codex) · 1.9.824 routing-authority freeze
+- first cell은 operational85/85였지만 CLI0.146.1이 cache0.147.0을 refresh해 attribution이 invalid다.
+- 유효 완료0/51, provider turn1·Cursor/Claude0이며 root는 영구 동결했다.
+- attestation은 완화하지 않고 complete-block CLI/cache exact-match를 pre-provider 강제한다.
+- 다음은 compatible cache를 봉인한 fresh 1.9.825에서 51셀을 다시 시작한다.
+
 ## 2026-08-09 (Codex) · 1.9.824 all-effort prereg
 - source `2139a911`, browser-harness `omd1824`, immutable auth/cache로 plan을 생성했다.
 - plan `2bc8d6fa…`, task set `db9afcab…`, schedule `c23b0fbf…`, exact51셀이다.

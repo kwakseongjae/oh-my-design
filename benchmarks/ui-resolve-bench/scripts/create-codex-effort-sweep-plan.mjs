@@ -799,8 +799,13 @@ export function createCodexEffortSweepPlan({
   requireNonEmptyString(codexCliVersion, "codexCliVersion");
   requireSha256(codexCliBinarySha256, "codexCliBinarySha256");
   requireSha256(codexCliNativeBinarySha256, "codexCliNativeBinarySha256");
-  if (!["require-exact-match", "explicit-locked-mismatch"].includes(cliCacheClientVersionPolicy)) {
-    throw new Error("cliCacheClientVersionPolicy is invalid");
+  if (cliCacheClientVersionPolicy !== "require-exact-match") {
+    throw new Error(
+      "complete-block effort scaling requires cliCacheClientVersionPolicy=require-exact-match",
+    );
+  }
+  if (cliCacheClientVersionMismatchJustification !== null) {
+    throw new Error("complete-block effort scaling forbids a CLI/cache mismatch justification");
   }
   requireNonEmptyString(variantId, "variantId");
   requireCommit(taskSourceCommit, "taskSourceCommit");
@@ -808,6 +813,9 @@ export function createCodexEffortSweepPlan({
   if (!/^[a-z0-9][a-z0-9-]*$/.test(systemId)) throw new Error("systemId must be kebab-case");
 
   const catalog = readCatalogLock(catalogLockPath);
+  if (codexCliVersion !== catalog.contract.cache_client_version) {
+    throw new Error("complete-block effort scaling requires exact CLI/cache client version match");
+  }
   const orderedPairs = orderedCatalogPairs(catalog.contract);
   const taskSource = lockTaskSet(tasksRoot, taskSourceCommit);
   const taskLocks = taskSource.tasks;
@@ -1140,12 +1148,8 @@ export function validateGeneratedCodexEffortSweepPlan(plan) {
   const cliCacheVersionsMatch = snapshot?.codex_cli?.version
     === plan.codex_model_effort_contract.cache_client_version;
   const cacheClientPolicyValid = snapshot?.cli_cache_client_version_policy === "require-exact-match"
-    ? cliCacheVersionsMatch
-      && snapshot.cli_cache_client_version_mismatch_justification === null
-    : snapshot?.cli_cache_client_version_policy === "explicit-locked-mismatch"
-      && !cliCacheVersionsMatch
-      && typeof snapshot.cli_cache_client_version_mismatch_justification === "string"
-      && snapshot.cli_cache_client_version_mismatch_justification.trim().length > 0;
+    && cliCacheVersionsMatch
+    && snapshot.cli_cache_client_version_mismatch_justification === null;
   if (snapshot?.enforcement_mode !== "exact-runtime-per-invocation"
     || !isAbsolute(snapshot.auth_json_source_path ?? "")
     || snapshot.auth_json_source_mode !== "immutable-snapshot-only"

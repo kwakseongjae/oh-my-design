@@ -4,11 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 커밋: `50df3765`의 exact auth-before-doctor fix (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-09 · fresh 1.9.824 exact 51-cell plan 사전등록
+- 갱신: 2026-08-09 · 1.9.824 CLI/cache routing-authority freeze 및 1.9.825 준비
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.824 first cell은 provider turn1회 뒤 routing authority에서 fail-close됐다. CLI0.146.1이 client0.147.0 cache를 `missing field base_instructions`로 거부하고 isolated cache를 0.146.1 형식으로 refresh해 pinned profile이 바뀌었다. 유효 완료0/51이며 root는 영구 동결·재사용 금지다.
+- 해당 셀은 candidate/final exact·browser acceptance·objective85/85였지만 `invalid-attribution`, `ui_resolved:false`다. 사용량은 input636,370(cached576,256), output5,372, reasoning970이며 model/route provider-report는 null이다. 결과를 집계·인용하지 않는다.
+- 첫 교정은 complete-block에서 CLI version과 cache client version exact-match를 provider 전에 강제하는 것이다. 0.146.1이 새로 기록한 compatible cache는 Luna5·Terra6·Sol6 exact17 pair를 유지하며 새 immutable snapshot/plan/root에서만 사용할 수 있다. 전체 캐시의 TTL metadata drift와 선택 profile의 실제 drift는 다음 패치에서 분리 검증한다.
+- 다음은 exact-match admission 회귀를 구현·full 검증·커밋하고 fresh 1.9.825 catalog/plan/browser/root를 준비해 51셀을 1셀씩 다시 실행하는 것이다. Cursor·Claude·retry·replacement·fallback은 계속0이다.
 - 1.9.823 첫 runner는 exact provider child spawn 전에 중단됐다. legacy preflight가 `.benchmark/codex-home/auth.json`을 symlink로 먼저 만든 뒤 exact installer가 regular-file 계약 위반을 올바르게 거부했다. 완료0/51, provider/model/Cursor/Claude0이며 해당 root는 `stopped-preregistered`로 영구 동결한다.
 - local preflight 범위에는 browser-harness doctor, Codex login status, `omd1823` controller pre-edit browser 측정1이 있었다. doctor의 built-in PyPI release check가 실행됐고 anonymous PostHog가 시도됐을 가능성은 있으나, benchmark prompt/page body/model request는 전송되지 않았다.
 - 수정본은 exact lock을 doctor보다 먼저 읽고 auth/cache를 isolated regular file로 설치하며 두 doctor를 locked Codex wrapper에 고정한다. symlink·foreign bytes·누락 lock은 mutation 없이 fail-close한다. full test909/909(3 skip), lint, build green이다.

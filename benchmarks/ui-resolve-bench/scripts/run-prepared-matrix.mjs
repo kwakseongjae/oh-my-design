@@ -1213,6 +1213,17 @@ export function validateCompleteBlockExecutionContract(
   if (plan?.control_contract?.admission_normalization_policy !== "complete-block-effort-scaling") {
     return { required: false };
   }
+  const snapshot = plan.codex_catalog_snapshot_contract;
+  const cacheClientVersion = plan.codex_model_effort_contract?.cache_client_version;
+  if (
+    snapshot?.cli_cache_client_version_policy !== "require-exact-match"
+    || snapshot?.cli_cache_client_version_mismatch_justification !== null
+    || snapshot?.codex_cli?.version !== cacheClientVersion
+  ) {
+    throw new Error(
+      "complete-block effort scaling requires exact CLI/cache client version authority",
+    );
+  }
   if (maxNewCells !== 1) {
     throw new Error("complete-block effort scaling requires --max-new-cells 1");
   }

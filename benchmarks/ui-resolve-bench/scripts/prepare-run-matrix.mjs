@@ -573,12 +573,8 @@ export function validateCompleteBlockEffortScalingPlan(plan) {
   }
   const cliCacheVersionsMatch = snapshot?.codex_cli?.version === effortContract.cache_client_version;
   const cacheClientPolicyValid = snapshot?.cli_cache_client_version_policy === "require-exact-match"
-    ? cliCacheVersionsMatch
-      && snapshot.cli_cache_client_version_mismatch_justification === null
-    : snapshot?.cli_cache_client_version_policy === "explicit-locked-mismatch"
-      && !cliCacheVersionsMatch
-      && typeof snapshot.cli_cache_client_version_mismatch_justification === "string"
-      && snapshot.cli_cache_client_version_mismatch_justification.trim().length > 0;
+    && cliCacheVersionsMatch
+    && snapshot.cli_cache_client_version_mismatch_justification === null;
   if (!snapshot || snapshot.enforcement_mode !== "exact-runtime-per-invocation"
     || !isAbsolute(snapshot.auth_json_source_path ?? "")
     || snapshot.auth_json_source_mode !== "immutable-snapshot-only"
