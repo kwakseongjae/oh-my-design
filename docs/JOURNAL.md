@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-10 (Codex) · 1.9.826 exact51 complete
+- 51/51 terminal valid: objective38/51, objective+proof34/51, 평균83.51/85다.
+- 관측 tokens36,890,716(50/51), wall12,528.833s이며 Luna15/15·Terra12/18·Sol11/18 objective pass다.
+- aggregate v18 task projection 누락을 fail-close 뒤 수정했고 exact authority51/51로 interpretation을 열었다.
+- `SUMMARY.final.json`/`RESULTS.md`를 보존했으며 다음은 commit 뒤 2.0 routing·public-claim policy 반영이다.
+
 ## 2026-08-09 (Codex) · 1.9.826 all-effort prereg
 - schema0.7 기준선3개를 provider-free로 재생성했고 모두75/85를 유지했다.
 - repaired skill `f1b5e219`과 task source `6acf2876`을 별도 detached snapshot으로 봉인했다.

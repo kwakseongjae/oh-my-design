@@ -116,9 +116,22 @@ function taskLocks() {
     task_id: task,
     task_tree_sha256: String(index + 1).repeat(64),
     observed_task_tree_sha256: String(index + 1).repeat(64),
+    task_tree_files: [{
+      path: "task.json",
+      mode: 420,
+      bytes: 100 + index,
+      sha256: ["1", "2", "3"][index].repeat(64),
+    }],
     prompt_sha256: String(index + 4).repeat(64),
     starter_sha256: String(index + 7).repeat(64),
     baseline_evidence_sha256: ["a", "b", "c"][index].repeat(64),
+    baseline_provenance_sha256: ["4", "5", "6"][index].repeat(64),
+    baseline_methodology: {
+      score_schema_version: "0.7",
+      epoch: "ui-resolve-objective-2026q3-entry-identity-v1",
+      evaluator_source_sha256: "8".repeat(64),
+      contract_source_sha256: "9".repeat(64),
+    },
     source_contract_sha256: ["d", "e", "f"][index].repeat(64),
     source_commit: taskSourceCommit,
     git_tree_oid: ["1", "2", "3"][index].repeat(40),
@@ -131,9 +144,12 @@ function plan() {
   const taskProjection = lockedTasks.map((task) => ({
     task_id: task.task_id,
     task_tree_sha256: task.task_tree_sha256,
+    task_tree_files: task.task_tree_files,
     prompt_sha256: task.prompt_sha256,
     starter_sha256: task.starter_sha256,
     baseline_evidence_sha256: task.baseline_evidence_sha256,
+    baseline_provenance_sha256: task.baseline_provenance_sha256,
+    baseline_methodology: task.baseline_methodology,
     source_contract_sha256: task.source_contract_sha256,
   }));
   const scheduleProjection = allCells.map((cell) => ({
@@ -631,6 +647,10 @@ describe("Codex all-effort sweep aggregate authority", () => {
     const task = fixture();
     task.matrix.task_lock_contract.tasks[0].task_tree_sha256 = "0".repeat(64);
     expect(() => aggregateCodexEffortSweep(task)).toThrow(/task source\/tree authority drift/i);
+
+    const taskManifest = fixture();
+    taskManifest.matrix.task_lock_contract.tasks[0].task_tree_files[0].sha256 = "0".repeat(64);
+    expect(() => aggregateCodexEffortSweep(taskManifest)).toThrow(/task set lock/i);
   });
 
   it("rejects --interpret with self-contained input", () => {

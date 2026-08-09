@@ -337,9 +337,12 @@ function taskLockProjection(task) {
   return {
     task_id: task.task_id,
     task_tree_sha256: task.task_tree_sha256,
+    task_tree_files: task.task_tree_files,
     prompt_sha256: task.prompt_sha256,
     starter_sha256: task.starter_sha256,
     baseline_evidence_sha256: task.baseline_evidence_sha256,
+    baseline_provenance_sha256: task.baseline_provenance_sha256,
+    baseline_methodology: task.baseline_methodology,
     source_contract_sha256: task.source_contract_sha256,
   };
 }
