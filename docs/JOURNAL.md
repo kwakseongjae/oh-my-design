@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-10 (Codex) · 1.9.850 runnable plan lock
+- commit `55a90134`의 exact source와 Luna/high 3셀을 plan SHA `a51317ce…5382`로 봉인했다.
+- immutable local catalog·CLI0.146.1·checkpoint1·no retry/fallback을 재검증했다.
+- provider/model/Cursor0이며 plan commit 뒤 fresh root를 prepare/audit한다.
+
 ## 2026-08-10 (Codex) · 1.9.850 exact smoke controller
 - exact commit·prompt·portable bundle·Luna/high runtime만 허용하는 3-cell controller를 추가했다.
 - blank shell과 installed Autopilot만 복제하며 oracle/mutant는 workspace에서 금지한다.

@@ -44,6 +44,7 @@
 - 12/12 family 전부 provider-zero calibration이 완료됐다. oracle은 24개, targeted mutant cell은 72개이며 combined opt-in calibration은 18 files/130 tests, pure scorer는 61/61로 green이다. evaluator SHA는 `d6dc37b5…b593`이다.
 - 1.9.849 Luna/high diagnostic smoke 계약을 provider-zero로 사전등록했다. landing→dense operations→five-locale 세 task, exact prompt·blank starter·task/adapter/evaluator·14-file portable bundle hash, Codex Luna/high·serial·900s·checkpoint1·retry/replacement/fallback/substitution/Cursor/Claude0를 고정했다. 현재 contract는 `provider_execution_allowed:false`이며 clean committed source와 immutable runtime authority가 준비되기 전에는 실행할 수 없다.
 - 1.9.850 greenfield smoke controller를 추가했다. exact commit의 task·prompt·skill·evaluator만 읽고 blank shell 3개를 만들며, 1.9.826에서 검증된 immutable auth/cache/model-catalog와 Codex CLI exact pair를 재검증한다. oracle/mutant는 workspace에 복제하지 않고 Luna/high·checkpoint1·no-retry 계약을 독립 audit한다. controller 자체의 clean commit 뒤 provider-zero plan/prepare/audit를 실행해야 한다.
+- controller commit `55a90134`를 authority로 실제 1.9.850 plan/receipt를 발급했다. plan SHA `a51317ce…5382`, source authority `3639f309…3305`, schedule `5ae75f2b…0280`, provider/model/Cursor0이다. plan을 commit한 뒤에만 fresh root prepare/audit를 진행한다.
 - provider-zero 결과는 controller/evaluator calibration일 뿐 자율 모델·스킬 성능 증거가 아니다. 실제 DESIGN.md authoring loop의 Luna/high 3-task smoke, same-prompt competitor matrix, 3-model transfer와 blind review가 남아 2.0 promotion과 public one-shot claim은 계속 BLOCK이다.
 - general full regression은 79 files/1,024 pass/54 skip 뒤 resource-contention 5초 timeout 7건이 있었고, 해당 두 파일을 단일 worker로 재실행해 115/115로 모두 통과했다. lint/build/diff-check도 green이다. `web/public/llms-full.txt`는 기존 사용자 변경으로 계속 제외한다.
 - `/benchmarks`가 1.9.826 exact51 결과와 1.9.827 public claim policy를 SHA 검증된 generated data로 소비한다. 최신 checkpoint를 hero 바로 아래에 두고 51/51 terminal·38/51 objective·34/51 objective+proof·36.89M tokens(50/51)를 함께 공개한다.
@@ -3865,8 +3866,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.850 controller를 checkpoint commit한 뒤 그 commit을 source authority로 runnable 3-cell plan/receipt에 봉인한다. 사용자 소유 `web/public/llms-full.txt`는 제외한다.
-2. immutable Codex auth/model-catalog, exact Luna/high profile, installed portable bundle parity와 oracle/mutant absence를 provider-zero prepare/audit로 검증한다.
+1. 1.9.850 plan/receipt를 checkpoint commit하고 사용자 소유 `web/public/llms-full.txt`는 제외한다.
+2. fresh root에서 immutable Codex auth/model-catalog, exact Luna/high profile, installed portable bundle parity와 oracle/mutant absence를 provider-zero prepare/audit한다.
 3. frozen order대로 checkpoint당 1셀만 실행한다. 실패도 재시도·replacement 없이 분모에 남기며 3/3 뒤에도 결과는 diagnostic-only다.
 4. smoke 통과 뒤에만 같은 prompt/starter/runtime 통제의 competitor qualification을 준비하고, superiority/public one-shot claim은 12×5·transfer·blind-review 전까지 금지한다.
 
