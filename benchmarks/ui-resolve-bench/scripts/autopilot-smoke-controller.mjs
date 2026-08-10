@@ -249,6 +249,44 @@ function auditRoot(root, { requireUntouched = false } = {}) {
 }
 function auditCommand(args) { console.log(JSON.stringify(auditRoot(resolve(String(args.get("root") ?? ""))), null, 2)); }
 
+function admitBrowserCommand(args) {
+  const root = resolve(String(args.get("root") ?? ""));
+  const browserId = String(args.get("browser-id") ?? "");
+  const session = String(args.get("session") ?? "");
+  const tabId = String(args.get("tab-id") ?? "");
+  const url = String(args.get("url") ?? "");
+  const audited = auditRoot(root, { requireUntouched: true });
+  const planPath = join(root, "RUN-MATRIX.locked.json"); const plan = readJson(planPath);
+  if (!browserId || session !== plan.experiment_id || !tabId || url !== "about:blank") {
+    throw new Error("named in-app browser admission identity drift");
+  }
+  const planBytes = readFileSync(planPath);
+  const receipt = {
+    schema_version: "0.1", kind: "provider-zero-named-in-app-browser-admission",
+    experiment_id: plan.experiment_id, plan_sha256: sha256(planBytes),
+    browser: { type: "iab", browser_id: browserId, session, tab_id: tabId, url },
+    prepared_audit: audited, admitted_at: new Date().toISOString(),
+  };
+  writeJsonExclusive(join(root, "BROWSER-ADMISSION.receipt.json"), receipt);
+  console.log(JSON.stringify(receipt, null, 2));
+}
+
+function validateBrowserAdmission(root, plan) {
+  const path = join(root, "BROWSER-ADMISSION.receipt.json");
+  if (!existsSync(path)) throw new Error("named in-app browser admission receipt is required");
+  const receipt = readJson(path); const planPath = join(root, "RUN-MATRIX.locked.json");
+  if (receipt.schema_version !== "0.1"
+    || receipt.kind !== "provider-zero-named-in-app-browser-admission"
+    || receipt.experiment_id !== plan.experiment_id
+    || receipt.plan_sha256 !== sha256(readFileSync(planPath))
+    || receipt.browser?.type !== "iab"
+    || receipt.browser?.session !== plan.experiment_id
+    || !receipt.browser?.browser_id || !receipt.browser?.tab_id
+    || receipt.browser?.url !== "about:blank"
+    || receipt.prepared_audit?.pass !== true) throw new Error("named in-app browser admission receipt drift");
+  return receipt;
+}
+
 function walkFor(root, name, ignored = new Set([".benchmark", ".agents"])) {
   const found = [];
   function visit(current) {
@@ -311,6 +349,7 @@ function runCommand(args) {
   if (maxNew !== 1) throw new Error("autopilot smoke requires --max-new-cells 1");
   auditRoot(root);
   const plan = readJson(join(root, "RUN-MATRIX.locked.json"));
+  validateBrowserAdmission(root, plan);
   const statePath = join(root, "execution-state.json"); const state = readJson(statePath);
   if (state.status === "complete" || state.status === "stopped-preregistered") throw new Error(`smoke root is not resumable: ${state.status}`);
   const next = plan.cells.find((cell) => state.cells.find((item) => item.id === cell.id)?.status === "prepared");
@@ -381,8 +420,9 @@ const args = parseArgs(process.argv.slice(3));
 if (command === "plan") planCommand(args);
 else if (command === "prepare") prepareCommand(args);
 else if (command === "audit") auditCommand(args);
+else if (command === "admit-browser") admitBrowserCommand(args);
 else if (command === "run") runCommand(args);
 else {
-  console.error("usage: autopilot-smoke-controller.mjs plan|prepare|audit|run ...");
+  console.error("usage: autopilot-smoke-controller.mjs plan|prepare|audit|admit-browser|run ...");
   process.exitCode = 2;
 }

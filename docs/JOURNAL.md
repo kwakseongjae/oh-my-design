@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-10 (Codex) · named browser admission
+- in-app browser session/tab을 실제 열었지만 1.9.851 plan과 hash-bound되지 않아 실행을 보류했다.
+- browser ID·session·tab·plan SHA receipt 없이는 run 전에 거부하도록 controller를 보강했다.
+- source 변경 뒤 최종 fresh 1.9.852를 발급한다.
+
 ## 2026-08-10 (Codex) · 1.9.851 fresh smoke lock
 - run controller commit `f2b74be9`를 source authority로 새 3셀 plan을 발급했다.
 - plan `8f037336…a735`, source `fcfb22ce…744a`, provider/model/Cursor0이다.

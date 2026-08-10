@@ -38,4 +38,14 @@ describe("autopilot Luna/high smoke controller", () => {
     writeFileSync(planPath, `${JSON.stringify(plan, null, 2)}\n`);
     expect(() => execFileSync(process.execPath, [script, "prepare", "--plan", planPath, "--receipt", join(report, "PREREGISTRATION.receipt.json"), "--root", root], { cwd: repo })).toThrow();
   });
+
+  test("refuses provider execution without a plan-bound named in-app browser receipt", () => {
+    const base = temp(); const report = join(base, "report"); const root = join(base, "root");
+    execFileSync(process.execPath, [script, "plan", "--out", report], { cwd: repo });
+    execFileSync(process.execPath, [script, "prepare", "--plan", join(report, "RUN-MATRIX.json"), "--receipt", join(report, "PREREGISTRATION.receipt.json"), "--root", root], { cwd: repo });
+    expect(() => execFileSync(process.execPath, [script, "run", "--root", root, "--max-new-cells", "1"], { cwd: repo })).toThrow(/named in-app browser admission receipt is required/);
+    const state = JSON.parse(readFileSync(join(root, "execution-state.json"), "utf8"));
+    expect(state.status).toBe("prepared");
+    expect(state.completed_cells).toBe(0);
+  });
 });
