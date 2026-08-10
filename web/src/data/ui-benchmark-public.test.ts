@@ -30,6 +30,36 @@ describe("public UI benchmark data", () => {
     });
   });
 
+  it("publishes only the policy-approved 51-cell effort checkpoint", () => {
+    expect(benchmark.schemaVersion).toBe("0.2");
+    expect(benchmark.effortCheckpoint).toMatchObject({
+      experimentId: "codex-all-effort-sweep-1.9.826",
+      policyId: "codex-effort-routing-public-claims-1.9.827",
+      attribution: "Codex configuration-routed Luna/Terra/Sol",
+      taskCount: 3,
+      trialsPerCell: 1,
+      terminal: { passed: 51, total: 51 },
+      objective: { passed: 38, total: 51 },
+      objectiveAndProof: { passed: 34, total: 51 },
+      observedTokens: { total: 36890716, cells: 50, scheduledCells: 51 },
+      publicModelAttributionEligibleCells: 0,
+      twoPointZeroPromotionEffect: "none",
+    });
+    expect(benchmark.effortCheckpoint.effortRows.map((row) => row.effort)).toEqual([
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max",
+      "ultra",
+    ]);
+    expect(benchmark.effortCheckpoint.effortRows.find((row) => row.effort === "high")).toMatchObject({
+      objective: { passed: 8, total: 9 },
+      objectiveAndProof: { passed: 8, total: 9 },
+      observedTokens: 5511792,
+    });
+  });
+
   it("shows the locale failure, contract calibration, and fresh recovery separately", () => {
     expect(benchmark.learningTimeline.map((entry) => entry.state)).toEqual([
       "failed",
@@ -45,4 +75,3 @@ describe("public UI benchmark data", () => {
     });
   });
 });
-

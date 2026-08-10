@@ -9,6 +9,21 @@ describe("/benchmarks", () => {
     expect(html).toContain("Internal evidence");
     expect(html).toContain("Not a leaderboard");
     expect(html).toContain("Three tracks. No blended winner.");
+    expect(html).toContain("High is the measured default. It is not a winner declaration.");
+    expect(html).toContain("Configuration evidence, not provider identity.");
+  });
+
+  it("renders the 51-cell result in semantic effort order without a model leaderboard", () => {
+    expect(html).toContain("51/51");
+    expect(html).toContain("38/51");
+    expect(html).toContain("34/51");
+    expect(html).toContain("36.89M");
+    expect(html).toContain("OmD default");
+    expect(html).toContain("Rows stay low → ultra. They are not sorted into a leaderboard.");
+    expect(html.indexOf(">low<")).toBeLessThan(html.indexOf(">medium<"));
+    expect(html.indexOf(">medium<")).toBeLessThan(html.indexOf(">high<"));
+    expect(html.indexOf(">high<")).toBeLessThan(html.indexOf(">xhigh<"));
+    expect(html).not.toContain("provider-attested");
   });
 
   it("renders the denominator, uncertainty, and known loss", () => {
@@ -39,5 +54,7 @@ describe("/benchmarks", () => {
     expect(html).toContain("This result remains Internal.");
     expect(html).toContain("$ npx oh-my-design-cli@latest");
     expect(html).toContain("Copy Terminal command");
+    expect(html).toContain("51-cell effort results");
+    expect(html).toContain("Public claim policy");
   });
 });

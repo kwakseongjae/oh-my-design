@@ -23,6 +23,7 @@ describe("benchmark activation analytics", () => {
     trackBenchmarkEntry();
     trackBenchmarkView();
     trackBenchmarkInspect("method");
+    trackBenchmarkInspect("effort_claim_policy");
     trackBenchmarkHandoffView();
     trackBenchmarkHandoff("install_copy", "copied");
 
@@ -30,6 +31,10 @@ describe("benchmark activation analytics", () => {
       ["bm_entry", { origin: "home_cli", experiment_version: BENCHMARK_EXPERIMENT_VERSION }],
       ["bm_view", { experiment_version: BENCHMARK_EXPERIMENT_VERSION }],
       ["bm_inspect", { target: "method", experiment_version: BENCHMARK_EXPERIMENT_VERSION }],
+      [
+        "bm_inspect",
+        { target: "effort_claim_policy", experiment_version: BENCHMARK_EXPERIMENT_VERSION },
+      ],
       ["bm_handoff_view", { experiment_version: BENCHMARK_EXPERIMENT_VERSION }],
       [
         "bm_handoff",

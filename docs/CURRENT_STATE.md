@@ -4,11 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: task baseline commit `6acf2876`, repaired skill/evaluator commit `f1b5e219` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-10 · 1.9.827 UI effort routing·public claim policy 완료
+- 갱신: 2026-08-10 · 1.9.828 policy-aware public benchmark surface 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- `/benchmarks`가 1.9.826 exact51 결과와 1.9.827 public claim policy를 SHA 검증된 generated data로 소비한다. 최신 checkpoint를 hero 바로 아래에 두고 51/51 terminal·38/51 objective·34/51 objective+proof·36.89M tokens(50/51)를 함께 공개한다.
+- effort는 결과순이 아니라 low→medium→high→xhigh→max→ultra 의미 순서로 표시한다. high는 측정된 OmD 기본값일 뿐 winner가 아니며 explicit effort 보존·auto escalation0·max/ultra opt-in을 화면에서 명시한다.
+- 공개 화면은 model leaderboard·provider identity·cross-model superiority·statistical reliability·2.0 promotion claim을 만들지 않는다. RESULTS, claim policy, policy audit 원문을 바로 연결하며 configuration-only attribution 경계를 표시한다.
+- desktop 1675×907과 mobile 390×844 browser-harness 검수에서 수평 overflow0, high badge single-line을 확인했다. root full925 pass/5 skip·web full832 pass·root/web lint·root/web build·generated-data check·diff-check가 green이다.
 - 1.9.827은 Codex Luna/Terra/Sol의 `ui-design-execution`에서 effort 미지정 시 OmD 기본값을 `high`로 둔다. catalog native default는 바꾸지 않고 explicit supported effort는 그대로 보존하며 unknown/unsupported는 fail-close한다.
 - 실패 뒤 max/ultra 자동 escalation·higher-effort retry·model/effort fallback은 모두 금지다. max/ultra는 opt-in only이며 non-Codex runtime은 effort를 명시해야 한다.
 - 공개 claim은 `public-descriptive-configuration-only`로 제한했다. 3 fixed tasks·cell당1 trial·objective/proof 분리·tokens50/51 coverage·configuration attribution을 반드시 밝히며 provider identity·ranking·superiority·reliability·industry-best·2.0 단독 승격 claim은 금지한다.
@@ -17,7 +21,7 @@
 - 관측 토큰은50/51 합계36,890,716, wall 합계12,528.833초다. Luna15/15, Terra12/18, Sol11/18 objective pass이며 effort별 objective pass는 low7/9·medium6/9·high8/9·xhigh7/9·max7/9·ultra3/6이다. public model identity가 아니라 exact Codex configuration attribution이다.
 - final aggregate는 plan/task/schedule·execution-state·controller record hash·routing attestation·immutable catalog authority를51/51 재계산해 `interpretation_allowed:true`다. 1.9.825는 denominator에서 완전히 제외했으며 entry-identity/pageerror 회귀도0이다.
 - 집계기만 v18 task-set projection에서 `task_tree_files`·baseline provenance/methodology를 누락해 첫 집계를 fail-close했다. 생성기와 동일한 projection으로 고치고 manifest mutation 회귀를 추가했으며 실제 `SUMMARY.final.json`과 `RESULTS.md`를 생성했다.
-- 다음은 이 정책을 공개 benchmark/docs surface가 소비하도록 연결하되, 현재 허용 문구 밖의 model leaderboard UI는 만들지 않는 것이다. 2.0 진척은 별도 unresolved normative gate의 fresh evidence로만 만든다.
+- 다음은 이 공개 surface의 유입·source-open·docs 이동 계측을 실제 배포 환경에서 확인하고, 2.0 진척은 별도 unresolved normative gate의 fresh evidence로만 만든다.
 - v18 raw 기준선3개는 schema0.7/`ui-resolve-objective-2026q3-entry-identity-v1`로 provider-free 재생성했고 모두75/85·responsive/accessibility만 red다. static receipt0.3의 classic-inline-script compile gate와 evaluator entry-identity critical gate를 함께 봉인했다.
 - 1.9.826은 Codex0.146.1/cache client0.146.1 exact-match, immutable local catalog SHA `77df9127…6f5f`, Luna5·Terra6·Sol6 exact17 pair만 허용했다. cache는 provenance-only, `model_catalog_json`만 execution authority이며 Cursor·Claude·retry·replacement·fallback·substitution은0이다.
 - 1.9.825는 checkpoint3 뒤 order4 `pollen-luna-max-r1-omd`에서 evaluator context loss로 영구 동결됐다. 유효3셀 합계는735,130ms·2,271,261tokens, provider 노출4셀 합계는1,000,940ms·3,153,662tokens이며 order4는 score/record가 없어 결과에서 제외한다.

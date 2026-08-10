@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-10 (Codex) · 1.9.828 policy-aware benchmark surface
+- `/benchmarks`에 exact51 결과를 semantic effort order와 configuration-only 경계로 공개했다.
+- 51/51·38/51·34/51·36.89M/50 coverage와 RESULTS·policy·audit 원문을 함께 연결했다.
+- desktop/mobile overflow0, root925·web832 tests, lint/build/generated-data check green이다.
+- model leaderboard와 2.0 promotion claim은 만들지 않았고 `llms-full.txt`는 사용자 변경으로 제외했다.
+
 ## 2026-08-10 (Codex) · 1.9.827 effort routing + claim policy
 - Codex UI effort 미지정 기본을 high로 잠그고 explicit effort 보존·auto escalation0을 강제했다.
 - public claim은 configuration-only·3tasks×1trial·objective/proof 분리·tokens50/51 disclosure로 제한했다.

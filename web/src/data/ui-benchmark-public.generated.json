@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "0.1",
-  "dataAsOf": "2026-07-23",
+  "schemaVersion": "0.2",
+  "dataAsOf": "2026-08-10",
   "publication": {
     "status": "internal",
     "label": "Internal evidence",
@@ -34,6 +34,182 @@
       "publicResultAvailable": true
     }
   ],
+  "effortCheckpoint": {
+    "experimentId": "codex-all-effort-sweep-1.9.826",
+    "policyId": "codex-effort-routing-public-claims-1.9.827",
+    "status": "internal",
+    "attribution": "Codex configuration-routed Luna/Terra/Sol",
+    "taskCount": 3,
+    "trialsPerCell": 1,
+    "terminal": {
+      "passed": 51,
+      "total": 51
+    },
+    "objective": {
+      "passed": 38,
+      "total": 51
+    },
+    "objectiveAndProof": {
+      "passed": 34,
+      "total": 51
+    },
+    "observedTokens": {
+      "total": 36890716,
+      "cells": 50,
+      "scheduledCells": 51
+    },
+    "routing": {
+      "defaultEffort": "high",
+      "explicitEffort": "preserve-if-supported",
+      "automaticEscalation": false,
+      "maxAndUltraDefault": false
+    },
+    "effortRows": [
+      {
+        "effort": "low",
+        "cells": 9,
+        "objective": {
+          "passed": 7,
+          "total": 9
+        },
+        "objectiveAndProof": {
+          "passed": 6,
+          "total": 9
+        },
+        "score": [
+          82.78,
+          85
+        ],
+        "observedTokens": 3975829,
+        "observedTokenCells": 9,
+        "meanWallSeconds": 140.642
+      },
+      {
+        "effort": "medium",
+        "cells": 9,
+        "objective": {
+          "passed": 6,
+          "total": 9
+        },
+        "objectiveAndProof": {
+          "passed": 6,
+          "total": 9
+        },
+        "score": [
+          83.67,
+          85
+        ],
+        "observedTokens": 4189717,
+        "observedTokenCells": 9,
+        "meanWallSeconds": 156.45
+      },
+      {
+        "effort": "high",
+        "cells": 9,
+        "objective": {
+          "passed": 8,
+          "total": 9
+        },
+        "objectiveAndProof": {
+          "passed": 8,
+          "total": 9
+        },
+        "score": [
+          83.89,
+          85
+        ],
+        "observedTokens": 5511792,
+        "observedTokenCells": 9,
+        "meanWallSeconds": 173.537
+      },
+      {
+        "effort": "xhigh",
+        "cells": 9,
+        "objective": {
+          "passed": 7,
+          "total": 9
+        },
+        "objectiveAndProof": {
+          "passed": 6,
+          "total": 9
+        },
+        "score": [
+          84.11,
+          85
+        ],
+        "observedTokens": 6382139,
+        "observedTokenCells": 9,
+        "meanWallSeconds": 225.393
+      },
+      {
+        "effort": "max",
+        "cells": 9,
+        "objective": {
+          "passed": 7,
+          "total": 9
+        },
+        "objectiveAndProof": {
+          "passed": 5,
+          "total": 9
+        },
+        "score": [
+          84.11,
+          85
+        ],
+        "observedTokens": 9851967,
+        "observedTokenCells": 9,
+        "meanWallSeconds": 322.13
+      },
+      {
+        "effort": "ultra",
+        "cells": 6,
+        "objective": {
+          "passed": 3,
+          "total": 6
+        },
+        "objectiveAndProof": {
+          "passed": 3,
+          "total": 6
+        },
+        "score": [
+          82,
+          83
+        ],
+        "observedTokens": 6979272,
+        "observedTokenCells": 5,
+        "meanWallSeconds": 560.911
+      }
+    ],
+    "requiredDisclosures": [
+      "three fixed tasks",
+      "one trial per model-effort-task cell",
+      "configuration-attributed model identity",
+      "objective and proof-execution are separate gates",
+      "token totals cover 50 of 51 cells"
+    ],
+    "allowedClaims": [
+      "exact-block-completed-51-of-51",
+      "objective-resolved-38-of-51",
+      "objective-and-proof-resolved-34-of-51",
+      "high-objective-resolved-8-of-9",
+      "high-objective-and-proof-resolved-8-of-9",
+      "observed-token-total-36890716-with-50-of-51-coverage",
+      "task-specific-descriptive-model-and-effort-rows"
+    ],
+    "forbiddenClaims": [
+      "provider-attested-model-identity",
+      "model-superiority",
+      "cross-model-ranking",
+      "statistical-superiority",
+      "reliability-estimate",
+      "industry-best",
+      "promotion-ready-38-of-51",
+      "max-or-ultra-improves-quality",
+      "2.0-release-gate-from-this-test-alone"
+    ],
+    "publicModelAttributionEligibleCells": 0,
+    "twoPointZeroPromotionEffect": "none"
+  },
   "harnessCheckpoint": {
     "experimentId": "harness-efficiency-replacement-1.9.22",
     "status": "internal",
@@ -173,6 +349,10 @@
     }
   ],
   "sourcePaths": {
+    "effortSummary": "benchmarks/ui-resolve-bench/reports/codex-all-effort-sweep-1.9.826/SUMMARY.final.json",
+    "effortResults": "benchmarks/ui-resolve-bench/reports/codex-all-effort-sweep-1.9.826/RESULTS.md",
+    "effortClaimPolicy": "benchmarks/ui-resolve-bench/config/public-benchmark-claim-policy.json",
+    "effortClaimAudit": "benchmarks/ui-resolve-bench/reports/effort-routing-claim-policy-1.9.827/AUDIT.json",
     "harnessSummary": "benchmarks/ui-resolve-bench/reports/harness-efficiency-replacement-1.9.22/SUMMARY.final.json",
     "harnessAggregate": "benchmarks/ui-resolve-bench/reports/harness-efficiency-replacement-1.9.22/aggregate.json",
     "localeFailure": "benchmarks/ui-resolve-bench/reports/locale-clipboard-recovery-1.9.34/SUMMARY.final.json",

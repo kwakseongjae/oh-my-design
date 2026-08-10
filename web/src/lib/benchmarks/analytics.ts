@@ -1,6 +1,6 @@
 import { event } from "@/lib/gtag";
 
-export const BENCHMARK_EXPERIMENT_VERSION = "1.9.38" as const;
+export const BENCHMARK_EXPERIMENT_VERSION = "1.9.828" as const;
 
 export type BenchmarkInspectionTarget =
   | "method"
@@ -9,6 +9,9 @@ export type BenchmarkInspectionTarget =
   | "failed_run"
   | "focus_calibration"
   | "fresh_recovery"
+  | "effort_results"
+  | "effort_claim_policy"
+  | "effort_claim_audit"
   | "protocol";
 
 export type BenchmarkHandoffDestination = "install_copy" | "docs_demo" | "builder";

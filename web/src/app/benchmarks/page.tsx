@@ -10,6 +10,7 @@ import {
   FlaskConical,
   Gauge,
   GitCompareArrows,
+  Route,
   ShieldCheck,
   TriangleAlert,
 } from "lucide-react";
@@ -42,6 +43,10 @@ function formatDuration(milliseconds: number): string {
 
 function formatTokens(value: number): string {
   return `${Math.round(value / 100) / 10}k`;
+}
+
+function formatMillionTokens(value: number): string {
+  return `${(value / 1_000_000).toFixed(2)}M`;
 }
 
 function reportUrl(path: string): string {
@@ -84,9 +89,76 @@ function MetricBar({
   );
 }
 
+function EffortRow({
+  row,
+  isDefault,
+}: {
+  row: (typeof benchmark.effortCheckpoint.effortRows)[number];
+  isDefault: boolean;
+}) {
+  const objectiveWidth = `${(row.objective.passed / row.objective.total) * 100}%`;
+  const proofWidth = `${(row.objectiveAndProof.passed / row.objectiveAndProof.total) * 100}%`;
+
+  return (
+    <article
+      className={
+        isDefault
+          ? "grid gap-5 bg-primary/[0.055] p-5 ring-1 ring-inset ring-primary/35 sm:grid-cols-[160px_minmax(240px,1fr)_160px] sm:items-center sm:p-6"
+          : "grid gap-5 bg-background p-5 sm:grid-cols-[160px_minmax(240px,1fr)_160px] sm:items-center sm:p-6"
+      }
+    >
+      <div>
+        <div className="flex items-center gap-2">
+          <span className="font-mono text-base font-medium">{row.effort}</span>
+          {isDefault && (
+            <span className="shrink-0 whitespace-nowrap rounded-full bg-primary px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-wider text-primary-foreground">
+              OmD default
+            </span>
+          )}
+        </div>
+        <p className="mt-1 text-xs text-muted-foreground">
+          {row.cells} fixed cells{row.effort === "max" || row.effort === "ultra" ? " · explicit only" : ""}
+        </p>
+      </div>
+
+      <div className="space-y-3">
+        <div className="grid grid-cols-[92px_minmax(0,1fr)_48px] items-center gap-3">
+          <span className="text-xs text-muted-foreground">Objective</span>
+          <div className="h-2 overflow-hidden rounded-full bg-secondary">
+            <div className="h-full rounded-full bg-foreground/45" style={{ width: objectiveWidth }} />
+          </div>
+          <span className="text-right font-mono text-xs font-medium">
+            {row.objective.passed}/{row.objective.total}
+          </span>
+        </div>
+        <div className="grid grid-cols-[92px_minmax(0,1fr)_48px] items-center gap-3">
+          <span className="text-xs text-muted-foreground">+ proof</span>
+          <div className="h-2 overflow-hidden rounded-full bg-secondary">
+            <div
+              className={isDefault ? "h-full rounded-full bg-primary" : "h-full rounded-full bg-primary/45"}
+              style={{ width: proofWidth }}
+            />
+          </div>
+          <span className="text-right font-mono text-xs font-medium">
+            {row.objectiveAndProof.passed}/{row.objectiveAndProof.total}
+          </span>
+        </div>
+      </div>
+
+      <div className="sm:text-right">
+        <p className="font-mono text-lg font-medium">{formatMillionTokens(row.observedTokens)}</p>
+        <p className="mt-1 text-xs text-muted-foreground">
+          tokens · {row.observedTokenCells}/{row.cells} observed
+        </p>
+      </div>
+    </article>
+  );
+}
+
 export default function BenchmarksPage() {
   const harness = benchmark.harnessCheckpoint;
   const locale = benchmark.localeCheckpoint;
+  const effort = benchmark.effortCheckpoint;
   const confidence = harness.uiResolved.confidence95;
 
   return (
@@ -165,12 +237,106 @@ export default function BenchmarksPage() {
                   <dd className="mt-1 font-mono font-medium">{benchmark.dataAsOf}</dd>
                 </div>
                 <div>
-                  <dt className="text-muted-foreground">Harness matrix</dt>
-                  <dd className="mt-1 font-mono font-medium">
-                    {harness.taskCount} tasks × {harness.runsPerTask} trials
-                  </dd>
+                  <dt className="text-muted-foreground">Latest exact block</dt>
+                  <dd className="mt-1 font-mono font-medium">{effort.terminal.total} cells</dd>
                 </div>
               </dl>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-border bg-card" aria-labelledby="effort-title">
+          <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(280px,0.7fr)] lg:items-end">
+              <div>
+                <p className="font-mono text-sm font-medium uppercase tracking-[0.18em] text-primary sm:text-xs">
+                  Latest checkpoint · {effort.status}
+                </p>
+                <h2 id="effort-title" className="mt-3 max-w-4xl text-3xl font-medium tracking-[-0.03em] sm:text-5xl">
+                  High is the measured default. It is not a winner declaration.
+                </h2>
+                <p className="mt-5 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
+                  {effort.attribution} completed three fixed tasks once at every supported effort.
+                  The result sets a bounded OmD routing default while preserving explicit supported choices.
+                </p>
+              </div>
+              <dl className="grid grid-cols-2 overflow-hidden rounded-[14px] border border-border bg-background">
+                <div className="p-5">
+                  <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">Task design</dt>
+                  <dd className="mt-2 text-lg font-medium">{effort.taskCount} tasks × {effort.trialsPerCell} trial</dd>
+                </div>
+                <div className="border-l border-border p-5">
+                  <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">Attribution</dt>
+                  <dd className="mt-2 text-lg font-medium">Configuration only</dd>
+                </div>
+              </dl>
+            </div>
+
+            <dl className="mt-10 grid overflow-hidden rounded-[14px] border border-border bg-background sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { label: "Terminal + valid", value: `${effort.terminal.passed}/${effort.terminal.total}`, detail: "Exact block completed" },
+                { label: "Objective resolved", value: `${effort.objective.passed}/${effort.objective.total}`, detail: "Critical product gates" },
+                { label: "Objective + proof", value: `${effort.objectiveAndProof.passed}/${effort.objectiveAndProof.total}`, detail: "Both gates passed" },
+                { label: "Observed tokens", value: formatMillionTokens(effort.observedTokens.total), detail: `${effort.observedTokens.cells}/${effort.observedTokens.scheduledCells} cells reported usage` },
+              ].map((metric, index) => (
+                <div key={metric.label} className={`p-5 sm:p-6 ${index > 0 ? "border-t border-border sm:border-l sm:border-t-0" : ""} ${index === 2 ? "sm:border-t lg:border-t-0" : ""}`}>
+                  <dt className="text-xs text-muted-foreground">{metric.label}</dt>
+                  <dd className="mt-2 font-mono text-3xl font-medium tracking-tight">{metric.value}</dd>
+                  <p className="mt-2 text-xs leading-5 text-muted-foreground">{metric.detail}</p>
+                </div>
+              ))}
+            </dl>
+
+            <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(300px,0.6fr)]">
+              <div>
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <p className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
+                      Semantic effort order
+                    </p>
+                    <h3 className="mt-2 text-2xl font-medium tracking-tight">Same task block, different effort</h3>
+                  </div>
+                  <p className="max-w-sm text-sm leading-6 text-muted-foreground sm:text-right">
+                    Rows stay low → ultra. They are not sorted into a leaderboard.
+                  </p>
+                </div>
+                <div className="mt-6 divide-y divide-border overflow-hidden rounded-[14px] border border-border">
+                  {effort.effortRows.map((row) => (
+                    <EffortRow key={row.effort} row={row} isDefault={row.effort === effort.routing.defaultEffort} />
+                  ))}
+                </div>
+              </div>
+
+              <aside className="space-y-4">
+                <article className="rounded-[14px] border border-primary/30 bg-primary/[0.055] p-6">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                    <Route className="h-5 w-5" aria-hidden="true" />
+                  </div>
+                  <p className="mt-7 font-mono text-xs font-medium uppercase tracking-[0.16em] text-primary">Routing decision</p>
+                  <h3 className="mt-2 text-2xl font-medium">Default to high.</h3>
+                  <ul className="mt-5 space-y-3 text-sm leading-6 text-muted-foreground">
+                    <li>Preserve an explicit supported effort.</li>
+                    <li>Do not escalate after a failed run.</li>
+                    <li>Keep max and ultra opt-in.</li>
+                  </ul>
+                </article>
+
+                <article className="rounded-[14px] border border-border bg-background p-6">
+                  <p className="font-mono text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">Claim boundary</p>
+                  <h3 className="mt-2 text-xl font-medium">Configuration evidence, not provider identity.</h3>
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                    All {effort.terminal.total} cells were exactly routed and valid. None independently reported its model identity in the provider stream.
+                  </p>
+                  <div className="mt-5 border-t border-border pt-5">
+                    <p className="text-sm font-medium">This checkpoint does not establish</p>
+                    <ul className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">
+                      <li>Cross-model superiority</li>
+                      <li>Statistical reliability</li>
+                      <li>A 2.0 promotion gate</li>
+                    </ul>
+                  </div>
+                </article>
+              </aside>
             </div>
           </div>
         </section>
@@ -493,6 +659,24 @@ export default function BenchmarksPage() {
                 </p>
                 <div className="mt-7 grid gap-3">
                   <BenchmarkSourceLink
+                    href={reportUrl(benchmark.sourcePaths.effortResults)}
+                    target="effort_results"
+                  >
+                    51-cell effort results
+                  </BenchmarkSourceLink>
+                  <BenchmarkSourceLink
+                    href={reportUrl(benchmark.sourcePaths.effortClaimPolicy)}
+                    target="effort_claim_policy"
+                  >
+                    Public claim policy
+                  </BenchmarkSourceLink>
+                  <BenchmarkSourceLink
+                    href={reportUrl(benchmark.sourcePaths.effortClaimAudit)}
+                    target="effort_claim_audit"
+                  >
+                    Claim-policy audit
+                  </BenchmarkSourceLink>
+                  <BenchmarkSourceLink
                     href={reportUrl(benchmark.sourcePaths.harnessSummary)}
                     target="harness_summary"
                   >
@@ -541,7 +725,7 @@ export default function BenchmarksPage() {
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p>UI-Resolve · evidence before rank</p>
           <p className="font-mono text-xs">
-            {harness.modelId} · {harness.budget} · data {benchmark.dataAsOf}
+            {effort.policyId} · data {benchmark.dataAsOf}
           </p>
         </div>
       </footer>

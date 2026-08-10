@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -9,6 +10,14 @@ const CHECK = process.argv.includes("--check");
 const OUTPUT = join(ROOT, "web", "src", "data", "ui-benchmark-public.generated.json");
 
 const SOURCE_PATHS = {
+  effortSummary:
+    "benchmarks/ui-resolve-bench/reports/codex-all-effort-sweep-1.9.826/SUMMARY.final.json",
+  effortResults:
+    "benchmarks/ui-resolve-bench/reports/codex-all-effort-sweep-1.9.826/RESULTS.md",
+  effortClaimPolicy:
+    "benchmarks/ui-resolve-bench/config/public-benchmark-claim-policy.json",
+  effortClaimAudit:
+    "benchmarks/ui-resolve-bench/reports/effort-routing-claim-policy-1.9.827/AUDIT.json",
   harnessSummary:
     "benchmarks/ui-resolve-bench/reports/harness-efficiency-replacement-1.9.22/SUMMARY.final.json",
   harnessAggregate:
@@ -25,6 +34,43 @@ function readJson(relativePath) {
   return JSON.parse(readFileSync(join(ROOT, relativePath), "utf8"));
 }
 
+function readText(relativePath) {
+  return readFileSync(join(ROOT, relativePath), "utf8");
+}
+
+function sha256(value) {
+  return createHash("sha256").update(value).digest("hex");
+}
+
+function parseCount(value) {
+  const match = value.match(/(\d+)\s*\/\s*(\d+)/);
+  assert(match, `cannot parse count: ${value}`);
+  return { passed: Number(match[1]), total: Number(match[2]) };
+}
+
+function parseEffortRows(markdown) {
+  const section = markdown.match(/## Results by effort\n\n([\s\S]*?)\n\nUltra has/);
+  assert(section, "effort results table is missing");
+  return section[1]
+    .split("\n")
+    .filter((line) => /^\| (low|medium|high|xhigh|max|ultra) \|/.test(line))
+    .map((line) => {
+      const columns = line.split("|").slice(1, -1).map((value) => value.trim());
+      const [effort, cells, objective, objectiveAndProof, score, tokens, meanWall] = columns;
+      const tokenDigits = tokens.replace(/\([^)]*\)/g, "").replace(/\D/g, "");
+      return {
+        effort,
+        cells: Number(cells),
+        objective: parseCount(objective),
+        objectiveAndProof: parseCount(objectiveAndProof),
+        score: score.split(" / ").map(Number),
+        observedTokens: Number(tokenDigits),
+        observedTokenCells: tokens.includes("(") ? parseCount(tokens.match(/\(([^)]+)\)/)[1]).passed : Number(cells),
+        meanWallSeconds: Number(meanWall.replace("s", "")),
+      };
+    });
+}
+
 function assert(condition, message) {
   if (!condition) throw new Error(`[ui-benchmark-public-data] ${message}`);
 }
@@ -34,6 +80,37 @@ const aggregate = readJson(SOURCE_PATHS.harnessAggregate);
 const localeFailure = readJson(SOURCE_PATHS.localeFailure);
 const focusCalibration = readJson(SOURCE_PATHS.focusCalibration);
 const localeRecovery = readJson(SOURCE_PATHS.localeRecovery);
+const effortSummaryText = readText(SOURCE_PATHS.effortSummary);
+const effortSummary = JSON.parse(effortSummaryText);
+const effortResultsText = readText(SOURCE_PATHS.effortResults);
+const effortClaimPolicy = readJson(SOURCE_PATHS.effortClaimPolicy);
+const effortClaimAudit = readJson(SOURCE_PATHS.effortClaimAudit);
+const effortRows = parseEffortRows(effortResultsText);
+
+assert(effortSummary.interpretation_allowed === true, "effort sweep must permit interpretation");
+assert(effortSummary.interpretation_gate?.valid_records === 51, "effort sweep denominator changed");
+assert(effortRows.length === 6, "effort row count changed");
+assert(
+  sha256(effortSummaryText) === effortClaimPolicy.evidence.summary_sha256,
+  "effort summary no longer matches the claim policy",
+);
+assert(
+  sha256(effortResultsText) === effortClaimPolicy.evidence.results_sha256,
+  "effort results no longer match the claim policy",
+);
+assert(effortClaimAudit.status === "PASS", "effort claim policy audit must pass");
+assert(
+  effortClaimAudit.policy_id === effortClaimPolicy.policy_id,
+  "effort claim policy audit identity drifted",
+);
+assert(
+  effortClaimPolicy.publication.public_model_attribution_eligible_cells === 0,
+  "public copy assumes model identity is configuration-only",
+);
+assert(
+  effortClaimPolicy.publication.two_point_zero_promotion_effect === "none",
+  "public copy assumes this checkpoint does not promote 2.0",
+);
 
 assert(
   harness.experiment_id === "harness-efficiency-replacement-1.9.22",
@@ -72,8 +149,8 @@ assert(localeRecovery.candidate?.objective_score === 85, "locale recovery score 
 assert(localeRecovery.completed_cells === 1, "locale recovery denominator changed");
 
 const publicData = {
-  schemaVersion: "0.1",
-  dataAsOf: harness.run_date,
+  schemaVersion: "0.2",
+  dataAsOf: "2026-08-10",
   publication: {
     status: "internal",
     label: "Internal evidence",
@@ -108,6 +185,44 @@ const publicData = {
       publicResultAvailable: true,
     },
   ],
+  effortCheckpoint: {
+    experimentId: effortClaimPolicy.source_experiment,
+    policyId: effortClaimPolicy.policy_id,
+    status: "internal",
+    attribution: effortClaimPolicy.publication.model_identity_wording,
+    taskCount: 3,
+    trialsPerCell: 1,
+    terminal: {
+      passed: effortClaimPolicy.frozen_facts.terminal_valid_cells,
+      total: effortClaimPolicy.frozen_facts.terminal_valid_cells,
+    },
+    objective: {
+      passed: effortClaimPolicy.frozen_facts.objective_resolved_cells,
+      total: effortClaimPolicy.frozen_facts.terminal_valid_cells,
+    },
+    objectiveAndProof: {
+      passed: effortClaimPolicy.frozen_facts.objective_and_proof_resolved_cells,
+      total: effortClaimPolicy.frozen_facts.terminal_valid_cells,
+    },
+    observedTokens: {
+      total: effortClaimPolicy.frozen_facts.observed_total_tokens,
+      cells: effortClaimPolicy.frozen_facts.observed_token_cells,
+      scheduledCells: effortClaimPolicy.frozen_facts.terminal_valid_cells,
+    },
+    routing: {
+      defaultEffort: effortClaimPolicy.routing_decision.recommended_default_effort,
+      explicitEffort: effortClaimPolicy.routing_decision.explicit_user_effort,
+      automaticEscalation: effortClaimPolicy.routing_decision.automatic_escalation_allowed,
+      maxAndUltraDefault: effortClaimPolicy.routing_decision.max_and_ultra_default_allowed,
+    },
+    effortRows,
+    requiredDisclosures: effortClaimPolicy.publication.required_disclosures,
+    allowedClaims: effortClaimPolicy.publication.allowed_claims,
+    forbiddenClaims: effortClaimPolicy.publication.forbidden_claims,
+    publicModelAttributionEligibleCells:
+      effortClaimPolicy.publication.public_model_attribution_eligible_cells,
+    twoPointZeroPromotionEffect: effortClaimPolicy.publication.two_point_zero_promotion_effect,
+  },
   harnessCheckpoint: {
     experimentId: harness.experiment_id,
     status: harness.claim_status.toLowerCase(),
