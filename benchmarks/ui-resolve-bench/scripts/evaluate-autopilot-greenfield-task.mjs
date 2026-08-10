@@ -960,13 +960,43 @@ async function evaluateLocale(page, viewport) {
   const main = page.getByRole('main'); const axeCounts = []; const h1Counts = []; const cjkUnclipped = [];
   const checkState = async () => { axeCounts.push((await axeSeriousCritical(page)).count); h1Counts.push(await page.getByRole('heading', { level: 1 }).count()); };
   const initialText = (await main.innerText()).replace(/\s+/g, ' '); await checkState();
-  const select = page.getByRole('combobox', { name: /language/i }); const nav = page.getByRole('navigation', { name: /language/i });
   const locales = [{ code: 'ko', label: /한국어/, script: /진료|준비/ }, { code: 'en', label: /English/, script: /visit|preparation/i }, { code: 'ja', label: /日本語/, script: /受診|準備/ }, { code: 'zh-CN', label: /简体中文/, script: /就诊|准备/ }, { code: 'zh-TW', label: /繁體中文/, script: /就診|準備/ }]; const switched = [];
-  async function switchTo(locale) { if (await select.count() === 1) await select.selectOption(locale.code); else await nav.getByRole('button', { name: locale.label }).press('Enter'); await afterPaint(page); const lang = await page.locator('html').getAttribute('lang'); const text = (await main.innerText()).replace(/\s+/g, ' '); const selected = await select.count() === 1 ? (await select.inputValue()) === locale.code && locale.label.test(await select.locator('option:checked').innerText()) : (await nav.getByRole('button', { name: locale.label }).getAttribute('aria-pressed')) === 'true'; const box = await page.getByRole('heading', { level: 1 }).boundingBox(); cjkUnclipped.push(!['ja', 'zh-CN', 'zh-TW'].includes(locale.code) || Boolean(box && box.x >= -1 && box.x + box.width <= viewport.width + 1)); switched.push(lang === locale.code && locale.script.test(text) && selected); await checkState(); }
+  async function localeSelect() {
+    const candidates = page.getByRole('combobox');
+    for (let index = 0; index < await candidates.count(); index += 1) {
+      const candidate = candidates.nth(index);
+      const values = await candidate.locator('option').evaluateAll((options) => options.map((option) => option.value));
+      if (locales.every((locale) => values.includes(locale.code))) return candidate;
+    }
+    return null;
+  }
+  async function localeButton(locale) {
+    const candidates = page.getByRole('button', { name: locale.label });
+    for (let index = 0; index < await candidates.count(); index += 1) if (await candidates.nth(index).isVisible()) return candidates.nth(index);
+    return null;
+  }
+  async function switchTo(locale) {
+    const select = await localeSelect(); const button = select ? null : await localeButton(locale);
+    if (select) await select.selectOption(locale.code);
+    else if (button) await button.press('Enter');
+    else { switched.push(false); cjkUnclipped.push(false); await checkState(); return false; }
+    await afterPaint(page);
+    const lang = await page.locator('html').getAttribute('lang'); const text = (await main.innerText()).replace(/\s+/g, ' ');
+    const currentSelect = await localeSelect(); const currentButton = currentSelect ? null : await localeButton(locale);
+    const selected = currentSelect
+      ? (await currentSelect.inputValue()) === locale.code && locale.label.test(await currentSelect.locator('option:checked').innerText())
+      : Boolean(currentButton) && ['true', 'page'].includes((await currentButton.getAttribute('aria-pressed')) || (await currentButton.getAttribute('aria-current')) || '');
+    const box = await page.getByRole('heading', { level: 1 }).boundingBox(); cjkUnclipped.push(!['ja', 'zh-CN', 'zh-TW'].includes(locale.code) || Boolean(box && box.x >= -1 && box.x + box.width <= viewport.width + 1)); switched.push(lang === locale.code && locale.script.test(text) && selected); await checkState(); return true;
+  }
   for (const locale of locales) await switchTo(locale);
-  await switchTo(locales[1]); const checks = page.getByRole('checkbox'); await checks.first().check(); await afterPaint(page); const progress1 = (await page.getByRole('status').allInnerTexts()).join(' '); await checkState(); await switchTo(locales[2]); const progressJapanese = (await page.getByRole('status').allInnerTexts()).join(' '); await switchTo(locales[1]); const firstPreserved = await checks.first().isChecked(); const progressBack = (await page.getByRole('status').allInnerTexts()).join(' ');
-  await checks.nth(1).check(); await afterPaint(page); const completeEnglish = (await main.innerText()).replace(/\s+/g, ' '); await switchTo(locales[0]); await switchTo(locales[1]); const completionPreserved = (await checks.first().isChecked()) && (await checks.nth(1).isChecked()) && /(?:complete|2 of 2)/i.test((await main.innerText()).replace(/\s+/g, ' '));
-  const langBeforeUnavailable = await page.locator('html').getAttribute('lang'); const unavailable = page.getByRole('button', { name: /unavailable translation/i }); await unavailable.press('Enter'); await afterPaint(page); const unavailableAlert = page.getByRole('alert').filter({ hasText: /translation.*unavailable/i }); const unavailableHonest = await unavailableAlert.count() === 1 && await unavailableAlert.isVisible() && (await page.locator('html').getAttribute('lang')) === langBeforeUnavailable; await checkState();
+  await switchTo(locales[1]); const checks = page.getByRole('checkbox'); const hasChecklist = await checks.count() >= 2;
+  if (hasChecklist) { await checks.first().check(); await afterPaint(page); }
+  const progress1 = (await page.getByRole('status').allInnerTexts()).join(' '); await checkState(); await switchTo(locales[2]); const progressJapanese = (await page.getByRole('status').allInnerTexts()).join(' '); await switchTo(locales[1]); const firstPreserved = hasChecklist && await checks.first().isChecked(); const progressBack = (await page.getByRole('status').allInnerTexts()).join(' ');
+  if (hasChecklist) { await checks.nth(1).check(); await afterPaint(page); }
+  const completeEnglish = (await main.innerText()).replace(/\s+/g, ' '); await switchTo(locales[0]); await switchTo(locales[1]); const completionPreserved = hasChecklist && (await checks.first().isChecked()) && (await checks.nth(1).isChecked()) && /(?:complete|2 of 2)/i.test((await main.innerText()).replace(/\s+/g, ' '));
+  const langBeforeUnavailable = await page.locator('html').getAttribute('lang'); const unavailable = page.getByRole('button', { name: /unavailable translation/i });
+  if (await unavailable.count() === 1 && await unavailable.isVisible()) { await unavailable.press('Enter'); await afterPaint(page); }
+  const unavailableAlert = page.getByRole('alert').filter({ hasText: /translation.*unavailable/i }); const unavailableHonest = await unavailable.count() === 1 && await unavailableAlert.count() === 1 && await unavailableAlert.isVisible() && (await page.locator('html').getAttribute('lang')) === langBeforeUnavailable; await checkState();
   const initialControls = await page.locator('button,select,.check').evaluateAll((elements) => { const rects = elements.filter((element) => { const r = element.getBoundingClientRect(); return r.width > 0 && r.height > 0; }).map((element) => element.getBoundingClientRect()); return { unclipped: rects.every((r) => r.left >= -1 && r.right <= innerWidth + 1), min: rects.length ? Math.min(...rects.map((r) => Math.min(r.width, r.height))) : 0 }; });
   const allText = (await main.innerText()).replace(/\s+/g, ' '); const affirmative = allText.split(/(?<=[.!?。])|\n+/).filter((sentence) => !/(?:fictional|sample|not medical advice|does not infer|不是医疗建议|医療助言|의료 조언|不是醫療建議)/i.test(sentence)).join(' '); const claims = [...affirmative.matchAll(/\b(?:diagnosed with|you have (?:a|an)|take \d+ mg|medical advice|real clinic policy|doctor recommends?)\b/gi)].map((match) => match[0]);
   const progressPreserved = /1.*2|1\/2/.test(progress1) && /1.*2|1\/2/.test(progressJapanese) && /1.*2|1\/2/.test(progressBack) && firstPreserved;

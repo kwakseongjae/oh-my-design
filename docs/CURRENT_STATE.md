@@ -4,10 +4,16 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: task baseline commit `6acf2876`, repaired skill/evaluator commit `f1b5e219` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-10 · 1.9.852 frozen after evaluator RCA; 1.9.853 repair ready
+- 갱신: 2026-08-10 · 1.9.853 frozen at order3; locale evaluator RCA fixed
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- order3 provider 작업은 완료됐지만 locale selector가 영어 accessible name만 고정 탐색해 controller evaluator가 no-score로 종료했고 1.9.853은 2/3에서 영구 동결됐다. evaluator는 exact 5 locale option authority로 native select를 재탐색하고 native-script 버튼도 허용하며, state affordance 부재를 timeout이 아닌 assertion failure로 기록하도록 수정했다. 동결 산출물 provider-free 재평가는 40/100 valid failure(5 locale/lang/script PASS, progress/completion/unavailable/a11y FAIL)다. 1.9.853은 재사용하지 않고 fresh root만 허용한다.
+
+- order2 `cold-chain-operations`도 evaluator crash 없이 유효 종료됐다. DESIGN.md proof PASS, 40/100·UI-Resolved=false이며 responsive·evidence honesty·runtime은 통과했지만 queue/filter/keyboard detail/owner state와 accessibility가 실패했다. input 1,260,557(cached 1,192,448)+output 22,762, wall 479.413s다. evaluator 다형성 수정이 실제 provider 결과를 terminal quality failure로 정상 분류했다.
+
+- fresh 1.9.853 smoke order1 `neighborhood-library-landing`은 단일 Luna/high 노출로 유효 종료됐다. project-owned DESIGN.md proof는 PASS, objective는 50/100·UI-Resolved=false이며 예약 시작 state/focus와 responsive가 실패했다. 토큰은 input 3,278,184(cached 3,146,752)+output 37,073, wall 787.271s다. root는 checkpoint 1/3이고 retry 없이 order2로 진행한다.
 
 - 2.0 목표를 `설치 후 충분히 권한이 부여된 자연어 한 문장 → 필요 시 project-owned DESIGN.md → 실제 route → hash-bound proof`로 재설정했다. 기존 `omd:harness`는 mandatory checkpoint guided mode로 보존하고, 별도 portable `omd:autopilot`만 원샷 경로를 소유한다.
 - canonical `omd-autopilot` skill과 read-only `omd-design-system-architect` agent를 추가했다. main host agent만 DESIGN.md·product write owner이며 council은 최대3 lane, 질문은 consequential batch 최대1, repair는 최대2다.

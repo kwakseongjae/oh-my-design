@@ -6259,3 +6259,15 @@
 - 4 viewport×initial/post Axe·keyboard/focus·honest unknown·external/runtime를 측정한다.
 - CTA/overflow/social-proof mutant를 양 oracle에 주입한 6셀을 atomic group에서 검출했다.
 - full976·browser4·lint/build/diff green; incident dashboard calibration을 이어간다.
+## 2026-08-10 (Codex) · Autopilot 1.9.853 smoke order1
+- fresh root와 named in-app browser를 결속해 Luna/high order1을 1회 실행했다.
+- DESIGN.md proof PASS, 50/100·UI-Resolved=false로 예약 state/focus/responsive 결손을 기록했다.
+- 유효 실패를 분모에 유지하고 retry 없이 cold-chain order2로 진행한다.
+## 2026-08-10 (Codex) · Autopilot 1.9.853 smoke order2
+- cold-chain Luna/high를 1회 실행해 evaluator crash 없이 40/100 valid failure로 종료했다.
+- DESIGN.md proof와 responsive/honesty/runtime은 PASS, filter/detail/owner/a11y는 FAIL이다.
+- root는 2/3 checkpoint이며 마지막 다국어 task로 이어간다.
+## 2026-08-10 (Codex) · 1.9.853 locale evaluator freeze/RCA
+- order3에서 번역된 select label을 영어-only locator가 잃어 no-score로 root가 동결됐다.
+- option authority 기반 selector와 missing-state fail-soft를 추가해 locale E2E 6/6을 통과했다.
+- 실제 동결 결과는 provider-free로 40/100 valid failure가 됐으며 fresh root에서만 재실행한다.
