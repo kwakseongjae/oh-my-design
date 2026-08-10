@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-10 (Codex) · Autopilot smoke run path
+- 1.9.850 root의 exact prepare/audit가 3/3 PASS했다.
+- Codex1회→controller DS proof→task evaluator→atomic checkpoint 경로를 구현했다.
+- controller source가 바뀌었으므로 1.9.850은 미실행 보존하고 1.9.851을 fresh 발급한다.
+
 ## 2026-08-10 (Codex) · 1.9.850 runnable plan lock
 - commit `55a90134`의 exact source와 Luna/high 3셀을 plan SHA `a51317ce…5382`로 봉인했다.
 - immutable local catalog·CLI0.146.1·checkpoint1·no retry/fallback을 재검증했다.

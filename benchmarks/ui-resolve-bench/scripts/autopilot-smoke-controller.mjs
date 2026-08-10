@@ -9,6 +9,7 @@ import {
   mkdirSync,
   readFileSync,
   readdirSync,
+  renameSync,
   statSync,
   writeFileSync,
 } from "node:fs";
@@ -44,6 +45,11 @@ function readJson(path) { return JSON.parse(readFileSync(path, "utf8")); }
 function writeJsonExclusive(path, value) {
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`, { encoding: "utf8", flag: "wx" });
+}
+function writeJsonAtomic(path, value) {
+  const temp = `${path}.tmp-${process.pid}`;
+  writeFileSync(temp, `${JSON.stringify(value, null, 2)}\n`, { encoding: "utf8", flag: "wx" });
+  renameSync(temp, path);
 }
 function git(...args) {
   return execFileSync("git", ["-C", repoRoot, ...args], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
@@ -138,9 +144,11 @@ function planCommand(args) {
     variant_id: "omd-autopilot-v2", runtime: "codex", model_id: "gpt-5.6-luna", effort: "high",
     timeout_seconds: config.runtime.timeout_seconds, trial_index: 1,
   }));
+  const experimentId = String(args.get("experiment-id") ?? "autopilot-luna-high-smoke-1.9.850");
+  if (!/^autopilot-luna-high-smoke-1\.9\.\d+$/.test(experimentId)) throw new Error("invalid smoke experiment id");
   const plan = {
     schema_version: "0.1", kind: "autopilot-greenfield-diagnostic-smoke",
-    experiment_id: "autopilot-luna-high-smoke-1.9.850", status: "locked-provider-zero",
+    experiment_id: experimentId, status: "locked-provider-zero",
     claim_state: config.claim_state, source_commit: sourceCommit,
     source_authority: { schema_version: "0.1", files: sourceAuthority, sha256: sha256(canonical(sourceAuthority)) },
     smoke_contract: config,
@@ -241,12 +249,140 @@ function auditRoot(root, { requireUntouched = false } = {}) {
 }
 function auditCommand(args) { console.log(JSON.stringify(auditRoot(resolve(String(args.get("root") ?? ""))), null, 2)); }
 
+function walkFor(root, name, ignored = new Set([".benchmark", ".agents"])) {
+  const found = [];
+  function visit(current) {
+    for (const entry of readdirSync(current, { withFileTypes: true })) {
+      if (ignored.has(entry.name)) continue;
+      const absolute = join(current, entry.name);
+      if (entry.isSymbolicLink()) throw new Error(`symlink is forbidden in smoke evidence: ${absolute}`);
+      if (entry.isDirectory()) visit(absolute);
+      else if (entry.isFile() && entry.name === name) found.push(absolute);
+    }
+  }
+  visit(root);
+  return found.sort();
+}
+function controllerDesignSystemProof(root, cell, workspace) {
+  const omdRoot = join(workspace, ".omd");
+  if (!existsSync(omdRoot)) return { pass: false, reason: "autopilot-run-artifacts-missing", eligible_runs: 0 };
+  const decisions = walkFor(omdRoot, "design-system-decision.json");
+  const eligible = decisions.filter((decision) => {
+    const runDir = dirname(decision);
+    return existsSync(join(runDir, "system/provenance.json")) && existsSync(join(runDir, "system/coverage.json"));
+  });
+  if (eligible.length !== 1 || !existsSync(join(workspace, "DESIGN.md"))) {
+    return { pass: false, reason: "exactly-one-verifiable-design-system-run-required", eligible_runs: eligible.length };
+  }
+  const sourceRun = dirname(eligible[0]);
+  const auditRoot = join(root, ".controller-artifacts", cell.id, "design-system-audit");
+  const auditWorkspace = join(auditRoot, "workspace"); const auditRun = join(auditWorkspace, ".omd-run");
+  mkdirSync(join(auditRun, "system"), { recursive: true });
+  copyFileSync(join(workspace, "DESIGN.md"), join(auditWorkspace, "DESIGN.md"));
+  copyFileSync(join(sourceRun, "design-system-decision.json"), join(auditRun, "design-system-decision.json"));
+  copyFileSync(join(sourceRun, "system/provenance.json"), join(auditRun, "system/provenance.json"));
+  copyFileSync(join(sourceRun, "system/coverage.json"), join(auditRun, "system/coverage.json"));
+  const result = spawnSync(process.execPath, [join(repoRoot, validatorPath), auditWorkspace, auditRun], {
+    cwd: repoRoot, encoding: "utf8", timeout: 30_000,
+  });
+  const proofPath = join(auditRun, "system/proof.json");
+  if (!existsSync(proofPath)) return { pass: false, reason: "controller-design-system-validator-produced-no-proof", exit_code: result.status };
+  const proof = readJson(proofPath);
+  return {
+    pass: result.status === 0 && proof.pass === true,
+    reason: result.status === 0 && proof.pass === true ? null : "controller-design-system-proof-failed",
+    proof,
+    proof_sha256: sha256(readFileSync(proofPath)),
+    source_run_relative: relative(workspace, sourceRun).split(sep).join("/"),
+  };
+}
+function tokenSummary(run) {
+  const usage = run?.output?.model_usage ?? [];
+  return {
+    coverage: usage.length > 0,
+    input_tokens: usage.reduce((sum, item) => sum + Number(item.input_tokens ?? 0), 0),
+    cached_input_tokens: usage.reduce((sum, item) => sum + Number(item.cached_input_tokens ?? 0), 0),
+    output_tokens: usage.reduce((sum, item) => sum + Number(item.output_tokens ?? 0), 0),
+  };
+}
+function runCommand(args) {
+  const root = resolve(String(args.get("root") ?? ""));
+  const maxNew = Number(args.get("max-new-cells") ?? 0);
+  if (maxNew !== 1) throw new Error("autopilot smoke requires --max-new-cells 1");
+  auditRoot(root);
+  const plan = readJson(join(root, "RUN-MATRIX.locked.json"));
+  const statePath = join(root, "execution-state.json"); const state = readJson(statePath);
+  if (state.status === "complete" || state.status === "stopped-preregistered") throw new Error(`smoke root is not resumable: ${state.status}`);
+  const next = plan.cells.find((cell) => state.cells.find((item) => item.id === cell.id)?.status === "prepared");
+  if (!next) throw new Error("no prepared smoke cell remains");
+  const stateCell = state.cells.find((item) => item.id === next.id);
+  state.status = "running"; state.current_cell = next.id; stateCell.status = "running"; stateCell.started_at = new Date().toISOString();
+  writeJsonAtomic(statePath, state);
+  const workspace = join(root, next.id);
+  const runner = spawnSync(process.execPath, [join(repoRoot, "benchmarks/ui-resolve-bench/scripts/run-codex.mjs"),
+    "--workspace", workspace, "--model", next.model_id, "--reasoning", next.effort,
+    "--timeout-ms", String(next.timeout_seconds * 1000)], {
+    cwd: repoRoot, encoding: "utf8", timeout: (next.timeout_seconds + 30) * 1000,
+  });
+  const runResultPath = join(workspace, ".benchmark/run-result.json");
+  if (!existsSync(runResultPath)) {
+    state.status = "stopped-preregistered"; state.stop_reason = `provider-controller-result-missing:exit-${runner.status}`; stateCell.status = "stopped";
+    writeJsonAtomic(statePath, state); throw new Error(state.stop_reason);
+  }
+  const run = readJson(runResultPath);
+  const controllerDir = join(root, ".controller-artifacts", next.id); mkdirSync(controllerDir, { recursive: true });
+  const dsProof = controllerDesignSystemProof(root, next, workspace);
+  const scorePath = join(controllerDir, "task-score.json");
+  let evaluator = null;
+  if (existsSync(join(workspace, "index.html"))) {
+    const evaluated = spawnSync(process.execPath, [join(repoRoot, evaluatorPath), "--task-id", next.task_id, "--workspace", workspace, "--out", scorePath], {
+      cwd: repoRoot, encoding: "utf8", timeout: 180_000,
+    });
+    evaluator = { exit_code: evaluated.status, signal: evaluated.signal, stderr: evaluated.stderr?.slice(0, 4000) ?? "" };
+  }
+  if (!existsSync(scorePath) && run.process.exit_code === 0 && !run.process.timed_out) {
+    state.status = "stopped-preregistered"; state.stop_reason = "controller-task-evaluator-produced-no-score"; stateCell.status = "stopped";
+    writeJsonAtomic(statePath, state); throw new Error(state.stop_reason);
+  }
+  const score = existsSync(scorePath) ? readJson(scorePath) : null;
+  const taskPass = score?.ui_resolved === true;
+  const terminalSuccess = run.process.exit_code === 0 && !run.process.timed_out && dsProof.pass && taskPass;
+  const record = {
+    schema_version: "0.1", experiment_id: plan.experiment_id, cell: next,
+    validity: "valid", run_status: run.process.timed_out ? "timed_out" : "complete",
+    outcome: terminalSuccess ? "success" : "terminal-provider-failure",
+    ui_resolved: terminalSuccess,
+    provider_process: run.process, token_usage: tokenSummary(run),
+    runtime_authority: run.runtime.model_catalog_authority,
+    design_system_proof: dsProof,
+    task_score: score,
+    evaluator,
+    hashes: {
+      run_result_sha256: sha256(readFileSync(runResultPath)),
+      task_score_sha256: existsSync(scorePath) ? sha256(readFileSync(scorePath)) : null,
+      product_tree_sha256: treeManifest(workspace, { ignore: [".benchmark", ".agents", ".omd", "AGENTS.md", "agents", "scripts"] }).sha256,
+      design_md_sha256: existsSync(join(workspace, "DESIGN.md")) ? sha256(readFileSync(join(workspace, "DESIGN.md"))) : null,
+    },
+    finished_at: new Date().toISOString(),
+  };
+  writeJsonExclusive(join(controllerDir, "run-record.json"), record);
+  stateCell.status = "complete"; stateCell.finished_at = record.finished_at; stateCell.validity = "valid";
+  stateCell.run_status = record.run_status; stateCell.outcome = record.outcome; stateCell.ui_resolved = record.ui_resolved;
+  stateCell.run_record_sha256 = sha256(readFileSync(join(controllerDir, "run-record.json")));
+  state.completed_cells = state.cells.filter((item) => item.status === "complete").length;
+  state.current_cell = null; state.status = state.completed_cells === plan.cells.length ? "complete" : "checkpointed";
+  state.last_checkpoint = { completed_cells: state.completed_cells, cell_id: next.id, ui_resolved: record.ui_resolved, outcome: record.outcome };
+  writeJsonAtomic(statePath, state);
+  console.log(JSON.stringify({ state: state.status, checkpoint: state.last_checkpoint, record }, null, 2));
+}
+
 const command = process.argv[2];
 const args = parseArgs(process.argv.slice(3));
 if (command === "plan") planCommand(args);
 else if (command === "prepare") prepareCommand(args);
 else if (command === "audit") auditCommand(args);
+else if (command === "run") runCommand(args);
 else {
-  console.error("usage: autopilot-smoke-controller.mjs plan|prepare|audit ...");
+  console.error("usage: autopilot-smoke-controller.mjs plan|prepare|audit|run ...");
   process.exitCode = 2;
 }
