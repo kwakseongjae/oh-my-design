@@ -4,16 +4,20 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: task baseline commit `6acf2876`, repaired skill/evaluator commit `f1b5e219` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-10 · 1.9.826 exact 51-cell 실행·독립 집계 완료
+- 갱신: 2026-08-10 · 1.9.827 UI effort routing·public claim policy 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 1.9.827은 Codex Luna/Terra/Sol의 `ui-design-execution`에서 effort 미지정 시 OmD 기본값을 `high`로 둔다. catalog native default는 바꾸지 않고 explicit supported effort는 그대로 보존하며 unknown/unsupported는 fail-close한다.
+- 실패 뒤 max/ultra 자동 escalation·higher-effort retry·model/effort fallback은 모두 금지다. max/ultra는 opt-in only이며 non-Codex runtime은 effort를 명시해야 한다.
+- 공개 claim은 `public-descriptive-configuration-only`로 제한했다. 3 fixed tasks·cell당1 trial·objective/proof 분리·tokens50/51 coverage·configuration attribution을 반드시 밝히며 provider identity·ranking·superiority·reliability·industry-best·2.0 단독 승격 claim은 금지한다.
+- exact SUMMARY/RESULTS SHA와 portable facts를 재검산하는 policy audit는 PASS다. frontier readiness는 pass2·partial3·open3·external2, `BLOCK_2_0_PROMOTION`으로 변함없다. full test925 pass/5 skip·lint·build·diff-check green이다.
 - 1.9.826 exact block은 51/51 terminal valid·execution complete다. objective UI-resolved38/51(74.51%), objective+proof 동시 pass34/51(66.67%), 평균83.51/85·중앙85이며 유효 실패는 objective12+timeout1이다.
 - 관측 토큰은50/51 합계36,890,716, wall 합계12,528.833초다. Luna15/15, Terra12/18, Sol11/18 objective pass이며 effort별 objective pass는 low7/9·medium6/9·high8/9·xhigh7/9·max7/9·ultra3/6이다. public model identity가 아니라 exact Codex configuration attribution이다.
 - final aggregate는 plan/task/schedule·execution-state·controller record hash·routing attestation·immutable catalog authority를51/51 재계산해 `interpretation_allowed:true`다. 1.9.825는 denominator에서 완전히 제외했으며 entry-identity/pageerror 회귀도0이다.
 - 집계기만 v18 task-set projection에서 `task_tree_files`·baseline provenance/methodology를 누락해 첫 집계를 fail-close했다. 생성기와 동일한 projection으로 고치고 manifest mutation 회귀를 추가했으며 실제 `SUMMARY.final.json`과 `RESULTS.md`를 생성했다.
-- 다음은 aggregate fix+results+state를 커밋한 뒤 이 descriptive 결과를 2.0 effort-routing 기본값/공개 벤치마크 claim policy에 반영한다. max/ultra 비용 증가가 성공률 향상으로 이어지지 않았고, high가 common effort 중 objective/proof8/9로 가장 안정적이었다.
+- 다음은 이 정책을 공개 benchmark/docs surface가 소비하도록 연결하되, 현재 허용 문구 밖의 model leaderboard UI는 만들지 않는 것이다. 2.0 진척은 별도 unresolved normative gate의 fresh evidence로만 만든다.
 - v18 raw 기준선3개는 schema0.7/`ui-resolve-objective-2026q3-entry-identity-v1`로 provider-free 재생성했고 모두75/85·responsive/accessibility만 red다. static receipt0.3의 classic-inline-script compile gate와 evaluator entry-identity critical gate를 함께 봉인했다.
 - 1.9.826은 Codex0.146.1/cache client0.146.1 exact-match, immutable local catalog SHA `77df9127…6f5f`, Luna5·Terra6·Sol6 exact17 pair만 허용했다. cache는 provenance-only, `model_catalog_json`만 execution authority이며 Cursor·Claude·retry·replacement·fallback·substitution은0이다.
 - 1.9.825는 checkpoint3 뒤 order4 `pollen-luna-max-r1-omd`에서 evaluator context loss로 영구 동결됐다. 유효3셀 합계는735,130ms·2,271,261tokens, provider 노출4셀 합계는1,000,940ms·3,153,662tokens이며 order4는 score/record가 없어 결과에서 제외한다.

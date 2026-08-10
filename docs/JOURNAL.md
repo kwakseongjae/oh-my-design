@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-10 (Codex) · 1.9.827 effort routing + claim policy
+- Codex UI effort 미지정 기본을 high로 잠그고 explicit effort 보존·auto escalation0을 강제했다.
+- public claim은 configuration-only·3tasks×1trial·objective/proof 분리·tokens50/51 disclosure로 제한했다.
+- exact 1.9.826 evidence audit PASS, frontier readiness pass2/partial3/open3/external2로 변동 없다.
+- full test925 pass/5 skip·lint·build green이며 다음은 policy-aware publish surface다.
+
 ## 2026-08-10 (Codex) · 1.9.826 exact51 complete
 - 51/51 terminal valid: objective38/51, objective+proof34/51, 평균83.51/85다.
 - 관측 tokens36,890,716(50/51), wall12,528.833s이며 Luna15/15·Terra12/18·Sol11/18 objective pass다.

@@ -394,6 +394,23 @@ on Claude Code, and Composer 2.5/Grok 4.5 on Cursor Agent. Cross-runtime results
 are labelled model×runtime systems; only within-runtime slices are model-only
 comparisons.
 
+### 1.9.827 UI effort routing and claim boundary
+
+The complete 1.9.826 Codex effort block supports one bounded product decision:
+OmD defaults an unspecified Codex UI-design effort to `high` for the pinned
+Luna, Terra, and Sol routes. Explicit supported effort remains authoritative.
+The router never reacts to failure by silently escalating to max/ultra,
+retrying, substituting a model, or selecting a fallback effort. Catalog-native
+defaults remain unchanged.
+
+The result may be published only as a three-task, one-trial-per-cell,
+configuration-attributed descriptive result. Objective and proof-execution
+counts must remain separate, token totals must expose 50/51 coverage, and no
+provider-attested identity, model ranking, statistical superiority,
+reliability, industry-best, or 2.0 promotion claim follows. The machine
+contracts are `config/provider-routing-policy.json` and
+`config/public-benchmark-claim-policy.json`.
+
 ## 2.0.0 frontier gates
 
 All must pass:

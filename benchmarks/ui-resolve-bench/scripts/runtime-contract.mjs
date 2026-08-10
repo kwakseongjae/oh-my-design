@@ -9,6 +9,48 @@ export const PROVIDER_ROUTING_POLICY = Object.freeze(JSON.parse(
   readFileSync(PROVIDER_ROUTING_POLICY_PATH, "utf8"),
 ));
 
+const CODEX_UI_MODELS = Object.freeze([
+  "gpt-5.6-luna",
+  "gpt-5.6-terra",
+  "gpt-5.6-sol",
+]);
+const CODEX_UI_SUPPORTED_EFFORTS = Object.freeze({
+  "gpt-5.6-luna": Object.freeze(["low", "medium", "high", "xhigh", "max"]),
+  "gpt-5.6-terra": Object.freeze(["low", "medium", "high", "xhigh", "max", "ultra"]),
+  "gpt-5.6-sol": Object.freeze(["low", "medium", "high", "xhigh", "max", "ultra"]),
+});
+
+function assertUiEffortPolicyShape() {
+  const routing = PROVIDER_ROUTING_POLICY.ui_effort_routing;
+  if (PROVIDER_ROUTING_POLICY.schema_version !== "0.2"
+    || routing?.scope !== "ui-design-execution"
+    || routing.evidence_tier !== "internal-three-task-descriptive"
+    || routing.evidence_ref !== "reports/codex-all-effort-sweep-1.9.826/SUMMARY.final.json"
+    || routing.recommended_common_default !== "high"
+    || routing.catalog_default_is_not_overwritten !== true
+    || routing.missing_model_policy !== "require-explicit-effort"
+    || routing.failure_policy !== "return-failure-without-effort-retry"
+    || routing.max_and_ultra_are_opt_in_only !== true
+    || PROVIDER_ROUTING_POLICY.safety?.unsupported_effort_is_denied !== true
+    || PROVIDER_ROUTING_POLICY.safety?.automatic_effort_escalation_is_denied !== true) {
+    throw new Error("provider routing UI effort policy drift");
+  }
+  for (const model of CODEX_UI_MODELS) {
+    const entry = PROVIDER_ROUTING_POLICY.known_models?.[model];
+    const effort = entry?.ui_effort_policy;
+    if (entry?.required_runtime !== "codex"
+      || effort?.recommended_default !== "high"
+      || effort.explicit_override !== "preserve-if-supported"
+      || effort.automatic_escalation_allowed !== false
+      || !Array.isArray(effort.supported_efforts)
+      || JSON.stringify(effort.supported_efforts) !== JSON.stringify(CODEX_UI_SUPPORTED_EFFORTS[model])) {
+      throw new Error(`provider routing UI effort model policy drift: ${model}`);
+    }
+  }
+}
+
+assertUiEffortPolicyShape();
+
 export const CURSOR_LIVE_MODEL_ALLOWLIST = Object.freeze([
   "cursor-grok-4.5-high",
   "composer-2.5",
@@ -127,6 +169,53 @@ export function assertProviderRoute({
   return decision;
 }
 
+export function resolveUiEffortRoute({
+  runtime,
+  model,
+  effort = null,
+  scope = "ui-design-execution",
+} = {}) {
+  if (runtime !== "codex") {
+    if (typeof effort !== "string" || !effort) {
+      throw new Error(`UI effort must be explicit for runtime ${runtime ?? "missing"}`);
+    }
+    return {
+      effort,
+      source: "explicit-runtime-effort",
+      scope,
+      automatic_escalation_allowed: false,
+    };
+  }
+
+  const entry = PROVIDER_ROUTING_POLICY.known_models?.[model];
+  const policy = entry?.ui_effort_policy;
+  if (entry?.required_runtime !== "codex" || !policy) {
+    if (typeof effort === "string" && effort) {
+      return {
+        effort,
+        source: "explicit-unmanaged-model-effort",
+        scope,
+        automatic_escalation_allowed: false,
+      };
+    }
+    throw new Error(`UI effort route denied for unknown Codex model: ${model ?? "missing"}`);
+  }
+  if (scope !== PROVIDER_ROUTING_POLICY.ui_effort_routing.scope && !effort) {
+    throw new Error(`UI effort default is unavailable outside ${PROVIDER_ROUTING_POLICY.ui_effort_routing.scope}`);
+  }
+
+  const selected = effort || policy.recommended_default;
+  if (!policy.supported_efforts.includes(selected)) {
+    throw new Error(`unsupported UI effort for ${model}: ${selected}`);
+  }
+  return {
+    effort: selected,
+    source: effort ? "explicit-supported-effort" : "internal-descriptive-policy-default",
+    scope,
+    automatic_escalation_allowed: false,
+  };
+}
+
 export function cursorModelEvidenceMode(requested, reported) {
   if (reported === requested) return "provider-observed";
   if (CURSOR_RUNTIME_DISPLAY_LABELS[requested] === reported) {
@@ -157,18 +246,26 @@ export const RUNTIME_REGISTRY = Object.freeze({
 export function runnerSpecForCell(cell, workspace) {
   const registered = RUNTIME_REGISTRY[cell?.runtime];
   if (!registered) throw new Error(`unsupported runtime: ${cell?.runtime ?? "<missing>"}`);
+  const effortRoute = resolveUiEffortRoute({
+    runtime: cell.runtime,
+    model: cell.model_id,
+    effort: cell.effort ?? null,
+  });
   return {
     runtime: cell.runtime,
     runner: resolve(fileURLToPath(new URL(`./${registered.runner}`, import.meta.url))),
     expected_agent: registered.expected_agent,
     effort_flag: registered.effort_flag,
+    effort: effortRoute.effort,
+    effort_source: effortRoute.source,
+    automatic_effort_escalation_allowed: effortRoute.automatic_escalation_allowed,
     provider_effort_flag: Object.hasOwn(registered, "provider_effort_flag")
       ? registered.provider_effort_flag
       : registered.effort_flag,
     args: [
       "--workspace", workspace,
       "--model", cell.model_id,
-      registered.effort_flag, cell.effort,
+      registered.effort_flag, effortRoute.effort,
       "--timeout-ms", String(cell.timeout_seconds * 1000),
       ...(cell.runtime === "codex" && cell.host_policy_mode
         ? ["--load-user-config"]

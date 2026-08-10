@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1",
+  "policy_id": "codex-effort-routing-public-claims-1.9.827",
+  "source_experiment": "codex-all-effort-sweep-1.9.826",
+  "evidence": {
+    "summary_ref": "benchmarks/ui-resolve-bench/reports/codex-all-effort-sweep-1.9.826/SUMMARY.final.json",
+    "summary_sha256": "5124eedf1136258608aff64f4faf37f8cfc28391d809df47241de29103c0bc61",
+    "results_ref": "benchmarks/ui-resolve-bench/reports/codex-all-effort-sweep-1.9.826/RESULTS.md",
+    "results_sha256": "7f4f99e914fa4930020c5fc618c05bd9c8db771a5a7b016ea170bcc288641abb"
+  },
+  "routing_decision": {
+    "scope": "ui-design-execution",
+    "eligible_runtime": "codex",
+    "eligible_models": ["gpt-5.6-luna", "gpt-5.6-terra", "gpt-5.6-sol"],
+    "recommended_default_effort": "high",
+    "decision_tier": "internal-descriptive-default",
+    "explicit_user_effort": "preserve-if-supported",
+    "automatic_escalation_allowed": false,
+    "retry_with_higher_effort_allowed": false,
+    "fallback_effort_allowed": false,
+    "max_and_ultra_default_allowed": false,
+    "catalog_default_effort_overridden": false
+  },
+  "publication": {
+    "tier": "public-descriptive-configuration-only",
+    "model_identity_wording": "Codex configuration-routed Luna/Terra/Sol",
+    "required_disclosures": [
+      "three fixed tasks",
+      "one trial per model-effort-task cell",
+      "configuration-attributed model identity",
+      "objective and proof-execution are separate gates",
+      "token totals cover 50 of 51 cells"
+    ],
+    "allowed_claims": [
+      "exact-block-completed-51-of-51",
+      "objective-resolved-38-of-51",
+      "objective-and-proof-resolved-34-of-51",
+      "high-objective-resolved-8-of-9",
+      "high-objective-and-proof-resolved-8-of-9",
+      "observed-token-total-36890716-with-50-of-51-coverage",
+      "task-specific-descriptive-model-and-effort-rows"
+    ],
+    "forbidden_claims": [
+      "provider-attested-model-identity",
+      "model-superiority",
+      "cross-model-ranking",
+      "statistical-superiority",
+      "reliability-estimate",
+      "industry-best",
+      "promotion-ready-38-of-51",
+      "max-or-ultra-improves-quality",
+      "2.0-release-gate-from-this-test-alone"
+    ],
+    "public_model_attribution_eligible_cells": 0,
+    "two_point_zero_promotion_effect": "none"
+  },
+  "frozen_facts": {
+    "terminal_valid_cells": 51,
+    "objective_resolved_cells": 38,
+    "objective_and_proof_resolved_cells": 34,
+    "high_cells": 9,
+    "high_objective_resolved_cells": 8,
+    "high_objective_and_proof_resolved_cells": 8,
+    "observed_token_cells": 50,
+    "observed_total_tokens": 36890716
+  }
+}
