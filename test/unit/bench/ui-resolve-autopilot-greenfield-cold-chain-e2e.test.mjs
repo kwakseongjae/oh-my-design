@@ -15,6 +15,20 @@ const mutant = (source, label, transform) => { const workspace = join(mkdtempSyn
   it('accepts responsive table/drawer and card/detail implementations', () => {
     for (const source of ['oracle-a', 'oracle-b']) expect(evaluate(join(fixtures, source), `valid-${source}`)).toMatchObject({ score: 100, ui_resolved: true });
   }, 60_000);
+  it('accepts a programmatic urgent button and arbitrary visible shipment prefixes', () => {
+    const workspace = mutant('oracle-a', 'button-filter', (html) => html
+      .replaceAll('CC-', 'SMP-')
+      .replace('<label class="filter"><input id="urgent" type="checkbox"> Urgent shipments only</label>', '<button class="filter" id="urgent" type="button" aria-pressed="false">Urgent shipments only</button>')
+      .replace("urgent.addEventListener('change',()=>{rows.forEach(r=>r.hidden=urgent.checked&&r.dataset.priority!=='urgent'); count.textContent=rows.filter(r=>!r.hidden).length; summary.textContent=urgent.checked?'Urgent filter active':'All priorities'});", "urgent.addEventListener('click',()=>{const active=urgent.getAttribute('aria-pressed')!=='true';urgent.setAttribute('aria-pressed',String(active));rows.forEach(r=>r.hidden=active&&r.dataset.priority!=='urgent');count.textContent=rows.filter(r=>!r.hidden).length;summary.textContent=active?'Urgent filter active':'All priorities'});"));
+    expect(evaluate(workspace, 'button-filter')).toMatchObject({ score: 100, ui_resolved: true });
+  }, 60_000);
+  it('writes a terminal failure score when no supported urgent control exists', () => {
+    const workspace = mutant('oracle-a', 'missing-filter', (html) => html
+      .replace('<label class="filter"><input id="urgent" type="checkbox"> Urgent shipments only</label>', '<p>Urgent shipments are listed below.</p>'));
+    const result = evaluate(workspace, 'missing-filter');
+    expect(result.ui_resolved).toBe(false);
+    expect(result.assertions.filter_selected_and_visible).toBe(false);
+  }, 60_000);
   it('kills a 320px clipping defect in both structures', () => {
     for (const source of ['oracle-a', 'oracle-b']) { const result = evaluate(mutant(source, `clip-${source}`, (html) => html.replace('</style>', 'body{min-width:720px!important}</style>')), `clip-${source}`); expect(result.assertions.responsive).toBe(false); expect(result.groups.journey.pass).toBe(true); }
   }, 60_000);

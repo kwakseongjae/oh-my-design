@@ -5,6 +5,16 @@
 
 ---
 
+## 2026-08-10 (Codex) · 1.9.852 evaluator freeze/RCA
+- order2 생성은 끝났지만 checkbox/CC 전용 evaluator timeout으로 root가 영구 동결됐다.
+- 실제 button/SMP 결과는 provider-free 재평가에서 20/100 valid failure로 확인했다.
+- role/name 다형성+no-score receipt 회귀를 고친 뒤 fresh 1.9.853으로만 재실행한다.
+
+## 2026-08-10 (Codex) · Autopilot Luna/high smoke order1
+- 1.9.852 order1 landing은 DS proof PASS 후 30/100·UI-Resolved=false로 유효 종료됐다.
+- 예약 시작 state/focus가 없고 4 viewport에서 동일 contrast 8건이 검출됐다.
+- retry 없이 실패를 분모에 유지하고 checkpoint 1/3에서 order2로 진행한다.
+
 ## 2026-08-10 (Codex) · final 1.9.852 lock
 - controller `4b114b59`에서 plan `9718e9a9…94c7`을 final fresh lock으로 발급했다.
 - named in-app browser receipt와 exact Luna/high runtime 없이는 실행이 거부된다.

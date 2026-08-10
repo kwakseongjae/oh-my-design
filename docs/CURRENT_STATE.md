@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: task baseline commit `6acf2876`, repaired skill/evaluator commit `f1b5e219` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-10 · 1.9.829–1.9.850 Autopilot 2.0 calibration and exact Luna/high smoke controller
+- 갱신: 2026-08-10 · 1.9.852 frozen after evaluator RCA; 1.9.853 repair ready
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -44,6 +44,9 @@
 - 12/12 family 전부 provider-zero calibration이 완료됐다. oracle은 24개, targeted mutant cell은 72개이며 combined opt-in calibration은 18 files/130 tests, pure scorer는 61/61로 green이다. evaluator SHA는 `d6dc37b5…b593`이다.
 - 1.9.849 Luna/high diagnostic smoke 계약을 provider-zero로 사전등록했다. landing→dense operations→five-locale 세 task, exact prompt·blank starter·task/adapter/evaluator·14-file portable bundle hash, Codex Luna/high·serial·900s·checkpoint1·retry/replacement/fallback/substitution/Cursor/Claude0를 고정했다. 현재 contract는 `provider_execution_allowed:false`이며 clean committed source와 immutable runtime authority가 준비되기 전에는 실행할 수 없다.
 - 1.9.850 greenfield smoke controller를 추가했다. exact commit의 task·prompt·skill·evaluator만 읽고 blank shell 3개를 만들며, 1.9.826에서 검증된 immutable auth/cache/model-catalog와 Codex CLI exact pair를 재검증한다. oracle/mutant는 workspace에 복제하지 않고 Luna/high·checkpoint1·no-retry 계약을 독립 audit한다. controller 자체의 clean commit 뒤 provider-zero plan/prepare/audit를 실행해야 한다.
+- final 1.9.852 Luna/high diagnostic smoke의 order1 `neighborhood-library-landing`이 유효한 terminal provider failure로 checkpoint됐다. DESIGN.md/system proof는 PASS였지만 reservation start state/focus transfer가 없고 4 viewport 모두 같은 color-contrast 8건이 발생해 30/100, UI-Resolved=false다. 1 provider exposure, input 1,530,391 / cached 1,431,040 / output 25,748; retry·replacement 없이 분모에 유지한다.
+- order2 `cold-chain-operations`는 provider 생성과 DS proof까지 완료했지만 evaluator가 checkbox/`CC-*`만 가정해 실제 button/`SMP-*` 다형성에서 locator timeout으로 score를 쓰지 못했다. 1.9.852는 `stopped-preregistered`로 영구 동결했고 order3은 미실행이다. 모델 결과 복사본을 provider-free 재평가하면 20/100·UI-Resolved=false로 정상 terminal score가 나온다.
+- cold-chain evaluator는 checkbox/switch/button/combobox filter, arbitrary visible shipment prefix, focusable row/button/link action을 role/name으로 판별하고 미지원 control을 crash가 아닌 failure score로 기록하도록 고쳤다. 두 oracle+valid button variant+missing-filter+3 mutant 회귀 6/6이 green이며 controller는 향후 evaluator failure receipt SHA를 동결한다.
 - controller commit `55a90134`를 authority로 실제 1.9.850 plan/receipt를 발급했다. plan SHA `a51317ce…5382`, source authority `3639f309…3305`, schedule `5ae75f2b…0280`, provider/model/Cursor0이다. plan을 commit한 뒤에만 fresh root prepare/audit를 진행한다.
 - 1.9.850 fresh root의 provider-zero prepare/audit가 3/3 PASS했다. 이어 run path가 셀 시작 state를 원자 기록하고 Codex 1회→controller-owned DS proof→4-viewport task evaluator→terminal checkpoint를 수행하도록 구현됐다. provider success인데 evaluator artifact가 없으면 root를 중단하고, 모델 실패/timeout은 retry 없이 valid terminal failure로 남긴다. run-path commit 때문에 1.9.850 root는 실행하지 않고 새 1.9.851 authority로 재발급한다.
 - run controller commit `f2b74be9`로 1.9.851을 fresh 발급했다. plan `8f037336…a735`, source authority `fcfb22ce…744a`, schedule `5ae75f2b…0280`, generation provider/model/Cursor0이다. plan commit→fresh prepare/audit→order1 단일 실행 순서를 유지한다.
@@ -3870,9 +3873,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. final 1.9.852 plan/receipt를 commit하고 사용자 소유 `web/public/llms-full.txt`는 제외한다.
-2. fresh prepare/audit와 plan-bound in-app browser receipt 뒤 frozen order대로 checkpoint당 1셀만 실행한다. 실패도 재시도·replacement 없이 분모에 남긴다.
-4. smoke 통과 뒤에만 같은 prompt/starter/runtime 통제의 competitor qualification을 준비하고, superiority/public one-shot claim은 12×5·transfer·blind-review 전까지 금지한다.
+1. evaluator/controller repair focused+full provider-zero tests, lint/build/diff를 통과시키고 clean commit한다.
+2. 새 source authority로 1.9.853 plan/receipt/root/browser admission을 발급한다. 1.9.852 artifact/workspace는 재사용하지 않는다.
+3. order1→3을 checkpoint1로 정확히 1회씩 실행한다. 실패도 terminal valid 분모에 유지하고 authority/infrastructure failure만 새 root를 동결한다.
+4. 3셀 종료 뒤 결과·질문수·DS proof·UI-Resolved·시간/토큰을 정직하게 요약한다. superiority/public one-shot claim은 12×5·transfer·blind-review 전까지 금지한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

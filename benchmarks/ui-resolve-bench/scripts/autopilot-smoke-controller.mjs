@@ -379,8 +379,11 @@ function runCommand(args) {
     });
     evaluator = { exit_code: evaluated.status, signal: evaluated.signal, stderr: evaluated.stderr?.slice(0, 4000) ?? "" };
   }
+  const evaluatorResultPath = join(controllerDir, "evaluator-result.json");
+  writeJsonAtomic(evaluatorResultPath, evaluator ?? { exit_code: null, signal: null, stderr: "", reason: "index-html-missing" });
   if (!existsSync(scorePath) && run.process.exit_code === 0 && !run.process.timed_out) {
     state.status = "stopped-preregistered"; state.stop_reason = "controller-task-evaluator-produced-no-score"; stateCell.status = "stopped";
+    stateCell.evaluator_result_sha256 = sha256(readFileSync(evaluatorResultPath));
     writeJsonAtomic(statePath, state); throw new Error(state.stop_reason);
   }
   const score = existsSync(scorePath) ? readJson(scorePath) : null;
@@ -399,6 +402,7 @@ function runCommand(args) {
     hashes: {
       run_result_sha256: sha256(readFileSync(runResultPath)),
       task_score_sha256: existsSync(scorePath) ? sha256(readFileSync(scorePath)) : null,
+      evaluator_result_sha256: sha256(readFileSync(evaluatorResultPath)),
       product_tree_sha256: treeManifest(workspace, { ignore: [".benchmark", ".agents", ".omd", "AGENTS.md", "agents", "scripts"] }).sha256,
       design_md_sha256: existsSync(join(workspace, "DESIGN.md")) ? sha256(readFileSync(join(workspace, "DESIGN.md"))) : null,
     },

@@ -31,9 +31,9 @@ const validIncident = () => ({
 });
 
 const validColdChain = () => ({
-  task_identity: true, sample_scope_visible: true, shipment_count: 3, urgent_count: 2, routine_count: 1,
+  task_identity: true, sample_scope_visible: true, shipment_count: 3, urgent_count: 2, non_urgent_count: 1, routine_count: 1,
   filter_selected_and_visible: true, filtered_contents_exact: true, keyboard_open_sample: true,
-  matching_evidence_detail: true, owner_error_associated: true, assigned_owner_confirmed_and_persistent: true,
+  matching_evidence_detail: true, owner_error_associated: true, sample_owner_options: true, assigned_owner_confirmed_and_persistent: true,
   protected_unknown_claims: [], viewports: [1440, 390, 320, 720].map((width) => ({
     mobile: width <= 390, document_overflow_px: 0, critical_fields_reachable: true,
     controls_horizontally_unclipped: true, control_min_dimension_px: 44,
