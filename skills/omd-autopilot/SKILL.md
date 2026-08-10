@@ -36,7 +36,10 @@ folders and must never edit `DESIGN.md` or product files.
    receipt is mandatory and never grants product-write authority.
 4. `CONSEQUENTIAL_INTERVIEW` — ask zero or one batch. Ask only unresolved
    product-authority decisions that materially change acceptance or the design
-   system. A sufficiently authorized prompt proceeds without a question.
+   system. A sufficiently authorized prompt proceeds without a question. Never
+   create, infer, or edit `council-intake.answers.json` on the user's behalf;
+   that file may contain only an actual user response relayed verbatim after
+   the controller has entered `CONSEQUENTIAL_INTERVIEW`.
 5. `DESIGN_SYSTEM_DISPOSITION` — resolve exactly one of `reuse`, `establish`,
    `refresh`, or `surface-local-only`. A missing exact brand source is blocked.
    After the council handoff reaches `PROPOSE_PLAN`, run the installed
@@ -62,6 +65,10 @@ Run `autopilot-mission.cjs <project-root> <run-dir> advance` at every state
 boundary. The controller rejects product edits before authority, limits
 pre-proof changes to `DESIGN.md`, issues the product-build admission only after
 an exact system proof, and refuses to force-pass an exhausted repair budget.
+Only one project-scoped Autopilot mission may be active. Continue its bounded
+repair loop in the same run; never create a second run to replace, retry, or
+escape an unresolved active mission. Completed and failed missions are
+terminal and non-resumable.
 
 ## Design-system decision
 

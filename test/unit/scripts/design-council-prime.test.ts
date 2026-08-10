@@ -133,6 +133,41 @@ describe('design-council-prime', () => {
     });
   });
 
+  it.each([
+    {
+      task: 'From scratch, create a landing page for a neighborhood tool library. Establish a project-owned design system. Help residents understand borrowing and make the primary action Reserve a tool. Do not invent inventory counts, prices, testimonials, or partner logos.',
+      audience: '지역 주민·커뮤니티 사용자', scope: '풀 랜딩', cta: 'Reserve a tool',
+    },
+    {
+      task: 'From scratch, create a dense cold-chain exception queue for warehouse operators. Establish a project-owned design system. Operators must filter urgent shipments, inspect one exception, and assign an owner. Label all records as sample data and do not invent regulatory claims.',
+      audience: 'B2B 운영자·관리자', scope: '단일 화면',
+      cta: 'Complete required journey: filter urgent shipments, inspect one exception, and assign an owner',
+    },
+    {
+      task: 'From scratch, create a clinic visit preparation checklist with locale switching for Korean, English, Japanese, Simplified Chinese, and Traditional Chinese. Establish a project-owned design system. A user must switch locale, review fictional preparation items, mark progress, and see completion. Do not provide medical advice or infer a diagnosis.',
+      audience: '일반 사용자', scope: '단일 화면',
+      cta: 'Complete required journey: switch locale, review fictional preparation items, mark progress, and see completion',
+    },
+  ])('treats the fully specified smoke prompt as zero-interview authority: $scope', ({ task, audience, scope, cta }) => {
+    const { ledger } = fixture(task, {
+      surface_inventory: [], audience_hypothesis: [], wow_moment_candidates: [],
+    });
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'primary-audience')).toMatchObject({
+      proposed_value: audience, disposition: 'auto', authority: 'user-stated',
+    });
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'exit-scope')).toMatchObject({
+      proposed_value: scope, disposition: 'auto', authority: 'user-stated',
+    });
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'primary-cta')).toMatchObject({
+      proposed_value: cta, disposition: 'auto', authority: 'user-stated',
+    });
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'design-system-disposition')).toMatchObject({
+      proposed_value: 'establish', disposition: 'auto', authority: 'user-stated',
+    });
+    expect(ledger.summary.interview).toBe(0);
+    expect(ledger.summary.interview_required).toBe(false);
+  });
+
   it('keeps explicitly declined systems local to the requested surface', () => {
     const { ledger } = fixture(
       '새 온보딩 화면을 처음부터 만들되 디자인 시스템 없이 이번 화면만 완성해줘.',

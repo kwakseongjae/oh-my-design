@@ -4,10 +4,19 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: task baseline commit `6acf2876`, repaired skill/evaluator commit `f1b5e219` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-10 · 1.9.853 frozen at order3; locale evaluator RCA fixed
+- 갱신: 2026-08-10 · 1.9.854 Luna/high smoke complete; 2.0 quality gate failed
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- fresh 1.9.854 smoke는 3/3 valid terminal로 완결됐다. DESIGN.md proof 3/3 PASS지만 UI-Resolved 0/3이며 score는 landing10, cold-chain20, locale40(평균23.33/중앙20)이다. journey·responsive는 0/3, accessibility 1/3, runtime 3/3다. 총 wall 1,594.326s, input+output 5,632,536(cached input 5,256,960 포함)이다.
+- 실제 사용자 개입은 0이었지만 final mission들에 7개 council question이 생성됐고 landing/cold-chain은 model-authored answer 파일을 만들었으며 cold-chain은 abandoned+v2 두 run lineage를 남겼다. 따라서 one-shot autonomy claim은 BLOCK이며, 다음 구현은 zero fabricated user authority + exactly-one mission lineage + task-contract-aware bounded self-repair다.
+- 1.9.855 authority gate는 실제 smoke prompt 3개를 그대로 zero-interview 회귀로 잠갔다. 명시된 residents/operators/user, landing/queue/checklist, primary action/required journey를 user-stated authority로 보존하며 self-authored answers를 거부한다.
+- `.omd/autopilot-active.json`이 프로젝트당 active mission을 1개로 제한한다. HANDOFF/FAILED_HANDOFF는 completed/failed terminal이 되어 non-resumable이며, 새 run은 이전 marker가 정직한 terminal일 때만 시작한다.
+
+- order2 cold-chain은 DESIGN.md proof PASS 후 20/100·UI-Resolved=false로 유효 종료됐다. evidence honesty/runtime은 PASS, task/queue/filter/detail/owner journey와 responsive/a11y는 FAIL이다. input 1,329,982(cached 1,235,456)+output 25,043, wall 497.649s이며 evaluator crash 없이 마지막 locale 셀로 진행한다.
+
+- fresh 1.9.854 order1 landing은 DESIGN.md proof PASS 후 10/100·UI-Resolved=false로 유효 종료됐다. runtime만 critical PASS이며 reservation journey, responsive, contrast accessibility, unavailable-information honesty가 실패했다. input 1,697,747(cached 1,611,008)+output 26,288, wall 543.428s이며 retry 없이 order2로 진행한다.
 
 - order3 provider 작업은 완료됐지만 locale selector가 영어 accessible name만 고정 탐색해 controller evaluator가 no-score로 종료했고 1.9.853은 2/3에서 영구 동결됐다. evaluator는 exact 5 locale option authority로 native select를 재탐색하고 native-script 버튼도 허용하며, state affordance 부재를 timeout이 아닌 assertion failure로 기록하도록 수정했다. 동결 산출물 provider-free 재평가는 40/100 valid failure(5 locale/lang/script PASS, progress/completion/unavailable/a11y FAIL)다. 1.9.853은 재사용하지 않고 fresh root만 허용한다.
 
@@ -3879,10 +3888,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. evaluator/controller repair focused+full provider-zero tests, lint/build/diff를 통과시키고 clean commit한다.
-2. 새 source authority로 1.9.853 plan/receipt/root/browser admission을 발급한다. 1.9.852 artifact/workspace는 재사용하지 않는다.
-3. order1→3을 checkpoint1로 정확히 1회씩 실행한다. 실패도 terminal valid 분모에 유지하고 authority/infrastructure failure만 새 root를 동결한다.
-4. 3셀 종료 뒤 결과·질문수·DS proof·UI-Resolved·시간/토큰을 정직하게 요약한다. superiority/public one-shot claim은 12×5·transfer·blind-review 전까지 금지한다.
+1. authority/lineage gate를 clean commit한 뒤 full provider-zero tests, lint/build/diff와 smoke-controller source-authority 회귀를 통과시킨다.
+2. task별 observable acceptance checklist를 implementation 전에 materialize하고 proof 실패를 같은 mission의 최대2회 focused repair 입력으로 연결한다.
+3. provider-zero clean-dir에서 질문0·lineage1·DS proof·task proof·repair receipt를 검증한다.
+4. 그 뒤에만 fresh 1.9.856 Luna/high 3셀을 준비한다. superiority/public one-shot claim은 12×5·transfer·blind-review 전까지 금지한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

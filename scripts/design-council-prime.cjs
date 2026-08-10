@@ -69,6 +69,8 @@ const audienceMatches = matchedSignals([
   { pattern: /(b2b|enterprise|admin|operator|운영자|관리자|기업 고객|管理者|運営者|管理员|管理員|运营者|營運者|企業客戶|企业客户)/i, value: 'B2B 운영자·관리자' },
   { pattern: /(developer|개발자|engineer|엔지니어|開発者|エンジニア|开发者|開發者|工程师|工程師)/i, value: '개발자·기술 사용자' },
   { pattern: /(family|가족|parent|부모|아이|children|家族|保護者|家庭|家人|父母|儿童|兒童)/i, value: '가족·보호자 사용자' },
+  { pattern: /(resident|residents|neighbor|neighbors|community member|community members|주민|이웃|지역 사용자|住民|近隣住民|居民|鄰里|邻里)/i, value: '지역 주민·커뮤니티 사용자' },
+  { pattern: /(?:\ba user\b|\busers\b|사용자|利用者|ユーザー|用户|使用者)/i, value: '일반 사용자' },
   { pattern: /(consumer|일반 사용자|고객|쇼핑객|一般ユーザー|消費者|消费者|一般使用者|一般用户)/i, value: '일반 소비자' },
 ]);
 const explicitAudience = audienceMatches.length === 1 && !audienceMatches[0].negated ? audienceMatches[0] : null;
@@ -77,16 +79,29 @@ const scopeMatches = matchedSignals([
   { pattern: /(multi[- ]?surface|다중 surface|여러 화면|전체 플로우|end[- ]?to[- ]?end|複数画面|複数サーフェス|多頁面|多页面|多个页面|多個畫面)/i, value: '다중 surface' },
   { pattern: /(full landing|풀 랜딩|landing page|랜딩페이지|hero.+footer|フルランディング|ランディングページ|完整落地頁|完整落地页|完整着陆页)/i, value: '풀 랜딩' },
   { pattern: /(single screen|단일 화면|한 화면|one screen|component only|컴포넌트만|単一画面|一画面|單一畫面|单一页面|單一頁面)/i, value: '단일 화면' },
+  { pattern: /(?:create|build|make|implement|만들|구축|구현|作成|構築|建立|创建|創建).{0,64}(?:queue|checklist|dashboard|editor|search(?:\s+experience)?|form|onboarding|checkout|approval(?:\s+flow)?|console|목록|체크리스트|대시보드|에디터|검색|폼|온보딩|결제|승인|콘솔)/i, value: '단일 화면' },
 ]);
 const scopeSignal = scopeMatches.length === 1 && !scopeMatches[0].negated ? scopeMatches[0] : null;
 
+const explicitPrimaryAction = task.match(/(?:primary action|핵심 행동|주요 행동|主なアクション|主要操作|主要行動)\s*(?:is|은|는|:|：)?\s*([^.!?\n]+)/i);
+const explicitRequiredJourney = task.match(/(?:operators?|residents?|users?|사용자|운영자|주민|利用者|ユーザー|用户|使用者)\s+must\s+([^.!?\n]+)/i)
+  || task.match(/(?:사용자|운영자|주민)(?:는|은)?\s+([^.!?\n]+?)(?:해야|하여야|할 수 있어야)/i);
 const ctaMatches = matchedSignals([
   { pattern: /(github|\bstar\b|view source|오픈소스|깃허브|ソースを見る|查看源码|檢視原始碼)/i, value: 'GitHub star / View source' },
   { pattern: /(docs|documentation|문서|가이드|ドキュメント|ガイド|文件|文档|指南)/i, value: 'View docs / Read more' },
   { pattern: /(sign[ -]?up|get started|시작하기|가입|始める|新規登録|立即開始|立即开始|開始使用|开始使用|註冊|注册)/i, value: 'Sign-up / Get started' },
   { pattern: /(book demo|contact sales|문의|데모 예약|デモ予約|お問い合わせ|聯絡銷售|联系销售|預約示範|预约演示)/i, value: 'Book demo / Contact sales' },
 ]);
-const ctaSignal = ctaMatches.length === 1 && !ctaMatches[0].negated ? ctaMatches[0] : null;
+const explicitTaskAction = ctaMatches.length === 0 && explicitPrimaryAction?.[1]?.trim()
+  ? { value: explicitPrimaryAction[1].trim(), source: 'primary-action' }
+  : ctaMatches.length === 0 && explicitRequiredJourney?.[1]?.trim()
+    ? { value: `Complete required journey: ${explicitRequiredJourney[1].trim()}`, source: 'required-journey' }
+    : null;
+const ctaSignal = ctaMatches.length === 1 && !ctaMatches[0].negated
+  ? ctaMatches[0]
+  : explicitTaskAction
+    ? { value: explicitTaskAction.value, negated: false, source: explicitTaskAction.source }
+    : null;
 const existingSurfaceMaintenance = ctxAvailable && surfaces.length > 0
   && /(existing|current|preserve|improve|update|기존|현재|개선|유지|修正|改善|既存|現有|改进|優化|优化)/i.test(task);
 const backedAudience = audiences[0]
@@ -192,7 +207,7 @@ decisions.push(ctaSignal
   ? decision({
       id: 'primary-cta', slot: 'cta_primary', proposed_value: ctaSignal.value,
       evidence: ['task.md'], confidence: 0.92, impact: 'high', reversibility: 'moderate',
-      confidence_basis: 'user-explicit',
+      confidence_basis: explicitTaskAction ? `user-explicit-${explicitTaskAction.source}` : 'user-explicit',
       authority: 'user-stated', disposition: 'auto',
       reason: 'The task explicitly identifies the primary action.',
     })

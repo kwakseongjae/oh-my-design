@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-10 (Codex) · Autopilot authority/lineage gate
+- 1.9.854는 DESIGN proof 3/3이지만 UI-Resolved 0/3, 질문7·self-answer·duplicate lineage를 드러냈다.
+- 실제 세 prompt를 zero-interview fixture로 잠그고 user answer 자작을 controller에서 거부한다.
+- 프로젝트당 active mission 1개, terminal mission non-resumable 계약과 1.9.855 provider-zero lock을 추가했다.
+- 다음은 clean commit 후 full 회귀, task-contract-aware bounded self-repair다.
+
 ## 2026-08-10 (Codex) · 1.9.852 evaluator freeze/RCA
 - order2 생성은 끝났지만 checkbox/CC 전용 evaluator timeout으로 root가 영구 동결됐다.
 - 실제 button/SMP 결과는 provider-free 재평가에서 20/100 valid failure로 확인했다.

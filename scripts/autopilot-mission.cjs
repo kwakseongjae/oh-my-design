@@ -11,6 +11,8 @@ const command = process.argv[4] || 'advance';
 const missionPath = path.join(runDir, 'mission.json');
 const statePath = path.join(runDir, 'mission-state.json');
 const admissionPath = path.join(runDir, 'product-build-admission.json');
+const activeMissionPath = path.join(cwd, '.omd', 'autopilot-active.json');
+const answersPath = path.join(runDir, 'checkpoints', 'council-intake.answers.json');
 
 function sha256(bytes) {
   return crypto.createHash('sha256').update(bytes).digest('hex');
@@ -67,6 +69,40 @@ function writeJsonAtomic(file, value, exclusive = false) {
   fs.renameSync(temp, file);
 }
 
+function relativeRunDir() {
+  const relative = path.relative(cwd, runDir).split(path.sep).join('/');
+  if (!relative || relative === '..' || relative.startsWith('../') || path.isAbsolute(relative)) {
+    throw new Error('autopilot run directory must be inside the project root');
+  }
+  return relative;
+}
+
+function writeMissionMarker(status) {
+  const marker = {
+    schema_version: '0.1',
+    workflow: 'omd-autopilot-v2',
+    run_dir: relativeRunDir(),
+    mission_sha256: sha256File(missionPath),
+    status,
+  };
+  writeJsonAtomic(activeMissionPath, marker);
+  return marker;
+}
+
+function assertActiveMission() {
+  if (!fs.existsSync(activeMissionPath)) throw new Error('active autopilot mission marker is missing');
+  const marker = readJson(activeMissionPath);
+  if (marker.workflow !== 'omd-autopilot-v2'
+    || marker.run_dir !== relativeRunDir()
+    || marker.mission_sha256 !== sha256File(missionPath)) {
+    throw new Error('active autopilot mission authority drift');
+  }
+  if (marker.status !== 'active') {
+    throw new Error(`autopilot mission is terminal and non-resumable: ${marker.status}`);
+  }
+  return marker;
+}
+
 function emit(state, nextAction, evidence = {}) {
   const previous = fs.existsSync(statePath) ? sha256File(statePath) : null;
   const value = {
@@ -86,6 +122,15 @@ if (command === 'bootstrap') {
   const taskPath = path.join(runDir, 'task.md');
   if (!fs.existsSync(taskPath)) throw new Error('task.md is required before bootstrap');
   if (fs.existsSync(missionPath)) throw new Error('mission already exists');
+  if (fs.existsSync(activeMissionPath)) {
+    const marker = readJson(activeMissionPath);
+    if (marker.status === 'active') {
+      throw new Error(`another autopilot mission is already active: ${marker.run_dir}`);
+    }
+    if (!['completed', 'failed'].includes(marker.status)) {
+      throw new Error('existing autopilot mission marker has an invalid terminal status');
+    }
+  }
   const initialTree = treeManifest(cwd);
   const mission = {
     schema_version: '0.1',
@@ -100,12 +145,14 @@ if (command === 'bootstrap') {
     guided_checkpoint_claim_allowed: false,
   };
   writeJsonAtomic(missionPath, mission, true);
+  writeMissionMarker('active');
   emit('AUTHORITY_GATE', 'run-design-council-prime');
   process.exit(0);
 }
 
 if (command !== 'advance') throw new Error(`unsupported command: ${command}`);
 if (!fs.existsSync(missionPath)) throw new Error('mission is missing; bootstrap first');
+assertActiveMission();
 const mission = readJson(missionPath);
 const initialTree = { files: mission.initial_product_tree, sha256: mission.initial_product_tree_sha256 };
 const currentTree = treeManifest(cwd);
@@ -130,6 +177,12 @@ if (handoff.status === 'ask_user' || handoff.state === 'AWAIT_USER') {
   process.exit(0);
 }
 if (handoff.state !== 'PROPOSE_PLAN') throw new Error(`unexpected handoff state: ${handoff.state}`);
+if (fs.existsSync(answersPath)) {
+  const priorState = fs.existsSync(statePath) ? readJson(statePath) : null;
+  if (priorState?.state !== 'CONSEQUENTIAL_INTERVIEW') {
+    throw new Error('council answers exist without a recorded consequential interview');
+  }
+}
 
 const councilPlanPath = path.join(runDir, 'council', 'plan.json');
 const councilReceiptPath = path.join(runDir, 'council', 'reconciled.json');
@@ -241,8 +294,10 @@ if (!fs.existsSync(finalProofPath)) {
 const finalProof = readJson(finalProofPath);
 if (finalProof.pass === true) {
   emit('HANDOFF', 'write-delivery', { proof_sha256: sha256File(finalProofPath) });
+  writeMissionMarker('completed');
 } else if (Number(finalProof.repair_round || 0) < mission.repair_round_budget) {
   emit('BOUNDED_REVISION', 'apply-focused-repair', { proof_sha256: sha256File(finalProofPath) });
 } else {
   emit('FAILED_HANDOFF', 'report-unresolved-blocks', { proof_sha256: sha256File(finalProofPath) });
+  writeMissionMarker('failed');
 }
