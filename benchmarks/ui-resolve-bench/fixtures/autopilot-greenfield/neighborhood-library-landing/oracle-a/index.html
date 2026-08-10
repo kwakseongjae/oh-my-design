@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Common Ground Tool Library</title>
+  <style>
+    :root {
+      --paper: #f3efdf;
+      --paper-light: #fffdf5;
+      --ink: #173c32;
+      --ink-soft: #45645b;
+      --signal: #e95832;
+      --signal-dark: #b93318;
+      --signal-deep: #8f2512;
+      --line: #9eab94;
+      --focus: #134fbc;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 0;
+      overflow-x: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+    button, input, select, textarea { font: inherit; }
+    a { color: inherit; }
+    h1, h2, h3, p { overflow-wrap: break-word; }
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+
+    .shell { width: min(100% - 48px, 1280px); margin-inline: auto; }
+    .masthead {
+      display: flex;
+      min-height: 82px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 44px;
+      text-decoration: none;
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+    .brand-mark { width: 30px; height: 30px; flex: none; }
+    .masthead a:not(.brand) {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      padding-inline: 4px;
+      font-size: .875rem;
+      font-weight: 700;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(280px, .6fr);
+      min-height: 620px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+      padding: clamp(64px, 9vw, 128px) clamp(32px, 7vw, 96px) clamp(64px, 8vw, 104px) 0;
+    }
+    .kicker {
+      margin: 0 0 28px;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .kicker::before {
+      display: inline-block;
+      width: 34px;
+      height: 2px;
+      margin: 0 10px 3px 0;
+      background: var(--signal);
+      content: "";
+    }
+    h1 {
+      max-width: 860px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(3.25rem, 7.2vw, 7.25rem);
+      font-weight: 400;
+      letter-spacing: -.055em;
+      line-height: .89;
+    }
+    .hero-lede {
+      max-width: 650px;
+      margin: 36px 0 0;
+      color: var(--ink-soft);
+      font-size: clamp(1.075rem, 1.5vw, 1.35rem);
+      line-height: 1.55;
+    }
+    .hero-action { margin-top: 38px; }
+    .primary-action {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--ink);
+      border-radius: 0;
+      background: var(--signal-dark);
+      color: var(--paper-light);
+      cursor: pointer;
+      padding: 12px 22px;
+      box-shadow: 5px 5px 0 var(--ink);
+      font-weight: 700;
+      transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+    }
+    .primary-action:hover { background: var(--signal-deep); }
+    .primary-action:active { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--ink); }
+
+    .hero-plate {
+      position: relative;
+      display: flex;
+      min-width: 0;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-left: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .hero-plate::before,
+    .hero-plate::after {
+      position: absolute;
+      border: 1px solid rgba(243, 239, 223, .32);
+      border-radius: 50%;
+      content: "";
+    }
+    .hero-plate::before { width: 390px; height: 390px; }
+    .hero-plate::after { width: 270px; height: 270px; }
+    .tool-illustration { position: relative; z-index: 1; width: min(72%, 300px); height: auto; }
+    .plate-caption {
+      position: absolute;
+      right: 22px;
+      bottom: 18px;
+      left: 22px;
+      z-index: 1;
+      margin: 0;
+      border-top: 1px solid rgba(243, 239, 223, .45);
+      padding-top: 12px;
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .section { padding-block: clamp(64px, 9vw, 112px); }
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(180px, .42fr) minmax(0, 1fr);
+      gap: clamp(32px, 7vw, 112px);
+    }
+    .section-label {
+      margin: 7px 0 0;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .section h2 {
+      max-width: 820px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(2.25rem, 4.7vw, 4.75rem);
+      font-weight: 400;
+      letter-spacing: -.045em;
+      line-height: .98;
+    }
+    .stages { margin-top: 56px; border-top: 1px solid var(--ink); }
+    .stage {
+      display: grid;
+      grid-template-columns: 70px minmax(150px, .55fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+      border-bottom: 1px solid var(--line);
+      padding: 28px 0;
+    }
+    .stage-number { color: var(--signal-dark); font-size: .75rem; font-weight: 700; letter-spacing: .1em; }
+    .stage h3 { margin: -3px 0 0; font-family: var(--serif); font-size: 1.5rem; font-weight: 400; line-height: 1.15; }
+    .stage p { max-width: 620px; margin: 0; color: var(--ink-soft); }
+
+    .facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 80px;
+      border: 1px solid var(--ink);
+      background: var(--paper-light);
+    }
+    .facts-copy { padding: clamp(28px, 5vw, 60px); }
+    .facts-copy h3 { margin: 0 0 18px; font-family: var(--serif); font-size: clamp(1.75rem, 3vw, 2.75rem); font-weight: 400; line-height: 1.05; }
+    .facts-copy p { margin: 0; color: var(--ink-soft); }
+    .facts-note {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-left: 1px solid var(--ink);
+      padding: clamp(28px, 5vw, 60px);
+      background: var(--signal-dark);
+      color: var(--paper-light);
+    }
+    .facts-note strong { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; line-height: 1.2; }
+    .facts-note p { margin: 14px 0 0; }
+
+    .reservation {
+      border-top: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--paper);
+      padding-block: clamp(64px, 8vw, 96px);
+    }
+    .reservation[hidden] { display: none; }
+    .reservation-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(40px, 8vw, 120px); }
+    .reservation h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 400;
+      letter-spacing: -.045em;
+      line-height: .95;
+    }
+    .reservation-intro { margin: 24px 0 0; color: #d5ded3; }
+    form { min-width: 0; }
+    .field { margin-bottom: 22px; }
+    label { display: block; margin-bottom: 8px; font-size: .8125rem; font-weight: 700; }
+    input, select, textarea {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid #9caf9f;
+      border-radius: 0;
+      background: #fffdf5;
+      color: #173c32;
+      padding: 11px 12px;
+      font-size: 1rem;
+    }
+    textarea { min-height: 104px; resize: vertical; }
+    .form-note { margin: 0 0 22px; color: #d5ded3; font-size: .875rem; }
+    .secondary-action {
+      min-height: 48px;
+      border: 1px solid var(--paper);
+      border-radius: 0;
+      background: var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+      padding: 11px 18px;
+      font-weight: 700;
+    }
+    .status { min-height: 1.5em; margin: 18px 0 0; color: #fff; font-weight: 700; }
+
+    footer { border-top: 1px solid var(--ink); padding-block: 28px; }
+    .footer-row { display: flex; justify-content: space-between; gap: 24px; font-size: .8125rem; }
+    .footer-row p { margin: 0; }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 4px;
+    }
+    .reservation :focus-visible { outline-color: #f9bd38; }
+    .reservation h2:focus { outline: 3px solid #f9bd38; outline-offset: 6px; }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 32px, 1280px); }
+      .masthead { min-height: 70px; }
+      .brand { font-size: 1rem; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-copy { padding: 58px 0 64px; }
+      h1 { font-size: clamp(3rem, 17vw, 5.5rem); }
+      .hero-lede { margin-top: 28px; }
+      .hero-plate { min-height: 390px; border-top: 1px solid var(--ink); border-left: 0; }
+      .tool-illustration { width: min(58%, 240px); }
+      .section-grid, .reservation-grid { grid-template-columns: 1fr; }
+      .stage { grid-template-columns: 44px minmax(0, 1fr); gap: 10px 14px; }
+      .stage p { grid-column: 2; }
+      .facts { grid-template-columns: 1fr; margin-top: 56px; }
+      .facts-note { border-top: 1px solid var(--ink); border-left: 0; }
+      .footer-row { flex-direction: column; }
+    }
+
+    @media (max-width: 360px) {
+      .shell { width: min(100% - 24px, 1280px); }
+      .masthead a:not(.brand) { display: none; }
+      .brand { gap: 8px; }
+      h1 { font-size: clamp(2.75rem, 17vw, 4rem); }
+      .hero-action, .primary-action { width: 100%; }
+      .hero-plate { min-height: 330px; }
+      .stage { grid-template-columns: 1fr; }
+      .stage p { grid-column: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell masthead">
+    <a class="brand" href="#top" aria-label="Common Ground Tool Library home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="1" y="1" width="30" height="30" fill="#e95832" stroke="#173c32" stroke-width="2"/>
+        <path d="M8 21h16M11 21V11h10v10M16 11V7" fill="none" stroke="#fffdf5" stroke-width="2"/>
+      </svg>
+      <span>Common Ground</span>
+    </a>
+    <a href="#how-it-works">How borrowing works</a>
+  </header>
+
+  <main id="top">
+    <section class="shell hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="kicker">A neighborhood tool library</p>
+        <h1 id="page-title">Borrow the tool.<br>Keep the know-how.</h1>
+        <p class="hero-lede">Common Ground helps neighbors request shared tools for home repairs, garden work, and the projects in between—so useful equipment can be borrowed instead of bought for a single job.</p>
+        <div class="hero-action">
+          <button class="primary-action" id="reserve-trigger" type="button" aria-controls="reservation-start" aria-expanded="false">Reserve a tool</button>
+        </div>
+      </div>
+      <div class="hero-plate" aria-hidden="true">
+        <svg class="tool-illustration" viewBox="0 0 320 420">
+          <path d="M171 29c41 0 74 33 74 74 0 26-14 50-35 63l-18-31c12-7 20-19 20-32 0-23-18-41-41-41-18 0-34 12-39 29l-32-10c10-31 38-52 71-52Z" fill="#e95832"/>
+          <path d="m153 119 44 0 0 185c0 34-28 62-62 62s-62-28-62-62v-46h37v46c0 14 11 25 25 25s25-11 25-25V119Z" fill="#f3efdf"/>
+          <path d="M92 203h123v55H92z" fill="#e95832" stroke="#f3efdf" stroke-width="8"/>
+          <circle cx="117" cy="230" r="8" fill="#173c32"/>
+          <circle cx="190" cy="230" r="8" fill="#173c32"/>
+        </svg>
+        <p class="plate-caption">Shared tools · practical projects</p>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works" aria-labelledby="how-title">
+      <div class="shell section-grid">
+        <p class="section-label">How it works</p>
+        <div>
+          <h2 id="how-title">A clear path from project idea to borrowing request.</h2>
+          <div class="stages" aria-label="Reservation stages">
+            <article class="stage">
+              <span class="stage-number">01</span>
+              <h3>Name the job</h3>
+              <p>Tell the library what you are working on and which kind of tool you need. You can describe the job even if you do not know the exact tool name.</p>
+            </article>
+            <article class="stage">
+              <span class="stage-number">02</span>
+              <h3>Request a window</h3>
+              <p>Share the days that would work for your project. A request starts the conversation; it does not promise that a particular tool is available.</p>
+            </article>
+            <article class="stage">
+              <span class="stage-number">03</span>
+              <h3>Confirm before pickup</h3>
+              <p>The library can follow up with availability, any borrowing terms, and the practical details you need before a pickup is arranged.</p>
+            </article>
+          </div>
+
+          <aside class="facts" aria-labelledby="before-title">
+            <div class="facts-copy">
+              <h3 id="before-title">Know before you request</h3>
+              <p>Use the form to begin a reservation inquiry. Sending it is not a confirmed reservation, and no payment is taken on this page.</p>
+            </div>
+            <div class="facts-note">
+              <strong>Availability and borrowing fees are not published here.</strong>
+              <p>The library will need to confirm both for the tool and dates you request.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="reservation" id="reservation-start" aria-labelledby="reservation-title" hidden>
+      <div class="shell reservation-grid">
+        <div>
+          <h2 id="reservation-title" tabindex="-1">Start your request</h2>
+          <p class="reservation-intro">Share enough detail for the library to understand your project. This starts an inquiry; availability and terms still need confirmation.</p>
+        </div>
+        <form id="reservation-form" novalidate>
+          <div class="field">
+            <label for="project">What are you working on?</label>
+            <textarea id="project" name="project" required aria-describedby="project-hint"></textarea>
+            <p class="form-note" id="project-hint">For example, describe the repair, build, or garden task.</p>
+          </div>
+          <div class="field">
+            <label for="dates">When do you need it?</label>
+            <input id="dates" name="dates" type="text" autocomplete="off" required>
+          </div>
+          <div class="field">
+            <label for="contact">Email for a reply</label>
+            <input id="contact" name="contact" type="email" autocomplete="email" required>
+          </div>
+          <button class="secondary-action" type="submit">Send request</button>
+          <p class="status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-row">
+      <p>Common Ground Tool Library</p>
+      <p>Borrowing begins with a request and library confirmation.</p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const trigger = document.getElementById('reserve-trigger');
+      const region = document.getElementById('reservation-start');
+      const heading = document.getElementById('reservation-title');
+      const form = document.getElementById('reservation-form');
+      const status = document.getElementById('form-status');
+
+      trigger.addEventListener('click', () => {
+        region.hidden = false;
+        trigger.setAttribute('aria-expanded', 'true');
+        heading.focus();
+        region.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      });
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!form.checkValidity()) {
+          status.textContent = 'Complete each field to send your request.';
+          const invalid = form.querySelector(':invalid');
+          if (invalid) invalid.focus();
+          return;
+        }
+        status.textContent = 'Request details are ready. This demo does not send or confirm reservations.';
+      });
+    })();
+  </script>
+</body>
+</html>

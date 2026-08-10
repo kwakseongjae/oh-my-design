@@ -1,6 +1,6 @@
 ---
 name: omd-harness
-description: "화면 전체나 신규 surface를 처음부터 디자인할 때의 진입점 — Discovery→Wireframe→Components→Microcopy→Validation 파이프라인을 omd-master 오케스트레이터로 실행. 트리거: '랜딩페이지', '랜딩 페이지', '랜딩 만들어줘', '홈 화면', '첫 화면', '프로토타입', '그럴싸한', '구색 갖춰', 'first screen', 'first impression', 'landing page', 'landing', 'prototype', 'MVP UI', 'home', 'production-ready', 'wireframe to production', '랜딩 처음부터', 'production-ready', '一からデザイン', '從頭設計'. 자연어 발화('그럴싸한 랜딩 만들어줘', 'MVP UI 잡아줘', '프로토타입이라도 구색 갖춰서')에도 자동 트리거. 단일 컴포넌트 수정은 omd:apply."
+description: "사용자와 단계별로 검토하는 guided design harness. Discovery→Wireframe→Components→Microcopy→Validation을 omd-master가 실행하고 journey/system/validation의 필수 체크포인트에서 멈춘다. '/omd-harness', '체크포인트마다 검토', '나와 단계별로 디자인', 'guided design' 요청에 사용. 질문 없이 원샷으로 새 제품을 자율 구축하는 요청은 omd:autopilot, 단일 컴포넌트 수정은 omd:apply."
 ---
 
 # omd:harness — Design Harness Entry
@@ -12,7 +12,7 @@ CLI 의존 없음. 모든 부트스트랩은 Bash + Write 툴로 직접 실행�
 ## 트리거
 
 - `/omd-harness <task>` 명시 호출
-- 사용자가 자연어로 "디자인 하네스 / 시니어 디자이너처럼 / 알아서 디자인" 요청
+- 사용자가 자연어로 "디자인 하네스 / 체크포인트마다 검토 / 나와 단계별로 디자인" 요청
 
 ## Step 0 — task 추출
 
@@ -379,7 +379,18 @@ EOF
 
 ## Step 3 — DESIGN.md 존재 확인 + reference 의미 매칭
 
-프로젝트 루트에 DESIGN.md 없으면 reference를 직접 추천한다. 외부 API 호출 없음.
+먼저 `council/decision-ledger.json`의 `design-system-disposition`을 읽는다.
+
+- `reuse` → 기존 root `DESIGN.md`를 사용하고 reference picker를 건너뛴다.
+- `surface-local-only` → root `DESIGN.md`를 만들지 않고 현재 run의 local
+  surface contract만 사용한다. reference picker를 건너뛴다.
+- `establish` 또는 `refresh` → 아래 reference 의미 매칭을 보조 evidence로
+  사용할 수 있다. reference는 제품 사실이나 시스템 전체를 소유하지 않는다.
+- `interview` → checkpoint 답변 전에는 reference를 고르지 않는다.
+- `blocked` → 중단한다.
+
+ledger가 없는 legacy install에서만 기존 동작처럼 프로젝트 루트에 DESIGN.md가
+없으면 reference를 직접 추천한다. 외부 API 호출 없음.
 
 ### 3.1 카탈로그 로드
 

@@ -5,6 +5,90 @@
 
 ---
 
+## 2026-08-10 (Codex) · 1.9.849 Luna/high smoke prereg
+- landing·dense operations·five-locale 3셀을 coverage-spread 순서로 사전등록했다.
+- exact prompt/starter/evaluator/portable-bundle과 Luna/high·serial·no-retry/no-fallback을 잠갔다.
+- provider/model/Cursor0이며 clean commit·immutable runtime·named browser 전에는 실행 불가다.
+- 다음은 checkpoint commit 뒤 provider-zero runnable admission이다.
+
+## 2026-08-10 (Codex) · greenfield calibration 12/12
+- transit·grant·recovery·5-locale의 구조가 다른 oracle 8개를 모두 100/100으로 보정했다.
+- 전체 24 oracle·72 targeted mutant cell이 atomic contract를 통과/거부했고 combined calibration은 18 files/130 tests다.
+- full 회귀의 contention timeout은 단독 115/115로 해소했으며 lint/build/diff도 green이다.
+- 다음은 public claim 없이 Luna/high 3-task autonomous smoke를 fresh authority로 준비한다.
+
+## 2026-08-10 (Codex) · greenfield calibration 8/12
+- editorial 두 구조가 outline→section nav→caption/source→signup journey에서 100/100이다.
+- heading skip·citation removal·validation removal mutant6개를 원자 검출한다.
+- bounded full1006 pass/38 skip의 timeout5건은 single-worker359 pass/2 skip으로 해소했고 lint/build/diff도 green이다.
+- 다음은 mobile/evidence/recovery/5-locale 네 family다.
+
+## 2026-08-10 (Codex) · greenfield calibration 7/12
+- search 두 구조가 query→filter2→visible state→clear→zero/open/error에서 100/100이다.
+- hidden state·broken clear·missing no-results mutant6개를 원자 검출한다.
+- bounded full1006 pass/34 skip, search browser4/4, lint/build/diff-check가 green이다.
+- 다음은 editorial/mobile/evidence/recovery/5-locale 다섯 family다.
+
+## 2026-08-10 (Codex) · greenfield calibration 6/12
+- deletion 두 구조가 scope→two-gate validation→approval/cancel에서 100/100이다.
+- bypass·flat scope·hidden cancel mutant6개를 원자 검출한다.
+- bounded full1001 pass/30 skip, deletion browser4/4, lint/build/diff-check가 green이다.
+- 다음은 search/editorial/mobile 등 남은 6 family다.
+
+## 2026-08-10 (Codex) · greenfield calibration 5/12
+- checkout 두 구조가 total→contact validation→busy→confirmed와 declined recovery에서 100/100이다.
+- total 은폐·invalid email 수용·premature success mutant6개를 원자 검출한다.
+- bounded full996 pass/26 skip, checkout browser4/4, lint/build/diff-check가 green이다.
+- 다음은 approval/search/editorial 등 남은 7 family다.
+
+## 2026-08-10 (Codex) · checkout calibration 시작
+- checkout의 inline summary/form/receipt와 review/contact/confirmation 두 oracle을 작성했다.
+- sample total·empty/invalid email·busy/confirmed·declined recovery state를 구현했다.
+- inline script syntax와 diff-check는 green이며 evaluator/mutant는 다음 작업이다.
+- calibrated denominator는 정직하게 4/12를 유지한다.
+
+## 2026-08-10 (Codex) · greenfield calibration 4/12
+- caregiver single-card/full-page stepper가 모든 state·viewport에서 100/100이다.
+- progress 제거·Back 상태 손실·required-choice bypass mutant6개를 crash 없이 검출한다.
+- full992 pass/22 skip, caregiver browser4/4, lint/build/diff-check가 green이다.
+- 다음은 checkout부터 남은 8 family를 보정하며 provider smoke는 계속 차단한다.
+
+## 2026-08-10 (Codex) · greenfield calibration 3/12
+- cold-chain의 table+drawer/cards+detail 두 구조가 4 viewport와 전체 journey에서 100/100이다.
+- clipping·filter-state 은폐·owner persistence 제거 mutant6개를 각각 원자 검출한다.
+- full987 pass/18 skip, cold-chain browser4/4, lint/build/diff-check가 green이다.
+- 다음은 caregiver onboarding부터 남은 9 family를 같은 방식으로 보정한다.
+
+## 2026-08-10 (Codex) · greenfield calibration 2/12
+- landing의 inline-form/dialog 두 구조와 mutant6개를 100점 positive/atomic negative control로 닫았다.
+- incident의 table+drawer/cards+dialog 두 구조와 hierarchy·ack persistence·keyboard mutant6개를 닫았다.
+- full982 pass/14 skip, opt-in browser8/8, lint/build/diff-check가 green이다.
+- 다음은 남은 10 family의 oracle2개+mutant 보정이며 provider smoke는 계속 차단한다.
+
+## 2026-08-10 (Codex) · bounded council + observable adapters
+- 최대3 read-only lane의 plan/result/write-boundary/SHA reconciliation을 mission gate로 구현했다.
+- provider-zero 1.9.836은 3 lane→DESIGN.md→product→HANDOFF와 objective100을 재현했다.
+- 12 task별 구현중립 journey/assertion/2 valid shape/3 mutant adapter를 SHA 봉인했다.
+- 다음은 adapter 실행기와 과제별 oracle2개·mutant 실제 보정이다.
+
+## 2026-08-10 (Codex) · hidden greenfield task authority v0.1
+- 12개 family별 충분히 권한 부여된 exact prompt와 journey·unknown·states·target mutant를 고정했다.
+- task-specific setup/reference/token을 금지하고 task-set SHA를 qualification contract에 묶었다.
+- provider-zero validator와 6 adversarial mutations가 11/11 green이다.
+- 다음은 과제별 valid oracle2개+target mutant calibration이다.
+
+## 2026-08-10 (Codex) · 2.0 greenfield provider-zero calibration
+- mission controller가 clean dir에서 DESIGN.md→system proof→product→HANDOFF를 질문0·provider0으로 완주했다.
+- greenfield evaluator는 4 viewport·axe·실제 dialog/validation과 5개 artifact hash binding을 100/100 확인했다.
+- overflow·validation mutant browser E2E를 각각 정확히 차단했고 full954·lint/build/diff-check가 green이다.
+- 이는 calibration이며 다음은 hidden task oracle/mutant 확장→Luna/high 3-task smoke다.
+
+## 2026-08-10 (Codex) · 2.0 Autopilot reset first slice
+- guided harness와 분리된 one-prompt `omd-autopilot` 목표·권한·10 promotion gate를 고정했다.
+- 디자인시스템 disposition, question budget, mission write gate, decision receipt, provenance/coverage proof를 구현했다.
+- skill22·agent19 설치/doctor/router와 provider-zero comparison contract를 연결했다.
+- full945·lint/build green이며 다음은 clean-dir one-shot demo→12-task competitor qualification이다.
+
 ## 2026-08-10 (Codex) · 1.9.828 policy-aware benchmark surface
 - `/benchmarks`에 exact51 결과를 semantic effort order와 configuration-only 경계로 공개했다.
 - 51/51·38/51·34/51·36.89M/50 coverage와 RESULTS·policy·audit 원문을 함께 연결했다.
@@ -6130,3 +6214,8 @@
 - provider-zero 준비12/12, exact source/task admission12/12이다.
 - retry/replacement/fallback/model substitution/Cursor0을 fail-close했다.
 - 다음은 frozen order 첫 셀 `astro-luna-r1-omd` 단독 실행이다.
+## 2026-08-10 (Codex) · greenfield landing calibration 1/12
+- landing의 inline-form/dialog valid oracle2개를 구현중립 evaluator로 각각 100/100 보정했다.
+- 4 viewport×initial/post Axe·keyboard/focus·honest unknown·external/runtime를 측정한다.
+- CTA/overflow/social-proof mutant를 양 oracle에 주입한 6셀을 atomic group에서 검출했다.
+- full976·browser4·lint/build/diff green; incident dashboard calibration을 이어간다.

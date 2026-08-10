@@ -30,7 +30,7 @@ describe('omd workflows', () => {
     }
     expect(manifest.locale_contract).toEqual({
       source_locale: 'ko',
-      source_revision: 'workflow-capabilities-ko-v1',
+      source_revision: 'workflow-capabilities-ko-v2',
       supported_locales: ['en', 'ko', 'ja', 'zh-CN', 'zh-TW'],
     });
   });
@@ -49,7 +49,9 @@ describe('omd workflows', () => {
   it.each([
     ['Please fix the existing pricing page', 'repair-existing-ui'],
     ['기존 홈 화면을 검수만 하고 코드는 바꾸지 마', 'audit-existing-ui'],
-    ['Design a new landing from scratch', 'create-new-surface'],
+    ['Design a new landing from scratch', 'autonomous-product-creation'],
+    ['Design a new landing from scratch and stop at each checkpoint', 'create-new-surface'],
+    ['새 가족 식단 앱을 처음부터 알아서 만들어줘', 'autonomous-product-creation'],
     ['이 저장소에 DESIGN.md와 디자인 시스템 만들어줘', 'establish-design-system'],
     ['Translate and localize the docs into five languages', 'localize-product-language'],
     ['이 온보딩 UI를 검수하고 바로 고쳐줘', 'repair-existing-ui'],
@@ -68,6 +70,8 @@ describe('omd workflows', () => {
 
   it('makes one implementation owner and same-surface verification explicit', () => {
     expect(manifest.principles).toContain('one-implementation-owner');
+    expect(manifest.principles).toContain('selective-authority-escalation');
+    expect(manifest.principles).toContain('design-system-before-reference-selection');
     expect(manifest.principles).toContain('same-surface-reverification');
     expect(manifest.principles).toContain('preserve-observable-contract');
     expect(manifest.work_packet.implementation_owner).toBe('main-agent');

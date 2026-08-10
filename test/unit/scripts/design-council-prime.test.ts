@@ -8,13 +8,14 @@ const repoRoot = resolve(import.meta.dirname, '../../..');
 const helper = join(repoRoot, 'scripts/design-council-prime.cjs');
 const roots: string[] = [];
 
-function fixture(task: string, ctx: Record<string, unknown>) {
+function fixture(task: string, ctx: Record<string, unknown>, options: { designMd?: string } = {}) {
   const root = mkdtempSync(join(tmpdir(), 'omd-council-'));
   roots.push(root);
   const run = join(root, '.omd/runs/run-test');
   mkdirSync(run, { recursive: true });
   writeFileSync(join(run, 'task.md'), `# Harness Task\n\n${task}\n\n---\n- run_id: test\n`);
   writeFileSync(join(run, 'ctx-prime.json'), `${JSON.stringify(ctx)}\n`);
+  if (options.designMd) writeFileSync(join(root, 'DESIGN.md'), options.designMd);
   const result = spawnSync(process.execPath, [helper, root, run], { encoding: 'utf8' });
   expect(result.status, result.stderr).toBe(0);
   return {
@@ -74,7 +75,12 @@ describe('design-council-prime', () => {
     expect(ledger.decisions.find((item: { id: string }) => item.id === 'wow-moment')).toMatchObject({
       proposed_value: null, disposition: 'defer', evidence: [], confidence_basis: 'generic-default-rejected',
     });
-    expect(ledger.summary).toMatchObject({ interview: 3, defer: 2, question_budget: 3 });
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'design-system-disposition')).toMatchObject({
+      proposed_value: null,
+      disposition: 'interview',
+      confidence_basis: 'greenfield-system-authority-missing',
+    });
+    expect(ledger.summary).toMatchObject({ interview: 4, defer: 2, question_budget: 4 });
     expect(dispatch.dispatch_required).toBe(true);
     expect(dispatch.selected_lanes.length).toBeLessThanOrEqual(2);
     expect(dispatch.selected_lanes.map((lane: { id: string }) => lane.id)).toContain('ambiguity_contrarian');
@@ -97,9 +103,45 @@ describe('design-council-prime', () => {
       disposition: 'defer', proposed_value: null, confidence_basis: 'existing-surface-preservation',
       evidence: ['docs/getting-started.tsx'],
     });
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'design-system-disposition')).toMatchObject({
+      disposition: 'auto', proposed_value: 'surface-local-only',
+      confidence_basis: 'narrow-maintenance-preservation',
+    });
     expect(dispatch.selected_lanes.flatMap((lane: { decision_ids: string[] }) => lane.decision_ids)).not.toContain('primary-audience');
     expect(dispatch.selected_lanes.flatMap((lane: { decision_ids: string[] }) => lane.decision_ids)).not.toContain('exit-scope');
     expect(dispatch.selected_lanes.flatMap((lane: { decision_ids: string[] }) => lane.decision_ids)).not.toContain('primary-cta');
+  });
+
+  it('reuses an existing project design system without reopening it', () => {
+    const { ledger } = fixture('새 결제 화면을 구현해줘', {
+      surface_inventory: [], audience_hypothesis: [], wow_moment_candidates: [],
+    }, { designMd: '# Project DESIGN.md\n' });
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'design-system-disposition')).toMatchObject({
+      disposition: 'auto', proposed_value: 'reuse', evidence: ['DESIGN.md'],
+      confidence_basis: 'project-design-md-present',
+    });
+  });
+
+  it('establishes a system without a follow-up when the prompt grants authority', () => {
+    const { ledger } = fixture(
+      '새 가족 식단 앱을 처음부터 만들어줘. 필요하면 DESIGN.md와 디자인 시스템까지 알아서 구축해.',
+      { surface_inventory: [], audience_hypothesis: [], wow_moment_candidates: [] },
+    );
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'design-system-disposition')).toMatchObject({
+      disposition: 'auto', proposed_value: 'establish', authority: 'user-stated',
+      confidence_basis: 'user-explicit-establish',
+    });
+  });
+
+  it('keeps explicitly declined systems local to the requested surface', () => {
+    const { ledger } = fixture(
+      '새 온보딩 화면을 처음부터 만들되 디자인 시스템 없이 이번 화면만 완성해줘.',
+      { surface_inventory: [], audience_hypothesis: [], wow_moment_candidates: [] },
+    );
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'design-system-disposition')).toMatchObject({
+      disposition: 'auto', proposed_value: 'surface-local-only',
+      confidence_basis: 'user-explicit-skip',
+    });
   });
 
   it('suppresses advisory dispatch while a deterministic blocker is unresolved', () => {

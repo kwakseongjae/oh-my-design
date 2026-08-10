@@ -54,6 +54,7 @@ function shellQuote(value: string): string {
 
 export const REQUIRED_PRODUCT_SKILLS = [
   'claude-design',
+  'omd-autopilot',
   'omd-apply',
   'omd-asset-fetch',
   'omd-codex-image',
@@ -81,6 +82,7 @@ export const REQUIRED_AGENT_IDS = [
   'omd-codex-image',
   'omd-critic',
   'omd-designer-review',
+  'omd-design-system-architect',
   'omd-final-qa',
   'omd-humanizer',
   'omd-kr-writer',
@@ -108,9 +110,15 @@ export const REQUIRED_HARNESS_HELPERS = [
   'design-council-prime.cjs',
   'design-council-reconcile.cjs',
   'design-council-handoff.cjs',
+  'design-system-plan.cjs',
+  'validate-project-design-system.cjs',
+  'autopilot-mission.cjs',
+  'autopilot-council-plan.cjs',
+  'autopilot-council-reconcile.cjs',
   'design-harness-context-plan.cjs',
 ] as const;
 const REQUIRED_SKILL_SIDECARS = [
+  ['omd-autopilot', 'references/design-system-contract.md'],
   ['omd-init', 'scripts/query-references.mjs'],
   ['omd-harness', 'references/master-visual-grounding.md'],
   ['omd-harness', 'references/master-conversation.md'],

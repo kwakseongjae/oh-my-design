@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+    <meta name="description" content="A clearly labeled sample incident-response dashboard for an on-call workflow." />
+    <title>Signal Room — Sample incident dashboard</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --canvas: #f4f5f7;
+        --surface: #ffffff;
+        --surface-subtle: #f8f8fa;
+        --ink: #191a1f;
+        --muted: #656872;
+        --line: #dedfe4;
+        --accent: #4d46d8;
+        --accent-strong: #3530a6;
+        --sev-one: #b3261e;
+        --sev-one-soft: #fceceb;
+        --sev-two: #9a5a00;
+        --sev-two-soft: #fff2dc;
+        --success: #176b45;
+        --success-soft: #e7f6ee;
+        --focus: #7068f0;
+        --radius-control: 9px;
+        --radius-surface: 13px;
+      }
+
+      *, *::before, *::after { box-sizing: border-box; }
+      [hidden] { display: none !important; }
+      html { min-width: 0; }
+      body {
+        margin: 0;
+        min-width: 0;
+        overflow-x: hidden;
+        color: var(--ink);
+        background: var(--canvas);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      button { font: inherit; }
+      h1, h2, h3, p, dd { overflow-wrap: anywhere; }
+      h1, h2, h3 { text-wrap: balance; }
+      p { text-wrap: pretty; }
+
+      .skip-link {
+        position: fixed;
+        z-index: 100;
+        top: 8px;
+        left: 8px;
+        min-height: 44px;
+        transform: translateY(-150%);
+        border-radius: var(--radius-control);
+        padding: 12px 16px;
+        color: white;
+        background: var(--ink);
+      }
+      .skip-link:focus { transform: translateY(0); }
+      :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+      .app-header {
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .header-inner {
+        width: min(100% - 40px, 1240px);
+        min-height: 64px;
+        margin-inline: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .product-name { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: -0.025em; }
+      .product-mark {
+        width: 30px;
+        height: 30px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: end;
+        gap: 3px;
+        padding: 6px;
+        border-radius: 8px;
+        color: white;
+        background: var(--ink);
+      }
+      .product-mark span { width: 100%; background: currentColor; border-radius: 1px; }
+      .product-mark span:nth-child(1) { height: 35%; }
+      .product-mark span:nth-child(2) { height: 85%; }
+      .product-mark span:nth-child(3) { height: 58%; }
+      .sample-chip {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 5px 10px;
+        color: var(--muted);
+        background: var(--surface-subtle);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      main {
+        width: min(100% - 40px, 1240px);
+        margin-inline: auto;
+        padding-block: 30px 64px;
+      }
+      .scope-note {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 12px;
+        align-items: start;
+        margin-bottom: 26px;
+        padding: 13px 15px;
+        border: 1px solid #cbc9f1;
+        border-radius: var(--radius-control);
+        color: #3c387e;
+        background: #efefff;
+        font-size: 0.875rem;
+        line-height: 1.5;
+      }
+      .scope-note strong { color: var(--accent-strong); }
+      .scope-icon {
+        width: 22px;
+        height: 22px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        color: white;
+        background: var(--accent);
+        font-size: 0.75rem;
+        font-weight: 800;
+      }
+      .page-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 25px;
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.02; letter-spacing: -0.055em; }
+      .heading-copy { max-width: 610px; margin: 12px 0 0; color: var(--muted); line-height: 1.55; }
+      .summary {
+        flex: 0 0 auto;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(92px, 1fr));
+        border: 1px solid var(--line);
+        border-radius: var(--radius-control);
+        background: var(--surface);
+      }
+      .summary div { padding: 11px 14px; }
+      .summary div + div { border-left: 1px solid var(--line); }
+      .summary dt { color: var(--muted); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+      .summary dd { margin: 3px 0 0; font-size: 1rem; font-weight: 750; }
+
+      .scenario-state {
+        min-height: 235px;
+        display: none;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-surface);
+        padding: 30px;
+        text-align: center;
+        background: var(--surface);
+      }
+      .scenario-state.is-visible { display: grid; }
+      .scenario-state h2 { margin: 14px 0 7px; font-size: 1.2rem; }
+      .scenario-state p { max-width: 440px; margin: 0; color: var(--muted); line-height: 1.55; }
+      .spinner {
+        width: 34px;
+        height: 34px;
+        border: 3px solid #d9d7f9;
+        border-top-color: var(--accent);
+        border-radius: 50%;
+        animation: spin 900ms linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+
+      .incident-groups { display: grid; gap: 22px; }
+      .incident-group {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-surface);
+        background: var(--surface);
+        overflow: clip;
+      }
+      .group-heading {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 10px 16px;
+        border-bottom: 1px solid var(--line);
+        background: var(--surface-subtle);
+      }
+      .group-heading h2 { margin: 0; font-size: 0.875rem; letter-spacing: 0.01em; }
+      .severity-key { display: inline-flex; align-items: center; gap: 8px; }
+      .severity-key::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+      .severity-key.sev-one { color: var(--sev-one); }
+      .severity-key.sev-two { color: var(--sev-two); }
+      .group-count { color: var(--muted); font-size: 0.75rem; }
+      .incident-list { display: grid; gap: 0; }
+      .incident-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 22px;
+        padding: 18px;
+      }
+      .incident-card + .incident-card { border-top: 1px solid var(--line); }
+      .incident-title-row { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; }
+      .severity-badge, .status-badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        border-radius: 999px;
+        padding: 3px 8px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+      }
+      .severity-badge.sev-one { color: var(--sev-one); background: var(--sev-one-soft); }
+      .severity-badge.sev-two { color: var(--sev-two); background: var(--sev-two-soft); }
+      .status-badge { color: #41434b; background: #ececf0; }
+      .status-badge.is-acknowledged { color: var(--success); background: var(--success-soft); }
+      .incident-card h3 { margin: 0; font-size: 1rem; line-height: 1.35; }
+      .incident-meta { margin: 8px 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1.5; }
+      .open-button, .ack-button, .close-button {
+        min-height: 44px;
+        border: 1px solid transparent;
+        border-radius: var(--radius-control);
+        padding: 9px 14px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .open-button { border-color: var(--line); color: var(--ink); background: var(--surface); }
+      .open-button:hover { background: var(--surface-subtle); }
+      .incident-card.highest { box-shadow: inset 3px 0 0 var(--sev-one); }
+      .incident-card.highest .open-button { color: white; background: var(--accent); }
+      .incident-card.highest .open-button:hover { background: var(--accent-strong); }
+
+      .incident-dialog {
+        width: min(100% - 32px, 540px);
+        height: 100dvh;
+        max-height: 100dvh;
+        margin: 0 0 0 auto;
+        border: 0;
+        border-left: 1px solid var(--line);
+        padding: 0;
+        color: var(--ink);
+        background: var(--surface);
+        box-shadow: -18px 0 55px rgb(25 26 31 / 0.13);
+      }
+      .incident-dialog::backdrop { background: rgb(25 26 31 / 0.42); }
+      .dialog-shell { min-height: 100%; display: flex; flex-direction: column; }
+      .dialog-top {
+        min-height: 64px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+        padding: 11px 20px;
+        border-bottom: 1px solid var(--line);
+      }
+      .dialog-kicker { margin: 0; color: var(--muted); font-family: ui-monospace, "SFMono-Regular", monospace; font-size: 0.72rem; }
+      .close-button { border-color: var(--line); background: transparent; }
+      .dialog-content { flex: 1; padding: 28px 24px; overflow-y: auto; }
+      .dialog-content h2 { margin: 14px 0 10px; font-size: clamp(1.65rem, 4vw, 2.35rem); line-height: 1.05; letter-spacing: -0.045em; }
+      .dialog-summary { margin: 0; color: var(--muted); line-height: 1.6; }
+      .detail-list {
+        margin: 28px 0 0;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        border-block: 1px solid var(--line);
+      }
+      .detail-list div { padding: 15px 0; }
+      .detail-list div:nth-child(even) { padding-left: 18px; border-left: 1px solid var(--line); }
+      .detail-list dt { color: var(--muted); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+      .detail-list dd { margin: 5px 0 0; font-size: 0.9rem; font-weight: 700; }
+      .timeline { margin-top: 27px; }
+      .timeline h3 { margin: 0 0 14px; font-size: 0.88rem; }
+      .timeline ol { margin: 0; padding: 0 0 0 23px; color: var(--muted); font-size: 0.85rem; line-height: 1.55; }
+      .timeline li + li { margin-top: 10px; }
+      .dialog-actions {
+        position: sticky;
+        bottom: 0;
+        padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
+        border-top: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .ack-button { width: 100%; color: white; background: var(--accent); }
+      .ack-button:hover { background: var(--accent-strong); }
+      .ack-button[disabled] { cursor: default; color: var(--success); background: var(--success-soft); }
+      .confirmation {
+        display: none;
+        margin: 0 0 12px;
+        padding: 11px 12px;
+        border-radius: var(--radius-control);
+        color: var(--success);
+        background: var(--success-soft);
+        font-size: 0.82rem;
+        font-weight: 700;
+        line-height: 1.45;
+      }
+      .confirmation.is-visible { display: block; }
+      .global-feedback {
+        position: fixed;
+        z-index: 120;
+        right: 18px;
+        bottom: 18px;
+        max-width: min(380px, calc(100% - 36px));
+        display: none;
+        border-radius: var(--radius-control);
+        padding: 13px 15px;
+        color: white;
+        background: var(--success);
+        font-size: 0.85rem;
+        font-weight: 700;
+        line-height: 1.45;
+        box-shadow: 0 8px 24px rgb(25 26 31 / 0.16);
+      }
+      .global-feedback.is-visible { display: block; }
+
+      @media (max-width: 760px) {
+        .header-inner, main { width: min(100% - 28px, 1240px); }
+        .header-inner { min-height: 58px; }
+        main { padding-block: 18px 44px; }
+        .scope-note { margin-bottom: 20px; padding: 11px 12px; }
+        .page-heading { display: block; margin-bottom: 20px; }
+        .heading-copy { margin-top: 9px; }
+        .summary { width: 100%; margin-top: 18px; }
+        .incident-groups { gap: 16px; }
+        .incident-card { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 15px; }
+        .open-button { width: 100%; }
+        .incident-dialog {
+          width: 100%;
+          height: min(92dvh, 760px);
+          max-height: 92dvh;
+          margin: auto 0 0;
+          border-top: 1px solid var(--line);
+          border-left: 0;
+          border-radius: 14px 14px 0 0;
+        }
+        .dialog-content { padding: 22px 18px; }
+        .dialog-actions { padding-inline: 18px; }
+      }
+      @media (max-width: 360px) {
+        .header-inner, main { width: min(100% - 20px, 1240px); }
+        .sample-chip { font-size: 0.65rem; }
+        .product-name { gap: 8px; font-size: 0.92rem; }
+        .scope-note { grid-template-columns: 1fr; }
+        .scope-icon { display: none; }
+        .group-heading { align-items: flex-start; }
+        .detail-list { grid-template-columns: 1fr; }
+        .detail-list div:nth-child(even) { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#incident-board">Skip to sample incidents</a>
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="product-name" aria-label="Signal Room sample dashboard">
+          <span class="product-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>Signal Room</span>
+        </div>
+        <span class="sample-chip">Demo · sample data</span>
+      </div>
+    </header>
+
+    <main id="incident-board">
+      <aside class="scope-note" aria-label="Demo scope notice">
+        <span class="scope-icon" aria-hidden="true">i</span>
+        <span><strong>Sample environment.</strong> Incidents, impact statements, and responder activity on this page are fictional examples. This dashboard is not connected to live infrastructure.</span>
+      </aside>
+
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">On-call workspace / sample shift</p>
+          <h1>Open incidents</h1>
+          <p class="heading-copy">Start with the only SEV-1 incident, inspect its sample timeline, then acknowledge it for this demo shift.</p>
+        </div>
+        <dl class="summary" aria-label="Sample incident summary">
+          <div><dt>Open</dt><dd id="open-count">3</dd></div>
+          <div><dt>Highest</dt><dd>SEV-1</dd></div>
+        </dl>
+      </div>
+
+      <section id="loading-state" class="scenario-state" role="status" aria-live="polite" aria-busy="true" aria-labelledby="loading-title">
+        <div><div class="spinner" aria-hidden="true"></div><h2 id="loading-title">Loading sample incidents</h2><p>Preparing the deterministic demo incident set.</p></div>
+      </section>
+      <section id="empty-state" class="scenario-state" role="status" aria-live="polite" aria-labelledby="empty-title">
+        <div><span class="severity-badge">Sample state</span><h2 id="empty-title">No open sample incidents</h2><p>This empty state is intentionally available for interface review; it is not a statement about live systems.</p></div>
+      </section>
+      <section id="error-state" class="scenario-state" role="alert" aria-labelledby="error-title">
+        <div><span class="severity-badge sev-one">Demo error</span><h2 id="error-title">Couldn’t load sample incidents</h2><p>The sample feed is unavailable in this deterministic error scenario. No live infrastructure was contacted.</p></div>
+      </section>
+
+      <div id="normal-state" class="incident-groups">
+        <section class="incident-group" aria-labelledby="sev-one-heading">
+          <header class="group-heading">
+            <h2 id="sev-one-heading" class="severity-key sev-one">SEV-1 · Critical</h2>
+            <span class="group-count">1 open sample</span>
+          </header>
+          <div class="incident-list">
+            <article class="incident-card highest" data-incident-card="INC-1042">
+              <div>
+                <div class="incident-title-row">
+                  <span class="severity-badge sev-one">SEV-1 · highest</span>
+                  <span class="status-badge" data-status="INC-1042">Open</span>
+                  <h3>API gateway latency</h3>
+                </div>
+                <p class="incident-meta">INC-1042 · sample impact: checkout requests delayed · opened 14 min ago</p>
+              </div>
+              <button class="open-button" type="button" data-open-incident="INC-1042" aria-label="Open highest-severity incident SEV-1 API gateway latency">Open incident</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="incident-group" aria-labelledby="sev-two-heading">
+          <header class="group-heading">
+            <h2 id="sev-two-heading" class="severity-key sev-two">SEV-2 · Major</h2>
+            <span class="group-count">2 open samples</span>
+          </header>
+          <div class="incident-list">
+            <article class="incident-card" data-incident-card="INC-1038">
+              <div>
+                <div class="incident-title-row">
+                  <span class="severity-badge sev-two">SEV-2</span>
+                  <span class="status-badge" data-status="INC-1038">Open</span>
+                  <h3>Delayed notification delivery</h3>
+                </div>
+                <p class="incident-meta">INC-1038 · sample impact: alerts arriving late · opened 31 min ago</p>
+              </div>
+              <button class="open-button" type="button" data-open-incident="INC-1038" aria-label="Open SEV-2 incident Delayed notification delivery">Open incident</button>
+            </article>
+            <article class="incident-card" data-incident-card="INC-1035">
+              <div>
+                <div class="incident-title-row">
+                  <span class="severity-badge sev-two">SEV-2</span>
+                  <span class="status-badge" data-status="INC-1035">Open</span>
+                  <h3>Search indexing backlog</h3>
+                </div>
+                <p class="incident-meta">INC-1035 · sample impact: recent documents omitted · opened 46 min ago</p>
+              </div>
+              <button class="open-button" type="button" data-open-incident="INC-1035" aria-label="Open SEV-2 incident Search indexing backlog">Open incident</button>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <dialog class="incident-dialog" id="incident-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-summary">
+      <div class="dialog-shell">
+        <header class="dialog-top">
+          <p class="dialog-kicker" id="dialog-id">INC-1042 · sample incident</p>
+          <button class="close-button" type="button" id="close-dialog" aria-label="Close incident details">Close</button>
+        </header>
+        <div class="dialog-content">
+          <span class="severity-badge sev-one" id="dialog-severity">SEV-1 · highest</span>
+          <h2 id="dialog-title" tabindex="-1">API gateway latency</h2>
+          <p class="dialog-summary" id="dialog-summary">Sample checkout requests are taking longer than the demo threshold. This statement is fictional and does not represent real customer impact.</p>
+          <dl class="detail-list">
+            <div><dt>Status</dt><dd id="dialog-status">Open</dd></div>
+            <div><dt>Scope</dt><dd>Sample data</dd></div>
+            <div><dt>Responder</dt><dd>Unassigned demo role</dd></div>
+            <div><dt>Source</dt><dd>Deterministic fixture</dd></div>
+          </dl>
+          <section class="timeline" aria-labelledby="timeline-title">
+            <h3 id="timeline-title">Sample timeline</h3>
+            <ol>
+              <li>Demo monitor created the sample incident.</li>
+              <li>Severity was set to the unique highest level, SEV-1.</li>
+              <li id="timeline-ack">Awaiting acknowledgement for this demo shift.</li>
+            </ol>
+          </section>
+        </div>
+        <footer class="dialog-actions">
+          <p class="confirmation" id="confirmation" role="status" aria-live="polite"></p>
+          <button class="ack-button" type="button" id="acknowledge-button">Acknowledge sample incident</button>
+        </footer>
+      </div>
+    </dialog>
+
+    <div class="global-feedback" id="global-feedback" role="status" aria-live="polite"></div>
+
+    <script>
+      (() => {
+        const incidents = {
+          "INC-1042": {
+            severity: "SEV-1 · highest",
+            severityClass: "sev-one",
+            title: "API gateway latency",
+            summary: "Sample checkout requests are taking longer than the demo threshold. This statement is fictional and does not represent real customer impact."
+          },
+          "INC-1038": {
+            severity: "SEV-2",
+            severityClass: "sev-two",
+            title: "Delayed notification delivery",
+            summary: "Sample notifications are arriving after the demo threshold. This statement is fictional and does not represent real responders or customers."
+          },
+          "INC-1035": {
+            severity: "SEV-2",
+            severityClass: "sev-two",
+            title: "Search indexing backlog",
+            summary: "A sample indexing queue contains delayed demo records. This statement is fictional and is not connected to live infrastructure."
+          }
+        };
+
+        const acknowledged = new Set();
+        const dialog = document.querySelector("#incident-dialog");
+        const title = document.querySelector("#dialog-title");
+        const dialogId = document.querySelector("#dialog-id");
+        const severity = document.querySelector("#dialog-severity");
+        const summary = document.querySelector("#dialog-summary");
+        const status = document.querySelector("#dialog-status");
+        const timelineAck = document.querySelector("#timeline-ack");
+        const confirmation = document.querySelector("#confirmation");
+        const acknowledgeButton = document.querySelector("#acknowledge-button");
+        const globalFeedback = document.querySelector("#global-feedback");
+        let activeIncident = "INC-1042";
+
+        function renderAcknowledgement(id) {
+          const isAcknowledged = acknowledged.has(id);
+          document.querySelectorAll(`[data-status="${id}"]`).forEach((node) => {
+            node.textContent = isAcknowledged ? "Acknowledged" : "Open";
+            node.classList.toggle("is-acknowledged", isAcknowledged);
+          });
+          status.textContent = isAcknowledged ? "Acknowledged" : "Open";
+          timelineAck.textContent = isAcknowledged
+            ? "Acknowledged for this demo shift; the sample incident remains open."
+            : "Awaiting acknowledgement for this demo shift.";
+          acknowledgeButton.disabled = isAcknowledged;
+          acknowledgeButton.textContent = isAcknowledged ? "Acknowledged for demo shift" : "Acknowledge sample incident";
+          confirmation.textContent = isAcknowledged ? `${id} is acknowledged for this demo shift.` : "";
+          confirmation.classList.toggle("is-visible", isAcknowledged);
+        }
+
+        function openIncident(id) {
+          const incident = incidents[id];
+          if (!incident) return;
+          activeIncident = id;
+          dialogId.textContent = `${id} · sample incident`;
+          title.textContent = incident.title;
+          severity.textContent = incident.severity;
+          severity.className = `severity-badge ${incident.severityClass}`;
+          summary.textContent = incident.summary;
+          renderAcknowledgement(id);
+          dialog.showModal();
+          title.focus();
+        }
+
+        document.querySelectorAll("[data-open-incident]").forEach((button) => {
+          button.addEventListener("click", () => openIncident(button.dataset.openIncident));
+        });
+        document.querySelector("#close-dialog").addEventListener("click", () => dialog.close());
+        dialog.addEventListener("click", (event) => {
+          if (event.target === dialog) dialog.close();
+        });
+        acknowledgeButton.addEventListener("click", () => {
+          acknowledged.add(activeIncident);
+          renderAcknowledgement(activeIncident);
+          const message = `${activeIncident} acknowledged. Sample incident status updated.`;
+          globalFeedback.textContent = message;
+          globalFeedback.classList.add("is-visible");
+          window.setTimeout(() => globalFeedback.classList.remove("is-visible"), 4800);
+        });
+
+        const scenario = new URLSearchParams(window.location.search).get("omd-scenario") || "normal";
+        const allowedScenarios = new Set(["loading", "empty", "error"]);
+        if (allowedScenarios.has(scenario)) {
+          document.querySelector("#normal-state").hidden = true;
+          document.querySelector(`#${scenario}-state`).classList.add("is-visible");
+          document.querySelector("#open-count").textContent = scenario === "empty" ? "0" : "—";
+          document.title = `${scenario[0].toUpperCase()}${scenario.slice(1)} sample state — Signal Room`;
+        }
+      })();
+    </script>
+  </body>
+</html>

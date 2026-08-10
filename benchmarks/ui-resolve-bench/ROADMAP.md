@@ -4,6 +4,10 @@ The product reaches its `2.0.0` frontier target through the patch experiments in
 [`RELEASE-TRAIN.md`](./RELEASE-TRAIN.md). This file remains the benchmark
 execution queue; product versions do not redefine score semantics.
 
+The 2.0 one-prompt greenfield target is defined separately in
+[`docs/CLI_V2_AUTOPILOT_CONTRACT.md`](../../docs/CLI_V2_AUTOPILOT_CONTRACT.md).
+It adds an Autopilot Skill Track without weakening the guided harness below.
+
 ## Internal P0 — 12 tasks
 
 | ID | Locale | Track | Ground truth | Primary hidden failure |
@@ -67,8 +71,10 @@ Remaining before a paired 12-task run:
 7. Add deterministic locale snapshots and replace/calibrate the existing CSS
    zoom surrogate with a browser-level zoom/reflow method,
    occlusion, and tab-order checks against valid and defective fixtures.
-8. Add valid solutions plus adversarial mutants and calibrate thresholds before
-   interpreting arm scores.
+8. ✅ Calibrated all 12 greenfield families with two structurally distinct valid
+   solutions and three targeted mutants each (24 oracles / 72 mutant cells).
+   The combined provider-zero browser suite is 130/130; this validates the
+   evaluator, not any model or skill claim.
 9. Complete the connected Cursor account-gateway lane in
    [`CURSOR-RUNTIME-PLAN.md`](./CURSOR-RUNTIME-PLAN.md): fake stream contract,
    exact-model attribution, fixed-runtime Grok/Composer/Codex pilot, and a
@@ -97,10 +103,17 @@ rank an off-label arm as though the vendor claimed support.
 
 ### Queue C — Harness pilot
 
-The OmD harness has mandatory human checkpoints and cannot be honestly reduced
-to a headless single prompt. A benchmark operator must attend each checkpoint,
-use a preregistered response rubric, and preserve the prompt/response artifact.
-Do not auto-approve or bypass checkpoints.
+This queue has two explicitly separate tracks:
+
+1. **Guided Harness Track.** `omd:harness` has mandatory human checkpoints and
+   cannot be honestly reduced to a headless single prompt. A benchmark operator
+   must attend each checkpoint, use a preregistered response rubric, and
+   preserve the prompt/response artifact. Do not auto-approve or bypass them.
+2. **Portable Autopilot Skill Track.** `omd:autopilot` receives one sufficiently
+   authorized natural-language prompt in a blank repository. It is a separate
+   workflow, does not claim guided checkpoint approval, and records every
+   authority question and intervention. This track is compared only with other
+   portable skills under identical prompt bytes and runtime controls.
 
 Compare:
 
@@ -111,6 +124,11 @@ Compare:
 Report quality, elapsed time, model/tool calls, human interventions, and
 iteration count on a Pareto chart rather than mixing these systems into the
 Skill Lift leaderboard.
+
+The Autopilot track additionally evaluates DESIGN.md provenance/completeness,
+code-to-system conformance, question precision/recall and zero-follow-up
+completion on fully authorized prompts. Hook/browser-assisted systems remain in
+the Guided Harness Track and cannot be ranked as portable one-prompt skills.
 
 ### Queue D — public standardization
 

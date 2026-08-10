@@ -1,13 +1,15 @@
 {
   "schema_version": 1,
-  "product_version": "1.9.18-candidate",
+  "product_version": "1.9.829-candidate",
   "locale_contract": {
     "source_locale": "ko",
-    "source_revision": "workflow-capabilities-ko-v1",
+    "source_revision": "workflow-capabilities-ko-v2",
     "supported_locales": ["en", "ko", "ja", "zh-CN", "zh-TW"]
   },
   "principles": [
     "natural-language-first",
+    "selective-authority-escalation",
+    "design-system-before-reference-selection",
     "smallest-capable-workflow",
     "one-implementation-owner",
     "specialists-are-advisory",
@@ -204,9 +206,47 @@
       }
     },
     {
+      "id": "autonomous-product-creation",
+      "label": "Create a product surface autonomously",
+      "label_ko": "제품 화면 자율 구축",
+      "entry_skill": "omd:autopilot",
+      "implementation_owner": "main-agent",
+      "specialists": [
+        "omd-design-system-architect",
+        "omd-ux-researcher",
+        "omd-ux-engineer",
+        "omd-critic",
+        "omd-designer-review",
+        "omd-a11y-auditor",
+        "omd-final-qa"
+      ],
+      "stages": ["detect", "authority-gate", "bounded-council", "design-system-disposition", "system-proof", "implement", "same-route-verify", "bounded-revision", "deliver"],
+      "prompt_en": "Create this new product surface from scratch. Decide whether the repository needs a project-owned design system, ask only one consequential question batch if authority is missing, then implement and verify the real route.",
+      "prompt_ko": "이 새 제품 화면을 처음부터 자율적으로 구축해줘. 프로젝트 디자인 시스템이 필요한지 먼저 판단하고, 권한이 없을 때만 중요한 질문을 한 번 묶어서 물은 뒤 실제 경로를 구현하고 검증해줘.",
+      "route_suffix_en": "Use OmD Autopilot. Resolve the design-system disposition before reference selection, keep one implementation owner, ask at most one authority-bearing question batch, and verify the real route at desktop, mobile, 320px, and 200% zoom.",
+      "route_suffix_ko": "OmD Autopilot을 사용해. 레퍼런스 선택 전에 디자인 시스템 구축 여부를 결정하고, 구현 소유자는 한 명으로 유지하며, 권한이 필요한 질문은 최대 한 번만 묶어서 묻고 실제 경로를 데스크톱·모바일·320px·200% zoom에서 검증해줘.",
+      "locales": {
+        "ja": {
+          "label": "製品画面を自律的に構築",
+          "prompt": "新しい製品画面を一から自律的に構築してください。まずプロジェクト専用デザインシステムが必要か判断し、権限が不足する場合だけ重要な質問を一度にまとめて確認してから、実際の画面を実装・検証してください。",
+          "route_suffix": "OmD Autopilotを使い、参照例を選ぶ前にデザインシステムの扱いを決めてください。実装担当は一人に限定し、権限に関する質問は最大一回にまとめ、実際の画面をデスクトップ、モバイル、320px、200%表示で検証してください。"
+        },
+        "zh-CN": {
+          "label": "自主构建产品页面",
+          "prompt": "从零开始自主构建这个新产品页面。先判断项目是否需要自己的设计系统；只有缺少决策权限时才集中提问一次，然后实现并验证真实页面。",
+          "route_suffix": "使用 OmD Autopilot。在选择参考案例前决定设计系统方案，只保留一名实现负责人；涉及权限的问题最多集中提问一次，并在桌面端、移动端、320px 和 200% 缩放下验证真实页面。"
+        },
+        "zh-TW": {
+          "label": "自主建構產品畫面",
+          "prompt": "從零開始自主建構這個新產品畫面。先判斷專案是否需要自己的設計系統；只有缺少決策權限時才集中提問一次，再實作並驗證真實頁面。",
+          "route_suffix": "使用 OmD Autopilot。在選擇參考案例前決定設計系統方案，只保留一名實作負責人；涉及權限的問題最多集中提問一次，並在桌面、行動裝置、320px 與 200% 縮放下驗證真實頁面。"
+        }
+      }
+    },
+    {
       "id": "create-new-surface",
-      "label": "Create a new product surface",
-      "label_ko": "새 제품 화면 설계",
+      "label": "Create a new product surface with checkpoints",
+      "label_ko": "체크포인트와 함께 새 제품 화면 설계",
       "entry_skill": "omd:harness",
       "implementation_owner": "main-agent-after-checkpoint-3",
       "specialists": [

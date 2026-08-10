@@ -921,7 +921,7 @@ describe('install-skills', () => {
     const installedSkills = readdirSync(skillsRoot)
       .filter((skill) => existsSync(join(skillsRoot, skill, 'SKILL.md')))
       .sort();
-    expect(installedSkills).toHaveLength(20);
+    expect(installedSkills).toHaveLength(21);
     expect(installedSkills).not.toContain('claude-design');
     expect(installedSkills).toContain('omd-apply');
     const applySkill = readFileSync(join(skillsRoot, 'omd-apply', 'SKILL.md'), 'utf8');

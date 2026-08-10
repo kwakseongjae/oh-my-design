@@ -46,6 +46,13 @@ describe('omd doctor', () => {
           '#!/usr/bin/env node\n',
         );
       }
+      if (skill === 'omd-autopilot') {
+        mkdirSync(join(channelRoot, skill, 'references'), { recursive: true });
+        writeFileSync(
+          join(channelRoot, skill, 'references', 'design-system-contract.md'),
+          '# Project design-system proof contract\n',
+        );
+      }
       if (skill === 'omd-harness') {
         mkdirSync(join(channelRoot, skill, 'references'), { recursive: true });
         for (const sidecar of [
@@ -353,7 +360,7 @@ describe('omd doctor', () => {
     expect(report.channels.find((channel) => channel.id === 'cursor')).toMatchObject({
       installed: true,
       ready: true,
-      skills: 20,
+      skills: REQUIRED_PRODUCT_SKILLS.length - 1,
       references: 440,
       issues: [],
     });

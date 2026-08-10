@@ -4,11 +4,47 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: task baseline commit `6acf2876`, repaired skill/evaluator commit `f1b5e219` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-10 · 1.9.828 policy-aware public benchmark surface 완료
+- 갱신: 2026-08-10 · 1.9.829–1.9.849 Autopilot 2.0 contract/authority/system-proof/greenfield calibration and smoke preregistration
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
+- 2.0 목표를 `설치 후 충분히 권한이 부여된 자연어 한 문장 → 필요 시 project-owned DESIGN.md → 실제 route → hash-bound proof`로 재설정했다. 기존 `omd:harness`는 mandatory checkpoint guided mode로 보존하고, 별도 portable `omd:autopilot`만 원샷 경로를 소유한다.
+- canonical `omd-autopilot` skill과 read-only `omd-design-system-architect` agent를 추가했다. main host agent만 DESIGN.md·product write owner이며 council은 최대3 lane, 질문은 consequential batch 최대1, repair는 최대2다.
+- council ledger가 `reuse|establish|refresh|surface-local-only|interview|blocked` 디자인시스템 disposition을 reference 선택 전에 결정한다. fully delegated prompt는 질문0, broad greenfield without authority는 system-vs-local 질문1, exact brand source missing은 fabricate 대신 block이다.
+- `design-system-plan.cjs`가 task/ledger/answer/existing DESIGN hash에 decision을 봉인한다. `validate-project-design-system.cjs`는 provenance5종·required group10종·proof check9종·unknown-absence·§11–13 비조작을 provider-free로 fail-close한다.
+- `autopilot-mission.cjs`는 초기 product tree를 봉인하고 authority/DS decision 전 write를 거부한다. establish/refresh에서 proof 전 변경은 DESIGN.md만 허용하며 exact system proof 뒤에만 product-build admission을 발급하고, 최종 실패는 repair2회 뒤 failed handoff로 종료한다.
+- installer/doctor/workflow router/package가 skill22·agent19·두 helper·sidecar를 Claude/Codex/OpenCode/Cursor 계약에 반영했다. natural greenfield는 autopilot, explicit guided/checkpoint 요청만 기존 harness로 간다.
+- fair comparison prereg template은 hidden greenfield12 + authority perturbation6, portable arm6, preview5 trials, Luna/Terra/Sol high transfer, zero retry/replacement/fallback, same prompt/starter/model/effort/time/tools를 잠갔다. provider execution과 public one-shot claim은 아직 block이다.
+- `autopilot-mission.cjs` controller와 provider-zero clean-dir family-meal-planner oracle이 실제 DESIGN.md→system proof→product→browser verify→HANDOFF를 질문0·provider/model/Cursor0으로 완주했다. 1.9.834 objective는 100/100이며 DESIGN/product/provenance/coverage/proof 5개 hash binding이 모두 true다.
+- BOUNDED_COUNCIL은 이제 실행 계약이다. disposition/task 기반 최대3 lane을 `autopilot-council-plan.cjs`가 선택하고, exact role/output/write-boundary/result SHA를 reconcile한 뒤에만 system decision으로 진행한다. 1.9.836은 DS architect+UX engineer+evidence researcher 3 lane, sole main owner, 질문0·provider0으로 HANDOFF/100점을 재현했다.
+- greenfield evaluator는 1440·390·320·200%, axe, dialog/focus/empty validation/valid submit/feedback, unknown-absence, external/runtime error를 critical group으로 측정한다. forced overflow와 validation-message removal mutant를 각각 responsive/functionality failure로 검출하는 browser E2E가 green이다.
+- hidden greenfield v0.1 task authority를 12 family exact1개씩 봉인했다: landing, SaaS dashboard, dense operations, onboarding, checkout, approval, search, editorial, mobile, evidence/unknown, recovery, 5-locale. 각 prompt는 project-owned DS authority·3-step journey·protected unknowns·3+ states·3 targeted mutants를 가지며 task-set SHA `f733682d…0389`가 qualification contract에 결합됐다.
+- 12개 observable-outcome adapter authority SHA `485ce957…756f`도 결합했다. role/accessibility-name 기반, exact ID/class/DOM/color 금지, task별 2개 valid structure·journey·atomic assertion·3 mutant mapping을 고정했다. 기존 meal-specific selector·exact RGB·초기-state-only axe·raw regex unknown scan은 12-task evaluator에서 재사용 금지다.
+- 1.9.837에서 첫 `neighborhood-library-landing` adapter를 실제 보정했다. editorial inline-form과 split-hero native-dialog 두 byte/structure-distinct oracle이 모두 100/100이며, 1440·390·320·720×450(200% reflow)에서 role/name journey·keyboard/focus·initial/post Axe·overflow/target·unknown/runtime를 통과한다.
+- 같은 CTA 제거·minimum-width overflow·가짜 `Trusted by 500 neighbors`를 양쪽 oracle에 주입한 6개 mutant cell은 각각 journey·responsive·evidence-honesty atomic group에서 검출됐다. provider/model/Cursor0인 evaluator calibration이며 OmD 성능 증거는 아니다.
+- 1.9.838에서 두 번째 `incident-response-dashboard` adapter를 보정했다. dense table+detail drawer와 severity cards+native dialog가 모두 100/100이며, 2개 open sample incident·unique highest severity·Tab/Enter detail open·same-incident acknowledge persistence·loading/empty/error를 4 viewport에서 검증한다.
+- 양쪽 oracle에 severity hierarchy 평준화·ephemeral acknowledge·pointer-only open을 주입한 6개 mutant cell은 각각 hierarchy·durable-state·keyboard journey assertion에서 검출됐다. 12 family 중 2개만 calibrated라 provider smoke/public one-shot claim은 계속 BLOCK이다.
+- 1.9.839 `cold-chain-operations`는 responsive table+drawer와 exception cards+detail view가 모두 100/100이다. urgent filter의 checked+persistent summary+exact records, keyboard detail, sample evidence, empty-owner error/focus, announced+persistent queue owner를 검증한다.
+- 720px minimum-width·active filter summary 은폐·queue owner persistence 제거를 양쪽 oracle에 적용한 6개 mutant cell은 responsive·filter-state·assignment-persistence assertion에서 검출됐다. 12 family 중 3개가 calibrated 됐다.
+- 1.9.840 `caregiver-onboarding`은 single-card wizard와 full-page stepper가 모두 100/100이다. visible+programmatic 1/3→2/3→3/3, no preselection, empty validation+focus, review echo, Back preservation, announced completion을 각 상태 Axe와 함께 검증한다.
+- progress dynamic copy 제거·Back selection loss·required-choice bypass를 양쪽 oracle에 적용한 6개 mutant cell은 progress·state-preservation·validation assertion에서 crash 없이 검출됐다. 12 family 중 4개가 calibrated 됐다.
+- 1.9.841 `community-class-checkout`은 inline summary+form+receipt와 review→contact→confirmation 두 oracle이 모두 100/100이다. pre-confirm total, empty/invalid contact, associated error/focus, observable busy, post-action confirmation, arm-neutral declined recovery와 contextual unknown scan을 4 viewport에서 검증한다.
+- total 은폐·malformed email 수용·premature `Payment successful`을 양쪽 oracle에 적용한 6개 mutant cell은 total·validation·honesty assertion에서 검출됐다. 12 family 중 5개가 calibrated 됐다.
+- 1.9.842 `research-data-deletion`은 progressive danger panel과 review→confirmation 두 oracle이 모두 100/100이다. parent/children scope, displayed exact phrase, phrase-only/ack+wrong-phrase 차단, associated error/focus, both-gate approval, fresh keyboard cancel+announced state를 4 viewport에서 검증한다.
+- acknowledgement bypass·scope prose flattening·cancel 은폐를 양쪽 oracle에 적용한 6개 mutant cell은 two-gate·hierarchy·cancel-path assertion에서 검출됐다. 12 family 중 6개가 calibrated 됐다.
+- 1.9.843 `public-record-search`는 sidebar filters+detail route와 toolbar filters+native dialog 두 oracle이 모두 100/100이다. rendered record search, implementation-discovered filter2개, visible active values, contextual count, query-preserving Clear, no-results recovery, keyboard identity-matched detail, error/retry를 검증한다.
+- active-filter summary 은폐·Clear no-op·no-results recovery 은폐를 양쪽 oracle에 적용한 6개 mutant cell은 filter visibility·clear contract·zero-result assertion에서 검출됐다. 12 family 중 7개가 calibrated 됐다.
+- 1.9.844 `field-notes-editorial`은 longform sticky TOC와 chapter cards+endnotes 두 oracle이 모두 100/100이다. non-skipping heading outline, keyboard second-section navigation, persistent `aria-current`, caption/citation 분리, empty·malformed email 차단과 announced subscribed state를 4 viewport에서 검증한다.
+- heading rank skip·citation semantics 제거·subscription validation 제거를 양쪽 oracle에 적용한 6개 mutant cell은 outline·evidence semantics·validation assertion에서 검출됐다. 12 family 중 8개가 calibrated 됐다.
+- 1.9.845 `mobile-transit-report`는 stepper와 single-page review 두 oracle을 100/100으로 보정했다. 빈 선택 차단·issue/detail echo·review 선행·local fictional submit을 검증하며 label/lang mismatch 계열 mutant를 포함한 6개 셀을 원자 검출한다.
+- 1.9.846 `grant-evidence-intake`는 status board와 evidence register 두 oracle을 100/100으로 보정했다. 4개 protected field의 unresolved 상태, pending 분류, draft 경고와 unresolved count persistence를 검증하며 6개 mutant를 검출한다.
+- 1.9.847 `volunteer-import-recovery`는 local CSV table과 bundled-sample cards 두 oracle을 100/100으로 보정했다. invalid row의 associated recovery, valid identity 보존, retry, exact completion count를 검증하며 6개 mutant를 검출한다.
+- 1.9.848 `clinic-visit-prep-locales`는 native select와 language buttons 두 oracle을 100/100으로 보정했다. KO/EN/JA/ZH-CN/ZH-TW의 label+`html lang`+script, locale 간 progress persistence, unavailable translation honesty를 검증하며 6개 mutant를 검출한다.
+- 12/12 family 전부 provider-zero calibration이 완료됐다. oracle은 24개, targeted mutant cell은 72개이며 combined opt-in calibration은 18 files/130 tests, pure scorer는 61/61로 green이다. evaluator SHA는 `d6dc37b5…b593`이다.
+- 1.9.849 Luna/high diagnostic smoke 계약을 provider-zero로 사전등록했다. landing→dense operations→five-locale 세 task, exact prompt·blank starter·task/adapter/evaluator·14-file portable bundle hash, Codex Luna/high·serial·900s·checkpoint1·retry/replacement/fallback/substitution/Cursor/Claude0를 고정했다. 현재 contract는 `provider_execution_allowed:false`이며 clean committed source와 immutable runtime authority가 준비되기 전에는 실행할 수 없다.
+- provider-zero 결과는 controller/evaluator calibration일 뿐 자율 모델·스킬 성능 증거가 아니다. 실제 DESIGN.md authoring loop의 Luna/high 3-task smoke, same-prompt competitor matrix, 3-model transfer와 blind review가 남아 2.0 promotion과 public one-shot claim은 계속 BLOCK이다.
+- general full regression은 79 files/1,024 pass/54 skip 뒤 resource-contention 5초 timeout 7건이 있었고, 해당 두 파일을 단일 worker로 재실행해 115/115로 모두 통과했다. lint/build/diff-check도 green이다. `web/public/llms-full.txt`는 기존 사용자 변경으로 계속 제외한다.
 - `/benchmarks`가 1.9.826 exact51 결과와 1.9.827 public claim policy를 SHA 검증된 generated data로 소비한다. 최신 checkpoint를 hero 바로 아래에 두고 51/51 terminal·38/51 objective·34/51 objective+proof·36.89M tokens(50/51)를 함께 공개한다.
 - effort는 결과순이 아니라 low→medium→high→xhigh→max→ultra 의미 순서로 표시한다. high는 측정된 OmD 기본값일 뿐 winner가 아니며 explicit effort 보존·auto escalation0·max/ultra opt-in을 화면에서 명시한다.
 - 공개 화면은 model leaderboard·provider identity·cross-model superiority·statistical reliability·2.0 promotion claim을 만들지 않는다. RESULTS, claim policy, policy audit 원문을 바로 연결하며 configuration-only attribution 경계를 표시한다.
@@ -3828,9 +3864,10 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. 1.9.797 exact competitor snapshots와 1.9.798 fresh task hashes를 authority로 Stage A 12-cell matrix를 사전등록한다.
-2. exact Luna/high·serial·retry/replacement/fallback0·same external browser owner를 provider 전에 machine-validate한다.
-3. 12-cell qualification을 완료한 뒤에만 eligible arm을 Reliability@3로 확장한다. qualification 결과로 Verified/public best claim을 만들지 않는다.
+1. 1.9.849의 exact source set을 checkpoint commit에 포함하고 dirty/untracked authority가 없는 fresh root를 만든다. 사용자 소유 `web/public/llms-full.txt`는 제외한다.
+2. immutable Codex auth/model-catalog, exact Luna/high profile, named browser, installed portable bundle parity를 provider-zero admission으로 검증하고 runnable 3-cell plan/receipt를 새로 발급한다.
+3. frozen order대로 checkpoint당 1셀만 실행한다. 실패도 재시도·replacement 없이 분모에 남기며 3/3 뒤에도 결과는 diagnostic-only다.
+4. smoke 통과 뒤에만 같은 prompt/starter/runtime 통제의 competitor qualification을 준비하고, superiority/public one-shot claim은 12×5·transfer·blind-review 전까지 금지한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 

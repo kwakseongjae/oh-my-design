@@ -56,7 +56,7 @@ describe('design-council-handoff', () => {
       },
       {
         name: 'interview',
-        task: '새 서비스 화면을 디자인하고 가격을 알아서 결정해줘.',
+        task: 'B2B 관리자용 새 서비스 단일 화면을 디자인해줘. Docs를 primary CTA로 두고 가격은 알아서 결정해줘.',
         ctx: { surface_inventory: [], audience_hypothesis: [], wow_moment_candidates: [] },
         expected: { state: 'AWAIT_USER', status: 'ask_user', checkpoint_kind: 'product-authority' },
       },
@@ -83,7 +83,11 @@ describe('design-council-handoff', () => {
       expect(handoff, item.name).toMatchObject(item.expected);
       if (item.name === 'interview') {
         const questions = JSON.parse(readFileSync(handoff.questions_file, 'utf8'));
-        expect(questions.questions).toHaveLength(4);
+        expect(questions.questions).toHaveLength(2);
+        expect(questions.questions.map((question: { id: string }) => question.id)).toEqual([
+          'design-system-disposition',
+          'regulated-commitment',
+        ]);
       }
       if (item.name === 'blocked') {
         expect(handoff.blocking_items.map((entry: { id: string }) => entry.id)).toContain('brand-reference-commitment');

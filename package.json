@@ -9,6 +9,7 @@
   },
   "files": [
     "dist",
+    "skills/omd-autopilot",
     "skills/omd-apply",
     "skills/omd-init",
     "skills/omd-harness",
@@ -57,6 +58,11 @@
     "scripts/design-council-prime.cjs",
     "scripts/design-council-reconcile.cjs",
     "scripts/design-council-handoff.cjs",
+    "scripts/design-system-plan.cjs",
+    "scripts/validate-project-design-system.cjs",
+    "scripts/autopilot-mission.cjs",
+    "scripts/autopilot-council-plan.cjs",
+    "scripts/autopilot-council-reconcile.cjs",
     "scripts/design-harness-context-plan.cjs"
   ],
   "scripts": {

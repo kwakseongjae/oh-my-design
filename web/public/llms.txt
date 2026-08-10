@@ -51,7 +51,7 @@ When `omd:harness` activates, it runs three new steps **before** any reference q
 
 The `omd-master` sub-agent reads `prefilled_slots` on INTAKE and skips its slot-gate entirely, jumping straight to PROPOSE_PLAN. Net effect: the conversation feels like a senior designer who already read your repo, not an interrogation.
 
-## The 21 skills (Claude Code, Codex, OpenCode)
+## The 22 skills (Claude Code, Codex, OpenCode)
 
 Core flow (7):
 - **omd:apply** — Authoritative DESIGN.md context for every UI task. Routes complex requests to specialist sub-agents.
@@ -84,7 +84,7 @@ Interface quality (2):
 Standalone (1):
 - **claude-design** — Analyzes the current codebase into a design-context brief and drives claude.ai/design (via logged-in Chrome) to generate a design, returning a result link.
 
-## The 18 sub-agents (Claude Code, Codex, OpenCode)
+## The 19 sub-agents (Claude Code, Codex, OpenCode)
 
 Specialists pair as advisor ↔ generator:
 

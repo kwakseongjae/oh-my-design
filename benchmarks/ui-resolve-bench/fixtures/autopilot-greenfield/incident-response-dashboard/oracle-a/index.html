@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Relay — Sample incident console</title>
+  <style>
+    :root {
+      --canvas: #f4f3ef;
+      --surface: #fffefa;
+      --ink: #20231f;
+      --muted: #656960;
+      --line: #d4d5ce;
+      --line-strong: #9a9e94;
+      --critical: #a52a23;
+      --critical-soft: #f7ddd8;
+      --high: #8c4b12;
+      --high-soft: #f4e4ca;
+      --steady: #1f6549;
+      --steady-soft: #dcebe2;
+      --focus: #174ac6;
+      --sidebar: #222821;
+      --sidebar-text: #f8f6ee;
+      --sans: Arial, Helvetica, sans-serif;
+      --mono: "Courier New", Courier, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { min-width: 0; background: var(--canvas); }
+    body {
+      margin: 0;
+      min-width: 0;
+      overflow-x: hidden;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 1rem;
+      line-height: 1.45;
+    }
+    button, a { font: inherit; }
+    button { color: inherit; }
+    h1, h2, h3, p { overflow-wrap: break-word; }
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    [hidden] { display: none !important; }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 228px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+    .rail {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      background: var(--sidebar);
+      color: var(--sidebar-text);
+      padding: 26px 22px;
+    }
+    .wordmark {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      gap: 10px;
+      color: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      text-decoration: none;
+    }
+    .wordmark-mark {
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .55);
+      font-family: var(--mono);
+      font-size: .7rem;
+    }
+    .rail-label {
+      margin: 44px 0 12px;
+      color: rgba(248, 246, 238, .58);
+      font-family: var(--mono);
+      font-size: .6875rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .rail-link {
+      display: flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, .14);
+      color: rgba(248, 246, 238, .72);
+      text-decoration: none;
+    }
+    .rail-link[aria-current="page"] { color: var(--sidebar-text); font-weight: 700; }
+    .rail-count { font-family: var(--mono); font-size: .75rem; }
+    .rail-note {
+      margin: auto 0 0;
+      border-top: 1px solid rgba(255, 255, 255, .18);
+      padding-top: 18px;
+      color: rgba(248, 246, 238, .68);
+      font-size: .75rem;
+      line-height: 1.55;
+    }
+
+    .main { min-width: 0; padding: 28px clamp(18px, 4vw, 58px) 52px; }
+    .utility {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid var(--line-strong);
+      padding-bottom: 20px;
+    }
+    .scope {
+      display: inline-flex;
+      min-height: 32px;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+      padding: 5px 9px;
+      font-family: var(--mono);
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .scope-dot { width: 7px; height: 7px; flex: none; border-radius: 50%; background: var(--high); }
+    .not-live { margin: 0; color: var(--muted); font-size: .8125rem; text-align: right; }
+
+    .heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);
+      gap: 40px;
+      align-items: end;
+      padding: clamp(38px, 7vw, 76px) 0 34px;
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 800px;
+      margin: 0;
+      font-size: clamp(2.5rem, 5vw, 5.4rem);
+      font-weight: 500;
+      letter-spacing: -.055em;
+      line-height: .94;
+    }
+    .heading-note {
+      margin: 0;
+      border-top: 1px solid var(--line-strong);
+      padding-top: 14px;
+      color: var(--muted);
+      font-size: .875rem;
+    }
+
+    .workspace {
+      display: grid;
+      min-width: 0;
+      grid-template-columns: minmax(0, 1fr) minmax(330px, 400px);
+      gap: 16px;
+      align-items: start;
+    }
+    .queue, .drawer {
+      min-width: 0;
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+    }
+    .queue-header, .drawer-header {
+      display: flex;
+      min-height: 62px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 1px solid var(--line);
+      padding: 12px 16px;
+    }
+    .queue-header h2, .drawer-header h2 { margin: 0; font-size: 1rem; font-weight: 700; }
+    .queue-count { color: var(--muted); font-family: var(--mono); font-size: .75rem; }
+
+    .incident-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    .incident-table th {
+      border-bottom: 1px solid var(--line-strong);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      padding: 11px 12px;
+      text-align: left;
+      text-transform: uppercase;
+    }
+    .incident-table th:nth-child(1) { width: 100px; }
+    .incident-table th:nth-child(2) { width: 38%; }
+    .incident-table th:nth-child(3) { width: 23%; }
+    .incident-table th:nth-child(4) { width: 112px; }
+    .incident-table th:nth-child(5) { width: 88px; }
+    .incident-table td {
+      border-bottom: 1px solid var(--line);
+      padding: 16px 12px;
+      vertical-align: middle;
+    }
+    .incident-table tbody tr:last-child td { border-bottom: 0; }
+    .incident-table tr[data-selected="true"] { background: #eeeee8; }
+    .incident-table tr[data-acknowledged="true"] { background: var(--steady-soft); }
+    .severity {
+      display: inline-flex;
+      min-height: 26px;
+      align-items: center;
+      border: 1px solid currentColor;
+      padding: 3px 7px;
+      font-family: var(--mono);
+      font-size: .6875rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .severity-1 { background: var(--critical-soft); color: var(--critical); }
+    .severity-2 { background: var(--high-soft); color: var(--high); }
+    .incident-title { display: block; font-weight: 700; }
+    .incident-id { display: block; margin-top: 4px; color: var(--muted); font-family: var(--mono); font-size: .6875rem; }
+    .status { display: inline-flex; align-items: center; gap: 7px; font-size: .8125rem; font-weight: 700; }
+    .status::before { width: 7px; height: 7px; flex: none; border-radius: 50%; background: var(--critical); content: ""; }
+    [data-acknowledged="true"] .status::before { background: var(--steady); }
+    .sample-value { color: var(--muted); font-size: .8125rem; }
+    .row-action, .secondary-action, .primary-action, .close-action {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: transparent;
+      cursor: pointer;
+      padding: 9px 12px;
+      font-size: .8125rem;
+      font-weight: 700;
+    }
+    .row-action:hover, .secondary-action:hover, .close-action:hover { background: #ecece5; }
+    .primary-action { width: 100%; background: var(--ink); color: var(--surface); }
+    .primary-action:hover { background: #353a34; }
+    .primary-action:disabled { border-color: var(--steady); background: var(--steady-soft); color: var(--steady); cursor: default; }
+    .close-action { width: 44px; padding: 0; font-size: 1.15rem; }
+
+    .drawer { position: sticky; top: 18px; }
+    .drawer-body { padding: 20px 18px 18px; }
+    .drawer-rank {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .rank-note { color: var(--critical); font-size: .75rem; font-weight: 700; }
+    .drawer-title { margin: 0; font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 500; letter-spacing: -.035em; line-height: 1.05; }
+    .drawer-description { margin: 13px 0 22px; color: var(--muted); }
+    .detail-list { margin: 0 0 22px; border-top: 1px solid var(--line); }
+    .detail-row {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 12px;
+      border-bottom: 1px solid var(--line);
+      padding: 12px 0;
+    }
+    .detail-row dt { color: var(--muted); font-family: var(--mono); font-size: .6875rem; letter-spacing: .06em; text-transform: uppercase; }
+    .detail-row dd { min-width: 0; margin: 0; font-size: .875rem; font-weight: 700; }
+    .drawer-note { margin: 0 0 18px; color: var(--muted); font-size: .75rem; }
+    .confirmation {
+      margin: 0 0 14px;
+      border: 1px solid var(--steady);
+      background: var(--steady-soft);
+      color: var(--steady);
+      padding: 11px 12px;
+      font-size: .8125rem;
+      font-weight: 700;
+    }
+
+    .scenario-state { min-height: 270px; padding: 44px 22px; text-align: center; }
+    .scenario-state h2 { margin: 0 0 10px; font-size: 1.25rem; }
+    .scenario-state p { max-width: 520px; margin: 0 auto; color: var(--muted); }
+    .scenario-state .secondary-action { margin-top: 20px; }
+    .loading-bars { width: min(100%, 460px); margin: 26px auto 0; }
+    .loading-bar { height: 12px; margin-top: 12px; background: #deded7; }
+    .loading-bar:nth-child(2) { width: 78%; }
+    .loading-bar:nth-child(3) { width: 56%; }
+
+    .scenario-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin-top: 16px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .6875rem;
+    }
+    .scenario-links a { min-height: 44px; display: inline-flex; align-items: center; text-underline-offset: 4px; }
+    .live-region { position: fixed; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+    @media (max-width: 980px) {
+      .app { grid-template-columns: 1fr; }
+      .rail { display: none; }
+      .workspace { grid-template-columns: minmax(0, 1fr); }
+      .drawer { position: static; }
+    }
+
+    @media (max-width: 680px) {
+      .main { padding: 18px 14px 36px; }
+      .utility { align-items: flex-start; }
+      .not-live { max-width: 170px; font-size: .75rem; }
+      .heading { grid-template-columns: 1fr; gap: 24px; padding-block: 42px 24px; }
+      h1 { font-size: clamp(2.45rem, 14vw, 4.25rem); }
+      .incident-table, .incident-table thead, .incident-table tbody, .incident-table tr, .incident-table td { display: block; width: 100%; }
+      .incident-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+      .incident-table tr { border-bottom: 1px solid var(--line-strong); padding: 15px; }
+      .incident-table tbody tr:last-child { border-bottom: 0; }
+      .incident-table td { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 10px; align-items: center; border: 0; padding: 5px 0; }
+      .incident-table td::before { color: var(--muted); content: attr(data-label); font-family: var(--mono); font-size: .625rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+      .incident-table td:last-child { margin-top: 5px; }
+      .row-action { width: 100%; }
+      .drawer-header { position: sticky; top: 0; z-index: 2; background: var(--surface); }
+      .detail-row { grid-template-columns: 88px minmax(0, 1fr); }
+    }
+
+    @media (max-width: 360px) {
+      .utility { display: block; }
+      .not-live { max-width: none; margin-top: 10px; text-align: left; }
+      .queue-header { align-items: flex-start; }
+      .incident-table td, .detail-row { grid-template-columns: 76px minmax(0, 1fr); gap: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="rail" aria-label="Demo navigation">
+      <a class="wordmark" href="?">
+        <span class="wordmark-mark" aria-hidden="true">R/</span>
+        Relay console
+      </a>
+      <p class="rail-label">Sample workspace</p>
+      <a class="rail-link" href="?" aria-current="page"><span>Open incidents</span><span class="rail-count">02</span></a>
+      <a class="rail-link" href="?omd-scenario=empty"><span>Resolved</span><span class="rail-count">—</span></a>
+      <p class="rail-note">Provider-zero fixture<br>All incidents, impacts, and response roles on this page are fictional sample data.</p>
+    </aside>
+
+    <main class="main">
+      <header class="utility">
+        <span class="scope"><span class="scope-dot" aria-hidden="true"></span>Demo · Sample data</span>
+        <p class="not-live">Not connected to live infrastructure</p>
+      </header>
+
+      <section class="heading" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Incident queue / priority order</p>
+          <h1 id="page-title">Find the incident that needs you first.</h1>
+        </div>
+        <p class="heading-note">Severity is ranked before recency. SEV-1 is the unique highest-severity open sample incident.</p>
+      </section>
+
+      <div class="workspace">
+        <section class="queue" aria-labelledby="queue-title">
+          <div class="queue-header">
+            <h2 id="queue-title">Open sample incidents</h2>
+            <span class="queue-count" id="queue-count">2 records · sorted by severity</span>
+          </div>
+
+          <div id="default-state">
+            <table class="incident-table">
+              <thead>
+                <tr>
+                  <th scope="col">Severity</th>
+                  <th scope="col">Incident</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Sample age</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="row-inc-104" data-incident="inc-104" data-selected="false" data-acknowledged="false">
+                  <td data-label="Severity"><span class="severity severity-1" aria-label="SEV-1, highest severity">SEV-1 · highest</span></td>
+                  <td data-label="Incident"><span class="incident-title">Checkout request failures</span><span class="incident-id">SAMPLE · INC-104</span></td>
+                  <td data-label="Status"><span class="status" id="status-inc-104">Open · unacknowledged</span></td>
+                  <td data-label="Sample age"><span class="sample-value">12 min</span></td>
+                  <td data-label="Action"><button class="row-action" type="button" data-open="inc-104" aria-controls="incident-drawer" aria-expanded="false">Open INC-104</button></td>
+                </tr>
+                <tr id="row-inc-207" data-incident="inc-207" data-selected="false" data-acknowledged="false">
+                  <td data-label="Severity"><span class="severity severity-2" aria-label="SEV-2, second severity">SEV-2</span></td>
+                  <td data-label="Incident"><span class="incident-title">Delayed event processing</span><span class="incident-id">SAMPLE · INC-207</span></td>
+                  <td data-label="Status"><span class="status" id="status-inc-207">Open · unacknowledged</span></td>
+                  <td data-label="Sample age"><span class="sample-value">27 min</span></td>
+                  <td data-label="Action"><button class="row-action" type="button" data-open="inc-207" aria-controls="incident-drawer" aria-expanded="false">Open INC-207</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <section class="scenario-state" id="loading-state" role="status" aria-live="polite" hidden>
+            <h2>Loading sample incidents</h2>
+            <p>The fixture is showing its deterministic loading state. No live service is being queried.</p>
+            <div class="loading-bars" aria-hidden="true"><div class="loading-bar"></div><div class="loading-bar"></div><div class="loading-bar"></div></div>
+          </section>
+
+          <section class="scenario-state" id="empty-state" hidden>
+            <h2>No open sample incidents</h2>
+            <p>This deterministic empty state contains no incident records. It does not describe a real system.</p>
+            <a class="secondary-action" href="?">Return to sample queue</a>
+          </section>
+
+          <section class="scenario-state" id="error-state" role="alert" hidden>
+            <h2>Sample queue unavailable</h2>
+            <p>The fixture could not render its sample records. Live infrastructure status is unknown.</p>
+            <a class="secondary-action" href="?">Retry sample queue</a>
+          </section>
+        </section>
+
+        <aside class="drawer" id="incident-drawer" aria-labelledby="drawer-title" tabindex="-1" hidden>
+          <div class="drawer-header">
+            <h2>Incident detail</h2>
+            <button class="close-action" type="button" id="close-drawer" aria-label="Close incident detail">×</button>
+          </div>
+          <div class="drawer-body">
+            <div class="drawer-rank">
+              <span class="severity severity-1" id="drawer-severity">SEV-1 · highest</span>
+              <span class="rank-note" id="drawer-rank">Priority 1 of 2</span>
+            </div>
+            <h3 class="drawer-title" id="drawer-title" tabindex="-1">Checkout request failures</h3>
+            <p class="drawer-description" id="drawer-description">Sample signals indicate repeated checkout request failures. Customer impact has not been verified.</p>
+            <dl class="detail-list">
+              <div class="detail-row"><dt>Record</dt><dd id="drawer-id">SAMPLE · INC-104</dd></div>
+              <div class="detail-row"><dt>Status</dt><dd id="drawer-status">Open · unacknowledged</dd></div>
+              <div class="detail-row"><dt>Responder</dt><dd>Unassigned sample role</dd></div>
+              <div class="detail-row"><dt>Scope</dt><dd>Demonstration only</dd></div>
+            </dl>
+            <p class="drawer-note">Acknowledgement changes this local sample record only. It does not contact responders or infrastructure.</p>
+            <p class="confirmation" id="ack-confirmation" role="status" hidden>INC-104 acknowledged in this sample workspace.</p>
+            <button class="primary-action" type="button" id="acknowledge">Acknowledge INC-104</button>
+          </div>
+        </aside>
+      </div>
+
+      <nav class="scenario-links" aria-label="Fixture states">
+        <span>Scenario:</span>
+        <a href="?">default</a>
+        <a href="?omd-scenario=loading">loading</a>
+        <a href="?omd-scenario=empty">empty</a>
+        <a href="?omd-scenario=error">error</a>
+      </nav>
+      <p class="live-region" id="live-region" aria-live="polite"></p>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const incidents = {
+        "inc-104": {
+          id: "INC-104",
+          title: "Checkout request failures",
+          severity: "SEV-1 · highest",
+          severityClass: "severity-1",
+          rank: "Priority 1 of 2",
+          description: "Sample signals indicate repeated checkout request failures. Customer impact has not been verified."
+        },
+        "inc-207": {
+          id: "INC-207",
+          title: "Delayed event processing",
+          severity: "SEV-2",
+          severityClass: "severity-2",
+          rank: "Priority 2 of 2",
+          description: "Sample signals indicate delayed event processing. Customer impact has not been verified."
+        }
+      };
+      const acknowledged = new Set();
+      const drawer = document.querySelector("#incident-drawer");
+      const drawerTitle = document.querySelector("#drawer-title");
+      const drawerSeverity = document.querySelector("#drawer-severity");
+      const drawerRank = document.querySelector("#drawer-rank");
+      const drawerDescription = document.querySelector("#drawer-description");
+      const drawerId = document.querySelector("#drawer-id");
+      const drawerStatus = document.querySelector("#drawer-status");
+      const confirmation = document.querySelector("#ack-confirmation");
+      const acknowledge = document.querySelector("#acknowledge");
+      const liveRegion = document.querySelector("#live-region");
+      let activeIncident = null;
+      let returnFocus = null;
+
+      const renderDrawerState = () => {
+        if (!activeIncident) return;
+        const incident = incidents[activeIncident];
+        const isAcknowledged = acknowledged.has(activeIncident);
+        drawerTitle.textContent = incident.title;
+        drawerSeverity.textContent = incident.severity;
+        drawerSeverity.className = `severity ${incident.severityClass}`;
+        drawerRank.textContent = incident.rank;
+        drawerDescription.textContent = incident.description;
+        drawerId.textContent = `SAMPLE · ${incident.id}`;
+        drawerStatus.textContent = isAcknowledged ? "Acknowledged · sample only" : "Open · unacknowledged";
+        confirmation.textContent = `${incident.id} acknowledged in this sample workspace.`;
+        confirmation.hidden = !isAcknowledged;
+        acknowledge.textContent = isAcknowledged ? `${incident.id} acknowledged` : `Acknowledge ${incident.id}`;
+        acknowledge.disabled = isAcknowledged;
+      };
+
+      const openIncident = (button) => {
+        const id = button.dataset.open;
+        if (!incidents[id]) return;
+        returnFocus = button;
+        activeIncident = id;
+        document.querySelectorAll("[data-incident]").forEach((row) => {
+          row.dataset.selected = String(row.dataset.incident === id);
+        });
+        document.querySelectorAll("[data-open]").forEach((control) => {
+          control.setAttribute("aria-expanded", String(control === button));
+        });
+        renderDrawerState();
+        drawer.hidden = false;
+        drawerTitle.focus();
+      };
+
+      document.querySelectorAll("[data-open]").forEach((button) => {
+        button.addEventListener("click", () => openIncident(button));
+      });
+
+      document.querySelector("#close-drawer").addEventListener("click", () => {
+        drawer.hidden = true;
+        document.querySelectorAll("[data-incident]").forEach((row) => { row.dataset.selected = "false"; });
+        document.querySelectorAll("[data-open]").forEach((control) => control.setAttribute("aria-expanded", "false"));
+        if (returnFocus) returnFocus.focus();
+      });
+
+      drawer.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") document.querySelector("#close-drawer").click();
+      });
+
+      acknowledge.addEventListener("click", () => {
+        if (!activeIncident || acknowledged.has(activeIncident)) return;
+        const incident = incidents[activeIncident];
+        acknowledged.add(activeIncident);
+        const row = document.querySelector(`[data-incident="${activeIncident}"]`);
+        row.dataset.acknowledged = "true";
+        document.querySelector(`#status-${activeIncident}`).textContent = "Acknowledged · sample only";
+        renderDrawerState();
+        liveRegion.textContent = `${incident.id} is now acknowledged in this sample workspace.`;
+        confirmation.focus?.();
+      });
+
+      const scenario = new URLSearchParams(window.location.search).get("omd-scenario") || "default";
+      const knownScenario = ["default", "loading", "empty", "error"].includes(scenario) ? scenario : "default";
+      document.querySelector("#default-state").hidden = knownScenario !== "default";
+      document.querySelector("#loading-state").hidden = knownScenario !== "loading";
+      document.querySelector("#empty-state").hidden = knownScenario !== "empty";
+      document.querySelector("#error-state").hidden = knownScenario !== "error";
+      document.querySelector("#queue-count").textContent = knownScenario === "default" ? "2 records · sorted by severity" : `${knownScenario} scenario`;
+      if (knownScenario !== "default") drawer.hidden = true;
+    })();
+  </script>
+</body>
+</html>

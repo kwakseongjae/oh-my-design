@@ -250,6 +250,85 @@ decisions.push(decision({
 }));
 
 const designMdPresent = fs.existsSync(path.join(cwd, 'DESIGN.md'));
+const explicitDesignSystemSkip = /(without|skip|no|do not create|don't create|이번 (?:화면|surface)만|디자인 시스템 (?:없이|만들지)|design\.md (?:없이|만들지)|不要|不需要|作らない).{0,24}(design system|design\.md|디자인 시스템|デザインシステム|設計系統|设计系统)/i.test(task)
+  || /(design system|design\.md|디자인 시스템|デザインシステム|設計系統|设计系统).{0,24}(without|skip|no|do not create|don't create|없이|만들지|不要|不需要|作らない)/i.test(task);
+const explicitDesignSystemRefresh = /(refresh|replace|rebuild|rewrite|재구축|교체|다시 (?:만들|작성)|刷新|重建|置き換|作り直).{0,24}(design system|design\.md|디자인 시스템|デザインシステム|設計系統|设计系统)/i.test(task)
+  || /(design system|design\.md|디자인 시스템|デザインシステム|設計系統|设计系统).{0,24}(refresh|replace|rebuild|rewrite|재구축|교체|다시|刷新|重建|置き換|作り直)/i.test(task);
+const explicitDesignSystemEstablish = /(create|build|establish|set up|bootstrap|구축|만들|생성|작성|整備|作成|構築|建立|创建|創建).{0,24}(design system|design\.md|디자인 시스템|デザインシステム|設計系統|设计系统)/i.test(task)
+  || /(design system|design\.md|디자인 시스템|デザインシステム|設計系統|设计系统).{0,24}(create|build|establish|set up|bootstrap|구축|만들|생성|작성|整備|作成|構築|建立|创建|創建)/i.test(task);
+const delegatedDesignSystemAuthority = /(if needed|when needed|as needed|필요하면|필요하다면|알아서|任せ|必要なら|如有需要|如果需要|視需要)/i.test(task)
+  && /(design system|design\.md|디자인 시스템|デザインシステム|設計系統|设计系统)/i.test(task);
+const broadGreenfield = !existingSurfaceMaintenance && surfaces.length === 0
+  && /(from scratch|new (?:product|service|surface|landing|app)|greenfield|prototype|처음부터|새 (?:제품|서비스|화면|앱|랜딩)|프로토타입|一から|新しい|從頭|从头|全新)/i.test(task);
+
+let designSystemDecision;
+if (explicitDesignSystemSkip) {
+  designSystemDecision = decision({
+    id: 'design-system-disposition', slot: 'design_system_strategy',
+    proposed_value: 'surface-local-only', evidence: ['task.md'], confidence: 0.98,
+    impact: 'high', reversibility: 'moderate', authority: 'user-stated',
+    confidence_basis: 'user-explicit-skip', disposition: 'auto',
+    reason: 'The user explicitly limits the work to a local surface contract; do not create project-wide design facts.',
+  });
+} else if (explicitDesignSystemRefresh) {
+  designSystemDecision = decision({
+    id: 'design-system-disposition', slot: 'design_system_strategy',
+    proposed_value: 'refresh', evidence: ['task.md', ...(designMdPresent ? ['DESIGN.md'] : [])], confidence: 0.98,
+    impact: 'high', reversibility: 'moderate', authority: 'user-stated',
+    confidence_basis: 'user-explicit-refresh', disposition: 'auto',
+    reason: 'The user explicitly authorizes replacing or refreshing the project design system.',
+  });
+} else if (explicitDesignSystemEstablish || delegatedDesignSystemAuthority) {
+  designSystemDecision = decision({
+    id: 'design-system-disposition', slot: 'design_system_strategy',
+    proposed_value: designMdPresent ? 'reuse' : 'establish',
+    evidence: ['task.md', ...(designMdPresent ? ['DESIGN.md'] : [])], confidence: 0.98,
+    impact: 'high', reversibility: 'moderate', authority: 'user-stated',
+    confidence_basis: explicitDesignSystemEstablish ? 'user-explicit-establish' : 'user-delegated-establish',
+    disposition: 'auto',
+    reason: designMdPresent
+      ? 'A project design system already exists; preserve it unless the user explicitly requests replacement.'
+      : 'The user explicitly authorizes establishing a project-owned design system.',
+  });
+} else if (designMdPresent) {
+  designSystemDecision = decision({
+    id: 'design-system-disposition', slot: 'design_system_strategy',
+    proposed_value: 'reuse', evidence: ['DESIGN.md'], confidence: 0.98,
+    impact: 'low', reversibility: 'easy', authority: 'process',
+    confidence_basis: 'project-design-md-present', disposition: 'auto',
+    reason: 'A project-owned DESIGN.md exists; reuse it instead of reopening settled system choices.',
+  });
+} else if (existingSurfaceMaintenance) {
+  designSystemDecision = decision({
+    id: 'design-system-disposition', slot: 'design_system_strategy',
+    proposed_value: 'surface-local-only', evidence: ['ctx-prime.json#/surface_inventory'], confidence: 0.9,
+    impact: 'low', reversibility: 'easy', authority: 'process',
+    confidence_basis: 'narrow-maintenance-preservation', disposition: 'auto',
+    reason: 'A narrow existing-surface repair does not justify inventing a project-wide design system.',
+  });
+} else if (broadGreenfield) {
+  designSystemDecision = decision({
+    id: 'design-system-disposition', slot: 'design_system_strategy',
+    proposed_value: null, evidence: ['task.md'], confidence: 0,
+    impact: 'high', reversibility: 'moderate', authority: 'product',
+    confidence_basis: 'greenfield-system-authority-missing', disposition: 'interview',
+    reason: 'A broad greenfield product needs an explicit choice between a reusable project system and a surface-local contract.',
+    options: [
+      { label: '프로젝트 디자인 시스템 구축', description: 'DESIGN.md와 재사용 가능한 토큰·컴포넌트 계약을 함께 만듭니다.' },
+      { label: '이번 surface 한정', description: '결정을 현재 surface에만 유지하고 프로젝트 사실로 승격하지 않습니다.' },
+    ],
+  });
+} else {
+  designSystemDecision = decision({
+    id: 'design-system-disposition', slot: 'design_system_strategy',
+    proposed_value: null, evidence: [], confidence: 0,
+    impact: 'low', reversibility: 'easy', authority: 'process',
+    confidence_basis: 'insufficient-system-scope', disposition: 'defer',
+    reason: 'The task does not establish enough scope to create or replace a project design system.',
+  });
+}
+decisions.push(designSystemDecision);
+
 const requiresExactOfficialReference = /(official|exact|identical|정확히|공식|그대로|完全一致|公式|官方|完全相同|一模一樣|一模一样)/i.test(task)
   && /(brand|reference|design system|브랜드|레퍼런스|디자인 시스템|ブランド|リファレンス|デザインシステム|品牌|參考|参考|設計系統|设计系统)/i.test(task);
 if (requiresExactOfficialReference) {
@@ -356,6 +435,7 @@ function requestLane(laneId, decisionId) {
 for (const item of decisions) {
   if (item.disposition === 'auto') continue;
   if (item.confidence_basis === 'existing-surface-preservation') continue;
+  if (item.confidence_basis === 'insufficient-system-scope') continue;
   requestLane('ambiguity_contrarian', item.id);
   if (['audience', 'cta_primary', 'regulated_commitment', 'required_factual_claim'].includes(item.slot)) {
     requestLane('product_context', item.id);
@@ -363,6 +443,10 @@ for (const item of decisions) {
   if (item.slot === 'exit_scope') {
     requestLane('code_context', item.id);
     requestLane('architecture_implications', item.id);
+  }
+  if (item.slot === 'design_system_strategy') {
+    requestLane('architecture_implications', item.id);
+    requestLane('reference_evidence', item.id);
   }
   if (['wow_moment', 'visual_grounding', 'brand_reference_commitment'].includes(item.slot)) {
     requestLane('reference_evidence', item.id);

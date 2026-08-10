@@ -78,7 +78,7 @@ Don't want Toss? Any brand works — `Stripe-style`, `Linear-clone B2B SaaS`, `K
 
 | Agent | Channel | What gets installed |
 |---|---|---|
-| **Claude Code** | `--agent claude-code` (default) | Full bundle — skills, 18 sub-agents, hooks, data under `.claude/` |
+| **Claude Code** | `--agent claude-code` (default) | Full bundle — skills, 19 sub-agents, hooks, data under `.claude/` |
 | **Codex** | `--agent codex` | Skills at `.agents/skills/`, embedded sub-agent roles under `.codex/agents/`, and the local catalog under `.codex/data/` |
 | **OpenCode** | `--agent opencode` | Project: skills, native sub-agents, and catalog under `.opencode/{skills,agents,data}/`; global: the same bundle under `~/.config/opencode/{skills,agents,data}/` |
 | **Cursor** | `--agent cursor` | 20 compatible Agent Skills under `.cursor/skills/`, a small `.cursor/rules/omd-design.mdc` bootstrap, and the shared `.claude/data` catalog; no OmD sub-agent definitions or hooks |
@@ -93,7 +93,7 @@ For older Cursor clients, `--cursor-rule-only` installs the historical rule + ca
 
 ## What's inside
 
-**21 skills · 18 sub-agents · 440+ quality-graded references · activation hooks** make up the full bundle. Cursor receives the 20 portable skills; `claude-design`, OmD sub-agent definitions, and activation hooks remain channel-specific.
+**22 skills · 19 sub-agents · 440+ quality-graded references · activation hooks** make up the full bundle. Cursor receives the 20 portable skills; `claude-design`, OmD sub-agent definitions, and activation hooks remain channel-specific.
 
 - **Skills** — core flow (`omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:update` / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the writing and review layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), interface quality (`omd:feel` / `omd:slop-audit`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
 - **Sub-agents** — `omd-master` + 17 specialists (UX research, UI generation, asset curation, copy humanization, slop auditing, a11y audit, persona testing, critique, …).

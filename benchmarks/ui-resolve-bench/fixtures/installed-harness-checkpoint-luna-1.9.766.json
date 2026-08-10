@@ -23,7 +23,7 @@
     },
     {
       "id": "user-answerable-pricing",
-      "task": "새 서비스 화면을 디자인하고 가격을 알아서 결정해줘.",
+      "task": "새 서비스 화면을 디자인하고 가격을 알아서 결정해줘. 이번 surface 한정으로 작업하고 DESIGN.md는 만들지 마.",
       "ctx": {
         "surface_inventory": [],
         "audience_hypothesis": [],
@@ -38,7 +38,7 @@
     },
     {
       "id": "external-brand-source",
-      "task": "Create a single screen exactly matching the official Acme design system.",
+      "task": "Create a single screen exactly matching the official Acme design system for developers, with View docs as the primary CTA. Keep this surface local and do not create DESIGN.md.",
       "ctx": {
         "surface_inventory": [],
         "audience_hypothesis": [],

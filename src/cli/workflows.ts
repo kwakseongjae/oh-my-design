@@ -153,10 +153,20 @@ export function selectWorkflowDecision(
   };
 
   const newSurface = includesAny(value, [
-    'from scratch', 'new surface', 'new landing', 'new home', 'prototype', '처음부터', '새 화면', '새로운 화면', '새 랜딩', '프로토타입', '一から', '新しい画面', '從頭', '新頁面',
+    'from scratch', 'new product', 'new app', 'new surface', 'new landing', 'new home', 'prototype', 'autopilot', 'one shot', 'one-shot',
+    '처음부터', '새 제품', '새 서비스', '새 앱', '새 화면', '새로운 화면', '새 랜딩', '프로토타입', '자율', '원샷', '알아서',
+    '一から', '新しい製品', '新しいアプリ', '新しい画面', '自律', '從頭', '从头', '新產品', '新产品', '新應用', '新应用', '新頁面',
+  ]);
+  const guidedCreation = includesAny(value, [
+    'checkpoint', 'review each step', 'review with me', 'guided', '체크포인트', '단계마다 검토', '나와 검토', '승인받',
+    '確認しながら', 'チェックポイント', '逐步确认', '逐步確認',
   ]);
   if (newSurface) return {
-    workflow: byId('create-new-surface'), confidence: 'high', reason: 'explicit-new-surface-intent', matched_signals: ['new-surface'], ambiguous: false,
+    workflow: byId(guidedCreation ? 'create-new-surface' : 'autonomous-product-creation'),
+    confidence: 'high',
+    reason: guidedCreation ? 'explicit-guided-new-surface-intent' : 'explicit-autonomous-new-surface-intent',
+    matched_signals: ['new-surface', guidedCreation ? 'guided-checkpoints' : 'autonomous'],
+    ambiguous: false,
   };
 
   const changeRequested = includesAny(value, [

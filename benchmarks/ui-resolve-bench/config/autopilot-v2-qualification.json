@@ -1,0 +1,145 @@
+{
+  "schema_version": "0.1",
+  "contract_id": "omd-autopilot-v2-qualification",
+  "status": "provider-zero-template",
+  "provider_execution_allowed": false,
+  "claim_state": "blocked-until-fresh-evidence",
+  "product_promise": "one installed OmD plus one sufficiently authorized natural-language prompt produces a project-owned DESIGN.md when warranted, a working real-route surface, and a hash-bound verification report",
+  "tracks": {
+    "portable_skill": {
+      "included": true,
+      "task_specific_setup_allowed": false,
+      "harness_configuration_allowed": false,
+      "preselected_reference_allowed": false
+    },
+    "browser_or_hook_harness": {
+      "included": false,
+      "report_separately": true
+    }
+  },
+  "portable_arms": [
+    "model-only",
+    "anthropic-frontend-design",
+    "impeccable-prompt-only",
+    "ui-ux-pro-max",
+    "taste-eligible-scope-only",
+    "omd-autopilot-v2"
+  ],
+  "internal_ablations": [
+    "omd-without-design-system-authoring",
+    "omd-without-council"
+  ],
+  "controls": {
+    "exact_prompt_bytes": true,
+    "blank_framework_shell": true,
+    "same_model": true,
+    "same_effort": true,
+    "same_timeout": true,
+    "same_network_policy": true,
+    "same_tool_permissions": true,
+    "retry_budget_per_cell": 0,
+    "replacement_budget_per_cell": 0,
+    "fallback_budget_per_cell": 0,
+    "task_specific_design_md_allowed": false,
+    "task_specific_tokens_allowed": false,
+    "task_specific_component_library_allowed": false,
+    "task_specific_examples_allowed": false
+  },
+  "greenfield_task_families": [
+    "landing",
+    "saas-dashboard",
+    "dense-operations",
+    "onboarding",
+    "checkout",
+    "transactional-approval",
+    "search-and-filter",
+    "content-editorial",
+    "mobile-first",
+    "evidence-and-unknowns",
+    "state-and-error-recovery",
+    "five-locale-surface"
+  ],
+  "greenfield_task_set_authority": {
+    "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json",
+    "sha256": "f733682d6461c5911ea5c68ec1c483d2fd03c19e299e44a95c72ae2750480389",
+    "task_count": 12,
+    "provider_zero_validation_required": true
+  },
+  "greenfield_adapter_authority": {
+    "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json",
+    "sha256": "485ce95796f74b2cd08b88f4d0d4bab16dfc2001a22f346577485f561baf756f",
+    "adapter_count": 12,
+    "locator_policy": "role-and-accessible-name-observable-outcomes",
+    "provider_zero_validation_required": true
+  },
+  "authority_perturbations": [
+    "existing-compatible-design-system",
+    "explicit-establish-authority",
+    "explicit-refresh-authority",
+    "explicit-surface-local-only",
+    "broad-greenfield-missing-authority",
+    "exact-brand-missing-source"
+  ],
+  "task_calibration": {
+    "valid_implementations_required_per_task": 2,
+    "targeted_mutants_required": true,
+    "must_complete_before_provider_execution": true,
+    "independent_broken_or_ambiguous_task_estimate_max": 0.05
+  },
+  "trial_program": {
+    "preview_hidden_tasks": 12,
+    "preview_trials_per_arm": 5,
+    "verified_hidden_tasks_min": 24,
+    "verified_trials_per_arm": 10,
+    "blind_practitioners": 5,
+    "transfer_models": [
+      "gpt-5.6-luna",
+      "gpt-5.6-terra",
+      "gpt-5.6-sol"
+    ],
+    "locked_comparison_effort": "high"
+  },
+  "required_measurements": [
+    "critical-functionality",
+    "hidden-journey-success",
+    "recovery",
+    "keyboard-accessibility",
+    "responsive-1440-390-320-200-percent",
+    "brief-and-asset-fidelity",
+    "evidence-honesty",
+    "design-system-completeness",
+    "design-system-coherence",
+    "semantic-token-closure",
+    "component-state-coverage",
+    "design-md-to-code-conformance",
+    "authority-question-precision-recall",
+    "unplanned-human-interventions",
+    "wall-time",
+    "fresh-cached-output-reasoning-tokens",
+    "blind-ship-preference",
+    "blind-design-system-preference"
+  ],
+  "promotion_gates": {
+    "fully_authorized_prompt_follow_up_questions": 0,
+    "fully_authorized_prompt_unplanned_interventions": 0,
+    "authority_question_batches_max": 1,
+    "required_authority_escalation_recall": 1,
+    "unsupported_auto_decisions": 0,
+    "parseable_design_md_task_rate": 1,
+    "unsupported_product_facts": 0,
+    "scheduled_ui_resolved_rate_min": 0.8,
+    "reliability_at_5_task_count_min": 8,
+    "paired_lift_confidence_lower_bound_over_model_only_min_exclusive": 0,
+    "strongest_eligible_skill_result": "first-or-statistically-tied",
+    "each_transfer_model_direction": "nonnegative",
+    "pooled_transfer_confidence_lower_bound_min_exclusive": 0,
+    "pareto_requirement": "non-dominated-on-quality-human-burden-time-and-tokens",
+    "claim_after_preview": "preview-only-not-industry-best"
+  },
+  "artifacts": {
+    "every_success_failure_timeout_downloadable": true,
+    "prompt_starter_skill_model_effort_and_evaluator_hash_bound": true,
+    "question_count_and_intervention_trace_required": true,
+    "design_system_provenance_and_coverage_required": true
+  }
+}
