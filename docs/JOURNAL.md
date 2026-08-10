@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-10 (Codex) · 1.9.851 fresh smoke lock
+- run controller commit `f2b74be9`를 source authority로 새 3셀 plan을 발급했다.
+- plan `8f037336…a735`, source `fcfb22ce…744a`, provider/model/Cursor0이다.
+- plan commit 뒤 fresh prepare/audit와 order1 단일 실행만 허용한다.
+
 ## 2026-08-10 (Codex) · Autopilot smoke run path
 - 1.9.850 root의 exact prepare/audit가 3/3 PASS했다.
 - Codex1회→controller DS proof→task evaluator→atomic checkpoint 경로를 구현했다.

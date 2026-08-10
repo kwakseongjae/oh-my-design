@@ -46,6 +46,7 @@
 - 1.9.850 greenfield smoke controller를 추가했다. exact commit의 task·prompt·skill·evaluator만 읽고 blank shell 3개를 만들며, 1.9.826에서 검증된 immutable auth/cache/model-catalog와 Codex CLI exact pair를 재검증한다. oracle/mutant는 workspace에 복제하지 않고 Luna/high·checkpoint1·no-retry 계약을 독립 audit한다. controller 자체의 clean commit 뒤 provider-zero plan/prepare/audit를 실행해야 한다.
 - controller commit `55a90134`를 authority로 실제 1.9.850 plan/receipt를 발급했다. plan SHA `a51317ce…5382`, source authority `3639f309…3305`, schedule `5ae75f2b…0280`, provider/model/Cursor0이다. plan을 commit한 뒤에만 fresh root prepare/audit를 진행한다.
 - 1.9.850 fresh root의 provider-zero prepare/audit가 3/3 PASS했다. 이어 run path가 셀 시작 state를 원자 기록하고 Codex 1회→controller-owned DS proof→4-viewport task evaluator→terminal checkpoint를 수행하도록 구현됐다. provider success인데 evaluator artifact가 없으면 root를 중단하고, 모델 실패/timeout은 retry 없이 valid terminal failure로 남긴다. run-path commit 때문에 1.9.850 root는 실행하지 않고 새 1.9.851 authority로 재발급한다.
+- run controller commit `f2b74be9`로 1.9.851을 fresh 발급했다. plan `8f037336…a735`, source authority `fcfb22ce…744a`, schedule `5ae75f2b…0280`, generation provider/model/Cursor0이다. plan commit→fresh prepare/audit→order1 단일 실행 순서를 유지한다.
 - provider-zero 결과는 controller/evaluator calibration일 뿐 자율 모델·스킬 성능 증거가 아니다. 실제 DESIGN.md authoring loop의 Luna/high 3-task smoke, same-prompt competitor matrix, 3-model transfer와 blind review가 남아 2.0 promotion과 public one-shot claim은 계속 BLOCK이다.
 - general full regression은 79 files/1,024 pass/54 skip 뒤 resource-contention 5초 timeout 7건이 있었고, 해당 두 파일을 단일 worker로 재실행해 115/115로 모두 통과했다. lint/build/diff-check도 green이다. `web/public/llms-full.txt`는 기존 사용자 변경으로 계속 제외한다.
 - `/benchmarks`가 1.9.826 exact51 결과와 1.9.827 public claim policy를 SHA 검증된 generated data로 소비한다. 최신 checkpoint를 hero 바로 아래에 두고 51/51 terminal·38/51 objective·34/51 objective+proof·36.89M tokens(50/51)를 함께 공개한다.
@@ -3867,8 +3868,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. run controller를 checkpoint commit하고 1.9.851 plan/root를 exact 새 authority로 발급한다. 사용자 소유 `web/public/llms-full.txt`는 제외한다.
-2. 1.9.851 provider-zero prepare/audit 뒤 frozen order대로 checkpoint당 1셀만 실행한다. 실패도 재시도·replacement 없이 분모에 남기며 3/3 뒤에도 결과는 diagnostic-only다.
+1. 1.9.851 plan/receipt를 checkpoint commit하고 사용자 소유 `web/public/llms-full.txt`는 제외한다.
+2. fresh provider-zero prepare/audit 뒤 frozen order대로 checkpoint당 1셀만 실행한다. 실패도 재시도·replacement 없이 분모에 남기며 3/3 뒤에도 결과는 diagnostic-only다.
 4. smoke 통과 뒤에만 같은 prompt/starter/runtime 통제의 competitor qualification을 준비하고, superiority/public one-shot claim은 12×5·transfer·blind-review 전까지 금지한다.
 
 ## 막힘 / 대기 (없으면 "없음")
