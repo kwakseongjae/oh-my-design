@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-10 (Codex) · 1.9.850 exact smoke controller
+- exact commit·prompt·portable bundle·Luna/high runtime만 허용하는 3-cell controller를 추가했다.
+- blank shell과 installed Autopilot만 복제하며 oracle/mutant는 workspace에서 금지한다.
+- controller commit 뒤 provider-zero plan/prepare/audit를 실행하고, 이후 checkpoint당 1셀만 연다.
+
 ## 2026-08-10 (Codex) · 1.9.849 Luna/high smoke prereg
 - landing·dense operations·five-locale 3셀을 coverage-spread 순서로 사전등록했다.
 - exact prompt/starter/evaluator/portable-bundle과 Luna/high·serial·no-retry/no-fallback을 잠갔다.
