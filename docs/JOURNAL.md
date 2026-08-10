@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-10 (Codex) · final 1.9.852 lock
+- controller `4b114b59`에서 plan `9718e9a9…94c7`을 final fresh lock으로 발급했다.
+- named in-app browser receipt와 exact Luna/high runtime 없이는 실행이 거부된다.
+- generation provider/model/Cursor0; plan commit 뒤 order1을 한 번만 연다.
+
 ## 2026-08-10 (Codex) · named browser admission
 - in-app browser session/tab을 실제 열었지만 1.9.851 plan과 hash-bound되지 않아 실행을 보류했다.
 - browser ID·session·tab·plan SHA receipt 없이는 run 전에 거부하도록 controller를 보강했다.
