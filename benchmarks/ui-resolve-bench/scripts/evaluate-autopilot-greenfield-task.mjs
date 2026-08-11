@@ -21,6 +21,23 @@ const taskSetPath = join(repoRoot, 'benchmarks/ui-resolve-bench/config/autopilot
 const adapterSetPath = join(repoRoot, 'benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json');
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
+export function isSampleOwnerOption(value) {
+  const text = String(value || '').replace(/\s+/g, ' ').trim();
+  if (/^(?:select|choose)\b/i.test(text)) return false;
+  return /\b(?:sample|demo|fictional)\s+(?:owner|staff|operator|assignee|responder)\b/i.test(text)
+    || /\b(?:owner|staff|operator|assignee|responder)\s+(?:sample|demo|fictional)\b/i.test(text);
+}
+
+export function detectLocaleProtectedClaims(value) {
+  const sentences = String(value || '').replace(/\s+/g, ' ').split(/(?<=[.!?。！？])|\n+/).map((sentence) => sentence.trim()).filter(Boolean);
+  const explicitlyQualified = (sentence) => /(?:fictional|sample)/i.test(sentence)
+    || /\b(?:not|never|no)\b.{0,48}\b(?:medical advice|diagnosis|clinic policy)\b/i.test(sentence)
+    || /\bdoes\s+not\b.{0,48}\b(?:provide|offer|give|constitute|replace)?\s*(?:medical advice|a diagnosis|clinic policy)\b/i.test(sentence)
+    || /(?:의료|의학적)\s*조언.{0,24}(?:아닙|아니)|医療助言.{0,24}(?:ではありません|ではない)|不是医疗建议|不是醫療建議/i.test(sentence);
+  const affirmative = sentences.filter((sentence) => !explicitlyQualified(sentence)).join(' ');
+  return [...affirmative.matchAll(/\b(?:diagnosed with|you have (?:a|an)|take \d+ mg|medical advice|real clinic policy|doctor recommends?)\b/gi)].map((match) => match[0]);
+}
+
 function cliArgs(argv) {
   const out = {};
   for (let i = 0; i < argv.length; i += 1) {
@@ -772,7 +789,7 @@ async function evaluateColdChain(page, viewport) {
         .filter((group) => /sample|demo|fictional/i.test(group.label || ''))
         .flatMap((group) => [...group.querySelectorAll('option')].map((option) => option.textContent || '')));
       const sampleOptions = [...new Set([
-        ...options.filter((item) => /sample staff|demo staff|fictional staff/i.test(item)),
+        ...options.filter((item) => isSampleOwnerOption(item)),
         ...scopedOptionValues.filter((item) => item.trim()),
       ])];
       sampleOwnerOptions = sampleOptions.length > 0;
@@ -1079,7 +1096,7 @@ async function evaluateLocale(page, viewport) {
   if (await unavailable.count() === 1 && await unavailable.isVisible()) { await unavailable.press('Enter'); await afterPaint(page); }
   const unavailableAlert = page.getByRole('alert').filter({ hasText: /translation.*unavailable/i }); const unavailableHonest = await unavailable.count() === 1 && await unavailableAlert.count() === 1 && await unavailableAlert.isVisible() && (await page.locator('html').getAttribute('lang')) === langBeforeUnavailable; await checkState();
   const initialControls = await page.locator('button,select,.check').evaluateAll((elements) => { const rects = elements.filter((element) => { const r = element.getBoundingClientRect(); return r.width > 0 && r.height > 0; }).map((element) => element.getBoundingClientRect()); return { unclipped: rects.every((r) => r.left >= -1 && r.right <= innerWidth + 1), min: rects.length ? Math.min(...rects.map((r) => Math.min(r.width, r.height))) : 0 }; });
-  const allText = (await main.innerText()).replace(/\s+/g, ' '); const affirmative = allText.split(/(?<=[.!?。])|\n+/).filter((sentence) => !/(?:fictional|sample|not medical advice|does not infer|不是医疗建议|医療助言|의료 조언|不是醫療建議)/i.test(sentence)).join(' '); const claims = [...affirmative.matchAll(/\b(?:diagnosed with|you have (?:a|an)|take \d+ mg|medical advice|real clinic policy|doctor recommends?)\b/gi)].map((match) => match[0]);
+  const allText = (await main.innerText()).replace(/\s+/g, ' '); const claims = detectLocaleProtectedClaims(allText);
   const progressPreserved = hasChecklist && [progress1, progressJapanese, progressBack].every((snapshot) => snapshot.checked === 1 && snapshot.total === checklistTotal && progressSemanticsExact(snapshot, 1, checklistTotal)) && firstPreserved;
   const completionSnapshot = await progressSnapshot();
   const completionText = (await main.innerText()).replace(/\s+/g, ' ');

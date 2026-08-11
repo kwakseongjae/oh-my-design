@@ -3,11 +3,16 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: task baseline commit `6acf2876`, repaired skill/evaluator commit `f1b5e219` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-11 · semantic accessibility/state diagnostics provider-zero 보정 완료; fresh epoch 준비
+- 기준 소스: Autopilot semantic repair commit `ccebaeb1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-11 · fresh 1.9.861 완료, in-app 검수와 evaluator phrase classification 보정 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.861은 exact Luna/high 3셀을 질문0·retry/replacement/fallback0으로 완결했다. DESIGN.md proof3/3, UI-Resolved1/3이며 landing은 `10→50→100`, cold-chain은 `20→40→40`, locale은 `50→50→50`이다. 총9 calls·3,783.912s·12,198,121 input+output tokens다.
+- in-app browser로 세 surface를 직접 검수했다. landing은 full contract PASS, cold-chain은 owner 미선택 오류가 실제로 발생하지 않고 28px control/320·200% overflow가 남았으며, locale은 translation-unavailable state가 없다. 이 세 항목은 실제 product miss로 유지한다.
+- provider-free 재평가로 evaluator 오판2개를 분리했다. `sample owner` option은 명시적 fictional scope이고 “does not provide medical advice”는 부정 disclaimer다. scorer는 placeholder를 제외한 sample/demo/fictional owner role과 contextual negation을 인식하도록 보정했으며 unit72/72, cold+locale browser calibration12/12가 green이다.
+- 1.9.861 sealed record는 재작성하지 않았다. `RESULTS.json`에 original authority와 provider-free diagnostic score SHA를 분리 기록했다. 다음은 full regression→commit→fresh 1.9.862 only이며 public one-shot/superiority claim은 계속 BLOCK이다.
 
 - 1.9.860 실패를 모델 결함과 evaluator 오판으로 다시 분리했다. landing 예약 state는 접근성 이름뿐 아니라 내부 reservation heading을 허용하고, cold-chain은 implicit listitem·단일 카드 action·sample optgroup·review 상태를 role/state 기반으로 읽으며, locale은 임의의 2개 이상 checklist total과 KO/EN/JA/ZH-CN/ZH-TW script/lang/label을 검증한다.
 - repair feedback의 `objective_observations`는 schema0.2로 올라가 bounded ARIA role/name/state inventory, locale switch mapping, progress 상태, Axe violation ID를 포함한다. 두 valid oracle과 isolated mutants는 landing4/4, cold-chain6/6, locale6/6으로 다시 green이며 pure scorer 61/61도 통과했다.

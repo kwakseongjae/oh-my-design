@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-11 (Codex) · 1.9.861 fresh smoke + evaluator RCA
+- Luna/high 3셀을 질문0·9 calls로 완결했고 DESIGN.md3/3, UI-Resolved1/3을 기록했다.
+- in-app 검수로 product miss3개와 evaluator phrase false-positive2개를 분리했다.
+- sample-owner placeholder 제외와 medical-advice contextual negation 회귀를 추가했다.
+- 다음은 full green→commit→fresh 1.9.862이며 sealed 1.9.861은 재작성하지 않는다.
+
 ## 2026-08-11 (Codex) · semantic diagnostics calibration complete
 - 1.9.860의 evaluator 오판과 실제 UI 실패를 role/name/state 증거로 분리했다.
 - ARIA inventory·locale mapping·progress·Axe IDs를 bounded repair evidence schema0.2에 추가했다.

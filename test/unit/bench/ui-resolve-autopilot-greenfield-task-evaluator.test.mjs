@@ -1,5 +1,25 @@
 import { describe, expect, it } from 'vitest';
-import { scoreCaregiverEvidence, scoreCheckoutEvidence, scoreColdChainEvidence, scoreDeletionEvidence, scoreEditorialEvidence, scoreGrantEvidence, scoreIncidentEvidence, scoreLandingEvidence, scoreLocaleEvidence, scoreRecoveryEvidence, scoreSearchEvidence, scoreTransitEvidence } from '../../../benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs';
+import { detectLocaleProtectedClaims, isSampleOwnerOption, scoreCaregiverEvidence, scoreCheckoutEvidence, scoreColdChainEvidence, scoreDeletionEvidence, scoreEditorialEvidence, scoreGrantEvidence, scoreIncidentEvidence, scoreLandingEvidence, scoreLocaleEvidence, scoreRecoveryEvidence, scoreSearchEvidence, scoreTransitEvidence } from '../../../benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs';
+
+describe('greenfield evidence phrase classification', () => {
+  it.each([
+    'Maya Chen · Receiving · sample owner',
+    'Alex Rivera · demo staff',
+    'Fictional assignee · Night shift',
+  ])('accepts explicitly scoped owner option: %s', (value) => expect(isSampleOwnerOption(value)).toBe(true));
+
+  it.each(['Maya Chen · Receiving', 'Jordan Lee · Owner', 'Select owner', 'Select a sample owner'])('rejects unscoped or placeholder owner option: %s', (value) => expect(isSampleOwnerOption(value)).toBe(false));
+
+  it.each([
+    'These are fictional examples for this demo, not medical advice.',
+    'This checklist does not provide medical advice or suggest a diagnosis.',
+    'This is not medical advice and does not replace a diagnosis.',
+  ])('does not turn a disclaimer into an affirmative claim: %s', (value) => expect(detectLocaleProtectedClaims(value)).toEqual([]));
+
+  it('still rejects affirmative medical claims', () => {
+    expect(detectLocaleProtectedClaims('Medical advice: take 20 mg. Your doctor recommends this.')).toEqual(['Medical advice', 'take 20 mg', 'doctor recommends']);
+  });
+});
 
 const valid = () => ({
   task_identity: true, purpose: true, semantic_steps: 3, unique_primary_action: true,
