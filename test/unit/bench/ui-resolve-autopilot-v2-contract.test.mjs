@@ -159,6 +159,7 @@ describe('OmD Autopilot 2.0 qualification contract', () => {
       provider: 'codex', model: 'gpt-5.6-luna', effort: 'high', trial_count_per_task: 1,
       serial: true, timeout_seconds: 900, max_new_cells_per_invocation: 1,
       retry_budget_per_cell: 0, replacement_budget_per_cell: 0, fallback_budget_per_cell: 0,
+      bounded_repair_model_calls_max: 2,
       model_substitution_budget: 0, effort_substitution_budget: 0,
       cursor_allowed: false, claude_code_allowed: false,
     });
@@ -195,8 +196,8 @@ describe('OmD Autopilot 2.0 qualification contract', () => {
       public_claim_allowed: false,
     });
     const controller = readFileSync(resolve(repoRoot, 'benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs'), 'utf8');
-    expect(controller).toContain('const autopilotProof = controllerAutopilotProof(plan, next, workspace)');
-    expect(controller).toContain('&& dsProof.pass && autopilotProof.pass && taskPass');
+    expect(controller).toContain('const autopilotProof = taskPass ? controllerAutopilotProof(plan, next, workspace)');
+    expect(controller).toContain('const success = run.process.exit_code === 0 && !run.process.timed_out && dsProof.pass && autopilotProof.pass && taskPass');
     expect(controller).toContain('autopilot_proof: autopilotProof');
   });
 });

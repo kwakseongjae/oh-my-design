@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: task baseline commit `6acf2876`, repaired skill/evaluator commit `f1b5e219` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-11 · 1.9.857 Luna/high diagnostic smoke 3/3 terminal; 2.0 closed-loop repair 구현 착수
+- 갱신: 2026-08-11 · 2.0 controller-owned closed repair loop 구현·회귀 완료; fresh 1.9.858 authority 발급 직전
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -12,9 +12,9 @@
 - 1.9.857은 named in-app browser identity를 plan에 봉인한 뒤 Luna/high 3셀을 retry/replacement/fallback 없이 순차 완결했다. 3/3 valid terminal, DESIGN.md proof 3/3이지만 UI-Resolved 0/3, Autopilot terminal proof 1/3이다. 점수는 landing30, cold-chain20, locale10이다.
 - 관측 합계는 wall 1,975.958s, input+output 7,276,794(cached input 6,776,064)이다. plan SHA `a61bfe7c…013c0`, execution-state SHA `34c659ee…4654`, exact 결과는 `reports/autopilot-luna-high-smoke-1.9.857/RESULTS.json`에 봉인했다.
 - 주된 2.0 구조 결함은 model turn 안의 자체 검증 실패와 controller-owned objective evaluator가 분리되어, 객관 실패 ID가 같은 mission의 최대2회 repair loop로 돌아가지 않는 점이다. landing/locale는 `BOUNDED_REVISION`에서 종료했고 cold-chain은 자체 proof HANDOFF였지만 objective UI가 실패했다.
-- 다음 구현은 initial turn → controller DS/autopilot/task 평가 → hash-bound repair feedback → same mission focused repair turn → 재평가를 최대2회 수행하는 closed loop다. 이는 provider retry/replacement가 아니라 사전등록된 내부 repair call이며 모든 call/time/token을 노출한다. 1.9.857은 재사용하지 않고 fresh epoch에서만 재검증한다.
-- closed-loop 구현은 source 단계까지 완료됐다. controller-verification policy가 있는 미션은 local proof PASS여도 `EXTERNAL_VERIFY`에서 멈추고, exact score/proof/product hash 영수증만 HANDOFF 또는 same-mission repair를 연다. run-codex repair1/2 artifact는 initial result와 분리·exclusive 저장되고 replay가 거부된다.
-- smoke controller는 각 라운드의 objective false assertion과 local proof failure를 합친 feedback을 쓰고 동일 Luna/high로 최대2회만 이어간다. 실행 record는 initial+repair 모든 model call/token/time을 보존한다. 다음은 source commit 후 focused/full provider-zero 회귀와 fresh epoch 발급이다.
+- initial turn → controller DS/autopilot/task 평가 → hash-bound repair feedback → same mission focused repair turn → 재평가를 최대2회 수행하는 closed loop를 commit `20e56d62`로 완료했다. 이는 provider retry/replacement가 아니라 사전등록된 내부 repair call이며 모든 call/time/token을 노출한다. 1.9.857은 재사용하지 않고 fresh epoch에서만 재검증한다.
+- controller-verification policy가 있는 미션은 local proof PASS여도 `EXTERNAL_VERIFY`에서 멈추고, exact score/proof/product hash 영수증만 HANDOFF 또는 same-mission repair를 연다. run-codex repair1/2 artifact는 initial result와 분리·exclusive 저장되고 replay가 거부된다.
+- smoke controller는 각 라운드의 objective false assertion과 local proof failure를 합친 feedback을 쓰고 동일 Luna/high로 최대2회만 이어간다. 실행 record는 initial+repair 모든 model call/token/time을 보존한다. focused17/17, full 1,104 중 1,103 즉시 PASS + 병렬 5초 timeout 1건 단독 PASS, lint/build/diff-check가 green이다. 다음은 fresh 1.9.858 plan/prepare/audit와 named in-app browser admission이다.
 
 - fresh 1.9.854 smoke는 3/3 valid terminal로 완결됐다. DESIGN.md proof 3/3 PASS지만 UI-Resolved 0/3이며 score는 landing10, cold-chain20, locale40(평균23.33/중앙20)이다. journey·responsive는 0/3, accessibility 1/3, runtime 3/3다. 총 wall 1,594.326s, input+output 5,632,536(cached input 5,256,960 포함)이다.
 - 실제 사용자 개입은 0이었지만 final mission들에 7개 council question이 생성됐고 landing/cold-chain은 model-authored answer 파일을 만들었으며 cold-chain은 abandoned+v2 두 run lineage를 남겼다. 따라서 one-shot autonomy claim은 BLOCK이며, 다음 구현은 zero fabricated user authority + exactly-one mission lineage + task-contract-aware bounded self-repair다.

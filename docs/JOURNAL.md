@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-11 (Codex) · Closed-loop source validation complete
+- `20e56d62`의 external verification→same-mission repair1/2 계약을 전체 회귀로 닫았다.
+- full 1,104 중 1,103 즉시 PASS, 병렬 5초 timeout 1건은 단독 PASS; lint/build/diff도 green이다.
+- stale contract fixture에 bounded repair 한도와 current controller success 조건을 동기화했다.
+- 다음은 fresh 1.9.858 plan/prepare/audit→named in-app browser admission→Luna/high 3셀이다.
+
 ## 2026-08-11 (Codex) · Controller-owned closed repair loop
 - local PASS도 external policy 아래선 EXTERNAL_VERIFY에서 멈추고 exact receipt만 다음 상태를 연다.
 - objective failure를 same-mission repair1/2 prompt로 환류하며 initial/repair artifacts와 비용을 모두 분리 기록한다.
