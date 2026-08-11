@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { afterEach, describe, expect, test } from "vitest";
 import {
+  AUTOPILOT_EVALUATOR_TIMEOUT_MS,
   buildControllerRepairPrompt,
   controllerAutopilotProof,
   freezeRunningRootAfterControllerFailure,
@@ -20,6 +21,9 @@ const temp = () => { const value = mkdtempSync(join(tmpdir(), "omd-autopilot-smo
 afterEach(() => { while (roots.length) rmSync(roots.pop(), { recursive: true, force: true }); });
 
 describe("autopilot Luna/high smoke controller", () => {
+  test("allows the four-viewport evaluator to finish before controller timeout", () => {
+    expect(AUTOPILOT_EVALUATOR_TIMEOUT_MS).toBe(360_000);
+  });
   test("recomputes the exact mission product-tree authority with installed runtime assets", () => {
     const workspace = temp();
     const runDir = join(workspace, ".omd/runs/tree-authority");

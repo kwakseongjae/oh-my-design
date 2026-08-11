@@ -9,6 +9,10 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.865는 fresh plan/root/browser admission 뒤 landing 1셀을 노출했지만 controller evaluator의 과거 180초 제한이 새 4-viewport 평가(실측 180~360초)를 중간 종료해 `stopped-preregistered`, valid terminal0/3으로 동결됐다. provider turn은 exit0·590.061s·input1,933,419/output26,925였으나 benchmark 결과로 세지 않는다.
+- frozen workspace의 provider-free evaluator 재실행은 exit0·score10을 만들며 timeout 계약 drift를 재현했다. 이 점수는 diagnostic-only이고 sealed run에 대입하지 않는다. controller evaluator timeout을 명시적 360초 authority로 올리고 단위 테스트를 추가했다.
+- 다음 순서: 1.9.865 evidence+timeout fix commit → commit-bound full regression/build → fresh 1.9.866 plan/prepare/audit → 새 named in-app browser admission → exact Luna/high 3-task smoke. 1.9.865 root/workspace는 재사용하지 않는다.
+
 - 1.9.864 exact Luna/high smoke는 3/3 valid terminal로 완결됐다. DESIGN.md proof3/3·질문0·retry/replacement/fallback/Cursor0이지만 UI-Resolved0/3이다. 점수는 landing `10→50→50`, cold-chain `20→20→40`, locale `50→60→60`; 9 calls, input+output13,544,051 tokens, wall3,673.223s다.
 - in-app browser 검수에서 세 결과 모두 높은 시각 완성도와 responsive product hierarchy를 확인했다. 실패는 landing의 중복 CTA/focus/unavailable semantics, cold-chain의 assignment confirmation/mobile target, locale의 unavailable-translation state에 집중된다. public one-shot/superiority claim은 계속 BLOCK이다.
 - 평가기 결함도 분리됐다. `Non-urgent`가 `Urgent`로 중복 분류되었고 repair feedback은 CTA 후보/activation focus/catalog 문장, owner 선택·status·source row, unavailable control·alert·lang 정보를 boolean으로 축약했다. urgent 분류를 수정하고 이 bounded role/state 진단을 feedback에 추가했다.

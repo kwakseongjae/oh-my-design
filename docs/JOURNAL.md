@@ -6390,3 +6390,8 @@
 - `Non-urgent` 중복 분류를 고치고 CTA/focus/unavailable, owner persistence, unavailable-translation 진단을 bounded feedback에 추가했다.
 - oracle/mutant browser calibration은 green; commit authority가 필요한 controller plan tests는 commit 뒤 재검증한다.
 - 다음: 관련 변경만 commit(`web/public/llms-full.txt` 제외) → full provider-free gate → fresh epoch.
+# 2026-08-11 (Codex) · four-viewport evaluator timeout RCA
+- 1.9.865는 landing provider1회 뒤 과거 180초 evaluator ceiling으로 valid cell0/3 상태에서 영구 동결됐다.
+- exact frozen workspace provider-free replay는 180초를 넘어 정상 score10을 기록해 controller timeout drift를 확정했다.
+- evaluator ceiling을 명시적 360초 authority로 올리고 단위 테스트로 봉인했다.
+- 다음은 commit-bound 회귀 뒤 fresh 1.9.866이며 1.9.865 결과/워크스페이스는 재사용하지 않는다.

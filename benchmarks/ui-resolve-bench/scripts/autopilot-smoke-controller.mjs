@@ -34,6 +34,10 @@ const evaluatorPath = "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-gr
 const validatorPath = "scripts/validate-project-design-system.cjs";
 const SHA = /^[a-f0-9]{64}$/;
 const COMMIT = /^[a-f0-9]{40}$/;
+// The greenfield evaluator replays the full journey at four viewports. A real
+// landing-page observation currently takes a little over three minutes, so the
+// controller must not retain the older two-viewport 180s ceiling.
+export const AUTOPILOT_EVALUATOR_TIMEOUT_MS = 360_000;
 
 function canonical(value) {
   if (Array.isArray(value)) return `[${value.map(canonical).join(",")}]`;
@@ -620,7 +624,7 @@ function runCommand(args) {
     let evaluator = null;
     if (existsSync(join(workspace, "index.html"))) {
       const evaluated = spawnSync(process.execPath, [join(repoRoot, evaluatorPath), "--task-id", next.task_id, "--workspace", workspace, "--out", scorePath], {
-        cwd: repoRoot, encoding: "utf8", timeout: 180_000,
+        cwd: repoRoot, encoding: "utf8", timeout: AUTOPILOT_EVALUATOR_TIMEOUT_MS,
       });
       evaluator = { exit_code: evaluated.status, signal: evaluated.signal, stderr: evaluated.stderr?.slice(0, 4000) ?? "" };
     }

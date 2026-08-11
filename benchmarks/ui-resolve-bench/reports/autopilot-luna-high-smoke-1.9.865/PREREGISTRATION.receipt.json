@@ -1,0 +1,10 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "autopilot-luna-high-smoke-1.9.865",
+  "plan_sha256": "4fce4b8b20217526e87f8e49cf05af82ed19bc7fdeb35c09f91906b0e0aaa04f",
+  "plan_bytes": 16716,
+  "source_commit": "1cdc49d593541674ce7986d14fabaac7aed6e1e6",
+  "provider_calls": 0,
+  "model_calls": 0,
+  "cursor_calls": 0
+}
