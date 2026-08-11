@@ -9,6 +9,8 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.874는 commit-bound full gate 1091/1091 통과 뒤 fresh root를 prepare하고 in-app browser를 직접 열었지만 provider-zero admission에서 중단됐다. 현재 browser id가 `-`로 시작해 공용 `parseArgs`가 값이 아닌 새 flag로 해석했다. provider exposure·완료 셀은0이며 이 root는 실행하지 않는다.
+- 공용 parser는 `--key=value`를 지원하고 controller plan은 transitive `_lib.mjs` 자체를 source authority에 포함한다. leading-dash browser id integration test를 추가했다. 다음은 이 변경을 commit-bound 검증한 뒤 fresh1.9.875를 prepare/admit/execute하는 것이다.
 - 1.9.873 exact Luna/high 3셀은 valid terminal3/3·DESIGN proof3/3·질문0·retry/replacement/fallback/Cursor0으로 완료됐다. sealed UI-Resolved는1/3이며 landing `50→70→100`, cold `20→20`, locale `50→50`; 총7 calls·input10,694,925(cached10,030,592)+output162,476·provider wall1,128.180s다.
 - provider-free structure-neutral 재평가는 cold60, locale60이다. cold의 default-urgent native select는 all-record baseline6(urgent4/nonurgent2)을 실제로 보유하고 selected option 자체가 가시 상태이며, 연결된 polite status도 유효한 owner 오류다. 남은 실제 결함은40px touch target과 aria-hidden focus subtree다. locale는 visible fictional/non-medical disclosure와5개 core localization이 모두 유효하고, 실제 결함은 progressbar가 visible1/4→4/4와 달리 계속0/0인 점이다.
 - controller repair feedback은 cold round1에서510,601 bytes까지 팽창했다. 새 objective observations0.3은 Axe finding을 target/state/viewport로 dedupe하고 raw viewports를 supporting evidence에서 제외하며 filter/owner-error/honesty/progress 진단을 직접 제공한다. corrected cold payload는2,007 bytes다.

@@ -151,6 +151,7 @@ function planCommand(args) {
     relative(repoRoot, smokeConfigPath).split(sep).join("/"),
     relative(repoRoot, taskSetPath).split(sep).join("/"),
     controllerPath,
+    "benchmarks/ui-resolve-bench/scripts/_lib.mjs",
     "benchmarks/ui-resolve-bench/scripts/run-codex.mjs",
     evaluatorPath,
     validatorPath,

@@ -21,6 +21,11 @@ export function parseArgs(argv = process.argv.slice(2)) {
   for (let index = 0; index < argv.length; index += 1) {
     const item = argv[index];
     if (!item.startsWith("--")) continue;
+    const equals = item.indexOf("=");
+    if (equals > 2) {
+      values.set(item.slice(2, equals), item.slice(equals + 1));
+      continue;
+    }
     const next = argv[index + 1];
     if (!next || next.startsWith("--")) {
       values.set(item.slice(2), true);

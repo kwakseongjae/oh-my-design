@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.874 provider-zero browser admission
+- commit-bound full gate1091/1091 뒤 fresh root와 in-app browser를 직접 준비했다.
+- leading-dash browser id를 parser가 flag로 오인해 admission 전에 fail-close했다.
+- provider exposure·완료 셀0이며 root는 진단 증거로만 보존한다.
+- parser equals syntax+transitive source authority를 고친 뒤 fresh1.9.875로 간다.
+
 ## 2026-08-12 (Codex) · 1.9.873 structure-neutral repair evidence
 - sealed smoke는 valid3/3·DESIGN proof3/3·UI1/3, 질문·retry·fallback·Cursor0이다.
 - 보정 결과 cold60/locale60이며 실제 결함은 touch/hidden-focus와 progressbar0/0으로 좁혀졌다.

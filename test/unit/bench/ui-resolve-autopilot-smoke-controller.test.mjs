@@ -340,6 +340,19 @@ describe("autopilot Luna/high smoke controller", () => {
     expect(state.completed_cells).toBe(0);
   });
 
+  test("admits an in-app browser id that begins with a dash via equals syntax", () => {
+    const base = temp(); const report = join(base, "report"); const root = join(base, "root");
+    execFileSync(process.execPath, [script, "plan", "--out", report], { cwd: repo });
+    execFileSync(process.execPath, [script, "prepare", "--plan", join(report, "RUN-MATRIX.json"), "--receipt", join(report, "PREREGISTRATION.receipt.json"), "--root", root], { cwd: repo });
+    const browserId = "-iab-leading-dash";
+    execFileSync(process.execPath, [script, "admit-browser", "--root", root,
+      `--browser-id=${browserId}`, "--session", "autopilot-luna-high-smoke-1.9.850",
+      "--tab-id", "tab-10", "--url", "about:blank"], { cwd: repo });
+    expect(JSON.parse(readFileSync(join(root, "BROWSER-ADMISSION.receipt.json"), "utf8"))).toMatchObject({
+      browser: { browser_id: browserId, tab_id: "tab-10", url: "about:blank" },
+    });
+  });
+
   test("independently audits a terminal clean-dir mission and rejects fabricated answer artifacts", () => {
     const base = temp(); const output = join(base, "canary");
     const canary = join(repo, "benchmarks/ui-resolve-bench/scripts/run-autopilot-clean-dir-canary.mjs");
