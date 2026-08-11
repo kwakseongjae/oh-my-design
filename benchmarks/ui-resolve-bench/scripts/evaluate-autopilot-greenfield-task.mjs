@@ -34,6 +34,16 @@ export function classifyColdChainPriority(value) {
   return { urgent: /\burgent\b/i.test(text) && !nonUrgent, nonUrgent };
 }
 
+export function hasHonestUnavailableLibraryInformation(value) {
+  const sentences = String(value || '').replace(/\s+/g, ' ').split(/(?<=[.!?])|\n+/).map((sentence) => sentence.trim()).filter(Boolean);
+  const subject = '(?:catalog|inventory|availability|prices?|costs?|fees?|hours?|eligibility|pickup instructions?|reservation destination)';
+  const absence = '(?:not (?:listed|published|shown|provided|available|known|specified)|unavailable|unknown|to be confirmed|var(?:y|ies))';
+  const verification = '(?:confirm|check)';
+  return sentences.some((sentence) => new RegExp(`${subject}[^.!?]{0,180}${absence}`, 'i').test(sentence)
+    || new RegExp(`(?:${absence}|${verification})[^.!?]{0,180}${subject}`, 'i').test(sentence)
+    || new RegExp(`\\b(?:no|without)\\s+(?:[^.!?]{0,80}\\b)?${subject}`, 'i').test(sentence));
+}
+
 export function detectLocaleProtectedClaims(value) {
   const sentences = String(value || '').replace(/\s+/g, ' ').split(/(?<=[.!?。！？])|\n+/).map((sentence) => sentence.trim()).filter(Boolean);
   const explicitlyQualified = (sentence) => /(?:fictional|sample)/i.test(sentence)
@@ -436,8 +446,6 @@ async function evaluateLanding(page, viewport, origin) {
     return {
       visibleText, taskIdentity: /tool library|borrow tools?|borrowing/i.test(visibleText),
       purpose: /borrow|reserve|pickup|return/i.test(visibleText), stageCount,
-      unavailableInformationHonest: /(?:inventory|availability|prices?|costs?|fees?)[^.!?]{0,120}(?:not (?:listed|published|shown)|unavailable|confirm|check|var(?:y|ies))/i.test(visibleText)
-        || /(?:confirm|check)[^.!?]{0,120}(?:inventory|availability|prices?|costs?|fees?)/i.test(visibleText),
       mainCount: document.querySelectorAll('main').length, h1Count: document.querySelectorAll('h1').length,
       unavailableInformationExcerpts: visibleText.split(/(?<=[.!?])/)
         .map((sentence) => sentence.trim())
@@ -446,6 +454,7 @@ async function evaluateLanding(page, viewport, origin) {
       priceClaims, inventoryClaims, social, partnerImages,
     };
   });
+  initial.unavailableInformationHonest = hasHonestUnavailableLibraryInformation(initial.visibleText);
   const rect = primary ? await primary.boundingBox() : null;
   const inside = rect ? rect.x >= 0 && rect.y >= 0 && rect.x + rect.width <= viewport.width + 1 : false;
   const initialAxe = await axeSeriousCritical(page);
@@ -680,20 +689,27 @@ async function evaluateColdChain(page, viewport) {
   const initialText = (await main.innerText()).replace(/\s+/g, ' ');
   const shipmentIdentity = /\b[A-Z][A-Z0-9]{1,7}-\d{2,}\b/i;
   const collectRecords = async () => {
-    const containers = page.getByRole('row').or(page.getByRole('article')).or(page.getByRole('listitem'));
-    const records = [];
+    const containers = page.getByRole('row').or(page.getByRole('article')).or(page.getByRole('listitem')).or(page.getByRole('button'));
+    const recordsByIdentity = new Map();
     for (const index of await visibleLocatorIndexes(containers)) {
       const container = containers.nth(index);
       const text = (await container.innerText()).replace(/\s+/g, ' ').trim();
-      const identity = text.match(shipmentIdentity)?.[0]?.toUpperCase() || null;
+      const accessibleName = (await container.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim();
+      const identity = accessibleName.match(shipmentIdentity)?.[0]?.toUpperCase()
+        || text.match(shipmentIdentity)?.[0]?.toUpperCase()
+        || null;
       if (!identity) continue;
+      // Prefer a structural row/article/list item when both it and a nested
+      // action expose the same shipment. A role=button record remains valid
+      // when an implementation makes the complete row the keyboard target.
+      if (recordsByIdentity.has(identity)) continue;
       const intentActions = container.getByRole('button', { name: /inspect|view|open/i }).or(container.getByRole('link', { name: /inspect|view|open/i }));
       const visibleIntentActions = await visibleLocatorIndexes(intentActions);
       const allActions = container.getByRole('button').or(container.getByRole('link'));
       const visibleAllActions = await visibleLocatorIndexes(allActions);
       const containerActionable = await container.evaluate((element) => element.tabIndex >= 0 || ['button', 'link'].includes(element.getAttribute('role') || ''));
       const priority = classifyColdChainPriority(text);
-      records.push({
+      recordsByIdentity.set(identity, {
         identity,
         urgent: priority.urgent,
         nonUrgent: priority.nonUrgent,
@@ -703,7 +719,7 @@ async function evaluateColdChain(page, viewport) {
             : containerActionable ? container : null,
       });
     }
-    return records;
+    return [...recordsByIdentity.values()];
   };
   const records = await collectRecords();
   const initialAxe = await axeSeriousCritical(page);
@@ -783,7 +799,7 @@ async function evaluateColdChain(page, viewport) {
     if (reached) await page.keyboard.press('Enter');
     await afterPaint(page);
     detailAfter = await detailSignature();
-    const selectedAfter = activeIdentity ? await page.getByRole('row').or(page.getByRole('article')).or(page.getByRole('listitem')).filter({ hasText: activeIdentity }).first().getAttribute('aria-selected') : null;
+    const selectedAfter = activeIdentity ? await page.getByRole('row').or(page.getByRole('article')).or(page.getByRole('listitem')).or(page.getByRole('button')).filter({ hasText: activeIdentity }).first().getAttribute('aria-selected') : null;
     keyboardOpen = reached && Boolean(detailAfter) && (detailAfter !== detailBefore
       || (selectedBefore !== 'true' && selectedAfter === 'true')
       || detailAfter.toUpperCase().includes(activeIdentity));
@@ -807,7 +823,9 @@ async function evaluateColdChain(page, viewport) {
   let controlsUnclipped = true;
   let controlMin = 44;
   if (detail) {
-    const submit = detail.getByRole('button', { name: /assign/i });
+    // Match the assignment action itself, not neighboring controls such as an
+    // "Unassigned" queue filter that happens to contain the same substring.
+    const submit = detail.getByRole('button', { name: /^assign(?: selected)?(?: owner)?$/i });
     const owner = detail.getByRole('combobox', { name: /owner/i });
     if (await submit.count() === 1 && await submit.isVisible() && await owner.count() === 1 && await owner.isVisible()) {
       await submit.press('Enter'); await afterPaint(page);

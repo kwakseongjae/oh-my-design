@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.866 evaluator/closure RCA
+- Luna/high 3-task를 9 calls로 완결했지만 evaluator 구조 편향과 host-local proof authority 때문에 mission0/3이었다.
+- landing absence semantics와 cold-chain button-row discovery를 중립화하고 실제 product defect만 분리했다.
+- external objective+DESIGN proof가 local browser availability 결손을 안전하게 대체하는 receipt0.2 closure를 구현했다.
+- 다음은 commit-bound 회귀 후 fresh 1.9.867 exact smoke이며 1.9.866 root는 재사용하지 않는다.
+
 ## 2026-08-11 (Codex) · cold-chain repair evidence alignment
 - non-urgent 분류에서 일반 작업명 `review`를 제거하고 실제 가시 상태 vocabulary만 허용했다.
 - 큐 구성·필터 전후 ID·owner persistence·모바일 geometry를 composite repair observation으로 봉인했다.

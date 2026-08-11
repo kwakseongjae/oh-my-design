@@ -113,6 +113,7 @@ const REQUIRED_QUALITY_CHECKS = [
   'functionality', 'task-journey', 'responsive-1440', 'responsive-390', 'responsive-320',
   'reflow-200pct', 'keyboard', 'accessibility', 'evidence-honesty', 'design-conformance',
 ];
+const LOCALLY_ATTESTED_QUALITY_CHECKS = ['evidence-honesty', 'design-conformance'];
 
 function exactStringSet(actual, expected, label) {
   if (!Array.isArray(actual) || actual.length !== expected.length
@@ -249,8 +250,8 @@ function validateExternalVerificationPolicy(mission) {
     throw new Error('controller verification policy drift');
   }
   const policy = readJson(externalVerificationPolicyPath);
-  if (policy.schema_version !== '0.1' || policy.mode !== 'controller-owned-objective'
-    || policy.controller !== 'autopilot-smoke-controller-v0.2'
+  if (policy.schema_version !== '0.2' || policy.mode !== 'controller-owned-objective'
+    || policy.controller !== 'autopilot-smoke-controller-v0.3'
     || policy.repair_rounds_max !== mission.repair_round_budget
     || typeof policy.task_id !== 'string' || !policy.task_id) {
     throw new Error('controller verification policy contract drift');
@@ -268,7 +269,7 @@ function readExternalVerification(mission, proof) {
   const file = externalVerificationPath(proof.repair_round);
   if (!fs.existsSync(file)) return { pending: true, policy };
   const value = readJson(file);
-  if (value.schema_version !== '0.1' || value.controller !== policy.controller
+  if (value.schema_version !== '0.2' || value.controller !== policy.controller
     || value.task_id !== policy.task_id
     || value.mission_sha256 !== sha256File(missionPath)
     || value.proof_sha256 !== sha256File(path.join(runDir, 'proof.json'))
@@ -277,6 +278,8 @@ function readExternalVerification(mission, proof) {
     || !['pass', 'fail'].includes(value.status)
     || typeof value.task_score_sha256 !== 'string'
     || typeof value.evaluator_result_sha256 !== 'string'
+    || value.design_system_proof_pass !== true
+    || !/^[a-f0-9]{64}$/.test(value.design_system_proof_sha256 || '')
     || !Array.isArray(value.failed_assertion_ids)) {
     throw new Error('controller verification receipt authority drift');
   }
@@ -284,6 +287,13 @@ function readExternalVerification(mission, proof) {
     throw new Error('controller verification disposition drift');
   }
   return { pending: false, policy, value, sha256: sha256File(file) };
+}
+
+function externalVerificationClosesMission(finalProof, external) {
+  return Boolean(external && !external.pending && external.value.status === 'pass'
+    && external.value.design_system_proof_pass === true
+    && finalProof.requirement_results.every((item) => item.pass === true)
+    && LOCALLY_ATTESTED_QUALITY_CHECKS.every((id) => finalProof.checks.find((item) => item.id === id)?.pass === true));
 }
 
 function emit(state, nextAction, evidence = {}) {
@@ -365,10 +375,11 @@ if (command === 'audit') {
   const admissionSha = sha256File(admissionPath);
   const repairChain = readRepairChain(mission, acceptanceSha, admissionSha);
   const finalProof = validateFinalProof(readJson(finalProofPath), acceptance, treeManifest(cwd));
-  if (finalProof.pass !== true || finalProof.repair_round !== repairChain.length) {
+  const external = readExternalVerification(mission, finalProof);
+  if ((!finalProof.pass && !externalVerificationClosesMission(finalProof, external))
+    || finalProof.repair_round !== repairChain.length) {
     throw new Error('completed final proof or repair chain drift');
   }
-  const external = readExternalVerification(mission, finalProof);
   const finalState = readJson(statePath);
   if (finalState.state !== 'HANDOFF'
     || finalState.mission_sha256 !== sha256File(missionPath)
@@ -594,12 +605,13 @@ if (externalVerification?.pending) {
     unresolved_assertion_ids: externalVerification.value.failed_assertion_ids,
   });
   writeMissionMarker('failed');
-} else if (finalProof.pass === true) {
+} else if (finalProof.pass === true || externalVerificationClosesMission(finalProof, externalVerification)) {
   emit('HANDOFF', 'write-delivery', {
     proof_sha256: sha256File(finalProofPath),
     acceptance_plan_sha256: acceptanceSha,
     repair_rounds_used: repairChain.length,
     controller_verification_sha256: externalVerification?.sha256 ?? null,
+    completion_authority: finalProof.pass === true ? 'local-proof' : 'controller-objective-and-design-system-proof',
   });
   writeMissionMarker('completed');
 } else if (finalProof.repair_round < mission.repair_round_budget) {

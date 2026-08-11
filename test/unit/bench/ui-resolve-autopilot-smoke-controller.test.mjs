@@ -216,7 +216,7 @@ describe("autopilot Luna/high smoke controller", () => {
       expect(existsSync(join(workspace, ".benchmark/codex-home/auth.json"))).toBe(true);
       expect(existsSync(join(workspace, ".benchmark/codex-home/model_catalog.json"))).toBe(true);
       expect(JSON.parse(readFileSync(join(workspace, ".benchmark/controller-verification-policy.json"), "utf8")))
-        .toMatchObject({ mode: "controller-owned-objective", repair_rounds_max: 2, task_id: cell.task_id });
+        .toMatchObject({ schema_version: "0.2", controller: "autopilot-smoke-controller-v0.3", mode: "controller-owned-objective", repair_rounds_max: 2, task_id: cell.task_id });
       expect(readFileSync(join(workspace, ".benchmark/PROMPT.md"), "utf8")).not.toMatch(/oracle|mutant/i);
     }
   });

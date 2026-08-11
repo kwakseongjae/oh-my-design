@@ -4,10 +4,16 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: Autopilot cold-chain evidence commit `fabfc3cf` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-11 · 1.9.864 완결/검수, fresh repair-evidence authority 수정 중
+- 갱신: 2026-08-12 · 1.9.866 완결/검수, evaluator neutrality + external proof closure 수정 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.866은 exact Luna/high 3-task smoke를 3/3 valid terminal로 완결했다. 9 model calls, input11,943,429(cached11,156,480)+output161,695, provider wall3,511.015s이며 retry/replacement/fallback/Cursor0이다. sealed root는 complete/non-reusable이며 다시 실행하지 않는다.
+- sealed 결과의 mission success는 0/3이었다. landing `30→80→80`, cold-chain `20→60→40`, locale `30→60→100`; locale objective와 DESIGN.md proof는 PASS였지만 host-local browser check가 불가능하다는 이유만으로 HANDOFF가 막힌 controller authority 결함이 있었다.
+- provider-free RCA에서 landing은 검증 가능한 availability 부재 설명을 honesty failure로 오인했고 수정 후 같은 bytes가100점이다. cold-chain은 button-shaped record를 누락하고 row text를 잘못 결합했으며, 보정 후 queue/filter/keyboard/evidence/assignment persistence는 PASS로 회복했다. 남은 empty-owner error·32px close target·mobile clipping·invalid aria-selected는 실제 product defect다.
+- evaluator는 button/list/table 구조를 role/name/identity로 동등 처리하고 contextual unavailable-absence를 허용한다. Autopilot mission은 external controller objective + exact DESIGN.md proof + local honesty/design checks가 모두 PASS면 host-local browser availability 실패만으로 완료를 거부하지 않도록 receipt schema0.2/controller0.3에 봉인한다.
+- 다음 순서: provider-free cold-chain E2E + mission/unit/lint/build/diff-check → 관련 파일과 1.9.866 evidence만 commit(`web/public/llms-full.txt` 제외) → commit-bound full regression → fresh 1.9.867 plan/prepare/audit → named in-app browser admission → exact Luna/high 3-task smoke. public one-shot/superiority claim은 계속 BLOCK이다.
 
 - 1.9.865는 fresh plan/root/browser admission 뒤 landing 1셀을 노출했지만 controller evaluator의 과거 180초 제한이 새 4-viewport 평가(실측 180~360초)를 중간 종료해 `stopped-preregistered`, valid terminal0/3으로 동결됐다. provider turn은 exit0·590.061s·input1,933,419/output26,925였으나 benchmark 결과로 세지 않는다.
 - frozen workspace의 provider-free evaluator 재실행은 exit0·score10을 만들며 timeout 계약 drift를 재현했다. 이 점수는 diagnostic-only이고 sealed run에 대입하지 않는다. controller evaluator timeout을 명시적 360초 authority로 올리고 단위 테스트를 추가했다.

@@ -1,0 +1,408 @@
+{
+  "schema_version": "0.1",
+  "kind": "autopilot-greenfield-diagnostic-smoke",
+  "experiment_id": "autopilot-luna-high-smoke-1.9.866",
+  "status": "locked-provider-zero",
+  "claim_state": "diagnostic-only-block-public-one-shot",
+  "source_commit": "5ab3b6370ba8a51df379e7941d0ded5efb8bb5d9",
+  "source_authority": {
+    "schema_version": "0.1",
+    "files": [
+      {
+        "path": "agents/omd-design-system-architect.md",
+        "bytes": 1523,
+        "sha256": "234edb68343e1680ef20a5462d14ab8e2a15801e60849d356b3cdab5f4c73d25"
+      },
+      {
+        "path": "agents/omd-ux-engineer.md",
+        "bytes": 13030,
+        "sha256": "fd0a48c9441f634d6f9623fa59038cb32ca71ed845dddb1e0e110a4cd7374043"
+      },
+      {
+        "path": "agents/omd-ux-researcher.md",
+        "bytes": 2620,
+        "sha256": "020f11abb53f57ab4a6a68b84bac27ed7e2e5c0c7ff6c119f44be99b40be6ef7"
+      },
+      {
+        "path": "agents/omd-ux-writer.md",
+        "bytes": 9329,
+        "sha256": "c6350e6d465d1cc64db45b05c790b08cd5e830b4f0d2a1fa78c9497ac4702ce8"
+      },
+      {
+        "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json",
+        "bytes": 8925,
+        "sha256": "485ce95796f74b2cd08b88f4d0d4bab16dfc2001a22f346577485f561baf756f"
+      },
+      {
+        "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json",
+        "bytes": 10296,
+        "sha256": "f733682d6461c5911ea5c68ec1c483d2fd03c19e299e44a95c72ae2750480389"
+      },
+      {
+        "path": "benchmarks/ui-resolve-bench/config/autopilot-luna-high-smoke-v0.1.json",
+        "bytes": 6551,
+        "sha256": "acebe639ebb4d02edca0f8dc5042af9f3a446358f055a9a4b686dcd768152770"
+      },
+      {
+        "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/blank-shell/index.html",
+        "bytes": 244,
+        "sha256": "a9b82fcdf3efa04783d3be61544f84b0a4f3209f0fc5f6ac741ec853d03871b3"
+      },
+      {
+        "path": "benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs",
+        "bytes": 46916,
+        "sha256": "b083d43e744648354ce6f81da682227b6f2870745eb979e42ab66b7e31d8a66b"
+      },
+      {
+        "path": "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs",
+        "bytes": 141822,
+        "sha256": "9cbf5b5e042c98c5fdaf8cded04dddd4480948cface17d512b41726cbab389e5"
+      },
+      {
+        "path": "benchmarks/ui-resolve-bench/scripts/run-codex.mjs",
+        "bytes": 12851,
+        "sha256": "5099b229affdf997fc51e97ed3f2aedf54d9ab87fb4a96b2a22bb4cd8c892840"
+      },
+      {
+        "path": "scripts/autopilot-council-plan.cjs",
+        "bytes": 3966,
+        "sha256": "3c5fad818093cfcf2fdf94c0a994d4fb60b70ef828ccea409dc2da71cc8a2dc0"
+      },
+      {
+        "path": "scripts/autopilot-council-reconcile.cjs",
+        "bytes": 2612,
+        "sha256": "22ddf6d3f8656657ea0a2a404beaf59bc88bf43a4e94cebf6d58d42b710e8b1c"
+      },
+      {
+        "path": "scripts/autopilot-mission.cjs",
+        "bytes": 29480,
+        "sha256": "300f203fed6b29b1ecbb417e799efcdbb5e47784d2598418d650c8637f55d02f"
+      },
+      {
+        "path": "scripts/design-council-handoff.cjs",
+        "bytes": 9085,
+        "sha256": "42807439d13ffecbc3d913d6c8a54f4d2633a9de0c534d3e75d3b762064f527f"
+      },
+      {
+        "path": "scripts/design-council-prime.cjs",
+        "bytes": 31263,
+        "sha256": "7332c2461fefb8619d41ad7fbf38dcf5a8278401e9fe1ae80a9a7ca620fc255c"
+      },
+      {
+        "path": "scripts/design-council-reconcile.cjs",
+        "bytes": 6178,
+        "sha256": "1c2b7099ce9aa7e3394b7f730d1a2b804011e50577479b71ec6e9bd5c4db9fe9"
+      },
+      {
+        "path": "scripts/design-system-plan.cjs",
+        "bytes": 4267,
+        "sha256": "68d7c0a4219ef7d74527996cdaf91fd97d109e239e5e8feca1b6fd69d2c99c6c"
+      },
+      {
+        "path": "scripts/validate-project-design-system.cjs",
+        "bytes": 5933,
+        "sha256": "047c043e12a079334f40d8d98ac055b3bd526031be287771035943a5529e537b"
+      },
+      {
+        "path": "skills/omd-autopilot/SKILL.md",
+        "bytes": 8727,
+        "sha256": "0cff89be46231f68c7ed207734c608809b4c7cce6d4907df7116dd9b9791ba7a"
+      },
+      {
+        "path": "skills/omd-autopilot/references/design-system-contract.md",
+        "bytes": 1941,
+        "sha256": "10bad9dcc2a5bef0624d9a092a444654bfc26961b1cab409d90a57182550095b"
+      }
+    ],
+    "sha256": "f0e72bc873f0cbedbb949a9c63ad8acb2b081a5b110f446c7a440dd9332835c2"
+  },
+  "smoke_contract": {
+    "schema_version": "0.1",
+    "experiment_id": "autopilot-luna-high-smoke-1.9.857",
+    "track": "portable-autopilot-skill",
+    "status": "provider-zero-preregistration-template",
+    "provider_execution_allowed": false,
+    "claim_state": "diagnostic-only-block-public-one-shot",
+    "selection": {
+      "method": "preregistered-coverage-spread-not-result-selected",
+      "task_ids": [
+        "neighborhood-library-landing",
+        "cold-chain-operations",
+        "clinic-visit-prep-locales"
+      ],
+      "families": [
+        "landing",
+        "dense-operations",
+        "five-locale-surface"
+      ],
+      "rationale": "Exercise brand-expression, dense operational state, and five-locale persistence before the larger same-prompt comparison."
+    },
+    "cells": [
+      {
+        "order": 1,
+        "task_id": "neighborhood-library-landing",
+        "prompt_sha256": "81a8389e65a7f75fbc185dde64f37419baabfea6bf75cd256083ec0dee441ba3",
+        "prompt_bytes": 261
+      },
+      {
+        "order": 2,
+        "task_id": "cold-chain-operations",
+        "prompt_sha256": "e815cf2fd539fcacd92a697e8c61c46e3629a7a4b487c5d6bea5a5a6c01500ad",
+        "prompt_bytes": 275
+      },
+      {
+        "order": 3,
+        "task_id": "clinic-visit-prep-locales",
+        "prompt_sha256": "a5ff7c27f406fe8abb7857662d9a45f959c1c453aa635d39c79cb3f56236ec9d",
+        "prompt_bytes": 346
+      }
+    ],
+    "authorities": {
+      "task_set_path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json",
+      "task_set_sha256": "f733682d6461c5911ea5c68ec1c483d2fd03c19e299e44a95c72ae2750480389",
+      "adapter_set_path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json",
+      "adapter_set_sha256": "485ce95796f74b2cd08b88f4d0d4bab16dfc2001a22f346577485f561baf756f",
+      "evaluator_path": "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield.mjs",
+      "evaluator_sha256": "d6dc37b5d59e9b7ae7a5386553fd0150562499fbc57d6c1fe7188d4e9e79b593",
+      "starter_path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/blank-shell/index.html",
+      "starter_sha256": "a9b82fcdf3efa04783d3be61544f84b0a4f3209f0fc5f6ac741ec853d03871b3",
+      "portable_bundle_sha256": "1202d6d1ced5fb6e1dbc03e74b1928a9c6a274587177aa95f0ff2898e3e0e4db",
+      "portable_bundle_files": [
+        {
+          "path": "skills/omd-autopilot/SKILL.md",
+          "sha256": "0cff89be46231f68c7ed207734c608809b4c7cce6d4907df7116dd9b9791ba7a",
+          "bytes": 8727
+        },
+        {
+          "path": "skills/omd-autopilot/references/design-system-contract.md",
+          "sha256": "10bad9dcc2a5bef0624d9a092a444654bfc26961b1cab409d90a57182550095b",
+          "bytes": 1941
+        },
+        {
+          "path": "agents/omd-design-system-architect.md",
+          "sha256": "234edb68343e1680ef20a5462d14ab8e2a15801e60849d356b3cdab5f4c73d25",
+          "bytes": 1523
+        },
+        {
+          "path": "agents/omd-ux-engineer.md",
+          "sha256": "fd0a48c9441f634d6f9623fa59038cb32ca71ed845dddb1e0e110a4cd7374043",
+          "bytes": 13030
+        },
+        {
+          "path": "agents/omd-ux-researcher.md",
+          "sha256": "020f11abb53f57ab4a6a68b84bac27ed7e2e5c0c7ff6c119f44be99b40be6ef7",
+          "bytes": 2620
+        },
+        {
+          "path": "agents/omd-ux-writer.md",
+          "sha256": "c6350e6d465d1cc64db45b05c790b08cd5e830b4f0d2a1fa78c9497ac4702ce8",
+          "bytes": 9329
+        },
+        {
+          "path": "scripts/autopilot-mission.cjs",
+          "sha256": "300f203fed6b29b1ecbb417e799efcdbb5e47784d2598418d650c8637f55d02f",
+          "bytes": 29480
+        },
+        {
+          "path": "scripts/autopilot-council-plan.cjs",
+          "sha256": "3c5fad818093cfcf2fdf94c0a994d4fb60b70ef828ccea409dc2da71cc8a2dc0",
+          "bytes": 3966
+        },
+        {
+          "path": "scripts/autopilot-council-reconcile.cjs",
+          "sha256": "22ddf6d3f8656657ea0a2a404beaf59bc88bf43a4e94cebf6d58d42b710e8b1c",
+          "bytes": 2612
+        },
+        {
+          "path": "scripts/design-council-prime.cjs",
+          "sha256": "7332c2461fefb8619d41ad7fbf38dcf5a8278401e9fe1ae80a9a7ca620fc255c",
+          "bytes": 31263
+        },
+        {
+          "path": "scripts/design-council-handoff.cjs",
+          "sha256": "42807439d13ffecbc3d913d6c8a54f4d2633a9de0c534d3e75d3b762064f527f",
+          "bytes": 9085
+        },
+        {
+          "path": "scripts/design-council-reconcile.cjs",
+          "sha256": "1c2b7099ce9aa7e3394b7f730d1a2b804011e50577479b71ec6e9bd5c4db9fe9",
+          "bytes": 6178
+        },
+        {
+          "path": "scripts/design-system-plan.cjs",
+          "sha256": "68d7c0a4219ef7d74527996cdaf91fd97d109e239e5e8feca1b6fd69d2c99c6c",
+          "bytes": 4267
+        },
+        {
+          "path": "scripts/validate-project-design-system.cjs",
+          "sha256": "047c043e12a079334f40d8d98ac055b3bd526031be287771035943a5529e537b",
+          "bytes": 5933
+        }
+      ]
+    },
+    "runtime": {
+      "provider": "codex",
+      "model": "gpt-5.6-luna",
+      "effort": "high",
+      "trial_count_per_task": 1,
+      "serial": true,
+      "timeout_seconds": 900,
+      "max_new_cells_per_invocation": 1,
+      "retry_budget_per_cell": 0,
+      "bounded_repair_model_calls_max": 2,
+      "replacement_budget_per_cell": 0,
+      "fallback_budget_per_cell": 0,
+      "model_substitution_budget": 0,
+      "effort_substitution_budget": 0,
+      "cursor_allowed": false,
+      "claude_code_allowed": false
+    },
+    "autonomy_contract": {
+      "slash_command_or_harness_setup_allowed": false,
+      "preselected_reference_allowed": false,
+      "task_specific_design_md_allowed": false,
+      "task_specific_component_or_token_setup_allowed": false,
+      "fully_authorized_prompt_question_batches_max": 0,
+      "fabricated_user_answer_artifacts_max": 0,
+      "unplanned_human_interventions_max": 0,
+      "active_mission_lineages_max": 1,
+      "terminal_mission_non_resumable": true,
+      "implementation_owner": "main-agent",
+      "read_only_council_lanes_max": 3,
+      "acceptance_plan_required_before_product_build": true,
+      "atomic_proof_schema_version": "0.2",
+      "same_mission_repair_receipt_chain_required": true,
+      "repair_rounds_max": 2
+    },
+    "admission": {
+      "clean_committed_source_required": true,
+      "source_commit_must_contain_exact_authorities": true,
+      "immutable_codex_auth_and_model_catalog_required": true,
+      "exact_luna_high_profile_required": true,
+      "named_existing_browser_required": true,
+      "provider_zero_preflight_required": true,
+      "fresh_root_required": true,
+      "existing_oracle_or_mutant_bytes_may_enter_workspace": false
+    },
+    "diagnostic_gate": {
+      "scheduled_cells": 3,
+      "valid_terminal_cells_required": 3,
+      "ui_resolved_cells_required": 3,
+      "design_system_proof_pass_required": 3,
+      "zero_unsupported_product_facts_required": true,
+      "zero_question_batches_required": true,
+      "zero_unplanned_interventions_required": true,
+      "public_claim_allowed": false,
+      "next_if_pass": "prepare same-prompt competitor qualification without claiming superiority",
+      "next_if_fail": "retain the no-retry failure and repair the smallest product contract before a fresh experiment"
+    }
+  },
+  "codex_catalog_snapshot_contract": {
+    "enforcement_mode": "exact-runtime-per-invocation",
+    "catalog_lock_ref": "benchmarks/ui-resolve-bench/reports/codex-model-effort-contract-1.9.826/CATALOG-LOCK.json",
+    "catalog_lock_sha256": "d7d2f54710e3ccf54c1c1e315e90e237ed1f51986698218ec69e318c2f2c3da3",
+    "auth_source_home": "/private/tmp/omd-codex-auth-pin-1.9.826",
+    "auth_json_source_path": "/private/tmp/omd-codex-auth-pin-1.9.826/auth.json",
+    "auth_json_source_mode": "immutable-snapshot-only",
+    "auth_json_sha256": "627eb7992080095292be3628510b745f9c64b8efaf3d0692e8f1a34d8c9164cd",
+    "auth_json_bytes": 3985,
+    "auth_json_mode": "isolated-copy-before-provider-execution",
+    "mutable_auth_fallback_allowed": false,
+    "models_cache_source_path": "/private/tmp/omd-codex-auth-pin-1.9.826/models_cache.json",
+    "models_cache_sha256": "8c449a6bb9971a4a03d277d41b6c3445eb13545da5b740237b9451c7c8b97b83",
+    "models_cache_bytes": 346080,
+    "models_cache_source_mode": "immutable-snapshot-only",
+    "models_cache_mode": "immutable-copy-before-provider-execution",
+    "mutable_models_cache_fallback_allowed": false,
+    "models_cache_role": "provenance-only-not-execution-authority",
+    "model_catalog_source_path": "/private/tmp/omd-codex-auth-pin-1.9.826/model_catalog.json",
+    "model_catalog_sha256": "77df912746eb14867897f3100a02ec5182537d2edbe9c69c4d76f46c03ad6f5f",
+    "model_catalog_bytes": 345951,
+    "model_catalog_source_mode": "immutable-snapshot-only",
+    "model_catalog_mode": "isolated-copy-before-provider-execution",
+    "mutable_model_catalog_fallback_allowed": false,
+    "model_catalog_role": "execution-model-authority",
+    "codex_cli": {
+      "executable_path": "/Users/kwakseongjae/.local/share/fnm/node-versions/v24.14.0/installation/lib/node_modules/@openai/codex/bin/codex.js",
+      "native_executable_path": "/Users/kwakseongjae/.local/share/fnm/node-versions/v24.14.0/installation/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex",
+      "version": "0.146.1",
+      "binary_sha256": "134063e133f0b4244fa3b251acf973d4fe4b4aeeacbdc135211bf480f59f1477",
+      "native_binary_sha256": "35d248101b211d6248ad4e6b8c1d441fe81236da87afb9f3e9ea51a049e9f179"
+    },
+    "cli_cache_client_version_policy": "require-exact-match",
+    "cli_cache_client_version_mismatch_justification": null,
+    "cursor_credentials_present": false,
+    "claude_credentials_present": false
+  },
+  "codex_model_effort_contract": {
+    "cache_sha256": "8c449a6bb9971a4a03d277d41b6c3445eb13545da5b740237b9451c7c8b97b83",
+    "cache_fetched_at": "2026-08-09T11:23:35.076568Z",
+    "cache_client_version": "0.146.1",
+    "models": [
+      {
+        "model_id": "gpt-5.6-luna",
+        "model_profile_sha256": "a0e0699dadd3b10226f058d0f5ba1f5a9c8c507acc9220de8fe338bf3e2493d0",
+        "default_effort": "medium",
+        "supported_efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ]
+      }
+    ]
+  },
+  "execution_control": {
+    "serial": true,
+    "max_new_cells_per_invocation": 1,
+    "retries": 0,
+    "replacements": 0,
+    "fallback": 0,
+    "bounded_repair_model_calls_max": 2
+  },
+  "cells": [
+    {
+      "id": "neighborhood-library-landing-luna-high-r1-omd-autopilot",
+      "order": 1,
+      "task_id": "neighborhood-library-landing",
+      "variant_id": "omd-autopilot-v2",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 1
+    },
+    {
+      "id": "cold-chain-operations-luna-high-r1-omd-autopilot",
+      "order": 2,
+      "task_id": "cold-chain-operations",
+      "variant_id": "omd-autopilot-v2",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 1
+    },
+    {
+      "id": "clinic-visit-prep-locales-luna-high-r1-omd-autopilot",
+      "order": 3,
+      "task_id": "clinic-visit-prep-locales",
+      "variant_id": "omd-autopilot-v2",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "trial_index": 1
+    }
+  ],
+  "lock_manifest": {
+    "canonicalization": "sha256-json-stringify-v1",
+    "source_authority_sha256": "f0e72bc873f0cbedbb949a9c63ad8acb2b081a5b110f446c7a440dd9332835c2",
+    "smoke_contract_sha256": "acebe639ebb4d02edca0f8dc5042af9f3a446358f055a9a4b686dcd768152770",
+    "task_set_sha256": "f733682d6461c5911ea5c68ec1c483d2fd03c19e299e44a95c72ae2750480389",
+    "schedule_sha256": "5ae75f2bc8dbc0e98b298c030672123becb4cf423742affdb896dcaa33d30280",
+    "codex_catalog_snapshot_contract_sha256": "f28cb1af9b7332ccb9595002443f6df98ea8469745d44d3a4887491e159c4b76",
+    "codex_model_effort_contract_sha256": "76176cf8fef7a079ac1b8186a8648e1b85772c6cc01f868fa21e31dad2950860"
+  }
+}

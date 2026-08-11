@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { classifyColdChainPriority, detectLocaleProtectedClaims, isSampleOwnerOption, scoreCaregiverEvidence, scoreCheckoutEvidence, scoreColdChainEvidence, scoreDeletionEvidence, scoreEditorialEvidence, scoreGrantEvidence, scoreIncidentEvidence, scoreLandingEvidence, scoreLocaleEvidence, scoreRecoveryEvidence, scoreSearchEvidence, scoreTransitEvidence, setCheckboxStateWithKeyboard } from '../../../benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs';
+import { classifyColdChainPriority, detectLocaleProtectedClaims, hasHonestUnavailableLibraryInformation, isSampleOwnerOption, scoreCaregiverEvidence, scoreCheckoutEvidence, scoreColdChainEvidence, scoreDeletionEvidence, scoreEditorialEvidence, scoreGrantEvidence, scoreIncidentEvidence, scoreLandingEvidence, scoreLocaleEvidence, scoreRecoveryEvidence, scoreSearchEvidence, scoreTransitEvidence, setCheckboxStateWithKeyboard } from '../../../benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs';
 
 describe('greenfield evidence phrase classification', () => {
   it.each([
@@ -17,6 +17,22 @@ describe('greenfield evidence phrase classification', () => {
     ['Routine review', { urgent: false, nonUrgent: true }],
   ])('classifies cold-chain priority without treating Non-urgent as Urgent: %s', (value, expected) => {
     expect(classifyColdChainPriority(value)).toEqual(expected);
+  });
+
+  it.each([
+    'This page is a concept preview: the catalog, fees, availability, pickup instructions, and reservation destination are not provided here.',
+    'No catalog or availability is shown.',
+    'Pricing is unavailable; contact the library to confirm inventory.',
+  ])('accepts an explicit library-information absence boundary: %s', (value) => {
+    expect(hasHonestUnavailableLibraryInformation(value)).toBe(true);
+  });
+
+  it.each([
+    'Availability is live and confirmed.',
+    'Browse the catalog and reserve a tool today.',
+    'The library is not crowded, and availability updates live.',
+  ])('does not mistake an affirmative or unrelated sentence for an absence boundary: %s', (value) => {
+    expect(hasHonestUnavailableLibraryInformation(value)).toBe(false);
   });
 
   it.each([

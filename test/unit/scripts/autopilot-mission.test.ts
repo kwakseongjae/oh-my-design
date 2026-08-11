@@ -73,7 +73,7 @@ function writeAcceptancePlan(runDir: string, route = '/') {
   return plan;
 }
 
-function writeFinalProof(runDir: string, repairRound: number, pass: boolean) {
+function writeFinalProof(runDir: string, repairRound: number, pass: boolean, controllerVerifiable = false) {
   const acceptance = JSON.parse(readFileSync(join(runDir, 'acceptance-plan.json'), 'utf8'));
   const proof = {
     schema_version: '0.2', implementation_owner: 'main-agent', route: acceptance.route,
@@ -82,9 +82,13 @@ function writeFinalProof(runDir: string, repairRound: number, pass: boolean) {
     product_build_admission_sha256: sha(readFileSync(join(runDir, 'product-build-admission.json'))),
     product_tree_sha256: productTree(root).sha256, repair_round: repairRound, pass,
     requirement_results: acceptance.task_requirements.map((item: { id: string }, index: number) => ({
-      id: item.id, pass: pass || index > 0, evidence: ['controller:test-requirement'],
+      id: item.id, pass: controllerVerifiable || pass || index > 0, evidence: ['controller:test-requirement'],
     })),
-    checks: requiredChecks.map((id, index) => ({ id, pass: pass || index > 0, evidence: ['controller:test-check'] })),
+    checks: requiredChecks.map((id, index) => ({
+      id,
+      pass: controllerVerifiable ? ['evidence-honesty', 'design-conformance'].includes(id) : pass || index > 0,
+      evidence: ['controller:test-check'],
+    })),
   };
   writeFileSync(join(runDir, 'proof.json'), JSON.stringify(proof));
   return proof;
@@ -93,8 +97,8 @@ function writeFinalProof(runDir: string, repairRound: number, pass: boolean) {
 function writeControllerPolicy(taskId = 'test-task') {
   mkdirSync(join(root, '.benchmark'), { recursive: true });
   writeFileSync(join(root, '.benchmark/controller-verification-policy.json'), JSON.stringify({
-    schema_version: '0.1', mode: 'controller-owned-objective',
-    controller: 'autopilot-smoke-controller-v0.2', task_id: taskId, repair_rounds_max: 2,
+    schema_version: '0.2', mode: 'controller-owned-objective',
+    controller: 'autopilot-smoke-controller-v0.3', task_id: taskId, repair_rounds_max: 2,
   }));
 }
 
@@ -103,11 +107,12 @@ function writeControllerVerification(runDir: string, round: number, status: 'pas
   const output = join(runDir, 'controller-verification', `round-${round}.json`);
   mkdirSync(join(runDir, 'controller-verification'), { recursive: true });
   writeFileSync(output, JSON.stringify({
-    schema_version: '0.1', controller: 'autopilot-smoke-controller-v0.2', task_id: 'test-task',
+    schema_version: '0.2', controller: 'autopilot-smoke-controller-v0.3', task_id: 'test-task',
     mission_sha256: sha(readFileSync(join(runDir, 'mission.json'))),
     proof_sha256: sha(readFileSync(join(runDir, 'proof.json'))),
     product_tree_sha256: proof.product_tree_sha256, repair_round: round, status,
     failed_assertion_ids: failed, task_score_sha256: sha('score'), evaluator_result_sha256: sha('evaluator'),
+    design_system_proof_pass: true, design_system_proof_sha256: sha('design-system-proof'),
   }));
   return output;
 }
@@ -233,12 +238,15 @@ describe('autopilot mission controller', () => {
       failed_quality_check_ids: ['responsive'],
     });
     writeFileSync(join(root, 'index.html'), '<main>built round one, responsive</main>');
-    writeFinalProof(runDir, 1, true);
+    writeFinalProof(runDir, 1, false, true);
     expect(run(runDir).status).toBe(0);
     expect(state(runDir).state).toBe('EXTERNAL_VERIFY');
     writeControllerVerification(runDir, 1, 'pass');
     expect(run(runDir).status).toBe(0);
-    expect(state(runDir).state).toBe('HANDOFF');
+    expect(state(runDir)).toMatchObject({
+      state: 'HANDOFF',
+      evidence: { completion_authority: 'controller-objective-and-design-system-proof' },
+    });
     expect(run(runDir, 'audit').status).toBe(0);
   });
 

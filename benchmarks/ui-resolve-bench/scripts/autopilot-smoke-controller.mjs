@@ -250,8 +250,8 @@ function prepareCommand(args) {
     const benchmark = join(workspace, ".benchmark"); mkdirSync(benchmark);
     const prompt = promptFor(taskSet, cell.task_id); writeFileSync(join(benchmark, "PROMPT.md"), prompt, { encoding: "utf8", flag: "wx" });
     writeJsonExclusive(join(benchmark, "controller-verification-policy.json"), {
-      schema_version: "0.1", mode: "controller-owned-objective",
-      controller: "autopilot-smoke-controller-v0.2", task_id: cell.task_id,
+      schema_version: "0.2", mode: "controller-owned-objective",
+      controller: "autopilot-smoke-controller-v0.3", task_id: cell.task_id,
       repair_rounds_max: plan.smoke_contract.autonomy_contract.repair_rounds_max,
       plan_sha256: sha256(readFileSync(planPath)),
     });
@@ -560,13 +560,13 @@ function currentRepairRound(runDir) {
 export function buildControllerRepairPrompt({ originalPrompt, feedbackPath, feedbackSha256, repairRound, failedIds, protectedIds = [], regressedIds = [] }) {
   return `${originalPrompt}\n\n---\nCONTROLLER-OWNED BOUNDED REPAIR ${repairRound}/2\nContinue the existing OmD Autopilot mission. Do not bootstrap a new mission, do not ask the user, and do not replace the project design system. Read the hash-bound controller feedback at ${feedbackPath} (SHA-256 ${feedbackSha256}). Treat its objective_observations and protected_assertions as controller measurements, not suggestions or DOM requirements. Fix only the failed objective assertions: ${failedIds.join(", ") || "terminal OmD proof"}. The following assertions are cumulative non-regression invariants and must remain true after this patch: ${protectedIds.join(", ") || "none recorded"}.${regressedIds.length ? ` Restore these previously passing assertions before any other refinement: ${regressedIds.join(", ")}.` : ""} Preserve protected unknowns. Make the smallest product change that satisfies the failures without changing successful journeys, labels, state transitions, or evidence semantics; reverify both the repaired failures and every protected assertion before handing control back. Update the real product, write proof.json for repair_round ${repairRound}, and run the installed autopilot-mission controller until it reaches EXTERNAL_VERIFY or a truthful failed handoff. Do not claim success from prose or from an unavailable browser.\n`;
 }
-function writeControllerVerification({ workspace, runDir, round, scorePath, evaluatorResultPath, score }) {
+function writeControllerVerification({ workspace, runDir, round, scorePath, evaluatorResultPath, score, designSystemProof }) {
   const proofPath = join(runDir, "proof.json");
   if (!existsSync(proofPath)) return null;
   const proof = readJson(proofPath);
   const failedIds = objectiveFailureIds(score);
   const receipt = {
-    schema_version: "0.1", controller: "autopilot-smoke-controller-v0.2",
+    schema_version: "0.2", controller: "autopilot-smoke-controller-v0.3",
     task_id: score?.task_id ?? readJson(join(workspace, ".benchmark/matrix-cell.json")).task_id,
     mission_sha256: sha256(readFileSync(join(runDir, "mission.json"))),
     proof_sha256: sha256(readFileSync(proofPath)),
@@ -576,6 +576,8 @@ function writeControllerVerification({ workspace, runDir, round, scorePath, eval
     failed_assertion_ids: failedIds,
     task_score_sha256: sha256(readFileSync(scorePath)),
     evaluator_result_sha256: sha256(readFileSync(evaluatorResultPath)),
+    design_system_proof_pass: designSystemProof?.pass === true,
+    design_system_proof_sha256: designSystemProof?.proof_sha256 ?? null,
   };
   if (proof.repair_round !== round || proof.product_tree_sha256 !== receipt.product_tree_sha256) {
     throw new Error("controller verification proof/product authority drift");
@@ -641,7 +643,7 @@ function runCommand(args) {
     if (runDir && score) {
       const proofPath = join(runDir, "proof.json");
       if (existsSync(proofPath) && readJson(proofPath).repair_round === attempt) {
-        verification = writeControllerVerification({ workspace, runDir, round: attempt, scorePath, evaluatorResultPath, score });
+        verification = writeControllerVerification({ workspace, runDir, round: attempt, scorePath, evaluatorResultPath, score, designSystemProof: dsProof });
         if (currentMissionState(runDir)?.state === "EXTERNAL_VERIFY") {
           const advanced = spawnSync(process.execPath, [join(repoRoot, "scripts/autopilot-mission.cjs"), workspace, runDir, "advance"], {
             cwd: repoRoot, encoding: "utf8", timeout: 30_000,
