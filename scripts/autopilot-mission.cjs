@@ -15,6 +15,8 @@ const acceptancePath = path.join(runDir, 'acceptance-plan.json');
 const repairsDir = path.join(runDir, 'repairs');
 const activeMissionPath = path.join(cwd, '.omd', 'autopilot-active.json');
 const answersPath = path.join(runDir, 'checkpoints', 'council-intake.answers.json');
+const externalVerificationPolicyPath = path.join(cwd, '.benchmark', 'controller-verification-policy.json');
+const externalVerificationDir = path.join(runDir, 'controller-verification');
 
 function sha256(bytes) {
   return crypto.createHash('sha256').update(bytes).digest('hex');
@@ -206,7 +208,11 @@ function readRepairChain(mission, acceptanceSha, admissionSha) {
       || typeof receipt.failed_proof_sha256 !== 'string'
       || typeof receipt.failed_product_tree_sha256 !== 'string'
       || !Array.isArray(receipt.failed_requirement_ids)
-      || !Array.isArray(receipt.failed_quality_check_ids)) {
+      || !Array.isArray(receipt.failed_quality_check_ids)
+      || !['local-proof', 'controller-objective'].includes(receipt.authority)
+      || (receipt.authority === 'local-proof' && receipt.controller_verification_sha256 !== null)
+      || (receipt.authority === 'controller-objective'
+        && typeof receipt.controller_verification_sha256 !== 'string')) {
       throw new Error(`repair receipt authority drift: round ${round}`);
     }
     receipts.push(receipt);
@@ -214,7 +220,7 @@ function readRepairChain(mission, acceptanceSha, admissionSha) {
   return receipts;
 }
 
-function writeRepairReceipt(proof, proofSha, acceptanceSha, admissionSha) {
+function writeRepairReceipt(proof, proofSha, acceptanceSha, admissionSha, external = null) {
   const failedRequirements = proof.requirement_results.filter((item) => !item.pass).map((item) => item.id);
   const failedChecks = proof.checks.filter((item) => !item.pass).map((item) => item.id);
   const receipt = {
@@ -227,11 +233,57 @@ function writeRepairReceipt(proof, proofSha, acceptanceSha, admissionSha) {
     failed_product_tree_sha256: proof.product_tree_sha256,
     repair_round: proof.repair_round,
     next_repair_round: proof.repair_round + 1,
+    authority: external ? 'controller-objective' : 'local-proof',
+    controller_verification_sha256: external?.sha256 ?? null,
     failed_requirement_ids: failedRequirements,
-    failed_quality_check_ids: failedChecks,
+    failed_quality_check_ids: external?.value.failed_assertion_ids ?? failedChecks,
   };
   writeJsonAtomic(repairReceiptPath(proof.repair_round), receipt, true);
   return receipt;
+}
+
+function validateExternalVerificationPolicy(mission) {
+  if (!mission.external_verification_policy_sha256) return null;
+  if (!fs.existsSync(externalVerificationPolicyPath)
+    || sha256File(externalVerificationPolicyPath) !== mission.external_verification_policy_sha256) {
+    throw new Error('controller verification policy drift');
+  }
+  const policy = readJson(externalVerificationPolicyPath);
+  if (policy.schema_version !== '0.1' || policy.mode !== 'controller-owned-objective'
+    || policy.controller !== 'autopilot-smoke-controller-v0.2'
+    || policy.repair_rounds_max !== mission.repair_round_budget
+    || typeof policy.task_id !== 'string' || !policy.task_id) {
+    throw new Error('controller verification policy contract drift');
+  }
+  return policy;
+}
+
+function externalVerificationPath(round) {
+  return path.join(externalVerificationDir, `round-${round}.json`);
+}
+
+function readExternalVerification(mission, proof) {
+  const policy = validateExternalVerificationPolicy(mission);
+  if (!policy) return null;
+  const file = externalVerificationPath(proof.repair_round);
+  if (!fs.existsSync(file)) return { pending: true, policy };
+  const value = readJson(file);
+  if (value.schema_version !== '0.1' || value.controller !== policy.controller
+    || value.task_id !== policy.task_id
+    || value.mission_sha256 !== sha256File(missionPath)
+    || value.proof_sha256 !== sha256File(path.join(runDir, 'proof.json'))
+    || value.product_tree_sha256 !== proof.product_tree_sha256
+    || value.repair_round !== proof.repair_round
+    || !['pass', 'fail'].includes(value.status)
+    || typeof value.task_score_sha256 !== 'string'
+    || typeof value.evaluator_result_sha256 !== 'string'
+    || !Array.isArray(value.failed_assertion_ids)) {
+    throw new Error('controller verification receipt authority drift');
+  }
+  if ((value.status === 'pass') !== (value.failed_assertion_ids.length === 0)) {
+    throw new Error('controller verification disposition drift');
+  }
+  return { pending: false, policy, value, sha256: sha256File(file) };
 }
 
 function emit(state, nextAction, evidence = {}) {
@@ -274,6 +326,8 @@ if (command === 'bootstrap') {
     question_batch_budget: 1,
     repair_round_budget: 2,
     guided_checkpoint_claim_allowed: false,
+    external_verification_policy_sha256: fs.existsSync(externalVerificationPolicyPath)
+      ? sha256File(externalVerificationPolicyPath) : null,
   };
   writeJsonAtomic(missionPath, mission, true);
   writeMissionMarker('active');
@@ -314,12 +368,15 @@ if (command === 'audit') {
   if (finalProof.pass !== true || finalProof.repair_round !== repairChain.length) {
     throw new Error('completed final proof or repair chain drift');
   }
+  const external = readExternalVerification(mission, finalProof);
   const finalState = readJson(statePath);
   if (finalState.state !== 'HANDOFF'
     || finalState.mission_sha256 !== sha256File(missionPath)
     || finalState.evidence?.proof_sha256 !== sha256File(finalProofPath)
     || finalState.evidence?.acceptance_plan_sha256 !== acceptanceSha
-    || finalState.evidence?.repair_rounds_used !== repairChain.length) {
+    || finalState.evidence?.repair_rounds_used !== repairChain.length
+    || (external && (external.pending || external.value.status !== 'pass'
+      || finalState.evidence?.controller_verification_sha256 !== external.sha256))) {
     throw new Error('completed handoff state authority drift');
   }
   process.stdout.write(`${JSON.stringify({
@@ -510,11 +567,39 @@ if (repairChain.length) {
     throw new Error('focused repair must change the product tree');
   }
 }
-if (finalProof.pass === true) {
+const externalVerification = finalProof.pass === true ? readExternalVerification(mission, finalProof) : null;
+if (finalProof.pass === true && externalVerification?.pending) {
+  emit('EXTERNAL_VERIFY', 'await-controller-objective-evaluation', {
+    proof_sha256: sha256File(finalProofPath),
+    product_tree_sha256: finalProof.product_tree_sha256,
+    repair_round: finalProof.repair_round,
+    policy_sha256: mission.external_verification_policy_sha256,
+  });
+} else if (finalProof.pass === true && externalVerification?.value.status === 'fail'
+  && finalProof.repair_round < mission.repair_round_budget) {
+  const proofSha = sha256File(finalProofPath);
+  const receipt = writeRepairReceipt(finalProof, proofSha, acceptanceSha, admissionSha, externalVerification);
+  emit('BOUNDED_REVISION', 'apply-controller-focused-repair', {
+    proof_sha256: proofSha,
+    controller_verification_sha256: externalVerification.sha256,
+    repair_receipt_sha256: sha256File(repairReceiptPath(finalProof.repair_round)),
+    next_repair_round: receipt.next_repair_round,
+    failed_assertion_ids: externalVerification.value.failed_assertion_ids,
+  });
+} else if (finalProof.pass === true && externalVerification?.value.status === 'fail') {
+  emit('FAILED_HANDOFF', 'report-controller-objective-failures', {
+    proof_sha256: sha256File(finalProofPath),
+    controller_verification_sha256: externalVerification.sha256,
+    repair_rounds_used: repairChain.length,
+    unresolved_assertion_ids: externalVerification.value.failed_assertion_ids,
+  });
+  writeMissionMarker('failed');
+} else if (finalProof.pass === true) {
   emit('HANDOFF', 'write-delivery', {
     proof_sha256: sha256File(finalProofPath),
     acceptance_plan_sha256: acceptanceSha,
     repair_rounds_used: repairChain.length,
+    controller_verification_sha256: externalVerification?.sha256 ?? null,
   });
   writeMissionMarker('completed');
 } else if (finalProof.repair_round < mission.repair_round_budget) {

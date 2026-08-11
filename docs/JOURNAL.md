@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-11 (Codex) · Controller-owned closed repair loop
+- local PASS도 external policy 아래선 EXTERNAL_VERIFY에서 멈추고 exact receipt만 다음 상태를 연다.
+- objective failure를 same-mission repair1/2 prompt로 환류하며 initial/repair artifacts와 비용을 모두 분리 기록한다.
+- terminal mission을 다시 여는 우회 없이 active lineage1과 retry/replacement0를 보존했다.
+- focused4, lint, syntax/diff green; 다음은 clean commit 뒤 provider-zero full 회귀와 fresh smoke authority다.
+
 ## 2026-08-11 (Codex) · Luna/high 1.9.857 diagnostic complete
 - named in-app browser를 plan에 봉인하고 3셀을 retry 없이 순차 완결했다.
 - DESIGN.md proof 3/3, UI-Resolved 0/3, Autopilot proof 1/3; 점수 30/20/10이다.

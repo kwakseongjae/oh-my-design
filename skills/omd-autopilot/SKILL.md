@@ -70,11 +70,21 @@ folders and must never edit `DESIGN.md` or product files.
    from those results; prose confidence or a self-authored summary is not proof.
    “Browser unavailable”, skipped checks, or missing screenshots must be a
    failed check, never a passing substitute.
+   When `.benchmark/controller-verification-policy.json` is present, the
+   installed mission controller is the objective-verification authority. A
+   locally passing proof must stop at `EXTERNAL_VERIFY`; do not write delivery,
+   end the mission, remove the policy, or invent its receipt. The host
+   controller evaluates the real route and supplies the next hash-bound state.
 10. `BOUNDED_REVISION` — the main agent may apply at most two focused repair
    rounds in the same mission. The controller writes an exclusive receipt for
    every failed proof, freezes the exact failed requirement/check IDs, and
    requires both a changed product tree and a replacement proof at the next
    round. Critics stay read-only. Unresolved BLOCK produces a failed handoff.
+   A controller-authorized round is an internal continuation of the same
+   one-prompt mission, not a retry or replacement. Read only its exact
+   `.benchmark/controller-feedback/round-<n>.json`, preserve passing behavior,
+   update the product and atomic proof for that round, and return to
+   `EXTERNAL_VERIFY`. Never bootstrap a second mission to escape the findings.
 11. `HANDOFF` — report implemented files, system disposition, question count,
     proof hashes, screenshots, failures, time and token coverage.
 

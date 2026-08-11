@@ -204,13 +204,14 @@ process.exit(result.status ?? 1);
   };
 }
 
-function runFixture(fixture) {
+function runFixture(fixture, extra = []) {
   return spawnSync(process.execPath, [
     RUN_CODEX,
     "--workspace", fixture.workspace,
     "--model", "gpt-test-exact",
     "--reasoning", "high",
     "--timeout-ms", "10000",
+    ...extra,
   ], {
     cwd: resolve("."),
     encoding: "utf8",
@@ -224,6 +225,20 @@ function runFixture(fixture) {
 }
 
 describe("run-codex exact catalog/runtime invocation", () => {
+  it("isolates a bounded repair prompt and its runtime artifacts", () => {
+    const fixture = exactRunFixture();
+    mkdirSync(join(fixture.benchmark, "repair-prompts"), { recursive: true });
+    writeFileSync(join(fixture.benchmark, "repair-prompts/repair-1.md"), "Continue the same mission.\n");
+    const executed = runFixture(fixture, ["--artifact-suffix", "repair-1"]);
+    expect(executed.status, executed.stderr).toBe(0);
+    expect(existsSync(join(fixture.benchmark, "run-result.json"))).toBe(false);
+    expect(existsSync(join(fixture.benchmark, "attempts/repair-1/run-result.json"))).toBe(true);
+    expect(existsSync(join(fixture.benchmark, "attempts/repair-1/events.jsonl"))).toBe(true);
+    const replay = runFixture(fixture, ["--artifact-suffix", "repair-1"]);
+    expect(replay.status).not.toBe(0);
+    expect(replay.stderr).toContain("refusing to overwrite completed run");
+  });
+
   it("uses only the copied exact cache and the verified wrapper/native CLI", () => {
     const fixture = exactRunFixture();
     const executed = runFixture(fixture);

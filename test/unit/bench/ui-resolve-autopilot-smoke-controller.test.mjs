@@ -3,7 +3,11 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { afterEach, describe, expect, test } from "vitest";
-import { controllerAutopilotProof } from "../../../benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs";
+import {
+  buildControllerRepairPrompt,
+  controllerAutopilotProof,
+  objectiveFailureIds,
+} from "../../../benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs";
 
 const repo = resolve(import.meta.dirname, "../../..");
 const script = join(repo, "benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs");
@@ -12,6 +16,18 @@ const temp = () => { const value = mkdtempSync(join(tmpdir(), "omd-autopilot-smo
 afterEach(() => { while (roots.length) rmSync(roots.pop(), { recursive: true, force: true }); });
 
 describe("autopilot Luna/high smoke controller", () => {
+  test("builds a bounded same-mission repair prompt from objective failures", () => {
+    const failed = objectiveFailureIds({ assertions: { accessibility: false, runtime_clean: true, responsive: false } });
+    expect(failed).toEqual(["accessibility", "responsive"]);
+    const prompt = buildControllerRepairPrompt({
+      originalPrompt: "Build the surface.", feedbackPath: ".benchmark/controller-feedback/round-1.json",
+      feedbackSha256: "a".repeat(64), repairRound: 1, failedIds: failed,
+    });
+    expect(prompt).toContain("Continue the existing OmD Autopilot mission");
+    expect(prompt).toContain("accessibility, responsive");
+    expect(prompt).toContain("do not ask the user");
+    expect(prompt).toContain("Do not bootstrap a new mission");
+  });
   test("creates a hash-bound provider-zero plan and three oracle-free workspaces", () => {
     const base = temp(); const report = join(base, "report"); const root = join(base, "root");
     execFileSync(process.execPath, [script, "plan", "--out", report], { cwd: repo });
@@ -20,12 +36,17 @@ describe("autopilot Luna/high smoke controller", () => {
     expect(audit).toMatchObject({ pass: true, cells: 3, status: "prepared" });
     const plan = JSON.parse(readFileSync(join(root, "RUN-MATRIX.locked.json"), "utf8"));
     expect(plan.cells.map((cell) => `${cell.model_id}/${cell.effort}`)).toEqual(Array(3).fill("gpt-5.6-luna/high"));
-    expect(plan.execution_control).toMatchObject({ max_new_cells_per_invocation: 1, retries: 0, replacements: 0, fallback: 0 });
+    expect(plan.execution_control).toMatchObject({
+      max_new_cells_per_invocation: 1, retries: 0, replacements: 0, fallback: 0,
+      bounded_repair_model_calls_max: 2,
+    });
     for (const cell of plan.cells) {
       const workspace = join(root, cell.id);
       expect(existsSync(join(workspace, ".agents/skills/omd-autopilot/SKILL.md"))).toBe(true);
       expect(existsSync(join(workspace, ".benchmark/codex-home/auth.json"))).toBe(true);
       expect(existsSync(join(workspace, ".benchmark/codex-home/model_catalog.json"))).toBe(true);
+      expect(JSON.parse(readFileSync(join(workspace, ".benchmark/controller-verification-policy.json"), "utf8")))
+        .toMatchObject({ mode: "controller-owned-objective", repair_rounds_max: 2, task_id: cell.task_id });
       expect(readFileSync(join(workspace, ".benchmark/PROMPT.md"), "utf8")).not.toMatch(/oracle|mutant/i);
     }
   });

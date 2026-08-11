@@ -21,6 +21,7 @@ const reasoning = String(args.get("reasoning") ?? "xhigh");
 const timeoutMs = Number(args.get("timeout-ms") ?? 900_000);
 const bypassHookTrust = args.get("bypass-hook-trust") === true;
 const loadUserConfig = args.get("load-user-config") === true;
+const artifactSuffix = args.get("artifact-suffix") ? String(args.get("artifact-suffix")) : null;
 
 if (!workspace) {
   console.error("usage: run-codex.mjs --workspace <prepared-dir> [--model gpt-5.6-terra] [--reasoning xhigh]");
@@ -28,7 +29,12 @@ if (!workspace) {
 }
 const benchmarkDir = join(workspace, ".benchmark");
 const manifestPath = join(benchmarkDir, "manifest.json");
-const resultPath = join(benchmarkDir, "run-result.json");
+if (artifactSuffix && !/^repair-[1-2]$/.test(artifactSuffix)) {
+  throw new Error("artifact suffix must be repair-1 or repair-2");
+}
+const artifactDir = artifactSuffix ? join(benchmarkDir, "attempts", artifactSuffix) : benchmarkDir;
+mkdirSync(artifactDir, { recursive: true });
+const resultPath = join(artifactDir, "run-result.json");
 if (!existsSync(manifestPath)) throw new Error(`not a prepared benchmark workspace: ${workspace}`);
 if (existsSync(resultPath)) throw new Error(`refusing to overwrite completed run: ${resultPath}`);
 
@@ -36,9 +42,13 @@ const manifest = readJson(manifestPath);
 if (manifest.runtime_target !== "codex") {
   throw new Error("workspace was not prepared with --runtime codex");
 }
-const prompt = readFileSync(join(benchmarkDir, "PROMPT.md"), "utf8");
-const finalMessagePath = join(benchmarkDir, "final-message.txt");
-const eventsPath = join(benchmarkDir, "events.jsonl");
+const promptPath = artifactSuffix
+  ? join(benchmarkDir, "repair-prompts", `${artifactSuffix}.md`)
+  : join(benchmarkDir, "PROMPT.md");
+if (!existsSync(promptPath)) throw new Error(`run prompt is missing: ${promptPath}`);
+const prompt = readFileSync(promptPath, "utf8");
+const finalMessagePath = join(artifactDir, "final-message.txt");
+const eventsPath = join(artifactDir, "events.jsonl");
 writeFileSync(eventsPath, "", "utf8");
 const maxLogBytes = 50 * 1024 * 1024;
 const browserProofRequired = preparedWorkspaceRequiresBrowserProof(workspace, { readJson });
@@ -184,7 +194,7 @@ const modelToolModeBeforeRun = exactRuntimeContract
   ? exactPreRunModelToolMode
   : sourceModelToolMode;
 writeFileSync(eventsPath, stdout, "utf8");
-writeFileSync(join(benchmarkDir, "stderr.log"), stderr, "utf8");
+writeFileSync(join(artifactDir, "stderr.log"), stderr, "utf8");
 
 const events = stdout.split("\n").filter(Boolean).flatMap((line) => {
   try { return [JSON.parse(line)]; } catch { return []; }

@@ -120,6 +120,7 @@ function planCommand(args) {
     relative(repoRoot, smokeConfigPath).split(sep).join("/"),
     relative(repoRoot, taskSetPath).split(sep).join("/"),
     controllerPath,
+    "benchmarks/ui-resolve-bench/scripts/run-codex.mjs",
     evaluatorPath,
     validatorPath,
     config.authorities.adapter_set_path,
@@ -133,6 +134,13 @@ function planCommand(args) {
     throw new Error("smoke config self hash drift");
   }
   if (sha256(taskBytes) !== config.authorities.task_set_sha256) throw new Error("task-set hash drift");
+  for (const item of config.authorities.portable_bundle_files) {
+    const bytes = readFileSync(join(repoRoot, item.path));
+    if (bytes.length !== item.bytes || sha256(bytes) !== item.sha256) throw new Error(`portable bundle authority drift: ${item.path}`);
+  }
+  if (sha256(JSON.stringify(config.authorities.portable_bundle_files)) !== config.authorities.portable_bundle_sha256) {
+    throw new Error("portable bundle aggregate drift");
+  }
   for (const cell of config.cells) {
     const prompt = promptFor(taskSet, cell.task_id);
     if (sha256(prompt) !== cell.prompt_sha256 || Buffer.byteLength(prompt) !== cell.prompt_bytes) throw new Error(`prompt drift: ${cell.task_id}`);
@@ -154,7 +162,10 @@ function planCommand(args) {
     smoke_contract: config,
     codex_catalog_snapshot_contract: snapshot,
     codex_model_effort_contract: modelEffort,
-    execution_control: { serial: true, max_new_cells_per_invocation: 1, retries: 0, replacements: 0, fallback: 0 },
+    execution_control: {
+      serial: true, max_new_cells_per_invocation: 1, retries: 0, replacements: 0, fallback: 0,
+      bounded_repair_model_calls_max: config.runtime.bounded_repair_model_calls_max,
+    },
     cells,
   };
   plan.lock_manifest = {
@@ -188,7 +199,8 @@ function validatePlan(plan, receipt, planPath) {
   if (!COMMIT.test(plan.source_commit) || git("merge-base", "--is-ancestor", plan.source_commit, "HEAD") !== "") throw new Error("plan source commit is unavailable");
   for (const entry of plan.source_authority.files) assertEntry(entry, plan.source_commit);
   if (plan.source_authority.sha256 !== sha256(canonical(plan.source_authority.files))) throw new Error("source authority aggregate drift");
-  if (plan.cells.length !== 3 || plan.execution_control.max_new_cells_per_invocation !== 1) throw new Error("smoke schedule drift");
+  if (plan.cells.length !== 3 || plan.execution_control.max_new_cells_per_invocation !== 1
+    || plan.execution_control.bounded_repair_model_calls_max !== 2) throw new Error("smoke schedule drift");
   if (plan.lock_manifest.schedule_sha256 !== sha256(canonical(plan.cells))) throw new Error("schedule lock drift");
   if (plan.lock_manifest.codex_catalog_snapshot_contract_sha256 !== sha256(JSON.stringify(plan.codex_catalog_snapshot_contract))
     || plan.lock_manifest.codex_model_effort_contract_sha256 !== sha256(JSON.stringify(plan.codex_model_effort_contract))) throw new Error("runtime lock drift");
@@ -214,6 +226,12 @@ function prepareCommand(args) {
     writeFileSync(join(workspace, "AGENTS.md"), genericAgents, { encoding: "utf8", flag: "wx" });
     const benchmark = join(workspace, ".benchmark"); mkdirSync(benchmark);
     const prompt = promptFor(taskSet, cell.task_id); writeFileSync(join(benchmark, "PROMPT.md"), prompt, { encoding: "utf8", flag: "wx" });
+    writeJsonExclusive(join(benchmark, "controller-verification-policy.json"), {
+      schema_version: "0.1", mode: "controller-owned-objective",
+      controller: "autopilot-smoke-controller-v0.2", task_id: cell.task_id,
+      repair_rounds_max: plan.smoke_contract.autonomy_contract.repair_rounds_max,
+      plan_sha256: sha256(readFileSync(planPath)),
+    });
     writeJsonExclusive(join(benchmark, "matrix-cell.json"), { ...cell, browser_execution: { require_browser_proof: false }, host_policy_gate: { require_browser_attempt: false } });
     const productIgnore = [".benchmark", ".agents", ".omd", "AGENTS.md", "agents", "scripts"];
     const product = treeManifest(workspace, { ignore: productIgnore }); const full = treeManifest(workspace);
@@ -301,7 +319,7 @@ function walkFor(root, name, ignored = new Set([".benchmark", ".agents"])) {
   visit(root);
   return found.sort();
 }
-function controllerDesignSystemProof(root, cell, workspace) {
+function controllerDesignSystemProof(root, cell, workspace, round = 0) {
   const omdRoot = join(workspace, ".omd");
   if (!existsSync(omdRoot)) return { pass: false, reason: "autopilot-run-artifacts-missing", eligible_runs: 0 };
   const decisions = walkFor(omdRoot, "design-system-decision.json");
@@ -313,7 +331,7 @@ function controllerDesignSystemProof(root, cell, workspace) {
     return { pass: false, reason: "exactly-one-verifiable-design-system-run-required", eligible_runs: eligible.length };
   }
   const sourceRun = dirname(eligible[0]);
-  const auditRoot = join(root, ".controller-artifacts", cell.id, "design-system-audit");
+  const auditRoot = join(root, ".controller-artifacts", cell.id, `design-system-audit-round-${round}`);
   const auditWorkspace = join(auditRoot, "workspace"); const auditRun = join(auditWorkspace, ".omd-run");
   mkdirSync(join(auditRun, "system"), { recursive: true });
   copyFileSync(join(workspace, "DESIGN.md"), join(auditWorkspace, "DESIGN.md"));
@@ -392,6 +410,50 @@ function tokenSummary(run) {
     output_tokens: usage.reduce((sum, item) => sum + Number(item.output_tokens ?? 0), 0),
   };
 }
+export function objectiveFailureIds(score) {
+  return Object.entries(score?.assertions ?? {}).filter(([, pass]) => pass !== true).map(([id]) => id).sort();
+}
+function missionRunDir(workspace) {
+  const missions = walkFor(join(workspace, ".omd"), "mission.json");
+  if (missions.length !== 1) throw new Error(`exactly one mission lineage required for controller repair; observed ${missions.length}`);
+  return dirname(missions[0]);
+}
+function currentMissionState(runDir) {
+  const path = join(runDir, "mission-state.json");
+  return existsSync(path) ? readJson(path) : null;
+}
+function currentRepairRound(runDir) {
+  const repairs = join(runDir, "repairs");
+  if (!existsSync(repairs)) return 0;
+  return readdirSync(repairs).filter((name) => /^round-[0-1]\.json$/.test(name)).length;
+}
+export function buildControllerRepairPrompt({ originalPrompt, feedbackPath, feedbackSha256, repairRound, failedIds }) {
+  return `${originalPrompt}\n\n---\nCONTROLLER-OWNED BOUNDED REPAIR ${repairRound}/2\nContinue the existing OmD Autopilot mission. Do not bootstrap a new mission, do not ask the user, and do not replace the project design system. Read the hash-bound controller feedback at ${feedbackPath} (SHA-256 ${feedbackSha256}). Fix only the failed objective assertions: ${failedIds.join(", ") || "terminal OmD proof"}. Preserve already passing behavior and protected unknowns. Update the real product, write proof.json for repair_round ${repairRound}, and run the installed autopilot-mission controller until it reaches EXTERNAL_VERIFY or a truthful failed handoff. Do not claim success from prose or from an unavailable browser.\n`;
+}
+function writeControllerVerification({ workspace, runDir, round, scorePath, evaluatorResultPath, score }) {
+  const proofPath = join(runDir, "proof.json");
+  if (!existsSync(proofPath)) return null;
+  const proof = readJson(proofPath);
+  const failedIds = objectiveFailureIds(score);
+  const receipt = {
+    schema_version: "0.1", controller: "autopilot-smoke-controller-v0.2",
+    task_id: score?.task_id ?? readJson(join(workspace, ".benchmark/matrix-cell.json")).task_id,
+    mission_sha256: sha256(readFileSync(join(runDir, "mission.json"))),
+    proof_sha256: sha256(readFileSync(proofPath)),
+    product_tree_sha256: treeManifest(workspace, { ignore: [".benchmark", ".agents", ".omd", "AGENTS.md", "agents", "scripts"] }).sha256,
+    repair_round: round,
+    status: score?.ui_resolved === true ? "pass" : "fail",
+    failed_assertion_ids: failedIds,
+    task_score_sha256: sha256(readFileSync(scorePath)),
+    evaluator_result_sha256: sha256(readFileSync(evaluatorResultPath)),
+  };
+  if (proof.repair_round !== round || proof.product_tree_sha256 !== receipt.product_tree_sha256) {
+    throw new Error("controller verification proof/product authority drift");
+  }
+  const out = join(runDir, "controller-verification", `round-${round}.json`);
+  writeJsonExclusive(out, receipt);
+  return { receipt, path: out, sha256: sha256(readFileSync(out)) };
+}
 function runCommand(args) {
   const root = resolve(String(args.get("root") ?? ""));
   const maxNew = Number(args.get("max-new-cells") ?? 0);
@@ -407,53 +469,124 @@ function runCommand(args) {
   state.status = "running"; state.current_cell = next.id; stateCell.status = "running"; stateCell.started_at = new Date().toISOString();
   writeJsonAtomic(statePath, state);
   const workspace = join(root, next.id);
-  const runner = spawnSync(process.execPath, [join(repoRoot, "benchmarks/ui-resolve-bench/scripts/run-codex.mjs"),
-    "--workspace", workspace, "--model", next.model_id, "--reasoning", next.effort,
-    "--timeout-ms", String(next.timeout_seconds * 1000)], {
-    cwd: repoRoot, encoding: "utf8", timeout: (next.timeout_seconds + 30) * 1000,
-  });
-  const runResultPath = join(workspace, ".benchmark/run-result.json");
-  if (!existsSync(runResultPath)) {
-    state.status = "stopped-preregistered"; state.stop_reason = `provider-controller-result-missing:exit-${runner.status}`; stateCell.status = "stopped";
-    writeJsonAtomic(statePath, state); throw new Error(state.stop_reason);
-  }
-  const run = readJson(runResultPath);
   const controllerDir = join(root, ".controller-artifacts", next.id); mkdirSync(controllerDir, { recursive: true });
-  const dsProof = controllerDesignSystemProof(root, next, workspace);
-  const autopilotProof = controllerAutopilotProof(plan, next, workspace);
-  const scorePath = join(controllerDir, "task-score.json");
-  let evaluator = null;
-  if (existsSync(join(workspace, "index.html"))) {
-    const evaluated = spawnSync(process.execPath, [join(repoRoot, evaluatorPath), "--task-id", next.task_id, "--workspace", workspace, "--out", scorePath], {
-      cwd: repoRoot, encoding: "utf8", timeout: 180_000,
+  const attempts = [];
+  let final = null;
+  for (let attempt = 0; attempt <= plan.smoke_contract.autonomy_contract.repair_rounds_max; attempt += 1) {
+    const suffix = attempt === 0 ? null : `repair-${attempt}`;
+    const runnerArgs = [join(repoRoot, "benchmarks/ui-resolve-bench/scripts/run-codex.mjs"),
+      "--workspace", workspace, "--model", next.model_id, "--reasoning", next.effort,
+      "--timeout-ms", String(next.timeout_seconds * 1000),
+      ...(suffix ? ["--artifact-suffix", suffix] : [])];
+    const runner = spawnSync(process.execPath, runnerArgs, {
+      cwd: repoRoot, encoding: "utf8", timeout: (next.timeout_seconds + 30) * 1000,
     });
-    evaluator = { exit_code: evaluated.status, signal: evaluated.signal, stderr: evaluated.stderr?.slice(0, 4000) ?? "" };
+    const artifactDir = suffix ? join(workspace, ".benchmark/attempts", suffix) : join(workspace, ".benchmark");
+    const runResultPath = join(artifactDir, "run-result.json");
+    if (!existsSync(runResultPath)) {
+      state.status = "stopped-preregistered"; state.stop_reason = `provider-controller-result-missing:attempt-${attempt}:exit-${runner.status}`; stateCell.status = "stopped";
+      writeJsonAtomic(statePath, state); throw new Error(state.stop_reason);
+    }
+    const run = readJson(runResultPath);
+    const dsProof = controllerDesignSystemProof(root, next, workspace, attempt);
+    const scorePath = join(controllerDir, `task-score-round-${attempt}.json`);
+    let evaluator = null;
+    if (existsSync(join(workspace, "index.html"))) {
+      const evaluated = spawnSync(process.execPath, [join(repoRoot, evaluatorPath), "--task-id", next.task_id, "--workspace", workspace, "--out", scorePath], {
+        cwd: repoRoot, encoding: "utf8", timeout: 180_000,
+      });
+      evaluator = { exit_code: evaluated.status, signal: evaluated.signal, stderr: evaluated.stderr?.slice(0, 4000) ?? "" };
+    }
+    const evaluatorResultPath = join(controllerDir, `evaluator-result-round-${attempt}.json`);
+    writeJsonAtomic(evaluatorResultPath, evaluator ?? { exit_code: null, signal: null, stderr: "", reason: "index-html-missing" });
+    if (!existsSync(scorePath) && run.process.exit_code === 0 && !run.process.timed_out) {
+      state.status = "stopped-preregistered"; state.stop_reason = "controller-task-evaluator-produced-no-score"; stateCell.status = "stopped";
+      stateCell.evaluator_result_sha256 = sha256(readFileSync(evaluatorResultPath));
+      writeJsonAtomic(statePath, state); throw new Error(state.stop_reason);
+    }
+    const score = existsSync(scorePath) ? readJson(scorePath) : null;
+    const runDir = existsSync(join(workspace, ".omd")) ? missionRunDir(workspace) : null;
+    let verification = null;
+    if (runDir && score) {
+      const proofPath = join(runDir, "proof.json");
+      if (existsSync(proofPath) && readJson(proofPath).repair_round === attempt) {
+        verification = writeControllerVerification({ workspace, runDir, round: attempt, scorePath, evaluatorResultPath, score });
+        if (currentMissionState(runDir)?.state === "EXTERNAL_VERIFY") {
+          const advanced = spawnSync(process.execPath, [join(repoRoot, "scripts/autopilot-mission.cjs"), workspace, runDir, "advance"], {
+            cwd: repoRoot, encoding: "utf8", timeout: 30_000,
+          });
+          if (advanced.status !== 0) throw new Error(`controller verification transition failed: ${advanced.stderr || advanced.stdout}`);
+        }
+      }
+    }
+    const taskPass = score?.ui_resolved === true;
+    const autopilotProof = taskPass ? controllerAutopilotProof(plan, next, workspace) : { pass: false, reason: "objective-task-score-failed" };
+    const success = run.process.exit_code === 0 && !run.process.timed_out && dsProof.pass && autopilotProof.pass && taskPass;
+    const attemptRecord = {
+      attempt, kind: attempt === 0 ? "initial" : "bounded-repair", run, run_result_path: relative(workspace, runResultPath).split(sep).join("/"),
+      run_result_sha256: sha256(readFileSync(runResultPath)), token_usage: tokenSummary(run), design_system_proof: dsProof,
+      autopilot_proof: autopilotProof, task_score: score, evaluator, verification,
+      task_score_sha256: existsSync(scorePath) ? sha256(readFileSync(scorePath)) : null,
+      evaluator_result_sha256: sha256(readFileSync(evaluatorResultPath)), success,
+    };
+    attempts.push(attemptRecord);
+    final = attemptRecord;
+    if (success || attempt === plan.smoke_contract.autonomy_contract.repair_rounds_max
+      || run.process.exit_code !== 0 || run.process.timed_out || !runDir) break;
+    const missionState = currentMissionState(runDir);
+    const nextRepairRound = currentRepairRound(runDir);
+    if (missionState?.state !== "BOUNDED_REVISION" || nextRepairRound !== attempt + 1) break;
+    const failedIds = [...new Set([
+      ...objectiveFailureIds(score),
+      ...(missionState.evidence?.failed_requirement_ids ?? []),
+      ...(missionState.evidence?.failed_quality_check_ids ?? []),
+    ])].sort();
+    const feedback = {
+      schema_version: "0.1", controller: "autopilot-smoke-controller-v0.2", task_id: next.task_id,
+      mission_sha256: sha256(readFileSync(join(runDir, "mission.json"))),
+      repair_round: nextRepairRound, prior_attempt: attempt, failed_assertion_ids: failedIds,
+      task_score_sha256: existsSync(scorePath) ? sha256(readFileSync(scorePath)) : null,
+      evaluator_result_sha256: sha256(readFileSync(evaluatorResultPath)),
+      score: score?.score ?? null, deterministic_max: score?.deterministic_max ?? null,
+      failed_groups: Object.entries(score?.groups ?? {}).filter(([, value]) => value?.pass !== true).map(([id]) => id).sort(),
+      task_score_path: relative(workspace, scorePath).split(sep).join("/"),
+    };
+    const feedbackPath = join(workspace, ".benchmark/controller-feedback", `round-${nextRepairRound}.json`);
+    writeJsonExclusive(feedbackPath, feedback);
+    const feedbackSha = sha256(readFileSync(feedbackPath));
+    const promptPath = join(workspace, ".benchmark/repair-prompts", `repair-${nextRepairRound}.md`);
+    mkdirSync(dirname(promptPath), { recursive: true });
+    writeFileSync(promptPath, buildControllerRepairPrompt({
+      originalPrompt: readFileSync(join(workspace, ".benchmark/PROMPT.md"), "utf8"),
+      feedbackPath: relative(workspace, feedbackPath).split(sep).join("/"), feedbackSha256: feedbackSha,
+      repairRound: nextRepairRound, failedIds,
+    }), { encoding: "utf8", flag: "wx" });
   }
-  const evaluatorResultPath = join(controllerDir, "evaluator-result.json");
-  writeJsonAtomic(evaluatorResultPath, evaluator ?? { exit_code: null, signal: null, stderr: "", reason: "index-html-missing" });
-  if (!existsSync(scorePath) && run.process.exit_code === 0 && !run.process.timed_out) {
-    state.status = "stopped-preregistered"; state.stop_reason = "controller-task-evaluator-produced-no-score"; stateCell.status = "stopped";
-    stateCell.evaluator_result_sha256 = sha256(readFileSync(evaluatorResultPath));
-    writeJsonAtomic(statePath, state); throw new Error(state.stop_reason);
-  }
-  const score = existsSync(scorePath) ? readJson(scorePath) : null;
-  const taskPass = score?.ui_resolved === true;
-  const terminalSuccess = run.process.exit_code === 0 && !run.process.timed_out && dsProof.pass && autopilotProof.pass && taskPass;
+  const run = final.run; const dsProof = final.design_system_proof; const autopilotProof = final.autopilot_proof;
+  const score = final.task_score; const evaluator = final.evaluator;
+  const terminalSuccess = final.success;
   const record = {
     schema_version: "0.1", experiment_id: plan.experiment_id, cell: next,
     validity: "valid", run_status: run.process.timed_out ? "timed_out" : "complete",
     outcome: terminalSuccess ? "success" : "terminal-provider-failure",
     ui_resolved: terminalSuccess,
-    provider_process: run.process, token_usage: tokenSummary(run),
+    provider_process: run.process,
+    token_usage: {
+      coverage: attempts.every((item) => item.token_usage.coverage),
+      input_tokens: attempts.reduce((sum, item) => sum + item.token_usage.input_tokens, 0),
+      cached_input_tokens: attempts.reduce((sum, item) => sum + item.token_usage.cached_input_tokens, 0),
+      output_tokens: attempts.reduce((sum, item) => sum + item.token_usage.output_tokens, 0),
+    },
+    model_calls: attempts.length, repair_model_calls: Math.max(0, attempts.length - 1), attempts,
     runtime_authority: run.runtime.model_catalog_authority,
     design_system_proof: dsProof,
     autopilot_proof: autopilotProof,
     task_score: score,
     evaluator,
     hashes: {
-      run_result_sha256: sha256(readFileSync(runResultPath)),
-      task_score_sha256: existsSync(scorePath) ? sha256(readFileSync(scorePath)) : null,
-      evaluator_result_sha256: sha256(readFileSync(evaluatorResultPath)),
+      run_result_sha256: final.run_result_sha256,
+      task_score_sha256: final.task_score_sha256,
+      evaluator_result_sha256: final.evaluator_result_sha256,
       product_tree_sha256: treeManifest(workspace, { ignore: [".benchmark", ".agents", ".omd", "AGENTS.md", "agents", "scripts"] }).sha256,
       design_md_sha256: existsSync(join(workspace, "DESIGN.md")) ? sha256(readFileSync(join(workspace, "DESIGN.md"))) : null,
     },

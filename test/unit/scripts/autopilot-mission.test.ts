@@ -90,6 +90,28 @@ function writeFinalProof(runDir: string, repairRound: number, pass: boolean) {
   return proof;
 }
 
+function writeControllerPolicy(taskId = 'test-task') {
+  mkdirSync(join(root, '.benchmark'), { recursive: true });
+  writeFileSync(join(root, '.benchmark/controller-verification-policy.json'), JSON.stringify({
+    schema_version: '0.1', mode: 'controller-owned-objective',
+    controller: 'autopilot-smoke-controller-v0.2', task_id: taskId, repair_rounds_max: 2,
+  }));
+}
+
+function writeControllerVerification(runDir: string, round: number, status: 'pass' | 'fail', failed: string[] = []) {
+  const proof = JSON.parse(readFileSync(join(runDir, 'proof.json'), 'utf8'));
+  const output = join(runDir, 'controller-verification', `round-${round}.json`);
+  mkdirSync(join(runDir, 'controller-verification'), { recursive: true });
+  writeFileSync(output, JSON.stringify({
+    schema_version: '0.1', controller: 'autopilot-smoke-controller-v0.2', task_id: 'test-task',
+    mission_sha256: sha(readFileSync(join(runDir, 'mission.json'))),
+    proof_sha256: sha(readFileSync(join(runDir, 'proof.json'))),
+    product_tree_sha256: proof.product_tree_sha256, repair_round: round, status,
+    failed_assertion_ids: failed, task_score_sha256: sha('score'), evaluator_result_sha256: sha('evaluator'),
+  }));
+  return output;
+}
+
 afterEach(() => {
   if (root && existsSync(root)) rmSync(root, { recursive: true, force: true });
 });
@@ -182,6 +204,41 @@ describe('autopilot mission controller', () => {
     const reopen = run(runDir);
     expect(reopen.status).not.toBe(0);
     expect(reopen.stderr).toContain('autopilot mission is terminal and non-resumable: failed');
+  });
+
+  it('waits for controller evidence and keeps objective repair inside one non-terminal mission', () => {
+    root = mkdtempSync(join(tmpdir(), 'omd-autopilot-controller-loop-'));
+    const runDir = join(root, '.omd/runs/run-1');
+    mkdirSync(join(runDir, 'handoff'), { recursive: true });
+    writeControllerPolicy();
+    writeFileSync(join(runDir, 'task.md'), 'Build a complete verified surface.');
+    writeFileSync(join(root, 'index.html'), '<main>starter</main>');
+    expect(run(runDir, 'bootstrap').status).toBe(0);
+    writeFileSync(join(runDir, 'handoff/.handoff.json'), JSON.stringify({ state: 'PROPOSE_PLAN', status: 'ready' }));
+    writeCouncilAuthority(runDir);
+    writeFileSync(join(runDir, 'design-system-decision.json'), JSON.stringify({ strategy: 'surface-local-only' }));
+    expect(run(runDir).status).toBe(0);
+    writeAcceptancePlan(runDir);
+    expect(run(runDir).status).toBe(0);
+    writeFileSync(join(root, 'index.html'), '<main>built round zero</main>');
+    writeFinalProof(runDir, 0, true);
+    expect(run(runDir).status).toBe(0);
+    expect(state(runDir).state).toBe('EXTERNAL_VERIFY');
+    expect(JSON.parse(readFileSync(join(root, '.omd/autopilot-active.json'), 'utf8')).status).toBe('active');
+    writeControllerVerification(runDir, 0, 'fail', ['responsive']);
+    expect(run(runDir).status).toBe(0);
+    expect(state(runDir)).toMatchObject({ state: 'BOUNDED_REVISION', next_action: 'apply-controller-focused-repair' });
+    expect(JSON.parse(readFileSync(join(runDir, 'repairs/round-0.json'), 'utf8'))).toMatchObject({
+      authority: 'controller-objective', failed_quality_check_ids: ['responsive'],
+    });
+    writeFileSync(join(root, 'index.html'), '<main>built round one, responsive</main>');
+    writeFinalProof(runDir, 1, true);
+    expect(run(runDir).status).toBe(0);
+    expect(state(runDir).state).toBe('EXTERNAL_VERIFY');
+    writeControllerVerification(runDir, 1, 'pass');
+    expect(run(runDir).status).toBe(0);
+    expect(state(runDir).state).toBe('HANDOFF');
+    expect(run(runDir, 'audit').status).toBe(0);
   });
 
   it('allows exactly one active mission lineage and releases the project only at a terminal handoff', () => {
