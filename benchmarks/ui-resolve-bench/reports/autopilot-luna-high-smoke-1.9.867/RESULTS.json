@@ -1,0 +1,116 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "autopilot-luna-high-smoke-1.9.867",
+  "source_commit": "96006e74549ccea76753257de847b33e27f1f0a4",
+  "status": "complete",
+  "root_reusable": false,
+  "claim_eligible": false,
+  "scheduled_cells": 3,
+  "valid_terminal_cells": 3,
+  "autopilot_successes": 0,
+  "design_system_proof_passes": 3,
+  "provider_exposures": 7,
+  "retry_calls": 0,
+  "replacement_calls": 0,
+  "fallback_calls": 0,
+  "cursor_calls": 0,
+  "token_usage": {
+    "coverage_calls": 6,
+    "scheduled_calls": 7,
+    "input_tokens": 7362468,
+    "cached_input_tokens": 6744064,
+    "output_tokens": 111572,
+    "complete_block_total_claimable": false,
+    "missing_reason": "landing timeout emitted no provider usage record"
+  },
+  "provider_wall_ms": 3172851,
+  "cells": [
+    {
+      "task_id": "neighborhood-library-landing",
+      "run_status": "timed_out",
+      "validity": "valid",
+      "outcome": "terminal-provider-failure",
+      "model_calls": 1,
+      "provider_wall_ms": 900230,
+      "token_coverage": false,
+      "attempt_scores": [50],
+      "sealed_objective_score": 50,
+      "sealed_ui_resolved": false,
+      "design_system_proof": true,
+      "sealed_failed_assertions": [
+        "unique_primary_action",
+        "reservation_state",
+        "focus_transfer",
+        "accessibility"
+      ],
+      "classification": "real-product-defects-and-valid-timeout"
+    },
+    {
+      "task_id": "cold-chain-operations",
+      "run_status": "complete",
+      "validity": "valid",
+      "outcome": "terminal-provider-failure",
+      "model_calls": 3,
+      "provider_wall_ms": 1098866,
+      "token_usage": {
+        "input_tokens": 3553320,
+        "cached_input_tokens": 3298816,
+        "output_tokens": 54260
+      },
+      "attempt_scores": [20, 40, 40],
+      "sealed_objective_score": 40,
+      "sealed_ui_resolved": false,
+      "design_system_proof": true,
+      "sealed_failed_assertions": [
+        "queue_preconditions",
+        "filter_selected_and_visible",
+        "filtered_contents_exact",
+        "matching_evidence_detail",
+        "owner_error_associated",
+        "sample_owner_options",
+        "assigned_owner_confirmed_and_persistent",
+        "responsive"
+      ],
+      "in_app_diagnosis": {
+        "pointer_filter_works": true,
+        "keyboard_enter_filter_works": false,
+        "initial_records": 7,
+        "urgent_records": 5,
+        "classification": "sealed-failures-retained"
+      }
+    },
+    {
+      "task_id": "clinic-visit-prep-locales",
+      "run_status": "complete",
+      "validity": "valid",
+      "outcome": "terminal-provider-failure",
+      "model_calls": 3,
+      "provider_wall_ms": 1173755,
+      "token_usage": {
+        "input_tokens": 3809148,
+        "cached_input_tokens": 3445248,
+        "output_tokens": 57312
+      },
+      "attempt_scores": [30, 50, 60],
+      "sealed_objective_score": 60,
+      "sealed_ui_resolved": false,
+      "design_system_proof": true,
+      "sealed_failed_assertions": [
+        "progress_textual_and_persistent",
+        "translation_unavailable_honest"
+      ],
+      "provider_free_replay": {
+        "score": 60,
+        "ui_resolved": false,
+        "failed_assertions": ["progress_textual_and_persistent"],
+        "corrected_false_negative": "translation_unavailable_honest",
+        "classification": "diagnostic-only-not-substituted"
+      }
+    }
+  ],
+  "claim_boundary": {
+    "one_shot_claim": "blocked",
+    "superiority_claim": "blocked",
+    "allowed": "internal diagnostic evidence for the Luna/high autopilot repair loop"
+  }
+}

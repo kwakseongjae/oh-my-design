@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.867 exact smoke와 인앱 RCA
+- Luna/high 3-task를 7 calls로 완결했지만 UI/autopilot success0/3, DESIGN proof3/3이었다.
+- landing timeout·중복 CTA, cold-chain keyboard filter/assignment, locale progress 소실을 실제 결함으로 분리했다.
+- neutral “Translation status”를 unavailable proof로 인정해 evaluator false negative 하나만 제거했다.
+- 다음은 evidence commit 후 autopilot 시간/agent budget을 고정하고 fresh epoch로 재검증한다.
+
 ## 2026-08-12 (Codex) · 1.9.866 evaluator/closure RCA
 - Luna/high 3-task를 9 calls로 완결했지만 evaluator 구조 편향과 host-local proof authority 때문에 mission0/3이었다.
 - landing absence semantics와 cold-chain button-row discovery를 중립화하고 실제 product defect만 분리했다.

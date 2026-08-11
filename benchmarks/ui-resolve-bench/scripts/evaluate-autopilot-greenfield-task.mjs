@@ -1161,7 +1161,12 @@ async function evaluateLocale(page, viewport) {
     for (let index = 0; index < await currentChecks.count(); index += 1) await setCheckboxStateWithKeyboard(page, currentChecks.nth(index), true);
   }
   const completeEnglish = (await main.innerText()).replace(/\s+/g, ' '); await switchTo(locales[0]); await switchTo(locales[1]); const completionPreserved = hasChecklist && (await checkboxState(checks.first())) && (await checkboxState(checks.nth(1))) && /(?:complete|2 of 2)/i.test((await main.innerText()).replace(/\s+/g, ' '));
-  const langBeforeUnavailable = await page.locator('html').getAttribute('lang'); const unavailable = page.getByRole('button', { name: /unavailable translation/i });
+  const langBeforeUnavailable = await page.locator('html').getAttribute('lang');
+  // The user-facing affordance may describe the state before the state is
+  // opened ("Translation status" / "Translation availability") instead of
+  // putting the failure outcome in the control name. The proof remains the
+  // subsequently exposed alert and the unchanged document language.
+  const unavailable = page.getByRole('button', { name: /unavailable translation|translation (?:status|availability)/i });
   if (await unavailable.count() === 1 && await unavailable.isVisible()) { await unavailable.press('Enter'); await afterPaint(page); }
   const unavailableAlert = page.getByRole('alert').filter({ hasText: /translation.*unavailable/i }); const unavailableHonest = await unavailable.count() === 1 && await unavailableAlert.count() === 1 && await unavailableAlert.isVisible() && (await page.locator('html').getAttribute('lang')) === langBeforeUnavailable; await checkState();
   const unavailableDiagnostics = {

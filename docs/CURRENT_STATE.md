@@ -3,11 +3,17 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: Autopilot cold-chain evidence commit `fabfc3cf` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · 1.9.866 완결/검수, evaluator neutrality + external proof closure 수정 완료
+- 기준 소스: Autopilot portable-authority commit `96006e74` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-12 · 1.9.867 완결/인앱 검수, locale evaluator neutrality 수정 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.867은 exact Luna/high 3-task를 3/3 valid terminal로 완결했지만 UI-Resolved와 autopilot success는 0/3이다. DESIGN.md 독립 proof는 3/3 PASS다. landing은 initial 1회가 900.230s timeout, cold-chain과 locale은 initial+repair2를 사용해 총7 calls이며 retry/replacement/fallback/Cursor0이다.
+- 관측 가능한 6/7 calls의 token은 input7,362,468(cached6,744,064)+output111,572이고 총 provider wall은3,172.851s다. landing timeout은 usage를 보고하지 않아 complete-block token total은 주장하지 않는다.
+- sealed score는 landing50, cold-chain `20→40→40`, locale `30→50→60`이다. 인앱 검수에서 landing의 중복 CTA/비작동 reservation/focus와 cold-chain의 pointer-only urgent filter/assignment 결함을 실제 product miss로 확인했다.
+- locale의 “Translation status”는 honest unavailable alert를 여는 유효한 동등 표현인데 evaluator가 `/unavailable translation/`만 찾던 false negative였다. 중립 locator 보정 후 동일 bytes는 해당 assertion을 회복하지만, locale 전환 시 progress가 실제로 소실되어 점수60/UI fail은 유지된다.
+- 다음 순서: 1.9.867 report+locale neutrality commit → commit-bound 전체 회귀 → autopilot council/execution을 bounded time/lanes 계약으로 제한 → provider-zero 검증 → fresh epoch에서 3/3 재검증. public one-shot/superiority claim은 계속 BLOCK이다.
 
 - 1.9.866은 exact Luna/high 3-task smoke를 3/3 valid terminal로 완결했다. 9 model calls, input11,943,429(cached11,156,480)+output161,695, provider wall3,511.015s이며 retry/replacement/fallback/Cursor0이다. sealed root는 complete/non-reusable이며 다시 실행하지 않는다.
 - sealed 결과의 mission success는 0/3이었다. landing `30→80→80`, cold-chain `20→60→40`, locale `30→60→100`; locale objective와 DESIGN.md proof는 PASS였지만 host-local browser check가 불가능하다는 이유만으로 HANDOFF가 막힌 controller authority 결함이 있었다.
