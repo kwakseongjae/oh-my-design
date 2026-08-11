@@ -48,7 +48,7 @@
     "evaluator_sha256": "d6dc37b5d59e9b7ae7a5386553fd0150562499fbc57d6c1fe7188d4e9e79b593",
     "starter_path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/blank-shell/index.html",
     "starter_sha256": "a9b82fcdf3efa04783d3be61544f84b0a4f3209f0fc5f6ac741ec853d03871b3",
-    "portable_bundle_sha256": "1202d6d1ced5fb6e1dbc03e74b1928a9c6a274587177aa95f0ff2898e3e0e4db",
+    "portable_bundle_sha256": "a49a859c5c973a7a72999669c12e43206fb2b35ba0600d1d6241af9e5700a08e",
     "portable_bundle_files": [
       { "path": "skills/omd-autopilot/SKILL.md", "sha256": "0cff89be46231f68c7ed207734c608809b4c7cce6d4907df7116dd9b9791ba7a", "bytes": 8727 },
       { "path": "skills/omd-autopilot/references/design-system-contract.md", "sha256": "10bad9dcc2a5bef0624d9a092a444654bfc26961b1cab409d90a57182550095b", "bytes": 1941 },
@@ -56,7 +56,7 @@
       { "path": "agents/omd-ux-engineer.md", "sha256": "fd0a48c9441f634d6f9623fa59038cb32ca71ed845dddb1e0e110a4cd7374043", "bytes": 13030 },
       { "path": "agents/omd-ux-researcher.md", "sha256": "020f11abb53f57ab4a6a68b84bac27ed7e2e5c0c7ff6c119f44be99b40be6ef7", "bytes": 2620 },
       { "path": "agents/omd-ux-writer.md", "sha256": "c6350e6d465d1cc64db45b05c790b08cd5e830b4f0d2a1fa78c9497ac4702ce8", "bytes": 9329 },
-      { "path": "scripts/autopilot-mission.cjs", "sha256": "300f203fed6b29b1ecbb417e799efcdbb5e47784d2598418d650c8637f55d02f", "bytes": 29480 },
+      { "path": "scripts/autopilot-mission.cjs", "sha256": "1f518052fc719f3aa84da7f049d9cf0e4c0de56010d0fa8eb04fa5b0caf72200", "bytes": 30330 },
       { "path": "scripts/autopilot-council-plan.cjs", "sha256": "3c5fad818093cfcf2fdf94c0a994d4fb60b70ef828ccea409dc2da71cc8a2dc0", "bytes": 3966 },
       { "path": "scripts/autopilot-council-reconcile.cjs", "sha256": "22ddf6d3f8656657ea0a2a404beaf59bc88bf43a4e94cebf6d58d42b710e8b1c", "bytes": 2612 },
       { "path": "scripts/design-council-prime.cjs", "sha256": "7332c2461fefb8619d41ad7fbf38dcf5a8278401e9fe1ae80a9a7ca620fc255c", "bytes": 31263 },
