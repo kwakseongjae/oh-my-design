@@ -17,6 +17,7 @@
 - 최대2회 자율 수정은 같은 mission의 exclusive `repairs/round-<n>.json` chain으로만 진행된다. stale proof 재사용, round 건너뛰기, 같은 product tree의 표면적 proof 교체, 새 mission 회피를 모두 거부한다. provider-zero clean-dir가 질문0·lineage1·DESIGN proof·acceptance·의도적 accessibility failure·round0 receipt·focused repair·HANDOFF를 완주했다.
 - smoke success도 terminal mission `audit` PASS를 필수로 한다. exactly-one lineage, exact prompt retention, answer artifact 0, council question 0, immutable portable bundle, acceptance/admission/schema0.2 proof/repair/HANDOFF hash chain 중 하나라도 어긋나면 UI가 좋아도 terminal provider failure다. `.benchmark` controller runtime bytes는 product tree에서 제외하지만 실제 product drift는 audit가 거부한다.
 - 1.9.856은 plan/prepare/audit provider-zero PASS 뒤 terminal verifier integration으로 source bytes가 바뀌어 실행 전에 폐기됐다(provider/model/browser 0). stale plan/root 재사용은 금지하며 fresh epoch는 1.9.857이다.
+- fresh 1.9.857은 commit `6db8a26b` 기준 plan/prepare/audit PASS, 3개 workspace untouched, provider/model/Cursor 0이다. in-app browser runtime 목록이 비어 있어 browser admission만 pending이며 다른 브라우저로 대체하지 않았다.
 
 - order2 cold-chain은 DESIGN.md proof PASS 후 20/100·UI-Resolved=false로 유효 종료됐다. evidence honesty/runtime은 PASS, task/queue/filter/detail/owner journey와 responsive/a11y는 FAIL이다. input 1,329,982(cached 1,235,456)+output 25,043, wall 497.649s이며 evaluator crash 없이 마지막 locale 셀로 진행한다.
 
@@ -3893,14 +3894,14 @@
 ## 다음 (즉시 착수 가능)
 
 1. terminal mission audit/smoke binding 관련 파일만 clean commit한다. 사용자 소유 `web/public/llms-full.txt`는 접근·수정·stage하지 않는다.
-2. commit-bound smoke-controller source-authority tests와 full provider-free suite를 재실행하고 fresh 1.9.857 provider-zero plan/prepare/audit readiness를 확인한다.
+2. in-app browser 탭이 생기면 `about:blank` identity를 1.9.857 plan에 봉인하고 untouched audit를 재실행한다.
 3. named in-app browser와 exact Luna/high runtime admission이 모두 green일 때만 1.9.857을 셀당 1회·retry0으로 실행한다.
 4. 실패는 그대로 분모에 유지하고, 3/3 UI-Resolved+DESIGN/acceptance/proof/lineage gate를 통과한 경우에만 12-task×5 competitor qualification을 준비한다.
 5. superiority/public one-shot claim은 12×5·Luna/Terra/Sol transfer·blind-review 전까지 금지한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
-- terminal verifier integration까지 provider/model/browser 실행은 없었다. fresh 1.9.857은 commit-bound source authority와 named-browser/runtime admission 전까지 계속 금지다.
+- terminal verifier integration과 1.9.857 prepare까지 provider/model/browser 실행은 없었다. named in-app browser가 현재 unavailable이므로 browser receipt와 Luna 실행은 계속 금지다.
 - 1.9.712 structured-CSS transfer lane은 같은 packet-completeness 클래스가 tested repair 뒤 재발해 hard pause다. 같은 polar task 또는 replacement/fresh-task provider 실행은 명시적 scope 결정 전 금지한다.
 - 1.9.675 local UI repair lane에는 막힘 없음. 모델 귀속이 없는 current-session 결과이므로 public Model/Skill Track 승격만 금지다.
 - 1.9.676 epoch impact lane에는 막힘 없음. historical artifacts는 immutable이며 cross-epoch aggregation만 금지다.

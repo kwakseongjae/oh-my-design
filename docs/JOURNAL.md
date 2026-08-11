@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-11 (Codex) · Fresh 1.9.857 provider-zero ready
+- commit-bound focused18와 full 1042 pass/58 skip, lint/build/diff green 뒤 fresh plan/prepare/audit를 완료했다.
+- Luna/high 3셀·retry0 root는 untouched이며 provider/model/Cursor 호출은 0이다.
+- in-app browser runtime 목록이 비어 browser admission만 pending; 다른 브라우저/receipt 대체는 하지 않았다.
+- 다음은 사용자가 in-app browser를 열면 identity 봉인→재감사→셀당1회 실행이다.
+
 ## 2026-08-11 (Codex) · Terminal verifier integration / 1.9.856 zero-provider 폐기
 - clean-dir HANDOFF audit PASS와 fabricated answer artifact FAIL을 smoke verifier integration test로 고정했다.
 - 이 source change 전 생성한 1.9.856은 provider/model/browser 0 상태로 폐기하고 fresh 1.9.857로 올렸다.
