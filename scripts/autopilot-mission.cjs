@@ -30,7 +30,7 @@ function readJson(file) {
 
 function ignored(relative) {
   const first = relative.split('/')[0];
-  return ['.git', '.omd', 'node_modules', 'dist', 'coverage'].includes(first);
+  return ['.git', '.omd', '.benchmark', 'node_modules', 'dist', 'coverage'].includes(first);
 }
 
 function treeManifest(root) {
@@ -278,6 +278,57 @@ if (command === 'bootstrap') {
   writeJsonAtomic(missionPath, mission, true);
   writeMissionMarker('active');
   emit('AUTHORITY_GATE', 'run-design-council-prime');
+  process.exit(0);
+}
+
+if (command === 'audit') {
+  if (!fs.existsSync(missionPath)) throw new Error('mission is missing; bootstrap first');
+  if (!fs.existsSync(activeMissionPath)) throw new Error('active autopilot mission marker is missing');
+  const mission = readJson(missionPath);
+  const marker = readJson(activeMissionPath);
+  if (marker.workflow !== 'omd-autopilot-v2'
+    || marker.run_dir !== relativeRunDir()
+    || marker.mission_sha256 !== sha256File(missionPath)
+    || marker.status !== 'completed') {
+    throw new Error('completed autopilot mission marker authority drift');
+  }
+  const decisionPath = path.join(runDir, 'design-system-decision.json');
+  const finalProofPath = path.join(runDir, 'proof.json');
+  for (const required of [statePath, decisionPath, acceptancePath, admissionPath, finalProofPath]) {
+    if (!fs.existsSync(required)) throw new Error(`completed autopilot mission artifact missing: ${path.basename(required)}`);
+  }
+  const decisionSha = sha256File(decisionPath);
+  const acceptance = validateAcceptancePlan(readJson(acceptancePath), mission, decisionSha);
+  const acceptanceSha = sha256File(acceptancePath);
+  const admission = readJson(admissionPath);
+  if (admission.schema_version !== '0.1' || admission.status !== 'admitted'
+    || admission.mission_sha256 !== sha256File(missionPath)
+    || admission.design_system_decision_sha256 !== decisionSha
+    || admission.acceptance_plan_sha256 !== acceptanceSha
+    || admission.implementation_owner !== 'main-agent') {
+    throw new Error('completed product-build admission authority drift');
+  }
+  const admissionSha = sha256File(admissionPath);
+  const repairChain = readRepairChain(mission, acceptanceSha, admissionSha);
+  const finalProof = validateFinalProof(readJson(finalProofPath), acceptance, treeManifest(cwd));
+  if (finalProof.pass !== true || finalProof.repair_round !== repairChain.length) {
+    throw new Error('completed final proof or repair chain drift');
+  }
+  const finalState = readJson(statePath);
+  if (finalState.state !== 'HANDOFF'
+    || finalState.mission_sha256 !== sha256File(missionPath)
+    || finalState.evidence?.proof_sha256 !== sha256File(finalProofPath)
+    || finalState.evidence?.acceptance_plan_sha256 !== acceptanceSha
+    || finalState.evidence?.repair_rounds_used !== repairChain.length) {
+    throw new Error('completed handoff state authority drift');
+  }
+  process.stdout.write(`${JSON.stringify({
+    schema_version: '0.1', pass: true, workflow: mission.workflow,
+    run_dir: relativeRunDir(), mission_sha256: sha256File(missionPath),
+    acceptance_plan_sha256: acceptanceSha, product_build_admission_sha256: admissionSha,
+    final_proof_sha256: sha256File(finalProofPath), product_tree_sha256: finalProof.product_tree_sha256,
+    route: acceptance.route, repair_rounds_used: repairChain.length, state: finalState.state,
+  }, null, 2)}\n`);
   process.exit(0);
 }
 

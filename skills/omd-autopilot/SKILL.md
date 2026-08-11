@@ -22,7 +22,9 @@ folders and must never edit `DESIGN.md` or product files.
 
 1. `DETECT` — inspect the repository, real consumer route, stack, existing
    `DESIGN.md`, preferences, components, states, assets and protected behavior.
-   Create the run-scoped `task.md`, then run
+   Create the run-scoped `task.md` while retaining the exact user-prompt bytes
+   verbatim (extra clearly labelled code observations may follow, but may never
+   be presented as user authority), then run
    `autopilot-mission.cjs <project-root> <run-dir> bootstrap`. This freezes the
    initial product tree and mission budgets before any product write.
 2. `AUTHORITY_GATE` — run `scripts/design-council-prime.cjs` in the run scope.

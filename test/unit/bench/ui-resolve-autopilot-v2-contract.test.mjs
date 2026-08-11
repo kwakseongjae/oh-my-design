@@ -112,7 +112,7 @@ describe('OmD Autopilot 2.0 qualification contract', () => {
   it('locks a provider-zero Luna/high smoke before any model execution', () => {
     expect(smoke).toMatchObject({
       schema_version: '0.1',
-      experiment_id: 'autopilot-luna-high-smoke-1.9.855',
+      experiment_id: 'autopilot-luna-high-smoke-1.9.856',
       track: 'portable-autopilot-skill',
       status: 'provider-zero-preregistration-template',
       provider_execution_allowed: false,
@@ -194,5 +194,9 @@ describe('OmD Autopilot 2.0 qualification contract', () => {
       design_system_proof_pass_required: 3,
       public_claim_allowed: false,
     });
+    const controller = readFileSync(resolve(repoRoot, 'benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs'), 'utf8');
+    expect(controller).toContain('const autopilotProof = controllerAutopilotProof(plan, next, workspace)');
+    expect(controller).toContain('&& dsProof.pass && autopilotProof.pass && taskPass');
+    expect(controller).toContain('autopilot_proof: autopilotProof');
   });
 });

@@ -38,7 +38,7 @@ function productTree(rootDir: string) {
     for (const entry of readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
       const absolute = join(dir, entry.name);
       const relative = absolute.slice(rootDir.length + 1).split('\\').join('/');
-      if (['.git', '.omd', 'node_modules', 'dist', 'coverage'].includes(relative.split('/')[0])) continue;
+      if (['.git', '.omd', '.benchmark', 'node_modules', 'dist', 'coverage'].includes(relative.split('/')[0])) continue;
       const stat = lstatSync(absolute);
       if (stat.isSymbolicLink()) files.push({ path: relative, mode: 'symlink', sha256: sha(readlinkSync(absolute)) });
       else if (entry.isDirectory()) visit(absolute);
@@ -210,6 +210,14 @@ describe('autopilot mission controller', () => {
     expect(run(first).status).toBe(0);
     expect(state(first).state).toBe('HANDOFF');
     expect(JSON.parse(readFileSync(join(root, '.omd/autopilot-active.json'), 'utf8')).status).toBe('completed');
+    mkdirSync(join(root, '.benchmark'), { recursive: true });
+    writeFileSync(join(root, '.benchmark/run-result.json'), '{"controller":"runtime-only"}');
+    const audit = run(first, 'audit');
+    expect(audit.status).toBe(0);
+    expect(JSON.parse(audit.stdout)).toMatchObject({ pass: true, state: 'HANDOFF', repair_rounds_used: 0 });
+    writeFileSync(join(root, 'index.html'), '<main>tampered after handoff</main>');
+    expect(run(first, 'audit').status).not.toBe(0);
+    writeFileSync(join(root, 'index.html'), '<main>built</main>');
     expect(run(second, 'bootstrap').status).toBe(0);
   });
 

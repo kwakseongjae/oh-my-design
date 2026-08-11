@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-11 (Codex) · Autopilot terminal audit → smoke success binding
+- completed mission을 acceptance/admission/schema0.2 proof/repair/HANDOFF/current product tree로 재검증하는 read-only audit를 추가했다.
+- smoke success는 lineage1·exact prompt·questions0·answers0·portable bundle exact·mission audit PASS를 모두 요구한다.
+- focused 14/14, lint, diff-check green; 다음은 clean commit 후 source-authority/full suite와 fresh 1.9.856 provider-zero 준비다.
+- 사용자 소유 `web/public/llms-full.txt`는 계속 제외했다.
+
 ## 2026-08-11 (Codex) · Autopilot acceptance/proof/repair chain
 - task quote·route·states·4 viewport·10 checks를 잠근 acceptance plan 없이는 product build가 열리지 않는다.
 - atomic proof pass를 controller가 재계산하고 stale proof·same-tree repair·round skip을 fail-close한다.

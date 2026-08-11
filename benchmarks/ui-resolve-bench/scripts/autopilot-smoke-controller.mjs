@@ -334,6 +334,55 @@ function controllerDesignSystemProof(root, cell, workspace) {
     source_run_relative: relative(workspace, sourceRun).split(sep).join("/"),
   };
 }
+function controllerAutopilotProof(plan, cell, workspace) {
+  try {
+    for (const item of plan.smoke_contract.authorities.portable_bundle_files) {
+      const installed = join(workspace, installedPath(item.path));
+      assertRegular(installed, `installed portable authority ${item.path}`);
+      const bytes = readFileSync(installed);
+      if (bytes.length !== item.bytes || sha256(bytes) !== item.sha256) {
+        throw new Error(`installed portable authority drift: ${item.path}`);
+      }
+    }
+    const omdRoot = join(workspace, ".omd");
+    if (!existsSync(omdRoot)) throw new Error("autopilot artifact root is missing");
+    const missions = walkFor(omdRoot, "mission.json");
+    if (missions.length !== 1) throw new Error(`exactly one mission lineage required; observed ${missions.length}`);
+    const runDir = dirname(missions[0]);
+    const taskPath = join(runDir, "task.md");
+    assertRegular(taskPath, "autopilot task authority");
+    const prompt = readFileSync(join(workspace, ".benchmark/PROMPT.md"), "utf8");
+    const task = readFileSync(taskPath, "utf8");
+    if (!task.includes(prompt)) throw new Error("autopilot task does not retain exact prompt bytes");
+    const answerArtifacts = readdirSync(runDir, { recursive: true })
+      .map(String).filter((path) => path.endsWith("council-intake.answers.json"));
+    if (answerArtifacts.length) throw new Error(`fully authorized smoke forbids answer artifacts; observed ${answerArtifacts.length}`);
+    const questionArtifacts = readdirSync(runDir, { recursive: true })
+      .map(String).filter((path) => path.endsWith("council-intake.questions.json"));
+    for (const relativePath of questionArtifacts) {
+      const value = readJson(join(runDir, relativePath));
+      if (!Array.isArray(value.questions) || value.questions.length !== 0) {
+        throw new Error(`fully authorized smoke requires zero council questions: ${relativePath}`);
+      }
+    }
+    const audited = spawnSync(process.execPath, [join(repoRoot, "scripts/autopilot-mission.cjs"), workspace, runDir, "audit"], {
+      cwd: repoRoot, encoding: "utf8", timeout: 30_000,
+    });
+    if (audited.status !== 0) throw new Error(`terminal mission audit failed: ${audited.stderr || audited.stdout}`);
+    const proof = JSON.parse(audited.stdout);
+    if (proof.pass !== true || proof.state !== "HANDOFF") throw new Error("terminal mission audit did not pass");
+    return {
+      pass: true, reason: null, mission_lineages: 1, question_batches: 0,
+      answer_artifacts: 0, question_artifacts: questionArtifacts.length,
+      run_dir_relative: relative(workspace, runDir).split(sep).join("/"), proof,
+    };
+  } catch (error) {
+    return {
+      pass: false, reason: error instanceof Error ? error.message : String(error),
+      mission_lineages: null,
+    };
+  }
+}
 function tokenSummary(run) {
   const usage = run?.output?.model_usage ?? [];
   return {
@@ -371,6 +420,7 @@ function runCommand(args) {
   const run = readJson(runResultPath);
   const controllerDir = join(root, ".controller-artifacts", next.id); mkdirSync(controllerDir, { recursive: true });
   const dsProof = controllerDesignSystemProof(root, next, workspace);
+  const autopilotProof = controllerAutopilotProof(plan, next, workspace);
   const scorePath = join(controllerDir, "task-score.json");
   let evaluator = null;
   if (existsSync(join(workspace, "index.html"))) {
@@ -388,7 +438,7 @@ function runCommand(args) {
   }
   const score = existsSync(scorePath) ? readJson(scorePath) : null;
   const taskPass = score?.ui_resolved === true;
-  const terminalSuccess = run.process.exit_code === 0 && !run.process.timed_out && dsProof.pass && taskPass;
+  const terminalSuccess = run.process.exit_code === 0 && !run.process.timed_out && dsProof.pass && autopilotProof.pass && taskPass;
   const record = {
     schema_version: "0.1", experiment_id: plan.experiment_id, cell: next,
     validity: "valid", run_status: run.process.timed_out ? "timed_out" : "complete",
@@ -397,6 +447,7 @@ function runCommand(args) {
     provider_process: run.process, token_usage: tokenSummary(run),
     runtime_authority: run.runtime.model_catalog_authority,
     design_system_proof: dsProof,
+    autopilot_proof: autopilotProof,
     task_score: score,
     evaluator,
     hashes: {

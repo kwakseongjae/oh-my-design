@@ -15,6 +15,7 @@
 - `.omd/autopilot-active.json`이 프로젝트당 active mission을 1개로 제한한다. HANDOFF/FAILED_HANDOFF는 completed/failed terminal이 되어 non-resumable이며, 새 run은 이전 marker가 정직한 terminal일 때만 시작한다.
 - 2.0 acceptance/proof hardening을 재개해 controller state flow에 연결했다. exact task quote·route·states·4 viewport·10 quality check가 잠긴 `acceptance-plan.json` 없이는 product admission이 발급되지 않는다. schema0.2 proof는 mission/acceptance/admission/current product tree와 atomic requirement/check evidence를 모두 묶고 controller가 pass를 재계산한다.
 - 최대2회 자율 수정은 같은 mission의 exclusive `repairs/round-<n>.json` chain으로만 진행된다. stale proof 재사용, round 건너뛰기, 같은 product tree의 표면적 proof 교체, 새 mission 회피를 모두 거부한다. provider-zero clean-dir가 질문0·lineage1·DESIGN proof·acceptance·의도적 accessibility failure·round0 receipt·focused repair·HANDOFF를 완주했다.
+- smoke success도 terminal mission `audit` PASS를 필수로 한다. exactly-one lineage, exact prompt retention, answer artifact 0, council question 0, immutable portable bundle, acceptance/admission/schema0.2 proof/repair/HANDOFF hash chain 중 하나라도 어긋나면 UI가 좋아도 terminal provider failure다. `.benchmark` controller runtime bytes는 product tree에서 제외하지만 실제 product drift는 audit가 거부한다.
 
 - order2 cold-chain은 DESIGN.md proof PASS 후 20/100·UI-Resolved=false로 유효 종료됐다. evidence honesty/runtime은 PASS, task/queue/filter/detail/owner journey와 responsive/a11y는 FAIL이다. input 1,329,982(cached 1,235,456)+output 25,043, wall 497.649s이며 evaluator crash 없이 마지막 locale 셀로 진행한다.
 
@@ -3890,8 +3891,8 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. acceptance/proof hardening 관련 파일만 clean commit한다. 사용자 소유 `web/public/llms-full.txt`는 접근·수정·stage하지 않는다.
-2. commit-bound smoke-controller source-authority 3 tests를 재실행하고 fresh 1.9.856 provider-zero plan/prepare/audit readiness를 확인한다.
+1. terminal mission audit/smoke binding 관련 파일만 clean commit한다. 사용자 소유 `web/public/llms-full.txt`는 접근·수정·stage하지 않는다.
+2. commit-bound smoke-controller source-authority tests와 full provider-free suite를 재실행하고 fresh 1.9.856 provider-zero plan/prepare/audit readiness를 확인한다.
 3. named in-app browser와 exact Luna/high runtime admission이 모두 green일 때만 1.9.856을 셀당 1회·retry0으로 실행한다.
 4. 실패는 그대로 분모에 유지하고, 3/3 UI-Resolved+DESIGN/acceptance/proof/lineage gate를 통과한 경우에만 12-task×5 competitor qualification을 준비한다.
 5. superiority/public one-shot claim은 12×5·Luna/Terra/Sol transfer·blind-review 전까지 금지한다.
