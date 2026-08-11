@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: task baseline commit `6acf2876`, repaired skill/evaluator commit `f1b5e219` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-11 · 2.0 controller-owned closed repair loop 구현·회귀 완료; fresh 1.9.858 authority 발급 직전
+- 갱신: 2026-08-11 · 1.9.858 첫 노출 후 controller tree-authority mismatch로 영구 동결; fresh epoch 수정 중
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.858은 provider-zero plan/prepare/audit와 named in-app browser admission을 통과했으나 landing Luna/high 1회 뒤 controller receipt 단계에서 동결됐다. 모델 호출은 exit0·647.162s·input2,340,317(cached2,246,912)+output31,133, objective70/100이며 repair call은0이다.
+- 원인은 mission proof가 설치된 `.agents`/`agents`/`scripts`/`AGENTS.md`까지 포함한 exact product tree를 사용한 반면 smoke controller가 그 runtime asset을 제외한 별도 tree를 재계산한 authority mismatch다. 모델/UI 실패가 아니라 controller 검증 결함이며 valid terminal cell은0/3이다.
+- 1.9.858은 `stopped-preregistered`로 봉인했고 재사용하지 않는다. controller는 mission과 byte-identical path/mode/hash 알고리즘을 쓰며, provider 시작 뒤 발생한 controller exception은 root를 자동 영구 동결하도록 수정했다. commit-bound 회귀 뒤 fresh epoch만 발급한다.
 
 - 1.9.857은 named in-app browser identity를 plan에 봉인한 뒤 Luna/high 3셀을 retry/replacement/fallback 없이 순차 완결했다. 3/3 valid terminal, DESIGN.md proof 3/3이지만 UI-Resolved 0/3, Autopilot terminal proof 1/3이다. 점수는 landing30, cold-chain20, locale10이다.
 - 관측 합계는 wall 1,975.958s, input+output 7,276,794(cached input 6,776,064)이다. plan SHA `a61bfe7c…013c0`, execution-state SHA `34c659ee…4654`, exact 결과는 `reports/autopilot-luna-high-smoke-1.9.857/RESULTS.json`에 봉인했다.

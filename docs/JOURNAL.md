@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-11 (Codex) · 1.9.858 authority mismatch frozen
+- landing Luna/high 1회가 70/100을 냈지만 controller tree hash 불일치로 terminal record 전 동결됐다.
+- 원인은 mission은 설치 runtime asset을 포함하고 controller는 제외한 서로 다른 tree 계약이었다.
+- root를 stopped-preregistered로 봉인하고 exact mission tree 재계산+post-start exception freeze를 추가했다.
+- 다음은 commit-bound 회귀 후 fresh epoch이며 1.9.858 재사용·retry·분모 포함은 금지다.
+
 ## 2026-08-11 (Codex) · Closed-loop source validation complete
 - `20e56d62`의 external verification→same-mission repair1/2 계약을 전체 회귀로 닫았다.
 - full 1,104 중 1,103 즉시 PASS, 병렬 5초 timeout 1건은 단독 PASS; lint/build/diff도 green이다.

@@ -6,6 +6,8 @@ import { afterEach, describe, expect, test } from "vitest";
 import {
   buildControllerRepairPrompt,
   controllerAutopilotProof,
+  freezeRunningRootAfterControllerFailure,
+  missionProductTreeManifest,
   objectiveFailureIds,
 } from "../../../benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs";
 
@@ -16,6 +18,25 @@ const temp = () => { const value = mkdtempSync(join(tmpdir(), "omd-autopilot-smo
 afterEach(() => { while (roots.length) rmSync(roots.pop(), { recursive: true, force: true }); });
 
 describe("autopilot Luna/high smoke controller", () => {
+  test("recomputes the exact mission product-tree authority with installed runtime assets", () => {
+    const workspace = temp();
+    const runDir = join(workspace, ".omd/runs/tree-authority");
+    mkdirSync(runDir, { recursive: true });
+    mkdirSync(join(workspace, ".agents/skills/omd-autopilot"), { recursive: true });
+    mkdirSync(join(workspace, "scripts"), { recursive: true });
+    writeFileSync(join(runDir, "task.md"), "Build the product.\n");
+    writeFileSync(join(workspace, "index.html"), "<!doctype html><title>Product</title>\n");
+    writeFileSync(join(workspace, "DESIGN.md"), "# Project system\n");
+    writeFileSync(join(workspace, ".agents/skills/omd-autopilot/SKILL.md"), "runtime asset\n");
+    writeFileSync(join(workspace, "scripts/autopilot-mission.cjs"), "runtime helper\n");
+    execFileSync(process.execPath, [join(repo, "scripts/autopilot-mission.cjs"), workspace, runDir, "bootstrap"], { cwd: repo });
+    const mission = JSON.parse(readFileSync(join(runDir, "mission.json"), "utf8"));
+    expect(missionProductTreeManifest(workspace)).toEqual({
+      files: mission.initial_product_tree,
+      sha256: mission.initial_product_tree_sha256,
+    });
+  });
+
   test("builds a bounded same-mission repair prompt from objective failures", () => {
     const failed = objectiveFailureIds({ assertions: { accessibility: false, runtime_clean: true, responsive: false } });
     expect(failed).toEqual(["accessibility", "responsive"]);
@@ -27,6 +48,24 @@ describe("autopilot Luna/high smoke controller", () => {
     expect(prompt).toContain("accessibility, responsive");
     expect(prompt).toContain("do not ask the user");
     expect(prompt).toContain("Do not bootstrap a new mission");
+  });
+  test("permanently freezes an exposed running root after a controller failure", () => {
+    const root = temp();
+    writeFileSync(join(root, "execution-state.json"), `${JSON.stringify({
+      status: "running", current_cell: "cell-1", completed_cells: 0,
+      cells: [{ id: "cell-1", status: "running" }, { id: "cell-2", status: "prepared" }],
+    }, null, 2)}\n`);
+    freezeRunningRootAfterControllerFailure(root, new Error("controller authority drift"));
+    const state = JSON.parse(readFileSync(join(root, "execution-state.json"), "utf8"));
+    expect(state).toMatchObject({
+      status: "stopped-preregistered", current_cell: "cell-1",
+      stop_reason: "controller-failure-after-cell-start",
+      controller_error: "controller authority drift",
+    });
+    expect(state.cells).toEqual([
+      expect.objectContaining({ id: "cell-1", status: "stopped", stop_reason: "controller-failure-after-cell-start" }),
+      { id: "cell-2", status: "prepared" },
+    ]);
   });
   test("creates a hash-bound provider-zero plan and three oracle-free workspaces", () => {
     const base = temp(); const report = join(base, "report"); const root = join(base, "root");

@@ -8,6 +8,7 @@ import {
   lstatSync,
   mkdirSync,
   readFileSync,
+  readlinkSync,
   readdirSync,
   renameSync,
   statSync,
@@ -40,6 +41,24 @@ function canonical(value) {
     return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonical(value[key])}`).join(",")}}`;
   }
   return JSON.stringify(value);
+}
+const MISSION_PRODUCT_TREE_IGNORES = new Set([".git", ".omd", ".benchmark", "node_modules", "dist", "coverage"]);
+export function missionProductTreeManifest(root) {
+  const files = [];
+  function visit(dir) {
+    for (const entry of readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+      const absolute = join(dir, entry.name);
+      const rel = relative(root, absolute).split(sep).join("/");
+      if (MISSION_PRODUCT_TREE_IGNORES.has(rel.split("/")[0])) continue;
+      const info = lstatSync(absolute);
+      if (info.isSymbolicLink()) {
+        files.push({ path: rel, mode: "symlink", sha256: sha256(readlinkSync(absolute)) });
+      } else if (entry.isDirectory()) visit(absolute);
+      else if (entry.isFile()) files.push({ path: rel, mode: (info.mode & 0o111) ? "100755" : "100644", sha256: sha256(readFileSync(absolute)) });
+    }
+  }
+  visit(root);
+  return { files, sha256: sha256(JSON.stringify(files)) };
 }
 function readJson(path) { return JSON.parse(readFileSync(path, "utf8")); }
 function writeJsonExclusive(path, value) {
@@ -440,7 +459,7 @@ function writeControllerVerification({ workspace, runDir, round, scorePath, eval
     task_id: score?.task_id ?? readJson(join(workspace, ".benchmark/matrix-cell.json")).task_id,
     mission_sha256: sha256(readFileSync(join(runDir, "mission.json"))),
     proof_sha256: sha256(readFileSync(proofPath)),
-    product_tree_sha256: treeManifest(workspace, { ignore: [".benchmark", ".agents", ".omd", "AGENTS.md", "agents", "scripts"] }).sha256,
+    product_tree_sha256: missionProductTreeManifest(workspace).sha256,
     repair_round: round,
     status: score?.ui_resolved === true ? "pass" : "fail",
     failed_assertion_ids: failedIds,
@@ -587,7 +606,7 @@ function runCommand(args) {
       run_result_sha256: final.run_result_sha256,
       task_score_sha256: final.task_score_sha256,
       evaluator_result_sha256: final.evaluator_result_sha256,
-      product_tree_sha256: treeManifest(workspace, { ignore: [".benchmark", ".agents", ".omd", "AGENTS.md", "agents", "scripts"] }).sha256,
+      product_tree_sha256: missionProductTreeManifest(workspace).sha256,
       design_md_sha256: existsSync(join(workspace, "DESIGN.md")) ? sha256(readFileSync(join(workspace, "DESIGN.md"))) : null,
     },
     finished_at: new Date().toISOString(),
@@ -603,6 +622,24 @@ function runCommand(args) {
   console.log(JSON.stringify({ state: state.status, checkpoint: state.last_checkpoint, record }, null, 2));
 }
 
+export function freezeRunningRootAfterControllerFailure(root, error) {
+  const statePath = join(root, "execution-state.json");
+  if (!existsSync(statePath)) return;
+  const state = readJson(statePath);
+  if (state.status !== "running" || !state.current_cell) return;
+  const cell = state.cells.find((item) => item.id === state.current_cell);
+  if (cell) {
+    cell.status = "stopped";
+    cell.finished_at = new Date().toISOString();
+    cell.stop_reason = "controller-failure-after-cell-start";
+  }
+  state.status = "stopped-preregistered";
+  state.stopped_at = new Date().toISOString();
+  state.stop_reason = "controller-failure-after-cell-start";
+  state.controller_error = String(error?.message ?? error);
+  writeJsonAtomic(statePath, state);
+}
+
 if (resolve(process.argv[1] ?? "") === fileURLToPath(import.meta.url)) {
   const command = process.argv[2];
   const args = parseArgs(process.argv.slice(3));
@@ -610,7 +647,13 @@ if (resolve(process.argv[1] ?? "") === fileURLToPath(import.meta.url)) {
   else if (command === "prepare") prepareCommand(args);
   else if (command === "audit") auditCommand(args);
   else if (command === "admit-browser") admitBrowserCommand(args);
-  else if (command === "run") runCommand(args);
+  else if (command === "run") {
+    try { runCommand(args); }
+    catch (error) {
+      freezeRunningRootAfterControllerFailure(resolve(String(args.get("root") ?? "")), error);
+      throw error;
+    }
+  }
   else {
     console.error("usage: autopilot-smoke-controller.mjs plan|prepare|audit|admit-browser|run ...");
     process.exitCode = 2;
