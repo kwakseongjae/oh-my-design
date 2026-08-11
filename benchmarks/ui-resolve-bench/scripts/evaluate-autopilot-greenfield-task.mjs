@@ -385,10 +385,80 @@ async function axeSeriousCritical(page) {
   return page.evaluate(async () => {
     const result = await globalThis.axe.run(document, { resultTypes: ['violations'] });
     const violations = result.violations.filter((item) => ['serious', 'critical'].includes(item.impact));
+    const compactCheck = (check) => ({
+      id: check.id || null,
+      message: String(check.message || '').replace(/\s+/g, ' ').trim().slice(0, 300),
+      data: check.data == null ? null : JSON.stringify(check.data).slice(0, 500),
+    });
+    const computedStyleFor = (target) => {
+      const selector = Array.isArray(target) ? target[0] : target;
+      if (typeof selector !== 'string') return null;
+      try {
+        const element = document.querySelector(selector);
+        if (!element) return null;
+        const style = getComputedStyle(element);
+        return {
+          color: style.color,
+          background_color: style.backgroundColor,
+          font_size: style.fontSize,
+          font_weight: style.fontWeight,
+          opacity: style.opacity,
+        };
+      } catch { return null; }
+    };
     return {
       count: violations.reduce((sum, item) => sum + item.nodes.length, 0),
-      violations: violations.map((item) => ({ id: item.id, impact: item.impact, targets: item.nodes.map((node) => node.target) })),
+      violations: violations.map((item) => ({
+        id: item.id,
+        impact: item.impact,
+        description: String(item.description || '').replace(/\s+/g, ' ').trim().slice(0, 300),
+        nodes: item.nodes.slice(0, 8).map((node) => ({
+          target: node.target,
+          failure_summary: String(node.failureSummary || '').replace(/\s+/g, ' ').trim().slice(0, 500),
+          checks: [...(node.any || []), ...(node.all || []), ...(node.none || [])].slice(0, 8).map(compactCheck),
+          computed_style: computedStyleFor(node.target),
+        })),
+        // Keep the historical compact field for existing report consumers.
+        targets: item.nodes.map((node) => node.target),
+      })),
     };
+  });
+}
+
+async function documentOverflowObservation(page) {
+  return page.evaluate(() => {
+    const viewportWidth = document.documentElement.clientWidth;
+    const overflowPx = Math.max(0, document.documentElement.scrollWidth - viewportWidth);
+    const selectorFor = (element) => {
+      if (element.id) return `#${element.id}`;
+      const classes = [...element.classList].slice(0, 3).join('.');
+      return `${element.tagName.toLowerCase()}${classes ? `.${classes}` : ''}`;
+    };
+    const offenders = [...document.body.querySelectorAll('*')].map((element) => {
+      const rect = element.getBoundingClientRect();
+      if (rect.width <= 0 || rect.height <= 0) return null;
+      const style = getComputedStyle(element);
+      if (style.display === 'none' || style.visibility === 'hidden') return null;
+      const right = Math.max(0, rect.right - viewportWidth);
+      const left = Math.max(0, -rect.left);
+      if (right <= 1 && left <= 1) return null;
+      return {
+        selector: selectorFor(element),
+        right_overflow_px: Math.round(right * 100) / 100,
+        left_overflow_px: Math.round(left * 100) / 100,
+        rect_width_px: Math.round(rect.width * 100) / 100,
+        scroll_overflow_px: Math.max(0, element.scrollWidth - element.clientWidth),
+        text_excerpt: String(element.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 160),
+        computed: {
+          width: style.width,
+          min_width: style.minWidth,
+          max_width: style.maxWidth,
+          white_space: style.whiteSpace,
+          overflow_x: style.overflowX,
+        },
+      };
+    }).filter(Boolean).sort((a, b) => Math.max(b.right_overflow_px, b.left_overflow_px) - Math.max(a.right_overflow_px, a.left_overflow_px)).slice(0, 8);
+    return { document_overflow_px: overflowPx, offenders };
   });
 }
 
@@ -891,7 +961,8 @@ async function evaluateColdChain(page, viewport) {
   const unqualified = visibleText.split(/(?<=[.!?])|\n+/).filter((sentence) => !/\b(?:sample|demo|fictional|unknown|not provided|not verified)\b/i.test(sentence)).join(' ');
   const protectedClaims = [...unqualified.matchAll(/\b(?:FDA|GDP|GMP)[ -]?(?:compliant|certified|approved)?\b|\b(?:regulatory|compliance) (?:verified|approved|certified)|\breal (?:shipments?|staff)\b/gi)].map((match) => match[0]);
   const criticalFieldsReachable = viewport.width > 390 || filteredRecords.length === urgentIds.length;
-  return { task_identity: /cold[-\s]chain|shipment exception|exception queue/i.test(initialText), sample_scope_visible: /\b(?:sample|demo|fictional)\b/i.test(initialText), shipment_count: records.length, urgent_count: records.filter((item) => item.urgent).length, non_urgent_count: records.filter((item) => item.nonUrgent).length, routine_count: records.filter((item) => item.nonUrgent).length, filter_selected_and_visible: filterSelectedAndVisible, filtered_contents_exact: filteredExact, keyboard_open_sample: keyboardOpen, matching_evidence_detail: matchingEvidence, owner_error_associated: errorAssociated, sample_owner_options: sampleOwnerOptions, assigned_owner_confirmed_and_persistent: assignedPersistent, protected_unknown_claims: protectedClaims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: await page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)), critical_fields_reachable: criticalFieldsReachable, controls_horizontally_unclipped: controlsUnclipped, control_min_dimension_px: controlMin, initial_axe_serious_critical: initialAxe.count, filtered_axe_serious_critical: filteredAxe.count, detail_axe_serious_critical: detailAxe.count, error_axe_serious_critical: errorAxe.count, assigned_axe_serious_critical: assignedAxe.count, initial_axe_violations: initialAxe.violations, filtered_axe_violations: filteredAxe.violations, detail_axe_violations: detailAxe.violations, error_axe_violations: errorAxe.violations, assigned_axe_violations: assignedAxe.violations, main_count: await page.getByRole('main').count(), h1_count: await page.getByRole('heading', { level: 1 }).count(), accessibility_inventory: await boundedAriaInventory(page, ['row', 'article', 'listitem', 'button', 'link', 'combobox', 'status', 'alert'], { total: 10 }), interaction_diagnostics: { filter_kind: filterKind, filter_keyboard: filterKeyboard, filter_programmatic: filterProgrammatic, filter_label: filterLabel, action_reached: actionReached, detail_before: detailBefore, detail_after: detailAfter, record_classification: records.map(({ identity, urgent, nonUrgent }) => ({ identity, urgent, non_urgent: nonUrgent })), urgent_ids: urgentIds, filtered_record_ids: filteredRecords, selected_owner: selectedOwner, assignment_status_text: assignmentStatusText.slice(0, 500), assigned_source_record_text: assignedSourceRecordText.replace(/\s+/g, ' ').slice(0, 500), assigned_status_persistent: assignedPersistent } } };
+  const overflow = await documentOverflowObservation(page);
+  return { task_identity: /cold[-\s]chain|shipment exception|exception queue/i.test(initialText), sample_scope_visible: /\b(?:sample|demo|fictional)\b/i.test(initialText), shipment_count: records.length, urgent_count: records.filter((item) => item.urgent).length, non_urgent_count: records.filter((item) => item.nonUrgent).length, routine_count: records.filter((item) => item.nonUrgent).length, filter_selected_and_visible: filterSelectedAndVisible, filtered_contents_exact: filteredExact, keyboard_open_sample: keyboardOpen, matching_evidence_detail: matchingEvidence, owner_error_associated: errorAssociated, sample_owner_options: sampleOwnerOptions, assigned_owner_confirmed_and_persistent: assignedPersistent, protected_unknown_claims: protectedClaims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: overflow.document_overflow_px, document_overflow_offenders: overflow.offenders, critical_fields_reachable: criticalFieldsReachable, controls_horizontally_unclipped: controlsUnclipped, control_min_dimension_px: controlMin, initial_axe_serious_critical: initialAxe.count, filtered_axe_serious_critical: filteredAxe.count, detail_axe_serious_critical: detailAxe.count, error_axe_serious_critical: errorAxe.count, assigned_axe_serious_critical: assignedAxe.count, initial_axe_violations: initialAxe.violations, filtered_axe_violations: filteredAxe.violations, detail_axe_violations: detailAxe.violations, error_axe_violations: errorAxe.violations, assigned_axe_violations: assignedAxe.violations, main_count: await page.getByRole('main').count(), h1_count: await page.getByRole('heading', { level: 1 }).count(), accessibility_inventory: await boundedAriaInventory(page, ['row', 'article', 'listitem', 'button', 'link', 'combobox', 'status', 'alert'], { total: 10 }), interaction_diagnostics: { filter_kind: filterKind, filter_keyboard: filterKeyboard, filter_programmatic: filterProgrammatic, filter_label: filterLabel, action_reached: actionReached, detail_before: detailBefore, detail_after: detailAfter, record_classification: records.map(({ identity, urgent, nonUrgent }) => ({ identity, urgent, non_urgent: nonUrgent })), urgent_ids: urgentIds, filtered_record_ids: filteredRecords, selected_owner: selectedOwner, assignment_status_text: assignmentStatusText.slice(0, 500), assigned_source_record_text: assignedSourceRecordText.replace(/\s+/g, ' ').slice(0, 500), assigned_status_persistent: assignedPersistent } } };
 }
 
 async function evaluateCaregiver(page, viewport) {
@@ -1189,7 +1260,10 @@ async function evaluateLocale(page, viewport) {
   // putting the failure outcome in the control name. The proof remains the
   // subsequently exposed alert and the unchanged document language.
   const unavailable = page.getByRole('button', { name: /unavailable translation|translation (?:status|availability)/i });
-  if (await unavailable.count() === 1 && await unavailable.isVisible()) { await unavailable.press('Enter'); await afterPaint(page); }
+  let unavailableTrigger = 'missing';
+  if (await unavailable.count() === 1 && await unavailable.isVisible()) {
+    await unavailable.press('Enter'); await afterPaint(page); unavailableTrigger = 'explicit-state-control';
+  } else if (await switchTo(locales[4])) unavailableTrigger = 'zh-TW-locale-control';
   const alerts = page.getByRole('alert');
   let unavailableAlert = null;
   for (const index of await visibleLocatorIndexes(alerts)) {
@@ -1197,12 +1271,28 @@ async function evaluateLocale(page, viewport) {
     if (hasUnavailableTranslationSemantics(await candidate.innerText())) { unavailableAlert = candidate; break; }
   }
   const selectedUnavailableLocale = await localeSelect();
-  const unavailableHonest = await unavailable.count() === 1 && Boolean(unavailableAlert)
-    && (await page.locator('html').getAttribute('lang')) === 'zh-TW'
-    && Boolean(selectedUnavailableLocale && (await selectedUnavailableLocale.inputValue()) === 'zh-TW'); await checkState();
+  let selectedLocaleCode = selectedUnavailableLocale ? await selectedUnavailableLocale.inputValue() : null;
+  if (!selectedUnavailableLocale) {
+    for (const locale of locales) {
+      const button = await localeButton(locale);
+      if (button && ['true', 'page'].includes((await button.getAttribute('aria-pressed')) || (await button.getAttribute('aria-current')) || '')) {
+        selectedLocaleCode = locale.code; break;
+      }
+    }
+  }
+  const langAfterUnavailable = await page.locator('html').getAttribute('lang');
+  const unavailableSelectionExact = selectedLocaleCode === langAfterUnavailable;
+  const unavailableHonest = unavailableTrigger !== 'missing' && Boolean(unavailableAlert)
+    && unavailableSelectionExact
+    && (unavailableTrigger === 'explicit-state-control'
+      ? langAfterUnavailable === langBeforeUnavailable
+      : langAfterUnavailable === 'zh-TW'); await checkState();
   const unavailableDiagnostics = {
     control_count: await unavailable.count(),
     control_visible: await unavailable.count() === 1 ? await unavailable.isVisible() : false,
+    trigger: unavailableTrigger,
+    selected_locale: selectedLocaleCode,
+    selected_locale_exact: unavailableSelectionExact,
     alert_count: unavailableAlert ? 1 : 0,
     alert_visible: Boolean(unavailableAlert),
     alert_text: unavailableAlert ? (await unavailableAlert.innerText()).replace(/\s+/g, ' ').trim().slice(0, 300) : '',

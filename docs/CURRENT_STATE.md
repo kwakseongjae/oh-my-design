@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: Autopilot pending-interview measurement commit `f48173c7` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · 1.9.870 3-cell 완료 및 evaluator/product RCA, v2 보정 commit 준비
+- 갱신: 2026-08-12 · 1.9.871 3-cell 완료 및 provider-free RCA, 진단 보강 commit 준비
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.871 exact Luna/high 3셀은 valid terminal3/3·DESIGN proof3/3·질문0·retry/replacement/fallback/Cursor0으로 완료됐지만 sealed UI-Resolved0/3이다. landing `30→50→80`, cold `20→40→40`, locale `60→60`; 8 calls·input9,934,928(cached9,168,640)+output162,477·provider wall852.415s다.
+- provider-free 재평가에서 locale 동일 bytes는100/100이다. 별도 “translation status” 버튼 없이 기존 `zh-TW` locale control이 unavailable alert를 열고 `lang=zh-TW`/선택 상태를 보존하는 동등 구조를 evaluator가 놓쳤다. 두 oracle+mutant 9개가 구조 중립 계약을 검증한다.
+- landing/cold 실패는 실제 product defect다. landing header CTA는 cascade 때문에 computed `#526568` on `#0a4f4a`, 1.53:1이다. cold 초기 queue는1 record/1 urgent/0 non-urgent이고 382.13px rail/nav subtree가390px에서28px,320px에서78px root overflow를 만든다.
+- evaluator/controller는 Axe failure summary+computed colors, bounded overflow offender geometry/CSS, queue minimum expectation을 repair evidence로 전달한다. 다음 순서: 관련 코드/report/docs commit → commit-bound full test/lint/build → fresh1.9.872 plan/root/named in-app admission → exact Luna/high 3셀. 12-task comparison은 fresh3/3 전까지 BLOCK이다.
 
 - 1.9.870 exact Luna/high 3셀은 3/3 valid terminal, DESIGN.md proof3/3, 질문 batch0, retry/replacement/fallback/Cursor0으로 완료됐다. sealed UI-Resolved는 1/3이며 landing `10→100`, cold `20→20`, locale `10→50→50`; 총7 calls·2,882.893s·input9,790,594(cached9,112,832)+output132,776이다.
 - in-app 검수와 provider-free v2 재평가에서 locale는 동일 bytes로100/100이다. 기존 evaluator가 현지어 unavailable alert, 선택된 `zh-TW` 보존, CJK/English 부정 의료 disclaimer를 오판했다. cold는 urgent/filter/sample-owner false negative를 제거해도 owner 오류 focus, success의 shipment identity, 모바일42px, Assign contrast가 실제 실패로 남는다.

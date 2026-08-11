@@ -512,6 +512,7 @@ export function objectiveFailureObservations(score) {
       })),
     },
     queue_preconditions: {
+      expected: { initial_unfiltered_queue: true, shipment_count_min: 3, urgent_count_min: 2, non_urgent_count_min: 1 },
       shipment_count: evidence.shipment_count ?? null,
       urgent_count: evidence.urgent_count ?? null,
       non_urgent_count: evidence.non_urgent_count ?? evidence.routine_count ?? null,
@@ -556,6 +557,7 @@ export function objectiveFailureObservations(score) {
       id: viewport.id ?? null,
       mobile: viewport.mobile ?? null,
       document_overflow_px: viewport.document_overflow_px ?? null,
+      document_overflow_offenders: viewport.document_overflow_offenders ?? [],
       critical_fields_reachable: viewport.critical_fields_reachable ?? null,
       controls_horizontally_unclipped: viewport.controls_horizontally_unclipped ?? null,
       control_min_dimension_px: viewport.control_min_dimension_px ?? null,

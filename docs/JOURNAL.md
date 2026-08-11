@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.871 RCA + repair evidence
+- sealed smoke는 valid3/3·DESIGN proof3/3이나 UI0/3이었다.
+- locale 동일 bytes는 role/state 보정 후100; landing/cold는 실제 contrast·queue·overflow defect다.
+- Axe computed color, overflow offender, queue minimum을 controller feedback에 추가했다.
+- 다음은 commit-bound gate 뒤 fresh1.9.872이며 12-task 비교는 계속 차단한다.
+
 ## 2026-08-12 (Codex) · 1.9.870 complete + evaluator/product split
 - exact Luna/high 3셀은 valid3/3·DESIGN proof3/3·sealed UI1/3, 총7 calls였다.
 - locale 실패는 현지어 unavailable/의료 부정 evaluator 오판이며 같은 bytes가 v2에서100이다.

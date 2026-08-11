@@ -1,0 +1,107 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "autopilot-luna-high-smoke-1.9.871",
+  "claim_state": "diagnostic-only-block-public-one-shot",
+  "status": "complete-gate-failed",
+  "scheduled_cells": 3,
+  "valid_terminal_cells": 3,
+  "sealed_ui_resolved_cells": 0,
+  "provider_calls": 8,
+  "repair_calls": 5,
+  "retry_calls": 0,
+  "replacement_calls": 0,
+  "fallback_calls": 0,
+  "cursor_calls": 0,
+  "question_batches": 0,
+  "observed_token_usage": {
+    "coverage": "8/8 calls",
+    "input_tokens": 9934928,
+    "cached_input_tokens": 9168640,
+    "output_tokens": 162477
+  },
+  "provider_wall_ms": 852415,
+  "provider_free_reevaluation": {
+    "sealed_records_unchanged": true,
+    "methodology_epoch": "autopilot-greenfield-observable-outcomes-v2",
+    "cells": [
+      {
+        "task_id": "neighborhood-library-landing",
+        "score": 80,
+        "ui_resolved": false,
+        "classification": "confirmed-product-defect",
+        "evidence": "header CTA computed foreground #526568 on background #0a4f4a; axe contrast 1.53:1 across all four viewports"
+      },
+      {
+        "task_id": "cold-chain-operations",
+        "score": 40,
+        "ui_resolved": false,
+        "classification": "confirmed-product-defect",
+        "evidence": "initial queue 1 record / 1 urgent / 0 non-urgent; rail/nav subtree width 382.13px produces 28px overflow at 390 and 78px at 320"
+      },
+      {
+        "task_id": "clinic-visit-prep-locales",
+        "score": 100,
+        "ui_resolved": true,
+        "classification": "sealed-evaluator-false-negative",
+        "evidence": "existing zh-TW locale control reveals unavailable-translation alert while lang and selected locale remain zh-TW at all four viewports"
+      }
+    ]
+  },
+  "cells": [
+    {
+      "id": "neighborhood-library-landing-luna-high-r1-omd-autopilot",
+      "sealed_record": {
+        "validity": "valid",
+        "outcome": "terminal-provider-failure",
+        "ui_resolved": false,
+        "scores": [30, 50, 80],
+        "design_system_proof": true,
+        "autopilot_proof": false,
+        "model_calls": 3,
+        "run_record_sha256": "a3d12ab42e4489037ff904c71f2cb111f055c125482066dac3be970129eee62a"
+      },
+      "final_failures": [
+        "accessibility: serious color contrast on the header CTA at every required viewport"
+      ]
+    },
+    {
+      "id": "cold-chain-operations-luna-high-r1-omd-autopilot",
+      "sealed_record": {
+        "validity": "valid",
+        "outcome": "terminal-provider-failure",
+        "ui_resolved": false,
+        "scores": [20, 40, 40],
+        "design_system_proof": true,
+        "autopilot_proof": false,
+        "model_calls": 3,
+        "run_record_sha256": "a6f05b315d29719097365cefac0b7ad17074653b874992c34fba8a122d56e253"
+      },
+      "final_failures": [
+        "queue_preconditions: the queue did not expose the required urgent/non-urgent sample set",
+        "responsive: document overflow remained 28px at 390px and 78px at 320px"
+      ]
+    },
+    {
+      "id": "clinic-visit-prep-locales-luna-high-r1-omd-autopilot",
+      "sealed_record": {
+        "validity": "valid",
+        "outcome": "terminal-provider-failure",
+        "ui_resolved": false,
+        "scores": [60, 60],
+        "design_system_proof": true,
+        "autopilot_proof": false,
+        "model_calls": 2,
+        "run_record_sha256": "d4d53e4d38c38c62ad288eb537f0483f47993d79d4f5ef64e6caac6d204f5166"
+      },
+      "final_failures": [
+        "translation_unavailable_honest: no reachable unavailable-translation control and alert"
+      ]
+    }
+  ],
+  "authority": {
+    "plan_sha256": "2033f846a467ca4db92c18abc69ec358d32bc88e525c6c4b9209284df6853cbc",
+    "execution_state_sha256": "7e7185d4cd2f47418073fae6b8437cfca90dd3964f43367e0a9aba5770165947",
+    "source_commit": "f09f4195e031098958ddbdec5ff6669c93050d6f"
+  },
+  "next_gate": "Commit the corrected locale state evaluation and richer contrast/overflow/queue repair evidence, pass commit-bound gates, and require a fresh 3/3 Luna/high epoch before the 12-task comparison."
+}
