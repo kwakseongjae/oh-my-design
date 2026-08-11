@@ -275,8 +275,23 @@ describe("autopilot Luna/high smoke controller", () => {
     expect(controllerAutopilotProof(plan, {}, workspace)).toMatchObject({
       pass: true, mission_lineages: 1, question_batches: 0, answer_artifacts: 0,
     });
+    const checkpointDir = join(workspace, ".omd/runs/run-greenfield-family-planner/checkpoints");
+    const questions = join(checkpointDir, "council-intake.questions.json");
+    mkdirSync(checkpointDir, { recursive: true });
+    writeFileSync(questions, JSON.stringify({
+      questions: [{ id: "candidate-only", question: "An internally considered question" }],
+      pending_interview_ids: [],
+    }));
+    expect(controllerAutopilotProof(plan, {}, workspace)).toMatchObject({
+      pass: true, mission_lineages: 1, question_batches: 0, question_artifacts: 1,
+    });
+    writeFileSync(questions, JSON.stringify({
+      questions: [{ id: "candidate-only", question: "An actually pending question" }],
+      pending_interview_ids: ["candidate-only"],
+    }));
+    expect(controllerAutopilotProof(plan, {}, workspace)).toMatchObject({ pass: false, mission_lineages: null });
+    writeFileSync(questions, JSON.stringify({ questions: [], pending_interview_ids: [] }));
     const answers = join(workspace, ".omd/runs/run-greenfield-family-planner/checkpoints/council-intake.answers.json");
-    mkdirSync(join(workspace, ".omd/runs/run-greenfield-family-planner/checkpoints"), { recursive: true });
     writeFileSync(answers, JSON.stringify({ answers: [{ value: "model-authored" }] }));
     expect(controllerAutopilotProof(plan, {}, workspace)).toMatchObject({ pass: false, mission_lineages: null });
   });

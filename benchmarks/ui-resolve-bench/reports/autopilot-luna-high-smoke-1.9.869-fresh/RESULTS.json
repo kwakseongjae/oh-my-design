@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "autopilot-luna-high-smoke-1.9.869",
+  "claim_state": "diagnostic-only-block-public-one-shot",
+  "status": "stopped-after-measurement-contract-defect",
+  "scheduled_cells": 3,
+  "valid_terminal_cells": 1,
+  "remaining_cells_not_run": 2,
+  "provider_calls": 2,
+  "repair_calls": 1,
+  "retry_calls": 0,
+  "replacement_calls": 0,
+  "fallback_calls": 0,
+  "cursor_calls": 0,
+  "observed_token_usage": {
+    "coverage": "2/2 calls",
+    "input_tokens": 3210693,
+    "cached_input_tokens": 3022592,
+    "output_tokens": 42318
+  },
+  "provider_wall_ms": 985675,
+  "cells": [
+    {
+      "id": "neighborhood-library-landing-luna-high-r1-omd-autopilot",
+      "sealed_record": {
+        "validity": "valid",
+        "run_status": "complete",
+        "outcome": "terminal-provider-failure",
+        "ui_resolved": false,
+        "scores": [30, 100],
+        "design_system_proof": true,
+        "autopilot_proof": false,
+        "failure_reason": "candidate council questions were counted as user question batches despite pending_interview_ids being empty"
+      },
+      "provider_free_contract_diagnostic": {
+        "objective_ui_resolved": true,
+        "final_score": 100,
+        "autopilot_proof_after_pending-question-fix": true,
+        "actual_question_batches": 0,
+        "answer_artifacts": 0,
+        "mission_lineages": 1
+      }
+    }
+  ],
+  "authority": {
+    "plan_sha256": "366f371efd1b081b3ffeaa3b7dcdfef9071d5a548ac9c9e16e014a544f6bd821",
+    "execution_state_sha256": "0ea64b568d93698f7430bfbcf9e3562591a25bfc08e5c7a3025de3cf3ef19524",
+    "sealed_run_record_sha256": "96f03de50ee48741166b6a2f54dec78904034e41aa6d87e7622b39ad6a3f0fe6",
+    "source_commit": "bcc469a7bcb86def8c2a1d74c6a411cfec995e21"
+  },
+  "interpretation": "The product and design-system path reached objective 100/100 after one bounded repair. The sealed run remains a failed diagnostic because the controller measured internally considered, non-pending council candidates as real user questions. The two remaining cells were not exposed after the measurement contract changed."
+}

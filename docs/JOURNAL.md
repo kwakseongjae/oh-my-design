@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.869 self-interview measurement RCA
+- landing은 Luna/high 2 calls로 30→100, DESIGN proof·objective UI를 모두 통과했다.
+- pending0인 내부 candidate question을 사용자 질문으로 잘못 세어 sealed record만 실패했다.
+- 실제 대기 질문만 intervention으로 세도록 controller contract/test를 수정했다.
+- 다음은 commit-bound gate 뒤 explicit 1.9.870 fresh 3-cell이며 1.9.869는 재사용하지 않는다.
+
 ## 2026-08-12 (Codex) · 1.9.868 bounded-council smoke
 - Luna/high 3-task는 DESIGN proof3/3·UI-Resolved1/3: landing100, cold timeout20, locale40→40→20이었다.
 - provider browser probing이 cold timeout을 만들고, non-improving locale repair2가 접근성을 회귀시킨 원인을 분리했다.

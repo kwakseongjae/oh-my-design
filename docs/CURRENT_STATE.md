@@ -3,11 +3,16 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: Autopilot council-budget commit `5d66b58b` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · 1.9.868 완결, 2.0 fresh-smoke hardening 진행 중
+- 기준 소스: Autopilot strict-repair commit `bcc469a7` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-12 · 1.9.869 measurement RCA 완료, fresh smoke 재발급 준비
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.869는 explicit epoch·fresh root·named in-app browser로 landing 1셀을 실행했다. exact Luna/high initial+repair1이 `30→100`, DESIGN.md proof PASS, 실제 질문 batch0·answer artifact0·mission lineage1을 달성했다. 2 calls·provider wall985.675s·input3,210,693(cached3,022,592)+output42,318이다.
+- sealed record는 내부 council이 검토 후 보류한 candidate question을 `questions[]`에 남겼다는 이유로 terminal failure가 됐다. `pending_interview_ids=[]`였으므로 사용자 질문은 실제로 발생하지 않았다. 이는 self-debate를 허용하고 실제 사용자 개입만 재는 2.0 계약의 controller 측정 결함이다.
+- controller proof는 question artifact shape를 검증하되 nonempty `pending_interview_ids`만 실제 질문으로 센다. 기존 1.9.869 record/root는 재작성·재개하지 않고 cells2–3도 노출하지 않는다. exact evidence는 `reports/autopilot-luna-high-smoke-1.9.869-fresh/{RESULTS.json,STATUS.md}`다.
+- 다음 순서: 이 측정 수정+evidence commit → commit-bound smoke/controller tests·linter/build → explicit 1.9.870 fresh plan/root/in-app admission → 3셀 실행. 12-task comparison은 3/3 전까지 BLOCK이다.
 
 - 1.9.868은 council lane/attempt budget을 적용한 exact Luna/high 3-task fresh smoke다. 3/3 valid terminal, DESIGN.md proof3/3, 질문0, retry/replacement/fallback/Cursor0이나 UI-Resolved는 1/3이다. landing은 `10→80→100`, cold-chain은 900.351s valid timeout/20, locale는 `40→40→20`이다.
 - 총7 calls·provider wall3,457.098s다. 관측 가능한6 calls는 input8,855,794(cached8,168,704)+output117,744이며 cold-chain timeout usage가 없어 full-block token total은 주장하지 않는다. exact evidence는 `reports/autopilot-luna-high-smoke-1.9.868/{RESULTS.json,STATUS.md}`다.

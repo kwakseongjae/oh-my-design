@@ -415,8 +415,11 @@ export function controllerAutopilotProof(plan, cell, workspace) {
       .map(String).filter((path) => path.endsWith("council-intake.questions.json"));
     for (const relativePath of questionArtifacts) {
       const value = readJson(join(runDir, relativePath));
-      if (!Array.isArray(value.questions) || value.questions.length !== 0) {
-        throw new Error(`fully authorized smoke requires zero council questions: ${relativePath}`);
+      if (!Array.isArray(value.questions) || !Array.isArray(value.pending_interview_ids)) {
+        throw new Error(`council question artifact shape drift: ${relativePath}`);
+      }
+      if (value.pending_interview_ids.length !== 0) {
+        throw new Error(`fully authorized smoke requires zero pending council questions: ${relativePath}`);
       }
     }
     const audited = spawnSync(process.execPath, [join(repoRoot, "scripts/autopilot-mission.cjs"), workspace, runDir, "audit"], {
