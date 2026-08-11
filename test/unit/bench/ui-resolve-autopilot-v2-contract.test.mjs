@@ -209,8 +209,12 @@ describe('OmD Autopilot 2.0 qualification contract', () => {
     const skill = readFileSync(resolve(repoRoot, 'skills/omd-autopilot/SKILL.md'), 'utf8');
     expect(skill).toMatch(/never discover, install, launch, or probe a\s+local browser/u);
     expect(skill).toMatch(/controller owns all browser execution/u);
+    expect(skill).toMatch(/Preserve every positive journey and supported-item claim at equal or\s+stronger semantics/u);
+    expect(skill).toMatch(/it never satisfies or\s+replaces that journey/u);
     const taskSet = JSON.parse(readFileSync(resolve(repoRoot, contract.greenfield_task_set_authority.path), 'utf8'));
     const localeTask = taskSet.tasks.find((task) => task.id === 'clinic-visit-prep-locales');
     expect(localeTask.prompt).toContain('honest unavailable-translation state');
+    expect(localeTask.prompt).toContain('All five locales must provide localized core checklist copy');
+    expect(localeTask.prompt).toContain('without replacing any of the five core locale journeys');
   });
 });

@@ -897,8 +897,14 @@ async function evaluateColdChain(page, viewport) {
     const candidate = detailRoots.nth(index);
     if (activeIdentity && (await candidate.innerText()).toUpperCase().includes(activeIdentity) && await candidate.getByRole('combobox', { name: /owner/i }).count() === 1) { detail = candidate; break; }
   }
-  const matchingEvidence = Boolean(detail && /sample (?:data|evidence|sensor|probe|event|reading|note|value)/i.test(await detail.innerText())
-    && /(?:observed|temperature|activity|scan|reading|event|sensor|probe)/i.test(await detail.innerText()));
+  const detailEvidenceText = detail ? (await detail.innerText()).replace(/\s+/g, ' ') : '';
+  // Keep the evidence contract structural rather than copy-shaped. A detail
+  // may label the record as sample in its header and label the datum as a
+  // temperature reading farther down; requiring the exact adjacent phrase
+  // "sample evidence" rejects that otherwise equivalent information shape.
+  const matchingEvidence = Boolean(detail
+    && /\b(?:sample|demo|fictional)\b/i.test(detailEvidenceText)
+    && /\b(?:observed|temperature|activity|scan|reading|event|sensor|probe|evidence)\b/i.test(detailEvidenceText));
   const detailAxe = await axeSeriousCritical(page);
   let errorAssociated = false;
   let sampleOwnerOptions = false;
@@ -1195,6 +1201,11 @@ async function evaluateLocale(page, viewport) {
   const checkState = async () => { axeCounts.push((await axeSeriousCritical(page)).count); h1Counts.push(await page.getByRole('heading', { level: 1 }).count()); };
   const initialText = (await main.innerText()).replace(/\s+/g, ' '); await checkState();
   const locales = [{ code: 'ko', label: /한국어/, script: /[가-힣]/ }, { code: 'en', label: /English/, script: /[A-Za-z]/ }, { code: 'ja', label: /日本語/, script: /[ぁ-ゖァ-ヺ]/ }, { code: 'zh-CN', label: /简体中文/, script: /[\u3400-\u9fff]/ }, { code: 'zh-TW', label: /繁體中文/, script: /[\u3400-\u9fff]/ }];
+  const languageTagMatches = (actual, requested) => {
+    const normalizedActual = String(actual || '').trim().toLowerCase();
+    const normalizedRequested = String(requested || '').trim().toLowerCase();
+    return normalizedActual === normalizedRequested || normalizedActual.startsWith(`${normalizedRequested}-`);
+  };
   async function localeSelect() {
     const candidates = page.getByRole('combobox');
     for (let index = 0; index < await candidates.count(); index += 1) {
@@ -1224,7 +1235,11 @@ async function evaluateLocale(page, viewport) {
     const selectedLabel = currentSelect ? await currentSelect.locator('option:checked').innerText() : currentButton ? await currentButton.innerText() : '';
     const labelMatch = locale.label.test(selectedLabel);
     const box = await page.getByRole('heading', { level: 1 }).boundingBox(); cjkUnclipped.push(!['ja', 'zh-CN', 'zh-TW'].includes(locale.code) || Boolean(box && box.x >= -1 && box.x + box.width <= viewport.width + 1));
-    const pass = lang === locale.code && scriptMatch && selected && labelMatch;
+    // A more specific BCP 47 document language (for example ja-JP) is an
+    // exact semantic match for the requested base locale ja. Sibling tags
+    // such as zh-CN and zh-TW remain distinct because neither prefixes the
+    // other at a language-subtag boundary.
+    const pass = languageTagMatches(lang, locale.code) && scriptMatch && selected && labelMatch;
     localeDiagnostics.push({ requested: locale.code, mechanism: currentSelect ? 'select' : 'button', actual_lang: lang, selected, script_match: scriptMatch, label_match: labelMatch, selected_label: selectedLabel.slice(0, 80) });
     await checkState(); return pass;
   }

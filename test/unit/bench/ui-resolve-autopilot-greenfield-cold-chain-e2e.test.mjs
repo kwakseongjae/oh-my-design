@@ -22,6 +22,13 @@ const mutant = (source, label, transform) => { const workspace = join(mkdtempSyn
       .replace("urgent.addEventListener('change',()=>{rows.forEach(r=>r.hidden=urgent.checked&&r.dataset.priority!=='urgent'); count.textContent=rows.filter(r=>!r.hidden).length; summary.textContent=urgent.checked?'Urgent filter active':'All priorities'});", "urgent.addEventListener('click',()=>{const active=urgent.getAttribute('aria-pressed')!=='true';urgent.setAttribute('aria-pressed',String(active));rows.forEach(r=>r.hidden=active&&r.dataset.priority!=='urgent');count.textContent=rows.filter(r=>!r.hidden).length;summary.textContent=active?'Urgent filter active':'All priorities'});"));
     expect(evaluate(workspace, 'button-filter')).toMatchObject({ score: 100, ui_resolved: true });
   }, 60_000);
+  it('accepts sample scope and the evidence datum as separate labels in one detail region', () => {
+    const workspace = mutant('oracle-a', 'separate-sample-evidence-labels', (html) => html
+      .replace('<h3 id="evidence-title">Sample evidence</h3>', '<h3 id="evidence-title">Recorded evidence</h3>')
+      .replace('Sample sensor note: 9.1°C recorded at 08:40.', 'Temperature reading: 9.1°C observed at 08:40.')
+      .replace('Sample evidence note: signal interrupted at 09:12.', 'Scan event: signal interrupted at 09:12.'));
+    expect(evaluate(workspace, 'separate-sample-evidence-labels')).toMatchObject({ score: 100, ui_resolved: true });
+  }, 60_000);
   it('writes a terminal failure score when no supported urgent control exists', () => {
     const workspace = mutant('oracle-a', 'missing-filter', (html) => html
       .replace('<label class="filter"><input id="urgent" type="checkbox"> Urgent shipments only</label>', '<p>Urgent shipments are listed below.</p>'));

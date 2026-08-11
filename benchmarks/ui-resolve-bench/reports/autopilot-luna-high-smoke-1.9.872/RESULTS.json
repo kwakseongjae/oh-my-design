@@ -1,0 +1,108 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "autopilot-luna-high-smoke-1.9.872",
+  "claim_state": "diagnostic-only-block-public-one-shot",
+  "status": "complete-gate-failed",
+  "scheduled_cells": 3,
+  "valid_terminal_cells": 3,
+  "sealed_ui_resolved_cells": 0,
+  "provider_calls": 8,
+  "repair_calls": 5,
+  "retry_calls": 0,
+  "replacement_calls": 0,
+  "fallback_calls": 0,
+  "cursor_calls": 0,
+  "question_batches": 0,
+  "observed_token_usage": {
+    "coverage": "8/8 calls",
+    "input_tokens": 10866803,
+    "cached_input_tokens": 10152192,
+    "output_tokens": 149258
+  },
+  "provider_wall_ms": 3475025,
+  "provider_free_reevaluation": {
+    "sealed_records_unchanged": true,
+    "methodology_epoch": "autopilot-greenfield-observable-outcomes-v2",
+    "cells": [
+      {
+        "task_id": "neighborhood-library-landing",
+        "score": 30,
+        "ui_resolved": false,
+        "classification": "confirmed-product-defect",
+        "evidence": "the only Reserve action moves focus to an unavailable status instead of opening a reservation-start state with an actionable control; two serious contrast failures remain"
+      },
+      {
+        "task_id": "cold-chain-operations",
+        "score": 100,
+        "ui_resolved": true,
+        "classification": "sealed-evaluator-false-negative",
+        "evidence": "the selected detail contains sample scope plus a temperature reading, but the sealed evaluator required the copy-shaped adjacent phrase sample evidence"
+      },
+      {
+        "task_id": "clinic-visit-prep-locales",
+        "score": 60,
+        "ui_resolved": false,
+        "classification": "mixed-evaluator-and-product-defect",
+        "evidence": "ja-JP is a valid match for requested ja and the zh-TW unavailable state is honest, but Japanese core checklist copy remains unavailable instead of localized"
+      }
+    ]
+  },
+  "cells": [
+    {
+      "id": "neighborhood-library-landing-luna-high-r1-omd-autopilot",
+      "sealed_record": {
+        "validity": "valid",
+        "outcome": "terminal-provider-failure",
+        "ui_resolved": false,
+        "scores": [30, 30],
+        "design_system_proof": true,
+        "autopilot_proof": false,
+        "model_calls": 2,
+        "run_record_sha256": "a530cd6bc8bfa11095897af3dfe019e9cebce3e61b89efe0d73ad69e470d476c"
+      },
+      "final_failures": [
+        "reservation_state and focus_transfer: an unavailable status replaced the required reservation-start state",
+        "accessibility: serious contrast failures remain on the wordmark mark and reservation status"
+      ]
+    },
+    {
+      "id": "cold-chain-operations-luna-high-r1-omd-autopilot",
+      "sealed_record": {
+        "validity": "valid",
+        "outcome": "terminal-provider-failure",
+        "ui_resolved": false,
+        "scores": [20, 60, 60],
+        "design_system_proof": true,
+        "autopilot_proof": false,
+        "model_calls": 3,
+        "run_record_sha256": "b441c8afbca3aa4610a6ef1e57e5e3a22b87a3da82cc2afaece5bd19bbcf7789"
+      },
+      "final_failures": [
+        "sealed matching_evidence_detail false negative: sample scope and temperature/reading evidence were separated within the same detail region"
+      ]
+    },
+    {
+      "id": "clinic-visit-prep-locales-luna-high-r1-omd-autopilot",
+      "sealed_record": {
+        "validity": "valid",
+        "outcome": "terminal-provider-failure",
+        "ui_resolved": false,
+        "scores": [40, 60, 60],
+        "design_system_proof": true,
+        "autopilot_proof": false,
+        "model_calls": 3,
+        "run_record_sha256": "d37a11db4ed110594836b849bc466a4d8d0e17983e5444d21d91e17c25d6857e"
+      },
+      "final_failures": [
+        "sealed locale-tag false negative: ja-JP was rejected for requested ja",
+        "product defect: Japanese selection kept an English checklist and exposed Japanese as unavailable"
+      ]
+    }
+  ],
+  "authority": {
+    "plan_sha256": "a9b9aa5dd5efea7a83a160abbe5ca976c564b4fc0cbb138ed7fb042178ef6925",
+    "execution_state_sha256": "a094b8a7ae37ce317995e245f54f1308a30d16cf5075bac0484ca77ce17cd205",
+    "source_commit": "091a2f54ec2af93b5f6f65ab42cf3a8059d70031"
+  },
+  "next_gate": "Clarify positive-journey versus unavailable-state authority, prevent acceptance-plan semantic weakening, pass provider-free calibration, and require a fresh 3/3 Luna/high epoch before competitor qualification."
+}

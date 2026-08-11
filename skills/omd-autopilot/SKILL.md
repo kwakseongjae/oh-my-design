@@ -64,6 +64,16 @@ folders and must never edit `DESIGN.md` or product files.
    empty/error/success/disabled states, 1440/390/320/200%-reflow viewports,
    and the exact functionality/journey/responsive/keyboard/accessibility/
    honesty/design-conformance checks. A generic checklist is not admission.
+   Preserve every positive journey and supported-item claim at equal or
+   stronger semantics. An honest unavailable, unknown, deferred, or fallback
+   state may coexist with a required journey, but it never satisfies or
+   replaces that journey unless the prompt explicitly makes that exact item
+   unavailable. For example, “start a reservation” requires a newly operable
+   reservation-start state, not only a notice that reservations are
+   unavailable; a stated five-locale surface requires localized core content
+   in all five locales even when a secondary translation resource has an
+   unavailable state. Reject the plan and revise it before product admission
+   when one requirement weakens or contradicts another.
 8. `PRODUCT_BUILD` — implement the requested real route and all required
    empty/loading/error/success/disabled states. Apply only proven or explicitly
    proposed project tokens. When a controller execution budget is present,

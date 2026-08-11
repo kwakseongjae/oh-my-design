@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "adapter_set_id": "autopilot-greenfield-observable-outcomes-v0.1",
-  "task_set_sha256": "9ef51dcb5fc753163be2d44e21c47c1dc958550768c0bcec1fba8017bba0e654",
+  "task_set_sha256": "53634e4f8e79b34460ebd1d470b381b3167753bf6e07f03eb4aa7ce268e9bf6c",
   "status": "provider-zero-calibration-required",
   "locator_policy": {
     "role_and_accessible_name_only": true,

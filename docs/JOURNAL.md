@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.872 authority-preserving RCA
+- sealed smoke는 valid3/3·DESIGN proof3/3이나 UI0/3, provider-free 보정은 cold만100이다.
+- landing 예약 시작/contrast와 locale 일본어 core localization은 실제 제품 결손으로 남는다.
+- BCP47·same-detail evidence 오판을 고치고 positive journey의 unavailable 대체를 금지했다.
+- 다음은 commit-bound gate 뒤 fresh1.9.873이며 3/3 전까지 비교·홍보 claim을 차단한다.
+
 ## 2026-08-12 (Codex) · 1.9.871 RCA + repair evidence
 - sealed smoke는 valid3/3·DESIGN proof3/3이나 UI0/3이었다.
 - locale 동일 bytes는 role/state 보정 후100; landing/cold는 실제 contrast·queue·overflow defect다.

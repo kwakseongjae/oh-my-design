@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: Autopilot pending-interview measurement commit `f48173c7` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · 1.9.871 3-cell 완료 및 provider-free RCA, 진단 보강 commit 준비
+- 갱신: 2026-08-12 · 1.9.872 3-cell 완료 및 provider-free RCA, positive-journey authority 보강 commit 준비
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.872 exact Luna/high 3셀은 valid terminal3/3·DESIGN proof3/3·질문0·retry/replacement/fallback/Cursor0으로 완료됐지만 sealed UI-Resolved0/3이다. landing `30→30`, cold `20→60→60`, locale `40→60→60`; 총8 calls·input10,866,803(cached10,152,192)+output149,258·provider wall3,475.025s다.
+- provider-free 보정 결과 cold-chain 동일 bytes는100/100이고 locale는60/100, landing은30/100이다. cold는 sample scope와 evidence label이 같은 detail 안에서 분리된 유효 구조를 evaluator가 놓쳤다. locale는 `ja-JP`를 `ja`와 불일치로 오판했지만, 실제로 일본어 core checklist를 제공하지 않아 보정 후에도 실패한다. landing은 Reserve CTA가 예약 시작 UI를 열지 않고 contrast 2건이 남은 실제 결손이다.
+- evaluator는 same-detail sample/evidence와 BCP47 base-region 매칭을 구조 중립적으로 판정한다. Autopilot acceptance contract는 명시된 positive journey/지원 항목을 unavailable·unknown·deferred·fallback으로 대체할 수 없고, 동등하거나 더 강한 관찰 가능 상태로 보존해야 한다. locale prompt도 다섯 locale 모두 core checklist 현지화를 명시한다.
+- 다음 순서: 관련 코드·1.9.872 evidence·연속성 문서 commit(`web/public/llms-full.txt` 제외) → commit-bound full gate → fresh1.9.873 plan/root/named in-app admission → exact Luna/high 3셀. fresh3/3 전까지 12-task competitor qualification과 public one-shot claim은 BLOCK이다.
 
 - 1.9.871 exact Luna/high 3셀은 valid terminal3/3·DESIGN proof3/3·질문0·retry/replacement/fallback/Cursor0으로 완료됐지만 sealed UI-Resolved0/3이다. landing `30→50→80`, cold `20→40→40`, locale `60→60`; 8 calls·input9,934,928(cached9,168,640)+output162,477·provider wall852.415s다.
 - provider-free 재평가에서 locale 동일 bytes는100/100이다. 별도 “translation status” 버튼 없이 기존 `zh-TW` locale control이 unavailable alert를 열고 `lang=zh-TW`/선택 상태를 보존하는 동등 구조를 evaluator가 놓쳤다. 두 oracle+mutant 9개가 구조 중립 계약을 검증한다.
