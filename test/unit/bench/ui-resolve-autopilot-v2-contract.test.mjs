@@ -172,6 +172,9 @@ describe('OmD Autopilot 2.0 qualification contract', () => {
       unplanned_human_interventions_max: 0,
       active_mission_lineages_max: 1,
       terminal_mission_non_resumable: true,
+      acceptance_plan_required_before_product_build: true,
+      atomic_proof_schema_version: '0.2',
+      same_mission_repair_receipt_chain_required: true,
       implementation_owner: 'main-agent',
     });
     expect(smoke.admission).toEqual({

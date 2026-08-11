@@ -11,6 +11,8 @@ const command = process.argv[4] || 'advance';
 const missionPath = path.join(runDir, 'mission.json');
 const statePath = path.join(runDir, 'mission-state.json');
 const admissionPath = path.join(runDir, 'product-build-admission.json');
+const acceptancePath = path.join(runDir, 'acceptance-plan.json');
+const repairsDir = path.join(runDir, 'repairs');
 const activeMissionPath = path.join(cwd, '.omd', 'autopilot-active.json');
 const answersPath = path.join(runDir, 'checkpoints', 'council-intake.answers.json');
 
@@ -101,6 +103,135 @@ function assertActiveMission() {
     throw new Error(`autopilot mission is terminal and non-resumable: ${marker.status}`);
   }
   return marker;
+}
+
+const REQUIRED_STATES = ['default', 'loading', 'empty', 'error', 'success', 'disabled'];
+const REQUIRED_VIEWPORTS = ['1440x900', '390x844', '320x720', '720x450-reflow-200pct'];
+const REQUIRED_QUALITY_CHECKS = [
+  'functionality', 'task-journey', 'responsive-1440', 'responsive-390', 'responsive-320',
+  'reflow-200pct', 'keyboard', 'accessibility', 'evidence-honesty', 'design-conformance',
+];
+
+function exactStringSet(actual, expected, label) {
+  if (!Array.isArray(actual) || actual.length !== expected.length
+    || new Set(actual).size !== expected.length || expected.some((item) => !actual.includes(item))) {
+    throw new Error(`${label} contract drift`);
+  }
+}
+
+function validateAcceptancePlan(plan, mission, decisionSha) {
+  const taskBytes = fs.readFileSync(path.join(runDir, 'task.md'), 'utf8');
+  if (plan.schema_version !== '0.1' || plan.status !== 'locked'
+    || plan.implementation_owner !== 'main-agent'
+    || plan.mission_sha256 !== sha256File(missionPath)
+    || plan.task_sha256 !== mission.task_sha256
+    || plan.design_system_decision_sha256 !== decisionSha
+    || typeof plan.route !== 'string' || !plan.route.trim()) {
+    throw new Error('acceptance plan authority drift');
+  }
+  if (!Array.isArray(plan.task_requirements) || plan.task_requirements.length < 2) {
+    throw new Error('acceptance plan must retain at least two task requirements');
+  }
+  const requirementIds = new Set();
+  for (const requirement of plan.task_requirements) {
+    if (!requirement || typeof requirement.id !== 'string' || !requirement.id.trim()
+      || requirementIds.has(requirement.id)
+      || !['journey', 'constraint', 'unknown'].includes(requirement.kind)
+      || typeof requirement.source_quote !== 'string' || requirement.source_quote.trim().length < 4
+      || !taskBytes.includes(requirement.source_quote.trim())
+      || typeof requirement.acceptance !== 'string' || !requirement.acceptance.trim()) {
+      throw new Error(`invalid acceptance requirement: ${requirement?.id || 'unknown'}`);
+    }
+    requirementIds.add(requirement.id);
+  }
+  exactStringSet(plan.required_states, REQUIRED_STATES, 'required states');
+  exactStringSet(plan.viewports, REQUIRED_VIEWPORTS, 'viewport');
+  exactStringSet(plan.quality_checks, REQUIRED_QUALITY_CHECKS, 'quality check');
+  return plan;
+}
+
+function validateFinalProof(proof, acceptance, currentProductTree) {
+  if (proof.schema_version !== '0.2' || proof.implementation_owner !== 'main-agent'
+    || proof.mission_sha256 !== sha256File(missionPath)
+    || proof.acceptance_plan_sha256 !== sha256File(acceptancePath)
+    || proof.product_build_admission_sha256 !== sha256File(admissionPath)
+    || proof.product_tree_sha256 !== currentProductTree.sha256
+    || proof.route !== acceptance.route
+    || !Number.isInteger(proof.repair_round) || proof.repair_round < 0
+    || proof.repair_round > 2) {
+    throw new Error('final proof authority drift');
+  }
+  const requirementIds = acceptance.task_requirements.map((item) => item.id);
+  if (!Array.isArray(proof.requirement_results) || proof.requirement_results.length !== requirementIds.length
+    || new Set(proof.requirement_results.map((item) => item.id)).size !== requirementIds.length
+    || requirementIds.some((id) => !proof.requirement_results.some((item) => item.id === id))) {
+    throw new Error('final proof task-requirement coverage drift');
+  }
+  if (!Array.isArray(proof.checks) || proof.checks.length !== REQUIRED_QUALITY_CHECKS.length
+    || new Set(proof.checks.map((item) => item.id)).size !== REQUIRED_QUALITY_CHECKS.length
+    || REQUIRED_QUALITY_CHECKS.some((id) => !proof.checks.some((item) => item.id === id))) {
+    throw new Error('final proof quality-check coverage drift');
+  }
+  for (const item of [...proof.requirement_results, ...proof.checks]) {
+    if (typeof item.pass !== 'boolean' || !Array.isArray(item.evidence) || item.evidence.length === 0
+      || item.evidence.some((entry) => typeof entry !== 'string' || !entry.trim())) {
+      throw new Error(`invalid final proof result: ${item.id || 'unknown'}`);
+    }
+  }
+  const computedPass = [...proof.requirement_results, ...proof.checks].every((item) => item.pass);
+  if (proof.pass !== computedPass) throw new Error('final proof pass does not match its atomic results');
+  return proof;
+}
+
+function repairReceiptPath(round) {
+  return path.join(repairsDir, `round-${round}.json`);
+}
+
+function readRepairChain(mission, acceptanceSha, admissionSha) {
+  const receipts = [];
+  for (let round = 0; round < mission.repair_round_budget; round += 1) {
+    const file = repairReceiptPath(round);
+    if (!fs.existsSync(file)) {
+      for (let later = round + 1; later < mission.repair_round_budget; later += 1) {
+        if (fs.existsSync(repairReceiptPath(later))) throw new Error('repair receipt chain is non-contiguous');
+      }
+      break;
+    }
+    const receipt = readJson(file);
+    if (receipt.schema_version !== '0.1' || receipt.status !== 'repair-authorized'
+      || receipt.mission_sha256 !== sha256File(missionPath)
+      || receipt.acceptance_plan_sha256 !== acceptanceSha
+      || receipt.product_build_admission_sha256 !== admissionSha
+      || receipt.repair_round !== round || receipt.next_repair_round !== round + 1
+      || typeof receipt.failed_proof_sha256 !== 'string'
+      || typeof receipt.failed_product_tree_sha256 !== 'string'
+      || !Array.isArray(receipt.failed_requirement_ids)
+      || !Array.isArray(receipt.failed_quality_check_ids)) {
+      throw new Error(`repair receipt authority drift: round ${round}`);
+    }
+    receipts.push(receipt);
+  }
+  return receipts;
+}
+
+function writeRepairReceipt(proof, proofSha, acceptanceSha, admissionSha) {
+  const failedRequirements = proof.requirement_results.filter((item) => !item.pass).map((item) => item.id);
+  const failedChecks = proof.checks.filter((item) => !item.pass).map((item) => item.id);
+  const receipt = {
+    schema_version: '0.1',
+    status: 'repair-authorized',
+    mission_sha256: sha256File(missionPath),
+    acceptance_plan_sha256: acceptanceSha,
+    product_build_admission_sha256: admissionSha,
+    failed_proof_sha256: proofSha,
+    failed_product_tree_sha256: proof.product_tree_sha256,
+    repair_round: proof.repair_round,
+    next_repair_round: proof.repair_round + 1,
+    failed_requirement_ids: failedRequirements,
+    failed_quality_check_ids: failedChecks,
+  };
+  writeJsonAtomic(repairReceiptPath(proof.repair_round), receipt, true);
+  return receipt;
 }
 
 function emit(state, nextAction, evidence = {}) {
@@ -228,15 +359,6 @@ if (!fs.existsSync(decisionPath)) {
 const decision = readJson(decisionPath);
 const decisionSha = sha256File(decisionPath);
 const existingAdmission = fs.existsSync(admissionPath) ? readJson(admissionPath) : null;
-if (existingAdmission) {
-  if (existingAdmission.status !== 'admitted'
-    || existingAdmission.mission_sha256 !== sha256File(missionPath)
-    || existingAdmission.design_system_decision_sha256 !== decisionSha
-    || existingAdmission.strategy !== decision.strategy
-    || existingAdmission.implementation_owner !== 'main-agent') {
-    throw new Error('product-build admission authority drift');
-  }
-}
 let systemProofSha = null;
 if (decision.strategy === 'establish' || decision.strategy === 'refresh') {
   const proofPath = path.join(runDir, 'system', 'proof.json');
@@ -272,11 +394,38 @@ if (decision.strategy === 'establish' || decision.strategy === 'refresh') {
   throw new Error(`unsupported design-system strategy: ${decision.strategy}`);
 }
 
+if (!fs.existsSync(acceptancePath)) {
+  if (existingAdmission) throw new Error('admitted acceptance plan is missing');
+  emit('ACCEPTANCE_PLAN', 'materialize-task-acceptance-plan', {
+    mission_sha256: sha256File(missionPath),
+    task_sha256: mission.task_sha256,
+    design_system_decision_sha256: decisionSha,
+    required_states: REQUIRED_STATES,
+    required_viewports: REQUIRED_VIEWPORTS,
+    required_quality_checks: REQUIRED_QUALITY_CHECKS,
+  });
+  process.exit(0);
+}
+const acceptance = validateAcceptancePlan(readJson(acceptancePath), mission, decisionSha);
+const acceptanceSha = sha256File(acceptancePath);
+
+if (existingAdmission) {
+  if (existingAdmission.status !== 'admitted'
+    || existingAdmission.mission_sha256 !== sha256File(missionPath)
+    || existingAdmission.design_system_decision_sha256 !== decisionSha
+    || existingAdmission.acceptance_plan_sha256 !== acceptanceSha
+    || existingAdmission.strategy !== decision.strategy
+    || existingAdmission.implementation_owner !== 'main-agent') {
+    throw new Error('product-build admission authority drift');
+  }
+}
+
 if (!fs.existsSync(admissionPath)) {
   const admission = {
     schema_version: '0.1',
     mission_sha256: sha256File(missionPath),
     design_system_decision_sha256: decisionSha,
+    acceptance_plan_sha256: acceptanceSha,
     system_proof_sha256: systemProofSha,
     strategy: decision.strategy,
     implementation_owner: 'main-agent',
@@ -288,16 +437,52 @@ if (!fs.existsSync(admissionPath)) {
 
 const finalProofPath = path.join(runDir, 'proof.json');
 if (!fs.existsSync(finalProofPath)) {
-  emit('PRODUCT_BUILD', 'implement-real-route-then-verify', { admission_sha256: sha256File(admissionPath) });
+  emit('PRODUCT_BUILD', 'implement-real-route-then-verify', {
+    admission_sha256: sha256File(admissionPath),
+    acceptance_plan_sha256: acceptanceSha,
+    expected_repair_round: 0,
+  });
   process.exit(0);
 }
-const finalProof = readJson(finalProofPath);
+const admissionSha = sha256File(admissionPath);
+const repairChain = readRepairChain(mission, acceptanceSha, admissionSha);
+const finalProof = validateFinalProof(readJson(finalProofPath), acceptance, treeManifest(cwd));
+if (finalProof.repair_round !== repairChain.length) {
+  throw new Error(`final proof repair round drift: expected ${repairChain.length}, received ${finalProof.repair_round}`);
+}
+if (repairChain.length) {
+  const previous = repairChain.at(-1);
+  if (previous.failed_proof_sha256 === sha256File(finalProofPath)) {
+    throw new Error('focused repair must replace the failed proof');
+  }
+  if (previous.failed_product_tree_sha256 === finalProof.product_tree_sha256) {
+    throw new Error('focused repair must change the product tree');
+  }
+}
 if (finalProof.pass === true) {
-  emit('HANDOFF', 'write-delivery', { proof_sha256: sha256File(finalProofPath) });
+  emit('HANDOFF', 'write-delivery', {
+    proof_sha256: sha256File(finalProofPath),
+    acceptance_plan_sha256: acceptanceSha,
+    repair_rounds_used: repairChain.length,
+  });
   writeMissionMarker('completed');
-} else if (Number(finalProof.repair_round || 0) < mission.repair_round_budget) {
-  emit('BOUNDED_REVISION', 'apply-focused-repair', { proof_sha256: sha256File(finalProofPath) });
+} else if (finalProof.repair_round < mission.repair_round_budget) {
+  const proofSha = sha256File(finalProofPath);
+  const receipt = writeRepairReceipt(finalProof, proofSha, acceptanceSha, admissionSha);
+  emit('BOUNDED_REVISION', 'apply-focused-repair', {
+    proof_sha256: proofSha,
+    repair_receipt_sha256: sha256File(repairReceiptPath(finalProof.repair_round)),
+    next_repair_round: receipt.next_repair_round,
+    failed_requirement_ids: receipt.failed_requirement_ids,
+    failed_quality_check_ids: receipt.failed_quality_check_ids,
+  });
 } else {
-  emit('FAILED_HANDOFF', 'report-unresolved-blocks', { proof_sha256: sha256File(finalProofPath) });
+  emit('FAILED_HANDOFF', 'report-unresolved-blocks', {
+    proof_sha256: sha256File(finalProofPath),
+    acceptance_plan_sha256: acceptanceSha,
+    repair_rounds_used: repairChain.length,
+    unresolved_requirement_ids: finalProof.requirement_results.filter((item) => !item.pass).map((item) => item.id),
+    unresolved_quality_check_ids: finalProof.checks.filter((item) => !item.pass).map((item) => item.id),
+  });
   writeMissionMarker('failed');
 }

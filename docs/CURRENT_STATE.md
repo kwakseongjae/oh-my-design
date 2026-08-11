@@ -13,6 +13,8 @@
 - 실제 사용자 개입은 0이었지만 final mission들에 7개 council question이 생성됐고 landing/cold-chain은 model-authored answer 파일을 만들었으며 cold-chain은 abandoned+v2 두 run lineage를 남겼다. 따라서 one-shot autonomy claim은 BLOCK이며, 다음 구현은 zero fabricated user authority + exactly-one mission lineage + task-contract-aware bounded self-repair다.
 - 1.9.855 authority gate는 실제 smoke prompt 3개를 그대로 zero-interview 회귀로 잠갔다. 명시된 residents/operators/user, landing/queue/checklist, primary action/required journey를 user-stated authority로 보존하며 self-authored answers를 거부한다.
 - `.omd/autopilot-active.json`이 프로젝트당 active mission을 1개로 제한한다. HANDOFF/FAILED_HANDOFF는 completed/failed terminal이 되어 non-resumable이며, 새 run은 이전 marker가 정직한 terminal일 때만 시작한다.
+- 2.0 acceptance/proof hardening을 재개해 controller state flow에 연결했다. exact task quote·route·states·4 viewport·10 quality check가 잠긴 `acceptance-plan.json` 없이는 product admission이 발급되지 않는다. schema0.2 proof는 mission/acceptance/admission/current product tree와 atomic requirement/check evidence를 모두 묶고 controller가 pass를 재계산한다.
+- 최대2회 자율 수정은 같은 mission의 exclusive `repairs/round-<n>.json` chain으로만 진행된다. stale proof 재사용, round 건너뛰기, 같은 product tree의 표면적 proof 교체, 새 mission 회피를 모두 거부한다. provider-zero clean-dir가 질문0·lineage1·DESIGN proof·acceptance·의도적 accessibility failure·round0 receipt·focused repair·HANDOFF를 완주했다.
 
 - order2 cold-chain은 DESIGN.md proof PASS 후 20/100·UI-Resolved=false로 유효 종료됐다. evidence honesty/runtime은 PASS, task/queue/filter/detail/owner journey와 responsive/a11y는 FAIL이다. input 1,329,982(cached 1,235,456)+output 25,043, wall 497.649s이며 evaluator crash 없이 마지막 locale 셀로 진행한다.
 
@@ -3888,13 +3890,15 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. authority/lineage gate를 clean commit한 뒤 full provider-zero tests, lint/build/diff와 smoke-controller source-authority 회귀를 통과시킨다.
-2. task별 observable acceptance checklist를 implementation 전에 materialize하고 proof 실패를 같은 mission의 최대2회 focused repair 입력으로 연결한다.
-3. provider-zero clean-dir에서 질문0·lineage1·DS proof·task proof·repair receipt를 검증한다.
-4. 그 뒤에만 fresh 1.9.856 Luna/high 3셀을 준비한다. superiority/public one-shot claim은 12×5·transfer·blind-review 전까지 금지한다.
+1. acceptance/proof hardening 관련 파일만 clean commit한다. 사용자 소유 `web/public/llms-full.txt`는 접근·수정·stage하지 않는다.
+2. commit-bound smoke-controller source-authority 3 tests를 재실행하고 fresh 1.9.856 provider-zero plan/prepare/audit readiness를 확인한다.
+3. named in-app browser와 exact Luna/high runtime admission이 모두 green일 때만 1.9.856을 셀당 1회·retry0으로 실행한다.
+4. 실패는 그대로 분모에 유지하고, 3/3 UI-Resolved+DESIGN/acceptance/proof/lineage gate를 통과한 경우에만 12-task×5 competitor qualification을 준비한다.
+5. superiority/public one-shot claim은 12×5·Luna/Terra/Sol transfer·blind-review 전까지 금지한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
+- acceptance/proof 구현 중 provider/model/browser 실행은 없었다. fresh 1.9.856은 commit-bound source authority와 named-browser/runtime admission 전까지 계속 금지다.
 - 1.9.712 structured-CSS transfer lane은 같은 packet-completeness 클래스가 tested repair 뒤 재발해 hard pause다. 같은 polar task 또는 replacement/fresh-task provider 실행은 명시적 scope 결정 전 금지한다.
 - 1.9.675 local UI repair lane에는 막힘 없음. 모델 귀속이 없는 current-session 결과이므로 public Model/Skill Track 승격만 금지다.
 - 1.9.676 epoch impact lane에는 막힘 없음. historical artifacts는 immutable이며 cross-epoch aggregation만 금지다.

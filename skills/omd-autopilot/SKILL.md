@@ -50,21 +50,37 @@ folders and must never edit `DESIGN.md` or product files.
    propose; the main agent writes. Do not implement the product until proof
    passes. Run `validate-project-design-system.cjs <project-root> <run-dir>`;
    only `system/proof.json` with `pass: true` authorizes `PRODUCT_BUILD`.
-7. `PRODUCT_BUILD` — implement the requested real route and all required
+7. `ACCEPTANCE_PLAN` — before product admission, materialize
+   `acceptance-plan.json`. Quote the exact task bytes for every journey,
+   constraint, and protected unknown. Lock the real route, default/loading/
+   empty/error/success/disabled states, 1440/390/320/200%-reflow viewports,
+   and the exact functionality/journey/responsive/keyboard/accessibility/
+   honesty/design-conformance checks. A generic checklist is not admission.
+8. `PRODUCT_BUILD` — implement the requested real route and all required
    empty/loading/error/success/disabled states. Apply only proven or explicitly
    proposed project tokens.
-8. `VERIFY` — verify functionality, same-route desktop/mobile/320px/200%,
+9. `VERIFY` — verify functionality, same-route desktop/mobile/320px/200%,
    keyboard, accessibility, responsive behavior, copy, evidence honesty and
-   DESIGN.md-to-code conformance.
-9. `BOUNDED_REVISION` — the main agent may apply at most two focused repair
-   rounds. Critics stay read-only. Unresolved BLOCK produces a failed handoff.
-10. `HANDOFF` — report implemented files, system disposition, question count,
+   DESIGN.md-to-code conformance. `proof.json` schema 0.2 must bind the mission,
+   acceptance plan, product-build admission, route, exact current product-tree
+   SHA, repair round, every task requirement, and every quality check. Each
+   atomic result needs non-empty evidence. `pass` is the conjunction computed
+   from those results; prose confidence or a self-authored summary is not proof.
+   “Browser unavailable”, skipped checks, or missing screenshots must be a
+   failed check, never a passing substitute.
+10. `BOUNDED_REVISION` — the main agent may apply at most two focused repair
+   rounds in the same mission. The controller writes an exclusive receipt for
+   every failed proof, freezes the exact failed requirement/check IDs, and
+   requires both a changed product tree and a replacement proof at the next
+   round. Critics stay read-only. Unresolved BLOCK produces a failed handoff.
+11. `HANDOFF` — report implemented files, system disposition, question count,
     proof hashes, screenshots, failures, time and token coverage.
 
 Run `autopilot-mission.cjs <project-root> <run-dir> advance` at every state
 boundary. The controller rejects product edits before authority, limits
 pre-proof changes to `DESIGN.md`, issues the product-build admission only after
-an exact system proof, and refuses to force-pass an exhausted repair budget.
+an exact system proof and acceptance plan, recomputes atomic proof pass, and
+refuses to force-pass or replay an exhausted repair budget.
 Only one project-scoped Autopilot mission may be active. Continue its bounded
 repair loop in the same run; never create a second run to replace, retry, or
 escape an unresolved active mission. Completed and failed missions are
@@ -105,7 +121,8 @@ Store permanent artifacts under `.omd/runs/<run-id>/`:
 - `design-system-decision.json`
 - `system/proposal.md`, `system/provenance.json`, `system/coverage.json`
 - `implementation.json`
-- `proof.json` and screenshots
+- `acceptance-plan.json`
+- `proof.json`, `repairs/round-<n>.json`, and screenshots
 - `delivery.json`
 
 Receipts bind the original task, repository evidence, DESIGN.md, product output,

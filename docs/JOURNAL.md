@@ -5,6 +5,18 @@
 
 ---
 
+## 2026-08-11 (Codex) · Autopilot acceptance/proof/repair chain
+- task quote·route·states·4 viewport·10 checks를 잠근 acceptance plan 없이는 product build가 열리지 않는다.
+- atomic proof pass를 controller가 재계산하고 stale proof·same-tree repair·round skip을 fail-close한다.
+- clean-dir가 의도적 a11y 실패→round0 receipt→same-mission repair→HANDOFF를 질문0/provider0으로 완주했다.
+- full provider-free(스모크 commit gate 제외) 1039 pass/58 skip, lint/build/diff green; 다음은 clean commit 후 source-authority 재검증이다.
+
+## 2026-08-10 (Codex) · Autopilot acceptance/proof hardening 안전 중단
+- acceptance-plan 및 atomic proof validator helper만 `autopilot-mission.cjs`에 partial diff로 남아 있다.
+- state-flow/admission/repair-chain/test/canary 연결은 아직 미완료이며 테스트·커밋하지 않았다.
+- 다음은 partial diff 검사 → 최대2회 same-mission repair 연결 → provider-zero clean-dir 검증 순서다.
+- `web/public/llms-full.txt`는 사용자 소유로 계속 제외하고 Luna 1.9.856은 provider-zero green 전 실행 금지다.
+
 ## 2026-08-10 (Codex) · Autopilot authority/lineage gate
 - 1.9.854는 DESIGN proof 3/3이지만 UI-Resolved 0/3, 질문7·self-answer·duplicate lineage를 드러냈다.
 - 실제 세 prompt를 zero-interview fixture로 잠그고 user answer 자작을 controller에서 거부한다.
