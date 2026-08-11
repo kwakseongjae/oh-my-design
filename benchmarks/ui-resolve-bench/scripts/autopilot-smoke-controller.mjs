@@ -432,6 +432,9 @@ function tokenSummary(run) {
 export function objectiveFailureIds(score) {
   return Object.entries(score?.assertions ?? {}).filter(([, pass]) => pass !== true).map(([id]) => id).sort();
 }
+export function objectivePassingIds(score) {
+  return Object.entries(score?.assertions ?? {}).filter(([, pass]) => pass === true).map(([id]) => id).sort();
+}
 function boundedObservation(value) {
   if (value === null || typeof value === "boolean" || typeof value === "number") return value;
   if (typeof value === "string") return value.slice(0, 500);
@@ -485,8 +488,8 @@ function currentRepairRound(runDir) {
   if (!existsSync(repairs)) return 0;
   return readdirSync(repairs).filter((name) => /^round-[0-1]\.json$/.test(name)).length;
 }
-export function buildControllerRepairPrompt({ originalPrompt, feedbackPath, feedbackSha256, repairRound, failedIds }) {
-  return `${originalPrompt}\n\n---\nCONTROLLER-OWNED BOUNDED REPAIR ${repairRound}/2\nContinue the existing OmD Autopilot mission. Do not bootstrap a new mission, do not ask the user, and do not replace the project design system. Read the hash-bound controller feedback at ${feedbackPath} (SHA-256 ${feedbackSha256}). Treat its objective_observations as controller measurements, not suggestions or DOM requirements. Fix only the failed objective assertions: ${failedIds.join(", ") || "terminal OmD proof"}. Preserve already passing behavior and protected unknowns. Update the real product, write proof.json for repair_round ${repairRound}, and run the installed autopilot-mission controller until it reaches EXTERNAL_VERIFY or a truthful failed handoff. Do not claim success from prose or from an unavailable browser.\n`;
+export function buildControllerRepairPrompt({ originalPrompt, feedbackPath, feedbackSha256, repairRound, failedIds, protectedIds = [], regressedIds = [] }) {
+  return `${originalPrompt}\n\n---\nCONTROLLER-OWNED BOUNDED REPAIR ${repairRound}/2\nContinue the existing OmD Autopilot mission. Do not bootstrap a new mission, do not ask the user, and do not replace the project design system. Read the hash-bound controller feedback at ${feedbackPath} (SHA-256 ${feedbackSha256}). Treat its objective_observations and protected_assertions as controller measurements, not suggestions or DOM requirements. Fix only the failed objective assertions: ${failedIds.join(", ") || "terminal OmD proof"}. The following assertions are cumulative non-regression invariants and must remain true after this patch: ${protectedIds.join(", ") || "none recorded"}.${regressedIds.length ? ` Restore these previously passing assertions before any other refinement: ${regressedIds.join(", ")}.` : ""} Preserve protected unknowns. Make the smallest product change that satisfies the failures without changing successful journeys, labels, state transitions, or evidence semantics; reverify both the repaired failures and every protected assertion before handing control back. Update the real product, write proof.json for repair_round ${repairRound}, and run the installed autopilot-mission controller until it reaches EXTERNAL_VERIFY or a truthful failed handoff. Do not claim success from prose or from an unavailable browser.\n`;
 }
 function writeControllerVerification({ workspace, runDir, round, scorePath, evaluatorResultPath, score }) {
   const proofPath = join(runDir, "proof.json");
@@ -529,6 +532,7 @@ function runCommand(args) {
   const workspace = join(root, next.id);
   const controllerDir = join(root, ".controller-artifacts", next.id); mkdirSync(controllerDir, { recursive: true });
   const attempts = [];
+  const protectedAssertions = new Map();
   let final = null;
   for (let attempt = 0; attempt <= plan.smoke_contract.autonomy_contract.repair_rounds_max; attempt += 1) {
     const suffix = attempt === 0 ? null : `repair-${attempt}`;
@@ -580,14 +584,21 @@ function runCommand(args) {
     const taskPass = score?.ui_resolved === true;
     const autopilotProof = taskPass ? controllerAutopilotProof(plan, next, workspace) : { pass: false, reason: "objective-task-score-failed" };
     const success = run.process.exit_code === 0 && !run.process.timed_out && dsProof.pass && autopilotProof.pass && taskPass;
+    const regressedAssertionIds = [...protectedAssertions.keys()].filter((id) => score?.assertions?.[id] !== true).sort();
     const attemptRecord = {
       attempt, kind: attempt === 0 ? "initial" : "bounded-repair", run, run_result_path: relative(workspace, runResultPath).split(sep).join("/"),
       run_result_sha256: sha256(readFileSync(runResultPath)), token_usage: tokenSummary(run), design_system_proof: dsProof,
       autopilot_proof: autopilotProof, task_score: score, evaluator, verification,
       task_score_sha256: existsSync(scorePath) ? sha256(readFileSync(scorePath)) : null,
-      evaluator_result_sha256: sha256(readFileSync(evaluatorResultPath)), success,
+      evaluator_result_sha256: sha256(readFileSync(evaluatorResultPath)),
+      protected_assertion_ids_before_attempt: [...protectedAssertions.keys()].sort(),
+      regressed_assertion_ids: regressedAssertionIds,
+      success,
     };
     attempts.push(attemptRecord);
+    for (const id of objectivePassingIds(score)) {
+      if (!protectedAssertions.has(id)) protectedAssertions.set(id, boundedObservation(score?.evidence?.[id] ?? null));
+    }
     final = attemptRecord;
     if (success || attempt === plan.smoke_contract.autonomy_contract.repair_rounds_max
       || run.process.exit_code !== 0 || run.process.timed_out || !runDir) break;
@@ -596,11 +607,12 @@ function runCommand(args) {
     if (missionState?.state !== "BOUNDED_REVISION" || nextRepairRound !== attempt + 1) break;
     const failedIds = [...new Set([
       ...objectiveFailureIds(score),
+      ...regressedAssertionIds,
       ...(missionState.evidence?.failed_requirement_ids ?? []),
       ...(missionState.evidence?.failed_quality_check_ids ?? []),
     ])].sort();
     const feedback = {
-      schema_version: "0.2", controller: "autopilot-smoke-controller-v0.2", task_id: next.task_id,
+      schema_version: "0.3", controller: "autopilot-smoke-controller-v0.3", task_id: next.task_id,
       mission_sha256: sha256(readFileSync(join(runDir, "mission.json"))),
       repair_round: nextRepairRound, prior_attempt: attempt, failed_assertion_ids: failedIds,
       task_score_sha256: existsSync(scorePath) ? sha256(readFileSync(scorePath)) : null,
@@ -608,6 +620,10 @@ function runCommand(args) {
       score: score?.score ?? null, deterministic_max: score?.deterministic_max ?? null,
       failed_groups: Object.entries(score?.groups ?? {}).filter(([, value]) => value?.pass !== true).map(([id]) => id).sort(),
       objective_observations: objectiveFailureObservations(score),
+      protected_assertion_ids: [...protectedAssertions.keys()].sort(),
+      protected_assertions: Object.fromEntries([...protectedAssertions.entries()].sort(([a], [b]) => a.localeCompare(b))
+        .map(([id, observed]) => [id, { assertion_pass: true, observed }])),
+      regressed_assertion_ids: regressedAssertionIds,
       task_score_path: relative(workspace, scorePath).split(sep).join("/"),
     };
     const feedbackPath = join(workspace, ".benchmark/controller-feedback", `round-${nextRepairRound}.json`);
@@ -619,6 +635,7 @@ function runCommand(args) {
       originalPrompt: readFileSync(join(workspace, ".benchmark/PROMPT.md"), "utf8"),
       feedbackPath: relative(workspace, feedbackPath).split(sep).join("/"), feedbackSha256: feedbackSha,
       repairRound: nextRepairRound, failedIds,
+      protectedIds: [...protectedAssertions.keys()].sort(), regressedIds: regressedAssertionIds,
     }), { encoding: "utf8", flag: "wx" });
   }
   const run = final.run; const dsProof = final.design_system_proof; const autopilotProof = final.autopilot_proof;

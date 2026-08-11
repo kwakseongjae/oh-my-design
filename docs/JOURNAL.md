@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-11 (Codex) · cumulative repair invariant
+- controller feedback0.3이 모든 누적 통과 assertion과 bounded 관찰값을 수리 invariant로 봉인한다.
+- 이전 통과가 깨지면 regressed ID로 기록하고 다음 수리에서 실패보다 먼저 복구하도록 한다.
+- focused controller5/5와 lint/diff-check가 green이며 commit-bound 전체 회귀가 다음이다.
+
 ## 2026-08-11 (Codex) · 1.9.863 objective-first smoke frozen
 - objective-first repair는 실제 작동했지만 landing30→80→50, cold20→40→40으로 품질 목표를 통과하지 못했다.
 - locale는 provider 성공 뒤 pointer-only evaluator timeout으로 no-score가 되어 root를 영구 동결했다.

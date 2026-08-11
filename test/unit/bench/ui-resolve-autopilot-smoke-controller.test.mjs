@@ -10,6 +10,7 @@ import {
   missionProductTreeManifest,
   objectiveFailureIds,
   objectiveFailureObservations,
+  objectivePassingIds,
 } from "../../../benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs";
 
 const repo = resolve(import.meta.dirname, "../../..");
@@ -41,15 +42,20 @@ describe("autopilot Luna/high smoke controller", () => {
   test("builds a bounded same-mission repair prompt from objective failures", () => {
     const failed = objectiveFailureIds({ assertions: { accessibility: false, runtime_clean: true, responsive: false } });
     expect(failed).toEqual(["accessibility", "responsive"]);
+    expect(objectivePassingIds({ assertions: { accessibility: false, runtime_clean: true, responsive: false } })).toEqual(["runtime_clean"]);
     const prompt = buildControllerRepairPrompt({
       originalPrompt: "Build the surface.", feedbackPath: ".benchmark/controller-feedback/round-1.json",
       feedbackSha256: "a".repeat(64), repairRound: 1, failedIds: failed,
+      protectedIds: ["runtime_clean", "reservation_state"], regressedIds: ["reservation_state"],
     });
     expect(prompt).toContain("Continue the existing OmD Autopilot mission");
     expect(prompt).toContain("accessibility, responsive");
     expect(prompt).toContain("do not ask the user");
     expect(prompt).toContain("Do not bootstrap a new mission");
-    expect(prompt).toContain("objective_observations as controller measurements");
+    expect(prompt).toContain("objective_observations and protected_assertions as controller measurements");
+    expect(prompt).toContain("cumulative non-regression invariants");
+    expect(prompt).toContain("runtime_clean, reservation_state");
+    expect(prompt).toContain("Restore these previously passing assertions before any other refinement: reservation_state");
   });
   test("embeds bounded objective observations instead of assertion names alone", () => {
     const observations = objectiveFailureObservations({

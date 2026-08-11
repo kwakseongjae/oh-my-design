@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: Autopilot objective-first commit `77789f51` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-11 · fresh 1.9.863 동결 진단 및 locale keyboard evaluator 보정 완료
+- 갱신: 2026-08-11 · 1.9.863 동결 진단, keyboard evaluator 및 cumulative repair invariant 보정 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -12,7 +12,8 @@
 - 1.9.863은 objective-first controller 경로를 실제로 증명했다. landing/cold-chain 모두 initial build 직후 객관 평가를 받고 최대2회 hash-bound repair를 수행했지만 `30→80→50`, `20→40→40`으로 UI-Resolved0/2였다. landing은 수리 중 이미 통과하던 reservation state를 회귀시켰으므로 다음 P0는 passing assertion invariant를 repair prompt에 봉인하는 것이다.
 - locale provider는 exit0이었으나 evaluator가 native checkbox에 `.check()` 포인터 클릭을 강제해 시각 wrapper에 가로막혔고 no-score로 root가 영구 동결됐다. evaluator는 실제 사용자 계약인 focus+Space로 전환했고 provider-free 재평가가 정상 score30을 기록했다(SHA `cee20b70…48d694`). sealed score를 대체하지 않는다.
 - 1.9.863은 valid terminal2/3, DESIGN.md proof3/3, 질문 artifact0, provider exposures7이다. 관측 input+output 9,585,274 tokens, wall2,697.294s이며 retry/replacement/fallback/Cursor0이다. root는 재사용 금지다.
-- 다음 순서: keyboard interaction 회귀+full provider-free gate→commit→passing-invariant controller contract 및 cold-chain observation 정합화→oracle/mutant calibration→fresh epoch. public one-shot/superiority claim은 계속 BLOCK이다.
+- repair controller는 누적 통과 assertion ID+관측값을 feedback schema0.3에 봉인하고 이전 통과가 깨지면 `regressed_assertion_ids`로 최우선 복구를 요구한다. repair prompt는 실패만 고치는 동시에 누적 invariant 전체를 재검증하도록 제한된다.
+- 다음 순서: commit-bound smoke 회귀→cold-chain observation/repair 정합화→두 valid oracle+isolated mutant calibration→fresh epoch. public one-shot/superiority claim은 계속 BLOCK이다.
 
 - 1.9.862 exact Luna/high 3셀은 질문0·retry/replacement/fallback0으로 완료됐고 DESIGN.md proof3/3, UI-Resolved0/3이다. 점수는 landing10, cold-chain40, locale20→40→40이며 5 calls·3,065.460s·10,900,877 input+output tokens다.
 - in-app 검수에서 세 화면의 시각 완성도는 높았지만 landing 예약 진입, cold-chain owner validation/keyboard detail/sample scope, locale unavailable-translation/a11y가 실제로 빠졌음을 확인했다. sealed 결과와 workspace는 수정하지 않는다.
