@@ -48,9 +48,9 @@
     "evaluator_sha256": "d6dc37b5d59e9b7ae7a5386553fd0150562499fbc57d6c1fe7188d4e9e79b593",
     "starter_path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/blank-shell/index.html",
     "starter_sha256": "a9b82fcdf3efa04783d3be61544f84b0a4f3209f0fc5f6ac741ec853d03871b3",
-    "portable_bundle_sha256": "5d9e8e4a77340adf4a8b2aa4a6cdaa3a98a85d9716622407fb116559ae266aac",
+    "portable_bundle_sha256": "128d9d19cf259cd3def1b34220c2c35097189c402f5d6d9913c2e74e3294bdee",
     "portable_bundle_files": [
-      { "path": "skills/omd-autopilot/SKILL.md", "sha256": "4cd6b65387e34ed9c05c23051d62a04c0b5c42d83c180ab9cd834f0aa607ba8f", "bytes": 10184 },
+      { "path": "skills/omd-autopilot/SKILL.md", "sha256": "6f80daad382ff296f7df31c92e436cbaf4029fb765fda27b58e6d9c929d9d64b", "bytes": 10551 },
       { "path": "skills/omd-autopilot/references/design-system-contract.md", "sha256": "10bad9dcc2a5bef0624d9a092a444654bfc26961b1cab409d90a57182550095b", "bytes": 1941 },
       { "path": "agents/omd-design-system-architect.md", "sha256": "61fdcce083134118613f0899dcda5392b7b20d9a59d423037d4f801b9d7a5cca", "bytes": 2085 },
       { "path": "agents/omd-ux-engineer.md", "sha256": "b4d36c762c7b8bf15e120c0d5414105380b30f4c4d97d2bf6d4e9fcebdf33af9", "bytes": 13594 },
