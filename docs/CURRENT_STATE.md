@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: task baseline commit `6acf2876`, repaired skill/evaluator commit `f1b5e219` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-10 · 1.9.854 Luna/high smoke complete; 2.0 quality gate failed
+- 갱신: 2026-08-11 · 1.9.857 Luna/high diagnostic smoke 3/3 terminal; 2.0 closed-loop repair 구현 착수
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.857은 named in-app browser identity를 plan에 봉인한 뒤 Luna/high 3셀을 retry/replacement/fallback 없이 순차 완결했다. 3/3 valid terminal, DESIGN.md proof 3/3이지만 UI-Resolved 0/3, Autopilot terminal proof 1/3이다. 점수는 landing30, cold-chain20, locale10이다.
+- 관측 합계는 wall 1,975.958s, input+output 7,276,794(cached input 6,776,064)이다. plan SHA `a61bfe7c…013c0`, execution-state SHA `34c659ee…4654`, exact 결과는 `reports/autopilot-luna-high-smoke-1.9.857/RESULTS.json`에 봉인했다.
+- 주된 2.0 구조 결함은 model turn 안의 자체 검증 실패와 controller-owned objective evaluator가 분리되어, 객관 실패 ID가 같은 mission의 최대2회 repair loop로 돌아가지 않는 점이다. landing/locale는 `BOUNDED_REVISION`에서 종료했고 cold-chain은 자체 proof HANDOFF였지만 objective UI가 실패했다.
+- 다음 구현은 initial turn → controller DS/autopilot/task 평가 → hash-bound repair feedback → same mission focused repair turn → 재평가를 최대2회 수행하는 closed loop다. 이는 provider retry/replacement가 아니라 사전등록된 내부 repair call이며 모든 call/time/token을 노출한다. 1.9.857은 재사용하지 않고 fresh epoch에서만 재검증한다.
 
 - fresh 1.9.854 smoke는 3/3 valid terminal로 완결됐다. DESIGN.md proof 3/3 PASS지만 UI-Resolved 0/3이며 score는 landing10, cold-chain20, locale40(평균23.33/중앙20)이다. journey·responsive는 0/3, accessibility 1/3, runtime 3/3다. 총 wall 1,594.326s, input+output 5,632,536(cached input 5,256,960 포함)이다.
 - 실제 사용자 개입은 0이었지만 final mission들에 7개 council question이 생성됐고 landing/cold-chain은 model-authored answer 파일을 만들었으며 cold-chain은 abandoned+v2 두 run lineage를 남겼다. 따라서 one-shot autonomy claim은 BLOCK이며, 다음 구현은 zero fabricated user authority + exactly-one mission lineage + task-contract-aware bounded self-repair다.
@@ -17,11 +22,6 @@
 - 최대2회 자율 수정은 같은 mission의 exclusive `repairs/round-<n>.json` chain으로만 진행된다. stale proof 재사용, round 건너뛰기, 같은 product tree의 표면적 proof 교체, 새 mission 회피를 모두 거부한다. provider-zero clean-dir가 질문0·lineage1·DESIGN proof·acceptance·의도적 accessibility failure·round0 receipt·focused repair·HANDOFF를 완주했다.
 - smoke success도 terminal mission `audit` PASS를 필수로 한다. exactly-one lineage, exact prompt retention, answer artifact 0, council question 0, immutable portable bundle, acceptance/admission/schema0.2 proof/repair/HANDOFF hash chain 중 하나라도 어긋나면 UI가 좋아도 terminal provider failure다. `.benchmark` controller runtime bytes는 product tree에서 제외하지만 실제 product drift는 audit가 거부한다.
 - 1.9.856은 plan/prepare/audit provider-zero PASS 뒤 terminal verifier integration으로 source bytes가 바뀌어 실행 전에 폐기됐다(provider/model/browser 0). stale plan/root 재사용은 금지하며 fresh epoch는 1.9.857이다.
-- fresh 1.9.857은 commit `6db8a26b` 기준 plan/prepare/audit PASS, 3개 workspace untouched, provider/model/Cursor 0이다. in-app browser runtime 목록이 비어 있어 browser admission만 pending이며 다른 브라우저로 대체하지 않았다.
-
-- order2 cold-chain은 DESIGN.md proof PASS 후 20/100·UI-Resolved=false로 유효 종료됐다. evidence honesty/runtime은 PASS, task/queue/filter/detail/owner journey와 responsive/a11y는 FAIL이다. input 1,329,982(cached 1,235,456)+output 25,043, wall 497.649s이며 evaluator crash 없이 마지막 locale 셀로 진행한다.
-
-- fresh 1.9.854 order1 landing은 DESIGN.md proof PASS 후 10/100·UI-Resolved=false로 유효 종료됐다. runtime만 critical PASS이며 reservation journey, responsive, contrast accessibility, unavailable-information honesty가 실패했다. input 1,697,747(cached 1,611,008)+output 26,288, wall 543.428s이며 retry 없이 order2로 진행한다.
 
 - order3 provider 작업은 완료됐지만 locale selector가 영어 accessible name만 고정 탐색해 controller evaluator가 no-score로 종료했고 1.9.853은 2/3에서 영구 동결됐다. evaluator는 exact 5 locale option authority로 native select를 재탐색하고 native-script 버튼도 허용하며, state affordance 부재를 timeout이 아닌 assertion failure로 기록하도록 수정했다. 동결 산출물 provider-free 재평가는 40/100 valid failure(5 locale/lang/script PASS, progress/completion/unavailable/a11y FAIL)다. 1.9.853은 재사용하지 않고 fresh root만 허용한다.
 

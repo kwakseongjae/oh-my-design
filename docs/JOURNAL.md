@@ -5,6 +5,18 @@
 
 ---
 
+## 2026-08-11 (Codex) · Luna/high 1.9.857 diagnostic complete
+- named in-app browser를 plan에 봉인하고 3셀을 retry 없이 순차 완결했다.
+- DESIGN.md proof 3/3, UI-Resolved 0/3, Autopilot proof 1/3; 점수 30/20/10이다.
+- objective evaluator 결과가 같은 mission repair로 환류되지 않는 controller 결함을 2.0 P0로 확정했다.
+- 다음은 최대2회 hash-bound closed-loop repair를 구현하고 fresh epoch에서만 재검증한다.
+
+## 2026-08-11 (Codex) · In-app browser 자동 열기 정책 차단
+- 전용 Browser 연결을 재시도했지만 `iab` 인스턴스/발견 목록이 비어 있었다.
+- Codex 앱의 Browser 패널을 직접 열려 했으나 앱 자체 Computer Use는 안전 정책상 차단됐다.
+- 외부 브라우저·가짜 receipt·provider 실행 없이 1.9.857 prepared root를 그대로 보존했다.
+- 사용자가 Browser 패널/탭 하나만 열면 identity 봉인 후 Luna/high 3셀을 순차 실행한다.
+
 ## 2026-08-11 (Codex) · Fresh 1.9.857 provider-zero ready
 - commit-bound focused18와 full 1042 pass/58 skip, lint/build/diff green 뒤 fresh plan/prepare/audit를 완료했다.
 - Luna/high 3셀·retry0 root는 untouched이며 provider/model/Cursor 호출은 0이다.
