@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: Autopilot pending-interview measurement commit `f48173c7` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · 1.9.872 3-cell 완료 및 provider-free RCA, positive-journey authority 보강 commit 준비
+- 갱신: 2026-08-12 · 1.9.873 3-cell 완료 및 structure-neutral evaluator/repair-feedback 보강 검증
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.873 exact Luna/high 3셀은 valid terminal3/3·DESIGN proof3/3·질문0·retry/replacement/fallback/Cursor0으로 완료됐다. sealed UI-Resolved는1/3이며 landing `50→70→100`, cold `20→20`, locale `50→50`; 총7 calls·input10,694,925(cached10,030,592)+output162,476·provider wall1,128.180s다.
+- provider-free structure-neutral 재평가는 cold60, locale60이다. cold의 default-urgent native select는 all-record baseline6(urgent4/nonurgent2)을 실제로 보유하고 selected option 자체가 가시 상태이며, 연결된 polite status도 유효한 owner 오류다. 남은 실제 결함은40px touch target과 aria-hidden focus subtree다. locale는 visible fictional/non-medical disclosure와5개 core localization이 모두 유효하고, 실제 결함은 progressbar가 visible1/4→4/4와 달리 계속0/0인 점이다.
+- controller repair feedback은 cold round1에서510,601 bytes까지 팽창했다. 새 objective observations0.3은 Axe finding을 target/state/viewport로 dedupe하고 raw viewports를 supporting evidence에서 제외하며 filter/owner-error/honesty/progress 진단을 직접 제공한다. corrected cold payload는2,007 bytes다.
+- 다음 순서: evaluator/controller/skill/1.9.873 evidence를 scoped commit(`web/public/llms-full.txt` 제외) → commit-bound full gate → fresh1.9.874 plan/root/named in-app admission → exact Luna/high3셀. fresh3/3 전까지 12-task comparison과 public one-shot claim은 BLOCK이다.
 
 - 1.9.872 exact Luna/high 3셀은 valid terminal3/3·DESIGN proof3/3·질문0·retry/replacement/fallback/Cursor0으로 완료됐지만 sealed UI-Resolved0/3이다. landing `30→30`, cold `20→60→60`, locale `40→60→60`; 총8 calls·input10,866,803(cached10,152,192)+output149,258·provider wall3,475.025s다.
 - provider-free 보정 결과 cold-chain 동일 bytes는100/100이고 locale는60/100, landing은30/100이다. cold는 sample scope와 evidence label이 같은 detail 안에서 분리된 유효 구조를 evaluator가 놓쳤다. locale는 `ja-JP`를 `ja`와 불일치로 오판했지만, 실제로 일본어 core checklist를 제공하지 않아 보정 후에도 실패한다. landing은 Reserve CTA가 예약 시작 UI를 열지 않고 contrast 2건이 남은 실제 결손이다.

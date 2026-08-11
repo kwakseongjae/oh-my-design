@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.873 structure-neutral repair evidence
+- sealed smoke는 valid3/3·DESIGN proof3/3·UI1/3, 질문·retry·fallback·Cursor0이다.
+- 보정 결과 cold60/locale60이며 실제 결함은 touch/hidden-focus와 progressbar0/0으로 좁혀졌다.
+- native selected option·associated polite status·non-medical wording을 구조 중립적으로 인정했다.
+- repair payload를 510,601B→2,007B로 압축했고 다음은 commit-bound gate 뒤 fresh1.9.874다.
+
 ## 2026-08-12 (Codex) · 1.9.872 authority-preserving RCA
 - sealed smoke는 valid3/3·DESIGN proof3/3이나 UI0/3, provider-free 보정은 cold만100이다.
 - landing 예약 시작/contrast와 locale 일본어 core localization은 실제 제품 결손으로 남는다.

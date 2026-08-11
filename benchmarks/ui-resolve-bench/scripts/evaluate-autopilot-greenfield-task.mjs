@@ -809,8 +809,6 @@ async function evaluateColdChain(page, viewport) {
     }
     return [...recordsByIdentity.values()];
   };
-  const records = await collectRecords();
-  const initialAxe = await axeSeriousCritical(page);
   const filterKinds = [
     ['checkbox', page.getByRole('checkbox', { name: /urgent/i })],
     ['switch', page.getByRole('switch', { name: /urgent/i })],
@@ -823,6 +821,33 @@ async function evaluateColdChain(page, viewport) {
     const visible = await visibleLocatorIndexes(candidate);
     if (visible.length) { filterKind = kind; filter = candidate.nth(visible[0]); break; }
   }
+  // Establish an observable unfiltered baseline before measuring the queue.
+  // A native select may legitimately default to "Urgent only" while still
+  // exposing an "All ..." option and valid non-urgent records. Measuring only
+  // the default filtered DOM would turn that product choice into a false
+  // queue-precondition failure.
+  let baselineFilterReset = false;
+  let baselineSelectedOption = null;
+  if (filterKind === 'combobox' && filter) {
+    baselineSelectedOption = (await filter.locator('option:checked').innerText()).replace(/\s+/g, ' ').trim();
+    if (/urgent/i.test(baselineSelectedOption)) {
+      const options = await filter.locator('option').all();
+      for (const option of options) {
+        const label = (await option.innerText()).replace(/\s+/g, ' ').trim();
+        if (/^all(?:\s+(?:exceptions?|priorities|shipments?|records?))?$/i.test(label)) {
+          const value = await option.getAttribute('value');
+          if (value !== null) {
+            await filter.selectOption(value);
+            await afterPaint(page);
+            baselineFilterReset = true;
+          }
+          break;
+        }
+      }
+    }
+  }
+  const records = await collectRecords();
+  const initialAxe = await axeSeriousCritical(page);
   const filterKeyboard = await tabUntilFocused(page, filter);
   if (filterKeyboard && filterKind === 'combobox') {
     const options = await filter.locator('option').all();
@@ -860,7 +885,14 @@ async function evaluateColdChain(page, viewport) {
       break;
     }
   }
-  const filterStateVisible = filterKind === 'button' ? /urgent/i.test(filterLabel) : filterSummaryVisible;
+  const selectedOptionText = filterKind === 'combobox' && filter
+    ? (await filter.locator('option:checked').innerText()).replace(/\s+/g, ' ').trim()
+    : '';
+  const filterStateVisible = filterKind === 'button'
+    ? /urgent/i.test(filterLabel)
+    : filterKind === 'combobox'
+      ? /urgent/i.test(selectedOptionText)
+      : filterSummaryVisible;
   const filterSelectedAndVisible = filterKeyboard && filterProgrammatic && filterStateVisible;
   const urgentIds = records.filter((item) => item.urgent).map((item) => item.identity).filter(Boolean);
   const filteredExact = filteredRecords.length === urgentIds.length && filteredRecords.every((id) => urgentIds.includes(id));
@@ -907,6 +939,9 @@ async function evaluateColdChain(page, viewport) {
     && /\b(?:observed|temperature|activity|scan|reading|event|sensor|probe|evidence)\b/i.test(detailEvidenceText));
   const detailAxe = await axeSeriousCritical(page);
   let errorAssociated = false;
+  let ownerFocusedAfterError = false;
+  let ownerDescribedBy = '';
+  let ownerAlertText = '';
   let sampleOwnerOptions = false;
   let assignedPersistent = false;
   let selectedOwner = '';
@@ -926,8 +961,23 @@ async function evaluateColdChain(page, viewport) {
       const described = await owner.getAttribute('aria-describedby');
       const alerts = page.getByRole('alert');
       const visibleAlerts = await visibleLocatorIndexes(alerts);
-      const alertText = visibleAlerts.length === 1 ? (await alerts.nth(visibleAlerts[0]).innerText()).trim() : '';
-      errorAssociated = await owner.evaluate((element) => element === document.activeElement) && Boolean(described) && Boolean(alertText);
+      let alertText = visibleAlerts.length === 1 ? (await alerts.nth(visibleAlerts[0]).innerText()).trim() : '';
+      let describedFeedbackSemantic = false;
+      for (const id of String(described || '').trim().split(/\s+/).filter(Boolean)) {
+        const feedback = page.locator(`[id=${JSON.stringify(id)}]`);
+        if (await feedback.count() !== 1 || !await feedback.isVisible()) continue;
+        const text = (await feedback.innerText()).replace(/\s+/g, ' ').trim();
+        const role = await feedback.getAttribute('role');
+        const live = await feedback.getAttribute('aria-live');
+        if (text && (['alert', 'status'].includes(role) || ['assertive', 'polite'].includes(live))) {
+          alertText ||= text;
+          describedFeedbackSemantic = true;
+        }
+      }
+      ownerFocusedAfterError = await owner.evaluate((element) => element === document.activeElement);
+      ownerDescribedBy = described || '';
+      ownerAlertText = alertText;
+      errorAssociated = ownerFocusedAfterError && Boolean(ownerDescribedBy) && Boolean(ownerAlertText) && describedFeedbackSemantic;
       errorAxe = await axeSeriousCritical(page);
       const options = await owner.locator('option').allTextContents();
       const ownerScope = await owner.evaluate((element) => {
@@ -968,7 +1018,7 @@ async function evaluateColdChain(page, viewport) {
   const protectedClaims = [...unqualified.matchAll(/\b(?:FDA|GDP|GMP)[ -]?(?:compliant|certified|approved)?\b|\b(?:regulatory|compliance) (?:verified|approved|certified)|\breal (?:shipments?|staff)\b/gi)].map((match) => match[0]);
   const criticalFieldsReachable = viewport.width > 390 || filteredRecords.length === urgentIds.length;
   const overflow = await documentOverflowObservation(page);
-  return { task_identity: /cold[-\s]chain|shipment exception|exception queue/i.test(initialText), sample_scope_visible: /\b(?:sample|demo|fictional)\b/i.test(initialText), shipment_count: records.length, urgent_count: records.filter((item) => item.urgent).length, non_urgent_count: records.filter((item) => item.nonUrgent).length, routine_count: records.filter((item) => item.nonUrgent).length, filter_selected_and_visible: filterSelectedAndVisible, filtered_contents_exact: filteredExact, keyboard_open_sample: keyboardOpen, matching_evidence_detail: matchingEvidence, owner_error_associated: errorAssociated, sample_owner_options: sampleOwnerOptions, assigned_owner_confirmed_and_persistent: assignedPersistent, protected_unknown_claims: protectedClaims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: overflow.document_overflow_px, document_overflow_offenders: overflow.offenders, critical_fields_reachable: criticalFieldsReachable, controls_horizontally_unclipped: controlsUnclipped, control_min_dimension_px: controlMin, initial_axe_serious_critical: initialAxe.count, filtered_axe_serious_critical: filteredAxe.count, detail_axe_serious_critical: detailAxe.count, error_axe_serious_critical: errorAxe.count, assigned_axe_serious_critical: assignedAxe.count, initial_axe_violations: initialAxe.violations, filtered_axe_violations: filteredAxe.violations, detail_axe_violations: detailAxe.violations, error_axe_violations: errorAxe.violations, assigned_axe_violations: assignedAxe.violations, main_count: await page.getByRole('main').count(), h1_count: await page.getByRole('heading', { level: 1 }).count(), accessibility_inventory: await boundedAriaInventory(page, ['row', 'article', 'listitem', 'button', 'link', 'combobox', 'status', 'alert'], { total: 10 }), interaction_diagnostics: { filter_kind: filterKind, filter_keyboard: filterKeyboard, filter_programmatic: filterProgrammatic, filter_label: filterLabel, action_reached: actionReached, detail_before: detailBefore, detail_after: detailAfter, record_classification: records.map(({ identity, urgent, nonUrgent }) => ({ identity, urgent, non_urgent: nonUrgent })), urgent_ids: urgentIds, filtered_record_ids: filteredRecords, selected_owner: selectedOwner, assignment_status_text: assignmentStatusText.slice(0, 500), assigned_source_record_text: assignedSourceRecordText.replace(/\s+/g, ' ').slice(0, 500), assigned_status_persistent: assignedPersistent } } };
+  return { task_identity: /cold[-\s]chain|shipment exception|exception queue/i.test(initialText), sample_scope_visible: /\b(?:sample|demo|fictional)\b/i.test(initialText), shipment_count: records.length, urgent_count: records.filter((item) => item.urgent).length, non_urgent_count: records.filter((item) => item.nonUrgent).length, routine_count: records.filter((item) => item.nonUrgent).length, filter_selected_and_visible: filterSelectedAndVisible, filtered_contents_exact: filteredExact, keyboard_open_sample: keyboardOpen, matching_evidence_detail: matchingEvidence, owner_error_associated: errorAssociated, sample_owner_options: sampleOwnerOptions, assigned_owner_confirmed_and_persistent: assignedPersistent, protected_unknown_claims: protectedClaims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: overflow.document_overflow_px, document_overflow_offenders: overflow.offenders, critical_fields_reachable: criticalFieldsReachable, controls_horizontally_unclipped: controlsUnclipped, control_min_dimension_px: controlMin, initial_axe_serious_critical: initialAxe.count, filtered_axe_serious_critical: filteredAxe.count, detail_axe_serious_critical: detailAxe.count, error_axe_serious_critical: errorAxe.count, assigned_axe_serious_critical: assignedAxe.count, initial_axe_violations: initialAxe.violations, filtered_axe_violations: filteredAxe.violations, detail_axe_violations: detailAxe.violations, error_axe_violations: errorAxe.violations, assigned_axe_violations: assignedAxe.violations, main_count: await page.getByRole('main').count(), h1_count: await page.getByRole('heading', { level: 1 }).count(), accessibility_inventory: await boundedAriaInventory(page, ['row', 'article', 'listitem', 'button', 'link', 'combobox', 'status', 'alert'], { total: 10 }), interaction_diagnostics: { filter_kind: filterKind, filter_keyboard: filterKeyboard, filter_programmatic: filterProgrammatic, filter_label: filterLabel, filter_selected_option: selectedOptionText, baseline_selected_option: baselineSelectedOption, baseline_filter_reset: baselineFilterReset, action_reached: actionReached, detail_before: detailBefore, detail_after: detailAfter, record_classification: records.map(({ identity, urgent, nonUrgent }) => ({ identity, urgent, non_urgent: nonUrgent })), urgent_ids: urgentIds, filtered_record_ids: filteredRecords, owner_error: { focused: ownerFocusedAfterError, aria_describedby: ownerDescribedBy, alert_text: ownerAlertText.slice(0, 300) }, selected_owner: selectedOwner, assignment_status_text: assignmentStatusText.slice(0, 500), assigned_source_record_text: assignedSourceRecordText.replace(/\s+/g, ' ').slice(0, 500), assigned_status_persistent: assignedPersistent } } };
 }
 
 async function evaluateCaregiver(page, viewport) {
@@ -1200,6 +1250,7 @@ async function evaluateLocale(page, viewport) {
   const main = page.getByRole('main'); const axeCounts = []; const h1Counts = []; const cjkUnclipped = []; const localeDiagnostics = [];
   const checkState = async () => { axeCounts.push((await axeSeriousCritical(page)).count); h1Counts.push(await page.getByRole('heading', { level: 1 }).count()); };
   const initialText = (await main.innerText()).replace(/\s+/g, ' '); await checkState();
+  const nonMedicalAdviceVisible = /not medical advice|does not (?:provide )?medical advice|does not infer a diagnosis|nothing here is medical advice/i.test(initialText);
   const locales = [{ code: 'ko', label: /한국어/, script: /[가-힣]/ }, { code: 'en', label: /English/, script: /[A-Za-z]/ }, { code: 'ja', label: /日本語/, script: /[ぁ-ゖァ-ヺ]/ }, { code: 'zh-CN', label: /简体中文/, script: /[\u3400-\u9fff]/ }, { code: 'zh-TW', label: /繁體中文/, script: /[\u3400-\u9fff]/ }];
   const languageTagMatches = (actual, requested) => {
     const normalizedActual = String(actual || '').trim().toLowerCase();
@@ -1321,7 +1372,7 @@ async function evaluateLocale(page, viewport) {
   const completionText = (await main.innerText()).replace(/\s+/g, ' ');
   const allComplete = completionSnapshot.checked === checklistTotal && completionSnapshot.total === checklistTotal
     && ((completionSnapshot.bar_now === null && completionSnapshot.bar_max === null) || (completionSnapshot.bar_now === checklistTotal && completionSnapshot.bar_max === checklistTotal));
-  return { task_identity: /(?:clinic|visit|受診|진료|就诊|就診)/i.test(initialText) && /(?:checklist|preparation|준비|準備|准备)/i.test(initialText), fictional_not_medical_advice: /(?:fictional|sample)/i.test(initialText) && /not medical advice|does not infer a diagnosis/i.test(initialText), all_five_locales_exact: initialLocaleChecks.length === 5 && initialLocaleChecks.every(Boolean), selected_label_lang_script_agree: initialLocaleChecks.every(Boolean), progress_textual_and_persistent: progressPreserved, completion_persists_after_return: completionPreserved || (allComplete && (/(?:complete|completed)/i.test(`${completeEnglish} ${completionText}`) || textShowsProgress(completionSnapshot, checklistTotal, checklistTotal))), translation_unavailable_honest: unavailableHonest, protected_unknown_claims: claims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: await page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)), cjk_content_unclipped: cjkUnclipped.every(Boolean), controls_horizontally_unclipped: initialControls.unclipped, task_control_min_dimension_px: initialControls.min, axe_serious_critical: axeCounts.reduce((sum, value) => sum + value, 0), main_count: await page.getByRole('main').count(), h1_count_per_state: h1Counts, locale_switch_diagnostics: localeDiagnostics.slice(0, 12), progress_diagnostics: { first: progress1, japanese: progressJapanese, returned: progressBack, complete: completionSnapshot }, unavailable_translation_diagnostics: unavailableDiagnostics, accessibility_inventory: await boundedAriaInventory(page, ['combobox', 'checkbox', 'progressbar', 'status', 'alert'], { total: 10 }) } };
+  return { task_identity: /(?:clinic|visit|受診|진료|就诊|就診)/i.test(initialText) && /(?:checklist|preparation|준비|準備|准备)/i.test(initialText), fictional_not_medical_advice: /(?:fictional|sample)/i.test(initialText) && nonMedicalAdviceVisible, all_five_locales_exact: initialLocaleChecks.length === 5 && initialLocaleChecks.every(Boolean), selected_label_lang_script_agree: initialLocaleChecks.every(Boolean), progress_textual_and_persistent: progressPreserved, completion_persists_after_return: completionPreserved || (allComplete && (/(?:complete|completed)/i.test(`${completeEnglish} ${completionText}`) || textShowsProgress(completionSnapshot, checklistTotal, checklistTotal))), translation_unavailable_honest: unavailableHonest, protected_unknown_claims: claims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: await page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)), cjk_content_unclipped: cjkUnclipped.every(Boolean), controls_horizontally_unclipped: initialControls.unclipped, task_control_min_dimension_px: initialControls.min, axe_serious_critical: axeCounts.reduce((sum, value) => sum + value, 0), main_count: await page.getByRole('main').count(), h1_count_per_state: h1Counts, locale_switch_diagnostics: localeDiagnostics.slice(0, 12), honesty_diagnostics: { fictional_or_sample_visible: /(?:fictional|sample)/i.test(initialText), non_medical_advice_visible: nonMedicalAdviceVisible, initial_text_excerpt: initialText.slice(0, 500) }, progress_diagnostics: { first: progress1, japanese: progressJapanese, returned: progressBack, complete: completionSnapshot }, unavailable_translation_diagnostics: unavailableDiagnostics, accessibility_inventory: await boundedAriaInventory(page, ['combobox', 'checkbox', 'progressbar', 'status', 'alert'], { total: 10 }) } };
 }
 
 const invoked = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);

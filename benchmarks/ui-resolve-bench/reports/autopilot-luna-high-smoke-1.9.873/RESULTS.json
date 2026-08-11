@@ -1,0 +1,109 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "autopilot-luna-high-smoke-1.9.873",
+  "claim_state": "diagnostic-only-block-public-one-shot",
+  "status": "complete-gate-failed",
+  "scheduled_cells": 3,
+  "valid_terminal_cells": 3,
+  "sealed_ui_resolved_cells": 1,
+  "provider_calls": 7,
+  "repair_calls": 4,
+  "retry_calls": 0,
+  "replacement_calls": 0,
+  "fallback_calls": 0,
+  "cursor_calls": 0,
+  "question_batches": 0,
+  "observed_token_usage": {
+    "coverage": "7/7 calls",
+    "input_tokens": 10694925,
+    "cached_input_tokens": 10030592,
+    "output_tokens": 162476
+  },
+  "provider_wall_ms": 1128180,
+  "provider_free_reevaluation": {
+    "sealed_records_unchanged": true,
+    "methodology_epoch": "autopilot-greenfield-observable-outcomes-v2",
+    "cells": [
+      {
+        "task_id": "neighborhood-library-landing",
+        "score": 100,
+        "ui_resolved": true,
+        "classification": "sealed-valid-success",
+        "evidence": "the single Reserve action opens an operable reservation-start state, transfers focus to its input, and passes all four viewport and accessibility gates"
+      },
+      {
+        "task_id": "cold-chain-operations",
+        "score": 60,
+        "ui_resolved": false,
+        "classification": "mixed-evaluator-and-product-defect",
+        "diagnostic_score_sha256": "d9e9a61a709a860eb48e818e05cd7683bda5e4a6a49e900b49a84127724499a9",
+        "evidence": "a default-urgent native select exposes a valid all-record baseline and selected option, while its associated polite status is valid owner-error feedback; the product still fails 44px touch targets and aria-hidden focus containment"
+      },
+      {
+        "task_id": "clinic-visit-prep-locales",
+        "score": 60,
+        "ui_resolved": false,
+        "classification": "mixed-evaluator-and-product-defect",
+        "diagnostic_score_sha256": "8d4340a2155fd82cdf7e51d57828b95d97b785d1041d1dc9d544115d73be9a5d",
+        "evidence": "the visible fictional disclosure explicitly says the tool does not provide medical advice and all five localized core checklists work; the progressbar remains 0/0 while visible progress moves from 1/4 to 4/4"
+      }
+    ]
+  },
+  "cells": [
+    {
+      "id": "neighborhood-library-landing-luna-high-r1-omd-autopilot",
+      "sealed_record": {
+        "validity": "valid",
+        "outcome": "success",
+        "ui_resolved": true,
+        "scores": [50, 70, 100],
+        "design_system_proof": true,
+        "autopilot_proof": true,
+        "model_calls": 3,
+        "run_record_sha256": "502d276bd9357a470138ebe1be315b9656ac07607ec43c613eff05f113c92f09"
+      },
+      "final_failures": []
+    },
+    {
+      "id": "cold-chain-operations-luna-high-r1-omd-autopilot",
+      "sealed_record": {
+        "validity": "valid",
+        "outcome": "terminal-provider-failure",
+        "ui_resolved": false,
+        "scores": [20, 20],
+        "design_system_proof": true,
+        "autopilot_proof": false,
+        "model_calls": 2,
+        "run_record_sha256": "3b464be8e988fc94f4805661e744af286753071186cce59ca7cb73d548163590"
+      },
+      "final_failures": [
+        "sealed evaluator measured the already-filtered default queue and rejected its valid native selected option",
+        "product defect: 40px task controls fail the 44px touch target contract",
+        "product defect: the closed detail uses aria-hidden while retaining focusable descendants"
+      ]
+    },
+    {
+      "id": "clinic-visit-prep-locales-luna-high-r1-omd-autopilot",
+      "sealed_record": {
+        "validity": "valid",
+        "outcome": "terminal-provider-failure",
+        "ui_resolved": false,
+        "scores": [50, 50],
+        "design_system_proof": true,
+        "autopilot_proof": false,
+        "model_calls": 2,
+        "run_record_sha256": "09f9ed5f6401d6fe5d7195b8d355b2fc0d37ecac98d961aca5643c894c49acb3"
+      },
+      "final_failures": [
+        "sealed evaluator missed the explicit wording does not provide medical advice",
+        "product defect: visible progress is localized and persistent but progressbar aria-valuenow and aria-valuemax remain 0"
+      ]
+    }
+  ],
+  "authority": {
+    "plan_sha256": "ca9bff330d4487a79401fb3fcd1753fea3b9f1fb397a9813706ae0218b5fc234",
+    "execution_state_sha256": "3eacce4d9008df06d61ad2cd9cc116c90d99984a172c943f4cf3d9cf34773cf7",
+    "source_commit": "68f716e3672f4d92b3277e50ca60002902834cbc"
+  },
+  "next_gate": "Commit the structure-neutral evaluator and compact actionable repair evidence, then require a fresh exact Luna/high 3/3 epoch before competitor qualification."
+}

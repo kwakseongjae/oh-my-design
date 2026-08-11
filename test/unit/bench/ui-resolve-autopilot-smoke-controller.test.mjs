@@ -77,9 +77,12 @@ describe("autopilot Luna/high smoke controller", () => {
       },
     });
     expect(observations).toMatchObject({
-      schema_version: "0.2",
+      schema_version: "0.3",
       failed_assertions: {
-        accessibility: { assertion_pass: false, observed: [{ id: "mobile-320", axe_serious_critical: 3 }] },
+        accessibility: { assertion_pass: false, observed: {
+          expected: "Zero serious or critical Axe violations in every measured state and viewport.",
+          viewport_counts: [{ id: "mobile-320", initial: 3 }],
+        } },
         queue_preconditions: { assertion_pass: false, observed: {
           expected: { initial_unfiltered_queue: true, shipment_count_min: 3, urgent_count_min: 2, non_urgent_count_min: 1 },
           shipment_count: 1, urgent_count: 1, non_urgent_count: 0,
@@ -88,7 +91,6 @@ describe("autopilot Luna/high smoke controller", () => {
       failed_groups: { journey: { points: 20, pass: false } },
       supporting_evidence: {
         shipment_count: 1, urgent_count: 1, routine_count: 0,
-        viewports: [{ id: "mobile-320", document_overflow_px: 0, axe_serious_critical: 3 }],
       },
     });
   });
@@ -108,24 +110,36 @@ describe("autopilot Luna/high smoke controller", () => {
       allowed: false, reason: "protected-assertion-regressed", regressed_assertion_ids: ["accessibility"],
     });
   });
-  test("preserves accessibility-state diagnostics while keeping repair evidence bounded", () => {
+  test("deduplicates accessibility diagnostics and keeps repair evidence bounded", () => {
+    const repeatedViolation = {
+      id: "color-contrast", impact: "serious", nodes: [{
+        target: [".muted"], failure_summary: `Fix contrast ${"x".repeat(800)}`,
+        computed_style: { color: "rgb(120,120,120)", background_color: "rgb(255,255,255)" },
+      }],
+    };
     const observations = objectiveFailureObservations({
       assertions: { accessibility: false },
       groups: { accessibility: { points: 20, pass: false } },
       evidence: {
-        viewports: [{
-          id: "mobile-320",
-          accessibility_inventory: Array.from({ length: 20 }, (_, index) => ({
-            role: "button", snapshot: `${index}-${"x".repeat(800)}`, focused: index === 0,
-          })),
-          locale_switch_diagnostics: Array.from({ length: 20 }, (_, index) => ({ requested: `locale-${index}`, selected: false })),
-        }],
+        viewports: ["desktop-1440", "mobile-390", "mobile-320", "zoom-200"].map((id) => ({
+          id,
+          initial_axe_violations: Array(20).fill(repeatedViolation),
+          error_axe_violations: Array(20).fill(repeatedViolation),
+          initial_axe_serious_critical: 20,
+        })),
       },
     });
-    const viewport = observations.supporting_evidence.viewports[0];
-    expect(viewport.accessibility_inventory).toHaveLength(12);
-    expect(viewport.accessibility_inventory[0].snapshot.length).toBe(500);
-    expect(viewport.locale_switch_diagnostics).toHaveLength(12);
+    const accessibility = observations.failed_assertions.accessibility.observed;
+    expect(accessibility.findings).toHaveLength(1);
+    expect(accessibility.findings[0]).toMatchObject({
+      id: "color-contrast",
+      target: [".muted"],
+      viewport_ids: ["desktop-1440", "mobile-390", "mobile-320", "zoom-200"],
+      states: ["initial", "error"],
+    });
+    expect(accessibility.findings[0].failure_summary.length).toBeLessThanOrEqual(300);
+    expect(JSON.stringify(observations).length).toBeLessThan(16_000);
+    expect(observations.supporting_evidence).not.toHaveProperty("viewports");
   });
   test("turns cold-chain composite failures into bounded repair measurements", () => {
     const observations = objectiveFailureObservations({
@@ -161,7 +175,7 @@ describe("autopilot Luna/high smoke controller", () => {
       },
     });
     expect(observations.failed_assertions).toMatchObject({
-      accessibility: { observed: [{ id: "mobile-320", initial_axe_violations: [{ id: "color-contrast", targets: [["#assign"]] }] }] },
+      accessibility: { observed: { findings: [{ id: "color-contrast", target: ["#assign"], viewport_ids: ["mobile-320"], states: ["initial"] }] } },
       filtered_contents_exact: { observed: { pass: false, viewports: [{ id: "mobile-320", urgent_ids: ["CC-101"], filtered_record_ids: [] }] } },
       assigned_owner_confirmed_and_persistent: { observed: { pass: false, viewports: [{ id: "mobile-320", assigned_status_persistent: false, selected_owner: "Mina Park", assignment_status_text: "Assigned Mina Park", assigned_source_record_text: "CC-101 Mina Park", detail_after: "CC-101 Sample owner Mina Park" }] } },
       responsive: { observed: [{ id: "mobile-320", mobile: true, document_overflow_offenders: [{ selector: '.queue', right_overflow_px: 78 }], critical_fields_reachable: false, control_min_dimension_px: 38 }] },
@@ -180,9 +194,9 @@ describe("autopilot Luna/high smoke controller", () => {
       assertions: { accessibility: false }, groups: { accessibility: { points: 20, pass: false } },
       evidence: { viewports: [{ id: "desktop-1440", initial_axe_violations: [violation] }] },
     });
-    expect(observations.failed_assertions.accessibility.observed[0].initial_axe_violations[0]).toMatchObject({
+    expect(observations.failed_assertions.accessibility.observed.findings[0]).toMatchObject({
       id: "color-contrast",
-      nodes: [{ computed_style: { color: "rgb(82, 101, 104)", background_color: "rgb(10, 79, 74)" } }],
+      computed_style: { color: "rgb(82, 101, 104)", background_color: "rgb(10, 79, 74)" },
     });
   });
   test("exposes actionable landing and locale repair diagnostics instead of bare booleans", () => {
@@ -220,6 +234,44 @@ describe("autopilot Luna/high smoke controller", () => {
       focus_transfer: { observed: { viewports: [{ focused_after_activation: { tag: "a" } }] } },
       unavailable_information_honest: { observed: { viewports: [{ excerpts: ["The catalog comes next."] }] } },
       translation_unavailable_honest: { observed: { viewports: [{ diagnostics: { control_count: 0, alert_count: 0 } }] } },
+    });
+  });
+  test("exposes actionable filter, owner-error, locale-honesty, and progress diagnostics", () => {
+    const observations = objectiveFailureObservations({
+      assertions: {
+        filter_selected_and_visible: false,
+        owner_error_associated: false,
+        fictional_not_medical_advice: false,
+        progress_textual_and_persistent: false,
+      },
+      evidence: {
+        viewports: [{
+          id: "mobile-320",
+          interaction_diagnostics: {
+            filter_kind: "combobox",
+            filter_keyboard: true,
+            filter_programmatic: true,
+            filter_selected_option: "Urgent only",
+            baseline_selected_option: "Urgent only",
+            baseline_filter_reset: true,
+            owner_error: { focused: true, aria_describedby: "", alert_text: "Choose a sample owner" },
+          },
+          honesty_diagnostics: {
+            fictional_or_sample_visible: false,
+            non_medical_advice_visible: false,
+            initial_text_excerpt: "Prepare for your clinic visit.",
+          },
+          progress_diagnostics: {
+            first: { checked: 1, total: 4, bar_now: 0, bar_max: 0, status_texts: ["1 of 4"] },
+          },
+        }],
+      },
+    });
+    expect(observations.failed_assertions).toMatchObject({
+      filter_selected_and_visible: { observed: { viewports: [{ filter_kind: "combobox", filter_selected_option: "Urgent only", baseline_filter_reset: true }] } },
+      owner_error_associated: { observed: { viewports: [{ owner_error: { focused: true, aria_describedby: "", alert_text: "Choose a sample owner" } }] } },
+      fictional_not_medical_advice: { observed: { viewports: [{ diagnostics: { fictional_or_sample_visible: false, non_medical_advice_visible: false } }] } },
+      progress_textual_and_persistent: { observed: { viewports: [{ diagnostics: { first: { checked: 1, total: 4, bar_now: 0, bar_max: 0 } } }] } },
     });
   });
   test("permanently freezes an exposed running root after a controller failure", () => {

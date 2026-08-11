@@ -484,6 +484,45 @@ function boundedObservation(value) {
   }
   return null;
 }
+function compactAxeFindings(viewports) {
+  const stateKeys = [
+    "initial_axe_violations", "filtered_axe_violations", "detail_axe_violations",
+    "error_axe_violations", "assigned_axe_violations",
+  ];
+  const findings = new Map();
+  for (const viewport of viewports) {
+    for (const stateKey of stateKeys) {
+      for (const violation of Array.isArray(viewport?.[stateKey]) ? viewport[stateKey] : []) {
+        const nodes = Array.isArray(violation?.nodes) && violation.nodes.length
+          ? violation.nodes
+          : [{ target: violation?.targets?.[0] ?? [], failure_summary: violation?.description ?? null }];
+        for (const node of nodes) {
+          const target = Array.isArray(node?.target) ? node.target.slice(0, 3) : [];
+          const computed = node?.computed_style && typeof node.computed_style === "object"
+            ? Object.fromEntries(["color", "background_color", "font_size", "font_weight", "opacity"]
+              .filter((key) => node.computed_style[key] != null)
+              .map((key) => [key, String(node.computed_style[key]).slice(0, 120)]))
+            : {};
+          const key = JSON.stringify([violation?.id ?? null, target, node?.failure_summary ?? null, computed]);
+          const current = findings.get(key) ?? {
+            id: violation?.id ?? null,
+            impact: violation?.impact ?? null,
+            target,
+            failure_summary: String(node?.failure_summary ?? violation?.description ?? "").slice(0, 300),
+            computed_style: computed,
+            viewport_ids: [],
+            states: [],
+          };
+          if (!current.viewport_ids.includes(viewport?.id ?? null)) current.viewport_ids.push(viewport?.id ?? null);
+          const state = stateKey.replace("_axe_violations", "");
+          if (!current.states.includes(state)) current.states.push(state);
+          findings.set(key, current);
+        }
+      }
+    }
+  }
+  return [...findings.values()].slice(0, 12);
+}
 export function objectiveFailureObservations(score) {
   const failedIds = objectiveFailureIds(score);
   const evidence = score?.evidence && typeof score.evidence === "object" ? score.evidence : {};
@@ -517,6 +556,19 @@ export function objectiveFailureObservations(score) {
       urgent_count: evidence.urgent_count ?? null,
       non_urgent_count: evidence.non_urgent_count ?? evidence.routine_count ?? null,
     },
+    filter_selected_and_visible: {
+      expected: "The urgent filter is keyboard-operable, programmatically selected, and visibly active. A native select's selected option is sufficient visible state.",
+      viewports: viewports.map((viewport) => ({
+        id: viewport.id ?? null,
+        filter_kind: viewport.interaction_diagnostics?.filter_kind ?? null,
+        filter_keyboard: viewport.interaction_diagnostics?.filter_keyboard ?? null,
+        filter_programmatic: viewport.interaction_diagnostics?.filter_programmatic ?? null,
+        filter_label: viewport.interaction_diagnostics?.filter_label ?? null,
+        filter_selected_option: viewport.interaction_diagnostics?.filter_selected_option ?? null,
+        baseline_selected_option: viewport.interaction_diagnostics?.baseline_selected_option ?? null,
+        baseline_filter_reset: viewport.interaction_diagnostics?.baseline_filter_reset ?? null,
+      })),
+    },
     filtered_contents_exact: {
       pass: evidence.filtered_contents_exact ?? null,
       viewports: viewports.map((viewport) => ({
@@ -537,6 +589,27 @@ export function objectiveFailureObservations(score) {
         detail_after: viewport.interaction_diagnostics?.detail_after ?? null,
       })),
     },
+    owner_error_associated: {
+      expected: "Submitting without an owner keeps the action blocked, focuses the owner control, and programmatically associates the visible error with aria-describedby.",
+      viewports: viewports.map((viewport) => ({
+        id: viewport.id ?? null,
+        owner_error: viewport.interaction_diagnostics?.owner_error ?? null,
+      })),
+    },
+    fictional_not_medical_advice: {
+      expected: "The initial surface visibly identifies the preparation as fictional or sample and states that it is not medical advice or does not infer a diagnosis.",
+      viewports: viewports.map((viewport) => ({
+        id: viewport.id ?? null,
+        diagnostics: viewport.honesty_diagnostics ?? null,
+      })),
+    },
+    progress_textual_and_persistent: {
+      expected: "Visible progress and any progressbar aria-valuenow/aria-valuemax stay synchronized across locale changes and completion.",
+      viewports: viewports.map((viewport) => ({
+        id: viewport.id ?? null,
+        diagnostics: viewport.progress_diagnostics ?? null,
+      })),
+    },
     translation_unavailable_honest: {
       pass: evidence.translation_unavailable_honest ?? null,
       viewports: viewports.map((viewport) => ({
@@ -544,16 +617,22 @@ export function objectiveFailureObservations(score) {
         diagnostics: viewport.unavailable_translation_diagnostics ?? null,
       })),
     },
-    accessibility: viewports.map((viewport) => ({
-      id: viewport.id ?? null,
-      initial_axe_violations: viewport.initial_axe_violations ?? [],
-      filtered_axe_violations: viewport.filtered_axe_violations ?? [],
-      detail_axe_violations: viewport.detail_axe_violations ?? [],
-      error_axe_violations: viewport.error_axe_violations ?? [],
-      assigned_axe_violations: viewport.assigned_axe_violations ?? [],
-      axe_serious_critical: viewport.axe_serious_critical ?? null,
-    })),
-    responsive: viewports.map((viewport) => ({
+    accessibility: {
+      expected: "Zero serious or critical Axe violations in every measured state and viewport.",
+      findings: compactAxeFindings(viewports),
+      viewport_counts: viewports.map((viewport) => ({
+        id: viewport.id ?? null,
+        initial: viewport.initial_axe_serious_critical ?? viewport.axe_serious_critical ?? null,
+        filtered: viewport.filtered_axe_serious_critical ?? null,
+        detail: viewport.detail_axe_serious_critical ?? null,
+        error: viewport.error_axe_serious_critical ?? null,
+        assigned: viewport.assigned_axe_serious_critical ?? null,
+      })),
+    },
+    responsive: viewports.filter((viewport) => viewport.document_overflow_px > 0
+      || viewport.critical_fields_reachable === false
+      || viewport.controls_horizontally_unclipped === false
+      || (viewport.mobile === true && Number(viewport.control_min_dimension_px) < 44)).map((viewport) => ({
       id: viewport.id ?? null,
       mobile: viewport.mobile ?? null,
       document_overflow_px: viewport.document_overflow_px ?? null,
@@ -569,12 +648,12 @@ export function objectiveFailureObservations(score) {
   }]));
   const supporting = {};
   for (const [key, value] of Object.entries(evidence).sort(([a], [b]) => a.localeCompare(b))) {
-    if (["schema_version", "task_id", "task_set_sha256", "adapter_set_sha256"].includes(key) || failedIds.includes(key)) continue;
+    if (["schema_version", "task_id", "task_set_sha256", "adapter_set_sha256", "viewports"].includes(key) || failedIds.includes(key)) continue;
     const bounded = boundedObservation(value);
     if (bounded !== null) supporting[key] = bounded;
   }
   return {
-    schema_version: "0.2",
+    schema_version: "0.3",
     failed_assertions: direct,
     failed_groups: Object.fromEntries(Object.entries(score?.groups ?? {})
       .filter(([, value]) => value?.pass !== true)

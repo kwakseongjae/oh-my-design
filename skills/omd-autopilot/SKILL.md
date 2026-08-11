@@ -88,7 +88,16 @@ folders and must never edit `DESIGN.md` or product files.
    associated with it; a success status names the affected record/action and
    remains reflected in the source collection or detail state. Run contrast
    checks on enabled and disabled task controls—not only the final success
-   state.
+   state. A filterable collection must retain a meaningful baseline dataset
+   that makes the filter outcome observable; when a native select is used, its
+   selected option is both the programmatic and visible active state. If a
+   progressbar role is present, keep `aria-valuenow` and `aria-valuemax`
+   synchronized with the visible progress text in every state and locale.
+   Never hide focusable descendants with `aria-hidden` alone: use `hidden`,
+   `inert`, or remove/disable their focusability until the state opens. When an
+   acceptance requirement makes an honesty boundary observable (for example
+   fictional sample data or “not medical advice”), render that boundary as
+   visible accessible product copy rather than keeping it only in source notes.
 9. `VERIFY` — verify functionality, same-route desktop/mobile/320px/200%,
    keyboard, accessibility, responsive behavior, copy, evidence honesty and
    DESIGN.md-to-code conformance. `proof.json` schema 0.2 must bind the mission,
