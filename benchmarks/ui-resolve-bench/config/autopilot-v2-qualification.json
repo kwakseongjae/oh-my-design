@@ -61,13 +61,13 @@
   ],
   "greenfield_task_set_authority": {
     "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json",
-    "sha256": "f733682d6461c5911ea5c68ec1c483d2fd03c19e299e44a95c72ae2750480389",
+    "sha256": "9ef51dcb5fc753163be2d44e21c47c1dc958550768c0bcec1fba8017bba0e654",
     "task_count": 12,
     "provider_zero_validation_required": true
   },
   "greenfield_adapter_authority": {
     "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json",
-    "sha256": "485ce95796f74b2cd08b88f4d0d4bab16dfc2001a22f346577485f561baf756f",
+    "sha256": "53c09080621a7b3471bee271b3a9e6e6e7ef00bfc87bc52bdb781e036b73c871",
     "adapter_count": 12,
     "locator_policy": "role-and-accessible-name-observable-outcomes",
     "provider_zero_validation_required": true

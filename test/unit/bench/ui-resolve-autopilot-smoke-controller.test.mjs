@@ -12,6 +12,7 @@ import {
   objectiveFailureIds,
   objectiveFailureObservations,
   objectivePassingIds,
+  repairContinuationDecision,
 } from "../../../benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs";
 
 const repo = resolve(import.meta.dirname, "../../..");
@@ -86,6 +87,22 @@ describe("autopilot Luna/high smoke controller", () => {
         shipment_count: 1, urgent_count: 1, routine_count: 0,
         viewports: [{ id: "mobile-320", document_overflow_px: 0, axe_serious_critical: 3 }],
       },
+    });
+  });
+  test("continues bounded repair only after strict score lift with zero protected regression", () => {
+    expect(repairContinuationDecision({ attempt: 0, currentScore: 10 })).toEqual({
+      allowed: true, reason: "initial-attempt-may-enter-bounded-repair",
+    });
+    expect(repairContinuationDecision({ attempt: 1, previousScore: 40, currentScore: 40 })).toEqual({
+      allowed: false, reason: "objective-score-did-not-improve", current_score: 40, previous_score: 40,
+    });
+    expect(repairContinuationDecision({ attempt: 1, previousScore: 40, currentScore: 60 })).toEqual({
+      allowed: true, reason: "strict-objective-improvement", current_score: 60, previous_score: 40,
+    });
+    expect(repairContinuationDecision({
+      attempt: 2, previousScore: 60, currentScore: 70, regressedAssertionIds: ["accessibility"],
+    })).toEqual({
+      allowed: false, reason: "protected-assertion-regressed", regressed_assertion_ids: ["accessibility"],
     });
   });
   test("preserves accessibility-state diagnostics while keeping repair evidence bounded", () => {

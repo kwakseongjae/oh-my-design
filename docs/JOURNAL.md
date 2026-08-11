@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.868 bounded-council smoke
+- Luna/high 3-task는 DESIGN proof3/3·UI-Resolved1/3: landing100, cold timeout20, locale40→40→20이었다.
+- provider browser probing이 cold timeout을 만들고, non-improving locale repair2가 접근성을 회귀시킨 원인을 분리했다.
+- browser/controller 경계, strict-lift repair stop, 공개 required-state prompt authority를 구현 중이다.
+- 다음은 commit-bound full gate 뒤 fresh 3/3 smoke이며 비교 실험은 계속 차단한다.
+
 ## 2026-08-12 (Codex) · 1.9.867 exact smoke와 인앱 RCA
 - Luna/high 3-task를 7 calls로 완결했지만 UI/autopilot success0/3, DESIGN proof3/3이었다.
 - landing timeout·중복 CTA, cold-chain keyboard filter/assignment, locale progress 소실을 실제 결함으로 분리했다.

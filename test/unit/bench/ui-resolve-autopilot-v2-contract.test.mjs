@@ -204,5 +204,13 @@ describe('OmD Autopilot 2.0 qualification contract', () => {
     expect(controller).toContain('const autopilotProof = taskPass ? controllerAutopilotProof(plan, next, workspace)');
     expect(controller).toContain('const success = run.process.exit_code === 0 && !run.process.timed_out && dsProof.pass && autopilotProof.pass && taskPass');
     expect(controller).toContain('autopilot_proof: autopilotProof');
+    expect(controller).toContain('objective-score-did-not-improve');
+    expect(controller).toContain('protected-assertion-regressed');
+    const skill = readFileSync(resolve(repoRoot, 'skills/omd-autopilot/SKILL.md'), 'utf8');
+    expect(skill).toMatch(/never discover, install, launch, or probe a\s+local browser/u);
+    expect(skill).toMatch(/controller owns all browser execution/u);
+    const taskSet = JSON.parse(readFileSync(resolve(repoRoot, contract.greenfield_task_set_authority.path), 'utf8'));
+    const localeTask = taskSet.tasks.find((task) => task.id === 'clinic-visit-prep-locales');
+    expect(localeTask.prompt).toContain('honest unavailable-translation state');
   });
 });

@@ -452,6 +452,19 @@ export function objectiveFailureIds(score) {
 export function objectivePassingIds(score) {
   return Object.entries(score?.assertions ?? {}).filter(([, pass]) => pass === true).map(([id]) => id).sort();
 }
+export function repairContinuationDecision({ attempt, currentScore, previousScore = null, regressedAssertionIds = [] }) {
+  if (attempt === 0) return { allowed: true, reason: "initial-attempt-may-enter-bounded-repair" };
+  if (regressedAssertionIds.length > 0) {
+    return { allowed: false, reason: "protected-assertion-regressed", regressed_assertion_ids: [...regressedAssertionIds].sort() };
+  }
+  if (!Number.isFinite(currentScore) || !Number.isFinite(previousScore)) {
+    return { allowed: false, reason: "objective-score-unavailable" };
+  }
+  if (currentScore <= previousScore) {
+    return { allowed: false, reason: "objective-score-did-not-improve", current_score: currentScore, previous_score: previousScore };
+  }
+  return { allowed: true, reason: "strict-objective-improvement", current_score: currentScore, previous_score: previousScore };
+}
 function boundedObservation(value) {
   if (value === null || typeof value === "boolean" || typeof value === "number") return value;
   if (typeof value === "string") return value.slice(0, 500);
@@ -669,6 +682,13 @@ function runCommand(args) {
     const autopilotProof = taskPass ? controllerAutopilotProof(plan, next, workspace) : { pass: false, reason: "objective-task-score-failed" };
     const success = run.process.exit_code === 0 && !run.process.timed_out && dsProof.pass && autopilotProof.pass && taskPass;
     const regressedAssertionIds = [...protectedAssertions.keys()].filter((id) => score?.assertions?.[id] !== true).sort();
+    const previousAttempt = attempts.at(-1) ?? null;
+    const repairContinuation = repairContinuationDecision({
+      attempt,
+      currentScore: score?.score,
+      previousScore: previousAttempt?.task_score?.score ?? null,
+      regressedAssertionIds,
+    });
     const attemptRecord = {
       attempt, kind: attempt === 0 ? "initial" : "bounded-repair", run, run_result_path: relative(workspace, runResultPath).split(sep).join("/"),
       run_result_sha256: sha256(readFileSync(runResultPath)), token_usage: tokenSummary(run), design_system_proof: dsProof,
@@ -677,6 +697,7 @@ function runCommand(args) {
       evaluator_result_sha256: sha256(readFileSync(evaluatorResultPath)),
       protected_assertion_ids_before_attempt: [...protectedAssertions.keys()].sort(),
       regressed_assertion_ids: regressedAssertionIds,
+      repair_continuation: repairContinuation,
       success,
     };
     attempts.push(attemptRecord);
@@ -685,7 +706,8 @@ function runCommand(args) {
     }
     final = attemptRecord;
     if (success || attempt === plan.smoke_contract.autonomy_contract.repair_rounds_max
-      || run.process.exit_code !== 0 || run.process.timed_out || !runDir) break;
+      || run.process.exit_code !== 0 || run.process.timed_out || !runDir
+      || !repairContinuation.allowed) break;
     const missionState = currentMissionState(runDir);
     const nextRepairRound = currentRepairRound(runDir);
     if (missionState?.state !== "BOUNDED_REVISION" || nextRepairRound !== attempt + 1) break;

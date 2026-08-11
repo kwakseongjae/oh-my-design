@@ -69,7 +69,11 @@ folders and must never edit `DESIGN.md` or product files.
    proposed project tokens. When a controller execution budget is present,
    finish authority and council work before its handoff reserve begins. The
    reserve belongs to implementation, acceptance proof, and controller
-   handoff—not additional research or adviser repair.
+   handoff—not additional research or adviser repair. Treat zero document
+   overflow at 390px, 320px, and 200%-reflow as a product requirement, and keep
+   primary task controls at least 44×44 CSS px on touch viewports unless the
+   control is an inline prose link or a native control whose associated label
+   supplies the target.
 9. `VERIFY` — verify functionality, same-route desktop/mobile/320px/200%,
    keyboard, accessibility, responsive behavior, copy, evidence honesty and
    DESIGN.md-to-code conformance. `proof.json` schema 0.2 must bind the mission,
@@ -87,6 +91,12 @@ folders and must never edit `DESIGN.md` or product files.
    evaluates the real route and supplies the next hash-bound state. If the
    controller passes while a broader local check still fails, the remaining
    local failure may then use the same bounded repair budget.
+   In this controller-owned mode, never discover, install, launch, or probe a
+   local browser, Playwright/Chromium binary, HTTP server, screenshot command,
+   browser harness, or GUI application. Do not spend the controller handoff
+   reserve testing whether those tools exist. Finish deterministic source
+   checks, write the truthful proof, advance to `EXTERNAL_VERIFY`, and return
+   control immediately; the controller owns all browser execution.
 10. `BOUNDED_REVISION` — the main agent may apply at most two focused repair
    rounds in the same mission. The controller writes an exclusive receipt for
    every failed proof, freezes the exact failed requirement/check IDs, and

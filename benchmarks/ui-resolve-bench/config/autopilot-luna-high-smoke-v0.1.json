@@ -35,22 +35,22 @@
     {
       "order": 3,
       "task_id": "clinic-visit-prep-locales",
-      "prompt_sha256": "a5ff7c27f406fe8abb7857662d9a45f959c1c453aa635d39c79cb3f56236ec9d",
-      "prompt_bytes": 346
+      "prompt_sha256": "4370faf6f3d227e47597d2b0dd4707faaca96fc98d7c22266c40d16491df8231",
+      "prompt_bytes": 447
     }
   ],
   "authorities": {
     "task_set_path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json",
-    "task_set_sha256": "f733682d6461c5911ea5c68ec1c483d2fd03c19e299e44a95c72ae2750480389",
+    "task_set_sha256": "9ef51dcb5fc753163be2d44e21c47c1dc958550768c0bcec1fba8017bba0e654",
     "adapter_set_path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json",
-    "adapter_set_sha256": "485ce95796f74b2cd08b88f4d0d4bab16dfc2001a22f346577485f561baf756f",
+    "adapter_set_sha256": "53c09080621a7b3471bee271b3a9e6e6e7ef00bfc87bc52bdb781e036b73c871",
     "evaluator_path": "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield.mjs",
     "evaluator_sha256": "d6dc37b5d59e9b7ae7a5386553fd0150562499fbc57d6c1fe7188d4e9e79b593",
     "starter_path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/blank-shell/index.html",
     "starter_sha256": "a9b82fcdf3efa04783d3be61544f84b0a4f3209f0fc5f6ac741ec853d03871b3",
-    "portable_bundle_sha256": "efe08924e00ade93e73e6b5079910673a515db5a5931dd1581135d9effce06d2",
+    "portable_bundle_sha256": "5d9e8e4a77340adf4a8b2aa4a6cdaa3a98a85d9716622407fb116559ae266aac",
     "portable_bundle_files": [
-      { "path": "skills/omd-autopilot/SKILL.md", "sha256": "4ab54a6ca9ca3d9abc41adb960b11c4539f8d8d9349d7be2113f303528155c4e", "bytes": 9452 },
+      { "path": "skills/omd-autopilot/SKILL.md", "sha256": "4cd6b65387e34ed9c05c23051d62a04c0b5c42d83c180ab9cd834f0aa607ba8f", "bytes": 10184 },
       { "path": "skills/omd-autopilot/references/design-system-contract.md", "sha256": "10bad9dcc2a5bef0624d9a092a444654bfc26961b1cab409d90a57182550095b", "bytes": 1941 },
       { "path": "agents/omd-design-system-architect.md", "sha256": "61fdcce083134118613f0899dcda5392b7b20d9a59d423037d4f801b9d7a5cca", "bytes": 2085 },
       { "path": "agents/omd-ux-engineer.md", "sha256": "b4d36c762c7b8bf15e120c0d5414105380b30f4c4d97d2bf6d4e9fcebdf33af9", "bytes": 13594 },

@@ -3,17 +3,17 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: Autopilot portable-authority commit `96006e74` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · 1.9.867 완결/인앱 검수, locale evaluator neutrality 수정 완료
+- 기준 소스: Autopilot council-budget commit `5d66b58b` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-12 · 1.9.868 완결, 2.0 fresh-smoke hardening 진행 중
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
-- 1.9.867은 exact Luna/high 3-task를 3/3 valid terminal로 완결했지만 UI-Resolved와 autopilot success는 0/3이다. DESIGN.md 독립 proof는 3/3 PASS다. landing은 initial 1회가 900.230s timeout, cold-chain과 locale은 initial+repair2를 사용해 총7 calls이며 retry/replacement/fallback/Cursor0이다.
-- 관측 가능한 6/7 calls의 token은 input7,362,468(cached6,744,064)+output111,572이고 총 provider wall은3,172.851s다. landing timeout은 usage를 보고하지 않아 complete-block token total은 주장하지 않는다.
-- sealed score는 landing50, cold-chain `20→40→40`, locale `30→50→60`이다. 인앱 검수에서 landing의 중복 CTA/비작동 reservation/focus와 cold-chain의 pointer-only urgent filter/assignment 결함을 실제 product miss로 확인했다.
-- locale의 “Translation status”는 honest unavailable alert를 여는 유효한 동등 표현인데 evaluator가 `/unavailable translation/`만 찾던 false negative였다. 중립 locator 보정 후 동일 bytes는 해당 assertion을 회복하지만, locale 전환 시 progress가 실제로 소실되어 점수60/UI fail은 유지된다.
-- 다음 순서: 1.9.867 report+locale neutrality commit → commit-bound 전체 회귀 → autopilot council/execution을 bounded time/lanes 계약으로 제한 → provider-zero 검증 → fresh epoch에서 3/3 재검증. public one-shot/superiority claim은 계속 BLOCK이다.
+- 1.9.868은 council lane/attempt budget을 적용한 exact Luna/high 3-task fresh smoke다. 3/3 valid terminal, DESIGN.md proof3/3, 질문0, retry/replacement/fallback/Cursor0이나 UI-Resolved는 1/3이다. landing은 `10→80→100`, cold-chain은 900.351s valid timeout/20, locale는 `40→40→20`이다.
+- 총7 calls·provider wall3,457.098s다. 관측 가능한6 calls는 input8,855,794(cached8,168,704)+output117,744이며 cold-chain timeout usage가 없어 full-block token total은 주장하지 않는다. exact evidence는 `reports/autopilot-luna-high-smoke-1.9.868/{RESULTS.json,STATUS.md}`다.
+- landing은 one-prompt→project DESIGN.md→product→controller repair→100/100 경로를 단일 task에서 증명했다. reliability/우위/2.0 readiness claim은 아니다.
+- cold-chain provider는 구현 뒤 controller 소유인 Playwright/Chromium/server/screenshot 탐색에 시간을 소모해 종료 budget을 넘겼다. locale repair1은 점수 상승0인데 repair2가 실행됐고 기존 accessibility까지 회귀했다. 또한 hidden required `translation-unavailable` state가 exact user prompt에는 빠져 있어 fair prompt authority도 불완전했다.
+- 수정 중 계약: controller-owned mode에서 provider browser/server probing 금지, 390/320/200% overflow0·touch44px 명시, bounded repair는 strict score lift+protected regression0일 때만 계속, locale prompt에 unavailable state 공개. 다음 순서: provider-zero tests/lint/build→관련 코드+1.9.868 evidence commit(`web/public/llms-full.txt` 제외)→commit-bound full regression→fresh 3-task epoch. 12-task comparison은 3/3 전까지 BLOCK이다.
 
 - 1.9.866은 exact Luna/high 3-task smoke를 3/3 valid terminal로 완결했다. 9 model calls, input11,943,429(cached11,156,480)+output161,695, provider wall3,511.015s이며 retry/replacement/fallback/Cursor0이다. sealed root는 complete/non-reusable이며 다시 실행하지 않는다.
 - sealed 결과의 mission success는 0/3이었다. landing `30→80→80`, cold-chain `20→60→40`, locale `30→60→100`; locale objective와 DESIGN.md proof는 PASS였지만 host-local browser check가 불가능하다는 이유만으로 HANDOFF가 막힌 controller authority 결함이 있었다.
