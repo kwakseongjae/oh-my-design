@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-11 (Codex) · 1.9.859 closed repair diagnostic complete
+- Luna/high 3셀을 initial1+repair2로 완결했지만 UI-Resolved는 0/3이었다.
+- 점수는 30→30→50, 20→20→40, 30→30→40; DESIGN.md proof는 3/3 PASS다.
+- 총 9 calls·3,937.228s·11,175,693 input+output tokens를 exact 결과로 봉인했다.
+- 다음은 assertion ID가 아닌 bounded objective observations를 feedback에 직접 넣는 fresh epoch다.
+
 ## 2026-08-11 (Codex) · 1.9.858 authority mismatch frozen
 - landing Luna/high 1회가 70/100을 냈지만 controller tree hash 불일치로 terminal record 전 동결됐다.
 - 원인은 mission은 설치 runtime asset을 포함하고 controller는 제외한 서로 다른 tree 계약이었다.

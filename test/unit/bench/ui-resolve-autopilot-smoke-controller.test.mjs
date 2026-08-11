@@ -9,6 +9,7 @@ import {
   freezeRunningRootAfterControllerFailure,
   missionProductTreeManifest,
   objectiveFailureIds,
+  objectiveFailureObservations,
 } from "../../../benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs";
 
 const repo = resolve(import.meta.dirname, "../../..");
@@ -48,6 +49,33 @@ describe("autopilot Luna/high smoke controller", () => {
     expect(prompt).toContain("accessibility, responsive");
     expect(prompt).toContain("do not ask the user");
     expect(prompt).toContain("Do not bootstrap a new mission");
+    expect(prompt).toContain("objective_observations as controller measurements");
+  });
+  test("embeds bounded objective observations instead of assertion names alone", () => {
+    const observations = objectiveFailureObservations({
+      assertions: { queue_preconditions: false, responsive: true, accessibility: false },
+      groups: { journey: { points: 20, pass: false }, responsive: { points: 20, pass: true } },
+      evidence: {
+        task_id: "cold-chain-operations",
+        shipment_count: 1,
+        urgent_count: 1,
+        routine_count: 0,
+        protected_unknown_claims: [],
+        viewports: [{ id: "mobile-320", document_overflow_px: 0, axe_serious_critical: 3 }],
+        accessibility: false,
+      },
+    });
+    expect(observations).toMatchObject({
+      failed_assertions: {
+        accessibility: { assertion_pass: false, observed: false },
+        queue_preconditions: { assertion_pass: false, observed: null },
+      },
+      failed_groups: { journey: { points: 20, pass: false } },
+      supporting_evidence: {
+        shipment_count: 1, urgent_count: 1, routine_count: 0,
+        viewports: [{ id: "mobile-320", document_overflow_px: 0, axe_serious_critical: 3 }],
+      },
+    });
   });
   test("permanently freezes an exposed running root after a controller failure", () => {
     const root = temp();

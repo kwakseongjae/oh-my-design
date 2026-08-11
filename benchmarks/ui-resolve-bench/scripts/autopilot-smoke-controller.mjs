@@ -432,6 +432,45 @@ function tokenSummary(run) {
 export function objectiveFailureIds(score) {
   return Object.entries(score?.assertions ?? {}).filter(([, pass]) => pass !== true).map(([id]) => id).sort();
 }
+function boundedObservation(value) {
+  if (value === null || typeof value === "boolean" || typeof value === "number") return value;
+  if (typeof value === "string") return value.slice(0, 500);
+  if (Array.isArray(value)) {
+    return value.slice(0, 12).map((item) => {
+      if (item && typeof item === "object" && !Array.isArray(item)) {
+        return Object.fromEntries(Object.entries(item).slice(0, 20).map(([key, nested]) => [key, boundedObservation(nested)]));
+      }
+      return boundedObservation(item);
+    });
+  }
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).slice(0, 20).map(([key, nested]) => [key, boundedObservation(nested)]));
+  }
+  return null;
+}
+export function objectiveFailureObservations(score) {
+  const failedIds = objectiveFailureIds(score);
+  const evidence = score?.evidence && typeof score.evidence === "object" ? score.evidence : {};
+  const direct = Object.fromEntries(failedIds.map((id) => [id, {
+    observed: boundedObservation(evidence[id] ?? null),
+    assertion_pass: false,
+  }]));
+  const supporting = {};
+  for (const [key, value] of Object.entries(evidence).sort(([a], [b]) => a.localeCompare(b))) {
+    if (["schema_version", "task_id", "task_set_sha256", "adapter_set_sha256"].includes(key) || failedIds.includes(key)) continue;
+    const bounded = boundedObservation(value);
+    if (bounded !== null) supporting[key] = bounded;
+  }
+  return {
+    schema_version: "0.1",
+    failed_assertions: direct,
+    failed_groups: Object.fromEntries(Object.entries(score?.groups ?? {})
+      .filter(([, value]) => value?.pass !== true)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([id, value]) => [id, boundedObservation(value)])),
+    supporting_evidence: supporting,
+  };
+}
 function missionRunDir(workspace) {
   const missions = walkFor(join(workspace, ".omd"), "mission.json");
   if (missions.length !== 1) throw new Error(`exactly one mission lineage required for controller repair; observed ${missions.length}`);
@@ -447,7 +486,7 @@ function currentRepairRound(runDir) {
   return readdirSync(repairs).filter((name) => /^round-[0-1]\.json$/.test(name)).length;
 }
 export function buildControllerRepairPrompt({ originalPrompt, feedbackPath, feedbackSha256, repairRound, failedIds }) {
-  return `${originalPrompt}\n\n---\nCONTROLLER-OWNED BOUNDED REPAIR ${repairRound}/2\nContinue the existing OmD Autopilot mission. Do not bootstrap a new mission, do not ask the user, and do not replace the project design system. Read the hash-bound controller feedback at ${feedbackPath} (SHA-256 ${feedbackSha256}). Fix only the failed objective assertions: ${failedIds.join(", ") || "terminal OmD proof"}. Preserve already passing behavior and protected unknowns. Update the real product, write proof.json for repair_round ${repairRound}, and run the installed autopilot-mission controller until it reaches EXTERNAL_VERIFY or a truthful failed handoff. Do not claim success from prose or from an unavailable browser.\n`;
+  return `${originalPrompt}\n\n---\nCONTROLLER-OWNED BOUNDED REPAIR ${repairRound}/2\nContinue the existing OmD Autopilot mission. Do not bootstrap a new mission, do not ask the user, and do not replace the project design system. Read the hash-bound controller feedback at ${feedbackPath} (SHA-256 ${feedbackSha256}). Treat its objective_observations as controller measurements, not suggestions or DOM requirements. Fix only the failed objective assertions: ${failedIds.join(", ") || "terminal OmD proof"}. Preserve already passing behavior and protected unknowns. Update the real product, write proof.json for repair_round ${repairRound}, and run the installed autopilot-mission controller until it reaches EXTERNAL_VERIFY or a truthful failed handoff. Do not claim success from prose or from an unavailable browser.\n`;
 }
 function writeControllerVerification({ workspace, runDir, round, scorePath, evaluatorResultPath, score }) {
   const proofPath = join(runDir, "proof.json");
@@ -561,13 +600,14 @@ function runCommand(args) {
       ...(missionState.evidence?.failed_quality_check_ids ?? []),
     ])].sort();
     const feedback = {
-      schema_version: "0.1", controller: "autopilot-smoke-controller-v0.2", task_id: next.task_id,
+      schema_version: "0.2", controller: "autopilot-smoke-controller-v0.2", task_id: next.task_id,
       mission_sha256: sha256(readFileSync(join(runDir, "mission.json"))),
       repair_round: nextRepairRound, prior_attempt: attempt, failed_assertion_ids: failedIds,
       task_score_sha256: existsSync(scorePath) ? sha256(readFileSync(scorePath)) : null,
       evaluator_result_sha256: sha256(readFileSync(evaluatorResultPath)),
       score: score?.score ?? null, deterministic_max: score?.deterministic_max ?? null,
       failed_groups: Object.entries(score?.groups ?? {}).filter(([, value]) => value?.pass !== true).map(([id]) => id).sort(),
+      objective_observations: objectiveFailureObservations(score),
       task_score_path: relative(workspace, scorePath).split(sep).join("/"),
     };
     const feedbackPath = join(workspace, ".benchmark/controller-feedback", `round-${nextRepairRound}.json`);

@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: task baseline commit `6acf2876`, repaired skill/evaluator commit `f1b5e219` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-11 · 1.9.858 첫 노출 후 controller tree-authority mismatch로 영구 동결; fresh epoch 수정 중
+- 갱신: 2026-08-11 · 1.9.859 closed-loop Luna/high 3셀 완결; 관측값 직접 환류 P0 구현 중
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.859는 exact named in-app browser admission 뒤 Luna/high 3셀을 각각 initial1+same-mission repair2로 완결했다. 3/3 valid terminal, project-owned DESIGN.md proof 3/3 PASS지만 UI-Resolved 0/3이다. 점수는 landing `30→30→50`, cold-chain `20→20→40`, locale `30→30→40`이다.
+- 총 9 model call, provider wall 3,937.228s, input+output 11,175,693(cached input 10,190,592)이다. retry/replacement/fallback은0이고 completed root는 재사용하지 않는다. exact evidence는 `reports/autopilot-luna-high-smoke-1.9.859/RESULTS.json`에 봉인한다.
+- closed loop는 기계적으로 작동하고 모든 최종 점수를 올렸지만, repair feedback이 assertion ID와 sandbox 밖 sibling score path만 제공해 실제 count/viewport/a11y 관측을 정밀하게 전달하지 못했다. 다음 P0는 hash-bound feedback 안에 bounded `objective_observations`를 직접 내장하고 fresh epoch에서 재검증하는 것이다.
 
 - 1.9.858은 provider-zero plan/prepare/audit와 named in-app browser admission을 통과했으나 landing Luna/high 1회 뒤 controller receipt 단계에서 동결됐다. 모델 호출은 exit0·647.162s·input2,340,317(cached2,246,912)+output31,133, objective70/100이며 repair call은0이다.
 - 원인은 mission proof가 설치된 `.agents`/`agents`/`scripts`/`AGENTS.md`까지 포함한 exact product tree를 사용한 반면 smoke controller가 그 runtime asset을 제외한 별도 tree를 재계산한 authority mismatch다. 모델/UI 실패가 아니라 controller 검증 결함이며 valid terminal cell은0/3이다.
