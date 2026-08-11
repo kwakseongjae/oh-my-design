@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: task baseline commit `6acf2876`, repaired skill/evaluator commit `f1b5e219` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-11 · 1.9.859 closed-loop Luna/high 3셀 완결; 관측값 직접 환류 P0 구현 중
+- 갱신: 2026-08-11 · 1.9.860 bounded-observation Luna/high 3셀 완결; semantic diagnostics P0 대기
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.860은 hash-bound `objective_observations`를 repair feedback에 직접 넣고 Luna/high 3셀을 initial1+repair2로 완결했다. 3/3 valid terminal, project-owned DESIGN.md proof 3/3 PASS지만 UI-Resolved는 0/3이다.
+- 점수는 landing `50→70→70`, cold-chain `20→40→40`, locale `40→40→60`이다. 1.9.859 대비 final score는 landing+20, cold-chain+0, locale+20이다. 총 9 calls·4,049.298s·14,182,528 input+output tokens(cached input 12,662,016)이며 retry/replacement/fallback0이다.
+- bounded scalar/count/viewport/a11y 관측은 반응형·접근성·기초 인터랙션 수리에 유효했지만, accessible role/name/state discovery·persistent state semantics·exact locale mapping은 해결하지 못했다. 다음 P0는 접근성 트리와 상태 전환을 제한된 controller 측정값으로 환류하고 2개 valid oracle+isolated mutant에 provider-zero 보정한 뒤 fresh epoch에서 검증하는 것이다.
+- exact evidence는 `reports/autopilot-luna-high-smoke-1.9.860/RESULTS.json`에 봉인하며 completed root는 재사용하지 않는다. public one-shot/superiority claim은 계속 BLOCK이다.
 
 - 1.9.859는 exact named in-app browser admission 뒤 Luna/high 3셀을 각각 initial1+same-mission repair2로 완결했다. 3/3 valid terminal, project-owned DESIGN.md proof 3/3 PASS지만 UI-Resolved 0/3이다. 점수는 landing `30→30→50`, cold-chain `20→20→40`, locale `30→30→40`이다.
 - 총 9 model call, provider wall 3,937.228s, input+output 11,175,693(cached input 10,190,592)이다. retry/replacement/fallback은0이고 completed root는 재사용하지 않는다. exact evidence는 `reports/autopilot-luna-high-smoke-1.9.859/RESULTS.json`에 봉인한다.

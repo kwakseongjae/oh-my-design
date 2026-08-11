@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-11 (Codex) · 1.9.860 bounded-observation smoke complete
+- Luna/high 3셀을 9 calls로 완결했고 DESIGN.md proof 3/3, UI-Resolved 0/3을 정직하게 보존했다.
+- 점수는 landing 50→70→70, cold-chain 20→40→40, locale 40→40→60이다.
+- 관측 직접 환류는 두 task를 +20 개선했지만 accessible semantics와 locale persistence를 해결하지 못했다.
+- 다음은 bounded accessibility-tree/state-transition diagnostics를 oracle/mutant로 보정한 fresh epoch다.
+
 ## 2026-08-11 (Codex) · 1.9.859 closed repair diagnostic complete
 - Luna/high 3셀을 initial1+repair2로 완결했지만 UI-Resolved는 0/3이었다.
 - 점수는 30→30→50, 20→20→40, 30→30→40; DESIGN.md proof는 3/3 PASS다.
