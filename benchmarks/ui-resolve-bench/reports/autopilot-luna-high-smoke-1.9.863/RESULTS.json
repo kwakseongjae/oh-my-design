@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "autopilot-luna-high-smoke-1.9.863",
+  "source_commit": "77789f516bd434072f2bcbbdbaf0012c4d70c4ba",
+  "locked_plan_sha256": "18babf5b93a549ae49234711550500a18ed075c9ea0873a2d79a1c74d9b8ab08",
+  "execution_state_sha256": "88aa084ce6d1a408bca63e5cbbafd0e20d8a48f7482c50f185cd3c93fc3fee7f",
+  "execution_state": "stopped-preregistered",
+  "stop_reason": "controller-task-evaluator-produced-no-score",
+  "runtime": {
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "cursor_calls": 0,
+    "retry_calls": 0,
+    "replacement_calls": 0,
+    "fallback_calls": 0
+  },
+  "scheduled_cells": 3,
+  "valid_terminal_cells": 2,
+  "ui_resolved": 0,
+  "design_system_proof_pass": 3,
+  "user_question_artifacts": 0,
+  "provider_exposures": 7,
+  "observed_usage": {
+    "input_tokens": 9454296,
+    "cached_input_tokens": 8799488,
+    "output_tokens": 130978,
+    "input_plus_output_tokens": 9585274,
+    "provider_wall_ms": 2697294
+  },
+  "cells": [
+    {
+      "task_id": "neighborhood-library-landing",
+      "status": "valid-terminal-provider-failure",
+      "attempt_scores": [30, 80, 50],
+      "ui_resolved": false,
+      "model_calls": 3,
+      "repair_calls": 2,
+      "final_failed_assertions": [
+        "reservation_state",
+        "focus_transfer",
+        "unavailable_information_honest"
+      ]
+    },
+    {
+      "task_id": "cold-chain-operations",
+      "status": "valid-terminal-provider-failure",
+      "attempt_scores": [20, 40, 40],
+      "ui_resolved": false,
+      "model_calls": 3,
+      "repair_calls": 2,
+      "final_failed_assertions": [
+        "queue_preconditions",
+        "filtered_contents_exact",
+        "assigned_owner_confirmed_and_persistent",
+        "responsive"
+      ]
+    },
+    {
+      "task_id": "clinic-visit-prep-locales",
+      "status": "controller-infrastructure-stop",
+      "provider_exit_code": 0,
+      "provider_calls": 1,
+      "sealed_score": null,
+      "failure": "Playwright locator.check timed out because the visible checklist wrapper intercepted pointer events",
+      "provider_free_diagnostic": {
+        "path": "/private/tmp/omd-1863-locale-recheck.json",
+        "sha256": "cee20b70d7c0875e38bd045af4e05d4b8def0fdfc5822f92f3b7d4585848d694",
+        "score": 30,
+        "ui_resolved": false,
+        "failed_assertions": [
+          "progress_textual_and_persistent",
+          "translation_unavailable_honest",
+          "evidence_honesty",
+          "accessibility"
+        ],
+        "authority": "diagnostic-only-does-not-replace-sealed-result"
+      }
+    }
+  ],
+  "claim_status": {
+    "one_shot": "blocked",
+    "superiority": "blocked",
+    "competitor_qualification": "not-started"
+  }
+}

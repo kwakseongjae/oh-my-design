@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-11 (Codex) · 1.9.863 objective-first smoke frozen
+- objective-first repair는 실제 작동했지만 landing30→80→50, cold20→40→40으로 품질 목표를 통과하지 못했다.
+- locale는 provider 성공 뒤 pointer-only evaluator timeout으로 no-score가 되어 root를 영구 동결했다.
+- locale 체크는 focus+Space 키보드 계약으로 보정했고 provider-free score30을 정상 산출했다.
+- 다음은 passing assertion invariant와 cold-chain observation 정합화 후 fresh epoch이며 1.9.863은 재사용하지 않는다.
+
 ## 2026-08-11 (Codex) · 1.9.862 objective-first repair RCA
 - Luna/high 3셀을 질문0·5 calls로 완결했고 DESIGN.md3/3, UI-Resolved0/3을 정직하게 봉인했다.
 - local 실패도 controller objective 검증 전에 repair budget을 쓰지 않도록 상태머신 우선권을 수정했다.

@@ -1029,6 +1029,20 @@ async function evaluateRecovery(page, viewport) {
   return { task_identity: /volunteer/i.test(initialText) && /(?:roster|csv|import)/i.test(initialText), sample_local_only_disclosed: /(?:fictional|sample)/i.test(initialText) && /(?:local|not upload|no real|no production)/i.test(initialText), sample_rows_loaded: loaded, row_error_associated_and_recoverable: recoverable && keyboardRecovery, valid_row_identities_preserved: preservedBeforeRetry && preservedFinal, state_transitions_announced: errorAnnounced && completionAnnounced, completion_counts_unambiguous: counts, completion_announced: completionAnnounced, protected_unknown_claims: claims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: await page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)), controls_horizontally_unclipped: initialControls.unclipped, task_control_min_dimension_px: initialControls.min, axe_serious_critical: axeCounts.reduce((sum, value) => sum + value, 0), main_count: await page.getByRole('main').count(), h1_count_per_state: h1Counts } };
 }
 
+export async function checkboxState(locator) {
+  return locator.evaluate((element) => element.checked === true
+    || element.getAttribute('aria-checked') === 'true'
+    || element.getAttribute('aria-pressed') === 'true');
+}
+
+export async function setCheckboxStateWithKeyboard(page, locator, checked) {
+  if (await checkboxState(locator) === checked) return true;
+  await locator.focus();
+  await page.keyboard.press('Space');
+  await afterPaint(page);
+  return (await checkboxState(locator)) === checked;
+}
+
 async function evaluateLocale(page, viewport) {
   const main = page.getByRole('main'); const axeCounts = []; const h1Counts = []; const cjkUnclipped = []; const localeDiagnostics = [];
   const checkState = async () => { axeCounts.push((await axeSeriousCritical(page)).count); h1Counts.push(await page.getByRole('heading', { level: 1 }).count()); };
@@ -1070,7 +1084,7 @@ async function evaluateLocale(page, viewport) {
   const initialLocaleChecks = [];
   for (const locale of locales) initialLocaleChecks.push(await switchTo(locale));
   await switchTo(locales[1]); const checks = page.getByRole('checkbox'); const checklistTotal = await checks.count(); const hasChecklist = checklistTotal >= 2;
-  if (hasChecklist) { await checks.first().check(); await afterPaint(page); }
+  if (hasChecklist) await setCheckboxStateWithKeyboard(page, checks.first(), true);
   const progressSnapshot = async () => {
     const statuses = (await page.getByRole('status').allInnerTexts()).map((text) => text.replace(/\s+/g, ' ').trim()).filter(Boolean);
     const bar = page.getByRole('progressbar');
@@ -1087,13 +1101,12 @@ async function evaluateLocale(page, viewport) {
   const textShowsProgress = (snapshot, amount, total) => snapshot.status_texts.some((text) => new RegExp(`(?:${amount}\\D{0,12}${total}|${total}\\D{0,12}${amount})`, 'i').test(text));
   const progressSemanticsExact = (snapshot, amount, total) => textShowsProgress(snapshot, amount, total)
     && ((snapshot.bar_now === null && snapshot.bar_max === null) || (snapshot.bar_now === amount && snapshot.bar_max === total));
-  const progress1 = await progressSnapshot(); await checkState(); await switchTo(locales[2]); const progressJapanese = await progressSnapshot(); await switchTo(locales[1]); const firstPreserved = hasChecklist && await page.getByRole('checkbox').first().isChecked(); const progressBack = await progressSnapshot();
+  const progress1 = await progressSnapshot(); await checkState(); await switchTo(locales[2]); const progressJapanese = await progressSnapshot(); await switchTo(locales[1]); const firstPreserved = hasChecklist && await checkboxState(page.getByRole('checkbox').first()); const progressBack = await progressSnapshot();
   if (hasChecklist) {
     const currentChecks = page.getByRole('checkbox');
-    for (let index = 0; index < await currentChecks.count(); index += 1) if (!await currentChecks.nth(index).isChecked()) await currentChecks.nth(index).check();
-    await afterPaint(page);
+    for (let index = 0; index < await currentChecks.count(); index += 1) await setCheckboxStateWithKeyboard(page, currentChecks.nth(index), true);
   }
-  const completeEnglish = (await main.innerText()).replace(/\s+/g, ' '); await switchTo(locales[0]); await switchTo(locales[1]); const completionPreserved = hasChecklist && (await checks.first().isChecked()) && (await checks.nth(1).isChecked()) && /(?:complete|2 of 2)/i.test((await main.innerText()).replace(/\s+/g, ' '));
+  const completeEnglish = (await main.innerText()).replace(/\s+/g, ' '); await switchTo(locales[0]); await switchTo(locales[1]); const completionPreserved = hasChecklist && (await checkboxState(checks.first())) && (await checkboxState(checks.nth(1))) && /(?:complete|2 of 2)/i.test((await main.innerText()).replace(/\s+/g, ' '));
   const langBeforeUnavailable = await page.locator('html').getAttribute('lang'); const unavailable = page.getByRole('button', { name: /unavailable translation/i });
   if (await unavailable.count() === 1 && await unavailable.isVisible()) { await unavailable.press('Enter'); await afterPaint(page); }
   const unavailableAlert = page.getByRole('alert').filter({ hasText: /translation.*unavailable/i }); const unavailableHonest = await unavailable.count() === 1 && await unavailableAlert.count() === 1 && await unavailableAlert.isVisible() && (await page.locator('html').getAttribute('lang')) === langBeforeUnavailable; await checkState();

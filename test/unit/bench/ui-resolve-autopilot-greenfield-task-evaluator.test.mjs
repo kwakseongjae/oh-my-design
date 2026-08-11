@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { detectLocaleProtectedClaims, isSampleOwnerOption, scoreCaregiverEvidence, scoreCheckoutEvidence, scoreColdChainEvidence, scoreDeletionEvidence, scoreEditorialEvidence, scoreGrantEvidence, scoreIncidentEvidence, scoreLandingEvidence, scoreLocaleEvidence, scoreRecoveryEvidence, scoreSearchEvidence, scoreTransitEvidence } from '../../../benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs';
+import { detectLocaleProtectedClaims, isSampleOwnerOption, scoreCaregiverEvidence, scoreCheckoutEvidence, scoreColdChainEvidence, scoreDeletionEvidence, scoreEditorialEvidence, scoreGrantEvidence, scoreIncidentEvidence, scoreLandingEvidence, scoreLocaleEvidence, scoreRecoveryEvidence, scoreSearchEvidence, scoreTransitEvidence, setCheckboxStateWithKeyboard } from '../../../benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs';
 
 describe('greenfield evidence phrase classification', () => {
   it.each([
@@ -152,6 +152,23 @@ describe('greenfield five-locale checklist observable-outcome scoring', () => {
     ['progress lost', (value) => { value.progress_textual_and_persistent = false; }, 'journey'],
     ['medical advice', (value) => { value.protected_unknown_claims = ['take 20 mg']; }, 'evidence_honesty'],
   ])('rejects %s', (_name, mutate, group) => { const value = validLocale(); mutate(value); const result = scoreLocaleEvidence(value); expect(result.groups[group].pass).toBe(false); expect(result.ui_resolved).toBe(false); });
+});
+
+describe('greenfield five-locale checklist interaction', () => {
+  it('uses the keyboard contract when a visible wrapper intercepts pointer clicks', async () => {
+    let checked = false;
+    let focused = false;
+    const locator = {
+      evaluate: async () => checked,
+      focus: async () => { focused = true; },
+    };
+    const page = {
+      keyboard: { press: async (key) => { expect(key).toBe('Space'); expect(focused).toBe(true); checked = true; } },
+      evaluate: async () => undefined,
+    };
+    await expect(setCheckboxStateWithKeyboard(page, locator, true)).resolves.toBe(true);
+    expect(checked).toBe(true);
+  });
 });
 
 describe('greenfield caregiver observable-outcome scoring', () => {
