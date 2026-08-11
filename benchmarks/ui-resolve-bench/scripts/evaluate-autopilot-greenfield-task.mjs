@@ -28,6 +28,12 @@ export function isSampleOwnerOption(value) {
     || /\b(?:owner|staff|operator|assignee|responder)\s+(?:sample|demo|fictional)\b/i.test(text);
 }
 
+export function classifyColdChainPriority(value) {
+  const text = String(value || '').replace(/\s+/g, ' ').trim();
+  const nonUrgent = /\bnon[-\s]?urgent\b|\b(?:attention|resolved|routine|watch|stable|normal)\b/i.test(text);
+  return { urgent: /\burgent\b/i.test(text) && !nonUrgent, nonUrgent };
+}
+
 export function detectLocaleProtectedClaims(value) {
   const sentences = String(value || '').replace(/\s+/g, ' ').split(/(?<=[.!?。！？])|\n+/).map((sentence) => sentence.trim()).filter(Boolean);
   const explicitlyQualified = (sentence) => /(?:fictional|sample)/i.test(sentence)
@@ -433,6 +439,10 @@ async function evaluateLanding(page, viewport, origin) {
       unavailableInformationHonest: /(?:inventory|availability|prices?|costs?|fees?)[^.!?]{0,120}(?:not (?:listed|published|shown)|unavailable|confirm|check|var(?:y|ies))/i.test(visibleText)
         || /(?:confirm|check)[^.!?]{0,120}(?:inventory|availability|prices?|costs?|fees?)/i.test(visibleText),
       mainCount: document.querySelectorAll('main').length, h1Count: document.querySelectorAll('h1').length,
+      unavailableInformationExcerpts: visibleText.split(/(?<=[.!?])/)
+        .map((sentence) => sentence.trim())
+        .filter((sentence) => /inventory|availability|catalog|prices?|costs?|fees?/i.test(sentence))
+        .slice(0, 6),
       priceClaims, inventoryClaims, social, partnerImages,
     };
   });
@@ -443,6 +453,7 @@ async function evaluateLanding(page, viewport, origin) {
   let focusTransfer = false;
   let keyboardReachable = false;
   let focusIndicatorVisible = false;
+  let focusedAfterActivation = null;
   let reservationControlsHorizontallyUnclipped = false;
   let reservationControlMinDimension = 0;
   let reservationAxe = initialAxe;
@@ -482,6 +493,11 @@ async function evaluateLanding(page, viewport, origin) {
       || await focusedReservationHeading.evaluateAll((elements) => elements.some((element) => element === document.activeElement))
       || reservationName.test(focusedSnapshot)
     ));
+    focusedAfterActivation = await page.locator(':focus').evaluate((element) => element ? ({
+      tag: element.tagName.toLowerCase(),
+      role: element.getAttribute('role'),
+      name: element.getAttribute('aria-label') || element.innerText || element.value || '',
+    }) : null).catch(() => null);
     if (root) {
       const geometry = await root.locator('input,select,textarea,button').evaluateAll((elements) => {
         const visible = elements.filter((element) => {
@@ -515,6 +531,19 @@ async function evaluateLanding(page, viewport, origin) {
       initial_axe_serious_critical: initialAxe.count, reservation_axe_serious_critical: reservationAxe.count,
       initial_axe_violations: initialAxe.violations, reservation_axe_violations: reservationAxe.violations,
       main_count: initial.mainCount, h1_count: initial.h1Count,
+      primary_action_diagnostics: {
+        visible_count: visibleIndexes.length,
+        candidates: await Promise.all(visibleIndexes.slice(0, 8).map(async (index) => {
+          const candidate = candidates.nth(index);
+          return {
+            tag: await candidate.evaluate((element) => element.tagName.toLowerCase()),
+            href: await candidate.getAttribute('href'),
+            name: (await candidate.innerText()).replace(/\s+/g, ' ').trim().slice(0, 120),
+          };
+        })),
+        focused_after_activation: focusedAfterActivation,
+      },
+      unavailable_information_excerpts: initial.unavailableInformationExcerpts,
       post_action_aria: await boundedAriaInventory(page, ['dialog', 'region', 'form', 'complementary', 'heading'], { total: 8 }),
     },
     price_claims: initial.priceClaims, inventory_claims: initial.inventoryClaims,
@@ -663,10 +692,11 @@ async function evaluateColdChain(page, viewport) {
       const allActions = container.getByRole('button').or(container.getByRole('link'));
       const visibleAllActions = await visibleLocatorIndexes(allActions);
       const containerActionable = await container.evaluate((element) => element.tabIndex >= 0 || ['button', 'link'].includes(element.getAttribute('role') || ''));
+      const priority = classifyColdChainPriority(text);
       records.push({
         identity,
-        urgent: /\burgent\b/i.test(text),
-        nonUrgent: /\b(?:attention|resolved|routine|watch|stable|normal|non-urgent)\b/i.test(text),
+        urgent: priority.urgent,
+        nonUrgent: priority.nonUrgent,
         container,
         action: visibleIntentActions.length ? intentActions.nth(visibleIntentActions[0])
           : visibleAllActions.length === 1 ? allActions.nth(visibleAllActions[0])
@@ -769,6 +799,9 @@ async function evaluateColdChain(page, viewport) {
   let errorAssociated = false;
   let sampleOwnerOptions = false;
   let assignedPersistent = false;
+  let selectedOwner = '';
+  let assignmentStatusText = '';
+  let assignedSourceRecordText = '';
   let errorAxe = detailAxe;
   let assignedAxe = detailAxe;
   let controlsUnclipped = true;
@@ -804,6 +837,9 @@ async function evaluateColdChain(page, viewport) {
         const ownerName = chosen.split('·')[0].trim();
         const refreshedRecords = await collectRecords();
         const sourceRecordText = activeIdentity ? (await refreshedRecords.find((item) => item.identity === activeIdentity)?.container.innerText()) || '' : '';
+        selectedOwner = ownerName;
+        assignmentStatusText = statusText;
+        assignedSourceRecordText = sourceRecordText;
         assignedPersistent = Boolean(activeIdentity && statusText.includes(activeIdentity) && statusText.includes(ownerName) && sourceRecordText.includes(ownerName));
         assignedAxe = await axeSeriousCritical(page);
       }
@@ -815,7 +851,7 @@ async function evaluateColdChain(page, viewport) {
   const unqualified = visibleText.split(/(?<=[.!?])|\n+/).filter((sentence) => !/\b(?:sample|demo|fictional|unknown|not provided|not verified)\b/i.test(sentence)).join(' ');
   const protectedClaims = [...unqualified.matchAll(/\b(?:FDA|GDP|GMP)[ -]?(?:compliant|certified|approved)?\b|\b(?:regulatory|compliance) (?:verified|approved|certified)|\breal (?:shipments?|staff)\b/gi)].map((match) => match[0]);
   const criticalFieldsReachable = viewport.width > 390 || filteredRecords.length === urgentIds.length;
-  return { task_identity: /cold[-\s]chain|shipment exception|exception queue/i.test(initialText), sample_scope_visible: /\b(?:sample|demo|fictional)\b/i.test(initialText), shipment_count: records.length, urgent_count: records.filter((item) => item.urgent).length, non_urgent_count: records.filter((item) => item.nonUrgent).length, routine_count: records.filter((item) => item.nonUrgent).length, filter_selected_and_visible: filterSelectedAndVisible, filtered_contents_exact: filteredExact, keyboard_open_sample: keyboardOpen, matching_evidence_detail: matchingEvidence, owner_error_associated: errorAssociated, sample_owner_options: sampleOwnerOptions, assigned_owner_confirmed_and_persistent: assignedPersistent, protected_unknown_claims: protectedClaims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: await page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)), critical_fields_reachable: criticalFieldsReachable, controls_horizontally_unclipped: controlsUnclipped, control_min_dimension_px: controlMin, initial_axe_serious_critical: initialAxe.count, filtered_axe_serious_critical: filteredAxe.count, detail_axe_serious_critical: detailAxe.count, error_axe_serious_critical: errorAxe.count, assigned_axe_serious_critical: assignedAxe.count, initial_axe_violations: initialAxe.violations, filtered_axe_violations: filteredAxe.violations, detail_axe_violations: detailAxe.violations, error_axe_violations: errorAxe.violations, assigned_axe_violations: assignedAxe.violations, main_count: await page.getByRole('main').count(), h1_count: await page.getByRole('heading', { level: 1 }).count(), accessibility_inventory: await boundedAriaInventory(page, ['row', 'article', 'listitem', 'button', 'link', 'combobox', 'status', 'alert'], { total: 10 }), interaction_diagnostics: { filter_kind: filterKind, filter_keyboard: filterKeyboard, filter_programmatic: filterProgrammatic, filter_label: filterLabel, action_reached: actionReached, detail_before: detailBefore, detail_after: detailAfter, record_classification: records.map(({ identity, urgent, nonUrgent }) => ({ identity, urgent, non_urgent: nonUrgent })), urgent_ids: urgentIds, filtered_record_ids: filteredRecords, assigned_status_persistent: assignedPersistent } } };
+  return { task_identity: /cold[-\s]chain|shipment exception|exception queue/i.test(initialText), sample_scope_visible: /\b(?:sample|demo|fictional)\b/i.test(initialText), shipment_count: records.length, urgent_count: records.filter((item) => item.urgent).length, non_urgent_count: records.filter((item) => item.nonUrgent).length, routine_count: records.filter((item) => item.nonUrgent).length, filter_selected_and_visible: filterSelectedAndVisible, filtered_contents_exact: filteredExact, keyboard_open_sample: keyboardOpen, matching_evidence_detail: matchingEvidence, owner_error_associated: errorAssociated, sample_owner_options: sampleOwnerOptions, assigned_owner_confirmed_and_persistent: assignedPersistent, protected_unknown_claims: protectedClaims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: await page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)), critical_fields_reachable: criticalFieldsReachable, controls_horizontally_unclipped: controlsUnclipped, control_min_dimension_px: controlMin, initial_axe_serious_critical: initialAxe.count, filtered_axe_serious_critical: filteredAxe.count, detail_axe_serious_critical: detailAxe.count, error_axe_serious_critical: errorAxe.count, assigned_axe_serious_critical: assignedAxe.count, initial_axe_violations: initialAxe.violations, filtered_axe_violations: filteredAxe.violations, detail_axe_violations: detailAxe.violations, error_axe_violations: errorAxe.violations, assigned_axe_violations: assignedAxe.violations, main_count: await page.getByRole('main').count(), h1_count: await page.getByRole('heading', { level: 1 }).count(), accessibility_inventory: await boundedAriaInventory(page, ['row', 'article', 'listitem', 'button', 'link', 'combobox', 'status', 'alert'], { total: 10 }), interaction_diagnostics: { filter_kind: filterKind, filter_keyboard: filterKeyboard, filter_programmatic: filterProgrammatic, filter_label: filterLabel, action_reached: actionReached, detail_before: detailBefore, detail_after: detailAfter, record_classification: records.map(({ identity, urgent, nonUrgent }) => ({ identity, urgent, non_urgent: nonUrgent })), urgent_ids: urgentIds, filtered_record_ids: filteredRecords, selected_owner: selectedOwner, assignment_status_text: assignmentStatusText.slice(0, 500), assigned_source_record_text: assignedSourceRecordText.replace(/\s+/g, ' ').slice(0, 500), assigned_status_persistent: assignedPersistent } } };
 }
 
 async function evaluateCaregiver(page, viewport) {
@@ -1110,6 +1146,15 @@ async function evaluateLocale(page, viewport) {
   const langBeforeUnavailable = await page.locator('html').getAttribute('lang'); const unavailable = page.getByRole('button', { name: /unavailable translation/i });
   if (await unavailable.count() === 1 && await unavailable.isVisible()) { await unavailable.press('Enter'); await afterPaint(page); }
   const unavailableAlert = page.getByRole('alert').filter({ hasText: /translation.*unavailable/i }); const unavailableHonest = await unavailable.count() === 1 && await unavailableAlert.count() === 1 && await unavailableAlert.isVisible() && (await page.locator('html').getAttribute('lang')) === langBeforeUnavailable; await checkState();
+  const unavailableDiagnostics = {
+    control_count: await unavailable.count(),
+    control_visible: await unavailable.count() === 1 ? await unavailable.isVisible() : false,
+    alert_count: await unavailableAlert.count(),
+    alert_visible: await unavailableAlert.count() === 1 ? await unavailableAlert.isVisible() : false,
+    alert_text: await unavailableAlert.count() === 1 ? (await unavailableAlert.innerText()).replace(/\s+/g, ' ').trim().slice(0, 300) : '',
+    lang_before: langBeforeUnavailable,
+    lang_after: await page.locator('html').getAttribute('lang'),
+  };
   const initialControls = await page.locator('button,select,.check').evaluateAll((elements) => { const rects = elements.filter((element) => { const r = element.getBoundingClientRect(); return r.width > 0 && r.height > 0; }).map((element) => element.getBoundingClientRect()); return { unclipped: rects.every((r) => r.left >= -1 && r.right <= innerWidth + 1), min: rects.length ? Math.min(...rects.map((r) => Math.min(r.width, r.height))) : 0 }; });
   const allText = (await main.innerText()).replace(/\s+/g, ' '); const claims = detectLocaleProtectedClaims(allText);
   const progressPreserved = hasChecklist && [progress1, progressJapanese, progressBack].every((snapshot) => snapshot.checked === 1 && snapshot.total === checklistTotal && progressSemanticsExact(snapshot, 1, checklistTotal)) && firstPreserved;
@@ -1117,7 +1162,7 @@ async function evaluateLocale(page, viewport) {
   const completionText = (await main.innerText()).replace(/\s+/g, ' ');
   const allComplete = completionSnapshot.checked === checklistTotal && completionSnapshot.total === checklistTotal
     && ((completionSnapshot.bar_now === null && completionSnapshot.bar_max === null) || (completionSnapshot.bar_now === checklistTotal && completionSnapshot.bar_max === checklistTotal));
-  return { task_identity: /(?:clinic|visit|受診|진료|就诊|就診)/i.test(initialText) && /(?:checklist|preparation|준비|準備|准备)/i.test(initialText), fictional_not_medical_advice: /(?:fictional|sample)/i.test(initialText) && /not medical advice|does not infer a diagnosis/i.test(initialText), all_five_locales_exact: initialLocaleChecks.length === 5 && initialLocaleChecks.every(Boolean), selected_label_lang_script_agree: initialLocaleChecks.every(Boolean), progress_textual_and_persistent: progressPreserved, completion_persists_after_return: completionPreserved || (allComplete && (/(?:complete|completed)/i.test(`${completeEnglish} ${completionText}`) || textShowsProgress(completionSnapshot, checklistTotal, checklistTotal))), translation_unavailable_honest: unavailableHonest, protected_unknown_claims: claims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: await page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)), cjk_content_unclipped: cjkUnclipped.every(Boolean), controls_horizontally_unclipped: initialControls.unclipped, task_control_min_dimension_px: initialControls.min, axe_serious_critical: axeCounts.reduce((sum, value) => sum + value, 0), main_count: await page.getByRole('main').count(), h1_count_per_state: h1Counts, locale_switch_diagnostics: localeDiagnostics.slice(0, 12), progress_diagnostics: { first: progress1, japanese: progressJapanese, returned: progressBack, complete: completionSnapshot }, accessibility_inventory: await boundedAriaInventory(page, ['combobox', 'checkbox', 'progressbar', 'status', 'alert'], { total: 10 }) } };
+  return { task_identity: /(?:clinic|visit|受診|진료|就诊|就診)/i.test(initialText) && /(?:checklist|preparation|준비|準備|准备)/i.test(initialText), fictional_not_medical_advice: /(?:fictional|sample)/i.test(initialText) && /not medical advice|does not infer a diagnosis/i.test(initialText), all_five_locales_exact: initialLocaleChecks.length === 5 && initialLocaleChecks.every(Boolean), selected_label_lang_script_agree: initialLocaleChecks.every(Boolean), progress_textual_and_persistent: progressPreserved, completion_persists_after_return: completionPreserved || (allComplete && (/(?:complete|completed)/i.test(`${completeEnglish} ${completionText}`) || textShowsProgress(completionSnapshot, checklistTotal, checklistTotal))), translation_unavailable_honest: unavailableHonest, protected_unknown_claims: claims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: await page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)), cjk_content_unclipped: cjkUnclipped.every(Boolean), controls_horizontally_unclipped: initialControls.unclipped, task_control_min_dimension_px: initialControls.min, axe_serious_critical: axeCounts.reduce((sum, value) => sum + value, 0), main_count: await page.getByRole('main').count(), h1_count_per_state: h1Counts, locale_switch_diagnostics: localeDiagnostics.slice(0, 12), progress_diagnostics: { first: progress1, japanese: progressJapanese, returned: progressBack, complete: completionSnapshot }, unavailable_translation_diagnostics: unavailableDiagnostics, accessibility_inventory: await boundedAriaInventory(page, ['combobox', 'checkbox', 'progressbar', 'status', 'alert'], { total: 10 }) } };
 }
 
 const invoked = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);

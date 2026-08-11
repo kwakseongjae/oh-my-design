@@ -456,6 +456,28 @@ export function objectiveFailureObservations(score) {
   const evidence = score?.evidence && typeof score.evidence === "object" ? score.evidence : {};
   const viewports = Array.isArray(evidence.viewports) ? evidence.viewports : [];
   const compositeObservations = {
+    unique_primary_action: {
+      pass: evidence.unique_primary_action ?? null,
+      viewports: viewports.map((viewport) => ({
+        id: viewport.id ?? null,
+        diagnostics: viewport.primary_action_diagnostics ?? null,
+      })),
+    },
+    focus_transfer: {
+      pass: evidence.focus_transfer ?? null,
+      viewports: viewports.map((viewport) => ({
+        id: viewport.id ?? null,
+        focused_after_activation: viewport.primary_action_diagnostics?.focused_after_activation ?? null,
+        post_action_aria: viewport.post_action_aria ?? [],
+      })),
+    },
+    unavailable_information_honest: {
+      pass: evidence.unavailable_information_honest ?? null,
+      viewports: viewports.map((viewport) => ({
+        id: viewport.id ?? null,
+        excerpts: viewport.unavailable_information_excerpts ?? [],
+      })),
+    },
     queue_preconditions: {
       shipment_count: evidence.shipment_count ?? null,
       urgent_count: evidence.urgent_count ?? null,
@@ -475,7 +497,17 @@ export function objectiveFailureObservations(score) {
       viewports: viewports.map((viewport) => ({
         id: viewport.id ?? null,
         assigned_status_persistent: viewport.interaction_diagnostics?.assigned_status_persistent ?? null,
+        selected_owner: viewport.interaction_diagnostics?.selected_owner ?? null,
+        assignment_status_text: viewport.interaction_diagnostics?.assignment_status_text ?? null,
+        assigned_source_record_text: viewport.interaction_diagnostics?.assigned_source_record_text ?? null,
         detail_after: viewport.interaction_diagnostics?.detail_after ?? null,
+      })),
+    },
+    translation_unavailable_honest: {
+      pass: evidence.translation_unavailable_honest ?? null,
+      viewports: viewports.map((viewport) => ({
+        id: viewport.id ?? null,
+        diagnostics: viewport.unavailable_translation_diagnostics ?? null,
       })),
     },
     responsive: viewports.map((viewport) => ({

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { detectLocaleProtectedClaims, isSampleOwnerOption, scoreCaregiverEvidence, scoreCheckoutEvidence, scoreColdChainEvidence, scoreDeletionEvidence, scoreEditorialEvidence, scoreGrantEvidence, scoreIncidentEvidence, scoreLandingEvidence, scoreLocaleEvidence, scoreRecoveryEvidence, scoreSearchEvidence, scoreTransitEvidence, setCheckboxStateWithKeyboard } from '../../../benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs';
+import { classifyColdChainPriority, detectLocaleProtectedClaims, isSampleOwnerOption, scoreCaregiverEvidence, scoreCheckoutEvidence, scoreColdChainEvidence, scoreDeletionEvidence, scoreEditorialEvidence, scoreGrantEvidence, scoreIncidentEvidence, scoreLandingEvidence, scoreLocaleEvidence, scoreRecoveryEvidence, scoreSearchEvidence, scoreTransitEvidence, setCheckboxStateWithKeyboard } from '../../../benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs';
 
 describe('greenfield evidence phrase classification', () => {
   it.each([
@@ -9,6 +9,15 @@ describe('greenfield evidence phrase classification', () => {
   ])('accepts explicitly scoped owner option: %s', (value) => expect(isSampleOwnerOption(value)).toBe(true));
 
   it.each(['Maya Chen · Receiving', 'Jordan Lee · Owner', 'Select owner', 'Select a sample owner'])('rejects unscoped or placeholder owner option: %s', (value) => expect(isSampleOwnerOption(value)).toBe(false));
+
+  it.each([
+    ['Urgent', { urgent: true, nonUrgent: false }],
+    ['Urgent review', { urgent: true, nonUrgent: false }],
+    ['Non-urgent', { urgent: false, nonUrgent: true }],
+    ['Routine review', { urgent: false, nonUrgent: true }],
+  ])('classifies cold-chain priority without treating Non-urgent as Urgent: %s', (value, expected) => {
+    expect(classifyColdChainPriority(value)).toEqual(expected);
+  });
 
   it.each([
     'These are fictional examples for this demo, not medical advice.',

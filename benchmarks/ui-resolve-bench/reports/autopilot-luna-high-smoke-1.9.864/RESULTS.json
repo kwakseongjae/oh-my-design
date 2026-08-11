@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "autopilot-luna-high-smoke-1.9.864",
+  "source_commit": "fabfc3cf6a68728c8d15e52f7f7574cc0f0ae8b5",
+  "locked_plan_sha256": "3abcc203892dace16a03be32ff16f29888f15ab4317034b4678eeb2508efe14e",
+  "execution_state_sha256": "270f02fec55d7181395e515dae56c84bdc0bd1c11da69fa2e805c6750219661e",
+  "execution_state": "complete",
+  "runtime": {
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "cursor_calls": 0,
+    "retry_calls": 0,
+    "replacement_calls": 0,
+    "fallback_calls": 0
+  },
+  "scheduled_cells": 3,
+  "valid_terminal_cells": 3,
+  "ui_resolved": 0,
+  "design_system_proof_pass": 3,
+  "user_question_artifacts": 0,
+  "provider_exposures": 9,
+  "observed_usage": {
+    "input_tokens": 13375422,
+    "cached_input_tokens": 12439040,
+    "output_tokens": 168629,
+    "input_plus_output_tokens": 13544051,
+    "provider_wall_ms": 3673223
+  },
+  "cells": [
+    {
+      "task_id": "neighborhood-library-landing",
+      "status": "valid-terminal-provider-failure",
+      "attempt_scores": [10, 50, 50],
+      "ui_resolved": false,
+      "model_calls": 3,
+      "repair_calls": 2,
+      "regressed_assertion_ids": [],
+      "final_failed_assertions": [
+        "unique_primary_action",
+        "focus_transfer",
+        "unavailable_information_honest"
+      ]
+    },
+    {
+      "task_id": "cold-chain-operations",
+      "status": "valid-terminal-provider-failure",
+      "attempt_scores": [20, 20, 40],
+      "ui_resolved": false,
+      "model_calls": 3,
+      "repair_calls": 2,
+      "regressed_assertion_ids": ["filtered_contents_exact"],
+      "final_failed_assertions": [
+        "filtered_contents_exact",
+        "assigned_owner_confirmed_and_persistent",
+        "responsive"
+      ]
+    },
+    {
+      "task_id": "clinic-visit-prep-locales",
+      "status": "valid-terminal-provider-failure",
+      "attempt_scores": [50, 60, 60],
+      "ui_resolved": false,
+      "model_calls": 3,
+      "repair_calls": 2,
+      "regressed_assertion_ids": [],
+      "final_failed_assertions": ["translation_unavailable_honest"]
+    }
+  ],
+  "claim_status": {
+    "one_shot": "blocked",
+    "superiority": "blocked",
+    "competitor_qualification": "not-started"
+  }
+}

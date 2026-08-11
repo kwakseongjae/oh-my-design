@@ -125,6 +125,9 @@ describe("autopilot Luna/high smoke controller", () => {
             urgent_ids: ["CC-101"],
             filtered_record_ids: [],
             assigned_status_persistent: false,
+            selected_owner: "Mina Park",
+            assignment_status_text: "Assigned Mina Park",
+            assigned_source_record_text: "CC-101 Mina Park",
             detail_after: "CC-101 Sample owner Mina Park",
           },
         }],
@@ -132,8 +135,45 @@ describe("autopilot Luna/high smoke controller", () => {
     });
     expect(observations.failed_assertions).toMatchObject({
       filtered_contents_exact: { observed: { pass: false, viewports: [{ id: "mobile-320", urgent_ids: ["CC-101"], filtered_record_ids: [] }] } },
-      assigned_owner_confirmed_and_persistent: { observed: { pass: false, viewports: [{ id: "mobile-320", assigned_status_persistent: false, detail_after: "CC-101 Sample owner Mina Park" }] } },
+      assigned_owner_confirmed_and_persistent: { observed: { pass: false, viewports: [{ id: "mobile-320", assigned_status_persistent: false, selected_owner: "Mina Park", assignment_status_text: "Assigned Mina Park", assigned_source_record_text: "CC-101 Mina Park", detail_after: "CC-101 Sample owner Mina Park" }] } },
       responsive: { observed: [{ id: "mobile-320", mobile: true, critical_fields_reachable: false, control_min_dimension_px: 38 }] },
+    });
+  });
+  test("exposes actionable landing and locale repair diagnostics instead of bare booleans", () => {
+    const observations = objectiveFailureObservations({
+      assertions: {
+        unique_primary_action: false,
+        focus_transfer: false,
+        unavailable_information_honest: false,
+        translation_unavailable_honest: false,
+      },
+      evidence: {
+        unique_primary_action: false,
+        focus_transfer: false,
+        unavailable_information_honest: false,
+        translation_unavailable_honest: false,
+        viewports: [{
+          id: "desktop-1440",
+          primary_action_diagnostics: {
+            visible_count: 2,
+            candidates: [{ tag: "a", href: "#reserve", name: "Reserve a tool" }],
+            focused_after_activation: { tag: "a", name: "Reserve a tool" },
+          },
+          unavailable_information_excerpts: ["The catalog comes next."],
+          unavailable_translation_diagnostics: {
+            control_count: 0,
+            alert_count: 0,
+            lang_before: "en",
+            lang_after: "en",
+          },
+        }],
+      },
+    });
+    expect(observations.failed_assertions).toMatchObject({
+      unique_primary_action: { observed: { viewports: [{ diagnostics: { visible_count: 2 } }] } },
+      focus_transfer: { observed: { viewports: [{ focused_after_activation: { tag: "a" } }] } },
+      unavailable_information_honest: { observed: { viewports: [{ excerpts: ["The catalog comes next."] }] } },
+      translation_unavailable_honest: { observed: { viewports: [{ diagnostics: { control_count: 0, alert_count: 0 } }] } },
     });
   });
   test("permanently freezes an exposed running root after a controller failure", () => {

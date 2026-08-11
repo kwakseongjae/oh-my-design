@@ -3,11 +3,16 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: Autopilot objective-first commit `77789f51` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-11 · 1.9.863 cold-chain 의미 분류·수리 관측 정합화 완료
+- 기준 소스: Autopilot cold-chain evidence commit `fabfc3cf` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-11 · 1.9.864 완결/검수, fresh repair-evidence authority 수정 중
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.864 exact Luna/high smoke는 3/3 valid terminal로 완결됐다. DESIGN.md proof3/3·질문0·retry/replacement/fallback/Cursor0이지만 UI-Resolved0/3이다. 점수는 landing `10→50→50`, cold-chain `20→20→40`, locale `50→60→60`; 9 calls, input+output13,544,051 tokens, wall3,673.223s다.
+- in-app browser 검수에서 세 결과 모두 높은 시각 완성도와 responsive product hierarchy를 확인했다. 실패는 landing의 중복 CTA/focus/unavailable semantics, cold-chain의 assignment confirmation/mobile target, locale의 unavailable-translation state에 집중된다. public one-shot/superiority claim은 계속 BLOCK이다.
+- 평가기 결함도 분리됐다. `Non-urgent`가 `Urgent`로 중복 분류되었고 repair feedback은 CTA 후보/activation focus/catalog 문장, owner 선택·status·source row, unavailable control·alert·lang 정보를 boolean으로 축약했다. urgent 분류를 수정하고 이 bounded role/state 진단을 feedback에 추가했다.
+- provider-free unit 85/88은 새 controller bytes가 아직 commit authority와 달라 plan 생성 3건만 의도대로 fail-close했다. pure scorer77/77, cold-chain oracle/mutant6/6, locale7/7, landing4/4는 green이다. 다음 순서: report/docs 포함 관련 변경 commit → commit-bound full regression → fresh epoch만 생성/실행. 1.9.864 root는 재사용하지 않는다.
 
 - cold-chain evaluator가 `review`라는 일반 작업명을 non-urgent 상태로 오인하던 규칙을 제거하고 `attention|resolved|routine|watch|stable|normal|non-urgent`의 가시 상태만 인정한다. 각 viewport는 record 분류, urgent ID, 필터 후 ID, 배정 지속 여부를 controller evidence에 남긴다.
 - repair controller는 `queue_preconditions`, `filtered_contents_exact`, `assigned_owner_confirmed_and_persistent`, `responsive`의 합성 실패를 직접 관측값으로 전달한다. 모델은 더 이상 composite assertion 이름만 보고 추측하지 않는다.

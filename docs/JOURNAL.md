@@ -6384,3 +6384,9 @@
 - order3에서 번역된 select label을 영어-only locator가 잃어 no-score로 root가 동결됐다.
 - option authority 기반 selector와 missing-state fail-soft를 추가해 locale E2E 6/6을 통과했다.
 - 실제 동결 결과는 provider-free로 40/100 valid failure가 됐으며 fresh root에서만 재실행한다.
+# 2026-08-11 — 1.9.864 complete + repair evidence RCA
+- exact Luna/high 3-task smoke를 3/3 valid terminal로 완결했고 DESIGN.md proof3/3, UI-Resolved0/3을 숨김없이 봉인했다.
+- in-app browser에서 landing/cold-chain/locale 실제 결과를 검수해 시각 품질과 남은 observable-state 결손을 분리했다.
+- `Non-urgent` 중복 분류를 고치고 CTA/focus/unavailable, owner persistence, unavailable-translation 진단을 bounded feedback에 추가했다.
+- oracle/mutant browser calibration은 green; commit authority가 필요한 controller plan tests는 commit 뒤 재검증한다.
+- 다음: 관련 변경만 commit(`web/public/llms-full.txt` 제외) → full provider-free gate → fresh epoch.
