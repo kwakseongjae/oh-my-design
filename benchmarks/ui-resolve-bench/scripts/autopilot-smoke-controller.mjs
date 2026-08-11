@@ -139,6 +139,14 @@ function planCommand(args) {
   const config = readJson(smokeConfigPath);
   const taskSet = readJson(taskSetPath);
   if (config.provider_execution_allowed !== false || config.cells.length !== 3) throw new Error("smoke preregistration template drift");
+  if (config.autonomy_contract.initial_turn_soft_budget_ms !== 720000
+    || config.autonomy_contract.minimum_controller_handoff_reserve_ms !== 180000
+    || config.autonomy_contract.advisory_lane_attempts_per_lane_max !== 1
+    || config.autonomy_contract.advisory_result_repair_calls_max !== 0
+    || config.autonomy_contract.advisory_coordination_calls_max !== 6
+    || config.autonomy_contract.read_only_council_lanes_max !== 3) {
+    throw new Error("autopilot execution budget contract drift");
+  }
   const paths = [...new Set([
     relative(repoRoot, smokeConfigPath).split(sep).join("/"),
     relative(repoRoot, taskSetPath).split(sep).join("/"),
@@ -253,6 +261,11 @@ function prepareCommand(args) {
       schema_version: "0.2", mode: "controller-owned-objective",
       controller: "autopilot-smoke-controller-v0.3", task_id: cell.task_id,
       repair_rounds_max: plan.smoke_contract.autonomy_contract.repair_rounds_max,
+      initial_turn_soft_budget_ms: plan.smoke_contract.autonomy_contract.initial_turn_soft_budget_ms,
+      minimum_controller_handoff_reserve_ms: plan.smoke_contract.autonomy_contract.minimum_controller_handoff_reserve_ms,
+      advisory_lane_attempts_per_lane_max: plan.smoke_contract.autonomy_contract.advisory_lane_attempts_per_lane_max,
+      advisory_result_repair_calls_max: plan.smoke_contract.autonomy_contract.advisory_result_repair_calls_max,
+      advisory_coordination_calls_max: plan.smoke_contract.autonomy_contract.advisory_coordination_calls_max,
       plan_sha256: sha256(readFileSync(planPath)),
     });
     writeJsonExclusive(join(benchmark, "matrix-cell.json"), { ...cell, browser_execution: { require_browser_proof: false }, host_policy_gate: { require_browser_attempt: false } });

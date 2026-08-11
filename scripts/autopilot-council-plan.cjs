@@ -43,13 +43,15 @@ lanes.push({
   output: 'council/interaction/result.json',
 });
 const task = fs.readFileSync(taskPath, 'utf8');
-if (/locale|language|한국어|일본어|중국어|copy|voice/i.test(task)) {
+const needsLocaleCopy = /locale|language|한국어|영어|일본어|중국어|대만어|copy|voice/i.test(task);
+const needsExternalEvidence = /official|공식|brand|브랜드|reference|레퍼런스|competitor|경쟁|regulated|규제|compliance|legal|medical|financial|evidence source|근거 출처/i.test(task);
+if (needsLocaleCopy) {
   lanes.push({
     lane_id: 'locale-copy', role: 'omd-ux-writer',
     objective: 'Identify locale, expansion, terminology, and product-copy risks without inventing product facts.',
     output: 'council/locale-copy/result.json',
   });
-} else {
+} else if (needsExternalEvidence) {
   lanes.push({
     lane_id: 'evidence-unknown', role: 'omd-ux-researcher',
     objective: 'Separate prompt/repository evidence from proposals and unresolved product-owner facts.',
@@ -60,12 +62,19 @@ if (lanes.length > Number(mission.council_lane_budget)) throw new Error('council
 const normalized = lanes.map((lane, index) => ({
   ...lane, order: index + 1, product_write_allowed: false, design_md_write_allowed: false,
   allowed_write_path: lane.output, required_evidence: ['task.md', 'council/decision-ledger.json'],
+  result_contract: {
+    schema_version: '0.1', status: 'complete', product_files_written: 0, design_md_written: false,
+    exact_keys: ['schema_version', 'lane_id', 'role', 'status', 'findings', 'proposals', 'unresolved', 'product_files_written', 'design_md_written'],
+  },
   status: 'planned',
 }));
 const plan = {
-  schema_version: '0.1', mission_sha256: shaFile(missionPath), task_sha256: shaFile(taskPath),
+  schema_version: '0.2', mission_sha256: shaFile(missionPath), task_sha256: shaFile(taskPath),
   ledger_sha256: shaFile(ledgerPath), strategy: systemDecision.proposed_value,
   lane_budget: mission.council_lane_budget, lane_count: normalized.length, implementation_owner: 'main-agent',
+  lane_attempt_budget: mission.council_lane_attempt_budget,
+  result_repair_budget: mission.council_result_repair_budget,
+  coordination_call_budget: normalized.length * 2,
   lanes: normalized, provider_calls_at_plan_time: 0,
 };
 fs.mkdirSync(path.dirname(planPath), { recursive: true });

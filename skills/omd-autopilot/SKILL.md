@@ -30,12 +30,18 @@ folders and must never edit `DESIGN.md` or product files.
 2. `AUTHORITY_GATE` — run `scripts/design-council-prime.cjs` in the run scope.
    Freeze its decision ledger before any product write.
 3. `BOUNDED_COUNCIL` — dispatch no more than three evidence-required, read-only
-   lanes. Do not dispatch a lane for a settled decision. After the authority
+   lanes. Do not dispatch a lane for a settled decision. A generic authorized
+   greenfield mission uses only the design-system and interaction lanes;
+   locale/copy or explicit external-evidence needs may add one relevant third
+   lane. After the authority
    handoff reaches `PROPOSE_PLAN`, run
    `autopilot-council-plan.cjs <project-root> <run-dir>`, dispatch exactly the
-   listed roles, then run
+   listed roles exactly once and in parallel, then collect each result once and run
    `autopilot-council-reconcile.cjs <project-root> <run-dir>`. The reconciled
-   receipt is mandatory and never grants product-write authority.
+   receipt is mandatory and never grants product-write authority. Every lane
+   must write the exact JSON shape declared in `plan.json`. Never send a
+   follow-up, retry, or reformat request for a malformed/missing adviser result;
+   fail the council honestly and preserve implementation time instead.
 4. `CONSEQUENTIAL_INTERVIEW` — ask zero or one batch. Ask only unresolved
    product-authority decisions that materially change acceptance or the design
    system. A sufficiently authorized prompt proceeds without a question. Never
@@ -60,7 +66,10 @@ folders and must never edit `DESIGN.md` or product files.
    honesty/design-conformance checks. A generic checklist is not admission.
 8. `PRODUCT_BUILD` — implement the requested real route and all required
    empty/loading/error/success/disabled states. Apply only proven or explicitly
-   proposed project tokens.
+   proposed project tokens. When a controller execution budget is present,
+   finish authority and council work before its handoff reserve begins. The
+   reserve belongs to implementation, acceptance proof, and controller
+   handoff—not additional research or adviser repair.
 9. `VERIFY` — verify functionality, same-route desktop/mobile/320px/200%,
    keyboard, accessibility, responsive behavior, copy, evidence honesty and
    DESIGN.md-to-code conformance. `proof.json` schema 0.2 must bind the mission,

@@ -253,6 +253,11 @@ function validateExternalVerificationPolicy(mission) {
   if (policy.schema_version !== '0.2' || policy.mode !== 'controller-owned-objective'
     || policy.controller !== 'autopilot-smoke-controller-v0.3'
     || policy.repair_rounds_max !== mission.repair_round_budget
+    || policy.initial_turn_soft_budget_ms !== mission.execution_budget.initial_turn_soft_budget_ms
+    || policy.minimum_controller_handoff_reserve_ms !== mission.execution_budget.minimum_controller_handoff_reserve_ms
+    || policy.advisory_lane_attempts_per_lane_max !== mission.council_lane_attempt_budget
+    || policy.advisory_result_repair_calls_max !== mission.council_result_repair_budget
+    || policy.advisory_coordination_calls_max !== mission.execution_budget.advisory_coordination_calls_max
     || typeof policy.task_id !== 'string' || !policy.task_id) {
     throw new Error('controller verification policy contract drift');
   }
@@ -325,6 +330,15 @@ if (command === 'bootstrap') {
     }
   }
   const initialTree = treeManifest(cwd);
+  const externalPolicy = fs.existsSync(externalVerificationPolicyPath)
+    ? readJson(externalVerificationPolicyPath) : null;
+  if (externalPolicy && (externalPolicy.initial_turn_soft_budget_ms !== 720000
+    || externalPolicy.minimum_controller_handoff_reserve_ms !== 180000
+    || externalPolicy.advisory_lane_attempts_per_lane_max !== 1
+    || externalPolicy.advisory_result_repair_calls_max !== 0
+    || externalPolicy.advisory_coordination_calls_max !== 6)) {
+    throw new Error('controller execution budget contract drift');
+  }
   const mission = {
     schema_version: '0.1',
     workflow: 'omd-autopilot-v2',
@@ -333,9 +347,16 @@ if (command === 'bootstrap') {
     initial_product_tree: initialTree.files,
     implementation_owner: 'main-agent',
     council_lane_budget: 3,
+    council_lane_attempt_budget: 1,
+    council_result_repair_budget: 0,
     question_batch_budget: 1,
     repair_round_budget: 2,
     guided_checkpoint_claim_allowed: false,
+    execution_budget: {
+      initial_turn_soft_budget_ms: externalPolicy?.initial_turn_soft_budget_ms ?? null,
+      minimum_controller_handoff_reserve_ms: externalPolicy?.minimum_controller_handoff_reserve_ms ?? null,
+      advisory_coordination_calls_max: externalPolicy?.advisory_coordination_calls_max ?? 6,
+    },
     external_verification_policy_sha256: fs.existsSync(externalVerificationPolicyPath)
       ? sha256File(externalVerificationPolicyPath) : null,
   };

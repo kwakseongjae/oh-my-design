@@ -99,6 +99,9 @@ function writeControllerPolicy(taskId = 'test-task') {
   writeFileSync(join(root, '.benchmark/controller-verification-policy.json'), JSON.stringify({
     schema_version: '0.2', mode: 'controller-owned-objective',
     controller: 'autopilot-smoke-controller-v0.3', task_id: taskId, repair_rounds_max: 2,
+    initial_turn_soft_budget_ms: 720000, minimum_controller_handoff_reserve_ms: 180000,
+    advisory_lane_attempts_per_lane_max: 1, advisory_result_repair_calls_max: 0,
+    advisory_coordination_calls_max: 6,
   }));
 }
 
