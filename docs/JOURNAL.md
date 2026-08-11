@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-11 (Codex) · semantic diagnostics calibration complete
+- 1.9.860의 evaluator 오판과 실제 UI 실패를 role/name/state 증거로 분리했다.
+- ARIA inventory·locale mapping·progress·Axe IDs를 bounded repair evidence schema0.2에 추가했다.
+- landing4, cold-chain6, locale6 oracle/mutant와 pure scorer61이 green이다.
+- 다음은 clean commit-bound 전체 회귀 후 fresh Luna/high 3셀 epoch다.
+
 ## 2026-08-11 (Codex) · 1.9.860 bounded-observation smoke complete
 - Luna/high 3셀을 9 calls로 완결했고 DESIGN.md proof 3/3, UI-Resolved 0/3을 정직하게 보존했다.
 - 점수는 landing 50→70→70, cold-chain 20→40→40, locale 40→40→60이다.

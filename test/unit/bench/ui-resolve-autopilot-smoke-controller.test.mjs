@@ -66,6 +66,7 @@ describe("autopilot Luna/high smoke controller", () => {
       },
     });
     expect(observations).toMatchObject({
+      schema_version: "0.2",
       failed_assertions: {
         accessibility: { assertion_pass: false, observed: false },
         queue_preconditions: { assertion_pass: false, observed: null },
@@ -76,6 +77,25 @@ describe("autopilot Luna/high smoke controller", () => {
         viewports: [{ id: "mobile-320", document_overflow_px: 0, axe_serious_critical: 3 }],
       },
     });
+  });
+  test("preserves accessibility-state diagnostics while keeping repair evidence bounded", () => {
+    const observations = objectiveFailureObservations({
+      assertions: { accessibility: false },
+      groups: { accessibility: { points: 20, pass: false } },
+      evidence: {
+        viewports: [{
+          id: "mobile-320",
+          accessibility_inventory: Array.from({ length: 20 }, (_, index) => ({
+            role: "button", snapshot: `${index}-${"x".repeat(800)}`, focused: index === 0,
+          })),
+          locale_switch_diagnostics: Array.from({ length: 20 }, (_, index) => ({ requested: `locale-${index}`, selected: false })),
+        }],
+      },
+    });
+    const viewport = observations.supporting_evidence.viewports[0];
+    expect(viewport.accessibility_inventory).toHaveLength(12);
+    expect(viewport.accessibility_inventory[0].snapshot.length).toBe(500);
+    expect(viewport.locale_switch_diagnostics).toHaveLength(12);
   });
   test("permanently freezes an exposed running root after a controller failure", () => {
     const root = temp();

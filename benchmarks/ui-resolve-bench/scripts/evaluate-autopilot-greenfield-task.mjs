@@ -372,6 +372,26 @@ async function focusIndicator(locator) {
   });
 }
 
+async function boundedAriaInventory(page, roles, { perRole = 2, total = 8, chars = 240 } = {}) {
+  const observed = [];
+  for (const role of roles) {
+    const candidates = page.getByRole(role);
+    for (const index of await visibleLocatorIndexes(candidates)) {
+      if (observed.length >= total) return observed;
+      if (observed.filter((item) => item.role === role).length >= perRole) break;
+      const candidate = candidates.nth(index);
+      let snapshot = '';
+      try { snapshot = await candidate.ariaSnapshot(); } catch { snapshot = `- ${role}`; }
+      observed.push({
+        role,
+        snapshot: snapshot.replace(/\s+/g, ' ').trim().slice(0, chars),
+        focused: await candidate.evaluate((element) => element === document.activeElement || element.contains(document.activeElement)),
+      });
+    }
+  }
+  return observed;
+}
+
 async function evaluateLanding(page, viewport, origin) {
   const button = page.getByRole('button', { name: /^reserve a tool$/i });
   const link = page.getByRole('link', { name: /^reserve a tool$/i });
@@ -415,14 +435,36 @@ async function evaluateLanding(page, viewport, origin) {
     await page.keyboard.press('Enter');
     await afterPaint(page);
     const reservationName = /reserve a tool|start (?:a |your )?(?:tool )?(?:reservation|request)|tool reservation|reservation start/i;
-    const roots = page.getByRole('dialog', { name: reservationName })
-      .or(page.getByRole('region', { name: reservationName }))
-      .or(page.getByRole('form', { name: reservationName }))
-      .or(page.getByRole('complementary', { name: reservationName }));
-    const visibleRoots = await visibleLocatorIndexes(roots);
-    const root = visibleRoots.length === 1 ? roots.nth(visibleRoots[0]) : null;
+    const roots = page.getByRole('dialog').or(page.getByRole('region')).or(page.getByRole('form')).or(page.getByRole('complementary'));
+    const matchingRoots = [];
+    for (const index of await visibleLocatorIndexes(roots)) {
+      const candidate = roots.nth(index);
+      const snapshot = await candidate.ariaSnapshot().catch(() => '');
+      const matchingHeading = candidate.getByRole('heading', { name: reservationName });
+      const controls = candidate.locator('input,select,textarea,button');
+      if ((reservationName.test(snapshot) || await matchingHeading.count() > 0) && await controls.count() > 0) matchingRoots.push(candidate);
+    }
+    let root = null;
+    let fewestControls = Number.POSITIVE_INFINITY;
+    for (const candidate of matchingRoots) {
+      const controlCount = await candidate.locator('input,select,textarea,button').count();
+      if (controlCount < fewestControls) { root = candidate; fewestControls = controlCount; }
+    }
     reservationState = Boolean(root && await root.locator('input,select,textarea,button').count());
-    focusTransfer = Boolean(root && await root.evaluate((element) => element === document.activeElement || element.contains(document.activeElement)));
+    const focusedReservationHeading = page.getByRole('heading', { name: reservationName });
+    const focusedSnapshot = await page.locator(':focus').ariaSnapshot().catch(() => '');
+    let focusInMatchingRoot = false;
+    for (const candidate of matchingRoots) {
+      if (await candidate.evaluate((element) => element === document.activeElement || element.contains(document.activeElement))) {
+        focusInMatchingRoot = true;
+        break;
+      }
+    }
+    focusTransfer = Boolean(root && (
+      focusInMatchingRoot
+      || await focusedReservationHeading.evaluateAll((elements) => elements.some((element) => element === document.activeElement))
+      || reservationName.test(focusedSnapshot)
+    ));
     if (root) {
       const geometry = await root.locator('input,select,textarea,button').evaluateAll((elements) => {
         const visible = elements.filter((element) => {
@@ -456,6 +498,7 @@ async function evaluateLanding(page, viewport, origin) {
       initial_axe_serious_critical: initialAxe.count, reservation_axe_serious_critical: reservationAxe.count,
       initial_axe_violations: initialAxe.violations, reservation_axe_violations: reservationAxe.violations,
       main_count: initial.mainCount, h1_count: initial.h1Count,
+      post_action_aria: await boundedAriaInventory(page, ['dialog', 'region', 'form', 'complementary', 'heading'], { total: 8 }),
     },
     price_claims: initial.priceClaims, inventory_claims: initial.inventoryClaims,
     social_proof_claims: initial.social, partner_logo_claims: initial.partnerImages,
@@ -591,22 +634,26 @@ async function evaluateColdChain(page, viewport) {
   const initialText = (await main.innerText()).replace(/\s+/g, ' ');
   const shipmentIdentity = /\b[A-Z][A-Z0-9]{1,7}-\d{2,}\b/i;
   const collectRecords = async () => {
-    const containers = page.locator('tbody tr, article, [role="row"], [role="listitem"]');
+    const containers = page.getByRole('row').or(page.getByRole('article')).or(page.getByRole('listitem'));
     const records = [];
     for (const index of await visibleLocatorIndexes(containers)) {
       const container = containers.nth(index);
       const text = (await container.innerText()).replace(/\s+/g, ' ').trim();
       const identity = text.match(shipmentIdentity)?.[0]?.toUpperCase() || null;
       if (!identity) continue;
-      const nestedActions = container.getByRole('button', { name: /inspect|view|open/i }).or(container.getByRole('link', { name: /inspect|view|open/i }));
-      const visibleActions = await visibleLocatorIndexes(nestedActions);
+      const intentActions = container.getByRole('button', { name: /inspect|view|open/i }).or(container.getByRole('link', { name: /inspect|view|open/i }));
+      const visibleIntentActions = await visibleLocatorIndexes(intentActions);
+      const allActions = container.getByRole('button').or(container.getByRole('link'));
+      const visibleAllActions = await visibleLocatorIndexes(allActions);
       const containerActionable = await container.evaluate((element) => element.tabIndex >= 0 || ['button', 'link'].includes(element.getAttribute('role') || ''));
       records.push({
         identity,
         urgent: /\burgent\b/i.test(text),
-        nonUrgent: /\b(?:routine|watch|stable|normal|non-urgent)\b/i.test(text),
+        nonUrgent: /\b(?:review|routine|watch|stable|normal|non-urgent)\b/i.test(text),
         container,
-        action: visibleActions.length ? nestedActions.nth(visibleActions[0]) : containerActionable ? container : null,
+        action: visibleIntentActions.length ? intentActions.nth(visibleIntentActions[0])
+          : visibleAllActions.length === 1 ? allActions.nth(visibleAllActions[0])
+            : containerActionable ? container : null,
       });
     }
     return records;
@@ -689,15 +736,18 @@ async function evaluateColdChain(page, viewport) {
     if (reached) await page.keyboard.press('Enter');
     await afterPaint(page);
     detailAfter = await detailSignature();
-    const selectedAfter = activeIdentity ? await page.locator('tbody tr, article, [role="row"], [role="listitem"]').filter({ hasText: activeIdentity }).first().getAttribute('aria-selected') : null;
-    keyboardOpen = reached && Boolean(detailAfter) && (detailAfter !== detailBefore || (selectedBefore !== 'true' && selectedAfter === 'true'));
+    const selectedAfter = activeIdentity ? await page.getByRole('row').or(page.getByRole('article')).or(page.getByRole('listitem')).filter({ hasText: activeIdentity }).first().getAttribute('aria-selected') : null;
+    keyboardOpen = reached && Boolean(detailAfter) && (detailAfter !== detailBefore
+      || (selectedBefore !== 'true' && selectedAfter === 'true')
+      || detailAfter.toUpperCase().includes(activeIdentity));
   }
   let detail = null;
   for (const index of await visibleLocatorIndexes(detailRoots)) {
     const candidate = detailRoots.nth(index);
     if (activeIdentity && (await candidate.innerText()).toUpperCase().includes(activeIdentity) && await candidate.getByRole('combobox', { name: /owner/i }).count() === 1) { detail = candidate; break; }
   }
-  const matchingEvidence = Boolean(detail && /sample (?:evidence|sensor|probe|event|reading|note|value)/i.test(await detail.innerText()));
+  const matchingEvidence = Boolean(detail && /sample (?:data|evidence|sensor|probe|event|reading|note|value)/i.test(await detail.innerText())
+    && /(?:observed|temperature|activity|scan|reading|event|sensor|probe)/i.test(await detail.innerText()));
   const detailAxe = await axeSeriousCritical(page);
   let errorAssociated = false;
   let sampleOwnerOptions = false;
@@ -718,7 +768,13 @@ async function evaluateColdChain(page, viewport) {
       errorAssociated = await owner.evaluate((element) => element === document.activeElement) && Boolean(described) && Boolean(alertText);
       errorAxe = await axeSeriousCritical(page);
       const options = await owner.locator('option').allTextContents();
-      const sampleOptions = options.filter((item) => /sample staff|demo staff|fictional staff/i.test(item));
+      const scopedOptionValues = await owner.locator('optgroup').evaluateAll((groups) => groups
+        .filter((group) => /sample|demo|fictional/i.test(group.label || ''))
+        .flatMap((group) => [...group.querySelectorAll('option')].map((option) => option.textContent || '')));
+      const sampleOptions = [...new Set([
+        ...options.filter((item) => /sample staff|demo staff|fictional staff/i.test(item)),
+        ...scopedOptionValues.filter((item) => item.trim()),
+      ])];
       sampleOwnerOptions = sampleOptions.length > 0;
       const chosen = sampleOptions[0] || options.find((item) => item.trim() && !/select|choose/i.test(item));
       if (chosen) {
@@ -742,7 +798,7 @@ async function evaluateColdChain(page, viewport) {
   const unqualified = visibleText.split(/(?<=[.!?])|\n+/).filter((sentence) => !/\b(?:sample|demo|fictional|unknown|not provided|not verified)\b/i.test(sentence)).join(' ');
   const protectedClaims = [...unqualified.matchAll(/\b(?:FDA|GDP|GMP)[ -]?(?:compliant|certified|approved)?\b|\b(?:regulatory|compliance) (?:verified|approved|certified)|\breal (?:shipments?|staff)\b/gi)].map((match) => match[0]);
   const criticalFieldsReachable = viewport.width > 390 || filteredRecords.length === urgentIds.length;
-  return { task_identity: /cold-chain|shipment exception/i.test(initialText), sample_scope_visible: /\b(?:sample|demo|fictional)\b/i.test(initialText), shipment_count: records.length, urgent_count: records.filter((item) => item.urgent).length, non_urgent_count: records.filter((item) => item.nonUrgent).length, routine_count: records.filter((item) => item.nonUrgent).length, filter_selected_and_visible: filterSelectedAndVisible, filtered_contents_exact: filteredExact, keyboard_open_sample: keyboardOpen, matching_evidence_detail: matchingEvidence, owner_error_associated: errorAssociated, sample_owner_options: sampleOwnerOptions, assigned_owner_confirmed_and_persistent: assignedPersistent, protected_unknown_claims: protectedClaims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: await page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)), critical_fields_reachable: criticalFieldsReachable, controls_horizontally_unclipped: controlsUnclipped, control_min_dimension_px: controlMin, initial_axe_serious_critical: initialAxe.count, filtered_axe_serious_critical: filteredAxe.count, detail_axe_serious_critical: detailAxe.count, error_axe_serious_critical: errorAxe.count, assigned_axe_serious_critical: assignedAxe.count, main_count: await page.getByRole('main').count(), h1_count: await page.getByRole('heading', { level: 1 }).count(), interaction_diagnostics: { filter_kind: filterKind, filter_keyboard: filterKeyboard, filter_programmatic: filterProgrammatic, filter_label: filterLabel, action_reached: actionReached, detail_before: detailBefore, detail_after: detailAfter } } };
+  return { task_identity: /cold[-\s]chain|shipment exception|exception queue/i.test(initialText), sample_scope_visible: /\b(?:sample|demo|fictional)\b/i.test(initialText), shipment_count: records.length, urgent_count: records.filter((item) => item.urgent).length, non_urgent_count: records.filter((item) => item.nonUrgent).length, routine_count: records.filter((item) => item.nonUrgent).length, filter_selected_and_visible: filterSelectedAndVisible, filtered_contents_exact: filteredExact, keyboard_open_sample: keyboardOpen, matching_evidence_detail: matchingEvidence, owner_error_associated: errorAssociated, sample_owner_options: sampleOwnerOptions, assigned_owner_confirmed_and_persistent: assignedPersistent, protected_unknown_claims: protectedClaims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: await page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)), critical_fields_reachable: criticalFieldsReachable, controls_horizontally_unclipped: controlsUnclipped, control_min_dimension_px: controlMin, initial_axe_serious_critical: initialAxe.count, filtered_axe_serious_critical: filteredAxe.count, detail_axe_serious_critical: detailAxe.count, error_axe_serious_critical: errorAxe.count, assigned_axe_serious_critical: assignedAxe.count, initial_axe_violations: initialAxe.violations, filtered_axe_violations: filteredAxe.violations, detail_axe_violations: detailAxe.violations, error_axe_violations: errorAxe.violations, assigned_axe_violations: assignedAxe.violations, main_count: await page.getByRole('main').count(), h1_count: await page.getByRole('heading', { level: 1 }).count(), accessibility_inventory: await boundedAriaInventory(page, ['row', 'article', 'listitem', 'button', 'link', 'combobox', 'status', 'alert'], { total: 10 }), interaction_diagnostics: { filter_kind: filterKind, filter_keyboard: filterKeyboard, filter_programmatic: filterProgrammatic, filter_label: filterLabel, action_reached: actionReached, detail_before: detailBefore, detail_after: detailAfter } } };
 }
 
 async function evaluateCaregiver(page, viewport) {
@@ -957,10 +1013,10 @@ async function evaluateRecovery(page, viewport) {
 }
 
 async function evaluateLocale(page, viewport) {
-  const main = page.getByRole('main'); const axeCounts = []; const h1Counts = []; const cjkUnclipped = [];
+  const main = page.getByRole('main'); const axeCounts = []; const h1Counts = []; const cjkUnclipped = []; const localeDiagnostics = [];
   const checkState = async () => { axeCounts.push((await axeSeriousCritical(page)).count); h1Counts.push(await page.getByRole('heading', { level: 1 }).count()); };
   const initialText = (await main.innerText()).replace(/\s+/g, ' '); await checkState();
-  const locales = [{ code: 'ko', label: /한국어/, script: /진료|준비/ }, { code: 'en', label: /English/, script: /visit|preparation/i }, { code: 'ja', label: /日本語/, script: /受診|準備/ }, { code: 'zh-CN', label: /简体中文/, script: /就诊|准备/ }, { code: 'zh-TW', label: /繁體中文/, script: /就診|準備/ }]; const switched = [];
+  const locales = [{ code: 'ko', label: /한국어/, script: /[가-힣]/ }, { code: 'en', label: /English/, script: /[A-Za-z]/ }, { code: 'ja', label: /日本語/, script: /[ぁ-ゖァ-ヺ]/ }, { code: 'zh-CN', label: /简体中文/, script: /[\u3400-\u9fff]/ }, { code: 'zh-TW', label: /繁體中文/, script: /[\u3400-\u9fff]/ }];
   async function localeSelect() {
     const candidates = page.getByRole('combobox');
     for (let index = 0; index < await candidates.count(); index += 1) {
@@ -979,28 +1035,57 @@ async function evaluateLocale(page, viewport) {
     const select = await localeSelect(); const button = select ? null : await localeButton(locale);
     if (select) await select.selectOption(locale.code);
     else if (button) await button.press('Enter');
-    else { switched.push(false); cjkUnclipped.push(false); await checkState(); return false; }
+    else { localeDiagnostics.push({ requested: locale.code, mechanism: 'missing', actual_lang: await page.locator('html').getAttribute('lang'), selected: false, script_match: false, label_match: false }); cjkUnclipped.push(false); await checkState(); return false; }
     await afterPaint(page);
     const lang = await page.locator('html').getAttribute('lang'); const text = (await main.innerText()).replace(/\s+/g, ' ');
     const currentSelect = await localeSelect(); const currentButton = currentSelect ? null : await localeButton(locale);
     const selected = currentSelect
       ? (await currentSelect.inputValue()) === locale.code && locale.label.test(await currentSelect.locator('option:checked').innerText())
       : Boolean(currentButton) && ['true', 'page'].includes((await currentButton.getAttribute('aria-pressed')) || (await currentButton.getAttribute('aria-current')) || '');
-    const box = await page.getByRole('heading', { level: 1 }).boundingBox(); cjkUnclipped.push(!['ja', 'zh-CN', 'zh-TW'].includes(locale.code) || Boolean(box && box.x >= -1 && box.x + box.width <= viewport.width + 1)); switched.push(lang === locale.code && locale.script.test(text) && selected); await checkState(); return true;
+    const scriptMatch = locale.script.test(text);
+    const selectedLabel = currentSelect ? await currentSelect.locator('option:checked').innerText() : currentButton ? await currentButton.innerText() : '';
+    const labelMatch = locale.label.test(selectedLabel);
+    const box = await page.getByRole('heading', { level: 1 }).boundingBox(); cjkUnclipped.push(!['ja', 'zh-CN', 'zh-TW'].includes(locale.code) || Boolean(box && box.x >= -1 && box.x + box.width <= viewport.width + 1));
+    const pass = lang === locale.code && scriptMatch && selected && labelMatch;
+    localeDiagnostics.push({ requested: locale.code, mechanism: currentSelect ? 'select' : 'button', actual_lang: lang, selected, script_match: scriptMatch, label_match: labelMatch, selected_label: selectedLabel.slice(0, 80) });
+    await checkState(); return pass;
   }
-  for (const locale of locales) await switchTo(locale);
-  await switchTo(locales[1]); const checks = page.getByRole('checkbox'); const hasChecklist = await checks.count() >= 2;
+  const initialLocaleChecks = [];
+  for (const locale of locales) initialLocaleChecks.push(await switchTo(locale));
+  await switchTo(locales[1]); const checks = page.getByRole('checkbox'); const checklistTotal = await checks.count(); const hasChecklist = checklistTotal >= 2;
   if (hasChecklist) { await checks.first().check(); await afterPaint(page); }
-  const progress1 = (await page.getByRole('status').allInnerTexts()).join(' '); await checkState(); await switchTo(locales[2]); const progressJapanese = (await page.getByRole('status').allInnerTexts()).join(' '); await switchTo(locales[1]); const firstPreserved = hasChecklist && await checks.first().isChecked(); const progressBack = (await page.getByRole('status').allInnerTexts()).join(' ');
-  if (hasChecklist) { await checks.nth(1).check(); await afterPaint(page); }
+  const progressSnapshot = async () => {
+    const statuses = (await page.getByRole('status').allInnerTexts()).map((text) => text.replace(/\s+/g, ' ').trim()).filter(Boolean);
+    const bar = page.getByRole('progressbar');
+    return {
+      checked: await page.getByRole('checkbox').evaluateAll((items) => items.filter((item) => item.checked).length),
+      total: await page.getByRole('checkbox').count(),
+      bar_now: await bar.count() === 1 ? Number(await bar.getAttribute('aria-valuenow')) : null,
+      bar_max: await bar.count() === 1 ? Number(await bar.getAttribute('aria-valuemax')) : null,
+      status_texts: statuses.slice(0, 6).map((text) => text.slice(0, 180)),
+    };
+  };
+  const textShowsProgress = (snapshot, amount, total) => snapshot.status_texts.some((text) => new RegExp(`(?:${amount}\\D{0,12}${total}|${total}\\D{0,12}${amount})`, 'i').test(text));
+  const progressSemanticsExact = (snapshot, amount, total) => textShowsProgress(snapshot, amount, total)
+    && ((snapshot.bar_now === null && snapshot.bar_max === null) || (snapshot.bar_now === amount && snapshot.bar_max === total));
+  const progress1 = await progressSnapshot(); await checkState(); await switchTo(locales[2]); const progressJapanese = await progressSnapshot(); await switchTo(locales[1]); const firstPreserved = hasChecklist && await page.getByRole('checkbox').first().isChecked(); const progressBack = await progressSnapshot();
+  if (hasChecklist) {
+    const currentChecks = page.getByRole('checkbox');
+    for (let index = 0; index < await currentChecks.count(); index += 1) if (!await currentChecks.nth(index).isChecked()) await currentChecks.nth(index).check();
+    await afterPaint(page);
+  }
   const completeEnglish = (await main.innerText()).replace(/\s+/g, ' '); await switchTo(locales[0]); await switchTo(locales[1]); const completionPreserved = hasChecklist && (await checks.first().isChecked()) && (await checks.nth(1).isChecked()) && /(?:complete|2 of 2)/i.test((await main.innerText()).replace(/\s+/g, ' '));
   const langBeforeUnavailable = await page.locator('html').getAttribute('lang'); const unavailable = page.getByRole('button', { name: /unavailable translation/i });
   if (await unavailable.count() === 1 && await unavailable.isVisible()) { await unavailable.press('Enter'); await afterPaint(page); }
   const unavailableAlert = page.getByRole('alert').filter({ hasText: /translation.*unavailable/i }); const unavailableHonest = await unavailable.count() === 1 && await unavailableAlert.count() === 1 && await unavailableAlert.isVisible() && (await page.locator('html').getAttribute('lang')) === langBeforeUnavailable; await checkState();
   const initialControls = await page.locator('button,select,.check').evaluateAll((elements) => { const rects = elements.filter((element) => { const r = element.getBoundingClientRect(); return r.width > 0 && r.height > 0; }).map((element) => element.getBoundingClientRect()); return { unclipped: rects.every((r) => r.left >= -1 && r.right <= innerWidth + 1), min: rects.length ? Math.min(...rects.map((r) => Math.min(r.width, r.height))) : 0 }; });
   const allText = (await main.innerText()).replace(/\s+/g, ' '); const affirmative = allText.split(/(?<=[.!?。])|\n+/).filter((sentence) => !/(?:fictional|sample|not medical advice|does not infer|不是医疗建议|医療助言|의료 조언|不是醫療建議)/i.test(sentence)).join(' '); const claims = [...affirmative.matchAll(/\b(?:diagnosed with|you have (?:a|an)|take \d+ mg|medical advice|real clinic policy|doctor recommends?)\b/gi)].map((match) => match[0]);
-  const progressPreserved = /1.*2|1\/2/.test(progress1) && /1.*2|1\/2/.test(progressJapanese) && /1.*2|1\/2/.test(progressBack) && firstPreserved;
-  return { task_identity: /(?:clinic|visit|受診|진료|就诊|就診)/i.test(initialText) && /(?:checklist|preparation|준비|準備|准备)/i.test(initialText), fictional_not_medical_advice: /(?:fictional|sample)/i.test(initialText) && /not medical advice|does not infer a diagnosis/i.test(initialText), all_five_locales_exact: switched.length >= 9 && switched.every(Boolean), selected_label_lang_script_agree: switched.every(Boolean), progress_textual_and_persistent: progressPreserved, completion_persists_after_return: completionPreserved && /(?:complete|2 of 2)/i.test(completeEnglish), translation_unavailable_honest: unavailableHonest, protected_unknown_claims: claims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: await page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)), cjk_content_unclipped: cjkUnclipped.every(Boolean), controls_horizontally_unclipped: initialControls.unclipped, task_control_min_dimension_px: initialControls.min, axe_serious_critical: axeCounts.reduce((sum, value) => sum + value, 0), main_count: await page.getByRole('main').count(), h1_count_per_state: h1Counts } };
+  const progressPreserved = hasChecklist && [progress1, progressJapanese, progressBack].every((snapshot) => snapshot.checked === 1 && snapshot.total === checklistTotal && progressSemanticsExact(snapshot, 1, checklistTotal)) && firstPreserved;
+  const completionSnapshot = await progressSnapshot();
+  const completionText = (await main.innerText()).replace(/\s+/g, ' ');
+  const allComplete = completionSnapshot.checked === checklistTotal && completionSnapshot.total === checklistTotal
+    && ((completionSnapshot.bar_now === null && completionSnapshot.bar_max === null) || (completionSnapshot.bar_now === checklistTotal && completionSnapshot.bar_max === checklistTotal));
+  return { task_identity: /(?:clinic|visit|受診|진료|就诊|就診)/i.test(initialText) && /(?:checklist|preparation|준비|準備|准备)/i.test(initialText), fictional_not_medical_advice: /(?:fictional|sample)/i.test(initialText) && /not medical advice|does not infer a diagnosis/i.test(initialText), all_five_locales_exact: initialLocaleChecks.length === 5 && initialLocaleChecks.every(Boolean), selected_label_lang_script_agree: initialLocaleChecks.every(Boolean), progress_textual_and_persistent: progressPreserved, completion_persists_after_return: completionPreserved || (allComplete && (/(?:complete|completed)/i.test(`${completeEnglish} ${completionText}`) || textShowsProgress(completionSnapshot, checklistTotal, checklistTotal))), translation_unavailable_honest: unavailableHonest, protected_unknown_claims: claims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: await page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)), cjk_content_unclipped: cjkUnclipped.every(Boolean), controls_horizontally_unclipped: initialControls.unclipped, task_control_min_dimension_px: initialControls.min, axe_serious_critical: axeCounts.reduce((sum, value) => sum + value, 0), main_count: await page.getByRole('main').count(), h1_count_per_state: h1Counts, locale_switch_diagnostics: localeDiagnostics.slice(0, 12), progress_diagnostics: { first: progress1, japanese: progressJapanese, returned: progressBack, complete: completionSnapshot }, accessibility_inventory: await boundedAriaInventory(page, ['combobox', 'checkbox', 'progressbar', 'status', 'alert'], { total: 10 }) } };
 }
 
 const invoked = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);

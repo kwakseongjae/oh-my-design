@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: task baseline commit `6acf2876`, repaired skill/evaluator commit `f1b5e219` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-11 · 1.9.860 bounded-observation Luna/high 3셀 완결; semantic diagnostics P0 대기
+- 갱신: 2026-08-11 · semantic accessibility/state diagnostics provider-zero 보정 완료; fresh epoch 준비
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.860 실패를 모델 결함과 evaluator 오판으로 다시 분리했다. landing 예약 state는 접근성 이름뿐 아니라 내부 reservation heading을 허용하고, cold-chain은 implicit listitem·단일 카드 action·sample optgroup·review 상태를 role/state 기반으로 읽으며, locale은 임의의 2개 이상 checklist total과 KO/EN/JA/ZH-CN/ZH-TW script/lang/label을 검증한다.
+- repair feedback의 `objective_observations`는 schema0.2로 올라가 bounded ARIA role/name/state inventory, locale switch mapping, progress 상태, Axe violation ID를 포함한다. 두 valid oracle과 isolated mutants는 landing4/4, cold-chain6/6, locale6/6으로 다시 green이며 pure scorer 61/61도 통과했다.
+- 완료된 1.9.860 산출물의 provider-free 진단 재평가에서는 landing의 reservation-state 오판과 cold-chain의 queue/keyboard/evidence/sample-owner 오판, locale의 5개 locale/progress/completion 오판이 제거됐다. 남은 landing focus transfer, cold-chain empty-owner/assignment persistence/mobile target/contrast, locale translation-unavailable은 실제 구현 결손으로 유지한다. 다음은 source commit-bound 전체 회귀 후 fresh Luna/high epoch이며, 1.9.860 record 자체는 변경하지 않는다.
 
 - 1.9.860은 hash-bound `objective_observations`를 repair feedback에 직접 넣고 Luna/high 3셀을 initial1+repair2로 완결했다. 3/3 valid terminal, project-owned DESIGN.md proof 3/3 PASS지만 UI-Resolved는 0/3이다.
 - 점수는 landing `50→70→70`, cold-chain `20→40→40`, locale `40→40→60`이다. 1.9.859 대비 final score는 landing+20, cold-chain+0, locale+20이다. 총 9 calls·4,049.298s·14,182,528 input+output tokens(cached input 12,662,016)이며 retry/replacement/fallback0이다.

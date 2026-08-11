@@ -462,7 +462,7 @@ export function objectiveFailureObservations(score) {
     if (bounded !== null) supporting[key] = bounded;
   }
   return {
-    schema_version: "0.1",
+    schema_version: "0.2",
     failed_assertions: direct,
     failed_groups: Object.fromEntries(Object.entries(score?.groups ?? {})
       .filter(([, value]) => value?.pass !== true)
