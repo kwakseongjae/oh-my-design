@@ -334,7 +334,7 @@ function controllerDesignSystemProof(root, cell, workspace) {
     source_run_relative: relative(workspace, sourceRun).split(sep).join("/"),
   };
 }
-function controllerAutopilotProof(plan, cell, workspace) {
+export function controllerAutopilotProof(plan, cell, workspace) {
   try {
     for (const item of plan.smoke_contract.authorities.portable_bundle_files) {
       const installed = join(workspace, installedPath(item.path));
@@ -470,14 +470,16 @@ function runCommand(args) {
   console.log(JSON.stringify({ state: state.status, checkpoint: state.last_checkpoint, record }, null, 2));
 }
 
-const command = process.argv[2];
-const args = parseArgs(process.argv.slice(3));
-if (command === "plan") planCommand(args);
-else if (command === "prepare") prepareCommand(args);
-else if (command === "audit") auditCommand(args);
-else if (command === "admit-browser") admitBrowserCommand(args);
-else if (command === "run") runCommand(args);
-else {
-  console.error("usage: autopilot-smoke-controller.mjs plan|prepare|audit|admit-browser|run ...");
-  process.exitCode = 2;
+if (resolve(process.argv[1] ?? "") === fileURLToPath(import.meta.url)) {
+  const command = process.argv[2];
+  const args = parseArgs(process.argv.slice(3));
+  if (command === "plan") planCommand(args);
+  else if (command === "prepare") prepareCommand(args);
+  else if (command === "audit") auditCommand(args);
+  else if (command === "admit-browser") admitBrowserCommand(args);
+  else if (command === "run") runCommand(args);
+  else {
+    console.error("usage: autopilot-smoke-controller.mjs plan|prepare|audit|admit-browser|run ...");
+    process.exitCode = 2;
+  }
 }

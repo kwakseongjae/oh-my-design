@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-11 (Codex) · Terminal verifier integration / 1.9.856 zero-provider 폐기
+- clean-dir HANDOFF audit PASS와 fabricated answer artifact FAIL을 smoke verifier integration test로 고정했다.
+- 이 source change 전 생성한 1.9.856은 provider/model/browser 0 상태로 폐기하고 fresh 1.9.857로 올렸다.
+- integration1 + focused14, lint, diff green; in-app browser 목록은 비어 있어 provider admission은 계속 닫혀 있다.
+- 다음은 clean commit→full suite→fresh 1.9.857 provider-zero prepare다.
+
 ## 2026-08-11 (Codex) · Autopilot terminal audit → smoke success binding
 - completed mission을 acceptance/admission/schema0.2 proof/repair/HANDOFF/current product tree로 재검증하는 read-only audit를 추가했다.
 - smoke success는 lineage1·exact prompt·questions0·answers0·portable bundle exact·mission audit PASS를 모두 요구한다.

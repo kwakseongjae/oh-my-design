@@ -112,7 +112,7 @@ describe('OmD Autopilot 2.0 qualification contract', () => {
   it('locks a provider-zero Luna/high smoke before any model execution', () => {
     expect(smoke).toMatchObject({
       schema_version: '0.1',
-      experiment_id: 'autopilot-luna-high-smoke-1.9.856',
+      experiment_id: 'autopilot-luna-high-smoke-1.9.857',
       track: 'portable-autopilot-skill',
       status: 'provider-zero-preregistration-template',
       provider_execution_allowed: false,

@@ -1,8 +1,9 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { afterEach, describe, expect, test } from "vitest";
+import { controllerAutopilotProof } from "../../../benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs";
 
 const repo = resolve(import.meta.dirname, "../../..");
 const script = join(repo, "benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs");
@@ -47,5 +48,23 @@ describe("autopilot Luna/high smoke controller", () => {
     const state = JSON.parse(readFileSync(join(root, "execution-state.json"), "utf8"));
     expect(state.status).toBe("prepared");
     expect(state.completed_cells).toBe(0);
+  });
+
+  test("independently audits a terminal clean-dir mission and rejects fabricated answer artifacts", () => {
+    const base = temp(); const output = join(base, "canary");
+    const canary = join(repo, "benchmarks/ui-resolve-bench/scripts/run-autopilot-clean-dir-canary.mjs");
+    execFileSync(process.execPath, [canary, output], { cwd: repo });
+    const workspace = join(output, "workspace");
+    const summary = JSON.parse(readFileSync(join(output, "SUMMARY.json"), "utf8"));
+    mkdirSync(join(workspace, ".benchmark"), { recursive: true });
+    writeFileSync(join(workspace, ".benchmark/PROMPT.md"), summary.prompt);
+    const plan = { smoke_contract: { authorities: { portable_bundle_files: [] } } };
+    expect(controllerAutopilotProof(plan, {}, workspace)).toMatchObject({
+      pass: true, mission_lineages: 1, question_batches: 0, answer_artifacts: 0,
+    });
+    const answers = join(workspace, ".omd/runs/run-greenfield-family-planner/checkpoints/council-intake.answers.json");
+    mkdirSync(join(workspace, ".omd/runs/run-greenfield-family-planner/checkpoints"), { recursive: true });
+    writeFileSync(answers, JSON.stringify({ answers: [{ value: "model-authored" }] }));
+    expect(controllerAutopilotProof(plan, {}, workspace)).toMatchObject({ pass: false, mission_lineages: null });
   });
 });
