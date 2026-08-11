@@ -1075,7 +1075,9 @@ async function evaluateLocale(page, viewport) {
     const statuses = (await page.getByRole('status').allInnerTexts()).map((text) => text.replace(/\s+/g, ' ').trim()).filter(Boolean);
     const bar = page.getByRole('progressbar');
     return {
-      checked: await page.getByRole('checkbox').evaluateAll((items) => items.filter((item) => item.checked).length),
+      checked: await page.getByRole('checkbox').evaluateAll((items) => items.filter((item) => item.checked === true
+        || item.getAttribute('aria-checked') === 'true'
+        || item.getAttribute('aria-pressed') === 'true').length),
       total: await page.getByRole('checkbox').count(),
       bar_now: await bar.count() === 1 ? Number(await bar.getAttribute('aria-valuenow')) : null,
       bar_max: await bar.count() === 1 ? Number(await bar.getAttribute('aria-valuemax')) : null,

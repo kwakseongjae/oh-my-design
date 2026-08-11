@@ -221,7 +221,7 @@ describe('autopilot mission controller', () => {
     writeAcceptancePlan(runDir);
     expect(run(runDir).status).toBe(0);
     writeFileSync(join(root, 'index.html'), '<main>built round zero</main>');
-    writeFinalProof(runDir, 0, true);
+    writeFinalProof(runDir, 0, false);
     expect(run(runDir).status).toBe(0);
     expect(state(runDir).state).toBe('EXTERNAL_VERIFY');
     expect(JSON.parse(readFileSync(join(root, '.omd/autopilot-active.json'), 'utf8')).status).toBe('active');
@@ -229,7 +229,8 @@ describe('autopilot mission controller', () => {
     expect(run(runDir).status).toBe(0);
     expect(state(runDir)).toMatchObject({ state: 'BOUNDED_REVISION', next_action: 'apply-controller-focused-repair' });
     expect(JSON.parse(readFileSync(join(runDir, 'repairs/round-0.json'), 'utf8'))).toMatchObject({
-      authority: 'controller-objective', failed_quality_check_ids: ['responsive'],
+      authority: 'controller-objective', failed_requirement_ids: ['task-journey'],
+      failed_quality_check_ids: ['responsive'],
     });
     writeFileSync(join(root, 'index.html'), '<main>built round one, responsive</main>');
     writeFinalProof(runDir, 1, true);

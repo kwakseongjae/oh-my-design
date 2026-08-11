@@ -567,15 +567,15 @@ if (repairChain.length) {
     throw new Error('focused repair must change the product tree');
   }
 }
-const externalVerification = finalProof.pass === true ? readExternalVerification(mission, finalProof) : null;
-if (finalProof.pass === true && externalVerification?.pending) {
+const externalVerification = readExternalVerification(mission, finalProof);
+if (externalVerification?.pending) {
   emit('EXTERNAL_VERIFY', 'await-controller-objective-evaluation', {
     proof_sha256: sha256File(finalProofPath),
     product_tree_sha256: finalProof.product_tree_sha256,
     repair_round: finalProof.repair_round,
     policy_sha256: mission.external_verification_policy_sha256,
   });
-} else if (finalProof.pass === true && externalVerification?.value.status === 'fail'
+} else if (externalVerification?.value.status === 'fail'
   && finalProof.repair_round < mission.repair_round_budget) {
   const proofSha = sha256File(finalProofPath);
   const receipt = writeRepairReceipt(finalProof, proofSha, acceptanceSha, admissionSha, externalVerification);
@@ -586,7 +586,7 @@ if (finalProof.pass === true && externalVerification?.pending) {
     next_repair_round: receipt.next_repair_round,
     failed_assertion_ids: externalVerification.value.failed_assertion_ids,
   });
-} else if (finalProof.pass === true && externalVerification?.value.status === 'fail') {
+} else if (externalVerification?.value.status === 'fail') {
   emit('FAILED_HANDOFF', 'report-controller-objective-failures', {
     proof_sha256: sha256File(finalProofPath),
     controller_verification_sha256: externalVerification.sha256,

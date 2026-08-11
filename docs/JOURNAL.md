@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-11 (Codex) · 1.9.862 objective-first repair RCA
+- Luna/high 3셀을 질문0·5 calls로 완결했고 DESIGN.md3/3, UI-Resolved0/3을 정직하게 봉인했다.
+- local 실패도 controller objective 검증 전에 repair budget을 쓰지 않도록 상태머신 우선권을 수정했다.
+- ARIA checkbox progress false negative를 제거했고 provider-free 재평가로 실제 결손2개만 남겼다.
+- 다음은 clean commit-bound 회귀 후 fresh 1.9.863이며 sealed 1.9.862는 재작성하지 않는다.
+
 ## 2026-08-11 (Codex) · 1.9.861 fresh smoke + evaluator RCA
 - Luna/high 3셀을 질문0·9 calls로 완결했고 DESIGN.md3/3, UI-Resolved1/3을 기록했다.
 - in-app 검수로 product miss3개와 evaluator phrase false-positive2개를 분리했다.

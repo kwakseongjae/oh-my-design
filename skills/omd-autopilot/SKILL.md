@@ -71,10 +71,13 @@ folders and must never edit `DESIGN.md` or product files.
    “Browser unavailable”, skipped checks, or missing screenshots must be a
    failed check, never a passing substitute.
    When `.benchmark/controller-verification-policy.json` is present, the
-   installed mission controller is the objective-verification authority. A
-   locally passing proof must stop at `EXTERNAL_VERIFY`; do not write delivery,
-   end the mission, remove the policy, or invent its receipt. The host
-   controller evaluates the real route and supplies the next hash-bound state.
+   installed mission controller is the objective-verification authority. Every
+   local proof, passing or failing, must stop at `EXTERNAL_VERIFY` before any
+   repair budget is consumed; do not write delivery, start a local repair, end
+   the mission, remove the policy, or invent its receipt. The host controller
+   evaluates the real route and supplies the next hash-bound state. If the
+   controller passes while a broader local check still fails, the remaining
+   local failure may then use the same bounded repair budget.
 10. `BOUNDED_REVISION` — the main agent may apply at most two focused repair
    rounds in the same mission. The controller writes an exclusive receipt for
    every failed proof, freezes the exact failed requirement/check IDs, and

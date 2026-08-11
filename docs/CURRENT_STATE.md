@@ -3,11 +3,18 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: Autopilot semantic repair commit `ccebaeb1` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-11 · fresh 1.9.861 완료, in-app 검수와 evaluator phrase classification 보정 완료
+- 기준 소스: Autopilot semantic repair commit `3706003c` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-11 · fresh 1.9.862 완료, objective-first repair authority와 ARIA progress 보정 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.862 exact Luna/high 3셀은 질문0·retry/replacement/fallback0으로 완료됐고 DESIGN.md proof3/3, UI-Resolved0/3이다. 점수는 landing10, cold-chain40, locale20→40→40이며 5 calls·3,065.460s·10,900,877 input+output tokens다.
+- in-app 검수에서 세 화면의 시각 완성도는 높았지만 landing 예약 진입, cold-chain owner validation/keyboard detail/sample scope, locale unavailable-translation/a11y가 실제로 빠졌음을 확인했다. sealed 결과와 workspace는 수정하지 않는다.
+- 핵심 상태머신 결함은 landing/cold-chain이 initial turn 안에서 local repair budget을 소진하고 `FAILED_HANDOFF`에 도달해 controller objective feedback을 받지 못한 것이다. controller policy가 있으면 local proof의 pass/fail과 무관하게 먼저 `EXTERNAL_VERIFY`로 멈추도록 수정했다.
+- locale evaluator는 native `.checked`뿐 아니라 `role=checkbox`의 `aria-checked|aria-pressed=true`도 progress로 센다. provider-free sealed-workspace 재평가에서 progress false negative가 사라졌고(score40 유지, unavailable+a11y 실제 실패), artifact SHA는 `1b4a83a…b122fb37`다.
+- unit79/79와 browser calibration assertion7/7이 green이다. opt-in browser 파일은 assertion 완료 후 Vitest worker `onTaskUpdate` timeout으로 exit1이어서 test-runner 종료 안정성은 별도 수습한다. source-authority smoke3건은 새 evaluator가 미커밋인 동안 의도대로 plan 생성을 차단했다.
+- 다음 순서: full provider-free gate→이 변경/1.9.862 evidence만 commit(`web/public/llms-full.txt` 제외)→commit-bound smoke controller 재검증→fresh 1.9.863 plan/prepare/audit/in-app admission→Luna/high 3셀. public one-shot/superiority claim은 계속 BLOCK이다.
 
 - 1.9.861은 exact Luna/high 3셀을 질문0·retry/replacement/fallback0으로 완결했다. DESIGN.md proof3/3, UI-Resolved1/3이며 landing은 `10→50→100`, cold-chain은 `20→40→40`, locale은 `50→50→50`이다. 총9 calls·3,783.912s·12,198,121 input+output tokens다.
 - in-app browser로 세 surface를 직접 검수했다. landing은 full contract PASS, cold-chain은 owner 미선택 오류가 실제로 발생하지 않고 28px control/320·200% overflow가 남았으며, locale은 translation-unavailable state가 없다. 이 세 항목은 실제 product miss로 유지한다.
