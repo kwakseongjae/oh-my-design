@@ -75,7 +75,7 @@ describe("autopilot Luna/high smoke controller", () => {
       schema_version: "0.2",
       failed_assertions: {
         accessibility: { assertion_pass: false, observed: false },
-        queue_preconditions: { assertion_pass: false, observed: null },
+        queue_preconditions: { assertion_pass: false, observed: { shipment_count: 1, urgent_count: 1, non_urgent_count: 0 } },
       },
       failed_groups: { journey: { points: 20, pass: false } },
       supporting_evidence: {
@@ -102,6 +102,39 @@ describe("autopilot Luna/high smoke controller", () => {
     expect(viewport.accessibility_inventory).toHaveLength(12);
     expect(viewport.accessibility_inventory[0].snapshot.length).toBe(500);
     expect(viewport.locale_switch_diagnostics).toHaveLength(12);
+  });
+  test("turns cold-chain composite failures into bounded repair measurements", () => {
+    const observations = objectiveFailureObservations({
+      assertions: {
+        filtered_contents_exact: false,
+        assigned_owner_confirmed_and_persistent: false,
+        responsive: false,
+      },
+      evidence: {
+        filtered_contents_exact: false,
+        assigned_owner_confirmed_and_persistent: false,
+        viewports: [{
+          id: "mobile-320",
+          mobile: true,
+          document_overflow_px: 0,
+          critical_fields_reachable: false,
+          controls_horizontally_unclipped: true,
+          control_min_dimension_px: 38,
+          interaction_diagnostics: {
+            record_classification: [{ identity: "CC-101", urgent: true, non_urgent: false }],
+            urgent_ids: ["CC-101"],
+            filtered_record_ids: [],
+            assigned_status_persistent: false,
+            detail_after: "CC-101 Sample owner Mina Park",
+          },
+        }],
+      },
+    });
+    expect(observations.failed_assertions).toMatchObject({
+      filtered_contents_exact: { observed: { pass: false, viewports: [{ id: "mobile-320", urgent_ids: ["CC-101"], filtered_record_ids: [] }] } },
+      assigned_owner_confirmed_and_persistent: { observed: { pass: false, viewports: [{ id: "mobile-320", assigned_status_persistent: false, detail_after: "CC-101 Sample owner Mina Park" }] } },
+      responsive: { observed: [{ id: "mobile-320", mobile: true, critical_fields_reachable: false, control_min_dimension_px: 38 }] },
+    });
   });
   test("permanently freezes an exposed running root after a controller failure", () => {
     const root = temp();

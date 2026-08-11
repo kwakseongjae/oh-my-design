@@ -454,8 +454,41 @@ function boundedObservation(value) {
 export function objectiveFailureObservations(score) {
   const failedIds = objectiveFailureIds(score);
   const evidence = score?.evidence && typeof score.evidence === "object" ? score.evidence : {};
+  const viewports = Array.isArray(evidence.viewports) ? evidence.viewports : [];
+  const compositeObservations = {
+    queue_preconditions: {
+      shipment_count: evidence.shipment_count ?? null,
+      urgent_count: evidence.urgent_count ?? null,
+      non_urgent_count: evidence.non_urgent_count ?? evidence.routine_count ?? null,
+    },
+    filtered_contents_exact: {
+      pass: evidence.filtered_contents_exact ?? null,
+      viewports: viewports.map((viewport) => ({
+        id: viewport.id ?? null,
+        record_classification: viewport.interaction_diagnostics?.record_classification ?? [],
+        urgent_ids: viewport.interaction_diagnostics?.urgent_ids ?? [],
+        filtered_record_ids: viewport.interaction_diagnostics?.filtered_record_ids ?? [],
+      })),
+    },
+    assigned_owner_confirmed_and_persistent: {
+      pass: evidence.assigned_owner_confirmed_and_persistent ?? null,
+      viewports: viewports.map((viewport) => ({
+        id: viewport.id ?? null,
+        assigned_status_persistent: viewport.interaction_diagnostics?.assigned_status_persistent ?? null,
+        detail_after: viewport.interaction_diagnostics?.detail_after ?? null,
+      })),
+    },
+    responsive: viewports.map((viewport) => ({
+      id: viewport.id ?? null,
+      mobile: viewport.mobile ?? null,
+      document_overflow_px: viewport.document_overflow_px ?? null,
+      critical_fields_reachable: viewport.critical_fields_reachable ?? null,
+      controls_horizontally_unclipped: viewport.controls_horizontally_unclipped ?? null,
+      control_min_dimension_px: viewport.control_min_dimension_px ?? null,
+    })),
+  };
   const direct = Object.fromEntries(failedIds.map((id) => [id, {
-    observed: boundedObservation(evidence[id] ?? null),
+    observed: boundedObservation(Object.hasOwn(compositeObservations, id) ? compositeObservations[id] : evidence[id] ?? null),
     assertion_pass: false,
   }]));
   const supporting = {};

@@ -4,10 +4,15 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: Autopilot objective-first commit `77789f51` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-11 · 1.9.863 동결 진단, keyboard evaluator 및 cumulative repair invariant 보정 완료
+- 갱신: 2026-08-11 · 1.9.863 cold-chain 의미 분류·수리 관측 정합화 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- cold-chain evaluator가 `review`라는 일반 작업명을 non-urgent 상태로 오인하던 규칙을 제거하고 `attention|resolved|routine|watch|stable|normal|non-urgent`의 가시 상태만 인정한다. 각 viewport는 record 분류, urgent ID, 필터 후 ID, 배정 지속 여부를 controller evidence에 남긴다.
+- repair controller는 `queue_preconditions`, `filtered_contents_exact`, `assigned_owner_confirmed_and_persistent`, `responsive`의 합성 실패를 직접 관측값으로 전달한다. 모델은 더 이상 composite assertion 이름만 보고 추측하지 않는다.
+- provider-free 검증은 pure evaluator/controller 82 assertions, cold-chain valid oracle 2개와 isolated mutant calibration, TypeScript, diff-check가 green이다. source-authority integration의 commit 전 거부도 의도대로 동작했다.
+- 다음 순서: 관련 파일만 commit → commit-bound 전체 provider-free 회귀 → fresh epoch 1.9.864 plan/prepare/audit → named in-app browser admission → exact Luna/high 3-task smoke. public one-shot/superiority claim은 계속 BLOCK이다.
 
 - 1.9.863은 objective-first controller 경로를 실제로 증명했다. landing/cold-chain 모두 initial build 직후 객관 평가를 받고 최대2회 hash-bound repair를 수행했지만 `30→80→50`, `20→40→40`으로 UI-Resolved0/2였다. landing은 수리 중 이미 통과하던 reservation state를 회귀시켰으므로 다음 P0는 passing assertion invariant를 repair prompt에 봉인하는 것이다.
 - locale provider는 exit0이었으나 evaluator가 native checkbox에 `.check()` 포인터 클릭을 강제해 시각 wrapper에 가로막혔고 no-score로 root가 영구 동결됐다. evaluator는 실제 사용자 계약인 focus+Space로 전환했고 provider-free 재평가가 정상 score30을 기록했다(SHA `cee20b70…48d694`). sealed score를 대체하지 않는다.

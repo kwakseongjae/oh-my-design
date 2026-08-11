@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-11 (Codex) · cold-chain repair evidence alignment
+- non-urgent 분류에서 일반 작업명 `review`를 제거하고 실제 가시 상태 vocabulary만 허용했다.
+- 큐 구성·필터 전후 ID·owner persistence·모바일 geometry를 composite repair observation으로 봉인했다.
+- valid oracle 2개와 isolated mutant, pure unit/lint/diff-check가 green이다.
+- 다음은 commit-bound 전체 회귀 후 fresh 1.9.864 Luna/high 3-task smoke다.
+
 ## 2026-08-11 (Codex) · cumulative repair invariant
 - controller feedback0.3이 모든 누적 통과 assertion과 bounded 관찰값을 수리 invariant로 봉인한다.
 - 이전 통과가 깨지면 regressed ID로 기록하고 다음 수리에서 실패보다 먼저 복구하도록 한다.
