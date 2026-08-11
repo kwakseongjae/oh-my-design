@@ -73,7 +73,12 @@ folders and must never edit `DESIGN.md` or product files.
    overflow at 390px, 320px, and 200%-reflow as a product requirement, and keep
    primary task controls at least 44×44 CSS px on touch viewports unless the
    control is an inline prose link or a native control whose associated label
-   supplies the target.
+   supplies the target. Treat state transitions as product contracts: a
+   validation error moves focus to the failing control and is programmatically
+   associated with it; a success status names the affected record/action and
+   remains reflected in the source collection or detail state. Run contrast
+   checks on enabled and disabled task controls—not only the final success
+   state.
 9. `VERIFY` — verify functionality, same-route desktop/mobile/320px/200%,
    keyboard, accessibility, responsive behavior, copy, evidence honesty and
    DESIGN.md-to-code conformance. `proof.json` schema 0.2 must bind the mission,

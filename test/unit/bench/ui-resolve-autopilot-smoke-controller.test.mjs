@@ -79,7 +79,7 @@ describe("autopilot Luna/high smoke controller", () => {
     expect(observations).toMatchObject({
       schema_version: "0.2",
       failed_assertions: {
-        accessibility: { assertion_pass: false, observed: false },
+        accessibility: { assertion_pass: false, observed: [{ id: "mobile-320", axe_serious_critical: 3 }] },
         queue_preconditions: { assertion_pass: false, observed: { shipment_count: 1, urgent_count: 1, non_urgent_count: 0 } },
       },
       failed_groups: { journey: { points: 20, pass: false } },
@@ -127,6 +127,7 @@ describe("autopilot Luna/high smoke controller", () => {
   test("turns cold-chain composite failures into bounded repair measurements", () => {
     const observations = objectiveFailureObservations({
       assertions: {
+        accessibility: false,
         filtered_contents_exact: false,
         assigned_owner_confirmed_and_persistent: false,
         responsive: false,
@@ -141,6 +142,7 @@ describe("autopilot Luna/high smoke controller", () => {
           critical_fields_reachable: false,
           controls_horizontally_unclipped: true,
           control_min_dimension_px: 38,
+          initial_axe_violations: [{ id: "color-contrast", impact: "serious", targets: [["#assign"]] }],
           interaction_diagnostics: {
             record_classification: [{ identity: "CC-101", urgent: true, non_urgent: false }],
             urgent_ids: ["CC-101"],
@@ -155,6 +157,7 @@ describe("autopilot Luna/high smoke controller", () => {
       },
     });
     expect(observations.failed_assertions).toMatchObject({
+      accessibility: { observed: [{ id: "mobile-320", initial_axe_violations: [{ id: "color-contrast", targets: [["#assign"]] }] }] },
       filtered_contents_exact: { observed: { pass: false, viewports: [{ id: "mobile-320", urgent_ids: ["CC-101"], filtered_record_ids: [] }] } },
       assigned_owner_confirmed_and_persistent: { observed: { pass: false, viewports: [{ id: "mobile-320", assigned_status_persistent: false, selected_owner: "Mina Park", assignment_status_text: "Assigned Mina Park", assigned_source_record_text: "CC-101 Mina Park", detail_after: "CC-101 Sample owner Mina Park" }] } },
       responsive: { observed: [{ id: "mobile-320", mobile: true, critical_fields_reachable: false, control_min_dimension_px: 38 }] },

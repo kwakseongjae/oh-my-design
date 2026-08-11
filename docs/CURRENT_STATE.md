@@ -3,11 +3,16 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: Autopilot strict-repair commit `bcc469a7` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · 1.9.869 measurement RCA 완료, fresh smoke 재발급 준비
+- 기준 소스: Autopilot pending-interview measurement commit `f48173c7` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-12 · 1.9.870 3-cell 완료 및 evaluator/product RCA, v2 보정 commit 준비
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.870 exact Luna/high 3셀은 3/3 valid terminal, DESIGN.md proof3/3, 질문 batch0, retry/replacement/fallback/Cursor0으로 완료됐다. sealed UI-Resolved는 1/3이며 landing `10→100`, cold `20→20`, locale `10→50→50`; 총7 calls·2,882.893s·input9,790,594(cached9,112,832)+output132,776이다.
+- in-app 검수와 provider-free v2 재평가에서 locale는 동일 bytes로100/100이다. 기존 evaluator가 현지어 unavailable alert, 선택된 `zh-TW` 보존, CJK/English 부정 의료 disclaimer를 오판했다. cold는 urgent/filter/sample-owner false negative를 제거해도 owner 오류 focus, success의 shipment identity, 모바일42px, Assign contrast가 실제 실패로 남는다.
+- evaluator v2는 DOM 인접 span의 `watchURGENT`, sample-scoped option group, KO/JA/ZH-CN/ZH-TW unavailable semantics와 의료 부정을 인식한다. controller repair feedback은 실패 접근성의 Axe ID/target을 직접 전달하고 Autopilot은 validation focus·success identity persistence·모든 상태 contrast를 명시한다.
+- sealed 1.9.870 record는 재작성하지 않는다. 다음 순서: 관련 코드+report commit → commit-bound tests/lint/build → explicit fresh 1.9.871 plan/root/in-app admission → 3셀 실행. 12-task comparison은 fresh3/3 전까지 BLOCK이다.
 
 - 1.9.869는 explicit epoch·fresh root·named in-app browser로 landing 1셀을 실행했다. exact Luna/high initial+repair1이 `30→100`, DESIGN.md proof PASS, 실제 질문 batch0·answer artifact0·mission lineage1을 달성했다. 2 calls·provider wall985.675s·input3,210,693(cached3,022,592)+output42,318이다.
 - sealed record는 내부 council이 검토 후 보류한 candidate question을 `questions[]`에 남겼다는 이유로 terminal failure가 됐다. `pending_interview_ids=[]`였으므로 사용자 질문은 실제로 발생하지 않았다. 이는 self-debate를 허용하고 실제 사용자 개입만 재는 2.0 계약의 controller 측정 결함이다.

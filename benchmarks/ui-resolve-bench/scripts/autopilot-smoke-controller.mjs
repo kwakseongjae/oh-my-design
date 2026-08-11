@@ -543,6 +543,15 @@ export function objectiveFailureObservations(score) {
         diagnostics: viewport.unavailable_translation_diagnostics ?? null,
       })),
     },
+    accessibility: viewports.map((viewport) => ({
+      id: viewport.id ?? null,
+      initial_axe_violations: viewport.initial_axe_violations ?? [],
+      filtered_axe_violations: viewport.filtered_axe_violations ?? [],
+      detail_axe_violations: viewport.detail_axe_violations ?? [],
+      error_axe_violations: viewport.error_axe_violations ?? [],
+      assigned_axe_violations: viewport.assigned_axe_violations ?? [],
+      axe_serious_critical: viewport.axe_serious_critical ?? null,
+    })),
     responsive: viewports.map((viewport) => ({
       id: viewport.id ?? null,
       mobile: viewport.mobile ?? null,

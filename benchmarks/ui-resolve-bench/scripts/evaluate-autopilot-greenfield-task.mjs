@@ -21,17 +21,34 @@ const taskSetPath = join(repoRoot, 'benchmarks/ui-resolve-bench/config/autopilot
 const adapterSetPath = join(repoRoot, 'benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json');
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
-export function isSampleOwnerOption(value) {
+export function isSampleOwnerOption(value, groupLabel = '') {
   const text = String(value || '').replace(/\s+/g, ' ').trim();
+  const scope = String(groupLabel || '').replace(/\s+/g, ' ').trim();
   if (/^(?:select|choose)\b/i.test(text)) return false;
   return /\b(?:sample|demo|fictional)\s+(?:owner|staff|operator|assignee|responder)\b/i.test(text)
-    || /\b(?:owner|staff|operator|assignee|responder)\s+(?:sample|demo|fictional)\b/i.test(text);
+    || /\b(?:owner|staff|operator|assignee|responder)\s+(?:sample|demo|fictional)\b/i.test(text)
+    || /\b(?:sample|demo|fictional)\s+(?:owner|staff|operator|assignee|responder)\b/i.test(scope)
+    || /\b(?:owner|staff|operator|assignee|responder)\s+(?:sample|demo|fictional)\b/i.test(scope);
 }
 
 export function classifyColdChainPriority(value) {
   const text = String(value || '').replace(/\s+/g, ' ').trim();
-  const nonUrgent = /\bnon[-\s]?urgent\b|\b(?:attention|resolved|routine|watch|stable|normal)\b/i.test(text);
-  return { urgent: /\burgent\b/i.test(text) && !nonUrgent, nonUrgent };
+  const explicitNonUrgent = /\bnon[-\s]?urgent\b/i.test(text);
+  // `innerText` can concatenate adjacent visual spans (for example
+  // `watchURGENT`). Treat the explicit status token as authoritative rather
+  // than requiring a word boundary that the rendered DOM may not preserve.
+  const urgent = /urgent/i.test(text) && !explicitNonUrgent;
+  const nonUrgent = !urgent && (explicitNonUrgent || /\b(?:attention|resolved|routine|watch|stable|normal|open)\b|needs?\s+review/i.test(text));
+  return { urgent, nonUrgent };
+}
+
+export function hasUnavailableTranslationSemantics(value) {
+  const text = String(value || '').replace(/\s+/g, ' ').trim();
+  return /translation.{0,40}(?:unavailable|not available|not ready)|(?:unavailable|not available|not ready).{0,40}translation/i.test(text)
+    || /번역.{0,40}(?:불가|제공되지|준비되지|준비되지 않았)/.test(text)
+    || /翻訳.{0,40}(?:利用でき|未提供|準備でき)/.test(text)
+    || /翻译.{0,40}(?:未提供|不可用|尚未准备)/.test(text)
+    || /翻譯.{0,40}(?:未提供|不可用|尚未準備)/.test(text);
 }
 
 export function hasHonestUnavailableLibraryInformation(value) {
@@ -47,9 +64,10 @@ export function hasHonestUnavailableLibraryInformation(value) {
 export function detectLocaleProtectedClaims(value) {
   const sentences = String(value || '').replace(/\s+/g, ' ').split(/(?<=[.!?。！？])|\n+/).map((sentence) => sentence.trim()).filter(Boolean);
   const explicitlyQualified = (sentence) => /(?:fictional|sample)/i.test(sentence)
+    || /\bnothing\b.{0,48}\bmedical advice\b/i.test(sentence)
     || /\b(?:not|never|no)\b.{0,48}\b(?:medical advice|diagnosis|clinic policy)\b/i.test(sentence)
     || /\bdoes\s+not\b.{0,48}\b(?:provide|offer|give|constitute|replace)?\s*(?:medical advice|a diagnosis|clinic policy)\b/i.test(sentence)
-    || /(?:의료|의학적)\s*조언.{0,24}(?:아닙|아니)|医療助言.{0,24}(?:ではありません|ではない)|不是医疗建议|不是醫療建議/i.test(sentence);
+    || /(?:의료|의학적)\s*조언.{0,24}(?:아닙|아니)|医療(?:助言|アドバイス).{0,24}(?:ではありません|ではない)|(?:不是|不构成)医疗建议|(?:不是|不構成)醫療建議/i.test(sentence);
   const affirmative = sentences.filter((sentence) => !explicitlyQualified(sentence)).join(' ');
   return [...affirmative.matchAll(/\b(?:diagnosed with|you have (?:a|an)|take \d+ mg|medical advice|real clinic policy|doctor recommends?)\b/gi)].map((match) => match[0]);
 }
@@ -836,11 +854,15 @@ async function evaluateColdChain(page, viewport) {
       errorAssociated = await owner.evaluate((element) => element === document.activeElement) && Boolean(described) && Boolean(alertText);
       errorAxe = await axeSeriousCritical(page);
       const options = await owner.locator('option').allTextContents();
+      const ownerScope = await owner.evaluate((element) => {
+        const labels = element.labels ? [...element.labels].map((item) => item.innerText).join(' ') : '';
+        return `${labels} ${element.getAttribute('aria-label') || ''}`.replace(/\s+/g, ' ').trim();
+      });
       const scopedOptionValues = await owner.locator('optgroup').evaluateAll((groups) => groups
         .filter((group) => /sample|demo|fictional/i.test(group.label || ''))
         .flatMap((group) => [...group.querySelectorAll('option')].map((option) => option.textContent || '')));
       const sampleOptions = [...new Set([
-        ...options.filter((item) => isSampleOwnerOption(item)),
+        ...options.filter((item) => isSampleOwnerOption(item, ownerScope)),
         ...scopedOptionValues.filter((item) => item.trim()),
       ])];
       sampleOwnerOptions = sampleOptions.length > 0;
@@ -1168,13 +1190,22 @@ async function evaluateLocale(page, viewport) {
   // subsequently exposed alert and the unchanged document language.
   const unavailable = page.getByRole('button', { name: /unavailable translation|translation (?:status|availability)/i });
   if (await unavailable.count() === 1 && await unavailable.isVisible()) { await unavailable.press('Enter'); await afterPaint(page); }
-  const unavailableAlert = page.getByRole('alert').filter({ hasText: /translation.*unavailable/i }); const unavailableHonest = await unavailable.count() === 1 && await unavailableAlert.count() === 1 && await unavailableAlert.isVisible() && (await page.locator('html').getAttribute('lang')) === langBeforeUnavailable; await checkState();
+  const alerts = page.getByRole('alert');
+  let unavailableAlert = null;
+  for (const index of await visibleLocatorIndexes(alerts)) {
+    const candidate = alerts.nth(index);
+    if (hasUnavailableTranslationSemantics(await candidate.innerText())) { unavailableAlert = candidate; break; }
+  }
+  const selectedUnavailableLocale = await localeSelect();
+  const unavailableHonest = await unavailable.count() === 1 && Boolean(unavailableAlert)
+    && (await page.locator('html').getAttribute('lang')) === 'zh-TW'
+    && Boolean(selectedUnavailableLocale && (await selectedUnavailableLocale.inputValue()) === 'zh-TW'); await checkState();
   const unavailableDiagnostics = {
     control_count: await unavailable.count(),
     control_visible: await unavailable.count() === 1 ? await unavailable.isVisible() : false,
-    alert_count: await unavailableAlert.count(),
-    alert_visible: await unavailableAlert.count() === 1 ? await unavailableAlert.isVisible() : false,
-    alert_text: await unavailableAlert.count() === 1 ? (await unavailableAlert.innerText()).replace(/\s+/g, ' ').trim().slice(0, 300) : '',
+    alert_count: unavailableAlert ? 1 : 0,
+    alert_visible: Boolean(unavailableAlert),
+    alert_text: unavailableAlert ? (await unavailableAlert.innerText()).replace(/\s+/g, ' ').trim().slice(0, 300) : '',
     lang_before: langBeforeUnavailable,
     lang_after: await page.locator('html').getAttribute('lang'),
   };
@@ -1288,7 +1319,7 @@ if (invoked) {
   const localeEvidence = { schema_version: '0.1', task_id: taskId, task_set_sha256: sha(taskBytes), adapter_set_sha256: sha(adapterBytes), task_identity: observations.every((item) => item.task_identity), fictional_not_medical_advice: observations.every((item) => item.fictional_not_medical_advice), all_five_locales_exact: observations.every((item) => item.all_five_locales_exact), selected_label_lang_script_agree: observations.every((item) => item.selected_label_lang_script_agree), progress_textual_and_persistent: observations.every((item) => item.progress_textual_and_persistent), completion_persists_after_return: observations.every((item) => item.completion_persists_after_return), translation_unavailable_honest: observations.every((item) => item.translation_unavailable_honest), protected_unknown_claims: [...new Set(observations.flatMap((item) => item.protected_unknown_claims))], viewports: observations.map((item) => item.viewport), console_errors: [...new Set(consoleErrors)], page_errors: [...new Set(pageErrors)], external_requests: [...new Set(externalRequests)] };
   const evidence = taskId === 'neighborhood-library-landing' ? landingEvidence : taskId === 'incident-response-dashboard' ? incidentEvidence : taskId === 'cold-chain-operations' ? coldChainEvidence : taskId === 'caregiver-onboarding' ? caregiverEvidence : taskId === 'community-class-checkout' ? checkoutEvidence : taskId === 'research-data-deletion' ? deletionEvidence : taskId === 'public-record-search' ? searchEvidence : taskId === 'field-notes-editorial' ? editorialEvidence : taskId === 'mobile-transit-report' ? transitEvidence : taskId === 'grant-evidence-intake' ? grantEvidence : taskId === 'volunteer-import-recovery' ? recoveryEvidence : localeEvidence;
   const scoring = taskId === 'neighborhood-library-landing' ? scoreLandingEvidence(evidence) : taskId === 'incident-response-dashboard' ? scoreIncidentEvidence(evidence) : taskId === 'cold-chain-operations' ? scoreColdChainEvidence(evidence) : taskId === 'caregiver-onboarding' ? scoreCaregiverEvidence(evidence) : taskId === 'community-class-checkout' ? scoreCheckoutEvidence(evidence) : taskId === 'research-data-deletion' ? scoreDeletionEvidence(evidence) : taskId === 'public-record-search' ? scoreSearchEvidence(evidence) : taskId === 'field-notes-editorial' ? scoreEditorialEvidence(evidence) : taskId === 'mobile-transit-report' ? scoreTransitEvidence(evidence) : taskId === 'grant-evidence-intake' ? scoreGrantEvidence(evidence) : taskId === 'volunteer-import-recovery' ? scoreRecoveryEvidence(evidence) : scoreLocaleEvidence(evidence);
-  const result = { schema_version: '0.1', methodology_epoch: 'autopilot-greenfield-observable-outcomes-v1', task_id: taskId, ...scoring, evidence };
+  const result = { schema_version: '0.1', methodology_epoch: 'autopilot-greenfield-observable-outcomes-v2', task_id: taskId, ...scoring, evidence };
   mkdirSync(dirname(outPath), { recursive: true });
   writeFileSync(outPath, `${JSON.stringify(result, null, 2)}\n`, { encoding: 'utf8', flag: 'wx' });
   process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);

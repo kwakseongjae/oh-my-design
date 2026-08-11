@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { classifyColdChainPriority, detectLocaleProtectedClaims, hasHonestUnavailableLibraryInformation, isSampleOwnerOption, scoreCaregiverEvidence, scoreCheckoutEvidence, scoreColdChainEvidence, scoreDeletionEvidence, scoreEditorialEvidence, scoreGrantEvidence, scoreIncidentEvidence, scoreLandingEvidence, scoreLocaleEvidence, scoreRecoveryEvidence, scoreSearchEvidence, scoreTransitEvidence, setCheckboxStateWithKeyboard } from '../../../benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs';
+import { classifyColdChainPriority, detectLocaleProtectedClaims, hasHonestUnavailableLibraryInformation, hasUnavailableTranslationSemantics, isSampleOwnerOption, scoreCaregiverEvidence, scoreCheckoutEvidence, scoreColdChainEvidence, scoreDeletionEvidence, scoreEditorialEvidence, scoreGrantEvidence, scoreIncidentEvidence, scoreLandingEvidence, scoreLocaleEvidence, scoreRecoveryEvidence, scoreSearchEvidence, scoreTransitEvidence, setCheckboxStateWithKeyboard } from '../../../benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs';
 
 describe('greenfield evidence phrase classification', () => {
   it.each([
@@ -10,11 +10,18 @@ describe('greenfield evidence phrase classification', () => {
 
   it.each(['Maya Chen · Receiving', 'Jordan Lee · Owner', 'Select owner', 'Select a sample owner'])('rejects unscoped or placeholder owner option: %s', (value) => expect(isSampleOwnerOption(value)).toBe(false));
 
+  it('accepts ordinary names when the option set is explicitly scoped as sample owners', () => {
+    expect(isSampleOwnerOption('Maya Chen', 'Sample owner')).toBe(true);
+    expect(isSampleOwnerOption('Choose an owner', 'Sample owner')).toBe(false);
+  });
+
   it.each([
     ['Urgent', { urgent: true, nonUrgent: false }],
     ['Urgent review', { urgent: true, nonUrgent: false }],
+    ['Urgent · Temperature above sample watch', { urgent: true, nonUrgent: false }],
     ['Non-urgent', { urgent: false, nonUrgent: true }],
     ['Routine review', { urgent: false, nonUrgent: true }],
+    ['Open sample shipment', { urgent: false, nonUrgent: true }],
   ])('classifies cold-chain priority without treating Non-urgent as Urgent: %s', (value, expected) => {
     expect(classifyColdChainPriority(value)).toEqual(expected);
   });
@@ -39,7 +46,21 @@ describe('greenfield evidence phrase classification', () => {
     'These are fictional examples for this demo, not medical advice.',
     'This checklist does not provide medical advice or suggest a diagnosis.',
     'This is not medical advice and does not replace a diagnosis.',
+    'Nothing here is medical advice.',
   ])('does not turn a disclaimer into an affirmative claim: %s', (value) => expect(detectLocaleProtectedClaims(value)).toEqual([]));
+
+  it.each([
+    '繁體中文翻譯尚未準備好',
+    '翻译暂未提供',
+    '翻訳はまだ利用できません',
+    '아직 번역이 준비되지 않았습니다',
+  ])('recognizes localized unavailable-translation alerts: %s', (value) => {
+    expect(hasUnavailableTranslationSemantics(value)).toBe(true);
+  });
+
+  it.each(['這裡不構成醫療建議。', '这里不构成医疗建议。', '医療アドバイスではありません。'])('does not turn localized medical disclaimers into claims: %s', (value) => {
+    expect(detectLocaleProtectedClaims(value)).toEqual([]);
+  });
 
   it('still rejects affirmative medical claims', () => {
     expect(detectLocaleProtectedClaims('Medical advice: take 20 mg. Your doctor recommends this.')).toEqual(['Medical advice', 'take 20 mg', 'doctor recommends']);

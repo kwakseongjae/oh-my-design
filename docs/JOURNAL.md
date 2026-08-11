@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.870 complete + evaluator/product split
+- exact Luna/high 3셀은 valid3/3·DESIGN proof3/3·sealed UI1/3, 총7 calls였다.
+- locale 실패는 현지어 unavailable/의료 부정 evaluator 오판이며 같은 bytes가 v2에서100이다.
+- cold는 분류 오판을 제거해도 focus·identity status·42px·contrast 실제 결함이 남는다.
+- 다음은 v2 commit-bound gate 뒤 fresh 1.9.871이며 12-task 비교는 계속 차단한다.
+
 ## 2026-08-12 (Codex) · 1.9.869 self-interview measurement RCA
 - landing은 Luna/high 2 calls로 30→100, DESIGN proof·objective UI를 모두 통과했다.
 - pending0인 내부 candidate question을 사용자 질문으로 잘못 세어 sealed record만 실패했다.
