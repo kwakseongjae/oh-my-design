@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "autopilot-luna-high-smoke-1.9.876",
+  "status": "stopped-preregistered",
+  "source_commit": "884ab99dc8b6f0a2230d0f5b7b354144e66be25f",
+  "plan_sha256": "e5959d264b7b230411743c9e360d4ff1c63dc86a28f6fd04fd5fa9173c02781f",
+  "execution_state_sha256": "fe0802b944aa99ddc07da743ca210396a2fe0579435a5bf92e2816578fb14f35",
+  "stop_reason": "controller-task-evaluator-produced-no-score",
+  "scheduled_cells": 3,
+  "valid_terminal_cells": 1,
+  "provider_exposures": 3,
+  "model_calls": 3,
+  "repair_model_calls": 1,
+  "token_usage": {
+    "coverage_cells": 2,
+    "input_tokens": 3934511,
+    "cached_input_tokens": 3679232,
+    "output_tokens": 65618
+  },
+  "provider_wall_ms": 1348524,
+  "cells": [
+    {
+      "cell_id": "neighborhood-library-landing-luna-high-r1-omd-autopilot",
+      "status": "complete",
+      "validity": "valid",
+      "outcome": "success",
+      "ui_resolved": true,
+      "scores": [10, 100],
+      "model_calls": 2,
+      "repair_model_calls": 1,
+      "token_usage": {
+        "input_tokens": 2349101,
+        "cached_input_tokens": 2187008,
+        "output_tokens": 37889
+      },
+      "provider_wall_ms": 771278,
+      "run_record_sha256": "863d9506113e4041a766c655445b2e9abb7f269d9050ce47a07d934f7db462d1"
+    },
+    {
+      "cell_id": "cold-chain-operations-luna-high-r1-omd-autopilot",
+      "status": "stopped",
+      "validity": null,
+      "outcome": null,
+      "ui_resolved": null,
+      "scores": [],
+      "model_calls": 1,
+      "repair_model_calls": 0,
+      "token_usage": {
+        "input_tokens": 1585410,
+        "cached_input_tokens": 1492224,
+        "output_tokens": 27729
+      },
+      "provider_wall_ms": 577246,
+      "diagnostic_provider_free_score": 40,
+      "diagnostic_provider_free_ui_resolved": false,
+      "diagnostic_score_sha256": "c7bd3f6d5f5dca394034f7fc38260064f6af522d9d42c8b0a844e65ee3babf90",
+      "evaluator_failure": "stale owner locator after invalid assignment removed the owner surface"
+    },
+    {
+      "cell_id": "clinic-visit-prep-locales-luna-high-r1-omd-autopilot",
+      "status": "not-started",
+      "provider_exposure": 0
+    }
+  ],
+  "claim_boundary": "Diagnostic smoke only. The frozen root is non-reusable and does not establish 2.0 readiness or cross-skill superiority."
+}

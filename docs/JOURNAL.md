@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.876 stale-owner evaluator freeze
+- landing은 Luna/high `10→100`으로 성공했고 cold initial 뒤 evaluator가 stale owner locator로 동결됐다.
+- exposure3·valid terminal1/3·locale0이며 retry/replacement/fallback/Cursor0이다.
+- evaluator는 제거된 owner surface를 실패로 남기며 provider-free 동일 product는 terminal40을 기록한다.
+- scoped commit/full gate 뒤 fresh1.9.877로 이어간다.
+
 ## 2026-08-12 (Codex) · 1.9.875 optional-selection evaluator freeze
 - in-app admission PASS 뒤 landing은 Luna/high `30→100`, 1회 repair로 성공했다.
 - cold repair 뒤 사라진 record의 optional aria-selected 조회가 timeout돼 root를 동결했다.

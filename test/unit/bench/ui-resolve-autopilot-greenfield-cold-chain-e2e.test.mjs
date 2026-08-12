@@ -52,6 +52,14 @@ const mutant = (source, label, transform) => { const workspace = join(mkdtempSyn
     expect(result.assertions.keyboard_open_sample).toBe(true);
     expect(result.assertions.assigned_owner_confirmed_and_persistent).toBe(false);
   }, 60_000);
+  it('writes a terminal score when invalid assignment removes the owner surface', () => {
+    const workspace = mutant('oracle-a', 'owner-removed-after-invalid-submit', (html) => html
+      .replace("if(!owner.value){error.hidden=false;owner.focus();return}", "if(!owner.value){detail.hidden=true;return}"));
+    const result = evaluate(workspace, 'owner-removed-after-invalid-submit');
+    expect(result).toMatchObject({ schema_version: '0.1', ui_resolved: false });
+    expect(result.assertions.owner_error_associated).toBe(false);
+    expect(result.assertions.assigned_owner_confirmed_and_persistent).toBe(false);
+  }, 60_000);
   it('accepts an associated polite status as equivalent owner-error feedback', () => {
     const workspace = mutant('oracle-a', 'status-owner-error', (html) => html
       .replace('id="owner-error" class="error" role="alert" hidden', 'id="owner-error" class="error" role="status" aria-live="polite" hidden'));

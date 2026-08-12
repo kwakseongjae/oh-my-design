@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: Autopilot pending-interview measurement commit `f48173c7` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · 1.9.873 3-cell 완료 및 structure-neutral evaluator/repair-feedback 보강 검증
+- 갱신: 2026-08-12 · 1.9.876 cold-chain stale-owner evaluator freeze 및 provider-free terminal-score 회귀 보강
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.876은 exact in-app admission 뒤 landing `10→100`(2 calls)을 UI-Resolved로 완료했다. cold initial provider도 종료했지만 invalid Assign 뒤 제거된 owner combobox의 optional `aria-describedby`를 evaluator가 30초 기다려 score 없이 root가 stopped-preregistered로 동결됐다. provider exposure3·valid terminal1/3이며 locale는 미노출이다.
+- evaluator는 invalid submission 뒤 owner surface가 사라지면 owner-error/assignment를 실패로 남기고 terminal score를 쓴다. 동일 frozen product의 provider-free 재평가는 crash 없이40점이며 실제 결함(owner error association, sample owner, persistent assignment, accessibility)은 그대로다. exact evidence는 `reports/autopilot-luna-high-smoke-1.9.876/{RESULTS.json,STATUS.md}`다.
+- 다음 순서: stale-owner regression 전체 회귀·lint/build → evaluator/evidence scoped commit(`web/public/llms-full.txt` 제외) → commit-bound full gate → fresh1.9.877 plan/root/named in-app admission → exact Luna/high3셀. fresh3/3 전까지 12-task comparison과 public one-shot claim은 BLOCK이다.
 
 - 1.9.875는 leading-dash browser admission을 통과하고 exact Luna/high를 실행했다. landing은 `30→100`(2 calls)으로 성공했지만 cold repair 뒤 evaluator가 사라진 record의 optional `aria-selected`를 30초 대기하다 exit1이 되어 root가 stopped-preregistered로 동결됐다. provider exposure4·valid terminal1/3이며 locale는 미노출이다.
 - evaluator는 zero-match selected-state lookup을 optional null로 처리한다. provider-free 동일 repaired product는 crash 없이20점 terminal failure를 기록했고 실제 결함(urgent classification/filter exact/assignment persistence/responsive/accessibility)은 그대로 남는다. 다음은 commit-bound 회귀 뒤 fresh1.9.876이다.

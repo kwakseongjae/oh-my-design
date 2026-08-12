@@ -963,56 +963,63 @@ async function evaluateColdChain(page, viewport) {
     const owner = detail.getByRole('combobox', { name: /owner/i });
     if (await submit.count() === 1 && await submit.isVisible() && await owner.count() === 1 && await owner.isVisible()) {
       await submit.press('Enter'); await afterPaint(page);
-      const described = await owner.getAttribute('aria-describedby');
-      const alerts = page.getByRole('alert');
-      const visibleAlerts = await visibleLocatorIndexes(alerts);
-      let alertText = visibleAlerts.length === 1 ? (await alerts.nth(visibleAlerts[0]).innerText()).trim() : '';
-      let describedFeedbackSemantic = false;
-      for (const id of String(described || '').trim().split(/\s+/).filter(Boolean)) {
-        const feedback = page.locator(`[id=${JSON.stringify(id)}]`);
-        if (await feedback.count() !== 1 || !await feedback.isVisible()) continue;
-        const text = (await feedback.innerText()).replace(/\s+/g, ' ').trim();
-        const role = await feedback.getAttribute('role');
-        const live = await feedback.getAttribute('aria-live');
-        if (text && (['alert', 'status'].includes(role) || ['assertive', 'polite'].includes(live))) {
-          alertText ||= text;
-          describedFeedbackSemantic = true;
+      // Invalid submission is allowed to replace or close the detail surface.
+      // That implementation fails the observable owner-error contract, but it
+      // must still produce a terminal score instead of making a stale locator
+      // wait until the controller freezes the whole preregistered block.
+      const ownerStillPresent = await owner.count() === 1 && await owner.isVisible();
+      if (ownerStillPresent) {
+        const described = await owner.getAttribute('aria-describedby');
+        const alerts = page.getByRole('alert');
+        const visibleAlerts = await visibleLocatorIndexes(alerts);
+        let alertText = visibleAlerts.length === 1 ? (await alerts.nth(visibleAlerts[0]).innerText()).trim() : '';
+        let describedFeedbackSemantic = false;
+        for (const id of String(described || '').trim().split(/\s+/).filter(Boolean)) {
+          const feedback = page.locator(`[id=${JSON.stringify(id)}]`);
+          if (await feedback.count() !== 1 || !await feedback.isVisible()) continue;
+          const text = (await feedback.innerText()).replace(/\s+/g, ' ').trim();
+          const role = await feedback.getAttribute('role');
+          const live = await feedback.getAttribute('aria-live');
+          if (text && (['alert', 'status'].includes(role) || ['assertive', 'polite'].includes(live))) {
+            alertText ||= text;
+            describedFeedbackSemantic = true;
+          }
         }
-      }
-      ownerFocusedAfterError = await owner.evaluate((element) => element === document.activeElement);
-      ownerDescribedBy = described || '';
-      ownerAlertText = alertText;
-      errorAssociated = ownerFocusedAfterError && Boolean(ownerDescribedBy) && Boolean(ownerAlertText) && describedFeedbackSemantic;
-      errorAxe = await axeSeriousCritical(page);
-      const options = await owner.locator('option').allTextContents();
-      const ownerScope = await owner.evaluate((element) => {
-        const labels = element.labels ? [...element.labels].map((item) => item.innerText).join(' ') : '';
-        return `${labels} ${element.getAttribute('aria-label') || ''}`.replace(/\s+/g, ' ').trim();
-      });
-      const scopedOptionValues = await owner.locator('optgroup').evaluateAll((groups) => groups
-        .filter((group) => /sample|demo|fictional/i.test(group.label || ''))
-        .flatMap((group) => [...group.querySelectorAll('option')].map((option) => option.textContent || '')));
-      const sampleOptions = [...new Set([
-        ...options.filter((item) => isSampleOwnerOption(item, ownerScope)),
-        ...scopedOptionValues.filter((item) => item.trim()),
-      ])];
-      sampleOwnerOptions = sampleOptions.length > 0;
-      const chosen = sampleOptions[0] || options.find((item) => item.trim() && !/select|choose/i.test(item));
-      if (chosen) {
-        await owner.selectOption({ label: chosen });
-        await submit.press('Enter'); await page.waitForTimeout(400); await afterPaint(page);
-        const statuses = page.getByRole('status');
-        const statusTexts = [];
-        for (const index of await visibleLocatorIndexes(statuses)) statusTexts.push((await statuses.nth(index).innerText()).replace(/\s+/g, ' '));
-        const statusText = statusTexts.join(' ');
-        const ownerName = chosen.split('·')[0].trim();
-        const refreshedRecords = await collectRecords();
-        const sourceRecordText = activeIdentity ? (await refreshedRecords.find((item) => item.identity === activeIdentity)?.container.innerText()) || '' : '';
-        selectedOwner = ownerName;
-        assignmentStatusText = statusText;
-        assignedSourceRecordText = sourceRecordText;
-        assignedPersistent = Boolean(activeIdentity && statusText.includes(activeIdentity) && statusText.includes(ownerName) && sourceRecordText.includes(ownerName));
-        assignedAxe = await axeSeriousCritical(page);
+        ownerFocusedAfterError = await owner.evaluate((element) => element === document.activeElement);
+        ownerDescribedBy = described || '';
+        ownerAlertText = alertText;
+        errorAssociated = ownerFocusedAfterError && Boolean(ownerDescribedBy) && Boolean(ownerAlertText) && describedFeedbackSemantic;
+        errorAxe = await axeSeriousCritical(page);
+        const options = await owner.locator('option').allTextContents();
+        const ownerScope = await owner.evaluate((element) => {
+          const labels = element.labels ? [...element.labels].map((item) => item.innerText).join(' ') : '';
+          return `${labels} ${element.getAttribute('aria-label') || ''}`.replace(/\s+/g, ' ').trim();
+        });
+        const scopedOptionValues = await owner.locator('optgroup').evaluateAll((groups) => groups
+          .filter((group) => /sample|demo|fictional/i.test(group.label || ''))
+          .flatMap((group) => [...group.querySelectorAll('option')].map((option) => option.textContent || '')));
+        const sampleOptions = [...new Set([
+          ...options.filter((item) => isSampleOwnerOption(item, ownerScope)),
+          ...scopedOptionValues.filter((item) => item.trim()),
+        ])];
+        sampleOwnerOptions = sampleOptions.length > 0;
+        const chosen = sampleOptions[0] || options.find((item) => item.trim() && !/select|choose/i.test(item));
+        if (chosen) {
+          await owner.selectOption({ label: chosen });
+          await submit.press('Enter'); await page.waitForTimeout(400); await afterPaint(page);
+          const statuses = page.getByRole('status');
+          const statusTexts = [];
+          for (const index of await visibleLocatorIndexes(statuses)) statusTexts.push((await statuses.nth(index).innerText()).replace(/\s+/g, ' '));
+          const statusText = statusTexts.join(' ');
+          const ownerName = chosen.split('·')[0].trim();
+          const refreshedRecords = await collectRecords();
+          const sourceRecordText = activeIdentity ? (await refreshedRecords.find((item) => item.identity === activeIdentity)?.container.innerText()) || '' : '';
+          selectedOwner = ownerName;
+          assignmentStatusText = statusText;
+          assignedSourceRecordText = sourceRecordText;
+          assignedPersistent = Boolean(activeIdentity && statusText.includes(activeIdentity) && statusText.includes(ownerName) && sourceRecordText.includes(ownerName));
+          assignedAxe = await axeSeriousCritical(page);
+        }
       }
     }
     const geometry = await detail.locator('button,select').evaluateAll((elements) => { const rects = elements.filter((element) => { const r = element.getBoundingClientRect(); return r.width > 0 && r.height > 0; }).map((element) => element.getBoundingClientRect()); return { unclipped: rects.every((r) => r.left >= -1 && r.right <= innerWidth + 1), min: rects.length ? Math.min(...rects.map((r) => Math.min(r.width, r.height))) : 44 }; });
