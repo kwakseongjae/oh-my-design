@@ -44,6 +44,14 @@ const mutant = (source, label, transform) => { const workspace = join(mkdtempSyn
       .replace('Sample evidence note: signal interrupted at 09:12.', 'Scan event: signal interrupted at 09:12.'));
     expect(evaluate(workspace, 'separate-sample-evidence-labels')).toMatchObject({ score: 100, ui_resolved: true });
   }, 60_000);
+  it('writes a terminal score when a detail transition removes the activated record', () => {
+    const workspace = mutant('oracle-a', 'record-hidden-after-open', (html) => html
+      .replace("detail.hidden=false; detail.querySelector('.close').focus()", "row.hidden=true; detail.hidden=false; detail.querySelector('.close').focus()"));
+    const result = evaluate(workspace, 'record-hidden-after-open');
+    expect(result).toMatchObject({ schema_version: '0.1', ui_resolved: false });
+    expect(result.assertions.keyboard_open_sample).toBe(true);
+    expect(result.assertions.assigned_owner_confirmed_and_persistent).toBe(false);
+  }, 60_000);
   it('accepts an associated polite status as equivalent owner-error feedback', () => {
     const workspace = mutant('oracle-a', 'status-owner-error', (html) => html
       .replace('id="owner-error" class="error" role="alert" hidden', 'id="owner-error" class="error" role="status" aria-live="polite" hidden'));

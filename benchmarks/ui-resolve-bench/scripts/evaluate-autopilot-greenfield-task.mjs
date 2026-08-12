@@ -919,7 +919,12 @@ async function evaluateColdChain(page, viewport) {
     if (reached) await page.keyboard.press('Enter');
     await afterPaint(page);
     detailAfter = await detailSignature();
-    const selectedAfter = activeIdentity ? await page.getByRole('row').or(page.getByRole('article')).or(page.getByRole('listitem')).or(page.getByRole('button')).filter({ hasText: activeIdentity }).first().getAttribute('aria-selected') : null;
+    const matchingRecordAfter = activeIdentity
+      ? page.getByRole('row').or(page.getByRole('article')).or(page.getByRole('listitem')).or(page.getByRole('button')).filter({ hasText: activeIdentity })
+      : null;
+    const selectedAfter = matchingRecordAfter && await matchingRecordAfter.count() > 0
+      ? await matchingRecordAfter.first().getAttribute('aria-selected')
+      : null;
     keyboardOpen = reached && Boolean(detailAfter) && (detailAfter !== detailBefore
       || (selectedBefore !== 'true' && selectedAfter === 'true')
       || detailAfter.toUpperCase().includes(activeIdentity));

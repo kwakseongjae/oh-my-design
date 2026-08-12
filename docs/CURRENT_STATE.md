@@ -9,6 +9,8 @@
 
 ## 지금 (현재 위치)
 
+- 1.9.875는 leading-dash browser admission을 통과하고 exact Luna/high를 실행했다. landing은 `30→100`(2 calls)으로 성공했지만 cold repair 뒤 evaluator가 사라진 record의 optional `aria-selected`를 30초 대기하다 exit1이 되어 root가 stopped-preregistered로 동결됐다. provider exposure4·valid terminal1/3이며 locale는 미노출이다.
+- evaluator는 zero-match selected-state lookup을 optional null로 처리한다. provider-free 동일 repaired product는 crash 없이20점 terminal failure를 기록했고 실제 결함(urgent classification/filter exact/assignment persistence/responsive/accessibility)은 그대로 남는다. 다음은 commit-bound 회귀 뒤 fresh1.9.876이다.
 - 1.9.874는 commit-bound full gate 1091/1091 통과 뒤 fresh root를 prepare하고 in-app browser를 직접 열었지만 provider-zero admission에서 중단됐다. 현재 browser id가 `-`로 시작해 공용 `parseArgs`가 값이 아닌 새 flag로 해석했다. provider exposure·완료 셀은0이며 이 root는 실행하지 않는다.
 - 공용 parser는 `--key=value`를 지원하고 controller plan은 transitive `_lib.mjs` 자체를 source authority에 포함한다. leading-dash browser id integration test를 추가했다. 다음은 이 변경을 commit-bound 검증한 뒤 fresh1.9.875를 prepare/admit/execute하는 것이다.
 - 1.9.873 exact Luna/high 3셀은 valid terminal3/3·DESIGN proof3/3·질문0·retry/replacement/fallback/Cursor0으로 완료됐다. sealed UI-Resolved는1/3이며 landing `50→70→100`, cold `20→20`, locale `50→50`; 총7 calls·input10,694,925(cached10,030,592)+output162,476·provider wall1,128.180s다.

@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "autopilot-luna-high-smoke-1.9.875",
+  "status": "stopped-preregistered",
+  "claim_state": "diagnostic-only-controller-evaluator-failure",
+  "plan_sha256": "1d3bc194ade3f6aca289cbdb2b7ba74766cce09754de18e0196c0b8084d5c691",
+  "execution_state_sha256": "45ba1668a86da7f07ea78f35941d049b38dbfed3576655a99371bd94f819148d",
+  "provider_exposures": 4,
+  "completed_cells": 1,
+  "scheduled_cells": 3,
+  "model_calls": 4,
+  "repair_model_calls": 2,
+  "observed_usage": {
+    "coverage_calls": 4,
+    "input_tokens": 4580939,
+    "cached_input_tokens": 4235776,
+    "output_tokens": 72152,
+    "provider_wall_ms": 1516653
+  },
+  "cells": [
+    {
+      "order": 1,
+      "task_id": "neighborhood-library-landing",
+      "status": "complete",
+      "validity": "valid",
+      "outcome": "success",
+      "ui_resolved": true,
+      "scores": [30, 100],
+      "model_calls": 2,
+      "run_record_sha256": "7e657836118e0f530fc475bea476037aa7ebd51c6f20f42b0827f4d00ae0e79f"
+    },
+    {
+      "order": 2,
+      "task_id": "cold-chain-operations",
+      "status": "stopped",
+      "validity": null,
+      "outcome": "controller-evaluator-failure",
+      "ui_resolved": null,
+      "sealed_initial_score": 20,
+      "provider_free_repaired_product_score_after_fix": 20,
+      "model_calls": 2,
+      "diagnostic_score_sha256": "cfe67633d403c6678ab4522826830d548d1d307bfb191b0bd5a5f37de1a2755d",
+      "controller_error": "locator.getAttribute timed out after the activated record disappeared from the visible collection"
+    },
+    {
+      "order": 3,
+      "task_id": "clinic-visit-prep-locales",
+      "status": "not-started",
+      "provider_exposures": 0
+    }
+  ],
+  "routing": {
+    "runtime": "codex",
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "retry_calls": 0,
+    "replacement_calls": 0,
+    "fallback_calls": 0,
+    "cursor_calls": 0
+  },
+  "interpretation_allowed": false,
+  "reusable": false
+}

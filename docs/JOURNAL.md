@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.875 optional-selection evaluator freeze
+- in-app admission PASS 뒤 landing은 Luna/high `30→100`, 1회 repair로 성공했다.
+- cold repair 뒤 사라진 record의 optional aria-selected 조회가 timeout돼 root를 동결했다.
+- exposure4·valid terminal1/3·locale0이며 retry/replacement/fallback/Cursor0이다.
+- zero-match를 null로 처리해 동일 product가 provider-free terminal20을 기록했고 fresh1.9.876으로 간다.
+
 ## 2026-08-12 (Codex) · 1.9.874 provider-zero browser admission
 - commit-bound full gate1091/1091 뒤 fresh root와 in-app browser를 직접 준비했다.
 - leading-dash browser id를 parser가 flag로 오인해 admission 전에 fail-close했다.
