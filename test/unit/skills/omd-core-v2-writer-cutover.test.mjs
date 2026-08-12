@@ -1,14 +1,19 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 const root = resolve(import.meta.dirname, '../../..');
 const read = (path) => readFileSync(resolve(root, path), 'utf8');
 
-const legacyDestinationWriterPaths = [
-  '.agents/skills/omd-design/SKILL.md',
-  '.claude/skills/omd-component-harvest/SKILL.md',
-  '.claude/skills/omd-migrate/SKILL.md',
+const codexSafetyEntrypoints = [
+  ['.agents/skills/omd/SKILL.md', 'ROUTER_ONLY_NO_DESIGN_MD_WRITES'],
+  ['.agents/skills/omd-add-reference/SKILL.md', 'CORE_V2_CATALOG_WRITE_BLOCKED'],
+  ['.agents/skills/omd-batch-launch/SKILL.md', 'CORE_V2_CATALOG_WRITE_BLOCKED'],
+  ['.agents/skills/omd-component-harvest/SKILL.md', 'CORE_V2_CATALOG_WRITE_BLOCKED'],
+  ['.agents/skills/omd-migrate/SKILL.md', 'CORE_V2_CATALOG_WRITE_BLOCKED'],
+  ['.agents/skills/omd-token-backfill/SKILL.md', 'CORE_V2_CATALOG_WRITE_BLOCKED'],
+  ['.agents/skills/omd-design/SKILL.md', 'CORE_V2_LEGACY_WRITER_BLOCKED'],
+  ['.agents/skills/omd-lab-01-designmd-impact/SKILL.md', 'CORE_V2_LEGACY_EXPERIMENT_BLOCKED'],
 ];
 
 const sources = {
@@ -134,15 +139,9 @@ describe('Core v2 canonical writer cutover', () => {
       expect(blockedCatalogWriter).not.toMatch(/omd:\s*0\.1/u);
     }
 
-    for (const relativePath of legacyDestinationWriterPaths) {
-      const absolutePath = resolve(root, relativePath);
-      if (!existsSync(absolutePath)) continue;
-      const candidate = readFileSync(absolutePath, 'utf8');
-      expect(
-        candidate.includes('CORE_V2_CATALOG_WRITE_BLOCKED')
-          || /Core v2[^\n]*(?:single-write|only)/iu.test(candidate),
-        `${relativePath} must be retired, fail-closed, or Core-v2-only`,
-      ).toBe(true);
+    for (const [relativePath, marker] of codexSafetyEntrypoints) {
+      const candidate = read(relativePath);
+      expect(candidate, `${relativePath} must remain fail-closed`).toContain(marker);
       expect(candidate).not.toMatch(/omd:\s*0\.1/u);
       expect(candidate).not.toContain('[FILL IN]');
     }

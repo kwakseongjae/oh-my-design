@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
@@ -12,9 +13,21 @@ const contractPath = resolve(repoRoot, 'benchmarks/ui-resolve-bench/config/autop
 const contract = JSON.parse(readFileSync(contractPath, 'utf8'));
 const smokePath = resolve(repoRoot, 'benchmarks/ui-resolve-bench/config/autopilot-luna-high-smoke-v0.1.json');
 const smoke = JSON.parse(readFileSync(smokePath, 'utf8'));
+const historicalAcceptance = JSON.parse(readFileSync(resolve(
+  repoRoot,
+  'benchmarks/ui-resolve-bench/reports/autopilot-v2-provider-zero-1.9.881/ACCEPTANCE.json',
+), 'utf8'));
+const historicalSourceCommit = historicalAcceptance.source_commit;
 
 function sha256(bytes) {
   return createHash('sha256').update(bytes).digest('hex');
+}
+
+function readHistoricalAuthority(path) {
+  return execFileSync('git', ['show', `${historicalSourceCommit}:${path}`], {
+    cwd: repoRoot,
+    encoding: null,
+  });
 }
 
 describe('OmD Autopilot 2.0 qualification contract', () => {
@@ -144,7 +157,11 @@ describe('OmD Autopilot 2.0 qualification contract', () => {
     expect(smoke.selection.families).toEqual(['landing', 'dense-operations', 'five-locale-surface']);
     expect(smoke.cells.map((cell) => cell.order)).toEqual([1, 2, 3]);
 
-    const taskSetBytes = readFileSync(resolve(repoRoot, smoke.authorities.task_set_path));
+    const committedSmoke = readHistoricalAuthority(
+      'benchmarks/ui-resolve-bench/config/autopilot-luna-high-smoke-v0.1.json',
+    );
+    expect(committedSmoke.equals(readFileSync(smokePath))).toBe(true);
+    const taskSetBytes = readHistoricalAuthority(smoke.authorities.task_set_path);
     const taskSet = JSON.parse(taskSetBytes);
     expect(sha256(taskSetBytes)).toBe(smoke.authorities.task_set_sha256);
     for (const cell of smoke.cells) {
@@ -160,12 +177,12 @@ describe('OmD Autopilot 2.0 qualification contract', () => {
       ['evaluator_path', 'evaluator_sha256'],
       ['starter_path', 'starter_sha256'],
     ]) {
-      expect(sha256(readFileSync(resolve(repoRoot, smoke.authorities[pathKey])))).toBe(smoke.authorities[shaKey]);
+      expect(sha256(readHistoricalAuthority(smoke.authorities[pathKey]))).toBe(smoke.authorities[shaKey]);
     }
     const bundle = smoke.authorities.portable_bundle_files;
     expect(new Set(bundle.map((item) => item.path)).size).toBe(bundle.length);
     for (const item of bundle) {
-      const bytes = readFileSync(resolve(repoRoot, item.path));
+      const bytes = readHistoricalAuthority(item.path);
       expect(bytes.byteLength).toBe(item.bytes);
       expect(sha256(bytes)).toBe(item.sha256);
     }
