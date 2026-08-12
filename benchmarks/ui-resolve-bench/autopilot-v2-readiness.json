@@ -26,7 +26,7 @@
       "id": "design-system-quality-and-conformance",
       "status": "partial",
       "requirement": "Every scheduled task produces a parseable, provenance-complete DESIGN.md whose deterministic proof and implementation conformance pass.",
-      "current_boundary": "The validator now requires sections 1–13, resolvable evidence, exact DESIGN.md-bound check receipts, and honest sections 11–13. Provider-free canary passes; a complete scheduled model denominator does not yet exist.",
+      "current_boundary": "The validator now requires sections 1–13, resolvable evidence, an exact DESIGN.md-bound system spec with controller-computed checks, and honest sections 11–13. Provider-free canary passes; a complete scheduled model denominator does not yet exist.",
       "evidence_refs": ["scripts/validate-project-design-system.cjs", "skills/omd-autopilot/references/design-system-contract.md"],
       "pass_pointer": "/gate_evidence/design-system-quality-and-conformance"
     },
