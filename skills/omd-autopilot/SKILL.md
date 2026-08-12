@@ -55,8 +55,11 @@ folders and must never edit `DESIGN.md` or product files.
    `design-system-decision.json` receipt is mandatory before any product write.
 6. `SYSTEM_PROOF` — for `establish` or `refresh`, use the contract in
    `references/design-system-contract.md`. The design-system architect may
-   propose; the main agent writes. Do not implement the product until proof
-   passes. Run `validate-project-design-system.cjs <project-root> <run-dir>`;
+   propose; the main agent writes. Coverage booleans are not evidence: every
+   provenance/group reference must resolve to a real project or run artifact,
+   and every deterministic check must point to a check receipt bound to the
+   exact `DESIGN.md` hash. Do not implement the product until proof passes.
+   Run `validate-project-design-system.cjs <project-root> <run-dir>`;
    only `system/proof.json` with `pass: true` authorizes `PRODUCT_BUILD`.
 7. `ACCEPTANCE_PLAN` — before product admission, materialize
    `acceptance-plan.json`. Quote the exact task bytes for every journey,

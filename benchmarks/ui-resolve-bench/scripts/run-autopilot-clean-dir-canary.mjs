@@ -185,15 +185,33 @@ const groups = [
   'product-scope', 'color-contrast', 'typography', 'spacing-density-layout', 'responsive',
   'component-states', 'motion-reduced-motion', 'voice-locale', 'assets-fonts-licenses', 'provenance-unresolved',
 ];
+const groupAnchors = {
+  'product-scope': '1-product-scope',
+  'color-contrast': '2-color-and-contrast',
+  typography: '3-typography',
+  'spacing-density-layout': '4-spacing-density-and-layout',
+  responsive: '5-responsive-behavior',
+  'component-states': '6-component-states',
+  'motion-reduced-motion': '7-motion',
+  'voice-locale': '8-voice-and-locale',
+  'assets-fonts-licenses': '9-assets-fonts-and-licenses',
+  'provenance-unresolved': '10-provenance-and-unresolved',
+};
 const checks = [
   'token_reference_closure', 'contrast', 'component_state_coverage', 'responsive_320_200',
   'reduced_motion', 'assets_fonts_licenses', 'code_conformance', 'unknown_absence', 'sections_11_13_honesty',
 ];
 writeFileSync(join(runDir, 'system/provenance.json'), `${JSON.stringify(provenance, null, 2)}\n`);
+mkdirSync(join(runDir, 'system/checks'), { recursive: true });
+for (const check of checks) {
+  writeFileSync(join(runDir, `system/checks/${check}.json`), `${JSON.stringify({
+    schema_version: '0.1', check, pass: true, design_md_sha256: designSha,
+  }, null, 2)}\n`);
+}
 writeFileSync(join(runDir, 'system/coverage.json'), `${JSON.stringify({
   schema_version: '0.1', design_md_sha256: designSha,
-  groups: Object.fromEntries(groups.map((id) => [id, { status: 'covered', evidence: [`DESIGN.md#${id}`] }])),
-  checks: Object.fromEntries(checks.map((id) => [id, { pass: true, evidence: [`oracle/${id}`] }])),
+  groups: Object.fromEntries(groups.map((id) => [id, { status: 'covered', evidence: [`DESIGN.md#${groupAnchors[id]}`] }])),
+  checks: Object.fromEntries(checks.map((id) => [id, { pass: true, evidence: [`system/checks/${id}.json`] }])),
 }, null, 2)}\n`);
 run('scripts/validate-project-design-system.cjs', [workspace, runDir]);
 run('scripts/autopilot-mission.cjs', [workspace, runDir, 'advance']);

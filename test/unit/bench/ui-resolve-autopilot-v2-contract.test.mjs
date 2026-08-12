@@ -116,6 +116,7 @@ describe('OmD Autopilot 2.0 qualification contract', () => {
       installed_autopilot_skill_required: true,
       installed_design_system_architect_required: true,
       installed_helper_execution_required: true,
+      design_system_proof_contract: 'hash-bound-resolvable-evidence-v1',
       authority_perturbation_matrix_required: true,
       provider_calls: 0,
       terminal_state: 'HANDOFF',

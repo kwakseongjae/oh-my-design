@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 2.0 DESIGN-system proof authority
+- DESIGN.md 1–13 구조와 §11–13 권한 경계를 validator가 직접 검사한다.
+- 존재하지 않는 provenance/group 근거와 hash가 다른 check receipt는 fail-close한다.
+- source/packaged clean-dir canary가 실제 근거 receipt로 HANDOFF를 유지했다.
+- 다음은 새 provider smoke 전 2.0 readiness snapshot을 현 계약으로 재작성한다.
+
 ## 2026-08-12 (Codex) · 2.0 packaged Autopilot distribution gate
 - 실제 npm tarball을 오프라인 소비자 프로젝트에 설치해 4채널 doctor를 통과했다.
 - tarball이 설치한 Codex helper만으로 질문·provider0 clean-dir mission이 HANDOFF를 완주했다.

@@ -18,13 +18,55 @@ const checks = [
   'sections_11_13_honesty',
 ];
 
-function fixture(mutate?: (artifacts: { provenance: any; coverage: any }) => void) {
+function fixture(mutate?: (artifacts: { provenance: any; coverage: any; designPath: string }) => void) {
   const root = mkdtempSync(join(tmpdir(), 'omd-system-proof-'));
   roots.push(root);
   const run = join(root, '.omd/runs/run-test');
   mkdirSync(join(run, 'system'), { recursive: true });
-  const design = '# Project DESIGN.md\n\n## Tokens\n\nProject-specific proposal.\n';
-  writeFileSync(join(root, 'DESIGN.md'), design);
+  const design = `# Project DESIGN.md
+
+## 1. Product scope
+Project-specific proposal.
+
+## 2. Color contrast
+Action color proposal.
+
+## 3. Typography
+Typography proposal.
+
+## 4. Spacing density layout
+Layout proposal.
+
+## 5. Responsive
+Responsive proposal.
+
+## 6. Component states
+State proposal.
+
+## 7. Motion reduced motion
+Motion proposal.
+
+## 8. Voice locale
+Voice proposal.
+
+## 9. Assets fonts licenses
+No external assets.
+
+## 10. Provenance unresolved
+Unknown means absent.
+
+## 11. Brand narrative
+[FILL IN]
+
+## 12. Principles
+[FILL IN]
+
+## 13. Personas
+[FILL IN]
+`;
+  const designPath = join(root, 'DESIGN.md');
+  writeFileSync(designPath, design);
+  writeFileSync(join(run, 'task.md'), '# Task\n\nCreate a project-specific design system.\n');
   const sha = createHash('sha256').update(design).digest('hex');
   writeFileSync(join(run, 'design-system-decision.json'), `${JSON.stringify({
     strategy: 'establish', implementation_owner: 'main-agent', root_design_md_write_allowed: true,
@@ -35,12 +77,18 @@ function fixture(mutate?: (artifacts: { provenance: any; coverage: any }) => voi
   };
   const coverage = {
     schema_version: '0.1', design_md_sha256: sha,
-    groups: Object.fromEntries(groups.map((id) => [id, { status: 'covered', evidence: [`DESIGN.md#${id}`] }])),
+    groups: Object.fromEntries(groups.map((id, index) => [id, { status: 'covered', evidence: [`DESIGN.md#${index + 1}-${id}`] }])),
     checks: Object.fromEntries(checks.map((id) => [id, { pass: true, evidence: [`system/checks/${id}.json`] }])),
   };
-  mutate?.({ provenance, coverage });
+  mutate?.({ provenance, coverage, designPath });
   writeFileSync(join(run, 'system/provenance.json'), `${JSON.stringify(provenance)}\n`);
   writeFileSync(join(run, 'system/coverage.json'), `${JSON.stringify(coverage)}\n`);
+  mkdirSync(join(run, 'system/checks'), { recursive: true });
+  for (const check of checks) {
+    writeFileSync(join(run, `system/checks/${check}.json`), `${JSON.stringify({
+      schema_version: '0.1', check, pass: true, design_md_sha256: sha,
+    })}\n`);
+  }
   const result = spawnSync(process.execPath, [helper, root, run], { encoding: 'utf8' });
   return { run, result };
 }
@@ -88,5 +136,49 @@ describe('validate-project-design-system', () => {
     expect(result.status).not.toBe(0);
     expect(JSON.parse(readFileSync(join(run, 'system/proof.json'), 'utf8')).findings)
       .toContainEqual({ code: 'coverage-design-md-hash-mismatch', detail: '0'.repeat(64) });
+  });
+
+  it('rejects missing sections, invented evidence paths, and stale check receipts', () => {
+    const { run, result } = fixture(({ provenance, coverage, designPath }) => {
+      provenance.decisions[0].evidence = ['missing-task.md'];
+      coverage.groups.typography.evidence = ['DESIGN.md#not-a-real-heading'];
+      coverage.checks.contrast.evidence = ['system/checks/missing.json'];
+      const changed = readFileSync(designPath, 'utf8')
+        .replace('## 10. Provenance unresolved\nUnknown means absent.\n\n', '');
+      writeFileSync(designPath, changed);
+      const changedSha = createHash('sha256').update(changed).digest('hex');
+      provenance.design_md_sha256 = changedSha;
+      coverage.design_md_sha256 = changedSha;
+    });
+    expect(result.status).not.toBe(0);
+    const findings = JSON.parse(readFileSync(join(run, 'system/proof.json'), 'utf8')).findings;
+    expect(findings).toContainEqual({
+      code: 'provenance-evidence-unresolvable', detail: 'tokens.color.action:missing-task.md',
+    });
+    expect(findings).toContainEqual({
+      code: 'coverage-group-evidence-unresolvable', detail: 'typography:DESIGN.md#not-a-real-heading',
+    });
+    expect(findings).toContainEqual({
+      code: 'system-check-evidence-unresolvable', detail: 'contrast:system/checks/missing.json',
+    });
+    expect(findings).toContainEqual({ code: 'design-md-section-missing', detail: '10' });
+  });
+
+  it('rejects authored sections 11–13 without product-authority provenance', () => {
+    const { run, result } = fixture(({ provenance, coverage, designPath }) => {
+      provenance.decisions.push({
+        path: 'personas.primary', source_class: 'agent-proposed-greenfield-decision',
+        value: 'Busy parent', evidence: ['DESIGN.md#13-personas'],
+      });
+      const changed = readFileSync(designPath, 'utf8')
+        .replace('## 13. Personas\n[FILL IN]', '## 13. Personas\nBusy parent');
+      writeFileSync(designPath, changed);
+      const changedSha = createHash('sha256').update(changed).digest('hex');
+      provenance.design_md_sha256 = changedSha;
+      coverage.design_md_sha256 = changedSha;
+    });
+    expect(result.status).not.toBe(0);
+    const findings = JSON.parse(readFileSync(join(run, 'system/proof.json'), 'utf8')).findings;
+    expect(findings).toContainEqual({ code: 'sections-11-13-unsupported-content', detail: '13' });
   });
 });
