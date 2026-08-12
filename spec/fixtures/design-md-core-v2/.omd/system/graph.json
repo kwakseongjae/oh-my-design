@@ -1,0 +1,101 @@
+{
+  "$schema": "https://oh-my-design.kr/schema/design-system-graph-v2.schema.json",
+  "schema_version": "2.0.0",
+  "identity": {
+    "name": "Atlas",
+    "kind": "project-system",
+    "scope": "Operations triage web surface"
+  },
+  "projection": {
+    "path": "DESIGN.md",
+    "sha256": "__DESIGN_MD_SHA256__",
+    "locale": "en"
+  },
+  "experience": {
+    "summary": "Calm, direct, evidence-led operations triage.",
+    "primary_tasks": ["Review a time-sensitive record", "Commit an explicit action"],
+    "design_direction": ["Calm", "Direct", "Evidence-led"],
+    "principles": ["Preserve task order", "Show consequence before commitment"],
+    "avoid": ["Decorative urgency", "Generic dashboard density", "Unsupported claims"]
+  },
+  "foundations": {
+    "tokens": {
+      "color.text.strong": { "$type": "color", "$value": "#17181c", "$description": "Primary reading text" },
+      "color.surface.base": { "$type": "color", "$value": "#ffffff", "$description": "Base surface" },
+      "color.action.primary": { "$type": "color", "$value": "#2457e6", "$description": "Actionable emphasis" },
+      "space.control": { "$type": "dimension", "$value": "8px" },
+      "space.group": { "$type": "dimension", "$value": "16px" }
+    },
+    "rules": ["Use action color only for actionable emphasis."],
+    "contrast_pairs": [
+      { "foreground": "color.text.strong", "background": "color.surface.base", "minimum_ratio": 4.5 }
+    ],
+    "reduced_motion": true
+  },
+  "typography_assets": {
+    "roles": [
+      { "id": "body", "usage": "Product reading text", "size": "16px", "weight": 400, "line_height": 1.5 },
+      { "id": "heading", "usage": "Section hierarchy", "size": "28px", "weight": 650, "line_height": 1.2 }
+    ],
+    "assets": [],
+    "rules": ["Do not render an unverified substitute as a project font or asset."]
+  },
+  "components_states": {
+    "components": [
+      {
+        "id": "primary-action",
+        "anatomy": ["label", "progress"],
+        "variants": ["default"],
+        "states": ["default", "hover", "focus-visible", "disabled", "loading", "error", "success"],
+        "token_refs": ["color.action.primary", "space.control"],
+        "semantics": "A button that commits the current explicit action.",
+        "interaction": {
+          "kind": "interactive",
+          "state_applicability": {
+            "default": { "applicability": "applicable" },
+            "hover": { "applicability": "applicable" },
+            "focus-visible": { "applicability": "applicable" },
+            "disabled": { "applicability": "applicable" },
+            "loading": { "applicability": "applicable" },
+            "error": { "applicability": "applicable" },
+            "success": { "applicability": "applicable" }
+          }
+        }
+      }
+    ],
+    "rules": ["Loading prevents duplicate submission and preserves label width."]
+  },
+  "layout_platforms": {
+    "minimum_width_px": 320,
+    "reflow_zoom_percent": 200,
+    "rules": ["Preserve reading and task order.", "Keep interactive targets at least 44px high."],
+    "platforms": [
+      { "id": "web", "rules": ["Stack evidence before actions when columns no longer fit."] }
+    ]
+  },
+  "content_locales": {
+    "voice": ["Concise", "Specific", "Blameless"],
+    "terminology": { "record": "record", "commit": "Confirm action" },
+    "locales": [
+      { "locale": "en", "status": "supported", "rules": ["Name the affected object and recovery action."] }
+    ]
+  },
+  "governance": {
+    "priority": ["Direct scoped user instruction", "Repository facts", "This system", "Verified inspiration"],
+    "unknown_policy": "absent-at-smallest-unresolved-boundary",
+    "change_policy": ["Update graph and projection atomically.", "Preserve opaque extensions."],
+    "decisions": [
+      {
+        "path": "typography_assets.roles.body.family",
+        "source_class": "unresolved",
+        "evidence": []
+      }
+    ]
+  },
+  "extensions": {
+    "dev.oh-my-design.migration": {
+      "input_format": "fixture",
+      "preserved_note": "Unknown extension payloads survive a read/write cycle."
+    }
+  }
+}
