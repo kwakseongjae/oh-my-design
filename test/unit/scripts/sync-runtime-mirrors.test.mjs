@@ -59,4 +59,18 @@ describe('runtime mirror sync', () => {
     expect(() => writeRuntimeMirrors(report)).toThrow(/unsafe mirror target/);
     expect(readFileSync(outside, 'utf8')).toBe('user data\n');
   });
+
+  it('allows a clean checkout to omit local Codex dogfood skills while checking tracked mirrors', () => {
+    const { repo, generated } = fixture();
+    const report = inspectRuntimeMirrors(repo, generated, { requireLocalOnly: false });
+
+    expect(report.omitted).toEqual([
+      expect.objectContaining({ id: 'codex-skills', reason: 'local-dogfood-not-installed' }),
+    ]);
+    expect(report.drift.map((item) => item.id)).toEqual([
+      'claude-skills',
+      'claude-agents',
+      'codex-agents',
+    ]);
+  });
 });

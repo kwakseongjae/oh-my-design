@@ -14,7 +14,12 @@ const { spawnSync } = require('node:child_process');
 
 const MIRROR_ROOTS = Object.freeze([
   { id: 'claude-skills', relative: '.claude/skills' },
-  { id: 'codex-skills', relative: '.agents/skills' },
+  // `.agents/skills` is a project-local Codex installation surface. Most of
+  // it is intentionally gitignored; a clean source checkout owns canonical
+  // `skills/` plus a small set of explicit safety overlays only. Validate any
+  // installed files that are present, but do not make their absence a release
+  // drift. `--write` still materializes the complete local dogfood mirror.
+  { id: 'codex-skills', relative: '.agents/skills', localOnly: true },
   { id: 'claude-agents', relative: '.claude/agents' },
   { id: 'codex-agents', relative: '.codex/agents' },
 ]);
@@ -39,9 +44,11 @@ function filesUnder(root) {
   return output.sort((a, b) => a.relative.localeCompare(b.relative));
 }
 
-function inspectRuntimeMirrors(repoRoot, generatedRoot) {
+function inspectRuntimeMirrors(repoRoot, generatedRoot, options = {}) {
   const drift = [];
   const excluded = [];
+  const omitted = [];
+  const requireLocalOnly = options.requireLocalOnly !== false;
   let current = 0;
 
   for (const mirror of MIRROR_ROOTS) {
@@ -56,6 +63,10 @@ function inspectRuntimeMirrors(repoRoot, generatedRoot) {
         throw new Error(`generated mirror unexpectedly contains a symlink: ${mirror.relative}/${item.relative}`);
       }
       if (!fs.existsSync(target)) {
+        if (mirror.localOnly && !requireLocalOnly) {
+          omitted.push({ ...mirror, relative: item.relative, reason: 'local-dogfood-not-installed' });
+          continue;
+        }
         drift.push({ ...mirror, relative: item.relative, reason: 'missing', expected: item.absolute, target });
         continue;
       }
@@ -78,7 +89,7 @@ function inspectRuntimeMirrors(repoRoot, generatedRoot) {
     }
   }
 
-  return { current, drift, excluded };
+  return { current, drift, excluded, omitted };
 }
 
 function writeRuntimeMirrors(report) {
@@ -151,8 +162,10 @@ function main(argv = process.argv.slice(2)) {
       generatedRoot = generateRuntimeMirrors(options.repoRoot);
       ownsGeneratedRoot = true;
     }
-    const report = inspectRuntimeMirrors(options.repoRoot, generatedRoot);
+    const requireLocalOnly = options.mode === 'write';
+    const report = inspectRuntimeMirrors(options.repoRoot, generatedRoot, { requireLocalOnly });
     printPreview('Preserved explicit overlays (not managed by this sync)', report.excluded);
+    printPreview('Optional local Codex dogfood files not installed', report.omitted);
 
     if (options.mode === 'write') {
       const written = writeRuntimeMirrors(report);
@@ -173,7 +186,7 @@ function main(argv = process.argv.slice(2)) {
       return 1;
     }
     process.stdout.write(
-      `runtime mirrors current: ${report.current} managed files, ${report.excluded.length} overlays explicitly excluded\n`,
+      `runtime mirrors current: ${report.current} managed files, ${report.excluded.length} overlays explicitly excluded, ${report.omitted.length} optional local files absent\n`,
     );
     return 0;
   } catch (error) {
