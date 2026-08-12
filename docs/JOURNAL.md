@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.879 fresh Autopilot smoke
+- exact Luna/high는 valid terminal3/3, sealed UI-Resolved1/3으로 완료됐다.
+- landing `50→100`, cold `20→40→60`, locale `40→40`; 7 calls·repair4다.
+- cold/locale의 남은 관찰 가능 여정 결손을 실제 실패로 봉인했다.
+- evidence commit 뒤 repair contract를 고도화하고 fresh smoke로 이어간다.
+
 ## 2026-08-12 (Codex) · 1.9.877 locale false negative
 - exact Luna/high는 valid terminal3/3, sealed UI-Resolved2/3으로 완료됐다.
 - landing `50→100`, cold `20→80→100`, locale `60→60`; 7 calls·repair4다.

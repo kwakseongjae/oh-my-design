@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "autopilot-luna-high-smoke-1.9.879",
+  "status": "complete",
+  "source_commit": "72fd57bf",
+  "plan_sha256": "9284b88b2127e2e330ff49585413048b1e3a00e0020a2708cfc0f6367fd01c1f",
+  "execution_state_sha256": "39967996738f83fd3bccf4f153bbf7b9822afea46e17ce16babc0728ea84a05d",
+  "scheduled_cells": 3,
+  "valid_terminal_cells": 3,
+  "sealed_ui_resolved_cells": 1,
+  "provider_exposures": 7,
+  "model_calls": 7,
+  "repair_model_calls": 4,
+  "token_usage": {
+    "coverage_cells": 3,
+    "input_tokens": 11074863,
+    "cached_input_tokens": 10141440,
+    "output_tokens": 153539
+  },
+  "provider_wall_ms": 3357887,
+  "cells": [
+    {
+      "cell_id": "neighborhood-library-landing-luna-high-r1-omd-autopilot",
+      "validity": "valid",
+      "outcome": "success",
+      "sealed_ui_resolved": true,
+      "scores": [50, 100],
+      "model_calls": 2,
+      "repair_model_calls": 1,
+      "token_usage": {
+        "input_tokens": 2886941,
+        "cached_input_tokens": 2720768,
+        "output_tokens": 36336
+      },
+      "provider_wall_ms": 861537,
+      "run_record_sha256": "3f370de043084872a0b4f01da0b6e2826fd29ab2411ce54ef2ca332c410c7157"
+    },
+    {
+      "cell_id": "cold-chain-operations-luna-high-r1-omd-autopilot",
+      "validity": "valid",
+      "outcome": "terminal-provider-failure",
+      "sealed_ui_resolved": false,
+      "scores": [20, 40, 60],
+      "model_calls": 3,
+      "repair_model_calls": 2,
+      "token_usage": {
+        "input_tokens": 4490326,
+        "cached_input_tokens": 3908096,
+        "output_tokens": 68972
+      },
+      "provider_wall_ms": 1412506,
+      "run_record_sha256": "d7d112d7f76241663bf1598f2ca8488a144466987d391d7f4bab24a6cb5756a1",
+      "final_failed_assertions": [
+        "keyboard_open_sample",
+        "matching_evidence_detail",
+        "owner_error_associated",
+        "sample_owner_options",
+        "assigned_owner_confirmed_and_persistent"
+      ]
+    },
+    {
+      "cell_id": "clinic-visit-prep-locales-luna-high-r1-omd-autopilot",
+      "validity": "valid",
+      "outcome": "terminal-provider-failure",
+      "sealed_ui_resolved": false,
+      "scores": [40, 40],
+      "model_calls": 2,
+      "repair_model_calls": 1,
+      "token_usage": {
+        "input_tokens": 3697596,
+        "cached_input_tokens": 3512576,
+        "output_tokens": 48231
+      },
+      "provider_wall_ms": 1083844,
+      "run_record_sha256": "1a67c65c66ca2ecc1c10d85ddc90b38abcc66182e1c0041d885bf40fcf78ccaa",
+      "final_failed_assertions": [
+        "all_five_locales_exact",
+        "selected_label_lang_script_agree",
+        "translation_unavailable_honest",
+        "responsive"
+      ]
+    }
+  ],
+  "claim_boundary": "Diagnostic smoke only. The fresh sealed result is 1/3 UI-Resolved. It validates one autonomous from-scratch DESIGN.md and product success, but blocks 2.0 readiness, reliability, and cross-skill superiority claims."
+}
