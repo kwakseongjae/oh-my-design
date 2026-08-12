@@ -6519,5 +6519,5 @@
 - Autopilot system proof를 self-declared check receipts에서 DESIGN.md-bound `system/spec.json`의 controller computation으로 전환했다.
 - contrast/token closure/component states/320px·200%/reduced motion/assets를 provider-free로 계산하고 mission schema0.2가 exact spec/proof를 검증한다.
 - pre-build `code_conformance` 거짓 주장을 제거하고 실제 제품 conformance는 final same-route proof에 유지했다.
-- clean-dir canary와 focused 21 tests는 green; smoke/readiness source authority는 commit 뒤 재결박한다.
+- clean-dir canary와 focused 21 tests는 green; smoke/readiness source authority는 commit `2a74ba73`에 재결박했다.
 - 다음: commit → source bindings/readiness 재봉인 → full suite/lint/build → capacity reset 뒤 fresh Luna/high3-cell.

@@ -22,7 +22,7 @@
 - 다음 admissible quality evidence는 capacity reset 뒤 fresh commit-bound Luna/high3-cell smoke다. 3/3 DESIGN-system proof+UI-Resolved 전에는 12×5 portable-skill comparison을 시작하지 않고, competitor/three-model/Pareto/public one-prompt claim은 계속 금지한다.
 - Autopilot mission은 더 이상 `system/proof.json`의 최소 `pass:true`를 신뢰하지 않는다. schema0.2/status/strategy/owner, exact DESIGN.md·provenance·coverage·spec SHA, required10 groups·controller-computed9 checks, findings와 next-state를 전부 재검증한 뒤에만 product-build admission을 만든다. installed skill도 proof 직접 작성/수정을 금지한다.
 - smoke controller의 독립 DESIGN-system audit은 provenance/coverage가 참조한 run/project evidence를 regular-file로 exact 복사한 뒤 validator를 실행한다. agent workspace의 경로만 존재하고 controller audit workspace에는 없는 self-declared evidence는 더 이상 통과하지 않는다.
-- 1.9.881 readiness acceptance는 위 proof-authority 변경이 포함된 commit `2bc10771`과 새 Autopilot skill bytes에 재결박됐고 auditor/smoke authority 28/28이 통과했다.
+- 1.9.881 readiness acceptance는 controller-computed system-spec proof가 포함된 commit `2a74ba73`과 새 Autopilot/architect/validator/canary bytes에 재결박됐다. readiness는 여전히 pass3/10이며 2.0 promotion을 차단한다.
 
 - 1.9.879 fresh exact Luna/high smoke는 source commit `72fd57bf`, in-app browser admission, valid terminal3/3으로 완료됐다. immutable sealed 결과는 UI-Resolved1/3이며 landing `50→100`, cold `20→40→60`, locale `40→40`; 7 calls·input11,074,863(cached10,141,440)+output153,539·provider wall3,357.887s다.
 - provider-free exact replay에서 cold와 locale 동일 최종 제품은 corrected evaluator로 각각100/100이다. false negative 원인은 native dialog 미인정/containing region 오인, sample-owner의 data/help scope 누락, 140ms locale rerender race, `zh-Hans|zh-Hant` 표준 alias 불인정, visually-hidden legend 및 내부 scroll surface를 document overflow로 계산, utility close control을 primary touch target으로 계산한 구조 편향이다.

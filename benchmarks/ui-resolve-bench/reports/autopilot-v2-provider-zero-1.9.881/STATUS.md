@@ -18,6 +18,10 @@ The previous calibration prose used superseded task, adapter, and evaluator
 hashes. `ACCEPTANCE.json` binds the current files and the fresh provider-zero
 replay; the older report remains historical only.
 
+The current source binding uses controller-computed `system/spec.json` proof.
+Agent-authored pass receipts and pre-build code-conformance claims are not
+accepted; implementation conformance remains a final same-route gate.
+
 Next admissible execution after capacity reset is a fresh commit-bound
 Luna/high three-task smoke. The twelve-task × five-trial competitor matrix is
 blocked until that smoke passes three of three with exact DESIGN-system and
