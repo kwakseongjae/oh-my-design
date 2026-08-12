@@ -7,7 +7,8 @@ description: "사용자와 단계별로 검토하는 guided design harness. Disc
 
 이 스킬은 **omd-master 오케스트레이터**를 호출하는 단일 진입점이다. 본 스킬은 launcher + 사전체크 + run 디렉토리 부트스트랩 책임만 가지고, phase 로직은 `agents/omd-master.md`에 있다.
 
-CLI 의존 없음. 모든 부트스트랩은 Bash + Write 툴로 직접 실행한다.
+Run 디렉토리 부트스트랩에는 CLI 의존이 없다. Core v2 review/compile/adoption은
+설치된 provider-free `design-md` 명령 또는 byte-equivalent helper만 사용한다.
 
 ## 트리거
 
@@ -389,6 +390,45 @@ EOF
 - `interview` → checkpoint 답변 전에는 reference를 고르지 않는다.
 - `blocked` → 중단한다.
 
+기존 root `DESIGN.md`를 사용하는 경우 이 시점에 read-only format
+inspection을 남긴다: `core-v2-bound | core-v2-portable | legacy-13 |
+legacy-15 | legacy-16 | unmarked | absent`. 채택된 `profile: portable-core`
+manifest가 exact graph/projection hash를 검증할 때만 `core-v2-bound`다.
+`migration-candidate`는 named source DESIGN.md authority를 유지한다. 이 단계에서
+문서를 개명·재정렬·덮어쓰지
+않는다. Core v2가 아닌 입력은 Phase 5의 provider-free staged
+migration으로만 전환하고, `dropped=0` 수용 게이트를 건너뛰지 않는다.
+
+### 3.0.1 Core writer boundary
+
+Harness Phase 5 agents author only graph/provenance/coverage drafts. After the
+frozen ledger explicitly authorizes `establish` or `refresh`, the master uses
+`omd design-md prepare-review <graph> --provenance <provenance> --coverage <coverage> --out-dir <review>`
+(plus the migration report when applicable) to
+produce the exact non-authoritative checkpoint preview. After mandatory checkpoint
+#2 approval, it invokes `omd design-md approve-review` and the fully receipt-bound
+`omd design-md compile ... --review-receipt <approval> --out-dir <fresh> --adopt`.
+The only installed fallback is the exact `prepare-design-md-core-review.cjs`,
+`compile-design-md-core.cjs`, and `adopt-design-md-core.cjs` helper chain with the
+same inputs; the master never reconstructs it.
+`DESIGN.md`, section anchors, all seven `design-md:claim` openers, every
+`design-md:claim-end`, manifest, and binding hashes are compiler-owned; never
+hand-write or patch them. A migration candidate remains non-authoritative.
+The graph draft omits `projection`/`projection.sha256`; a compiler that demands a
+placeholder, precomputed, or zero SHA fails closed before staging.
+
+Compiler conformance is not factual, provenance, license, locale,
+accessibility, or visual-quality proof. The fresh package must also contain exact
+provenance/coverage bindings and pass the installed final project-system
+validator. If those bindings, the deterministic checkpoint packager, or the
+atomic package adopter are unavailable, fail closed at staging without manual
+hashes or partial project copies. Project mutation is only through
+`omd design-md prepare-checkpoint <fresh> --reviewer <project-owner-id> --out <checkpoint> --authority-transition-approved`
+then
+`omd design-md adopt <fresh> --project-root <project-root> --checkpoint-receipt <checkpoint>`;
+mandatory
+checkpoint #2 remains the separate authorization to adopt exact frozen bytes.
+
 ledger가 없는 legacy install에서만 기존 동작처럼 프로젝트 루트에 DESIGN.md가
 없으면 reference를 직접 추천한다. 외부 API 호출 없음.
 
@@ -500,6 +540,7 @@ chosen_ref_id: <id>
 surface_signal: marketing | product | docs | onboarding | null
 reference_capture_dir: assets/_reference/<id>/ | null
 delivery_intent: implement | design-only
+design_md_format: core-v2-bound | core-v2-portable | legacy-13 | legacy-15 | legacy-16 | unmarked | absent
 ```
 
 reference_capture_dir이 존재하면 master는 그 디렉토리의 `tokens.json`, `structure.json`, `screenshots/*.png` 를 **모두 활용**한다 (canonical DESIGN.md만 보지 말 것).
@@ -613,6 +654,16 @@ Master가 체크포인트에서 turn을 종료한 후 다음 사용자 메시지
 ├── journey.mmd
 ├── wireframes/
 ├── DESIGN.md.patch
+├── system/
+│   ├── graph.draft.json
+│   ├── provenance.draft.json
+│   ├── coverage.draft.json
+│   ├── adopted-candidate/
+│   ├── graph.patch.json
+│   ├── manifest.patch.json
+│   ├── provenance.patch.json
+│   ├── coverage.patch.json
+│   └── checkpoint-manifest.json
 ├── components/
 │   ├── manifest.json
 │   └── microcopy.json
@@ -642,12 +693,17 @@ Master가 체크포인트에서 turn을 종료한 후 다음 사용자 메시지
 - Phase 로직 실행 (master)
 - Sub-agent 직접 spawn (master)
 - 사용자 응답 해석/라우팅 (master)
-- DESIGN.md 직접 수정 (Phase 5에서 master)
+- root DESIGN.md를 checkpoint 전에 직접 수정 (Phase 5 master는 graph drafts만
+  작성하고 compiler/checkpoint packager가 만든 승인된 exact bytes만 atomic adopter로 적용)
+- authority-neutral draft에는 `projection` binding을 쓰지 않는다. compiler가
+  projection SHA를 요구하면 placeholder를 넣지 말고 fail-close한다.
 - specialist 자문을 제품 구현 완료로 간주
 
 ## 금지
 
 - Master 없이 phase를 직접 수행하지 말 것
 - 사용자 체크포인트를 자동 승인하지 말 것
+- DESIGN.md, section/claim/claim-end marker, manifest, binding hash를 수동으로
+  만들거나 수정하지 말 것
 - Run 디렉토리를 임의로 정리/삭제하지 말 것
 - Step 2.3 verify gate 통과 전에 master spawn 절대 금지

@@ -58,7 +58,7 @@ const SECTIONS: QASection[] = [
     items: [
       {
         q: "DESIGN.md가 뭔가요?",
-        a: "DESIGN.md는 프로젝트 루트에 두는 단일 마크다운 파일로, 브랜드 색·타이포·컴포넌트·voice·페르소나·모션까지 모두 담는 디자인 스펙입니다. AI coding agent가 UI를 만들 때 가장 먼저 읽는 권위 있는 컨텍스트로 동작합니다. Google Stitch의 9-섹션 토큰 포맷에 OmD가 브랜드 철학 6-섹션(§10–15)을 더해 총 15-섹션 구조를 갖습니다.",
+        a: "DESIGN.md는 프로젝트 루트에 두는 휴대 가능한 디자인 계약입니다. Core v2는 경험, foundations, typography·assets, components·states, layout·platforms, content·locales, governance의 7개 영역만 간결하게 보여 줍니다. 파일 자체에는 특정 도구 메타데이터가 없어 Claude Design, Open Design, 일반 채팅과 코딩 에이전트에 그대로 전달할 수 있고, 더 정밀한 자동화가 필요할 때만 .omd/system의 구조화 그래프와 provenance·coverage가 옆에서 보강합니다.",
       },
       {
         q: "oh-my-design은 뭔가요?",
@@ -70,7 +70,7 @@ const SECTIONS: QASection[] = [
       },
       {
         q: "어떤 AI agent와 호환되나요?",
-        a: "Claude Code, Codex, OpenCode, Cursor가 1차 타깃이고 Gemini CLI도 동작합니다. skill 파일은 agent-agnostic markdown이라 새 agent가 등장해도 동일한 DESIGN.md를 그대로 읽도록 설계됐습니다. Cursor 2.4+에는 전용 채널(`--agent cursor`)로 호환 스킬 19개, 작은 DESIGN.md bootstrap rule, 공용 레퍼런스 카탈로그가 설치됩니다.",
+        a: "Claude Code, Codex, OpenCode, Cursor가 1차 타깃이고 Gemini CLI도 동작합니다. skill 파일은 agent-agnostic markdown이라 새 agent가 등장해도 동일한 DESIGN.md를 그대로 읽도록 설계됐습니다. Cursor 2.4+에는 전용 채널(`--agent cursor`)로 호환 스킬 21개, 작은 DESIGN.md bootstrap rule, 공용 레퍼런스 카탈로그가 설치됩니다.",
       },
       {
         q: "Vibe coding이 뭔가요?",
@@ -88,7 +88,7 @@ const SECTIONS: QASection[] = [
       },
       {
         q: "Cursor에서도 됩니까?",
-        a: "네. Cursor 2.4+ 채널은 `.cursor/skills/`에 호환 Agent Skills 19개를 설치하고, 작은 `.cursor/rules/omd-design.mdc` bootstrap과 공유 레퍼런스 카탈로그를 더합니다. 별도 전문 에이전트 정의와 hooks는 설치하지 않습니다. 구형 Cursor는 `--cursor-rule-only` 호환 모드를 쓸 수 있고, doctor가 두 구성을 각각 검사합니다.",
+        a: "네. Cursor 2.4+ 채널은 `.cursor/skills/`에 호환 Agent Skills 21개를 설치하고, 작은 `.cursor/rules/omd-design.mdc` bootstrap과 공유 레퍼런스 카탈로그를 더합니다. 별도 전문 에이전트 정의와 hooks는 설치하지 않습니다. 구형 Cursor는 `--cursor-rule-only` 호환 모드를 쓸 수 있고, doctor가 두 구성을 각각 검사합니다.",
       },
       {
         q: "무료인가요?",
@@ -118,11 +118,11 @@ const SECTIONS: QASection[] = [
       },
       {
         q: "Google Stitch와는 어떤 관계인가요?",
-        a: "Google Stitch가 DESIGN.md 포맷(9 sections — color, typography, components 등)을 먼저 제안했고, OmD는 그 위에 §10–15 브랜드 철학 layer 6개 섹션을 더한 superset입니다. Stitch가 만든 DESIGN.md는 그대로 OmD에서도 valid하고, OmD를 쓰면 voice·persona·motion까지 같은 파일 안에서 다룰 수 있습니다.",
+        a: "Google이 공개한 DESIGN.md 제안은 중요한 호환 대상이지만 Core v2와 같은 공식 규격이거나 단순한 상위집합은 아닙니다. OmD는 Google 계열 문서를 읽고 내보낼 수 있는 compatibility profile을 유지하면서, 보이는 DESIGN.md는 도구 중립적인 7개 영역으로 줄이고 구조화 토큰·근거·플랫폼 profile은 sidecar에 둡니다. 그래서 Google 도구에 전달하기 쉽고, 다른 에이전트에서도 한 업체의 확장 문법에 묶이지 않습니다.",
       },
       {
         q: "getdesign.md 같은 다른 DESIGN.md 모음과 oh-my-design은 뭐가 다른가요?",
-        a: "getdesign.md는 Apple·BMW·Stripe·Figma 같은 서구권 브랜드의 DESIGN.md를 보기 좋게 모아둔 무료 카탈로그입니다. 영어 중심이고 browse→copy(둘러보고 복사)에 강합니다. oh-my-design은 세 가지가 다릅니다. (1) 한국 브랜드 깊이 — 토스·당근·배민·카카오·네이버·쿠팡·무신사·뱅크샐러드·29CM·컬리 등 getdesign.md에는 거의 없는 국내 디자인 시스템을 다룹니다. (2) 단순 카탈로그가 아니라 한 번 설치하면 동작하는 에이전트 레이어 — skills(omd:init/apply/harness/sync)와 서브에이전트를 제공해 DESIGN.md를 실제 UI 생성에 바로 적용합니다. (3) 더 깊은 스키마 — 기본 9개 섹션 위에 Voice·Narrative·Principles·Personas·States·Motion을 더한 15개 섹션 OmD v0.1 구조입니다. 정리하면, 서구권 브랜드를 빠르게 둘러보려면 getdesign.md가 좋고, 한국 브랜드 기반으로 실제 작업에 녹여 쓰려면 oh-my-design이 맞습니다.",
+        a: "getdesign.md는 여러 브랜드의 DESIGN.md를 빠르게 둘러보고 복사하는 데 강합니다. oh-my-design은 한국·글로벌 레퍼런스를 증거 수준과 surface별로 분리하고, 알려지지 않은 값은 채우지 않은 채 Core v2로 이식합니다. 여기에 기존 코드에서 시스템을 추출하거나 새 시스템을 구축하는 skills·전문 역할·검증 하네스를 연결하고, 구조화 graph와 locale·platform·asset coverage까지 검사합니다. 즉 카탈로그의 넓이보다 참고 근거에서 실제 구현과 검증까지 이어지는 경로에 초점을 둡니다.",
       },
       {
         q: "한국 브랜드(토스·당근·배민)도 있나요?",

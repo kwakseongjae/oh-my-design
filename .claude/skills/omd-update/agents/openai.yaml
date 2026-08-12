@@ -1,0 +1,4 @@
+interface:
+  display_name: "Update oh-my-design"
+  short_description: "Safely refresh and verify the installed OmD bundle"
+  default_prompt: "Use $omd-update to update this project’s oh-my-design installation safely."

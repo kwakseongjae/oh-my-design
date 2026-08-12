@@ -13,7 +13,13 @@ model: opus
 
 1. 활성 host의 skill root에서 `omd-locale-adapter/SKILL.md`를 끝까지 읽는다.
 2. target locale의 `omd-humanize/references/locale-playbooks.md` 섹션을 읽는다.
-3. 한국어 canonical, DESIGN.md §10, `.omd/preferences.md`, locale manifest를 읽는다.
+3. 한국어 canonical, DESIGN.md의 `content-locales` stable anchor,
+   `.omd/preferences.md`, locale manifest를 읽는다. 유효한 hash-bound
+   `profile: portable-core` package가 있으면 `graph.content_locales`가
+   canonical이다. package가 없거나 invalid면 standalone DESIGN.md anchor를
+   사용한다. exact Core anchor가 전혀 없는 입력만 legacy compatibility로
+   읽고 의미 heading `Voice & Tone`을 `content-locales`로 매핑한다. legacy
+   숫자 section은 새 citation에 복사하지 않는다.
 
 ## Workflow
 

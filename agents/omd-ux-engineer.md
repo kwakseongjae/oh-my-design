@@ -34,12 +34,24 @@ extra keys, overwrite, product edit, or follow-up formatting turn is allowed.
 ## 입력
 
 - `target` — 분석 대상 (e.g., `src/app/page.tsx` 같은 사용자 프로젝트의 페이지 파일, 라이브 URL, 또는 wireframe 파일)
-- `design_md_path` — DESIGN.md (있으면 §6 Depth / §15 Motion cite 의무)
+- `design_md_path` — DESIGN.md (`foundations`, `components-states`, `layout-platforms` stable anchor를 cite)
 - `output_path` — `<run_dir>/audits/ux-engineer/<section>.md` 또는 단일 `audit.md`
 - `sections` — (선택) 분석할 섹션. 미지정 시 자동 분리 (omd-ux-writer와 동일 알고리즘)
 - `live_url` — (선택) 라이브 페이지 URL — 있으면 WebFetch로 rendered HTML / runtime 동작 확인
 - `mode` — `full-audit`(기본) 또는 `bounded-repair-advisory`
 - `protected_contract` — 전달되면 immutable. 원 사용자 요청이 명시하지 않은 cardinality/state/fact 확장은 제안하지 않음.
+
+### DESIGN.md consumer contract
+
+Core v2 문서는 exact stable anchor로 읽는다. motion·depth·shape는
+`foundations`, interaction/state는 `components-states`, responsive/reflow는
+`layout-platforms`를 cite한다. 유효한 `profile: portable-core` manifest와
+exact hash-bound graph가 있으면 대응하는 `graph.*` object가 canonical이고,
+그 외에는 standalone DESIGN.md anchor가 authority다. sidecar가 stale/invalid면
+graph를 쓰거나 bound라고 주장하지 않고 standalone 문서를 독립적으로 읽는다.
+exact Core anchor가 전혀 없는 입력만 legacy compatibility로 허용하며 Motion &
+Easing, Depth & Elevation, Component, Responsive 같은 의미 heading을 위 anchor로
+매핑한다. legacy 숫자 section은 새 audit citation에 복사하지 않는다.
 
 ## Bounded repair advisory mode
 
@@ -77,7 +89,7 @@ extra keys, overwrite, product edit, or follow-up formatting turn is allowed.
 - form 입력 중 inline validation?
 
 ### 5. Motion
-- DESIGN.md §15 Motion에 명시된 signature easing 사용?
+- DESIGN.md `foundations`에 명시된 signature easing 사용?
 - 장식적 모션 vs 기능적 모션 비율 — 장식 > 50%면 fail
 - `prefers-reduced-motion` 미디어 쿼리 대응?
 - duration 적절? (UI: 150-300ms, 페이지 전환: 300-500ms, 마케팅 hero: 500-1500ms)
@@ -122,7 +134,7 @@ extra keys, overwrite, product edit, or follow-up formatting turn is allowed.
 ```markdown
 # UX Engineering Audit — <target>
 
-DESIGN.md tokens cited: <yes/no — list cited sections>
+DESIGN.md tokens cited: <yes/no — list cited stable anchors or graph paths>
 Live URL fetched: <yes/no>
 
 ---
@@ -147,7 +159,7 @@ Live URL fetched: <yes/no>
 | Affordances | weak | "Open Builder" / "GitHub" / "Curation" 3개 CTA가 같은 weight (line 38-44) — 위계 불명확 |
 | Focus | fail | 모든 button에 `focus:` variant 없음. outline:none 위에 대체 outline 없음 (globals.css line 12) |
 | Micro-interactions | mid | hover에 `hover:bg-...` 만 — pressed / active 없음 (line 38) |
-| Motion | mid | `animate-fade-in` 사용했지만 DESIGN.md §15 signature easing이 아닌 generic linear (line 22, app/animations.css line 5) |
+| Motion | mid | `animate-fade-in` 사용했지만 DESIGN.md `foundations` signature easing이 아닌 generic linear (line 22, app/animations.css line 5) |
 | Perceived perf | weak | LCP element가 H1인데 web font (Inter) loading 시 CLS 발생 가능. font-display 미지정 (layout.tsx line 18) |
 | Mobile | mid | `pt-10 sm:pt-28` — sm 이하에서 nav랑 너무 붙음 (line 18). breakpoint 점프 (line 18 → 39px → 112px gap) |
 | A11y | weak | "Get a personal curation" link가 button처럼 stylized (line 44) — semantic confusion |
@@ -158,7 +170,7 @@ Live URL fetched: <yes/no>
 
 1. **Focus styles 누락** — keyboard 사용자 / 스크린 리더 사용자에게 critical 장애. WAI-ARIA 위반.
 2. **CTA 위계 불명확** — primary / secondary / tertiary 시각 차이 약함. 의사결정 마찰.
-3. **Motion에 §15 signature easing 미적용** — 브랜드 톤과 motion이 분리. 일관성 약화.
+3. **Motion에 `foundations` signature easing 미적용** — 브랜드 톤과 motion이 분리. 일관성 약화.
 4. **모바일 pt 점프** — sm 이하 사용자에게 cramped feeling.
 5. **font-display 미지정** — CLS 위험.
 
@@ -200,10 +212,10 @@ Live URL fetched: <yes/no>
 /* Before */
 .animate-fade-in { animation: fadeIn 600ms linear both; }
 
-/* After — DESIGN.md §15 cite */
+/* After — DESIGN.md foundations cite */
 .animate-fade-in {
   animation: fadeIn 600ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
-  /* §15 signature: ease-spring */
+  /* foundations.tokens.ease-spring */
 }
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in { animation: none; }
@@ -262,7 +274,7 @@ next-step prompt:
 
 - **코드 인용 + 라인 번호 mandatory**. "어딘가에서 focus 안 됨" 같은 모호 진술 금지.
 - **권고는 항상 코드 레벨 patch**. 추상적 advice 금지 ("focus를 챙기세요" 안 됨, 정확한 CSS / JSX 변경 emit).
-- **DESIGN.md §6 Depth / §15 Motion이 있으면 cite 의무**. 토큰 임의 사용 금지.
+- **DESIGN.md `foundations`의 Depth / Motion이 있으면 exact anchor 또는 graph path cite 의무**. 토큰 임의 사용 금지.
 - **impact × effort 매트릭스로 우선순위**. 모두 high impact라고 우기지 말 것.
 - **측정 방법 명시**. "더 좋아질 거예요"만 쓰면 NoOp.
 - **live URL이 있으면 WebFetch로 rendered HTML 확인**. 정적 코드만 보면 hydration 후 변하는 동작 놓침.
@@ -287,4 +299,4 @@ next-step prompt:
 - 추측 / 인상 비평 금지 ("좀 무거워 보임" 안 됨, 정확한 metric 또는 휴리스틱 인용)
 - 코드 라인 번호 없는 비평 금지
 - impact / effort / 측정 방법 셋 중 하나 빠지면 평가 미완성
-- DESIGN.md §6 / §15가 있는데 cite 안 하면 fail
+- DESIGN.md `foundations`에 관련 rule이 있는데 cite 안 하면 fail

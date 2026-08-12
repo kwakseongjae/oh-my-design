@@ -5,7 +5,9 @@ description: "프로젝트 DESIGN.md를 UI/시각 작업의 brand context로 적
 
 # omd:apply — Brand Context Injection + Delivery Router
 
-DESIGN.md를 모든 UI/디자인 작업의 권위 있는 컨텍스트로 사용한다. 책임은 세 가지:
+유효하게 채택된 Core v2 package에서는 System Graph를 canonical authority로,
+그 외에는 standalone DESIGN.md를 모든 UI/디자인 작업의 portable contract로
+사용한다. 책임은 세 가지:
 
 1. **인라인 처리** — 작은 단일 변경 (1 component, 1 token, 1 카피 라인)은 직접 Edit 툴로 처리
 2. **Advisory dispatch** — 복합 작업은 적합한 전문 역할의 의견을 먼저 받음 (master 거치지 않음)
@@ -132,32 +134,67 @@ specialist는 protected ledger나 visual equity ledger를 수정·완화할 권�
 
 실제 변경 또는 디자인 판단 전에 진행:
 
-1. 프로젝트 루트의 `DESIGN.md`를 **전체 읽는다**. 요약 금지, Read 툴로 직접 로드.
-2. `.omd/preferences.md`가 있으면 같이 읽는다. `status: pending` 엔트리는 아직 DESIGN.md에 반영 안 된 교정 — DESIGN.md보다 **우선** 적용.
-3. **reference-capture 자료가 있으면 함께 로드**: `DESIGN.md` frontmatter의 `bootstrapped_from` 또는 `.omd/init-context.json`의 `reference_id`로 brand id를 얻고, `assets/_reference/<id>/`가 존재하면:
-   - `tokens.json` — `live_overrides` 블록 우선
-   - `structure.json` — composition cues (hero/cta/nav idiom)
-   - `fonts.json` — `live_observed: true` 항목은 출력 HTML `<head>`에 `html_link` 그대로 박을 것. 미로드 시 시스템 fallback으로 둥근 폰트 mismatch.
-   - `screenshots/hero-desktop.png` — UI 작업이 hero/landing 류면 Read 툴로 **이미지로 직접 읽고** 시각 grounding
-   - **mode 분기** (`.omd/init-context.json`의 `mode` 필드):
-     - `clone` → 헤더 logo는 `assets/_reference/<id>/logo.<ext>` 직접 사용. project root에 `CLONE-MODE.md` + `replace-checklist.md`가 있어야 함.
-     - `inspired` (또는 미지정) → 헤더 logo는 `[YOUR LOGO]` placeholder. captured 자산은 product DOM 미사용.
-4. 우선순위:
+1. 프로젝트 루트의 `DESIGN.md`를 **전체 읽는다**. 요약 금지, Read 툴로 직접 로드한다.
+2. `.omd/system/manifest.json` 또는 `.omd/system/graph.json` 중 하나라도
+   있으면 둘 다 regular file인지 확인하고 다음 binding을 전부 검증한다:
+   `format: design-md-core`, `format_version: 2.0.0`,
+   `profile: portable-core`, `authority.canonical: system-graph`, exact seven
+   section order/path, schema-valid seven graph objects, deterministic
+   graph→projection semantic equality, Portable Core usefulness, actual graph와
+   `DESIGN.md` 및 manifest에 열거된 artifact bytes의 exact SHA-256. 전부 맞을 때만 **adopted valid
+   portable-core graph**로 인정하며 `graph.json`이 canonical이고
+   `DESIGN.md`는 standalone portable projection이다. graph와 projection이
+   충돌하면 graph가 이긴다.
+3. manifest가 `migration-candidate`면 candidate graph는 non-authoritative다.
+   `authority.source_sha256`에 결박된 source DESIGN.md만 canonical로 읽고,
+   candidate projection/graph를 적용 근거로 쓰지 않는다. sidecar가
+   가리킨 source를 찾을 수 없으면 candidate를 적용하지 않고 fail closed한다.
+   sidecar가 missing/stale/invalid면 graph authority를 버리고 root `DESIGN.md`를
+   독립 standalone contract로 읽는다. binding 오류는 `unresolved`에 남기고
+   `bound-system`이라고 주장하지 않는다. standalone 문서가 Portable Core
+   usefulness를 통과하지 못해도 확인된 field는 읽을 수 있지만, 빠진 계약은
+   absent로 유지하고 portable conformance를 주장하지 않는다.
+4. Core v2 DESIGN.md는 heading 번호나 번역된 제목이 아니라 다음 exact stable
+   anchor로 읽는다: `experience`, `foundations`, `typography-assets`,
+   `components-states`, `layout-platforms`, `content-locales`, `governance`.
+   exact Core anchor가 전혀 없는 문서만 legacy compatibility input으로 읽고,
+   Visual Theme, Color Palette, Typography, Components, Responsive, Voice &
+   Tone, Motion 같은 의미 heading을 Core anchor로 매핑한다. legacy 숫자
+   section을 새 code citation이나 산출물에 복사하지 않는다.
+5. `.omd/preferences.md`가 있으면 같이 읽는다. `status: pending`은 graph를
+   몰래 다시 쓰는 machine authority가 아니라 이후 사용자 교정 layer다.
+   현재 사용자의 명시적 지시와 explicit pending 교정은 실행 시 우선하되,
+   inferred 교정으로 canonical graph의 확정값을 바꾸지 않는다.
+6. **reference-capture는 evidence-only**: `.omd/init-context.json`의
+   `reference_id`(legacy input만 legacy metadata의 `bootstrapped_from` fallback)로
+   `assets/_reference/<id>/`를 찾고 `evidence.json`, `tokens.json`,
+   `structure.json`, `fonts.json`, screenshots를 필요할 때 읽을 수 있다. 그러나
+   captured `tokens`, `live_overrides`, font URL, logo, composition은 프로젝트
+   authority가 아니며 자동 적용·동기화·fallback하지 않는다. graph-authoring
+   checkpoint가 provenance와 함께 해당 결정을 `graph.json`에 명시적으로
+   admit했고 위 hash binding이 valid할 때만 그 graph path를 통해 적용한다.
+   admission되지 않은 capture는 관찰 근거로만 남기고 구현 값은 absent다.
+7. 적용 우선순위:
    ```
-   .omd/preferences.md (pending)
-     > assets/_reference/<id>/tokens.json#live_overrides  (visual surface tokens만)
-     > DESIGN.md                                          (essence: voice/principles/motion 철학·canonical token)
-     > framework defaults
+   current explicit user instruction / explicit pending correction
+     > adopted valid portable-core graph
+     > its DESIGN.md portable projection
+     > standalone DESIGN.md stable anchors (sidecar absent/invalid)
+     > legacy meaning-based read fallback (no Core anchors only)
+   reference-capture evidence is never a prescriptive tier
    ```
-   essence (voice/principles/motion philosophy)는 항상 DESIGN.md가 권위. visual surface 토큰만 live_overrides가 우위.
 
 DESIGN.md 없으면 사용자에게 알리고 omd:init 스킬 트리거. 임의 생성 금지.
 
 ## Phase 2 — Brand Context 적용
 
-- 토큰 값은 DESIGN.md에서만 인용. 임의 hex / spacing / radius 금지.
-- Voice 섹션을 마이크로카피에 적용. 문장 길이, 어휘 register, 은유 밀도 일치.
-- Component 섹션 명시된 규칙 따름 (variant / state / sizes).
+- 토큰 값은 valid graph의 `foundations`/`typography_assets`, 또는 standalone
+  DESIGN.md의 `foundations`/`typography-assets`에서만 인용한다. 임의 hex /
+  spacing / radius / font fallback 금지.
+- `content-locales`를 마이크로카피에 적용한다. 문장 길이, 어휘 register,
+  은유 밀도와 locale behavior를 일치시킨다.
+- `components-states`의 variant / state / sizes와 `layout-platforms`의
+  responsive/platform 규칙을 따른다.
 - 없는 토큰 지어내지 않음. 필요 시 사용자에게 "이건 DESIGN.md에 없는데, 어떻게 할까요?" 묻기.
 - advisory dispatch 결과가 read-only 제안이어도 implement/change 요청에서는 본 에이전트가 최소 유효 변경을 직접 적용.
 - 변경 전 `consumer_route`의 viewport·state·핵심 동작을 기록하고, 변경 후 **같은 consumer route·viewport·state**를 다시 연다. 공유 renderer나 진단 route만 확인해 통과 처리하지 않는다.

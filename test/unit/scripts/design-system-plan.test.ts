@@ -13,6 +13,9 @@ function runWith(handoff: Record<string, unknown>, options: { designMd?: string 
   const run = join(root, '.omd/runs/run-test');
   mkdirSync(join(run, 'handoff'), { recursive: true });
   writeFileSync(join(run, 'task.md'), '# Harness Task\n\nBuild a product.\n');
+  writeFileSync(join(run, 'mission.json'), `${JSON.stringify({
+    workflow: 'omd-autopilot-v2', required_system_authority: 'core-v2-project-system',
+  })}\n`);
   writeFileSync(join(run, 'handoff/.handoff.json'), `${JSON.stringify(handoff)}\n`);
   if (options.designMd) writeFileSync(join(root, 'DESIGN.md'), options.designMd);
   const result = spawnSync(process.execPath, [helper, root, run], { encoding: 'utf8' });
@@ -34,6 +37,7 @@ describe('design-system-plan', () => {
     expect(result.status, result.stderr).toBe(0);
     expect(JSON.parse(readFileSync(join(run, 'design-system-decision.json'), 'utf8'))).toMatchObject({
       status: 'ready', strategy: 'establish', source: 'deterministic-ledger',
+      required_system_authority: 'core-v2-project-system',
       implementation_owner: 'main-agent', reference_selection_allowed: true,
       root_design_md_write_allowed: true, next_state: 'SYSTEM_BUILD',
     });
@@ -79,5 +83,17 @@ describe('design-system-plan', () => {
     }, { designMd: '# Existing system\n' });
     expect(overwrite.result.status).not.toBe(0);
     expect(overwrite.result.stderr).toContain('cannot overwrite');
+  });
+
+  it('rejects an unsealed or legacy-authority mission', () => {
+    const { run, result } = runWith({
+      state: 'PROPOSE_PLAN', ledger_sha256: ledger,
+      prefilled_slots: { design_system_strategy: 'establish' },
+    });
+    writeFileSync(join(run, 'mission.json'), JSON.stringify({ workflow: 'omd-autopilot-v2' }));
+    const retried = spawnSync(process.execPath, [helper, run.replace('/.omd/runs/run-test', ''), run], { encoding: 'utf8' });
+    expect(result.status).toBe(0);
+    expect(retried.status).not.toBe(0);
+    expect(retried.stderr).toContain('system authority drift');
   });
 });

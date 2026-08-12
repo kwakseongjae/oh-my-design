@@ -1,29 +1,106 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { afterEach, describe, expect, test } from "vitest";
 import {
   AUTOPILOT_EVALUATOR_TIMEOUT_MS,
+  CORE_V2_PORTABLE_RUNTIME_PATHS,
+  assertInstalledPortableRuntimeBundle,
   buildControllerRepairPrompt,
   classifyProviderStreamFailure,
   controllerAutopilotProof,
+  controllerDesignSystemProof,
+  effectivePortableBundlePaths,
   freezeRunningRootAfterControllerFailure,
+  installedPortablePath,
   missionProductTreeManifest,
   objectiveFailureIds,
   objectiveFailureObservations,
   objectivePassingIds,
   repairContinuationDecision,
   shouldEvaluateProviderAttempt,
+  smokeExperimentId,
+  smokeConfigRelativePath,
+  portableRuntimeBundleDigest,
 } from "../../../benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs";
 
 const repo = resolve(import.meta.dirname, "../../..");
 const script = join(repo, "benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs");
+const canary = join(repo, "benchmarks/ui-resolve-bench/scripts/run-autopilot-clean-dir-canary.mjs");
+const smokeConfig = JSON.parse(readFileSync(join(repo, "benchmarks/ui-resolve-bench/config/autopilot-luna-high-smoke-v0.1.json"), "utf8"));
+const coreV2SmokeConfig = JSON.parse(readFileSync(join(repo, "benchmarks/ui-resolve-bench/config/autopilot-luna-high-smoke-v0.2.json"), "utf8"));
 const roots = [];
 const temp = () => { const value = mkdtempSync(join(tmpdir(), "omd-autopilot-smoke-test-")); roots.push(value); return value; };
+const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
+function coreCanary() {
+  const root = temp();
+  const output = join(root, "canary");
+  execFileSync(process.execPath, [canary, output], { cwd: repo });
+  return { root, output, workspace: join(output, "workspace") };
+}
 afterEach(() => { while (roots.length) rmSync(roots.pop(), { recursive: true, force: true }); });
 
 describe("autopilot Luna/high smoke controller", () => {
+  test("selects only repository-relative versioned smoke contracts without rewriting history", () => {
+    expect(smokeConfigRelativePath()).toBe(
+      "benchmarks/ui-resolve-bench/config/autopilot-luna-high-smoke-v0.2.json",
+    );
+    expect(smokeConfigRelativePath(
+      "benchmarks/ui-resolve-bench/config/autopilot-luna-high-smoke-v0.1.json",
+    )).toBe("benchmarks/ui-resolve-bench/config/autopilot-luna-high-smoke-v0.1.json");
+    for (const unsafe of [
+      "/tmp/autopilot-luna-high-smoke-v0.2.json",
+      "../config/autopilot-luna-high-smoke-v0.2.json",
+      "benchmarks/ui-resolve-bench/config/custom.json",
+      "benchmarks/ui-resolve-bench/config/autopilot-luna-high-smoke.json",
+    ]) {
+      expect(() => smokeConfigRelativePath(unsafe)).toThrow(/repository-relative versioned/);
+    }
+  });
+
+  test("keeps the historical v0.1 smoke contract byte-immutable", () => {
+    const bytes = readFileSync(join(
+      repo,
+      "benchmarks/ui-resolve-bench/config/autopilot-luna-high-smoke-v0.1.json",
+    ));
+    expect(bytes).toHaveLength(6780);
+    expect(sha256(bytes)).toBe("faa4ec2844da2e4f283747b0cccdb603a6421b973a9479a855fc5add9a58857d");
+  });
+
+  test("binds the plan experiment id to the selected smoke contract", () => {
+    expect(smokeExperimentId(coreV2SmokeConfig)).toBe("autopilot-luna-high-smoke-1.9.883");
+    expect(smokeExperimentId(coreV2SmokeConfig, "autopilot-luna-high-smoke-1.9.883"))
+      .toBe("autopilot-luna-high-smoke-1.9.883");
+    expect(() => smokeExperimentId(coreV2SmokeConfig, "autopilot-luna-high-smoke-1.9.850"))
+      .toThrow(/must match the selected smoke contract/);
+    expect(() => smokeExperimentId({ experiment_id: "custom" })).toThrow(/valid experiment id/);
+  });
+
+  test("binds the fresh v0.2 smoke contract to the complete current Core runtime", () => {
+    expect(coreV2SmokeConfig).toMatchObject({
+      schema_version: "0.2",
+      experiment_id: "autopilot-luna-high-smoke-1.9.883",
+      provider_execution_allowed: false,
+      authorities: {
+        evaluator_path: "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs",
+      },
+    });
+    const files = coreV2SmokeConfig.authorities.portable_bundle_files;
+    expect(files.map((item) => item.path)).toEqual(expect.arrayContaining([
+      ...CORE_V2_PORTABLE_RUNTIME_PATHS,
+    ]));
+    expect(new Set(files.map((item) => item.path)).size).toBe(files.length);
+    for (const item of files) {
+      const bytes = readFileSync(join(repo, item.path));
+      expect({ path: item.path, bytes: bytes.length, sha256: sha256(bytes) }).toEqual(item);
+    }
+    expect(sha256(JSON.stringify(files))).toBe(coreV2SmokeConfig.authorities.portable_bundle_sha256);
+    const evaluator = readFileSync(join(repo, coreV2SmokeConfig.authorities.evaluator_path));
+    expect(sha256(evaluator)).toBe(coreV2SmokeConfig.authorities.evaluator_sha256);
+  });
+
   test("classifies account usage exhaustion as infrastructure instead of a product result", () => {
     const message = "You've hit your usage limit. Visit settings to purchase more credits or try again later.";
     expect(classifyProviderStreamFailure([
@@ -41,6 +118,270 @@ describe("autopilot Luna/high smoke controller", () => {
   test("allows the four-viewport evaluator to finish before controller timeout", () => {
     expect(AUTOPILOT_EVALUATOR_TIMEOUT_MS).toBe(360_000);
   });
+  test("installs the complete Core v2 transitive runtime bundle and fails closed on drift", () => {
+    const paths = effectivePortableBundlePaths(smokeConfig);
+    expect(paths).toEqual(expect.arrayContaining([...CORE_V2_PORTABLE_RUNTIME_PATHS]));
+    expect(new Set(paths).size).toBe(paths.length);
+    const files = paths.map((path) => {
+      const bytes = readFileSync(join(repo, path));
+      return { path, bytes: bytes.length, sha256: sha256(bytes) };
+    });
+    const plan = {
+      smoke_contract: smokeConfig,
+      portable_runtime_bundle: {
+        schema_version: "0.1",
+        files,
+        sha256: portableRuntimeBundleDigest(files),
+      },
+    };
+    const workspace = temp();
+    for (const item of files) {
+      const target = join(workspace, installedPortablePath(item.path));
+      mkdirSync(dirname(target), { recursive: true });
+      copyFileSync(join(repo, item.path), target);
+    }
+    expect(() => assertInstalledPortableRuntimeBundle(plan, workspace)).not.toThrow();
+
+    const graph = JSON.parse(readFileSync(
+      join(repo, "spec/fixtures/design-md-core-v2/.omd/system/graph.json"),
+      "utf8",
+    ));
+    delete graph.projection;
+    delete graph.extensions;
+    graph.governance.decisions[0].path = "typography_assets.roles.0.family";
+    const decisionPath = graph.governance.decisions[0].path;
+    const graphPath = join(workspace, "fresh-graph.json");
+    const provenancePath = join(workspace, "fresh-provenance.json");
+    const coveragePath = join(workspace, "fresh-coverage.json");
+    const reviewDir = join(workspace, "fresh-review");
+    const reviewReceiptPath = join(workspace, "fresh-review-receipt.json");
+    const compiledPath = join(workspace, "fresh-compiled-package");
+    const checkpointPath = join(workspace, "fresh-project-checkpoint.json");
+    const projectRoot = join(temp(), "fresh-adopted-project");
+    writeFileSync(graphPath, `${JSON.stringify(graph, null, 2)}\n`);
+    writeFileSync(provenancePath, `${JSON.stringify({
+      schema_version: "2.0.0",
+      decisions: [{ path: decisionPath, source_class: "unresolved", evidence: [] }],
+    }, null, 2)}\n`);
+    const sections = {
+      experience: "1-experience",
+      foundations: "2-foundations",
+      "typography-assets": "3-typography-assets",
+      "components-states": "4-components-states",
+      "layout-platforms": "5-layout-platforms",
+      "content-locales": "6-content-locales",
+      governance: "7-governance",
+    };
+    const checks = [
+      "portable_core_structure",
+      "bound_system_authority",
+      "token_reference_closure",
+      "contrast",
+      "component_state_coverage",
+      "responsive_320_200",
+      "reduced_motion",
+      "assets_fonts_licenses",
+      "implementation_contract_complete",
+      "unknown_absence",
+      "opaque_extension_preservation",
+    ];
+    writeFileSync(coveragePath, `${JSON.stringify({
+      schema_version: "2.0.0",
+      groups: Object.fromEntries(Object.entries(sections).map(([id, fragment]) => [id, {
+        status: "covered",
+        evidence: [`DESIGN.md#${fragment}`],
+      }])),
+      checks: Object.fromEntries(checks.map((id) => [id, {
+        pass: true,
+        method: "controller-computed-system-graph-v2",
+      }])),
+    }, null, 2)}\n`);
+    const reviewHelper = join(
+      workspace,
+      installedPortablePath("scripts/prepare-design-md-core-review.cjs"),
+    );
+    execFileSync(process.execPath, [
+      reviewHelper,
+      graphPath,
+      "--provenance", provenancePath,
+      "--coverage", coveragePath,
+      "--out-dir", reviewDir,
+    ], { cwd: workspace });
+    execFileSync(process.execPath, [
+      reviewHelper,
+      "--approve", join(reviewDir, "review-request.json"),
+      "--reviewer", "portable-runtime-canary",
+      "--out", reviewReceiptPath,
+      "--authority-transition-approved",
+    ], { cwd: workspace });
+    execFileSync(process.execPath, [
+      join(workspace, installedPortablePath("scripts/compile-design-md-core.cjs")),
+      join(reviewDir, "input-graph.json"),
+      "--provenance", join(reviewDir, "provenance.json"),
+      "--coverage", join(reviewDir, "coverage.json"),
+      "--review-receipt", reviewReceiptPath,
+      "--out-dir", compiledPath,
+      "--adopt",
+    ], { cwd: workspace });
+    expect(JSON.parse(readFileSync(
+      join(compiledPath, ".omd/system/manifest.json"),
+      "utf8",
+    ))).toMatchObject({ profile: "portable-core", authority: { canonical: "system-graph" } });
+    const adopterHelper = join(
+      workspace,
+      installedPortablePath("scripts/adopt-design-md-core.cjs"),
+    );
+    execFileSync(process.execPath, [
+      adopterHelper,
+      compiledPath,
+      "--prepare-checkpoint", checkpointPath,
+      "--reviewer", "portable-runtime-canary",
+      "--authority-transition-approved",
+    ], { cwd: workspace });
+    mkdirSync(projectRoot, { recursive: true });
+    execFileSync(process.execPath, [
+      adopterHelper,
+      compiledPath,
+      "--project-root", projectRoot,
+      "--checkpoint-receipt", checkpointPath,
+    ], { cwd: workspace });
+    expect(JSON.parse(readFileSync(
+      join(projectRoot, ".omd/system/adoption-receipt.json"),
+      "utf8",
+    ))).toMatchObject({
+      status: "adopted",
+      review: { reviewer: { role: "project-owner", identifier: "portable-runtime-canary" } },
+    });
+
+    const coreHelper = CORE_V2_PORTABLE_RUNTIME_PATHS[0];
+    const installedHelper = join(workspace, installedPortablePath(coreHelper));
+    rmSync(installedHelper);
+    expect(() => assertInstalledPortableRuntimeBundle(plan, workspace)).toThrow(/missing/);
+
+    copyFileSync(join(repo, coreHelper), installedHelper);
+    writeFileSync(installedHelper, "stale portable helper\n");
+    expect(() => assertInstalledPortableRuntimeBundle(plan, workspace)).toThrow(/drift/);
+
+    const symlinkTarget = join(workspace, "portable-helper-copy.cjs");
+    copyFileSync(join(repo, coreHelper), symlinkTarget);
+    rmSync(installedHelper);
+    symlinkSync(symlinkTarget, installedHelper);
+    expect(() => assertInstalledPortableRuntimeBundle(plan, workspace)).toThrow(/regular non-symlink/);
+  });
+  test("recomputes fresh Core v2 project authority in an isolated controller workspace", () => {
+    const { root, workspace } = coreCanary();
+    const canaryRun = join(workspace, ".omd/runs/run-greenfield-family-planner");
+    expect(JSON.parse(readFileSync(join(canaryRun, "core-v2-review/review-request.json"), "utf8"))).toMatchObject({
+      status: "review-required",
+      authority: { state: "non-authoritative-candidate", canonical: false },
+    });
+    expect(JSON.parse(readFileSync(join(canaryRun, "core-v2-owner-review.json"), "utf8"))).toMatchObject({
+      kind: "design-md-core-adoption-review",
+      decision: "approved",
+      authority_transition_approved: true,
+      reviewer: { role: "project-owner", identifier: "autopilot-clean-dir-project-owner" },
+      candidate: { exact_preview_reviewed: true },
+    });
+    expect(JSON.parse(readFileSync(join(canaryRun, "checkpoints/core-v2-project-adoption.json"), "utf8"))).toMatchObject({
+      kind: "design-md-core-project-adoption-checkpoint",
+      request: {
+        kind: "design-md-core-project-adoption-checkpoint-request",
+        status: "approval-required",
+      },
+      attestation: {
+        decision: "approved",
+        authority_transition_approved: true,
+        authority: { role: "project-owner", identifier: "autopilot-clean-dir-project-owner" },
+      },
+    });
+    expect(JSON.parse(readFileSync(join(workspace, ".omd/system/adoption-receipt.json"), "utf8"))).toMatchObject({
+      kind: "design-md-core-adoption-receipt",
+      status: "adopted",
+      authority: "system-graph",
+      review: {
+        authority_transition_approved: true,
+        reviewer: { role: "project-owner", identifier: "autopilot-clean-dir-project-owner" },
+      },
+    });
+    expect(existsSync(join(workspace, ".omd/adoptions"))).toBe(true);
+    const result = controllerDesignSystemProof(root, { id: "core-valid" }, workspace, 0);
+    expect(result).toMatchObject({
+      pass: true,
+      reason: null,
+      proof: {
+        pass: true,
+        authority_mode: "core-v2-project-system",
+        format: "design-md-core",
+        format_version: "2.0.0",
+      },
+    });
+    for (const name of ["manifest.json", "graph.json", "provenance.json", "coverage.json", "adoption-receipt.json"]) {
+      expect(existsSync(join(root, ".controller-artifacts/core-valid/design-system-audit-round-0/workspace/.omd/system", name))).toBe(true);
+    }
+    expect(existsSync(join(
+      root,
+      ".controller-artifacts/core-valid/design-system-audit-round-0/workspace/.omd-run/design-system-decision.json",
+    ))).toBe(true);
+  });
+  test("rejects a fresh legacy-only system even when it has a design-system decision", () => {
+    const root = temp();
+    const workspace = join(root, "workspace");
+    const runDir = join(workspace, ".omd/runs/run-legacy");
+    mkdirSync(join(runDir, "system"), { recursive: true });
+    writeFileSync(join(workspace, "DESIGN.md"), "# Legacy projection\n");
+    writeFileSync(join(runDir, "design-system-decision.json"), JSON.stringify({
+      strategy: "establish",
+      required_system_authority: "core-v2-project-system",
+      implementation_owner: "main-agent",
+    }));
+    for (const name of ["spec.json", "provenance.json", "coverage.json"]) {
+      writeFileSync(join(runDir, "system", name), "{}\n");
+    }
+    expect(controllerDesignSystemProof(root, { id: "legacy-only" }, workspace)).toMatchObject({
+      pass: false,
+      reason: "legacy-system-spec-forbidden-in-fresh-smoke",
+    });
+  });
+  test("fails closed for missing, stale, and symlinked Core v2 project authority", () => {
+    const missing = coreCanary();
+    rmSync(join(missing.workspace, ".omd/system/manifest.json"));
+    expect(controllerDesignSystemProof(missing.root, { id: "missing-core" }, missing.workspace)).toMatchObject({
+      pass: false,
+      reason: "core-v2-project-system-required",
+      missing_artifacts: ["manifest.json"],
+    });
+
+    const missingReceipt = coreCanary();
+    rmSync(join(missingReceipt.workspace, ".omd/system/adoption-receipt.json"));
+    expect(controllerDesignSystemProof(
+      missingReceipt.root,
+      { id: "missing-core-receipt" },
+      missingReceipt.workspace,
+    )).toMatchObject({
+      pass: false,
+      reason: "core-v2-project-system-required",
+      missing_artifacts: ["adoption-receipt.json"],
+    });
+
+    const stale = coreCanary();
+    const staleGraph = join(stale.workspace, ".omd/system/graph.json");
+    writeFileSync(staleGraph, `${readFileSync(staleGraph, "utf8")}\n`);
+    expect(controllerDesignSystemProof(stale.root, { id: "stale-core" }, stale.workspace)).toMatchObject({
+      pass: false,
+      reason: "controller-core-v2-design-system-proof-failed",
+    });
+
+    const linked = coreCanary();
+    const manifest = join(linked.workspace, ".omd/system/manifest.json");
+    const manifestCopy = join(linked.root, "manifest-copy.json");
+    copyFileSync(manifest, manifestCopy);
+    rmSync(manifest);
+    symlinkSync(manifestCopy, manifest);
+    expect(controllerDesignSystemProof(linked.root, { id: "linked-core" }, linked.workspace)).toMatchObject({
+      pass: false,
+      reason: expect.stringMatching(/symlink|regular non-symlink/),
+    });
+  }, 15_000);
   test("recomputes the exact mission product-tree authority with installed runtime assets", () => {
     const workspace = temp();
     const runDir = join(workspace, ".omd/runs/tree-authority");
@@ -376,7 +717,7 @@ describe("autopilot Luna/high smoke controller", () => {
     execFileSync(process.execPath, [script, "prepare", "--plan", join(report, "RUN-MATRIX.json"), "--receipt", join(report, "PREREGISTRATION.receipt.json"), "--root", root], { cwd: repo });
     const browserId = "-iab-leading-dash";
     execFileSync(process.execPath, [script, "admit-browser", "--root", root,
-      `--browser-id=${browserId}`, "--session", "autopilot-luna-high-smoke-1.9.850",
+      `--browser-id=${browserId}`, "--session", "autopilot-luna-high-smoke-1.9.883",
       "--tab-id", "tab-10", "--url", "about:blank"], { cwd: repo });
     expect(JSON.parse(readFileSync(join(root, "BROWSER-ADMISSION.receipt.json"), "utf8"))).toMatchObject({
       browser: { browser_id: browserId, tab_id: "tab-10", url: "about:blank" },
@@ -391,11 +732,39 @@ describe("autopilot Luna/high smoke controller", () => {
     const summary = JSON.parse(readFileSync(join(output, "SUMMARY.json"), "utf8"));
     mkdirSync(join(workspace, ".benchmark"), { recursive: true });
     writeFileSync(join(workspace, ".benchmark/PROMPT.md"), summary.prompt);
-    const plan = { smoke_contract: { authorities: { portable_bundle_files: [] } } };
-    expect(controllerAutopilotProof(plan, {}, workspace)).toMatchObject({
+    const files = effectivePortableBundlePaths(smokeConfig).map((path) => {
+      const bytes = readFileSync(join(repo, path));
+      const target = join(workspace, installedPortablePath(path));
+      mkdirSync(dirname(target), { recursive: true });
+      copyFileSync(join(repo, path), target);
+      return { path, bytes: bytes.length, sha256: sha256(bytes) };
+    });
+    const plan = {
+      smoke_contract: smokeConfig,
+      portable_runtime_bundle: {
+        schema_version: "0.1",
+        files,
+        sha256: portableRuntimeBundleDigest(files),
+      },
+    };
+    // The source-tree canary completes before this controller fixture installs
+    // the same bundle that a real smoke workspace receives during prepare.
+    // Rebind only its local terminal product-tree receipt to model that
+    // preinstalled starting state; provider smoke runs never need this shim.
+    const runDir = join(workspace, ".omd/runs/run-greenfield-family-planner");
+    const finalProofPath = join(runDir, "proof.json");
+    const finalProof = JSON.parse(readFileSync(finalProofPath, "utf8"));
+    finalProof.product_tree_sha256 = missionProductTreeManifest(workspace).sha256;
+    writeFileSync(finalProofPath, `${JSON.stringify(finalProof, null, 2)}\n`);
+    const missionStatePath = join(runDir, "mission-state.json");
+    const missionState = JSON.parse(readFileSync(missionStatePath, "utf8"));
+    missionState.evidence.proof_sha256 = sha256(readFileSync(finalProofPath));
+    writeFileSync(missionStatePath, `${JSON.stringify(missionState, null, 2)}\n`);
+    const initialProof = controllerAutopilotProof(plan, {}, workspace);
+    expect(initialProof, initialProof.reason).toMatchObject({
       pass: true, mission_lineages: 1, question_batches: 0, answer_artifacts: 0,
     });
-    const checkpointDir = join(workspace, ".omd/runs/run-greenfield-family-planner/checkpoints");
+    const checkpointDir = join(runDir, "checkpoints");
     const questions = join(checkpointDir, "council-intake.questions.json");
     mkdirSync(checkpointDir, { recursive: true });
     writeFileSync(questions, JSON.stringify({
@@ -411,7 +780,7 @@ describe("autopilot Luna/high smoke controller", () => {
     }));
     expect(controllerAutopilotProof(plan, {}, workspace)).toMatchObject({ pass: false, mission_lineages: null });
     writeFileSync(questions, JSON.stringify({ questions: [], pending_interview_ids: [] }));
-    const answers = join(workspace, ".omd/runs/run-greenfield-family-planner/checkpoints/council-intake.answers.json");
+    const answers = join(checkpointDir, "council-intake.answers.json");
     writeFileSync(answers, JSON.stringify({ answers: [{ value: "model-authored" }] }));
     expect(controllerAutopilotProof(plan, {}, workspace)).toMatchObject({ pass: false, mission_lineages: null });
   });

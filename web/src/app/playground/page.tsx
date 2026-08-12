@@ -39,7 +39,7 @@ export const metadata: Metadata = IS_DEV
   ? {
       title: "Playground — oh-my-design",
       description:
-        "Design your own DS by selection. Pick a mood, color, density, radius, weight, motion, voice, and personas — export an OmD v0.1 DESIGN.md. No AI calls.",
+        "Design a project system by selection. Pick mood, color, density, radius, weight, motion, voice, and personas — export a portable DESIGN.md Core v2. No AI calls.",
       robots: { index: false, follow: false },
     }
   : { title: "Not Found", robots: { index: false, follow: false } };

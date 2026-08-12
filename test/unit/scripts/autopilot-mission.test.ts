@@ -65,6 +65,15 @@ const requiredSystemChecks = [
   'reduced_motion', 'assets_fonts_licenses', 'implementation_contract_complete', 'unknown_absence',
   'sections_11_13_honesty',
 ];
+const requiredCoreSystemGroups = [
+  'experience', 'foundations', 'typography-assets', 'components-states',
+  'layout-platforms', 'content-locales', 'governance',
+];
+const requiredCoreSystemChecks = [
+  'portable_core_structure', 'bound_system_authority', 'token_reference_closure', 'contrast',
+  'component_state_coverage', 'responsive_320_200', 'reduced_motion', 'assets_fonts_licenses',
+  'implementation_contract_complete', 'unknown_absence', 'opaque_extension_preservation',
+];
 
 function writeSystemProof(runDir: string) {
   mkdirSync(join(runDir, 'system'), { recursive: true });
@@ -84,6 +93,62 @@ function writeSystemProof(runDir: string) {
     findings: [], next_state: 'PRODUCT_BUILD',
   };
   writeFileSync(join(runDir, 'system/proof.json'), JSON.stringify(proof));
+  return proof;
+}
+
+function writeCoreSystemProof(runDir: string) {
+  const canonicalDir = join(root, '.omd/system');
+  const proofDir = join(runDir, 'system');
+  mkdirSync(canonicalDir, { recursive: true });
+  mkdirSync(proofDir, { recursive: true });
+  const artifacts = {
+    manifest: join(canonicalDir, 'manifest.json'),
+    graph: join(canonicalDir, 'graph.json'),
+    provenance: join(canonicalDir, 'provenance.json'),
+    coverage: join(canonicalDir, 'coverage.json'),
+  };
+  writeFileSync(artifacts.provenance, JSON.stringify({ schema_version: '2.0.0' }));
+  writeFileSync(artifacts.coverage, JSON.stringify({ schema_version: '2.0.0' }));
+  const designSha = sha(readFileSync(join(root, 'DESIGN.md')));
+  const graph = {
+    $schema: 'https://oh-my-design.kr/schema/design-system-graph-v2.schema.json', schema_version: '2.0.0',
+    identity: { name: 'Acme', kind: 'project-system', scope: 'Test' },
+    projection: { path: 'DESIGN.md', sha256: designSha }, experience: {}, foundations: {},
+    typography_assets: {}, components_states: {}, layout_platforms: {}, content_locales: {}, governance: {},
+  };
+  writeFileSync(artifacts.graph, JSON.stringify(graph));
+  const graphSha = sha(readFileSync(artifacts.graph));
+  writeFileSync(artifacts.manifest, JSON.stringify({
+    $schema: 'https://oh-my-design.kr/schema/design-md-core-manifest-v2.schema.json', schema_version: '2.0.0',
+    format: 'design-md-core', format_version: '2.0.0', profile: 'portable-core',
+    section_order: requiredCoreSystemGroups,
+    authority: { canonical: 'system-graph', graph_path: '.omd/system/graph.json', projection_path: 'DESIGN.md' },
+    artifacts: {
+      design_md: { path: 'DESIGN.md', sha256: designSha },
+      graph: { path: '.omd/system/graph.json', sha256: graphSha },
+      provenance: { path: '.omd/system/provenance.json', sha256: sha(readFileSync(artifacts.provenance)) },
+      coverage: { path: '.omd/system/coverage.json', sha256: sha(readFileSync(artifacts.coverage)) },
+    },
+  }));
+  const proof = {
+    schema_version: '0.2', status: 'passed', pass: true,
+    authority_mode: 'core-v2-project-system', format: 'design-md-core',
+    format_version: '2.0.0', profile: 'portable-core', strategy: 'establish',
+    implementation_owner: 'main-agent', design_md_sha256: designSha,
+    provenance_sha256: sha(readFileSync(artifacts.provenance)),
+    coverage_sha256: sha(readFileSync(artifacts.coverage)),
+    manifest_sha256: sha(readFileSync(artifacts.manifest)),
+    graph_sha256: graphSha, spec_sha256: null,
+    system_authority: {
+      manifest_path: '.omd/system/manifest.json', graph_path: '.omd/system/graph.json',
+      projection_path: 'DESIGN.md', provenance_path: '.omd/system/provenance.json',
+      coverage_path: '.omd/system/coverage.json',
+    },
+    required_groups: requiredCoreSystemGroups, required_checks: requiredCoreSystemChecks,
+    computed_checks: Object.fromEntries(requiredCoreSystemChecks.map((id) => [id, { pass: true }])),
+    findings: [], next_state: 'PRODUCT_BUILD',
+  };
+  writeFileSync(join(proofDir, 'proof.json'), JSON.stringify(proof));
   return proof;
 }
 
@@ -163,6 +228,8 @@ describe('autopilot mission controller', () => {
     writeFileSync(join(runDir, 'task.md'), 'Build a new dashboard and establish DESIGN.md.');
     writeFileSync(join(root, 'index.html'), '<main>starter</main>');
     expect(run(runDir, 'bootstrap').status).toBe(0);
+    expect(JSON.parse(readFileSync(join(runDir, 'mission.json'), 'utf8')).required_system_authority)
+      .toBe('core-v2-project-system');
     expect(state(runDir).state).toBe('AUTHORITY_GATE');
     writeFileSync(join(root, 'index.html'), '<main>changed too early</main>');
     const result = run(runDir);
@@ -180,7 +247,7 @@ describe('autopilot mission controller', () => {
     expect(run(runDir, 'bootstrap').status).toBe(0);
     writeFileSync(join(runDir, 'handoff/.handoff.json'), JSON.stringify({ state: 'PROPOSE_PLAN', status: 'ready' }));
     writeCouncilAuthority(runDir);
-    writeFileSync(join(runDir, 'design-system-decision.json'), JSON.stringify({ strategy: 'establish' }));
+    writeFileSync(join(runDir, 'design-system-decision.json'), JSON.stringify({ strategy: 'establish', required_system_authority: 'core-v2-project-system' }));
     writeFileSync(join(root, 'DESIGN.md'), '# System\n');
     expect(run(runDir).status).toBe(0);
     expect(state(runDir).state).toBe('SYSTEM_BUILD');
@@ -194,9 +261,9 @@ describe('autopilot mission controller', () => {
     }));
     const forged = run(runDir);
     expect(forged.status).not.toBe(0);
-    expect(forged.stderr).toContain('system proof authority drift');
+    expect(forged.stderr).toContain('must use Core v2 project authority');
     rmSync(join(runDir, 'system/proof.json'));
-    writeSystemProof(runDir);
+    writeCoreSystemProof(runDir);
     expect(run(runDir).status).toBe(0);
     expect(state(runDir).state).toBe('ACCEPTANCE_PLAN');
     writeAcceptancePlan(runDir);
@@ -210,6 +277,35 @@ describe('autopilot mission controller', () => {
     expect(state(runDir).state).toBe('PRODUCT_BUILD');
   });
 
+  it('binds a Core v2 project-system proof before admitting product work', () => {
+    root = mkdtempSync(join(tmpdir(), 'omd-autopilot-core-system-'));
+    const runDir = join(root, '.omd/runs/run-1');
+    mkdirSync(join(runDir, 'handoff'), { recursive: true });
+    writeFileSync(join(runDir, 'task.md'), 'Build a new dashboard with a portable Core design system.');
+    writeFileSync(join(root, 'index.html'), '<main>starter</main>');
+    expect(run(runDir, 'bootstrap').status).toBe(0);
+    writeFileSync(join(runDir, 'handoff/.handoff.json'), JSON.stringify({ state: 'PROPOSE_PLAN', status: 'ready' }));
+    writeCouncilAuthority(runDir);
+    writeFileSync(join(runDir, 'design-system-decision.json'), JSON.stringify({ strategy: 'establish', required_system_authority: 'core-v2-project-system' }));
+    writeFileSync(join(root, 'DESIGN.md'), '# Acme Design System\n');
+    expect(run(runDir).status).toBe(0);
+    expect(state(runDir).state).toBe('SYSTEM_BUILD');
+    writeCoreSystemProof(runDir);
+    expect(run(runDir).status).toBe(0);
+    expect(state(runDir).state).toBe('ACCEPTANCE_PLAN');
+    writeAcceptancePlan(runDir);
+    expect(run(runDir).status).toBe(0);
+    expect(state(runDir).state).toBe('PRODUCT_BUILD');
+    const admission = JSON.parse(readFileSync(join(runDir, 'product-build-admission.json'), 'utf8'));
+    expect(admission.system_proof_sha256).toBe(sha(readFileSync(join(runDir, 'system/proof.json'))));
+    expect(admission.required_system_authority).toBe('core-v2-project-system');
+
+    writeFileSync(join(root, '.omd/system/graph.json'), JSON.stringify({ schema_version: 'tampered' }));
+    const drift = run(runDir);
+    expect(drift.status).not.toBe(0);
+    expect(drift.stderr).toContain('Core v2 system proof authority drift');
+  });
+
   it('routes final proof to repair, failed handoff, or delivery without force-passing', () => {
     root = mkdtempSync(join(tmpdir(), 'omd-autopilot-proof-'));
     const runDir = join(root, '.omd/runs/run-1');
@@ -219,7 +315,7 @@ describe('autopilot mission controller', () => {
     expect(run(runDir, 'bootstrap').status).toBe(0);
     writeFileSync(join(runDir, 'handoff/.handoff.json'), JSON.stringify({ state: 'PROPOSE_PLAN', status: 'ready' }));
     writeCouncilAuthority(runDir);
-    writeFileSync(join(runDir, 'design-system-decision.json'), JSON.stringify({ strategy: 'surface-local-only' }));
+    writeFileSync(join(runDir, 'design-system-decision.json'), JSON.stringify({ strategy: 'surface-local-only', required_system_authority: 'core-v2-project-system' }));
     expect(run(runDir).status).toBe(0);
     expect(state(runDir).state).toBe('ACCEPTANCE_PLAN');
     writeAcceptancePlan(runDir);
@@ -257,7 +353,7 @@ describe('autopilot mission controller', () => {
     expect(run(runDir, 'bootstrap').status).toBe(0);
     writeFileSync(join(runDir, 'handoff/.handoff.json'), JSON.stringify({ state: 'PROPOSE_PLAN', status: 'ready' }));
     writeCouncilAuthority(runDir);
-    writeFileSync(join(runDir, 'design-system-decision.json'), JSON.stringify({ strategy: 'surface-local-only' }));
+    writeFileSync(join(runDir, 'design-system-decision.json'), JSON.stringify({ strategy: 'surface-local-only', required_system_authority: 'core-v2-project-system' }));
     expect(run(runDir).status).toBe(0);
     writeAcceptancePlan(runDir);
     expect(run(runDir).status).toBe(0);
@@ -303,7 +399,7 @@ describe('autopilot mission controller', () => {
     mkdirSync(join(first, 'handoff'), { recursive: true });
     writeFileSync(join(first, 'handoff/.handoff.json'), JSON.stringify({ state: 'PROPOSE_PLAN', status: 'ready' }));
     writeCouncilAuthority(first);
-    writeFileSync(join(first, 'design-system-decision.json'), JSON.stringify({ strategy: 'surface-local-only' }));
+    writeFileSync(join(first, 'design-system-decision.json'), JSON.stringify({ strategy: 'surface-local-only', required_system_authority: 'core-v2-project-system' }));
     expect(run(first).status).toBe(0);
     writeAcceptancePlan(first);
     expect(run(first).status).toBe(0);
@@ -347,7 +443,7 @@ describe('autopilot mission controller', () => {
     expect(run(runDir, 'bootstrap').status).toBe(0);
     writeFileSync(join(runDir, 'handoff/.handoff.json'), JSON.stringify({ state: 'PROPOSE_PLAN', status: 'ready' }));
     writeCouncilAuthority(runDir);
-    writeFileSync(join(runDir, 'design-system-decision.json'), JSON.stringify({ strategy: 'surface-local-only' }));
+    writeFileSync(join(runDir, 'design-system-decision.json'), JSON.stringify({ strategy: 'surface-local-only', required_system_authority: 'core-v2-project-system' }));
     expect(run(runDir).status).toBe(0);
     writeAcceptancePlan(runDir);
     expect(run(runDir).status).toBe(0);

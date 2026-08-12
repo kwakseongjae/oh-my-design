@@ -21,6 +21,16 @@ import {
   postInstallGuidance,
 } from '../../../src/cli/install-skills.js';
 
+const CORE_V2_SCHEMAS = [
+  'design-md-core-manifest-v2.schema.json',
+  'design-system-graph-v2.schema.json',
+  'design-system-provenance-v2.schema.json',
+  'design-system-coverage-v2.schema.json',
+  'design-md-core-adoption-review-v2.schema.json',
+  'design-md-core-adoption-receipt-v2.schema.json',
+  'design-md-core-project-checkpoint-v2.schema.json',
+] as const;
+
 describe('install-skills', () => {
   let root: string;
 
@@ -82,6 +92,28 @@ describe('install-skills', () => {
     expect(cursorJa.body).toContain('.cursor/skills');
     expect(cursorJa.body).toContain('DESIGN.md');
     expect(cursorJa.body).toContain('Cursorを再起動');
+  });
+
+  it('fails closed in rule-only post-install guidance for every locale', () => {
+    const expected = {
+      en: ['cannot create one', 'read-only', 'standalone Core v2', 'without --cursor-rule-only'],
+      ko: ['새로 만들 수는 없습니다', '읽기 전용', 'Core v2', '--cursor-rule-only 없이'],
+      ja: ['新規作成はできません', '読み取り専用', 'Core v2', '--cursor-rule-onlyを付けずに'],
+      'zh-CN': ['不能新建', '只读', 'Core v2', '不要使用 --cursor-rule-only'],
+      'zh-TW': ['不能新建', '唯讀', 'Core v2', '不要使用 --cursor-rule-only'],
+    } as const;
+
+    for (const [lang, phrases] of Object.entries(expected)) {
+      const guidance = postInstallGuidance(
+        lang as keyof typeof expected,
+        { cursorOnly: true, cursorRuleOnly: true },
+      );
+      for (const phrase of phrases) expect(guidance.body).toContain(phrase);
+      expect(guidance.body).toContain('Builder');
+      expect(guidance.body).toContain('DESIGN.md');
+      expect(guidance.body).not.toContain('Toss');
+      expect(guidance.body).not.toContain('.claude/data/references');
+    }
   });
 
   it('installs all 5 skills × 3 agents when no agents detected (fallback)', async () => {
@@ -369,6 +401,10 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.claude/data/scripts/design-council-prime.cjs'))).toBe(true);
     expect(existsSync(join(root, '.claude/data/scripts/design-council-reconcile.cjs'))).toBe(true);
     expect(existsSync(join(root, '.claude/data/scripts/design-council-handoff.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.claude/data/scripts/design-md-core-schema.cjs'))).toBe(true);
+    for (const schema of CORE_V2_SCHEMAS) {
+      expect(existsSync(join(root, '.claude/data/scripts/schema', schema))).toBe(true);
+    }
     expect(existsSync(join(root, '.claude/data/scripts/design-harness-context-plan.cjs'))).toBe(true);
   });
 
@@ -387,6 +423,10 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.agents/skills/omd-init/scripts/query-references.mjs'))).toBe(true);
     expect(existsSync(join(root, '.codex/data/references/toss/DESIGN.md'))).toBe(true);
     expect(existsSync(join(root, '.codex/data/scripts/design-council-handoff.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.codex/data/scripts/design-md-core-schema.cjs'))).toBe(true);
+    for (const schema of CORE_V2_SCHEMAS) {
+      expect(existsSync(join(root, '.codex/data/scripts/schema', schema))).toBe(true);
+    }
     expect(existsSync(join(root, '.codex/data/scripts/design-harness-context-plan.cjs'))).toBe(true);
 
     const harness = readFileSync(join(root, '.agents/skills/omd-harness/SKILL.md'), 'utf8');
@@ -1012,7 +1052,44 @@ describe('install-skills', () => {
     expect(new Set(observedHashes)).toEqual(new Set([expectedHash]));
   });
 
-  it('cursor --cursor-rule-only preserves the explicit legacy compatibility mode', async () => {
+  it('installs the exact Core v2 compiler closure in every supported channel data tree', async () => {
+    const helpers = [
+      'design-md-core-schema.cjs',
+      'design-md-core-conformance.cjs',
+      'design-md-core.cjs',
+      'prepare-design-md-core-review.cjs',
+      'compile-design-md-core.cjs',
+      'adopt-design-md-core.cjs',
+    ] as const;
+    const channels = [
+      ['claude-code', '.claude/data'],
+      ['codex', '.codex/data'],
+      ['opencode', '.opencode/data'],
+      ['cursor', '.claude/data'],
+    ] as const;
+
+    for (const [channel, dataRoot] of channels) {
+      const channelRoot = join(root, `core-runtime-${channel}`);
+      expect(await runInstallSkills({
+        dir: channelRoot,
+        agents: [channel],
+        skillsFilter: ['omd-init'],
+        agentsFilter: [],
+      })).toBe(0);
+      for (const helper of helpers) {
+        expect(readFileSync(join(channelRoot, dataRoot, 'scripts', helper))).toEqual(
+          readFileSync(join(process.cwd(), 'scripts', helper)),
+        );
+      }
+      for (const schema of CORE_V2_SCHEMAS) {
+        expect(readFileSync(join(channelRoot, dataRoot, 'scripts/schema', schema))).toEqual(
+          readFileSync(join(process.cwd(), 'spec/schema', schema)),
+        );
+      }
+    }
+  });
+
+  it('cursor --cursor-rule-only applies existing Core files but fails closed on creation', async () => {
     expect(await runInstallSkills({
       dir: root,
       agents: ['cursor'],
@@ -1023,7 +1100,29 @@ describe('install-skills', () => {
     const rule = readFileSync(join(root, '.cursor/rules/omd-design.mdc'), 'utf8');
     expect(rule).toContain('alwaysApply: false');
     expect(rule).toContain('<!-- omd:cursor-channel=rule-only -->');
-    expect(rule).toContain('Compatibility mode provides the rule and catalog only');
+    expect(rule).toContain('rule-only mode MUST NOT create it by copying, paraphrasing, or adapting');
+    expect(rule).not.toContain('Load the chosen `.claude/data/references/<id>/DESIGN.md`');
+    expect(rule).toContain('The standalone portable design contract lives at `@DESIGN.md`');
+    expect(rule).toContain('node .claude/data/scripts/migrate-design-md-core.cjs --input ./DESIGN.md --check --require-source-valid --require-portable-core');
+    expect(rule).toContain('never YAML frontmatter');
+    for (const anchor of [
+      'experience',
+      'foundations',
+      'typography-assets',
+      'components-states',
+      'layout-platforms',
+      'content-locales',
+      'governance',
+    ]) {
+      expect(rule).toContain(`<!-- design-md:section ${anchor} -->`);
+    }
+    expect(rule).toContain('without requiring OmD or sidecars');
+    expect(rule).toContain('A `migration-candidate` is non-authoritative');
+    expect(rule).toContain('`profile: portable-core`');
+    expect(rule).toContain('System Graph the machine authority');
+    expect(rule).toContain('DESIGN.md remains the standalone portable contract');
+    expect(rule).toContain('When applying DESIGN.md, preserve existing behavior');
+    expect(rule).toContain('Compatibility mode provides the rule, read-only catalog, and validation helpers only');
     expect(existsSync(join(root, '.claude/data/references/toss/DESIGN.md'))).toBe(true);
   });
 

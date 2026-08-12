@@ -1,5 +1,12 @@
 # OmD Spec v0.1
 
+> **Legacy compatibility format.** This document is retained so existing
+> 13/15/16-section references remain readable during the dual-read migration.
+> New design systems and refactors must write the vendor-neutral
+> [DESIGN.md Core v2](./design-md-core-v2.md) format instead. The historical
+> Google/Stitch descriptions and section counts below are not current
+> interoperability claims.
+
 | Field | Value |
 |---|---|
 | Spec version | `0.1.0` |

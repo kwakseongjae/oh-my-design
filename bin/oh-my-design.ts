@@ -150,4 +150,173 @@ program
     if (code !== 0) process.exit(code);
   });
 
+const designMd = program
+  .command('design-md')
+  .description('Inspect, validate, or stage a lossless migration to the vendor-neutral DESIGN.md Core v2 format.');
+
+designMd
+  .command('inspect')
+  .description('Classify a DESIGN.md and print its provider-free migration/loss report without writing files.')
+  .argument('[input]', 'DESIGN.md to inspect (defaults to ./DESIGN.md)')
+  .option('--report <path>', 'Also write the machine-readable report to this path')
+  .action(async (input: string | undefined, opts: { report?: string }) => {
+    const { runDesignMdTool } = await import('../src/cli/design-md.js');
+    const code = runDesignMdTool('inspect', { input, report: opts.report });
+    if (code !== 0) process.exit(code);
+  });
+
+designMd
+  .command('validate')
+  .description('Fail closed on Core structure, standalone Portable Core usefulness, round-trip, unsupported-promotion, or dropped-content drift.')
+  .argument('[input]', 'DESIGN.md to validate (defaults to ./DESIGN.md)')
+  .option('--report <path>', 'Also write the machine-readable report to this path')
+  .action(async (input: string | undefined, opts: { report?: string }) => {
+    const { runDesignMdTool } = await import('../src/cli/design-md.js');
+    const code = runDesignMdTool('validate', { input, report: opts.report });
+    if (code !== 0) process.exit(code);
+  });
+
+designMd
+  .command('prepare-review')
+  .description('Render an exact non-authoritative Core preview and hash-bound review request before owner approval.')
+  .argument('<graph>', 'Authority-neutral Core v2 System Graph draft')
+  .requiredOption('--provenance <path>', 'Provenance draft for the exact graph decisions')
+  .requiredOption('--coverage <path>', 'Coverage draft for all Core groups and checks')
+  .option('--migration-report <path>', 'Required lossless migration report when the graph carries a migration ledger')
+  .requiredOption('--out-dir <path>', 'Fresh non-authoritative review directory')
+  .action(async (graph: string, opts: {
+    provenance: string;
+    coverage: string;
+    migrationReport?: string;
+    outDir: string;
+  }) => {
+    const { runDesignMdTool } = await import('../src/cli/design-md.js');
+    const code = runDesignMdTool('prepare-review', {
+      input: graph,
+      provenance: opts.provenance,
+      coverage: opts.coverage,
+      migrationReport: opts.migrationReport,
+      outDir: opts.outDir,
+    });
+    if (code !== 0) process.exit(code);
+  });
+
+designMd
+  .command('approve-review')
+  .description('Materialize an exact compiler-compatible owner approval receipt after reviewing the prepared preview.')
+  .argument('<review-request>', 'Prepared review-request.json')
+  .requiredOption('--reviewer <id>', 'Identified project-owner reviewer')
+  .requiredOption('--out <path>', 'Fresh approval receipt path')
+  .requiredOption('--authority-transition-approved', 'Explicitly approve the reviewed authority transition')
+  .action(async (reviewRequest: string, opts: {
+    reviewer: string;
+    out: string;
+    authorityTransitionApproved: boolean;
+  }) => {
+    const { runDesignMdTool } = await import('../src/cli/design-md.js');
+    const code = runDesignMdTool('approve-review', {
+      input: reviewRequest,
+      reviewer: opts.reviewer,
+      output: opts.out,
+      authorityTransitionApproved: opts.authorityTransitionApproved,
+    });
+    if (code !== 0) process.exit(code);
+  });
+
+designMd
+  .command('compile')
+  .description('Compile a validated System Graph into a fresh, hash-bound Portable Core package. This checks declaration conformance, not factual or provenance truth.')
+  .argument('<graph>', 'Core v2 System Graph JSON to adopt as canonical authority')
+  .requiredOption('--provenance <path>', 'Reviewed provenance draft bound to exact graph decisions')
+  .requiredOption('--coverage <path>', 'Controller-computed coverage draft for all Core groups and checks')
+  .requiredOption('--review-receipt <path>', 'Project-owner approval receipt bound to the exact input bytes')
+  .option('--migration-report <path>', 'Required lossless migration report when the graph carries a migration ledger')
+  .requiredOption('--out-dir <path>', 'Fresh output directory for DESIGN.md and its bound System Graph')
+  .requiredOption('--adopt', 'Explicitly adopt the input graph as the canonical system authority')
+  .action(async (graph: string, opts: {
+    provenance: string;
+    coverage: string;
+    reviewReceipt: string;
+    migrationReport?: string;
+    outDir: string;
+    adopt: boolean;
+  }) => {
+    const { runDesignMdTool } = await import('../src/cli/design-md.js');
+    const code = runDesignMdTool('compile', {
+      input: graph,
+      provenance: opts.provenance,
+      coverage: opts.coverage,
+      reviewReceipt: opts.reviewReceipt,
+      migrationReport: opts.migrationReport,
+      outDir: opts.outDir,
+      adopt: opts.adopt,
+    });
+    if (code !== 0) process.exit(code);
+  });
+
+designMd
+  .command('prepare-checkpoint')
+  .description('Bind a project-owner checkpoint to all six exact compiler artifacts before project installation.')
+  .argument('<package>', 'Fresh compiler-produced adopted package directory')
+  .requiredOption('--reviewer <id>', 'Identified project-owner reviewer')
+  .requiredOption('--out <path>', 'Fresh project checkpoint receipt path')
+  .requiredOption('--authority-transition-approved', 'Explicitly approve installing the exact package bytes')
+  .action(async (packageDir: string, opts: {
+    reviewer: string;
+    out: string;
+    authorityTransitionApproved: boolean;
+  }) => {
+    const { runDesignMdTool } = await import('../src/cli/design-md.js');
+    const code = runDesignMdTool('prepare-checkpoint', {
+      input: packageDir,
+      reviewer: opts.reviewer,
+      output: opts.out,
+      authorityTransitionApproved: opts.authorityTransitionApproved,
+    });
+    if (code !== 0) process.exit(code);
+  });
+
+designMd
+  .command('adopt')
+  .description('Install an exact reviewed Core package into a project with rollback-safe transaction recovery.')
+  .argument('<package>', 'Fresh compiler-produced adopted package directory')
+  .requiredOption('--project-root <path>', 'Destination project root')
+  .requiredOption('--checkpoint-receipt <path>', 'Exact project-owner package checkpoint receipt')
+  .action(async (packageDir: string, opts: { projectRoot: string; checkpointReceipt: string }) => {
+    const { runDesignMdTool } = await import('../src/cli/design-md.js');
+    const code = runDesignMdTool('adopt', {
+      input: packageDir,
+      projectRoot: opts.projectRoot,
+      checkpointReceipt: opts.checkpointReceipt,
+    });
+    if (code !== 0) process.exit(code);
+  });
+
+designMd
+  .command('migrate')
+  .description('Write a staged Core v2 projection, System Graph, sidecars, and report without overwriting the source.')
+  .argument('[input]', 'Legacy or portable DESIGN.md (defaults to ./DESIGN.md)')
+  .requiredOption('--out-dir <path>', 'Fresh staging directory for migrated artifacts')
+  .option('--report <path>', 'Also write the machine-readable report to this path')
+  .action(async (input: string | undefined, opts: { outDir: string; report?: string }) => {
+    const { runDesignMdTool } = await import('../src/cli/design-md.js');
+    const code = runDesignMdTool('migrate', {
+      input,
+      outDir: opts.outDir,
+      report: opts.report,
+    });
+    if (code !== 0) process.exit(code);
+  });
+
+designMd
+  .command('audit')
+  .description('Audit a reference catalog for lossless Core v2 migration; never rewrites catalog sources.')
+  .argument('<catalog>', 'Directory containing reference subdirectories with DESIGN.md files')
+  .option('--report <path>', 'Write the aggregate machine-readable report to this path')
+  .action(async (catalog: string, opts: { report?: string }) => {
+    const { runDesignMdTool } = await import('../src/cli/design-md.js');
+    const code = runDesignMdTool('audit', { catalog, report: opts.report });
+    if (code !== 0) process.exit(code);
+  });
+
 await program.parseAsync();

@@ -12,7 +12,12 @@ user-invocable: true
 
 1. `.omd/preferences.md` — canonical 포맷 (`## <heading>` + ` ```omd-meta` 블록 + body — `omd:remember` 스킬의 포맷 정의 참조). **모든 status**의 엔트리를 파싱: `id` / `timestamp` / `scope` / `signal` / `confidence` / `status`
 2. `.omd/foldin-proposal.json` — 있으면 `status` (`proposed` / `applied` / `partial` / `snoozed`)와 `scopes[]` (scope, count, score, summary)
-3. `DESIGN.md` — § 라우팅 표시 + "모르는 것" 축 도출용
+3. `DESIGN.md` — Core stable-anchor 라우팅 표시 + "모르는 것" 축 도출용.
+   유효한 hash-bound `profile: portable-core` package가 있으면 graph object가
+   canonical이고 DESIGN.md는 표시용 portable projection이다. package가 없거나
+   invalid면 standalone DESIGN.md anchor만 읽는다. exact Core anchor가 전혀 없는
+   입력만 legacy compatibility로 읽어 의미 heading을 아래 anchor로 매핑하며,
+   legacy 숫자 section은 출력하지 않는다.
 
 ## 빈 상태
 
@@ -27,19 +32,21 @@ user-invocable: true
 
 ### ① 반영됨 (`status: applied`)
 
-scope별 한 줄: body 요약 + 반영된 DESIGN.md 섹션 + `applied_at` (있으면). 섹션은 omd:learn Phase 3의 scope→§ 라우팅으로 도출:
+scope별 한 줄: body 요약 + 반영된 DESIGN.md stable anchor + `applied_at`
+(있으면). anchor는 omd:learn의 Core object routing으로 도출:
 
-| scope | DESIGN.md § |
+| scope | DESIGN.md Core anchor / graph path |
 |---|---|
-| `components.*` | §8 (Components) 또는 §13 |
-| `color` | §2 (Color Palette) |
-| `typography` | §3 |
-| `spacing` | §4 |
-| `voice` | §10 (Voice & Tone) |
-| `motion` | §15 (Motion & Easing) |
-| `visualTheme` | §1 (Visual Theme) |
+| `components.*` | `components-states` / `graph.components_states` |
+| `color` | `foundations` / `graph.foundations.tokens` |
+| `typography` | `typography-assets` / `graph.typography_assets` |
+| `spacing` | `foundations` / `graph.foundations.tokens` |
+| `voice` | `content-locales` / `graph.content_locales` |
+| `motion` | `foundations` / `graph.foundations` |
+| `visualTheme` | `experience` / `graph.experience` |
 
-DESIGN.md에 해당 섹션이 실제로 없으면 § 표기는 생략 (추측으로 적지 말 것).
+DESIGN.md 또는 valid graph에 해당 값이 실제로 없으면 anchor 표기는 생략한다
+(추측으로 적지 말 것).
 
 ### ② 대기 중 (`status: pending`)
 

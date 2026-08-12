@@ -64,7 +64,7 @@ export function createServer(): McpServer {
     {
       title: 'Fetch a brand DESIGN.md',
       description:
-        "Fetch the full DESIGN.md content for a specific brand reference. Returns canonical 15-section design system spec (Visual Theme & Atmosphere, Color Palette, Typography, Components, ..., Voice & Tone, Personas, Motion). Use this when the user asks 'build UI like <brand>' or 'extract <brand>'s design tokens'.",
+        "Fetch the full DESIGN.md content for a specific brand reference. Catalog sources may use the legacy OmD import format during the Core v2 migration window; preserve explicit values and omit unresolved fields. Use this when the user asks 'build UI like <brand>' or 'extract <brand>'s design tokens'.",
       inputSchema: getDesignMdSchema,
     },
     async (args) => {

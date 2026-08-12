@@ -166,7 +166,7 @@ export async function GET(req: NextRequest) {
               color: "#a1a1aa",
             }}
           >
-            DESIGN.md · OmD v0.1
+            DESIGN.md · Core v2
           </div>
         </div>
       </div>

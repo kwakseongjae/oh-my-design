@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oh-my-design.kr/schema/design-md-core-project-checkpoint-v2.schema.json",
+  "title": "Oh My Design DESIGN.md Core v2 Project Checkpoint (OmD Proof Profile)",
+  "description": "OmD proof-profile checkpoint binding a deterministic exact-package request to an identified project-owner attestation. This receipt is not part of the vendor-neutral Core document format and does not cryptographically authenticate that identity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "request",
+    "attestation"
+  ],
+  "properties": {
+    "schema_version": { "const": "2.0.0" },
+    "kind": { "const": "design-md-core-project-adoption-checkpoint" },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "kind",
+        "status",
+        "source_package_tree_sha256",
+        "source_package"
+      ],
+      "properties": {
+        "schema_version": { "const": "2.0.0" },
+        "kind": { "const": "design-md-core-project-adoption-checkpoint-request" },
+        "status": { "const": "approval-required" },
+        "source_package_tree_sha256": { "$ref": "#/$defs/finalSha256" },
+        "source_package": { "$ref": "#/$defs/sourcePackage" }
+      }
+    },
+    "attestation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_sha256",
+        "decision",
+        "authority_transition_approved",
+        "authority"
+      ],
+      "properties": {
+        "request_sha256": { "$ref": "#/$defs/finalSha256" },
+        "decision": { "const": "approved" },
+        "authority_transition_approved": { "const": true },
+        "authority": { "$ref": "#/$defs/projectOwner" }
+      }
+    }
+  },
+  "$defs": {
+    "finalSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "not": {
+        "const": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    "projectOwner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "identifier"],
+      "properties": {
+        "role": { "const": "project-owner" },
+        "identifier": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!\\s*$).+",
+          "not": {
+            "pattern": "^\\s*(?:\\[\\s*(?:[Ff][Ii][Ll][Ll](?:\\s|_|-)*[Ii][Nn]|[Tt][Oo][Dd][Oo]|[Tt][Bb][Dd]|[Uu][Nn][Kk][Nn][Oo][Ww][Nn]|[Uu][Nn][Rr][Ee][Ss][Oo][Ll][Vv][Ee][Dd]|[Nn][Oo][Tt](?:\\s|_|-)*[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd])[^\\]]*\\]\\s*|(?:[Ff][Ii][Ll][Ll](?:\\s|_|-)*[Ii][Nn]|[Tt][Oo][Dd][Oo]|[Tt][Bb][Dd]|[Uu][Nn][Kk][Nn][Oo][Ww][Nn]|[Uu][Nn][Rr][Ee][Ss][Oo][Ll][Vv][Ee][Dd]|[Nn][Oo][Tt](?:\\s|_|-)*[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd])(?:\\s*(?::|—|-)\\s*.*)?\\s*)$"
+          }
+        }
+      }
+    },
+    "sourcePackage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "design_md_sha256",
+        "graph_sha256",
+        "provenance_sha256",
+        "coverage_sha256",
+        "manifest_sha256",
+        "adoption_receipt_sha256"
+      ],
+      "properties": {
+        "design_md_sha256": { "$ref": "#/$defs/finalSha256" },
+        "graph_sha256": { "$ref": "#/$defs/finalSha256" },
+        "provenance_sha256": { "$ref": "#/$defs/finalSha256" },
+        "coverage_sha256": { "$ref": "#/$defs/finalSha256" },
+        "manifest_sha256": { "$ref": "#/$defs/finalSha256" },
+        "adoption_receipt_sha256": { "$ref": "#/$defs/finalSha256" }
+      }
+    }
+  }
+}

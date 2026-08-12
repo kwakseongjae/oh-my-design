@@ -1,6 +1,6 @@
 ---
 name: omd:harness
-description: "화면 전체나 신규 surface를 처음부터 디자인할 때의 진입점 — Discovery→Wireframe→Components→Microcopy→Validation 파이프라인을 omd-master 오케스트레이터로 실행. 트리거: '랜딩페이지', '랜딩 페이지', '랜딩 만들어줘', '홈 화면', '첫 화면', '프로토타입', '그럴싸한', '구색 갖춰', 'first screen', 'first impression', 'landing page', 'landing', 'prototype', 'MVP UI', 'home', 'production-ready', 'wireframe to production', '랜딩 처음부터', 'production-ready', '一からデザイン', '從頭設計'. 자연어 발화('그럴싸한 랜딩 만들어줘', 'MVP UI 잡아줘', '프로토타입이라도 구색 갖춰서')에도 자동 트리거. 단일 컴포넌트 수정은 omd:apply."
+description: "사용자와 단계별로 검토하는 guided design harness. Discovery→Wireframe→Components→Microcopy→Validation을 omd-master가 실행하고 journey/system/validation의 필수 체크포인트에서 멈춘다. '/omd-harness', '체크포인트마다 검토', '나와 단계별로 디자인', 'guided design' 요청에 사용. 질문 없이 원샷으로 새 제품을 자율 구축하는 요청은 omd:autopilot, 단일 컴포넌트 수정은 omd:apply."
 ---
 <!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
 
@@ -9,12 +9,13 @@ description: "화면 전체나 신규 surface를 처음부터 디자인할 때�
 
 이 스킬은 **omd-master 오케스트레이터**를 호출하는 단일 진입점이다. 본 스킬은 launcher + 사전체크 + run 디렉토리 부트스트랩 책임만 가지고, phase 로직은 `agents/omd-master.md`에 있다.
 
-CLI 의존 없음. 모든 부트스트랩은 Bash + Write 툴로 직접 실행한다.
+Run 디렉토리 부트스트랩에는 CLI 의존이 없다. Core v2 review/compile/adoption은
+설치된 provider-free `design-md` 명령 또는 byte-equivalent helper만 사용한다.
 
 ## 트리거
 
 - `/omd-harness <task>` 명시 호출
-- 사용자가 자연어로 "디자인 하네스 / 시니어 디자이너처럼 / 알아서 디자인" 요청
+- 사용자가 자연어로 "디자인 하네스 / 체크포인트마다 검토 / 나와 단계별로 디자인" 요청
 
 ## Step 0 — task 추출
 
@@ -202,8 +203,46 @@ truth다. 아래 2.5.2–2.5.3 고정 picker는 실행하지 않는다.
    `options`와 `reason`을 사용하고 근거 없는 추천 표시는 만들지 않는다.
 3. `defer`는 묻거나 채우지 않고 `deferred_slots`에 id/slot/reason을 보존.
 4. `blocked`가 하나라도 있으면 진행하지 않고 필요한 evidence/authority만 알림.
+   `dispatch-plan.json`의 `dispatch_suppressed_by_blocked: true`는 이미 결정론적으로
+   blocker가 확인됐다는 뜻이다. blocker가 풀리기 전에는 자문 agent를 호출하지 않는다.
 5. auto 값과 사용자 답을 slot에 매핑해 handoff에
    `decision_ledger_ref: "council/decision-ledger.json"`와 함께 기록.
+
+이 분류를 host가 prose로 다시 구현하지 않는다. council helper와 같은 폴더의
+`design-council-handoff.cjs`를 사용해 checkpoint를 materialize한다:
+
+```bash
+HANDOFF_HELPER="$(dirname "$COUNCIL_HELPER")/design-council-handoff.cjs"
+[ -f "$HANDOFF_HELPER" ] && node "$HANDOFF_HELPER" "$(pwd)" "${RUN_DIR}" prepare
+```
+
+- `status: blocked` → 질문을 만들지 않고 `blocking_items`만 사용자에게 알린 뒤 중단.
+- `status: ask_user` → `questions_file`의 product-authority 질문만 한 batch로 제시.
+- `state: PROPOSE_PLAN` → 질문 없이 Step 3으로 진행.
+
+checkpoint materialize 직후 같은 helper dir의 context planner를 실행한다:
+
+```bash
+CONTEXT_HELPER="$(dirname "$COUNCIL_HELPER")/design-harness-context-plan.cjs"
+[ -f "$CONTEXT_HELPER" ] && node "$CONTEXT_HELPER" "$(pwd)" "${RUN_DIR}" relay
+```
+
+`${RUN_DIR}/handoff/context-plan.json`을 읽고 그대로 따른다. `relay_blocked`와
+`relay_questions`는 master를 spawn하지 않고 launcher가 기존 artifact를 exact relay한다.
+`resume_master`/`run_master`만 master를 호출하며, `sidecars`에 적힌 파일만 active
+channel skill tree에서 추가로 읽는다. planner가 없는 legacy install에서만 master의
+내장 conditional pointer를 사용한다. sidecar를 관성적으로 전부 로드하지 않는다.
+
+질문 답은 `${RUN_DIR}/checkpoints/council-intake.answers.json`에 저장한다. 답변
+객체에는 handoff의 `checkpoint_id`, `ledger_sha256`, `questions_sha256`를 그대로
+복사하고 `answers` 아래 decision id별 응답을 넣는다. 이 receipt가 없거나 현재
+ledger/questions hash와 다르면 재질문 없이 fail-close한다. 이후 다음처럼 병합한다.
+helper는 모든 required interview가 답변됐을 때만 PROPOSE_PLAN을 쓴다.
+
+```bash
+node "$HANDOFF_HELPER" "$(pwd)" "${RUN_DIR}" apply \
+  "${RUN_DIR}/checkpoints/council-intake.answers.json"
+```
 
 `interview`가 0개면 질문 없이 Step 3으로 간다. 이 단계는 deterministic
 intake 분류이며 multi-agent council이 실행됐다고 표현하지 않는다. helper
@@ -227,7 +266,16 @@ audience evidence와 단일 surface를 함께 보유하면 audience와 scope는 
 2. 각 agent는 제품 파일을 수정하지 않는 read-only 자문이다. 유일한 write
    ownership은 `council/lanes/<lane_id>.json`이다.
 3. 출력은 `{ "lane_id": "...", "claims": [...] }`이고, 각 claim은
-   `decision_id`, `recommendation`, `reason`, `evidence`를 포함한다.
+   `decision_id`, `decision_mode`, `authority_mode`, `recommendation`, `reason`,
+   `evidence`를 포함한다.
+   - `decision_mode`: `preserve-existing | choose-new | unknown`
+   - `authority_mode`: `preserve-existing | user-answerable | external-unverifiable | unknown`
+   - 기존 audience/scope/CTA 계약을 그대로 지키는 일은
+     `preserve-existing/defer`다. 새 제품 결정을 한 것이 아니다.
+   - 제품 소유자가 답할 수 있는 price/packaging/CTA/audience/scope/security/data
+     결정은 `choose-new/user-answerable/interview`다.
+   - 사용자 선호로 대체할 수 없는 공식 brand source나 측정 fact 부재만
+     `external-unverifiable/blocked`다.
    `evidence`는 실제 존재하는 repo/run-relative 경로여야 한다. 인용할 근거가
    없으면 claim을 만들지 않는다.
 4. agent/role을 사용할 수 없거나 실행이 실패하면 재시도하거나 다른 모델의
@@ -246,8 +294,10 @@ RECONCILE_HELPER="$(dirname "$COUNCIL_HELPER")/design-council-reconcile.cjs"
 snapshot hash로 동결된다. 어떤 자문도 `auto`로 승격할 수 없다. `blocked`가
 남으면 정확히 필요한 evidence/authority만 알리고 중단한다. 각 항목은
 `effective_disposition`을 우선 사용하며 없으면 원래 `disposition`을 쓴다.
-`interview`만 한
-번의 최대 4-question batch로 묻는다. 실제 `council/debate.json`이 생성되지
+`interview`만 한 번의 최대 4-question batch로 묻는다. `blocked`는 interview와
+같은 것으로 세지 않는다. blocked는 필요한 외부 근거를 알리고 멈추며,
+user-answerable 결정은 blocked로 바꾸지 않고 interview에 남긴다. 실제
+`council/debate.json`이 생성되지
 않았으면 council이 실행됐다고 표현하지 않는다.
 
 ### 2.5.2 — Legacy: ctx-prime.json Read + 사용자 picker 게이트
@@ -332,7 +382,57 @@ EOF
 
 ## Step 3 — DESIGN.md 존재 확인 + reference 의미 매칭
 
-프로젝트 루트에 DESIGN.md 없으면 reference를 직접 추천한다. 외부 API 호출 없음.
+먼저 `council/decision-ledger.json`의 `design-system-disposition`을 읽는다.
+
+- `reuse` → 기존 root `DESIGN.md`를 사용하고 reference picker를 건너뛴다.
+- `surface-local-only` → root `DESIGN.md`를 만들지 않고 현재 run의 local
+  surface contract만 사용한다. reference picker를 건너뛴다.
+- `establish` 또는 `refresh` → 아래 reference 의미 매칭을 보조 evidence로
+  사용할 수 있다. reference는 제품 사실이나 시스템 전체를 소유하지 않는다.
+- `interview` → checkpoint 답변 전에는 reference를 고르지 않는다.
+- `blocked` → 중단한다.
+
+기존 root `DESIGN.md`를 사용하는 경우 이 시점에 read-only format
+inspection을 남긴다: `core-v2-bound | core-v2-portable | legacy-13 |
+legacy-15 | legacy-16 | unmarked | absent`. 채택된 `profile: portable-core`
+manifest가 exact graph/projection hash를 검증할 때만 `core-v2-bound`다.
+`migration-candidate`는 named source DESIGN.md authority를 유지한다. 이 단계에서
+문서를 개명·재정렬·덮어쓰지
+않는다. Core v2가 아닌 입력은 Phase 5의 provider-free staged
+migration으로만 전환하고, `dropped=0` 수용 게이트를 건너뛰지 않는다.
+
+### 3.0.1 Core writer boundary
+
+Harness Phase 5 agents author only graph/provenance/coverage drafts. After the
+frozen ledger explicitly authorizes `establish` or `refresh`, the master uses
+`omd design-md prepare-review <graph> --provenance <provenance> --coverage <coverage> --out-dir <review>`
+(plus the migration report when applicable) to
+produce the exact non-authoritative checkpoint preview. After mandatory checkpoint
+#2 approval, it invokes `omd design-md approve-review` and the fully receipt-bound
+`omd design-md compile ... --review-receipt <approval> --out-dir <fresh> --adopt`.
+The only installed fallback is the exact `prepare-design-md-core-review.cjs`,
+`compile-design-md-core.cjs`, and `adopt-design-md-core.cjs` helper chain with the
+same inputs; the master never reconstructs it.
+`DESIGN.md`, section anchors, all seven `design-md:claim` openers, every
+`design-md:claim-end`, manifest, and binding hashes are compiler-owned; never
+hand-write or patch them. A migration candidate remains non-authoritative.
+The graph draft omits `projection`/`projection.sha256`; a compiler that demands a
+placeholder, precomputed, or zero SHA fails closed before staging.
+
+Compiler conformance is not factual, provenance, license, locale,
+accessibility, or visual-quality proof. The fresh package must also contain exact
+provenance/coverage bindings and pass the installed final project-system
+validator. If those bindings, the deterministic checkpoint packager, or the
+atomic package adopter are unavailable, fail closed at staging without manual
+hashes or partial project copies. Project mutation is only through
+`omd design-md prepare-checkpoint <fresh> --reviewer <project-owner-id> --out <checkpoint> --authority-transition-approved`
+then
+`omd design-md adopt <fresh> --project-root <project-root> --checkpoint-receipt <checkpoint>`;
+mandatory
+checkpoint #2 remains the separate authorization to adopt exact frozen bytes.
+
+ledger가 없는 legacy install에서만 기존 동작처럼 프로젝트 루트에 DESIGN.md가
+없으면 reference를 직접 추천한다. 외부 API 호출 없음.
 
 ### 3.1 카탈로그 로드
 
@@ -349,6 +449,17 @@ EOF
 - `vocabulary.json` — controlled vocab
 
 채널을 알 수 있으면 그 채널 dir을 우선하되, 서로 다른 dir의 세 파일을 섞지 않는다.
+
+선택된 reference DESIGN.md는 다음 순서로 resolve한다:
+
+<!-- omd:catalog-resolution-order — omd-init/omd-reference-capture SKILL.md + agents/omd-master.md 와 동일 순서 강제. drift guard: test/unit/core/catalog-resolution-order.test.ts -->
+
+1. `.codex/data/references/<id>/DESIGN.md`
+2. `.claude/data/references/<id>/DESIGN.md`
+3. `.opencode/data/references/<id>/DESIGN.md`
+4. `node_modules/oh-my-design-cli/web/references/<id>/DESIGN.md`
+5. `web/references/<id>/DESIGN.md`
+6. `https://oh-my-design.kr/<id>/design.md`
 
 ### 3.2 사용자 task 분석 (silent)
 
@@ -431,6 +542,7 @@ chosen_ref_id: <id>
 surface_signal: marketing | product | docs | onboarding | null
 reference_capture_dir: assets/_reference/<id>/ | null
 delivery_intent: implement | design-only
+design_md_format: core-v2-bound | core-v2-portable | legacy-13 | legacy-15 | legacy-16 | unmarked | absent
 ```
 
 reference_capture_dir이 존재하면 master는 그 디렉토리의 `tokens.json`, `structure.json`, `screenshots/*.png` 를 **모두 활용**한다 (canonical DESIGN.md만 보지 말 것).
@@ -439,278 +551,23 @@ reference_capture_dir이 존재하면 master는 그 디렉토리의 `tokens.json
 
 Subagent (master)는 AskUserQuestion 직접 호출 불가 (main-thread 전용). file-based handoff 패턴으로 돌린다.
 
-### Master에게 강제되는 시각 grounding 규칙
+### Master visual grounding — progressive disclosure
 
-master에게 전달되는 prompt 첫 단락은 **반드시** 다음을 포함:
+시각 디자인·component·prototype phase로 master를 spawn하기 직전에만
+`references/master-visual-grounding.md`를 전부 읽는다. intake 분류, 질문 relay,
+blocked handoff에는 이 sidecar를 읽지 않는다. 읽은 뒤에는 전체 문서를 prompt에
+복사하지 말고 reference, surface signal, verified font, archetype, asset mode,
+protected behavior, unresolved group만 한 단락으로 요약해 전달한다.
 
-```
-시각 grounding 규칙 (위반 = regression):
-1. reference_capture_dir이 null이 아니면, master의 Component phase 진입 전에
-   `<reference_capture_dir>/screenshots/hero-desktop.png`을 Read 툴로 **이미지로**
-   읽는다. 텍스트 분석만으로 끝내지 말 것 — 실제 hero composition
-   (carousel/illustration/data-card/text-only 등)을 시각 inspect 후 진행.
-2. `<reference_capture_dir>/structure.json`에 기록된 hero.type, cta.dominant_shape,
-   nav.structure, page.viewport_heights를 wireframe + component 결정에 반영.
-   surface_signal과 structure.json이 일치하면 그대로, 어긋나면 surface_signal 우선.
-3. `<reference_capture_dir>/tokens.json`의 live_overrides가 있으면 그 값을 우선
-   사용. canonical DESIGN.md 값은 voice/principles/motion philosophy에만 절대 권위.
-4. `<reference_capture_dir>/fonts.json`의 `live_observed: true` 항목은 생성 HTML
-   `<head>`에 반드시 `html_link` 그대로 박을 것. 누락 시 시스템 fallback으로
-   렌더되어 결과가 spec과 silently 어긋남 (예: Pretendard 미로드 → 둥근 시스템 폰트).
-   canonical DESIGN.md가 언급한 폰트라도 `live_observed: false`면 적용 금지
-   (대표 함정: "BM JUA accent only" 같은 spec 문구를 잘못 적용해서 둥근 디스플레이체로 헤더 렌더).
-5. **사용자 product 결과물 자산 정책** (단일 mode — 이전 clone/inspired 갈래는 v1.3.3 폐기):
-   - **brand creative work (mascot 일러스트·마케팅 사진·고유 ornament)는 product DOM 미사용.** captured logo/screenshot은 `assets/_reference/<id>/` 안에 reference로만 보존.
-   - 마케팅 카피·tagline·slogan은 라이브 사이트에서 verbatim 인용 금지. voice register + 문장 길이만 따르고 텍스트는 사용자 프로젝트 맥락에서 새로 작성.
-   - **헤더 logo = product name 워드마크만** (v1.3.7부터 — 별도 icon/shapes mark 금지):
-     ```html
-     <a class="logo" href="/" style="display:inline-flex;align-items:center;text-decoration:none;">
-       <span class="logo-wordmark">{{PRODUCT_NAME}}</span>
-     </a>
-     <style>
-       .logo-wordmark{
-         font-family:"Bricolage Grotesque","Space Grotesk","DM Serif Display","Fraunces",-apple-system,sans-serif;
-         font-size:22px;font-weight:700;letter-spacing:-0.04em;
-         color:var(--color-text-heading);
-       }
-     </style>
-     ```
-     - **그냥 폰트 + 텍스트**가 logo 역할. shapes mark / DiceBear icon / svg 마크 추가 금지 — 사용자가 짜증나는 "AI가 만든 generic 로고" 회피.
-     - 디스플레이 폰트는 `<head>`에 `<link rel="stylesheet">` 의무 로드. brand vibe별 선호:
-       - cool / minimal / fintech serious → **Space Grotesk** 또는 **Bricolage Grotesque** (geometric, modern sans)
-       - warm / playful / community → **Bricolage Grotesque** (variable, 친근)
-       - editorial / luxury / serif → **DM Serif Display** 또는 **Fraunces** (display serif)
-     - CDN URLs (omd:asset-fetch §6 참고, 모두 SIL OFL):
-       - `https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap`
-       - `https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap`
-       - `https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap`
-       - `https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&display=swap`
-
-   - **{{PRODUCT_NAME}} 결정 logic**:
-     1. 사용자 prompt에 명시된 product name 있으면 그걸로 (예: "내 가계부 앱 만들어줘" → 사용자에게 "이름은 뭘로 할까요? skip하면 placeholder"라고 한 줄 묻기 — 답 받으면 그대로, skip이면 step 2)
-     2. 사용자 응답 없거나 임의 placeholder 필요 → **brand vibe 맞는 generic placeholder 1개**:
-
-   | brand vibe | placeholder 후보 (1개 선택) |
-   |---|---|
-   | cool / fintech / minimal | `Folio`, `Mint`, `Nord`, `Vector`, `Norma`, `Atlas` |
-   | warm / conversational / friendly | `Pop`, `Spark`, `Halo`, `Cosy`, `Hue` |
-   | community / local / marketplace | `Townie`, `Hood`, `Plot`, `Block`, `Brick` |
-   | editorial / commerce / curated | `Folio`, `Curator`, `Volume`, `Edit` |
-   | mobility / service | `Lane`, `Trip`, `Glide`, `Loop` |
-   | productivity / advisor | `Compass`, `Norm`, `Plan`, `Beacon` |
-
-     3. 선택된 이름을 `<title>`, hero copy `[YOUR PRODUCT NAME]` 자리, footer brand 자리 등 **product 전체에 일관 적용** — 사용자가 swap할 때 grep 한 번으로 끝나도록 단일 토큰 유지.
-
-   - 사용자에게 한 줄 알림 (생성 후): "Product name으로 `Folio` 사용 — 본인 이름으로 바꾸려면 `landing.html`에서 `Folio` grep replace."
-
-6. **자산 라이브러리 — 검증된 CDN URL만 사용** (mandatory):
-
-   **각 항목 옆 timestamp는 마지막 200 OK 확인 일자.** 이 리스트에 있는 URL은 generator가 즉시 사용 가능. 이 리스트에 없는 자산은 generator가 임의로 URL 추측·생성 금지.
-
-   **CHARACTERS / AVATARS (hero 캐릭터 자리, CC0)**:
-   - DiceBear notionists — `https://api.dicebear.com/9.x/notionists/svg?seed=<seed>&size=<n>` ✓ 2026-05-14
-   - DiceBear lorelei — `https://api.dicebear.com/9.x/lorelei/svg?seed=<seed>&size=<n>` ✓ 2026-05-14
-   - DiceBear personas — `https://api.dicebear.com/9.x/personas/svg?seed=<seed>&size=<n>` ✓ 2026-05-14
-   - DiceBear 전체 스타일 카탈로그: `notionists | notionists-neutral | lorelei | personas | adventurer | avataaars | bottts | croodles | fun-emoji | thumbs` — 모두 CC0
-   - `seed` 값은 brand-relevant 토큰 사용 (예: `banksalad-advisor-001`) — deterministic 출력 보장
-
-   **ICONS (product 카테고리·feature 카드·nav)**:
-   - Lucide (ISC) — `https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/<name>.svg` ✓ 2026-05-14
-   - Heroicons (MIT) — `https://cdn.jsdelivr.net/npm/heroicons@2/24/outline/<name>.svg` ✓ 2026-05-14
-   - Tabler Icons (MIT) — `https://cdn.jsdelivr.net/npm/@tabler/icons@latest/icons/<name>.svg` ✓ 2026-05-14
-
-   **PATTERNS / BACKGROUNDS**:
-   - Hero Patterns (CC BY 4.0) — `https://heropatterns.com` ✓ 2026-05-14 (도큐 보고 inline SVG 복사)
-   - 원형 그라데이션 ornament은 `radial-gradient + filter: blur()` CSS로 generator가 직접 생성 (brand-specific creative work 아님)
-
-   **FONTS (open-source)**:
-   - Pretendard (SIL OFL) — `https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css` ✓ 2026-05-14
-   - Wanted Sans (SIL OFL) — `https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@latest/packages/wanted-sans/fonts/webfonts/static/complete/WantedSans.css` ✓ 2026-05-14
-   - Noto Sans KR (SIL OFL) — `https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap` ✓ 2026-05-14
-   - Inter (SIL OFL) — Google Fonts
-
-   **이전 버전에 있던 미검증 항목 (skill 제거됨)**: Humaaans github raw / Open Peeps github raw / unDraw direct CDN / Storyset CDN — 직접 SVG URL 패턴 미공식, 404 빈번. 다시 등재하려면 verify 후 timestamp 부착.
-
-   **Fetch 시 절차**:
-   - 자산 1회 `curl -sIL -o /dev/null -w "%{http_code}"` 로 200 확인
-   - 결과물 `attribution.md` 에 사용된 URL + 라이선스 + fetch 일자 명시
-   - `<!-- asset-source: <CDN url>, license: <license>, status: fetched|fallback -->` 코멘트를 HTML에 박을 것
-
-   **CDN fetch 실패 fallback 정책 (위반 = regression)**:
-   - **금지**: 핸드드로잉 inline SVG 캐릭터 합성 (stick figure, 손으로 그린 face 등 — sub-agent가 "curl 못 한다" 핑계 도피 안티패턴). **v1.3.4의 Karrot에서 다시 발생함 — 이번에 gate를 강화.**
-   - **허용 fallback (우선순위 순)**:
-     1. 동일 카테고리의 다른 검증 URL 시도 (DiceBear notionists 실패 → lorelei → personas)
-     2. 모두 실패 시 brand-color 그라데이션 placeholder box:
-        ```html
-        <div class="hero-character-fallback"
-             style="aspect-ratio:1; background:linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%); border-radius:24px; display:flex; align-items:center; justify-content:center;">
-          <span style="color:#fff; font-size:14px; opacity:.7;">[CHARACTER IMAGE]</span>
-        </div>
-        ```
-     3. 사용자에게 한 줄로 알림: "CDN 자산 fetch 실패, brand-color placeholder 사용."
-   - **사용자 product DOM에 amateur SVG는 절대 들어가지 않음.**
-
-   **Handcraft gate (v1.3.5 신설 — Karrot 사고 재발 방지)**:
-   - hero-character.svg 파일을 emit하기 직전 **상단에 의무 코멘트**:
-     ```xml
-     <!-- omd-asset: source=https://api.dicebear.com/9.x/<style>/svg?seed=<seed>, license=CC0, fetched=<ISO-date> -->
-     ```
-   - 이 코멘트가 없거나 source URL이 검증 catalog (omd:asset-fetch §2)에 없으면 — generator는 **그 파일 product DOM에 embed 금지**. fallback gradient placeholder 사용.
-   - product DOM 작성 후 self-audit grep:
-     - `grep -cE '<path d="M[0-9.,\sCQTLZ\- ]{200,}"' landing.html` (긴 path data = 손으로 그린 anatomy 흔적)
-     - 차트(.hero-chart) / Lucide 아이콘(viewBox 0 0 24 24) 외에 long path **0** 이어야 함. > 0 이면 sub-agent가 다시 fetch.
-   - product DOM 안 `<svg>` 인라인은 두 카테고리만 허용:
-     1. 차트 / 데이터 시각화 (line/bar/area chart — 데이터 패턴, brand-specific X)
-     2. Lucide / Heroicons / Tabler 아이콘 인라인 (작은 viewBox)
-
-   기타 모든 시각 자산은 catalog `<img>` URL 통해 로드. **catalog 외 임의 SVG 그리기 금지.**
-
-   자세한 catalog + 검증 gate는 `skills/omd-asset-fetch/SKILL.md` 참조.
-
-7. **CSS 컨테이너 일관성** (위반 = regression):
-   - 모든 top-level 섹션은 **단일 공유 클래스** `.container-inner` (또는 동등한 이름)을 사용.
-   - 그 클래스 한 곳에 `max-width: <N>px; margin: 0 auto; padding: 0 24px` 정의. **섹션별로 padding 값 다르게 정의 금지** — header / hero / features / footer 모두 같은 inner 컨테이너로 left/right edge가 정확히 일치해야 함.
-   - 결과 HTML 작성 후 self-audit: 모든 section의 inner element가 동일한 horizontal padding 적용됐는지 grep으로 확인. 어긋난 곳 있으면 통일.
-   - 직접 결함 예시 (v1.3.3에서 발생): `.header-inner { padding: 0 24px }` + `.hero-inner { padding: 0 }` → 뷰포트 wide에서 24px offset.
-
-8. **Hero composition decomposition** (위반 = regression):
-   - **먼저 rule 12 (Hero archetype)에서 archetype 1개 선택**. 모든 archetype은 분리된 elements 원칙 적용.
-   - 시각 요소는 분리된 element:
-     - `.hero-character` / `.hero-visual` — img / 또는 inline svg 단일 (DiceBear 등 검증 자산)
-     - `.hero-chart` — 별도 inline `<svg>` (차트는 brand-specific creative work 아닌 일반 데이터 시각화 패턴)
-     - `.hero-stat-card` — HTML `<div>` 카드 (숫자·라벨·trend chip)
-     - `.hero-ornament` — 배경 ornament (CSS radial-gradient + blur)
-     - `.hero-slide` (carousel archetype용) — 각 slide 분리된 element
-   - 각 element는 absolute positioning 또는 grid로 조합.
-   - **금지**: 캐릭터 + 차트 + 데이터 카드를 single SVG 파일 안에 통합 (v1.3.3 결함).
-
-9. **Hero archetype selection** (v1.3.8 신설 — monotone hero 회귀 방지):
-
-   v1.3.5~v1.3.7에서 brand가 다른데 hero 구도는 매번 "text-left + character-right + floating cards" 동일 → "와우" 약화. 이 rule부터 sub-agent는 brand vibe + surface signal 기반으로 **7가지 archetype 중 1개를 명시 선택**하고 그에 맞춰 구성.
-
-   ### archetype catalog
-
-   **A. `left-character`** (현행 default)
-   - 좌측: 카피 + CTA + carousel dot
-   - 우측: 캐릭터 일러스트 + floating data card 2-3개
-   - 적합: 핀테크 advisor / 데이터 어드바이저 / B2C 모바일 앱
-
-   **B. `center-text`**
-   - 중앙 정렬 헤드라인 + lead + 2 CTAs
-   - 아래: 큰 visual (screenshot / video / illustration) 단일
-   - 좌우 floating card 없음, 시선 단일 축
-   - 적합: AI / 개발자 도구 / Linear-style minimal SaaS / 검색 중심 portal
-
-   **C. `carousel`**
-   - 풀-블리드 또는 wide carousel — 3-5 slide auto-rotate
-   - 각 slide: 자체 카피 + visual + CTA (모두 다른 메시지)
-   - dot pagination + auto 5-7s
-   - 적합: 커뮤니티 마켓플레이스 / 이커머스 / 다양한 카테고리 promoting
-
-   **D. `split-screen`**
-   - 50/50 그리드: 좌측 = 카피 + CTA / 우측 = 큰 product 이미지 또는 booking widget
-   - floating card 없음, 큰 우측 단일 visual
-   - 적합: 모빌리티 (booking strip) / 여행 (검색 widget) / B2B (product 스크린샷)
-
-   **E. `editorial-magazine`**
-   - 풀-블리드 헤로 사진 + overlay 텍스트 (top-strip + cover caption + 큰 headline)
-   - 잡지 표지 메타포 (Vol.X · Year · Issue 같은 editorial 메타)
-   - 적합: 큐레이트 커머스 / 패션 / 라이프스타일 / 문화
-
-   **F. `dashboard-preview`**
-   - 좌측 또는 상단: 짧은 카피 + CTA
-   - 메인 visual: 큰 product UI 스크린샷 (가짜 dashboard mock)
-   - 시선 = "이게 우리 product 모습" 자체
-   - 적합: B2B SaaS / analytics / productivity 도구
-
-   **G. `quote-led`**
-   - 큰 인용구 (display serif, 80-120px) — 사용자 testimonial 또는 brand thesis
-   - 아래: 짧은 보강 카피 + CTA
-   - 캐릭터 / 차트 / floating 없음 — 단 한 문장의 권위
-   - 적합: 컨설팅 / 에이전시 / 럭셔리 brand / 사명 강조 surface
-
-   ### archetype 선택 룰 (brand vibe ↔ archetype)
-
-   | brand category / vibe | 1순위 | 2순위 (variation) |
-   |---|---|---|
-   | Fintech (advisor) — banksalad, kakaopay, toss | A `left-character` 또는 F `dashboard-preview` | B `center-text` |
-   | AI / Developer tools — anthropic, claude, vercel | B `center-text` | F `dashboard-preview` |
-   | Productivity / SaaS — linear, notion, asana | F `dashboard-preview` | B `center-text` |
-   | E-commerce (curated/editorial) — 29cm, musinsa, ssense | E `editorial-magazine` | C `carousel` |
-   | Community marketplace — karrot, dcard, mercari | C `carousel` | A `left-character` |
-   | Mobility / service — socar, uber, lime | D `split-screen` (booking widget) | C `carousel` |
-   | Travel — airbnb, yanolja, kayak | D `split-screen` (검색 widget) | E `editorial-magazine` |
-   | Luxury / heritage — ferrari, hermes | G `quote-led` 또는 E `editorial-magazine` | D `split-screen` |
-   | Consultancy / B2B services | G `quote-led` | B `center-text` |
-   | Health / wellness — gangnamunni, headspace | B `center-text` 또는 D `split-screen` | A `left-character` |
-
-   ### 선택 절차
-
-   1. brand reference DESIGN.md의 §1 (Visual Theme) + fingerprint `category`를 읽고 위 표에서 1순위 archetype 선택. reference DESIGN.md는 다음 우선순위로 resolve (omd:init Phase 4.1과 동일한 카탈로그 resolution order):
-
-      <!-- omd:catalog-resolution-order — omd-init/omd-reference-capture SKILL.md + agents/omd-master.md 와 동일 순서 강제. drift guard: test/unit/core/catalog-resolution-order.test.ts -->
-
-      1. `.codex/data/references/<id>/DESIGN.md` (Codex installer copy)
-      2. `.claude/data/references/<id>/DESIGN.md` (Claude Code / Cursor installer copy)
-      3. `.opencode/data/references/<id>/DESIGN.md` (OpenCode installer copy)
-      4. `node_modules/oh-my-design-cli/web/references/<id>/DESIGN.md` (로컬 npm 설치 직접 경로)
-      5. `web/references/<id>/DESIGN.md` (개발 레포)
-      6. `https://oh-my-design.kr/<id>/design.md` 를 fetch (WebFetch 또는 `curl -fsSL`) — 1~5가 모두 없을 때. 200이면 본문이 곧 reference DESIGN.md. 가져온 내용은 **활성 채널의 첫 writable data dir** (`.codex/data`, `.claude/data`, `.opencode/data`) 아래 `references/<id>/DESIGN.md`에 캐시한다. 채널을 판별할 수 없으면 1→3 중 먼저 존재하고 쓸 수 있는 dir을 사용하고, 모두 없으면 활성 host 채널 dir을 생성한다.
-   2. 사용자가 같은 brand로 **이미 한 번 실험**했으면 (`.omd/runs/INDEX.md`에 기록) → 2순위 사용해서 variation 제공
-   3. 사용자가 명시 ("center 정렬로", "carousel로") → 그대로 따름
-   4. 선택된 archetype을 `experiment-meta.json`의 `hero_archetype` 필드에 명시 (gallery 표시용)
-   5. 사용자에게 한 줄 알림: "Hero archetype: `center-text` 사용 — Linear-style minimal SaaS 매칭"
-
-   ### archetype 구현 시 공통 제약
-
-   - 모든 archetype은 rule 8 decomposition 따름 (element 분리)
-   - 모든 archetype은 rule 10 reveal safety net 적용
-   - 모든 archetype은 rule 5 wordmark-only logo 사용
-   - 모든 archetype은 rule 6 verified asset catalog만 사용
-   - archetype별 specific 자산 (예: editorial-magazine의 헤로 photo) — Picsum/Loremflickr 결정적 URL 필수
-
-10. **IntersectionObserver reveal safety net** (v1.3.6 신설, 위반 = regression):
-
-10. **IntersectionObserver reveal safety net** (v1.3.6 신설, 위반 = regression):
-
-    이전 batch에서 toss + socar 둘 다 round-2 refinement에서 **동일한 결함을 fix**함 — IntersectionObserver-기반 scroll reveal이 fullpage screenshot 또는 인쇄 모드에서 viewport 밖 element를 `opacity: 0`으로 영구히 hidden시킴. 시스템 결함이라서 skill에 박음:
-
-    - reveal 패턴 사용 시 **safety net 의무**:
-      1. CSS `@keyframes failsafeReveal` 정의:
-         ```css
-         @keyframes failsafeReveal { to { opacity: 1; transform: none; } }
-         [data-reveal] { animation: failsafeReveal 0.01s ease 2s forwards; }
-         html.js-ready [data-reveal] { animation: none; }  /* JS ready 시 IO가 주도 */
-         .is-revealed { opacity: 1 !important; transform: none !important; }
-         ```
-      2. JS 초기화 시점에 `document.documentElement.classList.add('js-ready')` 추가 → IO 정상 동작 path 진입
-      3. JS 미로드 / IO 미지원 / fullpage screenshot 시 → 2s 후 자동 reveal (CSS animation forwards)
-      4. `@media (prefers-reduced-motion: reduce)` 에서는 모든 reveal element를 `opacity: 1` 즉시
-    - **금지**: `opacity: 0` initial state + IO trigger만 + safety net 없음 — fullpage screenshot 시 빈 섹션 발생
-
-11. **"와우" 수준 polish 체크리스트** (master는 다음 중 최소 5개 구현):
-   - [ ] 헤더 sticky + scroll 시 subtle backdrop blur or shadow
-   - [ ] Hero 카르셀 (auto-rotate 5-7s, dot indicator, smooth fade)
-   - [ ] CTA hover micro-interaction (brand의 motion philosophy 따라 — banksalad면 "lighten on hover")
-   - [ ] 숫자 count-up 애니메이션 (자산·사용자 수 등 stat에)
-   - [ ] Scroll reveal stagger (IntersectionObserver, 60ms 간격)
-   - [ ] 차트 stroke-dashoffset draw-in (financial 도메인이면 mandatory)
-   - [ ] Feature 카드 hover에 subtle elevation + icon rotate/scale
-   - [ ] Background ornament — 원형 그라데이션 blur layer (CSS `filter: blur(120px)`로 ambient color wash)
-   - [ ] `prefers-reduced-motion` 가드 (모든 모션 끔)
-   - [ ] Footer가 정보 풍부 (4 column, legal·company·resources·contact)
-   - [ ] 모바일 viewport에서도 깔끔 (768px / 375px 둘 다)
-
-   모든 모션은 brand DESIGN.md §15 (Motion & Easing)의 duration scale + easing 토큰 따름.
-```
-
-이 규칙은 Step 4의 master spawn prompt에 매번 prefix로 들어간다 (사용자에게 노출 X — 내부 contract).
+이 sidecar의 unknown-means-absent, verified-asset, shared-container, reveal safety,
+responsive 규칙은 regression gate다. `omd-asset-fetch`가 URL·license·fallback의
+단일 source of truth이며 harness가 CDN catalog를 복제하지 않는다.
 
 ### 루프 의사코드
 
 ```
 spawn_count = 0
-prompt = "<위 grounding 규칙 prefix> + <RUN_DIR + task + chosen_ref_id + surface_signal + reference_capture_dir>. Phase 1부터 시작."
+prompt = "<grounding sidecar에서 추린 evidence summary> + <RUN_DIR + task + chosen_ref_id + surface_signal + reference_capture_dir>. Phase 1부터 시작."
 
 while spawn_count < 12 (safety cap):
   result = Agent({
@@ -731,6 +588,7 @@ while spawn_count < 12 (safety cap):
 
   if handoff.status == "done": break to Step 5
   if handoff.status == "error": halt + show
+  if handoff.status == "blocked": relay handoff.user_prose + blocking_items; halt
   if handoff.status == "ask_user":
     questions = JSON.parse(Read(handoff.questions_file))
     answers = AskUserQuestion({ questions: questions.questions })
@@ -798,6 +656,16 @@ Master가 체크포인트에서 turn을 종료한 후 다음 사용자 메시지
 ├── journey.mmd
 ├── wireframes/
 ├── DESIGN.md.patch
+├── system/
+│   ├── graph.draft.json
+│   ├── provenance.draft.json
+│   ├── coverage.draft.json
+│   ├── adopted-candidate/
+│   ├── graph.patch.json
+│   ├── manifest.patch.json
+│   ├── provenance.patch.json
+│   ├── coverage.patch.json
+│   └── checkpoint-manifest.json
 ├── components/
 │   ├── manifest.json
 │   └── microcopy.json
@@ -827,12 +695,17 @@ Master가 체크포인트에서 turn을 종료한 후 다음 사용자 메시지
 - Phase 로직 실행 (master)
 - Sub-agent 직접 spawn (master)
 - 사용자 응답 해석/라우팅 (master)
-- DESIGN.md 직접 수정 (Phase 5에서 master)
+- root DESIGN.md를 checkpoint 전에 직접 수정 (Phase 5 master는 graph drafts만
+  작성하고 compiler/checkpoint packager가 만든 승인된 exact bytes만 atomic adopter로 적용)
+- authority-neutral draft에는 `projection` binding을 쓰지 않는다. compiler가
+  projection SHA를 요구하면 placeholder를 넣지 말고 fail-close한다.
 - specialist 자문을 제품 구현 완료로 간주
 
 ## 금지
 
 - Master 없이 phase를 직접 수행하지 말 것
 - 사용자 체크포인트를 자동 승인하지 말 것
+- DESIGN.md, section/claim/claim-end marker, manifest, binding hash를 수동으로
+  만들거나 수정하지 말 것
 - Run 디렉토리를 임의로 정리/삭제하지 말 것
 - Step 2.3 verify gate 통과 전에 master spawn 절대 금지

@@ -5,6 +5,24 @@
 
 ---
 
+## 2026-08-12 (Codex) · Core v2 scoped commit 직전
+- locale/state/table/claim 결박과 v0.2 smoke ID authority를 닫았다.
+- Core/package/readiness 198 pass; legacy 440/440 drop0와 runtime mirror 146/92를 재확인했다.
+- 보호 생성물·timeout-only·historical evidence를 제외한 195개 경로만 stage했다.
+- 다음은 Core commit→clean clone 1.9.882 evidence→fresh 1.9.883 preregistration이다.
+
+## 2026-08-12 (Codex) · Core v2 provider-free 기준선
+- 5단계 exact review/compile/checkpoint/adopt transaction과 다국어 unknown gate를 닫았다.
+- legacy 440/440 drop0, Core 148/148, package/writer 108/108을 통과했다.
+- full suite는 1,291 pass; 남은 12 red는 dirty/source-commit/역사 seal fail-close뿐이다.
+- 다음은 보호 파일 제외 clean commit과 새 preregistration이며 과거 seal은 수정하지 않는다.
+
+## 2026-08-12 (Codex) · Core v2 안전 중단
+- Core v2 parser/schema/migration/Builder/compiler 초안을 구현하고 440 legacy drop0 경계를 유지했다.
+- claim context·unknown sentinel·authority 우회를 막는 중이며 마지막 추가 방어 뒤 회귀 재실행 전이다.
+- compiler의 provenance/coverage/review receipt/opaque-history P0를 닫기 전 채택 경로 연결을 금지했다.
+- 실행 에이전트 3개를 중단했고, 다음 재개 순서를 `CURRENT_STATE.md` 맨 위에 고정했다.
+
 ## 2026-08-12 (Codex) · system-proof admission authority
 - Autopilot mission이 full system proof schema와 exact source hashes를 admission 전에 재검증한다.
 - `{pass:true}` forged proof는 product build가 아니라 authority failure가 된다.

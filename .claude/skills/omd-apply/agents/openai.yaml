@@ -1,0 +1,4 @@
+interface:
+  display_name: "Improve an existing UI"
+  short_description: "Inspect, implement, and reverify the same product route"
+  default_prompt: "Use $omd-apply to improve this existing UI, preserve behavior, and verify the same route after implementation."

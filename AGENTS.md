@@ -11,7 +11,8 @@ oh-my-design itself uses Claude Code skills + subagents for its design harness. 
 - `skills/omd-*` — Claude Code / Codex / OpenCode skill files (installed into target projects via `omd install-skills`).
 - `.claude/agents/` — Subagent definitions for the design harness (Claude Code).
 - `.codex/agents/` — Mirror TOML definitions for the design harness (Codex).
-- `spec/omd-v0.1.md` — OmD spec (15-section DESIGN.md format).
+- `spec/design-md-core-v2.md` — normative vendor-neutral DESIGN.md Core v2 contract.
+- `spec/omd-v0.1.md` — legacy 15-section import format; dual-read only.
 - `research/harness-design/` — Design harness research + integration design.
 - `skills/omd-lab-02-design-harness/` — Lab #02 versioned harness experiments.
 - `scripts/ctx-prime.cjs` — v1.6.0 deterministic codebase analyzer (stack, brand color, voice, surface inventory, audience hypothesis). Called by `omd-harness` Step 2.5 to pre-fill master slots.
@@ -56,7 +57,7 @@ When this AGENTS.md is loaded and a fresh `.omd/runs/run-<latest>/` exists:
    - Phase 2 — UX Research (parallel × 2-3 omd-ux-researcher)
    - Phase 3 — IA / Journey (master itself) → **user checkpoint #1**
    - Phase 4 — Wireframe (spawn omd-ui-junior)
-   - Phase 5 — System / DESIGN.md.patch (master + omd init prepare) → **user checkpoint #2**
+   - Phase 5 — System Graph + portable DESIGN.md Core v2 projection patch → **user checkpoint #2**
    - Phase 6 — Components (spawn omd-ui-junior)
    - Phase 6.5 — Asset Sourcing (spawn omd-asset-curator)
    - Phase 7 — Microcopy (spawn omd-microcopy)
@@ -110,7 +111,9 @@ This mirrors the `omd:apply` Claude Code skill behavior.
 - Narrative evidence and UI-token evidence are related but not identical. An official font's history, visual character, or license can belong in the reference without being promoted to `tokens.typography.family.ui`. Do not delete useful brand context merely because it is not a machine token.
 - Public marketing, corporate, font-catalog, and product/app surfaces are separate evidence domains. Observation on one domain cannot populate another domain's reference tokens without explicit evidence linking them.
 - Runtime font availability does not authorize substitution. A known but non-loadable font may be labeled unavailable; do not render Inter/system-ui as though it were that font.
-- Never fabricate DESIGN.md §11-13 (Brand Narrative / Principles / Personas) facts. Use `[FILL IN]` placeholders if user-provided facts are absent.
+- Never fabricate brand, principle, or persona facts. Core v2 omits an unresolved
+  value at its smallest field/group boundary; `[FILL IN]` is legacy-read
+  compatibility only and must not be emitted by a new Core writer.
 - Never introduce a token absent from DESIGN.md without going through Phase 5 (system extension with checkpoint #2 approval).
 - Never download from Pinterest. Pinterest URLs are listed for the user to download manually.
 - Never emit SUS / NPS / "satisfaction score" from synthetic personas. Use task_success / steps_vs_optimal / friction_count / heuristic_violations / abandonment instead.

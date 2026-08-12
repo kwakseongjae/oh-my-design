@@ -5,14 +5,14 @@ const siteUrl = "https://oh-my-design.kr";
 export const metadata: Metadata = {
   title: "Design System Builder — oh-my-design",
   description:
-    "Build a project-owned DESIGN.md from 440 quality-graded company references. Preview confirmed colors, typography, spacing, components, and context while unresolved fields stay absent.",
+    "Project a quality-graded company reference into DESIGN.md Core v2. Evidence remains reference material until you add project context, validate it, and explicitly adopt it.",
   alternates: {
     canonical: `${siteUrl}/builder`,
   },
   openGraph: {
     title: "Design System Builder — oh-my-design",
     description:
-      "Build a project-owned DESIGN.md from 440 quality-graded company references. Confirmed evidence stays visible; unresolved fields stay absent.",
+      "Project a quality-graded company reference into DESIGN.md Core v2. Confirmed evidence stays visible; unresolved fields stay absent.",
     type: "website",
     url: `${siteUrl}/builder`,
     siteName: "oh-my-design",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Design System Builder — oh-my-design",
     description:
-      "Preview and export a project-owned DESIGN.md from 440 quality-graded company references.",
+      "Preview and export an evidence-backed DESIGN.md Core v2 reference projection, then validate it before project adoption.",
     images: ["/og-image.png"],
   },
 };

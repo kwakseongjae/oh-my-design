@@ -49,7 +49,14 @@ description: "한국어 canonical 문서·UX copy를 EN/JA/ZH-CN/ZH-TW로 번역
 
 ## 2. Adaptation workflow
 
-1. KO canonical, frontmatter, DESIGN.md §10, 승인된 제품 용어를 읽는다.
+1. KO canonical, 그 문서의 locale/source metadata, DESIGN.md의
+   `content-locales` stable anchor, 승인된 제품 용어를 읽는다. 유효한
+   hash-bound `profile: portable-core` package가 있으면
+   `graph.content_locales`가 canonical이다. package가 없거나 invalid면
+   standalone DESIGN.md anchor를 사용한다. exact Core anchor가 전혀 없는
+   입력만 legacy compatibility로 읽고 의미 heading `Voice & Tone`을
+   `content-locales`로 매핑한다. legacy 숫자 section은 새 citation에
+   복사하지 않는다.
 2. 문서의 thesis 1–3개와 보호 구간(수치·명령·URL·ID·인용·제품 동작)을 적는다.
 3. 문서 구조를 의미 단위로 나눈다. H2 개수는 정보 parity를 확인하는 보조 지표일 뿐 강제로 맞추지 않는다.
 4. target locale에서 사용자가 읽을 순서로 문단을 새로 구성한다.

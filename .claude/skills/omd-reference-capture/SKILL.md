@@ -7,11 +7,30 @@ description: "선택된 reference brand의 라이브 사이트에서 디자인 �
 
 # omd:reference-capture — Live Reference Capture
 
-선택된 reference brand의 **라이브 사이트에서 디자인 컨텍스트를 가져온다**. 산출물은 `assets/_reference/<id>/` 디렉토리에 모이고, 사용자의 디자인 작업(omd:apply / omd:harness)에서 컨텍스트로 활용된다.
+선택된 reference brand의 **라이브 사이트에서 디자인 evidence를 가져온다**.
+산출물은 `assets/_reference/<id>/` 디렉토리에 모이며 그 자체로 프로젝트
+디자인 권한이 되지 않는다.
 
 ## 핵심 원칙 (위반 = regression)
 
 이 스킬은 **dev/디자인 reference 캡쳐**용이다. brand IP를 사용자 product에 그대로 ship하는 도구가 **아니다**.
+
+0. **Evidence-only authority boundary**
+   - 이 스킬은 root `DESIGN.md`, `.omd/system/graph.json`, manifest 또는
+     project token을 쓰거나 수정하지 않는다.
+   - `evidence.json`, `tokens.json`, `live_overrides`, `fonts.json`, screenshots,
+     logo는 관찰 evidence다. omd:apply/omd:harness가 자동 적용·동기화하거나
+     fallback으로 사용할 수 없다.
+   - graph-authoring checkpoint가 source/provenance와 사용자 권한을 검토해
+     결정을 Core v2 `graph.json`에 명시적으로 admit하고, `profile:
+     portable-core` manifest가 graph와 DESIGN.md의 exact SHA-256을 검증할 때만
+     그 **graph path**가 프로젝트 authority가 된다. capture 파일 자체는
+     admission 뒤에도 evidence로 남는다.
+   - exact Core stable anchor가 있는 reference는 `experience`, `foundations`,
+     `typography-assets`, `components-states`, `layout-platforms`,
+     `content-locales`, `governance`로 읽는다. anchor가 전혀 없는 reference만
+     legacy meaning-based fallback으로 읽고 숫자 section을 새 citation에
+     복사하지 않는다.
 
 1. **Facts vs. Content 구분**
    - **Facts (캡쳐 OK)**: 컴퓨티드 색상 hex, 폰트 family/weight, spacing, radius, 컴포넌트 구조 — 디자인 시스템 분석은 fair use.
@@ -22,7 +41,9 @@ description: "선택된 reference brand의 라이브 사이트에서 디자인 �
    - 모든 다운로드 파일은 `attribution.md`에 source URL + 캡쳐 일자 + 추정 권리자 기록.
 
 3. **사용자 product 생성 시 분리**
-   - omd:apply/omd:harness가 UI를 만들 때, brand의 **voice/tone(facts)**은 참고하되 **literal copy**는 새로 작성.
+   - omd:apply/omd:harness는 capture의 brand voice/tone도 evidence로만 본다.
+     프로젝트에 적용하려면 먼저 Core graph admission이 필요하며 literal copy는
+     어떤 경우에도 새로 작성한다.
    - brand 히어로 사진 / 마케팅 영상은 사용자 product에 직접 embed하지 말고 placeholder + "사용자 자체 자산으로 교체 필요" 주석.
 
 4. **robots.txt / TOS 우선**
@@ -45,42 +66,12 @@ description: "선택된 reference brand의 라이브 사이트에서 디자인 �
 
 다음 모든 Phase는 단일 흐름. (구버전 Phase 0 - clone/inspired ask 제거됨.)
 
-## (legacy reference) — 이전 mode 선택 텍스트 (참고용, 동작 안 함)
+## Legacy mode metadata
 
-reference-capture가 어디까지 가져올지는 사용자 의도에 따라 두 갈래. 호출 진입 시점에 mode가 결정되지 않았다면 사용자에게 한 번에 묻기:
-
-```
-<id>를 어떻게 활용할까요?
-
-1. clone — 거의 똑같이 시작. 실제 로고·일러스트·폰트 받아와서 dev scaffold 구성.
-   landing이 라이브 사이트와 시각적으로 매우 비슷하게 시작됩니다.
-   ⚠ 자동으로 CLONE-MODE.md 배너 + replace-checklist.md가 생성되고,
-     "사용자 product에 ship 전에 brand 자산을 자체 자산으로 교체 필요"라고 표시됩니다.
-
-2. inspired — 톤·체계만 가져옴. [YOUR LOGO] placeholder, 일러스트는 generic placeholder.
-   브랜드의 voice·원칙·팔레트 철학만 적용. 바로 ship 가능한 상태로 산출.
-
-답: clone / inspired (기본값: inspired)
-```
-
-이 선택은 `.omd/init-context.json`의 `mode` 필드에 저장되어 후속 omd:init / omd:harness / omd:apply가 일관되게 사용한다.
-
-이미 omd:harness Step 3.7에서 mode를 묻고 진입했으면 Phase 0 skip.
-
-### Mode별 동작 요약
-
-| 단계 | clone | inspired |
-|---|---|---|
-| LICENSE-NOTE.md | 작성 ✓ | 작성 ✓ |
-| tokens.json (atomic facts) | 캡쳐 ✓ | 캡쳐 ✓ |
-| structure.json (composition facts) | 캡쳐 ✓ | 캡쳐 ✓ |
-| logo.<ext> | 캡쳐 + product `<img>`로 사용 가능 (banner 의무) | 캡쳐만 (product에 미사용, placeholder 강제) |
-| screenshots/ | 캡쳐 ✓ | 캡쳐 ✓ |
-| fonts.json (CDN URLs) | 캡쳐 + 자동 `<link>` 로드 강제 | 캡쳐만 (수동 로드) |
-| hero illustration assets | (있고 publicly accessible면) URL 기록 + 사용 가능 | URL만 기록 |
-| attribution.md | 작성 + 사용 표시 | 작성 |
-| **CLONE-MODE.md (project root)** | **mandatory 작성** | 미작성 |
-| **replace-checklist.md (project root)** | **mandatory 작성** | 미작성 |
+과거 `clone|inspired` 값이 `.omd/init-context.json`에 남아 있어도 이 스킬은
+동작을 분기하지 않는다. 두 값 모두 동일한 evidence-only capture를 수행하며
+logo/font/screenshot/token을 product에 자동 삽입하지 않는다. legacy mode를
+Core graph admission 또는 사용자 권한으로 해석하지 않는다.
 
 ## 전체 플로우
 
@@ -134,7 +125,10 @@ id가 카탈로그에 없으면 종료 + "X는 reference 카탈로그에 없어�
    - 없으면 homepage HTML에서 `apple-touch-icon` / `og:image` / favicon-256 추출
 
 3. **공식 DS docs URL** (있으면):
-   - `<refdir>/DESIGN.md`의 footer 또는 §4 verified 섹션에서 grep
+   - Core reference면 `<refdir>/DESIGN.md`의 `governance` anchor와 인접한
+     hash-listed provenance artifact에서 찾는다. Core anchor가 전혀 없는
+     legacy reference만 footer 또는 의미 heading `Verified Sources`에서 찾는다.
+     찾지 못하면 URL을 추론하지 않는다.
 
 수집한 URL 후보를 사용자에게 보여주고 확인:
 
@@ -168,9 +162,8 @@ informing UI design work in this project.
 
 ## What's here is for REFERENCE, not REDISTRIBUTION
 
-- **Design tokens** (colors, fonts, spacing) — `tokens.json`. These
-  are facts about the brand's design system and may be used to inform
-  your own design.
+- **Observed design values** (colors, fonts, spacing) — `tokens.json`.
+  These are evidence about the captured surface, not project tokens.
 - **Logo file** — captured for visual recognition during development.
   This is <brand>'s trademark. Do not use in your own product, your
   own marketing, or any redistribution. Replace with your own brand
@@ -183,15 +176,16 @@ informing UI design work in this project.
 
 - Embed `logo.*` or `screenshots/*.png` in your own product UI as if
   they belong to you.
-- Copy `tokens.json`'s exact hex values into your own brand without
-  shifting them via `delta_set` (see omd:init).
+- Copy or adapt `tokens.json` values into your product before an explicit
+  Core graph-authoring checkpoint admits the decision with provenance.
 - Copy any marketing text from screenshots into your own product
   verbatim — voice/tone is fact, but specific phrasing is creative work.
 
 ## What you SHOULD do
 
-- Use the **design language** (token relationships, component
-  patterns, voice register) to inform your project's DESIGN.md.
+- Review the **design language** (token relationships, component
+  patterns, voice register) as evidence during a Core graph-authoring
+  checkpoint; only admitted graph decisions become project authority.
 - Reference the screenshots during design reviews to align with the
   visual target.
 - Replace all brand-identifying assets with your own before any
@@ -257,11 +251,17 @@ registry에 없는 family는 `html_link: null` + `notes`에 "CDN 미확인, 수�
 
 ### 3.5.2 BM JUA 같은 misapplication 가드
 
-canonical DESIGN.md가 "BM JUA를 landing/promo accent로"라고 적어뒀더라도, **라이브 inspect에서 실제 BM JUA 사용이 관측 안 되면** `live_observed: false`로 기록하고 후속 generator가 적용 안 하도록 신호. omd:init Phase 5B의 priority rule이 `live_overrides` 우선 처리.
+reference DESIGN.md가 "BM JUA를 landing/promo accent로"라고 적어뒀더라도,
+**라이브 inspect에서 실제 BM JUA 사용이 관측 안 되면**
+`live_observed: false`로 기록한다. 이는 admission 검토용 반증 evidence일 뿐
+reference나 project authority를 자동 교체하지 않는다. 후속 graph-authoring
+checkpoint가 채택/기각을 결정한다.
 
-### 3.5.3 Clone mode 강제 로드
+### 3.5.3 Retired clone-mode load
 
-mode=clone이면 omd:init/omd:harness가 생성 HTML `<head>`에 fonts.json의 `live_observed: true` 항목 `html_link`를 **반드시** 박는다. mode=inspired면 폰트 로드는 사용자 선택.
+폐기된 clone metadata가 남아 있어도 capture만으로 HTML `<head>`에 font URL을
+자동 삽입하지 않는다. source/license를 검토해 Core graph의
+`typography_assets`에 명시적으로 admitted된 font만 후속 writer가 로드한다.
 
 ## Phase 3.9 — MCP-free evidence collector (v2)
 
@@ -375,7 +375,7 @@ skill 진입 시 사용자에게 한 줄로 알림:
 
 **Proof gate (위반 = regression)**: 이 Phase는 실제 navigation + computed style 추출이 일어났음을 `evidence.json`으로 증명해야 한다. 사람이 쓴 "라이브 inspect 했다" 문장은 증거가 아니다.
 
-### 4.0 — `.live-inspect-proof.json` 작성 (REQUIRED, 이 파일 없으면 후속 generator는 live_overrides 무시)
+### 4.0 — `.live-inspect-proof.json` 작성 (REQUIRED, 없으면 candidate evidence 폐기)
 
 collector의 `evidence.json`에서 raw computed style 5개 이상을 projection해 `assets/_reference/<id>/.live-inspect-proof.json`에 저장한다:
 
@@ -397,11 +397,17 @@ collector의 `evidence.json`에서 raw computed style 5개 이상을 projection�
 }
 ```
 
-후속 generator (omd:init / omd:harness)는 `evidence.json`의 `schemaVersion === 1`, `surfaces.length >= 1`, raw element ≥5를 먼저 확인한다. legacy proof 파일만 있고 bundle이 없으면 canonical만 사용한다.
+후속 graph-authoring 단계는 `evidence.json`의 `schemaVersion === 1`,
+`surfaces.length >= 1`, raw element ≥5를 먼저 확인한다. 이 검사는 evidence
+admissibility만 판단한다. 통과 자체가 project token admission은 아니다. legacy
+proof 파일만 있고 bundle이 없으면 capture 값을 승격하지 않는다.
 
-### 4.1 — drift detection (proof와 tokens.json#live_overrides 일관성)
+### 4.1 — drift detection (proof와 observed candidate 일관성)
 
-`tokens.json#live_overrides`의 각 값은 bundle의 `surfaceId + selector + style property`로 역추적 가능해야 한다. canonical과 값이 같다는 이유만으로 실패 처리하지는 않지만, provenance가 없으면 override를 삭제한다.
+`tokens.json#live_overrides`라는 legacy key가 남아 있어도 각 값은 bundle의
+`surfaceId + selector + style property`로 역추적 가능해야 한다. 이 key 이름은
+우선순위나 override 권한을 부여하지 않는다. provenance가 없으면 candidate를
+삭제하고, provenance가 있어도 graph checkpoint 전에는 evidence-only다.
 
 ### 4.2 — token 캡쳐 본문
 
@@ -616,102 +622,12 @@ directory). Captured tokens reflect the live site at capture time and
 may drift as the brand evolves.
 ```
 
-## Phase 6.5 — Clone mode 전용 산출 (mode=clone일 때만)
+## Phase 6.5 — retired clone outputs
 
-### 6.5.1 `CLONE-MODE.md` (project root, mandatory)
-
-clone mode 진입 시점에 프로젝트 루트(`./CLONE-MODE.md`)에 **다른 산출보다 먼저** 작성:
-
-```markdown
-# ⚠ CLONE MODE — Reference Scaffold
-
-This project was scaffolded in **clone mode** from the **<id>** reference
-on **<ISO-date>**. The scaffold deliberately resembles <id>'s live
-public surface to help you start fast.
-
-## What this means
-
-- **Brand assets in this project are NOT yours.** The header logo, web
-  fonts, illustration patterns, and visual rhythm currently match
-  <id>'s public brand. They are placeholders/references, not part of
-  your product's identity.
-- **You MUST replace them before shipping.** See `replace-checklist.md`
-  for the exact list of files and lines to swap.
-- **Marketing copy** in this scaffold was generated fresh in the brand's
-  voice register — it is not copied verbatim from the live site. Edit
-  freely for your product's narrative.
-
-## Why clone mode exists
-
-Designers and engineers commonly evaluate "what would an X-styled UI
-look like for my product" by starting from a close visual reference.
-clone mode automates that scaffold step. It is **not** a license to
-ship the reference brand's identity as your own.
-
-## To switch back to inspired mode
-
-Re-run with `mode=inspired` — all brand-identifying assets revert to
-`[YOUR LOGO]` placeholders and generic illustration silhouettes, ready
-to ship with your own brand.
-
----
-
-Generated by `omd:reference-capture`. Do not delete this banner until
-`replace-checklist.md` is fully resolved.
-```
-
-### 6.5.2 `replace-checklist.md` (project root, mandatory)
-
-clone mode가 만든 모든 brand-identifying 자산의 정확한 swap 지점 enumeration:
-
-```markdown
-# Replace Checklist — pre-ship swap list
-
-Before shipping, resolve every item below. Each item points to a
-brand-cloned asset that must be replaced with your own product's
-equivalent.
-
-## Logo
-
-- [ ] `assets/_reference/<id>/logo.<ext>` — replace `<img src="assets/_reference/<id>/logo.<ext>">` references
-      in `landing.html` (line <N>), `app/layout.tsx` (line <N>), etc.
-      Suggested replacement: `assets/brand/logo.<ext>` (your own).
-
-## Web fonts
-
-- [ ] `<link rel="stylesheet" href="<CDN URL>">` in `landing.html` head
-      — keep if you use the same font (Pretendard is open-source);
-      remove if you switch to a different typeface.
-
-## Hero illustration / imagery
-
-- [ ] `landing.html` lines <N-M> — placeholder illustration matching
-      <id>'s visual idiom. Replace with your own illustration / photo.
-
-## Marketing copy
-
-- (none — all copy was written fresh in the brand voice register;
-  edit for your product's specific narrative as needed)
-
-## Color tokens
-
-- [ ] Live brand colors (e.g. `#13bd7e` for banksalad) are used as
-      `--brand-primary`. Adjust if your brand uses a different hue.
-
-## Final pre-ship check
-
-```bash
-# Should return no matches before shipping:
-grep -rn "_reference/<id>" .
-```
-
-## When this checklist is complete
-
-Delete this file and `CLONE-MODE.md` from the project root. The
-scaffold is now your product.
-```
-
-이 두 파일은 generator가 clone mode를 인지하는 마커이기도 함. 사용자가 의도적으로 삭제해야 inspired mode로 전환.
+`CLONE-MODE.md`, `replace-checklist.md`, product scaffold, font `<link>`,
+reference logo 사용 같은 과거 clone 산출은 생성하지 않는다. 이 스킬의 write
+scope는 `assets/_reference/<id>/` evidence와 attribution/license 기록뿐이다.
+프로젝트 적용은 별도 Core graph-authoring checkpoint 이후의 writer가 소유한다.
 
 ## Phase 7 — 사용자 요약
 
@@ -726,17 +642,20 @@ prose로:
 ⚠ 저작권 안내: 이 자료는 디자인 reference 용도. 사용자 product에 brand 로고/스크린샷을 직접 embed하지 마세요. 자세한 사용 경계는 LICENSE-NOTE.md 참고.
 
 다음 단계:
-  - omd:apply로 컴포넌트 작업 시작 (tokens.json 자동 활용)
-  - omd:harness로 전체 surface 디자인 (이 자료를 reference로)
+  - Core graph-authoring checkpoint에서 채택할 evidence를 검토
+  - admitted graph가 valid하게 hash-bound된 뒤 omd:apply로 컴포넌트 작업
+  - omd:harness에서 이 자료를 evidence/reference로 검토
   - 토큰 시각 확인: open assets/_reference/<id>/screenshots/hero-desktop.png
 ```
 
 ## omd:harness / omd:apply 와의 인터페이스
 
-이 스킬이 만든 `assets/_reference/<id>/tokens.json`은 후속 skill이 자동 활용:
+이 스킬이 만든 `assets/_reference/<id>/`는 후속 skill의 **evidence input**이다:
 
-- **omd:apply**가 컴포넌트 작업 시 `tokens.json`이 있으면 hex 값 동기화 우선
-- **omd:harness**의 Component phase에서 시각 reference로 screenshots 활용
+- **omd:apply**는 capture 파일을 직접 적용하지 않는다. valid hash-bound Core
+  graph에 admitted된 decision만 해당 graph path에서 적용한다.
+- **omd:harness**는 screenshots/tokens를 graph-authoring checkpoint의 evidence로
+  검토할 수 있지만, admission 전 product token·font·asset로 승격하지 않는다.
 
 UI 생성 시 logo 사용 규칙 (omd:apply / omd:harness 둘 다 적용):
 - 사용자 product의 **헤더/footer logo는 reference logo를 placeholder로 쓰지 말 것** — `[YOUR LOGO]` 자리만 잡고 사용자에게 자체 로고 요청
@@ -745,7 +664,10 @@ UI 생성 시 logo 사용 규칙 (omd:apply / omd:harness 둘 다 적용):
 ## 안티패턴 (절대 금지)
 
 - ❌ 다운로드 시작 전에 LICENSE-NOTE.md 작성 skip
-- ❌ Phase 4의 token 캡쳐 결과를 그대로 사용자 DESIGN.md에 hex값 verbatim 복사 (omd:init의 delta_set 시스템을 우회)
+- ❌ Phase 4의 token 캡쳐 결과를 그대로 사용자 DESIGN.md에 hex값 verbatim 복사
+  (Core graph admission·provenance·hash binding을 우회)
+- ❌ `tokens.json#live_overrides`, `fonts.json`, screenshot을 graph admission 없이
+  omd:apply/omd:harness의 prescriptive authority나 fallback으로 사용
 - ❌ 브랜드 마케팅 카피를 사용자 product에 그대로 인용
 - ❌ 사용자 product의 로고 자리에 reference brand 로고 임시로라도 박기 (사용자가 잊고 ship 가능성)
 - ❌ robots.txt 차단 경로 강행

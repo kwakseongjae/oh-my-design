@@ -55,12 +55,61 @@ folders and must never edit `DESIGN.md` or product files.
    `design-system-decision.json` receipt is mandatory before any product write.
 6. `SYSTEM_PROOF` — for `establish` or `refresh`, use the contract in
    `references/design-system-contract.md`. The design-system architect may
-   propose; the main agent writes `DESIGN.md`, `system/provenance.json`,
-   `system/coverage.json`, and the exact machine-readable `system/spec.json`
-   described by that contract. Coverage booleans are not evidence: every
+   propose; the main agent writes only run-scoped graph/provenance/coverage
+   drafts. New generation, synthesis, refresh, and refactor are single-write
+   Core v2: never emit legacy frontmatter or 13/15/16-section layouts. After the
+   `design-system-decision.json` receipt grants `establish`/`refresh` authority,
+   validate the authority-neutral graph draft—without `projection` or
+   `projection.sha256`—and prepare the exact non-authoritative review preview:
+
+   ```bash
+   omd design-md prepare-review <graph> --provenance <provenance> --coverage <coverage> --out-dir <review> [--migration-report <report>]
+   ```
+
+   The exact preview must be approved by the actual project owner or a
+   preregistered external authority controller, never by the main agent itself:
+
+   ```bash
+   omd design-md approve-review <review>/review-request.json --reviewer <project-owner-id> --out <approval> --authority-transition-approved
+   omd design-md compile <review>/input-graph.json --provenance <review>/provenance.json --coverage <review>/coverage.json --review-receipt <approval> [--migration-report <review>/migration-report.json] --out-dir <fresh> --adopt
+   ```
+
+   If the public binary is unavailable, only the installed exact-equivalent
+   `prepare-design-md-core-review.cjs` and `compile-design-md-core.cjs` helpers
+   with the same inputs are allowed. Never hand-write or patch `DESIGN.md`, section
+   anchors, the seven `design-md:claim` declarations, any `design-md:claim-end`,
+   manifest, or binding hashes; those bytes are canonical compiler-owned output.
+   If the compiler demands a placeholder, precomputed, or zero projection SHA,
+   fail closed; the compiler must create the first binding itself.
+   Never publish into an existing, project-owned, or symlinked output directory.
+
+   Read back and validate the fresh adopted package before project adoption.
+   Compiler PASS proves only schema, Portable declaration conformance, canonical
+   rendering, and binding integrity. It does not prove factual accuracy,
+   provenance truth, font/asset licenses, locale behavior, accessibility, or
+   visual quality. Coverage booleans are not evidence: every
    provenance/group reference must resolve to a real project or run artifact,
-   and the validator computes system checks from the spec bound to the exact
-   `DESIGN.md` hash. Do not implement the product until proof passes.
+   and the validator computes system checks from the graph and manifest bound to
+   the exact compiler-produced `DESIGN.md`. Keep provenance/coverage and the
+   installed final project-system validator mandatory; never fill missing
+   bindings with agent-calculated hashes. If the compiled manifest does not bind
+   them, fail closed at staging. Bind and install the six exact artifacts only via:
+
+   ```bash
+   omd design-md prepare-checkpoint <fresh> --reviewer <project-owner-id> --out <checkpoint> --authority-transition-approved
+   omd design-md adopt <fresh> --project-root <project-root> --checkpoint-receipt <checkpoint>
+   ```
+
+   If the receipt-gated atomic adopter is unavailable, preserve the stage and
+   stop. Then run
+   `validate-project-design-system.cjs <project-root> <run-dir>`. Do not implement
+   the product until that proof passes.
+   If refresh/refactor starts from a legacy document, run the provider-free
+   migration/check first and require `dropped=0`, no unsupported promotion,
+   round-trip equality, and opaque preservation under
+   `extensions["dev.oh-my-design.migration"]`. The staged migration candidate is
+   non-authoritative and keeps its named source `DESIGN.md` canonical until the
+   explicit compile/adopt transition. Do not hand-edit legacy headings.
    Never author or edit `system/proof.json` directly. Run the installed
    `validate-project-design-system.cjs <project-root> <run-dir>` helper; the
    mission controller validates its full schema, source hashes, required
@@ -144,7 +193,7 @@ folders and must never edit `DESIGN.md` or product files.
 
 Run `autopilot-mission.cjs <project-root> <run-dir> advance` at every state
 boundary. The controller rejects product edits before authority, limits
-pre-proof changes to `DESIGN.md`, issues the product-build admission only after
+pre-proof project changes to the exact compiler-produced adopted package, issues the product-build admission only after
 an exact system proof and acceptance plan, recomputes atomic proof pass, and
 refuses to force-pass or replay an exhausted repair budget.
 Only one project-scoped Autopilot mission may be active. Continue its bounded
@@ -154,9 +203,12 @@ terminal and non-resumable.
 
 ## Design-system decision
 
-- Valid compatible root `DESIGN.md` → `reuse` without reopening it.
+- Valid compatible root `DESIGN.md` → `reuse` without reopening it. Legacy
+  13/15/16-section and unmarked documents remain readable during the compatibility
+  window; reusing one does not silently rewrite it.
 - Explicit or delegated authority to build a system → `establish`.
-- Explicit replacement of an existing system → `refresh`.
+- Explicit replacement of an existing system → `refresh`; legacy input must pass
+  staged migration/check and opaque-extension preservation before replacement.
 - Narrow repair or explicit refusal → `surface-local-only`; never promote local
   choices as project facts.
 - Broad greenfield with no authority → ask one question: project system or
@@ -174,9 +226,10 @@ Classify each consequential system decision as `prompt-fact`,
 `agent-proposed-greenfield-decision`, or `unresolved`.
 
 Unknown means absent at the smallest boundary. Never synthesize a company fact,
-font, component, metric, testimonial, price, security promise, or DESIGN.md
-section 11–13. Use `[FILL IN]` for user-owned narrative facts when the schema
-requires a placeholder.
+font, component, metric, testimonial, price, security promise, or narrative.
+Core v2 does not require placeholder facts: omit unresolved values from tokens,
+prescriptive prose, and code. A consequential unresolved decision may be named in
+Governance without a suggested fallback.
 
 ## Required run artifacts
 
@@ -185,8 +238,8 @@ Store permanent artifacts under `.omd/runs/<run-id>/`:
 - `mission.json`
 - `council/decision-ledger.json`
 - `design-system-decision.json`
-- `system/proposal.md`, `system/provenance.json`, `system/coverage.json`,
-  `system/spec.json`
+- `system/proposal.md`, migration report/rollback references when applicable,
+  and generated `system/proof.json`
 - `implementation.json`
 - `acceptance-plan.json`
 - `proof.json`, `repairs/round-<n>.json`, and screenshots
@@ -195,6 +248,22 @@ Store permanent artifacts under `.omd/runs/<run-id>/`:
 Receipts bind the original task, repository evidence, DESIGN.md, product output,
 consumer route, states, viewports and validator results. Missing proof is not a
 pass.
+
+The project-owned canonical system lives outside the run at:
+
+- `.omd/system/manifest.json`
+- `.omd/system/graph.json`
+- `.omd/system/provenance.json`
+- `.omd/system/coverage.json`
+
+The visible `DESIGN.md` begins with `# <Product> Design System`, contains exactly
+the seven neutral `design-md:section` anchors in the frozen Core order, and has no
+YAML/frontmatter, OmD/tool/generator/quality metadata at its top. Only an adopted,
+valid `profile: portable-core` manifest with exact graph/projection hashes makes
+the graph canonical; a migration candidate keeps its named source DESIGN.md
+canonical. The seven semantic `design-md:claim` declarations and every
+`design-md:claim-end` are compiler-owned and must not be edited after rendering.
+The Markdown remains a complete portable contract on its own.
 
 ## Guided-mode boundary
 

@@ -7,7 +7,10 @@ description: "프로젝트 루트에 DESIGN.md를 부트스트랩 — 실제 기
 
 프로젝트에 DESIGN.md + AI 코딩 에이전트용 shim 3종을 한 번에 세팅. 레퍼런스 톤&매너는 **preserve**하고, 사용자 프로젝트 맥락은 controlled-vocabulary delta_set으로만 반영.
 
-**런타임 CLI subcommand 호출 없음** — Read/Write/Bash(파일 작업만) 툴로 직접 처리한다. CLI의 사용자 표면은 bare `npx oh-my-design-cli`(대화형 installer)와 `npx oh-my-design-cli doctor`(설치 진단)이며, `omd init recommend` 같은 init subcommand는 제공하지 않는다. 이 skill은 설치 뒤 host agent 안에서 self-contained하게 동작한다.
+레퍼런스 선택과 graph draft는 host agent 안에서 처리하지만, Core projection과
+authority hash는 직접 만들지 않는다. 설치된 provider-free `omd design-md`
+도구가 inspect/migrate/compile을 담당한다. `omd init recommend`, `omd init
+prepare`, `omd sync` 같은 별도 runtime subcommand는 제공하지 않는다.
 
 ## 전체 플로우
 
@@ -17,8 +20,8 @@ Phase 2: 레퍼런스 추천 (fingerprint 기반 in-head 점수)
 Phase 3: 사용자가 1개 선택
 Phase 3.5: 적용 형태 확인 (루트 부트스트랩 / 참고용 저장 / 기존 파일 교체 여부)
 Phase 4: 레퍼런스 DESIGN.md Read + delta_set 추출
-Phase 4.5: Philosophy Layer 입력 수집
-Phase 5: Hybrid variation으로 DESIGN.md 작성
+Phase 4.5: 프로젝트 권위 입력 수집
+Phase 5: Core v2 System Graph draft → canonical compiler → staged adopted package
 Phase 6: Shim 3종 설치 (omd:sync skill 위임)
 Phase 7: 요약 출력
 ```
@@ -143,9 +146,10 @@ prose)로:
   2. **참고용으로만 저장** — 루트 변경 없음. `<id>` 원본을
      `design-references/<id>.md`로 복사하고 종료. "나중에 프로젝트에 적용하려면
      다시 omd:init을 불러주세요" 안내. (변형 생성·셤 설치 안 함)
-- 루트에 DESIGN.md **이미 있음** (option description에 그 파일의 §0/§1 요약
+- 루트에 DESIGN.md **이미 있음** (option description에 그 파일의 첫 섹션 요약
   한 줄을 보여줄 것):
-  1. **교체 (추천)** — 기존 파일은 `DESIGN_DEPRECATED.md`로 보존됨을 명시
+  1. **교체 (추천)** — 기존 파일은 먼저 lossless migration/check를 통과하고
+     content-addressed rollback artifact로 보존됨을 명시
   2. **참고용으로만 저장** — 위와 동일
   3. **중단**
 
@@ -177,17 +181,26 @@ Phase 4.2~6은 건너뛴다.
 ### 4.2 기존 DESIGN.md 처리
 
 프로젝트 루트에 이미 `DESIGN.md`가 있으면 (Phase 3.5에서 이미 "교체"를 확인받은
-상태 — 여기서 다시 묻지 않는다):
-1. Read로 내용 확인
-2. Bash로 `mv DESIGN.md DESIGN_DEPRECATED.md`
-3. `DESIGN_DEPRECATED.md` 최상단에 다음 헤더 prepend (Edit 툴):
-   ```html
-   <!-- omd:deprecated
-   replaced_at: <ISO-8601 today>
-   replaced_by: ./DESIGN.md (bootstrapped from <id>)
-   reason: omd:init bootstrap
-   -->
-   ```
+상태 — 여기서 다시 묻지 않는다), 자유 편집이나 단순 `mv`로 교체하지 않는다.
+
+1. 먼저 현재 문서가 Core v2인지 legacy 13/15/16 또는 unmarked 문서인지 inspect한다.
+2. legacy 또는 형식이 불분명하면 설치된 provider-free migration helper로 staged
+   migration을 실행하고 결과를 검사한다. public CLI가 있으면
+   `omd design-md migrate DESIGN.md --out-dir <fresh-migration-dir>`를 사용한다.
+   helper를 찾지 못하면 stale install로 보고하고 중단한다.
+3. migration report는 모든 원본 segment가 Core field 또는
+   `extensions["dev.oh-my-design.migration"]`에 보존되고 `dropped=0`,
+   unsupported promotion 0, round-trip pass임을 증명해야 한다.
+4. 원본 bytes와 report를 content-addressed rollback directory에 보존한 뒤에만 명시적
+   refresh를 진행한다. check 실패 시 기존 `DESIGN.md`와 `.omd/system`을 건드리지 않는다.
+5. migration 결과는 `migration-candidate`이며 non-authoritative다. 명시적 adoption
+   전까지 named source `DESIGN.md`가 canonical source다.
+6. 이미 Bound Core v2이면 manifest/graph hash를 검증하고 graph draft만 갱신한다.
+   visible Markdown heading을 직접 refactor하지 않는다.
+
+opaque extension은 이해하지 못해도 key/value를 byte-equivalent JSON 의미로 보존한다.
+교체는 언제나 **graph draft → canonical compile into a fresh stage → full validation
+→ atomic project adoption** 순서다.
 
 ### 4.3 init-context 기록
 
@@ -217,31 +230,36 @@ Phase 4.2~6은 건너뛴다.
 
 `axes` 표준 키: `color.hue_deg` (도), `color.saturation_pct` (%p), `color.lightness_pct` (%p), `radius.delta_px` (px), `density.shift` (-2 ~ +2), `tracking.shift` (-0.01em ~ +0.01em).
 
-## Phase 4.5 — Philosophy Layer 입력 수집 (CRITICAL)
+## Phase 4.5 — 프로젝트 권위 입력 수집 (CRITICAL)
 
-§11 (Brand Narrative), §12 (Principles), §13 (Personas)는 레퍼런스의 검증된 historical facts에 기반. 단순 domain swap하면 거짓 brand claim을 ship하는 사고가 난다.
+Experience에 들어갈 브랜드 내러티브·원칙·사용자 정보는 프로젝트 권위가 필요하다.
+레퍼런스의 historical fact나 persona를 domain swap하면 거짓 brand claim이 된다.
 
-Phase 5B 진입 전 사용자에게 한 번에 묻기:
+필요한 정보가 원래 요청이나 저장소에 없을 때만 Phase 5B 진입 전 한 번에 묻기:
 
 ```
-DESIGN.md의 §11-13 (Brand Narrative / Principles / Personas)에는 사실 정보가 들어갑니다. 다음을 알려주시거나 "skip"이라고 답해주세요:
+DESIGN.md의 Experience에 프로젝트 사실을 어느 범위까지 넣을지 확인할게요. 다음을 알려주시거나 "skip"이라고 답해주세요:
 
 1. 프로젝트 이름 / 창립 시점 (대략)
 2. 핵심 thesis 한 문장 (e.g. Airbnb의 "Belong Anywhere")
 3. 공식 tagline 또는 거부하는 카테고리 default
 4. 타겟 사용자 segment 2-4개
 
-답변 받으면 → §11-13에 반영
-"skip" → §11-13은 [FILL IN: ...] placeholder + omd:limitation 코멘트
+답변 받으면 → authority/provenance와 함께 Experience에 반영
+"skip" → 값을 추정하거나 placeholder를 넣지 않고 해당 fact를 생략. 결과를 바꾸는
+미확정 결정만 Governance의 unresolved 목록에 fallback 없이 기록
 ```
 
 부분 답변은 받은 부분만 사용, 나머지 skip.
 
-## Phase 5 — Hybrid Variation 생성 (핵심)
+## Phase 5 — Core v2 graph draft + canonical compilation (핵심)
 
-`reference_md` + `.omd/init-context.json` `delta_set`을 입력으로 새 `DESIGN.md` 작성.
+`reference_md` + `.omd/init-context.json` `delta_set`을 입력으로 먼저
+run-scoped temporary path에 `graph.draft.json`을 만든다. root `DESIGN.md`,
+`.omd/system/graph.json`, manifest, projection hash는 직접 쓰지 않는다.
+레퍼런스는 verified inspiration이지 프로젝트 fact가 아니다.
 
-### Phase 5A — Voice Fingerprint 내부 추출 (silent)
+### Phase 5A — Reference direction 분석 (silent, evidence-only)
 
 출력 금지. 작성 전 머릿속으로 파악:
 - 평균 문장 길이 밴드
@@ -250,54 +268,121 @@ DESIGN.md의 §11-13 (Brand Narrative / Principles / Personas)에는 사실 정�
 - 기술 밀도 (token-heavy / prose-heavy / balanced)
 - 문단 리듬 (list-forward / paragraph-forward)
 
-Phase 5B emit하는 모든 내러티브를 이 fingerprint에 정확히 맞춰야 한다.
+이 fingerprint는 제안 방향을 비교하는 참고값일 뿐 프로젝트 voice가 아니다.
+사용자가 해당 방향을 명시적으로 채택한 경우에만
+`agent-proposed-greenfield-decision` 또는 `prompt-fact` provenance로 Phase 5B에
+반영한다. 채택 전에는 graph/portable projection에 처방값으로 쓰지 않는다.
 
-### Phase 5B — 새 DESIGN.md emit
+### Phase 5B — Core v2 graph draft 작성
 
 **엄격 규칙 (위반 = regression)**:
 
-1. **Section 구조 frozen**: 레퍼런스의 H2/H3 heading을 같은 순서로 그대로. 추가/삭제/이름 변경 금지.
+1. **Single-write Core v2**: 새 생성·합성·refresh는 레퍼런스의 frontmatter나
+   13/15/16-section heading을 복사하지 않는다. agent가 작성하는 것은 schema-valid
+   graph draft뿐이다. `experience`, `foundations`, `typography-assets`,
+   `components-states`, `layout-platforms`, `content-locales`, `governance`의 고정
+   section anchor와 H2, 그리고 일곱 `design-md:claim` 선언과 모든
+   `design-md:claim-end` delimiter는 canonical compiler-owned output이다.
+   **Never hand-write or patch `DESIGN.md`, section anchors, claim markers, or
+   claim-end delimiters.** heading localization도 graph input으로 표현하고 renderer
+   결과를 수정하지 않는다.
 
-2. **Token 값 해석 우선순위** (위에서 아래로):
-   1. `assets/_reference/<id>/tokens.json` `live_overrides` 블록 — **현재 라이브 사이트의 토큰** (omd:reference-capture가 라이브 inspect로 얻은 값). 있으면 이걸 base로.
-   2. `web/references/<id>/DESIGN.md` (또는 `node_modules/.../web/references/<id>/DESIGN.md`) — **DESIGN.md가 brand intent로 기록한 canonical 값**. live_overrides 없으면 이걸 base로.
-   3. `delta_set.axes` — 사용자 customization. base 위에 가산.
-      - 색상: HSL 변환 후 `color.hue_deg` / `saturation_pct` / `lightness_pct` 적용.
-      - radius: `radius.delta_px`만큼 가산 (음수도 가능).
-   - 그 외 토큰은 손대지 말 것. "개선" 금지.
-   - **canonical과 live가 충돌하면** 사용자에게 한 줄로 알림 + 라이브 사용 (예: "Banksalad canonical은 `#04c584` 2px radius, 라이브는 `#13bd7e` 41px pill — 라이브 기준으로 진행합니다. canonical로 가시려면 'use canonical'이라고 알려주세요.").
-   - **단 brand essence (voice·principles·motion philosophy·voice samples)는 canonical 절대 권위.** live는 visual surface(토큰·컴포넌트 shape)에만 적용.
+2. **Reference 값은 전부 evidence-only inspiration**:
+   - `assets/_reference/<id>/tokens.json#live_overrides`와 catalog DESIGN.md는
+     `verified-reference-inspiration` provenance로만 기록한다. 어느 쪽도 project
+     graph의 base나 override가 아니며 자동 적용하지 않는다.
+   - live/canonical 충돌은 surface-domain과 함께 evidence conflict로 기록한다.
+     한쪽을 자동 선택하거나 adjacent marketing/corporate surface를 product fact로
+     승격하지 않는다.
+   - 사용자가 구체 값을 명시적으로 선택하면 `prompt-fact`, 저장소가 실제 값을
+     소유하면 `repository-fact`, broad greenfield 권한 아래 제안을 채택하면
+     `agent-proposed-greenfield-decision`으로 새 프로젝트 값을 만든다.
+   - `delta_set.axes`는 reference 값 위 산술 변경이 아니다. 결과 semantic value를
+     독립 proposal로 보여주고 채택 근거와 target surface를 기록한 뒤에만 graph에
+     쓴다.
+   - reference voice·principles·motion도 절대 권위가 아니다. 명시적 채택 전에는
+     프로젝트 내러티브나 처방 규칙으로 복사하지 않는다.
 
-3. **내러티브는 Phase 5A fingerprint에 매칭**: 도메인 예시 교체 시 문장 길이/register/은유 밀도 그대로. 명사만 swap, 동사/형용사/framing 손대지 말 것.
+3. **내러티브는 프로젝트 권위에 매칭**: 사용자 표현, 저장소 voice, 명시적으로
+   채택된 greenfield proposal만 사용한다. Reference fingerprint의 명사 swap이나
+   framing 복사는 금지한다.
 
-4. **새 philosophy 도입 금지**: OmD v0.1 layer, 없던 원칙 추가 금지. delta-derived 노트는 새 bullet으로 넣지 말고 기존 bullet에 자연스럽게 통합.
+4. **새 philosophy 도입 금지**: 사용자·저장소·명시적 greenfield proposal에 없는
+   브랜드 fact나 원칙을 만들지 않는다. 제안은 fact와 분리해 provenance에 기록한다.
 
-5. **해결 불가능 delta는 top-of-file HTML comment**: `<!-- omd:unresolved: <axis> -->` 상단 추가, 해당 token은 건드리지 않음.
+5. **해결 불가능 delta는 absent**: visible top-of-file에 vendor comment나 fallback을
+   추가하지 않는다. 처방 token/code에서는 생략하고, consequential하면 Governance와
+   provenance에 unresolved path만 기록한다.
 
-6. **Voice hints 반영**: `delta_set.voiceHints`는 Voice 섹션 내러티브에 반영하되 레퍼런스 voice 스타일 안에서만. "contractions ok" → Voice 원칙 bullet에 한 줄 추가.
+6. **Voice hints 반영**: `delta_set.voiceHints`는 사용자 선택 또는 승인된 proposal인
+   경우에만 Content & Locales에 반영한다. Reference voice를 숨은 base로 쓰지 않는다.
 
-7. **§11-13 처리 분기**:
-   - Phase 4.5에서 정보 제공: 그 정보로 §11/12/13 작성. verbatim 인용은 사용자가 직접 준 표현만. 레퍼런스의 시간 표현·공식 인용 모두 사용자 맥락으로 대체.
-   - Phase 4.5에서 skip: §11-13 본문을 `[FILL IN: <섹션 목적 한 줄>]` placeholder + 각 섹션 상단 `<!-- omd:limitation Reference §X requires project-specific facts. Replace before shipping; do not fabricate. -->`.
-   - §14 (States), §15 (Motion): 일반 Hybrid 적용 (구체 명사만 swap).
+7. **프로젝트 fact 처리**:
+   - Phase 4.5에서 제공된 내용만 Experience에 사실로 작성한다. verbatim 인용은
+     사용자가 직접 준 표현만 쓴다.
+   - skip한 fact는 `[FILL IN]`, 가상 persona, 추천 fallback으로 채우지 않는다.
 
-8. **Frontmatter**:
-   ```yaml
-   ---
-   omd: 0.1
-   brand: <Project Name or "Project">
-   bootstrapped_from: <id>
-   bootstrapped_at: <ISO-8601>
-   ---
+8. **Canonical sidecars**: adopted machine authority와 도구 metadata는 오직 아래에 둔다.
+   - `.omd/system/manifest.json`
+   - `.omd/system/graph.json`
+   - `.omd/system/provenance.json`
+   - `.omd/system/coverage.json`
+
+   graph draft는 Core v2 schema의 일곱 section object를 가진다. compiler가
+   `profile: portable-core` manifest, canonical graph, portable projection과 exact
+   binding hash를 한 번에 만든다. Agents never calculate, copy, truncate, or patch
+   graph/projection/manifest hashes. Graph가 adopted canonical authority이고
+   `DESIGN.md`는 sidecar 없이도 이해 가능한 portable projection이다. 확장 key는
+   reverse-DNS만 허용하며 기존 opaque extension을 보존한다.
+
+### Phase 5C — explicit compile/adopt + staged validation
+
+1. Phase 3.5의 프로젝트 시스템 설정/교체 승인이 없으면 compile하지 않는다.
+2. authority-neutral `graph.draft.json`에는 `projection`/`projection.sha256`을
+   넣지 않는다. compiler draft-input contract와 provenance/coverage evidence gate를
+   통과한 뒤 fresh staging directory를 정한다. final bound-graph schema만 받아
+   placeholder/precomputed/zero SHA를 요구하는 compiler면 draft에서 fail-close한다.
+3. public CLI로 exact preview를 먼저 생성한다.
+
+   ```bash
+   omd design-md prepare-review <graph> --provenance <provenance> --coverage <coverage> --out-dir <review> [--migration-report <report>]
    ```
 
-### Phase 5C — 파일 작성
+   `<review>/DESIGN.md`와 `review-request.json`을 실제 사용자에게 보여 승인받은
+   뒤에만 아래 두 명령을 실행한다. agent가 대신 승인하지 않는다.
 
-Write 툴로 `DESIGN.md` emit.
+   ```bash
+   omd design-md approve-review <review>/review-request.json --reviewer <project-owner-id> --out <approval> --authority-transition-approved
+   omd design-md compile <review>/input-graph.json --provenance <review>/provenance.json --coverage <review>/coverage.json --review-receipt <approval> [--migration-report <review>/migration-report.json] --out-dir <fresh> --adopt
+   ```
+
+   CLI binary가 없고 설치 bundle에 helper가 있으면 동일 인자를 받는
+   `prepare-design-md-core-review.cjs`와 `compile-design-md-core.cjs` exact
+   equivalents만 허용한다. renderer를 재구현하거나
+   Markdown/manifest/hash를 agent가 보완하지 않는다. 기존/non-empty/symlink output을
+   우회하지 않는다.
+4. compiler가 만든 fresh adopted package를 read back하고 Core structural + Portable
+   declaration conformance를 다시 검증한다. 이 PASS는 선언 구조와 binding만
+   증명한다. **factual accuracy, provenance truth, font/asset license, locale behavior,
+   accessibility, visual quality를 증명하지 않는다.** provenance/coverage와 설치된
+   final project-system validator는 계속 필수다. 필요한 sidecar binding을 현재
+   compiler/validator가 만들 수 없으면 hash를 수동 작성하지 말고 stale/incomplete
+   install로 fail-close한다.
+5. 모든 검증을 통과한 fresh stage의 exact bytes는 아래 receipt-gated 경로로만
+   프로젝트에 채택한다.
+
+   ```bash
+   omd design-md prepare-checkpoint <fresh> --reviewer <project-owner-id> --out <checkpoint> --authority-transition-approved
+   omd design-md adopt <fresh> --project-root <project-root> --checkpoint-receipt <checkpoint>
+   ```
+
+   atomic package adopter가 없으면 staged package를 보존하고 중단한다. 파일별
+   복사나 hash 수정으로 우회하지 않는다. 실패하면 transaction journal이 기존
+   system 전체를 복원한다.
 
 ## Phase 6 — Shim 설치
 
-CLI subcommand 없음. 두 가지 옵션:
+Shim 전용 CLI subcommand 없음. 두 가지 옵션:
 
 **옵션 A (권장)**: omd:sync skill 위임. 같은 conversation에서 Skill 툴로:
 ```
@@ -319,8 +404,8 @@ omd:sync skill이 `CLAUDE.md`, `AGENTS.md`, `.cursor/rules/omd-design.mdc` shim 
 한 문단으로:
 - Base reference + 프로젝트 context 한 줄 요약
 - 적용된 주요 delta 2-3개 (e.g. "primary hue shifted warm by +12°, radius +4px")
-- 생성된 파일 목록 (DESIGN.md + shims)
-- DESIGN_DEPRECATED.md 있으면 언급
+- 생성된 파일 목록 (DESIGN.md + `.omd/system` + shims)
+- migration rollback/report가 있으면 언급
 - 다음 스텝: `omd:apply`로 UI 작업 시작 또는 `omd:harness`로 전체 surface 디자인 또는 `omd:remember`로 선호 추가 로깅
 
 예시:
@@ -345,7 +430,12 @@ Next:
 
 - Phase 5A fingerprint를 출력하지 말 것 (내부 전용).
 - `delta_set.axes`에 없는 token을 마음대로 바꾸지 말 것.
-- 레퍼런스에 없는 section/heading을 추가하지 말 것.
+- 새 문서에 legacy 13/15/16-section 구조나 YAML frontmatter를 emit하지 말 것.
+- 새 문서와 기존 문서 모두 `DESIGN.md`, section/claim marker, manifest/hash를 직접
+  작성·수정하지 말 것. graph draft와 canonical compiler만 사용한다.
+- visible `DESIGN.md` 상단에 OmD/tool/generator/quality metadata를 넣지 말 것.
+- legacy refactor를 migration `--check`와 opaque-extension preservation 없이 진행하지 말 것.
 - `.omd/init-context.json`을 직접 편집할 때 schema 어기지 말 것.
 - DESIGN.md가 이미 있는데 백업 없이 덮어쓰지 말 것 (Phase 4.2 rename 절차 준수).
-- **존재하지 않는 CLI subcommand (`omd init recommend`, `omd init prepare`, `omd sync`)를 호출하지 말 것** — CLI는 bare installer와 `install-skills`, `doctor`만 제공한다.
+- **존재하지 않는 CLI subcommand (`omd init recommend`, `omd init prepare`, `omd sync`)를 호출하지 말 것.** `omd design-md inspect|validate|migrate|compile`은
+  provider-free Core 도구로 허용된다.

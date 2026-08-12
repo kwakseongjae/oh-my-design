@@ -26,12 +26,27 @@ import { parseArgs, sha256, treeManifest } from "./_lib.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(here, "../../..");
-const smokeConfigPath = join(repoRoot, "benchmarks/ui-resolve-bench/config/autopilot-luna-high-smoke-v0.1.json");
+const defaultSmokeConfig = "benchmarks/ui-resolve-bench/config/autopilot-luna-high-smoke-v0.2.json";
 const taskSetPath = join(repoRoot, "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json");
 const runtimeAuthorityPath = join(repoRoot, "benchmarks/ui-resolve-bench/reports/codex-all-effort-sweep-1.9.826/RUN-MATRIX.json");
 const controllerPath = relative(repoRoot, fileURLToPath(import.meta.url)).split(sep).join("/");
 const evaluatorPath = "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs";
 const validatorPath = "scripts/validate-project-design-system.cjs";
+export const CORE_V2_PORTABLE_RUNTIME_PATHS = Object.freeze([
+  "scripts/design-md-core-schema.cjs",
+  "scripts/design-md-core-conformance.cjs",
+  "scripts/design-md-core.cjs",
+  "scripts/prepare-design-md-core-review.cjs",
+  "scripts/compile-design-md-core.cjs",
+  "scripts/adopt-design-md-core.cjs",
+  "spec/schema/design-md-core-manifest-v2.schema.json",
+  "spec/schema/design-system-graph-v2.schema.json",
+  "spec/schema/design-system-provenance-v2.schema.json",
+  "spec/schema/design-system-coverage-v2.schema.json",
+  "spec/schema/design-md-core-adoption-review-v2.schema.json",
+  "spec/schema/design-md-core-adoption-receipt-v2.schema.json",
+  "spec/schema/design-md-core-project-checkpoint-v2.schema.json",
+]);
 const SHA = /^[a-f0-9]{64}$/;
 const COMMIT = /^[a-f0-9]{40}$/;
 // The greenfield evaluator replays the full journey at four viewports. A real
@@ -65,6 +80,14 @@ export function missionProductTreeManifest(root) {
   return { files, sha256: sha256(JSON.stringify(files)) };
 }
 function readJson(path) { return JSON.parse(readFileSync(path, "utf8")); }
+export function effectivePortableBundlePaths(smokeContract) {
+  const configured = smokeContract?.authorities?.portable_bundle_files;
+  if (!Array.isArray(configured) || configured.some((item) => !item || typeof item.path !== "string" || !item.path)) {
+    throw new Error("portable bundle file list is invalid");
+  }
+  return [...new Set([...configured.map((item) => item.path), ...CORE_V2_PORTABLE_RUNTIME_PATHS])];
+}
+export function portableRuntimeBundleDigest(files) { return sha256(canonical(files)); }
 function copyDesignSystemEvidenceReference(reference, sourceRun, sourceWorkspace, auditRun, auditWorkspace) {
   const filePart = String(reference ?? "").split("#", 1)[0];
   if (!filePart || isAbsolute(filePart) || filePart.split(/[\\/]/).includes("..") || filePart === "DESIGN.md") return;
@@ -130,6 +153,39 @@ function authorityEntry(path, commit) {
   if (!current.equals(committed)) throw new Error(`source authority differs from commit: ${path}`);
   return { path, bytes: current.length, sha256: sha256(current) };
 }
+export function smokeConfigRelativePath(requested) {
+  const relativePath = String(requested ?? defaultSmokeConfig).split(sep).join("/");
+  if (isAbsolute(relativePath)
+    || relativePath.split(/[\\/]/).includes("..")
+    || !/^benchmarks\/ui-resolve-bench\/config\/autopilot-luna-high-smoke-v0\.\d+\.json$/.test(relativePath)) {
+    throw new Error("smoke config must be a repository-relative versioned Autopilot smoke contract");
+  }
+  return relativePath;
+}
+export function smokeExperimentId(config, requested) {
+  const configured = String(config?.experiment_id ?? "");
+  if (!/^autopilot-luna-high-smoke-1\.9\.\d+$/.test(configured)) {
+    throw new Error("smoke contract must declare a valid experiment id");
+  }
+  if (requested !== undefined && String(requested) !== configured) {
+    throw new Error("smoke experiment id must match the selected smoke contract");
+  }
+  return configured;
+}
+function smokeConfigAuthority(requested, commit) {
+  const relativePath = smokeConfigRelativePath(requested);
+  const absolute = resolve(repoRoot, relativePath);
+  if (absolute !== repoRoot && !absolute.startsWith(`${repoRoot}${sep}`)) {
+    throw new Error("smoke config escapes repository");
+  }
+  assertRegular(absolute, "smoke config");
+  const treeEntry = git("ls-tree", commit, "--", relativePath);
+  if (!/^100(?:644|755)\s+blob\s+[a-f0-9]+\t/.test(treeEntry)) {
+    throw new Error("smoke config must be a regular file in source commit");
+  }
+  authorityEntry(relativePath, commit);
+  return { absolute, relative: relativePath };
+}
 function assertEntry(entry, commit) {
   if (!entry || !SHA.test(entry.sha256 ?? "") || !Number.isInteger(entry.bytes)) throw new Error("invalid source authority entry");
   const observed = authorityEntry(entry.path, commit);
@@ -173,8 +229,11 @@ function planCommand(args) {
   if (!COMMIT.test(sourceCommit) || git("merge-base", "--is-ancestor", sourceCommit, "HEAD") !== "") {
     throw new Error("source commit must be a current HEAD ancestor");
   }
+  const smokeConfig = smokeConfigAuthority(args.get("config"), sourceCommit);
+  const smokeConfigPath = smokeConfig.absolute;
   const config = readJson(smokeConfigPath);
   const taskSet = readJson(taskSetPath);
+  const portableRuntimePaths = effectivePortableBundlePaths(config);
   if (config.provider_execution_allowed !== false || config.cells.length !== 3) throw new Error("smoke preregistration template drift");
   if (config.autonomy_contract.initial_turn_soft_budget_ms !== 720000
     || config.autonomy_contract.minimum_controller_handoff_reserve_ms !== 180000
@@ -185,7 +244,7 @@ function planCommand(args) {
     throw new Error("autopilot execution budget contract drift");
   }
   const paths = [...new Set([
-    relative(repoRoot, smokeConfigPath).split(sep).join("/"),
+    smokeConfig.relative,
     relative(repoRoot, taskSetPath).split(sep).join("/"),
     controllerPath,
     "benchmarks/ui-resolve-bench/scripts/_lib.mjs",
@@ -193,16 +252,33 @@ function planCommand(args) {
     evaluatorPath,
     validatorPath,
     config.authorities.adapter_set_path,
+    config.authorities.evaluator_path,
     config.authorities.starter_path,
-    ...config.authorities.portable_bundle_files.map((item) => item.path),
+    ...portableRuntimePaths,
   ])].sort();
   const sourceAuthority = paths.map((path) => authorityEntry(path, sourceCommit));
+  const portableRuntimeFiles = portableRuntimePaths.map((path) => {
+    const entry = sourceAuthority.find((item) => item.path === path);
+    if (!entry) throw new Error(`portable runtime source authority missing: ${path}`);
+    return entry;
+  });
   const smokeBytes = readFileSync(smokeConfigPath);
   const taskBytes = readFileSync(taskSetPath);
   if (sha256(smokeBytes) !== config.authorities.smoke_config_sha256 && config.authorities.smoke_config_sha256) {
     throw new Error("smoke config self hash drift");
   }
   if (sha256(taskBytes) !== config.authorities.task_set_sha256) throw new Error("task-set hash drift");
+  if (config.schema_version === "0.2" && config.authorities.evaluator_path !== evaluatorPath) {
+    throw new Error("Core v2 smoke contract must bind the task-family evaluator");
+  }
+  for (const [path, digest, label] of [
+    [config.authorities.adapter_set_path, config.authorities.adapter_set_sha256, "adapter set"],
+    [config.authorities.evaluator_path, config.authorities.evaluator_sha256, "evaluator"],
+    [config.authorities.starter_path, config.authorities.starter_sha256, "starter"],
+  ]) {
+    const bytes = readFileSync(join(repoRoot, path));
+    if (sha256(bytes) !== digest) throw new Error(`${label} authority drift`);
+  }
   for (const item of config.authorities.portable_bundle_files) {
     const bytes = readFileSync(join(repoRoot, item.path));
     if (bytes.length !== item.bytes || sha256(bytes) !== item.sha256) throw new Error(`portable bundle authority drift: ${item.path}`);
@@ -221,14 +297,18 @@ function planCommand(args) {
     variant_id: "omd-autopilot-v2", runtime: "codex", model_id: "gpt-5.6-luna", effort: "high",
     timeout_seconds: config.runtime.timeout_seconds, trial_index: 1,
   }));
-  const experimentId = String(args.get("experiment-id") ?? "autopilot-luna-high-smoke-1.9.850");
-  if (!/^autopilot-luna-high-smoke-1\.9\.\d+$/.test(experimentId)) throw new Error("invalid smoke experiment id");
+  const experimentId = smokeExperimentId(config, args.get("experiment-id"));
   const plan = {
     schema_version: "0.1", kind: "autopilot-greenfield-diagnostic-smoke",
     experiment_id: experimentId, status: "locked-provider-zero",
     claim_state: config.claim_state, source_commit: sourceCommit,
     source_authority: { schema_version: "0.1", files: sourceAuthority, sha256: sha256(canonical(sourceAuthority)) },
     smoke_contract: config,
+    portable_runtime_bundle: {
+      schema_version: "0.1",
+      files: portableRuntimeFiles,
+      sha256: portableRuntimeBundleDigest(portableRuntimeFiles),
+    },
     codex_catalog_snapshot_contract: snapshot,
     codex_model_effort_contract: modelEffort,
     execution_control: {
@@ -240,6 +320,7 @@ function planCommand(args) {
   plan.lock_manifest = {
     canonicalization: "sha256-json-stringify-v1",
     source_authority_sha256: plan.source_authority.sha256,
+    portable_runtime_bundle_sha256: plan.portable_runtime_bundle.sha256,
     smoke_contract_sha256: sha256(smokeBytes),
     task_set_sha256: sha256(taskBytes),
     schedule_sha256: sha256(canonical(cells)),
@@ -261,6 +342,29 @@ function installedPath(path) {
   if (path === "skills/omd-autopilot/references/design-system-contract.md") return ".agents/skills/omd-autopilot/references/design-system-contract.md";
   return path;
 }
+export function installedPortablePath(path) { return installedPath(path); }
+export function assertInstalledPortableRuntimeBundle(plan, workspace) {
+  const bundle = plan?.portable_runtime_bundle;
+  if (!bundle || bundle.schema_version !== "0.1" || !Array.isArray(bundle.files) || !SHA.test(bundle.sha256 ?? "")) {
+    throw new Error("portable runtime bundle authority is missing");
+  }
+  const expectedPaths = effectivePortableBundlePaths(plan.smoke_contract);
+  if (canonical(bundle.files.map((item) => item.path)) !== canonical(expectedPaths)
+    || bundle.sha256 !== portableRuntimeBundleDigest(bundle.files)) {
+    throw new Error("portable runtime bundle authority drift");
+  }
+  for (const item of bundle.files) {
+    if (!item || !SHA.test(item.sha256 ?? "") || !Number.isInteger(item.bytes)) {
+      throw new Error(`invalid portable runtime authority: ${item?.path ?? "unknown"}`);
+    }
+    const installed = join(workspace, installedPath(item.path));
+    assertRegular(installed, `installed portable authority ${item.path}`);
+    const bytes = readFileSync(installed);
+    if (bytes.length !== item.bytes || sha256(bytes) !== item.sha256) {
+      throw new Error(`installed portable authority drift: ${item.path}`);
+    }
+  }
+}
 const genericAgents = `# Installed oh-my-design Autopilot\n\nFor broad greenfield UI work, read and follow .agents/skills/omd-autopilot/SKILL.md. The user prompt is the only product brief. Use the installed generic OmD helpers and advisers; do not inspect benchmark fixtures, oracles, mutants, sibling workspaces, or the source repository. The current main agent is the only product and DESIGN.md write owner.\n`;
 function validatePlan(plan, receipt, planPath) {
   const bytes = readFileSync(planPath);
@@ -268,9 +372,19 @@ function validatePlan(plan, receipt, planPath) {
   if (!COMMIT.test(plan.source_commit) || git("merge-base", "--is-ancestor", plan.source_commit, "HEAD") !== "") throw new Error("plan source commit is unavailable");
   for (const entry of plan.source_authority.files) assertEntry(entry, plan.source_commit);
   if (plan.source_authority.sha256 !== sha256(canonical(plan.source_authority.files))) throw new Error("source authority aggregate drift");
+  const expectedPortablePaths = effectivePortableBundlePaths(plan.smoke_contract);
+  if (plan.portable_runtime_bundle?.schema_version !== "0.1"
+    || canonical(plan.portable_runtime_bundle?.files?.map((item) => item.path)) !== canonical(expectedPortablePaths)
+    || plan.portable_runtime_bundle?.sha256 !== portableRuntimeBundleDigest(plan.portable_runtime_bundle?.files)) {
+    throw new Error("portable runtime bundle lock drift");
+  }
+  for (const entry of plan.portable_runtime_bundle.files) assertEntry(entry, plan.source_commit);
   if (plan.cells.length !== 3 || plan.execution_control.max_new_cells_per_invocation !== 1
     || plan.execution_control.bounded_repair_model_calls_max !== 2) throw new Error("smoke schedule drift");
   if (plan.lock_manifest.schedule_sha256 !== sha256(canonical(plan.cells))) throw new Error("schedule lock drift");
+  if (plan.lock_manifest.portable_runtime_bundle_sha256 !== plan.portable_runtime_bundle.sha256) {
+    throw new Error("portable runtime bundle manifest drift");
+  }
   if (plan.lock_manifest.codex_catalog_snapshot_contract_sha256 !== sha256(JSON.stringify(plan.codex_catalog_snapshot_contract))
     || plan.lock_manifest.codex_model_effort_contract_sha256 !== sha256(JSON.stringify(plan.codex_model_effort_contract))) throw new Error("runtime lock drift");
   assertRuntimeSources(plan.codex_catalog_snapshot_contract, plan.codex_model_effort_contract);
@@ -289,7 +403,7 @@ function prepareCommand(args) {
   for (const cell of plan.cells) {
     const workspace = join(root, cell.id); mkdirSync(workspace, { recursive: false });
     copyFileSync(join(repoRoot, plan.smoke_contract.authorities.starter_path), join(workspace, "index.html"));
-    for (const item of plan.smoke_contract.authorities.portable_bundle_files) {
+    for (const item of plan.portable_runtime_bundle.files) {
       const target = join(workspace, installedPath(item.path)); mkdirSync(dirname(target), { recursive: true }); copyFileSync(join(repoRoot, item.path), target);
     }
     writeFileSync(join(workspace, "AGENTS.md"), genericAgents, { encoding: "utf8", flag: "wx" });
@@ -329,6 +443,7 @@ function auditRoot(root, { requireUntouched = false } = {}) {
   if (state.experiment_id !== plan.experiment_id || state.cells.length !== 3) throw new Error("execution state drift");
   for (const cell of plan.cells) {
     const workspace = join(root, cell.id); const matrixCell = readJson(join(workspace, ".benchmark/matrix-cell.json"));
+    assertInstalledPortableRuntimeBundle(plan, workspace);
     if (canonical(matrixCell).includes("oracle") || canonical(matrixCell).includes("mutant")) throw new Error("forbidden calibration artifact reference in workspace");
     if (readFileSync(join(workspace, ".benchmark/PROMPT.md"), "utf8") !== promptFor(readJson(taskSetPath), cell.task_id)) throw new Error(`prompt drift: ${cell.id}`);
     preparedExactCodexRuntimeContract(workspace);
@@ -393,62 +508,89 @@ function walkFor(root, name, ignored = new Set([".benchmark", ".agents"])) {
   visit(root);
   return found.sort();
 }
-function controllerDesignSystemProof(root, cell, workspace, round = 0) {
-  const omdRoot = join(workspace, ".omd");
-  if (!existsSync(omdRoot)) return { pass: false, reason: "autopilot-run-artifacts-missing", eligible_runs: 0 };
-  const decisions = walkFor(omdRoot, "design-system-decision.json");
-  const eligible = decisions.filter((decision) => {
-    const runDir = dirname(decision);
-    return existsSync(join(runDir, "system/provenance.json"))
-      && existsSync(join(runDir, "system/coverage.json"))
-      && existsSync(join(runDir, "system/spec.json"));
-  });
-  if (eligible.length !== 1 || !existsSync(join(workspace, "DESIGN.md"))) {
-    return { pass: false, reason: "exactly-one-verifiable-design-system-run-required", eligible_runs: eligible.length };
+export function controllerDesignSystemProof(root, cell, workspace, round = 0) {
+  try {
+    const omdRoot = join(workspace, ".omd");
+    if (!existsSync(omdRoot)) return { pass: false, reason: "autopilot-run-artifacts-missing", eligible_runs: 0 };
+    const decisions = walkFor(omdRoot, "design-system-decision.json");
+    if (decisions.length !== 1) {
+      return { pass: false, reason: "exactly-one-design-system-decision-required", eligible_runs: decisions.length };
+    }
+    const sourceRun = dirname(decisions[0]);
+    const designPath = join(workspace, "DESIGN.md");
+    assertRegular(designPath, "Core v2 DESIGN.md projection");
+    assertRegular(decisions[0], "Core v2 design-system decision");
+    const decision = readJson(decisions[0]);
+    if (decision.required_system_authority !== "core-v2-project-system"
+      || !["establish", "refresh"].includes(decision.strategy)
+      || decision.implementation_owner !== "main-agent") {
+      return { pass: false, reason: "fresh-smoke-core-v2-decision-authority-required", eligible_runs: 0 };
+    }
+    if (existsSync(join(sourceRun, "system/spec.json"))) {
+      return { pass: false, reason: "legacy-system-spec-forbidden-in-fresh-smoke", eligible_runs: 0 };
+    }
+    const sourceSystem = join(workspace, ".omd/system");
+    const coreArtifacts = [
+      "manifest.json",
+      "graph.json",
+      "provenance.json",
+      "coverage.json",
+      "adoption-receipt.json",
+    ];
+    const missing = coreArtifacts.filter((name) => !existsSync(join(sourceSystem, name)));
+    if (missing.length) {
+      return { pass: false, reason: "core-v2-project-system-required", missing_artifacts: missing, eligible_runs: 0 };
+    }
+    for (const name of coreArtifacts) assertRegular(join(sourceSystem, name), `Core v2 ${name}`);
+
+    const auditRoot = join(root, ".controller-artifacts", cell.id, `design-system-audit-round-${round}`);
+    const auditWorkspace = join(auditRoot, "workspace"); const auditRun = join(auditWorkspace, ".omd-run");
+    const auditSystem = join(auditWorkspace, ".omd/system");
+    mkdirSync(join(auditRun, "system"), { recursive: true });
+    mkdirSync(auditSystem, { recursive: true });
+    copyFileSync(designPath, join(auditWorkspace, "DESIGN.md"));
+    copyFileSync(decisions[0], join(auditRun, "design-system-decision.json"));
+    for (const name of coreArtifacts) copyFileSync(join(sourceSystem, name), join(auditSystem, name));
+
+    const provenance = readJson(join(sourceSystem, "provenance.json"));
+    const coverage = readJson(join(sourceSystem, "coverage.json"));
+    const references = [
+      ...(provenance.decisions ?? []).flatMap((item) => item.evidence ?? []),
+      ...Object.values(coverage.groups ?? {}).flatMap((item) => item.evidence ?? []),
+      ...Object.values(coverage.checks ?? {}).flatMap((item) => item.evidence ?? []),
+    ];
+    for (const reference of [...new Set(references)]) {
+      copyDesignSystemEvidenceReference(reference, sourceRun, workspace, auditRun, auditWorkspace);
+    }
+    const result = spawnSync(process.execPath, [join(repoRoot, validatorPath), auditWorkspace, auditRun], {
+      cwd: repoRoot, encoding: "utf8", timeout: 30_000,
+    });
+    const proofPath = join(auditRun, "system/proof.json");
+    if (!existsSync(proofPath)) {
+      return { pass: false, reason: "controller-design-system-validator-produced-no-proof", exit_code: result.status };
+    }
+    assertRegular(proofPath, "controller Core v2 proof");
+    const proof = readJson(proofPath);
+    const pass = result.status === 0 && proof.pass === true && proof.authority_mode === "core-v2-project-system"
+      && proof.format === "design-md-core" && proof.format_version === "2.0.0";
+    return {
+      pass,
+      reason: pass ? null : "controller-core-v2-design-system-proof-failed",
+      proof,
+      proof_sha256: sha256(readFileSync(proofPath)),
+      source_run_relative: relative(workspace, sourceRun).split(sep).join("/"),
+    };
+  } catch (error) {
+    return {
+      pass: false,
+      reason: error instanceof Error ? error.message : String(error),
+      eligible_runs: 0,
+    };
   }
-  const sourceRun = dirname(eligible[0]);
-  const auditRoot = join(root, ".controller-artifacts", cell.id, `design-system-audit-round-${round}`);
-  const auditWorkspace = join(auditRoot, "workspace"); const auditRun = join(auditWorkspace, ".omd-run");
-  mkdirSync(join(auditRun, "system"), { recursive: true });
-  copyFileSync(join(workspace, "DESIGN.md"), join(auditWorkspace, "DESIGN.md"));
-  copyFileSync(join(sourceRun, "design-system-decision.json"), join(auditRun, "design-system-decision.json"));
-  copyFileSync(join(sourceRun, "system/provenance.json"), join(auditRun, "system/provenance.json"));
-  copyFileSync(join(sourceRun, "system/coverage.json"), join(auditRun, "system/coverage.json"));
-  copyFileSync(join(sourceRun, "system/spec.json"), join(auditRun, "system/spec.json"));
-  const provenance = readJson(join(sourceRun, "system/provenance.json"));
-  const coverage = readJson(join(sourceRun, "system/coverage.json"));
-  const references = [
-    ...(provenance.decisions ?? []).flatMap((item) => item.evidence ?? []),
-    ...Object.values(coverage.groups ?? {}).flatMap((item) => item.evidence ?? []),
-    ...Object.values(coverage.checks ?? {}).flatMap((item) => item.evidence ?? []),
-  ];
-  for (const reference of [...new Set(references)]) {
-    copyDesignSystemEvidenceReference(reference, sourceRun, workspace, auditRun, auditWorkspace);
-  }
-  const result = spawnSync(process.execPath, [join(repoRoot, validatorPath), auditWorkspace, auditRun], {
-    cwd: repoRoot, encoding: "utf8", timeout: 30_000,
-  });
-  const proofPath = join(auditRun, "system/proof.json");
-  if (!existsSync(proofPath)) return { pass: false, reason: "controller-design-system-validator-produced-no-proof", exit_code: result.status };
-  const proof = readJson(proofPath);
-  return {
-    pass: result.status === 0 && proof.pass === true,
-    reason: result.status === 0 && proof.pass === true ? null : "controller-design-system-proof-failed",
-    proof,
-    proof_sha256: sha256(readFileSync(proofPath)),
-    source_run_relative: relative(workspace, sourceRun).split(sep).join("/"),
-  };
 }
 export function controllerAutopilotProof(plan, cell, workspace) {
   try {
-    for (const item of plan.smoke_contract.authorities.portable_bundle_files) {
-      const installed = join(workspace, installedPath(item.path));
-      assertRegular(installed, `installed portable authority ${item.path}`);
-      const bytes = readFileSync(installed);
-      if (bytes.length !== item.bytes || sha256(bytes) !== item.sha256) {
-        throw new Error(`installed portable authority drift: ${item.path}`);
-      }
-    }
+    assertInstalledPortableRuntimeBundle(plan, workspace);
     const omdRoot = join(workspace, ".omd");
     if (!existsSync(omdRoot)) throw new Error("autopilot artifact root is missing");
     const missions = walkFor(omdRoot, "mission.json");

@@ -14,6 +14,8 @@ import { join } from 'node:path';
 import {
   collectDoctorReport,
   REQUIRED_AGENT_IDS,
+  REQUIRED_CORE_RUNTIME_HELPERS,
+  REQUIRED_CORE_SCHEMA_FILES,
   REQUIRED_HARNESS_HELPERS,
   REQUIRED_PRODUCT_SKILLS,
 } from '../../../src/cli/doctor.js';
@@ -153,8 +155,21 @@ describe('omd doctor', () => {
       );
     }
     mkdirSync(join(dataRoot, 'scripts'), { recursive: true });
+    const coreRuntimeHelpers = new Set<string>(REQUIRED_CORE_RUNTIME_HELPERS);
     for (const helper of REQUIRED_HARNESS_HELPERS) {
-      writeFileSync(join(dataRoot, 'scripts', helper), '#!/usr/bin/env node\n');
+      writeFileSync(
+        join(dataRoot, 'scripts', helper),
+        coreRuntimeHelpers.has(helper)
+          ? readFileSync(join(process.cwd(), 'scripts', helper))
+          : '#!/usr/bin/env node\n',
+      );
+    }
+    mkdirSync(join(dataRoot, 'scripts', 'schema'), { recursive: true });
+    for (const schema of REQUIRED_CORE_SCHEMA_FILES) {
+      writeFileSync(
+        join(dataRoot, 'scripts', 'schema', schema),
+        readFileSync(join(process.cwd(), 'spec', 'schema', schema)),
+      );
     }
   }
 
@@ -263,6 +278,97 @@ describe('omd doctor', () => {
     expect(report.state).toBe('incomplete');
     expect(codex?.ready).toBe(false);
     expect(codex?.issues).toContain('missing harness helpers: design-council-handoff.cjs');
+  });
+
+  it('fails closed when an installed Core schema differs from the packaged authority', () => {
+    installProductSkills(join(root, '.agents', 'skills'), 'codex');
+    installAgentSet(join(root, '.codex/agents'), 'codex');
+    installCatalog(join(root, '.codex', 'data'));
+    writeFileSync(
+      join(root, '.codex/data/scripts/schema/design-md-core-adoption-receipt-v2.schema.json'),
+      '{}\n',
+    );
+
+    const report = collectDoctorReport({ dir: root });
+    const codex = report.channels.find((channel) => channel.id === 'codex');
+    expect(report.state).toBe('incomplete');
+    expect(codex?.ready).toBe(false);
+    expect(codex?.issues).toContain(
+      'invalid Core schema bytes: design-md-core-adoption-receipt-v2.schema.json',
+    );
+  });
+
+  it('fails closed when an installed Core proof schema is missing', () => {
+    installProductSkills(join(root, '.agents', 'skills'), 'codex');
+    installAgentSet(join(root, '.codex/agents'), 'codex');
+    installCatalog(join(root, '.codex', 'data'));
+    rmSync(join(root, '.codex/data/scripts/schema/design-system-provenance-v2.schema.json'));
+
+    const report = collectDoctorReport({ dir: root });
+    const codex = report.channels.find((channel) => channel.id === 'codex');
+    expect(report.state).toBe('incomplete');
+    expect(codex?.ready).toBe(false);
+    expect(codex?.issues).toContain(
+      'missing harness helpers: schema/design-system-provenance-v2.schema.json',
+    );
+  });
+
+  it('fails closed when an installed Core runtime helper differs from the packaged authority', () => {
+    installProductSkills(join(root, '.agents', 'skills'), 'codex');
+    installAgentSet(join(root, '.codex/agents'), 'codex');
+    installCatalog(join(root, '.codex', 'data'));
+    writeFileSync(
+      join(root, '.codex/data/scripts/design-md-core-conformance.cjs'),
+      '#!/usr/bin/env node\n// stale helper\n',
+    );
+
+    const report = collectDoctorReport({ dir: root });
+    const codex = report.channels.find((channel) => channel.id === 'codex');
+    expect(report.state).toBe('incomplete');
+    expect(codex?.ready).toBe(false);
+    expect(codex?.issues).toContain(
+      'invalid Core runtime helper bytes: design-md-core-conformance.cjs',
+    );
+  });
+
+  it('rejects a byte-identical installed Core compiler reached through a symlink', () => {
+    installProductSkills(join(root, '.agents', 'skills'), 'codex');
+    installAgentSet(join(root, '.codex/agents'), 'codex');
+    installCatalog(join(root, '.codex', 'data'));
+    const compilerPath = join(root, '.codex/data/scripts/compile-design-md-core.cjs');
+    rmSync(compilerPath);
+    symlinkSync(join(process.cwd(), 'scripts/compile-design-md-core.cjs'), compilerPath);
+
+    const report = collectDoctorReport({ dir: root });
+    const codex = report.channels.find((channel) => channel.id === 'codex');
+    expect(report.state).toBe('incomplete');
+    expect(codex?.ready).toBe(false);
+    expect(codex?.issues.join('\n')).toContain(
+      'unsafe symlinked codex data paths: .codex/data/scripts/compile-design-md-core.cjs',
+    );
+  });
+
+  it('rejects a byte-identical Core schema reached through a symlink', () => {
+    installProductSkills(join(root, '.agents', 'skills'), 'codex');
+    installAgentSet(join(root, '.codex/agents'), 'codex');
+    installCatalog(join(root, '.codex', 'data'));
+    const schemaPath = join(
+      root,
+      '.codex/data/scripts/schema/design-md-core-project-checkpoint-v2.schema.json',
+    );
+    rmSync(schemaPath);
+    symlinkSync(
+      join(process.cwd(), 'spec/schema/design-md-core-project-checkpoint-v2.schema.json'),
+      schemaPath,
+    );
+
+    const report = collectDoctorReport({ dir: root });
+    const codex = report.channels.find((channel) => channel.id === 'codex');
+    expect(report.state).toBe('incomplete');
+    expect(codex?.ready).toBe(false);
+    expect(codex?.issues.join('\n')).toContain(
+      'unsafe symlinked codex data paths: .codex/data/scripts/schema/design-md-core-project-checkpoint-v2.schema.json',
+    );
   });
 
   it('reports ready after DESIGN.md exists', () => {

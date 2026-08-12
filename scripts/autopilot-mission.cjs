@@ -4,6 +4,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
+const { validateCoreGraph, validateCoreManifest } = require('./design-md-core-schema.cjs');
 
 const cwd = path.resolve(process.argv[2] || process.cwd());
 const runDir = path.resolve(process.argv[3] || path.join(cwd, '.omd', 'runs', 'run-autopilot'));
@@ -124,6 +125,16 @@ const REQUIRED_SYSTEM_CHECKS = [
   'reduced_motion', 'assets_fonts_licenses', 'implementation_contract_complete', 'unknown_absence',
   'sections_11_13_honesty',
 ];
+const REQUIRED_CORE_SYSTEM_GROUPS = [
+  'experience', 'foundations', 'typography-assets', 'components-states',
+  'layout-platforms', 'content-locales', 'governance',
+];
+const REQUIRED_CORE_SYSTEM_CHECKS = [
+  'portable_core_structure', 'bound_system_authority', 'token_reference_closure', 'contrast',
+  'component_state_coverage', 'responsive_320_200', 'reduced_motion', 'assets_fonts_licenses',
+  'implementation_contract_complete', 'unknown_absence', 'opaque_extension_preservation',
+];
+const REQUIRED_SYSTEM_AUTHORITY = 'core-v2-project-system';
 
 function exactStringSet(actual, expected, label) {
   if (!Array.isArray(actual) || actual.length !== expected.length
@@ -164,10 +175,22 @@ function validateAcceptancePlan(plan, mission, decisionSha) {
 }
 
 function validateSystemProof(proof, decision, proofPath) {
-  const provenancePath = path.join(runDir, 'system', 'provenance.json');
-  const coveragePath = path.join(runDir, 'system', 'coverage.json');
-  const specPath = path.join(runDir, 'system', 'spec.json');
   const designPath = path.join(cwd, 'DESIGN.md');
+  const coreMode = proof.authority_mode === REQUIRED_SYSTEM_AUTHORITY;
+  if (decision.required_system_authority !== REQUIRED_SYSTEM_AUTHORITY || !coreMode) {
+    throw new Error('fresh Autopilot system proof must use Core v2 project authority');
+  }
+  const provenancePath = coreMode
+    ? path.join(cwd, '.omd', 'system', 'provenance.json')
+    : path.join(runDir, 'system', 'provenance.json');
+  const coveragePath = coreMode
+    ? path.join(cwd, '.omd', 'system', 'coverage.json')
+    : path.join(runDir, 'system', 'coverage.json');
+  const manifestPath = path.join(cwd, '.omd', 'system', 'manifest.json');
+  const graphPath = path.join(cwd, '.omd', 'system', 'graph.json');
+  const specPath = path.join(runDir, 'system', 'spec.json');
+  const requiredGroups = coreMode ? REQUIRED_CORE_SYSTEM_GROUPS : REQUIRED_SYSTEM_GROUPS;
+  const requiredChecks = coreMode ? REQUIRED_CORE_SYSTEM_CHECKS : REQUIRED_SYSTEM_CHECKS;
   if (proof.schema_version !== '0.2'
     || !['passed', 'failed'].includes(proof.status)
     || typeof proof.pass !== 'boolean'
@@ -176,17 +199,44 @@ function validateSystemProof(proof, decision, proofPath) {
     || !fs.existsSync(designPath)
     || !fs.existsSync(provenancePath)
     || !fs.existsSync(coveragePath)
-    || !fs.existsSync(specPath)
     || proof.design_md_sha256 !== sha256File(designPath)
     || proof.provenance_sha256 !== sha256File(provenancePath)
-    || proof.coverage_sha256 !== sha256File(coveragePath)
-    || proof.spec_sha256 !== sha256File(specPath)) {
+    || proof.coverage_sha256 !== sha256File(coveragePath)) {
     throw new Error('system proof authority drift');
   }
-  exactStringSet(proof.required_groups, REQUIRED_SYSTEM_GROUPS, 'system proof required groups');
-  exactStringSet(proof.required_checks, REQUIRED_SYSTEM_CHECKS, 'system proof required checks');
+  if (coreMode) {
+    const manifest = readJson(manifestPath);
+    const graph = readJson(graphPath);
+    if (proof.format !== 'design-md-core' || proof.format_version !== '2.0.0'
+      || proof.profile !== 'portable-core'
+      || !fs.existsSync(manifestPath) || !fs.existsSync(graphPath)
+      || proof.manifest_sha256 !== sha256File(manifestPath)
+      || proof.graph_sha256 !== sha256File(graphPath)
+      || proof.spec_sha256 !== null
+      || proof.system_authority?.manifest_path !== '.omd/system/manifest.json'
+      || proof.system_authority?.graph_path !== '.omd/system/graph.json'
+      || proof.system_authority?.projection_path !== 'DESIGN.md'
+      || proof.system_authority?.provenance_path !== '.omd/system/provenance.json'
+      || proof.system_authority?.coverage_path !== '.omd/system/coverage.json') {
+      throw new Error('Core v2 system proof authority drift');
+    }
+    if (validateCoreManifest(manifest).length || validateCoreGraph(graph).length
+      || graph.projection?.sha256 !== proof.design_md_sha256
+      || manifest.artifacts?.design_md?.sha256 !== proof.design_md_sha256
+      || manifest.artifacts?.graph?.sha256 !== proof.graph_sha256
+      || manifest.artifacts?.provenance?.sha256 !== proof.provenance_sha256
+      || manifest.artifacts?.coverage?.sha256 !== proof.coverage_sha256) {
+      throw new Error('Core v2 system artifact schema or binding drift');
+    }
+  } else if (proof.authority_mode !== undefined && proof.authority_mode !== 'legacy-run-scoped-v0.1') {
+    throw new Error('unsupported system proof authority mode');
+  } else if (!fs.existsSync(specPath) || proof.spec_sha256 !== sha256File(specPath)) {
+    throw new Error('system proof authority drift');
+  }
+  exactStringSet(proof.required_groups, requiredGroups, 'system proof required groups');
+  exactStringSet(proof.required_checks, requiredChecks, 'system proof required checks');
   if (!proof.computed_checks || typeof proof.computed_checks !== 'object'
-    || REQUIRED_SYSTEM_CHECKS.some((id) => proof.computed_checks[id]?.pass !== true)) {
+    || requiredChecks.some((id) => proof.computed_checks[id]?.pass !== true)) {
     throw new Error('system proof computed checks drift');
   }
   if (!Array.isArray(proof.findings)
@@ -390,6 +440,7 @@ if (command === 'bootstrap') {
   const mission = {
     schema_version: '0.1',
     workflow: 'omd-autopilot-v2',
+    required_system_authority: REQUIRED_SYSTEM_AUTHORITY,
     task_sha256: sha256File(taskPath),
     initial_product_tree_sha256: initialTree.sha256,
     initial_product_tree: initialTree.files,
@@ -418,6 +469,9 @@ if (command === 'audit') {
   if (!fs.existsSync(missionPath)) throw new Error('mission is missing; bootstrap first');
   if (!fs.existsSync(activeMissionPath)) throw new Error('active autopilot mission marker is missing');
   const mission = readJson(missionPath);
+  if (mission.required_system_authority !== REQUIRED_SYSTEM_AUTHORITY) {
+    throw new Error('autopilot mission system authority drift');
+  }
   const marker = readJson(activeMissionPath);
   if (marker.workflow !== 'omd-autopilot-v2'
     || marker.run_dir !== relativeRunDir()
@@ -438,6 +492,7 @@ if (command === 'audit') {
     || admission.mission_sha256 !== sha256File(missionPath)
     || admission.design_system_decision_sha256 !== decisionSha
     || admission.acceptance_plan_sha256 !== acceptanceSha
+    || admission.required_system_authority !== mission.required_system_authority
     || admission.implementation_owner !== 'main-agent') {
     throw new Error('completed product-build admission authority drift');
   }
@@ -473,6 +528,9 @@ if (command !== 'advance') throw new Error(`unsupported command: ${command}`);
 if (!fs.existsSync(missionPath)) throw new Error('mission is missing; bootstrap first');
 assertActiveMission();
 const mission = readJson(missionPath);
+if (mission.required_system_authority !== REQUIRED_SYSTEM_AUTHORITY) {
+  throw new Error('autopilot mission system authority drift');
+}
 const initialTree = { files: mission.initial_product_tree, sha256: mission.initial_product_tree_sha256 };
 const currentTree = treeManifest(cwd);
 const changes = changedPaths(initialTree, currentTree);
@@ -545,6 +603,9 @@ if (!fs.existsSync(decisionPath)) {
 }
 
 const decision = readJson(decisionPath);
+if (decision.required_system_authority !== mission.required_system_authority) {
+  throw new Error('design-system decision system authority drift');
+}
 const decisionSha = sha256File(decisionPath);
 const existingAdmission = fs.existsSync(admissionPath) ? readJson(admissionPath) : null;
 let systemProofSha = null;
@@ -603,6 +664,7 @@ if (existingAdmission) {
     || existingAdmission.design_system_decision_sha256 !== decisionSha
     || existingAdmission.acceptance_plan_sha256 !== acceptanceSha
     || existingAdmission.strategy !== decision.strategy
+    || existingAdmission.required_system_authority !== mission.required_system_authority
     || existingAdmission.implementation_owner !== 'main-agent') {
     throw new Error('product-build admission authority drift');
   }
@@ -616,6 +678,7 @@ if (!fs.existsSync(admissionPath)) {
     acceptance_plan_sha256: acceptanceSha,
     system_proof_sha256: systemProofSha,
     strategy: decision.strategy,
+    required_system_authority: mission.required_system_authority,
     implementation_owner: 'main-agent',
     prebuild_product_tree_sha256: currentTree.sha256,
     status: 'admitted',

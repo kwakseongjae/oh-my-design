@@ -73,11 +73,27 @@ const manifest = {
 const output = `${JSON.stringify(manifest, null, 2)}\n`;
 
 if (CHECK) {
-  if (!existsSync(OUT_FILE) || readFileSync(OUT_FILE, 'utf8') !== output) {
+  const current = existsSync(OUT_FILE) ? readFileSync(OUT_FILE, 'utf8') : null;
+  let comparableCurrent = current;
+  // A read-only publish check must not require rewriting an otherwise identical
+  // generated artifact solely to advance its wall-clock stamp. We still
+  // evaluate every reference at today's date above, so a TTL/status/evidence
+  // change remains a real byte drift and fails closed. An explicit --as-of is
+  // strict and is used when intentionally resealing the snapshot date.
+  if (current && asOfIndex < 0) {
+    try {
+      const parsed = JSON.parse(current);
+      comparableCurrent = `${JSON.stringify({ ...parsed, generated_at: AS_OF }, null, 2)}\n`;
+    } catch {
+      comparableCurrent = current;
+    }
+  }
+  if (!current || comparableCurrent !== output) {
     console.error('reference-quality.json is stale; run `npm run query:references:data`.');
     process.exit(1);
   }
-  console.log(`reference-quality.json current (${items.length} entries as of ${AS_OF})`);
+  const persistedAsOf = JSON.parse(current).generated_at;
+  console.log(`reference-quality.json current (${items.length} entries evaluated as of ${AS_OF}; snapshot ${persistedAsOf})`);
 } else {
   writeFileSync(OUT_FILE, output, 'utf8');
   console.log(`wrote ${OUT_FILE} (${items.length} entries as of ${AS_OF})`);

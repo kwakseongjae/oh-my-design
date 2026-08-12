@@ -11,6 +11,8 @@ const cwd = path.resolve(process.argv[2] || process.cwd());
 const runDir = path.resolve(process.argv[3] || path.join(cwd, '.omd'));
 const handoffPath = path.join(runDir, 'handoff', '.handoff.json');
 const outputPath = path.join(runDir, 'design-system-decision.json');
+const missionPath = path.join(runDir, 'mission.json');
+const REQUIRED_SYSTEM_AUTHORITY = 'core-v2-project-system';
 
 function readJson(file) {
   return JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -47,6 +49,12 @@ function normalizeStrategy(value) {
 }
 
 if (!fs.existsSync(handoffPath)) throw new Error('council handoff is missing');
+if (!fs.existsSync(missionPath)) throw new Error('autopilot mission authority is missing');
+const mission = readJson(missionPath);
+if (mission.workflow !== 'omd-autopilot-v2'
+  || mission.required_system_authority !== REQUIRED_SYSTEM_AUTHORITY) {
+  throw new Error('autopilot mission system authority drift');
+}
 const handoff = readJson(handoffPath);
 if (handoff.status === 'blocked') throw new Error('design-system decision is blocked by missing authority or evidence');
 if (handoff.status === 'ask_user' || handoff.state === 'AWAIT_USER') {
@@ -77,6 +85,7 @@ const receipt = {
   schema_version: '0.1',
   status: 'ready',
   strategy,
+  required_system_authority: REQUIRED_SYSTEM_AUTHORITY,
   source,
   implementation_owner: 'main-agent',
   reference_selection_allowed: strategy === 'establish' || strategy === 'refresh',

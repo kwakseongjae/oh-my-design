@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oh-my-design.kr/schema/design-md-core-adoption-review-v2.schema.json",
+  "title": "Oh My Design DESIGN.md Core v2 Adoption Review (OmD Proof Profile)",
+  "description": "OmD proof-profile receipt recording an identified project owner's attestation over exact Core v2 compiler inputs, the prepared review request, and the exact candidate preview. This receipt is not part of the vendor-neutral Core document format and does not cryptographically authenticate that identity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "decision",
+    "authority_transition_approved",
+    "reviewer",
+    "inputs",
+    "review_request",
+    "candidate"
+  ],
+  "properties": {
+    "schema_version": { "const": "2.0.0" },
+    "kind": { "const": "design-md-core-adoption-review" },
+    "decision": { "const": "approved" },
+    "authority_transition_approved": { "const": true },
+    "reviewer": { "$ref": "#/$defs/projectOwner" },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "graph_sha256",
+        "provenance_sha256",
+        "coverage_sha256",
+        "review_request_sha256",
+        "normalized_candidate_graph_sha256",
+        "candidate_design_md_sha256"
+      ],
+      "properties": {
+        "graph_sha256": { "$ref": "#/$defs/finalSha256" },
+        "provenance_sha256": { "$ref": "#/$defs/finalSha256" },
+        "coverage_sha256": { "$ref": "#/$defs/finalSha256" },
+        "migration_report_sha256": { "$ref": "#/$defs/finalSha256" },
+        "review_request_sha256": { "$ref": "#/$defs/finalSha256" },
+        "normalized_candidate_graph_sha256": { "$ref": "#/$defs/finalSha256" },
+        "candidate_design_md_sha256": { "$ref": "#/$defs/finalSha256" }
+      }
+    },
+    "review_request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "status_reviewed"],
+      "properties": {
+        "path": { "const": "review-request.json" },
+        "sha256": { "$ref": "#/$defs/finalSha256" },
+        "status_reviewed": { "const": "review-required" }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "normalized_graph_sha256",
+        "design_md_sha256",
+        "exact_preview_reviewed"
+      ],
+      "properties": {
+        "normalized_graph_sha256": { "$ref": "#/$defs/finalSha256" },
+        "design_md_sha256": { "$ref": "#/$defs/finalSha256" },
+        "exact_preview_reviewed": { "const": true }
+      }
+    },
+    "migration_review": { "$ref": "#/$defs/migrationReview" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "inputs": { "required": ["migration_report_sha256"] }
+        },
+        "required": ["inputs"]
+      },
+      "then": { "required": ["migration_review"] },
+      "else": { "not": { "required": ["migration_review"] } }
+    }
+  ],
+  "$defs": {
+    "finalSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "not": {
+        "const": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    "semanticText": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!\\s*$).+",
+      "not": {
+        "pattern": "^\\s*(?:\\[\\s*(?:[Ff][Ii][Ll][Ll](?:\\s|_|-)*[Ii][Nn]|[Tt][Oo][Dd][Oo]|[Tt][Bb][Dd]|[Uu][Nn][Kk][Nn][Oo][Ww][Nn]|[Uu][Nn][Rr][Ee][Ss][Oo][Ll][Vv][Ee][Dd]|[Nn][Oo][Tt](?:\\s|_|-)*[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd])[^\\]]*\\]\\s*|(?:[Ff][Ii][Ll][Ll](?:\\s|_|-)*[Ii][Nn]|[Tt][Oo][Dd][Oo]|[Tt][Bb][Dd]|[Uu][Nn][Kk][Nn][Oo][Ww][Nn]|[Uu][Nn][Rr][Ee][Ss][Oo][Ll][Vv][Ee][Dd]|[Nn][Oo][Tt](?:\\s|_|-)*[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd])(?:\\s*(?::|—|-)\\s*.*)?\\s*)$"
+      }
+    },
+    "projectOwner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "identifier"],
+      "properties": {
+        "role": { "const": "project-owner" },
+        "identifier": { "$ref": "#/$defs/semanticText" }
+      }
+    },
+    "migrationReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_sha256",
+        "candidate_graph_sha256",
+        "candidate_design_md_sha256",
+        "dropped_segments",
+        "source_reconstruction_equal",
+        "unsupported_claims_reviewed",
+        "unsupported_claims_approved"
+      ],
+      "properties": {
+        "source_sha256": { "$ref": "#/$defs/finalSha256" },
+        "candidate_graph_sha256": { "$ref": "#/$defs/finalSha256" },
+        "candidate_design_md_sha256": { "$ref": "#/$defs/finalSha256" },
+        "dropped_segments": { "const": 0 },
+        "source_reconstruction_equal": { "const": true },
+        "unsupported_claims_reviewed": { "const": true },
+        "unsupported_claims_approved": { "const": true }
+      }
+    }
+  }
+}

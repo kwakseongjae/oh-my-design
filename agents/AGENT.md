@@ -4,7 +4,7 @@ A 60-line operational context card. Loaded into the project at install via `omd 
 
 ## Identity
 - **Project:** oh-my-design — a CLI + skill bundle that turns AI coding agents into a design harness.
-- **Output artifact:** `DESIGN.md` (Google Stitch 1–9 + OmD 10–15) + harness run dir at `.omd/runs/`.
+- **Output artifact:** vendor-neutral DESIGN.md Core v2 projection + canonical `.omd/system/{manifest,graph,provenance,coverage}.json` when bound + permanent `.omd/runs/` archive.
 - **Target users:** vibe coders, junior designers, solo founders.
 
 ## Stack & commands
@@ -20,15 +20,21 @@ A 60-line operational context card. Loaded into the project at install via `omd 
 - `data/reference-fingerprints.json` — resolved-catalog voice fingerprint manifest (skill-side semantic match)
 - `data/vocabulary.json`, `data/synonyms.json`, `data/reference-tags.md` — controlled vocab + tagging
 - `references/<id>/DESIGN.md` — bundled reference design systems resolved from the catalog
-- `spec/omd-v0.1.md` — OmD spec (15-section DESIGN.md format)
+- `spec/design-md-core-v2.md` — normative portable Core + System Graph contract
+- `spec/omd-v0.1.md` — legacy read-compatibility contract; never a new-writer target
 - `.omd/runs/run-<ts>-<slug>/` — every harness run; permanent archive
 - `skills/omd-lab-02-design-harness/runs/v<N>-...` — Lab #02 versioned experiments
 
 ## Core architecture (re-read every Phase 8)
 - **Single Ralph-style loop**, fan-out only at: ux-research (parallel readers), persona-testing (parallel adversarial)
-- **OmD spec is already a harness signature** — §10 → microcopy, §12 → orchestrator constraint, §13 → tester input, §14 → QA checklist
+- **Core v2 is the single-write contract** — seven stable anchors: `experience`, `foundations`, `typography-assets`, `components-states`, `layout-platforms`, `content-locales`, `governance`. New writers never emit legacy YAML or 13/15/16-section layouts.
+- **Graph first after adoption** — only a valid, hash-bound
+  `profile: portable-core` manifest makes the graph canonical; DESIGN.md remains
+  a complete standalone projection. A `migration-candidate` keeps its named
+  source DESIGN.md canonical until explicit adoption. Legacy refactor requires
+  provider-free staged migration with `dropped=0`; unknown means absent, never fallback.
 - **Eval pipeline**: deterministic gate (axe + lighthouse + spec validate) → cross-judge ensemble (3-prompt diversity, no API key) → adversarial persona walkthrough (4 personas, ABANDON token, hard turn budget)
-- **3 mandatory user checkpoints**: Phase 3 (journey), Phase 5 (DESIGN.md.patch), Phase 8 (validation summary)
+- **3 mandatory user checkpoints**: Phase 3 (journey), Phase 5 (frozen Core graph + sidecar patches + DESIGN.md.patch), Phase 8 (validation summary)
 - **3-iteration cap**, critic between iterations forces root-cause re-entry (no surface patches)
 
 ## Brand non-negotiables (apply to *this* project's own UI)
@@ -40,8 +46,8 @@ A 60-line operational context card. Loaded into the project at install via `omd 
 ## Numbered-9s (re-read at every iteration boundary)
 - 9 → re-read sub-agent output before acting
 - 99 → user feedback → trace to Phase decision (critic), not surface-patch
-- 999 → never fabricate §11–13 facts
-- 9999 → never invent tokens absent from DESIGN.md
+- 999 → never fabricate project history, principles, personas, locales, or brand facts
+- 9999 → never invent tokens absent from the valid Core graph/projection
 - 99999 → never auto-skip user checkpoints
 - 999999 → never invent reference ids; use only IDs present in the resolved catalog
 - 9999999 → never claim success when output is empty; Read the file

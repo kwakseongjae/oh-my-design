@@ -111,11 +111,26 @@ export const REQUIRED_HARNESS_HELPERS = [
   'design-council-reconcile.cjs',
   'design-council-handoff.cjs',
   'design-system-plan.cjs',
+  'design-md-core-schema.cjs',
+  'design-md-core-conformance.cjs',
+  'design-md-core.cjs',
+  'prepare-design-md-core-review.cjs',
+  'compile-design-md-core.cjs',
+  'adopt-design-md-core.cjs',
+  'migrate-design-md-core.cjs',
   'validate-project-design-system.cjs',
   'autopilot-mission.cjs',
   'autopilot-council-plan.cjs',
   'autopilot-council-reconcile.cjs',
   'design-harness-context-plan.cjs',
+] as const;
+export const REQUIRED_CORE_RUNTIME_HELPERS = [
+  'design-md-core-schema.cjs',
+  'design-md-core-conformance.cjs',
+  'design-md-core.cjs',
+  'prepare-design-md-core-review.cjs',
+  'compile-design-md-core.cjs',
+  'adopt-design-md-core.cjs',
 ] as const;
 const REQUIRED_SKILL_SIDECARS = [
   ['omd-autopilot', 'references/design-system-contract.md'],
@@ -124,6 +139,15 @@ const REQUIRED_SKILL_SIDECARS = [
   ['omd-harness', 'references/master-conversation.md'],
   ['omd-harness', 'references/master-legacy-production.md'],
   ['omd-harness', 'references/master-execution-phases.md'],
+] as const;
+export const REQUIRED_CORE_SCHEMA_FILES = [
+  'design-md-core-manifest-v2.schema.json',
+  'design-system-graph-v2.schema.json',
+  'design-system-provenance-v2.schema.json',
+  'design-system-coverage-v2.schema.json',
+  'design-md-core-adoption-review-v2.schema.json',
+  'design-md-core-adoption-receipt-v2.schema.json',
+  'design-md-core-project-checkpoint-v2.schema.json',
 ] as const;
 const REQUIRED_CLAUDE_HOOKS = [
   'skill-activation.cjs',
@@ -153,7 +177,77 @@ function missingDataFiles(dataRoot: string): string[] {
 }
 
 function missingHarnessHelpers(dataRoot: string): string[] {
-  return REQUIRED_HARNESS_HELPERS.filter((file) => !existsSync(join(dataRoot, 'scripts', file)));
+  const missing: string[] = REQUIRED_HARNESS_HELPERS.filter(
+    (file) => !existsSync(join(dataRoot, 'scripts', file)),
+  );
+  for (const schema of REQUIRED_CORE_SCHEMA_FILES) {
+    if (!existsSync(join(dataRoot, 'scripts', 'schema', schema))) {
+      missing.push(`schema/${schema}`);
+    }
+  }
+  return missing;
+}
+
+function coreSchemaIntegrityIssues(installRoot: string, dataRoot: string): string[] {
+  const installedSchemas = REQUIRED_CORE_SCHEMA_FILES
+    .map((schema) => ({
+      schema,
+      path: join(dataRoot, 'scripts', 'schema', schema),
+    }))
+    .filter(({ path }) => existsSync(path) && !unsafeManagedPath(installRoot, path));
+  if (installedSchemas.length === 0) return [];
+
+  const bundleRoot = findBundleRoot();
+  if (!bundleRoot) return ['bundled Core schema authority is missing'];
+
+  const invalid: string[] = [];
+  for (const { schema, path } of installedSchemas) {
+    const trustedPath = join(bundleRoot, 'spec', 'schema', schema);
+    try {
+      if (
+        !existsSync(trustedPath) ||
+        !readFileSync(path).equals(readFileSync(trustedPath))
+      ) {
+        invalid.push(schema);
+      }
+    } catch {
+      invalid.push(schema);
+    }
+  }
+  return invalid.length > 0
+    ? [`invalid Core schema bytes: ${invalid.join(', ')}`]
+    : [];
+}
+
+function coreRuntimeIntegrityIssues(installRoot: string, dataRoot: string): string[] {
+  const installedHelpers = REQUIRED_CORE_RUNTIME_HELPERS
+    .map((helper) => ({
+      helper,
+      path: join(dataRoot, 'scripts', helper),
+    }))
+    .filter(({ path }) => existsSync(path) && !unsafeManagedPath(installRoot, path));
+  if (installedHelpers.length === 0) return [];
+
+  const bundleRoot = findBundleRoot();
+  if (!bundleRoot) return ['bundled Core runtime authority is missing'];
+
+  const invalid: string[] = [];
+  for (const { helper, path } of installedHelpers) {
+    const trustedPath = join(bundleRoot, 'scripts', helper);
+    try {
+      if (
+        !existsSync(trustedPath) ||
+        !readFileSync(path).equals(readFileSync(trustedPath))
+      ) {
+        invalid.push(helper);
+      }
+    } catch {
+      invalid.push(helper);
+    }
+  }
+  return invalid.length > 0
+    ? [`invalid Core runtime helper bytes: ${invalid.join(', ')}`]
+    : [];
 }
 
 function expectedSkillName(skill: string, channel: SkillChannelId): string {
@@ -229,6 +323,7 @@ function coreIssues(
   const unsafeDataPaths = [
     ...REQUIRED_DATA_FILES.map((file) => join(dataRoot, file)),
     ...REQUIRED_HARNESS_HELPERS.map((file) => join(dataRoot, 'scripts', file)),
+    ...REQUIRED_CORE_SCHEMA_FILES.map((file) => join(dataRoot, 'scripts', 'schema', file)),
     join(dataRoot, 'references'),
   ].filter((path) => existsSync(path) && unsafeManagedPath(installRoot, path));
   if (unsafeDataPaths.length > 0) {
@@ -241,12 +336,16 @@ function coreIssues(
   const missingSkills = missingProductSkills(skillsRoot, channel);
   const missingData = missingDataFiles(dataRoot);
   const missingHelpers = missingHarnessHelpers(dataRoot);
+  const runtimeIntegrityIssues = coreRuntimeIntegrityIssues(installRoot, dataRoot);
+  const schemaIntegrityIssues = coreSchemaIntegrityIssues(installRoot, dataRoot);
   if (missingSkills.length > 0) {
     issues.push(`missing product skills: ${missingSkills.join(', ')}`);
   }
   issues.push(...skillContractIssues(installRoot, skillsRoot, channel));
   if (missingData.length > 0) issues.push(`missing catalog data: ${missingData.join(', ')}`);
   if (missingHelpers.length > 0) issues.push(`missing harness helpers: ${missingHelpers.join(', ')}`);
+  issues.push(...runtimeIntegrityIssues);
+  issues.push(...schemaIntegrityIssues);
   if (selfTest && missingHelpers.length === 0) {
     const plannerIssue = harnessContextPlannerSelfTestIssue(installRoot, dataRoot);
     if (plannerIssue) issues.push(plannerIssue);
@@ -919,11 +1018,14 @@ function cursorRuleIssues(root: string, installedSkills: number): string[] {
   const unsafe = unsafeManagedPath(root, path);
   if (unsafe) return [`unsafe Cursor rule path (${unsafe})`];
   const content = readFileSync(path, 'utf8');
+  const hasStandaloneContract =
+    content.includes('Read the standalone design contract at `@DESIGN.md` before generating/modifying UI.') ||
+    content.includes('The standalone portable design contract lives at `@DESIGN.md` (repo root).');
   if (
     !content.startsWith('---\n') ||
     !content.includes('description: Authoritative brand & UI design system.') ||
     !/<!-- omd:start v=1 hash=[a-f0-9]{12} -->/.test(content) ||
-    !content.includes('The authoritative design spec lives at `@DESIGN.md` (repo root). Open and read before generating/modifying UI.') ||
+    !hasStandaloneContract ||
     !/<!-- omd:cursor-channel=(?:skills|rule-only) -->/.test(content) ||
     !content.includes('<!-- omd:end -->')
   ) {

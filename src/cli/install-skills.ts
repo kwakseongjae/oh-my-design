@@ -104,83 +104,95 @@ interface PostInstallCopy {
   cursorNative: string;
   cursorCompatibility: string;
   builder: string;
+  cursorApplyLabel: string;
+  cursorFullInstall: string;
 }
 
 const POST_INSTALL_COPY: Record<WorkflowLanguage, PostInstallCopy> = {
   en: {
     title: 'Next',
     restartAgent: 'Restart your coding agent, then send this prompt:',
-    restartCursor: 'Restart Cursor, then establish or apply DESIGN.md:',
+    restartCursor: 'Restart Cursor, then continue with DESIGN.md:',
     designSystemPrompt: 'Set up a Toss-inspired design system for a family meal-tracking app. Ask before writing DESIGN.md.',
     homePrompt: 'Using this DESIGN.md, design the home screen.',
-    routeExplanation: 'OmD routes the request through omd:init and writes DESIGN.md only after confirmation. Then continue with:',
+    routeExplanation: 'OmD routes the request through omd:init, prepares an exact preview, and adopts the approved package atomically. Then continue with:',
     walkthrough: 'Full walkthrough: “Your first 60 seconds” in the README. Routing is automatic; no slash command is required.',
     powerUser: 'Power user: /omd-harness <task> opens the full checkpointed pipeline.',
     sessionWarning: 'Already running? Restart the coding agent. Codex must also trust the project before loading project-local roles.',
     cursorSessionWarning: 'Already running? Restart Cursor so it reloads the project rule.',
     cursorNative: 'Cursor loads OmD Agent Skills from .cursor/skills and keeps DESIGN.md precedence in a small bootstrap rule.',
-    cursorCompatibility: 'Compatibility mode uses the installed rule and local catalog directly.',
-    builder: 'You can also choose a reference in Builder, download DESIGN.md, and then ask Cursor to build.',
+    cursorCompatibility: 'Rule-only compatibility can apply an existing root DESIGN.md, but it cannot create one. The local catalog is read-only; do not copy or adapt it into the project.',
+    builder: 'If DESIGN.md is missing, download a standalone Core v2 file from Builder and validate it before building.',
+    cursorApplyLabel: 'After a valid root DESIGN.md exists, send:',
+    cursorFullInstall: 'For Agent Skills and Autopilot creation, reinstall Cursor without --cursor-rule-only.',
   },
   ko: {
     title: '다음 단계',
     restartAgent: '코딩 에이전트를 다시 시작한 뒤, 대화창에 이 요청을 입력하세요:',
-    restartCursor: 'Cursor를 다시 시작한 뒤 DESIGN.md를 만들거나 적용하세요:',
+    restartCursor: 'Cursor를 다시 시작한 뒤 DESIGN.md 작업을 이어가세요:',
     designSystemPrompt: '토스 스타일로 가족 식단 공유 앱의 디자인 시스템을 제안하고, DESIGN.md를 쓰기 전에 확인해줘.',
     homePrompt: '이 DESIGN.md를 기준으로 홈 화면을 디자인해줘.',
-    routeExplanation: 'OmD가 요청을 omd:init으로 연결하고 확인을 받은 뒤 DESIGN.md를 작성합니다. 이어서 이렇게 요청하세요:',
+    routeExplanation: 'OmD가 요청을 omd:init으로 연결해 정확한 미리보기를 준비하고, 승인된 패키지만 원자적으로 채택합니다. 이어서 이렇게 요청하세요:',
     walkthrough: '전체 사용법은 README의 “첫 60초”에서 볼 수 있습니다. 라우팅은 자동이라 슬래시 명령을 외울 필요가 없습니다.',
     powerUser: '고급 사용: /omd-harness <task>로 체크포인트가 있는 전체 파이프라인을 시작합니다.',
     sessionWarning: '이미 실행 중이었다면 코딩 에이전트를 다시 시작하세요. Codex는 프로젝트를 신뢰해야 로컬 역할을 불러옵니다.',
     cursorSessionWarning: '이미 실행 중이었다면 Cursor를 다시 시작해 프로젝트 규칙을 새로 불러오세요.',
     cursorNative: 'Cursor는 .cursor/skills의 OmD Agent Skills를 읽고, 작은 부트스트랩 규칙으로 DESIGN.md 우선순위를 지킵니다.',
-    cursorCompatibility: '호환 모드에서는 설치된 규칙과 로컬 카탈로그를 바로 사용합니다.',
-    builder: 'Builder에서 레퍼런스를 고르고 DESIGN.md를 내려받은 뒤 Cursor에 구현을 요청해도 됩니다.',
+    cursorCompatibility: 'rule-only 호환 모드는 기존 루트 DESIGN.md를 적용할 수 있지만 새로 만들 수는 없습니다. 로컬 카탈로그는 읽기 전용이며 프로젝트로 복사하거나 각색하면 안 됩니다.',
+    builder: 'DESIGN.md가 없다면 Builder에서 독립 실행 가능한 Core v2 파일을 내려받고 검증한 뒤 구현하세요.',
+    cursorApplyLabel: '유효한 루트 DESIGN.md가 준비된 뒤 이렇게 요청하세요:',
+    cursorFullInstall: 'Agent Skills와 Autopilot 생성 기능이 필요하면 --cursor-rule-only 없이 Cursor를 다시 설치하세요.',
   },
   ja: {
     title: '次の手順',
     restartAgent: 'コーディングエージェントを再起動し、チャットに次の依頼を入力してください:',
-    restartCursor: 'Cursorを再起動し、DESIGN.mdを作成または適用してください:',
+    restartCursor: 'Cursorを再起動し、DESIGN.mdの作業を続けてください:',
     designSystemPrompt: 'Tossを参考に、家族向け食事記録アプリのデザインシステムを提案してください。DESIGN.mdを書く前に確認を取ってください。',
     homePrompt: 'このDESIGN.mdを基準にホーム画面をデザインしてください。',
-    routeExplanation: 'OmDは依頼をomd:initに振り分け、確認後にDESIGN.mdを作成します。続けて次のように依頼してください:',
+    routeExplanation: 'OmDは依頼をomd:initに振り分け、正確なプレビューを準備し、承認されたパッケージだけをアトミックに採用します。続けて次のように依頼してください:',
     walkthrough: '詳しい手順はREADMEの「最初の60秒」を参照してください。振り分けは自動なので、スラッシュコマンドを覚える必要はありません。',
     powerUser: '上級者向け: /omd-harness <task> でチェックポイント付きの全工程を開始できます。',
     sessionWarning: 'すでに起動中の場合はエージェントを再起動してください。Codexでは、プロジェクトを信頼するとローカルの役割が読み込まれます。',
     cursorSessionWarning: 'すでに起動中の場合は、Cursorを再起動してプロジェクトルールを読み直してください。',
     cursorNative: 'Cursorは.cursor/skillsのOmD Agent Skillsを読み込み、小さな起動ルールでDESIGN.mdの優先順位を保ちます。',
-    cursorCompatibility: '互換モードでは、インストール済みのルールとローカルカタログを直接使用します。',
-    builder: 'Builderでリファレンスを選び、DESIGN.mdをダウンロードしてからCursorに実装を依頼することもできます。',
+    cursorCompatibility: 'rule-only互換モードは既存のルートDESIGN.mdを適用できますが、新規作成はできません。ローカルカタログは読み取り専用であり、プロジェクトへコピーまたは改変しないでください。',
+    builder: 'DESIGN.mdがない場合は、Builderから単独で使えるCore v2ファイルをダウンロードし、検証してから実装してください。',
+    cursorApplyLabel: '有効なルートDESIGN.mdを用意した後、次を送信してください:',
+    cursorFullInstall: 'Agent SkillsとAutopilotによる作成が必要な場合は、--cursor-rule-onlyを付けずにCursorを再インストールしてください。',
   },
   'zh-CN': {
     title: '下一步',
     restartAgent: '重启编程助手，然后在对话框中发送下面的任务:',
-    restartCursor: '重启 Cursor，然后创建或应用 DESIGN.md:',
+    restartCursor: '重启 Cursor，然后继续处理 DESIGN.md:',
     designSystemPrompt: '参考 Toss，为家庭饮食记录应用设计一套设计系统。写入 DESIGN.md 前先向我确认。',
     homePrompt: '以这份 DESIGN.md 为依据，设计首页。',
-    routeExplanation: 'OmD 会把任务交给 omd:init，并在确认后写入 DESIGN.md。接着发送:',
+    routeExplanation: 'OmD 会把任务交给 omd:init，生成精确预览，并以原子方式采用已批准的包。接着发送:',
     walkthrough: '完整步骤见 README 的“最初 60 秒”。任务会自动分流，不需要记忆斜杠命令。',
     powerUser: '进阶用法: /omd-harness <task> 可启动带检查点的完整流程。',
     sessionWarning: '如果助手已经在运行，请重启。Codex 还需要信任项目，才能加载项目内的角色。',
     cursorSessionWarning: '如果 Cursor 已经在运行，请重启以重新加载项目规则。',
     cursorNative: 'Cursor 从 .cursor/skills 加载 OmD Agent Skills，并用一条精简的启动规则确保 DESIGN.md 优先。',
-    cursorCompatibility: '兼容模式会直接使用已安装的规则和本地参考库。',
-    builder: '也可以先在 Builder 选择参考、下载 DESIGN.md，再让 Cursor 开始实现。',
+    cursorCompatibility: 'rule-only 兼容模式可以应用现有的根目录 DESIGN.md，但不能新建。 本地参考库为只读，不得复制或改写为项目文件。',
+    builder: '如果缺少 DESIGN.md，请从 Builder 下载可独立使用的 Core v2 文件，验证后再开始实现。',
+    cursorApplyLabel: '有效的根目录 DESIGN.md 就绪后，发送:',
+    cursorFullInstall: '如需 Agent Skills 和 Autopilot 创建功能，请不要使用 --cursor-rule-only，重新安装 Cursor。',
   },
   'zh-TW': {
     title: '下一步',
     restartAgent: '重新啟動程式助理，接著在對話框傳送以下工作:',
-    restartCursor: '重新啟動 Cursor，接著建立或套用 DESIGN.md:',
+    restartCursor: '重新啟動 Cursor，接著繼續處理 DESIGN.md:',
     designSystemPrompt: '參考 Toss，為家庭飲食記錄應用設計一套設計系統。寫入 DESIGN.md 前先向我確認。',
     homePrompt: '以這份 DESIGN.md 為依據，設計首頁。',
-    routeExplanation: 'OmD 會把工作交給 omd:init，並在確認後寫入 DESIGN.md。接著傳送:',
+    routeExplanation: 'OmD 會把工作交給 omd:init，產生精確預覽，並以原子方式採用已核准的套件。接著傳送:',
     walkthrough: '完整步驟請見 README 的「最初 60 秒」。工作會自動分流，不需要記住斜線指令。',
     powerUser: '進階用法: /omd-harness <task> 可啟動含檢查點的完整流程。',
     sessionWarning: '若助理已在執行，請重新啟動。Codex 還需要信任專案，才能載入專案內的角色。',
     cursorSessionWarning: '若 Cursor 已在執行，請重新啟動以重新載入專案規則。',
     cursorNative: 'Cursor 會從 .cursor/skills 載入 OmD Agent Skills，並以精簡的啟動規則確保 DESIGN.md 優先。',
-    cursorCompatibility: '相容模式會直接使用已安裝的規則與本機參考庫。',
-    builder: '也可以先在 Builder 選擇參考、下載 DESIGN.md，再請 Cursor 開始實作。',
+    cursorCompatibility: 'rule-only 相容模式可以套用既有的根目錄 DESIGN.md，但不能新建。 本機參考庫為唯讀，不得複製或改寫成專案檔案。',
+    builder: '如果缺少 DESIGN.md，請從 Builder 下載可獨立使用的 Core v2 檔案，驗證後再開始實作。',
+    cursorApplyLabel: '有效的根目錄 DESIGN.md 就緒後，傳送:',
+    cursorFullInstall: '若需要 Agent Skills 與 Autopilot 建立功能，請不要使用 --cursor-rule-only，重新安裝 Cursor。',
   },
 };
 
@@ -190,6 +202,23 @@ export function postInstallGuidance(
 ): { title: string; body: string } {
   const copy = POST_INSTALL_COPY[lang];
   if (options.cursorOnly) {
+    if (options.cursorRuleOnly) {
+      return {
+        title: copy.title,
+        body: [
+          copy.restartCursor,
+          '',
+          copy.cursorCompatibility,
+          copy.builder,
+          copy.cursorFullInstall,
+          '',
+          copy.cursorApplyLabel,
+          `  ${copy.homePrompt}`,
+          '',
+          `⚠ ${copy.cursorSessionWarning}`,
+        ].join('\n'),
+      };
+    }
     return {
       title: copy.title,
       body: [
@@ -197,7 +226,7 @@ export function postInstallGuidance(
         '',
         `  ${copy.designSystemPrompt}`,
         '',
-        options.cursorRuleOnly ? copy.cursorCompatibility : copy.cursorNative,
+        copy.cursorNative,
         copy.builder,
         '',
         `⚠ ${copy.cursorSessionWarning}`,
@@ -1272,11 +1301,11 @@ function installReferenceCatalog(
  */
 const CURSOR_SKILL_BOOTSTRAP_BODY = [
   '<!-- omd:cursor-channel=skills -->',
-  'The authoritative design spec lives at `@DESIGN.md` (repo root). Open and read before generating/modifying UI.',
+  'Read the standalone design contract at `@DESIGN.md` before generating/modifying UI. With an exact valid adopted `profile: portable-core` manifest, its hash-bound System Graph is machine authority and DESIGN.md is the projection. A migration candidate is non-authoritative.',
   '',
   'Pending preference corrections: `@.omd/preferences.md`.',
   '',
-  'Precedence: DESIGN.md > preferences.md > framework defaults.',
+  'Precedence: pending explicit preference corrections > adopted Bound System graph/standalone DESIGN.md > framework defaults. Fold pending corrections into the graph and regenerate DESIGN.md before clearing them.',
   '',
   'OmD Agent Skills live under `.cursor/skills/`. Use the smallest relevant `omd-*` skill automatically, or invoke it from Cursor with `/omd-<name>`.',
   '',
@@ -1285,25 +1314,27 @@ const CURSOR_SKILL_BOOTSTRAP_BODY = [
 
 /**
  * Explicit compatibility mode for Cursor clients that cannot load Agent
- * Skills. It retains the historical rule-driven behavior behind
- * `--cursor-rule-only` rather than silently weakening the modern install.
+ * Skills. Applying an existing DESIGN.md remains supported, but authoring is
+ * fail-closed because this channel has no Core v2 workflow or adoption gate.
  */
 const CURSOR_RULE_ONLY_BODY = [
   '<!-- omd:cursor-channel=rule-only -->',
-  'The authoritative design spec lives at `@DESIGN.md` (repo root). Open and read before generating/modifying UI.',
+  'The standalone portable design contract lives at `@DESIGN.md` (repo root). Open and read it before generating/modifying UI; without an adopted Bound System package it is also the project design source of truth.',
   '',
   'Pending preference corrections: `@.omd/preferences.md`.',
   '',
-  'Precedence: DESIGN.md > preferences.md > framework defaults.',
+  'Precedence: pending explicit preference corrections > adopted Bound System graph/standalone DESIGN.md > framework defaults. Fold pending corrections into the graph and regenerate DESIGN.md before clearing them.',
   '',
-  'If DESIGN.md is missing and the user asks to establish a design system:',
-  '1. Inspect the existing product, routes, and constraints.',
-  '2. Read `.claude/data/reference-fingerprints.json` and only recommend ids present there.',
-  '3. Load the chosen `.claude/data/references/<id>/DESIGN.md`, explain the project-specific delta, and ask before writing root DESIGN.md.',
-  '4. Unknown reference fields stay absent; never substitute a system font, generic component, or guessed token as a brand fact.',
+  'If DESIGN.md is missing, fail closed: rule-only mode MUST NOT create it by copying, paraphrasing, or adapting `.claude/data/references/<id>/DESIGN.md`. The installed catalog is read-only import context, not a project writer.',
+  'Obtain a standalone DESIGN.md Core v2 from the Builder download, or use a skill-enabled channel to complete the staged `design-md migrate` review and explicit portable-core adoption workflow.',
+  'Before accepting a newly supplied root file, run the bundled provider-free validator: `node .claude/data/scripts/migrate-design-md-core.cjs --input ./DESIGN.md --check --require-source-valid --require-portable-core`. It must start with `# <Product or project name> Design System`, never YAML frontmatter, and contain these exact anchors in order:',
+  '`<!-- design-md:section experience -->`, `<!-- design-md:section foundations -->`, `<!-- design-md:section typography-assets -->`, `<!-- design-md:section components-states -->`, `<!-- design-md:section layout-platforms -->`, `<!-- design-md:section content-locales -->`, `<!-- design-md:section governance -->`.',
+  'The standalone file must establish product scope and a primary task, actionable foundations or constraints, and Governance rules for authority, conflict priority, unknown absence, and changes without requiring OmD or sidecars.',
+  'Unknown fields stay absent; never substitute a system font, generic component, guessed token, or adjacent surface as a product fact.',
+  'A `migration-candidate` is non-authoritative and keeps the source DESIGN.md canonical. Only an explicitly adopted, valid manifest with `profile: portable-core` makes its hash-bound System Graph the machine authority; DESIGN.md remains the standalone portable contract.',
   '',
   'When applying DESIGN.md, preserve existing behavior and user copy unless asked, then verify the actual product route and accessibility before reporting completion.',
-  'Compatibility mode provides the rule and catalog only; OmD named skills and sub-agents are not installed.',
+  'Compatibility mode provides the rule, read-only catalog, and validation helpers only; OmD named skills and sub-agents are not installed.',
 ].join('\n');
 
 function renderCursorRule(ruleOnly: boolean): string {
@@ -1798,7 +1829,7 @@ export async function runInstallSkills(
   for (const target of targets) {
     const cd = dataDirForScope(target, targets, scope);
     if (!cd) continue;
-    for (const helper of ['ctx-prime.cjs', 'context.cjs', 'design-council-prime.cjs', 'design-council-reconcile.cjs', 'design-council-handoff.cjs', 'design-system-plan.cjs', 'validate-project-design-system.cjs', 'autopilot-mission.cjs', 'autopilot-council-plan.cjs', 'autopilot-council-reconcile.cjs', 'design-harness-context-plan.cjs']) {
+    for (const helper of ['ctx-prime.cjs', 'context.cjs', 'design-council-prime.cjs', 'design-council-reconcile.cjs', 'design-council-handoff.cjs', 'design-system-plan.cjs', 'design-md-core-schema.cjs', 'design-md-core-conformance.cjs', 'design-md-core.cjs', 'prepare-design-md-core-review.cjs', 'compile-design-md-core.cjs', 'adopt-design-md-core.cjs', 'migrate-design-md-core.cjs', 'validate-project-design-system.cjs', 'autopilot-mission.cjs', 'autopilot-council-plan.cjs', 'autopilot-council-reconcile.cjs', 'design-harness-context-plan.cjs']) {
       const srcHelper = join(packageRoot, 'scripts', helper);
       if (!existsSync(srcHelper)) continue;
       const destHelper = join(installRoot, cd, 'data', 'scripts', helper);
@@ -1816,6 +1847,33 @@ export async function runInstallSkills(
       if (existsSync(destHelper) && readFileSync(destHelper, 'utf8') === srcTxt) continue;
       mkdirSync(dirname(destHelper), { recursive: true });
       writeFileSync(destHelper, srcTxt, 'utf8');
+    }
+    for (const schema of [
+      'design-md-core-manifest-v2.schema.json',
+      'design-system-graph-v2.schema.json',
+      'design-system-provenance-v2.schema.json',
+      'design-system-coverage-v2.schema.json',
+      'design-md-core-adoption-review-v2.schema.json',
+      'design-md-core-adoption-receipt-v2.schema.json',
+      'design-md-core-project-checkpoint-v2.schema.json',
+    ]) {
+      const srcSchema = join(packageRoot, 'spec', 'schema', schema);
+      if (!existsSync(srcSchema)) continue;
+      const destSchema = join(installRoot, cd, 'data', 'scripts', 'schema', schema);
+      if (unsafeManagedPath(installRoot, destSchema)) {
+        results.push({
+          target,
+          skill: `data-script-schema:${schema}`,
+          destPath: destSchema,
+          status: 'skipped-drift',
+          reason: 'unsafe-path',
+        });
+        continue;
+      }
+      const srcTxt = readFileSync(srcSchema, 'utf8');
+      if (existsSync(destSchema) && readFileSync(destSchema, 'utf8') === srcTxt) continue;
+      mkdirSync(dirname(destSchema), { recursive: true });
+      writeFileSync(destSchema, srcTxt, 'utf8');
     }
   }
 

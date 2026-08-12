@@ -2,6 +2,10 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import {
+  CORE_V2_PORTABLE_RUNTIME_PATHS,
+  effectivePortableBundlePaths,
+} from '../../../benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs';
 
 const repoRoot = resolve(import.meta.dirname, '../../..');
 const contractPath = resolve(repoRoot, 'benchmarks/ui-resolve-bench/config/autopilot-v2-qualification.json');
@@ -166,6 +170,15 @@ describe('OmD Autopilot 2.0 qualification contract', () => {
       expect(sha256(bytes)).toBe(item.sha256);
     }
     expect(sha256(JSON.stringify(bundle))).toBe(smoke.authorities.portable_bundle_sha256);
+  });
+
+  it('closes the portable Core v2 transitive runtime bundle independently of the historical smoke seal', () => {
+    const effective = effectivePortableBundlePaths(smoke);
+    expect(effective).toEqual(expect.arrayContaining([...CORE_V2_PORTABLE_RUNTIME_PATHS]));
+    expect(new Set(effective).size).toBe(effective.length);
+    for (const path of CORE_V2_PORTABLE_RUNTIME_PATHS) {
+      expect(readFileSync(resolve(repoRoot, path)).byteLength).toBeGreaterThan(0);
+    }
   });
 
   it('keeps smoke execution serial, no-retry, no-fallback, and non-promotional', () => {

@@ -111,124 +111,177 @@ run('scripts/autopilot-council-reconcile.cjs', [workspace, runDir]);
 run('scripts/autopilot-mission.cjs', [workspace, runDir, 'advance']);
 run('scripts/design-system-plan.cjs', [workspace, runDir]);
 
-const designMd = `# Hearth — Project Design System
-
-## 1. Product scope
-
-Hearth is a proposed single-screen family meal-planning surface for parents. Product-specific family details remain user-owned and are not inferred.
-
-## 2. Color and contrast
-
-- Canvas: \`#F4F0E7\`
-- Surface: \`#FFFDF8\`
-- Ink: \`#17352B\`
-- Muted ink: \`#5D6D65\`
-- Action: \`#2F684F\` with Action text \`#FFFFFF\`; maintain WCAG AA contrast.
-- Warm accent: \`#E7A95A\`; never use it alone to communicate state.
-
-## 3. Typography
-
-Use the local UI sans-serif stack \`ui-sans-serif, system-ui, sans-serif\`. No external or brand font is claimed. Display 48/52/700, heading 28/34/700, body 16/24/400, label 13/18/650.
-
-## 4. Spacing, density, and layout
-
-Use a 4px base with 8, 12, 16, 24, 32, 48, and 64px steps. Desktop uses a 240px rail and fluid content. Content width is capped at 1280px.
-
-## 5. Responsive behavior
-
-At 760px the rail becomes a top bar and the planning grid becomes one column. At 320px controls remain at least 44px tall. At 200% zoom, content reflows without horizontal document overflow.
-
-## 6. Component states
-
-Buttons, navigation items, meal cards, empty slots, dialog fields, and toast feedback define default, hover, focus-visible, disabled, loading, error, and success behavior. Empty slots remain explicit actions rather than fabricated meals.
-
-## 7. Motion
-
-Use 160ms opacity and transform feedback only. Under \`prefers-reduced-motion: reduce\`, remove nonessential movement.
-
-## 8. Voice and locale
-
-Calm, direct, and domestic without assuming family structure. Keep actions verb-first. Layout must tolerate Korean, English, Japanese, Simplified Chinese, and Traditional Chinese expansion.
-
-## 9. Assets, fonts, and licenses
-
-The calibration surface uses CSS geometry and text only. No external imagery, font download, logo, or third-party asset is claimed.
-
-## 10. Provenance and unresolved
-
-Visual tokens are agent-proposed greenfield decisions authorized by the prompt. Household names, dietary needs, schedules, saved meals, prices, testimonials, and business claims are unresolved and absent.
-
-## 11. Brand narrative
-
-[FILL IN]
-
-## 12. Principles
-
-[FILL IN]
-
-## 13. Personas
-
-[FILL IN]
-`;
-writeFileSync(join(workspace, 'DESIGN.md'), designMd);
-const designSha = shaFile(join(workspace, 'DESIGN.md'));
-const provenance = {
-  schema_version: '0.1', design_md_sha256: designSha,
-  decisions: [
-    { path: 'product.scope', source_class: 'prompt-fact', value: 'single-screen family meal planner for parents', evidence: ['task.md'] },
-    { path: 'tokens.color.action', source_class: 'agent-proposed-greenfield-decision', value: '#2F684F', evidence: ['DESIGN.md#2-color-and-contrast'] },
-    { path: 'tokens.typography.family', source_class: 'agent-proposed-greenfield-decision', value: 'ui-sans-serif, system-ui, sans-serif', evidence: ['DESIGN.md#3-typography'] },
-    { path: 'product.household_details', source_class: 'unresolved', value: null, evidence: [] },
-  ],
-};
-const groups = [
-  'product-scope', 'color-contrast', 'typography', 'spacing-density-layout', 'responsive',
-  'component-states', 'motion-reduced-motion', 'voice-locale', 'assets-fonts-licenses', 'provenance-unresolved',
-];
-const groupAnchors = {
-  'product-scope': '1-product-scope',
-  'color-contrast': '2-color-and-contrast',
-  typography: '3-typography',
-  'spacing-density-layout': '4-spacing-density-and-layout',
-  responsive: '5-responsive-behavior',
-  'component-states': '6-component-states',
-  'motion-reduced-motion': '7-motion',
-  'voice-locale': '8-voice-and-locale',
-  'assets-fonts-licenses': '9-assets-fonts-and-licenses',
-  'provenance-unresolved': '10-provenance-and-unresolved',
-};
-const checks = [
-  'token_reference_closure', 'contrast', 'component_state_coverage', 'responsive_320_200',
-  'reduced_motion', 'assets_fonts_licenses', 'implementation_contract_complete', 'unknown_absence', 'sections_11_13_honesty',
-];
-writeFileSync(join(runDir, 'system/provenance.json'), `${JSON.stringify(provenance, null, 2)}\n`);
-writeFileSync(join(runDir, 'system/coverage.json'), `${JSON.stringify({
-  schema_version: '0.1', design_md_sha256: designSha,
-  groups: Object.fromEntries(groups.map((id) => [id, { status: 'covered', evidence: [`DESIGN.md#${groupAnchors[id]}`] }])),
-  checks: Object.fromEntries(checks.map((id) => [id, { pass: true, method: 'controller-computed-system-spec-v1' }])),
-}, null, 2)}\n`);
-writeFileSync(join(runDir, 'system/spec.json'), `${JSON.stringify({
-  schema_version: '0.1', design_md_sha256: designSha,
-  tokens: {
-    colors: { ink: '#17352B', surface: '#FFFDF8', action: '#2F684F', 'action-text': '#FFFFFF' },
-    color_pairs: [
-      { foreground: 'ink', background: 'surface', min_ratio: 4.5 },
-      { foreground: 'action-text', background: 'action', min_ratio: 4.5 },
-    ],
-    typography: { body: '16/24/400', heading: '28/34/700' },
-    spacing: { 'space-1': '4px', 'space-2': '8px', 'space-3': '16px' },
+const graph = {
+  $schema: 'https://oh-my-design.kr/schema/design-system-graph-v2.schema.json',
+  schema_version: '2.0.0',
+  identity: { name: 'Hearth', kind: 'project-system', scope: 'Single-screen family meal planning surface for parents.' },
+  experience: {
+    summary: 'A calm weekly meal-planning surface that helps parents prepare and review a household plan.',
+    primary_tasks: ['Start a weekly meal plan', 'Add a named meal', 'Review planning feedback'],
+    design_direction: ['Calm', 'Warm', 'Editorial', 'Evidence-led'],
+    principles: ['Keep unknown days visibly open', 'Show state and consequence before commitment'],
+    avoid: ['Fabricated household details', 'Decorative urgency', 'Unsupported business claims'],
   },
-  components: [{
-    id: 'primary-action', interactive: true,
-    states: ['default', 'hover', 'focus-visible', 'disabled', 'loading', 'error', 'success'],
-    token_refs: ['colors.action', 'colors.action-text', 'spacing.space-2'],
-  }],
-  responsive: { minimum_width_px: 320, reflow_zoom_percent: 200, rules: ['Rail reflows above the planning grid.'] },
-  motion: { reduced_motion: true },
-  assets: [{ id: 'none', source_status: 'none', license_status: 'not-required' }],
-  voice_locale: { locales: ['ko', 'en', 'ja', 'zh-CN', 'zh-TW'] },
-  unresolved: ['product.household_details'],
-}, null, 2)}\n`);
+  foundations: {
+    tokens: {
+      'color.canvas': { $type: 'color', $value: '#F4F0E7', $description: 'Warm page canvas' },
+      'color.surface': { $type: 'color', $value: '#FFFDF8', $description: 'Primary content surface' },
+      'color.text.strong': { $type: 'color', $value: '#17352B', $description: 'Primary reading text' },
+      'color.text.muted': { $type: 'color', $value: '#5D6D65', $description: 'Secondary reading text' },
+      'color.action.primary': { $type: 'color', $value: '#2F684F', $description: 'Primary action emphasis' },
+      'color.action.text': { $type: 'color', $value: '#FFFFFF', $description: 'Text on primary action' },
+      'color.focus': { $type: 'color', $value: '#E7A95A', $description: 'Focus indicator accent' },
+      'space.control': { $type: 'dimension', $value: '8px' },
+      'space.group': { $type: 'dimension', $value: '16px' },
+      'space.section': { $type: 'dimension', $value: '32px' },
+      'motion.feedback': { $type: 'duration', $value: '160ms' },
+    },
+    rules: ['Use action color only for actionable emphasis.', 'Never communicate status with color alone.'],
+    contrast_pairs: [
+      { foreground: 'color.text.strong', background: 'color.surface', minimum_ratio: 4.5 },
+      { foreground: 'color.action.text', background: 'color.action.primary', minimum_ratio: 4.5 },
+    ],
+    reduced_motion: true,
+  },
+  typography_assets: {
+    roles: [
+      { id: 'display', usage: 'Primary page thesis', family: 'ui-sans-serif, system-ui, sans-serif', size: '48px', weight: 700, line_height: '52px' },
+      { id: 'heading', usage: 'Section hierarchy', family: 'ui-sans-serif, system-ui, sans-serif', size: '28px', weight: 700, line_height: '34px' },
+      { id: 'body', usage: 'Product reading text', family: 'ui-sans-serif, system-ui, sans-serif', size: '16px', weight: 400, line_height: '24px' },
+    ],
+    assets: [],
+    rules: ['Do not render an unverified substitute as a project font or asset.'],
+  },
+  components_states: {
+    components: [{
+      id: 'primary-action', anatomy: ['label', 'focus indicator', 'progress state'], variants: ['filled'],
+      states: ['default', 'hover', 'focus-visible', 'disabled', 'loading', 'error', 'success'],
+      token_refs: ['color.action.primary', 'color.action.text', 'color.focus', 'space.control'],
+      semantics: 'Starts or commits the current explicit task with visible feedback.',
+      interaction: {
+        kind: 'interactive',
+        state_applicability: Object.fromEntries(
+          ['default', 'hover', 'focus-visible', 'disabled', 'loading', 'error', 'success']
+            .map((state) => [state, { applicability: 'applicable' }]),
+        ),
+      },
+    }, {
+      id: 'meal-entry-dialog', anatomy: ['heading', 'labelled field', 'error', 'cancel action', 'save action'], variants: ['modal'],
+      states: ['default', 'focus-visible', 'error', 'success'],
+      token_refs: ['color.surface', 'color.text.strong', 'color.action.primary', 'space.group'],
+      semantics: 'Collects one user-provided meal name without inferring household facts.',
+      interaction: {
+        kind: 'interactive',
+        state_applicability: {
+          default: { applicability: 'applicable' },
+          hover: { applicability: 'not-applicable', reason: 'Pointer hover belongs to the dialog controls, not the dialog container.' },
+          'focus-visible': { applicability: 'applicable' },
+          disabled: { applicability: 'not-applicable', reason: 'The dialog itself is not a disableable control.' },
+          loading: { applicability: 'not-applicable', reason: 'Submission feedback is owned by the save action.' },
+          error: { applicability: 'applicable' },
+          success: { applicability: 'applicable' },
+        },
+      },
+    }],
+    rules: ['Loading prevents duplicate submission.', 'Errors identify the affected control and preserve recovery.'],
+  },
+  layout_platforms: {
+    minimum_width_px: 320, reflow_zoom_percent: 200,
+    rules: ['Preserve reading and task order.', 'Keep primary touch targets at least 44px tall.'],
+    platforms: [{ id: 'web', rules: ['Stack the rail and planning grid when columns no longer fit.'] }],
+  },
+  content_locales: {
+    voice: ['Calm', 'Direct', 'Specific', 'Non-assumptive'],
+    terminology: { primary_action: 'Get started', meal_action: 'Add meal' },
+    locales: [
+      { locale: 'en', status: 'supported', rules: ['Use concise verb-first actions.'] },
+      { locale: 'ko', status: 'planned', rules: ['Review spacing and natural product register before promotion.'] },
+      { locale: 'ja', status: 'planned', rules: ['Review line breaks and natural product register before promotion.'] },
+      { locale: 'zh-CN', status: 'planned', rules: ['Review terminology and expansion before promotion.'] },
+      { locale: 'zh-TW', status: 'planned', rules: ['Review Taiwan product terminology before promotion.'] },
+    ],
+  },
+  governance: {
+    priority: ['Direct scoped user instruction', 'Repository facts', 'This project system', 'Verified inspiration'],
+    unknown_policy: 'absent-at-smallest-unresolved-boundary',
+    change_policy: ['Update graph before projection.', 'Regenerate and validate the Core bundle atomically.'],
+    decisions: [
+      { path: 'identity.name', source_class: 'agent-proposed-greenfield-decision', value: 'Hearth', evidence: ['DESIGN.md#1-experience'] },
+      { path: 'identity.scope', source_class: 'prompt-fact', value: 'Single-screen family meal planning surface for parents.', evidence: ['.omd/runs/run-greenfield-family-planner/task.md'] },
+      { path: 'foundations.tokens.color.action.primary.$value', source_class: 'agent-proposed-greenfield-decision', value: '#2F684F', evidence: ['DESIGN.md#2-foundations'] },
+      { path: '/content_locales/terminology/household-name', source_class: 'unresolved', evidence: [] },
+    ],
+  },
+};
+const provenance = {
+  schema_version: '2.0.0',
+  decisions: graph.governance.decisions,
+};
+const coreSections = {
+  experience: '1-experience',
+  foundations: '2-foundations',
+  'typography-assets': '3-typography-assets',
+  'components-states': '4-components-states',
+  'layout-platforms': '5-layout-platforms',
+  'content-locales': '6-content-locales',
+  governance: '7-governance',
+};
+const coreChecks = [
+  'portable_core_structure', 'bound_system_authority', 'token_reference_closure', 'contrast',
+  'component_state_coverage', 'responsive_320_200', 'reduced_motion', 'assets_fonts_licenses',
+  'implementation_contract_complete', 'unknown_absence', 'opaque_extension_preservation',
+];
+const coverage = {
+  schema_version: '2.0.0',
+  groups: Object.fromEntries(Object.entries(coreSections).map(([id, anchor]) => [id, {
+    status: 'covered', evidence: [`DESIGN.md#${anchor}`],
+  }])),
+  checks: Object.fromEntries(coreChecks.map((id) => [id, { pass: true, method: 'controller-computed-system-graph-v2' }])),
+};
+const draftRoot = join(runDir, 'core-v2-draft');
+const reviewRoot = join(runDir, 'core-v2-review');
+const ownerReviewReceipt = join(runDir, 'core-v2-owner-review.json');
+const compiledRoot = join(outputRoot, 'core-v2-compiled-package');
+const checkpointReceipt = join(runDir, 'checkpoints/core-v2-project-adoption.json');
+const projectOwnerIdentity = 'autopilot-clean-dir-project-owner';
+mkdirSync(draftRoot, { recursive: true });
+mkdirSync(dirname(checkpointReceipt), { recursive: true });
+writeFileSync(join(draftRoot, 'graph.json'), `${JSON.stringify(graph, null, 2)}\n`);
+writeFileSync(join(draftRoot, 'provenance.json'), `${JSON.stringify(provenance, null, 2)}\n`);
+writeFileSync(join(draftRoot, 'coverage.json'), `${JSON.stringify(coverage, null, 2)}\n`);
+
+run('scripts/prepare-design-md-core-review.cjs', [
+  join(draftRoot, 'graph.json'),
+  '--provenance', join(draftRoot, 'provenance.json'),
+  '--coverage', join(draftRoot, 'coverage.json'),
+  '--out-dir', reviewRoot,
+]);
+run('scripts/prepare-design-md-core-review.cjs', [
+  '--approve', join(reviewRoot, 'review-request.json'),
+  '--reviewer', projectOwnerIdentity,
+  '--out', ownerReviewReceipt,
+  '--authority-transition-approved',
+]);
+run('scripts/compile-design-md-core.cjs', [
+  join(reviewRoot, 'input-graph.json'),
+  '--provenance', join(reviewRoot, 'provenance.json'),
+  '--coverage', join(reviewRoot, 'coverage.json'),
+  '--review-receipt', ownerReviewReceipt,
+  '--out-dir', compiledRoot,
+  '--adopt',
+]);
+run('scripts/adopt-design-md-core.cjs', [
+  compiledRoot,
+  '--prepare-checkpoint', checkpointReceipt,
+  '--reviewer', projectOwnerIdentity,
+  '--authority-transition-approved',
+]);
+run('scripts/adopt-design-md-core.cjs', [
+  compiledRoot,
+  '--project-root', workspace,
+  '--checkpoint-receipt', checkpointReceipt,
+]);
+const designSha = shaFile(join(workspace, 'DESIGN.md'));
 run('scripts/validate-project-design-system.cjs', [workspace, runDir]);
 run('scripts/autopilot-mission.cjs', [workspace, runDir, 'advance']);
 const acceptance = {

@@ -1,9 +1,8 @@
 /**
- * Font Playground → DESIGN.md §3 snippet generator.
+ * Font Playground → DESIGN.md Core v2 Typography & Assets snippet generator.
  *
- * Emits a copy-ready Typography section compatible with OmD v0.1. Intended
- * to be pasted into a project's DESIGN.md or handed to an AI coding agent
- * (Claude Code, Cursor) as brand context.
+ * Emits a copy-ready portable section. It carries no tool metadata and can be
+ * pasted into a Core v2 DESIGN.md or handed directly to another design agent.
  */
 
 import type { FontEntry } from "./types";
@@ -20,7 +19,8 @@ export function buildDesignMdSnippet(
       : `jsdelivr @font-face (see snippet)`;
 
   const lines: string[] = [];
-  lines.push(`## 3. Typography Rules`);
+  lines.push(`<!-- design-md:section typography-assets -->`);
+  lines.push(`## 3. Typography & Assets`);
   lines.push("");
   lines.push(`### Family`);
   lines.push("");

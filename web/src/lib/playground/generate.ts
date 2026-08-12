@@ -1,20 +1,16 @@
 /**
- * Playground → OmD v0.1 DESIGN.md generator.
+ * Playground → vendor-neutral DESIGN.md Core v2 generator.
  *
- * Produces a complete 15-section DESIGN.md (tokens §1-9 + Philosophy §10-15)
- * from a PlaygroundState. Every byte is deterministic: primitive choices map
- * through rule tables (./rules/*.ts), voice samples and narrative come from
- * ./samples.ts, and Philosophy-layer auto-derivation goes through
- * ./rules/philosophy.ts.
- *
- * Contract: the output is a valid OmD v0.1 file with `omd: 0.1` frontmatter,
- * brand-name section titles, and every Playground-authored string marked
- * `<!-- illustrative: not verified as live <name> copy -->` so downstream
- * consumers (Claude Code, Cursor, agents) know which strings are authorial
- * exemplars vs observed live copy.
+ * Primitive choices are first expressed through the compatibility mapper
+ * below, then projected through the same seven-section Core renderer used by
+ * Builder. The exported file contains no frontmatter or tool metadata. Its
+ * governance section identifies generated defaults as generator proposals and
+ * explicit control changes as still-unadopted project proposals, never observed
+ * production facts.
  */
 
 import { generateColorScale, contrastForeground } from "@/lib/core/color";
+import { projectBuilderDesignMdCore } from "@/lib/builder/design-md-core-export";
 import type { PlaygroundState } from "./state";
 import { MOOD_DEFAULTS } from "./rules/mood";
 import { DENSITY_RULES } from "./rules/density";
@@ -29,7 +25,7 @@ import {
 } from "./samples";
 import { renderNarrative, renderPrinciples, renderStates, renderMotion } from "./rules/philosophy";
 
-export function generateDesignMd(state: PlaygroundState): string {
+function generateLegacyDesignMd(state: PlaygroundState): string {
   const name = state.name.trim() || "Untitled";
   const scale = generateColorScale(state.primary);
   const fg = contrastForeground(state.primary);
@@ -41,10 +37,7 @@ export function generateDesignMd(state: PlaygroundState): string {
   const moodVoice = MOOD_VOICE_RULES[state.mood];
   const moodSamples = MOOD_VOICE_SAMPLES[state.mood];
 
-  const frontmatter =
-    `---\nomd: 0.1\nbrand: ${name}${state.tagline ? `\ntagline: ${JSON.stringify(state.tagline)}` : ""}\n---\n`;
-
-  const title = `# Design System of ${name}\n`;
+  const title = `# ${name} Design System\n`;
 
   /* ─────────── §1 Visual Theme & Atmosphere ─────────── */
   const section1 = [
@@ -320,7 +313,7 @@ export function generateDesignMd(state: PlaygroundState): string {
     `*Personas below are fictional archetypes informed by publicly described product-user segments, not individual people.*`,
     "",
     state.personas.length === 0
-      ? `*(No personas selected. Pick 2-4 from the Playground's persona list — ${name}'s Philosophy layer needs at least two archetypes for coherence.)*`
+      ? `*(No personas selected. Add 2–4 explicit project archetypes when product evidence or owner input is available.)*`
       : state.personas
           .map((id) => {
             const p = PERSONA_COPY[id];
@@ -343,26 +336,7 @@ export function generateDesignMd(state: PlaygroundState): string {
   /* ─────────── §15 Motion & Easing ─────────── */
   const section15 = [`## 15. Motion & Easing`, "", renderMotion(state), ""].join("\n");
 
-  /* ─────────── Footer ─────────── */
-  const footer = [
-    "",
-    `<!--`,
-    `OmD v0.1 file generated via oh-my-design Playground on ${new Date().toISOString().slice(0, 10)}.`,
-    ``,
-    `Primitives (user-picked): mood=${state.mood} · primary=${state.primary} · density=${state.density} · radius=${state.radius} · weight=${state.weight} · motion=${state.motion}`,
-    `Voice adjectives (user-picked): ${state.voice.join(", ") || "(none)"}`,
-    `Personas (user-picked): ${state.personas.join(", ") || "(none)"}`,
-    `Seed: ${state.base.kind}${state.base.kind === "clone" ? ` (from ${(state.base as { refId: string }).refId})` : state.base.kind === "personality" ? ` (from ${(state.base as { code: string }).code})` : ""}`,
-    ``,
-    `Sections 10-15 carry illustrative copy marked inline. Section 11 narrative is template-interpolated from mood + voice picks. Section 12 principles are rule-picked from a library based on the primitives; section 14 state copy is density- and motion-aware. Section 15 motion tokens and spring stance are direct from the motion preset.`,
-    ``,
-    `This file was authored by a selection-based UI with zero LLM calls. For brand-critical surfaces, cross-check against live product microcopy.`,
-    `-->`,
-    "",
-  ].join("\n");
-
   return [
-    frontmatter,
     title,
     section1,
     section2,
@@ -379,6 +353,32 @@ export function generateDesignMd(state: PlaygroundState): string {
     section13,
     section14,
     section15,
-    footer,
   ].join("\n");
+}
+
+/**
+ * Render the portable Core projection. The legacy-shaped intermediate exists
+ * only to reuse the deterministic selection rules during the compatibility
+ * window; it is never exposed to users or treated as an authority artifact.
+ */
+export function generateDesignMd(state: PlaygroundState): string {
+  const name = state.name.trim() || "Untitled";
+  return projectBuilderDesignMdCore({
+    source: generateLegacyDesignMd(state),
+    referenceName: name,
+    original: {
+      primaryColor: "",
+      fontFamily: "",
+      headingWeight: "",
+      borderRadius: "",
+    },
+    overrides: {
+      primaryColor: "",
+      fontFamily: "",
+      headingWeight: "",
+      borderRadius: "",
+      darkMode: false,
+    },
+    authorityKind: "control-state-proposal",
+  }).markdown;
 }
