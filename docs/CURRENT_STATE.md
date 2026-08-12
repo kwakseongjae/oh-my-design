@@ -4,25 +4,26 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · DESIGN.md Core v2 clean-commit evidence 봉인 직전
+- 갱신: 2026-08-12 · DESIGN.md Core v2 provider-free 기준선 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
 ### 2026-08-12 DESIGN.md Core v2 provider-free 기준선 — 다음 재개는 여기서 시작
 
-- Core v2 구현은 `2ac7ed6f`(195개 scoped path), canonical ignored fixture 보강은 `d3a32ce8`로 commit했다. 보호 생성물 4개, timeout-only 4개, historical config/report/snapshot/seal은 제외했고 과거 evidence를 재해시하지 않았다.
+- Core v2 구현은 `2ac7ed6f`, canonical fixture 보강은 `d3a32ce8`, 1.9.882 evidence/1.9.883 preregistration은 `9558e726`으로 봉인했다. clean-source 설치 안정화는 `98b9b1e1`, 병렬 gate timeout은 `5c8d40cc`, local Codex mirror 경계와 tracked-peer 검증은 `0c60ca52`+`05eebc38`이다. historical config/report/snapshot/seal은 불변이다.
 - 최종 delta로 component interaction 7-state applicability/NA reason, 5-locale projection, 공통 Markdown table escaping, 필수 claim 7개의 locale 단일성·projection 결박을 닫았다. fresh smoke v0.2는 config experiment `1.9.883`과 controller plan ID가 반드시 일치한다.
-- commit-bound controller는 26/26 green이다. clean clone에서 tarball 4채널·Autopilot HANDOFF·Core transaction·clean canary 4/4를 재실행하고 1.9.882 evidence를 생성했다. readiness는 pass3/10, partial3, open3, external1이며 `BLOCK_2_0_PROMOTION`을 유지한다.
+- 최종 HEAD clean clone 전체 회귀는 101 files + 1,324 tests pass, 15 files + 71 tests intentional skip, failures 0이다. root lint/build, web typecheck, query data check, tarball 4채널·Autopilot HANDOFF·Core transaction·clean canary, commit-bound controller를 모두 재통과했다. readiness는 pass3/10, partial3, open3, external1이며 `BLOCK_2_0_PROMOTION`을 유지한다.
 - v0.2/1.9.883 RUN-MATRIX와 preregistration receipt를 commit `d3a32ce8`에 결박하고 provider-zero prepare/audit `pass:true`, 3 cells, status `prepared`를 확인했다. provider/model/browser/Cursor 호출은 계속 0이다.
 - vendor-neutral Core는 visible YAML/OmD/tool/model metadata가 없는 7개 stable section/claim 계약이다. canonical typed graph와 standalone projection을 분리하고 Structural / Portable / Bound / Proven conformance를 각각 검증한다. Google DESIGN.md는 호환 import/export profile일 뿐 동일·공식 규격이라고 주장하지 않는다.
 - public provider-free 채택 경로는 `prepare-review → approve-review → compile → prepare-checkpoint → adopt` 5단계다. 첫 checkpoint는 exact non-authoritative preview, 둘째는 exact 6-artifact package request이며, compiler/adopter가 hashes·provenance·coverage·owner attestation·rollback journal을 독립 재검증한다. reviewer identifier는 암호학적 신원 인증이 아니라 명시적 attestation이다.
-- legacy 440개 catalog audit는 440/440 pass, formats 415×legacy-15 + 24×legacy-16 + 1×legacy-13, dropped segments 0, source reconstruction/opaque extension preservation 100%다. 프로젝트 scope/task를 추정하지 않으므로 전부 non-authoritative Structural Core candidate로 남고 자동 승격하지 않는다.
+- legacy 440개 catalog audit는 최종 HEAD에서도 440/440 pass, formats 415×legacy-15 + 24×legacy-16 + 1×legacy-13, dropped segments 0, source reconstruction/opaque extension preservation 100%다. 프로젝트 scope/task를 추정하지 않으므로 전부 non-authoritative Structural Core candidate로 남고 자동 승격하지 않는다.
 - unknown-as-absence는 typed semantic facts에서 EN/KO/JA/ZH-CN/ZH-TW placeholder/sentinel을 거부한다. ID/path/hash와 opaque reverse-DNS extensions, 정상적인 Governance 설명은 보존한다. fenced/indented/quoted/hidden HTML/comment contracts, extra H1/H2, invisible task/claim, vendor metadata 우회도 fail-close다.
-- `omd-init`/learn/autopilot/harness와 master/architect는 authority-neutral drafts만 만들고 5단계 helper chain을 필수 호출한다. agent가 DESIGN.md/claim delimiters/manifest/hash를 직접 쓰지 않는다. runtime mirror check는 146 managed current + 92 intentional overlays preserved다.
-- npm tarball offline smoke가 Claude Code/Codex/OpenCode/Cursor 4채널 install, doctor byte/symlink integrity, installed helper transaction, Autopilot HANDOFF를 통과한다. Core focused 198/202이고 4 red는 새 v0.2의 의도된 pre-commit authority gate다. Builder/Playground, lint, build, web typecheck, mirror 146/92가 green이다.
+- `omd-init`/learn/autopilot/harness와 master/architect는 authority-neutral drafts만 만들고 5단계 helper chain을 필수 호출한다. agent가 DESIGN.md/claim delimiters/manifest/hash를 직접 쓰지 않는다. clean clone은 tracked mirrors 92개와 생략된 local Codex 54개를 tracked Claude peer에 byte 결박하고, 설치된 로컬 tree는 146 current + 92 intentional overlays를 검증한다. dangling symlink/content drift는 fail-close다.
+- reference-capture collector와 Playwright license/notice 4개는 checked-in package input이며 build 전후 exact bytes를 유지한다. clean clone의 Codex writer safety entrypoint 8개도 hard-required되어 activation 재설치와 병렬 build race가 닫혔다.
 - 이번 재개에서는 provider/model/network/browser/Cursor 실행이 없었다. 보호 파일은 그대로다: `web/public/llms-full.txt`=`31c4f31…a04343e`, `web/public/llms.txt`=`8e5fb91a…fd3ef5`, `web/src/data/catalog-meta.generated.ts`=`3459e574…3cecf72`, `data/reference-quality.json`=`7cb84bf4…e46ddd4`.
-- 다음 순서: (1) 1.9.882 evidence + 1.9.883 preregistration 별도 commit, (2) final clean-source regression, (3) project-root dogfood는 실제 project-owner가 exact preview/package를 승인한 뒤에만 수행, (4) 배포된 `.kr/schema/*` byte liveness 확인, (5) capacity reset 뒤 named browser admission과 fresh Luna/high 3-cell smoke. fresh 3/3 + 12×5 + transfer/blind review 전까지 2.0 promotion·one-shot superiority 공개 주장은 BLOCK이다.
+- npm publish preflight는 보호된 `web/public/llms-full.txt`가 stale하여 의도적으로 fail-close한다. 해당 파일과 `web/src/data/catalog-meta.generated.ts`는 이번 작업에서 수정·revert·stage하지 않았고 owner 결정 전 generator 실행/봉인 금지다.
+- 다음 순서: (1) project-root dogfood는 실제 project-owner가 exact preview/package를 승인한 뒤에만 수행, (2) 배포된 `.kr/schema/*` byte liveness 확인, (3) 보호 생성물 owner 결정을 받아 publish gate를 닫기, (4) capacity reset 뒤 named browser admission과 fresh Luna/high 3-cell smoke. fresh 3/3 + 12×5 + transfer/blind review 전까지 2.0 promotion·one-shot superiority 공개 주장은 BLOCK이다.
 
 - 1.9.880은 source commit `26090fdf`, fresh root, named in-app browser admission으로 실행됐지만 qualification evidence가 아니다. landing initial만 정상 완료해 DESIGN.md+product와30/100을 만들었고, repair 및 cold/locale initial은 계정 usage limit로 usage0·product edit0인 채 즉시 종료됐다. sealed controller가 이를 terminal product failure로 잘못 분류해 형식상0/3 complete가 됐다.
 - controller는 provider event의 usage-limit를 `provider-capacity-exhausted` infrastructure stop으로 분류해 root를 freeze하며, product change가 없는 failed turn에는 journey evaluator를 호출하지 않는다. `reports/autopilot-luna-high-smoke-1.9.880/{RESULTS.json,STATUS.md}`는 diagnostic-only 정본이다.

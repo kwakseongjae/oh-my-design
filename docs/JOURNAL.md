@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · Core v2 provider-free 기준선 완료
+- 최종 clean clone에서 101 files·1,324 tests가 실패 없이 통과했다.
+- legacy 440/440 drop0, build/lint/typecheck, 4채널 package와 mirror parity를 재확인했다.
+- clean-source collector/8개 Codex 안전 gate와 historical-seal commit binding을 닫았다.
+- 다음은 owner 승인 dogfood·schema liveness·fresh 3-cell smoke이며 2.0 promotion은 BLOCK이다.
+
 ## 2026-08-12 (Codex) · Core v2 clean evidence
 - Core 기준선을 `2ac7ed6f` + fixture 보강 `d3a32ce8`로 분리 commit했다.
 - clean clone에서 package/Core/canary 4/4와 readiness pass3/10을 봉인했다.
