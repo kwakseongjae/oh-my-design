@@ -19,7 +19,12 @@ const MIRROR_ROOTS = Object.freeze([
   // `skills/` plus a small set of explicit safety overlays only. Validate any
   // installed files that are present, but do not make their absence a release
   // drift. `--write` still materializes the complete local dogfood mirror.
-  { id: 'codex-skills', relative: '.agents/skills', localOnly: true },
+  {
+    id: 'codex-skills',
+    relative: '.agents/skills',
+    localOnly: true,
+    trackedPeerRelative: '.claude/skills',
+  },
   { id: 'claude-agents', relative: '.claude/agents' },
   { id: 'codex-agents', relative: '.codex/agents' },
 ]);
@@ -44,6 +49,15 @@ function filesUnder(root) {
   return output.sort((a, b) => a.relative.localeCompare(b.relative));
 }
 
+function lstatOrNull(target) {
+  try {
+    return fs.lstatSync(target);
+  } catch (error) {
+    if (error && error.code === 'ENOENT') return null;
+    throw error;
+  }
+}
+
 function inspectRuntimeMirrors(repoRoot, generatedRoot, options = {}) {
   const drift = [];
   const excluded = [];
@@ -62,15 +76,29 @@ function inspectRuntimeMirrors(repoRoot, generatedRoot, options = {}) {
       if (item.kind !== 'file') {
         throw new Error(`generated mirror unexpectedly contains a symlink: ${mirror.relative}/${item.relative}`);
       }
-      if (!fs.existsSync(target)) {
+      const targetStat = lstatOrNull(target);
+      if (!targetStat) {
         if (mirror.localOnly && !requireLocalOnly) {
+          const peer = path.join(repoRoot, mirror.trackedPeerRelative, item.relative);
+          const peerStat = lstatOrNull(peer);
+          if (!peerStat) {
+            drift.push({ ...mirror, relative: item.relative, reason: 'tracked-peer-missing', expected: item.absolute, target: peer });
+            continue;
+          }
+          if (!peerStat.isFile()) {
+            drift.push({ ...mirror, relative: item.relative, reason: 'tracked-peer-unsafe', expected: item.absolute, target: peer });
+            continue;
+          }
+          if (!fs.readFileSync(item.absolute).equals(fs.readFileSync(peer))) {
+            drift.push({ ...mirror, relative: item.relative, reason: 'tracked-peer-content', expected: item.absolute, target: peer });
+            continue;
+          }
           omitted.push({ ...mirror, relative: item.relative, reason: 'local-dogfood-not-installed' });
           continue;
         }
         drift.push({ ...mirror, relative: item.relative, reason: 'missing', expected: item.absolute, target });
         continue;
       }
-      const targetStat = fs.lstatSync(target);
       if (!targetStat.isFile()) {
         drift.push({ ...mirror, relative: item.relative, reason: 'unsafe-target', expected: item.absolute, target });
         continue;

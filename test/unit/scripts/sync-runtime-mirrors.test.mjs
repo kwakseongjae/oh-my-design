@@ -25,7 +25,7 @@ describe('runtime mirror sync', () => {
     for (const mirror of MIRROR_ROOTS) {
       const expected = join(generated, mirror.relative, 'managed.txt');
       mkdirSync(join(generated, mirror.relative), { recursive: true });
-      writeFileSync(expected, `${mirror.id}\n`);
+      writeFileSync(expected, 'managed\n');
     }
     return { repo, generated };
   }
@@ -62,15 +62,45 @@ describe('runtime mirror sync', () => {
 
   it('allows a clean checkout to omit local Codex dogfood skills while checking tracked mirrors', () => {
     const { repo, generated } = fixture();
+    const trackedPeer = join(repo, '.claude/skills/managed.txt');
+    mkdirSync(join(repo, '.claude/skills'), { recursive: true });
+    writeFileSync(trackedPeer, 'managed\n');
     const report = inspectRuntimeMirrors(repo, generated, { requireLocalOnly: false });
 
     expect(report.omitted).toEqual([
       expect.objectContaining({ id: 'codex-skills', reason: 'local-dogfood-not-installed' }),
     ]);
     expect(report.drift.map((item) => item.id)).toEqual([
-      'claude-skills',
       'claude-agents',
       'codex-agents',
     ]);
+  });
+
+  it('fails clean-checkout parity when the tracked peer cannot represent Codex bytes', () => {
+    const { repo, generated } = fixture();
+    const trackedPeer = join(repo, '.claude/skills/managed.txt');
+    mkdirSync(join(repo, '.claude/skills'), { recursive: true });
+    writeFileSync(trackedPeer, 'drifted\n');
+
+    const report = inspectRuntimeMirrors(repo, generated, { requireLocalOnly: false });
+    expect(report.drift).toContainEqual(expect.objectContaining({
+      id: 'codex-skills',
+      reason: 'tracked-peer-content',
+    }));
+    expect(report.omitted).toEqual([]);
+  });
+
+  it('rejects a dangling symlink instead of treating a local Codex file as absent', () => {
+    const { repo, generated } = fixture();
+    const target = join(repo, '.agents/skills/managed.txt');
+    mkdirSync(join(repo, '.agents/skills'), { recursive: true });
+    symlinkSync(join(repo, 'missing-target'), target);
+
+    const report = inspectRuntimeMirrors(repo, generated, { requireLocalOnly: false });
+    expect(report.drift).toContainEqual(expect.objectContaining({
+      id: 'codex-skills',
+      reason: 'unsafe-target',
+    }));
+    expect(report.omitted).toEqual([]);
   });
 });
