@@ -65,6 +65,20 @@ export function missionProductTreeManifest(root) {
   return { files, sha256: sha256(JSON.stringify(files)) };
 }
 function readJson(path) { return JSON.parse(readFileSync(path, "utf8")); }
+export function classifyProviderStreamFailure(jsonl) {
+  const messages = String(jsonl ?? "").split(/\r?\n/).filter(Boolean).flatMap((line) => {
+    try {
+      const event = JSON.parse(line);
+      return [event?.message, event?.error?.message].filter((value) => typeof value === "string");
+    } catch { return []; }
+  });
+  const usageLimit = messages.find((message) => /(?:hit|reached).*usage limit|usage limit.*(?:purchase|credits|try again)/i.test(message));
+  if (usageLimit) return { kind: "provider-capacity-exhausted", message: usageLimit.slice(0, 1000) };
+  return null;
+}
+export function shouldEvaluateProviderAttempt(run, indexExists) {
+  return run?.workspace?.product_changed === true && indexExists === true;
+}
 function writeJsonExclusive(path, value) {
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`, { encoding: "utf8", flag: "wx" });
@@ -778,10 +792,30 @@ function runCommand(args) {
       writeJsonAtomic(statePath, state); throw new Error(state.stop_reason);
     }
     const run = readJson(runResultPath);
+    const eventsPath = join(artifactDir, "events.jsonl");
+    const providerInfrastructureFailure = existsSync(eventsPath)
+      ? classifyProviderStreamFailure(readFileSync(eventsPath, "utf8"))
+      : null;
+    if (providerInfrastructureFailure) {
+      state.status = "stopped-preregistered";
+      state.stop_reason = providerInfrastructureFailure.kind;
+      state.infrastructure_failure = {
+        ...providerInfrastructureFailure,
+        cell_id: next.id,
+        attempt,
+        run_result_sha256: sha256(readFileSync(runResultPath)),
+        events_sha256: sha256(readFileSync(eventsPath)),
+      };
+      stateCell.status = "stopped";
+      stateCell.finished_at = new Date().toISOString();
+      stateCell.stop_reason = providerInfrastructureFailure.kind;
+      writeJsonAtomic(statePath, state);
+      throw new Error(providerInfrastructureFailure.kind);
+    }
     const dsProof = controllerDesignSystemProof(root, next, workspace, attempt);
     const scorePath = join(controllerDir, `task-score-round-${attempt}.json`);
     let evaluator = null;
-    if (existsSync(join(workspace, "index.html"))) {
+    if (shouldEvaluateProviderAttempt(run, existsSync(join(workspace, "index.html")))) {
       const evaluated = spawnSync(process.execPath, [join(repoRoot, evaluatorPath), "--task-id", next.task_id, "--workspace", workspace, "--out", scorePath], {
         cwd: repoRoot, encoding: "utf8", timeout: AUTOPILOT_EVALUATOR_TIMEOUT_MS,
       });

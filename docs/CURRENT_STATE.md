@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: Autopilot smoke evidence commit `9db8523e` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · 1.9.879 evaluator false-negative RCA와 구조 중립 판정 보정
+- 갱신: 2026-08-12 · 1.9.880 infrastructure-invalid smoke와 provider capacity fail-close
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.880은 source commit `26090fdf`, fresh root, named in-app browser admission으로 실행됐지만 qualification evidence가 아니다. landing initial만 정상 완료해 DESIGN.md+product와30/100을 만들었고, repair 및 cold/locale initial은 계정 usage limit로 usage0·product edit0인 채 즉시 종료됐다. sealed controller가 이를 terminal product failure로 잘못 분류해 형식상0/3 complete가 됐다.
+- controller는 provider event의 usage-limit를 `provider-capacity-exhausted` infrastructure stop으로 분류해 root를 freeze하며, product change가 없는 failed turn에는 journey evaluator를 호출하지 않는다. `reports/autopilot-luna-high-smoke-1.9.880/{RESULTS.json,STATUS.md}`는 diagnostic-only 정본이다.
+- fresh3/3 provider 검증은 2026-08-18 09:44 KST로 보고된 capacity reset 전까지 BLOCK이다. 그 사이 2.0 provider-free queue인 12-task evaluator/oracle-mutant calibration, autonomous package/install parity, design-system validator를 계속 고도화한다. public one-shot/superiority claim은 계속 금지한다.
 
 - 1.9.879 fresh exact Luna/high smoke는 source commit `72fd57bf`, in-app browser admission, valid terminal3/3으로 완료됐다. immutable sealed 결과는 UI-Resolved1/3이며 landing `50→100`, cold `20→40→60`, locale `40→40`; 7 calls·input11,074,863(cached10,141,440)+output153,539·provider wall3,357.887s다.
 - provider-free exact replay에서 cold와 locale 동일 최종 제품은 corrected evaluator로 각각100/100이다. false negative 원인은 native dialog 미인정/containing region 오인, sample-owner의 data/help scope 누락, 140ms locale rerender race, `zh-Hans|zh-Hant` 표준 alias 불인정, visually-hidden legend 및 내부 scroll surface를 document overflow로 계산, utility close control을 primary touch target으로 계산한 구조 편향이다.

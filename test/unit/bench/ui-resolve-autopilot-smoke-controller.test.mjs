@@ -6,6 +6,7 @@ import { afterEach, describe, expect, test } from "vitest";
 import {
   AUTOPILOT_EVALUATOR_TIMEOUT_MS,
   buildControllerRepairPrompt,
+  classifyProviderStreamFailure,
   controllerAutopilotProof,
   freezeRunningRootAfterControllerFailure,
   missionProductTreeManifest,
@@ -13,6 +14,7 @@ import {
   objectiveFailureObservations,
   objectivePassingIds,
   repairContinuationDecision,
+  shouldEvaluateProviderAttempt,
 } from "../../../benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs";
 
 const repo = resolve(import.meta.dirname, "../../..");
@@ -22,6 +24,20 @@ const temp = () => { const value = mkdtempSync(join(tmpdir(), "omd-autopilot-smo
 afterEach(() => { while (roots.length) rmSync(roots.pop(), { recursive: true, force: true }); });
 
 describe("autopilot Luna/high smoke controller", () => {
+  test("classifies account usage exhaustion as infrastructure instead of a product result", () => {
+    const message = "You've hit your usage limit. Visit settings to purchase more credits or try again later.";
+    expect(classifyProviderStreamFailure([
+      JSON.stringify({ type: "thread.started", thread_id: "t" }),
+      JSON.stringify({ type: "error", message }),
+      JSON.stringify({ type: "turn.failed", error: { message } }),
+    ].join("\n"))).toEqual({ kind: "provider-capacity-exhausted", message });
+    expect(classifyProviderStreamFailure(JSON.stringify({ type: "turn.failed", error: { message: "Task failed." } }))).toBeNull();
+  });
+  test("does not run a journey evaluator against an unchanged starter after provider failure", () => {
+    expect(shouldEvaluateProviderAttempt({ workspace: { product_changed: false } }, true)).toBe(false);
+    expect(shouldEvaluateProviderAttempt({ workspace: { product_changed: true } }, false)).toBe(false);
+    expect(shouldEvaluateProviderAttempt({ workspace: { product_changed: true } }, true)).toBe(true);
+  });
   test("allows the four-viewport evaluator to finish before controller timeout", () => {
     expect(AUTOPILOT_EVALUATOR_TIMEOUT_MS).toBe(360_000);
   });

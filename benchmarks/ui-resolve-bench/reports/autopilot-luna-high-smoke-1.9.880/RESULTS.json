@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "autopilot-luna-high-smoke-1.9.880",
+  "evidence_disposition": "infrastructure-invalid-diagnostic-only",
+  "source_commit": "26090fdf9dee548728530e0b93d20f81461c3f4e",
+  "plan_sha256": "b8c041c164c870d8416881ce0fcce568e69c1a82fba74bd3d3eff2e87349604c",
+  "browser_admission": {
+    "type": "iab",
+    "pass": true
+  },
+  "scheduled_cells": 3,
+  "controller_marked_terminal_cells": 3,
+  "provider_exposures": 4,
+  "usable_provider_turns": 1,
+  "ui_resolved_cells": 0,
+  "observed_usage": {
+    "coverage": "1/4",
+    "input_tokens": 2298154,
+    "cached_input_tokens": 2003456,
+    "output_tokens": 37005
+  },
+  "cells": [
+    {
+      "task_id": "neighborhood-library-landing",
+      "initial_score": 30,
+      "initial_provider_exit_code": 0,
+      "repair_provider_exit_code": 1,
+      "repair_failure": "provider-capacity-exhausted",
+      "product_changed": true,
+      "design_system_proof": true
+    },
+    {
+      "task_id": "cold-chain-operations",
+      "initial_score": null,
+      "initial_provider_exit_code": 1,
+      "initial_failure": "provider-capacity-exhausted",
+      "product_changed": false,
+      "controller_evaluator_failure": "unchanged-starter-main-timeout"
+    },
+    {
+      "task_id": "clinic-visit-prep-locales",
+      "initial_score": null,
+      "initial_provider_exit_code": 1,
+      "initial_failure": "provider-capacity-exhausted",
+      "product_changed": false,
+      "controller_evaluator_failure": "unchanged-starter-main-timeout"
+    }
+  ],
+  "claim_boundary": {
+    "qualification_eligible": false,
+    "public_one_shot_claim_allowed": false,
+    "superiority_claim_allowed": false,
+    "fresh_three_of_three_required": true
+  }
+}

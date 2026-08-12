@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.880 capacity-invalid fresh smoke
+- source-bound plan·fresh root·named in-app admission 뒤 3셀을 순차 실행했다.
+- landing initial만 완료했고 이후3 calls는 account usage limit로 usage/product edit0이었다.
+- sealed0/3을 qualification에서 제외하고 capacity failure를 infrastructure freeze로 교정했다.
+- provider reset 전에는 12-task provider-free calibration과 2.0 packaging을 계속한다.
+
 ## 2026-08-12 (Codex) · 1.9.879 evaluator structure-neutral RCA
 - sealed1/3은 유지하되 provider-free 동일 products는 cold100/locale100으로 재평가됐다.
 - dialog detail, sample-owner scope, locale rerender/BCP47, semantic-only overflow 편향을 수정했다.
