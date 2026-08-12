@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · Core v2 clean evidence
+- Core 기준선을 `2ac7ed6f` + fixture 보강 `d3a32ce8`로 분리 commit했다.
+- clean clone에서 package/Core/canary 4/4와 readiness pass3/10을 봉인했다.
+- fresh 1.9.883 plan은 commit-bound 3-cell provider-zero prepare/audit를 통과했다.
+- 다음은 evidence commit과 final clean-source 회귀이며 provider 실행은 아직 금지다.
+
 ## 2026-08-12 (Codex) · Core v2 scoped commit 직전
 - locale/state/table/claim 결박과 v0.2 smoke ID authority를 닫았다.
 - Core/package/readiness 198 pass; legacy 440/440 drop0와 runtime mirror 146/92를 재확인했다.
