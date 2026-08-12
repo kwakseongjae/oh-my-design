@@ -9,7 +9,7 @@
 - Autopilot mission이 full system proof schema와 exact source hashes를 admission 전에 재검증한다.
 - `{pass:true}` forged proof는 product build가 아니라 authority failure가 된다.
 - smoke controller는 provenance/coverage의 실제 referenced evidence를 독립 audit root에 복사한다.
-- 다음은 commit-bound smoke controller/full regression과 readiness source rebinding이다.
+- readiness acceptance를 commit `2bc10771`에 재결박하고 smoke authority 28/28을 통과했다.
 
 ## 2026-08-12 (Codex) · Autopilot 2.0 readiness reset
 - 과거 repair/harness readiness와 새 one-prompt Autopilot ten-gate를 분리했다.

@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "snapshot_patch": "1.9.881",
-  "source_commit": "c0bbf8ef7671e40718b10a63ac23cf6aa9e77a8d",
+  "source_commit": "2bc107712799eb7dad67ee0ef0f679d06e465197",
   "execution_scope": "provider-zero-contract-and-calibration",
   "provider_calls": 0,
   "model_calls": 0,
@@ -12,7 +12,7 @@
     { "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json", "sha256": "827e7933d360a139717a3790570b704544e6edbfc616353596e059f9b3de2c85", "bytes": 8925 },
     { "path": "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs", "sha256": "5db495eb42babae3e568d3d671216defa54e8d9950f8b04a96efa61003591787", "bytes": 158847 },
     { "path": "benchmarks/ui-resolve-bench/scripts/run-autopilot-clean-dir-canary.mjs", "sha256": "055d35a237d6e5abbb5bc1365555ce3885cbb8ed1521144e5087348c1aec0bb6", "bytes": 24121 },
-    { "path": "skills/omd-autopilot/SKILL.md", "sha256": "b93c989ecc4f71f4dad0f743c526aba6f0a7f2b86e5271f30d28a99328033678", "bytes": 12261 },
+    { "path": "skills/omd-autopilot/SKILL.md", "sha256": "a6e18b77d9acfc32dd47d11668e545a6fd8f2243bdc106d88dfd2911f3c883ac", "bytes": 12495 },
     { "path": "agents/omd-design-system-architect.md", "sha256": "b4d522cf3836bd370efc7393115384cd8bb0e1f097def2b5136ac98d627e99fa", "bytes": 2318 },
     { "path": "scripts/validate-project-design-system.cjs", "sha256": "e543af444765a8e90fb7b6b8621c808748fc6b7b5d69271c73a8a45205f7eae3", "bytes": 10034 },
     { "path": "tsup.config.ts", "sha256": "6c513da6a00f40fbaa81a41f01651e26625198bdebcffa126930848f29c1e059", "bytes": 5932 },
