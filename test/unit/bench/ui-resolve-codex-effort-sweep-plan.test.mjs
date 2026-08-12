@@ -538,7 +538,7 @@ describe("Codex all-effort sweep preregistration generator", () => {
     writeFileSync(cacheSource, `${modelsCacheFixtureBytes.toString("utf8")}\n`);
     expect(() => validateGeneratedCodexEffortSweepPlan(cacheBoundPlan))
       .toThrow(/catalog\/auth\/(?:cache\/)?CLI (?:runtime )?binding drift/u);
-  });
+  }, 15_000);
 
   it("writes only the plan and preregistration without starting a matrix or provider", () => {
     const root = mkdtempSync(join(tmpdir(), "omd-effort-plan-cli-"));

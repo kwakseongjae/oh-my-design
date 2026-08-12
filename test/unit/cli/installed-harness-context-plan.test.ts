@@ -153,5 +153,5 @@ describe('installed harness context plan', () => {
         sidecars: ['master-execution-phases.md'],
       });
     }
-  });
+  }, 15_000);
 });

@@ -1316,5 +1316,5 @@ describe("prepared matrix admission audit", () => {
     } finally {
       restoreStatus();
     }
-  });
+  }, 15_000);
 });

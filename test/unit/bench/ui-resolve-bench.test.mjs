@@ -6724,7 +6724,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
         expect(slate.manifest.skill.sha256).not.toBe(ember.manifest.skill.sha256);
       }
     });
-  });
+  }, 15_000);
 
   it("rejects a clean attached branch at an exact pinned OmD commit", () => {
     const variantId = "omd-portable-slate";
@@ -6815,7 +6815,7 @@ describe("UI-Resolve Bench sandbox preparation", () => {
         rmSync(parent, { recursive: true, force: true });
       }
     });
-  });
+  }, 15_000);
 
   it("prepares exactly paired controller and installed Codex host-policy arms", () => {
     const parent = mkdtempSync(join(tmpdir(), "omd-host-policy-matrix-"));

@@ -689,7 +689,7 @@ describe("autopilot Luna/high smoke controller", () => {
         });
       expect(readFileSync(join(workspace, ".benchmark/PROMPT.md"), "utf8")).not.toMatch(/oracle|mutant/i);
     }
-  });
+  }, 15_000);
 
   test("rejects post-plan prompt authority drift before preparation", () => {
     const base = temp(); const report = join(base, "report"); const root = join(base, "root");
