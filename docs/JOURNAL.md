@@ -6515,3 +6515,9 @@
 - exact frozen workspace provider-free replay는 180초를 넘어 정상 score10을 기록해 controller timeout drift를 확정했다.
 - evaluator ceiling을 명시적 360초 authority로 올리고 단위 테스트로 봉인했다.
 - 다음은 commit-bound 회귀 뒤 fresh 1.9.866이며 1.9.865 결과/워크스페이스는 재사용하지 않는다.
+# 2026-08-12 — 2.0 deterministic system spec
+- Autopilot system proof를 self-declared check receipts에서 DESIGN.md-bound `system/spec.json`의 controller computation으로 전환했다.
+- contrast/token closure/component states/320px·200%/reduced motion/assets를 provider-free로 계산하고 mission schema0.2가 exact spec/proof를 검증한다.
+- pre-build `code_conformance` 거짓 주장을 제거하고 실제 제품 conformance는 final same-route proof에 유지했다.
+- clean-dir canary와 focused 21 tests는 green; smoke/readiness source authority는 commit 뒤 재결박한다.
+- 다음: commit → source bindings/readiness 재봉인 → full suite/lint/build → capacity reset 뒤 fresh Luna/high3-cell.

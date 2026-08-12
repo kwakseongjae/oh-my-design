@@ -399,7 +399,9 @@ function controllerDesignSystemProof(root, cell, workspace, round = 0) {
   const decisions = walkFor(omdRoot, "design-system-decision.json");
   const eligible = decisions.filter((decision) => {
     const runDir = dirname(decision);
-    return existsSync(join(runDir, "system/provenance.json")) && existsSync(join(runDir, "system/coverage.json"));
+    return existsSync(join(runDir, "system/provenance.json"))
+      && existsSync(join(runDir, "system/coverage.json"))
+      && existsSync(join(runDir, "system/spec.json"));
   });
   if (eligible.length !== 1 || !existsSync(join(workspace, "DESIGN.md"))) {
     return { pass: false, reason: "exactly-one-verifiable-design-system-run-required", eligible_runs: eligible.length };
@@ -412,6 +414,7 @@ function controllerDesignSystemProof(root, cell, workspace, round = 0) {
   copyFileSync(join(sourceRun, "design-system-decision.json"), join(auditRun, "design-system-decision.json"));
   copyFileSync(join(sourceRun, "system/provenance.json"), join(auditRun, "system/provenance.json"));
   copyFileSync(join(sourceRun, "system/coverage.json"), join(auditRun, "system/coverage.json"));
+  copyFileSync(join(sourceRun, "system/spec.json"), join(auditRun, "system/spec.json"));
   const provenance = readJson(join(sourceRun, "system/provenance.json"));
   const coverage = readJson(join(sourceRun, "system/coverage.json"));
   const references = [

@@ -14,11 +14,11 @@ const groups = [
 ];
 const checks = [
   'token_reference_closure', 'contrast', 'component_state_coverage', 'responsive_320_200',
-  'reduced_motion', 'assets_fonts_licenses', 'code_conformance', 'unknown_absence',
+  'reduced_motion', 'assets_fonts_licenses', 'implementation_contract_complete', 'unknown_absence',
   'sections_11_13_honesty',
 ];
 
-function fixture(mutate?: (artifacts: { provenance: any; coverage: any; designPath: string }) => void) {
+function fixture(mutate?: (artifacts: { provenance: any; coverage: any; spec: any; designPath: string }) => void) {
   const root = mkdtempSync(join(tmpdir(), 'omd-system-proof-'));
   roots.push(root);
   const run = join(root, '.omd/runs/run-test');
@@ -29,7 +29,7 @@ function fixture(mutate?: (artifacts: { provenance: any; coverage: any; designPa
 Project-specific proposal.
 
 ## 2. Color contrast
-Action color proposal.
+text #111111 on surface #ffffff.
 
 ## 3. Typography
 Typography proposal.
@@ -78,17 +78,30 @@ Unknown means absent.
   const coverage = {
     schema_version: '0.1', design_md_sha256: sha,
     groups: Object.fromEntries(groups.map((id, index) => [id, { status: 'covered', evidence: [`DESIGN.md#${index + 1}-${id}`] }])),
-    checks: Object.fromEntries(checks.map((id) => [id, { pass: true, evidence: [`system/checks/${id}.json`] }])),
+    checks: Object.fromEntries(checks.map((id) => [id, { pass: true, method: 'controller-computed-system-spec-v1' }])),
   };
-  mutate?.({ provenance, coverage, designPath });
+  const spec = {
+    schema_version: '0.1', design_md_sha256: sha,
+    tokens: {
+      colors: { text: '#111111', surface: '#ffffff' },
+      color_pairs: [{ foreground: 'text', background: 'surface', min_ratio: 4.5 }],
+      typography: { body: 'Body role', heading: 'Heading role' },
+      spacing: { 'space-1': '4px', 'space-2': '8px', 'space-3': '16px' },
+    },
+    components: [{
+      id: 'primary-action', interactive: true,
+      states: ['default', 'hover', 'focus-visible', 'disabled', 'loading', 'error', 'success'],
+      token_refs: ['colors.text', 'colors.surface', 'spacing.space-2'],
+    }],
+    responsive: { minimum_width_px: 320, reflow_zoom_percent: 200, rules: ['Preserve task order.'] },
+    motion: { reduced_motion: true },
+    assets: [{ id: 'none', source_status: 'none', license_status: 'not-required' }],
+    voice_locale: { locales: ['en'] }, unresolved: [],
+  };
+  mutate?.({ provenance, coverage, spec, designPath });
   writeFileSync(join(run, 'system/provenance.json'), `${JSON.stringify(provenance)}\n`);
   writeFileSync(join(run, 'system/coverage.json'), `${JSON.stringify(coverage)}\n`);
-  mkdirSync(join(run, 'system/checks'), { recursive: true });
-  for (const check of checks) {
-    writeFileSync(join(run, `system/checks/${check}.json`), `${JSON.stringify({
-      schema_version: '0.1', check, pass: true, design_md_sha256: sha,
-    })}\n`);
-  }
+  writeFileSync(join(run, 'system/spec.json'), `${JSON.stringify(spec)}\n`);
   const result = spawnSync(process.execPath, [helper, root, run], { encoding: 'utf8' });
   return { run, result };
 }
@@ -119,7 +132,8 @@ describe('validate-project-design-system', () => {
   });
 
   it('fails when contrast or responsive proof is absent', () => {
-    const { run, result } = fixture(({ coverage }) => {
+    const { run, result } = fixture(({ spec, coverage }) => {
+      spec.tokens.colors.text = '#777777';
       coverage.checks.contrast.pass = false;
       delete coverage.groups.responsive;
     });
@@ -127,6 +141,33 @@ describe('validate-project-design-system', () => {
     const findings = JSON.parse(readFileSync(join(run, 'system/proof.json'), 'utf8')).findings;
     expect(findings).toContainEqual({ code: 'system-check-failed', detail: 'contrast' });
     expect(findings).toContainEqual({ code: 'coverage-group-invalid', detail: 'responsive' });
+  });
+
+  it('computes contrast and component-state failures instead of trusting declared pass booleans', () => {
+    const { run, result } = fixture(({ spec }) => {
+      spec.tokens.colors.text = '#777777';
+      spec.components[0].states = ['default', 'hover'];
+    });
+    expect(result.status).not.toBe(0);
+    const proof = JSON.parse(readFileSync(join(run, 'system/proof.json'), 'utf8'));
+    expect(proof.schema_version).toBe('0.2');
+    expect(proof.computed_checks.contrast.pass).toBe(false);
+    expect(proof.computed_checks.component_state_coverage.pass).toBe(false);
+    expect(proof.findings).toContainEqual({ code: 'system-check-declaration-drift', detail: 'contrast' });
+    expect(proof.findings).toContainEqual({ code: 'system-check-failed', detail: 'component_state_coverage' });
+  });
+
+  it('rejects unresolved component tokens and incomplete responsive authority', () => {
+    const { run, result } = fixture(({ spec }) => {
+      spec.components[0].token_refs.push('colors.unknown');
+      spec.responsive.minimum_width_px = 375;
+    });
+    expect(result.status).not.toBe(0);
+    const proof = JSON.parse(readFileSync(join(run, 'system/proof.json'), 'utf8'));
+    expect(proof.computed_checks.token_reference_closure.observations)
+      .toContain('unresolved-component-token:primary-action:colors.unknown');
+    expect(proof.computed_checks.responsive_320_200.observations)
+      .toContain('exact-320-and-200pct-contract-required');
   });
 
   it('rejects stale sidecars after DESIGN.md changes', () => {
@@ -142,7 +183,7 @@ describe('validate-project-design-system', () => {
     const { run, result } = fixture(({ provenance, coverage, designPath }) => {
       provenance.decisions[0].evidence = ['missing-task.md'];
       coverage.groups.typography.evidence = ['DESIGN.md#not-a-real-heading'];
-      coverage.checks.contrast.evidence = ['system/checks/missing.json'];
+      coverage.checks.contrast.method = 'self-declared';
       const changed = readFileSync(designPath, 'utf8')
         .replace('## 10. Provenance unresolved\nUnknown means absent.\n\n', '');
       writeFileSync(designPath, changed);
@@ -158,9 +199,7 @@ describe('validate-project-design-system', () => {
     expect(findings).toContainEqual({
       code: 'coverage-group-evidence-unresolvable', detail: 'typography:DESIGN.md#not-a-real-heading',
     });
-    expect(findings).toContainEqual({
-      code: 'system-check-evidence-unresolvable', detail: 'contrast:system/checks/missing.json',
-    });
+    expect(findings).toContainEqual({ code: 'system-check-method-invalid', detail: 'contrast' });
     expect(findings).toContainEqual({ code: 'design-md-section-missing', detail: '10' });
   });
 

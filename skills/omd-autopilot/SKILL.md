@@ -55,10 +55,12 @@ folders and must never edit `DESIGN.md` or product files.
    `design-system-decision.json` receipt is mandatory before any product write.
 6. `SYSTEM_PROOF` — for `establish` or `refresh`, use the contract in
    `references/design-system-contract.md`. The design-system architect may
-   propose; the main agent writes. Coverage booleans are not evidence: every
+   propose; the main agent writes `DESIGN.md`, `system/provenance.json`,
+   `system/coverage.json`, and the exact machine-readable `system/spec.json`
+   described by that contract. Coverage booleans are not evidence: every
    provenance/group reference must resolve to a real project or run artifact,
-   and every deterministic check must point to a check receipt bound to the
-   exact `DESIGN.md` hash. Do not implement the product until proof passes.
+   and the validator computes system checks from the spec bound to the exact
+   `DESIGN.md` hash. Do not implement the product until proof passes.
    Never author or edit `system/proof.json` directly. Run the installed
    `validate-project-design-system.cjs <project-root> <run-dir>` helper; the
    mission controller validates its full schema, source hashes, required
@@ -183,7 +185,8 @@ Store permanent artifacts under `.omd/runs/<run-id>/`:
 - `mission.json`
 - `council/decision-ledger.json`
 - `design-system-decision.json`
-- `system/proposal.md`, `system/provenance.json`, `system/coverage.json`
+- `system/proposal.md`, `system/provenance.json`, `system/coverage.json`,
+  `system/spec.json`
 - `implementation.json`
 - `acceptance-plan.json`
 - `proof.json`, `repairs/round-<n>.json`, and screenshots

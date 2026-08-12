@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · 2.0 packaged-install/DS proof gate + concurrent build safety
+- 갱신: 2026-08-12 · 2.0 deterministic design-system spec/proof authority
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -15,12 +15,12 @@
 - 2.0 distribution gate는 provider-free PASS다. 실제 `npm pack` tarball을 오프라인 소비자 프로젝트에 설치하고 Claude Code/Codex/OpenCode/Cursor 4채널의 skill·agent·catalog·helper를 doctor self-test로 검증했다. 별도 clean workspace는 tarball에서 설치된 Codex helper만 사용해 질문0·provider/model/Cursor0, project-owned DESIGN.md, hash-bound system/product proof, bounded repair1회를 거쳐 `HANDOFF`에 도달했다.
 - `autopilot-v2-qualification.json`은 npm tarball consumer install·4채널 doctor·installed Autopilot/design-system architect/helper execution·HANDOFF를 정식 배포 gate로 요구한다. 이 gate는 패키징/결정론 증거이며 모델 품질이나 경쟁 우위를 증명하지 않는다.
 - 같은 installed-helper gate가 6개 authority perturbation을 통과한다: 기존 compatible system=`reuse`, 명시 구축=`establish`, 명시 교체=`refresh`, 이번 화면 한정=`surface-local-only`, 권한 없는 broad greenfield=`AWAIT_USER`, official source 없는 exact brand=`blocked`. 질문/차단 케이스는 DESIGN-system decision receipt를 만들지 않는다.
-- DESIGN-system proof는 더 이상 coverage의 `pass:true`나 가짜 `oracle/...` 문자열을 신뢰하지 않는다. DESIGN.md 번호 섹션1–13, 실제로 해석 가능한 provenance/group 근거, exact DESIGN.md SHA에 결박된 check별 receipt, §11–13의 `[FILL IN]` 또는 권한 근거를 provider-free로 검사한다. 설치된 npm tarball canary도 이 강화된 validator로 HANDOFF를 통과한다.
+- DESIGN-system proof는 더 이상 coverage의 `pass:true`나 agent-authored check receipt를 신뢰하지 않는다. DESIGN.md 번호 섹션1–13, 실제로 해석 가능한 provenance/group 근거, exact DESIGN.md SHA에 결박된 `system/spec.json`, §11–13의 `[FILL IN]` 또는 권한 근거를 provider-free로 검사한다. validator가 contrast·token closure·component states·320px/200%·reduced motion·asset authority를 직접 계산한다. 제품 코드 conformance는 pre-build system proof에서 거짓 주장하지 않고 최종 same-route proof가 담당한다.
 - reference-capture 번들은 정적 Playwright license/notice가 함께 사는 출력 디렉터리를 더 이상 clean하지 않는다. 병렬 `build`+`install-skills` 검증에서도 라이선스 증거가 사라지는 창 없이 build와 44개 install 회귀가 함께 통과한다.
 - 현재 12-task calibration 설명 문서는 task/adaptor/evaluator가 후속 고도화되기 전 해시를 보유하므로 2.0 readiness의 machine evidence로 승격하지 않는다. 현재 해시 기준 24 valid oracle+72 mutant browser calibration은 provider0으로 재통과했으며, 다음 작업은 이를 JSON acceptance와 새 Autopilot 전용 ten-gate readiness snapshot으로 봉인하는 것이다.
 - `autopilot-v2-readiness.json`과 1.9.881 provider-zero acceptance가 새 2.0 목표를 과거 repair/harness readiness와 분리했다. 현재 pass3/10(자연어 package/4채널, selective authority, calibrated12-family denominator), partial3, open3, external1이며 `BLOCK_2_0_PROMOTION`이다. auditor는 current source bytes, 24 oracle, 36 mutant definitions×2, authority6 cases와 machine pointers를 재검산하고 status inflation을 거부한다.
 - 다음 admissible quality evidence는 capacity reset 뒤 fresh commit-bound Luna/high3-cell smoke다. 3/3 DESIGN-system proof+UI-Resolved 전에는 12×5 portable-skill comparison을 시작하지 않고, competitor/three-model/Pareto/public one-prompt claim은 계속 금지한다.
-- Autopilot mission은 더 이상 `system/proof.json`의 최소 `pass:true`를 신뢰하지 않는다. schema/status/strategy/owner, exact DESIGN.md·provenance·coverage SHA, required10 groups·9 checks, findings와 next-state를 전부 재검증한 뒤에만 product-build admission을 만든다. installed skill도 proof 직접 작성/수정을 금지한다.
+- Autopilot mission은 더 이상 `system/proof.json`의 최소 `pass:true`를 신뢰하지 않는다. schema0.2/status/strategy/owner, exact DESIGN.md·provenance·coverage·spec SHA, required10 groups·controller-computed9 checks, findings와 next-state를 전부 재검증한 뒤에만 product-build admission을 만든다. installed skill도 proof 직접 작성/수정을 금지한다.
 - smoke controller의 독립 DESIGN-system audit은 provenance/coverage가 참조한 run/project evidence를 regular-file로 exact 복사한 뒤 validator를 실행한다. agent workspace의 경로만 존재하고 controller audit workspace에는 없는 self-declared evidence는 더 이상 통과하지 않는다.
 - 1.9.881 readiness acceptance는 위 proof-authority 변경이 포함된 commit `2bc10771`과 새 Autopilot skill bytes에 재결박됐고 auditor/smoke authority 28/28이 통과했다.
 

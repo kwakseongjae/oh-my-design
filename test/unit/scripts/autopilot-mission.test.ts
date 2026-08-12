@@ -62,7 +62,7 @@ const requiredSystemGroups = [
 ];
 const requiredSystemChecks = [
   'token_reference_closure', 'contrast', 'component_state_coverage', 'responsive_320_200',
-  'reduced_motion', 'assets_fonts_licenses', 'code_conformance', 'unknown_absence',
+  'reduced_motion', 'assets_fonts_licenses', 'implementation_contract_complete', 'unknown_absence',
   'sections_11_13_honesty',
 ];
 
@@ -70,13 +70,17 @@ function writeSystemProof(runDir: string) {
   mkdirSync(join(runDir, 'system'), { recursive: true });
   const provenancePath = join(runDir, 'system/provenance.json');
   const coveragePath = join(runDir, 'system/coverage.json');
+  const specPath = join(runDir, 'system/spec.json');
   writeFileSync(provenancePath, JSON.stringify({ schema_version: '0.1', decisions: [] }));
   writeFileSync(coveragePath, JSON.stringify({ schema_version: '0.1', groups: {}, checks: {} }));
+  writeFileSync(specPath, JSON.stringify({ schema_version: '0.1' }));
   const proof = {
-    schema_version: '0.1', status: 'passed', pass: true, strategy: 'establish',
+    schema_version: '0.2', status: 'passed', pass: true, strategy: 'establish',
     implementation_owner: 'main-agent', design_md_sha256: sha(readFileSync(join(root, 'DESIGN.md'))),
     provenance_sha256: sha(readFileSync(provenancePath)), coverage_sha256: sha(readFileSync(coveragePath)),
+    spec_sha256: sha(readFileSync(specPath)),
     required_groups: requiredSystemGroups, required_checks: requiredSystemChecks,
+    computed_checks: Object.fromEntries(requiredSystemChecks.map((id) => [id, { pass: true }])),
     findings: [], next_state: 'PRODUCT_BUILD',
   };
   writeFileSync(join(runDir, 'system/proof.json'), JSON.stringify(proof));

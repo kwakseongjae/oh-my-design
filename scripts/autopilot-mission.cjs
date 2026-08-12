@@ -121,7 +121,7 @@ const REQUIRED_SYSTEM_GROUPS = [
 ];
 const REQUIRED_SYSTEM_CHECKS = [
   'token_reference_closure', 'contrast', 'component_state_coverage', 'responsive_320_200',
-  'reduced_motion', 'assets_fonts_licenses', 'code_conformance', 'unknown_absence',
+  'reduced_motion', 'assets_fonts_licenses', 'implementation_contract_complete', 'unknown_absence',
   'sections_11_13_honesty',
 ];
 
@@ -166,8 +166,9 @@ function validateAcceptancePlan(plan, mission, decisionSha) {
 function validateSystemProof(proof, decision, proofPath) {
   const provenancePath = path.join(runDir, 'system', 'provenance.json');
   const coveragePath = path.join(runDir, 'system', 'coverage.json');
+  const specPath = path.join(runDir, 'system', 'spec.json');
   const designPath = path.join(cwd, 'DESIGN.md');
-  if (proof.schema_version !== '0.1'
+  if (proof.schema_version !== '0.2'
     || !['passed', 'failed'].includes(proof.status)
     || typeof proof.pass !== 'boolean'
     || proof.strategy !== decision.strategy
@@ -175,13 +176,19 @@ function validateSystemProof(proof, decision, proofPath) {
     || !fs.existsSync(designPath)
     || !fs.existsSync(provenancePath)
     || !fs.existsSync(coveragePath)
+    || !fs.existsSync(specPath)
     || proof.design_md_sha256 !== sha256File(designPath)
     || proof.provenance_sha256 !== sha256File(provenancePath)
-    || proof.coverage_sha256 !== sha256File(coveragePath)) {
+    || proof.coverage_sha256 !== sha256File(coveragePath)
+    || proof.spec_sha256 !== sha256File(specPath)) {
     throw new Error('system proof authority drift');
   }
   exactStringSet(proof.required_groups, REQUIRED_SYSTEM_GROUPS, 'system proof required groups');
   exactStringSet(proof.required_checks, REQUIRED_SYSTEM_CHECKS, 'system proof required checks');
+  if (!proof.computed_checks || typeof proof.computed_checks !== 'object'
+    || REQUIRED_SYSTEM_CHECKS.some((id) => proof.computed_checks[id]?.pass !== true)) {
+    throw new Error('system proof computed checks drift');
+  }
   if (!Array.isArray(proof.findings)
     || proof.findings.some((item) => !item || typeof item.code !== 'string' || !item.code.trim())) {
     throw new Error('system proof findings contract drift');

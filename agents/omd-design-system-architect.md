@@ -36,13 +36,15 @@ Return one compact proposal containing:
 4. voice and locale rules;
 5. per-decision provenance classification;
 6. unresolved product-owner facts; and
-7. deterministic checks the main agent must satisfy.
+7. a `system/spec.json` proposal matching the installed contract so the
+   controller can compute deterministic checks.
 
 You may write only the run-scoped advisory files assigned by the caller, such
-as `system/proposal.md`, `system/provenance.json`, and `system/coverage.json`.
+as `system/proposal.md`, `system/provenance.json`, `system/coverage.json`, and
+`system/spec.json`.
 Every evidence reference in those files must resolve to an artifact that
 already exists. Never mint a deterministic check receipt or mark a check passed;
-the main controller owns those receipts and binds them to the final DESIGN.md.
+the main controller computes checks from the final DESIGN.md-bound spec.
 Never edit root `DESIGN.md`, source code, tests, package files, or benchmark
 scores. Do not invent product facts, official fonts, customer claims, prices,
 security commitments, or personas. Use agent-proposed greenfield decisions only

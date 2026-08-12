@@ -123,7 +123,7 @@ Hearth is a proposed single-screen family meal-planning surface for parents. Pro
 - Surface: \`#FFFDF8\`
 - Ink: \`#17352B\`
 - Muted ink: \`#5D6D65\`
-- Action: \`#2F684F\` with white text; maintain WCAG AA contrast.
+- Action: \`#2F684F\` with Action text \`#FFFFFF\`; maintain WCAG AA contrast.
 - Warm accent: \`#E7A95A\`; never use it alone to communicate state.
 
 ## 3. Typography
@@ -199,19 +199,35 @@ const groupAnchors = {
 };
 const checks = [
   'token_reference_closure', 'contrast', 'component_state_coverage', 'responsive_320_200',
-  'reduced_motion', 'assets_fonts_licenses', 'code_conformance', 'unknown_absence', 'sections_11_13_honesty',
+  'reduced_motion', 'assets_fonts_licenses', 'implementation_contract_complete', 'unknown_absence', 'sections_11_13_honesty',
 ];
 writeFileSync(join(runDir, 'system/provenance.json'), `${JSON.stringify(provenance, null, 2)}\n`);
-mkdirSync(join(runDir, 'system/checks'), { recursive: true });
-for (const check of checks) {
-  writeFileSync(join(runDir, `system/checks/${check}.json`), `${JSON.stringify({
-    schema_version: '0.1', check, pass: true, design_md_sha256: designSha,
-  }, null, 2)}\n`);
-}
 writeFileSync(join(runDir, 'system/coverage.json'), `${JSON.stringify({
   schema_version: '0.1', design_md_sha256: designSha,
   groups: Object.fromEntries(groups.map((id) => [id, { status: 'covered', evidence: [`DESIGN.md#${groupAnchors[id]}`] }])),
-  checks: Object.fromEntries(checks.map((id) => [id, { pass: true, evidence: [`system/checks/${id}.json`] }])),
+  checks: Object.fromEntries(checks.map((id) => [id, { pass: true, method: 'controller-computed-system-spec-v1' }])),
+}, null, 2)}\n`);
+writeFileSync(join(runDir, 'system/spec.json'), `${JSON.stringify({
+  schema_version: '0.1', design_md_sha256: designSha,
+  tokens: {
+    colors: { ink: '#17352B', surface: '#FFFDF8', action: '#2F684F', 'action-text': '#FFFFFF' },
+    color_pairs: [
+      { foreground: 'ink', background: 'surface', min_ratio: 4.5 },
+      { foreground: 'action-text', background: 'action', min_ratio: 4.5 },
+    ],
+    typography: { body: '16/24/400', heading: '28/34/700' },
+    spacing: { 'space-1': '4px', 'space-2': '8px', 'space-3': '16px' },
+  },
+  components: [{
+    id: 'primary-action', interactive: true,
+    states: ['default', 'hover', 'focus-visible', 'disabled', 'loading', 'error', 'success'],
+    token_refs: ['colors.action', 'colors.action-text', 'spacing.space-2'],
+  }],
+  responsive: { minimum_width_px: 320, reflow_zoom_percent: 200, rules: ['Rail reflows above the planning grid.'] },
+  motion: { reduced_motion: true },
+  assets: [{ id: 'none', source_status: 'none', license_status: 'not-required' }],
+  voice_locale: { locales: ['ko', 'en', 'ja', 'zh-CN', 'zh-TW'] },
+  unresolved: ['product.household_details'],
 }, null, 2)}\n`);
 run('scripts/validate-project-design-system.cjs', [workspace, runDir]);
 run('scripts/autopilot-mission.cjs', [workspace, runDir, 'advance']);
