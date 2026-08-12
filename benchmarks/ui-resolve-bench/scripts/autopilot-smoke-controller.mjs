@@ -65,6 +65,29 @@ export function missionProductTreeManifest(root) {
   return { files, sha256: sha256(JSON.stringify(files)) };
 }
 function readJson(path) { return JSON.parse(readFileSync(path, "utf8")); }
+function copyDesignSystemEvidenceReference(reference, sourceRun, sourceWorkspace, auditRun, auditWorkspace) {
+  const filePart = String(reference ?? "").split("#", 1)[0];
+  if (!filePart || isAbsolute(filePart) || filePart.split(/[\\/]/).includes("..") || filePart === "DESIGN.md") return;
+  const candidates = [
+    { source: resolve(sourceRun, filePart), root: sourceRun, targetRoot: auditRun },
+    { source: resolve(sourceWorkspace, filePart), root: sourceWorkspace, targetRoot: auditWorkspace },
+  ];
+  const selected = candidates.find(({ source, root }) =>
+    (source === root || source.startsWith(`${root}${sep}`)) && existsSync(source));
+  if (!selected) throw new Error(`design-system evidence is missing: ${reference}`);
+  const info = lstatSync(selected.source);
+  if (!info.isFile() || info.isSymbolicLink()) throw new Error(`design-system evidence must be a regular file: ${reference}`);
+  const relativePath = relative(selected.root, selected.source);
+  const target = join(selected.targetRoot, relativePath);
+  mkdirSync(dirname(target), { recursive: true });
+  if (existsSync(target)) {
+    if (sha256(readFileSync(target)) !== sha256(readFileSync(selected.source))) {
+      throw new Error(`design-system evidence copy collision: ${reference}`);
+    }
+    return;
+  }
+  copyFileSync(selected.source, target);
+}
 export function classifyProviderStreamFailure(jsonl) {
   const messages = String(jsonl ?? "").split(/\r?\n/).filter(Boolean).flatMap((line) => {
     try {
@@ -389,6 +412,16 @@ function controllerDesignSystemProof(root, cell, workspace, round = 0) {
   copyFileSync(join(sourceRun, "design-system-decision.json"), join(auditRun, "design-system-decision.json"));
   copyFileSync(join(sourceRun, "system/provenance.json"), join(auditRun, "system/provenance.json"));
   copyFileSync(join(sourceRun, "system/coverage.json"), join(auditRun, "system/coverage.json"));
+  const provenance = readJson(join(sourceRun, "system/provenance.json"));
+  const coverage = readJson(join(sourceRun, "system/coverage.json"));
+  const references = [
+    ...(provenance.decisions ?? []).flatMap((item) => item.evidence ?? []),
+    ...Object.values(coverage.groups ?? {}).flatMap((item) => item.evidence ?? []),
+    ...Object.values(coverage.checks ?? {}).flatMap((item) => item.evidence ?? []),
+  ];
+  for (const reference of [...new Set(references)]) {
+    copyDesignSystemEvidenceReference(reference, sourceRun, workspace, auditRun, auditWorkspace);
+  }
   const result = spawnSync(process.execPath, [join(repoRoot, validatorPath), auditWorkspace, auditRun], {
     cwd: repoRoot, encoding: "utf8", timeout: 30_000,
   });

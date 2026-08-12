@@ -114,6 +114,16 @@ const REQUIRED_QUALITY_CHECKS = [
   'reflow-200pct', 'keyboard', 'accessibility', 'evidence-honesty', 'design-conformance',
 ];
 const LOCALLY_ATTESTED_QUALITY_CHECKS = ['evidence-honesty', 'design-conformance'];
+const REQUIRED_SYSTEM_GROUPS = [
+  'product-scope', 'color-contrast', 'typography', 'spacing-density-layout', 'responsive',
+  'component-states', 'motion-reduced-motion', 'voice-locale', 'assets-fonts-licenses',
+  'provenance-unresolved',
+];
+const REQUIRED_SYSTEM_CHECKS = [
+  'token_reference_closure', 'contrast', 'component_state_coverage', 'responsive_320_200',
+  'reduced_motion', 'assets_fonts_licenses', 'code_conformance', 'unknown_absence',
+  'sections_11_13_honesty',
+];
 
 function exactStringSet(actual, expected, label) {
   if (!Array.isArray(actual) || actual.length !== expected.length
@@ -151,6 +161,37 @@ function validateAcceptancePlan(plan, mission, decisionSha) {
   exactStringSet(plan.viewports, REQUIRED_VIEWPORTS, 'viewport');
   exactStringSet(plan.quality_checks, REQUIRED_QUALITY_CHECKS, 'quality check');
   return plan;
+}
+
+function validateSystemProof(proof, decision, proofPath) {
+  const provenancePath = path.join(runDir, 'system', 'provenance.json');
+  const coveragePath = path.join(runDir, 'system', 'coverage.json');
+  const designPath = path.join(cwd, 'DESIGN.md');
+  if (proof.schema_version !== '0.1'
+    || !['passed', 'failed'].includes(proof.status)
+    || typeof proof.pass !== 'boolean'
+    || proof.strategy !== decision.strategy
+    || proof.implementation_owner !== 'main-agent'
+    || !fs.existsSync(designPath)
+    || !fs.existsSync(provenancePath)
+    || !fs.existsSync(coveragePath)
+    || proof.design_md_sha256 !== sha256File(designPath)
+    || proof.provenance_sha256 !== sha256File(provenancePath)
+    || proof.coverage_sha256 !== sha256File(coveragePath)) {
+    throw new Error('system proof authority drift');
+  }
+  exactStringSet(proof.required_groups, REQUIRED_SYSTEM_GROUPS, 'system proof required groups');
+  exactStringSet(proof.required_checks, REQUIRED_SYSTEM_CHECKS, 'system proof required checks');
+  if (!Array.isArray(proof.findings)
+    || proof.findings.some((item) => !item || typeof item.code !== 'string' || !item.code.trim())) {
+    throw new Error('system proof findings contract drift');
+  }
+  const expectedPass = proof.status === 'passed' && proof.findings.length === 0;
+  if (proof.pass !== expectedPass
+    || proof.next_state !== (expectedPass ? 'PRODUCT_BUILD' : 'SYSTEM_REPAIR')) {
+    throw new Error('system proof outcome drift');
+  }
+  return proof;
 }
 
 function validateFinalProof(proof, acceptance, currentProductTree) {
@@ -511,7 +552,7 @@ if (decision.strategy === 'establish' || decision.strategy === 'refresh') {
     process.exit(0);
   }
   if (!fs.existsSync(proofPath)) throw new Error('admitted system proof is missing');
-  const proof = readJson(proofPath);
+  const proof = validateSystemProof(readJson(proofPath), decision, proofPath);
   if (proof.pass !== true || proof.next_state !== 'PRODUCT_BUILD') {
     emit('SYSTEM_REPAIR', 'repair-design-system-proof', { proof_sha256: sha256File(proofPath) });
     process.exit(0);

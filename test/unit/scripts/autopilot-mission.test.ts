@@ -55,6 +55,33 @@ const requiredChecks = [
   'functionality', 'task-journey', 'responsive-1440', 'responsive-390', 'responsive-320',
   'reflow-200pct', 'keyboard', 'accessibility', 'evidence-honesty', 'design-conformance',
 ];
+const requiredSystemGroups = [
+  'product-scope', 'color-contrast', 'typography', 'spacing-density-layout', 'responsive',
+  'component-states', 'motion-reduced-motion', 'voice-locale', 'assets-fonts-licenses',
+  'provenance-unresolved',
+];
+const requiredSystemChecks = [
+  'token_reference_closure', 'contrast', 'component_state_coverage', 'responsive_320_200',
+  'reduced_motion', 'assets_fonts_licenses', 'code_conformance', 'unknown_absence',
+  'sections_11_13_honesty',
+];
+
+function writeSystemProof(runDir: string) {
+  mkdirSync(join(runDir, 'system'), { recursive: true });
+  const provenancePath = join(runDir, 'system/provenance.json');
+  const coveragePath = join(runDir, 'system/coverage.json');
+  writeFileSync(provenancePath, JSON.stringify({ schema_version: '0.1', decisions: [] }));
+  writeFileSync(coveragePath, JSON.stringify({ schema_version: '0.1', groups: {}, checks: {} }));
+  const proof = {
+    schema_version: '0.1', status: 'passed', pass: true, strategy: 'establish',
+    implementation_owner: 'main-agent', design_md_sha256: sha(readFileSync(join(root, 'DESIGN.md'))),
+    provenance_sha256: sha(readFileSync(provenancePath)), coverage_sha256: sha(readFileSync(coveragePath)),
+    required_groups: requiredSystemGroups, required_checks: requiredSystemChecks,
+    findings: [], next_state: 'PRODUCT_BUILD',
+  };
+  writeFileSync(join(runDir, 'system/proof.json'), JSON.stringify(proof));
+  return proof;
+}
 
 function writeAcceptancePlan(runDir: string, route = '/') {
   const task = readFileSync(join(runDir, 'task.md'), 'utf8').trim();
@@ -158,12 +185,14 @@ describe('autopilot mission controller', () => {
     expect(early.status).not.toBe(0);
     expect(early.stderr).toContain('product write before system proof: src.js');
     rmSync(join(root, 'src.js'));
-    const designBytes = readFileSync(join(root, 'DESIGN.md'));
     writeFileSync(join(runDir, 'system/proof.json'), JSON.stringify({
-      pass: true,
-      next_state: 'PRODUCT_BUILD',
-      design_md_sha256: sha(designBytes),
+      pass: true, next_state: 'PRODUCT_BUILD', design_md_sha256: sha(readFileSync(join(root, 'DESIGN.md'))),
     }));
+    const forged = run(runDir);
+    expect(forged.status).not.toBe(0);
+    expect(forged.stderr).toContain('system proof authority drift');
+    rmSync(join(runDir, 'system/proof.json'));
+    writeSystemProof(runDir);
     expect(run(runDir).status).toBe(0);
     expect(state(runDir).state).toBe('ACCEPTANCE_PLAN');
     writeAcceptancePlan(runDir);

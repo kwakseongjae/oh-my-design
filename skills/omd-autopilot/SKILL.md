@@ -59,8 +59,11 @@ folders and must never edit `DESIGN.md` or product files.
    provenance/group reference must resolve to a real project or run artifact,
    and every deterministic check must point to a check receipt bound to the
    exact `DESIGN.md` hash. Do not implement the product until proof passes.
-   Run `validate-project-design-system.cjs <project-root> <run-dir>`;
-   only `system/proof.json` with `pass: true` authorizes `PRODUCT_BUILD`.
+   Never author or edit `system/proof.json` directly. Run the installed
+   `validate-project-design-system.cjs <project-root> <run-dir>` helper; the
+   mission controller validates its full schema, source hashes, required
+   groups/checks, outcome, and exact `DESIGN.md` binding before it authorizes
+   `PRODUCT_BUILD`. A minimal `{ pass: true }` proof is an authority failure.
 7. `ACCEPTANCE_PLAN` — before product admission, materialize
    `acceptance-plan.json`. Quote the exact task bytes for every journey,
    constraint, and protected unknown. Lock the real route, default/loading/
