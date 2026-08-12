@@ -47,8 +47,8 @@ export function hasUnavailableTranslationSemantics(value) {
   return /translation.{0,40}(?:unavailable|not available|not ready)|(?:unavailable|not available|not ready).{0,40}translation/i.test(text)
     || /번역.{0,40}(?:불가|제공되지|준비되지|준비되지 않았)/.test(text)
     || /翻訳.{0,40}(?:利用でき|未提供|準備でき)/.test(text)
-    || /翻译.{0,40}(?:未提供|不可用|尚未准备)/.test(text)
-    || /翻譯.{0,40}(?:未提供|不可用|尚未準備)/.test(text);
+    || /翻译.{0,40}(?:未提供|不可用|暂不可用|尚未准备|无法使用)/.test(text)
+    || /翻譯.{0,40}(?:未提供|不可用|暫不可用|尚未準備|無法使用)/.test(text);
 }
 
 export function hasHonestUnavailableLibraryInformation(value) {

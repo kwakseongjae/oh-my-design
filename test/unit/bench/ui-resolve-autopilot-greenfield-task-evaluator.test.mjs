@@ -51,11 +51,22 @@ describe('greenfield evidence phrase classification', () => {
 
   it.each([
     '繁體中文翻譯尚未準備好',
+    '輔助翻譯暫不可用',
+    '輔助翻譯目前無法使用。核心清單仍會以你選擇的語言顯示。',
     '翻译暂未提供',
+    '辅助翻译目前无法使用',
     '翻訳はまだ利用できません',
     '아직 번역이 준비되지 않았습니다',
   ])('recognizes localized unavailable-translation alerts: %s', (value) => {
     expect(hasUnavailableTranslationSemantics(value)).toBe(true);
+  });
+
+  it.each([
+    '繁體中文翻譯可以使用',
+    '翻译已经准备完成',
+    'Translation is available',
+  ])('does not classify available translation copy as unavailable: %s', (value) => {
+    expect(hasUnavailableTranslationSemantics(value)).toBe(false);
   });
 
   it.each(['這裡不構成醫療建議。', '这里不构成医疗建议。', '医療アドバイスではありません。'])('does not turn localized medical disclaimers into claims: %s', (value) => {

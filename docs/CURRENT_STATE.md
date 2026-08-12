@@ -4,10 +4,14 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: Autopilot pending-interview measurement commit `f48173c7` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · 1.9.876 cold-chain stale-owner evaluator freeze 및 provider-free terminal-score 회귀 보강
+- 갱신: 2026-08-12 · 1.9.877 complete smoke의 번체 unavailable matcher false negative 보정
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+- 1.9.877 exact Luna/high smoke는 valid terminal3/3, retry/replacement/fallback/Cursor0으로 완료됐다. sealed UI-Resolved는2/3이며 landing `50→100`, cold `20→80→100`, locale `60→60`; 총7 calls·input9,117,736(cached8,334,592)+output124,466·provider wall2,919.807s다.
+- locale 제품은 `zh-TW` 선택과 `lang=zh-TW`를 보존하고 visible alert에 `暫不可用`/`輔助翻譯目前無法使用`을 표시했지만 matcher가 두 표현을 누락해 false negative였다. exact completed bytes의 provider-free 재평가는 4 viewports 전부100/100이다. sealed record는 불변이며 evidence는 `reports/autopilot-luna-high-smoke-1.9.877/{RESULTS.json,STATUS.md}`다.
+- matcher는 번체 `暫不可用|無法使用`과 간체 `暂不可用|无法使用`을 인식하고 available copy를 거짓 양성으로 분류하지 않는다. 다음 순서: locale E2E/full regression·lint/build → evaluator/evidence scoped commit(`web/public/llms-full.txt` 제외) → fresh1.9.878 exact Luna/high3셀. sealed fresh3/3 전까지 12-task comparison과 public one-shot claim은 BLOCK이다.
 
 - 1.9.876은 exact in-app admission 뒤 landing `10→100`(2 calls)을 UI-Resolved로 완료했다. cold initial provider도 종료했지만 invalid Assign 뒤 제거된 owner combobox의 optional `aria-describedby`를 evaluator가 30초 기다려 score 없이 root가 stopped-preregistered로 동결됐다. provider exposure3·valid terminal1/3이며 locale는 미노출이다.
 - evaluator는 invalid submission 뒤 owner surface가 사라지면 owner-error/assignment를 실패로 남기고 terminal score를 쓴다. 동일 frozen product의 provider-free 재평가는 crash 없이40점이며 실제 결함(owner error association, sample owner, persistent assignment, accessibility)은 그대로다. exact evidence는 `reports/autopilot-luna-high-smoke-1.9.876/{RESULTS.json,STATUS.md}`다.

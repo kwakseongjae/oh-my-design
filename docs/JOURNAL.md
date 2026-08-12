@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.877 locale false negative
+- exact Luna/high는 valid terminal3/3, sealed UI-Resolved2/3으로 완료됐다.
+- landing `50→100`, cold `20→80→100`, locale `60→60`; 7 calls·repair4다.
+- locale의 visible `暫不可用/無法使用`을 matcher가 놓쳤고 동일 bytes provider-free 평가는100이다.
+- sealed record는 유지하고 matcher 회귀+full gate 뒤 fresh1.9.878로 간다.
+
 ## 2026-08-12 (Codex) · 1.9.876 stale-owner evaluator freeze
 - landing은 Luna/high `10→100`으로 성공했고 cold initial 뒤 evaluator가 stale owner locator로 동결됐다.
 - exposure3·valid terminal1/3·locale0이며 retry/replacement/fallback/Cursor0이다.
