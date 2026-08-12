@@ -22,16 +22,20 @@ autonomous council, project-owned `DESIGN.md`, provenance and coverage proof,
 real surface implementation, objective feedback, one bounded repair, and a
 100 / 100 terminal result.
 
-The two failures remain product failures. Cold-chain recovered its dataset,
-urgent filter, responsive behavior, and accessibility, but the controller
-could not complete the keyboard-open → matching evidence → missing-owner error
-→ sample-owner assignment journey. Locale produced a project-owned design
-system and accessible five-language UI, but the controller observed incomplete
-exact locale/script mapping, unavailable-resource interaction, and responsive
-coverage. The zh-TW unavailable matcher fix did not create a retroactive pass
-or conceal these fresh failures.
+Posthoc provider-free replay found that the two sealed failures were evaluator
+false negatives, not demonstrated product failures. The corrected evaluator
+accepts native dialog details, explicit sample-owner scope, bounded asynchronous
+locale rerenders, the standard `zh-Hans` / `zh-Hant` equivalents, and excludes
+clipped semantic-only content or internally contained data surfaces from visual
+document overflow. The exact final cold-chain and locale products each score
+`100 / 100` under that corrected evaluator, with zero additional model calls.
+
+This is diagnostic evidence only. The original run records remain immutable at
+`1 / 3`, and the posthoc scores are recorded separately in `RESULTS.json`; they
+are not retroactively promoted or substituted into the sealed denominator.
 
 The root is complete and non-reusable. This result does not establish 2.0
 readiness, reliability, or superiority over another skill. The next 2.0 work
-must improve the autonomous implementation/repair contract against these
-observable failures before expanding to the 12-task same-prompt comparison.
+must repeat the same three-task smoke from a fresh source-bound root under the
+corrected evaluator. A fresh `3 / 3` is required before expanding to the
+12-task same-prompt comparison.

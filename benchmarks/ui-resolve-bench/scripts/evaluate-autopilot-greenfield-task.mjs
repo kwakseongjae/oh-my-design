@@ -51,6 +51,20 @@ export function hasUnavailableTranslationSemantics(value) {
     || /翻譯.{0,40}(?:未提供|不可用|暫不可用|尚未準備|無法使用)/.test(text);
 }
 
+export function localeCodeMatches(actual, requested) {
+  const normalize = (value) => String(value || '').trim().toLowerCase();
+  const canonical = (value) => {
+    const normalized = normalize(value);
+    if (/^zh-(?:cn|hans)(?:-|$)/.test(normalized)) return 'zh-cn';
+    if (/^zh-(?:tw|hant)(?:-|$)/.test(normalized)) return 'zh-tw';
+    return normalized;
+  };
+  const normalizedActual = normalize(actual);
+  const normalizedRequested = normalize(requested);
+  return canonical(normalizedActual) === canonical(normalizedRequested)
+    || normalizedActual.startsWith(`${normalizedRequested}-`);
+}
+
 export function hasHonestUnavailableLibraryInformation(value) {
   const sentences = String(value || '').replace(/\s+/g, ' ').split(/(?<=[.!?])|\n+/).map((sentence) => sentence.trim()).filter(Boolean);
   const subject = '(?:catalog|inventory|availability|prices?|costs?|fees?|hours?|eligibility|pickup instructions?|reservation destination)';
@@ -428,7 +442,6 @@ async function axeSeriousCritical(page) {
 async function documentOverflowObservation(page) {
   return page.evaluate(() => {
     const viewportWidth = document.documentElement.clientWidth;
-    const overflowPx = Math.max(0, document.documentElement.scrollWidth - viewportWidth);
     const selectorFor = (element) => {
       if (element.id) return `#${element.id}`;
       const classes = [...element.classList].slice(0, 3).join('.');
@@ -439,6 +452,27 @@ async function documentOverflowObservation(page) {
       if (rect.width <= 0 || rect.height <= 0) return null;
       const style = getComputedStyle(element);
       if (style.display === 'none' || style.visibility === 'hidden') return null;
+      // Screen-reader-only content can keep a full semantic width while being
+      // deliberately clipped to a one-pixel visual box. It must not turn into
+      // a visual horizontal-overflow failure merely because scrollWidth still
+      // includes its pre-clip geometry.
+      const clippedFromVisualFlow = style.clip !== 'auto'
+        || (style.clipPath !== 'none' && style.clipPath !== '')
+        || (style.overflowX === 'hidden' && rect.height <= 1.5);
+      if (clippedFromVisualFlow) return null;
+      const containedByHorizontalViewport = (() => {
+        let ancestor = element.parentElement;
+        while (ancestor && ancestor !== document.body) {
+          const ancestorStyle = getComputedStyle(ancestor);
+          if (['auto', 'scroll', 'hidden', 'clip'].includes(ancestorStyle.overflowX)) {
+            const ancestorRect = ancestor.getBoundingClientRect();
+            return ancestorRect.left >= -1 && ancestorRect.right <= viewportWidth + 1;
+          }
+          ancestor = ancestor.parentElement;
+        }
+        return false;
+      })();
+      if (containedByHorizontalViewport) return null;
       const right = Math.max(0, rect.right - viewportWidth);
       const left = Math.max(0, -rect.left);
       if (right <= 1 && left <= 1) return null;
@@ -458,6 +492,7 @@ async function documentOverflowObservation(page) {
         },
       };
     }).filter(Boolean).sort((a, b) => Math.max(b.right_overflow_px, b.left_overflow_px) - Math.max(a.right_overflow_px, a.left_overflow_px)).slice(0, 8);
+    const overflowPx = Math.ceil(offenders.reduce((maximum, item) => Math.max(maximum, item.right_overflow_px, item.left_overflow_px), 0));
     return { document_overflow_px: overflowPx, offenders };
   });
 }
@@ -900,12 +935,19 @@ async function evaluateColdChain(page, viewport) {
   const firstAction = firstRecord?.action ?? null;
   const activeIdentity = firstRecord?.identity ?? null;
   let keyboardOpen = false;
-  const detailRoots = page.getByRole('complementary').or(page.getByRole('region'));
+  // A task detail is allowed to be a side panel, named region, or modal
+  // dialog. Requiring only complementary/region silently rejects a native
+  // dialog even when the same keyboard journey and owner form are present.
+  const detailRoots = page.getByRole('complementary').or(page.getByRole('region')).or(page.getByRole('dialog'));
+  const isAssignmentDetail = async (candidate) => activeIdentity
+    && (await candidate.innerText()).toUpperCase().includes(activeIdentity)
+    && await candidate.getByRole('combobox', { name: /owner/i }).count() === 1
+    && await candidate.getByRole('button', { name: /^assign(?: selected)?(?: owner)?$/i }).count() === 1;
   const detailSignature = async () => {
     for (const index of await visibleLocatorIndexes(detailRoots)) {
       const candidate = detailRoots.nth(index);
       const text = (await candidate.innerText()).replace(/\s+/g, ' ');
-      if (activeIdentity && text.toUpperCase().includes(activeIdentity) && await candidate.getByRole('combobox', { name: /owner/i }).count() === 1) return text;
+      if (await isAssignmentDetail(candidate)) return text;
     }
     return '';
   };
@@ -932,7 +974,7 @@ async function evaluateColdChain(page, viewport) {
   let detail = null;
   for (const index of await visibleLocatorIndexes(detailRoots)) {
     const candidate = detailRoots.nth(index);
-    if (activeIdentity && (await candidate.innerText()).toUpperCase().includes(activeIdentity) && await candidate.getByRole('combobox', { name: /owner/i }).count() === 1) { detail = candidate; break; }
+    if (await isAssignmentDetail(candidate)) { detail = candidate; break; }
   }
   const detailEvidenceText = detail ? (await detail.innerText()).replace(/\s+/g, ' ') : '';
   // Keep the evidence contract structural rather than copy-shaped. A detail
@@ -952,6 +994,8 @@ async function evaluateColdChain(page, viewport) {
   let selectedOwner = '';
   let assignmentStatusText = '';
   let assignedSourceRecordText = '';
+  let sampleOwnerOptionCount = 0;
+  let ownerScopeText = '';
   let errorAxe = detailAxe;
   let assignedAxe = detailAxe;
   let controlsUnclipped = true;
@@ -998,10 +1042,16 @@ async function evaluateColdChain(page, viewport) {
         const scopedOptionValues = await owner.locator('optgroup').evaluateAll((groups) => groups
           .filter((group) => /sample|demo|fictional/i.test(group.label || ''))
           .flatMap((group) => [...group.querySelectorAll('option')].map((option) => option.textContent || '')));
+        const explicitlyScopedOptions = await owner.locator('option[data-sample-owner="true"]').allTextContents();
+        const describedByText = await owner.evaluate((element) => String(element.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean).map((id) => document.getElementById(id)?.innerText || '').join(' '));
         const sampleOptions = [...new Set([
           ...options.filter((item) => isSampleOwnerOption(item, ownerScope)),
           ...scopedOptionValues.filter((item) => item.trim()),
+          ...explicitlyScopedOptions.filter((item) => item.trim()),
+          ...(/sample|demo|fictional/i.test(describedByText) ? options.filter((item) => item.trim() && !/select|choose/i.test(item)) : []),
         ])];
+        sampleOwnerOptionCount = sampleOptions.length;
+        ownerScopeText = `${ownerScope} ${describedByText}`.replace(/\s+/g, ' ').trim().slice(0, 400);
         sampleOwnerOptions = sampleOptions.length > 0;
         const chosen = sampleOptions[0] || options.find((item) => item.trim() && !/select|choose/i.test(item));
         if (chosen) {
@@ -1022,7 +1072,9 @@ async function evaluateColdChain(page, viewport) {
         }
       }
     }
-    const geometry = await detail.locator('button,select').evaluateAll((elements) => { const rects = elements.filter((element) => { const r = element.getBoundingClientRect(); return r.width > 0 && r.height > 0; }).map((element) => element.getBoundingClientRect()); return { unclipped: rects.every((r) => r.left >= -1 && r.right <= innerWidth + 1), min: rects.length ? Math.min(...rects.map((r) => Math.min(r.width, r.height))) : 44 }; });
+    // Measure the primary assignment controls. Utility close buttons are not
+    // the task's touch target and may validly use a compact desktop size.
+    const geometry = await detail.getByRole('combobox', { name: /owner/i }).or(detail.getByRole('button', { name: /^assign(?: selected)?(?: owner)?$/i })).evaluateAll((elements) => { const rects = elements.filter((element) => { const r = element.getBoundingClientRect(); return r.width > 0 && r.height > 0; }).map((element) => element.getBoundingClientRect()); return { unclipped: rects.every((r) => r.left >= -1 && r.right <= innerWidth + 1), min: rects.length ? Math.min(...rects.map((r) => Math.min(r.width, r.height))) : 44 }; });
     controlsUnclipped = geometry.unclipped; controlMin = geometry.min;
   }
   const visibleText = `${initialText} ${filteredText}`;
@@ -1030,7 +1082,7 @@ async function evaluateColdChain(page, viewport) {
   const protectedClaims = [...unqualified.matchAll(/\b(?:FDA|GDP|GMP)[ -]?(?:compliant|certified|approved)?\b|\b(?:regulatory|compliance) (?:verified|approved|certified)|\breal (?:shipments?|staff)\b/gi)].map((match) => match[0]);
   const criticalFieldsReachable = viewport.width > 390 || filteredRecords.length === urgentIds.length;
   const overflow = await documentOverflowObservation(page);
-  return { task_identity: /cold[-\s]chain|shipment exception|exception queue/i.test(initialText), sample_scope_visible: /\b(?:sample|demo|fictional)\b/i.test(initialText), shipment_count: records.length, urgent_count: records.filter((item) => item.urgent).length, non_urgent_count: records.filter((item) => item.nonUrgent).length, routine_count: records.filter((item) => item.nonUrgent).length, filter_selected_and_visible: filterSelectedAndVisible, filtered_contents_exact: filteredExact, keyboard_open_sample: keyboardOpen, matching_evidence_detail: matchingEvidence, owner_error_associated: errorAssociated, sample_owner_options: sampleOwnerOptions, assigned_owner_confirmed_and_persistent: assignedPersistent, protected_unknown_claims: protectedClaims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: overflow.document_overflow_px, document_overflow_offenders: overflow.offenders, critical_fields_reachable: criticalFieldsReachable, controls_horizontally_unclipped: controlsUnclipped, control_min_dimension_px: controlMin, initial_axe_serious_critical: initialAxe.count, filtered_axe_serious_critical: filteredAxe.count, detail_axe_serious_critical: detailAxe.count, error_axe_serious_critical: errorAxe.count, assigned_axe_serious_critical: assignedAxe.count, initial_axe_violations: initialAxe.violations, filtered_axe_violations: filteredAxe.violations, detail_axe_violations: detailAxe.violations, error_axe_violations: errorAxe.violations, assigned_axe_violations: assignedAxe.violations, main_count: await page.getByRole('main').count(), h1_count: await page.getByRole('heading', { level: 1 }).count(), accessibility_inventory: await boundedAriaInventory(page, ['row', 'article', 'listitem', 'button', 'link', 'combobox', 'status', 'alert'], { total: 10 }), interaction_diagnostics: { filter_kind: filterKind, filter_keyboard: filterKeyboard, filter_programmatic: filterProgrammatic, filter_label: filterLabel, filter_selected_option: selectedOptionText, baseline_selected_option: baselineSelectedOption, baseline_filter_reset: baselineFilterReset, action_reached: actionReached, detail_before: detailBefore, detail_after: detailAfter, record_classification: records.map(({ identity, urgent, nonUrgent }) => ({ identity, urgent, non_urgent: nonUrgent })), urgent_ids: urgentIds, filtered_record_ids: filteredRecords, owner_error: { focused: ownerFocusedAfterError, aria_describedby: ownerDescribedBy, alert_text: ownerAlertText.slice(0, 300) }, selected_owner: selectedOwner, assignment_status_text: assignmentStatusText.slice(0, 500), assigned_source_record_text: assignedSourceRecordText.replace(/\s+/g, ' ').slice(0, 500), assigned_status_persistent: assignedPersistent } } };
+  return { task_identity: /cold[-\s]chain|shipment exception|exception queue/i.test(initialText), sample_scope_visible: /\b(?:sample|demo|fictional)\b/i.test(initialText), shipment_count: records.length, urgent_count: records.filter((item) => item.urgent).length, non_urgent_count: records.filter((item) => item.nonUrgent).length, routine_count: records.filter((item) => item.nonUrgent).length, filter_selected_and_visible: filterSelectedAndVisible, filtered_contents_exact: filteredExact, keyboard_open_sample: keyboardOpen, matching_evidence_detail: matchingEvidence, owner_error_associated: errorAssociated, sample_owner_options: sampleOwnerOptions, assigned_owner_confirmed_and_persistent: assignedPersistent, protected_unknown_claims: protectedClaims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: overflow.document_overflow_px, document_overflow_offenders: overflow.offenders, critical_fields_reachable: criticalFieldsReachable, controls_horizontally_unclipped: controlsUnclipped, control_min_dimension_px: controlMin, initial_axe_serious_critical: initialAxe.count, filtered_axe_serious_critical: filteredAxe.count, detail_axe_serious_critical: detailAxe.count, error_axe_serious_critical: errorAxe.count, assigned_axe_serious_critical: assignedAxe.count, initial_axe_violations: initialAxe.violations, filtered_axe_violations: filteredAxe.violations, detail_axe_violations: detailAxe.violations, error_axe_violations: errorAxe.violations, assigned_axe_violations: assignedAxe.violations, main_count: await page.getByRole('main').count(), h1_count: await page.getByRole('heading', { level: 1 }).count(), accessibility_inventory: await boundedAriaInventory(page, ['row', 'article', 'listitem', 'button', 'link', 'combobox', 'status', 'alert'], { total: 10 }), interaction_diagnostics: { filter_kind: filterKind, filter_keyboard: filterKeyboard, filter_programmatic: filterProgrammatic, filter_label: filterLabel, filter_selected_option: selectedOptionText, baseline_selected_option: baselineSelectedOption, baseline_filter_reset: baselineFilterReset, action_reached: actionReached, detail_role: detail ? await detail.getAttribute('role') : null, detail_before: detailBefore, detail_after: detailAfter, record_classification: records.map(({ identity, urgent, nonUrgent }) => ({ identity, urgent, non_urgent: nonUrgent })), urgent_ids: urgentIds, filtered_record_ids: filteredRecords, owner_error: { focused: ownerFocusedAfterError, aria_describedby: ownerDescribedBy, alert_text: ownerAlertText.slice(0, 300) }, sample_owner_option_count: sampleOwnerOptionCount, owner_scope_text: ownerScopeText, selected_owner: selectedOwner, assignment_status_text: assignmentStatusText.slice(0, 500), assigned_source_record_text: assignedSourceRecordText.replace(/\s+/g, ' ').slice(0, 500), assigned_status_persistent: assignedPersistent } } };
 }
 
 async function evaluateCaregiver(page, viewport) {
@@ -1264,17 +1316,12 @@ async function evaluateLocale(page, viewport) {
   const initialText = (await main.innerText()).replace(/\s+/g, ' '); await checkState();
   const nonMedicalAdviceVisible = /not medical advice|does not (?:provide )?medical advice|does not infer a diagnosis|nothing here is medical advice/i.test(initialText);
   const locales = [{ code: 'ko', label: /한국어/, script: /[가-힣]/ }, { code: 'en', label: /English/, script: /[A-Za-z]/ }, { code: 'ja', label: /日本語/, script: /[ぁ-ゖァ-ヺ]/ }, { code: 'zh-CN', label: /简体中文/, script: /[\u3400-\u9fff]/ }, { code: 'zh-TW', label: /繁體中文/, script: /[\u3400-\u9fff]/ }];
-  const languageTagMatches = (actual, requested) => {
-    const normalizedActual = String(actual || '').trim().toLowerCase();
-    const normalizedRequested = String(requested || '').trim().toLowerCase();
-    return normalizedActual === normalizedRequested || normalizedActual.startsWith(`${normalizedRequested}-`);
-  };
   async function localeSelect() {
     const candidates = page.getByRole('combobox');
     for (let index = 0; index < await candidates.count(); index += 1) {
       const candidate = candidates.nth(index);
       const values = await candidate.locator('option').evaluateAll((options) => options.map((option) => option.value));
-      if (locales.every((locale) => values.includes(locale.code))) return candidate;
+      if (locales.every((locale) => values.some((value) => localeCodeMatches(value, locale.code)))) return candidate;
     }
     return null;
   }
@@ -1285,14 +1332,39 @@ async function evaluateLocale(page, viewport) {
   }
   async function switchTo(locale) {
     const select = await localeSelect(); const button = select ? null : await localeButton(locale);
-    if (select) await select.selectOption(locale.code);
+    let selectedOptionValue = null;
+    if (select) {
+      const values = await select.locator('option').evaluateAll((options) => options.map((option) => option.value));
+      selectedOptionValue = values.find((value) => localeCodeMatches(value, locale.code)) ?? null;
+      if (selectedOptionValue !== null) await select.selectOption(selectedOptionValue);
+    }
     else if (button) await button.press('Enter');
     else { localeDiagnostics.push({ requested: locale.code, mechanism: 'missing', actual_lang: await page.locator('html').getAttribute('lang'), selected: false, script_match: false, label_match: false }); cjkUnclipped.push(false); await checkState(); return false; }
     await afterPaint(page);
+    // Locale controls commonly render a bounded loading state and then replace
+    // the select together with the translated document. Observe completion by
+    // the public language/selection contract instead of assuming one frame is
+    // enough or requiring a particular timer duration.
+    if (selectedOptionValue !== null) {
+      await page.waitForFunction(({ requested }) => {
+        const normalize = (value) => String(value || '').trim().toLowerCase();
+        const canonical = (value) => {
+          const normalized = normalize(value);
+          if (/^zh-(?:cn|hans)(?:-|$)/.test(normalized)) return 'zh-cn';
+          if (/^zh-(?:tw|hant)(?:-|$)/.test(normalized)) return 'zh-tw';
+          return normalized;
+        };
+        const matches = (actual, expected) => canonical(actual) === canonical(expected)
+          || normalize(actual).startsWith(`${normalize(expected)}-`);
+        const candidate = [...document.querySelectorAll('select')].find((item) => [...item.options].some((option) => matches(option.value, requested)));
+        return Boolean(candidate && !candidate.disabled && matches(candidate.value, requested) && matches(document.documentElement.lang, requested));
+      }, { requested: locale.code }, { timeout: 1500 }).catch(() => null);
+      await afterPaint(page);
+    }
     const lang = await page.locator('html').getAttribute('lang'); const text = (await main.innerText()).replace(/\s+/g, ' ');
     const currentSelect = await localeSelect(); const currentButton = currentSelect ? null : await localeButton(locale);
     const selected = currentSelect
-      ? (await currentSelect.inputValue()) === locale.code && locale.label.test(await currentSelect.locator('option:checked').innerText())
+      ? localeCodeMatches(await currentSelect.inputValue(), locale.code) && locale.label.test(await currentSelect.locator('option:checked').innerText())
       : Boolean(currentButton) && ['true', 'page'].includes((await currentButton.getAttribute('aria-pressed')) || (await currentButton.getAttribute('aria-current')) || '');
     const scriptMatch = locale.script.test(text);
     const selectedLabel = currentSelect ? await currentSelect.locator('option:checked').innerText() : currentButton ? await currentButton.innerText() : '';
@@ -1302,7 +1374,7 @@ async function evaluateLocale(page, viewport) {
     // exact semantic match for the requested base locale ja. Sibling tags
     // such as zh-CN and zh-TW remain distinct because neither prefixes the
     // other at a language-subtag boundary.
-    const pass = languageTagMatches(lang, locale.code) && scriptMatch && selected && labelMatch;
+    const pass = localeCodeMatches(lang, locale.code) && scriptMatch && selected && labelMatch;
     localeDiagnostics.push({ requested: locale.code, mechanism: currentSelect ? 'select' : 'button', actual_lang: lang, selected, script_match: scriptMatch, label_match: labelMatch, selected_label: selectedLabel.slice(0, 80) });
     await checkState(); return pass;
   }
@@ -1337,7 +1409,7 @@ async function evaluateLocale(page, viewport) {
   // opened ("Translation status" / "Translation availability") instead of
   // putting the failure outcome in the control name. The proof remains the
   // subsequently exposed alert and the unchanged document language.
-  const unavailable = page.getByRole('button', { name: /unavailable translation|translation (?:status|availability)/i });
+  const unavailable = page.getByRole('button', { name: /(?:unavailable|secondary) translation|translation (?:status|availability)/i });
   let unavailableTrigger = 'missing';
   if (await unavailable.count() === 1 && await unavailable.isVisible()) {
     await unavailable.press('Enter'); await afterPaint(page); unavailableTrigger = 'explicit-state-control';
@@ -1359,12 +1431,12 @@ async function evaluateLocale(page, viewport) {
     }
   }
   const langAfterUnavailable = await page.locator('html').getAttribute('lang');
-  const unavailableSelectionExact = selectedLocaleCode === langAfterUnavailable;
+  const unavailableSelectionExact = localeCodeMatches(selectedLocaleCode, langAfterUnavailable);
   const unavailableHonest = unavailableTrigger !== 'missing' && Boolean(unavailableAlert)
     && unavailableSelectionExact
     && (unavailableTrigger === 'explicit-state-control'
       ? langAfterUnavailable === langBeforeUnavailable
-      : langAfterUnavailable === 'zh-TW'); await checkState();
+      : localeCodeMatches(langAfterUnavailable, 'zh-TW')); await checkState();
   const unavailableDiagnostics = {
     control_count: await unavailable.count(),
     control_visible: await unavailable.count() === 1 ? await unavailable.isVisible() : false,
@@ -1384,7 +1456,8 @@ async function evaluateLocale(page, viewport) {
   const completionText = (await main.innerText()).replace(/\s+/g, ' ');
   const allComplete = completionSnapshot.checked === checklistTotal && completionSnapshot.total === checklistTotal
     && ((completionSnapshot.bar_now === null && completionSnapshot.bar_max === null) || (completionSnapshot.bar_now === checklistTotal && completionSnapshot.bar_max === checklistTotal));
-  return { task_identity: /(?:clinic|visit|受診|진료|就诊|就診)/i.test(initialText) && /(?:checklist|preparation|준비|準備|准备)/i.test(initialText), fictional_not_medical_advice: /(?:fictional|sample)/i.test(initialText) && nonMedicalAdviceVisible, all_five_locales_exact: initialLocaleChecks.length === 5 && initialLocaleChecks.every(Boolean), selected_label_lang_script_agree: initialLocaleChecks.every(Boolean), progress_textual_and_persistent: progressPreserved, completion_persists_after_return: completionPreserved || (allComplete && (/(?:complete|completed)/i.test(`${completeEnglish} ${completionText}`) || textShowsProgress(completionSnapshot, checklistTotal, checklistTotal))), translation_unavailable_honest: unavailableHonest, protected_unknown_claims: claims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: await page.evaluate(() => Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)), cjk_content_unclipped: cjkUnclipped.every(Boolean), controls_horizontally_unclipped: initialControls.unclipped, task_control_min_dimension_px: initialControls.min, axe_serious_critical: axeCounts.reduce((sum, value) => sum + value, 0), main_count: await page.getByRole('main').count(), h1_count_per_state: h1Counts, locale_switch_diagnostics: localeDiagnostics.slice(0, 12), honesty_diagnostics: { fictional_or_sample_visible: /(?:fictional|sample)/i.test(initialText), non_medical_advice_visible: nonMedicalAdviceVisible, initial_text_excerpt: initialText.slice(0, 500) }, progress_diagnostics: { first: progress1, japanese: progressJapanese, returned: progressBack, complete: completionSnapshot }, unavailable_translation_diagnostics: unavailableDiagnostics, accessibility_inventory: await boundedAriaInventory(page, ['combobox', 'checkbox', 'progressbar', 'status', 'alert'], { total: 10 }) } };
+  const overflow = await documentOverflowObservation(page);
+  return { task_identity: /(?:clinic|visit|受診|진료|就诊|就診)/i.test(initialText) && /(?:checklist|preparation|준비|準備|准备)/i.test(initialText), fictional_not_medical_advice: /(?:fictional|sample)/i.test(initialText) && nonMedicalAdviceVisible, all_five_locales_exact: initialLocaleChecks.length === 5 && initialLocaleChecks.every(Boolean), selected_label_lang_script_agree: initialLocaleChecks.every(Boolean), progress_textual_and_persistent: progressPreserved, completion_persists_after_return: completionPreserved || (allComplete && (/(?:complete|completed)/i.test(`${completeEnglish} ${completionText}`) || textShowsProgress(completionSnapshot, checklistTotal, checklistTotal))), translation_unavailable_honest: unavailableHonest, protected_unknown_claims: claims, viewport: { id: viewport.id, width: viewport.width, height: viewport.height, mobile: viewport.width <= 390, document_overflow_px: overflow.document_overflow_px, document_overflow_offenders: overflow.offenders, cjk_content_unclipped: cjkUnclipped.every(Boolean), controls_horizontally_unclipped: initialControls.unclipped, task_control_min_dimension_px: initialControls.min, axe_serious_critical: axeCounts.reduce((sum, value) => sum + value, 0), main_count: await page.getByRole('main').count(), h1_count_per_state: h1Counts, locale_switch_diagnostics: localeDiagnostics.slice(0, 12), honesty_diagnostics: { fictional_or_sample_visible: /(?:fictional|sample)/i.test(initialText), non_medical_advice_visible: nonMedicalAdviceVisible, initial_text_excerpt: initialText.slice(0, 500) }, progress_diagnostics: { first: progress1, japanese: progressJapanese, returned: progressBack, complete: completionSnapshot }, unavailable_translation_diagnostics: unavailableDiagnostics, accessibility_inventory: await boundedAriaInventory(page, ['combobox', 'checkbox', 'progressbar', 'status', 'alert'], { total: 10 }) } };
 }
 
 const invoked = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);

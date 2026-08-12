@@ -44,6 +44,11 @@ const mutant = (source, label, transform) => { const workspace = join(mkdtempSyn
       .replace('Sample evidence note: signal interrupted at 09:12.', 'Scan event: signal interrupted at 09:12.'));
     expect(evaluate(workspace, 'separate-sample-evidence-labels')).toMatchObject({ score: 100, ui_resolved: true });
   }, 60_000);
+  it('accepts a modal dialog as the shipment detail surface', () => {
+    const workspace = mutant('oracle-a', 'dialog-detail', (html) => html
+      .replace('<aside id="detail" aria-labelledby="detail-title" hidden>', '<aside id="detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" hidden>'));
+    expect(evaluate(workspace, 'dialog-detail')).toMatchObject({ score: 100, ui_resolved: true });
+  }, 60_000);
   it('writes a terminal score when a detail transition removes the activated record', () => {
     const workspace = mutant('oracle-a', 'record-hidden-after-open', (html) => html
       .replace("detail.hidden=false; detail.querySelector('.close').focus()", "row.hidden=true; detail.hidden=false; detail.querySelector('.close').focus()"));

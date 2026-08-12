@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 1.9.879 evaluator structure-neutral RCA
+- sealed1/3은 유지하되 provider-free 동일 products는 cold100/locale100으로 재평가됐다.
+- dialog detail, sample-owner scope, locale rerender/BCP47, semantic-only overflow 편향을 수정했다.
+- valid oracles와 isolated mutants는 구조 다양성과 실제 clipping 실패를 계속 판별한다.
+- full gate·commit 뒤 fresh source-bound3셀로 재검증한다.
+
 ## 2026-08-12 (Codex) · 1.9.879 fresh Autopilot smoke
 - exact Luna/high는 valid terminal3/3, sealed UI-Resolved1/3으로 완료됐다.
 - landing `50→100`, cold `20→40→60`, locale `40→40`; 7 calls·repair4다.

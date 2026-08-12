@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { classifyColdChainPriority, detectLocaleProtectedClaims, hasHonestUnavailableLibraryInformation, hasUnavailableTranslationSemantics, isSampleOwnerOption, scoreCaregiverEvidence, scoreCheckoutEvidence, scoreColdChainEvidence, scoreDeletionEvidence, scoreEditorialEvidence, scoreGrantEvidence, scoreIncidentEvidence, scoreLandingEvidence, scoreLocaleEvidence, scoreRecoveryEvidence, scoreSearchEvidence, scoreTransitEvidence, setCheckboxStateWithKeyboard } from '../../../benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs';
+import { classifyColdChainPriority, detectLocaleProtectedClaims, hasHonestUnavailableLibraryInformation, hasUnavailableTranslationSemantics, isSampleOwnerOption, localeCodeMatches, scoreCaregiverEvidence, scoreCheckoutEvidence, scoreColdChainEvidence, scoreDeletionEvidence, scoreEditorialEvidence, scoreGrantEvidence, scoreIncidentEvidence, scoreLandingEvidence, scoreLocaleEvidence, scoreRecoveryEvidence, scoreSearchEvidence, scoreTransitEvidence, setCheckboxStateWithKeyboard } from '../../../benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs';
 
 describe('greenfield evidence phrase classification', () => {
   it.each([
@@ -75,6 +75,24 @@ describe('greenfield evidence phrase classification', () => {
 
   it('still rejects affirmative medical claims', () => {
     expect(detectLocaleProtectedClaims('Medical advice: take 20 mg. Your doctor recommends this.')).toEqual(['Medical advice', 'take 20 mg', 'doctor recommends']);
+  });
+
+  it.each([
+    ['zh-Hans', 'zh-CN'],
+    ['zh-CN', 'zh-Hans'],
+    ['zh-Hant', 'zh-TW'],
+    ['zh-TW', 'zh-Hant'],
+    ['ja-JP', 'ja'],
+  ])('accepts semantically equivalent locale tags: %s / %s', (actual, requested) => {
+    expect(localeCodeMatches(actual, requested)).toBe(true);
+  });
+
+  it.each([
+    ['zh-Hans', 'zh-TW'],
+    ['zh-Hant', 'zh-CN'],
+    ['en', 'ja'],
+  ])('keeps sibling locale identities distinct: %s / %s', (actual, requested) => {
+    expect(localeCodeMatches(actual, requested)).toBe(false);
   });
 });
 

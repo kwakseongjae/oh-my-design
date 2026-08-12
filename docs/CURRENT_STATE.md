@@ -3,15 +3,16 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: Autopilot pending-interview measurement commit `f48173c7` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · fresh 1.9.879 Autopilot Luna/high smoke 완결 및 실패 봉인
+- 기준 소스: Autopilot smoke evidence commit `9db8523e` (`codex/ui-skills-benchmark-v0`) on `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-12 · 1.9.879 evaluator false-negative RCA와 구조 중립 판정 보정
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
-- 1.9.879 fresh exact Luna/high smoke는 source commit `72fd57bf`, in-app browser admission, valid terminal3/3으로 완료됐다. sealed UI-Resolved는1/3이며 landing `50→100`, cold `20→40→60`, locale `40→40`; 7 calls·input11,074,863(cached10,141,440)+output153,539·provider wall3,357.887s다.
-- landing은 one prompt→자율 council→project-owned DESIGN.md/provenance/coverage proof→surface→objective repair→100 경로를 재현했다. cold는 keyboard detail/evidence/owner-error/assignment 여정, locale는 exact locale/script·unavailable interaction·responsive가 실제로 남아 terminal failure다. matcher 수정은 fresh 실패를 숨기지 않았다.
-- `reports/autopilot-luna-high-smoke-1.9.879/{RESULTS.json,STATUS.md}`가 정본이다. 잘못된 default experiment ID로 생성된1.9.878은 provider exposure0인 invalid provider-zero evidence로 보존한다. 다음 순서: report/docs 검증·commit → cold/locale 실패의 구조 중립 repair evidence와 acceptance contract 고도화 → provider-free oracle/mutant calibration → fresh smoke. 3/3 전까지12-task comparison/public one-shot claim은 BLOCK이다.
+- 1.9.879 fresh exact Luna/high smoke는 source commit `72fd57bf`, in-app browser admission, valid terminal3/3으로 완료됐다. immutable sealed 결과는 UI-Resolved1/3이며 landing `50→100`, cold `20→40→60`, locale `40→40`; 7 calls·input11,074,863(cached10,141,440)+output153,539·provider wall3,357.887s다.
+- provider-free exact replay에서 cold와 locale 동일 최종 제품은 corrected evaluator로 각각100/100이다. false negative 원인은 native dialog 미인정/containing region 오인, sample-owner의 data/help scope 누락, 140ms locale rerender race, `zh-Hans|zh-Hant` 표준 alias 불인정, visually-hidden legend 및 내부 scroll surface를 document overflow로 계산, utility close control을 primary touch target으로 계산한 구조 편향이다.
+- evaluator는 assignment action까지 가진 dialog/complementary/region만 detail로 선택하고, explicit sample-owner scope·bounded locale settling·BCP47 alias·실제 visual overflow·primary task control만 측정한다. controller repair evidence도 detail role, owner scope, locale equivalence, overflow offender를 직접 전달한다. exact product replay는 cold SHA `74c0a7…dfcf5de`, locale `69abcb…f0d5a98`로100/100이다.
+- sealed record는1/3 그대로이며 diagnostic replay는 별도 부록이다. `reports/autopilot-luna-high-smoke-1.9.879/{RESULTS.json,STATUS.md}`가 정본이고1.9.878은 provider exposure0 invalid evidence로 보존한다. 다음 순서: full provider-free gate·scoped commit(`web/public/llms-full.txt` 제외)→fresh commit-bound 3-cell smoke. fresh3/3 전까지12-task comparison/public one-shot claim은 BLOCK이다.
 
 - 1.9.877 exact Luna/high smoke는 valid terminal3/3, retry/replacement/fallback/Cursor0으로 완료됐다. sealed UI-Resolved는2/3이며 landing `50→100`, cold `20→80→100`, locale `60→60`; 총7 calls·input9,117,736(cached8,334,592)+output124,466·provider wall2,919.807s다.
 - locale 제품은 `zh-TW` 선택과 `lang=zh-TW`를 보존하고 visible alert에 `暫不可用`/`輔助翻譯目前無法使用`을 표시했지만 matcher가 두 표현을 누락해 false negative였다. exact completed bytes의 provider-free 재평가는 4 viewports 전부100/100이다. sealed record는 불변이며 evidence는 `reports/autopilot-luna-high-smoke-1.9.877/{RESULTS.json,STATUS.md}`다.

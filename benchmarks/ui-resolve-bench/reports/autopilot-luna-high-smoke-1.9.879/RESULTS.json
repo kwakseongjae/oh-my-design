@@ -81,5 +81,29 @@
       ]
     }
   ],
-  "claim_boundary": "Diagnostic smoke only. The fresh sealed result is 1/3 UI-Resolved. It validates one autonomous from-scratch DESIGN.md and product success, but blocks 2.0 readiness, reliability, and cross-skill superiority claims."
+  "posthoc_provider_free_evaluator_diagnostic": {
+    "status": "diagnostic-only-do-not-rewrite-sealed-records",
+    "provider_calls": 0,
+    "evaluator_sha256": "5db495eb42babae3e568d3d671216defa54e8d9950f8b04a96efa61003591787",
+    "cold_chain": {
+      "score": 100,
+      "ui_resolved": true,
+      "failed_assertions": [],
+      "diagnostic_score_sha256": "74c0a7403ff5bfccfb3d8d5f541900f6eae2ddcf796f04839f98e52dfdfcf5de"
+    },
+    "locale": {
+      "score": 100,
+      "ui_resolved": true,
+      "failed_assertions": [],
+      "diagnostic_score_sha256": "69abcb8900be9e8c4e81f3868a194ee488a2ccab0c6d89ef5984f645ef0d5a98"
+    },
+    "root_causes": [
+      "assignment detail discovery excluded an otherwise valid native dialog and later confused a containing region with the detail surface",
+      "sample owner scope ignored explicit option data markers and described help text",
+      "locale observation raced a bounded asynchronous rerender and required region tags instead of accepting the exact zh-Hans/zh-Hant equivalents",
+      "responsive observation counted a deliberately clipped screen-reader-only legend and descendants contained by an internal horizontal viewport as document overflow",
+      "compact utility controls were incorrectly included in the primary task touch-target minimum"
+    ]
+  },
+  "claim_boundary": "Diagnostic smoke only. The immutable fresh sealed result remains 1/3 UI-Resolved. Provider-free posthoc replay shows that both sealed failures become 100/100 under the corrected structure-neutral evaluator, but that replay is not a replacement benchmark result. A fresh source-bound 3/3 run is still required before 2.0 readiness, reliability, or cross-skill superiority claims."
 }

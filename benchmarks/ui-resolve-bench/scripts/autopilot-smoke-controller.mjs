@@ -579,6 +579,25 @@ export function objectiveFailureObservations(score) {
         filtered_record_ids: viewport.interaction_diagnostics?.filtered_record_ids ?? [],
       })),
     },
+    keyboard_open_sample: {
+      pass: evidence.keyboard_open_sample ?? null,
+      accepted_detail_roles: ["dialog", "complementary", "region"],
+      viewports: viewports.map((viewport) => ({
+        id: viewport.id ?? null,
+        action_reached: viewport.interaction_diagnostics?.action_reached ?? null,
+        detail_role: viewport.interaction_diagnostics?.detail_role ?? null,
+        detail_after: viewport.interaction_diagnostics?.detail_after ?? null,
+      })),
+    },
+    matching_evidence_detail: {
+      pass: evidence.matching_evidence_detail ?? null,
+      expected: "The opened record detail keeps the same shipment identity and visibly scopes both sample/demo data and an evidence datum; those labels may be separate within the same detail surface.",
+      viewports: viewports.map((viewport) => ({
+        id: viewport.id ?? null,
+        detail_role: viewport.interaction_diagnostics?.detail_role ?? null,
+        detail_after: viewport.interaction_diagnostics?.detail_after ?? null,
+      })),
+    },
     assigned_owner_confirmed_and_persistent: {
       pass: evidence.assigned_owner_confirmed_and_persistent ?? null,
       viewports: viewports.map((viewport) => ({
@@ -597,12 +616,30 @@ export function objectiveFailureObservations(score) {
         owner_error: viewport.interaction_diagnostics?.owner_error ?? null,
       })),
     },
+    sample_owner_options: {
+      pass: evidence.sample_owner_options ?? null,
+      expected: "At least one non-placeholder owner option is explicitly scoped as sample/demo/fictional by its option, optgroup, data marker, label, or described help text.",
+      viewports: viewports.map((viewport) => ({
+        id: viewport.id ?? null,
+        sample_owner_option_count: viewport.interaction_diagnostics?.sample_owner_option_count ?? null,
+        owner_scope_text: viewport.interaction_diagnostics?.owner_scope_text ?? null,
+      })),
+    },
     fictional_not_medical_advice: {
       expected: "The initial surface visibly identifies the preparation as fictional or sample and states that it is not medical advice or does not infer a diagnosis.",
       viewports: viewports.map((viewport) => ({
         id: viewport.id ?? null,
         diagnostics: viewport.honesty_diagnostics ?? null,
       })),
+    },
+    all_five_locales_exact: {
+      pass: evidence.all_five_locales_exact ?? null,
+      locale_equivalence_policy: "ko/en/ja accept their exact base or a more specific subtag; zh-CN is equivalent to zh-Hans and zh-TW to zh-Hant, but Simplified and Traditional remain distinct.",
+      viewports: viewports.map((viewport) => ({ id: viewport.id ?? null, diagnostics: viewport.locale_switch_diagnostics ?? [] })),
+    },
+    selected_label_lang_script_agree: {
+      pass: evidence.selected_label_lang_script_agree ?? null,
+      viewports: viewports.map((viewport) => ({ id: viewport.id ?? null, diagnostics: viewport.locale_switch_diagnostics ?? [] })),
     },
     progress_textual_and_persistent: {
       expected: "Visible progress and any progressbar aria-valuenow/aria-valuemax stay synchronized across locale changes and completion.",

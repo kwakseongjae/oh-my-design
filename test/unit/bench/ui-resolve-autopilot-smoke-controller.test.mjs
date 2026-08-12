@@ -241,6 +241,10 @@ describe("autopilot Luna/high smoke controller", () => {
       assertions: {
         filter_selected_and_visible: false,
         owner_error_associated: false,
+        sample_owner_options: false,
+        keyboard_open_sample: false,
+        all_five_locales_exact: false,
+        selected_label_lang_script_agree: false,
         fictional_not_medical_advice: false,
         progress_textual_and_persistent: false,
       },
@@ -254,8 +258,14 @@ describe("autopilot Luna/high smoke controller", () => {
             filter_selected_option: "Urgent only",
             baseline_selected_option: "Urgent only",
             baseline_filter_reset: true,
+            action_reached: true,
+            detail_role: "dialog",
+            detail_after: "SHP-1 Sample record Assign owner",
             owner_error: { focused: true, aria_describedby: "", alert_text: "Choose a sample owner" },
+            sample_owner_option_count: 0,
+            owner_scope_text: "Assign owner",
           },
+          locale_switch_diagnostics: [{ requested: "zh-TW", actual_lang: "zh-Hans", selected: false }],
           honesty_diagnostics: {
             fictional_or_sample_visible: false,
             non_medical_advice_visible: false,
@@ -270,6 +280,10 @@ describe("autopilot Luna/high smoke controller", () => {
     expect(observations.failed_assertions).toMatchObject({
       filter_selected_and_visible: { observed: { viewports: [{ filter_kind: "combobox", filter_selected_option: "Urgent only", baseline_filter_reset: true }] } },
       owner_error_associated: { observed: { viewports: [{ owner_error: { focused: true, aria_describedby: "", alert_text: "Choose a sample owner" } }] } },
+      sample_owner_options: { observed: { viewports: [{ sample_owner_option_count: 0, owner_scope_text: "Assign owner" }] } },
+      keyboard_open_sample: { observed: { accepted_detail_roles: ["dialog", "complementary", "region"], viewports: [{ action_reached: true, detail_role: "dialog" }] } },
+      all_five_locales_exact: { observed: { locale_equivalence_policy: expect.stringContaining("zh-CN is equivalent to zh-Hans"), viewports: [{ diagnostics: [{ requested: "zh-TW", actual_lang: "zh-Hans" }] }] } },
+      selected_label_lang_script_agree: { observed: { viewports: [{ diagnostics: [{ selected: false }] }] } },
       fictional_not_medical_advice: { observed: { viewports: [{ diagnostics: { fictional_or_sample_visible: false, non_medical_advice_visible: false } }] } },
       progress_textual_and_persistent: { observed: { viewports: [{ diagnostics: { first: { checked: 1, total: 4, bar_now: 0, bar_max: 0 } } }] } },
     });
