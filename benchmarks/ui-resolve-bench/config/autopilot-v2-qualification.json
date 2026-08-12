@@ -86,6 +86,24 @@
     "must_complete_before_provider_execution": true,
     "independent_broken_or_ambiguous_task_estimate_max": 0.05
   },
+  "distribution_gate": {
+    "package_source": "npm-tarball",
+    "consumer_install_required": true,
+    "network_required": false,
+    "channels": [
+      "claude-code",
+      "codex",
+      "opencode",
+      "cursor"
+    ],
+    "doctor_self_test_required": true,
+    "installed_autopilot_skill_required": true,
+    "installed_design_system_architect_required": true,
+    "installed_helper_execution_required": true,
+    "authority_perturbation_matrix_required": true,
+    "provider_calls": 0,
+    "terminal_state": "HANDOFF"
+  },
   "trial_program": {
     "preview_hidden_tasks": 12,
     "preview_trials_per_arm": 5,

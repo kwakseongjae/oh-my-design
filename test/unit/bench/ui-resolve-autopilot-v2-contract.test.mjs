@@ -107,6 +107,19 @@ describe('OmD Autopilot 2.0 qualification contract', () => {
       each_transfer_model_direction: 'nonnegative',
       claim_after_preview: 'preview-only-not-industry-best',
     });
+    expect(contract.distribution_gate).toEqual({
+      package_source: 'npm-tarball',
+      consumer_install_required: true,
+      network_required: false,
+      channels: ['claude-code', 'codex', 'opencode', 'cursor'],
+      doctor_self_test_required: true,
+      installed_autopilot_skill_required: true,
+      installed_design_system_architect_required: true,
+      installed_helper_execution_required: true,
+      authority_perturbation_matrix_required: true,
+      provider_calls: 0,
+      terminal_state: 'HANDOFF',
+    });
   });
 
   it('locks a provider-zero Luna/high smoke before any model execution', () => {

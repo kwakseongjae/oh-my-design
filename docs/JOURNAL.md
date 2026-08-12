@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · 2.0 packaged Autopilot distribution gate
+- 실제 npm tarball을 오프라인 소비자 프로젝트에 설치해 4채널 doctor를 통과했다.
+- tarball이 설치한 Codex helper만으로 질문·provider0 clean-dir mission이 HANDOFF를 완주했다.
+- 4가지 system strategy와 interview/blocked 2가지를 포함한 authority matrix도 통과했다.
+- 다음은 provider reset 전 DS validator/authority perturbation package canary를 계속 강화한다.
+
 ## 2026-08-12 (Codex) · 1.9.880 capacity-invalid fresh smoke
 - source-bound plan·fresh root·named in-app admission 뒤 3셀을 순차 실행했다.
 - landing initial만 완료했고 이후3 calls는 account usage limit로 usage/product edit0이었다.

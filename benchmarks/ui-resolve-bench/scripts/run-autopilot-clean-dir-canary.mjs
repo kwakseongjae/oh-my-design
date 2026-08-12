@@ -2,17 +2,46 @@
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, readlinkSync, writeFileSync } from 'node:fs';
-import { basename, dirname, join, resolve } from 'node:path';
+import { basename, dirname, isAbsolute, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(here, '../../..');
-const outputRoot = resolve(process.argv[2] || '/private/tmp/omd-autopilot-clean-dir-canary-1.9.833');
+const argv = process.argv.slice(2);
+const outputArg = argv[0] && !argv[0].startsWith('--')
+  ? argv.shift()
+  : '/private/tmp/omd-autopilot-clean-dir-canary-1.9.833';
+const packageRootFlag = argv.indexOf('--package-root');
+const packageRoot = packageRootFlag === -1 ? null : resolve(argv[packageRootFlag + 1] || '');
+if (packageRootFlag !== -1 && (!argv[packageRootFlag + 1] || !isAbsolute(argv[packageRootFlag + 1]))) {
+  throw new Error('--package-root requires an absolute extracted npm package root');
+}
+const outputRoot = resolve(outputArg);
 const experimentId = basename(outputRoot);
 if (existsSync(outputRoot)) throw new Error(`fresh output root required: ${outputRoot}`);
 const workspace = join(outputRoot, 'workspace');
 const runDir = join(workspace, '.omd/runs/run-greenfield-family-planner');
 mkdirSync(join(runDir, 'system'), { recursive: true });
+
+let runtimeScriptsRoot = join(repoRoot, 'scripts');
+let packagedCli = null;
+if (packageRoot) {
+  packagedCli = join(packageRoot, 'dist/bin/oh-my-design.js');
+  if (!existsSync(packagedCli) || !existsSync(join(packageRoot, 'skills/omd-autopilot/SKILL.md'))) {
+    throw new Error(`extracted npm package is missing Autopilot runtime assets: ${packageRoot}`);
+  }
+  const install = spawnSync(process.execPath, [
+    packagedCli,
+    'install-skills',
+    '--dir', workspace,
+    '--agent', 'codex',
+    '--all',
+  ], { cwd: workspace, encoding: 'utf8' });
+  if (install.status !== 0) {
+    throw new Error(`packaged Codex install failed\n${install.stderr || install.stdout}`);
+  }
+  runtimeScriptsRoot = join(workspace, '.codex/data/scripts');
+}
 
 const prompt = 'From scratch, create a single screen family meal planner for parents. Establish a project-owned DESIGN.md. Primary CTA: Get started. Use a calm, warm editorial style. Do not invent prices, testimonials, or user facts.';
 writeFileSync(join(runDir, 'task.md'), `# Autopilot Task\n\n${prompt}\n`);
@@ -21,7 +50,10 @@ writeFileSync(join(runDir, 'ctx-prime.json'), `${JSON.stringify({
 }, null, 2)}\n`);
 
 function run(script, args = []) {
-  const result = spawnSync(process.execPath, [join(repoRoot, script), ...args], { cwd: workspace, encoding: 'utf8' });
+  const executable = packageRoot
+    ? join(runtimeScriptsRoot, basename(script))
+    : join(repoRoot, script);
+  const result = spawnSync(process.execPath, [executable, ...args], { cwd: workspace, encoding: 'utf8' });
   if (result.status !== 0) throw new Error(`${script} failed\n${result.stderr || result.stdout}`);
   return result;
 }
@@ -256,9 +288,28 @@ writeAtomicProof(1, true);
 run('scripts/autopilot-mission.cjs', [workspace, runDir, 'advance']);
 const finalState = JSON.parse(readFileSync(join(runDir, 'mission-state.json'), 'utf8'));
 if (finalState.state !== 'HANDOFF') throw new Error(`expected HANDOFF, received ${finalState.state}`);
+let doctorState = null;
+if (packagedCli) {
+  const doctor = spawnSync(process.execPath, [
+    packagedCli,
+    'doctor',
+    '--dir', workspace,
+    '--json',
+    '--self-test',
+  ], { cwd: workspace, encoding: 'utf8' });
+  if (doctor.status !== 0) throw new Error(`packaged doctor failed\n${doctor.stderr || doctor.stdout}`);
+  const report = JSON.parse(doctor.stdout);
+  const codex = report.channels.find((channel) => channel.id === 'codex');
+  if (report.state !== 'ready' || !codex?.ready) {
+    throw new Error(`packaged Codex install is not ready: ${doctor.stdout}`);
+  }
+  doctorState = report.state;
+}
 const summary = {
   schema_version: '0.1', experiment_id: experimentId,
   execution_mode: 'provider-zero-valid-oracle', provider_calls: 0, model_calls: 0, cursor_calls: 0,
+  distribution_source: packageRoot ? 'extracted-npm-package' : 'source-tree',
+  doctor_state: doctorState,
   prompt, question_batches: 0, system_strategy: 'establish', final_state: finalState.state,
   design_md_sha256: designSha, product_sha256: shaFile(join(workspace, 'index.html')),
   system_proof_sha256: shaFile(join(runDir, 'system/proof.json')),
