@@ -103,7 +103,12 @@ export default defineConfig([
     format: ['esm'],
     outDir: 'skills/omd-reference-capture/scripts',
     outExtension: () => ({ js: '.mjs' }),
-    clean: true,
+    // This output directory also contains the Playwright license, notice, and
+    // collector support files shipped with the skill. Cleaning the whole
+    // directory creates a window where concurrent package/install checks see
+    // an incomplete skill. The entry bundle is overwritten by this build;
+    // preserve the static distribution evidence around it.
+    clean: false,
     splitting: false,
     sourcemap: false,
     shims: true,

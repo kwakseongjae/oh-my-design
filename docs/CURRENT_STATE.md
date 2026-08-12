@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · 1.9.880 infrastructure-invalid smoke + 2.0 packaged-install Autopilot gate
+- 갱신: 2026-08-12 · 2.0 packaged-install/DS proof gate + concurrent build safety
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -16,6 +16,8 @@
 - `autopilot-v2-qualification.json`은 npm tarball consumer install·4채널 doctor·installed Autopilot/design-system architect/helper execution·HANDOFF를 정식 배포 gate로 요구한다. 이 gate는 패키징/결정론 증거이며 모델 품질이나 경쟁 우위를 증명하지 않는다.
 - 같은 installed-helper gate가 6개 authority perturbation을 통과한다: 기존 compatible system=`reuse`, 명시 구축=`establish`, 명시 교체=`refresh`, 이번 화면 한정=`surface-local-only`, 권한 없는 broad greenfield=`AWAIT_USER`, official source 없는 exact brand=`blocked`. 질문/차단 케이스는 DESIGN-system decision receipt를 만들지 않는다.
 - DESIGN-system proof는 더 이상 coverage의 `pass:true`나 가짜 `oracle/...` 문자열을 신뢰하지 않는다. DESIGN.md 번호 섹션1–13, 실제로 해석 가능한 provenance/group 근거, exact DESIGN.md SHA에 결박된 check별 receipt, §11–13의 `[FILL IN]` 또는 권한 근거를 provider-free로 검사한다. 설치된 npm tarball canary도 이 강화된 validator로 HANDOFF를 통과한다.
+- reference-capture 번들은 정적 Playwright license/notice가 함께 사는 출력 디렉터리를 더 이상 clean하지 않는다. 병렬 `build`+`install-skills` 검증에서도 라이선스 증거가 사라지는 창 없이 build와 44개 install 회귀가 함께 통과한다.
+- 현재 12-task calibration 설명 문서는 task/adaptor/evaluator가 후속 고도화되기 전 해시를 보유하므로 2.0 readiness의 machine evidence로 승격하지 않는다. 현재 해시 기준 24 valid oracle+72 mutant browser calibration은 provider0으로 재통과했으며, 다음 작업은 이를 JSON acceptance와 새 Autopilot 전용 ten-gate readiness snapshot으로 봉인하는 것이다.
 
 - 1.9.879 fresh exact Luna/high smoke는 source commit `72fd57bf`, in-app browser admission, valid terminal3/3으로 완료됐다. immutable sealed 결과는 UI-Resolved1/3이며 landing `50→100`, cold `20→40→60`, locale `40→40`; 7 calls·input11,074,863(cached10,141,440)+output153,539·provider wall3,357.887s다.
 - provider-free exact replay에서 cold와 locale 동일 최종 제품은 corrected evaluator로 각각100/100이다. false negative 원인은 native dialog 미인정/containing region 오인, sample-owner의 data/help scope 누락, 140ms locale rerender race, `zh-Hans|zh-Hant` 표준 alias 불인정, visually-hidden legend 및 내부 scroll surface를 document overflow로 계산, utility close control을 primary touch target으로 계산한 구조 편향이다.

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · concurrent distribution build safety
+- reference-capture build가 정적 license/notice 디렉터리를 잠깐 비우던 race를 제거했다.
+- 병렬 build와 44개 install-skills 회귀가 동시에 통과했다.
+- 현 12-task oracle/mutant calibration도 provider0으로 재실행해 모두 통과했다.
+- 다음은 현재 해시의 calibration acceptance와 2.0 readiness snapshot을 봉인한다.
+
 ## 2026-08-12 (Codex) · 2.0 DESIGN-system proof authority
 - DESIGN.md 1–13 구조와 §11–13 권한 경계를 validator가 직접 검사한다.
 - 존재하지 않는 provenance/group 근거와 hash가 다른 check receipt는 fail-close한다.
