@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-12 (Codex) · Autopilot 2.0 readiness reset
+- 과거 repair/harness readiness와 새 one-prompt Autopilot ten-gate를 분리했다.
+- current source에 묶인 24 oracle·72 mutant·authority6 acceptance를 JSON으로 봉인했다.
+- 현재는 pass3/10이며 promotion/skill superiority/one-prompt 홍보는 명시적으로 BLOCK이다.
+- 다음 provider gate는 reset 뒤 fresh Luna/high3셀, 그 뒤에만12×5 비교다.
+
 ## 2026-08-12 (Codex) · concurrent distribution build safety
 - reference-capture build가 정적 license/notice 디렉터리를 잠깐 비우던 race를 제거했다.
 - 병렬 build와 44개 install-skills 회귀가 동시에 통과했다.

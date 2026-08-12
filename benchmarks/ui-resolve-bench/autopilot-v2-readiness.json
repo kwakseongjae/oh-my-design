@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "target_version": "2.0.0",
+  "snapshot_patch": "1.9.881",
+  "required_gate_count": 10,
+  "claim_policy": "2.0 promotion and public one-prompt performance claims remain blocked until all ten gates are pass with current repository evidence.",
+  "machine_evidence": "benchmarks/ui-resolve-bench/reports/autopilot-v2-provider-zero-1.9.881/ACCEPTANCE.json",
+  "gates": [
+    {
+      "id": "natural-language-package-parity",
+      "status": "pass",
+      "requirement": "Natural-language Autopilot routing and npm-installed Claude Code, Codex, OpenCode, and Cursor parity pass without task-specific setup.",
+      "current_boundary": "An offline npm tarball consumer install, four-channel doctor self-test, and installed-helper clean-dir mission reached HANDOFF with zero provider/model/Cursor calls.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/config/autopilot-v2-qualification.json", "test/unit/cli/packaged-autopilot-smoke.test.ts"],
+      "pass_pointer": "/gate_evidence/natural-language-package-parity"
+    },
+    {
+      "id": "selective-authority-escalation",
+      "status": "pass",
+      "requirement": "Required authority questions are not skipped, unnecessary questions are not asked, and unsupported external-brand facts block.",
+      "current_boundary": "Six installed-helper perturbations deterministically cover reuse, establish, refresh, surface-local-only, one-batch interview, and exact-brand blocker outcomes.",
+      "evidence_refs": ["docs/CLI_V2_AUTOPILOT_CONTRACT.md", "test/unit/cli/packaged-autopilot-smoke.test.ts"],
+      "pass_pointer": "/gate_evidence/selective-authority-escalation"
+    },
+    {
+      "id": "design-system-quality-and-conformance",
+      "status": "partial",
+      "requirement": "Every scheduled task produces a parseable, provenance-complete DESIGN.md whose deterministic proof and implementation conformance pass.",
+      "current_boundary": "The validator now requires sections 1–13, resolvable evidence, exact DESIGN.md-bound check receipts, and honest sections 11–13. Provider-free canary passes; a complete scheduled model denominator does not yet exist.",
+      "evidence_refs": ["scripts/validate-project-design-system.cjs", "skills/omd-autopilot/references/design-system-contract.md"],
+      "pass_pointer": "/gate_evidence/design-system-quality-and-conformance"
+    },
+    {
+      "id": "greenfield-reliability",
+      "status": "partial",
+      "requirement": "From-scratch scheduled UI-Resolved is at least 80 percent and at least eight of twelve tasks achieve Reliability@5.",
+      "current_boundary": "The latest admissible three-task Luna/high smoke sealed one of three UI-Resolved. Corrected provider-free replays identify evaluator improvements but cannot replace the sealed denominator.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/autopilot-luna-high-smoke-1.9.879/RESULTS.json", "benchmarks/ui-resolve-bench/reports/autopilot-luna-high-smoke-1.9.879/STATUS.md"],
+      "pass_pointer": "/gate_evidence/greenfield-reliability"
+    },
+    {
+      "id": "same-prompt-skill-lift",
+      "status": "open",
+      "requirement": "OmD has positive paired lift over model-only and is first or statistically tied with the strongest eligible portable UI skill under identical prompts and controls.",
+      "current_boundary": "Portable arms and controls are preregistered, but the twelve-task by five-trial same-prompt qualification has not run.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/config/autopilot-v2-qualification.json", "docs/CLI_V2_AUTOPILOT_CONTRACT.md"],
+      "pass_pointer": "/gate_evidence/same-prompt-skill-lift"
+    },
+    {
+      "id": "three-model-transfer",
+      "status": "open",
+      "requirement": "The locked Autopilot comparison has nonnegative task-family transfer on Luna, Terra, and Sol and a positive pooled lower confidence bound.",
+      "current_boundary": "The model set and effort are preregistered; no current-epoch Autopilot transfer matrix has run.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/config/autopilot-v2-qualification.json"],
+      "pass_pointer": "/gate_evidence/three-model-transfer"
+    },
+    {
+      "id": "autonomy-quality-cost-pareto",
+      "status": "open",
+      "requirement": "OmD is non-dominated across resolved quality, authority burden, wall time, and token use.",
+      "current_boundary": "Autonomy tracing and cost fields are specified, but the controlled competitor matrix needed for a Pareto claim is absent.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/config/autopilot-v2-qualification.json", "docs/CLI_V2_AUTOPILOT_CONTRACT.md"],
+      "pass_pointer": "/gate_evidence/autonomy-quality-cost-pareto"
+    },
+    {
+      "id": "calibrated-greenfield-denominator",
+      "status": "pass",
+      "requirement": "Twelve greenfield task families and six authority perturbations are calibrated with two structurally distinct valid implementations and targeted mutants.",
+      "current_boundary": "Current task, adapter, and evaluator hashes pass provider-zero replay across 24 valid oracle cells and 72 targeted mutant cells; this is evaluator evidence, not model or skill performance evidence.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json", "benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json", "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs"],
+      "pass_pointer": "/gate_evidence/calibrated-greenfield-denominator"
+    },
+    {
+      "id": "blind-practitioner-review",
+      "status": "external",
+      "requirement": "Five practitioners blindly review both ship preference and design-system quality with ties, both-fail, and order reversal controls.",
+      "current_boundary": "Review infrastructure exists, but the new Autopilot greenfield panel has not been observed.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/reviewer-operations-package-1.9.77"],
+      "pass_pointer": "/gate_evidence/blind-practitioner-review"
+    },
+    {
+      "id": "reproducible-independent-claim-audit",
+      "status": "partial",
+      "requirement": "Packages are reproducible, all outcomes downloadable and hash-bound, an independent task audit is below five percent broken or ambiguous, and claim policy is enforced.",
+      "current_boundary": "The package/install path and claim boundary are deterministic. The complete Autopilot outcome package and independent audit of the new hidden denominator remain outstanding.",
+      "evidence_refs": ["test/unit/cli/packaged-autopilot-smoke.test.ts", "benchmarks/ui-resolve-bench/reports/task-contract-mutation-audit-1.9.685", "docs/CLI_V2_AUTOPILOT_CONTRACT.md"],
+      "pass_pointer": "/gate_evidence/reproducible-independent-claim-audit"
+    }
+  ]
+}
