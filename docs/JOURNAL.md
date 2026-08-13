@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · 0dc UI UX Pro Max r1 봉인
+- UI UX는 772,397ms·1,468,407 tokens·tool20으로 가장 polished한 editorial 23,041B+CSS 화면을 만들었다.
+- vars47/selectors125/package/captures는 강하지만 같은 unavailable-information 누락으로 objective0다.
+- record `3802e7a3…d455`, partial-04 `487b7521…c2f1`; token은 model-only 약3.9배다.
+- 다음 locked 셀은 landing-eligible Taste r1이다.
+
 ## 2026-08-14 (Codex) · 0dc Impeccable r1 timeout 봉인
 - Impeccable은 900,259ms timeout, usage unknown, tool22, evaluator/screenshots0으로 종료됐다.
 - first write 약10분, partial HTML61,050B/package PASS; `.benchmark/tmp`는 정확히 workspace-local intervention0이다.

@@ -23,7 +23,9 @@
 - partial-02=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-02.json`, SHA=`235667f1…9b0a`, terminal2/missing46/ineligible6이다.
 - Impeccable prompt-only r1은 900,259ms timeout으로 봉인됐다. usage/completion unknown, tool22, contamination0, evaluator/screenshots0이다. reference digestion 때문에 first product write가 약10분으로 가장 늦었고 partial HTML61,050B/vars22/selectors71/design-system PASS까지 남겼지만 objective0이다. `.benchmark/tmp/surface-brief.md`는 허용된 workspace-relative path로 intervention0이며 relative-tmp fix의 실제 positive 증거다. record SHA=`8233e5c7…a836`, rerun·사후 evaluator 금지다.
 - partial-03=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-03.json`, SHA=`0e9139f0…d283`, terminal3/missing45/ineligible6이다.
-- **다음 exact action:** `neighborhood-library-landing-luna-max-r1-ui-ux-pro-max`를 Luna/max 1회·retry0으로 실행한다. terminal 뒤 즉시 같은 분석·checkpoint를 반복한다. c494 6 terminals는 diagnostic-only로 계속 분리한다.
+- UI UX Pro Max r1도 `failed`로 봉인됐다. 772,397ms, input1,427,229/output41,178/total1,468,407, tool20, contamination0이다. HTML23,041B+stylesheet, vars47/selectors125/package·12 captures PASS, unsupported facts0이며 four arms 중 가장 polished한 cream/evergreen/terracotta editorial system이지만 같은 unavailable-information 누락으로 objective0이다. total tokens는 model-only 약3.9×/Anthropic 약5.3×다. record SHA=`3802e7a3…d455`, rerun 금지다.
+- partial-04=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-04.json`, SHA=`487b7521…c2f1`, terminal4/missing44/ineligible6이다.
+- **다음 exact action:** landing scope에 eligible인 `neighborhood-library-landing-luna-max-r1-taste-skill`을 Luna/max 1회·retry0으로 실행한다. terminal 뒤 즉시 같은 분석·checkpoint를 반복한다. c494 6 terminals는 diagnostic-only로 계속 분리한다.
 
 ### 2026-08-14 c494 Luna Max 정식 비교 epoch
 
