@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · 58dc landing Taste r1 봉인·안전 중단
+- Taste는 839,977ms·2,363,098 tokens에 blue/white product landing과 12 captures를 만들었다.
+- visual system은 일관됐지만 unavailable-information 누락으로 objective0; scope-only라 타 task 일반화 금지다.
+- record `572ec6e2…`, partial-05 `51d43988…`; terminal5/missing43/ineligible6, rerun 금지다.
+- 네트워크 중단 요청으로 새 셀은 시작하지 않았고 다음은 exact order6 landing OmD Autopilot v2다.
+
 ## 2026-08-14 (Codex) · 58dc landing UI UX Pro Max r1 봉인
 - UI UX는 834,792ms·1,905,576 tokens에 61,116B polished editorial landing과 12 captures를 만들었다.
 - 네 arm 중 visual composition은 가장 완성됐지만 unavailable-information 누락으로 objective0이다.

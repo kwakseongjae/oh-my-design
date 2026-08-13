@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 58dcf8a9 evaluator dependency closure epoch, terminal 4 / missing 44 / ineligible 6
+- 갱신: 2026-08-14 · source 58dcf8a9 evaluator dependency closure epoch, 안전 중단 terminal 5 / missing 43 / ineligible 6
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -24,7 +24,9 @@
 - partial-03=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-03.json`, SHA=`654ca2b7…`, terminal3/missing45/ineligible6이다. token monitor는 used79/reset timestamp 불변으로 리셋 미발생을 확인했다.
 - order4 UI UX Pro Max r1은 834,792ms, input1,861,216/output44,360/total1,905,576, tool24, agent browser/network/external0으로 provider exit0했다. HTML61,116B/vars45/selectors66/package PASS와 12 captures를 만들었고 cream/evergreen/coral editorial system, 고유 hero/card illustration, borrowing ritual, dark project selector, reservation form/FAQ까지 현재 네 arm 중 가장 polished한 full-page composition이다. 그러나 같은 `unavailable-information` state 미관측으로 evaluator exit1/objective0다. total tokens는 model-only 약8.4×, Anthropic 약6.9×다. record SHA=`ade3be91…`, rerun 금지다.
 - partial-04=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-04.json`, SHA=`072ef321…`, terminal4/missing44/ineligible6이다. token monitor는 used80/reset timestamp 불변으로 리셋 미발생을 확인했다.
-- **다음 exact action:** randomized order5 `neighborhood-library-landing-luna-max-r1-taste-skill`을 Luna/max 1회·retry0으로 실행한다. terminal 뒤 partial-05/checkpoint를 만든다. 0dc9+c4946 terminals는 diagnostic-only다.
+- order5 Taste eligible scope-only r1은 839,977ms, input2,323,203/output39,895/total2,363,098, tool30, agent browser/network/external0으로 provider exit0했다. HTML14,318B+stylesheet/script, vars22/selectors92/package PASS와 12 captures를 만들었고 stark blue/white, heavy grotesk type, modular job cards, modal reservation flow가 일관된 제품형 landing을 이룬다. 그러나 같은 `unavailable-information` state 미관측으로 evaluator exit1/objective0다. total tokens는 model-only 약10.4×, Anthropic 약8.5×이며 scope-only 결과라 다른 두 task로 일반화하지 않는다. record SHA=`572ec6e2…`, rerun 금지다.
+- partial-05=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-05.json`, SHA=`51d43988…`, terminal5/missing43/ineligible6이다. token monitor는 used80/reset timestamp 불변으로 리셋 미발생을 확인했다.
+- **안전 중단/다음 exact action:** 사용자 네트워크 중단 요청에 따라 새 provider 셀은 시작하지 않았다. 재개 즉시 randomized order6 `neighborhood-library-landing-luna-max-r1-omd-autopilot-v2`를 같은 source58dc/admission/runtime으로 Luna/max 1회·retry0 실행한다. terminal 뒤 partial-06/checkpoint를 만든다. 0dc9+c4946 terminals는 diagnostic-only다.
 
 ### 2026-08-14 source 0dcbd99d Luna Max 정식 비교 epoch
 
