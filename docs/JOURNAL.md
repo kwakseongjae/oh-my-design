@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · 58dc landing model-only r1 봉인
+- model-only는 421,551ms·227,726 tokens에 56,025B editorial tool-library UI와 12 captures를 만들었다.
+- dependency-closed evaluator READY/PASS; actual unavailable-information state 누락으로 objective0이다.
+- record `6b9296bf…`, partial-01 `8b195262…`; terminal1/missing47/ineligible6, rerun 금지다.
+- 다음 locked 셀은 landing Anthropic Frontend Design r1이다.
+
 ## 2026-08-14 (Codex) · 58dc evaluator-closed epoch admitted
 - clean source58dc에서 static/schema/evaluation/IAB/Luna attribution receipts를 모두 새로 발급했다.
 - 48 scheduled+6 ineligible materialization SHA `e5fbacae…`, runtime snapshot과 admission `788e2702…`가 PASS했다.

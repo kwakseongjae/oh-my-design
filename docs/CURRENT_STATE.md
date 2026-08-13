@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 58dcf8a9 evaluator dependency closure epoch admitted, terminal 0 / missing 48 / ineligible 6
+- 갱신: 2026-08-14 · source 58dcf8a9 evaluator dependency closure epoch, terminal 1 / missing 47 / ineligible 6
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -16,7 +16,9 @@
 - Luna/max attribution은 non-ephemeral isolated home에서 exact 응답, input14,594/output13, retry/replacement/fallback0으로 1회 실행됐다. raw rollout의 single context/lifecycle을 감사한 receipt=`ecda7a98…`이고 denominator 밖이다. token reset은 없었다.
 - locked=`/private/tmp/omd-luna-wow-locked-58dcf8a9`; materialized=`/private/tmp/omd-luna-wow-materialized-58dcf8a9`; 48 scheduled+Taste6 ineligible, prepared tree SHA=`e5fbacae…`다. runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-58dcf8a9`, auth=`627eb799…`, catalog=`f4392270…`다.
 - Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-58dcf8a9/ADMISSION.json`, SHA=`788e2702…`, calls0/status admitted다. baseline collector=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.baseline.json`, SHA=`1b1d60f1…`, terminal0/missing48/ineligible6이다.
-- **다음 exact action:** randomized order1 `neighborhood-library-landing-luna-max-r1-model-only`을 Luna/max 1회·retry0으로 실행한다. terminal 뒤 partial-01과 checkpoint를 만든다. 0dc9+c4946 terminals는 diagnostic-only다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 421,551ms, input205,164/output22,562/total227,726, tool6, contamination0으로 provider exit0했다. HTML56,025B/vars18/selectors88/package PASS이며 deep-forest/cream+coral/acid-lime editorial system, 직접 그린 도구 illustration, 긴 responsive landing composition은 시각적으로 강하다. 새 immutable dependency bundle로 evaluator `RUNTIME-READY`가 실제 생성됐고 desktop/mobile/zoom default+focus screenshots 12개를 남겼다. 그러나 required `unavailable-information` state 미관측으로 post-ready product validation exit1/objective0다. record SHA=`6b9296bf…`, rerun 금지다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-01.json`, SHA=`8b195262…`, terminal1/missing47/ineligible6이다.
+- **다음 exact action:** randomized order2 `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`을 Luna/max 1회·retry0으로 실행한다. terminal 뒤 partial-02/checkpoint를 만든다. 0dc9+c4946 terminals는 diagnostic-only다.
 
 ### 2026-08-14 source 0dcbd99d Luna Max 정식 비교 epoch
 
