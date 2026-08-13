@@ -327,66 +327,60 @@ export function buildRuntimeAttributionReceipt({ sourceCommit, sourceAuthority, 
 }
 
 export function buildBrowserIdentityReceipt({ sourceCommit, sourceAuthority, telemetryBytes, telemetry }) {
-  if (telemetry?.receipt_version !== "browser-harness-cli-page-info-v0.1"
-    || typeof telemetry.raw_stdout !== "string" || typeof telemetry.raw_stderr !== "string") {
-    throw new Error("browser evidence must contain raw browser-harness CLI stdout/stderr");
-  }
-  const invocation = telemetry.invocation;
-  const tabCreationCalls = invocation?.tab_creation_calls ?? 0;
-  const existingPageInfo = invocation?.operation === "page_info" && tabCreationCalls === 0;
-  const safeBlankPageInfo = invocation?.operation === "safe_blank_page_info" && tabCreationCalls === 1;
-  if (invocation?.transport !== "local-existing-chrome-cdp" || (!existingPageInfo && !safeBlankPageInfo)
-    || invocation.navigation_calls !== 0 || invocation.launched_browser !== false
-    || !invocation.executable_path || !SHA.test(invocation.executable_sha256 ?? "")) {
-    throw new Error("browser-harness invocation contract drift");
-  }
-  assertRegular(invocation.executable_path, "browser-harness executable");
-  const executableBytes = readFileSync(invocation.executable_path);
-  if (sha256(executableBytes) !== invocation.executable_sha256 || invocation.executable_bytes !== executableBytes.length) {
-    throw new Error("browser-harness executable identity drift");
-  }
-  let observed;
-  try { observed = JSON.parse(telemetry.raw_stdout.trim()); } catch { throw new Error("browser-harness raw stdout must be one JSON object"); }
-  const browser = observed?.browser_identity;
-  const tabCreatedByController = browser?.tab_created_by_controller ?? false;
-  const safeUrl = /^(?:about:blank|chrome-error:\/\/chromewebdata\/?|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser?.url ?? "");
-  if (observed?.receipt_version !== "browser-harness-cli-page-info-v0.1"
-    || browser?.transport !== "local-existing-chrome-cdp" || browser.name !== "default-local-cdp"
-    || browser.named_existing !== true || browser.available !== true || browser.launched_by_controller !== false
-    || browser.url !== browser.page_info?.url
-    || !safeUrl || (existingPageInfo ? tabCreatedByController !== false : tabCreatedByController !== true || browser.url !== "about:blank")
-    || !Number.isFinite(browser.page_info?.w) || !Number.isFinite(browser.page_info?.h)) {
-    throw new Error("browser identity must be an existing local CDP page_info observation without navigation");
+  let parsedTelemetry;
+  try { parsedTelemetry = JSON.parse(telemetryBytes.toString("utf8")); } catch { throw new Error("in-app browser telemetry bytes must contain one JSON object"); }
+  if (canonicalJson(parsedTelemetry) !== canonicalJson(telemetry)) throw new Error("in-app browser telemetry byte/value binding drift");
+  const exactKeys = (value, keys, label) => {
+    if (!value || typeof value !== "object" || Array.isArray(value)
+      || canonicalJson(Object.keys(value).sort()) !== canonicalJson([...keys].sort())) {
+      throw new Error(`${label} exact key schema drift`);
+    }
+  };
+  exactKeys(telemetry, [
+    "receipt_version", "browser", "tab", "capture", "controller_launched_browser",
+    "tab_created_for_identity", "navigation_calls", "provider_calls", "model_calls", "browser_calls",
+  ], "in-app browser raw envelope");
+  exactKeys(telemetry.browser, ["type", "browser_id", "name"], "in-app browser identity");
+  exactKeys(telemetry.tab, ["id", "url", "title"], "in-app browser tab");
+  exactKeys(telemetry.capture, ["surface", "method", "cryptographic_identity_verified", "statement"], "in-app browser capture attestation");
+  if (telemetry.receipt_version !== "codex-in-app-browser-identity-v0.1"
+    || telemetry.browser.type !== "iab"
+    || typeof telemetry.browser.browser_id !== "string" || telemetry.browser.browser_id.trim().length === 0
+    || telemetry.browser.browser_id !== telemetry.browser.browser_id.trim()
+    || telemetry.browser.name !== "Codex In-app Browser"
+    || typeof telemetry.tab.id !== "string" || telemetry.tab.id.trim().length === 0
+    || telemetry.tab.id !== telemetry.tab.id.trim()
+    || telemetry.tab.url !== "about:blank" || telemetry.tab.title !== "about:blank"
+    || telemetry.capture.surface !== "codex-in-app-browser-tool"
+    || telemetry.capture.method !== "agent.browsers.get(iab)+tabs.new"
+    || telemetry.capture.cryptographic_identity_verified !== false
+    || telemetry.capture.statement !== "Operator-attested Codex in-app Browser observation; not cryptographic browser identity."
+    || telemetry.controller_launched_browser !== false || telemetry.tab_created_for_identity !== true
+    || telemetry.navigation_calls !== 0 || telemetry.provider_calls !== 0
+    || telemetry.model_calls !== 0 || telemetry.browser_calls !== 1) {
+    throw new Error("Codex in-app browser identity contract drift");
   }
   const identity = {
-    name: "default-local-cdp",
-    transport: "local-existing-chrome-cdp",
-    named_existing: true,
-    available: true,
-    launched_by_controller: false,
+    browser: telemetry.browser,
+    tab: telemetry.tab,
+    capture: telemetry.capture,
+    controller_launched_browser: false,
+    tab_created_for_identity: true,
     navigation_calls: 0,
-    tab_creation_calls: tabCreationCalls,
-    tab_created_by_controller: tabCreatedByController,
-    url: browser.url,
-    viewport: { width: browser.page_info.w, height: browser.page_info.h },
   };
   return {
     ...commonReceipt(sourceCommit, sourceAuthority),
-    kind: "existing-browser-harness-cdp-preflight",
+    kind: "codex-in-app-browser-identity-preflight",
     pass: true,
     excluded_from_benchmark_denominator: true,
-    browser: {
-      ...identity,
-      identity_sha256: sha256(canonicalJson(identity)),
-      telemetry_bytes: telemetryBytes.length,
-      telemetry_sha256: sha256(telemetryBytes),
-      raw_stdout_sha256: sha256(Buffer.from(telemetry.raw_stdout)),
-      raw_stderr_sha256: sha256(Buffer.from(telemetry.raw_stderr)),
-      executable_sha256: invocation.executable_sha256,
-    },
+    ...identity,
+    telemetry_bytes: telemetryBytes.length,
+    telemetry_sha256: sha256(telemetryBytes),
+    identity_sha256: sha256(canonicalJson(identity)),
     provider_calls: 0,
     model_calls: 0,
     browser_calls: 1,
+    network_calls: 0,
   };
 }
 
@@ -396,7 +390,7 @@ async function main() {
   const root = process.env.OMD_ADMISSION_REPO_ROOT ? resolve(process.env.OMD_ADMISSION_REPO_ROOT) : defaultRepoRoot;
   const sourceCommit = args.get("source-commit");
   const output = args.get("out");
-  if (!command || !output) throw new Error("usage: prepare-luna-max-admission-receipts.mjs <static-capability|schema-liveness|audit-runtime-attribution|audit-browser-identity> ... --source-commit <HEAD> --out <fresh.json>");
+  if (!command || !output) throw new Error("usage: prepare-luna-max-admission-receipts.mjs <static-capability|schema-liveness|audit-runtime-attribution|audit-in-app-browser-identity> ... --source-commit <HEAD> --out <fresh.json>");
   const sourceAuthority = assertSourceAuthority({ root, sourceCommit });
   let receipt;
   let inputs = [];
@@ -415,7 +409,7 @@ async function main() {
     const evidence = readEvidence(telemetryPath, "runtime telemetry");
     receipt = buildRuntimeAttributionReceipt({ sourceCommit, sourceAuthority, telemetryBytes: evidence.bytes, telemetry: evidence.value });
     inputs = [telemetryPath];
-  } else if (command === "audit-browser-identity") {
+  } else if (command === "audit-in-app-browser-identity") {
     const telemetryPath = args.get("telemetry");
     const evidence = readEvidence(telemetryPath, "browser telemetry");
     receipt = buildBrowserIdentityReceipt({ sourceCommit, sourceAuthority, telemetryBytes: evidence.bytes, telemetry: evidence.value });

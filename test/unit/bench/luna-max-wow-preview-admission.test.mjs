@@ -68,7 +68,7 @@ function fixture() {
   const matrixPath = json(join(locked, "RUN-MATRIX.locked.json"), matrix);
   const preregistrationPath = json(join(locked, "PREREGISTRATION.receipt.json"), {
     schema_version: "0.1", kind: "omd-luna-max-wow-preview-preregistration-receipt", experiment_id: matrix.experiment_id,
-    source_commit: commit, matrix_sha256: sha256(readFileSync(matrixPath)), admitted_prerequisites: ["neutral-same-facts-task-packets", "official-competitor-freshness", "seven-public-core-schemas", "static-luna-max-capability", "one-call-luna-max-attribution", "existing-browser-harness-cdp", "evaluation-runtime-and-fonts"],
+    source_commit: commit, matrix_sha256: sha256(readFileSync(matrixPath)), admitted_prerequisites: ["neutral-same-facts-task-packets", "official-competitor-freshness", "seven-public-core-schemas", "static-luna-max-capability", "one-call-luna-max-attribution", "codex-in-app-browser-about-blank", "evaluation-runtime-and-fonts"],
     provider_execution_allowed: false, provider_calls: 0, model_calls: 0, browser_calls: 0,
   });
   const prepared = [];
@@ -97,9 +97,12 @@ function fixture() {
   const runtimePath = json(join(base, "runtime.json"), { schema_version: "0.1", kind: "codex-luna-max-runtime-attribution-preflight", pass: true, source_commit: commit, source_authority: receiptAuthority, excluded_from_benchmark_denominator: true,
     runtime: { provider: "codex", model: "gpt-5.6-luna", effort: "max", model_selector_observed: true, effort_selector_observed: true, telemetry_bytes: 10, telemetry_sha256: "b".repeat(64), turn_id_sha256: "c".repeat(64), retry_calls: 0, replacement_calls: 0, fallback_calls: 0 },
     provider_calls: 1, model_calls: 1, browser_calls: 0 });
-  const browserPath = json(join(base, "browser.json"), { schema_version: "0.1", kind: "existing-browser-harness-cdp-preflight", pass: true, source_commit: commit, source_authority: receiptAuthority, excluded_from_benchmark_denominator: true,
-    browser: { name: "default-local-cdp", transport: "local-existing-chrome-cdp", named_existing: true, available: true, launched_by_controller: false, navigation_calls: 0, url: "http://127.0.0.1:3100/fixture", telemetry_bytes: 10, telemetry_sha256: "d".repeat(64), raw_stdout_sha256: "e".repeat(64), raw_stderr_sha256: "f".repeat(64), executable_sha256: "2".repeat(64), identity_sha256: "1".repeat(64) },
-    provider_calls: 0, model_calls: 0, browser_calls: 1 });
+  const browserIdentity = { browser: { type: "iab", browser_id: "iab", name: "Codex In-app Browser" }, tab: { id: "tab-about-blank", url: "about:blank", title: "about:blank" },
+    capture: { surface: "codex-in-app-browser-tool", method: "agent.browsers.get(iab)+tabs.new", cryptographic_identity_verified: false, statement: "Operator-attested Codex in-app Browser observation; not cryptographic browser identity." },
+    controller_launched_browser: false, tab_created_for_identity: true, navigation_calls: 0 };
+  const browserPath = json(join(base, "browser.json"), { schema_version: "0.1", kind: "codex-in-app-browser-identity-preflight", pass: true, source_commit: commit, source_authority: receiptAuthority, excluded_from_benchmark_denominator: true,
+    ...browserIdentity, telemetry_bytes: 10, telemetry_sha256: "d".repeat(64), identity_sha256: sha256(canonicalJson(browserIdentity)),
+    provider_calls: 0, model_calls: 0, browser_calls: 1, network_calls: 0 });
   const browserExecutable = put(base, "runtime/chrome", "fixture chrome\n");
   const fontPath = put(base, "runtime/fixture.ttf", "fixture font\n"); const font = { path: fontPath, bytes: readFileSync(fontPath).length, sha256: sha256(readFileSync(fontPath)) };
   const evaluationPath = json(join(base, "evaluation.json"), { schema_version: "0.1", kind: "omd-luna-max-evaluation-runtime-receipt", pass: true, source_commit: commit, source_authority: authority(repo, EVALUATION_GENERATOR),
@@ -139,6 +142,24 @@ describe("Luna Max Wow Preview admission generator", () => {
       (f) => { const value = JSON.parse(readFileSync(f.runtimePath)); value.model_calls = 2; json(f.runtimePath, value); },
     ];
     for (const mutate of cases) { const f = fixture(); mutate(f); expect(() => admitCommand(f.args, { repoRoot: f.repo })).toThrow(); }
+  });
+
+  it("rejects legacy and tampered in-app browser receipts", () => {
+    const mutations = [
+      (value) => { value.kind = "existing-browser-harness-cdp-preflight"; },
+      (value) => { value.browser.type = "chrome"; },
+      (value) => { value.browser.name = "Codex Browser"; },
+      (value) => { value.tab.url = "https://example.com"; },
+      (value) => { value.controller_launched_browser = true; },
+      (value) => { value.navigation_calls = 1; },
+      (value) => { value.browser_calls = 2; },
+      (value) => { value.capture.cryptographic_identity_verified = true; },
+      (value) => { value.executable_sha256 = "a".repeat(64); },
+    ];
+    for (const mutate of mutations) {
+      const f = fixture(); const value = JSON.parse(readFileSync(f.browserPath)); mutate(value); json(f.browserPath, value);
+      expect(() => admitCommand(f.args, { repoRoot: f.repo })).toThrow(/in-app browser|exact key schema|browser_calls/i);
+    }
   });
 
   it("fails materialized readback identity, policy, and evaluator authority drift", () => {

@@ -13,7 +13,7 @@ import {
   validateConfig,
   validateEvaluationRuntimeReceipt,
   validateNeutralTaskPacketLock,
-  validateNamedBrowserReceipt,
+  validateInAppBrowserReceipt,
   validateRuntimeAttributionReceipt,
   validateStaticRuntimeCapabilityReceipt,
   validateSchemaLivenessReceipt,
@@ -28,6 +28,10 @@ const config = JSON.parse(readFileSync(configPath, "utf8"));
 const taskSet = JSON.parse(readFileSync(taskSetPath, "utf8"));
 const officialCompetitorLock = JSON.parse(readFileSync(resolve(root, "benchmarks/ui-resolve-bench/config/omd-2.0-competitor-source-lock-v0.1.json"), "utf8"));
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
+const canonicalJson = (value) => Array.isArray(value) ? `[${value.map(canonicalJson).join(",")}]`
+  : value && typeof value === "object"
+    ? `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`).join(",")}}`
+    : JSON.stringify(value);
 
 function competitorLock() {
   return {
@@ -169,6 +173,15 @@ describe("Luna Max Wow Preview provider-zero controller", () => {
     expect(() => validateCompetitorLock(inventedCall, config)).toThrow(/provider_calls must be zero/);
   });
 
+  it("rejects legacy Browser Harness admission config and in-app contract drift", () => {
+    const legacy = structuredClone(config);
+    legacy.admission.existing_browser_harness_identity_receipt = structuredClone(legacy.admission.codex_in_app_browser_identity_receipt);
+    expect(() => validateConfig(legacy)).toThrow(/legacy Browser Harness/);
+    const drift = structuredClone(config);
+    drift.admission.codex_in_app_browser_identity_receipt.browser_name = "Codex Browser";
+    expect(() => validateConfig(drift)).toThrow(/in-app browser config contract drift/i);
+  });
+
   it("accepts only seven exact 200 JSON public schema mirrors from the source commit", () => {
     const sourceCommit = "c".repeat(40);
     const bytes = Object.fromEntries(CORE_SCHEMA_FILES.map((name) => [name, Buffer.from(`schema:${name}`)]));
@@ -220,30 +233,35 @@ describe("Luna Max Wow Preview provider-zero controller", () => {
     expect(() => validateRuntimeAttributionReceipt(receipt, sourceCommit)).toThrow(/runtime telemetry drift/);
   });
 
-  it("validates an existing browser-harness CDP identity independently without a provider call", () => {
+  it("validates an exact non-cryptographic Codex in-app Browser identity without a provider call", () => {
     const sourceCommit = "f".repeat(40);
+    const identity = {
+      browser: { type: "iab", browser_id: "iab", name: "Codex In-app Browser" },
+      tab: { id: "tab-about-blank", url: "about:blank", title: "about:blank" },
+      capture: { surface: "codex-in-app-browser-tool", method: "agent.browsers.get(iab)+tabs.new", cryptographic_identity_verified: false, statement: "Operator-attested Codex in-app Browser observation; not cryptographic browser identity." },
+      controller_launched_browser: false,
+      tab_created_for_identity: true,
+      navigation_calls: 0,
+    };
     const receipt = {
       schema_version: "0.1",
-      kind: "existing-browser-harness-cdp-preflight",
+      source_authority: { path: "benchmarks/ui-resolve-bench/scripts/prepare-luna-max-admission-receipts.mjs", bytes: 10, sha256: "a".repeat(64) },
+      kind: "codex-in-app-browser-identity-preflight",
       pass: true,
       source_commit: sourceCommit,
       excluded_from_benchmark_denominator: true,
-      browser: {
-        name: "default-local-cdp",
-        transport: "local-existing-chrome-cdp",
-        named_existing: true,
-        available: true,
-        launched_by_controller: false,
-        navigation_calls: 0,
-        url: "http://127.0.0.1:3100/fixture",
-        identity_sha256: "f".repeat(64),
-        executable_sha256: "e".repeat(64),
-      },
+      ...identity,
+      telemetry_bytes: 10,
+      telemetry_sha256: "e".repeat(64),
+      identity_sha256: sha256(canonicalJson(identity)),
       provider_calls: 0,
       model_calls: 0,
       browser_calls: 1,
+      network_calls: 0,
     };
-    expect(validateNamedBrowserReceipt(receipt, sourceCommit)).toBe(true);
+    expect(validateInAppBrowserReceipt(receipt, sourceCommit)).toBe(true);
+    receipt.browser.type = "chrome";
+    expect(() => validateInAppBrowserReceipt(receipt, sourceCommit)).toThrow(/in-app browser telemetry drift/i);
   });
 
   it("separates zero-call static capability from the one-call attribution probe", () => {

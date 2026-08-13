@@ -85,36 +85,22 @@ function runtimeTelemetry(overrides = {}) {
 }
 
 function browserTelemetry(overrides = {}) {
-  const executablePath = realpathSync(process.execPath);
-  const executableBytes = readFileSync(executablePath);
-  const observed = {
-    receipt_version: "browser-harness-cli-page-info-v0.1",
-    browser_identity: {
-      transport: "local-existing-chrome-cdp",
-      name: "default-local-cdp",
-      named_existing: true,
-      available: true,
-      launched_by_controller: false,
-      tab_created_by_controller: false,
-      tab_id: null,
-      url: "http://127.0.0.1:3100/fixture",
-      page_info: { url: "http://127.0.0.1:3100/fixture", w: 1440, h: 900 },
-    },
-  };
   return {
-    receipt_version: "browser-harness-cli-page-info-v0.1",
-    invocation: {
-      transport: "local-existing-chrome-cdp",
-      operation: "page_info",
-      navigation_calls: 0,
-      tab_creation_calls: 0,
-      launched_browser: false,
-      executable_path: executablePath,
-      executable_bytes: executableBytes.length,
-      executable_sha256: sha256(executableBytes),
+    receipt_version: "codex-in-app-browser-identity-v0.1",
+    browser: { type: "iab", browser_id: "iab", name: "Codex In-app Browser" },
+    tab: { id: "tab-about-blank", url: "about:blank", title: "about:blank" },
+    capture: {
+      surface: "codex-in-app-browser-tool",
+      method: "agent.browsers.get(iab)+tabs.new",
+      cryptographic_identity_verified: false,
+      statement: "Operator-attested Codex in-app Browser observation; not cryptographic browser identity.",
     },
-    raw_stdout: `${canonicalJson(observed)}\n`,
-    raw_stderr: "",
+    controller_launched_browser: false,
+    tab_created_for_identity: true,
+    navigation_calls: 0,
+    provider_calls: 0,
+    model_calls: 0,
+    browser_calls: 1,
     ...overrides,
   };
 }
@@ -216,55 +202,57 @@ describe("Luna Max admission receipts", () => {
     }
   });
 
-  it("accepts one raw browser-harness page_info observation of an existing local CDP page", () => {
+  it("accepts one exact operator-attested Codex in-app Browser about:blank observation", () => {
     const telemetry = browserTelemetry();
     const bytes = Buffer.from(canonicalJson(telemetry));
     const receipt = buildBrowserIdentityReceipt({ sourceCommit: "e".repeat(40), sourceAuthority: sourceAuthority(), telemetryBytes: bytes, telemetry });
     expect(receipt).toMatchObject({
-      kind: "existing-browser-harness-cdp-preflight",
+      kind: "codex-in-app-browser-identity-preflight",
       excluded_from_benchmark_denominator: true,
-      browser: { name: "default-local-cdp", transport: "local-existing-chrome-cdp", named_existing: true, launched_by_controller: false, navigation_calls: 0, url: "http://127.0.0.1:3100/fixture" },
+      browser: { type: "iab", browser_id: "iab", name: "Codex In-app Browser" },
+      tab: { id: "tab-about-blank", url: "about:blank", title: "about:blank" },
+      capture: { cryptographic_identity_verified: false },
+      controller_launched_browser: false,
+      tab_created_for_identity: true,
+      navigation_calls: 0,
       provider_calls: 0,
       model_calls: 0,
       browser_calls: 1,
+      network_calls: 0,
     });
   });
 
-  it("accepts one safe blank-tab page_info invocation without browser launch or navigation", () => {
-    const telemetry = browserTelemetry();
-    telemetry.invocation.operation = "safe_blank_page_info";
-    telemetry.invocation.tab_creation_calls = 1;
-    const observed = JSON.parse(telemetry.raw_stdout);
-    observed.browser_identity.url = "about:blank";
-    observed.browser_identity.page_info.url = "about:blank";
-    observed.browser_identity.tab_created_by_controller = true;
-    telemetry.raw_stdout = canonicalJson(observed);
-    const receipt = buildBrowserIdentityReceipt({ sourceCommit: "e".repeat(40), sourceAuthority: sourceAuthority(), telemetryBytes: Buffer.from(canonicalJson(telemetry)), telemetry });
-    expect(receipt.browser).toMatchObject({ url: "about:blank", tab_creation_calls: 1, tab_created_by_controller: true, navigation_calls: 0, launched_by_controller: false });
-  });
-
-  it("rejects invented, launched, navigated, remote, or malformed browser-harness evidence", () => {
-    const noReceipt = browserTelemetry({ receipt_version: "self-asserted-v0" });
-    const launched = browserTelemetry();
-    launched.invocation.launched_browser = true;
-    const navigated = browserTelemetry(); navigated.invocation.navigation_calls = 1;
-    const mismatchedBlank = browserTelemetry(); mismatchedBlank.invocation.operation = "safe_blank_page_info"; mismatchedBlank.invocation.tab_creation_calls = 1;
-    const remote = browserTelemetry();
-    const remoteObserved = JSON.parse(remote.raw_stdout); remoteObserved.browser_identity.url = "https://example.com"; remoteObserved.browser_identity.page_info.url = "https://example.com"; remote.raw_stdout = canonicalJson(remoteObserved);
-    const malformed = browserTelemetry(); malformed.raw_stdout = "not json";
-    for (const telemetry of [noReceipt, launched, navigated, mismatchedBlank, remote, malformed]) {
-      expect(() => buildBrowserIdentityReceipt({ sourceCommit: "e".repeat(40), sourceAuthority: sourceAuthority(), telemetryBytes: Buffer.from(canonicalJson(telemetry)), telemetry })).toThrow(/raw browser-harness|invocation contract|existing local CDP|one JSON/);
+  it("rejects legacy, Chrome/extension, name, URL, launch, navigation, call, capture, and schema drift", () => {
+    const mutations = [
+      (value) => { value.receipt_version = "browser-harness-cli-page-info-v0.1"; },
+      (value) => { value.browser.type = "chrome"; },
+      (value) => { value.browser.type = "extension"; },
+      (value) => { value.browser.name = "Codex Browser"; },
+      (value) => { value.tab.url = "https://example.com"; },
+      (value) => { value.tab.title = "New Tab"; },
+      (value) => { value.controller_launched_browser = true; },
+      (value) => { value.tab_created_for_identity = false; },
+      (value) => { value.navigation_calls = 1; },
+      (value) => { value.provider_calls = 1; },
+      (value) => { value.model_calls = 1; },
+      (value) => { value.browser_calls = 2; },
+      (value) => { value.capture.cryptographic_identity_verified = true; },
+      (value) => { value.capture.method = "browser-harness page_info"; },
+      (value) => { value.browser.executable_path = "/tmp/chrome"; },
+    ];
+    for (const mutate of mutations) {
+      const telemetry = browserTelemetry(); mutate(telemetry);
+      expect(() => buildBrowserIdentityReceipt({ sourceCommit: "e".repeat(40), sourceAuthority: sourceAuthority(), telemetryBytes: Buffer.from(canonicalJson(telemetry)), telemetry }))
+        .toThrow(/in-app browser|Codex in-app browser/i);
     }
   });
 
-  it("accepts Chrome's exact internal error page as an existing non-navigated CDP state", () => {
-    const telemetry = browserTelemetry();
-    const observed = JSON.parse(telemetry.raw_stdout);
-    observed.browser_identity.url = "chrome-error://chromewebdata/";
-    observed.browser_identity.page_info.url = "chrome-error://chromewebdata/";
-    telemetry.raw_stdout = canonicalJson(observed);
-    expect(buildBrowserIdentityReceipt({ sourceCommit: "e".repeat(40), sourceAuthority: sourceAuthority(), telemetryBytes: Buffer.from(canonicalJson(telemetry)), telemetry }).browser.url)
-      .toBe("chrome-error://chromewebdata/");
+  it("removes the legacy audit-browser-identity command", () => {
+    const fixture = fixtureRepo({ copyScript: true });
+    const outputRoot = realpathSync(mkdtempSync(join(tmpdir(), "omd-luna-output-")));
+    expect(() => execFileSync(process.execPath, [join(fixture.root, SCRIPT_PATH), "audit-browser-identity", "--source-commit", fixture.sourceCommit, "--out", join(outputRoot, "legacy.json")], {
+      env: { ...process.env, OMD_ADMISSION_REPO_ROOT: fixture.root },
+    })).toThrow();
   });
 
   it("CLI writes deterministic fresh static receipt and refuses overwrite or symlink input", () => {
@@ -306,6 +294,23 @@ describe("Luna Max admission receipts", () => {
       runtime: { model: "gpt-5.6-luna", effort: "max" },
       provider_calls: 1,
       model_calls: 1,
+    });
+
+    const browserRaw = join(outputRoot, "in-app-browser-raw.json");
+    writeFileSync(browserRaw, `${canonicalJson(browserTelemetry())}\n`);
+    const browserOutput = join(outputRoot, "in-app-browser-receipt.json");
+    execFileSync(process.execPath, [cli, "audit-in-app-browser-identity", "--source-commit", fixture.sourceCommit, "--telemetry", browserRaw, "--out", browserOutput], {
+      env: { ...process.env, OMD_ADMISSION_REPO_ROOT: fixture.root },
+    });
+    expect(JSON.parse(readFileSync(browserOutput, "utf8"))).toMatchObject({
+      kind: "codex-in-app-browser-identity-preflight",
+      browser: { type: "iab", name: "Codex In-app Browser" },
+      tab: { url: "about:blank", title: "about:blank" },
+      capture: { cryptographic_identity_verified: false },
+      provider_calls: 0,
+      model_calls: 0,
+      browser_calls: 1,
+      network_calls: 0,
     });
   });
 });

@@ -160,17 +160,23 @@ export function validateAdmission({ admissionPath, materializedRoot, runtimePath
     && evidence.static_runtime.value.runtime?.codex_cli?.version, "static runtime catalog/profile/CLI binding drift");
   invariant(evidence.runtime_attribution.value.kind === "codex-luna-max-runtime-attribution-preflight" && evidence.runtime_attribution.value.excluded_from_benchmark_denominator === true && evidence.runtime_attribution.value.runtime?.model === MODEL && evidence.runtime_attribution.value.runtime?.effort === EFFORT && evidence.runtime_attribution.value.runtime?.fallback_calls === 0, "runtime attribution drift");
   validateReceiptCalls(evidence.runtime_attribution.value, "runtime attribution", { provider_calls: 1, model_calls: 1, browser_calls: 0 });
-  invariant(evidence.browser_identity.value.kind === "existing-browser-harness-cdp-preflight"
+  invariant(evidence.browser_identity.value.kind === "codex-in-app-browser-identity-preflight"
     && evidence.browser_identity.value.excluded_from_benchmark_denominator === true
-    && evidence.browser_identity.value.browser?.transport === "local-existing-chrome-cdp"
-    && evidence.browser_identity.value.browser?.named_existing === true
-    && evidence.browser_identity.value.browser?.launched_by_controller === false
-    && evidence.browser_identity.value.browser?.navigation_calls === 0
-    && [0, 1].includes(evidence.browser_identity.value.browser?.tab_creation_calls ?? 0)
-    && ((evidence.browser_identity.value.browser?.tab_creation_calls ?? 0) === 0
-      ? (evidence.browser_identity.value.browser?.tab_created_by_controller ?? false) === false
-      : evidence.browser_identity.value.browser?.tab_created_by_controller === true && evidence.browser_identity.value.browser?.url === "about:blank"), "browser identity drift");
-  validateReceiptCalls(evidence.browser_identity.value, "browser identity", { provider_calls: 0, model_calls: 0, browser_calls: 1 });
+    && evidence.browser_identity.value.browser?.type === "iab"
+    && typeof evidence.browser_identity.value.browser?.browser_id === "string"
+    && evidence.browser_identity.value.browser.browser_id.length > 0
+    && evidence.browser_identity.value.browser?.name === "Codex In-app Browser"
+    && typeof evidence.browser_identity.value.tab?.id === "string"
+    && evidence.browser_identity.value.tab.id.length > 0
+    && evidence.browser_identity.value.tab?.url === "about:blank"
+    && evidence.browser_identity.value.tab?.title === "about:blank"
+    && evidence.browser_identity.value.capture?.surface === "codex-in-app-browser-tool"
+    && evidence.browser_identity.value.capture?.method === "agent.browsers.get(iab)+tabs.new"
+    && evidence.browser_identity.value.capture?.cryptographic_identity_verified === false
+    && evidence.browser_identity.value.controller_launched_browser === false
+    && evidence.browser_identity.value.tab_created_for_identity === true
+    && evidence.browser_identity.value.navigation_calls === 0, "browser identity drift");
+  validateReceiptCalls(evidence.browser_identity.value, "browser identity", { provider_calls: 0, model_calls: 0, browser_calls: 1, network_calls: 0 });
   const evaluationRuntime = evidence.evaluation_runtime.value;
   invariant(evaluationRuntime.kind === "omd-luna-max-evaluation-runtime-receipt" && evaluationRuntime.pass === true && evaluationRuntime.source_commit === sourceCommit, "evaluation runtime identity drift");
   validateReceiptCalls(evaluationRuntime, "evaluation runtime", { provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 });

@@ -218,7 +218,7 @@ export function validatePreregistration(preregistration, matrixEvidence, commit)
     && preregistration.provider_execution_allowed === false, "preregistration identity drift");
   sourceCommit(preregistration, commit, "preregistration");
   invariant(preregistration.matrix_sha256 === matrixEvidence.sha256, "preregistration matrix binding drift");
-  const required = ["neutral-same-facts-task-packets", "official-competitor-freshness", "seven-public-core-schemas", "static-luna-max-capability", "one-call-luna-max-attribution", "existing-browser-harness-cdp", "evaluation-runtime-and-fonts"];
+  const required = ["neutral-same-facts-task-packets", "official-competitor-freshness", "seven-public-core-schemas", "static-luna-max-capability", "one-call-luna-max-attribution", "codex-in-app-browser-about-blank", "evaluation-runtime-and-fonts"];
   invariant(canonicalJson(preregistration.admitted_prerequisites) === canonicalJson(required), "preregistration prerequisite contract drift");
   calls(preregistration, { provider_calls: 0, model_calls: 0, browser_calls: 0 }, "preregistration");
   return true;
@@ -298,22 +298,42 @@ export function validateRuntimeReceipt(receipt, root, commit) {
 }
 
 export function validateBrowserReceipt(receipt, root, commit) {
-  invariant(receipt?.schema_version === "0.1" && receipt.kind === "existing-browser-harness-cdp-preflight"
-    && receipt.pass === true && receipt.excluded_from_benchmark_denominator === true, "raw browser-harness receipt identity drift");
-  sourceCommit(receipt, commit, "raw browser-harness receipt"); authorityEntry(receipt, root, commit, "benchmarks/ui-resolve-bench/scripts/prepare-luna-max-admission-receipts.mjs", "raw browser-harness receipt");
-  calls(receipt, { provider_calls: 0, model_calls: 0, browser_calls: 1 }, "raw browser-harness receipt");
-  const browser = receipt.browser;
-  const tabCreationCalls = browser?.tab_creation_calls ?? 0;
-  const tabCreatedByController = browser?.tab_created_by_controller ?? false;
-  invariant(browser?.name === "default-local-cdp" && browser.transport === "local-existing-chrome-cdp"
-    && browser.named_existing === true && browser.available === true && browser.launched_by_controller === false
-    && browser.navigation_calls === 0 && /^(?:about:blank|chrome-error:\/\/chromewebdata\/?|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser.url ?? "")
-    && [0, 1].includes(tabCreationCalls)
-    && (tabCreationCalls === 0 ? tabCreatedByController === false : tabCreatedByController === true && browser.url === "about:blank")
-    && Number.isInteger(browser.telemetry_bytes) && browser.telemetry_bytes > 0 && SHA.test(browser.telemetry_sha256 ?? "")
-    && SHA.test(browser.raw_stdout_sha256 ?? "") && SHA.test(browser.raw_stderr_sha256 ?? "")
-    && SHA.test(browser.executable_sha256 ?? "") && SHA.test(browser.identity_sha256 ?? ""),
-  "raw browser-harness identity drift");
+  exactKeys(receipt, [
+    "schema_version", "source_commit", "source_authority", "kind", "pass",
+    "excluded_from_benchmark_denominator", "browser", "tab", "capture",
+    "controller_launched_browser", "tab_created_for_identity", "navigation_calls",
+    "telemetry_bytes", "telemetry_sha256", "identity_sha256", "provider_calls",
+    "model_calls", "browser_calls", "network_calls",
+  ], "Codex in-app browser receipt");
+  invariant(receipt?.schema_version === "0.1" && receipt.kind === "codex-in-app-browser-identity-preflight"
+    && receipt.pass === true && receipt.excluded_from_benchmark_denominator === true, "Codex in-app browser receipt identity drift");
+  sourceCommit(receipt, commit, "Codex in-app browser receipt");
+  authorityEntry(receipt, root, commit, "benchmarks/ui-resolve-bench/scripts/prepare-luna-max-admission-receipts.mjs", "Codex in-app browser receipt");
+  calls(receipt, { provider_calls: 0, model_calls: 0, browser_calls: 1, network_calls: 0 }, "Codex in-app browser receipt");
+  exactKeys(receipt.browser, ["type", "browser_id", "name"], "Codex in-app browser identity");
+  exactKeys(receipt.tab, ["id", "url", "title"], "Codex in-app browser tab");
+  exactKeys(receipt.capture, ["surface", "method", "cryptographic_identity_verified", "statement"], "Codex in-app browser capture attestation");
+  invariant(receipt.browser.type === "iab"
+    && typeof receipt.browser.browser_id === "string" && receipt.browser.browser_id.trim() === receipt.browser.browser_id && receipt.browser.browser_id.length > 0
+    && receipt.browser.name === "Codex In-app Browser"
+    && typeof receipt.tab.id === "string" && receipt.tab.id.trim() === receipt.tab.id && receipt.tab.id.length > 0
+    && receipt.tab.url === "about:blank" && receipt.tab.title === "about:blank"
+    && receipt.capture.surface === "codex-in-app-browser-tool"
+    && receipt.capture.method === "agent.browsers.get(iab)+tabs.new"
+    && receipt.capture.cryptographic_identity_verified === false
+    && receipt.capture.statement === "Operator-attested Codex in-app Browser observation; not cryptographic browser identity."
+    && receipt.controller_launched_browser === false && receipt.tab_created_for_identity === true
+    && receipt.navigation_calls === 0 && Number.isInteger(receipt.telemetry_bytes) && receipt.telemetry_bytes > 0
+    && SHA.test(receipt.telemetry_sha256 ?? "") && SHA.test(receipt.identity_sha256 ?? "")
+    && receipt.identity_sha256 === sha256(canonicalJson({
+      browser: receipt.browser,
+      tab: receipt.tab,
+      capture: receipt.capture,
+      controller_launched_browser: false,
+      tab_created_for_identity: true,
+      navigation_calls: 0,
+    })),
+  "Codex in-app browser identity drift");
 }
 
 export function validateEvaluationRuntimeReceipt(receipt, root, commit) {
@@ -378,7 +398,7 @@ export function admitCommand(args, { repoRoot = process.env.OMD_ADMISSION_REPO_R
     schema: evidence(args.get("schema-receipt"), "public schema receipt"),
     static_runtime: evidence(args.get("static-runtime-receipt"), "static capability receipt"),
     runtime_attribution: evidence(args.get("runtime-attribution-receipt"), "raw runtime attribution receipt"),
-    browser_identity: evidence(args.get("browser-identity-receipt"), "raw browser-harness receipt"),
+    browser_identity: evidence(args.get("browser-identity-receipt"), "Codex in-app browser receipt"),
     evaluation_runtime: evidence(args.get("evaluation-runtime-receipt"), "evaluation runtime receipt"),
   };
   validateMatrix(inputs.matrix.value, root, commit);

@@ -152,14 +152,25 @@
       "model_calls": 1,
       "excluded_from_benchmark_denominator": true
     },
-    "existing_browser_harness_identity_receipt": {
+    "codex_in_app_browser_identity_receipt": {
       "required": true,
       "status": "unresolved",
       "path": null,
       "sha256": null,
-      "existing_local_cdp_required": true,
+      "receipt_version": "codex-in-app-browser-identity-v0.1",
+      "browser_type": "iab",
+      "browser_name": "Codex In-app Browser",
+      "capture_surface": "codex-in-app-browser-tool",
+      "capture_method": "agent.browsers.get(iab)+tabs.new",
+      "cryptographic_identity_verified": false,
+      "capture_statement": "Operator-attested Codex in-app Browser observation; not cryptographic browser identity.",
       "controller_browser_launch_allowed": false,
+      "identity_tab_created": true,
+      "identity_tab_url": "about:blank",
+      "identity_tab_title": "about:blank",
       "navigation_calls": 0,
+      "provider_calls": 0,
+      "model_calls": 0,
       "browser_calls": 1,
       "excluded_from_benchmark_denominator": true
     },

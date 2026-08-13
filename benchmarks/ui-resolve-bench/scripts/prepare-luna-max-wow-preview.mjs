@@ -103,6 +103,12 @@ function assertZeroCalls(value, label) {
     if (value?.[field] !== 0) throw new Error(`${label} ${field} must be zero`);
   }
 }
+function assertExactKeys(value, keys, label) {
+  if (!value || typeof value !== "object" || Array.isArray(value)
+    || canonical(Object.keys(value).sort()) !== canonical([...keys].sort())) {
+    throw new Error(`${label} exact key schema drift`);
+  }
+}
 
 export function validateConfig(config, { readAuthority = (path) => readFileSync(resolveRepoRelative(path, "authority")) } = {}) {
   if (config?.schema_version !== "0.1"
@@ -133,11 +139,34 @@ export function validateConfig(config, { readAuthority = (path) => readFileSync(
   if (config.task_selection_status !== "selected-neutral-input-awaiting-packet-receipt") {
     throw new Error("neutral task selection status drift");
   }
-  for (const gate of ["neutral_task_packet_lock", "official_competitor_freshness_lock", "public_core_schema_liveness_receipt", "static_runtime_capability_receipt", "runtime_attribution_telemetry_receipt", "existing_browser_harness_identity_receipt", "evaluation_runtime_receipt"]) {
+  for (const gate of ["neutral_task_packet_lock", "official_competitor_freshness_lock", "public_core_schema_liveness_receipt", "static_runtime_capability_receipt", "runtime_attribution_telemetry_receipt", "codex_in_app_browser_identity_receipt", "evaluation_runtime_receipt"]) {
     const value = config.admission?.[gate];
     if (value?.required !== true || value.status !== "unresolved" || value.path !== null || value.sha256 !== null) {
       throw new Error(`${gate} must remain an unresolved required input in the template`);
     }
+  }
+  const inAppBrowser = config.admission.codex_in_app_browser_identity_receipt;
+  if (Object.prototype.hasOwnProperty.call(config.admission, "existing_browser_harness_identity_receipt")) {
+    throw new Error("legacy Browser Harness admission key is forbidden");
+  }
+  assertExactKeys(inAppBrowser, [
+    "required", "status", "path", "sha256", "receipt_version", "browser_type", "browser_name",
+    "capture_surface", "capture_method", "cryptographic_identity_verified", "capture_statement",
+    "controller_browser_launch_allowed", "identity_tab_created", "identity_tab_url", "identity_tab_title",
+    "navigation_calls", "provider_calls", "model_calls", "browser_calls", "excluded_from_benchmark_denominator",
+  ], "Codex in-app browser admission config");
+  if (inAppBrowser.receipt_version !== "codex-in-app-browser-identity-v0.1"
+    || inAppBrowser.browser_type !== "iab" || inAppBrowser.browser_name !== "Codex In-app Browser"
+    || inAppBrowser.capture_surface !== "codex-in-app-browser-tool"
+    || inAppBrowser.capture_method !== "agent.browsers.get(iab)+tabs.new"
+    || inAppBrowser.cryptographic_identity_verified !== false
+    || inAppBrowser.capture_statement !== "Operator-attested Codex in-app Browser observation; not cryptographic browser identity."
+    || inAppBrowser.controller_browser_launch_allowed !== false || inAppBrowser.identity_tab_created !== true
+    || inAppBrowser.identity_tab_url !== "about:blank" || inAppBrowser.identity_tab_title !== "about:blank"
+    || inAppBrowser.navigation_calls !== 0 || inAppBrowser.provider_calls !== 0
+    || inAppBrowser.model_calls !== 0 || inAppBrowser.browser_calls !== 1
+    || inAppBrowser.excluded_from_benchmark_denominator !== true) {
+    throw new Error("Codex in-app browser config contract drift");
   }
   assertZeroCalls(config.preparation_calls, "config preparation");
   if (config.runtime?.workspace_boundary_applies_to_every_arm !== true
@@ -272,22 +301,46 @@ export function validateRuntimeAttributionReceipt(receipt, sourceCommit) {
   return true;
 }
 
-export function validateNamedBrowserReceipt(receipt, sourceCommit) {
-  if (receipt?.schema_version !== "0.1" || receipt.kind !== "existing-browser-harness-cdp-preflight"
+export function validateInAppBrowserReceipt(receipt, sourceCommit) {
+  assertExactKeys(receipt, [
+    "schema_version", "source_commit", "source_authority", "kind", "pass",
+    "excluded_from_benchmark_denominator", "browser", "tab", "capture", "controller_launched_browser",
+    "tab_created_for_identity", "navigation_calls", "telemetry_bytes", "telemetry_sha256",
+    "identity_sha256", "provider_calls", "model_calls", "browser_calls", "network_calls",
+  ], "Codex in-app browser receipt");
+  assertExactKeys(receipt?.source_authority, ["path", "bytes", "sha256"], "Codex in-app browser source authority");
+  assertExactKeys(receipt?.browser, ["type", "browser_id", "name"], "Codex in-app browser identity");
+  assertExactKeys(receipt?.tab, ["id", "url", "title"], "Codex in-app browser tab");
+  assertExactKeys(receipt?.capture, ["surface", "method", "cryptographic_identity_verified", "statement"], "Codex in-app browser capture attestation");
+  if (receipt?.schema_version !== "0.1" || receipt.kind !== "codex-in-app-browser-identity-preflight"
     || receipt.pass !== true || receipt.source_commit !== sourceCommit
-    || receipt.excluded_from_benchmark_denominator !== true) throw new Error("existing browser-harness receipt identity drift");
-  if (receipt.provider_calls !== 0 || receipt.model_calls !== 0 || receipt.browser_calls !== 1) {
-    throw new Error("existing browser-harness preflight call accounting drift");
+    || receipt.excluded_from_benchmark_denominator !== true) throw new Error("Codex in-app browser receipt identity drift");
+  if (receipt.provider_calls !== 0 || receipt.model_calls !== 0 || receipt.browser_calls !== 1 || receipt.network_calls !== 0) {
+    throw new Error("Codex in-app browser preflight call accounting drift");
   }
-  const browser = receipt.browser;
-  const tabCreationCalls = browser?.tab_creation_calls ?? 0;
-  const tabCreatedByController = browser?.tab_created_by_controller ?? false;
-  if (browser?.name !== "default-local-cdp" || browser.transport !== "local-existing-chrome-cdp"
-    || browser.named_existing !== true || browser.available !== true || browser.launched_by_controller !== false
-    || browser.navigation_calls !== 0 || !/^(?:about:blank|chrome-error:\/\/chromewebdata\/?|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser.url ?? "")
-    || ![0, 1].includes(tabCreationCalls)
-    || (tabCreationCalls === 0 ? tabCreatedByController !== false : tabCreatedByController !== true || browser.url !== "about:blank")
-    || !SHA.test(browser.identity_sha256 ?? "") || !SHA.test(browser.executable_sha256 ?? "")) throw new Error("existing browser-harness telemetry drift");
+  if (receipt.browser.type !== "iab"
+    || typeof receipt.browser.browser_id !== "string" || receipt.browser.browser_id.trim() !== receipt.browser.browser_id || !receipt.browser.browser_id
+    || receipt.browser.name !== "Codex In-app Browser"
+    || typeof receipt.tab.id !== "string" || receipt.tab.id.trim() !== receipt.tab.id || !receipt.tab.id
+    || receipt.tab.url !== "about:blank" || receipt.tab.title !== "about:blank"
+    || receipt.capture.surface !== "codex-in-app-browser-tool"
+    || receipt.capture.method !== "agent.browsers.get(iab)+tabs.new"
+    || receipt.capture.cryptographic_identity_verified !== false
+    || receipt.capture.statement !== "Operator-attested Codex in-app Browser observation; not cryptographic browser identity."
+    || receipt.controller_launched_browser !== false || receipt.tab_created_for_identity !== true
+    || receipt.navigation_calls !== 0 || !Number.isInteger(receipt.telemetry_bytes) || receipt.telemetry_bytes <= 0
+    || !SHA.test(receipt.telemetry_sha256 ?? "") || !SHA.test(receipt.identity_sha256 ?? "")
+    || receipt.identity_sha256 !== sha256(canonical({
+      browser: receipt.browser,
+      tab: receipt.tab,
+      capture: receipt.capture,
+      controller_launched_browser: false,
+      tab_created_for_identity: true,
+      navigation_calls: 0,
+    }))
+    || receipt.source_authority.path !== admissionReceiptGeneratorPath
+    || !Number.isInteger(receipt.source_authority.bytes) || receipt.source_authority.bytes <= 0
+    || !SHA.test(receipt.source_authority.sha256 ?? "")) throw new Error("Codex in-app browser telemetry drift");
   return true;
 }
 
@@ -449,8 +502,12 @@ export function prepareCommand(args) {
   validateStaticRuntimeCapabilityReceipt(staticRuntimeReceipt.value, sourceCommit);
   const runtimeReceipt = readExternalReceipt(args.get("runtime-receipt"), "runtime attribution telemetry receipt");
   validateRuntimeAttributionReceipt(runtimeReceipt.value, sourceCommit);
-  const browserReceipt = readExternalReceipt(args.get("browser-receipt"), "existing browser-harness identity receipt");
-  validateNamedBrowserReceipt(browserReceipt.value, sourceCommit);
+  const browserReceipt = readExternalReceipt(args.get("browser-receipt"), "Codex in-app browser identity receipt");
+  validateInAppBrowserReceipt(browserReceipt.value, sourceCommit);
+  const browserAuthority = sourceEntry(admissionReceiptGeneratorPath, sourceCommit);
+  if (canonical(browserReceipt.value.source_authority) !== canonical(browserAuthority)) {
+    throw new Error("Codex in-app browser receipt source authority drift");
+  }
   const evaluationRuntimeReceipt = readExternalReceipt(args.get("evaluation-runtime-receipt"), "evaluation runtime receipt");
   validateEvaluationRuntimeReceipt(evaluationRuntimeReceipt.value, sourceCommit, config);
 
@@ -494,7 +551,7 @@ export function prepareCommand(args) {
       schema_liveness: { sha256: sha256(schemaReceipt.bytes) },
       static_runtime_capability: { sha256: sha256(staticRuntimeReceipt.bytes) },
       runtime_attribution_telemetry: { sha256: sha256(runtimeReceipt.bytes) },
-      existing_browser_harness_identity: { sha256: sha256(browserReceipt.bytes) },
+      codex_in_app_browser_identity: { sha256: sha256(browserReceipt.bytes) },
       evaluation_runtime: { sha256: sha256(evaluationRuntimeReceipt.bytes) },
     },
     execution_adapter: {
@@ -518,7 +575,7 @@ export function prepareCommand(args) {
     experiment_id: config.experiment_id,
     source_commit: sourceCommit,
     matrix_sha256: sha256(`${JSON.stringify(matrix, null, 2)}\n`),
-    admitted_prerequisites: ["neutral-same-facts-task-packets", "official-competitor-freshness", "seven-public-core-schemas", "static-luna-max-capability", "one-call-luna-max-attribution", "existing-browser-harness-cdp", "evaluation-runtime-and-fonts"],
+    admitted_prerequisites: ["neutral-same-facts-task-packets", "official-competitor-freshness", "seven-public-core-schemas", "static-luna-max-capability", "one-call-luna-max-attribution", "codex-in-app-browser-about-blank", "evaluation-runtime-and-fonts"],
     provider_execution_allowed: false,
     provider_calls: 0,
     model_calls: 0,
