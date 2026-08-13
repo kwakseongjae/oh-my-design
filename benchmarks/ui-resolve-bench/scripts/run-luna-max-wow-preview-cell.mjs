@@ -333,6 +333,154 @@ function rolloutEvidence(events, runResult, staticRuntime, admittedCatalog) {
   const providerUsage = latestModelUsage ? { available: true, input_tokens: Number(latestModelUsage.input_tokens), output_tokens: Number(latestModelUsage.output_tokens), total_tokens: Number(latestModelUsage.input_tokens) + Number(latestModelUsage.output_tokens) } : { available: false, reason: "provider-emitted-usage-unavailable" };
   return { exact, contexts, completions, fallbacks, provider_usage: providerUsage, interventions: events.some((event) => event.type === "unparseable") || marker ? 1 : 0, marker };
 }
+function stripShellHeredocBodies(source) {
+  const lines = String(source).split("\n"); const kept = [];
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index]; kept.push(line);
+    const match = line.match(/<<-?\s*(['"]?)([A-Za-z_][A-Za-z0-9_]*)\1/);
+    if (!match) continue;
+    const delimiter = match[2];
+    while (index + 1 < lines.length) {
+      index += 1;
+      const closing = lines[index].match(new RegExp(`^\\s*${delimiter}(?=\\s|["']|$)(.*)$`));
+      if (closing) { if (closing[1]) kept.push(closing[1]); break; }
+    }
+  }
+  return kept.join("\n");
+}
+function shellTokens(source) {
+  const text = stripShellHeredocBodies(source); const tokens = []; let word = ""; let quote = null;
+  const pushWord = () => { if (word) { tokens.push({ type: "word", value: word }); word = ""; } };
+  for (let index = 0; index < text.length; index += 1) {
+    const char = text[index];
+    if (quote) {
+      if (char === quote) quote = null;
+      else if (char === "\\" && quote === '"' && index + 1 < text.length) word += text[index += 1];
+      else word += char;
+      continue;
+    }
+    if (char === "'" || char === '"') { quote = char; continue; }
+    if (char === "\\" && index + 1 < text.length) { word += text[index += 1]; continue; }
+    if (/\s/.test(char)) { pushWord(); if (char === "\n") tokens.push({ type: "operator", value: "\n" }); continue; }
+    const pair = text.slice(index, index + 2);
+    if (["&&", "||", "<<", ">>", ";;"].includes(pair)) { pushWord(); tokens.push({ type: "operator", value: pair }); index += 1; continue; }
+    if ([";", "|", "&", "<", ">", "(", ")"].includes(char)) { pushWord(); tokens.push({ type: "operator", value: char }); continue; }
+    word += char;
+  }
+  pushWord(); return tokens;
+}
+function shellInvocations(source, depth = 0) {
+  if (depth > 3) return [];
+  const tokens = shellTokens(source); const invocations = []; let argv = []; let skipRedirectTarget = false;
+  const finish = () => {
+    if (argv.length === 0) return;
+    while (argv.length && /^[A-Za-z_][A-Za-z0-9_]*=/.test(argv[0])) argv.shift();
+    if (argv.length) {
+      invocations.push(argv);
+      const executable = argv[0].split("/").at(-1)?.toLowerCase();
+      if (["sh", "bash", "zsh", "dash", "ksh"].includes(executable)) {
+        const commandIndex = argv.findIndex((value, index) => index > 0 && /^(?:-[^-]*c|--command)$/.test(value));
+        if (commandIndex >= 0 && argv[commandIndex + 1]) invocations.push(...shellInvocations(argv[commandIndex + 1], depth + 1));
+      }
+    }
+    argv = [];
+  };
+  for (const token of tokens) {
+    if (token.type === "operator") {
+      if ([";", ";;", "&&", "||", "|", "&", "\n", "(", ")"].includes(token.value)) finish();
+      else skipRedirectTarget = true;
+      continue;
+    }
+    if (skipRedirectTarget) { skipRedirectTarget = false; continue; }
+    argv.push(token.value);
+  }
+  finish(); return invocations;
+}
+function unwrapExecutionArgv(input) {
+  let argv = [...input];
+  for (let depth = 0; depth < 8 && argv.length; depth += 1) {
+    while (argv.length && /^[A-Za-z_][A-Za-z0-9_]*=/.test(argv[0])) argv.shift();
+    if (!argv.length) return null;
+    const executable = argv[0].split("/").at(-1)?.toLowerCase();
+    let index = 1;
+    if (executable === "command") {
+      if (argv.slice(1).some((value) => value === "-v" || value === "-V" || /^-[p]*[vV]/.test(value))) return null;
+      while (argv[index]?.startsWith("-") && argv[index] !== "--") index += 1;
+      if (argv[index] === "--") index += 1;
+    } else if (executable === "exec") {
+      while (index < argv.length) {
+        const value = argv[index];
+        if (value === "--") { index += 1; break; }
+        if (value === "-a") { index += 2; continue; }
+        if (value.startsWith("-")) { index += 1; continue; }
+        break;
+      }
+    } else if (executable === "env") {
+      while (index < argv.length) {
+        const value = argv[index];
+        if (value === "--") { index += 1; break; }
+        if (/^[A-Za-z_][A-Za-z0-9_]*=/.test(value)) { index += 1; continue; }
+        if (["-u", "--unset", "-C", "--chdir", "-a", "--argv0"].includes(value)) { index += 2; continue; }
+        if (value === "-S" || value === "--split-string") {
+          const split = shellTokens(argv[index + 1] ?? "").filter((token) => token.type === "word").map((token) => token.value);
+          argv = [...split, ...argv.slice(index + 2)]; index = 0; break;
+        }
+        const splitString = value.match(/^--split-string=(.*)$/);
+        if (splitString) { argv = [...shellTokens(splitString[1]).filter((token) => token.type === "word").map((token) => token.value), ...argv.slice(index + 1)]; index = 0; break; }
+        if (value.startsWith("-")) { index += 1; continue; }
+        break;
+      }
+    } else if (executable === "timeout" || executable === "gtimeout") {
+      while (index < argv.length) {
+        const value = argv[index];
+        if (value === "--") { index += 1; break; }
+        if (["-k", "--kill-after", "-s", "--signal"].includes(value)) { index += 2; continue; }
+        if (value.startsWith("-")) { index += 1; continue; }
+        index += 1; break; // duration
+      }
+    } else if (executable === "nice") {
+      while (index < argv.length) {
+        const value = argv[index];
+        if (value === "--") { index += 1; break; }
+        if (value === "-n" || value === "--adjustment") { index += 2; continue; }
+        if (/^-(?:n)?\d+$/.test(value) || value.startsWith("--adjustment=")) { index += 1; continue; }
+        if (value.startsWith("-")) { index += 1; continue; }
+        break;
+      }
+    } else if (executable === "nohup") {
+      while (argv[index]?.startsWith("-") && argv[index] !== "--") index += 1;
+      if (argv[index] === "--") index += 1;
+    } else if (executable === "sudo") {
+      const consumesNext = new Set(["-a", "--auth-type", "-u", "--user", "-U", "--other-user", "-g", "--group", "-h", "--host", "-p", "--prompt", "-C", "--close-from", "-R", "--chroot", "-D", "--chdir", "-r", "--role", "-t", "--type", "-T", "--command-timeout"]);
+      while (index < argv.length) {
+        const value = argv[index];
+        if (value === "--") { index += 1; break; }
+        if (/^[A-Za-z_][A-Za-z0-9_]*=/.test(value)) { index += 1; continue; }
+        if (consumesNext.has(value)) { index += 2; continue; }
+        if (value.startsWith("-")) { index += 1; continue; }
+        break;
+      }
+    } else return argv;
+    argv = argv.slice(index);
+  }
+  return argv.length ? argv : null;
+}
+function commandTelemetry(command) {
+  const invocations = shellInvocations(command); let browser = false; let network = false;
+  for (const invocation of invocations) {
+    const argv = unwrapExecutionArgv(invocation); if (!argv?.length) continue;
+    const executable = argv[0].split("/").at(-1)?.toLowerCase();
+    const directBrowser = executable === "browser-harness" || executable === "browser_harness";
+    const directNetwork = ["curl", "wget", "open"].includes(executable);
+    const packageArgs = argv.slice(1).filter((value) => value !== "--" && !value.startsWith("-"));
+    const packageBrowser = ["npx", "bunx"].includes(executable) && /^(?:@[^/]+\/)?browser[-_]harness(?:@[^/]+)?$/i.test(packageArgs[0] ?? "")
+      || ["npm", "pnpm", "yarn"].includes(executable) && ["exec", "dlx", "x"].includes(packageArgs[0]?.toLowerCase()) && /^(?:@[^/]+\/)?browser[-_]harness(?:@[^/]+)?$/i.test(packageArgs[1] ?? "");
+    const nodeBrowser = ["node", "deno", "bun"].includes(executable) && argv.slice(1).some((value) => /(?:^|[/\\])browser[-_]harness(?:[/\\.]|$)/i.test(value));
+    if (directBrowser || packageBrowser || nodeBrowser || executable === "open") browser = true;
+    if (directBrowser || packageBrowser || nodeBrowser || directNetwork) network = true;
+  }
+  return { browser, network };
+}
 export function toolTelemetry(events, runResult, { workspace, providerHome, externalStagingRoot = null }) {
   const finiteNormalized = runResult?.output?.agent_tool_call_count;
   const toolTypes = new Set(["command_execution", "mcp_tool_call", "file_change", "web_search", "computer_use"]); const ids = new Set();
@@ -352,11 +500,11 @@ export function toolTelemetry(events, runResult, { workspace, providerHome, exte
           ? event.item.changes.map((change) => ({ path: change?.path ?? null, kind: change?.kind ?? change?.type ?? null }))
           : null,
       });
-    if (/browser-harness|browser_harness|BH_(?:RUNTIME|AGENT|DOMAIN|CDP)|BU_(?:NAME|CDP)/i.test(raw)) browserIds.add(id);
-    const forbiddenCommand = /(?:^|[\s"'`/])(curl|wget|open|browser-harness)(?=$|[\s"'`;])/i.test(raw);
+    const commandSignals = event.item.type === "command_execution" ? commandTelemetry(event.item.command ?? "") : null;
+    if (event.item.type !== "command_execution" && /browser-harness|browser_harness|BH_(?:RUNTIME|AGENT|DOMAIN|CDP)|BU_(?:NAME|CDP)/i.test(raw)) browserIds.add(id);
     const implicitNetworkTool = event.item.type === "web_search" || event.item.type === "computer_use" || event.item.type === "mcp_tool_call";
-    if (forbiddenCommand || implicitNetworkTool) networkIds.add(id);
-    if (event.item.type === "computer_use" || /(?:^|[\s"'`/])(open|browser-harness)(?=$|[\s"'`;])/i.test(raw)) browserIds.add(id);
+    if (commandSignals?.network || implicitNetworkTool) networkIds.add(id);
+    if (commandSignals?.browser || event.item.type === "computer_use") browserIds.add(id);
     const absolutePaths = raw.match(/\/(?:Users|private\/tmp|tmp)\/[^\s"'`\\]+/g) ?? [];
     const allowedRoots = [workspace, providerHome, externalStagingRoot].filter(Boolean).map((root) => { try { return realpathSync(root); } catch { return resolve(root); } });
     const forbiddenPath = absolutePaths.find((candidate) => {

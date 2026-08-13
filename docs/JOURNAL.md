@@ -5,6 +5,26 @@
 
 ---
 
+## 2026-08-14 (Codex) · Luna telemetry executable parser PASS
+- Sol/medium이 heredoc/source 문자열 false positive를 executable/argv-aware parser로 제거했다.
+- env/command/exec/timeout/nice/nohup/sudo wrapper의 실제 curl/open/browser-harness/wget은 계속 fail-close한다.
+- preserved item_16은 0/0, wrapper adversarial은 기대 호출로 판정했고 통합 60/60·lint·syntax green이다.
+- 6d9 timeout/partial은 불변 diagnostic으로 유지하며 새 source authority epoch를 발급한다.
+
+## 2026-08-14 (Codex) · Luna 6d9 timeout 복구와 telemetry HOLD
+- 네트워크 중단 셀은 orphan이 아니라 18m35s timeout terminal·63,629B HTML·design-system PASS를 남겼다.
+- record `d7a8cf97…599ad`, partial `f935fc15…8bf30`(1 terminal/47 missing/6 ineligible)을 봉인하고 rerun을 금지했다.
+- browser/network 1회는 local Node heredoc의 `const open`/HTML을 오인한 false positive로 규명했다.
+- 다음 셀은 HOLD; Sol/medium command parser fix→Sol/xhigh 검수→fresh authority epoch 순으로 재개한다.
+- 장기 benchmark/release decision goal과 1분 token reset monitor를 다시 활성화했다.
+
+## 2026-08-13 (Codex) · Luna 6d9fb527 fresh epoch admission PASS
+- pre-provider terminal P0와 continuity를 commit `6d9fb527`로 봉인하고 clean detached authority를 만들었다.
+- schema/static/evaluation/Luna-max attribution/Browser Harness receipts를 새 source로 재발급했다.
+- 48 scheduled + 6 ineligible workspaces를 tree `2a5e8c71…83146`로 materialize하고 runtime snapshot을 고정했다.
+- Sol/xhigh admission SHA `77524f8d…1b3b`가 provider/model/browser/network 0으로 통과했다.
+- 다음은 새 epoch first locked model-only cell 1회이며 old 728 evidence는 diagnostic-only로 보존한다.
+
 ## 2026-08-13 (Codex) · Luna 72879e7a admission preflight PASS
 - OmD external-staging fix를 `72879e7a`로 봉인하고 clean detached runtime/evidence root를 만들었다.
 - production schema 7/7, static/evaluation runtime, raw Luna/max attribution receipt를 새 source로 재발급했다.

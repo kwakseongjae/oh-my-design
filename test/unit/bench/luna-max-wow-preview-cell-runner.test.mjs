@@ -282,6 +282,70 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     expect(telemetry).toMatchObject({ agent_browser_calls: 0, agent_network_attempts: 0, external_context_interventions: 0 });
   });
 
+  it("does not classify the preserved item_16 local Node heredoc source as browser or network telemetry", () => {
+    const command = [
+      "/opt/homebrew/bin/zsh -lc \"node <<'NODE'",
+      "const fs = require('fs');",
+      "const html = fs.readFileSync('index.html', 'utf8');",
+      "const tags = ['html','head','body','main','header','footer','section','form','script','style'];",
+      "for (const tag of tags) {",
+      "  const open = (html.match(new RegExp(`<${tag}\\\\b`, 'g')) || []).length;",
+      "  const close = (html.match(new RegExp(`</${tag}>`, 'g')) || []).length;",
+      "  console.log(`${tag}: ${open}/${close}`);",
+      "}",
+      "const script = html.match(/<script>([\\s\\S]*?)<\\/script>/)[1];",
+      "new Function(script);",
+      "console.log('inline script: OK');",
+      "NODE\"",
+    ].join("\n");
+    const telemetry = toolTelemetry([{ type: "item.completed", item: { id: "item_16", type: "command_execution", command, aggregated_output: "head: 1/1\nscript: 1/1\ninline script: OK\n", exit_code: 0, status: "completed" } }], null, { workspace: "/private/tmp/workspace", providerHome: "/private/tmp/provider-home" });
+    expect(telemetry).toMatchObject({ agent_browser_calls: 0, agent_network_attempts: 0, external_context_interventions: 0 });
+    expect(telemetry.raw_browser_item_ids).toEqual([]); expect(telemetry.raw_network_item_ids).toEqual([]);
+  });
+
+  it("fails closed on real browser/network executables, package invocations, shell scripts, and structured tools", () => {
+    const commands = [
+      ["browser-cli", "browser-harness --doctor"],
+      ["browser-package", "npx --yes browser-harness page_info"],
+      ["browser-node-package", "node ./node_modules/browser-harness/bin/cli.js page_info"],
+      ["curl-direct", "/usr/bin/curl https://example.invalid"],
+      ["wget-shell", "/bin/zsh -lc 'wget https://example.invalid'"],
+      ["open-direct", "open https://example.invalid"],
+    ].map(([id, command]) => ({ type: "item.completed", item: { id, type: "command_execution", command } }));
+    const structured = [
+      { type: "item.completed", item: { id: "web-search", type: "web_search", query: "external" } },
+      { type: "item.completed", item: { id: "computer-use", type: "computer_use", action: "open browser" } },
+      { type: "item.completed", item: { id: "mcp-network", type: "mcp_tool_call", server: "remote", tool: "fetch", arguments: { url: "https://example.invalid" } } },
+    ];
+    const telemetry = toolTelemetry([...commands, ...structured], null, { workspace: "/private/tmp/workspace", providerHome: "/private/tmp/provider-home" });
+    expect(telemetry.raw_browser_item_ids).toEqual(["browser-cli", "browser-node-package", "browser-package", "computer-use", "open-direct"]);
+    expect(telemetry.raw_network_item_ids).toEqual(["browser-cli", "browser-node-package", "browser-package", "computer-use", "curl-direct", "mcp-network", "open-direct", "web-search", "wget-shell"]);
+  });
+
+  it("fails closed after unwrapping env, command, exec, timeout, nice, nohup, and sudo argv", () => {
+    const wrapped = [
+      ["env-curl", "/usr/bin/env /usr/bin/curl https://example.invalid"],
+      ["env-options-curl", "env -i -u TOKEN NAME=value /usr/bin/curl https://example.invalid"],
+      ["command-open", "command open https://example.invalid"],
+      ["exec-browser", "exec browser-harness page_info"],
+      ["timeout-wget", "timeout 5 wget https://example.invalid"],
+      ["nice-curl", "nice -n 5 curl https://example.invalid"],
+      ["nohup-browser", "nohup browser-harness --doctor"],
+      ["sudo-open", "sudo -u root NAME=value open https://example.invalid"],
+    ].map(([id, command]) => ({ type: "item.completed", item: { id, type: "command_execution", command } }));
+    const telemetry = toolTelemetry(wrapped, null, { workspace: "/private/tmp/workspace", providerHome: "/private/tmp/provider-home" });
+    expect(telemetry.raw_browser_item_ids).toEqual(["command-open", "exec-browser", "nohup-browser", "sudo-open"]);
+    expect(telemetry.raw_network_item_ids).toEqual(["command-open", "env-curl", "env-options-curl", "exec-browser", "nice-curl", "nohup-browser", "sudo-open", "timeout-wget"]);
+  });
+
+  it("does not treat command executable lookup as execution", () => {
+    const telemetry = toolTelemetry([
+      { type: "item.completed", item: { id: "lookup-curl", type: "command_execution", command: "command -v curl" } },
+      { type: "item.completed", item: { id: "lookup-browser", type: "command_execution", command: "command -V browser-harness" } },
+    ], null, { workspace: "/private/tmp/workspace", providerHome: "/private/tmp/provider-home" });
+    expect(telemetry).toMatchObject({ agent_browser_calls: 0, agent_network_attempts: 0 });
+  });
+
   it("fails closed when raw provider commands read global skills or write external temporary context", () => {
     const f = fixture({ externalContextCall: true }); const result = execute(f);
     expect(result.status).toBe("infrastructure-invalid");
