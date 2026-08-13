@@ -4,12 +4,19 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-13 · Anthropic r1 preflight cache false invalidation 수정·검수 완료, fresh authority epoch 재발급 직전
+- 갱신: 2026-08-13 · landing r1 discovery 6-arm 봉인, OmD external-staging 충돌 수정·검수 완료, fresh authority epoch 재발급 직전
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
 ### 2026-08-13 OmD 2.0 출시 방향 — Luna Max evidence gate
+
+- **현재 재개 지점:** source `f55519027052715645a31193ef4a541c2e14f76f`의 clean epoch는 landing r1 6개 terminal 뒤 superseded 예정이다. evidence=`/private/tmp/omd-luna-wow-evidence-f5551902`, materialized=`/private/tmp/omd-luna-wow-materialized-f5551902`, admission SHA=`69a7afaf…3e0f`; partial bundle은 scheduled terminal 6 / missing 42 / ineligible 6이다. 새 provider cell은 중단했다.
+- f555 landing r1에서 model-only·Anthropic·UI UX Pro Max·Taste는 모두 default/focus-visible 화면은 만들었지만 명시적 `unavailable-information` 상태를 빠뜨려 정직한 0점이다. UI UX Pro Max는 시각 완성도가 가장 강했으나 793,563ms·1,576,366 tokens, Taste는 730,459ms·2,353,941 tokens였다. Impeccable은 900,326ms timeout, usage 미관측, `/tmp` intervention 1로 봉인됐다.
+- OmD r1은 856,292ms·4,697,154 tokens·82 tools로 Core graph/provenance/coverage/DESIGN preview/compiled package까지 만들고 unavailable/focus/44px/error/success 계약도 잡았다. 그러나 benchmark workspace-only 규칙과 adopter의 package-outside-project 규칙이 충돌해 blank shell을 남겼다. 이 terminal은 품질 실패가 아니라 immutable native-infrastructure discovery evidence다.
+- Sol/medium fix는 OmD arm에만 per-cell execution/workspace sibling external staging을 제공한다. generic env-var activation은 materialization 전에 invocation hash에 포함되고, concrete path는 receipt/env로만 결박된다. 경쟁 arm에는 prompt/env/`--add-dir`가 없으며 traversal·other-cell/host path·symlink·receipt tamper는 fail-close한다. exact blocker+blank shell도 infrastructure-invalid로 분류한다.
+- Sol/xhigh 검수는 controller/materializer/admission/runner/auditor/evaluation runtime 6 suites 63 pass/3 artifact skip, lint, node syntax, diff-check green이다. 다음은 이 fix를 clean commit하고 새 source commit에서 locked/materialized/receipts/runtime snapshot/admission을 전부 재발급한 뒤 landing r1 첫 locked cell부터 다시 시작하는 것이다. f555 경쟁 결과는 진단/시각 참고만 가능하며 새 epoch 정식 aggregate에 혼합하지 않는다.
+- 토큰 감시는 PTY `29394`, baseline 50%, 최신 58%, reset timestamp `1787199647` 불변이다. material reset이면 terminal boundary에서 즉시 중단하고 이 파일/JOURNAL을 갱신한다.
 
 - **안전 중단 지점:** source `0290442b66df529738612520612487d2258e48f2`의 detached clean worktree `/private/tmp/omd-luna-runtime-0290442b`, evidence `/private/tmp/omd-luna-wow-evidence-0290442b`, runtime snapshot `/private/tmp/omd-luna-runtime-snapshot-0290442b`, locked root `/private/tmp/omd-luna-wow-locked-0290442b`, materialized root `/private/tmp/omd-luna-wow-materialized-0290442b`, admission `/private/tmp/omd-luna-wow-admission-0290442b/ADMISSION.json`을 보존한다. 새 provider cell은 시작하지 않았다.
 - 첫 유효 scored cell `neighborhood-library-landing-luna-max-r1-model-only`은 COMPLETED, 432,477ms, provider/model 1/1, input 321,713/output 22,475, tool 11, retry/fallback/intervention 0이다. 화면 조형은 강했지만 objective score 30/UI-Resolved false: CTA가 desktop 3/mobile 2개로 중복, mobile reservation control 34px, 초기 axe serious 9건(주로 색 대비)이라 journey/responsive/accessibility를 실제로 실패했다. evidence/runtime 30점만 통과했으며 유효 baseline으로 유지한다.

@@ -1,12 +1,13 @@
 import { execFileSync } from "node:child_process";
-import { chmodSync, cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
+import { chmodSync, cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
-  ADMISSION_GENERATOR_PATH, DEFAULT_EVALUATOR_PATH, PREREG_CONTROLLER_PATH, RUNNER_PATH, collectRecords, prepareRuntimeSnapshot, reconcileCrashes, runCell, sha256, toolTelemetry, tree,
+  ADMISSION_GENERATOR_PATH, DEFAULT_EVALUATOR_PATH, PREREG_CONTROLLER_PATH, RUNNER_PATH, auditOmdExternalStaging, collectRecords, detectNativeInfrastructureBlock, prepareOmdExternalStaging, prepareRuntimeSnapshot, reconcileCrashes, runCell, sha256, toolTelemetry, tree,
 } from "../../../benchmarks/ui-resolve-bench/scripts/run-luna-max-wow-preview-cell.mjs";
 import { auditWowPreview, defaultGatePath } from "../../../benchmarks/ui-resolve-bench/scripts/audit-luna-max-wow-preview.mjs";
+import { OMD_EXTERNAL_STAGING_ACTIVATION } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-luna-max-wow-preview.mjs";
 
 function git(root, ...args) { return execFileSync("git", ["-C", root, ...args], { encoding: "utf8" }).trim(); }
 function json(path, value) { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`); return path; }
@@ -36,7 +37,7 @@ function fixture({ runnerMode = "success", designSystem = true, variant = "model
   for (let index = 0; index < 48; index += 1) {
     const id = `cell-${String(index + 1).padStart(2, "0")}`; const cell = join(materialized, "prepared-cells", id); mkdirSync(join(cell, ".benchmark"), { recursive: true });
     if (variant !== "model-only") { mkdirSync(join(cell, ".agents/skills/frontend-design"), { recursive: true }); writeFileSync(join(cell, ".agents/skills/frontend-design/SKILL.md"), "---\nname: frontend-design\n---\n# frozen frontend design\n"); }
-    writeFileSync(join(cell, "index.html"), `<main>${id}</main>\n`); writeFileSync(join(cell, ".benchmark/invocation-prompt.txt"), `Build ${id}`);
+    writeFileSync(join(cell, "index.html"), `<main>${id}</main>\n`); writeFileSync(join(cell, ".benchmark/invocation-prompt.txt"), `Build ${id}${variant === "omd-autopilot-v2" ? `\n\n${OMD_EXTERNAL_STAGING_ACTIVATION}` : ""}`);
     json(join(cell, ".benchmark/cell.json"), { cell_id: id, task: { id: "neighborhood-library-landing" }, arm: { variant_id: variant }, runtime: { model: "gpt-5.6-luna", effort: "max", retry_budget: 0, replacement_budget: 0, fallback_budget: 0 }, evaluation: { eligible_for_execution_and_scoring: true } });
     json(join(cell, ".benchmark/manifest.json"), { source_commit: sourceCommit }); cells.push({ id, trial_index: (index % 3) + 1, workspace_tree: summary(cell) });
   }
@@ -51,7 +52,7 @@ function fixture({ runnerMode = "success", designSystem = true, variant = "model
   const browserPath = json(join(base, "browser.json"), { kind: "existing-browser-harness-cdp-preflight", source_commit: sourceCommit, excluded_from_benchmark_denominator: true, browser: { transport: "local-existing-chrome-cdp", named_existing: true, launched_by_controller: false, navigation_calls: 0, url: "http://127.0.0.1:3100/fixture" }, provider_calls: 0, model_calls: 0, browser_calls: 1 });
   const runner = join(base, "fake-runner.mjs");
   const nativeSha = "e".repeat(64);
-  writeFileSync(runner, `import{createHash}from'node:crypto';import{readFileSync,writeFileSync}from'node:fs';import{join}from'node:path';const canon=v=>Array.isArray(v)?'['+v.map(canon).join(',')+']':v&&typeof v==='object'?'{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+canon(v[k])).join(',')+'}':JSON.stringify(v),hash=v=>createHash('sha256').update(v).digest('hex'),cacheBytes=readFileSync(join(process.env.CODEX_HOME,'models_cache.json')),cache=JSON.parse(cacheBytes),{fetched_at,...semantic}=cache,profile=cache.models.find(x=>x.slug==='gpt-5.6-luna'),cacheEvidence={cache_sha256:hash(cacheBytes),cache_semantic_sha256:hash(canon(semantic)),model_profile_sha256:hash(canon(profile)),cache_fetched_at:fetched_at,cache_client_version:cache.client_version};const a=process.argv.slice(2),w=a[a.indexOf('--workspace')+1],events=[{type:'response.completed',model:'gpt-5.6-luna'}];${agentBrowserCall ? "events.push({type:'item.completed',item:{id:'browser-1',type:'command_execution',command:'browser-harness --doctor'}});" : ""}${externalContextCall ? "events.push({type:'item.completed',item:{id:'external-1',type:'command_execution',command:'cat /Users/example/.codex/skills/secret/SKILL.md > /tmp/context.txt'}});" : ""}${networkAttempt ? "events.push({type:'item.completed',item:{id:'network-1',type:'command_execution',command:'/usr/bin/curl https://example.invalid'}});events.push({type:'item.completed',item:{id:'network-2',type:'web_search',query:'external'}});" : ""}writeFileSync(join(w,'.benchmark/argv.json'),JSON.stringify(a));writeFileSync(join(w,'.benchmark/runtime-env.json'),JSON.stringify({HOME:process.env.HOME,CODEX_HOME:process.env.CODEX_HOME,ZDOTDIR:process.env.ZDOTDIR,PATH:process.env.PATH,OMD_BENCH_CODEX_BIN:process.env.OMD_BENCH_CODEX_BIN}));writeFileSync(join(w,'.benchmark/events.jsonl'),events.map(JSON.stringify).join('\\n')+'\\n');writeFileSync(join(w,'index.html'),${JSON.stringify(designSystem ? "<style>:root{--color:#123;--space:8px;--radius:6px}.card{}.action{}.notice{}</style><main class=card>done</main>" : "<main>done</main>")});writeFileSync(join(w,'.benchmark/run-result.json'),JSON.stringify({runtime:{agent_version:${JSON.stringify(cliVersion)},binary_sha256:hash(readFileSync(process.argv[1])),native_binary_sha256:${JSON.stringify(nativeSha)},model_requested:'gpt-5.6-luna',model:'gpt-5.6-luna',reasoning:'max',effort_requested:'max',model_reported:'gpt-5.6-luna',model_tool_mode_evidence:{...cacheEvidence,auth_source_before_run:cacheEvidence}},output:{model_usage:[{input_tokens:10,output_tokens:20}]},process:{exit_code:${runnerMode === "failed" ? 7 : 0},timed_out:${runnerMode === "timeout"}}}));${runnerMode === "failed" ? "process.exitCode=7" : ""}`);
+  writeFileSync(runner, `import{createHash}from'node:crypto';import{readFileSync,writeFileSync}from'node:fs';import{join}from'node:path';const canon=v=>Array.isArray(v)?'['+v.map(canon).join(',')+']':v&&typeof v==='object'?'{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+canon(v[k])).join(',')+'}':JSON.stringify(v),hash=v=>createHash('sha256').update(v).digest('hex'),cacheBytes=readFileSync(join(process.env.CODEX_HOME,'models_cache.json')),cache=JSON.parse(cacheBytes),{fetched_at,...semantic}=cache,profile=cache.models.find(x=>x.slug==='gpt-5.6-luna'),cacheEvidence={cache_sha256:hash(cacheBytes),cache_semantic_sha256:hash(canon(semantic)),model_profile_sha256:hash(canon(profile)),cache_fetched_at:fetched_at,cache_client_version:cache.client_version};const a=process.argv.slice(2),w=a[a.indexOf('--workspace')+1],events=[{type:'response.completed',model:'gpt-5.6-luna'}];${agentBrowserCall ? "events.push({type:'item.completed',item:{id:'browser-1',type:'command_execution',command:'browser-harness --doctor'}});" : ""}${externalContextCall ? "events.push({type:'item.completed',item:{id:'external-1',type:'command_execution',command:'cat /Users/example/.codex/skills/secret/SKILL.md > /tmp/context.txt'}});" : ""}${networkAttempt ? "events.push({type:'item.completed',item:{id:'network-1',type:'command_execution',command:'/usr/bin/curl https://example.invalid'}});events.push({type:'item.completed',item:{id:'network-2',type:'web_search',query:'external'}});" : ""}writeFileSync(join(w,'.benchmark/argv.json'),JSON.stringify(a));writeFileSync(join(w,'.benchmark/runtime-env.json'),JSON.stringify({HOME:process.env.HOME,CODEX_HOME:process.env.CODEX_HOME,ZDOTDIR:process.env.ZDOTDIR,PATH:process.env.PATH,OMD_BENCH_CODEX_BIN:process.env.OMD_BENCH_CODEX_BIN,OMD_BENCH_EXTERNAL_STAGING_ROOT:process.env.OMD_BENCH_EXTERNAL_STAGING_ROOT,OMD_BENCH_COMPILED_CORE_PACKAGE:process.env.OMD_BENCH_COMPILED_CORE_PACKAGE,OMD_BENCH_CORE_CHECKPOINT:process.env.OMD_BENCH_CORE_CHECKPOINT}));writeFileSync(join(w,'.benchmark/events.jsonl'),events.map(JSON.stringify).join('\\n')+'\\n');${runnerMode === "native-block" ? "writeFileSync(join(w,'.benchmark/final-message.txt'),'Blocked before product build: the receipt-gated design-system adopter rejects packages nested inside the project, while your workspace-only rule forbids staging outside it.');" : `writeFileSync(join(w,'index.html'),${JSON.stringify(designSystem ? "<style>:root{--color:#123;--space:8px;--radius:6px}.card{}.action{}.notice{}</style><main class=card>done</main>" : "<main>done</main>")});`}writeFileSync(join(w,'.benchmark/run-result.json'),JSON.stringify({runtime:{agent_version:${JSON.stringify(cliVersion)},binary_sha256:hash(readFileSync(process.argv[1])),native_binary_sha256:${JSON.stringify(nativeSha)},model_requested:'gpt-5.6-luna',model:'gpt-5.6-luna',reasoning:'max',effort_requested:'max',model_reported:'gpt-5.6-luna',model_tool_mode_evidence:{...cacheEvidence,auth_source_before_run:cacheEvidence}},output:{model_usage:[{input_tokens:10,output_tokens:20}]},process:{exit_code:${runnerMode === "failed" ? 7 : 0},timed_out:${runnerMode === "timeout"}}}));${runnerMode === "failed" ? "process.exitCode=7" : ""}`);
   chmodSync(runner, 0o755);
   const actualRunnerSha = sha256(readFileSync(runner));
   const canonicalRunner = realpathSync(runner);
@@ -106,6 +107,43 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     const competitor = fixture({ variant: "anthropic-frontend-design" }); const competitorResult = execute(competitor); const competitorIsolation = JSON.parse(readFileSync(competitorResult.provider_runtime_isolation.path));
     expect(competitorIsolation.skills.project_skill_files.map((item) => item.path)).toEqual([".agents/skills/frontend-design/SKILL.md"]);
     expect(readFileSync(resolve("benchmarks/ui-resolve-bench/scripts/run-codex.mjs"), "utf8")).toContain('["--disable", "plugins", "--disable", "skill_search"]');
+  });
+
+  it("discloses one exact cell-local external staging root only to the OmD arm", () => {
+    const omd = fixture({ variant: "omd-autopilot-v2" }); const result = execute(omd);
+    const workspace = join(omd.materialized, "prepared-cells/cell-01/.benchmark/execution/workspace");
+    const env = JSON.parse(readFileSync(join(workspace, ".benchmark/runtime-env.json")));
+    expect(env.OMD_BENCH_EXTERNAL_STAGING_ROOT).toBe(join(realpathSync(join(omd.materialized, "prepared-cells/cell-01/.benchmark/execution")), "omd-external-staging"));
+    expect(env.OMD_BENCH_COMPILED_CORE_PACKAGE).toBe(join(env.OMD_BENCH_EXTERNAL_STAGING_ROOT, "compiled-core")); expect(env.OMD_BENCH_CORE_CHECKPOINT).toBe(join(env.OMD_BENCH_EXTERNAL_STAGING_ROOT, "project-adoption-checkpoint.json"));
+    expect(readFileSync(join(workspace, ".benchmark/PROMPT.md"), "utf8")).toContain(OMD_EXTERNAL_STAGING_ACTIVATION); expect(readFileSync(join(workspace, ".benchmark/PROMPT.md"), "utf8")).not.toContain(env.OMD_BENCH_EXTERNAL_STAGING_ROOT);
+    expect(JSON.parse(readFileSync(result.external_staging.receipt.path))).toMatchObject({ variant_id: "omd-autopilot-v2", staging_root: env.OMD_BENCH_EXTERNAL_STAGING_ROOT, provider_calls: 0 });
+    expect(JSON.parse(readFileSync(join(workspace, ".benchmark/argv.json")))).toEqual(expect.arrayContaining(["--additional-writable-root", env.OMD_BENCH_EXTERNAL_STAGING_ROOT]));
+
+    const competitor = fixture({ variant: "anthropic-frontend-design" }); execute(competitor);
+    const competitorWorkspace = join(competitor.materialized, "prepared-cells/cell-01/.benchmark/execution/workspace");
+    const competitorEnv = JSON.parse(readFileSync(join(competitorWorkspace, ".benchmark/runtime-env.json")));
+    expect(competitorEnv.OMD_BENCH_EXTERNAL_STAGING_ROOT).toBeUndefined();
+    expect(readFileSync(join(competitorWorkspace, ".benchmark/PROMPT.md"), "utf8")).not.toContain("OMD_BENCH_EXTERNAL_STAGING_ROOT");
+  });
+
+  it("rejects staging traversal, symlinks, competitor access, and receipt tampering", () => {
+    const base = mkdtempSync(join(tmpdir(), "omd-staging-adversarial-")); const execution = join(base, "cell/.benchmark/execution"); const workspace = join(execution, "workspace");
+    mkdirSync(join(workspace, ".benchmark"), { recursive: true }); writeFileSync(join(workspace, ".benchmark/invocation-prompt.txt"), `Build\n${OMD_EXTERNAL_STAGING_ACTIVATION}`); writeFileSync(join(workspace, ".benchmark/PROMPT.md"), `Build\n${OMD_EXTERNAL_STAGING_ACTIVATION}`);
+    const staging = prepareOmdExternalStaging({ execution, workspace, metadata: { arm: { variant_id: "omd-autopilot-v2" } } });
+    symlinkSync(base, join(staging.root, "escape")); expect(auditOmdExternalStaging(staging)).toMatchObject({ pass: false, violations: [{ path: "escape", reason: "symlink-forbidden" }] });
+    const telemetry = toolTelemetry([{ type: "item.completed", item: { id: "other-cell", type: "command_execution", command: "cat /private/tmp/another-materialized-cell/secret" } }], null, { workspace, providerHome: join(execution, "provider-home"), externalStagingRoot: staging.root });
+    expect(telemetry.external_context_interventions).toBe(1);
+    const originalReceiptSha = sha256(readFileSync(staging.receiptPath)); const receipt = JSON.parse(readFileSync(staging.receiptPath)); receipt.staging_root = join(base, "sibling-cell"); writeFileSync(staging.receiptPath, JSON.stringify(receipt));
+    expect(sha256(readFileSync(staging.receiptPath))).not.toBe(originalReceiptSha);
+  });
+
+  it("classifies the preserved blank-shell adopter/workspace conflict as infrastructure-invalid evidence", () => {
+    const message = "Blocked before product build: the receipt-gated design-system adopter rejects packages nested inside the project, while your workspace-only rule forbids staging outside it.";
+    expect(detectNativeInfrastructureBlock({ variantId: "omd-autopilot-v2", blankShell: true, finalMessage: message })).toBe(true);
+    expect(detectNativeInfrastructureBlock({ variantId: "model-only", blankShell: true, finalMessage: message })).toBe(false);
+    expect(detectNativeInfrastructureBlock({ variantId: "omd-autopilot-v2", blankShell: false, finalMessage: message })).toBe(false);
+    const fixtureRun = fixture({ variant: "omd-autopilot-v2", runnerMode: "native-block" }); const terminal = execute(fixtureRun);
+    expect(terminal).toMatchObject({ status: "infrastructure-invalid", native_infrastructure_block: true, blank_shell: true, evaluator: { terminal_failure_projection: true } });
   });
 
   it("accepts a prompt-input fetched_at-only cache refresh and keeps rollout exact", () => {

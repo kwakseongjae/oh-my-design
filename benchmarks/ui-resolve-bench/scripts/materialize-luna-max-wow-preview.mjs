@@ -26,6 +26,7 @@ import {
   defaultConfigPath,
   defaultNeutralInputLockPath,
   WORKSPACE_RUNTIME_BOUNDARY,
+  OMD_EXTERNAL_STAGING_ACTIVATION,
   validateCompetitorLock,
   validateConfig,
   validateNeutralTaskPacketLock,
@@ -424,6 +425,7 @@ export function materializeCommand(args) {
     if (sourcesByVariant.has(cell.variant_id)) armReceipt = installCompetitor(sourcesByVariant.get(cell.variant_id), checkoutRoot, workspace);
     else if (cell.variant_id === "omd-autopilot-v2") armReceipt = installOmd(sourceCommit, workspace);
 
+    if (cell.variant_id === "omd-autopilot-v2") armReceipt = { ...armReceipt, activation_prefix: `${armReceipt.activation_prefix}\n\n${OMD_EXTERNAL_STAGING_ACTIVATION}`, external_staging_activation_sha256: sha256(OMD_EXTERNAL_STAGING_ACTIVATION) };
     const taskAndBoundary = `${task.prompt}\n\n${WORKSPACE_RUNTIME_BOUNDARY}`;
     const invocationPrompt = armReceipt.activation_prefix ? `${armReceipt.activation_prefix}\n\n${taskAndBoundary}` : taskAndBoundary;
     writeExclusive(join(workspace, ".benchmark/prompt.txt"), task.prompt);

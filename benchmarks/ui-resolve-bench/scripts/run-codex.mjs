@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { spawn } from "node:child_process";
 import { createHash } from "node:crypto";
-import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { appendFileSync, existsSync, lstatSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { basename, dirname, join, resolve } from "node:path";
 import { diffTreeManifests, parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
 import {
   codexBrowserSandboxSpec,
@@ -29,6 +29,7 @@ const expectedWrapperSha = args.get("expected-wrapper-sha") ? String(args.get("e
 const expectedNativePath = args.get("expected-native-path") ? resolve(String(args.get("expected-native-path"))) : null;
 const expectedNativeSha = args.get("expected-native-sha") ? String(args.get("expected-native-sha")) : null;
 const artifactSuffix = args.get("artifact-suffix") ? String(args.get("artifact-suffix")) : null;
+const additionalWritableRoot = args.get("additional-writable-root") ? resolve(String(args.get("additional-writable-root"))) : null;
 
 if (!workspace) {
   console.error("usage: run-codex.mjs --workspace <prepared-dir> [--model gpt-5.6-terra] [--reasoning xhigh]");
@@ -48,6 +49,14 @@ if (existsSync(resultPath)) throw new Error(`refusing to overwrite completed run
 const manifest = readJson(manifestPath);
 if (manifest.runtime_target !== "codex") {
   throw new Error("workspace was not prepared with --runtime codex");
+}
+if (additionalWritableRoot) {
+  const info = existsSync(additionalWritableRoot) ? lstatSync(additionalWritableRoot) : null;
+  if (!disablePluginSkillSearch || manifest.variant?.id !== "omd-autopilot-v2" || !info?.isDirectory() || info.isSymbolicLink()
+    || dirname(additionalWritableRoot) !== dirname(workspace) || basename(additionalWritableRoot) !== "omd-external-staging"
+    || resolve(process.env.OMD_BENCH_EXTERNAL_STAGING_ROOT ?? "") !== additionalWritableRoot) {
+    throw new Error("additional writable root must be the exact controller-bound OmD cell-local staging sibling");
+  }
 }
 const promptPath = artifactSuffix
   ? join(benchmarkDir, "repair-prompts", `${artifactSuffix}.md`)
@@ -88,6 +97,7 @@ const innerCommand = [
   ...(browserProofRequired ? ["--dangerously-bypass-approvals-and-sandbox"] : ["--sandbox", "workspace-write"]),
   "--cd",
   workspace,
+  ...(additionalWritableRoot ? ["--add-dir", additionalWritableRoot] : []),
   "--model",
   model,
   "--config",
@@ -326,6 +336,7 @@ const result = {
     ignored_user_config: !loadUserConfig,
     hook_trust_bypassed: bypassHookTrust,
     plugin_skill_search_disabled: disablePluginSkillSearch,
+    additional_writable_root: additionalWritableRoot,
   },
   process: {
     exit_code: exit.code,

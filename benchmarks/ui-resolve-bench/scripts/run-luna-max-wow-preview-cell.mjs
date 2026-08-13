@@ -7,6 +7,7 @@ import {
 import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { inspectCodexModelToolMode } from "./codex-tool-mode-contract.mjs";
+import { OMD_EXTERNAL_STAGING_ACTIVATION } from "./prepare-luna-max-wow-preview.mjs";
 
 export const RUNNER_PATH = "benchmarks/ui-resolve-bench/scripts/run-luna-max-wow-preview-cell.mjs";
 export const ADMISSION_GENERATOR_PATH = "benchmarks/ui-resolve-bench/scripts/admit-luna-max-wow-preview.mjs";
@@ -16,6 +17,10 @@ export const DEFAULT_EVALUATOR_PATH = "benchmarks/ui-resolve-bench/scripts/evalu
 export const MODEL = "gpt-5.6-luna";
 export const EFFORT = "max";
 export const TIMEOUT_MS = 900_000;
+const OMD_VARIANT = "omd-autopilot-v2";
+const OMD_STAGING_ENV = "OMD_BENCH_EXTERNAL_STAGING_ROOT";
+const OMD_PACKAGE_ENV = "OMD_BENCH_COMPILED_CORE_PACKAGE";
+const OMD_CHECKPOINT_ENV = "OMD_BENCH_CORE_CHECKPOINT";
 const CODEX_BUILTIN_SKILLS = Object.freeze(["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"]);
 const HERE = dirname(fileURLToPath(import.meta.url));
 const DEFAULT_REPO_ROOT = resolve(HERE, "../../..");
@@ -218,9 +223,44 @@ function copyExecutionWorkspace(cell, target) {
   mkdirSync(join(target, ".benchmark"), { recursive: false });
   cpSync(join(cell, ".benchmark/invocation-prompt.txt"), join(target, ".benchmark/invocation-prompt.txt"));
   cpSync(join(cell, ".benchmark/invocation-prompt.txt"), join(target, ".benchmark/PROMPT.md"));
+  invariant(readFileSync(join(target, ".benchmark/invocation-prompt.txt")).equals(readFileSync(join(cell, ".benchmark/invocation-prompt.txt")))
+    && readFileSync(join(target, ".benchmark/PROMPT.md")).equals(readFileSync(join(cell, ".benchmark/invocation-prompt.txt"))), "copied execution prompt differs from exact materialized bytes");
   const metadata = readJson(join(cell, ".benchmark/cell.json")); const initial = tree(target, [".benchmark"]);
   writeJsonExclusive(join(target, ".benchmark/manifest.json"), { runtime_target: "codex", task: { id: metadata.task.id }, variant: { id: metadata.arm.variant_id }, workspace: { initial_sha256: tree(target).sha256, product_initial_sha256: initial.sha256, product_initial_files: initial.files, product_ignore: [".benchmark"] } });
   return { metadata, initial: tree(target) };
+}
+export function prepareOmdExternalStaging({ execution, workspace, metadata }) {
+  if (metadata.arm.variant_id !== OMD_VARIANT) return null;
+  const canonicalExecution = realpathSync(execution); const canonicalWorkspace = realpathSync(workspace);
+  const root = join(canonicalExecution, "omd-external-staging");
+  invariant(dirname(root) === canonicalExecution && !existsSync(root), "OmD staging root must be a fresh direct child of the cell execution boundary");
+  mkdirSync(root, { recursive: false, mode: 0o700 }); directory(root, "OmD external staging root");
+  invariant(realpathSync(root) === root && !root.startsWith(`${canonicalWorkspace}${sep}`), "OmD staging root must be canonical and outside the project workspace");
+  const packageRoot = join(root, "compiled-core"); const checkpointPath = join(root, "project-adoption-checkpoint.json");
+  invariant(!packageRoot.startsWith(`${canonicalWorkspace}${sep}`) && !checkpointPath.startsWith(`${packageRoot}${sep}`), "OmD package/checkpoint containment contract drift");
+  const disclosure = OMD_EXTERNAL_STAGING_ACTIVATION;
+  invariant(readFileSync(join(workspace, ".benchmark/PROMPT.md"), "utf8").includes(disclosure), "OmD prepared prompt is missing the preregistered external staging activation");
+  const receiptPath = join(execution, "OMD-EXTERNAL-STAGING.json");
+  writeJsonExclusive(receiptPath, { schema_version: "0.1", kind: "omd-luna-max-cell-local-external-staging", variant_id: OMD_VARIANT, cell_execution_root: canonicalExecution, project_workspace: canonicalWorkspace, staging_root: root, compiled_package_root: packageRoot, checkpoint_path: checkpointPath, environment: { staging_root: OMD_STAGING_ENV, compiled_package: OMD_PACKAGE_ENV, checkpoint: OMD_CHECKPOINT_ENV }, preregistered_activation_sha256: sha256(disclosure), initial_tree_sha256: tree(root).sha256, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 });
+  return { root, packageRoot, checkpointPath, disclosure, receiptPath, receiptSha256: sha256(readFileSync(receiptPath)) };
+}
+export function auditOmdExternalStaging(staging) {
+  if (!staging) return { applicable: false, pass: true, violations: [] };
+  const violations = [];
+  const visit = (root, current = root) => {
+    for (const name of readdirSync(current).sort()) {
+      const path = join(current, name); const info = lstatSync(path);
+      if (info.isSymbolicLink()) violations.push({ path: relative(root, path), reason: "symlink-forbidden" });
+      else if (info.isDirectory()) visit(root, path);
+      else if (!info.isFile()) violations.push({ path: relative(root, path), reason: "unsupported-entry" });
+    }
+  };
+  directory(staging.root, "OmD external staging root"); visit(staging.root);
+  return { applicable: true, pass: violations.length === 0, root: staging.root, violations, tree: violations.length === 0 ? tree(staging.root) : null };
+}
+export function detectNativeInfrastructureBlock({ variantId, blankShell, finalMessage }) {
+  return variantId === OMD_VARIANT && blankShell
+    && /blocked before product build|adopter rejects packages nested inside the project|workspace-only rule forbids staging outside/i.test(finalMessage);
 }
 function parseEvents(path) {
   if (!existsSync(path)) return [];
@@ -248,7 +288,7 @@ function rolloutEvidence(events, runResult, staticRuntime, admittedCatalog) {
   const providerUsage = latestModelUsage ? { available: true, input_tokens: Number(latestModelUsage.input_tokens), output_tokens: Number(latestModelUsage.output_tokens), total_tokens: Number(latestModelUsage.input_tokens) + Number(latestModelUsage.output_tokens) } : { available: false, reason: "provider-emitted-usage-unavailable" };
   return { exact, contexts, completions, fallbacks, provider_usage: providerUsage, interventions: events.some((event) => event.type === "unparseable") || marker ? 1 : 0, marker };
 }
-export function toolTelemetry(events, runResult, { workspace, providerHome }) {
+export function toolTelemetry(events, runResult, { workspace, providerHome, externalStagingRoot = null }) {
   const finiteNormalized = runResult?.output?.agent_tool_call_count;
   const toolTypes = new Set(["command_execution", "mcp_tool_call", "file_change", "web_search", "computer_use"]); const ids = new Set();
   const browserIds = new Set(); const networkIds = new Set(); const externalContextItems = [];
@@ -273,7 +313,7 @@ export function toolTelemetry(events, runResult, { workspace, providerHome }) {
     if (forbiddenCommand || implicitNetworkTool) networkIds.add(id);
     if (event.item.type === "computer_use" || /(?:^|[\s"'`/])(open|browser-harness)(?=$|[\s"'`;])/i.test(raw)) browserIds.add(id);
     const absolutePaths = raw.match(/\/(?:Users|private\/tmp|tmp)\/[^\s"'`\\]+/g) ?? [];
-    const allowedRoots = [workspace, providerHome].map((root) => { try { return realpathSync(root); } catch { return resolve(root); } });
+    const allowedRoots = [workspace, providerHome, externalStagingRoot].filter(Boolean).map((root) => { try { return realpathSync(root); } catch { return resolve(root); } });
     const forbiddenPath = absolutePaths.find((candidate) => {
       let normalized = resolve(candidate.replace(/[),;:]+$/, ""));
       try { normalized = realpathSync(normalized); } catch { /* an attempted read/write may not exist yet */ }
@@ -483,20 +523,26 @@ export function runCell(options) {
   const startedAt = new Date().toISOString(); const started = { schema_version: "0.1", kind: "omd-luna-max-cell-start", cell_id: next.id, source_commit: sourceCommit, order: admission.manifest.cells.findIndex((entry) => entry.id === next.id) + 1, model: MODEL, effort: EFFORT, timeout_ms: TIMEOUT_MS, admission_sha256: admission.admissionEvidence.sha256, started_at: startedAt };
   writeJsonExclusive(join(execution, "STARTED.json"), started); stateLine(root, started);
   const isolated = join(execution, "workspace"); const prepared = copyExecutionWorkspace(cell, isolated);
+  const externalStaging = prepareOmdExternalStaging({ execution, workspace: isolated, metadata: prepared.metadata });
   const providerIsolation = prepareProviderIsolation({ execution, workspace: isolated, metadata: prepared.metadata, staticRuntime, staticRuntimeEvidence: admission.evidence.static_runtime, runtimeHome: sourceRuntimeHome, env: options.runtimeEnv ?? process.env, promptInputProbe: options.promptInputProbe });
   const cliBinding = staticRuntime.codex_cli;
-  const runner = resolve(options.runnerBin ?? join(repoRoot, DEFAULT_RUNNER_PATH)); const runnerArgs = ["--workspace", isolated, "--model", MODEL, "--reasoning", EFFORT, "--timeout-ms", String(TIMEOUT_MS), "--disable-plugin-skill-search", "--expected-codex-version", cliBinding.version, "--expected-wrapper-sha", cliBinding.wrapper.sha256, "--expected-native-path", cliBinding.native.path, "--expected-native-sha", cliBinding.native.sha256];
+  const runner = resolve(options.runnerBin ?? join(repoRoot, DEFAULT_RUNNER_PATH)); const runnerArgs = ["--workspace", isolated, "--model", MODEL, "--reasoning", EFFORT, "--timeout-ms", String(TIMEOUT_MS), "--disable-plugin-skill-search", "--expected-codex-version", cliBinding.version, "--expected-wrapper-sha", cliBinding.wrapper.sha256, "--expected-native-path", cliBinding.native.path, "--expected-native-sha", cliBinding.native.sha256, ...(externalStaging ? ["--additional-writable-root", externalStaging.root] : [])];
   const call = invocation(runner, runnerArgs); const startNs = process.hrtime.bigint();
-  const result = spawnSync(call.executable, call.args, { cwd: repoRoot, encoding: "utf8", timeout: TIMEOUT_MS + 30_000, maxBuffer: 64 * 1024 * 1024, env: { ...providerIsolation.env, OMD_LUNA_MAX_NETWORK_POLICY: "provider-only-no-self-network", OMD_LUNA_MAX_BROWSER_POLICY: "no-provider-browser-launch" } });
+  const result = spawnSync(call.executable, call.args, { cwd: repoRoot, encoding: "utf8", timeout: TIMEOUT_MS + 30_000, maxBuffer: 64 * 1024 * 1024, env: { ...providerIsolation.env, ...(externalStaging ? { [OMD_STAGING_ENV]: externalStaging.root, [OMD_PACKAGE_ENV]: externalStaging.packageRoot, [OMD_CHECKPOINT_ENV]: externalStaging.checkpointPath } : {}), OMD_LUNA_MAX_NETWORK_POLICY: "provider-only-no-self-network", OMD_LUNA_MAX_BROWSER_POLICY: "no-provider-browser-launch" } });
   rmSync(providerIsolation.receipt.provider_home, { recursive: true });
   invariant(!existsSync(providerIsolation.receipt.provider_home), "provider auth home cleanup failed");
   writeJsonExclusive(join(execution, "PROVIDER-RUNTIME-CLEANUP.json"), { schema_version: "0.1", kind: "omd-luna-max-provider-runtime-cleanup", provider_home_sha256: sha256(providerIsolation.receipt.provider_home), auth_and_catalog_copies_removed: true, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 });
   const wallMs = Number(process.hrtime.bigint() - startNs) / 1e6;
   writeFileSync(join(execution, "runner.stdout"), result.stdout ?? "", { flag: "wx" }); writeFileSync(join(execution, "runner.stderr"), result.stderr ?? "", { flag: "wx" });
   const runResultPath = join(isolated, ".benchmark/run-result.json"); const eventsPath = join(isolated, ".benchmark/events.jsonl"); const events = parseEvents(eventsPath); const runResult = existsSync(runResultPath) ? readJson(runResultPath) : null; const rollout = rolloutEvidence(events, runResult, admission.evidence.static_runtime.value.runtime, { semantic_sha256: providerIsolation.receipt.model_catalog.admitted_semantic_sha256, client_version: providerIsolation.receipt.model_catalog.client_version });
-  const tools = toolTelemetry(events, runResult, { workspace: isolated, providerHome: providerIsolation.receipt.provider_home });
+  const tools = toolTelemetry(events, runResult, { workspace: isolated, providerHome: providerIsolation.receipt.provider_home, externalStagingRoot: externalStaging?.root ?? null });
+  const stagingAudit = auditOmdExternalStaging(externalStaging);
+  const stagingReceiptIntact = !externalStaging || sha256(readFileSync(externalStaging.receiptPath)) === externalStaging.receiptSha256;
+  const finalMessage = existsSync(join(isolated, ".benchmark/final-message.txt")) ? readFileSync(join(isolated, ".benchmark/final-message.txt"), "utf8") : "";
+  const blankShell = readFileSync(join(isolated, "index.html")).equals(readFileSync(join(cell, "index.html")));
+  const nativeInfrastructureBlock = detectNativeInfrastructureBlock({ variantId: prepared.metadata.arm.variant_id, blankShell, finalMessage });
   const timedOut = result.error?.code === "ETIMEDOUT" || runResult?.process?.timed_out === true;
-  const providerSucceeded = result.status === 0 && !result.error && existsSync(runResultPath) && runResult?.process?.exit_code === 0 && !timedOut && rollout.exact && rollout.provider_usage.available && tools.agent_browser_calls === 0 && tools.agent_network_attempts === 0 && tools.external_context_interventions === 0;
+  const providerSucceeded = result.status === 0 && !result.error && existsSync(runResultPath) && runResult?.process?.exit_code === 0 && !timedOut && rollout.exact && rollout.provider_usage.available && tools.agent_browser_calls === 0 && tools.agent_network_attempts === 0 && tools.external_context_interventions === 0 && stagingAudit.pass && stagingReceiptIntact && !nativeInfrastructureBlock;
   let evaluation = null;
   if (providerSucceeded) {
     const evaluatorDir = join(execution, "evaluator"); mkdirSync(evaluatorDir, { recursive: false });
@@ -511,10 +557,10 @@ export function runCell(options) {
     events: existsSync(eventsPath) ? { sha256: sha256(readFileSync(eventsPath)), bytes: statSync(eventsPath).size } : null,
     stderr: { sha256: sha256(result.stderr ?? ""), bytes: Buffer.byteLength(result.stderr ?? "") }, stdout: { sha256: sha256(result.stdout ?? ""), bytes: Buffer.byteLength(result.stdout ?? "") },
   };
-  const infrastructureInvalid = !runResult || !rollout.exact || !rollout.provider_usage.available || tools.agent_browser_calls > 0 || tools.agent_network_attempts > 0 || tools.external_context_interventions > 0;
+  const infrastructureInvalid = !runResult || !rollout.exact || !rollout.provider_usage.available || tools.agent_browser_calls > 0 || tools.agent_network_attempts > 0 || tools.external_context_interventions > 0 || !stagingAudit.pass || !stagingReceiptIntact || nativeInfrastructureBlock;
   const status = timedOut ? "timeout" : infrastructureInvalid ? "infrastructure-invalid" : providerSucceeded && evaluation?.score && evaluation.exit_code === 0 ? "completed" : "failed";
   const failurePath = join(execution, "FAILURE-ARTIFACT.json");
-  writeJsonExclusive(failurePath, { schema_version: "0.1", cell_id: next.id, status, process: { exit_code: result.status, signal: result.signal, timed_out: timedOut, error: result.error?.message ?? null }, rollout_exact: rollout.exact, evaluator_exit_code: evaluation?.exit_code ?? null });
+  writeJsonExclusive(failurePath, { schema_version: "0.1", cell_id: next.id, status, native_infrastructure_block: nativeInfrastructureBlock, blank_shell: blankShell, staging_receipt_intact: stagingReceiptIntact, staging_audit: stagingAudit, process: { exit_code: result.status, signal: result.signal, timed_out: timedOut, error: result.error?.message ?? null }, rollout_exact: rollout.exact, evaluator_exit_code: evaluation?.exit_code ?? null });
   const packageResult = proof(isolated, prepared.metadata.arm.variant_id); const packagePath = join(execution, "DESIGN-SYSTEM-PACKAGE.json");
   writeJsonExclusive(packagePath, packageResult);
   const evaluatorValue = evaluation?.score ? readJson(resolve(execution, evaluation.score.path)) : null;
@@ -536,7 +582,7 @@ export function runCell(options) {
     manual_product_edits: interventions, follow_up_questions: interventions, unplanned_interventions: interventions, manual_edits: interventions, followups: interventions, required_states: requiredStates,
     proof: { screenshots, design_system_package: { ...fileBinding(packagePath), parsed: packageResult.parsed, pass: packageResult.parsed } }, failure_artifact: fileBinding(failurePath),
     provider_calls: rollout.exact ? 1 : "unknown", model_calls: rollout.exact ? 1 : "unknown", browser_calls: tools.agent_browser_calls + (evaluation?.browser_calls ?? 0), browser_call_split: { agent_browser_calls: tools.agent_browser_calls, evaluator_browser_calls: evaluation?.browser_calls ?? 0 }, retry_calls: 0, replacement_calls: 0, fallback_calls: 0, repair_calls: 0,
-    started_at: startedAt, finished_at: new Date().toISOString(), process: { exit_code: result.status, signal: result.signal, timed_out: timedOut, error: result.error?.message ?? null }, rollout: { exact_luna_max_one_turn: rollout.exact, raw_turn_context_count: rollout.contexts.length, cli_completion_count: rollout.completions.length, fallback_marker_count: rollout.fallbacks.length, evidence_mode: "run-result-plus-raw-cli-stream-plus-admitted-preflight" }, raw, design_system_package: packageResult, provider_runtime_isolation: fileBinding(join(execution, "PROVIDER-RUNTIME-ISOLATION.json")), provider_runtime_cleanup: fileBinding(join(execution, "PROVIDER-RUNTIME-CLEANUP.json")), admission_sha256: admission.admissionEvidence.sha256, rerun_allowed: false,
+    started_at: startedAt, finished_at: new Date().toISOString(), process: { exit_code: result.status, signal: result.signal, timed_out: timedOut, error: result.error?.message ?? null }, rollout: { exact_luna_max_one_turn: rollout.exact, raw_turn_context_count: rollout.contexts.length, cli_completion_count: rollout.completions.length, fallback_marker_count: rollout.fallbacks.length, evidence_mode: "run-result-plus-raw-cli-stream-plus-admitted-preflight" }, raw, design_system_package: packageResult, native_infrastructure_block: nativeInfrastructureBlock, blank_shell: blankShell, external_staging: externalStaging ? { receipt: fileBinding(externalStaging.receiptPath), expected_receipt_sha256: externalStaging.receiptSha256, receipt_intact: stagingReceiptIntact, audit: stagingAudit } : { applicable: false }, provider_runtime_isolation: fileBinding(join(execution, "PROVIDER-RUNTIME-ISOLATION.json")), provider_runtime_cleanup: fileBinding(join(execution, "PROVIDER-RUNTIME-CLEANUP.json")), admission_sha256: admission.admissionEvidence.sha256, rerun_allowed: false,
   };
   terminal.record_sha256 = sha256(canonical(terminal));
   const terminalName = status === "completed" ? "COMPLETED.json" : status === "timeout" ? "TIMEOUT.json" : status === "infrastructure-invalid" ? "INFRASTRUCTURE-INVALID.json" : "FAILED.json";

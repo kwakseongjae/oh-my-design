@@ -23,7 +23,8 @@ export const admissionReceiptGeneratorPath = "benchmarks/ui-resolve-bench/script
 export const evaluationRuntimeReceiptGeneratorPath = "benchmarks/ui-resolve-bench/scripts/prepare-luna-max-evaluation-runtime-receipt.mjs";
 export const resultAuditorPath = "benchmarks/ui-resolve-bench/scripts/audit-luna-max-wow-preview.mjs";
 export const scoreGatePath = "benchmarks/ui-resolve-bench/config/omd-luna-max-wow-preview-score-gate-v0.1.json";
-export const WORKSPACE_RUNTIME_BOUNDARY = "Benchmark runtime boundary: keep every generated file and temporary validation artifact inside the current workspace (use .benchmark/tmp when needed). Do not read or write external paths, including /tmp, and do not launch or control browsers or use network access; the external evaluator owns browser checks.";
+export const WORKSPACE_RUNTIME_BOUNDARY = "Benchmark runtime boundary: keep every generated file and temporary validation artifact inside the current workspace (use .benchmark/tmp when needed), except an exact cell-local staging path explicitly disclosed by the controller for an arm whose native package adopter requires source/destination separation. Do not read or write any other external path, including /tmp, and do not launch or control browsers or use network access; the external evaluator owns browser checks.";
+export const OMD_EXTERNAL_STAGING_ACTIVATION = "OmD native package activation: when the receipt-gated Core adopter requires source/destination separation, compile only to $OMD_BENCH_COMPILED_CORE_PACKAGE, write the project-owner checkpoint only to $OMD_BENCH_CORE_CHECKPOINT, and treat $OMD_BENCH_EXTERNAL_STAGING_ROOT as the sole permitted external root. These variables are controller-bound per cell; never traverse above them.";
 export const EXECUTION_CLOSURE_PATHS = Object.freeze([
   executionMaterializerPath,
   executionRunnerPath,

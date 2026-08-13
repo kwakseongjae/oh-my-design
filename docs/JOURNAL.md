@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-13 (Codex) · Luna landing r1 discovery와 OmD staging fix
+- f555 epoch landing r1은 경쟁 4개 상태 누락, Impeccable timeout, OmD native adopter/workspace 충돌로 봉인했다.
+- OmD는 unavailable/focus/44px/error/success Core 계약을 잡았지만 adopter 충돌로 blank shell을 남겨 품질 분모에서 제외한다.
+- Sol/medium이 exact per-cell external staging을 preregistered prompt/env/receipt에 결박했고 경쟁 arm·host 접근을 차단했다.
+- Sol/xhigh 63 pass/3 skip, lint/node/diff green; 다음은 clean commit 후 full authority epoch 재발급이다.
+
 ## 2026-08-13 (Codex) · Luna cache false invalidation 수정 완료
 - Sol/medium이 prompt-input 후 `fetched_at`-only drift를 semantic/profile/client identity로 판정하도록 수정했다.
 - 원본/admitted SHA, 실제 pre-audit copy SHA, post-audit observed SHA를 receipt에 분리 기록한다.

@@ -89,7 +89,7 @@
     "model_substitution_budget": 0,
     "effort_substitution_budget": 0,
     "workspace_boundary_applies_to_every_arm": true,
-    "workspace_boundary_prompt_suffix": "Benchmark runtime boundary: keep every generated file and temporary validation artifact inside the current workspace (use .benchmark/tmp when needed). Do not read or write external paths, including /tmp, and do not launch or control browsers or use network access; the external evaluator owns browser checks."
+    "workspace_boundary_prompt_suffix": "Benchmark runtime boundary: keep every generated file and temporary validation artifact inside the current workspace (use .benchmark/tmp when needed), except an exact cell-local staging path explicitly disclosed by the controller for an arm whose native package adopter requires source/destination separation. Do not read or write any other external path, including /tmp, and do not launch or control browsers or use network access; the external evaluator owns browser checks."
   },
   "admission": {
     "clean_exact_head_required": true,
