@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oh-my-design.kr/schema/design-md-core-adoption-receipt-v2.schema.json",
+  "title": "Oh My Design DESIGN.md Core v2 Compiler Adoption Receipt (OmD Proof Profile)",
+  "description": "OmD proof-profile receipt binding reviewed compiler inputs to the five authority artifacts emitted inside a six-artifact Core v2 package. This receipt is not part of the vendor-neutral Core document format.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "status",
+    "authority",
+    "review",
+    "inputs",
+    "outputs"
+  ],
+  "properties": {
+    "schema_version": { "const": "2.0.0" },
+    "kind": { "const": "design-md-core-adoption-receipt" },
+    "status": { "const": "adopted" },
+    "authority": { "const": "system-graph" },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_sha256",
+        "reviewer",
+        "authority_transition_approved"
+      ],
+      "properties": {
+        "receipt_sha256": { "$ref": "#/$defs/finalSha256" },
+        "reviewer": { "$ref": "#/$defs/projectOwner" },
+        "authority_transition_approved": { "const": true }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "graph_sha256",
+        "provenance_sha256",
+        "coverage_sha256"
+      ],
+      "properties": {
+        "graph_sha256": { "$ref": "#/$defs/finalSha256" },
+        "provenance_sha256": { "$ref": "#/$defs/finalSha256" },
+        "coverage_sha256": { "$ref": "#/$defs/finalSha256" },
+        "migration_report_sha256": { "$ref": "#/$defs/finalSha256" }
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "design_md",
+        "graph",
+        "provenance",
+        "coverage",
+        "manifest"
+      ],
+      "properties": {
+        "design_md": {
+          "$ref": "#/$defs/designMdArtifact"
+        },
+        "graph": {
+          "$ref": "#/$defs/graphArtifact"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenanceArtifact"
+        },
+        "coverage": {
+          "$ref": "#/$defs/coverageArtifact"
+        },
+        "manifest": {
+          "$ref": "#/$defs/manifestArtifact"
+        }
+      }
+    },
+    "migration": { "$ref": "#/$defs/migrationEvidence" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "inputs": { "required": ["migration_report_sha256"] }
+        },
+        "required": ["inputs"]
+      },
+      "then": { "required": ["migration"] },
+      "else": { "not": { "required": ["migration"] } }
+    }
+  ],
+  "$defs": {
+    "finalSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "not": {
+        "const": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    "semanticText": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!\\s*$).+",
+      "not": {
+        "pattern": "^\\s*(?:\\[\\s*(?:[Ff][Ii][Ll][Ll](?:\\s|_|-)*[Ii][Nn]|[Tt][Oo][Dd][Oo]|[Tt][Bb][Dd]|[Uu][Nn][Kk][Nn][Oo][Ww][Nn]|[Uu][Nn][Rr][Ee][Ss][Oo][Ll][Vv][Ee][Dd]|[Nn][Oo][Tt](?:\\s|_|-)*[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd])[^\\]]*\\]\\s*|(?:[Ff][Ii][Ll][Ll](?:\\s|_|-)*[Ii][Nn]|[Tt][Oo][Dd][Oo]|[Tt][Bb][Dd]|[Uu][Nn][Kk][Nn][Oo][Ww][Nn]|[Uu][Nn][Rr][Ee][Ss][Oo][Ll][Vv][Ee][Dd]|[Nn][Oo][Tt](?:\\s|_|-)*[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd])(?:\\s*(?::|—|-)\\s*.*)?\\s*)$"
+      }
+    },
+    "projectOwner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "identifier"],
+      "properties": {
+        "role": { "const": "project-owner" },
+        "identifier": { "$ref": "#/$defs/semanticText" }
+      }
+    },
+    "designMdArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "const": "DESIGN.md" },
+        "sha256": { "$ref": "#/$defs/finalSha256" }
+      }
+    },
+    "graphArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "const": ".omd/system/graph.json" },
+        "sha256": { "$ref": "#/$defs/finalSha256" }
+      }
+    },
+    "provenanceArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "const": ".omd/system/provenance.json" },
+        "sha256": { "$ref": "#/$defs/finalSha256" }
+      }
+    },
+    "coverageArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "const": ".omd/system/coverage.json" },
+        "sha256": { "$ref": "#/$defs/finalSha256" }
+      }
+    },
+    "manifestArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "const": ".omd/system/manifest.json" },
+        "sha256": { "$ref": "#/$defs/finalSha256" }
+      }
+    },
+    "migrationEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_sha256",
+        "candidate_graph_sha256",
+        "candidate_design_md_sha256",
+        "preserved_extension_sha256",
+        "observation_fast_path_disabled",
+        "dropped_segments",
+        "source_reconstruction_equal",
+        "unsupported_claims_reviewed",
+        "unsupported_claims_approved"
+      ],
+      "properties": {
+        "source_sha256": { "$ref": "#/$defs/finalSha256" },
+        "candidate_graph_sha256": { "$ref": "#/$defs/finalSha256" },
+        "candidate_design_md_sha256": { "$ref": "#/$defs/finalSha256" },
+        "preserved_extension_sha256": { "$ref": "#/$defs/finalSha256" },
+        "observation_fast_path_disabled": { "const": true },
+        "dropped_segments": { "const": 0 },
+        "source_reconstruction_equal": { "const": true },
+        "unsupported_claims_reviewed": { "const": true },
+        "unsupported_claims_approved": { "const": true }
+      }
+    }
+  }
+}

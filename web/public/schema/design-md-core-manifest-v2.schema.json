@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oh-my-design.kr/schema/design-md-core-manifest-v2.schema.json",
+  "title": "DESIGN.md Core v2 Manifest",
+  "description": "Binds a vendor-neutral DESIGN.md projection either to an adopted canonical System Graph or to a non-authoritative migration candidate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "format",
+    "format_version",
+    "profile",
+    "section_order",
+    "authority",
+    "artifacts"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://oh-my-design.kr/schema/design-md-core-manifest-v2.schema.json"
+    },
+    "schema_version": { "const": "2.0.0" },
+    "format": { "const": "design-md-core" },
+    "format_version": { "const": "2.0.0" },
+    "profile": {
+      "enum": ["portable-core", "migration-candidate"]
+    },
+    "section_order": {
+      "const": [
+        "experience",
+        "foundations",
+        "typography-assets",
+        "components-states",
+        "layout-platforms",
+        "content-locales",
+        "governance"
+      ]
+    },
+    "authority": {
+      "anyOf": [
+        { "$ref": "#/$defs/boundAuthority" },
+        { "$ref": "#/$defs/candidateAuthority" }
+      ]
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["design_md", "graph"],
+      "properties": {
+        "design_md": { "$ref": "#/$defs/designMdArtifact" },
+        "graph": { "$ref": "#/$defs/graphArtifact" },
+        "provenance": { "$ref": "#/$defs/provenanceArtifact" },
+        "coverage": { "$ref": "#/$defs/coverageArtifact" }
+      }
+    },
+    "extensions": { "$ref": "#/$defs/extensions" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "type": "object",
+        "properties": { "profile": { "const": "portable-core" } }
+      },
+      "then": {
+        "type": "object",
+        "properties": { "authority": { "$ref": "#/$defs/boundAuthority" } }
+      }
+    },
+    {
+      "if": {
+        "type": "object",
+        "properties": { "profile": { "const": "migration-candidate" } }
+      },
+      "then": {
+        "type": "object",
+        "properties": { "authority": { "$ref": "#/$defs/candidateAuthority" } }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "boundAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonical", "graph_path", "projection_path"],
+      "properties": {
+        "canonical": { "const": "system-graph" },
+        "graph_path": { "const": ".omd/system/graph.json" },
+        "projection_path": { "const": "DESIGN.md" }
+      }
+    },
+    "candidateAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "canonical", "source_sha256", "candidate_graph_path", "candidate_projection_path"],
+      "properties": {
+        "status": { "const": "non-authoritative" },
+        "canonical": { "const": "source-design-md" },
+        "source_sha256": { "$ref": "#/$defs/sha256" },
+        "candidate_graph_path": { "const": ".omd/system/graph.json" },
+        "candidate_projection_path": { "const": "DESIGN.md" }
+      }
+    },
+    "artifactBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "designMdArtifact": {
+      "allOf": [
+        { "$ref": "#/$defs/artifactBase" },
+        { "type": "object", "properties": { "path": { "const": "DESIGN.md" } } }
+      ]
+    },
+    "graphArtifact": {
+      "allOf": [
+        { "$ref": "#/$defs/artifactBase" },
+        { "type": "object", "properties": { "path": { "const": ".omd/system/graph.json" } } }
+      ]
+    },
+    "provenanceArtifact": {
+      "allOf": [
+        { "$ref": "#/$defs/artifactBase" },
+        { "type": "object", "properties": { "path": { "const": ".omd/system/provenance.json" } } }
+      ]
+    },
+    "coverageArtifact": {
+      "allOf": [
+        { "$ref": "#/$defs/artifactBase" },
+        { "type": "object", "properties": { "path": { "const": ".omd/system/coverage.json" } } }
+      ]
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\\.[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)+$"
+      },
+      "additionalProperties": true
+    }
+  }
+}

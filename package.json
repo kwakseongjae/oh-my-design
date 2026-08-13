@@ -55,6 +55,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "tsc --noEmit",
+    "check:public-core-schemas": "node scripts/check-public-core-schemas.cjs",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build && node scripts/gen-llms-full.cjs && bash scripts/check-release-hygiene.sh pack",
     "gen:llms-full": "node scripts/gen-llms-full.cjs",
