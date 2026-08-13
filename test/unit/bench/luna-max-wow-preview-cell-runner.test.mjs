@@ -306,6 +306,39 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     expect(telemetry.raw_browser_item_ids).toEqual([]); expect(telemetry.raw_network_item_ids).toEqual([]);
   });
 
+  it("does not truncate observed OmD relative workspace tmp paths into absolute /tmp interventions", () => {
+    const commands = [
+      ["item_72", "/opt/homebrew/bin/zsh -lc 'node scripts/prepare-design-md-core-review.cjs .omd/runs/neighborhood-library-landing/system/graph.json --provenance .omd/runs/neighborhood-library-landing/system/provenance.json --coverage .omd/runs/neighborhood-library-landing/system/coverage.json --out-dir .benchmark/tmp/design-review'"],
+      ["item_74", "/opt/homebrew/bin/zsh -lc \"sed -n '1,320p' .benchmark/tmp/design-review/review-request.json\""],
+      ["item_75", "/opt/homebrew/bin/zsh -lc \"sed -n '1,360p' .benchmark/tmp/design-review/DESIGN.md\""],
+      ["item_77", "/opt/homebrew/bin/zsh -lc 'node scripts/prepare-design-md-core-review.cjs --approve .benchmark/tmp/design-review/review-request.json --reviewer project-owner --out .benchmark/tmp/design-review/approval.json --authority-transition-approved'"],
+      ["item_78", "/opt/homebrew/bin/zsh -lc 'node scripts/compile-design-md-core.cjs .benchmark/tmp/design-review/input-graph.json --provenance .benchmark/tmp/design-review/provenance.json --coverage .benchmark/tmp/design-review/coverage.json --review-receipt .benchmark/tmp/design-review/approval.json --out-dir .benchmark/tmp/design-compiled --adopt'"],
+      ["item_79", "/opt/homebrew/bin/zsh -lc \"sed -n '1,320p' .benchmark/tmp/design-compiled/.omd/system/manifest.json\""],
+      ["item_80", "/opt/homebrew/bin/zsh -lc 'find .benchmark/tmp/design-compiled -maxdepth 4 -type f -print | sort'"],
+      ["item_81", "/opt/homebrew/bin/zsh -lc \"sed -n '1,80p' .benchmark/tmp/design-compiled/DESIGN.md\""],
+      ["item_82", "/opt/homebrew/bin/zsh -lc \"sed -n '1,180p' .benchmark/tmp/design-compiled/.omd/system/graph.json\""],
+      ["item_84", "/opt/homebrew/bin/zsh -lc 'node scripts/adopt-design-md-core.cjs .benchmark/tmp/design-compiled --prepare-checkpoint .benchmark/tmp/design-checkpoint.json --reviewer project-owner --authority-transition-approved'"],
+    ].map(([id, command]) => ({ type: "item.completed", item: { id, type: "command_execution", command } }));
+    const telemetry = toolTelemetry(commands, null, { workspace: "/private/tmp/workspace", providerHome: "/private/tmp/provider-home" });
+    expect(telemetry.external_context_interventions).toBe(0);
+    expect(telemetry.external_context_items).toEqual([]);
+  });
+
+  it("still fails closed on absolute /tmp, /private/tmp, and /Users paths in quoted and nested shell commands", () => {
+    const commands = [
+      ["absolute-tmp", "/opt/homebrew/bin/zsh -lc \"sed -n '1,360p' /tmp/design-review/DESIGN.md\""],
+      ["absolute-private-tmp", "/opt/homebrew/bin/zsh -lc \"command sh -c 'cat /private/tmp/foreign/context.json'\""],
+      ["absolute-users", "env NAME=value /bin/zsh -lc 'cat /Users/example/.codex/skills/secret/SKILL.md'"],
+    ].map(([id, command]) => ({ type: "item.completed", item: { id, type: "command_execution", command } }));
+    const telemetry = toolTelemetry(commands, null, { workspace: "/private/tmp/workspace", providerHome: "/private/tmp/provider-home" });
+    expect(telemetry.external_context_interventions).toBe(3);
+    expect(telemetry.external_context_items).toEqual([
+      expect.objectContaining({ id: "absolute-tmp", forbidden_path: "/tmp/design-review/DESIGN.md" }),
+      expect.objectContaining({ id: "absolute-private-tmp", forbidden_path: "/private/tmp/foreign/context.json" }),
+      expect.objectContaining({ id: "absolute-users", forbidden_path: "/Users/example/.codex/skills/secret/SKILL.md" }),
+    ]);
+  });
+
   it("fails closed on real browser/network executables, package invocations, shell scripts, and structured tools", () => {
     const commands = [
       ["browser-cli", "browser-harness --doctor"],

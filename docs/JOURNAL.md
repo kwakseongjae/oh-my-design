@@ -5,6 +5,54 @@
 
 ---
 
+## 2026-08-14 (Codex) · relative tmp telemetry P0 폐쇄
+- absolute-path 경계를 고쳐 `.benchmark/tmp/...` 오탐은 제거하고 실제 `/tmp`·`/private/tmp`·`/Users` 차단은 유지했다.
+- 통합 67/67, lint/syntax/diff-check PASS; 보존된 544,658B OmD events 재생은 intervention `12→0`이다.
+- c494 6 terminals는 immutable diagnostic-only이며 새 aggregate에 혼합하지 않는다.
+- 다음은 관련 4파일 clean commit→IAB 포함 모든 receipt/materialization/admission 재발급→새 epoch first locked cell이다.
+
+## 2026-08-14 (Codex) · c494 OmD r1 timeout + relative tmp P0 발견
+- OmD는 900,237ms·tool84로 Core review/approve/compile/checkpoint/staging까지 갔지만 blank shell timeout이다.
+- staging tree7 SHA `80103c5e…d6c1`은 PASS; record `d02a105c…c77c5`, partial-06 `ca3908b6…e37ad`다.
+- `.benchmark/tmp/...`를 외부 `/tmp`로 오인하는 telemetry P0를 raw commands로 확정해 다음 셀을 HOLD했다.
+- Sol/medium fix→new clean source/re-admission 후 새 epoch를 시작하며 c494 terminals는 diagnostic-only다.
+
+## 2026-08-14 (Codex) · c494 Taste r1 timeout 봉인
+- Taste는 prompt-input audit을 통과했지만 900,227ms timeout, usage unknown, tool49로 종료됐다.
+- partial HTML43,289B/design-system PASS, contamination0이나 evaluator/screenshots0·objective0이다.
+- record `6d414a6d…b8d5f`, partial-05 `5ad85629…0b9a1`; rerun·사후 렌더 금지다.
+- 다음 locked 셀은 OmD Autopilot v2 r1이다.
+
+## 2026-08-14 (Codex) · c494 UI UX Pro Max r1 격리 위반 봉인
+- UI UX Pro Max는 765,866ms·1,294,575 tokens·tool29로 57,910B 화면을 완료했다.
+- `/tmp/static-check.txt` 접근 2회 때문에 evaluator 전 infrastructure-invalid·objective0이다.
+- record `1871d3cc…d5768`, partial-04 `55905407…68a39`; rerun·사후 렌더 금지다.
+- Taste는 landing에 eligible이었다. premature OmD 호출은 exact-next gate가 spawn 전 차단(호출0); 다음은 Taste r1이다.
+
+## 2026-08-14 (Codex) · c494 Impeccable r1 timeout 봉인
+- Impeccable은 900,239ms timeout, usage unknown, tool32, evaluator/screenshots0으로 종료됐다.
+- partial HTML45,931B/design-system PASS지만 `/tmp` external-context intervention1도 기록됐다.
+- record `445d4e7e…1de22`, partial-03 `a1a4cbe5…44a92`; rerun·사후 렌더 금지다.
+- 다음 locked 셀은 UI UX Pro Max r1이다.
+
+## 2026-08-14 (Codex) · c494 Anthropic r1 terminal 봉인
+- Anthropic frontend-design은 614,544ms·553,929 tokens·tool18, contamination0으로 분리형 HTML/CSS/JS를 생성했다.
+- 강한 blue/orange art direction과 selectors93에도 unavailable-information state를 빠뜨려 objective0·failed다.
+- record `4b0fd4b7…8fbb36`, partial-02 `446f9ccb…3dca6`; rerun은 금지한다.
+- 다음 locked 셀은 Impeccable prompt-only r1이다.
+
+## 2026-08-14 (Codex) · c494 first model-only terminal 봉인
+- Luna/max model-only r1은 460,062ms·312,196 tokens·tool13으로 55,945B 화면을 생성했다.
+- visual/design-system/default·focus captures는 강했지만 unavailable-information state 누락으로 objective 0·failed다.
+- record `39dee8dd…ea858`, partial bundle `465992bc…dbb`; rerun은 금지한다.
+- 다음 locked 셀은 같은 trial의 Anthropic frontend-design arm이다.
+
+## 2026-08-14 (Codex) · c494 IAB-only Luna epoch 입학 PASS
+- source `c49444f4`에서 IAB/static/schema7/evaluation/Luna-max attribution receipts를 모두 재발급했다.
+- 54-slot lock, 48 workspace+6 ineligible materialization, immutable runtime snapshot을 exact hash로 봉인했다.
+- Sol/xhigh admission SHA `ac1b0aab…6c59`가 PASS했고 정식 benchmark terminal은 아직 0개다.
+- 다음은 빈 baseline bundle → first locked model-only 셀 1회(retry0) → terminal 경계 검수다.
+
 ## 2026-08-14 (Codex) · Luna browser identity를 IAB-only로 전환
 - 사용자 지시에 따라 external Chrome/Browser Harness/CDP requirement를 폐기했다.
 - commit `0097e4cd`가 IAB about:blank 1-call·navigation/model/provider0와 non-crypto attestation을 결박한다.

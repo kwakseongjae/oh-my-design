@@ -487,6 +487,12 @@ function commandTelemetry(command) {
   }
   return { browser, network };
 }
+function absoluteExternalPathCandidates(raw) {
+  // A leading slash is absolute only at a shell/structured-value boundary.
+  // Without this boundary, relative workspace paths such as
+  // `.benchmark/tmp/design-review` are incorrectly truncated to `/tmp/design-review`.
+  return [...String(raw).matchAll(/(?:^|[^A-Za-z0-9_.~/-])(\/(?:Users|private\/tmp|tmp)\/[^\s"'`\\]+)/g)].map((match) => match[1]);
+}
 export function toolTelemetry(events, runResult, { workspace, providerHome, externalStagingRoot = null }) {
   const finiteNormalized = runResult?.output?.agent_tool_call_count;
   const toolTypes = new Set(["command_execution", "mcp_tool_call", "file_change", "web_search", "computer_use"]); const ids = new Set();
@@ -511,7 +517,7 @@ export function toolTelemetry(events, runResult, { workspace, providerHome, exte
     const implicitNetworkTool = event.item.type === "web_search" || event.item.type === "computer_use" || event.item.type === "mcp_tool_call";
     if (commandSignals?.network || implicitNetworkTool) networkIds.add(id);
     if (commandSignals?.browser || event.item.type === "computer_use") browserIds.add(id);
-    const absolutePaths = raw.match(/\/(?:Users|private\/tmp|tmp)\/[^\s"'`\\]+/g) ?? [];
+    const absolutePaths = absoluteExternalPathCandidates(raw);
     const allowedRoots = [workspace, providerHome, externalStagingRoot].filter(Boolean).map((root) => { try { return realpathSync(root); } catch { return resolve(root); } });
     const forbiddenPath = absolutePaths.find((candidate) => {
       let normalized = resolve(candidate.replace(/[),;:]+$/, ""));

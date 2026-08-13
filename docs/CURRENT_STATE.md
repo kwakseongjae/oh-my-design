@@ -4,10 +4,32 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-13 · source 6d9fb527 runner pre-provider terminal 수정 봉인, fresh Luna/max epoch admission PASS
+- 갱신: 2026-08-14 · source c49444f4 diagnostic terminal 6개 보존, relative-tmp telemetry P0 수정·독립 검수 PASS, 새 source epoch 대기
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+### 2026-08-14 c494 Luna Max 정식 비교 epoch
+
+- **실행 정본:** source=`c49444f4e1f67602a7e560a6c61909f85989d8c8`, clean detached worktree=`/private/tmp/omd-luna-runtime-c49444f4`, evidence=`/private/tmp/omd-luna-wow-evidence-c49444f4`, locked=`/private/tmp/omd-luna-wow-locked-c49444f4`, materialized=`/private/tmp/omd-luna-wow-materialized-c49444f4`, runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-c49444f4`, admission=`/private/tmp/omd-luna-wow-admission-c49444f4/ADMISSION.json`이다.
+- source-bound receipts가 모두 PASS했다: static runtime=`d60eafd9…9a7d6`, production schema 7/7=`e9834165…1b8d9`, evaluation runtime=`92b31256…2fd4f`, actual Codex IAB about:blank identity=`f480cf64…31bb6`, Luna/max raw attribution 1-call=`ca79467d…8cee`. attribution은 exact `gpt-5.6-luna`/`max`, input 17,122/output 27, retry·fallback·replacement·browser 0이며 benchmark denominator 밖이다.
+- 54-slot preregistration은 48 scheduled + Taste scope-only 6 ineligible/unexecuted를 잠갔다. materialized tree SHA=`0c4036a6…78ad`; immutable runtime snapshot auth=`627eb799…64cd`, models catalog=`f4392270…5d44`다.
+- Sol/xhigh admission은 전체 source closure, receipts, 48 workspace, evaluator authority를 재검증해 `admitted`; SHA=`ac1b0aab…6c59`, admission-time provider/model/browser/network 호출은 0이다. 이 source에서 6개 immutable terminal이 생겼지만 telemetry P0 발견으로 epoch를 diagnostic-only로 supersede하며 새 최종 aggregate에는 섞지 않는다.
+- 첫 정식 셀 `neighborhood-library-landing-luna-max-r1-model-only`은 `failed`로 immutable 봉인됐다. 460,062ms, input 287,575/output 24,621/total 312,196, tool 13, agent browser/network/external 0, retry/fallback/replacement 0이다. HTML 55,945B, CSS vars 25/selectors 83, neutral design-system package와 default/focus-visible desktop·mobile 캡처는 PASS했지만 required `unavailable-information` state가 없어 evaluator exit1·objective 0·UI-Resolved false다. record SHA=`39dee8dd…ea858`; rerun 금지다.
+- 시각적으로는 editorial chunky type, lime/coral/mint role colors, tool-shelf illustration, 강한 section rhythm과 390px 반응형이 우수했다. 그러나 필수 상태 누락을 시각 감상으로 상쇄하지 않는다. partial bundle=`/private/tmp/omd-luna-wow-evidence-c49444f4/EXECUTION-RECORDS.partial-01.json`, SHA=`465992bc…dbb`, terminal1/missing47/ineligible6이다.
+- 같은 trial의 Anthropic frontend-design arm도 `failed`로 봉인됐다. 614,544ms, input 521,246/output 32,683/total 553,929, tool18, contamination0이다. HTML 18,693B+CSS 24,671B+JS 2,938B, selectors93, design-system/default/focus captures PASS; electric blue/orange Swiss-brutalist direction과 코드 조직성은 model-only보다 강했지만 같은 `unavailable-information` 누락으로 objective0이다. record SHA=`4b0fd4b7…8fbb36`, rerun 금지다.
+- partial-02 bundle=`/private/tmp/omd-luna-wow-evidence-c49444f4/EXECUTION-RECORDS.partial-02.json`, SHA=`446f9ccb…3dca6`, terminal2/missing46/ineligible6이다. 두 arm 모두 시각 완성도와 재사용 구조는 강하지만 제품 상태 완결성에서는 동일하게 실패했다.
+- Impeccable prompt-only r1은 900,239ms timeout으로 봉인됐다. usage/completion unknown, tool32, agent browser/network0, evaluator/screenshots0이다. partial HTML45,931B/CSS vars20/selectors80/design-system PASS지만 공식 helper가 `/tmp/common-tool-library-surface.md`를 사용해 external-context intervention1도 남겼다. objective0, record SHA=`445d4e7e…1de22`, rerun·사후 렌더 금지다.
+- partial-03 bundle=`/private/tmp/omd-luna-wow-evidence-c49444f4/EXECUTION-RECORDS.partial-03.json`, SHA=`a1a4cbe5…44a92`, terminal3/missing45/ineligible6이다.
+- UI UX Pro Max r1은 provider 완료 뒤 `infrastructure-invalid`로 봉인됐다. 765,866ms, input1,256,150/output38,425/total1,294,575, tool29, HTML57,910B/vars23/selectors80/design-system PASS다. 그러나 `/tmp/static-check.txt`를 두 번 사용해 external-context intervention2; evaluator/screenshots0·objective0이다. record SHA=`1871d3cc…d5768`, rerun·사후 렌더 금지다.
+- partial-04 bundle=`/private/tmp/omd-luna-wow-evidence-c49444f4/EXECUTION-RECORDS.partial-04.json`, SHA=`55905407…68a39`, terminal4/missing44/ineligible6이다. Taste는 dense operations·locale tasks에서만 6개 scope-out이고 landing 3 trials은 eligible이다.
+- root가 Taste landing도 ineligible로 잘못 설명하고 OmD를 호출했으나 runner가 exact-next gate로 provider/model spawn 전에 거부했다. 실행 호출 0, workspace/terminal 변화 0이며 machine preregistration이 planning narration보다 우선함을 확인했다.
+- Taste landing r1은 900,227ms timeout으로 봉인됐다. usage unknown, tool49, contamination0, partial HTML43,289B/vars21/selectors57/design-system PASS, evaluator/screenshots0·objective0이다. record SHA=`6d414a6d…b8d5f`, rerun·사후 렌더 금지다.
+- partial-05 bundle=`/private/tmp/omd-luna-wow-evidence-c49444f4/EXECUTION-RECORDS.partial-05.json`, SHA=`5ad85629…0b9a1`, terminal5/missing43/ineligible6이며 status는 failed2/timeout2/infrastructure-invalid1이다.
+- OmD Autopilot v2 r1은 900,237ms timeout으로 봉인됐다. usage unknown, tool84, evaluator/screenshots0, blank shell이다. 그러나 review→approval→compiled six-artifact package→project checkpoint→external staging까지 exact 완료했고 staging tree7 files SHA=`80103c5e…d6c1`/audit PASS다. atomic adopt와 제품 구현 전에 cap이 끝나 objective0; record SHA=`d02a105c…c77c5`, rerun 금지다.
+- partial-06 bundle=`/private/tmp/omd-luna-wow-evidence-c49444f4/EXECUTION-RECORDS.partial-06.json`, SHA=`ca3908b6…e37ad`, terminal6/missing42/ineligible6, status failed2/timeout3/infrastructure-invalid1이다.
+- **P0 수정·독립 검수 PASS:** absolute-path extractor가 shell/structured-value boundary를 요구하도록 바뀌어 `.benchmark/tmp/...`, `../tmp/...` 같은 상대경로를 외부 `/tmp`로 잘라내지 않는다. 실제 `/tmp`/`/private/tmp`/`/Users` 절대경로 fail-close는 유지한다. runner/controller/admission/auditor 67/67, TypeScript, syntax, diff-check가 green이며 보존된 544,658-byte OmD events 재생은 tool84/browser0/network0/intervention `12→0`이다.
+- **다음 exact action:** runner+test+continuity 네 파일만 clean commit한다(보호 생성물 3개 제외) → 새 source SHA로 IAB/static/schema/evaluation/runtime-attribution receipts, 48/6 materialization, runtime snapshot, Sol/xhigh admission을 전부 재발급한다 → 새 epoch first locked cell부터 시작한다. c494 6 terminals는 immutable diagnostic evidence이며 새 final aggregate에 혼합하지 않는다.
 
 ### 2026-08-13 OmD 2.0 출시 방향 — Luna Max evidence gate
 
