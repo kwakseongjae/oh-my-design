@@ -277,9 +277,13 @@ export function validateNamedBrowserReceipt(receipt, sourceCommit) {
     throw new Error("existing browser-harness preflight call accounting drift");
   }
   const browser = receipt.browser;
+  const tabCreationCalls = browser?.tab_creation_calls ?? 0;
+  const tabCreatedByController = browser?.tab_created_by_controller ?? false;
   if (browser?.name !== "default-local-cdp" || browser.transport !== "local-existing-chrome-cdp"
     || browser.named_existing !== true || browser.available !== true || browser.launched_by_controller !== false
     || browser.navigation_calls !== 0 || !/^(?:about:blank|chrome-error:\/\/chromewebdata\/?|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser.url ?? "")
+    || ![0, 1].includes(tabCreationCalls)
+    || (tabCreationCalls === 0 ? tabCreatedByController !== false : tabCreatedByController !== true || browser.url !== "about:blank")
     || !SHA.test(browser.identity_sha256 ?? "") || !SHA.test(browser.executable_sha256 ?? "")) throw new Error("existing browser-harness telemetry drift");
   return true;
 }

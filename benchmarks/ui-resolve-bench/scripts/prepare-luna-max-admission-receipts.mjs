@@ -332,7 +332,10 @@ export function buildBrowserIdentityReceipt({ sourceCommit, sourceAuthority, tel
     throw new Error("browser evidence must contain raw browser-harness CLI stdout/stderr");
   }
   const invocation = telemetry.invocation;
-  if (invocation?.transport !== "local-existing-chrome-cdp" || invocation.operation !== "page_info"
+  const tabCreationCalls = invocation?.tab_creation_calls ?? 0;
+  const existingPageInfo = invocation?.operation === "page_info" && tabCreationCalls === 0;
+  const safeBlankPageInfo = invocation?.operation === "safe_blank_page_info" && tabCreationCalls === 1;
+  if (invocation?.transport !== "local-existing-chrome-cdp" || (!existingPageInfo && !safeBlankPageInfo)
     || invocation.navigation_calls !== 0 || invocation.launched_browser !== false
     || !invocation.executable_path || !SHA.test(invocation.executable_sha256 ?? "")) {
     throw new Error("browser-harness invocation contract drift");
@@ -345,11 +348,13 @@ export function buildBrowserIdentityReceipt({ sourceCommit, sourceAuthority, tel
   let observed;
   try { observed = JSON.parse(telemetry.raw_stdout.trim()); } catch { throw new Error("browser-harness raw stdout must be one JSON object"); }
   const browser = observed?.browser_identity;
+  const tabCreatedByController = browser?.tab_created_by_controller ?? false;
+  const safeUrl = /^(?:about:blank|chrome-error:\/\/chromewebdata\/?|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser?.url ?? "");
   if (observed?.receipt_version !== "browser-harness-cli-page-info-v0.1"
     || browser?.transport !== "local-existing-chrome-cdp" || browser.name !== "default-local-cdp"
     || browser.named_existing !== true || browser.available !== true || browser.launched_by_controller !== false
     || browser.url !== browser.page_info?.url
-    || !/^(?:about:blank|chrome-error:\/\/chromewebdata\/?|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser.url ?? "")
+    || !safeUrl || (existingPageInfo ? tabCreatedByController !== false : tabCreatedByController !== true || browser.url !== "about:blank")
     || !Number.isFinite(browser.page_info?.w) || !Number.isFinite(browser.page_info?.h)) {
     throw new Error("browser identity must be an existing local CDP page_info observation without navigation");
   }
@@ -360,6 +365,8 @@ export function buildBrowserIdentityReceipt({ sourceCommit, sourceAuthority, tel
     available: true,
     launched_by_controller: false,
     navigation_calls: 0,
+    tab_creation_calls: tabCreationCalls,
+    tab_created_by_controller: tabCreatedByController,
     url: browser.url,
     viewport: { width: browser.page_info.w, height: browser.page_info.h },
   };

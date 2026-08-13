@@ -6645,3 +6645,9 @@
 - cache는 exact pre-run bytes를 결박하되 post-run `fetched_at`만 제외한 semantic catalog/profile/client version을 비교하도록 수정했다.
 - telemetry는 command/structured arguments만 감사하며 실제 browser/curl/web_search·semantic cache drift는 계속 fail-close한다.
 - 관련 68 pass/3 skip와 lint/diff-check green; 다음은 fresh commit/epoch 재발급이다.
+## 2026-08-13 (Codex) · Browser preflight 외부-tab 의존 제거
+- source `76bf5e4a`의 current-tab page_info는 external X surface라 safe URL gate가 거부했고 admission에 쓰지 않았다.
+- existing safe tab이 0개라 외부 탭을 선택하지 않고, local Chrome의 about:blank tab을 한 invocation에서 만드는 별도 preflight를 정의했다.
+- exact 계약은 tab creation 1, browser launch/navigation 0, URL about:blank이며 raw operation/flag/count가 모두 일치해야 한다.
+- controller/admission/runner/receipt 60/60와 lint/diff-check green이고 rejected diagnostics는 분모 밖이다.
+- 다음: 새 commit에서 safe-blank first call로 fresh epoch를 재발급한다.

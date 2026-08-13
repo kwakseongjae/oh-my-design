@@ -302,9 +302,13 @@ export function validateBrowserReceipt(receipt, root, commit) {
   sourceCommit(receipt, commit, "raw browser-harness receipt"); authorityEntry(receipt, root, commit, "benchmarks/ui-resolve-bench/scripts/prepare-luna-max-admission-receipts.mjs", "raw browser-harness receipt");
   calls(receipt, { provider_calls: 0, model_calls: 0, browser_calls: 1 }, "raw browser-harness receipt");
   const browser = receipt.browser;
+  const tabCreationCalls = browser?.tab_creation_calls ?? 0;
+  const tabCreatedByController = browser?.tab_created_by_controller ?? false;
   invariant(browser?.name === "default-local-cdp" && browser.transport === "local-existing-chrome-cdp"
     && browser.named_existing === true && browser.available === true && browser.launched_by_controller === false
     && browser.navigation_calls === 0 && /^(?:about:blank|chrome-error:\/\/chromewebdata\/?|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser.url ?? "")
+    && [0, 1].includes(tabCreationCalls)
+    && (tabCreationCalls === 0 ? tabCreatedByController === false : tabCreatedByController === true && browser.url === "about:blank")
     && Number.isInteger(browser.telemetry_bytes) && browser.telemetry_bytes > 0 && SHA.test(browser.telemetry_sha256 ?? "")
     && SHA.test(browser.raw_stdout_sha256 ?? "") && SHA.test(browser.raw_stderr_sha256 ?? "")
     && SHA.test(browser.executable_sha256 ?? "") && SHA.test(browser.identity_sha256 ?? ""),

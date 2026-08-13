@@ -95,6 +95,7 @@ function browserTelemetry(overrides = {}) {
       named_existing: true,
       available: true,
       launched_by_controller: false,
+      tab_created_by_controller: false,
       tab_id: null,
       url: "http://127.0.0.1:3100/fixture",
       page_info: { url: "http://127.0.0.1:3100/fixture", w: 1440, h: 900 },
@@ -106,6 +107,7 @@ function browserTelemetry(overrides = {}) {
       transport: "local-existing-chrome-cdp",
       operation: "page_info",
       navigation_calls: 0,
+      tab_creation_calls: 0,
       launched_browser: false,
       executable_path: executablePath,
       executable_bytes: executableBytes.length,
@@ -228,15 +230,29 @@ describe("Luna Max admission receipts", () => {
     });
   });
 
+  it("accepts one safe blank-tab page_info invocation without browser launch or navigation", () => {
+    const telemetry = browserTelemetry();
+    telemetry.invocation.operation = "safe_blank_page_info";
+    telemetry.invocation.tab_creation_calls = 1;
+    const observed = JSON.parse(telemetry.raw_stdout);
+    observed.browser_identity.url = "about:blank";
+    observed.browser_identity.page_info.url = "about:blank";
+    observed.browser_identity.tab_created_by_controller = true;
+    telemetry.raw_stdout = canonicalJson(observed);
+    const receipt = buildBrowserIdentityReceipt({ sourceCommit: "e".repeat(40), sourceAuthority: sourceAuthority(), telemetryBytes: Buffer.from(canonicalJson(telemetry)), telemetry });
+    expect(receipt.browser).toMatchObject({ url: "about:blank", tab_creation_calls: 1, tab_created_by_controller: true, navigation_calls: 0, launched_by_controller: false });
+  });
+
   it("rejects invented, launched, navigated, remote, or malformed browser-harness evidence", () => {
     const noReceipt = browserTelemetry({ receipt_version: "self-asserted-v0" });
     const launched = browserTelemetry();
     launched.invocation.launched_browser = true;
     const navigated = browserTelemetry(); navigated.invocation.navigation_calls = 1;
+    const mismatchedBlank = browserTelemetry(); mismatchedBlank.invocation.operation = "safe_blank_page_info"; mismatchedBlank.invocation.tab_creation_calls = 1;
     const remote = browserTelemetry();
     const remoteObserved = JSON.parse(remote.raw_stdout); remoteObserved.browser_identity.url = "https://example.com"; remoteObserved.browser_identity.page_info.url = "https://example.com"; remote.raw_stdout = canonicalJson(remoteObserved);
     const malformed = browserTelemetry(); malformed.raw_stdout = "not json";
-    for (const telemetry of [noReceipt, launched, navigated, remote, malformed]) {
+    for (const telemetry of [noReceipt, launched, navigated, mismatchedBlank, remote, malformed]) {
       expect(() => buildBrowserIdentityReceipt({ sourceCommit: "e".repeat(40), sourceAuthority: sourceAuthority(), telemetryBytes: Buffer.from(canonicalJson(telemetry)), telemetry })).toThrow(/raw browser-harness|invocation contract|existing local CDP|one JSON/);
     }
   });

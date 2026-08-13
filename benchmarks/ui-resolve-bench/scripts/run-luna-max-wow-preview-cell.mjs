@@ -146,7 +146,11 @@ export function validateAdmission({ admissionPath, materializedRoot, runtimePath
     && evidence.browser_identity.value.browser?.transport === "local-existing-chrome-cdp"
     && evidence.browser_identity.value.browser?.named_existing === true
     && evidence.browser_identity.value.browser?.launched_by_controller === false
-    && evidence.browser_identity.value.browser?.navigation_calls === 0, "browser identity drift");
+    && evidence.browser_identity.value.browser?.navigation_calls === 0
+    && [0, 1].includes(evidence.browser_identity.value.browser?.tab_creation_calls ?? 0)
+    && ((evidence.browser_identity.value.browser?.tab_creation_calls ?? 0) === 0
+      ? (evidence.browser_identity.value.browser?.tab_created_by_controller ?? false) === false
+      : evidence.browser_identity.value.browser?.tab_created_by_controller === true && evidence.browser_identity.value.browser?.url === "about:blank"), "browser identity drift");
   validateReceiptCalls(evidence.browser_identity.value, "browser identity", { provider_calls: 0, model_calls: 0, browser_calls: 1 });
   const evaluationRuntime = evidence.evaluation_runtime.value;
   invariant(evaluationRuntime.kind === "omd-luna-max-evaluation-runtime-receipt" && evaluationRuntime.pass === true && evaluationRuntime.source_commit === sourceCommit, "evaluation runtime identity drift");
