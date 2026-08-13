@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · 58dc landing Impeccable r1 봉인
+- Impeccable은 900,349ms timeout, usage unknown, tool17, contamination0으로 종료됐다.
+- HTML55,564B/vars30/selectors70/package PASS를 남겼지만 completion·evaluator·screenshots가 없어 objective0이다.
+- record `9e30f323…`, partial-03 `654ca2b7…`; terminal3/missing45/ineligible6, rerun 금지다.
+- 다음 locked 셀은 landing UI UX Pro Max r1이다.
+
 ## 2026-08-14 (Codex) · 58dc landing Anthropic r1 봉인
 - Anthropic은 517,480ms·276,910 tokens에 58,732B graph-paper/editorial tool-library UI를 만들었다.
 - model-only보다 visual identity는 강하지만 동일 unavailable-information 누락으로 objective0이다.

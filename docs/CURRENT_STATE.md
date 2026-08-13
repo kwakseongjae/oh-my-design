@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 58dcf8a9 evaluator dependency closure epoch, terminal 2 / missing 46 / ineligible 6
+- 갱신: 2026-08-14 · source 58dcf8a9 evaluator dependency closure epoch, terminal 3 / missing 45 / ineligible 6
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -20,7 +20,9 @@
 - partial-01=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-01.json`, SHA=`8b195262…`, terminal1/missing47/ineligible6이다.
 - order2 Anthropic Frontend Design r1은 517,480ms, input248,843/output28,067/total276,910, tool6, contamination0으로 provider exit0했다. HTML58,732B/vars17/selectors89/package PASS이며 oversized condensed headline, graph-paper reservation desk, orange/lavender/yellow tool silhouettes, three-loop IA와 dark catalog section이 model-only보다 더 뾰족한 visual identity를 만든다. evaluator READY와 captures는 PASS했으나 같은 `unavailable-information` state 미관측으로 objective0다. record SHA=`e3b6f0b8…`, rerun 금지다.
 - partial-02=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-02.json`, SHA=`30385649…`, terminal2/missing46/ineligible6이다.
-- **다음 exact action:** randomized order3 `neighborhood-library-landing-luna-max-r1-impeccable-prompt-only`를 Luna/max 1회·retry0으로 실행한다. terminal 뒤 partial-03/checkpoint를 만든다. 0dc9+c4946 terminals는 diagnostic-only다.
+- order3 Impeccable prompt-only r1은 900,349ms cap에서 `timeout`으로 immutable 봉인됐다. usage/completion은 provider completion 부재로 unknown, tool17, agent browser/network/external-context0, retry/fallback/replacement0이다. workspace에는 55,564B HTML SHA=`0b64359a…`, vars30/selectors70의 neutral design-system package PASS와 `Block & Borrow` cobalt/paper/lime/orange intent가 남았지만 evaluator/screenshots0이며 HTML 일부에 literal escaped newline을 추적하던 미완결 상태라 rendered visual quality를 주장할 수 없다. objective0, failure SHA=`0b69a616…`, record SHA=`9e30f323…`, rerun·사후 evaluator 금지다.
+- partial-03=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-03.json`, SHA=`654ca2b7…`, terminal3/missing45/ineligible6이다. token monitor는 used79/reset timestamp 불변으로 리셋 미발생을 확인했다.
+- **다음 exact action:** randomized order4 `neighborhood-library-landing-luna-max-r1-ui-ux-pro-max`를 Luna/max 1회·retry0으로 실행한다. terminal 뒤 partial-04/checkpoint를 만든다. 0dc9+c4946 terminals는 diagnostic-only다.
 
 ### 2026-08-14 source 0dcbd99d Luna Max 정식 비교 epoch
 
