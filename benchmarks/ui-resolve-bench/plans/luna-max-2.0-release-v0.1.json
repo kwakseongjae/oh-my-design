@@ -26,7 +26,10 @@
     "omd-autopilot-v2"
   ],
   "fairness": {
-    "same_prompt_bytes": true,
+    "same_user_task_packet_bytes": true,
+    "native_activation_prefix_is_only_arm_specific_prompt_delta": true,
+    "activation_prefix_and_invocation_hash_public": true,
+    "arm_specific_design_or_task_facts_forbidden": true,
     "same_blank_starter": true,
     "same_model_effort_timeout_permissions_and_network": true,
     "task_specific_design_md_or_examples_allowed": false,

@@ -4,13 +4,18 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-13 · Core v2 dogfood atomic adoption 완료
+- 갱신: 2026-08-13 · Luna Max provider-zero 실행 폐쇄성 완료, clean commit 대기
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
 ### 2026-08-13 OmD 2.0 출시 방향 — Luna Max evidence gate
 
+- public Core schema blocker는 해소했다. production source lag만 담은 18-file PR #50을 `main` commit `ec1a77aa`로 병합했고 Vercel production 배포가 성공했다. `npm run check:public-core-schemas`가 7/7 `200 + application/json + committed local bytes exact parity`로 통과한다. historical benchmark config/report/seal과 보호 생성물은 이 배포에 포함하지 않았다.
+- 공식 competitor source freeze를 완료했다. Anthropic Frontend Design=`f17010c9`, Impeccable `skill-v4.0.4`=`9a949fb5`, UI UX Pro Max `v2.14.2`=`0ed327fc`(Codex materialized 147 files/2,480,163 bytes, SHA `2f5fc370…`), Taste main=`e988add2`이며 4개 source lock audit와 independent materialization이 통과했다. Taste는 공개 scope상 landing에만 eligible이고 dense ops/locale의 6 slots는 실행·분모에서 제외한다.
+- Luna Max Wow Preview provider-zero controller는 3 neutral tasks × 6 arms × 3 trials의 54 slots를 고정했고, 48 scheduled provider cells + 6 immutable ineligible slots로 계산한다. exact `gpt-5.6-luna/max`, retry/replacement/fallback/model·effort substitution 0, static capability 0-call, runtime attribution 1-call(분모 제외), named-browser 1-call을 분리했다. 전용 materializer는 actual 48 workspace/6 ineligible readback을 provider-zero로 통과했다. 공정성 계약은 동일한 최종 prompt라는 과장 대신 `same user task packet + blank shell`, 공개된 arm별 official/native activation prefix만 유일한 prompt delta로 고정한다.
+- 평가 runtime receipt가 evaluator/adapters/tasks/validators, Chrome executable/version/bytes, Playwright/axe, Node/OS/arch, 네 viewport, reduced-motion, network policy와 실제 font inventory를 0-call exact hash로 결박한다. 결과 감사기는 54/48/6, 누락·실패=0점, provider usage 미관측 시 비용 0 대체 금지/HOLD, 5명×3task 실제 human attestation, strongest eligible skill paired no-loss와 Pareto non-domination을 fail-close한다. one-cell runner/collector와 Sol/xhigh admission generator까지 같은 receipt/record shape로 통합했고, 11-file provider-zero gate는 75 pass/3 artifact-dependent skip/0 fail이다.
+- preregistration source closure는 controller/materializer뿐 아니라 admission generator, receipt generators, one-cell runner, run-codex와 전이 runtime helpers, evaluator, auditor, score gate를 모두 exact commit bytes로 결박한다. 정적 runtime receipt는 전체 model catalog SHA와 Luna model-profile canonical SHA를 함께 고정하며, 각 셀은 STARTED 생성 전에 live cache/profile이 두 SHA와 같은지 재검사한다. state screenshot은 task별 실제 관찰 지점과 파일 SHA를 manifest로 강제한다.
 - 사용자 지정 모델 역할을 `benchmarks/ui-resolve-bench/config/omd-2.0-model-role-routing-v0.1.json`에 고정했다: 기획·검수·로드맵=`gpt-5.6-sol/xhigh`, 실제 구현=`gpt-5.6-sol/medium`, benchmark cell=`gpt-5.6-luna/max`. release plan은 계약 SHA `cb004c8f…36d0`을 결박한다.
 - provider 실행은 exact 사용자 activation `ㄱㄱ` 뒤 goal 시작 시에만 허용한다. 그 전까지 provider/model/browser calls 0이며 model/effort fallback, retry, replacement는 모두 0이다. 실행 순서는 Sol/xhigh work packet → Sol/medium 구현 → Sol/xhigh review/admission → Luna/max cells → Sol/xhigh audit/roadmap이다.
 - Core v2 마지막 결박과 Luna release plan 32 paths를 commit `11065f6f1fe6eeeb716fedc7dda9f5e09edaf6a7`로 봉인했다. 보호 생성물 `web/public/llms-full.txt`, `web/public/llms.txt`, `web/src/data/catalog-meta.generated.ts`는 stage하지 않았다.
@@ -18,11 +23,11 @@
 - portable ranking은 model-only, Anthropic Frontend Design, Impeccable prompt-only, UI UX Pro Max, Taste eligible scope, OmD Autopilot의 6 arms만 포함한다. OmD full harness는 quality/time/token/intervention Pareto로 별도 보고한다.
 - 실행 사다리는 54-cell Wow Preview(3 tasks × 6 arms × 3), 통과 시 360-cell Qualification(12 families × 6 arms × 5), 10명 blind launch review, Terra/Sol nonnegative transfer, independent claim audit다.
 - 출시 기준은 UI-Resolved, Reliability, paired lift, strongest-skill first/tie, blinded ship/design-system preference, zero unsupported facts, non-dominated quality-cost-human-burden를 동시에 요구한다. 하나라도 실패하면 2.0.0은 보류하고 실패 결과를 공개 보존한다.
-- 현재 provider 실행은 금지 상태다. dirty worktree 30개와 production Core schema 7개 404 때문에 publishable source/runtime seal을 만들 수 없다. 먼저 Core 변경 clean commit + schema exact 200/JSON/byte parity + competitor refresh가 필요하다.
+- 현재 benchmark provider 실행은 계속 금지 상태다. schema 배포, competitor freeze, provider-zero materializer/runner/auditor/admission 코드는 끝났다. 다음은 보호 생성물 3개를 제외한 benchmark closure만 clean commit → 그 commit에서 48-cell materialization·schema/static/evaluation receipts 재생성 → named browser 1회와 Luna/max attribution 1회 → Sol/xhigh admission 순이다.
 - 기존 `autopilot-luna-high-smoke-1.9.883`은 Luna high provider-zero preregistration이며 Luna Max 장시간 비교 결과가 아니다. 새 max 실행은 fresh commit·fresh experiment로만 시작한다.
 - 전체 회귀는 1329 pass, 6 fail이었다. 5건은 dirty source authority를 의도적으로 거부한 commit-before-execution gate였고, 1건은 release-train의 기존 식별자를 변경한 신규 계획 회귀여서 기존 `frontier-release`/`gated`를 보존하고 additive plan metadata로 수정했다.
 - commit 후 계획/일반 benchmark 237 tests와 lint는 green이다. 기존 Luna high controller 5 tests는 `v0.2/1.9.883`가 봉인한 과거 validator hash와 current Core validator bytes가 달라 fail-close한다. v0.2를 재해시하지 말고 Luna Max 전용 새 versioned config/controller/experiment에서 current commit을 결박해야 한다.
-- Luna Max provider/model/browser calls는 아직 0이다. 다음 실행 전 필수 순서는 schema 7개 배포+liveness, competitor official-source refresh/freeze, max controller/provider-zero preregistration, exact selector/effort/telemetry preflight다.
+- Luna Max provider/model/browser calls는 아직 0이다. 토큰 monitor의 latest observation은 used 29%, resets_at 불변이며 reset 징후가 없다. 실제 셀은 위 admission 완료 후에도 serial·한 invocation당 next locked 1-cell·retry/replacement/fallback 0으로만 시작한다.
 
 ### 2026-08-13 Core v2 dogfood — adopted / provider-free proof PASS
 

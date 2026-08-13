@@ -5,6 +5,24 @@
 
 ---
 
+## 2026-08-13 (Codex) · Luna Max 실행 직전 provider-zero 폐쇄성 완료
+- 48-cell runner·admission·evaluation runtime·auditor를 controller source closure에 exact commit bytes로 결박했다.
+- Luna model catalog 전체 SHA와 model-profile SHA를 셀 시작 전/실행 전후 재검증하도록 강화했다.
+- task별 관찰 state screenshot manifest와 실제 5명 blind strongest-pair 계약을 fail-close했다.
+- 11-file gate 75 pass/3 artifact skip, lint/node/diff green; provider/model/browser calls는 계속 0이다.
+
+## 2026-08-13 (Codex) · Luna Max benchmark provider-zero closure 진행
+- schema hotfix PR #50을 main에 병합·배포했고 production 7/7 exact JSON parity가 통과했다.
+- 4개 경쟁 스킬의 공식 commit/tag/tree/license와 실제 install projection을 동결했다.
+- 54 slots 중 48 provider cells/6 scope-ineligible slots를 고정했으며 provider/model/browser calls는 아직 0이다.
+- 기존 sandbox가 새 neutral input을 만들지 못해 전용 materializer와 admission receipt 도구를 Sol/medium으로 구현 중이다.
+
+## 2026-08-13 (Codex) · public Core schema 배포 원인 확정
+- production 404는 routing 결함이 아니라 schema commit이 `origin/main`에 없는 source lag다.
+- 로컬 Next runtime은 7/7 exact 200/JSON/SHA, 직접 production build와 focused 18 tests는 green이다.
+- inventory·spec·public mirror의 파일 집합/bytes/$id를 한 테스트에서 fail-close하도록 보강했다.
+- 다음은 `2ac7ed6f` 포함 source를 Vercel production에 배포하고 liveness command를 통과시키는 것이다.
+
 ## 2026-08-13 (Codex) · 2.0 모델 역할 및 goal 진입 준비
 - 기획·검수는 Sol/xhigh, 구현은 Sol/medium, benchmark는 Luna/max로 고정했다.
 - 역할 간 handoff artifact와 비용 분리, fallback/retry/replacement 0을 기계 계약화했다.

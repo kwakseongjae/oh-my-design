@@ -65,6 +65,14 @@ describe("Luna Max 2.0 release plan", () => {
     }));
     expect(plan.stages.harness_pareto.ranked_with_portable_arms).toBe(false);
     expect(plan.stages.transfer.pool_model_results).toBe(false);
+    expect(plan.fairness).toEqual(expect.objectContaining({
+      same_user_task_packet_bytes: true,
+      native_activation_prefix_is_only_arm_specific_prompt_delta: true,
+      activation_prefix_and_invocation_hash_public: true,
+      arm_specific_design_or_task_facts_forbidden: true,
+      same_blank_starter: true,
+    }));
+    expect(plan.fairness).not.toHaveProperty("same_prompt_bytes");
   });
 
   it("blocks release and preserves failures when OmD does not clear the gate", () => {

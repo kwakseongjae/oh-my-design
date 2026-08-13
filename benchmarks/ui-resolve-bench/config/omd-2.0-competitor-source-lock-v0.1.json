@@ -1,0 +1,224 @@
+{
+  "schema_version": "0.1",
+  "lock_id": "omd-2.0-competitor-source-lock-v0.1",
+  "status": "locked-provider-zero",
+  "observed_at": "2026-08-13T16:08:09+09:00",
+  "purpose": "Freeze exact current official competitor sources for the OmD 2.0 Luna Max same-prompt benchmark without mutating historical competitor epochs.",
+  "selection_policy": {
+    "stable_tag_preferred": true,
+    "main_head_allowed_only_when_no_official_stable_tag_exists": true,
+    "exact_commit_required": true,
+    "cross_epoch_aggregation_allowed": false
+  },
+  "sources": [
+    {
+      "id": "anthropic-frontend-design-2.0",
+      "benchmark_variant_id": "anthropic-frontend-design",
+      "product": "Anthropic Frontend Design",
+      "repository": "https://github.com/anthropics/skills",
+      "checkout_dir": "anthropic-skills",
+      "source_ref": {
+        "selection": "main-head-no-stable-skill-tag",
+        "requested_ref": "refs/heads/main",
+        "resolved_commit": "f17010c9bb483898c1d9c9f42dde2b3a98889434",
+        "tag_object": null,
+        "commit_time": "2026-08-07T13:14:14-04:00"
+      },
+      "official_source": "https://github.com/anthropics/skills/tree/f17010c9bb483898c1d9c9f42dde2b3a98889434/skills/frontend-design",
+      "source_path": "skills/frontend-design",
+      "source_tree": {
+        "files": 2,
+        "bytes": 18434,
+        "sha256": "15a1fec6da5799be52a4c142157fa6f3e4e47b4c8f87354332914caa50e66465",
+        "hash_contract": "treeManifest-v1:path\\0mode\\0file-sha256, sorted by path"
+      },
+      "license": {
+        "spdx": "Apache-2.0",
+        "evidence_path": "skills/frontend-design/LICENSE.txt",
+        "evidence_sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+        "inside_source_boundary": true,
+        "install_policy": "preserve exact bundled LICENSE.txt"
+      },
+      "install": {
+        "platform": "agents",
+        "root": ".agents/skills",
+        "directory": "frontend-design",
+        "declared_name": "frontend-design",
+        "adapter": "exact-tree-copy"
+      },
+      "activation": {
+        "exact_prefix": "Use the installed $frontend-design skill for this task.",
+        "prompt_extraction": "forbidden",
+        "policy": "Install and expose the exact complete two-file official skill; do not summarize, splice, or rewrite its prompt. Network and self-launched browser access remain disabled by the benchmark controller."
+      },
+      "benchmark_eligibility": {
+        "status": "eligible",
+        "tracks": ["creation", "landing-redesign", "repair"],
+        "excluded": []
+      }
+    },
+    {
+      "id": "impeccable-4.0.4-prompt-bounded-2.0",
+      "benchmark_variant_id": "impeccable-prompt-only",
+      "product": "Impeccable",
+      "version": "4.0.4",
+      "repository": "https://github.com/pbakaus/impeccable",
+      "checkout_dir": "impeccable",
+      "source_ref": {
+        "selection": "latest-stable-skill-tag",
+        "requested_ref": "refs/tags/skill-v4.0.4",
+        "resolved_commit": "9a949fb543d44cfb406f61bcab99d95d7f12cf1d",
+        "tag_object": "fb0942f57736841580a65088637f94da4a4ba87c",
+        "commit_time": "2026-07-29T17:50:40-07:00"
+      },
+      "official_source": "https://github.com/pbakaus/impeccable/tree/9a949fb543d44cfb406f61bcab99d95d7f12cf1d/.agents/skills/impeccable",
+      "source_path": ".agents/skills/impeccable",
+      "source_tree": {
+        "files": 152,
+        "bytes": 3072432,
+        "sha256": "b7859366490f900533a2a3fd8532b892aa7a14a87d8ee6b04e85c676d26f03d1",
+        "hash_contract": "treeManifest-v1:path\\0mode\\0file-sha256, sorted by path"
+      },
+      "license": {
+        "spdx": "Apache-2.0",
+        "evidence_path": "LICENSE",
+        "evidence_sha256": "02bb8c3b4e70190e3986c0404ad2fd8d639b4f534252d82379cc1b502b6d1812",
+        "inside_source_boundary": false,
+        "install_policy": "copy the repository-root LICENSE beside the installed frozen snapshot"
+      },
+      "install": {
+        "platform": "agents",
+        "root": ".agents/skills",
+        "directory": "impeccable",
+        "declared_name": "impeccable",
+        "adapter": "exact-tree-copy-plus-license"
+      },
+      "activation": {
+        "exact_prefix": "Use the installed $impeccable skill for this task.",
+        "prompt_extraction": "forbidden",
+        "delivery_mode": "full-official-skill-local-guidance-only",
+        "prompt_only_definition": "Prompt-only excludes hooks, live mode, provider-backed assets, network, and self-launched browser automation. It still permits the official skill's required one-shot read-only context helper and exact local Markdown references; reducing the product to SKILL.md alone would be an unreviewed extraction.",
+        "policy": "Use the exact full local skill and only the task-owning local Markdown references. The read-only context helper may run once; hooks, live mode, provider-backed asset generation, network, and self-launched browser work are disabled. Browser proof belongs to the benchmark controller."
+      },
+      "benchmark_eligibility": {
+        "status": "eligible-bounded",
+        "tracks": ["creation", "landing-redesign", "repair", "audit"],
+        "excluded": ["hooks", "live-mode", "provider-backed-assets", "self-launched-browser"]
+      }
+    },
+    {
+      "id": "ui-ux-pro-max-2.14.2-2.0",
+      "benchmark_variant_id": "ui-ux-pro-max",
+      "product": "UI UX Pro Max",
+      "version": "2.14.2",
+      "repository": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "checkout_dir": "ui-ux-pro-max",
+      "source_ref": {
+        "selection": "latest-stable-tag",
+        "requested_ref": "refs/tags/v2.14.2",
+        "resolved_commit": "0ed327fc18736cd0e9e073b007be17d581360908",
+        "tag_object": null,
+        "commit_time": "2026-08-12T16:34:27+07:00"
+      },
+      "official_source": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/tree/0ed327fc18736cd0e9e073b007be17d581360908/cli/assets",
+      "source_path": "cli/assets",
+      "source_tree": {
+        "files": 167,
+        "bytes": 2495434,
+        "sha256": "b6af90a5f161530895f7b60d2ecd0066e351f3b493b458a9ce4b03c715b56323",
+        "hash_contract": "treeManifest-v1:path\\0mode\\0file-sha256, sorted by path"
+      },
+      "license": {
+        "spdx": "MIT",
+        "evidence_path": "LICENSE",
+        "evidence_sha256": "738f69dfa83db5c347c678fb9d90e560877059f0de93a327c39001bff92dc014",
+        "inside_source_boundary": false,
+        "install_policy": "copy the repository-root LICENSE beside the installed frozen snapshot"
+      },
+      "install": {
+        "platform": "codex",
+        "root": ".agents/skills",
+        "directory": "ui-ux-pro-max",
+        "declared_name": "ui-ux-pro-max",
+        "adapter": "official-codex-template-exact-assets-v1",
+        "template_config": "templates/platforms/codex.json",
+        "bundled_skills": ["banner-design", "brand", "design", "design-system", "slides", "ui-styling"]
+      },
+      "install_projection": {
+        "files": 147,
+        "bytes": 2480163,
+        "sha256": "2f5fc370aef42eb74b4806d951782bdd7e6297594e27a7731e0f6e682a371d84",
+        "hash_contract": "treeManifest-v1 over deterministic official Codex render plus copied data/scripts/bundled skills and root MIT license"
+      },
+      "activation": {
+        "exact_prefix": "Use the installed $ui-ux-pro-max skill for this task.",
+        "prompt_extraction": "forbidden",
+        "policy": "Render the official Codex template deterministically from the pinned cli/assets bundle and copy its official data, scripts, and bundled skills. Do not substitute the Claude template or hand-extract selected guidance. Network and self-launched browser access remain disabled."
+      },
+      "benchmark_eligibility": {
+        "status": "eligible",
+        "tracks": ["creation", "landing-redesign", "repair"],
+        "excluded": []
+      }
+    },
+    {
+      "id": "taste-skill-main-2.0",
+      "benchmark_variant_id": "taste-eligible-scope-only",
+      "product": "Taste Skill",
+      "repository": "https://github.com/Leonxlnx/taste-skill",
+      "checkout_dir": "taste-skill",
+      "source_ref": {
+        "selection": "main-head-no-tags",
+        "requested_ref": "refs/heads/main",
+        "resolved_commit": "e988add20dab0fa97d7a76781c48961c8184288e",
+        "tag_object": null,
+        "commit_time": "2026-07-23T18:01:24+02:00"
+      },
+      "official_source": "https://github.com/Leonxlnx/taste-skill/tree/e988add20dab0fa97d7a76781c48961c8184288e/skills/taste-skill",
+      "source_path": "skills/taste-skill",
+      "source_tree": {
+        "files": 1,
+        "bytes": 87253,
+        "sha256": "f546542de84bd59c0d5713702fa8eefc105ff9491d64b86dacd6ffaa598852a5",
+        "hash_contract": "treeManifest-v1:path\\0mode\\0file-sha256, sorted by path"
+      },
+      "license": {
+        "spdx": "MIT",
+        "evidence_path": "LICENSE",
+        "evidence_sha256": "4575a543ab88dad12ccea7d97e563d0bce5b448b06072e65d3264497dad326df",
+        "inside_source_boundary": false,
+        "install_policy": "copy the repository-root LICENSE beside the installed frozen snapshot"
+      },
+      "install": {
+        "platform": "agents",
+        "root": ".agents/skills",
+        "directory": "design-taste-frontend",
+        "declared_name": "design-taste-frontend",
+        "adapter": "exact-tree-copy-plus-license"
+      },
+      "activation": {
+        "exact_prefix": "Use the installed $design-taste-frontend skill for this task.",
+        "prompt_extraction": "forbidden",
+        "policy": "The public product is one MIT-licensed SKILL.md, so prompt-only means installing that entire exact file, not extracting selected rules. No unpublished bundle, script, asset, or hidden prompt may be added."
+      },
+      "benchmark_eligibility": {
+        "status": "eligible-only-when-task-is-in-declared-scope",
+        "tracks": ["landing-page", "portfolio", "redesign"],
+        "excluded": ["dashboard", "data-table", "multi-step-product-ui"],
+        "fail_closed_policy": "If a locked task is outside the declared scope, mark this arm ineligible before matrix creation; do not run it off-label or count it as a failure."
+      }
+    }
+  ],
+  "historical_integrity": {
+    "mutate_competitors_json": false,
+    "mutate_historical_reports": false,
+    "reuse_historical_variant_ids": false
+  },
+  "execution_boundary": {
+    "third_party_installers_executed": 0,
+    "hooks_enabled": 0,
+    "provider_calls": 0,
+    "model_calls": 0,
+    "browser_calls": 0
+  }
+}

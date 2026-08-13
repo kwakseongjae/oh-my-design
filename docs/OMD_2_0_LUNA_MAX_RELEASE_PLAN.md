@@ -23,13 +23,15 @@ This plan turns the remaining external-usefulness question into the final
 2.0.0 release gate. A good-looking selected screenshot is not enough. OmD must
 show repeatable product quality, stronger blinded ship preference, a useful
 project design-system artifact, and an acceptable time/token/intervention
-frontier under the same Luna Max prompt and workspace contract as competing
-portable skills.
+frontier under the same user-task packet, blank workspace and Luna Max runtime
+contract as competing portable skills. Each skill's only prompt difference is
+its official/native activation prefix, whose exact bytes and hash are public.
 
 ## Release question
 
-With the exact same blank starter, prompt bytes, Luna selector, native `max`
-effort, permissions, timeout and network policy:
+With the exact same blank starter, user-task packet bytes, Luna selector,
+native `max` effort, permissions, timeout and network policy—and only the
+frozen official/native skill activation prefix differing by arm:
 
 1. Does OmD produce a working, responsive and accessible product surface more
    reliably than model-only?
@@ -193,8 +195,8 @@ repair only the screenshot selected for marketing.
 
 The launch story is evidence-first:
 
-1. **The same prompt, six systems, no hidden setup** — blinded desktop/mobile
-   gallery with all failures.
+1. **The same task, six systems, no hidden setup** — blinded desktop/mobile
+   gallery with every public activation prefix and all failures.
 2. **A screen is not a design system** — show the exact Core v2 DESIGN.md,
    provenance and code conformance behind the winning result.
 3. **What the extra quality cost** — median time, token classes, tool calls and

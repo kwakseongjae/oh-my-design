@@ -1,7 +1,7 @@
 import { createServer } from 'node:http';
-import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { dirname, join } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
 import { afterEach, describe, expect, it } from 'vitest';
 
@@ -33,6 +33,23 @@ async function fixture(responseFor) {
 }
 
 describe('public Core schema liveness', () => {
+  it('binds the liveness inventory to every exact-byte public schema mirror', () => {
+    const specDir = resolve(process.cwd(), 'spec/schema');
+    const publicDir = resolve(process.cwd(), 'web/public/schema');
+    const jsonFiles = (directory) => readdirSync(directory)
+      .filter((name) => name.endsWith('.schema.json'))
+      .sort();
+
+    expect([...SCHEMA_FILES].sort()).toEqual(jsonFiles(specDir));
+    expect([...SCHEMA_FILES].sort()).toEqual(jsonFiles(publicDir));
+    for (const name of SCHEMA_FILES) {
+      const expected = readFileSync(join(specDir, name));
+      const published = readFileSync(join(publicDir, name));
+      expect(published, `${name} public mirror drifted`).toEqual(expected);
+      expect(JSON.parse(published).$id).toBe(`https://oh-my-design.kr/schema/${name}`);
+    }
+  });
+
   it('requires all seven deployed schemas to be exact JSON bytes', async () => {
     const options = await fixture((request, response, bodies) => {
       const name = request.url.split('/').pop();

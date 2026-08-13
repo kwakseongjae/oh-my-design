@@ -21,6 +21,43 @@ const taskSetPath = join(repoRoot, 'benchmarks/ui-resolve-bench/config/autopilot
 const adapterSetPath = join(repoRoot, 'benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json');
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
+export const LUNA_MAX_STATE_SCREENSHOT_REQUIREMENTS = Object.freeze({
+  'neighborhood-library-landing': Object.freeze(['default', 'focus-visible', 'unavailable-information']),
+  'cold-chain-operations': Object.freeze(['filtered', 'selected', 'assignment-error', 'assigned']),
+  'clinic-visit-prep-locales': Object.freeze(['locale-selected', 'in-progress', 'complete', 'translation-unavailable']),
+});
+
+export function writeStateScreenshotManifest({ taskId, screenshotDir, captures }) {
+  const requiredStates = LUNA_MAX_STATE_SCREENSHOT_REQUIREMENTS[taskId];
+  if (!requiredStates) return null;
+  const grouped = Object.fromEntries(requiredStates.map((state) => [state, []]));
+  for (const capture of captures) {
+    if (!requiredStates.includes(capture.state)) throw new Error(`unexpected state screenshot for ${taskId}: ${capture.state}`);
+    const expectedFile = `${capture.state}--${capture.viewport_id}.png`;
+    if (capture.file !== expectedFile) throw new Error(`non-deterministic state screenshot filename: ${capture.file}`);
+    const absolutePath = join(screenshotDir, capture.file);
+    if (!existsSync(absolutePath)) throw new Error(`state screenshot is missing: ${capture.file}`);
+    grouped[capture.state].push({
+      viewport_id: capture.viewport_id,
+      file: capture.file,
+      sha256: sha(readFileSync(absolutePath)),
+    });
+  }
+  for (const state of requiredStates) {
+    if (grouped[state].length === 0) throw new Error(`required state screenshot was not observed: ${taskId}/${state}`);
+    grouped[state].sort((left, right) => left.viewport_id.localeCompare(right.viewport_id));
+  }
+  const manifest = {
+    schema_version: '0.1',
+    kind: 'omd-luna-max-evaluator-state-screenshots',
+    task_id: taskId,
+    states: grouped,
+  };
+  const manifestPath = join(screenshotDir, 'STATE-SCREENSHOTS.json');
+  writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, { encoding: 'utf8', flag: 'wx' });
+  return { manifest, manifestPath };
+}
+
 export function isSampleOwnerOption(value, groupLabel = '') {
   const text = String(value || '').replace(/\s+/g, ' ').trim();
   const scope = String(groupLabel || '').replace(/\s+/g, ' ').trim();
@@ -548,7 +585,7 @@ async function boundedAriaInventory(page, roles, { perRole = 2, total = 8, chars
   return observed;
 }
 
-async function evaluateLanding(page, viewport, origin) {
+async function evaluateLanding(page, viewport, origin, captureState = async () => {}) {
   const button = page.getByRole('button', { name: /^reserve a tool$/i });
   const link = page.getByRole('link', { name: /^reserve a tool$/i });
   const candidates = button.or(link);
@@ -578,6 +615,8 @@ async function evaluateLanding(page, viewport, origin) {
     };
   });
   initial.unavailableInformationHonest = hasHonestUnavailableLibraryInformation(initial.visibleText);
+  await captureState('default');
+  if (initial.unavailableInformationHonest) await captureState('unavailable-information');
   const rect = primary ? await primary.boundingBox() : null;
   const inside = rect ? rect.x >= 0 && rect.y >= 0 && rect.x + rect.width <= viewport.width + 1 : false;
   const initialAxe = await axeSeriousCritical(page);
@@ -592,6 +631,7 @@ async function evaluateLanding(page, viewport, origin) {
   if (primary) {
     keyboardReachable = await tabUntilFocused(page, primary);
     focusIndicatorVisible = keyboardReachable && await focusIndicator(primary);
+    if (focusIndicatorVisible) await captureState('focus-visible');
     await page.keyboard.press('Enter');
     await afterPaint(page);
     const reservationName = /reserve a tool|start (?:a |your )?(?:tool )?(?:reservation|request)|tool reservation|reservation start/i;
@@ -807,7 +847,7 @@ async function evaluateIncident(page, viewport, origin) {
   };
 }
 
-async function evaluateColdChain(page, viewport) {
+async function evaluateColdChain(page, viewport, captureState = async () => {}) {
   const main = page.getByRole('main');
   const initialText = (await main.innerText()).replace(/\s+/g, ' ');
   const shipmentIdentity = /\b[A-Z][A-Z0-9]{1,7}-\d{2,}\b/i;
@@ -931,6 +971,7 @@ async function evaluateColdChain(page, viewport) {
   const filterSelectedAndVisible = filterKeyboard && filterProgrammatic && filterStateVisible;
   const urgentIds = records.filter((item) => item.urgent).map((item) => item.identity).filter(Boolean);
   const filteredExact = filteredRecords.length === urgentIds.length && filteredRecords.every((id) => urgentIds.includes(id));
+  if (filterSelectedAndVisible && filteredExact) await captureState('filtered');
   const firstRecord = filteredRecordObjects[0] ?? null;
   const firstAction = firstRecord?.action ?? null;
   const activeIdentity = firstRecord?.identity ?? null;
@@ -984,6 +1025,7 @@ async function evaluateColdChain(page, viewport) {
   const matchingEvidence = Boolean(detail
     && /\b(?:sample|demo|fictional)\b/i.test(detailEvidenceText)
     && /\b(?:observed|temperature|activity|scan|reading|event|sensor|probe|evidence)\b/i.test(detailEvidenceText));
+  if (keyboardOpen && matchingEvidence) await captureState('selected');
   const detailAxe = await axeSeriousCritical(page);
   let errorAssociated = false;
   let ownerFocusedAfterError = false;
@@ -1033,6 +1075,7 @@ async function evaluateColdChain(page, viewport) {
         ownerDescribedBy = described || '';
         ownerAlertText = alertText;
         errorAssociated = ownerFocusedAfterError && Boolean(ownerDescribedBy) && Boolean(ownerAlertText) && describedFeedbackSemantic;
+        if (errorAssociated) await captureState('assignment-error');
         errorAxe = await axeSeriousCritical(page);
         const options = await owner.locator('option').allTextContents();
         const ownerScope = await owner.evaluate((element) => {
@@ -1068,6 +1111,7 @@ async function evaluateColdChain(page, viewport) {
           assignmentStatusText = statusText;
           assignedSourceRecordText = sourceRecordText;
           assignedPersistent = Boolean(activeIdentity && statusText.includes(activeIdentity) && statusText.includes(ownerName) && sourceRecordText.includes(ownerName));
+          if (assignedPersistent) await captureState('assigned');
           assignedAxe = await axeSeriousCritical(page);
         }
       }
@@ -1310,7 +1354,7 @@ export async function setCheckboxStateWithKeyboard(page, locator, checked) {
   return (await checkboxState(locator)) === checked;
 }
 
-async function evaluateLocale(page, viewport) {
+async function evaluateLocale(page, viewport, captureState = async () => {}) {
   const main = page.getByRole('main'); const axeCounts = []; const h1Counts = []; const cjkUnclipped = []; const localeDiagnostics = [];
   const checkState = async () => { axeCounts.push((await axeSeriousCritical(page)).count); h1Counts.push(await page.getByRole('heading', { level: 1 }).count()); };
   const initialText = (await main.innerText()).replace(/\s+/g, ' '); await checkState();
@@ -1376,6 +1420,7 @@ async function evaluateLocale(page, viewport) {
     // other at a language-subtag boundary.
     const pass = localeCodeMatches(lang, locale.code) && scriptMatch && selected && labelMatch;
     localeDiagnostics.push({ requested: locale.code, mechanism: currentSelect ? 'select' : 'button', actual_lang: lang, selected, script_match: scriptMatch, label_match: labelMatch, selected_label: selectedLabel.slice(0, 80) });
+    if (pass) await captureState('locale-selected');
     await checkState(); return pass;
   }
   const initialLocaleChecks = [];
@@ -1398,12 +1443,19 @@ async function evaluateLocale(page, viewport) {
   const textShowsProgress = (snapshot, amount, total) => snapshot.status_texts.some((text) => new RegExp(`(?:${amount}\\D{0,12}${total}|${total}\\D{0,12}${amount})`, 'i').test(text));
   const progressSemanticsExact = (snapshot, amount, total) => textShowsProgress(snapshot, amount, total)
     && ((snapshot.bar_now === null && snapshot.bar_max === null) || (snapshot.bar_now === amount && snapshot.bar_max === total));
-  const progress1 = await progressSnapshot(); await checkState(); await switchTo(locales[2]); const progressJapanese = await progressSnapshot(); await switchTo(locales[1]); const firstPreserved = hasChecklist && await checkboxState(page.getByRole('checkbox').first()); const progressBack = await progressSnapshot();
+  const progress1 = await progressSnapshot();
+  if (hasChecklist && progress1.checked === 1 && progressSemanticsExact(progress1, 1, checklistTotal)) await captureState('in-progress');
+  await checkState(); await switchTo(locales[2]); const progressJapanese = await progressSnapshot(); await switchTo(locales[1]); const firstPreserved = hasChecklist && await checkboxState(page.getByRole('checkbox').first()); const progressBack = await progressSnapshot();
   if (hasChecklist) {
     const currentChecks = page.getByRole('checkbox');
     for (let index = 0; index < await currentChecks.count(); index += 1) await setCheckboxStateWithKeyboard(page, currentChecks.nth(index), true);
   }
-  const completeEnglish = (await main.innerText()).replace(/\s+/g, ' '); await switchTo(locales[0]); await switchTo(locales[1]); const completionPreserved = hasChecklist && (await checkboxState(checks.first())) && (await checkboxState(checks.nth(1))) && /(?:complete|2 of 2)/i.test((await main.innerText()).replace(/\s+/g, ' '));
+  const completeEnglish = (await main.innerText()).replace(/\s+/g, ' ');
+  const observedComplete = await progressSnapshot();
+  if (hasChecklist && observedComplete.checked === checklistTotal
+    && observedComplete.total === checklistTotal
+    && (/(?:complete|completed)/i.test(completeEnglish) || textShowsProgress(observedComplete, checklistTotal, checklistTotal))) await captureState('complete');
+  await switchTo(locales[0]); await switchTo(locales[1]); const completionPreserved = hasChecklist && (await checkboxState(checks.first())) && (await checkboxState(checks.nth(1))) && /(?:complete|2 of 2)/i.test((await main.innerText()).replace(/\s+/g, ' '));
   const langBeforeUnavailable = await page.locator('html').getAttribute('lang');
   // The user-facing affordance may describe the state before the state is
   // opened ("Translation status" / "Translation availability") instead of
@@ -1436,7 +1488,9 @@ async function evaluateLocale(page, viewport) {
     && unavailableSelectionExact
     && (unavailableTrigger === 'explicit-state-control'
       ? langAfterUnavailable === langBeforeUnavailable
-      : localeCodeMatches(langAfterUnavailable, 'zh-TW')); await checkState();
+      : localeCodeMatches(langAfterUnavailable, 'zh-TW'));
+  if (unavailableHonest) await captureState('translation-unavailable');
+  await checkState();
   const unavailableDiagnostics = {
     control_count: await unavailable.count(),
     control_visible: await unavailable.count() === 1 ? await unavailable.isVisible() : false,
@@ -1493,6 +1547,7 @@ if (invoked) {
   const pageErrors = [];
   const externalRequests = [];
   const screenshots = join(dirname(outPath), 'screenshots');
+  const stateScreenshotCaptures = [];
   mkdirSync(screenshots, { recursive: true });
   try {
     for (const viewport of [
@@ -1509,11 +1564,20 @@ if (invoked) {
         else await route.continue();
       });
       await page.goto(origin, { waitUntil: 'load' });
-      observations.push(taskId === 'neighborhood-library-landing' ? await evaluateLanding(page, viewport, origin) : taskId === 'incident-response-dashboard' ? await evaluateIncident(page, viewport, origin) : taskId === 'cold-chain-operations' ? await evaluateColdChain(page, viewport) : taskId === 'caregiver-onboarding' ? await evaluateCaregiver(page, viewport) : taskId === 'community-class-checkout' ? await evaluateCheckout(page, viewport, origin) : taskId === 'research-data-deletion' ? await evaluateDeletion(page, viewport, origin) : taskId === 'public-record-search' ? await evaluateSearch(page, viewport, origin) : taskId === 'field-notes-editorial' ? await evaluateEditorial(page, viewport) : taskId === 'mobile-transit-report' ? await evaluateTransit(page, viewport) : taskId === 'grant-evidence-intake' ? await evaluateGrant(page, viewport) : taskId === 'volunteer-import-recovery' ? await evaluateRecovery(page, viewport) : await evaluateLocale(page, viewport));
+      const capturedStates = new Set();
+      const captureState = async (state) => {
+        if (!LUNA_MAX_STATE_SCREENSHOT_REQUIREMENTS[taskId]?.includes(state) || capturedStates.has(state)) return;
+        const file = `${state}--${viewport.id}.png`;
+        await page.screenshot({ path: join(screenshots, file), fullPage: true });
+        capturedStates.add(state);
+        stateScreenshotCaptures.push({ state, viewport_id: viewport.id, file });
+      };
+      observations.push(taskId === 'neighborhood-library-landing' ? await evaluateLanding(page, viewport, origin, captureState) : taskId === 'incident-response-dashboard' ? await evaluateIncident(page, viewport, origin) : taskId === 'cold-chain-operations' ? await evaluateColdChain(page, viewport, captureState) : taskId === 'caregiver-onboarding' ? await evaluateCaregiver(page, viewport) : taskId === 'community-class-checkout' ? await evaluateCheckout(page, viewport, origin) : taskId === 'research-data-deletion' ? await evaluateDeletion(page, viewport, origin) : taskId === 'public-record-search' ? await evaluateSearch(page, viewport, origin) : taskId === 'field-notes-editorial' ? await evaluateEditorial(page, viewport) : taskId === 'mobile-transit-report' ? await evaluateTransit(page, viewport) : taskId === 'grant-evidence-intake' ? await evaluateGrant(page, viewport) : taskId === 'volunteer-import-recovery' ? await evaluateRecovery(page, viewport) : await evaluateLocale(page, viewport, captureState));
       await page.screenshot({ path: join(screenshots, `${viewport.id}.png`), fullPage: true });
       await context.close();
     }
   } finally { await browser.close(); await new Promise((done) => server.close(done)); }
+  writeStateScreenshotManifest({ taskId, screenshotDir: screenshots, captures: stateScreenshotCaptures });
   const first = observations[0];
   const landingEvidence = {
     schema_version: '0.1', task_id: taskId, task_set_sha256: sha(taskBytes), adapter_set_sha256: sha(adapterBytes),
