@@ -5,6 +5,18 @@
 
 ---
 
+## 2026-08-14 (Codex) · Luna blind-human 운영/감사 체인 봉인
+- commit `22c3f0fe`에 strongest-competitor A/B packet과 5명×3표 attestation 운영기를 결박했다.
+- 실패 셀은 no-render로 보존하며 완료 PNG는 prepare/finalize 양쪽에서 bytes/hash를 검증한다.
+- reversal/blank vote 우회를 최종 감사기에서도 막았고 44/44·blind+auditor 30/30·lint가 PASS했다.
+- 다음 clean HEAD에서 receipts/materialization/admission을 재발급하며 Chrome Allow 전 셀 실행은 금지한다.
+
+## 2026-08-14 (Codex) · Luna 551b authority 준비 / Chrome 권한 대기
+- telemetry parser를 commit `551b2374`로 봉인하고 clean detached authority를 만들었다.
+- static/schema7/7/evaluation receipts와 Luna/max attribution 1회(4,582 tokens)를 PASS했다.
+- Browser Harness는 Chrome의 `Allow remote debugging?` 권한 요구로 receipt 생성 전에 중단됐다.
+- 사용자가 Allow를 누르면 safe-blank receipt→48/6 materialize→Sol/xhigh admission→first cell 순으로 재개한다.
+
 ## 2026-08-14 (Codex) · Luna telemetry executable parser PASS
 - Sol/medium이 heredoc/source 문자열 false positive를 executable/argv-aware parser로 제거했다.
 - env/command/exec/timeout/nice/nohup/sudo wrapper의 실제 curl/open/browser-harness/wget은 계속 fail-close한다.
