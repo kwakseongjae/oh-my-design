@@ -23,6 +23,7 @@ export const admissionReceiptGeneratorPath = "benchmarks/ui-resolve-bench/script
 export const evaluationRuntimeReceiptGeneratorPath = "benchmarks/ui-resolve-bench/scripts/prepare-luna-max-evaluation-runtime-receipt.mjs";
 export const resultAuditorPath = "benchmarks/ui-resolve-bench/scripts/audit-luna-max-wow-preview.mjs";
 export const scoreGatePath = "benchmarks/ui-resolve-bench/config/omd-luna-max-wow-preview-score-gate-v0.1.json";
+export const WORKSPACE_RUNTIME_BOUNDARY = "Benchmark runtime boundary: keep every generated file and temporary validation artifact inside the current workspace (use .benchmark/tmp when needed). Do not read or write external paths, including /tmp, and do not launch or control browsers or use network access; the external evaluator owns browser checks.";
 export const EXECUTION_CLOSURE_PATHS = Object.freeze([
   executionMaterializerPath,
   executionRunnerPath,
@@ -136,6 +137,10 @@ export function validateConfig(config, { readAuthority = (path) => readFileSync(
     }
   }
   assertZeroCalls(config.preparation_calls, "config preparation");
+  if (config.runtime?.workspace_boundary_applies_to_every_arm !== true
+    || config.runtime?.workspace_boundary_prompt_suffix !== WORKSPACE_RUNTIME_BOUNDARY) {
+    throw new Error("Luna Max workspace runtime boundary drift");
+  }
   for (const field of ["same_user_task_packet_bytes", "native_activation_prefix_is_only_arm_specific_prompt_delta", "activation_prefix_and_invocation_hash_public", "arm_specific_design_or_task_facts_forbidden"]) {
     if (config.fairness_contract?.[field] !== true) throw new Error(`Luna Max fairness contract drift: ${field}`);
   }

@@ -170,6 +170,7 @@ export function buildStaticCapabilityReceipt({ sourceCommit, sourceAuthority, ca
   if (!codexCli?.wrapper?.path || !SHA.test(codexCli?.wrapper?.sha256 ?? "") || !codexCli?.native?.path || !SHA.test(codexCli?.native?.sha256 ?? "") || !codexCli?.version) throw new Error("exact Codex CLI binding is required");
   let catalog;
   try { catalog = JSON.parse(catalogBytes.toString("utf8")); } catch { throw new Error("catalog is not valid JSON"); }
+  if (catalog?.client_version !== codexCli.version) throw new Error("catalog client version differs from exact Codex CLI version");
   const matches = modelsFromCatalog(catalog).filter((model) => model?.slug === "gpt-5.6-luna");
   if (matches.length !== 1) throw new Error("catalog must contain exactly one gpt-5.6-luna model");
   const efforts = matches[0].supported_reasoning_levels;

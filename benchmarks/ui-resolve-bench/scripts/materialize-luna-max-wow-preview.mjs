@@ -25,6 +25,7 @@ import {
   buildCells,
   defaultConfigPath,
   defaultNeutralInputLockPath,
+  WORKSPACE_RUNTIME_BOUNDARY,
   validateCompetitorLock,
   validateConfig,
   validateNeutralTaskPacketLock,
@@ -423,7 +424,8 @@ export function materializeCommand(args) {
     if (sourcesByVariant.has(cell.variant_id)) armReceipt = installCompetitor(sourcesByVariant.get(cell.variant_id), checkoutRoot, workspace);
     else if (cell.variant_id === "omd-autopilot-v2") armReceipt = installOmd(sourceCommit, workspace);
 
-    const invocationPrompt = armReceipt.activation_prefix ? `${armReceipt.activation_prefix}\n\n${task.prompt}` : task.prompt;
+    const taskAndBoundary = `${task.prompt}\n\n${WORKSPACE_RUNTIME_BOUNDARY}`;
+    const invocationPrompt = armReceipt.activation_prefix ? `${armReceipt.activation_prefix}\n\n${taskAndBoundary}` : taskAndBoundary;
     writeExclusive(join(workspace, ".benchmark/prompt.txt"), task.prompt);
     writeExclusive(join(workspace, ".benchmark/invocation-prompt.txt"), invocationPrompt);
     const cellMetadata = {
@@ -441,6 +443,7 @@ export function materializeCommand(args) {
       arm: armReceipt,
       activation_prefix: armReceipt.activation_prefix,
       activation_prefix_sha256: armReceipt.activation_prefix === null ? null : sha256(armReceipt.activation_prefix),
+      workspace_runtime_boundary_sha256: sha256(WORKSPACE_RUNTIME_BOUNDARY),
       invocation_prompt_sha256: sha256(invocationPrompt),
       runtime: { provider: "codex", model: "gpt-5.6-luna", effort: "max", retry_budget: 0, replacement_budget: 0, fallback_budget: 0 },
       evaluation: {

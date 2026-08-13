@@ -70,6 +70,8 @@ describe("Luna Max Wow Preview execution materializer", () => {
     const source = readFileSync(resolve(root, "benchmarks/ui-resolve-bench/scripts/materialize-luna-max-wow-preview.mjs"), "utf8");
     expect(source).toContain("Use the installed $omd-autopilot skill for this task.");
     expect(source).toContain("activation_prefix: armReceipt.activation_prefix");
+    expect(source).toContain("workspace_runtime_boundary_sha256");
+    expect(source).toContain("WORKSPACE_RUNTIME_BOUNDARY");
     expect(source).toContain("invocation_prompt_sha256");
     expect(source).not.toContain("targeted_mutants_evaluator_only");
   });

@@ -59,8 +59,9 @@ function fixtureRepo({ withSchemas = false, copyScript = false } = {}) {
   return { root, authorityPath, sourceCommit: git(root, "rev-parse", "HEAD") };
 }
 
-function catalog({ max = true } = {}) {
+function catalog({ max = true, clientVersion = "1.0" } = {}) {
   return Buffer.from(`${JSON.stringify({
+    client_version: clientVersion,
     models: [{
       slug: "gpt-5.6-luna",
       supported_reasoning_levels: max ? [{ effort: "high" }, { effort: "max" }] : [{ effort: "high" }],
@@ -154,6 +155,7 @@ describe("Luna Max admission receipts", () => {
     });
     expect(receipt.runtime.model_profile_sha256).toMatch(/^[a-f0-9]{64}$/);
     expect(() => buildStaticCapabilityReceipt({ sourceCommit: "c".repeat(40), sourceAuthority: sourceAuthority(), catalogBytes: catalog({ max: false }), codexCli })).toThrow(/missing max effort/);
+    expect(() => buildStaticCapabilityReceipt({ sourceCommit: "c".repeat(40), sourceAuthority: sourceAuthority(), catalogBytes: catalog({ clientVersion: "2.0" }), codexCli })).toThrow(/client version/);
   });
 
   it("verifies seven exact committed schemas over bounded local HTTP", async () => {
@@ -252,14 +254,15 @@ describe("Luna Max admission receipts", () => {
   it("CLI writes deterministic fresh static receipt and refuses overwrite or symlink input", () => {
     const fixture = fixtureRepo({ copyScript: true });
     const catalogPath = join(fixture.root, "catalog.json");
-    writeFileSync(catalogPath, catalog());
+    const codexBin = realpathSync(execFileSync("which", ["codex"], { encoding: "utf8" }).trim());
+    const codexVersion = execFileSync(codexBin, ["--version"], { encoding: "utf8" }).match(/codex-cli\s+([^\s]+)/i)?.[1];
+    writeFileSync(catalogPath, catalog({ clientVersion: codexVersion }));
     git(fixture.root, "add", "catalog.json");
     git(fixture.root, "commit", "-qm", "catalog");
     fixture.sourceCommit = git(fixture.root, "rev-parse", "HEAD");
     const outputRoot = realpathSync(mkdtempSync(join(tmpdir(), "omd-luna-output-")));
     const output = join(outputRoot, "receipt.json");
     const cli = join(fixture.root, SCRIPT_PATH);
-    const codexBin = realpathSync(execFileSync("which", ["codex"], { encoding: "utf8" }).trim());
     execFileSync(process.execPath, [cli, "static-capability", "--source-commit", fixture.sourceCommit, "--catalog", catalogPath, "--codex-bin", codexBin, "--out", output], {
       env: { ...process.env, OMD_ADMISSION_REPO_ROOT: fixture.root },
     });

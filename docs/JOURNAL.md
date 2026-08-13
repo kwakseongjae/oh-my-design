@@ -6633,3 +6633,9 @@
 - live model/profile 관찰을 admitted `--runtime-home` snapshot으로 이동해 전역 cache를 권위에서 제외했다.
 - 회귀 테스트가 inspector에 exact snapshot path가 전달되는지 검증하며 관련 33/33, lint/diff-check green이다.
 - 다음: 새 commit 기준 모든 authority artifact를 다시 생성한 뒤 exact first cell을 실행한다.
+## 2026-08-13 (Codex) · first-cell shakedown의 cache/temp 경계 보강
+- source `57a5169a` 셀은 477초/tool 8회 뒤 cache mutation+외부 `/tmp` 3건으로 infrastructure-invalid; browser/network 0, score 0, 재시도 없음이다.
+- static receipt가 catalog client version과 exact Codex CLI version 일치를 요구해 app/CLI cache 스키마 혼용을 admission 전에 차단한다.
+- 모든 arm에 동일한 공개 runtime suffix를 추가해 임시 파일을 `.benchmark/tmp`에만 두고 external path/browser/network를 금지했다.
+- preflight가 만든 CLI 0.146.1-compatible cache를 다음 immutable snapshot authority로 사용한다.
+- 다음: 새 source/epoch에서 provider-zero prepare와 exact first cell을 다시 실행한다.

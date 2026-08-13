@@ -92,6 +92,10 @@ describe("Luna Max Wow Preview provider-zero controller", () => {
       same_source_facts_for_every_arm: true,
     }));
     expect(config.preparation_calls).toEqual({ provider_calls: 0, model_calls: 0, browser_calls: 0 });
+    expect(config.runtime).toMatchObject({
+      workspace_boundary_applies_to_every_arm: true,
+      workspace_boundary_prompt_suffix: expect.stringContaining("keep every generated file"),
+    });
     expect(config.fairness_contract).toEqual({
       same_user_task_packet_bytes: true,
       native_activation_prefix_is_only_arm_specific_prompt_delta: true,
