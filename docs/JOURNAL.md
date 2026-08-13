@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · cold-chain Impeccable r1 timeout
+- Impeccable dense-ops r1은 약10분22초 뒤 첫 write를 시작해 72,371B dispatch-ledger UI와 file-only QA를 남겼다.
+- 900,274ms·tool24 뒤 완료 lifecycle 전에 timeout; contamination0, objective0, rerun 금지다.
+- record `d50c0523…a6249ba`, partial-08 `6c3409d6…8e54f`; terminal8/missing40/ineligible6이다.
+- 다음 locked 셀은 cold-chain UI UX Pro Max r1이다.
+
 ## 2026-08-14 (Codex) · cold-chain Anthropic r1 transport timeout
 - Anthropic dense-ops r1은 900,283ms·tool3 뒤 WebSocket reset/reconnect 미복구로 blank-shell timeout됐다.
 - provider usage unknown, contamination0, objective0; skill 시각 품질과 transport reliability는 분리 해석한다.

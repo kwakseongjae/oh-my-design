@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 0dcbd99d IAB-only Luna/max epoch, terminal 7 / missing 41 / ineligible 6
+- 갱신: 2026-08-14 · source 0dcbd99d IAB-only Luna/max epoch, terminal 8 / missing 40 / ineligible 6
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -31,7 +31,9 @@
 - partial-06=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-06.json`, SHA=`40108b11…717aa`, terminal6/missing42/ineligible6이다. landing r1 status는 failed4/timeout2이고 모든 arm objective0다. 시각 경쟁 arm은 실제 UI를 냈지만 필수 unavailable state를 놓쳤고 OmD는 Core setup 뒤 화면을 내지 못해 현재 release gate는 HOLD다.
 - cold-chain operations Anthropic Frontend Design r1은 900,283ms timeout으로 immutable 봉인됐다. usage/completion unknown, tool3, agent browser/network/external0, evaluator/screenshots0, blank shell 244B다. 초기 “thermal ledger” 방향만 제시한 뒤 raw stream이 `WebSocket protocol error: Connection reset without closing handshake`/`Reconnecting... 2/5`를 남기고 복구되지 않았다. skill UI 품질과 provider transport reliability를 분리 해석하되 preregistered denominator에서는 objective0다. record SHA=`5a9212e3…a00d`, raw events SHA=`a4b05cc9…a6bcd`, rerun 금지다.
 - partial-07=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-07.json`, SHA=`d27cc95d…26dfb9`, terminal7/missing41/ineligible6이다.
-- **다음 exact action:** randomized order 8의 `cold-chain-operations-luna-max-r1-impeccable-prompt-only`을 Luna/max 1회·retry0으로 실행한다. terminal 뒤 partial-08과 같은 checkpoint를 반복한다. c494 6 terminals는 diagnostic-only로 계속 분리한다.
+- cold-chain operations Impeccable prompt-only r1은 900,274ms timeout으로 immutable 봉인됐다. usage/completion unknown, tool24, agent browser/network/external0이며 evaluator/screenshots는 실행되지 않았다. 약10분 22초 뒤 첫 product write를 시작해 72,371B HTML SHA=`98cfe776…`와 receiving-bay stamp/dispatch-ledger 시각 방향, file-only DOM/script/detector QA까지 남겼지만 lifecycle을 끝내지 못했다. `blank_shell=false`, failure artifact SHA=`8ed42958…`, record SHA=`d50c0523…a6249ba`, objective0이고 rerun 금지다.
+- partial-08=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-08.json`, SHA=`6c3409d6…8e54f`, terminal8/missing40/ineligible6이다.
+- **다음 exact action:** randomized order 9의 `cold-chain-operations-luna-max-r1-ui-ux-pro-max`를 Luna/max 1회·retry0으로 실행한다. terminal 뒤 partial-09와 같은 checkpoint를 반복한다. c494 6 terminals는 diagnostic-only로 계속 분리한다.
 
 ### 2026-08-14 c494 Luna Max 정식 비교 epoch
 
