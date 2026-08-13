@@ -226,8 +226,9 @@ const modelToolModeBeforeRun = exactRuntimeContract
   ? exactPreRunModelToolMode
   : sourceModelToolMode;
 if (disablePluginSkillSearch && (
-  modelToolModeBeforeRun.cache_sha256 !== executionModelToolMode.cache_sha256
+  modelToolModeBeforeRun.cache_semantic_sha256 !== executionModelToolMode.cache_semantic_sha256
   || modelToolModeBeforeRun.model_profile_sha256 !== executionModelToolMode.model_profile_sha256
+  || modelToolModeBeforeRun.cache_client_version !== executionModelToolMode.cache_client_version
 )) {
   throw new Error("strict isolated Codex home cache/profile mutated during provider invocation");
 }
@@ -287,12 +288,23 @@ const result = {
     model_tool_mode: modelToolMode.tool_mode,
     model_tool_mode_evidence: {
       scope: modelToolModeEvidenceScope,
-      cache_sha256: modelToolMode.cache_sha256,
+      cache_sha256: disablePluginSkillSearch
+        ? modelToolModeBeforeRun.cache_sha256
+        : modelToolMode.cache_sha256,
+      cache_semantic_sha256: modelToolMode.cache_semantic_sha256,
       model_profile_sha256: modelToolMode.model_profile_sha256,
       cache_fetched_at: modelToolMode.cache_fetched_at,
       cache_client_version: modelToolMode.cache_client_version,
+      execution_home_post_run: {
+        cache_sha256: modelToolMode.cache_sha256,
+        cache_semantic_sha256: modelToolMode.cache_semantic_sha256,
+        model_profile_sha256: modelToolMode.model_profile_sha256,
+        cache_fetched_at: modelToolMode.cache_fetched_at,
+        cache_client_version: modelToolMode.cache_client_version,
+      },
       auth_source_before_run: {
         cache_sha256: modelToolModeBeforeRun.cache_sha256,
+        cache_semantic_sha256: modelToolModeBeforeRun.cache_semantic_sha256,
         model_profile_sha256: modelToolModeBeforeRun.model_profile_sha256,
         cache_fetched_at: modelToolModeBeforeRun.cache_fetched_at,
         cache_client_version: modelToolModeBeforeRun.cache_client_version,

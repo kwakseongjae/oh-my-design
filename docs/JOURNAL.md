@@ -6639,3 +6639,9 @@
 - 모든 arm에 동일한 공개 runtime suffix를 추가해 임시 파일을 `.benchmark/tmp`에만 두고 external path/browser/network를 금지했다.
 - preflight가 만든 CLI 0.146.1-compatible cache를 다음 immutable snapshot authority로 사용한다.
 - 다음: 새 source/epoch에서 provider-zero prepare와 exact first cell을 다시 실행한다.
+## 2026-08-13 (Codex) · first official Luna cell의 두 false-positive 폐쇄
+- source `a626d07f` 셀은 499,565ms/50,944-byte HTML/design-system PASS였지만 cache+telemetry false-positive로 infrastructure-invalid 봉인됐다.
+- model은 browser/network/external path를 쓰지 않았고, stdout의 `Open menu`와 SVG namespace가 호출로 잘못 계수됐다.
+- cache는 exact pre-run bytes를 결박하되 post-run `fetched_at`만 제외한 semantic catalog/profile/client version을 비교하도록 수정했다.
+- telemetry는 command/structured arguments만 감사하며 실제 browser/curl/web_search·semantic cache drift는 계속 fail-close한다.
+- 관련 68 pass/3 skip와 lint/diff-check green; 다음은 fresh commit/epoch 재발급이다.

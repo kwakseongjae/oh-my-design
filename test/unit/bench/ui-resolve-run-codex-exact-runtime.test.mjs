@@ -46,7 +46,7 @@ function executable(path, source) {
   return path;
 }
 
-function exactRunFixture({ observedVersion = "9.9.9", removeExecutionCache = false, mutateExecutionCache = false } = {}) {
+function exactRunFixture({ observedVersion = "9.9.9", removeExecutionCache = false, mutateExecutionCache = false, refreshFetchedAt = false } = {}) {
   const root = realpathSync(mkdtempSync(join(tmpdir(), "omd-run-codex-exact-")));
   const matrixRoot = join(root, "matrix");
   const workspace = join(matrixRoot, "cell-1");
@@ -101,7 +101,7 @@ function exactRunFixture({ observedVersion = "9.9.9", removeExecutionCache = fal
     version: observedVersion,
   }));
   executable(native, `#!/usr/bin/env node
-import { unlinkSync, writeFileSync } from "node:fs";
+import { readFileSync, unlinkSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 if (process.argv[2] === "--version") {
   process.stdout.write("codex-cli ${observedVersion}\\n");
@@ -115,6 +115,12 @@ if (${JSON.stringify(removeExecutionCache)}) {
 }
 if (${JSON.stringify(mutateExecutionCache)}) {
   writeFileSync(join(process.env.CODEX_HOME, "models_cache.json"), JSON.stringify({models:[]}));
+}
+if (${JSON.stringify(refreshFetchedAt)}) {
+  const cachePath = join(process.env.CODEX_HOME, "models_cache.json");
+  const cache = JSON.parse(readFileSync(cachePath, "utf8"));
+  cache.fetched_at = "2026-08-13T09:49:00Z";
+  writeFileSync(cachePath, JSON.stringify(cache));
 }
 writeFileSync(join(workspace, ".benchmark", "fake-codex-invocation.json"), JSON.stringify({
   args,
@@ -266,6 +272,18 @@ describe("run-codex exact catalog/runtime invocation", () => {
     expect(executed.status).not.toBe(0);
     expect(executed.stderr).toContain("cache/profile mutated during provider invocation");
     expect(existsSync(join(fixture.benchmark, "run-result.json"))).toBe(false);
+  });
+
+  it("allows only a volatile fetched_at refresh while retaining the admitted cache identity", () => {
+    const fixture = exactRunFixture({ refreshFetchedAt: true });
+    const executed = runFixture(fixture, ["--disable-plugin-skill-search"]);
+    expect(executed.status, executed.stderr).toBe(0);
+    const result = JSON.parse(readFileSync(join(fixture.benchmark, "run-result.json"), "utf8"));
+    expect(result.runtime.model_tool_mode_evidence.cache_sha256).toBe(sha256(fixture.cacheBytes));
+    expect(result.runtime.model_tool_mode_evidence.execution_home_post_run.cache_sha256)
+      .not.toBe(sha256(fixture.cacheBytes));
+    expect(result.runtime.model_tool_mode_evidence.execution_home_post_run.cache_semantic_sha256)
+      .toBe(result.runtime.model_tool_mode_evidence.auth_source_before_run.cache_semantic_sha256);
   });
 
   it("isolates a bounded repair prompt and its runtime artifacts", () => {

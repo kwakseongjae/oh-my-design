@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
-  ADMISSION_GENERATOR_PATH, DEFAULT_EVALUATOR_PATH, PREREG_CONTROLLER_PATH, RUNNER_PATH, collectRecords, prepareRuntimeSnapshot, reconcileCrashes, runCell, sha256, tree,
+  ADMISSION_GENERATOR_PATH, DEFAULT_EVALUATOR_PATH, PREREG_CONTROLLER_PATH, RUNNER_PATH, collectRecords, prepareRuntimeSnapshot, reconcileCrashes, runCell, sha256, toolTelemetry, tree,
 } from "../../../benchmarks/ui-resolve-bench/scripts/run-luna-max-wow-preview-cell.mjs";
 import { auditWowPreview, defaultGatePath } from "../../../benchmarks/ui-resolve-bench/scripts/audit-luna-max-wow-preview.mjs";
 
@@ -155,6 +155,19 @@ describe("Luna Max Wow Preview one-cell runner", () => {
   it("counts and fails closed on raw provider-side browser-harness commands", () => {
     const f = fixture({ agentBrowserCall: true }); const result = execute(f);
     expect(result.status).toBe("infrastructure-invalid"); expect(result.telemetry.agent_browser_calls).toBe(1); expect(result.telemetry.telemetry_evidence.raw_browser_item_ids).toEqual(["browser-1"]); expect(result.browser_calls).toBe(1); expect(result.browser_call_split).toEqual({ agent_browser_calls: 1, evaluator_browser_calls: 0 });
+  });
+
+  it("does not classify command stdout text as a browser or network invocation", () => {
+    const telemetry = toolTelemetry([{
+      type: "item.completed",
+      item: {
+        id: "benign-output",
+        type: "command_execution",
+        command: "rg -n 'xmlns|menu' index.html",
+        aggregated_output: "Open menu <svg xmlns=\"http://www.w3.org/2000/svg\">",
+      },
+    }], null, { workspace: "/private/tmp/workspace", providerHome: "/private/tmp/provider-home" });
+    expect(telemetry).toMatchObject({ agent_browser_calls: 0, agent_network_attempts: 0, external_context_interventions: 0 });
   });
 
   it("fails closed when raw provider commands read global skills or write external temporary context", () => {

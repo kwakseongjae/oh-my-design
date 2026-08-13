@@ -29,6 +29,12 @@ function sha256(value) {
   return createHash("sha256").update(value).digest("hex");
 }
 
+function semanticCacheSha256(cache) {
+  if (!cache || typeof cache !== "object" || Array.isArray(cache)) return null;
+  const { fetched_at: _volatileFetchedAt, ...stable } = cache;
+  return sha256(canonicalJson(stable));
+}
+
 export function codexModelCachePath(env = process.env) {
   const home = resolve(env.OMD_BENCH_AUTH_CODEX_HOME ?? join(homedir(), ".codex"));
   return join(home, "models_cache.json");
@@ -42,6 +48,7 @@ function readCodexModelCache(env = process.env) {
       reason: "model-cache-missing",
       cache_path: path,
       cache_sha256: null,
+      cache_semantic_sha256: null,
       cache_fetched_at: null,
       cache_client_version: null,
       cache: null,
@@ -57,6 +64,7 @@ function readCodexModelCache(env = process.env) {
         reason: "model-cache-invalid",
         cache_path: path,
         cache_sha256: cacheSha256,
+        cache_semantic_sha256: null,
         cache_fetched_at: cache?.fetched_at ?? null,
         cache_client_version: cache?.client_version ?? null,
         cache: null,
@@ -67,6 +75,7 @@ function readCodexModelCache(env = process.env) {
       reason: null,
       cache_path: path,
       cache_sha256: cacheSha256,
+      cache_semantic_sha256: semanticCacheSha256(cache),
       cache_fetched_at: cache?.fetched_at ?? null,
       cache_client_version: cache?.client_version ?? null,
       cache,
@@ -77,6 +86,7 @@ function readCodexModelCache(env = process.env) {
       reason: "model-cache-invalid",
       cache_path: path,
       cache_sha256: cacheSha256,
+      cache_semantic_sha256: null,
       cache_fetched_at: null,
       cache_client_version: null,
       cache: null,
@@ -196,6 +206,7 @@ export function inspectCodexModelToolMode(modelId, env = process.env) {
       reason: cacheObservation.reason,
       cache_path: path,
       cache_sha256: cacheObservation.cache_sha256,
+      cache_semantic_sha256: cacheObservation.cache_semantic_sha256,
       model_profile_sha256: null,
       cache_fetched_at: null,
       cache_client_version: null,
@@ -213,6 +224,7 @@ export function inspectCodexModelToolMode(modelId, env = process.env) {
     reason: profile ? (toolMode ? null : "tool-mode-missing") : "model-profile-missing",
     cache_path: path,
     cache_sha256: cacheObservation.cache_sha256,
+    cache_semantic_sha256: cacheObservation.cache_semantic_sha256,
     model_profile_sha256: profile ? sha256(canonicalJson(profile)) : null,
     cache_fetched_at: cacheObservation.cache_fetched_at,
     cache_client_version: cacheObservation.cache_client_version,

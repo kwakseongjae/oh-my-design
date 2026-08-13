@@ -228,13 +228,25 @@ function rolloutEvidence(events, runResult, staticRuntime) {
   const providerUsage = latestModelUsage ? { available: true, input_tokens: Number(latestModelUsage.input_tokens), output_tokens: Number(latestModelUsage.output_tokens), total_tokens: Number(latestModelUsage.input_tokens) + Number(latestModelUsage.output_tokens) } : { available: false, reason: "provider-emitted-usage-unavailable" };
   return { exact, contexts, completions, fallbacks, provider_usage: providerUsage, interventions: events.some((event) => event.type === "unparseable") || marker ? 1 : 0, marker };
 }
-function toolTelemetry(events, runResult, { workspace, providerHome }) {
+export function toolTelemetry(events, runResult, { workspace, providerHome }) {
   const finiteNormalized = runResult?.output?.agent_tool_call_count;
   const toolTypes = new Set(["command_execution", "mcp_tool_call", "file_change", "web_search", "computer_use"]); const ids = new Set();
   const browserIds = new Set(); const networkIds = new Set(); const externalContextItems = [];
   for (const event of events) if (event.type === "item.completed" && toolTypes.has(event.item?.type)) {
     const id = String(event.item.id ?? `${event.item.type}:${sha256(canonical(event.item))}`); ids.add(id);
-    const raw = canonical(event.item);
+    const raw = event.item.type === "command_execution"
+      ? String(event.item.command ?? "")
+      : canonical({
+        type: event.item.type,
+        server: event.item.server ?? null,
+        tool: event.item.tool ?? event.item.name ?? null,
+        arguments: event.item.arguments ?? event.item.input ?? null,
+        query: event.item.query ?? null,
+        action: event.item.action ?? null,
+        paths: Array.isArray(event.item.changes)
+          ? event.item.changes.map((change) => ({ path: change?.path ?? null, kind: change?.kind ?? change?.type ?? null }))
+          : null,
+      });
     if (/browser-harness|browser_harness|BH_(?:RUNTIME|AGENT|DOMAIN|CDP)|BU_(?:NAME|CDP)/i.test(raw)) browserIds.add(id);
     const forbiddenCommand = /(?:^|[\s"'`/])(curl|wget|open|browser-harness)(?=$|[\s"'`;])/i.test(raw);
     const implicitNetworkTool = event.item.type === "web_search" || event.item.type === "computer_use" || event.item.type === "mcp_tool_call";
