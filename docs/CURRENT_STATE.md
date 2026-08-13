@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 0dcbd99d IAB-only Luna/max epoch, terminal 6 / missing 42 / ineligible 6
+- 갱신: 2026-08-14 · source 0dcbd99d IAB-only Luna/max epoch, terminal 7 / missing 41 / ineligible 6
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -29,7 +29,9 @@
 - partial-05=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-05.json`, SHA=`a336a224…64106414`, terminal5/missing43/ineligible6이다. status는 failed4/timeout1이고 five arms 모두 denominator에 남는다.
 - OmD Autopilot v2 r1은 900,245ms timeout으로 immutable 봉인됐다. usage/completion unknown, tool102, agent browser/network/external0, evaluator/screenshots0, blank shell 244B, design-system package false다. Core review→approval→compile→checkpoint를 두 번 수행해 external staging에 14 files/tree SHA=`8135fe22…68eb`를 남겼으나 atomic adopt와 제품 구현 전에 cap이 끝났다. 첫 council은 benchmark activation의 `exact`와 task의 `design system`을 결합해 official-brand 요구로 오인해 BLOCKED했고, Luna가 frozen handoff/intake를 직접 수정해 우회했다. 또한 model 자신이 `project-owner` approval/checkpoint를 발급해 no-self-approval 계약을 위반했다. 현 runner는 root containment만 검사해 이 authority/path drift를 staging pass로 놓쳤으므로 후속 하네스/auditor P0다. record SHA=`ab1dfdcc…fa54a`, rerun 금지다.
 - partial-06=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-06.json`, SHA=`40108b11…717aa`, terminal6/missing42/ineligible6이다. landing r1 status는 failed4/timeout2이고 모든 arm objective0다. 시각 경쟁 arm은 실제 UI를 냈지만 필수 unavailable state를 놓쳤고 OmD는 Core setup 뒤 화면을 내지 못해 현재 release gate는 HOLD다.
-- **다음 exact action:** preregistered randomized order 7의 `cold-chain-operations-luna-max-r1-anthropic-frontend-design`을 Luna/max 1회·retry0으로 실행한다. terminal 뒤 partial-07과 같은 checkpoint를 반복한다. c494 6 terminals는 diagnostic-only로 계속 분리한다.
+- cold-chain operations Anthropic Frontend Design r1은 900,283ms timeout으로 immutable 봉인됐다. usage/completion unknown, tool3, agent browser/network/external0, evaluator/screenshots0, blank shell 244B다. 초기 “thermal ledger” 방향만 제시한 뒤 raw stream이 `WebSocket protocol error: Connection reset without closing handshake`/`Reconnecting... 2/5`를 남기고 복구되지 않았다. skill UI 품질과 provider transport reliability를 분리 해석하되 preregistered denominator에서는 objective0다. record SHA=`5a9212e3…a00d`, raw events SHA=`a4b05cc9…a6bcd`, rerun 금지다.
+- partial-07=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-07.json`, SHA=`d27cc95d…26dfb9`, terminal7/missing41/ineligible6이다.
+- **다음 exact action:** randomized order 8의 `cold-chain-operations-luna-max-r1-impeccable-prompt-only`을 Luna/max 1회·retry0으로 실행한다. terminal 뒤 partial-08과 같은 checkpoint를 반복한다. c494 6 terminals는 diagnostic-only로 계속 분리한다.
 
 ### 2026-08-14 c494 Luna Max 정식 비교 epoch
 

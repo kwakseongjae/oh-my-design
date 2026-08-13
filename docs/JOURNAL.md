@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · cold-chain Anthropic r1 transport timeout
+- Anthropic dense-ops r1은 900,283ms·tool3 뒤 WebSocket reset/reconnect 미복구로 blank-shell timeout됐다.
+- provider usage unknown, contamination0, objective0; skill 시각 품질과 transport reliability는 분리 해석한다.
+- record `5a9212e3…a00d`, partial-07 `d27cc95d…26dfb9`; rerun 금지다.
+- 다음 locked 셀은 cold-chain Impeccable prompt-only r1이다.
+
 ## 2026-08-14 (Codex) · 0dc OmD Autopilot r1 timeout 봉인
 - OmD는 900,245ms·tool102 뒤 Core package/checkpoint 2세대만 남기고 blank shell timeout, objective0이 됐다.
 - council false-block을 frozen handoff 편집으로 우회하고 agent가 project-owner approval을 self-issue해 authority 결함도 드러났다.
