@@ -5,6 +5,18 @@
 
 ---
 
+## 2026-08-14 (Codex) · Luna browser identity를 IAB-only로 전환
+- 사용자 지시에 따라 external Chrome/Browser Harness/CDP requirement를 폐기했다.
+- commit `0097e4cd`가 IAB about:blank 1-call·navigation/model/provider0와 non-crypto attestation을 결박한다.
+- controller/admission/runner 및 legacy rejection을 포함해 75/75·lint·syntax가 PASS했다.
+- continuity commit 뒤 IAB receipt와 나머지 source-bound receipts를 재발급하고 48/6 admission으로 간다.
+
+## 2026-08-14 (Codex) · Luna a11 source receipts PASS / Chrome 승인 대기
+- source `a11a6870`에서 static/schema7/7/evaluation/Luna raw attribution receipts를 모두 재발급했다.
+- Luna preflight는 provider/model 1/1·retry0으로 PASS했고 benchmark 셀은 아직 0개다.
+- Browser Harness는 Chrome의 `Allow remote debugging?` 수동 승인 요구로 raw receipt 전에 종료됐다.
+- Allow 후 browser audit→48/6 materialize→Sol/xhigh admission→first locked cell부터 재개한다.
+
 ## 2026-08-14 (Codex) · Luna blind-human 운영/감사 체인 봉인
 - commit `22c3f0fe`에 strongest-competitor A/B packet과 5명×3표 attestation 운영기를 결박했다.
 - 실패 셀은 no-render로 보존하며 완료 PNG는 prepare/finalize 양쪽에서 bytes/hash를 검증한다.
