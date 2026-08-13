@@ -4,12 +4,18 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-13 · 파일럿이 찾은 runtime 격리 결함 수정·검증 완료, fresh authority epoch 재발급 대기
+- 갱신: 2026-08-13 · Luna Max 첫 유효 baseline 완료, Anthropic r1 preflight cache false invalidation에서 안전 중단
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
 
 ### 2026-08-13 OmD 2.0 출시 방향 — Luna Max evidence gate
+
+- **안전 중단 지점:** source `0290442b66df529738612520612487d2258e48f2`의 detached clean worktree `/private/tmp/omd-luna-runtime-0290442b`, evidence `/private/tmp/omd-luna-wow-evidence-0290442b`, runtime snapshot `/private/tmp/omd-luna-runtime-snapshot-0290442b`, locked root `/private/tmp/omd-luna-wow-locked-0290442b`, materialized root `/private/tmp/omd-luna-wow-materialized-0290442b`, admission `/private/tmp/omd-luna-wow-admission-0290442b/ADMISSION.json`을 보존한다. 새 provider cell은 시작하지 않았다.
+- 첫 유효 scored cell `neighborhood-library-landing-luna-max-r1-model-only`은 COMPLETED, 432,477ms, provider/model 1/1, input 321,713/output 22,475, tool 11, retry/fallback/intervention 0이다. 화면 조형은 강했지만 objective score 30/UI-Resolved false: CTA가 desktop 3/mobile 2개로 중복, mobile reservation control 34px, 초기 axe serious 9건(주로 색 대비)이라 journey/responsive/accessibility를 실제로 실패했다. evidence/runtime 30점만 통과했으며 유효 baseline으로 유지한다.
+- 다음 locked cell `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`은 Luna/max provider 1회(684,356ms, input 653,109/output 36,613, tool 19, browser/network/external 0)와 69,678-byte HTML/design-system PASS까지 생성했으나 evaluator 전에 `infrastructure-invalid`로 봉인됐다. retry/rerun은 금지하고 현 epoch denominator에 점수 편입하지 않는다.
+- false invalidation 원인은 provider-zero `debug prompt-input`가 cell-local copied `models_cache.json`의 `fetched_at`만 갱신한 뒤, isolation receipt가 admitted full-byte SHA `f4392270...5d44`와 copy SHA `35b4b015...20c0`의 불일치를 거부한 것이다. semantic cache SHA `402d17b5...a0c8`, Luna profile SHA `a0e0699d...93d0`, client version `0.146.1`, runtime/model/usage evidence는 동일하고 정확하다. immutable source snapshot은 여전히 SHA `f4392270...5d44`로 무변경이다.
+- **재개 순서:** (1) prompt-input audit 직후 full-byte drift는 기록하되 `fetched_at`-only semantic equality+profile+client-version이 같으면 허용하고 실제 semantic mutation은 fail-close하도록 runner receipt/test를 수정한다. (2) Sol/medium focused tests + Sol/xhigh review를 통과한다. (3) 새 clean commit에서 schema/static/runtime/browser/evaluation receipts, runtime snapshot, 48/6 materialization, admission을 전부 재발급한다. (4) 새 epoch의 exact first locked cell부터 시작한다. 이전 Anthropic r1은 재시도하지 않는다.
 
 - source commit `68e8276e203f99159a1166d5aabe2997d65c9f1e`에서 첫 Luna/max model-only 셀을 단일 시도로 시작했다. 실행 중 복사 workspace가 `RUN-MATRIX.locked.json`/exact runtime contract를 이어받지 않아 `run-codex.mjs`가 isolated `CODEX_HOME`을 활성화하지 않았고, model-only가 전역 Browser Harness 스킬 파일 두 개를 읽은 뒤 `browser-harness --doctor`, `page_info`, `new_tab(file://...)`를 호출했다. 이는 arm contamination과 agent browser-call 과소계수이므로 해당 셀은 완료 여부와 무관하게 scored denominator에서 제외한 immutable pilot/discovery evidence로 보존한다. 셀 2는 실행 금지다.
 - 파일럿 terminal은 `failed`: provider/model 1회, retry/fallback/replacement 0, provider 구현 755,781ms, 전체 종료 약 1,001초였다. provider usage는 input 2,535,829(그중 cached 2,417,664), output 37,511, total 2,573,340이며 48 tool calls를 기록했다. 61,099-byte 단일 HTML, 22 CSS custom properties, 80 reusable selectors를 만들었지만 evaluator가 필수 `unavailable-information` 상태를 관찰하지 못해 exit 1/score 0이었다. raw command audit는 Browser Harness/package 관련 명령 42개, 실제 CLI/module 호출형 25개를 찾았는데 기존 terminal은 evaluator 1회만 `browser_calls`로 기록했다. 이 불일치가 fresh runtime/telemetry epoch의 직접 회귀 fixture다.

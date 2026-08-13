@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-13 (Codex) · Luna Max 첫 baseline 후 안전 중단
+- source `0290442b` 첫 유효 model-only 셀은 7m12s·30점·UI-Resolved false로 확정했다.
+- 시각 완성도와 별개로 CTA 중복, mobile 34px control, axe serious 9건이 실제 실패 원인이다.
+- Anthropic r1은 Luna/max 1회·11m24s 뒤 prompt-input cache `fetched_at` false invalidation으로 봉인했다.
+- 다음은 semantic cache equality gate 수정→fresh authority epoch 재발급이며, 새 provider cell은 시작하지 않는다.
+
 ## 2026-08-13 (Codex) · Luna Max 실행 직전 provider-zero 폐쇄성 완료
 - 48-cell runner·admission·evaluation runtime·auditor를 controller source closure에 exact commit bytes로 결박했다.
 - Luna model catalog 전체 SHA와 model-profile SHA를 셀 시작 전/실행 전후 재검증하도록 강화했다.
