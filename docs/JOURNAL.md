@@ -5,6 +5,18 @@
 
 ---
 
+## 2026-08-14 (Codex) · 0dc first model-only terminal 봉인
+- Luna/max model-only r1은 479,279ms·376,692 tokens·tool9로 55,505B 화면을 생성했다.
+- 강한 editorial visual과 package/default/focus captures는 PASS했으나 unavailable-information state 누락으로 objective0·failed다.
+- record `266852a5…f793`, partial-01 `2eca2400…7e95`; rerun 금지다.
+- 다음 locked 셀은 같은 trial의 Anthropic frontend-design arm이다.
+
+## 2026-08-14 (Codex) · 0dc Luna epoch admission PASS
+- source `0dcbd99d`, actual IAB, schema/static/evaluation, accepted Luna/max raw attribution을 새로 결박했다.
+- ephemeral attribution 1회는 raw 부재 diagnostic으로 별도 공개; accepted preflight 포함 실제 preflight model calls는 2다.
+- 48 scheduled+6 ineligible materialization tree `0b62ce56…f5d37`, admission `566227c3…6d9dd`다.
+- baseline은 terminal0/missing48/ineligible6; 다음은 first locked model-only 셀 1회·retry0 실행이다.
+
 ## 2026-08-14 (Codex) · relative tmp telemetry P0 폐쇄
 - absolute-path 경계를 고쳐 `.benchmark/tmp/...` 오탐은 제거하고 실제 `/tmp`·`/private/tmp`·`/Users` 차단은 유지했다.
 - 통합 67/67, lint/syntax/diff-check PASS; 보존된 544,658B OmD events 재생은 intervention `12→0`이다.

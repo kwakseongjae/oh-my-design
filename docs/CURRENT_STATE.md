@@ -4,10 +4,22 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source c49444f4 diagnostic terminal 6개 보존, relative-tmp telemetry P0 수정·독립 검수 PASS, 새 source epoch 대기
+- 갱신: 2026-08-14 · source 0dcbd99d IAB-only Luna/max epoch admission PASS, terminal 0 / missing 48 / ineligible 6
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+### 2026-08-14 source 0dcbd99d Luna Max 정식 비교 epoch
+
+- relative `.benchmark/tmp/...` telemetry P0 수정은 commit `0dcbd99deea5c835ec77e9714ed5c41c9c3c6607`로 봉인했다. clean detached worktree=`/private/tmp/omd-luna-runtime-0dcbd99d`, evidence=`/private/tmp/omd-luna-wow-evidence-0dcbd99d`다. 보호 생성물 3개는 commit에서 제외했다.
+- actual Codex IAB는 fresh `about:blank` tab14를 1회 관측하고 즉시 정리했다. identity receipt SHA=`6eaa703c…cae03`; launch/navigation/provider/model은 0이고 browser identity event만 1이다.
+- provider-zero receipts는 production schema 7/7=`94c52cbf…70a9`, static Luna/max=`fb1ef45e…15a0c`, evaluation runtime=`249a8259…108cb`로 PASS했다. static catalog는 Codex CLI 0.146.1과 exact인 기존 immutable snapshot SHA `f4392270…5d44`를 새 source가 재검증했다.
+- 첫 Luna attribution 호출은 exact 응답·14,009/11 tokens였지만 `--ephemeral`이라 raw rollout이 없어 admission에서 거부하고 `runtime-attribution-ephemeral-diagnostic.json`에 별도 기록했다. accepted non-ephemeral preflight는 exact `gpt-5.6-luna/max`, raw rollout56,959B SHA=`28de6d9f…db62`, input14,595/output11, retry·fallback·replacement0이며 receipt SHA=`5af3f8f4…7032`다. 둘 다 benchmark denominator 밖이고 실제 총 preflight model calls는 2다.
+- locked root=`/private/tmp/omd-luna-wow-locked-0dcbd99d`; materialized root=`/private/tmp/omd-luna-wow-materialized-0dcbd99d`; 48 scheduled + Taste 6 ineligible, tree SHA=`0b62ce56…f5d37`다. runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-0dcbd99d`, auth=`627eb799…64cd`, catalog=`f4392270…5d44`다.
+- Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-0dcbd99d/ADMISSION.json`, SHA=`566227c3…6d9dd`, status=`admitted`; admission calls는 모두 0이다. baseline collector는 terminal0/missing48/ineligible6, calls0으로 전체 readback PASS했다.
+- 첫 locked cell `neighborhood-library-landing-luna-max-r1-model-only`은 `failed`로 immutable 봉인됐다. 479,279ms, input351,710/output24,982/total376,692, tool9, agent browser/network/external0, retry/fallback/replacement0이다. HTML55,505B, CSS vars20/selectors77, neutral design-system package와 desktop/mobile/default/focus-visible 캡처는 PASS, unsupported facts0이다. deep forest/cream/coral/yellow/mint editorial direction과 responsive composition은 강하지만 필수 `unavailable-information` state를 구현·관측하지 못해 evaluator exit1/objective0/UI-Resolved false다. record SHA=`266852a5…f793`, rerun 금지다.
+- partial bundle=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-01.json`, SHA=`2eca2400…7e95`, terminal1/missing47/ineligible6이다.
+- **다음 exact action:** 같은 task/trial의 `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`을 Luna/max 1회·retry0으로 실행한다. terminal 뒤 즉시 같은 분석·checkpoint를 반복한다. c494 6 terminals는 diagnostic-only로 계속 분리한다.
 
 ### 2026-08-14 c494 Luna Max 정식 비교 epoch
 
