@@ -235,6 +235,16 @@ describe("Luna Max admission receipts", () => {
     }
   });
 
+  it("accepts Chrome's exact internal error page as an existing non-navigated CDP state", () => {
+    const telemetry = browserTelemetry();
+    const observed = JSON.parse(telemetry.raw_stdout);
+    observed.browser_identity.url = "chrome-error://chromewebdata/";
+    observed.browser_identity.page_info.url = "chrome-error://chromewebdata/";
+    telemetry.raw_stdout = canonicalJson(observed);
+    expect(buildBrowserIdentityReceipt({ sourceCommit: "e".repeat(40), sourceAuthority: sourceAuthority(), telemetryBytes: Buffer.from(canonicalJson(telemetry)), telemetry }).browser.url)
+      .toBe("chrome-error://chromewebdata/");
+  });
+
   it("CLI writes deterministic fresh static receipt and refuses overwrite or symlink input", () => {
     const fixture = fixtureRepo({ copyScript: true });
     const catalogPath = join(fixture.root, "catalog.json");

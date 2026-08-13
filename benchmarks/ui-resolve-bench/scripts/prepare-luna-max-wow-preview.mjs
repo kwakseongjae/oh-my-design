@@ -274,7 +274,7 @@ export function validateNamedBrowserReceipt(receipt, sourceCommit) {
   const browser = receipt.browser;
   if (browser?.name !== "default-local-cdp" || browser.transport !== "local-existing-chrome-cdp"
     || browser.named_existing !== true || browser.available !== true || browser.launched_by_controller !== false
-    || browser.navigation_calls !== 0 || !/^(?:about:blank|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser.url ?? "")
+    || browser.navigation_calls !== 0 || !/^(?:about:blank|chrome-error:\/\/chromewebdata\/?|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser.url ?? "")
     || !SHA.test(browser.identity_sha256 ?? "") || !SHA.test(browser.executable_sha256 ?? "")) throw new Error("existing browser-harness telemetry drift");
   return true;
 }

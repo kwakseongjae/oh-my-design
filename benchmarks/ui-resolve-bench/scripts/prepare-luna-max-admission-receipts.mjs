@@ -329,7 +329,7 @@ export function buildBrowserIdentityReceipt({ sourceCommit, sourceAuthority, tel
     || browser?.transport !== "local-existing-chrome-cdp" || browser.name !== "default-local-cdp"
     || browser.named_existing !== true || browser.available !== true || browser.launched_by_controller !== false
     || browser.url !== browser.page_info?.url
-    || !/^(?:about:blank|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser.url ?? "")
+    || !/^(?:about:blank|chrome-error:\/\/chromewebdata\/?|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser.url ?? "")
     || !Number.isFinite(browser.page_info?.w) || !Number.isFinite(browser.page_info?.h)) {
     throw new Error("browser identity must be an existing local CDP page_info observation without navigation");
   }

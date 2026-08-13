@@ -27,7 +27,7 @@
 - 기존 `autopilot-luna-high-smoke-1.9.883`은 Luna high provider-zero preregistration이며 Luna Max 장시간 비교 결과가 아니다. 새 max 실행은 fresh commit·fresh experiment로만 시작한다.
 - 전체 회귀는 1329 pass, 6 fail이었다. 5건은 dirty source authority를 의도적으로 거부한 commit-before-execution gate였고, 1건은 release-train의 기존 식별자를 변경한 신규 계획 회귀여서 기존 `frontier-release`/`gated`를 보존하고 additive plan metadata로 수정했다.
 - commit 후 계획/일반 benchmark 237 tests와 lint는 green이다. 기존 Luna high controller 5 tests는 `v0.2/1.9.883`가 봉인한 과거 validator hash와 current Core validator bytes가 달라 fail-close한다. v0.2를 재해시하지 말고 Luna Max 전용 새 versioned config/controller/experiment에서 current commit을 결박해야 한다.
-- Luna Max provider/model cell calls는 아직 0이다. 구현 검증용 Browser Harness `page_info`는 1회 있었고 새 source-commit benchmark denominator/admission에는 포함하지 않는다. 토큰 monitor의 latest observation은 used 30%, resets_at 불변이며 reset 징후가 없다. 실제 셀은 위 admission 완료 후에도 serial·한 invocation당 next locked 1-cell·retry/replacement/fallback 0으로만 시작한다.
+- Luna Max provider/model cell calls는 아직 0이다. 구현 검증용 Browser Harness `page_info`는 2회 있었고 둘 다 source-commit benchmark denominator/admission에는 포함하지 않는다. 두 번째는 existing tab의 `chrome-error://chromewebdata/`를 정직하게 관측했으며 launch/navigation은 0이다. 토큰 monitor의 latest observation은 used 30%, resets_at 불변이며 reset 징후가 없다. 실제 셀은 위 admission 완료 후에도 serial·한 invocation당 next locked 1-cell·retry/replacement/fallback 0으로만 시작한다.
 
 ### 2026-08-13 Core v2 dogfood — adopted / provider-free proof PASS
 

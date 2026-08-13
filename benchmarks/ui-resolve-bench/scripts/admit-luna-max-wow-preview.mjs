@@ -304,7 +304,7 @@ export function validateBrowserReceipt(receipt, root, commit) {
   const browser = receipt.browser;
   invariant(browser?.name === "default-local-cdp" && browser.transport === "local-existing-chrome-cdp"
     && browser.named_existing === true && browser.available === true && browser.launched_by_controller === false
-    && browser.navigation_calls === 0 && /^(?:about:blank|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser.url ?? "")
+    && browser.navigation_calls === 0 && /^(?:about:blank|chrome-error:\/\/chromewebdata\/?|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser.url ?? "")
     && Number.isInteger(browser.telemetry_bytes) && browser.telemetry_bytes > 0 && SHA.test(browser.telemetry_sha256 ?? "")
     && SHA.test(browser.raw_stdout_sha256 ?? "") && SHA.test(browser.raw_stderr_sha256 ?? "")
     && SHA.test(browser.executable_sha256 ?? "") && SHA.test(browser.identity_sha256 ?? ""),
