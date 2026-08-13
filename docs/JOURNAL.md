@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · 0dc Anthropic r1 terminal 봉인
+- Anthropic은 475,672ms·274,828 tokens·tool6로 Swiss/poster형 50,228B 화면을 생성했다.
+- model-only보다 token 27% 절약·더 뾰족한 art direction이지만 같은 unavailable-information 누락으로 objective0다.
+- record `b42f670d…f105`, partial-02 `235667f1…9b0a`; rerun 금지다.
+- 다음 locked 셀은 Impeccable prompt-only r1이다.
+
 ## 2026-08-14 (Codex) · 0dc first model-only terminal 봉인
 - Luna/max model-only r1은 479,279ms·376,692 tokens·tool9로 55,505B 화면을 생성했다.
 - 강한 editorial visual과 package/default/focus captures는 PASS했으나 unavailable-information state 누락으로 objective0·failed다.

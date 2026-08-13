@@ -19,7 +19,9 @@
 - Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-0dcbd99d/ADMISSION.json`, SHA=`566227c3…6d9dd`, status=`admitted`; admission calls는 모두 0이다. baseline collector는 terminal0/missing48/ineligible6, calls0으로 전체 readback PASS했다.
 - 첫 locked cell `neighborhood-library-landing-luna-max-r1-model-only`은 `failed`로 immutable 봉인됐다. 479,279ms, input351,710/output24,982/total376,692, tool9, agent browser/network/external0, retry/fallback/replacement0이다. HTML55,505B, CSS vars20/selectors77, neutral design-system package와 desktop/mobile/default/focus-visible 캡처는 PASS, unsupported facts0이다. deep forest/cream/coral/yellow/mint editorial direction과 responsive composition은 강하지만 필수 `unavailable-information` state를 구현·관측하지 못해 evaluator exit1/objective0/UI-Resolved false다. record SHA=`266852a5…f793`, rerun 금지다.
 - partial bundle=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-01.json`, SHA=`2eca2400…7e95`, terminal1/missing47/ineligible6이다.
-- **다음 exact action:** 같은 task/trial의 `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`을 Luna/max 1회·retry0으로 실행한다. terminal 뒤 즉시 같은 분석·checkpoint를 반복한다. c494 6 terminals는 diagnostic-only로 계속 분리한다.
+- Anthropic frontend-design r1도 `failed`로 봉인됐다. 475,672ms, input249,223/output25,605/total274,828, tool6, contamination0이다. HTML50,228B/vars20/selectors66/package·default·focus captures PASS, unsupported facts0이지만 같은 `unavailable-information` state 누락으로 objective0이다. Swiss poster형 coral/dark-green/condensed-type art direction은 더 뾰족하고 model-only보다 tokens 약27% 적지만 상태 완결성 우위는 없다. record SHA=`b42f670d…f105`, rerun 금지다.
+- partial-02=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-02.json`, SHA=`235667f1…9b0a`, terminal2/missing46/ineligible6이다.
+- **다음 exact action:** `neighborhood-library-landing-luna-max-r1-impeccable-prompt-only`을 Luna/max 1회·retry0으로 실행한다. terminal 뒤 즉시 같은 분석·checkpoint를 반복한다. c494 6 terminals는 diagnostic-only로 계속 분리한다.
 
 ### 2026-08-14 c494 Luna Max 정식 비교 epoch
 
