@@ -27,6 +27,19 @@ function canonical(value) {
   if (value && typeof value === "object") return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonical(value[key])}`).join(",")}}`;
   return JSON.stringify(value);
 }
+function modelCacheIdentity(bytes) {
+  const cache = JSON.parse(bytes.toString("utf8"));
+  invariant(cache && typeof cache === "object" && !Array.isArray(cache) && Array.isArray(cache.models), "provider model catalog must be valid");
+  const { fetched_at: _volatileFetchedAt, ...semanticCache } = cache;
+  const profile = cache.models.find((entry) => entry?.slug === MODEL);
+  invariant(profile, "provider model catalog is missing exact Luna model profile");
+  return {
+    full_sha256: sha256(bytes),
+    semantic_sha256: sha256(canonical(semanticCache)),
+    model_profile_sha256: sha256(canonical(profile)),
+    client_version: cache.client_version ?? null,
+  };
+}
 function readJson(path) { return JSON.parse(readFileSync(path, "utf8")); }
 function writeJsonExclusive(path, value) {
   mkdirSync(dirname(path), { recursive: true });
@@ -213,18 +226,21 @@ function parseEvents(path) {
   if (!existsSync(path)) return [];
   return readFileSync(path, "utf8").split(/\r?\n/).filter(Boolean).map((line) => { try { return JSON.parse(line); } catch { return { type: "unparseable", raw_sha256: sha256(line) }; } });
 }
-function rolloutEvidence(events, runResult, staticRuntime) {
+function rolloutEvidence(events, runResult, staticRuntime, admittedCatalog) {
   const contexts = events.filter((event) => event.type === "turn_context");
   const fallbacks = events.filter((event) => /fallback|replacement|retry/i.test(`${event.type} ${event.payload?.type ?? ""}`));
   const marker = events.some((event) => /manual.edit|follow.?up|unplanned.intervention/i.test(`${event.type} ${event.payload?.type ?? ""}`));
   const completions = events.filter((event) => /^(?:response|turn)\.completed$/.test(event.type ?? ""));
   const runtime = runResult?.runtime ?? {}; const toolEvidence = runtime.model_tool_mode_evidence ?? {};
   const expectedProfile = staticRuntime?.model_profile_sha256;
-  const expectedCatalog = staticRuntime?.catalog_sha256;
+  const expectedSemanticCatalog = admittedCatalog?.semantic_sha256;
+  const expectedClientVersion = admittedCatalog?.client_version;
   const exact = runtime.model_requested === MODEL && runtime.model === MODEL && runtime.reasoning === EFFORT && runtime.effort_requested === EFFORT && (runtime.model_reported === null || runtime.model_reported === MODEL) && completions.length === 1 && fallbacks.length === 0
-    && toolEvidence.model_profile_sha256 === expectedProfile && toolEvidence.cache_sha256 === expectedCatalog
+    && toolEvidence.model_profile_sha256 === expectedProfile && toolEvidence.cache_semantic_sha256 === expectedSemanticCatalog
+    && toolEvidence.cache_client_version === expectedClientVersion
     && toolEvidence.auth_source_before_run?.model_profile_sha256 === expectedProfile
-    && toolEvidence.auth_source_before_run?.cache_sha256 === expectedCatalog
+    && toolEvidence.auth_source_before_run?.cache_semantic_sha256 === expectedSemanticCatalog
+    && toolEvidence.auth_source_before_run?.cache_client_version === expectedClientVersion
     && runtime.agent_version === staticRuntime.codex_cli.version
     && runtime.binary_sha256 === staticRuntime.codex_cli.wrapper.sha256
     && runtime.native_binary_sha256 === staticRuntime.codex_cli.native.sha256;
@@ -357,13 +373,21 @@ export function prepareRuntimeSnapshot({ sourceHome, out, staticRuntimeReceipt, 
 }
 export function prepareProviderIsolation({ execution, workspace, metadata, staticRuntime, staticRuntimeEvidence, runtimeHome, env = process.env, promptInputProbe }) {
   const sourceHome = validateProviderRuntimeSource(runtimeHome, staticRuntime, staticRuntimeEvidence); const sourceAuth = join(sourceHome, "auth.json"); const sourceCatalog = join(sourceHome, "models_cache.json");
-  const authBytes = readFileSync(sourceAuth); const catalogBytes = readFileSync(sourceCatalog);
+  const authBytes = readFileSync(sourceAuth); const catalogBytes = readFileSync(sourceCatalog); const admittedCatalog = modelCacheIdentity(catalogBytes);
   invariant(sha256(catalogBytes) === staticRuntime.catalog_sha256, "provider model catalog differs from admitted static authority");
+  invariant(admittedCatalog.model_profile_sha256 === staticRuntime.model_profile_sha256 && admittedCatalog.client_version === staticRuntime.codex_cli.version,
+    "admitted provider model profile/client version differs from static authority");
   const providerHome = join(execution, "provider-home"); mkdirSync(providerHome, { recursive: false, mode: 0o700 });
   writeFileSync(join(providerHome, "auth.json"), authBytes, { flag: "wx", mode: 0o600 });
   writeFileSync(join(providerHome, "models_cache.json"), catalogBytes, { flag: "wx", mode: 0o600 });
   writeFileSync(join(providerHome, "model_catalog.json"), catalogBytes, { flag: "wx", mode: 0o600 });
   invariant(readFileSync(sourceAuth).equals(authBytes) && readFileSync(sourceCatalog).equals(catalogBytes), "immutable provider runtime source changed during isolated copy");
+  const initialCopyCatalog = modelCacheIdentity(readFileSync(join(providerHome, "models_cache.json")));
+  invariant(initialCopyCatalog.full_sha256 === admittedCatalog.full_sha256
+    && initialCopyCatalog.semantic_sha256 === admittedCatalog.semantic_sha256
+    && initialCopyCatalog.model_profile_sha256 === admittedCatalog.model_profile_sha256
+    && initialCopyCatalog.client_version === admittedCatalog.client_version,
+  "initial provider model catalog copy differs from admitted authority");
   const providerBin = join(execution, "provider-bin"); mkdirSync(providerBin, { recursive: false });
   const allowedCommands = ["codex", "node", "npm", "npx", "python3", "rg", "git", "zsh", "sh", "sed", "awk", "cat", "head", "tail", "sort", "wc", "cut", "printf", "touch", "ln", "basename", "dirname", "xargs", "mkdir", "cp", "mv", "chmod", "find"];
   const forbiddenCommands = ["browser-harness", "curl", "wget", "open"];
@@ -389,7 +413,12 @@ export function prepareProviderIsolation({ execution, workspace, metadata, stati
   invariant(!existsSync(join(providerHome, "skills")) && !existsSync(join(providerHome, ".agents")), "provider home must expose no global skills");
   const promptInputAuditPath = join(execution, "PROMPT-INPUT-SKILL-AUDIT.json");
   writeJsonExclusive(promptInputAuditPath, auditPromptInputSkills({ codexBin: chosenCodex.source, workspace, providerEnv: shellEnv, skills, cliBinding: staticRuntime.codex_cli, probe: promptInputProbe }));
-  const receipt = { schema_version: "0.1", kind: "omd-luna-max-provider-runtime-isolation", provider_home: providerHome, auth: { source_path: sourceAuth, bytes: authBytes.length, sha256: sha256(authBytes), copy_sha256: sha256(readFileSync(join(providerHome, "auth.json"))) }, model_catalog: { source_path: sourceCatalog, bytes: catalogBytes.length, sha256: sha256(catalogBytes), copy_sha256: sha256(readFileSync(join(providerHome, "models_cache.json"))), admitted_sha256: staticRuntime.catalog_sha256 }, path: { value: providerBin, allowlist: allowedCommands, forbidden: forbiddenCommands, executables, browser_harness_advertised_or_available: false, login_shell_preflight: { exact_path: shellPath, curl_available: false, browser_harness_available: false, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 } }, zprofile: { path: join(providerHome, ".zprofile"), sha256: sha256(zprofileBytes), bytes: zprofileBytes.length }, skills, prompt_input_skill_audit: fileBinding(promptInputAuditPath), provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 };
+  const observedCatalogBytes = readFileSync(join(providerHome, "models_cache.json")); const observedCatalog = modelCacheIdentity(observedCatalogBytes);
+  invariant(observedCatalog.semantic_sha256 === admittedCatalog.semantic_sha256
+    && observedCatalog.model_profile_sha256 === admittedCatalog.model_profile_sha256
+    && observedCatalog.client_version === admittedCatalog.client_version,
+  "provider model catalog semantic/profile/client mutation during prompt-input audit");
+  const receipt = { schema_version: "0.1", kind: "omd-luna-max-provider-runtime-isolation", provider_home: providerHome, auth: { source_path: sourceAuth, bytes: authBytes.length, sha256: sha256(authBytes), copy_sha256: sha256(readFileSync(join(providerHome, "auth.json"))) }, model_catalog: { source_path: sourceCatalog, bytes: catalogBytes.length, sha256: admittedCatalog.full_sha256, initial_copy_sha256: initialCopyCatalog.full_sha256, copy_sha256: observedCatalog.full_sha256, observed_post_prompt_input_sha256: observedCatalog.full_sha256, admitted_sha256: staticRuntime.catalog_sha256, admitted_semantic_sha256: admittedCatalog.semantic_sha256, observed_semantic_sha256: observedCatalog.semantic_sha256, model_profile_sha256: observedCatalog.model_profile_sha256, client_version: observedCatalog.client_version }, path: { value: providerBin, allowlist: allowedCommands, forbidden: forbiddenCommands, executables, browser_harness_advertised_or_available: false, login_shell_preflight: { exact_path: shellPath, curl_available: false, browser_harness_available: false, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 } }, zprofile: { path: join(providerHome, ".zprofile"), sha256: sha256(zprofileBytes), bytes: zprofileBytes.length }, skills, prompt_input_skill_audit: fileBinding(promptInputAuditPath), provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 };
   writeJsonExclusive(join(execution, "PROVIDER-RUNTIME-ISOLATION.json"), receipt);
   return { receipt, env: { ...env, HOME: providerHome, CODEX_HOME: providerHome, ZDOTDIR: providerHome, PATH: providerBin, BH_DOMAIN_SKILLS: "0", OMD_BENCH_AUTH_CODEX_HOME: providerHome, OMD_BENCH_CODEX_BIN: chosenCodex.source } };
 }
@@ -464,7 +493,7 @@ export function runCell(options) {
   writeJsonExclusive(join(execution, "PROVIDER-RUNTIME-CLEANUP.json"), { schema_version: "0.1", kind: "omd-luna-max-provider-runtime-cleanup", provider_home_sha256: sha256(providerIsolation.receipt.provider_home), auth_and_catalog_copies_removed: true, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 });
   const wallMs = Number(process.hrtime.bigint() - startNs) / 1e6;
   writeFileSync(join(execution, "runner.stdout"), result.stdout ?? "", { flag: "wx" }); writeFileSync(join(execution, "runner.stderr"), result.stderr ?? "", { flag: "wx" });
-  const runResultPath = join(isolated, ".benchmark/run-result.json"); const eventsPath = join(isolated, ".benchmark/events.jsonl"); const events = parseEvents(eventsPath); const runResult = existsSync(runResultPath) ? readJson(runResultPath) : null; const rollout = rolloutEvidence(events, runResult, admission.evidence.static_runtime.value.runtime);
+  const runResultPath = join(isolated, ".benchmark/run-result.json"); const eventsPath = join(isolated, ".benchmark/events.jsonl"); const events = parseEvents(eventsPath); const runResult = existsSync(runResultPath) ? readJson(runResultPath) : null; const rollout = rolloutEvidence(events, runResult, admission.evidence.static_runtime.value.runtime, { semantic_sha256: providerIsolation.receipt.model_catalog.admitted_semantic_sha256, client_version: providerIsolation.receipt.model_catalog.client_version });
   const tools = toolTelemetry(events, runResult, { workspace: isolated, providerHome: providerIsolation.receipt.provider_home });
   const timedOut = result.error?.code === "ETIMEDOUT" || runResult?.process?.timed_out === true;
   const providerSucceeded = result.status === 0 && !result.error && existsSync(runResultPath) && runResult?.process?.exit_code === 0 && !timedOut && rollout.exact && rollout.provider_usage.available && tools.agent_browser_calls === 0 && tools.agent_network_attempts === 0 && tools.external_context_interventions === 0;

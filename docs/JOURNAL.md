@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-13 (Codex) · Luna cache false invalidation 수정 완료
+- Sol/medium이 prompt-input 후 `fetched_at`-only drift를 semantic/profile/client identity로 판정하도록 수정했다.
+- 원본/admitted SHA, 실제 pre-audit copy SHA, post-audit observed SHA를 receipt에 분리 기록한다.
+- 실제 incident hash 대조와 controller→auditor 통합 57/57, lint, diff-check가 green이다.
+- 다음은 fresh commit authority에서 receipts/materialization/admission을 전부 재발급하고 첫 locked cell부터 시작한다.
+
 ## 2026-08-13 (Codex) · Luna Max 첫 baseline 후 안전 중단
 - source `0290442b` 첫 유효 model-only 셀은 7m12s·30점·UI-Resolved false로 확정했다.
 - 시각 완성도와 별개로 CTA 중복, mobile 34px control, axe serious 9건이 실제 실패 원인이다.

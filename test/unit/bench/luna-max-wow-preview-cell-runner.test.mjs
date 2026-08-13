@@ -12,6 +12,7 @@ function git(root, ...args) { return execFileSync("git", ["-C", root, ...args], 
 function json(path, value) { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`); return path; }
 function bind(path) { return { path, sha256: sha256(readFileSync(path)) }; }
 function summary(root) { const value = tree(root); return { files: value.files.length, bytes: value.files.reduce((n, f) => n + f.bytes, 0), sha256: value.sha256 }; }
+function canonical(value) { return Array.isArray(value) ? `[${value.map(canonical).join(",")}]` : value && typeof value === "object" ? `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonical(value[key])}`).join(",")}}` : JSON.stringify(value); }
 function promptInputJson(block, extraMessages = []) {
   return JSON.stringify([
     { type: "message", role: "developer", content: [{ type: "input_text", text: `<skills_instructions>\n${block}\n</skills_instructions>` }] },
@@ -22,8 +23,9 @@ function promptInputJson(block, extraMessages = []) {
 
 function fixture({ runnerMode = "success", designSystem = true, variant = "model-only", agentBrowserCall = false, externalContextCall = false, networkAttempt = false } = {}) {
   const base = mkdtempSync(join(tmpdir(), "omd-luna-cell-runner-")); const repo = join(base, "repo"); const materialized = join(base, "materialized");
-  const runtimeHome = join(base, "runtime-home"); mkdirSync(runtimeHome); writeFileSync(join(runtimeHome, "auth.json"), "fixture-auth"); writeFileSync(join(runtimeHome, "models_cache.json"), JSON.stringify({ models: [{ slug: "gpt-5.6-luna" }] }));
-  const catalogSha = sha256(readFileSync(join(runtimeHome, "models_cache.json"))); const profileSha = "a".repeat(64);
+  const cliVersion = "fixture-1"; const profile = { slug: "gpt-5.6-luna", tool_mode: "function", default_reasoning_level: "max", supported_reasoning_levels: [{ effort: "max" }] };
+  const runtimeHome = join(base, "runtime-home"); mkdirSync(runtimeHome); writeFileSync(join(runtimeHome, "auth.json"), "fixture-auth"); writeFileSync(join(runtimeHome, "models_cache.json"), JSON.stringify({ fetched_at: "2026-08-13T00:00:00Z", client_version: cliVersion, models: [profile] }));
+  const catalogSha = sha256(readFileSync(join(runtimeHome, "models_cache.json"))); const profileSha = sha256(canonical(profile));
   mkdirSync(repo); git(repo, "init", "-q"); git(repo, "config", "user.email", "bench@example.invalid"); git(repo, "config", "user.name", "Bench");
   for (const source of [RUNNER_PATH, ADMISSION_GENERATOR_PATH, PREREG_CONTROLLER_PATH, "benchmarks/ui-resolve-bench/scripts/run-codex.mjs", DEFAULT_EVALUATOR_PATH]) {
     const target = join(repo, source); mkdirSync(dirname(target), { recursive: true }); cpSync(resolve(source), target);
@@ -48,8 +50,8 @@ function fixture({ runnerMode = "success", designSystem = true, variant = "model
   const runtimePath = json(join(base, "runtime.json"), { kind: "codex-luna-max-runtime-attribution-preflight", source_commit: sourceCommit, excluded_from_benchmark_denominator: true, runtime: { model: "gpt-5.6-luna", effort: "max", fallback_calls: 0 }, provider_calls: 1, model_calls: 1, browser_calls: 0 });
   const browserPath = json(join(base, "browser.json"), { kind: "existing-browser-harness-cdp-preflight", source_commit: sourceCommit, excluded_from_benchmark_denominator: true, browser: { transport: "local-existing-chrome-cdp", named_existing: true, launched_by_controller: false, navigation_calls: 0, url: "http://127.0.0.1:3100/fixture" }, provider_calls: 0, model_calls: 0, browser_calls: 1 });
   const runner = join(base, "fake-runner.mjs");
-  const nativeSha = "e".repeat(64), cliVersion = "fixture-1";
-  writeFileSync(runner, `import{createHash}from'node:crypto';import{readFileSync,writeFileSync}from'node:fs';import{join}from'node:path';const a=process.argv.slice(2),w=a[a.indexOf('--workspace')+1],events=[{type:'response.completed',model:'gpt-5.6-luna'}];${agentBrowserCall ? "events.push({type:'item.completed',item:{id:'browser-1',type:'command_execution',command:'browser-harness --doctor'}});" : ""}${externalContextCall ? "events.push({type:'item.completed',item:{id:'external-1',type:'command_execution',command:'cat /Users/example/.codex/skills/secret/SKILL.md > /tmp/context.txt'}});" : ""}${networkAttempt ? "events.push({type:'item.completed',item:{id:'network-1',type:'command_execution',command:'/usr/bin/curl https://example.invalid'}});events.push({type:'item.completed',item:{id:'network-2',type:'web_search',query:'external'}});" : ""}writeFileSync(join(w,'.benchmark/argv.json'),JSON.stringify(a));writeFileSync(join(w,'.benchmark/runtime-env.json'),JSON.stringify({HOME:process.env.HOME,CODEX_HOME:process.env.CODEX_HOME,ZDOTDIR:process.env.ZDOTDIR,PATH:process.env.PATH,OMD_BENCH_CODEX_BIN:process.env.OMD_BENCH_CODEX_BIN}));writeFileSync(join(w,'.benchmark/events.jsonl'),events.map(JSON.stringify).join('\\n')+'\\n');writeFileSync(join(w,'index.html'),${JSON.stringify(designSystem ? "<style>:root{--color:#123;--space:8px;--radius:6px}.card{}.action{}.notice{}</style><main class=card>done</main>" : "<main>done</main>")});writeFileSync(join(w,'.benchmark/run-result.json'),JSON.stringify({runtime:{agent_version:${JSON.stringify(cliVersion)},binary_sha256:createHash('sha256').update(readFileSync(process.argv[1])).digest('hex'),native_binary_sha256:${JSON.stringify(nativeSha)},model_requested:'gpt-5.6-luna',model:'gpt-5.6-luna',reasoning:'max',effort_requested:'max',model_reported:'gpt-5.6-luna',model_tool_mode_evidence:{model_profile_sha256:${JSON.stringify(profileSha)},cache_sha256:${JSON.stringify(catalogSha)},auth_source_before_run:{model_profile_sha256:${JSON.stringify(profileSha)},cache_sha256:${JSON.stringify(catalogSha)}}}},output:{model_usage:[{input_tokens:10,output_tokens:20}]},process:{exit_code:${runnerMode === "failed" ? 7 : 0},timed_out:${runnerMode === "timeout"}}}));${runnerMode === "failed" ? "process.exitCode=7" : ""}`);
+  const nativeSha = "e".repeat(64);
+  writeFileSync(runner, `import{createHash}from'node:crypto';import{readFileSync,writeFileSync}from'node:fs';import{join}from'node:path';const canon=v=>Array.isArray(v)?'['+v.map(canon).join(',')+']':v&&typeof v==='object'?'{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+canon(v[k])).join(',')+'}':JSON.stringify(v),hash=v=>createHash('sha256').update(v).digest('hex'),cacheBytes=readFileSync(join(process.env.CODEX_HOME,'models_cache.json')),cache=JSON.parse(cacheBytes),{fetched_at,...semantic}=cache,profile=cache.models.find(x=>x.slug==='gpt-5.6-luna'),cacheEvidence={cache_sha256:hash(cacheBytes),cache_semantic_sha256:hash(canon(semantic)),model_profile_sha256:hash(canon(profile)),cache_fetched_at:fetched_at,cache_client_version:cache.client_version};const a=process.argv.slice(2),w=a[a.indexOf('--workspace')+1],events=[{type:'response.completed',model:'gpt-5.6-luna'}];${agentBrowserCall ? "events.push({type:'item.completed',item:{id:'browser-1',type:'command_execution',command:'browser-harness --doctor'}});" : ""}${externalContextCall ? "events.push({type:'item.completed',item:{id:'external-1',type:'command_execution',command:'cat /Users/example/.codex/skills/secret/SKILL.md > /tmp/context.txt'}});" : ""}${networkAttempt ? "events.push({type:'item.completed',item:{id:'network-1',type:'command_execution',command:'/usr/bin/curl https://example.invalid'}});events.push({type:'item.completed',item:{id:'network-2',type:'web_search',query:'external'}});" : ""}writeFileSync(join(w,'.benchmark/argv.json'),JSON.stringify(a));writeFileSync(join(w,'.benchmark/runtime-env.json'),JSON.stringify({HOME:process.env.HOME,CODEX_HOME:process.env.CODEX_HOME,ZDOTDIR:process.env.ZDOTDIR,PATH:process.env.PATH,OMD_BENCH_CODEX_BIN:process.env.OMD_BENCH_CODEX_BIN}));writeFileSync(join(w,'.benchmark/events.jsonl'),events.map(JSON.stringify).join('\\n')+'\\n');writeFileSync(join(w,'index.html'),${JSON.stringify(designSystem ? "<style>:root{--color:#123;--space:8px;--radius:6px}.card{}.action{}.notice{}</style><main class=card>done</main>" : "<main>done</main>")});writeFileSync(join(w,'.benchmark/run-result.json'),JSON.stringify({runtime:{agent_version:${JSON.stringify(cliVersion)},binary_sha256:hash(readFileSync(process.argv[1])),native_binary_sha256:${JSON.stringify(nativeSha)},model_requested:'gpt-5.6-luna',model:'gpt-5.6-luna',reasoning:'max',effort_requested:'max',model_reported:'gpt-5.6-luna',model_tool_mode_evidence:{...cacheEvidence,auth_source_before_run:cacheEvidence}},output:{model_usage:[{input_tokens:10,output_tokens:20}]},process:{exit_code:${runnerMode === "failed" ? 7 : 0},timed_out:${runnerMode === "timeout"}}}));${runnerMode === "failed" ? "process.exitCode=7" : ""}`);
   chmodSync(runner, 0o755);
   const actualRunnerSha = sha256(readFileSync(runner));
   const canonicalRunner = realpathSync(runner);
@@ -63,7 +65,8 @@ function fixture({ runnerMode = "success", designSystem = true, variant = "model
   const admissionPath = json(join(base, "ADMISSION.json"), admission);
   return { base, repo, materialized, sourceCommit, runtimePath, browserPath, admissionPath, admission, runner, evaluator, cells, matrixPath, preregPath, materializationPath, runtimeHome, catalogSha, profileSha };
 }
-function execute(f, overrides = {}) { return runCell({ repoRoot: f.repo, materializedRoot: f.materialized, cellId: "cell-01", admission: f.admissionPath, runtimeAttributionReceipt: f.runtimePath, browserReceipt: f.browserPath, sourceCommit: f.sourceCommit, runnerBin: f.runner, evaluatorBin: f.evaluator, runtimeHome: f.runtimeHome, runtimeEnv: { ...process.env, OMD_BENCH_CODEX_BIN: f.runner }, promptInputProbe: ({ cwd, env }) => { const builtin = ["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"].map((id) => `- ${id}: builtin (file: ${join(env.CODEX_HOME, "skills/.system", id, "SKILL.md")})`); const projectRoot = join(cwd, ".agents/skills/frontend-design/SKILL.md"); const block = [...builtin, ...(existsSync(projectRoot) ? [`- frontend-design: frozen (file: ${projectRoot})`] : [])].join("\n"); return { status: 0, stdout: promptInputJson(block) }; }, runtimeObservation: { model_id: "gpt-5.6-luna", cache_sha256: f.catalogSha, model_profile_sha256: f.profileSha }, ...overrides }); }
+function defaultPromptInputProbe({ cwd, env }) { const builtin = ["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"].map((id) => `- ${id}: builtin (file: ${join(env.CODEX_HOME, "skills/.system", id, "SKILL.md")})`); const projectRoot = join(cwd, ".agents/skills/frontend-design/SKILL.md"); const block = [...builtin, ...(existsSync(projectRoot) ? [`- frontend-design: frozen (file: ${projectRoot})`] : [])].join("\n"); return { status: 0, stdout: promptInputJson(block) }; }
+function execute(f, overrides = {}) { return runCell({ repoRoot: f.repo, materializedRoot: f.materialized, cellId: "cell-01", admission: f.admissionPath, runtimeAttributionReceipt: f.runtimePath, browserReceipt: f.browserPath, sourceCommit: f.sourceCommit, runnerBin: f.runner, evaluatorBin: f.evaluator, runtimeHome: f.runtimeHome, runtimeEnv: { ...process.env, OMD_BENCH_CODEX_BIN: f.runner }, promptInputProbe: defaultPromptInputProbe, runtimeObservation: { model_id: "gpt-5.6-luna", cache_sha256: f.catalogSha, model_profile_sha256: f.profileSha }, ...overrides }); }
 function collect(f, out = join(f.base, "records.json")) { return collectRecords({ repoRoot: f.repo, materializedRoot: f.materialized, admission: f.admissionPath, runtimeAttributionReceipt: f.runtimePath, browserReceipt: f.browserPath, sourceCommit: f.sourceCommit, out }); }
 
 describe("Luna Max Wow Preview one-cell runner", () => {
@@ -103,6 +106,31 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     const competitor = fixture({ variant: "anthropic-frontend-design" }); const competitorResult = execute(competitor); const competitorIsolation = JSON.parse(readFileSync(competitorResult.provider_runtime_isolation.path));
     expect(competitorIsolation.skills.project_skill_files.map((item) => item.path)).toEqual([".agents/skills/frontend-design/SKILL.md"]);
     expect(readFileSync(resolve("benchmarks/ui-resolve-bench/scripts/run-codex.mjs"), "utf8")).toContain('["--disable", "plugins", "--disable", "skill_search"]');
+  });
+
+  it("accepts a prompt-input fetched_at-only cache refresh and keeps rollout exact", () => {
+    const f = fixture();
+    const result = execute(f, { promptInputProbe: (args) => {
+      const path = join(args.env.CODEX_HOME, "models_cache.json"); const cache = JSON.parse(readFileSync(path)); cache.fetched_at = "2026-08-13T01:02:03Z"; writeFileSync(path, JSON.stringify(cache));
+      return defaultPromptInputProbe(args);
+    } });
+    const isolation = JSON.parse(readFileSync(result.provider_runtime_isolation.path));
+    expect(result).toMatchObject({ status: "completed", rollout: { exact_luna_max_one_turn: true }, provider_calls: 1, model_calls: 1 });
+    expect(isolation.model_catalog.sha256).toBe(f.catalogSha);
+    expect(isolation.model_catalog.initial_copy_sha256).toBe(f.catalogSha);
+    expect(isolation.model_catalog.observed_post_prompt_input_sha256).not.toBe(f.catalogSha);
+    expect(isolation.model_catalog.observed_semantic_sha256).toBe(isolation.model_catalog.admitted_semantic_sha256);
+    expect(isolation.model_catalog.model_profile_sha256).toBe(f.profileSha);
+    expect(isolation.model_catalog.client_version).toBe("fixture-1");
+  });
+
+  it("fails before provider spawn on a semantic prompt-input cache mutation", () => {
+    const f = fixture();
+    expect(() => execute(f, { promptInputProbe: (args) => {
+      const path = join(args.env.CODEX_HOME, "models_cache.json"); const cache = JSON.parse(readFileSync(path)); cache.models[0].tool_mode = "mutated"; writeFileSync(path, JSON.stringify(cache));
+      return defaultPromptInputProbe(args);
+    } })).toThrow(/semantic\/profile\/client mutation/);
+    expect(existsSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/workspace/.benchmark/argv.json"))).toBe(false);
   });
 
   it("creates an immutable provider-zero auth/catalog runtime snapshot bound to the static receipt", () => {
