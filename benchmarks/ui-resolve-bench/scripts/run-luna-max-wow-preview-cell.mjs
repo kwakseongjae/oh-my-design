@@ -421,7 +421,9 @@ export function runCell(options) {
   assertCleanSource({ repoRoot, sourceCommit }); directory(root, "materialized root");
   const admission = validateAdmission({ admissionPath: options.admission, materializedRoot: root, runtimePath: options.runtimeAttributionReceipt, browserPath: options.browserReceipt, sourceCommit, repoRoot });
   const staticRuntime = admission.evidence.static_runtime.value.runtime;
-  const liveRuntime = options.runtimeObservation ?? inspectCodexModelToolMode(MODEL);
+  const sourceRuntimeHome = validateProviderRuntimeSource(options.runtimeHome, staticRuntime, admission.evidence.static_runtime);
+  const inspectRuntime = options.runtimeInspector ?? inspectCodexModelToolMode;
+  const liveRuntime = options.runtimeObservation ?? inspectRuntime(MODEL, { OMD_BENCH_AUTH_CODEX_HOME: sourceRuntimeHome });
   invariant(liveRuntime.model_id === MODEL && liveRuntime.cache_sha256 === staticRuntime.catalog_sha256
     && liveRuntime.model_profile_sha256 === staticRuntime.model_profile_sha256,
   "live Luna/max model catalog/profile differs from admitted static authority");
@@ -431,7 +433,6 @@ export function runCell(options) {
   invariant(pending.length > 0, "all scheduled cells are terminal"); const next = pending[0];
   invariant(options.cellId === next.id, `cell must be exact next locked cell: ${next.id}`);
   const cell = join(root, "prepared-cells", next.id); const execution = join(cell, ".benchmark/execution");
-  const sourceRuntimeHome = validateProviderRuntimeSource(options.runtimeHome, staticRuntime, admission.evidence.static_runtime);
   const sourceMetadata = readJson(join(cell, ".benchmark/cell.json")); skillIsolation(cell, sourceMetadata.arm.variant_id);
   invariant(!existsSync(execution), "cell execution already started"); mkdirSync(execution, { recursive: false });
   const startedAt = new Date().toISOString(); const started = { schema_version: "0.1", kind: "omd-luna-max-cell-start", cell_id: next.id, source_commit: sourceCommit, order: admission.manifest.cells.findIndex((entry) => entry.id === next.id) + 1, model: MODEL, effort: EFFORT, timeout_ms: TIMEOUT_MS, admission_sha256: admission.admissionEvidence.sha256, started_at: startedAt };

@@ -112,6 +112,19 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     expect(readFileSync(join(out, "auth.json"), "utf8")).toBe("new-auth"); expect(() => prepareRuntimeSnapshot({ sourceHome: source, out, staticRuntimeReceipt: f.admission.bindings.static_runtime.path, repoRoot: f.repo })).toThrow(/fresh/);
   });
 
+  it("reads the live model/profile only from the admitted immutable runtime snapshot", () => {
+    const f = fixture(); let observedHome = null;
+    const result = execute(f, {
+      runtimeObservation: undefined,
+      runtimeInspector: (_model, env) => {
+        observedHome = env.OMD_BENCH_AUTH_CODEX_HOME;
+        return { model_id: "gpt-5.6-luna", cache_sha256: f.catalogSha, model_profile_sha256: f.profileSha };
+      },
+    });
+    expect(result.status).toBe("completed");
+    expect(observedHome).toBe(resolve(f.runtimeHome));
+  });
+
   it("fails before provider spawn when prompt-input exposes an extra global skill", () => {
     const f = fixture();
     expect(() => execute(f, { promptInputProbe: ({ env }) => { const lines = ["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"].map((id) => `- ${id}: builtin (file: ${join(env.CODEX_HOME, "skills/.system", id, "SKILL.md")})`).concat("- browser-harness: leaked (file: /Users/example/Developer/browser-harness/SKILL.md)"); return { status: 0, stdout: promptInputJson(lines.join("\n")) }; } })).toThrow(/browser-harness leaked/);

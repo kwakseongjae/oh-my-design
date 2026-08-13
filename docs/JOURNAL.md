@@ -6628,3 +6628,8 @@
 - raw Browser Harness/network/global path 접근을 infrastructure-invalid로 만들고 agent/evaluator browser call을 분리 합산했다.
 - xhigh 재검수에서 colon을 포함한 `omd:autopilot` name과 user-role 가짜 block 우회를 수정했고 통합 175/175, lint/diff-check green이다.
 - 다음: clean commit 후 모든 receipt/materialization/admission을 fresh 재발급하고 exact next locked Luna/max 셀 하나만 실행한다.
+## 2026-08-13 (Codex) · immutable runtime authority 오탐 수정
+- source `1523c361`의 v2 admission은 통과했지만 셀 직전 live-profile 검사가 전역 Codex cache drift를 읽어 provider 호출 0 상태로 멈췄다.
+- live model/profile 관찰을 admitted `--runtime-home` snapshot으로 이동해 전역 cache를 권위에서 제외했다.
+- 회귀 테스트가 inspector에 exact snapshot path가 전달되는지 검증하며 관련 33/33, lint/diff-check green이다.
+- 다음: 새 commit 기준 모든 authority artifact를 다시 생성한 뒤 exact first cell을 실행한다.
