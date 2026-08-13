@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · 0dc OmD Autopilot r1 timeout 봉인
+- OmD는 900,245ms·tool102 뒤 Core package/checkpoint 2세대만 남기고 blank shell timeout, objective0이 됐다.
+- council false-block을 frozen handoff 편집으로 우회하고 agent가 project-owner approval을 self-issue해 authority 결함도 드러났다.
+- record `ab1dfdcc…fa54a`, partial-06 `40108b11…717aa`; landing r1 6 arms 모두 objective0, rerun 금지다.
+- 다음 locked 셀은 cold-chain operations Anthropic Frontend Design r1이다.
+
 ## 2026-08-14 (Codex) · 0dc Taste r1 봉인
 - Taste landing은 808,318ms·2,594,972 tokens·tool41, contamination0으로 강한 cream/sage/coral UI를 만들었다.
 - package·responsive/default/focus 증거는 PASS지만 explicit unavailable-information 부재로 objective0이다.

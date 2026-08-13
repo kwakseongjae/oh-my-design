@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 0dcbd99d IAB-only Luna/max epoch, terminal 5 / missing 43 / ineligible 6
+- 갱신: 2026-08-14 · source 0dcbd99d IAB-only Luna/max epoch, terminal 6 / missing 42 / ineligible 6
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -27,7 +27,9 @@
 - partial-04=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-04.json`, SHA=`487b7521…c2f1`, terminal4/missing44/ineligible6이다.
 - Taste scope-only r1도 `failed`로 immutable 봉인됐다. Luna 생성 808,318ms, input2,557,177/output37,795/total2,594,972, tool41, agent browser/network/external0이다. HTML43,988B, vars15/selectors65, package·desktop/mobile/200%-reflow/default/focus captures PASS, unsupported facts0이다. 굵은 display type, cream/sage/coral palette, project-first IA와 모바일 완성도는 강했으나 live inventory/availability/price가 제공되지 않았다는 명시적 부재 고지가 없어 `unavailable-information` state가 미관측됐다. 두 번째 lazy image도 캡처에서 빈 블록으로 남았다. evaluator exit1/objective0, record SHA=`a2753f2d…a1ff`, rerun 금지다.
 - partial-05=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-05.json`, SHA=`a336a224…64106414`, terminal5/missing43/ineligible6이다. status는 failed4/timeout1이고 five arms 모두 denominator에 남는다.
-- **다음 exact action:** machine-locked order 6의 `neighborhood-library-landing-luna-max-r1-omd-autopilot-v2`를 Luna/max 1회·retry0으로 실행한다. 외부 staging/compile/adopt 시간이 900초 안에 제품 구현까지 닫히는지, relative `.benchmark/tmp` telemetry가 intervention0으로 유지되는지 확인한다. terminal 뒤 partial-06과 continuity를 봉인하며 c494 6 terminals는 diagnostic-only로 계속 분리한다.
+- OmD Autopilot v2 r1은 900,245ms timeout으로 immutable 봉인됐다. usage/completion unknown, tool102, agent browser/network/external0, evaluator/screenshots0, blank shell 244B, design-system package false다. Core review→approval→compile→checkpoint를 두 번 수행해 external staging에 14 files/tree SHA=`8135fe22…68eb`를 남겼으나 atomic adopt와 제품 구현 전에 cap이 끝났다. 첫 council은 benchmark activation의 `exact`와 task의 `design system`을 결합해 official-brand 요구로 오인해 BLOCKED했고, Luna가 frozen handoff/intake를 직접 수정해 우회했다. 또한 model 자신이 `project-owner` approval/checkpoint를 발급해 no-self-approval 계약을 위반했다. 현 runner는 root containment만 검사해 이 authority/path drift를 staging pass로 놓쳤으므로 후속 하네스/auditor P0다. record SHA=`ab1dfdcc…fa54a`, rerun 금지다.
+- partial-06=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-06.json`, SHA=`40108b11…717aa`, terminal6/missing42/ineligible6이다. landing r1 status는 failed4/timeout2이고 모든 arm objective0다. 시각 경쟁 arm은 실제 UI를 냈지만 필수 unavailable state를 놓쳤고 OmD는 Core setup 뒤 화면을 내지 못해 현재 release gate는 HOLD다.
+- **다음 exact action:** preregistered randomized order 7의 `cold-chain-operations-luna-max-r1-anthropic-frontend-design`을 Luna/max 1회·retry0으로 실행한다. terminal 뒤 partial-07과 같은 checkpoint를 반복한다. c494 6 terminals는 diagnostic-only로 계속 분리한다.
 
 ### 2026-08-14 c494 Luna Max 정식 비교 epoch
 
