@@ -150,13 +150,16 @@
       "model_calls": 1,
       "excluded_from_benchmark_denominator": true
     },
-    "named_browser_identity_receipt": {
+    "existing_browser_harness_identity_receipt": {
       "required": true,
       "status": "unresolved",
       "path": null,
       "sha256": null,
-      "named_existing_browser_required": true,
-      "controller_browser_launch_allowed": false
+      "existing_local_cdp_required": true,
+      "controller_browser_launch_allowed": false,
+      "navigation_calls": 0,
+      "browser_calls": 1,
+      "excluded_from_benchmark_denominator": true
     },
     "evaluation_runtime_receipt": {
       "required": true,

@@ -135,7 +135,12 @@ export function validateAdmission({ admissionPath, materializedRoot, runtimePath
     && /^[a-f0-9]{64}$/.test(evidence.static_runtime.value.runtime?.model_profile_sha256 ?? ""), "static runtime catalog/profile binding drift");
   invariant(evidence.runtime_attribution.value.kind === "codex-luna-max-runtime-attribution-preflight" && evidence.runtime_attribution.value.excluded_from_benchmark_denominator === true && evidence.runtime_attribution.value.runtime?.model === MODEL && evidence.runtime_attribution.value.runtime?.effort === EFFORT && evidence.runtime_attribution.value.runtime?.fallback_calls === 0, "runtime attribution drift");
   validateReceiptCalls(evidence.runtime_attribution.value, "runtime attribution", { provider_calls: 1, model_calls: 1, browser_calls: 0 });
-  invariant(evidence.browser_identity.value.kind === "named-existing-browser-identity-preflight" && evidence.browser_identity.value.browser?.named_existing === true && evidence.browser_identity.value.browser?.launched_by_controller === false && evidence.browser_identity.value.browser?.url === "about:blank", "browser identity drift");
+  invariant(evidence.browser_identity.value.kind === "existing-browser-harness-cdp-preflight"
+    && evidence.browser_identity.value.excluded_from_benchmark_denominator === true
+    && evidence.browser_identity.value.browser?.transport === "local-existing-chrome-cdp"
+    && evidence.browser_identity.value.browser?.named_existing === true
+    && evidence.browser_identity.value.browser?.launched_by_controller === false
+    && evidence.browser_identity.value.browser?.navigation_calls === 0, "browser identity drift");
   validateReceiptCalls(evidence.browser_identity.value, "browser identity", { provider_calls: 0, model_calls: 0, browser_calls: 1 });
   const evaluationRuntime = evidence.evaluation_runtime.value;
   invariant(evaluationRuntime.kind === "omd-luna-max-evaluation-runtime-receipt" && evaluationRuntime.pass === true && evaluationRuntime.source_commit === sourceCommit, "evaluation runtime identity drift");

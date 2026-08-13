@@ -68,7 +68,7 @@ function fixture() {
   const matrixPath = json(join(locked, "RUN-MATRIX.locked.json"), matrix);
   const preregistrationPath = json(join(locked, "PREREGISTRATION.receipt.json"), {
     schema_version: "0.1", kind: "omd-luna-max-wow-preview-preregistration-receipt", experiment_id: matrix.experiment_id,
-    source_commit: commit, matrix_sha256: sha256(readFileSync(matrixPath)), admitted_prerequisites: ["neutral-same-facts-task-packets", "official-competitor-freshness", "seven-public-core-schemas", "static-luna-max-capability", "one-call-luna-max-attribution", "named-existing-browser", "evaluation-runtime-and-fonts"],
+    source_commit: commit, matrix_sha256: sha256(readFileSync(matrixPath)), admitted_prerequisites: ["neutral-same-facts-task-packets", "official-competitor-freshness", "seven-public-core-schemas", "static-luna-max-capability", "one-call-luna-max-attribution", "existing-browser-harness-cdp", "evaluation-runtime-and-fonts"],
     provider_execution_allowed: false, provider_calls: 0, model_calls: 0, browser_calls: 0,
   });
   const prepared = [];
@@ -97,8 +97,8 @@ function fixture() {
   const runtimePath = json(join(base, "runtime.json"), { schema_version: "0.1", kind: "codex-luna-max-runtime-attribution-preflight", pass: true, source_commit: commit, source_authority: receiptAuthority, excluded_from_benchmark_denominator: true,
     runtime: { provider: "codex", model: "gpt-5.6-luna", effort: "max", model_selector_observed: true, effort_selector_observed: true, telemetry_bytes: 10, telemetry_sha256: "b".repeat(64), turn_id_sha256: "c".repeat(64), retry_calls: 0, replacement_calls: 0, fallback_calls: 0 },
     provider_calls: 1, model_calls: 1, browser_calls: 0 });
-  const browserPath = json(join(base, "browser.json"), { schema_version: "0.1", kind: "named-existing-browser-identity-preflight", pass: true, source_commit: commit, source_authority: receiptAuthority,
-    browser: { name: "omd20wow", named_existing: true, available: true, launched_by_controller: false, tab_id: "tab-1", url: "about:blank", telemetry_bytes: 10, telemetry_sha256: "d".repeat(64), tool_call_sha256: "e".repeat(64), tool_result_sha256: "f".repeat(64), identity_sha256: "1".repeat(64) },
+  const browserPath = json(join(base, "browser.json"), { schema_version: "0.1", kind: "existing-browser-harness-cdp-preflight", pass: true, source_commit: commit, source_authority: receiptAuthority, excluded_from_benchmark_denominator: true,
+    browser: { name: "default-local-cdp", transport: "local-existing-chrome-cdp", named_existing: true, available: true, launched_by_controller: false, navigation_calls: 0, url: "http://127.0.0.1:3100/fixture", telemetry_bytes: 10, telemetry_sha256: "d".repeat(64), raw_stdout_sha256: "e".repeat(64), raw_stderr_sha256: "f".repeat(64), executable_sha256: "2".repeat(64), identity_sha256: "1".repeat(64) },
     provider_calls: 0, model_calls: 0, browser_calls: 1 });
   const browserExecutable = put(base, "runtime/chrome", "fixture chrome\n");
   const fontPath = put(base, "runtime/fixture.ttf", "fixture font\n"); const font = { path: fontPath, bytes: readFileSync(fontPath).length, sha256: sha256(readFileSync(fontPath)) };

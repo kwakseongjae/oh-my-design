@@ -211,21 +211,24 @@ describe("Luna Max Wow Preview provider-zero controller", () => {
     expect(() => validateRuntimeAttributionReceipt(receipt, sourceCommit)).toThrow(/runtime telemetry drift/);
   });
 
-  it("validates named browser identity independently without a provider call", () => {
+  it("validates an existing browser-harness CDP identity independently without a provider call", () => {
     const sourceCommit = "f".repeat(40);
     const receipt = {
       schema_version: "0.1",
-      kind: "named-existing-browser-identity-preflight",
+      kind: "existing-browser-harness-cdp-preflight",
       pass: true,
       source_commit: sourceCommit,
+      excluded_from_benchmark_denominator: true,
       browser: {
-        name: "omd20wow",
+        name: "default-local-cdp",
+        transport: "local-existing-chrome-cdp",
         named_existing: true,
         available: true,
         launched_by_controller: false,
-        tab_id: "tab-1",
-        url: "about:blank",
+        navigation_calls: 0,
+        url: "http://127.0.0.1:3100/fixture",
         identity_sha256: "f".repeat(64),
+        executable_sha256: "e".repeat(64),
       },
       provider_calls: 0,
       model_calls: 0,

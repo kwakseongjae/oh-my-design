@@ -81,26 +81,34 @@ function runtimeTelemetry(overrides = {}) {
 }
 
 function browserTelemetry(overrides = {}) {
-  const call = { server: "browser-harness", tool_name: "browser_identity", call_id: "tool-1", arguments: { name: "omd20wow" } };
-  const result = {
-    server: "browser-harness",
-    tool_name: "browser_identity",
-    call_id: "tool-1",
-    is_error: false,
-    payload: { events: [{
-      type: "browser_identity",
-      name: "omd20wow",
-      tab_id: "tab-1",
+  const executablePath = realpathSync(process.execPath);
+  const executableBytes = readFileSync(executablePath);
+  const observed = {
+    receipt_version: "browser-harness-cli-page-info-v0.1",
+    browser_identity: {
+      transport: "local-existing-chrome-cdp",
+      name: "default-local-cdp",
       named_existing: true,
       available: true,
       launched_by_controller: false,
-      url: "about:blank",
-    }] },
+      tab_id: null,
+      url: "http://127.0.0.1:3100/fixture",
+      page_info: { url: "http://127.0.0.1:3100/fixture", w: 1440, h: 900 },
+    },
   };
   return {
-    receipt_version: "browser-harness-raw-envelope-v0.1",
-    tool_call_raw: canonicalJson(call),
-    tool_result_raw: canonicalJson(result),
+    receipt_version: "browser-harness-cli-page-info-v0.1",
+    invocation: {
+      transport: "local-existing-chrome-cdp",
+      operation: "page_info",
+      navigation_calls: 0,
+      launched_browser: false,
+      executable_path: executablePath,
+      executable_bytes: executableBytes.length,
+      executable_sha256: sha256(executableBytes),
+    },
+    raw_stdout: `${canonicalJson(observed)}\n`,
+    raw_stderr: "",
     ...overrides,
   };
 }
@@ -200,35 +208,30 @@ describe("Luna Max admission receipts", () => {
     }
   });
 
-  it("accepts only one browser-harness identity for a named existing about:blank tab", () => {
+  it("accepts one raw browser-harness page_info observation of an existing local CDP page", () => {
     const telemetry = browserTelemetry();
     const bytes = Buffer.from(canonicalJson(telemetry));
     const receipt = buildBrowserIdentityReceipt({ sourceCommit: "e".repeat(40), sourceAuthority: sourceAuthority(), telemetryBytes: bytes, telemetry });
     expect(receipt).toMatchObject({
-      kind: "named-existing-browser-identity-preflight",
-      browser: { name: "omd20wow", tab_id: "tab-1", named_existing: true, launched_by_controller: false, url: "about:blank" },
+      kind: "existing-browser-harness-cdp-preflight",
+      excluded_from_benchmark_denominator: true,
+      browser: { name: "default-local-cdp", transport: "local-existing-chrome-cdp", named_existing: true, launched_by_controller: false, navigation_calls: 0, url: "http://127.0.0.1:3100/fixture" },
       provider_calls: 0,
       model_calls: 0,
       browser_calls: 1,
     });
   });
 
-  it("rejects invented, launched, duplicate, or nonblank browser identity", () => {
+  it("rejects invented, launched, navigated, remote, or malformed browser-harness evidence", () => {
     const noReceipt = browserTelemetry({ receipt_version: "self-asserted-v0" });
     const launched = browserTelemetry();
-    const launchedResult = JSON.parse(launched.tool_result_raw);
-    launchedResult.payload.events[0].launched_by_controller = true;
-    launched.tool_result_raw = canonicalJson(launchedResult);
-    const duplicate = browserTelemetry();
-    const duplicateResult = JSON.parse(duplicate.tool_result_raw);
-    duplicateResult.payload.events.push({ ...duplicateResult.payload.events[0], tab_id: "tab-2" });
-    duplicate.tool_result_raw = canonicalJson(duplicateResult);
-    const nonblank = browserTelemetry();
-    const nonblankResult = JSON.parse(nonblank.tool_result_raw);
-    nonblankResult.payload.events[0].url = "https://example.com";
-    nonblank.tool_result_raw = canonicalJson(nonblankResult);
-    for (const telemetry of [noReceipt, launched, duplicate, nonblank]) {
-      expect(() => buildBrowserIdentityReceipt({ sourceCommit: "e".repeat(40), sourceAuthority: sourceAuthority(), telemetryBytes: Buffer.from(canonicalJson(telemetry)), telemetry })).toThrow(/raw browser-harness|named existing|exactly one/);
+    launched.invocation.launched_browser = true;
+    const navigated = browserTelemetry(); navigated.invocation.navigation_calls = 1;
+    const remote = browserTelemetry();
+    const remoteObserved = JSON.parse(remote.raw_stdout); remoteObserved.browser_identity.url = "https://example.com"; remoteObserved.browser_identity.page_info.url = "https://example.com"; remote.raw_stdout = canonicalJson(remoteObserved);
+    const malformed = browserTelemetry(); malformed.raw_stdout = "not json";
+    for (const telemetry of [noReceipt, launched, navigated, remote, malformed]) {
+      expect(() => buildBrowserIdentityReceipt({ sourceCommit: "e".repeat(40), sourceAuthority: sourceAuthority(), telemetryBytes: Buffer.from(canonicalJson(telemetry)), telemetry })).toThrow(/raw browser-harness|invocation contract|existing local CDP|one JSON/);
     }
   });
 

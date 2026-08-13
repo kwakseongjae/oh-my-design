@@ -26,6 +26,7 @@ export const CORE_SCHEMA_FILES = Object.freeze([
 ]);
 
 const COMMIT = /^[a-f0-9]{40}$/;
+const SHA = /^[a-f0-9]{64}$/;
 
 export function sha256(bytes) {
   return createHash("sha256").update(bytes).digest("hex");
@@ -306,52 +307,55 @@ export function buildRuntimeAttributionReceipt({ sourceCommit, sourceAuthority, 
 }
 
 export function buildBrowserIdentityReceipt({ sourceCommit, sourceAuthority, telemetryBytes, telemetry }) {
-  if (telemetry?.receipt_version !== "browser-harness-raw-envelope-v0.1"
-    || typeof telemetry.tool_call_raw !== "string" || typeof telemetry.tool_result_raw !== "string") {
-    throw new Error("browser evidence must contain raw browser-harness call/result envelopes");
+  if (telemetry?.receipt_version !== "browser-harness-cli-page-info-v0.1"
+    || typeof telemetry.raw_stdout !== "string" || typeof telemetry.raw_stderr !== "string") {
+    throw new Error("browser evidence must contain raw browser-harness CLI stdout/stderr");
   }
-  let call;
-  let result;
-  try {
-    call = JSON.parse(telemetry.tool_call_raw);
-    result = JSON.parse(telemetry.tool_result_raw);
-  } catch {
-    throw new Error("browser raw call/result envelopes must be valid JSON");
+  const invocation = telemetry.invocation;
+  if (invocation?.transport !== "local-existing-chrome-cdp" || invocation.operation !== "page_info"
+    || invocation.navigation_calls !== 0 || invocation.launched_browser !== false
+    || !invocation.executable_path || !SHA.test(invocation.executable_sha256 ?? "")) {
+    throw new Error("browser-harness invocation contract drift");
   }
-  if (call?.server !== "browser-harness" || result?.server !== "browser-harness"
-    || call.tool_name !== "browser_identity" || result.tool_name !== "browser_identity"
-    || !call.call_id || call.call_id !== result.call_id || result.is_error !== false) {
-    throw new Error("browser raw call/result envelope identity mismatch");
+  assertRegular(invocation.executable_path, "browser-harness executable");
+  const executableBytes = readFileSync(invocation.executable_path);
+  if (sha256(executableBytes) !== invocation.executable_sha256 || invocation.executable_bytes !== executableBytes.length) {
+    throw new Error("browser-harness executable identity drift");
   }
-  const identityEvents = result.payload?.events;
-  if (!Array.isArray(identityEvents) || identityEvents.length !== 1 || identityEvents[0]?.type !== "browser_identity") {
-    throw new Error("browser raw result must contain exactly one identity event");
-  }
-  const browser = identityEvents[0];
-  if (!browser.name || !browser.tab_id || browser.named_existing !== true || browser.available !== true
-    || browser.launched_by_controller !== false || browser.url !== "about:blank"
-    || call.arguments?.name !== browser.name) {
-    throw new Error("browser identity must be a named existing about:blank browser");
+  let observed;
+  try { observed = JSON.parse(telemetry.raw_stdout.trim()); } catch { throw new Error("browser-harness raw stdout must be one JSON object"); }
+  const browser = observed?.browser_identity;
+  if (observed?.receipt_version !== "browser-harness-cli-page-info-v0.1"
+    || browser?.transport !== "local-existing-chrome-cdp" || browser.name !== "default-local-cdp"
+    || browser.named_existing !== true || browser.available !== true || browser.launched_by_controller !== false
+    || browser.url !== browser.page_info?.url
+    || !/^(?:about:blank|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser.url ?? "")
+    || !Number.isFinite(browser.page_info?.w) || !Number.isFinite(browser.page_info?.h)) {
+    throw new Error("browser identity must be an existing local CDP page_info observation without navigation");
   }
   const identity = {
-    name: browser.name,
+    name: "default-local-cdp",
+    transport: "local-existing-chrome-cdp",
     named_existing: true,
     available: true,
     launched_by_controller: false,
-    tab_id: browser.tab_id,
-    url: "about:blank",
+    navigation_calls: 0,
+    url: browser.url,
+    viewport: { width: browser.page_info.w, height: browser.page_info.h },
   };
   return {
     ...commonReceipt(sourceCommit, sourceAuthority),
-    kind: "named-existing-browser-identity-preflight",
+    kind: "existing-browser-harness-cdp-preflight",
     pass: true,
+    excluded_from_benchmark_denominator: true,
     browser: {
       ...identity,
       identity_sha256: sha256(canonicalJson(identity)),
       telemetry_bytes: telemetryBytes.length,
       telemetry_sha256: sha256(telemetryBytes),
-      tool_call_sha256: sha256(Buffer.from(telemetry.tool_call_raw)),
-      tool_result_sha256: sha256(Buffer.from(telemetry.tool_result_raw)),
+      raw_stdout_sha256: sha256(Buffer.from(telemetry.raw_stdout)),
+      raw_stderr_sha256: sha256(Buffer.from(telemetry.raw_stderr)),
+      executable_sha256: invocation.executable_sha256,
     },
     provider_calls: 0,
     model_calls: 0,

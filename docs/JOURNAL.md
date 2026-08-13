@@ -9,7 +9,7 @@
 - 48-cell runner·admission·evaluation runtime·auditor를 controller source closure에 exact commit bytes로 결박했다.
 - Luna model catalog 전체 SHA와 model-profile SHA를 셀 시작 전/실행 전후 재검증하도록 강화했다.
 - task별 관찰 state screenshot manifest와 실제 5명 blind strongest-pair 계약을 fail-close했다.
-- 11-file gate 75 pass/3 artifact skip, lint/node/diff green; provider/model/browser calls는 계속 0이다.
+- 11-file gate 75 pass/3 artifact skip와 lint/node/diff가 green이다; provider/model cell 0, 개발용 Browser Harness page_info 1회를 raw launch0/navigation0 계약으로 정정했다.
 
 ## 2026-08-13 (Codex) · Luna Max benchmark provider-zero closure 진행
 - schema hotfix PR #50을 main에 병합·배포했고 production 7/7 exact JSON parity가 통과했다.

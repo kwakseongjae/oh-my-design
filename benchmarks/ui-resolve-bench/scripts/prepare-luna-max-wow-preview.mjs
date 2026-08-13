@@ -129,7 +129,7 @@ export function validateConfig(config, { readAuthority = (path) => readFileSync(
   if (config.task_selection_status !== "selected-neutral-input-awaiting-packet-receipt") {
     throw new Error("neutral task selection status drift");
   }
-  for (const gate of ["neutral_task_packet_lock", "official_competitor_freshness_lock", "public_core_schema_liveness_receipt", "static_runtime_capability_receipt", "runtime_attribution_telemetry_receipt", "named_browser_identity_receipt", "evaluation_runtime_receipt"]) {
+  for (const gate of ["neutral_task_packet_lock", "official_competitor_freshness_lock", "public_core_schema_liveness_receipt", "static_runtime_capability_receipt", "runtime_attribution_telemetry_receipt", "existing_browser_harness_identity_receipt", "evaluation_runtime_receipt"]) {
     const value = config.admission?.[gate];
     if (value?.required !== true || value.status !== "unresolved" || value.path !== null || value.sha256 !== null) {
       throw new Error(`${gate} must remain an unresolved required input in the template`);
@@ -265,15 +265,17 @@ export function validateRuntimeAttributionReceipt(receipt, sourceCommit) {
 }
 
 export function validateNamedBrowserReceipt(receipt, sourceCommit) {
-  if (receipt?.schema_version !== "0.1" || receipt.kind !== "named-existing-browser-identity-preflight"
-    || receipt.pass !== true || receipt.source_commit !== sourceCommit) throw new Error("named browser receipt identity drift");
+  if (receipt?.schema_version !== "0.1" || receipt.kind !== "existing-browser-harness-cdp-preflight"
+    || receipt.pass !== true || receipt.source_commit !== sourceCommit
+    || receipt.excluded_from_benchmark_denominator !== true) throw new Error("existing browser-harness receipt identity drift");
   if (receipt.provider_calls !== 0 || receipt.model_calls !== 0 || receipt.browser_calls !== 1) {
-    throw new Error("named browser identity preflight call accounting drift");
+    throw new Error("existing browser-harness preflight call accounting drift");
   }
   const browser = receipt.browser;
-  if (!browser?.name || browser.named_existing !== true || browser.available !== true
-    || browser.launched_by_controller !== false || !browser.tab_id || browser.url !== "about:blank"
-    || !SHA.test(browser.identity_sha256 ?? "")) throw new Error("named existing browser telemetry drift");
+  if (browser?.name !== "default-local-cdp" || browser.transport !== "local-existing-chrome-cdp"
+    || browser.named_existing !== true || browser.available !== true || browser.launched_by_controller !== false
+    || browser.navigation_calls !== 0 || !/^(?:about:blank|http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?(?:\/|$))/.test(browser.url ?? "")
+    || !SHA.test(browser.identity_sha256 ?? "") || !SHA.test(browser.executable_sha256 ?? "")) throw new Error("existing browser-harness telemetry drift");
   return true;
 }
 
@@ -435,7 +437,7 @@ export function prepareCommand(args) {
   validateStaticRuntimeCapabilityReceipt(staticRuntimeReceipt.value, sourceCommit);
   const runtimeReceipt = readExternalReceipt(args.get("runtime-receipt"), "runtime attribution telemetry receipt");
   validateRuntimeAttributionReceipt(runtimeReceipt.value, sourceCommit);
-  const browserReceipt = readExternalReceipt(args.get("browser-receipt"), "named browser identity receipt");
+  const browserReceipt = readExternalReceipt(args.get("browser-receipt"), "existing browser-harness identity receipt");
   validateNamedBrowserReceipt(browserReceipt.value, sourceCommit);
   const evaluationRuntimeReceipt = readExternalReceipt(args.get("evaluation-runtime-receipt"), "evaluation runtime receipt");
   validateEvaluationRuntimeReceipt(evaluationRuntimeReceipt.value, sourceCommit, config);
@@ -480,7 +482,7 @@ export function prepareCommand(args) {
       schema_liveness: { sha256: sha256(schemaReceipt.bytes) },
       static_runtime_capability: { sha256: sha256(staticRuntimeReceipt.bytes) },
       runtime_attribution_telemetry: { sha256: sha256(runtimeReceipt.bytes) },
-      named_browser_identity: { sha256: sha256(browserReceipt.bytes) },
+      existing_browser_harness_identity: { sha256: sha256(browserReceipt.bytes) },
       evaluation_runtime: { sha256: sha256(evaluationRuntimeReceipt.bytes) },
     },
     execution_adapter: {
@@ -504,7 +506,7 @@ export function prepareCommand(args) {
     experiment_id: config.experiment_id,
     source_commit: sourceCommit,
     matrix_sha256: sha256(`${JSON.stringify(matrix, null, 2)}\n`),
-    admitted_prerequisites: ["neutral-same-facts-task-packets", "official-competitor-freshness", "seven-public-core-schemas", "static-luna-max-capability", "one-call-luna-max-attribution", "named-existing-browser", "evaluation-runtime-and-fonts"],
+    admitted_prerequisites: ["neutral-same-facts-task-packets", "official-competitor-freshness", "seven-public-core-schemas", "static-luna-max-capability", "one-call-luna-max-attribution", "existing-browser-harness-cdp", "evaluation-runtime-and-fonts"],
     provider_execution_allowed: false,
     provider_calls: 0,
     model_calls: 0,
