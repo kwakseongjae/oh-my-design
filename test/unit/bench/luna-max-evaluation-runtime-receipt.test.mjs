@@ -92,7 +92,8 @@ describe("Luna Max evaluation runtime receipt", () => {
 
   it("records dependency bytes, browser bytes/version, host, exact evaluator flags, and zero calls", () => {
     const fixture = fixtureRepo(); const runtime = fixtureRuntime(); const source = assertCleanExactSource(fixture);
-    const receipt = buildEvaluationRuntimeReceipt({ root: fixture.root, sourceCommit: fixture.sourceCommit, source, browserExecutable: runtime.browser, fontRoots: [runtime.fonts], explicitFontRoots: true });
+    const bundleParent = mkdtempSync(join(tmpdir(), "omd-luna-evaluation-bundle-")); const bundle = join(realpathSync(bundleParent), "bundle");
+    const receipt = buildEvaluationRuntimeReceipt({ root: fixture.root, sourceCommit: fixture.sourceCommit, source, browserExecutable: runtime.browser, fontRoots: [runtime.fonts], explicitFontRoots: true, dependencyBundleOut: bundle });
     expect(receipt).toMatchObject({
       kind: "omd-luna-max-evaluation-runtime-receipt", pass: true, source_commit: fixture.sourceCommit,
       host: { node_version: process.version, platform: process.platform, arch: process.arch },
@@ -102,19 +103,28 @@ describe("Luna Max evaluation runtime receipt", () => {
     });
     expect(receipt.dependencies.resolved.map((item) => [item.name, item.version])).toEqual([["playwright-core", "1.61.1"], ["axe-core", "4.11.2"]]);
     expect(receipt.dependencies.resolved.every((item) => item.package_json.sha256 && item.runtime.sha256)).toBe(true);
+    expect(receipt.dependencies.bundle).toMatchObject({ path: bundle, file_count: expect.any(Number), sha256: expect.stringMatching(/^[a-f0-9]{64}$/) });
+    expect(receipt.dependencies.resolved.every((item) => item.runtime.path.startsWith(`${bundle}/`))).toBe(true);
   });
 
   it("CLI emits canonical fresh output outside the repo and refuses overwrite", () => {
     const fixture = fixtureRepo(); const runtime = fixtureRuntime();
     const outRoot = realpathSync(mkdtempSync(join(tmpdir(), "omd-luna-runtime-output-"))); const output = join(outRoot, "receipt.json");
     const cli = join(fixture.root, SCRIPT_PATH);
-    const args = [cli, "--source-commit", fixture.sourceCommit, "--out", output, "--font-root", runtime.fonts];
+    const bundle = join(realpathSync(outRoot), "bundle"); const args = [cli, "--source-commit", fixture.sourceCommit, "--out", output, "--dependency-bundle-out", bundle, "--font-root", runtime.fonts];
     execFileSync(process.execPath, args, { env: { ...process.env, OMD_EVALUATION_REPO_ROOT: fixture.root, CHROME_PATH: runtime.browser } });
     const bytes = readFileSync(output, "utf8"); const receipt = JSON.parse(bytes);
     expect(bytes).toBe(`${canonicalJson(receipt)}\n`);
     expect(receipt.fonts.file_count).toBe(2);
     expect(() => execFileSync(process.execPath, args, { env: { ...process.env, OMD_EVALUATION_REPO_ROOT: fixture.root, CHROME_PATH: runtime.browser } })).toThrow();
     const inside = join(fixture.root, "receipt.json");
-    expect(() => execFileSync(process.execPath, [cli, "--source-commit", fixture.sourceCommit, "--out", inside, "--font-root", runtime.fonts], { env: { ...process.env, OMD_EVALUATION_REPO_ROOT: fixture.root, CHROME_PATH: runtime.browser } })).toThrow();
+    expect(() => execFileSync(process.execPath, [cli, "--source-commit", fixture.sourceCommit, "--out", inside, "--dependency-bundle-out", join(realpathSync(outRoot), "second-bundle"), "--font-root", runtime.fonts], { env: { ...process.env, OMD_EVALUATION_REPO_ROOT: fixture.root, CHROME_PATH: runtime.browser } })).toThrow();
+  });
+
+  it("requires a fresh dependency bundle and rejects symlinked package contents", () => {
+    const fixture = fixtureRepo(); const runtime = fixtureRuntime(); const source = assertCleanExactSource(fixture);
+    const base = realpathSync(mkdtempSync(join(tmpdir(), "omd-luna-bundle-adversarial-")));
+    const target = join(fixture.root, "node_modules/playwright-core/index.js"); symlinkSync(target, join(fixture.root, "node_modules/playwright-core/alias.js"));
+    expect(() => buildEvaluationRuntimeReceipt({ root: fixture.root, sourceCommit: fixture.sourceCommit, source, browserExecutable: runtime.browser, fontRoots: [runtime.fonts], explicitFontRoots: true, dependencyBundleOut: join(base, "bundle") })).toThrow(/symlink forbidden/);
   });
 });

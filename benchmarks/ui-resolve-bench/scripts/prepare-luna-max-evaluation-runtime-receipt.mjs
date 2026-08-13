@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { accessSync, constants, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, realpathSync, writeFileSync } from "node:fs";
+import { accessSync, constants, cpSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, realpathSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { homedir } from "node:os";
 import { dirname, isAbsolute, join, resolve, sep } from "node:path";
@@ -116,15 +116,65 @@ function dependency(root, name, runtimeSpecifier) {
     runtime: { path: runtimePath, bytes: runtimeBytes.length, sha256: sha256(runtimeBytes) },
   };
 }
-export function evaluatorDependencies(root, sourceCommit) {
+function bundledDependency(bundleRoot, name, runtimeRelative) {
+  const packagePath = join(bundleRoot, "node_modules", name, "package.json");
+  const runtimePath = join(bundleRoot, "node_modules", name, runtimeRelative);
+  regular(packagePath, `${name} bundled package metadata`); regular(runtimePath, `${name} bundled runtime bytes`);
+  const packageBytes = readFileSync(packagePath); const runtimeBytes = readFileSync(runtimePath); const metadata = JSON.parse(packageBytes);
+  if (!metadata.version) throw new Error(`${name} bundled version missing`);
+  return { name, version: metadata.version, package_json: { path: packagePath, bytes: packageBytes.length, sha256: sha256(packageBytes) }, runtime: { path: runtimePath, bytes: runtimeBytes.length, sha256: sha256(runtimeBytes) } };
+}
+function dependencyTree(root, current = root) {
+  const files = [];
+  for (const name of readdirSync(current).sort((a, b) => Buffer.from(a).compare(Buffer.from(b)))) {
+    const path = join(current, name); const info = lstatSync(path);
+    if (info.isSymbolicLink()) throw new Error(`evaluation dependency bundle symlink forbidden: ${path}`);
+    if (info.isDirectory()) files.push(...dependencyTree(root, path));
+    else {
+      if (!info.isFile()) throw new Error(`evaluation dependency bundle unsupported entry: ${path}`);
+      const bytes = readFileSync(path);
+      files.push({ path: path.slice(root.length + 1).split(sep).join("/"), mode: info.mode & 0o777, bytes: bytes.length, sha256: sha256(bytes) });
+    }
+  }
+  return files;
+}
+function bundleSummary(root) {
+  const files = dependencyTree(root);
+  return { path: root, files, file_count: files.length, bytes: files.reduce((sum, item) => sum + item.bytes, 0), sha256: sha256(canonicalJson(files)) };
+}
+function copyDependencyBundle({ sourceRoot, out }) {
+  canonicalAbsolute(out, "evaluation dependency bundle output");
+  if (realpathSync(dirname(out)) !== dirname(out)) throw new Error("evaluation dependency bundle output parent path aliases are forbidden");
+  if (existsSync(out)) throw new Error(`evaluation dependency bundle output must be fresh: ${out}`);
+  mkdirSync(out, { recursive: true, mode: 0o700 });
+  mkdirSync(join(out, "node_modules"), { recursive: false, mode: 0o700 });
+  writeFileSync(join(out, "package.json"), `${JSON.stringify({ name: "omd-luna-evaluator-runtime", private: true })}\n`, { encoding: "utf8", flag: "wx", mode: 0o600 });
+  for (const name of ["playwright-core", "axe-core"]) {
+    const source = dependencyRequire(sourceRoot, `${name}/package.json`);
+    const directory = dirname(source);
+    // cpSync dereferences neither directory nor nested entries: reject all aliases before copying.
+    dependencyTree(directory);
+    cpSync(directory, join(out, "node_modules", name), { recursive: true, dereference: false, errorOnExist: true, preserveTimestamps: false });
+  }
+  return bundleSummary(out);
+}
+export function evaluatorDependencies(root, sourceCommit, { dependencySourceRoot = root, dependencyBundleOut = null } = {}) {
   const lock = repoFile(root, sourceCommit, "package-lock.json", "dependency lock");
   const lockValue = JSON.parse(readFileSync(join(root, "package-lock.json"), "utf8"));
-  const dependencies = [dependency(root, "playwright-core", "playwright-core"), dependency(root, "axe-core", "axe-core/axe.min.js")];
+  const sourceRoot = realpathSync(resolve(dependencySourceRoot));
+  const dependencies = [dependency(sourceRoot, "playwright-core", "playwright-core"), dependency(sourceRoot, "axe-core", "axe-core/axe.min.js")];
   for (const item of dependencies) {
     const locked = lockValue.packages?.[`node_modules/${item.name}`]?.version;
     if (locked !== item.version) throw new Error(`${item.name} installed version differs from committed lock`);
   }
-  return { lock, dependencies };
+  if (!dependencyBundleOut) throw new Error("evaluation dependency bundle output is required");
+  const bundle = copyDependencyBundle({ sourceRoot, out: dependencyBundleOut });
+  const bundled = [bundledDependency(bundle.path, "playwright-core", "index.js"), bundledDependency(bundle.path, "axe-core", "axe.min.js")];
+  for (let index = 0; index < dependencies.length; index += 1) {
+    const before = dependencies[index]; const after = bundled[index];
+    if (before.version !== after.version || before.package_json.sha256 !== after.package_json.sha256 || before.runtime.sha256 !== after.runtime.sha256) throw new Error(`evaluation dependency bundle copy drift: ${before.name}`);
+  }
+  return { lock, dependencies: bundled, bundle };
 }
 
 export function defaultFontRoots(platform = process.platform, home = homedir()) {
@@ -160,12 +210,12 @@ export function fontInventory(fontRoots, { explicit = false } = {}) {
   return { roots, files: fonts, file_count: fonts.length, total_bytes: fonts.reduce((sum, item) => sum + item.bytes, 0), sha256: sha256(canonicalJson(fonts)) };
 }
 
-export function buildEvaluationRuntimeReceipt({ root, sourceCommit, source, browserExecutable, fontRoots, explicitFontRoots = false, browserVersion = null }) {
+export function buildEvaluationRuntimeReceipt({ root, sourceCommit, source, browserExecutable, fontRoots, explicitFontRoots = false, browserVersion = null, dependencySourceRoot = root, dependencyBundleOut }) {
   regular(browserExecutable, "browser executable", true);
   const browserBytes = readFileSync(browserExecutable);
   const version = browserVersion ?? execFileSync(browserExecutable, ["--version"], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
   if (!version || /[\r\n]/.test(version)) throw new Error("browser version must be one non-empty line");
-  const deps = evaluatorDependencies(root, sourceCommit);
+  const deps = evaluatorDependencies(root, sourceCommit, { dependencySourceRoot, dependencyBundleOut });
   const fonts = fontInventory(fontRoots, { explicit: explicitFontRoots });
   return {
     schema_version: "0.1", kind: "omd-luna-max-evaluation-runtime-receipt", pass: true,
@@ -175,7 +225,7 @@ export function buildEvaluationRuntimeReceipt({ root, sourceCommit, source, brow
     evaluation_authorities: source.authorities,
     host: { node_version: process.version, platform: process.platform, arch: process.arch },
     browser: { executable_path: browserExecutable, executable_bytes: browserBytes.length, executable_sha256: sha256(browserBytes), version },
-    dependencies: { package_lock: deps.lock, resolved: deps.dependencies },
+    dependencies: { package_lock: deps.lock, bundle: deps.bundle, resolved: deps.dependencies },
     fonts,
     evaluator_runtime: {
       engine: "chromium", headless: true, launch_args: [...CHROMIUM_ARGS],
@@ -212,12 +262,14 @@ async function main() {
   const root = realpathSync(resolve(process.env.OMD_EVALUATION_REPO_ROOT ?? defaultRepoRoot));
   const sourceCommit = args.get("source-commit");
   const output = args.get("out");
-  if (!sourceCommit || !output) throw new Error("usage: prepare-luna-max-evaluation-runtime-receipt.mjs --source-commit <exact-HEAD> --out <fresh-absolute-path> [--font-root <absolute-directory> ...]");
+  const dependencyBundleOut = args.get("dependency-bundle-out");
+  if (!sourceCommit || !output || !dependencyBundleOut) throw new Error("usage: prepare-luna-max-evaluation-runtime-receipt.mjs --source-commit <exact-HEAD> --out <fresh-absolute-path> --dependency-bundle-out <fresh-absolute-directory> [--dependency-source-root <absolute-directory>] [--font-root <absolute-directory> ...]");
   const source = assertCleanExactSource({ root, sourceCommit });
+  // Validate every output boundary before materializing the immutable bundle.
+  freshOutput(output, root);
   const browserExecutable = selectBrowserExecutable();
   const suppliedFontRoots = args.get("font-root");
-  const receipt = buildEvaluationRuntimeReceipt({ root, sourceCommit, source, browserExecutable, fontRoots: suppliedFontRoots ?? defaultFontRoots(), explicitFontRoots: Boolean(suppliedFontRoots) });
-  freshOutput(output, root);
+  const receipt = buildEvaluationRuntimeReceipt({ root, sourceCommit, source, browserExecutable, fontRoots: suppliedFontRoots ?? defaultFontRoots(), explicitFontRoots: Boolean(suppliedFontRoots), dependencySourceRoot: args.get("dependency-source-root") ?? root, dependencyBundleOut });
   writeFileSync(output, `${canonicalJson(receipt)}\n`, { encoding: "utf8", flag: "wx", mode: 0o600 });
   process.stdout.write(`${sha256(readFileSync(output))}  ${output}\n`);
 }

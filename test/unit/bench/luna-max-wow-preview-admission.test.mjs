@@ -42,6 +42,7 @@ function fixture() {
   for (const path of new Set([SCRIPT_PATH, CONTROLLER_PATH, MATERIALIZER_PATH, RECEIPT_GENERATOR, EVALUATION_GENERATOR, EVALUATOR_PATH, ...REQUIRED_MATRIX_SOURCE_PATHS])) {
     put(repo, path, readFileSync(resolve(path)));
   }
+  put(repo, "package-lock.json", "{\"lockfileVersion\":3}\n");
   for (const name of SCHEMAS) put(repo, `web/public/schema/${name}`, `${JSON.stringify({ $id: `https://oh-my-design.kr/schema/${name}` })}\n`);
   git(repo, "add", "."); git(repo, "commit", "-qm", "fixture"); const commit = git(repo, "rev-parse", "HEAD");
 
@@ -105,9 +106,13 @@ function fixture() {
     provider_calls: 0, model_calls: 0, browser_calls: 1, network_calls: 0 });
   const browserExecutable = put(base, "runtime/chrome", "fixture chrome\n");
   const fontPath = put(base, "runtime/fixture.ttf", "fixture font\n"); const font = { path: fontPath, bytes: readFileSync(fontPath).length, sha256: sha256(readFileSync(fontPath)) };
+  const dependencyRoot = join(base, "runtime/evaluator-dependencies");
+  put(dependencyRoot, "package.json", '{"name":"fixture"}\n'); put(dependencyRoot, "node_modules/playwright-core/package.json", '{"name":"playwright-core"}\n'); put(dependencyRoot, "node_modules/playwright-core/index.js", "module.exports = {};\n"); put(dependencyRoot, "node_modules/axe-core/package.json", '{"name":"axe-core"}\n'); put(dependencyRoot, "node_modules/axe-core/axe.min.js", "globalThis.axe = {};\n");
+  const dependencyFiles = tree(dependencyRoot); const dependencyBundle = { path: dependencyRoot, files: dependencyFiles, file_count: dependencyFiles.length, bytes: dependencyFiles.reduce((sum, item) => sum + item.bytes, 0), sha256: sha256(canonicalJson(dependencyFiles)) };
+  const dependency = (path) => ({ path, bytes: readFileSync(path).length, sha256: sha256(readFileSync(path)) });
   const evaluationPath = json(join(base, "evaluation.json"), { schema_version: "0.1", kind: "omd-luna-max-evaluation-runtime-receipt", pass: true, source_commit: commit, source_authority: authority(repo, EVALUATION_GENERATOR),
     evaluation_authorities: { evaluator: authority(repo, EVALUATOR_PATH) }, browser: { executable_path: browserExecutable, executable_bytes: readFileSync(browserExecutable).length, executable_sha256: sha256(readFileSync(browserExecutable)), version: "Fixture Chrome 1" },
-    fonts: { files: [font], file_count: 1, sha256: sha256(canonicalJson([font])) }, evaluator_runtime: { engine: "chromium", headless: true, network_policy: { local_origin_only: true } },
+    fonts: { files: [font], file_count: 1, sha256: sha256(canonicalJson([font])) }, dependencies: { package_lock: authority(repo, "package-lock.json"), bundle: dependencyBundle, resolved: [{ name: "playwright-core", package_json: dependency(join(dependencyRoot, "node_modules/playwright-core/package.json")), runtime: dependency(join(dependencyRoot, "node_modules/playwright-core/index.js")) }, { name: "axe-core", package_json: dependency(join(dependencyRoot, "node_modules/axe-core/package.json")), runtime: dependency(join(dependencyRoot, "node_modules/axe-core/axe.min.js")) }] }, evaluator_runtime: { engine: "chromium", headless: true, network_policy: { local_origin_only: true } },
     provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 });
   const out = join(base, "review", "ADMISSION.json");
   const args = mapArgs({ "locked-root": locked, "materialized-root": materialized, "schema-receipt": schemaPath,

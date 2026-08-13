@@ -183,6 +183,19 @@ export function validateAdmission({ admissionPath, materializedRoot, runtimePath
   const declaredEvaluator = manifest.evaluator_authority?.evaluator;
   invariant(declaredEvaluator?.path === DEFAULT_EVALUATOR_PATH && evaluationRuntime.evaluation_authorities?.evaluator?.path === declaredEvaluator.path && evaluationRuntime.evaluation_authorities.evaluator.sha256 === declaredEvaluator.sha256 && evaluationRuntime.evaluation_authorities.evaluator.sha256 === sha256(readFileSync(join(repoRoot, DEFAULT_EVALUATOR_PATH))), "evaluation authority drift");
   invariant(isAbsolute(evaluationRuntime.browser?.executable_path ?? "") && /^[a-f0-9]{64}$/.test(evaluationRuntime.browser?.executable_sha256 ?? "") && evaluationRuntime.browser.executable_sha256 === sha256(readFileSync(evaluationRuntime.browser.executable_path)) && typeof evaluationRuntime.browser.version === "string" && evaluationRuntime.browser.version && /^[a-f0-9]{64}$/.test(evaluationRuntime.fonts?.sha256 ?? ""), "evaluation browser/font runtime drift");
+  const dependencies = evaluationRuntime.dependencies;
+  strictKeys(dependencies, ["package_lock", "bundle", "resolved"], "evaluation dependencies");
+  strictKeys(dependencies.bundle, ["path", "files", "file_count", "bytes", "sha256"], "evaluation dependency bundle");
+  directory(resolve(dependencies.bundle.path), "evaluation dependency bundle");
+  const dependencyBundleFiles = tree(resolve(dependencies.bundle.path)).files;
+  const dependencyBundleTree = { files: dependencyBundleFiles.length, bytes: dependencyBundleFiles.reduce((sum, item) => sum + item.bytes, 0), sha256: sha256(canonical(dependencyBundleFiles)) };
+  invariant(dependencies.bundle.file_count === dependencyBundleTree.files && dependencies.bundle.bytes === dependencyBundleTree.bytes && dependencies.bundle.sha256 === dependencyBundleTree.sha256, "evaluation dependency bundle drift");
+  invariant(Array.isArray(dependencies.resolved) && dependencies.resolved.length === 2, "evaluation dependency bundle resolution count drift");
+  for (const item of dependencies.resolved) for (const field of ["package_json", "runtime"]) {
+    const file = item?.[field]; strictKeys(file, ["path", "bytes", "sha256"], `evaluation dependency ${item?.name ?? "unknown"} ${field}`); regular(resolve(file.path), `evaluation dependency ${item?.name ?? "unknown"} ${field}`);
+    invariant(resolve(file.path).startsWith(`${resolve(dependencies.bundle.path)}${sep}`), `evaluation dependency escapes immutable bundle: ${item.name}`);
+    const bytes = readFileSync(file.path); invariant(file.bytes === bytes.length && file.sha256 === sha256(bytes), `evaluation dependency drift: ${item.name}`);
+  }
   for (const item of Object.values(evidence)) invariant(item.value.source_commit === sourceCommit, `receipt source drift: ${item.path}`);
   return { admissionEvidence, admission, matrix, prereg, manifest, evidence };
 }
@@ -797,19 +810,22 @@ export function runCell(options) {
     const evaluatorDir = join(execution, "evaluator"); mkdirSync(evaluatorDir, { recursive: false });
     const evaluator = resolve(options.evaluatorBin ?? join(repoRoot, DEFAULT_EVALUATOR_PATH)); const scorePath = join(evaluatorDir, "score.json");
     const evalCall = invocation(evaluator, ["--task-id", prepared.metadata.task.id, "--workspace", isolated, "--out", scorePath]);
-    const evalResult = spawnSync(evalCall.executable, evalCall.args, { cwd: repoRoot, encoding: "utf8", timeout: TIMEOUT_MS, maxBuffer: 64 * 1024 * 1024, env: { ...process.env, CHROME_PATH: admission.evidence.evaluation_runtime.value.browser.executable_path, OMD_EVALUATOR_EXTERNAL_NETWORK: "forbidden" } });
+    const dependencyBundle = admission.evidence.evaluation_runtime.value.dependencies.bundle.path;
+    const evalResult = spawnSync(evalCall.executable, evalCall.args, { cwd: repoRoot, encoding: "utf8", timeout: TIMEOUT_MS, maxBuffer: 64 * 1024 * 1024, env: { ...process.env, NODE_PATH: join(dependencyBundle, "node_modules"), CHROME_PATH: admission.evidence.evaluation_runtime.value.browser.executable_path, OMD_EVALUATOR_EXTERNAL_NETWORK: "forbidden" } });
     writeFileSync(join(evaluatorDir, "stdout"), evalResult.stdout ?? "", { flag: "wx" }); writeFileSync(join(evaluatorDir, "stderr"), evalResult.stderr ?? "", { flag: "wx" });
-    evaluation = { exit_code: evalResult.status, error: evalResult.error?.message ?? null, score: existsSync(scorePath) ? { path: relative(execution, scorePath), sha256: sha256(readFileSync(scorePath)), bytes: statSync(scorePath).size } : null, artifacts_tree: tree(evaluatorDir), browser_calls: 1 };
+    const startupFailure = !existsSync(scorePath) && (evalResult.error || evalResult.status !== 0);
+    evaluation = { exit_code: evalResult.status, error: evalResult.error?.message ?? null, score: existsSync(scorePath) ? { path: relative(execution, scorePath), sha256: sha256(readFileSync(scorePath)), bytes: statSync(scorePath).size } : null, artifacts_tree: tree(evaluatorDir), browser_calls: 1, dependency_bundle: { path: dependencyBundle, sha256: admission.evidence.evaluation_runtime.value.dependencies.bundle.sha256 }, startup_failure: startupFailure };
   }
   const finalTree = tree(isolated); const raw = {
     run_result: existsSync(runResultPath) ? { sha256: sha256(readFileSync(runResultPath)), bytes: statSync(runResultPath).size } : null,
     events: existsSync(eventsPath) ? { sha256: sha256(readFileSync(eventsPath)), bytes: statSync(eventsPath).size } : null,
     stderr: { sha256: sha256(result.stderr ?? ""), bytes: Buffer.byteLength(result.stderr ?? "") }, stdout: { sha256: sha256(result.stdout ?? ""), bytes: Buffer.byteLength(result.stdout ?? "") },
   };
-  const infrastructureInvalid = !runResult || !rollout.exact || !rollout.provider_usage.available || tools.agent_browser_calls > 0 || tools.agent_network_attempts > 0 || tools.external_context_interventions > 0 || !stagingAudit.pass || !stagingReceiptIntact || nativeInfrastructureBlock;
+  const evaluatorInfrastructureFailure = providerSucceeded && evaluation?.startup_failure === true;
+  const infrastructureInvalid = !runResult || !rollout.exact || !rollout.provider_usage.available || tools.agent_browser_calls > 0 || tools.agent_network_attempts > 0 || tools.external_context_interventions > 0 || !stagingAudit.pass || !stagingReceiptIntact || nativeInfrastructureBlock || evaluatorInfrastructureFailure;
   const status = timedOut ? "timeout" : infrastructureInvalid ? "infrastructure-invalid" : providerSucceeded && evaluation?.score && evaluation.exit_code === 0 ? "completed" : "failed";
   const failurePath = join(execution, "FAILURE-ARTIFACT.json");
-  writeJsonExclusive(failurePath, { schema_version: "0.1", cell_id: next.id, status, native_infrastructure_block: nativeInfrastructureBlock, blank_shell: blankShell, staging_receipt_intact: stagingReceiptIntact, staging_audit: stagingAudit, process: { exit_code: result.status, signal: result.signal, timed_out: timedOut, error: result.error?.message ?? null }, rollout_exact: rollout.exact, evaluator_exit_code: evaluation?.exit_code ?? null });
+  writeJsonExclusive(failurePath, { schema_version: "0.1", cell_id: next.id, status, native_infrastructure_block: nativeInfrastructureBlock, evaluator_infrastructure_failure: evaluatorInfrastructureFailure, blank_shell: blankShell, staging_receipt_intact: stagingReceiptIntact, staging_audit: stagingAudit, process: { exit_code: result.status, signal: result.signal, timed_out: timedOut, error: result.error?.message ?? null }, rollout_exact: rollout.exact, evaluator_exit_code: evaluation?.exit_code ?? null });
   const packageResult = proof(isolated, prepared.metadata.arm.variant_id); const packagePath = join(execution, "DESIGN-SYSTEM-PACKAGE.json");
   writeJsonExclusive(packagePath, packageResult);
   const evaluatorValue = evaluation?.score ? readJson(resolve(execution, evaluation.score.path)) : null;

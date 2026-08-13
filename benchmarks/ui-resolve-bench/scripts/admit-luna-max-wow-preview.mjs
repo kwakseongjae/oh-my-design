@@ -362,14 +362,24 @@ export function validateEvaluationRuntimeReceipt(receipt, root, commit) {
   invariant(receipt.fonts.sha256 === sha256(canonicalJson(receipt.fonts.files))
     && receipt.evaluator_runtime?.engine === "chromium" && receipt.evaluator_runtime.headless === true
     && receipt.evaluator_runtime.network_policy?.local_origin_only === true, "evaluation runtime environment drift");
-  if (receipt.dependencies) {
+  {
+    exactKeys(receipt.dependencies, ["package_lock", "bundle", "resolved"], "evaluation dependencies");
     const lock = receipt.dependencies.package_lock;
     exactKeys(lock, ["path", "bytes", "sha256"], "evaluation dependency lock");
     const lockActual = repoAuthority(root, commit, lock.path, "evaluation dependency lock");
     invariant(lock.sha256 === lockActual.sha256 && lock.bytes === readFileSync(resolve(root, lock.path)).length, "evaluation dependency lock drift");
-    for (const dependency of receipt.dependencies.resolved ?? []) for (const field of ["package_json", "runtime"]) {
+    const bundle = receipt.dependencies.bundle;
+    exactKeys(bundle, ["path", "files", "file_count", "bytes", "sha256"], "evaluation dependency bundle");
+    directory(resolve(bundle.path), "evaluation dependency bundle");
+    const files = treeFiles(resolve(bundle.path));
+    const summary = { files: files.length, bytes: files.reduce((sum, item) => sum + item.bytes, 0), sha256: sha256(canonicalJson(files)) };
+    invariant(bundle.file_count === summary.files && bundle.bytes === summary.bytes && bundle.sha256 === summary.sha256, "evaluation dependency bundle drift");
+    invariant(Array.isArray(bundle.files) && bundle.files.length === bundle.file_count, "evaluation dependency bundle inventory drift");
+    invariant(receipt.dependencies.resolved.length === 2, "evaluation dependency bundle resolution count drift");
+    for (const dependency of receipt.dependencies.resolved) for (const field of ["package_json", "runtime"]) {
       const item = dependency[field]; exactKeys(item, ["path", "bytes", "sha256"], `evaluation dependency ${dependency.name} ${field}`);
       regular(resolve(item.path), `evaluation dependency ${dependency.name} ${field}`);
+      invariant(resolve(item.path).startsWith(`${resolve(bundle.path)}${sep}`), `evaluation dependency escapes immutable bundle: ${dependency.name}`);
       const bytes = readFileSync(item.path); invariant(item.bytes === bytes.length && item.sha256 === sha256(bytes), `evaluation dependency drift: ${dependency.name} ${field}`);
     }
   }

@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { chmodSync, cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, symlinkSync, writeFileSync } from "node:fs";
+import { chmodSync, cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, symlinkSync, unlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -63,8 +63,15 @@ function fixture({ runnerMode = "success", designSystem = true, variant = "model
   json(join(runtimeHome, "RUNTIME-SNAPSHOT.json"), { schema_version: "0.1", kind: "omd-luna-max-immutable-runtime-snapshot", static_runtime_receipt: bind(staticPath), auth_json_sha256: sha256(readFileSync(join(runtimeHome, "auth.json"))), models_cache_sha256: catalogSha, static_runtime_catalog_sha256: catalogSha, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 });
   const evaluator = join(base, "fake-evaluator.mjs");
   const fakeChrome = join(base, "fake-chrome"); writeFileSync(fakeChrome, "fixture-browser");
-  writeFileSync(evaluator, `import{createHash}from'node:crypto';import{mkdirSync,readFileSync,writeFileSync}from'node:fs';import{dirname,join}from'node:path';if(process.env.CHROME_PATH!==${JSON.stringify(fakeChrome)})process.exit(9);const a=process.argv.slice(2),o=a[a.indexOf('--out')+1],s=join(dirname(o),'screenshots');mkdirSync(s,{recursive:true});writeFileSync(join(s,'desktop-1440.png'),'png');writeFileSync(join(s,'mobile-390.png'),'png');const states={};for(const state of ['default','focus-visible','unavailable-information']){const file=state+'--desktop-1440.png';writeFileSync(join(s,file),state);states[state]=[{viewport_id:'desktop-1440',file,sha256:createHash('sha256').update(readFileSync(join(s,file))).digest('hex')}]}writeFileSync(join(s,'STATE-SCREENSHOTS.json'),JSON.stringify({schema_version:'0.1',kind:'omd-luna-max-evaluator-state-screenshots',task_id:'neighborhood-library-landing',states}));writeFileSync(o,JSON.stringify({ui_resolved:true,score:100,evidence:{protected_unknown_claims:[]}}));`);
-  const evaluationRuntimePath = json(join(base, "evaluation-runtime.json"), { kind: "omd-luna-max-evaluation-runtime-receipt", pass: true, source_commit: sourceCommit, evaluation_authorities: { evaluator: { path: DEFAULT_EVALUATOR_PATH, sha256: sha256(readFileSync(join(repo, DEFAULT_EVALUATOR_PATH))) } }, browser: { executable_path: fakeChrome, executable_sha256: sha256(readFileSync(fakeChrome)), version: "Fixture 1" }, fonts: { sha256: "c".repeat(64) }, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 });
+  const dependencyBundle = join(base, "evaluation-dependencies");
+  mkdirSync(join(dependencyBundle, "node_modules/playwright-core"), { recursive: true }); mkdirSync(join(dependencyBundle, "node_modules/axe-core"), { recursive: true });
+  writeFileSync(join(dependencyBundle, "package.json"), '{"name":"fixture-evaluator"}\n');
+  writeFileSync(join(dependencyBundle, "node_modules/playwright-core/package.json"), '{"name":"playwright-core"}\n'); writeFileSync(join(dependencyBundle, "node_modules/playwright-core/index.js"), "module.exports = {};\n");
+  writeFileSync(join(dependencyBundle, "node_modules/axe-core/package.json"), '{"name":"axe-core"}\n'); writeFileSync(join(dependencyBundle, "node_modules/axe-core/axe.min.js"), "globalThis.axe = {};\n");
+  writeFileSync(evaluator, `import{createHash}from'node:crypto';import{mkdirSync,readFileSync,writeFileSync}from'node:fs';import{dirname,join}from'node:path';if(process.env.CHROME_PATH!==${JSON.stringify(fakeChrome)}||process.env.NODE_PATH!==${JSON.stringify(join(dependencyBundle, "node_modules"))})process.exit(9);const a=process.argv.slice(2),o=a[a.indexOf('--out')+1],s=join(dirname(o),'screenshots');mkdirSync(s,{recursive:true});writeFileSync(join(s,'desktop-1440.png'),'png');writeFileSync(join(s,'mobile-390.png'),'png');const states={};for(const state of ['default','focus-visible','unavailable-information']){const file=state+'--desktop-1440.png';writeFileSync(join(s,file),state);states[state]=[{viewport_id:'desktop-1440',file,sha256:createHash('sha256').update(readFileSync(join(s,file))).digest('hex')}]}writeFileSync(join(s,'STATE-SCREENSHOTS.json'),JSON.stringify({schema_version:'0.1',kind:'omd-luna-max-evaluator-state-screenshots',task_id:'neighborhood-library-landing',states}));writeFileSync(o,JSON.stringify({ui_resolved:true,score:100,evidence:{protected_unknown_claims:[]}}));`);
+  const dependencyFiles = tree(dependencyBundle).files; const dependencySummary = { path: dependencyBundle, files: dependencyFiles, file_count: dependencyFiles.length, bytes: dependencyFiles.reduce((n, item) => n + item.bytes, 0), sha256: sha256(canonical(dependencyFiles)) };
+  const dependencyEntry = (path) => ({ path, bytes: readFileSync(path).length, sha256: sha256(readFileSync(path)) });
+  const evaluationRuntimePath = json(join(base, "evaluation-runtime.json"), { kind: "omd-luna-max-evaluation-runtime-receipt", pass: true, source_commit: sourceCommit, evaluation_authorities: { evaluator: { path: DEFAULT_EVALUATOR_PATH, sha256: sha256(readFileSync(join(repo, DEFAULT_EVALUATOR_PATH))) } }, browser: { executable_path: fakeChrome, executable_sha256: sha256(readFileSync(fakeChrome)), version: "Fixture 1" }, fonts: { sha256: "c".repeat(64) }, dependencies: { package_lock: { path: "package-lock.json", bytes: 0, sha256: "a".repeat(64) }, bundle: dependencySummary, resolved: [{ name: "playwright-core", package_json: dependencyEntry(join(dependencyBundle, "node_modules/playwright-core/package.json")), runtime: dependencyEntry(join(dependencyBundle, "node_modules/playwright-core/index.js")) }, { name: "axe-core", package_json: dependencyEntry(join(dependencyBundle, "node_modules/axe-core/package.json")), runtime: dependencyEntry(join(dependencyBundle, "node_modules/axe-core/axe.min.js")) }] }, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 });
   const admission = { schema_version: "0.1", kind: "omd-luna-max-sol-xhigh-admission", decision: "admitted", reviewer_role: "sol-xhigh-planning-review", attestation: { type: "role-attestation", cryptographic_identity_verified: false, statement: "This admission records a Sol/xhigh planning-review attestation; it is not cryptographic identity verification." }, source_commit: sourceCommit, generator_authority: { path: ADMISSION_GENERATOR_PATH, sha256: sha256(readFileSync(join(repo, ADMISSION_GENERATOR_PATH))) }, controller_authority: { path: PREREG_CONTROLLER_PATH, sha256: sha256(readFileSync(join(repo, PREREG_CONTROLLER_PATH))) }, bindings: { matrix: bind(matrixPath), preregistration: bind(preregPath), materialization: bind(materializationPath), schema: bind(schemaPath), static_runtime: bind(staticPath), runtime_attribution: bind(runtimePath), browser_identity: bind(browserPath), evaluation_runtime: bind(evaluationRuntimePath) }, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 };
   const admissionPath = json(join(base, "ADMISSION.json"), admission);
   return { base, repo, materialized, sourceCommit, runtimePath, browserPath, admissionPath, admission, runner, evaluator, cells, matrixPath, preregPath, materializationPath, runtimeHome, catalogSha, profileSha };
@@ -102,6 +109,27 @@ describe("Luna Max Wow Preview one-cell runner", () => {
   it("uses a neutral reusable HTML/CSS package gate for every arm and keeps OmD Core proof additive", () => {
     const valid = fixture(); expect(execute(valid).proof.design_system_package).toMatchObject({ parsed: true, pass: true });
     const empty = fixture({ designSystem: false }); expect(execute(empty).proof.design_system_package).toMatchObject({ parsed: false, pass: false });
+  });
+
+  it("classifies evaluator startup failure as infrastructure-invalid rather than a product score of zero", () => {
+    const f = fixture(); const broken = join(f.base, "broken-evaluator.mjs");
+    writeFileSync(broken, "process.stderr.write('Cannot find module playwright-core\\n'); process.exitCode = 1;\n");
+    const terminal = execute(f, { evaluatorBin: broken });
+    expect(terminal).toMatchObject({ status: "infrastructure-invalid", evaluator: { terminal_failure_projection: true } });
+    const failure = JSON.parse(readFileSync(terminal.failure_artifact.path));
+    expect(failure).toMatchObject({ evaluator_infrastructure_failure: true, evaluator_exit_code: 1 });
+    expect(readFileSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/evaluator/stderr"), "utf8")).toContain("Cannot find module playwright-core");
+  });
+
+  it("fails closed before provider spawn for a missing or tampered immutable evaluator bundle", () => {
+    for (const mutate of [
+      (runtime) => writeFileSync(runtime.dependencies.bundle.path + "/node_modules/playwright-core/index.js", "tampered\n"),
+      (runtime) => { unlinkSync(runtime.dependencies.resolved[0].runtime.path); },
+    ]) {
+      const f = fixture(); const runtime = JSON.parse(readFileSync(f.admission.bindings.evaluation_runtime.path)); mutate(runtime);
+      expect(() => execute(f)).toThrow(/evaluation dependency (bundle )?drift|evaluation dependency drift/);
+      expect(existsSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/PROVIDER-SPAWN-STARTED.json"))).toBe(false);
+    }
   });
 
   it("isolates provider HOME and exposes only the cell arm project skill", () => {
