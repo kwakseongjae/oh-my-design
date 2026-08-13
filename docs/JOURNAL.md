@@ -9,7 +9,7 @@
 - 6-arm same-prompt 54-cell Wow Preview와 통과 후 360-cell Qualification을 고정했다.
 - full harness는 순위에서 분리하고 quality/time/token/intervention Pareto로 보고한다.
 - blind ship/system preference·transfer·독립 audit 중 하나라도 실패하면 2.0을 보류한다.
-- dirty source와 production schema 7개 404가 해소되기 전 provider 실행은 fail-close다.
+- source를 `11065f6f`로 봉인했고, schema 7개 404·새 max prereg 전 provider 실행은 fail-close다.
 
 ## 2026-08-13 (Codex) · Core v2 dogfood atomic adoption 완료
 - exact v4 package를 transaction 59c8fec64af7fd70으로 원자 적용했다.

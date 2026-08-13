@@ -11,6 +11,7 @@
 
 ### 2026-08-13 OmD 2.0 출시 방향 — Luna Max evidence gate
 
+- Core v2 마지막 결박과 Luna release plan 32 paths를 commit `11065f6f1fe6eeeb716fedc7dda9f5e09edaf6a7`로 봉인했다. 보호 생성물 `web/public/llms-full.txt`, `web/public/llms.txt`, `web/src/data/catalog-meta.generated.ts`는 stage하지 않았다.
 - Core v2 구현·dogfood adoption 다음 최우선 목표를 Luna Max same-prompt 비교로 재설정했다. 정본은 `docs/OMD_2_0_LUNA_MAX_RELEASE_PLAN.md`, 기계 계약은 `benchmarks/ui-resolve-bench/plans/luna-max-2.0-release-v0.1.json`이다.
 - portable ranking은 model-only, Anthropic Frontend Design, Impeccable prompt-only, UI UX Pro Max, Taste eligible scope, OmD Autopilot의 6 arms만 포함한다. OmD full harness는 quality/time/token/intervention Pareto로 별도 보고한다.
 - 실행 사다리는 54-cell Wow Preview(3 tasks × 6 arms × 3), 통과 시 360-cell Qualification(12 families × 6 arms × 5), 10명 blind launch review, Terra/Sol nonnegative transfer, independent claim audit다.
@@ -18,6 +19,8 @@
 - 현재 provider 실행은 금지 상태다. dirty worktree 30개와 production Core schema 7개 404 때문에 publishable source/runtime seal을 만들 수 없다. 먼저 Core 변경 clean commit + schema exact 200/JSON/byte parity + competitor refresh가 필요하다.
 - 기존 `autopilot-luna-high-smoke-1.9.883`은 Luna high provider-zero preregistration이며 Luna Max 장시간 비교 결과가 아니다. 새 max 실행은 fresh commit·fresh experiment로만 시작한다.
 - 전체 회귀는 1329 pass, 6 fail이었다. 5건은 dirty source authority를 의도적으로 거부한 commit-before-execution gate였고, 1건은 release-train의 기존 식별자를 변경한 신규 계획 회귀여서 기존 `frontier-release`/`gated`를 보존하고 additive plan metadata로 수정했다.
+- commit 후 계획/일반 benchmark 237 tests와 lint는 green이다. 기존 Luna high controller 5 tests는 `v0.2/1.9.883`가 봉인한 과거 validator hash와 current Core validator bytes가 달라 fail-close한다. v0.2를 재해시하지 말고 Luna Max 전용 새 versioned config/controller/experiment에서 current commit을 결박해야 한다.
+- Luna Max provider/model/browser calls는 아직 0이다. 다음 실행 전 필수 순서는 schema 7개 배포+liveness, competitor official-source refresh/freeze, max controller/provider-zero preregistration, exact selector/effort/telemetry preflight다.
 
 ### 2026-08-13 Core v2 dogfood — adopted / provider-free proof PASS
 
