@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · 0dc Impeccable r1 timeout 봉인
+- Impeccable은 900,259ms timeout, usage unknown, tool22, evaluator/screenshots0으로 종료됐다.
+- first write 약10분, partial HTML61,050B/package PASS; `.benchmark/tmp`는 정확히 workspace-local intervention0이다.
+- record `8233e5c7…a836`, partial-03 `0e9139f0…d283`; rerun·사후 evaluator 금지다.
+- 다음 locked 셀은 UI UX Pro Max r1이다.
+
 ## 2026-08-14 (Codex) · 0dc Anthropic r1 terminal 봉인
 - Anthropic은 475,672ms·274,828 tokens·tool6로 Swiss/poster형 50,228B 화면을 생성했다.
 - model-only보다 token 27% 절약·더 뾰족한 art direction이지만 같은 unavailable-information 누락으로 objective0다.

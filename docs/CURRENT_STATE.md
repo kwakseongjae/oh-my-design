@@ -21,7 +21,9 @@
 - partial bundle=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-01.json`, SHA=`2eca2400…7e95`, terminal1/missing47/ineligible6이다.
 - Anthropic frontend-design r1도 `failed`로 봉인됐다. 475,672ms, input249,223/output25,605/total274,828, tool6, contamination0이다. HTML50,228B/vars20/selectors66/package·default·focus captures PASS, unsupported facts0이지만 같은 `unavailable-information` state 누락으로 objective0이다. Swiss poster형 coral/dark-green/condensed-type art direction은 더 뾰족하고 model-only보다 tokens 약27% 적지만 상태 완결성 우위는 없다. record SHA=`b42f670d…f105`, rerun 금지다.
 - partial-02=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-02.json`, SHA=`235667f1…9b0a`, terminal2/missing46/ineligible6이다.
-- **다음 exact action:** `neighborhood-library-landing-luna-max-r1-impeccable-prompt-only`을 Luna/max 1회·retry0으로 실행한다. terminal 뒤 즉시 같은 분석·checkpoint를 반복한다. c494 6 terminals는 diagnostic-only로 계속 분리한다.
+- Impeccable prompt-only r1은 900,259ms timeout으로 봉인됐다. usage/completion unknown, tool22, contamination0, evaluator/screenshots0이다. reference digestion 때문에 first product write가 약10분으로 가장 늦었고 partial HTML61,050B/vars22/selectors71/design-system PASS까지 남겼지만 objective0이다. `.benchmark/tmp/surface-brief.md`는 허용된 workspace-relative path로 intervention0이며 relative-tmp fix의 실제 positive 증거다. record SHA=`8233e5c7…a836`, rerun·사후 evaluator 금지다.
+- partial-03=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-03.json`, SHA=`0e9139f0…d283`, terminal3/missing45/ineligible6이다.
+- **다음 exact action:** `neighborhood-library-landing-luna-max-r1-ui-ux-pro-max`를 Luna/max 1회·retry0으로 실행한다. terminal 뒤 즉시 같은 분석·checkpoint를 반복한다. c494 6 terminals는 diagnostic-only로 계속 분리한다.
 
 ### 2026-08-14 c494 Luna Max 정식 비교 epoch
 
