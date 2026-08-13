@@ -154,6 +154,36 @@ describe("Luna Max Wow Preview result auditor", () => {
     expect(f.audit().hold_reasons).toContain("blind-human-omd-first-or-tie-below-two-tasks");
   });
 
+  it("fails closed when an otherwise passing blind receipt reports one reversal inconsistency", () => {
+    const f = fixture();
+    const [original, reversal] = f.args.humanReceipt.votes;
+    reversal.reversal_of_vote_id = original.vote_id;
+    reversal.reversal_inconsistent = true;
+    const result = f.audit();
+    expect(result.status).toBe("hold");
+    expect(result.blind_human.pass).toBe(false);
+    expect(result.blind_human.reversal_inconsistency_count).toBe(1);
+    expect(result.hold_reasons).toContain("blind-human-reversal-inconsistency");
+  });
+
+  it("fails closed on a flag-only reversal inconsistency without a reversal binding", () => {
+    const f = fixture();
+    f.args.humanReceipt.votes[0].reversal_inconsistent = true;
+    const result = f.audit();
+    expect(result.status).toBe("hold");
+    expect(result.blind_human.pass).toBe(false);
+    expect(result.blind_human.reversal_inconsistency_count).toBe(1);
+    expect(result.hold_reasons).toContain("blind-human-reversal-inconsistency");
+  });
+
+  it("rejects a unique but blank vote id", () => {
+    const f = fixture();
+    f.args.humanReceipt.votes[0].vote_id = "   ";
+    const result = f.audit();
+    expect(result.blind_human.pass).toBe(false);
+    expect(result.hold_reasons).toContain("blind-human-reversal-binding-invalid");
+  });
+
   it("rejects a blind comparison against a weaker arm than the derived strongest competitor", () => {
     const f = fixture();
     const comparison = JSON.parse(readFileSync(f.args.humanReceipt.comparison_manifest.path, "utf8"));

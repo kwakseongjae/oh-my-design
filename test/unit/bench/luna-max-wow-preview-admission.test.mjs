@@ -116,6 +116,7 @@ function fixture() {
 describe("Luna Max Wow Preview admission generator", () => {
   it("writes one fresh strict provider-zero admission with all exact bindings and non-cryptographic attestation", () => {
     const f = fixture(); const result = admitCommand(f.args, { repoRoot: f.repo }); const bytes = readFileSync(f.out, "utf8");
+    expect(REQUIRED_MATRIX_SOURCE_PATHS).toContain("benchmarks/ui-resolve-bench/scripts/prepare-luna-max-blind-review.mjs");
     expect(bytes).toBe(`${canonicalJson(result.receipt)}\n`);
     expect(Object.keys(result.receipt).sort()).toEqual([...ADMISSION_KEYS].sort());
     expect(Object.keys(result.receipt.bindings).sort()).toEqual([...BINDING_KEYS].sort());
@@ -133,6 +134,7 @@ describe("Luna Max Wow Preview admission generator", () => {
       (f) => unlinkSync(f.schemaPath),
       (f) => { const target = join(f.base, "browser-target.json"); writeFileSync(target, readFileSync(f.browserPath)); unlinkSync(f.browserPath); symlinkSync(target, f.browserPath); },
       (f) => put(f.repo, "dirty.txt", "dirty\n"),
+      (f) => writeFileSync(join(f.repo, "benchmarks/ui-resolve-bench/scripts/prepare-luna-max-blind-review.mjs"), "tampered blind review\n"),
       (f) => f.args.set("source-commit", "f".repeat(40)),
       (f) => { const value = JSON.parse(readFileSync(f.runtimePath)); value.model_calls = 2; json(f.runtimePath, value); },
     ];

@@ -21,6 +21,7 @@ export const REQUIRED_MATRIX_SOURCE_PATHS = Object.freeze([
   "benchmarks/ui-resolve-bench/scripts/prepare-luna-max-admission-receipts.mjs",
   "benchmarks/ui-resolve-bench/scripts/prepare-luna-max-evaluation-runtime-receipt.mjs",
   "benchmarks/ui-resolve-bench/scripts/audit-luna-max-wow-preview.mjs",
+  "benchmarks/ui-resolve-bench/scripts/prepare-luna-max-blind-review.mjs",
   "benchmarks/ui-resolve-bench/config/omd-luna-max-wow-preview-score-gate-v0.1.json",
   "benchmarks/ui-resolve-bench/scripts/run-codex.mjs",
   "benchmarks/ui-resolve-bench/scripts/_lib.mjs",

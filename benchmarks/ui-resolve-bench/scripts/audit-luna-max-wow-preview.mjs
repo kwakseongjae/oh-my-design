@@ -142,8 +142,9 @@ function validateHuman(human, tasks, omdArm, strongest) {
   if (firstOrTie < 2) reasons.push("blind-human-omd-first-or-tie-below-two-tasks");
   const reversalVotes = votes.filter((vote) => vote.reversal_of_vote_id);
   const voteIds = new Set(votes.map((vote) => vote.vote_id));
-  if (votes.some((vote) => typeof vote.vote_id !== "string") || voteIds.size !== votes.length || reversalVotes.some((vote) => !voteIds.has(vote.reversal_of_vote_id))) reasons.push("blind-human-reversal-binding-invalid");
-  const reversal = reversalVotes.filter((vote) => vote.reversal_inconsistent === true).length;
+  if (votes.some((vote) => typeof vote.vote_id !== "string" || !vote.vote_id.trim()) || voteIds.size !== votes.length || reversalVotes.some((vote) => !voteIds.has(vote.reversal_of_vote_id))) reasons.push("blind-human-reversal-binding-invalid");
+  const reversal = votes.filter((vote) => vote.reversal_inconsistent === true).length;
+  if (reversal > 0) reasons.push("blind-human-reversal-inconsistency");
   return { pass: reasons.length === 0, reasons, unique_practitioners: new Set(ids).size, task_count: decisions.length, omd_first_or_tie_tasks: firstOrTie, reversal_inconsistency_count: reversal, derived_task_decisions: decisions };
 }
 function paretoRows(records, arms, fullCoverageArms) {

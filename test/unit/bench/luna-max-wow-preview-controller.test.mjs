@@ -4,6 +4,8 @@ import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   CORE_SCHEMA_FILES,
+  EXECUTION_CLOSURE_PATHS,
+  blindReviewOperatorPath,
   buildCells,
   buildExecutionAdapterPlan,
   sourceAuthorityEntry,
@@ -106,12 +108,15 @@ describe("Luna Max Wow Preview provider-zero controller", () => {
 
   it("fails closed when current source bytes differ from the pinned commit bytes", () => {
     const committed = Buffer.from("committed-authority");
+    expect(EXECUTION_CLOSURE_PATHS).toContain(blindReviewOperatorPath);
     expect(sourceAuthorityEntry("authority.json", committed, committed)).toEqual({
       path: "authority.json",
       bytes: committed.length,
       sha256: sha256(committed),
     });
     expect(() => sourceAuthorityEntry("authority.json", Buffer.from("dirty"), committed))
+      .toThrow(/differs from commit/);
+    expect(() => sourceAuthorityEntry(blindReviewOperatorPath, Buffer.from("tampered blind review"), committed))
       .toThrow(/differs from commit/);
   });
 
