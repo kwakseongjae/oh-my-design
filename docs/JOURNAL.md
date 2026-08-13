@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · 0dc Taste r1 봉인
+- Taste landing은 808,318ms·2,594,972 tokens·tool41, contamination0으로 강한 cream/sage/coral UI를 만들었다.
+- package·responsive/default/focus 증거는 PASS지만 explicit unavailable-information 부재로 objective0이다.
+- record `a2753f2d…a1ff`, partial-05 `a336a224…64106414`; rerun 금지다.
+- 다음 locked 셀은 OmD Autopilot v2 r1이다.
+
 ## 2026-08-14 (Codex) · 0dc UI UX Pro Max r1 봉인
 - UI UX는 772,397ms·1,468,407 tokens·tool20으로 가장 polished한 editorial 23,041B+CSS 화면을 만들었다.
 - vars47/selectors125/package/captures는 강하지만 같은 unavailable-information 누락으로 objective0다.
