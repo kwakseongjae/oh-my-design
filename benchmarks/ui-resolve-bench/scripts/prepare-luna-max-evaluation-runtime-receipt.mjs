@@ -153,8 +153,11 @@ function copyDependencyBundle({ sourceRoot, out }) {
     const source = dependencyRequire(sourceRoot, `${name}/package.json`);
     const directory = dirname(source);
     // cpSync dereferences neither directory nor nested entries: reject all aliases before copying.
-    dependencyTree(directory);
+    const sourceBefore = dependencyTree(directory);
     cpSync(directory, join(out, "node_modules", name), { recursive: true, dereference: false, errorOnExist: true, preserveTimestamps: false });
+    const copied = dependencyTree(join(out, "node_modules", name)); const sourceAfter = dependencyTree(directory);
+    const beforeHash = sha256(canonicalJson(sourceBefore)); const copiedHash = sha256(canonicalJson(copied)); const afterHash = sha256(canonicalJson(sourceAfter));
+    if (beforeHash !== copiedHash || beforeHash !== afterHash) throw new Error(`evaluation dependency source/copy/post tree drift: ${name}`);
   }
   return bundleSummary(out);
 }

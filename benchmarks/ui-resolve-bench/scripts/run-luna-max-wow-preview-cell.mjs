@@ -93,6 +93,16 @@ export function tree(root, ignore = []) {
   return { files, sha256: sha256(files.map((file) => `${file.path}\0${file.mode}\0${file.sha256}`).join("\n")) };
 }
 function summary(root, ignore = []) { const manifest = tree(root, ignore); return { files: manifest.files.length, bytes: manifest.files.reduce((n, f) => n + f.bytes, 0), sha256: manifest.sha256 }; }
+function evaluatorBundleReadback(runtime) {
+  try {
+    const bundle = runtime?.dependencies?.bundle;
+    strictKeys(bundle, ["path", "files", "file_count", "bytes", "sha256"], "evaluation dependency bundle"); directory(resolve(bundle.path), "evaluation dependency bundle");
+    const files = tree(resolve(bundle.path)).files;
+    const actual = { files: files.length, bytes: files.reduce((sum, item) => sum + item.bytes, 0), sha256: sha256(canonical(files)) };
+    invariant(bundle.file_count === actual.files && bundle.bytes === actual.bytes && bundle.sha256 === actual.sha256, "evaluation dependency bundle drift");
+    return { pass: true, sha256: actual.sha256 };
+  } catch (error) { return { pass: false, reason: String(error?.message ?? error) }; }
+}
 function binding(path) { regular(path, `binding ${path}`); const bytes = readFileSync(path); return { path: resolve(path), sha256: sha256(bytes), bytes: bytes.length, value: JSON.parse(bytes) }; }
 function assertBinding(actual, expected, label) {
   strictKeys(expected, ["path", "sha256"], `${label} binding`);
@@ -811,10 +821,18 @@ export function runCell(options) {
     const evaluator = resolve(options.evaluatorBin ?? join(repoRoot, DEFAULT_EVALUATOR_PATH)); const scorePath = join(evaluatorDir, "score.json");
     const evalCall = invocation(evaluator, ["--task-id", prepared.metadata.task.id, "--workspace", isolated, "--out", scorePath]);
     const dependencyBundle = admission.evidence.evaluation_runtime.value.dependencies.bundle.path;
-    const evalResult = spawnSync(evalCall.executable, evalCall.args, { cwd: repoRoot, encoding: "utf8", timeout: TIMEOUT_MS, maxBuffer: 64 * 1024 * 1024, env: { ...process.env, NODE_PATH: join(dependencyBundle, "node_modules"), CHROME_PATH: admission.evidence.evaluation_runtime.value.browser.executable_path, OMD_EVALUATOR_EXTERNAL_NETWORK: "forbidden" } });
-    writeFileSync(join(evaluatorDir, "stdout"), evalResult.stdout ?? "", { flag: "wx" }); writeFileSync(join(evaluatorDir, "stderr"), evalResult.stderr ?? "", { flag: "wx" });
-    const startupFailure = !existsSync(scorePath) && (evalResult.error || evalResult.status !== 0);
-    evaluation = { exit_code: evalResult.status, error: evalResult.error?.message ?? null, score: existsSync(scorePath) ? { path: relative(execution, scorePath), sha256: sha256(readFileSync(scorePath)), bytes: statSync(scorePath).size } : null, artifacts_tree: tree(evaluatorDir), browser_calls: 1, dependency_bundle: { path: dependencyBundle, sha256: admission.evidence.evaluation_runtime.value.dependencies.bundle.sha256 }, startup_failure: startupFailure };
+    const readyMarker = join(evaluatorDir, "RUNTIME-READY.json"); const preBundle = evaluatorBundleReadback(admission.evidence.evaluation_runtime.value);
+    if (!preBundle.pass) {
+      writeFileSync(join(evaluatorDir, "stdout"), "", { flag: "wx" }); writeFileSync(join(evaluatorDir, "stderr"), `${preBundle.reason}\n`, { flag: "wx" });
+      evaluation = { exit_code: null, error: preBundle.reason, score: null, artifacts_tree: tree(evaluatorDir), browser_calls: 0, dependency_bundle: { path: dependencyBundle, sha256: admission.evidence.evaluation_runtime.value.dependencies.bundle.sha256, pre: preBundle, post: null }, startup_failure: true };
+    } else {
+      const evalResult = spawnSync(evalCall.executable, evalCall.args, { cwd: repoRoot, encoding: "utf8", timeout: TIMEOUT_MS, maxBuffer: 64 * 1024 * 1024, env: { ...process.env, NODE_PATH: join(dependencyBundle, "node_modules"), CHROME_PATH: admission.evidence.evaluation_runtime.value.browser.executable_path, OMD_EVALUATOR_EXTERNAL_NETWORK: "forbidden", OMD_EVALUATOR_READY_MARKER: readyMarker } });
+      writeFileSync(join(evaluatorDir, "stdout"), evalResult.stdout ?? "", { flag: "wx" }); writeFileSync(join(evaluatorDir, "stderr"), evalResult.stderr ?? "", { flag: "wx" });
+      const postBundle = evaluatorBundleReadback(admission.evidence.evaluation_runtime.value);
+      const runtimeReady = existsSync(readyMarker);
+      const startupFailure = !runtimeReady || !postBundle.pass;
+      evaluation = { exit_code: evalResult.status, error: evalResult.error?.message ?? null, score: existsSync(scorePath) ? { path: relative(execution, scorePath), sha256: sha256(readFileSync(scorePath)), bytes: statSync(scorePath).size } : null, artifacts_tree: tree(evaluatorDir), browser_calls: 1, dependency_bundle: { path: dependencyBundle, sha256: admission.evidence.evaluation_runtime.value.dependencies.bundle.sha256, pre: preBundle, post: postBundle }, runtime_ready: runtimeReady, startup_failure: startupFailure };
+    }
   }
   const finalTree = tree(isolated); const raw = {
     run_result: existsSync(runResultPath) ? { sha256: sha256(readFileSync(runResultPath)), bytes: statSync(runResultPath).size } : null,

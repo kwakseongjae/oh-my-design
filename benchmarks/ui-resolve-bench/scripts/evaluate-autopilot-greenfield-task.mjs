@@ -1530,6 +1530,10 @@ if (invoked) {
   if (!taskSet.tasks.some((item) => item.id === taskId) || !adapters.adapters.some((item) => item.task_id === taskId)) throw new Error('task or adapter missing');
   const entry = join(workspace, 'index.html');
   if (!existsSync(entry)) throw new Error('index.html is missing');
+  // Written only after dependency import, calibrated authority and workspace
+  // preflight. Later evaluator exceptions are product-evaluation failures.
+  const readyMarker = process.env.OMD_EVALUATOR_READY_MARKER;
+  if (readyMarker) writeFileSync(readyMarker, `${JSON.stringify({ schema_version: '0.1', kind: 'omd-evaluator-runtime-ready', task_id: taskId })}\n`, { encoding: 'utf8', flag: 'wx', mode: 0o600 });
   const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8' };
   const server = createServer((request, response) => {
     const raw = decodeURIComponent(new URL(request.url || '/', 'http://localhost').pathname);
