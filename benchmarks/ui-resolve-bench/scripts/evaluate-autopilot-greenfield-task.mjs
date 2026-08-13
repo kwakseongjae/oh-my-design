@@ -105,7 +105,7 @@ export function localeCodeMatches(actual, requested) {
 export function hasHonestUnavailableLibraryInformation(value) {
   const sentences = String(value || '').replace(/\s+/g, ' ').split(/(?<=[.!?])|\n+/).map((sentence) => sentence.trim()).filter(Boolean);
   const subject = '(?:catalog|inventory|availability|prices?|costs?|fees?|hours?|eligibility|pickup instructions?|reservation destination)';
-  const absence = '(?:not (?:listed|published|shown|provided|available|known|specified)|unavailable|unknown|to be confirmed|var(?:y|ies))';
+  const absence = '(?:not (?:(?:a )?live|listed|published|shown|provided|available|known|specified)|unavailable|unknown|to be confirmed|var(?:y|ies))';
   const verification = '(?:confirm|check)';
   return sentences.some((sentence) => new RegExp(`${subject}[^.!?]{0,180}${absence}`, 'i').test(sentence)
     || new RegExp(`(?:${absence}|${verification})[^.!?]{0,180}${subject}`, 'i').test(sentence)

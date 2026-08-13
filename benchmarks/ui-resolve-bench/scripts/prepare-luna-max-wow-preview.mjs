@@ -491,7 +491,7 @@ export function prepareCommand(args) {
       schema_compatible_validator: "benchmarks/ui-resolve-bench/scripts/prepare-run-matrix.mjs#validateRunMatrixPlan",
       implementation_status: "provider-zero-cell-runner-ready-admission-required",
       prepare_command: `node ${executionMaterializerPath} materialize --locked-root <LOCKED_ROOT> --checkout-root <EXACT_OFFICIAL_CHECKOUT_ROOT> --out <FRESH_EXTERNAL_OUTPUT_ROOT> --source-commit ${sourceCommit}`,
-      execute_command: `node ${executionRunnerPath} run --materialized-root <MATERIALIZED_ROOT> --admission <ADMISSION_JSON> --runtime-attribution-receipt <RUNTIME_RECEIPT> --browser-receipt <BROWSER_RECEIPT> --source-commit ${sourceCommit} --cell-id <NEXT_LOCKED_CELL_ID>`,
+      execute_command: `node ${executionRunnerPath} run --materialized-root <MATERIALIZED_ROOT> --admission <ADMISSION_JSON> --runtime-attribution-receipt <RUNTIME_RECEIPT> --browser-receipt <BROWSER_RECEIPT> --runtime-home <IMMUTABLE_AUTH_AND_CATALOG_SNAPSHOT> --source-commit ${sourceCommit} --cell-id <NEXT_LOCKED_CELL_ID>`,
       max_new_cells_per_invocation: 1,
       order_prompt_model_effort_mutation_allowed: false,
       retain_failures_in_denominator: true,

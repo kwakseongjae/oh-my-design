@@ -28,7 +28,7 @@
     },
     "evaluator": {
       "path": "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs",
-      "sha256": "941a74a33ef39cd7c43fc0c1dbcacbcf41a83901ad81ae7903c8388bb7573f97"
+      "sha256": "a26d5f12d50e072622cb5e1b982b8526d4709e096b5dc6e12b775f2f7a267192"
     },
     "task_set_validator": {
       "path": "benchmarks/ui-resolve-bench/scripts/validate-autopilot-greenfield-task-set.mjs",

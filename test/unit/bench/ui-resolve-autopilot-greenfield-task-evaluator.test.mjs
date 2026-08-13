@@ -30,6 +30,7 @@ describe('greenfield evidence phrase classification', () => {
     'This page is a concept preview: the catalog, fees, availability, pickup instructions, and reservation destination are not provided here.',
     'No catalog or availability is shown.',
     'Pricing is unavailable; contact the library to confirm inventory.',
+    'These are prompts, not a live inventory list. Describe the job and we will help find the right fit.',
   ])('accepts an explicit library-information absence boundary: %s', (value) => {
     expect(hasHonestUnavailableLibraryInformation(value)).toBe(true);
   });

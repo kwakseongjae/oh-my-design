@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { spawn } from "node:child_process";
+import { createHash } from "node:crypto";
 import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { diffTreeManifests, parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
@@ -11,6 +12,7 @@ import {
   preparedWorkspaceRequiresBrowserProof,
   verifyExactCodexCliRuntime,
   verifyExactModelCatalogAuthority,
+  resolveCodexNativeExecutable,
 } from "./codex-browser-sandbox-contract.mjs";
 import { inspectCodexModelToolMode } from "./codex-tool-mode-contract.mjs";
 
@@ -21,6 +23,11 @@ const reasoning = String(args.get("reasoning") ?? "xhigh");
 const timeoutMs = Number(args.get("timeout-ms") ?? 900_000);
 const bypassHookTrust = args.get("bypass-hook-trust") === true;
 const loadUserConfig = args.get("load-user-config") === true;
+const disablePluginSkillSearch = args.get("disable-plugin-skill-search") === true;
+const expectedCliVersion = args.get("expected-codex-version") ? String(args.get("expected-codex-version")) : null;
+const expectedWrapperSha = args.get("expected-wrapper-sha") ? String(args.get("expected-wrapper-sha")) : null;
+const expectedNativePath = args.get("expected-native-path") ? resolve(String(args.get("expected-native-path"))) : null;
+const expectedNativeSha = args.get("expected-native-sha") ? String(args.get("expected-native-sha")) : null;
 const artifactSuffix = args.get("artifact-suffix") ? String(args.get("artifact-suffix")) : null;
 
 if (!workspace) {
@@ -54,17 +61,30 @@ const maxLogBytes = 50 * 1024 * 1024;
 const browserProofRequired = preparedWorkspaceRequiresBrowserProof(workspace, { readJson });
 const exactRuntimeContract = preparedExactCodexRuntimeContract(workspace, { readJson });
 const exactCodexHome = exactRuntimeContract ? isolatedCodexHome(workspace) : null;
+const strictIsolatedHome = disablePluginSkillSearch
+  ? exactCodexHome ?? resolve(String(process.env.CODEX_HOME ?? ""))
+  : null;
+if (disablePluginSkillSearch && !exactRuntimeContract) {
+  if (!process.env.HOME || !process.env.CODEX_HOME
+    || !resolve(process.env.HOME).startsWith("/")
+    || resolve(process.env.HOME) !== strictIsolatedHome) {
+    throw new Error("plugin/skill isolation requires exact absolute HOME === CODEX_HOME");
+  }
+}
+const executionCodexHome = exactCodexHome ?? strictIsolatedHome;
 const exactModelCatalogPath = exactCodexHome ? join(exactCodexHome, "model_catalog.json") : null;
 const codexBin = exactRuntimeContract
   ? exactRuntimeContract.catalog_snapshot_contract.codex_cli.executable_path
   : process.env.OMD_BENCH_CODEX_BIN ?? "codex";
-const sourceModelToolMode = exactRuntimeContract ? null : inspectCodexModelToolMode(model);
+const sourceModelToolMode = exactRuntimeContract ? null : inspectCodexModelToolMode(model,
+  executionCodexHome ? { OMD_BENCH_AUTH_CODEX_HOME: executionCodexHome } : process.env);
 const innerCommand = [
   "exec",
   "--ephemeral",
   ...(!loadUserConfig ? ["--ignore-user-config"] : []),
   "--skip-git-repo-check",
   ...(bypassHookTrust ? ["--dangerously-bypass-hook-trust"] : []),
+  ...(disablePluginSkillSearch ? ["--disable", "plugins", "--disable", "skill_search"] : []),
   ...(browserProofRequired ? ["--dangerously-bypass-approvals-and-sandbox"] : ["--sandbox", "workspace-write"]),
   "--cd",
   workspace,
@@ -86,11 +106,11 @@ const execution = browserProofRequired
   : {
       executable: codexBin,
       args: innerCommand,
-      env: exactRuntimeContract
-        ? { HOME: exactCodexHome, CODEX_HOME: exactCodexHome }
+      env: executionCodexHome
+        ? { HOME: executionCodexHome, CODEX_HOME: executionCodexHome }
         : {},
       sandbox: "workspace-write",
-      ...(exactRuntimeContract ? { codex_home: exactCodexHome } : {}),
+      ...(executionCodexHome ? { codex_home: executionCodexHome } : {}),
     };
 if (browserProofRequired && !exactRuntimeContract) {
   mkdirSync(execution.temp_dir, { recursive: true });
@@ -137,6 +157,18 @@ if (exactRuntimeContract) {
     { modelId: model },
   );
   exactCliRuntime = verifyExactCodexCliRuntime(exactRuntimeContract);
+} else if (disablePluginSkillSearch) {
+  if (!expectedCliVersion || !/^[a-f0-9]{64}$/.test(expectedWrapperSha ?? "") || !expectedNativePath || !/^[a-f0-9]{64}$/.test(expectedNativeSha ?? "")) throw new Error("strict isolated mode requires exact admitted Codex CLI bindings");
+  const wrapperPath = resolve(process.env.OMD_BENCH_CODEX_BIN ?? "");
+  const nativePath = resolveCodexNativeExecutable(wrapperPath);
+  const digest = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
+  const versionOutput = await new Promise((done) => {
+    const child = spawn(wrapperPath, ["--version"], { stdio: ["ignore", "pipe", "pipe"] }); let output = "";
+    child.stdout.on("data", (chunk) => { output += chunk; }); child.stderr.on("data", (chunk) => { output += chunk; }); child.on("close", (code) => done({ code, output }));
+  });
+  const observedVersion = versionOutput.output.match(/codex-cli\s+([^\s]+)/i)?.[1] ?? null;
+  if (versionOutput.code !== 0 || observedVersion !== expectedCliVersion || digest(wrapperPath) !== expectedWrapperSha || nativePath !== expectedNativePath || digest(nativePath) !== expectedNativeSha) throw new Error("strict isolated Codex CLI binding drift");
+  exactCliRuntime = { executable_path: wrapperPath, binary_sha256: expectedWrapperSha, native_executable_path: nativePath, native_binary_sha256: expectedNativeSha, version: expectedCliVersion };
 }
 
 const appendCapped = (current, chunk) => {
@@ -179,7 +211,7 @@ const exit = await new Promise((resolveExit) => {
 });
 
 const wallMs = Number(process.hrtime.bigint() - startedNs) / 1_000_000;
-const executionModelToolMode = browserProofRequired || exactRuntimeContract
+const executionModelToolMode = browserProofRequired || exactRuntimeContract || disablePluginSkillSearch
   ? inspectCodexModelToolMode(model, { OMD_BENCH_AUTH_CODEX_HOME: execution.codex_home })
   : sourceModelToolMode;
 const modelToolMode = exactRuntimeContract
@@ -193,6 +225,12 @@ const modelToolModeEvidenceScope = modelToolMode === executionModelToolMode
 const modelToolModeBeforeRun = exactRuntimeContract
   ? exactPreRunModelToolMode
   : sourceModelToolMode;
+if (disablePluginSkillSearch && (
+  modelToolModeBeforeRun.cache_sha256 !== executionModelToolMode.cache_sha256
+  || modelToolModeBeforeRun.model_profile_sha256 !== executionModelToolMode.model_profile_sha256
+)) {
+  throw new Error("strict isolated Codex home cache/profile mutated during provider invocation");
+}
 writeFileSync(eventsPath, stdout, "utf8");
 writeFileSync(join(artifactDir, "stderr.log"), stderr, "utf8");
 
@@ -260,18 +298,22 @@ const result = {
         cache_client_version: modelToolModeBeforeRun.cache_client_version,
       },
     },
-    auth_mode: exactRuntimeContract ? "immutable-snapshot-copy" : null,
+    auth_mode: exactRuntimeContract
+      ? "immutable-snapshot-copy"
+      : disablePluginSkillSearch ? "strict-external-isolated-home" : null,
     model_catalog_authority: exactModelCatalogAuthority,
     provider_route: null,
     model,
     reasoning,
     sandbox: execution.sandbox,
     browser_socket_scope: browserProofRequired ? execution.runtime_dir : null,
-    codex_home: browserProofRequired || exactRuntimeContract ? execution.codex_home : null,
+    codex_home: browserProofRequired || exactRuntimeContract || disablePluginSkillSearch
+      ? execution.codex_home : null,
     browser_temp_dir: browserProofRequired ? execution.temp_dir : null,
     ephemeral: true,
     ignored_user_config: !loadUserConfig,
     hook_trust_bypassed: bypassHookTrust,
+    plugin_skill_search_disabled: disablePluginSkillSearch,
   },
   process: {
     exit_code: exit.code,

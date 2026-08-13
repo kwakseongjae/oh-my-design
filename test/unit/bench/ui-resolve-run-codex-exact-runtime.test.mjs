@@ -8,6 +8,7 @@ import {
   mkdtempSync,
   readFileSync,
   realpathSync,
+  unlinkSync,
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
@@ -45,7 +46,7 @@ function executable(path, source) {
   return path;
 }
 
-function exactRunFixture({ observedVersion = "9.9.9", removeExecutionCache = false } = {}) {
+function exactRunFixture({ observedVersion = "9.9.9", removeExecutionCache = false, mutateExecutionCache = false } = {}) {
   const root = realpathSync(mkdtempSync(join(tmpdir(), "omd-run-codex-exact-")));
   const matrixRoot = join(root, "matrix");
   const workspace = join(matrixRoot, "cell-1");
@@ -111,6 +112,9 @@ const workspace = args[args.indexOf("--cd") + 1];
 const finalPath = args[args.indexOf("--output-last-message") + 1];
 if (${JSON.stringify(removeExecutionCache)}) {
   unlinkSync(join(process.env.CODEX_HOME, "models_cache.json"));
+}
+if (${JSON.stringify(mutateExecutionCache)}) {
+  writeFileSync(join(process.env.CODEX_HOME, "models_cache.json"), JSON.stringify({models:[]}));
 }
 writeFileSync(join(workspace, ".benchmark", "fake-codex-invocation.json"), JSON.stringify({
   args,
@@ -204,7 +208,7 @@ process.exit(result.status ?? 1);
   };
 }
 
-function runFixture(fixture, extra = []) {
+function runFixture(fixture, extra = [], envOverrides = {}) {
   return spawnSync(process.execPath, [
     RUN_CODEX,
     "--workspace", fixture.workspace,
@@ -220,11 +224,50 @@ function runFixture(fixture, extra = []) {
       ...process.env,
       OMD_BENCH_AUTH_CODEX_HOME: fixture.sourceHome,
       OMD_BENCH_CODEX_BIN: fixture.wrapper,
+      ...envOverrides,
     },
   });
 }
 
 describe("run-codex exact catalog/runtime invocation", () => {
+  it("passes the explicit plugin and dynamic skill-search disable boundary to Codex", () => {
+    const fixture = exactRunFixture();
+    const executed = runFixture(fixture, ["--disable-plugin-skill-search"]);
+    expect(executed.status, executed.stderr).toBe(0);
+    const invocation = JSON.parse(readFileSync(join(fixture.benchmark, "fake-codex-invocation.json"), "utf8"));
+    expect(invocation.args).toEqual(expect.arrayContaining(["--disable", "plugins", "--disable", "skill_search"]));
+    const result = JSON.parse(readFileSync(join(fixture.benchmark, "run-result.json"), "utf8"));
+    expect(result.runtime.plugin_skill_search_disabled).toBe(true);
+  });
+
+  it("uses the same explicit external isolated home before and after a Luna-style invocation", () => {
+    const fixture = exactRunFixture();
+    // A Luna materialized workspace has no sibling exact-runtime matrix contract.
+    const liveCache = join(fixture.root, "mutable-live-home"); mkdirSync(liveCache);
+    writeFileSync(join(liveCache, "models_cache.json"), JSON.stringify({ models: [{ slug: "wrong-live-model" }] }));
+    const matrix = join(fixture.root, "matrix/RUN-MATRIX.locked.json");
+    unlinkSync(matrix);
+    const executed = runFixture(fixture, ["--disable-plugin-skill-search", "--expected-codex-version", fixture.snapshot.codex_cli.version, "--expected-wrapper-sha", fixture.snapshot.codex_cli.binary_sha256, "--expected-native-path", fixture.snapshot.codex_cli.native_executable_path, "--expected-native-sha", fixture.snapshot.codex_cli.native_binary_sha256], {
+      HOME: fixture.sourceHome,
+      CODEX_HOME: fixture.sourceHome,
+      OMD_BENCH_AUTH_CODEX_HOME: liveCache,
+    });
+    expect(executed.status, executed.stderr).toBe(0);
+    const result = JSON.parse(readFileSync(join(fixture.benchmark, "run-result.json"), "utf8"));
+    expect(result.runtime.auth_mode).toBe("strict-external-isolated-home");
+    expect(result.runtime.codex_home).toBe(fixture.sourceHome);
+    expect(result.runtime.model_tool_mode_evidence.cache_sha256).toBe(sha256(fixture.cacheBytes));
+    expect(result.runtime.model_tool_mode_evidence.auth_source_before_run.cache_sha256).toBe(sha256(fixture.cacheBytes));
+  });
+
+  it("fails when the strict isolated cache/profile mutates during the invocation", () => {
+    const fixture = exactRunFixture({ mutateExecutionCache: true });
+    const executed = runFixture(fixture, ["--disable-plugin-skill-search"]);
+    expect(executed.status).not.toBe(0);
+    expect(executed.stderr).toContain("cache/profile mutated during provider invocation");
+    expect(existsSync(join(fixture.benchmark, "run-result.json"))).toBe(false);
+  });
+
   it("isolates a bounded repair prompt and its runtime artifacts", () => {
     const fixture = exactRunFixture();
     mkdirSync(join(fixture.benchmark, "repair-prompts"), { recursive: true });

@@ -6616,3 +6616,15 @@
 - pre-build `code_conformance` 거짓 주장을 제거하고 실제 제품 conformance는 final same-route proof에 유지했다.
 - clean-dir canary와 focused 21 tests는 green; smoke/readiness source authority는 commit `2a74ba73`에 재결박했다.
 - 다음: commit → source bindings/readiness 재봉인 → full suite/lint/build → capacity reset 뒤 fresh Luna/high3-cell.
+## 2026-08-13 (Codex) · 첫 Luna Max 셀을 오염 탐지 파일럿으로 격리
+- source `68e8276e`의 model-only 셀이 exact runtime contract 없이 실행돼 전역 Browser Harness 스킬을 읽은 사실을 raw events로 확인했다.
+- 파일럿은 중단·재시도하지 않고 immutable terminal까지 보존하되 scored denominator에서는 제외하며, 셀 2부터는 실행을 금지했다.
+- isolated CODEX_HOME + arm별 allowlist + global plugin/skill 차단 + agent browser-call telemetry를 fresh source/receipts/admission으로 다시 봉인한다.
+- 토큰 monitor는 32%, resets_at 불변으로 리셋 징후가 없다.
+- terminal은 provider 755.8s/2.57M tokens/48 tools 후 evaluator의 필수 unavailable-information state 누락으로 score 0; raw Browser Harness 호출형 25개 대 terminal browser_calls 1의 과소계수를 확정했다.
+## 2026-08-13 (Codex) · Luna Max 정식 runtime 격리 게이트 폐쇄
+- 셀별 HOME=CODEX_HOME, immutable auth/catalog, exact Codex wrapper/native/version, login-shell PATH allowlist와 plugin/skill-search 차단을 구현했다.
+- 0-call `debug prompt-input` 감사가 developer 단일 block의 built-in 5개+arm skill exact name/locator/SHA만 허용하며 실제 빈 workspace도 5개만 노출했다.
+- raw Browser Harness/network/global path 접근을 infrastructure-invalid로 만들고 agent/evaluator browser call을 분리 합산했다.
+- xhigh 재검수에서 colon을 포함한 `omd:autopilot` name과 user-role 가짜 block 우회를 수정했고 통합 175/175, lint/diff-check green이다.
+- 다음: clean commit 후 모든 receipt/materialization/admission을 fresh 재발급하고 exact next locked Luna/max 셀 하나만 실행한다.

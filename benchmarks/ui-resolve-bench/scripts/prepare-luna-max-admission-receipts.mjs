@@ -11,6 +11,7 @@ import {
 } from "node:fs";
 import { dirname, isAbsolute, join, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
+import { resolveCodexNativeExecutable } from "./codex-browser-sandbox-contract.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 export const defaultRepoRoot = resolve(here, "../../..");
@@ -149,7 +150,24 @@ function modelsFromCatalog(catalog) {
   throw new Error("catalog must contain a models array");
 }
 
-export function buildStaticCapabilityReceipt({ sourceCommit, sourceAuthority, catalogBytes }) {
+function cliVersion(path) {
+  assertRegular(path, "Codex CLI executable");
+  const canonical = realpathSync(path);
+  if (canonical !== resolve(path)) throw new Error("Codex CLI executable path must be canonical");
+  const output = execFileSync(canonical, ["--version"], { encoding: "utf8", timeout: 10_000 }).trim();
+  const match = output.match(/codex-cli\s+([^\s]+)/i);
+  if (!match) throw new Error("Codex CLI version unavailable");
+  return { path: canonical, sha256: sha256(readFileSync(canonical)), version: match[1] };
+}
+
+export function inspectStaticCodexCliBinding({ codexBin }) {
+  const wrapper = cliVersion(codexBin); const native = cliVersion(resolveCodexNativeExecutable(wrapper.path));
+  if (wrapper.version !== native.version) throw new Error("Codex CLI wrapper/native version mismatch");
+  return { wrapper, native, version: wrapper.version, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 };
+}
+
+export function buildStaticCapabilityReceipt({ sourceCommit, sourceAuthority, catalogBytes, codexCli }) {
+  if (!codexCli?.wrapper?.path || !SHA.test(codexCli?.wrapper?.sha256 ?? "") || !codexCli?.native?.path || !SHA.test(codexCli?.native?.sha256 ?? "") || !codexCli?.version) throw new Error("exact Codex CLI binding is required");
   let catalog;
   try { catalog = JSON.parse(catalogBytes.toString("utf8")); } catch { throw new Error("catalog is not valid JSON"); }
   const matches = modelsFromCatalog(catalog).filter((model) => model?.slug === "gpt-5.6-luna");
@@ -171,6 +189,7 @@ export function buildStaticCapabilityReceipt({ sourceCommit, sourceAuthority, ca
       catalog_bytes: catalogBytes.length,
       catalog_sha256: sha256(catalogBytes),
       model_profile_sha256: sha256(canonicalJson(matches[0])),
+      codex_cli: codexCli,
     },
     provider_calls: 0,
     model_calls: 0,
@@ -377,8 +396,9 @@ async function main() {
     const catalogPath = args.get("catalog");
     assertRegular(catalogPath, "catalog");
     const bytes = readFileSync(catalogPath);
-    receipt = buildStaticCapabilityReceipt({ sourceCommit, sourceAuthority, catalogBytes: bytes });
-    inputs = [catalogPath];
+    const codexCli = inspectStaticCodexCliBinding({ codexBin: args.get("codex-bin") });
+    receipt = buildStaticCapabilityReceipt({ sourceCommit, sourceAuthority, catalogBytes: bytes, codexCli });
+    inputs = [catalogPath, codexCli.wrapper.path, codexCli.native.path];
   } else if (command === "schema-liveness") {
     const baseUrl = args.get("base-url");
     receipt = await buildSchemaLivenessReceipt({ root, sourceCommit, sourceAuthority, baseUrl });

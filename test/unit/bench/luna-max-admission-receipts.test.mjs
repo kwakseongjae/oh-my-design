@@ -44,6 +44,9 @@ function fixtureRepo({ withSchemas = false, copyScript = false } = {}) {
   mkdirSync(dirname(authority), { recursive: true });
   if (copyScript) {
     cpSync(resolve("benchmarks/ui-resolve-bench/scripts/prepare-luna-max-admission-receipts.mjs"), authority);
+    for (const dependency of ["codex-browser-sandbox-contract.mjs", "codex-tool-mode-contract.mjs"]) {
+      cpSync(resolve("benchmarks/ui-resolve-bench/scripts", dependency), join(dirname(authority), dependency));
+    }
     chmodSync(authority, 0o755);
   } else writeFileSync(authority, "export const authority = true;\n");
   if (withSchemas) {
@@ -138,7 +141,8 @@ describe("Luna Max admission receipts", () => {
 
   it("creates controller-compatible zero-call static capability evidence", () => {
     const bytes = catalog();
-    const receipt = buildStaticCapabilityReceipt({ sourceCommit: "c".repeat(40), sourceAuthority: sourceAuthority(), catalogBytes: bytes });
+    const codexCli = { wrapper: { path: "/fixture/codex.js", sha256: "1".repeat(64), version: "1.0" }, native: { path: "/fixture/codex", sha256: "2".repeat(64), version: "1.0" }, version: "1.0", provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 };
+    const receipt = buildStaticCapabilityReceipt({ sourceCommit: "c".repeat(40), sourceAuthority: sourceAuthority(), catalogBytes: bytes, codexCli });
     expect(receipt).toMatchObject({
       kind: "codex-luna-max-static-runtime-capability",
       pass: true,
@@ -149,7 +153,7 @@ describe("Luna Max admission receipts", () => {
       network_calls: 0,
     });
     expect(receipt.runtime.model_profile_sha256).toMatch(/^[a-f0-9]{64}$/);
-    expect(() => buildStaticCapabilityReceipt({ sourceCommit: "c".repeat(40), sourceAuthority: sourceAuthority(), catalogBytes: catalog({ max: false }) })).toThrow(/missing max effort/);
+    expect(() => buildStaticCapabilityReceipt({ sourceCommit: "c".repeat(40), sourceAuthority: sourceAuthority(), catalogBytes: catalog({ max: false }), codexCli })).toThrow(/missing max effort/);
   });
 
   it("verifies seven exact committed schemas over bounded local HTTP", async () => {
@@ -255,19 +259,20 @@ describe("Luna Max admission receipts", () => {
     const outputRoot = realpathSync(mkdtempSync(join(tmpdir(), "omd-luna-output-")));
     const output = join(outputRoot, "receipt.json");
     const cli = join(fixture.root, SCRIPT_PATH);
-    execFileSync(process.execPath, [cli, "static-capability", "--source-commit", fixture.sourceCommit, "--catalog", catalogPath, "--out", output], {
+    const codexBin = realpathSync(execFileSync("which", ["codex"], { encoding: "utf8" }).trim());
+    execFileSync(process.execPath, [cli, "static-capability", "--source-commit", fixture.sourceCommit, "--catalog", catalogPath, "--codex-bin", codexBin, "--out", output], {
       env: { ...process.env, OMD_ADMISSION_REPO_ROOT: fixture.root },
     });
     const first = readFileSync(output, "utf8");
     expect(first).toBe(`${canonicalJson(JSON.parse(first))}\n`);
-    expect(() => execFileSync(process.execPath, [cli, "static-capability", "--source-commit", fixture.sourceCommit, "--catalog", catalogPath, "--out", output], {
+    expect(() => execFileSync(process.execPath, [cli, "static-capability", "--source-commit", fixture.sourceCommit, "--catalog", catalogPath, "--codex-bin", codexBin, "--out", output], {
       env: { ...process.env, OMD_ADMISSION_REPO_ROOT: fixture.root },
     })).toThrow();
 
     const alias = join(outputRoot, "catalog-alias.json");
     symlinkSync(catalogPath, alias);
     const other = join(outputRoot, "receipt-2.json");
-    expect(() => execFileSync(process.execPath, [cli, "static-capability", "--source-commit", fixture.sourceCommit, "--catalog", alias, "--out", other], {
+    expect(() => execFileSync(process.execPath, [cli, "static-capability", "--source-commit", fixture.sourceCommit, "--catalog", alias, "--codex-bin", codexBin, "--out", other], {
       env: { ...process.env, OMD_ADMISSION_REPO_ROOT: fixture.root },
     })).toThrow();
 
