@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · 58dc evaluator-closed epoch admitted
+- clean source58dc에서 static/schema/evaluation/IAB/Luna attribution receipts를 모두 새로 발급했다.
+- 48 scheduled+6 ineligible materialization SHA `e5fbacae…`, runtime snapshot과 admission `788e2702…`가 PASS했다.
+- baseline `1b1d60f1…`은 terminal0/missing48/ineligible6, calls0이다.
+- 다음 locked 셀은 landing model-only r1이며 0dc/c494 terminal은 혼합 금지다.
+
 ## 2026-08-14 (Codex) · evaluator dependency closure 확정
 - commits `a943a86d→065c0521→58dcf8a9`로 immutable deps bundle+ready marker+pre/post readback을 결박했다.
 - clean receipt는 bundle 135 files/15.68MB/SHA `2637d5fb…`, receipt `c675e38c…`, calls0으로 PASS했다.

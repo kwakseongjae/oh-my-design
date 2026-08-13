@@ -4,10 +4,19 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 58dcf8a9 evaluator dependency closure PASS; 새 Luna/max epoch 준비 전
+- 갱신: 2026-08-14 · source 58dcf8a9 evaluator dependency closure epoch admitted, terminal 0 / missing 48 / ineligible 6
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+### 2026-08-14 source 58dcf8a9 Luna Max 정식 비교 epoch
+
+- 실행 정본은 source=`58dcf8a9b2491d6ec34ca308247f2cf843a01c58`, clean detached worktree=`/private/tmp/omd-luna-runtime-58dcf8a9`, evidence=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2`다. main의 후속 continuity commit은 실행 authority에 포함하지 않는다.
+- provider-zero gates: static Luna/max receipt=`480aa804…`, production schema7/7=`8551fedd…`, immutable evaluator runtime=`df56c08a…`, IAB about:blank tab15 identity=`d2220c35…`다. evaluator dependency bundle은 135 files/15,681,140B이며 source/copy/source-post와 admission/runner pre/post full-tree 결박을 사용한다.
+- Luna/max attribution은 non-ephemeral isolated home에서 exact 응답, input14,594/output13, retry/replacement/fallback0으로 1회 실행됐다. raw rollout의 single context/lifecycle을 감사한 receipt=`ecda7a98…`이고 denominator 밖이다. token reset은 없었다.
+- locked=`/private/tmp/omd-luna-wow-locked-58dcf8a9`; materialized=`/private/tmp/omd-luna-wow-materialized-58dcf8a9`; 48 scheduled+Taste6 ineligible, prepared tree SHA=`e5fbacae…`다. runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-58dcf8a9`, auth=`627eb799…`, catalog=`f4392270…`다.
+- Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-58dcf8a9/ADMISSION.json`, SHA=`788e2702…`, calls0/status admitted다. baseline collector=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.baseline.json`, SHA=`1b1d60f1…`, terminal0/missing48/ineligible6이다.
+- **다음 exact action:** randomized order1 `neighborhood-library-landing-luna-max-r1-model-only`을 Luna/max 1회·retry0으로 실행한다. terminal 뒤 partial-01과 checkpoint를 만든다. 0dc9+c4946 terminals는 diagnostic-only다.
 
 ### 2026-08-14 source 0dcbd99d Luna Max 정식 비교 epoch
 
