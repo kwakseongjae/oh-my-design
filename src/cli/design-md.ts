@@ -7,6 +7,7 @@ export type DesignMdMode =
   | 'inspect'
   | 'validate'
   | 'migrate'
+  | 'rebind-migration'
   | 'audit'
   | 'prepare-review'
   | 'approve-review'
@@ -18,6 +19,8 @@ export interface DesignMdToolOptions {
   cwd?: string;
   input?: string;
   catalog?: string;
+  candidateDir?: string;
+  enrichment?: string;
   outDir?: string;
   report?: string;
   provenance?: string;
@@ -60,6 +63,22 @@ export function buildDesignMdToolArgs(
   if (mode === 'audit') {
     if (!options.catalog) throw new Error('omd design-md audit: a catalog directory is required');
     args.push('--catalog', absoluteFrom(cwd, options.catalog), '--check');
+  } else if (mode === 'rebind-migration') {
+    if (!options.candidateDir) throw new Error('omd design-md rebind-migration: a migration candidate directory is required');
+    if (Boolean(options.input) === Boolean(options.enrichment)) {
+      throw new Error('omd design-md rebind-migration: exactly one of --graph or --enrichment is required');
+    }
+    if (!options.provenance) throw new Error('omd design-md rebind-migration: --provenance is required');
+    if (!options.coverage) throw new Error('omd design-md rebind-migration: --coverage is required');
+    if (!options.outDir) throw new Error('omd design-md rebind-migration: --out-dir is required');
+    args.push(
+      '--candidate-dir', absoluteFrom(cwd, options.candidateDir),
+      ...(options.input ? ['--graph', absoluteFrom(cwd, options.input)] : []),
+      ...(options.enrichment ? ['--enrichment', absoluteFrom(cwd, options.enrichment)] : []),
+      '--provenance', absoluteFrom(cwd, options.provenance),
+      '--coverage', absoluteFrom(cwd, options.coverage),
+      '--out-dir', absoluteFrom(cwd, options.outDir),
+    );
   } else if (mode === 'prepare-review') {
     if (!options.input) throw new Error('omd design-md prepare-review: an input graph.json is required');
     if (!options.provenance) throw new Error('omd design-md prepare-review: --provenance is required');
@@ -154,7 +173,9 @@ export function runDesignMdTool(
   let script: string;
   try {
     args = buildDesignMdToolArgs(mode, options);
-    const scriptName = mode === 'prepare-review' || mode === 'approve-review'
+    const scriptName = mode === 'rebind-migration'
+      ? 'rebind-design-md-core-migration.cjs'
+      : mode === 'prepare-review' || mode === 'approve-review'
       ? 'prepare-design-md-core-review.cjs'
       : mode === 'compile'
         ? 'compile-design-md-core.cjs'

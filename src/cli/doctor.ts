@@ -115,6 +115,7 @@ export const REQUIRED_HARNESS_HELPERS = [
   'design-md-core-conformance.cjs',
   'design-md-core.cjs',
   'prepare-design-md-core-review.cjs',
+  'rebind-design-md-core-migration.cjs',
   'compile-design-md-core.cjs',
   'adopt-design-md-core.cjs',
   'migrate-design-md-core.cjs',
@@ -129,6 +130,7 @@ export const REQUIRED_CORE_RUNTIME_HELPERS = [
   'design-md-core-conformance.cjs',
   'design-md-core.cjs',
   'prepare-design-md-core-review.cjs',
+  'rebind-design-md-core-migration.cjs',
   'compile-design-md-core.cjs',
   'adopt-design-md-core.cjs',
 ] as const;

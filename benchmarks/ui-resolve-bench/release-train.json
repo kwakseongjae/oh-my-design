@@ -36,7 +36,21 @@
     { "version": "1.9.26", "experiment": "public-benchmark-ux", "status": "planned" },
     { "version": "1.9.27", "experiment": "activation-reuse", "status": "planned" },
     { "version": "1.9.28", "experiment": "independent-challenge", "status": "planned" },
-    { "version": "2.0.0", "experiment": "frontier-release", "status": "gated" }
+    {
+      "version": "2.0.0",
+      "experiment": "frontier-release",
+      "status": "gated",
+      "release_gate_plan": "benchmarks/ui-resolve-bench/plans/luna-max-2.0-release-v0.1.json",
+      "required_gate_classes": [
+        "clean-source-seal",
+        "public-schema-liveness",
+        "luna-max-wow-preview",
+        "same-prompt-qualification",
+        "blind-practitioner-review",
+        "three-model-transfer",
+        "independent-claim-audit"
+      ]
+    }
   ],
   "rules": {
     "one_bounded_hypothesis_per_patch": true,

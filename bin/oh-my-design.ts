@@ -177,6 +177,34 @@ designMd
   });
 
 designMd
+  .command('rebind-migration')
+  .description('Rebind a lossless migration ledger to enriched, review-valid non-authoritative Core inputs.')
+  .argument('<candidate>', 'Fresh directory emitted by design-md migrate')
+  .option('--graph <path>', 'Complete enriched authority-neutral Core v2 graph draft')
+  .option('--enrichment <path>', 'Safe partial enrichment merged onto the lossless candidate graph')
+  .requiredOption('--provenance <path>', 'Review-valid provenance draft')
+  .requiredOption('--coverage <path>', 'Review-valid coverage draft')
+  .requiredOption('--out-dir <path>', 'Fresh rebound input directory')
+  .action(async (candidate: string, opts: {
+    graph?: string;
+    enrichment?: string;
+    provenance: string;
+    coverage: string;
+    outDir: string;
+  }) => {
+    const { runDesignMdTool } = await import('../src/cli/design-md.js');
+    const code = runDesignMdTool('rebind-migration', {
+      candidateDir: candidate,
+      input: opts.graph,
+      enrichment: opts.enrichment,
+      provenance: opts.provenance,
+      coverage: opts.coverage,
+      outDir: opts.outDir,
+    });
+    if (code !== 0) process.exit(code);
+  });
+
+designMd
   .command('prepare-review')
   .description('Render an exact non-authoritative Core preview and hash-bound review request before owner approval.')
   .argument('<graph>', 'Authority-neutral Core v2 System Graph draft')

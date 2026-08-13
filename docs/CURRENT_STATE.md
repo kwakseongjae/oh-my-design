@@ -4,10 +4,75 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-12 · DESIGN.md Core v2 provider-free 기준선 완료
+- 갱신: 2026-08-13 · Core v2 dogfood atomic adoption 완료
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+### 2026-08-13 OmD 2.0 출시 방향 — Luna Max evidence gate
+
+- Core v2 구현·dogfood adoption 다음 최우선 목표를 Luna Max same-prompt 비교로 재설정했다. 정본은 `docs/OMD_2_0_LUNA_MAX_RELEASE_PLAN.md`, 기계 계약은 `benchmarks/ui-resolve-bench/plans/luna-max-2.0-release-v0.1.json`이다.
+- portable ranking은 model-only, Anthropic Frontend Design, Impeccable prompt-only, UI UX Pro Max, Taste eligible scope, OmD Autopilot의 6 arms만 포함한다. OmD full harness는 quality/time/token/intervention Pareto로 별도 보고한다.
+- 실행 사다리는 54-cell Wow Preview(3 tasks × 6 arms × 3), 통과 시 360-cell Qualification(12 families × 6 arms × 5), 10명 blind launch review, Terra/Sol nonnegative transfer, independent claim audit다.
+- 출시 기준은 UI-Resolved, Reliability, paired lift, strongest-skill first/tie, blinded ship/design-system preference, zero unsupported facts, non-dominated quality-cost-human-burden를 동시에 요구한다. 하나라도 실패하면 2.0.0은 보류하고 실패 결과를 공개 보존한다.
+- 현재 provider 실행은 금지 상태다. dirty worktree 30개와 production Core schema 7개 404 때문에 publishable source/runtime seal을 만들 수 없다. 먼저 Core 변경 clean commit + schema exact 200/JSON/byte parity + competitor refresh가 필요하다.
+- 기존 `autopilot-luna-high-smoke-1.9.883`은 Luna high provider-zero preregistration이며 Luna Max 장시간 비교 결과가 아니다. 새 max 실행은 fresh commit·fresh experiment로만 시작한다.
+- 전체 회귀는 1329 pass, 6 fail이었다. 5건은 dirty source authority를 의도적으로 거부한 commit-before-execution gate였고, 1건은 release-train의 기존 식별자를 변경한 신규 계획 회귀여서 기존 `frontier-release`/`gated`를 보존하고 additive plan metadata로 수정했다.
+
+### 2026-08-13 Core v2 dogfood — adopted / provider-free proof PASS
+
+- 작업 종료 직전 provider-emitted rate-limit window가 `used_percent=100`에서 `16`으로 material reset되고 `resets_at`도 앞으로 이동한 것이 확인됐다. 사용자 규칙에 따라 추가 구현은 시작하지 않고 이 완료 체크포인트에서 중단한다.
+- 사용자가 exact package tree SHA `f9a9947b…db632`의 실제 적용을 승인했다. checkpoint receipt SHA=`cea4b3f8…6765b`를 생성하고 rollback-safe adopter를 실행했다.
+- transaction `59c8fec64af7fd70`이 root DESIGN.md를 SHA `74847ec4…76135c`에서 `ee494a14…c06e22`로 교체하고 `.omd/system` 5 sidecars를 설치했다. installed system tree SHA=`4c268063…ce1e4`; report는 `.omd/adoptions/59c8fec64af7fd70.json`이다.
+- 설치된 DESIGN/graph/provenance/coverage/manifest/adoption-receipt 6개가 source package와 byte-identical하고 transaction journal은 정리됐다. recovery/rollback은 필요하지 않았다.
+- adopter proof와 별도 post-adoption validator가 모두 `pass=true`, authority `core-v2-project-system`, profile `portable-core`, findings 0이다. 11 computed checks 전부 pass; contrast observed 18.923:1 ≥ 4.5:1이다. proof는 `.omd/runs/run-20260813-core-v2-dogfood/post-adoption-proof/system/proof.json`에 있다.
+- 후속 회귀는 Core 8 files/139 tests pass, packaged 4-channel offline smoke pass, lint/build, llms current, count 440/22/21/19, catalog 440/440 dropped=0, diff-check pass다.
+- 남은 release blocker: deployed `https://oh-my-design.kr/schema/*` 7개가 HTTP 404/HTML/byte mismatch이며 liveness command exit 1이다. 로컬 Core adoption 완료와 production schema publication은 분리한다. 배포 후 exact 200+JSON+byte parity 전까지 2.0 promotion BLOCK이다.
+
+### 2026-08-13 Core v2 package v4 — atomic adoption 승인 대기
+
+- 사용자가 v4 exact preview SHA `ee494a14…c06e22`를 승인했다. review-request SHA `98d7c8d6…38d08b`를 재검증하고 owner approval receipt SHA `b68ef9f8…b6b680`를 생성했다.
+- actual v4 package는 destination 밖 `/Users/kwakseongjae/Desktop/projects/.omd-core-v2-dogfood/98d7c8d6…/package-v4`에 생성됐다. 정확히 6 regular files이며 tree SHA=`f9a9947b…db632`; compiled DESIGN은 승인 preview와 byte-identical하다.
+- adopter가 실제 package를 독립 검증했고, 같은 bytes를 `/private/tmp` 격리 프로젝트에 적용해 project proof `pass=true`, authority `core-v2-project-system`, profile `portable-core`를 재현했다. proof SHA=`2f26f252…c398`다.
+- 모든 artifact SHA, 적용 경로, rollback/readback, proof 경계는 `.omd/runs/run-20260813-core-v2-dogfood/CURRENT_PACKAGE_CHECKPOINT.md`에 기록했다.
+- 실제 project checkpoint receipt는 아직 없고 adopt도 실행하지 않았다. root DESIGN.md SHA=`74847ec4…76135c`는 그대로다. 다음은 사용자가 exact package tree에 별도 `ㄱㄱ`를 줄 때만 checkpoint receipt를 만들고 atomic adopt/post-readback을 수행한다.
+
+### 2026-08-13 Core v2 dogfood review v4 — 새 project-owner 승인 대기
+
+- 첫 preview 승인 후 exact package를 만들었지만 실제 adoption 전 `/private/tmp` 격리 E2E를 추가 실행했다. 그 과정에서 (1) 동일 evidence 파일의 다중 anchor staging collision, (2) JSON/Markdown/omd-meta fragment 검증 불일치, (3) review-stage graph evidence path, (4) typed Proven checks 부족을 발견했다.
+- adopter는 동일 regular evidence file을 path 기준 한 번만 stage하도록 수정했다. validator는 JSON 실제 property, Markdown 실제 heading, omd-meta exact `id`만 fragment로 인정하고 없는 anchor/symlink/임의 형식은 거부한다. focused adopter+validator 45/45와 lint가 통과했다.
+- graph를 repository evidence로 보강했다: contrast pair, reduced-motion, Geist UI roles, button state applicability/NA reasons, 320px/200% web contract, en locale. license가 증명되지 않은 font asset은 visible unresolved row로 남기지 않고 absent 처리했다.
+- 최신 exact preview는 `.omd/runs/run-20260813-core-v2-dogfood/review-v4/DESIGN.md`, SHA=`ee494a14…c06e22`; review request SHA=`98d7c8d6…38d08b`다. 상세 변화/모든 hash는 `CURRENT_REVIEW_CHECKPOINT.md`에 있다.
+- v4를 합성 test-controller receipt로 `/private/tmp`에서 prepare→compile→checkpoint→adopt한 결과 project proof `pass=true`, authority `core-v2-project-system`, profile `portable-core`였다. 실제 프로젝트는 미변경이다.
+- 이전 approval/package/checkpoint는 superseded이며 재사용 금지다. v4에는 owner approval/compiled package/checkpoint receipt가 아직 없다. 다음은 사용자가 v4 exact preview에 새 `ㄱㄱ`를 줄 때 real approval→compile 후 두 번째 package checkpoint에서 다시 중단한다.
+
+### 2026-08-13 Core v2 exact package — 두 번째 project-owner 승인 대기
+
+- 사용자가 exact preview SHA `ca5f0dfe…bce5f0`를 승인했다. review request bytes를 다시 확인한 뒤 reviewer `kwakseongjae`의 owner-approval receipt SHA `a7a8c1c9…cff3b8`를 만들었다.
+- compiler가 destination 밖 `/Users/kwakseongjae/Desktop/projects/.omd-core-v2-dogfood/0d01ba36…/package`에 exact 6-artifact package를 만들었다. package tree SHA=`d51271fa…a47527`; compiled DESIGN.md는 승인 preview와 byte-identical하다.
+- package는 adopter의 read-only `loadPackage + validatePackage`로 재검증했다. DESIGN/graph/provenance/coverage/manifest/adoption-receipt exact SHA는 `.omd/runs/run-20260813-core-v2-dogfood/PACKAGE_CHECKPOINT.md`에 기록했다.
+- 첫 preview 승인을 두 번째 package 승인으로 재사용하지 않기 위해 시험 생성된 checkpoint receipt를 즉시 제거했다. 현재 `project-adoption-checkpoint.json`은 존재하지 않으며 adopt도 실행하지 않았다. root DESIGN.md SHA=`74847ec4…76135c`는 그대로다.
+- 다음은 사용자가 exact package에 새로 `ㄱㄱ` 승인할 때만 approved checkpoint receipt를 생성하고 rollback-safe atomic adopt를 실행한 뒤 provider-free validator/readback을 수행한다. 선언/transaction proof와 사실·license·implementation·visual-quality proof는 계속 분리한다.
+
+### 2026-08-13 Core v2 dogfood exact preview — project-owner 승인 대기
+
+- provider-free migration rebind bridge를 구현·패키지·문서화했다. 안전한 `--enrichment` 입력은 원본 lossless candidate를 내부 복제하며 `$schema`/`schema_version`/`projection`/`extensions` 쓰기를 거부한다. complete `--graph` 입력도 기존 opaque ledger와 exact 비교한다.
+- root dogfood exact preview는 `.omd/runs/run-20260813-core-v2-dogfood/review/DESIGN.md`에 생성됐다. SHA=`ca5f0dfe…bce5f0`, review-request SHA=`0d01ba36…776302`, Portable Core/clean-top/7 sections/7 claims/lang=en이다. legacy source reconstruction equal, dropped=0, opaque extension preserved다.
+- `.omd/preferences.md` pending 25개를 `inputs/preference-reconciliation.json`에서 전수 조정했다. explicit/user 23개는 task/principle/voice/governance 근거로 묶었고 ambient/inferred motion 2개는 자동 승격하지 않았다. root `DESIGN.md`는 SHA=`74847ec4…76135c`로 그대로다.
+- approve-review/compile/prepare-checkpoint/adopt는 실행하지 않았다. 다음 행동은 사용자가 exact preview를 승인하거나 수정을 지시하는 것이다. 승인 후에도 exact 6-artifact package를 보여 주는 두 번째 project-owner checkpoint가 필수다.
+- llms 생성기는 canonical body가 같으면 timestamp와 bytes를 보존하도록 고쳤고 두 번 실행해 두 번째 무변경을 확인했다. 현재 `llms-full` SHA=`6851cea0…2c631`, `llms.txt`=`a4524eb5…3297`; 22 skills/21 Cursor/19 agents count와 pre-build check가 green이다.
+- public schema liveness checker를 추가했다. production `.kr/schema/*` 7개는 여전히 404+HTML+byte mismatch로 fail-close하므로 실제 배포 전에는 2.0 promotion BLOCK이다. focused/package/install/doctor smoke 99/99, build/lint/diff-check, catalog 440/440 dropped=0이 통과했다.
+
+### 2026-08-13 토큰 compact 중단 체크포인트 — 다음 재개는 여기서 시작
+
+- 사용자가 1분 주기 토큰 리셋 확인과 리셋 시 즉시 중단을 요청했다. 이번 작업 도중 실제 컨텍스트 compact가 발생했으므로 신규 구현을 중단하고 실행 중이던 `llms_publish_gate_fix`, `dogfood_migration_bridge`, `public_schema_liveness_gate` 하위 작업과 감시 PTY를 모두 interrupt/종료했다. provider/model smoke는 실행하지 않았다.
+- provider-emitted local `token_count.rate_limits`의 마지막 관측은 generic Codex weekly window `used_percent=100`, `resets_at=2026-08-19 15:54:24 KST`다. Luna/high 1.9.880이 봉인한 earliest retry는 별도 `2026-08-18 09:44 KST`이며 두 lane은 동일하다고 증명되지 않았다. 다음 재개에서도 Luna-specific reset은 해당 시각 이후의 정식 admission/provider event 없이는 확정하지 않는다.
+- root dogfood는 프로젝트를 변경하지 않는 staging까지만 완료했다. `.omd/runs/run-20260813-core-v2-dogfood/migration`에 legacy source 14/14·drop0·opaque preservation candidate를, `context/ctx-prime.json`에 최신 repo scan을 만들었다. candidate DESIGN SHA=`7a8f114a…4a22c6`, graph=`aaf32b2f…185209`, report=`cf9397d8…8dfa8`, context=`125dfe29…59507`이다. candidate는 `missing-primary-task` Structural Core이며 approve/compile/adopt하지 않았다.
+- dogfood blocker: 현재 migration provenance/coverage는 review draft shape와 호환되지 않고, repository facts/preferences로 graph를 enrich하면 기존 migration report의 exact hashes가 깨진다. original ledger/source reconstruction/drop0를 재검증한 뒤 enriched graph/provenance/coverage에 non-authoritative report를 compiler-owned hash로 재결박하는 provider-free bridge가 먼저 필요하다. `.omd/preferences.md` pending 25개 중 사용자 권위 23개는 scope별 반영/제외 결정을 남기고 ambient/inferred 2개는 자동 승격하지 않는다.
+- `browser-harness`로 `https://oh-my-design.kr/schema/`의 Core v2 schema 7개를 직접 확인했다. 전부 HTTP 404, `text/html`, 22,629 bytes, 동일 SHA `3a4a66dc…c6f3c1`인 Next 404 응답이다. 로컬 `web/public/schema/*`와 byte liveness가 성립하지 않으므로 배포 전후 200+JSON+exact-byte gate와 실제 배포가 필요하다.
+- 생성물 감사 결과 `web/src/data/catalog-meta.generated.ts`의 현재 dirty SHA `3459e574…3cecf72`는 22 skills/19 agents 정답과 exact 일치한다. `web/public/llms-full.txt` dirty SHA `31c4f31c…a04343e`는 여전히 stale이며 그대로 봉인하면 안 된다. `llms.txt` SHA `8e5fb91a…fd3ef5`는 current다.
+- 중단 시점에 llms worker의 부분 구현이 작업 트리에 materialize됐다: `.github/workflows/release.yml`, `scripts/check-counts.mjs`, `scripts/gen-llms-full.cjs`, `test/unit/scripts/gen-llms-full.test.mjs`, `web/src/data/faq.ts`. 의도는 write idempotency, build 전 stale check, Cursor 21 count 결박이지만 compact 지시로 테스트 전에 중단했으므로 **미검증 변경**으로 취급한다. 보호 생성물 2개는 이번 작업에서 새로 쓰거나 revert하지 않았다.
+- 다음 재개 순서: (1) `scripts/context_restore.sh`, (2) 위 5개 부분 diff review+focused test/lint/diff-check, (3) public schema liveness checker 구현, (4) migration rebind bridge 구현/배포 결박, (5) generator를 한 번만 실행해 보호 생성물 exact diff 검수, (6) enriched dogfood review candidate를 만든 뒤 exact preview checkpoint에서 사용자 승인을 기다린다. reset/admission 전 Luna smoke와 2.0 promotion은 계속 BLOCK이다.
 
 ### 2026-08-12 DESIGN.md Core v2 provider-free 기준선 — 다음 재개는 여기서 시작
 

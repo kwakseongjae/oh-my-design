@@ -1,5 +1,11 @@
 # Luna Max one-prompt comparison
 
+> 2.0 release execution and blog gates are now defined in
+> [`docs/OMD_2_0_LUNA_MAX_RELEASE_PLAN.md`](../../docs/OMD_2_0_LUNA_MAX_RELEASE_PLAN.md)
+> and the machine-readable
+> [`plans/luna-max-2.0-release-v0.1.json`](./plans/luna-max-2.0-release-v0.1.json).
+> This earlier document remains the comparison-method foundation.
+
 ## Purpose
 
 This comparison is a reproducible public demonstration, not a shortcut around the 2.0.0 frontier gates. It answers a narrow question:

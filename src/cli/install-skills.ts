@@ -1829,7 +1829,7 @@ export async function runInstallSkills(
   for (const target of targets) {
     const cd = dataDirForScope(target, targets, scope);
     if (!cd) continue;
-    for (const helper of ['ctx-prime.cjs', 'context.cjs', 'design-council-prime.cjs', 'design-council-reconcile.cjs', 'design-council-handoff.cjs', 'design-system-plan.cjs', 'design-md-core-schema.cjs', 'design-md-core-conformance.cjs', 'design-md-core.cjs', 'prepare-design-md-core-review.cjs', 'compile-design-md-core.cjs', 'adopt-design-md-core.cjs', 'migrate-design-md-core.cjs', 'validate-project-design-system.cjs', 'autopilot-mission.cjs', 'autopilot-council-plan.cjs', 'autopilot-council-reconcile.cjs', 'design-harness-context-plan.cjs']) {
+    for (const helper of ['ctx-prime.cjs', 'context.cjs', 'design-council-prime.cjs', 'design-council-reconcile.cjs', 'design-council-handoff.cjs', 'design-system-plan.cjs', 'design-md-core-schema.cjs', 'design-md-core-conformance.cjs', 'design-md-core.cjs', 'prepare-design-md-core-review.cjs', 'rebind-design-md-core-migration.cjs', 'compile-design-md-core.cjs', 'adopt-design-md-core.cjs', 'migrate-design-md-core.cjs', 'validate-project-design-system.cjs', 'autopilot-mission.cjs', 'autopilot-council-plan.cjs', 'autopilot-council-reconcile.cjs', 'design-harness-context-plan.cjs']) {
       const srcHelper = join(packageRoot, 'scripts', helper);
       if (!existsSync(srcHelper)) continue;
       const destHelper = join(installRoot, cd, 'data', 'scripts', helper);

@@ -89,6 +89,9 @@ jobs:
 
       - run: npm ci
 
+      - name: Verify committed public LLM artifacts
+        run: npm run gen:llms-full:check
+
       - name: Install web quality dependencies
         run: npm ci
         working-directory: web
@@ -120,7 +123,7 @@ jobs:
         run: npm run build
         working-directory: web
 
-      # prepublishOnly가 build + gen-llms-full + release-hygiene(pack)을 다시 돌린다
+      # prepublishOnly가 build + llms check-only + release-hygiene(pack)을 다시 돌린다
       - name: Publish
         run: npm publish --provenance --access public
         env:

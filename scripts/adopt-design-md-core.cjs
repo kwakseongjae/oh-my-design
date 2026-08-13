@@ -525,6 +525,7 @@ function evidenceReferences(pkg) {
 }
 
 function copyProjectEvidence(pkg, projectRoot, stageRoot) {
+  const copied = new Set();
   for (const reference of evidenceReferences(pkg)) {
     if (typeof reference !== 'string' || !reference.trim()) {
       throw new Error('project proof evidence reference must be a non-empty string');
@@ -539,6 +540,7 @@ function copyProjectEvidence(pkg, projectRoot, stageRoot) {
     if (normalized.startsWith('.omd/project-adoption-proof/')) {
       throw new Error(`project proof evidence collides with the proof run: ${reference}`);
     }
+    if (copied.has(normalized)) continue;
     const source = path.resolve(projectRoot, filePart);
     if (!isNestedOrEqual(source, projectRoot)) {
       throw new Error(`project proof evidence escapes the project: ${reference}`);
@@ -554,6 +556,7 @@ function copyProjectEvidence(pkg, projectRoot, stageRoot) {
     fs.mkdirSync(path.dirname(target), { recursive: true });
     fs.copyFileSync(source, target, fs.constants.COPYFILE_EXCL);
     assertRegularFile(target, `staged project proof evidence ${reference}`);
+    copied.add(normalized);
   }
 }
 

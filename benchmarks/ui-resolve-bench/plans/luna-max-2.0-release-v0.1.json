@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1",
+  "plan_id": "luna-max-2.0-release-v0.1",
+  "status": "blocked-pending-clean-commit-and-schema-liveness",
+  "provider_execution_allowed": false,
+  "target_release": "2.0.0",
+  "primary_model": {
+    "runtime": "codex",
+    "selector": "gpt-5.6-luna",
+    "effort": "max",
+    "fallback_allowed": false,
+    "attribution_preflight_required": true
+  },
+  "portable_arms": [
+    "model-only",
+    "anthropic-frontend-design",
+    "impeccable-prompt-only",
+    "ui-ux-pro-max",
+    "taste-eligible-scope-only",
+    "omd-autopilot-v2"
+  ],
+  "fairness": {
+    "same_prompt_bytes": true,
+    "same_blank_starter": true,
+    "same_model_effort_timeout_permissions_and_network": true,
+    "task_specific_design_md_or_examples_allowed": false,
+    "manual_product_edits_allowed": false,
+    "serial": true,
+    "balanced_order": true,
+    "retry_budget_per_cell": 0,
+    "replacement_budget_per_cell": 0,
+    "model_or_effort_fallback_budget": 0
+  },
+  "stages": {
+    "wow_preview": {
+      "task_count": 3,
+      "trials_per_arm": 3,
+      "maximum_primary_cells": 54,
+      "blind_practitioners_min": 5,
+      "omd_ui_resolved_cells_min": 8,
+      "omd_task_reliability_min": "2-of-3-on-every-task",
+      "ship_preference_gate": "omd-first-or-tied-on-at-least-2-of-3-tasks"
+    },
+    "release_qualification": {
+      "hidden_task_families": 12,
+      "trials_per_arm": 5,
+      "maximum_primary_cells": 360,
+      "blind_practitioners_min": 10,
+      "scheduled_ui_resolved_rate_min": 0.8,
+      "reliability_at_5_task_count_min": 8,
+      "paired_lift_over_model_only_confidence_lower_bound_min_exclusive": 0,
+      "strongest_eligible_skill_result": "first-or-statistically-tied"
+    },
+    "harness_pareto": {
+      "ranked_with_portable_arms": false,
+      "tasks": 3,
+      "arms": ["omd-autopilot-v2", "omd-full-harness"],
+      "report": ["quality", "wall-time", "tokens", "tool-calls", "checkpoints", "interventions"]
+    },
+    "transfer": {
+      "models": ["gpt-5.6-luna", "gpt-5.6-terra", "gpt-5.6-sol"],
+      "pool_model_results": false,
+      "required_direction_per_model": "nonnegative"
+    }
+  },
+  "hard_release_gates": {
+    "clean_exact_committed_source": true,
+    "seven_public_core_schemas_live_and_byte_identical": true,
+    "unsupported_product_facts": 0,
+    "fully_authorized_follow_up_questions": 0,
+    "unplanned_human_interventions": 0,
+    "parseable_design_system_package_rate": 1,
+    "quality_cost_human_burden_pareto": "non-dominated",
+    "independent_claim_audit": "pass",
+    "all_failures_and_timeouts_published": true
+  },
+  "failure_policy": {
+    "release_decision": "hold-2.0.0",
+    "preserve_failed_experiment": true,
+    "repair_scope": "smallest-recurrent-product-failure-cluster",
+    "rerun_policy": "new-versioned-preregistration-and-complete-affected-denominator"
+  },
+  "public_claim_scope": "task-bounded-luna-max-comparison-only",
+  "global_best_claim_allowed": false,
+  "provider_calls": 0,
+  "model_calls": 0,
+  "browser_calls": 0
+}

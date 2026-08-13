@@ -58,6 +58,22 @@ dropped segments, zero unsupported promotions, a passing semantic round trip, an
 preserved opaque extensions before an explicit refresh workflow adopts the staged
 artifacts. Catalog mode is audit-only:
 
+When project evidence enriches the candidate graph, regenerate no hashes by
+hand. Rebind the unchanged loss ledger to review-valid inputs in a fresh,
+non-authoritative directory:
+
+```bash
+npx oh-my-design-cli@latest design-md rebind-migration \
+  .omd/migrations/core-v2 --enrichment <safe-partial-enrichment.json> \
+  --provenance <provenance.json> --coverage <coverage.json> \
+  --out-dir <fresh-rebound-dir>
+```
+
+`--enrichment` is preferred because the helper copies the original lossless
+graph and rejects attempts to modify its opaque ledger, projection binding, or
+schema identity. `--graph` remains available for independently generated whole
+graphs and receives the same ledger comparison.
+
 ```bash
 npx oh-my-design-cli@latest design-md audit ./web/references \
   --report .omd/migrations/reference-catalog-core-v2.json

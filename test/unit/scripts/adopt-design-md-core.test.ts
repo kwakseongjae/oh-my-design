@@ -106,7 +106,7 @@ function validGraph(): Record<string, any> {
   return graph;
 }
 
-function compilePackage(root: string, options: { resolvedEvidence?: boolean } = {}): string {
+function compilePackage(root: string, options: { resolvedEvidence?: boolean; duplicateEvidenceFile?: boolean } = {}): string {
   const inputs = join(root, 'compiler-inputs');
   const packageRoot = join(root, 'compiled-package');
   mkdirSync(inputs, { recursive: true });
@@ -117,18 +117,25 @@ function compilePackage(root: string, options: { resolvedEvidence?: boolean } = 
   const reviewDir = join(inputs, 'prepared-review');
   const graph = validGraph();
   const graphBytes = jsonBytes(graph);
+  const decisions = [options.resolvedEvidence ? {
+    path: 'identity.name',
+    source_class: 'repository-fact',
+    value: graph.identity.name,
+    evidence: [options.duplicateEvidenceFile ? 'task.md#name' : 'task.md'],
+  } : {
+    path: 'typography_assets.roles.0.family',
+    source_class: 'unresolved',
+    evidence: [],
+  }];
+  if (options.duplicateEvidenceFile) decisions.push({
+    path: 'identity.scope',
+    source_class: 'repository-fact',
+    value: graph.identity.scope,
+    evidence: ['task.md#scope'],
+  });
   const provenanceBytes = jsonBytes({
     schema_version: '2.0.0',
-    decisions: [options.resolvedEvidence ? {
-      path: 'identity.name',
-      source_class: 'repository-fact',
-      value: graph.identity.name,
-      evidence: ['task.md'],
-    } : {
-      path: 'typography_assets.roles.0.family',
-      source_class: 'unresolved',
-      evidence: [],
-    }],
+    decisions,
   });
   const coverageBytes = jsonBytes({
     schema_version: '2.0.0',
@@ -557,6 +564,20 @@ describe('DESIGN.md Core v2 project adopter', () => {
 
     writeFileSync(join(projectRoot, 'task.md'), `# Project evidence\n\nName: ${JSON.parse(readFileSync(join(packageRoot, '.omd/system/graph.json'), 'utf8')).identity.name}\n`);
     const accepted = runAdopter(packageRoot, projectRoot, checkpointPath);
+    expect(accepted.status, accepted.stderr).toBe(0);
+    expect(JSON.parse(accepted.stdout).project_proof.pass).toBe(true);
+  });
+
+  it('copies one evidence file once when multiple decisions cite different anchors', () => {
+    const root = tempRoot();
+    const packageRoot = compilePackage(root, { resolvedEvidence: true, duplicateEvidenceFile: true });
+    const checkpointPath = checkpoint(root, packageRoot);
+    const projectRoot = project(root);
+    const graph = JSON.parse(readFileSync(join(packageRoot, '.omd/system/graph.json'), 'utf8'));
+    writeFileSync(join(projectRoot, 'task.md'), `# Name\n\n${graph.identity.name}\n\n## Scope\n\n${graph.identity.scope}\n`);
+
+    const accepted = runAdopter(packageRoot, projectRoot, checkpointPath);
+
     expect(accepted.status, accepted.stderr).toBe(0);
     expect(JSON.parse(accepted.stdout).project_proof.pass).toBe(true);
   });

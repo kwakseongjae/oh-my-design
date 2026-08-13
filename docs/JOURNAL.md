@@ -5,6 +5,48 @@
 
 ---
 
+## 2026-08-13 (Codex) · OmD 2.0 Luna Max 출시 게이트 재설정
+- 6-arm same-prompt 54-cell Wow Preview와 통과 후 360-cell Qualification을 고정했다.
+- full harness는 순위에서 분리하고 quality/time/token/intervention Pareto로 보고한다.
+- blind ship/system preference·transfer·독립 audit 중 하나라도 실패하면 2.0을 보류한다.
+- dirty source와 production schema 7개 404가 해소되기 전 provider 실행은 fail-close다.
+
+## 2026-08-13 (Codex) · Core v2 dogfood atomic adoption 완료
+- exact v4 package를 transaction 59c8fec64af7fd70으로 원자 적용했다.
+- 설치 bytes와 package가 동일하고 독립 proof 11/11, findings 0이다.
+- Core 139 tests·build/lint·440 catalog drop0 회귀가 통과했다.
+- 토큰 window reset 확인 후 추가 구현을 중단했다. 다음 blocker는 production schema 7개 404와 release 배포 검증이다.
+
+## 2026-08-13 (Codex) · Core v2 v4 package checkpoint 준비
+- v4 승인 receipt와 exact 6-artifact package를 생성했다.
+- package tree/6 SHA와 동일 bytes 격리 adoption proof pass를 확인했다.
+- 실제 root와 `.omd/system`은 아직 변경하지 않았다.
+- 다음 별도 `ㄱㄱ` 뒤에만 rollback-safe atomic adopt한다.
+
+## 2026-08-13 (Codex) · dogfood 격리 E2E로 v4 preview 보강
+- pre-adoption E2E가 evidence staging/fragment/typed coverage 결함을 찾았다.
+- adopter·validator 계약을 수정하고 45/45 회귀를 통과했다.
+- contrast/state/responsive/motion/type/locale를 근거 결박해 E2E proof pass를 얻었다.
+- 이전 승인은 폐기했으며 새 v4 exact preview 승인 대기다.
+
+## 2026-08-13 (Codex) · Core v2 exact package checkpoint 준비
+- 첫 preview 승인을 receipt로 결박하고 exact 6-artifact package를 컴파일했다.
+- package tree와 6개 SHA를 독립 검증했으며 preview bytes와 동일하다.
+- 두 번째 승인을 재사용하지 않도록 premature checkpoint receipt는 제거했다.
+- root는 미변경이며 다음 `ㄱㄱ` 뒤에만 atomic adopt한다.
+
+## 2026-08-13 (Codex) · Core v2 dogfood exact preview 준비
+- lossless migration rebind bridge와 public schema 7개 liveness gate를 구현했다.
+- 25개 pending preference를 전수 조정해 Portable Core preview를 만들었다.
+- root DESIGN.md는 그대로이며 approve/compile/adopt는 실행하지 않았다.
+- 다음은 exact preview project-owner 승인, 이후 package checkpoint 승인이다.
+
+## 2026-08-13 (Codex) · 토큰 compact 감지로 후속 작업 중단
+- dogfood는 drop0 migration/context staging까지만 만들고 승인·compile·adopt하지 않았다.
+- 공개 Core schema 7개가 모두 production 404임을 browser-harness로 확인했다.
+- llms publish 보강은 5개 파일 partial/unverified 상태에서 하위 작업과 monitor를 중단했다.
+- 다음은 partial tests → schema gate → migration bridge → exact preview checkpoint 순이다.
+
 ## 2026-08-12 (Codex) · Core v2 provider-free 기준선 완료
 - 최종 clean clone에서 101 files·1,324 tests가 실패 없이 통과했다.
 - legacy 440/440 drop0, build/lint/typecheck, 4채널 package와 mirror parity를 재확인했다.

@@ -59,6 +59,21 @@ A staged migration must preserve every source segment as a mapped Core decision
 or an opaque extension and report `dropped=0`. See the
 [migration plan](./docs/DESIGN_MD_CORE_V2_MIGRATION_PLAN.md).
 
+If repository facts or reviewed user decisions enrich the staged graph before
+review, rebind the unchanged migration ledger with the provider-free helper;
+never hand-edit report hashes:
+
+```bash
+npx oh-my-design-cli@latest design-md rebind-migration <migration-dir> \
+  --enrichment <safe-partial-enrichment.json> --provenance <provenance.json> \
+  --coverage <coverage.json> --out-dir <fresh-rebound-dir>
+```
+
+Use `--graph <complete-enriched-graph.json>` only when an external tool already
+produced the whole graph. The safer `--enrichment` form starts from the
+lossless candidate internally and forbids writes to opaque extensions,
+projection bindings, and schema identity.
+
 Adopting a graph-backed project system is an exact, receipt-gated transaction:
 
 ```bash
@@ -82,7 +97,7 @@ npx oh-my-design-cli@latest design-md adopt \
   --checkpoint-receipt <fresh-project-checkpoint.json>
 ```
 
-For migrated input, pass the reviewed `migration-report.json` to both
+For migrated input, pass the reviewed or rebound `migration-report.json` to both
 `prepare-review` and `compile`. Only the project owner, or a pre-registered
 external authority controller acting under the owner's policy, may provide the
 two authority approvals. The generating or implementing agent cannot

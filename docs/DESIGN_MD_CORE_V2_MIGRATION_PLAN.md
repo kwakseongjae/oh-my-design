@@ -201,6 +201,19 @@ No migration may change `verified_v2`, partial, or legacy quality state. Format,
 evidence, freshness, coverage, and implementation conformance are independent
 axes.
 
+An enriched migration candidate MUST pass `design-md rebind-migration` before
+`prepare-review`. The helper independently revalidates the original segment
+ledger, source reconstruction, and dropped=0 result, requires the opaque ledger
+to remain byte-identical, validates the enriched graph/provenance/coverage, and
+publishes fresh non-authoritative input/report bytes. Manual report/hash edits
+are invalid.
+
+Prefer `--enrichment` for project facts. It merges a partial object onto the
+lossless candidate internally and rejects writes to `extensions`, `projection`,
+`$schema`, or `schema_version`, preventing curation from copying or rewriting
+the opaque source ledger. `--graph` is reserved for independently generated
+complete graphs.
+
 The implemented public sequence is:
 
 ```bash

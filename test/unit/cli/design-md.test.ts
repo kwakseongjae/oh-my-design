@@ -41,6 +41,32 @@ describe('omd design-md command contract', () => {
       .toThrow(/catalog directory is required/);
   });
 
+  it('accepts exactly one complete graph or safe partial enrichment for migration rebind', () => {
+    expect(buildDesignMdToolArgs('rebind-migration', {
+      cwd,
+      candidateDir: '.omd/migrations/candidate',
+      enrichment: 'system/enrichment.json',
+      provenance: 'system/provenance.json',
+      coverage: 'system/coverage.json',
+      outDir: '.omd/migrations/rebound',
+    })).toEqual([
+      '--candidate-dir', resolve(cwd, '.omd/migrations/candidate'),
+      '--enrichment', resolve(cwd, 'system/enrichment.json'),
+      '--provenance', resolve(cwd, 'system/provenance.json'),
+      '--coverage', resolve(cwd, 'system/coverage.json'),
+      '--out-dir', resolve(cwd, '.omd/migrations/rebound'),
+    ]);
+    expect(() => buildDesignMdToolArgs('rebind-migration', {
+      cwd,
+      candidateDir: '.omd/migrations/candidate',
+      input: 'system/graph.json',
+      enrichment: 'system/enrichment.json',
+      provenance: 'system/provenance.json',
+      coverage: 'system/coverage.json',
+      outDir: '.omd/migrations/rebound',
+    })).toThrow(/exactly one of --graph or --enrichment/);
+  });
+
   it('requires explicit authority adoption and a fresh compile destination', () => {
     expect(buildDesignMdToolArgs('compile', {
       cwd,

@@ -144,6 +144,15 @@ function embeddedGeneratedAt(existing) {
   return match ? match[1] : '1970-01-01T00:00:00.000Z';
 }
 
+function nextGeneratedAt(previous) {
+  const now = new Date().toISOString();
+  if (now !== previous) return now;
+
+  // Two intentional writes can land in the same millisecond. A changed
+  // canonical source must still receive a distinct generation timestamp.
+  return new Date(Date.parse(now) + 1).toISOString();
+}
+
 function configureRoot(root) {
   repoRoot = path.resolve(root);
   outFile = path.join(repoRoot, 'web', 'public', 'llms-full.txt');
@@ -181,17 +190,31 @@ function checkOnly() {
 }
 
 function writeOutputs() {
-  const full = buildLlmsFull();
+  const existingFull = fs.existsSync(outFile)
+    ? fs.readFileSync(outFile, 'utf8')
+    : null;
+  const existingGeneratedAt = existingFull === null
+    ? null
+    : embeddedGeneratedAt(existingFull);
+  const fullIsCurrent = existingFull !== null
+    && existingFull === buildLlmsFull(existingGeneratedAt);
+  const full = fullIsCurrent
+    ? existingFull
+    : buildLlmsFull(nextGeneratedAt(existingGeneratedAt));
+
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
-  fs.writeFileSync(outFile, full, 'utf8');
+  if (existingFull !== full) fs.writeFileSync(outFile, full, 'utf8');
 
   const sizeKb = (Buffer.byteLength(full) / 1024).toFixed(1);
-  process.stdout.write(`${outFile} (${sizeKb} KB)\n`);
+  process.stdout.write(`${outFile} (${sizeKb} KB${fullIsCurrent ? '; unchanged' : ''})\n`);
 
   if (fs.existsSync(llmsTxtFile)) {
     const src = fs.readFileSync(llmsTxtFile, 'utf8');
-    fs.writeFileSync(llmsTxtFile, renderLlmsTxt(src), 'utf8');
-    process.stdout.write(`${llmsTxtFile} (md-twins block updated)\n`);
+    const rendered = renderLlmsTxt(src);
+    if (rendered !== src) fs.writeFileSync(llmsTxtFile, rendered, 'utf8');
+    process.stdout.write(
+      `${llmsTxtFile} (md-twins block ${rendered === src ? 'unchanged' : 'updated'})\n`,
+    );
   }
   return 0;
 }
@@ -214,6 +237,7 @@ module.exports = {
   configureRoot,
   embeddedGeneratedAt,
   main,
+  nextGeneratedAt,
   renderLlmsTxt,
   writeOutputs,
 };

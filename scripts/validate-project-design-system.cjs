@@ -782,8 +782,32 @@ function resolveEvidenceReference(reference, designInspection) {
   if (!file || !fs.lstatSync(file).isFile() || fs.lstatSync(file).isSymbolicLink()) {
     return { valid: false, detail: reference };
   }
-  if (fragment && (file !== designMdPath || !designInspection.headings.has(markdownSlug(fragment)))) {
-    return { valid: false, detail: reference };
+  if (fragment) {
+    let decoded;
+    try { decoded = decodeURIComponent(fragment).trim(); } catch { return { valid: false, detail: reference }; }
+    if (!decoded) return { valid: false, detail: reference };
+    if (file === designMdPath) {
+      if (!designInspection.headings.has(markdownSlug(decoded))) return { valid: false, detail: reference };
+    } else if (path.extname(file).toLowerCase() === '.json') {
+      let node;
+      try { node = JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return { valid: false, detail: reference }; }
+      const segments = decoded.replace(/^\//, '').split(/[/.]/).filter(Boolean);
+      if (segments.length === 0) return { valid: false, detail: reference };
+      for (const segment of segments) {
+        if (!node || typeof node !== 'object' || !Object.hasOwn(node, segment)) {
+          return { valid: false, detail: reference };
+        }
+        node = node[segment];
+      }
+    } else if (['.md', '.mdx'].includes(path.extname(file).toLowerCase())) {
+      const bytes = fs.readFileSync(file, 'utf8');
+      const headings = inspectDesignMarkdown(bytes).headings;
+      const escaped = decoded.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const metadataId = new RegExp(`^\\s*id:\\s*["']?${escaped}["']?\\s*$`, 'm').test(bytes);
+      if (!headings.has(markdownSlug(decoded)) && !metadataId) return { valid: false, detail: reference };
+    } else {
+      return { valid: false, detail: reference };
+    }
   }
   return { valid: true, file };
 }
