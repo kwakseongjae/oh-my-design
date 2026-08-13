@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · evaluator dependency P0로 0dc epoch 중단
+- UI UX dense-ops provider는 847,726ms·1,108,374 tokens에 82,318B UI/package를 완결했다.
+- clean worktree의 `playwright-core` 부재로 evaluator가 시작 전 exit1했는데 product failed/0점으로 오분류됐다.
+- record `b124edf9…`, partial-09 `2c8797ec…e9aef`; rerun 금지, 0dc terminal9 전체 diagnostic-only다.
+- 다음은 dependency closure+infra-invalid 분류 수정 후 새 commit/receipt/admission/epoch order1이다.
+
 ## 2026-08-14 (Codex) · cold-chain Impeccable r1 timeout
 - Impeccable dense-ops r1은 약10분22초 뒤 첫 write를 시작해 72,371B dispatch-ledger UI와 file-only QA를 남겼다.
 - 900,274ms·tool24 뒤 완료 lifecycle 전에 timeout; contamination0, objective0, rerun 금지다.
