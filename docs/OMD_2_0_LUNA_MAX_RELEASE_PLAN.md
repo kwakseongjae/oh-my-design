@@ -2,6 +2,23 @@
 
 Status: **BLOCKED BEFORE PROVIDER EXECUTION**
 
+## Model roles
+
+The machine authority is
+[`omd-2.0-model-role-routing-v0.1.json`](../benchmarks/ui-resolve-bench/config/omd-2.0-model-role-routing-v0.1.json).
+
+- Planning, review, roadmap and the release decision use
+  `gpt-5.6-sol / xhigh`.
+- Product, runner and publication-preparation implementation uses
+  `gpt-5.6-sol / medium`.
+- The actual comparison cells use `gpt-5.6-luna / max`.
+
+Planning and implementation runs never enter the benchmark denominator. Their
+time and token use are reported separately from Luna generation cost. Model or
+effort substitution, failed-cell retry and failed-cell replacement are all
+forbidden. Provider execution remains at zero until the user sends the exact
+activation phrase `ㄱㄱ` after preparation is complete.
+
 This plan turns the remaining external-usefulness question into the final
 2.0.0 release gate. A good-looking selected screenshot is not enough. OmD must
 show repeatable product quality, stronger blinded ship preference, a useful

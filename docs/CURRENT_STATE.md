@@ -11,6 +11,8 @@
 
 ### 2026-08-13 OmD 2.0 출시 방향 — Luna Max evidence gate
 
+- 사용자 지정 모델 역할을 `benchmarks/ui-resolve-bench/config/omd-2.0-model-role-routing-v0.1.json`에 고정했다: 기획·검수·로드맵=`gpt-5.6-sol/xhigh`, 실제 구현=`gpt-5.6-sol/medium`, benchmark cell=`gpt-5.6-luna/max`. release plan은 계약 SHA `cb004c8f…36d0`을 결박한다.
+- provider 실행은 exact 사용자 activation `ㄱㄱ` 뒤 goal 시작 시에만 허용한다. 그 전까지 provider/model/browser calls 0이며 model/effort fallback, retry, replacement는 모두 0이다. 실행 순서는 Sol/xhigh work packet → Sol/medium 구현 → Sol/xhigh review/admission → Luna/max cells → Sol/xhigh audit/roadmap이다.
 - Core v2 마지막 결박과 Luna release plan 32 paths를 commit `11065f6f1fe6eeeb716fedc7dda9f5e09edaf6a7`로 봉인했다. 보호 생성물 `web/public/llms-full.txt`, `web/public/llms.txt`, `web/src/data/catalog-meta.generated.ts`는 stage하지 않았다.
 - Core v2 구현·dogfood adoption 다음 최우선 목표를 Luna Max same-prompt 비교로 재설정했다. 정본은 `docs/OMD_2_0_LUNA_MAX_RELEASE_PLAN.md`, 기계 계약은 `benchmarks/ui-resolve-bench/plans/luna-max-2.0-release-v0.1.json`이다.
 - portable ranking은 model-only, Anthropic Frontend Design, Impeccable prompt-only, UI UX Pro Max, Taste eligible scope, OmD Autopilot의 6 arms만 포함한다. OmD full harness는 quality/time/token/intervention Pareto로 별도 보고한다.

@@ -4,6 +4,12 @@
   "status": "blocked-pending-clean-commit-and-schema-liveness",
   "provider_execution_allowed": false,
   "target_release": "2.0.0",
+  "model_role_contract": {
+    "path": "benchmarks/ui-resolve-bench/config/omd-2.0-model-role-routing-v0.1.json",
+    "sha256": "cb004c8f9799c00098964342d377b33b356b0a9204ef52bfbdce02ff98b436d0",
+    "required": true,
+    "activation_phrase": "ㄱㄱ"
+  },
   "primary_model": {
     "runtime": "codex",
     "selector": "gpt-5.6-luna",

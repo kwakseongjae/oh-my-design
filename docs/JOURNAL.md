@@ -5,6 +5,11 @@
 
 ---
 
+## 2026-08-13 (Codex) · 2.0 모델 역할 및 goal 진입 준비
+- 기획·검수는 Sol/xhigh, 구현은 Sol/medium, benchmark는 Luna/max로 고정했다.
+- 역할 간 handoff artifact와 비용 분리, fallback/retry/replacement 0을 기계 계약화했다.
+- `ㄱㄱ` 전 provider/model/browser call은 0이며, 이후 exact objective로 goal을 시작한다.
+
 ## 2026-08-13 (Codex) · OmD 2.0 Luna Max 출시 게이트 재설정
 - 6-arm same-prompt 54-cell Wow Preview와 통과 후 360-cell Qualification을 고정했다.
 - full harness는 순위에서 분리하고 quality/time/token/intervention Pareto로 보고한다.
