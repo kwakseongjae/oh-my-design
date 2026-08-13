@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 0dcbd99d IAB-only Luna/max epoch, terminal 9 / missing 39 / ineligible 6; evaluator dependency P0로 epoch 중단
+- 갱신: 2026-08-14 · source 58dcf8a9 evaluator dependency closure PASS; 새 Luna/max epoch 준비 전
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -35,7 +35,9 @@
 - partial-08=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-08.json`, SHA=`6c3409d6…8e54f`, terminal8/missing40/ineligible6이다.
 - cold-chain operations UI UX Pro Max r1은 provider turn 자체는 847,726ms에 exit0으로 완결했다. input1,062,727/output45,647/total1,108,374, tool26, agent browser/network/external0이며 82,318B HTML SHA=`ba45f9ca…`와 vars46/selectors119의 neutral design-system package를 만들었다. 그러나 clean source worktree에는 `node_modules`가 없고 runner가 receipt에 결박된 main-worktree dependency path를 evaluator에 전달하지 않아 `Cannot find module 'playwright-core'`로 evaluator가 시작 전 exit1했다. 현재 terminal은 `failed`/objective0으로 잘못 투영됐으며 product-quality failure로 해석하거나 사후 재평가하면 안 된다. record SHA=`b124edf9…`, evaluator stderr1,063B, rerun 금지다.
 - partial-09=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-09.json`, SHA=`2c8797ec…e9aef`, terminal9/missing39/ineligible6이다. 0dc epoch는 evaluator dependency closure P0 때문에 여기서 중단하며 final aggregate 자격이 없다.
-- **다음 exact action:** Sol/medium이 immutable evaluator dependency bundle/receipt/admission/runner 결박과 evaluator-start infra-invalid 분류를 구현한다 → Sol/xhigh가 focused 회귀·clean detached run을 검수한다 → 새 clean source commit으로 IAB/schema/static/evaluation/runtime-attribution/materialization/runtime snapshot/admission을 모두 재발급한다 → 새 epoch order1부터 시작한다. 0dc 9 terminals와 c494 6 terminals는 immutable diagnostic-only로 분리하고 어느 final aggregate에도 혼합하지 않는다.
+- Sol/medium 수정은 commits `a943a86d`→`065c0521`→`58dcf8a9b2491d6ec34ca308247f2cf843a01c58`로 봉인했다. provider-zero evaluation receipt가 fresh external dependency bundle을 만들고 `playwright-core`+`axe-core` 전체 tree를 source/copy/source-post로 대조하며 admission/runner가 full-tree를 evaluator 직전·직후 재검증한다. evaluator는 dependency import·authority·workspace preflight 뒤 exact ready marker를 써 startup infra와 post-ready product failure를 구분한다. current evaluator SHA=`7c434565…`, config authority도 exact 갱신했다.
+- clean detached proof `/private/tmp/omd-luna-receipt-proof-JiQWw4/source`에서 source=`58dcf8a9`, receipt SHA=`c675e38c…`, immutable bundle 135 files/15,681,140B/SHA=`2637d5fb…`, calls0으로 실제 생성 PASS했다. focused 42/42 + controller/materializer/admission/receipt 26 pass/3 artifact skip + lint/diff-check가 green이다.
+- **다음 exact action:** source 58dcf8a9 clean detached worktree와 fresh evidence/locked/materialized/runtime/admission roots를 만든다 → IAB/schema/static/evaluation/runtime-attribution receipts를 전부 새 source에 결박한다 → Sol/xhigh admission 뒤 새 epoch randomized order1을 Luna/max 1회·retry0으로 실행한다. 0dc 9 terminals와 c494 6 terminals는 immutable diagnostic-only로 분리하고 어느 final aggregate에도 혼합하지 않는다.
 
 ### 2026-08-14 c494 Luna Max 정식 비교 epoch
 

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · evaluator dependency closure 확정
+- commits `a943a86d→065c0521→58dcf8a9`로 immutable deps bundle+ready marker+pre/post readback을 결박했다.
+- clean receipt는 bundle 135 files/15.68MB/SHA `2637d5fb…`, receipt `c675e38c…`, calls0으로 PASS했다.
+- focused 42/42와 통합26 pass/3 skip, lint/diff-check green; evaluator config SHA drift도 닫혔다.
+- 다음은 58dcf8a9 기준 전체 receipts/materialization/admission 재발급 후 새 epoch order1이다.
+
 ## 2026-08-14 (Codex) · evaluator dependency P0로 0dc epoch 중단
 - UI UX dense-ops provider는 847,726ms·1,108,374 tokens에 82,318B UI/package를 완결했다.
 - clean worktree의 `playwright-core` 부재로 evaluator가 시작 전 exit1했는데 product failed/0점으로 오분류됐다.
