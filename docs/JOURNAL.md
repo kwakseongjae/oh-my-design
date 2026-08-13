@@ -5,6 +5,13 @@
 
 ---
 
+## 2026-08-13 (Codex) · Luna 72879e7a admission preflight PASS
+- OmD external-staging fix를 `72879e7a`로 봉인하고 clean detached runtime/evidence root를 만들었다.
+- production schema 7/7, static/evaluation runtime, raw Luna/max attribution receipt를 새 source로 재발급했다.
+- model-only r1은 9m20s·377,190 tokens·50점, Anthropic r1은 8m26s·343,431 tokens·focus state 누락 0점으로 봉인했다.
+- Impeccable은 timeout/격리 위반, UI UX Pro Max는 13m·1.57M tokens·unavailable state 누락 0점; partial 4/44/6, 다음은 Taste r1이다.
+- Taste provider0 orphan P0를 raw prompt evidence+spawn marker+0/unknown terminal reconcile로 수정했고 Sol/xhigh 67/67·lint green; 다음은 clean commit/new epoch다.
+
 ## 2026-08-13 (Codex) · Luna landing r1 discovery와 OmD staging fix
 - f555 epoch landing r1은 경쟁 4개 상태 누락, Impeccable timeout, OmD native adopter/workspace 충돌로 봉인했다.
 - OmD는 unavailable/focus/44px/error/success Core 계약을 잡았지만 adopter 충돌로 blank shell을 남겨 품질 분모에서 제외한다.

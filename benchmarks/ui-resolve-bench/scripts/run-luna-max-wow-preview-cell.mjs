@@ -17,6 +17,7 @@ export const DEFAULT_EVALUATOR_PATH = "benchmarks/ui-resolve-bench/scripts/evalu
 export const MODEL = "gpt-5.6-luna";
 export const EFFORT = "max";
 export const TIMEOUT_MS = 900_000;
+export const PROMPT_INPUT_AUDIT_TIMEOUT_MS = 120_000;
 const OMD_VARIANT = "omd-autopilot-v2";
 const OMD_STAGING_ENV = "OMD_BENCH_EXTERNAL_STAGING_ROOT";
 const OMD_PACKAGE_ENV = "OMD_BENCH_COMPILED_CORE_PACKAGE";
@@ -185,14 +186,58 @@ function terminalPath(cell) {
   return ["COMPLETED.json", "FAILED.json", "TIMEOUT.json", "INFRASTRUCTURE-INVALID.json"].map((name) => join(root, name)).find(existsSync) ?? null;
 }
 function stateLine(root, value) { appendFileSync(join(root, "EXECUTION-STATE.jsonl"), `${JSON.stringify(value)}\n`, { encoding: "utf8" }); }
+function errorEvidence(error) {
+  return {
+    name: error?.name ?? "Error", message: String(error?.message ?? error), code: error?.code ?? null,
+    errno: error?.errno ?? null, syscall: error?.syscall ?? null, path: error?.path ?? null,
+    stack: typeof error?.stack === "string" ? error.stack : null,
+    prompt_input_failure: error?.promptInputFailurePath ? fileBinding(error.promptInputFailurePath) : null,
+  };
+}
+function writeProviderBoundaryFailure({ root, cell, execution, started, manifestCell, reason, error, providerSpawnStarted }) {
+  const metadata = readJson(join(cell, ".benchmark/cell.json")); const isolated = join(execution, "workspace");
+  const before = tree(cell, [".benchmark"]); const after = existsSync(isolated) ? tree(isolated) : before;
+  const errorPath = join(execution, "PRE-PROVIDER-ERROR.txt");
+  const exactError = typeof error?.stack === "string" ? error.stack : String(error?.message ?? error ?? reason);
+  if (!existsSync(errorPath)) writeFileSync(errorPath, exactError, { flag: "wx" });
+  const failurePath = join(execution, "FAILURE-ARTIFACT.json");
+  if (!existsSync(failurePath)) writeJsonExclusive(failurePath, {
+    schema_version: "0.1", kind: "omd-luna-max-provider-boundary-failure", cell_id: metadata.cell_id,
+    status: "infrastructure-invalid", phase: providerSpawnStarted ? "provider-spawned-before-terminal" : "pre-provider-spawn",
+    reason, error: errorEvidence(error), provider_spawn_started: providerSpawnStarted,
+    provider_calls: providerSpawnStarted ? "unknown" : 0, model_calls: providerSpawnStarted ? "unknown" : 0,
+    browser_calls: 0, network_calls: 0,
+  });
+  const elapsedMs = Math.max(0, Date.now() - Date.parse(started.started_at ?? new Date().toISOString()));
+  const terminal = {
+    schema_version: "0.1", kind: "omd-luna-max-cell-terminal", cell_id: metadata.cell_id,
+    task_id: metadata.task.id, variant_id: metadata.arm.variant_id, trial_index: manifestCell.trial_index,
+    status: "infrastructure-invalid", source_commit: started.source_commit ?? null, model: MODEL, effort: EFFORT,
+    runtime: { provider: "codex", model: MODEL, effort: EFFORT },
+    controls: { retry_count: 0, replacement_count: 0, fallback_count: 0, model_substitution_count: 0, effort_substitution_count: 0 },
+    telemetry: { elapsed_ms: Math.round(elapsedMs), provider_usage: { input_tokens: null, output_tokens: null, total_tokens: null, available: false, reason: providerSpawnStarted ? "provider-spawned-usage-unavailable" : "provider-not-spawned-preflight-failure" }, tool_calls: 0, agent_browser_calls: 0, agent_network_attempts: 0, external_context_interventions: 0, checkpoints: 0 },
+    raw_response: fileBinding(errorPath), workspace_before: { sha256: before.sha256 }, workspace_after: { sha256: after.sha256 },
+    evaluator: { deterministic: true, ui_resolved: false, objective_score: 0, unsupported_facts: 0, result: fileBinding(failurePath), process: null, terminal_failure_projection: true },
+    manual_product_edits: 0, follow_up_questions: 0, unplanned_interventions: 0, manual_edits: 0, followups: 0, required_states: [],
+    proof: { screenshots: [], design_system_package: { parsed: false, pass: false } }, failure_artifact: fileBinding(failurePath),
+    provider_calls: providerSpawnStarted ? "unknown" : 0, model_calls: providerSpawnStarted ? "unknown" : 0, browser_calls: 0, network_calls: 0,
+    browser_call_split: { agent_browser_calls: 0, evaluator_browser_calls: 0 }, retry_calls: 0, replacement_calls: 0, fallback_calls: 0, repair_calls: 0,
+    started_at: started.started_at ?? null, finished_at: new Date().toISOString(),
+    process: { exit_code: null, signal: null, timed_out: false, error: String(error?.message ?? reason), phase: providerSpawnStarted ? "provider-spawned-before-terminal" : "pre-provider-spawn" },
+    admission_sha256: started.admission_sha256 ?? null, rerun_allowed: false, reason,
+  };
+  terminal.record_sha256 = sha256(canonical(terminal));
+  writeJsonExclusive(join(execution, "INFRASTRUCTURE-INVALID.json"), terminal); stateLine(root, terminal); return terminal;
+}
 export function reconcileCrashes(materializedRoot, manifest) {
   const reconciled = [];
   for (const cell of manifest.cells) {
     const workspace = join(materializedRoot, "prepared-cells", cell.id); const execution = join(workspace, ".benchmark/execution");
     const started = join(execution, "STARTED.json");
     if (existsSync(started) && !terminalPath(workspace)) {
-      const receipt = { schema_version: "0.1", kind: "omd-luna-max-cell-terminal", cell_id: cell.id, status: "infrastructure-invalid", reason: "started-without-terminal-crash-reconciled", started_sha256: sha256(readFileSync(started)), rerun_allowed: false, provider_calls: "unknown", model_calls: "unknown", browser_calls: 0 };
-      writeJsonExclusive(join(execution, "INFRASTRUCTURE-INVALID.json"), receipt); stateLine(materializedRoot, receipt); reconciled.push(cell.id);
+      const providerSpawnStarted = existsSync(join(execution, "PROVIDER-SPAWN-STARTED.json"));
+      writeProviderBoundaryFailure({ root: materializedRoot, cell: workspace, execution, started: readJson(started), manifestCell: cell, reason: "started-without-terminal-crash-reconciled", error: new Error("cell process ended after STARTED without a terminal record"), providerSpawnStarted });
+      reconciled.push(cell.id);
     }
   }
   return reconciled;
@@ -343,11 +388,26 @@ function skillIsolation(workspace, variant) {
 }
 export function auditPromptInputSkills({ codexBin, workspace, providerEnv, skills, cliBinding, probe }) {
   const args = ["debug", "prompt-input", "--disable", "plugins", "--disable", "skill_search", "OMD_SKILL_VISIBILITY_AUDIT"];
-  const observed = probe ? probe({ codexBin, args, cwd: workspace, env: providerEnv }) : spawnSync(codexBin, args, { cwd: workspace, env: providerEnv, encoding: "utf8", timeout: 30_000, maxBuffer: 16 * 1024 * 1024 });
-  invariant(observed.status === 0 && !observed.error, "Codex prompt-input skill audit failed");
-  const stdout = String(observed.stdout ?? "");
-  let parsed; try { parsed = JSON.parse(stdout); } catch { throw new Error("Codex prompt-input skill audit must be one JSON document"); }
-  invariant(Array.isArray(parsed), "Codex prompt-input skill audit JSON must be an array");
+  let observed;
+  try {
+    observed = probe
+      ? probe({ codexBin, args, cwd: workspace, env: providerEnv, timeoutMs: PROMPT_INPUT_AUDIT_TIMEOUT_MS })
+      : spawnSync(codexBin, args, { cwd: workspace, env: providerEnv, encoding: "utf8", timeout: PROMPT_INPUT_AUDIT_TIMEOUT_MS, maxBuffer: 16 * 1024 * 1024 });
+  } catch (error) {
+    observed = { status: null, signal: null, stdout: "", stderr: "", error };
+  }
+  const stdout = String(observed?.stdout ?? ""); const stderr = String(observed?.stderr ?? "");
+  const observation = {
+    timeout_ms: PROMPT_INPUT_AUDIT_TIMEOUT_MS,
+    status: observed?.status ?? null,
+    signal: observed?.signal ?? null,
+    error: observed?.error ? { name: observed.error.name ?? "Error", message: String(observed.error.message ?? observed.error), code: observed.error.code ?? null, errno: observed.error.errno ?? null, syscall: observed.error.syscall ?? null } : null,
+    stdout, stderr,
+  };
+  try {
+    invariant(observed?.status === 0 && !observed?.error, `Codex prompt-input skill audit process failed (status=${observation.status ?? "null"}, signal=${observation.signal ?? "null"}, code=${observation.error?.code ?? "null"})`);
+    let parsed; try { parsed = JSON.parse(stdout); } catch { throw new Error("Codex prompt-input skill audit must be one JSON document"); }
+    invariant(Array.isArray(parsed), "Codex prompt-input skill audit JSON must be an array");
   const developerTexts = parsed
     .filter((message) => message?.type === "message" && message?.role === "developer" && Array.isArray(message.content))
     .flatMap((message) => message.content)
@@ -376,7 +436,12 @@ export function auditPromptInputSkills({ codexBin, workspace, providerEnv, skill
   for (const entry of builtins) invariant(entry.locator === join(resolve(providerEnv.CODEX_HOME), "skills/.system", entry.id, "SKILL.md"), `Codex built-in skill locator drift: ${entry.id}`);
   const projectObserved = entries.filter((entry) => entry.kind === "project").map((entry) => { const path = resolve(entry.locator); regular(path, `prompt-input project skill ${entry.id}`); return { id: entry.id, path, sha256: sha256(readFileSync(path)) }; }).sort((a, b) => a.id.localeCompare(b.id));
   invariant(canonical(projectObserved) === canonical(projectExpected), "Codex prompt-input project skill closure drift");
-  return { schema_version: "0.1", kind: "omd-luna-max-provider-zero-prompt-input-skill-audit", pass: true, args, visible_skill_ids: entries.map((entry) => entry.id), visible_skill_locators: entries, builtin_skill_ids: builtins.map((entry) => entry.id), project_skills: projectObserved, raw_stdout_sha256: sha256(stdout), raw_stdout_bytes: Buffer.byteLength(stdout), skills_block_sha256: sha256(block), parsed_json_sha256: sha256(canonical(parsed)), cli_binding: cliBinding, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 };
+    return { schema_version: "0.1", kind: "omd-luna-max-provider-zero-prompt-input-skill-audit", pass: true, args, timeout_ms: PROMPT_INPUT_AUDIT_TIMEOUT_MS, process: { status: 0, signal: observation.signal, error: null, stderr_sha256: sha256(stderr), stderr_bytes: Buffer.byteLength(stderr) }, visible_skill_ids: entries.map((entry) => entry.id), visible_skill_locators: entries, builtin_skill_ids: builtins.map((entry) => entry.id), project_skills: projectObserved, raw_stdout_sha256: sha256(stdout), raw_stdout_bytes: Buffer.byteLength(stdout), skills_block_sha256: sha256(block), parsed_json_sha256: sha256(canonical(parsed)), cli_binding: cliBinding, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 };
+  } catch (cause) {
+    const error = new Error(`${cause.message}; prompt-input status=${observation.status ?? "null"} signal=${observation.signal ?? "null"} code=${observation.error?.code ?? "null"}`);
+    error.cause = cause; error.promptInputObservation = { ...observation, args };
+    throw error;
+  }
 }
 function which(command, env = process.env) {
   try {
@@ -452,7 +517,22 @@ export function prepareProviderIsolation({ execution, workspace, metadata, stati
   const skills = skillIsolation(workspace, metadata.arm.variant_id);
   invariant(!existsSync(join(providerHome, "skills")) && !existsSync(join(providerHome, ".agents")), "provider home must expose no global skills");
   const promptInputAuditPath = join(execution, "PROMPT-INPUT-SKILL-AUDIT.json");
-  writeJsonExclusive(promptInputAuditPath, auditPromptInputSkills({ codexBin: chosenCodex.source, workspace, providerEnv: shellEnv, skills, cliBinding: staticRuntime.codex_cli, probe: promptInputProbe }));
+  try {
+    writeJsonExclusive(promptInputAuditPath, auditPromptInputSkills({ codexBin: chosenCodex.source, workspace, providerEnv: shellEnv, skills, cliBinding: staticRuntime.codex_cli, probe: promptInputProbe }));
+  } catch (error) {
+    const observed = error.promptInputObservation ?? { args: [], timeout_ms: PROMPT_INPUT_AUDIT_TIMEOUT_MS, status: null, signal: null, error: null, stdout: "", stderr: "" };
+    const stdoutPath = join(execution, "PROMPT-INPUT-SKILL-AUDIT.stdout"); const stderrPath = join(execution, "PROMPT-INPUT-SKILL-AUDIT.stderr");
+    writeFileSync(stdoutPath, observed.stdout ?? "", { flag: "wx" }); writeFileSync(stderrPath, observed.stderr ?? "", { flag: "wx" });
+    const failurePath = join(execution, "PROMPT-INPUT-SKILL-AUDIT-FAILURE.json");
+    writeJsonExclusive(failurePath, {
+      schema_version: "0.1", kind: "omd-luna-max-provider-zero-prompt-input-skill-audit-failure", pass: false,
+      args: observed.args, timeout_ms: observed.timeout_ms, process: { status: observed.status, signal: observed.signal, error: observed.error },
+      stdout: { ...fileBinding(stdoutPath), bytes: statSync(stdoutPath).size }, stderr: { ...fileBinding(stderrPath), bytes: statSync(stderrPath).size },
+      failure: { name: error.name, message: error.message }, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0,
+    });
+    error.promptInputFailurePath = failurePath;
+    throw error;
+  }
   const observedCatalogBytes = readFileSync(join(providerHome, "models_cache.json")); const observedCatalog = modelCacheIdentity(observedCatalogBytes);
   invariant(observedCatalog.semantic_sha256 === admittedCatalog.semantic_sha256
     && observedCatalog.model_profile_sha256 === admittedCatalog.model_profile_sha256
@@ -522,12 +602,21 @@ export function runCell(options) {
   invariant(!existsSync(execution), "cell execution already started"); mkdirSync(execution, { recursive: false });
   const startedAt = new Date().toISOString(); const started = { schema_version: "0.1", kind: "omd-luna-max-cell-start", cell_id: next.id, source_commit: sourceCommit, order: admission.manifest.cells.findIndex((entry) => entry.id === next.id) + 1, model: MODEL, effort: EFFORT, timeout_ms: TIMEOUT_MS, admission_sha256: admission.admissionEvidence.sha256, started_at: startedAt };
   writeJsonExclusive(join(execution, "STARTED.json"), started); stateLine(root, started);
-  const isolated = join(execution, "workspace"); const prepared = copyExecutionWorkspace(cell, isolated);
-  const externalStaging = prepareOmdExternalStaging({ execution, workspace: isolated, metadata: prepared.metadata });
-  const providerIsolation = prepareProviderIsolation({ execution, workspace: isolated, metadata: prepared.metadata, staticRuntime, staticRuntimeEvidence: admission.evidence.static_runtime, runtimeHome: sourceRuntimeHome, env: options.runtimeEnv ?? process.env, promptInputProbe: options.promptInputProbe });
-  const cliBinding = staticRuntime.codex_cli;
-  const runner = resolve(options.runnerBin ?? join(repoRoot, DEFAULT_RUNNER_PATH)); const runnerArgs = ["--workspace", isolated, "--model", MODEL, "--reasoning", EFFORT, "--timeout-ms", String(TIMEOUT_MS), "--disable-plugin-skill-search", "--expected-codex-version", cliBinding.version, "--expected-wrapper-sha", cliBinding.wrapper.sha256, "--expected-native-path", cliBinding.native.path, "--expected-native-sha", cliBinding.native.sha256, ...(externalStaging ? ["--additional-writable-root", externalStaging.root] : [])];
-  const call = invocation(runner, runnerArgs); const startNs = process.hrtime.bigint();
+  let isolated; let prepared; let externalStaging; let providerIsolation; let call;
+  try {
+    isolated = join(execution, "workspace"); prepared = copyExecutionWorkspace(cell, isolated);
+    externalStaging = prepareOmdExternalStaging({ execution, workspace: isolated, metadata: prepared.metadata });
+    providerIsolation = prepareProviderIsolation({ execution, workspace: isolated, metadata: prepared.metadata, staticRuntime, staticRuntimeEvidence: admission.evidence.static_runtime, runtimeHome: sourceRuntimeHome, env: options.runtimeEnv ?? process.env, promptInputProbe: options.promptInputProbe });
+    const cliBinding = staticRuntime.codex_cli;
+    const runner = resolve(options.runnerBin ?? join(repoRoot, DEFAULT_RUNNER_PATH)); const runnerArgs = ["--workspace", isolated, "--model", MODEL, "--reasoning", EFFORT, "--timeout-ms", String(TIMEOUT_MS), "--disable-plugin-skill-search", "--expected-codex-version", cliBinding.version, "--expected-wrapper-sha", cliBinding.wrapper.sha256, "--expected-native-path", cliBinding.native.path, "--expected-native-sha", cliBinding.native.sha256, ...(externalStaging ? ["--additional-writable-root", externalStaging.root] : [])];
+    call = invocation(runner, runnerArgs);
+    writeJsonExclusive(join(execution, "PROVIDER-SPAWN-STARTED.json"), { schema_version: "0.1", kind: "omd-luna-max-provider-spawn-boundary", cell_id: next.id, started_at: new Date().toISOString(), executable_sha256: sha256(call.executable), args_sha256: sha256(canonical(call.args)), provider_calls: "unknown", model_calls: "unknown", browser_calls: 0, network_calls: 0 });
+  } catch (error) {
+    const providerHome = join(execution, "provider-home");
+    if (existsSync(providerHome)) rmSync(providerHome, { recursive: true, force: true });
+    return writeProviderBoundaryFailure({ root, cell, execution, started, manifestCell: next, reason: "pre-provider-setup-failed", error, providerSpawnStarted: false });
+  }
+  const startNs = process.hrtime.bigint();
   const result = spawnSync(call.executable, call.args, { cwd: repoRoot, encoding: "utf8", timeout: TIMEOUT_MS + 30_000, maxBuffer: 64 * 1024 * 1024, env: { ...providerIsolation.env, ...(externalStaging ? { [OMD_STAGING_ENV]: externalStaging.root, [OMD_PACKAGE_ENV]: externalStaging.packageRoot, [OMD_CHECKPOINT_ENV]: externalStaging.checkpointPath } : {}), OMD_LUNA_MAX_NETWORK_POLICY: "provider-only-no-self-network", OMD_LUNA_MAX_BROWSER_POLICY: "no-provider-browser-launch" } });
   rmSync(providerIsolation.receipt.provider_home, { recursive: true });
   invariant(!existsSync(providerIsolation.receipt.provider_home), "provider auth home cleanup failed");

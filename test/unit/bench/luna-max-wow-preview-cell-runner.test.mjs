@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
-  ADMISSION_GENERATOR_PATH, DEFAULT_EVALUATOR_PATH, PREREG_CONTROLLER_PATH, RUNNER_PATH, auditOmdExternalStaging, collectRecords, detectNativeInfrastructureBlock, prepareOmdExternalStaging, prepareRuntimeSnapshot, reconcileCrashes, runCell, sha256, toolTelemetry, tree,
+  ADMISSION_GENERATOR_PATH, DEFAULT_EVALUATOR_PATH, PREREG_CONTROLLER_PATH, PROMPT_INPUT_AUDIT_TIMEOUT_MS, RUNNER_PATH, auditOmdExternalStaging, collectRecords, detectNativeInfrastructureBlock, prepareOmdExternalStaging, prepareRuntimeSnapshot, reconcileCrashes, runCell, sha256, toolTelemetry, tree,
 } from "../../../benchmarks/ui-resolve-bench/scripts/run-luna-max-wow-preview-cell.mjs";
 import { auditWowPreview, defaultGatePath } from "../../../benchmarks/ui-resolve-bench/scripts/audit-luna-max-wow-preview.mjs";
 import { OMD_EXTERNAL_STAGING_ACTIVATION } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-luna-max-wow-preview.mjs";
@@ -69,6 +69,14 @@ function fixture({ runnerMode = "success", designSystem = true, variant = "model
 function defaultPromptInputProbe({ cwd, env }) { const builtin = ["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"].map((id) => `- ${id}: builtin (file: ${join(env.CODEX_HOME, "skills/.system", id, "SKILL.md")})`); const projectRoot = join(cwd, ".agents/skills/frontend-design/SKILL.md"); const block = [...builtin, ...(existsSync(projectRoot) ? [`- frontend-design: frozen (file: ${projectRoot})`] : [])].join("\n"); return { status: 0, stdout: promptInputJson(block) }; }
 function execute(f, overrides = {}) { return runCell({ repoRoot: f.repo, materializedRoot: f.materialized, cellId: "cell-01", admission: f.admissionPath, runtimeAttributionReceipt: f.runtimePath, browserReceipt: f.browserPath, sourceCommit: f.sourceCommit, runnerBin: f.runner, evaluatorBin: f.evaluator, runtimeHome: f.runtimeHome, runtimeEnv: { ...process.env, OMD_BENCH_CODEX_BIN: f.runner }, promptInputProbe: defaultPromptInputProbe, runtimeObservation: { model_id: "gpt-5.6-luna", cache_sha256: f.catalogSha, model_profile_sha256: f.profileSha }, ...overrides }); }
 function collect(f, out = join(f.base, "records.json")) { return collectRecords({ repoRoot: f.repo, materializedRoot: f.materialized, admission: f.admissionPath, runtimeAttributionReceipt: f.runtimePath, browserReceipt: f.browserPath, sourceCommit: f.sourceCommit, out }); }
+function replaceVariantSkill(f, contents) {
+  for (const cell of f.cells) {
+    const path = join(f.materialized, "prepared-cells", cell.id); const skill = join(path, ".agents/skills/frontend-design/SKILL.md");
+    writeFileSync(skill, contents); cell.workspace_tree = summary(path);
+  }
+  const materialization = JSON.parse(readFileSync(f.materializationPath)); materialization.cells = f.cells; json(f.materializationPath, materialization);
+  f.admission.bindings.materialization = bind(f.materializationPath); json(f.admissionPath, f.admission);
+}
 
 describe("Luna Max Wow Preview one-cell runner", () => {
   it("runs exactly the next cell once and binds provider, tree, evaluator, and screenshot evidence", () => {
@@ -84,6 +92,7 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     expect(runtimeEnv.HOME).toContain("/.benchmark/execution/provider-home"); expect(runtimeEnv.CODEX_HOME).toBe(runtimeEnv.HOME); expect(runtimeEnv.ZDOTDIR).toBe(runtimeEnv.HOME); expect(runtimeEnv.PATH).toContain("/.benchmark/execution/provider-bin"); expect(runtimeEnv.PATH).not.toContain("browser-harness");
     expect(runtimeEnv.OMD_BENCH_CODEX_BIN).toBe(realpathSync(f.runner));
     expect(result.telemetry).toMatchObject({ agent_browser_calls: 0 });
+    expect(JSON.parse(readFileSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/PROVIDER-SPAWN-STARTED.json")))).toMatchObject({ kind: "omd-luna-max-provider-spawn-boundary", provider_calls: "unknown", model_calls: "unknown" });
     expect(() => execute(f)).toThrow(/exact next locked cell: cell-02/);
   });
 
@@ -164,10 +173,12 @@ describe("Luna Max Wow Preview one-cell runner", () => {
 
   it("fails before provider spawn on a semantic prompt-input cache mutation", () => {
     const f = fixture();
-    expect(() => execute(f, { promptInputProbe: (args) => {
+    const result = execute(f, { promptInputProbe: (args) => {
       const path = join(args.env.CODEX_HOME, "models_cache.json"); const cache = JSON.parse(readFileSync(path)); cache.models[0].tool_mode = "mutated"; writeFileSync(path, JSON.stringify(cache));
       return defaultPromptInputProbe(args);
-    } })).toThrow(/semantic\/profile\/client mutation/);
+    } });
+    expect(result).toMatchObject({ status: "infrastructure-invalid", provider_calls: 0, model_calls: 0, browser_calls: 0, reason: "pre-provider-setup-failed" });
+    expect(readFileSync(result.failure_artifact.path, "utf8")).toContain("semantic/profile/client mutation");
     expect(existsSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/workspace/.benchmark/argv.json"))).toBe(false);
   });
 
@@ -193,8 +204,43 @@ describe("Luna Max Wow Preview one-cell runner", () => {
 
   it("fails before provider spawn when prompt-input exposes an extra global skill", () => {
     const f = fixture();
-    expect(() => execute(f, { promptInputProbe: ({ env }) => { const lines = ["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"].map((id) => `- ${id}: builtin (file: ${join(env.CODEX_HOME, "skills/.system", id, "SKILL.md")})`).concat("- browser-harness: leaked (file: /Users/example/Developer/browser-harness/SKILL.md)"); return { status: 0, stdout: promptInputJson(lines.join("\n")) }; } })).toThrow(/browser-harness leaked/);
+    const result = execute(f, { promptInputProbe: ({ env }) => { const lines = ["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"].map((id) => `- ${id}: builtin (file: ${join(env.CODEX_HOME, "skills/.system", id, "SKILL.md")})`).concat("- browser-harness: leaked (file: /Users/example/Developer/browser-harness/SKILL.md)"); return { status: 0, stdout: promptInputJson(lines.join("\n")) }; } });
+    expect(result).toMatchObject({ status: "infrastructure-invalid", provider_calls: 0, model_calls: 0, browser_calls: 0 });
+    const failure = JSON.parse(readFileSync(result.failure_artifact.path));
+    expect(failure.error.prompt_input_failure).toMatchObject({ path: expect.stringContaining("PROMPT-INPUT-SKILL-AUDIT-FAILURE.json"), sha256: expect.stringMatching(/^[a-f0-9]{64}$/) });
+    expect(readFileSync(result.raw_response.path, "utf8")).toContain("browser-harness leaked");
     expect(existsSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/workspace/.benchmark/argv.json"))).toBe(false);
+  });
+
+  it("preserves exact prompt-input timeout and nonzero evidence as provider-zero immutable terminals", () => {
+    for (const observed of [
+      { status: null, signal: "SIGTERM", stdout: "partial-timeout-output", stderr: "exact timeout stderr", error: Object.assign(new Error("spawnSync ETIMEDOUT"), { code: "ETIMEDOUT" }) },
+      { status: 23, signal: null, stdout: "exact nonzero stdout", stderr: "exact nonzero stderr", error: null },
+    ]) {
+      const f = fixture(); let receivedTimeout = null;
+      const result = execute(f, { promptInputProbe: ({ timeoutMs }) => { receivedTimeout = timeoutMs; return observed; } });
+      expect(receivedTimeout).toBe(PROMPT_INPUT_AUDIT_TIMEOUT_MS);
+      expect(result).toMatchObject({ status: "infrastructure-invalid", provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0, rerun_allowed: false });
+      const execution = join(f.materialized, "prepared-cells/cell-01/.benchmark/execution");
+      expect(readFileSync(join(execution, "PROMPT-INPUT-SKILL-AUDIT.stdout"), "utf8")).toBe(observed.stdout);
+      expect(readFileSync(join(execution, "PROMPT-INPUT-SKILL-AUDIT.stderr"), "utf8")).toBe(observed.stderr);
+      const failure = JSON.parse(readFileSync(join(execution, "PROMPT-INPUT-SKILL-AUDIT-FAILURE.json")));
+      expect(failure).toMatchObject({ timeout_ms: 120_000, process: { status: observed.status, signal: observed.signal }, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 });
+      expect(existsSync(join(execution, "PROVIDER-SPAWN-STARTED.json"))).toBe(false);
+      expect(existsSync(join(execution, "workspace/.benchmark/argv.json"))).toBe(false);
+      const bundle = collect(f); expect(bundle.slots[0].record_sha256).toBe(result.record_sha256);
+    }
+  });
+
+  it("accepts an exact large project skill under the bounded prompt-input audit", () => {
+    const f = fixture({ variant: "taste-eligible-scope-only" });
+    replaceVariantSkill(f, `---\nname: frontend-design\n---\n# large frozen skill\n${"taste-rule: exact\n".repeat(5_000)}`);
+    let receivedTimeout = null;
+    const result = execute(f, { promptInputProbe: (args) => { receivedTimeout = args.timeoutMs; return defaultPromptInputProbe(args); } });
+    expect(receivedTimeout).toBe(120_000);
+    expect(result).toMatchObject({ status: "completed", provider_calls: 1, model_calls: 1 });
+    const audit = JSON.parse(readFileSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/PROMPT-INPUT-SKILL-AUDIT.json")));
+    expect(audit).toMatchObject({ pass: true, timeout_ms: 120_000, project_skills: [{ id: "frontend-design", sha256: expect.stringMatching(/^[a-f0-9]{64}$/) }] });
   });
 
   it("ignores a non-developer skills block and allows an exact OmD arm skill", () => {
@@ -277,8 +323,16 @@ describe("Luna Max Wow Preview one-cell runner", () => {
   it("reconciles a started-without-terminal crash as infrastructure-invalid and never reruns it", () => {
     const f = fixture(); const execution = join(f.materialized, "prepared-cells/cell-01/.benchmark/execution"); mkdirSync(execution); json(join(execution, "STARTED.json"), { cell_id: "cell-01" });
     expect(reconcileCrashes(f.materialized, { cells: f.cells })).toEqual(["cell-01"]);
-    expect(readFileSync(join(execution, "INFRASTRUCTURE-INVALID.json"), "utf8")).toContain("rerun_allowed");
+    const terminal = JSON.parse(readFileSync(join(execution, "INFRASTRUCTURE-INVALID.json")));
+    expect(terminal).toMatchObject({ status: "infrastructure-invalid", provider_calls: 0, model_calls: 0, browser_calls: 0, rerun_allowed: false, process: { phase: "pre-provider-spawn" } });
+    expect(terminal.record_sha256).toMatch(/^[a-f0-9]{64}$/);
     expect(() => execute(f)).toThrow(/exact next locked cell: cell-02/);
+
+    const providerStarted = fixture(); const providerExecution = join(providerStarted.materialized, "prepared-cells/cell-01/.benchmark/execution"); mkdirSync(providerExecution);
+    json(join(providerExecution, "STARTED.json"), { cell_id: "cell-01" }); json(join(providerExecution, "PROVIDER-SPAWN-STARTED.json"), { kind: "boundary" });
+    expect(reconcileCrashes(providerStarted.materialized, { cells: providerStarted.cells })).toEqual(["cell-01"]);
+    expect(JSON.parse(readFileSync(join(providerExecution, "INFRASTRUCTURE-INVALID.json"))).provider_calls).toBe("unknown");
+    expect(JSON.parse(readFileSync(join(providerExecution, "INFRASTRUCTURE-INVALID.json"))).process.phase).toBe("provider-spawned-before-terminal");
   });
 
   it("collects terminal plus six immutable ineligible slots into the exact auditor bundle and leaves unstarted cells missing", () => {
