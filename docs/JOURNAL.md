@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · 58dc landing Anthropic r1 봉인
+- Anthropic은 517,480ms·276,910 tokens에 58,732B graph-paper/editorial tool-library UI를 만들었다.
+- model-only보다 visual identity는 강하지만 동일 unavailable-information 누락으로 objective0이다.
+- record `e3b6f0b8…`, partial-02 `30385649…`; terminal2/missing46/ineligible6, rerun 금지다.
+- 다음 locked 셀은 landing Impeccable prompt-only r1이다.
+
 ## 2026-08-14 (Codex) · 58dc landing model-only r1 봉인
 - model-only는 421,551ms·227,726 tokens에 56,025B editorial tool-library UI와 12 captures를 만들었다.
 - dependency-closed evaluator READY/PASS; actual unavailable-information state 누락으로 objective0이다.
