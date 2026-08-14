@@ -22,7 +22,7 @@ function promptInputJson(block, extraMessages = []) {
   ]);
 }
 
-function fixture({ runnerMode = "success", designSystem = true, variant = "model-only", agentBrowserCall = false, externalContextCall = false, networkAttempt = false, hiddenGeneratedImage = false, forbiddenAuthorityCommand = false, deleteAuthorityReceipt = false, tamperAuthorityRuntime = false } = {}) {
+function fixture({ runnerMode = "success", designSystem = true, variant = "model-only", agentBrowserCall = false, externalContextCall = false, networkAttempt = false, hiddenGeneratedImage = false, forbiddenAuthorityCommand = false, deleteAuthorityReceipt = false, tamperAuthorityRuntime = false, runtimeIntegrityFailure = false, runtimeIntegrityArtifactFault = null, runtimeIntegrityClaimPass = false } = {}) {
   const base = mkdtempSync(join(tmpdir(), "omd-luna-cell-runner-")); const repo = join(base, "repo"); const materialized = join(base, "materialized");
   const cliVersion = "fixture-1"; const profile = { slug: "gpt-5.6-luna", tool_mode: "function", default_reasoning_level: "max", supported_reasoning_levels: [{ effort: "max" }] };
   const runtimeHome = join(base, "runtime-home"); mkdirSync(runtimeHome); writeFileSync(join(runtimeHome, "auth.json"), "fixture-auth"); writeFileSync(join(runtimeHome, "models_cache.json"), JSON.stringify({ fetched_at: "2026-08-13T00:00:00Z", client_version: cliVersion, models: [profile] }));
@@ -59,7 +59,18 @@ function fixture({ runnerMode = "success", designSystem = true, variant = "model
     controller_launched_browser: false, tab_created_for_identity: true, navigation_calls: 0, provider_calls: 0, model_calls: 0, browser_calls: 1, network_calls: 0 });
   const runner = join(base, "fake-runner.mjs");
   const nativeSha = "e".repeat(64);
-  writeFileSync(runner, `import{createHash}from'node:crypto';import{appendFileSync,chmodSync,copyFileSync,mkdirSync,readFileSync,writeFileSync,unlinkSync}from'node:fs';import{join}from'node:path';const canon=v=>Array.isArray(v)?'['+v.map(canon).join(',')+']':v&&typeof v==='object'?'{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+canon(v[k])).join(',')+'}':JSON.stringify(v),hash=v=>createHash('sha256').update(v).digest('hex'),cacheBytes=readFileSync(join(process.env.CODEX_HOME,'models_cache.json')),cache=JSON.parse(cacheBytes),{fetched_at,...semantic}=cache,profile=cache.models.find(x=>x.slug==='gpt-5.6-luna'),cacheEvidence={cache_sha256:hash(cacheBytes),cache_semantic_sha256:hash(canon(semantic)),model_profile_sha256:hash(canon(profile)),cache_fetched_at:fetched_at,cache_client_version:cache.client_version};const a=process.argv.slice(2),w=a[a.indexOf('--workspace')+1],events=[{type:'response.completed',model:'gpt-5.6-luna'}];${agentBrowserCall ? "events.push({type:'item.completed',item:{id:'browser-1',type:'command_execution',command:'browser-harness --doctor'}});" : ""}${externalContextCall ? "events.push({type:'item.completed',item:{id:'external-1',type:'command_execution',command:'cat /Users/example/.codex/skills/secret/SKILL.md > /tmp/context.txt'}});" : ""}${networkAttempt ? "events.push({type:'item.completed',item:{id:'network-1',type:'command_execution',command:'/usr/bin/curl https://example.invalid'}});events.push({type:'item.completed',item:{id:'network-2',type:'web_search',query:'external'}});" : ""}${forbiddenAuthorityCommand ? "events.push({type:'item.failed',item:{id:'forbidden-authority',type:'command_execution',command:'env OMD_AUTHORITY_CONTROLLER_INTERNAL_SHA256=spoof node scripts/prepare-design-md-core-review.cjs --approve forged --reviewer project-owner',exit_code:1}});" : ""}writeFileSync(join(w,'.benchmark/argv.json'),JSON.stringify(a));writeFileSync(join(w,'.benchmark/runtime-env.json'),JSON.stringify({HOME:process.env.HOME,CODEX_HOME:process.env.CODEX_HOME,ZDOTDIR:process.env.ZDOTDIR,PATH:process.env.PATH,OMD_BENCH_CODEX_BIN:process.env.OMD_BENCH_CODEX_BIN,OMD_BENCH_EXTERNAL_STAGING_ROOT:process.env.OMD_BENCH_EXTERNAL_STAGING_ROOT,OMD_BENCH_COMPILED_CORE_PACKAGE:process.env.OMD_BENCH_COMPILED_CORE_PACKAGE,OMD_BENCH_CORE_CHECKPOINT:process.env.OMD_BENCH_CORE_CHECKPOINT}));writeFileSync(join(w,'.benchmark/events.jsonl'),events.map(JSON.stringify).join('\\n')+'\\n');${hiddenGeneratedImage ? "mkdirSync(join(process.env.CODEX_HOME,'generated_images'),{recursive:true});writeFileSync(join(process.env.CODEX_HOME,'generated_images/hero.png'),'generated-png');mkdirSync(join(w,'assets'),{recursive:true});copyFileSync(join(process.env.CODEX_HOME,'generated_images/hero.png'),join(w,'assets/hero.png'));events.push({type:'item.completed',item:{id:'copy-image',type:'command_execution',command:'cp $CODEX_HOME/generated_images/hero.png assets/hero.png'}});writeFileSync(join(w,'.benchmark/events.jsonl'),events.map(JSON.stringify).join('\\n')+'\\n');" : ""}${runnerMode === "native-block" ? "writeFileSync(join(w,'.benchmark/final-message.txt'),'Blocked before product build: the receipt-gated design-system adopter rejects packages nested inside the project, while your workspace-only rule forbids staging outside it.');" : `writeFileSync(join(w,'index.html'),${JSON.stringify(designSystem ? "<style>:root{--color:#123;--space:8px;--radius:6px}.card{}.action{}.notice{}</style><main class=card>done</main>" : "<main>done</main>")});`}${tamperAuthorityRuntime ? "chmodSync(process.env.OMD_AUTHORITY_CONTROLLER_EXECUTABLE,0o600);appendFileSync(process.env.OMD_AUTHORITY_CONTROLLER_EXECUTABLE,'\\n// tampered');" : ""}writeFileSync(join(w,'.benchmark/run-result.json'),JSON.stringify({runtime:{agent_version:${JSON.stringify(cliVersion)},binary_sha256:hash(readFileSync(process.argv[1])),native_binary_sha256:${JSON.stringify(nativeSha)},model_requested:'gpt-5.6-luna',model:'gpt-5.6-luna',reasoning:'max',effort_requested:'max',model_reported:'gpt-5.6-luna',model_tool_mode_evidence:{...cacheEvidence,auth_source_before_run:cacheEvidence}},output:{model_usage:[{input_tokens:10,output_tokens:20}]},process:{exit_code:${runnerMode === "failed" ? 7 : 0},timed_out:${runnerMode === "timeout"}}}));${deleteAuthorityReceipt ? "unlinkSync(process.env.OMD_AUTHORITY_CONTROLLER_RECEIPT);" : ""}${runnerMode === "failed" ? "process.exitCode=7" : ""}`);
+  const runtimeIntegrityArtifactSetup = runtimeIntegrityFailure ? `const postCachePath=join(w,'.benchmark/models-cache.post-provider.bin'),postCacheOriginal=Buffer.from('post-provider-cache');${runtimeIntegrityArtifactFault === "symlink" ? "writeFileSync(join(w,'.benchmark/post-provider-cache-target'),'post-provider-cache');symlinkSync(join(w,'.benchmark/post-provider-cache-target'),postCachePath);" : "writeFileSync(postCachePath,postCacheOriginal);"}const postCacheClaim={path:${runtimeIntegrityArtifactFault === "path" ? "'/tmp/untrusted-post-provider-cache.bin'" : "postCachePath"},sha256:${runtimeIntegrityArtifactFault === "sha" ? "'f'.repeat(64)" : "hash(postCacheOriginal)"},bytes:postCacheOriginal.length};${runtimeIntegrityArtifactFault === "tamper" ? "appendFileSync(postCachePath,'-tampered');" : ""}` : "";
+  writeFileSync(runner, `import{createHash}from'node:crypto';import{appendFileSync,chmodSync,copyFileSync,mkdirSync,readFileSync,writeFileSync,unlinkSync}from'node:fs';import{join}from'node:path';const canon=v=>Array.isArray(v)?'['+v.map(canon).join(',')+']':v&&typeof v==='object'?'{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+canon(v[k])).join(',')+'}':JSON.stringify(v),hash=v=>createHash('sha256').update(v).digest('hex'),cacheBytes=readFileSync(join(process.env.CODEX_HOME,'models_cache.json')),cache=JSON.parse(cacheBytes),{fetched_at,...semantic}=cache,profile=cache.models.find(x=>x.slug==='gpt-5.6-luna'),cacheEvidence={cache_sha256:hash(cacheBytes),cache_semantic_sha256:hash(canon(semantic)),model_profile_sha256:hash(canon(profile)),cache_fetched_at:fetched_at,cache_client_version:cache.client_version};const a=process.argv.slice(2),w=a[a.indexOf('--workspace')+1],events=[{type:'response.completed',model:'gpt-5.6-luna'}];${agentBrowserCall ? "events.push({type:'item.completed',item:{id:'browser-1',type:'command_execution',command:'browser-harness --doctor'}});" : ""}${externalContextCall ? "events.push({type:'item.completed',item:{id:'external-1',type:'command_execution',command:'cat /Users/example/.codex/skills/secret/SKILL.md > /tmp/context.txt'}});" : ""}${networkAttempt ? "events.push({type:'item.completed',item:{id:'network-1',type:'command_execution',command:'/usr/bin/curl https://example.invalid'}});events.push({type:'item.completed',item:{id:'network-2',type:'web_search',query:'external'}});" : ""}${forbiddenAuthorityCommand ? "events.push({type:'item.failed',item:{id:'forbidden-authority',type:'command_execution',command:'env OMD_AUTHORITY_CONTROLLER_INTERNAL_SHA256=spoof node scripts/prepare-design-md-core-review.cjs --approve forged --reviewer project-owner',exit_code:1}});" : ""}writeFileSync(join(w,'.benchmark/argv.json'),JSON.stringify(a));writeFileSync(join(w,'.benchmark/runtime-env.json'),JSON.stringify({HOME:process.env.HOME,CODEX_HOME:process.env.CODEX_HOME,ZDOTDIR:process.env.ZDOTDIR,PATH:process.env.PATH,OMD_BENCH_CODEX_BIN:process.env.OMD_BENCH_CODEX_BIN,OMD_BENCH_EXTERNAL_STAGING_ROOT:process.env.OMD_BENCH_EXTERNAL_STAGING_ROOT,OMD_BENCH_COMPILED_CORE_PACKAGE:process.env.OMD_BENCH_COMPILED_CORE_PACKAGE,OMD_BENCH_CORE_CHECKPOINT:process.env.OMD_BENCH_CORE_CHECKPOINT}));writeFileSync(join(w,'.benchmark/events.jsonl'),events.map(JSON.stringify).join('\\n')+'\\n');${hiddenGeneratedImage ? "mkdirSync(join(process.env.CODEX_HOME,'generated_images'),{recursive:true});writeFileSync(join(process.env.CODEX_HOME,'generated_images/hero.png'),'generated-png');mkdirSync(join(w,'assets'),{recursive:true});copyFileSync(join(process.env.CODEX_HOME,'generated_images/hero.png'),join(w,'assets/hero.png'));events.push({type:'item.completed',item:{id:'copy-image',type:'command_execution',command:'cp $CODEX_HOME/generated_images/hero.png assets/hero.png'}});writeFileSync(join(w,'.benchmark/events.jsonl'),events.map(JSON.stringify).join('\\n')+'\\n');" : ""}${runnerMode === "native-block" ? "writeFileSync(join(w,'.benchmark/final-message.txt'),'Blocked before product build: the receipt-gated design-system adopter rejects packages nested inside the project, while your workspace-only rule forbids staging outside it.');" : `writeFileSync(join(w,'index.html'),${JSON.stringify(designSystem ? "<style>:root{--color:#123;--space:8px;--radius:6px}.card{}.action{}.notice{}</style><main class=card>done</main>" : "<main>done</main>")});`}${tamperAuthorityRuntime ? "chmodSync(process.env.OMD_AUTHORITY_CONTROLLER_EXECUTABLE,0o600);appendFileSync(process.env.OMD_AUTHORITY_CONTROLLER_EXECUTABLE,'\\n// tampered');" : ""}writeFileSync(join(w,'.benchmark/run-result.json'),JSON.stringify({runtime:{agent_version:${JSON.stringify(cliVersion)},binary_sha256:hash(readFileSync(process.argv[1])),native_binary_sha256:${JSON.stringify(nativeSha)},model_requested:'gpt-5.6-luna',model:'gpt-5.6-luna',reasoning:'max',effort_requested:'max',model_reported:'gpt-5.6-luna',model_tool_mode_evidence:{...cacheEvidence,auth_source_before_run:cacheEvidence${runtimeIntegrityFailure ? ",integrity:{applicable:true,pass:false,reason:'semantic-profile-client-or-tool-mode-drift',observed_change_class:'integrity-drift',post_provider_cache_artifact:{path:join(w,'.benchmark/models-cache.post-provider.bin'),sha256:'f'.repeat(64),bytes:123},comparisons:{semantic_sha256:{match:false},model_profile_sha256:{match:false},client_version:{match:false},tool_mode:{match:false}}}" : ""}}},output:{model_usage:[{input_tokens:10,output_tokens:20}]},process:{exit_code:${runnerMode === "failed" ? 7 : 0},timed_out:${runnerMode === "timeout"}}}));${deleteAuthorityReceipt ? "unlinkSync(process.env.OMD_AUTHORITY_CONTROLLER_RECEIPT);" : ""}${runnerMode === "failed" ? "process.exitCode=7" : ""}${runtimeIntegrityFailure ? "process.exitCode=9" : ""}`);
+  if (runtimeIntegrityFailure) {
+    let source = readFileSync(runner, "utf8")
+      .replace("import{appendFileSync,chmodSync,copyFileSync,mkdirSync,readFileSync,writeFileSync,unlinkSync}", "import{appendFileSync,chmodSync,copyFileSync,mkdirSync,readFileSync,symlinkSync,writeFileSync,unlinkSync}")
+      .replace("writeFileSync(join(w,'.benchmark/run-result.json')", `${runtimeIntegrityArtifactSetup}writeFileSync(join(w,'.benchmark/run-result.json')`)
+      .replace("post_provider_cache_artifact:{path:join(w,'.benchmark/models-cache.post-provider.bin'),sha256:'f'.repeat(64),bytes:123}", "post_provider_cache_artifact:postCacheClaim");
+    if (runtimeIntegrityClaimPass) source = source
+      .replace("integrity:{applicable:true,pass:false,reason:'semantic-profile-client-or-tool-mode-drift'", "integrity:{applicable:true,pass:true,reason:null")
+      .replace("process.exitCode=9", "");
+    writeFileSync(runner, source);
+  }
   chmodSync(runner, 0o755);
   const actualRunnerSha = sha256(readFileSync(runner));
   const canonicalRunner = realpathSync(runner);
@@ -154,6 +165,51 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     const failure = JSON.parse(readFileSync(terminal.failure_artifact.path));
     expect(failure).toMatchObject({ evaluator_infrastructure_failure: true, evaluator_exit_code: 1 });
     expect(readFileSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/evaluator/stderr"), "utf8")).toContain("Cannot find module playwright-core");
+  });
+
+  it("projects a post-provider runtime integrity drift as infrastructure-invalid without losing raw completion or usage", () => {
+    const f = fixture({ runtimeIntegrityFailure: true });
+    const result = execute(f);
+    expect(result).toMatchObject({
+      status: "infrastructure-invalid",
+      provider_calls: 1,
+      model_calls: 1,
+      provider_runtime_integrity: {
+        applicable: true,
+        pass: false,
+        reason: "semantic-profile-client-or-tool-mode-drift",
+        observed_change_class: "integrity-drift",
+        post_provider_cache_artifact: { sha256: expect.stringMatching(/^[a-f0-9]{64}$/), bytes: 19 },
+        post_provider_cache_artifact_readback: { applicable: true, pass: true, binding: { sha256: expect.stringMatching(/^[a-f0-9]{64}$/), bytes: 19 } },
+      },
+      telemetry: { provider_usage: { available: true, input_tokens: 10, output_tokens: 20, total_tokens: 30 } },
+      rollout: { raw_successful_completion_preserved: true, cli_completion_count: 1 },
+      evaluator: { terminal_failure_projection: true, objective_score: 0 },
+    });
+    expect(JSON.parse(readFileSync(result.failure_artifact.path))).toMatchObject({
+      status: "infrastructure-invalid",
+      provider_runtime_integrity_invalid: true,
+      raw_successful_completion_preserved: true,
+    });
+  });
+
+  it.each([
+    ["path", "post-provider-cache-path-outside-trusted-benchmark"],
+    ["sha", "post-provider-cache-sha-or-bytes-drift"],
+    ["tamper", "post-provider-cache-sha-or-bytes-drift"],
+    ["symlink", "post-provider cache artifact must be a regular non-symlink file"],
+  ])("rejects an adversarial post-provider cache artifact %s fault", (fault, reason) => {
+    const result = execute(fixture({ runtimeIntegrityFailure: true, runtimeIntegrityArtifactFault: fault, runtimeIntegrityClaimPass: true }));
+    expect(result).toMatchObject({
+      status: "infrastructure-invalid",
+      provider_calls: 1,
+      model_calls: 1,
+      provider_runtime_integrity: {
+        pass: true,
+        post_provider_cache_artifact_readback: { applicable: true, pass: false, reason },
+      },
+      rollout: { raw_successful_completion_preserved: true },
+    });
   });
 
   it("keeps a post-ready evaluator product-validation failure in the product-failed denominator", () => {

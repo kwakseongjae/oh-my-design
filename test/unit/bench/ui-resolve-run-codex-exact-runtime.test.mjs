@@ -46,7 +46,7 @@ function executable(path, source) {
   return path;
 }
 
-function exactRunFixture({ observedVersion = "9.9.9", removeExecutionCache = false, mutateExecutionCache = false, refreshFetchedAt = false } = {}) {
+function exactRunFixture({ observedVersion = "9.9.9", expectedCliVersion = "9.9.9", initialCacheClientVersion = expectedCliVersion, removeExecutionCache = false, mutateExecutionCache = false, mutateExecutionCacheField = null, refreshFetchedAt = false, refreshFetchedAtWithFormattingRewrite = false } = {}) {
   const root = realpathSync(mkdtempSync(join(tmpdir(), "omd-run-codex-exact-")));
   const matrixRoot = join(root, "matrix");
   const workspace = join(matrixRoot, "cell-1");
@@ -60,7 +60,7 @@ function exactRunFixture({ observedVersion = "9.9.9", removeExecutionCache = fal
 
   const cache = {
     fetched_at: "2026-08-09T05:33:00Z",
-    client_version: "9.9.9",
+    client_version: initialCacheClientVersion,
     models: [{
       slug: "gpt-test-exact",
       default_reasoning_level: "medium",
@@ -116,7 +116,38 @@ if (${JSON.stringify(removeExecutionCache)}) {
 if (${JSON.stringify(mutateExecutionCache)}) {
   writeFileSync(join(process.env.CODEX_HOME, "models_cache.json"), JSON.stringify({models:[]}));
 }
+if (${JSON.stringify(mutateExecutionCacheField)} === "semantic") {
+  const cachePath = join(process.env.CODEX_HOME, "models_cache.json");
+  const cache = JSON.parse(readFileSync(cachePath, "utf8"));
+  cache.unexpected_stable_metadata = "drift";
+  writeFileSync(cachePath, JSON.stringify(cache));
+}
+if (${JSON.stringify(mutateExecutionCacheField)} === "profile") {
+  const cachePath = join(process.env.CODEX_HOME, "models_cache.json");
+  const cache = JSON.parse(readFileSync(cachePath, "utf8"));
+  cache.models[0].tool_mode = "mutated";
+  writeFileSync(cachePath, JSON.stringify(cache));
+}
+if (${JSON.stringify(mutateExecutionCacheField)} === "client") {
+  const cachePath = join(process.env.CODEX_HOME, "models_cache.json");
+  const cache = JSON.parse(readFileSync(cachePath, "utf8"));
+  cache.client_version = "9.9.10-drift";
+  writeFileSync(cachePath, JSON.stringify(cache));
+}
+if (${JSON.stringify(mutateExecutionCacheField)} === "luna-client-profile-upgrade") {
+  const cachePath = join(process.env.CODEX_HOME, "models_cache.json");
+  const cache = JSON.parse(readFileSync(cachePath, "utf8"));
+  cache.client_version = "0.147.0";
+  cache.models[0].token_budget = 128000;
+  cache.models[0].base_instructions = "changed provider instructions";
+  writeFileSync(cachePath, JSON.stringify(cache));
+}
 if (${JSON.stringify(refreshFetchedAt)}) {
+  const cachePath = join(process.env.CODEX_HOME, "models_cache.json");
+  const source = readFileSync(cachePath, "utf8");
+  writeFileSync(cachePath, source.replace(/("fetched_at"\\s*:\\s*)"[^"]*"/, '$1"2026-08-13T09:49:00Z"'));
+}
+if (${JSON.stringify(refreshFetchedAtWithFormattingRewrite)}) {
   const cachePath = join(process.env.CODEX_HOME, "models_cache.json");
   const cache = JSON.parse(readFileSync(cachePath, "utf8"));
   cache.fetched_at = "2026-08-13T09:49:00Z";
@@ -129,7 +160,7 @@ writeFileSync(join(workspace, ".benchmark", "fake-codex-invocation.json"), JSON.
   controller_env: Object.fromEntries(Object.entries(process.env).filter(([key]) => key.startsWith("OMD_")).sort(([a], [b]) => a.localeCompare(b))),
 }));
 writeFileSync(finalPath, "done\\n");
-process.stdout.write(JSON.stringify({ type: "response.completed", model: "gpt-test-exact" }) + "\\n");
+process.stdout.write(JSON.stringify({ type: "turn.completed", model: "gpt-test-exact", usage: { input_tokens: 7, output_tokens: 3 } }) + "\\n");
 `);
   executable(wrapper, `#!/usr/bin/env node
 import { spawnSync } from "node:child_process";
@@ -189,7 +220,7 @@ process.exit(result.status ?? 1);
       binary_sha256: sha256(readFileSync(wrapper)),
       native_executable_path: native,
       native_binary_sha256: sha256(readFileSync(native)),
-      version: "9.9.9",
+      version: expectedCliVersion,
     },
   };
   writeFileSync(join(matrixRoot, "RUN-MATRIX.locked.json"), JSON.stringify({
@@ -328,12 +359,55 @@ describe("run-codex exact catalog/runtime invocation", () => {
     expect(result.runtime.model_tool_mode_evidence.auth_source_before_run.cache_sha256).toBe(sha256(fixture.cacheBytes));
   });
 
-  it("fails when the strict isolated cache/profile mutates during the invocation", () => {
+  it("fails closed after preserving post-cache bytes and successful raw completion when the cache becomes invalid", () => {
     const fixture = exactRunFixture({ mutateExecutionCache: true });
     const executed = runFixture(fixture, ["--disable-plugin-skill-search"]);
     expect(executed.status).not.toBe(0);
-    expect(executed.stderr).toContain("cache/profile mutated during provider invocation");
-    expect(existsSync(join(fixture.benchmark, "run-result.json"))).toBe(false);
+    expect(executed.stderr).toContain("cache/profile integrity changed during provider invocation");
+    const result = JSON.parse(readFileSync(join(fixture.benchmark, "run-result.json"), "utf8"));
+    expect(result.output.model_usage).toEqual([expect.objectContaining({ input_tokens: 7, output_tokens: 3 })]);
+    expect(result.runtime.model_tool_mode_evidence.integrity).toMatchObject({
+      applicable: true,
+      pass: false,
+      observed_change_class: "integrity-drift",
+      post_provider_cache_artifact: { sha256: sha256(Buffer.from(JSON.stringify({ models: [] }))), bytes: Buffer.byteLength(JSON.stringify({ models: [] })) },
+    });
+    const artifact = result.runtime.model_tool_mode_evidence.integrity.post_provider_cache_artifact;
+    expect(readFileSync(artifact.path, "utf8")).toBe(JSON.stringify({ models: [] }));
+  });
+
+  it.each(["semantic", "profile", "client"])("rejects a %s cache identity mutation with exact field-diff evidence", (field) => {
+    const fixture = exactRunFixture({ mutateExecutionCacheField: field });
+    const executed = runFixture(fixture, ["--disable-plugin-skill-search"]);
+    expect(executed.status).not.toBe(0);
+    const result = JSON.parse(readFileSync(join(fixture.benchmark, "run-result.json"), "utf8"));
+    const integrity = result.runtime.model_tool_mode_evidence.integrity;
+    expect(integrity).toMatchObject({ applicable: true, pass: false, observed_change_class: "integrity-drift" });
+    if (field === "semantic") expect(integrity.comparisons.semantic_sha256.match).toBe(false);
+    if (field === "profile") {
+      expect(integrity.comparisons.model_profile_sha256.match).toBe(false);
+      expect(integrity.comparisons.tool_mode.match).toBe(false);
+    }
+    if (field === "client") expect(integrity.comparisons.client_version.match).toBe(false);
+    expect(integrity.post_provider_cache_artifact.sha256).toMatch(/^[a-f0-9]{64}$/);
+  });
+
+  it("rejects the observed 0.146.1 to 0.147.0-style client plus Luna profile-content drift", () => {
+    const fixture = exactRunFixture({ observedVersion: "0.146.1", expectedCliVersion: "0.146.1", mutateExecutionCacheField: "luna-client-profile-upgrade" });
+    const executed = runFixture(fixture, ["--disable-plugin-skill-search"]);
+    expect(executed.status).not.toBe(0);
+    const integrity = JSON.parse(readFileSync(join(fixture.benchmark, "run-result.json"), "utf8"))
+      .runtime.model_tool_mode_evidence.integrity;
+    expect(integrity).toMatchObject({
+      pass: false,
+      observed_change_class: "integrity-drift",
+      comparisons: {
+        client_version: { after: "0.147.0", match: false },
+        model_profile_sha256: { match: false },
+        semantic_sha256: { match: false },
+        tool_mode: { match: true },
+      },
+    });
   });
 
   it("allows only a volatile fetched_at refresh while retaining the admitted cache identity", () => {
@@ -346,6 +420,30 @@ describe("run-codex exact catalog/runtime invocation", () => {
       .not.toBe(sha256(fixture.cacheBytes));
     expect(result.runtime.model_tool_mode_evidence.execution_home_post_run.cache_semantic_sha256)
       .toBe(result.runtime.model_tool_mode_evidence.auth_source_before_run.cache_semantic_sha256);
+    expect(result.runtime.model_tool_mode_evidence.integrity).toMatchObject({
+      applicable: true,
+      pass: true,
+      observed_change_class: "volatile-only",
+      allowed_volatile_fields: ["fetched_at"],
+      comparisons: { fetched_at: { match: false }, semantic_sha256: { match: true }, model_profile_sha256: { match: true }, client_version: { match: true }, tool_mode: { match: true } },
+      post_provider_cache_artifact: { sha256: expect.stringMatching(/^[a-f0-9]{64}$/), bytes: expect.any(Number) },
+      volatile_raw_difference_proof: { pass: true, reason: null, before_token_occurrences: 1 },
+    });
+  });
+
+  it("rejects a fetched_at refresh that also rewrites raw cache formatting", () => {
+    const fixture = exactRunFixture({ refreshFetchedAtWithFormattingRewrite: true });
+    const executed = runFixture(fixture, ["--disable-plugin-skill-search"]);
+    expect(executed.status).not.toBe(0);
+    const integrity = JSON.parse(readFileSync(join(fixture.benchmark, "run-result.json"), "utf8"))
+      .runtime.model_tool_mode_evidence.integrity;
+    expect(integrity).toMatchObject({
+      pass: false,
+      reason: "unapproved-nonvolatile-byte-drift",
+      observed_change_class: "integrity-drift",
+      volatile_raw_difference_proof: { pass: false, reason: "raw-bytes-differ-outside-fetched-at-value" },
+      comparisons: { semantic_sha256: { match: true }, fetched_at: { match: false } },
+    });
   });
 
   it("isolates a bounded repair prompt and its runtime artifacts", () => {

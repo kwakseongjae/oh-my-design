@@ -192,6 +192,7 @@ Object.assign(childEnv, {
 let exactCliRuntime = null;
 let exactPreRunModelToolMode = null;
 let exactModelCatalogAuthority = null;
+let strictPreProviderCacheBytes = null;
 if (exactRuntimeContract) {
   prepareIsolatedCodexHome(workspace, process.env, {
     exactRuntimeContract,
@@ -219,6 +220,12 @@ if (exactRuntimeContract) {
   const observedVersion = versionOutput.output.match(/codex-cli\s+([^\s]+)/i)?.[1] ?? null;
   if (versionOutput.code !== 0 || observedVersion !== expectedCliVersion || digest(wrapperPath) !== expectedWrapperSha || nativePath !== expectedNativePath || digest(nativePath) !== expectedNativeSha) throw new Error("strict isolated Codex CLI binding drift");
   exactCliRuntime = { executable_path: wrapperPath, binary_sha256: expectedWrapperSha, native_executable_path: nativePath, native_binary_sha256: expectedNativeSha, version: expectedCliVersion };
+}
+if (disablePluginSkillSearch && strictPreProviderCacheBytes === null) {
+  const preCachePath = join(execution.codex_home, "models_cache.json");
+  const preCacheInfo = lstatSync(preCachePath);
+  if (!preCacheInfo.isFile() || preCacheInfo.isSymbolicLink()) throw new Error("strict isolated pre-provider model cache is not a regular file");
+  strictPreProviderCacheBytes = readFileSync(preCachePath);
 }
 
 const appendCapped = (current, chunk) => {
@@ -261,10 +268,31 @@ const exit = await new Promise((resolveExit) => {
 });
 
 const wallMs = Number(process.hrtime.bigint() - startedNs) / 1_000_000;
+const postProviderCachePath = join(artifactDir, "models-cache.post-provider.bin");
+let postProviderCacheArtifact = null;
+let postProviderCachePreservationError = null;
+let postProviderCacheBytes = null;
+if (disablePluginSkillSearch) {
+  try {
+    const liveCachePath = join(execution.codex_home, "models_cache.json");
+    const info = lstatSync(liveCachePath);
+    if (!info.isFile() || info.isSymbolicLink()) throw new Error("post-provider model cache is not a regular file");
+    const bytes = readFileSync(liveCachePath);
+    writeFileSync(postProviderCachePath, bytes, { flag: "wx", mode: 0o600 });
+    postProviderCacheBytes = bytes;
+    postProviderCacheArtifact = {
+      path: postProviderCachePath,
+      sha256: createHash("sha256").update(bytes).digest("hex"),
+      bytes: bytes.length,
+    };
+  } catch (error) {
+    postProviderCachePreservationError = String(error?.message ?? error);
+  }
+}
 const executionModelToolMode = browserProofRequired || exactRuntimeContract || disablePluginSkillSearch
   ? inspectCodexModelToolMode(model, { OMD_BENCH_AUTH_CODEX_HOME: execution.codex_home })
   : sourceModelToolMode;
-const modelToolMode = exactRuntimeContract
+const modelToolMode = exactRuntimeContract || disablePluginSkillSearch
   ? executionModelToolMode
   : executionModelToolMode.reason === "model-cache-missing"
     ? sourceModelToolMode
@@ -275,13 +303,66 @@ const modelToolModeEvidenceScope = modelToolMode === executionModelToolMode
 const modelToolModeBeforeRun = exactRuntimeContract
   ? exactPreRunModelToolMode
   : sourceModelToolMode;
-if (disablePluginSkillSearch && (
-  modelToolModeBeforeRun.cache_semantic_sha256 !== executionModelToolMode.cache_semantic_sha256
-  || modelToolModeBeforeRun.model_profile_sha256 !== executionModelToolMode.model_profile_sha256
-  || modelToolModeBeforeRun.cache_client_version !== executionModelToolMode.cache_client_version
-)) {
-  throw new Error("strict isolated Codex home cache/profile mutated during provider invocation");
+const cacheFullBytesChanged = modelToolModeBeforeRun.cache_sha256 !== executionModelToolMode.cache_sha256;
+const cacheFetchedAtChanged = modelToolModeBeforeRun.cache_fetched_at !== executionModelToolMode.cache_fetched_at;
+const cacheIntegrityComparisons = {
+  full_bytes_sha256: { before: modelToolModeBeforeRun.cache_sha256, after: executionModelToolMode.cache_sha256, match: !cacheFullBytesChanged },
+  semantic_sha256: { before: modelToolModeBeforeRun.cache_semantic_sha256, after: executionModelToolMode.cache_semantic_sha256, match: modelToolModeBeforeRun.cache_semantic_sha256 === executionModelToolMode.cache_semantic_sha256 },
+  model_profile_sha256: { before: modelToolModeBeforeRun.model_profile_sha256, after: executionModelToolMode.model_profile_sha256, match: modelToolModeBeforeRun.model_profile_sha256 === executionModelToolMode.model_profile_sha256 },
+  client_version: { before: modelToolModeBeforeRun.cache_client_version, after: executionModelToolMode.cache_client_version, match: modelToolModeBeforeRun.cache_client_version === executionModelToolMode.cache_client_version },
+  tool_mode: { before: modelToolModeBeforeRun.tool_mode, after: executionModelToolMode.tool_mode, match: modelToolModeBeforeRun.tool_mode === executionModelToolMode.tool_mode },
+  fetched_at: { before: modelToolModeBeforeRun.cache_fetched_at, after: executionModelToolMode.cache_fetched_at, match: !cacheFetchedAtChanged },
+};
+const cacheSemanticIdentityIntact = cacheIntegrityComparisons.semantic_sha256.match
+  && cacheIntegrityComparisons.model_profile_sha256.match
+  && cacheIntegrityComparisons.client_version.match
+  && cacheIntegrityComparisons.tool_mode.match;
+const regexEscape = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+let fetchedAtRawDifferenceProof = { pass: false, reason: "not-applicable" };
+if (disablePluginSkillSearch && cacheFullBytesChanged && cacheFetchedAtChanged
+  && strictPreProviderCacheBytes && postProviderCacheBytes
+  && typeof modelToolModeBeforeRun.cache_fetched_at === "string"
+  && typeof executionModelToolMode.cache_fetched_at === "string") {
+  const beforeText = strictPreProviderCacheBytes.toString("utf8");
+  const beforeValue = JSON.stringify(modelToolModeBeforeRun.cache_fetched_at);
+  const afterValue = JSON.stringify(executionModelToolMode.cache_fetched_at);
+  const pattern = new RegExp(`("fetched_at"\\s*:\\s*)${regexEscape(beforeValue)}`, "g");
+  const matches = [...beforeText.matchAll(pattern)];
+  const expectedPost = matches.length === 1 ? beforeText.replace(pattern, `$1${afterValue}`) : null;
+  fetchedAtRawDifferenceProof = {
+    pass: expectedPost !== null && expectedPost === postProviderCacheBytes.toString("utf8"),
+    reason: matches.length !== 1
+      ? "fetched-at-token-not-unique"
+      : expectedPost === postProviderCacheBytes.toString("utf8") ? null : "raw-bytes-differ-outside-fetched-at-value",
+    before_token_occurrences: matches.length,
+  };
 }
+const cacheVolatileOnlyChange = cacheFullBytesChanged && cacheFetchedAtChanged
+  && cacheSemanticIdentityIntact && fetchedAtRawDifferenceProof.pass;
+const cacheIntegrityPass = !disablePluginSkillSearch || (
+  postProviderCacheArtifact !== null
+  && cacheSemanticIdentityIntact
+  && (!cacheFullBytesChanged || cacheVolatileOnlyChange)
+);
+const cacheIntegrity = {
+  applicable: disablePluginSkillSearch,
+  pass: cacheIntegrityPass,
+  reason: cacheIntegrityPass
+    ? null
+    : postProviderCacheArtifact === null
+      ? "post-provider-cache-evidence-unavailable"
+      : cacheSemanticIdentityIntact
+        ? "unapproved-nonvolatile-byte-drift"
+        : "semantic-profile-client-or-tool-mode-drift",
+  allowed_volatile_fields: ["fetched_at"],
+  observed_change_class: postProviderCacheArtifact === null
+    ? "evidence-unavailable"
+    : !cacheFullBytesChanged ? "none" : cacheVolatileOnlyChange ? "volatile-only" : "integrity-drift",
+  post_provider_cache_artifact: postProviderCacheArtifact,
+  post_provider_cache_preservation_error: postProviderCachePreservationError,
+  volatile_raw_difference_proof: fetchedAtRawDifferenceProof,
+  comparisons: cacheIntegrityComparisons,
+};
 writeFileSync(eventsPath, stdout, "utf8");
 writeFileSync(join(artifactDir, "stderr.log"), stderr, "utf8");
 
@@ -359,6 +440,7 @@ const result = {
         cache_fetched_at: modelToolModeBeforeRun.cache_fetched_at,
         cache_client_version: modelToolModeBeforeRun.cache_client_version,
       },
+      integrity: cacheIntegrity,
     },
     auth_mode: exactRuntimeContract
       ? "immutable-snapshot-copy"
@@ -429,4 +511,7 @@ const result = {
 };
 writeJson(resultPath, result);
 console.log(JSON.stringify(result, null, 2));
-if (exit.code !== 0 || timedOut || spawnError) process.exitCode = 1;
+if (exit.code !== 0 || timedOut || spawnError || !cacheIntegrityPass) {
+  if (!cacheIntegrityPass) console.error("strict isolated Codex home cache/profile integrity changed during provider invocation");
+  process.exitCode = 1;
+}

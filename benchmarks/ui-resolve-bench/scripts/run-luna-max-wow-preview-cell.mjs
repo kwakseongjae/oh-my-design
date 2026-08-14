@@ -542,6 +542,27 @@ function auditImmutableFile(path, expectedSha256) {
     return { pass: false, binding: null, reason: String(error?.message ?? error) };
   }
 }
+function auditPostProviderCacheArtifact(workspace, integrity) {
+  if (integrity?.applicable !== true) return { applicable: false, pass: true, binding: null, reason: null };
+  const expectedPath = join(workspace, ".benchmark", "models-cache.post-provider.bin");
+  const claimed = integrity.post_provider_cache_artifact;
+  if (!claimed || resolve(claimed.path ?? "") !== expectedPath) {
+    return { applicable: true, pass: false, binding: null, reason: "post-provider-cache-path-outside-trusted-benchmark" };
+  }
+  try {
+    const info = lstatSync(expectedPath);
+    if (info.isSymbolicLink()) {
+      rmSync(expectedPath, { force: true });
+      throw new Error("post-provider cache artifact must be a regular non-symlink file");
+    }
+    if (!info.isFile()) throw new Error("post-provider cache artifact must be a regular non-symlink file");
+    const bytes = readFileSync(expectedPath); const actual = { path: expectedPath, sha256: sha256(bytes), bytes: bytes.length };
+    const pass = actual.sha256 === claimed.sha256 && actual.bytes === claimed.bytes;
+    return { applicable: true, pass, binding: actual, reason: pass ? null : "post-provider-cache-sha-or-bytes-drift" };
+  } catch (error) {
+    return { applicable: true, pass: false, binding: null, reason: String(error?.message ?? error) };
+  }
+}
 export function detectNativeInfrastructureBlock({ variantId, blankShell, finalMessage }) {
   return variantId === OMD_VARIANT && blankShell
     && /blocked before product build|adopter rejects packages nested inside the project|workspace-only rule forbids staging outside/i.test(finalMessage);
@@ -1015,6 +1036,7 @@ export function runCell(options) {
   const startNs = process.hrtime.bigint();
   const result = spawnSync(call.executable, call.args, { cwd: repoRoot, encoding: "utf8", timeout: TIMEOUT_MS + 30_000, maxBuffer: 64 * 1024 * 1024, env: { ...providerIsolation.env, ...(externalStaging ? { [OMD_STAGING_ENV]: externalStaging.root, [OMD_PACKAGE_ENV]: externalStaging.packageRoot, [OMD_CHECKPOINT_ENV]: externalStaging.checkpointPath, [OMD_AUTHORITY_RECEIPT_ENV]: externalStaging.authorityReceiptPath, [OMD_AUTHORITY_RECEIPT_SHA_ENV]: externalStaging.authorityReceiptSha256, [OMD_AUTHORITY_ACTIVATION_SHA_ENV]: sha256(externalStaging.disclosure), [OMD_AUTHORITY_RUN_DIR_ENV]: externalStaging.controllerRunDir, [OMD_AUTHORITY_EXECUTABLE_ENV]: externalStaging.authorityExecutable } : {}), OMD_LUNA_MAX_NETWORK_POLICY: "provider-only-no-self-network", OMD_LUNA_MAX_BROWSER_POLICY: "no-provider-browser-launch" } });
   const runResultPath = join(isolated, ".benchmark/run-result.json"); const eventsPath = join(isolated, ".benchmark/events.jsonl"); const events = parseEvents(eventsPath); const runResult = existsSync(runResultPath) ? readJson(runResultPath) : null;
+  const postProviderCacheReadback = auditPostProviderCacheArtifact(isolated, runResult?.runtime?.model_tool_mode_evidence?.integrity);
   const hiddenImageAudit = auditHiddenImageGeneration({ providerHome: providerIsolation.receipt.provider_home, before: generatedImagesBefore, workspaceBefore: prepared.initial, workspace: isolated, events });
   const hiddenImageAuditPath = join(execution, "HIDDEN-IMAGE-GENERATION-AUDIT.json"); writeJsonExclusive(hiddenImageAuditPath, hiddenImageAudit);
   rmSync(providerIsolation.receipt.provider_home, { recursive: true });
@@ -1037,7 +1059,14 @@ export function runCell(options) {
   const blankShell = readFileSync(join(isolated, "index.html")).equals(readFileSync(join(cell, "index.html")));
   const nativeInfrastructureBlock = detectNativeInfrastructureBlock({ variantId: prepared.metadata.arm.variant_id, blankShell, finalMessage });
   const timedOut = result.error?.code === "ETIMEDOUT" || runResult?.process?.timed_out === true;
-  const providerSucceeded = result.status === 0 && !result.error && existsSync(runResultPath) && runResult?.process?.exit_code === 0 && !timedOut && rollout.exact && rollout.provider_usage.available && hiddenImageAudit.pass && tools.agent_browser_calls === 0 && tools.agent_network_attempts === 0 && tools.external_context_interventions === 0 && stagingAudit.pass && stagingReceiptIntact && authorityReceiptIntact && omdControllerCommands.pass && omdControllerOutcome.pass && !nativeInfrastructureBlock;
+  const providerRuntimeIntegrityValue = runResult?.runtime?.model_tool_mode_evidence?.integrity ?? null;
+  const providerRuntimeIntegrity = providerRuntimeIntegrityValue
+    ? { ...providerRuntimeIntegrityValue, post_provider_cache_artifact_readback: postProviderCacheReadback }
+    : null;
+  const providerRuntimeIntegrityInvalid = providerRuntimeIntegrity?.applicable === true
+    && (providerRuntimeIntegrity.pass !== true || postProviderCacheReadback.pass !== true);
+  const providerInvocationObserved = rollout.completions.length === 1 && rollout.provider_usage.available;
+  const providerSucceeded = result.status === 0 && !result.error && existsSync(runResultPath) && runResult?.process?.exit_code === 0 && !timedOut && rollout.exact && rollout.provider_usage.available && !providerRuntimeIntegrityInvalid && hiddenImageAudit.pass && tools.agent_browser_calls === 0 && tools.agent_network_attempts === 0 && tools.external_context_interventions === 0 && stagingAudit.pass && stagingReceiptIntact && authorityReceiptIntact && omdControllerCommands.pass && omdControllerOutcome.pass && !nativeInfrastructureBlock;
   let evaluation = null;
   if (providerSucceeded) {
     const evaluatorDir = join(execution, "evaluator"); mkdirSync(evaluatorDir, { recursive: false });
@@ -1065,10 +1094,10 @@ export function runCell(options) {
   const evaluatorInfrastructureFailure = providerSucceeded && evaluation?.startup_failure === true;
   const authorityIntegrityInvalid = !authorityRuntimeIntact || !stagingAudit.pass || !stagingReceiptIntact || !authorityReceiptIntact || !omdControllerCommands.pass || !omdControllerOutcome.pass;
   const hiddenImageIntegrityInvalid = !hiddenImageAudit.pass;
-  const infrastructureInvalid = !runResult || !rollout.exact || !rollout.provider_usage.available || !hiddenImageAudit.pass || tools.agent_browser_calls > 0 || tools.agent_network_attempts > 0 || tools.external_context_interventions > 0 || authorityIntegrityInvalid || nativeInfrastructureBlock || evaluatorInfrastructureFailure;
+  const infrastructureInvalid = !runResult || !rollout.exact || !rollout.provider_usage.available || providerRuntimeIntegrityInvalid || !hiddenImageAudit.pass || tools.agent_browser_calls > 0 || tools.agent_network_attempts > 0 || tools.external_context_interventions > 0 || authorityIntegrityInvalid || nativeInfrastructureBlock || evaluatorInfrastructureFailure;
   const status = authorityIntegrityInvalid || hiddenImageIntegrityInvalid ? "infrastructure-invalid" : timedOut ? "timeout" : infrastructureInvalid ? "infrastructure-invalid" : providerSucceeded && evaluation?.score && evaluation.exit_code === 0 ? "completed" : "failed";
   const failurePath = join(execution, "FAILURE-ARTIFACT.json");
-  writeJsonExclusive(failurePath, { schema_version: "0.1", cell_id: next.id, status, native_infrastructure_block: nativeInfrastructureBlock, evaluator_infrastructure_failure: evaluatorInfrastructureFailure, hidden_image_generation_audit: fileBinding(hiddenImageAuditPath), hidden_image_generation_pass: hiddenImageAudit.pass, hidden_image_generation_reason: hiddenImageAudit.reason, blank_shell: blankShell, staging_receipt_intact: stagingReceiptIntact, authority_controller_receipt_intact: authorityReceiptIntact, authority_controller_commands: omdControllerCommands, authority_controller_outcome: omdControllerOutcome, staging_audit: stagingAudit, process: { exit_code: result.status, signal: result.signal, timed_out: timedOut, error: result.error?.message ?? null }, rollout_exact: rollout.exact, evaluator_exit_code: evaluation?.exit_code ?? null });
+  writeJsonExclusive(failurePath, { schema_version: "0.1", cell_id: next.id, status, native_infrastructure_block: nativeInfrastructureBlock, evaluator_infrastructure_failure: evaluatorInfrastructureFailure, provider_runtime_integrity_invalid: providerRuntimeIntegrityInvalid, provider_runtime_integrity: providerRuntimeIntegrity, raw_successful_completion_preserved: providerInvocationObserved, hidden_image_generation_audit: fileBinding(hiddenImageAuditPath), hidden_image_generation_pass: hiddenImageAudit.pass, hidden_image_generation_reason: hiddenImageAudit.reason, blank_shell: blankShell, staging_receipt_intact: stagingReceiptIntact, authority_controller_receipt_intact: authorityReceiptIntact, authority_controller_commands: omdControllerCommands, authority_controller_outcome: omdControllerOutcome, staging_audit: stagingAudit, process: { exit_code: result.status, signal: result.signal, timed_out: timedOut, error: result.error?.message ?? null }, rollout_exact: rollout.exact, evaluator_exit_code: evaluation?.exit_code ?? null });
   const packageResult = proof(isolated, prepared.metadata.arm.variant_id); const packagePath = join(execution, "DESIGN-SYSTEM-PACKAGE.json");
   writeJsonExclusive(packagePath, packageResult);
   const evaluatorValue = evaluation?.score ? readJson(resolve(execution, evaluation.score.path)) : null;
@@ -1089,8 +1118,8 @@ export function runCell(options) {
     raw_response: fileBinding(rawResponsePath), workspace_before: { sha256: prepared.initial.sha256 }, workspace_after: { sha256: finalTree.sha256 }, evaluator: evaluatorRecord,
     manual_product_edits: interventions, follow_up_questions: interventions, unplanned_interventions: interventions, manual_edits: interventions, followups: interventions, required_states: requiredStates,
     proof: { screenshots, design_system_package: { ...fileBinding(packagePath), parsed: packageResult.parsed, pass: packageResult.parsed } }, failure_artifact: fileBinding(failurePath),
-    provider_calls: rollout.exact && hiddenImageAudit.pass ? 1 : "unknown", model_calls: rollout.exact && hiddenImageAudit.pass ? 1 : "unknown", browser_calls: tools.agent_browser_calls + (evaluation?.browser_calls ?? 0), browser_call_split: { agent_browser_calls: tools.agent_browser_calls, evaluator_browser_calls: evaluation?.browser_calls ?? 0 }, retry_calls: 0, replacement_calls: 0, fallback_calls: 0, repair_calls: 0,
-    started_at: startedAt, finished_at: new Date().toISOString(), process: { exit_code: result.status, signal: result.signal, timed_out: timedOut, error: result.error?.message ?? null }, rollout: { exact_luna_max_one_turn: rollout.exact, raw_turn_context_count: rollout.contexts.length, cli_completion_count: rollout.completions.length, fallback_marker_count: rollout.fallbacks.length, evidence_mode: "run-result-plus-raw-cli-stream-plus-admitted-preflight" }, raw, design_system_package: packageResult, native_infrastructure_block: nativeInfrastructureBlock, blank_shell: blankShell, external_staging: externalStaging ? { receipt: stagingReceiptAudit.binding, expected_receipt_sha256: externalStaging.receiptSha256, receipt_intact: stagingReceiptIntact, receipt_readback_error: stagingReceiptAudit.reason, audit: stagingAudit } : { applicable: false }, authority_controller: externalStaging ? { receipt: authorityReceiptAudit.binding, expected_receipt_sha256: externalStaging.authorityReceiptSha256, receipt_intact: authorityReceiptIntact, receipt_readback_error: authorityReceiptAudit.reason, runtime_closure: { expected_sha256: externalStaging.authorityRuntimeSha256, observed_sha256: authorityRuntimePost.sha256, intact: authorityRuntimeIntact, reason: authorityRuntimePost.reason }, commands: omdControllerCommands, outcome: omdControllerOutcome } : { applicable: false }, hidden_image_generation: { audit: fileBinding(hiddenImageAuditPath), pass: hiddenImageAudit.pass, reason: hiddenImageAudit.reason, additional_hidden_model_tool_invocations: hiddenImageAudit.additional_hidden_model_tool_invocations, workspace_asset_lineage: hiddenImageAudit.workspace_asset_lineage }, provider_runtime_isolation: fileBinding(join(execution, "PROVIDER-RUNTIME-ISOLATION.json")), provider_runtime_cleanup: fileBinding(join(execution, "PROVIDER-RUNTIME-CLEANUP.json")), admission_sha256: admission.admissionEvidence.sha256, rerun_allowed: false,
+    provider_calls: providerInvocationObserved && hiddenImageAudit.pass ? 1 : "unknown", model_calls: providerInvocationObserved && hiddenImageAudit.pass ? 1 : "unknown", browser_calls: tools.agent_browser_calls + (evaluation?.browser_calls ?? 0), browser_call_split: { agent_browser_calls: tools.agent_browser_calls, evaluator_browser_calls: evaluation?.browser_calls ?? 0 }, retry_calls: 0, replacement_calls: 0, fallback_calls: 0, repair_calls: 0,
+    started_at: startedAt, finished_at: new Date().toISOString(), process: { exit_code: result.status, signal: result.signal, timed_out: timedOut, error: result.error?.message ?? null }, rollout: { exact_luna_max_one_turn: rollout.exact, raw_turn_context_count: rollout.contexts.length, cli_completion_count: rollout.completions.length, fallback_marker_count: rollout.fallbacks.length, raw_successful_completion_preserved: providerInvocationObserved, evidence_mode: "run-result-plus-raw-cli-stream-plus-admitted-preflight" }, raw, design_system_package: packageResult, native_infrastructure_block: nativeInfrastructureBlock, provider_runtime_integrity: providerRuntimeIntegrity, blank_shell: blankShell, external_staging: externalStaging ? { receipt: stagingReceiptAudit.binding, expected_receipt_sha256: externalStaging.receiptSha256, receipt_intact: stagingReceiptIntact, receipt_readback_error: stagingReceiptAudit.reason, audit: stagingAudit } : { applicable: false }, authority_controller: externalStaging ? { receipt: authorityReceiptAudit.binding, expected_receipt_sha256: externalStaging.authorityReceiptSha256, receipt_intact: authorityReceiptIntact, receipt_readback_error: authorityReceiptAudit.reason, runtime_closure: { expected_sha256: externalStaging.authorityRuntimeSha256, observed_sha256: authorityRuntimePost.sha256, intact: authorityRuntimeIntact, reason: authorityRuntimePost.reason }, commands: omdControllerCommands, outcome: omdControllerOutcome } : { applicable: false }, hidden_image_generation: { audit: fileBinding(hiddenImageAuditPath), pass: hiddenImageAudit.pass, reason: hiddenImageAudit.reason, additional_hidden_model_tool_invocations: hiddenImageAudit.additional_hidden_model_tool_invocations, workspace_asset_lineage: hiddenImageAudit.workspace_asset_lineage }, provider_runtime_isolation: fileBinding(join(execution, "PROVIDER-RUNTIME-ISOLATION.json")), provider_runtime_cleanup: fileBinding(join(execution, "PROVIDER-RUNTIME-CLEANUP.json")), admission_sha256: admission.admissionEvidence.sha256, rerun_allowed: false,
   };
   terminal.record_sha256 = sha256(canonical(terminal));
   const terminalName = status === "completed" ? "COMPLETED.json" : status === "timeout" ? "TIMEOUT.json" : status === "infrastructure-invalid" ? "INFRASTRUCTURE-INVALID.json" : "FAILED.json";
