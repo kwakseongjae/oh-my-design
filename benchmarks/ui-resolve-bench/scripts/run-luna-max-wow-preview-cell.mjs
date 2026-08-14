@@ -61,6 +61,16 @@ function modelCacheIdentity(bytes) {
     client_version: cache.client_version ?? null,
   };
 }
+function fetchedAtRawDifference(beforeBytes, afterBytes, beforeValue, afterValue) {
+  if (beforeBytes.equals(afterBytes)) return { pass: true, classification: "none", before_token_occurrences: 0 };
+  if (typeof beforeValue !== "string" || typeof afterValue !== "string" || beforeValue === afterValue) return { pass: false, classification: "raw-drift-without-fetched-at-change", before_token_occurrences: 0 };
+  const beforeText = beforeBytes.toString("utf8");
+  const escaped = JSON.stringify(beforeValue).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = new RegExp(`("fetched_at"\\s*:\\s*)${escaped}`, "g");
+  const matches = [...beforeText.matchAll(pattern)];
+  const expected = matches.length === 1 ? beforeText.replace(pattern, `$1${JSON.stringify(afterValue)}`) : null;
+  return { pass: expected !== null && expected === afterBytes.toString("utf8"), classification: expected !== null && expected === afterBytes.toString("utf8") ? "fetched-at-only" : "raw-drift-outside-fetched-at", before_token_occurrences: matches.length };
+}
 export function promptAuditCacheMutation(beforeBytes, afterBytes) {
   const before = JSON.parse(beforeBytes.toString("utf8")); const after = JSON.parse(afterBytes.toString("utf8"));
   const beforeIdentity = modelCacheIdentity(beforeBytes); const afterIdentity = modelCacheIdentity(afterBytes);
@@ -85,11 +95,13 @@ export function promptAuditCacheMutation(beforeBytes, afterBytes) {
   }
   const partialKnownNormalization = normalizedDefaults.length > 0 && missingDefaults.length > 0;
   const pass = canonical(normalizedBefore) === canonical(normalizedAfter) && !partialKnownNormalization;
+  const rawBytes = fetchedAtRawDifference(beforeBytes, afterBytes, before.fetched_at, after.fetched_at);
   return {
     pass,
     classification: pass ? (beforeIdentity.full_sha256 === afterIdentity.full_sha256 ? "none" : "known-cli-normalization-discarded") : "semantic-authority-drift-rejected",
     policy: { sacrificial_home: true, admitted_provider_cache_reuse: false, allowed_changes: ["fetched_at", "models[*].include_apps_usage_instructions:missing-to-boolean-default"] },
     fetched_at: { before: before.fetched_at ?? null, after: after.fetched_at ?? null, changed: before.fetched_at !== after.fetched_at },
+    raw_bytes: rawBytes,
     normalized_defaults: normalizedDefaults,
     missing_defaults: missingDefaults,
     before: beforeIdentity,
@@ -98,7 +110,7 @@ export function promptAuditCacheMutation(beforeBytes, afterBytes) {
 }
 export function providerZeroNormalizedCacheCandidate(bytes) {
   const source = JSON.parse(bytes.toString("utf8"));
-  const result = { pass: true, required: false, client_version: source?.client_version ?? null, changes: [], violations: [], source_sha256: sha256(bytes), candidate_sha256: null, candidate_bytes: null };
+  const result = { pass: true, required: false, client_version: source?.client_version ?? null, changes: [], violations: [], serialization: null, source_sha256: sha256(bytes), candidate_sha256: null, candidate_bytes: null };
   if (source?.client_version !== "0.147.0") {
     result.pass = false; result.violations.push({ reason: "unsupported-client-version", observed: source?.client_version ?? null, supported: ["0.147.0"] });
     return result;
@@ -115,22 +127,29 @@ export function providerZeroNormalizedCacheCandidate(bytes) {
     for (const [slug, expected] of Object.entries(CODEX_0147_APPS_USAGE_DEFAULTS)) {
       const profile = profiles.get(slug);
       if (!profile) result.violations.push({ reason: "missing-model-slug", slug });
+      else if (!Object.hasOwn(profile, "include_plugin_usage_instructions")) result.violations.push({ reason: "missing-key-order-anchor", slug, anchor: "include_plugin_usage_instructions" });
       else if (Object.hasOwn(profile, "include_apps_usage_instructions") && profile.include_apps_usage_instructions !== expected) {
         result.violations.push({ reason: "wrong-preexisting-default", slug, expected, observed: profile.include_apps_usage_instructions });
       }
     }
     if (result.violations.length === 0) {
       const candidate = structuredClone(source);
-      for (const profile of candidate.models) {
-        if (!Object.hasOwn(profile, "include_apps_usage_instructions")) {
-          const value = CODEX_0147_APPS_USAGE_DEFAULTS[profile.slug];
-          profile.include_apps_usage_instructions = value;
-          result.changes.push({ model: profile.slug, field: "include_apps_usage_instructions", before: "absent", after: value, authority: "codex-cli-0.147.0-reproduced-default" });
+      candidate.models = candidate.models.map((profile) => {
+        const value = CODEX_0147_APPS_USAGE_DEFAULTS[profile.slug];
+        if (!Object.hasOwn(profile, "include_apps_usage_instructions")) result.changes.push({ model: profile.slug, field: "include_apps_usage_instructions", before: "absent", after: value, authority: "codex-cli-0.147.0-reproduced-default" });
+        const ordered = {};
+        for (const [key, entry] of Object.entries(profile)) {
+          if (key === "include_apps_usage_instructions") continue;
+          ordered[key] = entry;
+          if (key === "include_plugin_usage_instructions") ordered.include_apps_usage_instructions = value;
         }
-      }
-      result.required = result.changes.length > 0;
+        return ordered;
+      });
+      const candidateBytes = Buffer.from(JSON.stringify(candidate, null, 2));
+      result.serialization = { exact_match: candidateBytes.equals(bytes), format: "json-pretty-2-no-final-newline", apps_key_position: "immediately-after-include_plugin_usage_instructions", source_final_newline: bytes.length > 0 && bytes[bytes.length - 1] === 0x0a, candidate_final_newline: false };
+      result.required = !candidateBytes.equals(bytes);
       if (result.required) {
-        result.candidate_bytes = Buffer.from(`${JSON.stringify(candidate, null, 2)}\n`);
+        result.candidate_bytes = candidateBytes;
         result.candidate_sha256 = sha256(result.candidate_bytes);
       }
     }
@@ -1085,6 +1104,7 @@ export function prepareProviderIsolation({ execution, workspace, metadata, stati
   invariant(!promptAuditAuth.present, "unauthenticated prompt-input audit created auth material");
   invariant(promptCacheMutation.pass, "prompt-input audit cache changed outside known discarded CLI normalization");
   invariant(promptCacheMutation.normalized_defaults.length === 0, "unauthenticated prompt-input audit attempted semantic cache normalization");
+  invariant(promptCacheMutation.raw_bytes.pass, "unauthenticated prompt-input audit changed raw cache bytes outside fetched_at");
   mkdirSync(providerHome, { recursive: false, mode: 0o700 });
   writeFileSync(join(providerHome, "auth.json"), authBytes, { flag: "wx", mode: 0o600 });
   writeFileSync(join(providerHome, "models_cache.json"), catalogBytes, { flag: "wx", mode: 0o600 });

@@ -24,11 +24,14 @@ function promptInputJson(block, extraMessages = []) {
 
 function fixture({ runnerMode = "success", designSystem = true, variant = "model-only", agentBrowserCall = false, externalContextCall = false, networkAttempt = false, hiddenGeneratedImage = false, forbiddenAuthorityCommand = false, deleteAuthorityReceipt = false, tamperAuthorityRuntime = false, runtimeIntegrityFailure = false, runtimeIntegrityArtifactFault = null, runtimeIntegrityClaimPass = false, cliVersion = "0.147.0", includeAppsUsageInstructions = true } = {}) {
   const base = mkdtempSync(join(tmpdir(), "omd-luna-cell-runner-")); const repo = join(base, "repo"); const materialized = join(base, "materialized");
-  const profile = { slug: "gpt-5.6-luna", tool_mode: "function", default_reasoning_level: "max", supported_reasoning_levels: [{ effort: "max" }] };
+  const profile = { slug: "gpt-5.6-luna", tool_mode: "function", default_reasoning_level: "max", supported_reasoning_levels: [{ effort: "max" }], include_plugin_usage_instructions: true };
   if (typeof includeAppsUsageInstructions === "boolean") profile.include_apps_usage_instructions = includeAppsUsageInstructions;
   const defaults0147 = { "gpt-5.6-sol": true, "gpt-5.6-sol-wm": true, "gpt-5.6-terra": true, "gpt-5.6-luna": true, "gpt-5.5": true, "gpt-5.4": true, "gpt-5.4-mini": true, "gpt-5.3-codex-spark": false, "codex-auto-review": false };
-  const profiles = cliVersion === "0.147.0" ? Object.entries(defaults0147).map(([slug, expected]) => slug === profile.slug ? profile : { slug, tool_mode: "function", ...(typeof includeAppsUsageInstructions === "boolean" ? { include_apps_usage_instructions: expected } : {}) }) : [profile];
-  const runtimeHome = join(base, "runtime-home"); mkdirSync(runtimeHome); writeFileSync(join(runtimeHome, "auth.json"), "fixture-auth"); writeFileSync(join(runtimeHome, "models_cache.json"), JSON.stringify({ fetched_at: "2026-08-13T00:00:00Z", client_version: cliVersion, models: profiles }));
+  const profiles = cliVersion === "0.147.0" ? Object.entries(defaults0147).map(([slug, expected]) => slug === profile.slug ? profile : { slug, tool_mode: "function", include_plugin_usage_instructions: true, ...(typeof includeAppsUsageInstructions === "boolean" ? { include_apps_usage_instructions: expected } : {}) }) : [profile];
+  const cacheSeed = Buffer.from(JSON.stringify({ fetched_at: "2026-08-13T00:00:00Z", client_version: cliVersion, models: profiles }));
+  const normalizedSeed = providerZeroNormalizedCacheCandidate(cacheSeed);
+  const cacheBytes = includeAppsUsageInstructions === true && normalizedSeed.candidate_bytes ? normalizedSeed.candidate_bytes : cacheSeed;
+  const runtimeHome = join(base, "runtime-home"); mkdirSync(runtimeHome); writeFileSync(join(runtimeHome, "auth.json"), "fixture-auth"); writeFileSync(join(runtimeHome, "models_cache.json"), cacheBytes);
   const catalogSha = sha256(readFileSync(join(runtimeHome, "models_cache.json"))); const profileSha = sha256(canonical(profile));
   mkdirSync(repo); git(repo, "init", "-q"); git(repo, "config", "user.email", "bench@example.invalid"); git(repo, "config", "user.name", "Bench");
   for (const source of [RUNNER_PATH, ADMISSION_GENERATOR_PATH, PREREG_CONTROLLER_PATH, "benchmarks/ui-resolve-bench/scripts/run-codex.mjs", DEFAULT_EVALUATOR_PATH]) {
@@ -340,7 +343,7 @@ describe("Luna Max Wow Preview one-cell runner", () => {
   it("accepts a prompt-input fetched_at-only cache refresh and keeps rollout exact", () => {
     const f = fixture();
     const result = execute(f, { promptInputProbe: (args) => {
-      const path = join(args.env.CODEX_HOME, "models_cache.json"); const cache = JSON.parse(readFileSync(path)); cache.fetched_at = "2026-08-13T01:02:03Z"; writeFileSync(path, JSON.stringify(cache));
+      const path = join(args.env.CODEX_HOME, "models_cache.json"); const source = readFileSync(path, "utf8"); writeFileSync(path, source.replace('"fetched_at": "2026-08-13T00:00:00Z"', '"fetched_at": "2026-08-13T01:02:03Z"'));
       return defaultPromptInputProbe(args);
     } });
     const isolation = JSON.parse(readFileSync(result.provider_runtime_isolation.path));
@@ -371,15 +374,15 @@ describe("Luna Max Wow Preview one-cell runner", () => {
   it("runs from an admitted normalized 0.147 profile when prompt-input is idempotent apart from fetched_at", () => {
     const f = fixture({ cliVersion: "0.147.0", includeAppsUsageInstructions: true });
     const result = execute(f, { promptInputProbe: (args) => {
-      const path = join(args.env.CODEX_HOME, "models_cache.json"); const cache = JSON.parse(readFileSync(path));
+      const path = join(args.env.CODEX_HOME, "models_cache.json"); const source = readFileSync(path, "utf8"); const cache = JSON.parse(source);
       expect(cache.models[0].include_apps_usage_instructions).toBe(true);
-      cache.fetched_at = "2026-08-14T05:06:14.532926Z"; writeFileSync(path, JSON.stringify(cache));
+      writeFileSync(path, source.replace('"fetched_at": "2026-08-13T00:00:00Z"', '"fetched_at": "2026-08-14T05:06:14.532926Z"'));
       return defaultPromptInputProbe(args);
     } });
     expect(result).toMatchObject({ status: "completed", provider_calls: 1, model_calls: 1 });
     const isolation = JSON.parse(readFileSync(result.provider_runtime_isolation.path));
     const audit = JSON.parse(readFileSync(isolation.prompt_audit_home.cache_audit.path));
-    expect(audit).toMatchObject({ pass: true, normalized_defaults: [], missing_defaults: [], fetched_at: { changed: true }, prompt_audit_auth: { present: false, type: null, sha256: null, bytes: 0 }, provider_calls: 0, network_calls: 0 });
+    expect(audit).toMatchObject({ pass: true, normalized_defaults: [], missing_defaults: [], fetched_at: { changed: true }, raw_bytes: { pass: true, classification: "fetched-at-only", before_token_occurrences: 1 }, prompt_audit_auth: { present: false, type: null, sha256: null, bytes: 0 }, provider_calls: 0, network_calls: 0 });
     expect(isolation.model_catalog).toMatchObject({ provider_copy_pristine: true, initial_copy_sha256: f.catalogSha, copy_sha256: f.catalogSha, model_profile_sha256: f.profileSha, client_version: "0.147.0" });
   });
 
@@ -424,7 +427,7 @@ describe("Luna Max Wow Preview one-cell runner", () => {
 
   it("accepts only the exact complete 0.147 apps-usage default map and rejects semantic authority drift", () => {
     const defaults = { "gpt-5.6-sol": true, "gpt-5.6-sol-wm": true, "gpt-5.6-terra": true, "gpt-5.6-luna": true, "gpt-5.5": true, "gpt-5.4": true, "gpt-5.4-mini": true, "gpt-5.3-codex-spark": false, "codex-auto-review": false };
-    const profiles = Object.keys(defaults).map((slug) => ({ slug, tool_mode: "function" }));
+    const profiles = Object.keys(defaults).map((slug) => ({ slug, include_plugin_usage_instructions: true, tool_mode: "function" }));
     const base = { client_version: "0.147.0", fetched_at: "before", etag: "stable", models: profiles };
     const bytes = (value) => Buffer.from(JSON.stringify(value));
     const exact = structuredClone(base); exact.fetched_at = "after"; for (const profile of exact.models) profile.include_apps_usage_instructions = defaults[profile.slug];
@@ -442,7 +445,13 @@ describe("Luna Max Wow Preview one-cell runner", () => {
       "client change": (() => { const value = structuredClone(base); value.client_version = "0.147.1"; return [base, value]; })(),
     };
     for (const [name, [before, after]] of Object.entries(cases)) expect(promptAuditCacheMutation(bytes(before), bytes(after)), name).toMatchObject({ pass: false, classification: "semantic-authority-drift-rejected" });
-    expect(providerZeroNormalizedCacheCandidate(bytes(withDefaults))).toMatchObject({ pass: true, required: false, changes: [], violations: [] });
+    const orderedCandidate = providerZeroNormalizedCacheCandidate(bytes(base));
+    expect(orderedCandidate).toMatchObject({ pass: true, required: true, changes: { length: 9 }, serialization: { exact_match: false, format: "json-pretty-2-no-final-newline", apps_key_position: "immediately-after-include_plugin_usage_instructions", candidate_final_newline: false } });
+    expect(orderedCandidate.candidate_bytes.at(-1)).not.toBe(0x0a);
+    const ordered = JSON.parse(orderedCandidate.candidate_bytes);
+    for (const profile of ordered.models) expect(Object.keys(profile).indexOf("include_apps_usage_instructions")).toBe(Object.keys(profile).indexOf("include_plugin_usage_instructions") + 1);
+    expect(providerZeroNormalizedCacheCandidate(orderedCandidate.candidate_bytes)).toMatchObject({ pass: true, required: false, changes: [], violations: [], candidate_sha256: null, candidate_bytes: null, serialization: { exact_match: true, source_final_newline: false } });
+    expect(providerZeroNormalizedCacheCandidate(bytes(withDefaults))).toMatchObject({ pass: true, required: true, changes: [], violations: [], serialization: { exact_match: false } });
     const candidateViolations = {
       "wrong preexisting default": (() => { const value = structuredClone(withDefaults); value.models[3].include_apps_usage_instructions = false; return value; })(),
       "unknown model": (() => { const value = structuredClone(withDefaults); value.models.push({ slug: "unreviewed-model" }); return value; })(),
