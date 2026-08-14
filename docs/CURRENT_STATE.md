@@ -3,11 +3,20 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: next Luna epoch source `caf0e62d` (exact Codex 0.147 cache serialization); immutable diagnostic Luna epochs `f6cd17e2`, `253a3abc`, `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · f6cd order1의 cache raw drift를 exact key-order/final-newline 결함으로 입증했고 serializer 수정 commit `caf0e62d`를 봉인했다. strict raw gate는 유지된다. 새 셀은 caf0 source 기준 provider-zero receipt/48+6 materialization/Sol-xhigh admission을 모두 fresh 재발급하고 baseline0을 확인할 때까지 HOLD다.
+- 기준 소스: active Luna epoch source `caf0e62d3e98684d482c56a2bbe3ef93a05ea873` (exact Codex 0.147 cache serialization); immutable diagnostic Luna epochs `f6cd17e2`, `253a3abc`, `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-14 · source caf0e62d의 exact cache/static/schema/runtime/IAB/evaluator, 48+6 materialization과 Sol/xhigh admission이 모두 PASS했다. baseline terminal0/missing48/ineligible6/calls0이며 next locked cell은 order1 model-only다.
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+### 2026-08-14 source caf0e62d fresh Luna Max epoch
+
+- implementation commit=`caf0e62d3e98684d482c56a2bbe3ef93a05ea873`; clean detached source=`/private/tmp/omd-luna-runtime-caf0e62d`다. exact provider-zero normalized cache=`54a4e197…`/216,195B는 apps key가 plugin key 직후이며 final byte `}`이고 committed transform에 멱등이다. runtime source=`/private/tmp/omd-luna-runtime-source-caf0e62d`, snapshot=`/private/tmp/omd-luna-runtime-snapshot-caf0e62d`, auth=`627eb799…`다.
+- fresh receipts=`/private/tmp/omd-luna-wow-evidence-caf0e62d`: static=`47a4d4fb…`, production schema7/7=`a03bea92…`, historical raw Luna/max attribution re-audit=`73f6b2b8…`, Codex IAB identity re-audit=`19d79f26…`, evaluation runtime=`cb14e7a9…`. 신규 provider/model/browser 호출0이며 schema liveness HTTP 7건만 실행했다.
+- evaluator dependency 첫 bundle은 `/Library/Fonts/Arial Unicode.ttf` symlink에서 fail-close해 unreferenced로 보존했다. authorized fresh `-v2` bundle은 `/System/Library/Fonts`+user Fonts만 사용하며 135 files/tree=`2637d5fb…`, font479/tree=`cd7ddbb4…`로 PASS했다.
+- locked=`/private/tmp/omd-luna-wow-locked-caf0e62d`; matrix=`b46a0f21…`, preregistration=`643622b2…`. materialized=`/private/tmp/omd-luna-wow-materialized-caf0e62d`, prepared tree=`3c03a29c…`, manifest=`bf0a09a3…`, 48 scheduled+6 ineligible, execution dirs0다.
+- Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-caf0e62d/ADMISSION.json`, SHA=`28f09530…`, all 8 bindings exact/calls0다. baseline=`/private/tmp/omd-luna-wow-evidence-caf0e62d/EXECUTION-RECORDS.baseline.json`, SHA=`8567df1f…`, terminal0/missing48/ineligible6, collection calls0다.
+- **다음 exact action:** order1 `neighborhood-library-landing-luna-max-r1-model-only`을 Luna/max로 단 한 번 실행한다. exact cache pre/post, hidden image, evaluator/state proof를 즉시 봉인하며 retry/replacement/fallback0이다.
 
 ### 2026-08-14 source f6cd17e2 fresh Luna Max epoch
 

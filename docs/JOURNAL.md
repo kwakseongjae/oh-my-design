@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · source caf0 fresh Luna epoch admitted
+- exact cache `54a4e197…`, schema/static/runtime/IAB/evaluator와 48+6 materialization을 source `caf0e62d`에 fresh 결박했다.
+- tree `3c03a29c…`, admission `28f09530…`; font-symlink 첫 bundle은 unreferenced, explicit safe roots의 `-v2`만 채택했다.
+- baseline `8567df1f…`은 terminal0/missing48/ineligible6/calls0이며 f6cd는 immutable diagnostic으로 유지한다.
+- 다음은 exact order1 model-only Luna/max 1회·retry0 terminal/partial 봉인이다.
+
 ## 2026-08-14 (Codex) · exact Codex cache serializer fixed
 - commit `caf0e62d`는 0.147 apps-usage key를 plugin key 직후에 배치하고 final newline 없는 exact serializer를 봉인했다.
 - preserved f6cd before의 새 candidate는 `54a4e197…`; fetched_at 교체 후 post `45545a33…`와 216,195바이트 exact 일치한다.
