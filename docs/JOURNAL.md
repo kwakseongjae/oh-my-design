@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · exact Codex cache serializer fixed
+- commit `caf0e62d`는 0.147 apps-usage key를 plugin key 직후에 배치하고 final newline 없는 exact serializer를 봉인했다.
+- preserved f6cd before의 새 candidate는 `54a4e197…`; fetched_at 교체 후 post `45545a33…`와 216,195바이트 exact 일치한다.
+- strict raw gate는 유지했고 related 90/90, lint, node-check, diff-check가 PASS했다.
+- 다음은 caf0 source provider-zero receipt/48+6 materialization/Sol-xhigh admission fresh 재결박이며 그 전 Luna 호출은 HOLD다.
+
 ## 2026-08-14 (Codex) · source f6cd provider serialization boundary failure
 - order1은 Luna/max 1회로 61,591B HTML과 design-system package를 만들었으나 evaluator 전 cache raw-byte gate에서 멈췄다.
 - 554,640ms, input330,377/output29,512, provider/model1/1, browser0, record `8a897d5e…`, rerun0이다.
