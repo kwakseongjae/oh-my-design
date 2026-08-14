@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · fresh epoch authority-controller gate 봉인
+- commit `d1f5e5b8`로 execution-owned immutable controller bundle과 single activation 경계를 구현했다.
+- self-approval, helper tamper, shell injection, duplicate/failed activation, timeout 오염은 evaluator 전 `infrastructure-invalid`다.
+- 독립 회귀 175 pass/3 skip, tarball 4-channel install+doctor, lint/build가 green이고 외부 호출은 0이다.
+- 다음은 continuity HEAD 기준 모든 receipt/materialization/admission을 재발급하고 새 epoch order1부터 시작한다.
+
 ## 2026-08-14 (Codex) · 58dc cold-chain Anthropic 봉인·epoch 동결
 - Anthropic은 554,758ms·434,292 tokens에 강한 exception queue UI와 8 captures를 만들었다.
 - selected는 관측됐지만 filtered state 미관측으로 objective0; record `efd0e911…`, partial-07 `342a1a8f…`다.

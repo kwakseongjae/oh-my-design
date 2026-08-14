@@ -3,11 +3,19 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 58dcf8a9 diagnostic epoch frozen terminal 7 / missing 41 / ineligible 6; fresh authority-controller epoch 준비
+- 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; authority-controller implementation `d1f5e5b8`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-14 · source 58dcf8a9 diagnostic epoch frozen terminal 7 / missing 41 / ineligible 6; external authority-controller hardening independently green, fresh epoch rebinding next
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+### 2026-08-14 fresh Luna epoch authority-controller gate
+
+- implementation commit `d1f5e5b8`은 OmD benchmark arm의 controller를 provider-writable workspace 밖 execution-owned runtime bundle로 분리한다. activate/prepare/compile/adopt/validate/Core/schema 전체 closure가 파일 모드+SHA로 receipt에 결박되고 helper는 자기 bundle의 child runtime만 실행한다.
+- 모델은 exact literal `node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE . $OMD_AUTHORITY_CONTROLLER_RUN_DIR` 또는 exact canonical expanded command 중 하나를 성공한 `item.completed`로 단 한 번 실행해야 한다. env injection, wrapper, redirection, pipe/sequencing/substitution, direct approve/checkpoint/reviewer, review-vN/package-vN, duplicate/failed/nonzero/started-only activation은 모두 fail-close한다.
+- activation은 real graph/provenance/coverage → review → external approval → compile exact six-file package → checkpoint → atomic adopt → provider-free project proof를 한 번에 수행한다. receipt/runtime/staging/DESIGN/proof/activation drift는 timeout보다 우선해 `infrastructure-invalid`이며 evaluator는 시작하지 않는다.
+- 독립 검증은 Core/controller/runner/materializer/install/package 10 files에서 175 pass/3 intentional skip, provider-zero positive transaction, npm tarball의 Claude/Codex/OpenCode/Cursor helper byte+syntax+doctor smoke, lint/build/node-check/diff-check PASS다. provider/model/browser/network 호출은 0이며 보호 생성 파일 3개는 commit에서 제외했다.
+- **다음 exact action:** 이 continuity checkpoint를 포함한 clean HEAD를 새 source authority로 삼고 detached worktree를 만든다. production schema7/7, static Luna/max, evaluator dependency/runtime, Codex IAB identity, Luna attribution receipt를 전부 새 source에 재발급한 뒤 new locked/materialized/runtime/admission roots를 만든다. 새 epoch는 order1부터 retry/replacement/fallback0으로 시작하고 58dc/0dc/c494 terminal은 diagnostic-only로 유지한다.
 
 ### 2026-08-14 source 58dcf8a9 Luna Max 정식 비교 epoch
 
