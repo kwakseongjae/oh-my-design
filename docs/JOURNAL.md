@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · source 253a Luna epoch admitted
+- commit `253a3abc`가 admitted static CLI를 직접 선택하고 ambient OMD env를 제거하는 계약을 봉인했다.
+- isolated Codex/cache0.147, schema/runtime/IAB/evaluator PASS; tree `f767c8ee…`, admission `522ff575…`다.
+- baseline `7662e495…`은 terminal0/missing48/ineligible6/calls0이며 68a-v2는 provider0 diagnostic으로 유지한다.
+- 다음은 order1 model-only Luna/max 1회·retry0 terminal/partial 봉인이다.
+
 ## 2026-08-14 (Codex) · source 68a v2 pre-provider CLI selection failure
 - official isolated Codex/cache 0.147 epoch는 admission PASS했지만 runner 호출이 exact CLI env를 전달하지 않아 global CLI 선택에서 차단됐다.
 - order1은 162ms infrastructure-invalid, provider/model/browser/network/tool0, record `22727989…`, rerun0이다.

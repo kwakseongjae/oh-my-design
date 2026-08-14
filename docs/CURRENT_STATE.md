@@ -3,11 +3,20 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: implementation candidate `68a19aa029ba706111828d698770a87ee9f20f9e` (post-provider cache evidence preservation); immutable diagnostic Luna epoch sources `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 68a v2 order1은 isolated Codex 0.147 path가 caller env에 전달되지 않아 provider 전 162ms infrastructure-invalid로 동결됐다. partial-01 terminal1/missing47/ineligible6/calls0이며 runner가 admitted static CLI를 ambient env 없이 직접 선택하도록 수정 전까지 HOLD다.
+- 기준 소스: active Luna epoch source `253a3abc0a2c958e91bd57c285831bb83f6993db` (admission-derived CLI + post-provider cache evidence); immutable diagnostic Luna epochs `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-14 · source 253a3abc fresh epoch가 official isolated Codex/cache 0.147.0으로 admission PASS했다. baseline terminal0/missing48/ineligible6이며 next locked cell은 order1 model-only다.
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+### 2026-08-14 source 253a3abc fresh Luna Max epoch
+
+- implementation commit=`253a3abc0a2c958e91bd57c285831bb83f6993db`; clean detached source=`/private/tmp/omd-luna-runtime-253a3abc`다. runner는 ambient PATH/env가 아니라 admitted static receipt의 canonical wrapper path/SHA/version을 유일 authority로 쓰고 child env는 bounded allowlist만 전달한다.
+- official isolated Codex/cache 0.147.0은 이전 byte-frozen source home과 `/private/tmp/omd-codex-0.147.0-runtime`을 사용한다. runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-253a3abc`, auth=`627eb799…`, cache=`0e4291c4…`; static receipt=`8e72d638…`다.
+- production schema7/7=`f853e695…`, Luna attribution re-audit=`932c8c49…`, Codex IAB identity=`3d23c2ae…`, evaluator runtime=`3e2519f6…`다. new provider/model/browser calls0이다.
+- locked=`/private/tmp/omd-luna-wow-locked-253a3abc`; matrix=`9b498f0e…`, preregistration=`e462de93…`. materialized=`/private/tmp/omd-luna-wow-materialized-253a3abc`, prepared tree=`f767c8ee…`, materialization=`6adb8591…`, 48 scheduled+6 ineligible다.
+- admission=`/private/tmp/omd-luna-wow-admission-253a3abc/ADMISSION.json`, SHA=`522ff575…`, status admitted/calls0다. baseline=`/private/tmp/omd-luna-wow-evidence-253a3abc/EXECUTION-RECORDS.baseline.json`, SHA=`7662e495…`, terminal0/missing48/ineligible6/calls0다.
+- **다음 exact action:** order1 `neighborhood-library-landing-luna-max-r1-model-only`을 Luna/max로 단 한 번 실행한다. exact CLI/cache post-readback과 terminal을 즉시 봉인하며 retry/replacement/fallback0이다.
 
 ### 2026-08-14 source 68a19aa0 fresh Luna Max v2 epoch
 
