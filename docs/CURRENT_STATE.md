@@ -20,7 +20,9 @@
 - partial-01=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-01.json`, SHA=`b6ebf9fc…`, terminal1/missing47/ineligible6이다. token monitor는 used87/reset timestamp 불변으로 리셋 미발생을 확인했다.
 - order2 `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`은 587,489ms, input445,987/output31,497/total477,484, tool17, contamination0으로 provider exit0했다. HTML16,591B+CSS34,364B+JS1,961B, vars20/selectors136/package와 12 captures가 PASS했다. deep marine/cobalt/safety-yellow/coral/mint, lending-card orbit, condensed display와 색면 섹션은 model-only보다 정체성·위계가 강하지만 small utility text와 동일한 unavailable-information 누락으로 objective0다. tokens는 model-only 1.86×, 시간 1.11×다. record=`c69863e7…`, rerun 금지다.
 - partial-02=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-02.json`, SHA=`7059cb2f…`, terminal2/missing46/ineligible6이다. token monitor는 used88/reset timestamp 불변이다.
-- **다음 exact action:** next-ID/readback/reset 없음 확인 후 order3 Impeccable prompt-only r1을 정확히 1회 실행한다. timeout도 그대로 봉인하고 first-write latency·tokens·render proof를 앞선 두 arm과 비교한다.
+- order3 `neighborhood-library-landing-luna-max-r1-impeccable-prompt-only`은 859,116ms, input1,800,790/output44,460/total1,845,250, tool26, contamination0으로 terminal `completed`다. 56,069B HTML, vars23/selectors79/package와 default/focus/unavailable 16 captures가 PASS했고 dark workshop+acid yellow+aqua+coral, borrow-ticket와 abstract tool glyph art direction은 현재 가장 강하다. 다만 visible primary CTA 5개로 unique-action 실패, activation focus transfer 실패, contrast violations로 objective50/UI-Resolved false다. tokens는 model-only 7.18×, 시간 1.62×다. record=`c2e1ef09…`, rerun 금지다.
+- partial-03=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-03.json`, SHA=`54e31dac…`, terminal3(completed1/failed2)/missing45/ineligible6이다. completed는 objective gate pass와 동의어가 아니며 release superiority 근거로 단독 승격하지 않는다.
+- **다음 exact action:** next-ID/readback/reset 없음 확인 후 order4 UI UX Pro Max r1을 정확히 1회 실행하고 시각 polish·state·a11y·tokens/latency를 세 arms와 비교한다.
 
 ### 2026-08-14 fresh Luna epoch authority-controller gate
 
