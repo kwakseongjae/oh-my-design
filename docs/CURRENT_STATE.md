@@ -22,7 +22,9 @@
 - partial-02=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-02.json`, SHA=`7059cb2f…`, terminal2/missing46/ineligible6이다. token monitor는 used88/reset timestamp 불변이다.
 - order3 `neighborhood-library-landing-luna-max-r1-impeccable-prompt-only`은 859,116ms, input1,800,790/output44,460/total1,845,250, tool26, contamination0으로 terminal `completed`다. 56,069B HTML, vars23/selectors79/package와 default/focus/unavailable 16 captures가 PASS했고 dark workshop+acid yellow+aqua+coral, borrow-ticket와 abstract tool glyph art direction은 현재 가장 강하다. 다만 visible primary CTA 5개로 unique-action 실패, activation focus transfer 실패, contrast violations로 objective50/UI-Resolved false다. tokens는 model-only 7.18×, 시간 1.62×다. record=`c2e1ef09…`, rerun 금지다.
 - partial-03=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-03.json`, SHA=`54e31dac…`, terminal3(completed1/failed2)/missing45/ineligible6이다. completed는 objective gate pass와 동의어가 아니며 release superiority 근거로 단독 승격하지 않는다.
-- **다음 exact action:** next-ID/readback/reset 없음 확인 후 order4 UI UX Pro Max r1을 정확히 1회 실행하고 시각 polish·state·a11y·tokens/latency를 세 arms와 비교한다.
+- order4 `neighborhood-library-landing-luna-max-r1-ui-ux-pro-max`는 753,695ms, input1,157,834/output38,632/total1,196,466, tool27, contamination0으로 provider exit0했다. final HTML22,166B+stylesheet/JS, vars20/selectors93/package와 12 captures는 PASS했다. parchment/mahogany/brass, serif hierarchy, tool-note card와 form은 고급스럽지만 desktop default에서 mobile nav drawer가 열린 responsive/state bug가 있고 unavailable-information 미관측으로 objective0다. tokens는 model-only 4.65×, Anthropic 2.51×다. record=`c254bc7b…`, rerun 금지다.
+- partial-04=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-04.json`, SHA=`903ebd3d…`, terminal4(completed1/failed3)/missing44/ineligible6이다. token monitor used89/reset timestamp 불변이다.
+- **다음 exact action:** landing-only eligible Taste r1을 exact order5로 1회 실행해 visual taste·scope-only 비용·state closure를 비교한다. 이후 order6 OmD는 새 external authority-controller 경계가 실제 product budget을 회복하는지 검증한다.
 
 ### 2026-08-14 fresh Luna epoch authority-controller gate
 
