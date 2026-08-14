@@ -3,11 +3,21 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: `codex/ui-skills-benchmark-v0` commit `cabf0951` (OmD Codex-shell activation binding fix); immutable diagnostic epoch source `a0d3d9443fa81baae5cf289e447ec8046c7e2c98`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source a0d3d944 epoch는 terminal 6 / missing 42 / ineligible 6으로 동결했고, commit cabf0951에서 authority-controller invocation interface를 수정·독립 검수했다. 다음은 fresh epoch 전체 재결박이다.
+- 기준 소스: active Luna epoch source `9c65f56dcc6aa84c211728fc62757c9ea1d8fb17` (OmD Codex-shell activation fix + continuity checkpoint); immutable diagnostic epoch source `a0d3d9443fa81baae5cf289e447ec8046c7e2c98`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-14 · source 9c65f56d의 production/static/runtime/IAB/evaluator/materialization/admission을 fresh rebind했고 baseline terminal0 / missing48 / ineligible6이다. next locked cell order1 model-only pending.
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+### 2026-08-14 source 9c65f56d fresh Luna Max epoch
+
+- clean detached source=`/private/tmp/omd-luna-runtime-9c65f56d`, evidence=`/private/tmp/omd-luna-wow-evidence-9c65f56d`다. source commit은 `9c65f56dcc6aa84c211728fc62757c9ea1d8fb17`; main의 후속 continuity commit과 보호 생성물 3개는 authority 밖이다.
+- provider-zero/static gates는 production schema7/7=`337d896b…`, static Luna/max=`5719ac07…`, runtime attribution=`465aa4f3…`, Codex IAB identity=`27d6f71b…`, evaluation runtime=`c11a2bec…`다. runtime/IAB는 d62 exact raw bytes를 새 source로 재감사했으며 신규 provider/model/browser call0이다.
+- evaluator dependency 첫 경로 `/private/tmp/omd-luna-evaluator-deps-9c65f56d`는 `/Library/Fonts/Arial Unicode.ttf` symlink를 발견해 provider-zero fail-close했고 사용하지 않는다. accepted fresh bundle은 `/private/tmp/omd-luna-evaluator-deps-9c65f56d-v2`; font roots를 `/System/Library/Fonts`와 사용자 Fonts로 명시해 exact receipt에 결박했다.
+- locked=`/private/tmp/omd-luna-wow-locked-9c65f56d`, matrix=`0a417798…`, preregistration=`10bb79f5…`다. materialized=`/private/tmp/omd-luna-wow-materialized-9c65f56d`, 48 scheduled+Taste6 ineligible, prepared tree=`382254f7…`, materialization binding=`1a3907db…`다.
+- immutable runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-9c65f56d`, auth=`627eb799…`, catalog=`f4392270…`다. Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-9c65f56d/ADMISSION.json`, SHA=`a5796b26…`, status admitted/calls0다.
+- baseline collector=`/private/tmp/omd-luna-wow-evidence-9c65f56d/EXECUTION-RECORDS.baseline.json`, SHA=`9687ec31…`, terminal0/missing48/ineligible6, collection calls0이다. token monitor used94/reset timestamp 불변이다.
+- **다음 exact action:** locked order1 `neighborhood-library-landing-luna-max-r1-model-only`을 gpt-5.6-luna/max로 단 한 번 실행한다. terminal을 즉시 봉인하고 hidden-image/runtime contamination, product state, visual proof, time/token/tool cost를 요약한 뒤 partial-01을 calls0으로 collect한다.
 
 ### 2026-08-14 source a0d3d944 fresh Luna Max epoch
 

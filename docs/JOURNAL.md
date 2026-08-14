@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · source 9c65 fresh Luna epoch admitted
+- production/static/runtime/IAB/evaluator receipt를 source `9c65f56d…`에 fresh rebind했고 추가 provider/model/browser call은 0이다.
+- materialization은 48 scheduled+6 ineligible, prepared tree `382254f7…`; admission `a5796b26…`로 PASS했다.
+- baseline `9687ec31…`은 terminal0/missing48/ineligible6/calls0이다; 실패한 font-symlink bundle은 unused로 분리했다.
+- 다음은 exact order1 model-only Luna/max 1회, retry0 실행 후 즉시 terminal·partial-01 봉인이다.
+
 ## 2026-08-14 (Codex) · OmD shell activation interface fix 봉인
 - commit `cabf0951`이 `rg` substring 오탐을 제거하고 exact Codex `zsh -lc` wrapper 내 single activation만 인정한다.
 - `run-codex`는 OmD receipt/add-dir에 결박된 8개 env만 전달하고 누락·stale·외부 executable·임의 env를 provider 전 차단한다.
