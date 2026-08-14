@@ -3,11 +3,21 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: immutable diagnostic Luna epoch source `9c65f56dcc6aa84c211728fc62757c9ea1d8fb17` (OmD Codex-shell activation fix + continuity checkpoint); 이전 diagnostic source `a0d3d9443fa81baae5cf289e447ec8046c7e2c98`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 9c65f56d order1은 정상 Luna completion 뒤 Codex model-cache semantic drift gate가 exit1해 infrastructure-invalid로 동결됐다. partial-01 terminal1 / missing47 / ineligible6이며 다음 셀은 cache mutation evidence/fail-close 계약 수정과 fresh epoch 재결박 전까지 HOLD다.
+- 기준 소스: next-epoch candidate `68a19aa029ba706111828d698770a87ee9f20f9e` (post-provider cache evidence preservation); immutable diagnostic Luna epoch source `9c65f56dcc6aa84c211728fc62757c9ea1d8fb17`; 이전 diagnostic source `a0d3d9443fa81baae5cf289e447ec8046c7e2c98`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-14 · post-provider cache raw evidence와 outer readback gate를 `68a19aa0`에 봉인했다. 새 clean worktree의 static admission은 local CLI `0.146.1`과 live cache client `0.147.0` 불일치로 provider 전에 정확히 차단됐으며 Luna 다음 셀은 HOLD다.
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+### 2026-08-14 post-provider cache evidence gate / next epoch HOLD
+
+- implementation commit=`68a19aa029ba706111828d698770a87ee9f20f9e`; clean detached worktree=`/private/tmp/omd-luna-runtime-68a19aa0`다. provider/model/browser/network 호출 없이 코드와 synthetic fixtures만 검증했다.
+- `run-codex`는 provider spawn 직전 cache raw bytes를 보유하고 종료 직후 cleanup 전에 `models-cache.post-provider.bin`을 wx/0600으로 저장한다. full/semantic/Luna profile/client/tool-mode/fetched_at before/after와 exact SHA/bytes를 run-result에 결박하며 raw completion·usage를 먼저 보존한다.
+- 허용되는 runtime drift는 raw JSON에서 단 하나의 top-level `fetched_at` 값 토큰만 byte-exact 교체된 경우다. semantic/profile/client/tool-mode, etag, formatting 또는 다른 byte drift는 `infrastructure-invalid`이며 evaluator를 시작하지 않는다.
+- outer cell runner는 claimed artifact가 exact isolated `.benchmark` path의 regular non-symlink인지 확인하고 실제 SHA/bytes를 재계산한다. path escape, forged SHA, post-claim tamper, symlink도 제품 실패가 아닌 infrastructure-invalid로 봉인한다.
+- root 독립 검수: run-codex/cell runner/controller/admission/auditor 100/100 PASS, focused 변경 61/61 PASS, lint, 4 node-check, diff-check PASS다. retry/replacement/fallback0이며 9c65 evidence를 재실행하거나 수정하지 않았다.
+- fresh source에서 static capability receipt를 provider-zero로 시도했지만 exact CLI=`0.146.1`, live cache `client_version=0.147.0`라 `catalog client version differs from exact Codex CLI version`로 exit1했다. receipt는 생성되지 않았고 이 차이를 완화하거나 수동 재작성하지 않는다.
+- **다음 exact action:** Codex CLI와 live cache client version이 exact 일치하는 provider-zero 상태를 확인한다. 일치 전에는 새 Luna 셀을 시작하지 않는다. 일치 후 source `68a19aa0`에서 production schema/static/runtime/IAB/evaluator/lock/materialization/admission을 전부 fresh 발급하고 baseline terminal0/missing48/ineligible6을 확인한 뒤 order1부터 retry0 신규 epoch를 시작한다.
 
 ### 2026-08-14 source 9c65f56d fresh Luna Max epoch
 

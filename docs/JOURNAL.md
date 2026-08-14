@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · post-provider cache evidence gate 봉인
+- commit `68a19aa0`은 fetched_at-only raw drift만 허용하고 semantic/profile/client/tool-mode/etag/format drift를 fail-close한다.
+- raw completion·usage·post-cache bytes를 먼저 보존하며 outer runner가 exact path/regular/SHA/bytes를 재검증한다.
+- root 검수 100/100, focused 61/61, lint/node/diff PASS; 외부 호출·9c65 재실행0이다.
+- 새 static receipt는 CLI0.146.1/cache0.147.0 mismatch로 provider 전 차단돼 다음 Luna 셀은 HOLD다.
+
 ## 2026-08-14 (Codex) · source 9c65 order1 cache-integrity failure 봉인
 - Luna는 811,135ms 뒤 raw completion과 54,464B HTML을 남겼지만 post-provider model-cache semantic drift gate가 exit1했다.
 - terminal은 infrastructure-invalid, provider/model unknown, browser/network/external0, hidden-image/package PASS, record `51fbb967…`, rerun0이다.
