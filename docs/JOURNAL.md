@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · source 68a v2 Luna epoch admitted
+- official isolated Codex/cache 0.147.0과 source `68a19aa0`을 exact 결박했고 전역 설치는 바꾸지 않았다.
+- schema/static/runtime/IAB/evaluator PASS, 48+6 materialization tree `311cff4f…`, admission `ba5a6550…`다.
+- baseline `fe096041…`은 terminal0/missing48/ineligible6/calls0이며 transient 0.146 static attempt는 unused다.
+- 다음은 order1 model-only Luna/max 1회·retry0 실행 후 cache/hidden-image/visual terminal과 partial-01 봉인이다.
+
 ## 2026-08-14 (Codex) · post-provider cache evidence gate 봉인
 - commit `68a19aa0`은 fetched_at-only raw drift만 허용하고 semantic/profile/client/tool-mode/etag/format drift를 fail-close한다.
 - raw completion·usage·post-cache bytes를 먼저 보존하며 outer runner가 exact path/regular/SHA/bytes를 재검증한다.

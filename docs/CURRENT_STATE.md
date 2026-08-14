@@ -3,11 +3,21 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: next-epoch candidate `68a19aa029ba706111828d698770a87ee9f20f9e` (post-provider cache evidence preservation); immutable diagnostic Luna epoch source `9c65f56dcc6aa84c211728fc62757c9ea1d8fb17`; 이전 diagnostic source `a0d3d9443fa81baae5cf289e447ec8046c7e2c98`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · post-provider cache raw evidence와 outer readback gate를 `68a19aa0`에 봉인했다. 새 clean worktree의 static admission은 local CLI `0.146.1`과 live cache client `0.147.0` 불일치로 provider 전에 정확히 차단됐으며 Luna 다음 셀은 HOLD다.
+- 기준 소스: active Luna epoch source `68a19aa029ba706111828d698770a87ee9f20f9e` (post-provider cache evidence preservation); immutable diagnostic Luna epoch source `9c65f56dcc6aa84c211728fc62757c9ea1d8fb17`; 이전 diagnostic source `a0d3d9443fa81baae5cf289e447ec8046c7e2c98`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-14 · official isolated Codex CLI/cache `0.147.0`을 exact 결박한 source 68a v2 epoch가 admission PASS했다. baseline terminal0/missing48/ineligible6이며 next locked cell은 order1 model-only다.
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+### 2026-08-14 source 68a19aa0 fresh Luna Max v2 epoch
+
+- clean detached source=`/private/tmp/omd-luna-runtime-68a19aa0`, source commit=`68a19aa029ba706111828d698770a87ee9f20f9e`다. protected web 생성물과 9c65 evidence는 authority 밖이다.
+- local global CLI/cache가 0.146.1/0.147.0으로 흔들린 첫 attempt는 static→snapshot hash drift에서 차단돼 unused다. 전역 설치를 변경하지 않고 official npm `@openai/codex@0.147.0`을 `/private/tmp/omd-codex-0.147.0-runtime`에 격리 설치했으며 registry integrity=`sha512-EQLEXecA…Z3w==`다.
+- live cache가 0.147.0일 때 auth/cache를 fresh `/private/tmp/omd-luna-runtime-source-68a19aa0-v2`에 먼저 byte-freeze했다. runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-68a19aa0-v2`, auth=`627eb799…`, cache=`0e4291c4…`; static receipt=`89a8830…`다.
+- production schema7/7=`85e53f47…`, exact historical Luna attribution re-audit=`a93ea4ed…`, Codex IAB identity re-audit=`1d1ea1fd…`, evaluator runtime=`aa1ae6ef…`다. runtime/IAB 재감사는 기존 exact raw bytes이고 신규 provider/model/browser 호출0이다.
+- locked=`/private/tmp/omd-luna-wow-locked-68a19aa0-v2`; matrix=`8ee9b487…`, preregistration=`407831e8…`다. materialized=`/private/tmp/omd-luna-wow-materialized-68a19aa0-v2`, 48 scheduled+6 ineligible, prepared tree=`311cff4f…`/55,122,396B/3,225 files, materialization=`8c5d6c01…`다.
+- Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-68a19aa0-v2/ADMISSION.json`, SHA=`ba5a6550…`, status admitted/calls0다. baseline=`/private/tmp/omd-luna-wow-evidence-68a19aa0-v2/EXECUTION-RECORDS.baseline.json`, SHA=`fe096041…`, terminal0/missing48/ineligible6/calls0다.
+- **다음 exact action:** locked order1 `neighborhood-library-landing-luna-max-r1-model-only`을 gpt-5.6-luna/max로 단 한 번 실행한다. terminal에서 post-provider cache raw readback, hidden-image/runtime contamination, product state, visual proof, time/token/tool cost를 확인하고 partial-01을 calls0으로 봉인한다. retry/replacement/fallback은 0이다.
 
 ### 2026-08-14 post-provider cache evidence gate / next epoch HOLD
 
