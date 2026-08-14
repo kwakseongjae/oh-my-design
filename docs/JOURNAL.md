@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · a0d3 order2 Anthropic 봉인
+- Anthropic은 486,932ms·436,257 tokens에 51,769B UI, 17 vars/83 selectors와 publishable captures를 만들었다.
+- ink-blue/orange illustration system은 model-only보다 뾰족하지만 focus-visible 미관측으로 objective0다.
+- hidden image audit은 side effect/tool identity/lineage0으로 PASS; record `1efcd77c…`, partial-02 `8b1cf168…`, rerun0이다.
+- 다음은 exact order3 Impeccable r1 한 셀을 실행해 시각·state·비용을 비교한다.
+
 ## 2026-08-14 (Codex) · a0d3 order1 model-only 봉인
 - Luna/max는 617,090ms·308,677 tokens에 74,394B HTML, 23 vars/100 selectors와 12 captures를 만들었다.
 - deep-green editorial system과 mobile composition은 강하지만 modal-first 화면과 unavailable state 누락으로 objective0다.
