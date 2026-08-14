@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · source f6cd fresh Luna epoch admitted
+- commit `f6cd17e2`가 unauthenticated prompt audit와 admission-owned 0.147 normalized cache 경계를 봉인했다.
+- schema/static/runtime/IAB/evaluator PASS; tree `ed407451…`, admission `e09151cd…`다.
+- baseline `a3e21493…`은 terminal0/missing48/ineligible6/calls0이며 253a는 provider0 diagnostic으로 유지한다.
+- 다음은 exact order1 model-only Luna/max 1회·retry0 terminal/partial 봉인이다.
+
 ## 2026-08-14 (Codex) · source 253a prompt-input cache boundary failure
 - order1은 prompt-input PASS 직후 catalog semantic/profile/client mutation gate에서 provider 전 차단됐다.
 - terminal은 2,529ms infrastructure-invalid, provider/model/browser/network/tool0, record `891f6a83…`, rerun0이다.
