@@ -142,9 +142,17 @@ if (manifest.runtime_target !== "grok") {
 // ─────────────────────────────────────────────────────────────────────────────
 // Read prompt
 // ─────────────────────────────────────────────────────────────────────────────
+// Benchmark cells carry the FULL invocation (activation prefix + task prompt
+// + workspace runtime boundary) in invocation-prompt.txt; PROMPT.md holds the
+// bare task prompt for receipts. The model must receive the invocation —
+// otherwise skill arms never see their activation prefix. Fallback to
+// PROMPT.md keeps smoke/preflight workspaces working.
+const invocationPath = join(benchmarkDir, "invocation-prompt.txt");
 const promptPath = artifactSuffix
   ? join(benchmarkDir, "repair-prompts", `${artifactSuffix}.md`)
-  : join(benchmarkDir, "PROMPT.md");
+  : existsSync(invocationPath)
+    ? invocationPath
+    : join(benchmarkDir, "PROMPT.md");
 if (!existsSync(promptPath)) {
   throw new Error(`run prompt is missing: ${promptPath}`);
 }
