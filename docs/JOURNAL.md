@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · source 253a prompt-input cache boundary failure
+- order1은 prompt-input PASS 직후 catalog semantic/profile/client mutation gate에서 provider 전 차단됐다.
+- terminal은 2,529ms infrastructure-invalid, provider/model/browser/network/tool0, record `891f6a83…`, rerun0이다.
+- partial-01 `627eb573…`은 terminal1/missing47/ineligible6/calls0이며 제품 결과가 아니다.
+- 다음은 Sol/medium sacrificial prompt-audit HOME 분리 → root 검수 → fresh epoch 전체 재결박이다.
+
 ## 2026-08-14 (Codex) · source 253a Luna epoch admitted
 - commit `253a3abc`가 admitted static CLI를 직접 선택하고 ambient OMD env를 제거하는 계약을 봉인했다.
 - isolated Codex/cache0.147, schema/runtime/IAB/evaluator PASS; tree `f767c8ee…`, admission `522ff575…`다.

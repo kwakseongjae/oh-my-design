@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: active Luna epoch source `253a3abc0a2c958e91bd57c285831bb83f6993db` (admission-derived CLI + post-provider cache evidence); immutable diagnostic Luna epochs `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 253a3abc fresh epoch가 official isolated Codex/cache 0.147.0으로 admission PASS했다. baseline terminal0/missing48/ineligible6이며 next locked cell은 order1 model-only다.
+- 갱신: 2026-08-14 · source 253a3abc order1은 provider-zero prompt-input 뒤 catalog semantic/profile/client mutation gate에서 pre-provider infrastructure-invalid로 봉인됐다. provider/model/browser/network0이며 같은 epoch 재실행은 금지한다.
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -16,7 +16,9 @@
 - production schema7/7=`f853e695…`, Luna attribution re-audit=`932c8c49…`, Codex IAB identity=`3d23c2ae…`, evaluator runtime=`3e2519f6…`다. new provider/model/browser calls0이다.
 - locked=`/private/tmp/omd-luna-wow-locked-253a3abc`; matrix=`9b498f0e…`, preregistration=`e462de93…`. materialized=`/private/tmp/omd-luna-wow-materialized-253a3abc`, prepared tree=`f767c8ee…`, materialization=`6adb8591…`, 48 scheduled+6 ineligible다.
 - admission=`/private/tmp/omd-luna-wow-admission-253a3abc/ADMISSION.json`, SHA=`522ff575…`, status admitted/calls0다. baseline=`/private/tmp/omd-luna-wow-evidence-253a3abc/EXECUTION-RECORDS.baseline.json`, SHA=`7662e495…`, terminal0/missing48/ineligible6/calls0다.
-- **다음 exact action:** order1 `neighborhood-library-landing-luna-max-r1-model-only`을 Luna/max로 단 한 번 실행한다. exact CLI/cache post-readback과 terminal을 즉시 봉인하며 retry/replacement/fallback0이다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 provider-zero `debug prompt-input` 자체는 PASS했지만 그 직후 격리 catalog semantic/profile/client mutation을 감지해 2,529ms에 pre-provider `infrastructure-invalid`로 종료됐다. provider/model/browser/network/tool0, evaluator0, blank shell이며 record=`891f6a83…`, rerun 금지다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-253a3abc/EXECUTION-RECORDS.partial-01.json`, SHA=`627eb573…`, terminal1/missing47/ineligible6/calls0다. 이는 제품/모델 결과가 아니라 prompt-input audit과 provider cache authority가 같은 HOME을 공유한 하네스 경계 결함이다.
+- **다음 exact action:** Sol/medium으로 prompt-input 감사를 provider execution HOME과 분리된 sacrificial provider-zero HOME에서 수행하고, 실제 provider HOME은 admitted cache bytes로 pristine 생성·재검증한다. root가 적대 테스트를 검수·커밋한 뒤 새 source/receipts/lock/materialization/admission epoch를 order1부터 만든다. 253a terminal은 immutable diagnostic evidence로만 유지한다.
 
 ### 2026-08-14 source 68a19aa0 fresh Luna Max v2 epoch
 
