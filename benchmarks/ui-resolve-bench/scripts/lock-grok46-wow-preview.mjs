@@ -218,7 +218,7 @@ export function lockCommand(args) {
 
   // ── Compose locked matrix ──
   const lockedMatrix = {
-    schema_version: "0.2",
+    schema_version: "0.1",
     kind: MATRIX_KIND,
     experiment_id: EXPERIMENT_ID,
     status: MATRIX_STATUS,
@@ -256,11 +256,12 @@ export function lockCommand(args) {
   writeFileSync(matrixPath, matrixBytes, { flag: "wx" });
 
   const receipt = {
-    schema_version: "0.2",
+    schema_version: "0.1",
     kind: "omd-grok46-wow-preview-preregistration-receipt",
     experiment_id: EXPERIMENT_ID,
+    provider_execution_allowed: false,
     source_commit: sourceCommit,
-    locked_matrix_sha256: sha256(Buffer.from(matrixBytes)),
+    matrix_sha256: sha256(Buffer.from(matrixBytes)),
     matrix_config_sha256: matrixConfig.sha256,
     score_gate_config_sha256: scoreGate.sha256,
     activation_prefixes_sha256: prefixesConfig.sha256,
@@ -286,10 +287,10 @@ export function lockCommand(args) {
   );
 
   const status = {
-    schema_version: "0.2",
+    schema_version: "0.1",
     experiment_id: EXPERIMENT_ID,
     status: MATRIX_STATUS,
-    locked_matrix_sha256: receipt.locked_matrix_sha256,
+    locked_matrix_sha256: receipt.matrix_sha256,
     cells_total: 54,
     cells_scheduled: 48,
     cells_ineligible: 6,
@@ -299,7 +300,7 @@ export function lockCommand(args) {
     flag: "wx",
   });
 
-  return { out, matrixPath, locked_matrix_sha256: receipt.locked_matrix_sha256 };
+  return { out, matrixPath, locked_matrix_sha256: receipt.matrix_sha256 };
 }
 
 export function main(argv = process.argv.slice(2)) {
