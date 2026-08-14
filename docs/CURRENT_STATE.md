@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: active Luna epoch source `caf0e62d3e98684d482c56a2bbe3ef93a05ea873` (exact Codex 0.147 cache serialization); immutable diagnostic Luna epochs `f6cd17e2`, `253a3abc`, `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source caf0e62d order1 model-only=completed/objective50, order2 Anthropic=failed/objective0, order3 Impeccable=900s timeout/objective0다. partial terminal3/missing45이며 next locked cell은 order4 UI UX Pro Max다.
+- 갱신: 2026-08-14 · source caf0e62d order1 model-only=completed/50, order2 Anthropic=failed/0, order3 Impeccable=timeout/0, order4 UI UX Pro Max=provider usage-limit infrastructure-invalid/0다. partial terminal4/missing44다. exact provider 재개 시각 2026-08-20 13:20 KST 전까지 Luna 실행 HOLD이며 next locked cell은 order5 Taste scope-only다.
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -25,7 +25,9 @@
 - partial-02=`/private/tmp/omd-luna-wow-evidence-caf0e62d/EXECUTION-RECORDS.partial-02.json`, SHA=`92063b6a…`, terminal2(completed1/failed1)/missing46/ineligible6, collection calls0다.
 - order3 `neighborhood-library-landing-luna-max-r1-impeccable-prompt-only`은 900,319ms cap에서 terminal `timeout`이다. completion/usage가 없어 provider/model total은 `unknown`, browser0, tool31, agent browser/network/external0, retry/replacement/fallback0이다. 53,889B HTML, vars17/selectors69, PRODUCT.md와 Impeccable surface artifact를 남겼지만 evaluator/screenshots0이라 rendered visual quality를 주장하지 않는다. cache fetched_at-only와 hidden-image0는 PASS, record=`3041629f…`, rerun 금지다.
 - partial-03=`/private/tmp/omd-luna-wow-evidence-caf0e62d/EXECUTION-RECORDS.partial-03.json`, SHA=`df0ea077…`, terminal3(completed1/failed1/timeout1)/missing45/ineligible6, collection calls0다.
-- **다음 exact action:** order4 `neighborhood-library-landing-luna-max-r1-ui-ux-pro-max`를 Luna/max로 단 한 번 실행하고 동일 proof를 봉인한다. retry/replacement/fallback0이며 order1–3은 다시 실행하지 않는다.
+- order4 `neighborhood-library-landing-luna-max-r1-ui-ux-pro-max`는 provider raw stream이 `You've hit your usage limit ... try again at Aug 20th, 2026 1:20 PM.`를 반환해 4,631ms `infrastructure-invalid`다. completion/usage가 없어 provider/model total은 `unknown`, browser0, tool0, blank shell/evaluator0/package false다. cache fetched_at-only와 hidden-image0는 PASS, record=`3f4bd559…`, rerun 금지다. skill/product 품질로 해석하지 않는다.
+- partial-04=`/private/tmp/omd-luna-wow-evidence-caf0e62d/EXECUTION-RECORDS.partial-04.json`, SHA=`f052fa89…`, terminal4(completed1/failed1/timeout1/infrastructure-invalid1)/missing44/ineligible6, collection calls0다. generic local rate-limit timestamp와 Luna provider exact message를 혼동하지 않으며 direct eligibility는 2026-08-20 13:20 KST다.
+- **다음 exact action:** 2026-08-20 13:20 KST 이후 exact provider admission이 확인될 때까지 추가 Luna cell을 실행하지 않는다. 재개 시 order4를 반복하지 않고 locked order5 `neighborhood-library-landing-luna-max-r1-taste-eligible-scope-only`부터 1회·retry0으로 진행한다. capacity terminal은 분모에 그대로 유지한다.
 
 ### 2026-08-14 source f6cd17e2 fresh Luna Max epoch
 

@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · caf0 order4 Luna capacity stop
+- order4 UI UX Pro Max는 4,631ms에 provider usage-limit로 infrastructure-invalid; raw retry 시각은 2026-08-20 13:20 KST다.
+- completion/usage 없음→provider/model unknown, browser0, blank shell/evaluator0; record `3f4bd559…`, rerun0이다.
+- partial-04 `f052fa89…`은 terminal4/missing44/ineligible6이며 capacity 결과를 분모에서 제거하지 않는다.
+- 추가 Luna는 HOLD; 재개 시 order4 반복 없이 exact locked order5 Taste scope-only부터 진행한다.
+
 ## 2026-08-14 (Codex) · caf0 order3 Impeccable timeout
 - order3은 900,319ms cap에서 timeout; completion/usage가 없어 provider/model unknown, browser0, tool31이다.
 - 53,889B HTML/package는 남았지만 evaluator/screenshots0이라 rendered quality를 주장하지 않는다.
