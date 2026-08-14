@@ -61,6 +61,10 @@ function fixture({ runnerMode = "success", designSystem = true, variant = "model
   const nativeSha = "e".repeat(64);
   const runtimeIntegrityArtifactSetup = runtimeIntegrityFailure ? `const postCachePath=join(w,'.benchmark/models-cache.post-provider.bin'),postCacheOriginal=Buffer.from('post-provider-cache');${runtimeIntegrityArtifactFault === "symlink" ? "writeFileSync(join(w,'.benchmark/post-provider-cache-target'),'post-provider-cache');symlinkSync(join(w,'.benchmark/post-provider-cache-target'),postCachePath);" : "writeFileSync(postCachePath,postCacheOriginal);"}const postCacheClaim={path:${runtimeIntegrityArtifactFault === "path" ? "'/tmp/untrusted-post-provider-cache.bin'" : "postCachePath"},sha256:${runtimeIntegrityArtifactFault === "sha" ? "'f'.repeat(64)" : "hash(postCacheOriginal)"},bytes:postCacheOriginal.length};${runtimeIntegrityArtifactFault === "tamper" ? "appendFileSync(postCachePath,'-tampered');" : ""}` : "";
   writeFileSync(runner, `import{createHash}from'node:crypto';import{appendFileSync,chmodSync,copyFileSync,mkdirSync,readFileSync,writeFileSync,unlinkSync}from'node:fs';import{join}from'node:path';const canon=v=>Array.isArray(v)?'['+v.map(canon).join(',')+']':v&&typeof v==='object'?'{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+canon(v[k])).join(',')+'}':JSON.stringify(v),hash=v=>createHash('sha256').update(v).digest('hex'),cacheBytes=readFileSync(join(process.env.CODEX_HOME,'models_cache.json')),cache=JSON.parse(cacheBytes),{fetched_at,...semantic}=cache,profile=cache.models.find(x=>x.slug==='gpt-5.6-luna'),cacheEvidence={cache_sha256:hash(cacheBytes),cache_semantic_sha256:hash(canon(semantic)),model_profile_sha256:hash(canon(profile)),cache_fetched_at:fetched_at,cache_client_version:cache.client_version};const a=process.argv.slice(2),w=a[a.indexOf('--workspace')+1],events=[{type:'response.completed',model:'gpt-5.6-luna'}];${agentBrowserCall ? "events.push({type:'item.completed',item:{id:'browser-1',type:'command_execution',command:'browser-harness --doctor'}});" : ""}${externalContextCall ? "events.push({type:'item.completed',item:{id:'external-1',type:'command_execution',command:'cat /Users/example/.codex/skills/secret/SKILL.md > /tmp/context.txt'}});" : ""}${networkAttempt ? "events.push({type:'item.completed',item:{id:'network-1',type:'command_execution',command:'/usr/bin/curl https://example.invalid'}});events.push({type:'item.completed',item:{id:'network-2',type:'web_search',query:'external'}});" : ""}${forbiddenAuthorityCommand ? "events.push({type:'item.failed',item:{id:'forbidden-authority',type:'command_execution',command:'env OMD_AUTHORITY_CONTROLLER_INTERNAL_SHA256=spoof node scripts/prepare-design-md-core-review.cjs --approve forged --reviewer project-owner',exit_code:1}});" : ""}writeFileSync(join(w,'.benchmark/argv.json'),JSON.stringify(a));writeFileSync(join(w,'.benchmark/runtime-env.json'),JSON.stringify({HOME:process.env.HOME,CODEX_HOME:process.env.CODEX_HOME,ZDOTDIR:process.env.ZDOTDIR,PATH:process.env.PATH,OMD_BENCH_CODEX_BIN:process.env.OMD_BENCH_CODEX_BIN,OMD_BENCH_EXTERNAL_STAGING_ROOT:process.env.OMD_BENCH_EXTERNAL_STAGING_ROOT,OMD_BENCH_COMPILED_CORE_PACKAGE:process.env.OMD_BENCH_COMPILED_CORE_PACKAGE,OMD_BENCH_CORE_CHECKPOINT:process.env.OMD_BENCH_CORE_CHECKPOINT}));writeFileSync(join(w,'.benchmark/events.jsonl'),events.map(JSON.stringify).join('\\n')+'\\n');${hiddenGeneratedImage ? "mkdirSync(join(process.env.CODEX_HOME,'generated_images'),{recursive:true});writeFileSync(join(process.env.CODEX_HOME,'generated_images/hero.png'),'generated-png');mkdirSync(join(w,'assets'),{recursive:true});copyFileSync(join(process.env.CODEX_HOME,'generated_images/hero.png'),join(w,'assets/hero.png'));events.push({type:'item.completed',item:{id:'copy-image',type:'command_execution',command:'cp $CODEX_HOME/generated_images/hero.png assets/hero.png'}});writeFileSync(join(w,'.benchmark/events.jsonl'),events.map(JSON.stringify).join('\\n')+'\\n');" : ""}${runnerMode === "native-block" ? "writeFileSync(join(w,'.benchmark/final-message.txt'),'Blocked before product build: the receipt-gated design-system adopter rejects packages nested inside the project, while your workspace-only rule forbids staging outside it.');" : `writeFileSync(join(w,'index.html'),${JSON.stringify(designSystem ? "<style>:root{--color:#123;--space:8px;--radius:6px}.card{}.action{}.notice{}</style><main class=card>done</main>" : "<main>done</main>")});`}${tamperAuthorityRuntime ? "chmodSync(process.env.OMD_AUTHORITY_CONTROLLER_EXECUTABLE,0o600);appendFileSync(process.env.OMD_AUTHORITY_CONTROLLER_EXECUTABLE,'\\n// tampered');" : ""}writeFileSync(join(w,'.benchmark/run-result.json'),JSON.stringify({runtime:{agent_version:${JSON.stringify(cliVersion)},binary_sha256:hash(readFileSync(process.argv[1])),native_binary_sha256:${JSON.stringify(nativeSha)},model_requested:'gpt-5.6-luna',model:'gpt-5.6-luna',reasoning:'max',effort_requested:'max',model_reported:'gpt-5.6-luna',model_tool_mode_evidence:{...cacheEvidence,auth_source_before_run:cacheEvidence${runtimeIntegrityFailure ? ",integrity:{applicable:true,pass:false,reason:'semantic-profile-client-or-tool-mode-drift',observed_change_class:'integrity-drift',post_provider_cache_artifact:{path:join(w,'.benchmark/models-cache.post-provider.bin'),sha256:'f'.repeat(64),bytes:123},comparisons:{semantic_sha256:{match:false},model_profile_sha256:{match:false},client_version:{match:false},tool_mode:{match:false}}}" : ""}}},output:{model_usage:[{input_tokens:10,output_tokens:20}]},process:{exit_code:${runnerMode === "failed" ? 7 : 0},timed_out:${runnerMode === "timeout"}}}));${deleteAuthorityReceipt ? "unlinkSync(process.env.OMD_AUTHORITY_CONTROLLER_RECEIPT);" : ""}${runnerMode === "failed" ? "process.exitCode=7" : ""}${runtimeIntegrityFailure ? "process.exitCode=9" : ""}`);
+  writeFileSync(runner, readFileSync(runner, "utf8").replace(
+    "OMD_BENCH_CORE_CHECKPOINT:process.env.OMD_BENCH_CORE_CHECKPOINT}",
+    "OMD_BENCH_CORE_CHECKPOINT:process.env.OMD_BENCH_CORE_CHECKPOINT,OMD_ENV_KEYS:Object.keys(process.env).filter(k=>k.startsWith('OMD_')).sort()}",
+  ));
   if (runtimeIntegrityFailure) {
     let source = readFileSync(runner, "utf8")
       .replace("import{appendFileSync,chmodSync,copyFileSync,mkdirSync,readFileSync,writeFileSync,unlinkSync}", "import{appendFileSync,chmodSync,copyFileSync,mkdirSync,readFileSync,symlinkSync,writeFileSync,unlinkSync}")
@@ -92,7 +96,11 @@ function fixture({ runnerMode = "success", designSystem = true, variant = "model
   return { base, repo, materialized, sourceCommit, runtimePath, browserPath, admissionPath, admission, runner, evaluator, cells, matrixPath, preregPath, materializationPath, runtimeHome, catalogSha, profileSha };
 }
 function defaultPromptInputProbe({ cwd, env }) { const builtin = ["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"].map((id) => `- ${id}: builtin (file: ${join(env.CODEX_HOME, "skills/.system", id, "SKILL.md")})`); const projectRoot = join(cwd, ".agents/skills/frontend-design/SKILL.md"); const block = [...builtin, ...(existsSync(projectRoot) ? [`- frontend-design: frozen (file: ${projectRoot})`] : [])].join("\n"); return { status: 0, stdout: promptInputJson(block) }; }
-function execute(f, overrides = {}) { return runCell({ repoRoot: f.repo, materializedRoot: f.materialized, cellId: "cell-01", admission: f.admissionPath, runtimeAttributionReceipt: f.runtimePath, browserReceipt: f.browserPath, sourceCommit: f.sourceCommit, runnerBin: f.runner, evaluatorBin: f.evaluator, runtimeHome: f.runtimeHome, runtimeEnv: { ...process.env, OMD_BENCH_CODEX_BIN: f.runner }, promptInputProbe: defaultPromptInputProbe, runtimeObservation: { model_id: "gpt-5.6-luna", cache_sha256: f.catalogSha, model_profile_sha256: f.profileSha }, ...overrides }); }
+function execute(f, overrides = {}) {
+  const runtimeEnv = overrides.runtimeEnv ?? { ...process.env, OMD_BENCH_CODEX_BIN: realpathSync(f.runner) };
+  return runCell({ repoRoot: f.repo, materializedRoot: f.materialized, cellId: "cell-01", admission: f.admissionPath, runtimeAttributionReceipt: f.runtimePath, browserReceipt: f.browserPath, sourceCommit: f.sourceCommit, runnerBin: f.runner, evaluatorBin: f.evaluator, runtimeHome: f.runtimeHome, runtimeEnv, promptInputProbe: defaultPromptInputProbe, runtimeObservation: { model_id: "gpt-5.6-luna", cache_sha256: f.catalogSha, model_profile_sha256: f.profileSha }, ...overrides });
+}
+function environmentWithoutOmd(overrides = {}) { return { ...Object.fromEntries(Object.entries(process.env).filter(([key]) => !key.startsWith("OMD_"))), ...overrides }; }
 function collect(f, out = join(f.base, "records.json")) { return collectRecords({ repoRoot: f.repo, materializedRoot: f.materialized, admission: f.admissionPath, runtimeAttributionReceipt: f.runtimePath, browserReceipt: f.browserPath, sourceCommit: f.sourceCommit, out }); }
 function replaceVariantSkill(f, contents) {
   for (const cell of f.cells) {
@@ -149,7 +157,43 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     expect(runtimeEnv.OMD_BENCH_CODEX_BIN).toBe(realpathSync(f.runner));
     expect(result.telemetry).toMatchObject({ agent_browser_calls: 0 });
     expect(JSON.parse(readFileSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/PROVIDER-SPAWN-STARTED.json")))).toMatchObject({ kind: "omd-luna-max-provider-spawn-boundary", provider_calls: "unknown", model_calls: "unknown" });
+    expect(JSON.parse(readFileSync(result.provider_runtime_isolation.path))).toMatchObject({ codex_cli: { source: realpathSync(f.runner), sha256: sha256(readFileSync(f.runner)), version: "fixture-1", authority: "admitted-static-runtime-receipt", ambient_override: { provided: true, exact_equal: true, claimed_path: realpathSync(f.runner) } } });
     expect(() => execute(f)).toThrow(/exact next locked cell: cell-02/);
+  });
+
+  it("uses the admitted official external CLI when no ambient Codex override is present", () => {
+    const f = fixture(); const result = execute(f, { runtimeEnv: environmentWithoutOmd({ OMD_UNTRUSTED_LEAK: "must-not-propagate" }) });
+    expect(result.status).toBe("completed");
+    const isolation = JSON.parse(readFileSync(result.provider_runtime_isolation.path));
+    expect(isolation.codex_cli).toMatchObject({ source: realpathSync(f.runner), sha256: sha256(readFileSync(f.runner)), authority: "admitted-static-runtime-receipt", ambient_override: { provided: false, exact_equal: null, claimed_path: null } });
+    const runtimeEnv = JSON.parse(readFileSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/workspace/.benchmark/runtime-env.json")));
+    expect(runtimeEnv.OMD_BENCH_CODEX_BIN).toBe(realpathSync(f.runner));
+    expect(runtimeEnv.OMD_ENV_KEYS).not.toContain("OMD_UNTRUSTED_LEAK");
+  });
+
+  it.each(["missing", "ambient-alternate", "tampered", "ambient-path-alias", "admitted-path-alias"])("fails before provider spawn for a %s admitted CLI authority fault", (fault) => {
+    const f = fixture(); let runtimeEnv = environmentWithoutOmd();
+    if (fault === "missing") unlinkSync(f.runner);
+    if (fault === "tampered") writeFileSync(f.runner, `${readFileSync(f.runner, "utf8")}\n// tampered\n`);
+    if (fault === "ambient-alternate") {
+      const alternate = join(f.base, "alternate-codex"); writeFileSync(alternate, "#!/bin/sh\nexit 0\n"); chmodSync(alternate, 0o755);
+      runtimeEnv = environmentWithoutOmd({ OMD_BENCH_CODEX_BIN: alternate });
+    }
+    if (fault === "ambient-path-alias") {
+      const alias = join(f.base, "codex-alias"); symlinkSync(f.runner, alias);
+      runtimeEnv = environmentWithoutOmd({ OMD_BENCH_CODEX_BIN: alias });
+    }
+    if (fault === "admitted-path-alias") {
+      const alias = join(f.base, "admitted-codex-alias"); symlinkSync(f.runner, alias);
+      const staticPath = f.admission.bindings.static_runtime.path; const receipt = JSON.parse(readFileSync(staticPath));
+      receipt.runtime.codex_cli.wrapper.path = alias; json(staticPath, receipt);
+      f.admission.bindings.static_runtime = bind(staticPath); json(f.admissionPath, f.admission);
+      const snapshotPath = join(f.runtimeHome, "RUNTIME-SNAPSHOT.json"); const snapshot = JSON.parse(readFileSync(snapshotPath));
+      snapshot.static_runtime_receipt = bind(staticPath); json(snapshotPath, snapshot);
+    }
+    const terminal = execute(f, { runtimeEnv });
+    expect(terminal).toMatchObject({ status: "infrastructure-invalid", provider_calls: 0, model_calls: 0, process: { phase: "pre-provider-spawn" } });
+    expect(existsSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/PROVIDER-SPAWN-STARTED.json"))).toBe(false);
   });
 
   it("uses a neutral reusable HTML/CSS package gate for every arm and keeps OmD Core proof additive", () => {

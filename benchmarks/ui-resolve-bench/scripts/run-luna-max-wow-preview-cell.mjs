@@ -907,16 +907,29 @@ export function prepareProviderIsolation({ execution, workspace, metadata, stati
     && initialCopyCatalog.model_profile_sha256 === admittedCatalog.model_profile_sha256
     && initialCopyCatalog.client_version === admittedCatalog.client_version,
   "initial provider model catalog copy differs from admitted authority");
+  const admittedWrapperClaim = resolve(staticRuntime.codex_cli.wrapper.path);
+  regular(admittedWrapperClaim, "admitted provider Codex wrapper"); accessSync(admittedWrapperClaim, fsConstants.X_OK);
+  const admittedWrapper = realpathSync(admittedWrapperClaim);
+  invariant(admittedWrapper === admittedWrapperClaim, "admitted provider Codex wrapper path must be canonical");
+  invariant(sha256(readFileSync(admittedWrapper)) === staticRuntime.codex_cli.wrapper.sha256,
+    "admitted provider Codex wrapper bytes differ from static CLI binding");
+  const ambientWrapperClaim = env.OMD_BENCH_CODEX_BIN ? resolve(env.OMD_BENCH_CODEX_BIN) : null;
+  if (ambientWrapperClaim) {
+    regular(ambientWrapperClaim, "ambient provider Codex wrapper"); accessSync(ambientWrapperClaim, fsConstants.X_OK);
+    invariant(ambientWrapperClaim === admittedWrapper && realpathSync(ambientWrapperClaim) === admittedWrapper
+      && sha256(readFileSync(ambientWrapperClaim)) === staticRuntime.codex_cli.wrapper.sha256,
+    "ambient provider Codex wrapper must exact-equal the admitted canonical CLI binding");
+  }
   const providerBin = join(execution, "provider-bin"); mkdirSync(providerBin, { recursive: false });
   const allowedCommands = ["codex", "node", "npm", "npx", "python3", "rg", "git", "zsh", "sh", "sed", "awk", "cat", "head", "tail", "sort", "wc", "cut", "printf", "touch", "ln", "basename", "dirname", "xargs", "mkdir", "cp", "mv", "chmod", "find"];
   const forbiddenCommands = ["browser-harness", "curl", "wget", "open"];
   const executables = [];
   for (const command of allowedCommands) {
-    const source = command === "codex" && env.OMD_BENCH_CODEX_BIN ? realpathSync(env.OMD_BENCH_CODEX_BIN) : which(command, env); if (!source || /browser-harness/i.test(source)) continue;
+    const source = command === "codex" ? admittedWrapper : which(command, env); if (!source || /browser-harness/i.test(source)) continue;
     regular(source, `provider tool ${command}`); accessSync(source, fsConstants.X_OK);
     const target = join(providerBin, command); symlinkSync(source, target); executables.push({ command, source, sha256: sha256(readFileSync(source)) });
   }
-  invariant(executables.some((item) => item.command === "codex") || env.OMD_BENCH_CODEX_BIN, "isolated provider PATH requires exact Codex executable");
+  invariant(executables.some((item) => item.command === "codex"), "isolated provider PATH requires exact Codex executable");
   const chosenCodex = executables.find((item) => item.command === "codex");
   invariant(chosenCodex?.source === staticRuntime.codex_cli.wrapper.path && chosenCodex?.sha256 === staticRuntime.codex_cli.wrapper.sha256,
     "isolated provider Codex executable differs from admitted static CLI binding");
@@ -952,9 +965,11 @@ export function prepareProviderIsolation({ execution, workspace, metadata, stati
     && observedCatalog.model_profile_sha256 === admittedCatalog.model_profile_sha256
     && observedCatalog.client_version === admittedCatalog.client_version,
   "provider model catalog semantic/profile/client mutation during prompt-input audit");
-  const receipt = { schema_version: "0.1", kind: "omd-luna-max-provider-runtime-isolation", provider_home: providerHome, auth: { source_path: sourceAuth, bytes: authBytes.length, sha256: sha256(authBytes), copy_sha256: sha256(readFileSync(join(providerHome, "auth.json"))) }, model_catalog: { source_path: sourceCatalog, bytes: catalogBytes.length, sha256: admittedCatalog.full_sha256, initial_copy_sha256: initialCopyCatalog.full_sha256, copy_sha256: observedCatalog.full_sha256, observed_post_prompt_input_sha256: observedCatalog.full_sha256, admitted_sha256: staticRuntime.catalog_sha256, admitted_semantic_sha256: admittedCatalog.semantic_sha256, observed_semantic_sha256: observedCatalog.semantic_sha256, model_profile_sha256: observedCatalog.model_profile_sha256, client_version: observedCatalog.client_version }, path: { value: providerBin, allowlist: allowedCommands, forbidden: forbiddenCommands, executables, browser_harness_advertised_or_available: false, login_shell_preflight: { exact_path: shellPath, curl_available: false, browser_harness_available: false, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 } }, zprofile: { path: join(providerHome, ".zprofile"), sha256: sha256(zprofileBytes), bytes: zprofileBytes.length }, skills, prompt_input_skill_audit: fileBinding(promptInputAuditPath), provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 };
+  const receipt = { schema_version: "0.1", kind: "omd-luna-max-provider-runtime-isolation", provider_home: providerHome, auth: { source_path: sourceAuth, bytes: authBytes.length, sha256: sha256(authBytes), copy_sha256: sha256(readFileSync(join(providerHome, "auth.json"))) }, model_catalog: { source_path: sourceCatalog, bytes: catalogBytes.length, sha256: admittedCatalog.full_sha256, initial_copy_sha256: initialCopyCatalog.full_sha256, copy_sha256: observedCatalog.full_sha256, observed_post_prompt_input_sha256: observedCatalog.full_sha256, admitted_sha256: staticRuntime.catalog_sha256, admitted_semantic_sha256: admittedCatalog.semantic_sha256, observed_semantic_sha256: observedCatalog.semantic_sha256, model_profile_sha256: observedCatalog.model_profile_sha256, client_version: observedCatalog.client_version }, codex_cli: { source: admittedWrapper, sha256: chosenCodex.sha256, version: staticRuntime.codex_cli.version, native: staticRuntime.codex_cli.native, authority: "admitted-static-runtime-receipt", ambient_override: ambientWrapperClaim ? { provided: true, exact_equal: true, claimed_path: ambientWrapperClaim } : { provided: false, exact_equal: null, claimed_path: null } }, path: { value: providerBin, allowlist: allowedCommands, forbidden: forbiddenCommands, executables, browser_harness_advertised_or_available: false, login_shell_preflight: { exact_path: shellPath, curl_available: false, browser_harness_available: false, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 } }, zprofile: { path: join(providerHome, ".zprofile"), sha256: sha256(zprofileBytes), bytes: zprofileBytes.length }, skills, prompt_input_skill_audit: fileBinding(promptInputAuditPath), provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 };
   writeJsonExclusive(join(execution, "PROVIDER-RUNTIME-ISOLATION.json"), receipt);
-  return { receipt, env: { ...env, HOME: providerHome, CODEX_HOME: providerHome, ZDOTDIR: providerHome, PATH: providerBin, BH_DOMAIN_SKILLS: "0", OMD_BENCH_AUTH_CODEX_HOME: providerHome, OMD_BENCH_CODEX_BIN: chosenCodex.source } };
+  const executionEnv = {};
+  for (const key of ["TMPDIR", "LANG", "LC_ALL", "TERM", "USER", "SHELL"]) if (env[key]) executionEnv[key] = env[key];
+  return { receipt, env: { ...executionEnv, HOME: providerHome, CODEX_HOME: providerHome, ZDOTDIR: providerHome, PATH: providerBin, BH_DOMAIN_SKILLS: "0", OMD_BENCH_AUTH_CODEX_HOME: providerHome, OMD_BENCH_CODEX_BIN: chosenCodex.source } };
 }
 function proof(workspace, variant) {
   const entry = join(workspace, "index.html"); const entryPresent = existsSync(entry) && statSync(entry).isFile();
