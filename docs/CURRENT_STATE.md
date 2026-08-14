@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 58dcf8a9 evaluator dependency closure epoch, 안전 중단 terminal 5 / missing 43 / ineligible 6
+- 갱신: 2026-08-14 · source 58dcf8a9 evaluator dependency closure epoch, terminal 6 / missing 42 / ineligible 6
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -26,7 +26,9 @@
 - partial-04=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-04.json`, SHA=`072ef321…`, terminal4/missing44/ineligible6이다. token monitor는 used80/reset timestamp 불변으로 리셋 미발생을 확인했다.
 - order5 Taste eligible scope-only r1은 839,977ms, input2,323,203/output39,895/total2,363,098, tool30, agent browser/network/external0으로 provider exit0했다. HTML14,318B+stylesheet/script, vars22/selectors92/package PASS와 12 captures를 만들었고 stark blue/white, heavy grotesk type, modular job cards, modal reservation flow가 일관된 제품형 landing을 이룬다. 그러나 같은 `unavailable-information` state 미관측으로 evaluator exit1/objective0다. total tokens는 model-only 약10.4×, Anthropic 약8.5×이며 scope-only 결과라 다른 두 task로 일반화하지 않는다. record SHA=`572ec6e2…`, rerun 금지다.
 - partial-05=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-05.json`, SHA=`51d43988…`, terminal5/missing43/ineligible6이다. token monitor는 used80/reset timestamp 불변으로 리셋 미발생을 확인했다.
-- **안전 중단/다음 exact action:** 사용자 네트워크 중단 요청에 따라 새 provider 셀은 시작하지 않았다. 재개 즉시 randomized order6 `neighborhood-library-landing-luna-max-r1-omd-autopilot-v2`를 같은 source58dc/admission/runtime으로 Luna/max 1회·retry0 실행한다. terminal 뒤 partial-06/checkpoint를 만든다. 0dc9+c4946 terminals는 diagnostic-only다.
+- order6 OmD Autopilot v2 r1은 900,316ms timeout, usage/completion unknown, tool46, agent browser/network/external0으로 봉인됐다. Core six-artifact package를 세 번 재생성한 뒤 DESIGN.md+system adoption과 11-check project proof까지 PASS했지만 mission이 `PRODUCT_BUILD`에 진입한 시점에 cap이 끝나 244B blank shell, package false, evaluator/screenshots0, objective0다. 첫 council은 cell-local `exact`를 official-brand 요구로 오인했고, 첫 adopter는 run-scoped evidence path를 거부했으며, 두 번째는 non-interactive status state 계약을 거부했다. 모델이 `project-owner` review/checkpoint를 세 차례 자가 발급한 authority 위반도 별도 P0다. record SHA=`725ed8ea…`, rerun 금지다.
+- partial-06=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-06.json`, SHA=`97d5a461…`, terminal6/missing42/ineligible6이다. landing r1 여섯 arm은 전부 objective0이며 release verdict는 HOLD다. token monitor는 used81/reset timestamp 불변으로 리셋 미발생을 확인했다.
+- **다음 exact action:** 현재 immutable epoch와 병렬로 Sol/medium이 self-approval 제거·single-pass Core bootstrap·제품 예산 보존을 차기 epoch용으로 수정한다. 실행 정본에서는 randomized order7 `cold-chain-operations-luna-max-r1-anthropic-frontend-design`을 Luna/max 1회·retry0 실행하고 partial-07/checkpoint를 만든다. 0dc9+c4946 terminals는 diagnostic-only다.
 
 ### 2026-08-14 source 0dcbd99d Luna Max 정식 비교 epoch
 

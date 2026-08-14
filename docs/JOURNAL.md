@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · 58dc landing OmD r1 봉인
+- OmD는 900,316ms·tool46 뒤 Core adoption/proof는 PASS했지만 제품 구현 전 timeout/blank shell/objective0다.
+- evidence path와 component-state 오류로 package를 3회 생성했고 model의 project-owner 자가승인 P0도 확인했다.
+- record `725ed8ea…`, partial-06 `97d5a461…`; terminal6/missing42/ineligible6, landing 전 arm objective0/HOLD다.
+- 다음 locked 셀은 cold-chain Anthropic r1; 차기 epoch 하네스 수정은 Sol/medium 병렬 레인이다.
+
 ## 2026-08-14 (Codex) · 58dc landing Taste r1 봉인·안전 중단
 - Taste는 839,977ms·2,363,098 tokens에 blue/white product landing과 12 captures를 만들었다.
 - visual system은 일관됐지만 unavailable-information 누락으로 objective0; scope-only라 타 task 일반화 금지다.
