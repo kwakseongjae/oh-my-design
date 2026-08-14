@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · d62 order5 Taste 및 epoch 동결
+- Taste는 763,479ms·runner-reported 1,721,714 tokens에 40,789B UI와 12 captures를 만들었지만 unavailable state가 없어 objective0다.
+- provider home `generated_images`의 PNG 2개가 workspace로 복사됐으나 실제 imagegen lifecycle이 raw stream에 없어 provider/model 1/1을 입증할 수 없다.
+- record `250b9524…`, partial-05 `0ae4afb1…`; d62는 terminal5/missing43/ineligible6에서 diagnostic-only로 동결하고 order6은 실행하지 않는다.
+- 다음은 hidden image side-effect/call attribution gate를 커밋한 새 source로 receipt·materialization·admission을 전부 재발급하고 order1부터 새 epoch를 시작한다.
+
 ## 2026-08-14 (Codex) · d62 order4 UI UX Pro Max 봉인
 - UI UX는 753,695ms·1,196,466 tokens에 3-file warm editorial product와 12 captures를 만들었다.
 - polish는 높지만 desktop mobile-nav-open bug와 unavailable state 누락으로 objective0다.

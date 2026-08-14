@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` commit `d62ec298d97e9ecc611ccfe9a710bccb7f4a0e8d`; authority-controller implementation `d1f5e5b8`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source d62ec298 fresh epoch admitted, terminal 0 / missing 48 / ineligible 6; next locked cell order1 pending
+- 갱신: 2026-08-14 · source d62ec298 epoch는 hidden imagegen attribution P0로 terminal 5 / missing 43 / ineligible 6에서 diagnostic-only 동결; 새 gate commit·fresh epoch 준비 중
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -24,7 +24,11 @@
 - partial-03=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-03.json`, SHA=`54e31dac…`, terminal3(completed1/failed2)/missing45/ineligible6이다. completed는 objective gate pass와 동의어가 아니며 release superiority 근거로 단독 승격하지 않는다.
 - order4 `neighborhood-library-landing-luna-max-r1-ui-ux-pro-max`는 753,695ms, input1,157,834/output38,632/total1,196,466, tool27, contamination0으로 provider exit0했다. final HTML22,166B+stylesheet/JS, vars20/selectors93/package와 12 captures는 PASS했다. parchment/mahogany/brass, serif hierarchy, tool-note card와 form은 고급스럽지만 desktop default에서 mobile nav drawer가 열린 responsive/state bug가 있고 unavailable-information 미관측으로 objective0다. tokens는 model-only 4.65×, Anthropic 2.51×다. record=`c254bc7b…`, rerun 금지다.
 - partial-04=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-04.json`, SHA=`903ebd3d…`, terminal4(completed1/failed3)/missing44/ineligible6이다. token monitor used89/reset timestamp 불변이다.
-- **다음 exact action:** landing-only eligible Taste r1을 exact order5로 1회 실행해 visual taste·scope-only 비용·state closure를 비교한다. 이후 order6 OmD는 새 external authority-controller 경계가 실제 product budget을 회복하는지 검증한다.
+- order5 `neighborhood-library-landing-luna-max-r1-taste-eligible-scope-only`는 763,479ms, runner-reported input1,687,364/output34,350/total1,721,714, tool32로 terminal `failed`다. 40,789B HTML, vars16/selectors60/package와 12 captures를 만들었고 cobalt/white/black product landing과 reservation modal은 동작하지만 unavailable-information 누락으로 objective0이며, 시각적으로 앞선 editorial 경쟁 arm보다 일반적이다. record=`250b9524…`, rerun 금지다.
+- Taste workspace의 `assets/borrow-at-home.png`와 `assets/tool-library-hero.png`는 provider home `generated_images`에서 복사됐지만 raw stream에는 실제 imagegen tool identity/call lifecycle이 없고 shell read/copy만 남았다. 따라서 기존 terminal의 provider/model `1/1`은 증명 불가능하며 additional hidden model/tool calls는 `unknown`이다. 이 결과를 비교 분모에 쓰지 않는다.
+- partial-05=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-05.json`, SHA=`0ae4afb1…`, terminal5(completed1/failed4)/missing43/ineligible6이다. collector 자체 호출은 0이다.
+- **epoch 판정:** d62 전체를 diagnostic-only로 동결하고 order6 OmD를 실행하지 않는다. 앞선 4셀도 실행 당시 provider-home hidden-image boundary를 결박하지 않았으므로 사후 무오염을 증명할 수 없고, patched runner/source를 같은 epoch에 혼합할 수 없다.
+- **다음 exact action:** hidden image generation side-effect·tool identity·workspace SHA lineage를 provider-zero로 fail-close하는 Sol-medium runner gate를 독립 검수·커밋한다. 그 clean commit으로 schema/static/evaluator/IAB/runtime-attribution receipt, locked root, materialization, admission을 전부 새로 발급하고 retry/replacement/fallback0인 새 epoch order1부터 시작한다.
 
 ### 2026-08-14 fresh Luna epoch authority-controller gate
 
