@@ -2,7 +2,7 @@
 import { spawnSync, execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import {
-  accessSync, chmodSync, constants as fsConstants, cpSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, realpathSync, rmSync, statSync, symlinkSync, writeFileSync, appendFileSync,
+  accessSync, chmodSync, constants as fsConstants, copyFileSync, cpSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, realpathSync, rmSync, statSync, symlinkSync, writeFileSync, appendFileSync,
 } from "node:fs";
 import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -34,6 +34,10 @@ const OMD_AUTHORITY_RUNTIME_PREFIXES = Object.freeze([
   "scripts/design-md-core-conformance.cjs", "scripts/design-md-core.cjs", "spec/schema/",
 ]);
 const CODEX_BUILTIN_SKILLS = Object.freeze(["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"]);
+const CODEX_0147_APPS_USAGE_DEFAULTS = Object.freeze({
+  "gpt-5.6-sol": true, "gpt-5.6-sol-wm": true, "gpt-5.6-terra": true, "gpt-5.6-luna": true,
+  "gpt-5.5": true, "gpt-5.4": true, "gpt-5.4-mini": true, "gpt-5.3-codex-spark": false, "codex-auto-review": false,
+});
 const HERE = dirname(fileURLToPath(import.meta.url));
 const DEFAULT_REPO_ROOT = resolve(HERE, "../../..");
 
@@ -56,6 +60,92 @@ function modelCacheIdentity(bytes) {
     model_profile_sha256: sha256(canonical(profile)),
     client_version: cache.client_version ?? null,
   };
+}
+export function promptAuditCacheMutation(beforeBytes, afterBytes) {
+  const before = JSON.parse(beforeBytes.toString("utf8")); const after = JSON.parse(afterBytes.toString("utf8"));
+  const beforeIdentity = modelCacheIdentity(beforeBytes); const afterIdentity = modelCacheIdentity(afterBytes);
+  const normalizedBefore = structuredClone(before); const normalizedAfter = structuredClone(after);
+  delete normalizedBefore.fetched_at; delete normalizedAfter.fetched_at;
+  const normalizedDefaults = []; const missingDefaults = [];
+  if (Array.isArray(normalizedBefore.models) && Array.isArray(normalizedAfter.models)
+    && normalizedBefore.models.length === normalizedAfter.models.length) {
+    for (let index = 0; index < normalizedBefore.models.length; index += 1) {
+      const beforeProfile = normalizedBefore.models[index]; const afterProfile = normalizedAfter.models[index];
+      if (beforeProfile?.slug !== afterProfile?.slug) continue;
+      if (!Object.hasOwn(beforeProfile, "include_apps_usage_instructions")) {
+        const expected = before.client_version === "0.147.0" ? CODEX_0147_APPS_USAGE_DEFAULTS[beforeProfile.slug] : undefined;
+        if (Object.hasOwn(afterProfile, "include_apps_usage_instructions")) {
+          if (typeof expected === "boolean" && afterProfile.include_apps_usage_instructions === expected) {
+            normalizedDefaults.push({ model: afterProfile.slug, field: "include_apps_usage_instructions", value: afterProfile.include_apps_usage_instructions, authority: "codex-cli-0.147.0-reproduced-default" });
+            delete afterProfile.include_apps_usage_instructions;
+          }
+        } else if (typeof expected === "boolean") missingDefaults.push({ model: beforeProfile.slug, expected });
+      }
+    }
+  }
+  const partialKnownNormalization = normalizedDefaults.length > 0 && missingDefaults.length > 0;
+  const pass = canonical(normalizedBefore) === canonical(normalizedAfter) && !partialKnownNormalization;
+  return {
+    pass,
+    classification: pass ? (beforeIdentity.full_sha256 === afterIdentity.full_sha256 ? "none" : "known-cli-normalization-discarded") : "semantic-authority-drift-rejected",
+    policy: { sacrificial_home: true, admitted_provider_cache_reuse: false, allowed_changes: ["fetched_at", "models[*].include_apps_usage_instructions:missing-to-boolean-default"] },
+    fetched_at: { before: before.fetched_at ?? null, after: after.fetched_at ?? null, changed: before.fetched_at !== after.fetched_at },
+    normalized_defaults: normalizedDefaults,
+    missing_defaults: missingDefaults,
+    before: beforeIdentity,
+    after: afterIdentity,
+  };
+}
+export function providerZeroNormalizedCacheCandidate(bytes) {
+  const source = JSON.parse(bytes.toString("utf8"));
+  const result = { pass: true, required: false, client_version: source?.client_version ?? null, changes: [], violations: [], source_sha256: sha256(bytes), candidate_sha256: null, candidate_bytes: null };
+  if (source?.client_version !== "0.147.0") {
+    result.pass = false; result.violations.push({ reason: "unsupported-client-version", observed: source?.client_version ?? null, supported: ["0.147.0"] });
+    return result;
+  }
+  if (!Array.isArray(source.models)) result.violations.push({ reason: "models-not-array" });
+  else {
+    const profiles = new Map();
+    for (const profile of source.models) {
+      const slug = profile?.slug;
+      if (typeof slug !== "string" || !Object.hasOwn(CODEX_0147_APPS_USAGE_DEFAULTS, slug)) result.violations.push({ reason: "unknown-model-slug", slug: slug ?? null });
+      else if (profiles.has(slug)) result.violations.push({ reason: "duplicate-model-slug", slug });
+      else profiles.set(slug, profile);
+    }
+    for (const [slug, expected] of Object.entries(CODEX_0147_APPS_USAGE_DEFAULTS)) {
+      const profile = profiles.get(slug);
+      if (!profile) result.violations.push({ reason: "missing-model-slug", slug });
+      else if (Object.hasOwn(profile, "include_apps_usage_instructions") && profile.include_apps_usage_instructions !== expected) {
+        result.violations.push({ reason: "wrong-preexisting-default", slug, expected, observed: profile.include_apps_usage_instructions });
+      }
+    }
+    if (result.violations.length === 0) {
+      const candidate = structuredClone(source);
+      for (const profile of candidate.models) {
+        if (!Object.hasOwn(profile, "include_apps_usage_instructions")) {
+          const value = CODEX_0147_APPS_USAGE_DEFAULTS[profile.slug];
+          profile.include_apps_usage_instructions = value;
+          result.changes.push({ model: profile.slug, field: "include_apps_usage_instructions", before: "absent", after: value, authority: "codex-cli-0.147.0-reproduced-default" });
+        }
+      }
+      result.required = result.changes.length > 0;
+      if (result.required) {
+        result.candidate_bytes = Buffer.from(`${JSON.stringify(candidate, null, 2)}\n`);
+        result.candidate_sha256 = sha256(result.candidate_bytes);
+      }
+    }
+  }
+  result.pass = result.violations.length === 0;
+  return result;
+}
+function promptAuditAuthObservation(home) {
+  const path = join(home, "auth.json");
+  let info;
+  try { info = lstatSync(path); } catch (error) {
+    if (error?.code === "ENOENT") return { present: false, path_sha256: sha256(path), type: null, sha256: null, bytes: 0 };
+    throw error;
+  }
+  return { present: true, path_sha256: sha256(path), type: info.isSymbolicLink() ? "symlink" : info.isFile() ? "file" : info.isDirectory() ? "directory" : "other", sha256: info.isFile() && !info.isSymbolicLink() ? sha256(readFileSync(path)) : null, bytes: info.isFile() && !info.isSymbolicLink() ? info.size : null };
 }
 function readJson(path) { return JSON.parse(readFileSync(path, "utf8")); }
 function writeJsonExclusive(path, value) {
@@ -847,7 +937,10 @@ export function auditPromptInputSkills({ codexBin, workspace, providerEnv, skill
   invariant(new Set(entries.map((entry) => entry.id)).size === entries.length && new Set(entries.map((entry) => entry.locator)).size === entries.length, "Codex prompt-input skill ids/locators must be unique");
   const builtins = entries.filter((entry) => entry.kind === "builtin");
   invariant(canonical(builtins.map((entry) => entry.id).sort()) === canonical([...CODEX_BUILTIN_SKILLS].sort()), "Codex built-in skill allowlist drift");
-  for (const entry of builtins) invariant(entry.locator === join(resolve(providerEnv.CODEX_HOME), "skills/.system", entry.id, "SKILL.md"), `Codex built-in skill locator drift: ${entry.id}`);
+  for (const entry of builtins) {
+    invariant(entry.locator === join(resolve(providerEnv.CODEX_HOME), "skills/.system", entry.id, "SKILL.md"), `Codex built-in skill locator drift: ${entry.id}`);
+    regular(entry.locator, `Codex prompt-input built-in skill ${entry.id}`);
+  }
   const projectObserved = entries.filter((entry) => entry.kind === "project").map((entry) => { const path = resolve(entry.locator); regular(path, `prompt-input project skill ${entry.id}`); return { id: entry.id, path, sha256: sha256(readFileSync(path)) }; }).sort((a, b) => a.id.localeCompare(b.id));
   invariant(canonical(projectObserved) === canonical(projectExpected), "Codex prompt-input project skill closure drift");
     return { schema_version: "0.1", kind: "omd-luna-max-provider-zero-prompt-input-skill-audit", pass: true, args, timeout_ms: PROMPT_INPUT_AUDIT_TIMEOUT_MS, process: { status: 0, signal: observation.signal, error: null, stderr_sha256: sha256(stderr), stderr_bytes: Buffer.byteLength(stderr) }, visible_skill_ids: entries.map((entry) => entry.id), visible_skill_locators: entries, builtin_skill_ids: builtins.map((entry) => entry.id), project_skills: projectObserved, raw_stdout_sha256: sha256(stdout), raw_stdout_bytes: Buffer.byteLength(stdout), skills_block_sha256: sha256(block), parsed_json_sha256: sha256(canonical(parsed)), cli_binding: cliBinding, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 };
@@ -896,17 +989,30 @@ export function prepareProviderIsolation({ execution, workspace, metadata, stati
   invariant(sha256(catalogBytes) === staticRuntime.catalog_sha256, "provider model catalog differs from admitted static authority");
   invariant(admittedCatalog.model_profile_sha256 === staticRuntime.model_profile_sha256 && admittedCatalog.client_version === staticRuntime.codex_cli.version,
     "admitted provider model profile/client version differs from static authority");
-  const providerHome = join(execution, "provider-home"); mkdirSync(providerHome, { recursive: false, mode: 0o700 });
-  writeFileSync(join(providerHome, "auth.json"), authBytes, { flag: "wx", mode: 0o600 });
-  writeFileSync(join(providerHome, "models_cache.json"), catalogBytes, { flag: "wx", mode: 0o600 });
-  writeFileSync(join(providerHome, "model_catalog.json"), catalogBytes, { flag: "wx", mode: 0o600 });
-  invariant(readFileSync(sourceAuth).equals(authBytes) && readFileSync(sourceCatalog).equals(catalogBytes), "immutable provider runtime source changed during isolated copy");
-  const initialCopyCatalog = modelCacheIdentity(readFileSync(join(providerHome, "models_cache.json")));
-  invariant(initialCopyCatalog.full_sha256 === admittedCatalog.full_sha256
-    && initialCopyCatalog.semantic_sha256 === admittedCatalog.semantic_sha256
-    && initialCopyCatalog.model_profile_sha256 === admittedCatalog.model_profile_sha256
-    && initialCopyCatalog.client_version === admittedCatalog.client_version,
-  "initial provider model catalog copy differs from admitted authority");
+  const normalization = providerZeroNormalizedCacheCandidate(catalogBytes);
+  const normalizationAuditPath = join(execution, "PROVIDER-ZERO-CACHE-NORMALIZATION.json");
+  let normalizationCandidate = null;
+  if (normalization.candidate_bytes) {
+    normalizationCandidate = join(execution, "PROVIDER-ZERO-NORMALIZED-MODEL-CACHE.bin");
+    writeFileSync(normalizationCandidate, normalization.candidate_bytes, { flag: "wx", mode: 0o600 });
+    invariant(sha256(readFileSync(normalizationCandidate)) === normalization.candidate_sha256, "provider-zero normalized cache artifact readback drift");
+  }
+  const { candidate_bytes: _candidateBytes, ...normalizationRecord } = normalization;
+  writeJsonExclusive(normalizationAuditPath, { schema_version: "0.1", kind: "omd-luna-max-provider-zero-cache-normalization", ...normalizationRecord, candidate_artifact: normalizationCandidate ? { ...fileBinding(normalizationCandidate), bytes: statSync(normalizationCandidate).size } : null, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 });
+  if (!normalization.pass) {
+    const error = new Error("admitted-cache-apps-usage-default-contract-invalid"); error.terminalReason = "admitted-cache-apps-usage-default-contract-invalid"; throw error;
+  }
+  if (normalization.required) {
+    const error = new Error("admitted-cache-requires-provider-zero-normalization"); error.terminalReason = "admitted-cache-requires-provider-zero-normalization"; throw error;
+  }
+  const providerHome = join(execution, "provider-home");
+  const promptAuditHome = join(execution, "prompt-audit-home"); mkdirSync(promptAuditHome, { recursive: false, mode: 0o700 });
+  writeFileSync(join(promptAuditHome, "models_cache.json"), catalogBytes, { flag: "wx", mode: 0o600 });
+  writeFileSync(join(promptAuditHome, "model_catalog.json"), catalogBytes, { flag: "wx", mode: 0o600 });
+  invariant(!existsSync(join(promptAuditHome, "auth.json")), "prompt-audit home must be unauthenticated");
+  const promptCacheBeforePath = join(execution, "PROMPT-INPUT-MODEL-CACHE.before.bin");
+  writeFileSync(promptCacheBeforePath, catalogBytes, { flag: "wx", mode: 0o600 });
+  invariant(readFileSync(sourceAuth).equals(authBytes) && readFileSync(sourceCatalog).equals(catalogBytes), "immutable provider runtime source changed during prompt-audit copy");
   const admittedWrapperClaim = resolve(staticRuntime.codex_cli.wrapper.path);
   regular(admittedWrapperClaim, "admitted provider Codex wrapper"); accessSync(admittedWrapperClaim, fsConstants.X_OK);
   const admittedWrapper = realpathSync(admittedWrapperClaim);
@@ -935,14 +1041,14 @@ export function prepareProviderIsolation({ execution, workspace, metadata, stati
     "isolated provider Codex executable differs from admitted static CLI binding");
   invariant(forbiddenCommands.every((command) => !existsSync(join(providerBin, command))), "provider PATH contains a browser/network command");
   const zprofileBytes = Buffer.from(`export PATH=${JSON.stringify(providerBin)}\n`);
-  writeFileSync(join(providerHome, ".zprofile"), zprofileBytes, { flag: "wx", mode: 0o600 });
+  writeFileSync(join(promptAuditHome, ".zprofile"), zprofileBytes, { flag: "wx", mode: 0o600 });
   const zsh = executables.find((item) => item.command === "zsh")?.source;
   invariant(zsh, "isolated provider PATH requires zsh for login-shell confinement preflight");
-  const shellEnv = { HOME: providerHome, CODEX_HOME: providerHome, ZDOTDIR: providerHome, PATH: providerBin };
+  const shellEnv = { HOME: promptAuditHome, CODEX_HOME: promptAuditHome, ZDOTDIR: promptAuditHome, PATH: providerBin };
   const shellPath = execFileSync(zsh, ["-lc", "printf %s \"$PATH\"; command -v curl >/dev/null && exit 41; command -v browser-harness >/dev/null && exit 42; exit 0"], { encoding: "utf8", env: shellEnv });
   invariant(shellPath === providerBin, "login shell escaped the exact isolated provider PATH");
   const skills = skillIsolation(workspace, metadata.arm.variant_id);
-  invariant(!existsSync(join(providerHome, "skills")) && !existsSync(join(providerHome, ".agents")), "provider home must expose no global skills");
+  invariant(!existsSync(join(promptAuditHome, "skills")) && !existsSync(join(promptAuditHome, ".agents")), "prompt-audit home must begin with no global skills");
   const promptInputAuditPath = join(execution, "PROMPT-INPUT-SKILL-AUDIT.json");
   try {
     writeJsonExclusive(promptInputAuditPath, auditPromptInputSkills({ codexBin: chosenCodex.source, workspace, providerEnv: shellEnv, skills, cliBinding: staticRuntime.codex_cli, probe: promptInputProbe }));
@@ -955,17 +1061,45 @@ export function prepareProviderIsolation({ execution, workspace, metadata, stati
       schema_version: "0.1", kind: "omd-luna-max-provider-zero-prompt-input-skill-audit-failure", pass: false,
       args: observed.args, timeout_ms: observed.timeout_ms, process: { status: observed.status, signal: observed.signal, error: observed.error },
       stdout: { ...fileBinding(stdoutPath), bytes: statSync(stdoutPath).size }, stderr: { ...fileBinding(stderrPath), bytes: statSync(stderrPath).size },
-      failure: { name: error.name, message: error.message }, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0,
+      prompt_audit_auth: promptAuditAuthObservation(promptAuditHome), failure: { name: error.name, message: error.message }, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0,
     });
     error.promptInputFailurePath = failurePath;
     throw error;
   }
-  const observedCatalogBytes = readFileSync(join(providerHome, "models_cache.json")); const observedCatalog = modelCacheIdentity(observedCatalogBytes);
-  invariant(observedCatalog.semantic_sha256 === admittedCatalog.semantic_sha256
-    && observedCatalog.model_profile_sha256 === admittedCatalog.model_profile_sha256
-    && observedCatalog.client_version === admittedCatalog.client_version,
-  "provider model catalog semantic/profile/client mutation during prompt-input audit");
-  const receipt = { schema_version: "0.1", kind: "omd-luna-max-provider-runtime-isolation", provider_home: providerHome, auth: { source_path: sourceAuth, bytes: authBytes.length, sha256: sha256(authBytes), copy_sha256: sha256(readFileSync(join(providerHome, "auth.json"))) }, model_catalog: { source_path: sourceCatalog, bytes: catalogBytes.length, sha256: admittedCatalog.full_sha256, initial_copy_sha256: initialCopyCatalog.full_sha256, copy_sha256: observedCatalog.full_sha256, observed_post_prompt_input_sha256: observedCatalog.full_sha256, admitted_sha256: staticRuntime.catalog_sha256, admitted_semantic_sha256: admittedCatalog.semantic_sha256, observed_semantic_sha256: observedCatalog.semantic_sha256, model_profile_sha256: observedCatalog.model_profile_sha256, client_version: observedCatalog.client_version }, codex_cli: { source: admittedWrapper, sha256: chosenCodex.sha256, version: staticRuntime.codex_cli.version, native: staticRuntime.codex_cli.native, authority: "admitted-static-runtime-receipt", ambient_override: ambientWrapperClaim ? { provided: true, exact_equal: true, claimed_path: ambientWrapperClaim } : { provided: false, exact_equal: null, claimed_path: null } }, path: { value: providerBin, allowlist: allowedCommands, forbidden: forbiddenCommands, executables, browser_harness_advertised_or_available: false, login_shell_preflight: { exact_path: shellPath, curl_available: false, browser_harness_available: false, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 } }, zprofile: { path: join(providerHome, ".zprofile"), sha256: sha256(zprofileBytes), bytes: zprofileBytes.length }, skills, prompt_input_skill_audit: fileBinding(promptInputAuditPath), provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 };
+  const promptCacheAfterBytes = readFileSync(join(promptAuditHome, "models_cache.json"));
+  const promptAuditAuth = promptAuditAuthObservation(promptAuditHome);
+  const promptCacheAfterPath = join(execution, "PROMPT-INPUT-MODEL-CACHE.after.bin");
+  writeFileSync(promptCacheAfterPath, promptCacheAfterBytes, { flag: "wx", mode: 0o600 });
+  const promptCacheMutation = promptAuditCacheMutation(catalogBytes, promptCacheAfterBytes);
+  const promptSkillSnapshotRoot = join(execution, "PROMPT-INPUT-BUILTIN-SKILLS"); mkdirSync(promptSkillSnapshotRoot, { recursive: false, mode: 0o700 });
+  const promptSkillSnapshots = CODEX_BUILTIN_SKILLS.map((id) => {
+    const source = join(promptAuditHome, "skills/.system", id, "SKILL.md"); regular(source, `prompt-input built-in skill snapshot ${id}`);
+    const target = join(promptSkillSnapshotRoot, id, "SKILL.md"); mkdirSync(dirname(target), { recursive: true }); copyFileSync(source, target);
+    return { id, original_locator: source, preserved: { ...fileBinding(target), bytes: statSync(target).size } };
+  });
+  const sanitizedAuditTree = tree(promptAuditHome, ["auth.json", "models_cache.json", "model_catalog.json"]);
+  const promptCacheMutationPath = join(execution, "PROMPT-INPUT-MODEL-CACHE-AUDIT.json");
+  writeJsonExclusive(promptCacheMutationPath, { schema_version: "0.1", kind: "omd-luna-max-prompt-input-cache-normalization-audit", ...promptCacheMutation, execution_policy: { authenticated: false, allowed_changes: ["fetched_at"], semantic_normalization_allowed: false }, prompt_audit_auth: promptAuditAuth, artifacts: { before: { ...fileBinding(promptCacheBeforePath), bytes: catalogBytes.length }, after: { ...fileBinding(promptCacheAfterPath), bytes: promptCacheAfterBytes.length }, builtin_skill_snapshots: promptSkillSnapshots, sanitized_audit_home_tree: sanitizedAuditTree }, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 });
+  rmSync(promptAuditHome, { recursive: true });
+  invariant(!existsSync(promptAuditHome), "sacrificial prompt-audit home cleanup failed");
+  invariant(!promptAuditAuth.present, "unauthenticated prompt-input audit created auth material");
+  invariant(promptCacheMutation.pass, "prompt-input audit cache changed outside known discarded CLI normalization");
+  invariant(promptCacheMutation.normalized_defaults.length === 0, "unauthenticated prompt-input audit attempted semantic cache normalization");
+  mkdirSync(providerHome, { recursive: false, mode: 0o700 });
+  writeFileSync(join(providerHome, "auth.json"), authBytes, { flag: "wx", mode: 0o600 });
+  writeFileSync(join(providerHome, "models_cache.json"), catalogBytes, { flag: "wx", mode: 0o600 });
+  writeFileSync(join(providerHome, "model_catalog.json"), catalogBytes, { flag: "wx", mode: 0o600 });
+  writeFileSync(join(providerHome, ".zprofile"), zprofileBytes, { flag: "wx", mode: 0o600 });
+  invariant(readFileSync(sourceAuth).equals(authBytes) && readFileSync(sourceCatalog).equals(catalogBytes), "immutable provider runtime source changed during pristine provider copy");
+  const initialCopyCatalog = modelCacheIdentity(readFileSync(join(providerHome, "models_cache.json")));
+  invariant(initialCopyCatalog.full_sha256 === admittedCatalog.full_sha256
+    && initialCopyCatalog.semantic_sha256 === admittedCatalog.semantic_sha256
+    && initialCopyCatalog.model_profile_sha256 === admittedCatalog.model_profile_sha256
+    && initialCopyCatalog.client_version === admittedCatalog.client_version,
+  "pristine provider model catalog copy differs from admitted authority");
+  const observedCatalog = initialCopyCatalog;
+  invariant(!existsSync(join(providerHome, "skills")) && !existsSync(join(providerHome, ".agents")) && !existsSync(join(providerHome, "generated_images")), "sacrificial prompt-audit side effects crossed into provider home");
+  const receipt = { schema_version: "0.1", kind: "omd-luna-max-provider-runtime-isolation", provider_home: providerHome, prompt_audit_home: { path_sha256: sha256(promptAuditHome), removed: true, admitted_cache_reused: false, cache_audit: fileBinding(promptCacheMutationPath) }, auth: { source_path: sourceAuth, bytes: authBytes.length, sha256: sha256(authBytes), copy_sha256: sha256(readFileSync(join(providerHome, "auth.json"))) }, model_catalog: { source_path: sourceCatalog, bytes: catalogBytes.length, sha256: admittedCatalog.full_sha256, initial_copy_sha256: initialCopyCatalog.full_sha256, copy_sha256: observedCatalog.full_sha256, observed_post_prompt_input_sha256: promptCacheMutation.after.full_sha256, admitted_sha256: staticRuntime.catalog_sha256, admitted_semantic_sha256: admittedCatalog.semantic_sha256, observed_semantic_sha256: promptCacheMutation.after.semantic_sha256, model_profile_sha256: observedCatalog.model_profile_sha256, client_version: observedCatalog.client_version, provider_copy_pristine: true }, codex_cli: { source: admittedWrapper, sha256: chosenCodex.sha256, version: staticRuntime.codex_cli.version, native: staticRuntime.codex_cli.native, authority: "admitted-static-runtime-receipt", ambient_override: ambientWrapperClaim ? { provided: true, exact_equal: true, claimed_path: ambientWrapperClaim } : { provided: false, exact_equal: null, claimed_path: null } }, path: { value: providerBin, allowlist: allowedCommands, forbidden: forbiddenCommands, executables, browser_harness_advertised_or_available: false, login_shell_preflight: { exact_path: shellPath, curl_available: false, browser_harness_available: false, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 } }, zprofile: { path: join(providerHome, ".zprofile"), sha256: sha256(zprofileBytes), bytes: zprofileBytes.length }, skills, prompt_input_skill_audit: fileBinding(promptInputAuditPath), provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 };
   writeJsonExclusive(join(execution, "PROVIDER-RUNTIME-ISOLATION.json"), receipt);
   const executionEnv = {};
   for (const key of ["TMPDIR", "LANG", "LC_ALL", "TERM", "USER", "SHELL"]) if (env[key]) executionEnv[key] = env[key];
@@ -1045,8 +1179,10 @@ export function runCell(options) {
     writeJsonExclusive(join(execution, "PROVIDER-SPAWN-STARTED.json"), { schema_version: "0.1", kind: "omd-luna-max-provider-spawn-boundary", cell_id: next.id, started_at: new Date().toISOString(), executable_sha256: sha256(call.executable), args_sha256: sha256(canonical(call.args)), provider_calls: "unknown", model_calls: "unknown", browser_calls: 0, network_calls: 0 });
   } catch (error) {
     const providerHome = join(execution, "provider-home");
+    const promptAuditHome = join(execution, "prompt-audit-home");
     if (existsSync(providerHome)) rmSync(providerHome, { recursive: true, force: true });
-    return writeProviderBoundaryFailure({ root, cell, execution, started, manifestCell: next, reason: "pre-provider-setup-failed", error, providerSpawnStarted: false });
+    if (existsSync(promptAuditHome)) rmSync(promptAuditHome, { recursive: true, force: true });
+    return writeProviderBoundaryFailure({ root, cell, execution, started, manifestCell: next, reason: error.terminalReason ?? "pre-provider-setup-failed", error, providerSpawnStarted: false });
   }
   const startNs = process.hrtime.bigint();
   const result = spawnSync(call.executable, call.args, { cwd: repoRoot, encoding: "utf8", timeout: TIMEOUT_MS + 30_000, maxBuffer: 64 * 1024 * 1024, env: { ...providerIsolation.env, ...(externalStaging ? { [OMD_STAGING_ENV]: externalStaging.root, [OMD_PACKAGE_ENV]: externalStaging.packageRoot, [OMD_CHECKPOINT_ENV]: externalStaging.checkpointPath, [OMD_AUTHORITY_RECEIPT_ENV]: externalStaging.authorityReceiptPath, [OMD_AUTHORITY_RECEIPT_SHA_ENV]: externalStaging.authorityReceiptSha256, [OMD_AUTHORITY_ACTIVATION_SHA_ENV]: sha256(externalStaging.disclosure), [OMD_AUTHORITY_RUN_DIR_ENV]: externalStaging.controllerRunDir, [OMD_AUTHORITY_EXECUTABLE_ENV]: externalStaging.authorityExecutable } : {}), OMD_LUNA_MAX_NETWORK_POLICY: "provider-only-no-self-network", OMD_LUNA_MAX_BROWSER_POLICY: "no-provider-browser-launch" } });

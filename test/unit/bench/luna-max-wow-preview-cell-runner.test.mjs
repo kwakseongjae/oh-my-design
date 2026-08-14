@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
-  ADMISSION_GENERATOR_PATH, DEFAULT_EVALUATOR_PATH, PREREG_CONTROLLER_PATH, PROMPT_INPUT_AUDIT_TIMEOUT_MS, RUNNER_PATH, auditHiddenImageGeneration, auditOmdControllerCommands, auditOmdControllerOutcome, auditOmdExternalStaging, captureGeneratedImagesBoundary, collectRecords, detectNativeInfrastructureBlock, prepareOmdExternalStaging, prepareRuntimeSnapshot, reconcileCrashes, runCell, sha256, toolTelemetry, tree,
+  ADMISSION_GENERATOR_PATH, DEFAULT_EVALUATOR_PATH, PREREG_CONTROLLER_PATH, PROMPT_INPUT_AUDIT_TIMEOUT_MS, RUNNER_PATH, auditHiddenImageGeneration, auditOmdControllerCommands, auditOmdControllerOutcome, auditOmdExternalStaging, captureGeneratedImagesBoundary, collectRecords, detectNativeInfrastructureBlock, prepareOmdExternalStaging, prepareRuntimeSnapshot, promptAuditCacheMutation, providerZeroNormalizedCacheCandidate, reconcileCrashes, runCell, sha256, toolTelemetry, tree,
 } from "../../../benchmarks/ui-resolve-bench/scripts/run-luna-max-wow-preview-cell.mjs";
 import { auditWowPreview, defaultGatePath } from "../../../benchmarks/ui-resolve-bench/scripts/audit-luna-max-wow-preview.mjs";
 import { OMD_EXTERNAL_STAGING_ACTIVATION } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-luna-max-wow-preview.mjs";
@@ -22,10 +22,13 @@ function promptInputJson(block, extraMessages = []) {
   ]);
 }
 
-function fixture({ runnerMode = "success", designSystem = true, variant = "model-only", agentBrowserCall = false, externalContextCall = false, networkAttempt = false, hiddenGeneratedImage = false, forbiddenAuthorityCommand = false, deleteAuthorityReceipt = false, tamperAuthorityRuntime = false, runtimeIntegrityFailure = false, runtimeIntegrityArtifactFault = null, runtimeIntegrityClaimPass = false } = {}) {
+function fixture({ runnerMode = "success", designSystem = true, variant = "model-only", agentBrowserCall = false, externalContextCall = false, networkAttempt = false, hiddenGeneratedImage = false, forbiddenAuthorityCommand = false, deleteAuthorityReceipt = false, tamperAuthorityRuntime = false, runtimeIntegrityFailure = false, runtimeIntegrityArtifactFault = null, runtimeIntegrityClaimPass = false, cliVersion = "0.147.0", includeAppsUsageInstructions = true } = {}) {
   const base = mkdtempSync(join(tmpdir(), "omd-luna-cell-runner-")); const repo = join(base, "repo"); const materialized = join(base, "materialized");
-  const cliVersion = "fixture-1"; const profile = { slug: "gpt-5.6-luna", tool_mode: "function", default_reasoning_level: "max", supported_reasoning_levels: [{ effort: "max" }] };
-  const runtimeHome = join(base, "runtime-home"); mkdirSync(runtimeHome); writeFileSync(join(runtimeHome, "auth.json"), "fixture-auth"); writeFileSync(join(runtimeHome, "models_cache.json"), JSON.stringify({ fetched_at: "2026-08-13T00:00:00Z", client_version: cliVersion, models: [profile] }));
+  const profile = { slug: "gpt-5.6-luna", tool_mode: "function", default_reasoning_level: "max", supported_reasoning_levels: [{ effort: "max" }] };
+  if (typeof includeAppsUsageInstructions === "boolean") profile.include_apps_usage_instructions = includeAppsUsageInstructions;
+  const defaults0147 = { "gpt-5.6-sol": true, "gpt-5.6-sol-wm": true, "gpt-5.6-terra": true, "gpt-5.6-luna": true, "gpt-5.5": true, "gpt-5.4": true, "gpt-5.4-mini": true, "gpt-5.3-codex-spark": false, "codex-auto-review": false };
+  const profiles = cliVersion === "0.147.0" ? Object.entries(defaults0147).map(([slug, expected]) => slug === profile.slug ? profile : { slug, tool_mode: "function", ...(typeof includeAppsUsageInstructions === "boolean" ? { include_apps_usage_instructions: expected } : {}) }) : [profile];
+  const runtimeHome = join(base, "runtime-home"); mkdirSync(runtimeHome); writeFileSync(join(runtimeHome, "auth.json"), "fixture-auth"); writeFileSync(join(runtimeHome, "models_cache.json"), JSON.stringify({ fetched_at: "2026-08-13T00:00:00Z", client_version: cliVersion, models: profiles }));
   const catalogSha = sha256(readFileSync(join(runtimeHome, "models_cache.json"))); const profileSha = sha256(canonical(profile));
   mkdirSync(repo); git(repo, "init", "-q"); git(repo, "config", "user.email", "bench@example.invalid"); git(repo, "config", "user.name", "Bench");
   for (const source of [RUNNER_PATH, ADMISSION_GENERATOR_PATH, PREREG_CONTROLLER_PATH, "benchmarks/ui-resolve-bench/scripts/run-codex.mjs", DEFAULT_EVALUATOR_PATH]) {
@@ -95,7 +98,7 @@ function fixture({ runnerMode = "success", designSystem = true, variant = "model
   const admissionPath = json(join(base, "ADMISSION.json"), admission);
   return { base, repo, materialized, sourceCommit, runtimePath, browserPath, admissionPath, admission, runner, evaluator, cells, matrixPath, preregPath, materializationPath, runtimeHome, catalogSha, profileSha };
 }
-function defaultPromptInputProbe({ cwd, env }) { const builtin = ["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"].map((id) => `- ${id}: builtin (file: ${join(env.CODEX_HOME, "skills/.system", id, "SKILL.md")})`); const projectRoot = join(cwd, ".agents/skills/frontend-design/SKILL.md"); const block = [...builtin, ...(existsSync(projectRoot) ? [`- frontend-design: frozen (file: ${projectRoot})`] : [])].join("\n"); return { status: 0, stdout: promptInputJson(block) }; }
+function defaultPromptInputProbe({ cwd, env }) { if (existsSync(join(env.CODEX_HOME, "auth.json"))) throw new Error("prompt-input probe received auth material"); const builtin = ["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"].map((id) => { const path = join(env.CODEX_HOME, "skills/.system", id, "SKILL.md"); mkdirSync(dirname(path), { recursive: true }); if (!existsSync(path)) writeFileSync(path, `---\nname: ${id}\n---\n# ${id}\n`); return `- ${id}: builtin (file: ${path})`; }); const projectRoot = join(cwd, ".agents/skills/frontend-design/SKILL.md"); const block = [...builtin, ...(existsSync(projectRoot) ? [`- frontend-design: frozen (file: ${projectRoot})`] : [])].join("\n"); return { status: 0, stdout: promptInputJson(block) }; }
 function execute(f, overrides = {}) {
   const runtimeEnv = overrides.runtimeEnv ?? { ...process.env, OMD_BENCH_CODEX_BIN: realpathSync(f.runner) };
   return runCell({ repoRoot: f.repo, materializedRoot: f.materialized, cellId: "cell-01", admission: f.admissionPath, runtimeAttributionReceipt: f.runtimePath, browserReceipt: f.browserPath, sourceCommit: f.sourceCommit, runnerBin: f.runner, evaluatorBin: f.evaluator, runtimeHome: f.runtimeHome, runtimeEnv, promptInputProbe: defaultPromptInputProbe, runtimeObservation: { model_id: "gpt-5.6-luna", cache_sha256: f.catalogSha, model_profile_sha256: f.profileSha }, ...overrides });
@@ -138,9 +141,11 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     expect(deleted).toMatchObject({ pass: false, reason: "generated-images-filesystem-reference-observed-unattributed", additional_hidden_model_tool_invocations: "unknown", after: { state: "absent" }, raw_generated_images_filesystem_references: [{ id: "generate-delete" }] });
     const structured = auditHiddenImageGeneration({ providerHome: join(base, "structured-provider"), before: { path: join(base, "structured-provider/generated_images"), state: "absent", files: [], sha256: null, error: null }, workspaceBefore, workspace, events: [{ type: "item.completed", item: { id: "imagegen-hidden", type: "mcp_tool_call", server: "image_gen", tool: "imagegen" } }, { type: "item.failed", item: { id: "generate-image-hidden", type: "function_call", name: "generate_image" } }] });
     expect(structured).toMatchObject({ pass: false, reason: "hidden-image-tool-identity-observed-unattributed", additional_hidden_model_tool_invocations: "unknown", after: { state: "absent" }, raw_tool_identity_evidence: [{ id: "imagegen-hidden" }, { id: "generate-image-hidden" }] });
-    const preSpawn = fixture(); const rejected = execute(preSpawn, { promptInputProbe: (args) => { mkdirSync(join(args.env.CODEX_HOME, "generated_images")); return defaultPromptInputProbe(args); } });
-    expect(rejected).toMatchObject({ status: "infrastructure-invalid", reason: "pre-provider-setup-failed", provider_calls: 0, model_calls: 0 });
-    expect(existsSync(join(preSpawn.materialized, "prepared-cells/cell-01/.benchmark/execution/PROVIDER-SPAWN-STARTED.json"))).toBe(false);
+    const sacrificial = fixture(); const isolated = execute(sacrificial, { promptInputProbe: (args) => { mkdirSync(join(args.env.CODEX_HOME, "generated_images")); writeFileSync(join(args.env.CODEX_HOME, "generated_images/audit-only.png"), "audit-only"); return defaultPromptInputProbe(args); } });
+    expect(isolated).toMatchObject({ status: "completed", provider_calls: 1, model_calls: 1 });
+    const execution = join(sacrificial.materialized, "prepared-cells/cell-01/.benchmark/execution");
+    expect(existsSync(join(execution, "prompt-audit-home"))).toBe(false);
+    expect(existsSync(join(execution, "provider-home/generated_images"))).toBe(false);
   });
 
   it("runs exactly the next cell once and binds provider, tree, evaluator, and screenshot evidence", () => {
@@ -151,13 +156,13 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     expect(new Set(result.proof.screenshots.flatMap((x) => x.required_states))).toEqual(new Set(["default", "focus-visible", "unavailable-information"]));
     expect(result.proof.design_system_package).toMatchObject({ parsed: true, pass: true });
     const argv = JSON.parse(readFileSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/workspace/.benchmark/argv.json")));
-    expect(argv).toEqual(["--workspace", expect.any(String), "--model", "gpt-5.6-luna", "--reasoning", "max", "--timeout-ms", "900000", "--disable-plugin-skill-search", "--expected-codex-version", "fixture-1", "--expected-wrapper-sha", expect.stringMatching(/^[a-f0-9]{64}$/), "--expected-native-path", realpathSync(f.runner), "--expected-native-sha", "e".repeat(64)]);
+    expect(argv).toEqual(["--workspace", expect.any(String), "--model", "gpt-5.6-luna", "--reasoning", "max", "--timeout-ms", "900000", "--disable-plugin-skill-search", "--expected-codex-version", "0.147.0", "--expected-wrapper-sha", expect.stringMatching(/^[a-f0-9]{64}$/), "--expected-native-path", realpathSync(f.runner), "--expected-native-sha", "e".repeat(64)]);
     const runtimeEnv = JSON.parse(readFileSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/workspace/.benchmark/runtime-env.json")));
     expect(runtimeEnv.HOME).toContain("/.benchmark/execution/provider-home"); expect(runtimeEnv.CODEX_HOME).toBe(runtimeEnv.HOME); expect(runtimeEnv.ZDOTDIR).toBe(runtimeEnv.HOME); expect(runtimeEnv.PATH).toContain("/.benchmark/execution/provider-bin"); expect(runtimeEnv.PATH).not.toContain("browser-harness");
     expect(runtimeEnv.OMD_BENCH_CODEX_BIN).toBe(realpathSync(f.runner));
     expect(result.telemetry).toMatchObject({ agent_browser_calls: 0 });
     expect(JSON.parse(readFileSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/PROVIDER-SPAWN-STARTED.json")))).toMatchObject({ kind: "omd-luna-max-provider-spawn-boundary", provider_calls: "unknown", model_calls: "unknown" });
-    expect(JSON.parse(readFileSync(result.provider_runtime_isolation.path))).toMatchObject({ codex_cli: { source: realpathSync(f.runner), sha256: sha256(readFileSync(f.runner)), version: "fixture-1", authority: "admitted-static-runtime-receipt", ambient_override: { provided: true, exact_equal: true, claimed_path: realpathSync(f.runner) } } });
+    expect(JSON.parse(readFileSync(result.provider_runtime_isolation.path))).toMatchObject({ codex_cli: { source: realpathSync(f.runner), sha256: sha256(readFileSync(f.runner)), version: "0.147.0", authority: "admitted-static-runtime-receipt", ambient_override: { provided: true, exact_equal: true, claimed_path: realpathSync(f.runner) } } });
     expect(() => execute(f)).toThrow(/exact next locked cell: cell-02/);
   });
 
@@ -345,7 +350,106 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     expect(isolation.model_catalog.observed_post_prompt_input_sha256).not.toBe(f.catalogSha);
     expect(isolation.model_catalog.observed_semantic_sha256).toBe(isolation.model_catalog.admitted_semantic_sha256);
     expect(isolation.model_catalog.model_profile_sha256).toBe(f.profileSha);
-    expect(isolation.model_catalog.client_version).toBe("fixture-1");
+    expect(isolation.model_catalog.client_version).toBe("0.147.0");
+  });
+
+  it("fails provider-zero when the admitted Codex 0.147 cache still requires deterministic normalization", () => {
+    const f = fixture({ cliVersion: "0.147.0", includeAppsUsageInstructions: null });
+    let promptInputCalled = false;
+    const result = execute(f, { promptInputProbe: () => { promptInputCalled = true; throw new Error("must not run"); } });
+    expect(result).toMatchObject({ status: "infrastructure-invalid", reason: "admitted-cache-requires-provider-zero-normalization", provider_calls: 0, model_calls: 0, browser_calls: 0 });
+    expect(promptInputCalled).toBe(false);
+    const execution = join(f.materialized, "prepared-cells/cell-01/.benchmark/execution");
+    const audit = JSON.parse(readFileSync(join(execution, "PROVIDER-ZERO-CACHE-NORMALIZATION.json")));
+    const candidate = readFileSync(join(execution, "PROVIDER-ZERO-NORMALIZED-MODEL-CACHE.bin"));
+    expect(audit).toMatchObject({ pass: true, required: true, source_sha256: f.catalogSha, candidate_sha256: sha256(candidate), changes: { length: 9 }, candidate_artifact: { sha256: sha256(candidate), bytes: candidate.length }, provider_calls: 0, model_calls: 0, network_calls: 0 });
+    expect(providerZeroNormalizedCacheCandidate(candidate)).toMatchObject({ pass: true, required: false, changes: [] });
+    expect(existsSync(join(execution, "prompt-audit-home"))).toBe(false);
+    expect(existsSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/workspace/.benchmark/argv.json"))).toBe(false);
+  });
+
+  it("runs from an admitted normalized 0.147 profile when prompt-input is idempotent apart from fetched_at", () => {
+    const f = fixture({ cliVersion: "0.147.0", includeAppsUsageInstructions: true });
+    const result = execute(f, { promptInputProbe: (args) => {
+      const path = join(args.env.CODEX_HOME, "models_cache.json"); const cache = JSON.parse(readFileSync(path));
+      expect(cache.models[0].include_apps_usage_instructions).toBe(true);
+      cache.fetched_at = "2026-08-14T05:06:14.532926Z"; writeFileSync(path, JSON.stringify(cache));
+      return defaultPromptInputProbe(args);
+    } });
+    expect(result).toMatchObject({ status: "completed", provider_calls: 1, model_calls: 1 });
+    const isolation = JSON.parse(readFileSync(result.provider_runtime_isolation.path));
+    const audit = JSON.parse(readFileSync(isolation.prompt_audit_home.cache_audit.path));
+    expect(audit).toMatchObject({ pass: true, normalized_defaults: [], missing_defaults: [], fetched_at: { changed: true }, prompt_audit_auth: { present: false, type: null, sha256: null, bytes: 0 }, provider_calls: 0, network_calls: 0 });
+    expect(isolation.model_catalog).toMatchObject({ provider_copy_pristine: true, initial_copy_sha256: f.catalogSha, copy_sha256: f.catalogSha, model_profile_sha256: f.profileSha, client_version: "0.147.0" });
+  });
+
+  it("fails and records a hash if unauthenticated prompt-input creates auth material", () => {
+    const f = fixture();
+    const result = execute(f, { promptInputProbe: ({ env }) => {
+      writeFileSync(join(env.CODEX_HOME, "auth.json"), "unexpected-auth");
+      const block = ["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"].map((id) => {
+        const path = join(env.CODEX_HOME, "skills/.system", id, "SKILL.md"); mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, `# ${id}\n`); return `- ${id}: builtin (file: ${path})`;
+      }).join("\n");
+      return { status: 0, stdout: promptInputJson(block) };
+    } });
+    expect(result).toMatchObject({ status: "infrastructure-invalid", reason: "pre-provider-setup-failed", provider_calls: 0, model_calls: 0 });
+    const audit = JSON.parse(readFileSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/PROMPT-INPUT-MODEL-CACHE-AUDIT.json")));
+    expect(audit.prompt_audit_auth).toMatchObject({ present: true, type: "file", sha256: sha256(Buffer.from("unexpected-auth")), bytes: 15 });
+    expect(existsSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/prompt-audit-home"))).toBe(false);
+  });
+
+  it("treats a dangling prompt-audit auth symlink as an evidenced provider-zero violation", () => {
+    const f = fixture();
+    const result = execute(f, { promptInputProbe: ({ env }) => {
+      symlinkSync(join(env.CODEX_HOME, "missing-auth-target"), join(env.CODEX_HOME, "auth.json"));
+      const block = ["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"].map((id) => {
+        const path = join(env.CODEX_HOME, "skills/.system", id, "SKILL.md"); mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, `# ${id}\n`); return `- ${id}: builtin (file: ${path})`;
+      }).join("\n");
+      return { status: 0, stdout: promptInputJson(block) };
+    } });
+    expect(result).toMatchObject({ status: "infrastructure-invalid", reason: "pre-provider-setup-failed", provider_calls: 0, model_calls: 0 });
+    const audit = JSON.parse(readFileSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/PROMPT-INPUT-MODEL-CACHE-AUDIT.json")));
+    expect(audit.prompt_audit_auth).toMatchObject({ present: true, type: "symlink", sha256: null, bytes: null });
+    expect(existsSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/prompt-audit-home"))).toBe(false);
+  });
+
+  it("rejects an unsupported future Codex cache version before prompt audit or provider spawn", () => {
+    const f = fixture({ cliVersion: "0.148.0" }); let promptInputCalled = false;
+    const result = execute(f, { promptInputProbe: () => { promptInputCalled = true; throw new Error("must not run"); } });
+    expect(result).toMatchObject({ status: "infrastructure-invalid", reason: "admitted-cache-apps-usage-default-contract-invalid", provider_calls: 0, model_calls: 0, network_calls: 0 });
+    expect(promptInputCalled).toBe(false);
+    const audit = JSON.parse(readFileSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/PROVIDER-ZERO-CACHE-NORMALIZATION.json")));
+    expect(audit).toMatchObject({ pass: false, required: false, client_version: "0.148.0", violations: [{ reason: "unsupported-client-version", observed: "0.148.0", supported: ["0.147.0"] }], candidate_artifact: null });
+  });
+
+  it("accepts only the exact complete 0.147 apps-usage default map and rejects semantic authority drift", () => {
+    const defaults = { "gpt-5.6-sol": true, "gpt-5.6-sol-wm": true, "gpt-5.6-terra": true, "gpt-5.6-luna": true, "gpt-5.5": true, "gpt-5.4": true, "gpt-5.4-mini": true, "gpt-5.3-codex-spark": false, "codex-auto-review": false };
+    const profiles = Object.keys(defaults).map((slug) => ({ slug, tool_mode: "function" }));
+    const base = { client_version: "0.147.0", fetched_at: "before", etag: "stable", models: profiles };
+    const bytes = (value) => Buffer.from(JSON.stringify(value));
+    const exact = structuredClone(base); exact.fetched_at = "after"; for (const profile of exact.models) profile.include_apps_usage_instructions = defaults[profile.slug];
+    expect(promptAuditCacheMutation(bytes(base), bytes(exact))).toMatchObject({ pass: true, classification: "known-cli-normalization-discarded", normalized_defaults: { length: 9 }, missing_defaults: [] });
+    const withDefaults = structuredClone(exact);
+    const cases = {
+      "default deletion": (() => { const value = structuredClone(withDefaults); delete value.models[3].include_apps_usage_instructions; return [withDefaults, value]; })(),
+      "boolean change": (() => { const value = structuredClone(exact); value.models[3].include_apps_usage_instructions = false; return [base, value]; })(),
+      "partial addition": (() => { const value = structuredClone(base); value.models[3].include_apps_usage_instructions = true; return [base, value]; })(),
+      "wrong slug default": (() => { const value = structuredClone(base); value.models[7].include_apps_usage_instructions = true; return [base, value]; })(),
+      "model reorder": (() => { const value = structuredClone(base); value.models.reverse(); return [base, value]; })(),
+      "model addition": (() => { const value = structuredClone(base); value.models.push({ slug: "unbound", tool_mode: "function" }); return [base, value]; })(),
+      "model removal": (() => { const value = structuredClone(base); value.models.pop(); return [base, value]; })(),
+      "other semantic field": (() => { const value = structuredClone(base); value.models[3].tool_mode = "changed"; return [base, value]; })(),
+      "client change": (() => { const value = structuredClone(base); value.client_version = "0.147.1"; return [base, value]; })(),
+    };
+    for (const [name, [before, after]] of Object.entries(cases)) expect(promptAuditCacheMutation(bytes(before), bytes(after)), name).toMatchObject({ pass: false, classification: "semantic-authority-drift-rejected" });
+    expect(providerZeroNormalizedCacheCandidate(bytes(withDefaults))).toMatchObject({ pass: true, required: false, changes: [], violations: [] });
+    const candidateViolations = {
+      "wrong preexisting default": (() => { const value = structuredClone(withDefaults); value.models[3].include_apps_usage_instructions = false; return value; })(),
+      "unknown model": (() => { const value = structuredClone(withDefaults); value.models.push({ slug: "unreviewed-model" }); return value; })(),
+      "missing model": (() => { const value = structuredClone(withDefaults); value.models.pop(); return value; })(),
+      "duplicate model": (() => { const value = structuredClone(withDefaults); value.models.push(structuredClone(value.models[3])); return value; })(),
+    };
+    for (const [name, value] of Object.entries(candidateViolations)) expect(providerZeroNormalizedCacheCandidate(bytes(value)), name).toMatchObject({ pass: false, required: false, candidate_sha256: null, candidate_bytes: null, violations: { length: expect.any(Number) } });
   });
 
   it("fails before provider spawn on a semantic prompt-input cache mutation", () => {
@@ -355,7 +459,9 @@ describe("Luna Max Wow Preview one-cell runner", () => {
       return defaultPromptInputProbe(args);
     } });
     expect(result).toMatchObject({ status: "infrastructure-invalid", provider_calls: 0, model_calls: 0, browser_calls: 0, reason: "pre-provider-setup-failed" });
-    expect(readFileSync(result.failure_artifact.path, "utf8")).toContain("semantic/profile/client mutation");
+    expect(readFileSync(result.failure_artifact.path, "utf8")).toContain("changed outside known discarded CLI normalization");
+    const cacheAudit = JSON.parse(readFileSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/PROMPT-INPUT-MODEL-CACHE-AUDIT.json")));
+    expect(cacheAudit).toMatchObject({ pass: false, classification: "semantic-authority-drift-rejected", artifacts: { before: { sha256: expect.stringMatching(/^[a-f0-9]{64}$/) }, after: { sha256: expect.stringMatching(/^[a-f0-9]{64}$/) } } });
     expect(existsSync(join(f.materialized, "prepared-cells/cell-01/.benchmark/execution/workspace/.benchmark/argv.json"))).toBe(false);
   });
 
@@ -516,6 +622,7 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     materialization.cells = f.cells; json(f.admission.bindings.materialization.path, materialization);
     f.admission.bindings.materialization = bind(f.admission.bindings.materialization.path); json(f.admissionPath, f.admission);
     const result = execute(f, { promptInputProbe: ({ cwd, env }) => {
+      defaultPromptInputProbe({ cwd, env });
       const builtin = ["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"].map((id) => `- ${id}: builtin (file: ${join(env.CODEX_HOME, "skills/.system", id, "SKILL.md")})`);
       const block = [...builtin, `- omd:autopilot: exact (file: ${join(cwd, ".agents/skills/frontend-design/SKILL.md")})`].join("\n");
       return { status: 0, stdout: promptInputJson(block, [{ type: "message", role: "user", content: [{ type: "input_text", text: "<skills_instructions>\n- browser-harness: fake (file: /tmp/fake)\n</skills_instructions>" }] }]) };

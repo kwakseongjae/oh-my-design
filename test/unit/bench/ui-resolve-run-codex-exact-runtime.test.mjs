@@ -46,7 +46,7 @@ function executable(path, source) {
   return path;
 }
 
-function exactRunFixture({ observedVersion = "9.9.9", expectedCliVersion = "9.9.9", initialCacheClientVersion = expectedCliVersion, removeExecutionCache = false, mutateExecutionCache = false, mutateExecutionCacheField = null, refreshFetchedAt = false, refreshFetchedAtWithFormattingRewrite = false } = {}) {
+function exactRunFixture({ observedVersion = "9.9.9", expectedCliVersion = "9.9.9", initialCacheClientVersion = expectedCliVersion, removeExecutionCache = false, mutateExecutionCache = false, mutateExecutionCacheField = null, refreshFetchedAt = false, refreshFetchedAtWithFormattingRewrite = false, includeCodex0147AppsDefaults = false } = {}) {
   const root = realpathSync(mkdtempSync(join(tmpdir(), "omd-run-codex-exact-")));
   const matrixRoot = join(root, "matrix");
   const workspace = join(matrixRoot, "cell-1");
@@ -58,6 +58,7 @@ function exactRunFixture({ observedVersion = "9.9.9", expectedCliVersion = "9.9.
   writeFileSync(join(benchmark, "PROMPT.md"), "Make no product changes.\n");
   writeFileSync(join(sourceHome, "auth.json"), "{\"auth\":true}\n");
 
+  const codex0147AppsDefaults = { "gpt-5.6-sol": true, "gpt-5.6-sol-wm": true, "gpt-5.6-terra": true, "gpt-5.6-luna": true, "gpt-5.5": true, "gpt-5.4": true, "gpt-5.4-mini": true, "gpt-5.3-codex-spark": false, "codex-auto-review": false };
   const cache = {
     fetched_at: "2026-08-09T05:33:00Z",
     client_version: initialCacheClientVersion,
@@ -70,7 +71,7 @@ function exactRunFixture({ observedVersion = "9.9.9", expectedCliVersion = "9.9.
         { effort: "high", description: "high" },
       ],
       tool_mode: "function",
-    }],
+    }, ...(includeCodex0147AppsDefaults ? Object.entries(codex0147AppsDefaults).map(([slug, include_apps_usage_instructions]) => ({ slug, tool_mode: "function", include_apps_usage_instructions })) : [])],
   };
   const cacheBytes = Buffer.from(`${JSON.stringify(cache, null, 2)}\n`);
   const cachePath = join(sourceHome, "models_cache.json");
@@ -140,6 +141,13 @@ if (${JSON.stringify(mutateExecutionCacheField)} === "luna-client-profile-upgrad
   cache.client_version = "0.147.0";
   cache.models[0].token_budget = 128000;
   cache.models[0].base_instructions = "changed provider instructions";
+  writeFileSync(cachePath, JSON.stringify(cache));
+}
+if (${JSON.stringify(mutateExecutionCacheField)} === "apps-default") {
+  const cachePath = join(process.env.CODEX_HOME, "models_cache.json");
+  const cache = JSON.parse(readFileSync(cachePath, "utf8"));
+  const luna = cache.models.find((profile) => profile.slug === "gpt-5.6-luna");
+  luna.include_apps_usage_instructions = false;
   writeFileSync(cachePath, JSON.stringify(cache));
 }
 if (${JSON.stringify(refreshFetchedAt)}) {
@@ -408,6 +416,20 @@ describe("run-codex exact catalog/runtime invocation", () => {
         tool_mode: { match: true },
       },
     });
+  });
+
+  it("accepts an admitted cache with the exact nine Codex 0.147 app-usage defaults and rejects any provider drift", () => {
+    const admitted = exactRunFixture({ observedVersion: "0.147.0", expectedCliVersion: "0.147.0", includeCodex0147AppsDefaults: true });
+    const completed = runFixture(admitted, ["--disable-plugin-skill-search"]);
+    expect(completed.status, completed.stderr).toBe(0);
+    expect(JSON.parse(readFileSync(join(admitted.benchmark, "run-result.json"), "utf8")).runtime.model_tool_mode_evidence.integrity)
+      .toMatchObject({ pass: true, observed_change_class: "none", comparisons: { semantic_sha256: { match: true }, model_profile_sha256: { match: true }, client_version: { match: true } } });
+
+    const drifted = exactRunFixture({ observedVersion: "0.147.0", expectedCliVersion: "0.147.0", includeCodex0147AppsDefaults: true, mutateExecutionCacheField: "apps-default" });
+    const rejected = runFixture(drifted, ["--disable-plugin-skill-search"]);
+    expect(rejected.status).not.toBe(0);
+    expect(JSON.parse(readFileSync(join(drifted.benchmark, "run-result.json"), "utf8")).runtime.model_tool_mode_evidence.integrity)
+      .toMatchObject({ pass: false, reason: "semantic-profile-client-or-tool-mode-drift", observed_change_class: "integrity-drift", comparisons: { semantic_sha256: { match: false } } });
   });
 
   it("allows only a volatile fetched_at refresh while retaining the admitted cache identity", () => {
