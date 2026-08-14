@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: active Luna epoch source `caf0e62d3e98684d482c56a2bbe3ef93a05ea873` (exact Codex 0.147 cache serialization); immutable diagnostic Luna epochs `f6cd17e2`, `253a3abc`, `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source caf0e62d order1 model-only가 terminal `completed`로 봉인됐다. 시각 완성도와 responsive/evidence/runtime는 강했지만 primary action 중복·focus transfer·contrast 때문에 objective50/UI-Resolved false다. partial terminal1/missing47이며 next locked cell은 order2 Anthropic Frontend Design이다.
+- 갱신: 2026-08-14 · source caf0e62d order1 model-only는 objective50/completed, order2 Anthropic Frontend Design은 required unavailable-information state 부재로 failed/objective0다. partial terminal2/missing46이며 next locked cell은 order3 Impeccable prompt-only다.
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -20,7 +20,10 @@
 - deterministic evaluator는 score50/UI-Resolved false다. responsive20/evidence honesty20/runtime10은 PASS했지만 journey/accessibility는 FAIL했다. primary action visible count가 desktop4/mobile3이고, dialog activation 뒤 focus는 3개 viewport에서 select로 이동해 focus-transfer가 실패했다. initial serious contrast는 각 viewport5이며 reservation state에서는0이다. unavailable-information/honest-unknowns/no-social-proof/keyboard/focus-visible은 PASS했다.
 - 화면은 deep green/cream/coral/sage, editorial serif hierarchy, tool-card/hero illustration, 일관된 long-form mobile rhythm으로 시각 완성도가 높다. 다만 “보기 좋음”과 출시 proof를 분리해 objective50을 그대로 유지한다. cache integrity는 exact fetched_at-only PASS, hidden-image additional0, evaluator dependency pre/post exact다.
 - partial-01=`/private/tmp/omd-luna-wow-evidence-caf0e62d/EXECUTION-RECORDS.partial-01.json`, SHA=`d7520ded…`, terminal1/missing47/ineligible6, collection calls0다.
-- **다음 exact action:** order2 `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`을 Luna/max로 단 한 번 실행하고 동일 proof를 봉인한다. retry/replacement/fallback0이며 order1은 다시 실행하지 않는다.
+- order2 `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`은 533,952ms, input188,726/output27,327/total216,053, tool4, provider/model/browser1/1/1, agent browser/network/external0으로 terminal `failed`다. 22,887B HTML+29,043B CSS+2,825B JS, vars17/selectors93, default/focus/mobile captures를 남겼고 record=`d7acfb82…`, rerun 금지다.
+- cobalt/navy/neon-lime/coral poster system, condensed display type, custom tool illustrations와 bold sectional rhythm은 model-only보다 시각 개성이 강하다. 시간은 약8% 느리지만 tokens는 약19% 적다. 그러나 required `unavailable-information` state가 전 viewport에서 관측되지 않아 evaluator exit1/score file 없음/objective0이며 제품 proof로는 model-only보다 나쁘다. cache fetched_at-only, hidden-image0, network/external0는 PASS다.
+- partial-02=`/private/tmp/omd-luna-wow-evidence-caf0e62d/EXECUTION-RECORDS.partial-02.json`, SHA=`92063b6a…`, terminal2(completed1/failed1)/missing46/ineligible6, collection calls0다.
+- **다음 exact action:** order3 `neighborhood-library-landing-luna-max-r1-impeccable-prompt-only`을 Luna/max로 단 한 번 실행하고 동일 proof를 봉인한다. retry/replacement/fallback0이며 order1–2는 다시 실행하지 않는다.
 
 ### 2026-08-14 source f6cd17e2 fresh Luna Max epoch
 
