@@ -3,11 +3,21 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: `codex/ui-skills-benchmark-v0` commit `d62ec298d97e9ecc611ccfe9a710bccb7f4a0e8d`; authority-controller implementation `d1f5e5b8`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source d62ec298 epoch는 hidden imagegen attribution P0로 terminal 5 / missing 43 / ineligible 6에서 diagnostic-only 동결; 새 gate commit·fresh epoch 준비 중
+- 기준 소스: `codex/ui-skills-benchmark-v0` commit `a0d3d9443fa81baae5cf289e447ec8046c7e2c98`; authority-controller implementation `d1f5e5b8`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-14 · hidden image generation integrity gate를 결박한 source a0d3d944 fresh epoch admitted, terminal 0 / missing 48 / ineligible 6; next locked cell order1 pending
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+### 2026-08-14 source a0d3d944 fresh Luna Max epoch
+
+- hidden image generation integrity gate는 commit `a0d3d9443fa81baae5cf289e447ec8046c7e2c98`에 봉인했다. provider-home `generated_images` pre/post tree, workspace SHA lineage, raw tool identity/path reference를 함께 감사하고 dangling symlink·생성 후 삭제·구조화 imagegen 호출도 fail-close한다. 호출 lifecycle이 불완전하면 provider/model total을 추정하지 않고 `unknown`으로 기록하며 evaluator를 실행하지 않는다.
+- clean detached source=`/private/tmp/omd-luna-runtime-a0d3d944`, evidence=`/private/tmp/omd-luna-wow-evidence-a0d3d944`다. protected web 생성물과 d62 evidence는 source authority 밖에 둔다.
+- provider-zero/static gates: static Luna/max=`7a195446…`, production schema7/7=`160d0474…`, evaluation runtime=`73273db1…`, Codex IAB identity=`accce873…`다. evaluator dependency bundle은 fresh `/private/tmp/omd-luna-evaluator-deps-a0d3d944-v2`이며 실패한 최초 font-symlink materialization은 사용하지 않는다.
+- Luna/max runtime attribution은 d62에서 이미 발생한 exact single-context/single-lifecycle raw rollout을 byte-identical하게 새 source로 재감사해 `cad80e47…`로 결박했다. 이 재발급 자체의 provider/model/browser 호출은 0이며, historical preflight 1회는 benchmark denominator 밖에 유지한다.
+- locked=`/private/tmp/omd-luna-wow-locked-a0d3d944`, materialized=`/private/tmp/omd-luna-wow-materialized-a0d3d944`, 48 scheduled+Taste6 ineligible다. prepared tree SHA=`b7370f29…`, manifest=`5b2ba6a9…`, runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-a0d3d944`, auth=`627eb799…`, catalog=`f4392270…`다.
+- Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-a0d3d944/ADMISSION.json`, SHA=`a8f25ac5…`, calls0/status admitted다. baseline collector=`/private/tmp/omd-luna-wow-evidence-a0d3d944/EXECUTION-RECORDS.baseline.json`, SHA=`86426925…`, terminal0/missing48/ineligible6이다.
+- **다음 exact action:** locked order1 `neighborhood-library-landing-luna-max-r1-model-only`을 Luna/max 한 번만 실행한다. terminal이 무엇이든 수정·재실행하지 않고 partial-01을 즉시 수집·봉인한 뒤 시각 결과와 hidden-image audit을 함께 검수한다.
 
 ### 2026-08-14 source d62ec298 fresh Luna Max epoch
 

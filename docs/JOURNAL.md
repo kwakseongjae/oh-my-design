@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · a0d3 fresh epoch admission 완료
+- hidden image generation gate commit `a0d3d944`를 clean source로 삼고 모든 receipt·lock·materialization·admission을 재발급했다.
+- production schema7/7, static/evaluator/IAB/runtime attribution이 새 source에 결박됐고 새 provider/model/browser preflight 호출은 0이다.
+- prepared tree `b7370f29…`, admission `a8f25ac5…`, baseline `86426925…`; terminal0/missing48/ineligible6이다.
+- 다음은 exact order1 model-only 한 셀을 Luna/max 1회·retry0으로 실행하고 hidden-image audit과 partial-01을 봉인한다.
+
 ## 2026-08-14 (Codex) · d62 order5 Taste 및 epoch 동결
 - Taste는 763,479ms·runner-reported 1,721,714 tokens에 40,789B UI와 12 captures를 만들었지만 unavailable state가 없어 objective0다.
 - provider home `generated_images`의 PNG 2개가 workspace로 복사됐으나 실제 imagegen lifecycle이 raw stream에 없어 provider/model 1/1을 입증할 수 없다.
