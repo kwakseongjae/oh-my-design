@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · a0d3 order5 Taste integrity-invalid 봉인
+- Taste는 803,555ms 뒤 generated PNG 2개 약4.13MB를 provider-home에서 workspace로 복사했다.
+- raw에는 imagegen lifecycle이 없어 provider/model totals는 unknown; SHA lineage는 두 workspace asset과 정확히 일치한다.
+- hidden-image gate가 evaluator 전 infrastructure-invalid로 봉인; record `737e17a7…`, partial-05 `a12776aa…`, rerun0이다.
+- 다음은 exact order6 OmD r1에서 authority controller·product budget·Core/state/visual proof를 검증한다.
+
 ## 2026-08-14 (Codex) · a0d3 order4 UI UX Pro Max 봉인
 - UI UX는 748,001ms·876,440 tokens에 29,041B product, 32 vars/108 selectors와 16 state captures를 만들었다.
 - required states는 모두 닫았지만 duplicate visible CTA와 serious contrast violations로 objective50·UI-Resolved false다.
