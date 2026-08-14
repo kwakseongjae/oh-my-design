@@ -5,6 +5,18 @@
 
 ---
 
+## 2026-08-14 (Codex) · d62 order1 model-only 봉인
+- Luna/max는 529,177ms·257,060 tokens에 66,217B HTML과 12 captures를 만들었다.
+- editorial workshop 정체성과 mobile composition은 강하지만 unavailable-information state 누락으로 objective0다.
+- immutable record `78798205…`, partial-01 `b6ebf9fc…`; retry/fallback/replacement0이다.
+- 다음은 exact order2 Anthropic r1 한 셀만 실행해 같은 task의 시각·완결성·비용을 비교한다.
+
+## 2026-08-14 (Codex) · d62 fresh Luna epoch admission 완료
+- d62 clean source에 schema/static/evaluator/IAB receipt와 Luna/max attribution 1회를 새로 결박했다.
+- 48 scheduled+Taste6 ineligible를 materialize했고 tree `2a5e2aa3…`, admission `6aaf96d4…`가 calls0으로 PASS했다.
+- baseline `0b45405d…`는 terminal0/missing48/ineligible6이며 이전 epoch와 증거를 혼합하지 않는다.
+- 다음은 locked order1 model-only를 Luna/max 1회·retry0으로 실행하고 terminal/partial-01을 즉시 봉인한다.
+
 ## 2026-08-14 (Codex) · fresh epoch authority-controller gate 봉인
 - commit `d1f5e5b8`로 execution-owned immutable controller bundle과 single activation 경계를 구현했다.
 - self-approval, helper tamper, shell injection, duplicate/failed activation, timeout 오염은 evaluator 전 `infrastructure-invalid`다.

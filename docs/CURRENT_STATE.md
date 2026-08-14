@@ -3,11 +3,22 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: `codex/ui-skills-benchmark-v0` latest HEAD; authority-controller implementation `d1f5e5b8`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 58dcf8a9 diagnostic epoch frozen terminal 7 / missing 41 / ineligible 6; external authority-controller hardening independently green, fresh epoch rebinding next
+- 기준 소스: `codex/ui-skills-benchmark-v0` commit `d62ec298d97e9ecc611ccfe9a710bccb7f4a0e8d`; authority-controller implementation `d1f5e5b8`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-14 · source d62ec298 fresh epoch admitted, terminal 0 / missing 48 / ineligible 6; next locked cell order1 pending
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
+
+### 2026-08-14 source d62ec298 fresh Luna Max epoch
+
+- 실행 정본은 source=`d62ec298d97e9ecc611ccfe9a710bccb7f4a0e8d`, clean detached worktree=`/private/tmp/omd-luna-runtime-d62ec298`, evidence=`/private/tmp/omd-luna-wow-evidence-d62ec298`다. main worktree의 보호 생성물 3개는 source authority와 분리했다.
+- provider-zero gates는 static Luna/max=`f5e86078…`, production schema7/7=`b8b6367e…`, immutable evaluator runtime=`8b3f1d14…`, Codex IAB about:blank identity=`3d4a40a3…`로 PASS했다. evaluator dependency bundle은 `/private/tmp/omd-luna-evaluator-deps-d62ec298-v2`에 결박됐다.
+- Luna/max attribution은 non-ephemeral isolated home에서 exact 응답, input14,543/output13, retry/replacement/fallback0으로 정확히 1회 실행됐다. raw rollout은 12 events·single context/lifecycle이고 receipt=`b0afb4e5…`; benchmark denominator 밖이다.
+- locked=`/private/tmp/omd-luna-wow-locked-d62ec298`, matrix 48 scheduled+Taste6 ineligible다. materialized=`/private/tmp/omd-luna-wow-materialized-d62ec298`, prepared tree SHA=`2a5e2aa3…`; runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-d62ec298`, auth=`627eb799…`, catalog=`f4392270…`다.
+- Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-d62ec298/ADMISSION.json`, SHA=`6aaf96d4…`, calls0/status admitted다. baseline collector=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.baseline.json`, SHA=`0b45405d…`, terminal0/missing48/ineligible6이다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 529,177ms, input228,540/output28,520/total257,060, tool9, agent browser/network/external0으로 provider exit0했다. 66,217B HTML, CSS vars19/selectors73, neutral design-system package와 12 publishable captures를 만들었다. editorial serif+utility labels, sage/cream/coral/gold/mint palette, custom tool/project illustrations, long-page/mobile rhythm은 강하지만 reservation modal이 hero를 덮고 필수 `unavailable-information` state가 없어 evaluator exit1/objective0다. record=`78798205…`, rerun 금지다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-01.json`, SHA=`b6ebf9fc…`, terminal1/missing47/ineligible6이다. token monitor는 used87/reset timestamp 불변으로 리셋 미발생을 확인했다.
+- **다음 exact action:** source/admission/readback과 token reset 없음 재확인 후 order2 `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`을 정확히 1회 실행한다. 결과와 무관하게 terminal/partial-02를 봉인하고 model-only와 시각·상태·시간·tokens를 비교한다.
 
 ### 2026-08-14 fresh Luna epoch authority-controller gate
 
