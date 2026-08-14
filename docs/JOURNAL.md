@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · d62 order2 Anthropic 봉인
+- Anthropic은 587,489ms·477,484 tokens에 52,916B 3-file product와 12 captures를 만들었다.
+- lending-card orbit과 marine/cobalt/yellow 색면은 model-only보다 강하지만 unavailable state 누락으로 objective0다.
+- immutable record `c69863e7…`, partial-02 `7059cb2f…`; retry/fallback/replacement0이다.
+- 다음은 exact order3 Impeccable r1 한 셀만 실행해 효율·완결성·시각 결과를 비교한다.
+
 ## 2026-08-14 (Codex) · d62 order1 model-only 봉인
 - Luna/max는 529,177ms·257,060 tokens에 66,217B HTML과 12 captures를 만들었다.
 - editorial workshop 정체성과 mobile composition은 강하지만 unavailable-information state 누락으로 objective0다.
