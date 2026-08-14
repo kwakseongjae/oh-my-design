@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · caf0 order1 model-only completed
+- order1은 494,745ms, 267,388 tokens, provider/model/browser1/1/1로 61,972B HTML과 16 captures를 남겼다.
+- visual은 strong editorial system이지만 primary action3–4, focus transfer, contrast5/view 때문에 objective50/UI-Resolved false다.
+- cache fetched_at-only·hidden-image0·network/external0 PASS; record `cb38fe71…`, rerun0이다.
+- partial-01 `d7520ded…`; 다음은 exact order2 Anthropic Frontend Design 1회다.
+
 ## 2026-08-14 (Codex) · source caf0 fresh Luna epoch admitted
 - exact cache `54a4e197…`, schema/static/runtime/IAB/evaluator와 48+6 materialization을 source `caf0e62d`에 fresh 결박했다.
 - tree `3c03a29c…`, admission `28f09530…`; font-symlink 첫 bundle은 unreferenced, explicit safe roots의 `-v2`만 채택했다.

@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: active Luna epoch source `caf0e62d3e98684d482c56a2bbe3ef93a05ea873` (exact Codex 0.147 cache serialization); immutable diagnostic Luna epochs `f6cd17e2`, `253a3abc`, `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source caf0e62d의 exact cache/static/schema/runtime/IAB/evaluator, 48+6 materialization과 Sol/xhigh admission이 모두 PASS했다. baseline terminal0/missing48/ineligible6/calls0이며 next locked cell은 order1 model-only다.
+- 갱신: 2026-08-14 · source caf0e62d order1 model-only가 terminal `completed`로 봉인됐다. 시각 완성도와 responsive/evidence/runtime는 강했지만 primary action 중복·focus transfer·contrast 때문에 objective50/UI-Resolved false다. partial terminal1/missing47이며 next locked cell은 order2 Anthropic Frontend Design이다.
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -16,7 +16,11 @@
 - evaluator dependency 첫 bundle은 `/Library/Fonts/Arial Unicode.ttf` symlink에서 fail-close해 unreferenced로 보존했다. authorized fresh `-v2` bundle은 `/System/Library/Fonts`+user Fonts만 사용하며 135 files/tree=`2637d5fb…`, font479/tree=`cd7ddbb4…`로 PASS했다.
 - locked=`/private/tmp/omd-luna-wow-locked-caf0e62d`; matrix=`b46a0f21…`, preregistration=`643622b2…`. materialized=`/private/tmp/omd-luna-wow-materialized-caf0e62d`, prepared tree=`3c03a29c…`, manifest=`bf0a09a3…`, 48 scheduled+6 ineligible, execution dirs0다.
 - Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-caf0e62d/ADMISSION.json`, SHA=`28f09530…`, all 8 bindings exact/calls0다. baseline=`/private/tmp/omd-luna-wow-evidence-caf0e62d/EXECUTION-RECORDS.baseline.json`, SHA=`8567df1f…`, terminal0/missing48/ineligible6, collection calls0다.
-- **다음 exact action:** order1 `neighborhood-library-landing-luna-max-r1-model-only`을 Luna/max로 단 한 번 실행한다. exact cache pre/post, hidden image, evaluator/state proof를 즉시 봉인하며 retry/replacement/fallback0이다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 494,745ms, input240,754/output26,634/total267,388, tool6, provider/model/browser1/1/1, agent browser/network/external0으로 terminal `completed`다. 61,972B HTML, CSS vars20/selectors82, 16 publishable desktop/mobile/zoom/state captures를 남겼고 record=`cb38fe71…`, rerun 금지다.
+- deterministic evaluator는 score50/UI-Resolved false다. responsive20/evidence honesty20/runtime10은 PASS했지만 journey/accessibility는 FAIL했다. primary action visible count가 desktop4/mobile3이고, dialog activation 뒤 focus는 3개 viewport에서 select로 이동해 focus-transfer가 실패했다. initial serious contrast는 각 viewport5이며 reservation state에서는0이다. unavailable-information/honest-unknowns/no-social-proof/keyboard/focus-visible은 PASS했다.
+- 화면은 deep green/cream/coral/sage, editorial serif hierarchy, tool-card/hero illustration, 일관된 long-form mobile rhythm으로 시각 완성도가 높다. 다만 “보기 좋음”과 출시 proof를 분리해 objective50을 그대로 유지한다. cache integrity는 exact fetched_at-only PASS, hidden-image additional0, evaluator dependency pre/post exact다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-caf0e62d/EXECUTION-RECORDS.partial-01.json`, SHA=`d7520ded…`, terminal1/missing47/ineligible6, collection calls0다.
+- **다음 exact action:** order2 `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`을 Luna/max로 단 한 번 실행하고 동일 proof를 봉인한다. retry/replacement/fallback0이며 order1은 다시 실행하지 않는다.
 
 ### 2026-08-14 source f6cd17e2 fresh Luna Max epoch
 
