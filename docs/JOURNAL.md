@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · source 68a v2 pre-provider CLI selection failure
+- official isolated Codex/cache 0.147 epoch는 admission PASS했지만 runner 호출이 exact CLI env를 전달하지 않아 global CLI 선택에서 차단됐다.
+- order1은 162ms infrastructure-invalid, provider/model/browser/network/tool0, record `22727989…`, rerun0이다.
+- partial-01 `0820c4e7…`은 terminal1/missing47/ineligible6/calls0이며 제품 결과가 아니다.
+- 다음은 Sol/medium admitted-static-CLI direct selection fix → root 검수 → fresh epoch 전체 재결박이다.
+
 ## 2026-08-14 (Codex) · source 68a v2 Luna epoch admitted
 - official isolated Codex/cache 0.147.0과 source `68a19aa0`을 exact 결박했고 전역 설치는 바꾸지 않았다.
 - schema/static/runtime/IAB/evaluator PASS, 48+6 materialization tree `311cff4f…`, admission `ba5a6550…`다.
