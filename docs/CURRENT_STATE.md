@@ -17,7 +17,9 @@
 - Luna/max runtime attribution은 d62에서 이미 발생한 exact single-context/single-lifecycle raw rollout을 byte-identical하게 새 source로 재감사해 `cad80e47…`로 결박했다. 이 재발급 자체의 provider/model/browser 호출은 0이며, historical preflight 1회는 benchmark denominator 밖에 유지한다.
 - locked=`/private/tmp/omd-luna-wow-locked-a0d3d944`, materialized=`/private/tmp/omd-luna-wow-materialized-a0d3d944`, 48 scheduled+Taste6 ineligible다. prepared tree SHA=`b7370f29…`, manifest=`5b2ba6a9…`, runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-a0d3d944`, auth=`627eb799…`, catalog=`f4392270…`다.
 - Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-a0d3d944/ADMISSION.json`, SHA=`a8f25ac5…`, calls0/status admitted다. baseline collector=`/private/tmp/omd-luna-wow-evidence-a0d3d944/EXECUTION-RECORDS.baseline.json`, SHA=`86426925…`, terminal0/missing48/ineligible6이다.
-- **다음 exact action:** locked order1 `neighborhood-library-landing-luna-max-r1-model-only`을 Luna/max 한 번만 실행한다. terminal이 무엇이든 수정·재실행하지 않고 partial-01을 즉시 수집·봉인한 뒤 시각 결과와 hidden-image audit을 함께 검수한다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 617,090ms, input275,295/output33,382/total308,677, tool6, agent browser/network/external0으로 provider exit0했다. hidden image audit은 before/after absent, raw identity/reference0, lineage0으로 PASS해 provider/model 1/1이 정확히 유지됐다. 74,394B HTML, vars23/selectors100/package와 12 captures를 만들었다. deep green/cream/coral/sage editorial system, project-first taxonomy, 카드·아이콘·CTA·mobile rhythm은 강하지만 initial reservation modal이 hero를 덮고 필수 unavailable-information state가 없어 evaluator exit1/objective0다. record=`0d0f7253…`, rerun 금지다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-a0d3d944/EXECUTION-RECORDS.partial-01.json`, SHA=`ed11c3ad…`, terminal1/missing47/ineligible6이다. collector calls0이며 token monitor used91/reset timestamp 불변이다.
+- **다음 exact action:** locked order2 `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`을 Luna/max 한 번만 실행한다. terminal과 hidden-image audit을 그대로 봉인하고 same-task visual/state/cost를 model-only 기준선과 비교한다.
 
 ### 2026-08-14 source d62ec298 fresh Luna Max epoch
 

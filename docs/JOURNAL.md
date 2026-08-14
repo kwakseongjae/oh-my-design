@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · a0d3 order1 model-only 봉인
+- Luna/max는 617,090ms·308,677 tokens에 74,394B HTML, 23 vars/100 selectors와 12 captures를 만들었다.
+- deep-green editorial system과 mobile composition은 강하지만 modal-first 화면과 unavailable state 누락으로 objective0다.
+- hidden image audit은 side effect/tool identity/lineage0으로 PASS; record `0d0f7253…`, partial-01 `ed11c3ad…`, rerun0이다.
+- 다음은 exact order2 Anthropic r1 한 셀을 실행해 같은 task의 시각·상태·비용을 비교한다.
+
 ## 2026-08-14 (Codex) · a0d3 fresh epoch admission 완료
 - hidden image generation gate commit `a0d3d944`를 clean source로 삼고 모든 receipt·lock·materialization·admission을 재발급했다.
 - production schema7/7, static/evaluator/IAB/runtime attribution이 새 source에 결박됐고 새 provider/model/browser preflight 호출은 0이다.
