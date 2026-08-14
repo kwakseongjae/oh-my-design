@@ -78,7 +78,8 @@
 - grok 재검수 2회차 판정 반려 3건(etag byte-proof 미수정·사본 테스트·부분산출 미탐) 전부 위 수정으로 폐쇄. 적대 21/21+config 24/24+unit 7/7 PASS.
 - **lock 단계 신설**: `lock-grok46-wow-preview.mjs`(provider-zero) — v0.2 config→54셀 RUN-MATRIX.locked.json 전개, task 프롬프트는 in-repo task set에서 SHA 검증, activation prefix는 caf0와 byte-identical(`config/omd-grok46-activation-prefixes-v0.1.json`, omd 1,200B 포함). round-major order(웨이브 r1=trial1 16셀). PREREGISTRATION.receipt에 사용자 실행 위임 인용(2026-08-15) 결박.
 - 알려진 잔여: omd-autopilot arm은 authority-controller grok 이식 필요(작업 #8, order6 전 필수). effort "high"는 파일럿에서 provider-observed 확인 예정.
-- **다음 exact action:** lane 커밋 → 분리 워크트리 → lock → materialize → 영수증 재발급(새 커밋 결박, 기존 raw 증거 재감사) → admission → order1 pilot(model-only) → wave r1.
+- **epoch `3b39dee2` admitted (2026-08-15):** 커밋 체인 b28003a8(lane)→aa540001(lock schema 정합)→e423a137(execution_control)→3b39dee2(러너 invocation-prompt 수정 — PROMPT.md만 읽어 activation prefix가 전달 안 되던 치명 결함을 admission 전에 잡음). 분리 워크트리 `/private/tmp/omd-grok-runtime-3b39dee2`, locked `8e4d1c5e…`(54셀), materialized 48셀 tree `049849b0…`(결정적 재현 3회 일치), 영수증 4종 provider-zero 재발급(raw SHA256SUMS 20/20 재검증), **ADMISSION `a64106c7…` status=admitted**. 전 과정 provider 호출 0.
+- **다음 exact action:** order1 pilot `neighborhood-library-landing-grok46-r1-model-only` 실행 중(900s cap) → terminal record 검수(effort provider-observed 확인 포함) → evaluator → 문제 없으면 wave r1 잔여 15셀 serial(단, order6 omd-autopilot 전에 작업 #8 컨트롤러 이식 필수). capacity 이벤트 시 score-gate 규칙 자동 적용.
 
 ### 2026-08-15 (Fable) grok lane seed 실행 개시
 
