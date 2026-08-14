@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · caf0 order3 Impeccable timeout
+- order3은 900,319ms cap에서 timeout; completion/usage가 없어 provider/model unknown, browser0, tool31이다.
+- 53,889B HTML/package는 남았지만 evaluator/screenshots0이라 rendered quality를 주장하지 않는다.
+- cache/hidden-image/network/external PASS; record `3041629f…`, rerun0이다.
+- partial-03 `df0ea077…`; 다음은 exact order4 UI UX Pro Max 1회다.
+
 ## 2026-08-14 (Codex) · caf0 order2 Anthropic failed
 - order2는 533,952ms, 216,053 tokens, provider/model/browser1/1/1로 bold poster-style product를 만들었다.
 - model-only보다 시각 개성은 강하고 tokens19%↓였지만 unavailable-information state 부재로 evaluator exit1/objective0다.
