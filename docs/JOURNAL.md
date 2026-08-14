@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · 58dc cold-chain Anthropic 봉인·epoch 동결
+- Anthropic은 554,758ms·434,292 tokens에 강한 exception queue UI와 8 captures를 만들었다.
+- selected는 관측됐지만 filtered state 미관측으로 objective0; record `efd0e911…`, partial-07 `342a1a8f…`다.
+- Sol/medium은 self-approval 제거+single-pass authority controller patch를 calls0으로 구현하고 60 pass/3 skip했다.
+- source가 바뀌므로 58dc는 terminal7에서 동결; root 검수·commit 뒤 fresh epoch order1부터 재시작한다.
+
 ## 2026-08-14 (Codex) · 58dc landing OmD r1 봉인
 - OmD는 900,316ms·tool46 뒤 Core adoption/proof는 PASS했지만 제품 구현 전 timeout/blank shell/objective0다.
 - evidence path와 component-state 오류로 package를 3회 생성했고 model의 project-owner 자가승인 P0도 확인했다.
