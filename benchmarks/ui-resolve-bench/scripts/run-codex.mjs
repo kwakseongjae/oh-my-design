@@ -30,6 +30,12 @@ const expectedNativePath = args.get("expected-native-path") ? resolve(String(arg
 const expectedNativeSha = args.get("expected-native-sha") ? String(args.get("expected-native-sha")) : null;
 const artifactSuffix = args.get("artifact-suffix") ? String(args.get("artifact-suffix")) : null;
 const additionalWritableRoot = args.get("additional-writable-root") ? resolve(String(args.get("additional-writable-root"))) : null;
+const OMD_CONTROLLER_ENV_KEYS = Object.freeze([
+  "OMD_BENCH_EXTERNAL_STAGING_ROOT", "OMD_BENCH_COMPILED_CORE_PACKAGE", "OMD_BENCH_CORE_CHECKPOINT",
+  "OMD_AUTHORITY_CONTROLLER_RECEIPT", "OMD_AUTHORITY_CONTROLLER_RECEIPT_SHA256",
+  "OMD_AUTHORITY_CONTROLLER_ACTIVATION_SHA256", "OMD_AUTHORITY_CONTROLLER_RUN_DIR",
+  "OMD_AUTHORITY_CONTROLLER_EXECUTABLE",
+]);
 
 if (!workspace) {
   console.error("usage: run-codex.mjs --workspace <prepared-dir> [--model gpt-5.6-terra] [--reasoning xhigh]");
@@ -57,6 +63,39 @@ if (additionalWritableRoot) {
     || resolve(process.env.OMD_BENCH_EXTERNAL_STAGING_ROOT ?? "") !== additionalWritableRoot) {
     throw new Error("additional writable root must be the exact controller-bound OmD cell-local staging sibling");
   }
+}
+const omdControllerEnv = {};
+if (manifest.variant?.id === "omd-autopilot-v2") {
+  if (!additionalWritableRoot || OMD_CONTROLLER_ENV_KEYS.some((key) => typeof process.env[key] !== "string" || !process.env[key])) {
+    throw new Error("OmD controller invocation requires the exact preregistered environment bindings");
+  }
+  const staging = resolve(process.env.OMD_BENCH_EXTERNAL_STAGING_ROOT);
+  const packageRoot = resolve(process.env.OMD_BENCH_COMPILED_CORE_PACKAGE);
+  const checkpoint = resolve(process.env.OMD_BENCH_CORE_CHECKPOINT);
+  const receiptPath = resolve(process.env.OMD_AUTHORITY_CONTROLLER_RECEIPT);
+  const executable = resolve(process.env.OMD_AUTHORITY_CONTROLLER_EXECUTABLE);
+  const executionRoot = dirname(workspace);
+  const receiptInfo = existsSync(receiptPath) ? lstatSync(receiptPath) : null;
+  const executableInfo = existsSync(executable) ? lstatSync(executable) : null;
+  const receiptBytes = receiptInfo?.isFile() && !receiptInfo.isSymbolicLink() ? readFileSync(receiptPath) : null;
+  const receiptSha = receiptBytes ? createHash("sha256").update(receiptBytes).digest("hex") : null;
+  const receipt = receiptBytes ? JSON.parse(receiptBytes) : null;
+  const expectedRunDir = `.omd/runs/${String(manifest.task?.id ?? "benchmark-task").replace(/-landing$/, "")}`;
+  if (staging !== additionalWritableRoot || dirname(packageRoot) !== staging || basename(packageRoot) !== "compiled-core"
+    || dirname(checkpoint) !== staging || basename(checkpoint) !== "project-adoption-checkpoint.json"
+    || dirname(receiptPath) !== executionRoot || basename(receiptPath) !== "OMD-AUTHORITY-CONTROLLER.json"
+    || !executableInfo?.isFile() || executableInfo.isSymbolicLink()
+    || dirname(dirname(executable)) !== join(executionRoot, "authority-controller-runtime")
+    || basename(executable) !== "activate-autopilot-design-system.cjs"
+    || receiptSha !== process.env.OMD_AUTHORITY_CONTROLLER_RECEIPT_SHA256
+    || receipt?.kind !== "omd-autopilot-external-authority-controller-activation"
+    || receipt?.scope?.project_workspace !== workspace || receipt?.scope?.run_dir !== expectedRunDir
+    || resolve(receipt?.scope?.controller_executable ?? "") !== executable
+    || receipt?.activation?.sha256 !== process.env.OMD_AUTHORITY_CONTROLLER_ACTIVATION_SHA256
+    || process.env.OMD_AUTHORITY_CONTROLLER_RUN_DIR !== expectedRunDir) {
+    throw new Error("OmD controller environment differs from the execution receipt/add-dir contract");
+  }
+  for (const key of OMD_CONTROLLER_ENV_KEYS) omdControllerEnv[key] = process.env[key];
 }
 const promptPath = artifactSuffix
   ? join(benchmarkDir, "repair-prompts", `${artifactSuffix}.md`)
@@ -146,6 +185,7 @@ Object.assign(childEnv, {
   DO_NOT_TRACK: "1",
   CI: "1",
   OMD_PROOF_POLICY_EVENTS_PATH: eventsPath,
+  ...omdControllerEnv,
   ...execution.env,
 });
 

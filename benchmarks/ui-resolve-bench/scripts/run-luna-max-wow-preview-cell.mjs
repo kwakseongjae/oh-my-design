@@ -452,11 +452,25 @@ export function auditOmdControllerCommands(events, runDir, controllerExecutable 
   const forbidden = [];
   const literalCommand = `node $${OMD_AUTHORITY_EXECUTABLE_ENV} . $${OMD_AUTHORITY_RUN_DIR_ENV}`;
   const expandedCommand = `node ${controllerExecutable} . ${runDir}`;
+  const exactRawActivation = (command) => {
+    if (command === literalCommand || command === expandedCommand) return true;
+    const tokens = shellTokens(command);
+    return tokens.length === 3 && tokens.every((token) => token.type === "word")
+      && tokens[0].value.split("/").at(-1) === "zsh" && tokens[1].value === "-lc"
+      && (tokens[2].value === literalCommand || tokens[2].value === expandedCommand);
+  };
+  const syntacticActivation = (command) => shellInvocations(command).some((invocation) => {
+    const argv = unwrapExecutionArgv(invocation); if (!argv?.length) return false;
+    const executable = argv[0].split("/").at(-1)?.toLowerCase(); if (!["node", "nodejs"].includes(executable)) return false;
+    const operand = String(argv[1] ?? "").replace(/^\.\//, "");
+    return operand === `$${OMD_AUTHORITY_EXECUTABLE_ENV}` || resolve(operand || ".") === resolve(controllerExecutable)
+      || operand.split("/").at(-1) === "activate-autopilot-design-system.cjs";
+  });
   for (const [id, record] of lifecycle) {
     const command = record.command.trim();
-    const activationLike = command.includes(OMD_AUTHORITY_EXECUTABLE_ENV) || command.includes(controllerExecutable);
+    const activationLike = syntacticActivation(command);
     if (!activationLike) continue;
-    if (command !== literalCommand && command !== expandedCommand) {
+    if (!exactRawActivation(command)) {
       forbidden.push({ id, reason: "activation-raw-command-not-exact", command_sha256: sha256(record.command) }); continue;
     }
     const finalEvent = record.events.at(-1);

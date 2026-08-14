@@ -298,6 +298,18 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     expect(auditOmdControllerCommands([{ type: "item.started", item: { id: "started", type: "command_execution", command: "node scripts/prepare-design-md-core-review.cjs --approve forged" } }], ".omd/runs/neighborhood-library").pass).toBe(false);
     expect(auditOmdControllerCommands([{ type: "item.failed", item: { id: "failed", type: "command_execution", command: "node scripts/adopt-design-md-core.cjs pkg --prepare-checkpoint forged" } }], ".omd/runs/neighborhood-library").pass).toBe(false);
     const literal = "node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE . $OMD_AUTHORITY_CONTROLLER_RUN_DIR";
+    const observedWrapper = `/opt/homebrew/bin/zsh -lc '${literal}'`;
+    expect(auditOmdControllerCommands([{ type: "item.completed", item: { id: "item_66", type: "command_execution", command: observedWrapper, exit_code: 0, aggregated_output: '{"status":"adopted-and-validated"}' } }], ".omd/runs/neighborhood-library", external)).toMatchObject({ pass: true, exact_activation_count: 1 });
+    const observedDiagnostic = "/opt/homebrew/bin/zsh -lc 'rg -n \"OMD_AUTHORITY_CONTROLLER_EXECUTABLE|OMD_AUTHORITY_CONTROLLER_RUN_DIR\" .benchmark scripts'";
+    expect(auditOmdControllerCommands([{ type: "item.completed", item: { id: "item_28", type: "command_execution", command: observedDiagnostic, exit_code: 0 } }], ".omd/runs/neighborhood-library", external)).toMatchObject({ pass: false, exact_activation_count: 0, forbidden: [] });
+    for (const key of ["OMD_BENCH_EXTERNAL_STAGING_ROOT", "OMD_BENCH_COMPILED_CORE_PACKAGE", "OMD_BENCH_CORE_CHECKPOINT", "OMD_AUTHORITY_CONTROLLER_RECEIPT", "OMD_AUTHORITY_CONTROLLER_RECEIPT_SHA256", "OMD_AUTHORITY_CONTROLLER_ACTIVATION_SHA256", "OMD_AUTHORITY_CONTROLLER_RUN_DIR", "OMD_AUTHORITY_CONTROLLER_EXECUTABLE"]) {
+      expect(auditOmdControllerCommands([{ type: "item.completed", item: { id: `override-${key}`, type: "command_execution", command: `${key}=spoof ${literal}`, exit_code: 0 } }], ".omd/runs/neighborhood-library", external).pass).toBe(false);
+    }
+    expect(auditOmdControllerCommands([
+      { type: "item.completed", item: { id: "duplicate-a", type: "command_execution", command: observedWrapper, exit_code: 0, aggregated_output: "adopted-and-validated" } },
+      { type: "item.completed", item: { id: "duplicate-b", type: "command_execution", command: observedWrapper, exit_code: 0, aggregated_output: "adopted-and-validated" } },
+    ], ".omd/runs/neighborhood-library", external)).toMatchObject({ pass: false, exact_activation_count: 2 });
+    expect(auditOmdControllerCommands([{ type: "item.completed", item: { id: "alternate-controller", type: "command_execution", command: "node /tmp/activate-autopilot-design-system.cjs . .omd/runs/neighborhood-library", exit_code: 0 } }], ".omd/runs/neighborhood-library", external).pass).toBe(false);
     for (const command of [
       `NODE_OPTIONS=--require=./evil ${literal}`,
       `NODE_PATH=./evil ${literal}`,
@@ -306,6 +318,9 @@ describe("Luna Max Wow Preview one-cell runner", () => {
       `${literal}; node forge-outputs.cjs`,
       `${literal} > activation.json`,
       `node $(printf %s "$OMD_AUTHORITY_CONTROLLER_EXECUTABLE") . $OMD_AUTHORITY_CONTROLLER_RUN_DIR`,
+      `/opt/homebrew/bin/zsh -lc '${literal}; node forge-outputs.cjs'`,
+      `/opt/homebrew/bin/zsh -lc '\"${literal}\"'`,
+      `/bin/bash -lc '${literal}'`,
     ]) expect(auditOmdControllerCommands([{ type: "item.completed", item: { id: "shell-injection", type: "command_execution", command, exit_code: 0 } }], ".omd/runs/neighborhood-library", external).pass).toBe(false);
     expect(auditOmdControllerCommands([{ type: "item.started", item: { id: "started-only", type: "command_execution", command: literal } }], ".omd/runs/neighborhood-library", external).pass).toBe(false);
     expect(auditOmdControllerCommands([{ type: "item.failed", item: { id: "failed-activation", type: "command_execution", command: literal, exit_code: 1 } }], ".omd/runs/neighborhood-library", external).pass).toBe(false);

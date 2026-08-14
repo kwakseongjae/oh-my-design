@@ -126,6 +126,7 @@ writeFileSync(join(workspace, ".benchmark", "fake-codex-invocation.json"), JSON.
   args,
   HOME: process.env.HOME,
   CODEX_HOME: process.env.CODEX_HOME,
+  controller_env: Object.fromEntries(Object.entries(process.env).filter(([key]) => key.startsWith("OMD_")).sort(([a], [b]) => a.localeCompare(b))),
 }));
 writeFileSync(finalPath, "done\\n");
 process.stdout.write(JSON.stringify({ type: "response.completed", model: "gpt-test-exact" }) + "\\n");
@@ -235,7 +236,68 @@ function runFixture(fixture, extra = [], envOverrides = {}) {
   });
 }
 
+function configureOmdController(fixture) {
+  const execution = resolve(fixture.workspace, "..");
+  const manifestPath = join(fixture.benchmark, "manifest.json"); const manifest = JSON.parse(readFileSync(manifestPath));
+  manifest.variant.id = "omd-autopilot-v2"; manifest.task.id = "neighborhood-library-landing"; writeFileSync(manifestPath, JSON.stringify(manifest));
+  const staging = join(execution, "omd-external-staging"); const runtime = join(execution, "authority-controller-runtime"); const executablePath = join(runtime, "scripts/activate-autopilot-design-system.cjs");
+  mkdirSync(staging); mkdirSync(join(runtime, "scripts"), { recursive: true }); writeFileSync(executablePath, "// controller\n");
+  const receiptPath = join(execution, "OMD-AUTHORITY-CONTROLLER.json"); const activationSha = "b".repeat(64); const runDir = ".omd/runs/neighborhood-library";
+  const writeReceipt = (controllerExecutable = executablePath, boundActivationSha = activationSha) => {
+    writeFileSync(receiptPath, JSON.stringify({ kind: "omd-autopilot-external-authority-controller-activation", scope: { project_workspace: fixture.workspace, run_dir: runDir, controller_executable: controllerExecutable }, activation: { sha256: boundActivationSha } }));
+  };
+  writeReceipt();
+  const env = {
+    OMD_BENCH_EXTERNAL_STAGING_ROOT: staging, OMD_BENCH_COMPILED_CORE_PACKAGE: join(staging, "compiled-core"), OMD_BENCH_CORE_CHECKPOINT: join(staging, "project-adoption-checkpoint.json"),
+    OMD_AUTHORITY_CONTROLLER_RECEIPT: receiptPath, OMD_AUTHORITY_CONTROLLER_RECEIPT_SHA256: sha256(readFileSync(receiptPath)), OMD_AUTHORITY_CONTROLLER_ACTIVATION_SHA256: activationSha,
+    OMD_AUTHORITY_CONTROLLER_RUN_DIR: runDir, OMD_AUTHORITY_CONTROLLER_EXECUTABLE: executablePath,
+  };
+  return { execution, staging, runtime, executablePath, receiptPath, activationSha, runDir, env, writeReceipt, args: ["--disable-plugin-skill-search", "--additional-writable-root", staging] };
+}
+
 describe("run-codex exact catalog/runtime invocation", () => {
+  it("forwards only exact receipt-bound OmD controller bindings into the isolated Codex shell", () => {
+    const fixture = exactRunFixture(); const controller = configureOmdController(fixture); const controllerEnv = { ...controller.env, OMD_UNRELATED_SECRET: "must-not-forward" };
+    const executed = runFixture(fixture, controller.args, controllerEnv);
+    expect(executed.status, executed.stderr).toBe(0);
+    const invocation = JSON.parse(readFileSync(join(fixture.benchmark, "fake-codex-invocation.json")));
+    expect(invocation.controller_env).toMatchObject(Object.fromEntries(Object.entries(controllerEnv).filter(([key]) => key !== "OMD_UNRELATED_SECRET")));
+    expect(invocation.controller_env.OMD_UNRELATED_SECRET).toBeUndefined();
+    expect(invocation.controller_env.OMD_BENCH_CODEX_BIN).toBeUndefined();
+  });
+
+  it("fails before provider execution when one required OmD controller binding is missing", () => {
+    const fixture = exactRunFixture(); const controller = configureOmdController(fixture); const env = { ...controller.env }; delete env.OMD_AUTHORITY_CONTROLLER_RUN_DIR;
+    const executed = runFixture(fixture, controller.args, env);
+    expect(executed.status).not.toBe(0); expect(executed.stderr).toContain("requires the exact preregistered environment bindings");
+    expect(existsSync(join(fixture.benchmark, "fake-codex-invocation.json"))).toBe(false); expect(existsSync(join(fixture.benchmark, "run-result.json"))).toBe(false);
+  });
+
+  it("fails before provider execution on stale receipt or activation hashes", () => {
+    for (const stale of ["receipt", "activation"]) {
+      const fixture = exactRunFixture(); const controller = configureOmdController(fixture); const env = { ...controller.env };
+      if (stale === "receipt") env.OMD_AUTHORITY_CONTROLLER_RECEIPT_SHA256 = "f".repeat(64);
+      else env.OMD_AUTHORITY_CONTROLLER_ACTIVATION_SHA256 = "e".repeat(64);
+      const executed = runFixture(fixture, controller.args, env);
+      expect(executed.status).not.toBe(0); expect(executed.stderr).toContain("differs from the execution receipt/add-dir contract");
+      expect(existsSync(join(fixture.benchmark, "fake-codex-invocation.json"))).toBe(false); expect(existsSync(join(fixture.benchmark, "run-result.json"))).toBe(false);
+    }
+  });
+
+  it("fails before provider execution when the receipt points to a controller outside the execution-owned runtime", () => {
+    const fixture = exactRunFixture(); const controller = configureOmdController(fixture); const outside = join(controller.execution, "outside-controller.cjs"); writeFileSync(outside, "// outside\n");
+    controller.writeReceipt(outside); const env = { ...controller.env, OMD_AUTHORITY_CONTROLLER_EXECUTABLE: outside, OMD_AUTHORITY_CONTROLLER_RECEIPT_SHA256: sha256(readFileSync(controller.receiptPath)) };
+    const executed = runFixture(fixture, controller.args, env);
+    expect(executed.status).not.toBe(0); expect(executed.stderr).toContain("differs from the execution receipt/add-dir contract");
+    expect(existsSync(join(fixture.benchmark, "fake-codex-invocation.json"))).toBe(false); expect(existsSync(join(fixture.benchmark, "run-result.json"))).toBe(false);
+  });
+
+  it("does not forward arbitrary controller bindings for a non-OmD invocation", () => {
+    const fixture = exactRunFixture(); const arbitrary = { OMD_AUTHORITY_CONTROLLER_EXECUTABLE: "/tmp/forged-controller.cjs", OMD_AUTHORITY_CONTROLLER_RUN_DIR: ".omd/runs/forged", OMD_BENCH_EXTERNAL_STAGING_ROOT: "/tmp/forged-staging" };
+    const executed = runFixture(fixture, [], arbitrary); expect(executed.status, executed.stderr).toBe(0);
+    const invocation = JSON.parse(readFileSync(join(fixture.benchmark, "fake-codex-invocation.json")));
+    for (const key of Object.keys(arbitrary)) expect(invocation.controller_env[key]).toBeUndefined();
+  });
   it("passes the explicit plugin and dynamic skill-search disable boundary to Codex", () => {
     const fixture = exactRunFixture();
     const executed = runFixture(fixture, ["--disable-plugin-skill-search"]);
