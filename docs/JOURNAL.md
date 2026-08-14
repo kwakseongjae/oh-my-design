@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · source 9c65 order1 cache-integrity failure 봉인
+- Luna는 811,135ms 뒤 raw completion과 54,464B HTML을 남겼지만 post-provider model-cache semantic drift gate가 exit1했다.
+- terminal은 infrastructure-invalid, provider/model unknown, browser/network/external0, hidden-image/package PASS, record `51fbb967…`, rerun0이다.
+- partial-01 `913ab289…`는 terminal1/missing47/ineligible6/calls0이며 token reset은 없었다.
+- 다음은 Sol/medium cache mutation evidence/fail-close 수정 → root 검수 → fresh source/receipt/materialization/admission 재결박이다.
+
 ## 2026-08-14 (Codex) · source 9c65 fresh Luna epoch admitted
 - production/static/runtime/IAB/evaluator receipt를 source `9c65f56d…`에 fresh rebind했고 추가 provider/model/browser call은 0이다.
 - materialization은 48 scheduled+6 ineligible, prepared tree `382254f7…`; admission `a5796b26…`로 PASS했다.

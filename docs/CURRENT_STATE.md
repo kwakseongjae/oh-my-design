@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: active Luna epoch source `9c65f56dcc6aa84c211728fc62757c9ea1d8fb17` (OmD Codex-shell activation fix + continuity checkpoint); immutable diagnostic epoch source `a0d3d9443fa81baae5cf289e447ec8046c7e2c98`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source 9c65f56d의 production/static/runtime/IAB/evaluator/materialization/admission을 fresh rebind했고 baseline terminal0 / missing48 / ineligible6이다. next locked cell order1 model-only pending.
+- 기준 소스: immutable diagnostic Luna epoch source `9c65f56dcc6aa84c211728fc62757c9ea1d8fb17` (OmD Codex-shell activation fix + continuity checkpoint); 이전 diagnostic source `a0d3d9443fa81baae5cf289e447ec8046c7e2c98`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-14 · source 9c65f56d order1은 정상 Luna completion 뒤 Codex model-cache semantic drift gate가 exit1해 infrastructure-invalid로 동결됐다. partial-01 terminal1 / missing47 / ineligible6이며 다음 셀은 cache mutation evidence/fail-close 계약 수정과 fresh epoch 재결박 전까지 HOLD다.
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -17,7 +17,10 @@
 - locked=`/private/tmp/omd-luna-wow-locked-9c65f56d`, matrix=`0a417798…`, preregistration=`10bb79f5…`다. materialized=`/private/tmp/omd-luna-wow-materialized-9c65f56d`, 48 scheduled+Taste6 ineligible, prepared tree=`382254f7…`, materialization binding=`1a3907db…`다.
 - immutable runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-9c65f56d`, auth=`627eb799…`, catalog=`f4392270…`다. Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-9c65f56d/ADMISSION.json`, SHA=`a5796b26…`, status admitted/calls0다.
 - baseline collector=`/private/tmp/omd-luna-wow-evidence-9c65f56d/EXECUTION-RECORDS.baseline.json`, SHA=`9687ec31…`, terminal0/missing48/ineligible6, collection calls0이다. token monitor used94/reset timestamp 불변이다.
-- **다음 exact action:** locked order1 `neighborhood-library-landing-luna-max-r1-model-only`을 gpt-5.6-luna/max로 단 한 번 실행한다. terminal을 즉시 봉인하고 hidden-image/runtime contamination, product state, visual proof, time/token/tool cost를 요약한 뒤 partial-01을 calls0으로 collect한다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 raw `turn.completed`와 input426,046/output26,770, final agent message, 54,464B HTML을 남겼지만 wrapper가 provider invocation 후 model-cache semantic/profile integrity mismatch를 감지해 exit1했다. terminal은 811,135ms, tool11, browser/network/external0, hidden-image audit PASS, neutral design-system package PASS이나 run-result/usage가 결박되지 않아 provider/model totals를 `unknown`으로 유지한 `infrastructure-invalid`다. evaluator/screenshots는 실행되지 않았고 record=`51fbb967…`, rerun 금지다.
+- provider runtime preflight는 admitted/observed semantic SHA=`402d17b5…`, profile SHA=`a0e0699d…`, client=`0.146.1`로 일치했으나 provider 실행 중 cache가 다시 변했다. cleanup이 post bytes를 삭제해 어떤 semantic field가 변했는지는 현 evidence로 복원할 수 없으므로 제품 실패로 채점하지 않고 하네스 관측 결함으로 분류한다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-9c65f56d/EXECUTION-RECORDS.partial-01.json`, SHA=`913ab289…`, terminal1/missing47/ineligible6, collection calls0이다. token monitor used94/reset timestamp 불변이다.
+- **다음 exact action:** Sol/medium으로 post-provider model-cache full/semantic/profile/client bytes를 cleanup 전에 immutable evidence로 남기고, 허용 가능한 volatile metadata와 의미 변경을 구분하는 fail-close 계약을 구현·적대 테스트한다. root Sol/xhigh가 독립 검수한 뒤 새 clean commit에서 모든 receipt/lock/materialization/admission을 fresh rebind하고 order1부터 retry0 신규 epoch를 시작한다. 9c65 order1은 immutable diagnostic evidence이며 같은 셀/epoch 재실행을 금지한다.
 
 ### 2026-08-14 source a0d3d944 fresh Luna Max epoch
 
