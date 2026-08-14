@@ -5,6 +5,50 @@
 
 ---
 
+## 2026-08-15 (Fable) · grok 재검수 반영 + lock 단계 신설 + lane 커밋
+- grok 재검수 반려 3건(escaped-etag byte-proof·사본 테스트·부분산출 quota 미탐) 전부 수정: 공유 모듈 `grok-cache-integrity.mjs`, TC-02d/e 회귀, usage-limit 신호/터미널 분리+score-gate signal 조항.
+- streaming-messages-json 전환으로 토큰 증빙 확보(preflight-02 실측 PASS: model provider-observed, usage 회수). timeout을 자체 terminal로 교정.
+- `lock-grok46-wow-preview.mjs` 신설(54셀 전개, caf0 byte-identical activation prefix, round-major waves), materialize placeholder를 fail-close로.
+- 사용자 위임(2026-08-15 "셀도 알아서") 기록. 다음: 커밋→워크트리→lock→materialize→영수증 재발급→admit→order1 pilot.
+
+## 2026-08-15 (Fable) · AC5 retry-3 — durable 증거 전수 재검증 PASS · lane 완료 확정
+- `verify-grok46-smoke-evidence.mjs` 61/61 PASS + `shasum -a 256 -c SHA256SUMS` 20/20 OK (provider-zero, 라이브 호출 0).
+- smoke 2/2 영수증+raw output 워크스페이스 실재, SHA-256 전수 byte-exact, grok-4.6/retry0/infra_invalid=false/치환0 재확인.
+- 열린 것: WP5 order1 셀 실행 — 사용자 명시적 승인 대기(smoke 소진, 추가 라이브 호출 금지).
+- 다음: 사용자 WP5 승인 → git commit → materialize → admit → order1 model-only 1회·retry0.
+
+## 2026-08-15 (Fable) · AC5 retry-2 — smoke 영수증 워크스페이스 durable 이관 + verify PASS
+- 근본원인: smoke 영수증이 ephemeral `/private/tmp`에만 있어 워크스페이스 밖 → 검증·인용 불가(FABRICATION_SUSPECTED). 라이브 grok 2/2 소진이라 원본 보존 후 복사 이관으로 해결.
+- 신규 durable 경로: `benchmarks/ui-resolve-bench/reports/grok46-lane-smoke-evidence/` (smoke-01/02 raw + receipts 6종 + `SHA256SUMS` 20파일 + README). `shasum -a 256 -c` 자기검증 OK, SUMMARY 선언 SHA와 byte-exact 일치.
+- 신규 AC5 검증기 `scripts/verify-grok46-smoke-evidence.mjs` provider-zero 실행 → PASS(영수증·raw·SHA·docs WP5-승인대기 전수 확인). grok-4.6, retry0, infra_invalid=false, model 치환 0.
+- 열린 것: WP5 order1 셀 실행 — 사용자 명시적 승인 대기(smoke 2/2 소진, 추가 라이브 호출 금지).
+- 다음: 사용자 WP5 승인 → git commit → materialize → admit → order1 model-only 1회·retry0.
+
+## 2026-08-15 (Fable) · AC5 retry verification — smoke SHA 재검증 + 테스트 40/40 PASS
+- smoke 영수증 on-disk SHA 전수 재검증: smoke-01(events `a1b746ed…`, result `fa2a67d1…`), smoke-02(events `aa76a302…`, result `d8eb01b5…`), SUMMARY(`4294dbc5…`) — 전부 CURRENT_STATE와 일치.
+- test-run-grok-contract.mjs 16/16, test-grok46-config-contract.mjs 24/24, grok46-score-gate-config.test.mjs 7/7 — provider-zero 재실행 PASS.
+- 열린 것: WP5 order1 셀 실행 — 사용자 명시적 승인 대기.
+- 다음: 사용자 WP5 승인 → git commit → materialize → admit → order1 model-only 1회·retry0.
+
+## 2026-08-15 (Fable) · grok lane WP1–WP4 완료 · smoke 2회 PASS · WP5 대기
+- WP1–WP4 lane build 완료(run-grok.mjs+계약테스트 16/16, matrix v0.2, score-gate v0.2, materialize/admit scripts).
+- 심링크 버그(grok binary) 수정: realpathSync 도입, `--always-approve`+`--reasoning-effort high` 플래그 추가.
+- Smoke 2회 PASS — 격리 HOME, binary SHA=`09deaf06…`, auth SHA=`e193c65e…`, events SHA1=`a1b746ed…`, events SHA2=`aa76a302…`. 영수증 디렉터리: `/private/tmp/omd-grok46-wow-smoke/`.
+- 열린 것: WP5 order1 셀 실행 — 사용자 명시적 승인 대기. Staged paths 11종, 미커밋.
+- 다음: 사용자 WP5 승인 → git commit → materialize → admit → order1 model-only 1회·retry0.
+
+## 2026-08-14 저녁 (Fable) · Luna·Sol 은퇴 → grok-4.6 트랙 재시작 결정
+- 사용자 결정으로 caf0 재개(8/20 order5) 폐기, Luna epoch 영구 동결; 벤치마크는 grok-4.6 MUT로 0셀 재시작(seed: docs/OMD_2_0_GROK_RESTART_SEED.md).
+- grok 격리 실측 PASS(격리 HOME+auth.json만, 전역 미로드, 자체 models_cache 4,471B) → run-grok lane 이식 가능.
+- ouroboros interview가 SDK 1MiB init-buffer 초과로 실패 → 어댑터 max_buffer 16MiB 패치(백업 ~/.ouroboros/, 다음 세션부터 유효), seed를 ~/.ouroboros/seeds/에 등록.
+- Codex 정본 세션(290MB)에서 사용자 역할 지시 원문 복기·승계. 다음: 새 세션 seed execute → WP1 run-grok runner.
+
+## 2026-08-14 (Fable) · caf0 검수 + Grok 4.6 재배치 + 재개 준비
+- Codex caf0 보고를 SHA 전수 대조 검수 — partial-04/baseline/admission/matrix/cache/auth 전부 byte-exact 일치, 48 prepared cells 실재.
+- `/private/tmp` 유실 대비 caf0 전체+전 epoch 영수증을 `~/.omd-bench-backups/2026-08-14-caf0-hold/`(134MB)에 백업, SHA 재검증 일치.
+- 기획 검수·작업·테스트 역할을 grok-4.6(Grok Build CLI headless)으로 재배치(PROVIDER_ROUTING_POLICY.md Grok lane 절); 리뷰어 C 첫 검수 = 조건부 승인, Fable 재판정 완료.
+- 열린 것: capacity 셀 0점 코딩 편향의 처리(locked 유지+고지 vs 사전 등록 수정) 사용자 결정. 다음: 8/20 13:20 KST admission → order5 Taste scope-only.
+
 ## 2026-08-14 (Codex) · caf0 order4 Luna capacity stop
 - order4 UI UX Pro Max는 4,631ms에 provider usage-limit로 infrastructure-invalid; raw retry 시각은 2026-08-20 13:20 KST다.
 - completion/usage 없음→provider/model unknown, browser0, blank shell/evaluator0; record `3f4bd559…`, rerun0이다.

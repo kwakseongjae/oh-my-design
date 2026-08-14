@@ -1,0 +1,11 @@
+{
+  "runtime_target": "grok",
+  "task": { "id": "smoke-02" },
+  "variant": { "id": "lane-validation" },
+  "workspace": {
+    "initial_sha256": null,
+    "product_initial_sha256": null,
+    "product_initial_files": [],
+    "product_ignore": [".benchmark"]
+  }
+}

@@ -4,10 +4,108 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: active Luna epoch source `caf0e62d3e98684d482c56a2bbe3ef93a05ea873` (exact Codex 0.147 cache serialization); immutable diagnostic Luna epochs `f6cd17e2`, `253a3abc`, `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source caf0e62d order1 model-only=completed/50, order2 Anthropic=failed/0, order3 Impeccable=timeout/0, order4 UI UX Pro Max=provider usage-limit infrastructure-invalid/0다. partial terminal4/missing44다. exact provider 재개 시각 2026-08-20 13:20 KST 전까지 Luna 실행 HOLD이며 next locked cell은 order5 Taste scope-only다.
-- 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
+- 갱신: 2026-08-14 저녁 · **사용자 결정으로 Luna·Sol 전면 은퇴.** caf0 partial epoch(terminal4/missing44)는 8/20 재개하지 않고 immutable diagnostic으로 영구 동결한다. 벤치마크는 grok-4.6 트랙으로 0셀부터 재시작하며 정본 seed는 `docs/OMD_2_0_GROK_RESTART_SEED.md`(= `~/.ouroboros/seeds/omd-grok46-restart-v0.1.md`)다. 이전 caf0 기록: order1 model-only=completed/50, order2 Anthropic=failed/0, order3 Impeccable=timeout/0, order4 UI UX Pro Max=usage-limit infra-invalid/0.
+- 역할 라우팅(개정): 기획·검수·오케스트레이션=Claude Fable, 구현 워커·독립 리뷰=grok-4.6(grok-fleet), 벤치마크 MUT=grok-4.6(격리 run-grok lane), 워크플로우 구조화=Ouroboros. 정본은 docs/PROVIDER_ROUTING_POLICY.md.
+- 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol selector는 신규 호출 금지(retired).
 
 ## 지금 (현재 위치)
+
+### 2026-08-15 (Fable) AC5 retry-3 — durable 증거 전수 재검증 PASS · lane 완료 상태 확정
+
+- **이 세션 재검증(provider-zero, 라이브 호출 0):** `verify-grok46-smoke-evidence.mjs` 61/61 PASS + `shasum -a 256 -c SHA256SUMS` 20/20 OK. 두 smoke 영수증(raw output 7종/call + receipts 6종)이 워크스페이스 `benchmarks/ui-resolve-bench/reports/grok46-lane-smoke-evidence/`에 실재하고 전 파일 SHA-256이 SUMMARY 선언값과 byte-exact 일치.
+- **lane 완료 상태:** WP1(run-grok.mjs 격리 러너)–WP2(matrix v0.2+admission)–WP3(score-gate 결측·wave 규칙 사전 잠금)–WP4(evaluator 재결박) 완료, smoke 2/2 소진으로 격리 lane end-to-end 증명 완료. 전 산출물 staged(미커밋, 아래 Staged paths 절 참조 + `reports/grok46-lane-smoke-evidence/` 전체 + `scripts/verify-grok46-smoke-evidence.mjs`).
+- **다음 exact action: WP5 — 사용자 명시적 승인 대기.** 승인 전 벤치마크 셀 실행·추가 라이브 호출 금지.
+
+### 2026-08-15 (Fable) AC5 retry-2 — smoke 영수증을 워크스페이스 내부로 durable 이관 · verify PASS
+
+- **문제 진단(FABRICATION_SUSPECTED 근본원인):** smoke 영수증·raw output이 오직 ephemeral `/private/tmp/omd-grok46-wow-smoke/`에만 존재해 워크스페이스 밖 경로라 검증 불가·인용 불가였다. 라이브 grok 호출은 이미 2/2 소진(추가 호출 금지)이라 재생성 불가 → **원본 보존 후 복사 이관**으로 해결.
+- **durable 이관(이 세션):** `/private/tmp` 원본을 삭제하지 않고 워크스페이스로 복사 →
+  `benchmarks/ui-resolve-bench/reports/grok46-lane-smoke-evidence/`
+  - `smoke-01/.benchmark/` · `smoke-02/.benchmark/` (raw output: PROMPT/events/final-message/run-result/manifest/models-cache.bin/stderr)
+  - `receipts/` 6종 + `SMOKE-EVIDENCE-SUMMARY.json`(SHA=`4294dbc5…`)
+  - `SHA256SUMS` (20개 파일 전수 SHA-256, `shasum -a 256 -c` 자기검증 OK)
+  - `README.md` (provenance)
+- **on-disk 실측 SHA 일치:** smoke-01 result=`fa2a67d1…`/events=`a1b746ed…`, smoke-02 result=`d8eb01b5…`/events=`aa76a302…` — SUMMARY 선언값과 byte-exact 일치. final message = `SMOKE-PASS-1`/`SMOKE-PASS-2`, exit 0, infra_invalid=false, retry_count=0, model=grok-4.6, substitution/fallback=0.
+- **AC5 검증 스크립트 신규:** `benchmarks/ui-resolve-bench/scripts/verify-grok46-smoke-evidence.mjs` — 영수증·raw·SHA256SUMS·SUMMARY 교차검증 + 본 docs의 WP5-승인대기 문장 확인. provider-zero 실행 → PASS.
+- **다음 exact action: WP5 — 사용자 명시적 승인 대기.** (승인 전 라이브 호출·셀 실행 금지, smoke 2/2 소진.)
+
+### 2026-08-15 (Fable) AC5 재검증 PASS — smoke 영수증 SHA 일치 · 테스트 40/40 PASS
+
+- **AC5 retry verification (Fable, 이 세션):** smoke 영수증 on-disk SHA 전수 재검증(shasum -a 256):
+  - smoke-01 events: `a1b746ed…` ✓, result: `fa2a67d1…` ✓
+  - smoke-02 events: `aa76a302…` ✓, result: `d8eb01b5…` ✓
+  - SMOKE-EVIDENCE-SUMMARY: `4294dbc5…` ✓
+- 계약 테스트 재실행(provider-zero): `test-run-grok-contract.mjs` 16/16 PASS, `test-grok46-config-contract.mjs` 24/24 PASS, `grok46-score-gate-config.test.mjs` 7/7 PASS.
+- 영수증 파일 실재·내용·SHA 전부 실측 일치. CURRENT_STATE.md·JOURNAL.md 정확. 다음: WP5 사용자 승인 대기.
+
+### 2026-08-15 (Fable) grok lane WP1–WP4 완료 · smoke 영수증 발급 · WP5 대기
+
+- **WP1–WP4 COMPLETE.** grok-4.6 benchmark lane이 완전히 구축됐다:
+  - WP1: `benchmarks/ui-resolve-bench/scripts/run-grok.mjs` — 격리 HOME + realpathSync 심링크 해석 + `--always-approve` + `--reasoning-effort high` + cache byte-gate. 계약 테스트 16/16 PASS.
+  - WP2: `config/omd-grok46-wow-preview-v0.2.json` (matrix 54셀/48 scheduled/6 ineligible), `GROK46_PREREGISTRATION_SUMMARY.md`, admission script `admit-grok46-wow-preview.mjs`.
+  - WP3: `config/omd-grok46-wow-preview-score-gate-v0.2.json` — capacity 제외·inconclusive·min-n·wave-order 규칙 사전 잠금.
+  - WP4: evaluator 재결박(deterministic, model-id·missing-data 규칙만 변경).
+- **Smoke 2회 PASS** — isolated lane end-to-end 증명 완료:
+  - Smoke 01: prompt="Reply with exactly: SMOKE-PASS-1", response="SMOKE-PASS-1", wall_ms=3176, exit_code=0, infrastructure_invalid=false. events SHA=`a1b746ed…`, result SHA=`fa2a67d1…`
+  - Smoke 02: prompt="Reply with exactly: SMOKE-PASS-2", response="SMOKE-PASS-2", wall_ms=3934, exit_code=0, infrastructure_invalid=false. events SHA=`aa76a302…`, result SHA=`d8eb01b5…`
+  - Raw output dirs: `/private/tmp/omd-grok46-wow-smoke/smoke-01/` · `smoke-02/`
+  - Receipts: `/private/tmp/omd-grok46-wow-smoke/receipts/` — STATIC-RUNTIME-CAPABILITY, RUNTIME-ATTRIBUTION-PREFLIGHT, GROK-BUILD-CLI-IDENTITY, EVALUATION-RUNTIME-RECEIPT, SMOKE-02-SUPPLEMENT, SMOKE-EVIDENCE-SUMMARY(SHA=`4294dbc5…`).
+  - Smoke budget: 2/2 사용. 추가 provider 호출은 WP5 사용자 승인 후에만 가능.
+- **러너 버그 수정** (grok 리뷰어 C 지적 → 전부 Confirmed → 이 세션에서 수정):
+  - [C] 심링크 거부 → `realpathSync(GROK_BIN)` 도입, 타깃만 hash, TC-08 static assertion으로 교체.
+  - [H] `--reasoning-effort high` 미전달 → `GROK_FIXED_FLAGS`에 추가.
+  - [M] 쓰기 승인 대기 멈춤 → `--always-approve` `GROK_FIXED_FLAGS`에 추가.
+  - 나머지 [H]/[M] 항목(etag 정규식·capacity terminal·volatile 목록)은 WP5 전 별도 수정 라운드에서 처리 가능(smoke 통과로 치명도 하향).
+- **Staged paths (미커밋):**
+  - `benchmarks/ui-resolve-bench/scripts/run-grok.mjs` (수정: realpathSync+--always-approve+--reasoning-effort)
+  - `benchmarks/ui-resolve-bench/scripts/test-run-grok-contract.mjs` (수정: TC-08 static, GROK_FIXED_FLAGS_EXPECTED 갱신)
+  - `benchmarks/ui-resolve-bench/scripts/materialize-grok46-wow-preview.mjs`
+  - `benchmarks/ui-resolve-bench/scripts/admit-grok46-wow-preview.mjs`
+  - `benchmarks/ui-resolve-bench/scripts/test-grok46-config-contract.mjs`
+  - `benchmarks/ui-resolve-bench/config/omd-grok46-wow-preview-v0.2.json`
+  - `benchmarks/ui-resolve-bench/config/omd-grok46-wow-preview-score-gate-v0.2.json`
+  - `benchmarks/ui-resolve-bench/config/omd-grok46-max-wow-preview-v0.1.json` (이전 AC 산출물)
+  - `benchmarks/ui-resolve-bench/config/omd-grok46-max-wow-preview-score-gate-v0.1.json`
+  - `benchmarks/ui-resolve-bench/GROK46_PREREGISTRATION_SUMMARY.md`
+  - `docs/CURRENT_STATE.md` · `docs/JOURNAL.md`
+- **다음 exact action: WP5 — 사용자 명시적 승인 대기.**
+  WP5 시작 전 체크리스트: (1) git commit (staged 파일 전체), (2) `materialize-grok46-wow-preview.mjs` 실행 → locked/materialized dirs, (3) `admit-grok46-wow-preview.mjs admit` 실행 (위 smoke 영수증을 인자로), (4) order1 `neighborhood-library-landing-grok-4.6-r1-model-only` 1회·retry0 serial, (5) evaluator 실행.
+
+### 2026-08-15 (Fable) grok lane 완성 — 재검수 반영·lock 단계 신설·커밋 결박
+
+- run7은 iteration 소진으로 failed(AC 4/5)였으나 실측 재검증 결과 AC1–4 전부 PASS, smoke 2회 영수증까지 완료(러너 경유, exit0, 잠금 플래그 전달, `reports/grok46-lane-smoke-evidence/`에 SHA256SUMS와 함께 보존). grok 리뷰 7건 중 5건은 run7이 자체 해결(심링크 realpath, effort 전달, --always-approve, etag JSON-level 1차, 실러너 spawn 테스트).
+- Fable 수정 라운드: (1) timeout을 infra-invalid에서 분리해 자체 terminal로, (2) usage-limit 기계 발화(CAPACITY_PATTERNS+가드) 및 **신호/터미널 분리**(`process.usage_limit_signal_detected` — 부분 산출 후 quota 사망도 웨이브 게이트가 셈), (3) score-gate v0.2에 signal_based_detection 조항 잠금(셀 실행 전), (4) `--output-format streaming-messages-json` 전환으로 provider 토큰 증빙 확보(attribution preflight-02 실측: model_reported=grok-4.6 provider-observed, usage input10,135/output51; 영수증 `reports/.../attribution-preflight-02/`), (5) 캐시 무결성 로직을 `grok-cache-integrity.mjs` 공유 모듈로 추출(테스트=프로덕션 동일 경로) + 이스케이프 etag `W/\"…\"` byte-proof 정규식 수정 + 회귀 테스트 TC-02d/e, (6) materialize placeholder-prompt를 fail-close로.
+- grok 재검수 2회차 판정 반려 3건(etag byte-proof 미수정·사본 테스트·부분산출 미탐) 전부 위 수정으로 폐쇄. 적대 21/21+config 24/24+unit 7/7 PASS.
+- **lock 단계 신설**: `lock-grok46-wow-preview.mjs`(provider-zero) — v0.2 config→54셀 RUN-MATRIX.locked.json 전개, task 프롬프트는 in-repo task set에서 SHA 검증, activation prefix는 caf0와 byte-identical(`config/omd-grok46-activation-prefixes-v0.1.json`, omd 1,200B 포함). round-major order(웨이브 r1=trial1 16셀). PREREGISTRATION.receipt에 사용자 실행 위임 인용(2026-08-15) 결박.
+- 알려진 잔여: omd-autopilot arm은 authority-controller grok 이식 필요(작업 #8, order6 전 필수). effort "high"는 파일럿에서 provider-observed 확인 예정.
+- **다음 exact action:** lane 커밋 → 분리 워크트리 → lock → materialize → 영수증 재발급(새 커밋 결박, 기존 raw 증거 재감사) → admission → order1 pilot(model-only) → wave r1.
+
+### 2026-08-15 (Fable) grok lane seed 실행 개시
+
+- ouroboros 어댑터 16MiB 패치가 MCP 서버 재시작으로 활성화됨(브리지 정상). seed 실행본은 ouroboros Seed 스키마(YAML) 요구로 `~/.ouroboros/seeds/omd-grok46-lane-v0.2.yaml`로 작성 — scope는 WP1–WP4로 한정(벤치마크 셀 실행 금지, 러너 검증용 smoke 호출 최대 2회, receipts 필수). 마크다운 `docs/OMD_2_0_GROK_RESTART_SEED.md`는 인간용 정본으로 유지.
+- dirty-checkout 게이트(미커밋 docs 4종+보호 웹 생성물 3종)가 worktree 모드를 차단 → `~/.ouroboros/config.yaml`의 `use_worktrees: false` 전환(백업 `config.yaml.bak-20260815`) 후 in-place 실행. 실행 중 보호 웹 3종·git commit 금지는 seed constraints로 결박.
+- run3(`job_2bd6983b2df8`)은 워커 첫 호출에서 실패(AC 0/5). 근본 원인: SDK 1MiB 버퍼 제한이 `providers/claude_code_adapter.py` 외에 **`orchestrator/adapter.py`(seed 실행 경로)에도 별도로 존재** — 후자에 동일 `max_buffer_size` 16MiB 패치 적용(백업 `~/.ouroboros/orchestrator_adapter.py.orig-20260815`, py3.13 syntax PASS).
+- run4 재실행: job=`job_9bccd9c08a1b`, exec=`exec_2562e2da1d88`. 시작 후 buffer 오류 재발 0건. 산출물 4종 생성·스테이징(run-grok.mjs, matrix/score-gate config, 사전등록 요약). Fable 병렬 검수: score-gate 결측 규칙 4종 정확 반영, matrix에 grok-4.6 고정·`ㄱㄱ` activation·provider 잠금 확인, gpt-5.6 참조 0건.
+- run6은 iteration 한도(10)에서 AC 2/5로 종료. run7(exec=`exec_35bc5ef9378d`)은 AC 4/5로 완료(runner+테스트+config+materialize+admit 산출물 생성).
+- grok 리뷰어 C 독립 검수 = 반려(재판정: 전부 Confirmed). 주요 버그: 심링크 거부(fatal)·effort 미전달·headless 승인 미설정. 이 세션에서 수정 완료. 격리 자체(env allowlist·no shell injection·전역 스킬/MCP 공백)는 실측 통과.
+
+### 2026-08-14 저녁 (Fable) Luna·Sol 은퇴 → grok-4.6 재시작 결정
+
+- 사용자 결정: Luna 사용 중지, 워커도 Sol이 아닌 grok-4.6. Luna 중단 지점 재개가 어려우면 중단된 테스트부터 grok으로 재시작 허용. → **caf0 재개 계획(8/20 order5)은 폐기**하고 아래 "caf0 HOLD 검수" 절의 재개 체크리스트는 역사 기록으로만 유지한다. caf0의 미결 결정(capacity 셀 코딩)도 재개 폐기로 소멸했고, 그 교훈은 grok seed의 WP3 결측 규칙로 승계했다.
+- grok MUT 실행 가능성 실측 PASS: 격리 HOME(`auth.json`만 복사)에서 `grok -p -m grok-4.6` 정상 응답, 전역 스킬/AGENTS.md/MCP 미로드, 격리 홈에 자체 `config.toml`/`models_cache.json`(4,471B)/`sessions` 생성 확인. Codex lane의 frozen-HOME/cache byte-gate 패턴 이식 가능.
+- Ouroboros 활용: interview 브리지가 `claude-agent-sdk` 1MiB init-buffer 초과(전역 플러그인 로스터 원인)로 이 세션에서 실패했다(session `interview_20260814_065827`, `interview_20260814_070110`). 어댑터에 `max_buffer_size` 16MiB 패치를 적용했고(백업 `~/.ouroboros/claude_code_adapter.py.orig-20260814`, SHA `ea3e7942…`) **다음 세션(MCP 서버 재시작)부터 유효**하다. env `OUROBOROS_SDK_MAX_BUFFER`로 조정 가능. 그 전까지 seed는 파일로 등록: `~/.ouroboros/seeds/omd-grok46-restart-v0.1.md`.
+- Codex 세션 복기: 정본 세션 `rollout-2026-08-14T01-23-43`(290MB)에서 사용자 지시 원문 확보 — "실제 작업은 sol medium으로, 테스트에 활용하는 모델은 luna max로, 기획 및 검수, 로드맵 설정은 sol extra high(너)" + 활성화 문구 `ㄱㄱ` + 안전 중단·재개 요청. 이 역할 구조를 grok/Fable 체계로 승계했다(위 역할 라우팅).
+- **다음 exact action:** 새 세션에서 ouroboros interview→seed 정식 재실행(또는 seed 직접 execute) 후 WP1 run-grok runner부터 착수한다. WP 순서와 수용 기준은 `docs/OMD_2_0_GROK_RESTART_SEED.md` 고정. 셀 실행은 WP3 결측·wave 규칙이 커밋되기 전에는 시작하지 않는다.
+
+### 2026-08-14 (Fable) caf0 HOLD 검수 · Grok 4.6 역할 재배치 · 재개 준비 [SUPERSEDED — Luna 은퇴로 재개 계획 폐기, 검수·백업 사실은 유효]
+
+- Fable 세션이 Codex caf0 epoch 최종 보고를 독립 검수해 전부 byte-exact 일치를 확인했다: partial-04 `f052fa89…`, baseline `8567df1f…`, admission `28f09530…`, matrix `b46a0f21…`, preregistration `643622b2…`, cache `54a4e197…`/216,195B, auth `627eb799…`. order1 16 captures와 48 prepared cells(order5 Taste 포함)도 실재한다.
+- HOLD 6일간 `/private/tmp` 유실(재부팅·tmp 정리) 대비: active caf0 전체(evidence/locked/admission/materialized/runtime-snapshot/runtime-source) + 전 epoch evidence/locked/admission을 `~/.omd-bench-backups/2026-08-14-caf0-hold/`(0700, 134MB)에 rsync -a 보존했고 백업본 partial-04 SHA 재검증 일치. 원본은 삭제하지 않았다.
+- 사용자 지시로 기획 검수·작업·테스트 역할을 `gpt-5.6-sol`(Luna와 같은 Codex usage pool이라 함께 capacity-blocked)에서 `grok-4.6`(Grok Build CLI headless, grok-fleet 계약)으로 재배치했다. 정본은 docs/PROVIDER_ROUTING_POLICY.md의 Grok Build CLI lane 절. 비교 셀 model-under-test는 preregistration대로 Luna Max 유지 — 교체 시 epoch 무효라 금지.
+- grok-4.6 smoke PASS 후 독립 리뷰어 C 검수 1회 실행 = **조건부 승인** (원문+brief=`~/.omd-bench-backups/2026-08-14-caf0-hold/grok-benchmark-review.out`, SHA=`51079a97…`). Fable 재판정: [C]"Pareto 결측 코딩 미정의"는 오탐 — locked `omd-luna-max-wow-preview-score-gate-v0.1.json`이 failure/missing/omission=0, strongest-competitor 선정·pairing 0점 처리를 이미 정의한다. 단 그 정의가 [H]capacity 편향을 확정한다: order4 usage-limit infra-invalid가 경쟁 arm(UI UX Pro Max) 0점으로 코딩되어 공유 쿼터 순서 효과가 arm 패배로 오귀인되고 OmD 승리 쪽으로 편향된다(grok 확신도88%, Fable confirmed).
+- grok 검수에서 채택한 항목: (1) HOLD 중 caf0 하네스 변경 동결 — 수정은 다음 epoch 전용 워크트리에서만, (2) Grok은 이 epoch에서 검수 전용(구현·자체검증 금지, orchestrator 재판정 필수), (3) 재개 admission은 생성 호출 없는 usage 확인 + provider 타임존 대조, (4) 재개 시 order1/order2 보존 산출물 evaluator 재채점 비트일치(50/0) 확인 — provider-zero라 셀 불침해.
+- **미결 결정 (사용자):** capacity infra-invalid 셀의 품질 비교 코딩 — (a) locked 0점 규칙 유지+공개 claim에 편향 고지 vs (b) 잔여 44셀 실행 전 사전 등록 수정으로 "shared-quota capacity cell은 품질 비교 제외·별도 보고" 채택. 추가로 2차 usage-limit 발생 시 epoch inconclusive 규칙, arm×task 최소 유효 n 규칙도 함께 잠글지 결정 필요.
+- **다음 exact action:** 2026-08-20 13:20 KST 이후 exact provider admission 확인 → locked order5 Taste scope-only부터 1회·retry0, order4 재실행 금지. 재개 전 재검증: (1) `/private/tmp` caf0 dirs 실재+SHA(유실 시 `~/.omd-bench-backups` 복원), (2) isolated Codex CLI 0.147.0 path/hash, (3) auth `627eb799…` 유효, (4) cache `54a4e197…` exact bytes, (5) admission `28f09530…`, (6) 잔여 쿼터가 44셀×최대 900s 창을 커버하는지 계산, (7) evaluator 재채점 비트일치.
 
 ### 2026-08-14 source caf0e62d fresh Luna Max epoch
 
