@@ -2,7 +2,7 @@
 import { spawnSync, execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import {
-  accessSync, constants as fsConstants, cpSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, realpathSync, rmSync, statSync, symlinkSync, writeFileSync, appendFileSync,
+  accessSync, chmodSync, constants as fsConstants, cpSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, realpathSync, rmSync, statSync, symlinkSync, writeFileSync, appendFileSync,
 } from "node:fs";
 import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -22,6 +22,17 @@ const OMD_VARIANT = "omd-autopilot-v2";
 const OMD_STAGING_ENV = "OMD_BENCH_EXTERNAL_STAGING_ROOT";
 const OMD_PACKAGE_ENV = "OMD_BENCH_COMPILED_CORE_PACKAGE";
 const OMD_CHECKPOINT_ENV = "OMD_BENCH_CORE_CHECKPOINT";
+const OMD_AUTHORITY_RECEIPT_ENV = "OMD_AUTHORITY_CONTROLLER_RECEIPT";
+const OMD_AUTHORITY_RECEIPT_SHA_ENV = "OMD_AUTHORITY_CONTROLLER_RECEIPT_SHA256";
+const OMD_AUTHORITY_ACTIVATION_SHA_ENV = "OMD_AUTHORITY_CONTROLLER_ACTIVATION_SHA256";
+const OMD_AUTHORITY_RUN_DIR_ENV = "OMD_AUTHORITY_CONTROLLER_RUN_DIR";
+const OMD_AUTHORITY_EXECUTABLE_ENV = "OMD_AUTHORITY_CONTROLLER_EXECUTABLE";
+const OMD_AUTHORITY_RUNTIME_PREFIXES = Object.freeze([
+  "scripts/activate-autopilot-design-system.cjs", "scripts/prepare-design-md-core-review.cjs",
+  "scripts/compile-design-md-core.cjs", "scripts/adopt-design-md-core.cjs",
+  "scripts/validate-project-design-system.cjs", "scripts/design-md-core-schema.cjs",
+  "scripts/design-md-core-conformance.cjs", "scripts/design-md-core.cjs", "spec/schema/",
+]);
 const CODEX_BUILTIN_SKILLS = Object.freeze(["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"]);
 const HERE = dirname(fileURLToPath(import.meta.url));
 const DEFAULT_REPO_ROOT = resolve(HERE, "../../..");
@@ -93,6 +104,26 @@ export function tree(root, ignore = []) {
   return { files, sha256: sha256(files.map((file) => `${file.path}\0${file.mode}\0${file.sha256}`).join("\n")) };
 }
 function summary(root, ignore = []) { const manifest = tree(root, ignore); return { files: manifest.files.length, bytes: manifest.files.reduce((n, f) => n + f.bytes, 0), sha256: manifest.sha256 }; }
+function authorityRuntimeClosure(root) {
+  try {
+    const files = tree(root).files.filter((file) => OMD_AUTHORITY_RUNTIME_PREFIXES.some((prefix) => prefix.endsWith("/") ? file.path.startsWith(prefix) : file.path === prefix));
+    const required = OMD_AUTHORITY_RUNTIME_PREFIXES.filter((prefix) => !prefix.endsWith("/"));
+    if (required.some((path) => !files.some((file) => file.path === path)) || !files.some((file) => file.path.startsWith("spec/schema/"))) return { pass: false, files, sha256: null, reason: "authority-runtime-closure-incomplete" };
+    return { pass: true, files, sha256: sha256(canonical(files)), reason: null };
+  } catch (error) { return { pass: false, files: [], sha256: null, reason: String(error?.message ?? error) }; }
+}
+function materializeAuthorityRuntime(source, execution) {
+  const root = join(execution, "authority-controller-runtime"); mkdirSync(root, { recursive: false, mode: 0o700 });
+  for (const prefix of OMD_AUTHORITY_RUNTIME_PREFIXES) {
+    const from = join(source, prefix); const to = join(root, prefix);
+    mkdirSync(dirname(to), { recursive: true }); cpSync(from, to, { recursive: true, errorOnExist: true });
+  }
+  let closure = authorityRuntimeClosure(root); invariant(closure.pass, closure.reason);
+  for (const file of closure.files) chmodSync(join(root, file.path), 0o400);
+  for (const dir of [join(root, "scripts"), join(root, "spec/schema"), join(root, "spec"), root]) if (existsSync(dir)) chmodSync(dir, 0o500);
+  closure = authorityRuntimeClosure(root); invariant(closure.pass, closure.reason);
+  return { root, executable: join(root, "scripts/activate-autopilot-design-system.cjs"), ...closure };
+}
 function evaluatorBundleReadback(runtime) {
   try {
     const bundle = runtime?.dependencies?.bundle;
@@ -303,7 +334,7 @@ function copyExecutionWorkspace(cell, target) {
   writeJsonExclusive(join(target, ".benchmark/manifest.json"), { runtime_target: "codex", task: { id: metadata.task.id }, variant: { id: metadata.arm.variant_id }, workspace: { initial_sha256: tree(target).sha256, product_initial_sha256: initial.sha256, product_initial_files: initial.files, product_ignore: [".benchmark"] } });
   return { metadata, initial: tree(target) };
 }
-export function prepareOmdExternalStaging({ execution, workspace, metadata }) {
+export function prepareOmdExternalStaging({ execution, workspace, metadata, authorityRuntime }) {
   if (metadata.arm.variant_id !== OMD_VARIANT) return null;
   const canonicalExecution = realpathSync(execution); const canonicalWorkspace = realpathSync(workspace);
   const root = join(canonicalExecution, "omd-external-staging");
@@ -316,7 +347,15 @@ export function prepareOmdExternalStaging({ execution, workspace, metadata }) {
   invariant(readFileSync(join(workspace, ".benchmark/PROMPT.md"), "utf8").includes(disclosure), "OmD prepared prompt is missing the preregistered external staging activation");
   const receiptPath = join(execution, "OMD-EXTERNAL-STAGING.json");
   writeJsonExclusive(receiptPath, { schema_version: "0.1", kind: "omd-luna-max-cell-local-external-staging", variant_id: OMD_VARIANT, cell_execution_root: canonicalExecution, project_workspace: canonicalWorkspace, staging_root: root, compiled_package_root: packageRoot, checkpoint_path: checkpointPath, environment: { staging_root: OMD_STAGING_ENV, compiled_package: OMD_PACKAGE_ENV, checkpoint: OMD_CHECKPOINT_ENV }, preregistered_activation_sha256: sha256(disclosure), initial_tree_sha256: tree(root).sha256, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 });
-  return { root, packageRoot, checkpointPath, disclosure, receiptPath, receiptSha256: sha256(readFileSync(receiptPath)) };
+  const authorityReceiptPath = join(execution, "OMD-AUTHORITY-CONTROLLER.json");
+  const controllerRunDir = `.omd/runs/${String(metadata.task?.id ?? "benchmark-task").replace(/-landing$/, "")}`;
+  writeJsonExclusive(authorityReceiptPath, {
+    schema_version: "0.1", kind: "omd-autopilot-external-authority-controller-activation", status: "active",
+    authority: { role: "project-owner", identifier: "omd-luna-max-preregistered-authority-controller" },
+    scope: { cell_id: metadata.cell_id ?? "controller-fixture", project_workspace: canonicalWorkspace, run_dir: controllerRunDir, single_deterministic_activation: true, review_approval: true, project_adoption_checkpoint: true, controller_executable: authorityRuntime?.executable, authority_runtime_root: authorityRuntime?.root, authority_runtime_closure: { sha256: authorityRuntime?.sha256, files: authorityRuntime?.files } },
+    activation: { sha256: sha256(disclosure) }, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0,
+  });
+  return { root, packageRoot, checkpointPath, disclosure, receiptPath, receiptSha256: sha256(readFileSync(receiptPath)), authorityReceiptPath, authorityReceiptSha256: sha256(readFileSync(authorityReceiptPath)), authorityRuntimeRoot: authorityRuntime?.root, authorityExecutable: authorityRuntime?.executable, authorityRuntimeSha256: authorityRuntime?.sha256 ?? null, controllerRunDir };
 }
 export function auditOmdExternalStaging(staging) {
   if (!staging) return { applicable: false, pass: true, violations: [] };
@@ -329,8 +368,110 @@ export function auditOmdExternalStaging(staging) {
       else if (!info.isFile()) violations.push({ path: relative(root, path), reason: "unsupported-entry" });
     }
   };
-  directory(staging.root, "OmD external staging root"); visit(staging.root);
+  try { directory(staging.root, "OmD external staging root"); visit(staging.root); }
+  catch (error) { return { applicable: true, pass: false, root: staging.root, violations: [{ path: ".", reason: "staging-missing-or-invalid", detail: String(error?.message ?? error) }], tree: null }; }
+  const expected = [
+    "compiled-core/.omd/system/adoption-receipt.json", "compiled-core/.omd/system/coverage.json",
+    "compiled-core/.omd/system/graph.json", "compiled-core/.omd/system/manifest.json",
+    "compiled-core/.omd/system/provenance.json", "compiled-core/DESIGN.md",
+    "project-adoption-checkpoint.json",
+  ];
+  const observed = violations.length === 0 ? tree(staging.root).files.map((item) => item.path).sort() : [];
+  if (violations.length === 0 && canonical(observed) !== canonical(expected.sort())) {
+    violations.push({ path: ".", reason: "exact-compiled-package-and-checkpoint-file-set-required", expected, observed });
+  }
   return { applicable: true, pass: violations.length === 0, root: staging.root, violations, tree: violations.length === 0 ? tree(staging.root) : null };
+}
+
+export function auditOmdControllerCommands(events, runDir, controllerExecutable = "scripts/activate-autopilot-design-system.cjs") {
+  const observed = new Map(); const lifecycle = new Map();
+  for (const event of events) {
+    if (!/^item\.(?:started|completed|failed)$/.test(String(event.type)) || event.item?.type !== "command_execution") continue;
+    const command = String(event.item.command ?? "");
+    if (!command) continue;
+    const id = String(event.item.id ?? `${event.type}:${sha256(command)}`);
+    observed.set(id, { ...event, item: { ...event.item, command } });
+    const record = lifecycle.get(id) ?? { command, events: [] }; record.events.push(event); record.command = command; lifecycle.set(id, record);
+  }
+  const activations = [];
+  const forbidden = [];
+  const literalCommand = `node $${OMD_AUTHORITY_EXECUTABLE_ENV} . $${OMD_AUTHORITY_RUN_DIR_ENV}`;
+  const expandedCommand = `node ${controllerExecutable} . ${runDir}`;
+  for (const [id, record] of lifecycle) {
+    const command = record.command.trim();
+    const activationLike = command.includes(OMD_AUTHORITY_EXECUTABLE_ENV) || command.includes(controllerExecutable);
+    if (!activationLike) continue;
+    if (command !== literalCommand && command !== expandedCommand) {
+      forbidden.push({ id, reason: "activation-raw-command-not-exact", command_sha256: sha256(record.command) }); continue;
+    }
+    const finalEvent = record.events.at(-1);
+    const exitCode = finalEvent?.item?.exit_code;
+    const status = finalEvent?.item?.status;
+    const successful = finalEvent?.type === "item.completed" && (exitCode == null || exitCode === 0) && (status == null || status === "completed" || status === "success");
+    const output = [finalEvent?.item?.aggregated_output, finalEvent?.item?.stdout, finalEvent?.item?.output].find((value) => typeof value === "string" && value.length > 0);
+    if (!successful) forbidden.push({ id, reason: "activation-not-successfully-completed", command_sha256: sha256(record.command) });
+    else if (output && !/adopted-and-validated/.test(output)) forbidden.push({ id, reason: "activation-success-output-unproven", command_sha256: sha256(record.command) });
+    else activations.push(id);
+  }
+  for (const event of observed.values()) {
+    const command = String(event.item.command ?? "");
+    for (const invocation of shellInvocations(command)) {
+      const argv = unwrapExecutionArgv(invocation); if (!argv?.length) continue;
+      const normalized = argv.map(String); const executable = normalized[0].split("/").at(-1)?.toLowerCase();
+      const helperIndex = ["node", "nodejs"].includes(executable) ? 1 : 0;
+      const joined = normalized.join(" ");
+      if (new RegExp(`${OMD_AUTHORITY_EXECUTABLE_ENV}=`).test(command)
+        || (/prepare-design-md-core-review\.cjs/.test(joined) && /--approve/.test(joined))
+        || (/adopt-design-md-core\.cjs/.test(joined) && /--prepare-checkpoint/.test(joined))
+        || /--reviewer|--authority-transition-approved/.test(joined)
+        || /(?:review|package)-v[2-9]\b/.test(joined)) {
+        forbidden.push({ id: String(event.item.id), reason: "direct-or-repeated-authority-command", command_sha256: sha256(command) });
+      }
+    }
+  }
+  return { pass: activations.length === 1 && forbidden.length === 0, exact_activation_count: activations.length, activation_item_ids: activations, forbidden };
+}
+
+export function auditOmdControllerOutcome({ workspace, staging, authorityReceiptSha256, runDir }) {
+  const violations = [];
+  const activationPath = join(workspace, runDir, "system/activation.json");
+  const designPath = join(workspace, "DESIGN.md");
+  const proofPath = join(workspace, runDir, "system/proof.json");
+  for (const [file, label] of [[activationPath, "activation"], [designPath, "DESIGN"], [proofPath, "proof"]]) {
+    try { regular(file, `OmD ${label}`); } catch { violations.push(`${label}-missing-or-invalid`); }
+  }
+  let activation = null; let proofValue = null;
+  if (!violations.includes("activation-missing-or-invalid")) {
+    try { activation = readJson(activationPath); } catch { violations.push("activation-json-invalid"); }
+  }
+  if (!violations.includes("proof-missing-or-invalid")) {
+    try { proofValue = readJson(proofPath); } catch { violations.push("proof-json-invalid"); }
+  }
+  if (activation) {
+    let designSha = null; let proofSha = null;
+    try { designSha = sha256(readFileSync(designPath)); } catch { /* recorded above */ }
+    try { proofSha = sha256(readFileSync(proofPath)); } catch { /* recorded above */ }
+    if (activation.schema_version !== "0.1" || activation.kind !== "omd-autopilot-deterministic-system-activation"
+      || activation.status !== "adopted-and-validated" || activation.authority_controller_receipt_sha256 !== authorityReceiptSha256
+      || !designSha || !proofSha || activation.outputs?.design_md_sha256 !== designSha
+      || activation.outputs?.proof_sha256 !== proofSha) violations.push("activation-binding-invalid");
+    if (!proofValue || proofValue.pass !== true || proofValue.status !== "passed" || proofValue.design_md_sha256 !== activation.outputs?.design_md_sha256) {
+      violations.push("activation-project-proof-invalid");
+    }
+  }
+  const stagingAudit = auditOmdExternalStaging(staging);
+  if (!stagingAudit.pass) violations.push("external-staging-invalid");
+  return { applicable: true, pass: violations.length === 0, activation: activation && violations.length === 0 ? fileBinding(activationPath) : null, violations, staging: stagingAudit };
+}
+
+function auditImmutableFile(path, expectedSha256) {
+  try {
+    regular(path, `immutable receipt ${path}`);
+    const bytes = readFileSync(path); const actualSha256 = sha256(bytes);
+    return { pass: actualSha256 === expectedSha256, binding: { path: resolve(path), sha256: actualSha256, bytes: bytes.length }, reason: actualSha256 === expectedSha256 ? null : "sha256-drift" };
+  } catch (error) {
+    return { pass: false, binding: null, reason: String(error?.message ?? error) };
+  }
 }
 export function detectNativeInfrastructureBlock({ variantId, blankShell, finalMessage }) {
   return variantId === OMD_VARIANT && blankShell
@@ -788,7 +929,8 @@ export function runCell(options) {
   let isolated; let prepared; let externalStaging; let providerIsolation; let call;
   try {
     isolated = join(execution, "workspace"); prepared = copyExecutionWorkspace(cell, isolated);
-    externalStaging = prepareOmdExternalStaging({ execution, workspace: isolated, metadata: prepared.metadata });
+    const authorityRuntime = prepared.metadata.arm.variant_id === OMD_VARIANT ? materializeAuthorityRuntime(isolated, execution) : authorityRuntimeClosure(isolated);
+    externalStaging = prepareOmdExternalStaging({ execution, workspace: isolated, metadata: prepared.metadata, authorityRuntime });
     providerIsolation = prepareProviderIsolation({ execution, workspace: isolated, metadata: prepared.metadata, staticRuntime, staticRuntimeEvidence: admission.evidence.static_runtime, runtimeHome: sourceRuntimeHome, env: options.runtimeEnv ?? process.env, promptInputProbe: options.promptInputProbe });
     const cliBinding = staticRuntime.codex_cli;
     const runner = resolve(options.runnerBin ?? join(repoRoot, DEFAULT_RUNNER_PATH)); const runnerArgs = ["--workspace", isolated, "--model", MODEL, "--reasoning", EFFORT, "--timeout-ms", String(TIMEOUT_MS), "--disable-plugin-skill-search", "--expected-codex-version", cliBinding.version, "--expected-wrapper-sha", cliBinding.wrapper.sha256, "--expected-native-path", cliBinding.native.path, "--expected-native-sha", cliBinding.native.sha256, ...(externalStaging ? ["--additional-writable-root", externalStaging.root] : [])];
@@ -800,7 +942,7 @@ export function runCell(options) {
     return writeProviderBoundaryFailure({ root, cell, execution, started, manifestCell: next, reason: "pre-provider-setup-failed", error, providerSpawnStarted: false });
   }
   const startNs = process.hrtime.bigint();
-  const result = spawnSync(call.executable, call.args, { cwd: repoRoot, encoding: "utf8", timeout: TIMEOUT_MS + 30_000, maxBuffer: 64 * 1024 * 1024, env: { ...providerIsolation.env, ...(externalStaging ? { [OMD_STAGING_ENV]: externalStaging.root, [OMD_PACKAGE_ENV]: externalStaging.packageRoot, [OMD_CHECKPOINT_ENV]: externalStaging.checkpointPath } : {}), OMD_LUNA_MAX_NETWORK_POLICY: "provider-only-no-self-network", OMD_LUNA_MAX_BROWSER_POLICY: "no-provider-browser-launch" } });
+  const result = spawnSync(call.executable, call.args, { cwd: repoRoot, encoding: "utf8", timeout: TIMEOUT_MS + 30_000, maxBuffer: 64 * 1024 * 1024, env: { ...providerIsolation.env, ...(externalStaging ? { [OMD_STAGING_ENV]: externalStaging.root, [OMD_PACKAGE_ENV]: externalStaging.packageRoot, [OMD_CHECKPOINT_ENV]: externalStaging.checkpointPath, [OMD_AUTHORITY_RECEIPT_ENV]: externalStaging.authorityReceiptPath, [OMD_AUTHORITY_RECEIPT_SHA_ENV]: externalStaging.authorityReceiptSha256, [OMD_AUTHORITY_ACTIVATION_SHA_ENV]: sha256(externalStaging.disclosure), [OMD_AUTHORITY_RUN_DIR_ENV]: externalStaging.controllerRunDir, [OMD_AUTHORITY_EXECUTABLE_ENV]: externalStaging.authorityExecutable } : {}), OMD_LUNA_MAX_NETWORK_POLICY: "provider-only-no-self-network", OMD_LUNA_MAX_BROWSER_POLICY: "no-provider-browser-launch" } });
   rmSync(providerIsolation.receipt.provider_home, { recursive: true });
   invariant(!existsSync(providerIsolation.receipt.provider_home), "provider auth home cleanup failed");
   writeJsonExclusive(join(execution, "PROVIDER-RUNTIME-CLEANUP.json"), { schema_version: "0.1", kind: "omd-luna-max-provider-runtime-cleanup", provider_home_sha256: sha256(providerIsolation.receipt.provider_home), auth_and_catalog_copies_removed: true, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 });
@@ -808,13 +950,20 @@ export function runCell(options) {
   writeFileSync(join(execution, "runner.stdout"), result.stdout ?? "", { flag: "wx" }); writeFileSync(join(execution, "runner.stderr"), result.stderr ?? "", { flag: "wx" });
   const runResultPath = join(isolated, ".benchmark/run-result.json"); const eventsPath = join(isolated, ".benchmark/events.jsonl"); const events = parseEvents(eventsPath); const runResult = existsSync(runResultPath) ? readJson(runResultPath) : null; const rollout = rolloutEvidence(events, runResult, admission.evidence.static_runtime.value.runtime, { semantic_sha256: providerIsolation.receipt.model_catalog.admitted_semantic_sha256, client_version: providerIsolation.receipt.model_catalog.client_version });
   const tools = toolTelemetry(events, runResult, { workspace: isolated, providerHome: providerIsolation.receipt.provider_home, externalStagingRoot: externalStaging?.root ?? null });
-  const stagingAudit = auditOmdExternalStaging(externalStaging);
-  const stagingReceiptIntact = !externalStaging || sha256(readFileSync(externalStaging.receiptPath)) === externalStaging.receiptSha256;
+  const authorityRuntimePost = externalStaging ? authorityRuntimeClosure(externalStaging.authorityRuntimeRoot) : { pass: true, files: [], sha256: null, reason: null };
+  const authorityRuntimeIntact = !externalStaging || (authorityRuntimePost.pass && authorityRuntimePost.sha256 === externalStaging.authorityRuntimeSha256);
+  const omdControllerCommands = externalStaging ? auditOmdControllerCommands(events, externalStaging.controllerRunDir, externalStaging.authorityExecutable) : { pass: true, exact_activation_count: 0, activation_item_ids: [], forbidden: [] };
+  const omdControllerOutcome = externalStaging ? auditOmdControllerOutcome({ workspace: isolated, staging: externalStaging, authorityReceiptSha256: externalStaging.authorityReceiptSha256, runDir: externalStaging.controllerRunDir }) : { applicable: false, pass: true, violations: [] };
+  const stagingAudit = externalStaging ? omdControllerOutcome.staging : auditOmdExternalStaging(externalStaging);
+  const stagingReceiptAudit = externalStaging ? auditImmutableFile(externalStaging.receiptPath, externalStaging.receiptSha256) : { pass: true, binding: null, reason: null };
+  const authorityReceiptAudit = externalStaging ? auditImmutableFile(externalStaging.authorityReceiptPath, externalStaging.authorityReceiptSha256) : { pass: true, binding: null, reason: null };
+  const stagingReceiptIntact = stagingReceiptAudit.pass;
+  const authorityReceiptIntact = authorityReceiptAudit.pass;
   const finalMessage = existsSync(join(isolated, ".benchmark/final-message.txt")) ? readFileSync(join(isolated, ".benchmark/final-message.txt"), "utf8") : "";
   const blankShell = readFileSync(join(isolated, "index.html")).equals(readFileSync(join(cell, "index.html")));
   const nativeInfrastructureBlock = detectNativeInfrastructureBlock({ variantId: prepared.metadata.arm.variant_id, blankShell, finalMessage });
   const timedOut = result.error?.code === "ETIMEDOUT" || runResult?.process?.timed_out === true;
-  const providerSucceeded = result.status === 0 && !result.error && existsSync(runResultPath) && runResult?.process?.exit_code === 0 && !timedOut && rollout.exact && rollout.provider_usage.available && tools.agent_browser_calls === 0 && tools.agent_network_attempts === 0 && tools.external_context_interventions === 0 && stagingAudit.pass && stagingReceiptIntact && !nativeInfrastructureBlock;
+  const providerSucceeded = result.status === 0 && !result.error && existsSync(runResultPath) && runResult?.process?.exit_code === 0 && !timedOut && rollout.exact && rollout.provider_usage.available && tools.agent_browser_calls === 0 && tools.agent_network_attempts === 0 && tools.external_context_interventions === 0 && stagingAudit.pass && stagingReceiptIntact && authorityReceiptIntact && omdControllerCommands.pass && omdControllerOutcome.pass && !nativeInfrastructureBlock;
   let evaluation = null;
   if (providerSucceeded) {
     const evaluatorDir = join(execution, "evaluator"); mkdirSync(evaluatorDir, { recursive: false });
@@ -840,10 +989,11 @@ export function runCell(options) {
     stderr: { sha256: sha256(result.stderr ?? ""), bytes: Buffer.byteLength(result.stderr ?? "") }, stdout: { sha256: sha256(result.stdout ?? ""), bytes: Buffer.byteLength(result.stdout ?? "") },
   };
   const evaluatorInfrastructureFailure = providerSucceeded && evaluation?.startup_failure === true;
-  const infrastructureInvalid = !runResult || !rollout.exact || !rollout.provider_usage.available || tools.agent_browser_calls > 0 || tools.agent_network_attempts > 0 || tools.external_context_interventions > 0 || !stagingAudit.pass || !stagingReceiptIntact || nativeInfrastructureBlock || evaluatorInfrastructureFailure;
-  const status = timedOut ? "timeout" : infrastructureInvalid ? "infrastructure-invalid" : providerSucceeded && evaluation?.score && evaluation.exit_code === 0 ? "completed" : "failed";
+  const authorityIntegrityInvalid = !authorityRuntimeIntact || !stagingAudit.pass || !stagingReceiptIntact || !authorityReceiptIntact || !omdControllerCommands.pass || !omdControllerOutcome.pass;
+  const infrastructureInvalid = !runResult || !rollout.exact || !rollout.provider_usage.available || tools.agent_browser_calls > 0 || tools.agent_network_attempts > 0 || tools.external_context_interventions > 0 || authorityIntegrityInvalid || nativeInfrastructureBlock || evaluatorInfrastructureFailure;
+  const status = authorityIntegrityInvalid ? "infrastructure-invalid" : timedOut ? "timeout" : infrastructureInvalid ? "infrastructure-invalid" : providerSucceeded && evaluation?.score && evaluation.exit_code === 0 ? "completed" : "failed";
   const failurePath = join(execution, "FAILURE-ARTIFACT.json");
-  writeJsonExclusive(failurePath, { schema_version: "0.1", cell_id: next.id, status, native_infrastructure_block: nativeInfrastructureBlock, evaluator_infrastructure_failure: evaluatorInfrastructureFailure, blank_shell: blankShell, staging_receipt_intact: stagingReceiptIntact, staging_audit: stagingAudit, process: { exit_code: result.status, signal: result.signal, timed_out: timedOut, error: result.error?.message ?? null }, rollout_exact: rollout.exact, evaluator_exit_code: evaluation?.exit_code ?? null });
+  writeJsonExclusive(failurePath, { schema_version: "0.1", cell_id: next.id, status, native_infrastructure_block: nativeInfrastructureBlock, evaluator_infrastructure_failure: evaluatorInfrastructureFailure, blank_shell: blankShell, staging_receipt_intact: stagingReceiptIntact, authority_controller_receipt_intact: authorityReceiptIntact, authority_controller_commands: omdControllerCommands, authority_controller_outcome: omdControllerOutcome, staging_audit: stagingAudit, process: { exit_code: result.status, signal: result.signal, timed_out: timedOut, error: result.error?.message ?? null }, rollout_exact: rollout.exact, evaluator_exit_code: evaluation?.exit_code ?? null });
   const packageResult = proof(isolated, prepared.metadata.arm.variant_id); const packagePath = join(execution, "DESIGN-SYSTEM-PACKAGE.json");
   writeJsonExclusive(packagePath, packageResult);
   const evaluatorValue = evaluation?.score ? readJson(resolve(execution, evaluation.score.path)) : null;
@@ -865,7 +1015,7 @@ export function runCell(options) {
     manual_product_edits: interventions, follow_up_questions: interventions, unplanned_interventions: interventions, manual_edits: interventions, followups: interventions, required_states: requiredStates,
     proof: { screenshots, design_system_package: { ...fileBinding(packagePath), parsed: packageResult.parsed, pass: packageResult.parsed } }, failure_artifact: fileBinding(failurePath),
     provider_calls: rollout.exact ? 1 : "unknown", model_calls: rollout.exact ? 1 : "unknown", browser_calls: tools.agent_browser_calls + (evaluation?.browser_calls ?? 0), browser_call_split: { agent_browser_calls: tools.agent_browser_calls, evaluator_browser_calls: evaluation?.browser_calls ?? 0 }, retry_calls: 0, replacement_calls: 0, fallback_calls: 0, repair_calls: 0,
-    started_at: startedAt, finished_at: new Date().toISOString(), process: { exit_code: result.status, signal: result.signal, timed_out: timedOut, error: result.error?.message ?? null }, rollout: { exact_luna_max_one_turn: rollout.exact, raw_turn_context_count: rollout.contexts.length, cli_completion_count: rollout.completions.length, fallback_marker_count: rollout.fallbacks.length, evidence_mode: "run-result-plus-raw-cli-stream-plus-admitted-preflight" }, raw, design_system_package: packageResult, native_infrastructure_block: nativeInfrastructureBlock, blank_shell: blankShell, external_staging: externalStaging ? { receipt: fileBinding(externalStaging.receiptPath), expected_receipt_sha256: externalStaging.receiptSha256, receipt_intact: stagingReceiptIntact, audit: stagingAudit } : { applicable: false }, provider_runtime_isolation: fileBinding(join(execution, "PROVIDER-RUNTIME-ISOLATION.json")), provider_runtime_cleanup: fileBinding(join(execution, "PROVIDER-RUNTIME-CLEANUP.json")), admission_sha256: admission.admissionEvidence.sha256, rerun_allowed: false,
+    started_at: startedAt, finished_at: new Date().toISOString(), process: { exit_code: result.status, signal: result.signal, timed_out: timedOut, error: result.error?.message ?? null }, rollout: { exact_luna_max_one_turn: rollout.exact, raw_turn_context_count: rollout.contexts.length, cli_completion_count: rollout.completions.length, fallback_marker_count: rollout.fallbacks.length, evidence_mode: "run-result-plus-raw-cli-stream-plus-admitted-preflight" }, raw, design_system_package: packageResult, native_infrastructure_block: nativeInfrastructureBlock, blank_shell: blankShell, external_staging: externalStaging ? { receipt: stagingReceiptAudit.binding, expected_receipt_sha256: externalStaging.receiptSha256, receipt_intact: stagingReceiptIntact, receipt_readback_error: stagingReceiptAudit.reason, audit: stagingAudit } : { applicable: false }, authority_controller: externalStaging ? { receipt: authorityReceiptAudit.binding, expected_receipt_sha256: externalStaging.authorityReceiptSha256, receipt_intact: authorityReceiptIntact, receipt_readback_error: authorityReceiptAudit.reason, runtime_closure: { expected_sha256: externalStaging.authorityRuntimeSha256, observed_sha256: authorityRuntimePost.sha256, intact: authorityRuntimeIntact, reason: authorityRuntimePost.reason }, commands: omdControllerCommands, outcome: omdControllerOutcome } : { applicable: false }, provider_runtime_isolation: fileBinding(join(execution, "PROVIDER-RUNTIME-ISOLATION.json")), provider_runtime_cleanup: fileBinding(join(execution, "PROVIDER-RUNTIME-CLEANUP.json")), admission_sha256: admission.admissionEvidence.sha256, rerun_allowed: false,
   };
   terminal.record_sha256 = sha256(canonical(terminal));
   const terminalName = status === "completed" ? "COMPLETED.json" : status === "timeout" ? "TIMEOUT.json" : status === "infrastructure-invalid" ? "INFRASTRUCTURE-INVALID.json" : "FAILED.json";

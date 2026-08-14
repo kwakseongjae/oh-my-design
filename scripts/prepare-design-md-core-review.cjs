@@ -550,6 +550,10 @@ function run(argv = process.argv.slice(2)) {
       return 0;
     }
     if (options.approve) {
+      if (process.env.OMD_AUTHORITY_CONTROLLER_RECEIPT
+        && process.env.OMD_AUTHORITY_CONTROLLER_INTERNAL_SHA256 !== process.env.OMD_AUTHORITY_CONTROLLER_RECEIPT_SHA256) {
+        throw new Error('controller-bound approval must be issued by activate-autopilot-design-system.cjs; main-agent self-attestation is forbidden');
+      }
       if (options.input || options.provenance || options.coverage || options.migrationReport || options.outDir) {
         throw new Error('approval mode cannot be combined with preparation inputs');
       }

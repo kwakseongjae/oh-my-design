@@ -19,6 +19,7 @@ const helpers = [
   'design-md-core-conformance.cjs',
   'design-md-core.cjs',
   'prepare-design-md-core-review.cjs',
+  'activate-autopilot-design-system.cjs',
   'rebind-design-md-core-migration.cjs',
   'compile-design-md-core.cjs',
   'adopt-design-md-core.cjs',

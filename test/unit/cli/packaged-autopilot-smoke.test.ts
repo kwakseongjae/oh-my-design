@@ -55,6 +55,7 @@ describe('published-package Autopilot acceptance', () => {
       'scripts/design-md-core-conformance.cjs',
       'scripts/design-md-core.cjs',
       'scripts/prepare-design-md-core-review.cjs',
+      'scripts/activate-autopilot-design-system.cjs',
       'scripts/rebind-design-md-core-migration.cjs',
       'scripts/compile-design-md-core.cjs',
       'scripts/adopt-design-md-core.cjs',
@@ -149,6 +150,7 @@ describe('published-package Autopilot acceptance', () => {
       'design-md-core-conformance.cjs',
       'design-md-core.cjs',
       'prepare-design-md-core-review.cjs',
+      'activate-autopilot-design-system.cjs',
       'rebind-design-md-core-migration.cjs',
       'compile-design-md-core.cjs',
       'adopt-design-md-core.cjs',
@@ -164,9 +166,11 @@ describe('published-package Autopilot acceptance', () => {
     ] as const;
     for (const dataRoot of ['.claude/data', '.codex/data', '.opencode/data']) {
       for (const helper of coreHelpers) {
-        expect(readFileSync(join(installDir, dataRoot, 'scripts', helper))).toEqual(
+        const installedHelper = join(installDir, dataRoot, 'scripts', helper);
+        expect(readFileSync(installedHelper)).toEqual(
           readFileSync(join(packageRoot, 'scripts', helper)),
         );
+        expect(spawnSync(process.execPath, ['--check', installedHelper], { encoding: 'utf8' }).status).toBe(0);
       }
       for (const schema of coreSchemas) {
         expect(readFileSync(join(installDir, dataRoot, 'scripts/schema', schema))).toEqual(
@@ -174,6 +178,11 @@ describe('published-package Autopilot acceptance', () => {
         );
       }
     }
+    const failClosedActivation = spawnSync(process.execPath, [
+      join(installDir, '.codex/data/scripts/activate-autopilot-design-system.cjs'),
+    ], { encoding: 'utf8' });
+    expect(failClosedActivation.status).toBe(1);
+    expect(failClosedActivation.stderr).toContain('usage:');
 
     const compileInput = join(root, 'fresh-compile-input.json');
     const compileGraph = JSON.parse(readFileSync(

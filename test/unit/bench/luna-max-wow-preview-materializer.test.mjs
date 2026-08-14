@@ -81,6 +81,7 @@ describe("Luna Max Wow Preview execution materializer", () => {
     expect(omdRuntimePaths).toEqual(expect.arrayContaining([
       "skills/omd-autopilot",
       "scripts/design-md-core-conformance.cjs",
+      "scripts/activate-autopilot-design-system.cjs",
       "scripts/migrate-design-md-core.cjs",
       "scripts/rebind-design-md-core-migration.cjs",
       "spec/schema",

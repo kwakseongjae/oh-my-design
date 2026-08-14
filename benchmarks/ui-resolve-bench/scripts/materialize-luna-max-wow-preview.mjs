@@ -53,6 +53,7 @@ const OMD_RUNTIME_PATHS = Object.freeze([
   "scripts/autopilot-council-plan.cjs",
   "scripts/autopilot-council-reconcile.cjs",
   "scripts/autopilot-mission.cjs",
+  "scripts/activate-autopilot-design-system.cjs",
   "scripts/compile-design-md-core.cjs",
   "scripts/context.cjs",
   "scripts/ctx-prime.cjs",

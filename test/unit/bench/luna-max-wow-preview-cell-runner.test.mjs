@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
-  ADMISSION_GENERATOR_PATH, DEFAULT_EVALUATOR_PATH, PREREG_CONTROLLER_PATH, PROMPT_INPUT_AUDIT_TIMEOUT_MS, RUNNER_PATH, auditOmdExternalStaging, collectRecords, detectNativeInfrastructureBlock, prepareOmdExternalStaging, prepareRuntimeSnapshot, reconcileCrashes, runCell, sha256, toolTelemetry, tree,
+  ADMISSION_GENERATOR_PATH, DEFAULT_EVALUATOR_PATH, PREREG_CONTROLLER_PATH, PROMPT_INPUT_AUDIT_TIMEOUT_MS, RUNNER_PATH, auditOmdControllerCommands, auditOmdControllerOutcome, auditOmdExternalStaging, collectRecords, detectNativeInfrastructureBlock, prepareOmdExternalStaging, prepareRuntimeSnapshot, reconcileCrashes, runCell, sha256, toolTelemetry, tree,
 } from "../../../benchmarks/ui-resolve-bench/scripts/run-luna-max-wow-preview-cell.mjs";
 import { auditWowPreview, defaultGatePath } from "../../../benchmarks/ui-resolve-bench/scripts/audit-luna-max-wow-preview.mjs";
 import { OMD_EXTERNAL_STAGING_ACTIVATION } from "../../../benchmarks/ui-resolve-bench/scripts/prepare-luna-max-wow-preview.mjs";
@@ -22,7 +22,7 @@ function promptInputJson(block, extraMessages = []) {
   ]);
 }
 
-function fixture({ runnerMode = "success", designSystem = true, variant = "model-only", agentBrowserCall = false, externalContextCall = false, networkAttempt = false } = {}) {
+function fixture({ runnerMode = "success", designSystem = true, variant = "model-only", agentBrowserCall = false, externalContextCall = false, networkAttempt = false, forbiddenAuthorityCommand = false, deleteAuthorityReceipt = false, tamperAuthorityRuntime = false } = {}) {
   const base = mkdtempSync(join(tmpdir(), "omd-luna-cell-runner-")); const repo = join(base, "repo"); const materialized = join(base, "materialized");
   const cliVersion = "fixture-1"; const profile = { slug: "gpt-5.6-luna", tool_mode: "function", default_reasoning_level: "max", supported_reasoning_levels: [{ effort: "max" }] };
   const runtimeHome = join(base, "runtime-home"); mkdirSync(runtimeHome); writeFileSync(join(runtimeHome, "auth.json"), "fixture-auth"); writeFileSync(join(runtimeHome, "models_cache.json"), JSON.stringify({ fetched_at: "2026-08-13T00:00:00Z", client_version: cliVersion, models: [profile] }));
@@ -37,6 +37,10 @@ function fixture({ runnerMode = "success", designSystem = true, variant = "model
   for (let index = 0; index < 48; index += 1) {
     const id = `cell-${String(index + 1).padStart(2, "0")}`; const cell = join(materialized, "prepared-cells", id); mkdirSync(join(cell, ".benchmark"), { recursive: true });
     if (variant !== "model-only") { mkdirSync(join(cell, ".agents/skills/frontend-design"), { recursive: true }); writeFileSync(join(cell, ".agents/skills/frontend-design/SKILL.md"), "---\nname: frontend-design\n---\n# frozen frontend design\n"); }
+    if (variant === "omd-autopilot-v2" && index === 0) {
+      for (const name of ["activate-autopilot-design-system.cjs", "prepare-design-md-core-review.cjs", "compile-design-md-core.cjs", "adopt-design-md-core.cjs", "validate-project-design-system.cjs", "design-md-core-schema.cjs", "design-md-core-conformance.cjs", "design-md-core.cjs"]) { const target = join(cell, "scripts", name); mkdirSync(dirname(target), { recursive: true }); cpSync(resolve("scripts", name), target); }
+      cpSync(resolve("spec/schema"), join(cell, "spec/schema"), { recursive: true });
+    }
     writeFileSync(join(cell, "index.html"), `<main>${id}</main>\n`); writeFileSync(join(cell, ".benchmark/invocation-prompt.txt"), `Build ${id}${variant === "omd-autopilot-v2" ? `\n\n${OMD_EXTERNAL_STAGING_ACTIVATION}` : ""}`);
     json(join(cell, ".benchmark/cell.json"), { cell_id: id, task: { id: "neighborhood-library-landing" }, arm: { variant_id: variant }, runtime: { model: "gpt-5.6-luna", effort: "max", retry_budget: 0, replacement_budget: 0, fallback_budget: 0 }, evaluation: { eligible_for_execution_and_scoring: true } });
     json(join(cell, ".benchmark/manifest.json"), { source_commit: sourceCommit }); cells.push({ id, trial_index: (index % 3) + 1, workspace_tree: summary(cell) });
@@ -55,7 +59,7 @@ function fixture({ runnerMode = "success", designSystem = true, variant = "model
     controller_launched_browser: false, tab_created_for_identity: true, navigation_calls: 0, provider_calls: 0, model_calls: 0, browser_calls: 1, network_calls: 0 });
   const runner = join(base, "fake-runner.mjs");
   const nativeSha = "e".repeat(64);
-  writeFileSync(runner, `import{createHash}from'node:crypto';import{readFileSync,writeFileSync}from'node:fs';import{join}from'node:path';const canon=v=>Array.isArray(v)?'['+v.map(canon).join(',')+']':v&&typeof v==='object'?'{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+canon(v[k])).join(',')+'}':JSON.stringify(v),hash=v=>createHash('sha256').update(v).digest('hex'),cacheBytes=readFileSync(join(process.env.CODEX_HOME,'models_cache.json')),cache=JSON.parse(cacheBytes),{fetched_at,...semantic}=cache,profile=cache.models.find(x=>x.slug==='gpt-5.6-luna'),cacheEvidence={cache_sha256:hash(cacheBytes),cache_semantic_sha256:hash(canon(semantic)),model_profile_sha256:hash(canon(profile)),cache_fetched_at:fetched_at,cache_client_version:cache.client_version};const a=process.argv.slice(2),w=a[a.indexOf('--workspace')+1],events=[{type:'response.completed',model:'gpt-5.6-luna'}];${agentBrowserCall ? "events.push({type:'item.completed',item:{id:'browser-1',type:'command_execution',command:'browser-harness --doctor'}});" : ""}${externalContextCall ? "events.push({type:'item.completed',item:{id:'external-1',type:'command_execution',command:'cat /Users/example/.codex/skills/secret/SKILL.md > /tmp/context.txt'}});" : ""}${networkAttempt ? "events.push({type:'item.completed',item:{id:'network-1',type:'command_execution',command:'/usr/bin/curl https://example.invalid'}});events.push({type:'item.completed',item:{id:'network-2',type:'web_search',query:'external'}});" : ""}writeFileSync(join(w,'.benchmark/argv.json'),JSON.stringify(a));writeFileSync(join(w,'.benchmark/runtime-env.json'),JSON.stringify({HOME:process.env.HOME,CODEX_HOME:process.env.CODEX_HOME,ZDOTDIR:process.env.ZDOTDIR,PATH:process.env.PATH,OMD_BENCH_CODEX_BIN:process.env.OMD_BENCH_CODEX_BIN,OMD_BENCH_EXTERNAL_STAGING_ROOT:process.env.OMD_BENCH_EXTERNAL_STAGING_ROOT,OMD_BENCH_COMPILED_CORE_PACKAGE:process.env.OMD_BENCH_COMPILED_CORE_PACKAGE,OMD_BENCH_CORE_CHECKPOINT:process.env.OMD_BENCH_CORE_CHECKPOINT}));writeFileSync(join(w,'.benchmark/events.jsonl'),events.map(JSON.stringify).join('\\n')+'\\n');${runnerMode === "native-block" ? "writeFileSync(join(w,'.benchmark/final-message.txt'),'Blocked before product build: the receipt-gated design-system adopter rejects packages nested inside the project, while your workspace-only rule forbids staging outside it.');" : `writeFileSync(join(w,'index.html'),${JSON.stringify(designSystem ? "<style>:root{--color:#123;--space:8px;--radius:6px}.card{}.action{}.notice{}</style><main class=card>done</main>" : "<main>done</main>")});`}writeFileSync(join(w,'.benchmark/run-result.json'),JSON.stringify({runtime:{agent_version:${JSON.stringify(cliVersion)},binary_sha256:hash(readFileSync(process.argv[1])),native_binary_sha256:${JSON.stringify(nativeSha)},model_requested:'gpt-5.6-luna',model:'gpt-5.6-luna',reasoning:'max',effort_requested:'max',model_reported:'gpt-5.6-luna',model_tool_mode_evidence:{...cacheEvidence,auth_source_before_run:cacheEvidence}},output:{model_usage:[{input_tokens:10,output_tokens:20}]},process:{exit_code:${runnerMode === "failed" ? 7 : 0},timed_out:${runnerMode === "timeout"}}}));${runnerMode === "failed" ? "process.exitCode=7" : ""}`);
+  writeFileSync(runner, `import{createHash}from'node:crypto';import{appendFileSync,chmodSync,readFileSync,writeFileSync,unlinkSync}from'node:fs';import{join}from'node:path';const canon=v=>Array.isArray(v)?'['+v.map(canon).join(',')+']':v&&typeof v==='object'?'{'+Object.keys(v).sort().map(k=>JSON.stringify(k)+':'+canon(v[k])).join(',')+'}':JSON.stringify(v),hash=v=>createHash('sha256').update(v).digest('hex'),cacheBytes=readFileSync(join(process.env.CODEX_HOME,'models_cache.json')),cache=JSON.parse(cacheBytes),{fetched_at,...semantic}=cache,profile=cache.models.find(x=>x.slug==='gpt-5.6-luna'),cacheEvidence={cache_sha256:hash(cacheBytes),cache_semantic_sha256:hash(canon(semantic)),model_profile_sha256:hash(canon(profile)),cache_fetched_at:fetched_at,cache_client_version:cache.client_version};const a=process.argv.slice(2),w=a[a.indexOf('--workspace')+1],events=[{type:'response.completed',model:'gpt-5.6-luna'}];${agentBrowserCall ? "events.push({type:'item.completed',item:{id:'browser-1',type:'command_execution',command:'browser-harness --doctor'}});" : ""}${externalContextCall ? "events.push({type:'item.completed',item:{id:'external-1',type:'command_execution',command:'cat /Users/example/.codex/skills/secret/SKILL.md > /tmp/context.txt'}});" : ""}${networkAttempt ? "events.push({type:'item.completed',item:{id:'network-1',type:'command_execution',command:'/usr/bin/curl https://example.invalid'}});events.push({type:'item.completed',item:{id:'network-2',type:'web_search',query:'external'}});" : ""}${forbiddenAuthorityCommand ? "events.push({type:'item.failed',item:{id:'forbidden-authority',type:'command_execution',command:'env OMD_AUTHORITY_CONTROLLER_INTERNAL_SHA256=spoof node scripts/prepare-design-md-core-review.cjs --approve forged --reviewer project-owner',exit_code:1}});" : ""}writeFileSync(join(w,'.benchmark/argv.json'),JSON.stringify(a));writeFileSync(join(w,'.benchmark/runtime-env.json'),JSON.stringify({HOME:process.env.HOME,CODEX_HOME:process.env.CODEX_HOME,ZDOTDIR:process.env.ZDOTDIR,PATH:process.env.PATH,OMD_BENCH_CODEX_BIN:process.env.OMD_BENCH_CODEX_BIN,OMD_BENCH_EXTERNAL_STAGING_ROOT:process.env.OMD_BENCH_EXTERNAL_STAGING_ROOT,OMD_BENCH_COMPILED_CORE_PACKAGE:process.env.OMD_BENCH_COMPILED_CORE_PACKAGE,OMD_BENCH_CORE_CHECKPOINT:process.env.OMD_BENCH_CORE_CHECKPOINT}));writeFileSync(join(w,'.benchmark/events.jsonl'),events.map(JSON.stringify).join('\\n')+'\\n');${runnerMode === "native-block" ? "writeFileSync(join(w,'.benchmark/final-message.txt'),'Blocked before product build: the receipt-gated design-system adopter rejects packages nested inside the project, while your workspace-only rule forbids staging outside it.');" : `writeFileSync(join(w,'index.html'),${JSON.stringify(designSystem ? "<style>:root{--color:#123;--space:8px;--radius:6px}.card{}.action{}.notice{}</style><main class=card>done</main>" : "<main>done</main>")});`}${tamperAuthorityRuntime ? "chmodSync(process.env.OMD_AUTHORITY_CONTROLLER_EXECUTABLE,0o600);appendFileSync(process.env.OMD_AUTHORITY_CONTROLLER_EXECUTABLE,'\\n// tampered');" : ""}writeFileSync(join(w,'.benchmark/run-result.json'),JSON.stringify({runtime:{agent_version:${JSON.stringify(cliVersion)},binary_sha256:hash(readFileSync(process.argv[1])),native_binary_sha256:${JSON.stringify(nativeSha)},model_requested:'gpt-5.6-luna',model:'gpt-5.6-luna',reasoning:'max',effort_requested:'max',model_reported:'gpt-5.6-luna',model_tool_mode_evidence:{...cacheEvidence,auth_source_before_run:cacheEvidence}},output:{model_usage:[{input_tokens:10,output_tokens:20}]},process:{exit_code:${runnerMode === "failed" ? 7 : 0},timed_out:${runnerMode === "timeout"}}}));${deleteAuthorityReceipt ? "unlinkSync(process.env.OMD_AUTHORITY_CONTROLLER_RECEIPT);" : ""}${runnerMode === "failed" ? "process.exitCode=7" : ""}`);
   chmodSync(runner, 0o755);
   const actualRunnerSha = sha256(readFileSync(runner));
   const canonicalRunner = realpathSync(runner);
@@ -165,6 +169,9 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     expect(env.OMD_BENCH_COMPILED_CORE_PACKAGE).toBe(join(env.OMD_BENCH_EXTERNAL_STAGING_ROOT, "compiled-core")); expect(env.OMD_BENCH_CORE_CHECKPOINT).toBe(join(env.OMD_BENCH_EXTERNAL_STAGING_ROOT, "project-adoption-checkpoint.json"));
     expect(readFileSync(join(workspace, ".benchmark/PROMPT.md"), "utf8")).toContain(OMD_EXTERNAL_STAGING_ACTIVATION); expect(readFileSync(join(workspace, ".benchmark/PROMPT.md"), "utf8")).not.toContain(env.OMD_BENCH_EXTERNAL_STAGING_ROOT);
     expect(JSON.parse(readFileSync(result.external_staging.receipt.path))).toMatchObject({ variant_id: "omd-autopilot-v2", staging_root: env.OMD_BENCH_EXTERNAL_STAGING_ROOT, provider_calls: 0 });
+    const authority = JSON.parse(readFileSync(join(realpathSync(join(omd.materialized, "prepared-cells/cell-01/.benchmark/execution")), "OMD-AUTHORITY-CONTROLLER.json")));
+    expect(authority).toMatchObject({ kind: "omd-autopilot-external-authority-controller-activation", status: "active", authority: { role: "project-owner", identifier: "omd-luna-max-preregistered-authority-controller" }, scope: { single_deterministic_activation: true, review_approval: true, project_adoption_checkpoint: true }, provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0 });
+    expect(authority.activation.sha256).toBe(sha256(OMD_EXTERNAL_STAGING_ACTIVATION));
     expect(JSON.parse(readFileSync(join(workspace, ".benchmark/argv.json")))).toEqual(expect.arrayContaining(["--additional-writable-root", env.OMD_BENCH_EXTERNAL_STAGING_ROOT]));
 
     const competitor = fixture({ variant: "anthropic-frontend-design" }); execute(competitor);
@@ -241,6 +248,73 @@ describe("Luna Max Wow Preview one-cell runner", () => {
     expect(observedHome).toBe(resolve(f.runtimeHome));
   });
 
+  it("requires exactly one controller activation and rejects direct or alternate authority commands", () => {
+    const ok = [{ type: "item.completed", item: { id: "a", type: "command_execution", command: "node scripts/activate-autopilot-design-system.cjs . .omd/runs/neighborhood-library" } }];
+    expect(auditOmdControllerCommands(ok, ".omd/runs/neighborhood-library")).toMatchObject({ pass: true, exact_activation_count: 1, forbidden: [] });
+    const external = "/execution/authority-controller-runtime/scripts/activate-autopilot-design-system.cjs";
+    expect(auditOmdControllerCommands([{ type: "item.completed", item: { id: "env", type: "command_execution", command: "node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE . $OMD_AUTHORITY_CONTROLLER_RUN_DIR" } }], ".omd/runs/neighborhood-library", external)).toMatchObject({ pass: true, exact_activation_count: 1 });
+    expect(auditOmdControllerCommands([{ type: "item.completed", item: { id: "expanded", type: "command_execution", command: `node ${external} . .omd/runs/neighborhood-library`, exit_code: 0, status: "completed", aggregated_output: '{"status":"adopted-and-validated"}' } }], ".omd/runs/neighborhood-library", external)).toMatchObject({ pass: true, exact_activation_count: 1 });
+    expect(auditOmdControllerCommands([{ type: "item.completed", item: { id: "mixed-a", type: "command_execution", command: "node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE . .omd/runs/neighborhood-library" } }], ".omd/runs/neighborhood-library", external).pass).toBe(false);
+    expect(auditOmdControllerCommands([{ type: "item.completed", item: { id: "mixed-b", type: "command_execution", command: `node ${external} . $OMD_AUTHORITY_CONTROLLER_RUN_DIR` } }], ".omd/runs/neighborhood-library", external).pass).toBe(false);
+    expect(auditOmdControllerCommands([{ type: "item.completed", item: { id: "spoof", type: "command_execution", command: `OMD_AUTHORITY_CONTROLLER_EXECUTABLE=./scripts/activate-autopilot-design-system.cjs node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE . .omd/runs/neighborhood-library` } }], ".omd/runs/neighborhood-library", external).pass).toBe(false);
+    for (const command of [
+      "OMD_AUTHORITY_CONTROLLER_INTERNAL_SHA256=abc node scripts/prepare-design-md-core-review.cjs --approve x --reviewer owner --authority-transition-approved",
+      "node scripts/adopt-design-md-core.cjs pkg --prepare-checkpoint x --reviewer owner --authority-transition-approved",
+      "node scripts/activate-autopilot-design-system.cjs . .omd/runs/alternate",
+      "node scripts/activate-autopilot-design-system.cjs . .omd/runs/neighborhood-library && node scripts/activate-autopilot-design-system.cjs . .omd/runs/neighborhood-library",
+      "node scripts/compile-design-md-core.cjs graph --out-dir package-v2",
+    ]) expect(auditOmdControllerCommands([{ type: "item.completed", item: { id: "bad", type: "command_execution", command } }], ".omd/runs/neighborhood-library").pass).toBe(false);
+    expect(auditOmdControllerCommands([{ type: "item.started", item: { id: "started", type: "command_execution", command: "node scripts/prepare-design-md-core-review.cjs --approve forged" } }], ".omd/runs/neighborhood-library").pass).toBe(false);
+    expect(auditOmdControllerCommands([{ type: "item.failed", item: { id: "failed", type: "command_execution", command: "node scripts/adopt-design-md-core.cjs pkg --prepare-checkpoint forged" } }], ".omd/runs/neighborhood-library").pass).toBe(false);
+    const literal = "node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE . $OMD_AUTHORITY_CONTROLLER_RUN_DIR";
+    for (const command of [
+      `NODE_OPTIONS=--require=./evil ${literal}`,
+      `NODE_PATH=./evil ${literal}`,
+      `PATH=./evil ${literal}`,
+      `${literal} || node forge-outputs.cjs`,
+      `${literal}; node forge-outputs.cjs`,
+      `${literal} > activation.json`,
+      `node $(printf %s "$OMD_AUTHORITY_CONTROLLER_EXECUTABLE") . $OMD_AUTHORITY_CONTROLLER_RUN_DIR`,
+    ]) expect(auditOmdControllerCommands([{ type: "item.completed", item: { id: "shell-injection", type: "command_execution", command, exit_code: 0 } }], ".omd/runs/neighborhood-library", external).pass).toBe(false);
+    expect(auditOmdControllerCommands([{ type: "item.started", item: { id: "started-only", type: "command_execution", command: literal } }], ".omd/runs/neighborhood-library", external).pass).toBe(false);
+    expect(auditOmdControllerCommands([{ type: "item.failed", item: { id: "failed-activation", type: "command_execution", command: literal, exit_code: 1 } }], ".omd/runs/neighborhood-library", external).pass).toBe(false);
+    expect(auditOmdControllerCommands([{ type: "item.completed", item: { id: "nonzero", type: "command_execution", command: literal, exit_code: 7 } }], ".omd/runs/neighborhood-library", external).pass).toBe(false);
+    expect(auditOmdControllerCommands([{ type: "item.completed", item: { id: "bad-output", type: "command_execution", command: literal, exit_code: 0, aggregated_output: "manual fallback" } }], ".omd/runs/neighborhood-library", external).pass).toBe(false);
+    expect(auditOmdControllerCommands([
+      { type: "item.started", item: { id: "lifecycle", type: "command_execution", command: literal } },
+      { type: "item.completed", item: { id: "lifecycle", type: "command_execution", command: literal, exit_code: 0, aggregated_output: '{"status":"adopted-and-validated"}' } },
+    ], ".omd/runs/neighborhood-library", external)).toMatchObject({ pass: true, exact_activation_count: 1 });
+  });
+
+  it("rejects missing, forged, or tampered activation and extra staging files", () => {
+    const base = mkdtempSync(join(tmpdir(), "omd-controller-outcome-")); const execution = join(base, "execution"); const workspace = join(execution, "workspace");
+    mkdirSync(join(workspace, ".benchmark"), { recursive: true }); writeFileSync(join(workspace, ".benchmark/PROMPT.md"), OMD_EXTERNAL_STAGING_ACTIVATION); writeFileSync(join(workspace, ".benchmark/invocation-prompt.txt"), OMD_EXTERNAL_STAGING_ACTIVATION);
+    const staging = prepareOmdExternalStaging({ execution, workspace, metadata: { cell_id: "cell", task: { id: "neighborhood-library-landing" }, arm: { variant_id: "omd-autopilot-v2" } } });
+    let audit = auditOmdControllerOutcome({ workspace, staging, authorityReceiptSha256: staging.authorityReceiptSha256, runDir: staging.controllerRunDir });
+    expect(audit.pass).toBe(false); expect(audit.violations).toContain("activation-missing-or-invalid");
+    mkdirSync(join(workspace, staging.controllerRunDir, "system"), { recursive: true }); writeFileSync(join(workspace, "DESIGN.md"), "design\n"); writeFileSync(join(workspace, staging.controllerRunDir, "system/proof.json"), JSON.stringify({ pass: true, status: "passed", design_md_sha256: sha256("design\n") }));
+    writeFileSync(join(workspace, staging.controllerRunDir, "system/activation.json"), JSON.stringify({ schema_version: "0.1", kind: "omd-autopilot-deterministic-system-activation", status: "adopted-and-validated", authority_controller_receipt_sha256: "f".repeat(64), outputs: { design_md_sha256: sha256("design\n"), proof_sha256: sha256(readFileSync(join(workspace, staging.controllerRunDir, "system/proof.json"))) } }));
+    audit = auditOmdControllerOutcome({ workspace, staging, authorityReceiptSha256: staging.authorityReceiptSha256, runDir: staging.controllerRunDir }); expect(audit.violations).toContain("activation-binding-invalid");
+    writeFileSync(join(workspace, staging.controllerRunDir, "system/proof.json"), "{malformed");
+    audit = auditOmdControllerOutcome({ workspace, staging, authorityReceiptSha256: staging.authorityReceiptSha256, runDir: staging.controllerRunDir }); expect(audit.violations).toEqual(expect.arrayContaining(["proof-json-invalid", "activation-project-proof-invalid"]));
+    writeFileSync(join(workspace, "DESIGN.md"), "tampered\n");
+    audit = auditOmdControllerOutcome({ workspace, staging, authorityReceiptSha256: staging.authorityReceiptSha256, runDir: staging.controllerRunDir }); expect(audit.violations).toContain("activation-binding-invalid");
+    mkdirSync(staging.packageRoot, { recursive: true }); writeFileSync(join(staging.root, "extra-package-v2"), "forbidden");
+    expect(auditOmdExternalStaging(staging)).toMatchObject({ pass: false });
+  });
+
+  it("records deleted controller receipts and forbidden authority attempts as infrastructure-invalid even after timeout", () => {
+    const deleted = execute(fixture({ variant: "omd-autopilot-v2", deleteAuthorityReceipt: true }));
+    expect(deleted).toMatchObject({ status: "infrastructure-invalid", authority_controller: { receipt: null, receipt_intact: false } });
+    const contaminatedTimeout = execute(fixture({ variant: "omd-autopilot-v2", runnerMode: "timeout", forbiddenAuthorityCommand: true }));
+    expect(contaminatedTimeout).toMatchObject({ status: "infrastructure-invalid", process: { timed_out: true }, authority_controller: { commands: { pass: false } } });
+  });
+
+  it("rejects execution-owned controller runtime tampering and never starts the evaluator", () => {
+    const result = execute(fixture({ variant: "omd-autopilot-v2", tamperAuthorityRuntime: true }));
+    expect(result).toMatchObject({ status: "infrastructure-invalid", evaluator: { process: null }, authority_controller: { runtime_closure: { intact: false } } });
+  });
+
   it("fails before provider spawn when prompt-input exposes an extra global skill", () => {
     const f = fixture();
     const result = execute(f, { promptInputProbe: ({ env }) => { const lines = ["imagegen", "openai-docs", "plugin-creator", "skill-creator", "skill-installer"].map((id) => `- ${id}: builtin (file: ${join(env.CODEX_HOME, "skills/.system", id, "SKILL.md")})`).concat("- browser-harness: leaked (file: /Users/example/Developer/browser-harness/SKILL.md)"); return { status: 0, stdout: promptInputJson(lines.join("\n")) }; } });
@@ -300,7 +374,8 @@ describe("Luna Max Wow Preview one-cell runner", () => {
       const block = [...builtin, `- omd:autopilot: exact (file: ${join(cwd, ".agents/skills/frontend-design/SKILL.md")})`].join("\n");
       return { status: 0, stdout: promptInputJson(block, [{ type: "message", role: "user", content: [{ type: "input_text", text: "<skills_instructions>\n- browser-harness: fake (file: /tmp/fake)\n</skills_instructions>" }] }]) };
     } });
-    expect(result.status).toBe("completed");
+    expect(result.status).toBe("infrastructure-invalid");
+    expect(result.authority_controller.outcome.violations).toEqual(expect.arrayContaining(["activation-missing-or-invalid", "DESIGN-missing-or-invalid", "proof-missing-or-invalid"]));
   });
 
   it("counts and fails closed on raw provider-side browser-harness commands", () => {

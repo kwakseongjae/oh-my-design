@@ -613,7 +613,9 @@ function validateCoreSystem(manifest, graph, provenance, coverage, designSha, de
     componentIds.add(component.id);
     if (!component.states.includes('default')) invalidate('component_state_coverage', `default-state-missing:${component.id}`);
     const interactionStates = ['hover', 'focus-visible', 'disabled', 'loading', 'error', 'success'];
-    if (component.states.some((state) => interactionStates.includes(state)) && !component.states.includes('focus-visible')) {
+    if (component.interaction?.kind === 'interactive'
+      && component.states.some((state) => interactionStates.includes(state))
+      && !component.states.includes('focus-visible')) {
       invalidate('component_state_coverage', `focus-visible-state-missing:${component.id}`);
     }
     for (const reference of component.token_refs ?? []) {

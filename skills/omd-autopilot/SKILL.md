@@ -22,6 +22,8 @@ folders and must never edit `DESIGN.md` or product files.
 
 1. `DETECT` — inspect the repository, real consumer route, stack, existing
    `DESIGN.md`, preferences, components, states, assets and protected behavior.
+   When `OMD_AUTHORITY_CONTROLLER_RUN_DIR` is present, use that exact relative
+   path as the one run directory; do not derive or substitute a slug.
    Create the run-scoped `task.md` while retaining the exact user-prompt bytes
    verbatim (extra clearly labelled code observations may follow, but may never
    be presented as user authority), then run
@@ -59,6 +61,30 @@ folders and must never edit `DESIGN.md` or product files.
    drafts. New generation, synthesis, refresh, and refactor are single-write
    Core v2: never emit legacy frontmatter or 13/15/16-section layouts. After the
    `design-system-decision.json` receipt grants `establish`/`refresh` authority,
+   inspect the environment before preparing a review. When
+   `OMD_AUTHORITY_CONTROLLER_RECEIPT` is present, the main agent is explicitly
+   not the project owner: it must not run either approval helper, pass a
+   `--reviewer`, assert `--authority-transition-approved`, calculate a hash, or
+   choose a second output name. Author the three drafts once, with every
+   interactive component declaring all seven state-applicability entries and
+   every non-interactive component declaring only a reason (non-interactive
+   error/success display variants do not require a focus-visible state). Then
+   invoke exactly once:
+
+   ```bash
+   node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE . $OMD_AUTHORITY_CONTROLLER_RUN_DIR
+   ```
+
+   That provider-free helper binds the preregistered external controller,
+   compiles from the prepared review's normalized inputs, creates the exact
+   checkpoint, adopts atomically, and runs project validation. If it fails,
+   preserve the single failure and stop system work—never create `review-v2`,
+   `package-v2`, or a replacement mission. This path exists to protect the
+   product-build budget; after success, move directly to the acceptance plan
+   and real route, giving the explicit unavailable-information state the same
+   implementation priority as default/focus-visible.
+
+   Without that receipt, follow the ordinary human-owner flow below.
    validate the authority-neutral graph draft—without `projection` or
    `projection.sha256`—and prepare the exact non-authoritative review preview:
 

@@ -52,6 +52,26 @@ The authority-neutral graph draft has no `projection` binding or
 `projection.sha256`; the compiler creates it. If the installed compiler validates
 only the final bound-graph schema or asks the agent to seed a placeholder, precomputed, or zero SHA,
 fail closed at the draft—never satisfy that request.
+
+In an externally controlled benchmark, the controller receipt and activation
+hash are authority. The main agent never impersonates a project owner. It must
+write one set of drafts and call the execution-owned `$OMD_AUTHORITY_CONTROLLER_EXECUTABLE` once;
+the helper consumes the prepared review's normalized `input-graph.json`,
+`provenance.json`, and `coverage.json` throughout the compile path. Direct
+approval/checkpoint flags and `review-v2`/`package-v2` retries are forbidden.
+For component-state compatibility, interactive components carry the complete
+seven-state applicability map; non-interactive components carry a reason and
+may render default/error/success variants without acquiring a fictional focus
+contract.
+
+The two authority-neutral sidecars omit both `design_md_sha256` and
+`graph_sha256`; do not write zeroes or calculate them. Provenance contains only
+`schema_version: "2.0.0"` plus a non-empty `decisions` array whose paths and
+values exactly match the graph. Coverage contains only `schema_version`, all
+seven Core `groups`, and all eleven required `checks`; every group cites an
+existing regular project/run artifact such as `.benchmark/PROMPT.md`, and every
+check uses `method: "controller-computed-system-graph-v2"`. The controller
+creates every final binding from the reviewed inputs.
 After an explicit `establish` or `refresh` authorization, validate those drafts
 and render a non-authoritative, exact review package outside the project authority
 paths:

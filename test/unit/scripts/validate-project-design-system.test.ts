@@ -343,6 +343,23 @@ describe('validate-project-design-system', () => {
     );
   });
 
+  it('allows non-interactive status variants without inventing focusability', () => {
+    const fixture = coreFixture(({ graph, design }) => {
+      graph.components_states.components.push({
+        id: 'status-message',
+        anatomy: ['status title', 'detail'],
+        states: ['default', 'error', 'success'],
+        token_refs: ['color.text', 'color.surface'],
+        semantics: 'Announced task feedback; it is not a control.',
+        interaction: { kind: 'non-interactive', reason: 'The status is announced feedback and cannot receive input.' },
+      });
+      design.value = require('../../../scripts/design-md-core.cjs').renderCore(graph);
+    });
+    const proof = JSON.parse(readFileSync(join(fixture.run, 'system/proof.json'), 'utf8'));
+    expect(fixture.result.status, `${fixture.result.stderr}\n${JSON.stringify(proof, null, 2)}`).toBe(0);
+    expect(proof.computed_checks.component_state_coverage).toMatchObject({ pass: true, observations: [] });
+  });
+
   it('fails Core authority when the adoption receipt is deleted or replaced by a symlink', () => {
     const missing = coreFixture();
     rmSync(join(missing.system, 'adoption-receipt.json'));
