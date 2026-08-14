@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: active Luna epoch source `f6cd17e2001740e14ba05dd8a67806af2c026f36` (unauthenticated prompt audit + admission-owned normalized 0.147 cache); immutable diagnostic Luna epochs `253a3abc`, `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source f6cd17e2의 normalized exact cache, 7/7 schema, runtime/IAB/evaluator, 48+6 materialization과 Sol/xhigh admission이 모두 PASS했다. baseline terminal0/missing48/ineligible6이며 next locked cell은 order1 model-only다.
+- 갱신: 2026-08-14 · source f6cd17e2 order1 model-only는 Luna/max 1회로 완주했지만, provider가 semantic 값은 그대로 둔 채 normalized cache의 9개 `include_apps_usage_instructions` 키 순서와 trailing newline을 공식 직렬화로 되돌려 strict raw-byte gate에서 `infrastructure-invalid`가 됐다. terminal/partial은 봉인했고 새 셀은 normalization serializer 수정·fresh epoch 전까지 HOLD다.
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -16,7 +16,11 @@
 - static receipt=`9d10f862…`, production schema 7/7=`64c12964…`, historical raw Luna/max attribution re-audit=`81ae316a…`, Codex IAB identity re-audit=`a06aeff0…`, fresh evaluator runtime/dependency bundle=`e650c061…`다. 새 provider/model/browser 호출0이며 schema liveness만 production HTTP로 재검증했다.
 - locked=`/private/tmp/omd-luna-wow-locked-f6cd17e2`; matrix=`00ffa277…`, preregistration=`5b76ab61…`. materialized=`/private/tmp/omd-luna-wow-materialized-f6cd17e2`, prepared tree=`ed407451…`, materialization=`fbd35923…`, 48 scheduled+6 ineligible다.
 - Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-f6cd17e2/ADMISSION.json`, SHA=`e09151cd…`, status admitted/calls0다. baseline=`/private/tmp/omd-luna-wow-evidence-f6cd17e2/EXECUTION-RECORDS.baseline.json`, SHA=`a3e21493…`, terminal0/missing48/ineligible6/calls0다.
-- **다음 exact action:** order1 `neighborhood-library-landing-luna-max-r1-model-only`을 Luna/max로 단 한 번 실행한다. unauthenticated prompt audit, exact cache pre/post, hidden image, evaluator/state proof를 즉시 봉인하며 retry/replacement/fallback0이다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 554,640ms, input330,377/output29,512/total359,889, tool9, agent browser/network/external0으로 raw `turn.completed`와 61,591B HTML을 남겼다. neutral design-system package(vars23/selectors78)와 hidden-image audit은 PASS했고 retry/replacement/fallback/repair0이다.
+- terminal은 `infrastructure-invalid`, record=`8a897d5e…`, provider/model1/1, browser0, evaluator0/screenshots0, rerun 금지다. strict cache gate reason은 `unapproved-nonvolatile-byte-drift`; post bytes=`45545a33…`가 exact regular readback되었고 semantic=`2e2e2716…`, Luna profile=`aed8fe1b…`, client=`0.147.0`, tool mode가 모두 before와 일치했다.
+- root exact-byte 진단에서 provider는 정규화기가 각 profile 끝에 붙인 `include_apps_usage_instructions`를 `include_plugin_usage_instructions` 직후로 재배치했고 trailing newline을 제거했다. `jq -S del(.fetched_at)` canonical SHA는 before/after 모두 `2f8e5d17…`다. 따라서 gate 완화가 아니라 provider-zero serializer의 key insertion order/file ending 결함이다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-f6cd17e2/EXECUTION-RECORDS.partial-01.json`, SHA=`7deea173…`, terminal1/missing47/ineligible6, collection calls0다. collector 내부 slot은 provider/model1/1을 보존하며 top-level `collection_calls` 0은 collector 자체 호출 수다.
+- **다음 exact action:** Sol/medium으로 exact 0.147 normalization serializer가 provider와 동일한 key order/no-final-newline bytes를 만들게 고치고, root가 strict raw gate를 유지한 채 적대 테스트를 검수한다. 수정 커밋 뒤 schema/static/runtime/IAB/evaluator/lock/materialization/admission을 전부 fresh 발급하고 baseline0을 확인한 다음 order1부터 retry0 신규 epoch를 시작한다. f6cd order1은 immutable diagnostic evidence다.
 
 ### 2026-08-14 source 253a3abc fresh Luna Max epoch
 

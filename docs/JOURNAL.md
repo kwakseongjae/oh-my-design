@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · source f6cd provider serialization boundary failure
+- order1은 Luna/max 1회로 61,591B HTML과 design-system package를 만들었으나 evaluator 전 cache raw-byte gate에서 멈췄다.
+- 554,640ms, input330,377/output29,512, provider/model1/1, browser0, record `8a897d5e…`, rerun0이다.
+- semantic/profile/client/tool mode는 동일했고, exact 차이는 9개 app-usage key 순서와 trailing newline이었다.
+- partial-01 `7deea173…`; 다음은 Sol/medium exact serializer 수정 → root 검수 → fresh epoch 전체 재결박이다.
+
 ## 2026-08-14 (Codex) · source f6cd fresh Luna epoch admitted
 - commit `f6cd17e2`가 unauthenticated prompt audit와 admission-owned 0.147 normalized cache 경계를 봉인했다.
 - schema/static/runtime/IAB/evaluator PASS; tree `ed407451…`, admission `e09151cd…`다.
