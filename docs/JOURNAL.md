@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · a0d3 order6 OmD activation-interface failure 봉인
+- OmD는 900,263ms cap 뒤 infrastructure-invalid; completion/usage 부재로 provider/model totals는 unknown이다.
+- controller runtime은 intact였지만 Codex는 지시 명령을 `zsh -lc`로 감쌌고 env를 전달하지 않아 `node .` exit1이 됐다.
+- `rg` 진단 명령까지 activation으로 오인한 substring gate도 확인; record `3f464943…`, partial-06 `06701041…`, rerun0이다.
+- 다음은 Sol/medium interface fix → root 적대적 검수 → fresh epoch 전체 재결박이며, 그전 Luna 실행은 HOLD다.
+
 ## 2026-08-14 (Codex) · a0d3 order5 Taste integrity-invalid 봉인
 - Taste는 803,555ms 뒤 generated PNG 2개 약4.13MB를 provider-home에서 workspace로 복사했다.
 - raw에는 imagegen lifecycle이 없어 provider/model totals는 unknown; SHA lineage는 두 workspace asset과 정확히 일치한다.

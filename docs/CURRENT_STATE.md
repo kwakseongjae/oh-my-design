@@ -4,7 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: `codex/ui-skills-benchmark-v0` commit `a0d3d9443fa81baae5cf289e447ec8046c7e2c98`; authority-controller implementation `d1f5e5b8`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · hidden image generation integrity gate를 결박한 source a0d3d944 fresh epoch admitted, terminal 0 / missing 48 / ineligible 6; next locked cell order1 pending
+- 갱신: 2026-08-14 · source a0d3d944 epoch는 terminal 6 / missing 42 / ineligible 6까지 진행했으며 OmD r1의 authority-controller invocation interface mismatch를 확인해 추가 Luna 실행을 일시 정지했다.
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -27,7 +27,10 @@
 - partial-04=`/private/tmp/omd-luna-wow-evidence-a0d3d944/EXECUTION-RECORDS.partial-04.json`, SHA=`c2e91986…`, terminal4(completed1/failed2/timeout1)/missing44/ineligible6이다. collector calls0이며 token monitor used92/reset timestamp 불변이다.
 - order5 `neighborhood-library-landing-luna-max-r1-taste-eligible-scope-only`은 803,555ms 뒤 terminal `infrastructure-invalid`다. runner usage event는 input2,210,400/output37,507/total2,247,907, tool36이지만 실제 추가 asset model/tool lifecycle이 raw stream에 없어 provider/model totals는 `unknown`이다. provider-home generated_images에 2,220,968B+1,909,393B PNG 2개가 생겼고 workspace `assets/tool-library-hero.png`/`assets/borrowed-repair.png`와 SHA lineage가 정확히 일치한다. raw에는 generated_images 접근 명령만 있고 structured imagegen identity/call count가 없어 hidden-image audit reason=`hidden-image-generation-side-effect-unattributed`; evaluator/screenshots0이다. record=`737e17a7…`, rerun 금지, prompt-only 비교 분모 제외다.
 - partial-05=`/private/tmp/omd-luna-wow-evidence-a0d3d944/EXECUTION-RECORDS.partial-05.json`, SHA=`a12776aa…`, terminal5(completed1/failed2/timeout1/infrastructure-invalid1)/missing43/ineligible6이다. collector calls0이며 token monitor used93/reset timestamp 불변이다.
-- **다음 exact action:** locked order6 `neighborhood-library-landing-luna-max-r1-omd-autopilot-v2`를 Luna/max 한 번만 실행한다. execution-owned authority controller의 single activation, product budget, hidden-image audit, required states, Core proof를 모두 terminal에 봉인한다.
+- order6 `neighborhood-library-landing-luna-max-r1-omd-autopilot-v2`는 900,263ms cap 뒤 terminal `infrastructure-invalid`다. provider completion/usage가 없어 provider/model totals는 `unknown`, tool64, agent browser/network/external0, hidden-image audit PASS다. workspace에는 20,506B HTML이 남았지만 reusable CSS signals0, Core package·DESIGN·proof·screenshots0이라 시각/제품 품질을 주장하지 않는다. execution-owned controller runtime closure는 exact intact였으나 activation은 성공하지 못했다. record=`3f464943…`, rerun 금지다.
+- raw command 원인은 두 갈래다. `item_28`은 controller env 이름을 찾는 `rg` 진단 명령인데 단순 substring 감사가 activation 시도로 오인한 false positive다. 실제 `item_66`은 모델이 지시된 inner command를 실행했지만 Codex shell의 표준 `/opt/homebrew/bin/zsh -lc 'node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE . $OMD_AUTHORITY_CONTROLLER_RUN_DIR'` wrapper 때문에 raw-exact gate가 거부했고, shell에서 두 env가 비어 `node .`로 해석되어 exit1했다. external staging은 empty, exact package+checkpoint 7 files가 모두 없었다.
+- partial-06=`/private/tmp/omd-luna-wow-evidence-a0d3d944/EXECUTION-RECORDS.partial-06.json`, SHA=`06701041…`, terminal6(completed1/failed2/timeout1/infrastructure-invalid2)/missing42/ineligible6이다. 추가 셀 실행은 authority-controller invocation contract 수정·provider-zero 검증 전까지 일시 정지한다.
+- **다음 exact action:** Sol/medium이 (1) 진단 명령 substring을 activation으로 세지 않고, (2) Codex가 실제로 방출하는 단일 표준 shell wrapper만 안전하게 해석하며, (3) env 전달에 의존하지 않는 exact canonical controller/run-dir invocation을 materialize하도록 runner/controller/prompt contract를 수정한다. root Sol/xhigh가 적대적 command injection·duplicate·tamper 테스트와 package smoke를 독립 검수한 뒤 새 clean source/receipt/materialization/admission epoch를 만든다. a0d terminal6은 immutable diagnostic evidence로 보존하고 같은 epoch에서 재실행하지 않는다.
 
 ### 2026-08-14 source d62ec298 fresh Luna Max epoch
 
