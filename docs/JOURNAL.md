@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · OmD shell activation interface fix 봉인
+- commit `cabf0951`이 `rg` substring 오탐을 제거하고 exact Codex `zsh -lc` wrapper 내 single activation만 인정한다.
+- `run-codex`는 OmD receipt/add-dir에 결박된 8개 env만 전달하고 누락·stale·외부 executable·임의 env를 provider 전 차단한다.
+- root 검수: focused 66/3 skip, package/install 47/47, lint/node/diff PASS; actual a0d replay도 예상과 일치했다.
+- 다음은 clean HEAD에서 모든 receipt·materialization·admission을 fresh rebind한 후 order1 신규 epoch를 시작한다.
+
 ## 2026-08-14 (Codex) · a0d3 order6 OmD activation-interface failure 봉인
 - OmD는 900,263ms cap 뒤 infrastructure-invalid; completion/usage 부재로 provider/model totals는 unknown이다.
 - controller runtime은 intact였지만 Codex는 지시 명령을 `zsh -lc`로 감쌌고 env를 전달하지 않아 `node .` exit1이 됐다.

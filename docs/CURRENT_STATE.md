@@ -3,8 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 소스: `codex/ui-skills-benchmark-v0` commit `a0d3d9443fa81baae5cf289e447ec8046c7e2c98`; authority-controller implementation `d1f5e5b8`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-14 · source a0d3d944 epoch는 terminal 6 / missing 42 / ineligible 6까지 진행했으며 OmD r1의 authority-controller invocation interface mismatch를 확인해 추가 Luna 실행을 일시 정지했다.
+- 기준 소스: `codex/ui-skills-benchmark-v0` commit `cabf0951` (OmD Codex-shell activation binding fix); immutable diagnostic epoch source `a0d3d9443fa81baae5cf289e447ec8046c7e2c98`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-14 · source a0d3d944 epoch는 terminal 6 / missing 42 / ineligible 6으로 동결했고, commit cabf0951에서 authority-controller invocation interface를 수정·독립 검수했다. 다음은 fresh epoch 전체 재결박이다.
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol은 Codex runtime만 허용한다.
 
 ## 지금 (현재 위치)
@@ -30,7 +30,9 @@
 - order6 `neighborhood-library-landing-luna-max-r1-omd-autopilot-v2`는 900,263ms cap 뒤 terminal `infrastructure-invalid`다. provider completion/usage가 없어 provider/model totals는 `unknown`, tool64, agent browser/network/external0, hidden-image audit PASS다. workspace에는 20,506B HTML이 남았지만 reusable CSS signals0, Core package·DESIGN·proof·screenshots0이라 시각/제품 품질을 주장하지 않는다. execution-owned controller runtime closure는 exact intact였으나 activation은 성공하지 못했다. record=`3f464943…`, rerun 금지다.
 - raw command 원인은 두 갈래다. `item_28`은 controller env 이름을 찾는 `rg` 진단 명령인데 단순 substring 감사가 activation 시도로 오인한 false positive다. 실제 `item_66`은 모델이 지시된 inner command를 실행했지만 Codex shell의 표준 `/opt/homebrew/bin/zsh -lc 'node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE . $OMD_AUTHORITY_CONTROLLER_RUN_DIR'` wrapper 때문에 raw-exact gate가 거부했고, shell에서 두 env가 비어 `node .`로 해석되어 exit1했다. external staging은 empty, exact package+checkpoint 7 files가 모두 없었다.
 - partial-06=`/private/tmp/omd-luna-wow-evidence-a0d3d944/EXECUTION-RECORDS.partial-06.json`, SHA=`06701041…`, terminal6(completed1/failed2/timeout1/infrastructure-invalid2)/missing42/ineligible6이다. 추가 셀 실행은 authority-controller invocation contract 수정·provider-zero 검증 전까지 일시 정지한다.
-- **다음 exact action:** Sol/medium이 (1) 진단 명령 substring을 activation으로 세지 않고, (2) Codex가 실제로 방출하는 단일 표준 shell wrapper만 안전하게 해석하며, (3) env 전달에 의존하지 않는 exact canonical controller/run-dir invocation을 materialize하도록 runner/controller/prompt contract를 수정한다. root Sol/xhigh가 적대적 command injection·duplicate·tamper 테스트와 package smoke를 독립 검수한 뒤 새 clean source/receipt/materialization/admission epoch를 만든다. a0d terminal6은 immutable diagnostic evidence로 보존하고 같은 epoch에서 재실행하지 않는다.
+- Sol/medium fix는 commit `cabf0951`에 봉인했다. activation 검출은 parsed node/nodejs controller operand만 인정해 `rg` substring false positive를 제거했고, exact direct command 또는 Codex 표준 단일 `zsh -lc` wrapper 안의 exact inner command만 허용한다. `run-codex`는 OmD arm에서만 8개 preregistered controller/staging binding을 receipt SHA/kind, workspace/run-dir, add-dir containment, execution-owned executable path와 대조한 뒤 child shell에 전달한다. 임의 OMD env, env override, alternate shell/path, redirection/sequencing/substitution, duplicate, failed/nonzero/bad-output는 fail-close한다.
+- root 독립 검수는 실제 a0d events replay에서 item28을 0 activation/0 forbidden으로 분리하고 item66만 과거 nonzero failure로 유지했다. focused 66 pass/3 intentional skip, package/install 47/47, lint, 3 node-check, diff-check가 PASS했다. missing binding, stale receipt/activation SHA, runtime 밖 executable, non-OmD env leakage는 provider spawn 전 차단됨을 검증했다. provider/model/browser/network 추가 호출0이다.
+- **다음 exact action:** 이 continuity commit까지 포함한 clean HEAD를 새 source authority로 삼아 production schema7/7, static Luna/max, evaluator dependency/runtime, Codex IAB identity, Luna attribution receipt를 전부 재발급한다. new locked/materialized/runtime/admission roots를 만들고 baseline terminal0/missing48/ineligible6을 확인한 뒤 order1부터 one-cell/turn·retry0으로 시작한다. a0d terminal6은 immutable diagnostic evidence로 보존하고 같은 epoch에서 재실행하지 않는다.
 
 ### 2026-08-14 source d62ec298 fresh Luna Max epoch
 
