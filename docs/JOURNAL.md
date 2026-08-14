@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-14 (Codex) · a0d3 order3 Impeccable timeout 봉인
+- Impeccable은 900,335ms cap에서 timeout; completion/usage가 없어 provider/model calls는 unknown이다.
+- 47,993B HTML과 DESIGN.md/.impeccable artifacts를 남겼지만 evaluator/screenshots0이라 visual quality를 주장하지 않는다.
+- hidden image audit은 side effect/tool identity/lineage0으로 PASS; record `af4e0474…`, partial-03 `4ea70f03…`, rerun0이다.
+- 다음은 exact order4 UI UX Pro Max r1 한 셀을 실행해 same-task 품질·state·비용을 비교한다.
+
 ## 2026-08-14 (Codex) · a0d3 order2 Anthropic 봉인
 - Anthropic은 486,932ms·436,257 tokens에 51,769B UI, 17 vars/83 selectors와 publishable captures를 만들었다.
 - ink-blue/orange illustration system은 model-only보다 뾰족하지만 focus-visible 미관측으로 objective0다.
