@@ -26,6 +26,7 @@ import {
   existsSync,
   lstatSync,
   mkdirSync,
+  readdirSync,
   readFileSync,
   realpathSync,
   writeFileSync,
@@ -284,6 +285,59 @@ export function materializeCommand(args) {
   // Build task prompt lookup
   const taskPrompts = new Map((matrix.task_prompts ?? []).map((tp) => [tp.task_id, tp.prompt]));
 
+  // ── Frozen competitor skill packs ──
+  // Every non-model-only arm's activation prefix references an INSTALLED
+  // skill; the pack must exist inside the isolated cell workspace
+  // (.agents/skills/…, byte-identical to the Luna caf0 layout — Grok Build
+  // CLI discovers workspace skills there, probed 2026-08-15). Epoch 3b39dee2
+  // was frozen because this installation was missing.
+  const fixtureRoot = resolveRepoRelative(
+    "benchmarks/ui-resolve-bench/fixtures/competitor-skills-2.0",
+    "competitor skill fixture",
+  );
+  const fixtureSums = new Map();
+  for (const line of readFileSync(join(fixtureRoot, "SHA256SUMS"), "utf8").split("\n")) {
+    const m = line.match(/^([0-9a-f]{64})\s+(?:\*|\s)?(.+)$/);
+    if (m) fixtureSums.set(m[2].replace(/^\.\//, ""), m[1]);
+  }
+  invariant(fixtureSums.size > 0, "competitor skill fixture SHA256SUMS is empty");
+
+  const listFixtureFiles = (root, current = root) => {
+    const found = [];
+    for (const name of readdirSync(current).sort()) {
+      const path = join(current, name);
+      const info = lstatSync(path);
+      invariant(!info.isSymbolicLink(), `fixture symlink is forbidden: ${path}`);
+      if (info.isDirectory()) found.push(...listFixtureFiles(root, path));
+      else if (info.isFile()) found.push(relative(root, path).split(sep).join("/"));
+    }
+    return found;
+  };
+
+  const installSkillPack = (workspace, armId, cellId) => {
+    const packRoot = join(fixtureRoot, armId);
+    invariant(existsSync(packRoot), `skill pack missing for arm: ${armId}`);
+    let files = 0;
+    let bytes = 0;
+    for (const rel of listFixtureFiles(packRoot)) {
+      const sourcePath = join(packRoot, rel);
+      const sourceBytes = readFileSync(sourcePath);
+      const sumKey = `${armId}/${rel}`;
+      invariant(
+        fixtureSums.get(sumKey) === sha256(sourceBytes),
+        `skill pack byte drift vs SHA256SUMS: ${sumKey}`,
+      );
+      const destination = join(workspace, rel);
+      assertInside(workspace, destination, `skill pack install path (${cellId})`);
+      mkdirSync(dirname(destination), { recursive: true });
+      writeFileSync(destination, sourceBytes, { flag: "wx" });
+      files += 1;
+      bytes += sourceBytes.length;
+    }
+    invariant(files > 0, `skill pack for arm ${armId} contained no files`);
+    return { arm: armId, files, bytes };
+  };
+
   mkdirSync(out, { recursive: false });
   const cellsRoot = join(out, "prepared-cells");
   mkdirSync(cellsRoot, { recursive: false });
@@ -305,6 +359,12 @@ export function materializeCommand(args) {
       sha256(readFileSync(join(workspace, "index.html"))) === blankSha,
       `starter copy drift: ${cell.id}`,
     );
+
+    // Install the arm's frozen skill pack (model-only gets none)
+    const skillPack =
+      cell.variant_id === "model-only"
+        ? null
+        : installSkillPack(workspace, cell.variant_id, cell.id);
 
     // Compose prompts — fail-close on any missing or drifted prompt. A silent
     // placeholder would burn a real provider cell on garbage input.
@@ -345,6 +405,7 @@ export function materializeCommand(args) {
         kind: cell.variant_id,
         variant_id: cell.variant_id,
         activation_prefix: armActivation,
+        skill_pack: skillPack,
         provider_calls: 0,
         model_calls: 0,
       },
@@ -372,14 +433,19 @@ export function materializeCommand(args) {
     };
     writeJsonExclusive(join(workspace, ".benchmark/cell.json"), cellMetadata);
 
-    // Write run-grok.mjs-compatible manifest.json
+    // Write run-grok.mjs-compatible manifest.json.
+    // The initial product tree is recorded AFTER starter + skill-pack install
+    // so the runner's product diff (and the usage-limit !productChanged guard)
+    // measures the MODEL's writes, not the materializer's. A null initial tree
+    // made product_changed always-true and silently disabled that guard.
+    const initialProductTree = treeManifest(workspace, { ignore: [".benchmark"] });
     const cellManifest = {
       runtime_target: RUNTIME_TARGET,
       task: { id: cell.task_id },
       variant: { id: cell.variant_id },
       workspace: {
-        product_initial_sha256: null,
-        product_initial_files: [],
+        product_initial_sha256: initialProductTree.sha256,
+        product_initial_files: initialProductTree.files,
         product_ignore: [".benchmark"],
       },
     };

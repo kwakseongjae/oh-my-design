@@ -48,6 +48,8 @@ const SCORE_GATE_CONFIG_PATH =
   "benchmarks/ui-resolve-bench/config/omd-grok46-wow-preview-score-gate-v0.2.json";
 const PREFIXES_CONFIG_PATH =
   "benchmarks/ui-resolve-bench/config/omd-grok46-activation-prefixes-v0.1.json";
+const FIXTURE_SUMS_PATH =
+  "benchmarks/ui-resolve-bench/fixtures/competitor-skills-2.0/SHA256SUMS";
 
 const TASK_ORDER = [
   "neighborhood-library-landing",
@@ -106,6 +108,15 @@ export function lockCommand(args) {
   const matrixConfig = readRepoJson(MATRIX_CONFIG_PATH);
   const scoreGate = readRepoJson(SCORE_GATE_CONFIG_PATH);
   const prefixesConfig = readRepoJson(PREFIXES_CONFIG_PATH);
+  const fixtureSumsBytes = readFileSync(join(repoRoot, FIXTURE_SUMS_PATH));
+  const fixtureSums = { bytes: fixtureSumsBytes, sha256: sha256(fixtureSumsBytes) };
+  for (const arm of ARM_ORDER) {
+    if (arm === "model-only") continue;
+    invariant(
+      fixtureSumsBytes.toString("utf8").includes(`${arm}/`),
+      `competitor skill fixture carries no files for arm: ${arm}`,
+    );
+  }
   invariant(
     matrixConfig.json.experiment_id === EXPERIMENT_ID &&
       scoreGate.json.experiment_id === EXPERIMENT_ID &&
@@ -232,6 +243,22 @@ export function lockCommand(args) {
         path: matrixConfig.json.authorities.task_set.path,
         sha256: taskSet.sha256,
       },
+      competitor_skill_fixture: {
+        path: FIXTURE_SUMS_PATH,
+        sha256: fixtureSums.sha256,
+      },
+      // admit-grok46 byte-verifies every entry in this array against the
+      // source commit — the named entries above are for human readers.
+      files: [
+        { path: MATRIX_CONFIG_PATH, sha256: matrixConfig.sha256 },
+        { path: SCORE_GATE_CONFIG_PATH, sha256: scoreGate.sha256 },
+        { path: PREFIXES_CONFIG_PATH, sha256: prefixesConfig.sha256 },
+        {
+          path: matrixConfig.json.authorities.task_set.path,
+          sha256: taskSet.sha256,
+        },
+        { path: FIXTURE_SUMS_PATH, sha256: fixtureSums.sha256 },
+      ],
     },
     runtime: { ...matrixConfig.json.runtime },
     execution_control: {
