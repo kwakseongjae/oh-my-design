@@ -664,6 +664,59 @@ export function auditOmdExternalStaging(staging) {
   };
 }
 
+/**
+ * Extract ONLY the terminal output text from a tool_result payload.
+ * The success marker (adopted-and-validated) must come from what the command
+ * actually printed — never from JSON keys, description fields, or other
+ * envelope strings (grok reviewer C: a marker anywhere in the raw JSON would
+ * widen the trust base). Recognised shapes, from the observed pilot wire:
+ *   - content: '{"type":"Bash","output":[bytes...]}'  → decode output bytes
+ *   - content: '{"type":"Bash","output":"text"}'      → output string
+ *   - content blocks [{type:"text",text:"..."}]        → text blocks
+ *   - bare string that is not JSON                     → the string itself
+ */
+function extractTerminalOutput(value, depth = 0) {
+  if (depth > 4 || value == null) return "";
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    if (trimmed.startsWith("{") || trimmed.startsWith("[")) {
+      try {
+        return extractTerminalOutput(JSON.parse(trimmed), depth + 1);
+      } catch {
+        return value;
+      }
+    }
+    return value;
+  }
+  if (Array.isArray(value)) {
+    if (
+      value.length > 0 &&
+      value.every((item) => Number.isInteger(item) && item >= 0 && item <= 255)
+    ) {
+      try {
+        return Buffer.from(value).toString("utf8");
+      } catch {
+        return "";
+      }
+    }
+    return value
+      .map((item) => extractTerminalOutput(item, depth + 1))
+      .filter((text) => text.length > 0)
+      .join("\n");
+  }
+  if (typeof value === "object") {
+    if (typeof value.text === "string" && (value.type === "text" || value.type == null)) {
+      return value.text;
+    }
+    // Envelope object: ONLY the output-bearing fields count as terminal text.
+    for (const key of ["output", "stdout", "aggregated_output"]) {
+      if (key in value) return extractTerminalOutput(value[key], depth + 1);
+    }
+    return "";
+  }
+  return "";
+}
+
 function collectStrings(value, depth = 0) {
   if (depth > 6 || value == null) return [];
   if (typeof value === "string") {
@@ -758,7 +811,9 @@ export function collectGrokTerminalCommands(events) {
     const status = raw?.status ?? null;
     const isError = raw?.is_error === true || raw?.isError === true;
     record.results.push({
-      content: collectStrings(raw?.content ?? raw?.output ?? raw?.result ?? raw?.aggregated_output ?? raw).join("\n"),
+      content: extractTerminalOutput(
+        raw?.content ?? raw?.output ?? raw?.result ?? raw?.aggregated_output ?? raw,
+      ),
       isError,
       exitCode: typeof exitCode === "number" ? exitCode : exitCode == null ? null : Number(exitCode),
       status: typeof status === "string" ? status : null,
@@ -1132,7 +1187,14 @@ export function runOmdCell(options) {
     variant_id: identity.variant_id,
   };
 
-  const materialized = materializeAuthorityRuntime(canonicalWorkspace, execution);
+  // The authority runtime bundle sources from the EPOCH REPO (this wrapper's
+  // worktree root), never the provider-writable cell workspace: the runtime
+  // is execution-owned harness authority at the source commit, while the
+  // workspace scripts/ belong to the installed skill pack. Sourcing from the
+  // workspace both trusts provider-writable bytes and breaks on cells whose
+  // pack does not carry the full closure (grok reviewer C, 95%).
+  const repoSourceRoot = realpathSync(resolve(HERE, "../../.."));
+  const materialized = materializeAuthorityRuntime(repoSourceRoot, execution);
   const authorityRuntime = {
     ...materialized,
     root: realpathSync(materialized.root),
