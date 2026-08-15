@@ -86,7 +86,9 @@
 - **하네스 개정 H2 (commit `22c5d572`):** ① grok 워크스페이스 스킬 발견 실측(.agents/skills+.grok/skills 인식, probe 1회) ② caf0에서 arm별 스킬 팩 byte-identical 이식(`fixtures/competitor-skills-2.0`, 327파일 SHA 동결, 셀 간 동일성 검증) ③ materialize에 per-file SHA 검증 설치 로직 ④ product_initial 트리를 설치 후 기록(null이라 usage-limit 가드가 영구 불발이던 결함 수정) ⑤ lock이 fixture SUMS를 source_authority.files로 결박(admit 자동 byte 검증).
 - **#8 완료 (commit `c3d3f2f6`):** grok 워커 초안(1,260줄)을 Fable이 통합·수정 — byte-array 출력 디코딩(실측 와이어), PROMPT/invocation 분리 복사 수정, Luna export 공시 문자열 기본값, run-grok `--omd-controller-env`(8-binding JSON 전달, ambient env 금지·spatial contract 검증). 적대 테스트 13종 신설(item28 가드·중복/실패 activation·review-v2·env override·zsh-only wrapper·byte 디코드) 전부 PASS. 전 스위트 65 테스트 green. grok 재검수 백그라운드 진행 중.
 - **grok 재검수 2건 폐쇄 (commit `16ebfac7`):** [H] 런타임 번들 소스를 셀 워크스페이스→epoch 레포 루트로 교정(전 omd 셀 ENOENT 예방+provider-writable 신뢰 제거), [M] 성공 마커 추출을 디코딩된 터미널 출력 필드로 한정(envelope 키/description 위조 차단). 회귀 TC-OMD-14/15, 스위트 15/15, 실셀 프롬프트 dry-run PASS(런타임 15파일·8 env 바인딩·run_dir 정확).
-- **다음 exact action:** docs 커밋 → epoch 2 개장: 워크트리 → lock → materialize(스킬 설치) → schema-liveness(`--base-url https://oh-my-design.kr`, 7 HTTP) + 영수증 재발급 → admit → **wave r1 orders 1–16 serial**(omd 셀은 run-grok46-omd-cell.mjs 경유), 셀마다 audit+seal, 관찰자 재부착. 3b39dee2의 order1/2는 immutable 진단 증거, 재실행 금지.
+- **epoch 2 `9c5cf628` ADMITTED (2026-08-15):** worktree `/private/tmp/omd-grok-runtime-9c5cf628`, locked `b6f9384b…`, materialized 48셀 tree `c2a2bdb5…`(스킬 팩 설치 확인: anthropic `.agents/skills/frontend-design`, omd `scripts/`), schema-liveness 7/7 PASS(`96e3d6cc…`, network 7), 영수증 4종 재발급(raw 20/20 재검증), **ADMISSION `367d5b2e…` admitted**. baseline terminal0/missing48 봉인(`/private/tmp/omd-grok46-wow-evidence-9c5cf628/`).
+- **wave r1 실행 중:** order1 model-only 가동(900s cap). 관찰자 `grok-wave-observer` 재부착(terminal 증가·stall·capacity-signal 감시). 셀 완료마다 Fable이 tool 감사+evaluator+record 봉인 후 다음 order 진행. omd 셀(order6/11/16)은 run-grok46-omd-cell.mjs 경유. capacity 신호 시 score-gate 규칙 자동 적용, 2건 시 epoch inconclusive.
+- 3b39dee2의 order1/2는 immutable 진단 증거, 재실행 금지.
 
 ### 2026-08-15 (Fable) grok lane seed 실행 개시
 
