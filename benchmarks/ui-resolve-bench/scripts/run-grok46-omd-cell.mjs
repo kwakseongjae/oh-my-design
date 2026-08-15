@@ -933,6 +933,12 @@ export function auditOmdControllerCommands(events, runDir, controllerExecutable 
   const expandedCommand = `node ${controllerExecutable} . ${runDir}`;
   const exactRawActivation = (command) => {
     if (command === literalCommand || command === expandedCommand) return true;
+    // Shell-correct quoted env vars are semantically identical to the literal
+    // (epoch 93b071a2 order6: the model emitted node "$VAR" . "$VAR", the
+    // controller adopted successfully, and the unquoted-only comparison
+    // produced a false negative).
+    const dequoted = command.replace(/"(\$[A-Z_]+)"/g, "$1").replace(/'(\$[A-Z_]+)'/g, "$1");
+    if (dequoted === literalCommand) return true;
     const tokens = shellTokens(command);
     return tokens.length === 3 && tokens.every((token) => token.type === "word")
       && tokens[0].value.split("/").at(-1) === "zsh" && tokens[1].value === "-lc"

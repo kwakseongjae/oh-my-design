@@ -255,6 +255,15 @@ assert("TC-OMD-13: run-grok never reads the 8 controller keys from process.env",
   }
 });
 
+assert("TC-OMD-17: quoted env-var activation form is exact (epoch 93b071a2 false negative)", () => {
+  const QUOTED = `node "$${OMD_AUTHORITY_EXECUTABLE_ENV}" . "$${OMD_AUTHORITY_RUN_DIR_ENV}"`;
+  const audit = auditOmdControllerCommands(scenario([
+    { command: QUOTED, output: ADOPTED },
+  ]), RUN_DIR);
+  if (!audit.pass) throw new Error(`quoted form rejected: ${JSON.stringify(audit.forbidden)}`);
+  if (audit.exact_activation_count !== 1) throw new Error(`count=${audit.exact_activation_count}`);
+});
+
 assert("TC-OMD-16: cell identity reads runtime.runtime_target, never runtime.provider", () => {
   const wrapperSource = readFileSync(join(__dirname, "run-grok46-omd-cell.mjs"), "utf8");
   if (!wrapperSource.includes("cellJson?.runtime?.runtime_target")) {
