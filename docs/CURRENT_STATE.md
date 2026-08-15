@@ -71,6 +71,13 @@
 - **다음 exact action: WP5 — 사용자 명시적 승인 대기.**
   WP5 시작 전 체크리스트: (1) git commit (staged 파일 전체), (2) `materialize-grok46-wow-preview.mjs` 실행 → locked/materialized dirs, (3) `admit-grok46-wow-preview.mjs admit` 실행 (위 smoke 영수증을 인자로), (4) order1 `neighborhood-library-landing-grok-4.6-r1-model-only` 1회·retry0 serial, (5) evaluator 실행.
 
+### 2026-08-15 (Fable) epoch 3·4 — evaluator 잠복 버그 동결과 재개장
+
+- **epoch 3 `b2c425e7` 동결:** order1 model-only completed → evaluator가 중복 CTA journey에서 결정적 hang(2회 재현, product 결함, 0점 봉인 — attempt 증거 양쪽 보존). order2 Anthropic completed → **evaluator 정적 서버의 잠복 크래시 발견**: 페이지가 없는 에셋을 요청하면 writeHead(200) 후 read 실패 → 404 핸들러가 헤더 이중 전송 → 프로세스 사망(ERR_HTTP_HEADERS_SENT, 2회 결정적). 깨진 에셋 참조를 가진 모든 product가 체계적 채점 불능 = 편향 판정면 → 동결. 증거 partial-02 `020baa5d…`+백업.
+- **수정:** evaluator가 파일을 먼저 읽고 헤더를 쓰도록 교정(commit `b621276e`), config evaluator SHA 재결박(`4dd780a9…`, commit `93b071a2`).
+- **epoch 4 `93b071a2` ADMITTED:** lock `8540738b…`, 48셀, liveness 7/7, ADMISSION `20cb5b92…`. order1 재실행 중, 관찰자 이전 완료.
+- 오늘 grok 레인 동결 판 3개(3b39dee2 스킬 미설치 / 9c5cf628 래퍼 신원 / b2c425e7 evaluator 서버) — 각각 실제 하네스 결함을 잡았고 provider 지출 약 7셀(~2.5M tokens)은 진단 증거로 보존. Luna 시절 하루 7동결과 같은 성숙 곡선.
+
 ### 2026-08-15 (Fable) grok lane 완성 — 재검수 반영·lock 단계 신설·커밋 결박
 
 - run7은 iteration 소진으로 failed(AC 4/5)였으나 실측 재검증 결과 AC1–4 전부 PASS, smoke 2회 영수증까지 완료(러너 경유, exit0, 잠금 플래그 전달, `reports/grok46-lane-smoke-evidence/`에 SHA256SUMS와 함께 보존). grok 리뷰 7건 중 5건은 run7이 자체 해결(심링크 realpath, effort 전달, --always-approve, etag JSON-level 1차, 실러너 spawn 테스트).
