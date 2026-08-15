@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-15 (Fable) · 쇼케이스 런 완주 — 19셀+Hallmark+갤러리
+- e6에서 r1 메인 16셀+Hallmark 3셀 전체 봉인. OmD 과제1 50점(최강과 동점, 유일한 adopted 시스템), 컨트롤러 감사 2/3 PASS.
+- ProMax 콜드체인 100(유일 만점), Hallmark 랜딩 60(최고), 과제별 인터랙티브 상태가 전 스킬 공통의 벽.
+- 갤러리 산출: reports/grok46-showcase-r1. v2.3 방향 확정(과제 상태 파싱+스키마 자가검증).
+- 다음: v2.3 → epoch 7 r1 재도전 → r2·r3.
+
 ## 2026-08-15 (Fable) · epoch4 r1 과제1 완결(6/6) + Hold-and-improve 전환
 - grok 레인 최초로 한 과제의 6 arm 전부 terminal 봉인: pro-max 60(유일 접근성 PASS), 나머지 0/timeout. Luna arm 패턴 전면 재현.
 - OmD는 activation→adopt까지 성공하고 900s 예산 초과로 timeout — 짝 패배로 게이트 폐쇄, 잔여 42셀 면제.

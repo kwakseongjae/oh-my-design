@@ -71,6 +71,14 @@
 - **다음 exact action: WP5 — 사용자 명시적 승인 대기.**
   WP5 시작 전 체크리스트: (1) git commit (staged 파일 전체), (2) `materialize-grok46-wow-preview.mjs` 실행 → locked/materialized dirs, (3) `admit-grok46-wow-preview.mjs admit` 실행 (위 smoke 영수증을 인자로), (4) order1 `neighborhood-library-landing-grok-4.6-r1-model-only` 1회·retry0 serial, (5) evaluator 실행.
 
+### 2026-08-15 (Fable) 쇼케이스 런 완주 — r1 19/19 + Hallmark 실측 + 갤러리
+
+- **e6(`89e145bc`) r1 메인 16셀 + Hallmark 보충 3셀 전체 봉인.** 최종: 과제1 Hallmark 60 > OmD 50 = ProMax 50 > Taste 30 > 나머지 0. 과제2 ProMax 단독 100(오늘 밤 유일 만점), 전원 과제별 상태(selected/assigned)에서 탈락. 과제3 전원 0(5-로케일 상태는 전 스킬 미해결 영역).
+- OmD 하이라이트: 컨트롤러 감사 2/3 PASS, 과제1에서 최강 경쟁자와 동점+유일한 adopted DESIGN.md/Core v2 산출+전 상태·CTA 계약 준수. 과제2·3 실패 원인 확정(과제별 상태 미구현 / graph enum 스키마 위반) → **v2.3 방향: acceptance 상태=과제 패킷 상태, 컨트롤러 호출 전 번들 스키마로 초안 자가검증**.
+- Hallmark 실측: 랜딩 최강(60) 입증, 운영·로케일에선 동일 벽. 사용자 직감 적중.
+- 쇼케이스 갤러리: `benchmarks/ui-resolve-bench/reports/grok46-showcase-r1/index.html`(스크린샷 15장+DESIGN.md+점수 매트릭스+정직 결론). 증거 백업 `~/.omd-bench-backups/2026-08-15-grok46-epochs/`.
+- **다음 exact action:** v2.3 패치(과제 상태 파싱+스키마 자가검증) → epoch 7에서 r1 재도전(게이트 생존 조건: 3과제 모두 tie 이상) → r2·r3.
+
 ### 2026-08-15 (Fable) epoch 6 — OmD 첫 동점, 게이트 생존 (쇼케이스 런 진행 중)
 
 - 사용자 지시로 4–6h 쇼케이스 런 가동: 같은 프롬프트 × 6+1 arm, 디자인 시스템·컴포넌트 기반 격차 증명 목표. epoch 5(`d4889b7f`)는 OmD v2.1 패치의 핵심 2종(예산 내 완주, 전 상태 data-state 구현) 실증 후 activation append+task.md 결함으로 동결. **v2.2**(명령 단독성·task.md 루트 배치, commit `89e145bc`)로 epoch 6 개장.
