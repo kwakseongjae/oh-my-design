@@ -25,7 +25,7 @@
     },
     "evaluator": {
       "path": "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs",
-      "sha256": "7c434565b37e5356f36bf7e479a154a08c0b8c09c7b19bf580e7889fb40db66c"
+      "sha256": "4dd780a97d1083490efe370a67e2904af63b427c52d175ae2a70116227f2a944"
     },
     "task_set_validator": {
       "path": "benchmarks/ui-resolve-bench/scripts/validate-autopilot-greenfield-task-set.mjs",
@@ -75,7 +75,9 @@
   ],
   "arm_eligibility": {
     "taste-eligible-scope-only": {
-      "eligible_families": ["landing"],
+      "eligible_families": [
+        "landing"
+      ],
       "ineligible_policy": "retain-preregistered-slot-but-do-not-execute-or-score",
       "reason": "Taste declares a marketing/landing-page scope; dense operations and multi-locale product UI are outside its claimed scope."
     }
@@ -90,12 +92,42 @@
     "cell_identity": "task_id x arm x trial, trial in 1..3",
     "ineligible_reason": "taste-eligible-scope-only arm retains its preregistered slots on non-landing tasks but is never executed or scored (arm_eligibility.taste-eligible-scope-only).",
     "preregistered_ineligible_cells": [
-      { "arm": "taste-eligible-scope-only", "task_id": "cold-chain-operations", "trial": 1, "status": "preregistered-ineligible" },
-      { "arm": "taste-eligible-scope-only", "task_id": "cold-chain-operations", "trial": 2, "status": "preregistered-ineligible" },
-      { "arm": "taste-eligible-scope-only", "task_id": "cold-chain-operations", "trial": 3, "status": "preregistered-ineligible" },
-      { "arm": "taste-eligible-scope-only", "task_id": "clinic-visit-prep-locales", "trial": 1, "status": "preregistered-ineligible" },
-      { "arm": "taste-eligible-scope-only", "task_id": "clinic-visit-prep-locales", "trial": 2, "status": "preregistered-ineligible" },
-      { "arm": "taste-eligible-scope-only", "task_id": "clinic-visit-prep-locales", "trial": 3, "status": "preregistered-ineligible" }
+      {
+        "arm": "taste-eligible-scope-only",
+        "task_id": "cold-chain-operations",
+        "trial": 1,
+        "status": "preregistered-ineligible"
+      },
+      {
+        "arm": "taste-eligible-scope-only",
+        "task_id": "cold-chain-operations",
+        "trial": 2,
+        "status": "preregistered-ineligible"
+      },
+      {
+        "arm": "taste-eligible-scope-only",
+        "task_id": "cold-chain-operations",
+        "trial": 3,
+        "status": "preregistered-ineligible"
+      },
+      {
+        "arm": "taste-eligible-scope-only",
+        "task_id": "clinic-visit-prep-locales",
+        "trial": 1,
+        "status": "preregistered-ineligible"
+      },
+      {
+        "arm": "taste-eligible-scope-only",
+        "task_id": "clinic-visit-prep-locales",
+        "trial": 2,
+        "status": "preregistered-ineligible"
+      },
+      {
+        "arm": "taste-eligible-scope-only",
+        "task_id": "clinic-visit-prep-locales",
+        "trial": 3,
+        "status": "preregistered-ineligible"
+      }
     ]
   },
   "runtime": {
@@ -115,7 +147,11 @@
     "workspace_boundary_prompt_suffix": "Benchmark runtime boundary: keep every generated file and temporary validation artifact inside the current workspace (use .benchmark/tmp when needed), except an exact cell-local staging path explicitly disclosed by the controller for an arm whose native package adopter requires source/destination separation. Do not read or write any other external path, including /tmp, and do not launch or control browsers or use network access; the external evaluator owns browser checks."
   },
   "waves": {
-    "wave_order": ["r1", "r2", "r3"],
+    "wave_order": [
+      "r1",
+      "r2",
+      "r3"
+    ],
     "cells_per_wave": 16,
     "applies_to": "scheduled_provider_cells",
     "total_scheduled_cells": 48,
@@ -134,7 +170,13 @@
       "same_source_facts_for_every_arm": true,
       "task_set_path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json",
       "blank_starter_path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/blank-shell/index.html",
-      "forbidden_prepared_root_entries": ["DESIGN.md", ".omd/", "oracle", "mutant", "hidden-examples"]
+      "forbidden_prepared_root_entries": [
+        "DESIGN.md",
+        ".omd/",
+        "oracle",
+        "mutant",
+        "hidden-examples"
+      ]
     },
     "official_competitor_freshness_lock": {
       "required": true,
@@ -192,7 +234,10 @@
       "isolation_proven": true,
       "isolation_method": "HOME redirect with frozen auth.json and byte-gated models_cache.json",
       "isolation_date": "2026-08-14",
-      "models_cache_byte_gate_excludes": ["fetched_at", "etag"],
+      "models_cache_byte_gate_excludes": [
+        "fetched_at",
+        "etag"
+      ],
       "no_subagents": true,
       "no_memory": true,
       "disable_web_search": true,
