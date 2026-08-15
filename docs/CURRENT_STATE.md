@@ -71,6 +71,12 @@
 - **다음 exact action: WP5 — 사용자 명시적 승인 대기.**
   WP5 시작 전 체크리스트: (1) git commit (staged 파일 전체), (2) `materialize-grok46-wow-preview.mjs` 실행 → locked/materialized dirs, (3) `admit-grok46-wow-preview.mjs admit` 실행 (위 smoke 영수증을 인자로), (4) order1 `neighborhood-library-landing-grok-4.6-r1-model-only` 1회·retry0 serial, (5) evaluator 실행.
 
+### 2026-08-15 (Fable) epoch 6 — OmD 첫 동점, 게이트 생존 (쇼케이스 런 진행 중)
+
+- 사용자 지시로 4–6h 쇼케이스 런 가동: 같은 프롬프트 × 6+1 arm, 디자인 시스템·컴포넌트 기반 격차 증명 목표. epoch 5(`d4889b7f`)는 OmD v2.1 패치의 핵심 2종(예산 내 완주, 전 상태 data-state 구현) 실증 후 activation append+task.md 결함으로 동결. **v2.2**(명령 단독성·task.md 루트 배치, commit `89e145bc`)로 epoch 6 개장.
+- **epoch 6 r1 과제1 완결: OmD 50 = pro-max 50 동점 → 짝 손실 0, 오늘 첫 게이트 생존.** OmD만 adopted DESIGN.md+Core v2 5종 산출, 전 상태 계약+CTA 유일성 준수(컨트롤러 감사 PASS). 잔여 감점: journey 30/50·honesty 20/40 — 다음 패치 과제로 기록. 스코어보드: model-only 0, anthropic 0, impeccable timeout, pro-max 50, taste 30, omd 50.
+- 진행 중: 과제 2(cold-chain) → 과제 3(clinic) → Hallmark 보충 3셀 → 쇼케이스 갤러리. 증거는 `/private/tmp/omd-grok46-wow-evidence-89e145bc/` partial-NN 연쇄.
+
 ### 2026-08-15 (Fable) epoch 4 완결 — r1 첫 과제 6/6 봉인, Hold-and-improve 전환
 
 - **r1 도서관 랜딩 최종 (epoch `93b071a2`, 전 셀 봉인+백업):** model-only 0(상태 누락) · anthropic 0(상태 누락, arm 4연속) · impeccable timeout(3판 연속, image_gen×9+edit×2 귀속) · **ui-ux-pro-max 60**(반응형+접근성+정직 PASS — 유일) · taste 0(상태 누락, 893s 아슬 완주, image_gen×9) · **omd-autopilot timeout**.
