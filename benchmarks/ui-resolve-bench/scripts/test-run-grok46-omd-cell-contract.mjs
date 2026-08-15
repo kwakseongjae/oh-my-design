@@ -255,6 +255,16 @@ assert("TC-OMD-13: run-grok never reads the 8 controller keys from process.env",
   }
 });
 
+assert("TC-OMD-16: cell identity reads runtime.runtime_target, never runtime.provider", () => {
+  const wrapperSource = readFileSync(join(__dirname, "run-grok46-omd-cell.mjs"), "utf8");
+  if (!wrapperSource.includes("cellJson?.runtime?.runtime_target")) {
+    throw new Error("identity does not read runtime.runtime_target");
+  }
+  if (wrapperSource.includes("cellJson?.runtime?.provider ?? manifest?.runtime_target")) {
+    throw new Error("identity still prefers runtime.provider (epoch 9c5cf628 order6 bug)");
+  }
+});
+
 // ─── Summary ─────────────────────────────────────────────────────────────────
 console.log("\n" + "═".repeat(64));
 console.log(`Results: ${passed} passed, ${failed} failed out of ${passed + failed} tests`);

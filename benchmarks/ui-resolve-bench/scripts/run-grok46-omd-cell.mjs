@@ -1075,7 +1075,12 @@ function readCellIdentity(cell) {
   const variant_id = cellJson?.arm?.variant_id ?? cellJson?.variant_id ?? manifest?.variant?.id ?? null;
   const task_id = cellJson?.task?.id ?? manifest?.task?.id ?? null;
   const cell_id = cellJson?.cell_id ?? manifest?.cell_id ?? null;
-  const runtime_target = cellJson?.runtime?.provider ?? manifest?.runtime_target ?? null;
+  // cell.json carries BOTH runtime.provider ("grok-build-cli") and
+  // runtime.runtime_target ("grok"); the identity check compares against the
+  // runtime TARGET. Reading provider here fail-closed every omd cell
+  // pre-provider (epoch 9c5cf628 order6).
+  const runtime_target =
+    cellJson?.runtime?.runtime_target ?? manifest?.runtime_target ?? null;
   return { cellJson, manifest, variant_id, task_id, cell_id, runtime_target };
 }
 
