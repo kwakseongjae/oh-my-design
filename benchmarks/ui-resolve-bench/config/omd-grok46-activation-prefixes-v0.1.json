@@ -33,6 +33,12 @@
    "prefix": null,
    "bytes": 0,
    "sha256": null
+  },
+  "hallmark": {
+   "prefix": "Use the installed $hallmark skill for this task.",
+   "bytes": 48,
+   "sha256": "0d47b6da96b6d23c11a458845d2830726de8080743399ee0af5b86079d74174b",
+   "note": "supplementary arm (post-freeze discovery), same native-activation pattern as the other arms"
   }
  }
 }
