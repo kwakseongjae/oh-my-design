@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-08-15 (Fable) · epoch4 r1 과제1 완결(6/6) + Hold-and-improve 전환
+- grok 레인 최초로 한 과제의 6 arm 전부 terminal 봉인: pro-max 60(유일 접근성 PASS), 나머지 0/timeout. Luna arm 패턴 전면 재현.
+- OmD는 activation→adopt까지 성공하고 900s 예산 초과로 timeout — 짝 패배로 게이트 폐쇄, 잔여 42셀 면제.
+- 흡수 백로그(경쟁 원리+구조 강제 2종+Hallmark 4원리) 커밋, Hallmark 보충 9셀 사전 등록 잠금.
+- 다음: OmD 경량화 패치 → v0.4 재등록 → epoch 5 + 보충. 감사 따옴표 오탐은 TC-OMD-17로 수정.
+
 ## 2026-08-15 (Fable) · grok 재검수 반영 + lock 단계 신설 + lane 커밋
 - grok 재검수 반려 3건(escaped-etag byte-proof·사본 테스트·부분산출 quota 미탐) 전부 수정: 공유 모듈 `grok-cache-integrity.mjs`, TC-02d/e 회귀, usage-limit 신호/터미널 분리+score-gate signal 조항.
 - streaming-messages-json 전환으로 토큰 증빙 확보(preflight-02 실측 PASS: model provider-observed, usage 회수). timeout을 자체 terminal로 교정.

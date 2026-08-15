@@ -71,6 +71,15 @@
 - **다음 exact action: WP5 — 사용자 명시적 승인 대기.**
   WP5 시작 전 체크리스트: (1) git commit (staged 파일 전체), (2) `materialize-grok46-wow-preview.mjs` 실행 → locked/materialized dirs, (3) `admit-grok46-wow-preview.mjs admit` 실행 (위 smoke 영수증을 인자로), (4) order1 `neighborhood-library-landing-grok-4.6-r1-model-only` 1회·retry0 serial, (5) evaluator 실행.
 
+### 2026-08-15 (Fable) epoch 4 완결 — r1 첫 과제 6/6 봉인, Hold-and-improve 전환
+
+- **r1 도서관 랜딩 최종 (epoch `93b071a2`, 전 셀 봉인+백업):** model-only 0(상태 누락) · anthropic 0(상태 누락, arm 4연속) · impeccable timeout(3판 연속, image_gen×9+edit×2 귀속) · **ui-ux-pro-max 60**(반응형+접근성+정직 PASS — 유일) · taste 0(상태 누락, 893s 아슬 완주, image_gen×9) · **omd-autopilot timeout**.
+- **OmD 부검 — 성공 직전의 실패:** 스킬 발견→미션→council→시스템 초안→**activation 실제 실행→컨트롤러 정식 adopt**(graph/provenance/coverage/adoption-receipt+DESIGN.md 생성)까지 전부 성공. 그러나 파이프라인이 900s를 초과해 제품 경로 도중 절단(timeout). 감사의 "activation-missing"은 따옴표 감싼 env 변수를 미인정한 **파서 오탐**(수정 commit `ea3ffc39`, TC-OMD-17) — 점수엔 무영향(timeout이 지배).
+- **판정:** omd r1 0 vs pro-max 60 = 짝 패배(허용 0) → epoch 4 출시 게이트 폐쇄. release plan의 Hold-and-improve 조항 발동: 잔여 42셀 면제, **제품 패치 사이클 진입**. 실패 클러스터 확정 — OmD=예산 초과, 경쟁 arm=필수 상태 누락.
+- **흡수 백로그 (commit `5dadb6bc`):** grok 워커 분석 — pro-max의 접근성 통과 구조 7원리, anthropic 개성 원리, 구조 강제 2종(honesty.unknown[]→data-state 노드 의무화, primaryAction.maxVisible=1), Hallmark 원리 4종(8-state 계약, pre-emit 자기비평, 다양화, 사후 게이트).
+- **Hallmark 보충 등록 (commit `812237e5`):** 동결 후 등장 경쟁자, MIT, @13ac0ec7 fixture 동결, 9셀 보충 사전 등록 — 다음 판과 함께 실행.
+- **다음 exact action:** 작업 #7 — OmD autopilot 경량화(900s 완주)+ABS H-항목 반영 → grok 리뷰 → 새 사전 등록 v0.4 → epoch 5(48셀)+hallmark 보충(9셀). 오늘 grok 판 4개 동결·1개 완결적 진단 완료, provider 지출 총 ~12셀 — 전부 봉인 증거.
+
 ### 2026-08-15 (Fable) epoch 3·4 — evaluator 잠복 버그 동결과 재개장
 
 - **epoch 3 `b2c425e7` 동결:** order1 model-only completed → evaluator가 중복 CTA journey에서 결정적 hang(2회 재현, product 결함, 0점 봉인 — attempt 증거 양쪽 보존). order2 Anthropic completed → **evaluator 정적 서버의 잠복 크래시 발견**: 페이지가 없는 에셋을 요청하면 writeHead(200) 후 read 실패 → 404 핸들러가 헤더 이중 전송 → 프로세스 사망(ERR_HTTP_HEADERS_SENT, 2회 결정적). 깨진 에셋 참조를 가진 모든 product가 체계적 채점 불능 = 편향 판정면 → 동결. 증거 partial-02 `020baa5d…`+백업.
