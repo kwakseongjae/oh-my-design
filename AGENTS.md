@@ -123,6 +123,18 @@ This mirrors the `omd:apply` Claude Code skill behavior.
 - 종료: JOURNAL.md 맨 위에 항목 추가(한 일/열린 것/다음, 5줄 이내). 채팅에만 있는 맥락은 잃어버린 것으로 간주.
 - 컨텍스트가 요약(compact)된 채 재개되면: 첫 행동으로 context_restore.sh를 실행해 복원한다.
 
+## Cursor Cloud specific instructions
+
+This repo is **two independent npm projects** (each with its own `package-lock.json`): the root **CLI** (`oh-my-design-cli`) and the **`web/`** Next.js site. `packages/mcp` is archived — do not build or run it. The startup update script runs `npm ci` in the root and in `web/`, so dependencies are already installed for future agents.
+
+- **Standard commands** live in `## Build / test / lint` (root CLI) and `web/package.json` / `web/README.md` (site). Use those; only the non-obvious caveats below are worth remembering.
+- **Root CLI:** `npm ci`/`npm install` runs `prepare` → `npm run build` (tsup emits `dist/`), so the CLI is runnable via `node dist/bin/oh-my-design.js …` right after install. For a non-interactive install-skills run (e.g. smoke test) use `--all` (there is no `--yes` flag), e.g. `node dist/bin/oh-my-design.js install-skills --agent claude-code --all`.
+- **Web dev server:** `cd web && npm run dev` serves on **http://localhost:3335** (the port is pinned in the `dev` script — `web/README.md`'s mention of `:3000` is stale create-next-app boilerplate). `next start` (prod) defaults to 3000.
+- **Web dev startup is slow (~20–30s):** `npm run dev` first runs heavy generators (build-registry, build-reference-quality, build-reference-ast via `--experimental-strip-types`, gen-llms-full) before Next boots. These generators rewrite tracked generated files (`web/src/data/*.generated.ts`, `web/public/llms*.txt`); if they show up as unstaged changes after running dev/build, they are regenerated artifacts — revert them rather than committing.
+- Two harmless startup noises: Next.js warns about an "inferred workspace root" because both root and `web/` have lockfiles, and `web` install prints "`.git can't be found`" from its `prepare: husky` step. Both are safe to ignore.
+- **Web prod build only:** `web`'s `npm run build` additionally runs `build-embeddings`, which needs `OPENROUTER_API_KEY`. The `dev` script does **not** run embeddings, so the dev server needs no secrets. All other external integrations (Upstash Redis, Anthropic, GA/Mixpanel) degrade gracefully when their env vars are unset.
+- The pre-commit hook (`.husky/pre-commit`) only runs the catalog-integrity vitest suite when data-plane files (`web/references/**`, generated registries, etc.) change; unrelated commits skip it.
+
 ## Pre-existing OmD shims (managed by `omd sync`)
 
 Below this line, `omd sync` may add a managed block with shim content for Claude Code / Cursor compat. Do not edit between the markers.
