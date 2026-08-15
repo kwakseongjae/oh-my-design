@@ -46,6 +46,7 @@ describe('external authority-controller benchmark boundary', () => {
     const graph = JSON.parse(readFileSync(resolve('spec/fixtures/design-md-core-v2/.omd/system/graph.json'), 'utf8'));
     delete graph.projection; delete graph.extensions;
     graph.governance.decisions[0].path = 'typography_assets.roles.0.family';
+    graph.governance.decisions[0].evidence = ['council/design-system/result.json'];
     const provenance = { schema_version: '2.0.0', decisions: graph.governance.decisions };
     const groups = ['experience', 'foundations', 'typography-assets', 'components-states', 'layout-platforms', 'content-locales', 'governance'];
     const checks = ['portable_core_structure', 'bound_system_authority', 'token_reference_closure', 'contrast', 'component_state_coverage', 'responsive_320_200', 'reduced_motion', 'assets_fonts_licenses', 'implementation_contract_complete', 'unknown_absence', 'opaque_extension_preservation'];
@@ -58,6 +59,15 @@ describe('external authority-controller benchmark boundary', () => {
     writeFileSync(receiptPath, `${JSON.stringify({ schema_version: '0.1', kind: 'omd-autopilot-external-authority-controller-activation', status: 'active', authority: { role: 'project-owner', identifier: 'external-test-controller' }, scope: { project_workspace: canonicalProject, run_dir: '.omd/runs/test', single_deterministic_activation: true, review_approval: true, project_adoption_checkpoint: true, controller_executable: executable, authority_runtime_root: canonicalRuntime, authority_runtime_closure: closure }, activation: { sha256: hash(activationText) } }, null, 2)}\n`);
     const canonicalStaging = realpathSync(staging); const packageRoot = join(canonicalStaging, 'compiled-core'); const checkpoint = join(canonicalStaging, 'project-adoption-checkpoint.json');
     const activationEnv = { ...process.env, OMD_AUTHORITY_CONTROLLER_RECEIPT: receiptPath, OMD_AUTHORITY_CONTROLLER_RECEIPT_SHA256: hash(readFileSync(receiptPath)), OMD_AUTHORITY_CONTROLLER_ACTIVATION_SHA256: hash(activationText), OMD_BENCH_EXTERNAL_STAGING_ROOT: canonicalStaging, OMD_BENCH_COMPILED_CORE_PACKAGE: packageRoot, OMD_BENCH_CORE_CHECKPOINT: checkpoint };
+    const dryMissing = spawnSync(process.execPath, [executable, '--dry-check', project, '.omd/runs/test'], { encoding: 'utf8', env: activationEnv });
+    expect(dryMissing.status).not.toBe(0);
+    expect(dryMissing.stderr).toContain('project proof evidence council/design-system/result.json is missing');
+    mkdirSync(join(project, 'council/design-system'), { recursive: true });
+    writeFileSync(join(project, 'council/design-system/result.json'), '{"lane_id":"design-system","status":"complete"}\n');
+    const dryPass = spawnSync(process.execPath, [executable, '--dry-check', project, '.omd/runs/test'], { encoding: 'utf8', env: activationEnv });
+    expect(dryPass.status, dryPass.stderr).toBe(0);
+    expect(JSON.parse(dryPass.stdout)).toMatchObject({ status: 'dry-check-pass', provider_calls: 0, model_calls: 0 });
+    for (const untouched of [join(system, 'review'), join(system, 'external-authority-approval.json'), join(system, 'activation.json'), packageRoot, checkpoint]) expect(existsSync(untouched)).toBe(false);
     const result = spawnSync(process.execPath, [executable, project, '.omd/runs/test'], { encoding: 'utf8', env: activationEnv });
     expect(result.status, result.stderr).toBe(0);
     expect(files(packageRoot).map((entry) => entry.path)).toEqual(['.omd/system/adoption-receipt.json', '.omd/system/coverage.json', '.omd/system/graph.json', '.omd/system/manifest.json', '.omd/system/provenance.json', 'DESIGN.md']);
