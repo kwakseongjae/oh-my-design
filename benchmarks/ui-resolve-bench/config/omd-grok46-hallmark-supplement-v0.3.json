@@ -27,5 +27,5 @@
  "runtime": "identical to omd-grok46-wow-preview-v0.2 (grok-build-cli, grok-4.6, effort high, serial, retry 0, same runner/evaluator/score-gate shas at the execution commit)",
  "comparison_policy": "hallmark cells join the public gallery and the per-task strongest-competitor selection WITH post-freeze disclosure; the primary 48-cell preregistered headline is also reported without the supplement for readers who want the strict-freeze view.",
  "missing_data_rules": "inherit omd-grok46-wow-preview-score-gate-v0.2 including capacity/signal and minimum-n rules",
- "execution_window": "after the v0.2 wave r1 completes (never interleaved mid-wave)"
+ "execution_window": "r1 supplement cells run in the same session immediately after the admitted epoch completes its main r1 wave (never interleaved mid-wave); r2/r3 supplement cells follow the corresponding main waves."
 }

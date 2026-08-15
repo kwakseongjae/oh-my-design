@@ -38,7 +38,9 @@ folders and must never edit `DESIGN.md` or product files.
    lane. After the authority
    handoff reaches `PROPOSE_PLAN`, run
    `autopilot-council-plan.cjs <project-root> <run-dir>`, dispatch exactly the
-   listed roles exactly once and in parallel, then collect each result once and run
+   listed roles exactly once and in parallel (in bounded external-controller
+   mode, execute those same lanes inline per the budget section instead of
+   spawning advisers), then collect each result once and run
    `autopilot-council-reconcile.cjs <project-root> <run-dir>`. The reconciled
    receipt is mandatory and never grants product-write authority. Every lane
    must write the exact JSON shape declared in `plan.json`. Never send a
@@ -226,6 +228,51 @@ Only one project-scoped Autopilot mission may be active. Continue its bounded
 repair loop in the same run; never create a second run to replace, retry, or
 escape an unresolved active mission. Completed and failed missions are
 terminal and non-resumable.
+
+## Bounded external-controller budget
+
+When `OMD_AUTHORITY_CONTROLLER_RUN_DIR` is present, the mission runs under a
+hard wall-clock budget and the product route is the graded deliverable. The
+design-system rigor stays intact — what changes is where the minutes go.
+
+- Check elapsed time (`date +%s`) at every state boundary. Authority, council,
+  and system work together must finish inside the FIRST 40% of the budget;
+  everything after belongs to `PRODUCT_BUILD` → `VERIFY` → controller handoff.
+- Dispatch NO adviser subagents in this mode. Execute the planned council
+  lanes inline: the main agent authors each lane's exact JSON shape as its own
+  read-only analysis from DETECT evidence. Inline lanes still never grant
+  product-write authority; reconcile normally. A subagent round-trip you can
+  answer yourself from the repository is budget theft from the product.
+- Author the three system drafts in one pass and invoke the controller once,
+  immediately. Do not re-read, re-verify, or beautify drafts the compiler will
+  normalize anyway.
+- If authority+system work has consumed 50% of the budget before adoption,
+  skip every remaining optional analysis and go straight to the smallest
+  compiler-valid drafts.
+
+## Product route order (graded-state first)
+
+In `PRODUCT_BUILD`, implement in this exact order — a polished page missing a
+required state scores zero, an honest skeleton with every state scores:
+
+1. Semantic skeleton for the real route: landmarks, single `nav` with
+   disclosure collapse, skip link targeting `#main` (never the primary CTA),
+   heading order, form field ID graph (`label[for]`, `aria-describedby`
+   hint+error chain, `role="alert"` errors, focusable `role="status"` success).
+2. EVERY required state as machine-detectable DOM, before any visual polish:
+   each acceptance-plan state gets a visible node with
+   `data-state="<state-name>"` (for example
+   `data-state="unavailable-information"`). Every entry in the system's
+   honesty/unknown ledger renders as a visible unavailable-information node —
+   prose disclaimers alone do not count.
+3. Primary-action uniqueness: exactly one visible primary CTA (chrome or hero,
+   not both), marked `data-cta="primary"`; the form submit is
+   `data-cta="submit"`; repeated per-item controls are `data-cta="local"` and
+   never reuse the primary verb string. No sticky/footer primary duplicates.
+4. Foreground/background color PAIRS from the adopted tokens (never a lone
+   accent value), decorative media `aria-hidden` and informative SVG named via
+   `role="img"` + title/desc, then visual polish last with whatever budget
+   remains.
 
 ## Design-system decision
 

@@ -144,7 +144,9 @@
     "model_substitution_budget": 0,
     "effort_substitution_budget": 0,
     "workspace_boundary_applies_to_every_arm": true,
-    "workspace_boundary_prompt_suffix": "Benchmark runtime boundary: keep every generated file and temporary validation artifact inside the current workspace (use .benchmark/tmp when needed), except an exact cell-local staging path explicitly disclosed by the controller for an arm whose native package adopter requires source/destination separation. Do not read or write any other external path, including /tmp, and do not launch or control browsers or use network access; the external evaluator owns browser checks."
+    "workspace_boundary_prompt_suffix": "Benchmark runtime boundary: keep every generated file and temporary validation artifact inside the current workspace (use .benchmark/tmp when needed), except an exact cell-local staging path explicitly disclosed by the controller for an arm whose native package adopter requires source/destination separation. Do not read or write any other external path, including /tmp, and do not launch or control browsers or use network access; the external evaluator owns browser checks.",
+    "execution_budget_ms": 1200000,
+    "execution_budget_note": "Raised 900s→1200s for ALL arms equally before epoch 5 (preregistration-phase change, no results in the new epoch yet): three arms hit the 900s wall on grok (impeccable 3/3 epochs, taste 893s near-miss, omd adopted at ~600s then cut mid-product). Equal budget, same serial/retry-0 contract."
   },
   "waves": {
     "wave_order": [
