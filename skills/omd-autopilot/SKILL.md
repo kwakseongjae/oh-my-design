@@ -246,6 +246,13 @@ design-system rigor stays intact — what changes is where the minutes go.
 - Author the three system drafts in one pass and invoke the controller once,
   immediately. Do not re-read, re-verify, or beautify drafts the compiler will
   normalize anyway.
+- The controller invocation must be the ENTIRE command — never append `;`,
+  `&&`, `echo`, `date`, or anything else to it (sequencing voids the
+  exactly-once contract). Run elapsed-time checks as their own separate
+  commands before or after.
+- Before invoking the controller, ensure the exact `task.md` bytes also exist
+  at the project root (copy from the run directory): the adopter requires
+  `<project-root>/task.md` as proof evidence.
 - If authority+system work has consumed 50% of the budget before adoption,
   skip every remaining optional analysis and go straight to the smallest
   compiler-valid drafts.
