@@ -246,6 +246,11 @@ design-system rigor stays intact — what changes is where the minutes go.
 - Author the three system drafts in one pass and invoke the controller once,
   immediately. Do not re-read, re-verify, or beautify drafts the compiler will
   normalize anyway.
+- Before invoking the controller, verify every enum-typed field in your three
+  drafts against the bundled schemas (`spec/schema/design-system-graph-v2.schema.json`
+  and siblings): platform ids, state names, provenance kinds, coverage keys.
+  A guessed enum wastes the single activation — the controller fail-closes on
+  the first schema violation and there is no second invocation.
 - The controller invocation must be the ENTIRE command — never append `;`,
   `&&`, `echo`, `date`, or anything else to it (sequencing voids the
   exactly-once contract). Run elapsed-time checks as their own separate
@@ -266,12 +271,19 @@ required state scores zero, an honest skeleton with every state scores:
    disclosure collapse, skip link targeting `#main` (never the primary CTA),
    heading order, form field ID graph (`label[for]`, `aria-describedby`
    hint+error chain, `role="alert"` errors, focusable `role="status"` success).
-2. EVERY required state as machine-detectable DOM, before any visual polish:
-   each acceptance-plan state gets a visible node with
-   `data-state="<state-name>"` (for example
-   `data-state="unavailable-information"`). Every entry in the system's
-   honesty/unknown ledger renders as a visible unavailable-information node —
-   prose disclaimers alone do not count.
+2. EVERY required state as machine-detectable DOM, before any visual polish.
+   The graded state list is the one the TASK BYTES name — read the task
+   prompt's required states first (an operations task may demand
+   filtered/selected/assignment-error/assigned; a locale task may demand
+   locale-selected/in-progress/complete/translation-unavailable) and give each
+   of those the same priority as the generic
+   default/loading/empty/error/success/disabled set. Each state gets a visible
+   node with `data-state="<state-name>"`, and every task-named state must be
+   REACHABLE through a real user interaction on the route (an external
+   evaluator drives actual clicks and selections — a static mockup of the
+   state does not count; clicking a row must visibly select it). Every entry
+   in the system's honesty/unknown ledger renders as a visible
+   unavailable-information node — prose disclaimers alone do not count.
 3. Primary-action uniqueness: exactly one visible primary CTA (chrome or hero,
    not both), marked `data-cta="primary"`; the form submit is
    `data-cta="submit"`; repeated per-item controls are `data-cta="local"` and
