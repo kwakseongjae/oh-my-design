@@ -1540,8 +1540,18 @@ if (invoked) {
     const relative = raw === '/' ? 'index.html' : normalize(raw).replace(/^[/\\]+/, '');
     const file = resolve(workspace, relative);
     if (file !== workspace && !file.startsWith(`${workspace}/`)) return response.writeHead(403).end('Forbidden');
-    try { response.writeHead(200, { 'content-type': mime[extname(file)] || 'application/octet-stream' }); response.end(readFileSync(file)); }
-    catch { response.writeHead(404).end('Not found'); }
+    // Read BEFORE writing headers: a product page requesting a missing asset
+    // must be a recorded 404, never an ERR_HTTP_HEADERS_SENT process crash
+    // (epoch b2c425e7 order2 froze on this — writeHead(200) preceded the
+    // readFileSync throw, so the catch double-wrote headers).
+    try {
+      const bytes = readFileSync(file);
+      response.writeHead(200, { 'content-type': mime[extname(file)] || 'application/octet-stream' });
+      response.end(bytes);
+    } catch {
+      if (!response.headersSent) response.writeHead(404);
+      response.end('Not found');
+    }
   });
   await new Promise((done) => server.listen(0, '127.0.0.1', done));
   const origin = `http://127.0.0.1:${server.address().port}`;
