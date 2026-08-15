@@ -63,7 +63,7 @@ function verifyAuthorityRuntime(projectRoot, binding) {
   if (sha256(canonical(files)) !== binding.sha256) fail('authority runtime closure hash binding failed');
 }
 
-function activate(projectArg, runArg) {
+function preflight(projectArg, runArg) {
   const projectRoot = directory(path.resolve(projectArg), 'project root');
   const runDir = directory(path.resolve(projectRoot, runArg), 'run directory');
   if (!inside(runDir, projectRoot)) fail('run directory must be inside the project root');
@@ -91,6 +91,60 @@ function activate(projectArg, runArg) {
     ['adopt', 'adopt-design-md-core.cjs'],
     ['validate', 'validate-project-design-system.cjs'],
   ].map(([key, name]) => [key, regular(path.join(__dirname, name), `${name} helper`)]));
+  return { projectRoot, runDir, systemDir, graph, provenance, coverage, controller, packageRoot, checkpoint, reviewDir, approval, activation, scripts };
+}
+
+function evidenceReferencesFromDrafts(provenanceFile, coverageFile) {
+  const provenance = JSON.parse(fs.readFileSync(provenanceFile, 'utf8'));
+  const coverage = JSON.parse(fs.readFileSync(coverageFile, 'utf8'));
+  const references = [];
+  for (const decision of Array.isArray(provenance?.decisions) ? provenance.decisions : []) {
+    references.push(...(Array.isArray(decision?.evidence) ? decision.evidence : []));
+  }
+  const groups = coverage?.groups && typeof coverage.groups === 'object' ? coverage.groups : {};
+  for (const group of Object.values(groups)) {
+    references.push(...(Array.isArray(group?.evidence) ? group.evidence : []));
+  }
+  return [...new Set(references)];
+}
+
+function dryCheck(projectArg, runArg) {
+  const ctx = preflight(projectArg, runArg);
+  const scratch = fs.mkdtempSync(path.join(require('node:os').tmpdir(), 'omd-autopilot-dry-check-'));
+  const scratchReview = path.join(scratch, 'review');
+  const scratchApproval = path.join(scratch, 'external-authority-approval.json');
+  const scratchPackage = path.join(scratch, 'package');
+  run(ctx.scripts.prepare, [ctx.graph, '--provenance', ctx.provenance, '--coverage', ctx.coverage, '--out-dir', scratchReview], ctx.projectRoot);
+  run(ctx.scripts.prepare, ['--approve', path.join(scratchReview, 'review-request.json'), '--reviewer', ctx.controller.value.authority.identifier,
+    '--out', scratchApproval, '--authority-transition-approved'], ctx.projectRoot, ctx.controller.sha256);
+  run(ctx.scripts.compile, [path.join(scratchReview, 'input-graph.json'), '--provenance', path.join(scratchReview, 'provenance.json'),
+    '--coverage', path.join(scratchReview, 'coverage.json'), '--review-receipt', scratchApproval, '--out-dir', scratchPackage, '--adopt'], ctx.projectRoot);
+  const missing = [];
+  for (const reference of evidenceReferencesFromDrafts(ctx.provenance, ctx.coverage)) {
+    if (typeof reference !== 'string' || !reference.trim()) { missing.push(`invalid evidence reference: ${JSON.stringify(reference)}`); continue; }
+    const [filePart] = reference.split('#', 1);
+    if (!filePart || path.isAbsolute(filePart) || filePart.includes('\\') || filePart.split('/').includes('..')) {
+      missing.push(`unsafe evidence reference: ${reference}`); continue;
+    }
+    const normalized = filePart.split(path.sep).join('/');
+    if (normalized === 'DESIGN.md' || normalized.startsWith('.omd/system/')) continue;
+    const source = path.resolve(ctx.projectRoot, filePart);
+    if (!inside(source, ctx.projectRoot)) { missing.push(`evidence escapes the project: ${reference}`); continue; }
+    if (!fs.existsSync(source) || !fs.lstatSync(source).isFile()) {
+      missing.push(`project proof evidence ${reference} is missing at ${source}`);
+    }
+  }
+  if (missing.length) fail(`dry-check found ${missing.length} blocking issue(s):\n${missing.join('\n')}`);
+  return {
+    schema_version: '0.1', kind: 'omd-autopilot-deterministic-system-activation-dry-check', status: 'dry-check-pass',
+    authority_controller_receipt_sha256: ctx.controller.sha256,
+    inputs: { graph_sha256: sha256(fs.readFileSync(ctx.graph)), provenance_sha256: sha256(fs.readFileSync(ctx.provenance)), coverage_sha256: sha256(fs.readFileSync(ctx.coverage)) },
+    provider_calls: 0, model_calls: 0, browser_calls: 0, network_calls: 0,
+  };
+}
+
+function activate(projectArg, runArg) {
+  const { projectRoot, runDir, systemDir, graph, provenance, coverage, controller, packageRoot, checkpoint, reviewDir, approval, activation, scripts } = preflight(projectArg, runArg);
 
   run(scripts.prepare, [graph, '--provenance', provenance, '--coverage', coverage, '--out-dir', reviewDir], projectRoot);
   run(scripts.prepare, ['--approve', path.join(reviewDir, 'review-request.json'), '--reviewer', controller.value.authority.identifier,
@@ -115,8 +169,11 @@ function activate(projectArg, runArg) {
 }
 
 try {
-  if (process.argv.length !== 4) fail('usage: activate-autopilot-design-system.cjs <project-root> <run-dir>');
-  process.stdout.write(`${JSON.stringify(activate(process.argv[2], process.argv[3]), null, 2)}\n`);
+  const argv = process.argv.slice(2);
+  const dry = argv[0] === '--dry-check';
+  const positional = dry ? argv.slice(1) : argv;
+  if (positional.length !== 2) fail('usage: activate-autopilot-design-system.cjs [--dry-check] <project-root> <run-dir>');
+  process.stdout.write(`${JSON.stringify((dry ? dryCheck : activate)(positional[0], positional[1]), null, 2)}\n`);
 } catch (error) {
   process.stderr.write(`${error instanceof Error ? error.message : String(error)}\n`);
   process.exitCode = 1;

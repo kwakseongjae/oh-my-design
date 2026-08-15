@@ -274,6 +274,38 @@ assert("TC-OMD-16: cell identity reads runtime.runtime_target, never runtime.pro
   }
 });
 
+const DRY_LITERAL = `node $${OMD_AUTHORITY_EXECUTABLE_ENV} --dry-check . $${OMD_AUTHORITY_RUN_DIR_ENV}`;
+
+assert("TC-OMD-18: dry-check runs are free — repeated/failed dry-checks never count as activations", () => {
+  const audit = auditOmdControllerCommands(scenario([
+    { command: DRY_LITERAL, output: "autopilot system activation: dry-check found 2 blocking issue(s)", isError: true },
+    { command: DRY_LITERAL, output: '"status": "dry-check-pass"' },
+    { command: LITERAL, output: ADOPTED },
+  ]), RUN_DIR);
+  if (!audit.pass) throw new Error(`dry-checks broke the audit: ${JSON.stringify(audit.forbidden)}`);
+  if (audit.exact_activation_count !== 1) throw new Error(`count=${audit.exact_activation_count}`);
+  if (audit.dry_check_count !== 2) throw new Error(`dry_check_count=${audit.dry_check_count}`);
+});
+
+assert("TC-OMD-19: dry-check with smuggled sequencing → forbidden", () => {
+  const audit = auditOmdControllerCommands(scenario([
+    { command: `${DRY_LITERAL} && echo done`, output: "x" },
+    { command: LITERAL, output: ADOPTED },
+  ]), RUN_DIR);
+  if (audit.pass) throw new Error("smuggled dry-check passed");
+  if (!audit.forbidden.some((f) => f.reason === "dry-check-raw-command-not-exact")) {
+    throw new Error(`missing dry-check reason: ${JSON.stringify(audit.forbidden)}`);
+  }
+});
+
+assert("TC-OMD-20: dry-check alone (no real activation) still fails the exactly-once gate", () => {
+  const audit = auditOmdControllerCommands(scenario([
+    { command: DRY_LITERAL, output: '"status": "dry-check-pass"' },
+  ]), RUN_DIR);
+  if (audit.pass) throw new Error("dry-check alone passed");
+  if (audit.exact_activation_count !== 0) throw new Error(`count=${audit.exact_activation_count}`);
+});
+
 // ─── Summary ─────────────────────────────────────────────────────────────────
 console.log("\n" + "═".repeat(64));
 console.log(`Results: ${passed} passed, ${failed} failed out of ${passed + failed} tests`);

@@ -70,12 +70,28 @@ folders and must never edit `DESIGN.md` or product files.
    choose a second output name. Author the three drafts once, with every
    interactive component declaring all seven state-applicability entries and
    every non-interactive component declaring only a reason (non-interactive
-   error/success display variants do not require a focus-visible state). Then
-   invoke exactly once:
+   error/success display variants do not require a focus-visible state).
+
+   Before spending the single activation, validate the drafts with the
+   controller's provider-free dry-check. It may be run any number of times and
+   never counts against the activation budget:
+
+   ```bash
+   node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE --dry-check . $OMD_AUTHORITY_CONTROLLER_RUN_DIR
+   ```
+
+   The dry-check compiles the drafts into a scratch package and verifies that
+   every evidence path referenced by `provenance.json` and `coverage.json`
+   (for example `council/<lane>/result.json`) exists as a real file at the
+   project root. Fix every reported issue and rerun the dry-check until it
+   prints `"status": "dry-check-pass"`. Only then invoke exactly once:
 
    ```bash
    node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE . $OMD_AUTHORITY_CONTROLLER_RUN_DIR
    ```
+
+   Both commands must be issued standalone, byte-exact as written — never
+   append `;`, `&&`, `echo`, redirects, or any other text to either command.
 
    That provider-free helper binds the preregistered external controller,
    compiles from the prepared review's normalized inputs, creates the exact
@@ -243,14 +259,17 @@ design-system rigor stays intact — what changes is where the minutes go.
   read-only analysis from DETECT evidence. Inline lanes still never grant
   product-write authority; reconcile normally. A subagent round-trip you can
   answer yourself from the repository is budget theft from the product.
-- Author the three system drafts in one pass and invoke the controller once,
-  immediately. Do not re-read, re-verify, or beautify drafts the compiler will
-  normalize anyway.
-- Before invoking the controller, verify every enum-typed field in your three
-  drafts against the bundled schemas (`spec/schema/design-system-graph-v2.schema.json`
-  and siblings): platform ids, state names, provenance kinds, coverage keys.
-  A guessed enum wastes the single activation — the controller fail-closes on
-  the first schema violation and there is no second invocation.
+- Author the three system drafts in one pass, run the controller `--dry-check`
+  until it passes, then invoke the controller once, immediately. Do not
+  re-read, re-verify, or beautify drafts the compiler will normalize anyway —
+  the dry-check IS the verification step, and it is free (it never counts
+  against the single activation).
+- The dry-check catches schema/enum violations and missing evidence files
+  (every path referenced by provenance/coverage evidence must exist at the
+  project root). A guessed enum or phantom evidence path wastes the single
+  activation — the controller fail-closes on the first violation and there is
+  no second invocation, so never invoke the real activation while a dry-check
+  is still failing.
 - The controller invocation must be the ENTIRE command — never append `;`,
   `&&`, `echo`, `date`, or anything else to it (sequencing voids the
   exactly-once contract). Run elapsed-time checks as their own separate

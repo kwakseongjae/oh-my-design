@@ -928,9 +928,12 @@ export function auditOmdControllerCommands(events, runDir, controllerExecutable 
   }
 
   const activations = [];
+  const dryChecks = [];
   const forbidden = [];
   const literalCommand = `node $${OMD_AUTHORITY_EXECUTABLE_ENV} . $${OMD_AUTHORITY_RUN_DIR_ENV}`;
   const expandedCommand = `node ${controllerExecutable} . ${runDir}`;
+  const literalDryCheck = `node $${OMD_AUTHORITY_EXECUTABLE_ENV} --dry-check . $${OMD_AUTHORITY_RUN_DIR_ENV}`;
+  const expandedDryCheck = `node ${controllerExecutable} --dry-check . ${runDir}`;
   const exactRawActivation = (command) => {
     if (command === literalCommand || command === expandedCommand) return true;
     // Shell-correct quoted env vars are semantically identical to the literal
@@ -943,6 +946,18 @@ export function auditOmdControllerCommands(events, runDir, controllerExecutable 
     return tokens.length === 3 && tokens.every((token) => token.type === "word")
       && tokens[0].value.split("/").at(-1) === "zsh" && tokens[1].value === "-lc"
       && (tokens[2].value === literalCommand || tokens[2].value === expandedCommand);
+  };
+  // Dry-check invocations are provider-free prerequisite validations: unlimited
+  // count, any exit status — but the raw command must stay standalone-exact so
+  // nothing can be smuggled alongside the controller executable.
+  const exactRawDryCheck = (command) => {
+    if (command === literalDryCheck || command === expandedDryCheck) return true;
+    const dequoted = command.replace(/"(\$[A-Z_]+)"/g, "$1").replace(/'(\$[A-Z_]+)'/g, "$1");
+    if (dequoted === literalDryCheck) return true;
+    const tokens = shellTokens(command);
+    return tokens.length === 3 && tokens.every((token) => token.type === "word")
+      && tokens[0].value.split("/").at(-1) === "zsh" && tokens[1].value === "-lc"
+      && (tokens[2].value === literalDryCheck || tokens[2].value === expandedDryCheck);
   };
   const syntacticActivation = (command) => shellInvocations(command).some((invocation) => {
     const argv = unwrapExecutionArgv(invocation);
@@ -959,6 +974,11 @@ export function auditOmdControllerCommands(events, runDir, controllerExecutable 
     const command = record.command.trim();
     const activationLike = syntacticActivation(command);
     if (!activationLike) continue;
+    if (/--dry-check/.test(command)) {
+      if (exactRawDryCheck(command)) dryChecks.push(id);
+      else forbidden.push({ id, reason: "dry-check-raw-command-not-exact", command_sha256: sha256(record.command) });
+      continue;
+    }
     if (!exactRawActivation(command)) {
       forbidden.push({ id, reason: "activation-raw-command-not-exact", command_sha256: sha256(record.command) });
       continue;
@@ -998,6 +1018,8 @@ export function auditOmdControllerCommands(events, runDir, controllerExecutable 
     pass: activations.length === 1 && forbidden.length === 0,
     exact_activation_count: activations.length,
     activation_item_ids: activations,
+    dry_check_count: dryChecks.length,
+    dry_check_item_ids: dryChecks,
     forbidden,
     evidence_mode: "grok-streaming-messages-json-run_terminal_command-tool_use",
   };
