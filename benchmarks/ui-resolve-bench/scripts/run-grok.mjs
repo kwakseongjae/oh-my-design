@@ -40,7 +40,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { homedir, tmpdir } from "node:os";
-import { join, resolve } from "node:path";
+import { basename, dirname, join, resolve } from "node:path";
 import {
   diffTreeManifests,
   parseArgs,
@@ -105,6 +105,20 @@ const artifactSuffix = args.get("artifact-suffix")
 // Optional: GROK_SANDBOX env controls --sandbox flag
 const grokSandboxProfile = process.env.GROK_SANDBOX ?? null;
 
+// OmD controller env transfer (omd-autopilot-v2 cells only). The 8 bindings
+// arrive ONLY via the JSON file written by run-grok46-omd-cell.mjs —
+// process.env is never read for these keys (ambient env selection killed a
+// Luna epoch; see 68a-v2).
+const omdControllerEnvPath = args.get("omd-controller-env")
+  ? resolve(String(args.get("omd-controller-env")))
+  : null;
+const OMD_CONTROLLER_ENV_KEYS = Object.freeze([
+  "OMD_BENCH_EXTERNAL_STAGING_ROOT", "OMD_BENCH_COMPILED_CORE_PACKAGE", "OMD_BENCH_CORE_CHECKPOINT",
+  "OMD_AUTHORITY_CONTROLLER_RECEIPT", "OMD_AUTHORITY_CONTROLLER_RECEIPT_SHA256",
+  "OMD_AUTHORITY_CONTROLLER_ACTIVATION_SHA256", "OMD_AUTHORITY_CONTROLLER_RUN_DIR",
+  "OMD_AUTHORITY_CONTROLLER_EXECUTABLE",
+]);
+
 if (!workspace) {
   console.error(
     "usage: run-grok.mjs --workspace <prepared-dir> [--timeout-ms 900000]",
@@ -137,6 +151,59 @@ if (existsSync(resultPath)) {
 const manifest = readJson(manifestPath);
 if (manifest.runtime_target !== "grok") {
   throw new Error("workspace was not prepared with --runtime grok");
+}
+
+const omdControllerEnv = {};
+if (manifest.variant?.id === "omd-autopilot-v2") {
+  if (!omdControllerEnvPath) {
+    throw new Error("OmD controller invocation requires --omd-controller-env");
+  }
+  const envInfo = existsSync(omdControllerEnvPath) ? lstatSync(omdControllerEnvPath) : null;
+  if (!envInfo?.isFile() || envInfo.isSymbolicLink()) {
+    throw new Error("OmD controller env file must be a regular non-symlink file");
+  }
+  const envBytes = readFileSync(omdControllerEnvPath);
+  const envValue = JSON.parse(envBytes.toString("utf8"));
+  const observedKeys = Object.keys(envValue ?? {}).sort();
+  const expectedKeys = [...OMD_CONTROLLER_ENV_KEYS].sort();
+  if (JSON.stringify(observedKeys) !== JSON.stringify(expectedKeys)) {
+    throw new Error("OmD controller env schema drift");
+  }
+  if (OMD_CONTROLLER_ENV_KEYS.some((key) => typeof envValue[key] !== "string" || !envValue[key])) {
+    throw new Error("OmD controller invocation requires the exact preregistered environment bindings");
+  }
+  const staging = resolve(envValue.OMD_BENCH_EXTERNAL_STAGING_ROOT);
+  const packageRoot = resolve(envValue.OMD_BENCH_COMPILED_CORE_PACKAGE);
+  const checkpoint = resolve(envValue.OMD_BENCH_CORE_CHECKPOINT);
+  const receiptPath = resolve(envValue.OMD_AUTHORITY_CONTROLLER_RECEIPT);
+  const executable = resolve(envValue.OMD_AUTHORITY_CONTROLLER_EXECUTABLE);
+  const executionRoot = dirname(workspace);
+  const stagingInfo = existsSync(staging) ? lstatSync(staging) : null;
+  const receiptInfo = existsSync(receiptPath) ? lstatSync(receiptPath) : null;
+  const executableInfo = existsSync(executable) ? lstatSync(executable) : null;
+  const receiptBytes = receiptInfo?.isFile() && !receiptInfo.isSymbolicLink() ? readFileSync(receiptPath) : null;
+  const receiptSha = receiptBytes ? createHash("sha256").update(receiptBytes).digest("hex") : null;
+  const receipt = receiptBytes ? JSON.parse(receiptBytes) : null;
+  const expectedRunDir = `.omd/runs/${String(manifest.task?.id ?? "benchmark-task").replace(/-landing$/, "")}`;
+  if (!stagingInfo?.isDirectory() || stagingInfo.isSymbolicLink()
+    || dirname(staging) !== executionRoot || basename(staging) !== "omd-external-staging"
+    || dirname(packageRoot) !== staging || basename(packageRoot) !== "compiled-core"
+    || dirname(checkpoint) !== staging || basename(checkpoint) !== "project-adoption-checkpoint.json"
+    || dirname(receiptPath) !== executionRoot || basename(receiptPath) !== "OMD-AUTHORITY-CONTROLLER.json"
+    || !executableInfo?.isFile() || executableInfo.isSymbolicLink()
+    || dirname(dirname(executable)) !== join(executionRoot, "authority-controller-runtime")
+    || basename(executable) !== "activate-autopilot-design-system.cjs"
+    || receiptSha !== envValue.OMD_AUTHORITY_CONTROLLER_RECEIPT_SHA256
+    || receipt?.kind !== "omd-autopilot-external-authority-controller-activation"
+    || receipt?.scope?.project_workspace !== workspace || receipt?.scope?.run_dir !== expectedRunDir
+    || resolve(receipt?.scope?.controller_executable ?? "") !== executable
+    || receipt?.activation?.sha256 !== envValue.OMD_AUTHORITY_CONTROLLER_ACTIVATION_SHA256
+    || envValue.OMD_AUTHORITY_CONTROLLER_RUN_DIR !== expectedRunDir) {
+    throw new Error("OmD controller environment differs from the execution receipt/add-dir contract");
+  }
+  for (const key of OMD_CONTROLLER_ENV_KEYS) omdControllerEnv[key] = envValue[key];
+} else if (omdControllerEnvPath) {
+  throw new Error("--omd-controller-env is only valid for omd-autopilot-v2 cells");
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -308,6 +375,7 @@ Object.assign(childEnv, {
   DISABLE_TELEMETRY: "1",
   DO_NOT_TRACK: "1",
   CI: "1",
+  ...omdControllerEnv,
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
