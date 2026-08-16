@@ -263,9 +263,9 @@ bb36665889124a0b6e15f16045265737449c3bdcf2712cdb08af3cfa01563e2b  impeccable-pro
 43cf60991a233a84646eb73883461cb4184f680d903d26610f82db6e3e905fa5  impeccable-prompt-only/.agents/skills/impeccable/scripts/pin.mjs
 ed01a46415b89e1852ceefe3efb00ae556e48440b7d9aef2f41e1a079efb8c89  impeccable-prompt-only/.agents/skills/impeccable/scripts/serve-question.mjs
 acd03bf38f6aef2b5d5287cefccacac018063b5b5356c99d191b3bd012f28ed3  impeccable-prompt-only/.agents/skills/impeccable/scripts/surface-brief.mjs
-3b9e3fc6bebc3c10cb5eabbd4863f1b113594201e83bf68534c6c1d987166c4a  omd-autopilot-v2/.agents/skills/omd-autopilot/SKILL.md
+93b424e7f88358e6ca0a25650b80f8e24a80ff1fd72e85355375be942def5003  omd-autopilot-v2/.agents/skills/omd-autopilot/SKILL.md
 794077a2a4f4fab2cdc56ffb3d841e988d3537129ea24f843b5df898e7b607cc  omd-autopilot-v2/.agents/skills/omd-autopilot/references/design-system-contract.md
-532b548b95da47efc4719c636c6a785410dcc7bda8827252cd21a0c13678c56a  omd-autopilot-v2/PROVENANCE.md
+f63a5538b3343f5b76b591dbbd21664fc329d7aa8ccb4dd6045c777a11db76fc  omd-autopilot-v2/PROVENANCE.md
 97dc0f64044c0827f134c6156daeeec0a185bf18454424fa6cec2a1c74b5d603  omd-autopilot-v2/scripts/activate-autopilot-design-system.cjs
 4bd50ef03ab2b975f95aeaf74f35870f37063eaaae4fb00670044d9d9841995f  omd-autopilot-v2/scripts/adopt-design-md-core.cjs
 cc4b7d39a054ca88369e804d9401da5013b1ceec73530c3e282711340282f073  omd-autopilot-v2/scripts/autopilot-council-plan.cjs

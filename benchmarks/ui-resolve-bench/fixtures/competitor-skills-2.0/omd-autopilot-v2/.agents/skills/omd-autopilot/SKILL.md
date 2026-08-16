@@ -351,6 +351,49 @@ or role changes). Any row missing either entry is unfinished work — fix it
 before the mission proof, budget permitting, because a missing row scores the
 same as a missing page.
 
+## Motion and micro-transitions (system-owned)
+
+Motion is a design-system concern, not per-element improvisation. When the
+brief asks for a modern/polished feel (or names transitions), establish
+motion TOKENS in the system first and cite only them:
+
+- One duration scale (fast ~120ms, base ~200ms, slow ~320ms) and at most two
+  easing curves (one enter, one exit). Every transition on the page uses a
+  token pair — a one-off cubic-bezier is an unauthorized token.
+- Animate ONLY `transform` and `opacity` (compositor-friendly); never animate
+  layout properties (width/height/top/margin) or box-shadow directly (fake
+  elevation with a pseudo-element opacity fade).
+- Standard vocabulary, applied sparingly: entrance fade-up for major sections
+  (one-time, on first reveal), hover elevation/tilt on interactive cards,
+  pressed-state scale on buttons, focus-visible transition on CTAs. One page
+  needs 3–5 total motion patterns, not one per element.
+- EVERY animation sits behind `@media (prefers-reduced-motion: reduce)` with
+  a non-animated equivalent state — reduced-motion is a graded contract, not
+  an afterthought.
+- Provided asset images get explicit width/height (no CLS) and motion applies
+  to their container, never the raw img.
+
+## Framework idiom projection
+
+The adopted design system is stack-neutral; the PRODUCT expresses it in the
+stack the brief names. Detect the stack from the brief and any provided
+runtime (vendored libraries in assets/), then project tokens and state
+semantics into that stack's native idiom — never a foreign one:
+
+- Vanilla HTML/CSS: tokens as `:root` custom properties; states as
+  data-/aria- attributes driven by small event handlers.
+- React (including buildless Preact+HTM): tokens as one exported theme
+  object AND mirrored `:root` custom properties; components as functions
+  whose props carry state; aria attributes computed from the same props that
+  drive the visuals (single source of truth — never a DOM query after
+  render); lists keyed by stable record IDs; no innerHTML string templating.
+- Tailwind (when present): tokens declared once in the config/theme layer
+  and referenced by utility classes; never inline arbitrary values that
+  bypass the token scale.
+- The same journey states, aria semantics, and honesty rules apply
+  identically in every stack — the projection changes syntax, never the
+  contract.
+
 ## Design-system decision
 
 - Valid compatible root `DESIGN.md` → `reuse` without reopening it. Legacy

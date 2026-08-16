@@ -32,3 +32,14 @@ checked/current, error triad focus+describedby+alert, status announcements
 with record IDs, html lang sync, progressbar/text agreement), single
 main/h1 invariants, 320/390/1440 responsive determinism, named honest-absence
 sentences, and a mandatory pre-proof SELF-WALK of every brief verb.
+
+## Patch 6 refreeze (2026-08-17, Showcase 2.0 prep)
+
+Post-gate-pass absorption (user-directed): (1) motion/micro-transition norms
+distilled from the MIT-licensed Amicro pattern taxonomy (entrance fade-up,
+hover elevation/tilt, pressed scale) as system-owned motion TOKENS with
+transform/opacity-only and prefers-reduced-motion contracts; (2) framework
+idiom projection — the stack-neutral system projects into vanilla CSS custom
+properties, React/Preact theme-object + props-driven aria, or Tailwind
+config-layer tokens, with identical journey/aria/honesty contracts across
+stacks. Patterns absorbed as norms; no third-party code copied.
