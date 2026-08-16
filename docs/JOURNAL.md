@@ -3,6 +3,11 @@
 > 세션 시작: 최근 항목 1~2개 확인. 세션 종료: **맨 위에** 5줄 이내 항목 추가. 기존 항목 수정 금지.
 > 결정·증거·계획의 정본이 아니다 — "무엇을 하다 어디서 멈췄나"만 기록한다.
 
+## 2026-08-16 (Fable) e8 48/48 완주 — OmD v2.4 dry-check, 랜딩 평균 80 vs 차점 43.3
+- 한 일: e7 부검(council evidence 미실체화) → v2.4 `--dry-check` 출시(컨트롤러+감사+스킬+픽스처, 테스트 20+21+3 PASS) → e8(8edf400a) 개장·48셀 완주·전량 봉인. OmD 랜딩 80/**100(만점·ui_resolved 랩 최초)**/60, 파이프라인 9/9. 갤러리 e8 섹션 반영.
+- 열린 것: r3 짝패배(60<70)로 릴리스 게이트 폐쇄 — v2.5 백로그(responsive·evidence_honesty 편차, 과제 고유 상태 도달성). Hallmark 보충 r2/r3 우선순위 사용자 결정 대기.
+- 다음: v2.5 흡수 → epoch 9, 또는 현 데이터로 blind review 준비. 증거: /private/tmp/omd-grok46-wow-evidence-8edf400a + ~/.omd-bench-backups.
+
 ---
 
 ## 2026-08-15 (Fable) · 쇼케이스 런 완주 — 19셀+Hallmark+갤러리

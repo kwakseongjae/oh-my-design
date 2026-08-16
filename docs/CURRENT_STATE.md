@@ -10,6 +10,42 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-16 (Fable) e8 완주 — 48/48 봉인 · OmD 2승 6무 1패 · 게이트는 r3에서 폐쇄
+
+- **최종 판정:** landing r3에서 OmD 60 < promax 70 짝패배 1회 → paired_losses_allowed=0에 따라 릴리스 게이트 폐쇄(order38에서 판정 봉인). r3 잔여는 데이터셋 완성용으로 완주. `EXECUTION-RECORDS.final.json` 봉인(sha 8b656f8d…) + 백업.
+- **OmD 성적:** landing 3 trial **80 / 100(만점·ui_resolved 랩 최초) / 60 — 평균 80** vs promax 평균 43.3, taste 23.3, model 10, anthropic·impeccable 0. cold-chain·clinic은 전 arm·전 trial 0(각 15/15) — 상태 도달성이 현 세대 공통 한계.
+- **v2.4 dry-check 완전 실증: 파이프라인 9/9, activation 낭비 0** (이전 ~1/3). impeccable arm은 9/9 타임아웃. 용량 이벤트 0. auth 사고 2회는 iso-copy 복원 플레이북으로 셀 소모 없이 회복.
+- **v2.5 흡수 백로그:** (1) landing responsive·evidence_honesty 세대 편차(r3 패인), (2) cold-chain selected/filtered 도달성, (3) clinic locale-selected/in-progress 도달성, (4) `<main>` 의무화 결정론화.
+- **다음:** 집계 보고 + 갤러리 e8 갱신 + JOURNAL 기록. Hallmark 보충 r2/r3는 게이트 폐쇄로 우선순위 낮춤(사용자 결정 대기).
+
+### 2026-08-16 (Fable) e8 r2 완주 — 게이트 재생존 · OmD 100점 만점 셀 (ui_resolved 최초)
+
+- **r2 최종:** landing OmD **100/100 만점 + ui_resolved=true + critical_pass=true**(랩 최초 완전 해결 셀) vs 경쟁 최고 model-only 30 · cold-chain 전원 0 동점(OmD는 r1의 `<main>` 갭을 이번 세대가 자체 수정, 대신 `selected` 상태 미달) · clinic 전원 0 동점. **누적: OmD 2승(80·100) 4무 0패, 파이프라인 6/6.** partial-32 봉인 + 백업.
+- 운영: auth 토큰이 셀 내 격리 grok의 서버측 리프레시 로테이션으로 ~10셀마다 무효화됨을 확인 — 최신 iso 사본 복원 플레이북 2회 실증(AUTH-RESTORE-order3/order26 영수증). 러너의 재실행 방지 가드 정상 작동 확인(중단 시도 부산물은 evidence로 이전 보존). impeccable arm은 e8 6/6 타임아웃.
+- **진행 중:** r3 최종 웨이브(orders 33–48) — order33 발사됨. r3까지 짝패배 0 유지 시 e8 게이트 최종 통과.
+
+### 2026-08-16 (Fable) e8 r1 완주 — 사상 최초 게이트 생존 (OmD 1승 2무, 짝패배 0)
+
+- **r1 최종:** 과제1 OmD **80 단독 승**(taste 70, promax 60, 나머지 0) · 과제2 전원 0 동점(OmD는 `<main>` 랜드마크 누락, anthropic과 동일 결함) · 과제3 전원 0 동점(`in-progress` 상태 전 arm 미도달). **짝패배 0 → r1 게이트 생존, 랩 사상 최초.** partial-16 봉인 + 백업.
+- **v2.4 dry-check 파이프라인 3/3 성공** (이전 4 epoch 통산 ~1/3): 세 셀 모두 dry-check 정확히 2회(1차 실패→수정→2차 통과) 후 activation 1회 성공. 구조적 해법이 실증됨.
+- 운영 판정: order9 usage-limit 신호는 보조 이미지 모델(grok-imagine) rate limit로 귀속 — 용량 이벤트 아님(e8 카운트 0). impeccable arm은 e8 3/3 타임아웃(4 epoch 연속 패턴).
+- v2.5 흡수 후보: (1) 제품 셸 `<main>` 랜드마크 의무화, (2) clinic `in-progress` 상태 도달성.
+- **진행 중:** r2 웨이브(orders 17–32) 개시 — order17 발사됨.
+
+### 2026-08-16 (Fable) e8 과제1 완료 — OmD v2.4 80점 단독 선두 (최초 outright win)
+
+- **OmD v2.4 dry-check 데뷔전 성공:** dry-check 2회(반복 검증) → activation 정확 1회 → 컨트롤러 감사 PASS → DESIGN.md Core v2 adopt → 제품 채점 **80점** (journey 통과 유일 arm; evidence_honesty만 실패). 이전 최고는 e6 동점 50 — **최초 단독 승리**.
+- e8 과제1 최종: model-only 0(필수 컨트롤 미노출) / anthropic 0(unavailable-information 미관측) / impeccable 0(timeout, 3 epoch 연속) / promax 60 / taste 70 / **OmD 80**. partial-01~06 봉인.
+- 운영 사건 2건 해소: (1) auth.json 소실(상주 `grok -r` 로테이션 스톨) → order2 격리 사본(더 새로운 토큰)으로 복원+프로브 검증+영수증(AUTH-RESTORE-order3.json), pre-provider abort 재발사 판례 적용. 잔여 프로세스 3개(observer 포함) 사용자 허가 하에 정리 완료. (2) evaluator 공유 screenshots 디렉토리 EEXIST → 셀별 격리 out 디렉토리로 전환(eval-orderN/).
+- 진행: order7(cold-chain model-only)부터 과제2 진입. 게이트 조건 잔여: 과제2·3에서 OmD tie 이상.
+
+### 2026-08-16 (Fable) OmD v2.4 dry-check 출시 · epoch 8 개장 · r1 재주행 시작
+
+- **e7(3ff4c692) 진단 동결:** order6 OmD v2.3 activation이 adopt 단계에서 fail-close — 모델 provenance가 선언한 evidence 경로(`council/design-system/result.json`)를 프로젝트 루트에 실물로 안 만듦. e7 과제1 선두 model-only 30 → OmD 0 짝패배로 게이트 폐쇄, partial-06 봉인 후 동결. 패턴 확정: 단발 activation 파이프라인의 세대별 성공률 ~1/3 vs 게이트 요구 9/9 무패.
+- **v2.4 (구조적 해법):** 컨트롤러에 `--dry-check` 모드 신설 — activation을 소모하지 않는 무제한 전제조건 검증(스크래치 prepare→approve→compile + provenance/coverage evidence 경로 실물 검사). 감사는 dry-check를 별도 카운트(TC-OMD-18/19/20, 계약 20/20 PASS), e2e vitest 3/3 PASS(부재 fail-close→생성 후 pass→activation 무손상). SKILL.md는 "dry-check PASS까지 반복 후 단 1회 invoke"로 개정, 픽스처 재동결(SUMS 437/437 OK). 커밋 `8edf400a`.
+- **epoch 8 개장 완료:** worktree `/private/tmp/omd-grok-runtime-8edf400a` → lock 54셀 → materialize 48셀(tree 77749fd9) → 영수증 5종 재발급 → **ADMITTED**(817066b8) → baseline 봉인. 증거 루트 `/private/tmp/omd-grok46-wow-evidence-8edf400a/`.
+- **진행 중:** r1 order1(landing/model-only) 발사됨. 셀별 사이클: 실행→감사→채점(`evaluate-autopilot-greenfield-task.mjs --task-id`)→partial-NN 봉인→다음. 벤치마크 중 대화형 grok 세션 금지(auth 로테이션 충돌).
+
 ### 2026-08-15 (Fable) AC5 retry-3 — durable 증거 전수 재검증 PASS · lane 완료 상태 확정
 
 - **이 세션 재검증(provider-zero, 라이브 호출 0):** `verify-grok46-smoke-evidence.mjs` 61/61 PASS + `shasum -a 256 -c SHA256SUMS` 20/20 OK. 두 smoke 영수증(raw output 7종/call + receipts 6종)이 워크스페이스 `benchmarks/ui-resolve-bench/reports/grok46-lane-smoke-evidence/`에 실재하고 전 파일 SHA-256이 SUMMARY 선언값과 byte-exact 일치.
