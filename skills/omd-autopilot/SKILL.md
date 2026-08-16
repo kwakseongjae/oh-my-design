@@ -291,26 +291,65 @@ required state scores zero, an honest skeleton with every state scores:
    heading order, form field ID graph (`label[for]`, `aria-describedby`
    hint+error chain, `role="alert"` errors, focusable `role="status"` success).
 2. EVERY required state as machine-detectable DOM, before any visual polish.
-   The graded state list is the one the TASK BYTES name — read the task
-   prompt's required states first (an operations task may demand
-   filtered/selected/assignment-error/assigned; a locale task may demand
-   locale-selected/in-progress/complete/translation-unavailable) and give each
-   of those the same priority as the generic
-   default/loading/empty/error/success/disabled set. Each state gets a visible
-   node with `data-state="<state-name>"`, and every task-named state must be
-   REACHABLE through a real user interaction on the route (an external
-   evaluator drives actual clicks and selections — a static mockup of the
-   state does not count; clicking a row must visibly select it). Every entry
-   in the system's honesty/unknown ledger renders as a visible
-   unavailable-information node — prose disclaimers alone do not count.
-3. Primary-action uniqueness: exactly one visible primary CTA (chrome or hero,
+   **The task brief's journey verbs ARE the graded states.** Rewrite the brief
+   as a verb list first ("filter X", "inspect one Y", "assign a Z", "switch
+   locale", "mark progress", "see completion") — each verb is one state that
+   must be REACHABLE by real keyboard interaction (Tab to the control, then
+   Enter/Space), not a static variant. A state that cannot be reached by the
+   described action does not exist. Each state gets a visible node with
+   `data-state="<state-name>"`. Every entry in the system's honesty/unknown
+   ledger renders as a visible unavailable-information node — prose
+   disclaimers alone do not count.
+3. Programmatic-semantics parity — every state change updates the visible UI
+   AND the machine contract in the same paint:
+   - Selection/toggle: `aria-selected` / `aria-pressed` / `aria-checked` /
+     `aria-current` on the control itself, and for filters also a visible
+     `role="status"` or `aria-live` summary ("Showing only urgent …").
+   - Validation error: focus returns to the offending field, the field gets
+     `aria-describedby` pointing at a visible `role="alert"` (or
+     `aria-live`) message — all three together, not any one alone.
+   - Persisted outcome (e.g. an assignment): announce it in `role="status"`
+     WITH the record's visible ID and the chosen value, and update the source
+     record's own text to show the same value.
+   - Locale switch: update `<html lang>`, the selector's committed value, and
+     the rendered script together; never silently change the selected
+     language. Progress: `role="progressbar"` `aria-valuenow/max` must equal
+     the visible "N of M" text.
+   - Detail surfaces are `role="dialog"|"region"|"complementary"` containing
+     the record's visible ID; records carry stable visible IDs.
+   - Name controls with the brief's exact nouns and verbs ("Reserve a tool",
+     "Assign owner", "Urgent") — the brief's language is the accessible name,
+     verbatim, with no decorative words prepended or appended.
+4. Primary-action uniqueness: exactly one visible primary CTA (chrome or hero,
    not both), marked `data-cta="primary"`; the form submit is
    `data-cta="submit"`; repeated per-item controls are `data-cta="local"` and
    never reuse the primary verb string. No sticky/footer primary duplicates.
-4. Foreground/background color PAIRS from the adopted tokens (never a lone
+5. Structure invariants: exactly one `<main>` and exactly one `<h1>` per
+   rendered view — count them in the final DOM, zero and two both fail.
+6. Responsive determinism — verify at 320, 390, and 1440 px before finishing:
+   `document.documentElement.scrollWidth <= clientWidth` (no horizontal
+   document scroll), the primary action fully inside the viewport, every
+   interactive control ≥ 44px in its smaller dimension and horizontally
+   unclipped. A quick DOM-math pass over the final HTML/CSS counts; skipping
+   the check does not.
+7. Evidence honesty determinism — for every datum category the brief forbids
+   inventing (counts, prices, testimonials, logos, regulatory claims): write
+   an explicit honest-absence sentence that NAMES the withheld category,
+   placed where a reader would expect the datum; label every fabricated
+   record "sample" (or "demo"/"fictional") visibly; never emit an affirmative
+   number, price, star rating, or endorsement for a forbidden category
+   anywhere on the page, including image alt text.
+8. Foreground/background color PAIRS from the adopted tokens (never a lone
    accent value), decorative media `aria-hidden` and informative SVG named via
    `role="img"` + title/desc, then visual polish last with whatever budget
    remains.
+
+Before declaring the product finished, run a SELF-WALK: list every journey
+verb from the brief, and for each write (a) the exact keyboard path that
+reaches it and (b) the programmatic evidence that proves it (which attribute
+or role changes). Any row missing either entry is unfinished work — fix it
+before the mission proof, budget permitting, because a missing row scores the
+same as a missing page.
 
 ## Design-system decision
 
