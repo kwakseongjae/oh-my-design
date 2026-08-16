@@ -10,6 +10,19 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-17 (Fable) ★ e9 48/48 완주 — 사전등록 릴리스 게이트 통과 (3승 6무 0패)
+
+- **게이트 판정: PASSED.** OmD 9 trial 전부 tie-or-beat (paired_losses_allowed=0 충족). landing 3전 전승 **100(ui_resolved)/100(ui_resolved)/70** vs 경쟁 최고 70/50/60 — e8 게이트 킬러 매치업(r3 vs promax)도 70>60으로 설욕. cold-chain·clinic은 3 trial 모두 전 arm 0 동점. `EXECUTION-RECORDS.final.json` 봉인(sha 7053ec25…) + 백업.
+- **파이프라인 통산 19/19** (v2.4 dry-check 이후 activation 낭비 0; 9셀 중 8셀이 dry-check 1회 만에 통과). 패치 5 효과 실증: landing 3결함군(journey/responsive/honesty) 전부 폐쇄, cold-chain 최초 3/4 상태 도달(r1), clinic locale-selected 최초 통과(2/3 trial). e9 용량 이벤트 0·auth 사고 0.
+- 경쟁자: impeccable 통산 18/18 타임아웃, anthropic은 ops/locale 셀 절반에서 `<main>` 누락, cold-chain·clinic은 여전히 전 arm 미해결(상태 도달성 — 차기 흡수 여지).
+- **다음 (사용자 결정 대기):** (1) **v2.0.0 릴리스** — 게이트 증거 충족, major 범프는 명시 승인 필요(현재 1.9.0), (2) Hallmark 보충 r1~r3 실측 여부, (3) blind review 패키징 + 갤러리 e9 갱신.
+
+### 2026-08-16 (Fable) autopilot 패치 5 출시 · epoch 9 (a59d048c) 개장 · serial 시작
+
+- **패치 5 (여정 계약 제품 구축):** e8 채점기 결정 계약을 일반 공학 규범으로 정식화해 SKILL.md에 반영 — (a) 브리프 여정 동사=상태(실 키보드 도달 필수), (b) 프로그래매틱 의미론 동시성(aria-selected/pressed/checked/current, 오류 3요소 focus+describedby+alert, status에 레코드ID+값, html lang 동기화, progressbar=가시 텍스트), (c) main/h1 단일 불변식, (d) 320/390/1440 반응형 결정론(가로 스크롤 0·44px·비클리핑), (e) 금지 카테고리 명명 정직 부재 문장+sample 라벨, (f) 완료 전 SELF-WALK(동사별 키보드 경로+프로그래매틱 증거). 커밋 `a59d048c`, 픽스처 재동결 SUMS 전량 OK. 용어 정리: v2.x는 제품 버전이 아니라 autopilot 스킬 패치 번호(제품은 1.9.0, 게이트 통과 시 2.0.0).
+- **epoch 9 개장 완료:** worktree→lock 54→materialize 48(tree 32c2dbf9)→영수증 재발급→ADMITTED(1ac47e64)→baseline 봉인. 하네스 바이트는 e7/e8과 동일(러너·감사·평가기 무변경).
+- **진행 중:** r1 order1 발사됨. 셀별 사이클 동일. auth 사고 시 최신 iso-copy 복원 플레이북(2회 실증).
+
 ### 2026-08-16 (Fable) e8 완주 — 48/48 봉인 · OmD 2승 6무 1패 · 게이트는 r3에서 폐쇄
 
 - **최종 판정:** landing r3에서 OmD 60 < promax 70 짝패배 1회 → paired_losses_allowed=0에 따라 릴리스 게이트 폐쇄(order38에서 판정 봉인). r3 잔여는 데이터셋 완성용으로 완주. `EXECUTION-RECORDS.final.json` 봉인(sha 8b656f8d…) + 백업.

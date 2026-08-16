@@ -50,6 +50,27 @@ Hallmark는 경쟁자 동결 이후 등장한 스킬로 동일 조건 보충 등
 </div>
 <p>이 셀은 adopted <a href="omd-DESIGN-e8-landing-r2.md">DESIGN.md Core v2</a>에서 토큰·상태 계약을 받아 빌드됐다.
 경쟁자들이 반복해서 죽은 <code>unavailable-information</code> 상태를 OmD는 시스템 계약의 필수 상태로 받아 구현했다 — 이것이 "UI 한 장"과 "디자인 하네스"의 차이다.</p>
+<h2 style="margin-top:3rem;border-top:3px solid #1a7f37;padding-top:1.5rem">Epoch 9 — 패치 5 (여정 계약), 릴리스 게이트 통과 ★</h2>
+<p>epoch <code>a59d048c</code> · autopilot 패치 5는 브리프의 여정 동사를 도달 가능한 상태 계약으로 구현하는 규범(aria 의미론 동시성 · main/h1 불변식 · 320/390/1440 반응형 · 명명된 정직 부재 문장 · SELF-WALK)을 추가.
+<b>결과: OmD 9 trial 3승 6무 0패 — 사전등록 무패 게이트 통과.</b> 파이프라인 통산 19/19.</p>
+<h3>랜딩 과제 3-trial (과제 2·3은 전 trial 전 arm 0 동점)</h3>
+<table>
+<tr><th>arm</th><th>r1</th><th>r2</th><th>r3</th><th>평균</th></tr>
+<tr class="top"><td>OmD Autopilot 패치5</td><td><b>100 · 완전해결</b></td><td><b>100 · 완전해결</b></td><td><b>70</b></td><td><b>90.0</b></td></tr>
+<tr><td>UI UX Pro Max</td><td>50</td><td>50</td><td>60</td><td>53.3</td></tr>
+<tr><td>Anthropic Frontend Design</td><td>50</td><td>40</td><td>30</td><td>40.0</td></tr>
+<tr><td>Model only</td><td>70</td><td>30</td><td>0</td><td>33.3</td></tr>
+<tr><td>Taste</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>Impeccable</td><td colspan="3">3/3 타임아웃 (랩 통산 18/18)</td><td>0</td></tr>
+</table>
+<p>e8 게이트를 닫았던 r3 매치업(vs Pro Max)을 <b>70 &gt; 60</b>으로 설욕 — 3 trial 전승.
+게이트 밖 진전: cold-chain에서 사상 최초 3/4 상태 도달(r1), clinic에서 locale-selected 최초 통과(2/3 trial) — 전 arm 0 지대의 균열은 전부 OmD가 냈다.</p>
+<div class="strip">
+<figure><figcaption><b>e9 r1 만점 셀</b> · default desktop</figcaption><img src="img/e9/omd-r1-landing-default--desktop-1440.png" loading="lazy" alt="e9 OmD default"></figure>
+<figure><figcaption>default · mobile 390</figcaption><img src="img/e9/omd-r1-landing-default--mobile-390.png" loading="lazy" alt="e9 OmD mobile"></figure>
+<figure><figcaption>unavailable-information 상태</figcaption><img src="img/e9/omd-r1-landing-unavailable-information--desktop-1440.png" loading="lazy" alt="e9 OmD unavailable"></figure>
+</div>
+<p>adopted <a href="omd-DESIGN-e9-landing-r1.md">DESIGN.md Core v2 (e9 r1)</a> · 전 셀 SHA 봉인, 판정 근거는 EXECUTION-RECORDS.final(sha 7053ec25…).</p>
 <h2>정직한 결론</h2>
 <ul>
 <li><b>[e6]</b> 과제 1(랜딩): Hallmark 60 &gt; OmD 50 = Pro Max 50 &gt; Taste 30 — OmD는 최강 경쟁자와 동점이면서 유일하게 시스템 아티팩트를 남겼다. Hallmark의 우세는 실측으로 인정.</li>
