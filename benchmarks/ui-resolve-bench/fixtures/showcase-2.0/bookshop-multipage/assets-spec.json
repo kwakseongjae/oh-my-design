@@ -1,0 +1,7 @@
+{"task_id":"bookshop-multipage","items":[
+{"file":"hero-shop.jpg","prompt":"Interior of an independent bookstore-cafe: tall wooden bookshelves, espresso bar in the back, warm afternoon light, a reading nook","style":"warm editorial film palette, soft grain, no readable text, no faces"},
+{"file":"space-cafe.jpg","prompt":"Corner of a bookstore cafe with a marble counter, two ceramic cups, pastry case softly out of focus","style":"warm editorial film palette, shallow depth, no text, no faces"},
+{"file":"space-shelves.jpg","prompt":"Close view of curated bookshelf spines in muted colors with small paper shelf-talkers","style":"warm editorial film palette, no readable text"},
+{"file":"event-reading.jpg","prompt":"Cozy evening author reading setup: empty chairs in rows, small stage stool, warm lamp light","style":"warm editorial film palette, no faces, no text"},
+{"file":"event-workshop.jpg","prompt":"Bookbinding workshop table with paper, thread, awls and folded signatures arranged neatly","style":"warm editorial film palette, overhead angle, no text"},
+{"file":"event-club.jpg","prompt":"Book club table with open books, tea pot and cups, plants by a window","style":"warm editorial film palette, no faces, no readable text"}]}

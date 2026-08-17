@@ -43,3 +43,19 @@ idiom projection — the stack-neutral system projects into vanilla CSS custom
 properties, React/Preact theme-object + props-driven aria, or Tailwind
 config-layer tokens, with identical journey/aria/honesty contracts across
 stacks. Patterns absorbed as norms; no third-party code copied.
+
+## Patch 7 refreeze (2026-08-18, user visual-quality feedback)
+
+User verdict on Showcase 2.0: OmD shipped a developer state-switcher
+(Sample catalog radios) as product UI with native unstyled controls, and
+lost visually to Pro Max / Hallmark. Two grok-4.6 review passes produced
+(a) a 12-gap code-evidence analysis of the visual deficit and (b) a full
+technique extraction from both competitor skills. Patch 7 adds
+references/visual-quality-contract.md — P0 bans (state switchers, native
+controls), OKLCH/spacing/type token floor, surface-genre commitment,
+accent-as-signal, component state matrix + input geometry, macro-structure
+and fold discipline, multi-page consistency contract, and a one-round
+self-critique loop whose Variety axis is redefined as System Fidelity.
+SKILL.md rewires the state instruction to interaction-outcomes-only and
+mandates the contract read + critique.md artifact. Patterns absorbed as
+norms; competitor text not copied.

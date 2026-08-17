@@ -290,16 +290,19 @@ required state scores zero, an honest skeleton with every state scores:
    disclosure collapse, skip link targeting `#main` (never the primary CTA),
    heading order, form field ID graph (`label[for]`, `aria-describedby`
    hint+error chain, `role="alert"` errors, focusable `role="status"` success).
-2. EVERY required state as machine-detectable DOM, before any visual polish.
-   **The task brief's journey verbs ARE the graded states.** Rewrite the brief
-   as a verb list first ("filter X", "inspect one Y", "assign a Z", "switch
-   locale", "mark progress", "see completion") — each verb is one state that
-   must be REACHABLE by real keyboard interaction (Tab to the control, then
-   Enter/Space), not a static variant. A state that cannot be reached by the
-   described action does not exist. Each state gets a visible node with
-   `data-state="<state-name>"`. Every entry in the system's honesty/unknown
-   ledger renders as a visible unavailable-information node — prose
-   disclaimers alone do not count.
+2. EVERY required state as a real interaction outcome, before any visual
+   polish. **The task brief's journey verbs ARE the graded states.** Rewrite
+   the brief as a verb list first ("filter X", "inspect one Y", "assign a Z",
+   "switch locale", "mark progress", "see completion") — each verb is one
+   state that must be REACHABLE by real keyboard interaction (Tab to the
+   control, then Enter/Space) on the product's own controls. A state that
+   cannot be reached by the described action does not exist — and a state
+   reached only through a developer switcher does not exist either: NEVER
+   render "Show <state>" radios, demo toggles, or any state menu in the
+   product UI. `data-state="<state-name>"` markers live on the real
+   components that enter those states. Every entry in the system's
+   honesty/unknown ledger renders as a visible unavailable-information
+   node — prose disclaimers alone do not count.
 3. Programmatic-semantics parity — every state change updates the visible UI
    AND the machine contract in the same paint:
    - Selection/toggle: `aria-selected` / `aria-pressed` / `aria-checked` /
@@ -350,6 +353,34 @@ reaches it and (b) the programmatic evidence that proves it (which attribute
 or role changes). Any row missing either entry is unfinished work — fix it
 before the mission proof, budget permitting, because a missing row scores the
 same as a missing page.
+
+## Visual quality contract (mandatory read)
+
+Before PRODUCT_BUILD, read `references/visual-quality-contract.md` in full
+and treat every item as a gate, not a suggestion. Non-negotiables repeated
+here because violating them wastes the whole run:
+- NEVER render developer/state switchers in the product UI; states come from
+  real product interactions only.
+- NEVER ship native unstyled form controls — restyle every control from
+  system tokens with the accessible native input underneath.
+- The system carries a display/body type pair with a ≥2× display step, a
+  label role, section-air spacing steps (2.5–6rem), ONE surface genre, and
+  accent as a small signal (≤~5% of any viewport).
+- After building, run the ONE-round self-critique from the contract (5 axes
+  + gate sweep, System Fidelity replaces variety) and write `critique.md`
+  into the run directory before the mission proof.
+
+## Multi-page products
+
+When the brief asks for more than one page, the design system is the
+consistency contract: ONE shared stylesheet owns tokens and components
+(defined exactly once); every page links it and adds only page-level layout.
+Nav and footer are designed once and rendered identically on every page with
+`aria-current` on the active link. Body, heading, and primary-action styling
+must compute identically across pages; every internal link resolves to a
+real page. Build page one as the system's proof, then express the remaining
+pages FROM it — if page two needs a new token or component, that is a system
+change first, not a page-local invention.
 
 ## Motion and micro-transitions (system-owned)
 
