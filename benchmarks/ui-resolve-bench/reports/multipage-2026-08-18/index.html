@@ -1,0 +1,44 @@
+<!-- multipage comparison -->
+<meta charset="utf-8"><title>멀티페이지 일관성 실측 — 패치 7 검증</title>
+<style>
+body{font:15px/1.6 -apple-system,sans-serif;margin:2rem;max-width:1500px}
+table{border-collapse:collapse;margin:1rem 0;font-size:.9rem}td,th{border:1px solid #ccc;padding:.35rem .7rem;text-align:center}td:first-child{text-align:left}
+.top{background:#e6f4ea;font-weight:700}
+.strip{display:flex;gap:12px;overflow-x:auto;padding:8px 0}
+figure{margin:0;flex:0 0 340px}figcaption{font-size:.82rem;margin-bottom:4px}
+img{width:340px;border:1px solid #ddd;border-radius:6px;display:block}
+.note{background:#fffbe6;border:1px solid #e8d44d;border-radius:8px;padding:.8rem 1.2rem;margin:1rem 0;font-size:.9rem}
+</style>
+<h1>멀티페이지 일관성 실측 — 서점&카페 4페이지, 4 스킬</h1>
+<p>grok-4.6 · 25분 균일 예산 · 공통 이미지 6장 · 결정적 일관성 감사(교차 페이지 computed-style 동일성 · nav/링크 무결성 · 토큰 충돌) · <b>패치 7 첫 검증</b>(상태 스위처 금지 · 커스텀 컨트롤 · 시각 계약 · critique.md 자가 비평).</p>
+<table><tr><th>arm</th><th>페이지</th><th>일관성</th><th>axe 합</th><th>시간</th><th>토큰(in/out)</th><th>비용*</th></tr>
+<tr><td>Model only</td><td>4/4</td><td>PASS</td><td>0</td><td>6.5분</td><td>87k/55k</td><td>$0.51</td></tr>
+<tr><td>UI UX Pro Max</td><td>4/4</td><td>PASS</td><td>4</td><td>9.3분</td><td>135k/78k</td><td>$0.74</td></tr>
+<tr><td>Hallmark</td><td>4/4</td><td>PASS</td><td>0</td><td>10.1분</td><td>270k/77k</td><td>$1.01</td></tr>
+<tr class="top"><td>OmD Autopilot p7</td><td>4/4</td><td>PASS</td><td>0</td><td>16.8분</td><td>309k/126k</td><td>$1.38</td></tr>
+</table><p style="font-size:.8rem;color:#666">*OpenRouter x-ai/grok-4.6 $2/$6 per M (2026-08-18)</p>
+<div class="note">패치 7 검증 결과: OmD는 <b>critique.md 자가 비평 산출</b>(5축 채점+게이트 스윕+수정 기록, <a href="omd-critique-bookshop.md">원문</a>), 상태 스위처 0, 표면 장르 커밋(헤어라인 룰 에디토리얼·radius 0·테라코타 시그널). <a href="omd-DESIGN-bookshop.md">adopted DESIGN.md</a>가 4페이지의 일관성 계약. ProMax는 헤더 CTA 이중 렌더 버그가 홈에 보임. 최종 판정은 스크린샷과 라이브 페이지로 직접.</div>
+<h2>홈</h2><div class="strip">
+<figure><figcaption><b>Model only</b> · <a href='products/model-only/index.html'>라이브</a></figcaption><img src='img/01-model--index.png' loading='lazy' alt='Model only index'></figure>
+<figure><figcaption><b>UI UX Pro Max</b> · <a href='products/ui-ux-pro-max/index.html'>라이브</a></figcaption><img src='img/02-promax--index.png' loading='lazy' alt='UI UX Pro Max index'></figure>
+<figure><figcaption><b>Hallmark</b> · <a href='products/hallmark/index.html'>라이브</a></figcaption><img src='img/03-hallmark--index.png' loading='lazy' alt='Hallmark index'></figure>
+<figure><figcaption><b>OmD Autopilot p7</b> · <a href='products/omd-autopilot-v2/index.html'>라이브</a></figcaption><img src='img/04-omd--index.png' loading='lazy' alt='OmD Autopilot p7 index'></figure>
+</div>
+<h2>이벤트 목록</h2><div class="strip">
+<figure><figcaption><b>Model only</b> · <a href='products/model-only/events.html'>라이브</a></figcaption><img src='img/01-model--events.png' loading='lazy' alt='Model only events'></figure>
+<figure><figcaption><b>UI UX Pro Max</b> · <a href='products/ui-ux-pro-max/events.html'>라이브</a></figcaption><img src='img/02-promax--events.png' loading='lazy' alt='UI UX Pro Max events'></figure>
+<figure><figcaption><b>Hallmark</b> · <a href='products/hallmark/events.html'>라이브</a></figcaption><img src='img/03-hallmark--events.png' loading='lazy' alt='Hallmark events'></figure>
+<figure><figcaption><b>OmD Autopilot p7</b> · <a href='products/omd-autopilot-v2/events.html'>라이브</a></figcaption><img src='img/04-omd--events.png' loading='lazy' alt='OmD Autopilot p7 events'></figure>
+</div>
+<h2>상세</h2><div class="strip">
+<figure><figcaption><b>Model only</b> · <a href='products/model-only/event-detail.html'>라이브</a></figcaption><img src='img/01-model--event-detail.png' loading='lazy' alt='Model only event-detail'></figure>
+<figure><figcaption><b>UI UX Pro Max</b> · <a href='products/ui-ux-pro-max/event-detail.html'>라이브</a></figcaption><img src='img/02-promax--event-detail.png' loading='lazy' alt='UI UX Pro Max event-detail'></figure>
+<figure><figcaption><b>Hallmark</b> · <a href='products/hallmark/event-detail.html'>라이브</a></figcaption><img src='img/03-hallmark--event-detail.png' loading='lazy' alt='Hallmark event-detail'></figure>
+<figure><figcaption><b>OmD Autopilot p7</b> · <a href='products/omd-autopilot-v2/event-detail.html'>라이브</a></figcaption><img src='img/04-omd--event-detail.png' loading='lazy' alt='OmD Autopilot p7 event-detail'></figure>
+</div>
+<h2>방문</h2><div class="strip">
+<figure><figcaption><b>Model only</b> · <a href='products/model-only/visit.html'>라이브</a></figcaption><img src='img/01-model--visit.png' loading='lazy' alt='Model only visit'></figure>
+<figure><figcaption><b>UI UX Pro Max</b> · <a href='products/ui-ux-pro-max/visit.html'>라이브</a></figcaption><img src='img/02-promax--visit.png' loading='lazy' alt='UI UX Pro Max visit'></figure>
+<figure><figcaption><b>Hallmark</b> · <a href='products/hallmark/visit.html'>라이브</a></figcaption><img src='img/03-hallmark--visit.png' loading='lazy' alt='Hallmark visit'></figure>
+<figure><figcaption><b>OmD Autopilot p7</b> · <a href='products/omd-autopilot-v2/visit.html'>라이브</a></figcaption><img src='img/04-omd--visit.png' loading='lazy' alt='OmD Autopilot p7 visit'></figure>
+</div>
