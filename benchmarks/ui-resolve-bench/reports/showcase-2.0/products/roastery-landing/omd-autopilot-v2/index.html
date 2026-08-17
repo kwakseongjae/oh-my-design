@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roastery — specialty coffee</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-state="default">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <p class="wordmark">Roastery</p>
+      <nav class="site-nav" aria-label="Page">
+        <button
+          class="nav-toggle"
+          type="button"
+          id="nav-toggle"
+          aria-expanded="false"
+          aria-controls="site-nav-list"
+        >
+          Menu
+        </button>
+        <ul class="site-nav__list" id="site-nav-list">
+          <li><a href="#story">Story</a></li>
+          <li><a href="#cupping">Cupping</a></li>
+          <li><a href="#published">What is published</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="page-title" data-reveal>
+      <figure class="hero__figure">
+        <img
+          src="../assets/hero.jpg"
+          width="1280"
+          height="720"
+          alt="Roastery interior with a roasting machine, burlap sacks of green coffee, and morning light from tall windows."
+        >
+      </figure>
+      <div class="hero__copy">
+        <p class="eyebrow">Specialty coffee roastery</p>
+        <h1 id="page-title">Coffee roasted in the same room it is poured</h1>
+        <p class="lede">
+          This page is a single-room landing for a specialty coffee roastery.
+          A legal business name, street address, and telephone number are not published.
+        </p>
+        <button type="button" class="primary-cta" id="reserve-open" data-cta="primary">
+          Reserve a cupping seat
+        </button>
+      </div>
+    </section>
+
+    <section class="story" id="story" aria-labelledby="story-title" data-reveal>
+      <header class="section-head">
+        <p class="eyebrow">From the floor</p>
+        <h2 id="story-title">What the photographs show</h2>
+        <p>
+          Only the four images supplied with this page are used. They document beans, a pour-over, and a seating corner.
+          A longer origin story is not published.
+        </p>
+      </header>
+      <div class="story__grid">
+        <article class="story-card">
+          <figure>
+            <img
+              src="../assets/story-beans.jpg"
+              width="1248"
+              height="832"
+              alt="Freshly roasted coffee beans spilling from a metal scoop onto a wooden counter."
+            >
+          </figure>
+          <h3>The roast</h3>
+          <p>The photograph shows roasted beans leaving the scoop. Lot names and roast profiles are not published.</p>
+        </article>
+        <article class="story-card">
+          <figure>
+            <img
+              src="../assets/story-brew.jpg"
+              width="1248"
+              height="832"
+              alt="Hands pouring water into a ceramic dripper, with steam rising from the brew."
+            >
+          </figure>
+          <h3>The brew</h3>
+          <p>A slow pour-over is the only brew method shown. A full drink list is not published.</p>
+        </article>
+        <article class="story-card">
+          <figure>
+            <img
+              src="../assets/story-space.jpg"
+              width="1248"
+              height="832"
+              alt="A cafe corner with two linen chairs, a small oak table, a plant, and a shelf of coffee jars."
+            >
+          </figure>
+          <h3>The room</h3>
+          <p>A seating corner is shown. Hours, table counts, and a street address are not published.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cupping" id="cupping" aria-labelledby="cupping-title" data-reveal>
+      <header class="section-head">
+        <p class="eyebrow">Cupping table</p>
+        <h2 id="cupping-title">Sit with the roast</h2>
+        <p>
+          A cupping seat is a place at a tasting table. Opening the primary action reveals a short request form.
+          The request is stored only in this browser session. Nothing is sent over a network, and a confirmation channel is not published.
+        </p>
+      </header>
+
+      <div class="cupping__status-board">
+        <p class="empty-note" id="reservation-empty" data-state="empty">
+          No cupping seat is reserved in this session.
+        </p>
+        <div class="session-log" id="session-log" hidden>
+          <h3>Session requests</h3>
+          <ul id="session-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="published" id="published" aria-labelledby="published-title" data-reveal>
+      <header class="section-head">
+        <p class="eyebrow">Honesty</p>
+        <h2 id="published-title">What is not published</h2>
+        <p>These categories are withheld because this brief does not provide them. They are not implied elsewhere on the page.</p>
+      </header>
+      <ul class="honesty-list">
+        <li data-state="unavailable-information">Prices are not published.</li>
+        <li data-state="unavailable-information">Awards are not published.</li>
+        <li data-state="unavailable-information">Review scores are not published.</li>
+        <li data-state="unavailable-information">Partner logos are not published.</li>
+        <li data-state="unavailable-information">A legal business name is not published.</li>
+        <li data-state="unavailable-information">A street address is not published.</li>
+        <li data-state="unavailable-information">A telephone number is not published.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Roastery is an editorial surface name for this page, not a published legal entity.</p>
+  </footer>
+
+  <dialog
+    class="reservation"
+    id="reservation-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="reservation-title"
+    data-state="empty"
+  >
+    <form class="reservation__form" id="reservation-form" novalidate>
+      <div class="reservation__head">
+        <h2 id="reservation-title">Cupping seat request</h2>
+        <button type="button" class="icon-button" id="reserve-close">Close</button>
+      </div>
+      <p class="reservation__lede" id="reservation-hint">
+        Required fields are name, email, date, and party size. The request stays in this browser session.
+      </p>
+
+      <div class="field">
+        <label for="guest-name">Name</label>
+        <input id="guest-name" name="name" type="text" autocomplete="name" required aria-describedby="reservation-hint">
+        <p class="field-error" id="guest-name-error" role="alert" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="guest-email">Email</label>
+        <input id="guest-email" name="email" type="email" autocomplete="email" required>
+        <p class="field-error" id="guest-email-error" role="alert" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="cupping-date">Preferred date</label>
+        <input id="cupping-date" name="date" type="date" required>
+        <p class="field-error" id="cupping-date-error" role="alert" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="party-size">Party size</label>
+        <select id="party-size" name="party" required>
+          <option value="">Select a size</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <p class="field-error" id="party-size-error" role="alert" hidden></p>
+      </div>
+
+      <div class="field">
+        <label for="guest-notes">Notes <span class="optional">(optional)</span></label>
+        <textarea id="guest-notes" name="notes" rows="3"></textarea>
+      </div>
+
+      <p class="form-loading" id="form-loading" data-state="loading" hidden>Saving the request in this session.</p>
+      <p class="form-status" id="form-status" role="status" tabindex="-1" hidden></p>
+
+      <div class="reservation__actions">
+        <button type="submit" class="submit-cta" id="reserve-submit" data-cta="submit" data-state="disabled" disabled>
+          Submit cupping request
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

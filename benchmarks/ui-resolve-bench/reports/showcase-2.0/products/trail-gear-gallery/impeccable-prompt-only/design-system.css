@@ -1,0 +1,102 @@
+/* Trail Gear Rentals — study-cabinet tokens.
+   Palette, type, space, radius, elevation, and motion live here.
+   Surfaces consume these names; they do not invent parallel values. */
+
+:root {
+  /* Color — cool cabinet, indigo felt field, ivory slips, vermillion sample, brass focus */
+  --color-cabinet: oklch(22% 0.018 255);
+  --color-cabinet-edge: oklch(28% 0.02 255);
+  --color-cabinet-high: oklch(34% 0.018 255);
+  --color-felt: oklch(31% 0.052 275);
+  --color-felt-deep: oklch(26% 0.048 275);
+  --color-felt-nap: oklch(36% 0.05 275);
+  --color-ivory: oklch(94.5% 0.016 85);
+  --color-ivory-edge: oklch(88% 0.02 85);
+  --color-ink: oklch(22% 0.02 70);
+  --color-ink-soft: oklch(38% 0.025 70);
+  --color-on-felt: oklch(92% 0.02 95);
+  --color-on-felt-soft: oklch(82% 0.03 275);
+  --color-carbon: oklch(72% 0.045 230);
+  --color-stamp: oklch(52% 0.16 25);
+  --color-stamp-ink: oklch(96% 0.01 85);
+  --color-brass: oklch(74% 0.1 82);
+  --color-brass-deep: oklch(58% 0.09 75);
+  --color-print-well: oklch(90% 0.008 90);
+  --color-focus-ring: var(--color-brass);
+  --color-backdrop: oklch(16% 0.02 255 / 0.62);
+
+  /* Type — plaque serif, institutional grotesque, typewriter accession */
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", "URW Palladio L", serif;
+  --font-body: "Gill Sans", "Gill Sans MT", "Trebuchet MS", Candara, "Century Gothic", sans-serif;
+  --font-accession: "American Typewriter", "Courier New", "Nimbus Mono PS", ui-monospace, monospace;
+
+  --step-display: clamp(2.25rem, 2rem + 1.6vw, 3.5rem);
+  --step-title: clamp(1.15rem, 1.05rem + 0.4vw, 1.4rem);
+  --step-body: 1.0625rem;
+  --step-small: 0.8125rem;
+  --step-label: 0.75rem;
+
+  --leading-display: 1.05;
+  --leading-body: 1.5;
+  --leading-tight: 1.25;
+  --tracking-display: -0.022em;
+  --tracking-label: 0.08em;
+
+  /* Space */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --measure: 68ch;
+
+  /* Shape */
+  --radius-card: 14px;
+  --radius-control: 999px;
+  --radius-tab: 10px 10px 0 0;
+  --radius-slip: 2px;
+  --radius-print: 2px;
+
+  /* Elevation — offset + blur; rest is flat, lift is a state */
+  --elev-0: none;
+  --elev-1: 0 8px 20px oklch(12% 0.03 255 / 0.28);
+  --elev-2: 0 16px 36px oklch(10% 0.03 255 / 0.42);
+  --elev-3: 0 22px 48px oklch(8% 0.03 255 / 0.5);
+  --hairline: 1px solid oklch(100% 0 0 / 0.1);
+
+  /* Motion */
+  --motion-duration-instant: 80ms;
+  --motion-duration-fast: 160ms;
+  --motion-duration-med: 280ms;
+  --motion-duration-slow: 560ms;
+  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --motion-stagger: 72ms;
+  --motion-tilt: 6deg;
+  --motion-lift: 0.7rem;
+  --motion-perspective: 980px;
+
+  /* Layout */
+  --rail-width: 13.5rem;
+  --stand-width: min(28rem, 38vw);
+  --page-pad: clamp(1rem, 2vw, 2rem);
+  --z-skip: 40;
+  --z-stand: 20;
+  --z-backdrop: 15;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-instant: 0ms;
+    --motion-duration-fast: 0ms;
+    --motion-duration-med: 0ms;
+    --motion-duration-slow: 0ms;
+    --motion-stagger: 0ms;
+    --motion-tilt: 0deg;
+    --motion-lift: 0px;
+  }
+}

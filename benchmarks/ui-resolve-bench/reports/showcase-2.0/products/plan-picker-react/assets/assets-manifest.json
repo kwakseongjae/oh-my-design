@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1",
+  "kind": "bench-image-preprocess-manifest",
+  "task_id": "plan-picker-react",
+  "generator": "grok-build-cli image_gen (grok-imagine)",
+  "fairness": "single shared asset base generated once per task; all arms start from identical assets",
+  "pace_ms": 8000,
+  "generated_at": "2026-08-16T20:10:35.373Z",
+  "items": [
+    {
+      "file": "header-art.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 92074,
+      "sha256": "337f7efdd14565590790abcb8975f441dbce8737d851923a56502ce1fc3c4ada",
+      "prompt": "Abstract geometric illustration suggesting three ascending tiers or steps, calm gradient shapes",
+      "style": "minimal modern vector, cool indigo-teal palette, generous negative space, no text"
+    }
+  ]
+}

@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Trail Locker — sample trail-gear rental catalog</title>
+  <meta name="description" content="Sample catalog of trail-gear rentals. Filter by category and open a kit for details. Stock counts are not published.">
+  <link rel="stylesheet" href="design-system/tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#catalog">Skip to catalog</a>
+
+  <header class="site-header">
+    <div class="site-header__brand">
+      <p class="eyebrow">Ridge Loan</p>
+      <p class="site-header__mark">Trail locker</p>
+    </div>
+    <p class="sample-banner" role="note">
+      All items on this page are <strong>sample data</strong>.
+    </p>
+  </header>
+
+  <main id="main">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">Sample rental catalog</p>
+      <h1 id="page-title">Six kits.<br>No stock ticker.</h1>
+      <p class="lede">
+        Filter the demonstration locker, then open a card for specs.
+        <strong>Rental stock counts are not published</strong> — confirm a hold at the desk.
+      </p>
+    </section>
+
+    <section id="catalog" class="catalog" aria-labelledby="catalog-heading">
+      <div class="catalog__bar">
+        <div class="catalog__titles">
+          <h2 id="catalog-heading">Gear on the floor</h2>
+          <p id="filter-status" class="catalog__status" aria-live="polite">Showing 6 sample items</p>
+        </div>
+
+        <div
+          class="filters"
+          role="radiogroup"
+          aria-label="Filter items by category"
+          id="category-filter"
+        >
+          <button type="button" class="filter" role="radio" aria-checked="true" data-filter="all">All</button>
+          <button type="button" class="filter" role="radio" aria-checked="false" data-filter="shelter">Shelter</button>
+          <button type="button" class="filter" role="radio" aria-checked="false" data-filter="carry">Carry</button>
+          <button type="button" class="filter" role="radio" aria-checked="false" data-filter="kitchen">Kitchen</button>
+          <button type="button" class="filter" role="radio" aria-checked="false" data-filter="trail">Trail</button>
+        </div>
+      </div>
+
+      <div
+        id="gallery"
+        class="gallery"
+        role="listbox"
+        aria-label="Sample trail gear for rent"
+        aria-multiselectable="false"
+        aria-activedescendant=""
+      >
+        <article
+          class="card"
+          role="option"
+          id="item-tent"
+          tabindex="0"
+          aria-selected="false"
+          aria-haspopup="dialog"
+          aria-controls="item-detail"
+          data-id="tent"
+          data-category="shelter"
+          style="--stagger-index: 0"
+        >
+          <div class="card__media">
+            <img
+              src="../assets/item-tent.jpg"
+              alt="Compact two-person olive hiking tent pitched on a neutral studio background"
+              width="1024"
+              height="1024"
+            >
+          </div>
+          <div class="card__body">
+            <p class="card__kicker">
+              <span class="badge">Sample data</span>
+              <span class="card__cat">Shelter</span>
+            </p>
+            <h3 class="card__title">Ridge Two</h3>
+            <p class="card__availability">
+              Availability: rental stock counts are not published.
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="card"
+          role="option"
+          id="item-pack"
+          tabindex="0"
+          aria-selected="false"
+          aria-haspopup="dialog"
+          aria-controls="item-detail"
+          data-id="pack"
+          data-category="carry"
+          style="--stagger-index: 1"
+        >
+          <div class="card__media">
+            <img
+              src="../assets/item-pack.jpg"
+              alt="Rust-orange 45 liter hiking backpack standing upright on a neutral studio background"
+              width="1024"
+              height="1024"
+            >
+          </div>
+          <div class="card__body">
+            <p class="card__kicker">
+              <span class="badge">Sample data</span>
+              <span class="card__cat">Carry</span>
+            </p>
+            <h3 class="card__title">Ember 45</h3>
+            <p class="card__availability">
+              Availability: rental stock counts are not published.
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="card"
+          role="option"
+          id="item-stove"
+          tabindex="0"
+          aria-selected="false"
+          aria-haspopup="dialog"
+          aria-controls="item-detail"
+          data-id="stove"
+          data-category="kitchen"
+          style="--stagger-index: 2"
+        >
+          <div class="card__media">
+            <img
+              src="../assets/item-stove.jpg"
+              alt="Small titanium camping stove with folded legs on a neutral studio background"
+              width="1024"
+              height="1024"
+            >
+          </div>
+          <div class="card__body">
+            <p class="card__kicker">
+              <span class="badge">Sample data</span>
+              <span class="card__cat">Kitchen</span>
+            </p>
+            <h3 class="card__title">Ember Ti</h3>
+            <p class="card__availability">
+              Availability: rental stock counts are not published.
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="card"
+          role="option"
+          id="item-poles"
+          tabindex="0"
+          aria-selected="false"
+          aria-haspopup="dialog"
+          aria-controls="item-detail"
+          data-id="poles"
+          data-category="trail"
+          style="--stagger-index: 3"
+        >
+          <div class="card__media">
+            <img
+              src="../assets/item-poles.jpg"
+              alt="Pair of collapsible trekking poles crossed on a neutral studio background"
+              width="1024"
+              height="1024"
+              loading="lazy"
+            >
+          </div>
+          <div class="card__body">
+            <p class="card__kicker">
+              <span class="badge">Sample data</span>
+              <span class="card__cat">Trail</span>
+            </p>
+            <h3 class="card__title">Switchback poles</h3>
+            <p class="card__availability">
+              Availability: rental stock counts are not published.
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="card"
+          role="option"
+          id="item-lantern"
+          tabindex="0"
+          aria-selected="false"
+          aria-haspopup="dialog"
+          aria-controls="item-detail"
+          data-id="lantern"
+          data-category="trail"
+          style="--stagger-index: 4"
+        >
+          <div class="card__media">
+            <img
+              src="../assets/item-lantern.jpg"
+              alt="Compact rechargeable camping lantern glowing softly on a neutral studio background"
+              width="1024"
+              height="1024"
+              loading="lazy"
+            >
+          </div>
+          <div class="card__body">
+            <p class="card__kicker">
+              <span class="badge">Sample data</span>
+              <span class="card__cat">Trail</span>
+            </p>
+            <h3 class="card__title">Glow compact</h3>
+            <p class="card__availability">
+              Availability: rental stock counts are not published.
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="card"
+          role="option"
+          id="item-bag"
+          tabindex="0"
+          aria-selected="false"
+          aria-haspopup="dialog"
+          aria-controls="item-detail"
+          data-id="bag"
+          data-category="shelter"
+          style="--stagger-index: 5"
+        >
+          <div class="card__media">
+            <img
+              src="../assets/item-bag.jpg"
+              alt="Rolled deep-teal sleeping bag with compression straps on a neutral studio background"
+              width="1024"
+              height="1024"
+              loading="lazy"
+            >
+          </div>
+          <div class="card__body">
+            <p class="card__kicker">
+              <span class="badge">Sample data</span>
+              <span class="card__cat">Shelter</span>
+            </p>
+            <h3 class="card__title">Nightroll 20</h3>
+            <p class="card__availability">
+              Availability: rental stock counts are not published.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <p id="empty-state" class="empty" hidden role="status">
+        No sample kits in this category. Choose another filter.
+      </p>
+    </section>
+
+    <section id="availability" class="policy" aria-labelledby="policy-heading">
+      <h2 id="policy-heading">Availability</h2>
+      <p>
+        This locker does not publish remaining units, waitlists, or “in stock” counts.
+        The cards and detail panel show the kit, not how many are on the wall.
+        Ask the rental desk to confirm a hold for your dates.
+      </p>
+      <p class="policy__sample">Every name, rate, and specification on this page is sample data.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Ridge Loan · Trail locker · Sample catalog</p>
+    <p>Rental stock counts are not published.</p>
+  </footer>
+
+  <dialog
+    id="item-detail"
+    class="detail"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="detail-title"
+    aria-describedby="detail-availability"
+  >
+    <div class="detail__inner">
+      <header class="detail__header">
+        <p class="eyebrow" id="detail-kicker">Sample data</p>
+        <h2 id="detail-title">Kit</h2>
+        <button type="button" class="detail__close" id="detail-close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18"></path>
+          </svg>
+          <span>Close detail</span>
+        </button>
+      </header>
+
+      <div class="detail__media">
+        <img
+          id="detail-image"
+          src="../assets/item-tent.jpg"
+          alt=""
+          width="1024"
+          height="1024"
+        >
+      </div>
+
+      <div class="detail__meta">
+        <p id="detail-category" class="detail__category">Shelter</p>
+        <p id="detail-rate" class="detail__rate">Sample daily rate</p>
+      </div>
+
+      <p id="detail-copy" class="detail__copy"></p>
+
+      <section
+        id="detail-availability"
+        class="detail__availability"
+        role="region"
+        aria-labelledby="detail-availability-heading"
+      >
+        <h3 id="detail-availability-heading">Availability</h3>
+        <p>
+          Rental stock counts are not published. This catalog does not show remaining
+          units or a live hold. Confirm dates and a hold at the rental desk.
+        </p>
+      </section>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

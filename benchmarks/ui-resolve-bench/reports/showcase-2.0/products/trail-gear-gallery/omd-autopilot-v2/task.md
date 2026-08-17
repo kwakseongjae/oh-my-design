@@ -1,0 +1,15 @@
+Use the installed $omd-autopilot skill for this task.
+
+OmD native package activation v0.2: an immutable external authority controller is preregistered for this cell. The main agent is not the project owner and must never issue --reviewer/--authority-transition-approved or calculate package hashes. Bootstrap and use exactly $OMD_AUTHORITY_CONTROLLER_RUN_DIR as the mission run directory. After writing exactly one compiler-valid graph.json, provenance.json, and coverage.json draft under that run's system directory, invoke exactly once: node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE . $OMD_AUTHORITY_CONTROLLER_RUN_DIR. These exact preregistered bindings are transported through the isolated Codex shell; they are not authority secrets. The execution-owned controller and its child runtime live outside provider-writable roots; only it may prepare, externally approve, compile, checkpoint, atomically adopt, and validate the package. If that one activation fails, stop system work and preserve the failure; never create review-v2/package-v2 or retry. Immediately reserve the remaining execution budget for the product route, including every required state and an explicit unavailable-information state.
+
+From scratch, create a trail-gear rental gallery in HTML/CSS/JS (single page, no build step, no network). Establish a project-owned design system with motion tokens. Use the provided six item images in ./assets/ as the gallery cards (explicit dimensions, no other imagery). A visitor must filter items by category, select one card to open its detail panel (keyboard reachable, aria-selected + named dialog/region), and see an honest availability note — rental stock counts are not published, say so where a visitor would look for them. Card interactions should feel current (hover tilt/elevation, staggered entrance) but stay behind prefers-reduced-motion. Label all items as sample data.
+
+Benchmark runtime boundary: keep every generated file and temporary validation artifact inside the current workspace (use .benchmark/tmp when needed), except an exact cell-local staging path explicitly disclosed by the controller for an arm whose native package adopter requires source/destination separation. Do not read or write any other external path, including /tmp, and do not launch or control browsers or use network access; the external evaluator owns browser checks.
+---
+## Code observations (not user authority)
+
+- Workspace is a greenfield HTML starter (`index.html` title "Starter") with six JPEG item images in `./assets/` plus `assets/assets-manifest.json`.
+- No root `DESIGN.md` or `.omd/system` package exists. Disposition candidate: establish.
+- Image files (all 1024x1024): item-tent.jpg, item-pack.jpg, item-stove.jpg, item-poles.jpg, item-lantern.jpg, item-bag.jpg.
+- `$OMD_AUTHORITY_CONTROLLER_RUN_DIR` is `.omd/runs/trail-gear-gallery`.
+- Installed `autopilot-mission.cjs` / council helper binaries are not on PATH in this workspace; mission artifacts are authored in that exact run directory.
