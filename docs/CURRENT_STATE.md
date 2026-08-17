@@ -10,6 +10,13 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-18 (Fable) ★ Showcase 2.0 완주 — 21/21 봉인 · 최종 갤러리 전달 (사용자 판정 대기)
+
+- **완주:** 3과제(로스터리 HTML/트레일 갤러리 HTML/플랜 피커 빌드리스 React) × 7 arm, 공통 grok-imagine 에셋 베이스. RECORDS.final sha 2c0010c7, 백업 완료. 총 추정 비용 $20.27(OpenRouter $2/$6 per M, 2026-08-18 조회).
+- **핵심 실측:** OmD 패치6 3/3 adopt(파이프라인 통산 22/22) + React 스택에 theme.js/preact 투영 성공 — 유일하게 매 셀 DESIGN.md Core v2 동반 산출. 감사 종합에서 OmD·taste·hallmark가 구조/반응형/모션 전항목 통과(단 OmD 트레일 셀 axe 7). impeccable 2 timeout+1 crash. auth 로테이션 2회(1 사용자 재로그인, 1 자가복구), 셀 소모 0.
+- **산출물:** `benchmarks/ui-resolve-bench/reports/showcase-2.0/` — index.html(스크린샷 21+시간/비용/감사 표+정직 기록), products/(21개 라이브 페이지, 과제별 에셋 공유), omd-DESIGN-*.md 3종, summary.json. 커밋 e5a1b340.
+- **다음(사용자):** 갤러리 최종 판정 → v2.0.0 릴리스 결정(게이트는 e9에서 이미 통과).
+
 ### 2026-08-17 (Fable) Showcase 2.0 — 17/21 완료, 사용자 요청으로 일시 정지 (재개 준비 완료)
 
 - **정지 지점:** sc2-17(React impeccable, timeout-with-partial)까지 봉인. 로스터리 7/7 · 트레일 갤러리 7/7 · React 플랜 피커 3/7. 잔여 4셀(orders 18–21: React promax/taste/**OmD**/hallmark). 재개 레시피·잔여 목록은 `RECORDS.partial-17.json`의 `pause_checkpoint`에 봉인, 루트 전체 백업 완료.
