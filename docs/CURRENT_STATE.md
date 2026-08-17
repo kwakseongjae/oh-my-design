@@ -10,6 +10,13 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-17 (Fable) Showcase 2.0 — 17/21 완료, 사용자 요청으로 일시 정지 (재개 준비 완료)
+
+- **정지 지점:** sc2-17(React impeccable, timeout-with-partial)까지 봉인. 로스터리 7/7 · 트레일 갤러리 7/7 · React 플랜 피커 3/7. 잔여 4셀(orders 18–21: React promax/taste/**OmD**/hallmark). 재개 레시피·잔여 목록은 `RECORDS.partial-17.json`의 `pause_checkpoint`에 봉인, 루트 전체 백업 완료.
+- **경과 하이라이트:** OmD 패치 6 데뷔 2셀 모두 adopt 성공(파이프라인 통산 21/21), 로스터리 OmD는 감사 전항목 통과. Hallmark 보충 9/9 완주(landing 60/60/0 vs OmD 100/100/70 — e6 우위 역전, RECORDS.final sha f303c632). auth 로테이션 사고 1회(sc2-10 크래시→체인 단절) → 사용자 재로그인(798ea8c8)으로 복구, 판례 절차 준수.
+- **재개 절차:** 잔여 4셀 serial(런처 명령은 pause_checkpoint 그대로) → showcase-audit → RECORDS.partial-18~21 → OpenRouter grok-4.6 단가 라이브 조회로 비용 집계 → 최종 갤러리(스크린샷+시간/토큰/비용 표) → 사용자 최종 판정.
+- 이미지 전처리 스킬(generate-task-assets.mjs)·패치 6·과제 픽스처는 커밋 완료(`130a3795`, `2a311624`).
+
 ### 2026-08-17 (Fable) ★ e9 48/48 완주 — 사전등록 릴리스 게이트 통과 (3승 6무 0패)
 
 - **게이트 판정: PASSED.** OmD 9 trial 전부 tie-or-beat (paired_losses_allowed=0 충족). landing 3전 전승 **100(ui_resolved)/100(ui_resolved)/70** vs 경쟁 최고 70/50/60 — e8 게이트 킬러 매치업(r3 vs promax)도 70>60으로 설욕. cold-chain·clinic은 3 trial 모두 전 arm 0 동점. `EXECUTION-RECORDS.final.json` 봉인(sha 7053ec25…) + 백업.

@@ -3,6 +3,12 @@
 > 세션 시작: 최근 항목 1~2개 확인. 세션 종료: **맨 위에** 5줄 이내 항목 추가. 기존 항목 수정 금지.
 > 결정·증거·계획의 정본이 아니다 — "무엇을 하다 어디서 멈췄나"만 기록한다.
 
+## 2026-08-17 (Fable) Showcase 2.0 일시 정지 — 17/21 봉인, 재개 준비 완료
+- 한 일: Hallmark 보충 9/9(OmD에 완패, e6 역전 확정) → 패치6+이미지 전처리+과제 3종(빌드리스 React 포함) 커밋 → Showcase 2.0 17/21 셀 완주·봉인. OmD 파이프라인 통산 21/21.
+- 열린 것: 잔여 4셀(React promax/taste/OmD/hallmark) — 재개 레시피는 showcase 루트 RECORDS.partial-17 pause_checkpoint. 이후 OpenRouter 단가 집계+최종 갤러리.
+- 다음: 사용자 "재개" 지시 시 order18부터 serial 속행.
+
+
 ## 2026-08-17 (Fable) ★ e9 게이트 통과 — 패치5, landing 3전 전승(100·100·70), 3승 6무 0패
 - 한 일: 패치5(여정 계약: 동사=상태·aria 동시성·SELF-WALK) → e9(a59d048c) 48/48 완주. OmD 무패 게이트 충족(EXECUTION-RECORDS.final sha 7053ec25), e8 킬러 매치업 70>60 설욕, 파이프라인 통산 19/19·사고 0. 갤러리 e9 섹션 반영.
 - 열린 것: v2.0.0 major 범프(1.9.0→) 사용자 승인 대기. Hallmark 보충 실측·blind review 패키징 미착수. cold-chain/clinic 상태 도달성은 전 arm 미해결(차기 흡수 여지).
