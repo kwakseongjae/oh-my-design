@@ -10,6 +10,13 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-18 (Fable) ★ 패치 7 검증 완료 — 시각 계약 + 자가 비평 루프 + 멀티페이지 일관성
+
+- **사용자 피드백 사이클 완주:** (진단) OmD가 상태 스위처를 제품 UI로 노출+순정 라디오 → (grok 리뷰 2잡) 12-GAP 코드 증거 분석 + ProMax/Hallmark 기법 전수 추출(58게이트 목록화) → (패치 7) `references/visual-quality-contract.md` 신설: P0 2규칙(상태 스위처·순정 컨트롤 금지), 토큰 플로어(OKLCH 레이어·섹션 공기·디스플레이 페어·라벨 롤), 표면 장르 커밋, 악센트≤5% 신호, 8상태+인풋 기하, 폴드/매크로 규율, 멀티페이지 계약, **1라운드 자가 비평(critique.md 의무, Variety→System Fidelity 재정의)**. 커밋 97167a66.
+- **실측 검증(서점 4페이지 × 4 arm, 25분 균일):** 전 arm 4/4+일관성 PASS. OmD p7: critique.md 실제 산출(5축 4점+게이트 스윕+수정 기록), 스위처 0, 세리프 에디토리얼 장르 커밋 — plan-picker 참사 대비 시각 격차 해소. ProMax는 헤더 CTA 이중 렌더 버그. 파이프라인 통산 23/23. RECORDS.final sha 4db968a8, 갤러리 `reports/multipage-2026-08-18/` 커밋 7aaa507b·전달.
+- **인프라 신규:** multipage-audit.mjs(교차 페이지 computed-style 동일성·링크 무결성·토큰 충돌), prepare-multipage-cells.mjs, bookshop-multipage 픽스처+에셋 6장.
+- **다음(사용자 판정):** 갤러리 확인 → 방향 지시(추가 trial/과제 확장/v2.0.0 릴리스 재개).
+
 ### 2026-08-18 (Fable) ★ Showcase 2.0 완주 — 21/21 봉인 · 최종 갤러리 전달 (사용자 판정 대기)
 
 - **완주:** 3과제(로스터리 HTML/트레일 갤러리 HTML/플랜 피커 빌드리스 React) × 7 arm, 공통 grok-imagine 에셋 베이스. RECORDS.final sha 2c0010c7, 백업 완료. 총 추정 비용 $20.27(OpenRouter $2/$6 per M, 2026-08-18 조회).
