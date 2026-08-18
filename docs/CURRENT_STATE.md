@@ -10,12 +10,23 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-19 (Fable) 3케이스 사이클 완주 — G3 재판정 대기
+
+- **세 케이스 전부 셀 완주 + G2 렌더 비평 사이클 마감 + 커밋**: 온집 v2(3d937853, G2 7건), 이웃장터(8aad5bdb, G2 6건), 스타일몰(06cfa0e1, G2 7건). 각 `benchmarks/ui-resolve-bench/e2e/<onzip|yeoutjangteo|stylemall>`에서 `npm install && npm run dev`로 확인 가능. 스크린샷 각 디렉토리에 동봉.
+- **패치 11 반영·refreeze(5aae15af)**: G19 확장(라우트 전환 프로그램 포커스 링 억제 — 3케이스 연속 재발분 봉인), 기계 확인 게이트 grep 검증 의무화(G39 자가비평 누락 대응), C37 확장(채팅 말풍선도 웰 안).
+- **병렬 이미지 파이프라인**: parallel-assets.py 4샤드+재시도+참조검증 — 60~70장을 ~13분에. grok 행(작업 완료 후 미종료) 3회 전부 "로그 3분 정지+최종 보고 감지 → kill" 워처로 자동 처리.
+- **다음: 사용자 G3 블라인드 판정** — 세 결과물 실사용 후 "이건 쓰겠다/미달". 통과 시 v2.0.0 절차 재개, 미달 시 펀치리스트로 사이클 반복. **G3 전 릴리스 금지 유지.**
+- 남은 선택 과제: 영상(grok imagine 웹, 데스크탑 제어) — 스타일몰 룩북용, G3 피드백 후 판단.
+
 ### 2026-08-18 (Fable) 디자인 엑설런스 프로그램 진행 중 — 패치 10 이후 3케이스 사이클
 
 - **G3 2차 판정 미달(8결함)** → 대응 완료분: 리서치 2건(R1 국내 시스템 철학, R2 글로벌 크래프트, docs/design-excellence/), 슬롭 게이트 무손실 이식(G1–G56+GS1–GS7), 컴포넌트 크래프트 C1–C45, 철학 유도 사슬(derivation-chain.md) — 전부 skills/omd-autopilot에 반영 + competitor-skills-2.0 팩 refreeze SYNCED 확인.
 - **온집 fixture v2 커밋 완료(1c87683b)**: data.v2.json(리뷰 93·상품 3컷·갤러리·기획전, 무결 검증), BRIEF.v2.md, assets-spec.v2.json(68장). 이미지 배치 진행 중(→ 총 98장, e2e/onzip/public/assets).
-- **다음 셀: onzip e2e4(패치 10)** — 준비 스크립트 `scratchpad/prep-onzip-e2e4.py` 작성 완료(셀 루트 /private/tmp/omd-grok46-onzip-6e21ed1b, cid onzip-home-grok46-e2e4-omd-autopilot-v2, budget 60분). 이미지 완료 → prep 실행 → `node benchmarks/ui-resolve-bench/scripts/run-grok46-omd-cell.mjs --workspace <cell> --timeout-ms 3600000` → G2 렌더 비평(Fable vision) → 수정 패스 → rsync를 e2e/onzip으로.
-- **케이스 B·C 브리프 작성 완료**: fixtures/e2e-yeoutjangteo(당근형: 고밀도 리스트·상태 배지·신뢰지수, 4페이지, 이미지 60장), fixtures/e2e-stylemall(무신사형: 이미지 지배·세일가 위계·룩북 스크롤 내러티브, 5페이지, 71장). 각각 DATASET_BRIEF.md(grok 데이터 생성용)+BRIEF.md(하네스용). 실행 순서는 auth 경합 회피 위해 직렬: onzip 셀 → B 데이터/이미지 → B 셀 → C 데이터/이미지 → C 셀.
+- **onzip e2e4(패치 10) 셀 완주**: audit pass·activation 1·20분·678k/148k 토큰. 철학 사슬 실동작(입장+P1~P3 희생 명시, D-표, 토큰 역참조). 5페이지 렌더 정상(scrollY=0, 페이지별 타이틀), 커스텀 리스트박스·3컷 갤러리·평점 분포·매거진 교차 배치 확인. **G2 비평 7건 발행**(P0: h1 프로그램 포커스 링 = G19 변종, disabled opacity = G39/C42 · P1: 히어로-기획전 이미지 중복, 매거진 좌측 협폭 웰 GS5 · P2: 샘플 밴드, 1장 카드 열, '샘플 도록' 어휘) → grok 수정 패스 진행 중(/tmp/onzip4-fixpass.log). 캘리브레이션: grok 자가 비평이 소스 가시적 G39를 놓침 → 패치 11 후보(기계 확인 게이트 grep 의무화). 완료 후: 재렌더 검증 → rsync → e2e/onzip 커밋 → 케이스 B.
+- **케이스 B 이웃장터 완주(8aad5bdb)**: 셀 18.6분 완주(audit pass) → G2 6건(h1 포커스 링 재발=팩 미반영 확인, 채팅 전폭, 2패인 미완, 거래완료 딤 없음, 샘플 어휘 2곳, 히어로 공백) → 수정 전부 실화면 검증. 데이터 오염("동네명 gre.") 9건 결정론 정리. e2e/yeoutjangteo에서 npm run dev 가능.
+- **병렬 이미지 파이프라인 확립**: parallel-assets.py(4샤드+재시도 2R+참조 검증) — B 60장·C 70장 각 ~13분(직렬 대비 ~4배). grok 행(작업 완료 후 미종료) 재발 2회 → 워처에 "로그 3분 정지+보고 완료 시 kill" 플레이북 정착.
+- **케이스 C 스타일몰: 셀 실행 중**(stylemall-grok46-e2e1, 70 assets, 데이터 무결 검증 완료). 완료 시 G2 → 수정 → 커밋 → 3케이스 종합 보고.
+- **패치 11 후보 누적**: ① 기계 확인 가능 게이트(G39 등) grep 검증 의무화(온집 자가비평 누락), ② 라우트 전환 h1 포커스는 시각 링 억제 규정(팩 레벨 — 온집·이웃장터 2회 재발), ③ 채팅/대화 UI 웰 제한 명문화.
 - **G3 통과까지 v2.0.0 릴리스 금지** 유지.
 
 ### 2026-08-18 (Fable) 패치 9 사이클 완주 — ONZIP 재건, G2 통과, G3 판정 대기
