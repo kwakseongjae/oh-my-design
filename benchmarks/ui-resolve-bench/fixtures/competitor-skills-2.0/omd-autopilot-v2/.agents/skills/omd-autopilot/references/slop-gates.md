@@ -6,6 +6,12 @@ system-fidelity gates). Sweep EVERY gate in the pre-finish critique and list
 hits by number in critique.md. Summarizing this list loses gates — read it
 in full every time.
 
+기계 확인 가능한 게이트는 눈이 아니라 grep으로 검증하라 — 최소:
+`transition: all`(G10), `opacity` 만의 :disabled(G39), 토큰 밖 inline
+hex(G48), `<select`(G28), `border-width` 상태 변경(G39), `100vh` 히어로
+(G6). grep 결과를 critique.md에 명중/무해 판정과 함께 남긴다. "소스에서
+보이는 위반 없음"은 이 grep 로그 없이는 쓸 수 없다.
+
 ## Visual
 - G1 디스플레이 폰트가 Inter/Roboto/Open Sans/Poppins/Lato/시스템 기본(라틴),
   또는 한글에 세리프 폴백이 발생
@@ -29,7 +35,10 @@ in full every time.
 - G17 자동 회전 콘텐츠에 pause 없음
 - G18 Jane Doe/Acme류 플레이스홀더 이름
 - G19 :focus 스타일이 마우스 클릭에도 노출 — 포커스 링은 `:focus-visible`
-  전용, 마우스 상호작용에는 절대 나타나지 않는다
+  전용, 마우스 상호작용에는 절대 나타나지 않는다. 라우트 전환 접근성
+  포커스(tabindex=-1 헤딩/메인에 .focus())는 유지하되 그 요소의 시각
+  링은 반드시 억제한다(`#page-title:focus { outline: none }`) — 직접
+  진입/새로고침에서 제목에 박스가 그려지면 실패
 
 ## Implementation
 - G22 무채 뉴트럴(틴트 없는 회색 스케일)

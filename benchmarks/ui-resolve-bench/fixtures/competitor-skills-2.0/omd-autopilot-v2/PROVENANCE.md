@@ -100,3 +100,10 @@ component-craft.md (45 production norms with reproducible checks) and
 derivation-chain.md (philosophy → decision table with D-ids → tokens with
 back-references → component specs before code → layout grammar with content
 back-calculation). SKILL.md mandates the chain; GS7 bans un-derived values.
+
+## Patch 11 (2026-08-19)
+- G19 확장: 라우트 전환 프로그램 포커스의 시각 링 억제 의무화 — 온집 e2e4,
+  이웃장터 e2e1, 스타일몰 e2e1에서 3회 재발한 렌더 결함의 팩 레벨 봉인.
+- 슬롭 게이트 헤더: 기계 확인 가능 게이트(G6/G10/G28/G39/G48)의 grep 검증
+  의무화 — 온집 e2e4 자가 비평이 소스 가시적 G39를 놓친 캘리브레이션 사고 대응.
+- C37 확장: 대화/채팅 말풍선도 콘텐츠 웰(~760px) 안 — 이웃장터 전폭 채팅 결함.
