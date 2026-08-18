@@ -1,0 +1,305 @@
+{
+ "task_id": "yeoutjangteo-v1",
+ "items": [
+  {
+   "file": "item-01-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"원목 식탁 4인용 2년 썼어요\" (category: 가구/인테리어, condition: 사용감 있음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-01-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"원목 식탁 4인용 2년 썼어요\" (category: 가구/인테리어, condition: 사용감 있음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-02-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"태블릿 11인치 케이스 같이 드려요\" (category: 디지털기기, condition: 사용감 적음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-02-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"태블릿 11인치 케이스 같이 드려요\" (category: 디지털기기, condition: 사용감 적음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-03-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"스탠드 선풍기 작년에만 돌렸어요\" (category: 생활가전, condition: 사용감 적음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-03-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"스탠드 선풍기 작년에만 돌렸어요\" (category: 생활가전, condition: 사용감 적음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-04-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"원형 러그 지름 150 세탁했어요\" (category: 가구/인테리어, condition: 사용감 있음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-04-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"원형 러그 지름 150 세탁했어요\" (category: 가구/인테리어, condition: 사용감 있음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-05-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"아기 옷 80-90 일괄 나눔해요\" (category: 유아동, condition: 사용감 있음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-05-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"아기 옷 80-90 일괄 나눔해요\" (category: 유아동, condition: 사용감 있음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-06-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"2인용 패브릭 소파 이사로 내놓음\" (category: 가구/인테리어, condition: 사용감 있음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-06-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"2인용 패브릭 소파 이사로 내놓음\" (category: 가구/인테리어, condition: 사용감 있음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-07-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"노트북 13인치 배터리 아직 좋아요\" (category: 디지털기기, condition: 사용감 적음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-07-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"노트북 13인치 배터리 아직 좋아요\" (category: 디지털기기, condition: 사용감 적음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-08-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"에어프라이어 거의 안 꺼내봤어요\" (category: 생활가전, condition: 새상품급): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-08-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"에어프라이어 거의 안 꺼내봤어요\" (category: 생활가전, condition: 새상품급): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-09-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"기계식 키보드 청축 한 달 씀\" (category: 디지털기기, condition: 새상품급): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-09-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"기계식 키보드 청축 한 달 씀\" (category: 디지털기기, condition: 새상품급): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-10-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"겨울 울코트 66 두 시즌 입음\" (category: 의류, condition: 사용감 적음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-10-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"겨울 울코트 66 두 시즌 입음\" (category: 의류, condition: 사용감 적음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-11-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"오픈형 옷장 화이트 분해 가능\" (category: 가구/인테리어, condition: 사용감 있음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-11-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"오픈형 옷장 화이트 분해 가능\" (category: 가구/인테리어, condition: 사용감 있음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-12-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"27인치 모니터 재택용으로 썼어요\" (category: 디지털기기, condition: 사용감 적음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-12-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"27인치 모니터 재택용으로 썼어요\" (category: 디지털기기, condition: 사용감 적음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-13-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"무선 청소기 필터 갈아서 드려요\" (category: 생활가전, condition: 사용감 있음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-13-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"무선 청소기 필터 갈아서 드려요\" (category: 생활가전, condition: 사용감 있음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-14-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"아기 식탁의자 접이식 깨끗해요\" (category: 유아동, condition: 사용감 적음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-14-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"아기 식탁의자 접이식 깨끗해요\" (category: 유아동, condition: 사용감 적음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-15-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"소설책 20권 일괄 나눔합니다\" (category: 도서, condition: 사용감 있음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-15-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"소설책 20권 일괄 나눔합니다\" (category: 도서, condition: 사용감 있음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-16-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"스탠드 조명 따뜻한 빛 새거에 가까움\" (category: 가구/인테리어, condition: 새상품급): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-16-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"스탠드 조명 따뜻한 빛 새거에 가까움\" (category: 가구/인테리어, condition: 새상품급): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-17-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"무선 이어폰 이어팁 여분 있어요\" (category: 디지털기기, condition: 사용감 적음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-17-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"무선 이어폰 이어팁 여분 있어요\" (category: 디지털기기, condition: 사용감 적음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-18-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"가습기 통세척 가능한 타입\" (category: 생활가전, condition: 사용감 적음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-18-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"가습기 통세척 가능한 타입\" (category: 생활가전, condition: 사용감 적음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-19-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"운동화 260 두세 번 신었어요\" (category: 의류, condition: 새상품급): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-19-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"운동화 260 두세 번 신었어요\" (category: 의류, condition: 새상품급): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-20-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"요가매트 접이식 땀 자국 있어요\" (category: 스포츠, condition: 사용감 있음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-20-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"요가매트 접이식 땀 자국 있어요\" (category: 스포츠, condition: 사용감 있음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-21-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"원목 책장 5단 나사 다 있어요\" (category: 가구/인테리어, condition: 사용감 있음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-21-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"원목 책장 5단 나사 다 있어요\" (category: 가구/인테리어, condition: 사용감 있음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-22-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"블루투스 스피커 작은 거\" (category: 디지털기기, condition: 사용감 적음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-22-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"블루투스 스피커 작은 거\" (category: 디지털기기, condition: 사용감 적음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-23-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"절충형 유모차  Twin? 절충형 유모차  Twin.\" (category: 유아동, condition: 사용감 있음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-23-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"절충형 유모차  Twin? 절충형 유모차  Twin.\" (category: 유아동, condition: 사용감 있음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-24-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"통계학 전공서 3권 필기 있어요\" (category: 도서, condition: 사용감 있음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-24-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"통계학 전공서 3권 필기 있어요\" (category: 도서, condition: 사용감 있음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-25-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"뜨개실 남은 거 나눔해요\" (category: 취미, condition: 사용감 있음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-25-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"뜨개실 남은 거 나눔해요\" (category: 취미, condition: 사용감 있음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-26-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"접이식 테이블 원룸용\" (category: 가구/인테리어, condition: 사용감 적음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-26-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"접이식 테이블 원룸용\" (category: 가구/인테리어, condition: 사용감 적음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-27-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"무선 마우스 무소음 거의 새거\" (category: 디지털기기, condition: 새상품급): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-27-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"무선 마우스 무소음 거의 새거\" (category: 디지털기기, condition: 새상품급): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-28-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"패딩 점퍼 100 한 겨울 입음\" (category: 의류, condition: 사용감 적음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-28-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"패딩 점퍼 100 한 겨울 입음\" (category: 의류, condition: 사용감 적음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-29-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"자전거 26인치 출퇴근용\" (category: 스포츠, condition: 사용감 있음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-29-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"자전거 26인치 출퇴근용\" (category: 스포츠, condition: 사용감 있음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-30-a.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"입문용 통기타 줄 갈아뒀어요\" (category: 취미, condition: 사용감 있음): the whole item photographed straight-on in a Korean home, on the floor or against a wall as typically staged for a listing",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  },
+  {
+   "file": "item-30-b.jpg",
+   "prompt": "Used item for a Korean secondhand marketplace listing titled \"입문용 통기타 줄 갈아뒀어요\" (category: 취미, condition: 사용감 있음): a closer second angle showing surface detail and actual condition of the item",
+   "style": "realistic casual phone photo taken indoors at home, natural window light or warm room light, slightly imperfect framing like a real secondhand marketplace listing, no people, no readable text"
+  }
+ ]
+}
