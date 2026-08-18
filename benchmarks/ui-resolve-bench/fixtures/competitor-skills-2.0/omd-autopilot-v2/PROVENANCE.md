@@ -90,3 +90,13 @@ scroll/focus/title, lazy images), component anatomy spec (shared edges,
 fixed internal gap scale), genre-domain fit (commerce=cards, ops=density,
 editorial=rules), and a render-feedback pass contract (external reviewer
 screenshot punch lists are confirmed defects to fix surgically).
+
+## Patch 10 refreeze (2026-08-18, design-excellence research absorption)
+
+Two web-research passes (R1 Korean systems: Toss/Karrot/Ohouse/Musinsa/
+Baemin primary sources; R2 global craft: HIG/M3/Carbon/Polaris/Geist/Radix/
+APG/WCAG, 32 items independently re-verified) distilled into:
+component-craft.md (45 production norms with reproducible checks) and
+derivation-chain.md (philosophy → decision table with D-ids → tokens with
+back-references → component specs before code → layout grammar with content
+back-calculation). SKILL.md mandates the chain; GS7 bans un-derived values.
