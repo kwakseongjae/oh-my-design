@@ -1,5 +1,13 @@
-// Starter entry — the design harness builds the product from here.
-// Dataset: src/data/data.json (single source of truth). Images: /assets/*.jpg
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App.jsx";
+import "./styles/system.css";
 
-createRoot(document.getElementById("root")).render(<p>starter</p>);
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>,
+);
