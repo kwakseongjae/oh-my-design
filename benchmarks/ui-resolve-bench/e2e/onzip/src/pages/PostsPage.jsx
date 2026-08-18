@@ -1,71 +1,94 @@
 import { useEffect, useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
-import { HOME_TYPES, filterPosts, posts, uniqueHomeTypes } from "../lib/data.js";
-import { EmptyPanel, FilterChip, PostCard } from "../components/primitives.jsx";
+import { Link, useSearchParams } from "react-router-dom";
+import { assetUrl, filterPosts, homeTypes } from "../lib/catalog.js";
 
-export function PostsPage() {
+export default function PostsPage() {
   const [params, setParams] = useSearchParams();
-  const homeType = params.get("home") || "all";
-  const known = homeType === "all" || HOME_TYPES.includes(homeType);
-  const rows = useMemo(() => filterPosts(known ? homeType : "all"), [homeType, known]);
-  const presentTypes = uniqueHomeTypes();
+  const type = params.get("type") || "all";
+  const types = homeTypes();
+  const posts = useMemo(() => filterPosts(type), [type]);
 
   useEffect(() => {
     document.title = "집들이 — 온집";
   }, []);
 
-  function update(value) {
-    const next = new URLSearchParams();
-    if (value !== "all") next.set("home", value);
-    setParams(next);
-  }
+  const setType = (next) => {
+    const search = new URLSearchParams(params);
+    if (next === "all") search.delete("type");
+    else search.set("type", next);
+    setParams(search, { replace: true });
+  };
 
-  const label = homeType === "all" ? "모든 집 유형" : homeType;
+  const typeName = type === "all" ? "모든 집 유형" : type;
 
   return (
-    <>
-      <header className="page-head">
-        <p className="eyebrow">집들이</p>
-        <h1 id="page-title">살림이 놓인 집</h1>
-        <p>샘플에 실린 {posts.length}편의 집들이입니다. 집 유형으로 거를 수 있습니다.</p>
-      </header>
+    <main id="main">
+      <div className="page">
+        <header className="page-head">
+          <p className="eyebrow">집들이</p>
+          <h1 id="page-title" className="display">
+            앉힌 집을 읽습니다
+          </h1>
+          <p className="lede">원룸부터 주택까지, 물건이 자리에 앉은 이야기를 모았습니다.</p>
+        </header>
 
-      <fieldset className="filter-block">
-        <legend className="label">집 유형</legend>
-        <div className="chip-row">
-          <FilterChip name="home" value="all" checked={homeType === "all"} onChange={() => update("all")}>
-            전체
-          </FilterChip>
-          {presentTypes.map((type) => (
-            <FilterChip
-              key={type}
-              name="home"
-              value={type}
-              checked={homeType === type}
-              onChange={() => update(type)}
-            >
-              {type}
-            </FilterChip>
-          ))}
-        </div>
-      </fieldset>
+        <fieldset className="fieldset">
+          <legend>집 유형</legend>
+          <div className="chip-row">
+            <button type="button" className="chip" aria-pressed={type === "all"} onClick={() => setType("all")}>
+              전체
+            </button>
+            {types.map((item) => (
+              <button
+                key={item}
+                type="button"
+                className="chip"
+                aria-pressed={type === item}
+                onClick={() => setType(item)}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        </fieldset>
 
-      <p className="status-line" role="status">
-        {label} — 결과 {rows.length}개
-        <span className="definition"> (정의: 선택한 집 유형과 같은 게시글 수)</span>
-      </p>
+        <p className="live-summary" role="status" data-state="success">
+          {typeName} · {posts.length}편 · 수록된 순서
+        </p>
 
-      {rows.length === 0 ? (
-        <EmptyPanel title="맞는 집들이가 없습니다" onReset={() => update("all")} resetLabel="유형 지우기">
-          {label}에 해당하는 게시글이 샘플에 없습니다.
-        </EmptyPanel>
-      ) : (
-        <div className="grid-3" data-state="success">
-          {rows.map((post) => (
-            <PostCard key={post.id} post={post} />
-          ))}
-        </div>
-      )}
-    </>
+        {posts.length === 0 ? (
+          <div className="empty-panel" data-state="empty">
+            이 집 유형의 집들이가 없습니다.
+          </div>
+        ) : (
+          <div className="card-grid cols-3">
+            {posts.map((post) => (
+              <Link key={post.id} className="product-card post-card" to={`/posts/${post.id}`} data-cta="local">
+                <div className="media">
+                  <img
+                    src={assetUrl(post.cover_image)}
+                    alt=""
+                    width={1248}
+                    height={832}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="card-body">
+                  <span className="brand">
+                    {post.author_nick} · {post.home_type} · {post.area_pyeong}평
+                  </span>
+                  <h2 className="title">{post.title}</h2>
+                  <p className="pitch">{post.summary}</p>
+                  <div className="meta">
+                    <span>좋아함 {post.likes.toLocaleString("ko-KR")}</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+
+      </div>
+    </main>
   );
 }

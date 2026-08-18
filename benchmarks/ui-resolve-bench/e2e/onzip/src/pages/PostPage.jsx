@@ -1,19 +1,11 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getPost, productsForPost } from "../lib/data.js";
-import { formatCount, formatPyeong } from "../lib/format.js";
-import {
-  Button,
-  CatalogImage,
-  ErrorPanel,
-  HomeTypeBadge,
-  ProductCard,
-} from "../components/primitives.jsx";
+import ProductCard from "../components/ProductCard.jsx";
+import { assetUrl, postById, productsForPost } from "../lib/catalog.js";
 
-export function PostPage() {
+export default function PostPage() {
   const { id } = useParams();
-  const post = getPost(id);
-  const used = post ? productsForPost(post) : [];
+  const post = postById(id);
 
   useEffect(() => {
     document.title = post ? `${post.title} — 온집` : "없는 집들이 — 온집";
@@ -21,44 +13,72 @@ export function PostPage() {
 
   if (!post) {
     return (
-      <ErrorPanel title="이 집들이를 찾을 수 없습니다" requestedId={id} to="/posts" recoverLabel="집들이로 돌아가기">
-        주소의 게시글 번호가 샘플 목록에 없습니다.
-      </ErrorPanel>
+      <main id="main" data-state="error">
+        <div className="page">
+          <header className="page-head">
+            <p className="eyebrow">집들이</p>
+            <h1 id="page-title" className="display">
+              없는 집들이입니다
+            </h1>
+            <p className="error-panel" role="alert">
+              요청한 글을 도록에서 찾지 못했습니다.
+            </p>
+            <Link className="btn btn-ghost" to="/posts">
+              집들이 목록으로
+            </Link>
+          </header>
+        </div>
+      </main>
     );
   }
 
+  const products = productsForPost(post);
+  const frames = post.gallery.slice(0, 4);
+  const blocks = post.body_blocks;
+
   return (
-    <article data-state="success">
-      <header className="page-head">
-        <HomeTypeBadge type={post.home_type} />
-        <h1 id="page-title">{post.title}</h1>
-        <p className="meta">
-          {post.author_nick} · {formatPyeong(post.area_pyeong)} · 좋아요 {formatCount(post.likes)}
-        </p>
-      </header>
-      <figure className="hero__figure">
-        <CatalogImage src={post.cover_image} alt="" lazy={false} />
-      </figure>
-      <p style={{ maxWidth: "62ch", marginTop: "1.5rem" }}>{post.summary}</p>
-      <div className="detail-actions">
-        <Button as={Link} to="/posts" variant="ghost" cta="local">
-          집들이 목록
-        </Button>
-      </div>
-      <section className="joined" aria-labelledby="used-products">
-        <div className="section-head">
-          <div>
-            <p className="eyebrow">사용된 상품</p>
-            <h2 id="used-products">이 집에 놓인 물건</h2>
-          </div>
-          <p className="definition">정의: 게시글이 가리키는 상품 {used.length}개를 목록과 이어서 표시</p>
-        </div>
-        <div className="grid-2">
-          {used.map((product) => (
-            <ProductCard key={product.id} product={product} />
+    <main id="main">
+      <div className="page magazine">
+        <header className="page-head">
+          <p className="eyebrow">
+            {post.home_type} · {post.area_pyeong}평 · {post.author_nick}
+          </p>
+          <h1 id="page-title" className="display">
+            {post.title}
+          </h1>
+          <p className="lede">{post.summary}</p>
+        </header>
+
+        <article>
+          {blocks.map((paragraph, index) => (
+            <div className="spread" key={`${post.id}-${index}`}>
+              {frames[index] ? (
+                <figure>
+                  <img
+                    src={assetUrl(frames[index])}
+                    alt=""
+                    width={1248}
+                    height={832}
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+                </figure>
+              ) : null}
+              <p>{paragraph}</p>
+            </div>
           ))}
-        </div>
-      </section>
-    </article>
+        </article>
+
+        <section className="section" aria-labelledby="used-heading">
+          <h2 id="used-heading" className="section-title">
+            이 집에 앉힌 물건
+          </h2>
+          <div className="join-grid">
+            {products.map((product) => (
+              <ProductCard key={product.id} product={product} headingLevel="h3" />
+            ))}
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }
