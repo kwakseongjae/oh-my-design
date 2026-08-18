@@ -10,6 +10,13 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-19 (Fable) 패치 12 — 프리셋 카탈로그 v1 + 화면 인벤토리 게이트 (f7ca7914)
+
+- **프리셋 v1**: `skills/omd-autopilot/references/presets/` — 3케이스 G2 검증 산출물 20개 증류(fundamentals 6·commerce 7·marketplace 5·editorial 3). 유도 사슬 4단계가 "프리셋 선택→토큰 파생"으로 전환, GS8 신설(부합 프리셋 즉흥 제작 금지). grok 프로브 통과(정확한 선택+게이트 근거 no-preset).
+- **화면 인벤토리 게이트**: 하네스 체크포인트 #1 격상 — journey.mmd + `screens.md`(화면|목적|핵심 요소|문법|상태|프리셋 후보 표) 승인 후에만 와이어프레임. 미승인 화면 제작 금지. master-execution-phases.md + AGENTS.md 반영.
+- 동기화: skills/ 원본 → .claude/skills + .agents/skills + competitor-skills-2.0 팩(SHA 3갱신+5추가, PROVENANCE 패치 12).
+- 다음: G3 판정(3케이스) 또는 프리셋 체제 첫 실전 셀.
+
 ### 2026-08-19 (Fable) 3케이스 사이클 완주 — G3 재판정 대기
 
 - **세 케이스 전부 셀 완주 + G2 렌더 비평 사이클 마감 + 커밋**: 온집 v2(3d937853, G2 7건), 이웃장터(8aad5bdb, G2 6건), 스타일몰(06cfa0e1, G2 7건). 각 `benchmarks/ui-resolve-bench/e2e/<onzip|yeoutjangteo|stylemall>`에서 `npm install && npm run dev`로 확인 가능. 스크린샷 각 디렉토리에 동봉.
