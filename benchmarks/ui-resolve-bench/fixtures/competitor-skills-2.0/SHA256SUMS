@@ -435,4 +435,5 @@ e01943c433b2cad3040f19389b3b0455673758a569b7a927b5bedf65c989cb96  ui-ux-pro-max/
 ce60ac571164cf35e8c866550ad989fa686706a56fa48df4fdf76444b94fdd8d  ui-ux-pro-max/.agents/skills/ui-ux-pro-max/scripts/tests/test_core.py
 c38424e0f575f498c10564844338abce9363cd0b002ba8bd35c9d2762c2674ae  ui-ux-pro-max/.agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py
 f1b5e0916f3c2f8271416f93f6ff9ebf3311a68a943a19c1b83f16823cbb05a7  ui-ux-pro-max/.agents/skills/ui-ux-pro-max/scripts/validate_data.py
-d45fe979eb6f5b11eccd172dfff4861e58477f65306da6951ca1525540f248e6  omd-autopilot-v2/.agents/skills/omd-autopilot/references/visual-quality-contract.md
+b8d4c2255aba3718d30483f686cf0c6dbe83415a7decdb2cfeab488f43c19d9a  omd-autopilot-v2/.agents/skills/omd-autopilot/references/visual-quality-contract.md
+fa03013a463833a6163d8b3dbb9eeebb3ac73bd24ff751fbaf414eb2d4986dc1  omd-autopilot-v2/.agents/skills/omd-autopilot/references/slop-gates.md

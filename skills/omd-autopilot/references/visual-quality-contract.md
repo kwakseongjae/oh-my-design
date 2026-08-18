@@ -174,7 +174,8 @@ Before declaring the product finished, run ONE fast critique pass and write
    **System Fidelity** (every value traces to a locked token AND the page
    has not collapsed into genre defaults: 3-column icon cards, centered
    hero stack, AI nav/footer, purple gradients).
-2. Sweep the numbered gates above as yes/no; list every hit.
+2. Sweep `references/slop-gates.md` IN FULL (numbered, lossless — do not
+   rely on this contract's summaries alone); list every hit by number.
 3. Any axis <3 or any P0/critical gate hit → fix now, once. Record
    before/after in `critique.md`. Never fake the scores — the audit that
    follows reads the same DOM.
