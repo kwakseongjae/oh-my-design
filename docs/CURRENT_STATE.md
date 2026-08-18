@@ -10,6 +10,13 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-18 (Fable) ★ 3대 최종 작업 완주 — 패치8 · fixture-gen 스킬 · ONZIP E2E
+
+- **패치 8 (데이터 인지 init):** 데이터 진실 소스 인벤토리 의무(data-inventory.md), 가이드 모드 질문/스캔 허가, enum→토큰 세트, KPI 정의 병기, API 스키마=계약. 커밋 6e21ed1b.
+- **bench-fixture-gen 스킬(내부):** grok 데이터셋 생성+하드 검증(개수·enum·관계 무결성, 1회 재시도) + 이미지 베이스 + auth 자가 동기화. ONZIP에서 1발 통과.
+- **ONZIP E2E (가상 오늘의집):** 한국어 데이터셋(카테고리6/상품24/집들이6) + 이미지 30장 → 실 Vite React 스택에서 하네스 완주. 1차 시도가 dry-check 리허설 갭(adopt/validate 미커버) 발견 → 컨트롤러 전체 트랜잭션 리허설로 수정(2d56369d, vitest 3/3) → **2차 완주: DESIGN.md 채택 + 5페이지 + critique.md + data-inventory.md, npm install+vite build 클린, 프리뷰 스모크 통과**(상품 24개=계산값+정의 병기, 커스텀 컨트롤, disclosure 노출). 기록 봉인 cca660cd, 커밋 792a8b13.
+- **실행:** `cd benchmarks/ui-resolve-bench/e2e/onzip && npm install && npm run dev`
+
 ### 2026-08-18 (Fable) ★ 제품급 실측 완료 — 공통 데이터셋 + 데이터 충실도 감사 (야매 제거 사이클)
 
 - **과제 격상:** Terra & Tide 도매 주문 콘솔 4페이지 — 공통 데이터 fixture(주문34/상품10/고객10, 결정 시드, sha 576ad596; data.js+json 이중), 상품 이미지 10장, 브리프가 "런타임 계산" 명시. `dataproduct-audit.mjs` 신설(기대값을 감사 시점에 데이터셋에서 도출: KPI 페어링·34행·delayed 필터=4·상세 조인·미지 ID·하드코딩 탐지). 이미지 생성기에 auth 자가 동기화 패치.

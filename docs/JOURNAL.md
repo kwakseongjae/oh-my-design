@@ -3,6 +3,12 @@
 > 세션 시작: 최근 항목 1~2개 확인. 세션 종료: **맨 위에** 5줄 이내 항목 추가. 기존 항목 수정 금지.
 > 결정·증거·계획의 정본이 아니다 — "무엇을 하다 어디서 멈췄나"만 기록한다.
 
+## 2026-08-18 (Fable) 3대 최종 작업 — 패치8·fixture-gen·ONZIP E2E 완주
+- 한 일: 데이터 인지 init 규범(패치8) + 내부 fixture-gen 스킬(grok 데이터셋 검증 생성) + ONZIP E2E(React/Vite 5페이지+DESIGN.md, npm build 검증). E2E 1차가 dry-check 갭 발견→전체 트랜잭션 리허설 수정.
+- 열린 것: 사용자 npm run dev 확인. 이후 방향(추가 arm 비교/릴리스) 결정 대기.
+- 다음: 사용자 확인 반영.
+
+
 ## 2026-08-18 (Fable) 제품급 실측 완주 — 공통 데이터셋·데이터 충실도 감사
 - 한 일: Terra&Tide 콘솔(데이터 fixture+이미지10+dataproduct-audit) 4 arm 실측. ProMax·OmD 공동 선두, model/hallmark 기능 결함. 모호 KPI·로케이터 한계 정직 판정. 갤러리 커밋 d1db1f76.
 - 열린 것: 사용자 시각 판정. 차기: 브리프 KPI 정의 명시, 감사기 로케이터 확장.
