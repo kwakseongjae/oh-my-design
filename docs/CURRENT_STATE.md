@@ -10,6 +10,14 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-18 (Fable) 디자인 엑설런스 프로그램 진행 중 — 패치 10 이후 3케이스 사이클
+
+- **G3 2차 판정 미달(8결함)** → 대응 완료분: 리서치 2건(R1 국내 시스템 철학, R2 글로벌 크래프트, docs/design-excellence/), 슬롭 게이트 무손실 이식(G1–G56+GS1–GS7), 컴포넌트 크래프트 C1–C45, 철학 유도 사슬(derivation-chain.md) — 전부 skills/omd-autopilot에 반영 + competitor-skills-2.0 팩 refreeze SYNCED 확인.
+- **온집 fixture v2 커밋 완료(1c87683b)**: data.v2.json(리뷰 93·상품 3컷·갤러리·기획전, 무결 검증), BRIEF.v2.md, assets-spec.v2.json(68장). 이미지 배치 진행 중(→ 총 98장, e2e/onzip/public/assets).
+- **다음 셀: onzip e2e4(패치 10)** — 준비 스크립트 `scratchpad/prep-onzip-e2e4.py` 작성 완료(셀 루트 /private/tmp/omd-grok46-onzip-6e21ed1b, cid onzip-home-grok46-e2e4-omd-autopilot-v2, budget 60분). 이미지 완료 → prep 실행 → `node benchmarks/ui-resolve-bench/scripts/run-grok46-omd-cell.mjs --workspace <cell> --timeout-ms 3600000` → G2 렌더 비평(Fable vision) → 수정 패스 → rsync를 e2e/onzip으로.
+- **케이스 B·C 브리프 작성 완료**: fixtures/e2e-yeoutjangteo(당근형: 고밀도 리스트·상태 배지·신뢰지수, 4페이지, 이미지 60장), fixtures/e2e-stylemall(무신사형: 이미지 지배·세일가 위계·룩북 스크롤 내러티브, 5페이지, 71장). 각각 DATASET_BRIEF.md(grok 데이터 생성용)+BRIEF.md(하네스용). 실행 순서는 auth 경합 회피 위해 직렬: onzip 셀 → B 데이터/이미지 → B 셀 → C 데이터/이미지 → C 셀.
+- **G3 통과까지 v2.0.0 릴리스 금지** 유지.
+
 ### 2026-08-18 (Fable) 패치 9 사이클 완주 — ONZIP 재건, G2 통과, G3 판정 대기
 
 - **attempt 3 (패치 9):** 파이프라인 정상(dry-check 3+activation 1, DESIGN.md). 사용자 4결함 전부 해소 실측: ① 한글 고딕 스택+웨이트 위계(세리프 폴백 소멸) ② 사용자 언어 정의("리뷰 수 기준 상위 4개")·고지 푸터 1줄 ③ 스크롤 버그 해소(scrollY=0 실측)+페이지별 타이틀 ④ 커머스 카드 해부(정렬 일치·간격 스케일·가격 지배).
