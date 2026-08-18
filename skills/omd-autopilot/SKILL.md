@@ -354,6 +354,36 @@ or role changes). Any row missing either entry is unfinished work — fix it
 before the mission proof, budget permitting, because a missing row scores the
 same as a missing page.
 
+## Data discovery (good UI carries the data)
+
+A screen is only as good as the data it carries. Before designing anything,
+inventory the DATA TRUTH SOURCES and write `data-inventory.md` into the run
+directory:
+
+1. Provided fixtures first: `data/*.json`, `data/*.js`, CSV, seeded stores.
+2. Declared contracts next: OpenAPI/Swagger specs, GraphQL schemas, TypeScript
+   interfaces/types, ORM models, API route handlers.
+3. If neither exists and the brief implies records, the mode decides:
+   - Guided mode: ASK the user for the data shape, or ask permission to scan
+     the repository for data sources before proceeding.
+   - Autonomous/benchmark mode: use only what was provided; state the absence
+     honestly on-screen. NEVER invent fields, records, or endpoints.
+
+Then design FROM the data shape, not toward a template:
+
+- Entities and their cardinalities pick the page patterns (a 34-row entity is
+  a table with filters, not three cards) and the density dial.
+- Every enum in the data (status, category, stock) becomes a system token
+  set: one color/mark per value, defined once, legible at a glance.
+- Every field a user needs is on screen or one interaction away; IDs and
+  timestamps are visible where an operator would search by them. A field in
+  the dataset that never renders anywhere needs a reason.
+- Aggregates shown as KPIs are COMPUTED from the data at runtime and their
+  definition is stated near the number (e.g. "open = pending + packed").
+- When an API is the source (now or planned): the schema is the contract —
+  per-endpoint loading/error/empty states, pagination beyond ~50 rows,
+  and no rendering of fields the contract does not define.
+
 ## Visual quality contract (mandatory read)
 
 Before PRODUCT_BUILD, read `references/visual-quality-contract.md` in full

@@ -59,3 +59,12 @@ self-critique loop whose Variety axis is redefined as System Fidelity.
 SKILL.md rewires the state instruction to interaction-outcomes-only and
 mandates the contract read + critique.md artifact. Patterns absorbed as
 norms; competitor text not copied.
+
+## Patch 8 refreeze (2026-08-18, data-aware init)
+
+User direction: good UI must fully carry the data. New "Data discovery"
+section — mandatory data-truth-source inventory (fixtures > declared
+contracts > ask/scan with permission in guided mode), design-from-data-shape
+rules (entities pick patterns, enums become token sets, KPIs computed with
+stated definitions, API schema as contract with per-endpoint states and
+pagination), data-inventory.md run artifact.

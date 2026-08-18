@@ -1,0 +1,21 @@
+{
+ "task_id": "onzip-home",
+ "dataset": {
+  "id": "onzip-sample-v1",
+  "global_key": "ONZIP_DATA",
+  "disclosure": "온집(ONZIP)은 가상의 서비스입니다. 모든 상품, 가격, 리뷰 수, 게시글, 닉네임은 허구의 샘플 데이터입니다.",
+  "locale_note": "All user-facing strings in natural Korean (product names like '클라우드 3인 패브릭 소파', nicknames like '초록집사'). Prices in realistic KRW for the category. Ratings are integers = stars*10 (e.g. 47 = 4.7).",
+  "entities": [
+   {"name":"categories","count":6,"fields":[{"name":"id","kind":"id"},{"name":"name","kind":"string"},{"name":"slug","kind":"string"}],
+    "note":"exactly: 소파/거실가구, 조명, 러그/카페트, 수납/정리, 침구, 홈데코 with slugs sofa, lighting, rug, storage, bedding, deco"},
+   {"name":"products","count":24,"fields":[{"name":"id","kind":"id"},{"name":"name","kind":"string"},{"name":"category_id","kind":"string"},{"name":"brand","kind":"string"},{"name":"price_krw","kind":"int","range":[8900,1890000]},{"name":"rating_x10","kind":"int","range":[35,50]},{"name":"review_count","kind":"int","range":[3,4820]},{"name":"stock_status","kind":"enum","enum":["판매중","품절임박","품절"]},{"name":"image","kind":"string"},{"name":"tags","kind":"array"}],
+    "note":"4 products per category; image must be exactly 'assets/prod-NN.jpg' with NN = 01..24 in order; brands are fictional Korean brands; tags are 2-3 short Korean keywords; make 3 products 품절임박 and 2 products 품절"},
+   {"name":"posts","count":6,"fields":[{"name":"id","kind":"id"},{"name":"title","kind":"string"},{"name":"author_nick","kind":"string"},{"name":"home_type","kind":"enum","enum":["원룸","투룸","아파트","주택"]},{"name":"area_pyeong","kind":"int","range":[6,42]},{"name":"cover_image","kind":"string"},{"name":"product_ids","kind":"array"},{"name":"likes","kind":"int","range":[12,3450]},{"name":"summary","kind":"string"}],
+    "note":"집들이(home tour) posts; cover_image exactly 'assets/post-N.jpg' with N = 1..6; product_ids each reference 2-4 real product ids used in that home; summary is 2-3 warm Korean sentences"}
+  ],
+  "relations": [
+   {"from":"products.category_id","to":"categories.id"},
+   {"from":"posts.product_ids","to":"products.id"}
+  ]
+ }
+}

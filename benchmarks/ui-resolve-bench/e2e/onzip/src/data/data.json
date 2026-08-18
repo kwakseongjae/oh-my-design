@@ -1,0 +1,518 @@
+{
+ "dataset": "onzip-sample-v1",
+ "disclosure": "온집(ONZIP)은 가상의 서비스입니다. 모든 상품, 가격, 리뷰 수, 게시글, 닉네임은 허구의 샘플 데이터입니다.",
+ "categories": [
+  {
+   "id": "cat-sofa",
+   "name": "소파/거실가구",
+   "slug": "sofa"
+  },
+  {
+   "id": "cat-lighting",
+   "name": "조명",
+   "slug": "lighting"
+  },
+  {
+   "id": "cat-rug",
+   "name": "러그/카페트",
+   "slug": "rug"
+  },
+  {
+   "id": "cat-storage",
+   "name": "수납/정리",
+   "slug": "storage"
+  },
+  {
+   "id": "cat-bedding",
+   "name": "침구",
+   "slug": "bedding"
+  },
+  {
+   "id": "cat-deco",
+   "name": "홈데코",
+   "slug": "deco"
+  }
+ ],
+ "products": [
+  {
+   "id": "prod-01",
+   "name": "클라우드 3인 패브릭 소파",
+   "category_id": "cat-sofa",
+   "brand": "온결리빙",
+   "price_krw": 789000,
+   "rating_x10": 47,
+   "review_count": 2146,
+   "stock_status": "판매중",
+   "image": "assets/prod-01.jpg",
+   "tags": [
+    "패브릭",
+    "3인용",
+    "구름쿠션"
+   ]
+  },
+  {
+   "id": "prod-02",
+   "name": "느티 원목 라운지 체어",
+   "category_id": "cat-sofa",
+   "brand": "나뭇결",
+   "price_krw": 429000,
+   "rating_x10": 46,
+   "review_count": 873,
+   "stock_status": "판매중",
+   "image": "assets/prod-02.jpg",
+   "tags": [
+    "원목",
+    "1인용",
+    "라운지"
+   ]
+  },
+  {
+   "id": "prod-03",
+   "name": "한낮 모듈 코너 소파",
+   "category_id": "cat-sofa",
+   "brand": "한낮스튜디오",
+   "price_krw": 1290000,
+   "rating_x10": 48,
+   "review_count": 612,
+   "stock_status": "품절임박",
+   "image": "assets/prod-03.jpg",
+   "tags": [
+    "모듈",
+    "코너형",
+    "패브릭"
+   ]
+  },
+  {
+   "id": "prod-04",
+   "name": "안온 2인 가죽 소파",
+   "category_id": "cat-sofa",
+   "brand": "안온",
+   "price_krw": 1580000,
+   "rating_x10": 45,
+   "review_count": 391,
+   "stock_status": "판매중",
+   "image": "assets/prod-04.jpg",
+   "tags": [
+    "가죽",
+    "2인용",
+    "거실"
+   ]
+  },
+  {
+   "id": "prod-05",
+   "name": "달빛 펜던트 조명",
+   "category_id": "cat-lighting",
+   "brand": "달빛조명",
+   "price_krw": 89000,
+   "rating_x10": 46,
+   "review_count": 1584,
+   "stock_status": "판매중",
+   "image": "assets/prod-05.jpg",
+   "tags": [
+    "펜던트",
+    "식탁등",
+    "따뜻한빛"
+   ]
+  },
+  {
+   "id": "prod-06",
+   "name": "소소 스탠드 플로어램프",
+   "category_id": "cat-lighting",
+   "brand": "소소라이트",
+   "price_krw": 129000,
+   "rating_x10": 44,
+   "review_count": 742,
+   "stock_status": "판매중",
+   "image": "assets/prod-06.jpg",
+   "tags": [
+    "플로어",
+    "독서등",
+    "스탠드"
+   ]
+  },
+  {
+   "id": "prod-07",
+   "name": "결빛 벽등 2개 세트",
+   "category_id": "cat-lighting",
+   "brand": "결빛",
+   "price_krw": 64000,
+   "rating_x10": 43,
+   "review_count": 318,
+   "stock_status": "품절",
+   "image": "assets/prod-07.jpg",
+   "tags": [
+    "벽등",
+    "세트",
+    "복도"
+   ]
+  },
+  {
+   "id": "prod-08",
+   "name": "창가 단스탠드 무드등",
+   "category_id": "cat-lighting",
+   "brand": "창가상점",
+   "price_krw": 39000,
+   "rating_x10": 49,
+   "review_count": 3218,
+   "stock_status": "판매중",
+   "image": "assets/prod-08.jpg",
+   "tags": [
+    "무드등",
+    "단스탠드",
+    "침실"
+   ]
+  },
+  {
+   "id": "prod-09",
+   "name": "포근 울 라운드 러그 150",
+   "category_id": "cat-rug",
+   "brand": "포근러그",
+   "price_krw": 189000,
+   "rating_x10": 47,
+   "review_count": 1264,
+   "stock_status": "판매중",
+   "image": "assets/prod-09.jpg",
+   "tags": [
+    "라운드",
+    "울",
+    "거실"
+   ]
+  },
+  {
+   "id": "prod-10",
+   "name": "결결 체크 면 러그 200",
+   "category_id": "cat-rug",
+   "brand": "결결",
+   "price_krw": 159000,
+   "rating_x10": 42,
+   "review_count": 587,
+   "stock_status": "판매중",
+   "image": "assets/prod-10.jpg",
+   "tags": [
+    "체크",
+    "면러그",
+    "거실"
+   ]
+  },
+  {
+   "id": "prod-11",
+   "name": "마루결 단모 사각 카페트",
+   "category_id": "cat-rug",
+   "brand": "마루결",
+   "price_krw": 248000,
+   "rating_x10": 45,
+   "review_count": 934,
+   "stock_status": "품절임박",
+   "image": "assets/prod-11.jpg",
+   "tags": [
+    "단모",
+    "사각",
+    "카페트"
+   ]
+  },
+  {
+   "id": "prod-12",
+   "name": "풀잎 미니 발매트 2장",
+   "category_id": "cat-rug",
+   "brand": "풀잎살림",
+   "price_krw": 29000,
+   "rating_x10": 41,
+   "review_count": 2107,
+   "stock_status": "판매중",
+   "image": "assets/prod-12.jpg",
+   "tags": [
+    "발매트",
+    "미니",
+    "현관"
+   ]
+  },
+  {
+   "id": "prod-13",
+   "name": "숨숨 오픈 선반 3단",
+   "category_id": "cat-storage",
+   "brand": "숨숨",
+   "price_krw": 79000,
+   "rating_x10": 44,
+   "review_count": 1489,
+   "stock_status": "판매중",
+   "image": "assets/prod-13.jpg",
+   "tags": [
+    "선반",
+    "오픈수납",
+    "3단"
+   ]
+  },
+  {
+   "id": "prod-14",
+   "name": "정리공작소 라탄 바스켓 세트",
+   "category_id": "cat-storage",
+   "brand": "정리공작소",
+   "price_krw": 42000,
+   "rating_x10": 48,
+   "review_count": 2763,
+   "stock_status": "판매중",
+   "image": "assets/prod-14.jpg",
+   "tags": [
+    "라탄",
+    "바스켓",
+    "세트"
+   ]
+  },
+  {
+   "id": "prod-15",
+   "name": "고요 슬라이딩 옷장 1200",
+   "category_id": "cat-storage",
+   "brand": "고요살림",
+   "price_krw": 389000,
+   "rating_x10": 43,
+   "review_count": 256,
+   "stock_status": "품절",
+   "image": "assets/prod-15.jpg",
+   "tags": [
+    "옷장",
+    "슬라이딩",
+    "침실"
+   ]
+  },
+  {
+   "id": "prod-16",
+   "name": "담담 벽걸이 수납함",
+   "category_id": "cat-storage",
+   "brand": "담담리빙",
+   "price_krw": 24000,
+   "rating_x10": 40,
+   "review_count": 821,
+   "stock_status": "판매중",
+   "image": "assets/prod-16.jpg",
+   "tags": [
+    "벽걸이",
+    "소품함",
+    "원룸"
+   ]
+  },
+  {
+   "id": "prod-17",
+   "name": "솜결 사계절 이불 세트 SS",
+   "category_id": "cat-bedding",
+   "brand": "솜결",
+   "price_krw": 129000,
+   "rating_x10": 49,
+   "review_count": 3842,
+   "stock_status": "판매중",
+   "image": "assets/prod-17.jpg",
+   "tags": [
+    "사계절",
+    "싱글",
+    "이불세트"
+   ]
+  },
+  {
+   "id": "prod-18",
+   "name": "이불결 린넨 침구 세트 Q",
+   "category_id": "cat-bedding",
+   "brand": "이불결",
+   "price_krw": 189000,
+   "rating_x10": 47,
+   "review_count": 1653,
+   "stock_status": "판매중",
+   "image": "assets/prod-18.jpg",
+   "tags": [
+    "린넨",
+    "퀸",
+    "침구"
+   ]
+  },
+  {
+   "id": "prod-19",
+   "name": "온집 메모리폼 베개 2개",
+   "category_id": "cat-bedding",
+   "brand": "온집메이드",
+   "price_krw": 59000,
+   "rating_x10": 46,
+   "review_count": 2210,
+   "stock_status": "품절임박",
+   "image": "assets/prod-19.jpg",
+   "tags": [
+    "베개",
+    "메모리폼",
+    "세트"
+   ]
+  },
+  {
+   "id": "prod-20",
+   "name": "하린 거위털 차렵이불 K",
+   "category_id": "cat-bedding",
+   "brand": "하린리빙",
+   "price_krw": 268000,
+   "rating_x10": 45,
+   "review_count": 478,
+   "stock_status": "판매중",
+   "image": "assets/prod-20.jpg",
+   "tags": [
+    "거위털",
+    "킹",
+    "차렵"
+   ]
+  },
+  {
+   "id": "prod-21",
+   "name": "느린오후 세라믹 화병",
+   "category_id": "cat-deco",
+   "brand": "느린오후",
+   "price_krw": 28000,
+   "rating_x10": 48,
+   "review_count": 1964,
+   "stock_status": "판매중",
+   "image": "assets/prod-21.jpg",
+   "tags": [
+    "화병",
+    "세라믹",
+    "선반"
+   ]
+  },
+  {
+   "id": "prod-22",
+   "name": "볕든집 린넨 커튼 한 폭",
+   "category_id": "cat-deco",
+   "brand": "볕든집",
+   "price_krw": 49000,
+   "rating_x10": 44,
+   "review_count": 1108,
+   "stock_status": "판매중",
+   "image": "assets/prod-22.jpg",
+   "tags": [
+    "커튼",
+    "린넨",
+    "창문"
+   ]
+  },
+  {
+   "id": "prod-23",
+   "name": "솔솔 우드 트레이",
+   "category_id": "cat-deco",
+   "brand": "솔솔리빙",
+   "price_krw": 19000,
+   "rating_x10": 42,
+   "review_count": 734,
+   "stock_status": "판매중",
+   "image": "assets/prod-23.jpg",
+   "tags": [
+    "트레이",
+    "우드",
+    "소품"
+   ]
+  },
+  {
+   "id": "prod-24",
+   "name": "느티하우스 벽걸이 거울",
+   "category_id": "cat-deco",
+   "brand": "느티하우스",
+   "price_krw": 89000,
+   "rating_x10": 46,
+   "review_count": 512,
+   "stock_status": "판매중",
+   "image": "assets/prod-24.jpg",
+   "tags": [
+    "거울",
+    "벽걸이",
+    "현관"
+   ]
+  }
+ ],
+ "posts": [
+  {
+   "id": "post-1",
+   "title": "6평 원룸, 소파 하나로 거실이 생겼어요",
+   "author_nick": "초록집사",
+   "home_type": "원룸",
+   "area_pyeong": 6,
+   "cover_image": "assets/post-1.jpg",
+   "product_ids": [
+    "prod-01",
+    "prod-08",
+    "prod-16"
+   ],
+   "likes": 2140,
+   "summary": "침대 옆에 클라우드 소파를 두니 손님이 와도 앉을 자리가 생겼어요. 창가에 무드등을 켜면 좁은 방이 저녁에도 포근해집니다. 벽걸이 수납함 덕분에 바닥에 물건이 줄었어요."
+  },
+  {
+   "id": "post-2",
+   "title": "투룸 첫 집들이, 빛부터 맞췄어요",
+   "author_nick": "볕드는창",
+   "home_type": "투룸",
+   "area_pyeong": 14,
+   "cover_image": "assets/post-2.jpg",
+   "product_ids": [
+    "prod-02",
+    "prod-05",
+    "prod-09",
+    "prod-21"
+   ],
+   "likes": 1688,
+   "summary": "식탁 위에 달빛 펜던트를 달고 바닥엔 둥근 러그를 깔았어요. 창가 라운지 체어에 앉아 커피 마시는 시간이 제일 좋아요. 선반 위 작은 화병이 집을 덜 휑하게 만들어 줍니다."
+  },
+  {
+   "id": "post-3",
+   "title": "32평 아파트 거실, 코너 소파로 자리를 잡다",
+   "author_nick": "느린살림",
+   "home_type": "아파트",
+   "area_pyeong": 32,
+   "cover_image": "assets/post-3.jpg",
+   "product_ids": [
+    "prod-03",
+    "prod-06",
+    "prod-11",
+    "prod-22"
+   ],
+   "likes": 3012,
+   "summary": "모듈 코너 소파를 창쪽으로 붙이니 거실이 넓어 보여요. 단모 카페트 위에 플로어램프를 세워 밤에도 티비 없이 앉아 있게 됐습니다. 린넨 커튼이 오후 햇살을 부드럽게 받아 줘요."
+  },
+  {
+   "id": "post-4",
+   "title": "마당 있는 주택, 현관부터 정리했어요",
+   "author_nick": "작은마루",
+   "home_type": "주택",
+   "area_pyeong": 38,
+   "cover_image": "assets/post-4.jpg",
+   "product_ids": [
+    "prod-12",
+    "prod-13",
+    "prod-14",
+    "prod-24"
+   ],
+   "likes": 954,
+   "summary": "신발을 벗는 자리에 미니 발매트와 벽거울을 달았어요. 오픈 선반과 라탄 바스켓으로 우산이랑 장갑이 제자리를 찾았습니다. 손님들이 현관에서부터 집이 정돈돼 있다고 해요."
+  },
+  {
+   "id": "post-5",
+   "title": "침실만 먼저 고친 8평 원룸",
+   "author_nick": "담요고양이",
+   "home_type": "원룸",
+   "area_pyeong": 8,
+   "cover_image": "assets/post-5.jpg",
+   "product_ids": [
+    "prod-17",
+    "prod-19",
+    "prod-08"
+   ],
+   "likes": 2765,
+   "summary": "이불과 베개부터 바꾸니 잠이 먼저 좋아졌어요. 머리맡 무드등만 켜 두고 핸드폰은 멀리 둡니다. 좁아도 침구가 포근하면 집이 커 보여요."
+  },
+  {
+   "id": "post-6",
+   "title": "주말주택 다락방, 가죽 소파와 이불 한 채",
+   "author_nick": "오후네집",
+   "home_type": "주택",
+   "area_pyeong": 42,
+   "cover_image": "assets/post-6.jpg",
+   "product_ids": [
+    "prod-04",
+    "prod-18",
+    "prod-20",
+    "prod-23"
+   ],
+   "likes": 1437,
+   "summary": "다락에 2인 가죽 소파를 올리고 옆에는 우드 트레이만 두었어요. 퀸 린넨 침구와 거위털 차렵이불을 겹쳐 두니 겨울 주말도 따뜻합니다. 도시에서 내려오면 여기서 바로 잠이 와요."
+  }
+ ]
+}

@@ -1,0 +1,155 @@
+{
+ "task_id": "onzip-home",
+ "items": [
+  {
+   "file": "prod-01.jpg",
+   "prompt": "Korean home-interior online store product photo of a sofa/living furniture piece: \"클라우드 3인 패브릭 소파\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-02.jpg",
+   "prompt": "Korean home-interior online store product photo of a sofa/living furniture piece: \"느티 원목 라운지 체어\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-03.jpg",
+   "prompt": "Korean home-interior online store product photo of a sofa/living furniture piece: \"한낮 모듈 코너 소파\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-04.jpg",
+   "prompt": "Korean home-interior online store product photo of a sofa/living furniture piece: \"안온 2인 가죽 소파\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-05.jpg",
+   "prompt": "Korean home-interior online store product photo of a lamp or lighting fixture: \"달빛 펜던트 조명\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-06.jpg",
+   "prompt": "Korean home-interior online store product photo of a lamp or lighting fixture: \"소소 스탠드 플로어램프\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-07.jpg",
+   "prompt": "Korean home-interior online store product photo of a lamp or lighting fixture: \"결빛 벽등 2개 세트\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-08.jpg",
+   "prompt": "Korean home-interior online store product photo of a lamp or lighting fixture: \"창가 단스탠드 무드등\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-09.jpg",
+   "prompt": "Korean home-interior online store product photo of a rug or carpet: \"포근 울 라운드 러그 150\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-10.jpg",
+   "prompt": "Korean home-interior online store product photo of a rug or carpet: \"결결 체크 면 러그 200\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-11.jpg",
+   "prompt": "Korean home-interior online store product photo of a rug or carpet: \"마루결 단모 사각 카페트\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-12.jpg",
+   "prompt": "Korean home-interior online store product photo of a rug or carpet: \"풀잎 미니 발매트 2장\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-13.jpg",
+   "prompt": "Korean home-interior online store product photo of a storage/organizer furniture piece: \"숨숨 오픈 선반 3단\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-14.jpg",
+   "prompt": "Korean home-interior online store product photo of a storage/organizer furniture piece: \"정리공작소 라탄 바스켓 세트\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-15.jpg",
+   "prompt": "Korean home-interior online store product photo of a storage/organizer furniture piece: \"고요 슬라이딩 옷장 1200\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-16.jpg",
+   "prompt": "Korean home-interior online store product photo of a storage/organizer furniture piece: \"담담 벽걸이 수납함\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-17.jpg",
+   "prompt": "Korean home-interior online store product photo of bedding/duvet/pillow set: \"솜결 사계절 이불 세트 SS\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-18.jpg",
+   "prompt": "Korean home-interior online store product photo of bedding/duvet/pillow set: \"이불결 린넨 침구 세트 Q\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-19.jpg",
+   "prompt": "Korean home-interior online store product photo of bedding/duvet/pillow set: \"온집 메모리폼 베개 2개\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-20.jpg",
+   "prompt": "Korean home-interior online store product photo of bedding/duvet/pillow set: \"하린 거위털 차렵이불 K\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-21.jpg",
+   "prompt": "Korean home-interior online store product photo of a home decor object: \"느린오후 세라믹 화병\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-22.jpg",
+   "prompt": "Korean home-interior online store product photo of a home decor object: \"볕든집 린넨 커튼 한 폭\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-23.jpg",
+   "prompt": "Korean home-interior online store product photo of a home decor object: \"솔솔 우드 트레이\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "prod-24.jpg",
+   "prompt": "Korean home-interior online store product photo of a home decor object: \"느티하우스 벽걸이 거울\" — depict the product implied by that Korean name, styled in a bright modern Korean apartment corner or clean studio",
+   "style": "warm neutral palette, soft daylight, e-commerce hero shot, no people, no readable text"
+  },
+  {
+   "file": "post-1.jpg",
+   "prompt": "Cozy Korean 원룸 interior, about 6 pyeong, matching the home-tour title \"6평 원룸, 소파 하나로 거실이 생겼어요\" — lived-in styled space, natural light",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-2.jpg",
+   "prompt": "Cozy Korean 투룸 interior, about 14 pyeong, matching the home-tour title \"투룸 첫 집들이, 빛부터 맞췄어요\" — lived-in styled space, natural light",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-3.jpg",
+   "prompt": "Cozy Korean 아파트 interior, about 32 pyeong, matching the home-tour title \"32평 아파트 거실, 코너 소파로 자리를 잡다\" — lived-in styled space, natural light",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-4.jpg",
+   "prompt": "Cozy Korean 주택 interior, about 38 pyeong, matching the home-tour title \"마당 있는 주택, 현관부터 정리했어요\" — lived-in styled space, natural light",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-5.jpg",
+   "prompt": "Cozy Korean 원룸 interior, about 8 pyeong, matching the home-tour title \"침실만 먼저 고친 8평 원룸\" — lived-in styled space, natural light",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-6.jpg",
+   "prompt": "Cozy Korean 주택 interior, about 42 pyeong, matching the home-tour title \"주말주택 다락방, 가죽 소파와 이불 한 채\" — lived-in styled space, natural light",
+   "style": "warm editorial interior photography, no people, no readable text"
+  }
+ ]
+}
