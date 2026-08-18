@@ -359,12 +359,15 @@ same as a missing page.
 Read `references/derivation-chain.md` before any system draft. The order is
 PHILOSOPHY → DERIVE (decision table with D-ids and rationales) → TOKENS
 (with D-id back-references in comments) → COMPONENT SPECS (documented before
-code; `references/component-craft.md` is the floor) → LAYOUT GRAMMAR (per
-page, with content back-calculation — if the data cannot fill the grammar,
-enrich the data first, never leave wide viewports empty) → BUILD (pages
-consume only) → RENDER CRITIQUE → DESIGN.md carrying the philosophy and
-decision table so a designer can read WHY every value is what it is.
-A token value without a D-id rationale is an improvised value (gate GS7).
+code; select from `references/presets/INDEX.md` first and derive token slots
+from the decision table — never improvise from zero what the preset catalog
+already validates (gate GS8); `references/component-craft.md` is the floor)
+→ LAYOUT GRAMMAR (per page, with content back-calculation — if the data
+cannot fill the grammar, enrich the data first, never leave wide viewports
+empty) → BUILD (pages consume only) → RENDER CRITIQUE → DESIGN.md carrying
+the philosophy and decision table so a designer can read WHY every value is
+what it is. A token value without a D-id rationale is an improvised value
+(gate GS7).
 
 ## Data discovery (good UI carries the data)
 

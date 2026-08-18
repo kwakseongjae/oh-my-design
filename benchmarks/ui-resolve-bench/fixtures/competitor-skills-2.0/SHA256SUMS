@@ -263,7 +263,7 @@ bb36665889124a0b6e15f16045265737449c3bdcf2712cdb08af3cfa01563e2b  impeccable-pro
 43cf60991a233a84646eb73883461cb4184f680d903d26610f82db6e3e905fa5  impeccable-prompt-only/.agents/skills/impeccable/scripts/pin.mjs
 ed01a46415b89e1852ceefe3efb00ae556e48440b7d9aef2f41e1a079efb8c89  impeccable-prompt-only/.agents/skills/impeccable/scripts/serve-question.mjs
 acd03bf38f6aef2b5d5287cefccacac018063b5b5356c99d191b3bd012f28ed3  impeccable-prompt-only/.agents/skills/impeccable/scripts/surface-brief.mjs
-d297ef8f41d6a7d029a6d7df72b0d9ad0a8e16c051e6ba32edb89b7455194760  omd-autopilot-v2/.agents/skills/omd-autopilot/SKILL.md
+988823d037fa9877f3db749aa8b570e42cfd99748130f4d3123b9b94f02a571e  omd-autopilot-v2/.agents/skills/omd-autopilot/SKILL.md
 794077a2a4f4fab2cdc56ffb3d841e988d3537129ea24f843b5df898e7b607cc  omd-autopilot-v2/.agents/skills/omd-autopilot/references/design-system-contract.md
 9e7edee91b7eaaaccffbf6bae9b5c1056e73a71f0f629058642020c36fcf15ca  omd-autopilot-v2/PROVENANCE.md
 fc3893952a51511ffabe0f736f8489d5a997b42ff848683ca69ecd3027fede11  omd-autopilot-v2/scripts/activate-autopilot-design-system.cjs
@@ -436,6 +436,11 @@ ce60ac571164cf35e8c866550ad989fa686706a56fa48df4fdf76444b94fdd8d  ui-ux-pro-max/
 c38424e0f575f498c10564844338abce9363cd0b002ba8bd35c9d2762c2674ae  ui-ux-pro-max/.agents/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py
 f1b5e0916f3c2f8271416f93f6ff9ebf3311a68a943a19c1b83f16823cbb05a7  ui-ux-pro-max/.agents/skills/ui-ux-pro-max/scripts/validate_data.py
 b8d4c2255aba3718d30483f686cf0c6dbe83415a7decdb2cfeab488f43c19d9a  omd-autopilot-v2/.agents/skills/omd-autopilot/references/visual-quality-contract.md
-2e3bcb3e749d0964a5074f2af472524f7962b0d2901bcb58f563dbb9ee2b2309  omd-autopilot-v2/.agents/skills/omd-autopilot/references/slop-gates.md
+994032495a2c73cc3159bd54d29c1668b6cb86d67545679b82b7fed5b0c34491  omd-autopilot-v2/.agents/skills/omd-autopilot/references/slop-gates.md
 48c8544397117b1aa6d43191356971ecf14ea37062bcab5aa7987fb10a17541c  omd-autopilot-v2/.agents/skills/omd-autopilot/references/component-craft.md
-b8fd2df7cb776e57e5b3175d7c87f21f1b29726d65e1d89726e29494a898e63d  omd-autopilot-v2/.agents/skills/omd-autopilot/references/derivation-chain.md
+4de5b7665aa096716fad5862e364df15d28218b42f728a0eba52fc1391e63f85  omd-autopilot-v2/.agents/skills/omd-autopilot/references/derivation-chain.md
+fecb7abeb547a452796fee993c12a6dbc80a4c9ef340339270c21aacb6912161  omd-autopilot-v2/.agents/skills/omd-autopilot/references/presets/INDEX.md
+e17b7c0a97e84328c6d67eb112905ead5afbcb7b5d8fd4465d3ef85623a8b1f2  omd-autopilot-v2/.agents/skills/omd-autopilot/references/presets/commerce.md
+f70097f39e17619996af70fdf82f946a755f760635e27f646af47b542b91e1a2  omd-autopilot-v2/.agents/skills/omd-autopilot/references/presets/editorial.md
+845c7ff0ccf511af1fb3b8d8db2cc80d70d283c1f1c5578b01933bc0c5b96adb  omd-autopilot-v2/.agents/skills/omd-autopilot/references/presets/fundamentals.md
+219474b4ae1da31c5833a2f43d9f5ff86b211c11a2b919cb46e0429ae1a8354e  omd-autopilot-v2/.agents/skills/omd-autopilot/references/presets/marketplace.md

@@ -78,7 +78,9 @@ When this AGENTS.md is loaded and a fresh `.omd/runs/run-<latest>/` exists:
 
 ### User checkpoints (mandatory, do not auto-skip)
 
-- Checkpoint #1 (Phase 3 end) — show `journey.mmd`, halt for user reply.
+- Checkpoint #1 (Phase 3 end) — show `journey.mmd` + `screens.md`(화면
+  인벤토리: 화면별 목적/핵심 요소/문법/상태/프리셋 후보 표), halt for user
+  reply. 승인된 화면 목록 밖의 화면은 만들지 않는다.
 - Checkpoint #2 (Phase 5 end) — show `DESIGN.md.patch`, halt.
 - Checkpoint #3 (Phase 8 end) — show validation summary, halt.
 
