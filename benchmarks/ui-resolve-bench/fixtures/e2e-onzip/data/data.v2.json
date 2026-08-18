@@ -1,0 +1,1838 @@
+{
+ "dataset": "onzip-sample-v1",
+ "disclosure": "온집(ONZIP)은 가상의 서비스입니다. 모든 상품, 가격, 리뷰 수, 게시글, 닉네임은 허구의 샘플 데이터입니다.",
+ "categories": [
+  {
+   "id": "cat-sofa",
+   "name": "소파/거실가구",
+   "slug": "sofa"
+  },
+  {
+   "id": "cat-lighting",
+   "name": "조명",
+   "slug": "lighting"
+  },
+  {
+   "id": "cat-rug",
+   "name": "러그/카페트",
+   "slug": "rug"
+  },
+  {
+   "id": "cat-storage",
+   "name": "수납/정리",
+   "slug": "storage"
+  },
+  {
+   "id": "cat-bedding",
+   "name": "침구",
+   "slug": "bedding"
+  },
+  {
+   "id": "cat-deco",
+   "name": "홈데코",
+   "slug": "deco"
+  }
+ ],
+ "products": [
+  {
+   "id": "prod-01",
+   "name": "클라우드 3인 패브릭 소파",
+   "category_id": "cat-sofa",
+   "brand": "온결리빙",
+   "price_krw": 789000,
+   "rating_x10": 47,
+   "review_count": 2146,
+   "stock_status": "판매중",
+   "image": "assets/prod-01.jpg",
+   "tags": [
+    "패브릭",
+    "3인용",
+    "구름쿠션"
+   ],
+   "images": [
+    "assets/prod-01.jpg",
+    "assets/prod-01-life.jpg",
+    "assets/prod-01-detail.jpg"
+   ],
+   "spec": {
+    "소재": "면혼방 패브릭, 고탄성 스펀지",
+    "크기": "W210 × D92 × H82 cm",
+    "색상": "아이보리",
+    "구성": "소파 본체 1, 등쿠션 3"
+   },
+   "short_pitch": "앉으면 구름 같아요"
+  },
+  {
+   "id": "prod-02",
+   "name": "느티 원목 라운지 체어",
+   "category_id": "cat-sofa",
+   "brand": "나뭇결",
+   "price_krw": 429000,
+   "rating_x10": 46,
+   "review_count": 873,
+   "stock_status": "판매중",
+   "image": "assets/prod-02.jpg",
+   "tags": [
+    "원목",
+    "1인용",
+    "라운지"
+   ],
+   "images": [
+    "assets/prod-02.jpg",
+    "assets/prod-02-life.jpg",
+    "assets/prod-02-detail.jpg"
+   ],
+   "spec": {
+    "소재": "느티나무 원목, 면 쿠션",
+    "크기": "W72 × D80 × H76 cm",
+    "색상": "내추럴 우드",
+    "구성": "체어 1, 시트쿠션 1"
+   },
+   "short_pitch": "창가에 두기 좋은 의자"
+  },
+  {
+   "id": "prod-03",
+   "name": "한낮 모듈 코너 소파",
+   "category_id": "cat-sofa",
+   "brand": "한낮스튜디오",
+   "price_krw": 1290000,
+   "rating_x10": 48,
+   "review_count": 612,
+   "stock_status": "품절임박",
+   "image": "assets/prod-03.jpg",
+   "tags": [
+    "모듈",
+    "코너형",
+    "패브릭"
+   ],
+   "images": [
+    "assets/prod-03.jpg",
+    "assets/prod-03-life.jpg",
+    "assets/prod-03-detail.jpg"
+   ],
+   "spec": {
+    "소재": "린넨혼방 패브릭",
+    "크기": "W280 × D160 × H78 cm",
+    "색상": "오트밀 베이지",
+    "구성": "모듈 4피스, 팔걸이 2"
+   },
+   "short_pitch": "코너를 채우는 모듈 소파"
+  },
+  {
+   "id": "prod-04",
+   "name": "안온 2인 가죽 소파",
+   "category_id": "cat-sofa",
+   "brand": "안온",
+   "price_krw": 1580000,
+   "rating_x10": 45,
+   "review_count": 391,
+   "stock_status": "판매중",
+   "image": "assets/prod-04.jpg",
+   "tags": [
+    "가죽",
+    "2인용",
+    "거실"
+   ],
+   "images": [
+    "assets/prod-04.jpg",
+    "assets/prod-04-life.jpg",
+    "assets/prod-04-detail.jpg"
+   ],
+   "spec": {
+    "소재": "세미아닐린 가죽",
+    "크기": "W168 × D90 × H80 cm",
+    "색상": "웜 브라운",
+    "구성": "소파 본체 1"
+   },
+   "short_pitch": "앉을수록 길드는 가죽"
+  },
+  {
+   "id": "prod-05",
+   "name": "달빛 펜던트 조명",
+   "category_id": "cat-lighting",
+   "brand": "달빛조명",
+   "price_krw": 89000,
+   "rating_x10": 46,
+   "review_count": 1584,
+   "stock_status": "판매중",
+   "image": "assets/prod-05.jpg",
+   "tags": [
+    "펜던트",
+    "식탁등",
+    "따뜻한빛"
+   ],
+   "images": [
+    "assets/prod-05.jpg",
+    "assets/prod-05-life.jpg",
+    "assets/prod-05-detail.jpg"
+   ],
+   "spec": {
+    "소재": "글라스 쉐이드, 스틸",
+    "크기": "지름 32 × H28 cm, 전선 150cm",
+    "색상": "밀키 화이트",
+    "구성": "펜던트 1, LED 벌브 1"
+   },
+   "short_pitch": "식탁 위가 달빛처럼"
+  },
+  {
+   "id": "prod-06",
+   "name": "소소 스탠드 플로어램프",
+   "category_id": "cat-lighting",
+   "brand": "소소라이트",
+   "price_krw": 129000,
+   "rating_x10": 44,
+   "review_count": 742,
+   "stock_status": "판매중",
+   "image": "assets/prod-06.jpg",
+   "tags": [
+    "플로어",
+    "독서등",
+    "스탠드"
+   ],
+   "images": [
+    "assets/prod-06.jpg",
+    "assets/prod-06-life.jpg",
+    "assets/prod-06-detail.jpg"
+   ],
+   "spec": {
+    "소재": "패브릭 갓, 스틸 스탠드",
+    "크기": "갓 지름 40 × H152 cm",
+    "색상": "샌드 베이지",
+    "구성": "스탠드 1, 갓 1"
+   },
+   "short_pitch": "밤에 책 읽는 자리의 빛"
+  },
+  {
+   "id": "prod-07",
+   "name": "결빛 벽등 2개 세트",
+   "category_id": "cat-lighting",
+   "brand": "결빛",
+   "price_krw": 64000,
+   "rating_x10": 43,
+   "review_count": 318,
+   "stock_status": "품절",
+   "image": "assets/prod-07.jpg",
+   "tags": [
+    "벽등",
+    "세트",
+    "복도"
+   ],
+   "images": [
+    "assets/prod-07.jpg",
+    "assets/prod-07-life.jpg",
+    "assets/prod-07-detail.jpg"
+   ],
+   "spec": {
+    "소재": "알루미늄, 오팔 글라스",
+    "크기": "각 W12 × D10 × H22 cm",
+    "색상": "매트 블랙",
+    "구성": "벽등 2, 브라켓 2"
+   },
+   "short_pitch": "복도 벽을 은은하게"
+  },
+  {
+   "id": "prod-08",
+   "name": "창가 단스탠드 무드등",
+   "category_id": "cat-lighting",
+   "brand": "창가상점",
+   "price_krw": 39000,
+   "rating_x10": 49,
+   "review_count": 3218,
+   "stock_status": "판매중",
+   "image": "assets/prod-08.jpg",
+   "tags": [
+    "무드등",
+    "단스탠드",
+    "침실"
+   ],
+   "images": [
+    "assets/prod-08.jpg",
+    "assets/prod-08-life.jpg",
+    "assets/prod-08-detail.jpg"
+   ],
+   "spec": {
+    "소재": "도자기 베이스, 린넨 갓",
+    "크기": "지름 16 × H28 cm",
+    "색상": "크림 화이트",
+    "구성": "단스탠드 1"
+   },
+   "short_pitch": "창가에 두면 방이 포근해요"
+  },
+  {
+   "id": "prod-09",
+   "name": "포근 울 라운드 러그 150",
+   "category_id": "cat-rug",
+   "brand": "포근러그",
+   "price_krw": 189000,
+   "rating_x10": 47,
+   "review_count": 1264,
+   "stock_status": "판매중",
+   "image": "assets/prod-09.jpg",
+   "tags": [
+    "라운드",
+    "울",
+    "거실"
+   ],
+   "images": [
+    "assets/prod-09.jpg",
+    "assets/prod-09-life.jpg",
+    "assets/prod-09-detail.jpg"
+   ],
+   "spec": {
+    "소재": "울 80%, 면 20%",
+    "크기": "지름 150 cm",
+    "색상": "오트밀",
+    "구성": "러그 1, 논슬립 패드 1"
+   },
+   "short_pitch": "발밑이 먼저 포근해져요"
+  },
+  {
+   "id": "prod-10",
+   "name": "결결 체크 면 러그 200",
+   "category_id": "cat-rug",
+   "brand": "결결",
+   "price_krw": 159000,
+   "rating_x10": 42,
+   "review_count": 587,
+   "stock_status": "판매중",
+   "image": "assets/prod-10.jpg",
+   "tags": [
+    "체크",
+    "면러그",
+    "거실"
+   ],
+   "images": [
+    "assets/prod-10.jpg",
+    "assets/prod-10-life.jpg",
+    "assets/prod-10-detail.jpg"
+   ],
+   "spec": {
+    "소재": "순면",
+    "크기": "200 × 140 cm",
+    "색상": "베이지 체크",
+    "구성": "러그 1"
+   },
+   "short_pitch": "깔면 거실이 정리돼요"
+  },
+  {
+   "id": "prod-11",
+   "name": "마루결 단모 사각 카페트",
+   "category_id": "cat-rug",
+   "brand": "마루결",
+   "price_krw": 248000,
+   "rating_x10": 45,
+   "review_count": 934,
+   "stock_status": "품절임박",
+   "image": "assets/prod-11.jpg",
+   "tags": [
+    "단모",
+    "사각",
+    "카페트"
+   ],
+   "images": [
+    "assets/prod-11.jpg",
+    "assets/prod-11-life.jpg",
+    "assets/prod-11-detail.jpg"
+   ],
+   "spec": {
+    "소재": "폴리프로필렌 단모",
+    "크기": "230 × 160 cm",
+    "색상": "그레이 베이지",
+    "구성": "카페트 1"
+   },
+   "short_pitch": "쓸기 쉬운 단모 카페트"
+  },
+  {
+   "id": "prod-12",
+   "name": "풀잎 미니 발매트 2장",
+   "category_id": "cat-rug",
+   "brand": "풀잎살림",
+   "price_krw": 29000,
+   "rating_x10": 41,
+   "review_count": 2107,
+   "stock_status": "판매중",
+   "image": "assets/prod-12.jpg",
+   "tags": [
+    "발매트",
+    "미니",
+    "현관"
+   ],
+   "images": [
+    "assets/prod-12.jpg",
+    "assets/prod-12-life.jpg",
+    "assets/prod-12-detail.jpg"
+   ],
+   "spec": {
+    "소재": "코튼 파일",
+    "크기": "각 50 × 80 cm",
+    "색상": "세이지 그린",
+    "구성": "발매트 2장"
+   },
+   "short_pitch": "현관에 두 장 깔면 끝"
+  },
+  {
+   "id": "prod-13",
+   "name": "숨숨 오픈 선반 3단",
+   "category_id": "cat-storage",
+   "brand": "숨숨",
+   "price_krw": 79000,
+   "rating_x10": 44,
+   "review_count": 1489,
+   "stock_status": "판매중",
+   "image": "assets/prod-13.jpg",
+   "tags": [
+    "선반",
+    "오픈수납",
+    "3단"
+   ],
+   "images": [
+    "assets/prod-13.jpg",
+    "assets/prod-13-life.jpg",
+    "assets/prod-13-detail.jpg"
+   ],
+   "spec": {
+    "소재": "철제 프레임, 오크 상판",
+    "크기": "W80 × D35 × H120 cm",
+    "색상": "블랙/오크",
+    "구성": "선반 본체 1"
+   },
+   "short_pitch": "숨기지 않고 예쁘게 쌓아요"
+  },
+  {
+   "id": "prod-14",
+   "name": "정리공작소 라탄 바스켓 세트",
+   "category_id": "cat-storage",
+   "brand": "정리공작소",
+   "price_krw": 42000,
+   "rating_x10": 48,
+   "review_count": 2763,
+   "stock_status": "판매중",
+   "image": "assets/prod-14.jpg",
+   "tags": [
+    "라탄",
+    "바스켓",
+    "세트"
+   ],
+   "images": [
+    "assets/prod-14.jpg",
+    "assets/prod-14-life.jpg",
+    "assets/prod-14-detail.jpg"
+   ],
+   "spec": {
+    "소재": "천연 라탄",
+    "크기": "대 32cm, 중 26cm, 소 20cm",
+    "색상": "내추럴",
+    "구성": "바스켓 3개"
+   },
+   "short_pitch": "살림이 바구니로 모입니다"
+  },
+  {
+   "id": "prod-15",
+   "name": "고요 슬라이딩 옷장 1200",
+   "category_id": "cat-storage",
+   "brand": "고요살림",
+   "price_krw": 389000,
+   "rating_x10": 43,
+   "review_count": 256,
+   "stock_status": "품절",
+   "image": "assets/prod-15.jpg",
+   "tags": [
+    "옷장",
+    "슬라이딩",
+    "침실"
+   ],
+   "images": [
+    "assets/prod-15.jpg",
+    "assets/prod-15-life.jpg",
+    "assets/prod-15-detail.jpg"
+   ],
+   "spec": {
+    "소재": "PB, 오크 무늬목",
+    "크기": "W1200 × D580 × H2000 mm",
+    "색상": "오크 내추럴",
+    "구성": "옷장 본체, 슬라이딩 도어 2"
+   },
+   "short_pitch": "문이 옆으로 열려요"
+  },
+  {
+   "id": "prod-16",
+   "name": "담담 벽걸이 수납함",
+   "category_id": "cat-storage",
+   "brand": "담담리빙",
+   "price_krw": 24000,
+   "rating_x10": 40,
+   "review_count": 821,
+   "stock_status": "판매중",
+   "image": "assets/prod-16.jpg",
+   "tags": [
+    "벽걸이",
+    "소품함",
+    "원룸"
+   ],
+   "images": [
+    "assets/prod-16.jpg",
+    "assets/prod-16-life.jpg",
+    "assets/prod-16-detail.jpg"
+   ],
+   "spec": {
+    "소재": "원목 합판",
+    "크기": "W40 × D15 × H25 cm",
+    "색상": "월넛",
+    "구성": "수납함 1, 벽고정 나사"
+   },
+   "short_pitch": "바닥을 비우는 작은 상자"
+  },
+  {
+   "id": "prod-17",
+   "name": "솜결 사계절 이불 세트 SS",
+   "category_id": "cat-bedding",
+   "brand": "솜결",
+   "price_krw": 129000,
+   "rating_x10": 49,
+   "review_count": 3842,
+   "stock_status": "판매중",
+   "image": "assets/prod-17.jpg",
+   "tags": [
+    "사계절",
+    "싱글",
+    "이불세트"
+   ],
+   "images": [
+    "assets/prod-17.jpg",
+    "assets/prod-17-life.jpg",
+    "assets/prod-17-detail.jpg"
+   ],
+   "spec": {
+    "소재": "60수 면, 마이크로화이버 충전",
+    "크기": "싱글 이불 150×200, 패드 100×200",
+    "색상": "소프트 화이트",
+    "구성": "이불·패드·베개커버 1"
+   },
+   "short_pitch": "사계절 덮는 기본 이불"
+  },
+  {
+   "id": "prod-18",
+   "name": "이불결 린넨 침구 세트 Q",
+   "category_id": "cat-bedding",
+   "brand": "이불결",
+   "price_krw": 189000,
+   "rating_x10": 47,
+   "review_count": 1653,
+   "stock_status": "판매중",
+   "image": "assets/prod-18.jpg",
+   "tags": [
+    "린넨",
+    "퀸",
+    "침구"
+   ],
+   "images": [
+    "assets/prod-18.jpg",
+    "assets/prod-18-life.jpg",
+    "assets/prod-18-detail.jpg"
+   ],
+   "spec": {
+    "소재": "워싱 린넨",
+    "크기": "퀸 이불커버 200×230",
+    "색상": "샌드",
+    "구성": "이불커버, 시트, 베개커버 2"
+   },
+   "short_pitch": "구김마저 예쁜 린넨"
+  },
+  {
+   "id": "prod-19",
+   "name": "온집 메모리폼 베개 2개",
+   "category_id": "cat-bedding",
+   "brand": "온집메이드",
+   "price_krw": 59000,
+   "rating_x10": 46,
+   "review_count": 2210,
+   "stock_status": "품절임박",
+   "image": "assets/prod-19.jpg",
+   "tags": [
+    "베개",
+    "메모리폼",
+    "세트"
+   ],
+   "images": [
+    "assets/prod-19.jpg",
+    "assets/prod-19-life.jpg",
+    "assets/prod-19-detail.jpg"
+   ],
+   "spec": {
+    "소재": "메모리폼, 면 커버",
+    "크기": "각 50 × 30 × 10 cm",
+    "색상": "화이트",
+    "구성": "베개 2, 커버 2"
+   },
+   "short_pitch": "목이 먼저 잠드는 베개"
+  },
+  {
+   "id": "prod-20",
+   "name": "하린 거위털 차렵이불 K",
+   "category_id": "cat-bedding",
+   "brand": "하린리빙",
+   "price_krw": 268000,
+   "rating_x10": 45,
+   "review_count": 478,
+   "stock_status": "판매중",
+   "image": "assets/prod-20.jpg",
+   "tags": [
+    "거위털",
+    "킹",
+    "차렵"
+   ],
+   "images": [
+    "assets/prod-20.jpg",
+    "assets/prod-20-life.jpg",
+    "assets/prod-20-detail.jpg"
+   ],
+   "spec": {
+    "소재": "다운프루프 면, 거위털 충전",
+    "크기": "킹 230 × 240 cm",
+    "색상": "아이보리",
+    "구성": "차렵이불 1, 보관백 1"
+   },
+   "short_pitch": "가벼운데 따뜻한 차렵"
+  },
+  {
+   "id": "prod-21",
+   "name": "느린오후 세라믹 화병",
+   "category_id": "cat-deco",
+   "brand": "느린오후",
+   "price_krw": 28000,
+   "rating_x10": 48,
+   "review_count": 1964,
+   "stock_status": "판매중",
+   "image": "assets/prod-21.jpg",
+   "tags": [
+    "화병",
+    "세라믹",
+    "선반"
+   ],
+   "images": [
+    "assets/prod-21.jpg",
+    "assets/prod-21-life.jpg",
+    "assets/prod-21-detail.jpg"
+   ],
+   "spec": {
+    "소재": "유약 세라믹",
+    "크기": "지름 11 × H18 cm",
+    "색상": "매트 크림",
+    "구성": "화병 1"
+   },
+   "short_pitch": "꽃 한 줄기면 충분해요"
+  },
+  {
+   "id": "prod-22",
+   "name": "볕든집 린넨 커튼 한 폭",
+   "category_id": "cat-deco",
+   "brand": "볕든집",
+   "price_krw": 49000,
+   "rating_x10": 44,
+   "review_count": 1108,
+   "stock_status": "판매중",
+   "image": "assets/prod-22.jpg",
+   "tags": [
+    "커튼",
+    "린넨",
+    "창문"
+   ],
+   "images": [
+    "assets/prod-22.jpg",
+    "assets/prod-22-life.jpg",
+    "assets/prod-22-detail.jpg"
+   ],
+   "spec": {
+    "소재": "워싱 린넨",
+    "크기": "W150 × H230 cm",
+    "색상": "내추럴 베이지",
+    "구성": "커튼 1폭, 후크"
+   },
+   "short_pitch": "햇살을 부드럽게 받아요"
+  },
+  {
+   "id": "prod-23",
+   "name": "솔솔 우드 트레이",
+   "category_id": "cat-deco",
+   "brand": "솔솔리빙",
+   "price_krw": 19000,
+   "rating_x10": 42,
+   "review_count": 734,
+   "stock_status": "판매중",
+   "image": "assets/prod-23.jpg",
+   "tags": [
+    "트레이",
+    "우드",
+    "소품"
+   ],
+   "images": [
+    "assets/prod-23.jpg",
+    "assets/prod-23-life.jpg",
+    "assets/prod-23-detail.jpg"
+   ],
+   "spec": {
+    "소재": "물푸레나무",
+    "크기": "W32 × D22 × H3 cm",
+    "색상": "내추럴 우드",
+    "구성": "트레이 1"
+   },
+   "short_pitch": "소파 옆 작은 상을 대신해요"
+  },
+  {
+   "id": "prod-24",
+   "name": "느티하우스 벽걸이 거울",
+   "category_id": "cat-deco",
+   "brand": "느티하우스",
+   "price_krw": 89000,
+   "rating_x10": 46,
+   "review_count": 512,
+   "stock_status": "판매중",
+   "image": "assets/prod-24.jpg",
+   "tags": [
+    "거울",
+    "벽걸이",
+    "현관"
+   ],
+   "images": [
+    "assets/prod-24.jpg",
+    "assets/prod-24-life.jpg",
+    "assets/prod-24-detail.jpg"
+   ],
+   "spec": {
+    "소재": "느티나무 프레임, 유리",
+    "크기": "W50 × H70 cm",
+    "색상": "내추럴 우드",
+    "구성": "거울 1, 벽걸이 철물"
+   },
+   "short_pitch": "현관이 넓어 보이는 거울"
+  }
+ ],
+ "posts": [
+  {
+   "id": "post-1",
+   "title": "6평 원룸, 소파 하나로 거실이 생겼어요",
+   "author_nick": "초록집사",
+   "home_type": "원룸",
+   "area_pyeong": 6,
+   "cover_image": "assets/post-1.jpg",
+   "product_ids": [
+    "prod-01",
+    "prod-08",
+    "prod-16"
+   ],
+   "likes": 2140,
+   "summary": "침대 옆에 클라우드 소파를 두니 손님이 와도 앉을 자리가 생겼어요. 창가에 무드등을 켜면 좁은 방이 저녁에도 포근해집니다. 벽걸이 수납함 덕분에 바닥에 물건이 줄었어요.",
+   "gallery": [
+    "assets/post-1.jpg",
+    "assets/post-1-g1.jpg",
+    "assets/post-1-g2.jpg",
+    "assets/post-1-g3.jpg"
+   ],
+   "body_blocks": [
+    "6평 원룸이라 침대가 방의 전부였어요. 손님이 오면 침대 끝에 나란히 앉았고, 저녁이면 바닥이 짐으로 덮였습니다.",
+    "클라우드 소파를 고른 건 좁은 방에 아이보리 패브릭이 덜 답답해 보여서예요. 창가 무드등은 전등이 센 원룸에서 저녁만 따로 만들고 싶었고, 벽걸이 수납함은 바닥에 쌓인 충전기를 올리려고 샀어요.",
+    "소파는 침대와 나란히 두지 않고 창과 직각으로 돌려서 통로를 남겼습니다. 무드등은 창틀 끝에, 수납함은 현관 쪽 벽에 걸어 신발이 끝나는 선과 맞췄어요.",
+    "이제 손님이 오면 소파에 앉히고 저는 창가에 앉습니다. 불이 하나만 켜져 있어도 방이 거실처럼 나뉘어 보여요."
+   ]
+  },
+  {
+   "id": "post-2",
+   "title": "투룸 첫 집들이, 빛부터 맞췄어요",
+   "author_nick": "볕드는창",
+   "home_type": "투룸",
+   "area_pyeong": 14,
+   "cover_image": "assets/post-2.jpg",
+   "product_ids": [
+    "prod-02",
+    "prod-05",
+    "prod-09",
+    "prod-21"
+   ],
+   "likes": 1688,
+   "summary": "식탁 위에 달빛 펜던트를 달고 바닥엔 둥근 러그를 깔았어요. 창가 라운지 체어에 앉아 커피 마시는 시간이 제일 좋아요. 선반 위 작은 화병이 집을 덜 휑하게 만들어 줍니다.",
+   "gallery": [
+    "assets/post-2.jpg",
+    "assets/post-2-g1.jpg",
+    "assets/post-2-g2.jpg",
+    "assets/post-2-g3.jpg"
+   ],
+   "body_blocks": [
+    "투룸으로 처음 나온 집이라 벽지는 그대로 두고 빛부터 맞추기로 했어요. 낮엔 창이 좋은데 저녁이면 식탁이 유난히 어두웠습니다.",
+    "달빛 펜던트는 식탁 나무결을 살려줄 것 같아서 골랐고, 둥근 러그는 각진 방을 부드럽게 보이게 하려고 샀어요. 라운지 체어는 창가에 앉을 자리를, 작은 화병은 선반이 휑해 보이지 않게 하려고 골랐습니다.",
+    "펜던트는 식탁 한가운데보다 조금 창 쪽으로 당겨 달았어요. 러그는 체어 앞발만 올리고, 화병은 빈 선반 한 칸만 쓰니 물건이 많아 보이지 않아요.",
+    "주말 아침에 체어에 앉아 커피 마시는 시간이 제일 깁니다. 집들이 때도 손님이 식탁 빛부터 만져보더라고요."
+   ]
+  },
+  {
+   "id": "post-3",
+   "title": "32평 아파트 거실, 코너 소파로 자리를 잡다",
+   "author_nick": "느린살림",
+   "home_type": "아파트",
+   "area_pyeong": 32,
+   "cover_image": "assets/post-3.jpg",
+   "product_ids": [
+    "prod-03",
+    "prod-06",
+    "prod-11",
+    "prod-22"
+   ],
+   "likes": 3012,
+   "summary": "모듈 코너 소파를 창쪽으로 붙이니 거실이 넓어 보여요. 단모 카페트 위에 플로어램프를 세워 밤에도 티비 없이 앉아 있게 됐습니다. 린넨 커튼이 오후 햇살을 부드럽게 받아 줘요.",
+   "gallery": [
+    "assets/post-3.jpg",
+    "assets/post-3-g1.jpg",
+    "assets/post-3-g2.jpg",
+    "assets/post-3-g3.jpg"
+   ],
+   "body_blocks": [
+    "32평 아파트 거실은 넓었는데 자리가 없었어요. 소파가 벽에 붙어 있으니 가운데만 비고, 저녁엔 티비만 켜게 됐습니다.",
+    "모듈 코너 소파는 창쪽으로 붙여 거실을 감싸려고 골랐어요. 단모 카페트는 로봇청소기가 지나가게, 플로어램프는 티비 없이 앉아 있게, 린넨 커튼은 오후 해가 눈을 찌르지 않게 하려고 샀습니다.",
+    "코너 모듈을 창에 붙이고 반대편은 열어두니 동선이 남아요. 램프는 소파 팔걸이 뒤에, 커튼은 바닥에서 한 뼘 뜨게 달아 먼지가 안 앉게 했어요.",
+    "주말이면 램프만 켜 두고 가족이 코너에 눕습니다. 거실이 넓은 방이 아니라 앉는 자리가 됐어요."
+   ]
+  },
+  {
+   "id": "post-4",
+   "title": "마당 있는 주택, 현관부터 정리했어요",
+   "author_nick": "작은마루",
+   "home_type": "주택",
+   "area_pyeong": 38,
+   "cover_image": "assets/post-4.jpg",
+   "product_ids": [
+    "prod-12",
+    "prod-13",
+    "prod-14",
+    "prod-24"
+   ],
+   "likes": 954,
+   "summary": "신발을 벗는 자리에 미니 발매트와 벽거울을 달았어요. 오픈 선반과 라탄 바스켓으로 우산이랑 장갑이 제자리를 찾았습니다. 손님들이 현관에서부터 집이 정돈돼 있다고 해요.",
+   "gallery": [
+    "assets/post-4.jpg",
+    "assets/post-4-g1.jpg",
+    "assets/post-4-g2.jpg",
+    "assets/post-4-g3.jpg"
+   ],
+   "body_blocks": [
+    "마당 있는 주택이라 신발을 벗는 자리가 늘 흙이었어요. 현관이 넓어도 우산이랑 장갑이 바닥에 쌓이면 집이 시작된 느낌이 안 났습니다.",
+    "미니 발매트는 흙을 한 줄에서 끊으려고, 벽거울은 나갈 때 옷매무새를 보려고 샀어요. 오픈 선반과 라탄 바스켓은 우산과 모자를 눈에 보이게 넣으려고 골랐습니다.",
+    "매트는 문턱 바로 안쪽에 두 장을 어긋나게 깔았어요. 거울은 눈높이보다 조금 높게, 선반은 장갑이 손이 닿는 중간에 두고 바스켓만 바꿔 끼웁니다.",
+    "손님들이 현관에서부터 집이 정돈돼 있다고 해요. 마당에서 들어와도 신발을 어디에 둘지 고민이 줄었습니다."
+   ]
+  },
+  {
+   "id": "post-5",
+   "title": "침실만 먼저 고친 8평 원룸",
+   "author_nick": "담요고양이",
+   "home_type": "원룸",
+   "area_pyeong": 8,
+   "cover_image": "assets/post-5.jpg",
+   "product_ids": [
+    "prod-17",
+    "prod-19",
+    "prod-08"
+   ],
+   "likes": 2765,
+   "summary": "이불과 베개부터 바꾸니 잠이 먼저 좋아졌어요. 머리맡 무드등만 켜 두고 핸드폰은 멀리 둡니다. 좁아도 침구가 포근하면 집이 커 보여요.",
+   "gallery": [
+    "assets/post-5.jpg",
+    "assets/post-5-g1.jpg",
+    "assets/post-5-g2.jpg",
+    "assets/post-5-g3.jpg"
+   ],
+   "body_blocks": [
+    "8평 원룸은 한 번에 못 고치길래 침실만 먼저 바꿨어요. 낮엔 책상이고 밤엔 침대인 방이라, 잠자리 질감이 집 전부처럼 느껴졌습니다.",
+    "사계절 이불은 두께를 안 갈아끼우고 싶어서, 메모리폼 베개는 목이 뜨는 게 싫어서 골랐어요. 머리맡 무드등은 천장등을 끄고도 방이 남게 하려고 샀습니다.",
+    "이불은 침대 세로로 맞춰 접어두고, 베개 두 개 중 하나는 허리를 괴는 용으로 씁니다. 무드등은 창가 쪽에 두어 불이 얼굴을 직접 비추지 않게 했어요.",
+    "잠이 먼저 좋아지니 방이 커 보여요. 가구는 그대로인데 저녁만 따로 생긴 기분입니다."
+   ]
+  },
+  {
+   "id": "post-6",
+   "title": "주말주택 다락방, 가죽 소파와 이불 한 채",
+   "author_nick": "오후네집",
+   "home_type": "주택",
+   "area_pyeong": 42,
+   "cover_image": "assets/post-6.jpg",
+   "product_ids": [
+    "prod-04",
+    "prod-18",
+    "prod-20",
+    "prod-23"
+   ],
+   "likes": 1437,
+   "summary": "다락에 2인 가죽 소파를 올리고 옆에는 우드 트레이만 두었어요. 퀸 린넨 침구와 거위털 차렵이불을 겹쳐 두니 겨울 주말도 따뜻합니다. 도시에서 내려오면 여기서 바로 잠이 와요.",
+   "gallery": [
+    "assets/post-6.jpg",
+    "assets/post-6-g1.jpg",
+    "assets/post-6-g2.jpg",
+    "assets/post-6-g3.jpg"
+   ],
+   "body_blocks": [
+    "주말주택 다락은 천장만 낮고 자리는 넓었어요. 내려오면 바로 눕고 싶었는데 이불만 있고 앉을 곳이 없었습니다.",
+    "2인 가죽 소파는 주말에만 앉아도 길들 것 같아서 올렸어요. 린넨 침구와 거위털 차렵은 겹쳐 두려고 샀고, 우드 트레이는 소파 팔걸이에 컵을 올리려고 골랐습니다.",
+    "소파는 다락 창 아래, 침대는 반대편에 둬서 낮과 밤 자리를 나눴어요. 트레이에는 책과 잔만 두고, 이불은 차렵을 겉에 걸쳐 두면 손님이 와도 바로 덮습니다.",
+    "도시에서 내려오면 여기서 바로 잠이 와요. 가죽에 앉았다가 이불로 가는 동선이 짧아서 주말이 길게 느껴집니다."
+   ]
+  }
+ ],
+ "reviews": [
+  {
+   "id": "rv-001",
+   "product_id": "prod-01",
+   "rating": 5,
+   "title": "원룸인데 거실이 생긴 기분",
+   "body": "택배 기사님이 현관까지 잘 올려주셨고, 다리만 끼우면 바로 앉을 수 있었어요. 패브릭이 까슬하지 않고 등쿠션이 폭신해서 저녁마다 여기서 먹어요. 아이보리라 좁은 방도 덜 답답해 보입니다.",
+   "author_nick": "초록집사",
+   "helpful": 128,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-002",
+   "product_id": "prod-01",
+   "rating": 5,
+   "title": "앉자마자 어깨가 내려가요",
+   "body": "쇼파 앉으면 허리가 뜨는 게 많아서 고민했는데 등이 먼저 받쳐줘요. 커버 결이 보들보들해서 맨다리로 앉아도 괜찮고, 거실등이 꺼져도 색이 따뜻해요. 배송은 이틀 걸렸습니다.",
+   "author_nick": "구름이네",
+   "helpful": 91,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-003",
+   "product_id": "prod-01",
+   "rating": 4,
+   "title": "쿠션은 좋은데 자리를 많이 먹어요",
+   "body": "3인인데 팔걸이까지 있으면 원룸에선 통로가 조금 좁아져요. 그래도 앉는 감은 확실히 좋고, 면 같아서 여름에도 덜 붙습니다. 조립 설명서가 그림만 있어서 다리 방향만 한번 헷갈렸어요.",
+   "author_nick": "베개토끼",
+   "helpful": 44,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-004",
+   "product_id": "prod-01",
+   "rating": 5,
+   "title": "손님 오면 제일 먼저 앉는 자리",
+   "body": "집들이 때 친구들이 소파부터 만져보고 좋다고 했어요. 앉으면 엉덩이가 꺼지지 않고 천천히 가라앉는 느낌입니다. 광택이 없어서 사진보다 집이 차분해 보여요.",
+   "author_nick": "저녁노을",
+   "helpful": 67,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-005",
+   "product_id": "prod-02",
+   "rating": 5,
+   "title": "창가 커피 자리가 생겼어요",
+   "body": "느티 결이 사진보다 진하고 매끈해서 손으로 쓸어보게 됩니다. 쿠션이 두꺼운데 등이 곧게 서고, 팔걸이 높이가 머그잔 올리기 좋아요. 박스는 컸지만 문짝 통과는 문제 없었어요.",
+   "author_nick": "창가커피",
+   "helpful": 83,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-006",
+   "product_id": "prod-02",
+   "rating": 4,
+   "title": "원목 냄새까지 좋았어요",
+   "body": "처음 열면 나무 향이 은은하게 나요. 좌판이 조금 단단해서 오래 앉으면 방석을 하나 더 깔았어요. 그래도 플라스틱 라운지체어랑은 무게감이 완전히 다릅니다.",
+   "author_nick": "느린주말",
+   "helpful": 29,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-007",
+   "product_id": "prod-02",
+   "rating": 5,
+   "title": "독서할 때 허리가 안 굽어요",
+   "body": "등판 각도가 너무 눕지 않아서 책 읽기에 딱이에요. 다리 끝이 바닥에 안정적으로 붙고, 흔들림이 없습니다. 창가에 두니 오후 해가 팔걸이만 따뜻하게 데워줘요.",
+   "author_nick": "책상고양이",
+   "helpful": 56,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-008",
+   "product_id": "prod-02",
+   "rating": 3,
+   "title": "쿠션 커버가 분리되면 좋겠어요",
+   "body": "나무는 정말 예쁜데 시트쿠션이 고정식이라 세탁이 고민이에요. 색은 밝은 오크에 가깝고 거실 러그랑도 잘 맞습니다. 배송 중 모서리에 작은 찍힘이 있어서 별 하나 뺐어요.",
+   "author_nick": "작은그릇",
+   "helpful": 18,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-009",
+   "product_id": "prod-03",
+   "rating": 5,
+   "title": "코너를 붙이니 거실이 커 보여요",
+   "body": "모듈을 창쪽에 엘자로 붙이니 가운데 동선이 시원하게 열렸어요. 오트밀 패브릭이라 낮에도 눈이 편합니다. 설치는 두 명이서 20분 걸렸어요.",
+   "author_nick": "느린살림",
+   "helpful": 140,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-010",
+   "product_id": "prod-03",
+   "rating": 5,
+   "title": "가족이 한꺼번에 누워요",
+   "body": "코너 쪽 깊이가 넓어서 아이랑 나란히 눕습니다. 모듈 이음새가 벌어지지 않게 하단 클립이 있어서 밀려도 다시 붙어요. 담요가 흘러내리지 않는 것도 좋아요.",
+   "author_nick": "온기집",
+   "helpful": 77,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-011",
+   "product_id": "prod-03",
+   "rating": 4,
+   "title": "패브릭은 좋은데 부피가 커요",
+   "body": "32평에도 한 면을 꽤 먹어서 티비장 위치를 조금 옮겼어요. 앉는 감은 단단한 편이라 허리가 편하고, 번들거림이 없습니다. 배송이 하루 밀렸지만 기사님이 미리 연락주셨어요.",
+   "author_nick": "마루먼지",
+   "helpful": 35,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-012",
+   "product_id": "prod-03",
+   "rating": 5,
+   "title": "주말 낮잠 자리가 여기로 바뀜",
+   "body": "플로어램프랑 같이 두니 티비 없이도 앉아 있게 됩니다. 패브릭에 손자국이 잘 안 남고, 차가움도 없어요. 모듈 하나 빼면 손님용 좌석으로도 씁니다.",
+   "author_nick": "주말낮잠",
+   "helpful": 62,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-013",
+   "product_id": "prod-04",
+   "rating": 5,
+   "title": "가죽 냄새가 과하지 않아요",
+   "body": "새 가죽 특유의 화학 냄새가 거의 없고 따뜻한 브라운이에요. 반짝이지 않아서 다락방에도 잘 어울립니다. 앉으면 처음엔 단단한데 일주일 지나니 몸이 들어가는 자리가 생겼어요.",
+   "author_nick": "오후네집",
+   "helpful": 88,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-014",
+   "product_id": "prod-04",
+   "rating": 4,
+   "title": "2인이라 둘이 딱이에요",
+   "body": "팔걸이가 넓어서 트레이 올려두고 차 마시기 좋아요. 가죽 전용 크림은 따로 사야 해요. 배송 박스가 묵직해서 계단은 두 명이 필요했습니다.",
+   "author_nick": "감잎차",
+   "helpful": 41,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-015",
+   "product_id": "prod-04",
+   "rating": 3,
+   "title": "겨울엔 차갑고 여름엔 붙어요",
+   "body": "가죽 질감 자체는 고급스러운데 계절을 타요. 담요를 덧대면 덜하지만 그러면 가죽 맛이 죽습니다. 색은 사진보다 레드끼가 조금 있어요.",
+   "author_nick": "겨울이불",
+   "helpful": 22,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-016",
+   "product_id": "prod-05",
+   "rating": 5,
+   "title": "식탁이 저녁에 살아나요",
+   "body": "유리갓이 눈을 찌르지 않고 우유빛으로 퍼져요. 플라스틱 펜던트 특유의 광택이 아니라서 밥상이 차분합니다. 전선 길이 넉넉해서 작은 식탁 중앙에 맞췄습니다.",
+   "author_nick": "볕드는창",
+   "helpful": 104,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-017",
+   "product_id": "prod-05",
+   "rating": 4,
+   "title": "설치는 쉬운데 전구 색을 고르세요",
+   "body": "천장 후크만 있으면 혼자 달 수 있어요. 기본 전구가 조금 노란 편이라 밥상이 따뜻해 보여요. 유리가 얇아 보여서 닦을 때 양손으로 잡았습니다.",
+   "author_nick": "식탁등",
+   "helpful": 38,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-018",
+   "product_id": "prod-05",
+   "rating": 5,
+   "title": "사진보다 집이 조용해 보여요",
+   "body": "밀키 화이트라 천장도 덜 산만합니다. 저녁에 켜 두면 식탁 나무결이 살아나고, 거실 소파 쪽까지 은은하게 넘어와요. 포장에 완충이 두꺼워서 유리가 멀쩡했습니다.",
+   "author_nick": "흰접시",
+   "helpful": 51,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-019",
+   "product_id": "prod-05",
+   "rating": 4,
+   "title": "2인 식탁에 크기 딱 좋아요",
+   "body": "지름이 크지 않아서 작은 식탁을 덮지 않아요. 전구 교체가 쉬운 소켓이라 나중에 주광색으로 바꿔볼 생각입니다. 전선이 살짝 꼬여 와서 손으로 풀어줬어요.",
+   "author_nick": "월요일아침",
+   "helpful": 19,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-020",
+   "product_id": "prod-06",
+   "rating": 5,
+   "title": "티비 끄고 앉아 있게 됐어요",
+   "body": "갓이 아래로 내려와서 눈부심이 거의 없어요. 스탠드가 묵직해서 아이가 스쳐도 안 넘어갑니다. 소파 옆에 두니 책 읽는 자리가 따로 생겼어요.",
+   "author_nick": "담요고양이",
+   "helpful": 73,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-021",
+   "product_id": "prod-06",
+   "rating": 4,
+   "title": "조립은 단순한 편",
+   "body": "기둥 세 개 끼우고 갓만 올리면 끝이에요. 스위치가 발에 차이지 않는 높이에 있어서 편합니다. 갓 색이 사진보다 노란 베이지예요.",
+   "author_nick": "퇴근후",
+   "helpful": 27,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-022",
+   "product_id": "prod-06",
+   "rating": 5,
+   "title": "코너가 밤에 살아나요",
+   "body": "어두운 구석에 세워두니 집이 한 겹 두꺼워진 느낌이에요. 패브릭 갓이 그림자를 부드럽게 깎아줍니다. 전구는 별도라서 따뜻한 빛으로 맞춰 샀어요.",
+   "author_nick": "별빛다락",
+   "helpful": 58,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-023",
+   "product_id": "prod-06",
+   "rating": 3,
+   "title": "코드가 짧아요",
+   "body": "콘센트가 멀리 있으면 멀티탭이 필요합니다. 빛 자체는 좋은데 전선 색이 흰색이라 바닥에서 잘 보여요. 갓은 먼지 털기가 쉬운 편입니다.",
+   "author_nick": "복도끝",
+   "helpful": 14,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-024",
+   "product_id": "prod-07",
+   "rating": 4,
+   "title": "복도가 덜 깜깜해졌어요",
+   "body": "두 개를 마주 보게 달았더니 그림자가 겹치지 않아요. 오팔 유리가 점을 만들지 않고 벽을 적셔줍니다. 배선은 전기기사님 불렀어요.",
+   "author_nick": "작은마루",
+   "helpful": 33,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-025",
+   "product_id": "prod-07",
+   "rating": 3,
+   "title": "브라켓 나사가 약해요",
+   "body": "밝기는 은은해서 밤길 화장실 가기에 좋아요. 브라켓 나사가 조금 작아서 벽에 따라 앙카를 따로 썼습니다. 매트 블랙이 손때 타기 쉬운 편이에요.",
+   "author_nick": "현관벨",
+   "helpful": 9,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-026",
+   "product_id": "prod-07",
+   "rating": 5,
+   "title": "현관 거울이랑 세트로 예뻐요",
+   "body": "거울 양옆에 하나씩 달았더니 나갈 때 그림자가 줄었어요. 빛이 차갑지 않아서 얼굴색이 살아요. 포장은 작아서 문 앞에 두고 가도 부담 없었습니다.",
+   "author_nick": "골목집",
+   "helpful": 46,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-027",
+   "product_id": "prod-08",
+   "rating": 5,
+   "title": "창가에 두면 방이 포근해져요",
+   "body": "도자기 받침이 묵직해서 창틀 바람에도 안 흔들려요. 린넨 갓이 낮에는 장식, 밤에는 무드등이 됩니다. 스위치가 코드에 있어서 침대에서 손만 뻗으면 꺼져요.",
+   "author_nick": "담요고양이",
+   "helpful": 132,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-028",
+   "product_id": "prod-08",
+   "rating": 5,
+   "title": "원룸 머리맡 추천",
+   "body": "핸드폰 대신 이 불만 켜 두고 잡니다. 빛이 얼굴을 직접 찌르지 않아서 눈이 편해요. 크림색이 벽지랑 섞여서 물건이 안 많아 보여요.",
+   "author_nick": "이불속",
+   "helpful": 98,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-029",
+   "product_id": "prod-08",
+   "rating": 4,
+   "title": "작아서 어디에든 올려져요",
+   "body": "선반, 창틀, 화장대 어디에 둬도 자리를 안 먹어요. 갓이 살짝 기울어 와서 손으로 바로잡았습니다. 전구는 작은 소켓이라 여분을 같이 샀어요.",
+   "author_nick": "2층창문",
+   "helpful": 41,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-030",
+   "product_id": "prod-08",
+   "rating": 5,
+   "title": "선물용으로도 무난해요",
+   "body": "포장이 단정해서 바로 집들이 선물로 가져갔어요. 받는 분이 창가에 두더니 방이 따뜻해 보인다고 했습니다. 가격 대비 도자기 질감이 거칠지 않아요.",
+   "author_nick": "봄이네",
+   "helpful": 64,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-031",
+   "product_id": "prod-08",
+   "rating": 4,
+   "title": "전구가 조금 따뜻해요",
+   "body": "기본 빛이 노란 편이라 작업등으로는 부족합니다. 잠들기 전에는 그게 오히려 좋아요. 베이스에 작은 유약이 튀어 있는 점이 하나 있었어요.",
+   "author_nick": "가을창",
+   "helpful": 17,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-032",
+   "product_id": "prod-09",
+   "rating": 5,
+   "title": "발밑이 먼저 집이 돼요",
+   "body": "맨발로 올라서면 울 특유의 탄력이 있어요. 라운드라서 소파 앞을 부드럽게 감싸고, 모서리에 발이 안 걸립니다. 논슬립 패드 덕분에 아이 뛰어다녀도 밀리지 않아요.",
+   "author_nick": "풀잎사이",
+   "helpful": 119,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-033",
+   "product_id": "prod-09",
+   "rating": 4,
+   "title": "털이 조금 빠져요",
+   "body": "첫 주에 짧은 울이 바닥에 좀 보였어요. 이틀 진공청소기 돌리니 잠잠해졌습니다. 오트밀 색이 먼지 잘 안 타고 거실을 따뜻하게 보이게 해요.",
+   "author_nick": "빨래널",
+   "helpful": 36,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-034",
+   "product_id": "prod-09",
+   "rating": 5,
+   "title": "원형이라 가구가 살아요",
+   "body": "사각 러그는 소파 다리에 잘리는데 이건 곡선이 남아요. 두께가 있어서 바닥에 앉아도 무릎이 안 아픕니다. 배송 말려 온 자국은 하루 펼쳐두니 사라졌어요.",
+   "author_nick": "햇살마루",
+   "helpful": 72,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-035",
+   "product_id": "prod-09",
+   "rating": 4,
+   "title": "물기는 바로 닦으세요",
+   "body": "커피를 흘렸더니 울이라 바로 흡수하더라고요. 마른 수건으로 두드리면 자국이 거의 안 남아요. 지름 150은 2인 소파 앞에 딱입니다.",
+   "author_nick": "커피잔집",
+   "helpful": 28,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-036",
+   "product_id": "prod-10",
+   "rating": 4,
+   "title": "체크가 집을 정리해 보여요",
+   "body": "패턴이 있어서 바닥에 장난감이 흩어져도 덜 지저분해 보여요. 면이라 여름에도 덜 덥고, 물세탁 표시가 있어서 마음이 놓입니다. 가장자리가 살짝 말려 와서 양면테이프로 고정했어요.",
+   "author_nick": "콩나물시루",
+   "helpful": 48,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-037",
+   "product_id": "prod-10",
+   "rating": 3,
+   "title": "미끄럼 방지가 약해요",
+   "body": "장판 위에서는 발에 끌려갑니다. 별도 패드를 깔고 나니 괜찮아요. 체크 색은 베이지가 주라 흰 소파랑 잘 맞습니다.",
+   "author_nick": "신발장정리",
+   "helpful": 21,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-038",
+   "product_id": "prod-10",
+   "rating": 5,
+   "title": "아이 방 놀이매트로 썼어요",
+   "body": "단모에 가깝고 면이라 블록 세우기가 편해요. 200 길이라 침대와 책상 사이를 한 장으로 이었습니다. 첫 세탁 후 수축은 거의 없었어요.",
+   "author_nick": "민트지붕",
+   "helpful": 65,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-039",
+   "product_id": "prod-10",
+   "rating": 4,
+   "title": "두께는 얇은 편",
+   "body": "포근한 울 러그보다 얇아서 겨울엔 양말을 신어요. 대신 쓸기와 청소기 밀기가 수월합니다. 체크 선이 반듯해서 가구를 맞추기 좋아요.",
+   "author_nick": "연필집",
+   "helpful": 16,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-040",
+   "product_id": "prod-11",
+   "rating": 5,
+   "title": "단모라 관리가 편해요",
+   "body": "머리카락이 박히지 않고 로봇청소기가 잘 지나갑니다. 사각이 넓어서 소파와 테이블을 한 판 위에 올려두니 거실이 구획돼요. 색이 마루랑 비슷해서 경계가 과하지 않아요.",
+   "author_nick": "느린살림",
+   "helpful": 87,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-041",
+   "product_id": "prod-11",
+   "rating": 4,
+   "title": "냄새는 하루면 빠져요",
+   "body": "새 제품 냄새가 조금 있어서 베란다에 펼쳐뒀어요. 하루 지나니 사라지고 단모 촉감이 보드랍습니다. 모서리가 말리지 않게 클립이 들어 있어요.",
+   "author_nick": "베란다화분",
+   "helpful": 31,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-042",
+   "product_id": "prod-11",
+   "rating": 5,
+   "title": "여름 거실에 잘 맞아요",
+   "body": "장모 러그보다 시원하고 먼지가 덜 납니다. 아이보리 소파 아래 깔면 집이 정돈돼 보여요. 배송 롤이 커서 엘리베이터에서 세워서 옮겼습니다.",
+   "author_nick": "여름마루",
+   "helpful": 54,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-043",
+   "product_id": "prod-11",
+   "rating": 3,
+   "title": "사진보다 회색끼가 있어요",
+   "body": "베이지를 기대했는데 그레이가 더 돌아요. 단모 품질은 좋고 밀림도 적습니다. 색만 알고 샀으면 별 안 뺐을 거예요.",
+   "author_nick": "노란커튼",
+   "helpful": 24,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-044",
+   "product_id": "prod-12",
+   "rating": 4,
+   "title": "현관에 두 장 깔면 끝",
+   "body": "신발 벗는 자리와 안쪽 한 장으로 나눴어요. 초록이 탁하지 않아서 나무 거울이랑 잘 어울립니다. 빨아도 보풀이 크게 일지 않았어요.",
+   "author_nick": "작은마루",
+   "helpful": 59,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-045",
+   "product_id": "prod-12",
+   "rating": 5,
+   "title": "물에 젖어도 빨리 말라요",
+   "body": "비 오는 날 우산 물기를 여기서 털어요. 다음 날이면 보송합니다. 두 장이라 하나는 빨고 하나는 깔 수 있어서 좋아요.",
+   "author_nick": "빗소리집",
+   "helpful": 81,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-046",
+   "product_id": "prod-12",
+   "rating": 3,
+   "title": "밀림이 조금 있어요",
+   "body": "대리석 타일 위에선 잘 미끄러집니다. 양면테이프를 모서리에 붙이니 괜찮아졌어요. 두께는 얇아서 문턱에 걸리진 않아요.",
+   "author_nick": "현관화분",
+   "helpful": 12,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-047",
+   "product_id": "prod-12",
+   "rating": 4,
+   "title": "화장실 앞에도 썼어요",
+   "body": "한 장은 현관, 한 장은 욕실 앞에 뒀습니다. 색깔이 같아서 집이 이어져 보여요. 첫 세탁에 물이 조금 초록으로 나왔다가 두 번째엔 맑았어요.",
+   "author_nick": "풀잎살림러",
+   "helpful": 27,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-048",
+   "product_id": "prod-13",
+   "rating": 5,
+   "title": "조립이 단순하고 튼튼해요",
+   "body": "육각렌치만으로 30분 안에 세웠어요. 상판 오크 결이 살아 있고, 철제 기둥이 흔들리지 않습니다. 책과 화분을 같이 올려도 끄떡없어요.",
+   "author_nick": "수납왕",
+   "helpful": 93,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-049",
+   "product_id": "prod-13",
+   "rating": 4,
+   "title": "오픈이라 정리를 잘해야 해요",
+   "body": "가려지지 않으니 바스켓을 넣으니 살았습니다. 깊이 35라 원룸 벽에 붙여도 통로가 남아요. 수평 조절 나사가 있어서 장판 위에서도 안 흔들립니다.",
+   "author_nick": "서랍속",
+   "helpful": 40,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-050",
+   "product_id": "prod-13",
+   "rating": 5,
+   "title": "현관 우산 자리가 됐어요",
+   "body": "맨 아래는 신발, 중간은 모자, 위는 화분으로 나눴어요. 검은 프레임이 벽을 잡아줘서 집이 정돈돼 보입니다. 모서리 마감이 날카롭지 않아요.",
+   "author_nick": "우체통집",
+   "helpful": 55,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-051",
+   "product_id": "prod-13",
+   "rating": 4,
+   "title": "설명서 그림이 작아요",
+   "body": "부품 번호가 작아서 한번 헤맸어요. 세우고 나니 튼튼하고 상판이 긁힘에 강한 편입니다. 벽에 고정하는 끈이 들어 있어서 안심이에요.",
+   "author_nick": "월요일아침",
+   "helpful": 18,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-052",
+   "product_id": "prod-14",
+   "rating": 5,
+   "title": "살림이 바구니로 모입니다",
+   "body": "대·중·소가 겹쳐져서 안 쓸 때 부피가 작아요. 라탄 결이 거칠지 않고 손끝에서 미끄러집니다. 선반에 넣으니 오픈 수납이 정돈돼 보여요.",
+   "author_nick": "정리공작",
+   "helpful": 121,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-053",
+   "product_id": "prod-14",
+   "rating": 5,
+   "title": "냄새 없이 바로 썼어요",
+   "body": "상자 열자마자 코팅 냄새가 거의 없었어요. 물티슈로 한 번만 닦고 바로 수건을 넣었습니다. 가장자리가 둥글어서 아이 방에도 두기 좋아요.",
+   "author_nick": "초코담요",
+   "helpful": 70,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-054",
+   "product_id": "prod-14",
+   "rating": 4,
+   "title": "크기가 생각보다 작아요",
+   "body": "대 사이즈도 무릎담요를 넣으면 가득 찹니다. 소품과 리모컨 넣기엔 딱이고, 이불 바구니로는 작아요. 세 개가 한 톤이라 선반이 가지런해 보입니다.",
+   "author_nick": "안방고양이",
+   "helpful": 39,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-055",
+   "product_id": "prod-14",
+   "rating": 5,
+   "title": "선물로 주고 하나 더 샀어요",
+   "body": "집들이 선물로 줬더니 현관에 바로 두더라고요. 라탄이 노랗지 않고 나무색에 가까워서 무난합니다. 배송 박스가 납작해서 문 앞에 두고 가도 티가 안 나요.",
+   "author_nick": "주말아침",
+   "helpful": 86,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-056",
+   "product_id": "prod-14",
+   "rating": 4,
+   "title": "먼지는 솔로 털어주세요",
+   "body": "틈새에 먼지가 앉긴 해요. 마른 솔로 쓸면 금방 깨끗해집니다. 습한 베란다에 두면 조금 벌어질 수 있어 실내에만 둬요.",
+   "author_nick": "옥상고양이",
+   "helpful": 23,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-057",
+   "product_id": "prod-15",
+   "rating": 4,
+   "title": "문이 옆으로 열려 공간이 남아요",
+   "body": "여닫이 옷장이면 문이 침대를 칠 뻔했는데 슬라이딩이라 살았습니다. 레일이 부드럽게 가고, 닫을 때 소리가 크지 않아요. 기사님 설치가 반나절 걸렸습니다.",
+   "author_nick": "고요한밤",
+   "helpful": 47,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-058",
+   "product_id": "prod-15",
+   "rating": 3,
+   "title": "내부 칸이 단순한 편",
+   "body": "봉 하나와 선반 두 단이 전부라 서랍은 따로 넣어야 해요. 도어 마감은 반듯하고 오크 색이 따뜻합니다. 지금은 품절이라 같은 시리즈 협탁을 못 맞췄어요.",
+   "author_nick": "옷걸이집",
+   "helpful": 15,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-059",
+   "product_id": "prod-15",
+   "rating": 5,
+   "title": "1200 폭이 원룸에 맞아요",
+   "body": "벽 한 면을 다 먹지 않아서 옆에 행거를 하나 더 둘 수 있어요. 거울을 문에 붙이니 방이 넓어 보입니다. 나사가 여분으로 들어 있었습니다.",
+   "author_nick": "수납왕",
+   "helpful": 52,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-060",
+   "product_id": "prod-16",
+   "rating": 4,
+   "title": "바닥이 드디어 비었어요",
+   "body": "충전기랑 리모컨을 올리니 콘센트 앞이 깔끔해졌어요. 월넛 색이 진해서 흰 벽에 잘 붙습니다. 나사 위치가 표시돼 있어 혼자 달았어요.",
+   "author_nick": "초록집사",
+   "helpful": 34,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-061",
+   "product_id": "prod-16",
+   "rating": 3,
+   "title": "깊이가 얕아요",
+   "body": "책 한 권은 들어가는데 박스 휴지는 안 들어갑니다. 열쇠와 선글라스 넣기엔 좋아요. 뚜껑이 없어서 먼지는 자주 닦아야 해요.",
+   "author_nick": "열쇠고리",
+   "helpful": 11,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-062",
+   "product_id": "prod-16",
+   "rating": 5,
+   "title": "원룸 현관에 걸어두세요",
+   "body": "신발을 벗고 바로 손이 가는 높이에 달았어요. 마스크와 카드가 그 안에 있습니다. 작아서 택배가 하루 만에 왔어요.",
+   "author_nick": "담담이",
+   "helpful": 28,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-063",
+   "product_id": "prod-17",
+   "rating": 5,
+   "title": "두께 안 갈아끼워도 돼요",
+   "body": "봄가을은 이불만, 한겨울엔 패드까지 깔면 충분해요. 면이 보들보들해서 이불 속 정전기가 거의 없습니다. 압축팩이 하루 만에 부풀어 바로 덮었어요.",
+   "author_nick": "담요고양이",
+   "helpful": 137,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-064",
+   "product_id": "prod-17",
+   "rating": 5,
+   "title": "싱글인데 덮는 감이 넉넉해요",
+   "body": "어깨가 빠져서 깨는 일이 줄었어요. 화이트가 형광끼 없이 부드럽습니다. 베개커버 고무줄이 헐렁하지 않아 밤새 안 돌아요.",
+   "author_nick": "이불속",
+   "helpful": 102,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-065",
+   "product_id": "prod-17",
+   "rating": 4,
+   "title": "이불솜이 한쪽으로 쏠려요",
+   "body": "처음 펼치면 한쪽이 조금 두꺼워요. 몇 번 털어 주고 나면 고르게 퍼집니다. 세탁망에 넣어 빨았더니 보풀은 적었어요.",
+   "author_nick": "여름마루",
+   "helpful": 43,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-066",
+   "product_id": "prod-17",
+   "rating": 5,
+   "title": "자취 첫 이불로 샀어요",
+   "body": "세트가 한 박스라 이삿날 들고 오기 편했습니다. 덮자마자 잠이 와서 이불 쇼핑을 더 안 하게 됐어요. 패드가 미끄럽지 않은 게 제일 좋아요.",
+   "author_nick": "월요일아침",
+   "helpful": 89,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-067",
+   "product_id": "prod-17",
+   "rating": 4,
+   "title": "여름엔 패드만 써요",
+   "body": "이불은 살짝 따뜻해서 한여름엔 패드와 홑이불만 씁니다. 그래도 사계절 기본으로 두기엔 이만한 게 없어요. 색이 때 타면 바로 티가 나서 커버를 자주 갈아줍니다.",
+   "author_nick": "초코담요",
+   "helpful": 26,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-068",
+   "product_id": "prod-18",
+   "rating": 5,
+   "title": "구김이 오히려 예쁩니다",
+   "body": "다림질 안 하고 그냥 덮어요. 워싱 린넨이라 잠자리가 보송하고, 퀸 사이즈가 매트리스를 잘 감쌉니다. 처음 열면 린넨 냄새가 짧게 나요.",
+   "author_nick": "오후네집",
+   "helpful": 96,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-069",
+   "product_id": "prod-18",
+   "rating": 4,
+   "title": "까슬함이 있어요",
+   "body": "예민한 피부면 속에 면 시트를 하나 더 깔아요. 며칠 자면 부드러워집니다. 샌드 색이 때 안 타고 주말주택에 잘 맞아요.",
+   "author_nick": "겨울이불",
+   "helpful": 37,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-070",
+   "product_id": "prod-18",
+   "rating": 5,
+   "title": "여름 이불로 쓰기 좋아요",
+   "body": "거위털 차렵 아래 깔지 않고 이것만 덮어도 시원합니다. 베개커버가 두 장 들어 있어서 손님용까지 해결됐어요. 물세탁 후 수축은 거의 없었습니다.",
+   "author_nick": "햇살마루",
+   "helpful": 61,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-071",
+   "product_id": "prod-18",
+   "rating": 4,
+   "title": "시트 모서리가 잘 빠져요",
+   "body": "밴드가 약해서 뒤척이면 한쪽이 들립니다. 집게를 쓰니 괜찮아졌어요. 이불커버 단추는 크고 잠그기 편합니다.",
+   "author_nick": "별빛다락",
+   "helpful": 20,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-072",
+   "product_id": "prod-19",
+   "rating": 5,
+   "title": "목이 먼저 잠들어요",
+   "body": "높은 베개만 쓰다가 이걸 베니 어깨가 안 결려요. 두 개라 하나는 무릎 사이에 끼웁니다. 커버가 면이라 여름에도 덜 땀나요.",
+   "author_nick": "담요고양이",
+   "helpful": 118,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-073",
+   "product_id": "prod-19",
+   "rating": 4,
+   "title": "처음엔 냄새가 조금 나요",
+   "body": "메모리폼 특유의 냄새가 이틀 정도 있었어요. 베란다에 세워두니 사라졌습니다. 높이가 낮아서 옆으로 자는 사람은 접어 베는 게 좋아요.",
+   "author_nick": "베개토끼",
+   "helpful": 45,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-074",
+   "product_id": "prod-19",
+   "rating": 5,
+   "title": "세트라 부부용으로 딱이에요",
+   "body": "두께가 같아서 누가 어느 걸 베도 티가 안 나요. 지퍼가 부드러워 커버 빨기가 쉽습니다. 박스가 작아서 안방 옷장에 여분으로 넣어뒀어요.",
+   "author_nick": "온기집",
+   "helpful": 74,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-075",
+   "product_id": "prod-19",
+   "rating": 3,
+   "title": "많이 누르면 천천히 복원돼요",
+   "body": "오래 앉아 기대면 자국이 오래 남아요. 베개로만 쓰면 괜찮고, 등받이처럼 쓰기엔 무거워요. 품절임박이라 하나 더 못 산 게 아쉽습니다.",
+   "author_nick": "이불속",
+   "helpful": 19,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-076",
+   "product_id": "prod-20",
+   "rating": 5,
+   "title": "가벼운데 무릎까지 따뜻해요",
+   "body": "거위털이라 이불 무게가 거의 안 느껴져요. 킹이라 두 사람이 당겨도 어깨가 안 빠져요. 보관백이 두꺼워서 여름에 넣어 두기 좋습니다.",
+   "author_nick": "오후네집",
+   "helpful": 69,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-077",
+   "product_id": "prod-20",
+   "rating": 4,
+   "title": "털이 한두 올 나와요",
+   "body": "첫 주에 바늘구멍으로 깃털이 조금 보였어요. 커버를 씌우니 잠잠합니다. 아이보리 색이 린넨 침구랑 겹쳐도 튀지 않아요.",
+   "author_nick": "겨울이불",
+   "helpful": 31,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-078",
+   "product_id": "prod-20",
+   "rating": 4,
+   "title": "봄가을엔 얇아요",
+   "body": "한겨울 주말주택엔 좋은데 환절기엔 린넨이랑 겹쳐야 해요. 그래도 차렵이라 아침에 개기가 편합니다. 박스가 커서 엘리베이터에서 세웠습니다.",
+   "author_nick": "다락방고양이",
+   "helpful": 25,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-079",
+   "product_id": "prod-21",
+   "rating": 5,
+   "title": "꽃 한 줄기면 선반이 끝나요",
+   "body": "입이 좁아서 한두 송이만 꽂히는데 그게 더 예뻐요. 매트 유약이라 지문이 잘 안 남습니다. 포장이 두꺼워서 택배가 흔들려도 금이 안 갔어요.",
+   "author_nick": "볕드는창",
+   "helpful": 84,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-080",
+   "product_id": "prod-21",
+   "rating": 4,
+   "title": "생각보다 작아요",
+   "body": "손 안에 들어와서 큰 꽃다발은 못 넣어요. 작은 가지나 마른 꽃에 맞습니다. 바닥이 넓어 잘 안 넘어져요.",
+   "author_nick": "흰접시",
+   "helpful": 29,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-081",
+   "product_id": "prod-21",
+   "rating": 5,
+   "title": "선물하기 좋은 크기",
+   "body": "가격이 부담 없고 포장이 예뻐서 집들이 때 들고 갔어요. 받는 분이 창가에 바로 두더라고요. 유약이 균일해서 공장 티가 덜 나요.",
+   "author_nick": "봄이네",
+   "helpful": 57,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-082",
+   "product_id": "prod-21",
+   "rating": 4,
+   "title": "물때가 살짝 남아요",
+   "body": "물을 오래 받아두면 입구에 흰 선이 생겨요. 식초 물에 헹구면 지워집니다. 크림색이 오크 선반이랑 잘 맞아요.",
+   "author_nick": "베란다화분",
+   "helpful": 13,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-083",
+   "product_id": "prod-22",
+   "rating": 5,
+   "title": "오후 해가 부드러워졌어요",
+   "body": "한 폭만 달았는데도 눈이 안 부셔요. 린넨이 바람에 잘 움직이고, 걷는 소리가 안 납니다. 후크가 넉넉히 들어 있어서 레일에 바로 걸었어요.",
+   "author_nick": "느린살림",
+   "helpful": 78,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-084",
+   "product_id": "prod-22",
+   "rating": 4,
+   "title": "한 폭으론 큰 창이 안 덮여요",
+   "body": "거실 통창이면 두 폭은 사야 해요. 비침이 있어서 밤엔 속커튼이 필요합니다. 낮 풍경은 살아 있어서 그 점이 좋아요.",
+   "author_nick": "노란커튼",
+   "helpful": 33,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-085",
+   "product_id": "prod-22",
+   "rating": 5,
+   "title": "구김이 자연스러워요",
+   "body": "세탁 후 널어두면 줄이 살아납니다. 색이 흰 벽보다 한 톤 어두워서 창이 정돈돼 보여요. 길이가 230이라 높은 천장에도 바닥에 끌리지 않아요.",
+   "author_nick": "가을창",
+   "helpful": 49,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-086",
+   "product_id": "prod-22",
+   "rating": 3,
+   "title": "봉에 끼우는 구멍이 빡빡해요",
+   "body": "링이 작아서 봉 끝을 감싸는 데 힘이 들었어요. 한번 끼우면 미끄러지진 않습니다. 원단 자체는 마음에 들어요.",
+   "author_nick": "2층창문",
+   "helpful": 16,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-087",
+   "product_id": "prod-23",
+   "rating": 5,
+   "title": "소파 옆 작은 상을 대신해요",
+   "body": "팔걸이에 올려두면 컵이 안 넘어가요. 물푸레나무 결이 곱고, 가장자리가 살짝 올라와 있어요. 오일만 한 번 발라줬습니다.",
+   "author_nick": "오후네집",
+   "helpful": 42,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-088",
+   "product_id": "prod-23",
+   "rating": 4,
+   "title": "접시 두 장만 올라가요",
+   "body": "과일을 수북이 담으면 넘칩니다. 리모컨과 안경 올리기엔 딱이에요. 바닥이 평평해서 테이블 위에도 잘 앉습니다.",
+   "author_nick": "식탁의자",
+   "helpful": 18,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-089",
+   "product_id": "prod-23",
+   "rating": 4,
+   "title": "습기엔 약해요",
+   "body": "젖은 잔을 오래 두면 자국이 남아요. 바로 닦으면 괜찮습니다. 나무 냄새가 약해서 침실에도 두기 좋아요.",
+   "author_nick": "감잎차",
+   "helpful": 14,
+   "ago": "3달 전"
+  },
+  {
+   "id": "rv-090",
+   "product_id": "prod-24",
+   "rating": 5,
+   "title": "현관이 넓어 보여요",
+   "body": "세로로 걸으니 신발이 끝나는 선이 정돈돼 보입니다. 느티 프레임이 두껍지 않아서 답답하지 않아요. 철물이 벽면에 단단히 물립니다.",
+   "author_nick": "작은마루",
+   "helpful": 63,
+   "ago": "3일 전"
+  },
+  {
+   "id": "rv-091",
+   "product_id": "prod-24",
+   "rating": 4,
+   "title": "유리가 조금 얇아요",
+   "body": "비침은 없고 상은 또렷해요. 청소할 때 힘을 주면 휘는 느낌이 있어 부드럽게 닦아요. 나무 결이 좌우가 달라 더 자연스럽습니다.",
+   "author_nick": "골목집",
+   "helpful": 27,
+   "ago": "2주 전"
+  },
+  {
+   "id": "rv-092",
+   "product_id": "prod-24",
+   "rating": 5,
+   "title": "옷 입을 때 전신이 보여요",
+   "body": "70 높이라 허리부터 머리까지 나와요. 침실 문 옆에 걸었더니 나갈 때 한 번 더 봐요. 포장에 모서리 보호가 잘 돼 있었어요.",
+   "author_nick": "안방고양이",
+   "helpful": 50,
+   "ago": "1달 전"
+  },
+  {
+   "id": "rv-093",
+   "product_id": "prod-24",
+   "rating": 4,
+   "title": "수평 맞추는 데 시간이 걸렸어요",
+   "body": "벽이 고르지 않아 한쪽이 떴습니다. 종이를 끼워 맞추니 괜찮아졌어요. 거울이 노란기 없이 얼굴색이 그대로 나옵니다.",
+   "author_nick": "현관벨",
+   "helpful": 22,
+   "ago": "3달 전"
+  }
+ ],
+ "curations": [
+  {
+   "id": "cur-1",
+   "title": "저녁 거실을 앉는 자리로",
+   "subtitle": "소파와 빛, 발밑부터 맞추는 주말",
+   "banner_image": "assets/cur-1.jpg",
+   "product_ids": [
+    "prod-01",
+    "prod-03",
+    "prod-05",
+    "prod-06",
+    "prod-09"
+   ]
+  },
+  {
+   "id": "cur-2",
+   "title": "잠자리만 먼저 고치기",
+   "subtitle": "이불과 베개, 머리맡 불빛",
+   "banner_image": "assets/cur-2.jpg",
+   "product_ids": [
+    "prod-17",
+    "prod-18",
+    "prod-19",
+    "prod-08",
+    "prod-20"
+   ]
+  }
+ ]
+}
