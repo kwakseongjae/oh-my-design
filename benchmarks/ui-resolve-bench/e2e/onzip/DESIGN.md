@@ -6,52 +6,54 @@
 <!-- design-md:claim scope kind=product-surface lang=en -->
 ### Scope
 
-온집은 가상의 홈 인테리어 커머스와 집들이 커뮤니티다. 사용자는 샘플 카탈로그를 둘러보고, 카테고리와 재고로 걸러 보고, 상품과 집들이 기록을 서로 조인해 확인한다.
+온집은 가상 샘플 카탈로그로 가구와 집들이를 둘러보는 커머스 커뮤니티다. 사용자는 카테고리와 재고로 상품을 거르고, 가격·평점으로 정렬하며, 상품과 집들이를 서로 조인해 살펴본다.
 <!-- design-md:claim-end -->
 
 <!-- design-md:claim primary-tasks kind=user-outcomes count=5 lang=en -->
 ### Primary tasks
 
-- 서비스 소개와 인기 상품, 집들이 프리뷰, 카테고리 진입을 홈에서 둘러본다
+- 홈에서 서비스 소개와 리뷰 수 상위 상품, 수록 순서 집들이, 카테고리 입구를 본다
 
-- 스토어에서 카테고리와 재고 상태로 거르고 가격 또는 평점으로 정렬한다
+- 스토어에서 여섯 카테고리와 재고 상태로 거르고 가격 또는 평점으로 정렬한다
 
-- 상품 한 건의 실제 레코드와 그 상품이 등장한 집들이를 확인한다
+- 상품 상세에서 레코드와 그 상품이 등장한 집들이를 본다
 
-- 집들이를 집 유형으로 거른다
+- 집들이 목록을 집 유형으로 거르고 상세에서 사용된 상품을 조인해 본다
 
-- 집들이 한 건의 요약과 조인된 사용 상품을 확인한다
+- 없는 상품·게시글 주소와 빈 필터, 제공되지 않는 정보를 정직하게 본다
 <!-- design-md:claim-end -->
 
 ### Design direction
 
-- Hairline-rule bands on warm paper, not identical radius-border widget cards
+- Shadowed-tile commerce catalog with generous product media and a dominant price hierarchy
 
-- Clay accent as a thin signal occupying little of any viewport
+- Warm paper and ink neutrals with one terracotta accent used as a small signal
 
-- Editorial commerce density: display statement plus provided product or tour imagery in a copy/figure diptych
+- Enum tokens for stock_status and home_type so status is readable at a glance
 
-- Dataset honesty is part of the chrome, not a footnote
+- Korean gothic display and body pair; restrained compositor-only motion behind reduced-motion
 
 ### Principles
 
-- Every number and list is computed from src/data/data.json at runtime
+- Numbers and lists are computed from the imported dataset at runtime
 
-- stock_status and home_type are system token sets, not ad-hoc colors
+- Every shown aggregate states its definition next to the figure
 
-- Aggregates state their definition beside the figure
+- Unknown fields stay absent; withheld categories become a visible unavailable-information node
 
-- Unknown fields stay absent; unavailable information is a visible node
+- Pages consume system tokens and shared components only
 
 ### Avoid
 
-- Invented prices, dates, inventory counts, testimonials, or live network data
+- Invented prices, review text, shipping, live quantities, or timestamps
 
 - Developer state switchers
 
 - Unstyled native form controls
 
-- Purple gradient genre defaults and full-bleed accent fills
+- Implementation vocabulary in the user interface
+
+- Network requests or extra packages
 
 <!-- design-md:section foundations -->
 ## 2. Foundations
@@ -59,64 +61,54 @@
 <!-- design-md:claim foundations kind=rules-or-constraints lang=en -->
 ### Semantic tokens
 
-- **color-accent**: `#B4532A` — Clay accent signal. Use as a rule, mark, or inverted chip, not a wash.
-- **color-accent-ink**: `#FAF6EF` — Ink on clay accent fills.
-- **color-band**: `#E8DFD2` — Inverted band fill for section transitions.
-- **color-danger**: `#8A2E28` — Error and sold-out action ink.
-- **color-disabled**: `#6E655C` — Disabled ink on paper.
-- **color-focus**: `#2A231C` — Focus-visible outline color.
-- **color-home-apt**: `#3F3C52` — home_type token for 아파트.
-- **color-home-house**: `#5A4534` — home_type token for 주택.
-- **color-home-oneroom**: `#2F5346` — home_type token for 원룸.
-- **color-home-tworoom**: `#4A5340` — home_type token for 투룸.
-- **color-ink**: `#2A231C` — Warm ink. OKLCH approximately 0.24 0.018 65. Not pure black.
-- **color-ink-muted**: `#5C5349` — Secondary ink for meta and labels.
-- **color-paper**: `#F3EDE3` — Warm paper base. OKLCH approximately 0.94 0.015 85.
-- **color-paper-raised**: `#FAF6EF` — Raised plate on paper. OKLCH approximately 0.97 0.012 85.
-- **color-rule**: `#D4CBBE` — Hairline rule on paper.
-- **color-stock-in**: `#215C41` — stock_status token for 판매중.
-- **color-stock-low**: `#8A4A12` — stock_status token for 품절임박.
-- **color-stock-out**: `#8A322C` — stock_status token for 품절.
-- **elevation-hover**: `hairline rule darkens; plate does not gain a drop shadow`
-- **elevation-rest**: `none`
-- **motion-duration-base**: `200ms`
-- **motion-duration-fast**: `120ms`
-- **motion-duration-slow**: `320ms`
-- **motion-easing-enter**: `cubic-bezier(0.2, 0.8, 0.2, 1)`
-- **motion-easing-exit**: `cubic-bezier(0.4, 0, 1, 1)`
-- **space-2**: `0.5rem`
-- **space-3**: `0.75rem`
-- **space-4**: `1rem`
-- **space-5**: `1.25rem`
-- **space-6**: `1.5rem`
-- **space-8**: `2rem`
-- **space-gutter**: `clamp(1rem, 4vw, 2.5rem)`
-- **space-section**: `2.5rem`
-- **space-section-lg**: `4rem`
-- **space-section-xl**: `6rem`
-- **type-body-size**: `1.0625rem`
-- **type-display-size**: `clamp(2.5rem, 6vw, 4.5rem)`
-- **type-display-tracking**: `-0.03em`
-- **type-label-size**: `0.75rem`
-- **type-label-tracking**: `0.14em`
-- **type-title-size**: `clamp(1.75rem, 3vw, 2.5rem)`
+- **color.accent**: `#b44a24` — Single terracotta accent signal
+- **color.accent-ink**: `#fff6ee` — Ink counterpart on accent fills
+- **color.home-apt**: `#4a4f6b` — home_type 아파트
+- **color.home-house**: `#6b4a32` — home_type 주택
+- **color.home-oneroom**: `#3d5a4a` — home_type 원룸
+- **color.home-tworoom**: `#4a5560` — home_type 투룸
+- **color.ink**: `#2c261f` — Warm ink oklch(0.27 0.018 60)
+- **color.line**: `#e2d8c8` — Hairline on paper
+- **color.muted**: `#6a6158` — Secondary ink for meta copy
+- **color.paper**: `#f4efe6` — Warm paper ground oklch(0.96 0.014 85)
+- **color.stock-in**: `#2c6a4d` — stock_status 판매중
+- **color.stock-low**: `#8f4f10` — stock_status 품절임박
+- **color.stock-out**: `#8a3535` — stock_status 품절
+- **color.surface**: `#fffaf3` — Raised tile surface
+- **color.tint**: `#ebe3d6` — Tinted neutral band
+- **elevation.hover**: `0 16px 36px oklch(0.27 0.018 60 / 0.14)` — Tile hover
+- **elevation.rest**: `0 10px 28px oklch(0.27 0.018 60 / 0.08)` — Tile rest
+- **motion.base**: `200ms` — Hover elevation
+- **motion.enter**: `0.22 1 0.36 1` — Enter easing
+- **motion.exit**: `0.4 0 1 1` — Exit easing
+- **motion.fast**: `120ms` — Press and focus
+- **motion.slow**: `320ms` — Section entrance
+- **radius.control**: `0.5rem` — Control radius, distinct from tiles
+- **radius.tile**: `1.25rem` — Tile radius for media and cards
+- **space.1**: `4px` — Tight meta gap
+- **space.2**: `8px` — In-card row gap
+- **space.3**: `12px` — Control padding
+- **space.4**: `16px` — Card body padding
+- **space.5**: `24px` — Cluster gap
+- **space.6**: `2.5rem` — Section air small
+- **space.7**: `4rem` — Section air medium
+- **space.8**: `6rem` — Section air large
+- **space.gutter**: `clamp(1rem, 4vw, 2.5rem)` — Viewport gutter
+- **type.body**: `1rem` — Body size
+- **type.display**: `clamp(2rem, 5vw, 3.25rem)` — Display step at least 2x body
+- **type.label**: `0.75rem` — Label role
 
 ### Contrast pairs
 
-- color-ink on color-paper: minimum 4.5:1
-- color-ink on color-paper-raised: minimum 4.5:1
-- color-ink on color-band: minimum 4.5:1
-- color-ink-muted on color-paper: minimum 4.5:1
-- color-accent-ink on color-accent: minimum 4.5:1
-- color-stock-in on color-paper: minimum 4.5:1
-- color-stock-low on color-paper: minimum 4.5:1
-- color-stock-out on color-paper: minimum 4.5:1
-- color-disabled on color-paper: minimum 4.5:1
-- color-danger on color-paper: minimum 4.5:1
-- color-home-oneroom on color-paper: minimum 4.5:1
-- color-home-tworoom on color-paper: minimum 4.5:1
-- color-home-apt on color-paper: minimum 4.5:1
-- color-home-house on color-paper: minimum 4.5:1
+- color.ink on color.paper: minimum 4.5:1
+- color.ink on color.surface: minimum 4.5:1
+- color.muted on color.paper: minimum 4.5:1
+- color.accent on color.paper: minimum 4.5:1
+- color.accent-ink on color.accent: minimum 4.5:1
+- color.stock-in on color.paper: minimum 4.5:1
+- color.stock-low on color.paper: minimum 4.5:1
+- color.stock-out on color.paper: minimum 4.5:1
+- color.paper on color.ink: minimum 4.5:1
 
 ### Reduced motion
 
@@ -124,17 +116,17 @@ Required.
 
 ### Foundation rules
 
-- All color, space, type, and motion values in product CSS come from these tokens as custom properties.
+- One surface genre: shadowed tiles. Accent coverage stays a small signal.
 
-- Hover changes surface (background, border, or rule), not translation alone.
+- Color tokens are hex bindings of warm OKLCH recipes; product CSS mirrors them as custom properties.
 
-- Animate only transform and opacity, using motion duration and easing tokens.
+- Stock and home-type enums each map to one color token and a persistent mark.
 
-- Reduced-motion users receive the equivalent static state with no entrance or hover motion.
+- Motion animates only transform and opacity, always behind prefers-reduced-motion.
 
-- Accent coverage stays a small signal on any viewport.
+- Section spacing uses space.6 through space.8; control padding uses space.2 through space.4.
 
-- Section transitions use space-section steps and occasional color-band inversion, not identical gaps.
+- Never animate layout properties or use transition:all.
 <!-- design-md:claim-end -->
 
 <!-- design-md:section typography-assets -->
@@ -144,42 +136,38 @@ Required.
 
 | Role | Usage | Family | Size | Weight | Line height | Tracking |
 |---|---|---|---|---|---|---|
-| display | Hero and page titles | Iowan Old Style, Palatino Linotype, Palatino, Songti SC, Apple SD Gothic Neo, serif | clamp(2.5rem, 6vw, 4.5rem) | 700 | 1.05 | -0.03em |
-| title | Section headings | Iowan Old Style, Palatino Linotype, Palatino, Songti SC, Apple SD Gothic Neo, serif | clamp(1.75rem, 3vw, 2.5rem) | 700 | 1.15 | -0.02em |
-| body | Prose, cards, and form copy | Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif | 1.0625rem | 400 | 1.55 |  |
-| label | Eyebrows, filter names, and aggregate definitions | Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif | 0.75rem | 600 | 1.3 | 0.14em |
+| display | Page titles and hero statement | Pretendard Variable, Pretendard, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif | clamp(2rem, 5vw, 3.25rem) | 800 | 1.22 | -0.01em |
+| body | Prose, summaries, and card copy | Pretendard Variable, Pretendard, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif | 1rem | 400 | 1.7 | 0 |
+| label | Section eyebrows, filter labels, badges | Pretendard Variable, Pretendard, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif | 0.75rem | 700 | 1.3 | 0.08em |
 
 ### Assets
 
 | Asset | Kind | Source status | License status | Source | Notes |
 |---|---|---|---|---|---|
-| display-stack | font | project-owned | not-required | Local OS serif stack with Korean gothic fallback. No webfont file is shipped. | No official ONZIP typeface was provided. |
-| body-stack | font | project-owned | not-required | Local OS gothic stack. No webfont file is shipped. |  |
-| catalog-images | image | user-provided | not-required | public/assets/*.jpg — 24 product and 6 post photographs listed in public/assets/assets-manifest.json | Every img element declares width and height. |
+| korean-gothic-stack | font | user-provided | not-required | Local Korean gothic fallback stack; no webfont package is installed | Hangul coverage via Pretendard if present, otherwise Apple SD Gothic Neo / Noto Sans KR / Malgun Gothic |
+| catalog-photographs | image | user-provided | not-required | public/assets/*.jpg (24 product, 6 post) | Explicit width and height from each JPEG; decorative wrappers stay aria-hidden when the adjacent text names the record |
 
 ### Rules
 
-- Display step is at least twice body size through clamp.
+- All Korean prose and headings use word-break: keep-all; display headings also use overflow-wrap: anywhere.
 
-- One display family and one body family; label uses the body family.
+- No Latin serif face is allowed to carry Hangul.
 
-- Prose measure stays between 45 and 75 characters.
+- Prices use tabular figures and thousands separators with 원 after the number.
 
-- Display headings use overflow-wrap anywhere and min-width 0.
-
-- Provided images keep explicit width and height; motion applies to the frame, never the raw img.
+- Provided images always declare width and height; motion applies to the container, never the raw img.
 
 <!-- design-md:section components-states -->
 ## 4. Components & States
 
 ### Component: skip-link
 
-**Semantics:** First focusable control. Moves keyboard focus to #main. Never the primary CTA.
+**Semantics:** First focusable control; skips to #main, never to the primary CTA.
 
-- Anatomy: visible-on-focus text, target #main
-- Variants: default
+- Anatomy: visible-on-focus label
+- Variants: to-main
 - States: default, hover, focus-visible
-- Token references: color-paper, color-ink, color-focus, motion-duration-fast
+- Token references: color.accent-ink, color.accent, motion.fast
 
 - Interaction kind: interactive
 
@@ -190,42 +178,19 @@ Required.
 | default | applicable |  |
 | hover | applicable |  |
 | focus-visible | applicable |  |
-| disabled | not-applicable | The skip link is always available. |
-| loading | not-applicable | Navigation is immediate. |
-| error | not-applicable | The skip link has no validation. |
-| success | not-applicable | Arrival at main is not a success chrome state. |
-
-### Component: app-nav
-
-**Semantics:** Single site nav, identical on every page. Active destination uses aria-current=page.
-
-- Anatomy: wordmark, primary links, disclosure of sample dataset
-- Variants: home, store, posts
-- States: default, hover, focus-visible
-- Token references: color-paper, color-ink, color-rule, color-accent, type-label-size
-
-- Interaction kind: interactive
-
-#### State applicability
-
-| State | Applicability | Reason |
-|---|---|---|
-| default | applicable |  |
-| hover | applicable |  |
-| focus-visible | applicable |  |
-| disabled | not-applicable | All primary destinations exist. |
-| loading | not-applicable | Client routing is synchronous. |
-| error | not-applicable | Broken routes are page-level, not nav-level. |
-| success | not-applicable | Current page is marked with aria-current, not a success state. |
+| disabled | not-applicable | Skip link is always available. |
+| loading | not-applicable | No remote work. |
+| error | not-applicable | Navigation only. |
+| success | not-applicable | Navigation only. |
 
 ### Component: button
 
-**Semantics:** Exactly one visible primary CTA per view uses data-cta=primary. Per-item actions use data-cta=local and a different verb.
+**Semantics:** Primary chrome or hero CTA uses data-cta=primary once per view; per-item actions use data-cta=local.
 
-- Anatomy: label, optional mark
-- Variants: primary, local, quiet
+- Anatomy: label, optional leading mark
+- Variants: primary, secondary, ghost
 - States: default, hover, focus-visible, disabled
-- Token references: color-ink, color-paper, color-accent, color-accent-ink, color-disabled, motion-duration-fast
+- Token references: color.accent, color.accent-ink, color.ink, color.paper, radius.control, motion.fast
 
 - Interaction kind: interactive
 
@@ -237,18 +202,41 @@ Required.
 | hover | applicable |  |
 | focus-visible | applicable |  |
 | disabled | applicable |  |
-| loading | not-applicable | No asynchronous submit exists. |
-| error | not-applicable | Errors belong to missing records or empty filters. |
-| success | not-applicable | Success is a status region, not a button skin. |
+| loading | not-applicable | Catalog is a local import with no mutation. |
+| error | not-applicable | Buttons do not validate remote writes. |
+| success | not-applicable | Success is a detail region, not a button state. |
+
+### Component: nav-link
+
+**Semantics:** Shared primary navigation; the active route sets aria-current=page.
+
+- Anatomy: label, current mark
+- Variants: header
+- States: default, hover, focus-visible
+- Token references: color.ink, color.paper, color.accent, type.label
+
+- Interaction kind: interactive
+
+#### State applicability
+
+| State | Applicability | Reason |
+|---|---|---|
+| default | applicable |  |
+| hover | applicable |  |
+| focus-visible | applicable |  |
+| disabled | not-applicable | Routes stay reachable; current is marked, not disabled. |
+| loading | not-applicable | Client-side routing of local views. |
+| error | not-applicable | Broken ids are handled by the destination page. |
+| success | not-applicable | Current page mark is not a success state. |
 
 ### Component: filter-chip
 
-**Semantics:** Toggle filter. Selected option sets aria-pressed=true and a visible live summary names the active filter.
+**Semantics:** Restyled radio or checkbox; selected option is both programmatic and visible; filters announce a live summary.
 
-- Anatomy: native button, pressed mark, label from dataset
+- Anatomy: native input, visible label, selected mark
 - Variants: category, stock, home-type
 - States: default, hover, focus-visible
-- Token references: color-ink, color-paper, color-rule, color-accent, color-stock-in, color-stock-low, color-stock-out
+- Token references: color.ink, color.surface, color.accent, color.line, radius.control
 
 - Interaction kind: interactive
 
@@ -259,19 +247,19 @@ Required.
 | default | applicable |  |
 | hover | applicable |  |
 | focus-visible | applicable |  |
-| disabled | not-applicable | Every dataset enum value remains choosable. |
-| loading | not-applicable | Filtering is local and synchronous. |
-| error | not-applicable | An empty intersection is an empty state, not a chip error. |
-| success | not-applicable | Outcome is announced by a status region. |
+| disabled | not-applicable | Every enum value in the dataset remains choosable. |
+| loading | not-applicable | Filtering is synchronous over the imported file. |
+| error | not-applicable | Invalid combinations produce an empty collection, not a field error. |
+| success | not-applicable | Result count is announced by a status region. |
 
-### Component: sort-select
+### Component: select-control
 
-**Semantics:** Native select restyled from tokens. The selected option is both the programmatic and visible active sort.
+**Semantics:** Restyled native select for price and rating sort; selected option stays visible.
 
-- Anatomy: visible label, restyled native select, selected option
-- Variants: price, rating
+- Anatomy: label, native select, custom chevron
+- Variants: sort
 - States: default, hover, focus-visible
-- Token references: color-ink, color-paper, color-rule, color-focus
+- Token references: color.ink, color.surface, color.line, radius.control
 
 - Interaction kind: interactive
 
@@ -282,19 +270,19 @@ Required.
 | default | applicable |  |
 | hover | applicable |  |
 | focus-visible | applicable |  |
-| disabled | not-applicable | Sort remains available whenever the catalog is shown. |
-| loading | not-applicable | Sorting is local and synchronous. |
-| error | not-applicable | Sort has no invalid value in the closed option set. |
-| success | not-applicable | The committed option text is the success evidence. |
+| disabled | not-applicable | Sort remains available whenever the grid is shown. |
+| loading | not-applicable | Sort is synchronous. |
+| error | not-applicable | Only the provided sort keys exist. |
+| success | not-applicable | Sorted grid is the default collection view. |
 
 ### Component: product-card
 
-**Semantics:** Links to /store/:id. Price is KRW with thousands separators. Stock uses the system token set.
+**Semantics:** Catalog tile linking to /store/:id with data-cta=local. Price sits next to the title; action is separated.
 
-- Anatomy: media frame, brand, name, price, rating, stock badge, local action
-- Variants: grid, joined
+- Anatomy: media, brand, name, price, rating-meta, stock-badge, local-action
+- Variants: grid, join
 - States: default, hover, focus-visible
-- Token references: color-paper, color-ink, color-rule, color-stock-in, color-stock-low, color-stock-out
+- Token references: color.surface, color.ink, color.muted, elevation.rest, elevation.hover, radius.tile, space.4
 
 - Interaction kind: interactive
 
@@ -305,19 +293,19 @@ Required.
 | default | applicable |  |
 | hover | applicable |  |
 | focus-visible | applicable |  |
-| disabled | not-applicable | Every catalog record remains openable, including sold-out items. |
-| loading | not-applicable | Images and records are local. |
-| error | not-applicable | Missing ids use the error-notice, not the card. |
-| success | not-applicable | Opening a record is a route change. |
+| disabled | not-applicable | Sold-out records remain inspectable; only the purchase verb disables. |
+| loading | not-applicable | Images are local assets. |
+| error | not-applicable | Missing records use the error-panel, not a broken card. |
+| success | not-applicable | Selection navigates to the detail route. |
 
 ### Component: post-card
 
-**Semantics:** Links to /posts/:id. Home type uses the system token set. Area and likes come from the record.
+**Semantics:** Housewarming tile linking to /posts/:id.
 
-- Anatomy: cover, home-type badge, area, likes, title
+- Anatomy: cover, home-type-badge, title, area, likes
 - Variants: grid, preview
 - States: default, hover, focus-visible
-- Token references: color-paper, color-ink, color-home-oneroom, color-home-tworoom, color-home-apt, color-home-house
+- Token references: color.surface, color.ink, color.muted, elevation.rest, radius.tile
 
 - Interaction kind: interactive
 
@@ -328,101 +316,104 @@ Required.
 | default | applicable |  |
 | hover | applicable |  |
 | focus-visible | applicable |  |
-| disabled | not-applicable | Every post record remains openable. |
-| loading | not-applicable | Covers are local files. |
-| error | not-applicable | Missing ids use the error-notice. |
-| success | not-applicable | Opening a post is a route change. |
+| disabled | not-applicable | Every listed post is openable. |
+| loading | not-applicable | Covers are local assets. |
+| error | not-applicable | Unknown ids use the error-panel. |
+| success | not-applicable | Opening the post is a route change. |
 
 ### Component: stock-badge
 
-**Semantics:** Non-interactive status from products.stock_status. Color and label map 1:1 to the enum.
+**Semantics:** Non-interactive stock_status token. Color and label always travel together.
 
-- Anatomy: mark, status label
+- Anatomy: swatch, label
 - Variants: 판매중, 품절임박, 품절
 - States: default
-- Token references: color-stock-in, color-stock-low, color-stock-out
+- Token references: color.stock-in, color.stock-low, color.stock-out, type.label
 
 - Interaction kind: non-interactive
-- Interaction reason: Stock status is a read-only token mark. It is not a control.
+- Interaction reason: Status display only; filtering uses filter-chip.
 
 ### Component: home-type-badge
 
-**Semantics:** Non-interactive home_type token mark.
+**Semantics:** Non-interactive home_type token.
 
-- Anatomy: mark, type label
+- Anatomy: swatch, label
 - Variants: 원룸, 투룸, 아파트, 주택
 - States: default
-- Token references: color-home-oneroom, color-home-tworoom, color-home-apt, color-home-house
+- Token references: color.home-oneroom, color.home-tworoom, color.home-apt, color.home-house, type.label
 
 - Interaction kind: non-interactive
-- Interaction reason: Home type is a read-only token mark. Filtering uses filter-chip.
+- Interaction reason: Type display only; filtering uses filter-chip.
 
-### Component: media-frame
+### Component: empty-panel
 
-**Semantics:** Provided photographs sit in a framed figure. Decorative treatment is aria-hidden when the img already has alt.
+**Semantics:** Distinct dashed empty surface when a filter combination returns zero records.
 
-- Anatomy: img with width and height, frame
+- Anatomy: title, definition, reset-action-slot
+- Variants: filter
 - States: default
-- Token references: color-band, color-rule
+- Token references: color.tint, color.ink, radius.tile
 
 - Interaction kind: non-interactive
-- Interaction reason: Media is a figure, not a control. Motion applies to the frame only.
+- Interaction reason: Empty collection panel; reset is a nested button.
 
-### Component: empty-state
+### Component: error-panel
 
-**Semantics:** Distinct dashed surface for a filter intersection of zero records. Names the active filters.
+**Semantics:** Honest missing-id region with role=alert naming the requested identifier.
 
-- Anatomy: dashed plate, title, definition of the empty query
-- States: default
-- Token references: color-paper, color-ink, color-rule
-
-- Interaction kind: non-interactive
-- Interaction reason: Empty is a display surface produced by filters, not a focusable widget.
-
-### Component: error-notice
-
-**Semantics:** Honest missing-record region. Visible id is the requested param. role=alert when the view is an error.
-
-- Anatomy: region, missing id, recovery link
+- Anatomy: title, requested-id, recovery-link-slot
+- Variants: missing-record
 - States: default, error
-- Token references: color-danger, color-paper, color-ink
+- Token references: color.stock-out, color.paper, color.ink
 
 - Interaction kind: non-interactive
-- Interaction reason: Error copy is a display region. Recovery is a standard link, not this surface.
+- Interaction reason: Error display; recovery is a nested link.
 
-### Component: disclosure-banner
+### Component: unavailable-panel
 
-**Semantics:** Renders data.json disclosure on every page in a visible, accessible position.
+**Semantics:** Visible unavailable-information node that names withheld categories: live quantity, shipping, calendar recency, network loading.
 
-- Anatomy: sample mark, verbatim dataset disclosure
+- Anatomy: category-name, honest-absence-sentence
+- Variants: information
 - States: default
-- Token references: color-band, color-ink
+- Token references: color.tint, color.ink, type.label
 
 - Interaction kind: non-interactive
-- Interaction reason: Disclosure is required chrome copy, not a control.
+- Interaction reason: Honesty ledger surface, not a control.
 
-### Component: unavailable-info
+### Component: disclosure
 
-**Semantics:** Visible unavailable-information node. Names the withheld category. data-state=unavailable.
+**Semantics:** Dataset disclosure rendered as visible accessible copy on every page.
 
-- Anatomy: node, named withheld category, dataset field that is absent
+- Anatomy: sample-sentence
+- Variants: footer, detail
 - States: default
-- Token references: color-band, color-ink-muted
+- Token references: color.muted, color.paper
 
 - Interaction kind: non-interactive
-- Interaction reason: Unavailable information is an honesty node, not a control.
+- Interaction reason: Legal-honest copy, not a control.
+
+### Component: price-display
+
+**Semantics:** Formats price_krw with thousands separators and a trailing 원.
+
+- Anatomy: amount, won-unit
+- Variants: card, detail
+- States: default
+- Token references: color.ink
+
+- Interaction kind: non-interactive
+- Interaction reason: Numeric display.
 
 ### Rules
 
-- Pages consume these components and do not invent local color or type values.
+- Interactive components implement applicable states in code; hover changes surface, not only transform.
 
-- Interactive components implement only applicable states; non-interactive components do not claim focus contracts.
+- Native inputs stay functional under restyled marks; appearance is removed.
 
-- Focus is an instant outline using color-focus, never a fading ring.
+- Exactly one visible primary CTA per view; repeated item actions use a different verb.
 
-- Native inputs stay in the tree under restyled chrome.
-
-- Primary CTA uniqueness: one data-cta=primary per view.
+- data-state markers live on the real component that entered the state.
 
 <!-- design-md:section layout-platforms -->
 ## 5. Layout & Platforms
@@ -434,52 +425,53 @@ Required.
 
 ### Layout rules
 
-- Document scrollWidth must not exceed clientWidth at 320, 390, and 1440.
+- Supported viewports are 320, 390, and 1440 CSS pixels plus 200 percent reflow.
 
-- Primary action stays inside the viewport.
+- Document scrollWidth must not exceed clientWidth; overflow-x is clip.
 
-- Touch targets are at least 44 by 44 CSS pixels except inline prose links.
+- Primary actions stay inside the viewport; touch targets are at least 44 by 44 CSS pixels except inline prose links.
 
-- Fixed-count grids use authored 1/2/3 column breakpoints, never auto-fit.
+- Store and post grids use authored 1/2/3 column tracks with minmax(0, 1fr), never auto-fit.
 
-- Grid tracks are minmax(0, 1fr). overflow-x is clip.
+- Hero is a copy/figure diptych; nav labels do not wrap.
 
-- Nav and CTA labels do not wrap at any supported width.
+- One main landmark and one h1 per rendered view.
 
 ### Platform: web
 
-- React 18 and react-router-dom 6 routes: /, /store, /store/:id, /posts, /posts/:id.
-- One shared stylesheet owns tokens and components.
-- html lang is ko.
-- No runtime network requests.
+- React Router 6 client routes in a Vite SPA.
+- Route changes scroll to top, move focus to the new h1, and update document.title.
+- Below-the-fold images use loading=lazy; the hero image does not.
 
 <!-- design-md:section content-locales -->
 ## 6. Content & Locales
 
 ### Voice
 
-- Calm, specific, and editorial. Address the reader in polite Korean.
+- Warm, concrete Korean. Name objects the shopper can see.
 
-- Name definitions next to aggregates. Do not market fictional scarcity.
+- Aggregate definitions use shopper language, never file or field names.
 
-- Label sample records as sample through the dataset disclosure.
+- Disclosure is one quiet footer line, plus the money-bearing detail pages.
 
 ### Terminology
 
 | Term | Preferred form |
 |---|---|
-| home tour | 집들이 |
-| in stock | 판매중 |
-| low stock | 품절임박 |
-| pyeong | 평 |
-| sold out | 품절 |
+| home-type | 집 유형 |
+| in-stock | 판매중 |
+| low-stock | 품절임박 |
+| posts | 집들이 |
+| price | 가격 |
+| rating | 평점 |
+| sold-out | 품절 |
 | store | 스토어 |
 
 ### Locale: ko (supported)
 
-- All product chrome, filters, and honesty copy are Korean.
-- Prices use 원 with thousands separators from price_krw.
-- Ratings display rating_x10 divided by 10 with one decimal.
+- html lang=ko on every view.
+- Hangul keep-all; body line-height 1.6 to 1.8; display tracking no tighter than -0.01em.
+- Won formatting: 129,000원.
 
 <!-- design-md:section governance -->
 ## 7. Governance
@@ -513,30 +505,25 @@ Record, review, and validate changes before adoption.
 
 ### Project priority details
 
-1. Prompt facts and the dataset outrank visual preference
+1. Prompt facts for routes, stack, disclosure, and required pages
 
-2. Repository files outrank agent proposals
+2. Repository facts from src/data/data.json and provided images
 
-3. Unresolved values stay absent from tokens, copy, and code
+3. This system contract
+
+4. Agent-proposed greenfield tokens where no brand source exists
 
 ### Additional change rules
 
-- Change tokens in the system module first, then pages consume them.
+- Do not invent records, prices, or timestamps.
 
-- Do not add routes, fields, or packages outside package.json.
+- Enum token sets stay bound to values present in the dataset.
 
 ### Decision provenance
 
-- /identity/name — prompt-fact; value: "온집"; evidence: .benchmark/PROMPT.md
-- /identity/kind — agent-proposed-greenfield-decision; value: "project-system"; evidence: .omd/runs/onzip-home/design-system-decision.json
-- /identity/scope — prompt-fact; value: "Korean-language web storefront for the fictional ONZIP home-interior commerce and community service inside this React and Vite workspace."; evidence: .benchmark/PROMPT.md
-- /experience/summary — prompt-fact; value: "온집은 가상의 홈 인테리어 커머스와 집들이 커뮤니티다. 사용자는 샘플 카탈로그를 둘러보고, 카테고리와 재고로 걸러 보고, 상품과 집들이 기록을 서로 조인해 확인한다."; evidence: .benchmark/PROMPT.md, src/data/data.json
-- /foundations/reduced_motion — prompt-fact; value: true; evidence: .benchmark/PROMPT.md
-- /foundations/tokens/color-ink/$value — agent-proposed-greenfield-decision; value: "#2A231C"; evidence: .omd/runs/onzip-home/council/design-system/result.json
-- /foundations/tokens/color-paper/$value — agent-proposed-greenfield-decision; value: "#F3EDE3"; evidence: .omd/runs/onzip-home/council/design-system/result.json
-- /foundations/tokens/color-stock-in/$description — repository-fact; value: "stock_status token for 판매중."; evidence: src/data/data.json, .omd/runs/onzip-home/data-inventory.md
-- /layout_platforms/minimum_width_px — prompt-fact; value: 320; evidence: .benchmark/PROMPT.md
-- /content_locales/locales/0/locale — prompt-fact; value: "ko"; evidence: .benchmark/PROMPT.md, index.html
-- /typography_assets/official-brand-typeface — unresolved; evidence: .omd/runs/onzip-home/data-inventory.md
-- /experience/published-at-field — unresolved; evidence: src/data/data.json, .omd/runs/onzip-home/data-inventory.md
-- /experience/live-stock-quantity — unresolved; evidence: src/data/data.json, .omd/runs/onzip-home/data-inventory.md
+- identity.name — prompt-fact; value: "온집"; evidence: .benchmark/PROMPT.md
+- identity.kind — prompt-fact; value: "project-system"; evidence: .benchmark/PROMPT.md
+- foundations.tokens.color.stock-in.$value — agent-proposed-greenfield-decision; value: "#2c6a4d"; evidence: .omd/runs/onzip-home/council/design-system/result.json
+- unresolved.live-stock-quantity — unresolved; evidence: src/data/data.json, .omd/runs/onzip-home/data-inventory.md
+- unresolved.shipping-estimate — unresolved; evidence: src/data/data.json, .omd/runs/onzip-home/data-inventory.md
+- unresolved.post-published-at — unresolved; evidence: src/data/data.json, .omd/runs/onzip-home/data-inventory.md
