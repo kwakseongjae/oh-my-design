@@ -103,6 +103,66 @@ full-card selected wash and a full accent CTA fill on the same screen.
   on every page. Every internal link resolves. The nav link set is
   identical everywhere with `aria-current` on the active page.
 
+## 5a. Locale typography (the content language picks the rules)
+
+Detect the content language and apply its typography contract; Latin rules
+do NOT transfer.
+
+Korean (ko):
+- Font stacks must COVER Hangul for every role. Body and display:
+  `"Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR",
+  "Malgun Gothic", sans-serif`. NEVER let a Latin serif/display face fall
+  back to a system serif for Hangul — if no Korean display face exists
+  locally, build display hierarchy with WEIGHT (700–800) and size, same
+  gothic family.
+- `word-break: keep-all` on all Korean prose and headings;
+  `overflow-wrap: anywhere` stays on display headings.
+- Body line-height 1.6–1.8 (Hangul needs more than Latin). Display 1.15–1.3.
+- NO tight letter-spacing on Hangul (−0.01em is the floor; the −0.03em Latin
+  display rule does not apply). Numbers/latin fragments inside Korean text
+  may use `font-feature-settings "tnum"` and tighter tracking.
+- Prices and counts: thousands separators, unit after the number (129,000원).
+
+## 5b. UI copy register (user language only)
+
+- Implementation vocabulary NEVER appears in the UI: no file names
+  (data.json), no field/function names (products.length, review_count), no
+  dataset/framework words. Screens speak the user's language.
+- Aggregate definitions are stated in USER terms: "리뷰 많은 순 상위 4개",
+  never "data.json을 내림차순 정렬한 상위 4건".
+- Sample/fiction disclosure is ONE quiet line in the footer (plus detail
+  pages where money is shown). Never a top banner, never repeated per
+  section.
+
+## 5c. SPA fundamentals (route changes behave like pages)
+
+- Every route change scrolls to top (and restores position on back/forward);
+  a detail page must never open mid-scroll.
+- Focus moves to the new page's h1 (or main) on route change.
+- `document.title` updates per page ("상품명 — 서비스명").
+- Below-the-fold images `loading="lazy"`; the LCP image is not.
+
+## 5d. Component anatomy (fill the anatomy, don't improvise a card)
+
+- Card anatomy is a spec, not a suggestion: media block and text block share
+  the SAME width; body padding is one token step; the internal rows
+  (label → title → price → meta → action) use a fixed gap scale
+  (e.g. 4/8/12) — never a uniform gap between all rows, price sits closest
+  to the title, action is separated by the largest step or a rule.
+- List rows: one baseline grid; icons/badges vertically centered to the
+  first text line; consistent right-alignment for numbers.
+- Never mix aligned and unaligned edges in one card (image edge = text
+  edge = action edge).
+
+## 5e. Genre–domain fit (the surface genre must match the product)
+
+- Commerce/catalog: card surfaces with clear boundaries (shadowed tile or
+  bordered card), price hierarchy dominant, generous media. Hairline
+  editorial rules are for reading surfaces, not shop grids.
+- Ops/dashboard: density first — tables, compact rows, status tokens.
+- Editorial/content: rule bands, plates, long-form measure.
+- Choose the genre FROM the domain, then commit (rule in §2 still holds).
+
 ## 6. Self-critique loop (mandatory, one round)
 
 Before declaring the product finished, run ONE fast critique pass and write
@@ -122,3 +182,14 @@ Before declaring the product finished, run ONE fast critique pass and write
 The SELF-WALK (journey verbs) still runs; this critique is about form, the
 SELF-WALK about function. Both fit inside the product budget because they
 are checklists, not rebuilds.
+
+## 7. Render-feedback pass (two-pass quality)
+
+Source-level self-review cannot see typography fallbacks, spacing rhythm,
+or scroll behavior — only a rendered screen can. When an external reviewer
+supplies RENDERED-SCREENSHOT findings for your build (a numbered punch
+list), treat every item as a confirmed defect observed on the real screen:
+fix each one surgically inside the existing system (token/anatomy-level
+changes, not re-architecture), keep all prior contracts intact, and reply
+by listing fix-by-fix what changed. Do not dispute a finding you cannot
+see; the reviewer is looking at the pixels.

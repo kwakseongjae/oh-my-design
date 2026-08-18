@@ -77,3 +77,16 @@ drift) — stages the rehearsal did not cover. dry-check now also runs
 prepare-checkpoint + project adoption + validation against a scratch COPY
 of the project (node_modules/.git excluded), so a passing dry-check
 guarantees the single real activation cannot be burned by any stage.
+
+## Patch 9 refreeze (2026-08-18, ONZIP user verdict rebuild)
+
+User ruled the ONZIP output below shadcn-assembly level; deterministic-gate
+passes were ruled insufficient (Goodhart; source-only self-critique).
+Contract additions: locale typography (Korean gothic stacks with Hangul
+coverage, keep-all, looser leading, no tight tracking on Hangul), UI copy
+register (implementation vocabulary banned on screen; definitions in user
+language; disclosure demoted to footer), SPA fundamentals (route
+scroll/focus/title, lazy images), component anatomy spec (shared edges,
+fixed internal gap scale), genre-domain fit (commerce=cards, ops=density,
+editorial=rules), and a render-feedback pass contract (external reviewer
+screenshot punch lists are confirmed defects to fix surgically).
