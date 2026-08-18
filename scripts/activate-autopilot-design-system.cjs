@@ -119,6 +119,18 @@ function dryCheck(projectArg, runArg) {
     '--out', scratchApproval, '--authority-transition-approved'], ctx.projectRoot, ctx.controller.sha256);
   run(ctx.scripts.compile, [path.join(scratchReview, 'input-graph.json'), '--provenance', path.join(scratchReview, 'provenance.json'),
     '--coverage', path.join(scratchReview, 'coverage.json'), '--review-receipt', scratchApproval, '--out-dir', scratchPackage, '--adopt'], ctx.projectRoot);
+  // Full-transaction rehearsal (e2e gap 2026-08-18): the real activation can
+  // still fail AFTER compile, in adopt/validate (projection structure,
+  // declaration drift). Rehearse those stages against a scratch COPY of the
+  // project so the single real activation cannot be burned by them.
+  const scratchProject = path.join(scratch, 'project-copy');
+  fs.cpSync(ctx.projectRoot, scratchProject, { recursive: true, filter: (src) => !/node_modules|\.git$/.test(src) });
+  const scratchCheckpoint = path.join(scratch, 'project-adoption-checkpoint.json');
+  run(ctx.scripts.adopt, [scratchPackage, '--prepare-checkpoint', scratchCheckpoint, '--reviewer', ctx.controller.value.authority.identifier,
+    '--authority-transition-approved'], ctx.projectRoot, ctx.controller.sha256);
+  run(ctx.scripts.adopt, [scratchPackage, '--project-root', scratchProject, '--checkpoint-receipt', scratchCheckpoint], ctx.projectRoot);
+  const scratchRunDir = path.join(scratchProject, path.relative(ctx.projectRoot, ctx.runDir));
+  run(ctx.scripts.validate, [scratchProject, scratchRunDir], ctx.projectRoot);
   const missing = [];
   for (const reference of evidenceReferencesFromDrafts(ctx.provenance, ctx.coverage)) {
     if (typeof reference !== 'string' || !reference.trim()) { missing.push(`invalid evidence reference: ${JSON.stringify(reference)}`); continue; }

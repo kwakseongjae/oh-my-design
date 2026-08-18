@@ -68,3 +68,12 @@ contracts > ask/scan with permission in guided mode), design-from-data-shape
 rules (entities pick patterns, enums become token sets, KPIs computed with
 stated definitions, API schema as contract with per-endpoint states and
 pagination), data-inventory.md run artifact.
+
+## Dry-check full-transaction rehearsal (2026-08-18, ONZIP e2e finding)
+
+ONZIP e2e attempt 1: dry-check passed but the real activation failed in
+adopt/validate (core-projection heading order, portable_core_structure
+drift) — stages the rehearsal did not cover. dry-check now also runs
+prepare-checkpoint + project adoption + validation against a scratch COPY
+of the project (node_modules/.git excluded), so a passing dry-check
+guarantees the single real activation cannot be burned by any stage.
