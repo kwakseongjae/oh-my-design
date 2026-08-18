@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.1",
+  "kind": "bench-image-preprocess-manifest",
+  "task_id": "wholesale-console",
+  "generator": "grok-build-cli image_gen (grok-imagine)",
+  "fairness": "single shared asset base generated once per task; all arms start from identical assets",
+  "pace_ms": 8000,
+  "generated_at": "2026-08-18T04:54:02.854Z",
+  "items": [
+    {
+      "file": "p-lemons.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 199035,
+      "sha256": "49d781728b7bc70ad54df663e1c4ed9fa897257f5a3582191f11938895e608dc",
+      "prompt": "Product photo of a glass jar of preserved lemons in brine, warm yellow tones, neutral studio background",
+      "style": "clean studio product shot, soft shadow, no readable text"
+    },
+    {
+      "file": "p-tomatoes.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 148536,
+      "sha256": "17b43209cedb70f24b6ad80c8d90e60885ce1d30cc89d28762ae182b71665ddb",
+      "prompt": "Product photo of an unlabeled tin of san marzano tomatoes with one whole tomato beside it, neutral studio background",
+      "style": "clean studio product shot, soft shadow, no readable text"
+    },
+    {
+      "file": "p-honey.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 158706,
+      "sha256": "86232cb21019bb9039e694bb6ef1267eb5922c1593087f65ef9b0a72c5b6d015",
+      "prompt": "Product photo of a small hexagonal jar of wildflower honey with a wooden dipper, neutral studio background",
+      "style": "clean studio product shot, soft shadow, no readable text"
+    },
+    {
+      "file": "p-anchovies.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 255951,
+      "sha256": "0303b8fdc7117142ce92b4d530404973adb0ae9f838305d9fbfc586adf5feccb",
+      "prompt": "Product photo of a small flat tin of anchovy fillets, lid partially open showing fillets, neutral studio background",
+      "style": "clean studio product shot, soft shadow, no readable text"
+    },
+    {
+      "file": "p-vinegar.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 149754,
+      "sha256": "264c4df4391438158fc95fe9077d0d1f04d355885d5775258f3e673fcd5e51c3",
+      "prompt": "Product photo of a slender dark bottle of aged sherry vinegar with a wax seal top, neutral studio background",
+      "style": "clean studio product shot, soft shadow, no readable text"
+    },
+    {
+      "file": "p-polenta.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 234867,
+      "sha256": "06008e1fc3eafc093551b0d827089511d1d1230962cb3432edbc5c5db47866ae",
+      "prompt": "Product photo of a cloth bag of stone-ground yellow polenta with a small bowl of cornmeal, neutral studio background",
+      "style": "clean studio product shot, soft shadow, no readable text"
+    },
+    {
+      "file": "p-capers.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 179023,
+      "sha256": "b6e3e927cd04fbddf7f6bb2a8642b92dd4b6f6ca809c35ed35cc36b8ca805868",
+      "prompt": "Product photo of a small glass jar of salt-packed capers with a few capers scattered in front, neutral studio background",
+      "style": "clean studio product shot, soft shadow, no readable text"
+    }
+  ]
+}

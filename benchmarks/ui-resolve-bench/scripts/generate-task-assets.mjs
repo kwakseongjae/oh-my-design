@@ -80,6 +80,14 @@ function generateOne(item, attempt) {
     if (attempt === 0) { sleep(30000); return generateOne(item, 1); }
     return { file: item.file, ok: false, error: String(error?.message ?? error).slice(0, 300), attempts: attempt + 1 };
   }
+  // Each generation is a fresh grok session; the provider rotates the
+  // refresh token server-side per session. Sync the rotated token back so
+  // the NEXT item starts from a live credential instead of a dead one.
+  try {
+    const isoAuth = readFileSync(join(iso, ".grok/auth.json"));
+    const realAuthPath = join(homedir(), ".grok/auth.json");
+    if (!readFileSync(realAuthPath).equals(isoAuth)) writeFileSync(realAuthPath, isoAuth);
+  } catch { /* auth sync is best-effort */ }
   if (!existsSync(target) || !looksLikeImage(target)) {
     if (attempt === 0) { sleep(30000); return generateOne(item, 1); }
     return { file: item.file, ok: false, error: "target missing or not a valid image after generation", attempts: attempt + 1 };
