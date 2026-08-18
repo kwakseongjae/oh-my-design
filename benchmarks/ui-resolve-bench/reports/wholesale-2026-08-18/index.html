@@ -1,0 +1,45 @@
+<!-- wholesale console comparison -->
+<meta charset="utf-8"><title>제품급 실측 — Terra &amp; Tide 주문 콘솔</title>
+<style>
+body{font:15px/1.6 -apple-system,sans-serif;margin:2rem;max-width:1520px}
+table{border-collapse:collapse;margin:1rem 0;font-size:.88rem}td,th{border:1px solid #ccc;padding:.35rem .7rem;text-align:center}td:first-child{text-align:left}
+.top{background:#e6f4ea;font-weight:700}
+.strip{display:flex;gap:12px;overflow-x:auto;padding:8px 0}
+figure{margin:0;flex:0 0 340px}figcaption{font-size:.82rem;margin-bottom:4px}
+img{width:340px;border:1px solid #ddd;border-radius:6px;display:block}
+.note{background:#fffbe6;border:1px solid #e8d44d;border-radius:8px;padding:.8rem 1.2rem;margin:1rem 0;font-size:.9rem}
+code{background:#eef;padding:1px 5px;border-radius:4px}
+</style>
+<h1>제품급 실측 — Terra &amp; Tide 도매 주문 콘솔 (4페이지 · 공통 데이터셋)</h1>
+<p>grok-4.6 · 30분 균일 · 공통 데이터(주문 34 / 상품 10 / 고객 10, sha 576ad596) + 상품 이미지 10장 · <b>데이터 충실도 감사</b>(기대값을 감사 시점에 데이터셋에서 도출): KPI 집계 일치 · 34행 렌더 · delayed 필터=정확히 4건 · 상세 런타임 조인 · 미지 ID 정직 오류 · 하드코딩 탐지.</p>
+<table><tr><th>arm</th><th>일관성</th><th>데이터 충실도 (6항목)</th><th>고유 결함</th><th>시간</th><th>비용*</th></tr>
+<tr><td>Model only</td><td>PASS</td><td style='font-size:.78rem'>O행수 X필터 O조인 O미지ID O상품 O비복사</td><td style='font-size:.8rem'>delayed 필터 미작동(19≠4)</td><td>9.2분</td><td>$0.92</td></tr>
+<tr><td>UI UX Pro Max</td><td>PASS</td><td style='font-size:.78rem'>O행수 O필터 O조인 O미지ID O상품 O비복사</td><td style='font-size:.8rem'>—</td><td>10.6분</td><td>$1.33</td></tr>
+<tr><td>Hallmark</td><td>FAIL</td><td style='font-size:.78rem'>O행수 O필터 O조인 X미지ID O상품 O비복사</td><td style='font-size:.8rem'>주문총계 KPI 누락 · 미지ID 오류상태 없음 · h1 페이지간 표류</td><td>12.1분</td><td>$1.38</td></tr>
+<tr class="top"><td>OmD Autopilot p7</td><td>PASS</td><td style='font-size:.78rem'>O행수 O필터 O조인 O미지ID O상품 O비복사</td><td style='font-size:.8rem'>— (조인은 수동검증 통과)</td><td>15.8분</td><td>$1.50</td></tr>
+</table><p style='font-size:.8rem;color:#666'>*OpenRouter x-ai/grok-4.6 $2/$6 per M</p>
+<div class="note"><b>공정 판정 기록:</b> "Open cases" KPI는 브리프 정의가 모호해(케이스 합 114 vs 주문 수) 어떤 arm도 기대값을 못 보여줌 — 4 arm 공통 미스로 처리하고 다음 과제 작성 시 하네스 수정 항목으로 기록. OmD 상세 조인은 감사기 로케이터 한계로 자동 실패했으나 수동 검증에서 35링크·전체 조인 확인. OmD는 유일하게 <a href="omd-DESIGN-wholesale.md">DESIGN.md</a> + <a href="omd-critique-wholesale.md">critique.md</a> 동반 산출.</div>
+<h2>오버뷰 (KPI 계산)</h2><div class="strip">
+<figure><figcaption><b>Model only</b> · <a href='products/model-only/index.html'>라이브</a></figcaption><img src='img/01-model--overview.png' loading='lazy' alt='Model only overview'></figure>
+<figure><figcaption><b>UI UX Pro Max</b> · <a href='products/ui-ux-pro-max/index.html'>라이브</a></figcaption><img src='img/02-promax--overview.png' loading='lazy' alt='UI UX Pro Max overview'></figure>
+<figure><figcaption><b>Hallmark</b> · <a href='products/hallmark/index.html'>라이브</a></figcaption><img src='img/03-hallmark--overview.png' loading='lazy' alt='Hallmark overview'></figure>
+<figure><figcaption><b>OmD Autopilot p7</b> · <a href='products/omd-autopilot-v2/index.html'>라이브</a></figcaption><img src='img/04-omd--overview.png' loading='lazy' alt='OmD Autopilot p7 overview'></figure>
+</div>
+<h2>주문 테이블 — delayed 필터 후</h2><div class="strip">
+<figure><figcaption><b>Model only</b> · <a href='products/model-only/orders.html'>라이브</a></figcaption><img src='img/01-model--orders-filtered.png' loading='lazy' alt='Model only orders-filtered'></figure>
+<figure><figcaption><b>UI UX Pro Max</b> · <a href='products/ui-ux-pro-max/orders.html'>라이브</a></figcaption><img src='img/02-promax--orders-filtered.png' loading='lazy' alt='UI UX Pro Max orders-filtered'></figure>
+<figure><figcaption><b>Hallmark</b> · <a href='products/hallmark/orders.html'>라이브</a></figcaption><img src='img/03-hallmark--orders-filtered.png' loading='lazy' alt='Hallmark orders-filtered'></figure>
+<figure><figcaption><b>OmD Autopilot p7</b> · <a href='products/omd-autopilot-v2/orders.html'>라이브</a></figcaption><img src='img/04-omd--orders-filtered.png' loading='lazy' alt='OmD Autopilot p7 orders-filtered'></figure>
+</div>
+<h2>주문 상세 (런타임 조인)</h2><div class="strip">
+<figure><figcaption><b>Model only</b> · <a href='products/model-only/order-detail.html'>라이브</a></figcaption><img src='img/01-model--detail.png' loading='lazy' alt='Model only detail'></figure>
+<figure><figcaption><b>UI UX Pro Max</b> · <a href='products/ui-ux-pro-max/order-detail.html'>라이브</a></figcaption><img src='img/02-promax--detail.png' loading='lazy' alt='UI UX Pro Max detail'></figure>
+<figure><figcaption><b>Hallmark</b> · <a href='products/hallmark/order-detail.html'>라이브</a></figcaption><img src='img/03-hallmark--detail.png' loading='lazy' alt='Hallmark detail'></figure>
+<figure><figcaption><b>OmD Autopilot p7</b> · <a href='products/omd-autopilot-v2/order-detail.html'>라이브</a></figcaption><div style='width:340px;height:180px;display:flex;align-items:center;justify-content:center;background:#f5f5f5;border:1px dashed #bbb;border-radius:6px;color:#888;font-size:.82rem'>캡처 없음</div></figure>
+</div>
+<h2>상품 카탈로그</h2><div class="strip">
+<figure><figcaption><b>Model only</b> · <a href='products/model-only/products.html'>라이브</a></figcaption><img src='img/01-model--products.png' loading='lazy' alt='Model only products'></figure>
+<figure><figcaption><b>UI UX Pro Max</b> · <a href='products/ui-ux-pro-max/products.html'>라이브</a></figcaption><img src='img/02-promax--products.png' loading='lazy' alt='UI UX Pro Max products'></figure>
+<figure><figcaption><b>Hallmark</b> · <a href='products/hallmark/products.html'>라이브</a></figcaption><img src='img/03-hallmark--products.png' loading='lazy' alt='Hallmark products'></figure>
+<figure><figcaption><b>OmD Autopilot p7</b> · <a href='products/omd-autopilot-v2/products.html'>라이브</a></figcaption><img src='img/04-omd--products.png' loading='lazy' alt='OmD Autopilot p7 products'></figure>
+</div>
