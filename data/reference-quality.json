@@ -1,11 +1,11 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-07-22",
+  "generated_at": "2026-08-19",
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 440,
   "counts": {
-    "verified_v2": 141,
-    "partial": 159,
+    "verified_v2": 140,
+    "partial": 160,
     "legacy_snapshot": 140,
     "total": 440
   },
@@ -1335,14 +1335,16 @@
     },
     {
       "id": "figma",
-      "status": "verified_v2",
+      "status": "partial",
       "verified_at": "2026-07-12",
       "next_reverify_at": "2026-08-13",
       "evidence_coverage": 1,
       "surface_count": 3,
       "source_count": 3,
       "conflict_count": 0,
-      "reason_codes": []
+      "reason_codes": [
+        "source_expired"
+      ]
     },
     {
       "id": "finda",

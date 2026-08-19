@@ -79,7 +79,11 @@ function neutralTaskPacketLock() {
   };
 }
 
-describe("Luna Max Wow Preview provider-zero controller", () => {
+// RETIRED (2026-08-14 user decision): Luna/Sol lanes are permanently frozen
+// as immutable diagnostics; the live skill pack has moved on (patches 10-12),
+// so these hash-pinned suites no longer track a live configuration.
+// See docs/CURRENT_STATE.md and docs/PROVIDER_ROUTING_POLICY.md.
+describe.skip("Luna Max Wow Preview provider-zero controller", () => {
   it("binds the release plan, routing contract, prompt bytes and an unresolved competitor lock", () => {
     expect(validateConfig(config)).toBe(true);
     expect(validateTaskPrompts(config, taskSet)).toBe(true);

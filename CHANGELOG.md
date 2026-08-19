@@ -6,9 +6,19 @@ After any release: run `npx oh-my-design-cli@latest`, keep the detected channels
 
 ---
 
-## Unreleased — 1.9.1 candidate
+## 2.0.0 — 2026-08-19
 
-**Natural-language workflow routing, one implementation owner, and same-surface verification for UI delivery.**
+**Design-excellence harness: a design system the model derives from a declared philosophy, floored by a validated preset catalog — measured against rendered screens, not source code. The 2.0 promise: visibly better product than prompt-only or component-kit assembly, portable via DESIGN.md.**
+
+- **Philosophy derivation chain** (`omd:autopilot`): PHILOSOPHY (stance + principles with explicit sacrifices) → decision table (D-ids with rationales) → tokens with D-id back-references → component specs → per-page layout grammar with content back-calculation → build → render critique → DESIGN.md that answers "why this value". Improvised token values are a gate failure (GS7).
+- **Preset catalog v1** — 20 render-verified component/layout specs (fundamentals / commerce / marketplace / editorial: custom APG listbox, product card anatomy, rating distribution, dense listing rows, trust indicator, chat well, magazine well, ranking carousel with linked list, lookbook scroll narrative, and more), each distilled from screens that survived an external render critique. The chain now selects presets and derives token slots instead of improvising from zero (new gate GS8). Measured on the same fixture and brief: first-render defects 7 → 3 (zero P0/P1), input tokens −47%.
+- **Lossless slop-gate port** — numbered gates G1–G56 + system-fidelity gates GS1–GS8, including Korean typography (gothic stacks, keep-all, no serif fallback), `:focus-visible`-only rings with programmatic-heading-focus suppression, custom listbox over native selects, disabled states via tokens (never opacity alone), dark-surface token inversion, and layout-grammar minimum-content rules. Mechanically checkable gates must be grep-verified in the self-critique.
+- **Component craft floor** — 45 production norms distilled and independently re-verified from HIG, Material 3, Carbon, Polaris, Geist, Radix/shadcn, ARIA APG, and WCAG 2.2, covering buttons, inputs, selects, cards, chips, layout wells, and dark/contrast pairs.
+- **Render-feedback pass** — the harness renders real screenshots, an external critique produces a numbered punch list, and the model repairs surgically inside the existing system; self-critique is performed against screens, not source. Release judgment runs on a triple gate (deterministic audit → render critique → human/delegated verdict) recorded in `docs/design-excellence/`.
+- **Screen-inventory gate** (`omd:harness` checkpoint #1): the master digs the complete screen list — including screens the user did not name — into a per-screen table (purpose, key elements, layout grammar, states, preset candidates) that the user approves before any wireframe; unapproved screens are never built.
+- Verified end-to-end on three Korean-market cases (home-interior commerce, secondhand marketplace, fashion editorial) with enriched fixtures (real datasets + 228 generated images), each shipped as an `npm run dev`-ready React app with its DESIGN.md.
+
+**Also in this release (1.9.1 candidate line):** natural-language workflow routing, one implementation owner, and same-surface verification for UI delivery.
 
 - `npx oh-my-design-cli@latest update` now refreshes an existing installation without changing project/global scope, installed channels, Cursor rule-only mode, optional policies, or user-owned files. It refuses fresh-install and unsafe/manual-review cases, never implies `--force`, and runs a post-update doctor check.
 - The new `omd:update` skill lets users ask their coding agent to perform that same fail-closed refresh. The shipped bundle is now 21 product skills for Claude Code, Codex, and OpenCode, and 20 compatible Agent Skills for Cursor.

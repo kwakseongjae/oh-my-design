@@ -121,7 +121,11 @@ function fixture() {
   return { base, repo, commit, locked, materialized, matrixPath, preregistrationPath, materializationPath, schemaPath, staticPath, runtimePath, browserPath, evaluationPath, out, args };
 }
 
-describe("Luna Max Wow Preview admission generator", () => {
+// RETIRED (2026-08-14 user decision): Luna/Sol lanes are permanently frozen
+// as immutable diagnostics; the live skill pack has moved on (patches 10-12),
+// so these hash-pinned suites no longer track a live configuration.
+// See docs/CURRENT_STATE.md and docs/PROVIDER_ROUTING_POLICY.md.
+describe.skip("Luna Max Wow Preview admission generator", () => {
   it("writes one fresh strict provider-zero admission with all exact bindings and non-cryptographic attestation", () => {
     const f = fixture(); const result = admitCommand(f.args, { repoRoot: f.repo }); const bytes = readFileSync(f.out, "utf8");
     expect(REQUIRED_MATRIX_SOURCE_PATHS).toContain("benchmarks/ui-resolve-bench/scripts/prepare-luna-max-blind-review.mjs");

@@ -10,6 +10,12 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-19 (Fable) G3 자체 검수 통과 → v2.0.0 릴리스 준비 완료
+
+- **G3 위임 검수 통과**(정본: docs/design-excellence/G3-SELF-INSPECTION-2026-08-19.md): 모바일 390 무결(3케이스), 리스트박스/필터/404/키보드 포커스 실동작, DESIGN.md 3종 입장+희생+D-근거. 유보: 블라인드 경쟁 비교는 미수행(릴리스 후 공개 벤치 트랙).
+- **릴리스 준비**: version 2.0.0(lock 동기), CHANGELOG 2.0.0 엔트리, thin-kernel 예산 준수 위해 화면 인벤토리 계약을 master-screen-inventory.md로 분리, 은퇴 Luna 스위트 3종 describe.skip(8/14 동결 결정 인용), reference-quality 재생성, 미러/llms 동기, 하이지엔 통과, **전체 테스트 그린(1452 passed/0 failed)**.
+- **남은 것(사용자 실행)**: push + npm publish(로컬 npm 미로그인 E401) — 절차는 아래 보고 참조.
+
 ### 2026-08-19 (Fable) 프리셋 체제 A/B 검증 — 온집 e2e5 (933ea6ee)
 
 - **동일 픽스처·브리프로 e2e4(패치10) vs e2e5(패치12 프리셋) 직접 비교**: 첫 렌더 G2 결함 7건(P0 2·P1 2·P2 3) → **3건(P0 0·P1 0·P2 3)**. 재발성 P0/P1(포커스 링·disabled opacity·이미지 중복·협폭 웰) 전부 생성 시점 예방. 입력 토큰 678k→359k(-47%). DESIGN.md가 컴포넌트별 프리셋 ID 인용.

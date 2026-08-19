@@ -18,25 +18,9 @@ Run phases in order, using parallel specialists only where their ownership does
 not overlap:
 
 1. UX research: 2–3 bounded evidence clusters → `references-cited.md`.
-2. IA/journey + screen inventory: master writes `journey.mmd` AND `screens.md`
-   → mandatory checkpoint #1 shows BOTH and halts.
-
-   `screens.md` is the screen-inventory dig: derive from the brief, the data
-   inventory, and the journeys the COMPLETE screen list the product needs —
-   including screens the user did not name (onboarding, empty/error states,
-   settings, payment/confirmation) when the journeys imply them. One table
-   row per screen:
-
-   | 화면 | 목적(여정 단계) | 핵심 요소 | 레이아웃 문법 | 상태(빈/오류/로딩) | 프리셋 후보 |
-
-   레이아웃 문법은 콘텐츠 역산과 함께(캐러셀 4+/벤토 5+/매거진 4+ — 데이터가
-   못 채우면 보강 계획을 같은 행에). 프리셋 후보 열은 omd-autopilot 프리셋
-   카탈로그(`references/presets/`)가 설치된 채널이면 그 ID로, 아니면 비워 둔다.
-   Checkpoint #1 approval covers the screen list AND each screen's composition;
-   the user may add, remove, rename, or re-scope screens before anything is
-   wireframed. A screen absent from the approved `screens.md` must not be built;
-   adding one later re-enters this checkpoint.
-3. Wireframe: `omd-ui-junior` → `wireframes/` — approved `screens.md` rows only.
+2. IA/journey: `journey.mmd` + `screens.md` per `master-screen-inventory.md`
+   → mandatory checkpoint #1.
+3. Wireframe: `omd-ui-junior` → `wireframes/`, approved rows only.
 4. System: validate `system/{graph,provenance,coverage}.draft.json` with the
    authority-neutral draft contract. Omit `projection`/`projection.sha256`; a
    compiler demanding a placeholder/precomputed/zero SHA must fail closed. The

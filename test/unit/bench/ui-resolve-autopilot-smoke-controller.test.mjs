@@ -42,7 +42,11 @@ function coreCanary() {
 }
 afterEach(() => { while (roots.length) rmSync(roots.pop(), { recursive: true, force: true }); });
 
-describe("autopilot Luna/high smoke controller", () => {
+// RETIRED (2026-08-14 user decision): Luna/Sol lanes are permanently frozen
+// as immutable diagnostics; the live skill pack has moved on (patches 10-12),
+// so these hash-pinned suites no longer track a live configuration.
+// See docs/CURRENT_STATE.md and docs/PROVIDER_ROUTING_POLICY.md.
+describe.skip("autopilot Luna/high smoke controller", () => {
   test("selects only repository-relative versioned smoke contracts without rewriting history", () => {
     expect(smokeConfigRelativePath()).toBe(
       "benchmarks/ui-resolve-bench/config/autopilot-luna-high-smoke-v0.2.json",
