@@ -10,6 +10,11 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-19 (Fable) 프리셋 체제 A/B 검증 — 온집 e2e5 (933ea6ee)
+
+- **동일 픽스처·브리프로 e2e4(패치10) vs e2e5(패치12 프리셋) 직접 비교**: 첫 렌더 G2 결함 7건(P0 2·P1 2·P2 3) → **3건(P0 0·P1 0·P2 3)**. 재발성 P0/P1(포커스 링·disabled opacity·이미지 중복·협폭 웰) 전부 생성 시점 예방. 입력 토큰 678k→359k(-47%). DESIGN.md가 컴포넌트별 프리셋 ID 인용.
+- P2 3건(스크림 불일치·우측 컬럼 여백·2+1 랩) 수정·재렌더 검증 → e2e/onzip을 attempt-5본으로 교체. **G3 판정 대상 = attempt 5.**
+
 ### 2026-08-19 (Fable) 패치 12 — 프리셋 카탈로그 v1 + 화면 인벤토리 게이트 (f7ca7914)
 
 - **프리셋 v1**: `skills/omd-autopilot/references/presets/` — 3케이스 G2 검증 산출물 20개 증류(fundamentals 6·commerce 7·marketplace 5·editorial 3). 유도 사슬 4단계가 "프리셋 선택→토큰 파생"으로 전환, GS8 신설(부합 프리셋 즉흥 제작 금지). grok 프로브 통과(정확한 선택+게이트 근거 no-preset).
