@@ -10,6 +10,16 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-20 (Fable) 사용자 피드백 사이클 — 패딩 계약·프리셋 93·omd book (9e0715f3, 3116ff1b)
+
+- **패딩 결함 근본 대응**: 이웃장터 `.listing-row`가 `padding: space-3 0`(수평 0)인데 hover 배경을 칠해 썸네일이 틴트 밴드에 붙던 결함 → **P-FN-07 "칠해지는 표면의 패딩 해부"** 계약으로 승격(4면 패딩 + 음수 inline 마진 + 디바이더 콘텐츠 폭 인셋 + 라운드). 3케이스 수정·실화면 검증(hover/푸터 촬영). 검증 중 스타일몰 `.footer-meta`의 `max-width:70ch`가 규칙선까지 자르는 별건도 수정.
+- **P-FN-08/09/10 신설**: 브랜드 마크+마스트헤드(인라인 SVG 락업, 워드마크 텍스트=로고 아님), 히어로(지지 요소는 데이터에서 계산되는 정보), 푸터(고지 1줄 스트립=푸터 아님, 브랜드 락업/내비 그룹/메타 줄). 3케이스 전부 반영.
+- **프리셋 카탈로그 v2 = 93개 / 4레이어**: fundamentals 10 · **primitives 35**(shadcn 컴포넌트·변형·Radix 대응·APG 키보드 계약·토큰 슬롯) · genres 43(commerce/marketplace/editorial + onboarding 7·auth 6·checkout 7·dashboard 8) · **flavors 5**(토스·당근·오늘의집·무신사·배민 — 레퍼런스 §절 인용, 없는 건 "레퍼런스에 없음"). 포지셔닝 명문화: shadcn=구조, OmD 프리셋=철학에서의 유도(토큰 슬롯).
+- **omd book 신규 CLI**: `omd book`이 로컬 포트(6060)에서 채택된 시스템 브라우즈 — 토큰 옆 D-ID 근거, 컴포넌트 상태 매트릭스(해당 없음 사유 포함), **대비 실측 vs 선언값 대조**, 프리셋 계보. graph.json 우선·DESIGN.md 폴백, `--static` 핸드오프 HTML. src/cli/book.ts + 테스트 5개.
+- **생성 파이프라인**: `scripts/build-presets-data.mjs` → catalog.json + web/src/data/presets.generated.ts, `gen:presets:check`를 prepublishOnly와 release.yml에 배선. 웹 `/presets` 라우트 + 사이트맵.
+- **부수 수정**: 커밋돼 있던 웹 reference-quality 사본(141/159)이 루트 정본(140/160)과 어긋나 있어 5개 로케일 CLI 문서 수치를 정본에 맞춤.
+- 상태: CLI 1457 통과 / 웹 847 통과 / 타입체크·미러·llms·카운트·카탈로그 무결성 전부 그린. **릴리스 GO 대기.**
+
 ### 2026-08-19 (Fable) G3 자체 검수 통과 → v2.0.0 릴리스 준비 완료
 
 - **G3 위임 검수 통과**(정본: docs/design-excellence/G3-SELF-INSPECTION-2026-08-19.md): 모바일 390 무결(3케이스), 리스트박스/필터/404/키보드 포커스 실동작, DESIGN.md 3종 입장+희생+D-근거. 유보: 블라인드 경쟁 비교는 미수행(릴리스 후 공개 벤치 트랙).
