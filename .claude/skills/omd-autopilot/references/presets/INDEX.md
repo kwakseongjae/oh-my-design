@@ -29,12 +29,14 @@ shadcn/ui·Radix·MUI는 **구조**를 준다. OmD 프리셋은 그 구조를 **
 2. **primitives** (`primitives/*.md`, P-PR-xx) — 컴포넌트 어휘. shadcn/Radix
    대응 매핑과 APG 계약 포함. form / overlay / navigation / display.
 3. **genres** (`genres/*.md`) — 화면 단위 조립: commerce(P-CM) ·
-   marketplace(P-MK) · editorial(P-ED) · onboarding(P-OB) · checkout(P-CK) ·
-   dashboard(P-DB) · auth(P-AU).
+   marketplace(P-MK) · editorial(P-ED) · onboarding(P-OB) · auth(P-AU) ·
+   checkout(P-CK) · dashboard(P-DB). 프리미티브를 조립해 쓰고 중복 정의하지
+   않는다 — 해부에서 `P-PR-01`, `P-FN-01` 처럼 참조한다.
 4. **flavors** (`flavors/*.md`, P-FL-xx) — 레퍼런스 카탈로그(`web/references/`
    440종)에서 유도한 장르-지역 성향 프로파일. 브랜드 사실을 발명하지 않고
-   해당 레퍼런스 DESIGN.md를 인용해 "이 계열은 무엇을 우선하고 무엇을
-   희생하는가"를 토큰 성향으로 번역한다.
+   해당 레퍼런스 DESIGN.md의 절(§)을 인용해 "이 계열은 무엇을 우선하고 무엇을
+   희생하는가"를 토큰 성향으로 번역한다. 레퍼런스에 없는 항목은 "레퍼런스에
+   없음"으로 남기고 관례로 메우지 않는다.
 
 기계 판독본은 `catalog.json`(생성물) — 웹 프리셋 페이지와 `omd book`이 소비한다.
 마크다운이 정본이고 JSON은 투영이다.

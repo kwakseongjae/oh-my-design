@@ -42,27 +42,45 @@ function listMarkdown(dir, group = 'presets') {
   return files;
 }
 
+/** Strip the markdown that only makes sense inside the source file. */
+function clean(text) {
+  return text
+    .replace(/\*\*/g, '')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/\s+/g, ' ')
+    .replace(/\s*\/\s*$/, '')
+    .trim();
+}
+
+/**
+ * Read one `**label** — value` field. Markdown soft-wraps, so the value runs
+ * until the next field, blank line, or block — not just to the end of the line.
+ */
 function fieldFrom(body, label) {
-  const line = body
-    .split('\n')
-    .find((l) => l.startsWith(`**${label}**`) || l.startsWith(`- **${label}**`));
-  if (!line) return undefined;
-  return line
-    .replace(/^-?\s*\*\*[^*]+\*\*\s*(?:—|-|:)?\s*/, '')
-    .trim() || undefined;
+  const lines = body.split('\n');
+  const start = lines.findIndex(
+    (l) => l.startsWith(`**${label}**`) || l.startsWith(`- **${label}**`),
+  );
+  if (start === -1) return undefined;
+
+  const collected = [lines[start].replace(/^-?\s*\*\*[^*]+\*\*\s*(?:—|-|:)?\s*/, '')];
+  for (let i = start + 1; i < lines.length; i += 1) {
+    const line = lines[i];
+    if (!line.trim()) break;
+    if (/^\s*(?:-\s*)?\*\*/.test(line) || line.startsWith('#') || line.startsWith('```')) break;
+    collected.push(line.trim());
+  }
+  return clean(collected.join(' ')) || undefined;
 }
 
 function summaryFrom(body) {
   const explicit = fieldFrom(body, '언제');
-  if (explicit) return explicit;
+  // The template puts "언제" and "언제 아닌가" on one line; the card wants the first half.
+  if (explicit) return clean(explicit.split(/\s*\/\s*언제 아닌가\s*(?:—|-)?\s*/)[0]).slice(0, 400);
   for (const block of body.split('\n\n')) {
     const text = block.trim();
     if (!text || text.startsWith('```') || text.startsWith('|')) continue;
-    return text
-      .replace(/\n/g, ' ')
-      .replace(/\*\*/g, '')
-      .replace(/`([^`]+)`/g, '$1')
-      .slice(0, 400);
+    return clean(text).slice(0, 400);
   }
   return '';
 }

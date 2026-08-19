@@ -1861,7 +1861,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "figma",
-    "status": "verified_v2",
+    "status": "partial",
     "verifiedAt": "2026-07-12",
     "tokensExtractedAt": "2026-07-12",
     "nextReverifyAt": "2026-08-13",
@@ -1873,7 +1873,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 3,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "reasonCodes": [
+      "source_expired"
+    ]
   },
   {
     "id": "finda",
@@ -8063,8 +8065,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 141,
-  "partial": 159,
+  "verified_v2": 140,
+  "partial": 160,
   "legacy_snapshot": 140,
   "total": 440
 } as const;
