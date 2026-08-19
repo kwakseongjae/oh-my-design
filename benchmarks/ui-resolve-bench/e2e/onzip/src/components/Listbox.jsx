@@ -1,12 +1,13 @@
 import { useEffect, useId, useRef, useState } from "react";
 
-export default function Listbox({ label, value, options, onChange }) {
+export default function Listbox({ label, value, options, onChange, disabled = false }) {
   const listId = useId();
   const labelId = useId();
   const triggerRef = useRef(null);
+  const rootRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(value);
-  const selected = options.find((item) => item.id === value) ?? options[0];
+  const selected = options.find((option) => option.id === value) ?? options[0];
 
   useEffect(() => {
     if (open) setActive(value);
@@ -14,13 +15,11 @@ export default function Listbox({ label, value, options, onChange }) {
 
   useEffect(() => {
     if (!open) return undefined;
-    const onDoc = (event) => {
-      if (!triggerRef.current?.parentElement?.contains(event.target)) {
-        setOpen(false);
-      }
+    const onPointer = (event) => {
+      if (!rootRef.current?.contains(event.target)) setOpen(false);
     };
-    document.addEventListener("mousedown", onDoc);
-    return () => document.removeEventListener("mousedown", onDoc);
+    document.addEventListener("mousedown", onPointer);
+    return () => document.removeEventListener("mousedown", onPointer);
   }, [open]);
 
   const commit = (id) => {
@@ -30,13 +29,13 @@ export default function Listbox({ label, value, options, onChange }) {
   };
 
   const move = (delta) => {
-    const index = Math.max(0, options.findIndex((item) => item.id === active));
-    const next = options[(index + delta + options.length) % options.length];
-    setActive(next.id);
+    const index = Math.max(0, options.findIndex((option) => option.id === active));
+    setActive(options[(index + delta + options.length) % options.length].id);
   };
 
   const onTriggerKey = (event) => {
-    if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
+    if (disabled) return;
+    if (["ArrowDown", "Enter", " "].includes(event.key)) {
       event.preventDefault();
       setOpen(true);
     }
@@ -54,7 +53,7 @@ export default function Listbox({ label, value, options, onChange }) {
       setActive(options[0].id);
     } else if (event.key === "End") {
       event.preventDefault();
-      setActive(options[options.length - 1].id);
+      setActive(options.at(-1).id);
     } else if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       commit(active);
@@ -64,16 +63,14 @@ export default function Listbox({ label, value, options, onChange }) {
     } else if (event.key === "Tab") {
       commit(active);
     } else if (event.key.length === 1) {
-      const hit = options.find((item) => item.label.startsWith(event.key));
+      const hit = options.find((option) => option.label.startsWith(event.key));
       if (hit) setActive(hit.id);
     }
   };
 
   return (
-    <div className="listbox">
-      <div id={labelId} className="eyebrow">
-        {label}
-      </div>
+    <div className="listbox" ref={rootRef} data-state={disabled ? "disabled" : open ? "default" : "default"}>
+      <div id={labelId} className="eyebrow">{label}</div>
       <button
         ref={triggerRef}
         type="button"
@@ -82,7 +79,8 @@ export default function Listbox({ label, value, options, onChange }) {
         aria-expanded={open}
         aria-controls={listId}
         aria-labelledby={labelId}
-        onClick={() => setOpen((valueOpen) => !valueOpen)}
+        disabled={disabled}
+        onClick={() => !disabled && setOpen((current) => !current)}
         onKeyDown={open ? onListKey : onTriggerKey}
       >
         <span>{selected.label}</span>
@@ -96,18 +94,18 @@ export default function Listbox({ label, value, options, onChange }) {
           tabIndex={-1}
           aria-activedescendant={`${listId}-${active}`}
         >
-          {options.map((item) => (
+          {options.map((option) => (
             <li
-              key={item.id}
-              id={`${listId}-${item.id}`}
+              key={option.id}
+              id={`${listId}-${option.id}`}
               role="option"
-              aria-selected={item.id === value}
-              data-active={item.id === active}
-              onMouseEnter={() => setActive(item.id)}
+              aria-selected={option.id === value}
+              data-active={option.id === active}
+              onMouseEnter={() => setActive(option.id)}
+              onClick={() => commit(option.id)}
               className="listbox-option"
-              onClick={() => commit(item.id)}
             >
-              {item.label}
+              {option.label}
             </li>
           ))}
         </ul>

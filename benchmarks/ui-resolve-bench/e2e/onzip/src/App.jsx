@@ -1,24 +1,64 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import SiteChrome from "./components/SiteChrome.jsx";
-import HomePage from "./pages/HomePage.jsx";
-import StorePage from "./pages/StorePage.jsx";
-import ProductPage from "./pages/ProductPage.jsx";
-import PostsPage from "./pages/PostsPage.jsx";
-import PostPage from "./pages/PostPage.jsx";
-import NotFoundPage from "./pages/NotFoundPage.jsx";
+import { useEffect, useState } from "react";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import { catalog } from "./lib/catalog.js";
+
+const LINKS = [
+  { to: "/", label: "홈", end: true },
+  { to: "/store", label: "스토어" },
+  { to: "/posts", label: "집들이" },
+];
 
 export default function App() {
+  const location = useLocation();
+  const [collapsed, setCollapsed] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 47.99rem)");
+    const sync = () => {
+      setCollapsed(media.matches);
+      if (!media.matches) setOpen(false);
+    };
+    sync();
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
+  }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
+  const navHidden = collapsed && !open;
+
   return (
-    <SiteChrome>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/store" element={<StorePage />} />
-        <Route path="/store/:id" element={<ProductPage />} />
-        <Route path="/posts" element={<PostsPage />} />
-        <Route path="/posts/:id" element={<PostPage />} />
-        <Route path="/404" element={<NotFoundPage />} />
-        <Route path="*" element={<Navigate to="/404" replace />} />
-      </Routes>
-    </SiteChrome>
+    <div className="shell">
+      <a className="skip-link" href="#main">본문으로 건너뛰기</a>
+      <header className="masthead">
+        <div className="brand-block">
+          <Link className="wordmark" to="/">온집</Link>
+          <p className="tagline">자리가 먼저 보이는 집</p>
+        </div>
+        {collapsed ? (
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-expanded={open}
+            aria-controls="site-nav"
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? "닫기" : "메뉴"}
+          </button>
+        ) : null}
+        <nav id="site-nav" className="site-nav" aria-label="주요" hidden={navHidden}>
+          {LINKS.map((item) => (
+            <NavLink key={item.to} to={item.to} end={item.end}>
+              {item.label}
+            </NavLink>
+          ))}
+        </nav>
+      </header>
+      <Outlet />
+      <footer className="colophon">{catalog.disclosure}</footer>
+    </div>
   );
 }

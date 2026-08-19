@@ -1,42 +1,45 @@
 import { Link } from "react-router-dom";
 import {
-  assetUrl,
+  asset,
   categoryById,
-  formatPrice,
   formatRating,
+  formatWon,
   lifestyleImage,
   stockTone,
 } from "../lib/catalog.js";
 
-export default function ProductCard({ product, headingLevel = "h2" }) {
-  const Heading = headingLevel;
+export default function ProductCard({ product, heading = "h3", cta = "local" }) {
+  const Heading = heading;
   const category = categoryById(product.category_id);
-  const src = assetUrl(lifestyleImage(product));
+  const tone = stockTone(product.stock_status);
+  const src = asset(lifestyleImage(product));
+
   return (
-    <Link className="product-card" to={`/store/${product.id}`} data-cta="local">
-      <div className="media">
-        <img
-          src={src}
-          alt=""
-          width={1280}
-          height={720}
-          loading="lazy"
-        />
-      </div>
+    <Link
+      to={`/store/${product.id}`}
+      className="product-card"
+      data-cta={cta}
+      data-state="default"
+    >
+      <img
+        className="media"
+        src={src}
+        alt=""
+        width="800"
+        height="600"
+        loading="lazy"
+      />
       <div className="card-body">
-        <span className="brand">{product.brand}</span>
-        <Heading className="title">{product.name}</Heading>
-        <span className="price">{formatPrice(product.price_krw)}</span>
+        <p className="eyebrow">{product.brand}</p>
+        <Heading>{product.name}</Heading>
+        <p className="price">{formatWon(product.price_krw)}</p>
         <p className="pitch">{product.short_pitch}</p>
-        <div className="meta">
-          <span className="badge" data-tone={stockTone(product.stock_status)}>
-            {product.stock_status}
-          </span>
+        <p className="meta-row">
+          <span className={`stock stock-${tone}`}>{product.stock_status}</span>
           <span>{category?.name}</span>
-          <span>
-            {formatRating(product.rating_x10)} · 후기 {product.review_count.toLocaleString("ko-KR")}
-          </span>
-        </div>
+          <span>평점 {formatRating(product.rating_x10)}</span>
+          <span>후기 {product.review_count.toLocaleString("ko-KR")}건</span>
+        </p>
       </div>
     </Link>
   );
