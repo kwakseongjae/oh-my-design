@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import BrandLockup from "./components/BrandLockup.jsx";
 import { catalog } from "./lib/catalog.js";
 
 const LINKS = [
@@ -35,7 +36,7 @@ export default function App() {
       <a className="skip-link" href="#main">본문으로 건너뛰기</a>
       <header className="masthead">
         <div className="brand-block">
-          <Link className="wordmark" to="/">온집</Link>
+          <BrandLockup />
           <p className="tagline">자리가 먼저 보이는 집</p>
         </div>
         {collapsed ? (
@@ -58,7 +59,27 @@ export default function App() {
         </nav>
       </header>
       <Outlet />
-      <footer className="colophon">{catalog.disclosure}</footer>
+      <footer className="site-footer">
+        <div className="footer-main">
+          <div className="footer-brand">
+            <BrandLockup />
+            <p className="footer-positioning">자리가 먼저 보이는 집</p>
+          </div>
+          <nav className="footer-nav" aria-label="푸터">
+            <div className="footer-group">
+              <p className="eyebrow">둘러보기</p>
+              <ul>
+                {LINKS.map((item) => (
+                  <li key={item.to}>
+                    <Link to={item.to}>{item.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <p className="footer-meta">{catalog.disclosure}</p>
+      </footer>
     </div>
   );
 }

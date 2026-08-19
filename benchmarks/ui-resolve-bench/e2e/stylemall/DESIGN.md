@@ -35,7 +35,7 @@ Photography occupies the field and chrome recedes. An edit shop names the house 
 
 - P3 Brand sits above the garment: sacrifice product-name-first marketplace cards; the house is the first line because this is an edit shop.
 
-- Home grammar: visual-heavy field — full-bleed curation banners, internal ranking carousel of five with a synchronized 1–5 list (D-P1-7), lookbook cover preview, featured houses. Wide viewports add image columns.
+- Home grammar: visual-heavy field — full-bleed curation banners, internal ranking carousel of five with a synchronized 1–5 list (D-P1-7), lookbook cover preview, featured houses. Wide viewports add image columns. Hero copy is eyebrow → display → lede → one action → a supporting cluster computed from catalog counts and the current curation's garments (D-P1-10).
 
 - Products grammar: filterable catalog grid, 2/3/4 columns, custom sort listbox, distinct empty-filter surface. Clear-filters is ghost and appears only when filters or sort leave the default.
 
@@ -63,9 +63,19 @@ Photography occupies the field and chrome recedes. An edit shop names the house 
 
 - D-P1-8 Lookbook narrative uses a centered ~960px image well (well-look); cut captions and join cards share that well; a single joined garment uses a horizontal media card.
 
+- D-P1-9 Painted interactive rows (ranking list, listbox option, hero support list) use four-side space-3 padding, negative inline margin to keep well alignment, radius-control, and inset hairline dividers that hide on the painted state. Ink plates stay radius-none (D-P1-1). Horizontal join cards and lookbook back-references inset media by the same padding step; grid product cards keep full-bleed media as an explicit C26 decision.
+
+- D-P1-10 Hero supporting cluster is catalog-computed copy (garment, house, and lookbook counts) plus the current curation's garments. It is not a decorative image. Fold padding: bottom at least 1.3 times top.
+
+- D-P1-11 Footer is lockup plus positioning, two nav groups reverse-engineered from actual routes (shopping, lookbooks), and one meta disclosure line. Asymmetric: brand column wider. Inverse token pairs only.
+
+- D-P1-12 color-inverse-tile is one step lighter than color-inverse so dark hover paint has a named pair (C40).
+
 - D-P2-1 Sale price is the largest number, original is struck, rate is a small accent label; the rate never outranks the price.
 
 - D-P3-1 Card text is brand label, then name, then price. Ranking is a small overlay numeral, not a ribbon.
+
+- D-P3-2 Brand mark is a 24-grid shop-window frame with an inner plate set low: the house names the field, the photograph occupies it. The mark locks up with the wordmark at Hangul square height.
 
 ### Avoid
 
@@ -96,6 +106,7 @@ Photography occupies the field and chrome recedes. An edit shop names the house 
 - **color-inverse**: `#241f1b` — Dark footer and inverted bands. Dark sections flip text tokens. G41.
 - **color-inverse-ink**: `#f4f0ea` — Ink on inverse surfaces.
 - **color-inverse-muted**: `#c4b9ab` — Muted ink on inverse surfaces.
+- **color-inverse-tile**: `#322c27` — One-step lift on inverse for painted hover. C40 D-P1-12.
 - **color-line**: `#d9d2c8` — Hairline on ink plates. D-P1-1.
 - **color-paper**: `#f4f0ea` — Warm paper field. D-P1-2. Not #ffffff.
 - **color-tile**: `#faf7f3` — Slightly lifted plate inside paper. D-P1-1.
@@ -116,6 +127,7 @@ Photography occupies the field and chrome recedes. An edit shop names the house 
 - **size-display**: `clamp(2.05rem, 4vw, 3.25rem)` — Display at least 2 times body. D-P1-3.
 - **size-label**: `0.75rem` — Brand and meta label. D-P3-1.
 - **size-touch**: `44px` — Minimum hit target. C2.
+- **size-mark**: `24px` — Brand mark grid. Displayed at 1em of the wordmark so it matches Hangul square height. D-P3-2.
 - **space-1**: `4px` — Tightest internal gap, price sits this close to the title. D-P3-1.
 - **space-2**: `8px` — Icon-text and card row gap. C6.
 - **space-3**: `12px` — Card body padding step.
@@ -144,6 +156,8 @@ Photography occupies the field and chrome recedes. An edit shop names the house 
 - color-accent-ink on color-accent: minimum 4.5:1
 - color-inverse-ink on color-inverse: minimum 4.5:1
 - color-inverse-muted on color-inverse: minimum 4.5:1
+- color-inverse-ink on color-inverse-tile: minimum 4.5:1
+- color-inverse-muted on color-inverse-tile: minimum 4.5:1
 - color-disabled on color-paper: minimum 3:1
 - color-focus on color-paper: minimum 3:1
 
@@ -201,10 +215,11 @@ Required.
 
 **Semantics:** Single site navigation. Current route uses aria-current=page. Mobile uses a disclosure button. No chrome primary CTA.
 
-- Anatomy: skip link, wordmark, primary links, mobile disclosure
+- Anatomy: skip link, mark+wordmark lockup, tagline, primary links, mobile disclosure
 - Variants: wide, collapsed
 - States: default, hover, focus-visible, current
-- Token references: color-paper, color-ink, color-focus, size-touch, font-family-hangul
+- Token references: color-paper, color-ink, color-tile, color-tile-hover, color-focus, size-touch, size-mark, font-family-hangul
+- Current page uses weight plus tile fill, never a decorative underline. D-P3-2.
 
 - Interaction kind: interactive
 
@@ -444,15 +459,27 @@ Required.
 
 ### Component: footer-colophon
 
-**Semantics:** One quiet sample-data disclosure line. Inverse tokens on the dark footer.
+**Semantics:** Inverse footer: brand lockup plus positioning, two nav groups derived from real routes, and one sample-data disclosure on the meta line. Not a four-column strip. D-P1-11.
 
-- Anatomy: disclosure line
+- Anatomy: mark+wordmark lockup, positioning line, shopping group, lookbook group, meta disclosure
 - Variants: site
-- States: default
-- Token references: color-inverse, color-inverse-ink, color-inverse-muted
+- States: default, hover, focus-visible
+- Token references: color-inverse, color-inverse-ink, color-inverse-muted, color-inverse-tile, size-touch, size-mark
 
-- Interaction kind: non-interactive
-- Interaction reason: Footer honesty line is not a control.
+- Interaction kind: interactive
+- Interaction reason: Footer contains navigation links. The disclosure line itself is not a control.
+
+#### State applicability
+
+| State | Applicability | Reason |
+|---|---|---|
+| default | applicable |  |
+| hover | applicable | Nav links change to inverse-tile. |
+| focus-visible | applicable |  |
+| disabled | not-applicable | Footer routes stay available. |
+| loading | not-applicable | Routing is local. |
+| error | not-applicable | Footer has no validation contract. |
+| success | not-applicable | Navigation is not a success state. |
 
 ### Rules
 
@@ -509,7 +536,7 @@ Required.
 
 - Name actions with the shop's verbs: 상품 보기, 사이즈 선택, 정렬, 일시정지.
 
-- One footer disclosure that the catalog is a fictional sample. Repeat near money on the detail page.
+- One footer disclosure that the catalog is a fictional sample. It lives only on the footer meta line.
 
 ### Terminology
 
@@ -589,3 +616,10 @@ Record, review, and validate changes before adoption.
 - foundations.tokens.color-accent.$value — agent-proposed-greenfield-decision; value: "#9a3a2a"; evidence: .omd/runs/stylemall/council/design-system/result.json
 - layout_platforms.minimum_width_px — prompt-fact; value: 320; evidence: .agents/skills/omd-autopilot/references/visual-quality-contract.md
 - content_locales.locales.0.locale — prompt-fact; value: "ko"; evidence: .benchmark/PROMPT.md, src/data/data.json
+- D-P3-2 — agent-proposed-greenfield-decision; value: "shop-window frame with inner plate set low"; evidence: product philosophy P1/P3, P-FN-08
+- D-P1-9 — agent-proposed-greenfield-decision; value: "four-side space-3 padding on painted rows; full-bleed grid cards"; evidence: P-FN-07, C26, D-P1-1
+- D-P1-10 — agent-proposed-greenfield-decision; value: "hero support from catalog counts and current curation"; evidence: P-FN-09
+- D-P1-11 — agent-proposed-greenfield-decision; value: "asymmetric footer: lockup + shopping + lookbooks + meta disclosure"; evidence: P-FN-10
+- D-P1-12 — agent-proposed-greenfield-decision; value: "#322c27"; evidence: C40, G41, P-FN-07 dark hover
+- foundations.tokens.color-inverse-tile.$value — agent-proposed-greenfield-decision; value: "#322c27"; evidence: D-P1-12
+- foundations.tokens.size-mark.$value — agent-proposed-greenfield-decision; value: "24px"; evidence: D-P3-2, P-FN-08

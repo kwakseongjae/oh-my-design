@@ -6,6 +6,7 @@ import { NeighborhoodSelect } from "../components/NeighborhoodSelect.jsx";
 import {
   categoryById,
   filterListings,
+  listingStatusCounts,
   neighborhoodById,
   neighborhoodListingCounts,
   service,
@@ -19,6 +20,7 @@ export function HomePage() {
   const neighborhoodName = neighborhoodId === "all" ? "모든 동네" : neighborhoodById(neighborhoodId)?.name ?? "목록에 없는 동네";
   const categoryName = categoryId === "all" ? "전체 카테고리" : categoryById(categoryId)?.name ?? "목록에 없는 종류";
   const neighborhoodCounts = neighborhoodListingCounts();
+  const statusCounts = listingStatusCounts();
 
   useEffect(() => {
     document.title = `${service.name} — ${service.tagline}`;
@@ -46,12 +48,15 @@ export function HomePage() {
         </div>
         <aside className="nb-summary" aria-label="동네별 매물 수">
           <p className="eyebrow">동네별 매물</p>
+          <p className="nb-summary-lede">
+            지금 {statusCounts.total.toLocaleString("ko-KR")}건 · 판매중 {statusCounts.selling.toLocaleString("ko-KR")} · 예약중 {statusCounts.reserved.toLocaleString("ko-KR")} · 거래완료 {statusCounts.sold.toLocaleString("ko-KR")}
+          </p>
           <ul className="nb-summary-list">
             {neighborhoodCounts.map((neighborhood) => (
               <li key={neighborhood.id}>
-                <Link className="nb-chip" to={`/?nb=${neighborhood.id}`} data-cta="local">
+                <Link className="nb-row" to={`/?nb=${neighborhood.id}`} data-cta="local">
                   <span>{neighborhood.name}</span>
-                  <span className="nb-chip-count">{neighborhood.count.toLocaleString("ko-KR")}건</span>
+                  <span className="nb-row-count">{neighborhood.count.toLocaleString("ko-KR")}건</span>
                 </Link>
               </li>
             ))}

@@ -27,6 +27,7 @@ export const theme = {
     gutter: "clamp(1rem, 4vw, 2.5rem)",
   },
   radius: { card: "12px", control: "8px", pill: "999px" },
+  size: { mark: "24px", hit: "44px" },
   motion: {
     fast: "120ms",
     base: "200ms",

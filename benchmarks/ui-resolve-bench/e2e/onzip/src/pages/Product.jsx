@@ -121,7 +121,7 @@ export default function Product() {
               <Link className="btn btn-ghost" to="/posts" data-cta="local">집들이 둘러보기</Link>
             </div>
           ) : (
-            <div className={posts.length < 3 ? "" : "card-grid cols-3"}>
+            <div className={posts.length < 3 ? "row-stack" : "card-grid cols-3"}>
               {posts.map((post) => (
                 <Link key={post.id} to={`/posts/${post.id}`} className="post-card post-row" data-cta="local">
                   <img

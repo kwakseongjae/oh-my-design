@@ -45,6 +45,16 @@ file may be recognized as structural Core while failing the stronger Portable
 Core usefulness gate, for example when no primary task is evidenced. Unknown
 values stay absent instead of becoming plausible defaults.
 
+Browse the adopted system on a local port — tokens with the decision that
+produced them, component state matrices including the states that deliberately
+do not apply, contrast measured against the pairs the system promised, and the
+preset lineage:
+
+```bash
+npx oh-my-design-cli@latest book              # serves on :6060, re-reads on refresh
+npx oh-my-design-cli@latest book --static ./out   # standalone HTML for handoff
+```
+
 Inspect or stage a legacy migration without overwriting the source:
 
 ```bash

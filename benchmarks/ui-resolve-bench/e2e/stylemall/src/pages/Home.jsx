@@ -4,6 +4,7 @@ import { RankingCarousel } from "../components/RankingCarousel.jsx";
 import { ProductCard } from "../components/ProductCard.jsx";
 import {
   assetSrc,
+  brandById,
   catalog,
   imageSize,
   productById,
@@ -11,6 +12,7 @@ import {
 
 export function HomePage() {
   const [first, second] = catalog.curations;
+  const curationProducts = first.product_ids.map(productById).filter(Boolean);
 
   useEffect(() => {
     document.title = `${catalog.service.name} — ${catalog.service.tagline}`;
@@ -28,14 +30,34 @@ export function HomePage() {
           />
         </figure>
         <div className="hero-copy">
-          <p className="eyebrow">기획전 · {first.ends_in_days}일 남음</p>
-          <h1>{catalog.service.tagline}</h1>
-          <p className="lede">
-            {first.title}. {first.subtitle}
-          </p>
-          <Link className="btn" to="/products" data-cta="primary">
-            상품 보기
-          </Link>
+          <div className="hero-copy-main">
+            <p className="eyebrow">기획전 · {first.ends_in_days}일 남음</p>
+            <h1>{catalog.service.tagline}</h1>
+            <p className="lede">
+              {first.title}. {first.subtitle}
+            </p>
+            <Link className="btn" to="/products" data-cta="primary">
+              상품 보기
+            </Link>
+          </div>
+          <aside className="hero-support">
+            <p className="hero-support-lede">
+              이 기획전에 옷 {curationProducts.length}벌. 지금은 집 {catalog.brands.length}곳, 룩북 {catalog.lookbooks.length}편, 옷 {catalog.products.length}벌을 싣고 있습니다.
+            </p>
+            <ol className="hero-support-list">
+              {curationProducts.map((product) => {
+                const brand = brandById(product.brand_id);
+                return (
+                  <li key={product.id}>
+                    <Link to={`/products/${product.id}`} data-cta="local">
+                      <span className="card-brand">{brand?.name ?? product.brand_id}</span>
+                      <span className="hero-support-name">{product.name}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ol>
+          </aside>
         </div>
       </section>
 

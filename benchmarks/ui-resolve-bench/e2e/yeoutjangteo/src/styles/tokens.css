@@ -12,6 +12,9 @@
   --color-status-sold: #6a6358;
   --color-inverse-paper: #241f18;
   --color-inverse-ink: #f3eee4;
+  --color-inverse-ink-muted: #948c7e;
+  --color-inverse-inset: #3a342c;
+  --color-inverse-rule: #746c60;
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -24,10 +27,12 @@
   --space-gutter: clamp(16px, 4vw, 40px);
   --radius-none: 0px;
   --radius-thumb: 4px;
+  --radius-row: 4px;
   --radius-pill: 999px;
   --size-thumb: 72px;
-  --size-row-min: 88px;
+  --size-row-min: calc(var(--size-thumb) + var(--space-3) * 2);
   --size-hit: 44px;
+  --size-masthead: 4.5rem;
   --type-family: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
   --type-display: clamp(2rem, 1.6rem + 1.2vw, 2.75rem);
   --type-body: 1rem;

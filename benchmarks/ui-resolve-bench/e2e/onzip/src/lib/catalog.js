@@ -111,3 +111,12 @@ export const SORT_OPTIONS = [
   { id: "price-asc", label: "낮은 가격 순" },
   { id: "rating-desc", label: "높은 평점 순" },
 ];
+
+export function catalogSnapshot() {
+  return {
+    products: data.products.length,
+    inStock: data.products.filter((item) => item.stock_status === "판매중").length,
+    posts: data.posts.length,
+    reviews: data.reviews.length,
+  };
+}

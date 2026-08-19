@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { service } from "../lib/catalog.js";
+import { BrandLockup } from "./BrandLockup.jsx";
 
 export function AppShell() {
   const location = useLocation();
@@ -22,9 +23,10 @@ export function AppShell() {
       </a>
       <header className="app-header">
         <div className="app-header-inner">
-          <Link className="wordmark" to="/">
-            {service.name}
-          </Link>
+          <div className="brand-cluster">
+            <BrandLockup />
+            <p className="brand-tagline">{service.tagline}</p>
+          </div>
           <nav className="app-nav" aria-label="주요">
             <NavLink to="/" end>
               홈
@@ -34,7 +36,28 @@ export function AppShell() {
         </div>
       </header>
       <Outlet />
-      <footer className="app-footer">{service.disclosure}</footer>
+      <footer className="app-footer">
+        <div className="footer-main">
+          <div className="footer-brand">
+            <BrandLockup />
+            <p className="footer-positioning">{service.tagline}</p>
+          </div>
+          <nav className="footer-nav" aria-label="장터 안내">
+            <div className="footer-group">
+              <p className="footer-group-label">장터</p>
+              <ul>
+                <li>
+                  <Link to="/">홈</Link>
+                </li>
+                <li>
+                  <Link to="/free">나눔</Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <p className="footer-meta">{service.disclosure}</p>
+      </footer>
     </>
   );
 }

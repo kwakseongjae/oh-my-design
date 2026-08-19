@@ -25,7 +25,7 @@
 
 ### Design direction
 
-- P1 Lived room first — lifestyle cuts and housewarmings precede studio SKUs; sacrifice comparison density and cart urgency. D-P1-1 through D-P1-5.
+- P1 Lived room first — lifestyle cuts and housewarmings precede studio SKUs; sacrifice comparison density and cart urgency. D-P1-1 through D-P1-6.
 
 - P2 Quiet paper shop — warm linen paper, hairline rest, shallow tile hover, terracotta signal under 5 percent of the viewport; sacrifice sale-red and gradient heroes. D-P2-1 through D-P2-9.
 
@@ -35,7 +35,7 @@
 
 ### Principles
 
-- Lived room first: lifestyle image and one-line pitch lead every product card (D-P1-1). Studio cuts wait for the detail gallery.
+- Lived room first: lifestyle image and one-line pitch lead every product card (D-P1-1). Studio cuts wait for the detail gallery. The brand mark is a window frame with a floor line: the empty pane is the room you choose before the furniture (D-P1-6).
 
 - Wide viewports gain columns, not empty paper. Home is a nine-cell bento; product detail is a two-pane information split; only the magazine well centers (D-P1-2, D-P1-5).
 
@@ -96,6 +96,8 @@
 - **radius.card**: `12px` — Media tile only. D-P2-1.
 - **radius.control**: `8px` — Buttons, listbox, chips. D-P2-2.
 - **radius.pill**: `999px` — Selected filter chip. D-P2-2.
+- **size.hit**: `44px` — Minimum hit for lockup, nav, footer links, and controls. D-P2-10.
+- **size.mark**: `24px` — Brand mark grid. Optical height matches wordmark cap-height. D-P1-6, D-P2-10.
 - **space.1**: `4px` — Control micro-gap. D-P2-9. 4pt base.
 - **space.2**: `8px` — In-card tight row. D-P2-9. Price sits this close to the title.
 - **space.3**: `12px` — In-card default row. D-P2-9.
@@ -131,7 +133,7 @@ Required.
 
 ### Foundation rules
 
-- Every component reads var(--color-*), var(--space-*), var(--radius-*), var(--motion-*). Inline hex outside the token file is a defect.
+- Every component reads var(--color-*), var(--space-*), var(--radius-*), var(--motion-*), var(--size-*). Inline hex outside the token file is a defect.
 
 - Animate only transform and opacity. Every motion pair cites a duration and easing token and collapses under prefers-reduced-motion (D-P2-6).
 
@@ -175,6 +177,29 @@ Required.
 <!-- design-md:section components-states -->
 ## 4. Components & States
 
+### Component: brand-lockup
+
+**Semantics:** P-FN-08. Mark plus wordmark is the smallest identity unit. Mark is a 24×24 window frame with a floor line, currentColor, aria-hidden. The empty pane is the lived room — 자리를 먼저 고른다 (D-P1-6). Home link hit ≥44px.
+
+- Anatomy: inline SVG mark, wordmark text
+- Variants: masthead, footer
+- States: default, hover, focus-visible
+- Token references: size.mark, size.hit, color.ink, space.2
+
+- Interaction kind: interactive
+
+#### State applicability
+
+| State | Applicability | Reason |
+|---|---|---|
+| default | applicable |  |
+| hover | applicable |  |
+| focus-visible | applicable |  |
+| disabled | not-applicable | The home lockup stays available on every route. |
+| loading | not-applicable | Identity chrome does not wait on a network fetch. |
+| error | not-applicable | Broken destinations are handled by the page error region, not the lockup. |
+| success | not-applicable | Current route uses aria-current on nav, not a success state on the lockup. |
+
 ### Component: skip-link
 
 **Semantics:** First focusable control. Moves keyboard focus to #main, never to the primary CTA.
@@ -202,10 +227,10 @@ Required.
 
 **Semantics:** Single navigation landmark, identical on every route, aria-current on the active destination. Mobile uses a disclosure button, not a separate app shell.
 
-- Anatomy: wordmark, primary links, mobile disclosure
+- Anatomy: brand lockup (mark + wordmark), tagline, primary links, mobile disclosure
 - Variants: desktop-inline, mobile-disclosure
 - States: default, hover, focus-visible
-- Token references: color.ink, color.paper, type.family, space.gutter
+- Token references: color.ink, color.paper, type.family, space.gutter, size.mark, size.hit
 
 - Interaction kind: interactive
 
@@ -292,12 +317,12 @@ Required.
 
 ### Component: product-card
 
-**Semantics:** P-CM-01. Lifestyle cut and one-line pitch required. Price is the heaviest text. Whole-card link, no inner competing CTA. Anatomy order is fixed.
+**Semantics:** P-CM-01. Lifestyle cut and one-line pitch required. Price is the heaviest text. Whole-card link, no inner competing CTA. Anatomy order is fixed. Painted hover uses four-sided space.4 so the lifestyle cut does not touch the tinted edge (P-FN-07).
 
 - Anatomy: lifestyle media, brand eyebrow, name, price, short pitch, meta row
 - Variants: grid, join
 - States: default, hover, focus-visible
-- Token references: radius.card, space.4, color.paper, elevation.rest, elevation.hover, color.stock-in, color.stock-low, color.stock-out
+- Token references: radius.card, radius.control, space.4, space.3, space.2, color.paper, elevation.rest, elevation.hover, color.stock-in, color.stock-low, color.stock-out
 
 - Interaction kind: interactive
 
@@ -320,7 +345,7 @@ Required.
 - Anatomy: cover, home-type eyebrow, title, summary, meta
 - Variants: bento, index-row
 - States: default, hover, focus-visible
-- Token references: radius.card, color.ink, space.3, elevation.rest
+- Token references: radius.card, radius.control, color.ink, space.3, space.4, elevation.rest, elevation.hover
 
 - Interaction kind: interactive
 
@@ -459,16 +484,16 @@ Required.
 - Interaction kind: non-interactive
 - Interaction reason: Honest absence copy, not an operable control.
 
-### Component: footer-colophon
+### Component: site-footer
 
-**Semantics:** Single sample-data disclosure from the dataset, one quiet line, identical on every page.
+**Semantics:** P-FN-10. Brand lockup plus one-line positioning, one nav group reverse-engineered from the three real routes, then a meta line for the sample disclosure. Not a one-line strip. Not four equal columns. Paper surface; muted-on-paper for the meta line, measured ≥4.5:1. Links hit ≥44px. Disclosure lives only here.
 
-- Anatomy: disclosure sentence
+- Anatomy: lockup, positioning line, nav group (둘러보기), meta disclosure
 - States: default
-- Token references: color.muted, space.6
+- Token references: color.paper, color.ink, color.muted, color.rule, size.hit, space.7
 
 - Interaction kind: non-interactive
-- Interaction reason: Colophon text only.
+- Interaction reason: Landmark region. Links inside are route navigation.
 
 ### Rules
 
@@ -478,7 +503,9 @@ Required.
 
 - Never hide focusable descendants with aria-hidden alone.
 
-- Presets: P-CM-01/02/03/04/05/07, P-FN-01/02/03/04/05/06, P-ED-01. Anatomy order is frozen unless a new D-ID is added.
+- Presets: P-CM-01/02/03/04/05/07, P-FN-01/02/03/04/05/06/07/08/09/10, P-ED-01. Anatomy order is frozen unless a new D-ID is added.
+
+- Painted surfaces (hover, selected, active) take equal-step padding on all four sides. Media does not touch the painted edge. P-FN-07.
 
 <!-- design-md:section layout-platforms -->
 ## 5. Layout & Platforms
@@ -489,6 +516,8 @@ Required.
 - Reflow target: 200% zoom
 
 ### Layout rules
+
+- Home P-FN-09 hero then P-CM-07 bento. Hero is eyebrow → display → lede → one store action → computed catalog counts. Wide viewports split copy and counts so the right side is not empty. Bottom padding is 1.3× top (space.7). D-P1-2, D-P1-5.
 
 - Home P-CM-07: 12-column bento. Curation tiles 7 and 5. Popular products four equal columns. Latest housewarmings three horizontal cards. Authored 1/2/3/4 column breakpoints, never auto-fit. D-P1-2, D-P1-5.
 
@@ -578,6 +607,13 @@ Record, review, and validate changes before adoption.
 
 3. Unknown values stay absent at the smallest boundary. Do not fill official brand colors or webfont files.
 
+### Decision table
+
+| ID | Decision | Why |
+|---|---|---|
+| D-P1-6 | Brand mark is a 24×24 window frame with a floor line, currentColor, aria-hidden. | Onzip chooses the room before the object. The empty pane is that room; the sill is the floor you step onto. Not a house glyph, not a chair. |
+| D-P2-10 | size.mark 24px and size.hit 44px. | P-FN-08 grid plus C28 hit, named so lockup, nav, and footer share them instead of repeating literals. |
+
 ### Additional change rules
 
 - Add a D-ID to the decision table before adding a token or breaking a preset anatomy.
@@ -604,3 +640,5 @@ Record, review, and validate changes before adoption.
 - /content_locales/locales — prompt-fact; evidence: .benchmark/PROMPT.md, src/data/data.json
 - /governance/unknown_policy — prompt-fact; evidence: .benchmark/PROMPT.md
 - /foundations/tokens/color.brand-official — unresolved; evidence: .omd/runs/onzip-home/derivation.md
+- /foundations/tokens/size.mark — agent-proposed-greenfield-decision; evidence: P-FN-08, D-P1-6
+- /foundations/tokens/size.hit — agent-proposed-greenfield-decision; evidence: P-FN-08, D-P2-10, C28

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { catalog } from "../lib/catalog.js";
+import { BrandMark } from "./BrandMark.jsx";
 
 const LINKS = [
   { to: "/", label: "홈", end: true },
@@ -31,9 +32,13 @@ export function AppShell() {
       </a>
       <header className="site-header">
         <div className="nav-wrap">
-          <Link className="site-brand" to="/">
-            {catalog.service.name}
-          </Link>
+          <div className="masthead-brand">
+            <Link className="site-brand" to="/">
+              <BrandMark />
+              <span className="site-wordmark">{catalog.service.name}</span>
+            </Link>
+            <p className="masthead-tagline">{catalog.service.tagline}</p>
+          </div>
           <button
             type="button"
             className="nav-toggle"
@@ -63,7 +68,39 @@ export function AppShell() {
       </header>
       <Outlet />
       <footer className="site-footer">
-        <p>{catalog.service.disclosure}</p>
+        <div className="footer-inner">
+          <div className="footer-brand">
+            <Link className="site-brand site-brand-footer" to="/">
+              <BrandMark />
+              <span className="site-wordmark">{catalog.service.name}</span>
+            </Link>
+            <p className="footer-positioning">{catalog.service.tagline}</p>
+          </div>
+          <nav className="footer-nav" aria-label="하단">
+            <div className="footer-group">
+              <p className="footer-label">쇼핑</p>
+              <ul>
+                <li>
+                  <Link to="/">홈</Link>
+                </li>
+                <li>
+                  <Link to="/products">상품</Link>
+                </li>
+              </ul>
+            </div>
+            <div className="footer-group">
+              <p className="footer-label">룩북</p>
+              <ul>
+                {catalog.lookbooks.map((look) => (
+                  <li key={look.id}>
+                    <Link to={`/lookbooks/${look.id}`}>{look.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <p className="footer-meta">{catalog.service.disclosure}</p>
       </footer>
     </>
   );

@@ -92,6 +92,9 @@ jobs:
       - name: Verify committed public LLM artifacts
         run: npm run gen:llms-full:check
 
+      - name: Verify generated preset catalog
+        run: npm run gen:presets:check
+
       - name: Install web quality dependencies
         run: npm ci
         working-directory: web

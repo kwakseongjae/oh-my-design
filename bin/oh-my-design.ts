@@ -150,6 +150,24 @@ program
     if (code !== 0) process.exit(code);
   });
 
+program
+  .command('book')
+  .description("Browse this project's adopted design system on a local port — tokens with the decision that produced them, component state matrices, measured contrast, and preset lineage.")
+  .option('--dir <path>', 'Project root (defaults to cwd)')
+  .option('--port <number>', 'Port to serve on (auto-increments if busy)', '6060')
+  .option('--static <dir>', 'Write a standalone HTML file to this directory instead of serving')
+  .option('--open', 'Open the book in the default browser')
+  .action(async (opts: { dir?: string; port?: string; static?: string; open?: boolean }) => {
+    const { runBook } = await import('../src/cli/book.js');
+    const code = await runBook({
+      dir: opts.dir,
+      port: opts.port,
+      staticOut: opts.static,
+      open: opts.open,
+    });
+    if (code !== 0) process.exit(code);
+  });
+
 const designMd = program
   .command('design-md')
   .description('Inspect, validate, or stage a lossless migration to the vendor-neutral DESIGN.md Core v2 format.');

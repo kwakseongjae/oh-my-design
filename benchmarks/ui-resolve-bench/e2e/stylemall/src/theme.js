@@ -11,6 +11,7 @@ export const theme = {
     inverse: "#241f1b",
     inverseInk: "#f4f0ea",
     inverseMuted: "#c4b9ab",
+    inverseTile: "#322c27",
     disabled: "#8a8378",
     focus: "#1c1916",
   },

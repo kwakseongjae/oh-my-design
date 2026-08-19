@@ -25,15 +25,15 @@
 
 ### Design direction
 
-- D-P1-1 Surface: hairline-rule bands. Row radius 0. Thumbnail radius 4px only.
+- D-P1-1 Surface: hairline-rule bands. Rest-state rows stay unfilled. Thumbnail radius 4px. Painted hover plates use radius.row per D-P4-1.
 
-- D-P1-2 Density: 88px min row, 72px thumb, title then price, status and time in one glance column.
+- D-P1-2 Density: row min-height pairs with thumb + 4-side row padding (D-P4-1). Title then price (space.2), meta (space.1), status and time in one glance column.
 
 - D-P1-3 Wide viewport: add a second listing-row column at 1100px. Do not leave a left-max empty rail.
 
 - D-P1-4 Type: one Hangul gothic family. Display step at least 2x body. word-break keep-all.
 
-- D-P1-5 Home hero: at wide viewports the right half is a six-neighborhood count chip block computed from listings.
+- D-P1-5 Home hero: eyebrow, display, lede, one action, then a data-computed neighborhood count list that fills the wide right half. Fold padding bottom is at least 1.3× top.
 
 - D-P2-1 Color: warm paper and ink, one terracotta accent used as a signal under 5 percent.
 
@@ -49,7 +49,15 @@
 
 - D-P3-3 Motion: 120, 200, 320 ms and two easing curves. Animate transform and opacity only.
 
-- D-P3-4 Copy: neighbor-to-neighbor Korean. Price 0 renders as 나눔. One footer disclosure line.
+- D-P3-4 Copy: neighbor-to-neighbor Korean. Price 0 renders as 나눔. Disclosure lives only on the footer meta line (D-P4-4).
+
+- D-P4-1 Painted row plates (listing, seller, neighborhood counts): 4-side space.3 padding, matching negative inline margin, inset hairline, radius.row 4px on the tint. Media-to-edge gap equals that padding. min-height = size.thumb + 2×space.3.
+
+- D-P4-2 Brand mark: 24×24 currentColor geometry — a square lot (동네 자리) with one scan band through it. The mark compresses the proposition that this market is scanned as a row inside a place, not shown as a gallery. Lockup with the wordmark; mark is aria-hidden.
+
+- D-P4-3 Masthead: fixed size.masthead, lockup + tagline cluster, nav current via weight and inset fill (no decorative underline). Home lockup hit ≥44px.
+
+- D-P4-4 Footer: inverse token pair only. Brand lockup + tagline positioning, one nav group derived from the two real routes, meta line for disclosure. Asymmetric two columns, link hit ≥44px.
 
 - D-P3-5 Sold scan: sold thumbs are grayscale at 0.62 opacity and title/price use ink-muted; contrast stays; the row remains a keyboard-accessible link.
 
@@ -80,8 +88,11 @@
 - **color.ink-faint**: `#6a6358` — Week-plus time and sold status. D-P3-1.
 - **color.ink-muted**: `#5f574c` — Secondary ink for meta and sold text. D-P3-1 D-P3-2.
 - **color.inset**: `#e8e1d3` — Recessed empty and error plates. D-P1-1.
-- **color.inverse-ink**: `#f3eee4` — Footer inverted ink. D-P2-1.
+- **color.inverse-ink**: `#f3eee4` — Footer inverted ink. D-P2-1. 14.1:1 on inverse-paper.
+- **color.inverse-ink-muted**: `#948c7e` — Footer meta and group labels. D-P4-4. 4.91:1 on inverse-paper.
+- **color.inverse-inset**: `#3a342c` — Footer link hover plate. D-P4-4.
 - **color.inverse-paper**: `#241f18` — Footer inverted surface. D-P2-1.
+- **color.inverse-rule**: `#746c60` — Footer meta hairline. D-P4-4.
 - **color.on-accent**: `#f3eee4` — Ink on accent fill. D-P2-1.
 - **color.paper**: `#f3eee4` — Warm paper. D-P2-1. Avoids #fff as a base.
 - **color.rule**: `#d4cbb8` — Hairline rule. D-P1-1 D-P2-3.
@@ -93,11 +104,13 @@
 - **motion.ease-exit**: `cubic-bezier(0.4, 0, 1, 1)` — Exit curve. D-P3-3.
 - **motion.fast**: `120ms` — Press and focus. D-P3-3.
 - **motion.slow**: `320ms` — Section fade. D-P3-3.
-- **radius.none**: `0px` — List rows and plates. D-P1-1.
+- **radius.none**: `0px` — Unfilled plates and rest-state chrome. D-P1-1.
 - **radius.pill**: `999px` — Filter chips. D-P1-1.
-- **radius.thumb**: `4px` — Photo thumbs only. D-P1-1.
+- **radius.row**: `4px` — Painted hover plates on listing, seller, and count rows. D-P4-1.
+- **radius.thumb**: `4px` — Photo thumbs. D-P1-1.
 - **size.hit**: `44px` — Minimum hit target. C2.
-- **size.row-min**: `88px` — Listing row minimum. D-P1-2.
+- **size.masthead**: `4.5rem` — Masthead min-height. D-P4-3.
+- **size.row-min**: `calc(72px + 12px * 2)` — Listing row minimum paired with thumb and 4-side padding. D-P1-2 D-P4-1.
 - **size.thumb**: `72px` — Listing thumb. D-P1-2.
 - **space.1**: `4px` — Tight row internals. D-P1-2.
 - **space.2**: `8px` — Title-to-price gap. D-P1-2.
@@ -125,6 +138,8 @@
 - color.accent on color.paper: minimum 4.5:1
 - color.on-accent on color.accent: minimum 4.5:1
 - color.inverse-ink on color.inverse-paper: minimum 4.5:1
+- color.inverse-ink-muted on color.inverse-paper: minimum 4.5:1
+- color.inverse-ink on color.inverse-inset: minimum 4.5:1
 - color.ink on color.inset: minimum 4.5:1
 - color.ink-muted on color.inset: minimum 4.5:1
 - color.accent on color.inset: minimum 3:1
@@ -166,6 +181,7 @@ Required.
 | Asset | Kind | Source status | License status | Source | Notes |
 |---|---|---|---|---|---|
 | hangul-stack | font | official | not-required | Installed system Hangul gothic faces with Pretendard first if present | No webfont network request. |
+| brand-mark | svg | project-owned | not-required | Inline 24×24 currentColor lockup | Square lot + one scan band: the market is a place scanned as a row, not a gallery. D-P4-2. |
 | listing-photos | image | project-owned | not-required | public/assets item photo pairs | Sixty fixture photographs, two per listing. |
 
 ### Rules
@@ -177,6 +193,8 @@ Required.
 - Prices use thousands separators and the 원 unit after the number. Zero price is the word 나눔.
 
 - Provided images declare width and height. Below-the-fold images use loading lazy.
+
+- 브랜드 마크는 동네를 자리 낸 사각 구획과 그 안을 가로지르는 한 줄 스캔 밴드로, 구경 갤러리가 아니라 행 단위로 훑는다는 명제를 압축한다. D-P4-2.
 
 <!-- design-md:section components-states -->
 ## 4. Components & States
@@ -208,10 +226,10 @@ Required.
 
 **Semantics:** Single site navigation rendered identically on every page with aria-current on the active link.
 
-- Anatomy: wordmark, home link, free link
+- Anatomy: brand lockup (mark + wordmark), tagline, home link, free link
 - Variants: home-current, free-current
 - States: default, hover, focus-visible
-- Token references: color.ink, color.paper, color.rule, type.family
+- Token references: color.ink, color.paper, color.rule, color.inset, size.masthead, size.hit, type.family
 
 - Interaction kind: interactive
 
@@ -280,7 +298,7 @@ Required.
 - Anatomy: thumbnail, title, price, neighborhood, relative-time, status-badge
 - Variants: selling, reserved, sold, free
 - States: default, hover, focus-visible
-- Token references: color.ink, color.ink-muted, color.paper, color.rule, size.thumb, size.row-min, radius.thumb
+- Token references: color.ink, color.ink-muted, color.paper, color.rule, color.inset, size.thumb, size.row-min, radius.thumb, radius.row, space.3
 
 - Interaction kind: interactive
 
@@ -315,7 +333,7 @@ Required.
 - Anatomy: nickname, trust score, trust label, deal count, badges
 - Variants: compact, profile
 - States: default, hover, focus-visible
-- Token references: color.ink, color.paper, color.rule, color.accent
+- Token references: color.ink, color.paper, color.rule, color.accent, color.inset, radius.row, space.3
 
 - Interaction kind: interactive
 
@@ -424,7 +442,7 @@ Required.
 
 ### Layout rules
 
-- Home grammar: filter band plus high-density listing-row list. At 1100px add a second row column. Gutters use space.gutter. Overflow-x is clip.
+- Home grammar: hero (eyebrow → display → lede → one action → neighborhood count rows) then filter band plus high-density listing-row list. At 1100px add a second row column. Gutters use space.gutter. Overflow-x is clip. Hero bottom padding is at least 1.3× top.
 
 - Detail grammar: two-cut media on a 1/1 split at 720px, then seller, chat, and same-neighborhood rows. Measure for description stays near 40 Korean characters.
 
@@ -468,7 +486,7 @@ Required.
 
 - html lang is ko. Body line-height 1.6 to 1.8. Display line-height 1.15 to 1.3.
 - Prices: 129,000원. Free listings use 나눔 rather than 0원 as the primary price.
-- Disclosure is one quiet footer line from service.disclosure.
+- Disclosure is one quiet footer meta line from service.disclosure. The footer above it is lockup, positioning, and a single nav group.
 
 <!-- design-md:section governance -->
 ## 7. Governance
@@ -514,7 +532,7 @@ Record, review, and validate changes before adoption.
 
 - Token or component changes go through the decision table with a new D-id before product code.
 
-- Do not invent records, endpoints, or brand marks that the fixture does not contain.
+- Do not invent records or endpoints that the fixture does not contain. The brand mark is system-drawn geometry from D-P4-2, not a fixture asset.
 
 ### Decision provenance
 
@@ -525,3 +543,10 @@ Record, review, and validate changes before adoption.
 - layout_platforms.minimum_width_px — prompt-fact; value: 320; evidence: task.md
 - content_locales.locales.0.locale — repository-fact; value: "ko"; evidence: src/data/data.json, .omd/runs/yeoutjangteo/data-inventory.md
 - experience.live_inquiry_send — unresolved; evidence: src/data/data.json, .omd/runs/yeoutjangteo/council/interaction/result.json
+- foundations.tokens.radius.row.$value — agent-proposed-greenfield-decision; value: "4px"; evidence: P-FN-07 painted-surface radius, D-P4-1
+- foundations.tokens.size.masthead.$value — agent-proposed-greenfield-decision; value: "4.5rem"; evidence: P-FN-08 masthead height token, D-P4-3
+- foundations.tokens.color.inverse-ink-muted.$value — agent-proposed-greenfield-decision; value: "#948c7e"; evidence: P-FN-10 / C45 4.91:1 on inverse-paper
+- foundations.tokens.color.inverse-inset.$value — agent-proposed-greenfield-decision; value: "#3a342c"; evidence: P-FN-10 inverse hover plate
+- foundations.tokens.color.inverse-rule.$value — agent-proposed-greenfield-decision; value: "#746c60"; evidence: P-FN-10 footer meta hairline
+- foundations.tokens.size.row-min.$value — agent-proposed-greenfield-decision; value: "calc(72px + 12px * 2)"; evidence: P-FN-07 padding/min-height pair, D-P4-1
+- identity.brand-mark — agent-proposed-greenfield-decision; value: "square lot + scan band"; evidence: P-FN-08, D-P4-2, experience.summary

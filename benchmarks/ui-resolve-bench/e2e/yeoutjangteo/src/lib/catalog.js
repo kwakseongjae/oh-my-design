@@ -74,10 +74,23 @@ export function groupByStatus(items) {
   };
 }
 
-export function neighborhoodListingCounts() {
+export function neighborhoodListingCounts({ freeOnly = false } = {}) {
   return neighborhoods.map((neighborhood) => ({
     id: neighborhood.id,
     name: neighborhood.name,
-    count: listings.filter((item) => item.neighborhood_id === neighborhood.id).length,
+    count: listings.filter((item) => {
+      if (item.neighborhood_id !== neighborhood.id) return false;
+      if (freeOnly && item.price !== 0) return false;
+      return true;
+    }).length,
   }));
+}
+
+export function listingStatusCounts(items = listings) {
+  return {
+    total: items.length,
+    selling: items.filter((item) => item.status === "selling").length,
+    reserved: items.filter((item) => item.status === "reserved").length,
+    sold: items.filter((item) => item.status === "sold").length,
+  };
 }
