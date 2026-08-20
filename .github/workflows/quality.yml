@@ -30,6 +30,11 @@ jobs:
           cache: npm
           cache-dependency-path: package-lock.json
       - run: npm ci
+      # Root scripts (and `npm pack` via prepublishOnly) import web/scripts/lib,
+      # which resolves its dependencies from web/node_modules.
+      - name: Install web quality dependencies
+        run: npm ci
+        working-directory: web
       - run: npm run lint
       - run: npm test
       - run: npm run build
