@@ -1,3 +1,8 @@
+## 2026-08-20 (Fable) 릴리스 전 실사용 테스트 — 당근형 랜딩 별도 레포
+- 한 일: karrot-landing-study 레포에 OmD 실제 설치 → grok 영상 1편·이미지 9장 → 하네스 완주(질문0/수리0, DESIGN.md 502줄, 프리셋 12종) → G2 6건 수정·실측 검증 → omd book 신규 프로젝트 동작 확인.
+- 열린 것: v2.0.0 릴리스 GO 판단.
+- 다음: GO 시 push→PR→merge→tag→CI publish→doctor.
+
 ## 2026-08-20 (Fable) 피드백 사이클 — 패딩 계약, 프리셋 93개, omd book
 - 한 일: P-FN-07~10 신설(패딩 해부·브랜드 마크·히어로·푸터) + 3케이스 수정·실화면 검증, 프리셋 25→93(primitives 35 shadcn/Radix/APG, genres 43, flavors 5), omd book CLI(대비 실측·D-ID 근거·프리셋 계보)+테스트, /presets 웹 라우트, 생성기 릴리스 게이트 배선.
 - 열린 것: v2.0.0 릴리스 GO 판단(태그 푸시→CI publish 준비 완료), 프리셋 렌더 검증(93개 중 대부분 "미검증 — 리서치 유도").
