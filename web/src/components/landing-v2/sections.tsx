@@ -277,7 +277,10 @@ const STRIPS: Strip[] = [
 export function SideBySide() {
   return (
     <section
-      className="py-28 px-4 sm:px-6"
+      // The strip cards wait at x: ±60 until they scroll into view, which puts
+      // the off-screen one past the viewport edge on a phone. Clip rather than
+      // scroll — the entrance still reads once the row is in view.
+      className="overflow-x-clip py-28 px-4 sm:px-6"
       style={{ background: V2.bgLight, color: V2.textOnLight }}
     >
       <div className="mx-auto max-w-6xl">

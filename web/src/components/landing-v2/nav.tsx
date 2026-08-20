@@ -120,8 +120,8 @@ export function V2Nav() {
               boxShadow: `0 6px 18px -6px ${V2.primary}`,
             }}
           >
-            <span className="sm:hidden">Start</span>
-            <span className="hidden sm:inline">Get Started</span>
+            <span className="sm:hidden">DESIGN.md</span>
+            <span className="hidden sm:inline">Get DESIGN.md</span>
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>

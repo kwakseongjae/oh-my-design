@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { AlertCircle, ArrowRight, Star, Check, Copy, Pause } from "lucide-react";
+import { AlertCircle, ArrowRight, Star, Check, Copy, Pause, Terminal } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { trackInstallCopy } from "@/lib/activation/analytics";
 import { PKG_VERSION } from "@/data/version.generated";
@@ -145,7 +145,7 @@ export function HeroV2() {
         }}
       />
 
-      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 sm:px-6 py-20 md:py-28 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 sm:px-6 pt-20 pb-10 md:pt-28 md:pb-12 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -232,36 +232,6 @@ export function HeroV2() {
             </span>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-5 flex items-center gap-2 sm:gap-3"
-          >
-            <Link
-              href="/cli"
-              className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-5 py-3 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0f] sm:px-6"
-              style={{
-                background: V2.primary,
-                color: "#fff",
-                // @ts-expect-error css var
-                "--tw-ring-color": V2.accent,
-              }}
-            >
-              Get Started
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
-            <a
-              href="https://github.com/kwakseongjae/oh-my-design"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-4 py-3 text-sm font-medium text-white/90 transition-colors hover:bg-white/5 sm:px-5"
-              style={{ borderColor: V2.borderDark }}
-            >
-              <Star className="h-4 w-4" fill="#facc15" style={{ color: "#facc15" }} />
-              Star on GitHub
-            </a>
-          </motion.div>
         </div>
 
         {/* Right — interactive multi-brand DESIGN.md panel */}
@@ -273,6 +243,47 @@ export function HeroV2() {
           <DesignMdPanel />
         </motion.div>
       </div>
+
+      {/* Actions — shared full-width row so the phone layout stacks cleanly
+          instead of wrapping inside the left column. */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="relative mx-auto flex max-w-6xl flex-col items-start gap-2.5 px-4 pb-20 sm:flex-row sm:items-center sm:justify-center sm:gap-3 sm:px-6 md:pb-28"
+      >
+        <Link
+          href="/builder"
+          className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-5 py-3 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0f] sm:px-6"
+          style={{
+            background: V2.primary,
+            color: "#fff",
+            // @ts-expect-error css var
+            "--tw-ring-color": V2.accent,
+          }}
+        >
+          Get DESIGN.md
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        </Link>
+        <Link
+          href="/cli"
+          className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-4 py-3 text-sm font-medium text-white/90 transition-colors hover:bg-white/5 sm:px-5"
+          style={{ borderColor: V2.borderDark }}
+        >
+          <Terminal className="h-4 w-4" style={{ color: V2.accent }} />
+          oh-my-design-cli
+        </Link>
+        <a
+          href="https://github.com/kwakseongjae/oh-my-design"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border px-4 py-3 text-sm font-medium text-white/90 transition-colors hover:bg-white/5 sm:px-5"
+          style={{ borderColor: V2.borderDark }}
+        >
+          <Star className="h-4 w-4" fill="#facc15" style={{ color: "#facc15" }} />
+          Star on GitHub
+        </a>
+      </motion.div>
     </section>
   );
 }
