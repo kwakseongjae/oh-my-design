@@ -250,7 +250,7 @@ export function HeroV2() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="relative mx-auto flex max-w-6xl flex-col items-start gap-2.5 px-4 pb-20 sm:flex-row sm:items-center sm:justify-center sm:gap-3 sm:px-6 md:pb-28"
+        className="relative mx-auto flex max-w-6xl flex-col items-center gap-2.5 px-4 pb-20 sm:flex-row sm:justify-center sm:gap-3 sm:px-6 md:pb-28"
       >
         <Link
           href="/builder"

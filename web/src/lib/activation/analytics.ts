@@ -7,6 +7,7 @@ import { event, trackRef } from "@/lib/gtag";
 
 export type InstallSurface =
   | "hero"
+  | "final_cta"
   | "ref_detail"
   | "collection"
   | "builder"

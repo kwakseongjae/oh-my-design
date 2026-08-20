@@ -17,6 +17,7 @@ import {
   ShieldCheck,
   Sparkles,
   Star,
+  Terminal,
 } from "lucide-react";
 import { getLogoUrl, getLogoFallbackUrl } from "@/lib/logos";
 import { copyText } from "@/lib/clipboard";
@@ -848,6 +849,60 @@ const CONTACT_TILES: {
   },
 ];
 
+
+const FOOTER_INSTALL_CMD = "npx oh-my-design-cli@latest";
+
+/** Install snippet in the closing band — same affordance as the hero's. */
+function FooterInstallCommand() {
+  const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
+
+  const onCopy = async (button: HTMLButtonElement) => {
+    const copied = await copyText(FOOTER_INSTALL_CMD, {
+      restoreTarget: button,
+      onSuccess: () => trackInstallCopy({ surface: "final_cta" }),
+    });
+    setStatus(copied ? "copied" : "failed");
+    setTimeout(() => setStatus("idle"), copied ? 1600 : 2400);
+  };
+
+  return (
+    <div
+      className="inline-flex items-center gap-2 rounded-full border bg-black/40 py-2 pl-4 pr-1.5 font-mono text-xs"
+      style={{ borderColor: V2.borderDark, color: "rgba(255,255,255,0.78)" }}
+    >
+      <span style={{ color: V2.accent }}>$</span>
+      <code>{FOOTER_INSTALL_CMD}</code>
+      <button
+        type="button"
+        onClick={(event) => onCopy(event.currentTarget)}
+        aria-label={
+          status === "copied"
+            ? "Copied"
+            : status === "failed"
+              ? "Copy failed"
+              : "Copy install command"
+        }
+        className="inline-flex h-7 w-7 items-center justify-center rounded-full text-white/55 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2"
+        style={{
+          // @ts-expect-error css var
+          "--tw-ring-color": V2.accent,
+        }}
+      >
+        {status === "copied" ? (
+          <Check className="h-3.5 w-3.5" style={{ color: V2.accent }} />
+        ) : status === "failed" ? (
+          <AlertCircle className="h-3.5 w-3.5 text-red-400" />
+        ) : (
+          <Copy className="h-3.5 w-3.5" />
+        )}
+      </button>
+      <span className="sr-only" role="status" aria-live="polite">
+        {status === "copied" ? "Install command copied" : status === "failed" ? "Copy failed" : ""}
+      </span>
+    </div>
+  );
+}
+
 export function FinalCtaFooter() {
   return (
     <>
@@ -914,8 +969,16 @@ export function FinalCtaFooter() {
                   boxShadow: `0 18px 40px -16px ${V2.primary}cc`,
                 }}
               >
-                Get Started
+                Get DESIGN.md
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+              <Link
+                href="/cli"
+                className="inline-flex items-center gap-2 rounded-full border px-6 py-3.5 text-base font-medium text-white/85 transition-colors hover:bg-white/5 hover:text-white"
+                style={{ borderColor: V2.borderDark }}
+              >
+                <Terminal className="h-4 w-4" style={{ color: V2.accent }} />
+                oh-my-design-cli
               </Link>
               <a
                 href="https://github.com/kwakseongjae/oh-my-design"
@@ -934,16 +997,7 @@ export function FinalCtaFooter() {
 
             {/* install snippet */}
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-              <div
-                className="inline-flex items-center gap-2 rounded-full border bg-black/40 px-4 py-2 font-mono text-xs"
-                style={{
-                  borderColor: V2.borderDark,
-                  color: "rgba(255,255,255,0.78)",
-                }}
-              >
-                <span style={{ color: V2.accent }}>$</span>
-                <code>npx oh-my-design-cli@latest</code>
-              </div>
+              <FooterInstallCommand />
               <Link
                 href="/docs/en/demo"
                 className="group inline-flex items-center gap-1.5 text-xs font-medium text-white/55 transition-colors hover:text-white"
