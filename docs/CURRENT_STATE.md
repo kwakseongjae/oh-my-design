@@ -10,6 +10,14 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-20 (Fable) ✅ v2.0.0 릴리스 완료 — npm 게시 + provenance
+
+- **게시됨**: `oh-my-design-cli@2.0.0` (npm latest), dist.attestations present, `npm audit signatures` = verified attestation. PR #52 머지(8d4a2df2) → 태그 v2.0.0 → CI publish 성공.
+- **배포본 실검증**: 레지스트리에서 설치 후 `--version` 2.0.0, 명령에 book/doctor/update/workflows/design-md 존재, `doctor`가 실제 프로젝트에서 Ready, `omd book --static` 동작, 프리셋 93개(4레이어) 동봉 확인.
+- **CI 4라운드 수리(전부 선재 부채, 2.0.0 코드 결함 0)**: ① 얕은 클론 → 두 워크플로 `fetch-depth: 0`(벤치가 과거 SHA 벤더링) ② CLI 잡의 web 의존성 누락 → js-yaml 및 pack 연쇄 실패 해소 ③ 440 레퍼런스 테스트 예산 15s→60s ④ packument 미캐시로 `--offline` ENOTCACHED → 테스트 전 캐시 예열. 부수로 실제 결함 1건 수정(`npm pack --json` 출력을 그대로 파싱하던 테스트 헬퍼). 은퇴 루나 스위트 2개 추가 skip(1개는 CI에 없는 `codex` 바이너리 요구).
+- **로컬 주의**: 이 워크스테이션에 전역 `oh-my-design-cli@1.6.7`이 남아 있어 `npx`를 가린다. 전역을 갱신하거나 프로젝트 로컬 바이너리를 쓸 것.
+- **다음**: 공개 벤치 트랙에서 블라인드 경쟁 비교, 자가 비평의 화면 부재(렌더 기준 자가 채점) 개선, 프리셋 렌더 검증 확대.
+
 ### 2026-08-20 (Fable) 릴리스 전 실사용 품질 테스트 — 별도 레포 랜딩 (karrot-landing-study)
 
 - **경로**: `~/Desktop/projects/karrot-landing-study`(별도 git repo). 벤치마크 컨트롤러가 아니라 **실제 설치 경로** — `install-skills`로 스킬 22·서브에이전트 19·카탈로그 440 설치 후 `$omd-autopilot`으로 빌드.
