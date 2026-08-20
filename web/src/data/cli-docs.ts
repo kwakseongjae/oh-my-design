@@ -318,8 +318,8 @@ export interface CliDocsDictionary {
 }
 
 const sharedSkillIds = {
-  system: ["omd:init", "omd:apply", "omd:sync", "omd:remember", "omd:learn", "omd:taste"],
-  build: ["omd:harness", "omd:orchestrator", "omd:asset-fetch", "omd:codex-image", "claude-design"],
+  system: ["omd:init", "omd:apply", "omd:sync", "omd:update", "omd:remember", "omd:learn", "omd:taste"],
+  build: ["omd:autopilot", "omd:harness", "omd:orchestrator", "omd:asset-fetch", "omd:codex-image", "claude-design"],
   quality: ["omd:feel", "omd:slop-audit", "omd:designer-review", "omd:final-qa", "omd:experiment-gallery"],
   content: ["omd:kr-writer", "omd:locale-adapter", "omd:humanize"],
   evidence: ["omd:reference-capture"],
@@ -348,7 +348,7 @@ const en: CliDocsDictionary = {
     pagination: "Documentation pagination",
     skillsLabel: "Skills",
     pipeline: "Quality-graded reference → DESIGN.md → build → verify",
-    pipelineNote: "141 verified_v2 · 159 partial · 140 legacy. Use verified_v2 for demos.",
+    pipelineNote: "140 verified_v2 · 160 partial · 140 legacy. Use verified_v2 for demos.",
     skipContent: "Skip to documentation",
     copyFailed: "Copy failed",
     copyPage: "Copy page",
@@ -375,8 +375,8 @@ const en: CliDocsDictionary = {
     title: "Your agent already writes code. Give it design judgment and ground truth.",
     lead: "oh-my-design brings a quality-graded reference catalog and reusable design workflows into the coding tool you already use, with specialist agent roles on channels that support them. Then you work in natural language.",
     truthTitle: "The CLI prepares the environment your coding agent works in.",
-    truthBody: "The bundle contains 20 skills, 18 agent definitions, and 440 quality-graded DESIGN.md references: 141 verified_v2, 159 partial, and 140 legacy snapshots. Use verified_v2 references for public demos. Claude Code, Codex, and OpenCode receive compatible skills, roles, and catalog data; Cursor receives a project rule and catalog.",
-    proof: "20 product skills · 18 specialist agents · 141 verified_v2 / 159 partial / 140 legacy · zero AI calls during install",
+    truthBody: "The bundle contains 22 skills, 19 agent definitions, and 440 quality-graded DESIGN.md references: 140 verified_v2, 160 partial, and 140 legacy snapshots. Use verified_v2 references for public demos. Cursor 2.4+ receives 21 compatible Agent Skills plus a small project rule; separately generated specialist roles remain available on channels that support them.",
+    proof: "22 product skills · 19 specialist agents · 140 verified_v2 / 160 partial / 140 legacy · zero AI calls during install",
     outcomesTitle: "Start with the result you need",
     outcomesLead: "You do not need to memorize skill names. Describe the product surface; the installed skill layer routes the work.",
     outcomes: [
@@ -428,7 +428,7 @@ const en: CliDocsDictionary = {
       { name: "Codex", body: "Installs skills, embedded agent roles, helpers, and the local reference catalog.", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "Claude Code", body: "Installs skills, sub-agents, catalog, and safely merged project hooks.", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "OpenCode", body: "Installs skills, native sub-agents, and the offline catalog. Project files live under `.opencode`; `--global` uses `~/.config/opencode`, verified with `doctor --global`.", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "Installs the rules shim and shared catalog used by the editor workflow.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "Installs 21 native Agent Skills, a small DESIGN.md bootstrap rule, and the shared catalog. Use `--cursor-rule-only` only for older clients.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ],
     doneTitle: "You are done when the product changed, not when installation succeeded.",
     doneBody: "A healthy first run leaves a visible UI improvement, a project DESIGN.md, and a clear next prompt. The installer is only activation infrastructure.",
@@ -524,9 +524,9 @@ const en: CliDocsDictionary = {
   },
   skills: {
     eyebrow: "CAPABILITY MAP",
-    title: "20 product skills, organized by outcome.",
-    lead: "Skill names are useful for explicit control, but normal product requests should trigger them naturally. The release bundle ships the 20 product skills listed below.",
-    countNote: "20 product skills · 18 specialist agents",
+    title: "22 product skills, organized by outcome.",
+    lead: "Skill names are useful for explicit control, but normal product requests should trigger them naturally. The release bundle ships the 22 product skills listed below.",
+    countNote: "22 product skills · 19 specialist agents",
     groups: [
       { title: "Own the system", description: "Create, apply, synchronize, and evolve the project’s design ground truth.", skills: [...sharedSkillIds.system] },
       { title: "Build the surface", description: "Move from brief to a working, asset-aware interface and handoff.", skills: [...sharedSkillIds.build] },
@@ -697,7 +697,7 @@ const en: CliDocsDictionary = {
     changedFiles: ["web/src/app/docs/[locale]/[[...slug]]/page.tsx", "web/src/components/cli-docs/*", "web/src/data/cli-docs.ts", "src/cli/doctor.ts", "src/cli/install-skills.ts"],
     verification: ["5-locale route completeness", "CLI clean-install tests", "doctor degraded-state tests", "Home → /builder regression", "Production build"],
     honesty: "The visual below is a schematic map of this repository-owned docs rebuild, not a screenshot of a generated app. It does not claim an unrelated app was produced by a one-shot prompt.",
-    previewStats: ["20 skills", "18 agents", "10 phases"],
+    previewStats: ["22 skills", "19 agents", "10 phases"],
   },
   troubleshooting: {
     eyebrow: "RECOVERY",
@@ -738,15 +738,15 @@ const ko: CliDocsDictionary = {
   ...en,
   localeName: "한국어",
   metaDescription: "oh-my-design을 설치하고 AI 코딩 에이전트에 품질 등급이 표시된 디자인 맥락을 연결해 실제 화면을 만드는 방법을 안내합니다.",
-  ui: { product: "oh-my-design CLI", docs: "문서", language: "언어", copy: "복사", copied: "복사됨", openBuilder: "Builder 열기", github: "GitHub", onThisPage: "이 페이지에서", previous: "이전", next: "다음", actualOutput: "실제 프로젝트 결과", prompt: "프롬프트", result: "결과", files: "변경 파일", verified: "검증", homeAria: "oh-my-design 홈", pagination: "문서 페이지 이동", skillsLabel: "스킬", pipeline: "품질 등급 레퍼런스 → DESIGN.md → 구현 → 검증", pipelineNote: "verified_v2 141개 · partial 159개 · legacy 140개. 공개 데모는 verified_v2를 사용하세요.", skipContent: "문서 본문으로 건너뛰기", copyFailed: "복사 실패", copyPage: "페이지 복사", pageCopied: "페이지 복사됨", pageTools: "페이지 도구", morePageActions: "페이지 작업 더 보기", viewMarkdown: "Markdown으로 보기", copyForAgent: "AI 에이전트용으로 복사", ready: "준비 완료" },
+  ui: { product: "oh-my-design CLI", docs: "문서", language: "언어", copy: "복사", copied: "복사됨", openBuilder: "Builder 열기", github: "GitHub", onThisPage: "이 페이지에서", previous: "이전", next: "다음", actualOutput: "실제 프로젝트 결과", prompt: "프롬프트", result: "결과", files: "변경 파일", verified: "검증", homeAria: "oh-my-design 홈", pagination: "문서 페이지 이동", skillsLabel: "스킬", pipeline: "품질 등급 레퍼런스 → DESIGN.md → 구현 → 검증", pipelineNote: "verified_v2 140개 · partial 160개 · legacy 140개. 공개 데모는 verified_v2를 사용하세요.", skipContent: "문서 본문으로 건너뛰기", copyFailed: "복사 실패", copyPage: "페이지 복사", pageCopied: "페이지 복사됨", pageTools: "페이지 도구", morePageActions: "페이지 작업 더 보기", viewMarkdown: "Markdown으로 보기", copyForAgent: "AI 에이전트용으로 복사", ready: "준비 완료" },
   nav: { overview: "개요", "getting-started": "시작하기", demo: "라이브 데모", workflows: "워크플로", skills: "스킬", "anti-slop": "AI slop", showcase: "실제 사례", troubleshooting: "문제 해결", ai: "AI용 문서" },
   overview: {
     eyebrow: "코딩 에이전트를 위한 디자인 맥락",
     title: "코드는 이미 잘 씁니다. 이제 디자인 판단에 근거를 더하세요.",
     lead: "품질 등급이 표시된 레퍼런스와 반복 가능한 디자인 작업 흐름을 Claude Code·Codex·OpenCode·Cursor에 설치합니다. 이후에는 만들 화면과 지킬 조건만 말하면 됩니다.",
     truthTitle: "CLI는 에이전트가 일할 환경을 준비합니다.",
-    truthBody: "번들은 제품 스킬 20개, 에이전트 정의 18개, 품질 등급이 표시된 DESIGN.md 레퍼런스 440개를 담습니다. 현재 verified_v2 141개, partial 159개, legacy snapshot 140개이며 공개 데모에는 verified_v2를 사용합니다. Claude Code·Codex·OpenCode에는 호환되는 스킬·역할·카탈로그가 들어가고, Cursor에는 프로젝트 규칙과 카탈로그가 들어갑니다.",
-    proof: "제품 스킬 20개 · 전문 에이전트 18개 · verified_v2 141 / partial 159 / legacy 140 · 설치 중 AI 호출 0회",
+    truthBody: "번들은 제품 스킬 22개, 에이전트 정의 19개, 품질 등급이 표시된 DESIGN.md 레퍼런스 440개를 담습니다. 현재 verified_v2 140개, partial 160개, legacy snapshot 140개이며 공개 데모에는 verified_v2를 사용합니다. Cursor 2.4+에는 호환 Agent Skills 21개와 작은 프로젝트 규칙이 들어가며, 별도 전문 역할은 이를 지원하는 채널에만 설치됩니다.",
+    proof: "제품 스킬 22개 · 전문 에이전트 19개 · verified_v2 140 / partial 160 / legacy 140 · 설치 중 AI 호출 0회",
     outcomesTitle: "필요한 결과부터 고르세요",
     outcomesLead: "스킬 이름을 외울 필요가 없습니다. 만들 화면과 지킬 조건을 말하면 필요한 스킬이 선택됩니다.",
     outcomes: [
@@ -778,7 +778,7 @@ const ko: CliDocsDictionary = {
       { name: "Codex", body: "스킬, 본문이 내장된 에이전트 역할, 헬퍼, 로컬 레퍼런스 카탈로그를 설치합니다.", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "Claude Code", body: "스킬, 서브에이전트, 카탈로그와 안전하게 병합되는 프로젝트 훅을 설치합니다.", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "OpenCode", body: "스킬·네이티브 서브에이전트·오프라인 카탈로그를 설치합니다. 프로젝트는 `.opencode`, `--global`은 `~/.config/opencode`를 사용하며 `doctor --global`로 진단합니다.", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "에디터 흐름에서 쓰는 규칙 shim과 공유 카탈로그를 설치합니다.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "네이티브 Agent Skills 21개, 작은 DESIGN.md bootstrap rule, 공유 카탈로그를 설치합니다. 구형 클라이언트만 `--cursor-rule-only`를 사용하세요.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ],
     doneTitle: "첫 실행의 완료 기준은 눈에 보이는 UI 변화입니다.",
     doneBody: "좋은 첫 실행은 눈에 보이는 UI 개선, 프로젝트 DESIGN.md, 명확한 다음 프롬프트를 남깁니다. 설치기는 활성화 인프라일 뿐입니다.",
@@ -874,9 +874,9 @@ const ko: CliDocsDictionary = {
   },
   skills: {
     eyebrow: "기능 지도",
-    title: "결과별로 묶인 제품 스킬 20개",
-    lead: "전문가는 스킬 이름을 직접 지정할 수 있습니다. 보통은 만들 화면과 조건만 말하면 됩니다. 배포 패키지에는 아래 제품 스킬 20개가 포함됩니다.",
-    countNote: "제품 스킬 20개 · 전문 에이전트 18개",
+    title: "결과별로 묶인 제품 스킬 22개",
+    lead: "전문가는 스킬 이름을 직접 지정할 수 있습니다. 보통은 만들 화면과 조건만 말하면 됩니다. 배포 패키지에는 아래 제품 스킬 22개가 포함됩니다.",
+    countNote: "제품 스킬 22개 · 전문 에이전트 19개",
     groups: [
       { title: "프로젝트 디자인 기준 세우기", description: "프로젝트의 디자인 정본을 만들고 적용하고 동기화합니다.", skills: [...sharedSkillIds.system] },
       { title: "실제 화면 만들기", description: "요구사항에서 동작하는 UI와 전달 가능한 결과물까지 이어갑니다.", skills: [...sharedSkillIds.build] },
@@ -1045,7 +1045,7 @@ const ko: CliDocsDictionary = {
     changedFiles: ["web/src/app/docs/[locale]/[[...slug]]/page.tsx", "web/src/components/cli-docs/*", "web/src/data/cli-docs.ts", "src/cli/doctor.ts", "src/cli/install-skills.ts"],
     verification: ["5개 언어 경로 완전성", "CLI 클린 설치 테스트", "doctor degraded 상태 테스트", "Home → /builder 회귀 검사", "프로덕션 빌드"],
     honesty: "아래 시각 자료는 이 저장소에서 실제로 진행한 문서 재구축을 도식화한 맵이며, 생성된 앱의 스크린샷이 아닙니다. 무관한 앱을 원샷 프롬프트로 만들었다고 주장하지 않습니다.",
-    previewStats: ["스킬 20개", "에이전트 18개", "10단계"],
+    previewStats: ["스킬 22개", "에이전트 19개", "10단계"],
   },
   troubleshooting: {
     eyebrow: "복구",
@@ -1094,8 +1094,8 @@ const ja = translatedLocale(
   "oh-my-design を導入し、品質グレード付きのデザイン文脈を AI コーディングエージェントに渡して、確認可能な手順で実際の製品画面を改善するためのドキュメントです。",
   { overview: "概要", "getting-started": "はじめに", demo: "ライブデモ", workflows: "ワークフロー", skills: "スキル", "anti-slop": "AI slop の判断基準", showcase: "実例", troubleshooting: "トラブルシューティング", ai: "AI 向けドキュメント" },
   {
-    ui: { product: "oh-my-design CLI", docs: "ドキュメント", language: "言語", copy: "コピー", copied: "コピー済み", openBuilder: "Builder を開く", github: "GitHub", onThisPage: "このページ", previous: "前へ", next: "次へ", actualOutput: "実際のプロジェクト成果", prompt: "プロンプト", result: "結果", files: "変更ファイル", verified: "検証", homeAria: "oh-my-design ホーム", pagination: "ドキュメントのページ移動", skillsLabel: "スキル", pipeline: "品質グレード付きリファレンス → DESIGN.md → 実装 → 検証", pipelineNote: "verified_v2 141件 · partial 159件 · legacy 140件。公開デモには verified_v2 を使います。", skipContent: "本文へスキップ", copyFailed: "コピーできませんでした", copyPage: "ページをコピー", pageCopied: "コピーしました", pageTools: "ページツール", morePageActions: "その他のページ操作", viewMarkdown: "Markdown で表示", copyForAgent: "AI エージェント用にコピー", ready: "準備済み" },
-    overview: { ...en.overview, eyebrow: "コーディングエージェントのためのデザイン文脈", title: "コードを書けるエージェントに、デザイン判断と根拠を渡す。", lead: "oh-my-design は、品質グレード付きリファレンスと再利用できるデザインワークフローを、普段使っているコーディングツールへ導入します。対応するツールには専門エージェントの役割も追加されます。導入後は、作りたい画面を自然言語で依頼できます。", truthTitle: "CLI はコーディングエージェントの作業環境を整えます。", truthBody: "バンドルには20の製品スキル、18のエージェント定義、品質グレード付き DESIGN.md 440件があります。内訳は verified_v2 141件、partial 159件、legacy snapshot 140件で、公開デモには verified_v2 を使います。Claude Code、Codex、OpenCode には互換スキル・役割・カタログが入り、Cursor にはプロジェクトルールとカタログが入ります。", proof: "製品スキル20個 · 専門エージェント18個 · verified_v2 141 / partial 159 / legacy 140 · インストール時の AI 呼び出し0回", outcomesTitle: "必要な成果から始める", outcomesLead: "スキル名を覚える必要はありません。作りたい画面と守る条件を伝えると、適切なワークフローが選ばれます。", outcomes: [
+    ui: { product: "oh-my-design CLI", docs: "ドキュメント", language: "言語", copy: "コピー", copied: "コピー済み", openBuilder: "Builder を開く", github: "GitHub", onThisPage: "このページ", previous: "前へ", next: "次へ", actualOutput: "実際のプロジェクト成果", prompt: "プロンプト", result: "結果", files: "変更ファイル", verified: "検証", homeAria: "oh-my-design ホーム", pagination: "ドキュメントのページ移動", skillsLabel: "スキル", pipeline: "品質グレード付きリファレンス → DESIGN.md → 実装 → 検証", pipelineNote: "verified_v2 140件 · partial 160件 · legacy 140件。公開デモには verified_v2 を使います。", skipContent: "本文へスキップ", copyFailed: "コピーできませんでした", copyPage: "ページをコピー", pageCopied: "コピーしました", pageTools: "ページツール", morePageActions: "その他のページ操作", viewMarkdown: "Markdown で表示", copyForAgent: "AI エージェント用にコピー", ready: "準備済み" },
+    overview: { ...en.overview, eyebrow: "コーディングエージェントのためのデザイン文脈", title: "コードを書けるエージェントに、デザイン判断と根拠を渡す。", lead: "oh-my-design は、品質グレード付きリファレンスと再利用できるデザインワークフローを、普段使っているコーディングツールへ導入します。対応するツールには専門エージェントの役割も追加されます。導入後は、作りたい画面を自然言語で依頼できます。", truthTitle: "CLI はコーディングエージェントの作業環境を整えます。", truthBody: "バンドルには22の製品スキル、19のエージェント定義、品質グレード付き DESIGN.md 440件があります。内訳は verified_v2 140件、partial 160件、legacy snapshot 140件で、公開デモには verified_v2 を使います。Cursor 2.4+ には互換 Agent Skills 21 個と小さなプロジェクトルールが入り、別個の専門ロールは対応チャネルにのみ導入されます。", proof: "製品スキル22個 · 専門エージェント19個 · verified_v2 140 / partial 160 / legacy 140 · インストール時の AI 呼び出し0回", outcomesTitle: "必要な成果から始める", outcomesLead: "スキル名を覚える必要はありません。作りたい画面と守る条件を伝えると、適切なワークフローが選ばれます。", outcomes: [
       { title: "デザインシステムを作る", description: "製品ブリーフと verified_v2 リファレンスから、プロジェクト所有の DESIGN.md を作ります。不明な事実は補完しません。", prompt: "家族向け資産管理アプリに、落ち着きと信頼感のあるデザインシステムを設定して。Toss を参考にしつつ、既存のロゴとコピーは維持して。", result: "DESIGN.md、エージェント用 shim、明示的なトークン差分、確認済みの最初の画面。" },
       { title: "完全な画面を作る", description: "Discovery、IA、ワイヤーフレーム、コンポーネント、コピー、アクセシビリティ、検証を一つのチェックポイント付きフローで進めます。", prompt: "このアプリのオンボーディングを設計・実装して。現在のスタックを維持し、DESIGN.md を正本として使って。", result: "動く画面、状態網羅、検証記録、リポジトリ内のハンドオフ成果物。" },
       { title: "既存UIを改善する", description: "製品の挙動を保ったまま、階層、リズム、アクセシビリティ、典型的なAI UIパターンを修正します。", prompt: "URLとフォーム名は変えずに料金ページを改善して。影響の大きい修正を適用し、結果を検証して。", result: "焦点を絞ったコード変更、前後の根拠、決定論的な品質チェック。" },
@@ -1109,7 +1109,7 @@ const ja = translatedLocale(
       { name: "Codex", body: "スキル、本文を内蔵したエージェント定義、ヘルパー、ローカル参照カタログを導入します。", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "Claude Code", body: "スキル、サブエージェント、カタログ、安全にマージされるプロジェクトフックを導入します。", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "OpenCode", body: "スキル、ネイティブのサブエージェント、オフライン対応カタログを導入します。プロジェクトは `.opencode`、`--global` は `~/.config/opencode` を使い、`doctor --global` で診断します。", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "エディタ用ルール shim と共有カタログを導入します。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "ネイティブ Agent Skills 21 個、小さな DESIGN.md bootstrap rule、共有カタログを導入します。旧クライアントのみ `--cursor-rule-only` を使用します。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ], doneTitle: "最初の変更が製品画面に反映されたら完了です", doneBody: "初回実行では、目に見える UI 改善、プロジェクトの DESIGN.md、次に依頼する内容まで確認します。" },
     demo: {
       eyebrow: "ライブデモの進行ガイド",
@@ -1151,7 +1151,7 @@ const ja = translatedLocale(
       { title: "既存ページを改善する", when: "動くが製品らしさが弱い UI", prompt: "このダッシュボードで、製品の根拠なく繰り返される UI パターン、階層、密度、モーション、アクセシビリティを確認して。挙動を保ち、影響の大きい修正から適用して差分を示して。", outputs: ["優先順位付きの指摘", "焦点を絞ったパッチ", "変更前後の根拠"], skills: ["omd:slop-audit", "omd:feel", "omd:designer-review"] },
       { title: "好みの修正を記録する", when: "エージェントに好みを教える場合", prompt: "CTA に大文字は使わない。この好みをプロジェクトに記録し、ボタンの動作は変えずに現在の画面を修正して。", outputs: ["保留中の好み", "範囲付きUI修正", "DESIGN.md 反映提案"], skills: ["omd:remember", "omd:learn", "omd:taste"] },
     ] },
-    skills: { ...en.skills, eyebrow: "機能マップ", title: "成果別に整理された20の製品スキル", lead: "スキル名を指定することもできますが、通常は作りたい画面と条件を伝えるだけで十分です。リリースパッケージには、以下の20スキルが含まれます。", countNote: "製品スキル20個 · 専門エージェント18個", groups: en.skills.groups.map((g, i) => ({ ...g, title: ["デザイン基準を整える", "画面を作る", "品質を確かめる", "各言語で自然に書く", "根拠のあるリファレンスを残す"][i], description: ["プロジェクトのデザイン基準を作成し、適用・同期します。", "要件を、実際に動くUIと引き継ぎ可能な成果物へつなげます。", "画面の印象、整合性、パターンの反復、アクセシビリティ、公開準備を確認します。", "韓国語の原稿を作り、意味と事実を保ったまま各言語で書き直します。", "不明なトークンを作らず、公開画面をバージョン付きの根拠として記録します。"][i] })), routingTitle: "スキル名の指定は任意です", routingBody: "「このチェックアウトを改善して検証して」と依頼すれば、必要なスキルが選ばれます。" },
+    skills: { ...en.skills, eyebrow: "機能マップ", title: "成果別に整理された22の製品スキル", lead: "スキル名を指定することもできますが、通常は作りたい画面と条件を伝えるだけで十分です。リリースパッケージには、以下の22スキルが含まれます。", countNote: "製品スキル22個 · 専門エージェント19個", groups: en.skills.groups.map((g, i) => ({ ...g, title: ["デザイン基準を整える", "画面を作る", "品質を確かめる", "各言語で自然に書く", "根拠のあるリファレンスを残す"][i], description: ["プロジェクトのデザイン基準を作成し、適用・同期します。", "要件を、実際に動くUIと引き継ぎ可能な成果物へつなげます。", "画面の印象、整合性、パターンの反復、アクセシビリティ、公開準備を確認します。", "韓国語の原稿を作り、意味と事実を保ったまま各言語で書き直します。", "不明なトークンを作らず、公開画面をバージョン付きの根拠として記録します。"][i] })), routingTitle: "スキル名の指定は任意です", routingBody: "「このチェックアウトを改善して検証して」と依頼すれば、必要なスキルが選ばれます。" },
     antiSlop: {
       eyebrow: "判断基準",
       title: "製品に即した判断を欠くパターンの反復を AI slop と捉える",
@@ -1312,7 +1312,7 @@ const ja = translatedLocale(
       prompt: "新規ユーザーが内部構造より先に成果を理解し、実例を見て、5言語で読み続けられるよう CLI 体験を再構築してください。製品作成ルートとして /builder を維持してください。",
       verification: ["5言語ルートの完全性", "CLI クリーンインストールテスト", "doctor の劣化状態テスト", "Home → /builder の回帰確認", "本番ビルド"],
       honesty: "下の図はこのリポジトリで実施したドキュメント再構築の構成を示す模式図であり、生成アプリのスクリーンショットではありません。無関係なアプリを一発生成したとは主張しません。",
-      previewStats: ["スキル20個", "エージェント18個", "10フェーズ"],
+      previewStats: ["スキル22個", "エージェント19個", "10フェーズ"],
     },
     troubleshooting: { ...en.troubleshooting, eyebrow: "復旧", title: "失敗したら、次の行動が明確であるべきです。", lead: "まず doctor を実行します。一つのスキルファイルだけで正常とせず、チャネル別のスキル、エージェント、カタログ、プロジェクト有効化を確認します。", doctorTitle: "一つの診断から始める", doctorBody: "CI では JSON 出力を使い、人向けレポートはそのままエージェントに貼れます。degraded は非0で終了します。", cases: en.troubleshooting.cases.map((c, i) => ({ symptom: ["インストール後にスキルが見えない", "doctor がカタログ不足を報告する", "デザイン文脈がないと言われる", "守りたい挙動まで書き換えられた", "根拠のないフォントや部品が表示された"][i], fix: ["エージェントを再起動してから doctor を再実行します。", "対象チャネルを指定して最新インストーラーを再実行します。", "プロジェクトのデザインシステム設定を依頼し、DESIGN.md 書き込み前に提案を確認します。", "その変更だけ戻し、守る挙動を明示して omd:remember に記録します。", "未解決のフィールドまたは空のグループだけを削除し、代替値をブランド事実として出しません。"][i] })) },
     ai: { ...en.ai, eyebrow: "人と AI が読めるドキュメント", title: "確認したページを、そのまま AI エージェントにも渡す", lead: "各ルートは安定した情報構造を持ちます。非推奨の MCP やブラウザセッションがなくても、原典カタログと製品上の決まりを読めます。", machineTitle: "機械可読の入口", machineBody: "ルーティングには compact index、製品モデルと規則全体には full ファイルを使います。", machineLinks: [{ label: "llms.ja.txt", href: "/llms.ja.txt", description: "日本語の製品契約とルーティング概要。" }, { label: "llms.txt", href: "/llms.txt", description: "英語の compact index。" }, { label: "llms-full.txt", href: "/llms-full.txt", description: "拡張ドキュメントとカタログ文脈。" }, { label: "Raw DESIGN.md", href: "/toss/design.md", description: "リファレンスごとの安定した原文パス。" }], promptTitle: "引き継ぎに使えるプロンプト", prompt: "最初に DESIGN.md を読んでください。明示しない限り既存ルート、挙動、ユーザーコピーを維持してください。検証済みトークンだけを使い、不明な参照フィールドは省略し、報告前にアクセシビリティと interface-feel を確認してください。", contractTitle: "エージェントが守る項目", contract: ["DESIGN.md をプロジェクトの基準として扱います。", "不明な参照データを代替値で埋めません。", "リファレンスの根拠と製品の事実を区別します。", "実際の製品ルートを確認してから完了します。", "ユーザーの修正は範囲付きの好みとして残します。"], builderTitle: "視覚プレビューは Builder で確認します", builderBody: "このドキュメントは CLI からエージェントへの引き継ぎを説明します。リファレンスの探索とプレビューは引き続き Home → Builder で行います。" },
@@ -1324,8 +1324,8 @@ const zhCn = translatedLocale(
   "安装 oh-my-design，把带质量等级的设计上下文交给 AI 编程助手，再用可核验的流程改进实际产品界面。",
   { overview: "概览", "getting-started": "快速开始", demo: "现场演示", workflows: "工作流", skills: "技能", "anti-slop": "AI slop 判定", showcase: "案例", troubleshooting: "故障排查", ai: "面向 AI 的文档" },
   {
-    ui: { product: "oh-my-design CLI", docs: "文档", language: "语言", copy: "复制", copied: "已复制", openBuilder: "打开 Builder", github: "GitHub", onThisPage: "本页内容", previous: "上一页", next: "下一页", actualOutput: "实际项目产出", prompt: "提示词", result: "结果", files: "变更文件", verified: "验证", homeAria: "oh-my-design 首页", pagination: "文档翻页", skillsLabel: "技能", pipeline: "质量分级参考 → DESIGN.md → 实现 → 验证", pipelineNote: "verified_v2 141 个 · partial 159 个 · legacy 140 个。公开演示请使用 verified_v2。", skipContent: "跳到文档正文", copyFailed: "复制失败", copyPage: "复制本页", pageCopied: "已复制本页", pageTools: "页面工具", morePageActions: "更多页面操作", viewMarkdown: "以 Markdown 查看", copyForAgent: "复制给 AI 编程助手", ready: "准备就绪" },
-    overview: { ...en.overview, eyebrow: "给 AI 编程助手的设计上下文", title: "让会写代码的助手，也能读懂设计依据", lead: "oh-my-design 会把带质量等级的参考库和可复用设计工作流装进你正在使用的编程工具。支持的工具还会获得专业智能体角色。安装后，直接描述要改的产品界面即可。", truthTitle: "CLI 为 AI 编程助手准备工作环境", truthBody: "套件包含 20 个产品技能、18 个智能体定义和 440 份带质量等级的 DESIGN.md：verified_v2 141 份、partial 159 份、legacy snapshot 140 份。公开演示请使用 verified_v2。Claude Code、Codex 和 OpenCode 会获得兼容技能、角色与目录；Cursor 会获得项目规则和目录。", proof: "20 个产品技能 · 18 个专业智能体 · verified_v2 141 / partial 159 / legacy 140 · 安装过程 0 次 AI 调用", outcomesTitle: "从你要的结果开始", outcomesLead: "无需记住技能名。说明要改的界面和不能动的内容，系统会选择合适的工作流。", outcomes: [
+    ui: { product: "oh-my-design CLI", docs: "文档", language: "语言", copy: "复制", copied: "已复制", openBuilder: "打开 Builder", github: "GitHub", onThisPage: "本页内容", previous: "上一页", next: "下一页", actualOutput: "实际项目产出", prompt: "提示词", result: "结果", files: "变更文件", verified: "验证", homeAria: "oh-my-design 首页", pagination: "文档翻页", skillsLabel: "技能", pipeline: "质量分级参考 → DESIGN.md → 实现 → 验证", pipelineNote: "verified_v2 140 个 · partial 160 个 · legacy 140 个。公开演示请使用 verified_v2。", skipContent: "跳到文档正文", copyFailed: "复制失败", copyPage: "复制本页", pageCopied: "已复制本页", pageTools: "页面工具", morePageActions: "更多页面操作", viewMarkdown: "以 Markdown 查看", copyForAgent: "复制给 AI 编程助手", ready: "准备就绪" },
+    overview: { ...en.overview, eyebrow: "给 AI 编程助手的设计上下文", title: "让会写代码的助手，也能读懂设计依据", lead: "oh-my-design 会把带质量等级的参考库和可复用设计工作流装进你正在使用的编程工具。支持的工具还会获得专业智能体角色。安装后，直接描述要改的产品界面即可。", truthTitle: "CLI 为 AI 编程助手准备工作环境", truthBody: "套件包含 22 个产品技能、19 个智能体定义和 440 份带质量等级的 DESIGN.md：verified_v2 140 份、partial 160 份、legacy snapshot 140 份。公开演示请使用 verified_v2。Cursor 2.4+ 会获得 21 个兼容 Agent Skills 和精简的项目规则；独立专业角色仅安装到支持它们的渠道。", proof: "22 个产品技能 · 19 个专业智能体 · verified_v2 140 / partial 160 / legacy 140 · 安装过程 0 次 AI 调用", outcomesTitle: "从你要的结果开始", outcomesLead: "无需记住技能名。说明要改的界面和不能动的内容，系统会选择合适的工作流。", outcomes: [
       { title: "建立设计系统", description: "把产品需求和 verified_v2 参考转成项目自有的 DESIGN.md；未知事实不会被补写。", prompt: "为家庭财务应用建立冷静、可信的设计系统。参考 Toss，但保留现有标志和文案。", result: "DESIGN.md、代理连接文件、明确的 token 差异和已确认的首个界面。" },
       { title: "交付完整界面", description: "把调研、IA、线框、组件、文案、无障碍和验证串成带检查点的流程。", prompt: "设计并实现这个应用的引导流程。保留当前技术栈，以 DESIGN.md 为唯一依据。", result: "可运行界面、完整状态、验证记录和仓库内交付物。" },
       { title: "改进现有 UI", description: "保留产品行为，同时修复层级、节奏、无障碍和缺少产品依据的重复模式。", prompt: "不要更改 URL 或字段名，改进定价页。先应用影响最大的修复并验证结果。", result: "聚焦的代码改动、前后依据和确定性质量检查。" },
@@ -1339,7 +1339,7 @@ const zhCn = translatedLocale(
       { name: "Codex", body: "安装技能、内嵌完整正文的代理角色、辅助脚本和本地参考目录。", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "Claude Code", body: "安装技能、子代理、目录和安全合并的项目 hooks。", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "OpenCode", body: "安装技能、原生子代理和离线参考目录。项目安装使用 `.opencode`，`--global` 使用 `~/.config/opencode`，并通过 `doctor --global` 检查。", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "安装编辑器规则 shim 和共享目录。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "安装 21 个原生 Agent Skills、精简的 DESIGN.md bootstrap 规则和共享目录。仅旧版客户端使用 `--cursor-rule-only`。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ], doneTitle: "产品发生变化才算完成，而不是安装成功。", doneBody: "良好的首次运行会留下可见的 UI 改进、项目 DESIGN.md 和清晰的下一条提示词。" },
     demo: {
       eyebrow: "现场演示手册",
@@ -1381,7 +1381,7 @@ const zhCn = translatedLocale(
       { title: "改进现有页面", when: "能用但缺少产品特征的 UI", prompt: "检查这个仪表盘中缺少产品依据的重复模式、层级、密度、动效和无障碍。保留行为，先应用影响最大的修复，再展示差异。", outputs: ["按优先级排列的问题", "聚焦补丁", "前后依据"], skills: ["omd:slop-audit", "omd:feel", "omd:designer-review"] },
       { title: "记录偏好修正", when: "教代理你的偏好", prompt: "我们的 CTA 不使用全大写。把这个偏好记录到项目中，保持按钮行为并修正当前页面。", outputs: ["待处理偏好", "有范围的 UI 修正", "DESIGN.md 合并建议"], skills: ["omd:remember", "omd:learn", "omd:taste"] },
     ] },
-    skills: { ...en.skills, eyebrow: "能力地图", title: "按结果整理的 20 个产品技能", lead: "需要精确控制时可以指定技能名。大多数时候，只要说明要做的界面和限制即可。发布包包含下列 20 个产品技能。", countNote: "20 个产品技能 · 18 个专业智能体", groups: en.skills.groups.map((g, i) => ({ ...g, title: ["建立项目设计依据", "构建实际界面", "检查产品质量", "写出自然的多语言文案", "记录有来源的参考"][i], description: ["创建、应用并同步项目的设计依据。", "把需求变成可运行、可交付的产品界面。", "检查界面观感、设计一致性、模式重复、无障碍和发布准备。", "先写好韩语原稿，再在五种语言中保留原意并重新组织表达。", "把公开界面记录成带版本的证据，不编造未知 token。"][i] })), routingTitle: "技能名可以不写", routingBody: "直接说“改进并验证这个结账页”，系统会选择完成任务所需的技能。" },
+    skills: { ...en.skills, eyebrow: "能力地图", title: "按结果整理的 22 个产品技能", lead: "需要精确控制时可以指定技能名。大多数时候，只要说明要做的界面和限制即可。发布包包含下列 22 个产品技能。", countNote: "22 个产品技能 · 19 个专业智能体", groups: en.skills.groups.map((g, i) => ({ ...g, title: ["建立项目设计依据", "构建实际界面", "检查产品质量", "写出自然的多语言文案", "记录有来源的参考"][i], description: ["创建、应用并同步项目的设计依据。", "把需求变成可运行、可交付的产品界面。", "检查界面观感、设计一致性、模式重复、无障碍和发布准备。", "先写好韩语原稿，再在五种语言中保留原意并重新组织表达。", "把公开界面记录成带版本的证据，不编造未知 token。"][i] })), routingTitle: "技能名可以不写", routingBody: "直接说“改进并验证这个结账页”，系统会选择完成任务所需的技能。" },
     antiSlop: {
       eyebrow: "判定标准",
       title: "我们把没有产品依据却反复套用的模式称为 AI slop",
@@ -1542,7 +1542,7 @@ const zhCn = translatedLocale(
       prompt: "重构 CLI 体验，让新用户先理解结果、看到真实案例，并能用五种语言继续阅读。保留 /builder 作为产品创建路径。",
       verification: ["五种语言路由完整性", "CLI 全新安装测试", "doctor 降级状态测试", "Home → /builder 回归检查", "生产构建"],
       honesty: "下方视觉内容是本仓库真实文档改造的结构示意图，不是生成应用的截图；这里也不声称用一次提示词生成了无关应用。",
-      previewStats: ["20 个技能", "18 个智能体", "10 个阶段"],
+      previewStats: ["22 个技能", "19 个智能体", "10 个阶段"],
     },
     troubleshooting: { ...en.troubleshooting, eyebrow: "恢复", title: "出现问题时，先确认下一步", lead: "先运行 doctor。它会按工具检查技能、智能体角色、参考目录和项目启用状态，不会因为发现一个文件就判定安装正常。", doctorTitle: "先运行一次诊断", doctorBody: "CI 使用 JSON 输出；面向用户的报告可以直接粘贴给 AI 编程助手。degraded 状态会返回非零退出码。", cases: en.troubleshooting.cases.map((c, i) => ({ symptom: ["安装后看不到技能", "doctor 报告目录缺失", "AI 编程助手说没有设计上下文", "想保留的行为也被改写", "参考中出现无依据的字体或组件"][i], fix: ["重启 AI 编程助手，再运行 doctor。", "选择正确的目标工具，重新运行最新版安装器。", "请求建立项目设计系统，并在写入 DESIGN.md 前确认方案。", "只回退相关改动，明确受保护行为并用 omd:remember 记录修正。", "只移除未解决字段或空组，不用系统字体或通用组件冒充品牌事实。"][i] })) },
     ai: { ...en.ai, eyebrow: "人和 AI 都能读取", title: "把已经确认的文档直接交给 AI 编程助手", lead: "每个文档路由都有稳定的信息结构。无需浏览器会话或已弃用的 MCP，也能读取原始目录和产品约定。", machineTitle: "机器可读入口", machineBody: "路由使用 compact index，需要完整产品模型和规则时使用 full 文件。", machineLinks: [{ label: "llms.zh-cn.txt", href: "/llms.zh-cn.txt", description: "简体中文产品约定与路由概要。" }, { label: "llms.txt", href: "/llms.txt", description: "英文 compact index。" }, { label: "llms-full.txt", href: "/llms-full.txt", description: "扩展文档和目录上下文。" }, { label: "Raw DESIGN.md", href: "/toss/design.md", description: "每个参考的稳定原文路径。" }], promptTitle: "可直接交给 AI 编程助手的提示词", prompt: "先读 DESIGN.md。除非我明确要求，否则保留现有路由、行为和用户文案。只使用已验证的设计 token，省略未知参考字段，并在汇报前运行无障碍和 interface-feel 检查。", contractTitle: "AI 编程助手需要遵守的约定", contract: ["DESIGN.md 是项目唯一的设计依据。", "未知参考数据保持缺省。", "参考证据和产品事实属于不同领域。", "验证实际产品页面后才算完成。", "用户修正应记录为有明确范围的偏好。"], builderTitle: "视觉预览仍以 Builder 为准", builderBody: "这些文档说明 CLI 如何把上下文交给 AI 编程助手。参考探索和视觉预览仍通过 Home → Builder 完成。" },
@@ -1554,8 +1554,8 @@ const zhTw = translatedLocale(
   "安裝 oh-my-design，把有品質分級的設計脈絡交給 AI 程式助理，再用可追溯的流程改善實際產品介面。",
   { overview: "總覽", "getting-started": "快速開始", demo: "現場示範", workflows: "工作流程", skills: "技能", "anti-slop": "AI slop 判定", showcase: "案例", troubleshooting: "問題排解", ai: "給 AI 的文件" },
   {
-    ui: { product: "oh-my-design CLI", docs: "文件", language: "語言", copy: "複製", copied: "已複製", openBuilder: "開啟 Builder", github: "GitHub", onThisPage: "本頁內容", previous: "上一頁", next: "下一頁", actualOutput: "實際專案產出", prompt: "提示詞", result: "結果", files: "變更檔案", verified: "驗證", homeAria: "oh-my-design 首頁", pagination: "文件換頁", skillsLabel: "技能", pipeline: "品質分級參考 → DESIGN.md → 實作 → 驗證", pipelineNote: "verified_v2 141 份 · partial 159 份 · legacy 140 份。公開示範請使用 verified_v2。", skipContent: "跳到文件正文", copyFailed: "複製失敗", copyPage: "複製本頁", pageCopied: "已複製本頁", pageTools: "頁面工具", morePageActions: "更多頁面操作", viewMarkdown: "以 Markdown 檢視", copyForAgent: "複製給 AI 程式助理", ready: "準備完成" },
-    overview: { ...zhCn.overview, eyebrow: "給 AI 程式助理的設計脈絡", title: "讓會寫程式的助理，也能讀懂設計依據", lead: "oh-my-design 會把有品質分級的參考庫與可重複使用的設計工作流程，安裝到你正在用的程式工具。支援的工具還會加入專業角色。安裝完成後，直接說明要調整的產品介面即可。", truthTitle: "CLI 先把 AI 程式助理需要的環境準備好", truthBody: "套件包含 20 個產品技能、18 個代理定義與 440 份有品質分級的 DESIGN.md：verified_v2 141 份、partial 159 份、legacy snapshot 140 份。公開示範請使用 verified_v2。Claude Code、Codex 與 OpenCode 會取得相容技能、角色與參考目錄；Cursor 會取得專案規則與參考目錄。", proof: "20 個產品技能 · 18 個專業代理 · verified_v2 141 / partial 159 / legacy 140 · 安裝期間 0 次 AI 呼叫", outcomesTitle: "從想完成的成果開始", outcomesLead: "不用記技能名稱。說明要調整的介面與不能更動的內容，系統會選擇適合的工作流程。", outcomes: [
+    ui: { product: "oh-my-design CLI", docs: "文件", language: "語言", copy: "複製", copied: "已複製", openBuilder: "開啟 Builder", github: "GitHub", onThisPage: "本頁內容", previous: "上一頁", next: "下一頁", actualOutput: "實際專案產出", prompt: "提示詞", result: "結果", files: "變更檔案", verified: "驗證", homeAria: "oh-my-design 首頁", pagination: "文件換頁", skillsLabel: "技能", pipeline: "品質分級參考 → DESIGN.md → 實作 → 驗證", pipelineNote: "verified_v2 140 份 · partial 160 份 · legacy 140 份。公開示範請使用 verified_v2。", skipContent: "跳到文件正文", copyFailed: "複製失敗", copyPage: "複製本頁", pageCopied: "已複製本頁", pageTools: "頁面工具", morePageActions: "更多頁面操作", viewMarkdown: "以 Markdown 檢視", copyForAgent: "複製給 AI 程式助理", ready: "準備完成" },
+    overview: { ...zhCn.overview, eyebrow: "給 AI 程式助理的設計脈絡", title: "讓會寫程式的助理，也能讀懂設計依據", lead: "oh-my-design 會把有品質分級的參考庫與可重複使用的設計工作流程，安裝到你正在用的程式工具。支援的工具還會加入專業角色。安裝完成後，直接說明要調整的產品介面即可。", truthTitle: "CLI 先把 AI 程式助理需要的環境準備好", truthBody: "套件包含 22 個產品技能、19 個代理定義與 440 份有品質分級的 DESIGN.md：verified_v2 140 份、partial 160 份、legacy snapshot 140 份。公開示範請使用 verified_v2。Cursor 2.4+ 會取得 21 個相容 Agent Skills 與精簡的專案規則；獨立專業角色只安裝到支援它們的通道。", proof: "22 個產品技能 · 19 個專業代理 · verified_v2 140 / partial 160 / legacy 140 · 安裝期間 0 次 AI 呼叫", outcomesTitle: "從想完成的成果開始", outcomesLead: "不用記技能名稱。說明要調整的介面與不能更動的內容，系統會選擇適合的工作流程。", outcomes: [
       { title: "建立設計系統", description: "把產品需求和 verified_v2 參考轉成專案自有 DESIGN.md；未知事實不會被補寫。", prompt: "為家庭財務 App 建立沉穩、可信的設計系統。參考 Toss，但保留現有標誌與文案。", result: "DESIGN.md、代理連接檔、清楚的 token 差異與確認過的第一個介面。" },
       { title: "交付完整介面", description: "把研究、IA、線框、元件、文案、無障礙與驗證串成有檢查點的流程。", prompt: "設計並實作這個 App 的 onboarding。保留目前技術堆疊，以 DESIGN.md 為唯一依據。", result: "可運作介面、完整狀態、驗證紀錄與程式庫內交付物。" },
       { title: "改善既有 UI", description: "保留產品行為，同時修正層級、節奏、無障礙與缺少產品依據的重複模式。", prompt: "不要改 URL 或欄位名稱，改善定價頁。先套用影響最大的修正並驗證。", result: "聚焦的程式變更、前後依據與確定性品質檢查。" },
@@ -1564,7 +1564,7 @@ const zhTw = translatedLocale(
       { name: "Codex", body: "安裝技能、內嵌完整內容的代理角色、輔助腳本與本地參考目錄。", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
       { name: "Claude Code", body: "安裝技能、子代理、目錄與安全合併的專案 hooks。", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
       { name: "OpenCode", body: "安裝技能、原生子代理與離線參考目錄。專案安裝使用 `.opencode`，`--global` 使用 `~/.config/opencode`，並以 `doctor --global` 檢查。", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
-      { name: "Cursor", body: "安裝編輯器規則 shim 與共享目錄。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+      { name: "Cursor", body: "安裝 21 個原生 Agent Skills、精簡的 DESIGN.md bootstrap 規則與共享目錄。僅舊版用戶端使用 `--cursor-rule-only`。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
     ], doneTitle: "產品發生改變才算完成，而不是安裝成功。", doneBody: "良好的第一次執行會留下可見 UI 改善、專案 DESIGN.md 與清楚的下一個提示詞。" },
     demo: {
       eyebrow: "現場示範指南",
@@ -1606,7 +1606,7 @@ const zhTw = translatedLocale(
       { title: "改善既有頁面", when: "可用但缺少產品特色的 UI", prompt: "檢查這個儀表板中缺少產品依據的重複模式、層級、密度、動效與無障礙。保留行為，先套用影響最大的修正，再展示差異。", outputs: ["依優先順序整理的問題", "聚焦修補", "前後依據"], skills: ["omd:slop-audit", "omd:feel", "omd:designer-review"] },
       { title: "記錄偏好修正", when: "教代理你的偏好", prompt: "我們的 CTA 不使用全大寫。把這項偏好記錄到專案中，保留按鈕行為並修正目前頁面。", outputs: ["待處理偏好", "有範圍的 UI 修正", "DESIGN.md 合併建議"], skills: ["omd:remember", "omd:learn", "omd:taste"] },
     ] },
-    skills: { ...zhCn.skills, eyebrow: "功能地圖", title: "依成果整理的 20 個產品技能", lead: "需要精準控制時可以指定技能名稱。多數情況只要說明介面與限制即可。發布套件包含下列 20 個產品技能。", countNote: "20 個產品技能 · 18 個專業代理", groups: en.skills.groups.map((g, i) => ({ ...g, title: ["建立專案設計依據", "實作產品介面", "檢查產品品質", "寫出自然的多語文案", "留下可追溯的參考"][i], description: ["建立、套用並同步專案的設計依據。", "把需求做成可操作、可交付的產品介面。", "檢查介面感受、設計一致性、模式重複、無障礙與發布準備。", "先完成韓語原稿，再針對五種語言重寫，保留相同事實與操作。", "把公開介面記錄成含版本資訊的依據，不捏造未知 token。"][i] })), routingTitle: "技能名稱可以省略", routingBody: "直接說「改善並驗證這個結帳頁」，系統會選擇完成工作所需的技能。" },
+    skills: { ...zhCn.skills, eyebrow: "功能地圖", title: "依成果整理的 22 個產品技能", lead: "需要精準控制時可以指定技能名稱。多數情況只要說明介面與限制即可。發布套件包含下列 22 個產品技能。", countNote: "22 個產品技能 · 19 個專業代理", groups: en.skills.groups.map((g, i) => ({ ...g, title: ["建立專案設計依據", "實作產品介面", "檢查產品品質", "寫出自然的多語文案", "留下可追溯的參考"][i], description: ["建立、套用並同步專案的設計依據。", "把需求做成可操作、可交付的產品介面。", "檢查介面感受、設計一致性、模式重複、無障礙與發布準備。", "先完成韓語原稿，再針對五種語言重寫，保留相同事實與操作。", "把公開介面記錄成含版本資訊的依據，不捏造未知 token。"][i] })), routingTitle: "技能名稱可以省略", routingBody: "直接說「改善並驗證這個結帳頁」，系統會選擇完成工作所需的技能。" },
     antiSlop: {
       eyebrow: "判定方式",
       title: "我們把缺少產品判斷的重複模式稱為 AI slop",
@@ -1767,7 +1767,7 @@ const zhTw = translatedLocale(
       prompt: "重構 CLI 體驗，讓新使用者先理解成果、看到真實案例，並能以五種語言繼續閱讀。保留 /builder 作為產品建立路徑。",
       verification: ["五種語言路由完整性", "CLI 全新安裝測試", "doctor 降級狀態測試", "Home → /builder 回歸檢查", "正式環境建置"],
       honesty: "下方視覺內容是本程式庫真實文件改造的結構示意圖，不是生成應用程式的截圖；這裡也不宣稱一次提示就生成了無關應用。",
-      previewStats: ["20 個技能", "18 個代理", "10 個階段"],
+      previewStats: ["22 個技能", "19 個代理", "10 個階段"],
     },
     troubleshooting: { ...zhCn.troubleshooting, eyebrow: "排除問題", title: "遇到問題時，先確認下一步", lead: "先執行 doctor。它會依工具檢查技能、代理角色、參考目錄與專案啟用狀態，不會因為找到一個檔案就判定安裝正常。", doctorTitle: "先執行一次診斷", doctorBody: "CI 使用 JSON 輸出；給使用者看的報告可以直接貼給 AI 程式助理。degraded 狀態會回傳非零結束碼。", cases: [
       { symptom: "安裝後看不到技能", fix: "重新啟動 AI 程式助理，再執行 doctor。" },

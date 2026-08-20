@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.505",
+  "experiment_id": "static-absence-guardrail-pin-1.9.505",
+  "status": "EXACT_CANDIDATE_PINNED",
+  "provider_calls": 0,
+  "promotion": false,
+  "candidate": {
+    "id": "omd-static-absence-guardrail-candidate",
+    "vendor_dir": "omd-1.9.504",
+    "commit": "86546d5af67d4a71f0b6a867ec3869ec299f3159",
+    "skill_tree": "73f5644267eee1e7053ba4a1eb66aa93b897cc81"
+  },
+  "source_sha256": {
+    "skill": "acd2ddd6592046c1ae37017f377f3c2aa645bd97ebdb4321bbca90f87ecb993f",
+    "browser_runner": "bbd1b2629037381873d230ce15c07a1b97275fc04ab327e51f0d6df1d4b309b3",
+    "artifact_helper": "4005623c6156e5f59981bb74a561d0baa04ea13eae10dd80e39fa3745a5230b7"
+  },
+  "next": "Lock a genuinely unseen task before exact control-versus-candidate transfer."
+}

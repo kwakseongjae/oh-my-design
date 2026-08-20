@@ -1,0 +1,71 @@
+{
+  "id": "digital-master-lineage-review-v0.1",
+  "version": "0.1.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "onboarding-v1",
+  "review_brief": "A digital master lineage review for archive operators. Preserve seven supplied asset identifiers, seven parent relationships including the two-parent package merge, the separate checksum manifest, three review views, source-note setting, review name, and summary facts without inventing validation, approval, rights, delivery, checksum verification, release, or archival outcomes.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": { "landmarks": { "h1_count": { "exact": 1 }, "main_count": { "exact": 1 }, "nav_count": { "min": 1 }, "footer_count": { "min": 1 } } },
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": [
+    "[data-bench='review-view-option']", "[data-bench='source-note-toggle']", "[data-bench='lineage-review-form']", "[data-bench='review-name']", "[data-bench='form-status']", "[data-bench='asset-node']", "[data-bench='asset-id']", "[data-bench='parent-id']", "[data-bench='dependency-link']", "[data-bench='checksum-carrier']", "[data-bench='checksum-value']", "[data-bench='compact-control-copy']", "[data-bench-design-role='lineage-map']", "[data-bench-decision-role='context']", "[data-bench-decision-role='target']", "[data-bench-decision-role='evidence']", "[data-bench-decision-role='state']", "[data-bench-decision-role='action']"
+  ],
+  "protected_hook_counts": {
+    "[data-bench='review-view-option']": 3,
+    "[data-bench='source-note-toggle']": 1,
+    "[data-bench='lineage-review-form']": 1,
+    "[data-bench='review-name']": 1,
+    "[data-bench='form-status']": 1,
+    "[data-bench='asset-node']": 7,
+    "[data-bench='asset-id']": 7,
+    "[data-bench='parent-id']": 7,
+    "[data-bench='dependency-link']": 7,
+    "[data-bench='checksum-carrier']": 1,
+    "[data-bench='checksum-value']": 2,
+    "[data-bench='compact-control-copy']": 1,
+    "[data-bench-design-role='lineage-map']": 1,
+    "[data-bench-decision-role='context']": 1,
+    "[data-bench-decision-role='target']": 1,
+    "[data-bench-decision-role='evidence']": 1,
+    "[data-bench-decision-role='state']": 1,
+    "[data-bench-decision-role='action']": 1
+  },
+  "journey_oracle": {
+    "choice": { "selector": "[data-bench='review-view-option']", "value_attribute": "data-view", "body_dataset": "view", "values": ["lineage", "manifest", "handoff"], "count": 3, "initial": "lineage", "selected": "manifest" },
+    "toggle": { "selector": "[data-bench='source-note-toggle']" },
+    "form": { "form_selector": "[data-bench='lineage-review-form']", "field_selector": "[data-bench='review-name']", "status_selector": "[data-bench='form-status']", "invalid_value": "", "valid_value": "OTT lineage review" }
+  },
+  "text_geometry_oracle": {
+    "viewports": ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "scope_selectors": ["[data-bench-design-role='lineage-map']", "[data-bench='checksum-carrier']", "[data-bench-decision-role='context']"],
+    "atomic_scope_selectors": ["[data-bench='asset-id']", "[data-bench='parent-id']", "[data-bench='checksum-value']", "[data-bench-decision-role='target']", "[data-bench-decision-role='evidence']", "[data-bench-decision-role='state']"],
+    "compact_copy_selectors": ["[data-bench='compact-control-copy']"],
+    "max_short_text_chars": 48,
+    "max_short_text_lines": 1
+  },
+  "decision_hierarchy_oracle": {
+    "viewports": ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "minimum_action_gap_px": 8,
+    "roles": { "container": "[data-bench-decision-role='context']", "target": "[data-bench-decision-role='target']", "evidence": "[data-bench-decision-role='evidence']", "state": "[data-bench-decision-role='state']", "action": "[data-bench-decision-role='action']" }
+  },
+  "protected_unknown_patterns": [
+    "\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b",
+    "\\b(?:validated|approved|rights cleared|delivered|checksum verified|release ready|archived|complete)\\b",
+    "\\btrusted by\\b", "[★☆]{3,}"
+  ],
+  "protected_known_patterns": ["PACKAGE-OTT-502 + QC-MANIFEST-610", "7 assets · 7 parent links · 2 checksums"],
+  "protected_unknown_selectors": ["blockquote", "[class*='testimonial' i]", "[class*='logo-wall' i]", "[class*='social-proof' i]"],
+  "design_oracle": {
+    "page_background": "#F4F0E8", "primary_action": "#24423C", "accent": "#C7653C", "ink": "#1C2422", "surface": "#FFFCF6", "border": "#AAB1AD", "muted_text": "#68716D", "card_radius_px": 0, "control_radius_px": 2,
+    "font_family": { "body_any": ["Arial"], "display_any": ["Georgia"] },
+    "selectors": { "primary_action": "[data-primary-action]", "card": "[data-bench-design-role='lineage-map']", "display": "h1" }
+  }
+}

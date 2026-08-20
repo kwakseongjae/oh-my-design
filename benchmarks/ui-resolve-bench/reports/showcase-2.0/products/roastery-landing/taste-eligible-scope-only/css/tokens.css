@@ -1,0 +1,155 @@
+/**
+ * Noll Design System
+ * -------------------
+ * Project-owned tokens. Not an official package (no Fluent, Material,
+ * Carbon, or similar). Aesthetic: modern editorial / publication.
+ *
+ * Design read: editorial landing for specialty-coffee guests,
+ * native CSS, photography-led, reserved motion.
+ *
+ * Dials (from brief: modern editorial, restrained micro-transitions)
+ *   DESIGN_VARIANCE:  6
+ *   MOTION_INTENSITY: 4
+ *   VISUAL_DENSITY:   3
+ *
+ * Palette family: Forest on cool slate.
+ *   Deliberately not the warm beige / brass / espresso craft default.
+ *   Accent is a single deep green pulled toward the roast-floor drum.
+ *
+ * Type: system sans (Avenir Next / Segoe UI). No Inter. No network fonts.
+ *   Serif skipped: modern editorial, not heritage manuscript.
+ *
+ * Shape: all-sharp. Radius 0 on surfaces, controls, and images.
+ *
+ * Motion: transform + opacity only. Every animation is gated by
+ *   prefers-reduced-motion (see --motion-* and main.css).
+ *
+ * Z-index scale (only these layers):
+ *   --z-base, --z-nav, --z-menu
+ *   Native <dialog> uses the top layer; do not compete with it.
+ */
+
+:root {
+  /* Color: light */
+  --bg: #e6e9ee;
+  --bg-elevated: #f3f5f7;
+  --bg-sunken: #d8dde3;
+  --bg-accent: #d5e2db;
+  --ink: #1b2026;
+  --ink-soft: #4d5661;
+  --line: #c3c9d1;
+  --accent: #215745;
+  --accent-hover: #184736;
+  --accent-ink: #f1f6f3;
+  --danger: #8e2d2d;
+  --ok: #215745;
+
+  /* Type */
+  --font-sans: "Avenir Next", "Segoe UI Variable", "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-mono: "SFMono-Regular", "Menlo", "Consolas", "Liberation Mono", monospace;
+  --font-display: var(--font-sans);
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: clamp(1.75rem, 2.4vw, 2.25rem);
+  --text-hero: clamp(2.35rem, 5vw, 4rem);
+  --text-section: clamp(1.85rem, 3.2vw, 2.75rem);
+
+  --leading-display: 1.08;
+  --leading-body: 1.55;
+  --measure: 62ch;
+  --tracking-display: -0.032em;
+  --tracking-tight: -0.02em;
+
+  /* Space */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 7rem;
+
+  /* Layout */
+  --nav-h: 64px;
+  --page: 1180px;
+  --gutter: clamp(1.25rem, 3vw, 2.5rem);
+  --section-y: clamp(4.5rem, 10vw, 8.5rem);
+
+  /* Shape: documented all-sharp system */
+  --radius: 0;
+  --control-h: 2.75rem;
+
+  /* Elevation, hue-tinted to cool slate (not pure black) */
+  --shadow-card: 0 10px 28px rgb(27 32 38 / 0.08);
+  --shadow-card-hover: 0 16px 36px rgb(27 32 38 / 0.14);
+
+  /* Motion tokens */
+  --motion-duration-instant: 80ms;
+  --motion-duration-press: 140ms;
+  --motion-duration-ui: 220ms;
+  --motion-duration-enter: 620ms;
+  --motion-ease-press: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-ui: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-rise: 18px;
+  --motion-card-lift: -6px;
+  --motion-press-scale: 0.98;
+  --motion-stagger: 80ms;
+
+  /* Z */
+  --z-base: 0;
+  --z-nav: 20;
+  --z-menu: 30;
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #14181c;
+  --bg-elevated: #1c2228;
+  --bg-sunken: #101418;
+  --bg-accent: #1c2b25;
+  --ink: #e7eaee;
+  --ink-soft: #9aa3ad;
+  --line: #2d353d;
+  --accent: #8fb8a3;
+  --accent-hover: #a4c8b5;
+  --accent-ink: #122019;
+  --danger: #e08a8a;
+  --ok: #8fb8a3;
+  --shadow-card: 0 10px 28px rgb(0 0 0 / 0.28);
+  --shadow-card-hover: 0 16px 36px rgb(0 0 0 / 0.4);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14181c;
+    --bg-elevated: #1c2228;
+    --bg-sunken: #101418;
+    --bg-accent: #1c2b25;
+    --ink: #e7eaee;
+    --ink-soft: #9aa3ad;
+    --line: #2d353d;
+    --accent: #8fb8a3;
+    --accent-hover: #a4c8b5;
+    --accent-ink: #122019;
+    --danger: #e08a8a;
+    --ok: #8fb8a3;
+    --shadow-card: 0 10px 28px rgb(0 0 0 / 0.28);
+    --shadow-card-hover: 0 16px 36px rgb(0 0 0 / 0.4);
+    color-scheme: dark;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --nav-h: 56px;
+    --section-y: 4rem;
+  }
+}

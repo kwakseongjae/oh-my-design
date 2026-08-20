@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.392",
+  "experiment_id": "rail-consist-known-failure-closure-luna-1.9.391",
+  "status": "PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19391",
+  "vendors_root": "/private/tmp/u19391-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "next_cell": "luna-rail-r1-control",
+  "sole_arm_delta": "exact-installed-skill-source",
+  "sources": {
+    "control_commit": "3a414a0a70dcc7fc70fb166e923ff318d3c53c66",
+    "control_skill_sha256": "2d57746474c4ba4ae440ed3ce0e0df9413291f67077ed2e519288edc2ffe0b24",
+    "candidate_commit": "e6513930bb29905190d193dfd7ee111aaf91c917",
+    "candidate_skill_sha256": "b0d170daa6847c8147d0db98a90554582a4bf028ab3fc24691ac5395c410bd02"
+  },
+  "hashes": {
+    "preregistered_plan_sha256": "2ed73b9a98f1a27aaee4ddcc3032d6a6fd8783c553f19b5ff9d92cd87aef6023",
+    "locked_plan_sha256": "16a6bacb9888ea7cc9556fd0eb1aa6ffca19a4cc87623d436e2110fd837e8d5f",
+    "matrix_state_sha256": "28b8e727c1bb846c17079512dc1308fa318583c6aee9c148d8e13b9b5024515e",
+    "task_prompt_sha256": "098a63101873ca4d8a91f2940d0fb677c66d84195f98bd6be5bf6ac3f10be86d",
+    "starter_and_product_sha256": "4050fefb51bd086d381a5f2b781b95dd514acd84fdf9fa2173fef044a986a4dc"
+  },
+  "equality": {
+    "shared_inputs_and_execution_pins": "6/6",
+    "clean_detached_cells": 6,
+    "clean_detached_sources": 2
+  },
+  "execution_contract": {
+    "max_new_cells": 1,
+    "retry": false,
+    "named_browser": "bench19366",
+    "runtime_dir_shared": true,
+    "exact_named_socket": true
+  }
+}

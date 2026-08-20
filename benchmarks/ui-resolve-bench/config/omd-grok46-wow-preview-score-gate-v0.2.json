@@ -1,0 +1,149 @@
+{
+ "schema_version": "0.2",
+ "gate_id": "omd-grok46-wow-preview-score-gate-v0.2",
+ "experiment_id": "omd-grok46-wow-preview-2.0.0-v0.2",
+ "preregistration_note": "Missing-data and wave rules are locked here BEFORE any cell can run (WP3 of omd-grok46-restart-v0.1). These rules are immutable once the first cell executes.",
+ "slot_contract": {
+  "maximum_slots": 54,
+  "scheduled_cells": 48,
+  "ineligible_cells": 6,
+  "omd_scheduled_cells": 9,
+  "trials_per_task_arm": 3,
+  "allowed_terminal_statuses": [
+   "completed",
+   "failed",
+   "timeout",
+   "infrastructure-invalid",
+   "capacity-exhausted",
+   "usage-limit"
+  ],
+  "failure_score": 0,
+  "missing_record_score": 0,
+  "missing_record_blocks_finalization": true
+ },
+ "missing_data_rules": {
+  "capacity_exclusion": {
+   "rule": "capacity-exhausted and usage-limit cells are excluded from quality comparison and reported separately",
+   "reporting": "separate",
+   "scope": "quality_denominator_not_counted",
+   "status_values": [
+    "capacity-exhausted",
+    "usage-limit"
+   ],
+   "signal_based_detection": {
+    "rule": "A failed or timeout cell whose sealed receipt carries process.usage_limit_signal_detected=true with capacity evidence counts as a capacity event for wave gates and the epoch-inconclusive threshold, and is excluded from the quality comparison",
+    "receipt_field": "process.usage_limit_signal_detected",
+    "rationale": "A cell that wrote partial product output and then died on provider quota is conservatively terminal=failed/timeout, but the quota cause must not be misattributed as arm quality failure (Luna caf0 order4 lesson)."
+   }
+  },
+  "epoch_inconclusive": {
+   "rule": "A second capacity event makes the epoch inconclusive",
+   "threshold": 2,
+   "event_type": "capacity_or_usage_limit",
+   "consequence": "epoch_inconclusive_no_release"
+  },
+  "minimum_n_per_axis": {
+   "rule": "arm×task axis with fewer than 2 valid trials is undecidable; undecidable never counts as a win or a loss",
+   "minimum_valid_trials": 2,
+   "axis": "arm_x_task",
+   "consequence": "undecidable_not_win_not_loss_not_counted_toward_release"
+  }
+ },
+ "wave_execution_rules": {
+  "execution_pattern": "serial",
+  "wave_order": [
+   "r1",
+   "r2",
+   "r3"
+  ],
+  "waves": [
+   {
+    "wave_id": "r1",
+    "name": "Round 1",
+    "description": "First wave of up to 16 cells to gauge capacity and initial results",
+    "cells_per_wave": 16,
+    "gate_before_next_wave": true,
+    "gate_conditions": [
+     "Check for capacity exhaustion events",
+     "Verify model is responsive",
+     "Assess token usage rate vs. weekly quota"
+    ]
+   },
+   {
+    "wave_id": "r2",
+    "name": "Round 2",
+    "description": "Second wave of up to 16 cells",
+    "cells_per_wave": 16,
+    "gate_before_next_wave": true,
+    "gate_conditions": [
+     "Check accumulated capacity events",
+     "Verify cumulative token usage",
+     "If second capacity event detected, halt and mark epoch inconclusive"
+    ]
+   },
+   {
+    "wave_id": "r3",
+    "name": "Round 3",
+    "description": "Third wave of up to 16 cells (remaining cells)",
+    "cells_per_wave": 16,
+    "gate_before_next_wave": false,
+    "gate_conditions": [
+     "Verify all previous gates passed"
+    ]
+   }
+  ]
+ },
+ "runtime_contract": {
+  "provider": "grok-build-cli",
+  "model": "grok-4.6",
+  "effort": "high",
+  "retry_count": 0,
+  "replacement_count": 0,
+  "fallback_count": 0,
+  "model_substitution_count": 0,
+  "effort_substitution_count": 0
+ },
+ "release_gates": {
+  "omd_ui_resolved_minimum": 8,
+  "omd_ui_resolved_per_task_minimum": 2,
+  "zero_unsupported_facts": true,
+  "zero_manual_product_edits": true,
+  "zero_follow_up_questions": true,
+  "zero_unplanned_interventions": true,
+  "publishable_evidence_every_scheduled_cell": true,
+  "capacity_events_excluded_from_quality_comparison": true,
+  "epoch_inconclusive_if_second_capacity_event": true,
+  "undecidable_arms_excluded_from_release_decision": true,
+  "strongest_competitor_rule": {
+   "selection": "For each task choose the eligible non-OmD arm by descending UI-Resolved count, then descending summed objective score with failures and omissions scored zero, then ascending variant_id.",
+   "comparison": "OmD must tie or beat that single selected arm in objective score in every same-task same-trial pair; a missing or non-completed result scores zero; capacity-excluded cells do not participate in this comparison.",
+   "competitor_omission_score": 0,
+   "paired_losses_allowed": 0
+  },
+  "blind_human": {
+   "minimum_unique_practitioners": 5,
+   "required_task_count": 3,
+   "minimum_omd_first_or_tie_tasks": 2,
+   "labels_hidden": true,
+   "order_hidden": true,
+   "duplicate_or_synthetic_reviewer_blocks": true
+  },
+  "pareto": {
+   "dimensions": [
+    "quality_desc",
+    "provider_tokens_asc",
+    "elapsed_ms_asc",
+    "human_burden_asc"
+   ],
+   "omd_must_be_non_dominated": true,
+   "functional_failure_cannot_be_offset_by_average": true,
+   "capacity_excluded_cells_not_scored": true
+  }
+ },
+ "claim_policy": {
+  "public_claim_scope": "Only these three preregistered tasks, exact frozen arms, exact grok-4.6/high, and this run may be described.",
+  "global_best_claim_allowed": false,
+  "cross_model_score_comparison_allowed": false,
+  "luna_caf0_comparison_forbidden": true
+ }
+}

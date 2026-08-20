@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ridge Desk — sample rental board</title>
+  <meta name="description" content="Sample trail-gear rental board. Six kits. Stock counts are not published.">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#board">Skip to the board</a>
+
+  <header class="nav-mast">
+    <p class="mast-line">Sample board · 17 Aug 2026 · Six kits</p>
+    <p class="mast-name"><a href="#board">Ridge Desk</a></p>
+    <nav class="mast-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#board" aria-current="location">Board</a></li>
+        <li><a href="#notes">Notes</a></li>
+      </ul>
+    </nav>
+    <hr class="mast-rule" aria-hidden="true">
+  </header>
+
+  <main>
+    <section class="board wrap" id="board">
+      <header class="head-hang">
+        <h1 class="board__title">Six kits on the board</h1>
+        <p class="board__lede">
+          Every listing is <strong>sample data</strong>.
+          We do not publish rental stock counts — a number here would be stale by evening.
+          Ask at the desk for this weekend’s shelf.
+        </p>
+      </header>
+
+      <fieldset class="filters" role="radiogroup" aria-label="Filter by category">
+        <legend class="filters__legend">Category</legend>
+        <label class="chip">
+          <input id="cat-all" type="radio" name="category" value="all" checked>
+          <span>All</span>
+        </label>
+        <label class="chip">
+          <input id="cat-shelter" type="radio" name="category" value="shelter">
+          <span>Shelter</span>
+        </label>
+        <label class="chip">
+          <input id="cat-sleep" type="radio" name="category" value="sleep">
+          <span>Sleep</span>
+        </label>
+        <label class="chip">
+          <input id="cat-carry" type="radio" name="category" value="carry">
+          <span>Carry</span>
+        </label>
+        <label class="chip">
+          <input id="cat-cook" type="radio" name="category" value="cook">
+          <span>Cook</span>
+        </label>
+        <label class="chip">
+          <input id="cat-trail" type="radio" name="category" value="trail">
+          <span>Trail</span>
+        </label>
+        <label class="chip">
+          <input id="cat-light" type="radio" name="category" value="light">
+          <span>Light</span>
+        </label>
+      </fieldset>
+
+      <p class="filter-status" id="filter-status" aria-live="polite">6 sample listings</p>
+
+      <ul class="gallery" id="gallery" role="listbox" aria-label="Rental kits" aria-describedby="filter-status">
+        <li role="presentation">
+          <button
+            class="card"
+            id="item-tent"
+            type="button"
+            role="option"
+            aria-selected="false"
+            aria-haspopup="dialog"
+            aria-controls="item-detail"
+            data-id="tent"
+            data-category="shelter"
+            style="--i: 0"
+          >
+            <span class="card__media">
+              <span class="card__badge">Sample listing</span>
+              <img
+                src="../assets/item-tent.jpg"
+                width="1024"
+                height="1024"
+                alt="Olive two-person dome tent with the mesh door open, studio shot"
+                fetchpriority="high"
+              >
+            </span>
+            <span class="card__meta">
+              <span class="card__name">Olive dome tent</span>
+              <span class="card__cat">Shelter</span>
+            </span>
+            <span class="card__avail">Stock counts are not published.</span>
+            <span class="card__action">Open notes →</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button
+            class="card"
+            id="item-pack"
+            type="button"
+            role="option"
+            aria-selected="false"
+            aria-haspopup="dialog"
+            aria-controls="item-detail"
+            data-id="pack"
+            data-category="carry"
+            style="--i: 1"
+          >
+            <span class="card__media">
+              <span class="card__badge">Sample listing</span>
+              <img
+                src="../assets/item-pack.jpg"
+                width="1024"
+                height="1024"
+                alt="Rust-orange hiking pack standing upright with a front bungee, studio shot"
+                loading="lazy"
+              >
+            </span>
+            <span class="card__meta">
+              <span class="card__name">Rust 45 pack</span>
+              <span class="card__cat">Carry</span>
+            </span>
+            <span class="card__avail">Stock counts are not published.</span>
+            <span class="card__action">Open notes →</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button
+            class="card"
+            id="item-stove"
+            type="button"
+            role="option"
+            aria-selected="false"
+            aria-haspopup="dialog"
+            aria-controls="item-detail"
+            data-id="stove"
+            data-category="cook"
+            style="--i: 2"
+          >
+            <span class="card__media">
+              <span class="card__badge">Sample listing</span>
+              <img
+                src="../assets/item-stove.jpg"
+                width="1024"
+                height="1024"
+                alt="Small titanium camping stove with folded wire legs, studio shot"
+                loading="lazy"
+              >
+            </span>
+            <span class="card__meta">
+              <span class="card__name">Folded canister stove</span>
+              <span class="card__cat">Cook</span>
+            </span>
+            <span class="card__avail">Stock counts are not published.</span>
+            <span class="card__action">Open notes →</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button
+            class="card"
+            id="item-poles"
+            type="button"
+            role="option"
+            aria-selected="false"
+            aria-haspopup="dialog"
+            aria-controls="item-detail"
+            data-id="poles"
+            data-category="trail"
+            style="--i: 3"
+          >
+            <span class="card__media">
+              <span class="card__badge">Sample listing</span>
+              <img
+                src="../assets/item-poles.jpg"
+                width="1024"
+                height="1024"
+                alt="Pair of collapsible trekking poles, one black and one silver, studio shot"
+                loading="lazy"
+              >
+            </span>
+            <span class="card__meta">
+              <span class="card__name">Crossing poles</span>
+              <span class="card__cat">Trail</span>
+            </span>
+            <span class="card__avail">Stock counts are not published.</span>
+            <span class="card__action">Open notes →</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button
+            class="card"
+            id="item-lantern"
+            type="button"
+            role="option"
+            aria-selected="false"
+            aria-haspopup="dialog"
+            aria-controls="item-detail"
+            data-id="lantern"
+            data-category="light"
+            style="--i: 4"
+          >
+            <span class="card__media">
+              <span class="card__badge">Sample listing</span>
+              <img
+                src="../assets/item-lantern.jpg"
+                width="1024"
+                height="1024"
+                alt="Compact rechargeable camping lantern glowing warm, studio shot"
+                loading="lazy"
+              >
+            </span>
+            <span class="card__meta">
+              <span class="card__name">Warm-glow lantern</span>
+              <span class="card__cat">Light</span>
+            </span>
+            <span class="card__avail">Stock counts are not published.</span>
+            <span class="card__action">Open notes →</span>
+          </button>
+        </li>
+        <li role="presentation">
+          <button
+            class="card"
+            id="item-bag"
+            type="button"
+            role="option"
+            aria-selected="false"
+            aria-haspopup="dialog"
+            aria-controls="item-detail"
+            data-id="bag"
+            data-category="sleep"
+            style="--i: 5"
+          >
+            <span class="card__media">
+              <span class="card__badge">Sample listing</span>
+              <img
+                src="../assets/item-bag.jpg"
+                width="1024"
+                height="1024"
+                alt="Rolled teal sleeping bag with black compression straps, studio shot"
+                loading="lazy"
+              >
+            </span>
+            <span class="card__meta">
+              <span class="card__name">Teal roll bag</span>
+              <span class="card__cat">Sleep</span>
+            </span>
+            <span class="card__avail">Stock counts are not published.</span>
+            <span class="card__action">Open notes →</span>
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <section class="notes wrap" id="notes" role="region" aria-labelledby="notes-title">
+      <header class="notes__head">
+        <h2 class="notes__title" id="notes-title">Desk notes</h2>
+      </header>
+      <p class="notes__copy">
+        Rental stock counts are not published. Kits leave and return through the week;
+        a count on this page would be wrong by the time you packed the car.
+        Ask at the desk for what is on the shelf this weekend.
+      </p>
+      <p class="notes__copy">
+        This board is sample data. It shows the kits we photograph for the desk list.
+        It does not take a booking.
+      </p>
+    </section>
+  </main>
+
+  <footer class="foot-dense">
+    <p>
+      Ridge Desk sample board. Local faces: Iowan Old Style with Avenir Next;
+      SF Mono on the issue line and this colophon. No live inventory, no network,
+      no booking. Photographs are the six studio stills in ../assets/. 17 August 2026.
+    </p>
+  </footer>
+
+  <dialog
+    class="detail"
+    id="item-detail"
+    aria-labelledby="detail-title"
+    aria-describedby="detail-avail"
+  >
+    <div class="detail__bar">
+      <p class="detail__kicker" id="detail-kicker">Sample listing</p>
+      <button class="detail__close" type="button" id="detail-close">Close</button>
+    </div>
+    <figure class="detail__figure">
+      <img id="detail-image" src="../assets/item-tent.jpg" width="1024" height="1024" alt="Olive two-person dome tent with the mesh door open, studio shot">
+    </figure>
+    <h2 class="detail__title" id="detail-title" tabindex="-1">Olive dome tent</h2>
+    <p class="detail__cat" id="detail-cat">Shelter</p>
+    <p class="detail__body" id="detail-body"></p>
+    <div class="detail__avail" id="detail-avail">
+      <span class="detail__avail-label">Availability</span>
+      <p id="detail-avail-copy">
+        Rental stock counts are not published. Ask at the desk for this weekend’s shelf.
+      </p>
+    </div>
+  </dialog>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -29,6 +29,10 @@ const DIMENSIONS = [
   { parameterName: "origin", displayName: "Collection origin", scope: "EVENT" },
   { parameterName: "location", displayName: "Share location", scope: "EVENT" },
   { parameterName: "artifact", displayName: "Share artifact", scope: "EVENT" },
+  { parameterName: "experiment_version", displayName: "Experiment version", scope: "EVENT" },
+  { parameterName: "target", displayName: "Inspection target", scope: "EVENT" },
+  { parameterName: "destination", displayName: "Handoff destination", scope: "EVENT" },
+  { parameterName: "outcome", displayName: "Handoff outcome", scope: "EVENT" },
 ];
 const KEY_EVENTS = ["bld_generate", "act_install_copy", "act_handoff"];
 

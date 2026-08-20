@@ -11,7 +11,6 @@ import {
 import { AlertCircle, FileText, Copy, Check, ChevronRight, ArrowLeft, Download, ArrowUpRight, Eye, SlidersHorizontal, FolderOpen, MessageSquare, Terminal } from "lucide-react";
 import { ReferencePreview } from "@/components/reference-preview";
 import { extractTokens } from "@/lib/extract-tokens";
-import { applyOverridesToMd } from "@/lib/core/generate-css";
 import type { Overrides, StylePreferences } from "@/lib/core/types";
 import type { RefDetail } from "@/app/builder/page";
 import { getDesignSystem } from "@/lib/design-systems";
@@ -26,9 +25,13 @@ import {
   type ReferenceFormatArtifact,
 } from "@/lib/references/export-formats";
 import { ReferenceShareButton } from "@/components/reference-share-button";
-import { INSTALL_CMD } from "@/components/install-cta";
 import { copyText } from "@/lib/clipboard";
-import { trackInstallCopy, trackPromptCopy } from "@/lib/activation/analytics";
+import { trackPromptCopy } from "@/lib/activation/analytics";
+import {
+  DESIGN_MD_VALIDATE_COMMAND,
+  describeBuilderDesignMdCoreConformance,
+  projectBuilderDesignMdCore,
+} from "@/lib/builder/design-md-core-export";
 
 type MdView = "rendered" | "raw";
 
@@ -65,16 +68,24 @@ export function PreviewExportView({
     [tokens.components.length, components],
   );
 
-  const designMd = useMemo(
-    () => applyOverridesToMd(
-      detail.designMd,
-      detail.id.charAt(0).toUpperCase() + detail.id.slice(1),
-      detail.primary, detail.fontFamily,
-      overrides, exportComponents, stylePreferences,
-      true,
-    ),
+  const designMdProjection = useMemo(
+    () => projectBuilderDesignMdCore({
+      source: detail.designMd,
+      referenceName: detail.id.charAt(0).toUpperCase() + detail.id.slice(1),
+      original: {
+        primaryColor: detail.primary,
+        fontFamily: detail.fontFamily,
+        headingWeight: detail.headingWeight,
+        borderRadius: detail.radius.replace(/[-–].*/, "").trim(),
+      },
+      overrides,
+      components: exportComponents,
+      stylePreferences,
+    }),
     [detail, overrides, exportComponents, stylePreferences],
   );
+  const designMd = designMdProjection.markdown;
+  const designMdConformance = designMdProjection.conformance;
 
   const claimOverrides = useMemo(() => {
     const contract = detail.referenceAst;
@@ -126,7 +137,17 @@ export function PreviewExportView({
   const refName = detail.id.charAt(0).toUpperCase() + detail.id.slice(1);
   const ds = getDesignSystem(detail.id);
   const homepageUrl = getHomepageUrl(detail.id);
-  const handoffPromptPreview = handoffPrompt.split(" (builder config:")[0];
+  const provenanceStart = handoffPrompt.indexOf(" (builder config:");
+  const rawHandoffPromptBase = provenanceStart >= 0 ? handoffPrompt.slice(0, provenanceStart) : handoffPrompt;
+  const handoffPromptBase = rawHandoffPromptBase.replace(
+    /^Set up our design system\s+—\s+(.+?)-style\./,
+    "Use the $1 reference as design evidence.",
+  );
+  const handoffPromptProvenance = provenanceStart >= 0 ? handoffPrompt.slice(provenanceStart) : "";
+  const adoptionInstruction = `Treat DESIGN.md as reference evidence until you identify this project's product surface and primary user task from its code or my instructions. Do not invent missing context; ask me, then run ${DESIGN_MD_VALIDATE_COMMAND} before adoption.`;
+  const adoptionPrompt = `${handoffPromptBase} ${adoptionInstruction}${handoffPromptProvenance}`;
+  const handoffPromptPreview = `${handoffPromptBase} ${adoptionInstruction}`;
+  const conformanceCopy = describeBuilderDesignMdCoreConformance(designMdConformance);
 
   function setCopyFeedback(target: string, copied: boolean) {
     setCopyState({ target, status: copied ? "copied" : "failed" });
@@ -160,16 +181,15 @@ export function PreviewExportView({
     setCopyFeedback(sourceFormat, copied);
   }
 
-  async function copyInstall(button: HTMLButtonElement) {
-    const copied = await copyText(INSTALL_CMD, {
+  async function copyValidationCommand(button: HTMLButtonElement) {
+    const copied = await copyText(DESIGN_MD_VALIDATE_COMMAND, {
       restoreTarget: button,
-      onSuccess: () => trackInstallCopy({ surface: "builder", reference: detail.id }),
     });
-    setCopyFeedback("install", copied);
+    setCopyFeedback("validate", copied);
   }
 
   async function copyPrompt(button: HTMLButtonElement) {
-    const copied = await copyText(handoffPrompt, {
+    const copied = await copyText(adoptionPrompt, {
       restoreTarget: button,
       onSuccess: () => trackPromptCopy({ surface: "builder", reference: detail.id }),
     });
@@ -336,6 +356,34 @@ export function PreviewExportView({
             </div>
           </div>
 
+          {sourceFormat === "designmd" && <div
+            className="shrink-0 border-b border-border/40 bg-muted/20 px-3 py-3 dark:border-border"
+            role="status"
+            aria-label="DESIGN.md Core conformance"
+          >
+            <div className="flex items-start gap-2.5">
+              {conformanceCopy.tone === "pass"
+                ? <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden />
+                : <AlertCircle className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${conformanceCopy.tone === "error" ? "text-red-600 dark:text-red-400" : "text-amber-600 dark:text-amber-400"}`} aria-hidden />}
+              <div className="min-w-0">
+                <div className="text-[11px] font-semibold text-foreground">{conformanceCopy.title}</div>
+                <p className="mt-0.5 text-[10px] leading-relaxed text-muted-foreground">
+                  {conformanceCopy.description}
+                </p>
+                {designMdConformance.reasons.length > 0 && (
+                  <ul className="mt-2 space-y-1" aria-label="Conformance reasons">
+                    {designMdConformance.reasons.map((reason, index) => (
+                      <li key={`${reason.code}-${index}`} className="text-[10px] leading-relaxed text-muted-foreground">
+                        <code className="font-mono text-foreground/75">{reason.code}</code>
+                        {": "}{reason.message}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>}
+
           <ReferenceEvidenceDrawer reference={detail.id} contract={detail.referenceAst} />
 
           <div
@@ -367,9 +415,9 @@ export function PreviewExportView({
             </div>
           </div>
 
-          {/* DESIGN.md content. Rendered strips all frontmatter (markdown.tsx),
-              so the tokens block is hidden there; Raw shows the full file —
-              tokens sit at the top like frontmatter, which is the intent. */}
+          {/* DESIGN.md content. Both modes now read the same vendor-neutral
+              Core v2 projection. Raw exposes the stable section anchors; the
+              rendered view hides them as ordinary HTML comments. */}
           <div className="flex-1 overflow-auto min-h-0">
             {sourceFormat === "designmd" && mdView === "rendered"
               ? <div className="p-5"><Markdown content={activeArtifact.content} /></div>
@@ -385,10 +433,10 @@ export function PreviewExportView({
             Continue in your project
           </div>
           <h2 id="builder-handoff-title" className="mt-1 text-xl font-semibold tracking-tight">
-            Use this DESIGN.md with your coding agent
+            Review, validate, then adopt this DESIGN.md
           </h2>
           <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-            Three actions, three destinations: save the file in your project, run the command in Terminal, then paste the prompt into your coding-agent chat.
+            The download preserves reference evidence; it does not become your project&apos;s design authority until you supply project context and choose to adopt it.
           </p>
         </div>
 
@@ -401,9 +449,9 @@ export function PreviewExportView({
             <div className="mt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
               Save to · project root
             </div>
-            <h3 className="mt-1.5 text-sm font-semibold">Put DESIGN.md in your project</h3>
+            <h3 className="mt-1.5 text-sm font-semibold">Save the reference projection</h3>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Download the file, then move it into the top-level folder you open with your coding agent.
+              Download the Core v2 file into the project root as a working copy. Unresolved fields stay absent, and no project adoption is implied.
             </p>
             <div className="mt-3 rounded-lg bg-muted/60 px-3 py-2 font-mono text-[11px] text-foreground/70">
               your-project/DESIGN.md
@@ -427,24 +475,24 @@ export function PreviewExportView({
             <div className="mt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
               Run in · project terminal
             </div>
-            <h3 className="mt-1.5 text-sm font-semibold">Install OmD from Terminal</h3>
+            <h3 className="mt-1.5 text-sm font-semibold">Validate the exact file</h3>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Open Terminal in the same project folder, paste this command, and press Enter. Restart your agent when it finishes.
+              Run the shared Core validator. Structural Core is still downloadable, but every reported reason must be resolved before claiming Portable Core.
             </p>
-            <div className="mt-3 truncate rounded-lg bg-muted/60 px-3 py-2 font-mono text-[11px] text-foreground/70">
-              $ {INSTALL_CMD}
+            <div className="mt-3 overflow-x-auto rounded-lg bg-muted/60 px-3 py-2 font-mono text-[11px] text-foreground/70">
+              <code className="whitespace-nowrap">{DESIGN_MD_VALIDATE_COMMAND}</code>
             </div>
             <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
-              After restart, run <code className="font-mono text-foreground/75">{INSTALL_CMD} doctor</code> once in the same Terminal.
+              Rerun the same command after adding the missing product scope, primary task, foundations, or governance named by the validator.
             </p>
             <div className="mt-auto pt-4">
               <button
                 type="button"
-                onClick={(event) => copyInstall(event.currentTarget)}
+                onClick={(event) => copyValidationCommand(event.currentTarget)}
                 className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-foreground px-3 font-mono text-[11px] font-semibold text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
               >
-                {copyState?.target === "install" && copyState.status === "copied" ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : copyState?.target === "install" && copyState.status === "failed" ? <AlertCircle className="h-3.5 w-3.5 text-red-400" /> : <Copy className="h-3.5 w-3.5" />}
-                {copyState?.target === "install" && copyState.status === "copied" ? "Command copied" : copyState?.target === "install" && copyState.status === "failed" ? "Copy failed" : "Copy Terminal command"}
+                {copyState?.target === "validate" && copyState.status === "copied" ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : copyState?.target === "validate" && copyState.status === "failed" ? <AlertCircle className="h-3.5 w-3.5 text-red-400" /> : <Copy className="h-3.5 w-3.5" />}
+                {copyState?.target === "validate" && copyState.status === "copied" ? "Validation command copied" : copyState?.target === "validate" && copyState.status === "failed" ? "Copy failed" : "Copy validation command"}
               </button>
             </div>
           </li>
@@ -457,9 +505,9 @@ export function PreviewExportView({
             <div className="mt-5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
               Paste in · agent chat
             </div>
-            <h3 className="mt-1.5 text-sm font-semibold">Tell your coding agent what to do</h3>
+            <h3 className="mt-1.5 text-sm font-semibold">Give an explicit project task</h3>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Open Claude Code, Codex, OpenCode, or Cursor for this project. Paste the prompt into its chat and send it.
+              Tell Claude Code, Codex, OpenCode, Cursor, or another agent which product surface and user task this reference should guide. Keep evidence and project decisions distinct.
             </p>
             <div className="mt-3 line-clamp-2 rounded-lg bg-muted/60 px-3 py-2 text-[11px] leading-relaxed text-foreground/70">
               &ldquo;{handoffPromptPreview}&rdquo;

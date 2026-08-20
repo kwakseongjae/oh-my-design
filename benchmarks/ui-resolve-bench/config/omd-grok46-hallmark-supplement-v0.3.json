@@ -1,0 +1,31 @@
+{
+ "schema_version": "0.1",
+ "contract_id": "omd-grok46-hallmark-supplement-v0.3",
+ "experiment_id": "omd-grok46-wow-preview-2.0.0-v0.2",
+ "kind": "supplementary-preregistration",
+ "status": "preregistered-provider-zero-locked",
+ "provider_execution_allowed": false,
+ "reason": "Hallmark (github.com/Nutlope/hallmark) postdates the official competitor freshness freeze; it enters as a supplementary arm under identical locked conditions, disclosed as post-freeze in any public claim.",
+ "arm": "hallmark",
+ "source": {
+  "repo": "https://github.com/Nutlope/hallmark",
+  "commit": "13ac0ec7e148655948100b6396439e481361d690",
+  "license": "MIT",
+  "fixture": "benchmarks/ui-resolve-bench/fixtures/competitor-skills-2.0/hallmark"
+ },
+ "cells": {
+  "tasks": [
+   "neighborhood-library-landing",
+   "cold-chain-operations",
+   "clinic-visit-prep-locales"
+  ],
+  "trials_per_task": 3,
+  "total": 9,
+  "cell_id_pattern": "<task>-grok46-r<trial>-hallmark",
+  "eligibility": "all three tasks (general-purpose design skill)"
+ },
+ "runtime": "identical to omd-grok46-wow-preview-v0.2 (grok-build-cli, grok-4.6, effort high, serial, retry 0, same runner/evaluator/score-gate shas at the execution commit)",
+ "comparison_policy": "hallmark cells join the public gallery and the per-task strongest-competitor selection WITH post-freeze disclosure; the primary 48-cell preregistered headline is also reported without the supplement for readers who want the strict-freeze view.",
+ "missing_data_rules": "inherit omd-grok46-wow-preview-score-gate-v0.2 including capacity/signal and minimum-n rules",
+ "execution_window": "r1 supplement cells run in the same session immediately after the admitted epoch completes its main r1 wave (never interleaved mid-wave); r2/r3 supplement cells follow the corresponding main waves."
+}

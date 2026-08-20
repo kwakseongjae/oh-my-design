@@ -1,0 +1,325 @@
+{
+  "schema_version": "0.1",
+  "generated_at": "2026-07-21T10:33:48.350Z",
+  "status": "internal-pilot",
+  "disclaimer": "One public fixture with nonuniform exploratory trials cannot support a best-skill or public leaderboard claim. Ship Preference and efficiency remain unscored. Invalid-attribution artifacts are retained but excluded from comparisons.",
+  "rows": [
+    {
+      "directory": "baseline",
+      "variant_id": "baseline",
+      "label": "No skill",
+      "preregistered_order": 0,
+      "run_status": "complete",
+      "skill_sha256": null,
+      "runtime": {
+        "agent": "codex-cli",
+        "agent_version": null,
+        "model": "gpt-5.6-terra",
+        "reasoning": "xhigh",
+        "sandbox": "workspace-write",
+        "ephemeral": true,
+        "ignored_user_config": true
+      },
+      "changed": true,
+      "automated_gate_pass": false,
+      "deterministic_score": 65,
+      "deterministic_max": 85,
+      "gates": {
+        "task_contract": true,
+        "state_journey": true,
+        "responsive": true,
+        "accessibility": true,
+        "design_grounding": false,
+        "evidence_honesty": true
+      },
+      "screenshots": {
+        "desktop": true,
+        "mobile": true
+      },
+      "attribution": {
+        "status": "valid-control",
+        "reason": "Direct no-skill CLI control with a complete runtime trace."
+      }
+    },
+    {
+      "directory": "baseline-agent",
+      "variant_id": "baseline",
+      "label": "No skill",
+      "preregistered_order": 0,
+      "run_status": "complete",
+      "skill_sha256": null,
+      "runtime": {
+        "agent": "codex-app-isolated-worker",
+        "model": "gpt-5.6-terra",
+        "reasoning": "xhigh",
+        "sandbox": "workspace-write",
+        "network_for_task": false
+      },
+      "changed": true,
+      "automated_gate_pass": false,
+      "deterministic_score": 61,
+      "deterministic_max": 85,
+      "gates": {
+        "task_contract": true,
+        "state_journey": true,
+        "responsive": false,
+        "accessibility": false,
+        "design_grounding": false,
+        "evidence_honesty": true
+      },
+      "screenshots": {
+        "desktop": true,
+        "mobile": true
+      },
+      "attribution": {
+        "status": "valid-control-observation",
+        "reason": "Isolated in-app no-skill observation; runtime is not normalized with the direct CLI control."
+      }
+    },
+    {
+      "directory": "raw-design-md",
+      "variant_id": "raw-design-md",
+      "label": "Raw DESIGN.md",
+      "preregistered_order": 1,
+      "run_status": "complete",
+      "skill_sha256": null,
+      "runtime": {
+        "agent": "codex-app-isolated-worker",
+        "model": "gpt-5.6-terra",
+        "reasoning": "xhigh",
+        "sandbox": "workspace-write",
+        "network_for_task": false
+      },
+      "changed": true,
+      "automated_gate_pass": false,
+      "deterministic_score": 79,
+      "deterministic_max": 85,
+      "gates": {
+        "task_contract": true,
+        "state_journey": true,
+        "responsive": true,
+        "accessibility": false,
+        "design_grounding": true,
+        "evidence_honesty": true
+      },
+      "screenshots": {
+        "desktop": true,
+        "mobile": true
+      },
+      "attribution": {
+        "status": "valid-context-observation",
+        "reason": "Raw DESIGN.md was the only preregistered context delta."
+      }
+    },
+    {
+      "directory": "anthropic-frontend-design",
+      "variant_id": "anthropic-frontend-design",
+      "label": "Anthropic Frontend Design",
+      "preregistered_order": 2,
+      "run_status": "complete",
+      "skill_sha256": "15a1fec6da5799be52a4c142157fa6f3e4e47b4c8f87354332914caa50e66465",
+      "runtime": {
+        "agent": "codex-app-isolated-worker",
+        "model": "gpt-5.6-terra",
+        "reasoning": "xhigh",
+        "sandbox": "workspace-write",
+        "network_for_task": false
+      },
+      "changed": true,
+      "automated_gate_pass": true,
+      "deterministic_score": 85,
+      "deterministic_max": 85,
+      "gates": {
+        "task_contract": true,
+        "state_journey": true,
+        "responsive": true,
+        "accessibility": true,
+        "design_grounding": true,
+        "evidence_honesty": true
+      },
+      "screenshots": {
+        "desktop": true,
+        "mobile": true
+      },
+      "attribution": {
+        "status": "valid-skill-observation",
+        "reason": "Installed frontmatter name and activation matched the pinned Anthropic skill snapshot."
+      }
+    },
+    {
+      "directory": "taste-skill",
+      "variant_id": "taste-skill",
+      "label": "Taste Skill v2",
+      "preregistered_order": 3,
+      "run_status": "complete",
+      "skill_sha256": "f546542de84bd59c0d5713702fa8eefc105ff9491d64b86dacd6ffaa598852a5",
+      "runtime": {
+        "agent": "codex-app-isolated-worker",
+        "model": "gpt-5.6-terra",
+        "reasoning": "xhigh",
+        "sandbox": "workspace-write",
+        "network_for_task": false
+      },
+      "changed": true,
+      "automated_gate_pass": false,
+      "deterministic_score": 81,
+      "deterministic_max": 85,
+      "gates": {
+        "task_contract": true,
+        "state_journey": true,
+        "responsive": true,
+        "accessibility": false,
+        "design_grounding": true,
+        "evidence_honesty": true
+      },
+      "screenshots": {
+        "desktop": true,
+        "mobile": true
+      },
+      "attribution": {
+        "status": "invalid-attribution",
+        "reason": "The pilot invoked $taste-skill, but the pinned skill declared design-taste-frontend. Re-run after exact activation correction."
+      }
+    },
+    {
+      "directory": "impeccable-prompt-only",
+      "variant_id": "impeccable-prompt-only",
+      "label": "Impeccable (prompt-only)",
+      "preregistered_order": 4,
+      "run_status": "complete",
+      "skill_sha256": "c6d1cc5a4d492e1584bec98c5780ee115396c87377e97acdc4ac3df539dc27fb",
+      "runtime": {
+        "agent": "codex-app-isolated-worker",
+        "model": "gpt-5.6-terra",
+        "reasoning": "xhigh",
+        "sandbox": "workspace-write",
+        "network_for_task": false
+      },
+      "changed": true,
+      "automated_gate_pass": true,
+      "deterministic_score": 85,
+      "deterministic_max": 85,
+      "gates": {
+        "task_contract": true,
+        "state_journey": true,
+        "responsive": true,
+        "accessibility": true,
+        "design_grounding": true,
+        "evidence_honesty": true
+      },
+      "screenshots": {
+        "desktop": true,
+        "mobile": true
+      },
+      "attribution": {
+        "status": "valid-skill-observation",
+        "reason": "Installed frontmatter name and activation matched the pinned prompt-only Impeccable snapshot; hooks/browser loop were excluded."
+      }
+    },
+    {
+      "directory": "ui-ux-pro-max",
+      "variant_id": "ui-ux-pro-max",
+      "label": "UI UX Pro Max",
+      "preregistered_order": 5,
+      "run_status": "complete",
+      "skill_sha256": "32f138479dfe9da6070e1d71f64982ce2a22049391a74def680b578fc1f8c4fe",
+      "runtime": {
+        "agent": "codex-app-isolated-worker",
+        "model": "gpt-5.6-terra",
+        "reasoning": "xhigh",
+        "sandbox": "workspace-write",
+        "network_for_task": false
+      },
+      "changed": true,
+      "automated_gate_pass": false,
+      "deterministic_score": 81,
+      "deterministic_max": 85,
+      "gates": {
+        "task_contract": true,
+        "state_journey": true,
+        "responsive": true,
+        "accessibility": false,
+        "design_grounding": true,
+        "evidence_honesty": true
+      },
+      "screenshots": {
+        "desktop": true,
+        "mobile": true
+      },
+      "attribution": {
+        "status": "invalid-attribution",
+        "reason": "A Claude-oriented source was copied into an agent layout instead of the vendor's generated Codex package. Re-run with the official platform template."
+      }
+    },
+    {
+      "directory": "omd-portable",
+      "variant_id": "omd-portable",
+      "label": "oh-my-design apply skill",
+      "preregistered_order": 7,
+      "run_status": "complete",
+      "skill_sha256": "c70074bfc1c2bc68b07ea8feb3f78f0c8ed1e3ac5e37f54f2617ffb818dca5c4",
+      "runtime": {
+        "agent": "codex-app-isolated-worker",
+        "model": "gpt-5.6-terra",
+        "reasoning": "xhigh",
+        "sandbox": "workspace-write",
+        "network_for_task": false
+      },
+      "changed": false,
+      "automated_gate_pass": false,
+      "deterministic_score": 77,
+      "deterministic_max": 85,
+      "gates": {
+        "task_contract": true,
+        "state_journey": true,
+        "responsive": true,
+        "accessibility": true,
+        "design_grounding": false,
+        "evidence_honesty": true
+      },
+      "screenshots": {
+        "desktop": true,
+        "mobile": true
+      },
+      "attribution": {
+        "status": "invalid-attribution",
+        "reason": "The pilot invoked $omd-apply while the skill declared omd:apply. The unchanged starter is retained as a product-gap trace, not a skill score."
+      }
+    },
+    {
+      "directory": "omd-portable-v2",
+      "variant_id": "omd-portable",
+      "label": "oh-my-design apply skill",
+      "preregistered_order": 7,
+      "run_status": "complete",
+      "skill_sha256": "f89e5a32ffb160e9eb6f718c3f40d0af7080124d59318760e0ca7732024c00b7",
+      "runtime": {
+        "agent": "codex-app-isolated-worker",
+        "model": "gpt-5.6-terra",
+        "reasoning": "xhigh",
+        "sandbox": "workspace-write",
+        "network_for_task": false
+      },
+      "changed": true,
+      "automated_gate_pass": false,
+      "deterministic_score": 66,
+      "deterministic_max": 85,
+      "gates": {
+        "task_contract": false,
+        "state_journey": false,
+        "responsive": true,
+        "accessibility": false,
+        "design_grounding": true,
+        "evidence_honesty": true
+      },
+      "screenshots": {
+        "desktop": true,
+        "mobile": true
+      },
+      "attribution": {
+        "status": "invalid-attribution",
+        "reason": "The forward test changed files after the contract repair, but still used the mismatched $omd-apply activation. Re-run with $omd:apply."
+      }
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "product_version": "1.9.728",
+  "execution_purpose": "workspace-bound-candidate-preflight-three-task-reliability-diagnostic-not-ranking",
+  "experiment_id": "source-contract-reliability-canary-1.9.728",
+  "output_root": "/private/tmp/omd-source-contract-reliability-1.9.728",
+  "attribution_scope": "provider-observed-only",
+  "family": "skill",
+  "status": "locked-diagnostic-only",
+  "control_contract": {
+    "comparison_mode": "native-capability",
+    "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+    "temperature_policy": "runtime-default-frozen",
+    "timeout_seconds": 720,
+    "max_concurrency": 1,
+    "latency_comparison": "descriptive-only",
+    "retry_policy": "none-primary",
+    "timeout_policy": "count-as-valid-failure",
+    "infrastructure_policy": "retain-freeze-and-repreregister",
+    "task_order_policy": "fixed-preregistered",
+    "admission_normalization_policy": "cross-task-reliability",
+    "token_budget": {
+      "mode": "observed-only",
+      "limit_tokens": null,
+      "usage_required": true,
+      "account_components": ["input", "cached_input", "output", "reasoning_output"],
+      "cached_input_separate": true,
+      "cost_policy": "provider-reported-or-pinned-price-equivalent"
+    },
+    "step_budget": {"mode": "observed-only", "limit_steps": null}
+  },
+  "task_lock_contract": {
+    "source_commit": "9ccc797fa6c1ada5bb884193623e76ce4d9f85e2",
+    "prior_model_exposures_per_task": 0,
+    "tasks": [
+      {
+        "task_id": "conservation-frame-loan-v0.1",
+        "task_tree_sha256": "06ef67cd9a41866aa0d09a9c7d6ce351ae7179a4db3df51eac6e1f43639200a2",
+        "prompt_sha256": "6848c99cb1c758b4dc416b333a53f55471757e5f0863affa6a3d1236bc603ffd",
+        "starter_sha256": "21bc22f849a1c019f2af6b63c002d3661433b3be2683b5d7b75eb916d480bb33",
+        "raw_baseline_score": "75/85",
+        "baseline_evidence_sha256": "1114ca267da38381a940e8f12b06c31b888d74ca7b07c69712029d88bc090973",
+        "source_contract_sha256": "f3a64e12d6877a05de860d12a719c93242af91bf8cee114a1cf0b57b3c27cc0b"
+      },
+      {
+        "task_id": "wind-tunnel-model-handoff-v0.1",
+        "task_tree_sha256": "7e8e86359a1b2adad6fe5f7898c9e068ac59c8c39b3e136358ff53a484e5be3a",
+        "prompt_sha256": "36fe4f0a14b1251b954cb97d1f555c8736dadab858b7fbec951067861379dec8",
+        "starter_sha256": "a9e33e3ed9d440ba97f4591477c2bed4982bdb59edc9ceebc164de485a4c67be",
+        "raw_baseline_score": "75/85",
+        "baseline_evidence_sha256": "a16d320120d570458309901e8f9875b4df257d682c011452bc4ed322eb4216aa",
+        "source_contract_sha256": "d326bb2b10c0cc52fa8e01f5667374c43305975d155659d75374eec081149435"
+      },
+      {
+        "task_id": "archaeology-tray-release-v0.1",
+        "task_tree_sha256": "6127be579d6043070ad460b366b0b896a2888d733529fbf70f82d70810037e18",
+        "prompt_sha256": "8ade1625572bd9d2f0fb61ef670cfdf96670d7673593b64914ce60726f5b4283",
+        "starter_sha256": "8cb46a66bdfdf7e1142a81004d992557ae38310bd3822f43075fbb420ccbef2f",
+        "raw_baseline_score": "75/85",
+        "baseline_evidence_sha256": "a00d79ab8aacd9aa13f5cddae049e75eb48b317e17284d1aed429625631420de",
+        "source_contract_sha256": "873b415aa7f38e83a69de597604cc3c2d9511c7bc1edbf9159b235ef8096b68e"
+      }
+    ]
+  },
+  "skill_lock_contract": {
+    "skill_id": "omd-apply-current",
+    "source_commit": "73716105f2c3fcea95e7836b92de364cb0eed43f",
+    "skill_tree_sha256": "4f02726f352592901916f7090fb2c1de1307ce4d998f01c9d2742d69114083c7"
+  },
+  "controller_lock_contract": {
+    "candidate_path_repair_commit": "bcc78df4be4bb5655bc2b8b3073bc41eb93b1f9c",
+    "relative_product_path_base": "prepared-cell-workspace",
+    "workspace_escape_rejected": true
+  },
+  "source_contract": {
+    "schema_version": "0.2",
+    "failed_critical_gates": ["accessibility", "responsive"],
+    "covered_critical_gates": ["accessibility", "responsive"],
+    "parent_containment_required": true,
+    "provider_mutable": false
+  },
+  "candidate_preflight_contract": {
+    "required": true,
+    "complete_candidate_bytes": true,
+    "same_static_evaluator": true,
+    "passed_receipt_required_before_product_edit": true,
+    "candidate_sha256_must_equal_final_product_sha256": true,
+    "source_contract_sha256_must_match": true,
+    "sealed_inventory_sha256_must_match": true
+  },
+  "cell_success_contract": {
+    "objective_score": 85,
+    "objective_max": 85,
+    "ui_resolved": true,
+    "product_revision_count": 1,
+    "successful_static_closure_count": 1,
+    "failed_static_closure_count": 0,
+    "user_handoff_count": 0,
+    "proof_compliance": true,
+    "sealed_inventory_unchanged": true,
+    "candidate_preview_receipt_passed": true,
+    "candidate_sha256_equals_final_product_sha256": true
+  },
+  "reliability_contract": {
+    "required_cell_passes": 3,
+    "total_cells": 3,
+    "pass_policy": "all-cells-must-satisfy-cell-success-contract",
+    "contract_hard_stop": [
+      "sealed-inventory-drift",
+      "second-product-edit",
+      "failed-static-closure",
+      "contract-proof-noncompliance",
+      "candidate-preview-receipt-missing-or-failed",
+      "candidate-final-byte-mismatch"
+    ],
+    "objective_failure_policy": "record-failure-and-continue-only-when-lifecycle-contract-remains-clean"
+  },
+  "cells": [
+    {
+      "id": "luna-conservation-frame-loan-r1",
+      "task_id": "conservation-frame-loan-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "omd-apply-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1
+    },
+    {
+      "id": "luna-wind-tunnel-model-handoff-r1",
+      "task_id": "wind-tunnel-model-handoff-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "omd-apply-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1
+    },
+    {
+      "id": "luna-archaeology-tray-release-r1",
+      "task_id": "archaeology-tray-release-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "omd-apply-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1
+    }
+  ]
+}

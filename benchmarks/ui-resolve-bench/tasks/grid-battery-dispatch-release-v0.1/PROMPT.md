@@ -1,0 +1,5 @@
+Improve the supplied grid battery dispatch release review so grid dispatch coordinators can inspect battery-to-inverter-certificate assignments, dispatch windows, and the energization decision confidently on desktop and narrow screens.
+
+Preserve all six battery rack identifiers, all eight inverter or grid certificate identifiers and their exact battery assignments, all four supplied dispatch windows, the three review views, the operator-note toggle, the energization-review form, and all stated summary evidence. Do not invent asset identity verification, dispatch approval, battery energization, energy release, telemetry verification, reserve acceptance, curtailment clearance, or operator notification. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The battery register, separate dispatch-window strip, and separate energization decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.

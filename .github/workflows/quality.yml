@@ -21,22 +21,42 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          # Bench tests vendor historical OmD versions by commit sha.
+          fetch-depth: 0
       - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
           cache-dependency-path: package-lock.json
       - run: npm ci
+      # Root scripts (and `npm pack` via prepublishOnly) import web/scripts/lib,
+      # which resolves its dependencies from web/node_modules.
+      - name: Install web quality dependencies
+        run: npm ci
+        working-directory: web
+      - name: Warm the npm metadata cache for offline install smoke tests
+        run: |
+          # npm ci fetches tarballs by resolved URL, so registry packuments stay
+          # uncached. The packaged smoke tests install the built tarball with
+          # --offline, which has to resolve those ranges from the cache.
+          DEPS=$(node -p "Object.keys(require('./package.json').dependencies).join(' ')")
+          npm install --no-save --no-package-lock --no-audit --no-fund \
+            --prefix "$RUNNER_TEMP/npm-warm" $DEPS
       - run: npm run lint
       - run: npm test
       - run: npm run build
       - run: npm run check-counts
+      - run: npm run bench:ui:public-data:check
 
   web-reference:
     name: Web and reference integrity
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          # Bench tests vendor historical OmD versions by commit sha.
+          fetch-depth: 0
       - uses: actions/setup-node@v5
         with:
           node-version: 22

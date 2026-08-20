@@ -1,0 +1,36 @@
+{
+  "$schema": "https://oh-my-design.kr/schema/design-md-core-manifest-v2.schema.json",
+  "schema_version": "2.0.0",
+  "format": "design-md-core",
+  "format_version": "2.0.0",
+  "profile": "portable-core",
+  "section_order": [
+    "experience",
+    "foundations",
+    "typography-assets",
+    "components-states",
+    "layout-platforms",
+    "content-locales",
+    "governance"
+  ],
+  "authority": {
+    "canonical": "system-graph",
+    "graph_path": ".omd/system/graph.json",
+    "projection_path": "DESIGN.md"
+  },
+  "artifacts": {
+    "design_md": {
+      "path": "DESIGN.md",
+      "sha256": "__DESIGN_MD_SHA256__"
+    },
+    "graph": {
+      "path": ".omd/system/graph.json",
+      "sha256": "__GRAPH_SHA256__"
+    }
+  },
+  "extensions": {
+    "dev.oh-my-design.migration": {
+      "input_format": "fixture"
+    }
+  }
+}

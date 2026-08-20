@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { trackGenerate, trackApiError, trackRawMdOpen, trackBuilderOpen } from "@/lib/builder/analytics";
+import { trackGenerate, trackApiError, trackBuilderOpen } from "@/lib/builder/analytics";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 import Link from "next/link";
@@ -437,10 +437,10 @@ export default function BuilderPage() {
                 url: `${typeof window !== "undefined" ? window.location.origin : "https://oh-my-design.kr"}/builder?step=preview&ref=${detail.id}&cfg=${encodeConfig(detail.id, overrides, activeComponents, stylePreferences)}`,
               })}
             />
-            {/* Bridge the client funnel to the server-rendered, indexable
-                artifacts: the canonical reference page (where Claude/Brave land)
-                and its raw .md (what agents fetch). Keeps shared builder URLs
-                one hop from citable content. */}
+            {/* Keep the Builder's sole DESIGN.md export in PreviewExportView.
+                The catalog page remains available for evidence/context. The
+                exported reference projection does not become project authority
+                until the user supplies project context, validates, and adopts it. */}
             <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
               <Link
                 href={`/design-systems/${detail.id}`}
@@ -448,16 +448,6 @@ export default function BuilderPage() {
               >
                 View {detail.id} reference page
               </Link>
-              <span aria-hidden className="hidden sm:inline">·</span>
-              <a
-                href={`/${detail.id}/design.md`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackRawMdOpen(detail.id)}
-                className="underline underline-offset-2 hover:text-foreground"
-              >
-                Raw DESIGN.md
-              </a>
             </div>
           </>
         )}

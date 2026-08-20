@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "adaptive-data-surface-blind-review-1.9.97",
+  "status": "complete",
+  "execution": {
+    "scheduled_invocations": 18,
+    "completed_invocations": 18,
+    "failures": 0,
+    "retry_repair_fallback_substitution": 0,
+    "total_wall_time_ms": 1588885,
+    "input_tokens": 1151639,
+    "cached_input_tokens": 553984,
+    "output_tokens": 42690,
+    "public_model_attribution_eligible": false
+  },
+  "reversal_consistency": {
+    "overall": {"consistent": 24, "comparisons": 36, "rate": 0.666667},
+    "functionality": {"consistent": 7, "comparisons": 9, "rate": 0.777778},
+    "usability": {"consistent": 4, "comparisons": 9, "rate": 0.444444},
+    "fidelity": {"consistent": 4, "comparisons": 9, "rate": 0.444444},
+    "ship_preference": {"consistent": 9, "comparisons": 9, "rate": 1}
+  },
+  "candidate_ratings": {
+    "functionality": 1150.665533,
+    "usability": 1095.424251,
+    "fidelity": 1053.769062,
+    "ship_preference": 1255.75072
+  },
+  "control_ratings": {
+    "functionality": 849.334467,
+    "usability": 904.575749,
+    "fidelity": 946.230938,
+    "ship_preference": 744.24928
+  },
+  "selection": {
+    "pairs_total": 3,
+    "unresolved": 3,
+    "resolved": 0,
+    "audit_selected": 0,
+    "selected_for_human": 3
+  },
+  "claim_limit": "automated diagnostic and triage evidence only; no practitioner, Preview, Verified, public model, or winner claim",
+  "next_step": "one pricing task-family practitioner gallery containing three blind comparisons"
+}

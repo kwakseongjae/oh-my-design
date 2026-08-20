@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.471",
+  "experiment_id": "genomic-consumer-browser-fit-luna-1.9.470",
+  "status": "PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19470",
+  "vendors_root": "/private/tmp/u19470-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "next_cell": "luna-genomic-r1-control",
+  "sole_arm_delta": "exact-installed-skill-source",
+  "sources": {
+    "control_commit": "8315182e137b7be958c264cc38798f56c37d6a21",
+    "control_skill_sha256": "55bf36fded179dcf099b07736da592349b3a5964b880eb64128e5a13c0e2f8c4",
+    "control_helper_sha256": "c66c5099d85760d18c2623f0d773857422a5428ac66c90ed1380c22c9d5b3203",
+    "candidate_commit": "757bb270bad8cef70342f416053d3941d259429e",
+    "candidate_skill_sha256": "1196572ca20b4554d3eb50cf6edde3874b2179f34215486f17364c1ceea8485d",
+    "candidate_helper_sha256": "d03928f3deb163418e4c356361caee5d5795f181f0a55856832bfb5f43847c32"
+  },
+  "hashes": {
+    "preregistered_plan_sha256": "cbde516b44214be63a4707fcbe6f4b0cd4efbdcbeaf97e17e370498574d3f305",
+    "locked_plan_sha256": "62294432098fbb349c9981e54c20a9e4c04b188287d4e159cfae51fd83178e71",
+    "matrix_state_sha256": "26f9aff502211e0d08035c629d4ee04494512d81e4bfc3173032fe1a441bd39a",
+    "task_core_prompt_sha256": "b1864724dee65d02f98990fcab990fe4f36c73a50b1eae03c79b6c40c2836306",
+    "task_prompt_sha256": "7c5ee30f85a971d5ecbbbc4d548647a8416c63a39c6d3a07a83cc89537ed1de9",
+    "starter_and_product_sha256": "daadc48b2b94440cbae70cd4a6a68bf4a5ec21b9c3115882a326183c547050a2"
+  },
+  "equality": {
+    "task_prompt_product_runtime_model_effort_timeout": "6/6",
+    "untouched_product_trees": 6,
+    "clean_detached_sources": 2,
+    "activation_delta_shared": true,
+    "named_consumer_browser_shared": true,
+    "actual_zoom_measurement_shared": true,
+    "passive_text_scroll_gate_shared": true,
+    "static_manifest_contract_shared": true,
+    "exactly_once_static_budget_shared": true,
+    "schema_0_3_candidate_gate_locked": true
+  },
+  "execution_contract": {
+    "max_new_cells": 1,
+    "retry": false,
+    "named_browser": "bench19366",
+    "runtime_dir_shared": true,
+    "exact_named_socket": true,
+    "inter_cell_delay_seconds": 120
+  },
+  "preflight": {
+    "codex_cli": {"version":"0.144.1","status":"ready"},
+    "browser_harness": {"connection":"bench19366","status":"ready","sandbox":"external-workspace-openai-browser"},
+    "codex_auth": {"status":"ready","sandbox":"external-workspace-openai-browser"},
+    "model_profile_policy": "post-run-execution-home-observed"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "product_version": "1.9.68",
+  "experiment_id": "cursor-grok-geometry-recovery-1.9.68",
+  "status": "passed_internal_invalid_attribution",
+  "provider_generation": true,
+  "runtime": {
+    "target": "cursor",
+    "selector": "cursor-grok-4.5-high",
+    "reported_display_name": "Cursor Grok 4.5 High",
+    "model_evidence_mode": "runtime-reported-display-name",
+    "public_model_attribution_valid": false
+  },
+  "execution": {
+    "output_root": "/tmp/u1968",
+    "scheduled_cells": 1,
+    "completed_cells": 1,
+    "execution_state_sha256": "edb7b59faa531e8203c055bf92db5fcc72e0881d7b08e024a275750003d84f8f",
+    "retry_count": 0,
+    "fallback_count": 0,
+    "model_substitution": false,
+    "provider_capacity_failure": false
+  },
+  "result": {
+    "objective_score": 85,
+    "objective_max": 85,
+    "automated_gate_passed": true,
+    "critical_gates_passed": 6,
+    "critical_gates_total": 6,
+    "evidence_and_unknown_passed": true,
+    "viewport_geometry_passed": 4,
+    "viewport_geometry_total": 4,
+    "axe_serious_or_critical": 0,
+    "focusable_expected_per_viewport": 7,
+    "focusable_visited_per_viewport": 7,
+    "hidden_or_clipped_focusable": 0,
+    "card_radius_passed": true,
+    "control_radius_passed": true,
+    "declared_console_radius": "14px",
+    "declared_control_radius": "10px",
+    "changed_product_files": [
+      "index.html"
+    ],
+    "wall_time_ms": 263017,
+    "observed_tokens": 96316
+  },
+  "artifact_hashes": {
+    "run_result_sha256": "bd0736a7caf731cb7e1b8bbe68bc4d0c5fb02772c1fb201e1380965f656bae68",
+    "score_sha256": "2b78ec0619c0b0211c27bdab8850db245b12a163cba32157884d0ed2e49494f4",
+    "run_record_sha256": "0d7b06e154cf8430b57883262176a3590fcd4e854ea1d23cb1902dbe1ae1a6d1",
+    "final_index_sha256": "e1921b9055c46dd125b7fbd318b3e339802ad8265c59366f9e9f2f2310745998"
+  },
+  "decision": {
+    "bounded_candidate_recovery_passed": true,
+    "repeated_replacement_unlocked": true,
+    "historical_result_revised": false,
+    "skill_lift_proven": false,
+    "reliability_at_3_proven": false
+  },
+  "claim_boundary": "Internal Cursor runtime×Grok-display-name candidate recovery only. No public model attribution, Skill Lift, Reliability@3, efficiency, cross-model, or frontier claim follows."
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.2",
+  "product_version": "1.9.39",
+  "status": "calibration_complete",
+  "execution_purpose": "runtime-contract-calibration",
+  "provider_generation": false,
+  "network_used": false,
+  "real_provider_executable_used": false,
+  "quality_claim": false,
+  "independent_audit_claim": false,
+  "accepted_contracts": {
+    "runtime_registry_no_default": true,
+    "claude_native_effort_flag": "--effort",
+    "codex_native_effort_flag": "--reasoning",
+    "common_runtime_envelope": true,
+    "provider_observed_not_inferred_from_cli": true,
+    "unsupported_diagnostics_are_null": true,
+    "locked_suite_version_exported": true,
+    "first_failure_freezes_later_cells_as_not_started": true,
+    "raw_events_and_stderr_retained": true
+  },
+  "deterministic_acceptance": {
+    "focused_files": 4,
+    "focused_tests": 28,
+    "focused_failures": 0,
+    "node_syntax": "pass",
+    "typescript": "pass",
+    "cli_build": "pass"
+  },
+  "full_root_regression": {
+    "passed": 222,
+    "failed": 2,
+    "skipped": 1,
+    "failure_class": "external-vendor-fixture-unavailable",
+    "failure_scope": [
+      "/tmp/omd-ui-skills-bench/vendors/taste-skill missing Git metadata",
+      "/tmp/omd-ui-skills-bench/vendors/ui-ux-pro-max missing Git metadata"
+    ],
+    "changed_code_implicated": false
+  },
+  "external_model_review": {
+    "requested_model": "cursor-grok-4.5-high",
+    "status": "not_run",
+    "reason": "host policy requires explicit permission to transmit the named private repository files to Cursor/Grok"
+  },
+  "claim_boundary": "Deterministic fake-runtime routing, provenance, and failure retention only."
+}

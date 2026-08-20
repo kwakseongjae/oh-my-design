@@ -1,0 +1,5 @@
+Improve the supplied meteorite thin-section loan review so collection managers can inspect specimen-to-case assignments, lab return windows, and the loan decision confidently on desktop and narrow screens.
+
+Preserve all four specimen identifiers, all six slide-case identifiers and their exact specimen assignments, all three supplied return windows, the three review views, the courier-note toggle, the loan-review form, and all stated summary evidence. Do not invent isotope verification, sample completeness, section calibration, fall-site provenance, case-seal integrity, lab acceptance, catalog publication, or loan approval. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The specimen register, separate return-window strip, and separate loan decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.

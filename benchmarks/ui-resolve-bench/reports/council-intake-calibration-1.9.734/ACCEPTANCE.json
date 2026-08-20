@@ -1,0 +1,12 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-intake-calibration-1.9.734",
+  "candidate_status": "synthetic_calibration_complete",
+  "calibration_pass": true,
+  "bounded_advisory_dispatch_admitted": true,
+  "disposition_mutation_admitted": false,
+  "multi_lane_council_observed": false,
+  "repeated_human_intervention_lift_observed": false,
+  "frontier_gate_pass": false,
+  "claim_boundary": "Slice A disposition calibration is green. This does not establish council effectiveness, intervention lift, design quality lift, or 2.0 promotion."
+}

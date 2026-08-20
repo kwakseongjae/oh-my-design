@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.352",
+  "change": "preregistered-timeout-accounting",
+  "status": "accepted-for-exact-pin",
+  "contract": {
+    "scope": "Only a matrix whose control_contract.timeout_policy is count-as-valid-failure may admit a timeout.",
+    "attribution": "Runtime, requested model, and effort must remain exact; provider usage may be unavailable for a timed-out stream.",
+    "evaluation": "The post-timeout product is evaluated and exported like any other system outcome.",
+    "record": "run_status remains timed_out, validity is valid, ui_resolved is false, and unavailable usage remains null.",
+    "host_admission": "A preregistered valid timeout is a valid-system-failure, not broken host infrastructure.",
+    "resume": "The timeout cell checkpoints once and is never replayed; later cells may continue under the original order and pacing."
+  },
+  "validation": {
+    "focused_tests": { "passed": 75, "failed": 0 },
+    "bench_unit_tests": { "passed": 316, "failed": 2, "skipped": 1 },
+    "known_environment_failures": [
+      "/tmp/omd-ui-skills-bench/vendors/taste-skill is not a Git repository",
+      "/tmp/omd-ui-skills-bench/vendors/ui-ux-pro-max is not a Git repository"
+    ],
+    "synthetic_timeout_flow": {
+      "provider_invocations_before_resume": 1,
+      "provider_invocations_after_resume": 1,
+      "evaluator_invocations": 1,
+      "exporter_invocations": 1,
+      "run_status": "timed_out",
+      "validity": "valid",
+      "ui_resolved": false,
+      "tokens": null,
+      "later_cell_completed": true
+    },
+    "lint": "pass",
+    "build": "pass",
+    "diff_check": "pass"
+  },
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "next": "Commit and exact-pin this timeout accounting contract, then use it only in a fresh preregistered matrix. The frozen generator matrix is not resumed."
+}

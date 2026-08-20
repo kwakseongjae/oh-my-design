@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ledge membership plans (sample)</title>
+<link rel="stylesheet" href="./css/app.css">
+<script type="importmap">
+{"imports":{"preact":"../assets/vendor/preact.module.js","preact/hooks":"../assets/vendor/hooks.module.js","htm":"../assets/vendor/htm.module.js"}}
+</script>
+</head>
+<body>
+<div id="app"></div>
+<!-- Buildless React task: use the vendored Preact + HTM runtime via the import map above
+     (import { h, render } from "preact"; import { useState } from "preact/hooks"; import htm from "htm").
+     No build step, no network, no other libraries. Provided images live in ../assets/. -->
+<script type="module" src="./js/app.js"></script>
+</body>
+</html>

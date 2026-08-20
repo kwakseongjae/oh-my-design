@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relay pricing</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #172033; background: #f7f5ef; }
+      a { color: inherit; }
+      button, input { font: inherit; }
+      .wrap { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+      header { padding: 18px 0; border-bottom: 1px solid #d9d8d1; }
+      nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+      nav div { display: flex; gap: 16px; align-items: center; }
+      main { padding: 64px 0; }
+      .hero { max-width: 780px; margin-bottom: 48px; }
+      h1 { margin: 0 0 16px; font: 400 56px/1 Georgia, serif; }
+      .lede { color: #667085; font-size: 17px; line-height: 1.6; }
+      .billing { display: flex; gap: 8px; margin: 24px 0; }
+      .billing button, .button { min-height: 44px; padding: 10px 16px; border: 1px solid #d9d8d1; border-radius: 10px; background: #fff; color: #172033; cursor: pointer; }
+      .billing button[aria-pressed="true"], .button.primary { background: #3157d5; color: #fff; border-color: #3157d5; }
+      .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      .plan { padding: 24px; background: #fff; border: 1px solid #d9d8d1; border-radius: 16px; }
+      .plan.recommended { border: 2px solid #3157d5; }
+      .price { font: 400 42px/1 Georgia, serif; margin: 16px 0; }
+      .plan ul { padding-left: 20px; color: #667085; line-height: 1.8; }
+      .section { padding-top: 72px; }
+      .faq { border-top: 1px solid #d9d8d1; }
+      .faq-item { border-bottom: 1px solid #d9d8d1; }
+      .faq button { width: 100%; padding: 18px 0; border: 0; background: transparent; display: flex; justify-content: space-between; text-align: left; cursor: pointer; }
+      .faq p { color: #667085; margin: 0 0 20px; max-width: 66ch; }
+      .signup { padding: 32px; background: #fff; border: 1px solid #d9d8d1; }
+      .signup form { display: flex; gap: 8px; align-items: flex-start; }
+      .field { flex: 1; }
+      label { display: block; font-weight: 700; margin-bottom: 8px; }
+      input { width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid #d9d8d1; border-radius: 10px; }
+      [data-bench="form-status"] { min-height: 24px; margin: 8px 0 0; color: #667085; }
+      footer { padding: 32px 0; border-top: 1px solid #d9d8d1; color: #667085; }
+      :focus-visible { outline: 3px solid #3157d5; outline-offset: 3px; }
+      @media (max-width: 760px) {
+        h1 { font-size: 42px; line-height: 44px; }
+        .plans { grid-template-columns: 1fr; }
+        .signup form { flex-direction: column; }
+        .signup .button { width: 100%; }
+        nav a:not(.button) { display: none; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+      }
+    </style>
+  </head>
+  <body data-billing="monthly">
+    <header>
+      <nav class="wrap" aria-label="Primary navigation">
+        <strong>Relay</strong>
+        <div>
+          <a href="#plans">Plans</a>
+          <a href="#faq">FAQ</a>
+          <a class="button primary" href="#signup">Start with Team</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="wrap hero" aria-labelledby="page-title">
+        <p>Release coordination for small product teams</p>
+        <h1 id="page-title">Know what is ready before release day.</h1>
+        <p class="lede">Relay keeps approvals, owners, and blocked checks in one release view. Start free, then choose a plan when the team needs shared history.</p>
+      </section>
+
+      <section class="wrap" id="plans" aria-labelledby="plans-title">
+        <h2 id="plans-title">Choose the release rhythm that fits</h2>
+        <div class="billing" data-bench="billing-toggle" aria-label="Billing period">
+          <button type="button" data-period="monthly" aria-pressed="true">Monthly</button>
+          <button type="button" data-period="annual" aria-pressed="false">Annual</button>
+        </div>
+        <div class="plans">
+          <article class="plan">
+            <h3>Solo</h3>
+            <p>For one builder shipping a first product.</p>
+            <p class="price"><span data-bench="price" data-monthly="0" data-annual="0">$0</span><small>/mo</small></p>
+            <a class="button" href="#signup">Start free</a>
+            <ul><li>1 active release</li><li>3 saved checklists</li><li>Local release notes</li></ul>
+          </article>
+          <article class="plan recommended">
+            <p>Recommended</p>
+            <h3>Team</h3>
+            <p>For a small team coordinating each launch.</p>
+            <p class="price"><span data-bench="price" data-monthly="18" data-annual="14">$18</span><small>/seat/mo</small></p>
+            <a class="button primary" href="#signup">Choose Team</a>
+            <ul><li>Unlimited releases</li><li>Approval owners</li><li>Shared release history</li></ul>
+          </article>
+          <article class="plan">
+            <h3>Studio</h3>
+            <p>For several product squads sharing controls.</p>
+            <p class="price"><span data-bench="price" data-monthly="32" data-annual="26">$32</span><small>/seat/mo</small></p>
+            <a class="button" href="#signup">Choose Studio</a>
+            <ul><li>Everything in Team</li><li>Reusable policies</li><li>Workspace roles</li></ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="wrap section" id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Before you choose</h2>
+        <div class="faq">
+          <div class="faq-item">
+            <h3><button type="button" data-bench="faq-button" aria-expanded="false" aria-controls="faq-a-1">Can I change plans later?<span aria-hidden="true">+</span></button></h3>
+            <p id="faq-a-1" hidden>Yes. Change the plan from workspace billing before the next renewal.</p>
+          </div>
+          <div class="faq-item">
+            <h3><button type="button" data-bench="faq-button" aria-expanded="false" aria-controls="faq-a-2">What changes with annual billing?<span aria-hidden="true">+</span></button></h3>
+            <p id="faq-a-2" hidden>The product stays the same. Annual billing changes the per-seat monthly equivalent shown above.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="wrap section" id="signup" aria-labelledby="signup-title">
+        <div class="signup">
+          <h2 id="signup-title">Create the first release room</h2>
+          <p class="lede">Enter a work email. Relay will prepare a Team workspace; no card is required for this step.</p>
+          <form data-bench="signup-form" novalidate>
+            <div class="field">
+              <label for="email">Work email</label>
+              <input id="email" data-bench="email" name="email" type="email" autocomplete="email" aria-describedby="form-status" required />
+              <p id="form-status" data-bench="form-status" role="status" aria-live="polite"></p>
+            </div>
+            <button class="button primary" type="submit">Create workspace</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer><div class="wrap">Relay · Fictional UI-Resolve Bench fixture</div></footer>
+
+    <script>
+      const billingButtons = [...document.querySelectorAll('[data-period]')];
+      const prices = [...document.querySelectorAll('[data-bench="price"]')];
+      billingButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const period = button.dataset.period;
+          document.body.dataset.billing = period;
+          billingButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+          prices.forEach((price) => { price.textContent = `$${price.dataset[period]}`; });
+        });
+      });
+
+      document.querySelectorAll('[data-bench="faq-button"]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const answer = document.getElementById(button.getAttribute('aria-controls'));
+          const willOpen = button.getAttribute('aria-expanded') !== 'true';
+          button.setAttribute('aria-expanded', String(willOpen));
+          answer.hidden = !willOpen;
+        });
+      });
+
+      const form = document.querySelector('[data-bench="signup-form"]');
+      const email = document.querySelector('[data-bench="email"]');
+      const status = document.querySelector('[data-bench="form-status"]');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+        if (!valid) {
+          status.textContent = 'Enter a complete work email, such as name@company.com.';
+          status.style.color = '#b33a3a';
+          email.setAttribute('aria-invalid', 'true');
+          email.focus();
+          return;
+        }
+        email.removeAttribute('aria-invalid');
+        status.textContent = 'Workspace request received. Check your email for the next step.';
+        status.style.color = '#287a55';
+      });
+    </script>
+  </body>
+</html>

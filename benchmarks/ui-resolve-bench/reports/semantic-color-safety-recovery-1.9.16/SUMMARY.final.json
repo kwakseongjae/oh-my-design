@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.3",
+  "experiment_id": "semantic-color-safety-recovery-1.9.16",
+  "run_date": "2026-07-23",
+  "status": "calibration_complete",
+  "decision": "fresh-repeated-matrix-unlocked",
+  "claim_status": "Internal",
+  "source_commit": "5e8379b",
+  "provider_generation_run": true,
+  "scheduled_cells": 1,
+  "attempted_cells": 1,
+  "valid_cells": 1,
+  "acceptance": {
+    "exact_model": "claude-opus-4-8",
+    "effort": "xhigh",
+    "provider_and_child_exit_zero": true,
+    "final_response_present": true,
+    "frozen_evaluator_score": 85,
+    "frozen_evaluator_max": 85,
+    "ui_resolved": true,
+    "critical_gates_passed": 6,
+    "evidence_unknown_pass": true,
+    "axe_serious_critical_by_viewport": [0, 0, 0, 0],
+    "first_product_write_ms": 360838,
+    "last_product_write_ms": 462269,
+    "wall_ms": 520232,
+    "uncached_tokens": 155312,
+    "required_specialist_calls": 2,
+    "agent_errors": 0,
+    "tool_errors": 1,
+    "recoverable_tool_errors": 1,
+    "infrastructure_errors": 0,
+    "sandbox_errors": 0,
+    "sandbox_cwd_errors": 0,
+    "replacement_verifier_authored": false,
+    "verification_program_authored": false,
+    "allowed_product_files_only": true
+  },
+  "semantic_color": {
+    "ledger_present_in_activation": true,
+    "ledger_passed_to_engineer": true,
+    "engineer_risk_question_classified_pairs": true,
+    "signal_orange_on_white_ratio": 3.26,
+    "signal_orange_on_paper_ratio": 2.99,
+    "orange_meaningful_normal_text": false,
+    "orange_non_text_on_white_only": true,
+    "adjacent_ink_label": true,
+    "invented_substitute_color": false,
+    "line_control_boundary_replaced_with_declared_muted": true
+  },
+  "browser_boundary": {
+    "direct_attempts": 1,
+    "authored_programs": 0,
+    "provider_reported_browser_proof": "unresolved",
+    "external_frozen_evaluator_passed": true
+  },
+  "verification": {
+    "focused_tests_passed": 18,
+    "full_tests_passed": 207,
+    "conditional_tests_skipped": 1,
+    "typescript": "pass",
+    "build": "pass",
+    "diff_check": "pass"
+  },
+  "reporting_limits": [
+    "single recovery cell",
+    "no retroactive 1.9.15 pass",
+    "no quality, efficiency, reliability, Pareto, model, harness, or frontier claim"
+  ]
+}

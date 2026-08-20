@@ -1,0 +1,9 @@
+{
+  "schema_version":"0.1","product_version":"1.9.562","experiment_id":"runner-self-dispatch-1.9.562","status":"ACCEPTED_PROVIDER_FREE_REPAIR","provider_calls":0,"promotion":false,
+  "observed_failure":{"source_experiment":"spent-fuel-decision-target-luna-1.9.558","failure":"plain Python evaluated the shipped runner without browser-harness helpers","error":"name 'ensure_real_tab' is not defined"},
+  "repair":{"direct_python_self_dispatch":true,"dispatch_target":"browser-harness stdin","unchanged_runner_source_forwarded":true,"dispatch_before_required_path_or_artifact_access":true,"artifact_mutated_before_dispatch":false,"recursion_latch":"OMD_REFLOW_BROWSER_DISPATCHED","browser_launch_fallback":false},
+  "acceptance":{"self_dispatch_unit_pass":true,"canonical_experimental_parity_pass":true,"focused_tests_passed":89,"typescript_lint_passed":true,"diff_check_passed":true,"full_tests_passed":582,"full_tests_skipped":1,"known_unrelated_full_test_failures":3,"new_full_test_failures":0},
+  "hashes":{"browser_runner_sha256":"b57a2a405fcbac8493d69df7e17f5d4d45685467df98bb3c1cdc14517d219927","skill_sha256":"ccd849758dee58f2abbb885f922801bb0d7cf58e10550231b8355fd217dc7401"},
+  "claim_boundary":"Provider-free protocol repair only. No quality, reliability, efficiency, model, or frontier claim follows.",
+  "next":"Create an exact immutable pin, then lock a genuinely unseen task before preregistering a fresh Reliability@3 transfer. Never resume the frozen spent-fuel suffix."
+}

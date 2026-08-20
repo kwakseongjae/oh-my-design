@@ -1,0 +1,64 @@
+{
+  "schema_version": "0.3",
+  "experiment_id": "harness-efficiency-replacement-1.9.13",
+  "run_date": "2026-07-23",
+  "status": "calibration_failed",
+  "decision": "reject-promotion-verification-authority-recovery-required",
+  "claim_status": "Internal",
+  "scheduled_cells": 18,
+  "attempted_cells": 11,
+  "valid_completed_cells": 10,
+  "stopped_cells": 1,
+  "not_started_cells": 7,
+  "stop": {
+    "cell_id": "operations-t2-harness",
+    "reason": "replacement-verifier-authored",
+    "provider_exit_zero": true,
+    "final_response_present": true,
+    "first_product_write_ms": 242904,
+    "agent_calls": 2,
+    "agent_errors": 0,
+    "authored_path": "$TMPDIR/verify.mjs",
+    "authored_runtime": "headless Chrome CDP automation",
+    "forensic_score": 85,
+    "forensic_max": 85,
+    "forensic_enters_denominator": false
+  },
+  "valid_only_diagnostics": {
+    "complete_pairs": 5,
+    "paired_objective": {
+      "harness_wins": 0,
+      "ties": 5,
+      "harness_losses": 0
+    },
+    "portable": {
+      "valid": 5,
+      "ui_resolved": 5,
+      "evidence_unknown_pass": 5,
+      "mean_objective_score": 84.2,
+      "median_wall_ms": 535415,
+      "median_uncached_tokens": 107777,
+      "max_first_product_write_ms": 408299
+    },
+    "harness": {
+      "valid": 5,
+      "ui_resolved": 5,
+      "evidence_unknown_pass": 5,
+      "mean_objective_score": 84.2,
+      "median_wall_ms": 478509,
+      "median_uncached_tokens": 133443,
+      "max_first_product_write_ms": 341614,
+      "specialist_attribution_passed": 5
+    },
+    "harness_wall_ratio": 0.8937160894,
+    "harness_token_ratio": 1.2381398629
+  },
+  "reporting_limits": [
+    "incomplete matrix",
+    "no reliability or bootstrap claim",
+    "no Pareto or promotion claim",
+    "no retry or resume",
+    "no quality, model, harness, or frontier superiority claim"
+  ]
+}
+

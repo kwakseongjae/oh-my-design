@@ -1,0 +1,19 @@
+{
+  "schema_version":"0.1",
+  "experiment_id":"council-product-comparison-luna-1.9.744",
+  "status":"PREPARED_PROVIDER_ZERO",
+  "prepared_root":"/private/tmp/omd-council-product-comparison-luna-1.9.744",
+  "provider_calls":0,
+  "model_exposures":0,
+  "scheduled_cells":2,
+  "prepared_cells":2,
+  "locked_plan_sha256":"3d93b9de66e106bc278b6877fee330e09c2b47d4c57ede54cc350bd5d4c232a2",
+  "preparation_state_sha256":"30972407d9d2633520160cc2a0dba6aff2423654946673df34bf1bc6523323b3",
+  "normalization_policy":"exact-task-cross-arm",
+  "required_normalization_pass":true,
+  "task_lock_attested":true,
+  "source_publishable":true,
+  "execution_artifacts_absent":true,
+  "execution_admission_allowed":true,
+  "council_on":{"question_count":0,"model_lane_calls":0,"provider_mutable":false}
+}

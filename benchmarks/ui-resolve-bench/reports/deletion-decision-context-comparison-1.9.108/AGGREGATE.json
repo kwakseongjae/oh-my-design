@@ -1,0 +1,319 @@
+{
+  "schema_version": "0.2",
+  "generated_at": "2026-07-30T14:58:18.177Z",
+  "bootstrap": {
+    "method": "hierarchical-percentile-task-then-run",
+    "samples": 10000,
+    "seed": 20260730
+  },
+  "reliability_k": 3,
+  "groups": [
+    {
+      "benchmark_family": "skill",
+      "suite_version": "ui-resolve-v0.2",
+      "system_id": "grok-4.5-omd-control",
+      "model_id": "cursor-grok-4.5-high",
+      "skill_id": "omd-apply",
+      "harness_id": null,
+      "budget_tier": "high",
+      "runs": {
+        "scheduled_trials": 3,
+        "valid_trials": 3,
+        "complete": 3,
+        "failed": 0,
+        "timed_out": 0,
+        "incomplete": 0,
+        "invalid_attempts": 0,
+        "unreplaced_invalid_trials": [],
+        "completion_rate": 1
+      },
+      "ui_resolved": {
+        "passed": 3,
+        "rate": 1,
+        "confidence_95": {
+          "lower": 1,
+          "upper": 1,
+          "samples": 10000
+        }
+      },
+      "reliability": {
+        "k": 3,
+        "eligible_tasks": 1,
+        "passed_tasks": 1,
+        "rate": 1
+      },
+      "objective_percent": {
+        "count": 3,
+        "mean": 100,
+        "median": 100,
+        "standard_deviation": 0,
+        "min": 100,
+        "p10": 100,
+        "p25": 100,
+        "p75": 100,
+        "p90": 100,
+        "max": 100,
+        "iqr": 0
+      },
+      "wall_time_ms": {
+        "count": 3,
+        "mean": 271476.3333,
+        "median": 275831,
+        "standard_deviation": 47813.9579,
+        "min": 221634,
+        "p10": 232473.4,
+        "p25": 248732.5,
+        "p75": 296397.5,
+        "p90": 308737.4,
+        "max": 316964,
+        "iqr": 47665
+      },
+      "tokens": {
+        "count": 3,
+        "mean": 135446,
+        "median": 112950,
+        "standard_deviation": 86801.573,
+        "min": 62107,
+        "p10": 72275.6,
+        "p25": 87528.5,
+        "p75": 172115.5,
+        "p90": 207614.8,
+        "max": 231281,
+        "iqr": 84587
+      },
+      "provider_cost_equivalent_usd": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null,
+        "total": null,
+        "per_resolved_run": null
+      },
+      "tool_calls": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null
+      },
+      "human_interventions": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null
+      },
+      "usage_telemetry": {
+        "scheduled_valid_runs": 3,
+        "available_runs": 3,
+        "input_output_complete_runs": 3,
+        "availability_rate": 1,
+        "input_output_complete_rate": 1,
+        "reasoning_reported_runs": 0,
+        "cached_input_reported_runs": 3
+      },
+      "execution_control": {
+        "complete": true,
+        "consistent": true,
+        "latency_comparable": false
+      },
+      "representative_runs": {
+        "worst_run_id": "deletion-t1-control",
+        "median_run_id": "deletion-t1-control",
+        "best_run_id": "deletion-t3-control"
+      },
+      "publication_ready": true,
+      "efficiency_publication_ready": true
+    },
+    {
+      "benchmark_family": "skill",
+      "suite_version": "ui-resolve-v0.2",
+      "system_id": "grok-4.5-omd-experimental",
+      "model_id": "cursor-grok-4.5-high",
+      "skill_id": "omd-apply",
+      "harness_id": null,
+      "budget_tier": "high",
+      "runs": {
+        "scheduled_trials": 3,
+        "valid_trials": 3,
+        "complete": 3,
+        "failed": 0,
+        "timed_out": 0,
+        "incomplete": 0,
+        "invalid_attempts": 0,
+        "unreplaced_invalid_trials": [],
+        "completion_rate": 1
+      },
+      "ui_resolved": {
+        "passed": 3,
+        "rate": 1,
+        "confidence_95": {
+          "lower": 1,
+          "upper": 1,
+          "samples": 10000
+        }
+      },
+      "reliability": {
+        "k": 3,
+        "eligible_tasks": 1,
+        "passed_tasks": 1,
+        "rate": 1
+      },
+      "objective_percent": {
+        "count": 3,
+        "mean": 100,
+        "median": 100,
+        "standard_deviation": 0,
+        "min": 100,
+        "p10": 100,
+        "p25": 100,
+        "p75": 100,
+        "p90": 100,
+        "max": 100,
+        "iqr": 0
+      },
+      "wall_time_ms": {
+        "count": 3,
+        "mean": 375391,
+        "median": 395240,
+        "standard_deviation": 79762.808,
+        "min": 287578,
+        "p10": 309110.4,
+        "p25": 341409,
+        "p75": 419297.5,
+        "p90": 433732,
+        "max": 443355,
+        "iqr": 77888.5
+      },
+      "tokens": {
+        "count": 3,
+        "mean": 167700,
+        "median": 104733,
+        "standard_deviation": 128919.3324,
+        "min": 82365,
+        "p10": 86838.6,
+        "p25": 93549,
+        "p75": 210367.5,
+        "p90": 273748.2,
+        "max": 316002,
+        "iqr": 116818.5
+      },
+      "provider_cost_equivalent_usd": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null,
+        "total": null,
+        "per_resolved_run": null
+      },
+      "tool_calls": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null
+      },
+      "human_interventions": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null
+      },
+      "usage_telemetry": {
+        "scheduled_valid_runs": 3,
+        "available_runs": 3,
+        "input_output_complete_runs": 3,
+        "availability_rate": 1,
+        "input_output_complete_rate": 1,
+        "reasoning_reported_runs": 0,
+        "cached_input_reported_runs": 3
+      },
+      "execution_control": {
+        "complete": true,
+        "consistent": true,
+        "latency_comparable": false
+      },
+      "representative_runs": {
+        "worst_run_id": "deletion-t1-experimental",
+        "median_run_id": "deletion-t1-experimental",
+        "best_run_id": "deletion-t3-experimental"
+      },
+      "publication_ready": true,
+      "efficiency_publication_ready": true
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "benchmark_family": "skill",
+      "suite_version": "ui-resolve-v0.2",
+      "model_id": "cursor-grok-4.5-high",
+      "budget_tier": "high",
+      "candidate_system_id": "grok-4.5-omd-experimental",
+      "baseline_system_id": "grok-4.5-omd-control",
+      "matched_pairs": 3,
+      "resolved_lift_percentage_points": 0,
+      "resolved_lift_confidence_95": {
+        "lower": 0,
+        "upper": 0,
+        "samples": 10000
+      },
+      "win_tie_loss": {
+        "wins": 0,
+        "ties": 3,
+        "losses": 0
+      },
+      "objective_lift_percentage_points": {
+        "count": 3,
+        "mean": 0,
+        "median": 0,
+        "standard_deviation": 0,
+        "min": 0,
+        "p10": 0,
+        "p25": 0,
+        "p75": 0,
+        "p90": 0,
+        "max": 0,
+        "iqr": 0
+      }
+    }
+  ]
+}

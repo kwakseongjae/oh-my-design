@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "task_id": "cave-climate-sensor-custody-v0.1",
+  "variant_id": "raw-design-md",
+  "status": "BASELINE_COMPLETE_PROVIDER_ZERO",
+  "score_sha256": "35fdbc74993d3abd9880e790dabace05f253d39fec6abcfb6156568ac2a3d775",
+  "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+  "deterministic_score": 75,
+  "deterministic_max": 85,
+  "ui_resolved": false,
+  "critical_gates": {
+    "task_contract": true,
+    "state_journey": true,
+    "responsive": false,
+    "accessibility": false,
+    "design_grounding": true,
+    "evidence_honesty": true
+  },
+  "observed_failures": [
+    "page-level horizontal overflow at 390px, 320px, and 200% zoom surrogate",
+    "atomic probe and data-cartridge relationship fragmentation",
+    "short target, evidence, and state wrapping",
+    "serious color contrast at 4.18:1"
+  ],
+  "provider_calls": 0,
+  "model_exposures": 0
+}

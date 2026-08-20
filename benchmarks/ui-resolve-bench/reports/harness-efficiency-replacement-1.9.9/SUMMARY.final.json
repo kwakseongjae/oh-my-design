@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.3",
+  "experiment_id": "harness-efficiency-replacement-1.9.9",
+  "run_date": "2026-07-23",
+  "status": "stopped-preregistered",
+  "decision": "calibration-failed-fix-benchmark-classification",
+  "claim_status": "Internal",
+  "source_commit": "a638a33",
+  "runtime": {
+    "agent": "claude-code",
+    "agent_version": "2.1.217",
+    "model": "claude-opus-4-8",
+    "effort": "xhigh",
+    "timeout_seconds": 900
+  },
+  "matrix": {
+    "scheduled_cells": 18,
+    "attempted_cells": 1,
+    "valid_cells": 0,
+    "not_started_cells": 17,
+    "stop_cell": "pricing-t1-portable",
+    "stop_reason": "process-failure"
+  },
+  "failed_cell": {
+    "provider_child_exit_code": 0,
+    "runner_normalized_exit_code": 1,
+    "provider_result_subtype": "success",
+    "timed_out": false,
+    "final_message_present": true,
+    "wall_time_ms": 610152,
+    "first_product_write_ms": 367160,
+    "last_product_write_ms": 549510,
+    "uncached_tokens": 127167,
+    "cached_input_tokens": 1130271,
+    "tool_errors": 2,
+    "recoverable_tool_errors_reported": 1,
+    "infrastructure_tool_errors_reported": 1,
+    "product_changed_files": [
+      "index.html"
+    ]
+  },
+  "diagnosis": {
+    "primary": "optional qlmanage sandbox failure was misclassified as infrastructure and forced a successful provider exit to one",
+    "secondary": "real-browser verify.html probe was misclassified as replacement-verifier authorship",
+    "model_auth_quota_failure": false,
+    "product_failure_established": false
+  },
+  "post_stop_forensic": {
+    "frozen_evaluator_score": 85,
+    "frozen_evaluator_max": 85,
+    "all_critical_gates": true,
+    "score_counted": false
+  },
+  "artifacts": {
+    "execution_state": "/tmp/u199/execution-state.json",
+    "run_result": "/tmp/u199/pricing-t1-portable/.benchmark/run-result.json",
+    "score_forensic": "/tmp/u199/pricing-t1-portable/.benchmark/score.json",
+    "preregistration": "PREREGISTRATION.md",
+    "run_matrix": "RUN-MATRIX.json"
+  },
+  "reporting_limits": [
+    "incomplete internal calibration",
+    "no retry or in-place reclassification",
+    "no valid product observation",
+    "no quality, efficiency, model, harness, or frontier claim"
+  ]
+}

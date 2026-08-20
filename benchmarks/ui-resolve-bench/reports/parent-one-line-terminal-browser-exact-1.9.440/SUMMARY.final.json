@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.440",
+  "status": "PINNED",
+  "provider_calls": 0,
+  "source_commit": "3c00a4c1519ec681c1f088e8daf6a7daba39be12",
+  "skill_tree_sha256": "37a1c6e50baca1f07407cad1ca04689930fa659392f323020b237ccb9a716874",
+  "skill_file_sha256": "62a232d1219faa3a63ba9d3b03d909f842151acdad213afa90cd6b14083e064d",
+  "reflow_helper_sha256": "025b8a915bcfca3d314a046e64f9cf4df6cc68c49342d5e4de73c98157a704f7",
+  "skill_contract_test_sha256": "9a111403f36c7e3d3c0484afe628c8d7af36a80cd26a106b0d26501f0f7132c3",
+  "artifact_contract_test_sha256": "bc7fa4b7686e99ef75e2f117a128ad0e35e6e8110e0748e29ec6e84f898be6b2",
+  "promotion": false,
+  "next": "lock-fresh-unseen-parent-one-line-transfer-task"
+}

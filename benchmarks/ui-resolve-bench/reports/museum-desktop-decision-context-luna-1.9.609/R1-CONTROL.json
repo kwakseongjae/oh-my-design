@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.613",
+  "experiment_id": "museum-desktop-decision-context-luna-1.9.609",
+  "cell_id": "luna-museum-r1-control",
+  "status": "CHECKPOINTED_VALID_CONTROL_UI_RESOLVED_PROOF_BLIND_SPOT",
+  "validity": "valid",
+  "retry_count": 0,
+  "wall_time_ms": 373337,
+  "provider_tokens": {"comparison_total": 1062466},
+  "objective": {
+    "score": 85,
+    "max": 85,
+    "ui_resolved": true,
+    "responsive": true,
+    "accessibility": true,
+    "design_grounding": true,
+    "evidence_honesty": true,
+    "narrow_atomic_wraps": 0,
+    "actual_200pct_atomic_wraps": 0,
+    "desktop_target_action_spatially_separated": true
+  },
+  "proof": {
+    "analyzable": true,
+    "product_edit_count": 1,
+    "static_closure_count": 1,
+    "browser_mechanism_count": 1,
+    "browser_recovery_count": 0,
+    "shipped_runner_invoked": true,
+    "artifact_closed": true,
+    "execution_gate_pass": true,
+    "decision_context_final_status": "pass",
+    "decision_context_conditions": ["390", "320", "200pct"],
+    "decision_context_required_flags": [false, false, false],
+    "desktop_final_decision_context_observed": false,
+    "nested_carrier_containment_attested": false
+  },
+  "implementation_observation": {
+    "target_relationship_carrier": "div[data-bench-decision-carrier=target]",
+    "target_carrier_is_dedicated": true,
+    "gallery_zone_outer_carrier_binds_all_protected_rows": true,
+    "nested_registered_gallery_carriers_authored": false,
+    "observable_ui_passes_despite_proof_blind_spot": true
+  },
+  "artifact_hashes": {
+    "run_result_sha256": "c5db728095ab866316e0953450c869d89df24d98ed016080b941ddd225d9b268",
+    "score_sha256": "ec9f5feabd76887a878bb45c0dccacd7a8c35c638dcf9cc3bd530584cdc824c3",
+    "run_record_sha256": "96c77ae854fb6017710642bea20ef7206e97b3c50ffc773012a68142d1bdca5c",
+    "proof_trace_sha256": "57768ea9b175dc5608ab031e79af091958c3f9eda85ee11cac6a2df79b8f514e",
+    "benchmark_tree_sha256": "8b9c11824ba5827a5e07c15297ad53a1d1818a069fed19e40de347924ddf0323"
+  },
+  "tokens_to_target": {
+    "observed_provider_tokens_minimum_after_cell": 102906624,
+    "usage_unavailable_cells": 6,
+    "goal_status": "right-censored"
+  },
+  "next": "After the fixed 120-second pacing interval, execute only untouched luna-museum-r1-candidate once without retry."
+}

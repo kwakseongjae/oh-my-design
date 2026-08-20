@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.3",
+  "product_experiment": "1.9.76",
+  "experiment_id": "preference-readiness-gate-1.9.76",
+  "status": "accepted_provider_free",
+  "provider_generation": 0,
+  "builder_sha256": "6ece7dcf03f47c93c65c1d746eead63a06a284457fac53b65371e07efe1a5876",
+  "aggregator_sha256": "8c092255ec5eca48e5680bf9e8b4c9034bd4655ade06e4e796393f254a52c7cc",
+  "identity_contract": {
+    "stable_epoch_reviewer_hash": true,
+    "reviewer_task_review_unit": true,
+    "same_reviewer_multiple_tasks": true,
+    "duplicate_reviewer_task": "fail",
+    "judgment_reveal_task_mismatch": "fail",
+    "judgment_reveal_unit_mismatch": "fail",
+    "legacy_schema_0_2": "fail"
+  },
+  "coverage_contract": {
+    "same_candidate_set_per_task": true,
+    "complete_round_robin_per_review_unit": true,
+    "exactly_one_hidden_reversal_per_review_unit": true,
+    "unique_reviewer_pair_axis_counts": true,
+    "both_fail_excluded_from_valid_vote_count": true,
+    "disconnected_axis_suppresses_rating_rank_and_intervals": true
+  },
+  "evidence_grades": {
+    "scope": "preference_plane_only",
+    "diagnostic": "structurally valid but publication thresholds unmet",
+    "preview": {
+      "tasks": 24,
+      "unique_reviewers_per_task_pair_axis": 5,
+      "valid_votes_per_task_pair_axis": 5
+    },
+    "verified": {
+      "tasks": 24,
+      "unique_reviewers_per_task_pair_axis": 10,
+      "valid_votes_per_task_pair_axis": 10
+    },
+    "overall_benchmark_publishable": false
+  },
+  "synthetic_calibration": {
+    "one_reviewer_two_tasks_unique_reviewers": 1,
+    "one_reviewer_two_tasks_review_units": 2,
+    "tasks_24_reviewers_4": "diagnostic",
+    "tasks_24_reviewers_5": "preview",
+    "tasks_24_reviewers_10": "verified",
+    "both_fail_dominated_edge": "diagnostic",
+    "disconnected_axis_fields": "null",
+    "byte_stability": "pass"
+  },
+  "validation": {
+    "focused_tests": "15/15",
+    "broader_tests": "287_pass_2_preexisting_vendor_fixture_fail_1_skip",
+    "typescript": "pass",
+    "build": "pass",
+    "builder_node_syntax": "pass",
+    "aggregator_node_syntax": "pass",
+    "diff_check": "pass"
+  },
+  "decision": "accept",
+  "claim_limit": "Synthetic fixtures prove only preference-plane identity, coverage, and readiness gating. They do not establish practitioner preference or overall benchmark publication readiness.",
+  "next_action": "Prepare a frozen-epoch internal reviewer operations package, then collect real exports without claiming Preview until all 24-task×5 valid-vote deficits are zero."
+}

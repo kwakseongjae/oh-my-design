@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1",
+  "target_version": "2.0.0",
+  "minimum_hidden_tasks": 24,
+  "required_locales": ["en", "ko", "ja", "zh-cn", "zh-tw"],
+  "required_dimensions": [
+    "creation",
+    "repair",
+    "stateful-flow",
+    "responsive",
+    "accessibility",
+    "evidence-unknown",
+    "screenshot-fidelity",
+    "open-brief"
+  ],
+  "eligibility": {
+    "visibility_field": "benchmark_visibility",
+    "visibility_value": "hidden",
+    "independent_audit_field": "independent_audit",
+    "independent_audit_value": "eligible"
+  },
+  "claim_policy": "A large task directory count is inventory, not hidden Verified coverage. Only explicitly hidden, independently audit-eligible tasks count."
+}

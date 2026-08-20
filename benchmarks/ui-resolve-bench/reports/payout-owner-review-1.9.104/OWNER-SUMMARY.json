@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1",
+  "methodology_epoch": "payout-owner-1.9.104-v1",
+  "reviewer_hash": "725f34687707ce50",
+  "family": "payout-approval-v0.1",
+  "status": "complete",
+  "counts": {
+    "comparisons": 3,
+    "axis_judgments": 12
+  },
+  "axis_outcomes": {
+    "functionality": {
+      "both_fail": 1,
+      "tie": 2
+    },
+    "usability": {
+      "both_fail": 1,
+      "impeccable-prompt-only": 2
+    },
+    "fidelity": {
+      "both_fail": 1,
+      "impeccable-prompt-only": 2
+    },
+    "ship_preference": {
+      "both_fail": 1,
+      "impeccable-prompt-only": 2
+    }
+  },
+  "comparisons": [
+    {
+      "comparison_id": "comparison-51fe64b2ff96",
+      "trial": 1,
+      "pair_key": "payout-approval-v0.1@0.1.0:5682362e5f1d08d1ac4d5c362f92e3b4c83f14cc803570519c62dd5902dddc0e:trial-1",
+      "selection": "deterministic_ceiling_tie",
+      "task": {
+        "id": "payout-approval-v0.1-trial-1",
+        "version": "0.1.0",
+        "core_prompt_sha256": "5682362e5f1d08d1ac4d5c362f92e3b4c83f14cc803570519c62dd5902dddc0e"
+      },
+      "outcomes": {
+        "functionality": "both_fail",
+        "usability": "both_fail",
+        "fidelity": "both_fail",
+        "ship_preference": "both_fail"
+      }
+    },
+    {
+      "comparison_id": "comparison-ec6b1d744342",
+      "trial": 2,
+      "pair_key": "payout-approval-v0.1@0.1.0:5682362e5f1d08d1ac4d5c362f92e3b4c83f14cc803570519c62dd5902dddc0e:trial-2",
+      "selection": "deterministic_ceiling_tie",
+      "task": {
+        "id": "payout-approval-v0.1-trial-2",
+        "version": "0.1.0",
+        "core_prompt_sha256": "5682362e5f1d08d1ac4d5c362f92e3b4c83f14cc803570519c62dd5902dddc0e"
+      },
+      "outcomes": {
+        "functionality": "tie",
+        "usability": "impeccable-prompt-only",
+        "fidelity": "impeccable-prompt-only",
+        "ship_preference": "impeccable-prompt-only"
+      }
+    },
+    {
+      "comparison_id": "comparison-6c5fdff93727",
+      "trial": 3,
+      "pair_key": "payout-approval-v0.1@0.1.0:5682362e5f1d08d1ac4d5c362f92e3b4c83f14cc803570519c62dd5902dddc0e:trial-3",
+      "selection": "deterministic_ceiling_tie",
+      "task": {
+        "id": "payout-approval-v0.1-trial-3",
+        "version": "0.1.0",
+        "core_prompt_sha256": "5682362e5f1d08d1ac4d5c362f92e3b4c83f14cc803570519c62dd5902dddc0e"
+      },
+      "outcomes": {
+        "functionality": "tie",
+        "usability": "impeccable-prompt-only",
+        "fidelity": "impeccable-prompt-only",
+        "ship_preference": "impeccable-prompt-only"
+      }
+    }
+  ]
+}

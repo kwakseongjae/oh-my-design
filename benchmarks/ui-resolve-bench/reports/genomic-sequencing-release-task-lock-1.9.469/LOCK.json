@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.469",
+  "task_id": "genomic-sequencing-run-release-v0.1",
+  "status": "locked-unseen",
+  "facts": {
+    "libraries": 5,
+    "read_sets": 7,
+    "instrument_lanes": 3,
+    "relationship_carriers": [
+      "library-readset-manifest",
+      "instrument-lane-strip",
+      "release-decision"
+    ],
+    "compound_atomic_target": "LIBRARY-ONC-048271 + READSET-R2-905184",
+    "actual_zoom_state": "Bioinformatics review pending"
+  },
+  "baseline": {
+    "deterministic_score": 75,
+    "deterministic_max": 85,
+    "ui_resolved": false,
+    "green": [
+      "task-contract",
+      "state-journey",
+      "design-grounding",
+      "evidence-honesty",
+      "desktop-geometry",
+      "minimum-targets",
+      "keyboard"
+    ],
+    "red": [
+      "390px-overflow-and-character-range-atomic-lines",
+      "320px-overflow-and-character-range-atomic-lines",
+      "actual-200%-overflow-and-character-range-atomic-lines",
+      "narrow-and-actual-state-two-line",
+      "serious-color-contrast"
+    ],
+    "overflow_px": {"390": 595, "320": 665, "actual_200pct": 1330},
+    "contrast_ratios": {"muted_on_canvas": 3.88},
+    "passive_text_scroll_containers": 0
+  },
+  "sha256": {
+    "task": "979994a1ff08d8bbb6991bdb85e8d5ff43e5812eba658524cacd098967146828",
+    "prompt": "b1864724dee65d02f98990fcab990fe4f36c73a50b1eae03c79b6c40c2836306",
+    "index": "17296bdb2f63661d456a758886629220ce2a23540e1861f998a3a38276be028a",
+    "design": "9c41fb4db210a2788836a49fa08b7dd65fb5c3abd00fb6a47c9699b49f918084",
+    "baseline_score": "355b494641b193f00802838f73d8963818d766f5d9260fde6b13370eadfa5bad"
+  },
+  "provider_calls": 0,
+  "next": "Preregister exact historical control versus exact 1.9.467 candidate in a fresh runtime-bound Reliability@3 matrix."
+}

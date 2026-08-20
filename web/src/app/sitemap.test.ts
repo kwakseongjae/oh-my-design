@@ -42,4 +42,8 @@ describe("reference sitemap", () => {
       }
     }
   });
+
+  it("indexes the public benchmark evidence page", () => {
+    expect(sitemap().some((route) => route.url === "https://oh-my-design.kr/benchmarks")).toBe(true);
+  });
 });

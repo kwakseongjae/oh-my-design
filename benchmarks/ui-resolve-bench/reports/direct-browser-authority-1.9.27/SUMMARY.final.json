@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "direct-browser-authority-1.9.27",
+  "run_date": "2026-07-23",
+  "status": "calibration_complete",
+  "provider_generation": false,
+  "source_commit": "9df4eca",
+  "retained_run_mutated": false,
+  "historical_decision_changed": false,
+  "gate": {
+    "name": "max_direct_browser_commands",
+    "stop_reason": "direct-browser-command-budget-exceeded",
+    "variant_kind_scoped": true,
+    "shell_error_status_independent": true
+  },
+  "mutations": {
+    "discovery_only_count": 0,
+    "single_headless_count": 1,
+    "two_in_one_call_count": 2,
+    "zero_at_max_one": "pass",
+    "one_at_max_one": "pass",
+    "two_at_max_one": "fail"
+  },
+  "retained_trace_replay": {
+    "source": "/tmp/u1926/locale-standards-t1-omd/.benchmark/events.jsonl",
+    "direct_browser_command_count": 2,
+    "maximum": 1,
+    "stop_reason": "direct-browser-command-budget-exceeded",
+    "replacement_verifier_authored": false,
+    "explicit_tool_errors": 0,
+    "infrastructure_errors": 0,
+    "sandbox_errors": 0,
+    "cwd_errors": 0
+  },
+  "verification": {
+    "focused_tests_passed": 13,
+    "full_tests_passed": 217,
+    "conditional_tests_skipped": 1,
+    "typescript": "pass",
+    "build": "pass",
+    "node_syntax": "pass",
+    "diff_check": "pass",
+    "retained_trace": "fail_as_expected"
+  },
+  "reporting_limits": [
+    "classifier calibration only",
+    "no new provider generation",
+    "no retroactive 1.9.26 pass",
+    "no model, skill, quality lift, efficiency, or frontier claim"
+  ],
+  "next_fresh_experiment_version": "1.9.28",
+  "next_fresh_root": "/tmp/u1928"
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.669",
+  "status": "FIVE_LOCALE_WORKFLOW_CLI_ACCEPTED",
+  "unresolved_frontier_gate": "routing-ownership-reverify",
+  "bounded_hypothesis": "If workflow guidance is independently adapted and validated for all five supported locales, non-English users can inspect and execute the same routing contract without an English prose fallback.",
+  "candidate_delta": "Extend --lang from EN/KO to EN/KO/JA/ZH-CN/ZH-TW, add locale-native workflow labels/prompts/suffixes and chrome, normalize common Chinese locale aliases, and make doctor reject incomplete locale bundles.",
+  "locale_contract": {
+    "source_locale": "ko",
+    "source_revision": "workflow-capabilities-ko-v1",
+    "supported_locales": ["en", "ko", "ja", "zh-CN", "zh-TW"],
+    "protected_identifiers": ["DESIGN.md", "omd:apply", "omd:init", "omd:harness", "320px", "200%", "npx oh-my-design-cli@latest", "omd doctor"]
+  },
+  "acceptance": {
+    "five_locale_flags_supported": true,
+    "ja_copy_independent": true,
+    "zh_cn_copy_independent": true,
+    "zh_tw_copy_independent": true,
+    "english_prose_fallback_for_non_english": false,
+    "commands_and_ids_preserved": true,
+    "doctor_fails_closed_on_missing_locale_copy": true
+  },
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "rollback_gate": "Revert if any supported locale falls back to English prose, loses a protected command/ID, or makes doctor accept an incomplete locale bundle.",
+  "first_failure_rule": "Any missing locale field or English user-facing fallback in JA/ZH-CN/ZH-TW fails the repair.",
+  "claim_boundary": "This closes deterministic CLI copy parity. It does not establish route-level UI overflow or host-model adherence.",
+  "next": "Build the package, execute every locale flag through the real CLI, and verify installed workflow-capabilities parity across channels."
+}

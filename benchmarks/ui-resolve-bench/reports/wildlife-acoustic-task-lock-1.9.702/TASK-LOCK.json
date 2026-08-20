@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.702",
+  "task_id": "wildlife-acoustic-media-custody-v0.1",
+  "status": "LOCKED_PROVIDER_ZERO",
+  "source_commit": "b51649c5b14a1cdec5f708478115c7b61a252c6a",
+  "git_task_tree": "e273008f27ab18ae92d2f175b22aa2a7dba096ba",
+  "model_exposures": 0,
+  "provider_calls": 0,
+  "files": {
+    "prompt_sha256": "4a2c6dea0ed4bbae900b779abcd4bdbeb233fbd7f5fe7eb9f173a857dff9ec77",
+    "task_contract_sha256": "f2d0a28f9e3713a1042f33a473e28d7af5d9f6a62d344873489cb439a9988833",
+    "design_md_sha256": "6b25173c7c098ea9d2899f8f500c674334f85bbf615b06447ae192d05224cf3e",
+    "starter_index_sha256": "7a58bc86f24602fc07914e49668b693e3d92f152932452735ee6be87cf84471b"
+  },
+  "acceptance": {
+    "public_development_task": true,
+    "hidden_task": false,
+    "prior_historical_report_reference": false,
+    "core_contract_valid": true,
+    "mutation_suite_pass": true,
+    "full_regression_passed": 755,
+    "full_regression_skipped": 3
+  },
+  "claim_boundary": "Fresh public development task for a transfer diagnostic only; it is not hidden-suite evidence and cannot advance a 2.0 gate by itself."
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.647",
+  "validation_id": "airworthiness-local-inapp-validation-1.9.647",
+  "status": "LOCAL_IN_APP_BROWSER_VALIDATED",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "remote_execution": "deferred-by-user",
+  "task": {
+    "id": "airworthiness-release-review-v0.1",
+    "pin_id": "airworthiness-release-review-1.9.645",
+    "source_commit": "7a6ea21a46ae0537f259d03293d66f74327faf7a",
+    "portable_task_tree_sha256": "124ca2c48fd6bca581a110ed4229ce1c4fc983aa448a193fbffdef3c0f8e1482",
+    "baseline_score_sha256": "5d59ea7cdace45142d42329d8e72cce7987a39a959a1d7ed2689b3988fbecf2c"
+  },
+  "browser": {
+    "surface": "codex-in-app-browser",
+    "url": "http://127.0.0.1:4781/",
+    "authentication_required": false,
+    "external_browser_used": false,
+    "console_errors_or_warnings": 0
+  },
+  "observations": [
+    {
+      "condition": "desktop-1440",
+      "requested_viewport": {"width": 1440, "height": 900},
+      "actual_css_viewport_width": 1440,
+      "document_scroll_width": 1440,
+      "horizontal_overflow": false,
+      "decision_width": 1108,
+      "target_text_lines": 4,
+      "action_text_lines": 1
+    },
+    {
+      "condition": "narrow-390",
+      "requested_viewport": {"width": 390, "height": 844},
+      "actual_css_viewport_width": 390,
+      "document_scroll_width": 1135,
+      "horizontal_overflow": true,
+      "decision_width": 360,
+      "target_text_lines": 10,
+      "action_text_lines": 1
+    },
+    {
+      "condition": "mobile-320",
+      "requested_viewport": {"width": 320, "height": 720},
+      "actual_css_viewport_width": 320,
+      "document_scroll_width": 1135,
+      "horizontal_overflow": true,
+      "decision_width": 290,
+      "target_text_lines": 13,
+      "action_text_lines": 1
+    },
+    {
+      "condition": "minimum-in-app-width-probe",
+      "requested_viewport": {"width": 195, "height": 844},
+      "actual_css_viewport_width": 240,
+      "document_scroll_width": 1135,
+      "horizontal_overflow": true,
+      "decision_width": 210,
+      "target_text_lines": 13,
+      "action_text_lines": 1,
+      "acceptance_use": "diagnostic-only; not an actual-200-percent substitute"
+    }
+  ],
+  "interaction_check": {
+    "control": "Maintenance windows",
+    "initial_pressed": false,
+    "pressed_after_click": true,
+    "result": "pass"
+  },
+  "cross_check": {
+    "deterministic_baseline_responsive_gate": "red",
+    "deterministic_baseline_accessibility_gate": "red",
+    "in_app_horizontal_overflow_at_390": true,
+    "in_app_horizontal_overflow_at_320": true,
+    "agreement": true
+  },
+  "claim_boundary": "This local browser pass validates the frozen starter route, interaction, and visible responsive failure without a provider. It does not measure candidate transfer, actual browser zoom at 200 percent, or replace the preregistered model comparison.",
+  "next": "Keep the remote preregistration unexecuted and add a provider-zero executable matrix/materialization path that can be inspected locally before any future model run."
+}

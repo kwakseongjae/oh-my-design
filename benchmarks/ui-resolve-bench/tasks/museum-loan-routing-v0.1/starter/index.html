@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Folio museum-loan routing</title>
+  <style>
+    :root { --page:#f3f0ea; --surface:#fffefb; --ink:#252724; --muted:#666760; --line:#cfc9be; --route:#2d3e36; --attention:#8b4a3a; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--page); color:var(--ink); font:16px/25px Arial,Helvetica,sans-serif; }
+    nav, footer { display:flex; justify-content:space-between; gap:20px; padding:16px 28px; border-bottom:1px solid var(--line); }
+    footer { border-top:1px solid var(--line); border-bottom:0; color:var(--muted); }
+    main { width:min(1040px,calc(100% - 56px)); margin:40px auto; }
+    .console { overflow:hidden; background:var(--surface); border:1px solid var(--line); border-radius:4px; }
+    .hero, .section, .review { padding:28px; }
+    .eyebrow, dt, label { font:700 12px/17px Arial,sans-serif; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); }
+    h1, h2 { margin:0; font-family:Georgia,serif; font-weight:400; }
+    h1 { max-width:690px; font-size:48px; line-height:52px; }
+    h2 { font-size:27px; line-height:31px; }
+    p { margin:8px 0 0; }
+    .target { margin-top:20px; font-weight:700; }
+    .evidence { color:var(--muted); }
+    .mapping { border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .mapping-row { display:flex; gap:16px; padding:20px 28px; border-top:1px solid var(--line); }
+    .mapping-row:first-child { border-top:0; }
+    .mapping-row > dl:nth-child(1) { width:34%; }
+    .mapping-row > dl:nth-child(2) { width:40%; }
+    .mapping-row > dl:nth-child(3) { width:26%; }
+    dl, dd { margin:0; }
+    dd { margin-top:4px; font-weight:700; overflow-wrap:anywhere; }
+    .policy-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:16px; }
+    button, input { min-height:44px; border:1px solid var(--line); border-radius:2px; background:var(--surface); color:var(--ink); font:inherit; }
+    button { padding:8px 16px; font-weight:700; cursor:pointer; }
+    button[aria-pressed="true"], [data-primary-action] { background:var(--route); border-color:var(--route); color:#fff; }
+    .toggle-row { display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px; margin-top:20px; padding-top:20px; border-top:1px solid var(--line); }
+    .toggle-copy strong { display:block; }
+    .toggle-copy p { color:var(--muted); }
+    .review { border-top:1px solid var(--line); }
+    .state { margin:16px 0; padding:12px 16px; background:var(--page); font-weight:700; }
+    form { display:grid; grid-template-columns:1fr auto; gap:8px; align-items:end; }
+    input { width:100%; padding:8px 12px; }
+    .field { display:grid; gap:6px; }
+    .status { min-height:25px; margin:8px 0 0; font-weight:700; }
+    [aria-invalid="true"] { border-color:var(--attention); }
+    :focus-visible { outline:3px solid var(--route); outline-offset:3px; }
+    @media (max-width:720px) {
+      nav, footer { padding-inline:20px; }
+      main { width:calc(100% - 40px); margin-block:28px; }
+      .hero, .section, .review { padding:20px; }
+      h1 { font-size:34px; line-height:38px; }
+      .mapping-row { display:block; padding:20px; }
+      .mapping-row > dl { margin-top:12px; }
+      .mapping-row > dl:first-child { margin-top:0; }
+      .policy-grid { grid-template-columns:1fr; }
+      .toggle-row { grid-template-columns:62% 38%; }
+      form { grid-template-columns:1fr; }
+    }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+  </style>
+</head>
+<body data-role="condition-first">
+  <nav aria-label="Product"><strong>Folio</strong><span>Museum-loan routing</span></nav>
+  <main>
+    <article class="console" data-bench-design-role="routing-console" data-bench-decision-role="context">
+      <header class="hero">
+        <div class="eyebrow">Loan handoff</div>
+        <h1>Route supplied collection objects for review.</h1>
+        <p>Keep each object exact, choose a routing policy, and name the handoff before review.</p>
+        <p class="target" data-bench-decision-role="target">museum-loan-routing.yaml</p>
+        <p class="evidence" data-bench-decision-role="evidence">3 supplied objects · 1 routing policy</p>
+      </header>
+      <div class="mapping" aria-label="Loan mapping">
+        <div class="mapping-row" data-bench="mapping-row">
+          <dl><dt>Object</dt><dd>object.painting.1968-041</dd></dl>
+          <dl><dt>Destination</dt><dd>gallery-east.modernism</dd></dl>
+          <dl><dt>Registrar</dt><dd>registrar-lending</dd></dl>
+        </div>
+        <div class="mapping-row" data-bench="mapping-row">
+          <dl><dt>Object</dt><dd>object.sculpture.2004-117</dd></dl>
+          <dl><dt>Destination</dt><dd>gallery-court.sculpture</dd></dl>
+          <dl><dt>Registrar</dt><dd>registrar-collections</dd></dl>
+        </div>
+        <div class="mapping-row" data-bench="mapping-row">
+          <dl><dt>Object</dt><dd>object.textile.1987-009</dd></dl>
+          <dl><dt>Destination</dt><dd>gallery-north.materials</dd></dl>
+          <dl><dt>Registrar</dt><dd>registrar-exhibitions</dd></dl>
+        </div>
+      </div>
+      <section class="section" aria-labelledby="policy-heading">
+        <h2 id="policy-heading">Routing policy</h2>
+        <div class="policy-grid">
+          <button type="button" data-bench="role-option" data-role="condition-first" aria-pressed="true">Condition first</button>
+          <button type="button" data-bench="role-option" data-role="calendar" aria-pressed="false">Calendar grouping</button>
+          <button type="button" data-bench="role-option" data-role="manual" aria-pressed="false">Manual assignment</button>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-copy"><strong>Preserve original source-note context</strong><p>Keep this setting reversible before review.</p></div>
+          <button type="button" data-bench="digest-toggle" aria-pressed="false">Off</button>
+        </div>
+      </section>
+      <section class="review" aria-labelledby="review-heading">
+        <h2 id="review-heading">Review boundary</h2>
+        <p class="state" data-bench-decision-role="state">Policy: Condition first · source notes off</p>
+        <form data-bench="workspace-form" novalidate>
+          <div class="field"><label for="handoff-label">Handoff label</label><input id="handoff-label" data-bench="workspace-name" aria-describedby="form-status" placeholder="Autumn gallery loan"></div>
+          <button type="submit" data-primary-action data-bench-decision-role="action">Review loan</button>
+        </form>
+        <p id="form-status" class="status" data-bench="form-status" role="status" aria-live="polite"></p>
+      </section>
+    </article>
+  </main>
+  <footer><span>Folio · Fictional fixture</span><span>No loan performed</span></footer>
+  <script>
+    const options=[...document.querySelectorAll('[data-bench="role-option"]')];
+    const toggle=document.querySelector('[data-bench="digest-toggle"]');
+    const state=document.querySelector('[data-bench-decision-role="state"]');
+    const names={'condition-first':'Condition first',calendar:'Calendar grouping',manual:'Manual assignment'};
+    function render(){const on=toggle.getAttribute('aria-pressed')==='true';state.textContent=`Policy: ${names[document.body.dataset.role]} · source notes ${on?'on':'off'}`;toggle.textContent=on?'On':'Off';}
+    options.forEach((button)=>button.addEventListener('click',()=>{document.body.dataset.role=button.dataset.role;options.forEach((item)=>item.setAttribute('aria-pressed',String(item===button)));render();}));
+    toggle.addEventListener('click',()=>{toggle.setAttribute('aria-pressed',String(toggle.getAttribute('aria-pressed')!=='true'));render();});
+    const form=document.querySelector('[data-bench="workspace-form"]');
+    const field=document.querySelector('[data-bench="workspace-name"]');
+    const status=document.querySelector('[data-bench="form-status"]');
+    form.addEventListener('submit',(event)=>{event.preventDefault();const value=field.value.trim();if(!value){field.setAttribute('aria-invalid','true');status.setAttribute('role','alert');status.textContent='Enter a handoff label.';field.focus();return;}field.setAttribute('aria-invalid','false');status.setAttribute('role','status');status.textContent=`${value} is ready to review.`;});
+  </script>
+</body>
+</html>

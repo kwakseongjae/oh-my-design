@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.344",
+  "experiment_id": "harbor-compact-artifact-luna-1.9.343",
+  "status": "PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19343",
+  "vendors_root": "/private/tmp/u19343-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "next_cell": "luna-harbor-r1-control",
+  "sole_arm_delta": "exact-installed-skill-source",
+  "hashes": {
+    "preregistered_plan_sha256": "d6dcda2f7370ab9e428d2c83c2f18e48c89c3e8bd991ae06043931824dd5cc73",
+    "locked_plan_sha256": "9093a062b4c226e0773af00f22e214182201eae7b1a6d10cd917096dc73a00bc",
+    "matrix_state_sha256": "aca820ffd94e61fdb141bdb1f43cabcf97dd5e5078dd3ab324d45618c4f262f8",
+    "product_initial_sha256": "2b42d6345768aa30a5b16a00458aefe52aeb2c97a5a973a299a769f51fede1e1",
+    "index_sha256": "7f160f0af9e8419692240cefa7b2b5813f075dd652853210d1f2aee30b5ecf2b",
+    "design_md_sha256": "f5d6cad395f2ad3bab702eb860205f83261e70664c2e8eb280e4ec0466c83561",
+    "activated_prompt_sha256": "42c1c4cec49f1f2edd87699eb2203f815b9bfb9468a716dae69d44a082e7147f",
+    "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+    "host_config_sha256": "f9391c21eb68de265eb854e488d5ad37d7390eba452fa1ca293a1a1c7d267c39",
+    "installed_proof_policy_sha256": "de29ef030793f3c12268eb014d37a8a89b18ea8299fadb70e5ab36a9a5cd515d",
+    "control_skill_tree_sha256": "2d57746474c4ba4ae440ed3ce0e0df9413291f67077ed2e519288edc2ffe0b24",
+    "candidate_skill_tree_sha256": "36a44a1bb41fa1e584a6732d2e0c57a572eba6b9ca20c82c5462125eec07fd92"
+  },
+  "sources": {
+    "control": { "commit": "3a414a0a70dcc7fc70fb166e923ff318d3c53c66", "detached": true, "clean": true, "publishable": true },
+    "candidate": { "commit": "c1de0e4e9520c8ca333b59557217dd40219ae195", "detached": true, "clean": true, "publishable": true }
+  },
+  "equality": {
+    "task": true,
+    "prompt": true,
+    "product": true,
+    "design_md": true,
+    "activation": true,
+    "runtime": true,
+    "model": true,
+    "effort": true,
+    "timeout": true,
+    "installed_proof_policy": true,
+    "validity_admission_pin": true,
+    "clean_baseline_all_cells": true,
+    "workspace_detached_all_cells": true,
+    "source_detached_all_cells": true,
+    "source_publishable_all_cells": true
+  },
+  "workspace_baselines": {
+    "luna-harbor-r1-control": "c9db15851f5b402741720e6486f31df455fc403e",
+    "luna-harbor-r1-compact": "68fe021c6dbcd46a434bfb3e30c9c4ef93553960",
+    "luna-harbor-r2-compact": "68fe021c6dbcd46a434bfb3e30c9c4ef93553960",
+    "luna-harbor-r2-control": "c9db15851f5b402741720e6486f31df455fc403e",
+    "luna-harbor-r3-control": "c9db15851f5b402741720e6486f31df455fc403e",
+    "luna-harbor-r3-compact": "a16eea8b3d6b83125257bb7e8c09bd1cb172db17"
+  },
+  "execution_contract": {
+    "max_new_cells": 1,
+    "retry": false,
+    "inter_cell_delay_seconds": 120,
+    "browser_preflight_required_before_provider": true
+  }
+}

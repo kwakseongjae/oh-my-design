@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.543",
+  "experiment_id": "offshore-turbine-inspection-task-lock-1.9.543",
+  "status": "TASK_LOCKED_BEFORE_PROVIDER",
+  "provider_calls": 0,
+  "candidate_task_exposure": 0,
+  "promotion": false,
+  "task": {
+    "id": "offshore-turbine-inspection-review-v0.1",
+    "version": "0.1.0",
+    "domain": "offshore-wind turbine inspection review",
+    "registered_turbines": 4,
+    "registered_inspection_findings": 6,
+    "registered_engineering_desks": 2,
+    "relationship_carriers": [
+      "turbine-register",
+      "engineering-desk-strip",
+      "maintenance-review-decision"
+    ]
+  },
+  "untouched_baseline": {
+    "objective_score": 75,
+    "objective_max": 85,
+    "desktop_overflow_px": 0,
+    "mobile_overflow_px": 685,
+    "narrow_320_overflow_px": 755,
+    "actual_200pct_overflow_px": 1510,
+    "compound_target_fragment_lines": {
+      "mobile": [4, 4],
+      "narrow_320": [5, 6],
+      "actual_200pct": [5, 6]
+    },
+    "state_fragment_lines": {
+      "mobile": 2,
+      "narrow_320": 2,
+      "actual_200pct": 2
+    },
+    "muted_contrast_ratio": 3.88,
+    "serious_or_critical_axe_violations": 1,
+    "clipped_controls": 0,
+    "overlapping_controls": 0
+  },
+  "contract_validation": {
+    "task_contract": true,
+    "state_journey": true,
+    "design_grounding": true,
+    "evidence_honesty": true,
+    "responsive_intentionally_red": true,
+    "accessibility_intentionally_red": true
+  },
+  "next": "Preregister exact omd-1.9.533 aggregate-carrier control versus exact omd-1.9.541 structured-checklist candidate under Reliability@3 before preparing any provider workspace."
+}

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kiln Lot — loft roast, seats by note</title>
+  <meta name="description" content="Kiln Lot is a specialty coffee roastery. Reserve a cupping seat. Prices, awards, and scores are not published here.">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the loft</a>
+
+  <header class="nav-mast">
+    <p class="mast-line">August 2026 · Loft roast · No scores listed</p>
+    <p class="mast-name">Kiln Lot</p>
+    <button class="mast-toggle" type="button" aria-expanded="false" aria-controls="mast-nav" id="mast-toggle">
+      Menu
+    </button>
+    <nav class="mast-nav" id="mast-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#roast">Roast</a></li>
+        <li><a href="#table">Table</a></li>
+        <li><a href="#cupping">Cupping</a></li>
+      </ul>
+    </nav>
+    <hr class="mast-rule" aria-hidden="true">
+  </header>
+
+  <main id="main">
+    <section class="hero-photo reveal" style="--i: 0" aria-labelledby="hero-caption">
+      <img
+        class="bleed"
+        src="../assets/hero.jpg"
+        width="1280"
+        height="720"
+        alt="Loft roastery: a sage-green drum roaster under factory windows, burlap sacks of green coffee stacked against brick."
+        fetchpriority="high"
+        decoding="async"
+      >
+      <div class="caption-block">
+        <h1 id="hero-caption" class="caption">The drum at first light.</h1>
+        <button class="cta-outline js-open-reserve" type="button">Reserve a cupping seat</button>
+      </div>
+    </section>
+
+    <section class="lede-band reveal" style="--i: 1" aria-labelledby="lede-title">
+      <h2 id="lede-title" class="visually-hidden">The loft</h2>
+      <p class="lede">We roast small lots in a brick loft and pour them at the same table. Green coffee arrives in the sacks you can see. This page does not list prices, awards, review scores, or partners — none of those are published.</p>
+      <p class="lede-note">The one action here is a seat at the cupping table.</p>
+    </section>
+
+    <section id="roast" class="stories reveal" style="--i: 2" aria-labelledby="stories-title">
+      <header class="head-hang">
+        <h2 id="stories-title">On the floor</h2>
+      </header>
+      <div class="story-grid">
+        <figure class="story-card story-card--beans">
+          <img
+            src="../assets/story-beans.jpg"
+            width="1248"
+            height="832"
+            alt="Dark roasted coffee beans spilling from a wooden scoop onto a worn plank."
+            loading="lazy"
+            decoding="async"
+          >
+          <figcaption>
+            <span class="story-card__where">After the drum</span>
+            Scoop on the plank. We have not published a tasting note for this lot.
+          </figcaption>
+        </figure>
+        <figure class="story-card story-card--brew">
+          <img
+            src="../assets/story-brew.jpg"
+            width="1248"
+            height="832"
+            alt="Hands pouring a thin stream from a gooseneck kettle into a ceramic dripper."
+            loading="lazy"
+            decoding="async"
+          >
+          <figcaption>
+            <span class="story-card__where">Kettle and cone</span>
+            Pour, then wait. Faces stay out of the frame.
+          </figcaption>
+        </figure>
+        <figure class="story-card story-card--space">
+          <img
+            src="../assets/story-space.jpg"
+            width="1248"
+            height="832"
+            alt="Two linen chairs at a round oak table, a trailing plant, and jars of coffee on a sage shelf."
+            loading="lazy"
+            decoding="async"
+          >
+          <figcaption>
+            <span class="story-card__where">The two-chair table</span>
+            A corner for two. The plant does most of the talking.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="table" class="lots reveal" style="--i: 3" aria-labelledby="lots-title">
+      <header class="head-hang">
+        <h2 id="lots-title">Sacks on the floor</h2>
+      </header>
+      <p class="section-lede">Names taken from the bags in the loft photograph. Process, price, and score are not published.</p>
+      <div class="spec-wrap">
+        <table class="spec-sheet">
+          <caption class="visually-hidden">Lots visible in the loft, without prices or scores</caption>
+          <thead>
+            <tr>
+              <th scope="col">Lot</th>
+              <th scope="col">Origin</th>
+              <th scope="col">On this page</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Guatemala SHB 2023</th>
+              <td data-label="Origin">Guatemala</td>
+              <td data-label="On this page">Marked on the sack. Price not listed.</td>
+            </tr>
+            <tr>
+              <th scope="row">Gori Geisha</th>
+              <td data-label="Origin">Ethiopia</td>
+              <td data-label="On this page">Named on the sack. No score published.</td>
+            </tr>
+            <tr>
+              <th scope="row">Colombia</th>
+              <td data-label="Origin">Colombia</td>
+              <td data-label="On this page">Bag marked 68&nbsp;kg. Price not listed.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="unpublished">Also unpublished: a street address, a public calendar, partner marks, and any award line.</p>
+    </section>
+
+    <section id="cupping" class="cupping reveal" style="--i: 4" aria-labelledby="cupping-title">
+      <header class="head-hang">
+        <h2 id="cupping-title">A seat at the table</h2>
+      </header>
+      <p class="section-lede">A cupping is a shared table, not a class. We set bowls, break crusts, and taste in silence first. Days and times are confirmed by note — they are not listed here.</p>
+      <button class="cta-outline js-open-reserve" type="button">Reserve a cupping seat</button>
+    </section>
+  </main>
+
+  <footer class="foot-letter">
+    <p class="foot-letter__close">Yours,<br><span class="foot-letter__sign">the roast desk</span></p>
+    <p class="foot-letter__ps">P.S. — no public inbox is published. Use the form. Nothing on this page leaves the browser.</p>
+  </footer>
+
+  <dialog class="reserve" id="reserve-dialog" aria-labelledby="reserve-title">
+    <form class="reserve__form" id="reserve-form" novalidate>
+      <header class="reserve__head">
+        <h2 id="reserve-title">Reserve a cupping seat</h2>
+        <button class="reserve__close" type="button" id="reserve-close">Close</button>
+      </header>
+      <p class="reserve__lede">We write back to confirm. This page has no network, so the request stays on this device.</p>
+
+      <div class="field">
+        <label for="field-name">Full name</label>
+        <input id="field-name" name="name" type="text" autocomplete="name" required aria-required="true" aria-describedby="field-name-help" placeholder="Maya Okonkwo">
+        <p class="field__help" id="field-name-help">As you would like it on the list.</p>
+      </div>
+
+      <div class="field">
+        <label for="field-email">Email address</label>
+        <input id="field-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-required="true" aria-describedby="field-email-help" placeholder="maya@studio.example">
+        <p class="field__help" id="field-email-help">Used only if a desk is later connected.</p>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="field-date">Preferred date</label>
+          <input id="field-date" name="date" type="date" min="2026-08-17" required aria-required="true" aria-describedby="field-date-help">
+          <p class="field__help" id="field-date-help">We confirm the actual table by note.</p>
+        </div>
+        <div class="field">
+          <label for="field-seats">Seats</label>
+          <select id="field-seats" name="seats" required aria-required="true" aria-describedby="field-seats-help">
+            <option value="" disabled selected>Choose</option>
+            <option value="1">1 seat</option>
+            <option value="2">2 seats</option>
+            <option value="3">3 seats</option>
+            <option value="4">4 seats</option>
+          </select>
+          <p class="field__help" id="field-seats-help">Table holds four.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="field-notes">Notes <span class="optional">(optional)</span></label>
+        <textarea id="field-notes" name="notes" rows="3" aria-describedby="field-notes-help" placeholder="Allergies, a lot you want on the table"></textarea>
+        <p class="field__help" id="field-notes-help">Anything the desk should know before we set bowls.</p>
+      </div>
+
+      <div class="reserve__actions">
+        <button class="cta-outline cta-outline--solid" type="submit" id="reserve-submit">Hold the seat</button>
+      </div>
+      <p class="reserve__status" id="reserve-status" role="status" aria-live="polite"></p>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>

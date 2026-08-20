@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.3",
+  "experiment_id": "benchmark-robustness-1.9.10",
+  "run_date": "2026-07-23",
+  "status": "calibration_complete",
+  "decision": "classifier-fixed-fresh-preregistration-required",
+  "claim_status": "Internal",
+  "source_commit": "67df331",
+  "provider_generation_run": false,
+  "changes": {
+    "optional_renderer_tool_context": true,
+    "optional_renderer_environment_errors_recoverable": true,
+    "cwd_and_builtin_permission_errors_fail_closed": true,
+    "real_browser_html_probe_allowed": true,
+    "script_dom_shim_mock_browser_blocked": true,
+    "historical_run_results_rewritten": false
+  },
+  "retained_trace_replay": [
+    {
+      "trace": "1.9.7-timeout",
+      "tool_errors": 0,
+      "recoverable": 0,
+      "infrastructure": 0,
+      "optional_renderer": 0,
+      "replacement_verifier_authored": true
+    },
+    {
+      "trace": "1.9.8-pass",
+      "tool_errors": 1,
+      "recoverable": 1,
+      "infrastructure": 0,
+      "optional_renderer": 0,
+      "replacement_verifier_authored": false
+    },
+    {
+      "trace": "1.9.9-stop",
+      "tool_errors": 2,
+      "recoverable": 2,
+      "infrastructure": 0,
+      "optional_renderer": 1,
+      "replacement_verifier_authored": false
+    }
+  ],
+  "verification": {
+    "focused_tests_passed": 23,
+    "full_tests_passed": 206,
+    "conditional_tests_skipped": 1,
+    "typescript": "pass",
+    "build": "pass",
+    "node_syntax": "pass",
+    "diff_check": "pass"
+  },
+  "reporting_limits": [
+    "deterministic classifier calibration only",
+    "no provider generation",
+    "no retroactive 1.9.9 validity",
+    "no quality, efficiency, model, harness, or frontier claim"
+  ]
+}

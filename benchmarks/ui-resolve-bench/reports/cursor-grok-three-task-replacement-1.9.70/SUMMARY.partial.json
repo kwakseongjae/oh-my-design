@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "product_version": "1.9.70",
+  "experiment_id": "cursor-grok-three-task-replacement-1.9.70",
+  "status": "frozen_infrastructure_invalid",
+  "model": {
+    "requested": "cursor-grok-4.5-high",
+    "reported": "Cursor Grok 4.5 High",
+    "attribution": "display-name-only",
+    "public_validity": "invalid-attribution"
+  },
+  "execution": {
+    "scheduled_cells": 18,
+    "completed_cells": 7,
+    "not_started_cells": 11,
+    "completed_cooldowns": 6,
+    "failed_cooldown": 1,
+    "provider_calls_started": 7,
+    "quota_or_capacity_failure": false,
+    "luna_substitution_used": false,
+    "stop_reason": "pacing-window-violation:monotonic-120002.07758299999:wall-119998",
+    "failed_wait": {
+      "after_cell_id": "incident-t2-raw",
+      "before_cell_id": "locale-t2-omd",
+      "monotonic_elapsed_ms": 120002.07758299999,
+      "wall_elapsed_ms": 119998,
+      "clock_disagreement_ms": 4.077582999991137,
+      "next_provider_started": false
+    }
+  },
+  "completed_rows": [
+    {"id":"onboarding-t1-raw","score":85,"automated_gate_pass":true,"all_critical_pass":true,"evidence_and_unknown_pass":true},
+    {"id":"incident-t1-omd","score":85,"automated_gate_pass":true,"all_critical_pass":true,"evidence_and_unknown_pass":true},
+    {"id":"locale-t1-raw","score":75,"automated_gate_pass":false,"all_critical_pass":false,"evidence_and_unknown_pass":true},
+    {"id":"onboarding-t1-omd","score":85,"automated_gate_pass":true,"all_critical_pass":true,"evidence_and_unknown_pass":true},
+    {"id":"incident-t1-raw","score":81,"automated_gate_pass":true,"all_critical_pass":true,"evidence_and_unknown_pass":true},
+    {"id":"locale-t1-omd","score":85,"automated_gate_pass":true,"all_critical_pass":true,"evidence_and_unknown_pass":true},
+    {"id":"incident-t2-raw","score":85,"automated_gate_pass":true,"all_critical_pass":true,"evidence_and_unknown_pass":true}
+  ],
+  "descriptive_only": {
+    "complete_trial_1_pairs": {
+      "onboarding": 0,
+      "incident": 4,
+      "locale": 10
+    },
+    "total_provider_wall_ms": 1637787,
+    "total_tokens_including_cached_input": 2565353
+  },
+  "decision": {
+    "reliability_decision": "not_estimable",
+    "skill_lift_decision": "not_estimable",
+    "same_root_resume_allowed": false,
+    "failed_cell_replacement_allowed": false,
+    "grok_capacity_stop_established": false,
+    "luna_lane_unlocked": false,
+    "next_action": "provider-free pacing-clock-source repair, then separately preregister a fresh full replacement"
+  }
+}

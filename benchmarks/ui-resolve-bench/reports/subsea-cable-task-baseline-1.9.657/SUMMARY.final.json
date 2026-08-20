@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.657",
+  "experiment_id": "subsea-cable-task-baseline-1.9.657",
+  "status": "MODEL_UNSEEN_TASK_BASELINED",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "promotion": false,
+  "task": {
+    "id": "subsea-cable-splice-handoff-v0.1",
+    "version": "0.1.0",
+    "track": "repair",
+    "portable_tree_sha256": "b12c6f827b23d72e1a17907d5549fcc78dc14398efd28ff160a9f9d224f99196",
+    "prompt_sha256": "3676c73059cb6c490e5db9c945f99588bf293cdf93a932376458c682db800e34",
+    "starter_product_sha256": "670ddf8f4bc10a1f422aad0f04fa345340d94d6a71f4b9c5c19352a776fa19f4",
+    "baseline_score_sha256": "e90083188c8f0c5d1ab2c6af43db7237dc31da9ede960d96a681f52c6184c95c"
+  },
+  "neutrality": {
+    "prompt_names_neither_arm": true,
+    "prompt_names_no_packet_command": true,
+    "task_created_before_provider_exposure": true,
+    "same_prompt_starter_and_evaluator_required_for_both_arms": true
+  },
+  "baseline": {
+    "score": 75,
+    "max": 85,
+    "critical_gates": {
+      "task_contract": true,
+      "state_journey": true,
+      "responsive": false,
+      "accessibility": false,
+      "design_grounding": true,
+      "evidence_honesty": true
+    },
+    "widths": {
+      "desktop": {"scroll": 1440, "client": 1440},
+      "mobile": {"scroll": 1135, "client": 390},
+      "narrow_320": {"scroll": 1135, "client": 320},
+      "actual_200pct": {"scroll": 2270, "client": 640, "zoom": 2}
+    },
+    "narrow_fragmented_tokens": 6,
+    "narrow_short_atomic_wraps": 2,
+    "contrast_failure_nodes": 4
+  },
+  "protected_inventory": {
+    "cable_spans": 4,
+    "joint_tests": 6,
+    "vessel_windows": 2,
+    "review_views": 3,
+    "decision_contexts": 1
+  },
+  "claim_boundary": "This provider-free baseline proves the task is valid, meaningfully red, and unseen by the compared model. It does not predict either arm's result.",
+  "next": "Commit and exact-pin the task tree and baseline before preregistering the immutable control-versus-candidate transfer."
+}

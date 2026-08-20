@@ -1,0 +1,60 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "locale-evidence-expansion-1.9.23",
+  "status": "calibration_failed",
+  "stop_reason": "timeout",
+  "binding_failure": "locale-verify-authority-and-delivery-budget",
+  "output_root": "/tmp/u1923",
+  "scheduled_cells": 2,
+  "attempted_cells": 2,
+  "valid_complete_cells": 1,
+  "stopped_cells": 1,
+  "not_started_cells": 0,
+  "retry_or_resume_allowed": false,
+  "stopped_cell": "locale-handoff-t1-omd",
+  "control": {
+    "validity": "valid",
+    "objective_score": 70,
+    "objective_max": 85,
+    "ui_resolved": false,
+    "evidence_and_unknown_pass": true,
+    "wall_time_ms": 710140,
+    "uncached_tokens": 141364,
+    "first_product_write_ms": 338306,
+    "replacement_verifier_authored": true
+  },
+  "candidate_process_forensics": {
+    "child_exit_code": 143,
+    "timed_out": true,
+    "wall_time_ms": 900040,
+    "final_message_present": false,
+    "exact_parent_model": "claude-opus-4-8",
+    "uncached_tokens": 170455,
+    "first_product_write_ms": 339542,
+    "last_product_write_ms": 849487,
+    "tool_errors": 0,
+    "infrastructure_errors": 0,
+    "sandbox_errors": 0,
+    "cwd_errors": 0,
+    "optional_renderer_environment_errors": 2,
+    "product_changed_files": [
+      "index.html"
+    ],
+    "tool_calls_after_first_write": 23,
+    "temporary_verification_calls": 17,
+    "chrome_or_cdp_calls": 6,
+    "authored_verification_files": [
+      ".t/cdp.mjs",
+      ".t/run.mjs",
+      ".t/probe.mjs",
+      ".t/dom.mjs",
+      ".t/behavior.mjs",
+      ".t/contract.mjs"
+    ]
+  },
+  "stopped_candidate_evaluator": {
+    "run": false,
+    "reason": "post-stop artifacts are outside the frozen denominator"
+  },
+  "promotion_decision": "rejected_timeout"
+}

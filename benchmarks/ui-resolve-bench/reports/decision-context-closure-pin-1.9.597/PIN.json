@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.597",
+  "status": "PINNED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "candidate": {
+    "system_id": "omd-decision-context-closure-candidate",
+    "vendor_version": "omd-1.9.596",
+    "source_commit": "5eaa26c9739a9e697f4707b06c31a32773706c16",
+    "source_tree": "0a5b004b3406695ad870ed484cef73def77ac188",
+    "skill_tree": "ae1306fe525395086836f2b95a1312152fb0eb28",
+    "artifacts": {
+      "skill_sha256": "60dae0b6873fd8de945bcd67e8202535e18e58396ece50afbce4a219107b8ffb",
+      "reflow_artifact_sha256": "1375a5efdc9dbe422ec52cfd9dd1db3f5c5f034f17bd2e606fd003a3e2fa90f8",
+      "reflow_browser_sha256": "9da0ee5611a737c562c61437ede0034f0b5608c4107e18592828f39cf2ab1f9a"
+    }
+  },
+  "repair_contract": {
+    "concise_decision_evidence_inventory": true,
+    "decision_target_dedicated_full_row": true,
+    "decision_target_precedes_supporting_roles": true,
+    "decision_target_supporting_spatial_separation": true,
+    "contained_carrier_budget_retained": true
+  },
+  "claim_boundary": "This pin identifies the exact provider-free repair candidate. It has not passed a fresh model-run transfer matrix.",
+  "next": "Create and baseline a genuinely unseen decision-context task before exposing it to either the historical control or this candidate."
+}

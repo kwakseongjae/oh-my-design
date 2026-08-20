@@ -1,0 +1,84 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.414",
+  "experiment_id": "rail-signal-compound-atomic-luna-1.9.412",
+  "cell_id": "luna-signal-r1-control",
+  "status": "FROZEN_INVALID_INFRASTRUCTURE",
+  "admission": {
+    "validity": "invalid-infrastructure",
+    "reason": "installed-host-policy-gate-failed",
+    "retry": false,
+    "matrix_stop": true
+  },
+  "provider": {
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "wall_time_ms": 870043,
+    "tokens": 3508695,
+    "usage_available": true,
+    "input_tokens": 3463425,
+    "cached_input_tokens": 3316480,
+    "output_tokens": 45270,
+    "reasoning_output_tokens": 13634
+  },
+  "objective": {
+    "score": 79,
+    "max": 85,
+    "ui_resolved": false,
+    "green": [
+      "task-contract",
+      "state-journey",
+      "design-grounding",
+      "evidence-honesty",
+      "desktop-geometry",
+      "horizontal-overflow",
+      "color-contrast",
+      "keyboard"
+    ],
+    "red": [
+      "390px-character-range-atomic-lines",
+      "320px-character-range-atomic-lines",
+      "200%-reflow-character-range-atomic-lines"
+    ]
+  },
+  "proof": {
+    "product_edits": 1,
+    "static_closures": 2,
+    "browser_mechanisms": 1,
+    "duplicate_static_closures": 1,
+    "proof_gate_pass": false,
+    "proof_gate_reasons": ["duplicate-static-limit"]
+  },
+  "host": {
+    "state_files": 1,
+    "valid_state_files": 1,
+    "decisions": 10,
+    "denied_decisions": 10,
+    "denied_reasons": {"reflow-inventory-required": 10},
+    "delivery_ready_state_files": 0,
+    "browser_attempts_total": 0,
+    "unblocked_duplicate_static_closure": 1,
+    "gate_reasons": [
+      "installed-policy-delivery-incomplete",
+      "installed-policy-browser-attempt-missing",
+      "duplicate-static-closure-unblocked-limit"
+    ]
+  },
+  "tokens_to_target": {
+    "attempt_order": 18,
+    "prior_observed_provider_tokens_minimum": 28116906,
+    "this_cell_tokens": 3508695,
+    "observed_provider_tokens_minimum": 31625601,
+    "usage_unavailable_cells": 6,
+    "goal_reached": false
+  },
+  "sha256": {
+    "execution_state": "a5d8b25b2605eb38b9cf1526cd2379b3c692ede1740b8a1290b5731fc9e23dad",
+    "run_result": "753269390e683214253677d22a306e0524ced8073e641264ce3577b02d86d75e",
+    "score": "1d3956aa94aee4caccc8882776a8b2d1a3e45b23868ff30651cc40e2e69c6061",
+    "run_record": "13b82692962fc0b104c8e64e7a594e19b7173c4e647d4b3b4452b7062652b7da",
+    "proof_trace": "80f72394daa2066bcd5582105de3ff68dca3c1618ebe34f2ee1ffdfd1727ab5c",
+    "host_policy_state": "625c9b3c0ac1a2606beb505cbaa8fac395e82a2652f2bf14ff9167a1fb5ae343"
+  },
+  "next": "Repair host interception so a second static closure is denied before execution, pin the repair, and preregister a fresh matrix without reusing this frozen root."
+}

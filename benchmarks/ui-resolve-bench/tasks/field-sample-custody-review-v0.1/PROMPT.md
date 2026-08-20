@@ -1,0 +1,5 @@
+Improve the supplied archaeological field-sample custody review so field registrars can inspect sample-to-bag-seal assignments, laboratory intake windows, and the custody decision confidently on desktop and narrow screens.
+
+Preserve all six sample identifiers, all eight bag-seal identifiers and their exact sample assignments, all four supplied intake windows, the three review views, the field-note toggle, the custody-review form, and all stated summary evidence. Do not invent provenance confirmation, contamination clearance, authenticity verification, transfer approval, laboratory acceptance, dating completion, catalog registration, or chain-of-custody closure. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The field register, separate laboratory-intake strip, and separate custody decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.

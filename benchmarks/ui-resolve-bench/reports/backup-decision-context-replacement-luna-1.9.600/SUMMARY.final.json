@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.604",
+  "experiment_id": "backup-decision-context-replacement-luna-1.9.600",
+  "status": "FROZEN_PROMOTION_UNREACHABLE",
+  "promotion": false,
+  "provider_calls": 2,
+  "completed_cells": 2,
+  "frozen_unstarted_cells": [
+    "luna-backup-r2-candidate",
+    "luna-backup-r2-control",
+    "luna-backup-r3-control",
+    "luna-backup-r3-candidate"
+  ],
+  "r1": {
+    "control": {"score": 79, "ui_resolved": false, "proof_pass": false, "wall_time_ms": 526814, "tokens": 2683104},
+    "candidate": {"score": 83, "ui_resolved": false, "proof_pass": false, "wall_time_ms": 514958, "tokens": 2987373}
+  },
+  "candidate_transfer_evidence": {
+    "concise_evidence_inventory_observed": true,
+    "concise_evidence_one_line_mobile": true,
+    "concise_evidence_one_line_320": true,
+    "concise_evidence_one_line_actual_200pct": true,
+    "static_closure_count": 1,
+    "browser_mechanism_count": 1,
+    "browser_recovery_count": 0,
+    "shipped_runner_invoked": true,
+    "measured_conditions": ["390", "320", "200pct"],
+    "decision_context_final_status": "pass",
+    "decision_context_required_flags": [false, false, false],
+    "artifact_closed": false
+  },
+  "candidate_failures": {
+    "desktop_target_action_spatial_separation": false,
+    "target_full_row_gate_was_required": false,
+    "target_full_row_gate_fail_closed": false,
+    "unresolved_carrier_id": "recovery-region-strip",
+    "root_causes": [
+      "comparison-scroll decision target incorrectly disabled the dedicated full-row/order/spatial requirement",
+      "the browser decision-context proof omitted the desktop condition",
+      "the recovery-region relationship carrier remained unresolved despite its protected rows passing"
+    ]
+  },
+  "promotion_reachability": {
+    "candidate_trials_required": 3,
+    "candidate_ui_resolved_observed": 0,
+    "maximum_reachable_ui_resolved_trials": 2,
+    "candidate_proof_compliant_observed": 0,
+    "maximum_reachable_proof_compliant_trials": 2,
+    "candidate_target_hierarchy_observed": 0,
+    "maximum_reachable_target_hierarchy_trials": 2,
+    "promotion_reachable": false
+  },
+  "paired_efficiency": {
+    "wall_time_ratio_candidate_over_control": 0.977494903324513,
+    "token_ratio_candidate_over_control": 1.1134018658986011,
+    "maximum_allowed_ratio": 1.1,
+    "wall_time_gate": true,
+    "token_gate": false,
+    "causal_efficiency_claim_allowed": false
+  },
+  "artifact_hashes": {
+    "candidate_run_result_sha256": "af960ae5ddbcbc3f095fa3460c596bdac32459657e72b27eba614a030da9bbf6",
+    "candidate_score_sha256": "5348e0010854689cf537a689467f18727e59454c0ad99730196d67417b76d42b",
+    "candidate_run_record_sha256": "83de05dccca9ec4a8bbf65c90ffb19bc58a0fb10b0c2123861fd8f75e0cfba86",
+    "candidate_proof_trace_sha256": "8b99308cd094b7dc9c7da27f0fdd0d2f7fdc167e8bb9eedd13ca0396b6839269",
+    "candidate_benchmark_tree_sha256": "b54213c84f00771294252a610a1889a7518e6d9330f2fff99246dd36cf2e719e"
+  },
+  "tokens_to_target": {
+    "cumulative_observed_provider_tokens_minimum": 101844158,
+    "usage_unavailable_cells": 6,
+    "goal_status": "right-censored-open"
+  },
+  "next": "Do not resume this matrix. Repair desktop-inclusive mandatory decision-target hierarchy proof and carrier closure semantics provider-free, pin it, then use another genuinely unseen task."
+}

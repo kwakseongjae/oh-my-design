@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Locale bundle handoff</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #20242a; background: #f7f7f8; font: 16px/1.5 system-ui, sans-serif; }
+    button { font: inherit; min-height: 44px; cursor: pointer; }
+    :focus-visible { outline: 2px solid #20242a; outline-offset: 2px; }
+    .wrap { width: min(1060px, calc(100% - 24px)); margin-inline: auto; }
+    header, footer { min-height: 64px; display: flex; align-items: center; border-color: #dedfe2; }
+    header { border-bottom: 1px solid #dedfe2; }
+    nav { display: flex; justify-content: space-between; align-items: center; }
+    main { padding: 52px 0 72px; }
+    h1 { max-width: 15ch; margin: 8px 0 14px; font-size: 48px; line-height: 1.08; }
+    .muted { color: #686c73; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 16px; }
+    .filters button, .secondary { padding: 9px 14px; border: 1px solid #c8c9cd; border-radius: 12px; color: #20242a; background: #fff; }
+    .filters button[aria-pressed="true"] { color: #fff; border-color: #635bff; background: #635bff; }
+    .console { overflow: hidden; border: 1px solid #dedfe2; border-radius: 16px; background: #fff; box-shadow: 0 18px 50px rgba(22,25,29,.08); }
+    .console-head { display: flex; justify-content: space-between; gap: 20px; align-items: end; padding: 20px; border-bottom: 1px solid #dedfe2; }
+    .console-head h2, .console-head p { margin: 0; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 14px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid #dedfe2; }
+    th { color: #686c73; font-size: 12px; text-transform: uppercase; }
+    .artifact strong, .artifact span { display: block; }
+    .artifact strong { font-size: 17px; overflow-wrap: anywhere; }
+    .details { margin-top: 8px; }
+    .details button { min-height: 0; padding: 0; border: 0; color: #635bff; background: transparent; text-decoration: underline; }
+    .details p { max-width: 40ch; margin: 8px 0 0; color: #686c73; }
+    .state { font-weight: 700; }
+    .decision { padding: 24px; background: #f5f4ff; border-left: 5px solid #635bff; }
+    .decision > * { margin-top: 0; }
+    [data-bench-decision-role="target"] { display: block; font-size: 21px; overflow-wrap: anywhere; }
+    [data-bench-decision-role="evidence"] { display: block; margin-top: 4px; color: #686c73; }
+    [data-bench-decision-role="state"] { color: #686c73; }
+    [data-bench="acknowledge"] { width: 100%; margin-top: 12px; padding: 10px 18px; border: 0; border-radius: 12px; color: #fff; background: #635bff; font-weight: 700; }
+    footer { border-top: 1px solid #dedfe2; color: #686c73; }
+    @media (max-width: 720px) {
+      main { padding: 28px 0 52px; }
+      h1 { font-size: 38px; }
+      .console { overflow: visible; }
+      .console-head { display: grid; align-items: start; }
+      table, tbody, tr, td { display: block; width: 100%; }
+      thead { display: none; }
+      tr { padding: 14px 16px; border-bottom: 1px solid #dedfe2; }
+      td { display: grid; grid-template-columns: 84px minmax(0,1fr); gap: 10px; padding: 5px 0; border: 0; }
+      td::before { content: attr(data-label); color: #686c73; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+      .decision { padding: 20px 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .001ms !important; } }
+  </style>
+</head>
+<body data-filter="all">
+  <header><nav class="wrap" aria-label="Primary"><strong>RelayLocale</strong><span>Bundle handoff</span></nav></header>
+  <main class="wrap">
+    <p class="muted">LOCALIZATION RELEASE DESK</p>
+    <h1>Hand off supplied locale bundles.</h1>
+    <p>Four locale bundles are ready for handoff review. Use only the source facts shown here.</p>
+
+    <div class="filters" aria-label="Filter locale bundles">
+      <button type="button" data-bench="filter-button" data-filter="all" aria-pressed="true">All bundles</button>
+      <button type="button" data-bench="filter-button" data-filter="review" aria-pressed="false">Needs review</button>
+      <button type="button" data-bench="filter-button" data-filter="ready" aria-pressed="false">Ready</button>
+    </div>
+
+    <section class="console" data-bench-design-role="main-console" aria-labelledby="queue-title">
+      <div class="console-head"><div><h2 id="queue-title">Locale artifacts</h2><p class="muted">Evidence is source metadata, not a quality judgment.</p></div><strong>4 bundles</strong></div>
+      <table>
+        <thead><tr><th>Artifact</th><th>Surface</th><th>State</th><th>Evidence</th></tr></thead>
+        <tbody>
+          <tr data-bench="review-row" data-priority="review">
+            <td data-label="Artifact" class="artifact"><strong>ja-JP-checkout-v12.json</strong><span>ja-JP</span></td>
+            <td data-label="Surface">Checkout</td><td data-label="State" class="state">Needs review</td>
+            <td data-label="Evidence">Hash a14c · 36 strings<div class="details"><button type="button" data-bench="details-button" aria-expanded="false" aria-controls="source-1">View source</button><p id="source-1" hidden>Source hash a14c · 36 strings supplied for checkout.</p></div></td>
+          </tr>
+          <tr data-bench="review-row" data-priority="review">
+            <td data-label="Artifact" class="artifact"><strong>zh-TW-billing-v8.json</strong><span>zh-TW</span></td>
+            <td data-label="Surface">Billing</td><td data-label="State" class="state">Needs review</td>
+            <td data-label="Evidence">Hash b09e · 24 strings<div class="details"><button type="button" data-bench="details-button" aria-expanded="false" aria-controls="source-2">View source</button><p id="source-2" hidden>Source hash b09e · 24 strings supplied for billing.</p></div></td>
+          </tr>
+          <tr data-bench="review-row" data-priority="ready">
+            <td data-label="Artifact" class="artifact"><strong>ko-KR-account-v6.json</strong><span>ko-KR</span></td>
+            <td data-label="Surface">Account</td><td data-label="State" class="state">Ready</td><td data-label="Evidence">Hash c22f · 18 strings</td>
+          </tr>
+          <tr data-bench="review-row" data-priority="ready">
+            <td data-label="Artifact" class="artifact"><strong>en-US-help-v4.json</strong><span>en-US</span></td>
+            <td data-label="Surface">Help</td><td data-label="State" class="state">Ready</td><td data-label="Evidence">Hash d31a · 12 strings</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="decision" data-bench-decision-role="context">
+        <span class="muted">Selected artifact</span>
+        <strong data-bench-decision-role="target">ja-JP-checkout-v12.json</strong>
+        <span data-bench-decision-role="evidence">Source hash a14c · 36 strings supplied</span>
+        <p data-bench-decision-role="state">State: Needs review</p>
+        <p data-bench="operation-status" role="status" aria-live="polite">Handoff open. Confirm only the supplied source evidence.</p>
+        <button type="button" data-bench="acknowledge" data-bench-decision-role="action" aria-pressed="false">Complete handoff</button>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap">RelayLocale · Fictional benchmark fixture</div></footer>
+  <script>
+    const filters = [...document.querySelectorAll('[data-bench="filter-button"]')];
+    const rows = [...document.querySelectorAll('[data-bench="review-row"]')];
+    filters.forEach((button) => button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      document.body.dataset.filter = filter;
+      filters.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+      rows.forEach((row) => { row.hidden = filter !== 'all' && row.dataset.priority !== filter; });
+    }));
+    document.querySelectorAll('[data-bench="details-button"]').forEach((button) => button.addEventListener('click', () => {
+      const detail = document.getElementById(button.getAttribute('aria-controls'));
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      button.setAttribute('aria-expanded', String(open));
+      detail.hidden = !open;
+    }));
+    const action = document.querySelector('[data-bench="acknowledge"]');
+    const status = document.querySelector('[data-bench="operation-status"]');
+    action.addEventListener('click', () => {
+      action.setAttribute('aria-pressed', 'true');
+      action.disabled = true;
+      status.textContent = 'Handoff complete. The supplied artifact record remains visible.';
+    });
+  </script>
+</body>
+</html>

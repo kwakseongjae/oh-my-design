@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "advisory-to-edit-recovery-1.9.18",
+  "output_root": "/tmp/u1918",
+  "family": "harness",
+  "baseline_system": "omd-repair-harness-1.9.17-late-write",
+  "candidate_system": "omd-repair-harness-first-safe-edit",
+  "bootstrap_samples": 0,
+  "bootstrap_seed": 20260730,
+  "reliability_k": 1,
+  "harness_delivery_gates": {
+    "first_product_write_ms_max": 450000,
+    "last_advisory_to_first_product_write_ms_max": 90000,
+    "require_targeted_first_product_edit": true,
+    "forbid_replacement_verifier": true
+  },
+  "cells": [
+    {
+      "id": "pricing-advisory-to-edit-recovery-t1",
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "omd-repair-harness",
+      "system_id": "omd-repair-harness-first-safe-edit",
+      "runtime": "claude-code",
+      "model_id": "claude-opus-4-8",
+      "effort": "xhigh",
+      "timeout_seconds": 900,
+      "trial_index": 1
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.478",
+  "task_id": "semiconductor-wafer-disposition-v0.1",
+  "status": "locked-unseen",
+  "facts": {
+    "wafer_lots": 5,
+    "metrology_scans": 7,
+    "process_chambers": 3,
+    "relationship_carriers": [
+      "lot-register",
+      "process-chamber-strip",
+      "disposition-decision"
+    ],
+    "compound_atomic_target": "LOT-ETCH-048271 + METROLOGY-CD-905184",
+    "actual_zoom_state": "Process engineering review pending"
+  },
+  "baseline": {
+    "deterministic_score": 75,
+    "deterministic_max": 85,
+    "ui_resolved": false,
+    "green": [
+      "task-contract",
+      "state-journey",
+      "design-grounding",
+      "evidence-honesty",
+      "desktop-geometry",
+      "minimum-targets",
+      "keyboard"
+    ],
+    "red": [
+      "390px-overflow-and-character-range-atomic-lines",
+      "320px-overflow-and-character-range-atomic-lines",
+      "actual-200%-overflow-and-character-range-atomic-lines",
+      "narrow-and-actual-state-multiline",
+      "serious-color-contrast"
+    ],
+    "overflow_px": {"390": 595, "320": 665, "actual_200pct": 1330},
+    "contrast_ratios": {"muted_on_canvas": 3.88},
+    "passive_text_scroll_containers": 0
+  },
+  "sha256": {
+    "task": "95437094d156082a7672c8a7f4407af3de39290512789c7ab21b9b688eca38e0",
+    "prompt": "3e68ab954b88134735475f8cab8263e7c5d6aedb22b603d005ab3307a3fa1c0b",
+    "index": "7d0053018c1945c9d322b9367e5e4da6f4be60c206041e7edb75622b01468021",
+    "design": "41bd531b674bc975b677b6d9870db0f240b6f2a4fb04ab84d503f34b46b1da2e",
+    "starter_tree": "d2411fea68c64498d572d5bcb205f9908cc819f73bd0698a677eb6975c55296b",
+    "baseline_score": "f9060eb692e4fb0895c90940d399bbdcd15b1e38f5c2476f3c9ccefff5b33b35"
+  },
+  "task_exposure": {
+    "exact_control_e848d129": 0,
+    "exact_candidate_6bfdc7bc": 0
+  },
+  "provider_calls": 0,
+  "next": "Preregister exact 1.9.474 control versus exact 1.9.476 shipped-runner candidate in a fresh runtime-bound Reliability@3 matrix."
+}

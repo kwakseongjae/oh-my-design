@@ -1,0 +1,492 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "frontier-skill-reliability-luna-1.9.816",
+  "status": "PREPARED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "scheduled_cells": 9,
+  "prepared_cells": 9,
+  "locked_plan_sha256": "e57286dc31864d34c283edce4d576dfac4e1b9c265378ecfa67b30e9e4d97afb",
+  "preparation_state_sha256": "82adbe4905da3329f1a851758cae0ba086e232298c186d402da22848860f6fdf",
+  "objective_evaluator": {
+    "score_schema_version": "0.6",
+    "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+    "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+  },
+  "normalization_policy": "multi-task-repeated-reliability",
+  "required_normalization": [
+    "cell_contract",
+    "variant_id",
+    "system_id",
+    "runtime",
+    "model_id",
+    "effort",
+    "timeout_seconds",
+    "skill_sha256",
+    "source_publishable",
+    "objective_evaluator",
+    "deterministic_reflow_contract",
+    "task_lock_attested",
+    "task_lock_exact_unique_order",
+    "skill_lock_attested",
+    "repeated_task_count_at_least_two",
+    "repeated_trial_sets_identical",
+    "repeated_within_task_contracts"
+  ],
+  "normalization": {
+    "cell_contract": true,
+    "task_id": false,
+    "task_id_distinct": false,
+    "task_prompt_sha256": false,
+    "starter_sha256": false,
+    "product_initial_sha256": false,
+    "variant_id": true,
+    "system_id": true,
+    "runtime": true,
+    "model_id": true,
+    "effort": true,
+    "timeout_seconds": true,
+    "skill_sha256": true,
+    "source_publishable": true,
+    "objective_evaluator": true,
+    "deterministic_reflow": false,
+    "deterministic_reflow_contract": true,
+    "task_lock_attested": true,
+    "task_lock_exact_unique_order": true,
+    "skill_lock_attested": true,
+    "paired_task_contracts": true,
+    "paired_arm_rotation": false,
+    "repeated_task_count_at_least_two": true,
+    "repeated_trial_sets_identical": true,
+    "repeated_within_task_contracts": true
+  },
+  "systems": [
+    "luna-high-omd-current"
+  ],
+  "trials": [
+    1,
+    2,
+    3
+  ],
+  "source_attestation": {
+    "luna-high-omd-current": {
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "skill_sha256": "76d7116df49a2896f2f22e264287ec66c79764c5b0f6581996df09778ec8e0ad",
+      "publishable": true
+    }
+  },
+  "execution_admission": {
+    "allowed": true,
+    "reason": null,
+    "execution_artifacts_absent": true,
+    "reprepare_on_objective_methodology_drift": true
+  },
+  "cells": [
+    {
+      "id": "tidal-luna-r1-omd",
+      "task_id": "tidal-chart-accession-v0.1",
+      "variant_id": "omd-portable-1.9.799-current",
+      "system_id": "luna-high-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "task_prompt_sha256": "cfa834f6d739fbf5632c812c6ef280ef43764bfab24d5ff0d569b97a5691105c",
+      "starter_sha256": "a34cb49a5f8ae144641aa942fe301eb1e438f2905826f078039de2a23bfa215a",
+      "product_initial_sha256": "a34cb49a5f8ae144641aa942fe301eb1e438f2905826f078039de2a23bfa215a",
+      "skill_sha256": "76d7116df49a2896f2f22e264287ec66c79764c5b0f6581996df09778ec8e0ad",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "ad3659af4a01274960fb327e6f83555b28c3d444b5466a41feef2ea7a687f681",
+        "source_contract_sha256": "3c87a80fcf45f8e3d9a12f8b6bcf2e100ef30573f4aa325cbb3ed5838d8ac862",
+        "inventory_sha256": "12024ea71151608199d2fc9dc549479af5783779caa6ff8a2bfa85fdfc8e9545",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "514dab5bf837b2d9a799dc85252e927838c4da9039c80fd1b716f2403dfbbc42"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "entomology-luna-r1-omd",
+      "task_id": "entomology-tray-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.799-current",
+      "system_id": "luna-high-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "task_prompt_sha256": "4c389288e8e467c5fd0c082b8c6397f2a0f7d980b1d542410e351e069bf899a3",
+      "starter_sha256": "60b1101706cc506bcc176a183da024053f40dc4840eb0166562ff578d5e9f4a6",
+      "product_initial_sha256": "60b1101706cc506bcc176a183da024053f40dc4840eb0166562ff578d5e9f4a6",
+      "skill_sha256": "76d7116df49a2896f2f22e264287ec66c79764c5b0f6581996df09778ec8e0ad",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "306b3fb191eb826a7653b62d61089e99fa8275240af20638adc1568bd6a520f3",
+        "source_contract_sha256": "4c458180c1b59f1096a7bd72f9e0e1f1c82d62da5e41f6910579a14543fdc89c",
+        "inventory_sha256": "293e3ec88b14af69dbdef038ceba541a6ce28cf3e289872e03131d2e9326d811",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "0d2b44b3dd302bbbe9f5c686d12a6145784bc435519153921f6e66d585658163"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "choreographic-luna-r1-omd",
+      "task_id": "choreographic-score-return-v0.1",
+      "variant_id": "omd-portable-1.9.799-current",
+      "system_id": "luna-high-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "task_prompt_sha256": "e9a335b10332680e813de24bed14cc8fe403d5679fa05cb40a52c6e7e095fe7f",
+      "starter_sha256": "5614362d6171ba625c21f35b9b2f93e6976d4d304bcd80afdf2f3926332d6040",
+      "product_initial_sha256": "5614362d6171ba625c21f35b9b2f93e6976d4d304bcd80afdf2f3926332d6040",
+      "skill_sha256": "76d7116df49a2896f2f22e264287ec66c79764c5b0f6581996df09778ec8e0ad",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "9edde01d84e9c4af398d7837ee42ccd21708d0b6d96d8b6dc1f7ab16dd82ae51",
+        "source_contract_sha256": "7caa90a1d9bb11ded2b8c7887d8f8cd71aa1634c036c1d07b50d40baf2152433",
+        "inventory_sha256": "ddb37fb3d9c18d273136fd5d87aff95e0fe6823ce1f876506de33f281274ee08",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "25fd4beebafd8ec9dd55653c4697f15c7b541b9b1b4ddd75c95d20eec0cdaa14"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "entomology-luna-r2-omd",
+      "task_id": "entomology-tray-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.799-current",
+      "system_id": "luna-high-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 2,
+      "task_prompt_sha256": "4c389288e8e467c5fd0c082b8c6397f2a0f7d980b1d542410e351e069bf899a3",
+      "starter_sha256": "60b1101706cc506bcc176a183da024053f40dc4840eb0166562ff578d5e9f4a6",
+      "product_initial_sha256": "60b1101706cc506bcc176a183da024053f40dc4840eb0166562ff578d5e9f4a6",
+      "skill_sha256": "76d7116df49a2896f2f22e264287ec66c79764c5b0f6581996df09778ec8e0ad",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "306b3fb191eb826a7653b62d61089e99fa8275240af20638adc1568bd6a520f3",
+        "source_contract_sha256": "4c458180c1b59f1096a7bd72f9e0e1f1c82d62da5e41f6910579a14543fdc89c",
+        "inventory_sha256": "293e3ec88b14af69dbdef038ceba541a6ce28cf3e289872e03131d2e9326d811",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "0d2b44b3dd302bbbe9f5c686d12a6145784bc435519153921f6e66d585658163"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "choreographic-luna-r2-omd",
+      "task_id": "choreographic-score-return-v0.1",
+      "variant_id": "omd-portable-1.9.799-current",
+      "system_id": "luna-high-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 2,
+      "task_prompt_sha256": "e9a335b10332680e813de24bed14cc8fe403d5679fa05cb40a52c6e7e095fe7f",
+      "starter_sha256": "5614362d6171ba625c21f35b9b2f93e6976d4d304bcd80afdf2f3926332d6040",
+      "product_initial_sha256": "5614362d6171ba625c21f35b9b2f93e6976d4d304bcd80afdf2f3926332d6040",
+      "skill_sha256": "76d7116df49a2896f2f22e264287ec66c79764c5b0f6581996df09778ec8e0ad",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "9edde01d84e9c4af398d7837ee42ccd21708d0b6d96d8b6dc1f7ab16dd82ae51",
+        "source_contract_sha256": "7caa90a1d9bb11ded2b8c7887d8f8cd71aa1634c036c1d07b50d40baf2152433",
+        "inventory_sha256": "ddb37fb3d9c18d273136fd5d87aff95e0fe6823ce1f876506de33f281274ee08",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "25fd4beebafd8ec9dd55653c4697f15c7b541b9b1b4ddd75c95d20eec0cdaa14"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "tidal-luna-r2-omd",
+      "task_id": "tidal-chart-accession-v0.1",
+      "variant_id": "omd-portable-1.9.799-current",
+      "system_id": "luna-high-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 2,
+      "task_prompt_sha256": "cfa834f6d739fbf5632c812c6ef280ef43764bfab24d5ff0d569b97a5691105c",
+      "starter_sha256": "a34cb49a5f8ae144641aa942fe301eb1e438f2905826f078039de2a23bfa215a",
+      "product_initial_sha256": "a34cb49a5f8ae144641aa942fe301eb1e438f2905826f078039de2a23bfa215a",
+      "skill_sha256": "76d7116df49a2896f2f22e264287ec66c79764c5b0f6581996df09778ec8e0ad",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "ad3659af4a01274960fb327e6f83555b28c3d444b5466a41feef2ea7a687f681",
+        "source_contract_sha256": "3c87a80fcf45f8e3d9a12f8b6bcf2e100ef30573f4aa325cbb3ed5838d8ac862",
+        "inventory_sha256": "12024ea71151608199d2fc9dc549479af5783779caa6ff8a2bfa85fdfc8e9545",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "514dab5bf837b2d9a799dc85252e927838c4da9039c80fd1b716f2403dfbbc42"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "choreographic-luna-r3-omd",
+      "task_id": "choreographic-score-return-v0.1",
+      "variant_id": "omd-portable-1.9.799-current",
+      "system_id": "luna-high-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 3,
+      "task_prompt_sha256": "e9a335b10332680e813de24bed14cc8fe403d5679fa05cb40a52c6e7e095fe7f",
+      "starter_sha256": "5614362d6171ba625c21f35b9b2f93e6976d4d304bcd80afdf2f3926332d6040",
+      "product_initial_sha256": "5614362d6171ba625c21f35b9b2f93e6976d4d304bcd80afdf2f3926332d6040",
+      "skill_sha256": "76d7116df49a2896f2f22e264287ec66c79764c5b0f6581996df09778ec8e0ad",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "9edde01d84e9c4af398d7837ee42ccd21708d0b6d96d8b6dc1f7ab16dd82ae51",
+        "source_contract_sha256": "7caa90a1d9bb11ded2b8c7887d8f8cd71aa1634c036c1d07b50d40baf2152433",
+        "inventory_sha256": "ddb37fb3d9c18d273136fd5d87aff95e0fe6823ce1f876506de33f281274ee08",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "25fd4beebafd8ec9dd55653c4697f15c7b541b9b1b4ddd75c95d20eec0cdaa14"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "tidal-luna-r3-omd",
+      "task_id": "tidal-chart-accession-v0.1",
+      "variant_id": "omd-portable-1.9.799-current",
+      "system_id": "luna-high-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 3,
+      "task_prompt_sha256": "cfa834f6d739fbf5632c812c6ef280ef43764bfab24d5ff0d569b97a5691105c",
+      "starter_sha256": "a34cb49a5f8ae144641aa942fe301eb1e438f2905826f078039de2a23bfa215a",
+      "product_initial_sha256": "a34cb49a5f8ae144641aa942fe301eb1e438f2905826f078039de2a23bfa215a",
+      "skill_sha256": "76d7116df49a2896f2f22e264287ec66c79764c5b0f6581996df09778ec8e0ad",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "ad3659af4a01274960fb327e6f83555b28c3d444b5466a41feef2ea7a687f681",
+        "source_contract_sha256": "3c87a80fcf45f8e3d9a12f8b6bcf2e100ef30573f4aa325cbb3ed5838d8ac862",
+        "inventory_sha256": "12024ea71151608199d2fc9dc549479af5783779caa6ff8a2bfa85fdfc8e9545",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "514dab5bf837b2d9a799dc85252e927838c4da9039c80fd1b716f2403dfbbc42"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "entomology-luna-r3-omd",
+      "task_id": "entomology-tray-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.799-current",
+      "system_id": "luna-high-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 3,
+      "task_prompt_sha256": "4c389288e8e467c5fd0c082b8c6397f2a0f7d980b1d542410e351e069bf899a3",
+      "starter_sha256": "60b1101706cc506bcc176a183da024053f40dc4840eb0166562ff578d5e9f4a6",
+      "product_initial_sha256": "60b1101706cc506bcc176a183da024053f40dc4840eb0166562ff578d5e9f4a6",
+      "skill_sha256": "76d7116df49a2896f2f22e264287ec66c79764c5b0f6581996df09778ec8e0ad",
+      "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "306b3fb191eb826a7653b62d61089e99fa8275240af20638adc1568bd6a520f3",
+        "source_contract_sha256": "4c458180c1b59f1096a7bd72f9e0e1f1c82d62da5e41f6910579a14543fdc89c",
+        "inventory_sha256": "293e3ec88b14af69dbdef038ceba541a6ce28cf3e289872e03131d2e9326d811",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "0d2b44b3dd302bbbe9f5c686d12a6145784bc435519153921f6e66d585658163"
+        },
+        "attested": true
+      },
+      "untouched": true
+    }
+  ]
+}

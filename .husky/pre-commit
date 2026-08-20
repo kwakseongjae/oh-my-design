@@ -22,6 +22,11 @@ node scripts/check-counts.mjs
 
 changed=$(git diff --cached --name-only)
 
+if echo "$changed" | grep -qE '^(web/references/|data/reference-(fingerprints|quality)\.json|scripts/build-reference-quality-data\.mjs|web/scripts/lib/reference-quality\.mjs)'; then
+  echo "[husky] reference-query data gate…"
+  npm run query:references:data:check
+fi
+
 if echo "$changed" | grep -qE '^(web/references/|references/|data/reference-fingerprints\.json|\.claude/data/reference-fingerprints\.json|\.codex/data/reference-fingerprints\.json|web/src/data/(registry|reference-quality)\.generated\.(ts|json)|web/scripts/(build-registry|build-reference-quality|build-reference-ast)\.(mjs|ts)|web/scripts/lib/reference-quality\.mjs|web/scripts/migrate-frontmatters\.mjs|web/__tests__/(catalog-integrity|reference-quality|reference-ast-fleet)\.test\.ts|web/src/lib/references/|spec/(reference-v2|regional-sources)\.(md|yaml)|design-md/)'; then
   echo "[husky] catalog-integrity gate: running vitest…"
   npm run check:catalog

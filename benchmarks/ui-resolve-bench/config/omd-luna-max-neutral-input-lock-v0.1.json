@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "kind": "neutral-wow-preview-task-packet-lock",
+  "lock_id": "omd-luna-max-neutral-input-lock-v0.1",
+  "status": "frozen",
+  "same_source_facts_for_every_arm": true,
+  "task_specific_design_md_allowed": false,
+  "oracle_or_mutant_allowed": false,
+  "task_set": {
+    "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json",
+    "sha256": "53634e4f8e79b34460ebd1d470b381b3167753bf6e07f03eb4aa7ce268e9bf6c"
+  },
+  "blank_starter": {
+    "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/blank-shell/index.html",
+    "sha256": "a9b82fcdf3efa04783d3be61544f84b0a4f3209f0fc5f6ac741ec853d03871b3"
+  },
+  "forbidden_prepared_root_entries": ["DESIGN.md", ".omd/", "oracle", "mutant", "hidden-examples"],
+  "tasks": [
+    {
+      "task_id": "neighborhood-library-landing",
+      "prompt_bytes": 261,
+      "prompt_sha256": "81a8389e65a7f75fbc185dde64f37419baabfea6bf75cd256083ec0dee441ba3",
+      "source_facts_sha256": "a94d5e108a715de7f86e370e637f3b76b99fcd268597d519685feee2322c81ee"
+    },
+    {
+      "task_id": "cold-chain-operations",
+      "prompt_bytes": 275,
+      "prompt_sha256": "e815cf2fd539fcacd92a697e8c61c46e3629a7a4b487c5d6bea5a5a6c01500ad",
+      "source_facts_sha256": "f2e023a2004460ee1376f2a0de574609f9cef5f6693eec3f51532e52882f1a93"
+    },
+    {
+      "task_id": "clinic-visit-prep-locales",
+      "prompt_bytes": 598,
+      "prompt_sha256": "d1c023f0093287ea1af717624fb5fcc769a9858ebd294d5f6efd540c29dde729",
+      "source_facts_sha256": "0fd743af834a51b6d0aeb60412670e0c684d0e0704c62e0bbc2dcb551d66aacb"
+    }
+  ],
+  "provider_calls": 0,
+  "model_calls": 0,
+  "browser_calls": 0
+}

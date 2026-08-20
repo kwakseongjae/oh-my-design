@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "product_version": "1.9.60",
+  "execution_purpose": "internal-cursor-kimi-multitask-skill-lift-preview",
+  "experiment_id": "cursor-kimi-multitask-preview-1.9.60",
+  "output_root": "/tmp/u1960",
+  "family": "skill",
+  "status": "locked-awaiting-fresh-preparation",
+  "control_contract": {
+    "comparison_mode": "native-capability",
+    "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+    "temperature_policy": "runtime-default-frozen",
+    "timeout_seconds": 900,
+    "max_concurrency": 1,
+    "latency_comparison": "descriptive-only",
+    "retry_policy": "none-primary",
+    "timeout_policy": "count-as-valid-failure",
+    "infrastructure_policy": "retain-freeze-and-repreregister",
+    "task_order_policy": "balanced-rotation",
+    "pacing": {
+      "policy": "fixed-inter-cell",
+      "inter_cell_delay_seconds": 120,
+      "applies_between_cells_only": true,
+      "counts_toward_cell_wall_time": false
+    },
+    "token_budget": {
+      "mode": "observed-only",
+      "limit_tokens": null,
+      "usage_required": true,
+      "account_components": ["input", "cached_input", "output", "reasoning_output"],
+      "cached_input_separate": true,
+      "cost_policy": "provider-reported-or-pinned-price-equivalent"
+    },
+    "step_budget": {
+      "mode": "observed-only",
+      "limit_steps": null
+    }
+  },
+  "cells": [
+    {"id":"onboarding-t1-raw","task_id":"onboarding-setup-v0.1","variant_id":"raw-design-md","system_id":"kimi-k3-raw-design-md","runtime":"cursor","model_id":"kimi-k3-high","effort":"high","timeout_seconds":900,"trial_index":1},
+    {"id":"incident-t1-omd","task_id":"incident-operations-v0.1","variant_id":"omd-portable","system_id":"kimi-k3-omd-apply","runtime":"cursor","model_id":"kimi-k3-high","effort":"high","timeout_seconds":900,"trial_index":1},
+    {"id":"locale-t1-raw","task_id":"locale-cli-handoff-v0.1","variant_id":"raw-design-md","system_id":"kimi-k3-raw-design-md","runtime":"cursor","model_id":"kimi-k3-high","effort":"high","timeout_seconds":900,"trial_index":1},
+    {"id":"onboarding-t1-omd","task_id":"onboarding-setup-v0.1","variant_id":"omd-portable","system_id":"kimi-k3-omd-apply","runtime":"cursor","model_id":"kimi-k3-high","effort":"high","timeout_seconds":900,"trial_index":1},
+    {"id":"incident-t1-raw","task_id":"incident-operations-v0.1","variant_id":"raw-design-md","system_id":"kimi-k3-raw-design-md","runtime":"cursor","model_id":"kimi-k3-high","effort":"high","timeout_seconds":900,"trial_index":1},
+    {"id":"locale-t1-omd","task_id":"locale-cli-handoff-v0.1","variant_id":"omd-portable","system_id":"kimi-k3-omd-apply","runtime":"cursor","model_id":"kimi-k3-high","effort":"high","timeout_seconds":900,"trial_index":1}
+  ]
+}

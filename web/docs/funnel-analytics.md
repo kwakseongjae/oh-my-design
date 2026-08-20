@@ -42,6 +42,7 @@ The current taxonomy conflates intents that must be measured apart:
 - `act_` — activation hand-offs shared across surfaces
 - `col_` — collection discovery and builder transfer
 - `ref_` — cross-surface reference sharing
+- `bm_` — versioned internal-benchmark inspection and handoff
 
 ID parameter is **always `reference`** (finite catalog ~400 → safe dimension).
 
@@ -98,6 +99,11 @@ act_handoff         {kind, surface, reference?}    export/prompt/install handoff
 | `col_open` | add | — | collection, origin, color_family? | collection opened from index/builder/directory/related |
 | `col_builder_click` | add | — | collection, color_family | color collection transferred into builder filter |
 | `ref_share_copy` | add | — | reference, location, artifact | detail/evolution share URL copied |
+| `bm_entry` | add | — | origin, experiment_version | Home CLI evidence link opened |
+| `bm_view` | add | — | experiment_version | internal benchmark mounted |
+| `bm_inspect` | add | — | target, experiment_version | bounded method/source inspected |
+| `bm_handoff_view` | add | — | experiment_version | benchmark-end module reached |
+| `bm_handoff` | add | — | destination, outcome, experiment_version | benchmark-end copy/navigation outcome |
 | — | **remove** | `curation_*` (10), `shared_view_*` (3) | — | curation surfaces deleted |
 | — | **remove** | `builder_export` | — | redundant with `bld_generate` (1:1 auto-fire) |
 
@@ -114,7 +120,7 @@ Generic collisions to namespace in a follow-up (likely landing-scope, out of thi
 | `channel` (export) | enum `download\|copy` | 2 | on `bld_export` / `ds_export` |
 | `channel` (view) | enum `direct\|search\|social\|ai\|referral\|internal` | 6 | on `ds_detail_view` — bucketed referrer |
 | `entry` | enum `search\|browse\|hot\|deeplink` | 4 | how the reference was reached |
-| `surface` (install) | enum `hero\|ref_detail\|collection\|builder` | 4 | where the install command was copied (matches `InstallSurface` in `lib/activation/analytics.ts`) |
+| `surface` (install) | enum `hero\|ref_detail\|collection\|builder\|docs\|cli\|benchmark` | 7 | where the install command was copied (matches `InstallSurface` in `lib/activation/analytics.ts`) |
 | `kind` (handoff) | enum `designmd_copy\|designmd_download\|prompt_copy\|install_copy` | 4 | one activation vocabulary across builder/detail/CTA |
 | `entry_step` | enum `select\|customize\|preview` | 3 | separates normal builder entry from deep links |
 | `taxonomy_version` | constant | 1 per cutover | attached centrally by `lib/gtag.ts` |
@@ -130,6 +136,9 @@ Generic collisions to namespace in a follow-up (likely landing-scope, out of thi
 | `origin` | enum `index\|builder\|directory\|related` | 4 | internal collection entry point |
 | `location` | enum `builder\|ref_detail\|evolution` | 3 | share affordance surface |
 | `artifact` | enum `detail\|evolution` | 2 | copied share target |
+| `experiment_version` | frozen patch id | 1 per experiment | isolates benchmark activation cohorts |
+| `target` | bounded benchmark source enum | 7 | method or canonical evidence inspected |
+| `outcome` | enum `navigate\|copied\|failed` | 3 | benchmark-end action result |
 
 **Banned:** raw `query`, `referrer`/`url`, `brand_name`, array `.join(",")` of free text, and GA acquisition-reserved event keys (`source`, `medium`, `campaign`, etc.). The shared emitter remaps legacy reserved keys under `event_*` during the cutover.
 

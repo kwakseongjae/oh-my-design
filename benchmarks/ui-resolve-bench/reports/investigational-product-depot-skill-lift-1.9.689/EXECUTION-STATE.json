@@ -1,0 +1,802 @@
+{
+  "schema_version": "0.3",
+  "experiment_id": "investigational-product-depot-comparison-1.9.688",
+  "suite_version": "ui-resolve-v0.2",
+  "product_version": "1.9.688",
+  "execution_purpose": "authorized-unseen-investigational-product-raw-vs-omd-comparison",
+  "status": "complete",
+  "scheduled_cells": 6,
+  "completed_cells": 6,
+  "current_cell": null,
+  "cells": [
+    {
+      "id": "luna-depot-r1-control",
+      "order": 1,
+      "status": "complete",
+      "workspace": "/private/tmp/omd-investigational-product-matrix-1.9.689/luna-depot-r1-control",
+      "validity": "valid",
+      "run_status": "complete",
+      "ui_resolved": false,
+      "objective_score": 73,
+      "objective_max": 85,
+      "wall_time_ms": 333637,
+      "tokens": 396962,
+      "recoverable_tool_errors": null,
+      "agent_tool_calls": null,
+      "evidence_and_unknown_pass": true,
+      "first_product_write_ms": null,
+      "last_advisory_to_first_product_write_ms": null,
+      "first_product_write_transaction": null,
+      "replacement_verifier_authored": false,
+      "direct_browser_command_count": 0,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 4,
+        "product_revision_count": 3,
+        "last_product_edit_event_index": 23,
+        "post_edit_command_count": 3,
+        "static_closure_count": 3,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 0,
+        "verification_after_ready_count": 0,
+        "compliance_pass": true,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 12,
+            "last_edit_event_index": 12,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 14,
+                "command": "/opt/homebrew/bin/zsh -lc \"sed -n '1,40p' index.html && git diff -- index.html\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 2,
+            "first_edit_event_index": 17,
+            "last_edit_event_index": 19,
+            "edit_count": 2,
+            "commands": [
+              {
+                "index": 21,
+                "command": "/opt/homebrew/bin/zsh -lc \"rg -o 'IP-KIT-[A-Z0-9-]+|TEMP-LOG-[A-Z0-9-]+|DEPOT-LANE-[A-Z0-9-]+|Window [0-9:–-]+ UTC' index.html | sort | uniq -c && rg -o 'data-bench=\\\"kit-view-option\\\"|data-bench=\\\"product-kit-case\\\"|data-bench=\\\"temperature-log-id\\\"|data-bench=\\\"depot-lane-id\\\"|data-bench=\\\"transfer-window\\\"|data-bench=\\\"pharmacist-note-toggle\\\"|data-bench=\\\"release-review-form\\\"' index.html | sort | uniq -c && rg -n 'word-break|font-size:37|min-width:1120|min-width:980|min-width:960' index.html || true\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 3,
+            "first_edit_event_index": 23,
+            "last_edit_event_index": 23,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 26,
+                "command": "/opt/homebrew/bin/zsh -lc \"rg -n 'register|lanes|decision|@media|word-break|overflow-x|focus-visible|aria-invalid' index.html | sed -n '1,24p'\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null,
+      "host_policy_gate": null,
+      "host_policy_admission": null,
+      "artifact_hashes": {
+        "run_result_sha256": "d9a8f2a9c28db4186927fbc48d3b17818e5168e4ba06d1d04be2615e9ff7bd0c",
+        "score_sha256": "99a9a49b7397517f893a9f427e7b0f672957bf29278193fbe13233a50e826d07",
+        "run_record_sha256": "01e5ed67028ab6660ae388319f8b2cfff6f746c6d67ce39e7756cc6bd196d159",
+        "proof_trace_sha256": "5f8a04d2afa1805da4d321221845d0ec6c951d8661d1df9ac0b7e3fdee7be843",
+        "benchmark_tree_sha256": "878666f936956685310a096e0946736dd4729fa3cbd0264c0b0cef981897ea35"
+      },
+      "completed_in_invocation": 1
+    },
+    {
+      "id": "luna-depot-r1-omd",
+      "order": 2,
+      "status": "complete",
+      "workspace": "/private/tmp/omd-investigational-product-matrix-1.9.689/luna-depot-r1-omd",
+      "validity": "valid",
+      "run_status": "complete",
+      "ui_resolved": true,
+      "objective_score": 85,
+      "objective_max": 85,
+      "wall_time_ms": 325961,
+      "tokens": 776704,
+      "recoverable_tool_errors": null,
+      "agent_tool_calls": null,
+      "evidence_and_unknown_pass": true,
+      "first_product_write_ms": null,
+      "last_advisory_to_first_product_write_ms": null,
+      "first_product_write_transaction": null,
+      "replacement_verifier_authored": false,
+      "direct_browser_command_count": 0,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 1,
+        "product_revision_count": 1,
+        "last_product_edit_event_index": 21,
+        "post_edit_command_count": 3,
+        "static_closure_count": 2,
+        "browser_mechanism_count": 1,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 1,
+        "verification_after_ready_count": 0,
+        "compliance_pass": false,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 21,
+            "last_edit_event_index": 21,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 23,
+                "command": "/opt/homebrew/bin/zsh -lc 'node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-close .omd/reflow-closure.json index.html'",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 28,
+                "command": "/opt/homebrew/bin/zsh -lc 'node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-close .omd/reflow-closure.json index.html'",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 31,
+                "command": "/opt/homebrew/bin/zsh -lc 'OMD_REFLOW_ARTIFACT=.omd/reflow-closure.json OMD_REFLOW_PRODUCT=index.html OMD_REFLOW_HELPER=.agents/skills/omd-apply/scripts/reflow-artifact.mjs browser-harness < .agents/skills/omd-apply/scripts/reflow-browser.py'",
+                "mechanism": "shell",
+                "browser": true,
+                "recovery_probe": false,
+                "static_verification": false,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 2,
+            "browser_mechanism_count": 1,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 1,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null,
+      "host_policy_gate": null,
+      "host_policy_admission": null,
+      "artifact_hashes": {
+        "run_result_sha256": "5b98927fe76be47aa05380540d010bf9eabae60b2b7938adec48b8cd7824c5d6",
+        "score_sha256": "653b3a8f58e8d25b2cfe3e6134999a134a2c55d644d1c2df482ecb53a89e4e19",
+        "run_record_sha256": "011a2078c896152d3b606d5988e553d8210d776169305899663f608c3c23e01f",
+        "proof_trace_sha256": "01309dbab73242894a1ba38ff12c047055b07c2a196e8939c1cfc6c28227377a",
+        "benchmark_tree_sha256": "d206878c21f0999589a9c00be1dce433892bdeb79f4b7367a8c7b7d35dee5a18"
+      },
+      "completed_in_invocation": 1
+    },
+    {
+      "id": "luna-depot-r2-omd",
+      "order": 3,
+      "status": "complete",
+      "workspace": "/private/tmp/omd-investigational-product-matrix-1.9.689/luna-depot-r2-omd",
+      "validity": "valid",
+      "run_status": "complete",
+      "ui_resolved": true,
+      "objective_score": 85,
+      "objective_max": 85,
+      "wall_time_ms": 342522,
+      "tokens": 529640,
+      "recoverable_tool_errors": null,
+      "agent_tool_calls": null,
+      "evidence_and_unknown_pass": true,
+      "first_product_write_ms": null,
+      "last_advisory_to_first_product_write_ms": null,
+      "first_product_write_transaction": null,
+      "replacement_verifier_authored": false,
+      "direct_browser_command_count": 0,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 1,
+        "product_revision_count": 1,
+        "last_product_edit_event_index": 18,
+        "post_edit_command_count": 1,
+        "static_closure_count": 1,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 0,
+        "verification_after_ready_count": 0,
+        "compliance_pass": true,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 18,
+            "last_edit_event_index": 18,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 20,
+                "command": "/opt/homebrew/bin/zsh -lc 'node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-close .omd/reflow-closure.json index.html'",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null,
+      "host_policy_gate": null,
+      "host_policy_admission": null,
+      "artifact_hashes": {
+        "run_result_sha256": "8fea8d1a9d22ba2f54f337d0f8d22f59976a6a06f69dac110c7e990faac1125b",
+        "score_sha256": "fd6188cba0daa44319d21e5c4ff42401f379fa6b0ae1d15dfeca47df7209656a",
+        "run_record_sha256": "64f46d3ac3ca8bfa07969033b375f6bd233fe17304fc3f7387bd449d888e94ef",
+        "proof_trace_sha256": "ef6ec58d4f53fae3fd0b03ae3e6a48d845c053da03e70f35a3a4799135ca8fd2",
+        "benchmark_tree_sha256": "c547a6071ffa2f31195d8b63956b92dc0214201a51f0ead2519ff5bff7699112"
+      },
+      "completed_in_invocation": 1
+    },
+    {
+      "id": "luna-depot-r2-control",
+      "order": 4,
+      "status": "complete",
+      "workspace": "/private/tmp/omd-investigational-product-matrix-1.9.689/luna-depot-r2-control",
+      "validity": "valid",
+      "run_status": "complete",
+      "ui_resolved": false,
+      "objective_score": 73,
+      "objective_max": 85,
+      "wall_time_ms": 243034,
+      "tokens": 336992,
+      "recoverable_tool_errors": null,
+      "agent_tool_calls": null,
+      "evidence_and_unknown_pass": true,
+      "first_product_write_ms": null,
+      "last_advisory_to_first_product_write_ms": null,
+      "first_product_write_transaction": null,
+      "replacement_verifier_authored": false,
+      "direct_browser_command_count": 0,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 2,
+        "product_revision_count": 2,
+        "last_product_edit_event_index": 22,
+        "post_edit_command_count": 4,
+        "static_closure_count": 4,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 2,
+        "verification_after_ready_count": 0,
+        "compliance_pass": false,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 12,
+            "last_edit_event_index": 12,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 14,
+                "command": "/opt/homebrew/bin/zsh -lc \"sed -n '1,120p' index.html && git diff -- index.html\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 17,
+                "command": "/opt/homebrew/bin/zsh -lc 'rg -n \"min-width|word-break|overflow|font-size:37|data-bench|IP-KIT|TEMP-LOG|DEPOT-LANE|Release review pending|pharmacist-note\" index.html'",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 19,
+                "command": "/opt/homebrew/bin/zsh -lc \"node <<'NODE'\nconst fs = require('fs');\nconst html = fs.readFileSync('index.html', 'utf8');\nconst checks = {\n  productKits: (html.match(/data-bench=\\\"product-kit-case\\\"/g) || []).length,\n  temperatureLogs: (html.match(/data-bench=\\\"temperature-log-id\\\"/g) || []).length,\n  depotLanes: (html.match(/data-bench=\\\"depot-lane-id\\\"/g) || []).length,\n  viewControls: (html.match(/data-bench=\\\"kit-view-option\\\"/g) || []).length,\n  noteToggle: (html.match(/data-bench=\\\"pharmacist-note-toggle\\\"/g) || []).length,\n  reviewForms: (html.match(/data-bench=\\\"release-review-form\\\"/g) || []).length,\n  pendingState: (html.match(/Release review pending/g) || []).length,\n  mobileWordBreak: html.includes('word-break:break-all'),\n  fixedRegister: html.includes('min-width:1120px'),\n  fixedLanes: html.includes('min-width:980px')\n};\nconsole.log(JSON.stringify(checks, null, 2));\nNODE\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 3,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 2,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 2,
+            "first_edit_event_index": 22,
+            "last_edit_event_index": 22,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 24,
+                "command": "/opt/homebrew/bin/zsh -lc \"rg -o \\\"\\\\.pharmacist-note\\\\{[\"'^}]+'\"\\\\}|word-break:[\"'^;]+|min-width:[''^;]+\" index.html && node <<'\"'NODE'\nconst fs = require('fs');\nconst html = fs.readFileSync('index.html', 'utf8');\nconst required = [\n  'IP-KIT-COHORT-03-INITIAL-SUPPLY-2026-08-05-001',\n  'IP-KIT-COHORT-04-RESUPPLY-2026-08-05-002',\n  'IP-KIT-COHORT-06-QUARANTINE-2026-08-05-003',\n  'IP-KIT-COHORT-07-DEPOT-TRANSFER-2026-08-05-004',\n  'TEMP-LOG-RECEIPT-PROBE-104827', 'TEMP-LOG-PALLET-CORE-338516',\n  'TEMP-LOG-STAGING-BAY-570284', 'TEMP-LOG-QUARANTINE-SHELF-447260',\n  'TEMP-LOG-COLD-CHAIN-672904', 'TEMP-LOG-RETURN-PROBE-118463',\n  'DEPOT-LANE-NORTH-COLD-ROOM-DL04', 'DEPOT-LANE-EAST-QUARANTINE-DL11',\n  'Window 07:20–07:50 UTC', 'Window 08:10–08:40 UTC', 'Release review pending'\n];\nconsole.log('identifiers and state preserved:', required.every(value => html.includes(value)));\nconsole.log('prohibited mobile word break removed:', \"'!html.includes('\"'word-break:break-all'));\nNODE\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null,
+      "host_policy_gate": null,
+      "host_policy_admission": null,
+      "artifact_hashes": {
+        "run_result_sha256": "1ca1f6c480cfa8c8b4d6017d9fa2d9d7f73e0f13094e539e425d405fd67a93db",
+        "score_sha256": "7070d7ae2ebd6b2928d200875f7090f294aefcb52b445e9f35d04aae0608eb28",
+        "run_record_sha256": "09f5274c8609afca9d8bd20be685812bd92180dd73dffdbc30d2e4696c7eb0f6",
+        "proof_trace_sha256": "2395fcdee64dfc099cce1110587700911929bce9f5ff9d027f25ddd62ab2a090",
+        "benchmark_tree_sha256": "15c04990945a91c09dfe4b1d60d35ce7f8c549a414a395fe4580836e717a296c"
+      },
+      "completed_in_invocation": 1
+    },
+    {
+      "id": "luna-depot-r3-control",
+      "order": 5,
+      "status": "complete",
+      "workspace": "/private/tmp/omd-investigational-product-matrix-1.9.689/luna-depot-r3-control",
+      "validity": "valid",
+      "run_status": "complete",
+      "ui_resolved": false,
+      "objective_score": 79,
+      "objective_max": 85,
+      "wall_time_ms": 404568,
+      "tokens": 724316,
+      "recoverable_tool_errors": null,
+      "agent_tool_calls": null,
+      "evidence_and_unknown_pass": true,
+      "first_product_write_ms": null,
+      "last_advisory_to_first_product_write_ms": null,
+      "first_product_write_transaction": null,
+      "replacement_verifier_authored": false,
+      "direct_browser_command_count": 0,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 5,
+        "product_revision_count": 3,
+        "last_product_edit_event_index": 35,
+        "post_edit_command_count": 7,
+        "static_closure_count": 6,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 1,
+        "browser_recovery_count": 1,
+        "duplicate_static_closure_count": 3,
+        "verification_after_ready_count": 0,
+        "compliance_pass": false,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 13,
+            "last_edit_event_index": 16,
+            "edit_count": 2,
+            "commands": [
+              {
+                "index": 18,
+                "command": "/opt/homebrew/bin/zsh -lc \"git diff -- index.html; echo '--- counts ---'; rg -o 'data-bench=\\\"product-kit-case\\\"' index.html | wc -l; rg -o 'data-bench=\\\"temperature-log-id\\\"' index.html | wc -l; rg -o 'data-bench=\\\"depot-lane-id\\\"' index.html | wc -l; rg -o 'data-bench=\\\"transfer-window\\\"' index.html | wc -l; rg -o 'data-bench=\\\"kit-view-option\\\"' index.html | wc -l; rg -n 'min-width|word-break|overflow-x|font: 50|font-size: 37|muted|decision|register|lanes' index.html | sed -n '1,160p'\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 20,
+                "command": "/opt/homebrew/bin/zsh -lc 'command -v chromium || command -v chromium-browser || command -v google-chrome || command -v playwright || command -v wkhtmltoimage || true; command -v html5validator || true; command -v node || true; command -v npm || true'",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": true,
+                "static_verification": false,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 1,
+            "browser_recovery_count": 1,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 2,
+            "first_edit_event_index": 22,
+            "last_edit_event_index": 22,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 25,
+                "command": "/opt/homebrew/bin/zsh -lc \"node - <<'NODE'\nconst fs = require('fs');\nconst vm = require('vm');\nconst html = fs.readFileSync('index.html', 'utf8');\nconst script = html.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)[1];\nnew vm.Script(script);\nconst checks = [\n  ['product kits', (html.match(/data-bench=\\\"product-kit-case\\\"/g) || []).length, 4],\n  ['temperature logs', (html.match(/data-bench=\\\"temperature-log-id\\\"/g) || []).length, 6],\n  ['depot lanes', (html.match(/data-bench=\\\"depot-lane-id\\\"/g) || []).length, 2],\n  ['transfer windows', (html.match(/data-bench=\\\"transfer-window\\\"/g) || []).length, 2],\n  ['view controls', (html.match(/data-view=\\\"(?:kit-register|depot-lanes|release-review)\\\" aria-pressed/g) || []).length, 3],\n  ['note toggle', (html.match(/data-bench=\\\"pharmacist-note-toggle\\\"/g) || []).length, 1],\n  ['release form', (html.match(/data-bench=\\\"release-review-form\\\"/g) || []).length, 1],\n];\nfor (const [name, actual, expected] of checks) {\n  if (actual \"'!== expected) throw new Error(`${name}: ${actual}, expected ${expected}`);\n}\nif (/word-break'\"\\\\s*:\\\\s*break-all/.test(html)) throw new Error('identifier word-breaking remains');\nif (\"'!/'\"\\\\.register[\\\\s\\\\S]*grid-template-columns: repeat\\\\(2, minmax\\\\(0, 1fr\\\\)/.test(html)) throw new Error('register reflow missing');\nif (\"'!/'\"\\\\.lanes[\\\\s\\\\S]*grid-template-columns: repeat\\\\(2, minmax\\\\(0, 1fr\\\\)/.test(html)) throw new Error('lane reflow missing');\nif (\"'!/'\"\\\\.decision strong[\\\\s\\\\S]*white-space: nowrap/.test(html)) throw new Error('decision target protection missing');\nconsole.log('integrity checks passed');\nNODE\nsed -n '1,340p' index.html | tail -n 90\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 27,
+                "command": "/opt/homebrew/bin/zsh -lc \"node - <<'NODE'\nconst fs = require('fs');\nconst vm = require('vm');\nconst html = fs.readFileSync('index.html', 'utf8');\nconst script = html.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)[1];\nnew vm.Script(script);\nconst checks = [\n  ['product kits', (html.match(/data-bench=\\\"product-kit-case\\\"/g) || []).length, 4],\n  ['temperature logs', (html.match(/data-bench=\\\"temperature-log-id\\\"/g) || []).length, 6],\n  ['depot lanes', (html.match(/data-bench=\\\"depot-lane-id\\\"/g) || []).length, 2],\n  ['transfer windows', (html.match(/data-bench=\\\"transfer-window\\\"/g) || []).length, 2],\n  ['view controls', (html.match(/data-bench=\\\"kit-view-option\\\" data-view=/g) || []).length, 3],\n  ['note toggle', (html.match(/data-bench=\\\"pharmacist-note-toggle\\\" aria-pressed=/g) || []).length, 1],\n  ['release form', (html.match(/data-bench=\\\"release-review-form\\\"/g) || []).length, 1],\n];\nfor (const [name, actual, expected] of checks) {\n  if (actual \"'!== expected) throw new Error(`${name}: ${actual}, expected ${expected}`);\n}\nif (/word-break'\"\\\\s*:\\\\s*break-all/.test(html)) throw new Error('identifier word-breaking remains');\nif (\"'!/'\"\\\\.register[\\\\s\\\\S]*grid-template-columns: repeat\\\\(2, minmax\\\\(0, 1fr\\\\)/.test(html)) throw new Error('register reflow missing');\nif (\"'!/'\"\\\\.lanes[\\\\s\\\\S]*grid-template-columns: repeat\\\\(2, minmax\\\\(0, 1fr\\\\)/.test(html)) throw new Error('lane reflow missing');\nif (\"'!/'\"\\\\.decision strong[\\\\s\\\\S]*white-space: nowrap/.test(html)) throw new Error('decision target protection missing');\nconsole.log('integrity checks passed');\nNODE\nrg -n 'QA|chain of custody|temperature compliance|patient allocation|pharmacy readiness|expiry approval|customs clearance|dispensation authorization' index.html || true\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 29,
+                "command": "/opt/homebrew/bin/zsh -lc \"node - <<'NODE'\nconst fs = require('fs');\nconst vm = require('vm');\nconst html = fs.readFileSync('index.html', 'utf8');\nconst script = html.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)[1];\nnew vm.Script(script);\nconst checks = [\n  ['product kits', /data-bench=\\\"product-kit-case\\\"/g, 4],\n  ['temperature logs', /data-bench=\\\"temperature-log-id\\\"/g, 6],\n  ['depot lanes', /data-bench=\\\"depot-lane-id\\\"/g, 2],\n  ['transfer windows', /data-bench=\\\"transfer-window\\\"/g, 2],\n  ['view controls', /data-bench=\\\"kit-view-option\\\" data-view=/g, 3],\n  ['note toggle', /data-bench=\\\"pharmacist-note-toggle\\\" aria-pressed=/g, 1],\n  ['release form', /data-bench=\\\"release-review-form\\\" novalidate/g, 1],\n];\nfor (const [name, pattern, expected] of checks) {\n  const actual = (html.match(pattern) || []).length;\n  if (actual \"'!== expected) throw new Error(`${name}: ${actual}, expected ${expected}`);\n}\nif (/word-break'\"\\\\s*:\\\\s*break-all/.test(html)) throw new Error('identifier word-breaking remains');\nif (\"'!/'\"\\\\.register[\\\\s\\\\S]*grid-template-columns: repeat\\\\(2, minmax\\\\(0, 1fr\\\\)/.test(html)) throw new Error('register reflow missing');\nif (\"'!/'\"\\\\.lanes[\\\\s\\\\S]*grid-template-columns: repeat\\\\(2, minmax\\\\(0, 1fr\\\\)/.test(html)) throw new Error('lane reflow missing');\nif (\"'!/'\"\\\\.decision strong[\\\\s\\\\S]*white-space: nowrap/.test(html)) throw new Error('decision target protection missing');\nconsole.log('integrity checks passed');\nNODE\nrg -n 'QA release|complete chain of custody|temperature compliance|patient allocation|pharmacy readiness|expiry approval|customs clearance|dispensation authorization' index.html || true\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 31,
+                "command": "/opt/homebrew/bin/zsh -lc \"sed -n '95,175p' index.html\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 4,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 3,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 3,
+            "first_edit_event_index": 33,
+            "last_edit_event_index": 35,
+            "edit_count": 2,
+            "commands": [
+              {
+                "index": 37,
+                "command": "/opt/homebrew/bin/zsh -lc \"node - <<'NODE'\nconst fs = require('fs');\nconst vm = require('vm');\nconst html = fs.readFileSync('index.html', 'utf8');\nconst script = html.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)[1];\nnew vm.Script(script);\nconst checks = [\n  ['product kits', /data-bench=\\\"product-kit-case\\\"/g, 4],\n  ['temperature logs', /data-bench=\\\"temperature-log-id\\\"/g, 6],\n  ['depot lanes', /data-bench=\\\"depot-lane-id\\\"/g, 2],\n  ['transfer windows', /data-bench=\\\"transfer-window\\\"/g, 2],\n  ['view controls', /data-bench=\\\"kit-view-option\\\" data-view=/g, 3],\n  ['note toggle', /data-bench=\\\"pharmacist-note-toggle\\\" aria-pressed=/g, 1],\n  ['release form', /data-bench=\\\"release-review-form\\\" novalidate/g, 1],\n];\nfor (const [name, pattern, expected] of checks) {\n  const actual = (html.match(pattern) || []).length;\n  if (actual \"'!== expected) throw new Error(`${name}: ${actual}, expected ${expected}`);\n}\nif (/word-break'\"\\\\s*:\\\\s*break-all/.test(html)) throw new Error('identifier word-breaking remains');\nif (/min-width\\\\s*:\\\\s*(?:9|1[0-9])\\\\d+px/.test(html)) throw new Error('forced page-wide minimum width remains');\nif (\"'!/'\"\\\\.decision strong[\\\\s\\\\S]*white-space: nowrap/.test(html)) throw new Error('decision target protection missing');\nconsole.log('integrity checks passed');\nNODE\nrg -n 'min-width: [1-9]|word-break|overflow-x: hidden' index.html || true\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null,
+      "host_policy_gate": null,
+      "host_policy_admission": null,
+      "artifact_hashes": {
+        "run_result_sha256": "a05161578a820ba2ca14fba88fb5a8f85147248fceef61d485df65e38ca6b7a1",
+        "score_sha256": "7c048c9c7a026d45c029cbbb236ae5056395ee14b3d2b0f050ebf8ae2382fbdf",
+        "run_record_sha256": "5aab462f0d51bb79b03fe92393aa7d2338f7303cfea8cad87fddffe4e9d9ec2e",
+        "proof_trace_sha256": "ae84fe326063d54e6106442cb9b5f78b7e1d5fb7692d9afe1ef16ed9a0290ea2",
+        "benchmark_tree_sha256": "d6535109bd9b52ebd63a5563fdf12c34f4b765378a219feede7ac2a34dacd193"
+      },
+      "completed_in_invocation": 1
+    },
+    {
+      "id": "luna-depot-r3-omd",
+      "order": 6,
+      "status": "complete",
+      "workspace": "/private/tmp/omd-investigational-product-matrix-1.9.689/luna-depot-r3-omd",
+      "validity": "valid",
+      "run_status": "complete",
+      "ui_resolved": false,
+      "objective_score": 75,
+      "objective_max": 85,
+      "wall_time_ms": 200609,
+      "tokens": 469511,
+      "recoverable_tool_errors": null,
+      "agent_tool_calls": null,
+      "evidence_and_unknown_pass": true,
+      "first_product_write_ms": null,
+      "last_advisory_to_first_product_write_ms": null,
+      "first_product_write_transaction": null,
+      "replacement_verifier_authored": false,
+      "direct_browser_command_count": 0,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": false,
+        "product_edit_count": 0,
+        "product_revision_count": 0,
+        "last_product_edit_event_index": null,
+        "post_edit_command_count": 0,
+        "static_closure_count": 0,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 0,
+        "verification_after_ready_count": 0,
+        "compliance_pass": false,
+        "revisions": []
+      },
+      "proof_execution_gate": null,
+      "host_policy": null,
+      "host_policy_gate": null,
+      "host_policy_admission": null,
+      "artifact_hashes": {
+        "run_result_sha256": "36926fb5fe5327398621f3eb6fe06a1fede02143837ce091c13916543920edd2",
+        "score_sha256": "6024b80be6094129880c031b6032dbfacb8dd65f84cbda59a31848e859ab7e52",
+        "run_record_sha256": "a43bbc290c2b9ca2fd55390f0a10a0d54d81911e83c8a4678589e1f10f7cb699",
+        "proof_trace_sha256": "6421f80cb71cf3b972309c92f1174feb2f483aa131cd9a39ce4306accd529a83",
+        "benchmark_tree_sha256": "ccc3d38b42892097a0e8d49c23d0e9de9581524ee8fd96481c0be71f7c55e910"
+      },
+      "completed_in_invocation": 1
+    }
+  ],
+  "execution_contract": {
+    "mode": "checkpoint-bounded",
+    "max_new_cells": 6
+  },
+  "locked_plan_sha256": "3babf1fa0ac2cca4eb10fa2c57ca9981a17f8a44c112ccf3a9829af6278fa791",
+  "preparation_state_sha256": "398eb0173bba851669f9a764789657aff0690e0c4a5ab6fa907226a4eab8b91e",
+  "invocation_history": [
+    {
+      "invocation": 1,
+      "max_new_cells": 6,
+      "started_at": "2026-08-05T10:45:51.223Z",
+      "finished_at": "2026-08-05T11:27:00.234Z",
+      "status": "complete",
+      "completed_cells_before": 0,
+      "completed_cells_after": 6,
+      "new_cells_completed": 6
+    }
+  ],
+  "checkpoint_history": [],
+  "evaluator_preflight_history": [
+    {
+      "status": "complete",
+      "started_at": "2026-08-05T10:45:51.223Z",
+      "finished_at": "2026-08-05T10:45:51.380Z",
+      "dependencies": [
+        "playwright-core",
+        "axe-core"
+      ],
+      "invocation": 1
+    }
+  ],
+  "pacing_history": [
+    {
+      "policy": "fixed-inter-cell",
+      "after_cell_id": "luna-depot-r1-control",
+      "before_cell_id": "luna-depot-r1-omd",
+      "delay_seconds": 120,
+      "counts_toward_cell_wall_time": false,
+      "status": "complete",
+      "started_at": "2026-08-05T10:51:28.053Z",
+      "finished_at": "2026-08-05T10:53:28.056Z",
+      "invocation": 1,
+      "monotonic_started_ms": 336858.937417,
+      "monotonic_finished_ms": 456861.323709,
+      "monotonic_elapsed_ms": 120002.38629200001,
+      "wall_elapsed_ms": 120003,
+      "clock_disagreement_ms": 0.613707999989856,
+      "clock_difference_ms": 0.613707999989856,
+      "acceptance_window_ms": {
+        "min": 120000,
+        "max": 125000,
+        "max_clock_disagreement": 5000
+      }
+    },
+    {
+      "policy": "fixed-inter-cell",
+      "after_cell_id": "luna-depot-r1-omd",
+      "before_cell_id": "luna-depot-r2-omd",
+      "delay_seconds": 120,
+      "counts_toward_cell_wall_time": false,
+      "status": "complete",
+      "started_at": "2026-08-05T10:58:57.288Z",
+      "finished_at": "2026-08-05T11:00:57.290Z",
+      "invocation": 1,
+      "monotonic_started_ms": 786089.934417,
+      "monotonic_finished_ms": 906091.083167,
+      "monotonic_elapsed_ms": 120001.14874999993,
+      "wall_elapsed_ms": 120002,
+      "clock_disagreement_ms": 0.8512500000651926,
+      "clock_difference_ms": 0.8512500000651926,
+      "acceptance_window_ms": {
+        "min": 120000,
+        "max": 125000,
+        "max_clock_disagreement": 5000
+      }
+    },
+    {
+      "policy": "fixed-inter-cell",
+      "after_cell_id": "luna-depot-r2-omd",
+      "before_cell_id": "luna-depot-r2-control",
+      "delay_seconds": 120,
+      "counts_toward_cell_wall_time": false,
+      "status": "complete",
+      "started_at": "2026-08-05T11:06:42.975Z",
+      "finished_at": "2026-08-05T11:08:42.980Z",
+      "invocation": 1,
+      "monotonic_started_ms": 1251773.8905,
+      "monotonic_finished_ms": 1371778.075792,
+      "monotonic_elapsed_ms": 120004.18529199995,
+      "wall_elapsed_ms": 120005,
+      "clock_disagreement_ms": 0.814708000048995,
+      "clock_difference_ms": 0.814708000048995,
+      "acceptance_window_ms": {
+        "min": 120000,
+        "max": 125000,
+        "max_clock_disagreement": 5000
+      }
+    },
+    {
+      "policy": "fixed-inter-cell",
+      "after_cell_id": "luna-depot-r2-control",
+      "before_cell_id": "luna-depot-r3-control",
+      "delay_seconds": 120,
+      "counts_toward_cell_wall_time": false,
+      "status": "complete",
+      "started_at": "2026-08-05T11:12:48.694Z",
+      "finished_at": "2026-08-05T11:14:48.699Z",
+      "invocation": 1,
+      "monotonic_started_ms": 1617548.719667,
+      "monotonic_finished_ms": 1737554.273125,
+      "monotonic_elapsed_ms": 120005.55345800007,
+      "wall_elapsed_ms": 120005,
+      "clock_disagreement_ms": 0.5534580000676215,
+      "clock_difference_ms": 0.5534580000676215,
+      "acceptance_window_ms": {
+        "min": 120000,
+        "max": 125000,
+        "max_clock_disagreement": 5000
+      }
+    },
+    {
+      "policy": "fixed-inter-cell",
+      "after_cell_id": "luna-depot-r3-control",
+      "before_cell_id": "luna-depot-r3-omd",
+      "delay_seconds": 120,
+      "counts_toward_cell_wall_time": false,
+      "status": "complete",
+      "started_at": "2026-08-05T11:21:37.131Z",
+      "finished_at": "2026-08-05T11:23:37.136Z",
+      "invocation": 1,
+      "monotonic_started_ms": 2145990.16575,
+      "monotonic_finished_ms": 2265995.786917,
+      "monotonic_elapsed_ms": 120005.62116699992,
+      "wall_elapsed_ms": 120005,
+      "clock_disagreement_ms": 0.6211669999174774,
+      "clock_difference_ms": 0.6211669999174774,
+      "acceptance_window_ms": {
+        "min": 120000,
+        "max": 125000,
+        "max_clock_disagreement": 5000
+      }
+    }
+  ],
+  "pacing": null,
+  "prepared_cell_attestations": {
+    "luna-depot-r1-control": {
+      "benchmark_tree_sha256": "f718e4eb6a968c959a6038b3849219dc313f0ec93beb35bb8ae5b281f9615607",
+      "product_tree_sha256": "bde7197f76901e79c2c8ea7d5484ee73f47e661d35ca7e474d7ebd7d4547bde4"
+    },
+    "luna-depot-r1-omd": {
+      "benchmark_tree_sha256": "012bfabea442da7ef1d3815d65b423537ce9382b58a169664087620d19b2a004",
+      "product_tree_sha256": "bde7197f76901e79c2c8ea7d5484ee73f47e661d35ca7e474d7ebd7d4547bde4"
+    },
+    "luna-depot-r2-omd": {
+      "benchmark_tree_sha256": "a807eb99477ff6b8556202d42a8bddf6a2be27960c9d8cd1d97215daf7e0a280",
+      "product_tree_sha256": "bde7197f76901e79c2c8ea7d5484ee73f47e661d35ca7e474d7ebd7d4547bde4"
+    },
+    "luna-depot-r2-control": {
+      "benchmark_tree_sha256": "92f0d6c65c6329ab14e8655218ade34b44979fa4f6bf7b3bef15c3f7c6c2a6ec",
+      "product_tree_sha256": "bde7197f76901e79c2c8ea7d5484ee73f47e661d35ca7e474d7ebd7d4547bde4"
+    },
+    "luna-depot-r3-control": {
+      "benchmark_tree_sha256": "5fc4ff3cc3a8f2ebe7c93a95aa889a42419c8c69d3a624a5c02d57e9f5918b41",
+      "product_tree_sha256": "bde7197f76901e79c2c8ea7d5484ee73f47e661d35ca7e474d7ebd7d4547bde4"
+    },
+    "luna-depot-r3-omd": {
+      "benchmark_tree_sha256": "58d0a4b92c2f08f2780fcb0baf782cbc3c25f420c1f8ddf40211aa049ae9e3ea",
+      "product_tree_sha256": "bde7197f76901e79c2c8ea7d5484ee73f47e661d35ca7e474d7ebd7d4547bde4"
+    }
+  },
+  "evaluator_preflight": {
+    "status": "complete",
+    "started_at": "2026-08-05T10:45:51.223Z",
+    "finished_at": "2026-08-05T10:45:51.380Z",
+    "dependencies": [
+      "playwright-core",
+      "axe-core"
+    ],
+    "invocation": 1
+  },
+  "proof_execution_gate": null,
+  "host_policy_gate": null
+}

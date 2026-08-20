@@ -1,0 +1,259 @@
+{
+  "schema_version": "0.2",
+  "generated_at": "2026-07-22T22:27:07.065Z",
+  "bootstrap": {
+    "method": "hierarchical-percentile-task-then-run",
+    "samples": 2000,
+    "seed": 20260727
+  },
+  "reliability_k": 3,
+  "groups": [
+    {
+      "benchmark_family": "harness",
+      "suite_version": "1.9.7",
+      "system_id": "omd-portable",
+      "model_id": "claude-opus-4-8",
+      "skill_id": null,
+      "harness_id": "omd-portable",
+      "budget_tier": "xhigh",
+      "runs": {
+        "scheduled_trials": 9,
+        "valid_trials": 9,
+        "complete": 9,
+        "failed": 0,
+        "timed_out": 0,
+        "incomplete": 0,
+        "invalid_attempts": 0,
+        "unreplaced_invalid_trials": [],
+        "completion_rate": 1
+      },
+      "ui_resolved": {
+        "passed": 7,
+        "rate": 0.7778,
+        "confidence_95": {
+          "lower": 0.3333,
+          "upper": 1,
+          "samples": 2000
+        }
+      },
+      "reliability": {
+        "k": 3,
+        "eligible_tasks": 3,
+        "passed_tasks": 2,
+        "rate": 0.6667
+      },
+      "objective_percent": {
+        "count": 9,
+        "mean": 97.2549,
+        "median": 100,
+        "standard_deviation": 4.4019,
+        "min": 89.4118,
+        "p10": 90.3529,
+        "p25": 95.2941,
+        "p75": 100,
+        "p90": 100,
+        "max": 100,
+        "iqr": 4.7059
+      },
+      "wall_time_ms": {
+        "count": 9,
+        "mean": 470483.6667,
+        "median": 474092,
+        "standard_deviation": 77881.7395,
+        "min": 339350,
+        "p10": 397202,
+        "p25": 413082,
+        "p75": 513911,
+        "p90": 570040,
+        "max": 581372,
+        "iqr": 100829
+      },
+      "tokens": {
+        "count": 9,
+        "mean": 101636.7778,
+        "median": 104232,
+        "standard_deviation": 15139.6364,
+        "min": 80022,
+        "p10": 84733.2,
+        "p25": 89542,
+        "p75": 113123,
+        "p90": 116690,
+        "max": 126422,
+        "iqr": 23581
+      },
+      "tool_calls": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null
+      },
+      "human_interventions": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null
+      },
+      "representative_runs": {
+        "worst_run_id": "operations-t1-portable",
+        "median_run_id": "onboarding-t1-portable",
+        "best_run_id": "pricing-t3-portable"
+      },
+      "publication_ready": true
+    },
+    {
+      "benchmark_family": "harness",
+      "suite_version": "1.9.7",
+      "system_id": "omd-repair-harness-verification-authority",
+      "model_id": "claude-opus-4-8",
+      "skill_id": null,
+      "harness_id": "omd-repair-harness",
+      "budget_tier": "xhigh",
+      "runs": {
+        "scheduled_trials": 9,
+        "valid_trials": 9,
+        "complete": 9,
+        "failed": 0,
+        "timed_out": 0,
+        "incomplete": 0,
+        "invalid_attempts": 0,
+        "unreplaced_invalid_trials": [],
+        "completion_rate": 1
+      },
+      "ui_resolved": {
+        "passed": 8,
+        "rate": 0.8889,
+        "confidence_95": {
+          "lower": 0.5556,
+          "upper": 1,
+          "samples": 2000
+        }
+      },
+      "reliability": {
+        "k": 3,
+        "eligible_tasks": 3,
+        "passed_tasks": 2,
+        "rate": 0.6667
+      },
+      "objective_percent": {
+        "count": 9,
+        "mean": 98.9542,
+        "median": 100,
+        "standard_deviation": 2.0751,
+        "min": 95.2941,
+        "p10": 95.2941,
+        "p25": 100,
+        "p75": 100,
+        "p90": 100,
+        "max": 100,
+        "iqr": 0
+      },
+      "wall_time_ms": {
+        "count": 9,
+        "mean": 373556.7778,
+        "median": 380104,
+        "standard_deviation": 40871.3207,
+        "min": 315710,
+        "p10": 328066,
+        "p25": 342443,
+        "p75": 392624,
+        "p90": 413303.8,
+        "max": 446495,
+        "iqr": 50181
+      },
+      "tokens": {
+        "count": 9,
+        "mean": 119724.3333,
+        "median": 116653,
+        "standard_deviation": 8434.2514,
+        "min": 110077,
+        "p10": 112094.6,
+        "p25": 114671,
+        "p75": 121303,
+        "p90": 130951.8,
+        "max": 136415,
+        "iqr": 6632
+      },
+      "tool_calls": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null
+      },
+      "human_interventions": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null
+      },
+      "representative_runs": {
+        "worst_run_id": "operations-t3-harness",
+        "median_run_id": "onboarding-t1-harness",
+        "best_run_id": "pricing-t2-harness"
+      },
+      "publication_ready": true
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "benchmark_family": "harness",
+      "suite_version": "1.9.7",
+      "model_id": "claude-opus-4-8",
+      "budget_tier": "xhigh",
+      "candidate_system_id": "omd-repair-harness-verification-authority",
+      "baseline_system_id": "omd-portable",
+      "matched_pairs": 9,
+      "resolved_lift_percentage_points": 11.1111,
+      "resolved_lift_confidence_95": {
+        "lower": -33.3333,
+        "upper": 66.6667,
+        "samples": 2000
+      },
+      "win_tie_loss": {
+        "wins": 2,
+        "ties": 6,
+        "losses": 1
+      },
+      "objective_lift_percentage_points": {
+        "count": 9,
+        "mean": 1.6993,
+        "median": 0,
+        "standard_deviation": 4.9604,
+        "min": -4.7059,
+        "p10": -0.9412,
+        "p25": 0,
+        "p75": 0,
+        "p90": 9.6471,
+        "max": 10.5882,
+        "iqr": 0
+      }
+    }
+  ]
+}

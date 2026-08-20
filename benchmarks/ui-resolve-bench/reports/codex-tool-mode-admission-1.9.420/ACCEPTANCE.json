@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.420",
+  "status": "ACCEPTED",
+  "provider_calls": 0,
+  "scope": "benchmark-runtime-admission",
+  "contract": {
+    "installed_codex_policy_requires_direct_hook_eligible_tool_mode": true,
+    "eligible_tool_modes": ["function"],
+    "code_mode_only_disposition": "reject-before-provider",
+    "unknown_or_missing_profile_disposition": "reject-before-provider",
+    "controller_observation_remains_available": true
+  },
+  "observed_current_profiles": {
+    "gpt-5.6-sol": "code_mode_only",
+    "gpt-5.6-terra": "code_mode_only",
+    "gpt-5.6-luna": "code_mode_only"
+  },
+  "runtime_attribution": [
+    "model_tool_mode",
+    "model_cache_sha256",
+    "model_cache_fetched_at",
+    "model_cache_client_version"
+  ],
+  "validation": {
+    "focused_tests": "70/70",
+    "bench_tests": "338/340 relevant pass + 1 skip",
+    "known_external_vendor_git_root_failures": 2,
+    "typescript": "pass",
+    "diff_check": "pass",
+    "frozen_matrix_preflight": "rejected-before-provider"
+  }
+}

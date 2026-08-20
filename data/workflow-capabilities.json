@@ -1,0 +1,344 @@
+{
+  "schema_version": 1,
+  "product_version": "1.9.829-candidate",
+  "locale_contract": {
+    "source_locale": "ko",
+    "source_revision": "workflow-capabilities-ko-v2",
+    "supported_locales": ["en", "ko", "ja", "zh-CN", "zh-TW"]
+  },
+  "principles": [
+    "natural-language-first",
+    "selective-authority-escalation",
+    "design-system-before-reference-selection",
+    "smallest-capable-workflow",
+    "one-implementation-owner",
+    "specialists-are-advisory",
+    "unknown-means-absent",
+    "quality-graded-reference-query",
+    "preserve-observable-contract",
+    "same-surface-reverification"
+  ],
+  "execution_assurance": {
+    "contract_version": 1,
+    "levels": {
+      "skill-contract": "Instructions describe required behavior but cannot block a host tool call.",
+      "host-feedback": "An installed host hook can inject context or report after a tool call, but does not deny execution.",
+      "host-policy-enforced": "A host-native pre-tool policy denies a prohibited call before execution.",
+      "benchmark-observed": "A controller classifies the event stream after execution and can fail promotion without blocking the run."
+    },
+    "channels": [
+      {
+        "id": "claude-code",
+        "skill_contract": "advisory",
+        "host_feedback": ["prompt-context", "session-state", "post-edit-context", "session-fold-in"],
+        "native_policy_surface": "pre-tool-hook-deny",
+        "omd_policy_adapter_default": "not-installed",
+        "omd_policy_adapter_opt_in": {
+          "flag": "--proof-policy",
+          "scope": "project",
+          "enforcement": "pre-tool-deny-after-host-trust",
+          "remove_flag": "--remove-proof-policy"
+        },
+        "host_native_pretool_blocking": false,
+        "proof_trace": "not-captured-by-omd",
+        "effective_level": "host-feedback"
+      },
+      {
+        "id": "codex",
+        "skill_contract": "advisory",
+        "host_feedback": [],
+        "native_policy_surface": "pre-tool-hook-deny-or-execpolicy-rules",
+        "omd_policy_adapter_default": "not-installed",
+        "omd_policy_adapter_opt_in": {
+          "flag": "--proof-policy",
+          "scope": "project-git-root",
+          "enforcement": "pre-tool-deny-after-host-trust",
+          "remove_flag": "--remove-proof-policy"
+        },
+        "host_native_pretool_blocking": false,
+        "proof_trace": "benchmark-controller-only",
+        "effective_level": "skill-contract"
+      },
+      {
+        "id": "opencode",
+        "skill_contract": "advisory",
+        "host_feedback": [],
+        "native_policy_surface": "project-permissions-or-plugin-before-hook",
+        "omd_policy_adapter_default": "not-installed",
+        "host_native_pretool_blocking": false,
+        "proof_trace": "not-captured-by-omd",
+        "effective_level": "skill-contract"
+      },
+      {
+        "id": "cursor",
+        "skill_contract": "advisory",
+        "host_feedback": [],
+        "native_policy_surface": "project-cli-permissions",
+        "omd_policy_adapter_default": "not-installed",
+        "host_native_pretool_blocking": false,
+        "proof_trace": "benchmark-controller-only",
+        "effective_level": "skill-contract"
+      }
+    ],
+    "harness": {
+      "checkpoint_control": "orchestrator-contract-requires-user-resume",
+      "host_native_pretool_blocking": false
+    },
+    "benchmark_controller": {
+      "supported_runtimes": ["codex", "cursor"],
+      "proof_trace": "event-stream-classified",
+      "enforcement": "promotion-report",
+      "execution_blocking": false
+    }
+  },
+  "work_packet": {
+    "required": [
+      "intent",
+      "task",
+      "consumer_route",
+      "acceptance",
+      "protected_behaviors",
+      "protected_contract",
+      "protected_contract.change_authority",
+      "evidence",
+      "unknowns",
+      "implementation_owner",
+      "verification"
+    ],
+    "intents": ["audit", "implement", "create", "publish"],
+    "implementation_owner": "main-agent",
+    "change_authority": "original-user-task-only",
+    "repair_advisory": {
+      "mode": "bounded-repair-advisory",
+      "risk_areas_max": 2,
+      "findings_max": 3,
+      "target_words": 300,
+      "first_safe_edit_required": true,
+      "advisory_to_first_edit_seconds_max": 90,
+      "first_transaction": "targeted-acceptance-relevant-edit",
+      "contract_drift_disposition": "rejected_contract_drift"
+    },
+    "specialist_response": [
+      "first_safe_edit",
+      "finding",
+      "evidence",
+      "smallest_useful_change",
+      "acceptance_check",
+      "unresolved"
+    ]
+  },
+  "reference_query": {
+    "entry_skill": "omd:init",
+    "engine": "skills/omd-init/scripts/query-references.mjs",
+    "network": "none",
+    "model_call": "none",
+    "ranking": ["exact-brand", "semantic-match", "quality-status", "stable-id"],
+    "verified_policy": "evidence-qualified-fields-only",
+    "non_verified_policy": "context-only-reverify-first",
+    "unknown_policy": "omit-smallest-unresolved-field",
+    "no_signal_policy": "ask-for-brand-category-or-tone"
+  },
+  "workflows": [
+    {
+      "id": "repair-existing-ui",
+      "label": "Improve an existing UI",
+      "label_ko": "기존 UI 개선",
+      "entry_skill": "omd:apply",
+      "implementation_owner": "main-agent",
+      "specialists": [
+        "omd-ux-engineer",
+        "omd-ux-writer",
+        "omd-slop-auditor",
+        "omd-designer-review",
+        "omd-a11y-auditor"
+      ],
+      "stages": ["inspect", "lock-protected-contract", "advise", "implement", "reverify", "handoff"],
+      "prompt_en": "Improve the existing pricing page using our DESIGN.md. Preserve behavior-bearing controls and states, implement the smallest high-impact changes, then verify the same route at desktop, mobile, 320px, and 200% zoom.",
+      "prompt_ko": "기존 가격 페이지를 DESIGN.md에 맞게 개선해줘. 동작을 가진 control과 state를 보존하고 효과가 큰 최소 변경을 구현한 뒤 같은 경로를 데스크톱·모바일·320px·200% zoom에서 다시 검증해줘.",
+      "route_suffix_en": "Use our DESIGN.md, lock the observable behavior contract before editing, implement the smallest high-impact changes, then reverify the same route, states, contrast, 320px, and 200% zoom.",
+      "route_suffix_ko": "DESIGN.md를 적용하고 편집 전에 관찰 가능한 동작 계약을 잠가. 효과가 큰 최소 변경을 구현한 뒤 같은 경로·viewport·state에서 contrast·320px·200% zoom을 다시 검증해줘.",
+      "locales": {
+        "ja": {
+          "label": "既存UIを改善",
+          "prompt": "既存の料金ページをDESIGN.mdに沿って改善してください。操作できる要素と状態を維持し、効果の大きい変更だけを実装したうえで、同じ画面をデスクトップ、モバイル、320px、200%表示で確認してください。",
+          "route_suffix": "DESIGN.mdを基準に、編集前に画面の動作を固定してください。効果の大きい変更だけを実装し、同じ画面と状態でコントラスト、320px、200%表示を再確認してください。"
+        },
+        "zh-CN": {
+          "label": "改进现有界面",
+          "prompt": "按照 DESIGN.md 改进现有定价页面。保留控件行为和页面状态，只实现影响最大的必要修改，然后在桌面端、移动端、320px 和 200% 缩放下检查同一页面。",
+          "route_suffix": "以 DESIGN.md 为依据，修改前先锁定可观察的交互行为。只实现影响最大的必要修改，再检查同一页面和状态下的对比度、320px 与 200% 缩放。"
+        },
+        "zh-TW": {
+          "label": "改善現有介面",
+          "prompt": "依照 DESIGN.md 改善現有定價頁面。保留控制項行為與頁面狀態，只實作影響最大的必要修改，再於桌面、行動裝置、320px 與 200% 縮放下檢查同一頁面。",
+          "route_suffix": "以 DESIGN.md 為依據，修改前先鎖定可觀察的互動行為。只實作影響最大的必要修改，再檢查同一頁面與狀態下的對比、320px 與 200% 縮放。"
+        }
+      }
+    },
+    {
+      "id": "audit-existing-ui",
+      "label": "Audit without changing code",
+      "label_ko": "코드 변경 없는 UI 진단",
+      "entry_skill": "omd:slop-audit",
+      "implementation_owner": "none",
+      "specialists": ["omd-slop-auditor", "omd-designer-review", "omd-ux-engineer"],
+      "stages": ["inspect", "collect-evidence", "classify", "report"],
+      "prompt_en": "Audit the existing onboarding route. Separate AI-slop patterns, measurable defects, and valid design preferences. Do not change code.",
+      "prompt_ko": "기존 온보딩 경로를 검수해줘. AI slop 패턴, 측정 가능한 결함, 유효한 디자인 취향을 구분하고 코드는 바꾸지 마.",
+      "route_suffix_en": "Separate AI-slop patterns, measurable defects, and valid design preferences. Cite evidence and do not change code.",
+      "route_suffix_ko": "AI slop 패턴, 측정 가능한 결함, 유효한 디자인 취향을 구분하고 근거를 남겨. 코드는 바꾸지 마.",
+      "locales": {
+        "ja": {
+          "label": "コードを変更せずにUIを確認",
+          "prompt": "既存のオンボーディング画面を確認してください。AI生成UIに偏りやすい表現、測定できる不具合、妥当なデザイン上の選択を分け、コードは変更しないでください。",
+          "route_suffix": "AI生成UIに偏りやすい表現、測定できる不具合、妥当なデザイン上の選択を分けて根拠を示してください。コードは変更しないでください。"
+        },
+        "zh-CN": {
+          "label": "只检查现有界面",
+          "prompt": "检查现有引导流程。区分常见的 AI 生成界面模式、可测量的缺陷和合理的设计选择，不要修改代码。",
+          "route_suffix": "区分常见的 AI 生成界面模式、可测量的缺陷和合理的设计选择，附上依据，不要修改代码。"
+        },
+        "zh-TW": {
+          "label": "只檢查現有介面",
+          "prompt": "檢查現有的新手引導流程。區分常見的 AI 生成介面模式、可測量的缺陷與合理的設計選擇，不要修改程式碼。",
+          "route_suffix": "區分常見的 AI 生成介面模式、可測量的缺陷與合理的設計選擇，附上依據，不要修改程式碼。"
+        }
+      }
+    },
+    {
+      "id": "autonomous-product-creation",
+      "label": "Create a product surface autonomously",
+      "label_ko": "제품 화면 자율 구축",
+      "entry_skill": "omd:autopilot",
+      "implementation_owner": "main-agent",
+      "specialists": [
+        "omd-design-system-architect",
+        "omd-ux-researcher",
+        "omd-ux-engineer",
+        "omd-critic",
+        "omd-designer-review",
+        "omd-a11y-auditor",
+        "omd-final-qa"
+      ],
+      "stages": ["detect", "authority-gate", "bounded-council", "design-system-disposition", "system-proof", "implement", "same-route-verify", "bounded-revision", "deliver"],
+      "prompt_en": "Create this new product surface from scratch. Decide whether the repository needs a project-owned design system, ask only one consequential question batch if authority is missing, then implement and verify the real route.",
+      "prompt_ko": "이 새 제품 화면을 처음부터 자율적으로 구축해줘. 프로젝트 디자인 시스템이 필요한지 먼저 판단하고, 권한이 없을 때만 중요한 질문을 한 번 묶어서 물은 뒤 실제 경로를 구현하고 검증해줘.",
+      "route_suffix_en": "Use OmD Autopilot. Resolve the design-system disposition before reference selection, keep one implementation owner, ask at most one authority-bearing question batch, and verify the real route at desktop, mobile, 320px, and 200% zoom.",
+      "route_suffix_ko": "OmD Autopilot을 사용해. 레퍼런스 선택 전에 디자인 시스템 구축 여부를 결정하고, 구현 소유자는 한 명으로 유지하며, 권한이 필요한 질문은 최대 한 번만 묶어서 묻고 실제 경로를 데스크톱·모바일·320px·200% zoom에서 검증해줘.",
+      "locales": {
+        "ja": {
+          "label": "製品画面を自律的に構築",
+          "prompt": "新しい製品画面を一から自律的に構築してください。まずプロジェクト専用デザインシステムが必要か判断し、権限が不足する場合だけ重要な質問を一度にまとめて確認してから、実際の画面を実装・検証してください。",
+          "route_suffix": "OmD Autopilotを使い、参照例を選ぶ前にデザインシステムの扱いを決めてください。実装担当は一人に限定し、権限に関する質問は最大一回にまとめ、実際の画面をデスクトップ、モバイル、320px、200%表示で検証してください。"
+        },
+        "zh-CN": {
+          "label": "自主构建产品页面",
+          "prompt": "从零开始自主构建这个新产品页面。先判断项目是否需要自己的设计系统；只有缺少决策权限时才集中提问一次，然后实现并验证真实页面。",
+          "route_suffix": "使用 OmD Autopilot。在选择参考案例前决定设计系统方案，只保留一名实现负责人；涉及权限的问题最多集中提问一次，并在桌面端、移动端、320px 和 200% 缩放下验证真实页面。"
+        },
+        "zh-TW": {
+          "label": "自主建構產品畫面",
+          "prompt": "從零開始自主建構這個新產品畫面。先判斷專案是否需要自己的設計系統；只有缺少決策權限時才集中提問一次，再實作並驗證真實頁面。",
+          "route_suffix": "使用 OmD Autopilot。在選擇參考案例前決定設計系統方案，只保留一名實作負責人；涉及權限的問題最多集中提問一次，並在桌面、行動裝置、320px 與 200% 縮放下驗證真實頁面。"
+        }
+      }
+    },
+    {
+      "id": "create-new-surface",
+      "label": "Create a new product surface with checkpoints",
+      "label_ko": "체크포인트와 함께 새 제품 화면 설계",
+      "entry_skill": "omd:harness",
+      "implementation_owner": "main-agent-after-checkpoint-3",
+      "specialists": [
+        "omd-master",
+        "omd-ux-researcher",
+        "omd-ui-junior",
+        "omd-microcopy",
+        "omd-a11y-auditor",
+        "omd-persona-tester"
+      ],
+      "stages": ["discover", "journey-checkpoint", "system-checkpoint", "generate", "validate-checkpoint", "deliver"],
+      "prompt_en": "Design and implement a new family meal-planning home screen from scratch. Use the OmD harness, stop at its required checkpoints, then integrate the approved result into the real route.",
+      "prompt_ko": "가족 식단 앱의 새 홈 화면을 처음부터 디자인하고 구현해줘. OmD 하네스를 사용하고 필수 체크포인트에서 멈춘 뒤 승인된 결과를 실제 경로에 반영해줘.",
+      "route_suffix_en": "Use the OmD harness, stop at every required checkpoint, then integrate the approved result into the real product route.",
+      "route_suffix_ko": "OmD 하네스를 사용하고 모든 필수 체크포인트에서 멈춘 뒤 승인된 결과를 실제 제품 경로에 반영해줘.",
+      "locales": {
+        "ja": {
+          "label": "新しい製品画面を設計",
+          "prompt": "家族向け献立アプリの新しいホーム画面を一から設計し、実装してください。OmDハーネスを使い、必須チェックポイントごとに確認を待ってから、承認された内容を実際の製品画面に反映してください。",
+          "route_suffix": "OmDハーネスを使い、必須チェックポイントごとに停止してください。承認された内容だけを実際の製品画面に反映してください。"
+        },
+        "zh-CN": {
+          "label": "设计新的产品页面",
+          "prompt": "从头设计并实现家庭膳食规划应用的新首页。使用 OmD 设计流程，在每个必需检查点等待确认，再把获批结果集成到实际产品页面。",
+          "route_suffix": "使用 OmD 设计流程，在每个必需检查点等待确认，再把获批结果集成到实际产品页面。"
+        },
+        "zh-TW": {
+          "label": "設計新的產品頁面",
+          "prompt": "從零開始設計並實作家庭餐點規劃應用程式的新首頁。使用 OmD 設計流程，在每個必要檢查點等待確認，再把核准結果整合進實際產品頁面。",
+          "route_suffix": "使用 OmD 設計流程，在每個必要檢查點等待確認，再把核准結果整合進實際產品頁面。"
+        }
+      }
+    },
+    {
+      "id": "establish-design-system",
+      "label": "Create or refresh DESIGN.md",
+      "label_ko": "DESIGN.md 구축·갱신",
+      "entry_skill": "omd:init",
+      "implementation_owner": "main-agent",
+      "specialists": ["omd-ux-researcher"],
+      "stages": ["inspect-project", "query-quality-index", "select-evidence-policy", "declare-deltas", "write-design-md", "sync"],
+      "prompt_en": "Set up a project-owned design system for this repository. Query the local quality-graded catalog, use non-verified matches only as context until reverified, keep unknown product facts absent, and create DESIGN.md with explicit deltas.",
+      "prompt_ko": "이 저장소에 프로젝트 소유 디자인 시스템을 구축해줘. 로컬 품질 등급 카탈로그를 조회하고, 미검증 매치는 재검증 전까지 맥락으로만 사용하며, 모르는 제품 사실은 비워둔 채 명시적 차이를 담은 DESIGN.md를 만들어줘.",
+      "route_suffix_en": "Query the local quality-graded catalog, use non-verified matches only as context until reverified, keep unknown product facts absent, and create a project-owned DESIGN.md with explicit deltas.",
+      "route_suffix_ko": "로컬 품질 등급 카탈로그를 조회하고 미검증 매치는 재검증 전까지 맥락으로만 사용해. 모르는 제품 사실은 비워둔 채 명시적 차이가 있는 프로젝트 소유 DESIGN.md를 만들어줘.",
+      "locales": {
+        "ja": {
+          "label": "DESIGN.mdを作成・更新",
+          "prompt": "このリポジトリ専用のデザインシステムを整備してください。ローカルの品質評価付きカタログを検索し、未検証の候補は再確認するまで参考情報としてのみ扱ってください。不明な製品情報は補わず、プロジェクト固有の差分を記したDESIGN.mdを作成してください。",
+          "route_suffix": "ローカルの品質評価付きカタログを検索し、未検証の候補は再確認するまで参考情報としてのみ扱ってください。不明な製品情報は補わず、プロジェクト固有の差分を記したDESIGN.mdを作成してください。"
+        },
+        "zh-CN": {
+          "label": "创建或更新 DESIGN.md",
+          "prompt": "为此代码仓库建立项目专用设计系统。查询本地质量分级目录，未验证的匹配项在重新检查前只作为参考；未知的产品事实保持空缺，并在 DESIGN.md 中写明项目差异。",
+          "route_suffix": "查询本地质量分级目录，未验证的匹配项在重新检查前只作为参考。未知的产品事实保持空缺，并创建写明项目差异的 DESIGN.md。"
+        },
+        "zh-TW": {
+          "label": "建立或更新 DESIGN.md",
+          "prompt": "為這個程式碼儲存庫建立專案專用的設計系統。查詢本機的品質分級目錄，未驗證的比對結果在重新檢查前只作為參考；未知的產品資訊保持空缺，並在 DESIGN.md 中寫明專案差異。",
+          "route_suffix": "查詢本機的品質分級目錄，未驗證的比對結果在重新檢查前只作為參考。未知的產品資訊保持空缺，並建立寫明專案差異的 DESIGN.md。"
+        }
+      }
+    },
+    {
+      "id": "localize-product-language",
+      "label": "Adapt product language",
+      "label_ko": "제품 언어 현지화",
+      "entry_skill": "omd:orchestrator",
+      "implementation_owner": "main-agent",
+      "specialists": ["omd-locale-adapter", "omd-humanizer", "omd-ux-writer"],
+      "stages": ["lock-facts", "adapt", "humanize", "implement", "locale-verify"],
+      "prompt_en": "Adapt this product flow into Korean, English, Japanese, Simplified Chinese, and Traditional Chinese. Preserve facts and behavior, then verify every real locale route.",
+      "prompt_ko": "이 제품 흐름을 한국어·영어·일본어·중국어 간체·번체로 현지화해줘. 사실과 동작을 보존하고 실제 locale 경로를 각각 검증해줘.",
+      "route_suffix_en": "Preserve facts and behavior, adapt rather than translate literally, then verify every real locale route.",
+      "route_suffix_ko": "사실과 동작을 보존하고 직역이 아닌 현지화를 적용한 뒤 실제 locale 경로를 각각 검증해줘.",
+      "locales": {
+        "ja": {
+          "label": "製品文言を各言語向けに調整",
+          "prompt": "この製品フローを韓国語、英語、日本語、簡体字中国語、繁体字中国語向けに調整してください。事実と動作を維持し、各言語の実際の製品画面を確認してください。",
+          "route_suffix": "事実と動作を維持し、直訳ではなく各言語に合う文面に整えてください。その後、各言語の実際の製品画面を確認してください。"
+        },
+        "zh-CN": {
+          "label": "调整产品语言",
+          "prompt": "将此产品流程分别适配为韩语、英语、日语、简体中文和繁体中文。保留事实与交互行为，并检查每个语言版本的实际产品页面。",
+          "route_suffix": "保留事实与交互行为，按各语言的使用习惯重新组织文案，不做逐字翻译，然后检查每个语言版本的实际产品页面。"
+        },
+        "zh-TW": {
+          "label": "調整產品語言",
+          "prompt": "將這個產品流程分別調整為韓文、英文、日文、簡體中文與繁體中文。保留事實與互動行為，並檢查每個語言版本的實際產品頁面。",
+          "route_suffix": "保留事實與互動行為，依各語言的使用習慣重新安排文案，不做逐字翻譯，再檢查每個語言版本的實際產品頁面。"
+        }
+      }
+    }
+  ]
+}

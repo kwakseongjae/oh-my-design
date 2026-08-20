@@ -1,0 +1,172 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-intake-calibration-1.9.734",
+  "claim_boundary": "Synthetic disposition calibration only; it does not prove reduced human intervention or better design outcomes.",
+  "cases": [
+    {
+      "id": "ko-explicit-developer-landing",
+      "locale": "ko",
+      "task": "개발자용 CLI 풀 랜딩. GitHub star를 primary CTA로 사용해줘.",
+      "ctx": {"surface_inventory":[{"path":"app/page.tsx","kind":"landing"}],"wow_moment_candidates":[{"label":"CLI demo","evidence":"app/page.tsx"}]},
+      "expect": {"primary-audience":"auto","exit-scope":"auto","primary-cta":"auto","wow-moment":"auto","visual-grounding":"auto"},
+      "expect_values": {"primary-audience":"개발자·기술 사용자","exit-scope":"풀 랜딩","primary-cta":"GitHub star / View source","visual-grounding":"Live reference capture"}
+    },
+    {
+      "id": "en-explicit-family-single",
+      "locale": "en",
+      "task": "A single screen family meal planner with Get started as the primary action.",
+      "ctx": {"surface_inventory":[{"path":"src/app.tsx","kind":"product"}]},
+      "expect": {"primary-audience":"auto","exit-scope":"auto","primary-cta":"auto","wow-moment":"defer","visual-grounding":"auto"},
+      "expect_values": {"primary-audience":"가족·보호자 사용자","exit-scope":"단일 화면","primary-cta":"Sign-up / Get started","visual-grounding":"Catalog-only"}
+    },
+    {
+      "id": "ja-explicit-admin-single",
+      "locale": "ja",
+      "task": "管理者向けの単一画面。お問い合わせを主なCTAにしてください。",
+      "ctx": {"surface_inventory":[{"path":"app/admin.tsx","kind":"product"}]},
+      "expect": {"primary-audience":"auto","exit-scope":"auto","primary-cta":"auto","wow-moment":"defer","visual-grounding":"auto"},
+      "expect_values": {"primary-audience":"B2B 운영자·관리자","exit-scope":"단일 화면","primary-cta":"Book demo / Contact sales"}
+    },
+    {
+      "id": "zh-cn-explicit-developer-landing",
+      "locale": "zh-cn",
+      "task": "面向开发者的完整着陆页，主要操作是查看文档。",
+      "ctx": {"surface_inventory":[{"path":"app/page.tsx","kind":"landing"}]},
+      "expect": {"primary-audience":"auto","exit-scope":"auto","primary-cta":"auto","wow-moment":"defer","visual-grounding":"auto"},
+      "expect_values": {"primary-audience":"개발자·기술 사용자","exit-scope":"풀 랜딩","primary-cta":"View docs / Read more"}
+    },
+    {
+      "id": "zh-tw-explicit-family-multi",
+      "locale": "zh-tw",
+      "task": "家庭使用的多頁面服務，主要操作是聯絡銷售。",
+      "ctx": {"surface_inventory":[{"path":"app/dashboard.tsx","kind":"product"}]},
+      "expect": {"primary-audience":"auto","exit-scope":"auto","primary-cta":"auto","wow-moment":"defer","visual-grounding":"auto"},
+      "expect_values": {"primary-audience":"가족·보호자 사용자","exit-scope":"다중 surface","primary-cta":"Book demo / Contact sales"}
+    },
+    {
+      "id": "conflicting-audiences",
+      "locale": "ko",
+      "task": "개발자와 일반 사용자 모두를 위한 단일 화면이며 시작하기가 주 행동이야.",
+      "ctx": {"surface_inventory":[{"path":"app/page.tsx","kind":"product"}]},
+      "expect": {"primary-audience":"interview","exit-scope":"auto","primary-cta":"auto"}
+    },
+    {
+      "id": "conflicting-scope",
+      "locale": "en",
+      "task": "A developer tool that needs both a single screen and a full landing page. Use GitHub as the CTA.",
+      "ctx": {"surface_inventory":[{"path":"app/page.tsx","kind":"landing"}]},
+      "expect": {"primary-audience":"auto","exit-scope":"interview","primary-cta":"auto"}
+    },
+    {
+      "id": "conflicting-cta",
+      "locale": "en",
+      "task": "A full landing page for developers. Make GitHub and documentation the primary actions.",
+      "ctx": {"surface_inventory":[{"path":"app/page.tsx","kind":"landing"}]},
+      "expect": {"primary-audience":"auto","exit-scope":"auto","primary-cta":"interview"}
+    },
+    {
+      "id": "unsupported-greenfield",
+      "locale": "ko",
+      "task": "새 서비스 화면을 디자인해줘.",
+      "ctx": {"surface_inventory":[],"audience_hypothesis":[{"label":"신규 사용자","confidence":0.6,"evidence":"empty repository"}],"wow_moment_candidates":[{"label":"깔끔한 hero","evidence":"greenfield default"}]},
+      "expect": {"primary-audience":"interview","exit-scope":"interview","primary-cta":"interview","wow-moment":"defer","visual-grounding":"defer"}
+    },
+    {
+      "id": "repo-hypothesis-cannot-own-audience",
+      "locale": "en",
+      "task": "Design the dashboard for this product.",
+      "ctx": {"surface_inventory":[{"path":"app/dashboard.tsx","kind":"product"}],"audience_hypothesis":[{"label":"Operations lead","confidence":0.91,"evidence":"admin routes"}],"wow_moment_candidates":[{"label":"Live incident map","evidence":"app/dashboard.tsx"}]},
+      "expect": {"primary-audience":"interview","exit-scope":"interview","primary-cta":"interview","wow-moment":"auto","visual-grounding":"auto"}
+    },
+    {
+      "id": "wow-evidence-missing",
+      "locale": "en",
+      "task": "A developer dashboard with a single screen and Get started CTA.",
+      "ctx": {"surface_inventory":[{"path":"app/dashboard.tsx","kind":"product"}],"wow_moment_candidates":[{"label":"Animated topology"}]},
+      "expect": {"wow-moment":"defer"}
+    },
+    {
+      "id": "wow-label-missing",
+      "locale": "en",
+      "task": "A developer dashboard with a single screen and Get started CTA.",
+      "ctx": {"surface_inventory":[{"path":"app/dashboard.tsx","kind":"product"}],"wow_moment_candidates":[{"evidence":"app/dashboard.tsx"}]},
+      "expect": {"wow-moment":"defer"}
+    },
+    {
+      "id": "negated-audience-remains-interview",
+      "locale": "en",
+      "task": "Not for developers; this single screen is for admins. Contact sales is the CTA.",
+      "ctx": {"surface_inventory":[{"path":"app/admin.tsx","kind":"product"}]},
+      "expect": {"primary-audience":"interview","exit-scope":"auto","primary-cta":"auto"}
+    },
+    {
+      "id": "ja-ambiguous-product",
+      "locale": "ja",
+      "task": "新しいサービス画面をデザインしてください。",
+      "ctx": {"surface_inventory":[]},
+      "expect": {"primary-audience":"interview","exit-scope":"interview","primary-cta":"interview","wow-moment":"defer","visual-grounding":"defer"}
+    },
+    {
+      "id": "zh-tw-conflicting-cta",
+      "locale": "zh-tw",
+      "task": "開發者使用的完整落地頁，主要操作同時是檢視原始碼與查看文件。",
+      "ctx": {"surface_inventory":[{"path":"app/page.tsx","kind":"landing"}]},
+      "expect": {"primary-audience":"auto","exit-scope":"auto","primary-cta":"interview"}
+    },
+    {
+      "id": "surface-only-process-auto",
+      "locale": "ko",
+      "task": "현재 앱 설정 화면을 정리해줘.",
+      "ctx": {"surface_inventory":[{"path":"app/settings.tsx","kind":"product"}]},
+      "expect": {"primary-audience":"interview","exit-scope":"interview","primary-cta":"interview","visual-grounding":"auto"},
+      "expect_values": {"visual-grounding":"Catalog-only"}
+    },
+    {
+      "id": "missing-official-brand-source-blocks",
+      "locale": "ko",
+      "task": "공식 Acme 디자인 시스템을 정확히 그대로 적용한 풀 랜딩을 만들어줘.",
+      "ctx": {"surface_inventory":[{"path":"app/page.tsx","kind":"landing"}]},
+      "expect": {"brand-reference-commitment":"blocked"},
+      "expect_values": {"brand-reference-commitment":null}
+    },
+    {
+      "id": "zh-cn-regulated-authority",
+      "locale": "zh-cn",
+      "task": "请替我决定价格和用户数据保留政策，并设计管理后台。",
+      "ctx": {"surface_inventory":[{"path":"app/admin.tsx","kind":"product"}]},
+      "expect": {"regulated-commitment":"interview"}
+    },
+    {
+      "id": "missing-ctx-required-metric-blocks",
+      "locale": "en",
+      "task": "Show the exact actual conversion rate in the dashboard hero.",
+      "ctx_missing": true,
+      "expect": {"required-factual-claim":"blocked","visual-grounding":"auto"},
+      "expect_values": {"required-factual-claim":null,"visual-grounding":"Catalog-only"}
+    },
+    {
+      "id": "ko-negated-scope-and-cta",
+      "locale": "ko",
+      "task": "개발자용 풀 랜딩 말고 단일 화면으로. GitHub 쓰지 말고 문서를 주 행동으로 해줘.",
+      "ctx": {"surface_inventory":[{"path":"app/dashboard.tsx","kind":"product"}]},
+      "expect": {"primary-audience":"auto","exit-scope":"interview","primary-cta":"interview","visual-grounding":"auto"},
+      "expect_values": {"visual-grounding":"Catalog-only"}
+    },
+    {
+      "id": "mixed-marketing-docs-surface-defers",
+      "locale": "en",
+      "task": "Build a developer landing page that is also the product documentation hub, with GitHub as the CTA.",
+      "ctx": {"surface_inventory":[{"path":"app/docs/page.tsx","kind":"docs"}]},
+      "expect": {"visual-grounding":"defer"},
+      "expect_values": {"visual-grounding":null}
+    },
+    {
+      "id": "zh-cn-dual-grounded-wow-defers",
+      "locale": "zh-cn",
+      "task": "面向开发者的单一页面，主要操作是开始使用。",
+      "ctx": {"surface_inventory":[{"path":"app/page.tsx","kind":"product"}],"wow_moment_candidates":[{"label":"实时拓扑","evidence":"app/topology.tsx"},{"label":"命令回放","evidence":"app/replay.tsx"}]},
+      "expect": {"wow-moment":"defer"},
+      "expect_values": {"wow-moment":null}
+    }
+  ]
+}

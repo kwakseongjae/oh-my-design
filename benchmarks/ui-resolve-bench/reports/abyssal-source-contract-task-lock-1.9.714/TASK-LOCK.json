@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.714",
+  "task_id": "abyssal-sediment-core-custody-v0.1",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "task_tree_sha256": "2c40167055f45d47a860a659d9f7b1f6589f1026425bf419922c2505cc465154",
+  "task_json_sha256": "61a02917fde12b3fd2a3a85ea889fc292f5e722f70abeadf57c02a878ae10984",
+  "prompt_sha256": "9819cd0fc8dfd38c5500689695290a6beba18de251007a1fa7abfb7ec46f002e",
+  "starter_sha256": "4010ee1b3e45c75819da4e430421449a524a8875af7161adbd465d1fb9bae661",
+  "source_contract": {
+    "schema_version": "0.1",
+    "sha256": "cbeffd2dc67fd5525919f43797cea0a6323c17b4ae7ae8f6ccdb8d07457e3c46",
+    "sealed_artifact_sha256": "51f3ade92f7f2de9754959e01c3538e7a61ebf64216845e96dededc3122d45cf",
+    "inventory_sha256": "9ff364fef6b042ccb56acfbbf0831b5dfb0be1c65813fdb2e17f3679160a722e",
+    "provider_mutable": false,
+    "source_packet_hash_stable": true
+  }
+}

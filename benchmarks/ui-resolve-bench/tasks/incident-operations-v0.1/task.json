@@ -1,0 +1,93 @@
+{
+  "id": "incident-operations-v0.1",
+  "version": "0.4.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "dashboard-v1",
+  "review_brief": "A compact incident operations console for a small platform team. Compare whether the result makes severity, ownership, current state, and the next safe action scannable without turning every datum into a card.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": {
+    "landmarks": {
+      "h1_count": { "exact": 1 },
+      "main_count": { "exact": 1 },
+      "nav_count": { "min": 1 },
+      "footer_count": { "min": 1 }
+    }
+  },
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": [
+    "[data-bench='filter-button']",
+    "[data-bench='incident-row']",
+    "[data-bench='details-button']",
+    "[data-bench='acknowledge']",
+    "[data-bench='operation-status']",
+    "[data-bench-design-role='main-console']"
+  ],
+  "protected_hook_counts": {
+    "[data-bench='filter-button']": 3,
+    "[data-bench='incident-row']": 4,
+    "[data-bench='details-button']": 2,
+    "[data-bench='acknowledge']": 1,
+    "[data-bench='operation-status']": 1,
+    "[data-bench-design-role='main-console']": 1
+  },
+  "journey_oracle": {
+    "filter": {
+      "selector": "[data-bench='filter-button']",
+      "value_attribute": "data-filter",
+      "body_dataset": "filter",
+      "row_selector": "[data-bench='incident-row']",
+      "count": 3,
+      "initial": "all",
+      "selected": "critical",
+      "initial_visible_rows": 4,
+      "selected_visible_rows": 2
+    },
+    "disclosure": { "selector": "[data-bench='details-button']", "count": 2 },
+    "acknowledgement": {
+      "button_selector": "[data-bench='acknowledge']",
+      "status_selector": "[data-bench='operation-status']"
+    }
+  },
+  "protected_unknown_patterns": [
+    "\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b",
+    "\\b(?:best|fastest|leading|top-rated|award-winning)\\s+(?:platform|operations|monitoring|incident|tool)\\b",
+    "\\btrusted by\\b",
+    "\\b(?:zero downtime|always available|never fails|instant recovery)\\b",
+    "\\b\\d[\\d,]*\\+?\\s+(?:customers|companies|teams|users|incidents)\\b",
+    "[★☆]{3,}"
+  ],
+  "protected_known_patterns": [
+    "^(?:Showing all )?4 incidents(?: shown)?\\.?$"
+  ],
+  "protected_unknown_selectors": [
+    "blockquote",
+    "[class*='testimonial' i]",
+    "[class*='logo-wall' i]",
+    "[class*='social-proof' i]"
+  ],
+  "design_oracle": {
+    "page_background": "#0D1412",
+    "primary_action": "#46C78E",
+    "accent": "#F4B860",
+    "ink": "#ECF4F0",
+    "surface": "#15211D",
+    "border": "#2B3933",
+    "muted_text": "#9AA9A2",
+    "card_radius_px": 14,
+    "control_radius_px": 10,
+    "font_family": { "body_any": ["Arial"], "display_any": ["Georgia"] },
+    "selectors": {
+      "primary_action": "[data-bench='acknowledge']",
+      "card": "[data-bench-design-role='main-console']",
+      "display": "h1"
+    }
+  }
+}

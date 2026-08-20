@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "field-sample-relationship-verifier-diagnostic-1.9.698",
+  "status": "PREPARED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "scheduled_cells": 1,
+  "prepared_cells": 1,
+  "locked_plan_sha256": "4f605f8dd6f9dca3ab1aee278ec0c0f3cbc9c2b2a1f194454232719db9644444",
+  "preparation_state_sha256": "a2edbf0524ff1ba29803f75d129265ad5f285431275bd389c695e8eef241135f",
+  "objective_evaluator": {
+    "score_schema_version": "0.6",
+    "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+    "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+  },
+  "normalization": {
+    "cell_contract": true,
+    "task_id": true,
+    "task_prompt_sha256": true,
+    "starter_sha256": true,
+    "product_initial_sha256": true,
+    "runtime": true,
+    "model_id": true,
+    "effort": true,
+    "timeout_seconds": true,
+    "objective_evaluator": true
+  },
+  "systems": [
+    "omd-apply-current"
+  ],
+  "trials": [
+    1
+  ],
+  "source_attestation": {
+    "omd-apply-current": {
+      "source_commit": "3ec07131c579f6e7db5408ace33a2c3916df3712",
+      "skill_sha256": "cf0f53d5d1da0f8bc6c478a0f9b22b74d6dbac4768cea5f4e60c60c2f9865807",
+      "publishable": true
+    }
+  },
+  "execution_admission": {
+    "allowed": true,
+    "reason": null,
+    "execution_artifacts_absent": true,
+    "reprepare_on_objective_methodology_drift": true
+  },
+  "cells": [
+    {
+      "id": "luna-field-relationship-verifier-r1",
+      "task_id": "field-sample-custody-review-v0.1",
+      "system_id": "omd-apply-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 900,
+      "task_prompt_sha256": "09e75324eb4d55164fdcffd26f7cff4cb2627d3b08f71912013a685a26632f75",
+      "starter_sha256": "c5bbad11b8172d15fd460088258da288d0fb815f1e7e09c59c3dfc6e59beb5d2",
+      "product_initial_sha256": "c5bbad11b8172d15fd460088258da288d0fb815f1e7e09c59c3dfc6e59beb5d2",
+      "skill_sha256": "cf0f53d5d1da0f8bc6c478a0f9b22b74d6dbac4768cea5f4e60c60c2f9865807",
+      "source_commit": "3ec07131c579f6e7db5408ace33a2c3916df3712",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "untouched": true
+    }
+  ]
+}

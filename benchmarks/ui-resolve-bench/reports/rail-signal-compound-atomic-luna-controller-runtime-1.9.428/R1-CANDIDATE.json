@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.431",
+  "cell_id": "luna-signal-r1-candidate",
+  "status": "VALID_SYSTEM_FAILURE",
+  "provider_calls": 1,
+  "run_status": "complete",
+  "validity": "valid",
+  "ui_resolved": false,
+  "objective_score": 79,
+  "objective_max": 85,
+  "wall_time_ms": 650802,
+  "tokens": 2707408,
+  "remaining_red": ["390/320/200%-compound-atomic-line-budget"],
+  "proof": {
+    "analyzable": true,
+    "browser_mechanism_count": 3,
+    "browser_recovery_probe_count": 1,
+    "browser_recovery_count": 3,
+    "duplicate_static_closure_count": 12,
+    "verification_after_ready_count": 6,
+    "compliance_pass": false,
+    "gate_reasons": ["browser-recovery-limit", "duplicate-static-limit", "verification-after-ready-limit"]
+  },
+  "runtime_identity": {
+    "scope": "execution-home-post-run",
+    "tool_mode": "code_mode_only",
+    "model_profile_sha256": "0efd579e76b5f1ccc5b68f61fdf079c7df0adfe03281f65ec6bc07383e8c335f",
+    "cache_client_version": "0.144.1"
+  },
+  "paired_ratios": {"wall_time": 2.1696, "tokens": 6.7333},
+  "reliability_max_after_failure": "2/3",
+  "required_reliability": "3/3",
+  "tokens_to_target_minimum_after_cell": 37317990,
+  "usage_unavailable_cells": 6,
+  "remaining_cells_disposition": "SKIPPED_PROMOTION_MATHEMATICALLY_UNREACHABLE"
+}

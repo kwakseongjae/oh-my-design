@@ -1,0 +1,355 @@
+{
+ "task_id": "stylemall-v1",
+ "items": [
+  {
+   "file": "sp-01-model.jpg",
+   "prompt": "Fashion item \"헤이지 린넨 박시 셔츠\" (상의, women): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-01-flat.jpg",
+   "prompt": "Fashion item \"헤이지 린넨 박시 셔츠\" (상의, women): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-02-model.jpg",
+   "prompt": "Fashion item \"소프트 골지 크루넥\" (상의, unisex): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-02-flat.jpg",
+   "prompt": "Fashion item \"소프트 골지 크루넥\" (상의, unisex): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-03-model.jpg",
+   "prompt": "Fashion item \"와이드 코튼 치노 팬츠\" (하의, men): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-03-flat.jpg",
+   "prompt": "Fashion item \"와이드 코튼 치노 팬츠\" (하의, men): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-04-model.jpg",
+   "prompt": "Fashion item \"슬림 울혼방 테일러드 재킷\" (아우터, women): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-04-flat.jpg",
+   "prompt": "Fashion item \"슬림 울혼방 테일러드 재킷\" (아우터, women): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-05-model.jpg",
+   "prompt": "Fashion item \"핀턱 와이드 울 슬랙스\" (하의, women): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-05-flat.jpg",
+   "prompt": "Fashion item \"핀턱 와이드 울 슬랙스\" (하의, women): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-06-model.jpg",
+   "prompt": "Fashion item \"실크혼방 타이 블라우스\" (상의, women): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-06-flat.jpg",
+   "prompt": "Fashion item \"실크혼방 타이 블라우스\" (상의, women): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-07-model.jpg",
+   "prompt": "Fashion item \"선염 린넨 반팔 티\" (상의, unisex): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-07-flat.jpg",
+   "prompt": "Fashion item \"선염 린넨 반팔 티\" (상의, unisex): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-08-model.jpg",
+   "prompt": "Fashion item \"크링클 린넨 쇼츠\" (하의, unisex): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-08-flat.jpg",
+   "prompt": "Fashion item \"크링클 린넨 쇼츠\" (하의, unisex): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-09-model.jpg",
+   "prompt": "Fashion item \"라이트 메시 스트링 백팩\" (가방, unisex): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-09-flat.jpg",
+   "prompt": "Fashion item \"라이트 메시 스트링 백팩\" (가방, unisex): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-10-model.jpg",
+   "prompt": "Fashion item \"캐시미어 크루넥 니트\" (상의, women): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-10-flat.jpg",
+   "prompt": "Fashion item \"캐시미어 크루넥 니트\" (상의, women): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-11-model.jpg",
+   "prompt": "Fashion item \"핸드펠트 울 더블 코트\" (아우터, women): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-11-flat.jpg",
+   "prompt": "Fashion item \"핸드펠트 울 더블 코트\" (아우터, women): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-12-model.jpg",
+   "prompt": "Fashion item \"잔주름 플리츠 미디 스커트\" (하의, women): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-12-flat.jpg",
+   "prompt": "Fashion item \"잔주름 플리츠 미디 스커트\" (하의, women): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-13-model.jpg",
+   "prompt": "Fashion item \"기모 카고 포켓 후디\" (상의, men): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-13-flat.jpg",
+   "prompt": "Fashion item \"기모 카고 포켓 후디\" (상의, men): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-14-model.jpg",
+   "prompt": "Fashion item \"코튼 멀티포켓 유틸 팬츠\" (하의, men): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-14-flat.jpg",
+   "prompt": "Fashion item \"코튼 멀티포켓 유틸 팬츠\" (하의, men): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-15-model.jpg",
+   "prompt": "Fashion item \"글로시 코튼 트렌치 코트\" (아우터, women): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-15-flat.jpg",
+   "prompt": "Fashion item \"글로시 코튼 트렌치 코트\" (아우터, women): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-16-model.jpg",
+   "prompt": "Fashion item \"새틴 미니 숄더백\" (가방, women): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-16-flat.jpg",
+   "prompt": "Fashion item \"새틴 미니 숄더백\" (가방, women): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-17-model.jpg",
+   "prompt": "Fashion item \"라이트웨이트 코튼 헨리넥\" (상의, men): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-17-flat.jpg",
+   "prompt": "Fashion item \"라이트웨이트 코튼 헨리넥\" (상의, men): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-18-model.jpg",
+   "prompt": "Fashion item \"얇은 울혼방 가디건 베스트\" (아우터, unisex): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-18-flat.jpg",
+   "prompt": "Fashion item \"얇은 울혼방 가디건 베스트\" (아우터, unisex): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-19-model.jpg",
+   "prompt": "Fashion item \"헤비울 발마칸 코트\" (아우터, men): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-19-flat.jpg",
+   "prompt": "Fashion item \"헤비울 발마칸 코트\" (아우터, men): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-20-model.jpg",
+   "prompt": "Fashion item \"기모 코튼 터틀넥 니트\" (상의, unisex): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-20-flat.jpg",
+   "prompt": "Fashion item \"기모 코튼 터틀넥 니트\" (상의, unisex): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-21-model.jpg",
+   "prompt": "Fashion item \"로우라이즈 스트레이트 데님\" (하의, women): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-21-flat.jpg",
+   "prompt": "Fashion item \"로우라이즈 스트레이트 데님\" (하의, women): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-22-model.jpg",
+   "prompt": "Fashion item \"크롭 워싱 데님 자켓\" (아우터, women): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-22-flat.jpg",
+   "prompt": "Fashion item \"크롭 워싱 데님 자켓\" (아우터, women): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-23-model.jpg",
+   "prompt": "Fashion item \"슬림 바 실버 이어링\" (액세서리, women): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-23-flat.jpg",
+   "prompt": "Fashion item \"슬림 바 실버 이어링\" (액세서리, women): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-24-model.jpg",
+   "prompt": "Fashion item \"오벌 무광 실버 링\" (액세서리, unisex): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-24-flat.jpg",
+   "prompt": "Fashion item \"오벌 무광 실버 링\" (액세서리, unisex): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-25-model.jpg",
+   "prompt": "Fashion item \"슬레이트 캔버스 토트백\" (가방, unisex): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-25-flat.jpg",
+   "prompt": "Fashion item \"슬레이트 캔버스 토트백\" (가방, unisex): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-26-model.jpg",
+   "prompt": "Fashion item \"스퀘어토 레더 더비슈즈\" (신발, men): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-26-flat.jpg",
+   "prompt": "Fashion item \"스퀘어토 레더 더비슈즈\" (신발, men): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-27-model.jpg",
+   "prompt": "Fashion item \"메시 마일 러너 스니커즈\" (신발, unisex): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-27-flat.jpg",
+   "prompt": "Fashion item \"메시 마일 러너 스니커즈\" (신발, unisex): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "sp-28-model.jpg",
+   "prompt": "Fashion item \"소프트 레더 로퍼\" (신발, women): worn on a model, outfit-focused editorial shot emphasizing fit and silhouette",
+   "style": "editorial fashion photography, model's face out of frame (cropped above shoulders or photographed from behind), clean studio or urban backdrop, natural pose, no readable text or logos"
+  },
+  {
+   "file": "sp-28-flat.jpg",
+   "prompt": "Fashion item \"소프트 레더 로퍼\" (신발, women): the product alone, showing color, fabric texture and construction",
+   "style": "clean product flat lay or ghost mannequin shot on neutral light-gray background, soft studio lighting, e-commerce product photography, no people, no readable text or logos"
+  },
+  {
+   "file": "lb-1-cover.jpg",
+   "prompt": "Lookbook cover for \"봄 안개 룩\" — 린넨과 회색이 겹치는 흐린 아침: hero editorial image setting the season mood",
+   "style": "editorial fashion lookbook photography, cinematic natural light, faces out of frame or turned away, styled full outfits, no readable text or logos"
+  },
+  {
+   "file": "lb-1-c1.jpg",
+   "prompt": "Lookbook cut 1 for \"봄 안개 룩\": a distinct styled outfit scene consistent with the same shoot",
+   "style": "editorial fashion lookbook photography, cinematic natural light, faces out of frame or turned away, styled full outfits, no readable text or logos"
+  },
+  {
+   "file": "lb-1-c2.jpg",
+   "prompt": "Lookbook cut 2 for \"봄 안개 룩\": a distinct styled outfit scene consistent with the same shoot",
+   "style": "editorial fashion lookbook photography, cinematic natural light, faces out of frame or turned away, styled full outfits, no readable text or logos"
+  },
+  {
+   "file": "lb-1-c3.jpg",
+   "prompt": "Lookbook cut 3 for \"봄 안개 룩\": a distinct styled outfit scene consistent with the same shoot",
+   "style": "editorial fashion lookbook photography, cinematic natural light, faces out of frame or turned away, styled full outfits, no readable text or logos"
+  },
+  {
+   "file": "lb-2-cover.jpg",
+   "prompt": "Lookbook cover for \"퇴근 후 테일러링\" — 낮게 깔린 니트와 재킷의 저녁: hero editorial image setting the season mood",
+   "style": "editorial fashion lookbook photography, cinematic natural light, faces out of frame or turned away, styled full outfits, no readable text or logos"
+  },
+  {
+   "file": "lb-2-c1.jpg",
+   "prompt": "Lookbook cut 1 for \"퇴근 후 테일러링\": a distinct styled outfit scene consistent with the same shoot",
+   "style": "editorial fashion lookbook photography, cinematic natural light, faces out of frame or turned away, styled full outfits, no readable text or logos"
+  },
+  {
+   "file": "lb-2-c2.jpg",
+   "prompt": "Lookbook cut 2 for \"퇴근 후 테일러링\": a distinct styled outfit scene consistent with the same shoot",
+   "style": "editorial fashion lookbook photography, cinematic natural light, faces out of frame or turned away, styled full outfits, no readable text or logos"
+  },
+  {
+   "file": "lb-2-c3.jpg",
+   "prompt": "Lookbook cut 3 for \"퇴근 후 테일러링\": a distinct styled outfit scene consistent with the same shoot",
+   "style": "editorial fashion lookbook photography, cinematic natural light, faces out of frame or turned away, styled full outfits, no readable text or logos"
+  },
+  {
+   "file": "lb-3-cover.jpg",
+   "prompt": "Lookbook cover for \"주말 골목 산책\" — 데님과 포켓이 많은 느린 오후: hero editorial image setting the season mood",
+   "style": "editorial fashion lookbook photography, cinematic natural light, faces out of frame or turned away, styled full outfits, no readable text or logos"
+  },
+  {
+   "file": "lb-3-c1.jpg",
+   "prompt": "Lookbook cut 1 for \"주말 골목 산책\": a distinct styled outfit scene consistent with the same shoot",
+   "style": "editorial fashion lookbook photography, cinematic natural light, faces out of frame or turned away, styled full outfits, no readable text or logos"
+  },
+  {
+   "file": "lb-3-c2.jpg",
+   "prompt": "Lookbook cut 2 for \"주말 골목 산책\": a distinct styled outfit scene consistent with the same shoot",
+   "style": "editorial fashion lookbook photography, cinematic natural light, faces out of frame or turned away, styled full outfits, no readable text or logos"
+  },
+  {
+   "file": "lb-3-c3.jpg",
+   "prompt": "Lookbook cut 3 for \"주말 골목 산책\": a distinct styled outfit scene consistent with the same shoot",
+   "style": "editorial fashion lookbook photography, cinematic natural light, faces out of frame or turned away, styled full outfits, no readable text or logos"
+  },
+  {
+   "file": "sc-1.jpg",
+   "prompt": "Wide promotional banner image for fashion sale event \"시즌오프 아우터\" — 코트만 모은 일주일: fashion still life or styled scene, space-friendly composition for text overlay",
+   "style": "editorial fashion still life, wide composition, muted premium palette, no people's faces, no readable text"
+  },
+  {
+   "file": "sc-2.jpg",
+   "prompt": "Wide promotional banner image for fashion sale event \"발끝에 봄\" — 지금 신는 로퍼와 러너: fashion still life or styled scene, space-friendly composition for text overlay",
+   "style": "editorial fashion still life, wide composition, muted premium palette, no people's faces, no readable text"
+  }
+ ]
+}

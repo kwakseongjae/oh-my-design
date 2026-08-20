@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.668",
+  "status": "PROVIDER_FREE_DISTRIBUTION_ACCEPTED",
+  "unresolved_frontier_gate": "routing-ownership-reverify",
+  "surface": "built omd workflows and route CLI",
+  "acceptance": {
+    "legacy_selected_workflow_field_preserved": true,
+    "structured_selected_workflow_decision_present": true,
+    "low_confidence_fallback_is_ambiguous": true,
+    "high_confidence_existing_surface_route_has_no_warning": true,
+    "ambiguous_interactive_route_has_scope_hint": true,
+    "terminal_vs_agent_instruction_preserved": true,
+    "route_alias_preserved": true
+  },
+  "frozen_examples": {
+    "ambiguous": "Make it better",
+    "unambiguous": "Use DESIGN.md to fix the existing pricing page",
+    "expected_workflow": "repair-existing-ui"
+  },
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "claim_boundary": "The built CLI exposes deterministic routing uncertainty without breaking its prior JSON field. This does not prove host-model adherence.",
+  "next": "The provider-free routing repair lane is complete. Preserve these contracts and measure host adherence only in a future authorized model slice."
+}

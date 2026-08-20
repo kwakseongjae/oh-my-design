@@ -1,0 +1,92 @@
+{
+  "schema_version": "0.1",
+  "kind": "provider-free-objective-score-deterministic-equivalent",
+  "task_id": "seismic-core-dispatch-v0.1",
+  "variant_id": "raw-design-md",
+  "raw_score": {
+    "schema_version": "0.7",
+    "source_score_sha256": "338b2550b061c9093d7aec07919c45bfae1d43dad7cc28c1b6b1a9e39d17cf82",
+    "checks_sha256": "f99f5db9a80386eead4048906deeee804baee728e6422bb0a5893d14a7bee0aa",
+    "observations_sha256": "6efcdebac84acb1534be3dd8e5830d1153ee9af986011d4e7b38ac777257ace3",
+    "source_methodology": {
+      "score_schema_version": "0.7",
+      "epoch": "ui-resolve-objective-2026q3-entry-identity-v1",
+      "evaluator_source_sha256": "8a05affd4c6e9d411aa01604f4515333fa6b6ca84d43492925fa231b12a31e1f",
+      "contract_source_sha256": "06f99f50531ab6eaaec83fbcacc4af684560637b3a4732ef30ae4a5f5bcdda1d"
+    },
+    "source_evaluator_repository": {
+      "path": "benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs",
+      "commit": "f1b5e21976b0ac857803dbcdbc299038761ba521",
+      "sha256": "8a05affd4c6e9d411aa01604f4515333fa6b6ca84d43492925fa231b12a31e1f"
+    },
+    "source_contract_repository": {
+      "path": "benchmarks/ui-resolve-bench/scripts/objective-methodology-contract.mjs",
+      "commit": "f1b5e21976b0ac857803dbcdbc299038761ba521",
+      "sha256": "06f99f50531ab6eaaec83fbcacc4af684560637b3a4732ef30ae4a5f5bcdda1d"
+    }
+  },
+  "methodology": {
+    "score_schema_version": "0.7",
+    "epoch": "ui-resolve-objective-2026q3-entry-identity-v1",
+    "evaluator_source_sha256": "8a05affd4c6e9d411aa01604f4515333fa6b6ca84d43492925fa231b12a31e1f",
+    "contract_source_sha256": "06f99f50531ab6eaaec83fbcacc4af684560637b3a4732ef30ae4a5f5bcdda1d"
+  },
+  "baseline_manifest_sha256": "e3778bf27fde74fb9be99fee4b895be7ecf168d3d025ece3d1ada05cf1c15785",
+  "inputs": {
+    "prompt_sha256": "e17cb109b21c301d56f2915e00439027eb0a248f4ccea199f0e32cb5c95b5568",
+    "starter_tree_files": [
+      {
+        "path": "DESIGN.md",
+        "sha256": "dff2b8cf906125611e055dcc03ab92ecf5bb73047349ed19c1e2ee15b8b2aaaa"
+      },
+      {
+        "path": "index.html",
+        "sha256": "8733bcebbd29e3e07618c338394d374f521d45b0e15d13a21a351ec3532cd484"
+      }
+    ],
+    "baseline_evidence_sha256": "37309865d68d2621698dd66804757bdacd5ea99fdafadad5edf77f4b98f6c4e7",
+    "task_contract_sha256": "8910cbf9e66ababc32cbf6ac545f4097080c6f17d2707eea9b252038485664ba"
+  },
+  "expected": {
+    "deterministic_total": 75,
+    "deterministic_max": 85,
+    "failed_critical_gates": [
+      "accessibility",
+      "responsive"
+    ]
+  },
+  "repository_reproduction": {
+    "schema_version": "0.1",
+    "canonicalization": "sha256-json-stringify-repository-baseline-projection-v1",
+    "projection_sha256": "eb7e0bc630868f282573d4a3a5003642f08e906724627ca274baeadc0ec71770",
+    "projection_fields": [
+      "schema_version",
+      "task_id",
+      "variant_id",
+      "source_score_sha256",
+      "baseline_evidence",
+      "inputs",
+      "source_methodology",
+      "source_evaluator_repository",
+      "source_contract_repository",
+      "reproduction_methodology",
+      "expected"
+    ],
+    "provider_calls": 0,
+    "model_calls": 0
+  },
+  "reproduction_contract": {
+    "provider_calls": 0,
+    "model_calls": 0,
+    "evaluator": "benchmarks/ui-resolve-bench/scripts/evaluate-run.mjs",
+    "historical_source_evaluator": "git-object-pinned",
+    "current_reproduction_evaluator": "working-tree-byte-pinned",
+    "evaluator_sha_delta_disposition": "none",
+    "compare": "repository baseline evidence/input/methodology canonical JSON projection",
+    "historical_volatile_fields_excluded": [
+      "evaluated_at",
+      "observations",
+      "checks"
+    ]
+  }
+}

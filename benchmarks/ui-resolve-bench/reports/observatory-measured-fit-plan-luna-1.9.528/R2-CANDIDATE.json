@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.532",
+  "experiment_id": "observatory-measured-fit-plan-luna-1.9.528",
+  "cell_id": "luna-observatory-r2-candidate",
+  "status": "VALID_UNRESOLVED_PROOF_FAILED",
+  "provider_calls": 1,
+  "runtime": "codex",
+  "model_id": "gpt-5.6-luna",
+  "effort": "high",
+  "objective": {
+    "score": 81,
+    "max": 85,
+    "ui_resolved": false
+  },
+  "efficiency": {
+    "wall_time_seconds": 385.022,
+    "provider_tokens": 861995,
+    "input_tokens": 842149,
+    "cached_input_tokens": 772864,
+    "output_tokens": 19846
+  },
+  "objective_observation": {
+    "accessibility": "pass",
+    "desktop_overflow_px": 0,
+    "mobile_overflow_px": 0,
+    "narrow_320_overflow_px": 29,
+    "actual_200pct_overflow_px": 58,
+    "clipped_controls_narrow_320": 1,
+    "clipped_controls_actual_200pct": 1,
+    "fragmented_tokens_all_viewports": 0,
+    "serious_or_critical_axe_violations": 0
+  },
+  "measured_fit_plan": {
+    "pass": true,
+    "state": "measured",
+    "recorded_attempts": 1,
+    "oracle": "intrinsic-nowrap-text-width",
+    "planning_reserve_css_px": 16,
+    "observer_note_text_required_carrier_inner_width_css_px": 140.5234,
+    "consumer_320_document_scroll_width_px": 350,
+    "consumer_320_document_client_width_px": 305,
+    "snapshot_corrections_before_edit": 1
+  },
+  "proof_trace": {
+    "product_edits": 2,
+    "product_revisions": 2,
+    "static_closures": 2,
+    "browser_mechanisms": 1,
+    "browser_recovery": 0,
+    "duplicate_static_closure": 0,
+    "verification_after_ready": 0,
+    "trace_compliance": true,
+    "shipped_runner_invoked": true,
+    "attached_existing": true,
+    "launched_browser": false,
+    "measured_conditions": ["390", "320", "200pct"]
+  },
+  "artifact_gate": {
+    "pass": false,
+    "reasons": [
+      "reflow-document-overflow-limit",
+      "reflow-inline-fit-reserve-insufficient",
+      "reflow-artifact-not-closed"
+    ],
+    "static_closure_state": "passed",
+    "browser_attempts": 1,
+    "browser_outcome": "measured",
+    "closure_state": "open"
+  },
+  "root_cause": {
+    "planning_gap": "The fit plan measured the observer-note label alone and added 16px, but did not budget the enclosing button padding, adjacent optional-note text, flex gap, and shell padding as one aggregate carrier. The planned row passed while the containing control group still forced a 350px document into a 305px consumer width.",
+    "terminal_failure": "After terminal browser measurement exposed the overflow, the model made a second product edit. The exactly-once static closure could not be rerun and no second browser terminal was permitted, so the artifact remained open.",
+    "classification": "candidate transfer failure; row-level intrinsic plans do not yet measure aggregate carrier geometry"
+  },
+  "tokens_to_target_observed_minimum": 63373931,
+  "tokens_to_target_usage_unavailable_cells": 6,
+  "next": "Freeze the remaining three cells because candidate proof Reliability@3 can no longer reach 3/3; repair measured planning at the aggregate carrier boundary without provider calls."
+}

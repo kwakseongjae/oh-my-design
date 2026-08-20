@@ -1,0 +1,11 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.377",
+  "pin_id": "isolated-home-bootstrap-order-1.9.377",
+  "source_commit": "c47602192eaadefd372fde4038e71228369fdcb5",
+  "acceptance": { "path": "benchmarks/ui-resolve-bench/reports/isolated-home-bootstrap-order-1.9.376/ACCEPTANCE.json", "sha256": "003f934c1df5ce4f206e8c476e646c4a17f8a598add644e1e521fd9bc7800416" },
+  "execution_order": ["empty-home", "named-browser", "auth-link", "login", "provider"],
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "next": "Fresh all-pin replacement only."
+}

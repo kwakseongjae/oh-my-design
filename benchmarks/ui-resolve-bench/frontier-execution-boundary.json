@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "snapshot_patch": "1.9.796",
+  "local_only_mode": false,
+  "authorized_action_classes": ["remote-model-execution"],
+  "active_gate_ids": ["verified-skill-lift"],
+  "rules": {
+    "no_remote_model_execution": false,
+    "fresh_root_required": true,
+    "historical_deferred_roots_immutable": true,
+    "no_public_task_relabel_as_hidden": true,
+    "no_synthetic_human_or_production_observation": true,
+    "no_patch_without_gate-changing_evidence": true
+  },
+  "gates": [
+    {"id": "verified-skill-lift", "next_action_class": "remote-model-execution", "local_preparation": "complete", "required_input": "Execute a freshly prepared, current-epoch balanced Skill Lift denominator."},
+    {"id": "three-model-positive-lift", "next_action_class": "remote-multi-model-execution", "local_preparation": "partial", "required_input": "Run the locked denominator across at least three model families and compute paired confidence bounds."},
+    {"id": "harness-pareto", "next_action_class": "remote-model-execution", "local_preparation": "partial", "required_input": "Run the full harness at frontier scale with elapsed-time and unplanned-intervention telemetry."},
+    {"id": "hidden-task-coverage", "next_action_class": "private-storage-and-audit", "local_preparation": "complete", "required_input": "Provide a durable private task root, author fresh non-public tasks, and submit the commitments to independent audit."},
+    {"id": "verified-scale-artifacts", "next_action_class": "remote-model-execution", "local_preparation": "complete", "required_input": "Produce real current-epoch run outputs for 24 tasks by 10 trials and pass package admission."},
+    {"id": "practitioner-blind-review", "next_action_class": "external-practitioner-panel", "local_preparation": "complete", "required_input": "Recruit at least ten practitioners and ingest blinded judgments."},
+    {"id": "independent-task-audit", "next_action_class": "external-independent-audit", "local_preparation": "complete", "required_input": "Have an independent auditor sample tasks and estimate the broken or ambiguous rate."},
+    {"id": "activation-and-seven-day-reuse", "next_action_class": "production-observation", "local_preparation": "complete", "required_input": "Observe real install-to-resolved-surface and seven-day behavioral reuse against 1.9.0."}
+  ],
+  "hard_pause_policy": "When every unresolved gate requires non-local evidence, stop creating local patches and request only the smallest missing authority or resource."
+}

@@ -29,6 +29,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          # Bench tests vendor historical OmD versions by commit sha.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v5
         with:
@@ -72,6 +75,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          # Bench tests vendor historical OmD versions by commit sha.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v5
         with:
@@ -89,6 +95,12 @@ jobs:
 
       - run: npm ci
 
+      - name: Verify committed public LLM artifacts
+        run: npm run gen:llms-full:check
+
+      - name: Verify generated preset catalog
+        run: npm run gen:presets:check
+
       - name: Install web quality dependencies
         run: npm ci
         working-directory: web
@@ -96,6 +108,14 @@ jobs:
       - name: Verify canonical reference pipeline
         run: npm run check:catalog
 
+      - name: Warm the npm metadata cache for offline install smoke tests
+        run: |
+          # npm ci fetches tarballs by resolved URL, so registry packuments stay
+          # uncached. The packaged smoke tests install the built tarball with
+          # --offline, which has to resolve those ranges from the cache.
+          DEPS=$(node -p "Object.keys(require('./package.json').dependencies).join(' ')")
+          npm install --no-save --no-package-lock --no-audit --no-fund \
+            --prefix "$RUNNER_TEMP/npm-warm" $DEPS
       - name: Test CLI runtime
         run: npm test
 
@@ -104,6 +124,9 @@ jobs:
 
       - name: Verify public counts
         run: npm run check-counts
+
+      - name: Verify public benchmark data
+        run: npm run bench:ui:public-data:check
 
       - name: Test web product
         run: npm test
@@ -117,7 +140,7 @@ jobs:
         run: npm run build
         working-directory: web
 
-      # prepublishOnly가 build + gen-llms-full + release-hygiene(pack)을 다시 돌린다
+      # prepublishOnly가 build + llms check-only + release-hygiene(pack)을 다시 돌린다
       - name: Publish
         run: npm publish --provenance --access public
         env:

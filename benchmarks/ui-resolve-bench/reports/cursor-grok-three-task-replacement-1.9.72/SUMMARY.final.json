@@ -1,0 +1,98 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "product_version": "1.9.72",
+  "experiment_id": "cursor-grok-three-task-replacement-1.9.72",
+  "status": "complete_internal_display_name_attributed",
+  "model": {
+    "requested": "cursor-grok-4.5-high",
+    "reported": "Cursor Grok 4.5 High",
+    "attribution": "display-name-only",
+    "public_validity": "invalid-attribution"
+  },
+  "execution": {
+    "scheduled_cells": 18,
+    "completed_cells": 18,
+    "completed_cooldowns": 17,
+    "provider_calls_started": 18,
+    "provider_failures": 0,
+    "retry_or_fallback_used": false,
+    "quota_or_capacity_failure": false,
+    "luna_lane_opened": false,
+    "luna_substitution_used": false,
+    "root": "/tmp/u1972",
+    "source_commit": "24a7d05147ceb14513996e280e5809fc0ce3f536",
+    "report_matrix_sha256": "1ea074033dfca8220e6a11172daef0b58d062f73d5a7a62cf110908abb516db5",
+    "locked_matrix_sha256": "f6dd4ef0b046f5d75ddbd56f327b4b209b6d1828ec46a0c9c4ed98605bb529f8",
+    "preparation_state_sha256": "762480248bec822ca8fa0c45bb3f122dd4880e513ff1f37d9ba2429838d78fb8",
+    "skill_sha256": "2ce11fb14cee0c34c9707d15bb2583fe606401beca1c3b9f22129d49d85f0845",
+    "sidecar_sha256": "f0ad5294de3f599bbed124708c61988be9098e20d4723ce3574023144751253e"
+  },
+  "reliability_decision": {
+    "scope": "Internal critical-gate eligibility; not public UI-Resolved because attribution is display-name-only",
+    "raw": {
+      "critical_gate_rows": "7/9",
+      "task_reliability_at_3": "2/3",
+      "failed_task": "onboarding-setup-v0.1"
+    },
+    "omd": {
+      "critical_gate_rows": "9/9",
+      "evidence_and_unknown_rows": "9/9",
+      "task_reliability_at_3": "3/3",
+      "decision": "pass"
+    }
+  },
+  "skill_lift_decision": {
+    "pair_order": [
+      "onboarding-t1",
+      "onboarding-t2",
+      "onboarding-t3",
+      "incident-t1",
+      "incident-t2",
+      "incident-t3",
+      "locale-t1",
+      "locale-t2",
+      "locale-t3"
+    ],
+    "objective_deltas_omd_minus_raw": [0, 8, 4, 0, 0, 0, 0, 0, 0],
+    "wins_ties_losses": "2/7/0",
+    "mean_objective_delta": 1.3333333333333333,
+    "median_objective_delta": 0,
+    "raw_objective_median": 85,
+    "omd_objective_median": 85,
+    "decision": "bounded_positive_no_loss_internal",
+    "claim_limit": "Three tasks by three trials; not a public frontier, cross-model, or confidence-qualified claim."
+  },
+  "descriptive_compute_only": {
+    "raw": {
+      "provider_wall_total_ms": 2304323,
+      "provider_wall_median_ms": 287980,
+      "noncached_input_plus_output_tokens": 1295128
+    },
+    "omd": {
+      "provider_wall_total_ms": 2281731,
+      "provider_wall_median_ms": 249617,
+      "noncached_input_plus_output_tokens": 875084
+    },
+    "warning": "This was not an efficiency experiment. Do not generalize latency or token differences."
+  },
+  "diagnostics": {
+    "onboarding_raw_accessibility_failures": 2,
+    "incident_trial_3_shared_card_radius_diagnostic": {
+      "raw_observed_px": 0,
+      "omd_observed_px": 0,
+      "oracle_px": 14,
+      "cause": "Both outputs applied data-dashboard-card to an inner square panel while the verified 14px radius remained on the outer console.",
+      "critical_gate_impact": false,
+      "paired_lift_impact": 0
+    },
+    "clock_repair_live_evidence": {
+      "invocation": 15,
+      "monotonic_elapsed_ms": 120004.89787500001,
+      "wall_elapsed_ms": 119989,
+      "clock_disagreement_ms": 15.897875000009662,
+      "accepted": true
+    }
+  },
+  "next_action": "Run a provider-free geometry target-role audit before changing the skill or evaluator; then add a blind pairwise Ship Preference pilot as a separate Arena-inspired plane."
+}

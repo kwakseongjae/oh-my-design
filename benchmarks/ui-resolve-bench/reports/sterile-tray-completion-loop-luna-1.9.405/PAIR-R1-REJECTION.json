@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.408",
+  "experiment_id": "sterile-tray-completion-loop-luna-1.9.405",
+  "status": "REJECTED_EARLY_STOP",
+  "root_disposition": "frozen-do-not-resume",
+  "provider_calls_completed": 2,
+  "provider_calls_skipped": 4,
+  "retry": false,
+  "pair": {
+    "control": {
+      "cell_id": "luna-sterile-r1-control",
+      "run_status": "timed_out",
+      "deterministic_score": 79,
+      "ui_resolved": false,
+      "wall_time_ms": 900016,
+      "provider_tokens": null,
+      "host_policy_gate": false,
+      "browser_attempts": 0
+    },
+    "candidate": {
+      "cell_id": "luna-sterile-r1-candidate",
+      "run_status": "complete",
+      "deterministic_score": 79,
+      "ui_resolved": false,
+      "wall_time_ms": 421239,
+      "provider_tokens": 834250,
+      "host_policy_gate": true,
+      "browser_attempts": 1,
+      "delivery_state": "ready",
+      "red": ["390px-compound-target-line-budget", "320px-compound-target-line-budget", "200%-reflow-compound-target-line-budget"]
+    }
+  },
+  "paired_outcomes": {
+    "objective_delta_candidate_minus_control": 0,
+    "wall_time_ratio": 0.468,
+    "provider_tokens_ratio": null,
+    "candidate_proof_closure_win": true,
+    "candidate_quality_win": false
+  },
+  "reliability": {
+    "required": "3/3",
+    "observed": "0/1",
+    "maximum_reachable_after_remaining_trials": "2/3",
+    "promotion_reachable": false
+  },
+  "candidate_artifact_hashes": {
+    "run_result_sha256": "553bd2fab75eb54d5388e4c92d926f23d9b9b99469b94946c0c24f350571bf73",
+    "score_sha256": "e448d309299d8947f63c5157c9e53eddba1b8e7f74705c5385593d651f27c75a",
+    "run_record_sha256": "8d5eae8da95c2db55fde1dfab7bd92e4f343286b41dab791b9b63339ecef9234",
+    "proof_trace_sha256": "1d7b4601f0c6d129e4d7175dc11ccd7a686d259d25e9fff232ac7cfe9fe302a9",
+    "host_policy_state_sha256": "a084d465277a08fa245c617a99e5c15b30303f2649c7e61fa222fb1563a66173",
+    "benchmark_tree_sha256": "f5a9b4bad2e43f54ab8aca53359e487f99a49eeff85e8ba68cc5cc0db1108b96"
+  },
+  "tokens_to_target_observed_minimum": 28116906,
+  "usage_unavailable_cells": 6,
+  "next": "Repair compound atomic target handling and make browser proof use the benchmark's character-range line oracle rather than element rectangles. Exact-pin the repair, then use a new unseen task/root."
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.368",
+  "change": "named-isolated-browser-attestation",
+  "status": "accepted-for-exact-pin",
+  "invalidated_execution": {
+    "matrix_root": "/private/tmp/u19366",
+    "provider_events": 0,
+    "execution_state_created": false,
+    "reasons": [
+      "initial browser preflight had no active connection",
+      "personal default Chrome connection was rejected for privacy",
+      "workspace-local auth link was incorrectly included in benchmark attestation"
+    ],
+    "root_disposition": "frozen-do-not-resume"
+  },
+  "contract": {
+    "named_browser": "Browser-required execution must declare BU_NAME and BU_CDP_URL or BU_CDP_WS.",
+    "connection_proof": "The exact named connection must appear as active in browser-harness doctor output.",
+    "personal_default_browser": "An unrelated default connection never satisfies the isolated benchmark gate.",
+    "runtime_attestation": "Workspace-local codex-home and browser-harness directories are excluded from benchmark artifact hashes.",
+    "product_and_evidence": "All product, skill, host-policy, run-result, score, record, proof-trace, and state artifacts remain attested."
+  },
+  "validation": {
+    "focused_tests": { "passed": 72, "failed": 0 },
+    "bench_unit_tests": { "passed": 325, "failed": 2, "skipped": 1 },
+    "known_environment_failures": [
+      "/tmp/omd-ui-skills-bench/vendors/taste-skill is not a Git repository",
+      "/tmp/omd-ui-skills-bench/vendors/ui-ux-pro-max is not a Git repository"
+    ],
+    "isolated_browser_fixture": {
+      "connection": "bench19366",
+      "endpoint": "http://127.0.0.1:9336",
+      "active_page": "about:blank",
+      "personal_profile_data": false
+    },
+    "lint": "pass",
+    "build": "pass",
+    "diff_check": "pass"
+  },
+  "sha256": {
+    "matrix_runner": "9f5f7b35879eb550847ad5c6282d98a925112ca410f5f2363da4033dcf5a16b6",
+    "matrix_runner_test": "f96ccdd4f4451aafcd1352d7df5639d7160c49ff2273a39e63cb8176aaeb3e7f",
+    "provider_neutral_test": "f16359efb12aa01a93d0b9cfa7b203c55bf5f4384765bac502c1c5d886d178ba"
+  },
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "next": "Commit and exact-pin the named isolated browser contract, then preregister and prepare a new fresh-root replacement."
+}

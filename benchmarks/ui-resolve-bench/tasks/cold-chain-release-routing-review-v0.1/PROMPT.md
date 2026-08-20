@@ -1,0 +1,5 @@
+Improve the supplied cold-chain release routing review so quality coordinators can inspect lot-to-logger assignments, carrier windows, and the release handoff confidently on desktop and narrow screens.
+
+Preserve all six lot identifiers, all eight logger identifiers and their exact lot assignments, all four supplied carrier windows, the three review views, the review-note toggle, the release-review form, and all stated summary evidence. Do not invent temperature clearance, logger validation, carrier assignment, quality release, customs clearance, quarantine removal, disposition approval, or handoff completion. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The lot register, separate carrier-window strip, and separate release handoff are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.

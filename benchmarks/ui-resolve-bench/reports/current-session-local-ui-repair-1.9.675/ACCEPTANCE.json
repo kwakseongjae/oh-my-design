@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.675",
+  "task_id": "museum-loan-crate-release-v0.1",
+  "status": "LOCAL_DIAGNOSTIC_ACCEPTED",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "human_interventions": 0,
+  "model_attribution": "unavailable-current-session",
+  "leaderboard_eligible": false,
+  "ship_preference": "not_run",
+  "baseline": {
+    "objective_score": 75,
+    "objective_max": 85,
+    "automated_gate_pass": false,
+    "source": "museum-loan-task-baseline-1.9.607"
+  },
+  "final": {
+    "objective_score": 85,
+    "objective_max": 85,
+    "automated_gate_pass": true,
+    "critical_gates": {
+      "task_contract": true,
+      "state_journey": true,
+      "responsive": true,
+      "accessibility": true,
+      "design_grounding": true,
+      "evidence_honesty": true
+    },
+    "product_sha256": "824c07e60c99a4c8dc49eb5336e330cb2d6eb102dd9507a536ab63d9cc14e58b",
+    "score_sha256": "2349249eaa90cbc02f4844e67e02a4db7dddfd5e343b7d7fee1a6273f2d8eae9"
+  },
+  "negative_control": {
+    "mutation": "overflow-x:auto on protected passive target text",
+    "objective_score": 73,
+    "objective_max": 85,
+    "automated_gate_pass": false,
+    "no_passive_text_scrollers": false,
+    "score_sha256": "672de3f8b048c748fb437b32c7b949f440dc677d7480a44038d9f828c033b074"
+  },
+  "in_app_browser": {
+    "surface": "codex-in-app-browser",
+    "requested_viewport": {"width": 320, "height": 720},
+    "document_width": {"scroll": 305, "client": 305},
+    "focusable_count": 10,
+    "passive_text_scrollers": 0,
+    "named_relationship_scrollers": 3,
+    "protected_counts": {"crates": 4, "reports": 6, "zones": 2},
+    "choice": true,
+    "toggle": true,
+    "form_invalid": true,
+    "form_valid": true,
+    "console_warnings_or_errors": 0
+  },
+  "claim_boundary": "This is a provider-free current-session UI repair and evaluator calibration. It is not normalized model evidence, a skill comparison, Ship Preference, or a public leaderboard result."
+}

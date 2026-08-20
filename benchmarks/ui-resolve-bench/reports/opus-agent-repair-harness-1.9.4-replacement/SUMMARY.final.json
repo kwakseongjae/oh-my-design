@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1",
+  "status": "internal_completed_invalid_attribution",
+  "family": "harness",
+  "task_contract": "0.3.0",
+  "task_id": "pricing-conversion-v0.1",
+  "variant_id": "omd-repair-harness",
+  "runtime": {
+    "agent": "claude-code",
+    "agent_version": "2.1.217",
+    "parent_model": "claude-opus-4-8",
+    "specialist_requested_model": "sonnet",
+    "observed_models": ["claude-haiku-4-5-20251001", "claude-opus-4-8", "claude-sonnet-5"],
+    "effort": "xhigh",
+    "source_commit": "7edad142f97503bf7553be3c19994d56401c25ab"
+  },
+  "result": {
+    "run_status": "complete",
+    "validity_under_preregistration": "invalid-attribution",
+    "ui_resolved_artifact": true,
+    "objective_score": 85,
+    "objective_max": 85,
+    "wall_time_ms": 564945,
+    "first_builtin_product_write_ms": 340016,
+    "last_builtin_product_write_ms": 473032,
+    "final_message_present": true,
+    "agent_tool_call_count": 2,
+    "agent_tool_error_count": 0,
+    "requested_agent_ids": ["omd-ux-engineer", "omd-ux-writer"],
+    "tool_error_count": 0,
+    "infrastructure_tool_error_count": 0,
+    "sandbox_error_count": 0,
+    "sandbox_cwd_error_count": 0,
+    "uncached_input_tokens": 111516,
+    "cached_input_tokens": 802951,
+    "output_tokens": 56022,
+    "provider_price_equivalent_usd": 2.4789585
+  },
+  "bounded_advisories": [
+    { "agent": "omd-ux-writer", "model": "sonnet", "duration_ms": 103879, "words": 590, "findings": 4 },
+    { "agent": "omd-ux-engineer", "model": "sonnet", "duration_ms": 102594, "words": 631, "findings": 2 }
+  ],
+  "artifact_diagnostics": {
+    "faq_expected": 2,
+    "faq_observed": 2,
+    "all_critical_gates": true
+  },
+  "decision": "keep bounded advisory and immutable ledger; enforce and validate specialist model pin before another preregistered smoke"
+}

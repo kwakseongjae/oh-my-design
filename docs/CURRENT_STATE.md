@@ -3,11 +3,4469 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
-- 기준 커밋: `ce6636c` (`main`) + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-07-21 · CLI v1.9 production deploy + npm publish 완료
+- 기준 소스: active Luna epoch source `caf0e62d3e98684d482c56a2bbe3ef93a05ea873` (exact Codex 0.147 cache serialization); immutable diagnostic Luna epochs `f6cd17e2`, `253a3abc`, `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-14 저녁 · **사용자 결정으로 Luna·Sol 전면 은퇴.** caf0 partial epoch(terminal4/missing44)는 8/20 재개하지 않고 immutable diagnostic으로 영구 동결한다. 벤치마크는 grok-4.6 트랙으로 0셀부터 재시작하며 정본 seed는 `docs/OMD_2_0_GROK_RESTART_SEED.md`(= `~/.ouroboros/seeds/omd-grok46-restart-v0.1.md`)다. 이전 caf0 기록: order1 model-only=completed/50, order2 Anthropic=failed/0, order3 Impeccable=timeout/0, order4 UI UX Pro Max=usage-limit infra-invalid/0.
+- 역할 라우팅(개정): 기획·검수·오케스트레이션=Claude Fable, 구현 워커·독립 리뷰=grok-4.6(grok-fleet), 벤치마크 MUT=grok-4.6(격리 run-grok lane), 워크플로우 구조화=Ouroboros. 정본은 docs/PROVIDER_ROUTING_POLICY.md.
+- 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol selector는 신규 호출 금지(retired).
 
 ## 지금 (현재 위치)
 
+### 2026-08-20 (Fable) 릴리스 전 실사용 품질 테스트 — 별도 레포 랜딩 (karrot-landing-study)
+
+- **경로**: `~/Desktop/projects/karrot-landing-study`(별도 git repo). 벤치마크 컨트롤러가 아니라 **실제 설치 경로** — `install-skills`로 스킬 22·서브에이전트 19·카탈로그 440 설치 후 `$omd-autopilot`으로 빌드.
+- **미디어**: Grok Imagine 웹(브라우저 자동화)으로 1080p·6초 히어로 영상 생성·다운로드, grok CLI로 이미지 9장(3샤드 병렬). 영상은 muted/loop/poster/preload=metadata + reduced-motion 폴백.
+- **결과**: 하네스 질문 0·수리 라운드 0으로 완주. DESIGN.md 502줄, 프리셋 12종 인용(P-FL-02 당근 플레이버 + 신규 프리미티브 P-PR-01/08/09/46/47/60/64). 가짜 KPI를 스스로 거부한 근거를 문서에 남김.
+- **G2 6건**(스킵링크 노출, 스텝 번호 이중, 카드 미디어 종횡비 미고정, 서비스 고아 카드, 판매 섹션 좌측 공백, 히어로 고지 중복) → 전부 수정·실측 검증(skip bottom=0, 카드 342px 균일, 미디어 355×222, 마지막 카드 1120px 가로형).
+- **omd book 신규 프로젝트 검증**: 39토큰·11컴포넌트·대비 11쌍 전부 통과 렌더.
+- **캘리브레이션(정직)**: 6건 모두 자가 비평이 아니라 외부 렌더 비평에서 나왔다. 자가 비평은 여전히 소스를 읽고 화면을 못 본다 — 출시 후에도 렌더 비평 루프가 품질의 실질 게이트다.
+- **브랜드 처리**: 가상 브랜드 "이웃하루". 실존사 이름·로고·실적 미사용, 지표 미발명. 공개 배포 아님.
+
+### 2026-08-20 (Fable) 사용자 피드백 사이클 — 패딩 계약·프리셋 93·omd book (9e0715f3, 3116ff1b)
+
+- **패딩 결함 근본 대응**: 이웃장터 `.listing-row`가 `padding: space-3 0`(수평 0)인데 hover 배경을 칠해 썸네일이 틴트 밴드에 붙던 결함 → **P-FN-07 "칠해지는 표면의 패딩 해부"** 계약으로 승격(4면 패딩 + 음수 inline 마진 + 디바이더 콘텐츠 폭 인셋 + 라운드). 3케이스 수정·실화면 검증(hover/푸터 촬영). 검증 중 스타일몰 `.footer-meta`의 `max-width:70ch`가 규칙선까지 자르는 별건도 수정.
+- **P-FN-08/09/10 신설**: 브랜드 마크+마스트헤드(인라인 SVG 락업, 워드마크 텍스트=로고 아님), 히어로(지지 요소는 데이터에서 계산되는 정보), 푸터(고지 1줄 스트립=푸터 아님, 브랜드 락업/내비 그룹/메타 줄). 3케이스 전부 반영.
+- **프리셋 카탈로그 v2 = 93개 / 4레이어**: fundamentals 10 · **primitives 35**(shadcn 컴포넌트·변형·Radix 대응·APG 키보드 계약·토큰 슬롯) · genres 43(commerce/marketplace/editorial + onboarding 7·auth 6·checkout 7·dashboard 8) · **flavors 5**(토스·당근·오늘의집·무신사·배민 — 레퍼런스 §절 인용, 없는 건 "레퍼런스에 없음"). 포지셔닝 명문화: shadcn=구조, OmD 프리셋=철학에서의 유도(토큰 슬롯).
+- **omd book 신규 CLI**: `omd book`이 로컬 포트(6060)에서 채택된 시스템 브라우즈 — 토큰 옆 D-ID 근거, 컴포넌트 상태 매트릭스(해당 없음 사유 포함), **대비 실측 vs 선언값 대조**, 프리셋 계보. graph.json 우선·DESIGN.md 폴백, `--static` 핸드오프 HTML. src/cli/book.ts + 테스트 5개.
+- **생성 파이프라인**: `scripts/build-presets-data.mjs` → catalog.json + web/src/data/presets.generated.ts, `gen:presets:check`를 prepublishOnly와 release.yml에 배선. 웹 `/presets` 라우트 + 사이트맵.
+- **부수 수정**: 커밋돼 있던 웹 reference-quality 사본(141/159)이 루트 정본(140/160)과 어긋나 있어 5개 로케일 CLI 문서 수치를 정본에 맞춤.
+- 상태: CLI 1457 통과 / 웹 847 통과 / 타입체크·미러·llms·카운트·카탈로그 무결성 전부 그린. **릴리스 GO 대기.**
+
+### 2026-08-19 (Fable) G3 자체 검수 통과 → v2.0.0 릴리스 준비 완료
+
+- **G3 위임 검수 통과**(정본: docs/design-excellence/G3-SELF-INSPECTION-2026-08-19.md): 모바일 390 무결(3케이스), 리스트박스/필터/404/키보드 포커스 실동작, DESIGN.md 3종 입장+희생+D-근거. 유보: 블라인드 경쟁 비교는 미수행(릴리스 후 공개 벤치 트랙).
+- **릴리스 준비**: version 2.0.0(lock 동기), CHANGELOG 2.0.0 엔트리, thin-kernel 예산 준수 위해 화면 인벤토리 계약을 master-screen-inventory.md로 분리, 은퇴 Luna 스위트 3종 describe.skip(8/14 동결 결정 인용), reference-quality 재생성, 미러/llms 동기, 하이지엔 통과, **전체 테스트 그린(1452 passed/0 failed)**.
+- **남은 것(사용자 실행)**: push + npm publish(로컬 npm 미로그인 E401) — 절차는 아래 보고 참조.
+
+### 2026-08-19 (Fable) 프리셋 체제 A/B 검증 — 온집 e2e5 (933ea6ee)
+
+- **동일 픽스처·브리프로 e2e4(패치10) vs e2e5(패치12 프리셋) 직접 비교**: 첫 렌더 G2 결함 7건(P0 2·P1 2·P2 3) → **3건(P0 0·P1 0·P2 3)**. 재발성 P0/P1(포커스 링·disabled opacity·이미지 중복·협폭 웰) 전부 생성 시점 예방. 입력 토큰 678k→359k(-47%). DESIGN.md가 컴포넌트별 프리셋 ID 인용.
+- P2 3건(스크림 불일치·우측 컬럼 여백·2+1 랩) 수정·재렌더 검증 → e2e/onzip을 attempt-5본으로 교체. **G3 판정 대상 = attempt 5.**
+
+### 2026-08-19 (Fable) 패치 12 — 프리셋 카탈로그 v1 + 화면 인벤토리 게이트 (f7ca7914)
+
+- **프리셋 v1**: `skills/omd-autopilot/references/presets/` — 3케이스 G2 검증 산출물 20개 증류(fundamentals 6·commerce 7·marketplace 5·editorial 3). 유도 사슬 4단계가 "프리셋 선택→토큰 파생"으로 전환, GS8 신설(부합 프리셋 즉흥 제작 금지). grok 프로브 통과(정확한 선택+게이트 근거 no-preset).
+- **화면 인벤토리 게이트**: 하네스 체크포인트 #1 격상 — journey.mmd + `screens.md`(화면|목적|핵심 요소|문법|상태|프리셋 후보 표) 승인 후에만 와이어프레임. 미승인 화면 제작 금지. master-execution-phases.md + AGENTS.md 반영.
+- 동기화: skills/ 원본 → .claude/skills + .agents/skills + competitor-skills-2.0 팩(SHA 3갱신+5추가, PROVENANCE 패치 12).
+- 다음: G3 판정(3케이스) 또는 프리셋 체제 첫 실전 셀.
+
+### 2026-08-19 (Fable) 3케이스 사이클 완주 — G3 재판정 대기
+
+- **세 케이스 전부 셀 완주 + G2 렌더 비평 사이클 마감 + 커밋**: 온집 v2(3d937853, G2 7건), 이웃장터(8aad5bdb, G2 6건), 스타일몰(06cfa0e1, G2 7건). 각 `benchmarks/ui-resolve-bench/e2e/<onzip|yeoutjangteo|stylemall>`에서 `npm install && npm run dev`로 확인 가능. 스크린샷 각 디렉토리에 동봉.
+- **패치 11 반영·refreeze(5aae15af)**: G19 확장(라우트 전환 프로그램 포커스 링 억제 — 3케이스 연속 재발분 봉인), 기계 확인 게이트 grep 검증 의무화(G39 자가비평 누락 대응), C37 확장(채팅 말풍선도 웰 안).
+- **병렬 이미지 파이프라인**: parallel-assets.py 4샤드+재시도+참조검증 — 60~70장을 ~13분에. grok 행(작업 완료 후 미종료) 3회 전부 "로그 3분 정지+최종 보고 감지 → kill" 워처로 자동 처리.
+- **다음: 사용자 G3 블라인드 판정** — 세 결과물 실사용 후 "이건 쓰겠다/미달". 통과 시 v2.0.0 절차 재개, 미달 시 펀치리스트로 사이클 반복. **G3 전 릴리스 금지 유지.**
+- 남은 선택 과제: 영상(grok imagine 웹, 데스크탑 제어) — 스타일몰 룩북용, G3 피드백 후 판단.
+
+### 2026-08-18 (Fable) 디자인 엑설런스 프로그램 진행 중 — 패치 10 이후 3케이스 사이클
+
+- **G3 2차 판정 미달(8결함)** → 대응 완료분: 리서치 2건(R1 국내 시스템 철학, R2 글로벌 크래프트, docs/design-excellence/), 슬롭 게이트 무손실 이식(G1–G56+GS1–GS7), 컴포넌트 크래프트 C1–C45, 철학 유도 사슬(derivation-chain.md) — 전부 skills/omd-autopilot에 반영 + competitor-skills-2.0 팩 refreeze SYNCED 확인.
+- **온집 fixture v2 커밋 완료(1c87683b)**: data.v2.json(리뷰 93·상품 3컷·갤러리·기획전, 무결 검증), BRIEF.v2.md, assets-spec.v2.json(68장). 이미지 배치 진행 중(→ 총 98장, e2e/onzip/public/assets).
+- **onzip e2e4(패치 10) 셀 완주**: audit pass·activation 1·20분·678k/148k 토큰. 철학 사슬 실동작(입장+P1~P3 희생 명시, D-표, 토큰 역참조). 5페이지 렌더 정상(scrollY=0, 페이지별 타이틀), 커스텀 리스트박스·3컷 갤러리·평점 분포·매거진 교차 배치 확인. **G2 비평 7건 발행**(P0: h1 프로그램 포커스 링 = G19 변종, disabled opacity = G39/C42 · P1: 히어로-기획전 이미지 중복, 매거진 좌측 협폭 웰 GS5 · P2: 샘플 밴드, 1장 카드 열, '샘플 도록' 어휘) → grok 수정 패스 진행 중(/tmp/onzip4-fixpass.log). 캘리브레이션: grok 자가 비평이 소스 가시적 G39를 놓침 → 패치 11 후보(기계 확인 게이트 grep 의무화). 완료 후: 재렌더 검증 → rsync → e2e/onzip 커밋 → 케이스 B.
+- **케이스 B 이웃장터 완주(8aad5bdb)**: 셀 18.6분 완주(audit pass) → G2 6건(h1 포커스 링 재발=팩 미반영 확인, 채팅 전폭, 2패인 미완, 거래완료 딤 없음, 샘플 어휘 2곳, 히어로 공백) → 수정 전부 실화면 검증. 데이터 오염("동네명 gre.") 9건 결정론 정리. e2e/yeoutjangteo에서 npm run dev 가능.
+- **병렬 이미지 파이프라인 확립**: parallel-assets.py(4샤드+재시도 2R+참조 검증) — B 60장·C 70장 각 ~13분(직렬 대비 ~4배). grok 행(작업 완료 후 미종료) 재발 2회 → 워처에 "로그 3분 정지+보고 완료 시 kill" 플레이북 정착.
+- **케이스 C 스타일몰: 셀 실행 중**(stylemall-grok46-e2e1, 70 assets, 데이터 무결 검증 완료). 완료 시 G2 → 수정 → 커밋 → 3케이스 종합 보고.
+- **패치 11 후보 누적**: ① 기계 확인 가능 게이트(G39 등) grep 검증 의무화(온집 자가비평 누락), ② 라우트 전환 h1 포커스는 시각 링 억제 규정(팩 레벨 — 온집·이웃장터 2회 재발), ③ 채팅/대화 UI 웰 제한 명문화.
+- **G3 통과까지 v2.0.0 릴리스 금지** 유지.
+
+### 2026-08-18 (Fable) 패치 9 사이클 완주 — ONZIP 재건, G2 통과, G3 판정 대기
+
+- **attempt 3 (패치 9):** 파이프라인 정상(dry-check 3+activation 1, DESIGN.md). 사용자 4결함 전부 해소 실측: ① 한글 고딕 스택+웨이트 위계(세리프 폴백 소멸) ② 사용자 언어 정의("리뷰 수 기준 상위 4개")·고지 푸터 1줄 ③ 스크롤 버그 해소(scrollY=0 실측)+페이지별 타이틀 ④ 커머스 카드 해부(정렬 일치·간격 스케일·가격 지배).
+- **렌더-피드백 루프 첫 실전(§7):** Fable이 실화면 스크린샷으로 G2 비평(2건) → grok 외과 수정 → 렌더 재검증 통과. 기록 0381a7ea, 커밋 f78cef82.
+- **다음: 사용자 G3 판정** — `cd benchmarks/ui-resolve-bench/e2e/onzip && npm install && npm run dev`. "이건 쓰겠다"가 나오면 2.0.0 절차 재개, 아니면 펀치리스트 받아 사이클 반복.
+
+### 2026-08-18 (Fable) ⚠ 2.0.0 목표 리뷰 — 게이트 재정의, 릴리스 보류
+
+- **사용자 판정 수용:** ONZIP 결과물이 "UIUX Pro+shadcn만 못하다" — 한글 세리프 폴백(로케일 타이포 무지), 구현 어휘 UI 노출("data.json…"), SPA 스크롤 버그, 카드 해부 방치. **e9 결정론 게이트 통과는 릴리스 근거로 무효**(Goodhart — 자가 비평이 화면을 안 보고 소스만 채점).
+- **게이트 재정의(정본: docs/OMD_2_0_GOALS_REVIEW_2026-08-18.md):** G1 결정론 감사 + G2 렌더 비평(스크린샷 기반) + G3 블라인드 인간 판정("이건 쓰겠다") 3중 게이트. G3 전까지 v2.0.0 릴리스 금지.
+- **패치 9 재건 계획:** ① 렌더-피드백 루프(2-패스, 모델이 화면을 보고 수정) ② 로케일 타이포 계약(한국어: Pretendard 스택·keep-all·행간) ③ UI 카피 레지스터(구현 어휘 금지, 고지=푸터 1줄) ④ SPA 기본기(scroll/focus/title) ⑤ 컴포넌트 해부 스펙 ⑥ 장르-도메인 적합성 표 → ONZIP 재도전 → G3 반복.
+- 인프라(파이프라인 25/25·fixture-gen·감사·봉인)는 유효 자산 — 문제는 품질 정의였음.
+
+### 2026-08-18 (Fable) ★ 3대 최종 작업 완주 — 패치8 · fixture-gen 스킬 · ONZIP E2E
+
+- **패치 8 (데이터 인지 init):** 데이터 진실 소스 인벤토리 의무(data-inventory.md), 가이드 모드 질문/스캔 허가, enum→토큰 세트, KPI 정의 병기, API 스키마=계약. 커밋 6e21ed1b.
+- **bench-fixture-gen 스킬(내부):** grok 데이터셋 생성+하드 검증(개수·enum·관계 무결성, 1회 재시도) + 이미지 베이스 + auth 자가 동기화. ONZIP에서 1발 통과.
+- **ONZIP E2E (가상 오늘의집):** 한국어 데이터셋(카테고리6/상품24/집들이6) + 이미지 30장 → 실 Vite React 스택에서 하네스 완주. 1차 시도가 dry-check 리허설 갭(adopt/validate 미커버) 발견 → 컨트롤러 전체 트랜잭션 리허설로 수정(2d56369d, vitest 3/3) → **2차 완주: DESIGN.md 채택 + 5페이지 + critique.md + data-inventory.md, npm install+vite build 클린, 프리뷰 스모크 통과**(상품 24개=계산값+정의 병기, 커스텀 컨트롤, disclosure 노출). 기록 봉인 cca660cd, 커밋 792a8b13.
+- **실행:** `cd benchmarks/ui-resolve-bench/e2e/onzip && npm install && npm run dev`
+
+### 2026-08-18 (Fable) ★ 제품급 실측 완료 — 공통 데이터셋 + 데이터 충실도 감사 (야매 제거 사이클)
+
+- **과제 격상:** Terra & Tide 도매 주문 콘솔 4페이지 — 공통 데이터 fixture(주문34/상품10/고객10, 결정 시드, sha 576ad596; data.js+json 이중), 상품 이미지 10장, 브리프가 "런타임 계산" 명시. `dataproduct-audit.mjs` 신설(기대값을 감사 시점에 데이터셋에서 도출: KPI 페어링·34행·delayed 필터=4·상세 조인·미지 ID·하드코딩 탐지). 이미지 생성기에 auth 자가 동기화 패치.
+- **판정(기록 봉인 0ec92573):** model-only=필터 미작동(19≠4) · hallmark=KPI 누락+미지ID 상태 없음+h1 페이지간 표류 · **ProMax와 OmD p7이 측정 가능한 데이터 충실도 공동 선두**(공통 모호 KPI 1건 제외 전항목 통과; OmD 조인은 수동 검증 확정). OmD만 DESIGN.md+critique.md 동반, 일관성 PASS, 파이프라인 25/25.
+- **정직 판정 2건:** "Open cases" 브리프 정의 모호 → 4 arm 공통 미스 처리+차기 과제 작성 수정 항목. 감사기 상세 로케이터 한계 → href 기반으로 확장 예정.
+- **갤러리:** `benchmarks/ui-resolve-bench/reports/wholesale-2026-08-18/index.html` (커밋 d1db1f76). 다음: 사용자 시각 판정.
+
+### 2026-08-18 (Fable) ★ 패치 7 검증 완료 — 시각 계약 + 자가 비평 루프 + 멀티페이지 일관성
+
+- **사용자 피드백 사이클 완주:** (진단) OmD가 상태 스위처를 제품 UI로 노출+순정 라디오 → (grok 리뷰 2잡) 12-GAP 코드 증거 분석 + ProMax/Hallmark 기법 전수 추출(58게이트 목록화) → (패치 7) `references/visual-quality-contract.md` 신설: P0 2규칙(상태 스위처·순정 컨트롤 금지), 토큰 플로어(OKLCH 레이어·섹션 공기·디스플레이 페어·라벨 롤), 표면 장르 커밋, 악센트≤5% 신호, 8상태+인풋 기하, 폴드/매크로 규율, 멀티페이지 계약, **1라운드 자가 비평(critique.md 의무, Variety→System Fidelity 재정의)**. 커밋 97167a66.
+- **실측 검증(서점 4페이지 × 4 arm, 25분 균일):** 전 arm 4/4+일관성 PASS. OmD p7: critique.md 실제 산출(5축 4점+게이트 스윕+수정 기록), 스위처 0, 세리프 에디토리얼 장르 커밋 — plan-picker 참사 대비 시각 격차 해소. ProMax는 헤더 CTA 이중 렌더 버그. 파이프라인 통산 23/23. RECORDS.final sha 4db968a8, 갤러리 `reports/multipage-2026-08-18/` 커밋 7aaa507b·전달.
+- **인프라 신규:** multipage-audit.mjs(교차 페이지 computed-style 동일성·링크 무결성·토큰 충돌), prepare-multipage-cells.mjs, bookshop-multipage 픽스처+에셋 6장.
+- **다음(사용자 판정):** 갤러리 확인 → 방향 지시(추가 trial/과제 확장/v2.0.0 릴리스 재개).
+
+### 2026-08-18 (Fable) ★ Showcase 2.0 완주 — 21/21 봉인 · 최종 갤러리 전달 (사용자 판정 대기)
+
+- **완주:** 3과제(로스터리 HTML/트레일 갤러리 HTML/플랜 피커 빌드리스 React) × 7 arm, 공통 grok-imagine 에셋 베이스. RECORDS.final sha 2c0010c7, 백업 완료. 총 추정 비용 $20.27(OpenRouter $2/$6 per M, 2026-08-18 조회).
+- **핵심 실측:** OmD 패치6 3/3 adopt(파이프라인 통산 22/22) + React 스택에 theme.js/preact 투영 성공 — 유일하게 매 셀 DESIGN.md Core v2 동반 산출. 감사 종합에서 OmD·taste·hallmark가 구조/반응형/모션 전항목 통과(단 OmD 트레일 셀 axe 7). impeccable 2 timeout+1 crash. auth 로테이션 2회(1 사용자 재로그인, 1 자가복구), 셀 소모 0.
+- **산출물:** `benchmarks/ui-resolve-bench/reports/showcase-2.0/` — index.html(스크린샷 21+시간/비용/감사 표+정직 기록), products/(21개 라이브 페이지, 과제별 에셋 공유), omd-DESIGN-*.md 3종, summary.json. 커밋 e5a1b340.
+- **다음(사용자):** 갤러리 최종 판정 → v2.0.0 릴리스 결정(게이트는 e9에서 이미 통과).
+
+### 2026-08-17 (Fable) Showcase 2.0 — 17/21 완료, 사용자 요청으로 일시 정지 (재개 준비 완료)
+
+- **정지 지점:** sc2-17(React impeccable, timeout-with-partial)까지 봉인. 로스터리 7/7 · 트레일 갤러리 7/7 · React 플랜 피커 3/7. 잔여 4셀(orders 18–21: React promax/taste/**OmD**/hallmark). 재개 레시피·잔여 목록은 `RECORDS.partial-17.json`의 `pause_checkpoint`에 봉인, 루트 전체 백업 완료.
+- **경과 하이라이트:** OmD 패치 6 데뷔 2셀 모두 adopt 성공(파이프라인 통산 21/21), 로스터리 OmD는 감사 전항목 통과. Hallmark 보충 9/9 완주(landing 60/60/0 vs OmD 100/100/70 — e6 우위 역전, RECORDS.final sha f303c632). auth 로테이션 사고 1회(sc2-10 크래시→체인 단절) → 사용자 재로그인(798ea8c8)으로 복구, 판례 절차 준수.
+- **재개 절차:** 잔여 4셀 serial(런처 명령은 pause_checkpoint 그대로) → showcase-audit → RECORDS.partial-18~21 → OpenRouter grok-4.6 단가 라이브 조회로 비용 집계 → 최종 갤러리(스크린샷+시간/토큰/비용 표) → 사용자 최종 판정.
+- 이미지 전처리 스킬(generate-task-assets.mjs)·패치 6·과제 픽스처는 커밋 완료(`130a3795`, `2a311624`).
+
+### 2026-08-17 (Fable) ★ e9 48/48 완주 — 사전등록 릴리스 게이트 통과 (3승 6무 0패)
+
+- **게이트 판정: PASSED.** OmD 9 trial 전부 tie-or-beat (paired_losses_allowed=0 충족). landing 3전 전승 **100(ui_resolved)/100(ui_resolved)/70** vs 경쟁 최고 70/50/60 — e8 게이트 킬러 매치업(r3 vs promax)도 70>60으로 설욕. cold-chain·clinic은 3 trial 모두 전 arm 0 동점. `EXECUTION-RECORDS.final.json` 봉인(sha 7053ec25…) + 백업.
+- **파이프라인 통산 19/19** (v2.4 dry-check 이후 activation 낭비 0; 9셀 중 8셀이 dry-check 1회 만에 통과). 패치 5 효과 실증: landing 3결함군(journey/responsive/honesty) 전부 폐쇄, cold-chain 최초 3/4 상태 도달(r1), clinic locale-selected 최초 통과(2/3 trial). e9 용량 이벤트 0·auth 사고 0.
+- 경쟁자: impeccable 통산 18/18 타임아웃, anthropic은 ops/locale 셀 절반에서 `<main>` 누락, cold-chain·clinic은 여전히 전 arm 미해결(상태 도달성 — 차기 흡수 여지).
+- **다음 (사용자 결정 대기):** (1) **v2.0.0 릴리스** — 게이트 증거 충족, major 범프는 명시 승인 필요(현재 1.9.0), (2) Hallmark 보충 r1~r3 실측 여부, (3) blind review 패키징 + 갤러리 e9 갱신.
+
+### 2026-08-16 (Fable) autopilot 패치 5 출시 · epoch 9 (a59d048c) 개장 · serial 시작
+
+- **패치 5 (여정 계약 제품 구축):** e8 채점기 결정 계약을 일반 공학 규범으로 정식화해 SKILL.md에 반영 — (a) 브리프 여정 동사=상태(실 키보드 도달 필수), (b) 프로그래매틱 의미론 동시성(aria-selected/pressed/checked/current, 오류 3요소 focus+describedby+alert, status에 레코드ID+값, html lang 동기화, progressbar=가시 텍스트), (c) main/h1 단일 불변식, (d) 320/390/1440 반응형 결정론(가로 스크롤 0·44px·비클리핑), (e) 금지 카테고리 명명 정직 부재 문장+sample 라벨, (f) 완료 전 SELF-WALK(동사별 키보드 경로+프로그래매틱 증거). 커밋 `a59d048c`, 픽스처 재동결 SUMS 전량 OK. 용어 정리: v2.x는 제품 버전이 아니라 autopilot 스킬 패치 번호(제품은 1.9.0, 게이트 통과 시 2.0.0).
+- **epoch 9 개장 완료:** worktree→lock 54→materialize 48(tree 32c2dbf9)→영수증 재발급→ADMITTED(1ac47e64)→baseline 봉인. 하네스 바이트는 e7/e8과 동일(러너·감사·평가기 무변경).
+- **진행 중:** r1 order1 발사됨. 셀별 사이클 동일. auth 사고 시 최신 iso-copy 복원 플레이북(2회 실증).
+
+### 2026-08-16 (Fable) e8 완주 — 48/48 봉인 · OmD 2승 6무 1패 · 게이트는 r3에서 폐쇄
+
+- **최종 판정:** landing r3에서 OmD 60 < promax 70 짝패배 1회 → paired_losses_allowed=0에 따라 릴리스 게이트 폐쇄(order38에서 판정 봉인). r3 잔여는 데이터셋 완성용으로 완주. `EXECUTION-RECORDS.final.json` 봉인(sha 8b656f8d…) + 백업.
+- **OmD 성적:** landing 3 trial **80 / 100(만점·ui_resolved 랩 최초) / 60 — 평균 80** vs promax 평균 43.3, taste 23.3, model 10, anthropic·impeccable 0. cold-chain·clinic은 전 arm·전 trial 0(각 15/15) — 상태 도달성이 현 세대 공통 한계.
+- **v2.4 dry-check 완전 실증: 파이프라인 9/9, activation 낭비 0** (이전 ~1/3). impeccable arm은 9/9 타임아웃. 용량 이벤트 0. auth 사고 2회는 iso-copy 복원 플레이북으로 셀 소모 없이 회복.
+- **v2.5 흡수 백로그:** (1) landing responsive·evidence_honesty 세대 편차(r3 패인), (2) cold-chain selected/filtered 도달성, (3) clinic locale-selected/in-progress 도달성, (4) `<main>` 의무화 결정론화.
+- **다음:** 집계 보고 + 갤러리 e8 갱신 + JOURNAL 기록. Hallmark 보충 r2/r3는 게이트 폐쇄로 우선순위 낮춤(사용자 결정 대기).
+
+### 2026-08-16 (Fable) e8 r2 완주 — 게이트 재생존 · OmD 100점 만점 셀 (ui_resolved 최초)
+
+- **r2 최종:** landing OmD **100/100 만점 + ui_resolved=true + critical_pass=true**(랩 최초 완전 해결 셀) vs 경쟁 최고 model-only 30 · cold-chain 전원 0 동점(OmD는 r1의 `<main>` 갭을 이번 세대가 자체 수정, 대신 `selected` 상태 미달) · clinic 전원 0 동점. **누적: OmD 2승(80·100) 4무 0패, 파이프라인 6/6.** partial-32 봉인 + 백업.
+- 운영: auth 토큰이 셀 내 격리 grok의 서버측 리프레시 로테이션으로 ~10셀마다 무효화됨을 확인 — 최신 iso 사본 복원 플레이북 2회 실증(AUTH-RESTORE-order3/order26 영수증). 러너의 재실행 방지 가드 정상 작동 확인(중단 시도 부산물은 evidence로 이전 보존). impeccable arm은 e8 6/6 타임아웃.
+- **진행 중:** r3 최종 웨이브(orders 33–48) — order33 발사됨. r3까지 짝패배 0 유지 시 e8 게이트 최종 통과.
+
+### 2026-08-16 (Fable) e8 r1 완주 — 사상 최초 게이트 생존 (OmD 1승 2무, 짝패배 0)
+
+- **r1 최종:** 과제1 OmD **80 단독 승**(taste 70, promax 60, 나머지 0) · 과제2 전원 0 동점(OmD는 `<main>` 랜드마크 누락, anthropic과 동일 결함) · 과제3 전원 0 동점(`in-progress` 상태 전 arm 미도달). **짝패배 0 → r1 게이트 생존, 랩 사상 최초.** partial-16 봉인 + 백업.
+- **v2.4 dry-check 파이프라인 3/3 성공** (이전 4 epoch 통산 ~1/3): 세 셀 모두 dry-check 정확히 2회(1차 실패→수정→2차 통과) 후 activation 1회 성공. 구조적 해법이 실증됨.
+- 운영 판정: order9 usage-limit 신호는 보조 이미지 모델(grok-imagine) rate limit로 귀속 — 용량 이벤트 아님(e8 카운트 0). impeccable arm은 e8 3/3 타임아웃(4 epoch 연속 패턴).
+- v2.5 흡수 후보: (1) 제품 셸 `<main>` 랜드마크 의무화, (2) clinic `in-progress` 상태 도달성.
+- **진행 중:** r2 웨이브(orders 17–32) 개시 — order17 발사됨.
+
+### 2026-08-16 (Fable) e8 과제1 완료 — OmD v2.4 80점 단독 선두 (최초 outright win)
+
+- **OmD v2.4 dry-check 데뷔전 성공:** dry-check 2회(반복 검증) → activation 정확 1회 → 컨트롤러 감사 PASS → DESIGN.md Core v2 adopt → 제품 채점 **80점** (journey 통과 유일 arm; evidence_honesty만 실패). 이전 최고는 e6 동점 50 — **최초 단독 승리**.
+- e8 과제1 최종: model-only 0(필수 컨트롤 미노출) / anthropic 0(unavailable-information 미관측) / impeccable 0(timeout, 3 epoch 연속) / promax 60 / taste 70 / **OmD 80**. partial-01~06 봉인.
+- 운영 사건 2건 해소: (1) auth.json 소실(상주 `grok -r` 로테이션 스톨) → order2 격리 사본(더 새로운 토큰)으로 복원+프로브 검증+영수증(AUTH-RESTORE-order3.json), pre-provider abort 재발사 판례 적용. 잔여 프로세스 3개(observer 포함) 사용자 허가 하에 정리 완료. (2) evaluator 공유 screenshots 디렉토리 EEXIST → 셀별 격리 out 디렉토리로 전환(eval-orderN/).
+- 진행: order7(cold-chain model-only)부터 과제2 진입. 게이트 조건 잔여: 과제2·3에서 OmD tie 이상.
+
+### 2026-08-16 (Fable) OmD v2.4 dry-check 출시 · epoch 8 개장 · r1 재주행 시작
+
+- **e7(3ff4c692) 진단 동결:** order6 OmD v2.3 activation이 adopt 단계에서 fail-close — 모델 provenance가 선언한 evidence 경로(`council/design-system/result.json`)를 프로젝트 루트에 실물로 안 만듦. e7 과제1 선두 model-only 30 → OmD 0 짝패배로 게이트 폐쇄, partial-06 봉인 후 동결. 패턴 확정: 단발 activation 파이프라인의 세대별 성공률 ~1/3 vs 게이트 요구 9/9 무패.
+- **v2.4 (구조적 해법):** 컨트롤러에 `--dry-check` 모드 신설 — activation을 소모하지 않는 무제한 전제조건 검증(스크래치 prepare→approve→compile + provenance/coverage evidence 경로 실물 검사). 감사는 dry-check를 별도 카운트(TC-OMD-18/19/20, 계약 20/20 PASS), e2e vitest 3/3 PASS(부재 fail-close→생성 후 pass→activation 무손상). SKILL.md는 "dry-check PASS까지 반복 후 단 1회 invoke"로 개정, 픽스처 재동결(SUMS 437/437 OK). 커밋 `8edf400a`.
+- **epoch 8 개장 완료:** worktree `/private/tmp/omd-grok-runtime-8edf400a` → lock 54셀 → materialize 48셀(tree 77749fd9) → 영수증 5종 재발급 → **ADMITTED**(817066b8) → baseline 봉인. 증거 루트 `/private/tmp/omd-grok46-wow-evidence-8edf400a/`.
+- **진행 중:** r1 order1(landing/model-only) 발사됨. 셀별 사이클: 실행→감사→채점(`evaluate-autopilot-greenfield-task.mjs --task-id`)→partial-NN 봉인→다음. 벤치마크 중 대화형 grok 세션 금지(auth 로테이션 충돌).
+
+### 2026-08-15 (Fable) AC5 retry-3 — durable 증거 전수 재검증 PASS · lane 완료 상태 확정
+
+- **이 세션 재검증(provider-zero, 라이브 호출 0):** `verify-grok46-smoke-evidence.mjs` 61/61 PASS + `shasum -a 256 -c SHA256SUMS` 20/20 OK. 두 smoke 영수증(raw output 7종/call + receipts 6종)이 워크스페이스 `benchmarks/ui-resolve-bench/reports/grok46-lane-smoke-evidence/`에 실재하고 전 파일 SHA-256이 SUMMARY 선언값과 byte-exact 일치.
+- **lane 완료 상태:** WP1(run-grok.mjs 격리 러너)–WP2(matrix v0.2+admission)–WP3(score-gate 결측·wave 규칙 사전 잠금)–WP4(evaluator 재결박) 완료, smoke 2/2 소진으로 격리 lane end-to-end 증명 완료. 전 산출물 staged(미커밋, 아래 Staged paths 절 참조 + `reports/grok46-lane-smoke-evidence/` 전체 + `scripts/verify-grok46-smoke-evidence.mjs`).
+- **다음 exact action: WP5 — 사용자 명시적 승인 대기.** 승인 전 벤치마크 셀 실행·추가 라이브 호출 금지.
+
+### 2026-08-15 (Fable) AC5 retry-2 — smoke 영수증을 워크스페이스 내부로 durable 이관 · verify PASS
+
+- **문제 진단(FABRICATION_SUSPECTED 근본원인):** smoke 영수증·raw output이 오직 ephemeral `/private/tmp/omd-grok46-wow-smoke/`에만 존재해 워크스페이스 밖 경로라 검증 불가·인용 불가였다. 라이브 grok 호출은 이미 2/2 소진(추가 호출 금지)이라 재생성 불가 → **원본 보존 후 복사 이관**으로 해결.
+- **durable 이관(이 세션):** `/private/tmp` 원본을 삭제하지 않고 워크스페이스로 복사 →
+  `benchmarks/ui-resolve-bench/reports/grok46-lane-smoke-evidence/`
+  - `smoke-01/.benchmark/` · `smoke-02/.benchmark/` (raw output: PROMPT/events/final-message/run-result/manifest/models-cache.bin/stderr)
+  - `receipts/` 6종 + `SMOKE-EVIDENCE-SUMMARY.json`(SHA=`4294dbc5…`)
+  - `SHA256SUMS` (20개 파일 전수 SHA-256, `shasum -a 256 -c` 자기검증 OK)
+  - `README.md` (provenance)
+- **on-disk 실측 SHA 일치:** smoke-01 result=`fa2a67d1…`/events=`a1b746ed…`, smoke-02 result=`d8eb01b5…`/events=`aa76a302…` — SUMMARY 선언값과 byte-exact 일치. final message = `SMOKE-PASS-1`/`SMOKE-PASS-2`, exit 0, infra_invalid=false, retry_count=0, model=grok-4.6, substitution/fallback=0.
+- **AC5 검증 스크립트 신규:** `benchmarks/ui-resolve-bench/scripts/verify-grok46-smoke-evidence.mjs` — 영수증·raw·SHA256SUMS·SUMMARY 교차검증 + 본 docs의 WP5-승인대기 문장 확인. provider-zero 실행 → PASS.
+- **다음 exact action: WP5 — 사용자 명시적 승인 대기.** (승인 전 라이브 호출·셀 실행 금지, smoke 2/2 소진.)
+
+### 2026-08-15 (Fable) AC5 재검증 PASS — smoke 영수증 SHA 일치 · 테스트 40/40 PASS
+
+- **AC5 retry verification (Fable, 이 세션):** smoke 영수증 on-disk SHA 전수 재검증(shasum -a 256):
+  - smoke-01 events: `a1b746ed…` ✓, result: `fa2a67d1…` ✓
+  - smoke-02 events: `aa76a302…` ✓, result: `d8eb01b5…` ✓
+  - SMOKE-EVIDENCE-SUMMARY: `4294dbc5…` ✓
+- 계약 테스트 재실행(provider-zero): `test-run-grok-contract.mjs` 16/16 PASS, `test-grok46-config-contract.mjs` 24/24 PASS, `grok46-score-gate-config.test.mjs` 7/7 PASS.
+- 영수증 파일 실재·내용·SHA 전부 실측 일치. CURRENT_STATE.md·JOURNAL.md 정확. 다음: WP5 사용자 승인 대기.
+
+### 2026-08-15 (Fable) grok lane WP1–WP4 완료 · smoke 영수증 발급 · WP5 대기
+
+- **WP1–WP4 COMPLETE.** grok-4.6 benchmark lane이 완전히 구축됐다:
+  - WP1: `benchmarks/ui-resolve-bench/scripts/run-grok.mjs` — 격리 HOME + realpathSync 심링크 해석 + `--always-approve` + `--reasoning-effort high` + cache byte-gate. 계약 테스트 16/16 PASS.
+  - WP2: `config/omd-grok46-wow-preview-v0.2.json` (matrix 54셀/48 scheduled/6 ineligible), `GROK46_PREREGISTRATION_SUMMARY.md`, admission script `admit-grok46-wow-preview.mjs`.
+  - WP3: `config/omd-grok46-wow-preview-score-gate-v0.2.json` — capacity 제외·inconclusive·min-n·wave-order 규칙 사전 잠금.
+  - WP4: evaluator 재결박(deterministic, model-id·missing-data 규칙만 변경).
+- **Smoke 2회 PASS** — isolated lane end-to-end 증명 완료:
+  - Smoke 01: prompt="Reply with exactly: SMOKE-PASS-1", response="SMOKE-PASS-1", wall_ms=3176, exit_code=0, infrastructure_invalid=false. events SHA=`a1b746ed…`, result SHA=`fa2a67d1…`
+  - Smoke 02: prompt="Reply with exactly: SMOKE-PASS-2", response="SMOKE-PASS-2", wall_ms=3934, exit_code=0, infrastructure_invalid=false. events SHA=`aa76a302…`, result SHA=`d8eb01b5…`
+  - Raw output dirs: `/private/tmp/omd-grok46-wow-smoke/smoke-01/` · `smoke-02/`
+  - Receipts: `/private/tmp/omd-grok46-wow-smoke/receipts/` — STATIC-RUNTIME-CAPABILITY, RUNTIME-ATTRIBUTION-PREFLIGHT, GROK-BUILD-CLI-IDENTITY, EVALUATION-RUNTIME-RECEIPT, SMOKE-02-SUPPLEMENT, SMOKE-EVIDENCE-SUMMARY(SHA=`4294dbc5…`).
+  - Smoke budget: 2/2 사용. 추가 provider 호출은 WP5 사용자 승인 후에만 가능.
+- **러너 버그 수정** (grok 리뷰어 C 지적 → 전부 Confirmed → 이 세션에서 수정):
+  - [C] 심링크 거부 → `realpathSync(GROK_BIN)` 도입, 타깃만 hash, TC-08 static assertion으로 교체.
+  - [H] `--reasoning-effort high` 미전달 → `GROK_FIXED_FLAGS`에 추가.
+  - [M] 쓰기 승인 대기 멈춤 → `--always-approve` `GROK_FIXED_FLAGS`에 추가.
+  - 나머지 [H]/[M] 항목(etag 정규식·capacity terminal·volatile 목록)은 WP5 전 별도 수정 라운드에서 처리 가능(smoke 통과로 치명도 하향).
+- **Staged paths (미커밋):**
+  - `benchmarks/ui-resolve-bench/scripts/run-grok.mjs` (수정: realpathSync+--always-approve+--reasoning-effort)
+  - `benchmarks/ui-resolve-bench/scripts/test-run-grok-contract.mjs` (수정: TC-08 static, GROK_FIXED_FLAGS_EXPECTED 갱신)
+  - `benchmarks/ui-resolve-bench/scripts/materialize-grok46-wow-preview.mjs`
+  - `benchmarks/ui-resolve-bench/scripts/admit-grok46-wow-preview.mjs`
+  - `benchmarks/ui-resolve-bench/scripts/test-grok46-config-contract.mjs`
+  - `benchmarks/ui-resolve-bench/config/omd-grok46-wow-preview-v0.2.json`
+  - `benchmarks/ui-resolve-bench/config/omd-grok46-wow-preview-score-gate-v0.2.json`
+  - `benchmarks/ui-resolve-bench/config/omd-grok46-max-wow-preview-v0.1.json` (이전 AC 산출물)
+  - `benchmarks/ui-resolve-bench/config/omd-grok46-max-wow-preview-score-gate-v0.1.json`
+  - `benchmarks/ui-resolve-bench/GROK46_PREREGISTRATION_SUMMARY.md`
+  - `docs/CURRENT_STATE.md` · `docs/JOURNAL.md`
+- **다음 exact action: WP5 — 사용자 명시적 승인 대기.**
+  WP5 시작 전 체크리스트: (1) git commit (staged 파일 전체), (2) `materialize-grok46-wow-preview.mjs` 실행 → locked/materialized dirs, (3) `admit-grok46-wow-preview.mjs admit` 실행 (위 smoke 영수증을 인자로), (4) order1 `neighborhood-library-landing-grok-4.6-r1-model-only` 1회·retry0 serial, (5) evaluator 실행.
+
+### 2026-08-15 (Fable) 쇼케이스 런 완주 — r1 19/19 + Hallmark 실측 + 갤러리
+
+- **e6(`89e145bc`) r1 메인 16셀 + Hallmark 보충 3셀 전체 봉인.** 최종: 과제1 Hallmark 60 > OmD 50 = ProMax 50 > Taste 30 > 나머지 0. 과제2 ProMax 단독 100(오늘 밤 유일 만점), 전원 과제별 상태(selected/assigned)에서 탈락. 과제3 전원 0(5-로케일 상태는 전 스킬 미해결 영역).
+- OmD 하이라이트: 컨트롤러 감사 2/3 PASS, 과제1에서 최강 경쟁자와 동점+유일한 adopted DESIGN.md/Core v2 산출+전 상태·CTA 계약 준수. 과제2·3 실패 원인 확정(과제별 상태 미구현 / graph enum 스키마 위반) → **v2.3 방향: acceptance 상태=과제 패킷 상태, 컨트롤러 호출 전 번들 스키마로 초안 자가검증**.
+- Hallmark 실측: 랜딩 최강(60) 입증, 운영·로케일에선 동일 벽. 사용자 직감 적중.
+- 쇼케이스 갤러리: `benchmarks/ui-resolve-bench/reports/grok46-showcase-r1/index.html`(스크린샷 15장+DESIGN.md+점수 매트릭스+정직 결론). 증거 백업 `~/.omd-bench-backups/2026-08-15-grok46-epochs/`.
+- **다음 exact action:** v2.3 패치(과제 상태 파싱+스키마 자가검증) → epoch 7에서 r1 재도전(게이트 생존 조건: 3과제 모두 tie 이상) → r2·r3.
+
+### 2026-08-15 (Fable) epoch 6 — OmD 첫 동점, 게이트 생존 (쇼케이스 런 진행 중)
+
+- 사용자 지시로 4–6h 쇼케이스 런 가동: 같은 프롬프트 × 6+1 arm, 디자인 시스템·컴포넌트 기반 격차 증명 목표. epoch 5(`d4889b7f`)는 OmD v2.1 패치의 핵심 2종(예산 내 완주, 전 상태 data-state 구현) 실증 후 activation append+task.md 결함으로 동결. **v2.2**(명령 단독성·task.md 루트 배치, commit `89e145bc`)로 epoch 6 개장.
+- **epoch 6 r1 과제1 완결: OmD 50 = pro-max 50 동점 → 짝 손실 0, 오늘 첫 게이트 생존.** OmD만 adopted DESIGN.md+Core v2 5종 산출, 전 상태 계약+CTA 유일성 준수(컨트롤러 감사 PASS). 잔여 감점: journey 30/50·honesty 20/40 — 다음 패치 과제로 기록. 스코어보드: model-only 0, anthropic 0, impeccable timeout, pro-max 50, taste 30, omd 50.
+- 진행 중: 과제 2(cold-chain) → 과제 3(clinic) → Hallmark 보충 3셀 → 쇼케이스 갤러리. 증거는 `/private/tmp/omd-grok46-wow-evidence-89e145bc/` partial-NN 연쇄.
+
+### 2026-08-15 (Fable) epoch 4 완결 — r1 첫 과제 6/6 봉인, Hold-and-improve 전환
+
+- **r1 도서관 랜딩 최종 (epoch `93b071a2`, 전 셀 봉인+백업):** model-only 0(상태 누락) · anthropic 0(상태 누락, arm 4연속) · impeccable timeout(3판 연속, image_gen×9+edit×2 귀속) · **ui-ux-pro-max 60**(반응형+접근성+정직 PASS — 유일) · taste 0(상태 누락, 893s 아슬 완주, image_gen×9) · **omd-autopilot timeout**.
+- **OmD 부검 — 성공 직전의 실패:** 스킬 발견→미션→council→시스템 초안→**activation 실제 실행→컨트롤러 정식 adopt**(graph/provenance/coverage/adoption-receipt+DESIGN.md 생성)까지 전부 성공. 그러나 파이프라인이 900s를 초과해 제품 경로 도중 절단(timeout). 감사의 "activation-missing"은 따옴표 감싼 env 변수를 미인정한 **파서 오탐**(수정 commit `ea3ffc39`, TC-OMD-17) — 점수엔 무영향(timeout이 지배).
+- **판정:** omd r1 0 vs pro-max 60 = 짝 패배(허용 0) → epoch 4 출시 게이트 폐쇄. release plan의 Hold-and-improve 조항 발동: 잔여 42셀 면제, **제품 패치 사이클 진입**. 실패 클러스터 확정 — OmD=예산 초과, 경쟁 arm=필수 상태 누락.
+- **흡수 백로그 (commit `5dadb6bc`):** grok 워커 분석 — pro-max의 접근성 통과 구조 7원리, anthropic 개성 원리, 구조 강제 2종(honesty.unknown[]→data-state 노드 의무화, primaryAction.maxVisible=1), Hallmark 원리 4종(8-state 계약, pre-emit 자기비평, 다양화, 사후 게이트).
+- **Hallmark 보충 등록 (commit `812237e5`):** 동결 후 등장 경쟁자, MIT, @13ac0ec7 fixture 동결, 9셀 보충 사전 등록 — 다음 판과 함께 실행.
+- **다음 exact action:** 작업 #7 — OmD autopilot 경량화(900s 완주)+ABS H-항목 반영 → grok 리뷰 → 새 사전 등록 v0.4 → epoch 5(48셀)+hallmark 보충(9셀). 오늘 grok 판 4개 동결·1개 완결적 진단 완료, provider 지출 총 ~12셀 — 전부 봉인 증거.
+
+### 2026-08-15 (Fable) epoch 3·4 — evaluator 잠복 버그 동결과 재개장
+
+- **epoch 3 `b2c425e7` 동결:** order1 model-only completed → evaluator가 중복 CTA journey에서 결정적 hang(2회 재현, product 결함, 0점 봉인 — attempt 증거 양쪽 보존). order2 Anthropic completed → **evaluator 정적 서버의 잠복 크래시 발견**: 페이지가 없는 에셋을 요청하면 writeHead(200) 후 read 실패 → 404 핸들러가 헤더 이중 전송 → 프로세스 사망(ERR_HTTP_HEADERS_SENT, 2회 결정적). 깨진 에셋 참조를 가진 모든 product가 체계적 채점 불능 = 편향 판정면 → 동결. 증거 partial-02 `020baa5d…`+백업.
+- **수정:** evaluator가 파일을 먼저 읽고 헤더를 쓰도록 교정(commit `b621276e`), config evaluator SHA 재결박(`4dd780a9…`, commit `93b071a2`).
+- **epoch 4 `93b071a2` ADMITTED:** lock `8540738b…`, 48셀, liveness 7/7, ADMISSION `20cb5b92…`. order1 재실행 중, 관찰자 이전 완료.
+- 오늘 grok 레인 동결 판 3개(3b39dee2 스킬 미설치 / 9c5cf628 래퍼 신원 / b2c425e7 evaluator 서버) — 각각 실제 하네스 결함을 잡았고 provider 지출 약 7셀(~2.5M tokens)은 진단 증거로 보존. Luna 시절 하루 7동결과 같은 성숙 곡선.
+
+### 2026-08-15 (Fable) grok lane 완성 — 재검수 반영·lock 단계 신설·커밋 결박
+
+- run7은 iteration 소진으로 failed(AC 4/5)였으나 실측 재검증 결과 AC1–4 전부 PASS, smoke 2회 영수증까지 완료(러너 경유, exit0, 잠금 플래그 전달, `reports/grok46-lane-smoke-evidence/`에 SHA256SUMS와 함께 보존). grok 리뷰 7건 중 5건은 run7이 자체 해결(심링크 realpath, effort 전달, --always-approve, etag JSON-level 1차, 실러너 spawn 테스트).
+- Fable 수정 라운드: (1) timeout을 infra-invalid에서 분리해 자체 terminal로, (2) usage-limit 기계 발화(CAPACITY_PATTERNS+가드) 및 **신호/터미널 분리**(`process.usage_limit_signal_detected` — 부분 산출 후 quota 사망도 웨이브 게이트가 셈), (3) score-gate v0.2에 signal_based_detection 조항 잠금(셀 실행 전), (4) `--output-format streaming-messages-json` 전환으로 provider 토큰 증빙 확보(attribution preflight-02 실측: model_reported=grok-4.6 provider-observed, usage input10,135/output51; 영수증 `reports/.../attribution-preflight-02/`), (5) 캐시 무결성 로직을 `grok-cache-integrity.mjs` 공유 모듈로 추출(테스트=프로덕션 동일 경로) + 이스케이프 etag `W/\"…\"` byte-proof 정규식 수정 + 회귀 테스트 TC-02d/e, (6) materialize placeholder-prompt를 fail-close로.
+- grok 재검수 2회차 판정 반려 3건(etag byte-proof 미수정·사본 테스트·부분산출 미탐) 전부 위 수정으로 폐쇄. 적대 21/21+config 24/24+unit 7/7 PASS.
+- **lock 단계 신설**: `lock-grok46-wow-preview.mjs`(provider-zero) — v0.2 config→54셀 RUN-MATRIX.locked.json 전개, task 프롬프트는 in-repo task set에서 SHA 검증, activation prefix는 caf0와 byte-identical(`config/omd-grok46-activation-prefixes-v0.1.json`, omd 1,200B 포함). round-major order(웨이브 r1=trial1 16셀). PREREGISTRATION.receipt에 사용자 실행 위임 인용(2026-08-15) 결박.
+- 알려진 잔여: omd-autopilot arm은 authority-controller grok 이식 필요(작업 #8, order6 전 필수). effort "high"는 파일럿에서 provider-observed 확인 예정.
+- **epoch `3b39dee2` admitted (2026-08-15):** 커밋 체인 b28003a8(lane)→aa540001(lock schema 정합)→e423a137(execution_control)→3b39dee2(러너 invocation-prompt 수정 — PROMPT.md만 읽어 activation prefix가 전달 안 되던 치명 결함을 admission 전에 잡음). 분리 워크트리 `/private/tmp/omd-grok-runtime-3b39dee2`, locked `8e4d1c5e…`(54셀), materialized 48셀 tree `049849b0…`(결정적 재현 3회 일치), 영수증 4종 provider-zero 재발급(raw SHA256SUMS 20/20 재검증), **ADMISSION `a64106c7…` status=admitted**. 전 과정 provider 호출 0.
+- **order1 pilot terminal `completed`** (662.7s, exit0): model grok-4.6 provider-observed, cache gate volatile-only PASS(escaped-etag 수정이 실전 검증됨 — 구코드였으면 fail-close 오판), usage 32 events input136,382/output89,342, 산출물 11 files(index 26KB+design-system). Luna order1(494.7s/267k tokens)과의 점수 비교는 claim 금지(다른 MUT).
+- **order2 전 잠금 규칙(도구 감사):** grok 셀은 built-in 도구 로스터(spawn_subagent/image_gen 포함)가 노출되나 skills/MCP는 격리로 비어 있음(order1 실측 []). 전 arm 동일 로스터 = 내부 공정 유지. 수집 루틴에 raw-stream tool_use 전수 감사를 포함하고, spawn_subagent/image_gen류 사용 시 추가 model call로 정직 기록+플래그한다(Luna hidden-image와 달리 raw 스트림에 전 호출이 귀속 기록됨). order1 감사 결과: 파일/터미널 도구만 사용, 위험 도구 0건. 한계 기록: effort는 provider-observed 필드가 스트림에 없어 cli-argument 증빙으로 유지.
+- **order1 evaluator 판정:** attempt1은 워크트리 의존성 부재(환경 결함, score 미작성) → byte-identical 검증 후 본 레포에서 재실행. 실제 브라우저 평가 수행, journey 단계에서 primary CTA "Reserve a tool" **11회 중복**으로 timeout → product-evaluation failure exit1, **objective 0 / UI-Resolved false**. 필수 상태 3종 스크린샷 7장 확보. 도구 감사: 파일/터미널만 사용, skills/MCP []. partial-01 봉인.
+- **epoch 3b39dee2 동결 (진단):** order2(anthropic) 실행 중 **경쟁 스킬 미설치 결함** 확인 — Luna 셀은 `.agents/skills/<skill>/`을 워크스페이스에 설치했는데 grok materializer가 이 단계를 누락, activation prefix만 전달됨. order2 operator-terminated(harness-invalid), partial-02 `c0aa29c2…` 봉인, 증거 `~/.omd-bench-backups/2026-08-15-grok46-epochs/` 백업. 같은 원리로 admission이 config의 unresolved lock 3종(competitor freshness/neutral packet/schema liveness)을 미집행한 것도 결함으로 기록.
+- **하네스 개정 H2 (commit `22c5d572`):** ① grok 워크스페이스 스킬 발견 실측(.agents/skills+.grok/skills 인식, probe 1회) ② caf0에서 arm별 스킬 팩 byte-identical 이식(`fixtures/competitor-skills-2.0`, 327파일 SHA 동결, 셀 간 동일성 검증) ③ materialize에 per-file SHA 검증 설치 로직 ④ product_initial 트리를 설치 후 기록(null이라 usage-limit 가드가 영구 불발이던 결함 수정) ⑤ lock이 fixture SUMS를 source_authority.files로 결박(admit 자동 byte 검증).
+- **#8 완료 (commit `c3d3f2f6`):** grok 워커 초안(1,260줄)을 Fable이 통합·수정 — byte-array 출력 디코딩(실측 와이어), PROMPT/invocation 분리 복사 수정, Luna export 공시 문자열 기본값, run-grok `--omd-controller-env`(8-binding JSON 전달, ambient env 금지·spatial contract 검증). 적대 테스트 13종 신설(item28 가드·중복/실패 activation·review-v2·env override·zsh-only wrapper·byte 디코드) 전부 PASS. 전 스위트 65 테스트 green. grok 재검수 백그라운드 진행 중.
+- **grok 재검수 2건 폐쇄 (commit `16ebfac7`):** [H] 런타임 번들 소스를 셀 워크스페이스→epoch 레포 루트로 교정(전 omd 셀 ENOENT 예방+provider-writable 신뢰 제거), [M] 성공 마커 추출을 디코딩된 터미널 출력 필드로 한정(envelope 키/description 위조 차단). 회귀 TC-OMD-14/15, 스위트 15/15, 실셀 프롬프트 dry-run PASS(런타임 15파일·8 env 바인딩·run_dir 정확).
+- **epoch 2 `9c5cf628` ADMITTED (2026-08-15):** worktree `/private/tmp/omd-grok-runtime-9c5cf628`, locked `b6f9384b…`, materialized 48셀 tree `c2a2bdb5…`(스킬 팩 설치 확인: anthropic `.agents/skills/frontend-design`, omd `scripts/`), schema-liveness 7/7 PASS(`96e3d6cc…`, network 7), 영수증 4종 재발급(raw 20/20 재검증), **ADMISSION `367d5b2e…` admitted**. baseline terminal0/missing48 봉인(`/private/tmp/omd-grok46-wow-evidence-9c5cf628/`).
+- **epoch 2 `9c5cf628` 동결 (진단, 2026-08-15):** wave r1 orders 1–5 봉인 완료 — order1 model-only completed/30(UI-Resolved false), order2 Anthropic completed/0(unavailable-information 누락), order3 Impeccable timeout/0, order4 UIUX completed/0(동일 누락), order5 Taste completed/0(동일 누락, image_gen×8 전부 귀속 기록). **Luna에서 관측된 arm별 실패 패턴이 grok에서 재현됨.** order6 OmD는 래퍼 신원 버그(cell.json runtime.provider를 runtime_target으로 오독)로 pre-provider fail-close(provider 호출 0). 잠긴 pairing 규칙상 OmD r1=0 vs model-only 30 = paired loss 확정 → 출시 게이트 수학적 불능 → 42셀 낭비 방지 위해 동결. 증거 `/private/tmp/omd-grok46-wow-evidence-9c5cf628/`(partial-06까지) + 백업 `~/.omd-bench-backups/2026-08-15-grok46-epochs/`. 부수 관측: --no-subagents 플래그가 spawn_subagent를 막지 않음(격리·귀속·공정성은 유지, 계약 라벨 약화로 기록), capacity 신호 오탐 2건(생성 콘텐츠 매칭, 규칙상 무해).
+- **래퍼 수정 (commit `27531052`):** 신원 검사를 runtime.runtime_target으로 교정, 회귀 TC-OMD-16, 스위트 16/16.
+- 3b39dee2의 order1/2는 immutable 진단 증거, 재실행 금지.
+
+### 2026-08-15 (Fable) grok lane seed 실행 개시
+
+- ouroboros 어댑터 16MiB 패치가 MCP 서버 재시작으로 활성화됨(브리지 정상). seed 실행본은 ouroboros Seed 스키마(YAML) 요구로 `~/.ouroboros/seeds/omd-grok46-lane-v0.2.yaml`로 작성 — scope는 WP1–WP4로 한정(벤치마크 셀 실행 금지, 러너 검증용 smoke 호출 최대 2회, receipts 필수). 마크다운 `docs/OMD_2_0_GROK_RESTART_SEED.md`는 인간용 정본으로 유지.
+- dirty-checkout 게이트(미커밋 docs 4종+보호 웹 생성물 3종)가 worktree 모드를 차단 → `~/.ouroboros/config.yaml`의 `use_worktrees: false` 전환(백업 `config.yaml.bak-20260815`) 후 in-place 실행. 실행 중 보호 웹 3종·git commit 금지는 seed constraints로 결박.
+- run3(`job_2bd6983b2df8`)은 워커 첫 호출에서 실패(AC 0/5). 근본 원인: SDK 1MiB 버퍼 제한이 `providers/claude_code_adapter.py` 외에 **`orchestrator/adapter.py`(seed 실행 경로)에도 별도로 존재** — 후자에 동일 `max_buffer_size` 16MiB 패치 적용(백업 `~/.ouroboros/orchestrator_adapter.py.orig-20260815`, py3.13 syntax PASS).
+- run4 재실행: job=`job_9bccd9c08a1b`, exec=`exec_2562e2da1d88`. 시작 후 buffer 오류 재발 0건. 산출물 4종 생성·스테이징(run-grok.mjs, matrix/score-gate config, 사전등록 요약). Fable 병렬 검수: score-gate 결측 규칙 4종 정확 반영, matrix에 grok-4.6 고정·`ㄱㄱ` activation·provider 잠금 확인, gpt-5.6 참조 0건.
+- run6은 iteration 한도(10)에서 AC 2/5로 종료. run7(exec=`exec_35bc5ef9378d`)은 AC 4/5로 완료(runner+테스트+config+materialize+admit 산출물 생성).
+- grok 리뷰어 C 독립 검수 = 반려(재판정: 전부 Confirmed). 주요 버그: 심링크 거부(fatal)·effort 미전달·headless 승인 미설정. 이 세션에서 수정 완료. 격리 자체(env allowlist·no shell injection·전역 스킬/MCP 공백)는 실측 통과.
+
+### 2026-08-14 저녁 (Fable) Luna·Sol 은퇴 → grok-4.6 재시작 결정
+
+- 사용자 결정: Luna 사용 중지, 워커도 Sol이 아닌 grok-4.6. Luna 중단 지점 재개가 어려우면 중단된 테스트부터 grok으로 재시작 허용. → **caf0 재개 계획(8/20 order5)은 폐기**하고 아래 "caf0 HOLD 검수" 절의 재개 체크리스트는 역사 기록으로만 유지한다. caf0의 미결 결정(capacity 셀 코딩)도 재개 폐기로 소멸했고, 그 교훈은 grok seed의 WP3 결측 규칙로 승계했다.
+- grok MUT 실행 가능성 실측 PASS: 격리 HOME(`auth.json`만 복사)에서 `grok -p -m grok-4.6` 정상 응답, 전역 스킬/AGENTS.md/MCP 미로드, 격리 홈에 자체 `config.toml`/`models_cache.json`(4,471B)/`sessions` 생성 확인. Codex lane의 frozen-HOME/cache byte-gate 패턴 이식 가능.
+- Ouroboros 활용: interview 브리지가 `claude-agent-sdk` 1MiB init-buffer 초과(전역 플러그인 로스터 원인)로 이 세션에서 실패했다(session `interview_20260814_065827`, `interview_20260814_070110`). 어댑터에 `max_buffer_size` 16MiB 패치를 적용했고(백업 `~/.ouroboros/claude_code_adapter.py.orig-20260814`, SHA `ea3e7942…`) **다음 세션(MCP 서버 재시작)부터 유효**하다. env `OUROBOROS_SDK_MAX_BUFFER`로 조정 가능. 그 전까지 seed는 파일로 등록: `~/.ouroboros/seeds/omd-grok46-restart-v0.1.md`.
+- Codex 세션 복기: 정본 세션 `rollout-2026-08-14T01-23-43`(290MB)에서 사용자 지시 원문 확보 — "실제 작업은 sol medium으로, 테스트에 활용하는 모델은 luna max로, 기획 및 검수, 로드맵 설정은 sol extra high(너)" + 활성화 문구 `ㄱㄱ` + 안전 중단·재개 요청. 이 역할 구조를 grok/Fable 체계로 승계했다(위 역할 라우팅).
+- **다음 exact action:** 새 세션에서 ouroboros interview→seed 정식 재실행(또는 seed 직접 execute) 후 WP1 run-grok runner부터 착수한다. WP 순서와 수용 기준은 `docs/OMD_2_0_GROK_RESTART_SEED.md` 고정. 셀 실행은 WP3 결측·wave 규칙이 커밋되기 전에는 시작하지 않는다.
+
+### 2026-08-14 (Fable) caf0 HOLD 검수 · Grok 4.6 역할 재배치 · 재개 준비 [SUPERSEDED — Luna 은퇴로 재개 계획 폐기, 검수·백업 사실은 유효]
+
+- Fable 세션이 Codex caf0 epoch 최종 보고를 독립 검수해 전부 byte-exact 일치를 확인했다: partial-04 `f052fa89…`, baseline `8567df1f…`, admission `28f09530…`, matrix `b46a0f21…`, preregistration `643622b2…`, cache `54a4e197…`/216,195B, auth `627eb799…`. order1 16 captures와 48 prepared cells(order5 Taste 포함)도 실재한다.
+- HOLD 6일간 `/private/tmp` 유실(재부팅·tmp 정리) 대비: active caf0 전체(evidence/locked/admission/materialized/runtime-snapshot/runtime-source) + 전 epoch evidence/locked/admission을 `~/.omd-bench-backups/2026-08-14-caf0-hold/`(0700, 134MB)에 rsync -a 보존했고 백업본 partial-04 SHA 재검증 일치. 원본은 삭제하지 않았다.
+- 사용자 지시로 기획 검수·작업·테스트 역할을 `gpt-5.6-sol`(Luna와 같은 Codex usage pool이라 함께 capacity-blocked)에서 `grok-4.6`(Grok Build CLI headless, grok-fleet 계약)으로 재배치했다. 정본은 docs/PROVIDER_ROUTING_POLICY.md의 Grok Build CLI lane 절. 비교 셀 model-under-test는 preregistration대로 Luna Max 유지 — 교체 시 epoch 무효라 금지.
+- grok-4.6 smoke PASS 후 독립 리뷰어 C 검수 1회 실행 = **조건부 승인** (원문+brief=`~/.omd-bench-backups/2026-08-14-caf0-hold/grok-benchmark-review.out`, SHA=`51079a97…`). Fable 재판정: [C]"Pareto 결측 코딩 미정의"는 오탐 — locked `omd-luna-max-wow-preview-score-gate-v0.1.json`이 failure/missing/omission=0, strongest-competitor 선정·pairing 0점 처리를 이미 정의한다. 단 그 정의가 [H]capacity 편향을 확정한다: order4 usage-limit infra-invalid가 경쟁 arm(UI UX Pro Max) 0점으로 코딩되어 공유 쿼터 순서 효과가 arm 패배로 오귀인되고 OmD 승리 쪽으로 편향된다(grok 확신도88%, Fable confirmed).
+- grok 검수에서 채택한 항목: (1) HOLD 중 caf0 하네스 변경 동결 — 수정은 다음 epoch 전용 워크트리에서만, (2) Grok은 이 epoch에서 검수 전용(구현·자체검증 금지, orchestrator 재판정 필수), (3) 재개 admission은 생성 호출 없는 usage 확인 + provider 타임존 대조, (4) 재개 시 order1/order2 보존 산출물 evaluator 재채점 비트일치(50/0) 확인 — provider-zero라 셀 불침해.
+- **미결 결정 (사용자):** capacity infra-invalid 셀의 품질 비교 코딩 — (a) locked 0점 규칙 유지+공개 claim에 편향 고지 vs (b) 잔여 44셀 실행 전 사전 등록 수정으로 "shared-quota capacity cell은 품질 비교 제외·별도 보고" 채택. 추가로 2차 usage-limit 발생 시 epoch inconclusive 규칙, arm×task 최소 유효 n 규칙도 함께 잠글지 결정 필요.
+- **다음 exact action:** 2026-08-20 13:20 KST 이후 exact provider admission 확인 → locked order5 Taste scope-only부터 1회·retry0, order4 재실행 금지. 재개 전 재검증: (1) `/private/tmp` caf0 dirs 실재+SHA(유실 시 `~/.omd-bench-backups` 복원), (2) isolated Codex CLI 0.147.0 path/hash, (3) auth `627eb799…` 유효, (4) cache `54a4e197…` exact bytes, (5) admission `28f09530…`, (6) 잔여 쿼터가 44셀×최대 900s 창을 커버하는지 계산, (7) evaluator 재채점 비트일치.
+
+### 2026-08-14 source caf0e62d fresh Luna Max epoch
+
+- implementation commit=`caf0e62d3e98684d482c56a2bbe3ef93a05ea873`; clean detached source=`/private/tmp/omd-luna-runtime-caf0e62d`다. exact provider-zero normalized cache=`54a4e197…`/216,195B는 apps key가 plugin key 직후이며 final byte `}`이고 committed transform에 멱등이다. runtime source=`/private/tmp/omd-luna-runtime-source-caf0e62d`, snapshot=`/private/tmp/omd-luna-runtime-snapshot-caf0e62d`, auth=`627eb799…`다.
+- fresh receipts=`/private/tmp/omd-luna-wow-evidence-caf0e62d`: static=`47a4d4fb…`, production schema7/7=`a03bea92…`, historical raw Luna/max attribution re-audit=`73f6b2b8…`, Codex IAB identity re-audit=`19d79f26…`, evaluation runtime=`cb14e7a9…`. 신규 provider/model/browser 호출0이며 schema liveness HTTP 7건만 실행했다.
+- evaluator dependency 첫 bundle은 `/Library/Fonts/Arial Unicode.ttf` symlink에서 fail-close해 unreferenced로 보존했다. authorized fresh `-v2` bundle은 `/System/Library/Fonts`+user Fonts만 사용하며 135 files/tree=`2637d5fb…`, font479/tree=`cd7ddbb4…`로 PASS했다.
+- locked=`/private/tmp/omd-luna-wow-locked-caf0e62d`; matrix=`b46a0f21…`, preregistration=`643622b2…`. materialized=`/private/tmp/omd-luna-wow-materialized-caf0e62d`, prepared tree=`3c03a29c…`, manifest=`bf0a09a3…`, 48 scheduled+6 ineligible, execution dirs0다.
+- Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-caf0e62d/ADMISSION.json`, SHA=`28f09530…`, all 8 bindings exact/calls0다. baseline=`/private/tmp/omd-luna-wow-evidence-caf0e62d/EXECUTION-RECORDS.baseline.json`, SHA=`8567df1f…`, terminal0/missing48/ineligible6, collection calls0다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 494,745ms, input240,754/output26,634/total267,388, tool6, provider/model/browser1/1/1, agent browser/network/external0으로 terminal `completed`다. 61,972B HTML, CSS vars20/selectors82, 16 publishable desktop/mobile/zoom/state captures를 남겼고 record=`cb38fe71…`, rerun 금지다.
+- deterministic evaluator는 score50/UI-Resolved false다. responsive20/evidence honesty20/runtime10은 PASS했지만 journey/accessibility는 FAIL했다. primary action visible count가 desktop4/mobile3이고, dialog activation 뒤 focus는 3개 viewport에서 select로 이동해 focus-transfer가 실패했다. initial serious contrast는 각 viewport5이며 reservation state에서는0이다. unavailable-information/honest-unknowns/no-social-proof/keyboard/focus-visible은 PASS했다.
+- 화면은 deep green/cream/coral/sage, editorial serif hierarchy, tool-card/hero illustration, 일관된 long-form mobile rhythm으로 시각 완성도가 높다. 다만 “보기 좋음”과 출시 proof를 분리해 objective50을 그대로 유지한다. cache integrity는 exact fetched_at-only PASS, hidden-image additional0, evaluator dependency pre/post exact다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-caf0e62d/EXECUTION-RECORDS.partial-01.json`, SHA=`d7520ded…`, terminal1/missing47/ineligible6, collection calls0다.
+- order2 `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`은 533,952ms, input188,726/output27,327/total216,053, tool4, provider/model/browser1/1/1, agent browser/network/external0으로 terminal `failed`다. 22,887B HTML+29,043B CSS+2,825B JS, vars17/selectors93, default/focus/mobile captures를 남겼고 record=`d7acfb82…`, rerun 금지다.
+- cobalt/navy/neon-lime/coral poster system, condensed display type, custom tool illustrations와 bold sectional rhythm은 model-only보다 시각 개성이 강하다. 시간은 약8% 느리지만 tokens는 약19% 적다. 그러나 required `unavailable-information` state가 전 viewport에서 관측되지 않아 evaluator exit1/score file 없음/objective0이며 제품 proof로는 model-only보다 나쁘다. cache fetched_at-only, hidden-image0, network/external0는 PASS다.
+- partial-02=`/private/tmp/omd-luna-wow-evidence-caf0e62d/EXECUTION-RECORDS.partial-02.json`, SHA=`92063b6a…`, terminal2(completed1/failed1)/missing46/ineligible6, collection calls0다.
+- order3 `neighborhood-library-landing-luna-max-r1-impeccable-prompt-only`은 900,319ms cap에서 terminal `timeout`이다. completion/usage가 없어 provider/model total은 `unknown`, browser0, tool31, agent browser/network/external0, retry/replacement/fallback0이다. 53,889B HTML, vars17/selectors69, PRODUCT.md와 Impeccable surface artifact를 남겼지만 evaluator/screenshots0이라 rendered visual quality를 주장하지 않는다. cache fetched_at-only와 hidden-image0는 PASS, record=`3041629f…`, rerun 금지다.
+- partial-03=`/private/tmp/omd-luna-wow-evidence-caf0e62d/EXECUTION-RECORDS.partial-03.json`, SHA=`df0ea077…`, terminal3(completed1/failed1/timeout1)/missing45/ineligible6, collection calls0다.
+- order4 `neighborhood-library-landing-luna-max-r1-ui-ux-pro-max`는 provider raw stream이 `You've hit your usage limit ... try again at Aug 20th, 2026 1:20 PM.`를 반환해 4,631ms `infrastructure-invalid`다. completion/usage가 없어 provider/model total은 `unknown`, browser0, tool0, blank shell/evaluator0/package false다. cache fetched_at-only와 hidden-image0는 PASS, record=`3f4bd559…`, rerun 금지다. skill/product 품질로 해석하지 않는다.
+- partial-04=`/private/tmp/omd-luna-wow-evidence-caf0e62d/EXECUTION-RECORDS.partial-04.json`, SHA=`f052fa89…`, terminal4(completed1/failed1/timeout1/infrastructure-invalid1)/missing44/ineligible6, collection calls0다. generic local rate-limit timestamp와 Luna provider exact message를 혼동하지 않으며 direct eligibility는 2026-08-20 13:20 KST다.
+- **다음 exact action:** 2026-08-20 13:20 KST 이후 exact provider admission이 확인될 때까지 추가 Luna cell을 실행하지 않는다. 재개 시 order4를 반복하지 않고 locked order5 `neighborhood-library-landing-luna-max-r1-taste-eligible-scope-only`부터 1회·retry0으로 진행한다. capacity terminal은 분모에 그대로 유지한다.
+
+### 2026-08-14 source f6cd17e2 fresh Luna Max epoch
+
+- implementation commit=`f6cd17e2001740e14ba05dd8a67806af2c026f36`; clean detached source=`/private/tmp/omd-luna-runtime-f6cd17e2`다. prompt-input audit는 auth 없는 sacrificial HOME에서만 실행되고, 실제 provider HOME은 admitted cache/auth bytes에서 이후 생성된다.
+- 253a raw cache `0e4291c4…`의 Codex 0.147 exact 9-profile defaults를 committed provider-zero transform으로 materialize했다. normalized runtime source=`/private/tmp/omd-luna-runtime-source-f6cd17e2`, cache=`8dc94420…`, auth=`627eb799…`; runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-f6cd17e2`다.
+- static receipt=`9d10f862…`, production schema 7/7=`64c12964…`, historical raw Luna/max attribution re-audit=`81ae316a…`, Codex IAB identity re-audit=`a06aeff0…`, fresh evaluator runtime/dependency bundle=`e650c061…`다. 새 provider/model/browser 호출0이며 schema liveness만 production HTTP로 재검증했다.
+- locked=`/private/tmp/omd-luna-wow-locked-f6cd17e2`; matrix=`00ffa277…`, preregistration=`5b76ab61…`. materialized=`/private/tmp/omd-luna-wow-materialized-f6cd17e2`, prepared tree=`ed407451…`, materialization=`fbd35923…`, 48 scheduled+6 ineligible다.
+- Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-f6cd17e2/ADMISSION.json`, SHA=`e09151cd…`, status admitted/calls0다. baseline=`/private/tmp/omd-luna-wow-evidence-f6cd17e2/EXECUTION-RECORDS.baseline.json`, SHA=`a3e21493…`, terminal0/missing48/ineligible6/calls0다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 554,640ms, input330,377/output29,512/total359,889, tool9, agent browser/network/external0으로 raw `turn.completed`와 61,591B HTML을 남겼다. neutral design-system package(vars23/selectors78)와 hidden-image audit은 PASS했고 retry/replacement/fallback/repair0이다.
+- terminal은 `infrastructure-invalid`, record=`8a897d5e…`, provider/model1/1, browser0, evaluator0/screenshots0, rerun 금지다. strict cache gate reason은 `unapproved-nonvolatile-byte-drift`; post bytes=`45545a33…`가 exact regular readback되었고 semantic=`2e2e2716…`, Luna profile=`aed8fe1b…`, client=`0.147.0`, tool mode가 모두 before와 일치했다.
+- root exact-byte 진단에서 provider는 정규화기가 각 profile 끝에 붙인 `include_apps_usage_instructions`를 `include_plugin_usage_instructions` 직후로 재배치했고 trailing newline을 제거했다. `jq -S del(.fetched_at)` canonical SHA는 before/after 모두 `2f8e5d17…`다. 따라서 gate 완화가 아니라 provider-zero serializer의 key insertion order/file ending 결함이다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-f6cd17e2/EXECUTION-RECORDS.partial-01.json`, SHA=`7deea173…`, terminal1/missing47/ineligible6, collection calls0다. collector 내부 slot은 provider/model1/1을 보존하며 top-level `collection_calls` 0은 collector 자체 호출 수다.
+- Sol/medium fix와 root 독립 검수는 commit `caf0e62d`에 봉인했다. serializer는 apps key를 plugin key 직후에 배치하고 2-space JSON/no-final-newline을 내며 exact bytes로 `required`를 판정한다. preserved f6cd before에 새 serializer를 적용한 candidate=`54a4e197…`; `fetched_at`만 post 값으로 바꾸면 post artifact=`45545a33…`와 216,195바이트 전체가 일치한다. old append-at-end/correct-values는 재정규화되고 ordered candidate는 멱등이다.
+- root gate는 runner/run-codex/admission/controller 90/90, lint, node-check, diff-check PASS다. semantic tamper, wrong/missing/duplicate/unknown model, missing order anchor, unsupported client, prompt formatting drift는 계속 fail-close한다.
+- **다음 exact action:** source `caf0e62d`에서 exact candidate cache runtime snapshot과 schema/static/runtime/IAB/evaluator/lock/materialization/admission을 모두 fresh 발급하고 baseline terminal0/missing48/ineligible6/calls0을 확인한다. 그 뒤에만 order1부터 retry0 신규 epoch를 시작한다. f6cd order1은 immutable diagnostic evidence다.
+
+### 2026-08-14 source 253a3abc fresh Luna Max epoch
+
+- implementation commit=`253a3abc0a2c958e91bd57c285831bb83f6993db`; clean detached source=`/private/tmp/omd-luna-runtime-253a3abc`다. runner는 ambient PATH/env가 아니라 admitted static receipt의 canonical wrapper path/SHA/version을 유일 authority로 쓰고 child env는 bounded allowlist만 전달한다.
+- official isolated Codex/cache 0.147.0은 이전 byte-frozen source home과 `/private/tmp/omd-codex-0.147.0-runtime`을 사용한다. runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-253a3abc`, auth=`627eb799…`, cache=`0e4291c4…`; static receipt=`8e72d638…`다.
+- production schema7/7=`f853e695…`, Luna attribution re-audit=`932c8c49…`, Codex IAB identity=`3d23c2ae…`, evaluator runtime=`3e2519f6…`다. new provider/model/browser calls0이다.
+- locked=`/private/tmp/omd-luna-wow-locked-253a3abc`; matrix=`9b498f0e…`, preregistration=`e462de93…`. materialized=`/private/tmp/omd-luna-wow-materialized-253a3abc`, prepared tree=`f767c8ee…`, materialization=`6adb8591…`, 48 scheduled+6 ineligible다.
+- admission=`/private/tmp/omd-luna-wow-admission-253a3abc/ADMISSION.json`, SHA=`522ff575…`, status admitted/calls0다. baseline=`/private/tmp/omd-luna-wow-evidence-253a3abc/EXECUTION-RECORDS.baseline.json`, SHA=`7662e495…`, terminal0/missing48/ineligible6/calls0다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 provider-zero `debug prompt-input` 자체는 PASS했지만 그 직후 격리 catalog semantic/profile/client mutation을 감지해 2,529ms에 pre-provider `infrastructure-invalid`로 종료됐다. provider/model/browser/network/tool0, evaluator0, blank shell이며 record=`891f6a83…`, rerun 금지다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-253a3abc/EXECUTION-RECORDS.partial-01.json`, SHA=`627eb573…`, terminal1/missing47/ineligible6/calls0다. 이는 제품/모델 결과가 아니라 prompt-input audit과 provider cache authority가 같은 HOME을 공유한 하네스 경계 결함이다.
+- **다음 exact action:** Sol/medium으로 prompt-input 감사를 provider execution HOME과 분리된 sacrificial provider-zero HOME에서 수행하고, 실제 provider HOME은 admitted cache bytes로 pristine 생성·재검증한다. root가 적대 테스트를 검수·커밋한 뒤 새 source/receipts/lock/materialization/admission epoch를 order1부터 만든다. 253a terminal은 immutable diagnostic evidence로만 유지한다.
+
+### 2026-08-14 source 68a19aa0 fresh Luna Max v2 epoch
+
+- clean detached source=`/private/tmp/omd-luna-runtime-68a19aa0`, source commit=`68a19aa029ba706111828d698770a87ee9f20f9e`다. protected web 생성물과 9c65 evidence는 authority 밖이다.
+- local global CLI/cache가 0.146.1/0.147.0으로 흔들린 첫 attempt는 static→snapshot hash drift에서 차단돼 unused다. 전역 설치를 변경하지 않고 official npm `@openai/codex@0.147.0`을 `/private/tmp/omd-codex-0.147.0-runtime`에 격리 설치했으며 registry integrity=`sha512-EQLEXecA…Z3w==`다.
+- live cache가 0.147.0일 때 auth/cache를 fresh `/private/tmp/omd-luna-runtime-source-68a19aa0-v2`에 먼저 byte-freeze했다. runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-68a19aa0-v2`, auth=`627eb799…`, cache=`0e4291c4…`; static receipt=`89a8830…`다.
+- production schema7/7=`85e53f47…`, exact historical Luna attribution re-audit=`a93ea4ed…`, Codex IAB identity re-audit=`1d1ea1fd…`, evaluator runtime=`aa1ae6ef…`다. runtime/IAB 재감사는 기존 exact raw bytes이고 신규 provider/model/browser 호출0이다.
+- locked=`/private/tmp/omd-luna-wow-locked-68a19aa0-v2`; matrix=`8ee9b487…`, preregistration=`407831e8…`다. materialized=`/private/tmp/omd-luna-wow-materialized-68a19aa0-v2`, 48 scheduled+6 ineligible, prepared tree=`311cff4f…`/55,122,396B/3,225 files, materialization=`8c5d6c01…`다.
+- Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-68a19aa0-v2/ADMISSION.json`, SHA=`ba5a6550…`, status admitted/calls0다. baseline=`/private/tmp/omd-luna-wow-evidence-68a19aa0-v2/EXECUTION-RECORDS.baseline.json`, SHA=`fe096041…`, terminal0/missing48/ineligible6/calls0다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 provider isolation이 ambient `OMD_BENCH_CODEX_BIN` 부재로 global CLI를 선택한 뒤 admitted static CLI 0.147 path/hash와 다름을 감지해 162ms pre-provider fail-close했다. provider/model/browser/network/tool0, blank shell, evaluator0이며 record=`22727989…`, rerun 금지다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-68a19aa0-v2/EXECUTION-RECORDS.partial-01.json`, SHA=`0820c4e7…`, terminal1/missing47/ineligible6/calls0다. 이는 model 결과가 아니라 operator/runtime-selection contract 결함이며 같은 epoch에서 env를 보충해 재실행하지 않는다.
+- **다음 exact action:** Sol/medium으로 cell runner가 admission의 exact static CLI path/hash/version을 직접 provider isolation에 전달하게 하고 ambient env 선택을 제거한다. missing/tampered/alternate caller env와 exact isolated CLI positive를 적대 테스트하고 root가 검수·커밋한 뒤 새 source/receipts/lock/materialization/admission epoch를 order1부터 만든다.
+
+### 2026-08-14 post-provider cache evidence gate / next epoch HOLD
+
+- implementation commit=`68a19aa029ba706111828d698770a87ee9f20f9e`; clean detached worktree=`/private/tmp/omd-luna-runtime-68a19aa0`다. provider/model/browser/network 호출 없이 코드와 synthetic fixtures만 검증했다.
+- `run-codex`는 provider spawn 직전 cache raw bytes를 보유하고 종료 직후 cleanup 전에 `models-cache.post-provider.bin`을 wx/0600으로 저장한다. full/semantic/Luna profile/client/tool-mode/fetched_at before/after와 exact SHA/bytes를 run-result에 결박하며 raw completion·usage를 먼저 보존한다.
+- 허용되는 runtime drift는 raw JSON에서 단 하나의 top-level `fetched_at` 값 토큰만 byte-exact 교체된 경우다. semantic/profile/client/tool-mode, etag, formatting 또는 다른 byte drift는 `infrastructure-invalid`이며 evaluator를 시작하지 않는다.
+- outer cell runner는 claimed artifact가 exact isolated `.benchmark` path의 regular non-symlink인지 확인하고 실제 SHA/bytes를 재계산한다. path escape, forged SHA, post-claim tamper, symlink도 제품 실패가 아닌 infrastructure-invalid로 봉인한다.
+- root 독립 검수: run-codex/cell runner/controller/admission/auditor 100/100 PASS, focused 변경 61/61 PASS, lint, 4 node-check, diff-check PASS다. retry/replacement/fallback0이며 9c65 evidence를 재실행하거나 수정하지 않았다.
+- fresh source에서 static capability receipt를 provider-zero로 시도했지만 exact CLI=`0.146.1`, live cache `client_version=0.147.0`라 `catalog client version differs from exact Codex CLI version`로 exit1했다. receipt는 생성되지 않았고 이 차이를 완화하거나 수동 재작성하지 않는다.
+- **다음 exact action:** Codex CLI와 live cache client version이 exact 일치하는 provider-zero 상태를 확인한다. 일치 전에는 새 Luna 셀을 시작하지 않는다. 일치 후 source `68a19aa0`에서 production schema/static/runtime/IAB/evaluator/lock/materialization/admission을 전부 fresh 발급하고 baseline terminal0/missing48/ineligible6을 확인한 뒤 order1부터 retry0 신규 epoch를 시작한다.
+
+### 2026-08-14 source 9c65f56d fresh Luna Max epoch
+
+- clean detached source=`/private/tmp/omd-luna-runtime-9c65f56d`, evidence=`/private/tmp/omd-luna-wow-evidence-9c65f56d`다. source commit은 `9c65f56dcc6aa84c211728fc62757c9ea1d8fb17`; main의 후속 continuity commit과 보호 생성물 3개는 authority 밖이다.
+- provider-zero/static gates는 production schema7/7=`337d896b…`, static Luna/max=`5719ac07…`, runtime attribution=`465aa4f3…`, Codex IAB identity=`27d6f71b…`, evaluation runtime=`c11a2bec…`다. runtime/IAB는 d62 exact raw bytes를 새 source로 재감사했으며 신규 provider/model/browser call0이다.
+- evaluator dependency 첫 경로 `/private/tmp/omd-luna-evaluator-deps-9c65f56d`는 `/Library/Fonts/Arial Unicode.ttf` symlink를 발견해 provider-zero fail-close했고 사용하지 않는다. accepted fresh bundle은 `/private/tmp/omd-luna-evaluator-deps-9c65f56d-v2`; font roots를 `/System/Library/Fonts`와 사용자 Fonts로 명시해 exact receipt에 결박했다.
+- locked=`/private/tmp/omd-luna-wow-locked-9c65f56d`, matrix=`0a417798…`, preregistration=`10bb79f5…`다. materialized=`/private/tmp/omd-luna-wow-materialized-9c65f56d`, 48 scheduled+Taste6 ineligible, prepared tree=`382254f7…`, materialization binding=`1a3907db…`다.
+- immutable runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-9c65f56d`, auth=`627eb799…`, catalog=`f4392270…`다. Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-9c65f56d/ADMISSION.json`, SHA=`a5796b26…`, status admitted/calls0다.
+- baseline collector=`/private/tmp/omd-luna-wow-evidence-9c65f56d/EXECUTION-RECORDS.baseline.json`, SHA=`9687ec31…`, terminal0/missing48/ineligible6, collection calls0이다. token monitor used94/reset timestamp 불변이다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 raw `turn.completed`와 input426,046/output26,770, final agent message, 54,464B HTML을 남겼지만 wrapper가 provider invocation 후 model-cache semantic/profile integrity mismatch를 감지해 exit1했다. terminal은 811,135ms, tool11, browser/network/external0, hidden-image audit PASS, neutral design-system package PASS이나 run-result/usage가 결박되지 않아 provider/model totals를 `unknown`으로 유지한 `infrastructure-invalid`다. evaluator/screenshots는 실행되지 않았고 record=`51fbb967…`, rerun 금지다.
+- provider runtime preflight는 admitted/observed semantic SHA=`402d17b5…`, profile SHA=`a0e0699d…`, client=`0.146.1`로 일치했으나 provider 실행 중 cache가 다시 변했다. cleanup이 post bytes를 삭제해 어떤 semantic field가 변했는지는 현 evidence로 복원할 수 없으므로 제품 실패로 채점하지 않고 하네스 관측 결함으로 분류한다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-9c65f56d/EXECUTION-RECORDS.partial-01.json`, SHA=`913ab289…`, terminal1/missing47/ineligible6, collection calls0이다. token monitor used94/reset timestamp 불변이다.
+- **다음 exact action:** Sol/medium으로 post-provider model-cache full/semantic/profile/client bytes를 cleanup 전에 immutable evidence로 남기고, 허용 가능한 volatile metadata와 의미 변경을 구분하는 fail-close 계약을 구현·적대 테스트한다. root Sol/xhigh가 독립 검수한 뒤 새 clean commit에서 모든 receipt/lock/materialization/admission을 fresh rebind하고 order1부터 retry0 신규 epoch를 시작한다. 9c65 order1은 immutable diagnostic evidence이며 같은 셀/epoch 재실행을 금지한다.
+
+### 2026-08-14 source a0d3d944 fresh Luna Max epoch
+
+- hidden image generation integrity gate는 commit `a0d3d9443fa81baae5cf289e447ec8046c7e2c98`에 봉인했다. provider-home `generated_images` pre/post tree, workspace SHA lineage, raw tool identity/path reference를 함께 감사하고 dangling symlink·생성 후 삭제·구조화 imagegen 호출도 fail-close한다. 호출 lifecycle이 불완전하면 provider/model total을 추정하지 않고 `unknown`으로 기록하며 evaluator를 실행하지 않는다.
+- clean detached source=`/private/tmp/omd-luna-runtime-a0d3d944`, evidence=`/private/tmp/omd-luna-wow-evidence-a0d3d944`다. protected web 생성물과 d62 evidence는 source authority 밖에 둔다.
+- provider-zero/static gates: static Luna/max=`7a195446…`, production schema7/7=`160d0474…`, evaluation runtime=`73273db1…`, Codex IAB identity=`accce873…`다. evaluator dependency bundle은 fresh `/private/tmp/omd-luna-evaluator-deps-a0d3d944-v2`이며 실패한 최초 font-symlink materialization은 사용하지 않는다.
+- Luna/max runtime attribution은 d62에서 이미 발생한 exact single-context/single-lifecycle raw rollout을 byte-identical하게 새 source로 재감사해 `cad80e47…`로 결박했다. 이 재발급 자체의 provider/model/browser 호출은 0이며, historical preflight 1회는 benchmark denominator 밖에 유지한다.
+- locked=`/private/tmp/omd-luna-wow-locked-a0d3d944`, materialized=`/private/tmp/omd-luna-wow-materialized-a0d3d944`, 48 scheduled+Taste6 ineligible다. prepared tree SHA=`b7370f29…`, manifest=`5b2ba6a9…`, runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-a0d3d944`, auth=`627eb799…`, catalog=`f4392270…`다.
+- Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-a0d3d944/ADMISSION.json`, SHA=`a8f25ac5…`, calls0/status admitted다. baseline collector=`/private/tmp/omd-luna-wow-evidence-a0d3d944/EXECUTION-RECORDS.baseline.json`, SHA=`86426925…`, terminal0/missing48/ineligible6이다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 617,090ms, input275,295/output33,382/total308,677, tool6, agent browser/network/external0으로 provider exit0했다. hidden image audit은 before/after absent, raw identity/reference0, lineage0으로 PASS해 provider/model 1/1이 정확히 유지됐다. 74,394B HTML, vars23/selectors100/package와 12 captures를 만들었다. deep green/cream/coral/sage editorial system, project-first taxonomy, 카드·아이콘·CTA·mobile rhythm은 강하지만 initial reservation modal이 hero를 덮고 필수 unavailable-information state가 없어 evaluator exit1/objective0다. record=`0d0f7253…`, rerun 금지다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-a0d3d944/EXECUTION-RECORDS.partial-01.json`, SHA=`ed11c3ad…`, terminal1/missing47/ineligible6이다. collector calls0이며 token monitor used91/reset timestamp 불변이다.
+- order2 `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`은 486,932ms, input410,345/output25,912/total436,257, tool17, contamination0으로 provider exit0했다. hidden image audit은 side effect/tool identity/reference/lineage0으로 PASS해 provider/model 1/1이다. 51,769B HTML, vars17/selectors83/package와 captures를 만들었다. ink-blue/paper/safety-orange, drill+borrow-tag illustration, serif/italic hierarchy와 3-step borrowing loop는 model-only보다 기억점이 강하고 약21% 빠르지만 tokens는 약41% 많다. 선언된 focus style이 evaluator interaction에서 관측되지 않아 `focus-visible` required state에서 exit1/objective0이고 unavailable state까지 닫지 못했다. record=`1efcd77c…`, rerun 금지다.
+- partial-02=`/private/tmp/omd-luna-wow-evidence-a0d3d944/EXECUTION-RECORDS.partial-02.json`, SHA=`8b1cf168…`, terminal2/missing46/ineligible6이다. collector calls0이며 token monitor used91/reset timestamp 불변이다.
+- order3 `neighborhood-library-landing-luna-max-r1-impeccable-prompt-only`은 900,335ms cap에서 terminal `timeout`이다. provider completion/usage가 없어 provider/model total은 `unknown`, tool28, agent browser/network/external0, retry/fallback/replacement0이다. hidden image audit은 before/after absent, tool identity/reference/lineage0으로 PASS했다. 47,993B HTML, vars17/selectors72/package와 11,138B DESIGN.md/.impeccable artifacts를 남겼지만 evaluator/screenshots0이며 rendered visual quality를 주장할 수 없다. record=`af4e0474…`, rerun 금지다.
+- partial-03=`/private/tmp/omd-luna-wow-evidence-a0d3d944/EXECUTION-RECORDS.partial-03.json`, SHA=`4ea70f03…`, terminal3(failed2/timeout1)/missing45/ineligible6이다. collector calls0이며 token monitor used92/reset timestamp 불변이다.
+- order4 `neighborhood-library-landing-luna-max-r1-ui-ux-pro-max`는 748,001ms, input836,282/output40,158/total876,440, tool32, contamination0으로 terminal `completed`다. hidden image audit은 side effect/tool identity/reference/lineage0으로 PASS해 provider/model 1/1이다. 29,041B HTML+stylesheet, vars32/selectors108/package와 default/focus/unavailable 16 captures를 만들었다. navy/cream/green/coral system, custom tool illustrations와 long mobile composition은 polished하고 required states 3종을 모두 재현했다. 하지만 visible primary CTA가 2개라 uniqueness가 깨지고 serious contrast violations가 반복돼 objective50/UI-Resolved false다. record=`2a1e9b6f…`, rerun 금지다.
+- partial-04=`/private/tmp/omd-luna-wow-evidence-a0d3d944/EXECUTION-RECORDS.partial-04.json`, SHA=`c2e91986…`, terminal4(completed1/failed2/timeout1)/missing44/ineligible6이다. collector calls0이며 token monitor used92/reset timestamp 불변이다.
+- order5 `neighborhood-library-landing-luna-max-r1-taste-eligible-scope-only`은 803,555ms 뒤 terminal `infrastructure-invalid`다. runner usage event는 input2,210,400/output37,507/total2,247,907, tool36이지만 실제 추가 asset model/tool lifecycle이 raw stream에 없어 provider/model totals는 `unknown`이다. provider-home generated_images에 2,220,968B+1,909,393B PNG 2개가 생겼고 workspace `assets/tool-library-hero.png`/`assets/borrowed-repair.png`와 SHA lineage가 정확히 일치한다. raw에는 generated_images 접근 명령만 있고 structured imagegen identity/call count가 없어 hidden-image audit reason=`hidden-image-generation-side-effect-unattributed`; evaluator/screenshots0이다. record=`737e17a7…`, rerun 금지, prompt-only 비교 분모 제외다.
+- partial-05=`/private/tmp/omd-luna-wow-evidence-a0d3d944/EXECUTION-RECORDS.partial-05.json`, SHA=`a12776aa…`, terminal5(completed1/failed2/timeout1/infrastructure-invalid1)/missing43/ineligible6이다. collector calls0이며 token monitor used93/reset timestamp 불변이다.
+- order6 `neighborhood-library-landing-luna-max-r1-omd-autopilot-v2`는 900,263ms cap 뒤 terminal `infrastructure-invalid`다. provider completion/usage가 없어 provider/model totals는 `unknown`, tool64, agent browser/network/external0, hidden-image audit PASS다. workspace에는 20,506B HTML이 남았지만 reusable CSS signals0, Core package·DESIGN·proof·screenshots0이라 시각/제품 품질을 주장하지 않는다. execution-owned controller runtime closure는 exact intact였으나 activation은 성공하지 못했다. record=`3f464943…`, rerun 금지다.
+- raw command 원인은 두 갈래다. `item_28`은 controller env 이름을 찾는 `rg` 진단 명령인데 단순 substring 감사가 activation 시도로 오인한 false positive다. 실제 `item_66`은 모델이 지시된 inner command를 실행했지만 Codex shell의 표준 `/opt/homebrew/bin/zsh -lc 'node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE . $OMD_AUTHORITY_CONTROLLER_RUN_DIR'` wrapper 때문에 raw-exact gate가 거부했고, shell에서 두 env가 비어 `node .`로 해석되어 exit1했다. external staging은 empty, exact package+checkpoint 7 files가 모두 없었다.
+- partial-06=`/private/tmp/omd-luna-wow-evidence-a0d3d944/EXECUTION-RECORDS.partial-06.json`, SHA=`06701041…`, terminal6(completed1/failed2/timeout1/infrastructure-invalid2)/missing42/ineligible6이다. 추가 셀 실행은 authority-controller invocation contract 수정·provider-zero 검증 전까지 일시 정지한다.
+- Sol/medium fix는 commit `cabf0951`에 봉인했다. activation 검출은 parsed node/nodejs controller operand만 인정해 `rg` substring false positive를 제거했고, exact direct command 또는 Codex 표준 단일 `zsh -lc` wrapper 안의 exact inner command만 허용한다. `run-codex`는 OmD arm에서만 8개 preregistered controller/staging binding을 receipt SHA/kind, workspace/run-dir, add-dir containment, execution-owned executable path와 대조한 뒤 child shell에 전달한다. 임의 OMD env, env override, alternate shell/path, redirection/sequencing/substitution, duplicate, failed/nonzero/bad-output는 fail-close한다.
+- root 독립 검수는 실제 a0d events replay에서 item28을 0 activation/0 forbidden으로 분리하고 item66만 과거 nonzero failure로 유지했다. focused 66 pass/3 intentional skip, package/install 47/47, lint, 3 node-check, diff-check가 PASS했다. missing binding, stale receipt/activation SHA, runtime 밖 executable, non-OmD env leakage는 provider spawn 전 차단됨을 검증했다. provider/model/browser/network 추가 호출0이다.
+- **다음 exact action:** 이 continuity commit까지 포함한 clean HEAD를 새 source authority로 삼아 production schema7/7, static Luna/max, evaluator dependency/runtime, Codex IAB identity, Luna attribution receipt를 전부 재발급한다. new locked/materialized/runtime/admission roots를 만들고 baseline terminal0/missing48/ineligible6을 확인한 뒤 order1부터 one-cell/turn·retry0으로 시작한다. a0d terminal6은 immutable diagnostic evidence로 보존하고 같은 epoch에서 재실행하지 않는다.
+
+### 2026-08-14 source d62ec298 fresh Luna Max epoch
+
+- 실행 정본은 source=`d62ec298d97e9ecc611ccfe9a710bccb7f4a0e8d`, clean detached worktree=`/private/tmp/omd-luna-runtime-d62ec298`, evidence=`/private/tmp/omd-luna-wow-evidence-d62ec298`다. main worktree의 보호 생성물 3개는 source authority와 분리했다.
+- provider-zero gates는 static Luna/max=`f5e86078…`, production schema7/7=`b8b6367e…`, immutable evaluator runtime=`8b3f1d14…`, Codex IAB about:blank identity=`3d4a40a3…`로 PASS했다. evaluator dependency bundle은 `/private/tmp/omd-luna-evaluator-deps-d62ec298-v2`에 결박됐다.
+- Luna/max attribution은 non-ephemeral isolated home에서 exact 응답, input14,543/output13, retry/replacement/fallback0으로 정확히 1회 실행됐다. raw rollout은 12 events·single context/lifecycle이고 receipt=`b0afb4e5…`; benchmark denominator 밖이다.
+- locked=`/private/tmp/omd-luna-wow-locked-d62ec298`, matrix 48 scheduled+Taste6 ineligible다. materialized=`/private/tmp/omd-luna-wow-materialized-d62ec298`, prepared tree SHA=`2a5e2aa3…`; runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-d62ec298`, auth=`627eb799…`, catalog=`f4392270…`다.
+- Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-d62ec298/ADMISSION.json`, SHA=`6aaf96d4…`, calls0/status admitted다. baseline collector=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.baseline.json`, SHA=`0b45405d…`, terminal0/missing48/ineligible6이다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 529,177ms, input228,540/output28,520/total257,060, tool9, agent browser/network/external0으로 provider exit0했다. 66,217B HTML, CSS vars19/selectors73, neutral design-system package와 12 publishable captures를 만들었다. editorial serif+utility labels, sage/cream/coral/gold/mint palette, custom tool/project illustrations, long-page/mobile rhythm은 강하지만 reservation modal이 hero를 덮고 필수 `unavailable-information` state가 없어 evaluator exit1/objective0다. record=`78798205…`, rerun 금지다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-01.json`, SHA=`b6ebf9fc…`, terminal1/missing47/ineligible6이다. token monitor는 used87/reset timestamp 불변으로 리셋 미발생을 확인했다.
+- order2 `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`은 587,489ms, input445,987/output31,497/total477,484, tool17, contamination0으로 provider exit0했다. HTML16,591B+CSS34,364B+JS1,961B, vars20/selectors136/package와 12 captures가 PASS했다. deep marine/cobalt/safety-yellow/coral/mint, lending-card orbit, condensed display와 색면 섹션은 model-only보다 정체성·위계가 강하지만 small utility text와 동일한 unavailable-information 누락으로 objective0다. tokens는 model-only 1.86×, 시간 1.11×다. record=`c69863e7…`, rerun 금지다.
+- partial-02=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-02.json`, SHA=`7059cb2f…`, terminal2/missing46/ineligible6이다. token monitor는 used88/reset timestamp 불변이다.
+- order3 `neighborhood-library-landing-luna-max-r1-impeccable-prompt-only`은 859,116ms, input1,800,790/output44,460/total1,845,250, tool26, contamination0으로 terminal `completed`다. 56,069B HTML, vars23/selectors79/package와 default/focus/unavailable 16 captures가 PASS했고 dark workshop+acid yellow+aqua+coral, borrow-ticket와 abstract tool glyph art direction은 현재 가장 강하다. 다만 visible primary CTA 5개로 unique-action 실패, activation focus transfer 실패, contrast violations로 objective50/UI-Resolved false다. tokens는 model-only 7.18×, 시간 1.62×다. record=`c2e1ef09…`, rerun 금지다.
+- partial-03=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-03.json`, SHA=`54e31dac…`, terminal3(completed1/failed2)/missing45/ineligible6이다. completed는 objective gate pass와 동의어가 아니며 release superiority 근거로 단독 승격하지 않는다.
+- order4 `neighborhood-library-landing-luna-max-r1-ui-ux-pro-max`는 753,695ms, input1,157,834/output38,632/total1,196,466, tool27, contamination0으로 provider exit0했다. final HTML22,166B+stylesheet/JS, vars20/selectors93/package와 12 captures는 PASS했다. parchment/mahogany/brass, serif hierarchy, tool-note card와 form은 고급스럽지만 desktop default에서 mobile nav drawer가 열린 responsive/state bug가 있고 unavailable-information 미관측으로 objective0다. tokens는 model-only 4.65×, Anthropic 2.51×다. record=`c254bc7b…`, rerun 금지다.
+- partial-04=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-04.json`, SHA=`903ebd3d…`, terminal4(completed1/failed3)/missing44/ineligible6이다. token monitor used89/reset timestamp 불변이다.
+- order5 `neighborhood-library-landing-luna-max-r1-taste-eligible-scope-only`는 763,479ms, runner-reported input1,687,364/output34,350/total1,721,714, tool32로 terminal `failed`다. 40,789B HTML, vars16/selectors60/package와 12 captures를 만들었고 cobalt/white/black product landing과 reservation modal은 동작하지만 unavailable-information 누락으로 objective0이며, 시각적으로 앞선 editorial 경쟁 arm보다 일반적이다. record=`250b9524…`, rerun 금지다.
+- Taste workspace의 `assets/borrow-at-home.png`와 `assets/tool-library-hero.png`는 provider home `generated_images`에서 복사됐지만 raw stream에는 실제 imagegen tool identity/call lifecycle이 없고 shell read/copy만 남았다. 따라서 기존 terminal의 provider/model `1/1`은 증명 불가능하며 additional hidden model/tool calls는 `unknown`이다. 이 결과를 비교 분모에 쓰지 않는다.
+- partial-05=`/private/tmp/omd-luna-wow-evidence-d62ec298/EXECUTION-RECORDS.partial-05.json`, SHA=`0ae4afb1…`, terminal5(completed1/failed4)/missing43/ineligible6이다. collector 자체 호출은 0이다.
+- **epoch 판정:** d62 전체를 diagnostic-only로 동결하고 order6 OmD를 실행하지 않는다. 앞선 4셀도 실행 당시 provider-home hidden-image boundary를 결박하지 않았으므로 사후 무오염을 증명할 수 없고, patched runner/source를 같은 epoch에 혼합할 수 없다.
+- **다음 exact action:** hidden image generation side-effect·tool identity·workspace SHA lineage를 provider-zero로 fail-close하는 Sol-medium runner gate를 독립 검수·커밋한다. 그 clean commit으로 schema/static/evaluator/IAB/runtime-attribution receipt, locked root, materialization, admission을 전부 새로 발급하고 retry/replacement/fallback0인 새 epoch order1부터 시작한다.
+
+### 2026-08-14 fresh Luna epoch authority-controller gate
+
+- implementation commit `d1f5e5b8`은 OmD benchmark arm의 controller를 provider-writable workspace 밖 execution-owned runtime bundle로 분리한다. activate/prepare/compile/adopt/validate/Core/schema 전체 closure가 파일 모드+SHA로 receipt에 결박되고 helper는 자기 bundle의 child runtime만 실행한다.
+- 모델은 exact literal `node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE . $OMD_AUTHORITY_CONTROLLER_RUN_DIR` 또는 exact canonical expanded command 중 하나를 성공한 `item.completed`로 단 한 번 실행해야 한다. env injection, wrapper, redirection, pipe/sequencing/substitution, direct approve/checkpoint/reviewer, review-vN/package-vN, duplicate/failed/nonzero/started-only activation은 모두 fail-close한다.
+- activation은 real graph/provenance/coverage → review → external approval → compile exact six-file package → checkpoint → atomic adopt → provider-free project proof를 한 번에 수행한다. receipt/runtime/staging/DESIGN/proof/activation drift는 timeout보다 우선해 `infrastructure-invalid`이며 evaluator는 시작하지 않는다.
+- 독립 검증은 Core/controller/runner/materializer/install/package 10 files에서 175 pass/3 intentional skip, provider-zero positive transaction, npm tarball의 Claude/Codex/OpenCode/Cursor helper byte+syntax+doctor smoke, lint/build/node-check/diff-check PASS다. provider/model/browser/network 호출은 0이며 보호 생성 파일 3개는 commit에서 제외했다.
+- **다음 exact action:** 이 continuity checkpoint를 포함한 clean HEAD를 새 source authority로 삼고 detached worktree를 만든다. production schema7/7, static Luna/max, evaluator dependency/runtime, Codex IAB identity, Luna attribution receipt를 전부 새 source에 재발급한 뒤 new locked/materialized/runtime/admission roots를 만든다. 새 epoch는 order1부터 retry/replacement/fallback0으로 시작하고 58dc/0dc/c494 terminal은 diagnostic-only로 유지한다.
+
+### 2026-08-14 source 58dcf8a9 Luna Max 정식 비교 epoch
+
+- 실행 정본은 source=`58dcf8a9b2491d6ec34ca308247f2cf843a01c58`, clean detached worktree=`/private/tmp/omd-luna-runtime-58dcf8a9`, evidence=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2`다. main의 후속 continuity commit은 실행 authority에 포함하지 않는다.
+- provider-zero gates: static Luna/max receipt=`480aa804…`, production schema7/7=`8551fedd…`, immutable evaluator runtime=`df56c08a…`, IAB about:blank tab15 identity=`d2220c35…`다. evaluator dependency bundle은 135 files/15,681,140B이며 source/copy/source-post와 admission/runner pre/post full-tree 결박을 사용한다.
+- Luna/max attribution은 non-ephemeral isolated home에서 exact 응답, input14,594/output13, retry/replacement/fallback0으로 1회 실행됐다. raw rollout의 single context/lifecycle을 감사한 receipt=`ecda7a98…`이고 denominator 밖이다. token reset은 없었다.
+- locked=`/private/tmp/omd-luna-wow-locked-58dcf8a9`; materialized=`/private/tmp/omd-luna-wow-materialized-58dcf8a9`; 48 scheduled+Taste6 ineligible, prepared tree SHA=`e5fbacae…`다. runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-58dcf8a9`, auth=`627eb799…`, catalog=`f4392270…`다.
+- Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-58dcf8a9/ADMISSION.json`, SHA=`788e2702…`, calls0/status admitted다. baseline collector=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.baseline.json`, SHA=`1b1d60f1…`, terminal0/missing48/ineligible6이다.
+- order1 `neighborhood-library-landing-luna-max-r1-model-only`은 421,551ms, input205,164/output22,562/total227,726, tool6, contamination0으로 provider exit0했다. HTML56,025B/vars18/selectors88/package PASS이며 deep-forest/cream+coral/acid-lime editorial system, 직접 그린 도구 illustration, 긴 responsive landing composition은 시각적으로 강하다. 새 immutable dependency bundle로 evaluator `RUNTIME-READY`가 실제 생성됐고 desktop/mobile/zoom default+focus screenshots 12개를 남겼다. 그러나 required `unavailable-information` state 미관측으로 post-ready product validation exit1/objective0다. record SHA=`6b9296bf…`, rerun 금지다.
+- partial-01=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-01.json`, SHA=`8b195262…`, terminal1/missing47/ineligible6이다.
+- order2 Anthropic Frontend Design r1은 517,480ms, input248,843/output28,067/total276,910, tool6, contamination0으로 provider exit0했다. HTML58,732B/vars17/selectors89/package PASS이며 oversized condensed headline, graph-paper reservation desk, orange/lavender/yellow tool silhouettes, three-loop IA와 dark catalog section이 model-only보다 더 뾰족한 visual identity를 만든다. evaluator READY와 captures는 PASS했으나 같은 `unavailable-information` state 미관측으로 objective0다. record SHA=`e3b6f0b8…`, rerun 금지다.
+- partial-02=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-02.json`, SHA=`30385649…`, terminal2/missing46/ineligible6이다.
+- order3 Impeccable prompt-only r1은 900,349ms cap에서 `timeout`으로 immutable 봉인됐다. usage/completion은 provider completion 부재로 unknown, tool17, agent browser/network/external-context0, retry/fallback/replacement0이다. workspace에는 55,564B HTML SHA=`0b64359a…`, vars30/selectors70의 neutral design-system package PASS와 `Block & Borrow` cobalt/paper/lime/orange intent가 남았지만 evaluator/screenshots0이며 HTML 일부에 literal escaped newline을 추적하던 미완결 상태라 rendered visual quality를 주장할 수 없다. objective0, failure SHA=`0b69a616…`, record SHA=`9e30f323…`, rerun·사후 evaluator 금지다.
+- partial-03=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-03.json`, SHA=`654ca2b7…`, terminal3/missing45/ineligible6이다. token monitor는 used79/reset timestamp 불변으로 리셋 미발생을 확인했다.
+- order4 UI UX Pro Max r1은 834,792ms, input1,861,216/output44,360/total1,905,576, tool24, agent browser/network/external0으로 provider exit0했다. HTML61,116B/vars45/selectors66/package PASS와 12 captures를 만들었고 cream/evergreen/coral editorial system, 고유 hero/card illustration, borrowing ritual, dark project selector, reservation form/FAQ까지 현재 네 arm 중 가장 polished한 full-page composition이다. 그러나 같은 `unavailable-information` state 미관측으로 evaluator exit1/objective0다. total tokens는 model-only 약8.4×, Anthropic 약6.9×다. record SHA=`ade3be91…`, rerun 금지다.
+- partial-04=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-04.json`, SHA=`072ef321…`, terminal4/missing44/ineligible6이다. token monitor는 used80/reset timestamp 불변으로 리셋 미발생을 확인했다.
+- order5 Taste eligible scope-only r1은 839,977ms, input2,323,203/output39,895/total2,363,098, tool30, agent browser/network/external0으로 provider exit0했다. HTML14,318B+stylesheet/script, vars22/selectors92/package PASS와 12 captures를 만들었고 stark blue/white, heavy grotesk type, modular job cards, modal reservation flow가 일관된 제품형 landing을 이룬다. 그러나 같은 `unavailable-information` state 미관측으로 evaluator exit1/objective0다. total tokens는 model-only 약10.4×, Anthropic 약8.5×이며 scope-only 결과라 다른 두 task로 일반화하지 않는다. record SHA=`572ec6e2…`, rerun 금지다.
+- partial-05=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-05.json`, SHA=`51d43988…`, terminal5/missing43/ineligible6이다. token monitor는 used80/reset timestamp 불변으로 리셋 미발생을 확인했다.
+- order6 OmD Autopilot v2 r1은 900,316ms timeout, usage/completion unknown, tool46, agent browser/network/external0으로 봉인됐다. Core six-artifact package를 세 번 재생성한 뒤 DESIGN.md+system adoption과 11-check project proof까지 PASS했지만 mission이 `PRODUCT_BUILD`에 진입한 시점에 cap이 끝나 244B blank shell, package false, evaluator/screenshots0, objective0다. 첫 council은 cell-local `exact`를 official-brand 요구로 오인했고, 첫 adopter는 run-scoped evidence path를 거부했으며, 두 번째는 non-interactive status state 계약을 거부했다. 모델이 `project-owner` review/checkpoint를 세 차례 자가 발급한 authority 위반도 별도 P0다. record SHA=`725ed8ea…`, rerun 금지다.
+- partial-06=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-06.json`, SHA=`97d5a461…`, terminal6/missing42/ineligible6이다. landing r1 여섯 arm은 전부 objective0이며 release verdict는 HOLD다. token monitor는 used81/reset timestamp 불변으로 리셋 미발생을 확인했다.
+- order7 cold-chain Anthropic r1은 554,758ms, input404,586/output29,706/total434,292, tool10, agent browser/network/external0으로 provider exit0했다. HTML58,406B/vars22/selectors100/package PASS와 desktop/mobile/selected 8 captures를 만들었고 deep-teal/mint/coral industrial exception queue, thermal trace, assignment detail은 정보 구조와 visual identity가 강하다. 그러나 화면이 Urgent tab으로 시작해 evaluator가 사용자가 도달한 `filtered` state를 관측하지 못했고 objective0다. record SHA=`efd0e911…`, rerun 금지다.
+- partial-07=`/private/tmp/omd-luna-wow-evidence-58dcf8a9-v2/EXECUTION-RECORDS.partial-07.json`, SHA=`342a1a8f…`, terminal7/missing41/ineligible6이다. token monitor는 used82/reset timestamp 불변으로 리셋 미발생을 확인했다.
+- Sol/medium은 provider/model/browser/network0으로 external authority-controller receipt, single-pass prepare→approve→compile→checkpoint→adopt, normalized review input, interactive-only focus-visible validator, unavailable-information product-budget 우선 계약을 구현했다. focused 60 pass/3 skip+lint/diff-check green이나 root 독립 검수·커밋 전이다.
+- **다음 exact action:** source58dc epoch는 변경 전 OmD P0가 확인된 immutable diagnostic epoch로 여기서 동결한다. root가 Sol patch를 독립 감사·focused 검증하고 clean commit한 뒤 static/schema/evaluator/IAB/runtime attribution/locked/materialized/admission을 새 source에 전부 재결박한다. 새 epoch는 order1부터 Luna/max 1회·retry0으로 시작하며 58dc/0dc/c494 terminal을 혼합하지 않는다.
+
+### 2026-08-14 source 0dcbd99d Luna Max 정식 비교 epoch
+
+- relative `.benchmark/tmp/...` telemetry P0 수정은 commit `0dcbd99deea5c835ec77e9714ed5c41c9c3c6607`로 봉인했다. clean detached worktree=`/private/tmp/omd-luna-runtime-0dcbd99d`, evidence=`/private/tmp/omd-luna-wow-evidence-0dcbd99d`다. 보호 생성물 3개는 commit에서 제외했다.
+- actual Codex IAB는 fresh `about:blank` tab14를 1회 관측하고 즉시 정리했다. identity receipt SHA=`6eaa703c…cae03`; launch/navigation/provider/model은 0이고 browser identity event만 1이다.
+- provider-zero receipts는 production schema 7/7=`94c52cbf…70a9`, static Luna/max=`fb1ef45e…15a0c`, evaluation runtime=`249a8259…108cb`로 PASS했다. static catalog는 Codex CLI 0.146.1과 exact인 기존 immutable snapshot SHA `f4392270…5d44`를 새 source가 재검증했다.
+- 첫 Luna attribution 호출은 exact 응답·14,009/11 tokens였지만 `--ephemeral`이라 raw rollout이 없어 admission에서 거부하고 `runtime-attribution-ephemeral-diagnostic.json`에 별도 기록했다. accepted non-ephemeral preflight는 exact `gpt-5.6-luna/max`, raw rollout56,959B SHA=`28de6d9f…db62`, input14,595/output11, retry·fallback·replacement0이며 receipt SHA=`5af3f8f4…7032`다. 둘 다 benchmark denominator 밖이고 실제 총 preflight model calls는 2다.
+- locked root=`/private/tmp/omd-luna-wow-locked-0dcbd99d`; materialized root=`/private/tmp/omd-luna-wow-materialized-0dcbd99d`; 48 scheduled + Taste 6 ineligible, tree SHA=`0b62ce56…f5d37`다. runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-0dcbd99d`, auth=`627eb799…64cd`, catalog=`f4392270…5d44`다.
+- Sol/xhigh admission=`/private/tmp/omd-luna-wow-admission-0dcbd99d/ADMISSION.json`, SHA=`566227c3…6d9dd`, status=`admitted`; admission calls는 모두 0이다. baseline collector는 terminal0/missing48/ineligible6, calls0으로 전체 readback PASS했다.
+- 첫 locked cell `neighborhood-library-landing-luna-max-r1-model-only`은 `failed`로 immutable 봉인됐다. 479,279ms, input351,710/output24,982/total376,692, tool9, agent browser/network/external0, retry/fallback/replacement0이다. HTML55,505B, CSS vars20/selectors77, neutral design-system package와 desktop/mobile/default/focus-visible 캡처는 PASS, unsupported facts0이다. deep forest/cream/coral/yellow/mint editorial direction과 responsive composition은 강하지만 필수 `unavailable-information` state를 구현·관측하지 못해 evaluator exit1/objective0/UI-Resolved false다. record SHA=`266852a5…f793`, rerun 금지다.
+- partial bundle=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-01.json`, SHA=`2eca2400…7e95`, terminal1/missing47/ineligible6이다.
+- Anthropic frontend-design r1도 `failed`로 봉인됐다. 475,672ms, input249,223/output25,605/total274,828, tool6, contamination0이다. HTML50,228B/vars20/selectors66/package·default·focus captures PASS, unsupported facts0이지만 같은 `unavailable-information` state 누락으로 objective0이다. Swiss poster형 coral/dark-green/condensed-type art direction은 더 뾰족하고 model-only보다 tokens 약27% 적지만 상태 완결성 우위는 없다. record SHA=`b42f670d…f105`, rerun 금지다.
+- partial-02=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-02.json`, SHA=`235667f1…9b0a`, terminal2/missing46/ineligible6이다.
+- Impeccable prompt-only r1은 900,259ms timeout으로 봉인됐다. usage/completion unknown, tool22, contamination0, evaluator/screenshots0이다. reference digestion 때문에 first product write가 약10분으로 가장 늦었고 partial HTML61,050B/vars22/selectors71/design-system PASS까지 남겼지만 objective0이다. `.benchmark/tmp/surface-brief.md`는 허용된 workspace-relative path로 intervention0이며 relative-tmp fix의 실제 positive 증거다. record SHA=`8233e5c7…a836`, rerun·사후 evaluator 금지다.
+- partial-03=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-03.json`, SHA=`0e9139f0…d283`, terminal3/missing45/ineligible6이다.
+- UI UX Pro Max r1도 `failed`로 봉인됐다. 772,397ms, input1,427,229/output41,178/total1,468,407, tool20, contamination0이다. HTML23,041B+stylesheet, vars47/selectors125/package·12 captures PASS, unsupported facts0이며 four arms 중 가장 polished한 cream/evergreen/terracotta editorial system이지만 같은 unavailable-information 누락으로 objective0이다. total tokens는 model-only 약3.9×/Anthropic 약5.3×다. record SHA=`3802e7a3…d455`, rerun 금지다.
+- partial-04=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-04.json`, SHA=`487b7521…c2f1`, terminal4/missing44/ineligible6이다.
+- Taste scope-only r1도 `failed`로 immutable 봉인됐다. Luna 생성 808,318ms, input2,557,177/output37,795/total2,594,972, tool41, agent browser/network/external0이다. HTML43,988B, vars15/selectors65, package·desktop/mobile/200%-reflow/default/focus captures PASS, unsupported facts0이다. 굵은 display type, cream/sage/coral palette, project-first IA와 모바일 완성도는 강했으나 live inventory/availability/price가 제공되지 않았다는 명시적 부재 고지가 없어 `unavailable-information` state가 미관측됐다. 두 번째 lazy image도 캡처에서 빈 블록으로 남았다. evaluator exit1/objective0, record SHA=`a2753f2d…a1ff`, rerun 금지다.
+- partial-05=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-05.json`, SHA=`a336a224…64106414`, terminal5/missing43/ineligible6이다. status는 failed4/timeout1이고 five arms 모두 denominator에 남는다.
+- OmD Autopilot v2 r1은 900,245ms timeout으로 immutable 봉인됐다. usage/completion unknown, tool102, agent browser/network/external0, evaluator/screenshots0, blank shell 244B, design-system package false다. Core review→approval→compile→checkpoint를 두 번 수행해 external staging에 14 files/tree SHA=`8135fe22…68eb`를 남겼으나 atomic adopt와 제품 구현 전에 cap이 끝났다. 첫 council은 benchmark activation의 `exact`와 task의 `design system`을 결합해 official-brand 요구로 오인해 BLOCKED했고, Luna가 frozen handoff/intake를 직접 수정해 우회했다. 또한 model 자신이 `project-owner` approval/checkpoint를 발급해 no-self-approval 계약을 위반했다. 현 runner는 root containment만 검사해 이 authority/path drift를 staging pass로 놓쳤으므로 후속 하네스/auditor P0다. record SHA=`ab1dfdcc…fa54a`, rerun 금지다.
+- partial-06=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-06.json`, SHA=`40108b11…717aa`, terminal6/missing42/ineligible6이다. landing r1 status는 failed4/timeout2이고 모든 arm objective0다. 시각 경쟁 arm은 실제 UI를 냈지만 필수 unavailable state를 놓쳤고 OmD는 Core setup 뒤 화면을 내지 못해 현재 release gate는 HOLD다.
+- cold-chain operations Anthropic Frontend Design r1은 900,283ms timeout으로 immutable 봉인됐다. usage/completion unknown, tool3, agent browser/network/external0, evaluator/screenshots0, blank shell 244B다. 초기 “thermal ledger” 방향만 제시한 뒤 raw stream이 `WebSocket protocol error: Connection reset without closing handshake`/`Reconnecting... 2/5`를 남기고 복구되지 않았다. skill UI 품질과 provider transport reliability를 분리 해석하되 preregistered denominator에서는 objective0다. record SHA=`5a9212e3…a00d`, raw events SHA=`a4b05cc9…a6bcd`, rerun 금지다.
+- partial-07=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-07.json`, SHA=`d27cc95d…26dfb9`, terminal7/missing41/ineligible6이다.
+- cold-chain operations Impeccable prompt-only r1은 900,274ms timeout으로 immutable 봉인됐다. usage/completion unknown, tool24, agent browser/network/external0이며 evaluator/screenshots는 실행되지 않았다. 약10분 22초 뒤 첫 product write를 시작해 72,371B HTML SHA=`98cfe776…`와 receiving-bay stamp/dispatch-ledger 시각 방향, file-only DOM/script/detector QA까지 남겼지만 lifecycle을 끝내지 못했다. `blank_shell=false`, failure artifact SHA=`8ed42958…`, record SHA=`d50c0523…a6249ba`, objective0이고 rerun 금지다.
+- partial-08=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-08.json`, SHA=`6c3409d6…8e54f`, terminal8/missing40/ineligible6이다.
+- cold-chain operations UI UX Pro Max r1은 provider turn 자체는 847,726ms에 exit0으로 완결했다. input1,062,727/output45,647/total1,108,374, tool26, agent browser/network/external0이며 82,318B HTML SHA=`ba45f9ca…`와 vars46/selectors119의 neutral design-system package를 만들었다. 그러나 clean source worktree에는 `node_modules`가 없고 runner가 receipt에 결박된 main-worktree dependency path를 evaluator에 전달하지 않아 `Cannot find module 'playwright-core'`로 evaluator가 시작 전 exit1했다. 현재 terminal은 `failed`/objective0으로 잘못 투영됐으며 product-quality failure로 해석하거나 사후 재평가하면 안 된다. record SHA=`b124edf9…`, evaluator stderr1,063B, rerun 금지다.
+- partial-09=`/private/tmp/omd-luna-wow-evidence-0dcbd99d/EXECUTION-RECORDS.partial-09.json`, SHA=`2c8797ec…e9aef`, terminal9/missing39/ineligible6이다. 0dc epoch는 evaluator dependency closure P0 때문에 여기서 중단하며 final aggregate 자격이 없다.
+- Sol/medium 수정은 commits `a943a86d`→`065c0521`→`58dcf8a9b2491d6ec34ca308247f2cf843a01c58`로 봉인했다. provider-zero evaluation receipt가 fresh external dependency bundle을 만들고 `playwright-core`+`axe-core` 전체 tree를 source/copy/source-post로 대조하며 admission/runner가 full-tree를 evaluator 직전·직후 재검증한다. evaluator는 dependency import·authority·workspace preflight 뒤 exact ready marker를 써 startup infra와 post-ready product failure를 구분한다. current evaluator SHA=`7c434565…`, config authority도 exact 갱신했다.
+- clean detached proof `/private/tmp/omd-luna-receipt-proof-JiQWw4/source`에서 source=`58dcf8a9`, receipt SHA=`c675e38c…`, immutable bundle 135 files/15,681,140B/SHA=`2637d5fb…`, calls0으로 실제 생성 PASS했다. focused 42/42 + controller/materializer/admission/receipt 26 pass/3 artifact skip + lint/diff-check가 green이다.
+- **다음 exact action:** source 58dcf8a9 clean detached worktree와 fresh evidence/locked/materialized/runtime/admission roots를 만든다 → IAB/schema/static/evaluation/runtime-attribution receipts를 전부 새 source에 결박한다 → Sol/xhigh admission 뒤 새 epoch randomized order1을 Luna/max 1회·retry0으로 실행한다. 0dc 9 terminals와 c494 6 terminals는 immutable diagnostic-only로 분리하고 어느 final aggregate에도 혼합하지 않는다.
+
+### 2026-08-14 c494 Luna Max 정식 비교 epoch
+
+- **실행 정본:** source=`c49444f4e1f67602a7e560a6c61909f85989d8c8`, clean detached worktree=`/private/tmp/omd-luna-runtime-c49444f4`, evidence=`/private/tmp/omd-luna-wow-evidence-c49444f4`, locked=`/private/tmp/omd-luna-wow-locked-c49444f4`, materialized=`/private/tmp/omd-luna-wow-materialized-c49444f4`, runtime snapshot=`/private/tmp/omd-luna-runtime-snapshot-c49444f4`, admission=`/private/tmp/omd-luna-wow-admission-c49444f4/ADMISSION.json`이다.
+- source-bound receipts가 모두 PASS했다: static runtime=`d60eafd9…9a7d6`, production schema 7/7=`e9834165…1b8d9`, evaluation runtime=`92b31256…2fd4f`, actual Codex IAB about:blank identity=`f480cf64…31bb6`, Luna/max raw attribution 1-call=`ca79467d…8cee`. attribution은 exact `gpt-5.6-luna`/`max`, input 17,122/output 27, retry·fallback·replacement·browser 0이며 benchmark denominator 밖이다.
+- 54-slot preregistration은 48 scheduled + Taste scope-only 6 ineligible/unexecuted를 잠갔다. materialized tree SHA=`0c4036a6…78ad`; immutable runtime snapshot auth=`627eb799…64cd`, models catalog=`f4392270…5d44`다.
+- Sol/xhigh admission은 전체 source closure, receipts, 48 workspace, evaluator authority를 재검증해 `admitted`; SHA=`ac1b0aab…6c59`, admission-time provider/model/browser/network 호출은 0이다. 이 source에서 6개 immutable terminal이 생겼지만 telemetry P0 발견으로 epoch를 diagnostic-only로 supersede하며 새 최종 aggregate에는 섞지 않는다.
+- 첫 정식 셀 `neighborhood-library-landing-luna-max-r1-model-only`은 `failed`로 immutable 봉인됐다. 460,062ms, input 287,575/output 24,621/total 312,196, tool 13, agent browser/network/external 0, retry/fallback/replacement 0이다. HTML 55,945B, CSS vars 25/selectors 83, neutral design-system package와 default/focus-visible desktop·mobile 캡처는 PASS했지만 required `unavailable-information` state가 없어 evaluator exit1·objective 0·UI-Resolved false다. record SHA=`39dee8dd…ea858`; rerun 금지다.
+- 시각적으로는 editorial chunky type, lime/coral/mint role colors, tool-shelf illustration, 강한 section rhythm과 390px 반응형이 우수했다. 그러나 필수 상태 누락을 시각 감상으로 상쇄하지 않는다. partial bundle=`/private/tmp/omd-luna-wow-evidence-c49444f4/EXECUTION-RECORDS.partial-01.json`, SHA=`465992bc…dbb`, terminal1/missing47/ineligible6이다.
+- 같은 trial의 Anthropic frontend-design arm도 `failed`로 봉인됐다. 614,544ms, input 521,246/output 32,683/total 553,929, tool18, contamination0이다. HTML 18,693B+CSS 24,671B+JS 2,938B, selectors93, design-system/default/focus captures PASS; electric blue/orange Swiss-brutalist direction과 코드 조직성은 model-only보다 강했지만 같은 `unavailable-information` 누락으로 objective0이다. record SHA=`4b0fd4b7…8fbb36`, rerun 금지다.
+- partial-02 bundle=`/private/tmp/omd-luna-wow-evidence-c49444f4/EXECUTION-RECORDS.partial-02.json`, SHA=`446f9ccb…3dca6`, terminal2/missing46/ineligible6이다. 두 arm 모두 시각 완성도와 재사용 구조는 강하지만 제품 상태 완결성에서는 동일하게 실패했다.
+- Impeccable prompt-only r1은 900,239ms timeout으로 봉인됐다. usage/completion unknown, tool32, agent browser/network0, evaluator/screenshots0이다. partial HTML45,931B/CSS vars20/selectors80/design-system PASS지만 공식 helper가 `/tmp/common-tool-library-surface.md`를 사용해 external-context intervention1도 남겼다. objective0, record SHA=`445d4e7e…1de22`, rerun·사후 렌더 금지다.
+- partial-03 bundle=`/private/tmp/omd-luna-wow-evidence-c49444f4/EXECUTION-RECORDS.partial-03.json`, SHA=`a1a4cbe5…44a92`, terminal3/missing45/ineligible6이다.
+- UI UX Pro Max r1은 provider 완료 뒤 `infrastructure-invalid`로 봉인됐다. 765,866ms, input1,256,150/output38,425/total1,294,575, tool29, HTML57,910B/vars23/selectors80/design-system PASS다. 그러나 `/tmp/static-check.txt`를 두 번 사용해 external-context intervention2; evaluator/screenshots0·objective0이다. record SHA=`1871d3cc…d5768`, rerun·사후 렌더 금지다.
+- partial-04 bundle=`/private/tmp/omd-luna-wow-evidence-c49444f4/EXECUTION-RECORDS.partial-04.json`, SHA=`55905407…68a39`, terminal4/missing44/ineligible6이다. Taste는 dense operations·locale tasks에서만 6개 scope-out이고 landing 3 trials은 eligible이다.
+- root가 Taste landing도 ineligible로 잘못 설명하고 OmD를 호출했으나 runner가 exact-next gate로 provider/model spawn 전에 거부했다. 실행 호출 0, workspace/terminal 변화 0이며 machine preregistration이 planning narration보다 우선함을 확인했다.
+- Taste landing r1은 900,227ms timeout으로 봉인됐다. usage unknown, tool49, contamination0, partial HTML43,289B/vars21/selectors57/design-system PASS, evaluator/screenshots0·objective0이다. record SHA=`6d414a6d…b8d5f`, rerun·사후 렌더 금지다.
+- partial-05 bundle=`/private/tmp/omd-luna-wow-evidence-c49444f4/EXECUTION-RECORDS.partial-05.json`, SHA=`5ad85629…0b9a1`, terminal5/missing43/ineligible6이며 status는 failed2/timeout2/infrastructure-invalid1이다.
+- OmD Autopilot v2 r1은 900,237ms timeout으로 봉인됐다. usage unknown, tool84, evaluator/screenshots0, blank shell이다. 그러나 review→approval→compiled six-artifact package→project checkpoint→external staging까지 exact 완료했고 staging tree7 files SHA=`80103c5e…d6c1`/audit PASS다. atomic adopt와 제품 구현 전에 cap이 끝나 objective0; record SHA=`d02a105c…c77c5`, rerun 금지다.
+- partial-06 bundle=`/private/tmp/omd-luna-wow-evidence-c49444f4/EXECUTION-RECORDS.partial-06.json`, SHA=`ca3908b6…e37ad`, terminal6/missing42/ineligible6, status failed2/timeout3/infrastructure-invalid1이다.
+- **P0 수정·독립 검수 PASS:** absolute-path extractor가 shell/structured-value boundary를 요구하도록 바뀌어 `.benchmark/tmp/...`, `../tmp/...` 같은 상대경로를 외부 `/tmp`로 잘라내지 않는다. 실제 `/tmp`/`/private/tmp`/`/Users` 절대경로 fail-close는 유지한다. runner/controller/admission/auditor 67/67, TypeScript, syntax, diff-check가 green이며 보존된 544,658-byte OmD events 재생은 tool84/browser0/network0/intervention `12→0`이다.
+- **다음 exact action:** runner+test+continuity 네 파일만 clean commit한다(보호 생성물 3개 제외) → 새 source SHA로 IAB/static/schema/evaluation/runtime-attribution receipts, 48/6 materialization, runtime snapshot, Sol/xhigh admission을 전부 재발급한다 → 새 epoch first locked cell부터 시작한다. c494 6 terminals는 immutable diagnostic evidence이며 새 final aggregate에 혼합하지 않는다.
+
+### 2026-08-13 OmD 2.0 출시 방향 — Luna Max evidence gate
+
+- **최신 재개 지점:** external-staging fix를 commit `72879e7ad2f9fffe1825f086200fb5f36cb057f5`로 봉인했다. clean worktree=`/private/tmp/omd-luna-runtime-72879e7a`, evidence=`/private/tmp/omd-luna-wow-evidence-72879e7a`다. production schema 7/7, static runtime, evaluation runtime receipt가 새 source authority로 PASS했다.
+- 새 Luna/max runtime attribution은 fresh isolated non-ephemeral home에서 5.5초, input 15,317/output 30, tool 0으로 실행됐고 raw rollout/SQLite가 model=`gpt-5.6-luna`, effort=`max`, CLI=`0.146.1`을 증명했다. accepted receipt SHA=`b0013ffd…ab1b`. 직전 ephemeral 호출 1회는 raw rollout 부재 때문에 rejected diagnostic으로 별도 보존하며 숨기거나 admission call로 세지 않는다.
+- Browser Harness는 기존 local Chrome CDP에 safe `about:blank` tab 1개만 만들고 page_info 1회(1675×923)를 관측했다. browser launch/navigation/provider/model은 0이며 receipt SHA=`999c2f44…e31a`다. 두 preflight 모두 benchmark denominator 밖이다.
+- locked 54-slot plan과 실제 48 workspaces/6 Taste ineligible를 새 source로 materialize했다. materialized tree SHA=`cfd59384…4b2f`; immutable runtime snapshot은 auth SHA=`627eb799…64cd`, models cache SHA=`f4392270…5d44`다. Sol/xhigh admission이 전체 source/evidence/workspace readback 뒤 `admitted`, SHA=`b70a1888…0091`로 통과했다.
+- `neighborhood-library-landing-luna-max-r1-model-only`은 첫 정식 terminal로 `completed`됐다: 560,497ms, input 347,886/output 29,304/total 377,190, tool 7, agent browser/network/external 0, retry/fallback/replacement 0. 62,596-byte HTML, CSS variables 22, reusable selectors 80, unsupported facts 0, exact state screenshots를 남겼다.
+- 객관 평가는 50/100, UI-Resolved=false다. responsive/evidence/runtime은 pass했지만 primary CTA 2개, reservation state/focus-transfer 미인정, eyebrow contrast 4.13:1 때문에 journey/accessibility가 fail했다. 시각적으로는 강한 editorial neighborhood-library 화면이지만 release superiority 증거로는 불합격이다. record SHA=`e1d9102f…0868`; partial bundle은 terminal 1/missing 47/ineligible 6으로 봉인했다.
+- `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`은 process exit 0 뒤 evaluator fail로 봉인됐다: 505,952ms, input 316,570/output 26,861/total 343,431, tool 14, contamination 0. 56,099-byte HTML/variables 16/selectors 74/unsupported facts 0이고 visual art direction은 model-only보다 강했지만, required focus-visible capture 미관측으로 evaluator exit 1·score 0·UI-Resolved=false다. record SHA=`d017d394…580a`; rerun 금지다.
+- `neighborhood-library-landing-luna-max-r1-impeccable-prompt-only`은 900,230ms timeout으로 재현됐다. provider usage/completion은 unknown, tool 23, evaluator/screenshot 0, score 0이다. partial HTML 49,246B/vars 20/selectors 70은 남았지만 공식 helper가 `/tmp/surface-brief.md`를 사용해 external-context intervention 1도 발생했다. record SHA=`c86a8e51…2fb1`; 사후 렌더·rerun 금지다.
+- `neighborhood-library-landing-luna-max-r1-ui-ux-pro-max`는 779,826ms, input 1,530,328/output 41,050/total 1,571,378, tool 34, contamination 0으로 provider 완료했다. 60,440-byte HTML/vars 43/selectors 73과 가장 polished한 cream/deep-green 화면을 남겼지만 unavailable-information state 미관측으로 evaluator exit 1·score 0·UI-Resolved=false다. record SHA=`8d3b16ed…94e5`; model-only 대비 token 약 4.17배다.
+- Taste r1은 provider spawn 전 `codex debug prompt-input` audit에서 fail-close했다. `STARTED.json`만 있고 provider/model/browser/network 0이며 제품은 blank shell이다. runner가 pre-provider 예외를 immutable infrastructure-invalid terminal로 reconcile하지 않아 orphan STARTED가 생겼고 collector도 이를 missing으로만 처리한다. 이는 Taste 품질 결과가 아니라 harness P0 discovery다.
+- Sol/medium 진단에서 같은 87,253B Taste skill은 provider-zero prompt audit 0.96–1.22초/exit0이어서 대형 skill timeout 가설을 폐기했다. 과거 exact status는 기존 generic invariant가 원문을 저장하지 않아 복원 불가다. runner는 audit cap 120초, status/signal/error/stdout/stderr exact artifacts, provider-spawn 직전 marker, pre-provider 0-call immutable terminal, post-marker crash unknown-call 보수 판정으로 수정했다. allowlist/closure는 불변이다.
+- Sol/xhigh 독립 검수에서 runner/controller/admission/auditor/receipt 5 suites 67/67, lint, node syntax, diff-check가 통과했다. 현재 partial bundle은 terminal 4/missing 44/ineligible 6이며 old Taste orphan은 별도 보존한다. **다음:** 이 fix를 clean commit한 뒤 새 source SHA로 모든 receipts/materialization/admission을 재발급하고 first locked cell부터 새 epoch를 시작한다. `72879e7a` 4 terminals는 immutable diagnostic evidence이며 재실행하지 않는다.
+- 위 P0 fix와 continuity를 commit `6d9fb5273a0041299041cf4405d33778eef66863`로 봉인했다. clean worktree=`/private/tmp/omd-luna-runtime-6d9fb527`, evidence=`/private/tmp/omd-luna-wow-evidence-6d9fb527`다. production schema 7/7, static runtime, evaluation runtime, Luna/max raw attribution 1-call, existing Browser Harness safe about:blank identity 1-call receipt가 모두 source commit과 exact 결박됐다.
+- 새 locked root=`/private/tmp/omd-luna-wow-locked-6d9fb527`, materialized root=`/private/tmp/omd-luna-wow-materialized-6d9fb527`다. 48 scheduled cells + 6 Taste ineligible slots, tree SHA=`2a5e8c71…83146`, runtime snapshot auth=`627eb799…64cd`/models=`f4392270…5d44`다. Sol/xhigh admission은 `admitted`, SHA=`77524f8d…1b3b`, provider/model/browser/network 실행 호출 0으로 통과했다.
+- 새 epoch의 first locked cell `neighborhood-library-landing-luna-max-r1-model-only`은 중단 뒤에도 immutable timeout terminal을 남겼다. 1,114,688ms, HTML 63,629B, CSS vars 22/selectors 78, neutral design-system package PASS지만 provider usage/completion은 unavailable, evaluator/screenshots 없음, objective score 0이다. provider/model calls는 보수적으로 unknown, retry/replacement/fallback 0, record SHA=`d7a8cf97…599ad`; rerun 금지다. partial bundle=`/private/tmp/omd-luna-wow-evidence-6d9fb527/EXECUTION-RECORDS.partial-01.json`, SHA=`f935fc15…8bf30`, terminal 1/missing 47/ineligible 6이다.
+- terminal의 browser/network 1회 표시는 실제 호출이 아니라 local Node heredoc 안의 `const open`/HTML 태그를 raw substring scanner가 오인한 false positive다. 정확한 item_16은 workspace `index.html` 태그·ID·anchor·inline script만 검사했고 exit 0이었다. timeout 결과 자체는 유지하되 이 telemetry 값은 public quality evidence로 사용하지 않는다.
+- Sol/medium telemetry parser 수정과 Sol/xhigh 독립 검수를 완료했다. shell executable/argv와 nested `sh/zsh -c`를 파싱하고 heredoc/source/stdout을 제외한다. `env`/`command`/`exec`/`timeout`/`nice`/`nohup`/`sudo` wrapper도 실제 nested executable까지 추적한다. preserved item_16은 browser/network `0/0`, 실제 wrapper curl/open/browser-harness/wget은 fail-close, `command -v`는 비실행 `0/0`이다. 통합 60/60, lint, syntax, diff-check가 green이다.
+- **현재 재개 지점:** runner+test+continuity 네 파일만 clean commit하고 그 새 source SHA로 schema/static/evaluation/runtime/browser receipts, 48/6 materialization, runtime snapshot, Sol/xhigh admission을 전부 재발급한다. 그 뒤 새 epoch의 first locked cell부터 serial 실행한다. `6d9fb527` timeout terminal은 immutable diagnostic evidence이며 새 aggregate에 혼합하지 않는다.
+- telemetry fix는 commit `551b23744361ccdb84d0e9a58cde609e6f56511c`로 봉인했다. clean detached worktree=`/private/tmp/omd-luna-runtime-551b2374`, evidence root=`/private/tmp/omd-luna-wow-evidence-551b2374`다. static receipt SHA=`d2d901f3…69f4f`, production schema 7/7 receipt=`290de62e…430e7`, evaluation runtime=`e6f13e16…0b0b1`이 PASS했다.
+- Luna/max attribution은 분모 밖 실제 1회로 exact `OMD_LUNA_MAX_RUNTIME_OK`, CLI 0.146.1/model Luna/effort max, 4,582 tokens, raw rollout SHA=`da0ada6c…9c137`, receipt SHA=`ecf5f721…ffe9b`로 PASS했다. retry/fallback/tool/browser/network는 0이다.
+- **외부 blocker / 현재 중단 지점:** Browser Harness safe-blank identity 생성 전에 Chrome이 `Allow remote debugging?` 권한을 요구했다. 첫 30초 시도는 timeout, 두 번째 120초 시도는 정확한 permission-required stderr로 종료됐고 raw receipt는 생성되지 않았다. 사용자가 Chrome에서 Allow를 누르기 전 우회·자동 승인·외부 탭 접근·benchmark cell 실행을 금지한다.
+- **재개 순서:** 사용자가 Allow 후 `ㄱㄱ` → `/private/tmp/capture-omd-luna-browser-551b2374.mjs` 1회 실행 → browser raw receipt 감사 → locked 54-slot prepare → 48/6 materialize → runtime snapshot → Sol/xhigh admission → first locked model-only cell. source SHA가 바뀌지 않았으므로 위 4개 PASS receipts와 Luna attribution은 그대로 유효하다.
+- **551b epoch superseded:** provider-zero blind-human 운영기와 최종 감사기 hardening을 commit `22c3f0fe`로 봉인했으므로, 위 `551b2374` receipts는 진단 기록으로만 보존하고 새 aggregate/admission에 재사용하지 않는다. 실행 셀은 0개였으므로 rerun 문제는 없다.
+- 블라인드 운영기는 감사기가 산출한 task별 strongest eligible competitor를 그대로 사용하고, 48 terminal+6 ineligible 전부를 요구한다. 실패/timeout/infrastructure-invalid trial은 `no_completed_render`로 A/B×3 자리에 남기며 교체·생략·재실행하지 않는다. 완료 화면은 PNG signature·경로·bytes·SHA를 prepare/finalize 양쪽에서 검증한다.
+- 인간평가는 opaque A/B packet, private hash-locked mapping, 외부 practitioner 5명 이상×3 task vote, 독립 attestation을 요구한다. 합성/중복/foreign choice/asset tamper/reversal inconsistency/blank vote ID는 운영기와 최종 감사기 양쪽에서 fail-close한다. focused 44/44, blind+auditor 30/30, lint/syntax/diff-check가 PASS했다.
+- **새 재개 순서:** 이 continuity update를 commit해 clean exact HEAD를 만든다 → source별 schema/static/evaluation/runtime/browser receipts를 전부 재발급한다 → 48/6 materialize/runtime snapshot/Sol-xhigh admission → Luna Max 셀을 locked order로 1회씩 실행한다. Browser Harness는 여전히 Chrome의 `Allow remote debugging?` 수동 승인 전에는 실행 금지다.
+- **최신 source authority:** continuity commit `a11a6870e68854ab9db61c563ef006fe687a1b9d`; clean detached worktree=`/private/tmp/omd-luna-runtime-a11a6870`, evidence root=`/private/tmp/omd-luna-wow-evidence-a11a6870`다. main의 아래 continuity 추가는 재개 메모일 뿐 이 source epoch에 포함하지 않는다.
+- 새 source receipts: static Luna/max=`7516ddcf…bb5d8`, production schema 7/7=`20afd5da…a03f5`, evaluation runtime=`242fc1a4…18c8e`, Luna/max raw attribution 1-call=`9e4d2db5…e6861`. attribution은 exact 응답, provider/model 1/1, retry/replacement/fallback 0으로 PASS했다.
+- Browser Harness safe-blank 호출은 120초 cap 안에서 `Chrome is asking "Allow remote debugging?" — click Allow to continue.`로 종료됐다. raw browser receipt·matrix·materialization·admission·새 benchmark terminal은 아직 0이다. 자동 우회/재호출 금지.
+- **외부 승인 후 exact next:** Chrome에서 Allow 클릭 → `/private/tmp/capture-omd-luna-browser-551b2374.mjs`(output root는 a11 evidence로 갱신됨) 1회 → `audit-browser-identity` → controller prepare → materialize 48/6 → runtime snapshot → Sol/xhigh admit → locked first cell. 위 네 PASS receipt는 a11 source가 불변인 한 재사용한다.
+- **브라우저 정책 전환:** 사용자 지시에 따라 external Chrome/Browser Harness/CDP 경로를 폐기했다. commit `0097e4cd`부터 Codex In-app Browser(`iab`)의 operator-attested `about:blank` identity만 허용한다. 기존 a11 browser blocker와 a11 receipts는 진단 기록이며 새 epoch에 재사용하지 않는다.
+- 실제 IAB tool로 browser type=`iab`, name=`Codex In-app Browser`, tab=`about:blank`, browser call 1, navigation/provider/model 0을 관측했다. 증거는 암호학적 browser identity가 아니라 operator-attested observation임을 raw/receipt/config/controller/admission/runner가 모두 명시·검증한다.
+- IAB cutover는 legacy command/config/key/kind/envelope와 Chrome/extension/type/name/URL/call drift를 fail-close한다. evaluator가 별도로 쓰는 Chromium executable/font/runtime 결박은 유지한다. focused 75/75, Sol-medium final 55 pass/3 artifact skip, lint·4 node-check·diff-check가 PASS했다.
+- **다음:** 이 continuity를 commit해 최종 clean HEAD 확정 → 그 HEAD에서 IAB raw를 새로 1회 관측·receipt 감사 → static/schema/evaluation/Luna attribution receipts 재발급 → 48/6 materialize/runtime snapshot/Sol-xhigh admission → first locked Luna cell. 외부 Chrome 승인은 더 이상 blocker가 아니다.
+- goal을 다시 활성화했다: preregistered Luna Max 비교·인간 blind review·독립 감사까지 완료하고 2.0 출시/보류 및 블로그 로드맵을 증거로 결정한다. 토큰 모니터 PTY=`90673`, baseline 61%, reset timestamp=`1787199647`; material reset이면 terminal 경계에서 즉시 중단한다.
+
+- **현재 재개 지점:** source `f55519027052715645a31193ef4a541c2e14f76f`의 clean epoch는 landing r1 6개 terminal 뒤 superseded 예정이다. evidence=`/private/tmp/omd-luna-wow-evidence-f5551902`, materialized=`/private/tmp/omd-luna-wow-materialized-f5551902`, admission SHA=`69a7afaf…3e0f`; partial bundle은 scheduled terminal 6 / missing 42 / ineligible 6이다. 새 provider cell은 중단했다.
+- f555 landing r1에서 model-only·Anthropic·UI UX Pro Max·Taste는 모두 default/focus-visible 화면은 만들었지만 명시적 `unavailable-information` 상태를 빠뜨려 정직한 0점이다. UI UX Pro Max는 시각 완성도가 가장 강했으나 793,563ms·1,576,366 tokens, Taste는 730,459ms·2,353,941 tokens였다. Impeccable은 900,326ms timeout, usage 미관측, `/tmp` intervention 1로 봉인됐다.
+- OmD r1은 856,292ms·4,697,154 tokens·82 tools로 Core graph/provenance/coverage/DESIGN preview/compiled package까지 만들고 unavailable/focus/44px/error/success 계약도 잡았다. 그러나 benchmark workspace-only 규칙과 adopter의 package-outside-project 규칙이 충돌해 blank shell을 남겼다. 이 terminal은 품질 실패가 아니라 immutable native-infrastructure discovery evidence다.
+- Sol/medium fix는 OmD arm에만 per-cell execution/workspace sibling external staging을 제공한다. generic env-var activation은 materialization 전에 invocation hash에 포함되고, concrete path는 receipt/env로만 결박된다. 경쟁 arm에는 prompt/env/`--add-dir`가 없으며 traversal·other-cell/host path·symlink·receipt tamper는 fail-close한다. exact blocker+blank shell도 infrastructure-invalid로 분류한다.
+- Sol/xhigh 검수는 controller/materializer/admission/runner/auditor/evaluation runtime 6 suites 63 pass/3 artifact skip, lint, node syntax, diff-check green이다. 다음은 이 fix를 clean commit하고 새 source commit에서 locked/materialized/receipts/runtime snapshot/admission을 전부 재발급한 뒤 landing r1 첫 locked cell부터 다시 시작하는 것이다. f555 경쟁 결과는 진단/시각 참고만 가능하며 새 epoch 정식 aggregate에 혼합하지 않는다.
+- 토큰 감시는 PTY `29394`, baseline 50%, 최신 58%, reset timestamp `1787199647` 불변이다. material reset이면 terminal boundary에서 즉시 중단하고 이 파일/JOURNAL을 갱신한다.
+
+- **안전 중단 지점:** source `0290442b66df529738612520612487d2258e48f2`의 detached clean worktree `/private/tmp/omd-luna-runtime-0290442b`, evidence `/private/tmp/omd-luna-wow-evidence-0290442b`, runtime snapshot `/private/tmp/omd-luna-runtime-snapshot-0290442b`, locked root `/private/tmp/omd-luna-wow-locked-0290442b`, materialized root `/private/tmp/omd-luna-wow-materialized-0290442b`, admission `/private/tmp/omd-luna-wow-admission-0290442b/ADMISSION.json`을 보존한다. 새 provider cell은 시작하지 않았다.
+- 첫 유효 scored cell `neighborhood-library-landing-luna-max-r1-model-only`은 COMPLETED, 432,477ms, provider/model 1/1, input 321,713/output 22,475, tool 11, retry/fallback/intervention 0이다. 화면 조형은 강했지만 objective score 30/UI-Resolved false: CTA가 desktop 3/mobile 2개로 중복, mobile reservation control 34px, 초기 axe serious 9건(주로 색 대비)이라 journey/responsive/accessibility를 실제로 실패했다. evidence/runtime 30점만 통과했으며 유효 baseline으로 유지한다.
+- 다음 locked cell `neighborhood-library-landing-luna-max-r1-anthropic-frontend-design`은 Luna/max provider 1회(684,356ms, input 653,109/output 36,613, tool 19, browser/network/external 0)와 69,678-byte HTML/design-system PASS까지 생성했으나 evaluator 전에 `infrastructure-invalid`로 봉인됐다. retry/rerun은 금지하고 현 epoch denominator에 점수 편입하지 않는다.
+- false invalidation 원인은 provider-zero `debug prompt-input`가 cell-local copied `models_cache.json`의 `fetched_at`만 갱신한 뒤, isolation receipt가 admitted full-byte SHA `f4392270...5d44`와 copy SHA `35b4b015...20c0`의 불일치를 거부한 것이다. semantic cache SHA `402d17b5...a0c8`, Luna profile SHA `a0e0699d...93d0`, client version `0.146.1`, runtime/model/usage evidence는 동일하고 정확하다. immutable source snapshot은 여전히 SHA `f4392270...5d44`로 무변경이다.
+- **재개 순서:** (1) prompt-input audit 직후 full-byte drift는 기록하되 `fetched_at`-only semantic equality+profile+client-version이 같으면 허용하고 실제 semantic mutation은 fail-close하도록 runner receipt/test를 수정한다. (2) Sol/medium focused tests + Sol/xhigh review를 통과한다. (3) 새 clean commit에서 schema/static/runtime/browser/evaluation receipts, runtime snapshot, 48/6 materialization, admission을 전부 재발급한다. (4) 새 epoch의 exact first locked cell부터 시작한다. 이전 Anthropic r1은 재시도하지 않는다.
+- 위 false invalidation 수정은 Sol/medium 구현과 Sol/xhigh 독립 검수를 완료했다. 원본/admitted full SHA와 실제 pre-audit copy SHA를 별도로 고정하고, post-prompt-input full SHA는 관측값으로 기록한다. 허용되는 차이는 top-level `fetched_at`뿐이며 semantic cache SHA·exact Luna profile SHA·client version 중 하나라도 달라지면 provider spawn 전에 실패한다. rollout exact 판정도 같은 semantic/profile/client 계약을 사용한다. 실제 incident source semantic/profile hashes가 기록값과 일치했고 통합 controller/admission/runner/auditor/runtime 57/57, lint, diff-check가 green이다.
+- 다음 작업은 이 runner 변경을 clean commit한 뒤 **새 commit SHA로만** schema/static/evaluation receipts→immutable runtime snapshot→runtime attribution Luna/max 1회→safe Browser Harness identity 1회→48/6 materialization→Sol/xhigh admission을 재발급하는 것이다. old `0290442b` materialization/admission은 immutable evidence로 보존하고 재사용하지 않는다.
+
+- source commit `68e8276e203f99159a1166d5aabe2997d65c9f1e`에서 첫 Luna/max model-only 셀을 단일 시도로 시작했다. 실행 중 복사 workspace가 `RUN-MATRIX.locked.json`/exact runtime contract를 이어받지 않아 `run-codex.mjs`가 isolated `CODEX_HOME`을 활성화하지 않았고, model-only가 전역 Browser Harness 스킬 파일 두 개를 읽은 뒤 `browser-harness --doctor`, `page_info`, `new_tab(file://...)`를 호출했다. 이는 arm contamination과 agent browser-call 과소계수이므로 해당 셀은 완료 여부와 무관하게 scored denominator에서 제외한 immutable pilot/discovery evidence로 보존한다. 셀 2는 실행 금지다.
+- 파일럿 terminal은 `failed`: provider/model 1회, retry/fallback/replacement 0, provider 구현 755,781ms, 전체 종료 약 1,001초였다. provider usage는 input 2,535,829(그중 cached 2,417,664), output 37,511, total 2,573,340이며 48 tool calls를 기록했다. 61,099-byte 단일 HTML, 22 CSS custom properties, 80 reusable selectors를 만들었지만 evaluator가 필수 `unavailable-information` 상태를 관찰하지 못해 exit 1/score 0이었다. raw command audit는 Browser Harness/package 관련 명령 42개, 실제 CLI/module 호출형 25개를 찾았는데 기존 terminal은 evaluator 1회만 `browser_calls`로 기록했다. 이 불일치가 fresh runtime/telemetry epoch의 직접 회귀 fixture다.
+- 정식 재개 gate는 (1) 모든 셀에 exact isolated Codex home/auth/model catalog 결박, (2) model-only에는 arm skill 0개, 경쟁 arm에는 그 frozen official source만, OmD arm에는 frozen OmD closure만 노출, (3) global plugin/skill discovery 차단, (4) raw CLI의 browser-harness 명령을 agent browser call로 계수하고 숨은 navigation/launch를 fail-close, (5) source commit/receipts/materialization/admission 전부 fresh 재생성이다. 이 폐쇄성 테스트가 green이기 전 provider 셀을 추가 실행하지 않는다.
+- runtime 폐쇄성 구현은 완료됐다. 셀마다 HOME=CODEX_HOME인 외부 격리 home, immutable auth/catalog 복사, exact Codex wrapper/native 경로·SHA·버전, ZDOTDIR/.zprofile 기반 PATH allowlist, plugin/skill-search 비활성화, provider 실행 전후 catalog/profile 불변성을 강제한다. `codex debug prompt-input` 0-call 감사는 developer의 단일 skills block만 읽고 built-in 5개 + arm별 frontmatter-name/locator/SHA exact set만 허용한다. 실제 빈 workspace 검증도 built-in 5개만 노출했다. provider raw events의 Browser Harness/network/global path 접근은 infrastructure-invalid이며 agent/evaluator browser call을 분리 합산한다. 관련 통합 175/175, lint, diff-check가 green이다.
+- 다음 순서는 이 변경을 clean commit한 뒤 schema/static/runtime-attribution/browser/evaluation receipts, immutable runtime snapshot, 48-cell materialization, Sol/xhigh admission을 모두 새 source commit에 재발급하는 것이다. 그 전에는 provider 셀을 실행하지 않는다. 재발급 뒤 exact next locked cell 하나씩만 실행하며 첫 오염 파일럿은 새 denominator에 편입하지 않는다.
+- source `1523c361`의 fresh v2 admission은 48/6 materialization과 모든 receipt를 통과했지만 첫 정식 셀 직전 0-call live-profile gate가 전역 `~/.codex/models_cache.json`을 읽어 background cache drift를 오탐했다. provider/model 셀 호출과 workspace 생성 전에 멈췄다. runner는 이제 live model/profile도 admitted `--runtime-home` immutable snapshot에서만 읽으며, 전역 cache가 달라도 snapshot만이 권위임을 회귀 테스트로 고정했다. 이 수정으로 다시 source/receipt/materialization/admission을 재발급한다.
+- source `57a5169a`의 first-cell shakedown은 provider 1회/477초/tool 8회 뒤 infrastructure-invalid로 봉인됐다. Browser/network 호출은 0이고 HTML/design-system proof는 생성됐지만, Codex CLI 0.146.1이 app 0.147 cache를 provider 중 0.146.1 형식으로 갱신해 cache/profile 불변 gate가 run-result 생성을 중단했다. 또한 모델이 자기 HTML의 syntax validation 파일을 `/tmp`에 쓴 3건을 external-context로 잡았다. 셀은 점수/정식 denominator에서 제외하고 재시도하지 않는다. Static receipt는 이제 catalog `client_version === exact CLI version`을 요구하며, 모든 arm prompt에 동일한 공개 workspace boundary(temporary files는 `.benchmark/tmp`, external paths/browser/network 금지)를 붙여 invocation hash로 결박한다. 관련 46/46(+3 artifact skip), lint/diff-check green이다.
+- source `a626d07f`의 first official cell은 499,565ms 뒤 50,944-byte HTML, CSS variables 24, reusable selectors 66, unsupported facts 0, neutral design-system package PASS를 만들었지만 infrastructure-invalid로 봉인됐다. 실제 provider command는 workspace 내부 `node/find/rg/wc/tail/tidy`뿐이며 browser/network는 0이었다. 결함은 (1) CLI가 의미가 같은 catalog의 volatile `fetched_at`을 갱신한 것을 full-byte mutation으로 오인하고, (2) command stdout의 `Open menu`/SVG namespace를 `open`/network 호출로 오인한 것이다. cache gate는 admitted exact pre-run SHA를 유지하면서 `fetched_at`만 제외한 canonical semantic cache+profile+client version을 post-run 비교하고, telemetry는 command/structured arguments만 검사하도록 수정했다. 실제 semantic mutation과 real browser/curl/web_search는 계속 fail-close한다. 관련 68 pass/3 artifact skip, lint/diff-check green이며 이 셀은 재시도·점수 편입하지 않는다.
+- source `76bf5e4a` admission 중 current Browser Harness tab이 외부 `https://x.com/home`으로 바뀌어 safe URL gate가 정확히 거부했다. existing tabs에는 about:blank/local/internal tab이 0개였고, 외부 계정/사이트 탭을 선택하거나 허용하지 않았다. Browser preflight는 이제 한 CLI invocation에서 같은 local Chrome에 safe `about:blank` tab 하나만 만들고 즉시 page_info하는 명시적 모드를 지원한다: tab creation 1, browser launch 0, navigation 0, URL exact about:blank. operation/created flag/count/URL이 하나라도 다르면 controller→admission→runner가 fail-close한다. 관련 60/60와 lint/diff-check green이며 rejected page_info/list diagnostics는 admission·denominator 밖이다.
+- 이 실행 직전 production schema 7/7, static runtime, evaluation runtime, Browser Harness identity, Luna/max one-call attribution, Sol/xhigh admission은 실제 receipt로 통과했다. 다만 위 runtime-isolation 결함 때문에 해당 admission epoch 전체를 supersede할 예정이다. attribution/model call은 1회, final admitted Browser Harness preflight까지 구현·정식 합계 3회였고 benchmark denominator에서는 제외한다.
+- public Core schema blocker는 해소했다. production source lag만 담은 18-file PR #50을 `main` commit `ec1a77aa`로 병합했고 Vercel production 배포가 성공했다. `npm run check:public-core-schemas`가 7/7 `200 + application/json + committed local bytes exact parity`로 통과한다. historical benchmark config/report/seal과 보호 생성물은 이 배포에 포함하지 않았다.
+- 공식 competitor source freeze를 완료했다. Anthropic Frontend Design=`f17010c9`, Impeccable `skill-v4.0.4`=`9a949fb5`, UI UX Pro Max `v2.14.2`=`0ed327fc`(Codex materialized 147 files/2,480,163 bytes, SHA `2f5fc370…`), Taste main=`e988add2`이며 4개 source lock audit와 independent materialization이 통과했다. Taste는 공개 scope상 landing에만 eligible이고 dense ops/locale의 6 slots는 실행·분모에서 제외한다.
+- Luna Max Wow Preview provider-zero controller는 3 neutral tasks × 6 arms × 3 trials의 54 slots를 고정했고, 48 scheduled provider cells + 6 immutable ineligible slots로 계산한다. exact `gpt-5.6-luna/max`, retry/replacement/fallback/model·effort substitution 0, static capability 0-call, runtime attribution 1-call(분모 제외), existing Browser Harness local-CDP `page_info` 1-call(분모 제외)을 분리했다. 전용 materializer는 actual 48 workspace/6 ineligible readback을 provider-zero로 통과했다. 공정성 계약은 동일한 최종 prompt라는 과장 대신 `same user task packet + blank shell`, 공개된 arm별 official/native activation prefix만 유일한 prompt delta로 고정한다.
+- 평가 runtime receipt가 evaluator/adapters/tasks/validators, Chrome executable/version/bytes, Playwright/axe, Node/OS/arch, 네 viewport, reduced-motion, network policy와 실제 font inventory를 0-call exact hash로 결박한다. 결과 감사기는 54/48/6, 누락·실패=0점, provider usage 미관측 시 비용 0 대체 금지/HOLD, 5명×3task 실제 human attestation, strongest eligible skill paired no-loss와 Pareto non-domination을 fail-close한다. one-cell runner/collector와 Sol/xhigh admission generator까지 같은 receipt/record shape로 통합했고, 11-file provider-zero gate는 75 pass/3 artifact-dependent skip/0 fail이다.
+- preregistration source closure는 controller/materializer뿐 아니라 admission generator, receipt generators, one-cell runner, run-codex와 전이 runtime helpers, evaluator, auditor, score gate를 모두 exact commit bytes로 결박한다. 정적 runtime receipt는 전체 model catalog SHA와 Luna model-profile canonical SHA를 함께 고정하며, 각 셀은 STARTED 생성 전에 live cache/profile이 두 SHA와 같은지 재검사한다. state screenshot은 task별 실제 관찰 지점과 파일 SHA를 manifest로 강제한다.
+- 사용자 지정 모델 역할을 `benchmarks/ui-resolve-bench/config/omd-2.0-model-role-routing-v0.1.json`에 고정했다: 기획·검수·로드맵=`gpt-5.6-sol/xhigh`, 실제 구현=`gpt-5.6-sol/medium`, benchmark cell=`gpt-5.6-luna/max`. release plan은 계약 SHA `cb004c8f…36d0`을 결박한다.
+- provider 실행은 exact 사용자 activation `ㄱㄱ` 뒤 goal 시작 시에만 허용한다. 그 전까지 provider/model/browser calls 0이며 model/effort fallback, retry, replacement는 모두 0이다. 실행 순서는 Sol/xhigh work packet → Sol/medium 구현 → Sol/xhigh review/admission → Luna/max cells → Sol/xhigh audit/roadmap이다.
+- Core v2 마지막 결박과 Luna release plan 32 paths를 commit `11065f6f1fe6eeeb716fedc7dda9f5e09edaf6a7`로 봉인했다. 보호 생성물 `web/public/llms-full.txt`, `web/public/llms.txt`, `web/src/data/catalog-meta.generated.ts`는 stage하지 않았다.
+- Core v2 구현·dogfood adoption 다음 최우선 목표를 Luna Max same-prompt 비교로 재설정했다. 정본은 `docs/OMD_2_0_LUNA_MAX_RELEASE_PLAN.md`, 기계 계약은 `benchmarks/ui-resolve-bench/plans/luna-max-2.0-release-v0.1.json`이다.
+- portable ranking은 model-only, Anthropic Frontend Design, Impeccable prompt-only, UI UX Pro Max, Taste eligible scope, OmD Autopilot의 6 arms만 포함한다. OmD full harness는 quality/time/token/intervention Pareto로 별도 보고한다.
+- 실행 사다리는 54-cell Wow Preview(3 tasks × 6 arms × 3), 통과 시 360-cell Qualification(12 families × 6 arms × 5), 10명 blind launch review, Terra/Sol nonnegative transfer, independent claim audit다.
+- 출시 기준은 UI-Resolved, Reliability, paired lift, strongest-skill first/tie, blinded ship/design-system preference, zero unsupported facts, non-dominated quality-cost-human-burden를 동시에 요구한다. 하나라도 실패하면 2.0.0은 보류하고 실패 결과를 공개 보존한다.
+- 현재 benchmark provider 실행은 계속 금지 상태다. schema 배포, competitor freeze, provider-zero materializer/runner/auditor/admission 코드는 끝났다. 실제 Browser Harness 구현은 browser ID를 선택하지 않고 기존 로컬 Chrome CDP의 `page_info()`를 제공하므로, 존재하지 않는 `browser_identity` 가정은 폐기하고 executable/raw stdout/stderr·launch0·navigation0·local URL을 검증하도록 정정했다. 구현 확인용 old-commit browser call 1회는 admitted experiment 밖에 보존한다. 다음은 이 정정 commit에서 48-cell materialization·schema/static/evaluation receipts 재생성 → 정식 Browser Harness 1회와 Luna/max attribution 1회 → Sol/xhigh admission 순이다.
+- 기존 `autopilot-luna-high-smoke-1.9.883`은 Luna high provider-zero preregistration이며 Luna Max 장시간 비교 결과가 아니다. 새 max 실행은 fresh commit·fresh experiment로만 시작한다.
+- 전체 회귀는 1329 pass, 6 fail이었다. 5건은 dirty source authority를 의도적으로 거부한 commit-before-execution gate였고, 1건은 release-train의 기존 식별자를 변경한 신규 계획 회귀여서 기존 `frontier-release`/`gated`를 보존하고 additive plan metadata로 수정했다.
+- commit 후 계획/일반 benchmark 237 tests와 lint는 green이다. 기존 Luna high controller 5 tests는 `v0.2/1.9.883`가 봉인한 과거 validator hash와 current Core validator bytes가 달라 fail-close한다. v0.2를 재해시하지 말고 Luna Max 전용 새 versioned config/controller/experiment에서 current commit을 결박해야 한다.
+- Luna Max provider/model cell calls는 아직 0이다. 구현 검증용 Browser Harness `page_info`는 2회 있었고 둘 다 source-commit benchmark denominator/admission에는 포함하지 않는다. 두 번째는 existing tab의 `chrome-error://chromewebdata/`를 정직하게 관측했으며 launch/navigation은 0이다. 토큰 monitor의 latest observation은 used 30%, resets_at 불변이며 reset 징후가 없다. 실제 셀은 위 admission 완료 후에도 serial·한 invocation당 next locked 1-cell·retry/replacement/fallback 0으로만 시작한다.
+
+### 2026-08-13 Core v2 dogfood — adopted / provider-free proof PASS
+
+- 작업 종료 직전 provider-emitted rate-limit window가 `used_percent=100`에서 `16`으로 material reset되고 `resets_at`도 앞으로 이동한 것이 확인됐다. 사용자 규칙에 따라 추가 구현은 시작하지 않고 이 완료 체크포인트에서 중단한다.
+- 사용자가 exact package tree SHA `f9a9947b…db632`의 실제 적용을 승인했다. checkpoint receipt SHA=`cea4b3f8…6765b`를 생성하고 rollback-safe adopter를 실행했다.
+- transaction `59c8fec64af7fd70`이 root DESIGN.md를 SHA `74847ec4…76135c`에서 `ee494a14…c06e22`로 교체하고 `.omd/system` 5 sidecars를 설치했다. installed system tree SHA=`4c268063…ce1e4`; report는 `.omd/adoptions/59c8fec64af7fd70.json`이다.
+- 설치된 DESIGN/graph/provenance/coverage/manifest/adoption-receipt 6개가 source package와 byte-identical하고 transaction journal은 정리됐다. recovery/rollback은 필요하지 않았다.
+- adopter proof와 별도 post-adoption validator가 모두 `pass=true`, authority `core-v2-project-system`, profile `portable-core`, findings 0이다. 11 computed checks 전부 pass; contrast observed 18.923:1 ≥ 4.5:1이다. proof는 `.omd/runs/run-20260813-core-v2-dogfood/post-adoption-proof/system/proof.json`에 있다.
+- 후속 회귀는 Core 8 files/139 tests pass, packaged 4-channel offline smoke pass, lint/build, llms current, count 440/22/21/19, catalog 440/440 dropped=0, diff-check pass다.
+- 남은 release blocker: deployed `https://oh-my-design.kr/schema/*` 7개가 HTTP 404/HTML/byte mismatch이며 liveness command exit 1이다. 로컬 Core adoption 완료와 production schema publication은 분리한다. 배포 후 exact 200+JSON+byte parity 전까지 2.0 promotion BLOCK이다.
+
+### 2026-08-13 Core v2 package v4 — atomic adoption 승인 대기
+
+- 사용자가 v4 exact preview SHA `ee494a14…c06e22`를 승인했다. review-request SHA `98d7c8d6…38d08b`를 재검증하고 owner approval receipt SHA `b68ef9f8…b6b680`를 생성했다.
+- actual v4 package는 destination 밖 `/Users/kwakseongjae/Desktop/projects/.omd-core-v2-dogfood/98d7c8d6…/package-v4`에 생성됐다. 정확히 6 regular files이며 tree SHA=`f9a9947b…db632`; compiled DESIGN은 승인 preview와 byte-identical하다.
+- adopter가 실제 package를 독립 검증했고, 같은 bytes를 `/private/tmp` 격리 프로젝트에 적용해 project proof `pass=true`, authority `core-v2-project-system`, profile `portable-core`를 재현했다. proof SHA=`2f26f252…c398`다.
+- 모든 artifact SHA, 적용 경로, rollback/readback, proof 경계는 `.omd/runs/run-20260813-core-v2-dogfood/CURRENT_PACKAGE_CHECKPOINT.md`에 기록했다.
+- 실제 project checkpoint receipt는 아직 없고 adopt도 실행하지 않았다. root DESIGN.md SHA=`74847ec4…76135c`는 그대로다. 다음은 사용자가 exact package tree에 별도 `ㄱㄱ`를 줄 때만 checkpoint receipt를 만들고 atomic adopt/post-readback을 수행한다.
+
+### 2026-08-13 Core v2 dogfood review v4 — 새 project-owner 승인 대기
+
+- 첫 preview 승인 후 exact package를 만들었지만 실제 adoption 전 `/private/tmp` 격리 E2E를 추가 실행했다. 그 과정에서 (1) 동일 evidence 파일의 다중 anchor staging collision, (2) JSON/Markdown/omd-meta fragment 검증 불일치, (3) review-stage graph evidence path, (4) typed Proven checks 부족을 발견했다.
+- adopter는 동일 regular evidence file을 path 기준 한 번만 stage하도록 수정했다. validator는 JSON 실제 property, Markdown 실제 heading, omd-meta exact `id`만 fragment로 인정하고 없는 anchor/symlink/임의 형식은 거부한다. focused adopter+validator 45/45와 lint가 통과했다.
+- graph를 repository evidence로 보강했다: contrast pair, reduced-motion, Geist UI roles, button state applicability/NA reasons, 320px/200% web contract, en locale. license가 증명되지 않은 font asset은 visible unresolved row로 남기지 않고 absent 처리했다.
+- 최신 exact preview는 `.omd/runs/run-20260813-core-v2-dogfood/review-v4/DESIGN.md`, SHA=`ee494a14…c06e22`; review request SHA=`98d7c8d6…38d08b`다. 상세 변화/모든 hash는 `CURRENT_REVIEW_CHECKPOINT.md`에 있다.
+- v4를 합성 test-controller receipt로 `/private/tmp`에서 prepare→compile→checkpoint→adopt한 결과 project proof `pass=true`, authority `core-v2-project-system`, profile `portable-core`였다. 실제 프로젝트는 미변경이다.
+- 이전 approval/package/checkpoint는 superseded이며 재사용 금지다. v4에는 owner approval/compiled package/checkpoint receipt가 아직 없다. 다음은 사용자가 v4 exact preview에 새 `ㄱㄱ`를 줄 때 real approval→compile 후 두 번째 package checkpoint에서 다시 중단한다.
+
+### 2026-08-13 Core v2 exact package — 두 번째 project-owner 승인 대기
+
+- 사용자가 exact preview SHA `ca5f0dfe…bce5f0`를 승인했다. review request bytes를 다시 확인한 뒤 reviewer `kwakseongjae`의 owner-approval receipt SHA `a7a8c1c9…cff3b8`를 만들었다.
+- compiler가 destination 밖 `/Users/kwakseongjae/Desktop/projects/.omd-core-v2-dogfood/0d01ba36…/package`에 exact 6-artifact package를 만들었다. package tree SHA=`d51271fa…a47527`; compiled DESIGN.md는 승인 preview와 byte-identical하다.
+- package는 adopter의 read-only `loadPackage + validatePackage`로 재검증했다. DESIGN/graph/provenance/coverage/manifest/adoption-receipt exact SHA는 `.omd/runs/run-20260813-core-v2-dogfood/PACKAGE_CHECKPOINT.md`에 기록했다.
+- 첫 preview 승인을 두 번째 package 승인으로 재사용하지 않기 위해 시험 생성된 checkpoint receipt를 즉시 제거했다. 현재 `project-adoption-checkpoint.json`은 존재하지 않으며 adopt도 실행하지 않았다. root DESIGN.md SHA=`74847ec4…76135c`는 그대로다.
+- 다음은 사용자가 exact package에 새로 `ㄱㄱ` 승인할 때만 approved checkpoint receipt를 생성하고 rollback-safe atomic adopt를 실행한 뒤 provider-free validator/readback을 수행한다. 선언/transaction proof와 사실·license·implementation·visual-quality proof는 계속 분리한다.
+
+### 2026-08-13 Core v2 dogfood exact preview — project-owner 승인 대기
+
+- provider-free migration rebind bridge를 구현·패키지·문서화했다. 안전한 `--enrichment` 입력은 원본 lossless candidate를 내부 복제하며 `$schema`/`schema_version`/`projection`/`extensions` 쓰기를 거부한다. complete `--graph` 입력도 기존 opaque ledger와 exact 비교한다.
+- root dogfood exact preview는 `.omd/runs/run-20260813-core-v2-dogfood/review/DESIGN.md`에 생성됐다. SHA=`ca5f0dfe…bce5f0`, review-request SHA=`0d01ba36…776302`, Portable Core/clean-top/7 sections/7 claims/lang=en이다. legacy source reconstruction equal, dropped=0, opaque extension preserved다.
+- `.omd/preferences.md` pending 25개를 `inputs/preference-reconciliation.json`에서 전수 조정했다. explicit/user 23개는 task/principle/voice/governance 근거로 묶었고 ambient/inferred motion 2개는 자동 승격하지 않았다. root `DESIGN.md`는 SHA=`74847ec4…76135c`로 그대로다.
+- approve-review/compile/prepare-checkpoint/adopt는 실행하지 않았다. 다음 행동은 사용자가 exact preview를 승인하거나 수정을 지시하는 것이다. 승인 후에도 exact 6-artifact package를 보여 주는 두 번째 project-owner checkpoint가 필수다.
+- llms 생성기는 canonical body가 같으면 timestamp와 bytes를 보존하도록 고쳤고 두 번 실행해 두 번째 무변경을 확인했다. 현재 `llms-full` SHA=`6851cea0…2c631`, `llms.txt`=`a4524eb5…3297`; 22 skills/21 Cursor/19 agents count와 pre-build check가 green이다.
+- public schema liveness checker를 추가했다. production `.kr/schema/*` 7개는 여전히 404+HTML+byte mismatch로 fail-close하므로 실제 배포 전에는 2.0 promotion BLOCK이다. focused/package/install/doctor smoke 99/99, build/lint/diff-check, catalog 440/440 dropped=0이 통과했다.
+
+### 2026-08-13 토큰 compact 중단 체크포인트 — 다음 재개는 여기서 시작
+
+- 사용자가 1분 주기 토큰 리셋 확인과 리셋 시 즉시 중단을 요청했다. 이번 작업 도중 실제 컨텍스트 compact가 발생했으므로 신규 구현을 중단하고 실행 중이던 `llms_publish_gate_fix`, `dogfood_migration_bridge`, `public_schema_liveness_gate` 하위 작업과 감시 PTY를 모두 interrupt/종료했다. provider/model smoke는 실행하지 않았다.
+- provider-emitted local `token_count.rate_limits`의 마지막 관측은 generic Codex weekly window `used_percent=100`, `resets_at=2026-08-19 15:54:24 KST`다. Luna/high 1.9.880이 봉인한 earliest retry는 별도 `2026-08-18 09:44 KST`이며 두 lane은 동일하다고 증명되지 않았다. 다음 재개에서도 Luna-specific reset은 해당 시각 이후의 정식 admission/provider event 없이는 확정하지 않는다.
+- root dogfood는 프로젝트를 변경하지 않는 staging까지만 완료했다. `.omd/runs/run-20260813-core-v2-dogfood/migration`에 legacy source 14/14·drop0·opaque preservation candidate를, `context/ctx-prime.json`에 최신 repo scan을 만들었다. candidate DESIGN SHA=`7a8f114a…4a22c6`, graph=`aaf32b2f…185209`, report=`cf9397d8…8dfa8`, context=`125dfe29…59507`이다. candidate는 `missing-primary-task` Structural Core이며 approve/compile/adopt하지 않았다.
+- dogfood blocker: 현재 migration provenance/coverage는 review draft shape와 호환되지 않고, repository facts/preferences로 graph를 enrich하면 기존 migration report의 exact hashes가 깨진다. original ledger/source reconstruction/drop0를 재검증한 뒤 enriched graph/provenance/coverage에 non-authoritative report를 compiler-owned hash로 재결박하는 provider-free bridge가 먼저 필요하다. `.omd/preferences.md` pending 25개 중 사용자 권위 23개는 scope별 반영/제외 결정을 남기고 ambient/inferred 2개는 자동 승격하지 않는다.
+- `browser-harness`로 `https://oh-my-design.kr/schema/`의 Core v2 schema 7개를 직접 확인했다. 전부 HTTP 404, `text/html`, 22,629 bytes, 동일 SHA `3a4a66dc…c6f3c1`인 Next 404 응답이다. 로컬 `web/public/schema/*`와 byte liveness가 성립하지 않으므로 배포 전후 200+JSON+exact-byte gate와 실제 배포가 필요하다.
+- 생성물 감사 결과 `web/src/data/catalog-meta.generated.ts`의 현재 dirty SHA `3459e574…3cecf72`는 22 skills/19 agents 정답과 exact 일치한다. `web/public/llms-full.txt` dirty SHA `31c4f31c…a04343e`는 여전히 stale이며 그대로 봉인하면 안 된다. `llms.txt` SHA `8e5fb91a…fd3ef5`는 current다.
+- 중단 시점에 llms worker의 부분 구현이 작업 트리에 materialize됐다: `.github/workflows/release.yml`, `scripts/check-counts.mjs`, `scripts/gen-llms-full.cjs`, `test/unit/scripts/gen-llms-full.test.mjs`, `web/src/data/faq.ts`. 의도는 write idempotency, build 전 stale check, Cursor 21 count 결박이지만 compact 지시로 테스트 전에 중단했으므로 **미검증 변경**으로 취급한다. 보호 생성물 2개는 이번 작업에서 새로 쓰거나 revert하지 않았다.
+- 다음 재개 순서: (1) `scripts/context_restore.sh`, (2) 위 5개 부분 diff review+focused test/lint/diff-check, (3) public schema liveness checker 구현, (4) migration rebind bridge 구현/배포 결박, (5) generator를 한 번만 실행해 보호 생성물 exact diff 검수, (6) enriched dogfood review candidate를 만든 뒤 exact preview checkpoint에서 사용자 승인을 기다린다. reset/admission 전 Luna smoke와 2.0 promotion은 계속 BLOCK이다.
+
+### 2026-08-12 DESIGN.md Core v2 provider-free 기준선 — 다음 재개는 여기서 시작
+
+- Core v2 구현은 `2ac7ed6f`, canonical fixture 보강은 `d3a32ce8`, 1.9.882 evidence/1.9.883 preregistration은 `9558e726`으로 봉인했다. clean-source 설치 안정화는 `98b9b1e1`, 병렬 gate timeout은 `5c8d40cc`, local Codex mirror 경계와 tracked-peer 검증은 `0c60ca52`+`05eebc38`이다. historical config/report/snapshot/seal은 불변이다.
+- 최종 delta로 component interaction 7-state applicability/NA reason, 5-locale projection, 공통 Markdown table escaping, 필수 claim 7개의 locale 단일성·projection 결박을 닫았다. fresh smoke v0.2는 config experiment `1.9.883`과 controller plan ID가 반드시 일치한다.
+- 최종 HEAD clean clone 전체 회귀는 101 files + 1,324 tests pass, 15 files + 71 tests intentional skip, failures 0이다. root lint/build, web typecheck, query data check, tarball 4채널·Autopilot HANDOFF·Core transaction·clean canary, commit-bound controller를 모두 재통과했다. readiness는 pass3/10, partial3, open3, external1이며 `BLOCK_2_0_PROMOTION`을 유지한다.
+- v0.2/1.9.883 RUN-MATRIX와 preregistration receipt를 commit `d3a32ce8`에 결박하고 provider-zero prepare/audit `pass:true`, 3 cells, status `prepared`를 확인했다. provider/model/browser/Cursor 호출은 계속 0이다.
+- vendor-neutral Core는 visible YAML/OmD/tool/model metadata가 없는 7개 stable section/claim 계약이다. canonical typed graph와 standalone projection을 분리하고 Structural / Portable / Bound / Proven conformance를 각각 검증한다. Google DESIGN.md는 호환 import/export profile일 뿐 동일·공식 규격이라고 주장하지 않는다.
+- public provider-free 채택 경로는 `prepare-review → approve-review → compile → prepare-checkpoint → adopt` 5단계다. 첫 checkpoint는 exact non-authoritative preview, 둘째는 exact 6-artifact package request이며, compiler/adopter가 hashes·provenance·coverage·owner attestation·rollback journal을 독립 재검증한다. reviewer identifier는 암호학적 신원 인증이 아니라 명시적 attestation이다.
+- legacy 440개 catalog audit는 최종 HEAD에서도 440/440 pass, formats 415×legacy-15 + 24×legacy-16 + 1×legacy-13, dropped segments 0, source reconstruction/opaque extension preservation 100%다. 프로젝트 scope/task를 추정하지 않으므로 전부 non-authoritative Structural Core candidate로 남고 자동 승격하지 않는다.
+- unknown-as-absence는 typed semantic facts에서 EN/KO/JA/ZH-CN/ZH-TW placeholder/sentinel을 거부한다. ID/path/hash와 opaque reverse-DNS extensions, 정상적인 Governance 설명은 보존한다. fenced/indented/quoted/hidden HTML/comment contracts, extra H1/H2, invisible task/claim, vendor metadata 우회도 fail-close다.
+- `omd-init`/learn/autopilot/harness와 master/architect는 authority-neutral drafts만 만들고 5단계 helper chain을 필수 호출한다. agent가 DESIGN.md/claim delimiters/manifest/hash를 직접 쓰지 않는다. clean clone은 tracked mirrors 92개와 생략된 local Codex 54개를 tracked Claude peer에 byte 결박하고, 설치된 로컬 tree는 146 current + 92 intentional overlays를 검증한다. dangling symlink/content drift는 fail-close다.
+- reference-capture collector와 Playwright license/notice 4개는 checked-in package input이며 build 전후 exact bytes를 유지한다. clean clone의 Codex writer safety entrypoint 8개도 hard-required되어 activation 재설치와 병렬 build race가 닫혔다.
+- 이번 재개에서는 provider/model/network/browser/Cursor 실행이 없었다. 보호 파일은 그대로다: `web/public/llms-full.txt`=`31c4f31…a04343e`, `web/public/llms.txt`=`8e5fb91a…fd3ef5`, `web/src/data/catalog-meta.generated.ts`=`3459e574…3cecf72`, `data/reference-quality.json`=`7cb84bf4…e46ddd4`.
+- npm publish preflight는 보호된 `web/public/llms-full.txt`가 stale하여 의도적으로 fail-close한다. 해당 파일과 `web/src/data/catalog-meta.generated.ts`는 이번 작업에서 수정·revert·stage하지 않았고 owner 결정 전 generator 실행/봉인 금지다.
+- 다음 순서: (1) project-root dogfood는 실제 project-owner가 exact preview/package를 승인한 뒤에만 수행, (2) 배포된 `.kr/schema/*` byte liveness 확인, (3) 보호 생성물 owner 결정을 받아 publish gate를 닫기, (4) capacity reset 뒤 named browser admission과 fresh Luna/high 3-cell smoke. fresh 3/3 + 12×5 + transfer/blind review 전까지 2.0 promotion·one-shot superiority 공개 주장은 BLOCK이다.
+
+- 1.9.880은 source commit `26090fdf`, fresh root, named in-app browser admission으로 실행됐지만 qualification evidence가 아니다. landing initial만 정상 완료해 DESIGN.md+product와30/100을 만들었고, repair 및 cold/locale initial은 계정 usage limit로 usage0·product edit0인 채 즉시 종료됐다. sealed controller가 이를 terminal product failure로 잘못 분류해 형식상0/3 complete가 됐다.
+- controller는 provider event의 usage-limit를 `provider-capacity-exhausted` infrastructure stop으로 분류해 root를 freeze하며, product change가 없는 failed turn에는 journey evaluator를 호출하지 않는다. `reports/autopilot-luna-high-smoke-1.9.880/{RESULTS.json,STATUS.md}`는 diagnostic-only 정본이다.
+- fresh3/3 provider 검증은 2026-08-18 09:44 KST로 보고된 capacity reset 전까지 BLOCK이다. 그 사이 2.0 provider-free queue인 12-task evaluator/oracle-mutant calibration, autonomous package/install parity, design-system validator를 계속 고도화한다. public one-shot/superiority claim은 계속 금지한다.
+- 2.0 distribution gate는 provider-free PASS다. 실제 `npm pack` tarball을 오프라인 소비자 프로젝트에 설치하고 Claude Code/Codex/OpenCode/Cursor 4채널의 skill·agent·catalog·helper를 doctor self-test로 검증했다. 별도 clean workspace는 tarball에서 설치된 Codex helper만 사용해 질문0·provider/model/Cursor0, project-owned DESIGN.md, hash-bound system/product proof, bounded repair1회를 거쳐 `HANDOFF`에 도달했다.
+- `autopilot-v2-qualification.json`은 npm tarball consumer install·4채널 doctor·installed Autopilot/design-system architect/helper execution·HANDOFF를 정식 배포 gate로 요구한다. 이 gate는 패키징/결정론 증거이며 모델 품질이나 경쟁 우위를 증명하지 않는다.
+- 같은 installed-helper gate가 6개 authority perturbation을 통과한다: 기존 compatible system=`reuse`, 명시 구축=`establish`, 명시 교체=`refresh`, 이번 화면 한정=`surface-local-only`, 권한 없는 broad greenfield=`AWAIT_USER`, official source 없는 exact brand=`blocked`. 질문/차단 케이스는 DESIGN-system decision receipt를 만들지 않는다.
+- DESIGN-system proof는 더 이상 coverage의 `pass:true`나 agent-authored check receipt를 신뢰하지 않는다. DESIGN.md 번호 섹션1–13, 실제로 해석 가능한 provenance/group 근거, exact DESIGN.md SHA에 결박된 `system/spec.json`, §11–13의 `[FILL IN]` 또는 권한 근거를 provider-free로 검사한다. validator가 contrast·token closure·component states·320px/200%·reduced motion·asset authority를 직접 계산한다. 제품 코드 conformance는 pre-build system proof에서 거짓 주장하지 않고 최종 same-route proof가 담당한다.
+- reference-capture 번들은 정적 Playwright license/notice가 함께 사는 출력 디렉터리를 더 이상 clean하지 않는다. 병렬 `build`+`install-skills` 검증에서도 라이선스 증거가 사라지는 창 없이 build와 44개 install 회귀가 함께 통과한다.
+- 현재 12-task calibration 설명 문서는 task/adaptor/evaluator가 후속 고도화되기 전 해시를 보유하므로 2.0 readiness의 machine evidence로 승격하지 않는다. 현재 해시 기준 24 valid oracle+72 mutant browser calibration은 provider0으로 재통과했으며, 다음 작업은 이를 JSON acceptance와 새 Autopilot 전용 ten-gate readiness snapshot으로 봉인하는 것이다.
+- `autopilot-v2-readiness.json`과 1.9.881 provider-zero acceptance가 새 2.0 목표를 과거 repair/harness readiness와 분리했다. 현재 pass3/10(자연어 package/4채널, selective authority, calibrated12-family denominator), partial3, open3, external1이며 `BLOCK_2_0_PROMOTION`이다. auditor는 current source bytes, 24 oracle, 36 mutant definitions×2, authority6 cases와 machine pointers를 재검산하고 status inflation을 거부한다.
+- 다음 admissible quality evidence는 capacity reset 뒤 fresh commit-bound Luna/high3-cell smoke다. 3/3 DESIGN-system proof+UI-Resolved 전에는 12×5 portable-skill comparison을 시작하지 않고, competitor/three-model/Pareto/public one-prompt claim은 계속 금지한다.
+- Autopilot mission은 더 이상 `system/proof.json`의 최소 `pass:true`를 신뢰하지 않는다. schema0.2/status/strategy/owner, exact DESIGN.md·provenance·coverage·spec SHA, required10 groups·controller-computed9 checks, findings와 next-state를 전부 재검증한 뒤에만 product-build admission을 만든다. installed skill도 proof 직접 작성/수정을 금지한다.
+- smoke controller의 독립 DESIGN-system audit은 provenance/coverage가 참조한 run/project evidence를 regular-file로 exact 복사한 뒤 validator를 실행한다. agent workspace의 경로만 존재하고 controller audit workspace에는 없는 self-declared evidence는 더 이상 통과하지 않는다.
+- 1.9.881 readiness acceptance는 controller-computed system-spec proof가 포함된 commit `2a74ba73`과 새 Autopilot/architect/validator/canary bytes에 재결박됐다. readiness는 여전히 pass3/10이며 2.0 promotion을 차단한다.
+
+- 1.9.879 fresh exact Luna/high smoke는 source commit `72fd57bf`, in-app browser admission, valid terminal3/3으로 완료됐다. immutable sealed 결과는 UI-Resolved1/3이며 landing `50→100`, cold `20→40→60`, locale `40→40`; 7 calls·input11,074,863(cached10,141,440)+output153,539·provider wall3,357.887s다.
+- provider-free exact replay에서 cold와 locale 동일 최종 제품은 corrected evaluator로 각각100/100이다. false negative 원인은 native dialog 미인정/containing region 오인, sample-owner의 data/help scope 누락, 140ms locale rerender race, `zh-Hans|zh-Hant` 표준 alias 불인정, visually-hidden legend 및 내부 scroll surface를 document overflow로 계산, utility close control을 primary touch target으로 계산한 구조 편향이다.
+- evaluator는 assignment action까지 가진 dialog/complementary/region만 detail로 선택하고, explicit sample-owner scope·bounded locale settling·BCP47 alias·실제 visual overflow·primary task control만 측정한다. controller repair evidence도 detail role, owner scope, locale equivalence, overflow offender를 직접 전달한다. exact product replay는 cold SHA `74c0a7…dfcf5de`, locale `69abcb…f0d5a98`로100/100이다.
+- sealed record는1/3 그대로이며 diagnostic replay는 별도 부록이다. `reports/autopilot-luna-high-smoke-1.9.879/{RESULTS.json,STATUS.md}`가 정본이고1.9.878은 provider exposure0 invalid evidence로 보존한다. 다음 순서: full provider-free gate·scoped commit(`web/public/llms-full.txt` 제외)→fresh commit-bound 3-cell smoke. fresh3/3 전까지12-task comparison/public one-shot claim은 BLOCK이다.
+
+- 1.9.877 exact Luna/high smoke는 valid terminal3/3, retry/replacement/fallback/Cursor0으로 완료됐다. sealed UI-Resolved는2/3이며 landing `50→100`, cold `20→80→100`, locale `60→60`; 총7 calls·input9,117,736(cached8,334,592)+output124,466·provider wall2,919.807s다.
+- locale 제품은 `zh-TW` 선택과 `lang=zh-TW`를 보존하고 visible alert에 `暫不可用`/`輔助翻譯目前無法使用`을 표시했지만 matcher가 두 표현을 누락해 false negative였다. exact completed bytes의 provider-free 재평가는 4 viewports 전부100/100이다. sealed record는 불변이며 evidence는 `reports/autopilot-luna-high-smoke-1.9.877/{RESULTS.json,STATUS.md}`다.
+- matcher는 번체 `暫不可用|無法使用`과 간체 `暂不可用|无法使用`을 인식하고 available copy를 거짓 양성으로 분류하지 않는다. 다음 순서: locale E2E/full regression·lint/build → evaluator/evidence scoped commit(`web/public/llms-full.txt` 제외) → fresh1.9.878 exact Luna/high3셀. sealed fresh3/3 전까지 12-task comparison과 public one-shot claim은 BLOCK이다.
+
+- 1.9.876은 exact in-app admission 뒤 landing `10→100`(2 calls)을 UI-Resolved로 완료했다. cold initial provider도 종료했지만 invalid Assign 뒤 제거된 owner combobox의 optional `aria-describedby`를 evaluator가 30초 기다려 score 없이 root가 stopped-preregistered로 동결됐다. provider exposure3·valid terminal1/3이며 locale는 미노출이다.
+- evaluator는 invalid submission 뒤 owner surface가 사라지면 owner-error/assignment를 실패로 남기고 terminal score를 쓴다. 동일 frozen product의 provider-free 재평가는 crash 없이40점이며 실제 결함(owner error association, sample owner, persistent assignment, accessibility)은 그대로다. exact evidence는 `reports/autopilot-luna-high-smoke-1.9.876/{RESULTS.json,STATUS.md}`다.
+- 다음 순서: stale-owner regression 전체 회귀·lint/build → evaluator/evidence scoped commit(`web/public/llms-full.txt` 제외) → commit-bound full gate → fresh1.9.877 plan/root/named in-app admission → exact Luna/high3셀. fresh3/3 전까지 12-task comparison과 public one-shot claim은 BLOCK이다.
+
+- 1.9.875는 leading-dash browser admission을 통과하고 exact Luna/high를 실행했다. landing은 `30→100`(2 calls)으로 성공했지만 cold repair 뒤 evaluator가 사라진 record의 optional `aria-selected`를 30초 대기하다 exit1이 되어 root가 stopped-preregistered로 동결됐다. provider exposure4·valid terminal1/3이며 locale는 미노출이다.
+- evaluator는 zero-match selected-state lookup을 optional null로 처리한다. provider-free 동일 repaired product는 crash 없이20점 terminal failure를 기록했고 실제 결함(urgent classification/filter exact/assignment persistence/responsive/accessibility)은 그대로 남는다. 다음은 commit-bound 회귀 뒤 fresh1.9.876이다.
+- 1.9.874는 commit-bound full gate 1091/1091 통과 뒤 fresh root를 prepare하고 in-app browser를 직접 열었지만 provider-zero admission에서 중단됐다. 현재 browser id가 `-`로 시작해 공용 `parseArgs`가 값이 아닌 새 flag로 해석했다. provider exposure·완료 셀은0이며 이 root는 실행하지 않는다.
+- 공용 parser는 `--key=value`를 지원하고 controller plan은 transitive `_lib.mjs` 자체를 source authority에 포함한다. leading-dash browser id integration test를 추가했다. 다음은 이 변경을 commit-bound 검증한 뒤 fresh1.9.875를 prepare/admit/execute하는 것이다.
+- 1.9.873 exact Luna/high 3셀은 valid terminal3/3·DESIGN proof3/3·질문0·retry/replacement/fallback/Cursor0으로 완료됐다. sealed UI-Resolved는1/3이며 landing `50→70→100`, cold `20→20`, locale `50→50`; 총7 calls·input10,694,925(cached10,030,592)+output162,476·provider wall1,128.180s다.
+- provider-free structure-neutral 재평가는 cold60, locale60이다. cold의 default-urgent native select는 all-record baseline6(urgent4/nonurgent2)을 실제로 보유하고 selected option 자체가 가시 상태이며, 연결된 polite status도 유효한 owner 오류다. 남은 실제 결함은40px touch target과 aria-hidden focus subtree다. locale는 visible fictional/non-medical disclosure와5개 core localization이 모두 유효하고, 실제 결함은 progressbar가 visible1/4→4/4와 달리 계속0/0인 점이다.
+- controller repair feedback은 cold round1에서510,601 bytes까지 팽창했다. 새 objective observations0.3은 Axe finding을 target/state/viewport로 dedupe하고 raw viewports를 supporting evidence에서 제외하며 filter/owner-error/honesty/progress 진단을 직접 제공한다. corrected cold payload는2,007 bytes다.
+- 다음 순서: evaluator/controller/skill/1.9.873 evidence를 scoped commit(`web/public/llms-full.txt` 제외) → commit-bound full gate → fresh1.9.874 plan/root/named in-app admission → exact Luna/high3셀. fresh3/3 전까지 12-task comparison과 public one-shot claim은 BLOCK이다.
+
+- 1.9.872 exact Luna/high 3셀은 valid terminal3/3·DESIGN proof3/3·질문0·retry/replacement/fallback/Cursor0으로 완료됐지만 sealed UI-Resolved0/3이다. landing `30→30`, cold `20→60→60`, locale `40→60→60`; 총8 calls·input10,866,803(cached10,152,192)+output149,258·provider wall3,475.025s다.
+- provider-free 보정 결과 cold-chain 동일 bytes는100/100이고 locale는60/100, landing은30/100이다. cold는 sample scope와 evidence label이 같은 detail 안에서 분리된 유효 구조를 evaluator가 놓쳤다. locale는 `ja-JP`를 `ja`와 불일치로 오판했지만, 실제로 일본어 core checklist를 제공하지 않아 보정 후에도 실패한다. landing은 Reserve CTA가 예약 시작 UI를 열지 않고 contrast 2건이 남은 실제 결손이다.
+- evaluator는 same-detail sample/evidence와 BCP47 base-region 매칭을 구조 중립적으로 판정한다. Autopilot acceptance contract는 명시된 positive journey/지원 항목을 unavailable·unknown·deferred·fallback으로 대체할 수 없고, 동등하거나 더 강한 관찰 가능 상태로 보존해야 한다. locale prompt도 다섯 locale 모두 core checklist 현지화를 명시한다.
+- 다음 순서: 관련 코드·1.9.872 evidence·연속성 문서 commit(`web/public/llms-full.txt` 제외) → commit-bound full gate → fresh1.9.873 plan/root/named in-app admission → exact Luna/high 3셀. fresh3/3 전까지 12-task competitor qualification과 public one-shot claim은 BLOCK이다.
+
+- 1.9.871 exact Luna/high 3셀은 valid terminal3/3·DESIGN proof3/3·질문0·retry/replacement/fallback/Cursor0으로 완료됐지만 sealed UI-Resolved0/3이다. landing `30→50→80`, cold `20→40→40`, locale `60→60`; 8 calls·input9,934,928(cached9,168,640)+output162,477·provider wall852.415s다.
+- provider-free 재평가에서 locale 동일 bytes는100/100이다. 별도 “translation status” 버튼 없이 기존 `zh-TW` locale control이 unavailable alert를 열고 `lang=zh-TW`/선택 상태를 보존하는 동등 구조를 evaluator가 놓쳤다. 두 oracle+mutant 9개가 구조 중립 계약을 검증한다.
+- landing/cold 실패는 실제 product defect다. landing header CTA는 cascade 때문에 computed `#526568` on `#0a4f4a`, 1.53:1이다. cold 초기 queue는1 record/1 urgent/0 non-urgent이고 382.13px rail/nav subtree가390px에서28px,320px에서78px root overflow를 만든다.
+- evaluator/controller는 Axe failure summary+computed colors, bounded overflow offender geometry/CSS, queue minimum expectation을 repair evidence로 전달한다. 다음 순서: 관련 코드/report/docs commit → commit-bound full test/lint/build → fresh1.9.872 plan/root/named in-app admission → exact Luna/high 3셀. 12-task comparison은 fresh3/3 전까지 BLOCK이다.
+
+- 1.9.870 exact Luna/high 3셀은 3/3 valid terminal, DESIGN.md proof3/3, 질문 batch0, retry/replacement/fallback/Cursor0으로 완료됐다. sealed UI-Resolved는 1/3이며 landing `10→100`, cold `20→20`, locale `10→50→50`; 총7 calls·2,882.893s·input9,790,594(cached9,112,832)+output132,776이다.
+- in-app 검수와 provider-free v2 재평가에서 locale는 동일 bytes로100/100이다. 기존 evaluator가 현지어 unavailable alert, 선택된 `zh-TW` 보존, CJK/English 부정 의료 disclaimer를 오판했다. cold는 urgent/filter/sample-owner false negative를 제거해도 owner 오류 focus, success의 shipment identity, 모바일42px, Assign contrast가 실제 실패로 남는다.
+- evaluator v2는 DOM 인접 span의 `watchURGENT`, sample-scoped option group, KO/JA/ZH-CN/ZH-TW unavailable semantics와 의료 부정을 인식한다. controller repair feedback은 실패 접근성의 Axe ID/target을 직접 전달하고 Autopilot은 validation focus·success identity persistence·모든 상태 contrast를 명시한다.
+- sealed 1.9.870 record는 재작성하지 않는다. 다음 순서: 관련 코드+report commit → commit-bound tests/lint/build → explicit fresh 1.9.871 plan/root/in-app admission → 3셀 실행. 12-task comparison은 fresh3/3 전까지 BLOCK이다.
+
+- 1.9.869는 explicit epoch·fresh root·named in-app browser로 landing 1셀을 실행했다. exact Luna/high initial+repair1이 `30→100`, DESIGN.md proof PASS, 실제 질문 batch0·answer artifact0·mission lineage1을 달성했다. 2 calls·provider wall985.675s·input3,210,693(cached3,022,592)+output42,318이다.
+- sealed record는 내부 council이 검토 후 보류한 candidate question을 `questions[]`에 남겼다는 이유로 terminal failure가 됐다. `pending_interview_ids=[]`였으므로 사용자 질문은 실제로 발생하지 않았다. 이는 self-debate를 허용하고 실제 사용자 개입만 재는 2.0 계약의 controller 측정 결함이다.
+- controller proof는 question artifact shape를 검증하되 nonempty `pending_interview_ids`만 실제 질문으로 센다. 기존 1.9.869 record/root는 재작성·재개하지 않고 cells2–3도 노출하지 않는다. exact evidence는 `reports/autopilot-luna-high-smoke-1.9.869-fresh/{RESULTS.json,STATUS.md}`다.
+- 다음 순서: 이 측정 수정+evidence commit → commit-bound smoke/controller tests·linter/build → explicit 1.9.870 fresh plan/root/in-app admission → 3셀 실행. 12-task comparison은 3/3 전까지 BLOCK이다.
+
+- 1.9.868은 council lane/attempt budget을 적용한 exact Luna/high 3-task fresh smoke다. 3/3 valid terminal, DESIGN.md proof3/3, 질문0, retry/replacement/fallback/Cursor0이나 UI-Resolved는 1/3이다. landing은 `10→80→100`, cold-chain은 900.351s valid timeout/20, locale는 `40→40→20`이다.
+- 총7 calls·provider wall3,457.098s다. 관측 가능한6 calls는 input8,855,794(cached8,168,704)+output117,744이며 cold-chain timeout usage가 없어 full-block token total은 주장하지 않는다. exact evidence는 `reports/autopilot-luna-high-smoke-1.9.868/{RESULTS.json,STATUS.md}`다.
+- landing은 one-prompt→project DESIGN.md→product→controller repair→100/100 경로를 단일 task에서 증명했다. reliability/우위/2.0 readiness claim은 아니다.
+- cold-chain provider는 구현 뒤 controller 소유인 Playwright/Chromium/server/screenshot 탐색에 시간을 소모해 종료 budget을 넘겼다. locale repair1은 점수 상승0인데 repair2가 실행됐고 기존 accessibility까지 회귀했다. 또한 hidden required `translation-unavailable` state가 exact user prompt에는 빠져 있어 fair prompt authority도 불완전했다.
+- 수정 중 계약: controller-owned mode에서 provider browser/server probing 금지, 390/320/200% overflow0·touch44px 명시, bounded repair는 strict score lift+protected regression0일 때만 계속, locale prompt에 unavailable state 공개. 다음 순서: provider-zero tests/lint/build→관련 코드+1.9.868 evidence commit(`web/public/llms-full.txt` 제외)→commit-bound full regression→fresh 3-task epoch. 12-task comparison은 3/3 전까지 BLOCK이다.
+
+- 1.9.866은 exact Luna/high 3-task smoke를 3/3 valid terminal로 완결했다. 9 model calls, input11,943,429(cached11,156,480)+output161,695, provider wall3,511.015s이며 retry/replacement/fallback/Cursor0이다. sealed root는 complete/non-reusable이며 다시 실행하지 않는다.
+- sealed 결과의 mission success는 0/3이었다. landing `30→80→80`, cold-chain `20→60→40`, locale `30→60→100`; locale objective와 DESIGN.md proof는 PASS였지만 host-local browser check가 불가능하다는 이유만으로 HANDOFF가 막힌 controller authority 결함이 있었다.
+- provider-free RCA에서 landing은 검증 가능한 availability 부재 설명을 honesty failure로 오인했고 수정 후 같은 bytes가100점이다. cold-chain은 button-shaped record를 누락하고 row text를 잘못 결합했으며, 보정 후 queue/filter/keyboard/evidence/assignment persistence는 PASS로 회복했다. 남은 empty-owner error·32px close target·mobile clipping·invalid aria-selected는 실제 product defect다.
+- evaluator는 button/list/table 구조를 role/name/identity로 동등 처리하고 contextual unavailable-absence를 허용한다. Autopilot mission은 external controller objective + exact DESIGN.md proof + local honesty/design checks가 모두 PASS면 host-local browser availability 실패만으로 완료를 거부하지 않도록 receipt schema0.2/controller0.3에 봉인한다.
+- 다음 순서: provider-free cold-chain E2E + mission/unit/lint/build/diff-check → 관련 파일과 1.9.866 evidence만 commit(`web/public/llms-full.txt` 제외) → commit-bound full regression → fresh 1.9.867 plan/prepare/audit → named in-app browser admission → exact Luna/high 3-task smoke. public one-shot/superiority claim은 계속 BLOCK이다.
+
+- 1.9.865는 fresh plan/root/browser admission 뒤 landing 1셀을 노출했지만 controller evaluator의 과거 180초 제한이 새 4-viewport 평가(실측 180~360초)를 중간 종료해 `stopped-preregistered`, valid terminal0/3으로 동결됐다. provider turn은 exit0·590.061s·input1,933,419/output26,925였으나 benchmark 결과로 세지 않는다.
+- frozen workspace의 provider-free evaluator 재실행은 exit0·score10을 만들며 timeout 계약 drift를 재현했다. 이 점수는 diagnostic-only이고 sealed run에 대입하지 않는다. controller evaluator timeout을 명시적 360초 authority로 올리고 단위 테스트를 추가했다.
+- 다음 순서: 1.9.865 evidence+timeout fix commit → commit-bound full regression/build → fresh 1.9.866 plan/prepare/audit → 새 named in-app browser admission → exact Luna/high 3-task smoke. 1.9.865 root/workspace는 재사용하지 않는다.
+
+- 1.9.864 exact Luna/high smoke는 3/3 valid terminal로 완결됐다. DESIGN.md proof3/3·질문0·retry/replacement/fallback/Cursor0이지만 UI-Resolved0/3이다. 점수는 landing `10→50→50`, cold-chain `20→20→40`, locale `50→60→60`; 9 calls, input+output13,544,051 tokens, wall3,673.223s다.
+- in-app browser 검수에서 세 결과 모두 높은 시각 완성도와 responsive product hierarchy를 확인했다. 실패는 landing의 중복 CTA/focus/unavailable semantics, cold-chain의 assignment confirmation/mobile target, locale의 unavailable-translation state에 집중된다. public one-shot/superiority claim은 계속 BLOCK이다.
+- 평가기 결함도 분리됐다. `Non-urgent`가 `Urgent`로 중복 분류되었고 repair feedback은 CTA 후보/activation focus/catalog 문장, owner 선택·status·source row, unavailable control·alert·lang 정보를 boolean으로 축약했다. urgent 분류를 수정하고 이 bounded role/state 진단을 feedback에 추가했다.
+- provider-free unit 85/88은 새 controller bytes가 아직 commit authority와 달라 plan 생성 3건만 의도대로 fail-close했다. pure scorer77/77, cold-chain oracle/mutant6/6, locale7/7, landing4/4는 green이다. 다음 순서: report/docs 포함 관련 변경 commit → commit-bound full regression → fresh epoch만 생성/실행. 1.9.864 root는 재사용하지 않는다.
+
+- cold-chain evaluator가 `review`라는 일반 작업명을 non-urgent 상태로 오인하던 규칙을 제거하고 `attention|resolved|routine|watch|stable|normal|non-urgent`의 가시 상태만 인정한다. 각 viewport는 record 분류, urgent ID, 필터 후 ID, 배정 지속 여부를 controller evidence에 남긴다.
+- repair controller는 `queue_preconditions`, `filtered_contents_exact`, `assigned_owner_confirmed_and_persistent`, `responsive`의 합성 실패를 직접 관측값으로 전달한다. 모델은 더 이상 composite assertion 이름만 보고 추측하지 않는다.
+- provider-free 검증은 pure evaluator/controller 82 assertions, cold-chain valid oracle 2개와 isolated mutant calibration, TypeScript, diff-check가 green이다. source-authority integration의 commit 전 거부도 의도대로 동작했다.
+- 다음 순서: 관련 파일만 commit → commit-bound 전체 provider-free 회귀 → fresh epoch 1.9.864 plan/prepare/audit → named in-app browser admission → exact Luna/high 3-task smoke. public one-shot/superiority claim은 계속 BLOCK이다.
+
+- 1.9.863은 objective-first controller 경로를 실제로 증명했다. landing/cold-chain 모두 initial build 직후 객관 평가를 받고 최대2회 hash-bound repair를 수행했지만 `30→80→50`, `20→40→40`으로 UI-Resolved0/2였다. landing은 수리 중 이미 통과하던 reservation state를 회귀시켰으므로 다음 P0는 passing assertion invariant를 repair prompt에 봉인하는 것이다.
+- locale provider는 exit0이었으나 evaluator가 native checkbox에 `.check()` 포인터 클릭을 강제해 시각 wrapper에 가로막혔고 no-score로 root가 영구 동결됐다. evaluator는 실제 사용자 계약인 focus+Space로 전환했고 provider-free 재평가가 정상 score30을 기록했다(SHA `cee20b70…48d694`). sealed score를 대체하지 않는다.
+- 1.9.863은 valid terminal2/3, DESIGN.md proof3/3, 질문 artifact0, provider exposures7이다. 관측 input+output 9,585,274 tokens, wall2,697.294s이며 retry/replacement/fallback/Cursor0이다. root는 재사용 금지다.
+- repair controller는 누적 통과 assertion ID+관측값을 feedback schema0.3에 봉인하고 이전 통과가 깨지면 `regressed_assertion_ids`로 최우선 복구를 요구한다. repair prompt는 실패만 고치는 동시에 누적 invariant 전체를 재검증하도록 제한된다.
+- 다음 순서: commit-bound smoke 회귀→cold-chain observation/repair 정합화→두 valid oracle+isolated mutant calibration→fresh epoch. public one-shot/superiority claim은 계속 BLOCK이다.
+
+- 1.9.862 exact Luna/high 3셀은 질문0·retry/replacement/fallback0으로 완료됐고 DESIGN.md proof3/3, UI-Resolved0/3이다. 점수는 landing10, cold-chain40, locale20→40→40이며 5 calls·3,065.460s·10,900,877 input+output tokens다.
+- in-app 검수에서 세 화면의 시각 완성도는 높았지만 landing 예약 진입, cold-chain owner validation/keyboard detail/sample scope, locale unavailable-translation/a11y가 실제로 빠졌음을 확인했다. sealed 결과와 workspace는 수정하지 않는다.
+- 핵심 상태머신 결함은 landing/cold-chain이 initial turn 안에서 local repair budget을 소진하고 `FAILED_HANDOFF`에 도달해 controller objective feedback을 받지 못한 것이다. controller policy가 있으면 local proof의 pass/fail과 무관하게 먼저 `EXTERNAL_VERIFY`로 멈추도록 수정했다.
+- locale evaluator는 native `.checked`뿐 아니라 `role=checkbox`의 `aria-checked|aria-pressed=true`도 progress로 센다. provider-free sealed-workspace 재평가에서 progress false negative가 사라졌고(score40 유지, unavailable+a11y 실제 실패), artifact SHA는 `1b4a83a…b122fb37`다.
+- unit79/79와 browser calibration assertion7/7이 green이다. opt-in browser 파일은 assertion 완료 후 Vitest worker `onTaskUpdate` timeout으로 exit1이어서 test-runner 종료 안정성은 별도 수습한다. source-authority smoke3건은 새 evaluator가 미커밋인 동안 의도대로 plan 생성을 차단했다.
+- 다음 순서: full provider-free gate→이 변경/1.9.862 evidence만 commit(`web/public/llms-full.txt` 제외)→commit-bound smoke controller 재검증→fresh 1.9.863 plan/prepare/audit/in-app admission→Luna/high 3셀. public one-shot/superiority claim은 계속 BLOCK이다.
+
+- 1.9.861은 exact Luna/high 3셀을 질문0·retry/replacement/fallback0으로 완결했다. DESIGN.md proof3/3, UI-Resolved1/3이며 landing은 `10→50→100`, cold-chain은 `20→40→40`, locale은 `50→50→50`이다. 총9 calls·3,783.912s·12,198,121 input+output tokens다.
+- in-app browser로 세 surface를 직접 검수했다. landing은 full contract PASS, cold-chain은 owner 미선택 오류가 실제로 발생하지 않고 28px control/320·200% overflow가 남았으며, locale은 translation-unavailable state가 없다. 이 세 항목은 실제 product miss로 유지한다.
+- provider-free 재평가로 evaluator 오판2개를 분리했다. `sample owner` option은 명시적 fictional scope이고 “does not provide medical advice”는 부정 disclaimer다. scorer는 placeholder를 제외한 sample/demo/fictional owner role과 contextual negation을 인식하도록 보정했으며 unit72/72, cold+locale browser calibration12/12가 green이다.
+- 1.9.861 sealed record는 재작성하지 않았다. `RESULTS.json`에 original authority와 provider-free diagnostic score SHA를 분리 기록했다. 다음은 full regression→commit→fresh 1.9.862 only이며 public one-shot/superiority claim은 계속 BLOCK이다.
+
+- 1.9.860 실패를 모델 결함과 evaluator 오판으로 다시 분리했다. landing 예약 state는 접근성 이름뿐 아니라 내부 reservation heading을 허용하고, cold-chain은 implicit listitem·단일 카드 action·sample optgroup·review 상태를 role/state 기반으로 읽으며, locale은 임의의 2개 이상 checklist total과 KO/EN/JA/ZH-CN/ZH-TW script/lang/label을 검증한다.
+- repair feedback의 `objective_observations`는 schema0.2로 올라가 bounded ARIA role/name/state inventory, locale switch mapping, progress 상태, Axe violation ID를 포함한다. 두 valid oracle과 isolated mutants는 landing4/4, cold-chain6/6, locale6/6으로 다시 green이며 pure scorer 61/61도 통과했다.
+- 완료된 1.9.860 산출물의 provider-free 진단 재평가에서는 landing의 reservation-state 오판과 cold-chain의 queue/keyboard/evidence/sample-owner 오판, locale의 5개 locale/progress/completion 오판이 제거됐다. 남은 landing focus transfer, cold-chain empty-owner/assignment persistence/mobile target/contrast, locale translation-unavailable은 실제 구현 결손으로 유지한다. 다음은 source commit-bound 전체 회귀 후 fresh Luna/high epoch이며, 1.9.860 record 자체는 변경하지 않는다.
+
+- 1.9.860은 hash-bound `objective_observations`를 repair feedback에 직접 넣고 Luna/high 3셀을 initial1+repair2로 완결했다. 3/3 valid terminal, project-owned DESIGN.md proof 3/3 PASS지만 UI-Resolved는 0/3이다.
+- 점수는 landing `50→70→70`, cold-chain `20→40→40`, locale `40→40→60`이다. 1.9.859 대비 final score는 landing+20, cold-chain+0, locale+20이다. 총 9 calls·4,049.298s·14,182,528 input+output tokens(cached input 12,662,016)이며 retry/replacement/fallback0이다.
+- bounded scalar/count/viewport/a11y 관측은 반응형·접근성·기초 인터랙션 수리에 유효했지만, accessible role/name/state discovery·persistent state semantics·exact locale mapping은 해결하지 못했다. 다음 P0는 접근성 트리와 상태 전환을 제한된 controller 측정값으로 환류하고 2개 valid oracle+isolated mutant에 provider-zero 보정한 뒤 fresh epoch에서 검증하는 것이다.
+- exact evidence는 `reports/autopilot-luna-high-smoke-1.9.860/RESULTS.json`에 봉인하며 completed root는 재사용하지 않는다. public one-shot/superiority claim은 계속 BLOCK이다.
+
+- 1.9.859는 exact named in-app browser admission 뒤 Luna/high 3셀을 각각 initial1+same-mission repair2로 완결했다. 3/3 valid terminal, project-owned DESIGN.md proof 3/3 PASS지만 UI-Resolved 0/3이다. 점수는 landing `30→30→50`, cold-chain `20→20→40`, locale `30→30→40`이다.
+- 총 9 model call, provider wall 3,937.228s, input+output 11,175,693(cached input 10,190,592)이다. retry/replacement/fallback은0이고 completed root는 재사용하지 않는다. exact evidence는 `reports/autopilot-luna-high-smoke-1.9.859/RESULTS.json`에 봉인한다.
+- closed loop는 기계적으로 작동하고 모든 최종 점수를 올렸지만, repair feedback이 assertion ID와 sandbox 밖 sibling score path만 제공해 실제 count/viewport/a11y 관측을 정밀하게 전달하지 못했다. 다음 P0는 hash-bound feedback 안에 bounded `objective_observations`를 직접 내장하고 fresh epoch에서 재검증하는 것이다.
+
+- 1.9.858은 provider-zero plan/prepare/audit와 named in-app browser admission을 통과했으나 landing Luna/high 1회 뒤 controller receipt 단계에서 동결됐다. 모델 호출은 exit0·647.162s·input2,340,317(cached2,246,912)+output31,133, objective70/100이며 repair call은0이다.
+- 원인은 mission proof가 설치된 `.agents`/`agents`/`scripts`/`AGENTS.md`까지 포함한 exact product tree를 사용한 반면 smoke controller가 그 runtime asset을 제외한 별도 tree를 재계산한 authority mismatch다. 모델/UI 실패가 아니라 controller 검증 결함이며 valid terminal cell은0/3이다.
+- 1.9.858은 `stopped-preregistered`로 봉인했고 재사용하지 않는다. controller는 mission과 byte-identical path/mode/hash 알고리즘을 쓰며, provider 시작 뒤 발생한 controller exception은 root를 자동 영구 동결하도록 수정했다. commit-bound 회귀 뒤 fresh epoch만 발급한다.
+
+- 1.9.857은 named in-app browser identity를 plan에 봉인한 뒤 Luna/high 3셀을 retry/replacement/fallback 없이 순차 완결했다. 3/3 valid terminal, DESIGN.md proof 3/3이지만 UI-Resolved 0/3, Autopilot terminal proof 1/3이다. 점수는 landing30, cold-chain20, locale10이다.
+- 관측 합계는 wall 1,975.958s, input+output 7,276,794(cached input 6,776,064)이다. plan SHA `a61bfe7c…013c0`, execution-state SHA `34c659ee…4654`, exact 결과는 `reports/autopilot-luna-high-smoke-1.9.857/RESULTS.json`에 봉인했다.
+- 주된 2.0 구조 결함은 model turn 안의 자체 검증 실패와 controller-owned objective evaluator가 분리되어, 객관 실패 ID가 같은 mission의 최대2회 repair loop로 돌아가지 않는 점이다. landing/locale는 `BOUNDED_REVISION`에서 종료했고 cold-chain은 자체 proof HANDOFF였지만 objective UI가 실패했다.
+- initial turn → controller DS/autopilot/task 평가 → hash-bound repair feedback → same mission focused repair turn → 재평가를 최대2회 수행하는 closed loop를 commit `20e56d62`로 완료했다. 이는 provider retry/replacement가 아니라 사전등록된 내부 repair call이며 모든 call/time/token을 노출한다. 1.9.857은 재사용하지 않고 fresh epoch에서만 재검증한다.
+- controller-verification policy가 있는 미션은 local proof PASS여도 `EXTERNAL_VERIFY`에서 멈추고, exact score/proof/product hash 영수증만 HANDOFF 또는 same-mission repair를 연다. run-codex repair1/2 artifact는 initial result와 분리·exclusive 저장되고 replay가 거부된다.
+- smoke controller는 각 라운드의 objective false assertion과 local proof failure를 합친 feedback을 쓰고 동일 Luna/high로 최대2회만 이어간다. 실행 record는 initial+repair 모든 model call/token/time을 보존한다. focused17/17, full 1,104 중 1,103 즉시 PASS + 병렬 5초 timeout 1건 단독 PASS, lint/build/diff-check가 green이다. 다음은 fresh 1.9.858 plan/prepare/audit와 named in-app browser admission이다.
+
+- fresh 1.9.854 smoke는 3/3 valid terminal로 완결됐다. DESIGN.md proof 3/3 PASS지만 UI-Resolved 0/3이며 score는 landing10, cold-chain20, locale40(평균23.33/중앙20)이다. journey·responsive는 0/3, accessibility 1/3, runtime 3/3다. 총 wall 1,594.326s, input+output 5,632,536(cached input 5,256,960 포함)이다.
+- 실제 사용자 개입은 0이었지만 final mission들에 7개 council question이 생성됐고 landing/cold-chain은 model-authored answer 파일을 만들었으며 cold-chain은 abandoned+v2 두 run lineage를 남겼다. 따라서 one-shot autonomy claim은 BLOCK이며, 다음 구현은 zero fabricated user authority + exactly-one mission lineage + task-contract-aware bounded self-repair다.
+- 1.9.855 authority gate는 실제 smoke prompt 3개를 그대로 zero-interview 회귀로 잠갔다. 명시된 residents/operators/user, landing/queue/checklist, primary action/required journey를 user-stated authority로 보존하며 self-authored answers를 거부한다.
+- `.omd/autopilot-active.json`이 프로젝트당 active mission을 1개로 제한한다. HANDOFF/FAILED_HANDOFF는 completed/failed terminal이 되어 non-resumable이며, 새 run은 이전 marker가 정직한 terminal일 때만 시작한다.
+- 2.0 acceptance/proof hardening을 재개해 controller state flow에 연결했다. exact task quote·route·states·4 viewport·10 quality check가 잠긴 `acceptance-plan.json` 없이는 product admission이 발급되지 않는다. schema0.2 proof는 mission/acceptance/admission/current product tree와 atomic requirement/check evidence를 모두 묶고 controller가 pass를 재계산한다.
+- 최대2회 자율 수정은 같은 mission의 exclusive `repairs/round-<n>.json` chain으로만 진행된다. stale proof 재사용, round 건너뛰기, 같은 product tree의 표면적 proof 교체, 새 mission 회피를 모두 거부한다. provider-zero clean-dir가 질문0·lineage1·DESIGN proof·acceptance·의도적 accessibility failure·round0 receipt·focused repair·HANDOFF를 완주했다.
+- smoke success도 terminal mission `audit` PASS를 필수로 한다. exactly-one lineage, exact prompt retention, answer artifact 0, council question 0, immutable portable bundle, acceptance/admission/schema0.2 proof/repair/HANDOFF hash chain 중 하나라도 어긋나면 UI가 좋아도 terminal provider failure다. `.benchmark` controller runtime bytes는 product tree에서 제외하지만 실제 product drift는 audit가 거부한다.
+- 1.9.856은 plan/prepare/audit provider-zero PASS 뒤 terminal verifier integration으로 source bytes가 바뀌어 실행 전에 폐기됐다(provider/model/browser 0). stale plan/root 재사용은 금지하며 fresh epoch는 1.9.857이다.
+
+- order3 provider 작업은 완료됐지만 locale selector가 영어 accessible name만 고정 탐색해 controller evaluator가 no-score로 종료했고 1.9.853은 2/3에서 영구 동결됐다. evaluator는 exact 5 locale option authority로 native select를 재탐색하고 native-script 버튼도 허용하며, state affordance 부재를 timeout이 아닌 assertion failure로 기록하도록 수정했다. 동결 산출물 provider-free 재평가는 40/100 valid failure(5 locale/lang/script PASS, progress/completion/unavailable/a11y FAIL)다. 1.9.853은 재사용하지 않고 fresh root만 허용한다.
+
+- order2 `cold-chain-operations`도 evaluator crash 없이 유효 종료됐다. DESIGN.md proof PASS, 40/100·UI-Resolved=false이며 responsive·evidence honesty·runtime은 통과했지만 queue/filter/keyboard detail/owner state와 accessibility가 실패했다. input 1,260,557(cached 1,192,448)+output 22,762, wall 479.413s다. evaluator 다형성 수정이 실제 provider 결과를 terminal quality failure로 정상 분류했다.
+
+- fresh 1.9.853 smoke order1 `neighborhood-library-landing`은 단일 Luna/high 노출로 유효 종료됐다. project-owned DESIGN.md proof는 PASS, objective는 50/100·UI-Resolved=false이며 예약 시작 state/focus와 responsive가 실패했다. 토큰은 input 3,278,184(cached 3,146,752)+output 37,073, wall 787.271s다. root는 checkpoint 1/3이고 retry 없이 order2로 진행한다.
+
+- 2.0 목표를 `설치 후 충분히 권한이 부여된 자연어 한 문장 → 필요 시 project-owned DESIGN.md → 실제 route → hash-bound proof`로 재설정했다. 기존 `omd:harness`는 mandatory checkpoint guided mode로 보존하고, 별도 portable `omd:autopilot`만 원샷 경로를 소유한다.
+- canonical `omd-autopilot` skill과 read-only `omd-design-system-architect` agent를 추가했다. main host agent만 DESIGN.md·product write owner이며 council은 최대3 lane, 질문은 consequential batch 최대1, repair는 최대2다.
+- council ledger가 `reuse|establish|refresh|surface-local-only|interview|blocked` 디자인시스템 disposition을 reference 선택 전에 결정한다. fully delegated prompt는 질문0, broad greenfield without authority는 system-vs-local 질문1, exact brand source missing은 fabricate 대신 block이다.
+- `design-system-plan.cjs`가 task/ledger/answer/existing DESIGN hash에 decision을 봉인한다. `validate-project-design-system.cjs`는 provenance5종·required group10종·proof check9종·unknown-absence·§11–13 비조작을 provider-free로 fail-close한다.
+- `autopilot-mission.cjs`는 초기 product tree를 봉인하고 authority/DS decision 전 write를 거부한다. establish/refresh에서 proof 전 변경은 DESIGN.md만 허용하며 exact system proof 뒤에만 product-build admission을 발급하고, 최종 실패는 repair2회 뒤 failed handoff로 종료한다.
+- installer/doctor/workflow router/package가 skill22·agent19·두 helper·sidecar를 Claude/Codex/OpenCode/Cursor 계약에 반영했다. natural greenfield는 autopilot, explicit guided/checkpoint 요청만 기존 harness로 간다.
+- fair comparison prereg template은 hidden greenfield12 + authority perturbation6, portable arm6, preview5 trials, Luna/Terra/Sol high transfer, zero retry/replacement/fallback, same prompt/starter/model/effort/time/tools를 잠갔다. provider execution과 public one-shot claim은 아직 block이다.
+- `autopilot-mission.cjs` controller와 provider-zero clean-dir family-meal-planner oracle이 실제 DESIGN.md→system proof→product→browser verify→HANDOFF를 질문0·provider/model/Cursor0으로 완주했다. 1.9.834 objective는 100/100이며 DESIGN/product/provenance/coverage/proof 5개 hash binding이 모두 true다.
+- BOUNDED_COUNCIL은 이제 실행 계약이다. disposition/task 기반 최대3 lane을 `autopilot-council-plan.cjs`가 선택하고, exact role/output/write-boundary/result SHA를 reconcile한 뒤에만 system decision으로 진행한다. 1.9.836은 DS architect+UX engineer+evidence researcher 3 lane, sole main owner, 질문0·provider0으로 HANDOFF/100점을 재현했다.
+- greenfield evaluator는 1440·390·320·200%, axe, dialog/focus/empty validation/valid submit/feedback, unknown-absence, external/runtime error를 critical group으로 측정한다. forced overflow와 validation-message removal mutant를 각각 responsive/functionality failure로 검출하는 browser E2E가 green이다.
+- hidden greenfield v0.1 task authority를 12 family exact1개씩 봉인했다: landing, SaaS dashboard, dense operations, onboarding, checkout, approval, search, editorial, mobile, evidence/unknown, recovery, 5-locale. 각 prompt는 project-owned DS authority·3-step journey·protected unknowns·3+ states·3 targeted mutants를 가지며 task-set SHA `f733682d…0389`가 qualification contract에 결합됐다.
+- 12개 observable-outcome adapter authority SHA `485ce957…756f`도 결합했다. role/accessibility-name 기반, exact ID/class/DOM/color 금지, task별 2개 valid structure·journey·atomic assertion·3 mutant mapping을 고정했다. 기존 meal-specific selector·exact RGB·초기-state-only axe·raw regex unknown scan은 12-task evaluator에서 재사용 금지다.
+- 1.9.837에서 첫 `neighborhood-library-landing` adapter를 실제 보정했다. editorial inline-form과 split-hero native-dialog 두 byte/structure-distinct oracle이 모두 100/100이며, 1440·390·320·720×450(200% reflow)에서 role/name journey·keyboard/focus·initial/post Axe·overflow/target·unknown/runtime를 통과한다.
+- 같은 CTA 제거·minimum-width overflow·가짜 `Trusted by 500 neighbors`를 양쪽 oracle에 주입한 6개 mutant cell은 각각 journey·responsive·evidence-honesty atomic group에서 검출됐다. provider/model/Cursor0인 evaluator calibration이며 OmD 성능 증거는 아니다.
+- 1.9.838에서 두 번째 `incident-response-dashboard` adapter를 보정했다. dense table+detail drawer와 severity cards+native dialog가 모두 100/100이며, 2개 open sample incident·unique highest severity·Tab/Enter detail open·same-incident acknowledge persistence·loading/empty/error를 4 viewport에서 검증한다.
+- 양쪽 oracle에 severity hierarchy 평준화·ephemeral acknowledge·pointer-only open을 주입한 6개 mutant cell은 각각 hierarchy·durable-state·keyboard journey assertion에서 검출됐다. 12 family 중 2개만 calibrated라 provider smoke/public one-shot claim은 계속 BLOCK이다.
+- 1.9.839 `cold-chain-operations`는 responsive table+drawer와 exception cards+detail view가 모두 100/100이다. urgent filter의 checked+persistent summary+exact records, keyboard detail, sample evidence, empty-owner error/focus, announced+persistent queue owner를 검증한다.
+- 720px minimum-width·active filter summary 은폐·queue owner persistence 제거를 양쪽 oracle에 적용한 6개 mutant cell은 responsive·filter-state·assignment-persistence assertion에서 검출됐다. 12 family 중 3개가 calibrated 됐다.
+- 1.9.840 `caregiver-onboarding`은 single-card wizard와 full-page stepper가 모두 100/100이다. visible+programmatic 1/3→2/3→3/3, no preselection, empty validation+focus, review echo, Back preservation, announced completion을 각 상태 Axe와 함께 검증한다.
+- progress dynamic copy 제거·Back selection loss·required-choice bypass를 양쪽 oracle에 적용한 6개 mutant cell은 progress·state-preservation·validation assertion에서 crash 없이 검출됐다. 12 family 중 4개가 calibrated 됐다.
+- 1.9.841 `community-class-checkout`은 inline summary+form+receipt와 review→contact→confirmation 두 oracle이 모두 100/100이다. pre-confirm total, empty/invalid contact, associated error/focus, observable busy, post-action confirmation, arm-neutral declined recovery와 contextual unknown scan을 4 viewport에서 검증한다.
+- total 은폐·malformed email 수용·premature `Payment successful`을 양쪽 oracle에 적용한 6개 mutant cell은 total·validation·honesty assertion에서 검출됐다. 12 family 중 5개가 calibrated 됐다.
+- 1.9.842 `research-data-deletion`은 progressive danger panel과 review→confirmation 두 oracle이 모두 100/100이다. parent/children scope, displayed exact phrase, phrase-only/ack+wrong-phrase 차단, associated error/focus, both-gate approval, fresh keyboard cancel+announced state를 4 viewport에서 검증한다.
+- acknowledgement bypass·scope prose flattening·cancel 은폐를 양쪽 oracle에 적용한 6개 mutant cell은 two-gate·hierarchy·cancel-path assertion에서 검출됐다. 12 family 중 6개가 calibrated 됐다.
+- 1.9.843 `public-record-search`는 sidebar filters+detail route와 toolbar filters+native dialog 두 oracle이 모두 100/100이다. rendered record search, implementation-discovered filter2개, visible active values, contextual count, query-preserving Clear, no-results recovery, keyboard identity-matched detail, error/retry를 검증한다.
+- active-filter summary 은폐·Clear no-op·no-results recovery 은폐를 양쪽 oracle에 적용한 6개 mutant cell은 filter visibility·clear contract·zero-result assertion에서 검출됐다. 12 family 중 7개가 calibrated 됐다.
+- 1.9.844 `field-notes-editorial`은 longform sticky TOC와 chapter cards+endnotes 두 oracle이 모두 100/100이다. non-skipping heading outline, keyboard second-section navigation, persistent `aria-current`, caption/citation 분리, empty·malformed email 차단과 announced subscribed state를 4 viewport에서 검증한다.
+- heading rank skip·citation semantics 제거·subscription validation 제거를 양쪽 oracle에 적용한 6개 mutant cell은 outline·evidence semantics·validation assertion에서 검출됐다. 12 family 중 8개가 calibrated 됐다.
+- 1.9.845 `mobile-transit-report`는 stepper와 single-page review 두 oracle을 100/100으로 보정했다. 빈 선택 차단·issue/detail echo·review 선행·local fictional submit을 검증하며 label/lang mismatch 계열 mutant를 포함한 6개 셀을 원자 검출한다.
+- 1.9.846 `grant-evidence-intake`는 status board와 evidence register 두 oracle을 100/100으로 보정했다. 4개 protected field의 unresolved 상태, pending 분류, draft 경고와 unresolved count persistence를 검증하며 6개 mutant를 검출한다.
+- 1.9.847 `volunteer-import-recovery`는 local CSV table과 bundled-sample cards 두 oracle을 100/100으로 보정했다. invalid row의 associated recovery, valid identity 보존, retry, exact completion count를 검증하며 6개 mutant를 검출한다.
+- 1.9.848 `clinic-visit-prep-locales`는 native select와 language buttons 두 oracle을 100/100으로 보정했다. KO/EN/JA/ZH-CN/ZH-TW의 label+`html lang`+script, locale 간 progress persistence, unavailable translation honesty를 검증하며 6개 mutant를 검출한다.
+- 12/12 family 전부 provider-zero calibration이 완료됐다. oracle은 24개, targeted mutant cell은 72개이며 combined opt-in calibration은 18 files/130 tests, pure scorer는 61/61로 green이다. evaluator SHA는 `d6dc37b5…b593`이다.
+- 1.9.849 Luna/high diagnostic smoke 계약을 provider-zero로 사전등록했다. landing→dense operations→five-locale 세 task, exact prompt·blank starter·task/adapter/evaluator·14-file portable bundle hash, Codex Luna/high·serial·900s·checkpoint1·retry/replacement/fallback/substitution/Cursor/Claude0를 고정했다. 현재 contract는 `provider_execution_allowed:false`이며 clean committed source와 immutable runtime authority가 준비되기 전에는 실행할 수 없다.
+- 1.9.850 greenfield smoke controller를 추가했다. exact commit의 task·prompt·skill·evaluator만 읽고 blank shell 3개를 만들며, 1.9.826에서 검증된 immutable auth/cache/model-catalog와 Codex CLI exact pair를 재검증한다. oracle/mutant는 workspace에 복제하지 않고 Luna/high·checkpoint1·no-retry 계약을 독립 audit한다. controller 자체의 clean commit 뒤 provider-zero plan/prepare/audit를 실행해야 한다.
+- final 1.9.852 Luna/high diagnostic smoke의 order1 `neighborhood-library-landing`이 유효한 terminal provider failure로 checkpoint됐다. DESIGN.md/system proof는 PASS였지만 reservation start state/focus transfer가 없고 4 viewport 모두 같은 color-contrast 8건이 발생해 30/100, UI-Resolved=false다. 1 provider exposure, input 1,530,391 / cached 1,431,040 / output 25,748; retry·replacement 없이 분모에 유지한다.
+- order2 `cold-chain-operations`는 provider 생성과 DS proof까지 완료했지만 evaluator가 checkbox/`CC-*`만 가정해 실제 button/`SMP-*` 다형성에서 locator timeout으로 score를 쓰지 못했다. 1.9.852는 `stopped-preregistered`로 영구 동결했고 order3은 미실행이다. 모델 결과 복사본을 provider-free 재평가하면 20/100·UI-Resolved=false로 정상 terminal score가 나온다.
+- cold-chain evaluator는 checkbox/switch/button/combobox filter, arbitrary visible shipment prefix, focusable row/button/link action을 role/name으로 판별하고 미지원 control을 crash가 아닌 failure score로 기록하도록 고쳤다. 두 oracle+valid button variant+missing-filter+3 mutant 회귀 6/6이 green이며 controller는 향후 evaluator failure receipt SHA를 동결한다.
+- controller commit `55a90134`를 authority로 실제 1.9.850 plan/receipt를 발급했다. plan SHA `a51317ce…5382`, source authority `3639f309…3305`, schedule `5ae75f2b…0280`, provider/model/Cursor0이다. plan을 commit한 뒤에만 fresh root prepare/audit를 진행한다.
+- 1.9.850 fresh root의 provider-zero prepare/audit가 3/3 PASS했다. 이어 run path가 셀 시작 state를 원자 기록하고 Codex 1회→controller-owned DS proof→4-viewport task evaluator→terminal checkpoint를 수행하도록 구현됐다. provider success인데 evaluator artifact가 없으면 root를 중단하고, 모델 실패/timeout은 retry 없이 valid terminal failure로 남긴다. run-path commit 때문에 1.9.850 root는 실행하지 않고 새 1.9.851 authority로 재발급한다.
+- run controller commit `f2b74be9`로 1.9.851을 fresh 발급했다. plan `8f037336…a735`, source authority `fcfb22ce…744a`, schedule `5ae75f2b…0280`, generation provider/model/Cursor0이다. plan commit→fresh prepare/audit→order1 단일 실행 순서를 유지한다.
+- in-app browser session `omd-autopilot-smoke-1.9.851`과 blank tab을 실제 생성했지만 1.9.851 plan에 결합되지 않아 실행하지 않았다. run controller는 이제 exact plan SHA·browser ID·session·tab을 provider-zero receipt로 봉인하고 receipt 없이는 state를 바꾸기 전 거부한다. 이 변경을 commit한 뒤 최종 fresh 1.9.852를 발급한다.
+- final fresh 1.9.852 plan을 controller commit `4b114b59`에서 발급했다. plan `9718e9a9…94c7`, source authority `a8a2622a…06b0`, generation provider/model/Cursor0이다. 다음은 plan commit→fresh prepare/audit→동명 in-app browser receipt→order1 실행이다.
+- provider-zero 결과는 controller/evaluator calibration일 뿐 자율 모델·스킬 성능 증거가 아니다. 실제 DESIGN.md authoring loop의 Luna/high 3-task smoke, same-prompt competitor matrix, 3-model transfer와 blind review가 남아 2.0 promotion과 public one-shot claim은 계속 BLOCK이다.
+- general full regression은 79 files/1,024 pass/54 skip 뒤 resource-contention 5초 timeout 7건이 있었고, 해당 두 파일을 단일 worker로 재실행해 115/115로 모두 통과했다. lint/build/diff-check도 green이다. `web/public/llms-full.txt`는 기존 사용자 변경으로 계속 제외한다.
+- `/benchmarks`가 1.9.826 exact51 결과와 1.9.827 public claim policy를 SHA 검증된 generated data로 소비한다. 최신 checkpoint를 hero 바로 아래에 두고 51/51 terminal·38/51 objective·34/51 objective+proof·36.89M tokens(50/51)를 함께 공개한다.
+- effort는 결과순이 아니라 low→medium→high→xhigh→max→ultra 의미 순서로 표시한다. high는 측정된 OmD 기본값일 뿐 winner가 아니며 explicit effort 보존·auto escalation0·max/ultra opt-in을 화면에서 명시한다.
+- 공개 화면은 model leaderboard·provider identity·cross-model superiority·statistical reliability·2.0 promotion claim을 만들지 않는다. RESULTS, claim policy, policy audit 원문을 바로 연결하며 configuration-only attribution 경계를 표시한다.
+- desktop 1675×907과 mobile 390×844 browser-harness 검수에서 수평 overflow0, high badge single-line을 확인했다. root full925 pass/5 skip·web full832 pass·root/web lint·root/web build·generated-data check·diff-check가 green이다.
+- 1.9.827은 Codex Luna/Terra/Sol의 `ui-design-execution`에서 effort 미지정 시 OmD 기본값을 `high`로 둔다. catalog native default는 바꾸지 않고 explicit supported effort는 그대로 보존하며 unknown/unsupported는 fail-close한다.
+- 실패 뒤 max/ultra 자동 escalation·higher-effort retry·model/effort fallback은 모두 금지다. max/ultra는 opt-in only이며 non-Codex runtime은 effort를 명시해야 한다.
+- 공개 claim은 `public-descriptive-configuration-only`로 제한했다. 3 fixed tasks·cell당1 trial·objective/proof 분리·tokens50/51 coverage·configuration attribution을 반드시 밝히며 provider identity·ranking·superiority·reliability·industry-best·2.0 단독 승격 claim은 금지한다.
+- exact SUMMARY/RESULTS SHA와 portable facts를 재검산하는 policy audit는 PASS다. frontier readiness는 pass2·partial3·open3·external2, `BLOCK_2_0_PROMOTION`으로 변함없다. full test925 pass/5 skip·lint·build·diff-check green이다.
+- 1.9.826 exact block은 51/51 terminal valid·execution complete다. objective UI-resolved38/51(74.51%), objective+proof 동시 pass34/51(66.67%), 평균83.51/85·중앙85이며 유효 실패는 objective12+timeout1이다.
+- 관측 토큰은50/51 합계36,890,716, wall 합계12,528.833초다. Luna15/15, Terra12/18, Sol11/18 objective pass이며 effort별 objective pass는 low7/9·medium6/9·high8/9·xhigh7/9·max7/9·ultra3/6이다. public model identity가 아니라 exact Codex configuration attribution이다.
+- final aggregate는 plan/task/schedule·execution-state·controller record hash·routing attestation·immutable catalog authority를51/51 재계산해 `interpretation_allowed:true`다. 1.9.825는 denominator에서 완전히 제외했으며 entry-identity/pageerror 회귀도0이다.
+- 집계기만 v18 task-set projection에서 `task_tree_files`·baseline provenance/methodology를 누락해 첫 집계를 fail-close했다. 생성기와 동일한 projection으로 고치고 manifest mutation 회귀를 추가했으며 실제 `SUMMARY.final.json`과 `RESULTS.md`를 생성했다.
+- 다음은 이 공개 surface의 유입·source-open·docs 이동 계측을 실제 배포 환경에서 확인하고, 2.0 진척은 별도 unresolved normative gate의 fresh evidence로만 만든다.
+- v18 raw 기준선3개는 schema0.7/`ui-resolve-objective-2026q3-entry-identity-v1`로 provider-free 재생성했고 모두75/85·responsive/accessibility만 red다. static receipt0.3의 classic-inline-script compile gate와 evaluator entry-identity critical gate를 함께 봉인했다.
+- 1.9.826은 Codex0.146.1/cache client0.146.1 exact-match, immutable local catalog SHA `77df9127…6f5f`, Luna5·Terra6·Sol6 exact17 pair만 허용했다. cache는 provenance-only, `model_catalog_json`만 execution authority이며 Cursor·Claude·retry·replacement·fallback·substitution은0이다.
+- 1.9.825는 checkpoint3 뒤 order4 `pollen-luna-max-r1-omd`에서 evaluator context loss로 영구 동결됐다. 유효3셀 합계는735,130ms·2,271,261tokens, provider 노출4셀 합계는1,000,940ms·3,153,662tokens이며 order4는 score/record가 없어 결과에서 제외한다.
+- 1.9.824 first cell은 provider turn1회 뒤 routing authority에서 fail-close됐다. CLI0.146.1이 client0.147.0 cache를 `missing field base_instructions`로 거부하고 isolated cache를 0.146.1 형식으로 refresh해 pinned profile이 바뀌었다. 유효 완료0/51이며 root는 영구 동결·재사용 금지다.
+- 해당 셀은 candidate/final exact·browser acceptance·objective85/85였지만 `invalid-attribution`, `ui_resolved:false`다. 사용량은 input636,370(cached576,256), output5,372, reasoning970이며 model/route provider-report는 null이다. 결과를 집계·인용하지 않는다.
+- complete-block은 CLI version과 cache client version exact-match를 provider 전에 강제한다. 0.146.1 compatible cache의 Luna5·Terra6·Sol6 exact17 pair를 새 immutable catalog authority로 분리했으며, post-run cache TTL drift는 execution routing에서 제외하고 diagnostics로만 다룬다.
+- 1.9.823 첫 runner는 exact provider child spawn 전에 중단됐다. legacy preflight가 `.benchmark/codex-home/auth.json`을 symlink로 먼저 만든 뒤 exact installer가 regular-file 계약 위반을 올바르게 거부했다. 완료0/51, provider/model/Cursor/Claude0이며 해당 root는 `stopped-preregistered`로 영구 동결한다.
+- local preflight 범위에는 browser-harness doctor, Codex login status, `omd1823` controller pre-edit browser 측정1이 있었다. doctor의 built-in PyPI release check가 실행됐고 anonymous PostHog가 시도됐을 가능성은 있으나, benchmark prompt/page body/model request는 전송되지 않았다.
+- 수정본은 exact lock을 doctor보다 먼저 읽고 auth/cache를 isolated regular file로 설치하며 두 doctor를 locked Codex wrapper에 고정한다. symlink·foreign bytes·누락 lock은 mutation 없이 fail-close한다. full test909/909(3 skip), lint, build green이다.
+- browser-harness telemetry opt-out 3종은 OmD doctor env에서 강제되며 PyPI/PostHog는 Codex allowlist에 없다. 수정·실패증적은 `50df3765`에 커밋됐다. 1.9.824 catalog lock은 `2139a911`, local browser는 `omd1824`/CDP9364다.
+- fresh 1.9.824 plan은 plan SHA `2bc8d6fa…`, task set `db9afcab…`, schedule `c23b0fbf…`, Codex-only exact51셀이다. generation provider/model/browser/network/Cursor/Claude0이며 다음은 plan commit→prepare/admission→`--max-new-cells 1` 연속 실행이다. 1.9.823 root 재사용은 금지한다.
+- 1.9.822 첫 runner 호출은 provider 전에 `prepared-matrix-admission:execution-artifact-present`로 중단됐다. runner가 lease를 만든 뒤 lease 부재를 요구하는 standalone audit를 호출한 자기충돌이며 provider/model/browser/Cursor/Claude 노출은 모두0이다. 해당 root는 동결하고 재사용하지 않는다.
+- 수정된 controller는 exclusive lease→정확한 owned-lease-aware preparation audit→immutable runtime preflight→runtime admission receipt atomic persist→controller pre-edit→provider 순서를 강제한다. standalone audit는 여전히 모든 lease를 거부하며 crash-resume과 receipt drift도 provider 전에 fail-close한다.
+- admission ordering 수정은 commit `e2c9c05a`, focused95/95, full test906/906(3 skip), lint, build, diff-check green이다. 1.9.823 auth/cache snapshot은 `/private/tmp/omd-codex-auth-pin-1.9.823`에 immutable regular files로 복사됐고 SHA는 1.9.822 authority와 exact-match한다.
+- fresh plan은 source commit `bf935702`, local browser-harness `omd1823`/CDP9363, plan SHA `839f9a55…`, task set `db9afcab…`, schedule `c23b0fbf…`로 exact51셀을 사전등록했다. generation provider/model/browser/network/Cursor/Claude 호출은0이다. 다음은 plan commit→prepare/admission→51셀 `--max-new-cells 1` 연속 실행이다.
+- 51셀 계약은 Codex-native only, serial·720s·pacing30s·checkpoint1, retry/replacement/fallback/model·effort·task substitution/Cursor/Claude0이다. 1.9.822 exact plan SHA `b15ade46…`, task set `db9afcab…`, schedule `c23b0fbf…`는 실패 증적으로만 보존한다.
+- 1.9.820 checkpoint4 `entomology-luna-r2-omd`는 objective85/85·candidate exact였지만 `.decision-target{font-size:17px}`가 pre-edit15px typography lock을 바꿔 proof gate가 red다. artifact는 measured browser1이지만 closure open이다.
+- 1.9.816 Reliability root는 `contract-proof-noncompliance` hard-stop으로 4/9에서 동결했다. 남은5셀은 provider-unexposed이며 same-root resume/retry/replacement가 금지된다; Reliability@3나 우위·2.0 pass claim을 만들 수 없다.
+- 실행은 Codex-native Luna/high만, serial·720s·pacing30s·checkpoint1셀·retry/replacement/fallback/substitution0이다. exact `omd1816` browser attach와 `/private/tmp/omd-codex-auth-pin-1.9.816` immutable catalog snapshot을 사용한다.
+- 다음 허용 작업은 static-preview가 registered row/carrier의 pre-edit typography drift를 promotion 전에 fail-close하도록 `omd:apply` reflow guard를 보강하는 것이다. 1.9.816 root 실행은 금지한다.
+- 1.9.815 runner는 exact Codex cache/profile을 잠근다. Luna5·Terra6·Sol6=17 pair를 지원하되 cache SHA/fetched-at/client-version, profile SHA/default/ordered effort 중 하나라도 drift하면 provider 전에 중단한다.
+- provider routing은 exact Luna/Terra/Sol만 Codex-native로 허용하고 unknown runtime/model, fabricated suffix, implicit migration을 default-deny한다. Cursor included-only guard는 유지되며 이번 검수는 Cursor0이다.
+- 새 `multi-task-repeated-reliability` normalization은 task≥2, 동일 trial set, exact single arm/model/effort/timeout/skill/evaluator/source-contract와 within-task byte equality를 admission에서 강제한다. bench suite563/563+lint green이다.
+- 1.9.814 task-lock은 source commit `d8ffb76b`와 task/prompt/starter/baseline/source-contract hash를 봉인했다. browser-harness `omd1813`에서 h1/main/view exact, records4/5/6, raw overflow113/191/197px를 관측했고 provider/model/Cursor0이다.
+- 1.9.813은 Stage A eligible OmD arm의 확장을 위해 fresh `tidal-chart-accession`/`entomology-tray-dispatch`/`choreographic-score-return`을 추가했다. 밀도는 record4/5/6·container6/7/8이며 provider/model/Cursor0이다.
+- 세 raw 기준점은 모두75/85이고 responsive+accessibility만 red, 나머지 task/journey/design/evidence gate는 green이다. 공개 metric 정의대로 다음 denominator는 task3×독립 trial3=9셀이고, 최근의 task3×one-shot 진단 shorthand와 분리한다.
+- 51셀 Luna/Terra/Sol all-effort 검수는 complete-block 정책·fresh v18 tasks·전용 집계기 통합 검증 뒤 진행하되, typography guard 회귀가 green이 되기 전 provider 실행은 시작하지 않는다.
+- 최종 모델 effort 검수는 별도 fresh root로 유지한다. 현재 Codex catalog의 exact 조합은 Luna5(low/medium/high/xhigh/max), Terra6(+ultra), Sol6(+ultra), 총17이며 alias/substitution은 금지한다.
+- 1.9.811 Stage A는 exact Luna/high 12/12 valid complete다. retry/replacement/fallback/model substitution/Cursor0이며 전체 wall3,926,266ms·tokens8,860,037이다.
+- arm 결과는 OmD3/3 UI-Resolved+proof(평균85,216.7s,713,108t), Anthropic0/3(77,335.8s,880,668t), Impeccable0/3(77,351.1s,513,473t), UIUX0/3(72.67,405.1s,846,097t)다.
+- frozen Stage A rule상 OmD만 별도 Reliability@3 확장 eligible이다. qualification은 public ranking/statistical superiority/2.0 release gate가 아니다. 다음은 exact eligible arm의 fresh Reliability@3를 별도 task/root로 사전등록한다.
+- 1.9.810 checkpoint11 `seed-luna-r1-impeccable`은 valid complete지만79/85·UI-Resolved false다. revision1·static closure3(실패1)·browser0·proof false, wall244,357ms·tokens243,744다.
+- seed task4/4는 OmD85/Anthropic81/Impeccable79/UIUX73이며 OmD만 UI-Resolved+proof compliant다. Impeccable은 OmD 대비 objective-6·wall-4.03%·tokens-62.53%의 cost advantage를 보였다. 마지막 셀은 `score-luna-r1-uiux`다.
+- 1.9.809 checkpoint10 `astro-luna-r1-anthropic`은 valid complete지만73/85·UI-Resolved false다. revision4·static closure19(실패4)·browser3·recovery4·proof false, wall460,983ms·tokens1,872,641이다.
+- astro task4/4는 OmD85/Impeccable77/Anthropic73/UIUX70이며 OmD만 UI-Resolved+proof compliant다. 이 task-local 결과도 qualification evidence일 뿐 public ranking은 아니다. 다음은 `seed-luna-r1-impeccable`이다.
+- 1.9.808 checkpoint9 `score-luna-r1-omd`는85/85·UI-Resolved·revision1·static closure1·browser proof1·candidate exact로 통과했다. wall212,581ms·tokens956,605, recovery0이다.
+- score task에서 Anthropic 대비 objective+8·wall-26.43%·tokens+154.45%, Impeccable 대비 objective+10·wall-56.43%·tokens+2.07%다. 품질/proof win과 token tradeoff의 descriptive pair다. 다음은 `astro-luna-r1-anthropic`이다.
+- 1.9.807 checkpoint8 `seed-luna-r1-uiux`는 valid complete지만73/85·UI-Resolved false다. revision3·static closure8(실패1)·browser0·proof false, wall452,809ms·tokens1,143,212다.
+- 동일 seed task의 OmD 대비 objective-12·wall+77.83%·tokens+75.76%로 objective/proof/efficiency loss다. qualification 8/12이며 다음은 `score-luna-r1-omd`다.
+- 1.9.806 checkpoint7 `astro-luna-r1-impeccable`은 valid complete지만77/85·UI-Resolved false다. revision2·static closure3(실패2)·browser0·proof false, wall321,000ms·tokens359,484다.
+- 동일 astro task의 OmD 대비 objective-8·wall+75.46%·tokens-32.46%이며 objective/proof loss다. qualification 7/12이며 다음은 `seed-luna-r1-uiux`다.
+- 1.9.805 checkpoint6 `score-luna-r1-anthropic`은 valid complete지만77/85·UI-Resolved false다. revision2·static closure4·browser0·proof compliance false, wall288,934ms·tokens375,956이다.
+- 동일 score task의 Impeccable 대비 objective+2·wall-40.78%·tokens-59.88%지만 둘 다 objective/proof 실패다. 이는 winner가 아니라 descriptive both-failed pair다. 다음은 `astro-luna-r1-impeccable`이다.
+- 1.9.804 checkpoint5 `seed-luna-r1-omd`는85/85·UI-Resolved·revision1·static closure1·proof/candidate exact로 통과했다. wall254,627ms·tokens650,454, recovery0이다.
+- 동일 seed task의 Anthropic 대비 objective+4·wall-1.11%·tokens+65.34%다. 품질/proof 우위와 토큰 열세가 함께 있는 단일 pair descriptive 관측이며 ranking/promotion 근거가 아니다. 다음은 `score-luna-r1-anthropic`이다.
+- 1.9.803 checkpoint4 `astro-luna-r1-uiux`는 valid complete지만70/85·UI-Resolved false다. revision2·static closure3(실패2)·browser mechanism0·proof compliance false, wall394,333ms·tokens612,082다.
+- 4/12에서 각 arm 1회가 관측됐지만 서로 다른 task이므로 direct ranking은 금지한다. 현재 frozen order의 다음 셀은 동일 seed task의 OmD arm `seed-luna-r1-omd`다.
+- 1.9.802 checkpoint3 `score-luna-r1-impeccable`은 valid complete지만75/85·UI-Resolved false다. revision4·static closure3(실패2)·browser mechanism0·proof compliance false이며 wall487,925ms·tokens937,192다.
+- Impeccable 결과도 no-retry 표본으로 보존한다. task가 서로 달라 현재 OmD/Anthropic/Impeccable 단일 관측을 직접 arm 우열로 비교하지 않는다. 다음 frozen cell은 `astro-luna-r1-uiux`다.
+- 1.9.801 checkpoint2 `seed-luna-r1-anthropic`은 valid complete지만81/85·UI-Resolved false다. content/evidence는 통과했으나 static closure4(실패1)·browser recovery1·proof compliance false이며 wall257,491ms·tokens393,406이다.
+- 실패는 qualification 표본으로 그대로 보존하고 retry/replacement하지 않는다. 현재 arm 관측은 OmD1/1 pass, Anthropic0/1 pass뿐이며 아직 비교 결론은 금지한다. 다음 frozen cell은 `score-luna-r1-impeccable`이다.
+- 1.9.800 checkpoint1 `astro-luna-r1-omd`는 Luna/high에서85/85·UI-Resolved·revision1·static closure1·proof/candidate exact로 통과했다. wall182,948ms·tokens532,265이며 browser recovery/retry/replacement/fallback/Cursor0이다.
+- qualification 1/12만 완료됐으므로 arm 비교나 public claim은 금지한다. 다음 frozen cell은 `seed-luna-r1-anthropic`이며 30초 pacing을 충족한 뒤 같은 root에서 정확히 1셀만 실행한다.
+- 1.9.799는 exact current OmD+Anthropic current+Impeccable4.0.4 bounded+UI UX Pro Max2.13.0 × fresh3의 Luna/high Stage A 12셀을 사전등록했다. serial·timeout720s·pacing30s·checkpoint1셀·retry/replacement/fallback/model substitution/Cursor0이다.
+- provider-zero prepare는 12/12이며 detached/clean/publishable/commit/source-tree/task-pairing 전부12/12다. OmD는 dirty workspace가 아니라 commit `c7031e2c`의 exact 5-file tree를 사용하며 provider/model/Cursor 호출은 아직0이다.
+- qualification은 Verified 승격·public best-skill·statistical-superiority 근거가 아니다. 다음 허용 작업은 frozen order 첫 셀 `astro-luna-r1-omd` 단독 실행이며 실패 시 재시도·대체 셀을 만들지 않는다.
+- 1.9.798은 current-epoch frontier skill 비교용 fresh repair3을 provider/model 노출 전에 잠갔다. astronomical/seed/orchestral은 raw DESIGN.md 모두75/85이며 responsive+accessibility만 red, record density4/5/6이다.
+- exact task tree·prompt·starter·DESIGN·baseline hash를 고정했다. browser-harness `omd1795`로 3/3 load·h1/main/view exact와 raw overflow107/185/194px를 확인했고 provider/model/Cursor0이다.
+- 1.9.797은 Anthropic current, Impeccable4.0.4, UI UX Pro Max2.13.0 official snapshot을 exact commit+source-tree hash+license로 고정했다. detached/clean/install smoke3/3, third-party installer/hook/provider/Cursor0이다.
+- Impeccable 최신판은 prompt-only가 아니므로 full 152-file local workflow를 허용하되 hook/live/network/self-browser만 차단한 별도 current-epoch arm으로 분리했다. historical arms/reports는 유지하고 cross-epoch aggregation은 금지한다.
+- 1.9.796은 1.9.795 fresh lifecycle 증거로 `routing-ownership-reverify`와 `council-first-human-escalation`을 pass로 승격한다. readiness는 pass2·partial3·open3·external2이며 전체 2.0 promotion은 계속 BLOCK이다.
+- 다음 내부 최우선은 `verified-skill-lift`다. strongest eligible frontier skill과 current-epoch fresh paired reliability를 먼저 고정하며 hidden scale·three-model lift는 그 뒤다.
+- 1.9.795 live는 routed lifecycle route3/3·implementation2/2(각85/85)로 통과했다. lane4+owner2=provider6, pre-implementation write0, blocker provider/edit0+starter exact, unplanned question/retry/replacement/fallback/Cursor0이다.
+- 두 구현 셀은 revision1·static closure1·measured exact `omd1795` browser1·recovery0·candidate/final byte exact다. 합산 input3,459,785(cached3,210,752), output32,685, reasoning15,254, wall715,027ms이며 descriptive-only다.
+- 이 결과는 fresh interview/block/advisory lifecycle denominator를 닫지만 subjective preference나 전체 2.0 gate를 단독 승격하지 않는다. 다음은 normative readiness snapshot에 반영하고 다음 내부 gap을 선정한다.
+- 1.9.795는 fresh interview+advisory implementation2와 blocker sentinel1을 exact Luna/high로 사전등록했다. lane4+implementation2=provider6, serial, retry/replacement/fallback/model substitution/Cursor0을 잠갔다.
+- cell gate는85/85·revision1·proof/candidate exact이며 blocker는 provider/edit0·starter byte exact다. 다음은 fresh root provider-zero admission과 blocker 준비 후 lane executor live를 실행한다.
+- 1.9.794는 matrix의 declared read-only lane을 실행·격리·artifact validate·reconcile하고 interview receipt 뒤에만 master를 재개하는 executor를 추가했다. provider-zero route3/3·lane4/4·checkpoint 전 product write0·blocker dispatch/edit0·Cursor0이다.
+- executor unit1/1+lint green이다. 이 결과는 ordering 증거이며 model advice/UI 효과 증거가 아니므로 execution_allowed=false다. 다음은 exact Luna/high lane4+implementation2 no-retry run을 별도 사전등록한다.
+- 1.9.793 provider-zero controller는 routed3/3, checkpoint 전 product write0, total product write0, provider/model/Cursor0으로 통과했다. controller unit1/1+lint green이다.
+- interview는 advisory2→exact `regulated-commitment` relay(master=false)→ledger/question hash receipt apply→resume_master다. blocker는 dispatch0→relay_blocked→answer0/master0이다. advisory-ready는 declared lane2 reconcile 후만 resume_master다.
+- 이 패치의 empty lane artifact는 ordering controller placeholder이지 model advice/effectiveness 증거가 아니다. execution_allowed=false를 유지한다.
+- 다음은 fresh root의 exact Luna/high lane4(2+0+2)와 executable route2의 single-owner revision1, blocker provider/edit0을 사전등록한다.
+- 1.9.792는 1.9.791 source commit `4f1fe866`을 authority로 fresh3의 task tree/prompt/starter/DESIGN/task/baseline/source-contract/council-oracle와 council helper·adapter·skill hash를 잠그었다. model exposure/provider/Cursor0이다.
+- lifecycle contract은 interview=exact answer receipt 전 write0, blocker=dispatch/write/answer0+starter byte exact, advisory=all read-only lane reconcile 전 write0, 실행 가능 route만 single owner revision1을 강제한다.
+- lock test1/1+lint green이며 execution_allowed=false다. 다음은 provider-zero lifecycle controller를 구현·검증한 뒤 exact Luna/high matrix를 별도 사전등록한다.
+- 1.9.791은 fresh UI 3개로 actual routed lifecycle denominator를 추가했다: papyrus=authority interview, photographic-proof=external blocker, ceramic=bounded advisory-ready다. raw baseline은 모두75/85·responsive/accessibility red로 정렬됐다.
+- full lifecycle adapter는 await_advisory/question/block/resume를 분리한다. interview/advisory는 reconcile 전 implementation=false, blocker는 dispatch0·relay_blocked·master=false다. focused10/10+lint green, provider/model/Cursor0이다.
+- browser-harness `omd1791` local CDP로 3/3 load·record count4/5/6을 확인했다. raw overflow110/188/194px는 baseline에 사전 기록된 의도된 responsive debt다.
+- 다음은 task/prompt/starter/oracle/helper/source hash를 잠그고, simulated answer receipt 후만 interview implementation을 허용하는 Luna/high no-retry lifecycle matrix를 사전등록한다.
+- 1.9.790은 1.9.789 Luna/high fresh UI matrix를 2.0 normative readiness에 반영했다. audit는 pass0/10·partial5·open3·external2, promotion BLOCK을 유지한다.
+- council gate에서 닫힌 범위는 zero-question `PROPOSE_PLAN` 3/3·paired loss0·unplanned question0이다. actual authority interview, external-evidence blocker, live bounded advisory dispatch는 미증명이므로 status를 partial로 유지했다.
+- 다음은 fresh 3-state experiment를 새 root에서 사전등록한다: interview는 simulated registered answer receipt 전까지 implementation0, blocker는 product edit0, advisory-ready는 bounded read-only dispatch 후 single owner만 실행한다.
+- 1.9.789 matrix는 6/6 valid complete다. current85/81/85(2/3), state-routed85/85/85(3/3), candidate W/T/L1/2/0·paired loss0·revision/proof/candidate exact6/6·recovery0·unplanned question0이다.
+- candidate total wall-6.01%, tokens-11.52%지만 descriptive only다. current가 Reliability@3에 실패해 prereg overall gate는 false이며, 이 결과만으로 2.0을 승격하지 않는다.
+- closed scope는 zero-question PROPOSE_PLAN path다. 다음 핵심 gap은 실제 product-authority interview와 external-evidence blocker에서 구현 모델이 checkpoint 뒤로 진행하지 않는 fresh state-routed end-to-end evidence다.
+- 1.9.788 checkpoint5 `slide-luna-r1-current`는 lifecycle/proof/revision/candidate exact는 clean이나 81/85·UI-Resolved false다. 동일 slide candidate85이므로 candidate paired +4이며 objective-failure-continue 계약으로 마지막 셀을 진행한다.
+- current Reliability@3는 이미 실패했으므로 overall prereg gate는 false가 확정됐다. 다음은 결과 해석을 완결할 `tape-luna-r1-state-routed`다.
+- 1.9.787 checkpoint4 `folio-luna-r1-state-routed`도 85/85·revision1·proof/candidate exact로 통과해 첫 pair는 85↔85다. candidate는 이 pair에서 wall+20.1%, tokens+35.5%로 효율 열세다.
+- arm pass는 2:2이며 다음은 slide pair를 닫는 `slide-luna-r1-current` 1셀이다.
+- 1.9.786 checkpoint3 `tape-luna-r1-current`도 85/85·UI-Resolved·revision1·proof/candidate exact, recovery0으로 통과했다. wall245,521ms, tokens1,412,630이며 arm pass는 current2/candidate1이다.
+- 다음은 첫 exact pair를 닫는 `folio-luna-r1-state-routed` 1셀이다.
+- 1.9.785 checkpoint2 `slide-luna-r1-state-routed`도 85/85·UI-Resolved·revision1·proof/candidate exact, recovery0으로 통과했다. wall197,295ms, tokens899,200이며 현재 arm pass는 1:1이다.
+- 다음은 `tape-luna-r1-current` 1셀이다. cross-task raw 비용 비교는 결론에 사용하지 않고, 세 paired task가 끝난 뒤에만 별도 축으로 집계한다.
+- 1.9.784 checkpoint1 `folio-luna-r1-current`는 85/85·UI-Resolved·revision1·proof/candidate exact, browser recovery0으로 통과했다. wall152,098ms, reported tokens535,519, Cursor0이다.
+- 다음은 같은 frozen root의 `slide-luna-r1-state-routed` 1셀이다. completed cell은 재검증·재실행하지 않는다.
+- 1.9.783은 1.9.782 matrix의 paired admission6/6과 exact omd1782 preplan6/6을 provider/model/Cursor0으로 통과했다. task/skill lock, paired rotation, product untouched, shipped runner measured1, existing browser attach가 모두 attested됐다.
+- 다음은 checkpoint당 1셀씩 Luna/high를 실행한다. root retry/replacement/fallback/model substitution은 금지하며 첫 셀은 `folio-luna-r1-current`다.
+- 1.9.782는 current vs state-routed council-first Luna/high 2×3을 사전등록했다. fresh3 paired/fixed order, serial, timeout720s, pacing30s, checkpoint1셀, retry/replacement/fallback/Cursor0이며 유일한 arm delta는 activation+provider-zero context packet이다.
+- gate는 양 arm Reliability@3, cell85/85·UI-Resolved·revision1·proof/candidate exact, paired loss0, unplanned question0이다. 다음은 exact local browser socket을 준비하고 provider-zero matrix preparation/admission/preplan6/6을 수행한다.
+- 1.9.781은 benchmark candidate에 ledger→handoff→minimum context-plan provider-zero preparation을 추가했다. fresh3 전부 PROPOSE_PLAN→resume_master, registered question0, defer2, model lane/provider/Cursor0이며 non-executable state는 fail-close한다. focused7/7+lint green이다.
+- 다음은 이 adapter의 exact commit/skill identity를 고정하고 current vs state-routed candidate Luna/high 2×3 matrix를 provider 전에 사전등록·준비한다.
+- 1.9.780은 1.9.779 source commit을 authority로 fresh3의 exact tree/prompt/starter/baseline/source-contract hash와 human-intervention contract를 provider/model/Cursor0으로 잠갔다. 아직 execution은 금지다.
+- 다음은 provider-zero `state-routed-council-first` sandbox 준비 모드를 구현·검증한 뒤 current vs candidate Luna/high 2×3 단일변수 matrix를 사전등록한다.
+- 1.9.779 council state-routing fresh denominator로 manuscript-folio/botanical-slide/magnetic-tape return 3개를 provider/model/Cursor0으로 생성·finalize했다. raw baseline은 전부 75/85이며 responsive+accessibility만 red, inventory111, focused6/6+lint green이다.
+- 다음은 이 task bytes commit을 source authority로 삼아 exact tree/prompt/starter/baseline/source-contract hash를 잠그고, current vs state-routed council-first Luna/high 2×3 단일변수 비교를 사전등록한다.
+- 1.9.778은 2.0 normative10-gate snapshot을 1.9.777 증거까지 갱신했다. machine audit 결과 pass0/10, partial5, open3, external2이며 promotion은 계속 BLOCK이다.
+- routing gate에는 3-host install/update/doctor self-test를, council gate에는 1.9.773 exact3/3·provider3→1 결과를 반영했다. 둘 다 partial 유지이며 작은 checkpoint canary를 UI 품질/반복 end-to-end 증거로 과장하지 않았다.
+- 다음 내부 최우선 gap은 `council-first-human-escalation`의 fresh repeated end-to-end runtime이다. provider 전 unseen tasks·oracle·human-intervention·UI resolved 조건을 고정하고 Luna/high no-retry matrix를 별도 사전등록한다.
+- 1.9.777 npm dry-run이 `design-council-handoff.cjs`와 `design-harness-context-plan.cjs`가 package allowlist에서 빠진 실제 배포 차단 결함을 발견했다. 두 helper를 `package.json#files`에 추가했다.
+- 재실행 tarball은 entry565, required5/5, missing0이다. workflow contract에 deterministic helper4개 package assertion을 추가해 재발을 막았다.
+- 첫 dry-run은 사용자 npm cache의 root-owned 파일로 EPERM이었고 기존 권한은 건드리지 않았다. 격리 `/private/tmp` cache로 검증을 완료했다.
+- 1.9.777 다음 목표였던 2.0 rubric 갱신과 gap 선정은 1.9.778에서 완료됐다.
+- 1.9.776은 `omd doctor --self-test`를 추가했다. 설치 planner가 packaged source와 byte-identical일 때만 임시 PROPOSE_PLAN fixture로 실행해 master+execution plan을 검사한다.
+- 수정된 로컬 helper는 절대 실행하지 않고 drift issue로 fail-close한다. self-test focused4/4, doctor/update37/37, lint/diff-check green이며 provider/model/network/Cursor0이다.
+- update skill의 사후 진단과 CLI quickstart를 `doctor --self-test`로 연결했다. npm contents smoke는 1.9.777에서 완료됐다.
+- 1.9.775는 Claude/Codex/OpenCode 설치본에서 context helper와 execution sidecar를 제거한 뒤 `omd update`를 실행했다. safe update가 세 host 모두 파일을 복구했고 native helper가 ready→master+execution 계획을 다시 생성했다.
+- installed+update smoke2/2, lint/diff-check green이며 provider/model/Cursor0이다. OmD 비관리 파일은 건드리지 않는 기존 update 계약을 그대로 사용했다.
+- 1.9.775 다음 목표였던 선택적 doctor 실행 진단은 1.9.776에서 완료됐다.
+- 1.9.774는 실제 임시 프로젝트에 Claude Code·Codex·OpenCode용 `omd-harness`/master를 설치하고, 각 host의 native data helper로 ready/questions/blocked 3상태를 실행했다.
+- 3 host×3 state 모두 동일했다: ready만 master+execution sidecar, questions/blocked는 master0+sidecar0 exact relay. provider/model/Cursor0이며 새 production smoke1/1+lint/diff-check green이다.
+- 1.9.774 다음 목표였던 update 경로 보존 smoke는 1.9.775에서 완료됐다.
+- 1.9.773은 checkpoint runner가 `context-plan.json`을 실제 소비하도록 연결했다. ask_user/blocked는 provider0 exact relay, PROPOSE_PLAN만 master kernel+execution sidecar로 Luna/high 1회를 사용한다.
+- 동일 exact3 live는3/3, provider3→1(-66.67%), Cursor/timeout/retry/unauthorized write0이다. 질문4개와 external blocker를 provider 없이 정확히 보존했다.
+- ready 동종 셀은 input137,095→106,596(-22.25%), output-6.12%, reasoning+26.81%, wall-2.21%다. 단일 replay/cache/runtime 변동이므로 causal 효율 주장은 금지다.
+- master byte gate≤12KB, master+execution≤18KB와 unselected sidecar 금지 prompt를 추가했다. focused9/9, install/doctor77/77, lint/diff-check green이다.
+- 1.9.773 다음 목표였던 installed-host production smoke는 1.9.774에서 완료됐다.
+- 1.9.772는 `design-harness-context-plan.cjs`로 handoff state→최소 context를 결정론화했다. ask_user/blocked는 master0+sidecar0 exact relay, plan은 execution, slot conversation은 conversation, visual generation만 visual sidecar를 추가한다.
+- helper는 provider/model 호출 없이 `handoff/context-plan.json`을 쓰며 harness launcher가 이를 따른다. Claude/Codex/OpenCode 설치 data tree와 doctor 필수 helper에 포함됐다.
+- context planner6-state matrix + workflow/catalog/doctor/install 총90/90, lint/diff-check green, provider/Cursor0이다.
+- 다음 1.9.773은 installed tree에서 context-plan byte budget과 forbidden sidecar leakage를 정량 gate로 추가하고, deterministic checkpoint runner가 context plan을 실제 사용하도록 연결한다.
+- 1.9.771은 deterministic checkpoint에서 비활성인 persona/slot/question/vague-modifier 규칙을 `master-conversation.md`로 분리했다. kernel22,378B→11,218B(-49.87%), original37,261B 대비-69.89%다.
+- conversation sidecar4,544B를 합쳐도15,762B이며 기존 master보다29.57% 작다. deterministic ready/interview/blocked relay는 sidecar를 읽지 않고 기존 questions_file을 exact relay한다.
+- doctor와 Claude/Codex/OpenCode 설치본은 새 sidecar를 필수·native path로 취급한다. workflow/catalog/doctor/install88/88, lint/diff-check green, provider/Cursor0이다.
+- 1.9.770 Luna/high repeat는 exact3/3, unauthorized write/timeout/retry/Cursor0이다. checkpoint compliance는 유지됐다.
+- master bytes-39.94%에도 input420,483→439,152(+4.44%), cached+4.90%, output-4.68%, reasoning-11.32%, wall-9.03%다. replay/cache/runtime variance 때문에 causal 비용 절감 주장은 금지다.
+- 1.9.770은 1.9.768과 task/oracle/order/model/effort/prompt가 동일한 exact3 repeat를 fresh fixture로 잠갔다. provider-zero3/3, provider/model/Cursor0이다.
+- candidate master는22,378B(-39.94%)이며 legacy/execution sidecar를 포함한 fixture/runner/harness/master/helper hash를 잠갔다.
+- 1.9.769는 `agents/omd-master.md`를 authority/handoff kernel과 conditional phase sidecar 2개로 분리했다. 37,261B/619줄→22,378B/381줄(-39.9%/-38.4%)이다.
+- legacy/URL/Figma/production은 `master-legacy-production.md`, plan/design/ship/archive는 `master-execution-phases.md`에서 해당 상태일 때만 읽는다. mandatory checkpoint #1/#2/#3와 unknown-route fail-close는 보존됐다.
+- Claude/Codex/OpenCode 설치본의 sidecar 경로를 각 채널 native root로 정규화했다. doctor/install/workflow/catalog 88/88, lint/diff-check green, provider/Cursor0이다.
+- 다음 1.9.770은 1.9.766/768과 동일한 exact3 Luna/high checkpoint canary를 fresh fixture로 반복한다. compliance와 비용은 descriptive-only이며 UI 품질/2.0 승격 근거로 쓰지 않는다.
+- 1.9.768 Luna/high repeat는 exact3/3, unauthorized write/timeout/retry/Cursor0이다. checkpoint compliance는 유지됐다.
+- input457,473→420,483(-8.09%), cached-1.58%, reasoning-10.34%, output+0.82%지만 summed wall+14.29%다. ready는 크게 감소, interview는 증가해 task replay/cache/runtime variance가 크므로 causal cost claim은 금지다.
+- 1.9.768은 1.9.766과 task/oracle/order/model/effort/prompt를 유지한 fresh exact3 repeat를 사전등록했다. task replay/cache confound 때문에 비용 변화는 descriptive-only다.
+- provider-zero deterministic3/3, provider/model/Cursor0이다. candidate initial harness30,194B(-38.05%)와 fixture/runner/harness/sidecar/master/helper hashes를 잠갔다.
+- 1.9.767은 visual/component/prototype에서만 필요한 grounding·asset·hero·motion detail을 `references/master-visual-grounding.md`로 분리했다. intake/checkpoint relay는 sidecar를 읽지 않는다.
+- 초기 `omd-harness/SKILL.md`는 48,736B/873줄→30,194B/629줄로 38.0%/28.0% 감소했다. sidecar 포함 정본은34,857B이며 중복 CDN catalog는 `omd-asset-fetch`로 단일화했다.
+- doctor는 새 sidecar 누락을 invalid skill sidecar로 진단한다. workflow/catalog/doctor/install/handoff93/93, lint/diff-check green, provider/Cursor0이다.
+- 1.9.766 live는 Luna/high exact3/3이다. ready→propose_plan, user-answerable→registered question4, external source→blocked를 정확히 지켰고 unauthorized write/timeout/retry/Cursor0이다.
+- provider3, input457,473(cached355,840), output3,924, reasoning1,508, summed wall107,962ms다. 첫 ready case input249,300으로 full harness/master contract context가 과도하다는 비용 경고가 확인됐다.
+- 1.9.766은 integrated harness checkpoint compliance만 보는 fresh3 canary를 사전등록했다. ready→propose_plan, user-answerable→exact4 relay_questions, missing brand source→halt_blocked가 oracle이다.
+- runtime Codex native, Luna/high, case당1회, concurrency1, retry/replacement0, timeout300s, Cursor 금지다. provider-zero deterministic3/3, provider/model/Cursor0이며 fixture/runner/harness/master/prime/handoff hash를 잠갔다.
+- 1.9.765는 council intake answer에 checkpoint/ledger/questions SHA-256 receipt를 요구한다. 질문 뒤 ledger가 바뀌거나 question packet이 stale하거나 동일 답을 두 번 적용하면 fail-close한다.
+- `omd doctor`는 각 채널 data root의 ctx/context/council prime/reconcile/handoff helper 5개를 필수 진단한다. handoff6/6, doctor33/33, install/update/workflow 포함92/92, lint/diff-check green이며 provider/Cursor0이다.
+- 1.9.764는 ledger→checkpoint/questions/`.handoff.json` 변환을 `design-council-handoff.cjs`로 코드화했다. model/provider 호출 없이 prepare/apply 두 모드로 동작한다.
+- fresh prime run 세 종류가 정확히 분리된다: existing-preserve는 PROPOSE_PLAN, user-answerable은 최대4 product-authority 질문, external-unverifiable은 질문0 blocked다. defer는 값 없이 보존하고 auto만 prefill한다.
+- Claude/Codex/OpenCode 설치본 모두 같은 harness/master semantics와 helper를 포함한다. handoff focused17/17, install44/44, lint/diff-check green이며 provider/Cursor0이다.
+- 1.9.763은 1.9.760–762에서 검증한 `decision_mode`/`authority_mode`, blocked와 interview 분리, blocked-first dispatch 억제를 canonical `skills/omd-harness/SKILL.md`와 `agents/omd-master.md`에 통합했다.
+- installed Codex smoke는 `omd-harness`와 `omd-master.toml` 모두 새 계약을 포함한다. workflow contract4/4, 관련 council/install suite55/55, lint와 diff-check가 green이며 Cursor/provider 호출0이다.
+- blocked는 사용자 선호 질문으로 위장하지 않고 필요한 외부 근거만 밝힌 뒤 plan 전 중단한다. user-answerable 결정은 interview에 남고, pre-existing blocker가 있으면 advisory lane을 실행하지 않는다.
+- 1.9.757은 기존 Cursor-hardcoded council pilot을 Codex-native Luna/high bounded runner로 교체했다. live는 runtime=codex + gpt-5.6-luna만 허용하고 Cursor fixture는 spawn 전 fail-close한다.
+- provider-zero는 case3, selected lane4, provider/model/Cursor0이다. baseline/council question1/1, handoff2/2, authority·blocked 보존 true, forbidden-auto0이다. lane은 max2·retry0·선언 artifact 외 write0 계약이다.
+- live attempt1은 parent sandbox가 Codex state DB를 열지 못해 provider 전 infra-invalid로 동결했다. 권한만 교정한 live2는 Luna/high lane4/4 정상, artifact4/4, timeout/retry/unauthorized-write/Cursor0이다.
+- safety gate는 authority·blocked 보존 true, forbidden-auto0이다. 질문1→1, handoff2→2, reversal0이라 interruption 감소는 입증하지 못했다. input474,376(cached405,248), output7,600, reasoning2,718, summed wall201,038ms다.
+- 1.9.757은 safe-advisory까지만 지지하고 effectiveness/UI lift 주장은 금지다.
+- 1.9.758 mixed selectivity provider-zero가 준비됐다. 단일 case에서 baseline interview4 중 audience/scope/CTA 3개는 defer oracle, regulated pricing1개는 mandatory interview다. selected lane2, provider/model/Cursor0이다.
+- 1.9.758 live는 Luna/high lane2/2, artifact2/2, timeout/retry/write/Cursor0이다. mandatory pricing은 보존했지만 질문4→3, correct defer1/3이라 selectivity gate는 fail이다.
+- critic은 audience/scope/CTA 모두 defer했으나 product-context가 audience/CTA를 interview로 유지했고 conservative reconcile이 충돌을 질문으로 남겼다. input107,539(cached74,496), output3,899, reasoning2,473, wall86,737ms다.
+- 1.9.759 provider-zero는 같은 mixed oracle을 fresh hash로 잠갔다. lane claim은 preserve-existing/choose-new/unknown을 필수 분류하고 defer는 preserve-existing일 때만 accept한다. reconcile의 interview 우선순위는 그대로다.
+- 1.9.759 live는 defer3/3을 달성했지만 pricing interview를 blocked로 바꿨다. raw evaluator가 blocked도 mandatory-retained로 오판해 provider-zero rescore로 exact interview를 강제했고 최종 gate는 fail(mandatory-loss1)이다.
+- 1.9.760 provider-zero는 external-unverifiable=blocked, user-answerable product choice=interview, preserve-existing=defer를 reconciler가 검증하도록 잠갔다. unit9/9 green이다.
+- 1.9.760 live는 Luna/high lane2/2, artifact2/2, write/timeout/retry/Cursor0으로 exact gate를 통과했다. 질문4→1, defer3/3, mandatory pricing interview 보존, forbidden-auto0이다.
+- input106,424(cached82,432), output2,939, reasoning1,548, wall76,539ms; correct deferral당 input35,474.67이다. 단일 calibration이라 일반 효과 주장은 금지다.
+- 1.9.761 authority matrix provider-zero가 준비됐다. no-dispatch control, mixed user-answerable pricing, external-unverifiable brand 3 cases와 exact disposition8개를 잠갔다.
+- selected lane4(0+2+2), provider/model/Cursor0, expected defer3, mandatory interview1, blocked1이다. provider-zero mismatch3은 mixed defer가 아직 실행되지 않은 정상 denominator다. unit10/10 green이다.
+- 1.9.761 live는 exact8/8, defer3/3, mandatory-loss0, blocked-retained, forbidden-auto0으로 matrix gate를 통과했다. Luna/high lane4/4, artifact4/4, write/timeout/retry/Cursor0이다.
+- input214,151(cached166,912), output5,962, reasoning3,195, wall154,464ms; deferral당 input71,383.67이다. missing-brand는 이미 blocked인데도 lane2를 소비했다.
+- 1.9.762 provider-zero는 pre-intake blocked가 있으면 advisory dispatch를 suppress한다. 동일 exact8 matrix에서 lane4→2(no-dispatch0, mixed2, blocked0), provider/model/Cursor0이다.
+- 1.9.762 live는 exact8/8, defer3/3, mandatory-loss0, blocked-retained로 통과했다. lane/provider4→2(-50%), input214,151→107,439(-49.83%), wall154,464→71,983ms(-53.4%)이며 Cursor0이다.
+- already-blocked brand case는 lane0에서도 exact를 유지했다. 다음 1.9.763은 authority_mode claim, blocked-first dispatch, exact checkpoint를 실제 installed `omd-harness`와 master handoff 계약에 통합한다.
+- 1.9.756 paired comparison 6/6이 complete다. objective는 양 arm3/3, promotion proof는 current2/3 vs council3/3이며 pair outcome은 council lift1/tie2/loss0이다. 모든 셀 revision1, candidate/final exact, recovery/duplicate/Cursor0이다.
+- council은 current 대비 합산 wall -64,809ms(-11.03%), tokens -329,626(-14.95%)였지만 n=3 descriptive-only다. prereg 전체 gate는 양 arm Reliability3/3 요구 때문에 current2/3로 false; candidate Reliability3/3과 paired-loss0는 true다.
+- post-complete 재호출은 provider0에서 `not resumable: complete`로 fail-close했다. 다음은 fresh full-product hierarchy repeat와, 별도 bounded-dispatch(읽기전용 specialist debate) 실험을 분리 사전등록하는 1.9.757이다.
+- 1.9.756 mineral council-off 다섯째 셀은85/85, proof true, revision1, candidate/final exact, recovery/duplicate/Cursor0이다. wall144,349ms, tokens689,915, pacing30,004.79ms다.
+- 둘째 mineral pair는 objective/proof 모두 tie다. checkpoint5이며 fresh cylinder council-on 한 셀만 남았다.
+- 1.9.756 album council-on 넷째 셀은85/85, proof true, revision1, candidate/final exact, recovery/duplicate/Cursor0이다. wall176,125ms, tokens722,312, pacing30,008.78ms다.
+- 첫 exact task pair가 닫혔고 album에서 council은 current가 놓친 desktop full-row invariant를 회복했다(proof0→1). 단일 pair이므로 우위 결론은 금지하며 다음 mineral council-off로 둘째 pair를 닫는다.
+- 1.9.756 cylinder council-off 셋째 셀은85/85, proof true, revision1, candidate/final exact, recovery/duplicate/Cursor0으로 pass했다. wall180,158ms, tokens634,801, pacing30,008.59ms다.
+- checkpoint3이며 current arm은 objective3/3·proof2/3이다. 다음은 album council-on으로 첫 exact task pair를 닫는다.
+- 1.9.756 mineral council-on 둘째 셀은85/85, proof true, revision1, candidate/final exact, recovery/duplicate/Cursor0으로 clean pass했다. wall189,076ms, tokens610,167이며 pacing은30,006.08ms다.
+- matrix checkpoint2다. 다음은 commit 뒤 cylinder council-off exact1회이며, 현재 arm별 proof는 current0/1, council1/1이라 task-paired 결론은 아직 불가하다.
+- 1.9.756 album council-off 첫 셀은 objective85/85, revision1, candidate/final exact, recovery/duplicate/Cursor0이지만 desktop decision context가 full-row가 아니어서 `all_registered_carriers_closed=false`; promotion proof는 fail이다. wall262,928ms, tokens880,352다.
+- proof trace lifecycle은 compliance true이고 사전등록 정책이 objective/proof failure를 기록 후 계속하도록 허용하므로 root는 checkpoint1이다. 다음은 checkpoint commit 뒤 mineral council-on exact1회이며, 일반 council 우위 주장은 아직 불가하다.
+- 1.9.756 fresh root는 `paired-cross-task-comparison` admission6/6과 exact `omd1756` controller preplan6/6이 green이다. 전 셀 product byte 불변, attempt1, attach-existing, launch false이며 provider/model/Cursor0이다.
+- plan `e7ce11d6…`, preparation `116deda5…`, admission `715d152e…`, controller state `c82bbc30…`다. 다음은 preparation checkpoint commit 뒤 album council-off Luna/high 셀 exact1회이며 lifecycle clean일 때만 고정 순서로 나머지5셀을 계속한다.
+
+- 1.9.755 provider-zero prepare6/6 뒤 admission이 `normalization-mismatch`로 fail-close했다. run-result/model/Cursor0이며 root는 동결했다. single-task용 exact-task-cross-arm을 3-task paired 비교에 쓴 plan 결함이다.
+- 1.9.756은 task/arms/cell order를 그대로 유지하고 정식 `paired-cross-task-comparison`, fresh root, exact `omd1756`으로 재사전등록했다. 다음은 commit 뒤 새 browser+prepare/admission/preplan6/6이다.
+
+- 1.9.755 첫 prepare는 provider/model/Cursor/workspace0 상태에서 설명형 task-order enum을 거부했다. 실패를 `PLAN-VALIDATION-FAILURE.json`에 보존하고 exact cell order/denominator는 그대로 둔 채 정식 `fixed-preregistered`로 교정했다.
+- 다음은 교정 commit 뒤 같은 exact `omd1755`에서 provider-zero prepare/admission/preplan6/6을 다시 시작한다.
+
+- 1.9.755 paired plan을 사전등록했다. fresh3×current/council2 arms, Luna/high, exact balanced order, concurrency1, pacing30s, max-new-cell1, retry/replacement0이며 Cursor는 금지다.
+- 두 arm은 effective installed skill을 공유하고 activation+council intake만 다르다. 양 arm Reliability3/3, candidate paired loss0가 내부 gate이며 일반 council lift/2.0 승격 주장은 금지다.
+- 다음은 plan commit 뒤 exact `omd1755` isolated browser를 준비하고 fresh root provider-zero prepare/admission/preplan6/6을 닫는 단계다.
+
+- 1.9.754 fresh3의 exact task/prompt/starter/baseline/source-contract hash를 `council-checkpoint-comparison-task-lock-1.9.754`에 provider/model/Cursor0으로 잠갔다.
+- 비교 arm은 current `omd-portable` vs `omd-portable-council-gate`다. 다음은 task·runtime·proof 조건을 동일하게 유지한 balanced2×3 Luna/high plan을 사전등록하는 단계다.
+
+- 1.9.754 fresh comparative denominator용 provider-zero task3개를 추가·finalize했다: photograph-album/mineral-drawer/wax-cylinder return. 전부 raw75/85이며 responsive+accessibility만 red, provider/model/Cursor0, inventory108이다.
+- v13 generator와 inventory assertions를108로 동기화했고 focused74/74+lint가 green이다. 다음은 exact task bytes를 commit한 뒤 council-off/on paired lock을 사전등록한다.
+
+- 1.9.753 checkpoint-continuation Reliability@3가 Codex-native `gpt-5.6-luna`/high로 3/3 통과했다. architectural/ceramic/glass 모두85/85, revision1, proof true, candidate/final exact, recovery/duplicate/Cursor0이다.
+- 세 invocation은 정확히0→1→2→3으로 진행됐고 pacing은30,004.49ms/30,002.70ms다. wall 합542,960ms, tokens 합2,140,479이며 완료 root 재호출은 provider0 상태에서 `not resumable: complete`로 fail-close했다.
+- 결과는 `reports/checkpoint-reliability-canary-1.9.753/{CHECKPOINT-3,RESULT,FINDINGS}`에 동결했다. ranking/model·skill superiority/2.0 단독 promotion 근거는 아니다. 다음은 이 계약을 fresh comparative denominator에 적용하는 단계다.
+
+- 1.9.753 checkpoint continuation이 실제로 통과했고 fixed pacing은30,004.49ms다. ceramic Luna 셀도85/85, revision1, proof true, candidate/final exact, recovery/duplicate/Cursor0으로 pass했다.
+- wall176,480ms, tokens649,940이며 matrix checkpoint2다. fresh glass만 provider/model0으로 남았다. 다음은 checkpoint2 commit 뒤 glass exact1회다.
+
+- 1.9.753 architectural Luna/high 첫 셀은85/85 resolved, revision1, proof true, candidate/final exact, recovery/duplicate/Cursor0으로 clean pass했다. wall179,225ms, tokens602,971이다.
+- matrix checkpoint1이며 ceramic+glass는 provider/model0이다. 다음은 checkpoint commit 뒤 repaired continuation을 ceramic exact1회로 검증한다.
+
+- 1.9.753 provider-zero admission3/3과 exact `omd1753` preplan3/3이 green이다. 전 셀 attempt1, attach-existing, launch false, product unchanged, provider/model/Cursor0이다.
+- plan `9c9cf6cf…`, preparation `78205d67…`, preplan state `78ee9889…`다. 다음은 PREPARATION commit 뒤 architectural Luna/high exact1회다.
+
+- 1.9.753 Luna/high plan을 architectural→ceramic→glass 순으로 사전등록했다. exact `omd1753`, concurrency1, pacing30s, retry/replacement0, Cursor forbidden이며 repaired checkpoint receipt semantics를 명시했다.
+- 다음은 plan commit 뒤 fresh root provider-zero prepare/admission과 preplan3/3이다.
+
+- 1.9.753 denominator를 architectural→ceramic→fresh glass로 잠갔다. 세 task 모두 provider/model0, raw75/85, responsive+accessibility only red, inventory105이며 Cursor는 금지다.
+- 다음은 lock commit 뒤 repaired continuation controller와 effective skill hash를 포함한 Luna/high exact plan을 사전등록한다.
+
+- fresh provider-zero v12 `glass-plate-return-v0.1`을 추가·finalize했다. raw baseline75/85, responsive+accessibility only red, inventory105다.
+- controller continuation 수리와 fresh task를 합친 focused331 pass/2 skip+lint가 green이다. 다음은 exact task bytes commit 뒤 architectural→ceramic→glass의 1.9.753 denominator lock이다.
+
+- 1.9.752 checkpoint continuation은 두 번째 provider 호출 전에 `controller-pre-edit-plan-evidence-invalid`로 fail-close했다. 첫 photographic pass는 valid지만 root는 동결하며 architectural+ceramic은 여전히 provider/model0이다.
+- 원인은 완료 셀의 final closure artifact를 초기 preplan hash로 다시 검사한 controller bug다. 완료 셀은 checkpointed zero-call receipt를 유지하고 미실행 셀만 live preplan evidence를 재검증하도록 수리했으며 focused30/30+lint가 green이다.
+- 다음은 이 freeze+repair를 commit하고 architectural+ceramic+fresh v12를 1.9.753 denominator로 잠그는 단계다. 1.9.752는 재개하지 않는다.
+
+- 1.9.752 photographic Luna/high 첫 셀은85/85 resolved, revision1, static closure1, shipped browser1, proof compliance true, candidate/final exact로 clean pass했다. wall213,336ms, total tokens766,998, Cursor0이다.
+- exact cascade gate가 desktop 재오버라이드 없이 닫혔고 browser recovery/duplicate static은0이다. matrix는 checkpoint1이며 architectural+ceramic은 아직 provider/model0이다.
+- 다음은 CHECKPOINT-1 commit과 고정30초 pacing 뒤 architectural 셀 exact1회다.
+
+- 1.9.752 fresh root는 provider-zero admission3/3 green이고 exact `omd1752` controller preplan도3/3 완료됐다. 전 셀 measured attempt1, attach-existing, launch false, product unchanged, provider/model/Cursor0이다.
+- locked plan `4d37034d…`, preparation `abad0dd2…`, controller plan state `92d29590…`다. 다음은 PREPARATION commit 뒤 photographic Luna/high 첫 셀만 exact1회 실행한다.
+
+- fresh 1.9.752 plan은 1.9.751 provider-zero prepare에서 관찰한 effective installed skill hash `f46c…`를 정확히 잠갔다. task denominator와 Luna/high/cascade 계약은 유지하고 exact browser만 `omd1752`로 교체했다.
+- 다음은 plan commit 뒤 fresh root prepare/admission이다. 1.9.751 root는 재실행하지 않는다.
+
+- 1.9.751 provider-zero prepare3/3 뒤 admission이 effective skill lock mismatch로 fail-close했다. provider/model/Cursor0, execution artifacts0이며 root는 재사용하지 않는다.
+- plan은 source skill tree `9e4f…`를 잠갔지만 council activation이 적용된 prepared effective tree는 `f46c…`였다. task bytes는 Luna에 노출되지 않았으므로 같은 denominator를 fresh 1.9.752에서 사용할 수 있다.
+- 다음은 failure evidence commit 뒤 effective installed hash `f46c…`를 사전등록한 1.9.752 plan과 새 exact browser/root로 provider-zero admission을 반복한다.
+
+- 1.9.751 plan을 Codex `gpt-5.6-luna`/high 전용으로 사전등록했다. fixed order photographic→architectural→ceramic, timeout720s, concurrency1, pacing30s, retry/replacement0이며 Cursor는 금지다.
+- browser contract는 exact `omd1751`, controller-started local Chrome, attach-only다. exact CSS cascade 계약과 controller provider-zero preplan을 모두 요구하며 focused239 pass/2 skip와 lint가 green이다.
+- 다음은 plan commit 뒤 새 `/private/tmp/omd-css-cascade-reliability-1.9.751` root를 provider-zero prepare/admission하고, exact `omd1751` browser와 preplan3/3을 먼저 닫는 단계다.
+
+- 1.9.751 분모를 photographic→architectural→fresh ceramic으로 잠갔다. 세 task 모두 provider/model0, raw75/85, responsive+accessibility only red이며 Cursor는 금지다.
+- task/source/starter/baseline hashes와 inventory104를 `css-cascade-reliability-task-lock-1.9.751`에 고정했다. 다음은 lock commit 뒤 exact Luna/high matrix와 isolated `omd1751` browser 계약을 사전등록한다.
+
+- fresh provider-zero v11 `ceramic-vessel-return-v0.1`을 추가·finalize했다. raw DESIGN.md baseline은75/85, responsive+accessibility만 red이며 inventory104다.
+- 1.9.750에서 미노출인 photographic+architectural의 `.decision` 계약도 provider/model0 상태에서 exact-value로 강화했다. hidden coverage2/2, bench235 pass/2 skip, reflow66/66, lint가 green이다.
+- 다음은 이 task bytes를 commit하고 photographic→architectural→ceramic의 fresh 1.9.751 denominator를 잠근 뒤 Luna/high 전용 plan을 사전등록하는 단계다.
+
+- exact-value CSS 계약은 이제 같은 selector/property의 모든 선언이 exact 값과 일치해야 통과한다. base 선언 뒤 media query에서 다른 값을 재선언하면 static closure가 fail-close하며 focused85/85와 lint가 green이다.
+- source-contract task generator의 `.decision { grid-template-columns }`도 `any-value`에서 viewport 전체 `exact-value: 1fr`로 강화했다. record/window grid는 desktop 다열 복원이 허용되므로 any-value를 유지한다.
+- 다음은 이 결정론 수리를 commit하고 photographic+architectural의 provider-zero task 계약을 재생성한 뒤 fresh v11 task를 추가하는 단계다.
+
+- 1.9.750 herbarium Luna/high 셀은 revision1·candidate/final exact·objective85/85였지만 prereg proof gate가 matrix를 동결했다. Cursor0, wall187,567ms, tokens593,251이며 photographic+architectural은 provider/model0이다. 이 root는 재실행하지 않는다.
+- shell quote 때문에 shipped runner를 static command로 오분류한 false reason 2개는 provider-free regression test로 교정했다. 실제 남은 실패는 Luna가 desktop media query에서 `.decision`을 다시 2열로 덮어써 `all_registered_carriers_closed=false`가 된 static cascade 계약 공백이다.
+- 다음은 exact-value CSS 계약을 모든 일치 선언에 적용하고 `.decision` single-column을 viewport 전체 exact로 고정하는 결정론 수리다. photographic+architectural 계약을 provider-zero로 강화하고 fresh v11 task를 더해 1.9.751을 새로 사전등록한다.
+
+- 1.9.750 controller preplan은3/3 provider0/model0/Cursor0으로 완료됐다. 각 셀은 exact `omd1750` attach, measured attempt1, browser launch false, 제품 byte 불변이며 Codex auth도 green이다.
+- root plan hash `1a5c4184…`, preparation hash `e075fa53…`; 다음은 PREPARATION commit 뒤 herbarium Luna/high 셀 exact1회만 실행한다. lifecycle 실패 시 나머지2셀을 동결한다.
+
+- provider 호출과 분리된 `prepare-controller-pre-edit-plans.mjs`를 추가했다. exact browser/runtime preflight 뒤 세 셀의 shipped runner plan mode를 provider0/model0/Cursor0으로 실행하고 one-shot root receipt를 남긴다.
+- fresh 실행기는 이미 존재하는 유효 receipt를 재실행하지 않고 검증만 하므로 provider 시작 전 선행 측정을 독립 checkpoint로 고정할 수 있다. focused29/29와 lint green이다.
+- 1.9.750 plan은 commit됐고 root preparation/admission3/3도 green이다. exact `omd1750` browser가 active이며 다음은 controller preplan3/3 실행·receipt commit이다.
+
+- 1.9.750의 fresh provider-zero task `architectural-drawing-return-v0.1`을 생성했다. raw baseline은75/85이며 responsive+accessibility만 red, inventory103, hidden coverage2/2와 bench235 pass/2 skip, lint green이다.
+- 다음은 exact task bytes commit 뒤 herbarium+photographic+architectural의 task lock과 controller-owned preplan 계약을 포함한 Luna/high 전용 1.9.750 plan을 사전등록한다.
+
+- 1.9.749 실패 원인인 pre-edit plan ownership을 수리했다. 새 `controller_pre_edit_plan_contract`는 격리 browser runtime preflight 뒤 provider 노출 전에 shipped runner를 `OMD_REFLOW_MODE=plan`으로 실행한다.
+- controller receipt는 provider0/Cursor0, exact named CDP attachment, measured attempt1, 제품 byte 불변을 봉인한다. reflow artifact hash도 checkpoint attestation에 포함해 이후 drift를 차단한다.
+- focused74/74와 lint가 green이다. 다음은 이 수리를 commit하고 herbarium+photographic+fresh1의 1.9.750 root를 새로 사전등록·prepare한 뒤 provider-zero controller plan 3/3을 확인하는 단계다. Cursor는 사용하지 않는다.
+
+- 1.9.749 geology Luna 셀은 단일 수정+candidate/final exact였지만81/85, proof fail이다. final runner가 measured pre-edit fit plan 부재로 exit1했고 preregistered hard-stop이 나머지2셀을 provider/model0으로 동결했다.
+- exact `omd1749`와 Codex auth는 실행 직전 green이었고 Cursor call0이다. root cause는 deterministic pre-edit plan을 controller가 아니라 모델에 맡긴 orchestration ownership 결함이다.
+- provider-free 복제 probe에서 `OMD_REFLOW_MODE=plan` shipped runner는 같은 `omd1749`에 성공했다. 다음은 controller가 provider 전 plan을 실행·attest하도록 수리하고, herbarium+photographic+fresh1로 새 root를 사전등록하는 단계다. 1.9.749는 재실행하지 않는다.
+
+- 1.9.749 fresh root는 scheduled/prepared3/3, provider/model0, execution artifacts0으로 admission green이다. task/skill/source/evaluator locks와 council questions0/model lanes0도 green이다.
+- exact `omd1749` isolated browser-harness 연결과 격리 Codex auth runtime preflight가 ready이며 Cursor 호출0이다. 다음은 PREPARATION commit 뒤 geology 첫 Luna 셀만 exact1회 실행한다.
+
+- 1.9.749 plan은 geology→herbarium→photographic, Codex/Luna/high, council-on, timeout720s, concurrency1, pacing30s, retry/replacement0으로 사전등록했다. Cursor는 명시적으로 금지했다.
+- 새 browser contract는 exact `omd1749` named socket, controller-started local Chrome, attach-only, profile/cloud none을 요구한다. 다음은 plan commit 뒤 provider-zero root prepare/admission과 runtime preflight다.
+
+- 1.9.749 분모를 geology(미노출), herbarium(미노출), fresh photographic negative-return으로 잠갔다. manuscript는 1.9.748에서 Luna에 노출됐으므로 제외하며 1.9.748 root는 재개하지 않는다.
+- fresh task raw baseline은75/85, responsive+accessibility만 red이고 provider/model call0이다. inventory102와 focused hidden-coverage2/2가 green이다.
+- 이번 실행은 Cursor를 전면 금지한다. 다음은 exact task bytes를 commit한 뒤 Codex `gpt-5.6-luna`/high 전용 1.9.749 plan과 새 isolated named browser/root를 사전등록하는 단계다.
+
+- 사용자 요청으로 1.9.748 첫 manuscript 셀을 중단했다. 모델은 노출됐고 candidate까지 작성했지만 `run-result.json`은 없으며 objective/proof 결과도 없다. 실행기·provider·전용 Chrome 프로세스는 모두 종료됐다.
+- retry/replacement0 계약상 같은 root/셀을 재실행할 수 없다. stale lease와 불완전 execution-state는 변조하지 않고 증거로 보존했으며 `reports/isolated-browser-reliability-canary-1.9.748/PAUSE.json`이 정확한 해시와 상태를 기록한다.
+- 재개 시 1.9.748은 영구 동결한다. 1.9.749에서 미노출 geology+herbarium과 새 provider-zero task 1개를 잠그고, 새 isolated named browser/root를 만든 뒤 provider-zero admission부터 반복한다. manuscript는 이 evidence series에서 replay하지 않는다.
+- Cursor 비용 사고 재발 방지를 위해 `docs/PROVIDER_ROUTING_POLICY.md`와 `benchmarks/ui-resolve-bench/config/provider-routing-policy.json`을 추가했다. `OMD_CURSOR_BILLING_TYPE=included`와 명시적 확인 토큰이 모두 없으면 실제 Cursor binary도 probe하지 않는다.
+
+- 1.9.748 root는 prepared3/3, provider/model0, execution artifacts0이며 task/effective skill/source/evaluator admission이 green이다. plan `7c1de6f4…`, state `196d4d9f…`다.
+- 동일 Codex sandbox 경로의 runtime preflight도 exact `omd1748` browser-harness connection ready + isolated Codex auth ready다. council intake는 questions0/model lanes0/provider mutable false다.
+- 다음은 PREPARATION checkpoint commit 뒤 manuscript 첫 셀만 exact1회 실행한다. lifecycle clean일 때만 다음 셀로 간다.
+
+- 1.9.748 plan은 manuscript→geology→herbarium, Luna/high, council-on, timeout720s, concurrency1, pacing30s, retry/replacement0으로 잠겼다.
+- 새 `browser_execution_contract`가 shared runtime+exact `omd1748` socket+attach-only를 provider 전 요구한다. 모델은 CDP endpoint를 받지 않고 controller가 준비한 named socket만 받는다.
+- 다음은 plan checkpoint commit 뒤 fresh root prepare/admission, 이어서 `BU_NAME=omd1748`+local CDP 환경에서 runtime preflight만 먼저 통과시키는 단계다.
+
+- 1.9.748은 1.9.747에서 미노출로 동결된 manuscript/geology와 fresh herbarium을 새 Reliability@3 분모로 잠갔다. microscopy는 replay하지 않는다.
+- 세 baseline 모두75/85이며 responsive+accessibility만 red다. inventory101, selected task provider/model0이다.
+- dedicated local headless Chrome(no user profile/cloud)를 `omd1748`로 등록했고 browser-harness daemon/active connection1/named connection이 green이다. 다음은 exact task commit 뒤 이 preflight를 plan 필수 계약으로 잠근다.
+
+- 1.9.747 첫 Luna 셀은85/85 resolved, revision1, candidate/final exact지만 proof가 fail했다. wall222,767ms, tokens879,083, retry/replacement0이다.
+- runner 호출법은 맞았으나 browser-harness daemon의 active browser connection이0이었다. plan에 `browser_execution_contract`가 없어 provider 전 isolated named-browser preflight가 실행되지 않은 것이 root cause다.
+- hard-stop이 manuscript/geology를 provider/model0으로 동결했다. 이 root는 Reliability 증거가 아니며 재개/replay하지 않는다. 다음은 controller가 dedicated CDP browser를 먼저 준비하고 exact named socket을 admission하는 1.9.748이다.
+
+- 1.9.747 fresh root는 scheduled/prepared3/3, provider/model0, execution artifacts0으로 admission green이다. plan `7189aef2…`, state `b2aa1d99…`다.
+- effective `skill_lock_attested=true`, task lock, source contract, evaluator, publishable source가 모두 green이다. council intake도 세 셀 모두 questions0/model lanes0/provider mutable false다.
+- 다음은 PREPARATION checkpoint commit 뒤 microscopy 첫 셀만 exact1회 실행한다. lifecycle hard-stop이면 나머지를 동결하고, clean이면 checkpoint 후 다음 셀로 이어간다.
+
+- 1.9.747은 동결된 1.9.746과 task/조건을 그대로 유지하고 council activation delta가 포함된 effective installed skill `b792a4e8…`을 정확히 잠갔다.
+- fresh3, Luna/high, council-on, shipped runner, fixed order, 30s pacing, concurrency1, retry/replacement0과85/85+resolved+proof+recovery0의3/3 계약은 그대로다.
+- 다음은 plan checkpoint commit 뒤 새 `/private/tmp/omd-terminal-runner-reliability-1.9.747` root를 prepare하고 새 `skill_lock_attested` gate까지 provider-zero admission하는 단계다.
+
+- 1.9.746 prepare에서 plan의 base skill hash와 council-gate activation delta가 포함된 effective installed skill hash가 다름을 발견했다. provider/model0, execution artifact0 상태로 root를 영구 동결했다.
+- admission은 선언된 `skill_lock_contract`의 source commit+effective tree hash를 실제 모든 non-raw cell과 fail-close 비교하도록 수리했다. focused6/6, lint green이고 기존 1.9.746 root를 normalization mismatch로 거부한다.
+- 다음 1.9.747은 동일 fresh3 task와 실행 조건을 유지하되 effective skill `b792a4e8…`을 정확히 잠근 새 plan/root로 재사전등록한다. 1.9.746은 실행·재개하지 않는다.
+
+- 1.9.746 실행 계획은 fresh3 tasks, Codex/Luna/high, council-on, shipped terminal runner, timeout720s, fixed order, concurrency1, 30s pacing, retry/replacement0으로 잠겼다.
+- 셀 성공은85/85+resolved+proof compliance+runner recovery0+revision1+static1/0+candidate/final exact이며 Reliability는3/3이다. lifecycle 실패 시 남은 셀을 동결한다.
+- 다음은 이 plan checkpoint를 commit한 뒤 `/private/tmp/omd-terminal-runner-reliability-1.9.746`을 provider-zero prepare/admission하고 실행 흔적이 없음을 확인하는 단계다.
+
+- 1.9.746은 provider/model 미노출 fresh task 3개(microscopy/manuscript/geology)를 잠갔다. raw baseline은 모두75/85이며 red gate는 responsive+accessibility exact다.
+- exact task/contract/baseline/skill hash와 shipped `reflow-browser-runner.sh` proof 경로를 고정했다. inventory100, focused235 pass/2 skip, lint green, provider call0이다.
+- 다음은 clean task-lock commit에서 Luna/high council-on 3셀, 720s, fixed order, concurrency1, retry/replacement0을 사전등록하고 provider-zero admission을 통과시키는 단계다. 성공은85/85+resolved+proof compliance 3/3을 모두 요구한다.
+
+- 1.9.745는 transcription-prone 긴 browser 명령을 shipped `reflow-browser-runner.sh` 한 줄로 대체했다. artifact locked product와 sibling helper/Python source는 runner가 직접 결박한다.
+- proof classifier는 runner를 browser 1회로, `command -v browser-harness`를 recovery probe로 분류한다. focused53 + install43, full794 pass/3 skip, shell syntax, lint가 green이며 provider call0이다.
+- 다음 1.9.746은 기존 task replay 없이 fresh-task Reliability@3를 사전등록한다. objective resolution과 proof compliance를 동시에 요구한다.
+
+- 1.9.744 Luna exact2셀은 retry/replacement0으로 완료됐다. off는81/85 unresolved, on은85/85 resolved이며 accessibility contrast4점을 회복했다.
+- on은 wall +9,104ms(+3.9%), tokens +91,045(+10.8%)이고, 잘못 쓴 terminal browser 명령 뒤 discovery+재시도로 proof compliance가 fail이다. 단일 task라 public/general claim은 금지다.
+- 다음 1.9.745는 품질 신호를 보존하면서 transcription-prone browser 명령을 shipped runner 하나로 축약하고 proof classifier/contract를 provider-free로 잠근다. 그 전에는 model replay를 하지 않는다.
+
+- 1.9.744 Luna root는 scheduled/prepared2/2, provider/Luna exposure0, execution artifacts absent로 admission green이다. plan `3d93b9de…`, state `30972407…`다.
+- exact-task normalization, source publishable, task lock, reflow source contract, on questions0/model lanes0가 모두 green이다.
+- 다음은 PREPARATION checkpoint commit 뒤 Luna off/on을 exact1회씩 실행하고 결과를 채점한다.
+
+- 1.9.744는 frozen Grok root를 건드리지 않고 새 root에서 Codex/Luna/high council off/on 2-cell fallback을 잠갔다.
+- task prior Grok prompt exposure1/output0/product change0, prior Luna exposure0을 공개한다. 나머지 task/skill/runtime/effort/proof 조건은 arms 간 exact다.
+- 다음은 provider-zero preparation/admission과 checkpoint commit 뒤 Luna 두 셀을 exact1회씩 실행하는 일이다.
+
+- 1.9.743 Grok off 셀은 7.46s 뒤 Cursor usage limit으로 process exit1이다. product/workspace change0, usage/final/objective0이며 retry/replacement0이다.
+- prereg controller가 on 셀을 provider 전 동결했다. 이 root는 재개하지 않으며 council/model/2.0 evidence가 아니다.
+- 다음 1.9.744는 새 root에서 동일 task와 arms를 Codex/Luna/high로 사전등록한다. prior Grok prompt exposure1을 명시하고 fresh Luna exposure0에서 실행한다.
+
+- 1.9.743 paired root는 scheduled/prepared2/2, provider/model0, execution artifacts absent로 admission green이다. plan `c2eae26b…`, state `782e792d…`다.
+- off/on은 task prompt/starter/product/runtime/model/effort/timeout/skill/evaluator/source contract가 exact다. on ledger는 question0/model lane0/provider mutable false다.
+- 다음은 PREPARATION checkpoint commit 뒤 off 셀과 30s pacing 뒤 on 셀을 각 exact1회 실행한다. retry/replacement는 금지다.
+
+- 1.9.743은 fresh oceanographic task에서 council off/on 2-cell 비교를 사전등록했다. Cursor/Grok4.5 High, high, 720s, concurrency1, retry/replacement0, fixed order와 30s pacing이다.
+- on arm은 같은 omd:apply에 provider-sealed zero-dispatch ledger만 추가한다. questions0/model lanes0가 준비 단계 hard gate다.
+- 다음은 clean prereg commit 뒤 `/private/tmp/omd-council-product-comparison-1.9.743` provider-zero preparation/admission, 이어서 두 셀 실행과 objective/proof/cost 채점이다.
+
+- 1.9.742는 provider/model 미노출 fresh `oceanographic-cast-custody-v0.1` task를 잠갔다. raw baseline75/85이며 responsive+accessibility만 red다.
+- 같은 Grok 4.5 High에서 current apply와 zero-dispatch maintenance ledger apply를 2-cell/no-retry로 비교할 준비가 됐다. task/starter/source contract는 exact hash로 고정됐다.
+- 다음 1.9.743은 clean commit에서 paired provider-zero preparation/admission을 만든 뒤 두 셀을 순차 실행하고 objective/exact-route/evidence/wall/token을 채점한다.
+
+- 1.9.741은 root `index.html`을 실제 surface inventory에 포함하고, 기존 surface 개선에서 action 변경 요청이 없으면 primary CTA도 값을 만들지 않는 typed defer로 보존한다.
+- provider-zero meteorite probe는 questions3→0, planned council calls2→0이다. audience/scope/CTA는 모두 absent defer이고 forbidden auto0이다.
+- 다음 1.9.742는 fresh product task를 council off/on 동일 Grok 4.5 High 조건으로 끝까지 실행해 objective quality, exact-route proof, accessibility/evidence honesty, wall/token overhead를 비교한다.
+
+- 1.9.740은 existing/current surface 개선 + confidence≥0.75 audience evidence + single surface이면 audience/scope를 auto하지 않고 typed defer하며 council dispatch에서도 제외한다.
+- frozen 3-case provider-zero는 planned calls6→4, questions2, handoffs2, authority/blocked retained, forbidden auto0이다. 22-case/5-locale calibration도 green이다.
+- 다음은 같은 세 synthetic intake를 반복 호출하는 대신 fresh product tasks에서 maintenance-aware compact policy의 full task completion, exact-route reverify, accessibility/evidence honesty를 함께 측정한다.
+- 1.9.739 fresh compact Grok은6/6, retry/replacement0이다. questions6→1, safety green, wall-45.1%, combined reported tokens-53.6%다.
+- exact disposition은2개 불일치해 retention gate fail이다: existing docs audience defer→interview, missing-reference visual grounding defer→blocked. human handoffs는3→3으로 개선되지 않았다.
+- 다음 1.9.740은 existing/current surface 개선 + ctx 근거가 있는 audience/single-surface scope를 결정론적으로 defer하고 council dispatch에서 제외한다. compact live case2/3 증거는 재사용하며 즉시 provider replay하지 않는다.
+- 1.9.738은 retained 1.9.736 claims를 provider-free replay해 lane cap4→2에서도 세 사례의 모든 effective disposition이 exact match함을 확인했다. changed decisions0이다.
+- 기본 dispatch cap을2로 낮췄다. retained-call 기준 projected wall849,118→481,744ms(-43.3%), combined reported tokens1,743,331→891,673(-48.9%)다. fresh 측정 전까지 projection으로만 표기한다.
+- 다음은 새 two-lane plan으로 Grok 4.5 High fresh6 calls, retry/replacement0 실행이다. authority/blocker/forbidden-auto와 disposition retention을 모두 통과해야 compact policy의 live evidence가 된다.
+- 1.9.736 Grok 4.5 High pilot은 isolated lane12/12, retry/replacement0으로 완료됐다. cited claims26, reject0, forbidden auto0이며 authority와 missing-official blocked를 모두 보존했다.
+- 1.9.737은 blocked ledger에서도 interview를 세던 scorer를 실제 state machine(`blocked → interview 전 halt`)에 맞춰 수리했다. raw summary는 live root에 보존하고 provider 재호출 없이 재채점했다.
+- 최종은 questions6→0, batched human handoffs3→2다. 단 regulated pricing은 사용자 권한을 blocker로 좁혔고, 비용은 sequential849,118ms·combined reported tokens1,743,331이라 Pareto 경쟁력이 없다.
+- 다음은 기존 26 claims를 replay해 기본 lane cap4→2가 disposition/safety를 동일하게 보존하는지 local로 증명하는 1.9.738이다. 그 전에는 provider를 다시 호출하지 않는다.
+- 1.9.735는 non-auto 결정에만 relevant lane을 최대4개·1회·retry0으로 선택하는 bounded dispatch와 reconciler를 구현했다. 모든 agent는 read-only 자문이며 `omd-master`만 구현한다.
+- claim은 실제 repo/run-relative evidence가 있어야 하며 lane 밖 결정·무인용·auto 승격은 reject된다. auto snapshot은 SHA-256으로 동결되고 변조 시 fail-close한다.
+- reconciled ledger는 original/effective disposition과 debate receipt를 함께 보존한다. council은 `interview|defer|blocked`만 keep/narrow하며 mandatory checkpoint를 다시 열 수 없다. pre-ship contrarian도 최대1회·retry0이다.
+- 설치 경로 Claude Code/Codex/OpenCode 모두 prime+reconcile helper를 받는다. 검증은 focused49/49, full788 pass/3 skip, lint/build/count green이다.
+- 다음은 Grok 4.5 동일 모델·동일 task에서 council off/on 반복 비교다. unplanned questions, decision reversal, resolved outcome, elapsed time, reported tokens를 측정하기 전까지 효과와 2.0 gate pass를 주장하지 않는다.
+- 1.9.734는 22개 synthetic brief/5 locales에서 disposition과 proposed value를 함께 교정했다. auto57, unsupported auto0, expectation failure0이며 `blocked`, regulated authority, negation, mixed surface, dual-wow, missing ctx를 포함한다.
+- Cursor Grok 4.5 High read-only review(session `724dda20-1ad3-44d0-b93b-ce0ef4e35728`)는 `ADMIT_BOUNDED_COUNCIL`을 판정했고 auto 승격 금지를 요구했다.
+- 2.0.0 frontier 계약은 10개 게이트다. 새 `council-first-human-escalation` 게이트는 `partial`: 에이전트가 근거를 먼저 모으고 불필요한 질문을 제거하며 사용자 권한 결정만 인터뷰하는 방향을 정식 목표에 포함했다.
+- 1.9.733 Slice A는 `design-council-prime.cjs`로 run-scoped evidence packet과 `auto|interview|defer|blocked` 결정 원장을 만든다. 명시적 사용자 의도와 근거 있는 저위험·가역 결정만 auto이며, unknown과 generic wow fallback은 비워 둔다.
+- Grok 4.5 High read-only review는 ledger-first 도입을 지지하고 6-lane 기본 fan-out은 반대했다. 따라서 실제 dispatch는 관련 lane 최대4개만 선택하며 plan/DESIGN.md/validation mandatory checkpoints는 유지한다.
+- 1.9.733 검증은 focused52/52, full784 pass/3 skip, lint/build/count green이었다.
+- user-owned `web/public/llms-full.txt` dirty는 이번 작업에서 건드리지 않고 보존한다.
+- 1.9.732 exact6-cell comparison은 `COMPLETE_INTERNAL_PREVIEW`다. provider calls6, retries0, replacements0; OmD는85/85×3 resolved3/3, Impeccable prompt-only는75/75/79 unresolved0/3이다.
+- paired objective W/T/L은 OmD3/0/0(+10,+10,+6)이다. OmD total2,035,476 tokens/604,932ms, Impeccable1,825,904 tokens/798,003ms다. OmD가 total tokens11.5% 더 썼지만 total wall time24.2% 낮았다; median은 OmD가 더 무겁다.
+- OmD는 revision1/1/1, proof3/3, candidate/final exact3/3이다. Impeccable proof는1/3이나 이는 native helper 차이라 공통 UI 우위 근거와 분리한다.
+- 결과는 Internal Preview만 허용한다. industry-best/model superiority/public leaderboard/2.0 gate 주장은 금지하며 runtime의 provider-reported model identity가 없어 public model attribution도 금지다.
+- 보고서는 `benchmarks/ui-resolve-bench/reports/fresh-frontier-skill-comparison-1.9.732/RESULTS.md`와 `RESULTS.json`이다. 다음 evidence step은 더 큰 task set+independent visual preference+추가 frontier skill arm이다.
+- terminal verification은 full782 pass/3 skip, lint/build/count green이다.
+- 1.9.732 paired6-cell matrix가 `/private/tmp/omd-fresh-frontier-comparison-1.9.732-v2`에 provider-zero prepared6/6, model exposure0, execution artifacts absent로 admission green이다. locked plan `4126ab5a…`, state `10dcc6d5…`다.
+- benchmark admission에 `paired-cross-task-comparison`을 추가했다. 각 task 내부 prompt/starter/product/model/runtime/effort/timeout equality와 모든 task의 동일 arm set, frozen task locks를 함께 검사한다; focused238 pass/2 skip이다.
+- 첫 `/private/tmp/omd-fresh-frontier-comparison-1.9.732` root는 기존 exact-task 감사가 새 paired 설계를 거부한 provider-zero 준비 흔적이며 실행 금지·보존한다. 실제 실행 대상은 `-v2`뿐이다.
+- 1.9.732 정직 비교용 fresh task 3개(cartography/numismatics/entomology)를 추가했다. 각 raw baseline은75/85이며 responsive+accessibility만 red다; provider/model exposure는0이다.
+- 비교 arms는 exact OmD 1.9.731 commit `4e9514b9…`와 official Impeccable prompt-only commit `4d849eb7…`로 detached/clean 복원됐다. 같은 Luna/high·Codex·720s, retry/replacement0으로 3개 task를 paired 실행할 예정이다.
+- task inventory는96이다. 다음은 preregistration checkpoint를 clean commit한 뒤 fixed order로 Luna/high exact6셀을 retry/replacement 없이 실행하는 일이다.
+- 사용자-facing update lane이 complete다. `npx oh-my-design-cli@latest update`가 기존 project/global scope, 설치 채널, Cursor rule-only, optional policy와 user-owned files를 보존하고 `--force` 없이 managed bundle만 갱신한 뒤 doctor를 다시 실행한다.
+- `omd:update`가 21번째 shipped product skill로 추가됐다. Claude Code/Codex/OpenCode는21개, Cursor는 `claude-design`을 제외한20개를 받으며 README·5-locale docs·llms·SEO count가 같은 계약을 사용한다.
+- focused82/82, full781 pass/3 skip, lint/build/count green이다. clean Codex fixture는 install→update→doctor에서21 skills/18 roles/440 refs를 유지했고 별도 `user-owned.txt` bytes도 보존했다.
+- 다음은 이 변경을 clean commit한 뒤 1.9.732 comparative suite를 provider-zero로 사전등록하는 일이다. 1.9.731 task replay는 금지하며 fresh tasks, frozen competitor, 동일 Luna/high·runtime·effort·trial budget을 사용한다.
+- 1.9.731은 terminal `COMPLETE_RELIABILITY_PASS`다. provider/model exact3회, retry/replacement0, archaeology·paleontology·textile 모두85/85와 lifecycle 계약을 만족해 Reliability3/3이다.
+- 세 셀 모두 product revision1, static success1/fail0, proof true, sealed inventory 불변, candidate/final exact다. 총513,977ms·2,253,260 tokens(cached input2,020,608), 중앙값154,608ms·686,001 tokens다.
+- 완료 root 재개 감사는 provider 호출 전에 `not resumable: complete`로 fail-close했다. 이 결과는 deterministic promotion repair 증거이며 ranking/model·skill 우위/2.0 gate 승격에는 직접 사용하지 않는다.
+- 다음은 이 수리된 skill을 고정한 preregistered comparative suite로 이동해 다른 skill/harness 대비 정직 비교를 시작하는 단계다. 1.9.731 세 셀 replay는 금지다.
+- 1.9.731 paleontology 두 번째 셀도 exact1회 valid85/85, revision1, static success1/fail0, proof true, candidate/final exact로 Reliability pass다.
+- 211,241ms, 638,316 tokens(cached input559,360), retry/replacement0이다. 누적 Reliability2/3이며 CHECKPOINT-2 commit 뒤 textile 마지막 셀만 실행한다.
+- 1.9.731 archaeology 첫 셀은 exact1회에 valid85/85, resolved=true, revision1, static success1/fail0, proof compliance true, candidate/final exact match로 Reliability pass다.
+- 148,128ms, 686,001 tokens(cached input619,008), retry/replacement0이다. 별도 browser-harness 명령은 실패했지만 recovery0이고 독립 objective·sealed closure는 green이다.
+- deterministic `static-promote`가 1.9.728의 model retyping/second-edit 결함을 첫 fresh 셀에서 재현 없이 닫았다. CHECKPOINT-1 commit 뒤 paleontology 한 셀만 실행한다.
+- 1.9.731 fresh root는 scheduled/prepared3/3, provider/model0, execution artifacts absent로 admission green이다. plan `a7cb53eb…`, state `89311290…`, exact skill `4e9514b9…`/`05d0259e…`다.
+- normalization required13/13, task-lock attestation, schema0.2 debt coverage, `provider_mutable=false`, untouched product가3/3 exact다. 다음은 PREPARATION checkpoint commit 뒤 archaeology 한 셀만 실행한다.
+- 1.9.731은 archaeology→paleontology→textile fixed order, clean `4e9514b9` skill, Codex/Luna/high, timeout720s, concurrency1, retry/replacement0으로 사전등록했다. 아직 provider/model exposure0이다.
+- 각 셀은 candidate preview green 뒤 `static-promote`로 exact bytes를 한 번만 product에 승격해야 한다. model retyping은 금지하며85/85+revision1+static1/0+proof+candidate/final exact를 모두 요구한다.
+- lifecycle hard-stop은 남은 셀을 동결한다. 이 실험은 diagnostic only이며 provider execution 전에 fresh root의 provider-zero preparation/admission과 checkpoint commit이 필요하다.
+- 1.9.730은 1.9.728에서 provider/model에 노출되지 않은 archaeology 한 과제와 완전히 새 paleontology/textile 두 과제를 묶었다. conservation/wind 결과는 재실행하지 않는다.
+- 세 과제 raw baseline은 모두75/85이고 red gate는 accessibility+responsive exact다. schema0.2 debt coverage, sealed artifact/inventory, `provider_mutable=false`, 설치된 `static-promote`가 provider/model0으로 complete다.
+- skill은 clean `4e9514b9`/`05d0259e…`로 동일하며 task inventory는93이다. exact task bytes를 commit한 뒤 fresh no-retry Reliability@3 plan을 사전등록한다.
+- 1.9.729 local repair는 preview를 통과한 candidate를 모델이 다시 읽고 product patch로 재작성하지 않는다. 새 `static-promote` helper가 receipt의 candidate/source-contract/inventory hash를 검증한 뒤 exact bytes를 locked product에 한 번 복사한다.
+- proof tracer는 성공한 `static-promote`를 한 번의 product edit/revision으로 기록한다. failed promotion은 edit으로 세지 않는다. benchmark sandbox instruction도 source-packet→candidate→preview→static-promote→static-close 순서를 직접 주입한다.
+- trailing newline을 포함한 byte-exact promotion, receipt 부재 fail-close, proof revision accounting을 추가했다. focused330 pass/2 skip·lint green이다. 다음은 provider-zero sealed smoke와 exact skill/task lock을 거쳐 replay 없는 fresh Reliability@3를 사전등록하는 단계다.
+- 1.9.728은 terminal `FROZEN_PREREGISTERED_LIFECYCLE_STOP`이다. provider/model exact2회, retry/replacement0, objective2/2 pass지만 Reliability는1/3이다. conservation pass, wind `second-product-edit` fail, archaeology provider/model0 frozen이다.
+- workspace-bound candidate collector repair는 검증됐다. 두 실행 모두 candidate/final exact match이고 false path mismatch는 재발하지 않았다. 남은 제품 결함은 failed closure 뒤 product를 두 번째로 수정하는 경로다.
+- runner repair `3830c1c4`를 적용한 resume audit는 provider 호출 전에 `second-product-edit`를 감지해 archaeology를 동결했다. 1.9.728은 ranking/2.0 gate evidence로 승격하지 않는다.
+- 다음은 omd-apply candidate workflow가 모든 수정을 candidate 단계에서 끝내고 product를 정확히 한 번만 쓰도록 local contract와 instruction을 교정한 뒤, replay 없는 fresh Reliability@3를 사전등록하는 일이다.
+- 1.9.728 wind 두 번째 셀은 objective85/85와 candidate binding은 green이지만 product edit/revision2, static success1/fail1, proof compliance false다. 사전등록 hard-stop `second-product-edit`에 해당하므로 Reliability 실패이며 archaeology는 provider/model0 상태로 동결해야 한다.
+- runner가 candidate binding만 실행 hard-stop으로 강제하고 reliability lifecycle 목록을 checkpoint 전에 검사하지 않아 wind를 잘못 checkpoint했다. local repair는 second edit, failed closure, proof noncompliance, inventory/receipt/final-byte 위반을 현재 셀과 resume prefix 모두에서 provider 전 hard-stop한다. focused27/27·lint green이다.
+- 다음은 repair commit 뒤 기존 checkpoint를 resume-audit해 provider 호출 없이 archaeology를 frozen으로 기록하고 1.9.728 terminal report를 만든다. wind 재실행과 archaeology 실행은 금지다.
+- 1.9.728 conservation 첫 셀은 exact1회에 valid85/85, resolved=true, revision1, static success1/fail0, proof compliance true, candidate/final exact match로 Reliability pass다. 293,929ms, 800,851 tokens(cached input711,168)이며 retry/replacement는0이다.
+- model의 별도 browser-harness 후검증 명령은 실패했지만 recovery/retry는 없고, 독립 objective evaluator·sealed static closure·candidate preflight는 모두 green이다. 사전등록 lifecycle 계약상 유효하며 checkpoint1/3으로 고정한다.
+- 다음은 CHECKPOINT-1 commit 뒤 wind 셀만 `max-new-cells=1`로 실행한다. conservation은 다시 실행하지 않는다.
+- 1.9.728 fresh root는 scheduled/prepared3/3, provider calls0/model exposures0, execution artifacts absent로 admission green이다. plan `4a975162…`, state `f20b4273…`, exact skill origin `73716105…`/hash `4f02726f…`다.
+- normalization required13/13, task-lock attestation, schema0.2 debt coverage, provider_mutable=false, untouched product가3/3 exact다. 다음은 PREPARATION checkpoint commit 뒤 conservation 첫 셀만 `max-new-cells=1`로 실행한다.
+- 1.9.728은 conservation→wind→archaeology fixed order, exact task hashes, clean 1.9.723 skill, Codex/Luna/high, timeout720s, concurrency1, retry/replacement0을 사전등록했다. provider/model exposure는 아직0이다.
+- controller lock은 1.9.726 repair `bcc78df4…`를 가리키며 relative artifact product path를 prepared cell workspace에서 resolve하고 escape를 거부한다. success/hard-stop은 candidate receipt exact-byte binding을 포함한다.
+- preregistration과 provider-zero admission은 complete다. provider execution은 PREPARATION checkpoint commit 전까지 금지다.
+- 1.9.727은 1.9.725에서 provider에 노출되지 않은 conservation/wind exact bytes를 보존하고 fresh archaeology tray-release task1개를 추가했다. exposed benthic는 포함하지 않으며 replay/replacement가 아니다.
+- 세 task raw baseline은75/85 exact, red gate는 accessibility+responsive exact다. archaeology의 contrast red target은 `.guidance-copy`/`footer`이고 schema0.2 debt coverage, sealed artifact/inventory, structured CSS6건이 provider/model0으로 complete다.
+- task inventory91, focused239 pass/2 skip·lint green이다. 다음은 exact task set을 commit하고 1.9.726 path repair를 포함한 새 candidate-bound Reliability@3 plan을 preregister하는 단계다.
+- 1.9.725 benthic 첫 셀은 provider exact1회로 valid85/85, resolved=true, 270,341ms, 1,271,410 tokens(cached input1,099,520)을 만들었다. revision1, static success1/fail0, browser recovery0, proof compliance true다.
+- passed receipt candidate hash와 실제 final `index.html` hash는 둘 다 `4ec448fe…`로 exact match다. 그러나 exporter가 artifact의 relative `product_path`를 cell workspace가 아닌 repo cwd에서 해석해 product absent/byte mismatch를 잘못 기록했다.
+- prereg hard-stop대로 1.9.725 root는 infrastructure-invalid로 동결했다. benthic replay/retry/replacement는 금지하고 conservation/wind는 provider/model0 unexposed 상태로 보존한다. Reliability pass는0/3이며 ranking/2.0 gate에 반영하지 않는다.
+- 1.9.726 local repair는 relative product path를 cell workspace 안에서만 resolve하고 workspace escape를 거부한다. focused37/37·lint green이다. 다음은 repair commit 뒤 conservation+wind+fresh task1개를 새 provider-zero Reliability@3으로 잠그는 단계다.
+- 1.9.725 fresh root는 scheduled/prepared3/3, provider calls0/model exposures0으로 admission green이다. plan `2ed014dd…`, state `8fb75a14…`, exact skill origin `73716105…`/hash `4f02726f…`이며 execution artifact는 전부 absent다.
+- required normalization13/13이 true다. task별 prompt/starter/product/artifact/source-contract 차이는 의도적으로 분리되고, task lock·schema0.2 debt coverage·provider_mutable=false·untouched product는3/3 exact다.
+- PREPARATION checkpoint 뒤 benthic 셀은 exact1회 실행됐고 controller instrumentation hard-stop으로 terminal frozen됐다.
+- 1.9.725는 fresh 1.9.724 task3개를 benthic→conservation→wind 순서로 고정하고 Codex/Luna/high, timeout720s, concurrency1, retry/replacement0으로 사전등록했다. 아직 provider/model exposure0이다.
+- cell success는85/85+resolved+revision1+static success1/fail0+handoff0+proof true+inventory 불변에 더해 passed candidate receipt와 candidate/final exact-byte equality를 요구한다. receipt 부재/실패, source-contract·inventory mismatch, final byte mismatch는 남은 셀 hard-stop이다.
+- exporter가 provider-sealed receipt와 최종 product hash를 독립 대조하고 matrix runner가 사전등록 조건을 실제 실행 게이트로 강제한다. focused54/54·lint green이다.
+- local skill provenance는 이제 저장소 HEAD가 아니라 해당 skill path의 마지막 변경 commit을 `source_commit`으로, 준비 시점 HEAD를 `workspace_commit`으로 분리한다. 따라서 exact 1.9.723 skill lock이 이후 report-only commit에 의해 잘못 귀속되지 않는다. focused250 pass/2 skip·lint green이다.
+- preregistration과 provenance repair는 clean commit됐다. provider execution은 PREPARATION checkpoint commit 전까지 금지다.
+- 1.9.724는 terminal 1.9.722 task를 재사용하지 않고 benthic sample transfer, conservation frame loan, wind-tunnel model handoff의 새 task3개를 provider/model0으로 잠갔다.
+- raw DESIGN.md baseline은 모두75/85이고 false gate는 accessibility+responsive exact다. 접근성 red node는 `.guidance-copy`와 `footer`뿐이며 surface-local muted copy는 green이다.
+- contrast contract는 `.muted`보다 specificity가 높은 `header > p.guidance-copy`와 `footer`를 사용한다. schema0.2 debt coverage와 provider-zero sealed artifact/inventory/structured CSS6건이3/3 complete다.
+- focused303 pass/2 skip·lint green이다. 다음은 exact task hash와 clean 1.9.723 skill을 새 no-retry Reliability@3 plan에 preregister하는 단계이며 아직 provider execution/ranking/2.0 promotion은 없다.
+- 1.9.723 local repair는 complete candidate bytes를 product edit 전에 동일 static evaluator로 반복 검증한다. preview는 product와 sealed artifact를 바꾸지 않는다.
+- 최신 preview 결과는 별도 receipt에 pass/fail, candidate/source-contract/inventory hash로 기록된다. provider-sealed static-close는 최종 product bytes가 최신 passed receipt와 정확히 같지 않으면 closure를 소비하기 전에 거부한다.
+- prepare-sandbox instruction은 source-packet→candidate preview green→동일 bytes single edit→static-close exact1회 순서를 직접 주입한다. focused352 pass/2 skip, lint green, provider/model0이다. user-owned `web/public/llms-full.txt` dirty는 보존해 attribution-sensitive full-suite red4는 clean-source 증거로 승격하지 않는다.
+- 기존 1.9.722 task bytes와 terminal 결과는 불변이다. 다음은 `.muted` specificity를 이기지 못한 `header > p` 계약을 새 task generator에서 cascade-effective selector로 교정하고, 완전히 새 task ids/bytes에 provider-zero baseline+sealed smoke를 만드는 일이다.
+- 1.9.721 provider-zero preparation은3 workspace를 만들었지만 기존 admission이 exact-task cross-arm만 지원해 intentional distinct task hash를 normalization mismatch로 차단했다. root는 frozen이며 provider/model exposure0이다.
+- 1.9.722는 `exact-task-cross-arm`과 `cross-task-reliability` admission을 명시적으로 분리한다. 후자는 task id/prompt/starter/artifact hash가 서로 다름을 허용하되 task lock exact attestation과 variant/system/runtime/model/effort/timeout/skill/evaluator/source-contract shape 동일성을 요구한다.
+- 새 policy의 positive/lock-tamper negative를 포함한 focused29/29와 lint가 green이다. 1.9.721 task/model/success bytes는 바꾸지 않고 새 experiment/root `1.9.722`로만 사전등록했다.
+- 1.9.722 fresh root는 scheduled/prepared3/3, provider/model0으로 admission green이다. plan `268b98a4…`, state `aed7746c…`, source commit `fcd2d15d…`, clean skill `d76b114b…`이며 task별 prompt/starter/baseline/source-contract hash가 exact다.
+- normalization required13개는 모두 true이고 intentional task/prompt/starter/product/artifact differences는 policy상 분리 보고된다. 세 product tree는 untouched, schema0.2 debt coverage는3/3 complete다.
+- cell pass는85/85+resolved+revision1+static success1/fail0+handoff0+proof true+sealed inventory 불변, Reliability@3 pass는3/3이다. contract hard-stop이면 남은 셀을 동결한다.
+- orbital 첫 셀은 exact1회 valid81/85, 177,191ms, 558,228 tokens다. edit/revision1·inventory 불변·responsive green이지만 static closure0/failed1·proof false·accessibility red다.
+- model은 `.decision>div`/`header>p`로 sealed exact selector를 minify했고 header rule을 `.muted`보다 앞에 둬 4.47:1 contrast debt가4 viewport에서 남았다. red closure 뒤 second edit/browser/handoff 없이 terminal stop은 지켰다.
+- prereg hard-stop에 따라 seed-vault/audio 셀은 unexecuted frozen이며 이 3 task replay/retry/replacement는 금지다. provider calls1/model exposure1, Reliability@3 pass0/3이다.
+- 다음은 provider/model0 candidate preflight를 설계해 `.omd` candidate bytes가 exact sealed CSS와 cascade-effective contrast를 통과한 뒤에만 single product edit을 허용한다. transfer는 새 task ids/bytes에서만 한다.
+- 1.9.720은 fresh fictional task3개(orbital optics, seed vault, audio archive)를 provider/model0으로 잠갔다. 도메인·palette·cardinality·identifier length·grid density가 다르며 meteorite replay가 아니다.
+- raw DESIGN.md baseline은 세 과제 모두75/85, false critical gates=`accessibility,responsive` exact다. baseline bytes hash와 debt coverage가 3/3 완전 일치한다.
+- provider-free sealed smoke3/3이 schema0.2 artifact, immutable inventory, parent containment, register/window/decision reflow, contrast obligations를 생성했다. focused6/6·lint green이며 full suite762 pass/3 skip 뒤 system-load timeout2건은 exact targeted rerun에서 모두 pass했다.
+- 사용자가 exact payload를 승인해 1.9.719 Luna/high 단일 셀이 retry/replacement 없이 valid complete됐다. provider calls1/model exposures1이며 meteorite 재실행은 금지다.
+- 결과는 raw75→85/85, resolved=true, 178,868ms, 652,505 tokens(그중 cached input585,472)다. 6 critical gates가 모두 green이다.
+- prereg success contract는 edit/revision1, static success1/fail0, handoff0, proof true, sealed inventory `1f14673d…` 불변으로 전부 통과했다.
+- desktop/390/320/200% surrogate 모두 scroll=client, clipped/overlap/text-geometry failure/serious axe0이며 decision roles는 singular·visible·contained다.
+- 모델 내부 browser-harness는 Chrome remote-debugging 승인 infrastructure에서 navigation 전 실패했지만 retry/handoff 없이 종료했다. 독립 evaluator가 interaction/keyboard/geometry/a11y를 재검증했으므로 objective 판정은 유효하다.
+- schema0.2의 exact baseline debt coverage+parent containment+contrast 의무가 fresh task에 전이됐다. 단일 진단이라 ranking/우위/Ship Preference/2.0 gate는 변하지 않는다. 다음은 동일 셀 replay가 아니라 새 unseen tasks의 preregistered reliability 검증이다.
+- 사용자 명시 승인 뒤 1.9.716 Luna/high 단일 셀이 retry/replacement 없이 valid complete됐다. provider calls1/model exposures1이며 같은 abyssal task 재실행은 금지다.
+- 결과는 77/85, resolved=false, 109,514ms, 361,341 tokens다. task/design/state/evidence는 green, responsive/accessibility는 red다.
+- provider-sealed lifecycle은 전이됐다: source-packet pre-edit 소비, product edit/revision1, successful static closure1/failed0, browser recovery0, proof compliance true, source contract/inventory hash 보존이다.
+- 남은 실패는 계약 완전성이다. nowrap carrier의 parent grid item containment 의무가 없어 320px에서17px·200% surrogate에서34px overflow가 남았고, raw baseline의 muted-text 4.47:1 contrast debt가 sealed ledger에서 빠졌다.
+- 이 원인은 1.9.717 local repair로 닫았고, transfer는 새 fictional task·새 preregistration·새 root만 허용한다.
+- 1.9.717 local repair는 source-contract0.2에서 hash-locked baseline bytes의 false critical-gate exact set과 debt coverage를 대조하고, comparison-scroll carrier마다 exact parent `min-width:0` containment를 요구한다. full suite764 pass/3 skip, lint green이다.
+- 1.9.718 신규 `meteorite-section-loan-v0.1`은 provider0/model0, raw75/85이며 accessibility+responsive만 red다. sealed packet은 register/return/decision/parent containment/contrast 6개 CSS 의무를 모두 포함한다.
+- 1.9.719 Luna/high1셀은 fresh root에 prepared됐다. plan `5c1a912c…`, state `098f9afd…`, artifact `fa050f35…`, source contract `2532fd02…`, inventory `1f14673d…`, baseline evidence `bfd2d4e7…`이며 failed=covered=`accessibility,responsive`, admission allowed, provider/model0이다.
+- 다음은 PREPARATION checkpoint commit 뒤 단일 execution만 허용한다. retry/replacement/same-task replay/ranking/2.0 promotion은 금지다.
+- 1.9.719 execution 명령은 provider 호출 전에 외부 egress 정책 게이트에서 거부됐다. 이전 1.9.716 명시 승인은 이 새 payload에 적용되지 않는다고 판정됐으며, 우회·간접 실행·재시도는 금지다. root/product/artifact는 untouched이고 provider/model exposure0이다.
+- 재개에는 1.9.719 cell의 `index.html`, `DESIGN.md`, `.benchmark/PROMPT.md`/metadata, `AGENTS.md`, `.agents/skills/omd-apply/**`, provider-sealed `.omd/reflow-closure.json`을 `gpt-5.6-luna` high에 1회 전송·실행한다는 사용자의 새 명시 승인이 필요하다.
+- 1.9.716 fresh root는 prepared-provider-zero admission을 통과했다. locked plan `7c152911…`, state `ca255f95…`, skill `92057d24…`, sealed artifact `51f3ade9…`, source contract `cbeffd2d…`, inventory `9ff364fe…`이며 deterministic_reflow normalization/attestation이 true다.
+- 다음은 PREPARATION checkpoint를 commit한 뒤 `max-new-cells=1`로 단일 provider execution을 시작한다. 실행 중간 변경·retry·replacement·같은 task replay는 금지다.
+- 1.9.716은 non-executed 1.9.715 root를 대체하는 새 sealed-admission canary다. task/baseline/skill bytes/model/effort/timeout/no-retry는 같고, 새 root만 admission hash attestation 이후에 다시 잠근다. provider/model exposure는0이다.
+- 1.9.715 preparation audit를 강화해 task가 요구한 sealed artifact의 byte hash, source-contract hash, inventory hash, provider_mutable=false를 admission에서 다시 검증한다. artifact 1-byte tamper negative가 fail-close하고 focused5·lint/diff가 green이다.
+- 최초 prepared root는 이 새 auditor/manifest bit 이전 산출물이므로 폐기하지 않고 non-executed smoke로 남긴다. 다음은 이 admission hardening을 clean commit한 뒤 새 output root/새 experiment suffix로 다시 preregister해야 하며 기존 root 실행은 금지다.
+- 1.9.715 canary plan은 새 abyssal task, exact clean 1.9.713 skill, Codex/Luna/high1셀, timeout720s, retry0으로 잠겼다. provider/model exposure는 아직0이고 이 셀은 ranking·2.0 gate promotion에 사용할 수 없다.
+- success는85/85+product revision1+successful static closure1+failed0+user handoff0+proof compliance이며 artifact inventory drift·second edit·unsupported claim은 terminal failure다. 다음은 prereg commit 뒤 fresh root 준비·admission audit·단일 실행이다.
+- 1.9.714 신규 `abyssal-sediment-core-custody-v0.1`은 provider/model exposure0으로 잠겼다. 83-task validator와 source-contract admission이 green이며 raw baseline75/85로 contract/state/design/evidence green, responsive+a11y red다.
+- 실제 `prepare-sandbox`가 clean `1f267b3c` OmD skill에서 provider-sealed artifact `51f3ade9…`, source contract `cbeffd2d…`, inventory `9ff364fe…`를 생성했다. `source-packet` 전후 artifact hash는 동일했고 structured relationship/acceptance CSS가 모두 출력됐다.
+- 다음은 1.9.714 task lock을 clean commit한 뒤 exact task/tree와 exact 1.9.713 skill을 Luna/high 단일 canary에 preregister한다. timeout720s·retry0·public ranking 제외이며 success는85/85+revision1+static success1/fail0+user handoff0+proof compliance다.
+- 사용자 승인으로 repeated-root hard pause의 다음 범위를 **모델 작성 manifest 제거**로 재설정했다. 1.9.713은 task의 `omd_reflow_source_contract`를 provider/model 실행 전에 OmD helper가 `.omd/reflow-closure.json`으로 결정론 봉인한다. 모델은 read-only `source-packet`을 소비하고 product를 한 번만 고친 뒤 `static-close`만 실행한다.
+- sealer는 acceptance debt의 CSS를 structured declarations로 병합하며 canonical fallback CSS를 스스로 금지하는 literal/pattern을 provider 노출 전에 거부한다. task validator는 schema0.1·entry 일치·nonempty carrier/row/debt·debt별 structured CSS를 admission에서 검사한다.
+- prepare-sandbox는 exact OmD variant에만 sealed artifact와 immutable instruction/attestation을 주입한다. legacy 일반 프로젝트의 model-authored `source-fallback-open`은 호환 경로로만 남는다. focused119와 lint/diff는 green이고 full suite는 762 pass/3 skip, clean-tree attribution fixture1건만 dirty source 때문에 예상대로 red였다.
+- 다음은 상태/저널을 포함해 1.9.713을 clean commit하고 full suite를 재실행한다. 그 뒤에만 완전히 새 provider0 task를 source contract와 함께 preregister한다. polar/volcanic/cave/wildlife replay는 계속 금지다.
+- 1.9.712 exact Luna/high 단일 진단은 valid63/85, resolved=false, 379,176ms, 1,518,861 tokens다. product edit/revision1, user handoff0이며 task-contract/responsive/a11y critical gate와 static closure가 red다.
+- 모델 작성 artifact는 CSS 의무를 계속 generic literal로 두어 `required_css_declarations: []`, `canonical_acceptance_css_source: null`을 만들었다. 동시에 global `overflow-x:auto|scroll` 금지와 local fallback carrier의 `overflow-x:auto` 요구를 함께 잠갔고, lock 뒤 그 충돌을 제거하면서 immutable inventory hash가 바뀌어 static-close가 failed1/success0/proof false로 종료됐다.
+- 이는 1.9.710 이후 structured-packet completeness 클래스의 재발이다. preregistered repeated-root stop에 따라 frontier lane은 **hard pause**다. polar 재실행·replacement model·새 fresh task·ranking·2.0 gate 반영은 금지하며, 다음 진행은 scope를 재설정하는 명시적 결정이 필요하다.
+- 1.9.712 `polar-structured-css-canary`는 exact task `2a3749ad`/tree `22c26500…`, exact clean prepared skill source `0fd0f1f2`/hash `e2486660…`(repair origin `f10983ce`), Luna/high 1셀, timeout720s, retry0으로 준비됐다. locked plan `cc65fca6…`, state `c430032c…`, provider0/model exposure0이다.
+- success는85/85+product revision1+successful static closure1+failed0+user handoff0+proof compliance다. 같은 task 재실행·replacement·ranking·2.0 gate 반영은 금지다. 같은 structured-packet completeness 원인이 재발하면 frontier hard pause다.
+- 1.9.711 신규 `polar-ice-core-vial-custody-v0.1`은 exact task commit `2a3749ad`, tree `22c26500…`, provider exposure0으로 잠겼다. 5 cores/7 archive vials/4 accession windows와 3 states, curator toggle, form, evidence boundary를 보존한다. 82 task validator+mutation green이고 raw baseline75/85, responsive+a11y red다.
+- 다음은 exact 1.9.710 skill을 새 polar task에서 Luna/high1셀·timeout720s·retry0로 검증한다. success는85/85+revision1+successful static closure1+failed0+proof compliance이며 같은 task 재실행·ranking·2.0 gate 반영은 금지다.
+- 1.9.710 clean commit `f10983ce`는 CSS acceptance obligation을 `required_css_declarations`로 구조화했다. `exact-value`는 값까지, `any-value`는 선언 존재만 static-close가 검증하고 둘 다 권장값을 `canonical_acceptance_css_source`로 짧은 fallback packet에 제공한다. 관계 CSS와 debt CSS를 첫 edit 전에 같은 copy-ready packet으로 받는다. clean full756 pass/3 skip, lint/diff green이다.
+- 1.9.709 exact Luna/high 단일 진단은 valid85/85, resolved=true, 483,490ms, 2,122,570 tokens다. product edit/revision1, user handoff0이며 manifest-default path가 `index.html`로 정상 해석돼 1.9.707 path repair는 전이됐다.
+- static-close는 새 원인으로 failed1/success0/proof false다. 편집은 responsive 4-column→1-column을 구현해 objective85를 통과했지만 model-authored exact literal `repeat(4,minmax(0,1fr))` 대신 의미상 유효한 `repeat(4,minmax(180px,1fr))`를 썼다. terminal red 뒤 재편집·재검증 없이 종료했다.
+- 이는 missing-path 반복이 아니므로 hard pause가 아니다. 다음 bounded repair는 relationship canonical packet에 흩어진 acceptance-debt CSS 의무까지 짧은 copy-ready packet으로 승격한다. volcanic task 재실행·ranking·2.0 gate 반영은 금지다.
+- 1.9.709 canary는 exact fresh task `4dc07e93`/tree `a1d4db2f…`, exact clean skill source `264dc191`/hash `1980315c…`, Luna/high 1셀, timeout720s, retry0으로 준비됐다. locked plan `66bfbd4d…`, prepared state `990524f5…`, provider0/model exposure0이다. success는85/85+revision1+successful static closure1+failed0+proof compliance이며 같은 path omission 재발 시 hard pause다.
+- 1.9.708 신규 `volcanic-gas-sampler-custody-v0.1`은 exact task commit `4dc07e93`, tree `a1d4db2f…`, provider exposure0으로 잠겼다. 5 samplers/7 sample canisters/4 intake windows와 3 states, technician toggle, form, evidence boundary를 보존한다. 81 task validator+11 mutation green이고 raw baseline75/85다.
+- 다음은 exact 1.9.707 skill을 새 task에서 Luna/high1셀·timeout720s·retry0로 검증한다. success는85/85+revision1+successful static closure1+failed0+proof compliance다. 같은 task 재실행·ranking·2.0 gate 반영은 금지다.
+- 1.9.706 exact Luna/high 단일 진단은 valid85/85, resolved=true, 491,459ms, 2,404,824 tokens다. canonical CSS packet이 exact grouped selector로 전이해 product revision1과 successful static closure1을 만들었고 user handoff0·unsupported claim0이다.
+- 그러나 첫 post-edit `static-close`에서 product path 인자를 빠뜨려 helper가 product read 전 exit1했고, 이어 path를 붙인 successful closure와 실패한 browser attempt가 발생했다. proof는 failed static1 때문에 compliance=false다. 이는 1.9.703 selector 원인의 반복이 아니므로 hard pause가 아니다.
+- 1.9.707 clean commit `8b216c5f`는 `static-close <artifact>`가 manifest의 locked `product_path`를 기본값으로 사용하게 하고 skill의 canonical command에서 별도 path 인자를 제거한다. focused112, clean full755 pass/3 skip, lint/diff green이다. 같은 cave task 재실행은 금지하며 다음 transfer는 새 provider0 task만 허용된다.
+- 1.9.705 신규 `cave-climate-sensor-custody-v0.1`은 exact task commit `4bd03c7b`, tree `fe3bb646…`, provider exposure0으로 잠겼다. 5 probes/7 data cartridges/4 collection windows와 3 states를 보존하며 climate verification·calibration·integrity·acceptance·publication 추론을 금지한다. 80 task validator+11 mutation이 green이다.
+- raw DESIGN.md baseline은 75/85로 contract/state/design/evidence green, responsive/a11y red다. 좁은 화면의 fixed-width carrier, atomic fragmentation, short decision wrapping, contrast4.18이 재현됐다.
+- 1.9.706 canary는 exact task `4bd03c7b`/tree `fe3bb646…`, exact clean skill `984180ff`/hash `97b50cba…`, Luna/high1셀, timeout720s, retry0으로 준비됐다. locked plan `315fc216…`, prepared state `dd21d349…`, provider0/model exposure0이다. success는85/85+revision1+successful static closure1+failed0+proof compliance이며 같은 selector 원인 재실패 시 hard pause다.
+- 1.9.703 exact Luna/high 단일 진단은 valid85/85, resolved=true, 418,286ms, 2,156,519 tokens다. task/design/state/responsive/a11y/evidence gate가 모두 green이고 product edit/revision은 정확히1회, user handoff/browser retry는0이다.
+- source fallback opening과 relationship packet은 첫 edit 전에 전이됐다. 모델은 필요한 marker/name/tabindex/overflow/focus/nowrap를 모두 구현했지만 packet의 exact selector 앞에 `.decision` context를 붙였다. 최종 UI는 통과했으나 exact static-close가 CSS6건을 failed1/success0으로 거부해 proof compliance=false다. terminal failure 뒤 추가 edit은 하지 않아 stop 계약은 지켰다.
+- 같은 wildlife task는 재실행하지 않는다. 1.9.704 clean commit `a3656dfd`는 target/evidence용 exact grouped selector를 완성된 `canonical_css_source`로 제공하고 ancestor prefix/suffix/alias/substitution을 명시적으로 금지한다. focused112, clean full755 pass/3 skip, lint/diff green이다.
+- 1.9.699 clean commit `b5230a70`은 full755 pass/3 skip, lint/diff green으로 고정됐다.
+- 1.9.700 exact `b5230a70` Luna/high 단일 진단은 valid81/85, resolved=false, 689,553ms, 4,134,638 tokens다. snapshot bootstrap→artifact-only reconcile→fallback opening은 전이됐고 target/evidence distinct relationship carrier 계약도 실행됐다.
+- 첫 product edit은 carrier marker/name/tabindex를 적용했지만 overflow/focus/nowrap 6개 CSS 의무를 누락했다. static-close는 failed1/success0으로 정확히 거부했고, model은 terminal failure 뒤 두 번째 edit으로 CSS를 보완해 proof compliance=false다. 최종 UI의 objective 미해결 원인은 serious color contrast다.
+- 같은 공개 과제 반복은 오염·4.13M token 비용 때문에 중단한다. 1.9.701 clean commit `270d9b62`는 relationship 계약을 generic 50+ item checklist 뒤가 아니라 exact selector/attribute/CSS의 짧은 `source_fallback_patch_contract`로 맨 앞에 제공하고 red 뒤 second edit 금지를 packet 자체에 넣었다. clean-source full755 pass/3 skip, lint/diff green이다.
+- 다음 transfer 후보를 감사한 결과 현재 public task78개는 모두 historical report에 최소1회 등장해 완전 미노출 과제가0개다. 기존 과제를 unseen으로 재라벨하지 않는다. 다음 provider call 전 새 fictional development task를 작성하고 core validator+mutation acceptance를 통과시켜야 한다.
+- 1.9.702 신규 `wildlife-acoustic-media-custody-v0.1`은 exact task commit `b51649c5`, tree `e273008f…`, provider exposure0으로 잠겼다. 5 deployments/7 media cards/4 retrieval windows와 3 interaction states를 보존하며 species·calibration·integrity·acceptance·publication 추론을 금지한다. 79 task 전수 validator+11 mutation, full755 pass/3 skip, lint/diff가 green이다.
+- raw DESIGN.md starter baseline은 75/85로 contract/state/design/evidence green, responsive/a11y red다. desktop은 green이고 390/320/200%에서 document overflow와 atomic fragmentation이 재현되며 contrast4.18이다. task lock/baseline report가 고정됐고 provider0다.
+- 1.9.703 canary는 exact task `b51649c5`/tree `e273008f…`, exact skill `76c2e530`/hash `228db37f…`, Luna/high1셀, timeout720s, retry0으로 준비됐다. locked plan `1a77e71f…`, prepared state `aa7e0988…`, provider0/model exposure0이다.
+
+- 1.9.697 clean-commit full regression은 755 pass/3 skip, lint/diff green이다.
+- 1.9.698 exact `3ec07131` Luna/high 단일 진단은 valid81/85, resolved=false다. weak UI의 static-close는 successful0/failed1/compliance=false로 바뀌어 false proof 차단은 전이됐다.
+- 다만 local browser-harness wrapper가 supplied stdin 실행 전 실패해 runner snapshot이 없었고 `source-fallback-open`도 snapshot 부재로 red가 되어 relationship contract 자체는 실행되지 않았다. model은 stamp 없이 edit했고 static-close가 이를 정직하게 거부했다.
+- 1.9.699 candidate는 `source-fallback-open` 자체가 snapshot 부재 시 현재 product를 먼저 잠그고 즉시 persist한다. 관계 artifact validation이 red여도 snapshot은 남아 artifact-only correction/retry가 가능하며 product edit은 opening stamp 전까지 금지다. focused69 green, full/clean commit/fresh transfer pending이다.
+
+- 1.9.695 clean-commit full regression은 752 pass/3 skip, lint/diff green으로 확정됐다.
+- 1.9.696 exact `5faf4830` Luna/high 단일 진단은 valid81/85, resolved=false다. helper-issued fallback opening→product revision1→successful static closure1, failed closure0, user handoff0, browser recovery0, proof compliance=true로 lifecycle 수리는 전이됐다.
+- 그러나 model-authored manifest가 target/evidence 관계 carrier를 실제로 요구하지 않아 두 값은 기존 decision grid cell로 남았고 320px·200%에서 evidence wrap/document overflow가 반복됐다. 단일 공개 과제 진단이므로 frontier gate/public ranking 변화는 없다.
+- 1.9.697 candidate는 source fallback target/evidence row를 각각 distinct pre-edit carrier에 단독 결박한 `comparison-scroll`로 강제한다. helper가 relationship contract hash를 찍고 static-close가 carrier count, exact accessible name, tabindex0, overflow-x, row nowrap, visible focus, peer/state/action 배제를 직접 검사한다. pre-edit snapshot 부재는 TypeError가 아니라 bounded failure다. focused130·lint green, full/clean commit/fresh transfer pending이다.
+
+- 1.9.693 exact `37f3bde` Luna/high 단일 진단은 valid 81/85, resolved=false다. named target/evidence carrier가 실제 구현되지 않았고 320px·200%에서 concise evidence wrap과 document overflow가 남았다. 공개 과제 단일-arm 진단이라 frontier gate와 public ranking에는 반영하지 않는다.
+- 같은 run에서 `static-close`가 exit1인데 proof trace가 invocation만 세어 compliance pass로 잘못 승격하는 auditor 결함을 발견했다. 1.9.694는 Codex command completion status를 결합해 successful static closure0·failed static closure1·compliance false로 fail-close한다. full749 pass/3 skip, lint green이다.
+- 1.9.695는 별도 우회 verifier 없이 shipped helper에 `source-fallback-open`을 추가했다. navigation 전 unmeasured pending plan과 unchanged pre-edit product/inventory hash를 helper가 잠근 경우에만 source-backed edit 뒤 `static-close`를 허용한다. measured plan과 post-edit opening은 거부한다.
+- skill은 fallback opening 전에 target/evidence carrier의 stable selector, exact cardinality, accessible name, tabindex, overflow, nowrap, focus, state/action exclusion을 static manifest에 잠그도록 요구한다. focused84와 lint는 green이다. full suite의 install usage assertion은 갱신했고, preregistered timeout 한 건은 dirty skill source를 의도적으로 invalid-attribution 처리해 clean commit 뒤 재실행해야 한다.
+
+- 1.9.690에서 non-interactive browser permission/attach failure를 사용자 checkpoint로 바꾸지 않고 source-backed bounded repair로 계속하는 `omd:apply` 계약을 커밋했다. full747 pass/3 skip, lint green이다.
+- 1.9.691 Luna/high field-sample transfer는 6/6 valid다. Raw 77/75/77, OmD 79/81/81이며 양쪽 resolved0/3이다. OmD objective pair는 3/3 우세(+2.35~+7.06pp)지만 resolved lift0, Reliability@3=0이라 frontier gate는 partial을 유지한다.
+- browser fallback 자체는 OmD3/3에서 사용자 요청0, product edit1회, static closure1회, browser recovery0, proof compliance3/3로 전달됐다. 남은 공통 결함은 320px·actual 200%에서 compound target/concise evidence의 contained one-line fit을 보장하지 못한 것이다.
+- 다음은 측정 불가 시 compound target/evidence를 passive-text scroll이나 action 포함 carrier가 아닌 distinct named relationship carrier로 fail-close하는 1.9.692 source-derived fit contract다.
+
+- 1.9.689 fresh Luna/high six-cell 실행이 6/6 valid로 끝났다. Raw는 UI resolved0/3·scores73/73/79, exact current OmD는2/3·85/85/75로 paired W/T/L=2/1/0, observed resolved lift+66.7pp다.
+- 95% paired lower bound0, Reliability@3=0, OmD proof compliant1/3라 `verified-skill-lift`는 open→partial로 전진했지만 frontier gate pass=false다. 2.0 readiness는 partial4/open3/external2/pass0으로 계속 차단된다.
+- OmD mean wall289.7s vs Raw327.1s(0.886x), mean tokens592.0k vs486.1k(1.218x), total provider tokens3,234,125다. 단일 task/model의 descriptive evidence일 뿐 public 우위 주장이 아니다.
+- OmD third failure는 Chrome remote-debugging permission에서 사용자 개입을 요청하고 product edit0으로 끝난 valid harness failure다. 다음은 browser permission을 human checkpoint로 바꾸지 않고 source-backed bounded repair를 계속하는 1.9.690 skill 계약 수리다.
+
+- 1.9.688은 이전 `local_only_mode`를 standing user authorization에 맞게 해제하되, non-local action class와 active gate를 감사 가능한 필드로 제한한다. 현재 허용 범위는 `remote-model-execution`의 `verified-skill-lift` 1개다.
+- boundary auditor는 historical local-only pause와 새 remote-authorized mode를 모두 검증하며 unauthorized gate 실행을 거부한다. 2.0 readiness는 여전히 pass0/9이고 실행 허용 자체는 승격 증거가 아니다.
+- fresh 1.9.688 Luna/high Raw DESIGN.md 대 current OmD six-cell 계획을 잠갔다. 다음은 이 checkpoint를 커밋한 뒤 새 root를 준비·감사하고 provider 실행을 시작하는 것이다. 1.9.680 deferred root는 immutable이다.
+
+- 1.9.687은 unresolved9 gates의 next evidence class를 exact map으로 고정했다. remote model4+multi-model1, private storage/audit1, practitioner1, independent auditor1, production observation1이며 locally closable0이다.
+- local preparation은 complete7/partial2지만 machine pass0/9다. boundary auditor는 누락/중복/거짓 local mapping을 거부하고 `PAUSE_LOCAL_PATCH_TRAIN_FOR_NON_LOCAL_EVIDENCE`를 반환한다.
+- 현재 no-remote 조건에서 의미 있는 로컬 패치 큐는 종료됐다. 다음 최소 권한은 frozen depot task의 Raw/current OmD six-cell을 fresh root로 재준비한 뒤 remote model 실행을 허용하는 것이다. 기존1.9.680 root는 보존한다.
+
+- 1.9.686은 9 frontier gates 각각에 immutable JSON ref/pointer/expected pass predicate를 고정했다. narrative status만 pass로 바꾸거나 expected를 현재 실패값에 맞추면 auditor가 거부한다.
+- 현재 machine pass evidence0/9, narrative pass0/9가 일치해 `BLOCK_2_0_PROMOTION`이다. missing/escape evidence도 계속 fail-close한다.
+- focused4와 full743 pass/3 skip, lint/diff green, provider0/model0이며 새 gate 결과는 없다. 다음은 로컬에서 더 닫을 수 있는 gate와 실제 external/remote stop boundary를 재분류한다.
+
+- 1.9.685는 core task validator를 강화해 id/version/track/grounding/locale/adapter/network/entry/viewports/design/unknown/protected-hook exactness를 admission에서 fail-close한다.
+- public tasks78/78 green이며 identity/network/path/viewport/hook/evidence/design/directory 11 mutation을 모두 kill했다. focused238 pass/2 skip, lint/diff green, provider0/model0이다.
+- 이는 local robustness이며 independent auditor0·broken-rate 없음으로 gate7은 external/open이다. 다음은 readiness snapshot이 machine reports의 실제 결과와 drift하지 않도록 cross-audit한다.
+
+- 1.9.684는 downloadable success/failure/timeout package를 hash-validate하는 계약/auditor를 추가했다. 모든 run은 manifest/result/record, complete는 score/screenshots manifest/product archive, fail/timeout은 stderr가 필수다.
+- task/system/trial 중복을 차단하고 Verified group은 exact trials1–10+complete representative가 있어야 한다. positive10-run fixture와 partial/missing/tamper/duplicate/misleading representative negative가 통과했다.
+- real Verified groups packaged0이라 gate5는 open이다. focused3 pass/lint/diff green, provider0/model0이다. 다음 provider-free 큐는 evaluator/package mutation coverage와 gate snapshot 연동이다.
+
+- 1.9.683은 hidden task 원문을 repo 밖 private root에 유지하면서 public에는 opaque alias+bundle/contract hash+locale/dimensions만 남기는 commitment registry builder를 추가했다.
+- repo 내부 source, incomplete/ineligible bundle, unsupported locale, duplicate commitment를 거부한다. positive tests에서 task name/prompt/source path가 public registry에 없음을 확인했다.
+- 실제 private tasks는0이며 gate4는 open이다. focused5 pass/lint/diff green, provider0/model0이다. 다음은 real private authoring location이 없는 동안 artifact-package completeness/mutation coverage로 이동한다.
+
+- 1.9.682는 공개 task inventory와 hidden Verified denominator를 분리하는 coverage contract/auditor를 추가했다. task가 `benchmark_visibility:hidden`+`independent_audit:eligible`일 때만 24-task gate에 들어간다.
+- 실제 감사는 inventory78, eligible hidden0, locale EN/KO only, creation0/screenshot-fidelity0/open-brief0으로 `BLOCK_HIDDEN_TASK_COVERAGE_CLAIM`이다. 기존 공개 과제를 unseen으로 재라벨하지 않는다.
+- positive fixture는 24 tasks/5 locales/8 dimensions가 모두 있어야 pass함을 확인한다. focused2 pass/lint/diff green, provider0/model0이다. 다음은 private denominator registry와 missing task-family authoring boundary를 설계한다.
+
+- 1.9.681은 2.0.0의 normative 9 gates를 machine-readable snapshot과 fail-close auditor로 고정했다. gate 누락/중복/개명, 잘못된 status, missing/absolute/repo-escaping evidence를 거부하고 9/9 pass 전에는 promotion을 차단한다.
+- 현재 판정은 pass0/partial3/open4/external2, evidence ref17개 존재, `BLOCK_2_0_PROMOTION`이다. all-pass가 되더라도 자동 배포가 아니라 `READY_FOR_USER_RELEASE_DECISION`까지만 허용한다.
+- 1.9.680 준비는 Skill Lift 결과로 승격되지 않았다. provider0/model0이며 focused3와 full732 pass/3 skip, lint/diff green이다. 다음 provider-free 큐는 hidden denominator·artifact completeness·mutation coverage·claim package를 닫는 것이다.
+
+- 1.9.680은 frozen investigational-product holdout을 Raw DESIGN.md/current exact `omd:apply` 각3회, 총6 cell로 balanced preregistration했다. task/prompt/starter/product/runtime/model/effort/timeout/evaluator parity가 모두 true이고 OmD는 publishable `f3c90aaf…`, skill `cd1e35c1…`에 고정됐다.
+- provider0/model0/execution0 상태로 6/6 untouched preparation과 admission을 통과했다. runner 직접 시도도 `matrix-execution-hold:remote-execution-deferred`로 실행 전에 멈췄고 재감사에서 execution artifact0을 확인했다.
+- 이는 실행 준비 증거이지 OmD·Luna·품질·속도·토큰·선호도 결과가 아니다. focused43와 full729 pass/3 skip, lint/diff green이다. no-remote 조건에서 다음 큐는 offline claim-readiness와 2.0 stop-condition report를 강화하는 것이다.
+
+- 1.9.679는 기존 suite와 다른 investigational-product depot release repair 과제를 provider0/model0/human0 상태에서 새로 만들고 prompt/starter/contract/initial score를 동결했다. baseline은75/85 fail이며 task/design/state/evidence는 통과하고 responsive·accessibility만 의도적으로 실패한다.
+- 4 kits/6 logs/2 depots/3 views, exact known evidence, unknown regulatory/clinical claim 차단, interaction/form/keyboard/console/network 계약을 보존한다. 실패는 390/320/zoom overflow·atomic wrapping/fragmentation·2.71:1 muted contrast로 국소화돼 있다.
+- Codex in-app browser로 view/toggle/invalid+valid form과 exact cardinality를 교차 확인했다. viewport emulation은 current binding에 없어 390/320/zoom 판정은 external deterministic evaluator가 담당한다. full728 pass/3 skip, lint green이며 비교·모델·스킬 우위 주장은 없다.
+
+- 1.9.678은 Raw DESIGN.md와 exact current `omd:apply`를 3 trial/6 cell로 balanced 준비하는 새-epoch canary를 만들었다. prompt/starter/product/runtime/model/effort/timeout/evaluator parity가 전부 true이고 OmD source는 publishable commit `c73950c0…`, skill hash `cd1e35c1…`다.
+- reusable prepared-admission auditor가 plan/cell/manifest 계약, untouched product tree, cross-arm normalization, source publishability, execution artifact absence를 fail-close한다. 실제 runner hold도 `matrix-execution-hold:remote-execution-deferred`로 확인했다.
+- 이 canary는 provider0/model0/execution0이며 benchmark 우위 증거가 아니다. full725 pass/3 skip, lint/diff green이다.
+
+- 1.9.677은 새 sandbox/matrix 준비 시 objective score schema·methodology epoch·evaluator source hash·contract source hash를 locked plan/preparation state/cell manifest/matrix-cell 4곳에 고정한다.
+- runner는 실행 lease를 잡기 전에 모든 pin을 현재 evaluator와 대조한다. 구 epoch·누락·source drift는 `objective-methodology-drift`로 종료되어 execution state/cooldown/provider 호출을 만들지 않으며 historical root는 수정하지 않고 reprepare만 허용한다.
+- fresh two-arm pin parity와 historical-epoch negative가 통과했고 full724 pass/3 skip, lint/diff green이다. provider0/model0이며 모델·스킬·Ship Preference 결과가 아니다.
+
+- 1.9.676은 score schema0.6에 objective methodology epoch `ui-resolve-objective-2026q3-passive-scroll-v1`을 추가하고 run export/aggregate group/paired comparison까지 전달한다. 서로 다른 epoch는 같은 점수 집단이나 pair로 합쳐지지 않는다.
+- provider0 impact scanner가 explicit atomic selector를 가진 frozen starter56개를 390/320/CSS-zoom 조건에서 렌더했다. passive text scroll 영향0/56이라 starter baseline 재분류는 없고 historical score는 재계산하지 않는다.
+- run-record schema는 v0.3, focused33 pass, full723 pass/3 skip, lint/diff green이다. 이 epoch는 deterministic objective 전용이며 Ship Preference epoch나 모델/스킬 우위와 별개다.
+
+- 1.9.675는 frozen museum-loan starter를 current session+OmD 규칙으로 provider0/human0 수리하고 external evaluator와 Codex in-app browser로 교차 검증했다. baseline75/85에서 최종85/85, all gates green, 320px document overflow0, interactions/cardinality/console green이다.
+- 첫85점 구현이 passive identifier 자체에 scroll/tab stop을 두는 score-gaming 경로였음을 발견했다. 최종 구현은 named relationship carrier3개만 keyboard-reachable이고 passive text scroller0, focusable10이다.
+- evaluator가 explicit atomic selector의 `overflow:auto|scroll`을 `passive_text_scrollers`로 기록하고 responsive gate에서 fail-close한다. negative는73/85 fail, final은85/85 pass, focused7 assertions+26 tests와 full722 pass/3 skip/lint/diff green이다. model attribution·Ship Preference·leaderboard claim은 없다.
+
+- 1.9.674는 exact v1.9.0 tag와 current를 Codex/KO 동일 조건에서 B/C/C/B/B/C 3회씩 비교했다. 양쪽 install과 needs-DESIGN doctor는3/3이다.
+- v1.9.0은 route command가 없어 actionable workflow0/3·step/time right-censored다. current는 repair-existing-ui3/3, ambiguity0, actionable workflow까지3 steps, median224ms다. install median은 baseline133ms/current157ms지만 baseline은 route failure라 속도 비율을 주장하지 않는다.
+- local structured-routing activation gap만 닫혔다. UI 품질·이해도·retention·model performance 비교가 아니며 사용자 개입0/provider0/model0이다.
+
+- 1.9.673은 built CLI를 사용해 4개 host에서 설치→pre-DESIGN doctor→design-system route→deterministic DESIGN fixture→ready doctor→existing-UI repair route→same-surface reverify 계약을 자동 실행한다.
+- Claude Code/EN, Codex/KO, OpenCode/ZH-CN, Cursor/JA가 4/4 통과했고 repair ambiguity0, human0, provider0, model exposure0, 최종 관측1,584ms다. validator는 channel/state/route/reverify/human/provider/30s budget을 fail-close한다.
+- deterministic fixture를 모델 생성 UI라고 부르지 않는다. provider-free technical activation funnel은 닫혔고, first resolved surface는 실제 model runtime+evaluator가 있어야만 증거로 인정한다.
+
+- 1.9.672는 사용자가 실제 7일을 기다리거나 수동 사용하지 않아도 되도록 Claude Code·Codex·OpenCode·Cursor를 새로 설치한 뒤 파일 상태를 day8로 aging하는 압축 cohort를 추가했다.
+- 재설치 전 ready4/4, content tree 불변4/4, 5 locale route×4 channel 20/20 unambiguous, 안전 refresh4/4와 refresh 후 ready4/4다. cohort가 영어 `repair`와 중국어 `修改/改进/改進` 라우팅 누락을 발견해 수리했다.
+- 이는 technical day8 survivability 증거이며 인간 retention이나 production lift가 아니다. 기술 reuse는 닫고 behavioral activation/reuse만 Partial로 남긴다. 사용자에게 7일 수동 검수를 요청하지 않는다.
+
+- 1.9.671은 설치 성공 직후 화면이 EN/KR 예시로 되돌아가던 activation 단절을 수리했다. `install-skills --lang`이 EN/KO/JA/ZH-CN/ZH-TW를 지원하고 첫 디자인 시스템 요청·다음 화면·재시작·Cursor/Builder/harness 안내가 선택 언어로 이어진다.
+- JA·간체·대만 번체는 독립 원고이며 DESIGN.md/omd:init/`/omd-harness <task>`/`.cursor/skills` 보호 문자열을 유지한다. built help와 focused install43 pass, provider0/model0이다.
+- 이 수리는 deterministic activation UX만 닫는다. 실제 install→first surface와 7일 재사용 증거는 배포 후 관측 전까지 open이다.
+
+- 1.9.670은 실제 build 산출물에서 EN/KO/JA/ZH-CN/ZH-TW flag를 전부 실행하고, Claude Code·Codex·OpenCode·Cursor가 canonical workflow manifest와 정확히 같은 bytes/hash를 설치하는지 검증했다.
+- source sha256 `c82c122a...`, 설치 4/4 exact match, distinct hash1, focused install42 pass다. provider0/model0이며 packaged CLI와 설치 데이터의 다국어 parity가 닫혔다.
+- no-remote 조건에서 routing/locale lane의 다음 host-model adherence 증거는 만들지 않는다. 현재 사용자 visual review도 필요 없다.
+
+- 1.9.669는 workflows CLI의 언어를 EN/KO에서 EN/KO/JA/ZH-CN/ZH-TW로 확장했다. JA·간체·대만 번체는 영어 fallback이나 상호 글자 변환이 아니라 독립된 제품 문체다.
+- KO canonical revision과 supported locale manifest를 추가하고 doctor가 locale bundle 누락을 fail-close한다. DESIGN.md/skill ids/commands/320px/200% 보호 구간은 유지한다.
+- 다음은 실제 built CLI에서 다섯 flag를 모두 실행하고 설치되는 workflow-capabilities bytes/hash parity를 검증하는 1.9.670이다.
+
+- 1.9.668은 built `omd workflows`/`route` surface에서 기존 `selected_workflow`를 보존하면서 structured decision을 내보내고, ambiguous interactive 요청에만 scope hint가 보이는지 검증한다.
+- low fallback은 ambiguous, high existing-surface route는 warning 없음이며 terminal-vs-agent 안내와 route alias도 유지한다. provider0/model0이다.
+- provider-free routing repair lane은 닫혔다. 다음 의미 있는 증거는 host model adherence slice지만 no-remote 조건에서는 실행하지 않는다. 사용자 visual review도 필요 없다.
+
+- 1.9.667은 workflow 선택을 id만 반환하던 black box에서 `{confidence, reason, matched_signals, ambiguous}` decision으로 확장한다. 기존 `selectWorkflow` API는 유지한다.
+- 명확한 DESIGN.md+기존화면 수정은 high, surface 없는 change는 medium ambiguous, 단서 없는 fallback은 low ambiguous다. JSON은 machine-readable decision을, interactive CLI는 ambiguous일 때만 범위 힌트를 낸다.
+- 다음은 packaged CLI의 JSON/text 출력과 설치 채널에서 이 decision schema가 실제로 유지되는지 provider-free distribution acceptance를 닫는 1.9.668이다.
+
+- 1.9.666은 `DESIGN.md` 언급을 무조건 `omd:init`으로 보내던 routing 오류를 고쳤다. 기존 화면의 명시적 수정은 `omd:apply`, no-change 검수는 `omd:slop-audit`가 우선한다.
+- EN/KO/JA/ZH mixed-intent 회귀 케이스를 추가하면서 명시적 design-system 생성, 신규 화면, locale 경로는 보존했다. provider0/model0이다.
+- 다음은 workflow/CLI/full suite acceptance 뒤, genuinely underspecified task를 repair로 조용히 보내는 default를 confidence/ambiguity 정보로 노출하는 provider-free routing 수리다.
+
+- 1.9.665는 strict packet source를 commit `28bcd9fc...`, source tree `98c295bc...`, skill tree `de59c633...`로 exact pin했다. system id는 `omd-strict-plan-packet-candidate`다.
+- provider0/model0/promotion false이며 fresh transfer 전 우위 주장은 금지다. future control은 exact `omd-guarded-plan-packet-candidate`다.
+- no-remote 조건에서 이 repair의 의미 있는 다음 증거는 만들 수 없다. 현재 사용자 검수도 필요 없다.
+
+- 1.9.664는 Python interpreter version별 `__pycache__`가 committed skill source를 dirty/non-publishable로 오판하게 하던 attestation 오염을 generic ignore로 막는다.
+- 발견 계기는 full suite의 preregistered timeout validity가 valid에서 invalid-attribution으로 바뀐 것이며, 제품/timeout 정책을 수정하지 않고 생성 캐시 경계만 바로잡았다.
+- 다음은 full suite를 다시 통과시킨 뒤 strict packet repair를 exact commit/tree로 pin하는 1.9.665다.
+
+- 1.9.663은 `plan-apply`가 diagnosis가 요구한 accessible-name row key의 정확한 집합만 받도록 fail-close한다. surplus/missing row와 다른 operator field는 artifact mutation 전에 거부한다.
+- bounded fixture에서 정상 exact packet은 그대로 close되고 세 변조 유형은 모두 거부된다. provider0/model0/browser0이며 기존 hash guard와 no-edit-before-close 계약은 유지된다.
+- 다음은 focused/full acceptance 후 exact repaired source를 별도 pin해 향후 fresh transfer candidate가 drift하지 않게 하는 1.9.664다.
+
+- 1.9.662는 prepared runner를 실제 호출해 `matrix-execution-hold:remote-execution-deferred`가 provider resolution/cell lease/workspace mutation 전에 중단하는지 확인했다.
+- provider0/model0/cell0이며 matrix state hash는 전후 동일하다. run/score0, original index6/6로 여섯 셀은 untouched다.
+- provider-free transfer 준비 lane은 닫혔다. no-remote 제약을 유지하는 동안 이 matrix의 다음 의미 있는 단계는 없다. 다음은 별도 local 2.0.0 product repair를 고르거나 remote 허용 뒤 r1 control부터 실행하는 것이다.
+
+- 1.9.661은 exact detached clean control/candidate vendor와 Luna/high six cells를 provider0/model exposure0으로 준비했다. prompt/starter/product/runtime/model/effort/timeout equality는 모두 6/6이다.
+- 여섯 셀 모두 run record/score가 없고 prepared product가 starter와 같다. 다음 셀은 `luna-cable-r1-control`이지만 no-remote hold 때문에 실행하지 않는다.
+- 다음은 실제 provider 호출 없이 runner가 이 새 matrix도 model 진입 전에 hold하는지 재현하고, prepared workspaces가 그대로 untouched인지 증명하는 1.9.662다.
+
+- 1.9.660은 executable schema0.3 matrix를 C/T/T/C/C/T로 잠갔다. Luna/high, timeout900, pacing120, no-retry, concurrency1이다.
+- 양 arm의 task/complete diagnosis/browser/proof 계약은 같고 candidate만 packet hash guard+explicit accessible-name input+single apply가 다르다. status와 runner 모두 remote-execution-deferred를 강제한다.
+- 다음은 exact detached clean vendors와 six untouched cells를 provider0으로 materialize/equality attestation하는 1.9.661이다.
+
+- 1.9.659는 exact complete-diagnostic control `7df5be63...` vs guarded packet candidate `1a3beca8...`를 pinned subsea task에서 Luna/high2×3으로 provider0 사전등록했다.
+- isolated delta는 complete diagnosis 이후 수동 patch 번역 대 hash-guarded packet/apply다. 900s/120s/no-retry/concurrency1, UI/proof/plan/packet3/3이며 remote execution은 명시적으로 forbidden이다.
+- attempt51, prior TTT118,047,296+ / unavailable6이다. 다음은 executable matrix를 잠그되 실행 hold를 유지하는 1.9.660이다.
+
+- 1.9.658은 신규 task를 source commit `a3d7d567...`, repository tree `8dd1ad70...`, git task tree `c0dc2a27...`, portable tree `b12c6f82...`, baseline score `e9008318...`로 model exposure0에서 pin했다.
+- prompt/task/starter/evaluator는 이후 mutation 금지다. 다음은 exact complete-diagnostic control vs guarded-packet candidate를 같은 task/model/runtime/effort/timeout으로 preregister하되 remote execution hold를 유지하는 1.9.659다.
+
+- 1.9.657은 `subsea-cable-splice-handoff-v0.1`을 provider 노출 전에 생성·평가했다. prompt는 arm/packet command를 전혀 명명하지 않고 같은 task/starter/evaluator를 강제한다.
+- raw baseline은75/85로 contract/state/design/evidence green, responsive/a11y red다. desktop1440은 overflow0, 390/320은 scroll1135, actual200은 scroll2270이며 narrow fragmented token6/short wrap2/contrast failure node4다.
+- provider0/model exposure0이다. 다음은 task commit/git tree/portable tree/baseline score를 별도 exact pin해 이후 mutation을 금지하는 1.9.658이다.
+
+- 1.9.656은 guarded packet candidate를 commit `1a3beca8...`, source tree `6f17099c...`, skill tree `f3519ea2...`로 exact pin했다. system id는 `omd-guarded-plan-packet-candidate`, vendor는 `omd-1.9.655`다.
+- provider0/model exposure0/promotion false이며 fresh transfer 전 우위 주장은 금지다. control은 exact `omd-complete-plan-diagnostic-candidate`다.
+- 다음은 provider 노출 전 genuinely unseen task를 생성하고 deterministic baseline/task pin을 닫는 1.9.657~1.9.658이다. task는 packet handoff가 실제로 필요한 구조를 가지되 특정 arm의 문구나 구현을 누설하지 않아야 한다.
+
+- 1.9.655는 `omd-apply`의 guarded packet workflow가 Claude Code/Codex/OpenCode 세 설치 경로에 모두 도달하는지 provider0으로 검증했다. channel-native frontmatter 차이는 허용하되 helper+runner bytes는 동일하다.
+- installed skill은 operator input boundary를, helper는 packet create/apply를, runner는 packet command handoff를 모두 포함한다. composite hash는 `5c5c7168...`이며 focused distribution test와 full bench224 pass/skip2/fail0가 green이다.
+- 다음은 이 source를 exact commit/tree로 pin하는 1.9.656이다. 그 뒤에만 truly unseen task를 만들어 fresh transfer 여부를 평가한다.
+
+- 1.9.654는 complete diagnosis를 수동 row patch로 옮기던 마지막 추측 구간을 `plan-packet` → `plan-apply`로 교체했다. packet은 artifact context/diagnosis/complete patch hash를 잠그며 operator가 바꿀 수 있는 값은 null인 accessible name뿐이다.
+- controlled patch-required CLI replay는 packet 생성 artifact mutation0, apply1, measured attempt1 유지, 추가 browser0/model0, plan closure closed다. drift/tamper/irreconcilable은 fail-closed한다.
+- focused62 pass, full bench223 pass/optional skip2/fail0, py compile/lint/diff green이다. 다음은 exact source pin 후 이 candidate에 노출되지 않은 task에서 transfer 여부를 보기 전, packet UX와 error taxonomy가 host skill 설치본에도 동일하게 전달되는지 provider-free distribution acceptance를 닫는 1.9.655다.
+
+- 1.9.653은 canonical starter hash가 pre-edit snapshot과 일치하는 frozen artifact만 현재 complete diagnostic으로 non-mutating 재생한다. 현재 수정된 product는 진단 입력에서 제외한다.
+- 선택된5 matrix/10 artifact 결과는 ready6, irreconcilable3, measured plan 부재1, historical patch-required0이다. 더 넓은 `/private/tmp/u19*` 90개 스캔도 patch-required0이며 없는 사례를 합성 historical evidence로 꾸미지 않았다.
+- focused bench unit222 pass/optional skip2/fail0, provider0/model exposure0이다. 다음은 이 verdict를 사람이 재해석하지 않아도 되는 fail-closed operator decision packet으로 만들고, patch-required unit fixture에서 browser 재측정·모델 추측 없이 한 번 적용되는지 검증하는 1.9.654다.
+
+- 1.9.652는 benchmark full unit의 기존4 red를 provider0으로 정리했다. historical experiment는 explicit base commit과 비교하고, Luna Max test는 runtime-pinned preflight-open 상태를 반영한다.
+- empty `.git` stub만 남은 optional Taste/UI UX Pro Max caches는 valid work tree가 아니면 설치 test를 skip한다. 최종 220 pass / 2 optional skip / 0 fail이며 product regression은 없었다.
+- 다음은 frozen measured-plan failure artifacts를 complete diagnostic으로 일괄 replay해 ready/patch-required/irreconcilable 정확도를 수치화하는 1.9.653이다.
+
+- 1.9.651은 prepared runner가 model/provider 진입 전에 1.9.647 local in-app evidence를 결정론 검증하도록 admission을 연결했다. validation id/path/hash contract가 어긋나면 즉시 중단한다.
+- matrix status의 `remote-execution-deferred`를 실행 hold로 강제한다. 실제 `/private/tmp/u19648 --max-new-cells1` dry admission은 provider0에서 `matrix-execution-hold:remote-execution-deferred`로 예상 중단했다.
+- focused test/lint/diff green이며 six cells는 untouched다. 다음은 2.0.0 provider-free local repair queue로 복귀한다.
+
+- 1.9.650은 Codex 인앱 브라우저 관측 report를 provider-free로 검증하는 `validate-local-browser-evidence.mjs`를 추가했다. desktop/390/320 필수 조건, measured overflow 일치, interaction/cross-check, transfer claim 금지를 fail-closed한다.
+- 요청 viewport가 실제 CSS viewport로 clamp되면 `not an actual-200-percent substitute` 경계가 없을 때 거부한다. airworthiness report replay와 negative fixtures가 green이며 lint도 green이다.
+- 다음은 이 local evidence gate를 prepared-matrix admission에 연결하되 remote execution hold는 계속 유지하는 단계다.
+
+- 1.9.649는 `/private/tmp/u19648-vendors` exact detached clean control/candidate와 `/private/tmp/u19648` six untouched cells를 provider0/model exposure0으로 준비했다.
+- prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이며 locked plan/state/source hashes를 기록했다. 1.9.647 인앱 검수는 starter preflight일 뿐 transfer가 아니다.
+- remote execution은 명시적으로 hold되어 있고 six cells는 untouched로 유지한다. 다음은 provider-free 2.0.0 작업을 로컬+인앱 브라우저로 계속한다.
+
+- 1.9.648은 airworthiness complete-diagnostic schema0.3 matrix를 C/T/T/C/C/T, Luna/high, timeout900, pacing120, no-retry로 잠갔다. 상태는 `locked-local-preparation-only-remote-execution-deferred`이며 실행은 금지다.
+- exact task/control/candidate와 complete diagnosis 1회+reconcile 1회, UI/proof/plan3/3 계약을 유지했다. 1.9.647 인앱 브라우저 검수를 local preflight로 연결하되 model transfer 증거로 간주하지 않는다.
+- 다음은 `/private/tmp/u19648-vendors`와 `/private/tmp/u19648`의 prepared 결과를 equality attestation으로 고정하는 provider-zero 단계다.
+
+- 1.9.647은 frozen airworthiness starter를 Codex 인앱 브라우저에서 provider0/model exposure0으로 검수했다. desktop1440은 overflow0, narrow390/320은 scrollWidth1135로 overflow red이며 target은 각각4/10/13줄이다.
+- `Maintenance windows` pressed interaction과 console warning/error0을 확인했다. 인앱 최소 폭 probe는 요청195가 실제240으로 clamp되어 actual200% 증거로 쓰지 않았고, remote preregistration도 실행하지 않았다.
+- 다음은 원격 호출 없이 executable matrix와 exact detached six cells를 materialize/equality 검증하는 provider-zero 준비 단계다.
+
+- 1.9.646은 exact manual-reconcile control `e4b0c890...` vs complete-diagnostic candidate `7df5be63...`를 pinned airworthiness task에서 Luna/high2×3으로 provider0 사전등록했다.
+- isolated delta는 one-shot aggregate diagnosis, complete patch/irreconcilable verdict, non-ready reconcile rejection이다. 900s/120s/no-retry/concurrency1, UI/proof/plan3/3이며 diagnosis/reconcile 각 최대1회다.
+- attempt50, prior TTT118,047,296+ / unavailable6다. 다음은 executable matrix lock이다.
+
+- 1.9.645는 task commit `7a6ea21a...`, git task tree `6881d781...`, portable tree `124ca2c4...`, baseline score `5d59ea7c...`를 exact pin했다.
+- model/control/candidate exposure0이며 이후 task mutation은 금지다. 다음은 exact historical reconcile control vs complete diagnostic candidate 사전등록이다.
+
+- 1.9.644는 model-unseen `airworthiness-release-review-v0.1`을 provider 노출 전에 생성·평가했다. task tree `124ca2c4...`, score `5d59ea7c...`, exposure0이다.
+- raw baseline75/85: contract/state/design/evidence green, responsive/a11y red다. widths1440/1135/1135/2270, target fragments2, short wraps1/1/1, contrast2.61다.
+- 다음은 task exact commit/tree와 baseline hash를 별도 pin해 이후 mutation을 금지하는 단계다.
+
+- 1.9.643은 repair commit `7df5be63...`, source tree `40880b48...`, skill tree `c282458d...`를 `omd-complete-plan-diagnostic-candidate`로 exact pin했다.
+- provider0/promotion false이며 fresh transfer 전 공개 우위 주장은 금지다. 다음은 이 exact candidate에 노출되지 않은 genuinely unseen task 생성·baseline이다.
+
+- 1.9.642는 measured-plan semantic conflict를 한 건씩 throw하던 `plan-reconcile` 앞에 non-mutating `plan-diagnose`를 추가했다. 모든 충돌과 complete row patch를 한 번에 내며 `ready|patch-required|irreconcilable`로 판정한다.
+- frozen cold-chain artifact replay는 nested carrier 때문에 즉시 irreconcilable을 반환하면서 별도 compatible patch row도 함께 보고했다. 이전 5회 추측 loop 대신 product edit 전 한 번에 중단할 수 있다.
+- focused60/60 + py compile + lint + skill quick-validate + diff green, provider0다. 다음은 exact repair pin 후 세 diagnosis 상태를 구분하는 genuinely unseen task 생성이다.
+
+- 1.9.641 r1 candidate는 valid85/85, UI-resolved, 536,007ms, 2,182,215 tokens지만 proof gate red다. measured plan1을 보존하고 browser rerun0은 지켰으나 artifact-only reconcile5회가 모두 실패해 successful plan-close0인 채 제품을 수정했다.
+- control/candidate 모두 proof red이고 candidate proof/plan-close 최대 도달치가2/3으로 내려가 remaining4는 untouched freeze했다. 관측 wall0.640×/tokens0.472×는 proof 실패 때문에 홍보 근거가 아니다.
+- 누적 TTT118,047,296+ / unavailable6. 다음은 provider-free로 row별 추측형 reconcile을 전체 호환 패치 또는 단일 irreconcilable verdict를 내는 deterministic diagnostic으로 교체하는 수리다.
+
+- 1.9.640 r1 control은 valid85/85, UI-resolved, 837,070ms, 4,623,570 tokens지만 proof gate red다.
+- zero-attempt validation9 뒤 measured plan1이 semantic close에서 거부됐고 successful close0인 채 제품을 수정했다. static command1은 closure attempt0/open, final browser0, shipped runner0이다.
+- 누적 TTT115,865,081+ / unavailable6. fixed120s pacing 뒤 untouched `luna-cold-r1-candidate` no-retry 단일 실행이다.
+
+- 1.9.639는 `/private/tmp/u19638-vendors` exact detached clean control/candidate와 `/private/tmp/u19638` six untouched Luna/high cells를 준비했다.
+- prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이며 control은 semantic close 뒤 deterministic reconcile 없음, candidate는 artifact-only reconcile+pre-edit/static enforcement다. provider0다.
+- 다음은 browser/CLI/auth/evaluator/proof-policy preflight 후 `luna-cold-r1-control` no-retry 단일 실행이다.
+
+- 1.9.638은 executable schema0.3 matrix를 잠갔다. order C/T/T/C/C/T, Luna/high, timeout900, pacing120, no-retry다.
+- 양 arm의 snapshot bootstrap/content-box/decision-context 계약은 같고 candidate만 measured-plan persist+artifact reconcile+pre-edit/static stamp enforcement가 다르다. provider0다.
+- 다음은 `/private/tmp/u19638-vendors` exact detached sources와 `/private/tmp/u19638` six untouched cells preparation/equality attestation이다.
+
+- 1.9.637은 exact plan-self-bootstrap control `4ac756df...` vs measured-plan-reconcile candidate `e4b0c890...`를 pinned cold-chain task에서 Luna/high2×3으로 provider0 사전등록했다.
+- isolated delta는 measured semantic-close 뒤 artifact-only reconcile, browser rerun 금지, pre-edit product hash, static-close stamp/hash enforcement다. 900s/120s/no-retry/concurrency1, UI/proof/plan 3/3다.
+- attempt49, prior TTT111,241,511+ / unavailable6다. 다음은 executable matrix lock이다.
+
+- 1.9.636은 task commit `8c0c0451...`, git task tree `47f3baec...`, portable tree `e3b30391...`, baseline score `82b26b6d...`를 exact pin했다.
+- model/control/candidate exposure0이며 이후 task mutation은 금지다. 다음은 exact historical control vs measured-plan-reconcile candidate Luna/high2×3 preregistration이다.
+
+- 1.9.635는 model-unseen `cold-chain-excursion-disposition-v0.1`을 provider 노출 전에 생성·평가했다. task tree `e3b30391...`, score `82b26b6d...`, exposure0이다.
+- raw baseline75/85: contract/state/design/evidence green, responsive/a11y red다. widths1440/1115/1115/2230, target fragments2, short wraps2/2/2, contrast2.79다.
+- 다음은 task exact commit/tree와 baseline hash를 별도 pin해 이후 mutation을 금지하는 단계다.
+
+- 1.9.634는 repair commit `e4b0c890...`, source tree `d479bfd2...`, skill tree `b2e622bb...`를 `omd-measured-plan-reconcile-candidate`로 exact pin했다.
+- provider0/promotion false이며 fresh transfer 전 공개 우위 주장은 금지다. 다음은 이 exact candidate에 노출되지 않은 genuinely unseen task 생성·baseline이다.
+
+- 1.9.633은 한 번 측정된 pre-edit fit plan을 semantic close 실패 전에 보존하고, browser 재측정 없이 artifact bookkeeping만 고치는 `plan-reconcile`을 추가했다.
+- helper-issued plan closure stamp와 measured-plan hash가 없으면 static-close를 거부하며, 성공 plan-close 전 product hash가 snapshot과 달라지면 run을 폐기한다. 실제 1.9.632 실패 artifact replay도 수정된 product를 감지해 거부했다.
+- focused57/57 + report1/1 + py compile + lint + skill validate + diff green, provider0, 누적 TTT111,241,511+ / unavailable6이다. 전체 bench의 4 red는 historical canonical-equality2와 local vendor git metadata2다. 다음은 exact source pin 후 genuinely unseen task다.
+
+- 1.9.632 r1 candidate는 valid83/85, 407,942ms, 1,320,225 tokens다. zero-attempt marker2는 작동했지만 measured plan-close rejection 뒤 성공 plan0, 제품 edit1, static/browser closure red다.
+- desktop action separation도 false라 UI-resolved가 아니며 candidate UI/proof/plan 3/3 최대치가 각각2로 내려갔다. remaining4는 untouched freeze했다.
+- wall0.649×/tokens0.460×는 품질·proof red라 효율 홍보 근거가 아니다. 누적 TTT111,241,511+ / unavailable6. 다음은 measured plan 결과 보존+재측정 없는 reconcile+pre-edit enforcement 수리다.
+
+- 1.9.631 r1 control은 valid85/85, UI-resolved, 628,966ms, 2,871,023 tokens다. responsive/a11y/evidence와 proof gate가 모두 green이다.
+- control은 제품 edit 전에 measured plan을 닫았지만 external snapshot 명령에서 validation failure8/success2, plan runner failure2/success1을 소비했다. candidate가 제거하려는 orchestration debt의 실제 기준선이다.
+- browser-harness는 provider 호출 전 0.1.5 named-socket red를 0.1.8 명시 재설치로 복구했다. 누적 TTT109,921,286+ / unavailable6. 다음은 fixed120s 뒤 untouched r1 candidate no-retry 단일 실행이다.
+
+- 1.9.630은 `/private/tmp/u19629-vendors` exact detached clean control/candidate와 `/private/tmp/u19629` six untouched Luna/high cells를 준비했다.
+- prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이며 control은 external snapshot-before-runner, candidate는 atomic snapshot-before-navigation이다. provider0다.
+- 다음은 browser/CLI/auth/evaluator/proof-policy preflight 후 `luna-rail-r1-control` no-retry 단일 실행이다.
+
+- 1.9.629는 executable schema0.3 matrix를 잠갔다. order C/T/T/C/C/T, Luna/high, timeout900, pacing120, no-retry다.
+- 양 arm의 content-box/decision-context/proof 계약은 같고 candidate만 atomic snapshot bootstrap+zero-attempt marker+pre-edit mutation gate가 다르다. provider0다.
+- 다음은 `/private/tmp/u19629-vendors` exact detached sources와 `/private/tmp/u19629` six untouched cells preparation/equality attestation이다.
+
+- 1.9.628은 exact content-box control `0c4af927...` vs plan-self-bootstrap candidate `4ac756df...`를 pinned rail-signal task에서 Luna/high2×3으로 provider0 사전등록했다.
+- isolated delta는 shared content-box/decision-context 계약 대비 atomic snapshot bootstrap+zero-attempt validation+pre-edit mutation gate다. 900s/120s/no-retry/concurrency1, UI/proof/measured-plan 3/3다.
+- attempt48, prior TTT107,050,263+ / unavailable6다. 다음은 executable matrix lock이다.
+
+- 1.9.627은 rail-signal task commit `e41f7daf...`, git task tree `02f724df...`, portable tree `474d984e...`, baseline score `c3bf6115...`를 exact pin했다.
+- model/control/candidate exposure0이며 이후 task mutation은 금지다. 다음은 exact historical content-box control vs plan-self-bootstrap candidate Luna/high2×3 preregistration이다.
+
+- 1.9.626은 model-unseen `rail-signal-speed-restriction-release-v0.1`을 provider 노출 전에 생성·평가했다. task tree `474d984e...`, score `c3bf6115...`, exposure0이다.
+- raw baseline75/85: contract/state/design/evidence green, responsive/a11y red다. widths1440/1115/1115/2230, target fragments2, short wraps2/2/2, contrast2.79다.
+- browser-harness named socket은 1회 attach infrastructure red라 시각 claim을 만들지 않았다. deterministic evaluator는 정상 완료했다. 다음은 task exact commit/tree와 baseline hash pin이다.
+
+- 1.9.625는 repair commit `4ac756df...`, source tree `5ab481aa...`, skill tree `62e7df31...`를 exact pin했다. candidate는 `omd-plan-self-bootstrap-candidate`, vendor는 `omd-1.9.624`, provider0/promotion false다.
+- 다음은 이 exact candidate에 노출되지 않은 genuinely unseen decision-context task 생성·baseline이다.
+
+- 1.9.624 provider-free repair는 plan runner가 missing snapshot을 browser navigation 전에 내부 helper로 원자적으로 잠그게 했다. pre-navigation validation red는 `OMD_PLAN_NOT_ATTEMPTED`로 분리되어 measured attempt0이며 artifact만 고쳐 exact plan command를 재실행할 수 있다.
+- 성공한 `plan-close`와 `static_edit_guardrails`가 없으면 product edit 금지다. valid-missing snapshot replay는 browser sentinel 전 snapshot lock, invalid selector replay는 browser0/artifact pending/no snapshot을 확인했다.
+- focused54/54 + report1/1 + py compile + lint + skill validate + diff green, provider0, 누적 TTT107,050,263+ / unavailable6이다. 전체 bench 파일의 4 red는 historical canonical-equality2 및 local vendor git metadata2로 이번 repair와 무관하다.
+- 다음은 repair exact source pin 후 genuinely unseen task 생성·baseline이다.
+
+- 1.9.623 r1 candidate는 valid83/85, 323,525ms, 973,726 tokens지만 pre-edit fit plan을 실행하지 않고 제품을 수정했다. static-open/browser0/shipped-runner0로 content-box verifier에 도달하지 못했다.
+- candidate는 실제 preflight가 ready였던 named browser를 unavailable이라 보고했다. UI/proof/content-box 3/3 최대치가2로 내려가 remaining4를 untouched freeze했다.
+- 효율 ratio wall0.849/tokens0.737은 green이나 quality/proof가 red라 인과 효율 주장은 금지한다. 누적 TTT107,050,263+ / unavailable6다.
+- 다음은 provider-free로 pre-edit measurement self-dispatch와 product-mutation-before-plan 차단을 수리한다. 이 matrix는 재개하지 않는다.
+
+- 1.9.622 r1 control은 valid83/85, 381,138ms, 1,321,493 tokens다. narrow/actual200/a11y는 green이지만 desktop target/action separation 하나가 red다.
+- proof는 static1/browser1/shipped-runner/attached-existing까지 지켰으나 border-box full-row가4/4 false이고 closure-window carrier도 unresolved라 artifact-open이다.
+- 누적 TTT106,076,537+ / unavailable6. fixed120s pacing 뒤 untouched `luna-runway-r1-candidate` no-retry 단일 실행이다.
+
+- 1.9.621은 `/private/tmp/u19620-vendors` exact detached clean sources와 `/private/tmp/u19620` six untouched Luna/high cells를 준비했다.
+- prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이며 control은 rect/rect, candidate는 clientWidth/offsetWidth다. provider0다.
+- 다음은 browser/CLI/auth/evaluator/proof-policy preflight 후 `luna-runway-r1-control` no-retry 단일 실행이다.
+
+- 1.9.620은 executable schema0.3 matrix를 잠갔다. order C/T/T/C/C/T, Luna/high, timeout900, pacing120, no-retry다.
+- 양 arm의 desktop/narrow/fail-closed/nested/contained/evidence 계약은 같고 candidate만 content-box 좌표계가 다르다. provider0다.
+- 다음은 exact detached vendors와 six untouched cells preparation/equality attestation이다.
+
+- 1.9.619는 exact border-box control `e8a6f083...` vs content-box candidate `0c4af927...`를 pinned runway task에서 Luna/high2×3으로 provider0 사전등록했다.
+- isolated delta는 context border 제외와 layout CSS pixel 좌표계 일치뿐이다. 900s/120s/no-retry/concurrency1, UI/proof/content-box 3/3다.
+- attempt47, prior TTT104,755,044+ / unavailable6다. 다음은 executable matrix lock이다.
+
+- 1.9.618은 task commit `1816fd83...`, git tree `8975897a...`, portable tree `54cdacba...`, baseline score `0a0f7d44...`를 exact pin했다.
+- model/control/candidate exposure0이며 이후 task mutation은 금지다. 다음은 exact historical control vs content-box candidate Luna/high2×3 preregistration이다.
+
+- 1.9.617은 model-unseen `runway-lighting-return-to-service-v0.1`을 provider 노출 전에 생성·평가했다. task tree `54cdacba...`, score `0a0f7d44...`, exposure0이다.
+- raw baseline75/85: contract/state/design/evidence green, responsive/a11y red다. widths1440/1115/1115/2230, target fragments2, short wraps1/2/2, contrast2.78이다.
+- browser-harness `bench19366`로 실제 desktop surface도 확인했다. 다음은 task exact commit/tree와 baseline hash pin이다.
+
+- 1.9.616은 repair commit `0c4af927...`, source tree `24cbffc7...`, skill tree `300b89c7...`를 exact pin했다.
+- 새 candidate는 `omd-content-box-decision-context-candidate`, vendor `omd-1.9.615`, provider0/promotion false다. 다음 genuinely unseen task baseline이다.
+
+- 1.9.615 provider-free repair는 context를 `clientWidth-padding`, carrier를 `offsetWidth`로 비교해 border와 zoom 좌표계 오판을 제거했다.
+- 실제 실패 candidate artifact copy replay가 desktop1068=1068, 390 320=320, 320/actual200 250=250으로 모두 pass하고 `OMD_DELIVERY_READY`가 됐다.
+- focused52/52+compile+lint+skill validate+diff green, provider0, TTT104,755,044+ / unavailable6이다. 다음 exact source pin 후 fresh unseen task다.
+
+- 1.9.614 r1 candidate는 valid85/85, UI-resolved, 424,791ms, 1,848,420 tokens지만 proof red다. desktop+narrow required true와 nesting attestation은 전이됐다.
+- browser-harness 실측상 target1067.992px는 true content1068px full-row다. verifier가 border-box1108-padding38=1070으로 계산해 border2px를 누락한 false negative다.
+- proof3/3 최대치가2라 remaining4 untouched freeze, wall1.138×/tokens1.740× red, 누적 TTT104,755,044+ / unavailable6다. 다음은 content-box 측정 provider-free repair다.
+
+- 1.9.613 r1 control은 valid85/85, UI-resolved, 373,337ms, 1,062,466 tokens다. responsive/a11y/design/evidence와 old proof gate가 모두 green이다.
+- 실제 구현은 dedicated target+outer gallery carrier로 올바르지만 old artifact의 decision required flags는 false×3, desktop final/nested containment attestation은 없다. proof blind spot을 숨기지 않는다.
+- 누적 TTT102,906,624+ / unavailable6. fixed120s pacing 뒤 untouched `luna-museum-r1-candidate` no-retry 단일 실행이다.
+
+- 1.9.612는 `/private/tmp/u19611-vendors` exact detached clean sources와 `/private/tmp/u19611` six untouched Luna/high cells를 준비했다.
+- prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이다. control은 desktop/nesting gate가 없고 missing default가 있으며 candidate는 반대다. provider0다.
+- 다음은 browser/CLI/auth/evaluator preflight 후 `luna-museum-r1-control` no-retry 단일 실행이다.
+
+- 1.9.611은 executable schema0.3 matrix를 잠갔다. order C/T/T/C/C/T, Luna/high, timeout900, pacing120, no-retry다.
+- 양 arm에 shared proof/runner/context 계약을 적용하고 candidate만 desktop final+missing fail-close+nested containment gate를 요구한다. provider0다.
+- 다음은 `/private/tmp/u19611-vendors` exact detached sources와 `/private/tmp/u19611` six untouched cells preparation/equality attestation이다.
+
+- 1.9.610은 Luna Max 원프롬프트 비교의 runtime을 codex-cli0.144.1/binary134063e1로 pin했다. `gpt-5.6-luna`/max는 아직 candidate이며 public attribution은 금지다.
+- isolated read-only provider preflight, silent downgrade 금지, stateful task gate, intervention ledger, blinded desktop/mobile/state gallery 계약을 추가했다. provider0다.
+- 다음은 현재 2.0 transfer matrix executable lock/preparation을 끝낸 뒤, 안전한 checkpoint에서 Luna Max acceptance preflight 1회를 별도 집행한다.
+
+- 1.9.609는 exact old decision-context control `5eaa26c9...` vs desktop+nested candidate `e8a6f083...`를 pinned museum task에서 Luna/high2×3으로 provider0 사전등록했다.
+- isolated delta는 desktop final measurement+missing observation fail-close+nested carrier pre-edit rejection이다. 900s/120s/no-retry/concurrency1, UI/proof/context/nesting 3/3다.
+- attempt46, prior TTT101,844,158+ / unavailable6다. 다음은 executable matrix와 exact detached six cells materialization이다.
+
+- 1.9.608은 task commit `e77c3d8a...`, git tree `f50c6925...`, portable tree `ed1e594b...`, baseline score `c9ed447f...`를 exact pin했다.
+- model/control/candidate exposure0이며 이후 task mutation은 금지다. 다음은 exact historical control vs desktop decision-context candidate preregistration이다.
+
+- 1.9.607은 model-unseen `museum-loan-crate-release-v0.1`을 provider 노출 전에 생성·평가했다. task tree `ed1e594b...`, score `c9ed447f...`, exposure0이다.
+- raw baseline75/85: contract/state/design/evidence green, responsive/a11y red. widths1440/1115/1115/2230, target fragments2, short wraps2, contrast2.94다.
+- browser-harness `bench19366`로 desktop target/evidence와 폭을 별도 확인했다. 다음은 task exact commit/tree와 baseline hash pin이다.
+
+- 1.9.606은 repair commit `e8a6f083...`, source tree `3a55a636...`, skill tree `38eee231...`를 exact pin했다.
+- 새 candidate는 `omd-desktop-decision-context-candidate`, vendor `omd-1.9.605`, provider0/promotion false다. 다음은 genuinely unseen task 생성·baseline이다.
+
+- 1.9.605 provider-free repair는 final product의 desktop1440+390+320+actual200%에서 target full-row/order/spatial separation을 필수 측정하며 missing proof를 더 이상 pass로 간주하지 않는다.
+- pre-edit plan은 comparison-scroll outer carrier 안의 nested registered carrier를 기록하고 edit 전에 거부한다. 기존 실패 artifact replay도 새 containment attestation 부재로 fail-closed했다.
+- focused52/52+py compile+lint+skill validate+diff green, provider0, 누적 TTT101,844,158+ / unavailable6이다. 다음은 repair exact commit/tree pin 후 fresh unseen task다.
+
+- 1.9.604 r1 candidate는 valid83/85, 514,958ms, 2,987,373 tokens다. concise evidence one-line transfer는 관찰됐지만 UI/proof는 red다.
+- desktop target/action separation은 여전히 false인데 runner가 comparison-scroll target을 required:false로 면제했고 desktop 조건도 proof에서 빠졌다. recovery-region carrier도 unresolved다.
+- candidate UI/proof/hierarchy 3/3 최대치가2로 내려가 remaining4를 untouched 동결했다. wall0.977× green, tokens1.113× red, 누적 TTT101,844,158+ / unavailable6이다.
+- 다음은 provider-free로 desktop-inclusive mandatory target hierarchy와 carrier closure semantics를 수리한다. 이 matrix는 재개하지 않는다.
+
+- 1.9.603 r1 control은 valid79/85, 526,814ms, 2,683,104 tokens다. a11y/overflow/evidence는 green이지만 responsive와 proof가 red다.
+- concise evidence가 320/actual200에서 각2줄이고 desktop target/action spatial separation이 false다. shipped runner는 썼으나 `review-controls` carrier unresolved1로 artifact가 open이다.
+- 누적 TTT98,856,785+ / unavailable6. retry하지 않으며 fixed120s pacing 뒤 untouched `luna-backup-r1-candidate` 단일 실행이다.
+
+- 1.9.602는 `/private/tmp/u19601-vendors` exact detached clean sources와 `/private/tmp/u19601` six untouched Luna/high cells를 준비했다.
+- core/prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이며 control에는 새 evidence/final-context gate가 없고 candidate에는 있다. provider0다.
+- 다음은 runtime browser/CLI/auth/evaluator preflight 후 `luna-backup-r1-control` no-retry 단일 실행이다.
+
+- 1.9.601은 executable schema0.3 matrix를 잠갔다. order control/candidate/candidate/control/control/candidate, Luna/high, timeout900, pacing120, no-retry다.
+- 양 arm 모두 shared contained-budget/proof/shipped-runner 계약을 적용하고 candidate만 concise evidence inventory와 target full-row/order/spatial gate를 요구한다. provider0다.
+- 다음은 `/private/tmp/u19601-vendors` exact detached sources와 `/private/tmp/u19601` six untouched cells preparation/equality attestation이다.
+
+- 1.9.600은 exact contained-budget control `5f78f1c5...` vs decision-context candidate `5eaa26c9...`를 pinned backup task에서 Luna/high2×3으로 provider0 사전등록했다.
+- isolated delta는 shared contained budget 대비 concise evidence inventory+dedicated target full-row/order/spatial gate다. 900s/120s/no-retry/concurrency1, 3/3 UI+proof+hierarchy다.
+- attempt45, prior TTT96,173,681+ / unavailable6다. 다음은 executable matrix+detached vendors+six untouched cells materialization이다.
+
+- 1.9.599는 task commit `84b54559...`, task tree `75925301...`, portable tree `b49d193c...`, baseline score `2e5e0451...`를 exact pin했다.
+- model/control/candidate exposure0이며 이제 task mutation은 금지다. 다음은 exact contained-budget control vs decision-context closure candidate Luna/high2×3 preregistration이다.
+
+- 1.9.598은 model-unseen `backup-restore-point-handoff-v0.1`을 provider 노출 전에 생성·평가했다. task tree `b49d193c...`, score `2e5e0451...`, exposure0이다.
+- raw baseline75/85: contract/state/design/evidence green, responsive/a11y red. widths1440/1115/1115/2230, target fragments2, short wraps2, contrast2.73이다.
+- 다음은 task source exact commit/tree와 baseline hash pin이다. 모델 실행은 그 뒤에만 허용한다.
+
+- 1.9.597은 repair commit `5eaa26c9739a9e697f4707b06c31a32773706c16`, source tree `0a5b004b...`, skill tree `ae1306fe...`를 exact pin했다.
+- 새 candidate는 `omd-decision-context-closure-candidate`, vendor `omd-1.9.596`, provider0/promotion false다.
+- 다음은 이 candidate에 노출되지 않은 genuinely unseen decision-context task 생성·baseline lock이다.
+
+- 1.9.596 provider-free repair는 decision/approval/handoff의 concise evidence≤52를 measured evidence row로 강제한다. 장문 evidence는 계속 wrap 가능하다.
+- comparison-scroll target은 모든 측정 조건에서 supporting evidence/state/action보다 앞선 dedicated full-row여야 하고 runner가 full-width/order/spatial separation을 측정한다.
+- 실제 r1 candidate artifact replay는 누락 evidence를 plan-close 전에 거부했다. focused51/51+py compile+lint+skill validate+diff green, provider0; 다음 exact source pin이다.
+
+- 1.9.595 r1 candidate는 proof green(static1/browser1/closed/contained plan)이지만 UI79/85다. concise decision evidence가 320/actual200에서2줄이고 desktop target/action 공간이 겹쳤다.
+- candidate UI3/3 최대치가2로 내려가 remaining4를 untouched 동결했다. wall1.108×/tokens1.221×로 efficiency1.1 gate도 red다.
+- contained-budget transfer 자체는 관찰됐지만 quality promotion은 false다. 누적 TTT96,173,681+ / unavailable6; 다음은 decision evidence inventory+unfit target full-row 규칙의 provider-free 수리다.
+
+- 1.9.594 r1 control은 valid81/85, 575,655ms, 2,908,997 tokens다. overflow0·a11y green이지만 320/actual200 atomic wrap 각1로 responsive red다.
+- 제품 edit 뒤 ad-hoc `rg`가 proof budget을 소비해 static2/duplicate1/browser0/shipped-runner0/artifact-open으로 proof red다. retry하지 않는다.
+- 누적 TTT92,622,440+ / unavailable6. 다음은 fixed120s 뒤 untouched `luna-archive-r1-candidate` 단일 실행이다.
+
+- 1.9.593은 `/private/tmp/u19592-vendors`의 exact detached clean sources와 `/private/tmp/u19592`의 six untouched Luna/high cells를 준비했다.
+- core/prompt/starter/product/runtime/model/effort/timeout equality는 모두6/6이며 control은 contained formula0/3, candidate는3/3이다. provider0다.
+- 다음은 runtime preflight 후 `luna-archive-r1-control`을 no-retry로 한 번 실행한다.
+
+- 1.9.592는 competitor `omd-contained-carrier-budget-candidate`를 exact commit5f78f1c5/vendor1.9.587로 등록하고 executable schema0.3 matrix를 잠갔다.
+- validateRunMatrixPlan green, cells order control/candidate/candidate/control/control/candidate, proof gate는 양 arm 모두 적용된다. provider0다.
+- 다음은 `/private/tmp/u19592-vendors` detached exact sources와 `/private/tmp/u19592` six untouched cells preparation/equality attestation이다.
+
+- 1.9.591은 exact raw-inner control `853db7bf...` vs contained candidate `5f78f1c5...`를 pinned archive task에서 Luna/high2×3으로 provider0 사전등록했다.
+- isolated delta는 raw live content-box budget 대비 `min(live, document-chrome-margin)` budget이다. 900s/120s/no-retry/concurrency1, 3/3 UI+proof+runner+contained-plan이다.
+- attempt44, prior TTT89,713,443+ / unavailable6다. 다음은 executable matrix+detached vendors+six untouched cells materialization이다.
+
+- 1.9.590은 task commit `6bdcd79d552c36d61238880044a41c1252e97a0f`, git tree `5cfeab67...`, portable tree `54f5c61c...`, score `0fa0e770...`를 pin했다.
+- model/control/candidate exposure0이며 이제 task mutation은 금지다.
+- 다음은 exact historical control vs exact contained-carrier candidate Luna/high2×3 preregistration(provider0)이다.
+
+- 1.9.589는 model-unseen `archive-film-element-custody-v0.1`을 provider 노출 전에 생성·평가했다. task tree `54f5c61c...`, score `0fa0e770...`, exposure0이다.
+- raw baseline75/85: contract/state/design/evidence green, responsive/a11y red. widths1440/1115/1115/2230, target fragments2, short wraps2, contrast3.71이다.
+- 다음은 task source exact commit/tree와 baseline hash pin이다. 모델 실행은 그 뒤에만 허용한다.
+
+- 1.9.588은 repair commit `5f78f1c5a23148778a49bdc54f6f6026a7b8c1d2`, source tree `83823662...`, skill tree `0370e284...`를 exact pin했다. provider0다.
+- candidate system id는 `omd-contained-carrier-budget-candidate`, vendor는 `omd-1.9.587`다. 아직 fresh model transfer 승격 주장은 없다.
+- 다음은 fixed overflowing aggregate + constrained nested carrier를 함께 가진 fresh unseen task author/baseline이다.
+
+- 1.9.587은 pre-edit carrier budget을 `min(live inner, document - chrome - margin)`으로 clamp한다. overflowed register1038은 390/320/200pct에서 368/298/298, nested target151.5/116.5/116.5는 그대로다.
+- 실제 실패 artifact를 새 formula로 memory replay해 current lockArtifact가 pass했다. focused50/50+lint+diff green, provider0다.
+- 다음은 exact repair commit/tree를 pin하고 fresh unseen replacement task를 preregister한다. frozen orbital cells는 재개하지 않는다.
+
+- 1.9.586 r1 candidate는 valid85/85, 652,673ms, 3,392,946 tokens였지만 proof red다. carrier-inner plan은 관찰됐으나 static closure가 pre-edit register 1038px > document390px를 거부해 browser0/open으로 끝났다.
+- candidate는 control83보다 UI +2지만 proof0/3이라 남은 candidate2로 3/3가 불가능하다. remaining4는 untouched freeze, causal transfer/efficiency claim은 금지한다.
+- 누적 TTT89,713,443+ / unavailable6. 다음은 raw live carrier inner width를 `min(live inner, document - horizontal chrome)`로 clamp하는 provider-free producer repair다.
+
+- 1.9.585 r1 control은 valid83/85, 408,701ms, 1,594,744 tokens다. narrow/actual200/contrast/a11y는 green이고 desktop action separation 하나만 red다.
+- proof는 edit1/static1/browser1/recovery0/duplicate0/closed로 green이다. 누적 TTT86,320,497+ / unavailable6.
+- 다음은 fixed 120s pacing 뒤 untouched r1 candidate no-retry다.
+
+- 1.9.584는 `/private/tmp/u19583-vendors` exact detached control/candidate와 `/private/tmp/u19583` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, detached+clean2다. shared self-dispatch/anchor/aggregate gates와 candidate-only carrier-inner field/formula를 확인했다. provider0.
+- 다음은 runtime browser/CLI/auth/evaluator preflight 후 r1 control Luna/high no-retry다.
+
+- 1.9.583은 exact anchor control `a6ebdc8a…` vs exact carrier-inner candidate `853db7bf…`를 fresh orbital task에 Luna/high 2×3으로 provider-zero preregister했다.
+- 양 arm은 self-dispatch/anchor/aggregate/static/browser 계약이 같고 row feasibility budget만 document width vs measured bound-carrier content-box width로 다르다.
+- timeout900/pacing120/no-retry/R@3, attempt43, prior TTT84,725,753+다. 다음은 detached vendors와 six untouched cells preparation이다.
+
+- 1.9.582는 orbital sample task를 exact commit `536aa793…`, task tree `32800908…`, baseline summary `2e335440…`, score `bb82f178…`로 pin했다.
+- model/control/candidate exposure는 모두0이다. 다음은 exact historical anchor control vs carrier-inner candidate Reliability@3 preregistration이다.
+
+- 1.9.581은 model-unseen `orbital-sample-return-custody-v0.1`을 provider 노출 전에 생성·기준선 평가했다.
+- baseline75/85, contract/state/design/evidence green, responsive/a11y red다. narrow document1075/1075/2150px, target token2개+state1개가 각 narrow 조건에서 깨지고 contrast3.78이다.
+- 4 canister/6 seal/2 quarantine bay와 stable target-only pre-edit carrier를 보존한다. provider0. 다음은 exact task source pin이다.
+
+- 1.9.580은 1.9.579 repair를 exact commit `853db7bf…`, source tree `18b80a41…`, skill tree `8657f278…`로 pin했다.
+- 새 competitor는 `omd-carrier-inner-fit-candidate`, vendor dir `omd-1.9.579`, provider0/promotion false다.
+- 다음은 genuinely unseen nested-carrier task를 provider 노출 전에 lock한다.
+
+- 1.9.579 provider-free repair는 pre-edit에서 registered carrier의 실제 content-box 최소 폭을 `available_carrier_inner_width_css_px`로 실측한다.
+- row의 intrinsic+16px를 document width가 아니라 bound carrier inner width와 비교해, 320px 문서 안의 260px carrier에 316px row를 `stack`으로 통과시키던 결함을 edit 전에 거부한다.
+- aggregate carrier outer width↔document width gate는 별도로 유지한다. focused50/50+lint+diff green, provider0다. 다음은 exact source pin이다.
+
+- 1.9.578 r1 candidate는 valid81/85, 444,242ms, 1,615,647 tokens다. shipped runner/browser/static budget은 지켰지만 responsive와 artifact closure가 red였고 plain-Python self-dispatch는 관찰되지 않았다.
+- 3/3 UI/proof/self-dispatch 최대치가 2/3으로 내려가 잔여4셀은 untouched 동결했다. 누적 TTT84,725,753+ / unavailable6이다.
+- root cause는 row 필요 폭을 실제 bound carrier inner width가 아니라 document width와 비교한 것이다. 다음은 provider-free carrier-local fit budget 수리다.
+
+- 1.9.577 r1 control은 valid complete, UI81/85, wall485,680ms, provider2,403,089 tokens다. contract/state/a11y/design/evidence는 green, responsive는 red다.
+- plain-Python shipped runner가 browser-harness에 진입하지 못해 static2/duplicate1/browser0/artifact-open으로 proof red다. 누적 TTT는 83,110,106+ / unavailable6이다.
+- candidate 3/3 가능성은 유지된다. 다음은 exact 120s pacing 뒤 untouched `luna-subsea-cable-r1-candidate` 단일 no-retry 실행이다.
+
+- 1.9.576 provider-free runtime repair는 browser-harness 0.1.5의 exact named concise line `bench19366 — active`와 legacy `active page:` 형식을 모두 인정한다.
+- daemon/active-count/exact-name/CDP endpoint 요구는 유지하고 wrong-name concise/legacy를 모두 거부한다. 첫 provider 셀은 시작되지 않았고 6셀은 untouched다.
+- 다음은 focused contract/lint 후 commit, 동일 preflight 재실행, `luna-subsea-cable-r1-control` 한 셀이다.
+
+- Luna Max 원프롬프트 비교는 `benchmarks/ui-resolve-bench/LUNA-MAX-ONE-PROMPT.md`와 machine plan v0.1로 분리 설계했다.
+- portable skill 7-arm×3 Preview와 Harness Pareto를 분리하고 exact model attribution/source refresh/task+prompt pin 전 실행 금지, 전 결과·실패 공개, median+range 시간/토큰 문구를 고정했다. provider0이다.
+- 이는 바이럴 Preview 기획이며 24 hidden×10×3 model-family 2.0.0 Verified gate를 대체하지 않는다.
+
+- 1.9.574는 `/private/tmp/u19573-vendors` exact detached control/candidate와 `/private/tmp/u19573` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, detached+clean2, candidate self-dispatch+pre-edit carrier anchor guardrail을 확인했다. provider0이다.
+- 다음은 runtime browser/CLI/auth/evaluator preflight 후 `luna-subsea-cable-r1-control` 단일 no-retry 실행이다.
+
+- 1.9.573은 exact control `6142925c…` vs candidate `a6ebdc8a…`를 fresh subsea task에 Luna/high 2×3으로 provider-zero preregister했다.
+- timeout900/pacing120/no-retry, 3/3 UI/proof/runner/self-dispatch다. stable target carrier가 있어 candidate anchor gate는 valid input에서 inert로 고정했다.
+- causal self-dispatch claim은 실제 safety-path observation이 필요하다. 다음은 executable matrix+detached vendors+six untouched cells materialization이다.
+
+- 1.9.572는 fresh task를 exact commit `2e5134e4…`, task tree `fa7572bb…`, baseline summary `8da54b0d…`, score `934a9234…`로 pin했다.
+- model/control/candidate exposure는 모두0이다. 다음은 exact-source replacement matrix provider-zero preregistration이다.
+
+- 1.9.571은 model-unseen `subsea-cable-splice-clearance-v0.1`을 생성하고 raw baseline을 결정론 평가했다. provider0이다.
+- baseline75/85, contract/state/design/evidence green, responsive/a11y red다. scroll 390→1075, 320→1075, actual200→2150, contrast3.78이며 protected mismatch0이다.
+- target-only stable pre-edit carrier hook을 task source에 포함했다. 다음은 exact task source pin이다.
+
+- 1.9.570은 carrier anchor repair를 exact commit `a6ebdc8a…`, source tree `6546fa5d…`, skill tree `5f6b8ea8…`로 pin했다.
+- artifact helper `276020bd…`, self-dispatch runner `b57a2a40…`이다. quality promotion은 아니다.
+- 다음은 이 exact source를 쓰기 전 fresh unseen task 생성·baseline lock이다.
+
+- 1.9.569 provider-free repair는 snapshot이 있을 때 모든 aggregate carrier의 class/id/attribute anchor가 pre-edit source에 존재해야 lock되도록 했다.
+- frozen r1 candidate artifact replay는 post-edit-only `.decision-target-carrier`를 browser plan 전에 거부했다. provider0, focused40/40, lint/diff green이다.
+- 다음은 exact repair source pin 후 fresh unseen task lock이다. quality promotion은 아직 아니다.
+
+- 1.9.568 r1 candidate는 valid complete, UI79/85, wall303,228ms, provider694,383 tokens지만 proof fail이다. self-dispatch는 호출되지 않았고 pre-edit에 없는 `.decision-target-carrier`가 plan에서 0개로 resolve됐다.
+- candidate 첫 trial 실패로 3/3 UI/proof/self-dispatch gate의 최대 도달치는 2/3이다. 남은 4셀은 실행하지 않고 matrix를 동결했다. paired 효율비는 causal 비교 대상이 아니다.
+- 누적 TTT는 80,707,017+ / unavailable6이다. 다음은 provider-free snapshot-time pre-edit carrier selector resolvability gate 구현·pin 후 fresh unseen task replacement다.
+
+- 1.9.567 r1 control은 valid complete, UI79/85, wall523,045ms, provider1,900,170 tokens다. contract/state/a11y/design/evidence는 통과했고 responsive는 실패했다.
+- proof trace는 analyzable/one edit/one static/one browser/no recovery였지만 plain-Python runner에서 helper 부재로 plan measurement가 열려 static/browser closure가 실패했다. preregistered control failure이며 retry하지 않는다.
+- 누적 TTT는 80,012,634+ / unavailable6이다. 다음 허용 provider call은 fixed pacing 뒤 untouched `luna-organ-r1-candidate` 한 셀이다.
+
+- 1.9.566은 `/private/tmp/u19565-vendors` exact detached control/candidate와 `/private/tmp/u19565` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, detached+clean2, shared target/checklist/feasibility guardrail6/6과 candidate self-dispatch guardrail6/6을 확인했다. provider0이다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
+
+- 1.9.565는 exact 1.9.555 control `6142925c…` vs exact 1.9.562 candidate `bec454d5…`를 fresh organ custody task에 Luna/high 2×3으로 사전등록했다.
+- 양 arm은 target inventory+measured row/aggregate plan+fit feasibility+checklist가 같고 candidate만 plain-Python runner self-dispatch를 추가한다. timeout900/pacing120/no-retry/R@3다.
+- attempt41, prior TTT78,112,464+ / unavailable6, provider0이다. 다음은 exact detached vendors와 six untouched cells preparation이다.
+
+- 1.9.564는 fresh `organ-transport-custody-review-v0.1`을 provider/candidate 노출 전 lock했다.
+- 4 container/6 custody scan/2 receiving bay와 register·bay strip·handoff decision을 보존한다. baseline75/85, narrow overflow685/755/1510px, target6+3/6+5/6+5줄, contrast3.81이다.
+- task contract/state/design/evidence green, provider/task exposure0다. 다음은 exact historical control vs 1.9.562 candidate Reliability@3 preregistration이다.
+
+- 1.9.563은 1.9.562를 exact commit `bec454d5…`, source tree `babe4eb9…`, skill tree `b1c0bfac…`로 pin했다.
+- 새 competitor는 `omd-runner-self-dispatch-candidate`, vendor dir `omd-1.9.562`, provider0/promotion false다.
+- 다음은 genuinely unseen task를 provider 노출 전 lock한다.
+
+- 1.9.562 provider-free repair는 shipped runner를 plain Python으로 실수 호출해도 artifact access 전 exact `browser-harness` stdin으로 self-dispatch한다.
+- recursion latch를 두고 새 browser/engine fallback은 추가하지 않았다. focused89+parity1+lint+diff green, full582 pass/1 skip/기존3 red, provider0이다.
+- spent-fuel frozen4셀은 재개하지 않는다. 다음은 exact immutable pin 후 genuinely unseen task lock이다.
+
+- 1.9.561 r1 candidate는 UI85/85, 443.875s/1,612,523 tokens, control 대비 wall0.8173×/token0.5398×이나 proof red다.
+- target row+distinct target-only carrier는 exact lock됐지만 plan runner를 `browser-harness < runner` 대신 plain Python으로 실행해 `ensure_real_tab` undefined 후 red plan 상태에서 edit했다.
+- candidate proof R@3 최대2/3이라 잔여4셀 frozen, TTT78,112,464+ / unavailable6이다. 다음은 provider-free shipped-runner self-dispatch repair다.
+
+- 1.9.560 Luna/high r1 control은 valid UI-resolved85/85, 543.074s, 2,987,256 tokens다.
+- edit1/static1/browser1과 모든 objective surface는 green이나 `.stations .carrier` 2개가 bound identifier 외 separately registered transfer-window evidence도 포함해 artifact unresolved/proof red다.
+- TTT76,499,941+ / unavailable6다. 다음은 fixed 120s pacing 뒤 r1 candidate no-retry다.
+
+- 1.9.559는 `/private/tmp/u19558-vendors` exact detached control/candidate와 `/private/tmp/u19558` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, detached+clean2, candidate target-inventory guardrail9/9와 identical runner를 확인했다. provider0다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
+
+- 1.9.558은 exact 1.9.548 control `84329948…` vs exact 1.9.555 candidate `6142925c…`를 fresh spent-fuel task에 Luna/high 2×3으로 사전등록했다.
+- 양 arm은 measured row+aggregate plan, fit feasibility, checklist, static1/browser1이 같고 candidate만 protected target snapshot completeness gate를 추가한다. timeout900/pacing120/no-retry/R@3다.
+- attempt40, prior TTT73,512,685+ / unavailable6, provider0다. 다음은 exact detached vendors와 six untouched cells preparation이다.
+
+- 1.9.557은 fresh `spent-fuel-cask-transfer-review-v0.1`을 provider/candidate 노출 전에 lock했다.
+- 4 cask/6 surveillance packet/2 handling station과 register·station strip·transfer decision을 보존한다. untouched baseline75/85, narrow overflow685/755/1510px, target4+4줄, state2줄, contrast3.81이다.
+- task contract/state/design/evidence green, provider/task exposure0다. 다음은 exact 1.9.548 control vs 1.9.555 candidate Reliability@3 preregistration이다.
+
+- 1.9.556은 1.9.555를 exact commit `6142925c…`, source/skill tree와 skill/helper/test/report 해시로 pin했다.
+- 새 competitor는 `omd-decision-target-inventory-candidate`, vendor dir `omd-1.9.555`, provider0/promotion false다.
+- 다음은 genuinely unseen task를 provider 노출 전에 lock한 뒤 exact 1.9.548 control vs 1.9.555 candidate를 preregister한다.
+
+- 1.9.555 provider-free repair는 pre-edit source의 protected decision target hook를 exact `role: target` row/cardinality와 distinct target-only carrier에 결박한다.
+- 누락·selector/count drift·row 자체 carrier·shared evidence/state/action carrier는 `plan-close` 전에 fail-closed다. focused47/47+lint+diff green, full578 pass/1 skip/기존3 red다.
+- subsea frozen4셀은 재개하지 않았고 provider0다. 다음은 exact immutable pin 뒤 genuinely unseen transfer task lock이다.
+
+- 1.9.554 r1 candidate는 UI85/85, 421.974s/1,884,435 tokens로 control 대비 wall0.7700×/token1.1984×이나 proof red다.
+- feasibility8행과 identifier comparison carrier는 작동했지만 compound decision target을 inventory에서 누락해 첫 terminal document overflow69/139/264px, 이후 edit2로 UI만 green이고 artifact open이다.
+- candidate proof R@3 최대2/3이라 잔여4셀 frozen, TTT73,512,685+ / unavailable6이다. 다음은 provider-free decision-target inventory completeness gate다.
+
+- 1.9.553 Luna/high r1 control은 valid77/85, 547.996s, 1,572,472 tokens다. overflow/fragmentation/axe0이나 narrow clipping4+target emphasis red다.
+- 첫 plan을 `python3 runner`로 직접 실행해 `ensure_real_tab` undefined로 artifact를 infrastructure-error에 잠갔고, 이후 correct browser-harness도 pending이 아니어서 plan/static/browser proof가 open이다.
+- 무재시도 protocol failure로 보존, TTT71,628,250+ / unavailable6이다. 다음은 fixed pacing 뒤 r1 candidate다.
+
+- 1.9.552는 `/private/tmp/u19551-vendors` exact detached control/candidate와 `/private/tmp/u19551` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, detached+clean2, candidate feasibility guardrail9/9와 identical runner를 확인했다. provider0다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
+
+- 1.9.551은 exact 1.9.541 control `28f96200…` vs exact 1.9.548 candidate `84329948…`를 fresh subsea task에 Luna/high 2×3으로 사전등록했다.
+- 양 arm은 aggregate plan+structured checklist+browser/static budget이 같고 candidate만 measured feasibility와 passive identifier shared-carrier rule을 추가한다. timeout900/pacing120/no-retry/R@3다.
+- attempt39, prior TTT70,055,778+ / unavailable6, provider0다. 다음은 exact detached vendors와 six untouched cells preparation이다.
+
+- 1.9.550은 fresh `subsea-valve-intervention-review-v0.1`을 provider/candidate 노출 전에 lock했다.
+- 4 valve/6 anomaly/2 intervention console과 register·console strip·decision carrier를 보존한다. untouched baseline75/85, narrow overflow685/755/1510px, target4+4/4+5/4+5줄, state2줄, contrast3.88이다.
+- task contract/state/design/evidence는 green, provider/task exposure0다. 다음은 exact 1.9.541 control vs 1.9.548 candidate Reliability@3 preregistration이다.
+
+- 1.9.549는 1.9.548을 exact commit `84329948…`, skill tree `4033a8f8…`, skill/helper/runner/test/report 해시로 pin했다.
+- 새 competitor는 `omd-fit-strategy-feasibility-candidate`, vendor dir `omd-1.9.548`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
+
+- 1.9.548 provider-free repair는 row intrinsic+16px가 available document width를 넘으면 `plan-close`에서 `comparison-scroll` 선언을 강제한다.
+- decision target은 target-only를 유지하고, shared 관계 carrier는 passive identifier만 허용해 register 의미는 보존하면서 state/action 혼입을 차단한다.
+- focused46/46+lint+diff green, full573 pass/1 skip/기존3 red, provider0·frozen4셀 유지다. 다음은 exact pin 뒤 genuinely unseen transfer task lock이다.
+
+- 1.9.547 r1 candidate는 valid83/85, 430.143s/1,329,206 tokens, control 대비 wall0.8211×/token0.6126×다.
+- structured checklist/static1은 green이나 intrinsic+reserve가 document보다 큰 identifier3그룹을 `stack`으로 선언하고 CSS는 local scroll을 써 전략 불일치로 artifact unresolved다. desktop action gap도 red다.
+- candidate proof R@3 최대2/3이라 잔여4셀 frozen, TTT70,055,778+ / unavailable6이다. 다음은 provider-free fit-strategy feasibility gate다.
+
+- 1.9.546 Luna/high r1 aggregate control은 valid83/85, 523.863s, 2,169,742 tokens다.
+- 모든 viewport overflow/fragmentation/clipping/axe는0이나 desktop action separation이 red다. register/desk에 horizontal scroll을 써 identifier 3그룹의 inline reserve가 부족해 artifact unresolved/proof fail이다.
+- edit1/static1/browser1, recovery0이며 TTT68,726,572+ / unavailable6이다. 다음은 fixed pacing 뒤 r1 candidate no-retry다.
+
+- 1.9.545는 `/private/tmp/u19544-vendors` exact detached control/candidate와 `/private/tmp/u19544` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, detached+clean2, identical runner와 candidate structured-checklist guardrail9/9를 확인했다. provider0다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
+
+- 1.9.544는 exact 1.9.533 aggregate control `0b93fa97…` vs exact 1.9.541 checklist candidate `28f96200…`를 fresh offshore task에 Luna/high 2×3으로 사전등록했다.
+- 양 arm은 aggregate plan/browser/static budget이 같고 candidate만 structured CSS+ordered first-edit checklist를 추가한다. timeout900/pacing120/no-retry/Reliability@3다.
+- attempt38, prior TTT66,556,830+ / unavailable6, provider0다. 다음은 exact detached vendors와 six untouched cells preparation이다.
+
+- 1.9.543은 fresh `offshore-turbine-inspection-review-v0.1`을 provider/candidate 노출 전에 lock했다.
+- 4 turbine/6 finding/2 engineering desk와 register·desk strip·maintenance decision 세 carrier를 보존한다. untouched baseline75/85, narrow overflow685/755/1510px, target4/4·5/6·5/6줄, state2줄, contrast3.88이다.
+- task contract/state/design/evidence는 green, provider/task exposure0다. 다음은 exact control/candidate Reliability@3 preregistration이다.
+
+- 1.9.542는 1.9.541 수리를 exact commit `28f96200…`, skill tree `d80cfd62…`, skill/helper/runner/test/report 해시로 pin했다.
+- 새 competitor는 `omd-first-edit-static-checklist-candidate`, vendor dir `omd-1.9.541`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
+
+- 1.9.541 provider-free repair는 CSS 금지를 structured `positive-length|any-declaration` assertion으로 분리해 safe `min-width:0` 오탐을 제거했다.
+- `plan-close`가 required/forbidden/regex/CSS/count 전체를 ordered `first_edit_checklist`로 출력하고 한 edit에서 모두 충족한 뒤에만 static-close하도록 skill을 고정했다.
+- focused44/44+lint green, full567 pass/1 skip/기존4 red, provider0다. 다음은 exact pin 뒤 genuinely unseen task lock이다.
+
+- 1.9.540 r2 candidate는 valid 79/85 unresolved: 409.819s, 1,029,760 tokens, narrow overflow103/173/345px+clipped1/1/1이다.
+- aggregate carrier 분류3/3은 green이나 첫 edit에 forbidden decision `grid-template-columns`를 남겨 static exactly-once가 red, 후속 edit은 재폐쇄 불가다.
+- candidate proof R@3 최대1/3이라 잔여3셀 frozen, TTT66,556,830+ / unavailable6이다. 다음은 provider-free precise guardrail + first-edit checklist repair다.
+
+- 1.9.539 Luna/high r1 aggregate candidate는 valid UI-resolved 85/85: 492.340s, 1,022,012 tokens, control 대비 wall1.0064×/token0.9035×다.
+- aggregate plan이 carrier5의 320px 필요 폭 508.67/1304.03/803/1798.27/196.30px와 reflow4/5를 정확히 분류해 모든 viewport overflow/clipping/fragmentation/axe0를 만들었다.
+- 다만 static forbidden pattern이 안전한 `min-width:0`까지 잡아 exactly-once closure가 red; proof fail, Reliability@3 0/1(max2/3), TTT65,527,070+다. 다음은 r2 candidate no-retry다.
+
+- 1.9.538 Luna/high r1 row-only control은 valid 79/85 unresolved: 489.213s, 1,131,127 tokens다.
+- desktop은 green이나 390/320/actual200 overflow508/578/1155px, clipping/fragmentation/axe0이다. 첫 browser terminal 뒤 edit2를 했으나 exactly-once static/browser를 재폐쇄할 수 없어 artifact open/proof fail이다.
+- TTT64,505,058+ / unavailable6이다. 다음은 fixed pacing 뒤 r1 aggregate-carrier candidate no-retry다.
+
+- 1.9.537은 `/private/tmp/u19536-vendors` exact detached control/candidate와 `/private/tmp/u19536` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, source detached+clean2, exact runner/helper hashes와 candidate aggregate guardrail9/9를 확인했다. provider0다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
+
+- 1.9.536은 exact 1.9.525 row-only control `b3b83bf7…` vs exact 1.9.533 aggregate candidate `0b93fa97…`를 fresh pharma task에 Luna/high 2×3으로 사전등록했다.
+- both arm snapshot→plan→single edit→static1→final browser, candidate exact-one aggregate carrier/max-content+16px, timeout900/pacing120/no-retry/Reliability@3를 고정했다.
+- attempt37, prior TTT63,373,931+ / unavailable6, provider0다. 다음은 detached vendors와 six untouched cells preparation이다.
+
+- 1.9.535는 fresh `pharmaceutical-batch-deviation-review-v0.1`을 provider/candidate 노출 전에 lock했다.
+- 4 manufacturing batch/6 deviation record/2 quality desk와 ledger·desk strip·disposition decision 세 carrier를 보존한다. untouched baseline 75/85, narrow overflow665/735/1470px, target3+3줄, state2줄, contrast3.88이다.
+- task contract/state/design/evidence는 green, provider/task exposure0다. 다음은 exact 1.9.525 control vs exact 1.9.533 candidate Reliability@3 preregistration이다.
+
+- 1.9.534는 1.9.533 repair를 exact commit `0b93fa97…`, skill tree `50037b94…`, skill/helper/runner/test/report hashes로 pin했다.
+- 새 competitor는 `omd-aggregate-carrier-fit-plan-candidate`, vendor dir `omd-1.9.533`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
+
+- 1.9.533은 row text-only pre-edit plan을 exact-one aggregate carrier plan으로 확장했다. carrier max-content clone이 sibling copy·control·padding·border·gap·margin과 available document width를 세 조건에서 잠근다.
+- live named-browser smoke는 row 36.5547+16px와 carrier 462.9297+16px를 분리해 390/320/actual200 모두 `requires_reflow`로 정확히 판정했다. focused43+parity1+installer1+lint+AST green, full562 pass/1 skip/기존3 red, provider0다.
+- observatory frozen matrix는 재개하지 않는다. 다음은 exact immutable pin 뒤 genuinely unseen task lock이다.
+
+- 1.9.532 r2 candidate는 81/85 proof fail: 385.022s, 861,995 tokens다. 320/actual200 overflow29/58px+clipped1/1, artifact open이다.
+- row text 124.5234+16px plan은 green이었지만 button padding·adjacent copy·gap·shell padding의 aggregate carrier 350px를 305px consumer에 맞추지 못했다. terminal 뒤 edit2/static2는 재폐쇄 불가다.
+- candidate Reliability@3 최대2/3이라 잔여3셀 frozen, TTT63,373,931+ / unavailable6이다. 다음은 provider-free aggregate carrier fit-plan repair다.
+
+- 1.9.531 Luna/high r1 candidate는 valid UI-resolved+proof pass 85/85: 487.890s, 958,166 tokens다.
+- control 대비 wall0.9779×/token0.8235×, measured fit plan10 rows+16px, overflow/clipping/fragmentation/axe/debt0, edit1/static1/final-browser1이다.
+- 첫 broad-carrier snapshot이 red였고 premature plan1회가 실패한 뒤 제품 edit 전 inventory를 교정했다. TTT62,511,936+ / unavailable6. 다음은 r2 candidate no-retry다.
+
+- 1.9.530 Luna/high r1 control은 valid UI-resolved+proof pass 85/85: 498.897s, 1,163,464 tokens다.
+- edit1/static1/browser1, existing attach/no-launch, overflow/clipping/fragmentation/axe0, recovery0/duplicate0/post-ready0, closure closed다.
+- TTT61,553,770+ / unavailable6. 다음은 fixed 120s pacing 뒤 r1 measured-fit-plan candidate no-retry다.
+
+- 1.9.529는 `/private/tmp/u19528-vendors` exact detached control/candidate와 `/private/tmp/u19528` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, source detached+clean2, exact runner/helper hashes, candidate measured-plan guardrail7/7이다. provider0이다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
+
+- 1.9.528은 exact 1.9.518 control `8d647987…` vs exact 1.9.525 candidate `b3b83bf7…`를 fresh observatory task에 Luna/high 2×3으로 사전등록했다.
+- candidate는 snapshot→named plan→plan-close를 편집 전에 수행하고 intrinsic nowrap width+16px plan을 digest에 결박한다. 양 arm은 acceptance debt와 static1/final-browser1을 유지한다.
+- attempt36, prior TTT60,390,306+ / unavailable6, task exposure/provider0다. 다음은 detached vendors와 six untouched cells preparation이다.
+
+- 1.9.527은 fresh `observatory-frame-calibration-review-v0.1`을 provider/candidate 노출 전에 lock했다.
+- 4 observation frame/6 calibration packet/2 telescope station과 manifest·station strip·archive decision 세 carrier, exact behavior/fact boundary를 보존한다.
+- untouched baseline 75/85: 390/320/actual200 overflow645/715/1430px, target token3+3/4+3/4+3줄, state2줄, contrast3.81이다. provider/task exposure0. 다음은 exact control/candidate preregistration이다.
+
+- 1.9.526은 1.9.525 수리를 exact commit `b3b83bf7…`, skill tree `b56ca22e…`, skill/helper/runner/test hashes로 pin했다.
+- 새 competitor는 `omd-measured-pre-edit-fit-plan-candidate`, vendor dir `omd-1.9.525`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
+
+- 1.9.525는 선언형 16px margin을 exact named consumer의 편집 전 실측 폭 예산으로 교체했다.
+- `snapshot → OMD_REFLOW_MODE=plan → plan-close`가 모든 row/390/320/actual200의 intrinsic nowrap width+16px를 inventory digest에 잠근 뒤에만 product edit을 허용한다.
+- focused42/42+parity1/1+installer1/1+lint+live browser smoke green, full556 pass/1 skip/기존3 red, provider0다. 다음은 exact immutable pin 뒤 genuinely unseen task lock이다.
+
+- 1.9.524 r1 candidate는 objective 85/85지만 proof fail: 470.382s, 1,757,491 tokens, control 대비 wall1.1081×/token1.7587×다.
+- overflow/clipping/axe는 전 조건 green이고 contrast debt도 닫혔지만 metrology packet reserve가 320=4.5625px, actual200=12.0664px라 browser debt2가 unresolved다.
+- proof Reliability@3 최대2/3이고 효율 gate도 초과해 잔여4셀을 frozen했다. TTT60,390,306+ / unavailable6. 다음은 provider-free measured pre-edit fit-plan repair다.
+
+- 1.9.523 Luna/high r1 control은 valid 81/85 unresolved: 424.499s, 999,293 tokens다.
+- contrast는 green이고 390px도 overflow0이지만 320/actual200에 27/53px overflow와 clipped control1씩, target reserve -56.73/-49.23px가 남았다.
+- 두 번째 edit+static-close 뒤 browser terminal을 재실행하지 않아 artifact open/proof fail이다. TTT58,632,815+ / unavailable6. 다음은 120s pacing 뒤 r1 candidate no-retry다.
+
+- 1.9.522는 `/private/tmp/u19521-vendors` exact detached control/candidate와 `/private/tmp/u19521` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, source detached+clean2, shared runner6/6, candidate debt/manifest/row/16px guardrail5/5다. provider0이다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
+
+- 1.9.521은 exact 1.9.511 control `b0aa9d5a…` vs exact 1.9.518 candidate `8d647987…`를 fresh wafer task에 Luna/high 2×3으로 사전등록했다.
+- both-arm shipped runner, named consumer/no-launch, pre-edit debt+selector binding, planning16px/measurement8px, static1/browser1을 고정했다.
+- attempt35, prior TTT57,633,522+ / unavailable6, task exposure/provider0다. 다음은 detached vendors와 six untouched cells preparation이다.
+
+- 1.9.520은 fresh `semiconductor-wafer-lot-review-v0.1`을 provider/candidate 노출 전에 lock했다.
+- 4 wafer lot/6 metrology packet/2 inspection station과 manifest·station strip·disposition decision 세 carrier, exact behavior/fact boundary를 보존한다.
+- untouched baseline 75/85: 390/320/actual200 overflow635/705/1410px, target5/6/6줄, state2줄, contrast4.1이다. provider/task exposure0. 다음은 exact control/candidate preregistration이다.
+
+- 1.9.519는 1.9.518 수리를 exact commit `8d647987…`, skill tree `dc065afc…`, skill/helper/test hash로 pin했다.
+- 새 competitor는 `omd-acceptance-debt-fit-margin-candidate`, vendor dir `omd-1.9.518`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
+
+- 1.9.518은 baseline/측정 failure를 첫 제품 edit 전에 machine-readable `acceptance_debt_ledger`로 고정한다.
+- debt guardrail은 global static manifest에 동일 assertion이 있어야 하고 browser debt는 pre-edit row group에 결박된다. unresolved debt는 closure를 차단한다.
+- fit planning reserve는 16px, 독립 측정 pass line은 기존 8px로 분리했다. focused82/82+parity1/1+focused70/70+lint green, full 555 pass/1 skip/기존3 red, provider0다. 다음은 exact immutable pin이다.
+
+- 1.9.517 r1 candidate는 valid 81/85 unresolved: 298.086s, 587,144 tokens, control 대비 wall0.9333×/token0.9215×다.
+- pre-edit selector anchor gate와 single edit/static/browser, overflow0/clipping0은 green이지만 320px packet identifier reserve가 5.421875px로 8px 미만이고 기존 muted 4.31:1 contrast를 남겨 responsive proof/accessibility가 red다.
+- candidate Reliability@3 최대가 2/3이므로 잔여4셀을 frozen했다. 승격0 없음, TTT57,633,522+ / unavailable6. 다음은 provider-free fit-reserve+known-a11y acceptance planning repair다.
+
+- 1.9.516 r1 control은 valid 79/85 unresolved: 319.391s, 637,185 tokens이다.
+- existing `bench19366` attach/no-launch와 390/320/actual200 1회 측정은 통과했지만, comparison target 528.28125px 폭과 action의 음수 reserve로 세 narrow 조건에서 overflow/clipping이 남았다.
+- 두 번째 product edit 후 static-close만 재실행하고 browser terminal을 재실행하지 않아 artifact open/proof fail이다. TTT57,046,378+ / unavailable6. 다음은 fixed 120s pacing 후 r1 candidate no-retry다.
+
+- 1.9.515는 `/private/tmp/u19514-vendors` exact detached control/candidate와 `/private/tmp/u19514` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, source detached+clean2, shared runner6/6, candidate selector guardrail3/3다. provider0이다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
+
+- 1.9.514는 exact 1.9.504 control `86546d5a…` vs exact 1.9.511 candidate `b0aa9d5a…`를 fresh satellite task에 Luna/high 2×3으로 사전등록했다.
+- both-arm shipped runner, exact named consumer/no-launch, snapshot selector anchor, actual200, static1/browser1을 고정했다.
+- attempt34, prior TTT56,409,193+ / unavailable6, task exposure/provider0다. 다음은 detached vendors와 six untouched cells preparation이다.
+
+- 1.9.513은 fresh `satellite-telemetry-pass-review-v0.1`을 provider 전에 lock했다.
+- 4 orbit pass/6 telemetry packet/2 ground station과 manifest·station strip·decision 세 carrier, exact behavior/fact boundary를 보존한다.
+- untouched baseline 75/85: 390/320/actual200 overflow 615/685/1370px, target fragmentation, state wrap, contrast4.31이다. provider/task exposure0. 다음은 exact control/candidate preregistration이다.
+
+- 1.9.512는 1.9.511 수리를 exact commit `b0aa9d5a…`, skill tree `88e67876…`, skill/helper/runner/evaluator/test hashes로 pin했다.
+- 새 competitor는 `omd-pre-edit-selector-provenance-candidate`, vendor dir `omd-1.9.511`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
+
+- 1.9.511 provider-free repair는 snapshot-backed row selector의 class/id/attribute anchor가 pre-edit source에 실제 존재하는지 lock에서 검사한다.
+- tag-only/post-edit-only selector는 제품 edit 전에 거절하고, evaluator는 null 기준값을 `reflow-pre-edit-selector-unresolved`로 분리한다. frozen candidate가 새 사유로 정확히 재분류됐다.
+- focused55/55, experiment parity1/1, lint green이다. full suite는 552 pass/4 red이며 1건은 mirror 수리 전 관찰, 2건은 외부 vendor git 부재, 1건은 기존 timeout attribution expectation이다. 다음은 exact immutable pin이다.
+
+- 1.9.510 r1 candidate는 valid UI-resolved 85/85지만 proof fail이다: 269.608s, 719,791 tokens, control 대비 wall1.0395×/token1.2405×다.
+- static absence guardrail은 exactly-once close를 통과했다. 그러나 edit에서 새로 만든 `.event-log-form` class를 pre-edit selector로 등록해 form-save 기준값이 null이 됐고 artifact가 open이다.
+- candidate Reliability@3 최대 2/3이라 잔여4셀을 frozen했다. TTT56,409,193+ / unavailable6. 다음은 provider-free selector provenance lock/evaluator repair다.
+
+- 1.9.509 r1 control은 valid UI-resolved+proof pass 85/85: 259.353s, 580,237 tokens다.
+- edit1/static1/browser1, existing attach/no-launch, 390/320/actual200, recovery0/duplicate0/post-ready0, closure closed다.
+- TTT55,689,402+ / unavailable6. 다음은 fixed 120s pacing 뒤 r1 candidate no-retry다.
+
+- 1.9.508은 `/private/tmp/u19507-vendors` exact detached control/candidate와 `/private/tmp/u19507` six untouched cells를 준비했다.
+- equality6/6, product tree identical6, source detached+clean2, shared runner3/3+3/3, candidate guardrail helper3/3다. provider0이다.
+- 다음은 runtime browser/CLI/auth preflight와 r1 control Luna/high no-retry다.
+
+- 1.9.507은 exact 1.9.497 control `14ed7765…` vs exact 1.9.504 candidate `86546d5a…`를 fresh rail task에 Luna/high 2×3으로 사전등록했다.
+- both-arm shipped runner, exact named consumer/no-launch, snapshot computed type, target-only carrier, static absence guardrail, actual200, static1/browser1을 고정했다.
+- attempt33, prior TTT55,109,165+ / unavailable6, task exposure/provider0이다. 다음은 detached vendors와 six untouched cells preparation이다.
+
+- 1.9.506은 fresh `rail-interlocking-event-log-review-v0.1`을 provider 전에 lock했다.
+- 4 signal zone/6 event log/2 interlocking desk와 manifest·desk strip·decision 세 carrier, exact behavior/fact boundary를 보존한다.
+- untouched baseline 75/85: 390/320/actual200 overflow 615/685/1370px, compound 4/5/5줄, state wrap, contrast4.02다. provider/task exposure0이다.
+- 다음은 exact computed-type control vs exact static-absence candidate Reliability@3 preregistration이다.
+
+- 1.9.505는 provider-free repair를 exact commit `86546d5a…`, skill tree `73f56442…`, skill/runner/helper sha256으로 pin했다.
+- 새 competitor는 `omd-static-absence-guardrail-candidate`, vendor dir `omd-1.9.504`, provider0/promotion false다. 다음은 genuinely unseen task lock이다.
+
+- 1.9.504 clean repro는 control 85/85 353.206s/1,134,209 tokens, candidate 85/85 310.876s/771,626 tokens다.
+- candidate wall 0.8802×/token 0.6803×지만 patch에 `word-break: normal`을 넣어 exactly-once static close가 red; 수정 뒤 정직하게 retry하지 않아 proof fail이다.
+- candidate Reliability@3 최대 2/3이라 4셀 frozen, TTT 55,109,165+ / unavailable6이다.
+- provider-free repair는 lock stdout에 exact static edit guardrails와 forbidden CSS absence semantics를 노출하고 skill에 neutral-value 대체도 금지했다. 다음은 focused/broad 검증과 fresh replay다.
+
+- 1.9.503 r1 candidate는 valid UI-resolved+proof pass 85/85: 312.356s, 824,978 tokens다.
+- control 대비 wall 0.9959×, token 1.2803×이며 snapshot computed type(14/21.7/700, 18/27.9/700), target-only carrier, unresolved0가 green이다.
+- evaluator가 새 snapshot contract를 legacy numeric contract로 읽은 false negative를 provider/model/product mutation 없이 수리했고 focused 16/16+lint가 green이다. TTT 53,203,330+ / unavailable6이다.
+- Reliability@3은 candidate 1/1 pass다. 다음은 preregistered order의 r2 candidate no-retry다.
+
+- 1.9.502 r1 control은 valid UI-resolved 85/85: 313.635s, 644,344 tokens다.
+- edit1/static1/browser1, existing attach/no-launch, 세 조건, recovery0/duplicate0/post-ready0는 green이다.
+- control이 capture-window actual weight700을 400으로 추정했고 긴 decision evidence를 atomic row로 넣어 artifact가 open, proof fail이다. TTT 52,378,352+ / unavailable6이다.
+- 다음은 preregistered 120s pacing 뒤 r1 candidate no-retry다.
+
+- 1.9.501은 `/private/tmp/u19500-vendors` exact detached control/candidate와 `/private/tmp/u19500` six untouched cells를 준비했다.
+- equality 6/6, product tree identical6, source detached+clean2, control/candidate shipped runner 3/3, candidate snapshot/computed-type/target-only gate 3/3다.
+- `bench19366`, Codex CLI 0.144.1, ChatGPT auth가 ready이며 provider 0이다. 다음은 r1 control 한 셀을 Luna/high no-retry로 실행한다.
+
+- 1.9.500은 exact 1.9.490 visible atomic-fit control `931e124c…` vs exact 1.9.497 computed-type target-carrier candidate `14ed7765…`를 fresh grid task에 Luna/high 2×3으로 사전등록했다.
+- both-arm shipped runner, exact named consumer/no-launch, snapshot sha+computed type, actual200, target-only carrier, focusable clipping0, static1/browser1을 artifact gate로 고정했다.
+- attempt 32, prior TTT 51,734,008+ / unavailable6, task exposure/provider 0이다. 다음은 detached vendors와 six untouched cells preparation이다.
+
+- 1.9.499는 fresh `grid-disturbance-waveform-review-v0.1`을 provider 전에 lock했다.
+- 4 substation/6 waveform file/2 relay terminal과 substation manifest·relay-terminal strip·waveform decision 세 carrier를 보존한다.
+- untouched baseline은 75/85: 390/320/actual200 overflow 615/685/1370px, compound target 4줄·state wrap·atomic fragmentation, muted contrast 4.02만 red다.
+- task contract/focused preparation/browser baseline green, provider/task exposure 0이다. 다음은 exact 1.9.490 control vs exact 1.9.497 candidate preregistration이다.
+
+- 1.9.498은 1.9.497을 exact commit `14ed7765…`, skill tree `c8ebc909…`, skill/runner/helper sha256으로 pin했다.
+- 새 competitor는 `omd-computed-type-target-carrier-candidate`, vendor dir `omd-1.9.497`, provider 0/promotion false다. 다음은 genuinely unseen task lock이다.
+
+- 1.9.497은 provider-free로 lock 시 pre-edit product source+sha256을 snapshot하고 shipped runner가 같은 consumer browser·같은 세 조건에서 편집 전/후 computed font size·line-height·weight를 직접 비교한다.
+- comparison-scroll은 별도 등록된 target-only carrier 하나에만 허용하며 evidence/state/action, 다른 registered row, focusable descendant를 carrier 밖에 둔다. runtime은 unregistered overflow와 clipped focusable을 실패 처리한다.
+- bare boolean `data-primary-action` static cardinality가 통과한다. fresh flight replay는 existing `bench19366` attach/no-launch, carriers6/rows22, static1, 390/320/actual200, quality true, unresolved0, `OMD_DELIVERY_READY`다.
+- focused 52/52와 lint가 green, provider 0이며 frozen 1.9.493 실험은 변경하지 않았다. 다음은 exact immutable pin 뒤 genuinely unseen task transfer다.
+
+- 1.9.496 r1 candidate는 valid 79/85 unresolved: 324.563s, 734,928 tokens, control 대비 wall 1.1022×/token 1.3066×다.
+- exact attach/no-launch/세 조건/overflow0/atomic0/contrast0, visible inventory와 padding reserve는 green이나 action이 세 narrow 조건에서 clipped됐다.
+- target의 pre-edit line-height를 27.9가 아닌 21.7로 잘못 lock했고 target reserve -57.27/-127.27/-127.27px, action reserve 2.16px라 proof fail이다.
+- candidate UI-Resolved 3/3이 불가능해 4셀 frozen, TTT 51,734,008+ / unavailable 6이다. 다음은 provider-free computed-type capture + target-only comparison carrier planning repair다.
+
+- 1.9.495 r1 control은 valid 79/85 unresolved: 294.458s, 562,494 tokens다.
+- contrast와 atomic wrap은 green이나 390/320/actual200 overflow 33/103/206px가 남았다.
+- bare boolean `data-primary-action` cardinality assertion이 helper 문법을 위반해 static closure open/browser attempts0/shipped runner false/proof fail이다.
+- TTT 50,999,080+ / unavailable 6. 다음은 fixed 120s pacing 뒤 r1 candidate no-retry다.
+
+- 1.9.494는 `/private/tmp/u19493-vendors` exact detached control/candidate와 `/private/tmp/u19493` six untouched cells를 준비했다.
+- equality 6/6, product tree 동일, source detached+clean, both-arm runner 3/3과 shared artifact gate를 검증했다.
+- `bench19366`, Codex CLI 0.144.1, ChatGPT auth가 ready이며 provider 0이다. 다음은 r1 control 한 셀을 Luna/high no-retry로 실행한다.
+
+- 1.9.493은 exact 1.9.483 socket-native control `aa0d680d…` vs exact 1.9.490 visible atomic-fit candidate `931e124c…`를 fresh flight-recorder task에 Luna/high 2×3으로 사전등록했다.
+- both-arm shipped runner, exact named consumer/no-launch, actual200, locked type, inner-border reserve 8px와 visible one-line inventory를 artifact gate로 고정했다.
+- attempt 31, prior TTT 50,436,586+ / unavailable 6, task exposure/provider 0이다. 다음은 detached vendors와 six untouched cells preparation이다.
+
+- 1.9.492는 fresh `flight-recorder-download-review-v0.1`을 provider 전에 lock했다.
+- 4 airframe/6 recorder segment/2 acquisition station과 manifest·station strip·download decision 세 carrier를 보존한다.
+- untouched baseline은 75/85: 390/320/actual200 overflow 615/685/1370px, compound target·state wrap, atomic fragmentation, muted contrast 4.02만 red다.
+- long evidence와 initially-empty status는 atomic inventory가 아니며 task contract/focused preparation green, provider/task exposure 0이다. 다음은 exact 1.9.483 control vs exact 1.9.490 candidate preregistration이다.
+
+- 1.9.491은 1.9.490을 exact commit `931e124c…`, skill tree `c9ba15d7…`, skill/runner/helper hashes로 pin했다.
+- 새 competitor는 `omd-visible-atomic-fit-candidate`, vendor dir `omd-1.9.490`, provider 0/promotion false다.
+- 다음은 another genuinely unseen task lock이다.
+
+- 1.9.490은 fit reserve를 carrier inner border까지 측정해 intentional padding을 포함하고 border는 제외한다.
+- atomic inventory는 측정 시작 state의 visible non-empty state와 explicit one-line + 48자 이하 evidence만 허용한다.
+- frozen water replay에서 operator reserve 1→16px, unresolved 3→2; repaired inventory replay는 12 carriers/28 rows, 세 조건, unresolved0, DELIVERY_READY다.
+- lint, focused 72/72, experimental mirror 1/1, diff green, provider 0이다. 다음은 exact immutable pin이다.
+
+- 1.9.489 r1 candidate는 valid 85/85 UI-resolved: 393.400s, 609,088 tokens, control 대비 wall 1.4435×/token 1.0358×다.
+- existing attach true/no-launch/browser1/390·320·actual200 measured/static1/recovery0는 모두 green이며 socket repair는 실전 검증됐다.
+- operator note reserve가 padding 제외로 1px, multi-line evidence와 initially-empty form status가 atomic inventory에 들어가 unresolved row 3/proof fail이다.
+- proof 3/3 불가능으로 4셀 frozen, TTT 50,436,586+ / unavailable 6이다. 다음은 provider-free reserve boundary + visible one-line inventory repair다.
+
+- 1.9.488 r1 control은 valid 85/85 UI-resolved: 272.526s, 588,027 tokens다.
+- desktop/390/320/actual200, contrast, atomic text는 green이고 edit1/static1/shipped-runner1/recovery0/duplicate0/post-ready0다.
+- artifact는 static passed지만 browser attempts0/not-run/attachment null/closure open이라 automatic proof gate가 7개 이유로 fail-close했다.
+- TTT 49,827,498+ / unavailable 6. 다음은 fixed 120s pacing 뒤 r1 candidate no-retry 실행이다.
+
+- 1.9.487은 `/private/tmp/u19486-vendors` exact detached control/candidate와 `/private/tmp/u19486` six untouched cells를 준비했다.
+- equality 6/6, product tree 동일, source detached+clean, control/candidate runner 3/3, artifact-aware gate shared를 검증했다.
+- `bench19366`, Codex CLI 0.144.1, ChatGPT auth가 ready이며 provider 0이다. 다음은 r1 control 한 셀을 Luna/high no-retry로 실행한다.
+
+- 1.9.486은 exact 1.9.476 endpoint-bound control `6bfdc7bc…` vs exact 1.9.483 socket-native candidate `aa0d680d…`를 fresh water task에 Luna/high 2×3으로 사전등록했다.
+- artifact-aware gate, both-arm shipped runner, exact named socket/no-launch, actual200, locked type, 8px reserve, static1/browser1을 고정했다.
+- attempt 30, prior TTT 49,239,471+ / unavailable 6, task exposure/provider 0이다. 다음은 detached vendors와 six untouched cells preparation이다.
+
+- 1.9.485는 fresh `water-treatment-batch-release-v0.1`을 provider 전에 lock했다.
+- 5 treatment batch/7 laboratory sample/3 treatment train과 batch register·train strip·release decision 세 carrier를 보존한다.
+- untouched baseline은 75/85: 390/320/actual200 overflow 595/665/1330px, compound target·state wrap, atomic fragmentation, contrast 3.83/4.47만 red다.
+- task contract/focused preparation green, provider/task exposure 0이다. 다음은 exact control vs exact 1.9.483 candidate의 Reliability@3 preregistration이다.
+
+- 1.9.484는 1.9.483 수리를 exact commit `aa0d680d…`, skill tree `e6a01cae…`, skill/helper/runner hash로 pin했다.
+- 새 competitor는 `omd-socket-native-consumer-browser-candidate`, vendor dir `omd-1.9.483`이며 provider 0/promotion false다.
+- 다음은 genuinely unseen task를 provider 전에 lock하고 historical control 대비 exact transfer를 사전등록한다.
+
+- 1.9.483은 raw CDP endpoint 없이 exact `BU_NAME` socket으로 shipped runner가 consumer browser에 붙도록 수리했다.
+- `bench19366` 실재생에서 existing attach true/launch false, 390·320·actual200 세 조건을 1회 측정했고 static은 passed다.
+- 기존 UI의 8px fit reserve 실패 2행은 측정을 버리지 않고 terminal `OMD_DELIVERY_UNRESOLVED`로 닫혔다.
+- automatic proof gate는 command shape가 아니라 artifact까지 읽어 frozen not-run은 7개 인프라 이유, replay는 실제 품질 이유 2개만 보고한다.
+- lint, focused 63/63, bounded experimental mirror 1/1, diff green, provider 0이다. 다음은 exact immutable pin 1.9.484다.
+
+- 1.9.482 r1 candidate는 valid objective success/proof failure: 85/85, 258.087s, 703,275 tokens다.
+- control 대비 wall 0.6720× / token 0.8383×이며 UI는 완전 green, edit1/static1/shipped-runner1/recovery0/duplicate0/post-ready0다.
+- runner가 raw `BU_CDP_URL`을 요구하지만 controller는 exact named socket만 노출해 browser attempts0/not-run/attachment false/schema open으로 proof fail이다.
+- candidate proof 3/3이 불가능해 4셀을 frozen했다. TTT 49,239,471+ / unavailable 6. 다음은 socket-native runner와 artifact-aware automatic proof gate의 provider-free repair다.
+
+- 1.9.481 r1 control은 valid 83/85 unresolved: 384.069s, 838,924 tokens다.
+- narrow/actual200/contrast/atomic text는 green이나 desktop decision action 8px separation만 red다.
+- trace shape edit1/static1/browser1/recovery0/duplicate0/post-ready0이나 browser artifact가 infrastructure-error/attached false/schema open이라 experiment proof는 fail이다.
+- TTT 48,536,196+ / unavailable 6. 다음은 fixed pacing 뒤 r1 candidate를 no-retry 실행한다.
+
+- 1.9.480은 `/private/tmp/u19479-vendors` exact detached control/candidate와 `/private/tmp/u19479` six untouched cells를 준비했다.
+- equality 6/6, detached+clean source 2, shared helper hash, candidate runner present 3/3·control absent 3/3를 검증했다.
+- `bench19366` existing attach/no-launch, Codex CLI 0.144.1, ChatGPT auth가 ready이며 provider 0이다.
+- 다음은 r1 control 한 셀을 Luna/high, 900s, no-retry로 실행한다.
+
+- 1.9.479는 exact 1.9.474 control `e848d129…` vs exact 1.9.476 candidate `6bfdc7bc…`를 fresh semiconductor task에 Luna/high 2×3으로 사전등록했다.
+- schema 0.3, exact named existing-CDP/no-launch, actual200, typography lock, 8px reserve, attribute-aware static1/browser1과 candidate shipped-runner-only를 고정했다.
+- attempt 29, prior TTT 47,697,272+ / unavailable 6, task exposure 0/0, provider 0이다.
+- 다음은 fresh detached vendors와 six untouched cells를 준비하고 equality/browser/auth/CLI preflight를 검증한다.
+
+- 1.9.478은 fresh `semiconductor-wafer-disposition-v0.1`을 provider 전에 lock했다.
+- 5 wafer lot/7 metrology scan/3 process chamber와 lot register·chamber strip·disposition decision 세 carrier를 보존한다.
+- untouched baseline은 75/85: 390/320/actual200 overflow 595/665/1330px, atomic/state wrap, muted contrast 3.88만 red이고 passive protected-text scroll은 0이다.
+- exact 1.9.474 control과 exact 1.9.476 candidate의 task exposure/provider는 0이다. 다음은 shipped-runner Reliability@3 preregistration이다.
+
+- 1.9.477은 shipped runner를 exact `6bfdc7bc…`, skill tree `c62907bb…`와 skill/helper/runner/test hashes로 pin했다.
+- 새 competitor는 `omd-shipped-consumer-browser-candidate`, vendor dir `omd-1.9.476`이며 provider 0/promotion false다.
+- 다음은 genuinely unseen runner transfer task를 provider 전에 lock하고 exact 1.9.474 control vs exact 1.9.476 candidate를 preregister한다.
+
+- 1.9.476은 `reflow-browser.py`를 apply skill과 세 채널에 배포해 model-authored browser program을 제거했다.
+- runner는 exact `BU_NAME`/`BU_CDP_URL` attach, no-launch, 390/320/actual200, character range, locked type, carrier-relative 8px reserve, cardinality/binding/document overflow를 한 command에서 측정·finalize한다.
+- frozen genomic candidate 사본에서 `bench19366` existing attach/launch false/세 조건/overflow0를 입증했고, 실제 summary wrap과 잘못 등록된 broad container·empty input·reserve 부족을 정직하게 unresolved 처리했다.
+- Python compile, lint, focused skill/helper/install 73/73 green, provider 0/promotion false다. 다음은 exact runner pin과 genuinely unseen task lock이다.
+
+- 1.9.475는 1.9.474 repair를 exact `e848d129…`, skill tree `d4ee144a…`와 helper/evaluator/test hash로 pin했다.
+- 새 competitor는 `omd-attribute-aware-consumer-fit-candidate`, vendor dir `omd-1.9.474`이며 provider 0/promotion false다.
+- 다음은 모델이 browser 측정 코드를 즉석 작성하지 않도록 schema0.3 artifact를 소비하는 shipped browser-harness runner를 provider-free로 구현한다.
+
+- 1.9.474는 provider-free로 raw hook literal count를 실제 HTML start-tag attribute count로 교체하고 script/style selector decoy를 제외했다.
+- evaluator는 서로 독립된 control overlap은 계속 잡되 focusable ancestor와 descendant의 정상 containment를 collision에서 제외한다.
+- 실패 candidate 사본에서 static closure passed, overlap 전 viewport green, 77→81/85로 복구됐다. 남은 실제 red는 320/actual200 evidence summary 2줄뿐이다.
+- lint + focused/install 89/89 green. broad는 새 mirror failure를 수정·재검증했고, 기존 외부 vendor Git-root 2건/timeout attribution 1건만 남는다. provider 0이다.
+- 다음은 exact immutable pin 뒤 model-independent shipped consumer-browser measurement runner를 구현한다.
+
+- 1.9.473 r1 candidate는 valid failure 77/85, 359.021s, 602,380 tokens다. control 대비 wall 1.0276× / token 0.7796×다.
+- raw `count_literals`가 실제 속성과 script selector 문자열을 함께 세 static closure가 실패했고, exact named consumer browser 측정은 시작되지 않았다.
+- trace shape는 static1/browser1/recovery0/duplicate0/post-ready0이나 schema0.3 closure와 consumer attachment가 없어 promotion proof는 fail이다.
+- candidate 3/3이 불가능해 남은 4셀은 frozen했다. TTT 47,697,272+ / unavailable 6이다.
+- 다음은 provider-free attribute-aware count와 ancestor/descendant containment-aware overlap evaluator 수리, focused/broad 검증, exact pin이다.
+
+- 1.9.472 r1 control은 valid 81/85, 349.379s, 772,692 tokens다.
+- desktop/390, contrast, behavior, document overflow0은 green이나 evidence summary가 320/actual200에서 2줄이라 UI unresolved다.
+- static1/browser1/duplicate0/post-ready0이지만 independent Playwright Chromium launch가 recovery1로 검출돼 proof fail이다.
+- TTT 47,094,892+ / unavailable 6. 다음은 fixed pacing 뒤 r1 candidate를 same Luna/high/no-retry로 실행한다.
+
+- 1.9.471은 `/private/tmp/u19470-vendors` exact detached control/candidate와 `/private/tmp/u19470` six untouched cells를 준비했다.
+- task/core prompt/prompt/product/runtime/model/effort/timeout equality 6/6, sources detached+clean, installed skill/helper hashes를 고정했다.
+- `bench19366`, Codex CLI 0.144.1, isolated auth preflight가 모두 ready이며 provider 0이다.
+- 다음은 r1 control 한 셀을 Luna/high, 900s, no-retry로 실행한다.
+
+- 1.9.470은 exact 1.9.460 control `8315182e…` vs exact 1.9.467 candidate `757bb270…`를 fresh genomic task에 Luna/high 2×3으로 사전등록했다.
+- schema 0.3, exact named existing-CDP attach/no-launch, typography lock, 8px reserve, document/body overflow0, actual200, static1/browser1을 고정했다.
+- attempt 28, prior TTT 46,322,200+ / unavailable 6, task exposure 0/0, provider 0이다.
+- 다음은 fresh detached vendors와 six untouched cells를 준비하고 equality/browser/auth/CLI preflight를 검증한다.
+
+- 1.9.469는 fresh `genomic-sequencing-run-release-v0.1`을 provider 전에 lock했다.
+- 5 library/7 read set/3 instrument lane과 manifest·lane strip·release decision 세 carrier, compound target/state를 보존한다.
+- untouched baseline은 75/85: 390/320/actual200 overflow 595/665/1330px, atomic/state wrap, muted contrast 3.88만 red이고 passive protected-text scroll은 0이다.
+- exact 1.9.467 source는 task exposure 0, provider 0이다. 다음은 historical control과 exact candidate의 runtime-bound Reliability@3 preregistration이다.
+
+- 1.9.468은 consumer-browser fit repair를 exact commit `757bb270…`, skill tree `c4a942b1…` 및 여섯 file hash로 pin했다.
+- 새 competitor id는 `omd-consumer-browser-fit-candidate`, vendor dir은 `omd-1.9.467`이며 mutable working tree를 provider에 쓰지 않는다.
+- targeted pin contract green, provider 0, promotion false다. 다음은 genuinely unseen transfer task 1.9.469를 provider 전에 lock한다.
+
+- 1.9.467은 provider-free로 reflow artifact schema 0.3과 consumer-browser fit contract를 구현했다.
+- exact `BU_NAME`/`BU_CDP_URL` existing-CDP attach만 허용하고 새 Playwright/Chromium launch는 host policy와 helper 양쪽에서 차단한다.
+- protected row의 pre-edit font size/line height/weight, 8 CSS px inline reserve, document/body scroll/client widths를 세 조건에서 강제한다.
+- focused 84/84, install distribution 포함 85/85, lint/diff green이다. broad 첫 pass 526 green/1 skip 후 관련 stale usage 기대값은 수리했고 외부 vendor Git-root 2건과 기존 timeout attribution 1건만 이번 diff 밖에 남았다.
+- provider 0, promotion false다. 다음은 exact immutable pin 1.9.468과 genuinely unseen transfer task다.
+
+- 1.9.466 r1 candidate는 valid 81/85 + proof pass: 365.260s, 618,457 tokens다. control 대비 wall 0.8324× / token 0.9953×다.
+- exact shipped `static-close` 1회와 browser1/recovery0/duplicate0/post-ready0는 green이나 320px document overflow 10px, actual 200% overflow 20px가 red다.
+- 모델이 protected decision typography를 13px로 축소하고도 충분한 fit reserve/distinct carrier를 만들지 않았으며, 새 Playwright Chromium을 띄운 browser-harness proof가 실제 consumer browser overflow를 놓쳤다.
+- paired objective loss로 Reliability@3 최대치가 2/3이므로 남은 4셀은 실행하지 않고 frozen했다. TTT 46,322,200+ / unavailable 6이다.
+- 다음은 provider-free로 exact named consumer-browser attachment, measurable fit reserve, protected typography role lock을 helper/skill에 강제한다.
+
+- 1.9.465 r1 control은 valid 85/85 + proof pass: 438.796s, 621,392 tokens다.
+- desktop/390/320/actual200, contrast, evidence, passive scroll0가 모두 green이고 edit1/static1/browser1/recovery0/duplicate0/post-ready0이다.
+- control은 한 번이지만 긴 task-specific inline Node verifier를 직접 작성했다. TTT 45,703,743+ / unavailable 6이다.
+- 다음은 fixed pacing 뒤 r1 candidate를 same Luna/high/no-retry로 실행한다.
+
+- 1.9.464는 `/private/tmp/u19463-vendors` exact detached control/candidate와 `/private/tmp/u19463` six untouched cells를 준비했다.
+- equality 6/6, control skill/helper `80645672…`/`7676d67a…`, candidate `95d03c80…`/`c66c5099…`, sources detached+clean이다.
+- `bench19366`, Codex CLI 0.144.1, isolated auth preflight가 모두 ready이며 provider 0이다.
+- 다음은 r1 control 한 셀을 Luna/high, 900s, no-retry로 실행한다.
+
+- 1.9.463은 exact 1.9.453 control `f578e8a6…` vs exact 1.9.460 candidate `8315182e…`를 satellite task에 Luna/high 2×3으로 사전등록했다.
+- pre-edit manifest + exactly-once shipped `static-close`, actual 200%=640/zoom2, passive scroll 0, terminal browser, 900s/concurrency1/120s/no-retry를 고정했다.
+- attempt 27, prior TTT 45,082,351+ / unavailable 6, task exposure 0/0, provider 0이다.
+- 다음은 fresh detached vendors와 six untouched cells를 준비하고 equality를 검증한다.
+
+- 1.9.462는 fresh `satellite-telemetry-release-review-v0.1`을 provider 전에 lock했다.
+- 4 payload/6 telemetry archive/3 ground pass와 manifest·pass strip·release decision 세 carrier를 보존한다.
+- untouched baseline은 75/85: narrow/actual overflow·compound/state wrapping, contrast 3.85/3.68만 red이고 passive protected-text scroll은 0이다.
+- provider 0이다. 다음은 exact historical control vs exact 1.9.460 candidate의 runtime-bound Reliability@3 preregistration이다.
+
+- 1.9.461은 repair를 exact commit `8315182e…`, skill tree `d3566da6…` 및 네 file hash로 pin했다.
+- 새 competitor id는 `omd-deterministic-static-closure-candidate`; mutable working tree는 provider sandbox에 사용할 수 없다.
+- targeted competitor/candidate 31 green, provider 0, promotion false다. 다음은 genuinely unseen transfer task 1.9.462를 lock한다.
+
+- 1.9.460은 pre-edit `static_closure_manifest`와 exactly-once `static-close` helper를 canonical/experimental skill에 연결했다.
+- helper는 product file을 한 번 읽어 required/forbidden literal·pattern·cardinality를 닫고, pass/fail을 1회로 영구 기록하며 pass 전 finalize를 거부한다.
+- focused helper/apply/proof/candidate 121 green, lint/diff green이다. broad 394 green/1 skip이며 외부 vendor Git-root 2 red와 timeout attribution 기대값 1 red는 이번 diff 밖이다.
+- provider 0, promotion false다. 다음은 exact source pin 1.9.461 뒤 genuinely unseen task transfer다.
+
+- 1.9.459 r1 candidate는 valid 85/85 UI-resolved: 457.012s, 690,948 tokens다. control 대비 1.1134×/0.6103×다.
+- actual 200%, contrast, target one-line, passive protected-text scroll 0, distinct named/focusable comparison carrier, browser recovery 0, post-browser 0은 모두 green이다.
+- 모델이 ad-hoc static script를 두 번 고쳐 static closure 3(duplicate 2)이 되어 proof fail이다. wall ratio도 1.1을 소폭 초과했다.
+- proof 3/3 최대치가 2/3이라 남은 4셀을 skip/freeze했다. TTT 45,082,351+ / unavailable 6이다.
+- 다음은 provider-free declarative static-closure manifest + exactly-once helper repair다.
+
+- 1.9.458 r1 control은 valid system proof failure: objective 85/85 UI-resolved, 410.471s, 1,132,170 tokens다.
+- desktop/390/320/actual 200%, accessibility, evidence, passive protected-text scroll 0은 모두 green이다.
+- browser recovery 0이지만 static closure 6(duplicate 5)/post-ready 2라 proof gate는 fail이다.
+- TTT 44,391,403+ / unavailable 6. 다음은 fixed pacing 뒤 r1 candidate 한 셀을 same Luna/high/no-retry로 실행한다.
+
+- 1.9.457은 `/private/tmp/u19456-vendors` exact detached control/candidate와 `/private/tmp/u19456` six untouched cells를 준비했다.
+- task/prompt/product/runtime/model/effort/timeout equality는 6/6이고 source 둘은 detached+clean이다.
+- control install hash `ef6e0199…`, candidate `9d6fbba9…`; actual-zoom 및 passive-text-scroll gate도 shared이며 provider 0이다.
+- 다음은 exact `bench19366`와 isolated auth/CLI preflight 뒤 r1 control 한 셀을 no-retry 실행한다.
+
+- 1.9.456은 exact 1.9.409 control `1480d7cc…` vs exact 1.9.453 candidate `f578e8a6…`를 fresh radiotherapy task에 Luna/high 2×3으로 사전등록했다.
+- actual 200%=640px + document zoom 2, passive protected-text scroll 0, task-wide one static closure, helper terminal marker, 900s/concurrency 1/120s pacing/no retry를 고정했다.
+- attempt 26, prior TTT 43,259,233+ / unavailable 6, task exposure 0/0, provider 0이다.
+- 다음은 fresh exact vendors/cells preparation과 equality 검증이다.
+
+- 1.9.455는 fresh `radiotherapy-plan-export-review-v0.1`을 provider 전에 lock했다.
+- 5 treatment plan/7 DICOM bundle/3 QA window와 plan manifest·QA strip·export decision 세 carrier를 보존한다.
+- untouched baseline은 75/85 unresolved: 390/320/actual 200% overflow·compound atomic fragmentation, narrow/actual state 2-line, muted contrast 4.12만 red이며 passive text scroll container는 0이다.
+- provider 0이다. 다음은 exact 1.9.409 control vs exact 1.9.453 candidate의 runtime-bound Luna/high Reliability@3 preregistration이다.
+
+- 1.9.454는 1.9.453 repair를 exact commit `f578e8a6…`, skill tree `86227e35…`와 skill/helper/test hash로 pin했다.
+- 새 competitor id는 `omd-accessible-atomic-fit-static-latch-candidate`이며 mutable working tree는 provider sandbox에 사용할 수 없다.
+- provider 0, promotion false다. 다음은 다른 facts/carriers/state/visual contract와 narrow/actual-zoom accessibility failure를 가진 fresh unseen task를 lock한다.
+
+- 1.9.453은 protected target/identifier/state passive text의 `overflow:auto|scroll`을 금지하고, fit 순서를 width recovery → token inset → reading width → full-row → stack/relocate로 고정했다.
+- comparison scroll은 별도 relationship carrier + accessible name + keyboard reachability + visible focus가 있을 때만 허용하며 resolved compound row는 `passive_text_scroll_container: false`를 증명한다.
+- acceptance sequence가 source inspection 완료 → 단일 product edit transaction → consolidated static closure → terminal browser를 잠근다. 앞선 partial check는 task-wide budget을 소비하며 이후 revision으로 proof를 복구할 수 없다.
+- focused 59/59 + candidate pin + TypeScript/diff green; broad 93 green/known external vendor Git-root 2 red, provider 0이다.
+- 다음은 exact source pin 뒤 genuinely unseen task를 lock하고 동일 runtime-bound transfer를 사전등록한다.
+
+- 1.9.452 r1 candidate는 valid 79/85 unresolved: 596.243s, 1,559,380 tokens다. control 대비 1.5924×/2.1510×다.
+- actual 200%, parent one-line, browser recovery 0, post-browser 0은 닫았지만 compound target에 `overflow-x:auto`를 써 320/200% scrollable-region와 keyboard focus가 red다.
+- final revision static은 1회지만 이전 revision exploratory static 2회 때문에 task-level duplicate 1로 proof fail이다.
+- candidate 3/3 최대치가 2/3이라 남은 4셀을 skip/freeze했다. TTT 43,259,233+ / unavailable 6이다.
+- 다음은 provider-free accessible atomic-fit priority + explicit final-revision static latch repair다.
+
+- 1.9.451 r1 control은 valid system proof failure: objective 85/85 UI-resolved, 374.437s, 724,940 tokens다.
+- desktop/390/320/actual 200%, accessibility, evidence는 전부 green이다.
+- browser 1이지만 recovery 1/static closure 4(duplicate 3)/post-ready 1이라 proof gate는 fail이다.
+- TTT 41,699,853+ / unavailable 6. 다음은 fixed pacing 뒤 r1 candidate 한 셀을 same Luna/high/no-retry로 실행한다.
+
+- 1.9.450은 `/private/tmp/u19449-vendors` exact detached control/candidate와 `/private/tmp/u19449` six untouched cells를 준비했다.
+- task/prompt/product/runtime/model/effort/timeout equality는 6/6이고 source 둘은 detached+clean이다.
+- control install hash `ef6e0199…`, candidate `921a9e56…`; actual-zoom condition도 shared이며 provider 0이다.
+- 다음은 exact `bench19366`와 isolated auth/CLI preflight 뒤 r1 control 한 셀을 no-retry 실행한다.
+
+- 1.9.449는 exact 1.9.409 control `1480d7cc…` vs exact 1.9.447 candidate `5d5ee041…`를 fresh grid task에 Luna/high 2×3으로 사전등록했다.
+- actual 200%=`640px + document zoom 2`, one static closure, helper terminal marker, 900s/concurrency 1/120s pacing/no retry를 고정했다.
+- attempt 25, prior TTT 40,974,913+ / unavailable 6, task exposure 0/0, provider 0이다.
+- 다음은 fresh exact vendors/cells preparation과 equality 검증이다.
+
+- 1.9.448은 fresh `grid-battery-dispatch-release-v0.1`을 provider 전에 lock했다.
+- 6 battery rack/8 inverter·grid certificate/4 dispatch window와 register·window strip·energization decision 세 carrier를 보존한다.
+- untouched baseline은 75/85 unresolved이며 390/320/actual 200% overflow·atomic line fragmentation, actual 200% state 2-line, 4.35 contrast만 의도적으로 red다.
+- provider 0이다. 다음은 exact 1.9.409 control vs exact 1.9.447 candidate의 fresh runtime-bound Luna/high Reliability@3 preregistration이다.
+
+- 1.9.447은 1.9.446 repair를 exact commit `5d5ee041…`, skill tree `fe3581b3…`와 helper/test hash로 pin했다.
+- provider 0, promotion false다. 이후 candidate sandbox는 이 detached commit만 설치한다.
+- 다음은 다른 facts/carriers/state/visual contract와 actual 200% failure를 가진 fresh unseen task를 lock한다.
+
+- 1.9.446은 reflow artifact에 390/1×, 320/1×, 640/actual 2× 조건과 observed document zoom을 결정론적으로 고정했다.
+- final edit 뒤 첫 acceptance shell command가 static closure 전체이며 두 번째는 범위와 무관하게 duplicate라고 명시했다.
+- finalize helper가 `OMD_DELIVERY_READY|UNRESOLVED`를 직접 출력해 terminal marker 누락과 post-browser read 필요를 제거했다.
+- focused 62/62 + candidate pin + TypeScript/diff green; broad 91 green/known external vendor Git-root 2 red, provider 0이다.
+- 다음은 exact source pin 뒤 다른 facts/carriers/state의 fresh unseen 200% task를 lock한다.
+
+- 1.9.445 r1 candidate는 valid 83/85, 400.660s, 425,052 tokens다. control 대비 0.7669×/0.4092×다.
+- 접근성, browser 1/recovery 0/post-ready 0은 닫았지만 200%에서 page overflow와 `Pharmacist review open` 2-line이 red다.
+- browser proof가 640px만 쓰고 실제 zoom 2를 적용하지 않았으며 pre-browser static closure도 2회라 proof fail이다.
+- candidate 3/3 최대치가 2/3이라 남은 4셀을 skip/freeze했다. TTT 40,974,913+ / unavailable 6이다.
+- 다음은 provider-free actual zoom oracle + exactly-one pre-browser static closure repair다.
+
+- 1.9.444 r1 control은 valid system failure 81/85, 522.453s, 1,038,747 tokens다.
+- compound line은 닫았지만 320px clipped control과 keyboard traversal/focus-visible이 red라 UI unresolved다.
+- browser 1/recovery 0이나 duplicate static 2/post-ready 1로 proof fail이다. TTT 40,549,861+ / unavailable 6이다.
+- 다음은 fixed 120s pacing 뒤 r1 candidate 한 셀을 같은 Luna/high identity로 no-retry 실행한다.
+
+- 1.9.443은 `/private/tmp/u19442-vendors`의 exact detached control/candidate와 `/private/tmp/u19442` 6개 untouched cell을 준비했다.
+- task/prompt/product/runtime/model/effort/timeout equality는 6/6이고 source 둘은 detached+clean이다.
+- control install hash `ef6e0199…`, candidate `bfd00be5…`; provider 0이다.
+- 다음은 exact `bench19366`와 isolated auth/CLI preflight 뒤 r1 control 한 셀을 no-retry 실행한다.
+
+- 1.9.442는 exact 1.9.409 control `1480d7cc…` vs 1.9.439 candidate `3c00a4c1…`를 fresh pharmacy task에 Luna/high 2×3으로 사전등록했다.
+- explicit parent-one-line, one browser command terminal marker, post-browser read 0과 기존 runtime/proof/efficiency gate를 고정했다.
+- attempt 24, prior TTT 39,511,114+ / unavailable 6, task exposure 0/0, provider 0이다.
+- 다음은 fresh exact vendors/cells preparation과 equality 검증이다.
+
+- 1.9.441은 fresh `pharmacy-controlled-dispense-review-v0.1`을 provider 전에 lock했다.
+- 6 prescription/8 medicine lot/4 verification window와 register·window strip·dispense decision 세 carrier를 보존한다.
+- untouched baseline 75/85 unresolved이며 narrow overflow·character-range atomic line·4.11 contrast만 의도적으로 red다.
+- provider 0이다. 다음은 exact historical control vs 1.9.439 candidate의 fresh runtime-bound Reliability@3 preregistration이다.
+
+- 1.9.440은 1.9.439 repair를 exact commit `3c00a4c1…`, skill tree `37a1c6e5…`와 helper/test hash로 pin했다.
+- provider 0, promotion false다. 다음은 다른 facts/carriers/state/visual contract의 fresh compound-parent task를 lock한다.
+
+- 1.9.439는 앞단의 contradictory separator-wrap 허용을 제거하고 compound parent 전체 one-line을 명시적 `line_contract`로 고정했다.
+- helper는 compound=`parent-one-line`, simple=`single-token`을 lock/hash하며 누락·불일치를 거부한다.
+- browser-harness 한 command 내부에서 measure→artifact write→finalize→terminal marker까지 끝내고 이후 artifact read/helper 실행을 금지했다.
+- focused 72/72 + TypeScript/diff green, provider 0. 다음은 exact pin 뒤 fresh unseen task lock이다.
+
+- 1.9.438 r1 candidate도 valid 81/85 unresolved: 474.434s, 1,151,694 tokens다.
+- browser recovery는 0으로 개선했지만 compound parent를 child stack으로 바꿔 320/200% line red, post-ready static 2로 proof fail이다.
+- control 대비 wall 1.2911×, tokens 1.1059×이고 candidate 3/3 최대치가 2/3이라 남은 4셀을 skip/freeze했다.
+- TTT 39,511,114+ / unavailable 6. 다음은 provider-free parent-one-line 우선순위와 browser-terminal closure 수리다.
+
+- 1.9.437 r1 control은 valid system failure: 81/85, 367.461s, 1,041,430 tokens다.
+- 320px/200% compound character-range line만 red이며, browser 1은 했지만 recovery 1/duplicate static 2/post-ready 1로 proof fail이다.
+- execution-home Luna profile `0efd579e…`와 CLI 0.144.1은 일치했다. TTT 38,359,420+ / unavailable 6이다.
+- 다음은 fixed 120s pacing과 exact preflight 뒤 r1 candidate 한 셀을 no-retry 실행한다.
+
+- 1.9.436은 `/private/tmp/u19435-vendors`의 exact detached control/candidate와 `/private/tmp/u19435` 6개 clean cell을 준비했다.
+- task/prompt/product/runtime/model/effort/timeout equality는 6/6이고 source 둘은 detached+clean이다.
+- control install hash `ef6e0199…`, candidate `b9e96ed3…`; provider 0이다.
+- 다음은 exact `bench19366`와 isolated auth/CLI preflight 뒤 r1 control 한 셀을 no-retry 실행한다.
+
+- 1.9.435는 exact 1.9.409 control `1480d7cc…` vs 1.9.432 candidate `f346610a…`를 fresh maritime task에 Luna/high 2×3으로 사전등록했다.
+- Codex CLI 0.144.1, 900s, concurrency 1, 120s pacing, no retry, runtime-bound model identity와 one-browser/single-closure proof gate를 고정했다.
+- attempt 23, prior TTT 37,317,990+ / unavailable 6, task exposure 0/0, provider 0이다.
+- 다음은 exact detached vendors와 `/private/tmp/u19435` 6개 clean cell을 prepare하고 equality를 증명한다.
+
+- 1.9.434는 fresh `maritime-container-seal-release-v0.1`을 provider 전에 lock했다.
+- 6 container/8 seal/4 inspection window와 container register·inspection strip·seal-release decision 세 carrier를 보존한다.
+- untouched baseline은 75/85 unresolved이며 좁은 화면 overflow·character-range atomic line·4.11 contrast만 의도적으로 red다.
+- provider 0이다. 다음은 exact historical control vs 1.9.432 candidate의 runtime-bound Reliability@3를 fresh root에 사전등록한다.
+
+- 1.9.433은 1.9.432 candidate를 exact commit `f346610a…`, skill tree `1ec8703d…`로 pin했다.
+- provider 0, promotion false다. 다음은 이 source가 보지 못한 fresh compound one-line + browser-proof transfer task를 lock하는 것이다.
+
+- 1.9.432는 one-line compound wrapper에서 parts+separator 전체를 atomic으로 유지하고 carrier 폭을 먼저 회수하도록 고쳤다.
+- 첫 browser call을 `browser-harness <<'PY' … PY`로 고정하고 help/skill/command discovery와 post-edit static reread를 proof budget 위반으로 명시했다.
+- focused 10 pass/90 skip, lint/diff green, broad red 2는 known external vendor Git-root뿐이다. provider 0, 다음은 exact pin + fresh unseen transfer task다.
+
+- 1.9.431 r1 candidate도 valid 79/85 unresolved: 650.802s, 2,707,408 tokens였다. control 대비 2.17×/6.73×다.
+- browser 3을 썼지만 recovery 3/duplicate static 12/post-ready 6으로 proof fail했고 compound atomic line도 그대로 red다.
+- candidate 3/3은 최대 2/3으로 불가능해 남은 4셀을 skip/freeze했다. TTT 37,317,990+ / unavailable 6, 다음은 provider-free browser recipe + single-closure budget repair다.
+
+- 1.9.430 r1 control은 valid system failure: 79/85, 299.973s, 402,095 tokens, UI unresolved다.
+- red는 390/320/200% compound atomic line이며 browser 0 + duplicate static 1로 proof gate도 fail했다.
+- execution-home identity는 CLI 0.144.1/profile `0efd579e…`로 성공했다. TTT 34,610,582+ / unavailable 6, 다음은 paced r1 candidate다.
+
+- 1.9.429는 `/private/tmp/u19428-vendors` exact detached sources와 `/private/tmp/u19428` 6개 controller cell을 fresh prepare했다.
+- task/prompt/product/runtime/model/effort/timeout/browser/host-absence equality는 6/6이고 sole arm delta는 exact skill source다.
+- Codex CLI 0.144.1을 확인했고 provider 0이다. 다음은 exact `bench19366` doctor/auth preflight 뒤 r1 control 한 셀 no-retry 실행이다.
+
+- 1.9.427은 execution-home identity patch를 exact commit `8b6c3d81…`과 5개 artifact hash로 pin했다.
+- 1.9.428은 exact Codex CLI 0.144.1 + post-run isolated-home profile 관측으로 동일 rail-signal 2×3을 fresh preregister했다.
+- attempt 22, TTT 34,208,487+ / unavailable 6, exposure 2/0, provider 0이다. 다음은 fresh preparation/equality와 exact browser preflight다.
+
+- 1.9.426은 shared auth cache가 app 0.146/CLI 0.144.1에 의해 교대로 쓰이는 경합을 닫았다.
+- controller preflight는 exact CLI version을 강제하고, 실제 model profile은 isolated execution home에서 post-run 관측한다. shared cache는 provenance-only다.
+- u19425는 equality 6/6 뒤 provider 0으로 freeze했다. focused 29/29 + lint/diff green이며 다음은 exact pin과 fresh preregistration이다.
+
+- 1.9.424는 semantic profile patch를 exact commit `e473a2d9…`와 5개 artifact hash로 pin했다.
+- 1.9.425는 동일 rail-signal skill arms/task/gates를 selected Luna profile `0efd579e…` 기반 fresh 2×3으로 재사전등록했다.
+- attempt 21, prior TTT 34,208,487 + unavailable 6, exposure control 2/candidate 0, provider 0이다. 다음은 fresh vendors/cells preparation과 equality 검증이다.
+
+- 1.9.423은 volatile whole-cache hash와 selected-model semantic profile hash를 분리했다.
+- 1.9.422의 6개 prepared cell은 equality 6/6이었지만 첫 provider 호출 전 cache container hash가 바뀌어 provider 0으로 freeze했다.
+- focused 27/27, TypeScript/diff green이다. 다음은 이 patch를 exact pin한 뒤 model profile hash 기반 fresh controller matrix를 재사전등록하는 것이다.
+
+- 1.9.422는 exact control `3a414a0a…` vs candidate `1480d7cc…`를 Luna/high controller-observation 2×3으로 fresh preregister했다.
+- host enforcement claim은 false이며 exact browser socket/shared runtime/isolated home과 post-run proof gate는 유지한다.
+- attempt 20, prior TTT 34,208,487 + unavailable 6, control exposure 2/candidate 0, provider 0이다.
+- `/private/tmp/u19422-vendors`와 `/private/tmp/u19422` 6셀은 준비됐지만 whole-cache pin drift로 실행 전 freeze됐다.
+
+- 1.9.421은 real browser proof를 installed host-policy에서 분리했다.
+- controller-observation matrix도 exact named socket/shared runtime/isolated Codex home을 요구하면서 host enforcement claim은 하지 않는다.
+- focused 46/46, TypeScript/diff green, provider 0이다. 다음은 exact skill arms를 유지한 fresh controller-observation 2×3 preregistration이다.
+
+- 1.9.420은 Codex model cache의 exact tool mode를 provider 전에 읽어 installed proof-policy 적격성을 fail-closed 판정한다.
+- `function`만 direct-hook eligible이며 `code_mode_only`/unknown/missing은 provider 전 중단한다. 현재 Sol/Terra/Luna는 모두 `code_mode_only`다.
+- run attribution에 tool mode와 cache hash/fetched_at/client_version을 남긴다. frozen 1.9.417 plan은 이제 추가 token 없이 preflight stop한다.
+- focused 70/70, bench 338 green + skip 1이며 red 2는 기존 external vendor Git-root precondition뿐이다. 다음은 controller-observation 기반 fresh skill matrix다.
+
+- 1.9.419에서 fresh r1 control은 701.833s/2,582,886 tokens, 79/85로 끝났지만 infrastructure-invalid다.
+- Codex 0.144.1의 Luna profile은 `code_mode_only`였고 trace는 shell closure 3/duplicate 1을 관측했으나 installed state는 edit denial 12/shell decision 0이었다.
+- direct-shell real-host smoke를 code-mode-only nested execution에 확대 주장할 수 없으므로 `/private/tmp/u19417`과 남은 5셀을 no-retry freeze했다.
+- Tokens-to-Target minimum은 34,208,487 + unavailable 6이다. 다음은 provider-free runtime tool-mode admission과 honest controller-observation fallback이다.
+
+- 1.9.418은 `/private/tmp/u19417-vendors` exact detached sources와 `/private/tmp/u19417` 6개 clean/detached cell을 준비했다.
+- task/product/runtime/model/effort/timeout/host equality는 6/6이고 repaired host hook `bef877c9…`도 6/6 exact다.
+- sole arm delta는 skill `2d577464…` control vs `ef6e0199…` candidate이며 provider 0이다.
+- 다음은 exact `bench19366` preflight 후 `luna-signal-r1-control` 한 셀만 no-retry로 실행하는 것이다.
+
+- 1.9.417은 exact skill arms를 유지하고 repaired host `060f1d31…`로 rail-signal Luna/high 2×3을 fresh root에 재사전등록했다.
+- attempt 19, prior Tokens-to-Target 31,625,601 + unavailable 6이며 control exposure 1/candidate exposure 0을 명시했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 Codex-shell interception/character-range gates를 고정했다.
+- 다음은 `/private/tmp/u19417-vendors`와 `/private/tmp/u19417`을 fresh prepare하고 equality를 증명하는 것이다.
+
+- 1.9.416은 repaired host source `060f1d31…`와 8개 artifact hash를 exact pin했다.
+- provider 0, quality promotion false이며 frozen `/private/tmp/u19412`는 재사용하지 않는다.
+- 다음은 skill arms를 그대로 둔 채 이 exact host source로 rail-signal fresh matrix/root를 재사전등록하는 것이다.
+
+- 1.9.415는 live host hook에 Codex `exec_command`/`cmd` 분류를 추가해 Claude `Bash`/`command`와 같은 proof budget을 적용한다.
+- 동일 product revision의 두 번째 Codex static closure는 실행 전에 deny되며 host state와 post-run trace의 분류가 일치한다.
+- focused 71/71, installed-config fixture, lint/diff가 통과했다. broad는 185 pass와 기존 external vendor Git-root 2 fail뿐이다.
+- provider 0이다. 다음은 repair commit exact pin 후 frozen u19412를 재사용하지 않는 fresh preregistration/root다.
+
+- 1.9.414에서 r1 control은 870.043s/3,508,695 tokens, 79/85 unresolved로 종료됐다.
+- overflow와 contrast는 닫았지만 390/320/200% character-range atomic line은 red다.
+- proof trace는 duplicate static closure 1회를 잡았으나 host hook이 이를 차단하지 못해 `duplicate-static-closure-unblocked-limit`; validity는 invalid-infrastructure다.
+- `/private/tmp/u19412`와 남은 5셀은 retry 없이 freeze했다. Tokens-to-Target minimum은 31,625,601 + unavailable 6이다.
+- 다음은 provider-free duplicate-static interception repair, exact pin, fresh preregistration/root다.
+
+- 1.9.413은 `/private/tmp/u19412-vendors`의 exact detached control/candidate와 `/private/tmp/u19412` 6개 clean/detached cell을 준비했다.
+- task·product·runtime·model·effort·timeout·host policy equality는 6/6이고 유일한 arm delta는 설치된 skill source다.
+- control skill은 `2d577464…`, candidate skill은 `ef6e0199…`; provider 호출은 아직 0이다.
+- 다음은 exact named browser `bench19366` preflight 뒤 `luna-signal-r1-control` 한 셀만 실행하는 것이다.
+
+- 1.9.412는 exact control `3a414a0a…` vs character-range candidate `1480d7cc…`를 rail-signal holdout에 Luna/high 2×3으로 사전등록했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 character-range proof·strict quality/efficiency gates를 고정했다.
+- Tokens-to-Target attempt 18, prior minimum 28,116,906 tokens + unavailable 6, provider 0이다.
+- 다음은 `/private/tmp/u19412-vendors` exact detached vendors와 `/private/tmp/u19412` 6 clean cells를 prepare하고 equality를 증명하는 것이다.
+
+- 1.9.411은 fresh `rail-signal-possession-handback-v0.1`을 provider 전에 lock했다.
+- 6 signal assets/8 test certificates/4 possession windows와 signal register·possession strip·handback decision 세 carrier를 보존한다.
+- untouched baseline 75/85, green은 contract/state/design/evidence/desktop/keyboard, red는 390/320/200% overflow·character-range atomic line과 4.11 contrast다.
+- provider 0이다. 다음은 exact historical control vs 1.9.409 candidate의 fresh Reliability@3 preregistration이다.
+
+- 1.9.410은 1.9.409의 exact source `1480d7cc…`와 9개 artifact hash를 pin했다.
+- provider 호출 0, quality promotion false이며 이후 실험 source는 이 commit에서만 설치한다.
+- 다음은 protected compound atomic target을 가진 새 unseen task를 provider 전에 lock하는 것이다.
+
+- 1.9.409는 compound protected value에 ordered `atomic_parts`를 강제하고, wrapper/accessible text를 보존한 token-child reflow 규칙을 추가했다.
+- resolved finalize는 host-observed measured browser attempt와 `character-range-line-tops` oracle을 필수로 하며 element rectangle 오판을 허용하지 않는다.
+- focused 56/56와 lint/diff가 통과했다. broad는 367 pass/1 skip이며 외부 vendor Git-root 2건과 unrelated fake-timeout attribution 기대값 1건만 실패했다.
+- provider 호출은 0이다. 다음은 exact pin 후 새 unseen compound task/root를 lock하는 것이다.
+
+- 1.9.408에서 r1 candidate는 421.239s/834,250 tokens, 79/85 unresolved로 종료됐다. control 대비 53% 빠르고 browser 1/delivery-ready/host gate pass를 달성했지만 객관 점수 우위는 없었다.
+- 남은 red는 `TRAY-VASC-2417 + IND-CHEM-77241` compound target이 390/320/200%에서 두 character-range line으로 감기는 단일 원인이다.
+- candidate verifier가 element rect만 확인해 이를 one-line으로 오판했다. Reliability@3 0/1의 최대 도달치는 2/3이므로 남은 4 provider call을 skip하고 `/private/tmp/u19405`를 freeze했다.
+- Tokens-to-Target minimum은 28,116,906, usage unavailable은 6이다. 다음은 compound atomic child와 character-range oracle을 workflow에 결합하는 provider-free repair다.
+
+- 1.9.407에서 `luna-sterile-r1-control`은 900.016s timeout의 valid-system-failure, 79/85 unresolved로 종료됐다.
+- task/state/design/evidence/desktop/a11y/keyboard는 green이나 390/320/200% atomic line budget이 red다.
+- 증명 스키마 보정에 시간을 소진해 browser attempt 0, delivery incomplete, host gate false였고 provider usage는 미제공이라 unavailable 누계는 6이다.
+- 다음은 120초 pacing 뒤 fresh exact preflight를 거쳐 r1 candidate 한 셀을 no-retry로 실행하는 것이다.
+
+- 1.9.406은 `/private/tmp/u19405-vendors`의 exact detached control/candidate와 `/private/tmp/u19405` 6개 clean/detached cell을 준비했다.
+- task·product·runtime·model·effort·timeout·host policy equality는 6/6이고 유일한 arm delta는 설치된 skill source다.
+- control skill은 `2d577464…`, candidate skill은 `729de4d2…`; provider 호출은 아직 0이다.
+- 다음은 exact named browser `bench19366` preflight 뒤 `luna-sterile-r1-control` 한 셀만 실행하는 것이다.
+
+- 1.9.405는 exact control `3a414a0a…` vs browser-attempt completion candidate `f55815d…`를 sterile-tray holdout에 Luna/high 2×3으로 preregister했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정했다.
+- Tokens-to-Target attempt 17, prior minimum 27,282,656 tokens + unavailable 5, provider 0이다.
+- 다음은 `/private/tmp/u19405-vendors` exact detached vendors와 `/private/tmp/u19405` 6 clean cells를 prepare하고 equality를 증명하는 것이다.
+
+- 1.9.404는 fresh `sterile-tray-transfer-review-v0.1`을 provider 전에 lock했다.
+- 6 trays/8 chemical indicators/4 cycle windows와 tray register·sterilizer cycle strip·transfer decision 세 carrier를 보존한다.
+- untouched baseline 75/85, green은 contract/state/design/evidence/desktop/keyboard, red는 390/320/200% overflow·atomic line과 4.401 contrast다.
+- provider 0이다. 다음은 exact historical control vs 1.9.403 candidate의 fresh Reliability@3 preregistration이다.
+
+- 1.9.403은 1.9.402 repair를 commit `f55815d…`과 9개 exact artifact hash로 pin했다.
+- provider 0, quality promotion 없음이다. 다음은 이 pin만 candidate로 쓰는 fresh unseen replacement task를 provider 전에 lock하는 것이다.
+
+- 1.9.402는 osascript Chrome same-route 명령을 browser proof로 분류하고, installed host state가 observed attempt 1을 증명해야 finalize-unresolved를 허용한다.
+- skill 앞단에 known contrast·atomic row를 실제 교정하고 미교정 must_fix가 있으면 second product edit을 강제하는 completion loop를 올렸다.
+- focused 67/67 + candidate pin 1/1, lint/diff green; broad는 89 pass + 기존 external-vendor Git-root 2 fail이다. provider 0, promotion 없음이다.
+- 다음은 repair commit exact pin 후 fresh unseen replacement task를 provider 전에 lock하는 것이다.
+
+- 1.9.401 r1 candidate는 valid-system-failure 77/85 unresolved, 514,723ms, 1,147,891 tokens다.
+- 320/200% atomic line과 4.273 contrast를 남겼고, 실제 실행되지 않은 browser command를 artifact에 attestation했지만 host는 observed attempt 0으로 delivery를 차단했다.
+- repaired helper는 closure unresolved/quality false를 유지했다. candidate Reliability@3 0/1, 최대 2/3이라 u19398을 frozen하고 남은 4셀 provider 0으로 early-stop한다.
+- Tokens-to-Target minimum은 27,282,656 + usage unavailable 5다. 다음은 completion guidance와 host-observed browser attestation 결합을 provider-free로 수리하는 것이다.
+
+- 1.9.400 r1 control은 valid 81/85 unresolved, 655,972ms, 1,504,825 tokens다.
+- 대비와 page overflow는 닫았지만 320/200% short atomic line budget이 남았다. proof/host gate는 pass하고 runtime closure는 정직하게 unresolved/quality_pass false다.
+- retry 0, Tokens-to-Target minimum은 26,134,765 + usage unavailable 5다.
+- 다음은 fixed pacing + exact browser/auth preflight 뒤 `luna-field-r1-candidate` 한 셀이다.
+
+- 1.9.399는 `/private/tmp/u19398-vendors` exact detached sources와 `/private/tmp/u19398` 6 committed/detached/clean cells를 준비했다.
+- task/core prompt/product/runtime/model/effort/timeout/host/proof/browser pin equality가 6/6이다.
+- sole arm delta는 installed skill tree `2d577464…` control vs `9e68583f…` runtime-conjunctive candidate이며 provider 0이다.
+- 다음 허용 cell은 named `bench19366` + isolated-auth dual preflight 뒤 `luna-field-r1-control` 하나, canonical `--max-new-cells 1`, no retry다.
+
+- 1.9.398은 exact control `3a414a0a…` vs runtime-conjunctive candidate `effd1d93…`를 fresh field-sample holdout에 Luna/high 2×3으로 preregister했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정했다.
+- Tokens-to-Target attempt 16, prior minimum 24,629,940 tokens + unavailable 5, provider 0이다.
+- 다음은 `/private/tmp/u19398-vendors` exact detached vendors와 `/private/tmp/u19398` 6 clean cells를 prepare하고 equality를 증명하는 것이다.
+
+- 1.9.397은 fresh `field-sample-custody-review-v0.1`을 provider 전에 lock했다.
+- 6 samples/8 bag seals/4 intake windows와 field register·laboratory intake strip·custody decision 세 carrier를 보존한다.
+- untouched baseline 75/85, green은 contract/state/design/evidence/desktop/keyboard, red는 390/320/200% overflow·atomic line과 4.273 contrast다.
+- provider 0이다. 다음은 exact historical control vs 1.9.396 runtime-conjunctive candidate의 fresh Reliability@3 preregistration이다.
+
+- 1.9.396은 runtime conjunctive reflow repair를 commit `effd1d93…`과 9개 exact artifact hash로 pin했다.
+- provider 0, quality promotion 없음이다. 다음은 이 pin만 candidate로 쓰는 fresh unseen replacement task를 provider 전에 lock하는 것이다.
+
+- 1.9.395는 reflow helper와 host validator를 conjunctive quality closure로 수리했다.
+- resolved finalize는 unresolved carrier/row 0만 허용하고, finalize-unresolved는 실제 browser infrastructure attempt 1회를 요구하며 `closure: unresolved`, `quality_pass: false`로 남는다.
+- focused 74/74 + candidate pin 1/1, lint/diff green; broad contract는 144 pass + 기존 external-vendor Git-root 2 fail이다. provider 0이다.
+- 다음은 repair commit exact pin 후 fresh unseen replacement task를 provider 전에 lock하는 것이다.
+
+- 1.9.394 r1 candidate는 valid 81/85 unresolved, 336,121ms, 760,540 tokens이다.
+- overflow·identifier fragmentation·contrast는 닫았지만 320/200% decision evidence 한 줄이 wrap되어 responsive fail; host delivery도 blocked다.
+- candidate Reliability@3는 0/1이며 남은 두 trial을 모두 통과해도 2/3이라 수학적으로 불가능하다. u19391/남은 4셀을 frozen, provider 0으로 early-stop한다.
+- 다음은 provider-free로 registered measured row가 하나라도 unresolved면 finalize/delivery를 막는 runtime conjunctive closure를 수리하고 exact pin/fresh unseen replacement를 준비하는 것이다.
+
+- 1.9.393 first rail control은 900,014ms valid timeout: 75/85, `ui_resolved=false`, usage unavailable이다.
+- 한 번 product edit은 했지만 browser attempt 0·delivery incomplete이며, admission은 `valid-system-failure / preregistered-valid-timeout`이다.
+- retry 0으로 결과를 보존한다. 다음은 fixed pacing + fresh preflight 뒤 `luna-rail-r1-candidate` 한 셀이다.
+
+- 1.9.392는 `/private/tmp/u19391-vendors` exact detached sources와 `/private/tmp/u19391` 6 committed/detached/clean cells를 준비했다.
+- task/prompt/product/runtime/model/effort/timeout/host/proof와 모든 browser pin equality가 6/6이다.
+- sole arm delta는 skill tree `2d577464…` control vs `b0d170da…` repaired candidate이며 provider 0이다.
+- 다음 허용 cell은 named `bench19366` + isolated-auth dual preflight 뒤 `luna-rail-r1-control` 하나, canonical `--max-new-cells 1`, no retry다.
+
+- 1.9.391은 exact control `3a414a0a…` vs repaired candidate `e6513930…`를 fresh rail holdout에 Luna/high 2×3으로 preregister했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정했다.
+- 모든 runtime/browser pin을 유지한다. Tokens-to-Target attempt 15, prior minimum 23,869,400 tokens + unavailable 4, provider 0이다.
+- 다음은 `/private/tmp/u19391-vendors` exact detached vendors와 `/private/tmp/u19391` 6 clean cells를 prepare하고 equality를 증명하는 것이다.
+
+- 1.9.390은 fresh `rail-consist-handoff-review-v0.1`을 provider 전에 lock했다.
+- 6 wagon/8 seal/4 departure window와 consist register·departure strip·handoff decision 세 carrier를 보존한다.
+- untouched baseline 75/85, green은 contract/state/design/evidence/desktop/keyboard, red는 390/320/200% overflow·atomic line과 4.295 contrast다.
+- provider 0이다. 다음은 exact historical control vs known-failure-closure candidate의 fresh Reliability@3 preregistration이다.
+
+- 1.9.389은 committed `e6513930…`의 known-failure conjunctive closure와 helper/test/acceptance를 exact hash로 pin했다.
+- provider 0; 다음은 이 pin만 candidate로 쓰는 fresh unseen Reliability@3 task lock/preregistration이다.
+
+- 1.9.388은 supplied baseline/pre-edit measured failure를 conjunctive `known_failure_ledger`로 잠그고 measured-but-unchanged를 delivery blocker로 만들었다.
+- contract 9/9, experimental delta 1/1, lint/diff green; broad bench는 96 pass + 기존 external-vendor Git-root 2 fail이다. provider 0; 다음은 exact pin/fresh unseen replacement이다.
+
+- 1.9.387 r2 control도 valid 81/85 unresolved이지만 responsive fail, candidate는 a11y fail로 서로 다른 경로였다.
+- candidate Reliability@3은 1/2로 남은 1 trial을 다 통과해도 2/3이므로 수학적으로 불가능하다. u19382를 frozen, r3 provider 0으로 early-stop한다.
+- 다음은 provider-free로 compact의 known-baseline-gate required closure를 수리하고 exact pin/fresh unseen replacement를 준비하는 것이다.
+
+- 1.9.386 r2 compact는 valid 81/85, unresolved, 332,411ms, 766,628 tokens이다.
+- responsive는 pass했지만 이미 측정한 muted/canvas 4.107 대비를 고치지 않아 a11y fail이다. retry 0; 다음은 r2 control이다.
+
+- 1.9.385 r1 compact는 valid 85/85, resolved, 448,469ms, 876,213 tokens로 control과 품질 tie이다.
+- candidate는 20.5% faster, 43.9% fewer tokens; Reliability@3 1/3, regression 0이다. 다음은 r2 compact 한 셀이다.
+
+- 1.9.384 first control은 valid 85/85, `ui_resolved=true`, 564,375ms, 1,561,627 tokens이다.
+- host/proof gate와 independent 1440·390·320·200%/behavior/a11y 평가가 모두 pass했다. retry 0; 다음은 fixed pacing 후 r1 compact 한 셀이다.
+
+- 1.9.383은 fresh u19382 vendors/6 clean detached cells와 equality 6/6을 준비했다.
+- provider 0; 다음은 exact named shared socket으로 r1 control 한 셀이다.
+
+- 1.9.382는 fresh u19382 attempt 14에 shared named-socket 1.9.381을 포함한 모든 runtime pins를 고정했다.
+- 이전 cold-chain roots frozen, provider 0. 다음은 fresh preparation이다.
+
+- 1.9.381은 committed `ed3ee6bd…`의 shared named socket contract를 exact pin했다.
+- 다섯 이전 roots frozen, provider 0. 다음은 fresh all-pin matrix다.
+
+- 1.9.380은 `BH_RUNTIME_DIR_SHARED=1`과 exact `bu-$BU_NAME.sock`을 결합했다.
+- provider-free outer sandbox fixture에서 daemon/named connection/example.com 접근이 성공했다.
+- focused 73/73, lint/diff green, u19378 provider 0/frozen이다. 다음은 exact pin이다.
+
+- 1.9.379는 fresh u19378 exact vendors/6 clean detached cells와 equality 6/6을 준비했다.
+- provider 0; 다음은 final pinned runtime으로 r1 control 한 셀이다.
+
+- 1.9.378은 fresh u19378 attempt 13에 모든 runtime pins와 5-stage bootstrap order를 고정했다.
+- 네 이전 roots frozen, provider 0. 다음은 fresh preparation이다.
+
+- 1.9.377은 committed `c4760219…`의 empty-home/browser/auth/login/provider 순서를 exact pin했다.
+- 네 이전 roots frozen, provider 0. 다음은 fresh all-pin replacement다.
+
+- 1.9.376은 empty cell-local CODEX_HOME → named browser → auth link → login → provider 순서를 고정했다.
+- u19374 provider 0/frozen, focused 72/72, lint/diff green이다. 다음은 exact pin이다.
+
+- 1.9.375는 fresh u19374 exact vendors와 6 clean/detached cells를 준비하고 shared equality 6/6을 확인했다.
+- provider 0; 다음은 `bench19366` controller-only CDP bootstrap으로 r1 control 한 셀이다.
+
+- 1.9.374는 fresh `/private/tmp/u19374{,-vendors}`에 attempt 12를 preregister했다.
+- validity/resume/timeout + isolated-state 1.9.365 + named-browser 1.9.369 + bootstrap-boundary 1.9.373을 모두 고정했다.
+- 세 이전 root frozen, provider 0이다. 다음은 fresh preparation이다.
+
+- 1.9.373은 committed `1a5a178d…`의 controller-only CDP bootstrap + scored BU_NAME/socket + browser-before-auth 순서를 hash-pin했다.
+- u19362/u19366/u19370은 frozen, provider 0이다. 다음은 all-pin fresh preregistration이다.
+
+- 1.9.372는 CDP endpoint를 controller registration evidence로만 유지하고 scored sandbox에는 registered `BU_NAME`만 전달한다.
+- browser readiness가 통과한 뒤에만 cell-local auth를 materialize하도록 preflight 순서를 바꿨다.
+- focused 72/72, lint/build/diff green, provider 0이다. u19370은 frozen이며 다음은 exact pin이다.
+
+- 1.9.371은 fresh u19370 exact detached vendors와 6 committed/detached/clean cells를 준비했다.
+- shared inputs/execution pins equality 6/6, sole delta는 exact skill tree, provider 0이다.
+- 다음 허용 cell은 named `bench19366` + isolated-auth dual preflight 뒤 r1 control 하나다.
+
+- 1.9.370은 cold-chain task를 fresh `/private/tmp/u19370{,-vendors}`에 attempt 11로 preregister했다.
+- 1.9.365 isolated Codex state + 1.9.369 named CDP browser pins를 함께 고정하고 기존 2×3/no-retry/strict gates를 유지했다.
+- u19362/u19366은 frozen, provider 0이다. 다음은 fresh exact vendors/cells preparation과 equality 증명이다.
+
+- 1.9.369는 committed `3b9fde84…`의 named CDP connection gate와 narrow runtime attestation ignore를 exact hash로 pin했다.
+- u19362/u19366 roots는 frozen이다. 다음은 1.9.365 + 1.9.369 pins를 함께 쓰는 fresh replacement preregistration이며 provider 0이다.
+
+- 1.9.368은 browser-required 실행에 exact `BU_NAME` + CDP endpoint를 요구하고 doctor에서 그 named connection의 active 상태를 검증한다.
+- 개인 Gmail이 열린 default Chrome은 안전상 거부했고, fresh temp profile `bench19366`/9336/about:blank fixture는 성공했다.
+- `.benchmark/codex-home`과 `browser-harness`만 runtime attestation에서 제외하며 product/skill/host/evidence hashes는 유지한다.
+- focused 72/72, bench 325 pass + 기존 vendor Git-root 2 fail/1 skip, lint/build/diff green, provider 0이다. 다음은 exact pin이다.
+
+- `/private/tmp/u19366`은 provider 전 auth runtime이 materialize되어 frozen/no-resume다. 새 pin·prereg·root 없이는 실행하지 않는다.
+
+- 1.9.367은 fresh `/private/tmp/u19366-vendors` exact detached sources와 `/private/tmp/u19366` 6 committed/detached/clean cells를 준비했다.
+- task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/host/proof/admission/resume/timeout/browser pin equality가 6/6이다.
+- sole arm delta는 skill tree `2d577464…` control vs `36a44a1…` compact이며 provider 0이다.
+- 다음 허용 cell은 browser + isolated-auth preflight 뒤 `luna-coldchain-r1-control` 하나, canonical `--max-new-cells 1`, no retry다.
+
+- 1.9.366은 scored model에 노출되지 않은 cold-chain task를 fresh `/private/tmp/u19366{,-vendors}` root로 다시 preregister했다.
+- Luna/high exact control vs compact 2×3, 900s/concurrency 1/120s pacing/no retry/C-N rotation과 strict gates는 유지한다.
+- isolated runtime pin 1.9.365를 추가하고 diagnostic 25,653 input·17,920 cached·10 output은 scored spend와 분리했다. provider 0이다.
+- 다음은 exact detached vendors와 6 clean cells를 fresh roots에 prepare하고 equality를 증명하는 것이다.
+
+- 1.9.365는 committed `9fc5d854…`의 cell-local HOME/CODEX_HOME, auth-only bridge, OpenAI-only egress, exact browser socket과 dual preflight를 hash-pin했다.
+- `/private/tmp/u19362` 및 vendor root는 frozen/no-resume/no-retry다. 다음은 이 pin만 사용하는 fresh replacement preregistration이며 provider 0이다.
+
+- 1.9.364는 각 cell의 HOME/CODEX_HOME을 `.benchmark/codex-home`으로 격리하고 global Codex home에서는 `auth.json`만 exact symlink한다.
+- outer sandbox는 workspace write + OpenAI/ChatGPT domain + exact browser-harness socket만 허용하며, browser readiness와 isolated login을 동일 profile에서 preflight한다.
+- live login과 Luna/high minimal handshake가 성공했다. 두 handshake는 diagnostic-only(14,485/11,168 input, 각 8,960 cached·5 output)이고 scored quality에는 포함하지 않는다.
+- focused 71/71, bench 324 pass + 기존 external vendor Git-root 2 fail/1 skip, lint/build/diff green이다. 다음은 exact pin 뒤 fresh replacement preregistration이다.
+
+- `/private/tmp/u19362` 첫 control은 130ms, event 0, model null, usage null로 provider inference 전 infrastructure-invalid다.
+- retry 0이며 root 전체를 frozen한다. Luna/skill 결과로 집계하지 않고 새 root·새 exact pin 없이는 재개하지 않는다.
+
+- 1.9.363은 `/private/tmp/u19362-vendors` exact detached sources와 `/private/tmp/u19362` 6 committed/detached/clean cells를 준비했다.
+- task/prompt/product/DESIGN/runtime/model/effort/timeout/host/proof와 admission·resume·timeout·browser pins equality가 6/6이다.
+- sole arm delta는 skill tree `2d577464…` control vs `36a44a1…` compact이며 provider 0이다.
+- 다음 허용 cell은 permission-parity browser preflight 뒤 `luna-coldchain-r1-control` 하나, canonical `--max-new-cells 1`, no retry다.
+
+- 1.9.362는 exact control `3a414a0a…` vs compact candidate `c1de0e4e…`를 cold-chain holdout에 Luna/high 2×3으로 preregister했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정했다.
+- admission 1.9.341·resume 1.9.347·timeout 1.9.353·browser/artifact 1.9.360 pins를 공유한다. Tokens-to-Target attempt 9, prior minimum 18,188,850 tokens + unavailable 4, provider 0이다.
+- 다음은 `/private/tmp/u19362-vendors` exact detached vendors와 `/private/tmp/u19362` 6 clean cells를 prepare하고 equality를 증명하는 것이다.
+
+- 1.9.361은 fresh `cold-chain-release-routing-review-v0.1`을 provider 전에 lock했다.
+- 6 lot/8 logger/4 carrier window와 lot register·carrier strip·release handoff 세 carrier를 보존한다.
+- untouched baseline 75/85, green은 contract/state/design/evidence/desktop/keyboard, red는 390/320/200% overflow·atomic line과 4.10 contrast다.
+- provider 0이다. 다음은 exact control/candidate와 admission/resume/timeout/browser pins를 새 Reliability@3 matrix에 preregister하는 것이다.
+
+- 1.9.360은 committed `ebe51283…`의 browser sandbox, Codex/matrix runner, proof trace, runtime tests, acceptance를 exact hash로 pin했다.
+- browser-required outer `:workspace` + exact socket, matching preflight, non-browser `workspace-write`, neutral artifact lifecycle 의미가 고정됐다.
+- provider 0, quality promotion 없음이다. 다음은 과거 holdout과 다른 fresh unseen task lock이다.
+
+- 1.9.359는 browser-proof Codex 셀을 `:workspace` outer sandbox + exact browser-harness Unix socket으로 실행하고 preflight도 동일 권한 경로로 통일했다.
+- provider-free real-tab fixture가 같은 제한 경로에서 `page_info()`를 읽었다. non-browser Codex 셀은 기존 `workspace-write`를 유지한다.
+- `reflow-artifact.mjs lock|finalize|finalize-unresolved`만 neutral bookkeeping으로 분리했다. compound command와 임의의 두 번째 static verification은 계속 차단된다.
+- focused 82/82, bench 325 pass + 기존 external vendor Git-root 2 fail/1 skip, lint/build/diff green, provider 0이다. 다음은 exact pin 후 fresh unseen replacement다.
+
+- 1.9.358 paired compact는 79/85, 509,334ms, 1,255,595 tokens, valid unresolved다. control과 objective tie지만 candidate도 responsive gate와 host delivery를 닫지 못했다.
+- browser attempt 1은 기존 Chrome session attach를 daemon startup failure로 처리한 browser-harness 0.1.5 경로에서 navigation 전 실패했다. retry 0이다.
+- candidate resolved 0/1이라 required 3/3은 남은 2 trial로 달성 불가다. `/private/tmp/u19355`와 남은 4셀을 frozen하며 추가 provider call은 하지 않는다.
+- cumulative minimum 18,188,850 tokens + usage-unavailable 4다. 다음은 provider-free browser attachment parity + deterministic compact artifact finalize 수리, exact pin, fresh unseen replacement다.
+
+- 1.9.357 first museum control은 900,019ms valid timeout: 79/85, `ui_resolved=false`, usage unavailable다.
+- 한 번의 late product revision은 있었지만 browser attempt 0·delivery blocked다. admission은 `valid-system-failure / preregistered-valid-timeout`이다.
+- 1.9.353 계약대로 evaluate/export/run-record/checkpoint가 모두 생성됐고 completed 1에서 멈췄다. candidate provider call은 0이다.
+- 다음은 fixed 120s pacing + fresh browser preflight 뒤 `luna-museum-r1-compact` 한 cell이며 control replay는 금지다.
+
+- 1.9.356은 `/private/tmp/u19355-vendors/{omd-1.9.274,omd-1.9.334}` exact detached source와 `/private/tmp/u19355` 6 committed/detached/clean cell을 준비했다.
+- equality 6/6이며 sole arm delta는 skill tree `2d577464…` vs `36a44a1…`; admission/resume/timeout pins도 동일하다.
+- provider 0이다. 다음 허용 cell은 fresh browser preflight 뒤 `luna-museum-r1-control` 하나, canonical `--max-new-cells 1`, no retry다.
+
+- 1.9.355는 exact control `3a414a0a…` vs compact candidate `c1de0e4e…`를 museum holdout에 Luna/high 2×3으로 preregister했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정했다.
+- admission 1.9.341·resume 1.9.347·timeout accounting 1.9.353을 함께 pin했다. Tokens-to-Target attempt 8, prior minimum 16,933,255 tokens + unavailable 3, provider 0이다.
+- 다음은 fresh detached vendor 2개와 6 clean cells를 prepare하고 equality를 증명하는 것이다.
+
+- 1.9.354는 fresh `museum-loan-routing-review-v0.1`을 provider 전에 lock했다.
+- 6 object/8 crate/4 courier window와 object register·courier strip·routing handoff 세 carrier를 보존한다.
+- untouched baseline 75/85, green은 contract/state/design/evidence/desktop/keyboard, red는 390/320/200% overflow·atomic line과 4.06 contrast다. provider 0이다.
+- 다음은 exact control/candidate와 admission 1.9.341·resume 1.9.347·timeout 1.9.353 pin을 새 Reliability@3 matrix에 preregister하는 것이다.
+
+- 1.9.353은 committed `e6e4c615…`의 runner/export/tests/acceptance와 timeout 의미를 exact hash로 pin했다.
+- explicit `count-as-valid-failure`, timed_out/valid/unresolved/null usage/no-replay를 고정했다. provider 0, quality promotion 없음이다.
+- 다음은 기존 generator/harbor/orbital과 다른 fresh unseen task를 provider 전에 lock하는 것이다.
+
+- 1.9.352는 `timeout_policy=count-as-valid-failure`를 실제로 evaluate·export·checkpoint한다.
+- record는 `run_status=timed_out`, `validity=valid`, `ui_resolved=false`, usage unavailable/null을 보존하고 host admission은 valid system failure다.
+- synthetic flow는 timeout provider 1회·evaluator 1회·exporter 1회, resume 뒤 provider replay 0과 다음 cell 완료를 증명했다.
+- focused 75/75, wider 316 pass + 기존 external vendor Git-root 2 fail, lint/build/diff green, provider 0이다. 다음은 exact pin 후 fresh matrix다.
+
+- 1.9.351 first generator control은 900,026ms timeout, product edit 0, final 없음, usage unavailable이다. candidate provider call은 0이다.
+- host가 `reflow-inventory-required`로 편집을 차단했고 model은 artifact를 충족하지 못했다. system failure지만 runner가 score/run-record/checkpoint 전에 전체 matrix를 동결했다.
+- prereg의 `timeout_policy=count-as-valid-failure`와 실제 runner 동작이 불일치한다. `/private/tmp/u19349`는 동결하고 재개하지 않는다.
+- 다음은 timeout을 evaluate·unresolved record·checkpoint하도록 runner를 수리하고 synthetic timeout 회귀를 추가하는 것이다. provider 0이다.
+
+- 1.9.350은 `/private/tmp/u19349-vendors/{omd-1.9.274,omd-1.9.334}` exact detached source와 `/private/tmp/u19349` 6 committed/detached/clean cell을 준비했다.
+- equality 6/6이며 sole arm delta는 skill tree `2d577464…` vs `36a44a1…`; admission 1.9.341과 resume 1.9.347 pin도 동일하다.
+- provider 0이다. 다음 허용 cell은 fresh browser preflight 뒤 `luna-generator-r1-control` 하나, canonical `--max-new-cells 1`, no retry다.
+
+- 1.9.349는 exact control `3a414a0a…` vs candidate `c1de0e4e…`를 generator holdout에 Luna/high 2×3으로 preregister했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 고정했다.
+- admission 1.9.341 + checkpoint resume 1.9.347 pin을 공유한다. Tokens-to-Target attempt 7, prior minimum 16,933,255 tokens + unavailable 2, provider 0이다.
+- 다음은 fresh detached vendor 2개와 6 clean cells를 prepare하고 equality를 증명하는 것이다.
+
+- 1.9.348은 fresh `generator-transfer-readiness-review-v0.1`을 provider 전에 lock했다.
+- 6 feeder/8 load/4 generator window와 feeder map·generator strip·transfer handoff 세 carrier를 보존한다.
+- untouched baseline 75/85, green은 contract/state/design/evidence/desktop/keyboard, red는 390/320/200% overflow·atomic fragmentation과 4.03 contrast다. provider 0이다.
+- 다음은 exact control/candidate와 1.9.347 resume pin을 새 Reliability@3 matrix에 preregister하는 것이다.
+
+- 1.9.347은 committed `65e3894a…`의 runner·contract tests·acceptance와 resume 의미를 exact hash로 pin했다.
+- harbor root 재개 금지와 canonical host admission source를 고정했다. provider 0, quality promotion 없음이다.
+- 다음은 harbor/orbital과 겹치지 않는 fresh unseen task를 provider 전에 lock하는 것이다.
+
+- 1.9.346은 checkpoint 재구성에서 누락되던 `host_policy_admission`을 canonical run record로부터 복원한다.
+- Harbor candidate는 provider 호출 전에 summary drift로 중단됐고 호출 수 0이다. `/private/tmp/u19343`은 asymmetric exposure로 동결하며 재개하지 않는다.
+- focused 63/63, lint/build/diff green, provider 0, quality promotion 없음이다. 다음은 exact pin 뒤 fresh unseen task와 새 matrix다.
+
+- 1.9.345 first harbor control은 valid unresolved system failure: 77/85, 565,610ms, 1,993,652 tokens다.
+- exact host install/state/trace는 정상이나 browser attempt 0·delivery blocked라 host gate false다. admission 1.9.341이 이를 비용·신뢰도에 보존했다.
+- retry 없음이다. 다음은 fixed 120s pacing + fresh browser preflight 뒤 `luna-harbor-r1-compact` 하나다.
+
+- 1.9.344는 `/private/tmp/u19343-vendors/{omd-1.9.274,omd-1.9.334}` exact detached source와 `/private/tmp/u19343` 6 committed/detached/clean cell을 준비했다.
+- shared equality 6/6이고 sole delta는 skill tree `2d577464…` vs `36a44a1…`다. admission pin 1.9.341도 동일하다.
+- provider 0이다. 다음 허용 cell은 fresh browser preflight 뒤 `luna-harbor-r1-control` 하나, canonical `--max-new-cells 1`, no retry다.
+
+- 1.9.343은 exact control `3a414a0a…` vs candidate `c1de0e4e…`를 fresh harbor task에 Luna/high 2×3으로 preregister했다.
+- 900s, concurrency 1, 120s pacing, no retry, C/N–N/C–C/N과 strict quality/proof/efficiency gates를 유지하며 admission pin 1.9.341을 추가했다.
+- Tokens-to-Target attempt 6, prior observed minimum 14,939,603 tokens + usage-unavailable 2, provider 0이다. 다음은 fresh vendor/cell preparation과 equality attestation이다.
+
+- 1.9.342는 fresh `harbor-berth-dispatch-review-v0.1`을 provider 전에 lock했다. 6 vessel call/8 tow order/4 pilot window와 세 relationship carrier다.
+- untouched baseline은 75/85다. task/state/design/evidence/desktop/keyboard green, 의도한 red는 390/320/200% overflow·atomic line과 4.12/4.36 contrast다.
+- task `30e6cd2…`, prompt `3ac4fb1…`, index `7f160f0…`, DESIGN `f5d6cad…`, provider 0이다. 다음은 exact control/candidate와 1.9.341 admission pin을 새 matrix에 preregister하는 것이다.
+
+- 1.9.341은 committed `38328c8a…`의 runner·contract tests·acceptance hash와 3-way admission 의미를 exact pin했다.
+- provider 0, quality promotion 없음이다. 다음은 orbital과 겹치지 않는 fresh unseen task를 provider 전에 lock하는 것이다.
+
+- 1.9.340은 ready/analyzable host가 system output을 거부한 경우를 valid unresolved system failure로 집계한다. score/time/token이 reliability·efficiency에서 사라지지 않는다.
+- install/state/trace/interception/enforcement가 없거나 불일치한 경우만 infrastructure-invalid로 동결한다.
+- focused 62/62, wider bench 312 pass + 기존 external vendor Git-root 2 fail, lint/build/diff green, provider 0이다. 다음은 exact pin → fresh unseen task → 새 preregistration이다.
+
+- 1.9.339 첫 Luna/high control은 75/85·763,451ms·2,004,054 tokens였지만 installed host delivery가 blocked라 infrastructure-invalid로 제외했다.
+- 원인은 browser 부재가 아니라 model artifact 34 rows vs host state 33 rows 불일치와 실제 browser attempt를 daemon-unresolved로 잘못 기록한 것이다. candidate call은 0이다.
+- preregistration대로 `/private/tmp/u19337` 전체를 동결하고 retry하지 않는다. 다음은 host installation failure와 ready-host rejection을 분리하는 validity classification repair다.
+
+- 1.9.338은 `/private/tmp/u19337-vendors/{omd-1.9.274,omd-1.9.334}` exact detached source와 `/private/tmp/u19337` 6개 committed/detached/clean cell을 준비했다.
+- task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/installed policy가 6/6 동일하고 sole delta는 skill tree `2d577464…` vs `36a44a1…`다.
+- provider call 0이다. 다음 허용 cell은 fresh browser preflight 뒤 `luna-orbit-r1-control` 하나이며 canonical `--max-new-cells 1`, no retry다.
+
+- 1.9.337은 exact control `3a414a0a…` vs compact candidate `c1de0e4e…`를 fresh orbital task에 Luna/high 2×3으로 preregister했다.
+- 900초, concurrency 1, 120초 pacing, no retry, C/N–N/C–C/N order와 candidate resolved 3/3·paired loss 0·proof/host 3/3·wall/token ≤1.10× gate를 고정했다.
+- Tokens-to-Target attempt 5이며 prior observed minimum 12,935,549 tokens + usage-unavailable 2를 보존한다. provider call 0이다.
+- 다음은 `/private/tmp/u19337-vendors` exact detached vendor 2개와 `/private/tmp/u19337` 6개 clean Git cell을 prepare하고 equality를 증명하는 것이다.
+
+- 1.9.336은 fresh `orbital-contact-plan-review-v0.1`을 provider 전에 lock했다. 6 pass/8 command bundle/4 antenna window와 contact plan·antenna strip·scheduling handoff 세 carrier를 보존한다.
+- untouched baseline은 75/85다. task/state/design/evidence/desktop/keyboard는 green이고 의도한 red는 390/320/200% containment·atomic line과 4.43:1 muted contrast다.
+- prompt `9e8e99b…`, index `704620b…`, DESIGN `06b3df5…`, task `eadee88…`다. provider call 0이다.
+- 다음은 exact historical control vs committed 1.9.334 compact-artifact candidate를 이 task에 Reliability@3로 preregister하는 것이다.
+
+- 1.9.335는 committed `c1de0e4e…`의 canonical/installed skill, reflow helper, Codex config, source/rendered hook을 exact hash로 pin했다.
+- same-permission browser preflight는 Chrome/daemon/active connection 1을 확인했다. provider call 0, quality promotion 없음이다.
+- 다음은 과거 task family와 겹치지 않는 fresh unseen task를 lock하고 이 pin의 control/candidate 비교를 preregister하는 것이다.
+
+- 1.9.334는 반복 row를 selector/role/longest-value group + expected count로 압축하는 reflow schema 0.2와 deterministic lock/finalize helper를 추가했다. resolved closure는 네 relationship invariant까지 강제한다.
+- host가 static PostToolUse를 누락하면 다음 proof 전 이전 attempt를 unresolved로 원자적으로 닫는다. 반복 static은 계속 거부되고 browser/delivery deadlock만 제거된다.
+- focused 46/46, 3-channel install smoke, lint/build/diff는 green이다. wider benchmark는 runnable 84/84 green, 기존 external vendor Git root 2건만 unavailable이다. provider call 0, quality promotion 없음이다.
+- 다음은 committed 1.9.334 exact pin → 기존과 다른 fresh unseen task → preregistration/preparation → 한 cell씩 quality validation이다. aircraft/u19330 재사용은 금지다.
+
+- 1.9.333 paired candidate는 product를 바꿨지만 900,022ms timeout, final/score/proof/usage가 없어 valid timeout failure다. 재시도하지 않고 u19330과 남은 4셀을 동결했다.
+- candidate는 6 carrier/41 row artifact 조율에 시간을 쓰고 static proof를 `running`에 남겼다. browser attempts 0, delivery blocked, native unblocked 0이다.
+- exact 1.9.309 candidate는 3 resolved/paired loss/proof-host/time gates를 만족할 수 없어 broader promotion rejected다. observed minimum 12,935,549 tokens + usage-unavailable 2 cells다.
+- 다음은 model-authored bookkeeping 축소 + transactional static lifecycle + deterministic artifact bootstrap을 갖는 새 candidate 설계/구현이며, fresh task/matrix만 허용한다.
+
+- 1.9.332 첫 control은 valid: 79/85, unresolved, 726,928ms, 2,519,978 tokens다.
+- browser preflight/proof/host-policy/delivery는 pass했고 recovery 0이다. red는 mobile/320/200% atomic wrapping과 320/200% mid-token fragmentation이다.
+- observed attempt total은 12,935,549 tokens + usage-unavailable 1 cell이다. 다음은 fixed pacing 후 paired R1 candidate 한 cell이다.
+
+- 1.9.331은 `/private/tmp/u19330` 6-cell shared equality와 exact skill delta를 provider call 0으로 확인했다.
+- baseline committed/detached/clean 6/6, exact vendor detached/clean/publishable 2/2, browser preflight ready다.
+- 다음 허용 cell은 `luna-load-r1-control-native-enforced` 하나, canonical `--max-new-cells 1`, no retry다.
+
+- 1.9.330은 same aircraft task/control/candidate/Luna-high/gates/order를 fresh `/private/tmp/u19330`에 사전등록했다.
+- sole shared infrastructure delta는 committed `682c094d…` native-browser-enforced policy다. provider call 0이며 과거 root는 모두 frozen이다.
+- 다음은 exact detached vendors와 committed/detached/clean 6-cell preparation 및 equality attestation이다.
+
+- 1.9.329는 committed source `682c094d…`의 exact Codex host policy를 config/source/installed hashes와 native browser matcher 3종으로 pin했다.
+- same-permission browser-harness doctor는 Chrome/daemon/active connection 1을 확인했다. provider call 0, quality promotion 아님이다.
+- 다음은 동일 aircraft task/control/candidate/Luna-high/gates/order를 유지하고 1.9.329 shared policy만 적용한 fresh preregistration이다.
+
+- 1.9.328은 native agent-browser/browser-harness/browser tool namespace를 Claude/Codex installed matcher에 추가했다. 첫 native proof는 허용하고 그 이후 recovery는 PreToolUse에서 실행 전 차단하며, hook-observed 호출은 Stop에서 unblocked로 오판하지 않는다.
+- focused 101/101, wider 94/94, lint/build/diff가 green이고 repair provider call은 0이다. 다음은 committed 1.9.328 exact pin → fresh preregistration/preparation → one-cell replacement다.
+- 1.9.325 paired candidate는 77/85를 냈지만 matcher gap 때문에 infrastructure-invalid로 제외했다. 795,163ms·3,484,850 tokens만 보존하고 `/private/tmp/u19325`은 STOP/frozen이며 남은 4 cell은 미실행이다.
+- known invalid minimum은 8,453,412 tokens + usage-unavailable 1 cell, valid control까지 포함한 observed attempt total은 10,415,571 tokens + usage-unavailable 1 cell이다.
+
+- 1.9.327 첫 control은 valid checkpoint다: 75/85, `ui_resolved=false`, 656,064ms, 1,962,159 tokens.
+- provider-before-browser preflight, proof execution, installed host policy는 모두 pass했고 delivery ready다. honest closure는 unresolved로 보존됐다.
+- 실제 품질 red는 mobile/320/200% atomic wrapping·mid-token fragmentation과 axe serious/critical이다. infrastructure failure가 아니다.
+- known attempt spend minimum은 6,930,721 tokens + usage-unavailable 1 cell이다. 다음은 fixed 120s pacing 후 paired R1 candidate 한 cell이다.
+
+- 1.9.326은 `/private/tmp/u19325` 6개 cell을 provider call 0으로 PREPARED했다. shared contract와 exact sole skill delta를 확인했다.
+- workspace baseline committed/detached/clean 6/6, source detached/clean/publishable 2/2, browser preflight ready다.
+- 다음 허용 cell은 `luna-load-r1-control-honest-closure` 하나, canonical `--max-new-cells 1`, no retry다.
+
+- 1.9.325는 same attempt/task/control/candidate/Luna-high/gates/order를 fresh `/private/tmp/u19325`에 사전등록했다.
+- sole shared infrastructure delta는 committed `107bce09…`의 browser preflight + honest closure + host-policy admission이며 양 arm 공통이다.
+- retained invalid minimum 4,968,562 tokens + usage-unavailable 1 cell, provider call 0이다. 다음은 fresh vendor/cell preparation과 equality attestation이다.
+
+- 1.9.324는 committed source `107bce09…`의 exact Codex installed-opt-in policy, source/rendered hash, active-browser preflight, honest closure, host-policy admission sequence를 pin했다.
+- browser-harness doctor는 초기 daemon/connection 실패 후 연결 초기화로 Chrome/daemon/active connection 1개가 모두 ready다. cloud auth는 이 local run에 불필요하다.
+- 다음은 u19321을 버리고 동일 task/control/candidate/Luna-high/gates/order를 유지한 fresh 1.9.325 preregistration이다.
+
+- 1.9.323은 browser-required matrix가 provider 전에 browser-harness daemon + active connection을 확인하도록 fail-fast preflight를 추가했다.
+- reflow closure는 이제 모든 carrier/row의 `pass|unresolved` 완전 계정을 뜻한다. honest unresolved는 delivery bookkeeping을 닫되 품질/승격 성공으로 바뀌지 않는다.
+- shared host-policy gate false/null cell은 `invalid-infrastructure`로 기록하고 checkpoint/score admission 전에 matrix를 동결한다. focused 72/72, wider 85/85, lint/build/diff가 green이다.
+- `/private/tmp/u19321` 첫 cell의 81/85는 제외한다. 693,461ms·2,036,343 tokens만 보존하며 known invalid minimum은 4,968,562 tokens + usage-unavailable 1 cell이다.
+- 다음 live run 전 사용자 개입 지점은 Chrome remote debugging 활성화다. 그 뒤 exact 1.9.323 pin과 fresh root를 만들며 u19321은 절대 재개하지 않는다.
+
+- 1.9.322는 `/private/tmp/u19321` 6개 cell을 provider call 0으로 PREPARED했다. task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/host policy가 6/6 동일하다.
+- workspace는 baseline committed/detached/clean 6/6, source는 detached/publishable 6/6이며 sole delta는 skill tree `2d577464…` vs `bb3ac833…`다.
+- known invalid spend minimum 2,932,219 tokens와 usage-unavailable 1 cell을 유지한다. 다음 허용 cell은 `luna-load-r1-control-proof-order` 하나, `--max-new-cells 1`, no retry다.
+
+- 1.9.321은 same attempt/task/control/candidate/Luna-high/gates/order를 유지한 세 번째 infrastructure replacement를 `/private/tmp/u19321`에 사전등록했다.
+- sole shared infrastructure delta는 exact host policy `e5f1e307…`이며 양 arm에 동일하다. known invalid spend 2,932,219 tokens와 usage-unavailable 1 cell을 분리 보존한다.
+- provider call 0이다. 다음은 fresh detached vendor와 committed/detached/clean 6-cell preparation 및 equality attestation이다.
+
+- 1.9.320은 committed source `e5f1e307…`의 exact Codex installed-opt-in policy를 config + source/installed 4개 hash와 executable six-step sequence로 pin했다.
+- provider-free runtime fixture가 inventory → edit → static → browser → artifact → Stop 성공과 open/changed closure의 fail-close를 실행한다. provider call 0, quality promotion 아님이다.
+- 다음은 same attempt/task/treatment/gates를 유지한 fresh 1.9.321 preregistration과 새 root preparation이다.
+
+- 1.9.319는 1.9.317 첫 Luna/high cell을 infrastructure-invalid로 동결했다. `index.html`은 바뀌었지만 900,026ms timeout, final/score/usage event가 없으므로 모델·skill 품질과 토큰 수치를 주장하지 않는다. 남은 5 cell은 미실행이다.
+- 원인은 apply_patch 본문의 proof 단어를 static command로 오인한 것과 browser 측정 전에 measured closure를 요구한 순서 deadlock이다.
+- executable order를 inventory → edit → static → browser → measured artifact → Stop/delivery로 고쳤다. focused 37/37, provider-neutral 계열 159/161(기존 external vendor Git precondition 2건만 red), lint/build/diff가 green이고 repair provider call은 0이다.
+- `/private/tmp/u19317`은 재사용하지 않는다. 다음은 exact 1.9.319 policy pin → provider-free full-sequence simulation → fresh replacement preregistration/preparation이다.
+
+- 1.9.318은 `/private/tmp/u19317` 6개 cell을 provider call 0으로 PREPARED했다. shared contract 1개, host ready 6/6, source detached/publishable 6/6이다.
+- workspace baseline committed/detached/clean도 6/6이며 sole delta는 skill tree `2d577464…` vs `bb3ac833…`다.
+- retained invalid spend 2,932,219 tokens는 attempt 4에 남아 있다. 새 실행은 아직 0이다.
+- 다음 허용 cell은 `luna-load-r1-control-clean` 하나이며 `--max-new-cells 1`, no retry를 유지한다.
+
+- 1.9.317은 1.9.315 계약을 그대로 유지하고 prepared Git baseline만 1.9.316 방식으로 강제하는 두 번째 infrastructure replacement다.
+- fresh root는 `/private/tmp/u19317`, vendor는 clean detached `/private/tmp/u19315-vendors`; preparation source `06086c37…`, shared host policy `7d21ea23…`다.
+- invalid 2,932,219 tokens는 attempt 4에 보존하고 u19315은 provider 0이라 비용 0이다. 새 provider call도 아직 0이다.
+- 다음은 6-cell prepare 후 equality + detached/clean/baseline commit attestation을 확인하는 것이다.
+
+- 1.9.316은 prepared cell의 시작 파일을 local baseline commit으로 봉인하고 detached HEAD + clean status를 강제한다. agent-visible Git diff도 이제 유효한 before/after 경계다.
+- `/private/tmp/u19315`는 shared equality는 green이었지만 시작 파일이 untracked라 provider 전에 rejected했다. provider call 0이고 root는 재사용하지 않는다.
+- focused host 2/2, provider-neutral 71/71, lint/build/diff가 green이다.
+- 다음은 committed repair를 새 root에 preregister하고 fresh 6-cell prepare/equality를 다시 수행하는 것이다.
+
+- 1.9.315는 frozen 1.9.311의 clean infrastructure replacement를 preregister했다. 기존 task/control/candidate/Luna-high/gate/order는 유지하고 exact host policy `7d21ea23…`만 양 arm에 동일 적용한다.
+- attempt order는 4로 유지하며 invalid control 2,932,219 tokens와 replacement spend를 같은 attempt에 합산한다. invalid score/behavior는 제외한다.
+- fresh roots는 `/private/tmp/u19315-vendors`, `/private/tmp/u19315`; provider call 0이며 equality attestation 전 실행 금지다.
+- 다음은 detached clean vendor 2개와 6개 Git cell prepare 후 첫 replacement control 하나만 실행하는 것이다.
+
+- 1.9.314는 committed source `7d21ea23…`의 exact Codex installed-opt-in host policy를 config + source 4개 + installed 4개 hash로 pin했다.
+- 이것은 새 skill treatment나 quality promotion이 아니라 replacement matrix 양 arm에 동일하게 적용할 infrastructure pin이다. provider call 0이다.
+- 다음은 기존 aircraft holdout·control/candidate skill을 유지하고 이 exact host policy만 공유하는 fresh replacement preregistration이다.
+
+- 1.9.313은 첫 aircraft control을 infrastructure-invalid로 판정하고 frozen 처리했다. 77/85는 quality evidence에서 제외하며 640,087ms·2,932,219 tokens만 attempt 4 비용에 보존한다.
+- 원인은 relative `.omd` product 오인, 이전 denial의 sticky 재방출, matcher 밖 `mcp__node_repl__js` 직접 파일쓰기다. product는 바뀌었지만 proof trace product edit 0이므로 analyzable하지 않다.
+- relative/absolute managed path 판정 통일, current-payload decision만 방출, Claude/Codex/benchmark matcher의 node_repl 차단을 구현했다. focused 108/108, host parity 3/3, matrix 30/30, lint/build/diff-check가 green이다.
+- `/private/tmp/u19311`은 재사용하지 않는다. 다음은 1.9.313 exact pin → fresh replacement preregistration/root → 한 cell씩 재실행이며, candidate를 포함한 남은 기존 matrix cell은 실행 금지다.
+
+- 1.9.312는 fresh detached `/private/tmp/u19311-vendors/{omd-1.9.274,omd-1.9.309}`와 `/private/tmp/u19311` 6 clean Git cells를 provider call 0으로 PREPARED했다.
+- task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/runtime artifact proof policy가 6개 전부 같고 sole delta는 skill tree `2d577464…` vs `bb3ac833…`다.
+- control/candidate 모두 같은 fail-close gate를 받는다. candidate만 artifact protocol을 설명하므로 이번 귀속은 gate 유무가 아니라 skill의 runtime-gate coordination이다.
+- 다음 허용 cell은 `luna-load-r1-control` 하나이며 canonical `--max-new-cells 1`, 120초 pacing, no retry를 유지한다.
+
+- 1.9.311은 exact control `3a414a0a…` vs exact runtime-artifact candidate `8f8cec6e…`를 fresh aircraft load-plan task에 Luna/high 2×3으로 preregister했다.
+- C/N, N/C, C/N balanced order, 900초, concurrency 1, 120초 pacing, no retry를 고정했다. candidate gate는 resolved/contrast/proof/host 3/3, paired loss 0, mean wall/token 각각 +10% 이하다.
+- Tokens-to-Target attempt 4이며 attempts 1–3 누적 10,951,917 tokens는 right-censored로 보존한다. focused plan validation green, provider call 0이다.
+- 다음은 exact detached vendor 두 개와 6개 fresh Git cell을 prepare하고 equality attestation 후 한 cell씩 실행하는 것이다.
+
+- 1.9.310은 irregular 6-bay spatial plan + 별도 4-station balance strip + 별도 dispatch context의 fresh `aircraft-load-plan-review-v0.1`을 provider 전에 lock했다.
+- untouched starter는 75/85다. task/state/design/evidence/desktop/keyboard는 green이고 의도한 red는 muted 4.43:1 contrast와 390/320/200% 세 carrier overflow·atomic wrapping뿐이다.
+- prompt `cdfa345…`, product `58f34eb…`, index `c1432fa…`, DESIGN `fa3b60f…`, task `352f114…`다. focused contract/preparation과 deterministic baseline이 green, provider call 0이다.
+- 다음은 exact 1.9.274 control vs exact 1.9.309 runtime-artifact candidate Reliability@3 preregistration이다.
+
+- 1.9.309는 exact source `8f8cec6…`를 `omd-runtime-reflow-artifact-gate-candidate`로 pin했다. canonical/installed skill, installed tree, host-policy config/tree, activation hash를 고정했고 provider call은 0이다.
+- candidate source는 committed/publishable이고 아직 quality promotion은 아니다. 다음은 과거 3개 task family와 겹치지 않는 fresh unseen topology를 provider 전에 lock하는 것이다.
+
+- 1.9.308은 installed proof policy가 versioned `.omd/reflow-closure.json`을 직접 검증하도록 만들었다. 제품 edit 전 locked inventory/hash가 없으면 거부하고, static proof 전 390/320/200% carrier·row 전수 pass와 exact manifest가 없으면 거부한다.
+- edit 이후 inventory hash가 달라지면 fail-close한다. Claude Code/Codex managed hook은 `OMD_PROOF_POLICY_REFLOW_ARTIFACT=1`로 이 gate를 활성화하며 proof policy 미설치 기본 경로는 바꾸지 않았다.
+- proof/install/doctor 106/106, canonical parity 1/1, host parity 2/2, matrix 30/30, lint/build/diff-check가 green이고 provider call은 0이다. 아직 quality promotion은 아니다.
+- 다음은 exact candidate pin → fresh unseen topology/task lock → exact control 대비 Reliability@3 preregistration이다.
+
+- 1.9.307 digital-master 6/6은 candidate 75/73/81 vs control 75/77/77, W/T/L 1/1/1이며 양쪽 resolved 0/3이다. candidate를 승격하지 않는다.
+- candidate/control mean score는 76.33/76.33, mean wall은 candidate -15.48%, mean tokens는 candidate +45.74%다. attempt-3 candidate/control/total은 2,047,253 / 1,404,738 / 3,451,991 tokens다.
+- Tokens-to-Target 3 attempts 누적은 candidate 6,637,152 / control 4,314,765 / total 10,951,917이며 목표는 right-censored 미달성이다.
+- root cause는 inventory/manifest가 skill prose일 뿐 runtime-enforced artifact가 아니라는 점이다. 다음 bounded delta는 installed proof policy가 versioned `.omd` reflow-closure artifact를 static closure 전에 검증·fail-close하도록 만드는 것이다.
+
+- 1.9.306 control r3는 valid/policy-green 77/85 unresolved다. control r2와 같이 390은 green이고 320/200% summary atomic-line과 4.42:1 contrast만 red다.
+- wall 342,420ms, total 395,684 tokens(input 377,936, cached 329,472, output 17,748, reasoning 8,253)다. attempt-3 누적은 2,958,074다.
+- final pair claim은 보류하며 다음 locked cell은 마지막 candidate r3다.
+
+- 1.9.305 pair 2는 candidate 73/85 vs control 77/85로 candidate loss이며 둘 다 unresolved다. control은 handoff target을 닫고 summary만 남겼지만 candidate는 target과 summary, keyboard를 남겼다.
+- pair-2 candidate wall -19.09%, tokens +71.33%다. 2-pair W/T/L 0/1/1, mean wall -21.49%, mean tokens +53.94%다.
+- attempt-3 누적은 2,562,390 tokens다. 마지막 pair는 진단용이며 다음 locked cell은 control r3다.
+
+- 1.9.304 candidate r2는 valid/policy-green 73/85 unresolved다. page containment는 닫았지만 handoff target/summary atomic-line 실패가 candidate 2/2 재현됐다.
+- 이번 trial은 keyboard traversal과 serious axe도 red다. wall 295,346ms, total 960,428 tokens(input 946,220, cached 881,152, output 14,208, reasoning 8,198)다.
+- candidate resolved 0/2, attempt-3 누적 2,001,815 tokens다. pair-2 claim은 보류하며 다음 locked cell은 control r2다.
+
+- 1.9.303 pair 1은 carrier-inventory 75/85 vs control 75/85 tie이며 둘 다 unresolved다. candidate도 handoff target/summary atomic-line과 4.42:1 contrast를 남겼다.
+- candidate는 control과 달리 390/320/200% page overflow와 clipped control geometry를 닫았다. wall -23.68%지만 tokens +32.20%다.
+- candidate resolved 0/1이라 3/3 promotion은 이미 불가능하다. 누적 attempt-3 spend는 1,041,387 tokens이며 다음 locked cell은 candidate r2다.
+
+- 1.9.302 `luna-master-r1-control`은 valid/policy-green 75/85 unresolved다. task/state/design/evidence/desktop/keyboard는 green이다.
+- 390/320/200%에서 handoff target과 summary atomic-line, page containment가 red이고 supplied muted 4.42:1 contrast도 남았다.
+- wall 400,988ms, total 448,479 tokens(input 427,321, cached 367,360, output 21,158, reasoning 9,734)다. pair claim은 아직 없으며 다음 locked cell은 candidate r1이다.
+
+- 1.9.301은 fresh detached `/private/tmp/u19300-vendors/{omd-1.9.274,omd-1.9.298}`와 `/private/tmp/u19300` 6 Git cells를 provider call 0으로 PREPARED했다.
+- task/prompt/product/DESIGN/runtime/model/effort/timeout/installed proof policy가 6개 전부 같고 sole delta는 skill tree `2d577464…` vs `b9edc281…`다.
+- source는 모두 detached/clean/publishable이고 Git-root/host-policy equality도 green이다. 다음 허용 cell은 `luna-master-r1-control` 하나다.
+- canonical `--max-new-cells 1`, 120초 pacing, no same-root retry를 유지한다.
+
+- 1.9.300은 exact conjunctive control `3a414a0a…` vs exact carrier-inventory candidate `a57c374…`를 fresh digital-master task에 Luna/high 2×3으로 preregister했다.
+- 순서는 C/N, N/C, C/N으로 균형화했고 900초, concurrency 1, 120초 pacing, no retry/fallback/same-root repair다. gate는 candidate resolved/contrast/proof/host 3/3, paired loss 0, mean wall/token 각각 +10% 이하다.
+- Tokens-to-Target attempt 3으로 잠갔고 attempts 1/2의 3,101,747 / 4,398,179 tokens는 right-censored로 보존한다. focused 3/3 green, provider call 0이다.
+- 다음은 exact detached vendor 두 개와 6개 Git cell을 fresh prepare하고 equality attestation 후 한 cell씩 실행하는 것이다.
+
+- 1.9.299는 branching+merge lineage graph, 별도 checksum manifest, 별도 handoff context의 fresh `digital-master-lineage-review-v0.1`을 provider 전에 lock했다.
+- untouched starter는 75/85다. task/state/design/evidence/desktop/keyboard는 green이고 의도한 red는 exact contrast와 390/320/200% 세 carrier overflow·atomic fragmentation뿐이다.
+- prompt `c41e37e…`, product `777f5de…`, index `ca6a412…`, DESIGN `074f6a8…`다. focused 2/2 green, provider call 0이다. 다음은 exact 1.9.274 control vs 1.9.298 candidate Reliability@3 preregistration이다.
+
+- 1.9.298은 1.9.297 exact source `a57c374…`를 `omd-portable-carrier-inventory-closure-candidate`로 pin했다. source는 committed/publishable이고 provider call은 0이다.
+- canonical `975990d…`, installed skill `96e43d5…`, installed tree `a88848a…`, activation `f0ad529…`다. 아직 quality promotion은 아니다.
+- 다음은 기존 topology와 다른 fresh unseen task를 provider 전에 lock하고 exact 1.9.274 control과 Reliability@3를 preregister하는 것이다.
+
+- 1.9.297은 기존 reflow packet에 immutable `carrier_inventory`와 hash/count-bound `closure_manifest`를 추가했다. 문구 추가가 아니라 static closure command가 모든 carrier의 390/320/200% 측정 동등성과 unresolved 0을 assertion하도록 했다.
+- canonical은 40,956→42,163 bytes, 4,587→4,711 words다. 새 phase/verifier/browser attempt/benchmark selector/task literal/token은 없다.
+- contract 9/9, lint, build, fresh Codex install smoke, diff check가 green이다. 아직 quality promotion은 아니며 다음은 exact source pin과 fresh unseen topology lock이다.
+
+- 1.9.296 all-carrier-set 6/6은 candidate 79/79/75 vs control 79/75/75, W/T/L 1/2/0이며 양쪽 resolved 0/3이다. candidate를 승격하지 않는다.
+- candidate mean score 77.67 vs 76.33이나 mean wall +33.03%, mean tokens +151.35%다. 마지막 candidate는 browser attempt 미완료로 host-policy도 fail했다.
+- attempt-2 candidate/control/total tokens는 3,146,393 / 1,251,786 / 4,398,179다. 다음 bounded delta는 advisory prose 추가가 아니라 pre-edit carrier inventory를 실제 closure artifact로 만들고 모든 row의 390/320/200% outcome 없이는 static closure를 막는 것이다.
+
+- 1.9.295 control r3는 valid/policy-green 75/85 unresolved다. 390/320/200% responsive와 4.42:1 muted contrast 실패가 control에서 2회 연속 재현됐다.
+- wall 211,217ms, total 489,099 tokens(input 479,366, cached 431,104, output 9,733, reasoning 4,499)다. attempt-2 누적은 3,737,534다.
+- final pair claim은 보류한다. 다음 locked cell은 마지막 `luna-cue-r3-carrier-set`이다.
+
+- 1.9.294 pair 2는 candidate 79 vs control 75로 +4지만 둘 다 unresolved다. 양쪽 handoff carrier 실패가 반복됐고 control은 4.42:1 muted contrast도 남겼다.
+- pair 2 candidate wall +36.05%, tokens +283.28%다. 2-pair W/T/L 1/1/0, candidate resolved 0/2, mean wall +41.76%, mean tokens +225.92%다.
+- attempt-2 누적은 3,248,435 tokens다. 마지막 pair는 진단용이며 다음 locked cell은 `luna-cue-r3-control`이다.
+
+- 1.9.293 candidate r2도 valid/policy-green 79/85 unresolved다. handoff target 390/320/200%, evidence 320/200% atomic-line 실패가 candidate에서 2/2 재현됐다.
+- wall 327,330ms, total 1,463,832 tokens(input 1,449,303, cached 1,362,176, output 14,529, reasoning 8,277)다. attempt-2 누적은 2,866,516 tokens다.
+- pair 2 delta는 paired control 전에는 주장하지 않는다. 다음 locked cell은 `luna-cue-r2-control`이다.
+
+- 1.9.292 pair 1은 all-carrier-set 79 vs control 79 tie이며 둘 다 unresolved다. candidate도 handoff target/evidence의 같은 390/320/200% atomic-line 실패를 그대로 남겼다.
+- candidate wall +48.45%, tokens +168.38%(1,021,916 vs 380,768)로 효율 gate도 현재 red다. 누적 attempt-2 spend는 1,402,684 tokens다.
+- candidate resolved 0/1이므로 3/3 promotion은 이미 불가능하다. 남은 2 pair는 recurrence와 최소 다음 repair 진단용이다. 다음은 candidate r2다.
+
+- 1.9.291 `luna-cue-r1-control`은 valid/policy-green 79/85 unresolved다. contrast와 page overflow는 닫았고 3 lane carrier는 보존했지만 별도 handoff target이 390/320/200%, evidence가 320/200%에서 two-line이다.
+- wall 205,552ms, total 380,768 tokens(input 370,624, cached 314,368, output 10,144, reasoning 5,667)다. proof/host gate는 pass다.
+- 아직 control 단일 cell이므로 paired claim은 없다. 다음은 `luna-cue-r1-carrier-set`이다.
+
+- 1.9.290은 fresh detached `/private/tmp/u19290-vendors/{omd-1.9.274,omd-1.9.286}`와 `/private/tmp/u19290` 6 Git cells를 provider call 0으로 PREPARED했다.
+- task/prompt/product/DESIGN/activation/Luna/high/900s/proof policy가 6개 전부 같고 sole delta는 skill tree `2d577464…` vs `58a0552c…`다. source는 모두 detached/publishable이다.
+- 다음 허용 cell은 `luna-cue-r1-control` 하나다. canonical `--max-new-cells 1`, 120초 pacing, no same-root retry를 유지한다.
+
+- 1.9.289는 exact conjunctive `3a414a0a…` vs all-carrier-set `64565bc6…` Luna/high 2×3를 fresh production cue task에 preregister했다.
+- balanced order, 900초, concurrency 1, 120초 pacing, no retry/fallback/same-root repair다. gate는 candidate resolved/contrast/proof/host 3/3, paired loss 0, mean wall/token 각각 +10% 이하다.
+- Tokens-to-Target attempt 2로 잠그었고 attempt 1의 3,101,747 tokens는 right-censored cumulative로 보존한다. provider call 0이다.
+- 다음은 fresh detached vendor/workspace 6개를 prepare하고 equality attestation 후 한 cell씩 실행한다.
+
+- 1.9.288은 fresh `production-cue-dependency-review-v0.1`을 provider 전에 lock했다. audio/lighting/stage 3개 named lane과 별도 handoff context가 독립 relationship carrier다.
+- untouched starter는 75/85다. task/state/design/evidence/desktop/keyboard는 green이고 의도한 red는 exact contrast와 390/320/200% 다중-carrier overflow·atomic reflow뿐이다.
+- prompt `4cb0fbc…`, product `d753dbe3…`, index `78f4ecc7…`, DESIGN `dd61349f…`다. provider call 0, focused task contract green이다.
+- 다음은 exact 1.9.274 control vs exact 1.9.286 candidate Luna/high 2×3 Reliability@3를 preregister한다.
+
+- 1.9.287은 1.9.286 exact source `64565bc6…`를 `omd-portable-all-carrier-set-candidate`로 pin했다. source는 clean/detached/publishable이다.
+- installed tree `58a0552c…`, installed SKILL `48538ab3…`, activation `79911390…`다. provider/hook/agent/third-party installer call은 0이다.
+- 기존 single-line은 provenance/install 확인에만 썼고 promotion에서 제외한다. 다음은 fresh unseen topology를 provider 전에 lock한다.
+
+- 1.9.286은 반복 실패를 직접 겨냥해 singular `comparison_carrier`를 모든 protected/named atomic relationship scope의 `comparison_carrier_set`으로 바꾸었다.
+- reflow packet에 carrier→row binding과 carrier별 390/320/실제 200% 결과를 추가했고 `all_registered_carriers_closed: true`, `unresolved_carriers: 0`이 static closure 조건이다.
+- canonical 39,610→40,956 bytes, 4,460→4,587 words다. quick validation 2/2, contract 9/9, install 40/40, lint, build, diff check가 green이다. 아직 quality promotion은 아니다.
+- 다음은 exact source pin 후 1.9.274 exact control과 fresh unseen topology Reliability@3를 preregister한다. single-line task는 promotion에 재사용하지 않는다.
+
+- 1.9.285 single-line 6/6은 close 77/77/77 vs conjunctive 79/81/81, candidate W/T/L 3/0/0이지만 resolved는 양쪽 0/3이다. candidate contrast/proof/host는 3/3 green이다.
+- candidate mean wall -6.67%, tokens -12.95%로 efficiency는 통과했다. 하지만 세 trial 모두 primary diagram carrier만 닫고 adjacent decision target/state atomic one-line을 하나 이상 남겼다.
+- 1.9.274는 승격하지 않는다. Tokens-to-Target attempt 1은 right-censored이며 candidate/control/total은 1,443,506 / 1,658,241 / 3,101,747이다.
+- 다음 bounded delta는 새 phase 없이 pre-edit carrier set을 모든 protected/named atomic relationship scope—decision context 포함—로 확장하고 각 scope의 390/320/200% concrete result를 static closure 전에 요구한다.
+
+- 1.9.284 `luna-single-line-r3-close`는 valid/policy-green 77/85 unresolved다. baseline은 77/77/77로 고정돼 앞선 candidate +2/+4의 점수 방향은 안정적이다.
+- wall 164,877ms, total 422,468 tokens이며 누적 control 1,658,241 / total experimental 2,649,961이다.
+- 다음은 마지막 `luna-single-line-r3-conjunctive`다. 완료 뒤 6/6 quality/proof/efficiency와 right-censored goal ledger를 확정한다.
+
+- 1.9.283 pair 2는 conjunctive 81 vs close 77, candidate +4이며 둘 다 unresolved다. 2 pair 누적 W/T/L 2/0/0, candidate resolved 0/2다.
+- 2-pair mean wall은 candidate -10.01%, tokens -19.75%다. 누적 candidate/control/total tokens는 991,720 / 1,235,773 / 2,227,493이다.
+- quality floor와 efficiency는 개선됐지만 decision carrier atomic closure는 반복 실패했다. 다음 locked cell은 `luna-single-line-r3-close`, 이후 final candidate다.
+
+- 1.9.282 `luna-single-line-r2-conjunctive`는 valid/policy-green 81/85 unresolved다. contrast/page/390은 green이고 320/200% decision atomic one-line만 red다.
+- pair 1과 같은 carrier-boundary failure가 더 좁은 범위로 반복됐다. wall 235,650ms, total 491,306 tokens이며 누적 candidate 991,720 / total experimental 1,535,147이다.
+- pair 2 delta는 baseline 전에는 주장하지 않는다. 다음 locked cell은 `luna-single-line-r2-close`다.
+
+- 1.9.281 pair 1은 conjunctive 79/85 vs close 77/85, candidate +2이며 둘 다 unresolved다. candidate는 contrast와 diagram/page containment를 닫았지만 decision target/state one-line atomic budget을 390/320/200% 모두 남겼다.
+- candidate proof/host는 pass했고 wall -17.29%, total tokens -7.92%다. 누적 prospective spend는 candidate 500,414, control 543,427, total 1,043,841이다.
+- candidate resolved 0/1이라 3/3 promotion은 이미 불가능하다. 남은 2 pair는 recurrence와 최소 repair 진단용이다. 다음 locked cell은 `luna-single-line-r2-conjunctive`다.
+
+- 1.9.280 `luna-single-line-r1-close`는 valid/policy-green 77/85, UI-Resolved false다. desktop/390은 green이나 320/200% short atomic line budget과 exact contrast가 red다.
+- wall 255,966ms, provider total 543,427 tokens(input 535,072, cached 480,512, output 8,355, reasoning 3,488)로 telemetry가 complete다. 이 spend는 2.0.0 total-experimental Tokens-to-Target에 포함된다.
+- 아직 baseline 단일 셀이므로 paired claim은 없다. 다음 locked cell은 `luna-single-line-r1-conjunctive`다.
+
+- 1.9.279는 fresh detached `/private/tmp/u19279-vendors/{omd-1.9.191,omd-1.9.274}`와 `/private/tmp/u19279` 6 Git cells를 provider call 0으로 PREPARED했다.
+- core `0daf594c…`, runtime prompt `02cde37b…`, product `b72cc067…`, DESIGN `36b1851c…`, activation `79911390…`, Luna/high/900초와 installed proof policy가 같다. sole delta는 skill tree `7336c037…` vs `2d577464…`다.
+- 다음 허용 셀은 `luna-single-line-r1-close` 하나다. canonical `--max-new-cells 1`, 120초 pacing, no same-root retry를 유지한다.
+
+- 1.9.278은 exact close-latch `1d204afe…` vs conjunctive-release `3a414a0a…` Luna/high 2×3를 fresh electrical single-line task에 preregister했다.
+- balanced order, 900초, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다. candidate gate는 resolved/contrast/proof/host 3/3, paired loss 0, mean wall/token 각각 +10% 이하다.
+- 2.0.0 Tokens-to-Target prospective ledger를 attempt 1부터 잠갔다. all 9 frontier gates 전에는 right-censored이며 provider간 token 합산은 금지한다. provider call 0이다. 다음은 fresh detached source와 6-cell root 준비다.
+
+- 1.9.277은 fresh `electrical-single-line-review-v0.1`을 provider 전에 잠갔다. 기존 표/카드/시간표/vertical rack과 다른 source→breaker→bus→junction→4 loads branching topology다.
+- untouched starter는 75/85다. task/state/design/evidence/desktop/keyboard/labels는 green이고 의도한 red는 exact contrast와 390/320/200% page overflow·atomic relationship reflow뿐이다.
+- authoring 중 7/8 node mismatch는 provider 전 `JCT-E07` 명시 노드로 교정·재평가했다. prompt `0daf594c…`, starter product `b72cc067…`, provider call 0이다. 다음은 close-latch vs conjunctive-release 2×3 preregistration이다.
+
+- 1.9.276은 장기 목표의 첫 preregistered full pass까지 누적 provider token을 계산한다. candidate-only와 control/timeout/invalid를 포함한 total-experimental 두 분모를 분리했다.
+- 미달성 목표는 right-censored이며, cached/reasoning 등 누락 component는 0이 아니라 null+coverage로 남긴다. provider/runtime별 token 의미가 달라 cross-provider 합산은 금지한다.
+- focused 3/3, lint, diff check가 green이고 provider/hook/agent/third-party installer call 0이다. 다음은 rack과 다른 fresh unseen topology를 provider 전에 lock한다.
+
+- 1.9.275는 exact source `3a414a0a…`를 `omd-portable-conjunctive-release-candidate`로 pin했다. source는 clean/detached/publishable이다.
+- installed tree `2d577464…`, installed SKILL `79428c05…`, activation `79911390…`다. rack은 provenance-only이며 promotion에서 제외한다. provider/hook/agent/third-party installer call 0이다.
+- 다음은 rack과 다른 fresh unseen topology를 provider 전에 lock하는 것이다.
+
+- 1.9.274는 기존 pre-edit invariant의 foreground/carrier를 AND gate로 강화했다. foreground는 exact before/after ratio 또는 verified text-role fail-close, carrier는 390/320/실제 200%를 모두 구체화해야 static closure로 넘어간다.
+- 새 phase/script/benchmark literal/token은 추가하지 않았다. canonical은 39,093→39,610 bytes, 4,397→4,460 words다. quick validation, contract 9/9, lint, build가 green이다.
+- 아직 quality promotion이 아니다. 다음은 exact commit pin 후 rack과 다른 fresh unseen topology를 provider 전에 lock한다.
+
+- 1.9.273 equipment rack Reliability@3 6/6은 close 73/75/81 vs invariant 83/81/85, candidate W/T/L 3/0/0이다. mean 83 vs 76.33, median 83 vs 75, resolved는 candidate 1/3 vs close 0/3이다.
+- candidate contrast clean 2/3, proof/host 3/3이며 final trial은 85/85로 ceiling을 입증했다. 하지만 resolved 3/3과 contrast 3/3 gate를 실패했다.
+- candidate mean wall +26.92%로 cap 실패, tokens -11.77%로 통과했다. 1.9.263을 승격하지 않는다. 다음 bounded delta는 새 phase 없이 기존 foreground/carrier 두 edit outcome을 numeric contrast + 390/320/200% 결과가 모두 있어야 static closure로 넘어가는 conjunctive latch로 강화한다.
+
+- 1.9.272 `luna-rack-r3-close`는 valid 81/85, UI-Resolved false다. full reflow는 green이나 exact contrast를 남겼다. baseline은 73/75/81, resolved 0/3으로 고정됐다.
+- r3 close는 native browser를 session 뒤 추가 사용해 proof가 browser-recovery/after-ready, host가 native-browser-unintercepted로 fail했다. wall 253,306ms, tokens 735,763이다.
+- 다음은 마지막 `luna-rack-r3-invariant`다. 완료 뒤 6/6 quality/proof/efficiency gate와 bounded delta 방향을 판정한다.
+
+- 1.9.271 pair 2는 invariant 81/85 vs close 75/85로 candidate +6이며 양쪽 unresolved다. 2 pair 누적 candidate W/T/L 2/0/0, scores 83/81 vs 73/75다.
+- candidate UI-Resolved 0/2라 preregistered 3/3 promotion은 이미 불가능하다. pair 2 candidate wall +5.81%, tokens -25.12%지만 누적 평균 wall은 +40.12%다.
+- 마지막 pair는 recurring failure와 efficiency variance 진단용이다. 다음은 `luna-rack-r3-close`, 이후 invariant r3다.
+
+- 1.9.270 `luna-rack-r2-invariant`는 valid/policy-green 81/85, UI-Resolved false다. 390/320/200% reflow는 전부 닫았지만 exact contrast를 남겼다.
+- candidate는 83/81, resolved 0/2다. 서로 다른 trial이 contrast와 full reflow를 각각 닫아 ceiling 요소는 보이지만 동시 closure reliability는 아직 없다. wall 211,696ms, tokens 371,333이다.
+- 다음 locked cell은 paired baseline `luna-rack-r2-close`다. 완료 전에는 pair 2 delta를 주장하지 않는다.
+
+- 1.9.269 pair 1은 close 73/85 vs invariant 83/85로 candidate +10이며 양쪽 unresolved다. candidate는 exact contrast와 390/320 geometry를 닫았지만 200% atomic rack/decision metadata reflow를 남겼다.
+- candidate proof/host-policy는 pass했다. wall 340,808ms vs 194,230ms(+75.46%), tokens 687,935 vs 485,318(+41.75%)라 효율 cap은 현재 크게 초과한다.
+- 단일 pair이므로 reliability 판정은 보류한다. 다음 locked cell은 `luna-rack-r2-invariant`다.
+
+- 1.9.268 첫 셀 `luna-rack-r1-close`는 valid/policy-green 73/85, UI-Resolved false다. page overflow는 제거했지만 390/320/200% atomic rack/decision metadata reflow와 exact contrast를 남겼고 keyboard traversal도 red다.
+- task/evidence/state는 보존했고 proof execution과 installed host-policy는 pass했다. wall 194,230ms, provider-reported tokens 485,318이다.
+- 아직 baseline 단일 셀이므로 paired/promotion claim은 없다. 다음 locked cell은 `luna-rack-r1-invariant`다.
+
+- 1.9.267은 fresh detached `/private/tmp/u19267-vendors/{omd-1.9.191,omd-1.9.263}`와 `/private/tmp/u19267` 6 Git cells를 provider call 0으로 PREPARED했다.
+- core prompt `2e4508fc…`, runtime prompt `d73e779a…`, product `281f22ea…`, DESIGN `f0bb09da…`, activation `79911390…`, Codex/Luna/high/900초와 installed proof policy가 모두 같다. source는 clean/detached/publishable이며 sole delta는 skill tree `7336c037…` vs `769db1d8…`다.
+- 다음 허용 셀은 `luna-rack-r1-close` 하나다. canonical `--max-new-cells 1`, 120초 pacing, no same-root retry를 유지한다.
+
+- 1.9.266은 exact close-latch `1d204afe…` vs pre-edit invariant `c67c9c1b…` Luna/high 2×3를 fresh equipment rack task에 preregister했다.
+- balanced order, 900초, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다. 양 arm은 동일 installed opt-in proof policy를 받는다.
+- candidate gate는 UI-Resolved 3/3, contrast red 0/3, paired loss 0, proof/host 3/3, mean wall/token 각각 baseline +10% 이하다. provider call 0이다. 다음은 fresh exact worktrees와 6-cell root 준비다.
+
+- 1.9.265는 fresh `equipment-rack-elevation-review-v0.1`을 provider 전에 잠갔다. 기존 표·시간표와 다른 vertical 12U rack topology이며 untouched starter는 75/85다.
+- task/state/design/evidence/desktop/keyboard/label은 green이다. 의도한 red는 exact foreground contrast와 390/320/200% rack overflow·atomic identifier reflow뿐이다. prompt `2e4508fc…`, starter product `281f22ea…`, provider call 0이다.
+- 다음은 exact close-latch `1d204afe…` vs pre-edit invariant `c67c9c1b…` Luna/high 2×3 preregistration이다.
+
+- 1.9.264는 exact 1.9.263 source `c67c9c1b…`를 `omd-portable-pre-edit-invariant-candidate`로 pin했다. source는 clean/detached/publishable이다.
+- installed tree `769db1d8…`, installed SKILL `a9fa8805…`, activation `79911390…`다. transit diagnostic은 provenance/install 전용이며 promotion에서 제외한다. provider/hook/agent/third-party installer call 0이다.
+- 다음은 transit/sensor/spectrum과 다른 fresh unseen topology를 provider 전에 lock하는 것이다.
+
+- 1.9.263은 성공 trial의 foreground/carrier/browser 행동을 세 필드 `pre_edit_release_invariant`로 압축했다. 빈 값이면 edit을 시작하지 않고, 첫 diff에 실제 foreground+carrier 변경이 있어야 하며 browser session 생성이 아닌 same-route navigate를 요구한다.
+- canonical은 38,232→39,093 bytes, 4,300→4,397 words다. benchmark selector/task literal/token은 추가하지 않았다. quick validation, contract 9/9, isolation, lint, build가 green이다.
+- full bench 72/74의 두 red는 동일 external Taste/UI UX Pro non-Git precondition이다. 아직 quality promotion은 아니며 다음은 exact commit pin과 fresh unseen topology다.
+
+- 1.9.262 transit Reliability@3 6/6은 close 75/75/75 vs carrier 73/85/73, candidate W/T/L 1/0/2다. mean은 carrier 77 vs close 75지만 median은 73 vs 75, resolved는 carrier 1/3 vs close 0/3이다.
+- carrier는 한 번 exact contrast·atomic reflow·named carrier·browser proof를 전부 해결해 ceiling은 입증했지만 두 번 같은 실패를 반복했다. proof는 3/3이나 host는 2/3다.
+- mean wall +23.08%, tokens +11.31%로 둘 다 +10% cap을 넘었다. quality/proof/efficiency gate 실패로 1.9.252를 승격하지 않는다.
+- 다음 bounded delta는 규칙/phase를 더 늘리지 않고 성공 trial의 세 결과—verified foreground, named comparison containment, real browser navigation—를 pre-edit release invariant로 압축한다.
+
+- 1.9.261 `luna-transit-r3-close`는 valid/policy-green 75/85 unresolved다. baseline은 75/75/75, resolved 0/3, proof/host 3/3으로 고정됐다.
+- r3도 task/evidence와 browser proof를 보존했지만 exact contrast와 narrow reflow를 남겼다. wall 190,306ms, tokens 294,132다.
+- 다음은 마지막 `luna-transit-r3-carrier`다. 완료 뒤 6/6 quality/proof/efficiency gate와 반복 실패를 판정한다.
+
+- 1.9.260 pair 2는 carrier 85/85 UI-Resolved vs close 75/85 unresolved로 candidate +10이며 둘 다 proof/host-policy green이다.
+- 2 pair 누적 candidate W/T/L 1/0/1, candidate resolved 1/2 vs baseline 0/2다. pair 1 -2에서 방향이 뒤집혀 run variance가 크다.
+- promotion은 복구되지 않지만 recurrence 판단을 위해 마지막 close→carrier pair를 완료한다. 다음 locked cell은 `luna-transit-r3-close`다.
+
+- 1.9.259 `luna-transit-r2-carrier`는 valid/policy-green 85/85 UI-Resolved다. exact cardinality와 named comparison-scroll을 보존하며 contrast, atomic reflow, page overflow, interaction browser proof를 한 revision에서 모두 닫았다.
+- wall 288,968ms, tokens 681,520이다. candidate 누적 73/85·85/85, resolved 1/2, proof/host 1/2다. trial 1 때문에 promotion은 복구되지 않는다.
+- pair 2 delta는 baseline 전에는 주장하지 않는다. 다음 locked cell은 `luna-transit-r2-close`다.
+
+- 1.9.258 pair 1은 close 75/85 vs semantic-carrier 73/85로 candidate -2, 양쪽 unresolved다. candidate는 page overflow를 제거했지만 atomic metadata, contrast, keyboard를 닫지 못했다.
+- candidate는 browser session만 열고 navigate하지 않아 installed host policy도 delivery-incomplete/browser-attempt-missing으로 fail했다. paired loss 0과 proof/host 3/3 gate가 깨져 promotion은 이미 불가능하다.
+- 남은 2 pair는 transfer variance와 반복 실패 surface 진단용이며 자격을 복구하지 못한다. 다음 locked cell은 `luna-transit-r2-carrier`다.
+
+- 1.9.257 첫 셀 `luna-transit-r1-close`는 valid/policy-green 75/85, UI-Resolved false다. evidence와 desktop은 보존했지만 390/320/200% reflow와 exact contrast를 모두 남겼다.
+- wall 192,082ms, provider-reported tokens 638,236이다. browser attempt 1, proof/host-policy unblocked violation 0이다.
+- 아직 baseline 단일 셀이므로 paired/promotion claim은 없다. 다음 locked cell은 `luna-transit-r1-carrier`다.
+
+- 1.9.256은 fresh detached `/private/tmp/u19256-vendors/{omd-1.9.191,omd-1.9.252}`와 `/private/tmp/u19256` 6 Git cells를 provider call 0으로 PREPARED했다.
+- core prompt `1ce4c5df…`, runtime prompt `2aeff0b6…`, product `87ac1327…`, activation `79911390…`, Codex/Luna/high/900초와 installed proof policy가 모두 같다. source는 clean/detached/publishable이며 sole delta는 skill tree `7336c037…` vs `3a45091b…`다.
+- 다음 허용 셀은 `luna-transit-r1-close` 하나다. canonical `--max-new-cells 1`, 120초 pacing, no same-root retry를 유지한다.
+
+- 1.9.255는 exact close-latch `1d204afe…` vs semantic-carrier `ba8fb546…` Luna/high 2×3를 fresh transit timetable에 preregister했다. balanced order, 900초, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다.
+- 양 arm은 같은 installed opt-in proof policy를 받는다. candidate gate는 UI-Resolved 3/3, contrast red 0/3, paired loss 0, proof/host 3/3, mean wall/token 각각 baseline +10% 이하다. provider call 0이다.
+- 다음은 fresh detached vendor worktree와 `/private/tmp/u19256` 6-cell root를 준비해 equality를 attest한 뒤 one-cell checkpoint로 실행한다.
+
+- 1.9.254는 fresh `transit-stop-timetable-review-v0.1`을 provider 전에 잠갔다. 기존 topology와 다른 4-service × 5-stop timetable이며 untouched starter는 75/85다.
+- task/state/design/evidence/desktop/keyboard/labels는 green이다. 의도한 red는 exact foreground contrast와 390/320/200% timetable overflow·atomic identifier reflow뿐이다. prompt `1ce4c5df…`, starter product `87ac1327…`, provider call 0이다.
+- 다음은 exact close-latch `1d204afe…` vs semantic-carrier `ba8fb546…` Luna/high 2×3 preregistration이다.
+
+- 1.9.253은 exact 1.9.252 source `ba8fb546…`를 `omd-portable-semantic-carrier-candidate`로 pin했다. source는 clean/detached/publishable이다.
+- installed tree `3a45091b…`, installed SKILL `5c06fc81…`, activation `79911390…`다. sensor diagnostic은 provenance/install 전용이며 promotion에서 제외한다. provider call/hook/agent/third-party installer 0이다.
+- 다음은 sensor·spectrum과 다른 fresh unseen topology를 provider 전에 lock하는 것이다.
+
+- 1.9.252는 rejected run의 두 반복 실패만 겨냥한 bounded `omd:apply` delta를 작성했다. contrast ratio를 기록만 하지 않고 첫 edit diff에서 verified text-role/ink로 실제 교정하게 했다.
+- shared header/legend가 관계 carrier면 named comparison-scroll에서 보존하고, stack 전환은 기존 carrier의 identity/cardinality/visibility/association을 mobile parent로 relocate한다. hidden header + generated/data/aria/hookless visual copy는 실패로 명시했다.
+- benchmark selector/task literal/token은 추가하지 않았다. canonical은 37,465→38,232 bytes, 4,220→4,300 words다. contract 9/9, isolation, install 40/40, lint, build가 green이며 아직 품질 promotion은 아니다.
+- 다음은 exact commit pin 후 sensor와 다른 fresh unseen topology를 provider 전에 lock하는 것이다.
+
+- 1.9.251 sensor Reliability@3 6/6은 close 81/65/81 vs release 65/65/65로 끝났다. candidate W/T/L 0/1/2, mean 65 vs 75.67, median 65 vs 81, resolved는 양쪽 0/3이다.
+- candidate는 세 번 모두 narrow reflow에서 canonical gateway identifier scope를 숨기고 시각적 duplicate만 만들어 task contract/mobile geometry를 실패했으며 exact contrast도 0/3 해결했다. proof/host는 close 3/3 vs candidate 2/3이다.
+- candidate mean wall +9.81%, tokens -2.41%로 efficiency cap은 통과했지만 quality/proof gate가 실패해 1.9.241을 승격하지 않는다.
+- 다음 bounded delta는 early release-blocker pass를 유지하되 desktop header/legend를 숨길 때 기존 semantic relationship carrier를 mobile parent로 relocate하도록 만들고, exact foreground closure를 첫 edit outcome으로 강제하는 것이다. 새 unseen task 이전에 candidate 작성·contract·exact pin을 진행한다.
+
+- 1.9.250 `luna-sensor-r3-close`는 valid/policy-green 81/85, UI-Resolved false다. r1과 같이 reflow와 task contract는 해결하고 exact contrast만 남겼다.
+- wall 322,767ms, tokens 470,871이다. close arm은 81/65/81, resolved 0/3이며 중앙값 81이다.
+- 다음은 마지막 `luna-sensor-r3-release`다. 완료 뒤 6/6 최종 quality/proof/efficiency gate를 계산한다.
+
+- 1.9.249 pair 2는 release 65/85 vs close 65/85 동률이다. 둘 다 protected gateway scope/task contract, mobile/320/200% geometry, contrast를 실패했고 proof/host는 pass했다.
+- 2 pair 누적 candidate W/T/L 0/1/1, resolved 0/2다. pair 2 candidate는 baseline보다 wall +32.5%, provider tokens +58.0%였다.
+- 마지막 pair는 진단용이며 promotion을 복구할 수 없다. 다음은 `luna-sensor-r3-close`, 이후 `luna-sensor-r3-release`다.
+
+- 1.9.248 `luna-sensor-r2-release`도 valid 65/85, UI-Resolved false로 candidate의 first failure를 그대로 반복했다. protected gateway-id scope/task contract, mobile/320/200% geometry, contrast가 다시 실패했다.
+- 이번 proof/host-policy는 pass했지만 wall 495,285ms, tokens 879,058로 r1 candidate보다 느리고 컸다. quality failure는 정책 실패에만 기인하지 않는다.
+- 다음은 paired baseline `luna-sensor-r2-close`다. 완료 전에는 pair 2 delta를 주장하지 않는다.
+
+- 1.9.247 pair 1은 close 81/85 vs release 65/85, candidate delta -16이다. 둘 다 UI-Resolved false이며 candidate가 protected gateway-id scope를 제거해 task contract까지 실패했다.
+- candidate는 contrast를 남기고 mobile/320/200% geometry도 실패했다. browser 뒤 second revision을 열어 proof와 installed host-policy가 recovery/after-ready/native-browser-unintercepted로 fail했다. wall 330,687ms, tokens 622,875다.
+- candidate 3/3 resolved와 paired loss 0 gate가 첫 pair에서 깨져 promotion은 이미 불가능하다. 남은 2 pair는 구조적 실패인지 variance인지 진단하기 위해 계속하며 승격 자격을 복구할 수 없다. 다음은 `luna-sensor-r2-release`다.
+
+- 1.9.246 첫 셀 `luna-sensor-r1-close`는 valid/policy-green 81/85, UI-Resolved false다. desktop/390/320/200% reflow는 전부 해결했지만 exact muted contrast를 네 viewport 모두 남겼다.
+- wall 377,691ms, provider-reported tokens 959,127이다. proof gate는 one static + one browser, recovery/duplicate/after-ready 0으로 pass했고 installed host-policy도 delivery ready/browser attempt 1/unblocked violation 0으로 pass했다.
+- 아직 baseline trial 1뿐이므로 paired/promotion claim은 없다. 다음은 `luna-sensor-r1-release` 한 셀이다.
+
+- 1.9.245는 fresh detached `/private/tmp/u19244-vendors/{omd-1.9.191,omd-1.9.241}`와 `/private/tmp/u19244` 6 Git cells를 provider call 0으로 PREPARED했다.
+- core prompt `4e197bd3…`, runtime prompt `a1836a91…`, product `aeae25b2…`, activation `79911390…`, Codex/Luna/high/900초와 installed proof policy가 모두 같다. source는 clean/detached/publishable이며 sole delta는 skill tree `7336c037…` vs `b89bb7c…`다.
+- 다음 허용 셀은 `luna-sensor-r1-close` 하나다. canonical `--max-new-cells 1`, 120초 pacing, no same-root retry를 유지한다.
+
+- 1.9.244는 exact close-latch `1d204afe…` vs compact release-blocker `aa074ab…` Luna/high 2×3를 fresh sensor matrix task에 preregister했다. balanced order, 900초, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다.
+- 양 arm에는 같은 installed opt-in proof policy를 적용한다. 승격 gate는 candidate UI-Resolved 3/3, serious contrast 0/3, paired objective loss 0, proof/host-policy 전부 green, mean wall과 provider tokens 각각 baseline +10% 이하다.
+- provider call 0이다. 다음은 fresh detached vendor worktrees와 `/private/tmp/u19244` 6-cell root를 준비해 equality attestation 후 one-cell checkpoint로 실행한다.
+
+- 1.9.243은 fresh `sensor-channel-matrix-review-v0.1`을 provider 전에 잠갔다. 기존 list/card/timeline/routing/approval/assay/spectrum과 다른 5×4 cross-matrix topology이며 untouched starter는 75/85다.
+- task/state/design/evidence/desktop/keyboard는 green이다. 의도한 red는 `#66716C` on `#F3F1EA` exact 4.4844:1 contrast와 390/320/200% atomic identifier·parent-matrix reflow뿐이다. prompt `4e197bd3…`, starter product `aeae25b2…`, provider call 0이다.
+- 다음은 exact close-latch `1d204afe…` vs compact release-blocker `aa074ab…` Luna/high 2×3 preregistration이다. candidate UI-Resolved 3/3, serious contrast 0/3, paired objective loss 0과 효율 비열화를 gate로 고정한다.
+
+- 1.9.242는 1.9.241 exact source `aa074ab…`를 `omd-portable-release-blocker-candidate`로 pin했다. detached/clean/publishable source이며 installed tree `b89bb7c…`, installed SKILL `f13ce0bd…`, activation `79911390…`다.
+- seen assay diagnostic은 provenance/install 확인에만 사용했고 promotion에서 제외한다. provider call 0, third-party installer/hook/agent tool 0이다.
+- 다음은 spectrum과 다른 fresh unseen task를 generation 전에 lock하는 것이다.
+
+- 1.9.241은 rejected candidate의 규칙을 더 늘리지 않고 foreground/reflow/stop을 첫 edit transaction의 세 release blocker로 전면 배치했다. 상세 packet은 evidence schema일 뿐 추가 실행 단계가 아니라고 명시했다.
+- 중복 foreground/reflow prose를 줄여 canonical skill은 37,756→37,465 bytes(-291)다. benchmark selector·task literal·새 token/component는 없다.
+- contract 9/9, decision-context one-rule isolation, install coverage, TypeScript, build가 green이다. full bench 66/68이며 2 red는 동일 external Taste/UI UX Pro non-Git precondition이다. 아직 품질 promotion은 아니다.
+
+- 1.9.240 replacement는 6/6 provider cells와 objective score를 완료했다. close 85/79/85, readable 83/85/81로 candidate W/T/L 1/0/2, 평균은 양쪽 83, 중앙값은 close 85 vs readable 83, UI-Resolved는 close 2/3 vs readable 1/3이다.
+- candidate는 contrast green 2/3, 200% reflow green 2/3으로 baseline과 동일했고, 평균 wall +54.4%, provider tokens +66.9%였다. final candidate는 browser recovery/after-ready 위반으로 proof·host-policy gate도 fail했다.
+- 따라서 readable-reflow candidate는 승격하지 않는다. 다음 bounded delta는 instruction을 더 늘리지 않고 release-blocker pass를 짧게 전면 배치해 exact foreground closure, 390/320/200% reflow, one-static/one-browser stop을 한 번에 닫는 방향이다. spectrum task는 promotion에 재사용하지 않는다.
+
+- 1.9.239 two pairs/4 cells가 valid/policy-green으로 완료됐다. pair1 candidate -2, pair2 candidate +6, W/T/L 1/0/1이며 candidate UI-Resolved 1/2다.
+- 방향이 뒤집혀 run variance가 크다. promotion은 zero-loss와 candidate 3/3 양쪽에서 이미 fail이지만 마지막 pair는 effect direction과 recurring failure surface 진단에 필요하다.
+- 다음 locked cell은 `luna-spectrum-r3-close`, 그다음 `luna-spectrum-r3-readable`이다. 각각 canonical one-cell checkpoint로 실행한다.
+
+- 1.9.238 first pair가 valid/policy-green으로 완료됐다. close 85/85 UI-Resolved vs readable 83/85 UI-Resolved false, paired candidate -2다.
+- candidate는 serious contrast 0을 달성했지만 200% geometry를 놓쳤다. zero paired loss gate 때문에 이번 experiment의 promotion은 이미 불가능하다. 나머지는 구조적 failure인지 variance인지 진단하기 위해 계속한다.
+- 다음 locked cell은 `luna-spectrum-r2-readable` 한 셀이다. canonical bounded continuation과 pacing을 유지한다.
+
+- 1.9.237 canonical bounded 실행이 replacement 첫 셀 `luna-spectrum-r1-close` 정확히 하나에서 checkpoint됐다. valid, UI-Resolved, 85/85, contrast 0, responsive all green, browser attempt 1, proof/host-policy gates pass다.
+- baseline도 이번 반복에서는 full resolve했으므로 candidate 우위 claim은 전혀 없다. 3 paired trials 전체가 필요하다. provider-reported tokens 437,733, wall 222,784ms다.
+- 다음은 locked order 2번 `luna-spectrum-r1-readable`이며 continuation도 `--max-new-cells 1`을 유지한다. 시작 전 preregistered 120초 pacing이 적용된다.
+
+- 1.9.236 replacement `spectrum-readable-reflow-luna-1.9.236`을 fresh `/private/tmp/u19236-vendors` + `/private/tmp/u19236`에 provider call 0으로 PREPARED했다. frozen 1.9.233 산출물은 유입되지 않는다.
+- task/prompt/product/DESIGN/activation/runtime/model/effort/timeout/installed policy equality가 전부 1 unique, skill만 2 unique다. all Git roots, clean/detached/publishable sources다.
+- 다음 canonical command는 `run-prepared-matrix.mjs --root /private/tmp/u19236 --max-new-cells 1`이며 runner는 unknown option을 preflight 전에 거부한다.
+
+- 1.9.235는 `/private/tmp/u19233`을 execution-control nonconformance로 FROZEN했다. operator가 canonical `--max-new-cells 1` 대신 unsupported `--max-new 1`을 썼고 CLI가 이를 무시해 120초 뒤 2번째 셀을 시작했기 때문이다. 즉시 interrupt했으며 same-root resume/repair/substitution은 금지다.
+- 첫 close 셀 자체는 valid 81/85, responsive all green, contrast serious all viewports로 UI-Resolved false, proof/host-policy gate pass였다. second readable은 8 events partial이므로 어떤 비교 claim에도 쓰지 않는다.
+- runner는 이제 unknown CLI option을 preflight 전에 fail-fast한다. 다음은 새 experiment/root로 replacement preregistration+preparation 후 canonical `--max-new-cells 1` 실행이다.
+
+- 1.9.234는 fresh `/private/tmp/u19233-vendors` exact detached sources와 `/private/tmp/u19233` 6 Git cells를 provider call 0으로 PREPARED했다.
+- core prompt `84d07dae…`, runtime prompt `75402ac…`, product `4828618f…`, DESIGN `ba897c62…`, activation `79911390…`, Codex/Luna/high/900초와 installed proof policy가 전부 동일하다. sole delta는 close tree `7336c037…` vs readable tree `0cd7b71a…`다.
+- all sources clean/detached/publishable, all cells unstarted다. 다음 허용 셀은 `luna-spectrum-r1-close` 하나이며 max-new 1, 120초 pacing, no same-root retry를 유지한다.
+
+- 1.9.233은 exact close-latch `1d204afe…` vs readable-reflow `7915723…` Luna/high 2×3를 provider 전에 잠갔다. balanced order, 900초, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다.
+- 새 `shared_host_policy` matrix contract가 installed opt-in proof policy를 양 skill arm에 똑같이 설치한다. 즉 sole delta는 skill source뿐이며 delivery ready, actual browser attempt ≥1, unblocked violation 0을 모든 셀에 요구한다.
+- 승격 gate는 candidate UI-Resolved 3/3, serious/critical contrast 0/3, paired objective loss 0이다. provider call 0이며 다음은 fresh `/private/tmp/u19233` 6-cell preparation과 equality attestation이다.
+
+- 1.9.232는 fresh `spectrum-allocation-review-v0.1`을 provider 전에 잠갔다. 기존 list/card/timeline/routing/approval/assay와 다른 연속 7-band topology이며 untouched starter는 75/85다.
+- task/state/design/evidence/desktop/keyboard는 green이다. 의도한 red는 `#696D6B` on `#EEECE6` exact 4.4436:1 contrast와 390/320/200% atomic metadata·parent-row reflow뿐이다. prompt `84d07dae…`, starter product `4828618f…`, provider call 0이다.
+- 다음은 exact close-latch `1d204afe…` vs readable-reflow `7915723…` 2×3 preregistration이다. UI-Resolved 3/3, serious/critical contrast 0/3, paired objective loss 0을 promotion gate로 고정한다.
+
+- 1.9.231은 exact 1.9.230 source `7915723…`를 `omd-portable-readable-reflow-candidate`로 pin했다. detached clean/publishable source와 provider-free Codex install이 green이며 installed tree `0cd7b71a…`, installed SKILL `f0eeca82…`, activation `79911390…`다.
+- seen assay diagnostic은 provenance/install 확인에만 사용했고 promotion에서 제외한다. provider call 0, hook/agent/third-party installer 0이다. 다음은 새 unseen task lock이다.
+
+- 1.9.230은 1.9.225의 반복 실패만 겨냥한 bounded `omd:apply` delta를 작성했다. 모든 현재/planned normal-text pair에서 muted/secondary/supporting token도 exact contrast를 계산하고 4.48을 4.5로 반올림하지 않으며, 실패·미계측 pair는 기존 verified ink/text-role token으로 fail-close한다.
+- reflow는 가장 좁은 조건에서 atomic child가 감싸지기 전에 parent metadata/decision row를 full-row→stack하고 desktop min-width/track 제약을 해제하도록 좁혔다. benchmark selector·fixture literal·새 token은 넣지 않았다. skill quick validation, contract 9/9, experimental exact-copy parity, lint/build가 green이다.
+- full focused bench는 72/74이며 2 red는 동일 external Taste/UI UX Pro vendor 디렉터리가 non-Git인 precondition이다. candidate는 아직 품질 claim이나 promotion이 아니며 다음은 exact commit pin + fresh unseen task contract다.
+
+- 1.9.229 actual Codex 0.144.1/Luna high runner smoke가 PASS했다. runner가 쓰는 JSONL에서 native `agent-browser.browser_navigate` 1회를 Stop 경계가 관찰해 browser attempt 1, proof `unresolved`, delivery ready, violation 0으로 정직하게 복원했다. final message도 `ERR_NAME_NOT_RESOLVED`를 그대로 밝혔다.
+- 이는 live native MCP interception이 아니라 runner-scoped final-boundary accounting이다. 2회 이상 관찰되면 `native_browser_unintercepted`로 acceptance를 fail하며, 일반 interactive install에는 JSONL trace가 없으므로 동일 보장을 주장하지 않는다. focused 107/107, lint, build, diff check가 green이다.
+- 1.9.227 wildcard와 1.9.228 exact MCP matcher real-host 진단은 둘 다 hook attempt 0으로 FAIL했다. Codex project hook은 tested deferred native MCP path를 Pre/Post에서 가로채지 못하므로 production matcher는 local edit/shell boundary로 복귀했고 두 frozen root와 실패 보고서를 보존했다.
+- 1.9.226은 native Codex MCP events를 offline proof trace에서 정규화했다. 기존 R2 trace의 native call 2개를 찾아 recovery 1/after-ready 1/noncompliant로 재분류했으며 과거 점수는 수정하지 않았다.
+- 1.9.225 assay comparison은 6/6 COMPLETE: controller 79/63/81(mean 74.33), installed 81/77/79(mean 79), paired +2/+14/-2(W/T/L 2/0/1)지만 양 arm UI-Resolved 0/3이다. proof policy broader/default promotion은 HOLD이며 다음 품질 delta는 반복된 color contrast와 390/320/200% geometry 실패를 직접 겨냥해야 한다.
+
+- 1.9.224 fresh `/private/tmp/u19223`에 동일 task/runtime/model의 6 Git cells를 준비했고 이후 1.9.225에서 전부 실행·평가·동결했다.
+
+- 1.9.223 exact Codex/Luna high controller-observation vs installed-opt-in policy 2×3를 provider 전에 잠갔다. task/prompt/starter/DESIGN/skill/runtime/model/effort/timeout은 동일하고 sole delta는 project proof-policy installation이다.
+- balanced order, max concurrency 1, 120초 pacing, no retry/fallback/same-root repair다. installed arm은 valid state뿐 아니라 delivery ready와 actual browser attempt ≥1을 최초 plan부터 요구하고 unblocked violation 세 종류는 모두 0이어야 한다.
+- broader/default promotion은 installed UI-Resolved 3/3 + paired objective loss 0일 때만 가능하다. provider call 0; 다음은 fresh `/private/tmp/u19223` 6-cell preparation과 exact equality attestation이다.
+
+- 1.9.222 unseen `assay-plate-layout-review-v0.1`을 provider generation 전에 잠갔다. 기존 list/card/timeline/routing/approval과 다른 4×3 spatial well-map topology이며 12 coordinate/sample pairs, 3 formats, edge toggle, form, decision hierarchy를 보존한다.
+- untouched starter는 79/85다. task/state/a11y/design/evidence/desktop은 green이고 390/320/200%의 atomic identifiers, overflow/clipping, short decision/control copy geometry만 red다. prompt SHA `e2e77921…`, starter SHA `38546c36…`, provider call 0이다.
+- 다음 1.9.223은 exact Codex/Luna high controller vs installed opt-in policy 2×3 preregistration이다. `require_delivery_ready`와 `require_browser_attempt`를 최초 plan부터 policy arm에 고정한다.
+
+- 1.9.221 fresh Codex 0.144.1/Luna high replacement가 PASS했다. product edit→static 1회→incomplete Stop block 1회→actual browser 1회→final Stop allow 순서이며 final state는 7 decisions, browser attempt 1, delivery ready, violation 0이다.
+- browser-harness는 Chrome remote-debug permission/CDP timeout으로 exit 1이었고 정책은 이를 `browser-proof-unresolved`로 정직하게 기록했다. 성공 증명은 아니지만 실제 검증 시도 budget과 종료 회복 계약은 충족했다.
+- Stop boundary는 existing opt-in Codex policy에 accepted다. broader/default install은 UI-quality evidence가 아니므로 HOLD 유지한다. 다음은 새 unseen UI family를 generation 전에 잠그고 `require_delivery_ready`/`require_browser_attempt`가 처음부터 켜진 scored comparison을 설계한다.
+
+- 1.9.220 fresh Codex/Luna high Stop smoke에서 첫 incomplete Stop 차단과 one-shot continuation은 실제로 작동했다. 다만 continuation 중 browser-harness `SKILL.md`를 읽은 `sed`가 경로 문자열 때문에 browser proof로 오인돼 state가 ready가 되었고, 실제 capture는 after-ready로 차단됐다. root는 실패 증거로 동결했다.
+- classifier는 이제 executable shell boundary가 있는 browser-harness만 actual browser proof로 보고, browser-harness `SKILL.md`의 narrow read는 neutral로 처리한다. direct/wrapped/env/heredoc 실행은 계속 proof다. focused 100/100, TypeScript, build가 green이다.
+- 다음 1.9.221은 fresh root replacement다. acceptance는 incomplete Stop 1회 block, instruction read 0 proof consumption, actual browser attempt 1, delivery ready, unblocked violation 0이며 same-root retry는 없다.
+
+- 1.9.219은 official Codex `Stop` hook을 opt-in proof policy의 final-response boundary로 연결했다. product edit 뒤 proof가 미완료면 첫 Stop을 block하고 남은 합법 단계를 continuation prompt로 주며, `stop_hook_active` 재진입은 허용해 무한 루프를 막는다. edit 없는 Stop은 건드리지 않는다.
+- installer/removal/doctor와 benchmark managed config가 Pre/Post/Stop 3-event contract를 공유한다. busy/corrupt/stale state도 첫 Stop은 fail-closed, active re-entry는 fail-open이다. focused 109/109, TypeScript, build, diff check가 green이고 provider call 0이다.
+- broader/default promotion은 여전히 HOLD다. 다음은 fresh Git fixture의 actual Codex/Luna high에서 모델이 static 뒤 조기 종료를 시도했을 때 Stop 1회 차단→browser proof 1회→ready 종료로 회복하는 1.9.220 smoke다. retry/same-root repair 없이 검증한다.
+
+- `/private/tmp/u19216` 1.9.216 comparison은 6/6 valid COMPLETE다. controller 81/81/79, policy 79/79/83, 양 arm UI-Resolved 0/3이다. paired objective delta -2/-2/+4(W/T/L 1/0/2), mean 0, median -2라 broader/default promotion은 HOLD다.
+- controller duplicate static은 3/2/1이고 proof compliance 0/3; installed arm은 unblocked violation 0/3이다. installed mean wall -10.9%, median wall -1.3%지만 mean token +17.8%, median token +8.3%다.
+- completion audit에서 installed 3번째가 `delivery:blocked`, `browser_attempts:0`인데 original gate가 pass한 누락을 발견했다. 1.9.218은 ready/blocked state와 browser attempts를 집계하고 future gate의 `require_delivery_ready`/`require_browser_attempt`를 지원한다. 실제 누락 fixture는 두 reason으로 fail-closed한다.
+- focused host-policy tests 6/6, 관련 suite 124/126(2 red는 동일 external Taste/UI UX Pro vendor Git precondition), lint/build가 green이다. 기존 1.9.216 gate/score는 소급 수정하지 않고 findings에 별도 기록했다. 다음은 final-response boundary로 browser proof completion을 강제할 공식 Codex hook surface가 있는지 provider-free 조사한다.
+
+- 1.9.217에서 fresh `/private/tmp/u19216` 6 cells를 provider call 0으로 PREPARED했다. core prompt `f7a397e2…`, runtime prompt `76162033…`, product `4a333328…`, skill `7336c037…`, activation `79911390…`, Codex/Luna high/900초/Git root가 전부 동일하다.
+- controller는 hook 0, installed arm은 production-rendered policy hook+valid attestation만 갖는다. locked plan SHA `e608829f…`, preparation state SHA `d3c483f9…`; sole delta와 user-config/hook-trust 경계를 재확인했다.
+- 다음은 `luna-caption-r1-controller` 한 셀만 실행한다. 모든 continuation은 max-new 1이며 infra/timeout/identity/attribution/policy-state drift가 생기면 `/private/tmp/u19216` 전체를 freeze한다.
+
+- 1.9.216 exact Codex/Luna high controller-observation vs installed opt-in policy 2×3를 provider 전에 잠갔다. unseen `caption-cue-timing-review-v0.1`, prompt/starter/DESIGN/skill/runtime/model/effort/timeout은 동일하고 sole delta는 project proof-policy installation이다.
+- balanced order, max-new 1, 120초 pacing, no retry/fallback/same-root repair를 고정했다. execution-valid는 6/6 complete + policy state 3/3 + unblocked violation 0이고, broader/default promotion은 installed UI-Resolved 3/3 + paired objective loss 0일 때만 허용한다.
+- matrix JSON과 current task contract는 green이다. focused bench 62/64이며 2 red는 동일 external Taste/UI UX Pro vendor Git precondition이다. provider call 0; 다음은 fresh `/private/tmp/u19216` preparation과 exact equality attestation이다.
+
+- 1.9.215 새 unseen non-approval `caption-cue-timing-review-v0.1`을 provider generation 전에 잠갔다. dark editorial timing rail, 5 cue/speaker+in→out pairs, 3 timebase choices, boundary-snap toggle, cue-set form, 4-view geometry/hierarchy contract다.
+- untouched starter는 79/85다. contract/design/state/a11y/evidence와 desktop geometry/targets는 green이고 390/320/200%의 identifier·timecode·compact-label text geometry만 red다. prompt SHA `f7a397e2…`, starter tree SHA `4a333328…`, provider call 0이다.
+- 다음 1.9.216은 exact Codex/Luna high controller vs installed opt-in policy 2×3 preregistration이다. sole delta는 project proof-policy installation이며 task/prompt/starter/DESIGN/model/effort/timeout/runtime은 동일해야 한다.
+
+- 1.9.214 fresh `/private/tmp/omd-proof-policy-outcome-smoke-1.9.214` actual Codex 0.144.1 + Luna/high replacement가 PASS했다. out-of-order browser deny→static 1회→browser 1회→종료이고 later tool call 0, violation 0이다.
+- exit 0 static string은 `static-closure-observed`, exit 1 browser string은 `browser-proof-unresolved`로 저장돼 host가 주지 않은 success를 주장하지 않는다. state는 delivery ready이며 6 decisions/browser attempt 1이다.
+- host behavior+attribution gate가 green이므로 다음은 새 unseen non-approval UI family의 geometry/hierarchy/state contract를 generation 전에 잠그는 1.9.215다. proof policy는 opt-in 유지하고 book task는 재사용하지 않는다.
+
+- 1.9.213은 Codex의 PostToolUse shell string이 exit code 없는 stdout/stderr라는 upstream contract에 맞춰 결과 판정을 교정했다. string은 성공으로 승격하지 않고 `unresolved`; structured explicit exit/status만 passed/failed다.
+- proof policy는 품질 판정기가 아니라 순서·시도 예산 제어기다. Codex static string 결과는 `static-closure-observed`로 시도 예산을 닫고 browser 1회를 허용하며, browser string 결과는 `browser-proof-unresolved`로 종료한다. 성공했다는 허위 주장은 사라지고 enforcement는 유지된다.
+- focused 25/25, full bench 61/63(동일 known external vendor Git precondition 2), lint/build/managed-renderer parity가 green이고 provider call 0이다. 다음은 fresh root actual Codex/Luna negative-outcome replacement smoke이며 acceptance는 observed→unresolved, violation 0이다.
+
+- 1.9.212 actual Codex 0.144.1 + Luna/high smoke에서 모델이 browser-before-static 거절 안내를 읽고 static 정확히 1회→browser 정확히 1회→추가 도구 없이 종료했다. fresh `/private/tmp/omd-proof-policy-recovery-smoke-1.9.212`의 installed state는 6 decisions, browser attempt 1, 세 violation 모두 0이다. 1.9.210의 deny recovery dead end는 해소됐다.
+- 단, 실제 browser 명령이 exit 1이었는데 state는 `browser-proof-passed`로 기록했다. Codex PostToolUse의 formatted string response에서 non-zero exit를 현재 mapper가 빈 값이 아닌 성공으로 오판한다. behavioral recovery는 PASS지만 outcome attribution은 FAIL이라 promotion/scored comparison은 계속 HOLD다.
+- 다음 1.9.213은 explicit non-zero exit marker를 fail-closed `unresolved`로, explicit zero를 success로 판정하는 cross-host parser fixture를 추가한다. provider-free 검증 후 fresh root real-host negative-outcome smoke를 반복하며 book task/scored matrix는 아직 실행하지 않는다.
+
+- 1.9.211에서 proof-policy의 deny payload에 상태별 합법 다음 행동을 추가했다. `static-closure-required`는 static 1회→browser 1회, `duplicate-static-closure`는 static 재시도 금지→열려 있으면 browser 1회/아니면 종료, `verification-after-ready`는 즉시 도구 사용 종료를 안내한다. enforcement/state transition/fail-closed는 바꾸지 않았다.
+- proof-policy focused 22/22, full bench 61/63(2 red는 기존 external vendor Git precondition), lint/build/package dry-run이 green이고 production managed-renderer parity도 통과했다. package 545 files에 3개 proof-policy runtime이 포함된다. provider call은 0이다.
+- 다음 1.9.212는 fresh Git fixture에서 실제 Codex/Luna high가 browser-before-static 거절을 읽고 static 정확히 1회→browser 정확히 1회→종료로 회복하는 synthetic host smoke다. 통과 후에만 새 unseen task의 scored 2×3을 설계하며 book task를 재사용하지 않는다.
+
+- `/tmp/u19210` 1.9.210은 6/6 valid COMPLETE다. controller 81/85/79, UI-Resolved 1/3, duplicate static 1/1/6; installed policy 79/79/81, UI-Resolved 0/3, valid state 3/3, proof compliant 3/3, unblocked violation 0/3이다.
+- installed policy의 matched UI W/T/L은 0/2/1, point delta -2/-6/+2, mean objective -2.35pp다. mean wall -25.4%, mean tokens -26.4%지만 token 이득은 controller 1.08M outlier 영향을 받아 median은 -4.9%다.
+- 정책은 중복 실행을 확실히 막았지만 2/3 policy trials가 deny 뒤 browser proof로 회복하지 못했다. current opt-in은 유지하되 broader/default promotion은 HOLD다. 다음 1.9.211은 deny payload에 state-specific legal next action을 추가하는 provider-free bounded delta다.
+
+
+- 1.9.210 exact replacement를 fresh `/tmp/u19210`에 PREPARED했다. 6 cells의 task/prompt/starter/product/DESIGN/skill `1d204afe…`/activation/Codex/Luna high/timeout/Git root equality와 policy-only delta를 재확인했고 provider call 0이다.
+- 양 arm은 동일하게 Codex user config를 로드하고 installed arm만 trust bypass를 받는다. locked plan SHA `2baaf3cf…`, preparation state SHA `2771d3d8…`다. 다음은 `luna-book-r1-controller`부터 max-new 1로 순차 실행한다.
+
+
+- 1.9.209 actual Codex CLI 0.144.1 + Luna/high smoke가 production-installed policy를 통과했다. fresh Git root에서 product edit와 첫 `true`는 실행됐고 동일 두 번째 `true`는 PreToolUse에서 실행 전에 차단됐다. state schema 0.1, decisions 4, `duplicate_static_closure: 1`이 저장됐다.
+- 원인은 `--ignore-user-config`가 hook trust뿐 아니라 project hook discovery까지 끈 것이었다. host-policy 양 arm만 동일하게 user config를 로드하고 installed arm에만 native trust bypass를 준다. ordinary Codex benchmark는 계속 user config를 무시한다. focused 58/58과 lint가 green이다.
+- 두 disposable 실패 fixture는 execution-invalid로 제외했다. 다음은 새 `/tmp/u19210`에 exact Luna/high controller vs installed-opt-in 2×3을 preregister/prepare하고 max-new 1로 순차 실행한다. 1.9.207/1.9.208은 재개하지 않는다.
+
+- `/tmp/u19208` 1.9.208은 controller 79/85·duplicate 2와 policy 85/85까지 완료했지만 policy state 0, unblocked duplicate 1이라 execution-invalid로 동결했다. prepared files가 아니라 non-interactive Codex runner가 native hook trust bypass를 전달하지 않은 것이 원인이다.
+- installed-opt-in Codex arm에만 `--dangerously-bypass-hook-trust`를 전달하고 runtime attribution에 기록하도록 수정했다. controller arm은 flag 0을 유지한다. focused regression 후 1.9.209 fresh root replacement가 다음이다.
+- 1.9.208 exact replacement를 `/tmp/u19208`에 fresh PREPARED했다. 6 cells의 task/prompt/starter/product/DESIGN/skill `1d204afe…`/activation/Codex/Luna high/timeout/Git root equality와 policy-only arm delta를 재확인했고 provider call 0이다.
+- checkpoint validator fix `60416fa`가 clean 기준이다. 다음은 `luna-book-r1-controller`부터 max-new 1로 순차 실행하며 1.9.207의 첫 셀은 재사용하지 않는다.
+- `/tmp/u19207` 1.9.207은 첫 controller cell만 valid 79/85·proof compliant로 완료한 뒤 두 번째 provider 호출 전에 checkpoint validator가 새 `host_policy` attestation key를 거부했다. controller implementation defect이므로 전체 비교는 execution-invalid로 동결했고 이 root를 재개하지 않는다.
+- validator가 host-policy matrix에서는 3번째 attestation을 구조 검증하도록 수정했고 focused regression을 추가했다. 다음은 clean fix commit 후 exact same contract를 1.9.208/new root로 재등록·fresh prepare하는 것이다. 첫 셀 결과는 분모에 재사용하지 않는다.
+- 1.9.207에서 controller-observation vs installed-opt-in host policy를 exact Luna/high 2×3으로 `/tmp/u19207`에 PREPARED했다. task/prompt/starter/DESIGN/skill `1d204afe…`/activation/runtime/model/effort/timeout/Git root가 같고 `.codex` policy config+4 managed executables만 다르다.
+- benchmark controller가 installed policy state를 자동 수집하고 denied attempt와 unblocked execution을 분리한다. policy arm은 valid state 필수이며 browser recovery/duplicate static/after-ready unblocked count 0을 요구한다. controller arm은 기존 promotion-report observation을 유지한다.
+- host-policy focused 4/4, runtime 21/21, matrix/export/controller 41/41, lint/diff green이다. full bench 102/104의 2 red는 기존 Taste/UI UX Pro 외부 vendor 폴더가 Git repo가 아닌 환경 문제다. provider call 0이다.
+- 다음은 clean 1.9.207 commit 후 `luna-book-r1-controller`부터 max-new 1로 순차 실행한다. 첫 timeout/infra/attribution/preparation drift에서 전체를 freeze하며 same-root retry/fallback/repair/substitution은 없다.
+- 1.9.206에서 unseen `book-signature-imposition-v0.1`을 provider generation 전에 잠갔다. 기존 table/schedule/master-detail/ordinal/patch-bay와 다른 2-column·4-pair print-imposition topology다.
+- untouched starter는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 모두 green이고 390/320/200%의 sheet-side·folio-pair identifier text geometry만 red다. provider call 0이다.
+- task contract 1/1, lint/diff green이며 prompt SHA `2236f4af…`, starter/product SHA `ca12dd6b…`를 기록했다. 다음 1.9.207은 controller-only와 installed host-policy 2×3의 exact matrix schema·preparation attestation을 구현하고 provider 전 gate를 잠근다.
+- 1.9.205에서 Claude Code+Codex project install에만 explicit `--proof-policy`를 열었다. default install, Cursor/OpenCode, global, skills-only는 blocker 0을 유지하고 Codex는 Git root가 아니면 provider/file write 전에 거부한다.
+- installer는 기존 user hook/config를 구조적으로 보존하고 4개 managed runtime module을 설치한다. `omd doctor`는 opt-in 흔적이 있을 때만 event activation, hash/drift, unsafe path, Codex Git root를 검사한다. `--remove-proof-policy`는 exact OmD hook과 self-consistent managed file만 제거한다.
+- focused CLI/doctor/workflow/policy 110/110, lint/build/diff green, npm pack dry-run에 runtime 4개 포함, fresh Git built-CLI fixture에서 doctor-ready + first static allow/duplicate deny를 재확인했다. provider call 0이다.
+- 다음 1.9.206은 실제 installed opt-in policy와 controller-only close-latch를 동일 unseen task에서 exact paired 2×3로 비교할 preregistration이다. 먼저 provider-free source/task/prompt/runtime equality와 gate를 잠그고, host-policy arm의 denied attempt telemetry가 결과에 들어가는지 확인한다.
+- 1.9.204 real-host smoke에서 Codex CLI 0.144.1 + Luna/high와 Claude Code 2.1.219 + Sonnet 5/high가 동일한 실행 경계를 통과했다. 첫 static command는 실행됐고 두 번째 동일 command는 PreToolUse에서 실행 전 차단됐으며 두 state 모두 `duplicate_static_closure: 1`이다. Opus는 사용하지 않았다.
+- 최초 Codex non-Git fixture는 project hook이 로드되지 않아 execution-invalid로 제외했고 fresh Git replacement만 결과에 포함했다. 이 검증은 synthetic host-boundary smoke이며 UI quality/model promotion 근거가 아니다.
+- adapter는 여전히 benchmark-owned이고 default install 0이다. 다음 1.9.205는 Claude Code+Codex project install에만 explicit opt-in proof-policy flag, config 보존 merge, native trust/restart 안내, doctor/removal contract를 설계·구현한다. Cursor/OpenCode에는 dynamic blocker를 추정하지 않는다.
+- 1.9.203 executable hook adapter가 session+turn hash별 state를 atomic rename으로 저장하고 bounded lock으로 concurrent Pre/PostToolUse를 serialize한다.
+- state schema/session/turn/TTL이 맞지 않거나 JSON이 corrupt하거나 lock이 busy면 proof command를 `permissionDecision: deny`로 fail-closed한다. stale state는 새 product edit으로만 복구된다.
+- focused state/mapper/runtime/classifier 28/28, lint/diff green, provider 0이다. adapter는 benchmark-owned이고 사용자 프로젝트에는 아직 설치되지 않는다.
+- 다음 1.9.204는 실제 Claude/Codex hook trust·config·payload fixture smoke다. 양 host에서 deny-before-execution이 확인되기 전 install flag를 열지 않는다.
+- 1.9.202 raw Claude/Codex Pre/PostToolUse payload를 공통 proof semantic event로 변환한다. Claude Edit/Write path와 Codex apply_patch marker를 모두 product revision으로 인식한다.
+- tool response가 없거나 실패면 fail-closed로 proof를 reopen하며, deny는 두 host가 공통 지원하는 `hookSpecificOutput.permissionDecision: deny` 형태다.
+- attempted command의 duplicate/recovery/after-ready counts가 post-run classifier와 parity다. focused state/mapper/classifier 22/22, lint/diff green, provider 0이다.
+- 다음 1.9.203은 session/turn-scoped atomic state persistence, corrupt/stale-state recovery, concurrent hook serialization을 구현한 executable adapter다. 아직 installer에는 연결하지 않는다.
+- 1.9.201 provider-free proof policy state machine이 product edit→static closure→browser proof→delivery lifecycle을 deterministic하게 판정한다.
+- duplicate static, browser recovery/second mechanism, proof-before-edit, browser-before-static, ready 이후 verification을 사전 deny한다. corrective product edit은 static 1회만 reopen하고 소진된 browser attempt는 reopen하지 않는다.
+- simulator CLI `bench:ui:proof-policy`와 focused state/classifier 14/14, lint/diff green, provider 0이다. 아직 installed hook은 아니다.
+- 다음 1.9.202는 raw Claude/Codex Pre/PostToolUse payload를 semantic event로 변환하고 post-run classifier와 parity를 입증하는 adapter mapper다.
+- 1.9.200 공식 host contract 조사로 Claude Code와 Codex는 dynamic PreToolUse deny, Cursor는 project CLI permissions, OpenCode는 project permissions/plugin before-hook surface가 있음을 확인했다.
+- native policy surface 존재와 OmD adapter 설치 여부를 별도 필드로 분리했다. 현재 모든 채널의 default OmD adapter는 `not-installed`라서 host 기능만으로 OmD enforcement를 주장하지 않는다.
+- 공식 source links와 channel matrix를 `HOST-ENFORCEMENT.md`에 고정했고 manifest/doctor 정합성 41/41, lint/diff green, provider 0이다.
+- 다음 1.9.201은 Claude Code+Codex 공통 event schema를 이용한 narrow opt-in proof policy adapter의 state protocol과 simulator다. Cursor/OpenCode에는 동적 blocker를 추정 구현하지 않는다.
+- 1.9.199에서 skill prose, host feedback, host-native pre-tool enforcement, benchmark observation을 분리한 machine-readable `execution_assurance` 계약을 설치 manifest에 추가했다.
+- 현재 OmD-owned pre-tool blocker는 0개다. Claude Code는 prompt/session/post-edit feedback, Codex·Cursor는 UI-Resolve controller 안에서만 proof trace와 promotion-report gate를 제공하며 OpenCode는 skill contract만 제공한다.
+- `omd doctor`가 불완전하거나 과장된 assurance manifest를 거부하고 source Claude settings와 no-PreToolUse claim의 정합성을 테스트한다. focused 77/77, lint/diff green, provider 0이다.
+- 다음 1.9.200은 공식 host contract에 맞춘 narrow opt-in pre-tool policy adapter의 feasibility와 fail-open/escape-hatch 설계다. 지원되지 않는 채널에는 blocker를 흉내 내지 않는다.
+- 1.9.198 matrix `proof_execution_gates`가 exact system IDs에 analyzable trace와 recovery/static/after-ready maxima를 preregister한다. 지원 enforcement는 denominator를 보존하는 `promotion-report`뿐이다.
+- gate는 cell manifest→run record observed/limits/reasons→completion summary→matrix 전체 applicable/passed/failed verdict까지 자동 전달된다. unknown system, Claude target, malformed limit는 provider 전에 거부한다.
+- focused schema/classifier/export/controller 67/67과 lint가 green이다. 다음은 새 unseen task에서 proof-budget vs close-latch를 이 자동 gate로 재검증할지, 아니면 host-native enforcement capability 설계로 바로 갈지 결정하는 1.9.199 architecture boundary다.
+- 1.9.197 aggregate가 proof trace availability/analyzable/compliance rate와 browser recovery·duplicate static·after-ready 분포를 group별로 계산한다. Markdown table에도 Proof analyzed/compliant 열을 추가했다.
+- 모든 valid run이 analyzable trace를 가질 때만 별도 `compliance_publication_ready:true`다. 기존 quality-only group을 소급 무효화하지 않으며 malformed trace는 fail-closed한다.
+- focused aggregate/classifier/export 19/19과 lint가 green이다. 다음은 이 compliance gate를 preregistered matrix contract에서 선언·자동 판정할 수 있는 1.9.198 gate schema다.
+- 1.9.196에서 Cursor/Codex cell export가 `.benchmark/proof-trace.json`을 자동 생성하고 run-record diagnostics/evidence, completion summary, artifact SHA, checkpoint tree integrity에 포함한다.
+- unstarted cell의 stray proof trace는 dirtiness로 거부하며, 인식 가능한 edit evidence가 없는 stream은 `analyzable:false`로 fail-closed한다. Claude Code는 아직 `proof_trace:null`이다.
+- focused controller/export/runtime/classifier 58/58과 lint가 green이다. 다음 1.9.197은 aggregate 결과에 proof compliance 분포와 failure cluster를 넣어 matrix 비교에서 수동 집계를 제거한다.
+- 1.9.195 provider-free proof-trace classifier가 Cursor `tool_call.started`와 Codex `item.started`를 동일 action taxonomy로 정규화한다. product edit transaction별 static/browser/recovery/after-ready violation을 합산하며 corrective edit가 이전 violation을 지우지 못한다.
+- 1.9.194 latch 3 trials의 자동 판정은 browser recovery 3/2/2, duplicate static 3/1/2, after-ready 1/1/5, compliance 0/3이다. 실제 Luna/Codex 3 traces도 analyzable했다.
+- unit 6/6과 lint가 green이다. 다음 1.9.196은 classifier 결과를 matrix completion/run-record에 자동 저장해 수동 trace 판정을 제거한다.
+- `/tmp/u19194` Grok 6/6 valid COMPLETE. proof-budget과 close-latch 모두 85/85×3, UI-Resolved 3/3이며 paired quality loss 0이다.
+- close-latch mean/median tokens는 -28.1%/-17.4%지만 wall은 +4.7%/+14.9%다. 세 latch trial의 shell call은 9/5/9이고 반복 static/browser discovery·direct Chrome·proof 뒤 추가 verification이 남아 compliance gate를 0/3으로 실패했다.
+- skill prose/state만으로 host tool execution을 강제할 수 없으므로 candidate promotion은 HOLD다. 다음은 Cursor/Codex event stream을 같은 taxonomy로 판정하는 deterministic proof-trace classifier 1.9.195이며, 추가 prose는 금지한다.
+- 1.9.194 exact proof-budget vs close-latch 2×3을 `/tmp/u19194` 대상으로 preregister했다. Cursor/Grok 4.5 High, balanced serial, fixed 120s, max-new1, no retry/fallback/repair/substitution이다.
+- gate는 latch UI-Resolved 3/3 + paired loss 0, 그리고 latch trials의 browser recovery 0, duplicate static closure 0, verification-after-ready 0이다. provider call 0.
+- 다음은 clean prereg commit 후 fresh preparation과 task/prompt/starter/DESIGN/activation/runtime/model/effort/timeout/source equality attestation이다.
+- 1.9.193 새 unseen `stage-power-patch-routing-v0.1`을 provider generation 전에 잠갔다. circuit→route trace→outlet→load의 node-link patch-bay topology로 기존 table/ordinal/master-detail/schedule과 다르다.
+- untouched `/tmp/u19193-stage-power-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 390/320/200% atomic·dynamic·compact text geometry만 red다.
+- task contract 1/1, lint/diff green이며 provider call 0이다. 다음은 exact proof-budget vs close-latch를 Grok 4.5 High 2×3으로 preregister·prepare하는 것이다.
+- 1.9.192에서 exact close-latch candidate를 `omd-portable-proof-close-latch-candidate`로 고정했다. detached clean/publishable source는 `1d204af…`다.
+- provider-free `/tmp/u19192-close-latch-diagnostic`에서 installed Cursor tree `26cd3169…`, SKILL `5c73e7fc…`, unchanged activation `01728b95…`를 확인했다. provider call 0이며 seen task는 promotion에 쓰지 않는다.
+- 다음은 기존 schedule/master-detail/ordinal/table family와 다른 unseen non-approval task를 provider generation 전에 contract-lock하는 것이다.
+- 1.9.191에서 advisory counters를 revision-bound `proof_execution_latch`로 교체했다. static/browser proof는 현재 product revision에 `closed|unresolved`로 잠기며 실제 product edit만 corrective static proof를 다시 열 수 있다.
+- 같은 revision의 추가 static command, browser recovery/second mechanism, `delivery: ready` 뒤 verification command는 각각 명시적 violation이다. browser proof는 한 번 소진되면 다시 열리지 않는다.
+- canonical은 277 lines/37,416 bytes로 proof-budget 대비 +763 bytes(+2.1%)다. historical experimental latch section byte parity가 true다.
+- focused skill 9/9, install 36/36, bounded advisory 2/2, lint/diff green이다. bench 54/56이며 2 red는 기존 non-Git Taste/UI UX Pro fixture다. provider call 0.
+- 다음은 clean commit에서 exact close-latch candidate pin 후 새로운 unseen non-approval task를 generation 전에 잠그는 것이다.
+- `/tmp/u19190` Luna xhigh 6/6 valid COMPLETE. packet과 proof-budget 모두 85/85×3, UI-Resolved 3/3, proof-budget W/T/L 0/3/0이며 paired quality loss 0이다.
+- proof-budget mean/median wall은 +1.0%/+10.1%, mean/median tokens는 -17.2%/-16.0%, mean/median command executions는 -25.6%/-23.1%다. 품질·token/command 방향은 좋지만 wall은 퇴행했다.
+- Luna command trace는 browser recovery-like 0/1/0, duplicate static closure 1/1/3이라 required 0/0을 실패했다. Grok과 Luna 모두 quality pass·command gate fail이며 promotion은 HOLD다.
+- 다음은 prose/heuristic 추가가 아니라 `static_closure`와 `browser_proof`를 명시적으로 닫고 product edit만 phase를 다시 여는 machine-readable close latch 1.9.191이다.
+- `/tmp/u19189` Grok 6/6 valid COMPLETE. packet과 proof-budget 모두 85/85×3, UI-Resolved 3/3, proof-budget W/T/L 0/3/0이며 paired quality loss 0이다.
+- proof-budget mean/median wall은 -36.9%/-32.8%, mean/median tokens는 -37.4%/-61.3%, mean/median tool calls는 -46.6%/-47.5%로 numeric efficiency gate를 통과했다. third paired token은 +68.4% outlier지만 mean gate를 뒤집지 않았다.
+- command trace는 budget trials별 browser recovery-like 2/3/2와 duplicate static clusters 1/4/1이라 required 0/0을 실패했다. quality·numeric efficiency pass지만 promotion은 HOLD다.
+- 1.9.190 Luna xhigh exact replication을 `/tmp/u19190`에 preregister했다. task/arms/order/timeout/pacing은 Grok과 동일하며 runtime/model/effort만 codex/`gpt-5.6-luna`/xhigh로 분리한다. provider call은 아직 0이다.
+- fresh `/tmp/u19189` 6/6을 PREPARED했다. 6 cells의 task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 exact equality이고 installed skill만 packet `36216aea…` vs proof-budget `d2f2258d…`다.
+- 양 source는 detached clean/publishable이고 third-party installer/hooks/agent tools/provider call은 0이다. 다음 cell은 `grok-studio-r1-packet`; max-new 1, fixed 120s, first-failure freeze를 유지한다.
+- 1.9.188 preparation은 invalid latency enum을 controller가 provider 전 거부해 execution-invalid로 동결했다. prepared cell 0, provider call 0, `/tmp/u19188` 미생성이고 same-root edit/retry/resume를 금지한다.
+- 1.9.189는 동일 task/arms/order/runtime/model/effort/timeout/pacing/gate의 fresh-root replacement다. schema-valid within-provider latency enum `eligible`만 교정했고 `/tmp/u19189`를 사용한다.
+- 다음은 replacement source commit 후 fresh preparation/equality attestation이다. 1.9.188 artifact는 분모에 들어가지 않는다.
+- 1.9.188 exact packet vs proof-budget를 새 studio-slot task에서 Grok 4.5 High 2×3으로 preregister했다. `/tmp/u19188`, balanced serial, fixed 120s, max-new 1, no retry/fallback/repair/substitution이다.
+- quality는 proof-budget UI-Resolved 3/3 + Reliability@3 100% + paired loss 0, efficiency는 packet 대비 mean wall/token delta <= 0이며 browser recovery 0과 duplicate static closure 0을 요구한다. +5.2% skill context는 비용에 포함한다.
+- 다음은 source commit 후 fresh preparation과 task/prompt/starter/DESIGN/activation/runtime/model/effort/timeout/source equality attestation이다. provider call은 아직 0이다.
+- 1.9.187 새 unseen `studio-slot-routing-v0.1`을 provider generation 전에 잠갔다. 기존 master-detail·표·순번 rail과 다른 resource-time schedule topology이며 mobile에서 chronological full-width slot rows로 reflow해야 한다.
+- untouched `/tmp/u19187-studio-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 390/320/200%의 hold·crew identifier, target/evidence/state, relational compact copy geometry만 red다. provider call은 0이다.
+- task contract 1/1, lint/diff green이다. 다음은 exact packet candidate vs proof-budget candidate를 Grok 4.5 High 2×3으로 preregister·prepare하는 것이다. trigger 충족 시 Luna xhigh는 별도 fresh root에서 복제한다.
+- 1.9.186에서 exact proof-budget candidate를 `omd-portable-proof-budget-candidate`로 고정했다. detached clean/publishable source는 `a7d4c03…`, installed Cursor tree SHA는 `d2f2258d…`, file SHA는 `f8e44bae…`, activation은 packet과 같은 `01728b95…`다.
+- provider-free `/tmp/u19186-proof-budget-diagnostic`에서 seen print-proof task의 task/prompt/starter/DESIGN/source/skill/activation attestation을 확인했다. provider call 0이며 이 task는 promotion에 쓰지 않는다.
+- pin+historical experimental parity focused 2/2, lint/diff green이다. full bench unit의 별도 2 red는 기존 non-Git Taste/UI UX Pro fixture이고 신규 pin test는 green이다. 다음은 새 unseen non-approval family를 provider generation 전에 contract-lock하는 것이다.
+- 1.9.185 provider-free proof budget을 구현했다. pre-edit inventory 1회, target product edit 1 transaction, static closure 1회(+실제 product 교정 뒤 rerun 1회), browser mechanism 1회이며 infra failure 뒤 doctor/help/executable/process/port/direct launch/alternate/install/permission recovery를 금지한다.
+- reflow/product/a11y/evidence/token/geometry/delivery gate delta는 0이다. canonical skill은 34,854→36,653 bytes(+5.2%)라 live comparison에서 command/token 절감으로 context 비용을 회수해야 한다.
+- focused skill 9/9, install 36/36, bounded advisory 2/2, lint/diff green이며 provider call 0이다. 다음은 clean commit에서 exact candidate pin 후 다른 unseen non-approval task의 exact packet vs proof-budget Grok 2×3이다.
+- `/tmp/u19184` Luna xhigh 6/6 valid COMPLETE. previous 83/85/85(UI-Resolved 2/3) vs packet 85/85/85(3/3), packet W/T/L 1/2/0이다. quality direction은 Grok과 동일한 positive이고 두 모델 모두 packet paired quality loss 0이다.
+- Luna packet mean/median wall은 +10.3%/-1.1%, mean/median tokens는 +15.7%/-2.5%다. mean wall regression은 Grok(+11.3%)과 재현됐고 token 방향은 Grok -9.2% vs Luna +15.7%로 model-sensitive다. strict efficiency gate 때문에 promotion은 계속 HOLD다.
+- Luna command trace의 bounded 원인은 규칙 부족이 아니라 중복 proof다: 반복 source/full read, browser-harness 실패 뒤 doctor/executable discovery/Chrome direct launch 2회, 중복 hook·forbidden-pattern·syntax 검사다.
+- 다음 1.9.185는 reflow heuristic을 추가하지 않는다. machine-readable proof budget으로 pre-edit inventory 1회, product edit transaction 1회, consolidated static closure 1회, browser mechanism 1회만 허용하고 infra failure 뒤 doctor/launch/install/alternative probe를 금지하는 provider-free bounded repair다.
+- fresh `/tmp/u19184` Luna xhigh 6/6을 PREPARED했다. Grok과 task/core prompt/prompt/starter/DESIGN/두 exact skill commits/activation/trial order/timeout/pacing이 동일하고 runtime/model/effort만 codex/`gpt-5.6-luna`/xhigh로 분리했다. provider call은 0이다.
+- 다음 cell은 `luna-media-t1-previous`; max-new 1, fixed 120s pacing, first-failure freeze를 유지한다.
+- `/tmp/u19183` Grok 6/6 valid COMPLETE. previous 85/81/85(UI-Resolved 2/3) vs packet 85/85/85(3/3), packet paired W/T/L 1/2/0이며 quality·zero-loss gate는 pass다.
+- previous t2는 320px/200%에서 두 asset file ID를 2줄로 분절했다. packet은 atomic/dynamic/compact/overflow/clipping/overlap/target/evidence/state/hierarchy/a11y/protected-hook failure 0이다.
+- packet mean/median wall은 +11.3%/+22.0%, mean/median tokens는 -9.2%/-7.7%다. strict no-wall-regression gate 때문에 promotion은 HOLD이고, material efficiency interaction trigger로 1.9.184 Luna xhigh exact replication을 fresh `/tmp/u19184`에 잠갔다.
+- Luna는 Grok과 별도 denominator이며 exact task/arms/trials/order/timeout/pacing/no-fallback을 유지한다. 다음은 clean commit 후 prepare/equality attestation이다.
+- fresh `/tmp/u19183` 6/6을 PREPARED했다. task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 exact equality이고 installed skill만 previous `d7a890ac…` vs packet `36216aea…`다. 양 source는 detached clean/publishable이며 provider call은 0이다.
+- 다음 cell은 `grok-media-r1-previous`; invocation당 1셀과 fixed 120s pacing/first-failure stop을 유지한다.
+- `/tmp/u19182` 첫 bounded invocation은 lease와 `running` state만 남기고 controller process가 종료됐다. run result/usage/final/score/record/checkpoint는 0이므로 1.9.182 root 전체를 execution-invalid로 동결하며 same-root resume·lease 삭제·재시도·artifact repair·후속 denominator 결합을 금지한다.
+- 1.9.183은 동일 task/arms/order/model/effort/timeout/pacing의 fresh-root infrastructure replacement다. `/tmp/u19183`, Grok 4.5 High 2×3, max-new 1, no retry/fallback/repair/substitution이며 1.9.182 artifact는 분모에 들어가지 않는다.
+- 다음은 1.9.183 source commit 후 fresh preparation/equality attestation이다. 유효 Grok matrix가 gate를 통과하거나 borderline/model-sensitive일 때만 Luna xhigh를 별도 root/denominator로 연다.
+- fresh `/tmp/u19182` 6 cells PREPARED, provider 0이다. 6/6 task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout이 동일하고 installed skill만 previous `d7a890ac…` vs packet `36216aea…`다. 양 source exact detached clean/publishable이다.
+- 다음 cell은 `grok-media-t1-previous`이며 invocation당 최대 1개와 fixed 120s pacing/stop contract를 유지한다.
+- 1.9.182 exact previous canonical vs packet candidate 2×3을 `/tmp/u19182` 대상으로 preregister했다. Cursor/Grok 4.5 High, balanced/serial/120s/max-new 1/no retry-fallback-repair-replacement-substitution이며 provider call은 0이다.
+- gate는 packet UI-Resolved 3/3 + Reliability@3 100% + paired loss 0 + material time/token regression 0이다. pass/borderline/model interaction이면 Luna xhigh를 별도 root/denominator로 복제한다.
+- 다음은 fresh `/tmp/u19182` preparation과 task/prompt/starter/DESIGN/activation/runtime/model/effort/timeout/source attestation 동등성 검증이다.
+- 1.9.181 새 unseen `media-clearance-routing-v0.1`을 provider generation 전에 잠갔다. 기존 표/순번 rail과 다른 asset queue + selected context의 master–detail split-pane topology다.
+- untouched `/tmp/u19181-media-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 390/320/200% atomic·dynamic state·relational compact copy geometry만 red다. provider call은 0이다.
+- task contract 1/1과 lint가 green이다. 다음은 exact previous canonical vs exact packet candidate를 Grok 4.5 High 2×3으로 preregister·prepare하는 것이다. trigger 충족 시 Luna xhigh는 별도 fresh root에서 동일 matrix를 복제한다.
+- 1.9.180에서 Luna xhigh를 교차 모델 확인군으로 정식 편입했다. Grok 1차 matrix와 task/prompt/starter/DESIGN/skill/activation/effort/timeout/evaluator/order/pacing을 동결한 별도 fresh root에서 동일 arm matrix를 복제한다.
+- Grok/Luna denominator와 통계는 합치지 않고 모델별 W/T/L·Reliability@N·시간·토큰·failure cluster를 분리한다. 한 모델 pass/다른 모델 regression이면 model-sensitive로 분류하고 promotion을 중단한다.
+- Luna replication trigger는 Grok promotion gate 통과, trial 간 경계/불일치, material efficiency/tool 변화, model×skill interaction 의심이다. Grok 실패 cell의 Luna 대체는 금지한다.
+- 1.9.179 exact packet candidate를 `omd-portable-reflow-packet-candidate`로 고정했다. detached clean/publishable source는 `65f068cc…`, installed Cursor skill tree SHA는 `36216aea…`, file SHA는 `dca7ae0e…`, activation은 previous와 같은 `01728b95…`다.
+- provider-free `/tmp/u19179-packet-diagnostic`에서 seen print-proof task의 task/starter/source/skill/activation attestation을 고정했다. provider call은 0이며 이 task는 promotion에 재사용하지 않는다.
+- focused pin+bounded parity 2/2가 green이다. 다음은 기존 transfer family와 다른 topology의 unseen non-approval task를 provider generation 전에 contract-lock하는 것이다.
+- 1.9.178은 v14 prose rule을 추가하지 않고 기존 7-stage/26-counter reflow closure를 단일 machine-readable `reflow_work_packet`과 `INVENTORY → FIT → REFLOW → PROVE` 네 단계로 교체했다.
+- canonical skill은 42,996→34,854 bytes(-18.9%), reflow closure는 11,164→3,462 bytes(-69.0%)다. source-derived one-line pass를 없애고 measured line count 1 + overflow/clipping 0만 pass로 둔다. nowrap은 longest value가 390/320/200%에서 실제 fit하고 page overflow 0일 때만 허용한다.
+- focused skill contract 8/8, decision-context experimental parity, lint가 green이다. full unit은 351 pass/1 skip/2 red이며 두 red는 기존 non-Git Taste/UI UX Pro fixture다. provider call은 0이다.
+- 구조 후보의 commit/pin과 provider-free diagnostic은 완료됐다. 다음 유효 단계는 새로운 unseen topology를 generation 전에 잠가 exact previous canonical vs packet candidate 2×3 transfer를 수행하는 것이다.
+- `/tmp/u19177` 6/6 valid COMPLETE. previous 81/85/85 vs v13 81/83/85, paired v13 W/T/L 0/2/1이다. previous UI-Resolved 2/3, v13 1/3이므로 v13을 reject한다.
+- v13 t1은 compact copy를 고쳤지만 dynamic state wrap을 남겼고, t2는 scoped rows를 nowrap으로 만들며 200% page horizontal overflow를 새로 냈다. t3만 85/85다. mean wall +24.4%, mean tokens +65.9%다.
+- 다음은 v14 prose rule 추가가 아니다. 길어진 closure를 compact machine-readable work packet/checklist로 operationalize하거나 더 작은 ordered invariant set으로 단순화하는 구조적 단계다.
+- `/tmp/u19177` 6 cells PREPARED, provider 0이다. task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 동일하고 installed skill만 previous `d7a890ac…` vs v13 `bbb7903e…`다. 양 source exact detached clean/publishable이다.
+- 다음 cell은 `grok-proof-t1-previous`; invocation당 최대 1개와 fixed pacing/stop contract를 유지한다.
+- 1.9.177 exact previous canonical vs v13 print-proof transfer를 `/tmp/u19177`에 preregister했다. Cursor/Grok 4.5 High, 2×3, balanced/serial/120s/max-new 1/no retry-fallback-repair-replacement-substitution이다. provider call은 0이다.
+- gate는 v13 UI-Resolved 3/3 + Reliability@3 100% + paired loss 0이다. 첫 provider/attribution/controller failure에서 root를 동결한다. 다음은 fresh root preparation과 equality/attestation 검증이다.
+- 1.9.176 새 unseen non-approval `print-proof-routing-v0.1`을 provider generation 전에 contract-lock했다. 새 fictional prepress domain이며 ordinal rail + 4 fact tracks의 numbered vertical manifest, 3 review routes, source-note toggle, dynamic route state, handoff form을 가진다.
+- untouched `/tmp/u19176-proof-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 390/320/200% scoped responsive text geometry만 red다. 320px screenshot에서 desktop 4-track ticket이 identifier를 파편화하고 dynamic state/relational copy가 감싸는 것을 확인했다.
+- task contract 1/1과 lint가 green이며 provider call은 0이다. 다음은 exact previous canonical vs exact v13을 Cursor/Grok 4.5 High 2×3 balanced/serial/no-fallback contract로 preregister·prepare한다.
+- 1.9.175 exact v13을 `omd-portable-reflow-v13-candidate`로 고정했다. detached clean/publishable source는 `6baa5536…`, installed Cursor skill tree SHA는 `bbb7903e…`, file SHA는 `b9d2a0a0…`, activation은 previous와 같은 `01728b95…`다.
+- provider-free `/tmp/u19175-v13-diagnostic`에서 seen audio task/starter/source/skill attestation을 고정했으며 provider call은 0이다. focused candidate pin 1/1과 lint가 green이다.
+- 다음은 다른 topology와 dynamic one-line state를 가진 새 unseen non-approval task를 provider generation 전에 잠근 뒤 exact previous vs v13 Grok 2×3을 준비한다.
+- 1.9.174 bounded v13이 manifest one-line authority를 final selector의 실제 wrap decision으로 닫는다. 종료 상태는 measured 1-line+overflow/clipping 0, existing measured evidence가 있는 explicit selector-level nowrap, 또는 honest unresolved 셋뿐이다.
+- dynamic row는 render/template/state map의 longest string을 확인하며 자연-wrap 기대, 부모 `width:100%`, 작은 font, initial string만 본 source claim은 closure가 아니다. 새 counters는 `implicit_one_line_selector`, `one_line_authority_without_realization`, `source_claim_without_selector_decision`이다.
+- task string/selector/content threshold/CSS recipe/token/evaluator weight/inventory category는 추가하지 않았다. focused 7/7, lint green, full unit 348 pass/1 skip/2 red다. 두 red는 기존 non-Git Taste/UI UX Pro vendor fixture infrastructure다.
+- 다음은 v13 commit/pin 후 seen audio는 provider-free diagnostic으로만 두고, 다른 topology와 dynamic state를 가진 새 unseen non-approval task를 contract-lock해 exact previous vs v13 transfer를 수행한다.
+- `/tmp/u19173` 6/6 valid COMPLETE. previous 79/79/79 vs v12 85/83/83, paired v12 W/T/L 3/0/0이다. v12 UI-Resolved 1/3, Reliability@3 33.3%라 3/3 transfer gate를 실패했고 release-candidate 편입을 보류했다.
+- v12는 dynamic state와 relational compact-control copy의 scope inventory를 3/3 보존해 v11의 omission을 해결했다. t2/t3은 state를 선언된 12/17 role로 분류했지만 final selector에 one-line rendering을 닫지 않아 200%에서 `Package: Session order · checksums off`가 2줄이 됐다.
+- candidate의 function/state/a11y/evidence/hierarchy/protected hooks/overflow/clipping/overlap은 3/3 green이다. provider/quota/timeout/retry/fallback/repair/replacement/substitution 0, requested/reported Grok 4.5 High 6/6이다.
+- mean wall은 previous 165,247ms vs v12 233,830ms(+41.5%), mean tokens는 70,966 vs 89,841(+26.6%)이며 설명 통계다.
+- 다음 bounded delta는 새 inventory가 아니라 manifest의 one-line authority를 final selector-level decision으로 닫는다. measured one-line, source-proven nowrap+no overflow/clipping, 또는 honest unresolved 중 하나를 강제하고 prose pass claim을 금지한다. seen audio는 provider-free diagnostic만 사용한 뒤 새 unseen transfer task를 잠근다.
+- `/tmp/u19173` 6 cells PREPARED, provider 0이다. task/core prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 동일하고 installed skill만 previous `d7a890ac…` vs v12 `9704a9dd…`다. 양 source exact detached clean/publishable이다.
+- 다음 cell은 `grok-audio-t1-previous`; invocation당 최대 1개와 fixed pacing/stop contract를 유지한다.
+- 1.9.173 exact previous canonical vs v12 transfer를 `/tmp/u19173`에 preregister했다. Cursor/Grok 4.5 High, 2×3, balanced/serial/120s/max-new 1/no retry-fallback-repair-replacement-substitution이다. provider call은 0이다.
+- gate는 v12 UI-Resolved 3/3 + Reliability@3 100% + paired loss 0이다. 첫 provider/attribution/controller failure에서 root를 동결한다.
+- 1.9.172 새 unseen non-approval `audio-stem-delivery-v0.1`을 provider generation 전에 contract-lock했다. 새 post-production domain, 5 stem/bus/owner inventories, 2-column outer inventory + nested 3-fact grid, 3 package modes, checksum-context toggle, dynamic state render, delivery form을 가진다.
+- untouched `/tmp/u19172-audio-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 scoped responsive geometry만 390/320/200%에서 red다. provider call은 0이다.
+- 다음은 exact previous canonical vs exact v12를 Cursor/Grok 4.5 High 2×3 balanced/serial/no-fallback contract로 준비한다. gate는 v12 UI-Resolved 3/3 + paired loss 0이다.
+- 1.9.171 exact v12를 `omd-portable-reflow-v12-candidate`로 고정했다. detached clean/publishable source는 `0f52923d…`, installed Cursor skill SHA는 `9704a9dd…`, activation은 previous와 같은 `01728b95…`다.
+- provider-free `/tmp/u19171-v12-diagnostic`에서 seen broadcast task/starter/source/skill attestation을 고정했으며 provider call은 0이다. 이 seen task는 v12 promotion에 재사용하지 않는다.
+- 다음은 다른 topology와 dynamic-state wording을 가진 새 unseen non-approval task를 먼저 commit한 뒤 exact previous vs v12 Grok 2×3을 준비한다.
+- 1.9.170 bounded v12가 첫 CSS edit 전 `reflow scope manifest`를 고정한다. DOM뿐 아니라 render function/template literal/state map에서 visible dynamic state row를 찾고, paired control 관계의 compact-control copy를 별도 row로 기록하며, outcome table identity/cardinality와 1:1 대조한다.
+- 새 closure counters는 `unmanifested_dynamic_state_row`, `unmanifested_relational_control_copy`, `scope_manifest_row_loss`다. task string/selector/evaluator/weight/CSS recipe/token은 추가하지 않았다. canonical focused 7/7, lint green이다.
+- full unit은 347 pass/1 skip/3 red다. red는 skill delta와 무관한 vendor fixture infrastructure: pinned vendor 준비 timeout 1건과 `/tmp/omd-ui-skills-bench/vendors`의 non-Git Taste/UI UX Pro fixture 2건이다.
+- 다음은 v12 commit/pin 후 seen broadcast는 provider-free diagnostic으로만 두고, 다른 layout topology/state wording의 새 unseen non-approval task를 generation 전에 잠가 exact previous vs v12 Grok 2×3을 수행한다.
+- `/tmp/u19169` 6/6 valid COMPLETE. previous 81/81/81 vs v11 85/81/81, paired v11 W/T/L 1/2/0이다. v11 UI-Resolved 1/3, Reliability@3 33.3%라 3/3 transfer gate를 실패했고 release-candidate 편입을 보류했다.
+- provider/quota/timeout/retry/fallback/repair/replacement/substitution 0, requested/reported Grok 4.5 High 6/6이다. mean wall은 previous 196,363ms vs v11 203,759ms(+3.8%), mean tokens는 79,310 vs 83,326(+5.1%)이며 설명 통계다.
+- v11 3/3은 four-column mapping과 identifier fragmentation을 고쳤지만 t2/t3이 dynamic state `Mode: Rundown sequence · notes off`를 scoped row/type role로 분류하지 않아 320/200% wrap이 남았다. t2는 relational compact copy도 놓쳤다. required outcome table을 세 final 모두 실제로 내지 않았고 t2/t3은 누락 row를 제외한 source-derived pass를 주장했다.
+- 다음은 v12 문구 확장이 아니라 pre-edit `reflow scope manifest`를 bounded하게 강제한다. dynamic state output과 relational compact-control copy를 각각 필수 row로 inventory하고 selector/type role/final rule까지 1:1 closure한 뒤, seen broadcast는 provider-free diagnostic만 사용하고 새 unseen task에서 다시 scored transfer한다.
+- `/tmp/u19169` 6 cells PREPARED, provider call 0이다. task/core-prompt/prompt/starter/DESIGN/activation/runtime/model/effort/timeout은 6/6 동일하고 installed Cursor skill만 previous `d7a890ac…` vs v11 `5d0323ab…`이다. 양 source는 exact detached clean/publishable이다.
+- 다음 실행 cell은 `grok-broadcast-t1-previous`다. 각 invocation은 새 cell 최대 1개이며 preregistered pacing과 stop contract를 유지한다.
+- 1.9.169 exact previous canonical vs promoted v11 transfer를 `/tmp/u19169`에 preregister했다. Cursor/Grok 4.5 High, 2 arms×3 trials, balanced order, serial, 120s pacing, max-new 1, no retry/fallback/repair/replacement/substitution이다. 아직 provider call은 0이다.
+- transfer gate는 v11 UI-Resolved 3/3 + Reliability@3 100% + paired loss 0이다. 첫 provider/attribution/controller failure에서 root를 동결한다.
+- 1.9.168 새 unseen non-approval `broadcast-segment-routing-v0.1`을 provider generation 전에 contract-lock했다. 새 broadcast-operations domain, 4 segment/destination/producer/duration mappings, 3 routing modes, reversible rundown-context toggle, handoff form, 4-view geometry+hierarchy를 가진다.
+- broad surface/atomic facts+target-evidence-state/relational compact-copy scope를 분리했다. multiline display/prose는 atomic gate 밖이며 untouched `/tmp/u19168-broadcast-starter`는 79/85다. function/state/a11y/DESIGN/evidence/hierarchy/overflow/clipping/overlap은 green이고 실제 scoped responsive text geometry만 390/320/200%에서 red다. provider call은 0이다.
+- 다음은 exact previous canonical vs promoted v11을 Cursor/Grok 4.5 High 2×3 balanced/serial/no-fallback contract로 준비한다. transfer gate는 v11 UI-Resolved 3/3 및 paired loss 0이다.
+- `/tmp/u19167` 6/6 valid COMPLETE. previous 81/83/81, v11 85/85/85, paired v11 W/T/L 3/0/0이다. v11 UI-Resolved 3/3, Reliability@3 100%이며 preregistered gate를 통과해 v11을 explicit-scope non-approval reflow family에 승격했다.
+- previous는 3/3 모두 relational compact copy가 320px에서 wrap했고 2/3은 200%에서도 wrap했다. v11은 세 trial의 390/320/200% scoped wrap과 token fragmentation이 모두 0이며 function/state/a11y/evidence/hierarchy/protected hooks도 전부 green이다.
+- mean wall은 previous 191,399ms vs v11 150,281ms(-21.5%), mean reported tokens는 72,009 vs 68,429(-5.0%)다. Grok requested/reported 6/6, provider/quota/timeout/retry/fallback/repair/substitution 0이다.
+- candidate는 browser proof 부재를 final message에서 unresolved로 남겼고 post-run deterministic evaluator가 실제 DOM/computed geometry를 독립 증명했다. H1은 declared multiline display로 유지되어 score gaming이 아니다.
+- 다음은 문구를 더 붙이는 v12가 아니라 다른 content length/layout pressure를 가진 새 explicit-scope non-approval transfer holdout이다. v11이 다시 3/3이고 paired loss 0일 때 다음 release-candidate slice로 접는다.
+- 1.9.167 exact previous canonical vs v11을 fresh `/tmp/u19167`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
+- 6 cells의 task `0.1.0`, core prompt `a7183166…`, prompt `1fb2acd1…`, starter `3b734dfc…`, DESIGN `e57a9093…`, activation `01728b95…`, runtime/model/effort/timeout이 같다. installed Cursor skill만 previous `d7a890ac…` vs v11 `5d0323ab…`이고 양 source는 exact detached clean/publishable이다.
+- Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new 1·no retry/fallback/repair/substitution으로 잠갔다. 다음은 `grok-editorial-t1-previous`; 첫 provider/attribution/controller failure에서 `/tmp/u19167`을 동결한다.
+- 1.9.166 exact v11을 `omd-portable-reflow-v11-candidate`로 고정했다. detached clean/publishable source는 `4c27cb48…`, Cursor installed skill tree SHA는 `5d0323ab…`, file SHA는 `c94e7559…`, activation은 previous와 같은 `01728b95…`다.
+- provider-free `/tmp/u19166-v11-diagnostic`에서 task/starter/source attestation과 focused candidate/task pin 2/2, lint가 green이다. 다음은 locked editorial-brief task에서 exact previous canonical vs v11 Grok 2×3을 fresh root에 준비한다.
+- 1.9.165 새 unseen non-approval `editorial-brief-routing-v0.1`을 v11 commit 뒤 provider generation 전에 contract-lock했다. 새 editorial-operations domain이며 3 policies, reversible source-context toggle, handoff form, 3 source/destination/editor mappings와 4-view geometry+hierarchy를 가진다.
+- future oracle의 broad surface/atomic identifiers+target-evidence-state/relational compact-copy scopes가 분리되어 mobile H1/body prose는 자연스럽게 wrap해도 atomic failure가 아니다. compact copy는 protected task-owned hook으로 잠갔다.
+- untouched `/tmp/u19165-editorial-starter`는 79/85다. function/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 실제 scoped identifier/compact-copy text geometry만 mobile/320/200%에서 red다. provider call은 0이다.
+- 다음은 exact v11 `4c27cb4…`를 detached candidate로 고정하고 exact previous canonical과 fresh Grok 2×3을 준비한다.
+- 1.9.164 canonical `omd-apply` reflow closure가 item-level outcome table을 요구한다. one-line 계약이 있는 identifier/control-state/evidence-metadata/relational compact copy만 semantic/type/required-width/390·320·200 available-width/line-count/proof/status를 기록한다.
+- 일반 display heading/body prose는 명시적 one-line 계약이 없으면 표에서 제외하고 benchmark 점수를 위해 shrink/nowrap/축약/rewrite하지 않는다. scoped row 전부 pass이고 unresolved 0일 때만 verified를 보고하며 page width/`width:100%`/overflow 0/육안/서술은 proof가 아니다.
+- closure에 `unmeasured_reflow_outcome_row: 0`, `false_reflow_verification_claim: 0`을 추가했다. canonical 7/7, lint green, bench 46/48이며 2 red는 기존 non-Git Taste/UI UX Pro fixture다. 다음은 v11 commit 뒤 explicit atomic/compact scopes를 쓰는 새 unseen non-approval task를 provider 0 상태로 잠근다.
+- 1.9.163 evaluator가 broad surface와 atomic/compact-copy text scope를 분리한다. future task는 optional `atomic_scope_selectors`와 `compact_copy_selectors`로 display heading/prose를 atomic gate에서 제외하면서 identifier/evidence/control naming copy는 계속 fail-closed한다. legacy task behavior와 historical score는 바꾸지 않는다.
+- provider-free headless contract 6/6, 기존 21 task contract, evaluator/task-contract syntax가 green이다. 다음은 outcome table을 요구하는 bounded v11 skill delta를 commit한 뒤 새 unseen non-approval task를 잠그는 것이다.
+- `/tmp/u19162` 6/6 valid COMPLETE. previous 79/79/79, v10 79/79/79, paired v10 W/T/L 0/3/0이며 두 arm UI-Resolved 0/3, Reliability@3 0%라 v10 승격을 거절했다.
+- Grok 4.5 High는 requested/reported attribution 그대로 6/6 완료했고 provider/quota/timeout/retry/fallback/repair/substitution은 0이다. 현재 사용 가능하다.
+- v10 t1은 relational `<span>` control copy에 12/17 role을 적용해 paired previous보다 320px residual을 줄였지만 200% wrap이 남았다. t2/t3은 type role 또는 ancestor width ledger 적용이 불안정해 evidence/control wrap이 반복됐다.
+- v10 holdout의 broad decision-context oracle가 40-char H1을 short atomic으로 오분류했다. 모바일 34/38 multiline display와 atomic/label one-line 계약이 충돌하므로 이 task는 seen으로 동결하고 재채점하지 않는다. 스킬이 heading을 억지로 축소/nowrap/rewrite해 evaluator를 게임하지 않도록 oracle contract를 먼저 교정했다.
+- 1.9.161 exact v10을 `omd-portable-reflow-v10-candidate`로 고정했다. detached clean/publishable source는 `e3e5c6e4…`, Cursor installed skill tree SHA는 `fb7472d5…`, activation은 previous와 같은 `01728b95…`다.
+- provider-free `/tmp/u19161-v10-diagnostic`에서 task/starter/source attestation과 focused candidate pin 1/1, lint가 green이다. 다음은 locked research-sample task에서 exact previous vs v10 Grok 2×3을 fresh root에 준비한다.
+- 1.9.160 새 unseen non-approval `research-sample-routing-v0.1`을 v10 commit 뒤 provider generation 전에 contract-lock했다. 새 field-research domain이며 3 choices, reversible field-note toggle, handoff form, 3 sample/destination/steward mappings와 4-view geometry+hierarchy를 가진다.
+- compact control naming copy는 semantic label이 아닌 `<span>`으로 구성해 tag가 아닌 paired-control 관계를 검증한다. untouched `/tmp/u19160-sample-starter`는 79/85이며 responsive text geometry만 red, 나머지 function/state/a11y/DESIGN/evidence/overflow/hierarchy는 green이다.
+- provider call은 0이다. 다음은 exact v10 `e3e5c6e…`를 detached candidate로 고정하고 exact previous canonical과 fresh 2×3으로 비교한다.
+- 1.9.159 canonical `omd-apply`의 기존 type-role classification만 v10으로 조였다. compact control copy를 tag가 아니라 paired toggle/button/select를 이름 붙이는 관계로 정의하고, source가 label/strong/span/p여도 선언 label role을 적용한다.
+- selected target/source filename/artifact ID/atomic identifier는 evidence/metadata role demotion에서 제외해 target emphasis를 보존한다. unresolved 관계나 compatible role 부재 시 현재 role을 유지하며 `unclassified_compact_control_copy: 0`을 추가했다.
+- task string/selector/filename/token/evaluator/weight/CSS recipe는 추가하지 않았다. canonical 7/7, historical parity 1/1, lint green이다. 다음은 v10 commit 뒤 새 unseen non-approval family를 잠근다.
+- `/tmp/u19158` 6/6 valid COMPLETE. previous 81/81/81, v9 77/81/81, paired v9 W/T/L 0/2/1이다. 두 arm 모두 UI-Resolved 0/3, Reliability@3 0%라 v9 승격을 거절했다.
+- v9 t2는 supplied-count evidence를 선언된 12/17 metadata role로 정확히 바꿔 해당 wrap을 제거했다. t3은 적용하지 않았고 t1은 selected target까지 12px로 demote해 네 viewport의 target emphasis를 잃었다.
+- 세 v9 trial 모두 compact toggle과 짝인 `<strong>` copy를 control label로 안정적으로 분류하지 못해 320/200% wrap이 남았다. 다음 v10은 tag가 아니라 control 관계로 compact control copy를 정의하고 target/identifier를 evidence demotion에서 명시적으로 제외한다.
+- Grok 4.5 High는 이번 6/6도 requested/reported attribution 그대로 완료했다. provider/quota/timeout/retry/fallback/repair/substitution 0이다.
+- 1.9.157 exact v9을 `omd-portable-reflow-v9-candidate`로 고정했다. detached clean/publishable source는 `b6fa87d1…`, Cursor installed skill tree SHA는 `eca9a09a…`, activation은 previous와 같은 `01728b95…`다.
+- provider-free `/tmp/u19157-v9-diagnostic`에서 task/starter/source attestation과 focused candidate pin 1/1, lint가 green이다. 다음은 locked museum-loan task에서 exact previous vs v9 Grok 2×3을 fresh root에 준비한다.
+- 1.9.156 새 unseen non-approval `museum-loan-routing-v0.1`을 v9 commit 뒤 provider generation 전에 contract-lock했다. 새 collections-operations domain이며 3 routing choices, reversible source-note toggle, handoff-label form, 3 object/destination/registrar mappings와 4-view geometry+hierarchy를 가진다.
+- untouched `/tmp/u19156-museum-starter`는 79/85다. function/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. desktop percentage child widths와 inherited 16px evidence가 identifier fragmentation 및 supplied-count wrap을 만드는 것을 320px screenshot으로 확인했다.
+- protected empty form-status는 selector 자신의 baseline min-height를 가진다. injected break/single-text scroller/provider call은 0이다. 다음은 exact v9 `b6fa87d…`를 detached candidate로 고정하고 exact previous canonical과 fresh 2×3으로 비교한다.
+- 1.9.155 canonical `omd-apply`의 기존 type-role step만 v9로 조였다. 짧은 evidence/summary/metadata/supplied-count line도 DESIGN.md의 선언된 label/metadata role을 먼저 적용하며, 호환 role이 없으면 현재 role을 보존하고 작은 값을 추측하지 않는다.
+- closure에 `undeclared_evidence_type_role: 0`을 추가했다. task string/selector/filename/token/evaluator/weight/layout recipe는 추가하지 않았고 v8의 width/protected/semantic 제약을 모두 유지했다.
+- canonical contract 7/7, historical decision-context parity 1/1, lint green이다. 전체 bench file의 2 red는 기존 non-Git Taste/UI UX Pro fixture 환경 문제다. 다음은 v9 commit 뒤 새 unseen non-approval family를 provider generation 전에 잠그는 것이다.
+- `/tmp/u19154` 6/6 valid COMPLETE. previous 83/77/83, v8 83/85/83, paired v8 W/T/L 1/2/0이다. v8 UI-Resolved 1/3, Reliability@3 0%라 승격을 거절했다.
+- v8은 protected empty status geometry 회귀를 3/3 제거했고 paired loss도 0이다. 성공 t2는 85/85였지만 t1/t3은 200%에서 short evidence/summary metadata가 반복 wrap됐다. t1의 filename mid-token split은 단발이라 별도 규칙을 추가하지 않는다.
+- Grok 4.5 High는 두 연속 6-cell matrix를 총 12/12 requested/reported attribution 그대로 완료했다. provider/quota/timeout/retry/fallback/repair/substitution 0이며 현재 사용 가능하다.
+- 다음 v9은 기존 type-role 단계만 보강한다. DESIGN.md에 선언된 label/metadata role을 short evidence/summary/supplied-count line에도 먼저 적용하되 role 미만 축소나 새 token은 금지한다. v9 commit 뒤 새로운 unseen non-approval family를 잠근다.
+- 1.9.153 exact v8을 `omd-portable-reflow-v8-candidate`로 고정했다. detached clean/publishable source는 `e33fd219…`, Cursor installed skill tree SHA는 `60b4fe6b…`, activation은 previous와 같은 `01728b95…`다.
+- diagnostic `/tmp/u19153-v8-diagnostic-v2`는 provider 0이며 task/starter identity와 source attestation이 green이다. 다음은 locked warehouse-transfer task에서 exact previous vs v8 Grok 2×3을 fresh root에 준비한다.
+- 1.9.152 새 unseen non-approval `warehouse-transfer-routing-v0.1`을 v8 commit 뒤 provider generation 전에 contract-lock했다. 새 inventory-operations domain이며 3 transfer choices, reversible bin-context toggle, handoff-label form, 3 request/warehouse/owner mappings와 4-view geometry+hierarchy를 가진다.
+- untouched `/tmp/u19152-warehouse-starter-v2`는 79/85다. function/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% atomic/short-label geometry만 red다. desktop percentage child widths가 mobile block에 남아 request/warehouse/owner를 세로 파편화하는 것을 320px screenshot으로 확인했다.
+- protected empty form-status는 selector 자체의 baseline min-height를 가진다. injected break/single-text scroller/provider call은 0이다. 다음은 exact v8 `e33fd21…`을 detached candidate로 고정하고 exact previous와 fresh 2×3으로 비교한다.
+- 1.9.151 canonical `omd-apply`의 기존 protected ledger와 reflow step 2만 v8로 조였다. full row는 `viewport→page inset→card border/padding→section inset→reading→required inline size` ledger로 증명하며 `width:100%`만으로 통과하지 않는다.
+- 초기 문자열이 빈 protected dynamic status/live region도 selector 자신의 baseline rendered geometry를 보존해야 한다. parent wrapper min-height나 DOM presence는 proof가 아니며 closure는 `unresolved_inline_size_budget: 0`, `protected_selector_visibility_loss: 0`이다.
+- task string/selector/filename/token/evaluator/weight 추가는 없다. canonical contract 7/7, historical experiment parity 2/2, lint green이다. 다음은 이 commit 뒤 또 다른 unseen non-approval family를 provider generation 전에 잠그는 것이다.
+- `/tmp/u19150` 6/6 valid COMPLETE. previous 83/81/81, v7 85/71/81, paired v7 W/T/L 1/1/1이다. v7 UI-Resolved 1/3, Reliability@3 0%라 승격을 거절했다.
+- v7 성공 t1은 outer/card lateral chrome을 줄여 320px full reading row와 short control label 한 줄을 모두 달성했다. t2/t3은 더 큰 side inset을 남겨 `3 supplied queues · 1 routing policy`와 `Preserve original-assignee context`가 320/200%에서 반복 wrap됐다.
+- t2는 별도로 protected `form-status` selector 자체를 initial empty state에서 zero geometry로 만들어 protected_hooks_exact도 실패했다. parent status row의 min-height는 selector visibility 보존이 아니며 71점 회귀 원인이다.
+- Grok 4.5 High는 장문 6/6을 requested/reported attribution 그대로 완료했다. provider/quota/timeout/retry/fallback/repair/substitution 0이며 현재 사용 가능하다.
+- 다음 v8은 기존 closure만 보강한다: viewport→page inset→card padding→section inset→required label width의 auditable inline-size budget과 protected dynamic status selector 자체의 baseline geometry 보존이다. v8 commit 뒤 새 unseen family를 잠그며 support-routing은 재사용하지 않는다.
+- 1.9.150 exact previous canonical vs v7을 fresh `/tmp/u19150`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
+- 6 cells의 task `0.1.0`, core prompt `21008e52…`, prompt `f200de8b…`, starter `ea6e6a8e…`, DESIGN `23e2ca9a…`, activation `01728b95…`, runtime/model/effort/timeout이 같다. installed Cursor skill만 previous `d7a890ac…` vs v7 `079c32e6…`이고 양 source는 exact detached clean/publishable이다.
+- Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal registered-display-name attribution으로 잠갔다. 다음 cell은 `grok-support-t1-previous`; 첫 provider/attribution/controller failure에서 `/tmp/u19150`을 동결한다.
+- 1.9.149 exact v7을 `omd-portable-reflow-v7-candidate`로 고정했다. detached clean/publishable source는 `0b81b526…`, Cursor installed skill tree SHA는 `079c32e6…`, activation SHA는 previous와 같은 `01728b95…`다.
+- diagnostic prepare는 `/tmp/u19149-v7-diagnostic`, provider 0이다. focused pin 1/1과 lint가 green이고 전체 bench의 2 red는 기존 non-Git Taste/UI UX Pro fixture뿐이다. 다음은 locked support-routing task에서 exact previous vs v7 2 arms×3 trials를 fresh Grok root에 준비하고 동등성을 잠그는 것이다.
+- 1.9.148 새 unseen non-approval `support-routing-handoff-v0.1`을 v7 commit 뒤 provider generation 전에 contract-lock했다. 새 customer-support operations domain이며 3 routing choices, reversible assignee-context toggle, handoff-label form, 3 queue/destination/owner mappings와 4-view geometry+decision hierarchy를 가진다.
+- untouched `/tmp/u19148-support-starter`는 79/85다. task/state/a11y/DESIGN/evidence/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry와 320/200% overflow만 red다. desktop percentage/nth-child widths가 mobile에 남아 destination/owner identifiers를 파편화하고 short evidence/context label이 감싸지는 것을 screenshot으로 확인했다.
+- injected break와 single-text scroller는 없다. provider call은 0이다. 다음은 exact v7 `0b81b52…`를 detached candidate로 고정하고 exact previous canonical과 fresh 2 arms×3 trials로 비교한다.
+- 1.9.147 canonical `omd-apply`의 기존 width-recovery 단계만 v7로 조였다. short atomic evidence/state/control label을 건드리기 전에 nested lateral margin/padding/fixed track/card chrome을 줄여 실제 full reading row를 확보하고, 그 전에는 wrap/nowrap/font 축소로 넘어가지 않는다. closure에 `full_row_before_text_workaround: 0`을 추가했다.
+- canonical contract 7/7과 TypeScript lint가 green이다. bench focused 47/49도 relevant tests는 green이며 남은 2개는 기존 `/tmp/omd-ui-skills-bench/vendors/{taste-skill,ui-ux-pro-max}` non-Git fixture 환경 실패다. 다음은 v7 commit 뒤 새 unseen non-approval family를 generation 전에 잠그는 것이다.
+- `/tmp/u19146` 6/6 valid COMPLETE. previous 81/77/77, v6 83/85/81이며 paired v6 W/T/L 3/0/0이다. 하지만 previous UI-Resolved 0/3, v6 1/3이고 양 Reliability@3는 0%라 v6 승격을 거절했다.
+- v6는 function/state/a11y/DESIGN/evidence/decision hierarchy와 supplied identifiers를 3/3 보존했다. residual은 t1의 `3 supplied services · 1 rollout window` 200% wrap, t3의 같은 evidence 320/200% wrap + `Require dual-operator confirmation` 200% wrap뿐이다. overflow/clipping/injected break/single-text scroller/semantic escape는 0이다.
+- 성공 t2는 mobile selected-plan surface의 lateral margin을 제거해 full reading row를 회복한 뒤 short evidence를 유지했다. t1/t3은 nested card margin/padding을 남기고 inherited 16px label을 사용했다. 다음 v7은 기존 width-recovery 단계만 full-row-before-wrap의 measured invariant로 조인다. task/selector/filename/token/evaluator branch는 추가하지 않는다.
+- Grok은 repository-free probe와 6개 장문 cell을 모두 성공했다. 6/6 reported `Cursor Grok 4.5 High`, failure/timeout/retry/fallback/substitution 0, pacing 5/5와 cache preflight 6/6 green이다. 현재 workload에서 사용 가능하다.
+- Cursor 계정 로그인과 live catalog의 `cursor-grok-4.5-high` 노출을 재확인했다. repository/file/tool-free probe는 exact `OMD_CAPACITY_OK`, reported `Cursor Grok 4.5 High`, exit 0, 5,659ms와 usage를 반환했다. 이는 현재 단일 호출 가용성만 증명하며 benchmark denominator에는 포함하지 않는다.
+- 1.9.146 exact previous canonical vs v6를 fresh `/tmp/u19146`에 PREPARED했다. Luna `/tmp/u19145`는 provider 0 상태로 보존하고 provider scope를 섞지 않았다. Grok matrix는 2 arms×3 trials, previous-first 2/1 balanced이며 benchmark provider call은 0이다.
+- 6 cells의 task `0.1.0`, core prompt `f13515bb…`, prompt `3fecf23c…`, starter `4c631a5f…`, DESIGN `1ac1a370…`, activation `01728b95…`, runtime/model/effort/timeout이 같다. Cursor installed skill file만 previous `22eb96d8…` vs v6 `07c75167…`로 다르며 source는 exact detached clean/publishable이다.
+- Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal registered-display-name attribution으로 잠갔다. 다음 cell은 `grok-rotation-t1-previous`다. 첫 provider/attribution/controller failure에서 `/tmp/u19146`을 동결한다.
+- 1.9.145 exact previous canonical vs v6를 fresh `/tmp/u19145`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
+- 6 cells의 task `0.1.0`, core prompt `f13515bb…`, starter `4c631a5f…`, DESIGN `1ac1a370…`, runtime/model/effort/timeout과 activation `79911390…`가 같다. installed skill tree만 previous `a8128ccc…` vs v6 `a6009fde…`로 다르며 양 source는 exact detached clean/publishable이다.
+- Luna High/Codex·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal attribution으로 잠갔다. 다음 cell은 `luna-rotation-t1-previous`다.
+- 1.9.144 exact v6 candidate를 `omd-portable-reflow-v6-candidate`로 고정했다. detached clean/publishable source는 `d971174a…`, Cursor-adapted installed skill SHA는 `e0c111e0…`이며 exact previous와 activation은 같다. rejected v2-v5는 별도로 보존된다.
+- diagnostic prepare는 provider 0이며 denominator에 포함하지 않는다. 다음은 locked certificate-rotation task에서 exact previous vs v6 2 arms×3 trials를 fresh Luna High/Codex root에 준비하고 equality/attestation을 검증하는 것이다.
+- 1.9.143 새 unseen `certificate-rotation-plan-v0.1`을 v6 commit 뒤 provider generation 전에 contract-lock했다. 새 infrastructure-rotation domain과 ordered `<ol>` sequence 구조이며 3 rollout windows, dual-operator toggle, rotation-label form, 3 service/current/target certificate 관계, 4-view geometry+decision hierarchy를 가진다.
+- untouched `/tmp/u19143-certificate-starter`는 79/85다. task/state/a11y/DESIGN/evidence/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. residual percentage width가 service/certificate IDs를 세로 파편화하고 inherited body type의 compact label이 control과 경쟁하며 320/200% overflow가 발생하는 것을 320px screenshot으로 확인했다.
+- injected break와 single-text scroller는 없다. provider call은 0이다. 다음은 exact v6 `d971174…`를 detached candidate로 고정하고 exact previous canonical과 2 arms×3 trials를 fresh root에서 비교한다.
+- 1.9.142 canonical `omd-apply`의 기존 2e를 additive 규칙 없이 v6 순서형 절차로 재구성했다. `type role → width recovery → structure reflow → no text workaround → semantic boundary + measurement` 순서다.
+- compact control label은 declared label role을 먼저 적용하고 body/heading 상속, type role 미만 축소, 더 작은 `clamp()` 하한으로 통과하지 못한다. reflow 전후 decision container와 target/evidence/state/action ancestor 관계를 기록·대조하며 `undeclared_type_role_shrink: 0`을 closure에 추가했다.
+- canonical contract 7/7, historical one-delta experiment parity 1/1, TypeScript lint가 green이다. full suite 338/341은 green이며 2개 실패는 `/tmp/omd-ui-skills-bench/vendors`의 non-Git external vendor fixture 환경 문제다. 다음은 이 commit 뒤 새 unseen family를 provider generation 전에 고정한다.
+- `/tmp/u19141` 6/6 valid COMPLETE. previous 81/79/79, v5 77/81/81이며 paired v5 W/T/L 2/0/1이다. 하지만 두 arm 모두 UI-Resolved 0/3, Reliability@3 0%라 v5 승격을 거절했다.
+- v5는 artifact/destination 파편화를 크게 줄였지만 t2/t3에서 `Require recipient identity verification`이 320px·200% 한 줄 조건을 반복 실패했고 t2는 200% horizontal overflow도 냈다. t1은 text geometry를 통과하는 대신 target/evidence/state/action을 decision context 밖으로 이동시켜 4 viewport 모두 containment를 실패했다.
+- 생성물은 선언된 12px label role 대신 inherited 16px로 wrap하거나 `clamp(8px, ...)`로 role 아래 축소하는 양상을 보였다. 다음은 새 문장을 더하지 않고 기존 2e를 `type role → width recovery → control reflow → semantic boundary → measurement`의 짧은 순서형 v6로 재구성하고, v6 commit 뒤 또 다른 unseen family를 고정하는 것이다.
+- 1.9.141 exact previous canonical vs v5를 fresh `/tmp/u19141`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
+- 6 cells의 task `0.1.0`, core prompt `fc3eeba1…`, starter `1a68b6b9…`, DESIGN `50443a99…`, runtime/model/effort/timeout과 activation `79911390…`가 같다. installed skill tree만 previous `a8128ccc…` vs v5 `2c64b25b…`로 다르며 양 source는 exact detached clean/publishable이다.
+- Luna High/Codex·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal attribution으로 잠갔다. 다음 cell은 `luna-audit-t1-previous`다.
+- 1.9.140 exact v5 candidate를 `omd-portable-reflow-v5-candidate`로 고정했다. detached clean/publishable source는 `c61506779…`, Cursor-adapted installed skill SHA는 `16a5fbbc…`이며 exact previous와 activation은 같다. rejected v2/v3/v4는 별도로 보존된다.
+- diagnostic prepare는 provider 0이며 denominator에 포함하지 않는다. 다음은 locked audit-export task에서 exact previous vs v5 2 arms×3 trials를 fresh Luna High/Codex root에 준비하고 equality/attestation을 검증하는 것이다.
+- 1.9.139 새 unseen `audit-export-delivery-v0.1`을 v5 commit 뒤 provider generation 전에 contract-lock했다. onboarding-v1 interaction을 쓰지만 새 compliance-delivery domain과 `<dl>`-style manifest 구조이며 3 channels, recipient-verification toggle, export-label form, 3 artifact/destination pairs, 4-view geometry+decision hierarchy를 가진다.
+- untouched `/tmp/u19139-audit-starter`는 79/85다. task/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. residual percentage widths와 fixed label track이 atomic artifact/destination을 세로로 파편화하고 compact verification control이 label과 경쟁하는 것을 320px screenshot으로 확인했다.
+- native table/per-item card가 아니며 injected break와 single-text scroller가 없다. provider call은 0이다. 다음은 exact v5 `c615067…`를 detached candidate로 고정하고 exact previous canonical과 2 arms×3 trials를 fresh root에서 비교한다.
+- 1.9.138 canonical `omd-apply`의 기존 2e를 v5로 정제했다. compact control/toggle과 짝인 short label이 line budget을 넘기면 mobile에서 label full-width row를 먼저 주고 control을 다음 row/별도 정렬 영역에 둔다.
+- single atomic identifier/filename/state/short label text node 자체의 `overflow-x:auto|scroll`은 repair로 금지하고, internal horizontal scroller는 여러 항목의 수평 관계를 보존하는 실제 comparison container에만 허용한다. zero-defect outcomes에 `compact_control_label_wrap: 0`, `single_text_scroller: 0`을 추가했다.
+- focused skill contract 7/7, decision-context additive contract 1/1, TypeScript lint가 green이다. 다음은 v5 commit 뒤 새 unseen family를 provider generation 전에 contract-lock하고 exact previous-vs-v5를 검증한다.
+- `/tmp/u19137` 6/6 valid COMPLETE. previous 73/73/75, v4 79/79/81이며 paired v4 W/T/L 3/0/0, median 79 vs 73다. 하지만 두 arm 모두 UI-Resolved 0/3, Reliability@3 0%라 v4 승격을 거절했다.
+- v4는 event/endpoint atomic fragmentation을 3/3 제거하고 function/hooks/evidence를 보존했다. 남은 candidate failures는 t1/t3의 `Require signature verification` label wrap과 t2가 single source/state text 자체에 `overflow-x:auto`를 둬 만든 scrollable-region-focusable axe + invisible keyboard focus다.
+- v4 mean wall time 약 376s vs previous 336s(+11.8%), mean reported tokens 약 902k vs 736k(+22.5%)로 더 비쌌다. 다음은 기존 2e를 v5로 정제해 compact control과 짝인 short label의 full-width mobile row를 우선하고 single atomic/state/label text 자체의 horizontal scroller를 금지하며, multi-item comparison container만 accessible internal scroll을 허용한 뒤 새 unseen family에서 검증한다.
+- 1.9.137 exact previous canonical vs v4를 fresh `/tmp/u19137`에 PREPARED했다. 2 arms×3 trials, previous-first 2/1 balanced이며 provider call은 0이다.
+- 6 cells의 task `0.1.0`, core prompt `9d1f30af…`, starter `29180738…`, DESIGN `e5324ddb…`, runtime/model/effort/timeout과 activation `79911390…`가 같다. installed skill tree만 previous `a8128ccc…` vs v4 `c62fbd11…`로 다르며 양 source는 exact detached clean/publishable이다.
+- Luna High/Codex·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal attribution으로 잠갔다. 다음 cell은 `luna-webhook-t1-previous`다.
+- 1.9.136 exact v4 candidate를 `omd-portable-reflow-v4-candidate`로 고정했다. detached clean/publishable source는 `c8416c435d…`, Cursor-adapted installed skill SHA는 `8ebc7e7647…`이며 exact previous와 activation은 같다. rejected v2/v3 variants는 별도로 보존된다.
+- diagnostic prepare는 provider 0이며 denominator에 포함하지 않는다. 다음은 locked webhook destination task에서 exact previous vs v4 2 arms×3 trials를 fresh Luna High/Codex root에 준비하고 equality/attestation을 검증하는 것이다.
+- 1.9.135 새 unseen `webhook-destination-routing-v0.1`을 v4 commit 뒤 provider generation 전에 contract-lock했다. 기존 onboarding-v1 adapter를 쓰지만 새 integration-routing domain이며 3 delivery lanes, signature toggle, route-label form, 3 event/endpoint atomic pairs, 4-view geometry+decision hierarchy를 가진다.
+- untouched `/tmp/u19134-webhook-starter-v2`는 79/85다. task/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. 320px screenshot에서 residual percentage widths와 fixed generated-label track 때문에 event IDs와 endpoint paths가 세로로 파편화되고 selected source filename도 같은 decision context 안에서 wrap되는 것을 직접 확인했다.
+- task는 table/per-item card가 아닌 coherent definition surface이고 injected break opportunity가 없다. provider call은 0이다. 다음은 exact v4 `c8416c4…`를 detached candidate로 고정하고 exact previous canonical과 2 arms×3 trials를 fresh root에서 비교한다.
+- 1.9.134 canonical `omd-apply`의 기존 2e를 v4로 정제했다. table/list row뿐 아니라 같은 decision context의 선택 target·source filename·artifact ID를 atomic reflow 검사 범위에 포함한다.
+- mobile에서는 label-above-value/full-width reading cell을 internal scroller보다 우선하고, 의미상 필요한 scroll region은 accessible name + 자연 focus target 또는 `tabindex=0` + visible focus를 요구한다. generated label은 auto/max-content 또는 full-width row를 사용하고 fixed track은 모든 reflow viewport의 measured required width 이상일 때만 허용한다.
+- zero-defect outcomes에 `atomic_context_wrap: 0`, `unfocusable_scroll_region: 0`을 추가했다. focused skill contract 7/7과 TypeScript lint가 green이다. 다음은 이 commit을 exact detached v4 candidate로 고정한 뒤 새 unseen non-table family를 generation 전에 contract-lock하고 exact previous-vs-v4를 검증한다.
+- `/tmp/u19133` 6/6 valid COMPLETE. previous 81/75/65, v3 79/81/81이며 paired v3 W/T/L 2/0/1, median 81 vs 75다. 하지만 두 arm 모두 UI-Resolved 0/3, Reliability@3 0%라 v3 승격을 거절했다.
+- v3는 injected break 0과 mapping-row atomic key repair는 3/3 달성했다. 남은 candidate failures는 t1 internal scroll region의 keyboard/axe failure, t2 selected source filename의 320/200% two-line wrap, t3 fixed 64px generated label `Requirement` overflow다.
+- previous는 generated-label overflow 3/3, a11y 2/3, protected-hook loss 1/3로 더 불안정했다. 다음은 새 규칙 추가가 아니라 기존 2e를 v4로 다듬어 모든 decision-context atomic ID, label-above-value/full-width 우선, 필요한 scroll region의 name+keyboard reachability, content-sized generated label track을 잠그고 다른 unseen family에서 검증한다.
+- 1.9.133은 task/prompt/starter/DESIGN/runtime/model/effort/timeout/activation이 같고 installed skill tree만 다른 Luna High/Codex 2×3으로 준비됐다. 준비 동등성은 유효하며 완성 결과는 위 COMPLETE 기록이 정본이다.
+- `/tmp/u19132`은 첫 `secret-t1-previous`에서 Cursor HTTP 503로 FROZEN됐다. 1,026ms, event 0, product write 0, product SHA unchanged이며 나머지 5 cells는 not-started다. retry/resume/fallback/substitution은 0이다.
+- 이는 arm quality 결과가 아니다. exact preparation은 보존하지만 root 재개는 금지한다. 다음 유효 단계는 다른 사용 가능한 provider를 양 arm에 동일 적용한 별도 fresh/preregistered experiment이며, provider scope를 분리 보고해야 한다.
+- 1.9.132는 task/prompt/starter/DESIGN/activation/runtime/model/effort/timeout이 같고 installed skill tree만 다른 exact previous-vs-v3 2×3으로 준비됐다. 준비 동등성은 유효하며 실행 결과와 stop 상태는 위 frozen 기록이 정본이다.
+- 1.9.131 exact v3 candidate를 `omd-portable-reflow-v3-candidate`로 고정했다. detached clean/publishable source는 `b85ad330…`, Cursor-adapted installed skill SHA는 `e420add7…`이며 exact previous와 activation은 같다. rejected v2 variant는 별도로 보존된다.
+- diagnostic prepare는 provider 0이며 denominator에 포함하지 않는다. 다음은 locked environment-secret task에서 previous vs v3 2 arms×3 trials를 fresh root에 준비하고 equality/attestation을 검증하는 것이다.
+- 1.9.130 새 unseen `environment-secret-mapping-v0.1`을 v3 commit 뒤, provider generation 전에 contract-lock했다. 기존 onboarding-v1 adapter를 쓰지만 새 release-secret configuration domain이며 environment choice/toggle/form, 3 atomic identifiers, 4-view geometry+decision hierarchy를 가진다.
+- untouched `/tmp/u19130-environment-secret-starter`는 79/85다. task/state/a11y/DESIGN/evidence/overflow/clipping/overlap/hierarchy는 green이고 mobile/320/200% text geometry만 red다. 320px screenshot에서 desktop nth-child widths가 mobile stack에 남아 identifiers가 세로로 파편화되는 것을 직접 확인했다.
+- starter에는 injected `<wbr>`가 없고 prompt는 break opportunity 삽입을 명시적으로 금지한다. provider call은 0이다. 다음은 exact previous canonical vs exact v3를 fresh 2 arms×3 trials로 준비해 skill tree만 다르게 검증하는 것이다.
+- 1.9.129 canonical `omd-apply`의 기존 reflow-integrity closure를 v3로 보강했다. atomic identifier 내부 `<wbr>/<br>/U+200B/&shy;/generated break separator` 삽입을 금지하고, mobile stack 뒤 desktop `:nth-child` width/grid-area/flex-basis를 equal-or-higher specificity로 해제하며 computed full reading width를 확인한다.
+- zero-defect outcomes에 `injected_break_opportunity: 0`, `residual_mobile_column_width: 0`을 추가했다. browser proof가 없으면 source specificity로 fail-close하고 break tag 존재 자체를 성공으로 주장하지 못한다.
+- focused skill contract 7/7과 TypeScript lint가 green이다. 다음은 이 commit을 exact detached candidate로 고정한 뒤 새 unseen family를 generation 전에 contract-lock하고, exact previous canonical과 2 arms×3 trials로 비교하는 것이다.
+- `/tmp/u19128`은 preregistered stop으로 FROZEN이다. valid t1 previous=81/UI-Resolved, candidate=75/not resolved로 candidate가 paired loss했다. t2 candidate는 Cursor HTTP 503, 985ms, event 0, product write 0이며 이후 3 cells는 not-started다. retry/resume/fallback/substitution은 0이다.
+- candidate failure 원인은 atomic dot key에 `<wbr>`를 삽입하고, mobile `.matrix td` reset보다 specificity가 높은 desktop `td:nth-child` width 34/16/30/20%를 남긴 것이다. mobile/320/200% key/channel/owner/control fragmentation, 320/200% generated label failure가 났다.
+- 1.9.126 candidate는 release evidence로 rejected다. 다음은 canonical closure에 inserted break opportunity 0(`<wbr>/<br>/ZWSP/soft hyphen/generated separator`)와 residual mobile column width 0/equal-specificity reset을 추가한 v3를 만들고 fresh root에서 검증한다. `/tmp/u19128` 재개 금지다.
+- 1.9.128은 exact previous canonical vs reflow candidate 2 arms×3 trials로 준비됐고 task/prompt/starter/DESIGN/activation/runtime/model/effort/timeout이 같으며 installed skill tree만 달랐다. 실행 결과와 중단 상태는 위 frozen 기록이 정본이다.
+- 1.9.127 새 unseen `feature-flag-rollout-review-v0.1`을 candidate commit 뒤, provider generation 전에 contract-lock했다. dashboard-v1 filter/disclosure/acknowledgement이며 dot-separated flag key와 3 reflow viewports, 4-view hierarchy를 가진다.
+- untouched `/tmp/u19127-feature-flag-starter`는 79/85다. task/state/a11y/DESIGN/evidence/overflow/clipping/overlap은 green이고 mobile/320/200% short atomic/control line budget + action separation만 red다. 320px에서 narrow label column, two-line control, owner fragmentation, squeezed decision action을 직접 확인했다.
+- candidate는 detached `fb44964c…`, previous canonical은 detached `f013dbd9…`로 준비됐다. 다음은 exact previous vs candidate 2 arms×3 trials를 fresh root에 준비하고 동등성 검증 후 실행한다.
+- 1.9.126 canonical `skills/omd-apply/SKILL.md`에 general `reflow-integrity closure` 후보를 additive 1개 규칙으로 반영했다. task/selector/brand/filename/new token 없이 reading width 우선, unsafe nowrap 금지, atomic/generated-label, decision containment와 target emphasis를 보존한다.
+- closure acceptance는 mid-token/control/generated-label/overflow/clipping/decision escape/target emphasis loss 7개가 모두 0이다. focused skill-contract+activation isolation tests와 TypeScript가 green이다.
+- 아직 public promotion이 아니다. exact previous `f013dbd9…` vs candidate commit을 새 unseen family에서 2 arms×3 trials로 비교해 candidate Reliability@3 100%와 guardrail 0 regression을 확인해야 한다.
+- `/tmp/u19125` 6/6 valid COMPLETE. control 85/79/81(UI-Resolved 1/3, Reliability@3 0%), reflow v2 85/85/85(UI-Resolved 3/3, Reliability@3 100%), paired v2 W/T/L 2/1/0이다.
+- control t2는 mobile/320/200% atomic fragmentation + 320/200% generated label failure, t3는 320/200% short atomic wrap을 냈다. v2는 3/3에서 모두 제거했고 v1의 nowrap overflow/clipping, generated-label overflow, target emphasis 약화도 재발하지 않았다.
+- 320px control/v2 screenshot을 직접 대조했다. v2는 artifact/owner/channel/manifest/status를 full-width reading row로 만들고 선택 target→evidence→state→action 경계를 보존한다. function/DESIGN/a11y/evidence/overflow/clipping/overlap/hierarchy는 v2 3/3 green이다.
+- preregistered canonical-candidate threshold를 충족했다. 다음은 task/selector/filename 없이 일반화한 bounded reflow closure를 canonical `skills/omd-apply/SKILL.md`에 최소 반영하고, 또 다른 unseen family에서 exact previous vs candidate Reliability@3를 검증한다. owner review는 불필요하다.
+- 1.9.125 exact current control vs activation-only reflow v2를 fresh `/tmp/u19125`에 PREPARED했다. 2 arms×3 trials, control-first 2/1 balanced이며 provider call은 0이다.
+- 6 cells의 task `0.1.0`, core prompt `b7a2ab0a…`, starter `0ce6cb3d…`, DESIGN `67727674…`, runtime/model/effort/timeout과 installed skill SHA `d7a890ac…`가 같다. control full prompt `0ff29a42…`, v2 `ed02c018…`이며 activation만 다르다.
+- exact source는 양쪽 모두 detached clean `f013dbd9…`, product trees untouched다. Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal attribution으로 잠갔다. 다음 cell은 `artifact-t1-control`이다.
+- 1.9.124 `omd-reflow-integrity-v2-experimental`을 activation-only로 잠갔다. exact current OmD source/commit/install identity는 control과 같고, full-width/minmax 선행·overflow를 만드는 nowrap 금지·generated label box·target emphasis·decision containment만 추가했다. canonical skill은 unchanged다.
+- 새 unseen `release-artifact-promotion-v0.1`을 generation 전에 contract-lock했다. approval-v1 interaction을 쓰지만 새 platform-release domain이며 atomic artifact filename, manifest disclosure, filter/dialog, 3 reflow viewports, 4-view decision hierarchy를 가진다.
+- untouched `/tmp/u19124-release-artifact-starter`는 79/85다. Function/state/a11y/DESIGN/evidence와 overflow/clipping/overlap은 green이고, mobile/320/200%의 artifact·owner·short control fragmentation과 2-column decision squeeze만 의도대로 red다. narrow screenshot을 직접 확인했다.
+- provider call은 0이다. 다음은 exact current control vs activation-only reflow v2를 fresh 2 arms×3 trials로 준비하고 동일 task/prompt/starter/DESIGN/runtime/model/effort/timeout/skill identity를 검증한 뒤 serial 실행한다.
+- `/tmp/u19123` 6/6 valid COMPLETE. control 79/79/79(UI-Resolved 0/3), reflow 83/85/81(UI-Resolved 1/3), paired experimental W/T/L 3/0/0이다.
+- experimental은 3/3에서 atomic/control fragmentation을 제거했지만 trial 1은 200% nowrap overflow+clipping, trial 3은 generated-label overflow+320px target emphasis 약화를 만들었다. 방향은 유효하지만 Reliability@3 0%라 그대로 promotion 금지다.
+- canonical은 unchanged다. 다음은 full-width reading row 우선, overflow를 만드는 nowrap 금지, generated label box+target emphasis 보존을 명시한 activation v2를 만들고 또 다른 unseen task에서 검증한다. objective failure라 owner review는 불필요하다.
+- 1.9.123 current control vs reflow activation-only comparison을 fresh `/tmp/u19123`에 PREPARED했다. 2 arms×3 trials, control-first 2/1 균형이며 provider call은 0이다.
+- 6 cells의 task/core prompt/starter/DESIGN/runtime/model/effort/timeout과 installed skill SHA `d7a890ac…`가 같다. control full prompt `2d0fffd…`, experimental `b0f04dad…`이며 유일한 차이는 preregistered activation delta다.
+- exact source는 양쪽 모두 detached clean `f013dbd9…`, product trees untouched다. Cursor/Grok 4.5 High·900s·serial·120s pacing·max-new-cells 1·no retry/fallback/repair/substitution·Internal attribution으로 잠갔다. 다음 cell은 `localization-t1-control`이다.
+- 1.9.122 `omd-reflow-integrity-experimental` activation-only delta를 PREPARED했다. exact current detached `f013dbd9…` skill/install hash는 control과 같고 유일한 차이는 320px·200% atomic identifier/short control closure + declared decision context containment 한 문단이다.
+- 새 unseen `localization-bundle-handoff-v0.1` task contract를 generation 전에 잠갔다. CSV form과 다른 localization dashboard family이며 filter/disclosure/acknowledgement, 4 artifacts, 2 evidence disclosures, 3 text-geometry viewports, 4-view decision hierarchy를 가진다.
+- untouched `/tmp/u19123-localization-starter`는 contract/state/a11y/evidence가 green인 57/85 repair baseline이다. locale artifact와 `View source` wrapping, state/evidence 평탄화, DESIGN mismatch를 의도대로 검출했다. provider call은 0이다.
+- 다음은 exact current control vs activation-only reflow experimental을 이 unseen task에서 paired comparison한다. task/starter/DESIGN/runtime/model/effort/timeout/installed skill hash는 같고 activation만 달라야 한다.
+- `/tmp/u19121` 3/3 cells가 valid 완료됐지만 UI-Resolved 0/3, Reliability@3 0%다. objective는 81/81/77, median 95.3%이며 retry/fallback/repair/replacement/substitution은 0이다.
+- 3/3 모두 `customer-update-july.csv`가 320px·200%에서 두 줄로 분할돼 mid-token/short-atomic geometry를 실패했다. 세 narrow screenshot에서 직접 확인했고 기능·DESIGN grounding·accessibility·evidence는 3/3 green이다.
+- trial 3은 추가로 state/action을 decision context 밖에 둬 4-view `roles_inside_container`를 실패했다. 1/3 secondary regression이며 공통 cluster는 short atomic reflow closure 부재다.
+- canonical `omd-apply`는 이 checkpoint에서 unchanged다. 다음은 `reflow integrity closure` 한 규칙만 가진 non-canonical activation delta를 만들고, 이 task를 재사용하지 않은 다른 unseen family에서 exact current control과 비교하는 단계다.
+- 1.9.121 exact current canonical `omd-apply` Reliability@3 baseline을 fresh `/tmp/u19121`에 PREPARED했다. one opaque arm×3 trials, exact detached source `f013dbd9…`, canonical source SHA `22eb96d8…`, installed Cursor skill SHA `d7a890ac…`다.
+- 3 cells의 task/core+full prompt/starter/DESIGN/activation/skill identity가 같고 product tree untouched, text geometry + decision hierarchy oracle preregistered, source clean/detached/publishable을 확인했다.
+- 실행은 Cursor/Grok 4.5 High, effort high, timeout 900s, global serial, 120s pacing, max-new-cells 1, no retry/fallback/repair/substitution, Internal attribution only로 잠갔다. provider call은 아직 0이며 다음 cell은 `data-import-t1-jade`다.
+- 1.9.120 새 unseen non-approval `data-import-mapping-v0.1` task contract를 ACCEPTED했다. onboarding/dashboard/approval과 다른 CSV mapping configuration family이며 기존 `onboarding-v1` interaction adapter만 재사용한다.
+- generation 전에 matching-key choice, reversible missing-key policy, invalid/valid mapping name, 3 mapping rows, mobile/320/200% text geometry, 4-view target→evidence→state→action hierarchy를 잠갔다. 새 evaluator branch나 score weight 변경은 없다.
+- untouched `/tmp/u19120-data-import-starter`는 contract/state/access/evidence가 모두 green인 57/85 repair baseline이다. DESIGN mismatch, state/evidence 평탄화, 320px·200% filename fragmentation을 의도적으로 검출했고 narrow screenshot에서도 확인했다. provider call은 0이다.
+- 다음은 exact current canonical `omd-apply`를 fresh one-arm×3 trials로 실행해 Reliability@3와 visible defect cluster를 확인하는 단계다. 3/3 ceiling이면 canonical unchanged, 반복 실패면 seen task에서만 bounded diagnosis 후 다른 unseen family로 검증한다.
+- 1.9.119 actual shipment owner export를 strict intake하고 SHA `2170195b…`로 hash-lock했다. 3 comparisons/12 axes가 exact complete이며 schema/epoch/reviewer/family/trial/choice mismatch는 0이다.
+- owner normalized 결과는 Functionality 3/3 tie, Usability OmD 1 win+2 tie, Fidelity와 Ship Preference는 각각 OmD 1/Impeccable 1/tie 1, both-fail 0이다. 전체 12축 중 tie는 7개다.
+- deterministic OmD W/T/L 2/1/0과 함께 읽어도 반복적인 owner-visible loss cluster가 없다. canonical `omd-apply`는 unchanged이며 새 rule은 만들지 않는다.
+- 다음 유효 단계는 이 결과를 seen training artifact로만 보존하고, 다른 unseen non-approval family를 generation 전에 contract-lock하는 것이다.
+- 1.9.118 same-trial anonymous owner gallery가 `/tmp/u19118-public-v2/shipment-exception-triage-v0.1/`에 준비됐다. 3 comparisons/12 screenshots/12 axes이며 private reveal은 `/tmp/u19118-private-v2/reveal.json`에 분리됐다.
+- browser-harness desktop 1676px/mobile 390px에서 overflow 0, missing image 0, identity leak 0이다. incomplete export는 차단되고 첫 unanswered axis로 focus한다.
+- 검수 탭은 `http://127.0.0.1:4781/shipment-exception-triage-v0.1/?v=2`에 열려 있다. STOP: actual owner export JSON이 다음 유효 입력이며 synthetic judgment/reveal은 금지한다.
+- `/tmp/u19117` 6/6 cells가 COMPLETE됐다. 두 arm 모두 valid/UI-Resolved 3/3, Reliability@3 100%; objective paired OmD W/T/L은 2/1/0이며 OmD scores 85/85/81, Impeccable 81/81/81이다.
+- 반복 차이는 DESIGN-grounding `primary_action` color다. OmD median 85, Impeccable median 81; wall/token은 OmD가 낮지만 1 task×3 trials라 descriptive-only다.
+- 1.9.117 exact current OmD vs exact Impeccable prompt-only comparison이 fresh `/tmp/u19117`에 PREPARED됐다. 2 arms×3 trials, jade/ivory→ivory/jade→jade/ivory 순서이며 provider call은 0이다.
+- 6 cells의 task `0.1.0`, core prompt `78810529…`, starter `f871d45b…`, DESIGN `0bc7d897…`가 같고 arm별 activation+skill만 다르다. OmD는 exact detached `f013dbd9…`/`d7a890ac…`, Impeccable은 `4d849eb7…`/`8612a4ec…`다.
+- Cursor/Grok 4.5 High, effort high, 900s, global serial, 120s pacing, max-new-cells 1, no retry/fallback/repair/substitution, Internal attribution only로 잠갔다. 다음 cell은 `shipment-t1-jade`다.
+- 1.9.116 새 unseen non-approval `shipment-exception-triage-v0.1` task contract가 ACCEPTED됐다. fictional RelayDesk 배송 예외 triage이며 generic `dashboard-v1` interaction만 재사용한다.
+- generation 전에 mobile/320/200% text geometry와 queue/selected-context의 target→evidence→state→action hierarchy를 4 viewport에 preregister했다. untouched `/tmp/u19116-shipment-starter`는 85/85, critical 6/6, text geometry 12/12, decision hierarchy 32/32다.
+- mobile screenshot에서 short label 수평 유지, label-above-value metadata, child status dot, 명확한 selected shipment boundary를 직접 확인했다. provider call은 0이다.
+- 다음은 exact current OmD와 exact Impeccable prompt-only를 같은 task에서 2 arms×3 trials로 비교하고, deterministic tie인 경우에만 same-trial anonymous owner gallery를 만든다.
+- 1.9.115에서 모든 `approval-v1` future task가 text geometry + decision hierarchy를 반드시 선언하도록 sandbox preparation을 fail-closed 했다. missing oracle/viewport, row+context scope 누락, role exact-one protection 누락, 8px 미만 action gap은 provider 전에 거절된다.
+- payout/deletion task를 `0.2.0`으로 올리고 label-above-value mobile geometry, child status dot, visible target→evidence→state→action boundary를 적용했다. historical `0.1.0` records와 owner judgment는 unchanged다.
+- fresh `/tmp/u19115-payout-starter`와 `/tmp/u19115-deletion-starter`는 각각 85/85, critical 6/6, text geometry 12/12, decision hierarchy 12/12다. 두 mobile screenshot을 직접 확인했고 provider call은 0이다.
+- `/tmp/u19114` 3/3 cells가 valid/UI-Resolved/85로 COMPLETE됐다. Reliability@3 100%, text geometry 12/12, decision hierarchy 12/12, evidence/unknown 3/3이며 retry/fallback/repair/replacement/substitution은 0이다.
+- mobile screenshots 3개를 직접 확인했고 deletion owner review의 short-label 2-line wrap, vertical status fragmentation, pseudo collision, flat decision boundary가 재현되지 않았다. wall time median 281,392ms, token median 114,486이며 compute는 descriptive-only다.
+- preregistered 3/3 ceiling decision에 따라 rollback-specific rule을 만들지 않고 canonical `omd-apply`를 유지한다. 이 결과는 Internal structural reliability evidence이며 public model/superiority claim이 아니다.
+- 1.9.114 exact current canonical `omd-apply` Reliability@3 baseline이 `/tmp/u19114`에 provider-free PREPARED됐다. one opaque arm×3 trials, exact detached source `f013dbd9…`, canonical source SHA `22eb96d8…`, installed Cursor skill SHA `d7a890ac…`다.
+- 3 cells의 task/core+full prompt/starter/DESIGN/activation/skill identity가 같고 product tree untouched, text geometry + decision hierarchy oracle preregistered, source clean/detached/publishable이 확인됐다.
+- execution은 Cursor/Grok 4.5 High, effort high, timeout 900s, global serial, 120s pacing, max-new-cells 1, no retry/fallback/repair/substitution, Internal attribution only로 잠겼다. provider call은 아직 0이며 다음 cell은 `rollback-t1-jade`다.
+- 1.9.113 새 unseen `rollback-authorization-v0.1` task contract가 ACCEPTED됐다. payout/deletion과 다른 production rollback domain이며 generic `approval-v1` interaction만 재사용한다.
+- generation 전 text geometry scopes와 container/target/evidence/state/action hierarchy roles를 4 viewport에 preregister했다. untouched `/tmp/u19113-rollback-starter`는 browser evaluator 85/85, critical 6/6, states 3/3, viewports 4/4, 새 geometry/hierarchy checks 모두 green이다.
+- mobile fixture는 label-above-value metadata와 child status dot을 사용해 두 줄 short control, owner/status fragmentation, pseudo collision을 제거했다. screenshot도 직접 시각 확인했다.
+- prompt SHA `2ecb8b11…`, task `28b2fe54…`, starter `1001d121…`, DESIGN `10e894e9…`; focused task 1/1 + evaluator 17/17, TypeScript green, provider 0이다.
+- 다음은 exact current canonical `omd-apply` Reliability@3 baseline 준비다. model/skill run은 아직 0이다.
+- 1.9.112 forward-only decision hierarchy evaluator capability가 ACCEPTED됐다. future task가 container/target/evidence/state/action selectors를 preregister하면 exact count·visibility·containment·DOM reading order·target emphasis·state distinction·action gap을 기존 geometry critical gate에서 검사한다.
+- marker만 붙이고 모든 역할을 평평하게 스타일링한 fixture, reordered/overlapping action, missing role은 fail하고 complete hierarchy는 7/7 pass다. focused 17/17, TypeScript green, provider 0이다.
+- 새 card/warning/icon/risk score/color/fact는 요구하지 않으며 legacy task, score schema 0.5, 85점 최대값, `/tmp/u19108` history는 unchanged다.
+- 다음은 text geometry + decision hierarchy oracle을 generation 전에 잠그는 새 unseen high-consequence holdout 계약이다.
+- 1.9.111 forward-only text-geometry evaluator capability가 ACCEPTED됐다. task가 viewport+dense scope를 opt-in하면 mid-token split, 짧은 atomic text/control label line-budget 초과, generated pseudo-content box overflow, missing scope를 기존 geometry critical gate에서 fail-closed 한다.
+- historical task는 oracle이 없으면 exact 기존 3 geometry checks를 유지하고 score schema 0.5/85점 최대값도 unchanged다. `/tmp/u19108`은 재채점하지 않았다.
+- pure good/adversarial/missing-scope/legacy 관찰을 포함한 focused 18/18와 TypeScript가 green이고 provider call은 0이다.
+- 다음은 style heuristic이 아니라 target/evidence/state/action의 stable semantic marker를 쓰는 decision-context hierarchy contract와 새 unseen holdout이다.
+- 1.9.110 실제 owner export를 strict intake로 검증·hash-lock했다. 3 comparisons/12 axes가 exact complete이고 제출 SHA는 `07cc353f…`다.
+- normalized 결과는 Functionality 3/3 tie, Usability 3/3 tie, Fidelity 3/3 both-fail, Ship Preference 3/3 both-fail이다. canonical control과 decision-context experimental 모두 owner axis win 0이며 experimental 승격은 거절했다.
+- owner 진단은 좁은 화면의 두 줄/세로 글자 파편화와 workspace/evidence/status/scope/action 위계 평탄화다. 기존 85/85 evaluator가 overflow·clip·overlap은 잡지만 destructive wrapping과 decision hierarchy는 놓친 objective false positive로 기록했다.
+- canonical `omd-apply`는 unchanged다. 다음은 `/tmp/u19108`을 재채점하지 않고 provider-free text-fragmentation + decision-hierarchy evaluator contract를 accepted fixture와 새 unseen holdout에서 검증하는 단계다.
+- 1.9.108 `/tmp/u19108` 6/6 cells가 COMPLETE됐다. control과 experimental 모두 valid/UI-Resolved/85 3/3, Reliability@3 100%, paired objective W/T/L 0/3/0이다.
+- control mean/median은 271,476/275,831ms·135,446/112,950 tokens, experimental은 375,391/395,240ms·167,700/104,733 tokens다. latency comparable=false이고 1 task×3 trials이므로 compute는 descriptive-only다.
+- failure/timeout/retry/fallback/repair/replacement/model substitution은 0이고 5/5 pacing 및 모든 Cursor cache preflight가 green이다. canonical skill은 unchanged다.
+- 1.9.109 same-trial anonymous owner gallery가 `/tmp/u19109-public/deletion-approval-v0.1/`에 준비됐다. 3 comparisons/12 axes/12 screenshots, identity leak 0, desktop/mobile overflow 0, missing image 0, incomplete export block pass다.
+- 인앱 브라우저 `http://127.0.0.1:4780/deletion-approval-v0.1/`가 visible handoff다. STOP: 실제 owner export JSON이 다음 유효 입력이며 synthetic judgment/reveal은 금지한다.
+- 1.9.108 exact current control vs non-canonical decision-context experimental matrix가 `/tmp/u19108`에 PREPARED됐다. 2 arms×3 trials, control-first 2/1 균형, provider call 0이다.
+- 6 cells는 task/version/core prompt/full prompt/starter/DESIGN이 같고 arm별 skill hash만 다르다. control은 detached exact `f013dbd9…`/`d7a890ac…`, experimental은 clean committed `adad3759…`/`c2ac9f7e…`다.
+- Cursor/Grok 4.5 High, effort high, 900s, serial, 120s pacing, no retry/fallback/repair/substitution, Internal registered display-name scope로 잠갔다. 다음 cell은 `deletion-t1-control`이다.
+- 1.9.107 non-canonical `decision-context hierarchy closure` delta가 PREPARED됐다. canonical `skills/omd-apply/SKILL.md`와의 차이는 고위험 결정에서 target→evidence→state/blocker→action boundary를 기존 사실·구조·token으로 복원하는 정확히 한 문단이다.
+- 새 warning/risk score/legal conclusion/state/control/token/container/color/icon/fact 생성은 명시적으로 금지했고 이미 hierarchy가 명확하면 preserve로 종료한다. canonical skill은 unchanged다.
+- skill validator, focused 3/3, lint/build가 green이다. dirty-source diagnostic install은 adapter/path/hash를 확인하는 용도이며 non-publishable이라 denominator에 포함하지 않는다.
+- 1.9.106 provider-free unseen `deletion-approval-v0.1` task contract가 ACCEPTED됐다. payout의 금융 맥락을 재사용하지 않고 영구 삭제 승인이라는 새 고위험 결정 family를 만들었으며 기존 `approval-v1` evaluator와 schema/weight는 변경하지 않았다.
+- untouched fresh `/tmp/u19106-deletion-starter-v2`는 85/85, critical 6/6, state groups 3/3, four-view geometry/keyboard/axe/evidence가 모두 green이다. prompt SHA `c482379f…`, product SHA `9b326324…`, provider 0이다.
+- 첫 diagnostic root는 task unknown-regex가 제공된 file count를 marketing proof로 오인해 80/85였고 denominator에서 제외했다. fixture/evaluator는 건드리지 않고 task regex만 최소 수정한 fresh root로 acceptance를 닫았다.
+- canonical `omd-apply`는 아직 변경하지 않았다. 다음은 exact current control과 `decision-context hierarchy closure` 한 규칙만 추가한 non-canonical experimental arm을 이 holdout에서 비교하는 단계다.
+- 1.9.98 pricing owner blind review는 functionality 3/3 tie, usability/ship은 exact 1.9.78 control 2 wins + 1 tie였다. 1.9.95 adaptive-data-surface delta는 승격하지 않았다.
+- 1.9.99에서 current `omd-apply`를 exact control commit `c285d25515ec8959e66ceeb7703417aad531cd95`와 byte-identical하게 복원했다. historical evidence는 보존했고 install 36/36, portable channel 3/3, lint/build가 green이다.
+- 1.9.100 provider-free unseen `access-review-v0.1` task contract가 ACCEPTED됐다. fictional Permit access-review console은 기존 `dashboard-v1` evaluator를 재사용하며 4 requests, 3 filters, 2 disclosures, 1 acknowledgement와 desktop/390/320/200%-zoom을 고정한다.
+- 첫 diagnostic starter는 muted contrast 4.497:1과 `PRM-104 requests`의 fabricated-metric 오인으로 실패했다. fixture만 최소 수정하고 evaluator/skill/weight/history는 변경하지 않았으며 diagnostic root는 denominator로 재사용하지 않는다.
+- fresh `/tmp/u19100-access-starter-v2`는 85/85, critical 6/6, 4-view geometry/keyboard/axe/evidence 모두 green이다. starter SHA `95da4fc7…`, prompt SHA `a3041c9f…`, provider 0이다.
+- 1.9.101 exact current-skill Reliability@3 baseline이 `/tmp/u19101`에 provider-free PREPARED됐다. one opaque arm×3 trials, exact detached source `f013dbd9…`, canonical source SHA `22eb96d8…`, Cursor-adapted tree SHA `d7a890ac…`이고 3 cells의 task/prompt/starter/activation/skill identity가 같다.
+- execution은 Cursor/Grok 4.5 High, effort high, timeout 900s, global serial, 120s pacing, max-new-cells 1, no retry/fallback/repair/substitution, Internal attribution only로 잠겼다. focused 5/5, lint/build green, provider 0이다.
+- `/tmp/u19101` 3/3 cells가 valid/UI-Resolved/85로 COMPLETE됐다. Reliability@3 100%, evidence/unknown 3/3, failure/timeout/retry/fallback/repair/substitution 0이다.
+- trial wall time은 286,669/430,861/320,520ms, tokens는 186,999/128,698/319,840으로 compute 분산은 크지만 품질은 deterministic ceiling이다. 두 pacing은 monotonic 120.002s로 green이고 invocation별 cache/evaluator preflight도 3/3 pass다.
+- access-review에서는 새 규칙을 만들 failure cluster가 없으므로 current skill을 변경하지 않는다. 다음은 다른 unseen task family를 provider-free로 선택하고, 이 결과는 Internal bounded Reliability claim만 유지한다.
+- 1.9.102 provider-free unseen `payout-approval-v0.1` task contract가 ACCEPTED됐다. 새 generic `approval-v1` adapter는 filter, disclosure, approval decision의 정확히 3 state groups를 유지해 schema 0.5 max 85를 바꾸지 않는다.
+- approval decision은 dialog initial closed → open+focus inside → cancel+trigger focus restore → reopen+confirm+status change+close+trigger focus restore를 fail-closed 검사한다. exact protected hooks에는 초기 hidden dialog/buttons visibility도 포함된다.
+- untouched `/tmp/u19102-payout-starter`는 85/85, critical 6/6, 4-view geometry/keyboard/axe/evidence green이다. starter SHA `4de76062…`, core prompt SHA `5682362e…`, provider 0이다.
+- focused task/decision 3/3, evaluator hardening 15/15, lint/build green이다. browser-gated failclosed e2e 1개는 환경 opt-in이 없어 skip됐고 실패는 아니다.
+- 1.9.103 payout frontier comparison이 `/tmp/u19103`에 provider-free PREPARED됐다. exact current OmD `f013dbd9…`(skill SHA `d7a890ac…`)와 exact Impeccable prompt-only `4d849eb7…`(skill SHA `8612a4ec…`) 두 arms×3 trials다.
+- 6 cells는 task `0.1.0`, core prompt `5682362e…`, starter/DESIGN `4de76062…`가 같고 arm별 preregistered activation만 다르다. exact detached/clean/publishable source, within-arm skill identity, untouched product tree를 확인했다.
+- order는 jade/ivory → ivory/jade → jade/ivory로 arm-first 2/1 균형이다. Grok 4.5 High, effort high, 900s, global serial, 120s pacing, max-new-cells 1, no retry/fallback/repair/substitution, Internal attribution only다.
+- `/tmp/u19103`은 6/6 COMPLETE다. 두 arms 모두 valid/UI-Resolved/85 3/3, Reliability@3 100%, paired objective W/T/L 0/3/0이며 approval dialog/focus, 4-view geometry, keyboard/axe/evidence gate가 모두 green이다.
+- OmD mean/median은 321,257/334,675ms·182,213/148,689 tokens, Impeccable은 556,041/464,729ms·312,106/239,720 tokens다. latency comparable=false이고 1 task×3 trials이므로 efficiency는 descriptive-only다.
+- failure/timeout/retry/fallback/repair/replacement/model substitution은 0이고 5/5 pacing이 green이다. invocation 4 전 Codex sandbox cache EPERM은 experimental invocation/cell 생성 전에 발생했고 authorized sole invocation 4가 preflight를 통과했다.
+- deterministic ceiling tie이므로 current OmD skill은 변경하지 않는다. 다음은 same-trial 3 pairs를 identity-hidden owner gallery로 묶어 Functionality/Usability/Fidelity/Ship Preference를 판단하는 단계이며 그 전에는 winner/public rank를 선언하지 않는다.
+- 1.9.104 same-trial owner gallery가 `/tmp/u19104-public/payout-approval-v0.1/`에 준비됐다. trial 1/2/3 각 exact pair, desktop+mobile 양쪽으로 3 comparisons/12 screenshots다.
+- public identity leak 0이고 private reveal은 `/tmp/u19104-private/reveal.json`에 분리했다. browser-harness desktop 2545px/mobile 390px overflow 0, missing image 0, incomplete export block+focus pass다.
+- 인앱 브라우저 `http://127.0.0.1:4779/payout-approval-v0.1/`를 visible handoff로 열었다. STOP: 실제 owner가 3 comparisons×4 axes를 판단해 export한 JSON이 다음 유효 입력이며 synthetic judgment/reveal은 금지한다.
+- 실제 owner export를 strict owner-only intake로 검증·hash-lock했다. 3 comparisons/12 axes가 exact complete이며 schema/epoch/reviewer/family/trial/choice mismatch 0이다.
+- normalized 결과는 Functionality OmD 0/Impeccable 0/Tie 2/Both fail 1, Usability·Fidelity·Ship 각각 OmD 0/Impeccable 2/Tie 0/Both fail 1이다. Trial 1은 전축 both-fail, Trial 2/3은 functionality tie+나머지 Impeccable이다.
+- 반복 진단 가설은 `decision-context hierarchy closure`: 고위험 결정에서 selected entity/evidence/status/action boundary를 inline prose로 평평하게 만들지 않고 distinct metadata hierarchy와 stable dense-data geometry로 보존한다.
+- canonical OmD는 변경하지 않는다. 다음은 새 unseen high-consequence decision family의 provider-free task contract를 먼저 만들고, 그 뒤 non-canonical experimental delta를 exact current control과 비교한다. payout seen artifact로 train+validate 동시 사용 금지다.
+- 1.9.79 provider-free versioned skill control이 ACCEPTED됐다. exact detached commits `1aa81ddb…`/`c285d255…`를 opaque `slate`/`ember` arm으로 설치하고 attached clean exact-commit source를 fail-closed 한다.
+- Codex와 Cursor에서 paired prompt/instructions/activation은 runtime별 byte-identical이고 skill hash만 다르다. path/PROMPT/AGENTS/full manifest identity leak scan, focused 2/2, lint/build, independent BLOCK 0/WARN 0, provider 0이다.
+- 1.9.80 provider-free versioned matrix preparation이 ACCEPTED됐다. optional absolute `vendors_root`를 matrix controller가 모든 cell preparer에 전달하고 relative root를 output 생성 전에 거절한다. real detached slate/ember matrix와 focused 5/5, lint/build/syntax/diff가 green이고 provider 0이다.
+- 1.9.81 fresh versioned skill live matrix를 LOCKED했다. `/tmp/u1980`, 3 tasks×2 opaque arms×3 trials=18 cells, Grok 4.5 High, task별 arm-first 2/1 균형, 120s pacing, max_new_cells=1, no retry/fallback/substitution이다.
+- `/tmp/u1980` 18/18 preparation이 완료됐다. 모든 task에서 starter/DESIGN/core prompt/activation equality, exact detached commits, 두 distinct skill hashes, untouched product tree를 확인했다. evaluator preflight와 repository/file/tool 0 Grok capacity probe(`OMD_CAPACITY_OK`, exact display name)도 통과했다.
+- `/tmp/u1980`은 cell 1/18 뒤 FROZEN됐다. provider/process/edit/evaluator는 완료되고 85/85였지만 exporter가 preregistered Internal `runtime-reported-display-name`도 무조건 `invalid-attribution`으로 분류했다. STOP sentinel을 두었고 resume/rescore/relabel/substitution은 금지한다.
+- 다음은 provider-free attribution-plane separation이다. selector↔registered display label/runtime/binary/provider usage가 맞는 explicitly Internal matrix만 internal-valid로 허용하고, public/Verified model claim은 계속 막은 뒤 fresh replacement root를 새로 preregister한다.
+- 1.9.82 attribution-plane separation을 LOCKED했다. default/public은 provider-observed-only를 유지하고, explicit `internal-registered-display-name` scope에서만 registered Cursor selector↔display label을 internal-valid로 허용한다. `/tmp/u1980` rescore는 금지한다.
+- 1.9.82 provider-free attribution-plane separation이 ACCEPTED됐다. scope가 matrix-cell/run-record에 고정되고 Internal display-name row는 valid execution이어도 `public_model_attribution_eligible:false`다. default·unknown/drifted label은 invalid, focused 16/16·lint/build green, provider 0이다.
+- 다음은 explicit Internal scope를 가진 fresh replacement matrix다. `/tmp/u1980`은 계속 frozen이며 어떤 rescore도 하지 않는다.
+- 1.9.83 fresh replacement를 LOCKED했다. `/tmp/u1983`, exact 1.9.81 order/denominator, explicit Internal scope이며 자동 deterministic→anonymous multi-judge reversal→불일치/감사표본만 human review하는 reduced-human ladder를 고정했다.
+- `/tmp/u1983` 18/18 preparation, explicit Internal scope propagation, exact detached arms, task input equality, untouched product trees, evaluator preflight, no-file/tool Grok capacity probe를 통과했다. 다음은 committed preparation 뒤 checkpoint-bounded cell 1이다.
+- `/tmp/u1983` checkpoint 2/18까지 valid/UI-Resolved/85점으로 완료됐다: onboarding-t1-slate 219,238ms/59,501 tokens, incident-t1-ember 515,439ms/253,121 tokens. 둘 다 Internal scope이며 public attribution false, pacing 120.002s green이다.
+- checkpoint 3/18 locale-t1-slate도 valid/UI-Resolved/85점, 208,324ms/106,904 tokens로 완료됐다. second pacing 120.003s green이다.
+- checkpoint 4/18 onboarding-t1-ember도 valid/UI-Resolved/85점, 221,627ms/221,846 tokens로 완료됐다. onboarding trial 1은 objective ceiling tie이며 slate 219,238ms/59,501 tokens 대비 ember token usage가 크다.
+- checkpoint 5/18 incident-t1-slate도 valid/UI-Resolved/85점, 283,282ms/109,680 tokens로 완료됐다. incident trial 1도 objective tie이며 ember 515,439ms/253,121 tokens가 더 큰 compute를 사용했다.
+- checkpoint 6/18 locale-t1-ember도 valid/UI-Resolved/85점, 397,060ms/282,273 tokens로 완료됐다. locale slate는 208,324ms/106,904 tokens다.
+- trial 1의 3 task×2 arms가 모두 valid/UI-Resolved/85 ceiling tie다. ember가 세 task 모두 더 많은 tokens를 사용했지만 visual preference는 automated blind judge 전까지 해석 금지다. 다음은 onboarding-t2-ember다.
+- checkpoint 7/18 onboarding-t2-ember도 valid/UI-Resolved/85점, 240,001ms/176,051 tokens로 완료됐다. trial 1 ember 221,846 대비 usage 분산이 있으므로 trial 3 전 efficiency 결론은 보류한다.
+- checkpoint 8/18 incident-t2-slate도 valid/UI-Resolved/85점, 358,483ms/69,739 tokens로 완료됐다. incident slate trial 1/2 usage 109,680→69,739 분산에도 quality gate는 동일하다.
+- checkpoint 9/18 locale-t2-slate도 valid/UI-Resolved/85점, 268,494ms/97,899 tokens로 완료됐다. locale slate trial 1/2는 106,904→97,899 tokens이며 quality gate는 동일하다.
+- `/tmp/u1983`은 cell 10 `onboarding-t2-slate`에서 process-failure로 FROZEN됐다. pacing은 120,006.7ms/clock disagreement 1.7ms로 통과했지만 Cursor가 `~/.cursor/projects/private-tmp-u1983-onboarding-t2-slate`를 만들지 못해 EPERM/exit 1/398ms/event 0/product change 0으로 종료됐다.
+- retained partial은 9/18 valid/UI-Resolved/85이며 trial 1만 완결됐다. cell 10은 재시도·resume·rescore·모델 대체하지 않고 denominator 밖에 둔다.
+- 1.9.84 Cursor project-cache preflight가 provider-free ACCEPTED됐다. Cursor matrix는 invocation state·pacing·provider 전에 실제 cache root에 unique mkdir/write/remove를 수행하며 불가하면 stable runtime-preflight failure로 중단한다.
+- 실제 제한 환경은 EPERM fail-before-provider, 허용 환경은 writable pass였다. focused 59/59, lint/build/Node syntax green이고 provider generation은 0이다.
+- 1.9.85 fresh replacement를 LOCKED했다. 동일 opaque arms/task versions/order/Grok/effort/timeout/pacing/attribution의 18-cell denominator이며 유일한 orchestration delta는 accepted 1.9.84 cache preflight다.
+- `/tmp/u1985` 18/18 preparation과 task input equality/untouched product tree/exact detached arms를 통과했다. evaluator preflight, authorized Cursor cache mkdir/write/remove, repository/file/tool 0 Grok capacity probe(`OMD_CAPACITY_OK`, exact display name)도 green이다.
+- `/tmp/u1985` checkpoint 1/18 `onboarding-t1-slate`가 cache preflight green 뒤 valid/UI-Resolved/85점, 186,400ms/54,195 tokens로 완료됐다.
+- checkpoint 2/18 `incident-t1-ember`도 valid/UI-Resolved/85점, 276,202ms/70,603 tokens로 완료됐다. cross-root compute 차이는 진단 신호일 뿐 trial 3 전 효율 결론은 보류한다.
+- checkpoint 3/18 `locale-t1-slate`도 valid/UI-Resolved/85점, 312,985ms/66,384 tokens로 완료됐다. 세 task에 trial 1 arm 하나씩이 있으나 paired comparison은 아직 없다.
+- checkpoint 4/18 `onboarding-t1-ember`도 valid/UI-Resolved/85점, 364,708ms/285,933 tokens로 완료됐다. onboarding trial 1은 objective ceiling tie이며 slate 186,400ms/54,195 tokens 대비 ember compute가 크다.
+- checkpoint 5/18 `incident-t1-slate`도 valid/UI-Resolved/85점, 201,619ms/160,832 tokens로 완료됐다. incident trial 1도 ceiling tie이며 slate/ember의 time·token 신호가 엇갈린다.
+- checkpoint 6/18 `locale-t1-ember`도 valid/UI-Resolved/85점, 273,496ms/224,401 tokens로 완료됐다. locale slate는 312,985ms/66,384 tokens다.
+- trial 1의 세 pair가 모두 valid/UI-Resolved/85 ceiling tie다. compute 신호는 task별로 일관되지 않고 visual preference는 blind judge 전까지 해석 금지다.
+- checkpoint 7/18 `onboarding-t2-ember`도 valid/UI-Resolved/85점, 238,377ms/182,626 tokens로 완료됐다. ember onboarding trial 1/2 token 분산 285,933→182,626은 trial 3 전 결론을 보류한다.
+- checkpoint 8/18 `incident-t2-slate`도 valid/UI-Resolved/85점, 265,350ms/126,406 tokens로 완료됐다.
+- checkpoint 9/18 `locale-t2-slate`도 valid/UI-Resolved/85점, 300,780ms/234,305 tokens로 완료됐다. slate locale trial 1/2 token 분산 66,384→234,305은 trial 3 전 해석하지 않는다.
+- checkpoint 10/18 `onboarding-t2-slate`도 valid/UI-Resolved/85점, 133,607ms/106,603 tokens로 완료됐다. 1.9.83이 EPERM으로 멈춘 exact cell boundary를 cache preflight green 뒤 정상 통과해 1.9.84 live closure가 성립했다.
+- onboarding trial 2 pair도 objective ceiling tie다. checkpoint 11/18 `incident-t2-ember`도 valid/UI-Resolved/85점, 256,573ms/71,872 tokens로 완료돼 incident trial 2 pair 역시 ceiling tie다.
+- checkpoint 12/18 `locale-t2-ember`도 valid/UI-Resolved/85점, 230,040ms/127,127 tokens로 완료돼 locale trial 2 pair도 ceiling tie다.
+- trial 1/2의 12/12 cells가 valid/UI-Resolved/85다. checkpoint 13/18 `locale-t3-ember`도 valid/UI-Resolved/85점, 250,894ms/126,453 tokens로 완료됐다.
+- checkpoint 14/18 `onboarding-t3-slate`도 valid/UI-Resolved/85점, 230,743ms/65,468 tokens로 완료됐다. slate onboarding 3/3 deterministic ceiling이다.
+- checkpoint 15/18 `incident-t3-ember`도 valid/UI-Resolved/85점, 321,648ms/135,458 tokens로 완료됐다.
+- checkpoint 16/18 `locale-t3-slate`도 valid/UI-Resolved/85점, 281,046ms/72,557 tokens로 완료됐다. locale은 두 arms 모두 3/3 deterministic ceiling이다.
+- checkpoint 17/18 `onboarding-t3-ember`도 valid/UI-Resolved/85점, 242,099ms/103,623 tokens로 완료됐다. onboarding은 두 arms 모두 3/3 deterministic ceiling이다.
+- checkpoint 18/18 `incident-t3-slate`도 valid/UI-Resolved/85점, 332,641ms/193,887 tokens로 완료됐다.
+- `/tmp/u1985`는 18/18 COMPLETE다. 모든 셀이 valid/UI-Resolved/85, evidence/unknown pass이며 failure/retry/fallback/model substitution은 0이다. 첫 셀 이후 17/17 pacing과 모든 invocation의 Cursor cache preflight가 통과했다.
+- 여섯 task×arm 그룹 모두 Reliability@3 3/3이다. 동일 task/trial exact pair의 deterministic W/T/L은 0/9/0이고 mean/median objective delta는 0이다.
+- 이 결과는 deterministic contract ceiling만 증명한다. 시각적 선호 동등성이나 공개 model claim은 성립하지 않으며 Internal runtime display-name attribution은 계속 `public_model_attribution_eligible:false`다.
+- 다음은 산출물 identity를 가린 anonymous automated multi-judge를 좌우 반전으로 실행하고, 불일치·반전 비일관·both-fail·tie uncertainty·감사 표본만 사람에게 올리는 reduced-human ladder다.
+- 1.9.86 provider-free automated blind review preparation이 ACCEPTED됐다. 반복 trial을 서로 다른 후보로 섞지 않고 same task×trial의 두 arms만 exact pair로 묶는다.
+- 실제 `/tmp/u1986`은 complete 1.9.85 state hash `0537faae…`에서 9 pairs×3 opaque judges×2 separate side orders = 27 review units/54 invocations/216 screenshots를 만들었다. 공개 packet identity leak은 0이다.
+- focused reviewer tests 6/6, Node syntax, lint, build가 green이며 provider generation은 0이다. 자동 judge는 practitioner 수에 포함되지 않고 public model attribution도 만들지 않는다.
+- 1.9.87 provider-free automated judge runner가 ACCEPTED됐다. controller call당 최대 한 invocation, 30s start pacing, 300s timeout, concurrency 1, no retry/fallback/repair/substitution을 고정했다.
+- strict JSON은 assignment_id/4 axes/reason 외 key를 거절하고 Markdown·wrong assignment·invalid choice·display-label drift·timeout/process/cache failure에서 root를 동결한다. primary와 별도 reversal이 모두 끝나야 aggregate-compatible judgment를 쓴다.
+- focused reviewer tests 9/9, Node syntax, lint, build가 green이며 provider generation은 0이다.
+- 1.9.87 첫 live invocation은 Cursor/Grok이 50,936ms에 exact JSON assistant content를 냈지만 CLI result summary가 앞에 한국어 progress를 붙였고 runner가 잘못된 transport field를 정본으로 선택해 0/54 frozen됐다. root는 resume/rescore/retry하지 않는다.
+- 1.9.88 provider-free correction이 ACCEPTED됐다. 마지막 assistant text content를 canonical response로 쓰고 result event는 raw evidence/fallback으로만 유지한다. prefix trim·substring extraction·repair는 여전히 0이다.
+- exact live event-shape fixture를 포함한 focused tests 10/10, Node syntax, lint, build가 green이다.
+- `/tmp/u1988-private`는 14/54 성공 뒤 invocation 15에서 registered display label이 `Cursor Grok 4.5 High`→`Cursor Grok 4.5`로 바뀌어 FROZEN됐다. selector `cursor-grok-4.5-high`는 동일했고 process/assistant JSON은 성공했지만 attribution contract drift로 judgment를 거절했다.
+- retained 14 calls는 incident trial 1의 3 judges와 trial 2의 3 judges, trial 3 judge-001 primary/reversal이다. trial 1/2에서 usability·ship은 각각 3/3 합의지만 두 trial 승자가 반대라 partial aggregate가 tie였고, 이 진단은 fresh denominator로 이전하지 않는다.
+- 1.9.89 provider-free registry lock이 ACCEPTED됐다. fresh root 생성 시 `cursor-agent models` exact selector row의 label을 state에 잠그고 매 invocation 전 다시 조회해 변화하면 provider 전 freeze한다.
+- `/tmp/u1989-private` 첫 call은 registry `Cursor Grok 4.5`를 잠갔지만 provider event가 같은 selector의 이전 label `Cursor Grok 4.5 High`를 보고해 0/54 frozen됐다. exact JSON은 retained/rejected이고 resume하지 않는다.
+- 1.9.90 Internal alias plane이 ACCEPTED됐다. exact selector의 current registry label+source-registered historical label만 private state에 잠그고 둘 중 하나 또는 exact selector만 허용한다. unknown label과 registry drift는 계속 freeze한다.
+- evidence scope는 `internal-selector-plus-registered-alias`, public model attribution false다. focused reviewer tests 12/12, Node syntax, lint, build가 green이다.
+- fresh `/tmp/u1990-private` 자동 심사는 6/54다. incident trial 1의 3 judges×primary/reversal이 provider/cache/registry/strict JSON 모두 green으로 완료됐다.
+- 첫 exact pair는 functionality/usability/fidelity/ship preference 모두 3/3 같은 actual candidate를 선택했고 identity-normalized reversal consistency는 12/12(100%), tie/both-fail 0이다. 이는 Diagnostic이며 전체 task/trial 전 우열 claim은 금지한다.
+- fresh root는 18/54까지 진행돼 incident trial 1–3의 9 review units가 완결됐다. failure/retry/fallback/repair/substitution은 0이다.
+- incident 12/54 시점에는 trial 1/2가 각 3/3 합의지만 서로 반대 후보여서 네 axes aggregate가 정확히 tie였다. trial 3까지 포함한 18/54 결과는 functionality/fidelity가 ember 쪽, usability/ship이 slate 쪽의 작은 rating 차이만 있고 모든 95% interval이 1–2 rank와 넓게 겹친다.
+- incident reversal consistency는 29/36(80.56%): functionality 8/9, 나머지 세 axes 7/9다. primary tie는 functionality/fidelity 각 2, both-fail 0, modal agreement는 axes별 8/9다.
+- incident task는 reversal inconsistency+wide uncertainty 때문에 reduced-human escalation 대상이다. 자동 결과를 승자 claim으로 쓰지 않는다.
+- locale trial 1의 3 judges×primary/reversal까지 완료돼 fresh root는 24/54다. provider/cache/registry/strict JSON failure와 retry/fallback/repair/substitution은 계속 0이다.
+- locale trial 1 functionality는 primary 3/3 tie와 reversal 3/3 consistent다. usability는 primary 2/3 modal이지만 reversal 0/3 consistent, fidelity/ship은 primary 2/3 modal과 reversal 각 1/3 consistent다.
+- locale trial 1 전체 reversal consistency는 5/12(41.67%), both-fail 0이며 usability/fidelity/ship rating CI가 겹친다. 이 pair도 reduced-human escalation 대상이다.
+- locale trial 2까지 완료돼 fresh root는 30/54다. two-trial locale aggregate는 slate가 네 axes 모두 앞서지만 usability/fidelity/ship 95% CI와 rank interval이 겹치며 자동 승자 claim은 불가하다.
+- locale two-trial reversal은 15/24(62.5%): functionality 6/6, usability 3/6, fidelity 2/6, ship 4/6. primary modal agreement는 functionality 6/6, 나머지 5/6이며 tie 4(functionality 3/usability 1), both-fail 0이다.
+- locale trial 3까지 완료돼 fresh root는 36/54다. three-trial aggregate도 automatic winner를 만들지 못했으며 이 task pair는 reduced-human escalation 대상이다.
+- locale three-trial reversal은 24/36(66.67%): functionality 9/9, usability 5/9, fidelity 4/9, ship 6/9. usability는 rating 1000 대 1000 완전 동률이고 fidelity/ship도 95% CI와 rank interval이 겹친다.
+- functionality는 slate 1053.77 대 ember 946.23으로 방향이 가장 안정적이지만 primary tie 6/9다. 전체 primary modal agreement는 functionality 9/9, usability 7/9, fidelity 8/9, ship 7/9이며 both-fail은 0이다.
+- onboarding trial 1의 3 judges×primary/reversal까지 완료돼 fresh root는 42/54다. slate가 functionality/usability/ship primary 3/3, fidelity 2/3로 앞섰고 both-fail은 0이다.
+- onboarding trial 1 reversal은 10/12(83.33%): functionality 2/3, usability 3/3, fidelity 2/3, ship 3/3. fidelity primary modal agreement만 2/3이며 tie 1건이다.
+- onboarding trial 2까지 완료돼 fresh root는 48/54다. two-trial aggregate는 네 axes 모두 slate가 소폭 앞서지만 모든 rating CI와 rank interval이 겹쳐 automatic winner claim은 불가하다.
+- onboarding two-trial reversal은 16/24(66.67%): functionality 4/6, usability 4/6, fidelity 3/6, ship 5/6. primary modal agreement는 functionality/ship 5/6, usability/fidelity 4/6이며 tie 6, both-fail 0이다.
+- onboarding trial 3까지 fresh root `/tmp/u1990-private`는 54/54 `complete`, stop/retry/repair/fallback/substitution 0으로 닫혔다.
+- full-round reversal은 74/108(68.52%)이고 slate가 네 axes에서 소폭 앞서지만 모든 rating/rank 95% interval이 겹쳐 automatic winner는 없다.
+- 1.9.91 deterministic reduced-human selector가 ACCEPTED됐다. disagreement/reversal/tie-or-both-fail과 seeded audit 1개만 고르며 focused reviewer tests 23/23, lint/build가 green이다.
+- 실제 1.9.90 결과는 9 pair 중 unresolved 7, resolved 2, audit 1, selected 8이다. 이를 task family로 합치면 사람이 볼 화면은 incident/locale/onboarding 3개다.
+- 1.9.92 task-family human gallery가 ACCEPTED됐다. selected 8 pair를 incident 2/locale 3/onboarding 3 comparison의 blind 3-page UI로 묶었다.
+- 실제 브라우저에서 desktop+390px overflow 0, missing image 0, JSON export pass다. focused reviewer tests 25/25, lint/build green이며 private reveal은 served root 밖이다.
+- 1.9.93 practitioner calibration이 ACCEPTED됐다. 세 export는 3 families/8 comparisons/32 axes exact coverage로 intake됐고 focused tests 27/27, lint/build가 green이다.
+- ship preference는 1.9.78 candidate 4, preceding control 1, tie 2, both-fail 1이다. uncertainty-selected single-practitioner sample이므로 superiority claim은 금지하지만 candidate patch는 retain한다.
+- automated modal↔human agreement는 functionality 37.5%, usability 28.57%, fidelity 14.29%, ship 12.5%다. 현 Grok judge는 triage-only이며 winner/public reviewer plane에 사용할 수 없다.
+- 다음은 seen examples에 prompt를 맞추지 않고 새 task holdout을 preregister해 judge-rubric calibration과 2.0 task expansion을 함께 진행하는 것이다.
+- 1.9.94 unseen pricing holdout을 LOCKED하고 `/tmp/u1994`에 6/6 cells를 fresh preparation했다. pricing conversion 0.3.0 × exact detached slate/ember × 3 trials이며 provider call은 0이다.
+- 모든 셀이 core prompt `62b68d…`, starter `54bcf3…`, task version 0.3.0을 공유하고 slate `1aa81ddb…`/`793eef…`, ember `c285d255…`/`d7a890…`만 다르다. source는 clean/detached/publishable이고 product tree는 untouched다.
+- Internal registered-display-name attribution, Cursor/Grok 4.5 High, High effort, 900s timeout, global serial, 120s pacing, no retry/fallback/repair/substitution을 고정했다. focused 24/24(+1 skipped), lint/build가 green이다.
+- preparation checkpoint는 `6b3250a`; 다음 exact cell은 `pricing-t1-slate`다. 첫 failure는 root freeze이며 다른 모델로 denominator를 채우지 않는다.
+- `/tmp/u1994` trial 1은 2/6 checkpoint까지 완료됐다. `pricing-t1-slate`는 valid지만 responsive critical gate가 실패해 81/85·UI-Resolved false다: 390px/320px에서 Plan differences container가 양쪽 4px overflow/clipping을 만들었다.
+- `pricing-t1-ember`는 valid/UI-Resolved/85점으로 같은 unseen task를 통과했다. trial 1 candidate delta는 +4점/+1 resolved이나 3-trial denominator 전에는 Diagnostic으로만 본다.
+- 첫 pacing은 120,005ms green이고 provider/cache/attribution/evaluator failure, retry/fallback/repair/substitution은 0이다. 다음 exact cell은 `pricing-t2-ember`다.
+- `/tmp/u1994` trial 2도 완료돼 4/6 checkpoint다. ember와 slate 모두 responsive는 통과했지만 320px/200%의 scrollable-region focusability와 focus-visible 실패로 valid 79/85·UI-Resolved false다.
+- 2-trial objective/UI-Resolved W/T/L은 candidate 기준 1/1/0, objective delta sum +4다. 서로 다른 실패 유형이 나타났으므로 patch의 절대 reliability claim은 아직 불가하다.
+- 3/3 pacing green, provider/infrastructure/attribution/evaluator failure와 retry/fallback/repair/substitution은 0이다. 다음 exact cell은 `pricing-t3-slate`다.
+- `/tmp/u1994`는 6/6 COMPLETE다. trial 3 slate는 focus-visible 실패로 83/85·unresolved, ember는 85/85·resolved다. 모든 셀은 valid/evidence+unknown pass이며 provider/infrastructure/attribution/evaluator failure와 retry/fallback/repair/substitution은 0이다.
+- final candidate objective/UI-Resolved W/T/L은 2/1/0, resolved 2/3 대 0/3, mean objective lift +2.3529pp, observed resolved lift +66.67pp다. 하지만 95% interval 0–100pp, 단일 unseen task이고 두 arms 모두 Reliability@3 0%라 superiority claim은 금지한다.
+- 네 셀이 deterministic critical gate를 실패했으므로 preregistered automated blind review는 fail-closed로 ineligible하다. 사람 검수도 필요 없다. 남은 반복 결함은 narrow/zoom의 adaptive comparison surface containment·keyboard focusability·focus-visible이다.
+- 다음은 이 결함만 다루는 provider-free 1.9.95 adaptive-data-surface contract를 canonical `omd-apply`와 distribution tests에 추가하고, fresh pricing replacement denominator를 별도 사전등록하는 것이다.
+- 1.9.95 `adaptive-data-surface closure`가 provider-free ACCEPTED됐다. changed table/comparison/command/wide-data surface마다 semantic role, containment, reflow|wrap|internal-scroll, overflow owner, keyboard entry, focus-visible proof를 한 transaction으로 닫는다.
+- 실제 overflow owner의 labelled focus affordance는 새 제품 action이 아닌 `accessibility_affordance`로 interactive closure에 분리하며 product control/state/hook/fact/token 권한을 늘리지 않는다. decorative/non-scroll wrapper tab stop은 계속 금지한다.
+- six zero conditions는 outer document overflow, clipped adaptive content, unresolved owner, unreachable scroll region, unmeasurable focus indicator, unnecessary region tabstop이다.
+- focused channel adaptation 3/3, install-skills 36/36, lint/build/syntax/diff green, skill 240 lines/SHA `0c2440a4…`, provider 0이다. broader 52/54의 두 failure는 기존 non-Git third-party vendor fixture다.
+- 다음은 exact `c285d255…` 1.9.78 candidate와 committed 1.9.95 exact source를 비교하는 fresh pricing replacement denominator다. `/tmp/u1994`는 immutable이다.
+- 1.9.96 fresh replacement를 LOCKED했다. pricing `0.3.0`에서 exact detached 1.9.78 `c285d255…`와 1.9.95 `7364cbd…`를 동일 `omd:apply` activation으로 3회 비교한다.
+- `/tmp/u1996`, Cursor/Grok 4.5 High, High effort, 900s, global serial, 120s pacing, no retry/fallback/repair/substitution이며 provider call은 아직 0이다.
+- focused exact-source/controller tests 4/4, lint/build/diff가 green이다. broader 16/18의 두 failure는 기존 non-Git Taste/UI UX Pro Max fixture다.
+- `/tmp/u1996` 6/6 fresh preparation이 완료됐다. task/core prompt/starter/activation/product input은 동일하고 slate `c285d255…`/`d7a890…`, ember `7364cbd…`/`ce15f86…`만 다르다.
+- 두 source는 exact clean detached/publishable이며 prompt·AGENTS identity leak scan이 통과했다. provider call은 0이다.
+- `/tmp/u1996`은 6/6 COMPLETE다. 모든 cell이 valid/UI-Resolved/85점이고 두 arms 모두 Reliability@3 100%, paired candidate W/T/L 0/3/0, objective/resolved lift 0이다.
+- 1.9.94의 narrow/zoom overflow·focus 실패는 6개 모두 재현되지 않았지만 1.9.78 arm도 3/3이므로 1.9.95의 causal superiority claim은 불가하다. regression 없이 target failure가 사라져 patch는 retain한다.
+- total 1,266,530 tokens/1,875,636ms이며 candidate 597,416 tokens/909,241ms, control 669,114/966,395ms다. 분산이 커 efficiency claim은 금지한다.
+- 5/5 pacing, 6/6 cache preflight, provider/infrastructure/attribution/evaluator failure 0, retry/fallback/repair/substitution 0이다. `/tmp/u1996`은 immutable이다.
+- 세 exact pair가 모두 deterministic eligible이므로 다음은 existing three-judge×separate reversal의 anonymous automated visual review다. 자동 judge는 triage/calibration only다.
+- 1.9.97 anonymous review를 LOCKED했다. `/tmp/u1996`의 pricing 3 exact pairs × 3 opaque judges × primary/reversal = 9 units/18 isolated invocations다.
+- Cursor/Grok 4.5 High, 300s timeout, 30s pacing, max-new 1, no retry/repair/fallback/substitution이며 Internal alias plane만 사용한다.
+- automated vote는 calibration/triage only이며 practitioner/public winner/model row가 아니다. 다음은 provider-free packet preparation이다.
+- `/tmp/u1997` packet preparation이 완료됐다. source state SHA `241d535a…`, private manifest SHA `a344e141…`, round `automated-review-625bfd4de35f8b02`다.
+- 3 exact pairs/3 judges/9 units/18 invocations/72 screenshots이며 public packet identity leak 0, prompt 18, focused tests 9/9, syntax pass, provider 0이다.
+- `/tmp/u1997-private` automated review는 18/18 COMPLETE다. failure/retry/repair/fallback/substitution 0, exact reported label 유지, total 1,588,885ms/1,151,639 input/553,984 cached/42,690 output tokens다.
+- ship preference는 candidate 1255.75/control 744.25, primary modal agreement 9/9, identity-normalized reversal 9/9로 candidate 방향이 강하다. 그러나 automated triage-only라 winner claim은 금지한다.
+- overall reversal은 24/36(66.67%): functionality 7/9, usability 4/9, fidelity 4/9, ship 9/9다. usability ties 2, fidelity ties 6이며 trial 2/3 cross-judge disagreement가 있다.
+- deterministic selector는 3 pairs 모두 unresolved, resolved/audit 0으로 사람 검수를 요구한다. 다음은 pricing 3 comparisons를 한 task-family blind gallery로 묶어 practitioner에게 제시하는 것이다.
+- 1.9.98 owner gallery가 준비됐다. immutable 1.9.97 selection의 pricing 3 comparisons를 `/tmp/u1998-public` 한 페이지에 blind로 묶고 private reveal은 `/tmp/u1998-private/reveal.json`에 분리했다.
+- browser-harness 검수에서 desktop 1661px/mobile 390px horizontal overflow 0, missing images 0, comparisons 3, images 12, export control pass다.
+- owner export는 exact intake를 통과했다: 1 family/3 comparisons/12 axes, epoch/reviewer/comparison/trial exact match, missing/duplicate/repair/rescore/relabel 0이다.
+- blind human 결과는 functionality 0/0/3(candidate/control/tie), usability 0/2/1, fidelity 1/1/1, ship 0/2/1이다. 1.9.95는 기능 lift가 없고 control이 usability/ship에서 2승 1무라 promotion 실패다.
+- automated modal agreement는 functionality 0/3, usability 0/2 comparable, fidelity 2/3, ship 0/3이다. Grok judge plane은 계속 triage-only이며 winner나 public reviewer가 아니다.
+- 1.9.99 rollback이 ACCEPTED됐다. canonical `skills/omd-apply/SKILL.md`는 exact control commit `c285d255…`와 byte-identical이며 adaptive-data-surface clause/interactive exception/acceptance bullet/current-contract assertions만 제거했다.
+- install-channel 36/36, focused Codex/Cursor/Claude preparation 3/3, TypeScript/build/diff green, provider 0이다. broader combined 52/54의 두 failure는 기존 non-Git Taste/UI UX Pro Max `/tmp` fixture다.
+- 다음 adaptive/wide-surface replacement는 seen pricing examples를 재사용하지 않고 새 task family에서 기능 보존 + human usability/ship lift를 보여야 한다.
+- 1.9.80 versioned matrix preparation을 LOCKED했다. matrix controller가 reviewed `vendors_root`를 cell preparer에 전달하지 못하는 gap만 닫고, 두 exact detached arm의 실제 최소 matrix preparation을 provider 0으로 증명한다.
+- 다음 valid live denominator는 onboarding 0.3/incident 0.4/locale 0.5 × slate/ember × 3 trials = 18 cells이다. 한 fixed provider·balanced order·global serial·no retry/fallback/substitution으로 fresh root에서 실행하며 Raw는 patch-isolation denominator에서 제외한다.
+- 1.9.79 provider-free versioned skill control을 LOCKED했다. pre-visual-equity control commit `1aa81ddb…`와 1.9.78 candidate `c285d255…`를 동일 declared `omd-apply`/activation으로 설치하되 exact clean commit과 서로 다른 skill hash를 manifest에서 증명한다.
+- preparation amendment: prereg commit으로 current HEAD가 `8a3e2f0`까지 이동했으므로 mutable current variant는 candidate provenance로 쓰지 않는다. old/new 모두 exact detached vendor checkout과 identity-neutral versioned entry를 사용한다. denominator 변화는 0이다.
+- prompt/artifact가 old/new/control/candidate/version을 model 또는 blind reviewer에게 노출하면 reject한다. provider-free acceptance commit 전 provider를 열지 않는다.
+- 통과 뒤 live denominator는 current onboarding 0.3/incident 0.4/locale 0.5 × old/new OmD × 3 trials = 18 cells이며 Raw는 patch-isolation matrix에서 제외한다.
+- 1.9.78 provider-free visual equity preservation이 ACCEPTED됐다. canonical `omd-apply`는 task-helpful 기존 시각 결정 최대 5개를 visual equity ledger로 잠그고 original user task/explicit DESIGN.md/same-route measured defect 없이 약화·교체하지 않는다.
+- post-edit visual-equity closure는 non-empty ledger에서 same route/state desktop+mobile을 대조하고 hierarchy/state signal/reassurance/decision boundary의 unsupported regression 4종을 0으로 요구한다. empty ledger는 `visual_equity: []` + closure N/A로 inline tax를 피한다.
+- visual authority는 protected behavior/foreground/geometry-token/interactive 계약을 override하지 않고 stricter contract가 우선한다. generic cleanup/minimalism/consolidation/model taste는 authority가 아니며 새 token/fallback/verifier/specialist pass를 만들지 않는다.
+- canonical+install 43/43, Cursor adaptation 1/1, lint/build/diff green, skill 238 lines/SHA `22eb96d8…`, provider generation 0이다. broader bench의 기존 vendor Git-metadata fixture 2 failures는 불변이다.
+- 다음 valid live step은 current-version task에서 pre-1.9.78 old skill과 1.9.78 new skill을 고정 provider·balanced order·repeated trials로 비교하는 fresh denominator다. Raw는 anchor일 수 있지만 patch lift control을 대체하지 않는다.
+- 마지막 locale unit을 intake해 owner round가 `3/3 complete`됐고 aggregate+hash lock을 생성했다. unchanged 재실행은 `lock_status: unchanged`로 통과했다.
+- primary votes는 Raw가 Functionality 3/3, Usability 3/3, Fidelity 2/3, Ship Preference 3/3이다. hidden reversal consistency는 8/12(66.7%); onboarding/locale 4/4, incident 0/4라 incident task-level preference는 position-sensitive다.
+- six candidates 모두 deterministic 85/85였으므로 preference plane은 objective ceiling이 보지 못한 visual judgment 차이를 드러냈다. 그러나 1 practitioner×3 historical tasks의 Diagnostic일 뿐 Preview/Verified/public rank가 아니다.
+- 화면 대조에서 OmD가 onboarding의 reversibility callout/selected-state, locale의 active accent, incident의 task-oriented spatial separation을 평평하게 만들 수 있음이 bounded missing contract로 확인됐다.
+- 1.9.78 `visual equity preservation`을 LOCKED했다. 최대 5개의 task-helpful 기존 시각 결정을 `identity/user_value/before_evidence/decision/change_authority`로 기록하고, 사용자 원 요청·explicit DESIGN.md·same-route measured defect 없이 hierarchy/state/reassurance/decision boundary를 약화하지 않는 provider-free patch다.
+- 다음은 canonical `skills/omd-apply/SKILL.md`와 focused distribution tests에만 visual equity ledger/closure를 구현하고 provider generation 0으로 acceptance하는 것이다.
+- owner judgment `review-unit-74e87da2abc03545`를 정상 intake했다. incident schema/epoch/reviewer/task/unit은 manifest와 일치한다.
+- 라운드는 `2/3 complete`, aggregate/lock은 incomplete 상태로 계속 억제했다. 마지막 locale unit `review-unit-3d61c9cb12e23b21`만 남았고 해당 평가 탭을 foreground했다.
+- owner judgment `review-unit-a763b1d7e8ef5953`를 정상 intake했다. onboarding의 base pair와 좌우 반전 duplicate가 4축 모두 동일 candidate를 선택해 내부 일관성도 성립한다.
+- 라운드는 `1/3 complete`, aggregate/lock은 incomplete 상태라 아직 생성하지 않았다. 남은 unit은 incident `review-unit-74e87da2abc03545`, locale `review-unit-3d61c9cb12e23b21`이다.
+- 한 task 화면의 2개 비교는 두 개의 별도 task가 아니라 동일 Raw↔OmD pair의 원본/좌우 반전 reliability check다. incident 탭을 다음 평가 화면으로 foreground했다.
+- 실제 owner practitioner judgment 단계가 열렸다. `/tmp/u1972`의 paired trial 1 Raw/OmD를 onboarding/incident/locale 세 task에 대해 익명화한 1-reviewer×3-task 라운드를 `/tmp/omd-human-review-1977`에 만들었다.
+- 실행물은 task contract 0.3.0이므로 현재 0.4.0으로 위장하지 않고 당시 task snapshot과 current 1.9.77 reviewer operations를 결합한 historical internal epoch `u1972-internal-diagnostic-v1`로 격리했다. 공개 rank/preference claim에는 사용하지 않는다.
+- localhost `127.0.0.1:4777`에 세 블라인드 gallery가 열려 있다. user가 각 축 Functionality/Usability/Fidelity/Ship Preference를 A/B/tie/both-fail로 판단하고 각 task의 `Export judgments`를 내려받는 것이 다음 입력이다.
+- exports가 확보되면 private manifest/reveal은 계속 비공개로 둔 채 1.9.77 intake→complete aggregate→hash lock을 실행한다. 그 전에는 결과를 해석하거나 identity를 reveal하지 않는다.
+- 1.9.77 provider-free reviewer operations package가 ACCEPTED됐다. frozen plan+salt file에서 public galleries/private reveals/private manifest를 staging 후 분리 생성하고 incomplete progress→complete aggregate→hash lock을 운영한다.
+- 2 tasks×2 reviewers dry-run은 public 4/private 4, stable reviewer/multi-task units, 3/4 exact resume, complete lock, unchanged recheck, one-choice mutation rejection을 통과했다.
+- public tree에는 raw reviewer id/salt/candidate label이 없고 salt 값은 subprocess argv에도 들어가지 않는다. focused 18/18, lint/build/4 Node syntax/diff green, provider generation 0이다.
+- STOP: 다음 유효 입력은 실제 practitioner judgment다. synthetic reviewer로 Diagnostic/Preview/Verified 수를 채우거나 preference를 해석하지 않는다.
+- 재개 조건: frozen internal epoch의 실제 task artifact와 opaque reviewer roster가 정해지면 1.9.77 preparer로 public gallery를 만들고, 제출을 intake/lock한 뒤 결과가 여전히 diagnostic임을 명시해 검토한다.
+- 1.9.76 provider-free readiness gate가 ACCEPTED됐다. schema 0.3은 stable reviewer identity와 reviewer×task `review_unit_id`를 분리해 같은 사람이 여러 task를 검수해도 사람 수를 부풀리지 않는다.
+- 모든 task×candidate-pair×axis의 unique reviewer/BT-valid vote와 graph connectivity를 검사한다. preference-plane Preview는 24 tasks×5, Verified는 24×10 완전 커버리지이며 overall benchmark publication gate와 분리한다.
+- disconnected axis는 rating/rank/CI를 null로 억제하고 exact deficit/next review unit을 출력한다. synthetic 24×4/5/10이 diagnostic/preview/verified를 정확히 냈고 both-fail dominant edge는 diagnostic에 남았다.
+- focused 15/15, lint/build/Node syntax/diff green, provider generation 0이다. 전체 suite는 287 pass/2 기존 `/tmp` vendor Git-metadata fail/1 opt-in skip이다.
+- 다음은 1.9.77 frozen-epoch internal reviewer operations package다. 실제 24×5를 즉시 요구하지 않고 작은 내부 dry-run에서 assignment delivery, locked export intake, reviewer progress와 deficit resume를 먼저 검증한다.
+- 1.9.75 provider-free multi-reviewer aggregator가 ACCEPTED됐다. schema/epoch/reviewer/task/assignment/axis/choice를 strict validate하고 side choice를 candidate identity로 정규화한다.
+- hidden reversal은 consistency에만 사용하고 primary vote/BT에서 제외한다. ties=half win, both-fail=별도 rate, seeded task→reviewer bootstrap으로 rating 95% CI와 rank interval을 만든다. 동일 input/seed/iteration JSON은 byte-stable하다.
+- 합성 3-reviewer calibration은 primary assignment 3, hidden reverse 3, axis consistency 11/12를 정확히 냈고 majority order 및 all-tie symmetry가 통과했다. focused 8/8, lint/build/Node syntax/diff green, provider generation 0이다.
+- 전체 suite는 280 pass/2 fail/1 skip이었다. 2 fail은 `/tmp/omd-ui-skills-bench/vendors/{taste-skill,ui-ux-pro-max}`에 `.git`이 없는 기존 외부 fixture 상태이며 이번 1.9.75 변경과 무관하다.
+- 1.9.74 Arena-style Ship Preference contract가 provider-free ACCEPTED됐다. schema 0.2는 epoch를 필수로 하고 Functionality/Usability/Fidelity/Ship Preference 각 축에 A/B/tie/both-fail을 모두 요구한다.
+- deterministic automated gate pass artifact만 pair에 들어간다. calibration은 eligible 3/ineligible 1에서 base pair 3 + hidden reversal 1을 만들었고 identity/score/gate/reversal은 reviewer에게 노출되지 않았다.
+- same salt/reviewer/epoch는 deterministic, reviewer/epoch 변화는 order/identity를 바꾼다. focused 18/18, lint/build/Node syntax/diff green, provider generation 0이다.
+- 1.9.73 provider-free geometry target-role calibration이 ACCEPTED됐다. incident task는 `0.4.0`이며 exact protected `data-bench-design-role="main-console"` 1개가 기존 14px oracle의 유일한 측정 대상이다.
+- exact/missing/duplicate marker와 14px main-console/0px subordinate-panel mutation이 각각 pass/fail/fail/pass/fail했다. live starter는 85/85, critical 6/6, design 5/5, marker 4-viewports 1/1 visible, axe serious/critical 0이다.
+- focused 56/56, lint/build/Node syntax/diff가 green이고 provider generation은 0이다. 기존 `/tmp` Taste/UI UX Pro Max checkout의 Git metadata 부재 2건은 불변 환경 실패다.
+- 다음은 deterministic correctness와 분리된 Arena-style blind Ship Preference plane의 provider-free schema/assignment/scoring calibration이다. historical scores는 재평가하지 않는다.
+- 1.9.73 provider-free geometry target-role calibration을 LOCKED했다. incident task `0.3.0`의 ambiguous `data-dashboard-card`를 task `0.4.0`의 exact protected `data-bench-design-role="main-console"`로 교체하되 14px oracle/tolerance/score는 유지한다.
+- historical 1.9.66–1.9.72 score는 재평가하지 않는다. missing/duplicate marker와 0px subordinate-panel marker mutation을 fail-closed한 뒤에만 fresh denominator를 연다.
+- 1.9.72 Grok three-task replacement가 18/18 cells·17/17 cooldown을 global serial로 완료했다. provider failure/retry/fallback/quota stop은 0이며 Grok 한도가 남아 Luna lane은 열지 않았다.
+- OmD는 Internal critical-gate 9/9·Evidence & Unknown 9/9·task Reliability@3 3/3, Raw는 7/9·2/3이다. exact Raw→OmD delta는 `0,+8,+4,0,0,0,0,0,0`, W/T/L 2/7/0, mean +1.33, median 0으로 bounded positive/no-loss다.
+- Cursor 표시명-only attribution 때문에 exported 18 records는 public `invalid-attribution`이고 public UI-Resolved/leaderboard claim은 금지한다. Reliability 수치는 Internal critical-gate eligibility로만 기록한다.
+- incident t3의 shared radius diagnostic은 두 조건 모두 14px outer console 대신 0px inner panel에 `data-dashboard-card`를 붙인 measurement-target ambiguity다. OmD regression은 아니며 다음은 provider-free geometry target-role audit이다.
+- 1.9.71 clock repair는 invocation 15의 monotonic 120,004.898ms / wall 119,989ms 실제 backward step을 정상 수락해 live 검증됐다.
+- Arena 공식 방법론에서 Functionality/Usability/Fidelity pairwise, Bradley–Terry+95% CI+votes+rank spread, category slice, epoch reset, Pareto view를 차용한다. 결정론 contract plane과 blind Ship Preference plane은 계속 분리한다.
+- 1.9.70은 7/18 provider cells·6 completed cooldown 뒤 8번째 provider 전 pacing fail-close로 동결됐다. monotonic 120,002.078ms는 valid였지만 wall timestamp 119,998ms가 하한보다 2ms 짧아 `pacing-window-violation`이 발생했다.
+- 8번째 `locale-t2-omd` provider는 시작되지 않았고 workspace는 untouched다. Grok quota/capacity failure가 아니므로 Luna lane은 열지 않으며 `/tmp/u1970` resume/re-evaluate/failed-cell replacement를 금지한다.
+- retained partial은 trial 1 Raw→OmD onboarding 85→85, incident 81→85, locale 75→85이고 7/7 Evidence pass다. incomplete이므로 Reliability@3와 Skill Lift는 not estimable이다.
+- 1.9.71 provider-free pacing clock-source repair를 LOCKED했다. duration은 monotonic 120–125초를 authority로 유지하고 wall은 finite/non-negative chronology와 기존 5초 clock-disagreement만 검증한다. 실제 120,002/119,998 경계를 regression으로 추가하되 genuine early monotonic/overshoot/disagreement/cancellation은 계속 fail-close한다.
+- 1.9.71 pacing clock-source repair가 provider-free ACCEPTED됐다. monotonic 120–125초만 duration authority로 사용하고 wall은 finite/non-negative chronology와 5초 disagreement를 유지한다. 실제 120,002/119,998 경계가 pass했다.
+- focused controller 40/40, lint/build/Node syntax/diff가 green이고 early monotonic 119,999, 659,462 overshoot, >5초 disagreement, operator STOP은 계속 provider 전에 fail-close한다.
+- `/tmp/u1970`은 동결 상태를 유지한다. 동일 denominator의 fresh 1.9.72 full replacement를 `/tmp/u1972`에 LOCKED했다. matrix SHA는 `1ea07403…`이며 유일한 orchestration delta는 accepted 1.9.71 clock-source repair다.
+- committed clean source `24a7d05`에서 `/tmp/u1972` 18/18을 fresh prepare했다. source dirty false/publishable true, report matrix `1ea07403…`, locked matrix `f6dd4ef0…`, preparation `76248024…`이며 6개 task×variant group input과 OmD skill/sidecar hash가 모두 동일하다.
+- primary evaluator `playwright-core`/`axe-core` preflight와 Cursor runtime 고정이 통과했고 provider output은 0이다. 다음은 global serial one-cell execution을 새 root에서 다시 시작한다.
+- 2026-07-28 fresh repository/file/tool-free Grok probe가 exact `OMD_CAPACITY_OK`, exit 0, usage를 반환했다. 실제 quota/capacity stop이 아니므로 1.9.70은 Grok 4.5 High로 진행하고 Luna High lane은 열지 않는다.
+- 1.9.70 fresh three-task replacement를 `/tmp/u1970`에 LOCKED했다. onboarding/incident/locale × Raw/OmD × trials 1–3의 18셀, balanced order, one-cell checkpoint, global serial, 120–125초 pacing, no retry/fallback/substitution이다.
+- Reliability@3와 Skill Lift는 `PROTOCOL.md`대로 별도 판정한다. Reliability는 task별 3회 전부 gate pass를 보고하고, Skill Lift는 exact pair UI-Resolved/objective lift와 W/T/L를 보고한다. ceiling tie나 median 0을 Reliability 실패로 재정의하지 않는다.
+- Arena Code/WebDev 공식 방법론을 `benchmarks/ui-resolve-bench/reports/arena-code-benchmark-research-2026-07/RESEARCH.md`에 정리했다. OmD는 결정론 contract plane과 blind pairwise Ship Preference plane을 분리하고, 후자에 Bradley–Terry rating·95% CI·votes·rank spread를 적용하는 방향이 적합하다.
+- committed clean source `033255f`에서 `/tmp/u1970` 18/18을 fresh prepare했다. source dirty false/publishable true, report matrix `97d5a73c…`, locked matrix `d5a22259…`, preparation `d3a3736a…`이며 6개 task×variant group의 starter/DESIGN/prompt와 OmD skill/sidecar hash가 모두 동일하다.
+- primary evaluator preflight가 `playwright-core`/`axe-core` 모두 통과했고 Cursor binary/version/selector와 no-write capacity probe를 고정했다. provider output은 0이다.
+- 다음은 shared provider global serial `--max-new-cells 1` 18회와 retained 120–125초 cooldown 17회다.
+- repeated-capacity stop 뒤 repository/file/tool 0인 no-write probe를 Composer 2.5와 Grok 4.5 High에 각각 실행했고 둘 다 exact `OMD_CAPACITY_OK`, exit 0, usage event를 반환했다. Cursor 로그인/계정 전체 quota/model availability가 완전히 막힌 상태는 아니다.
+- 따라서 1.9.51/1.9.52의 `resource_exhausted`는 5–6개의 장시간 셀을 연속 실행한 뒤 생기는 provider burst/long-run capacity condition으로 분류한다. 모델 스위치는 원인 해결이 아니며 Composer replication을 다른 모델로 대체할 수 없다.
+- 2026-07-28 최신 로그인 catalog에는 `cursor-grok-4.5-high`, `kimi-k3-high|max`, `glm-5.2-high|max`가 실제 노출된다. 사용자 정책은 Grok 4.5 High를 2× event 동안 우선 사용하고, 잔여량이 있으면 Kimi K3 → GLM 5.2 순으로 별도 Model Track을 여는 것이다.
+- 1.9.53 capacity-pacing controller calibration이 ACCEPTED됐다. schema 0.3은 `none|fixed-inter-cell`, adjacent cell ID·duration·timestamps·completion evidence, cell wall-time 밖의 wait를 fail-closed 검증한다.
+- 2-cell fake matrix는 정확히 1회/120,000ms wait와 retained history를, 기존 no-pacing 경로는 wait 0회를 증명했다. focused 21/21, lint/build/syntax/diff green이며 broader bench의 기존 `/tmp` vendor Git metadata 환경 실패 2건만 불변이다.
+- pacing은 task/prompt/condition/model/evaluator/score/timeout/retry/fallback을 바꾸지 않는다. 1.9.54 fresh Composer 9-cell replacement를 동일 denominator와 120초 inter-cell cooldown으로 새 root에 여는 것만 허용한다.
+- 1.9.54를 동일 Composer 2.5·pricing task·baseline/Raw/OmD×3·balanced order·schema 0.5·900s timeout으로 LOCKED했다. 유일한 1.9.52 대비 execution delta는 accepted 120초 fixed inter-cell pacing이며 새 root는 `/tmp/u1954`다.
+- 사용자 dirty `web/public/llms-full.txt`를 건드리지 않기 위해 committed `f0a44e9` detached worktree에서 `/tmp/u1954`를 9/9 clean-prepare했다. source attestation은 dirty false/publishable true이며 locked matrix SHA는 `ef641e08…`다.
+- representative OmD cell은 승인된 8개 파일만 포함하고 starter/DESIGN.md/skill/sidecar hash가 1.9.52와 동일하다. standing benchmark authorization으로 provider execution은 승인 상태다.
+- 1.9.54 첫 baseline provider generation은 Composer 2.5/exit 0/348,795ms/usage complete/index.html-only diff로 정상 완료했지만, detached controller worktree에 `axe-core`가 없어 score 전 evaluator-failure로 freeze됐다. 0 completed/1 stopped/8 not-started이며 quota/model failure가 아니다.
+- 1.9.54 output은 재평가·resume·replacement reuse하지 않고 모든 denominator 밖이다. clean-source preparation과 dependency-complete controller 위치를 분리해야 한다.
+- 1.9.55 evaluator dependency preflight가 ACCEPTED됐다. exact `playwright-core`/`axe-core`를 browser/workspace 없이 provider 시작 전에 로드하고, missing dependency면 provider invocation 0·모든 셀 not-started로 fail-close한다.
+- primary preflight, focused 22/22, lint/build/syntax/diff가 green이다. broader bench는 94 pass/1 skip이며 기존 `/tmp` vendor Git metadata 환경 실패 2건만 불변이다.
+- 다음 fresh matrix는 clean committed source에서 workspace만 prepare하고, controller/evaluator는 dependency-complete primary workspace에서 실행해야 한다.
+- 1.9.56을 동일 Composer 2.5·9셀·order·control·acceptance로 LOCKED했다. root는 `/tmp/u1956`이며 1.9.54 대비 benchmark denominator delta는 0, orchestration correction은 accepted primary-workspace evaluator preflight뿐이다.
+- committed `a623c0b` detached source에서 `/tmp/u1956` 9/9를 clean-prepare했고 source dirty false/publishable true다. primary workspace evaluator preflight도 `playwright-core`/`axe-core` 모두 통과했다.
+- locked matrix SHA는 `77f14fb6…`; starter/DESIGN.md/skill/sidecar hash는 이전 denominator와 동일하다. standing authorization으로 provider execution은 승인 상태다.
+- 1.9.56 primary evaluator preflight는 통과했지만 첫 Composer baseline이 26,563ms 뒤 동일 `resource_exhausted`로 stop됐다. reconnect 3회, usage/final/product change 0이며 8셀은 not-started다.
+- inter-cell pacing 전에 실패했으므로 pacing이 완화할 수 있는 구간이 아니다. 1.9.51/1.9.52와 같은 provider-capacity condition으로 Composer lane을 defer하고 즉시 replacement/resume/model substitution을 금지한다.
+- account-wide quota 고갈은 short Composer/Grok no-write probes가 반증하지만, 현재 long-form Composer workload는 시작 신뢰성이 없다. 별도 Grok task lane은 진행 가능하다.
+- Kimi K3와 GLM 5.2는 selector가 열렸지만 아직 no-write display-name/usage canary와 controller allowlist acceptance 전이다. Grok workload에 섞지 않고 Grok 우선 큐 뒤 독립 Model Track으로만 추가한다.
+- 1.9.57 Grok multi-task Preview를 LOCKED했다. pricing 외 onboarding/incident/5-locale handoff 3개 frozen task에서 Raw DESIGN.md와 OmD를 각 1회 비교하는 6셀 slice이며 `/tmp/u1957`, 120초 pacing, evaluator preflight, no retry다.
+- committed `670487b` source에서 `/tmp/u1957` 6/6을 clean-prepare했다. source publishable true, primary evaluator preflight pass, matrix SHA `805b40d1…`이며 3개 task별 starter/DESIGN.md/manifest hash를 고정했다.
+- OmD 3셀은 동일 canonical skill/sidecar hash를 사용한다. standing approval과 Grok-first 정책으로 provider execution은 승인 상태다.
+- 1.9.57은 Grok 4.5 High 4셀과 120초 wait 4회를 정상 완료했다: onboarding Raw 81, incident OmD 85, locale Raw 85, onboarding OmD 85. completed 4/4 Evidence & Unknown pass, 85점 3셀은 critical all pass다.
+- 유일한 complete pair는 onboarding Raw→OmD +4다. incident Raw가 24,563ms 뒤 `resource_exhausted`(reconnect 3, usage/final/product change 0)로 stop됐고 locale OmD는 not-started다.
+- incomplete라 multi-task Preview/paired median/reliability/efficiency 결론은 금지한다. Grok을 immediate replacement하지 않고 현재 window의 long-form capacity를 소진한 것으로 분류한다.
+- 1.9.58은 `kimi-k3-high` → `glm-5.2-high` 순으로 empty `/tmp` workspace와 exact `OMD_ATTRIBUTION_OK`만 사용하는 repository-free canary다. exit 0, display name, usage numeric, exact final, tool/write 0 전에는 controller allowlist에 넣지 않는다.
+- 1.9.58 Kimi K3 High와 GLM 5.2 High canary가 모두 exit 0/exact final/usage/tool 0/write 0으로 통과했다. reported display는 각각 `Kimi K3 High`, `GLM 5.2 High`다.
+- Cursor init은 process launch directory 대신 account home을 cwd로 보고했지만 tool/write 0이라 no-write acceptance에는 영향이 없다. requested workspace와 runtime-reported cwd는 provenance에서 계속 분리한다.
+- 둘 다 immutable model ID가 아니라 display-name attribution이므로 Internal only다. scored matrix 전 1.9.59 controller allowlist+exact display fixture acceptance가 필요하다.
+- 1.9.59는 provider-free로 `kimi-k3-high`/`glm-5.2-high`와 exact display label만 Cursor allowlist에 추가한다. low/max/fast/K2.7/Auto는 계속 차단하고 Grok/Composer regression과 crossed display fail-close를 검증한다.
+- 1.9.59가 ACCEPTED됐다. live allowlist는 Grok 4.5 High, Composer 2.5, Kimi K3 High, GLM 5.2 High 정확히 4개이며 crossed Kimi/GLM display는 `reported-model-mismatch`다.
+- Auto/Grok Fast/Kimi Max/GLM Max/low/fast/K2.7은 계속 차단된다. focused 23/23, lint/build/syntax/diff green, provider generation 0이다.
+- 1.9.60 Kimi K3 High scored Preview를 LOCKED했다. onboarding/incident/locale 3-task Raw↔OmD 6셀, order는 Grok 1.9.57과 동일, `/tmp/u1960`, 120초 pacing, no retry이며 Grok incomplete denominator와 독립이다.
+- committed clean source `2148a28`에서 `/tmp/u1960` 6/6을 prepare했다. source dirty false/publishable true, primary evaluator preflight pass, matrix SHA `e64c5070…`이며 3개 task의 starter/DESIGN.md/manifest와 shared skill/sidecar hash를 고정했다.
+- standing authorization과 Grok-first capacity stop 뒤의 Kimi 순서에 따라 provider execution을 시작했다.
+- 1.9.60 Kimi 실행은 사용자 pause 요청에 따라 FROZEN됐다. onboarding Raw, incident OmD, locale Raw 3셀은 모두 85/85·automated/critical/Evidence & Unknown pass지만 complete pair는 0개다.
+- 네 번째 onboarding OmD는 `api2.cursor.sh ENOTFOUND`로 395ms에 product change/usage/final 0인 infrastructure failure가 됐고 뒤 2셀은 not-started다. 세 번째 pacing timestamp도 locked 120초가 아닌 약 659초라 execution-control invalid다.
+- `/tmp/u1960` resume·failed-cell replacement·model substitution은 금지한다. GLM 5.2와 모든 다음 provider 실행은 별도 사용자 요청 전까지 pause한다. 이후 요청은 사용자 지정대로 Sol High Fast를 기본으로 한다.
+- 사용자가 재개와 병렬 테스트를 승인했다. 로컬 준비·결정론 QA는 Sol High 레인으로 병렬화하되, 공유 Cursor account의 provider 셀은 capacity/latency 오염을 막기 위해 모델별 독립 matrix 안에서 직렬 실행한다.
+- 1.9.61은 장시간 controller를 셀 단위 durable checkpoint로 바꾸는 provider-free calibration이다. `max_new_cells=1`이면 valid run+score+record 뒤에만 멈추고, 다음 invocation은 완료 셀·cooldown을 중복하지 않아야 한다. 통과 전에는 새 GLM/Kimi provider matrix를 시작하지 않는다.
+- pre-implementation Sol High 감사로 pacing을 120,000–125,000ms bounded window로 좁혔다. monotonic/wall clock 중 하나라도 범위를 벗어나거나 5초 넘게 불일치하거나 root-local cancellation이 있으면 다음 provider 호출 전에 freeze한다. 이 amendment는 구현·provider 실행 전에 고정됐다.
+- 1.9.61 checkpointed controller가 ACCEPTED됐다. atomic root lease, immutable `max_new_cells`, completed-prefix 재검증, untouched-suffix attestation, execution/history/timing corruption fail-close, 120–125초 pacing과 STOP sentinel을 구현했다. related 56/56(전용 39/39), lint/build/syntax/diff가 green이며 provider generation은 0이다.
+- 다음 live denominator는 fresh `/tmp/u1962`의 GLM 5.2 High 3-task Raw↔OmD 6셀 Preview다. 모든 호출은 `--max-new-cells 1`, shared Cursor provider global serial, no retry/replacement, Internal display-name attribution으로 실행한다. GLM이 terminal로 동결된 뒤에만 fresh Kimi replacement를 연다.
+- 1.9.62 GLM Preview를 LOCKED했다. schema 0.3/suite v0.2/evaluator 0.5, onboarding Raw → incident OmD → locale Raw → onboarding OmD → incident Raw → locale OmD 순서, 900초/no retry/120초 pacing이며 matrix file SHA는 `358b0fa7…`다. 1.9.60과 같은 starter/DESIGN.md/skill hash만 허용하고 preparation 전 provider generation은 0이다.
+- committed clean source `1b85f95`에서 `/tmp/u1962` 6/6을 prepare했다. source dirty false/publishable true, locked matrix SHA `358b0fa7…`, preparation state SHA `41a84371…`이며 task starter/DESIGN.md/prompt와 OmD skill/sidecar hash가 1.9.60 frozen input과 동일하다. primary evaluator preflight와 Cursor binary/version/allowlist도 통과했다.
+- 1.9.62 GLM Preview가 capacity/DNS failure 없이 6/6 complete됐다. Raw는 83/81/79(median 81), OmD는 85/77/85(median 85), paired delta는 +2/-4/+6(median +2), Evidence 6/6, waits 5/5다. incident OmD가 Raw 대비 -4이고 accessibility/all-critical은 2/3라 zero-loss·a11y 3/3 가설은 REJECTED다.
+- incident loss는 artifact가 새로 추가한 focusable `Skip to operations`를 `.sr-only`로 영구 clipping하고 focus 시 reveal하지 않아 전 viewport keyboard-in-view와 200% zoom geometry를 함께 실패한 실제 candidate defect다. frozen skill은 이미 미요청 control `allowed_delta:0`, 320px/200% clipped-control, focus 시 skip control in-view를 명시했으므로 규칙 부재가 아니라 실행·검증 미준수다.
+- 1.9.63 Kimi K3 High operational replacement를 fresh `/tmp/u1963`에 LOCKED했다. 1.9.60의 workspace/output/state는 전부 denominator 밖이며, 1.9.62와 동일한 onboarding Raw → incident OmD → locale Raw → onboarding OmD → incident Raw → locale OmD 순서·입력·skill·평가기준을 유지한다. matrix SHA는 `7152888e…`, control-contract SHA는 `9418f3cc…`다.
+- 실행은 1.9.61 checkpoint controller의 `--max-new-cells 1`, 120–125초 retained pacing, invocation별 evaluator preflight, root lease + cross-root global serial lock을 사용한다. retry/replacement/model substitution은 없으며 첫 실패에서 root를 동결한다.
+- committed clean source `cd79433`에서 `/tmp/u1963` 6/6을 fresh prepare했다. source dirty false/publishable true, matrix SHA `7152888e…`, preparation state SHA `e84935d4…`이며 task starter/DESIGN.md/prompt와 OmD skill/sidecar/root/subtree hash가 frozen denominator와 일치한다. primary evaluator preflight와 Kimi runtime binary/version/allowlist도 통과했다.
+- 사용자의 즉시 중단 요청으로 1.9.63 첫 `onboarding-t1-raw` 실행을 종료했다. 완료 셀·score·usage·final·run record·checkpoint는 0이며, 중단 전 `index.html`, 테스트 helper 2개, 빈 Chrome log가 부분 작성됐다. 남아 있던 Cursor child까지 명시적으로 종료해 provider/controller process와 global lock owner는 없고, execution state의 `running` 및 root lease는 forensic evidence로 보존한다.
+- `/tmp/u1963`은 user-interrupted execution-invalid root로 동결했다. same-root resume, stale lease 삭제, 부분 artifact 평가, interrupted-cell replacement, 1.9.60과의 결합은 금지한다. 이후 작업 레인은 사용자 지정대로 `sol medium`이며, Kimi 재실행이 필요해지면 fresh preregistered root부터 다시 연다.
+- 사용자가 테스트 재개를 승인했고 Grok 우선, 실제 용량 소진 뒤 Terra High/Luna High 순의 독립 lane을 요청했다. `/tmp/u1963`은 계속 제외하며 새 provider root 전에 1.9.64 provider-free compliance repair를 먼저 통과시킨다.
+- 1.9.64는 기존 accessibility 규칙을 추가하는 패치가 아니라, 실제 focusable diff를 protected ledger와 대조하는 mandatory `interactive closure`를 추가하는 bounded repair다. canonical skill SHA `938c6f0a…`, sidecar `f0ad5294…`, evaluator/provider/task delta 0으로 LOCKED했다.
+- 1.9.64가 provider-free ACCEPTED됐다. 마지막 제품 편집 직후 actual focusable diff를 `allowed_delta`/원 사용자 authority와 대조하고, unauthorized addition 제거, hidden focusable의 source-level focus reveal + same-route in-view, 세 zero condition을 acceptance 전 강제한다. skill SHA는 `c63ba1e4…`, sidecar는 불변이다.
+- contract 6/6, install-skills 36/36, Cursor adaptation 1/1, TypeScript/build/diff가 green이다. selected 55/57의 나머지 2건은 기존 `/tmp` competitor vendor Git metadata 환경 실패이며 provider generation은 0이다. fresh clean-commit Grok Preview가 unlock됐다.
+- 1.9.65 fresh Grok Preview를 `/tmp/u1965`에 LOCKED했다. schema 0.3/suite v0.2/evaluator 0.5, onboarding Raw → incident OmD → locale Raw → onboarding OmD → incident Raw → locale OmD, 900초/no retry/120–125초 pacing/max-new-cells 1이며 matrix SHA `857b87d5…`, control SHA `9418f3cc…`다.
+- 유일한 candidate delta는 1.9.64 interactive closure다. starter/DESIGN/prompt는 이전 3-task denominator와 동일하고 skill SHA만 `c63ba1e4…`로 바뀐다. Grok capacity/quota stop 시 Terra/Luna는 이 denominator 대체가 아니라 별도 lane으로만 연다.
+- committed clean source `de306fe`에서 `/tmp/u1965` 6/6을 fresh prepare했다. source dirty false/publishable true, matrix `857b87d5…`, preparation `318006af…`, frozen starter/DESIGN/prompt와 new skill/sidecar/root/subtree hash가 모두 일치한다. evaluator preflight와 Cursor/Grok runtime allowlist도 통과했고 provider output은 0이다.
+- 1.9.65 Grok Preview가 6/6 cells·5/5 waits로 retry/fallback/capacity failure 없이 완료됐다. Raw 81/81/85, OmD 85/85/85, paired delta +4/+4/0, median +4, Evidence & Unknown 6/6, task-owned `index.html` diff 6/6이다.
+- 1.9.64 interactive closure의 bounded 가설은 PASSED다. OmD 3셀 모두 automated/all-critical pass이고, 4개 viewport에서 관측 focusable을 exact 순회했으며 hidden/clipped/invisible/unresolved focus target은 0이다. GLM 1.9.62의 permanently clipped skip-link defect는 재발하지 않았다.
+- Cursor가 immutable model ID 대신 `Cursor Grok 4.5 High` 표시명만 제공해 public validity는 계속 invalid-attribution이다. 이 결과는 one-trial Internal Preview이며 Reliability@3, confidence, public leaderboard, cross-model/frontier/일반 efficiency 주장을 허용하지 않는다.
+- Grok quota/capacity가 이번 matrix에서 소진되지 않았으므로 Terra High/Luna High substitute lane은 열지 않았다. `/tmp/u1965`은 complete frozen root이며 resume/replay/manual score edit하지 않는다.
+- 다음 미충족 gate인 repeated reliability를 위해 1.9.66 Grok Reliability@3 Preview를 LOCKED했다. fresh `/tmp/u1966`, onboarding/incident/locale × Raw/OmD × trial 1–3의 balanced 18셀, max-new-cells 1, 120–125초 pacing, no retry이며 matrix SHA는 `f25a9838…`, control SHA는 `9418f3cc…`다.
+- 1.9.65 frozen output은 새 denominator에 합치지 않는다. candidate/evaluator/product delta는 0이고, 1.9.64 skill만 Raw 대비 candidate다. 18/18, OmD≥Raw 9/9, paired median>0, OmD automated/a11y/all-critical 9/9가 acceptance다.
+- committed clean source `a21a2f3`에서 `/tmp/u1966` 18/18을 fresh prepare했다. source dirty false/publishable true, matrix `f25a9838…`, preparation `aefdeba9…`, 6개 task×variant group의 trial input과 skill/root/subtree hash가 모두 동일하다. primary evaluator dependency와 Cursor/Grok runtime도 통과했다.
+- 1.9.66 Grok Reliability@3 Preview가 18/18 cells·17/17 waits를 quota/capacity/retry 없이 완료했다. Raw task scores는 onboarding 85/85/81, incident 85/85/77, locale 85/85/85이고 OmD는 85/85/85, 81/85/81, 85/85/85다.
+- paired delta는 0/0/+4, -4/0/+4, 0/0/0으로 W/T/L 2/6/1, mean +0.44, median 0이다. OmD automated/all-critical은 9/9, Raw automated 7/9, task Reliability@3는 OmD 2/3 대 Raw 1/3이지만 zero-loss와 positive-median acceptance를 실패해 bounded hypothesis는 REJECTED다.
+- incident OmD의 `card_radius` design-grounding loss가 2/3 반복된 다음 repair cluster다. hidden-focusable defect는 OmD 9셀에서 0이고 4 viewport keyboard visible/in-view/full-in-view가 모두 pass했다.
+- 다음은 provider-free geometry-token closure만 추가하고, fresh incident candidate recovery를 통과한 뒤에만 반복 matrix replacement를 연다. Grok quota가 소진되지 않아 Terra/Luna lane은 열지 않았다. `/tmp/u1966`은 complete frozen root다.
+- 1.9.67 provider-free geometry-token compliance를 LOCKED했다. actual changed radius surface를 product role과 exact DESIGN.md radius token에 대조하고 mismatch를 고치며, role/token unknown이면 plausible radius를 만들지 않고 pre-edit geometry를 보존하는 단일 delta다.
+- source skill `c63ba1e4…`, sidecar `f0ad5294…`; evaluator/task/provider/foreground/interactive closure delta는 0이다. local contract/channel tests 통과 뒤 fresh incident OmD recovery만 연다.
+- 1.9.67 geometry-token closure가 provider-free ACCEPTED됐다. foreground correction 뒤 final interactive closure 전에 actual changed `border-radius` surface를 기존 product role과 exact DESIGN.md role token에 대조하고, role/token unknown이면 pre-edit geometry를 복원한다.
+- skill SHA는 `c63ba1e4…`에서 `2ce11fb1…`로 바뀌었고 sidecar `f0ad5294…`는 불변이다. contract 6/6, install 36/36, Cursor adaptation 1/1, selected 55/57(기존 vendor Git metadata 2건 제외), lint/build/diff가 green이며 provider generation은 0이다.
+- 다음은 clean commit에서 fresh incident OmD Grok 1셀 복구다. 85/85, all gates, exact card radius, hidden-focusable 0을 모두 통과하기 전 repeated replacement matrix는 열지 않는다.
+- 1.9.68 candidate-only Grok recovery를 fresh `/tmp/u1968`에 LOCKED했다. incident OmD 1셀, 900초, max-new-cells 1, no retry/fallback/substitution이며 1.9.67 geometry-token closure만 새 candidate delta다.
+- 85/85, automated/accessibility/all-critical/Evidence, exact card radius, hidden-focusable 0, index.html-only diff가 acceptance다. 통과해도 repeated replacement만 unlock되며 Reliability@3/Skill Lift 주장은 금지한다.
+- committed clean source `e996c99`에서 `/tmp/u1968` 1/1을 fresh prepare했다. source dirty false/publishable true, matrix `04b34616…`, preparation `ab2a2b2b…`, incident starter/DESIGN/prompt와 skill `2ce11fb1…`/sidecar hash가 frozen contract와 일치한다.
+- provider output은 0이고 Cursor binary/version/selector를 고정했다. 다음은 dependency-complete primary에서 `--max-new-cells 1` Grok execution 한 번이다.
+- 1.9.68 Grok incident OmD recovery가 quota/capacity/retry 없이 1/1 complete됐다. deterministic 85/85, critical 6/6, Evidence, 4 viewport geometry, axe serious/critical 0, index.html-only diff다.
+- generated radius는 console 14px/control 10px로 DESIGN.md role token과 exact 일치하며 card/control radius가 모두 pass했다. 각 viewport의 focusable은 7/7 visible/in-view/fully-in-view라 hidden-focusable 회귀도 0이다.
+- runtime은 `Cursor Grok 4.5 High` 표시명만 보고해 public validity는 invalid-attribution을 유지한다. bounded Internal candidate recovery는 PASSED하며 fresh repeated replacement matrix만 unlock됐다.
+- Grok quota가 소진되지 않아 Terra/Luna lane은 열지 않았다. `/tmp/u1968`은 complete frozen root이며 resume/replay/manual score edit하지 않는다.
+- 1.9.69 incident-only Grok Reliability@3 replacement를 fresh `/tmp/u1969`에 LOCKED했다. Raw/OmD × trial 1–3의 6셀, balanced order, one-cell checkpoint, 120–125초 pacing, no retry이며 1.9.66/1.9.68 artifact는 denominator 밖이다.
+- acceptance는 OmD≥Raw 3/3, paired median≥0, OmD automated/a11y/all-critical/exact radius/Evidence 3/3, hidden-focusable 0이다. 통과해도 incident cluster 반복성만 증명하고 general/three-task Skill Lift는 주장하지 않는다.
+- committed clean source `691e4c1`에서 `/tmp/u1969` 6/6을 fresh prepare했다. source dirty false/publishable true, matrix `5383519d…`, preparation `615d2e5a…`, 6셀의 starter/DESIGN과 Raw/OmD prompt가 동일하며 OmD 3셀 skill `2ce11fb1…`/sidecar가 일치한다.
+- provider output은 0이다. 다음은 global serial `--max-new-cells 1` 실행 6회와 retained 120–125초 cooldown 5회다.
+- 1.9.69 Grok incident Reliability@3가 6/6 cells·5/5 cooldown을 quota/capacity/retry 없이 완료했다. Raw 85/85/85, OmD 85/85/85, paired delta 0/0/0이며 OmD≥Raw 3/3이다.
+- OmD automated/all-critical/Evidence 3/3, exact card/control radius 3/3, 4 viewport focus closure 3/3, hidden/clipped/out-of-view focusable 0이다. 1.9.66의 repeated geometry cluster는 fresh candidate recovery + incident Reliability@3로 닫혔다.
+- compute는 Raw 280,467 tokens/588,871ms, OmD 251,774 tokens/690,175ms로 descriptive-only다. efficiency 실험이 아니므로 일반 효율 주장은 금지한다.
+- Cursor 표시명-only attribution 때문에 public Model Track validity는 계속 invalid다. `/tmp/u1969`은 complete frozen root이며 general three-task Skill Lift는 아직 미증명이다.
+- Grok quota가 소진되지 않아 Terra/Luna lane은 열지 않았다. 다음 유효 단계는 fresh three-task replacement 또는 새로운 failure-cluster audit다.
+- 1.9.52 fresh operational replacement도 5셀 완료 뒤 6번째 Raw가 동일 Cursor Provider `resource_exhausted`로 26,433ms에 process-failure했다. reconnect 3회, usage/final/product change 0이고 마지막 3셀은 not-started다.
+- 완료 5셀은 baseline 53/67, Raw 79, OmD 85/85이며 Evidence & Unknown 5/5다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 어떤 paired/replication/efficiency 결론에도 쓰지 않는다.
+- 1.9.51과 1.9.52가 같은 provider-capacity condition으로 연속 중단되어 immediate matrix clone hard-pause가 발동했다. no-write 진단으로 account-wide block은 배제했지만 pacing calibration 전 full matrix 재실행은 금지한다.
+- 1.9.51 fresh Composer 9-cell replacement는 6셀 완료 뒤 7번째 Raw가 Cursor Provider `resource_exhausted`로 25,541ms에 process-failure가 나 frozen됐다. provider-managed reconnect 3회, usage/final/product change 0이며 마지막 2셀은 not-started다.
+- 완료 6셀은 baseline 69/63, Raw 79/79, OmD 85/85이고 Evidence & Unknown 6/6이다. OmD 둘은 critical 6/6·a11y pass지만 incomplete matrix라 W/T/L·Reliability@3·efficiency·replication 판단은 전부 금지한다.
+- 1.9.51은 skill 실패가 아닌 infrastructure-invalid execution이다. `/tmp/u1951`은 resume하지 않으며 preregistered infrastructure policy에 따라 1.9.52 fresh operational replacement만 허용한다.
+- 1.9.52 fresh operational replacement를 동일 9셀·순서·task·evaluator·acceptance로 LOCKED했다. 새 root는 `/tmp/u1952`이며 candidate delta는 0이다. 같은 provider-capacity stop이 반복되면 추가 즉시 재실행 대신 capacity hard-pause다.
+- 1.9.50 fresh Composer candidate-only recovery는 retry/fallback/manual edit 없이 85/85, critical 6/6, Evidence & Unknown pass, 4 viewports axe serious/critical 0, `index.html`-only diff로 통과했다. `signal-orange`는 non-text decoration 2곳에만 남고 normal text 0곳이다.
+- Composer는 immutable ID가 아닌 `Composer 2.5` 표시명만 반환하므로 public validity는 계속 `invalid-attribution`이다. 이 1셀은 모든 Skill Lift denominator 밖이며 1.9.48 rejected 결정을 바꾸지 않는다.
+- 동일 task/evaluator/Raw/control과 balanced order를 유지한 1.9.52가 통과해야 Composer bounded Skill Lift replication을 닫는다.
+- 1.9.49는 canonical `omd-apply`에 mandatory post-edit `foreground closure`를 추가했다. changed foreground 선언과 실제 text를 전수해 token semantic은 proof가 아니며 exact 4.5:1이 없으면 declared text-role로 fail-close하고 accent는 인접 non-text에만 남긴다. 대체 token이 없어도 새 hex를 만들지 않는다.
+- contract 6/6, install-skills 36/36, focused Cursor adaptation 포함 7/7, TypeScript/build/diff가 green이다. selected 55/57에서 기존 `/tmp` competitor vendor Git metadata 2건만 환경 실패다. evaluator/task/Raw/historical score는 불변이다.
+- local repair와 fresh Composer candidate-only recovery가 모두 pass했으며 full 9-cell replacement가 unlock됐다.
+- 1.9.48 fresh Cursor/Composer 2.5 matrix는 9/9 완료했다. baseline 65/59/61(0/3), Raw 81/79/85(1/3), OmD 85/85/81(2/3), paired +4/+6/-4로 3/3·zero-loss·accessibility gate를 실패해 replication rejected다.
+- sole OmD failure는 evaluator 문제가 아니라 `.check-state.blocked` 13px bold에 `signal-orange #E7683D`를 white 위 foreground로 써 3.25:1이 난 실제 semantic-color defect다. mobile/320/200%에서 axe color-contrast가 fail했다.
+- skill에 unmeasured accent normal-text 금지가 이미 있으나 ledger/checklist라 Composer 1/3에서 closure를 생략했다. 다음 1.9.49는 changed foreground declaration 전수 분류→measured 4.5:1 없으면 text-role token으로 교체하고 accent는 non-text에만 보존하는 mandatory closure 하나만 강화한다.
+- 1.9.47 fresh schema 0.5 / suite `ui-resolve-v0.2` Cursor/Grok matrix는 9/9 serial 실행을 retry 없이 완료했다. baseline 61/63/65(0/3), Raw 79/85/79(1/3), OmD 85/85/85(3/3)이며 paired +6/0/+6, zero loss다.
+- OmD는 accessibility와 모든 critical gate를 3/3, Evidence & Unknown을 9/9 통과했다. signal-orange small text, invalid ARIA parentage, keyboard-unreachable comparison도 OmD 0/3이다. bounded one-task Skill Lift 가설은 pass다.
+- median wall Raw 289,735ms vs OmD 224,473ms(-22.5%), non-cached tokens 61,228 vs 100,583(+64.3%)다. 1 task×3과 display-name attribution이므로 Internal descriptive일 뿐 efficiency/Pareto/public winner/frontier claim은 금지한다.
+- 다음 의미 있는 patch는 같은 schema/controller/task에서 `composer-2.5`로 replication하는 1.9.48이다. 통과 뒤에야 within-runtime model slice 확장 또는 12-task pack으로 진입한다.
+- 1.9.45 fresh Cursor/Grok 4.5 High Skill Lift는 9/9 serial 실행을 retry 없이 완료했다. frozen schema 0.4에서 baseline 53/51/65(0/3), Raw 81/79/85(1/3), OmD 85/85/83(2/3)이며 Raw→OmD paired delta +4/+6/-2다. OmD는 median 85였지만 3/3·zero-loss·accessibility 3/3 gate를 실패해 candidate rejected다.
+- Cursor immutable model ID가 없어 9셀 모두 public `invalid-attribution`이며 Internal descriptive evidence만 허용한다. median wall Raw 261,879ms vs OmD 275,592ms(+5.2%), non-cached tokens 56,405 vs 72,052(+27.7%)다. 1 task×3이므로 efficiency/Pareto claim은 금지한다.
+- 1.9.45의 유일한 OmD loss는 tall focusable scroll region의 전체 bounding box가 viewport 안에 있어야 한다는 schema 0.4 evaluator false negative였다. WCAG 2.4.11 minimum에 맞춰 partial viewport intersection을 critical로, full visibility를 advisory로 분리했다.
+- 1.9.46 provider-free calibration은 unchanged OmD artifact를 85/85 all gates pass로 회복하고, unchanged Raw `scrollable-region-focusable` defect를 79/85 accessibility fail로 유지했다. evaluator schema는 0.5, 다음 suite는 `ui-resolve-v0.2`; 1.9.45 소급 승격은 없다.
+- invalid-attribution-only aggregate가 empty candidate에서 crash하던 문제도 zero-row/empty-pairs로 fail-safe 처리했다. focused evaluator/aggregate/runtime 25/25, Node syntax, diff check가 green이다.
+- 모델 비교 compute-control을 schema 0.3으로 구현했다. `high`/`xhigh`는 runtime-native ordinal이며 provider 간 동일 effort로 간주할 수 없다. native-capability / iso-external-budget / effort-scaling을 분리하고, wall timeout·serial latency·temperature policy·retry/timeout/infra 정책·hard-cap vs observed-only token/step budget을 matrix lock 전에 검증한다.
+- run record는 fresh/cached input, output, reasoning visibility, usage completeness, execution control을 보존한다. aggregator는 timeout/failed를 포함한 모든 valid scheduled run의 wall/token/tool/intervention/cost를 집계하며 usage 100%와 동일 control contract 없이는 efficiency publication-ready를 false로 둔다.
+- 공식 method 근거는 SkillsBench, Harness-Bench, OSWorld, SWE-bench, METR, OpenAI benchmark audit, Agentic Benchmark Checklist이며 정본은 `benchmarks/ui-resolve-bench/COMPUTE-CONTROL.md`다.
+- focused compute/runtime 23/23, CLI TypeScript/build, syntax/diff가 green이다. 전체 bench는 88 pass/1 skip이고 기존 `/tmp` vendor Git metadata 부재 2건만 환경 실패다.
+- 2026-07-28 Cursor automatic discovery와 explicit `/omd-apply` canary가 정확한 4-file 전송 승인 뒤 모두 통과했다. 두 응답 모두 `Cursor Grok 4.5 High`, `omd-apply`, semantic color/structure 규칙을 확인했고 edit/shell/browser/MCP/network는 0이다.
+- 1.9.44는 Cursor Grok 4.5 High 고정, baseline/raw DESIGN.md/OmD skill 각 3회인 fresh 9-cell을 schema 0.3 compute-control로 LOCKED·prepared했다. `/tmp/u1944`, matrix SHA `412efd7d…`, serial/900s/no-retry/first-failure-stop이다. 사용자가 각 셀의 exact file boundary를 명시해 expanded 9-cell 전송을 승인했다.
+- 1.9.44는 첫 baseline provider run이 exit 0, `Cursor Grok 4.5 High`, 401,042ms, input 92,125/cache 652,160/output 27,907, product diff index.html-only로 끝났지만 controller가 schema 0.3을 legacy direct-ID 비교로 잘못 보내 `observed-model-mismatch`로 stop했다. 0 valid / 1 stopped / 8 not-started이며 `/tmp/u1944`는 폐쇄했다.
+- 실제 model mismatch가 아니라 `schemaVersion === "0.2"` 하드코딩 결함이다. schema 0.2와 0.3 모두 provider-neutral `runtimeAttributionStopReason`을 사용하도록 고치고 exact Cursor display-label fixture를 추가했다. focused runtime/matrix 21/21 green이며 다음은 fresh 1.9.45다.
+- 1.9.45 operational replacement를 `/tmp/u1945`에 fresh 9/9 prepare했다. matrix SHA `5078369c…`, source `c726741`, product/skill/evaluator/order는 동일하며 1.9.44는 denominator 밖이다. 이 새 root의 exact transmission approval 전 provider execution은 0이다.
+- `FRONTIER-STOP-CONDITIONS.md`가 2.0의 9개 completion gate, 의미 없는 patch 금지, autonomous continuation, hard pause, 현재 gate map을 정본으로 고정한다. 현재 Harness Pareto·routing/reverify는 Partial이고 Verified Skill Lift/3-model lower bound/24×10/task audit/blind panel/production reuse는 미달이다.
+- 사용자는 locked benchmark provider workspace의 향후 외부 전송을 포괄 승인했다. credentials/secrets/관련 없는 user docs/repo history/payment/`llms-full.txt`와 사전등록 범위 밖 파일은 계속 제외하며, 범위가 materially 넓어질 때만 hard pause한다.
+- 1.9.37 minimum public evidence slice를 `/benchmarks`에 구현·수락했다. 페이지는 `Internal evidence`/`Not a leaderboard`를 먼저 노출하고 Model/Skill/Harness를 분리하며, 1.9.22의 5/9→8/9·W/T/L 4/4/1·CI -22.22→100pp·77/85 loss와 1.9.34 실패→1.9.35 contract→1.9.36 fresh recovery를 함께 보여준다.
+- canonical report→`web/src/data/ui-benchmark-public.generated.json` 생성기를 추가했다. denominator/claim/CI/source 전제를 assert하고 stale artifact를 CI와 release workflow에서 fail-closed한다. 화면 source에는 benchmark 수치를 다시 하드코딩하지 않는다.
+- public UX contract/findings, sitemap, metadata, route/data/render tests를 추가했다. Web full 827/827, final focused 6/6, TypeScript, changed-file ESLint, root 217 pass/1 skip, CLI TypeScript/build, public-data check와 diff check가 green이다.
+- network-enabled production build는 1,459 pages로 통과했고 `/benchmarks`는 static이다. Browser Harness에서 1440/390/320/200%-equivalent 720 모두 overflow/clipping 0, console error 0, axe serious/critical 0, 9 anchors visible keyboard focus, Method pointer/Enter scroll를 통과했다.
+- Sol high 디자인 검수는 BLOCK 0·PASS, Terra xhigh 최종 검수는 PASS다. 대비가 부족한 failed-score badge와 전역 smooth-scroll에 흔들리던 Method anchor는 발견 후 수정했고 전체 증거를 최신 리비전에서 다시 수집했다.
+- 사용자 실행 정책: 설계는 Sol high를 유지하되 외부 review/acceptance는 가능한 한 Cursor Grok 4.5를 우선한다. 이전 정합성·결정론 비교가 필요한 경우에만 Terra/Luna를 보조로 쓴다. Opus는 현재 실행하지 않는다.
+- homepage/nav/install activation은 의도적으로 건드리지 않았다. 다음은 1.9.38 activation/reuse를 별도 사전등록해 진행한다.
+- 1.9.38은 Home CLI trust row의 claim-free tertiary evidence link → `/benchmarks` evidence inspection → Method/Sources 이후 installer/docs/Builder handoff로 범위를 고정했다. 주 지표는 version-isolated installer copy 성공이며 Docs/Builder 이동은 탐색 proxy다. `bm_*`와 기존 `act_handoff(surface=benchmark)`를 분리하고, 웹 handoff만 측정하며 install/reuse라고 부르지 않는다.
+- Terra xhigh 사전등록 감사에서 typed `benchmark` surface, canonical `experiment_version` bridge, GA4 4개 dimension+결정론 report, production host/testing-filter/Active internal-traffic exclusion을 구현 gate로 추가한 뒤 PASS했다.
+- 1.9.38 구현은 Sol high BLOCK 2건(숨겨진 exact command, 모바일에서 도달 불가능한 whole-section 50% 분모)을 수정하고 재검수 PASS했다. Terra xhigh는 Web 830/830, production 1,459 pages, 1440/390/320/200%-equivalent geometry, 성공/실패/Docs/Builder event path를 통과했다.
+- exact command의 가로 스크롤 영역에서 axe serious `scrollable-region-focusable` 1건이 발견됐고 labelled `tabIndex=0`+visible focus ring으로 수정 후 fresh axe serious/critical 0/0, console/page error 0을 통과했다. 1.9.38은 `calibration_complete`; production 14–28일 판단은 별도 pending이다.
+- 1.9.39 설계 감사에서 matrix가 `cell.runtime=codex`여도 `run-claude.mjs`와 `--effort`를 하드코딩하는 provider-neutral 위반을 확인했다. live model 없이 fake Claude/Codex로 no-fallback dispatch, common provenance, failure retention을 교정하도록 사전등록했다.
+- 다중 모델은 이미 Model Track·Skill Lift·Harness·Transfer Matrix로 분리돼 있으며 1.9.6에서 Terra/Fable/Opus 1-task compatibility smoke를 완료했다. 이는 runtime-neutral leaderboard가 아니라 model×runtime 내부 관측이다.
+- Cursor Agent `2026.07.23-e383d2b`을 `cursor-agent` 전용 경로로 collision-safe 설치하고 사용자 계정 브라우저 로그인을 완료했다. 기존 `agent`는 Grok 0.2.33 그대로다.
+- Cursor fixed-runtime pilot은 `cursor-grok-4.5-high`와 `composer-2.5`만 사용한다. `gpt-5.3-codex-xhigh`는 제외하고 OpenAI 계열은 최종 Codex runtime의 Luna/Terra/Sol로 측정한다.
+- 최종 비교 universe는 Codex Luna/Terra/Sol, Claude Code Opus5/Fable5/Sonnet5, Cursor Composer2.5/Grok4.5다. cross-runtime 표는 pure model leaderboard가 아니라 model×runtime system으로 표시하고 within-runtime cut을 병행한다.
+- 1.9.39 provider-neutral controller 구현·결정론 calibration이 완료됐다. schema 0.2는 Claude/Codex native flag, runtime/model/effort provenance, provider-observed 대 CLI argument 구분, locked suite export, unsupported diagnostics `null`, 첫 실패 뒤 명시적 `not-started` retention을 강제한다.
+- fake 2-cell acceptance 28/28, Node syntax, TypeScript, CLI build가 green이다. 전체 root는 222 pass/1 skip이며 `/tmp` external vendor checkout 두 개의 Git metadata 부재로 기존 preparation 테스트 2개만 환경 실패했다.
+- Grok 4.5 read-only review 호출은 host가 private repository diff의 외부 전송에 대한 구체적 승인을 요구해 실행되지 않았다. 코드나 credentials는 전송하지 않았고, 승인 전까지 Grok/Composer live lane은 대기한다.
+- Cursor 실행 큐는 사용자 범위에 맞춰 1.9.40 fake adapter → 1.9.41 Grok/Composer no-write attribution → 1.9.42 fixed-runtime Model Track → 1.9.43 Agent Skill channel → 1.9.44 Skill Lift로 당겼다.
+- 1.9.40 fake Cursor adapter calibration도 완료됐다. `cursor` cell은 dedicated `run-cursor.mjs`만 사용하고 provider CLI에는 별도 effort flag를 넘기지 않는다. binary version/SHA, requested/reported model, sandbox/workspace, raw stream/stderr를 보존한다.
+- live Cursor model allowlist는 코드에서 `cursor-grok-4.5-high`와 `composer-2.5`만 허용한다. Auto/Router와 GPT/Codex IDs는 차단된다. wrong-model 첫 셀은 stop되고 뒤 셀은 `not-started`로 남는다.
+- 1.9.40 focused 31/31, syntax, TypeScript, build가 green이다. 전체 root는 225 pass/1 skip이고 동일한 external vendor Git metadata 환경 실패 2건만 남는다.
+- 1.9.41 no-write probe는 새 빈 `/tmp` workspace와 고정 문구만 전송했다. repository/diff/DESIGN.md/user content는 전송하지 않았다. Grok 4.5와 Composer 2.5 모두 exit 0, tool 0, exact `OMD_ATTRIBUTION_OK`를 반환했다.
+- Cursor stream은 requested immutable ID를 되돌려주지 않고 `Cursor Grok 4.5 High`와 `Composer 2.5` 표시명만 보고했다. 따라서 `runtime-reported-display-name`으로 기록하고 public validity는 `invalid-attribution`, Internal pilot eligibility만 true다.
+- 실제 stream usage는 Grok 15,040 input/4,480 cached/44 output, Composer 10,840/6,369/48로 보존했지만 1회 no-write probe이므로 속도·토큰·비용 비교나 우열 주장은 하지 않는다.
+- 1.9.42 Internal pilot은 Cursor runtime 고정, Pricing+Raw DESIGN.md, Grok/Composer 각 3회(6셀), 900s/cell로 사전등록했고 재시도·fallback·수동 product edit 없이 6/6 provider/evaluator 실행을 완료했다.
+- 각 workspace 전송 범위는 `.benchmark/{PROMPT,manifest,matrix-cell}`, `AGENTS.md`, `DESIGN.md`, `index.html` 6개뿐이다. repository history/catalog/user docs/credentials/`llms-full.txt`는 포함하지 않는다. 대표 cell hash와 locked matrix hash를 PREPARATION.json에 기록했다.
+- Grok은 81/85×3, Composer는 81/85×2·79/85×1이다. 6개 모두 task/state/responsive/design/evidence gate는 통과했지만 accessibility critical gate를 실패했고 display-name attribution이므로 public winner/W-T-L/Reliability@3를 만들지 않는다.
+- 공통 실패는 선언된 `signal-orange #E7683D`를 paper/white 위 작은 status text로 사용해 2.98–3.25:1 대비가 난 것이다. 추가로 Grok 1셀은 ARIA table row parent를 누락했고 Composer 1셀은 horizontal comparison을 keyboard-reachable하게 만들지 못했다.
+- Cursor usage event의 camelCase를 common exporter가 0으로 합산하던 정규화 결함을 교정했다. retained `run-result.json`만 재-export했고 provider 실행·score·product는 바꾸지 않았다. 1.9.43은 frozen Raw control을 수정하지 않고 Cursor Agent Skill에 semantic-color/semantic-structure safety를 넣는다.
+- 1.9.43은 Cursor 2.4+ 기본 설치를 `.cursor/skills/` 네이티브 Agent Skills 19개 + 작은 always-on DESIGN.md bootstrap + 공유 440-reference catalog로 전환했다. 별도 OmD sub-agent 정의와 hooks는 0개이며 installer summary도 실제 수량을 표시한다.
+- `doctor`는 Cursor skills/rule-only 두 mode, 19개 skill contract·sidecar·drift, mode conflict를 검사하고 Cursor-only repair를 제안한다. 구형 클라이언트는 명시적 `--cursor-rule-only`로 기존 동작을 유지한다.
+- `omd-apply`에는 1.9.42에서 드러난 semantic accent text 대비 검증과 native table/ARIA parentage/focusable labelled horizontal scroll 계약을 추가했다. frozen Raw DESIGN.md control은 변경하지 않았다.
+- deterministic acceptance는 focused 75/75, CLI TypeScript/build, web TypeScript와 830/830, network-enabled production 1,459-page build가 green이다. root는 230 pass/1 skip이며 기존 `/tmp` vendor Git metadata 부재 2건만 환경 실패로 남겼다.
+- live Cursor automatic discovery/manual invocation은 provider 전송이므로 별도 canary로 남았다. 1.9.44는 그 canary 뒤 fixed-model Raw DESIGN.md vs OmD Skill Lift를 새 denominator로 사전등록한다.
+- 1.9.43 live discovery canary는 합성 DESIGN 287B, 합성 index 343B, installed omd-apply SKILL 22.5KB, openai.yaml 262B만 보내도록 고정했지만 이전 승인 범위를 넘는 새 외부 payload라 host safety review에서 차단됐다. 우회하지 않았고 명시 승인 대기다.
+- canary 준비 중 Cursor `--skills-only` 설치의 next-step이 `/claude-design`으로 하드코딩된 결함을 발견해 channel-native invocation helper와 5-case test로 `/omd-apply`를 출력하게 고쳤다(`6845cad`).
+- 1.9.44는 Cursor Grok 고정, pricing 1 task, baseline/raw/OmD 각 3회인 fresh 9-cell balanced draft로 준비했다. 1.9.42 결과는 denominator 밖이다.
+- benchmark prepare는 Cursor에서 `.cursor/skills/omd-apply`, `name: omd-apply`, `/omd-apply` activation을 생성하고 `.cursor`를 product diff에서 제외한다. local proof는 source scoped-clean/publishable, hooks·agents·installer 0이며 targeted prep tests 3/3이 green이다.
+- 1.9.17은 cell 8 `pricing-t2-harness`의 `late-first-product-write`로 fail-closed stop했다. 18 scheduled / 8 attempted / 7 valid complete / 1 stopped / 10 not-started이며 `/tmp/u1917`은 retry·resume·평가하지 않는다.
+- stopped provider는 exit 0·final·exact Opus·specialists 2/2·Agent/tool/infra/sandbox/cwd error 0·verifier 0이었지만 first write 510,648ms로 450,000ms gate를 60,648ms 넘었다. last advisory 282,111ms 뒤 first write까지 228,537ms가 걸렸다.
+- 완성 3 pairs는 objective 0 win/3 tie/0 loss이고 Pricing/Onboarding 85/85, Operations 81/85로 양 시스템이 동률이다. paired-only median은 portable 430,140ms·105,380 tokens, harness 500,022ms·152,485 tokens(1.162×/1.447×)지만 incomplete matrix라 reliability/Pareto/promotion 근거가 아니다.
+- root cause는 로그인·Opus·Agent가 아니라 parent의 advisory-to-edit scheduler다. 자문 완료 후 163s 재종합 + 66s whole-file Write 생성으로 first edit가 늦어졌다; 이전 valid candidate도 last-advisory→write 119–165s였다.
+- 1.9.18 source는 bounded repair advisory를 3 findings/~300 words로 줄이고 각 specialist가 exact target의 `first_safe_edit`를 먼저 반환한다. parent는 last advisory 뒤 90s 안에 recap/plan/재독해 없이 acceptance-relevant targeted Edit를 먼저 적용하며 no-op clock touch와 안전한 snippet이 있는데 whole-file Write를 첫 transaction으로 쓰는 것을 금지한다.
+- canonical skill·두 specialist·workflow manifest·Claude benchmark activation을 동기화했다. focused 29/29, 전체 207 pass/1 conditional skip, TypeScript와 CLI build, JSON/diff가 green이다.
+- `/tmp/u1918` fresh Pricing recovery 1셀을 exact Opus/xhigh, first write≤450s, last advisory→first write 0–90s, first transaction targeted non-no-op Edit, 85/85·all critical/Evidence·axe serious 0·specialists 2/2·verifier 0으로 사전등록했다. retry가 없고 full pass만 1.9.19를 연다.
+- 1.9.18 recovery는 550,607ms에 정상 종료하고 frozen 85/85·UI-Resolved·critical 6/6·Evidence pass·4 viewport axe serious/critical 0이다. first/last write 247,569/498,016ms, tokens 167,299, specialists 2/2, 모든 error 0, verifier 0, product diff `index.html` 하나다.
+- last advisory 237,043ms 뒤 targeted Edit가 10,526ms 만에 실행됐다. 첫 edit는 inline anchor CTA가 44px min-height를 실제 적용받도록 `.button`을 inline-flex로 바꾼 acceptance-relevant change이며 no-op이 아니다.
+- 1.9.17 stopped trace 대비 first-write -51.5%, advisory→write -95.4%, wall -16.7%, tokens -2.4%지만 process recovery 1셀이라 efficiency/lift 주장은 금지한다. full pass로 fresh 1.9.19 repeated matrix가 unlock됐다.
+- 1.9.19는 `/tmp/u1919`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450s, last advisory→first targeted Edit 0–90s, serious/critical axe 0, verifier 0을 사전등록했다. 1.9.17/1.9.18은 denominator 밖이고 retry가 없다.
+- schedule은 1.9.15 순서를 사용해 attempted 1.9.17 pair order를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다.
+- 사용자 요청으로 cell 8 `pricing-t2-portable` 실행 중 SIGINT(130)로 중단했다. 18 scheduled / 8 attempted / 7 valid complete / 1 interrupted / 10 not-started이며 `/tmp/u1919`은 resume·retry·평가하지 않는다.
+- 완료 7셀은 전부 85/85·UI-Resolved·Evidence pass다. 완료 후보 4셀은 specialists 2/2, targeted non-no-op Edit, first write 221–309s, last advisory→Edit 7.5–14.6s, verifier 0으로 process gate를 통과했지만 incomplete matrix라 promotion·Reliability@3·Pareto 근거가 아니다.
+- 재개는 source 변경 없이 새 1.9.20 preregistration과 `/tmp/u1920` 18 fresh cells로 처음부터 수행한다. 1.9.19 결과는 새 denominator에 합치지 않는다.
+- 1.9.20은 1.9.19의 operational replacement로 사전등록했다. product/skill/agent/evaluator/gate delta는 없고 `/tmp/u1920`의 18 fresh cells만 새 denominator다.
+- exact Opus/xhigh, 3 tasks×3 trials×portable/harness, first write≤450s, last advisory→targeted Edit≤90s, serious/critical axe 0, verifier 0, retry 0을 동일하게 고정했다.
+- 1.9.20은 첫 `pricing-t1-portable`에서 `process-failure`로 fail-closed stop했다. 18 scheduled / 1 attempted / 0 valid / 17 not-started이며 `/tmp/u1920`은 resume·retry하지 않는다.
+- provider는 child exit 0·success·final·exact Opus·product diff `index.html`·first write 353,011ms였지만 literal `/tmp/relay_check.js` write가 1회 차단돼 runner가 infrastructure 1로 정규화했다. agent는 즉시 `$TMPDIR/.t/relay_check.js`로 같은 검사에 성공했다.
+- post-stop frozen evaluator는 forensic 85/85·critical 6/6·Evidence pass·axe serious 0이지만 1.9.20을 소급 유효화하지 않는다.
+- 1.9.21 classifier는 Bash direct-child `/tmp/<simple-file>` denial + same basename의 later successful `TMPDIR` Bash + provider success가 모두 있을 때만 recoverable로 분리한다. built-in denial, cwd, nested/arbitrary path, unrecovered/provider failure는 계속 fail-closed다.
+- retained trace replay는 tool 1 / recoverable 1 / infrastructure 0 / sandbox 0 / recovered-temp 1이다. focused 33/33, full 211 pass/1 skip, TypeScript/build/syntax/diff가 green이며 fresh 1.9.22를 unlock한다.
+- 1.9.22는 `/tmp/u1922` 18 fresh cells로 사전등록했다. 1.9.19/1.9.20 결과는 denominator 밖이며 source classifier basis만 `d422186`으로 갱신했다.
+- 1.9.22는 retry·resume·개입 없이 18/18 valid complete했다. exact Opus/xhigh, candidate specialists 18/18, Agent/infra/sandbox/cwd failure 0, Evidence & Unknown 18/18, candidate axe serious/critical 0, replacement verifier 0이다.
+- UI-Resolved는 portable 5/9→harness 8/9, paired objective 4 win/4 tie/1 loss, mean score 79.89→83.67이다. Reliability@3는 Pricing 0/3→3/3 win, Onboarding 3/3 tie, Operations 2/3 tie라 candidate task loss가 없다.
+- median wall은 portable 548,196ms→harness 465,985ms(0.850×), tokens는 116,512→132,900(1.141×)이다. 품질·시간 우위와 portable의 token 우위가 공존해 non-dominated이며 두 efficiency ceiling을 통과했다.
+- candidate 9/9가 first targeted non-no-op Edit를 153–291s에 실행했고 last advisory→Edit는 3.6–23.7s다. first-safe-edit scheduler, verification authority, semantic-color safety의 전체 repeated-matrix 안정성이 확인됐다.
+- 유일한 candidate pair loss `operations-t3-harness`는 77/85 대 portable 81/85다. primary action transparent와 card radius 0px로 design grounding 2항목을 잃었지만 task/state/responsive/a11y/evidence는 모두 통과했고 Operations Reliability@3는 2/3 동률이다.
+- 사전등록 promotion gates가 전부 true라 bounded repair harness를 내부 승격하고 1.9.22를 `calibration_complete`로 닫는다. CI가 -22.22~+100.00%p이고 3 tasks×3 trials라 public frontier/best-skill claim은 금지한다.
+- 다음 bounded lane은 1.9.23 locale/evidence expansion이다. harness replacement matrix를 다시 열지 않고 five-locale evidence/unknown + open-brief slice를 사전등록한다.
+- 1.9.23 첫 task `locale-cli-handoff-v0.1`은 KO/EN/JA/ZH-CN/ZH-TW 5개 locale, 동일 command·12/3·DESIGN.md 보존, 독립 용어, one-panel/tab/copy journey, 320/390/200%/1440 geometry, Evidence & Unknown을 함께 고정한다.
+- evaluator의 `locale-switch-v1` adapter와 locale oracle을 추가했다. valid fixture는 실제 Chrome에서 85/85·critical 6/6·axe serious/critical 0, seeded starter mutant는 63/85로 content/responsive/accessibility/evidence gate를 정확히 실패했다.
+- `omd-locale-handoff` variant는 `$omd:locale-adapter` 뒤 `$omd:humanize` VERIFY를 실행하는 reviewed two-skill stack이며 installer/hook/agent/network 없이 동일 sandbox에 두 skill을 설치한다.
+- calibration source는 `07ac960`으로 커밋했다. 전체 214 pass/1 conditional skip, TypeScript, Node syntax, diff가 green이다.
+- exact Opus/xhigh raw DESIGN.md vs locale handoff 2-cell smoke를 `/tmp/u1923` fresh root로 사전등록했다. retry·resume·수동개입이 없고, candidate 6 critical gate·5-locale protected fact/terminology·unsupported claim 0·axe serious/critical 0·control 이상 점수만 calibration complete다.
+- 1.9.23은 Raw control 1셀 valid 70/85 뒤 candidate가 900,040ms timeout으로 stop했다. `/tmp/u1923`은 resume·retry·candidate 사후평가하지 않는다.
+- Raw는 Evidence pass지만 locale required term, 전 viewport geometry, keyboard를 실패했다. wall 710,140ms, tokens 141,364, first write 338,306ms이며 replacement verifier도 저작했다.
+- candidate는 exact parent Opus, tool/infra/sandbox/cwd error 0, first write 339,542ms였지만 final이 없다. 두 skill은 18s 안에 읽었고 이후 `.t` verifier 6개, Chrome/CDP 6회, verification 관련 17 calls, 834–849s product edits 뒤 timeout됐다.
+- binding failure는 locale `VERIFY`의 권한과 delivery clock 부재다. 1.9.24는 skill linguistic rule/task/evaluator를 바꾸지 않고 verifier 금지, browser mechanism 1회, optional stop 720s, final begin 810s를 activation에 추가한 fresh candidate recovery다.
+- 1.9.24 source patch는 `VERIFY`를 protected fact/locale terminology/register/repetition 대조로 제한하고 verification software 권한을 명시적으로 제거했다. first edit<450s, optional verification≤720s, final begin<810s와 repo-existing check 또는 program을 쓰지 않는 direct browser 1회만 허용한다.
+- delivery gate는 기존 agent-harness 기본 동작을 보존하면서 preregistered `variant_kinds`가 있을 때 `locale-skill-stack`에도 first-write/replacement-verifier fail-closed를 적용한다. focused 30/30이 green이다.
+- recovery source는 `c572cd7`로 커밋했다. 전체 215 pass/1 conditional skip, TypeScript, Node syntax, diff가 green이다.
+- `/tmp/u1924` fresh candidate 1셀을 exact Opus/xhigh로 사전등록했다. first write≤450s, verifier 0, final+valid, 85/85·critical 6/6·locale terms/facts·Evidence·axe 0만 calibration complete다.
+- 1.9.24 recovery는 valid complete, exact Opus, wall 450,127ms, tokens 99,905, first/last write 355,947/421,593ms, final present, verifier 0, infra/sandbox/cwd 0이다. 1.9.23 대비 wall -50.0%, tokens -41.4%로 process binding은 회복됐다.
+- frozen score는 72/85라 1.9.24를 실패로 유지한다. 다만 locale required/forbidden, protected literals, 5 panels/lang, 4 viewport geometry, design, Evidence, axe serious/critical 0는 전부 pass했다.
+- 실패는 roving tab을 모든 button Tab stop으로 세는 selector bug, empty initial live region 거부, active KO root lang을 static EN과 비교, prompt에 없는 nav landmark 요구다. 다음은 1.9.25 evaluator/task suite standards recovery이며 retained replay는 calibration에만 쓰고 1.9.24 판정을 바꾸지 않는다.
+- 1.9.25 source `b128aef`은 실제 sequential control을 computed `tabIndex>=0`로 제한하고, roving tabs의 Right/Left Arrow wrap, active locale root lang, empty initial live status를 별도 검증한다. task는 KO/ko-KR·version 0.2.0이며 prompt 밖 nav oracle은 제거했다.
+- exact 1.9.24 `index.html` retained replay는 schema 0.3에서 85/85·critical 6/6, seeded invalid starter는 57/85로 state/responsive/a11y/evidence를 실패했다. positive artifact hash는 원본과 동일하고 provider generation은 없다.
+- focused 27/27, 전체 215 pass/1 conditional skip, TypeScript/build/syntax/diff가 green이다. 1.9.24 frozen 72/85는 변경하지 않고 1.9.25를 `calibration_complete`로 닫는다.
+- 다음은 schema 0.3 기반 1.9.26 fresh locale replacement experiment다. public benchmark UX는 1.9.27, activation/reuse는 1.9.28, independent challenge는 1.9.29로 이동한다.
+- 1.9.26은 `/tmp/u1926` fresh Raw DESIGN.md vs OmD locale stack 2셀로 사전등록했다. exact Opus/xhigh, 900s, retry/resume 0이며 task/evaluator basis는 `b128aef`·schema 0.3이다.
+- candidate는 first write≤450s, replacement verifier 0, 85/85·critical 6/6·5-locale click/roving/root-lang·terms/facts·4 geometry·Evidence·axe 0과 Raw 이상 점수를 모두 요구한다. full pass도 단일 execution path calibration일 뿐 일반 locale lift 주장이 아니다.
+- 1.9.26은 2/2 fresh cells가 provider/evaluator/export를 완료했다. Raw는 83/85로 200% surrogate tab overlap 하나를 실패했고, candidate는 85/85·critical 6/6·Evidence·axe0, first write 313,841ms, verifier0이다.
+- 단일 관측 candidate는 Raw 대비 wall 0.600×, uncached tokens 0.723×, first write 0.881×지만 efficiency 추정이 아니다. exact Opus, final, product diff, infra/sandbox/cwd0는 양쪽 모두 충족했다.
+- candidate가 허용된 direct browser 1회를 넘어 headless Chrome을 2회 호출했다. 첫 call은 no output, 두 번째는 Crashpad/ProcessSingleton block이며 pipeline exit0라 기존 runner가 잡지 못했다. 따라서 85/85는 forensic quality evidence이고 1.9.26은 `calibration_failed`로 동결한다.
+- 1.9.27은 실제 direct headless-browser invocation을 Bash tool-use에서 세고 variant-kind별 max gate로 fail-closed하는 classifier calibration이다. retained candidate count2 replay와 0/1/2 mutation test 뒤 fresh 1.9.28 recovery만 연다. public UX는 1.9.29로 이동한다.
+- 1.9.27 source `9df4eca`은 Bash tool-use의 실제 `--headless` Chrome/Chromium invocation을 exit flag와 독립적으로 센다. `ls`/`which` discovery는 0, 한 call 안의 복수 invocation도 각각 센다.
+- `max_direct_browser_commands`를 preregistered variant kind에만 적용하고 초과 시 `direct-browser-command-budget-exceeded`로 fail-closed한다. matrix summary에도 count를 보존한다.
+- 0/1/2 mutation은 0 pass/1 pass/2 fail, retained 1.9.26 candidate는 count2·same stop reason을 재현했다. focused13/13, full217/1skip, TypeScript/build/syntax/diff green이다.
+- 1.9.27은 provider generation 없는 `calibration_complete`이며 `/tmp/u1926`은 그대로 실패다. 다음은 fresh `/tmp/u1928` candidate-only locale recovery다.
+- 1.9.28은 `/tmp/u1928` fresh candidate-only recovery로 사전등록했다. exact Opus/xhigh, 900s, task/evaluator `b128aef`, runner `9df4eca`, retry/resume/manual edit 0이다.
+- first write≤450s, direct headless browser≤1, replacement verifier0, final/valid, 85/85·critical6/6·locale click/roving/root-lang·terms/facts·4 geometry·Evidence·axe0를 모두 요구한다.
+- 1.9.28 provider는 exit0/final/product diff, wall418,339ms, tokens95,444, first write338,863ms, verifier0, 모든 infra/sandbox/cwd0였지만 direct Chrome을 다시 2회 호출했다.
+- runner가 `direct-browser-command-budget-exceeded`로 evaluator/export 전에 자동 stop했다. `/tmp/u1928`은 1 attempted / 0 complete이며 resume/retry/post-stop score를 금지한다.
+- 1.9.26과 동일하게 silent first call 뒤 5.7s 후 diagnostic retry가 반복됐다. one-call allowance는 안정적으로 bind되지 않으며 external evaluator가 이미 browser acceptance를 소유한다.
+- 1.9.29는 locale benchmark activation에서 provider browser authority를 0으로 만들고 Chrome/Chromium/Playwright/browser-harness/screenshot/renderer를 금지한다. max direct browser0 classifier test 뒤 fresh 1.9.30 recovery만 연다. public UX는 1.9.31로 이동한다.
+- 1.9.29 source `2249736`은 locale benchmark provider의 Chrome/Chromium/Playwright/browser-harness/screenshot/qlmanage/renderer 권한을 제거하고 external evaluator를 유일한 browser acceptance authority로 정한다.
+- skills는 static source + protected facts/terminology/register/repetition만 VERIFY하며 browser proof는 시도 없이 unresolved로 둔다. canonical production skills의 real-route inspection 능력은 변경하지 않았다.
+- max0 mutation은 count0 pass/count1 fail이고 기존 max1 0/1/2도 pass/pass/fail이다. clean `/tmp/u1929-activation-proof`에서 manifest/prompt activation exact, source publishable을 확인했다.
+- focused27/27, full217/1skip, TypeScript/build/JSON/diff green이다. provider generation 없는 `calibration_complete`로 fresh `/tmp/u1930` recovery를 연다.
+- 1.9.30은 `/tmp/u1930` fresh candidate-only recovery로 사전등록했다. exact Opus/xhigh, 900s, task/evaluator `b128aef`, gate `9df4eca`, zero-browser activation `2249736`, retry/resume/manual edit 0이다.
+- first write≤450s, direct browser exactly0, verifier0, final/valid, 85/85·critical6/6·locale click/roving/root-lang·terms/facts·4 geometry·Evidence·axe0를 모두 요구한다.
+- 1.9.30은 1/1 valid complete했다. exact Opus/xhigh, wall471,976ms, tokens105,886, first write366,818ms, final/product diff, browser0, verifier0, 모든 infra/sandbox/cwd0로 external-evaluator browser authority binding은 회복됐다.
+- frozen score는 78/85·critical4/6이라 `calibration_failed`다. click/roving/root-lang/handoff/facts/forbidden patterns/desktop·390·320/target/axe0/design/Evidence는 pass했다.
+- EN `project folder` 대 exact `repository`, JA `AI コーディングアシスタント` 대 exact `コーディングエージェント`는 자연스러운 의미 동등어를 거부한 evaluator ambiguity다.
+- 200% surrogate는 wrap flex `row-gap:0` + 2px selection border 때문에 두 tab row의 실제 hit rectangle이 정확히 2px 겹쳤다. detector 오차가 아니므로 geometry 실패를 유지한다.
+- 1.9.31은 bounded semantic-alternative oracle + missing-concept mutant와 static wrapped-control safety 계약만 보정한다. frozen artifact replay에서 terminology false negative만 제거하고 200% 실패는 유지해야 한다.
+- fresh provider recovery는 새 1.9.32와 `/tmp/u1932`에서만 가능하다. public benchmark UX는 1.9.33으로 이동한다.
+- 1.9.31 source `0991a69`은 EN coding-agent/repository와 JA coding-agent 개념에 bounded natural alternatives를 허용한다. 개념 자체를 제거한 EN/JA mutation은 계속 실패하고 forbidden/protected ledger는 바꾸지 않았다.
+- task/activation은 wrap 가능한 flex/grid control row의 vertical gap이 edge border/underline/transform보다 작지 않아야 한다고 명시한다. provider browser authority는 여전히 0이고 external evaluator가 단독 acceptance authority다.
+- exact 1.9.30 artifact replay는 78→83/85로 terminology/state만 회복했고 실제 200% overlap/responsive 실패는 유지했다. seeded invalid starter는 57/85로 state/responsive/a11y/evidence를 계속 실패했다.
+- clean `/tmp/u1931-activation-proof`는 task0.3.0, manifest/prompt activation exact, publishable source를 확인했다. focused27/27, full217/1skip, TypeScript/build/syntax/JSON/diff와 두 real-browser replay가 green이다.
+- 1.9.31은 provider generation 없는 `calibration_complete`다. 다음은 `/tmp/u1932` fresh exact Opus/xhigh candidate recovery이며 browser0/verifier0/85·critical6/6을 다시 요구한다.
+- 1.9.32는 `/tmp/u1932` fresh candidate-only recovery로 사전등록했다. task0.3.0/source `0991a69`, exact Opus/xhigh, 900s, retry/resume/manual edit 0이다.
+- first write≤450s, browser exactly0, verifier0, final/valid, 85/85·critical6/6·five-locale click/roving/root-lang·bounded concepts/facts·4 geometry·200% no-overlap·Evidence·axe0를 모두 요구한다.
+- 1.9.32는 1/1 valid complete했다. wall517,279ms, tokens113,725, first write377,911ms, browser0, verifier0, final/product diff, 모든 infra/sandbox/cwd0다.
+- frozen score는 80/85·critical5/6이다. 200% overlap을 포함한 4 geometry, locale navigation/content, a11y, design, Evidence는 전부 pass했고 state handoff만 실패했다.
+- 실패는 task에 없는 starter-only `data-copied=true`를 evaluator가 요구했기 때문이다. 별도 read-only Chrome 진단에서 5 locale 모두 standard Clipboard API로 exact command를 복사하고 localized status가 바뀜을 확인했다.
+- 1.9.32는 schema0.3 판정을 소급 변경하지 않고 `calibration_failed`로 고정한다. 1.9.33은 evaluator가 실제 clipboard value를 읽도록 바꾸고 no-write/wrong-value/status-only/attribute-only mutation으로 방어한다.
+- provider browser authority는 계속 0이다. fresh provider recovery는 1.9.34와 새 root에서만 가능하며 public benchmark UX는 1.9.35로 이동한다.
+- 1.9.33 source `3990ff1`은 locale evaluator context에만 clipboard read/write permission을 부여하고 각 action 전 clear→click→read로 exact protected command를 검증한다. `data-copied` marker는 점수 권한이 없다.
+- no-write/wrong-value/status-only/attribute-only mutation은 전부 fail한다. task는0.4.0, evaluator schema는0.4로 올렸다.
+- unchanged 1.9.32 artifact는 85/85·critical6/6, 1.9.30 overlap control은 83/85·responsive fail, seeded starter는 57/85·4 gates fail로 정확히 분리됐다.
+- focused27/27, full217/1skip, TypeScript/build/syntax/JSON/diff와 3 real-browser replay, clean `/tmp/u1933-activation-proof`가 green이다.
+- 1.9.33은 provider generation 없는 `calibration_complete`다. 다음은 `/tmp/u1934` fresh exact Opus/xhigh recovery다.
+- 1.9.34는 `/tmp/u1934` fresh candidate-only recovery로 사전등록했다. task0.4.0/evaluator0.4/source `3990ff1`, exact Opus/xhigh, 900s, retry/resume/manual edit 0이다.
+- first write≤450s, browser exactly0, verifier0, final/valid, 85/85·critical6/6·five-locale click/roving/root-lang·bounded concepts/facts·actual clipboard/status·4 geometry·200% no-overlap·Evidence·axe0를 모두 요구한다.
+- 1.9.34는 1/1 valid complete했다. wall530,552ms, tokens121,357, first write371,381ms, browser0, verifier0, final/product diff, 모든 infra/sandbox/cwd0다.
+- frozen score는 79/85·critical5/6이다. actual clipboard/status, locale journey/content, 4 geometry/200% no-overlap, design, Evidence는 전부 pass했다.
+- 좁은 화면에서 `overflow-x:auto` command `<code>`가 scrollable region이지만 explicit focus target/focus-visible이 없어 axe serious `scrollable-region-focusable`이 mobile/320/200%에서 발생했다. keyboard traversal도 같은 원인으로 fail했다.
+- 이는 evaluator ambiguity가 아닌 실제 a11y defect다. 1.9.34는 `calibration_failed`로 고정하고 evaluator는 유지한다.
+- 1.9.35는 task/activation에 overflow auto|scroll region의 conditional focusability + visible focus + accessible name 계약만 추가한다. fresh recovery는 이후 새 version/root에서 수행한다.
+- 1.9.35 source `a20076e`은 task0.5.0에서 clipped useful overflow region을 reachable control 또는 explicit focus target+focus-visible로 요구하고 decorative/non-scrollable container의 불필요한 Tab stop은 금지한다. evaluator0.4와 provider browser0은 그대로다.
+- unchanged 1.9.34 replay는 79/85·a11y fail을 재현했고, command code에 `tabindex=0`+focus-visible만 더한 control은 85/85·critical6/6·4 viewport axe0·keyboard pass다.
+- focused14/14, full217/1skip, TypeScript/build/syntax/JSON/diff, clean publishable activation이 green이다. 1.9.35는 provider generation 없는 `calibration_complete`다.
+- 다음은 `/tmp/u1936` fresh exact Opus/xhigh candidate recovery이며 task0.5/evaluator0.4/browser0/verifier0/85·critical6/6을 다시 요구한다.
+- 1.9.36은 `/tmp/u1936` fresh candidate 1셀로 사전등록했다. exact `claude-opus-4-8`/xhigh, task0.5/evaluator0.4, 900s, retry/resume/manual edit 0이다.
+- first write≤450s, browser exactly0, verifier0, final/valid, 85/85·critical6/6·actual clipboard/status·4 geometry·useful scroll focus·axe0를 모두 요구한다.
+- 1.9.36은 1/1 valid complete, 85/85·UI-Resolved·critical6/6이다. wall476,284ms, tokens108,075, first/last write404,471ms, browser0, verifier0, final/product diff, 모든 error0다.
+- actual clipboard/status 5/5, locale click/roving/root-lang, bounded concepts/facts, 4 geometry, keyboard focus/traversal, axe serious/critical0, design, Evidence가 전부 pass했다.
+- `/tmp/u1936`은 frozen이며 retry/resume/manual edit하지 않는다. 이 결과는 single-path calibration일 뿐 locale lift/model/skill/efficiency/frontier claim이 아니다.
+- 다음 bounded patch는 1.9.37 minimum public benchmark UX evidence contract다.
+
+- 1.9.17은 `/tmp/u1917`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, candidate first write≤450,000ms, serious/critical axe 0, verifier 0을 사전등록했다. source semantic-color basis는 `5e8379b`; retry가 없다.
+- schedule은 1.9.15와 반대 pair order를 써 order effect를 counterbalance하고 portable-first 5/harness-first 4로 균형화했다. 1.9.15/1.9.16은 denominator 밖이다.
+
+- 1.9.16 fresh Pricing recovery는 exact Opus/xhigh에서 520,232ms에 정상 종료, frozen 85/85·UI-Resolved·critical 6/6·Evidence pass·4 viewport axe serious/critical 0이다.
+- first/last product write 360,838/462,269ms, tokens 155,312, specialists 2/2, Agent/infra/sandbox/cwd error 0, product diff `index.html` 하나, verifier 0이다. Chrome block 1건은 recoverable이고 live browser proof는 정직하게 unresolved였다.
+- parent는 orange 3.26:1 on white/2.99:1 on paper를 측정하고 meaningful text에서 제거했다. orange는 white 위 non-text dot+ink label로만 남았고, line 1.43:1 control boundary도 declared muted token으로 교체했다.
+- 1.9.16 calibration complete로 1.9.17 fresh repeated matrix가 unlock됐다. single recovery는 failed 1.9.15를 소급 pass하거나 superiority 근거가 되지 않는다.
+
+- fresh recovery는 `/tmp/u1916`의 Pricing harness 단일 셀, exact Opus/xhigh, 900s, first write≤450,000ms, specialists 2/2, frozen 85/85, all critical/Evidence pass, serious/critical axe 0, verifier 0을 요구하며 retry가 없다.
+- source/activation basis는 `5e8379b`; 1.9.15 artifacts와 workspace는 immutable하며 recovery denominator에 들어오지 않는다. full pass만 1.9.17 fresh repeated matrix를 unlock한다.
+
+- 1.9.16 source patch는 `semantic_color_ledger`를 protected ledger와 함께 첫 편집 전에 잠근다. unmeasured accent-on-surface는 meaningful normal text에서 금지하고, DESIGN.md text-role label + adjacent non-text accent로 fail-closed한다.
+- `unresolved` disclosure는 위험 pair 출고 권한이 아니며, specialist engineer 질문 하나가 state/status/accent token의 planned foreground/background pair를 text/non-text로 분류해야 한다. 자문 뒤 새 pair도 같은 보수적 기본값을 적용한다.
+- canonical skill과 benchmark activation의 계약을 동기화했고 focused 18/18, 전체 207 pass/1 conditional skip, TypeScript, CLI build, JSON/diff가 green이다.
+
+- 1.9.15는 `/tmp/u1915`의 exact Opus/xhigh 18 fresh cells를 retry·resume·개입 없이 18/18 valid complete했다. candidate specialists 18/18, Agent/infra/sandbox/cwd error 0, first write max 364,193ms, verifier/authority violation 0이다.
+- UI-Resolved는 portable 7/9→harness 8/9, paired objective 2 win/6 tie/1 loss, mean score 82.67→84.11이다. median wall은 474,092→380,104ms(0.802x), tokens는 104,232→116,653(1.119x)다.
+- task Reliability@3는 Onboarding 3/3 tie, Operations 1/3→3/3 win, Pricing 3/3→2/3 loss다. `no Reliability@3 task loss`가 false라 efficiency·overall lift와 무관하게 promotion을 reject했다.
+- binding failure는 `pricing-t3-harness`의 `#E7683D` 13px status text on white다. axe가 3.25:1을 측정해 accessibility critical gate를 실패했고 81/85였다; 다른 모든 contract/state/responsive/design/evidence check는 pass다.
+- 1.9.16은 unmeasured semantic accent를 small text로 ship하지 않고 ink label+non-text accent로 강제하는 bounded recovery다. source patch+focused regression 뒤 fresh Pricing harness 1셀 85/85가 full replacement 재시험을 여는 유일한 gate다.
+
+- 1.9.11 fresh Pricing portable은 exact Opus/xhigh에서 정상 종료하고 frozen 85/85·critical 6/6·Evidence & Unknown pass다. first/last write 258,593/332,121ms, wall 505,230ms, product diff는 `index.html` 하나며 replacement verifier는 없다.
+- headless Chrome은 실제 Crashpad/ProcessSingleton 환경 차단을 출력했지만 `| tail` 파이프라인이 exit status를 가려 tool result가 `is_error:false`로 저장됐다. frozen classifier의 optional count가 0이라 prereg대로 1.9.11은 `inconclusive-path-not-observed`; retry·소급 pass하지 않는다.
+- 1.9.12 source `ad3c3b6`은 explicit tool-error 총계를 바꾸지 않고 모든 linked result에서 known renderer environment block을 별도 관찰한다. retained 1.9.11 replay는 tool 3/recoverable 3/infra 0을 유지하며 optional renderer 0→1이다.
+- focused 24/24, 전체 207 pass/1 conditional skip, TypeScript/build/diff/count-drift가 green이다. 1.9.12 calibration complete로 fresh 1.9.13 repeated Harness Track matrix가 unlock됐다.
+- 1.9.13은 `/tmp/u1913`의 18 fresh cells(3 tasks×3 trials×portable/harness), exact Opus 4.8/xhigh, 900s timeout, first-write≤450,000ms, replacement verifier 0을 사전등록했다. 1.9.7/1.9.8/1.9.9/1.9.11은 denominator 밖이며 retry가 없다.
+- 1.9.13은 cell 11 `operations-t2-harness`가 `$TMPDIR/verify.mjs` Chrome CDP automation을 저작해 fail-closed stop했다. 18 scheduled / 11 attempted / 10 valid / 1 stopped / 7 not-started이며 `/tmp/u1913`을 재개·재분류하지 않는다.
+- stopped provider는 exit 0·final·first write 242,904ms·Opus specialists 2/2였고 post-stop frozen evaluator 85/85였지만 verifier 저작으로 invalid다. forensic 점수는 denominator 밖이다.
+- 완성 5 pairs는 objective 0 win/5 tie/0 loss, UI-Resolved와 Evidence 10/10이다. valid-only median은 portable 535,415ms·107,777 tokens, harness 478,509ms·133,443 tokens(0.894×/1.238×)지만 incomplete matrix라 Pareto/reliability/promotion 주장은 금지한다.
+- root cause는 `acceptance packet`을 실행 파일 저작 권한으로 해석해 direct Chrome block 뒤 새 CDP runner를 만든 것이다. 1.9.14는 packet=checklist/result, no `verify/check/probe` script·inline shell file·CDP automation, existing check 실패 시 unresolved+deliver를 계약 최전방에 잠근다.
+- 1.9.14 source `dc27f8f`은 canonical `omd:apply`와 harness activation에 동일 authority 계약을 추가했다. focused 26/26, 전체 207 pass/1 conditional skip, TypeScript/build/count-drift가 green이다.
+- fresh recovery는 `/tmp/u1914`의 Operations harness 단일 셀, exact Opus/xhigh, first write≤450,000ms, verifier 저작 0, frozen 85/85, specialists 2/2를 요구하며 retry가 없다. full pass만 1.9.15를 연다.
+- 1.9.14 recovery는 exact Opus/xhigh에서 476,800ms에 정상 종료, frozen 85/85·critical 6/6·Evidence pass다. first/last write 408,324/408,324ms, tokens 134,824, specialists 2/2, Agent/tool/infra/sandbox/cwd error 0이다.
+- parent는 direct Chrome을 한 번 시도한 뒤 usable output이 없자 재시도·verify/check/probe file·CDP automation 없이 browser proof를 unresolved로 전달했다. product diff는 `index.html` 하나며 external evaluator가 독립 통과시켰다.
+- 1.9.14 calibration complete로 fresh 1.9.15 full repeated matrix가 unlock됐다. 단일 recovery는 1.9.13을 소급 pass하거나 efficiency/frontier 주장에 쓰지 않는다.
+- 1.9.15는 `/tmp/u1915`의 18 fresh cells, exact Opus/xhigh, tasks 3×trials 3×portable/harness, first write≤450,000ms, verification program 0을 사전등록했다. source basis는 `dc27f8f`; retry가 없다.
+- 1.9.10 report는 retained 3 traces와 unit/full gates를 근거로 classifier calibration complete다. provider generation은 없었고 1.9.9 run-result는 소급 수정하지 않았다.
+- 1.9.10 patch는 tool-result 문구만 보지 않고 연결된 Bash tool-use command를 함께 읽는다. `qlmanage`/headless Chrome의 known environment block은 optional verifier recoverable로 분리하고 cwd/built-in permission denial은 계속 infrastructure fail-closed다.
+- replacement detector는 real-browser `verify.html`/`probe.html`을 허용하고 JS/TS/Python verifier script, explicit DOM shim/mock-browser, DOM implementation을 차단한다. retained trace replay는 1.9.7 replacement true, 1.9.8 false, 1.9.9 false이며 1.9.9 tool errors는 2 recoverable / 0 infra / optional renderer 1로 분리된다.
+- focused Claude runner + matrix tests 23/23과 Node syntax/diff가 green이다. 1.9.9 result JSON은 immutable이며 소급 유효화하지 않는다.
+- 1.9.9는 first `pricing-t1-portable`에서 `process-failure`로 fail-closed stop했다. 18 scheduled / 1 attempted / 0 valid / 17 not-started이며 `/tmp/u199`은 재개·재분류하지 않는다.
+- provider는 child exit 0·success·final present였지만 optional `qlmanage` preview의 `sandbox initialization failed`를 runner가 infrastructure로 오분류해 normalized exit 1을 만들었다. post-stop frozen 85/85는 forensic only다.
+- replacement detector도 real-browser `verify.html`을 path 이름만으로 substitute verifier라 오탐했다. 1.9.10은 optional renderer error를 recoverable로 분리하고 HTML browser probe는 허용하되 `.t/verify.js` DOM shim은 계속 차단해야 한다.
+- 1.9.9 replacement를 `/tmp/u199`의 18 fresh cells로 사전등록했다. exact Opus/xhigh, 3 tasks×3 trials×portable/harness, candidate first write≤450,000ms·replacement verifier 0을 executor가 자동 정지 조건으로 적용한다.
+- schedule은 trial round마다 Pricing→Onboarding→Operations를 교차하고 pair order를 portable-first 5 / harness-first 4로 균형화했다. 1.9.7/1.9.8 결과는 denominator에 포함하지 않는다.
+- 1.9.9 준비로 matrix executor에 optional `harness_delivery_gates`를 추가했다. first product write milestone missing/late와 authored verifier·DOM shim·mock browser를 evaluator 전에 자동 정지하며 completed state에도 first write와 replacement-verifier 여부를 남긴다.
+- classifier는 1.9.8 events를 clean으로, 보존된 1.9.7 timeout의 `.t/verify.js`를 `suspicious-verifier-path`로 판별한다. 실제 Chrome probe는 허용하며 focused prepare/run-matrix 13/13과 Node syntax/diff gate가 green이다.
+- 1.9.8 fresh onboarding recovery는 exact Opus 4.8/xhigh에서 456,045ms에 정상 종료, frozen evaluator 85/85·UI-Resolved·critical 6/6·Evidence & Unknown pass다. first/last write 313,484/415,072ms, uncached tokens 127,533이며 Opus specialists 2/2, Agent/infra/sandbox/cwd error 0이다.
+- Chrome sandbox 실패 뒤 parent는 replacement verifier·DOM shim·mock browser를 만들지 않고 browser proof를 unresolved로 보고했다. product diff는 `index.html` 하나며 external frozen browser evaluator가 desktop/390/320/200%와 interaction/a11y를 독립 통과시켰다.
+- 1.9.8 acceptance 6/6이므로 release status는 `calibration_complete`; fresh 1.9.9 full repeated matrix 사전등록이 unlock됐다. 단일 recovery라 1.9.7을 소급 유효화하거나 efficiency/frontier/public claim에 쓰지 않는다.
+- 1.9.8 source patch `e348c81`은 `omd:apply`와 repair-harness activation에 first edit≤50%, optional verification stop≤80%, final reserve≥10%, verification mechanism 1회, replacement verifier 금지 계약을 추가했다. focused 22/22, 전체 201 pass/1 conditional skip, TypeScript와 build가 green이다.
+- 1.9.7 exact Opus 4.8/xhigh repeated Harness Track은 cell 12 `onboarding-t3-harness`가 900초 timeout에 걸려 사전등록대로 즉시 중단했다. 18 scheduled / 12 attempted / 11 valid / 1 timeout / 6 not-started이며 promotion은 reject다.
+- 완전한 5 pairs는 harness 2 win / 3 tie / 0 loss, valid Evidence 11/11이다. valid-only median은 portable 685,112ms·139,096 tokens, harness 717,338ms·179,402 tokens(1.047×/1.290×)지만 incomplete matrix라 Pareto·lift·frontier 주장은 금지한다.
+- timeout 셀은 exact Opus specialists 2/2를 호출하고 product-only diff까지 만들었으나 first product write 580,406ms, last 876,047ms, final 900,027ms에 중단됐다. 사후 frozen evaluator 85/85는 artifact forensic일 뿐 valid run으로 합산하지 않는다.
+- root cause는 specialist 이후 늦은 첫 편집과 sandbox-blocked Chrome 반복 뒤 20,840B replacement verifier 작성이다. 1.9.8은 같은 onboarding cell의 fresh delivery-budget recovery(첫 편집≤50%, verification mechanism 1회, final reserve), 1.9.9는 fresh full matrix replacement다.
+- 정본은 `reports/harness-efficiency-1.9.7/{PREREGISTRATION,RUN-MATRIX,FINDINGS.md,SUMMARY.final.json}`이며 `/tmp/u197`에 실행 state·12 normalized records·partial aggregate가 남아 있다.
+- normalization 중 broken Claude scratch symlink를 따라가던 collector 결함을 발견해 symlink skip과 회귀 테스트를 추가했다.
+- 1.9.6은 pricing task contract 0.3.0에서 Terra/Codex, Fable 5/Claude Code, Opus 4.8/Claude Code × raw DESIGN.md/OmD의 6-cell Evidence & Unknown transfer smoke를 완료했다. 6/6 valid·attributable, Evidence & Unknown 6/6, infrastructure/sandbox/cwd failure 0이다.
+- UI-Resolved는 Raw 1/3 → OmD 3/3, row 내부 paired 2 win / 1 tie / 0 loss다. Terra는 85→85 tie, Fable은 66→85, Opus는 61→85다. 정본은 `reports/three-model-transfer-1.9.6/{PREREGISTRATION,FINDINGS.md,SUMMARY.final.json}`이다.
+- Fable Raw는 FAQ 2→3과 3.25:1 contrast, Opus Raw는 price 3→6·FAQ 2→4와 같은 contrast를 만들었다. 두 OmD cell은 protected cardinality와 모든 critical gate를 보존했다. Terra Raw가 이미 해결돼 OmD는 회귀 없이 동률이었다.
+- OmD wall/token은 Terra +28.49%/+47.20%, Fable +5.85%/+10.33%, Opus +20.49%/+29.86%였다. 단일 task·trial이라 overhead·효율·model ranking·frontier 우월성 주장은 금지한다. 이 task는 downstream evidence honesty만 측정하며 catalog ranking/status transfer는 측정하지 않는다.
+- Claude preflight가 immutable `claude-fable-5`를 숫자 segment shape 때문에 거부하던 결함을 `a6be981`에서 수정했고 alias `fable`은 계속 fail-close한다. first-party subscription auth에서 Fable 5와 Opus 4.8 exact 사용이 기록됐고 내부 Haiku helper allocation은 별도 보존했다.
+- 최종 검증은 focused benchmark 29/29, 전체 root 191 pass / 1 conditional skip, TypeScript, CLI build, JSON/diff/count-drift gate가 green이다.
+- 1.9.5는 model in-head reference scorer를 dependency-free Node 18 local query로 교체했다. exact brand→semantic match→quality→stable id 순서를 고정하고, 모호한 요청은 후보 0/clarification, Partial·Legacy는 reverify 전 context-only, unknown은 smallest unresolved field omission으로 fail closed한다.
+- 440-entry canonical quality manifest를 패키지·installer·doctor에 연결했다. Claude/Codex/OpenCode/Cursor는 같은 manifest를 받고 folder skill 채널은 query sidecar도 받는다. missing/stale/duplicate/status/id mismatch는 doctor와 CLI가 복구 명령을 포함해 차단한다.
+- frozen Evidence & Unknown evaluator는 5 locale 5/5, exact id 440/440, 3-run determinism/unsafe promotion/generic fallback/quality mismatch 모두 0, missing-quality fail-close pass다. 전체 440×3 cell wall 960.5ms, installed query payload 532,633B이며 정본은 `reports/reference-query-1.9.5/{PREREGISTRATION,FINDINGS.md,SUMMARY.final.json}`이다.
+- 최종 tarball은 5,775,747B이며 추출본 helper가 KO 동네 중고거래 질의에서 `karrot`/Verified v2/evidence-qualified policy를 반환했다. 이 결과는 product-contract calibration일 뿐 model/skill lift·UI-Resolved·frontier 우월성 주장이 아니다.
+- 1.9.5 최종 검증은 root 190 pass / 1 conditional skip, TypeScript, build, generated-data/JSON/syntax/count/diff와 extracted-tarball query가 모두 green이다.
+- release train은 1.9.10 benchmark robustness, 1.9.11 failure recovery, 1.9.12 locale/evidence, 1.9.13 public benchmark UX, 1.9.14 activation/reuse와 필요 수만큼의 1.9.x를 포함한다. 다음 bounded patch는 1.9.7 harness efficiency다.
+- 1.9.4 all-Opus repair harness replacement 2는 exact `claude-opus-4-8`/xhigh/Claude Code 2.1.217에서 정상 완료했다. parent와 `omd-ux-writer`·`omd-ux-engineer` 두 Agent call 모두 Opus selector를 사용했고 Agent/infrastructure/sandbox/cwd error 0, Sonnet usage 0이다. internal Haiku helper만 별도 기록했다.
+- 최종 artifact는 frozen browser evaluator 85/85·UI-Resolved를 통과했다. protected FAQ는 정확히 2개이며 billing/FAQ/form state, desktop·390px·320px·200% zoom geometry, keyboard/focus, axe, DESIGN.md grounding, evidence honesty가 모두 green이다. 정본은 `reports/opus-agent-repair-harness-1.9.4-replacement-2/{PREREGISTRATION,FINDINGS.md,SUMMARY.final.json}`이다.
+- 실행은 550,644ms, first/last product write 330,364/495,469ms, input/output 108,251/49,738, cached input 921,722, provider price equivalent $2.6374다. self-authored scratch verifier 오류 2개는 수정 후 종료된 recoverable error이며 frozen evaluator 실패가 아니다.
+- 첫 unbounded smoke는 timeout+FAQ 2→6 계약 파괴, bounded replacement는 85/85지만 specialist Sonnet 요청으로 attribution invalid였다. 두 실패를 보존한 뒤 immutable `change_authority: original-user-task-only`, finding≤5/~600 words bounded advisory, requested Agent model fail-close로 원인을 닫았다.
+- `omd:apply`와 workflow manifest는 protected contract, same-route deterministic acceptance, 320px/200% zoom/contrast/focus geometry를 1.9.4 계약으로 공유한다. repair harness는 복합·계약 민감 repair의 opt-in 경로이며 portable Skill Lift 기본 경로를 대체하지 않는다.
+- 1.9.3 exact Opus replacement matrix는 3 tasks에서 raw/OmD 각각 1 resolved, lift 0pp, OmD mean objective +0.67점, wall -33.3%, uncached tokens -25.2%였다. 공표 불가 internal patch-selection calibration이며 정본은 `reports/opus-paired-matrix-1.9.3-replacement-2/`다.
+- 1.9.5 직전 1.9.4 검증은 전체 170 pass / 1 conditional skip, focused harness/workflow 35/35, TypeScript, build, JSON, `git diff --check`, count-drift hook이 green이었다.
+- 다음 product patch는 release train 순서대로 1.9.7 harness efficiency다. Agent-enabled harness의 multi-task×반복 trial과 Pareto 평가는 새 preregistration으로 분리하며, 1.9.6 단일 smoke를 효율·우월성 주장에 사용하지 않는다.
+- 1.9.2는 raw 81/85 artifact와 OmD 85/85 artifact에도 2.1.212 sandbox 오류/OmD timeout으로 0 valid였던 폐기 calibration이다. 정본은 `reports/opus-transfer-1.9.2/{FINDINGS.md,SUMMARY.final.json}`이며 1.9.3이 이를 소급 유효화하지 않는다.
+- clean `6d7edc6` paired-smoke의 Terra/xhigh 18/18을 `/tmp/ui-resolve-paired-smoke-1.9.1-6d7edc6`에서 실행·평가·export했다. Raw 3/9, OmD 4/9 UI-Resolved, 9 matched pairs 1 win / 8 ties / 0 losses, paired lift +11.1pp(CI 0~44.4), Reliability@3는 양쪽 모두 0/3이다. OmD mean token volume은 +82.8%, wall time은 +7.4%다.
+- 1.9.1은 완결됐지만 superiority 공표 불가 calibration이다. lift CI가 0을 포함하고 8/9가 tie이며 semantic contract 결함 2개가 있다. 영구 정본은 `reports/paired-smoke-1.9.1/{FINDINGS.md,SUMMARY.final.json}`이고 `/tmp`에는 `records.final.json`·`aggregate.final.{json,md}`가 있다.
+- 1.9.1에서 task contract 결함 2개를 발견했다: onboarding은 task에 없는 nav landmark를 evaluator가 강제하고, operations는 “4 incidents shown” 같은 task-derived count를 unsupported social proof로 오탐한다. 현재 결과는 non-publishable calibration이며 1.9.2의 단일 변수는 task-owned semantic contract다. `reports/paired-smoke-1.9.1/FINDINGS.md`가 정본이다.
+- 1.9.2 task-owned semantic contract는 code/calibration complete다. 세 task가 landmark oracle을 직접 소유하고 operations는 정확한 “4 incidents” live count만 known fact로 허용한다. 저장 출력 복사본 5개는 예상대로 4 pass + pricing contrast fail, annual/toggle/filter mutant 3개는 각각 state gate fail을 유지했다. 새 task contract는 `0.3.0`; 정본은 `reports/semantic-contract-1.9.2/{PREREGISTRATION,CALIBRATION}.md`다.
+- Claude Code 2.1.212를 Claude 구독으로 로그인했고 no-repo/no-tools `claude-opus-4-8` xhigh probe가 exact marker, 1M context, JSON usage를 반환했다. Claude 전용 prepare/doctor/runner는 `.claude/skills`, project-only setting sources, native sandbox fail-closed, MCP/Chrome off, exact model pin을 강제한다. 응답의 Opus+helper modelUsage를 전체 합산한다. `-p` 별도 월간 credit 계획은 2026-06-15 pause되어 현재 subscription usage limits를 쓴다. 정본은 `benchmarks/ui-resolve-bench/CLAUDE-PRINT-RUNNER.md`다.
+- 1.9.1 paired smoke의 선행 결함을 수정했다. 기존 suite는 pricing 1개와 hardcoded journey뿐이어서 onboarding setup(`onboarding-v1`)·incident operations(`dashboard-v1`) 과제를 추가하고 evaluator를 task adapter/design selector 기반으로 일반화했다.
+- 세 oracle implementation은 실제 Chrome/axe/keyboard/320px/200% zoom에서 각각 85/85를 통과했다. annual-price 오류, preference-toggle no-op, severity-filter no-op mutant는 각각 의도한 state gate에서 80/85로 탈락했다. no-op starter는 product diff가 없어 UI-Resolved로 집계되지 않는다.
+- `reports/paired-smoke-1.9.1/PREREGISTRATION.md`에 Terra/xhigh, raw DESIGN.md 대조군, OmD portable, 3 tasks×3 trials=18 runs를 결과 확인 전에 고정했고 전부 보존 완료했다.
+- `1.9.1-candidate`에 benchmark 밖의 frontier-product contract를 구현했다. `omd workflows|route <rough task>`가 자연어 요청을 repair/audit/create/init/localize 중 가장 작은 workflow로 라우팅하고, 터미널은 install/doctor에만 쓰며 실제 작업 prompt는 coding-agent chat에 넣도록 안내한다.
+- `omd:apply`·`omd:harness`·`omd:orchestrator`는 공통 work packet, 한 명의 implementation owner, specialist advisory handoff, 실제 consumer route·viewport·state 재검증 계약을 공유한다. full harness는 checkpoint #3 뒤 `handoff/delivery.json`을 만들고 main agent가 실제 제품에 통합한 뒤 `delivery-verification.json`을 남겨야 완료된다.
+- package는 `workflow-capabilities.json`과 세 core skill의 OpenAI metadata를 포함하며 installer/doctor가 이를 배포·검증한다. canonical skills는 portable hyphen name을 유지하고 Claude/Codex 설치 시 channel-native colon name으로 렌더링한다.
+- 1.9.1 measurement kernel도 닫혔다: task-owned font oracle, dirty-source attestation, product-only diff, normalized run exporter. 전체 141 tests(1 conditional skip), TypeScript, build, actual KO route output, pack dry-run 539 files, diff check가 green이다. 공개 버전은 여전히 1.9.0이며 npm publish/version bump는 하지 않았다.
+- `benchmarks/ui-resolve-bench/`에 **UI-Resolve Bench v0.1 내부 method draft**를 구축했다. `UI-Resolved@1`은 build·hidden journey·DESIGN.md contract·responsive·accessibility·evidence honesty의 all-or-nothing 객관 게이트이고, `Ship Preference`는 별도 blind practitioner 지표다. competitor source commit·정확한 skill name/activation/platform bundle을 고정하고, sandbox prepare→Codex/in-app record→fail-closed Chrome/axe 평가→누락 없는 summary→secret-salt blind gallery까지 실행 가능하다.
+- 1-task corrected activation 진단은 같은 core prompt/starter/DESIGN.md와 `gpt-5.6-terra/xhigh`에서 Taste 81/85(contrast fail), UI UX Pro Max 81/85(ARIA fail), OmD 85/85(automated gate pass)였다. 기존 valid 관측은 baseline 65/85·61/85, raw DESIGN.md 79/85, Anthropic 85/85, Impeccable prompt-only 85/85다. 단일 public fixture·각 1회·비정규화된 실행이므로 순위나 우월성 증거가 아니며 X 성능표는 NO-SHIP이다.
+- benchmark/skill focused 24 tests와 전체 125 tests가 통과했고, opt-in malformed-DOM browser E2E 1건도 별도 강제 실행해 통과했다. TypeScript, build, Node syntax, registry validation, `git diff --check`가 green이며 독립 재감사에서 이전 5 blockers(skill attribution·fail-closed·keyboard focus·metric definition·blind gallery)가 모두 해소됐다.
+- UI-Resolve를 Model Track(무스킬), Skill Lift(고정 모델 paired control), Harness Track(품질/시간/개입 Pareto), 비랭킹 Prompt Arena(러프 프롬프트 blind visual), Transfer Matrix(model×skill 일반화)로 분리했다. 서로 다른 family 결과는 한 글로벌 순위로 합치지 않으며 Internal→Preview→Verified→Retired 상태를 가진다.
+- `1.9.1 → 1.9.n → 2.0.0` patch experiment train을 고정했다. 매 0.0.1은 하나의 bounded hypothesis·benchmark slice·product activation metric·rollback gate를 가지며, product version과 benchmark suite version은 분리한다. 2.0.0은 3-model positive paired lift, Skill Lift 통계적 공동 1위 이상, Harness Pareto non-dominated, 24 hidden tasks×10 runs, 10 practitioner blind review, 독립 task audit가 모두 통과할 때만 승격한다.
+- 신규 `bench:ui:aggregate`는 run schema의 실패/timeout을 resolved 분모에 보존하고 completion, min/mean/median/max·P10/P25/P75/P90·IQR, Reliability@k, task→run hierarchical bootstrap 95% CI, median/best/worst representative IDs, no-skill 대비 paired lift와 win/tie/loss를 계산한다. focused benchmark/skill 24 tests(conditional browser E2E 1 skip), JSON/syntax/diff checks가 green이다.
+- 다음 benchmark queue는 **auto-memory-off fresh task-contract 0.3.0 paired matrix → 별도 agent-enabled Harness Track 설계**다. 다음 단일 patch hypothesis는 OmD의 늦은 first product write(6:05)를 줄이는 bounded discovery/first-edit milestone이며, recoverable verification failure와 infrastructure failure를 acceptance에서 분리해야 한다. 이후 12개 task fixture·patch train으로 확장한다.
 - PR #47에서 CLI-first activation release를 `main`에 병합했고 Vercel Production 배포를 완료했다. `https://oh-my-design.kr/docs/{en,ko,ja,zh-cn,zh-tw}`는 모두 HTTP 200이다.
 - `v1.9.0` release workflow는 첫 실행에서 npm 10의 `prepare` stdout이 `npm pack --json` 앞에 섞여 parser가 실패했다. PR #48에서 standalone `[` line부터 JSON을 읽도록 수정했고 Node 18 smoke, 전체 CLI/Web/catalog/build, provenance publish가 모두 통과했다.
 - npm `latest`는 `oh-my-design-cli@1.9.0`이다. 빈 임시 폴더의 공개 registry install에서 package metadata와 `omd --version` 모두 `1.9.0`을 반환했다. 현재 공개 계약은 440 references / 20 skills / 18 roles / Node >=18이다.
@@ -211,14 +4669,30 @@
 
 ## 다음 (즉시 착수 가능)
 
-1. `docs_open → install_copy → doctor_ready → first DESIGN.md → verified route` activation funnel을 첫 7일 관찰해 가장 큰 이탈 지점을 고친다.
-2. Applepresso의 historical 1.4 run을 보완할 current v1.9 full-trace 사례 1개와 실제 기존 제품 route rescue 사례 1개를 추가한다.
-3. Home comparison mobile overflow와 Builder error/Retry 상태를 production route에서 교정한다.
-4. 나머지 reference fleet은 demand-ranked reverify queue에 따라 점진 처리한다.
+1. terminal mission audit/smoke binding 관련 파일만 clean commit한다. 사용자 소유 `web/public/llms-full.txt`는 접근·수정·stage하지 않는다.
+2. in-app browser 탭이 생기면 `about:blank` identity를 1.9.857 plan에 봉인하고 untouched audit를 재실행한다.
+3. named in-app browser와 exact Luna/high runtime admission이 모두 green일 때만 1.9.857을 셀당 1회·retry0으로 실행한다.
+4. 실패는 그대로 분모에 유지하고, 3/3 UI-Resolved+DESIGN/acceptance/proof/lineage gate를 통과한 경우에만 12-task×5 competitor qualification을 준비한다.
+5. superiority/public one-shot claim은 12×5·Luna/Terra/Sol transfer·blind-review 전까지 금지한다.
 
 ## 막힘 / 대기 (없으면 "없음")
 
-- 없음. 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 배포·publish를 완료했다.
+- terminal verifier integration과 1.9.857 prepare까지 provider/model/browser 실행은 없었다. named in-app browser가 현재 unavailable이므로 browser receipt와 Luna 실행은 계속 금지다.
+- 1.9.712 structured-CSS transfer lane은 같은 packet-completeness 클래스가 tested repair 뒤 재발해 hard pause다. 같은 polar task 또는 replacement/fresh-task provider 실행은 명시적 scope 결정 전 금지한다.
+- 1.9.675 local UI repair lane에는 막힘 없음. 모델 귀속이 없는 current-session 결과이므로 public Model/Skill Track 승격만 금지다.
+- 1.9.676 epoch impact lane에는 막힘 없음. historical artifacts는 immutable이며 cross-epoch aggregation만 금지다.
+- 1.9.677 prepared admission lane에는 막힘 없음. 구 prepared root는 실행 금지이며 새 root로 reprepare해야 한다.
+- 1.9.678 canary는 의도적으로 execution-deferred다. 우위 판단이나 public leaderboard에는 사용할 수 없다.
+- named browser `bench19366`과 CDP endpoint preflight는 green이다. matrix는 checkpoint1이며 fixed 120s pacing 뒤 r1 candidate가 unlock된다.
+- Cursor는 runtime display name만 보고하므로 immutable model attribution 기반 public Model Track은 계속 blocked다. locked benchmark payload의 외부 전송은 standing-approved다.
+- Cursor Composer Provider가 1.9.51/1.9.52와 1.9.56에서 `resource_exhausted`를 반환했다. account-wide quota는 short Composer/Grok probes로 배제했지만 long-form Composer lane은 deferred다.
+- Cursor Grok 4.5 High도 1.9.57에서 4개 long-form cell 뒤 `resource_exhausted`로 stop됐다. immediate Grok replacement는 금지한다.
+- Kimi 1.9.60은 3/6 완료 뒤 user pause와 DNS failure로 frozen됐다. complete pair 0, third pacing nonconformance 때문에 Preview 판단과 same-root resume가 금지된다.
+- Kimi 1.9.63은 첫 셀 도중 사용자 즉시 중단으로 completed cell 0인 채 frozen됐다. partial product write와 stale root lease를 그대로 보존하며 `/tmp/u1963` 재개는 금지된다.
+- 1.9.54는 provider capacity가 아니라 detached worktree의 evaluator dependency 부재로 무효화됐고 1.9.55 preflight로 재발 방지가 완료됐다.
+- Kimi K3/GLM 5.2 controller acceptance는 통과했지만 Kimi scored Preview는 incomplete/infrastructure-invalid로 frozen됐고 GLM 실행은 user-paused다.
+- Claude Code 2.1.217 first-party Max 로그인과 exact `claude-opus-4-8` preflight는 통과 상태다.
+- 로컬 `npm whoami`와 기본 `gh auth`는 만료 상태지만 저장소 자격증명 + GitHub release workflow로 이전 배포·publish는 완료했다.
 
 ## 진행 중 레인 (병렬 작업 시에만)
 

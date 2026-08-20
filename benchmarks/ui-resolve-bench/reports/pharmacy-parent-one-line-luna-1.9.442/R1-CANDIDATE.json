@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.445",
+  "cell_id": "luna-pharmacy-r1-candidate",
+  "status": "VALID_SYSTEM_FAILURE",
+  "provider_calls": 1,
+  "run_status": "complete",
+  "validity": "valid",
+  "ui_resolved": false,
+  "objective_score": 83,
+  "objective_max": 85,
+  "wall_time_ms": 400660,
+  "tokens": 425052,
+  "remaining_red": [
+    "css-zoom-surrogate-200-page-overflow",
+    "css-zoom-surrogate-200-short-state-line-budget"
+  ],
+  "proof": {
+    "analyzable": true,
+    "browser_mechanism_count": 1,
+    "browser_recovery_probe_count": 0,
+    "browser_recovery_count": 0,
+    "duplicate_static_closure_count": 1,
+    "verification_after_ready_count": 0,
+    "compliance_pass": false,
+    "gate_reasons": [
+      "duplicate-static-limit"
+    ]
+  },
+  "runtime_identity": {
+    "scope": "execution-home-post-run",
+    "tool_mode": "code_mode_only",
+    "model_profile_sha256": "0efd579e76b5f1ccc5b68f61fdf079c7df0adfe03281f65ec6bc07383e8c335f",
+    "cache_client_version": "0.144.1"
+  },
+  "paired_ratios": {
+    "wall_time": 0.7669,
+    "tokens": 0.4092
+  },
+  "reliability_max_after_failure": "2/3",
+  "required_reliability": "3/3",
+  "tokens_to_target_minimum_after_cell": 40974913,
+  "usage_unavailable_cells": 6,
+  "artifact_hashes": {
+    "run_result_sha256": "a6c965a759aa00de9c0306abe682f230c7dc5fede7940a4f87ffb2869932ed76",
+    "score_sha256": "c44bffd0e8eaa430381a7291a1dd462676f344968973fcdff4a00d0da86e6586",
+    "run_record_sha256": "ae1e091da07274706557e3ed70da1f587f3471b033f0103b35d6dea63b1c5dec",
+    "proof_trace_sha256": "ade4b31692483779750bf919e8655c0ee38dd9864f989e774c236cb7a7a3f1ca"
+  },
+  "remaining_cells_disposition": "SKIPPED_PROMOTION_MATHEMATICALLY_UNREACHABLE"
+}

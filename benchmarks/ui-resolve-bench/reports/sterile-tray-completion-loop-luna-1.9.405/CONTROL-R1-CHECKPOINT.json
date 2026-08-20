@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.407",
+  "experiment_id": "sterile-tray-completion-loop-luna-1.9.405",
+  "cell_id": "luna-sterile-r1-control",
+  "status": "complete",
+  "validity": "valid-system-failure",
+  "retry": false,
+  "result": {
+    "run_status": "timed_out",
+    "deterministic_score": 79,
+    "deterministic_max": 85,
+    "ui_resolved": false,
+    "wall_time_ms": 900016,
+    "provider_tokens": null,
+    "green": ["task-contract", "state-journey", "design-grounding", "evidence-honesty", "desktop-geometry", "accessibility", "keyboard"],
+    "red": ["390px-short-atomic-line-budget", "320px-short-atomic-line-budget", "200%-reflow-short-atomic-line-budget"],
+    "proof_execution_gate": true,
+    "host_policy_gate": false,
+    "browser_attempts": 0,
+    "browser_proof": "missing",
+    "delivery_state": "incomplete",
+    "denied_decisions": 14,
+    "denied_reason": "reflow-inventory-required"
+  },
+  "artifact_hashes": {
+    "run_result_sha256": "00296719449917ad588a9a3af92ae35a6177c747561708523f9779c1c92ece5a",
+    "score_sha256": "5c409b082a83d5dacbd8e72d67990209df1c801d114dca3facffbda5981cba48",
+    "run_record_sha256": "bccf623e5bb31556d5f94f28f34ae278049811dcfe30843d11f35d4707f4f20a",
+    "proof_trace_sha256": "75bff5999eb71367b481555f040ba0f28a6dbb4eb0f8d5cccd0fda595bf1d8d3",
+    "host_policy_state_sha256": "bb742bf4c295159c92ba3698039266cad7bb59ad4333a4a5a19bf54644bc7e4f",
+    "benchmark_tree_sha256": "63910cad3ff753379669bcaeb6646fe9f9840cd3e5a416a21a6afe88aa35142b"
+  },
+  "tokens_to_target_observed_minimum": 27282656,
+  "prior_usage_unavailable_cells": 6,
+  "next": "After fixed pacing and a fresh exact browser/auth preflight, run luna-sterile-r1-candidate once with no retry."
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.789",
+  "experiment_id": "council-state-routing-luna-1.9.782",
+  "status": "COMPLETE_INTERNAL_PREVIEW",
+  "provider_calls": 6,
+  "cursor_calls": 0,
+  "scores": {
+    "current": [85, 81, 85],
+    "state_routed": [85, 85, 85]
+  },
+  "reliability_at_3": {
+    "current": false,
+    "current_passes": 2,
+    "state_routed": true,
+    "state_routed_passes": 3
+  },
+  "paired_wtl_state_routed": {"wins": 1, "ties": 2, "losses": 0},
+  "paired_objective_loss_max": 0,
+  "totals": {
+    "current_wall_time_ms": 634887,
+    "state_routed_wall_time_ms": 596747,
+    "state_routed_wall_delta_percent": -6.01,
+    "current_tokens": 2872061,
+    "state_routed_tokens": 2541193,
+    "state_routed_token_delta_percent": -11.52
+  },
+  "human_intervention": {
+    "candidate_registered_question_count": 0,
+    "candidate_unplanned_question_count": 0,
+    "candidate_user_handoff_count": 0,
+    "candidate_model_lane_calls": 0,
+    "external_blockers_misclassified_as_interview": 0
+  },
+  "lifecycle": {
+    "valid_complete_cells": 6,
+    "product_revision_count_exact_one": 6,
+    "proof_compliance_passes": 6,
+    "browser_recovery_count": 0,
+    "candidate_final_byte_match_passes": 6
+  },
+  "failure_analysis": {
+    "cell_id": "slide-luna-r1-current",
+    "failed_gate": "accessibility",
+    "detail": "A newly introduced muted window-strip caption measured 4.26:1 against the canvas; required minimum was 4.5:1."
+  },
+  "gates": {
+    "state_routed_reliability": true,
+    "paired_no_loss": true,
+    "unplanned_intervention_zero": true,
+    "overall_preregistered_comparison": false,
+    "overall_failure_reason": "The preregistration required Reliability@3 from both arms; current achieved 2/3."
+  },
+  "claim_tier": "internal-preview",
+  "promotion_to_2_0": false
+}

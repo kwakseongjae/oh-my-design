@@ -1,0 +1,73 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.798",
+  "status": "locked-unseen-provider-zero",
+  "purpose": "Freeze a three-task current-epoch repair qualification denominator before any model sees the task bytes.",
+  "tasks": [
+    {
+      "task_id": "astronomical-plate-dispatch-v0.1",
+      "inventory": {"records": 4, "containers": 6, "windows": 3},
+      "browser_harness_raw_overflow_px": 107,
+      "baseline": {"score": 75, "max": 85, "failed_gates": ["responsive", "accessibility"]},
+      "sha256": {
+        "tree": "f837bc004bd1b48708482c7f3c0ad83bcd10d71bcc8906bb502d64b672cb15aa",
+        "task": "4335848d7714503eeb23e2230319927bac17cdba1a394c146962eeb9526307f7",
+        "prompt": "8c3b10466b05f41ea46c5c94ac908005f621fa83f77138336132cdd8de90905a",
+        "index": "0345955dfac3f0453a9324b864043ec2b0b995d309aa9d34fc8bec30b4a4bc77",
+        "design": "ce0a45383562bc453264f3af5a9e97f4921a027599bf915655bfd4c226b7b514",
+        "baseline": "44d7a7f49706c261bf99402799f44db102e40c479ae4c29c9811376e65a54b39"
+      }
+    },
+    {
+      "task_id": "seed-packet-accession-v0.1",
+      "inventory": {"records": 5, "containers": 7, "windows": 4},
+      "browser_harness_raw_overflow_px": 185,
+      "baseline": {"score": 75, "max": 85, "failed_gates": ["responsive", "accessibility"]},
+      "sha256": {
+        "tree": "eef7b043d17e18a90b8980c1ebce3504664dfb2fab8bfd63b2a099dd62794c3f",
+        "task": "799b0111799193a7f6a4d4860a89eac41da17990bf2007de2d9f0d4871ca43f9",
+        "prompt": "22c86ddde30ae31f8bda8f23340c9fb5758b98e7c94992165701075accf0fa3c",
+        "index": "445fa59eeb7436be1d93ad5a00c9a77fca10fb42e2e44e5b3cc0b7523cb77a07",
+        "design": "2875876694ef0da73ea48a82710fccb3dbe45741a677d3a933e98e25c73e02e5",
+        "baseline": "00b02b3dabdfd3d418c30a8f02340264702eea8df441d51355c4499b0073b1ee"
+      }
+    },
+    {
+      "task_id": "orchestral-score-release-v0.1",
+      "inventory": {"records": 6, "containers": 8, "windows": 4},
+      "browser_harness_raw_overflow_px": 194,
+      "baseline": {"score": 75, "max": 85, "failed_gates": ["responsive", "accessibility"]},
+      "sha256": {
+        "tree": "64845ff583019aad366e0360c6de976bb4c99ec7c9099636c99cf55ed1c4d018",
+        "task": "d077af9397bd7dea5c48847cf238aed417b156eff3201999d661432526c6268f",
+        "prompt": "4b7af8021a16a7a8bf8db5916835354f4d05fdce8b6938bad05e7ea0bb1858bb",
+        "index": "0f7d23f871775be631da1891288d17bf6ed5c1bdf1191ceefa1555e724cb0ef1",
+        "design": "891aa4ad1e8e45bcbca73cc3287be13529f2b17940420c91a0f14f4a3a4bf77f",
+        "baseline": "1ba41e1640fae380560c14c55d8d108c8c9792a563721fb2f069bfc534dcc09e"
+      }
+    }
+  ],
+  "task_contract": {
+    "track": "repair",
+    "locale": "en",
+    "network": "disabled",
+    "viewports": ["desktop", "390px", "320px", "200%-surrogate"],
+    "baseline_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "source_contract_schema": "0.2",
+    "same_objective_debt": true,
+    "different_record_density": true
+  },
+  "browser_harness": {
+    "connection": "omd1795",
+    "cdp": "http://127.0.0.1:9355",
+    "loaded_tasks": 3,
+    "record_counts": [4, 5, 6],
+    "view_count_each": 3,
+    "h1_count_each": 1,
+    "main_count_each": 1
+  },
+  "provider_calls": 0,
+  "model_calls": 0,
+  "cursor_calls": 0,
+  "next": "Preregister and provider-zero prepare the exact four-arm by three-task Luna/high Stage A qualification matrix."
+}

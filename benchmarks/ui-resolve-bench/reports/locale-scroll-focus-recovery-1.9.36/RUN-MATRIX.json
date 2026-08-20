@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "locale-scroll-focus-recovery-1.9.36",
+  "output_root": "/tmp/u1936",
+  "family": "skill",
+  "baseline_system": "omd-locale-handoff-1.9.34-scroll-focus-failure",
+  "candidate_system": "omd-locale-handoff-scroll-focus-contract",
+  "bootstrap_samples": 0,
+  "bootstrap_seed": 20260815,
+  "reliability_k": 1,
+  "harness_delivery_gates": {
+    "variant_kinds": [
+      "locale-skill-stack"
+    ],
+    "first_product_write_ms_max": 450000,
+    "forbid_replacement_verifier": true,
+    "max_direct_browser_commands": 0
+  },
+  "cells": [
+    {
+      "id": "locale-scroll-focus-recovery-t1",
+      "task_id": "locale-cli-handoff-v0.1",
+      "variant_id": "omd-locale-handoff",
+      "system_id": "omd-locale-handoff-scroll-focus-contract",
+      "runtime": "claude-code",
+      "model_id": "claude-opus-4-8",
+      "effort": "xhigh",
+      "timeout_seconds": 900,
+      "trial_index": 1
+    }
+  ]
+}

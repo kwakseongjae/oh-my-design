@@ -1,0 +1,1456 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "product_version": "1.9.826",
+  "execution_purpose": "complete-block-effort-scaling",
+  "experiment_id": "codex-all-effort-sweep-1.9.826",
+  "output_root": "/private/tmp/omd-codex-all-effort-sweep-1.9.826",
+  "vendors_root": "/private/tmp/omd-vendors-19826",
+  "attribution_scope": "provider-observed-only",
+  "family": "model",
+  "status": "locked-provider-zero-awaiting-preparation",
+  "preregistration_authority_contract": {
+    "schema_version": "0.1",
+    "receipt_ref": "PREREGISTRATION.receipt.json",
+    "binding": "exact-plan-file-bytes-sha256",
+    "receipt_required_before_preparation": true,
+    "plan_mutation_allowed_after_receipt": false
+  },
+  "control_contract": {
+    "comparison_mode": "effort-scaling",
+    "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+    "temperature_policy": "runtime-default-frozen",
+    "timeout_seconds": 720,
+    "max_concurrency": 1,
+    "latency_comparison": "descriptive-only",
+    "retry_policy": "none-primary",
+    "replacement_policy": "none",
+    "fallback_policy": "none",
+    "model_substitution_policy": "none",
+    "effort_substitution_policy": "none",
+    "task_substitution_policy": "none",
+    "timeout_policy": "count-as-valid-failure",
+    "infrastructure_policy": "retain-freeze-and-repreregister",
+    "task_order_policy": "fixed-preregistered",
+    "admission_normalization_policy": "complete-block-effort-scaling",
+    "pacing": {
+      "policy": "fixed-inter-cell",
+      "inter_cell_delay_seconds": 30,
+      "applies_between_cells_only": true,
+      "counts_toward_cell_wall_time": false
+    },
+    "token_budget": {
+      "mode": "observed-only",
+      "limit_tokens": null,
+      "usage_required": true,
+      "account_components": [
+        "input",
+        "cached_input",
+        "output",
+        "reasoning_output"
+      ],
+      "cached_input_separate": true,
+      "cost_policy": "provider-reported-or-pinned-price-equivalent"
+    },
+    "step_budget": {
+      "mode": "observed-only",
+      "limit_steps": null
+    }
+  },
+  "codex_model_effort_contract": {
+    "cache_sha256": "8c449a6bb9971a4a03d277d41b6c3445eb13545da5b740237b9451c7c8b97b83",
+    "cache_fetched_at": "2026-08-09T11:23:35.076568Z",
+    "cache_client_version": "0.146.1",
+    "models": [
+      {
+        "model_id": "gpt-5.6-luna",
+        "model_profile_sha256": "a0e0699dadd3b10226f058d0f5ba1f5a9c8c507acc9220de8fe338bf3e2493d0",
+        "default_effort": "medium",
+        "supported_efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
+        ]
+      },
+      {
+        "model_id": "gpt-5.6-terra",
+        "model_profile_sha256": "dd0f3a12911610cb942c72710798d101393bffb88f2976e31ec33943ec11a217",
+        "default_effort": "medium",
+        "supported_efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max",
+          "ultra"
+        ]
+      },
+      {
+        "model_id": "gpt-5.6-sol",
+        "model_profile_sha256": "f7b8af46240c75ed204f1b5e8da3f80721a6e9b16be4bd4d381082c946784272",
+        "default_effort": "low",
+        "supported_efforts": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max",
+          "ultra"
+        ]
+      }
+    ]
+  },
+  "codex_catalog_snapshot_contract": {
+    "enforcement_mode": "exact-runtime-per-invocation",
+    "catalog_lock_ref": "benchmarks/ui-resolve-bench/reports/codex-model-effort-contract-1.9.826/CATALOG-LOCK.json",
+    "catalog_lock_sha256": "d7d2f54710e3ccf54c1c1e315e90e237ed1f51986698218ec69e318c2f2c3da3",
+    "auth_source_home": "/private/tmp/omd-codex-auth-pin-1.9.826",
+    "auth_json_source_path": "/private/tmp/omd-codex-auth-pin-1.9.826/auth.json",
+    "auth_json_source_mode": "immutable-snapshot-only",
+    "auth_json_sha256": "627eb7992080095292be3628510b745f9c64b8efaf3d0692e8f1a34d8c9164cd",
+    "auth_json_bytes": 3985,
+    "auth_json_mode": "isolated-copy-before-provider-execution",
+    "mutable_auth_fallback_allowed": false,
+    "models_cache_source_path": "/private/tmp/omd-codex-auth-pin-1.9.826/models_cache.json",
+    "models_cache_sha256": "8c449a6bb9971a4a03d277d41b6c3445eb13545da5b740237b9451c7c8b97b83",
+    "models_cache_bytes": 346080,
+    "models_cache_source_mode": "immutable-snapshot-only",
+    "models_cache_mode": "immutable-copy-before-provider-execution",
+    "mutable_models_cache_fallback_allowed": false,
+    "models_cache_role": "provenance-only-not-execution-authority",
+    "model_catalog_source_path": "/private/tmp/omd-codex-auth-pin-1.9.826/model_catalog.json",
+    "model_catalog_sha256": "77df912746eb14867897f3100a02ec5182537d2edbe9c69c4d76f46c03ad6f5f",
+    "model_catalog_bytes": 345951,
+    "model_catalog_source_mode": "immutable-snapshot-only",
+    "model_catalog_mode": "isolated-copy-before-provider-execution",
+    "mutable_model_catalog_fallback_allowed": false,
+    "model_catalog_role": "execution-model-authority",
+    "codex_cli": {
+      "executable_path": "/Users/kwakseongjae/.local/share/fnm/node-versions/v24.14.0/installation/lib/node_modules/@openai/codex/bin/codex.js",
+      "native_executable_path": "/Users/kwakseongjae/.local/share/fnm/node-versions/v24.14.0/installation/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex",
+      "version": "0.146.1",
+      "binary_sha256": "134063e133f0b4244fa3b251acf973d4fe4b4aeeacbdc135211bf480f59f1477",
+      "native_binary_sha256": "35d248101b211d6248ad4e6b8c1d441fe81236da87afb9f3e9ea51a049e9f179"
+    },
+    "cli_cache_client_version_policy": "require-exact-match",
+    "cli_cache_client_version_mismatch_justification": null,
+    "cursor_credentials_present": false,
+    "claude_credentials_present": false
+  },
+  "provider_routing_contract": {
+    "cursor_allowed": false,
+    "claude_code_allowed": false,
+    "allowed_runtime": "codex",
+    "allowed_model_ids": [
+      "gpt-5.6-luna",
+      "gpt-5.6-terra",
+      "gpt-5.6-sol"
+    ],
+    "allowed_model_effort_pairs": [
+      {
+        "model_id": "gpt-5.6-luna",
+        "effort": "low"
+      },
+      {
+        "model_id": "gpt-5.6-luna",
+        "effort": "medium"
+      },
+      {
+        "model_id": "gpt-5.6-luna",
+        "effort": "high"
+      },
+      {
+        "model_id": "gpt-5.6-luna",
+        "effort": "xhigh"
+      },
+      {
+        "model_id": "gpt-5.6-luna",
+        "effort": "max"
+      },
+      {
+        "model_id": "gpt-5.6-terra",
+        "effort": "low"
+      },
+      {
+        "model_id": "gpt-5.6-terra",
+        "effort": "medium"
+      },
+      {
+        "model_id": "gpt-5.6-terra",
+        "effort": "high"
+      },
+      {
+        "model_id": "gpt-5.6-terra",
+        "effort": "xhigh"
+      },
+      {
+        "model_id": "gpt-5.6-terra",
+        "effort": "max"
+      },
+      {
+        "model_id": "gpt-5.6-terra",
+        "effort": "ultra"
+      },
+      {
+        "model_id": "gpt-5.6-sol",
+        "effort": "low"
+      },
+      {
+        "model_id": "gpt-5.6-sol",
+        "effort": "medium"
+      },
+      {
+        "model_id": "gpt-5.6-sol",
+        "effort": "high"
+      },
+      {
+        "model_id": "gpt-5.6-sol",
+        "effort": "xhigh"
+      },
+      {
+        "model_id": "gpt-5.6-sol",
+        "effort": "max"
+      },
+      {
+        "model_id": "gpt-5.6-sol",
+        "effort": "ultra"
+      }
+    ],
+    "aliases_allowed": false,
+    "retry_allowed": false,
+    "replacement_allowed": false,
+    "fallback_allowed": false,
+    "model_substitution_allowed": false,
+    "effort_substitution_allowed": false,
+    "task_substitution_allowed": false,
+    "fail_closed": true
+  },
+  "effort_sweep_contract": {
+    "required_cells": 51,
+    "tasks": 3,
+    "trials_per_task_pair": 1,
+    "complete_block_required": true,
+    "reliability_metric": null,
+    "ordered_model_effort_pairs": [
+      {
+        "model_id": "gpt-5.6-luna",
+        "effort": "low"
+      },
+      {
+        "model_id": "gpt-5.6-luna",
+        "effort": "medium"
+      },
+      {
+        "model_id": "gpt-5.6-luna",
+        "effort": "high"
+      },
+      {
+        "model_id": "gpt-5.6-luna",
+        "effort": "xhigh"
+      },
+      {
+        "model_id": "gpt-5.6-luna",
+        "effort": "max"
+      },
+      {
+        "model_id": "gpt-5.6-terra",
+        "effort": "low"
+      },
+      {
+        "model_id": "gpt-5.6-terra",
+        "effort": "medium"
+      },
+      {
+        "model_id": "gpt-5.6-terra",
+        "effort": "high"
+      },
+      {
+        "model_id": "gpt-5.6-terra",
+        "effort": "xhigh"
+      },
+      {
+        "model_id": "gpt-5.6-terra",
+        "effort": "max"
+      },
+      {
+        "model_id": "gpt-5.6-terra",
+        "effort": "ultra"
+      },
+      {
+        "model_id": "gpt-5.6-sol",
+        "effort": "low"
+      },
+      {
+        "model_id": "gpt-5.6-sol",
+        "effort": "medium"
+      },
+      {
+        "model_id": "gpt-5.6-sol",
+        "effort": "high"
+      },
+      {
+        "model_id": "gpt-5.6-sol",
+        "effort": "xhigh"
+      },
+      {
+        "model_id": "gpt-5.6-sol",
+        "effort": "max"
+      },
+      {
+        "model_id": "gpt-5.6-sol",
+        "effort": "ultra"
+      }
+    ],
+    "task_set_sha256": "1818b228712490cdd43612dcedbecdfe70a200d8991f227a85682779117e27e0",
+    "schedule_sha256": "c23b0fbf0e165a23722a6ccc9d2123f2f6ca0ed9df4c485d68b6063beca7ae57"
+  },
+  "interpretation_contract": {
+    "mode": "complete-block-only",
+    "interpretation_allowed_before_all_51_terminal": false,
+    "incomplete_block_disposition": "freeze-without-comparative-claim",
+    "unit_of_analysis": "task-specific-model-effort-cell",
+    "cross_model_pooling_allowed": false,
+    "reliability_interpretation_allowed": false
+  },
+  "schedule_contract": {
+    "schema_version": "0.1",
+    "policy": "balanced-three-wave-interleaved",
+    "canonicalization": "sha256-json-stringify-ordered-cell-schedule-v1",
+    "task_labels": {
+      "A": "pollen-slide-accession-v0.1",
+      "B": "seismic-core-dispatch-v0.1",
+      "C": "oral-history-reel-return-v0.1"
+    },
+    "base_model_effort_pair_order": [
+      "gpt-5.6-luna/medium",
+      "gpt-5.6-terra/high",
+      "gpt-5.6-sol/max",
+      "gpt-5.6-luna/max",
+      "gpt-5.6-terra/low",
+      "gpt-5.6-sol/medium",
+      "gpt-5.6-luna/low",
+      "gpt-5.6-terra/max",
+      "gpt-5.6-sol/ultra",
+      "gpt-5.6-luna/xhigh",
+      "gpt-5.6-terra/medium",
+      "gpt-5.6-sol/low",
+      "gpt-5.6-luna/high",
+      "gpt-5.6-terra/ultra",
+      "gpt-5.6-sol/xhigh",
+      "gpt-5.6-terra/xhigh",
+      "gpt-5.6-sol/high"
+    ],
+    "wave_rotations": [
+      0,
+      6,
+      12
+    ],
+    "wave_task_assignments": [
+      [
+        "A",
+        "B",
+        "C",
+        "A",
+        "B",
+        "C",
+        "A",
+        "B",
+        "C",
+        "A",
+        "B",
+        "C",
+        "A",
+        "B",
+        "C",
+        "A",
+        "B"
+      ],
+      [
+        "B",
+        "C",
+        "A",
+        "B",
+        "C",
+        "A",
+        "B",
+        "C",
+        "A",
+        "B",
+        "C",
+        "B",
+        "C",
+        "A",
+        "B",
+        "C",
+        "A"
+      ],
+      [
+        "C",
+        "A",
+        "B",
+        "C",
+        "A",
+        "C",
+        "A",
+        "B",
+        "C",
+        "A",
+        "B",
+        "C",
+        "A",
+        "B",
+        "C",
+        "A",
+        "B"
+      ]
+    ],
+    "schedule_sha256": "c23b0fbf0e165a23722a6ccc9d2123f2f6ca0ed9df4c485d68b6063beca7ae57"
+  },
+  "browser_execution_contract": {
+    "require_browser_proof": true,
+    "runtime_dir_shared": true,
+    "exact_named_socket": true,
+    "allow_browser_launch": false,
+    "mechanism": "browser-harness attachment to controller-started isolated local CDP Chrome",
+    "connection_name": "omd1825",
+    "cdp_port": 9365,
+    "user_profile": "none",
+    "cloud_browser": "not-used"
+  },
+  "checkpoint_continuation_contract": {
+    "max_new_cells_per_invocation": 1,
+    "preserve_completed_cells": true,
+    "completed_root_not_resumable": true
+  },
+  "controller_pre_edit_plan_contract": {
+    "mode": "provider-zero-shipped-runner",
+    "required": true,
+    "artifact_path": ".omd/reflow-closure.json",
+    "runner_path": ".agents/skills/omd-apply/scripts/reflow-browser-runner.sh",
+    "reflow_mode": "plan",
+    "measured_attempts": 1,
+    "provider_calls": 0,
+    "cursor_calls": 0,
+    "timeout_seconds": 120
+  },
+  "proof_execution_gates": {
+    "system_ids": [
+      "codex-all-effort-omd-current"
+    ],
+    "enforcement": "promotion-report",
+    "require_analyzable": true,
+    "require_closed_reflow_artifact": true,
+    "require_measured_browser_attempt": true,
+    "require_character_range_line_oracle": true,
+    "require_actual_zoom_observation": true,
+    "require_exact_named_consumer_attachment": true,
+    "forbid_launched_browser": true,
+    "require_locked_typography": true,
+    "minimum_inline_fit_reserve_css_px": 8,
+    "max_document_overflow_px": 0,
+    "max_browser_recovery_count": 0,
+    "max_duplicate_static_closure_count": 0,
+    "max_verification_after_ready_count": 0,
+    "max_passive_protected_text_scroll_containers": 0,
+    "shipped_runner_system_ids": [
+      "codex-all-effort-omd-current"
+    ],
+    "shipped_runner_command_suffix": "scripts/reflow-browser-runner.sh"
+  },
+  "task_lock_contract": {
+    "source_commit": "6acf28764c8355fcf8b4c60176f79281650133ec",
+    "source_repository_root": "/Users/kwakseongjae/Desktop/projects/oh-my-design",
+    "source_commit_membership": "ancestor-of-generation-head",
+    "exact_working_tree_match": true,
+    "provenance": "source-commit-locked-v18",
+    "task_set_sha256": "1818b228712490cdd43612dcedbecdfe70a200d8991f227a85682779117e27e0",
+    "tasks": [
+      {
+        "task_id": "pollen-slide-accession-v0.1",
+        "source_commit": "6acf28764c8355fcf8b4c60176f79281650133ec",
+        "git_tree_oid": "1eb9917dbb869c27a7450c2fa116a105d6fc1757",
+        "observed_task_tree_sha256": "265399ff97b8c50162b781bef7c10e34be83f61b693386eab1e25175d2f261f8",
+        "task_tree_sha256": "265399ff97b8c50162b781bef7c10e34be83f61b693386eab1e25175d2f261f8",
+        "task_tree_files": [
+          {
+            "path": "PROMPT.md",
+            "mode": 420,
+            "bytes": 994,
+            "sha256": "5bf4fd0db3e8d0e677106de1566b4a8a66f245519a9231800896a617e3180121"
+          },
+          {
+            "path": "baseline-critical-gates.json",
+            "mode": 420,
+            "bytes": 1131,
+            "sha256": "33c4d2638669addefc7011c92bdf9329612489b2179a126953acd7e77390ff86"
+          },
+          {
+            "path": "baseline-provenance.json",
+            "mode": 420,
+            "bytes": 3676,
+            "sha256": "42011420a568bf820dcce6fe04ea7c056e275c2941054ea83d03ef0d373e73af"
+          },
+          {
+            "path": "starter/DESIGN.md",
+            "mode": 420,
+            "bytes": 1009,
+            "sha256": "20194620195922008d8fd10656025535d7b35f297dca64ec399cf0977e1c6ee4"
+          },
+          {
+            "path": "starter/index.html",
+            "mode": 420,
+            "bytes": 7194,
+            "sha256": "0e26daad1707772586497e3ac9ab691e2c7908222ecbd0a5f8354c7c36d3dbf9"
+          },
+          {
+            "path": "task.json",
+            "mode": 420,
+            "bytes": 15104,
+            "sha256": "082f655a30a019d175246938cd8124f25ad3399009801efbe64dec7d8cc0f75c"
+          }
+        ],
+        "prompt_sha256": "5bf4fd0db3e8d0e677106de1566b4a8a66f245519a9231800896a617e3180121",
+        "starter_sha256": "290bac36d9a3f6704ca62595a5dd5bf33b2079140efc113691ed481203679607",
+        "baseline_evidence_sha256": "33c4d2638669addefc7011c92bdf9329612489b2179a126953acd7e77390ff86",
+        "baseline_provenance_sha256": "42011420a568bf820dcce6fe04ea7c056e275c2941054ea83d03ef0d373e73af",
+        "baseline_methodology": {
+          "score_schema_version": "0.7",
+          "epoch": "ui-resolve-objective-2026q3-entry-identity-v1",
+          "evaluator_source_sha256": "8a05affd4c6e9d411aa01604f4515333fa6b6ca84d43492925fa231b12a31e1f",
+          "contract_source_sha256": "06f99f50531ab6eaaec83fbcacc4af684560637b3a4732ef30ae4a5f5bcdda1d"
+        },
+        "source_contract_sha256": "949a8a94f5cb8a66bd6933f3cfb7690e5d8f134a2c1fc51d0117e78396e75fe9"
+      },
+      {
+        "task_id": "seismic-core-dispatch-v0.1",
+        "source_commit": "6acf28764c8355fcf8b4c60176f79281650133ec",
+        "git_tree_oid": "6b1413dc758487e0734c67f16fad682cec88803f",
+        "observed_task_tree_sha256": "30af7c3e426997479e175a167a0016b1586989e177d15e172ba1477d47ef2397",
+        "task_tree_sha256": "30af7c3e426997479e175a167a0016b1586989e177d15e172ba1477d47ef2397",
+        "task_tree_files": [
+          {
+            "path": "PROMPT.md",
+            "mode": 420,
+            "bytes": 987,
+            "sha256": "e17cb109b21c301d56f2915e00439027eb0a248f4ccea199f0e32cb5c95b5568"
+          },
+          {
+            "path": "baseline-critical-gates.json",
+            "mode": 420,
+            "bytes": 1130,
+            "sha256": "37309865d68d2621698dd66804757bdacd5ea99fdafadad5edf77f4b98f6c4e7"
+          },
+          {
+            "path": "baseline-provenance.json",
+            "mode": 420,
+            "bytes": 3675,
+            "sha256": "e972e8aa9ceb4d3ba57440ea1d61fc2e849a25ffe42d426b4eb6e853e36cb199"
+          },
+          {
+            "path": "starter/DESIGN.md",
+            "mode": 420,
+            "bytes": 1003,
+            "sha256": "dff2b8cf906125611e055dcc03ab92ecf5bb73047349ed19c1e2ee15b8b2aaaa"
+          },
+          {
+            "path": "starter/index.html",
+            "mode": 420,
+            "bytes": 7537,
+            "sha256": "8733bcebbd29e3e07618c338394d374f521d45b0e15d13a21a351ec3532cd484"
+          },
+          {
+            "path": "task.json",
+            "mode": 420,
+            "bytes": 15048,
+            "sha256": "8910cbf9e66ababc32cbf6ac545f4097080c6f17d2707eea9b252038485664ba"
+          }
+        ],
+        "prompt_sha256": "e17cb109b21c301d56f2915e00439027eb0a248f4ccea199f0e32cb5c95b5568",
+        "starter_sha256": "622d8a52b6901c0b9a537a593a879adf30f12ff38d12efadd220edcbb27b9806",
+        "baseline_evidence_sha256": "37309865d68d2621698dd66804757bdacd5ea99fdafadad5edf77f4b98f6c4e7",
+        "baseline_provenance_sha256": "e972e8aa9ceb4d3ba57440ea1d61fc2e849a25ffe42d426b4eb6e853e36cb199",
+        "baseline_methodology": {
+          "score_schema_version": "0.7",
+          "epoch": "ui-resolve-objective-2026q3-entry-identity-v1",
+          "evaluator_source_sha256": "8a05affd4c6e9d411aa01604f4515333fa6b6ca84d43492925fa231b12a31e1f",
+          "contract_source_sha256": "06f99f50531ab6eaaec83fbcacc4af684560637b3a4732ef30ae4a5f5bcdda1d"
+        },
+        "source_contract_sha256": "a4fdddee6423441d407bd826391fc36c9d222467a22f6ba47cff2470b490b32b"
+      },
+      {
+        "task_id": "oral-history-reel-return-v0.1",
+        "source_commit": "6acf28764c8355fcf8b4c60176f79281650133ec",
+        "git_tree_oid": "7532abf69539129ed928196632b4f7d4f4dec74b",
+        "observed_task_tree_sha256": "e005ac42bf66d2fa7f16dd2d9f93a649bc90cbc81047e884ea774ead368ee522",
+        "task_tree_sha256": "e005ac42bf66d2fa7f16dd2d9f93a649bc90cbc81047e884ea774ead368ee522",
+        "task_tree_files": [
+          {
+            "path": "PROMPT.md",
+            "mode": 420,
+            "bytes": 992,
+            "sha256": "efa23b4e91fbe5392fdcd859b519572b43ed597398e3ef25469c6e24cbd0f69a"
+          },
+          {
+            "path": "baseline-critical-gates.json",
+            "mode": 420,
+            "bytes": 1133,
+            "sha256": "95e36b662e5aaee346bc6f0bee0eea803b799575605bc689667263af3baf6ec9"
+          },
+          {
+            "path": "baseline-provenance.json",
+            "mode": 420,
+            "bytes": 3678,
+            "sha256": "0c0e30b8d2b4a9d5c7e673b5b3205b9bd0ec7afe0ed818825c1fbbbf34659085"
+          },
+          {
+            "path": "starter/DESIGN.md",
+            "mode": 420,
+            "bytes": 1009,
+            "sha256": "7ca15a689cc9bf9dc16fbd3c1e4d3e5db45357a45e44dcff14a7be530eeebbc2"
+          },
+          {
+            "path": "starter/index.html",
+            "mode": 420,
+            "bytes": 7804,
+            "sha256": "699b8cf23faef646b430a6ee4a43cc91c97fbb9733b9b57e29a3cd2990fa3d48"
+          },
+          {
+            "path": "task.json",
+            "mode": 420,
+            "bytes": 15124,
+            "sha256": "9ba81975cc9d7670c8d77230d4e811e96a96cb3be38f326657014fbd4827ab1d"
+          }
+        ],
+        "prompt_sha256": "efa23b4e91fbe5392fdcd859b519572b43ed597398e3ef25469c6e24cbd0f69a",
+        "starter_sha256": "c203085be7d2ae7f1029416b93f8dd6d34587927723d8749bea8704c2f76c1eb",
+        "baseline_evidence_sha256": "95e36b662e5aaee346bc6f0bee0eea803b799575605bc689667263af3baf6ec9",
+        "baseline_provenance_sha256": "0c0e30b8d2b4a9d5c7e673b5b3205b9bd0ec7afe0ed818825c1fbbbf34659085",
+        "baseline_methodology": {
+          "score_schema_version": "0.7",
+          "epoch": "ui-resolve-objective-2026q3-entry-identity-v1",
+          "evaluator_source_sha256": "8a05affd4c6e9d411aa01604f4515333fa6b6ca84d43492925fa231b12a31e1f",
+          "contract_source_sha256": "06f99f50531ab6eaaec83fbcacc4af684560637b3a4732ef30ae4a5f5bcdda1d"
+        },
+        "source_contract_sha256": "90dd698184cc1133fdfd4ec73e96d7239ac4105e98de6be75907d3474859f467"
+      }
+    ]
+  },
+  "exposure_evidence_contract": {
+    "scope": "generator-invocation-only",
+    "evidence": "generation_attestation",
+    "historical_task_exposure": "unknown-not-asserted",
+    "prior_task_exposure_claim_made": false
+  },
+  "skill_lock_contract": {
+    "skill_id": "omd-portable-1.9.826-effort-sweep",
+    "variant_id": "omd-portable-1.9.826-effort-sweep",
+    "declared_name": "omd:apply",
+    "vendor_dir": "omd-1.9.826",
+    "competitor_catalog_ref": "benchmarks/ui-resolve-bench/competitors.json",
+    "competitor_catalog_sha256": "129b08cc46e1429635c0c582abb3b52ad41e52bc6002ea159072613006b8aad6",
+    "variant_contract_sha256": "314128f0f0c5f5037477866fc65c290e27db5fa756796816b02c9951612206f1",
+    "source_commit": "f1b5e21976b0ac857803dbcdbc299038761ba521",
+    "source_tree_sha256": "899bfb447041d7cc52015d8ef2033a501e188f75551bc9b575d9bb01f5fe5f61",
+    "skill_tree_sha256": "b5419506840fb35f65db0270b4cd1f601d44c0543e41b244d537b77baf9204b9",
+    "publishable": true
+  },
+  "source_contract": {
+    "schema_version": "0.2",
+    "failed_critical_gates": [
+      "accessibility",
+      "responsive"
+    ],
+    "covered_critical_gates": [
+      "accessibility",
+      "responsive"
+    ],
+    "provider_mutable": false
+  },
+  "candidate_preflight_contract": {
+    "required": true,
+    "complete_candidate_bytes": true,
+    "same_static_evaluator": true,
+    "passed_receipt_required_before_product_edit": true,
+    "promotion_command": "static-promote",
+    "model_retyping_after_preview_forbidden": true,
+    "candidate_sha256_must_equal_final_product_sha256": true,
+    "source_contract_sha256_must_match": true,
+    "sealed_inventory_sha256_must_match": true
+  },
+  "cell_success_contract": {
+    "objective_score": 85,
+    "objective_max": 85,
+    "ui_resolved": true,
+    "product_revision_count": 1,
+    "successful_static_closure_count": 1,
+    "failed_static_closure_count": 0,
+    "user_handoff_count": 0,
+    "proof_compliance": true,
+    "browser_runner_recovery_count": 0,
+    "sealed_inventory_unchanged": true,
+    "candidate_preview_receipt_passed": true,
+    "candidate_promoted_without_retyping": true,
+    "candidate_sha256_equals_final_product_sha256": true
+  },
+  "comparison_claim_contract": {
+    "claim": "internal-effort-scaling-compatibility",
+    "publication_tier": "internal-effort-scaling-compatibility",
+    "descriptive_only": true,
+    "requires_complete_51_cell_block": true,
+    "cross_model_pooling_allowed": false,
+    "forbid_claims": [
+      "model-superiority",
+      "model-ranking",
+      "cross-model-effort-equivalence",
+      "statistical-superiority",
+      "industry-leader",
+      "2.0-release-gate-from-this-test-alone"
+    ]
+  },
+  "generation_attestation": {
+    "provider_calls": 0,
+    "model_calls": 0,
+    "browser_calls": 0,
+    "network_calls": 0,
+    "cursor_calls": 0,
+    "claude_calls": 0,
+    "git_source_validation_calls": 27
+  },
+  "objective_evaluator": {
+    "score_schema_version": "0.7",
+    "epoch": "ui-resolve-objective-2026q3-entry-identity-v1",
+    "evaluator_source_sha256": "8a05affd4c6e9d411aa01604f4515333fa6b6ca84d43492925fa231b12a31e1f",
+    "contract_source_sha256": "06f99f50531ab6eaaec83fbcacc4af684560637b3a4732ef30ae4a5f5bcdda1d"
+  },
+  "lock_manifest": {
+    "canonicalization": "sha256-json-stringify-v1",
+    "task_set_sha256": "1818b228712490cdd43612dcedbecdfe70a200d8991f227a85682779117e27e0",
+    "schedule_sha256": "c23b0fbf0e165a23722a6ccc9d2123f2f6ca0ed9df4c485d68b6063beca7ae57",
+    "skill_source_contract_sha256": "800fa08122847e6b6c611980dc43489cc54af24bf95c4cc8c4e998ad84a29a97",
+    "objective_evaluator_contract_sha256": "6fb3fa218a511b80d2cf62418df2d2ce45c5cd7ca57e4b0d1081bc2c20b971b6",
+    "browser_execution_contract_sha256": "0c8bb55566bd7783885c829c405c5ad57fb6b587c90ec153bbd19f50ff69620a",
+    "catalog_lock_file_sha256": "d7d2f54710e3ccf54c1c1e315e90e237ed1f51986698218ec69e318c2f2c3da3",
+    "model_catalog_file_sha256": "77df912746eb14867897f3100a02ec5182537d2edbe9c69c4d76f46c03ad6f5f",
+    "codex_model_effort_contract_sha256": "ebbd8065c1b40e10b2390e066cdce526c8f0b5772b6ef0b3cf7746a7d500b9fe",
+    "controller_pre_edit_plan_contract_sha256": "919ffaf57c7df80294ae8cdbfa3c593dda67497f938ff97b7972fdede9b046e7",
+    "codex_catalog_snapshot_contract_sha256": "f28cb1af9b7332ccb9595002443f6df98ea8469745d44d3a4887491e159c4b76"
+  },
+  "cells": [
+    {
+      "id": "pollen-luna-medium-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "medium",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 1,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-terra-high-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 2,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-sol-max-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "max",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 3,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-luna-max-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "max",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 4,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-terra-low-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "low",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 5,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-sol-medium-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "medium",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 6,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-luna-low-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "low",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 7,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-terra-max-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "max",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 8,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-sol-ultra-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "ultra",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 9,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-luna-xhigh-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "xhigh",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 10,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-terra-medium-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "medium",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 11,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-sol-low-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "low",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 12,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-luna-high-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 13,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-terra-ultra-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "ultra",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 14,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-sol-xhigh-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "xhigh",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 15,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-terra-xhigh-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "xhigh",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 16,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-sol-high-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 1,
+      "schedule_position": 17,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "seismic-luna-low-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "low",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 1,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-terra-max-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "max",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 2,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-sol-ultra-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "ultra",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 3,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-luna-xhigh-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "xhigh",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 4,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-terra-medium-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "medium",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 5,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-sol-low-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "low",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 6,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-luna-high-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 7,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-terra-ultra-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "ultra",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 8,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-sol-xhigh-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "xhigh",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 9,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-terra-xhigh-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "xhigh",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 10,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-sol-high-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 11,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "seismic-luna-medium-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "medium",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 12,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-terra-high-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 13,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-sol-max-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "max",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 14,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-luna-max-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "max",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 15,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-terra-low-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "low",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 16,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-sol-medium-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "medium",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 2,
+      "schedule_position": 17,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "oral-history-luna-high-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 1,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-terra-ultra-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "ultra",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 2,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-sol-xhigh-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "xhigh",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 3,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-terra-xhigh-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "xhigh",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 4,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-sol-high-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 5,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "oral-history-luna-medium-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "medium",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 6,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-terra-high-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 7,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-sol-max-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "max",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 8,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-luna-max-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "max",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 9,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-terra-low-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "low",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 10,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-sol-medium-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "medium",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 11,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-luna-low-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "low",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 12,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-terra-max-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "max",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 13,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-sol-ultra-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "ultra",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 14,
+      "schedule_task_label": "B"
+    },
+    {
+      "id": "oral-history-luna-xhigh-r1-omd",
+      "task_id": "oral-history-reel-return-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "xhigh",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 15,
+      "schedule_task_label": "C"
+    },
+    {
+      "id": "pollen-terra-medium-r1-omd",
+      "task_id": "pollen-slide-accession-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-terra",
+      "effort": "medium",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 16,
+      "schedule_task_label": "A"
+    },
+    {
+      "id": "seismic-sol-low-r1-omd",
+      "task_id": "seismic-core-dispatch-v0.1",
+      "variant_id": "omd-portable-1.9.826-effort-sweep",
+      "system_id": "codex-all-effort-omd-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-sol",
+      "effort": "low",
+      "timeout_seconds": 720,
+      "trial_index": 1,
+      "schedule_wave": 3,
+      "schedule_position": 17,
+      "schedule_task_label": "B"
+    }
+  ]
+}

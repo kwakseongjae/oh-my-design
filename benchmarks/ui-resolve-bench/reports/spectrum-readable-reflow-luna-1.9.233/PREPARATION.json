@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "spectrum-readable-reflow-luna-1.9.233",
+  "preparation_patch": "1.9.234",
+  "status": "PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19233",
+  "vendors_root": "/private/tmp/u19233-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "locked_plan_sha256": "d61b6f9247fa58987af4d7d22b64632869b6099e42b271da01f8cc2127ce25c2",
+  "preparation_state_sha256": "335a19af5130fb6b305de48dcac9296663f2aa9a1c44d7ba2d293135f570d2c4",
+  "invariants": {
+    "core_prompt_sha256": "84d07dae70171bfcaf82804726c85d3a7ebe73d8e08dbe49b599c71af457591a",
+    "runtime_prompt_sha256": "75402ac4726653a45ece1e9a7b23e80399775a3c8791c7be045914bbdb327d73",
+    "starter_and_product_sha256": "4828618fd9f312e22bba3b64b2ec5d7bb8e38f1f679864e7ed0ed0e93dff10b0",
+    "design_sha256": "ba897c62411761f2a5fd0f8548dfad7eb422903f529e36c8c9a60d822ff4681a",
+    "index_sha256": "e325eafd344fa88230044d0333a2bffe5ed8f6d3cbe18143e56b0cff777f6182",
+    "activation_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+    "runtime": "codex",
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "timeout_seconds": 900,
+    "git_root_all_cells": true,
+    "shared_host_policy_equal": true,
+    "shared_host_policy_mode": "installed-opt-in"
+  },
+  "skill_arms": {
+    "close_latch": {
+      "source_commit": "1d204afea6c3ab106752613b7f341ed2f76fd843",
+      "installed_skill_sha256": "7336c0374eeef7f1e60a8992c582b99d5a09effc2faaa5a4e839f43ae8c7cbcb",
+      "source_clean": true,
+      "source_detached": true,
+      "source_publishable": true
+    },
+    "readable_reflow": {
+      "source_commit": "7915723887a47a538c91f1aa51bd7b2972757091",
+      "installed_skill_sha256": "0cd7b71a06bc31d0351cc4b998c5ff0f1c9bb83af9104ef691dc16eb3e8471b3",
+      "source_clean": true,
+      "source_detached": true,
+      "source_publishable": true
+    }
+  },
+  "sole_arm_delta": "exact-installed-skill-source",
+  "next_cell": "luna-spectrum-r1-close",
+  "max_new_cells_per_invocation": 1,
+  "same_root_retry": false
+}

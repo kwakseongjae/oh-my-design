@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "source-contract-reliability-canary-1.9.722",
+  "status": "FROZEN_CONTRACT_HARD_STOP",
+  "scheduled_cells": 3,
+  "completed_cells": 1,
+  "valid_cells": 1,
+  "provider_calls": 1,
+  "model_exposures": 1,
+  "retry_count": 0,
+  "replacement_count": 0,
+  "remaining_cells_executed": 0,
+  "locked_plan_sha256": "268b98a4d945cbdd4247c4e8b3e0aea4ae174919e168c937ae44e6cbb3011adf",
+  "preparation_state_sha256": "aed7746c44779793bdc219bb7ec2b053c4167c4cf419f5e4de4c24de3b536a32",
+  "raw_execution_state_sha256": "7c0f4a79eb9b6ef56596b6358a79011feb9bde408a53e954435ca0b2bcd29a95",
+  "cell": {
+    "id": "luna-orbital-optics-transfer-r1",
+    "validity": "valid",
+    "run_status": "complete",
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "ui_resolved": false,
+    "objective_score": 81,
+    "objective_max": 85,
+    "wall_time_ms": 177191,
+    "tokens": 558228,
+    "input_tokens": 549245,
+    "cached_input_tokens": 477952,
+    "output_tokens": 8983,
+    "reasoning_output_tokens": 2776,
+    "run_result_sha256": "79d0fb789d147aaa3ab7316c5cebdab0553be950036e6dd3d29a9725b8522258",
+    "score_sha256": "8e9ce9a79d523f04dd7923b92104abe43ec5e012c365ea00c3e1c7838aefad68",
+    "run_record_sha256": "0cd889fdf004f75e64cfc1268bdccb5dddbaf1f5cc1567f5a0bdee973fe0c0e0",
+    "proof_trace_sha256": "4ca5d7224e87ac215854788e9bd40a418858e5775d5ddf0e7e33c2add06aa117",
+    "product_final_sha256": "7fbc16b9f35a63b706d5605ae000f1ffe310bf69cbd4d5d2265ad71317094e83",
+    "sealed_inventory_sha256": "44c737d24380a3dc373c5591b1f0614d712f82e97d504669a892ec6b00b0f662",
+    "sealed_artifact_final_sha256": "e1e15a26b1548bf638b81cb9537d795afaa6cf4db7045a5d18922e068f32ce60"
+  },
+  "hard_stop": {
+    "reason": "failed-static-closure-and-contract-proof-noncompliance",
+    "failed_static_closure_count": 1,
+    "proof_compliance": false,
+    "remaining_cells_frozen": [
+      "luna-seed-vault-accession-r1",
+      "luna-audio-archive-ingest-r1"
+    ]
+  }
+}

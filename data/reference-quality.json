@@ -1,0 +1,5850 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-19",
+  "generator": "scripts/build-reference-quality-data.mjs",
+  "count": 440,
+  "counts": {
+    "verified_v2": 140,
+    "partial": 160,
+    "legacy_snapshot": 140,
+    "total": 440
+  },
+  "items": [
+    {
+      "id": "104",
+      "status": "verified_v2",
+      "verified_at": "2026-07-14",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "11st",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "17live",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "29cm",
+      "status": "verified_v2",
+      "verified_at": "2026-07-11",
+      "next_reverify_at": "2026-10-09",
+      "evidence_coverage": 1,
+      "surface_count": 5,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "3o3",
+      "status": "partial",
+      "verified_at": "2026-06-10",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "42dot",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "591",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "8percent",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "91app",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-01",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "abema",
+      "status": "partial",
+      "verified_at": "2026-06-10",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "ably",
+      "status": "verified_v2",
+      "verified_at": "2026-07-12",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "accupass",
+      "status": "partial",
+      "verified_at": "2026-06-10",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "acer",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "adobe",
+      "status": "partial",
+      "verified_at": "2026-06-11",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "airbnb",
+      "status": "verified_v2",
+      "verified_at": "2026-07-12",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "airbridge",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "airtable",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "alipay",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "amazingtalker",
+      "status": "partial",
+      "verified_at": "2026-06-08",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "appier",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "apple",
+      "status": "verified_v2",
+      "verified_at": "2026-07-11",
+      "next_reverify_at": "2026-10-09",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "asana",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "asleep",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "asos",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "au",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "autopedia",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "aws-cloudscape",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "baemin",
+      "status": "verified_v2",
+      "verified_at": "2026-07-12",
+      "next_reverify_at": "2026-10-09",
+      "evidence_coverage": 1,
+      "surface_count": 5,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "bahamut",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "banksalad",
+      "status": "verified_v2",
+      "verified_at": "2026-07-12",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 5,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "barogo",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "bbc",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "beusable",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "bigin",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "bilibili",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "bithumb",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-01",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "bito",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "bmw",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "brandi",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "bunjang",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-14",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "buzzvil",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "cafe24",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "cakeresume",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-01",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "cal",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "cashapp",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "catchtable",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "cathay",
+      "status": "partial",
+      "verified_at": "2026-06-08",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "cgv",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "channeltalk",
+      "status": "verified_v2",
+      "verified_at": "2026-07-12",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 5,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "china-airlines",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "chunghwa",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "cjonstyle",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "class101",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "classting",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "classum",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "claude",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "clay",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "clickhouse",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "cloudflare",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "codeit",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "cohere",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "coinbase",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "coinone",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "composio",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "cookpad",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "corca",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "coupang",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "cuboai",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "cursor",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "cybozu",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "dabang",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "dable",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "danawa",
+      "status": "partial",
+      "verified_at": "2026-06-11",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "databricks",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "datadog",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "datarize",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "dcard",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "dealicious",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "deliveroo",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "dell",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "devsisters",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "digital-agency-jp",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "discord",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "dji",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "dmm",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "doordash",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "drdiary",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "drnow",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "dropbox",
+      "status": "partial",
+      "verified_at": "2026-06-11",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "duolingo",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "easywallet",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "elastic",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "elevenlabs",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "elice",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "eslite",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "esunbank",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "evaair",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "expo",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "familymart-tw",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "farfetch",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "fastcampus",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "ferrari",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 9,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "figma",
+      "status": "partial",
+      "verified_at": "2026-07-12",
+      "next_reverify_at": "2026-08-13",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 3,
+      "conflict_count": 0,
+      "reason_codes": [
+        "source_expired"
+      ]
+    },
+    {
+      "id": "finda",
+      "status": "partial",
+      "verified_at": "2026-06-09",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "firstory",
+      "status": "partial",
+      "verified_at": "2026-06-10",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "fitpet",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "flex",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 2,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "flo",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "framer",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "freee",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "friendliai",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "frip",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "fubon",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "fugle",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "funnow",
+      "status": "partial",
+      "verified_at": "2026-06-10",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "furiosaai",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "gangnamunni",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "gaudiolab",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "gaudiy",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "genie",
+      "status": "partial",
+      "verified_at": "2026-06-09",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "github",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "gitlab",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "gmarket",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "gogolook",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-01",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "gogoro",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "goodpatch",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "google",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 9,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "goorm",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "govuk",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "greencar",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "greenvines",
+      "status": "partial",
+      "verified_at": "2026-06-10",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "greeting",
+      "status": "partial",
+      "verified_at": "2026-06-11",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "grip",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "hackle",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "hahow",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-01",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "hana",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "hashicorp",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "headspace",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "heptabase",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "heydealer",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "hogangnono",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "hp",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "hubspot",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "humanscape",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "hwahae",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "hyperconnect",
+      "status": "partial",
+      "verified_at": "2026-06-09",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "hyundai",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "hyundaicard",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "ibm",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "ichef",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "icook",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "idus",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "igaworks",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "iicombined",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "ikala",
+      "status": "partial",
+      "verified_at": "2026-06-08",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "imweb",
+      "status": "partial",
+      "verified_at": "2026-06-10",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "inflearn",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "instacart",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "intercom",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "intuit",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "ipassmoney",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "jandi",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 6,
+      "source_count": 10,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "jkopay",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "jobkorea",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "jobplanet",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "jumpit",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "kakao",
+      "status": "verified_v2",
+      "verified_at": "2026-07-11",
+      "next_reverify_at": "2026-10-09",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kakaobank",
+      "status": "verified_v2",
+      "verified_at": "2026-07-12",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kakaogames",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kakaopage",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "kakaopay",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 6,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kakaot",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-27",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "karrot",
+      "status": "verified_v2",
+      "verified_at": "2026-07-11",
+      "next_reverify_at": "2026-10-09",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kb-kookmin",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kbank",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 5,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kbpay",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "kcd",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "kdan",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-01",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "kia",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "kintone",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "kkbox",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-01",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "kkday",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "kmong",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "krafton",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "kraken",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "krds",
+      "status": "verified_v2",
+      "verified_at": "2026-07-11",
+      "next_reverify_at": "2026-10-09",
+      "evidence_coverage": 1,
+      "surface_count": 10,
+      "source_count": 10,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kream",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kurly",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "kyobobook",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "lablup",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "laftel",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "lamborghini",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "laundrygo",
+      "status": "partial",
+      "verified_at": "2026-06-11",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "layerx",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "lemonbase",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "lezhin",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "lguplus",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "likelion",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "line",
+      "status": "verified_v2",
+      "verified_at": "2026-07-11",
+      "next_reverify_at": "2026-10-09",
+      "evidence_coverage": 1,
+      "surface_count": 14,
+      "source_count": 14,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "linear.app",
+      "status": "verified_v2",
+      "verified_at": "2026-07-12",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "liner",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "loom",
+      "status": "partial",
+      "verified_at": "2026-06-08",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "lotteon",
+      "status": "verified_v2",
+      "verified_at": "2026-07-14",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "lovable",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 5,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "lunit",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-14",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "maicoin",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "mailchimp",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "makinarocks",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "mastercard",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "maum-ai",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "medibloc",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "megabox",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "meituan",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "melon",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-01",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "mercari",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "mercury",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "meta",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "microsoft",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "mikan",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "mildang",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "millie",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "minimax",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 9,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "mintlify",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "miricanvas",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "miro",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "mistral.ai",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "mixi",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "modusign",
+      "status": "partial",
+      "verified_at": "2026-06-10",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "moin",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "momoshop",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "money-forward",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "mongodb",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "monzo",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "moreh",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "moze",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "muji",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "musinsa",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 2,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "mustit",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "mynavi",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "myrealtrip",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "naver",
+      "status": "verified_v2",
+      "verified_at": "2026-07-11",
+      "next_reverify_at": "2026-10-09",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "naverpay",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "naverwebtoon",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "ncsoft",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "neosapience",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "netflix",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "nexon",
+      "status": "partial",
+      "verified_at": "2026-06-09",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "nhn",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "nhncloud",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "nike",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "nintendo",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "nota",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "note",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "notion",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "nrise",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "nvidia",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "octopusenergy",
+      "status": "partial",
+      "verified_at": "2026-06-23",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "ohouse",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "oliveyoung",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "ollama",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "omnichat",
+      "status": "partial",
+      "verified_at": "2026-06-10",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "onestore",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 5,
+      "source_count": 11,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "openai",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "opencode.ai",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "openpoint",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "palantir",
+      "status": "verified_v2",
+      "verified_at": "2026-07-14",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "panasonic",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "patreon",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "patternfly",
+      "status": "verified_v2",
+      "verified_at": "2026-07-14",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 5,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "payco",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "payhere",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "paypal",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "paypay",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "pchome",
+      "status": "partial",
+      "verified_at": "2026-06-08",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "pega",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "peoplefund",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "pepabo",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "perplexity",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "petfriends",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "piccollage",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "pinkfong",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "pinkoi",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "pinterest",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "pixiv",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "pixnet",
+      "status": "partial",
+      "verified_at": "2026-06-08",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "plaid",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "portaly",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "portone",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "posthog",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "postype",
+      "status": "partial",
+      "verified_at": "2026-06-11",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "poya",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "pozalabs",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "protopie",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "publy",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-27",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "qanda",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "qraft",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "queenit",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "quotabook",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "ragic",
+      "status": "partial",
+      "verified_at": "2026-06-08",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "rakuten",
+      "status": "partial",
+      "verified_at": "2026-06-10",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "ramp",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "rayark",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-01",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "raycast",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "readmoo",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "rebellions",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "recruit",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "reddit",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "remember",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "renault",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "replicate",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "resend",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 12,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "retool",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "returnzero",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "revolut",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "richart",
+      "status": "partial",
+      "verified_at": "2026-06-08",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "ridi",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "riiid",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "ringle",
+      "status": "partial",
+      "verified_at": "2026-06-11",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "robinhood",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "runwayml",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "sakura-internet",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "salesforce",
+      "status": "partial",
+      "verified_at": "2026-06-11",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "samsung",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "sandoll",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "sanity",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 3,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "sansan",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "saramin",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "scatterlab",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "selectstar",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "sendbird",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-01",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "sentry",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "servicenow",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "shiftee",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "shiftup",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "shinhanbank",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 5,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "shinhancard",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 3,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "shopline",
+      "status": "partial",
+      "verified_at": "2026-06-08",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "sionic",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "sktelecom",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "skyscanner",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "slack",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "smarthr",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "smartnews",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "snapchat",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "socar",
+      "status": "verified_v2",
+      "verified_at": "2026-07-12",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 5,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "softbank",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "solapi",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "sony",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "soomgo",
+      "status": "partial",
+      "verified_at": "2026-06-09",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "soop",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "spacex",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "sparkful",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "speeda",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "spindle",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "spoon",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "spoqa",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "spotify",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "squarespace",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "squeezebits",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "ssg",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "starbucks",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "starling",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "stayfolio",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "stibee",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "stores",
+      "status": "partial",
+      "verified_at": "2026-06-10",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "stripe",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "studio",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "supabase",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 9,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "superhuman",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "supertone",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "surveycake",
+      "status": "partial",
+      "verified_at": "2026-06-08",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "tabling",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "tada",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-27",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "taishinbank",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "taiwanmobile",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "teamblind",
+      "status": "partial",
+      "verified_at": "2026-06-10",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "teamlab",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "teamsparta",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "tellingme",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "tesla",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "theverge",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "thsr",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "thumbtack",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "timee",
+      "status": "partial",
+      "verified_at": "2026-06-10",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "tmap",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "together.ai",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "toss",
+      "status": "verified_v2",
+      "verified_at": "2026-07-11",
+      "next_reverify_at": "2026-10-09",
+      "evidence_coverage": 1,
+      "surface_count": 5,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "toss-securities",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "tossbank",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "toyota",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "trainline",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "trenbe",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "triple",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "tumblbug",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-27",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "tving",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "twilio",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "twitch",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "typed",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "uber",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "ubie",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "udn",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "uniqlo",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "upbit",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "upstage",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "uswds",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "velog",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-01",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "vercel",
+      "status": "verified_v2",
+      "verified_at": "2026-07-12",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 3,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "vocus",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "voicetube",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-03",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "voltagent",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "vuno",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "wadiz",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-14",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "wanted",
+      "status": "verified_v2",
+      "verified_at": "2026-07-12",
+      "next_reverify_at": "2026-10-10",
+      "evidence_coverage": 1,
+      "surface_count": 5,
+      "source_count": 7,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "wantedly",
+      "status": "partial",
+      "verified_at": "2026-06-10",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "warp",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "watcha",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "wavve",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-27",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "wconcept",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-27",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "webflow",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "weverse",
+      "status": "partial",
+      "verified_at": "2026-06-26",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "wired",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "wise",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "wisetracker",
+      "status": "partial",
+      "verified_at": "2026-07-02",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "wooribank",
+      "status": "verified_v2",
+      "verified_at": "2026-07-14",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "workday",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "wrtn",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "x.ai",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "xiaohongshu",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-19",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "xrex",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "yanolja",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 6,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "yeogiotte",
+      "status": "verified_v2",
+      "verified_at": "2026-07-11",
+      "next_reverify_at": "2026-10-09",
+      "evidence_coverage": 1,
+      "surface_count": 10,
+      "source_count": 10,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "yogiyo",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-27",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "yourator",
+      "status": "partial",
+      "verified_at": "2026-06-08",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "zapier",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 9,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "zendesk",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "zepeto",
+      "status": "partial",
+      "verified_at": "2026-06-17",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "zigbang",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-05-15",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 1,
+      "reason_codes": [
+        "conflict_unresolved",
+        "freshness_conflict",
+        "proof_incomplete",
+        "tier1_source_missing",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "zigzag",
+      "status": "verified_v2",
+      "verified_at": "2026-07-13",
+      "next_reverify_at": "2026-10-11",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "zoom",
+      "status": "partial",
+      "verified_at": "2026-06-22",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "verification_v2_missing"
+      ]
+    },
+    {
+      "id": "zozotown",
+      "status": "legacy_snapshot",
+      "verified_at": "2026-06-06",
+      "next_reverify_at": null,
+      "evidence_coverage": 0,
+      "surface_count": 0,
+      "source_count": 0,
+      "conflict_count": 0,
+      "reason_codes": [
+        "freshness_conflict",
+        "token_source_unverified",
+        "verification_v2_missing"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Set up Grove</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { color-scheme: light; }
+    body { margin: 0; background: #f4f2ec; color: #15211b; font: 16px/1.6 Arial, sans-serif; }
+    button, input { font: inherit; }
+    button { min-height: 44px; cursor: pointer; }
+    button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid #d97841; outline-offset: 3px; }
+    nav, main, footer { width: min(1120px, calc(100% - 32px)); margin-inline: auto; }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; }
+    nav a { color: inherit; font-weight: 700; }
+    main { min-height: calc(100vh - 144px); display: grid; place-items: center; padding: 48px 0 72px; }
+    [data-onboarding-card] { width: min(760px, 100%); background: #fff; border: 1px solid #d5d8cf; border-radius: 18px; padding: clamp(24px, 6vw, 64px); }
+    .eyebrow { color: #174e3a; font-size: 13px; font-weight: 700; letter-spacing: .08em; }
+    h1 { margin: 8px 0 16px; max-width: 12ch; font: 700 clamp(36px, 6vw, 68px)/1.02 Georgia, serif; }
+    .lede { max-width: 58ch; color: #5b675f; }
+    fieldset { margin: 36px 0 0; padding: 0; border: 0; }
+    legend, label { font-weight: 700; }
+    .roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
+    .roles button, .toggle { border: 1px solid #d5d8cf; border-radius: 12px; background: #fff; color: #15211b; padding: 12px 16px; }
+    .roles button[aria-pressed="true"] { border-color: #174e3a; background: #e7efe9; box-shadow: inset 0 0 0 1px #174e3a; }
+    .toggle-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: 28px 0; padding-block: 20px; border-block: 1px solid #d5d8cf; }
+    .toggle { min-width: 84px; }
+    .toggle[aria-pressed="true"] { background: #174e3a; color: #fff; border-color: #174e3a; }
+    .form-grid { display: grid; grid-template-columns: 1fr auto; gap: 10px; margin-top: 10px; }
+    input { min-width: 0; min-height: 48px; border: 1px solid #a9b0aa; border-radius: 12px; padding: 10px 14px; color: #15211b; background: #fff; }
+    [data-primary-action] { border: 1px solid #174e3a; border-radius: 12px; padding: 10px 22px; background: #174e3a; color: #fff; font-weight: 700; }
+    [data-bench="form-status"] { min-height: 26px; margin: 8px 0 0; color: #5b675f; }
+    footer { min-height: 72px; display: flex; align-items: center; color: #5b675f; border-top: 1px solid #d5d8cf; }
+    @media (max-width: 700px) {
+      nav { min-height: 60px; }
+      main { padding: 20px 0 44px; }
+      [data-onboarding-card] { padding: 24px 18px; }
+      .roles, .form-grid { grid-template-columns: 1fr; }
+      .toggle-row { align-items: flex-start; }
+      .toggle { flex: 0 0 auto; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .001ms !important; } }
+  </style>
+</head>
+<body data-role="founder">
+  <nav aria-label="Primary"><a href="#setup">Grove</a><span>Step 1 of 1</span></nav>
+  <main id="setup">
+    <section data-onboarding-card aria-labelledby="setup-title">
+      <p class="eyebrow">WORKSPACE SETUP</p>
+      <h1 id="setup-title">Start with a useful default.</h1>
+      <p class="lede">Choose how you work, set one optional preference, and name the workspace. Every choice can be changed later.</p>
+      <fieldset>
+        <legend>What is your main role?</legend>
+        <div class="roles">
+          <button type="button" data-bench="role-option" data-role="founder" aria-pressed="true">Founder</button>
+          <button type="button" data-bench="role-option" data-role="designer" aria-pressed="false">Designer</button>
+          <button type="button" data-bench="role-option" data-role="engineer" aria-pressed="false">Engineer</button>
+        </div>
+      </fieldset>
+      <div class="toggle-row">
+        <div><strong>Weekly research digest</strong><br><span class="lede">A concise summary in this workspace.</span></div>
+        <button class="toggle" type="button" data-bench="digest-toggle" aria-pressed="false">Off</button>
+      </div>
+      <form data-bench="workspace-form" novalidate>
+        <label for="workspace-name">Workspace name</label>
+        <div class="form-grid">
+          <input id="workspace-name" data-bench="workspace-name" autocomplete="organization" placeholder="Field Notes">
+          <button type="submit" data-primary-action>Create workspace</button>
+        </div>
+        <p data-bench="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <footer>Grove setup · No external services connected</footer>
+  <script>
+    const roleButtons = [...document.querySelectorAll('[data-bench="role-option"]')];
+    roleButtons.forEach((button) => button.addEventListener('click', () => {
+      document.body.dataset.role = button.dataset.role;
+      roleButtons.forEach((candidate) => candidate.setAttribute('aria-pressed', String(candidate === button)));
+    }));
+    const digest = document.querySelector('[data-bench="digest-toggle"]');
+    digest.addEventListener('click', () => {
+      const enabled = digest.getAttribute('aria-pressed') !== 'true';
+      digest.setAttribute('aria-pressed', String(enabled));
+      digest.textContent = enabled ? 'On' : 'Off';
+    });
+    const form = document.querySelector('[data-bench="workspace-form"]');
+    const nameField = document.querySelector('[data-bench="workspace-name"]');
+    const status = document.querySelector('[data-bench="form-status"]');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (nameField.value.trim().length < 3) {
+        nameField.setAttribute('aria-invalid', 'true');
+        status.textContent = 'Enter at least three characters for the workspace name.';
+        nameField.focus();
+        return;
+      }
+      nameField.setAttribute('aria-invalid', 'false');
+      status.textContent = `${nameField.value.trim()} is ready.`;
+    });
+  </script>
+</body>
+</html>

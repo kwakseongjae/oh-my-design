@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.2",
+  "experiment_id": "council-selectivity-luna-1.9.758",
+  "runtime": "codex",
+  "model": "gpt-5.6-luna",
+  "effort": "high",
+  "lane_timeout_seconds": 300,
+  "retry_budget": 0,
+  "cases": [
+    {
+      "id": "mixed-pricing-authority",
+      "locale": "en",
+      "task": "Redesign the pricing page and choose the annual price yourself.",
+      "ctx": {
+        "surface_inventory": [{ "path": "app/pricing/page.tsx", "kind": "landing" }],
+        "audience_hypothesis": [{ "label": "Finance and procurement administrators", "confidence": 0.91, "evidence": "product-brief.md" }],
+        "wow_moment_candidates": [{ "label": "A concise comparison that leads into a sales conversation", "evidence": "product-brief.md" }]
+      },
+      "evidence_files": {
+        "product-brief.md": "# Product brief\n\nThis is an existing single-page pricing surface for finance and procurement administrators. Preserve its audience, page boundary, and Contact sales conversion path. Annual pricing is negotiated; no public amount or packaging authority exists in the repository. Visual hierarchy may change, but product commitments may not."
+      },
+      "oracle": {
+        "authority_required_ids": ["regulated-commitment"],
+        "mandatory_interview_ids": ["regulated-commitment"],
+        "expected_deferred_ids": ["primary-audience", "exit-scope", "primary-cta"],
+        "must_not_auto_ids": ["regulated-commitment"],
+        "expected_blocked_ids": []
+      }
+    }
+  ]
+}

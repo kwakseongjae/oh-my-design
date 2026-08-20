@@ -1,9 +1,8 @@
 node_modules/
 dist/
-# Generated during `npm ci`/`npm run build` and included by package.json files.
-/skills/omd-reference-capture/scripts/
 .next/
 *.tsbuildinfo
+__pycache__/
 .DS_Store
 .env
 .env.local
@@ -35,9 +34,9 @@ experiments/
 # npm pack tarball outputs (build artifacts)
 *.tgz
 
-# Self-contained reference collector and bundled third-party notices. Generated
-# by `npm run build`; package.json `files` includes them after prepare/pack.
-/skills/omd-reference-capture/scripts/
+# The self-contained reference collector and its third-party notices are
+# checked-in package inputs. `npm run build` must reproduce the same bytes so a
+# clean source install cannot change shape while another build is running.
 
 # Self-install test artifacts inside web/ (regenerable via npx)
 web/.claude/

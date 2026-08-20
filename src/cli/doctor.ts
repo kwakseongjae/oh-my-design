@@ -2,22 +2,29 @@ import * as p from '@clack/prompts';
 import pc from 'picocolors';
 import {
   existsSync,
+  mkdirSync,
+  mkdtempSync,
   readFileSync,
   readdirSync,
+  rmSync,
+  writeFileSync,
 } from 'node:fs';
-import { homedir } from 'node:os';
+import { homedir, tmpdir } from 'node:os';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
 import {
   CLAUDE_HOOK_PATHS,
   isCurrentManagedHook,
 } from './hook-contract.js';
 import { unsafeManagedPath } from './install-path.js';
+import { proofPolicyIssues } from './proof-policy.js';
 
 export interface DoctorOptions {
   dir?: string;
   global?: boolean;
   json?: boolean;
+  selfTest?: boolean;
 }
 
 export interface DoctorChannel {
@@ -47,6 +54,7 @@ function shellQuote(value: string): string {
 
 export const REQUIRED_PRODUCT_SKILLS = [
   'claude-design',
+  'omd-autopilot',
   'omd-apply',
   'omd-asset-fetch',
   'omd-codex-image',
@@ -66,6 +74,7 @@ export const REQUIRED_PRODUCT_SKILLS = [
   'omd-slop-audit',
   'omd-sync',
   'omd-taste',
+  'omd-update',
 ] as const;
 export const REQUIRED_AGENT_IDS = [
   'omd-a11y-auditor',
@@ -73,6 +82,7 @@ export const REQUIRED_AGENT_IDS = [
   'omd-codex-image',
   'omd-critic',
   'omd-designer-review',
+  'omd-design-system-architect',
   'omd-final-qa',
   'omd-humanizer',
   'omd-kr-writer',
@@ -89,8 +99,59 @@ export const REQUIRED_AGENT_IDS = [
 ] as const;
 const REQUIRED_DATA_FILES = [
   'reference-fingerprints.json',
+  'reference-quality.json',
   'reference-tags.md',
   'vocabulary.json',
+  'workflow-capabilities.json',
+] as const;
+export const REQUIRED_HARNESS_HELPERS = [
+  'ctx-prime.cjs',
+  'context.cjs',
+  'design-council-prime.cjs',
+  'design-council-reconcile.cjs',
+  'design-council-handoff.cjs',
+  'design-system-plan.cjs',
+  'design-md-core-schema.cjs',
+  'design-md-core-conformance.cjs',
+  'design-md-core.cjs',
+  'prepare-design-md-core-review.cjs',
+  'activate-autopilot-design-system.cjs',
+  'rebind-design-md-core-migration.cjs',
+  'compile-design-md-core.cjs',
+  'adopt-design-md-core.cjs',
+  'migrate-design-md-core.cjs',
+  'validate-project-design-system.cjs',
+  'autopilot-mission.cjs',
+  'autopilot-council-plan.cjs',
+  'autopilot-council-reconcile.cjs',
+  'design-harness-context-plan.cjs',
+] as const;
+export const REQUIRED_CORE_RUNTIME_HELPERS = [
+  'design-md-core-schema.cjs',
+  'design-md-core-conformance.cjs',
+  'design-md-core.cjs',
+  'prepare-design-md-core-review.cjs',
+  'activate-autopilot-design-system.cjs',
+  'rebind-design-md-core-migration.cjs',
+  'compile-design-md-core.cjs',
+  'adopt-design-md-core.cjs',
+] as const;
+const REQUIRED_SKILL_SIDECARS = [
+  ['omd-autopilot', 'references/design-system-contract.md'],
+  ['omd-init', 'scripts/query-references.mjs'],
+  ['omd-harness', 'references/master-visual-grounding.md'],
+  ['omd-harness', 'references/master-conversation.md'],
+  ['omd-harness', 'references/master-legacy-production.md'],
+  ['omd-harness', 'references/master-execution-phases.md'],
+] as const;
+export const REQUIRED_CORE_SCHEMA_FILES = [
+  'design-md-core-manifest-v2.schema.json',
+  'design-system-graph-v2.schema.json',
+  'design-system-provenance-v2.schema.json',
+  'design-system-coverage-v2.schema.json',
+  'design-md-core-adoption-review-v2.schema.json',
+  'design-md-core-adoption-receipt-v2.schema.json',
+  'design-md-core-project-checkpoint-v2.schema.json',
 ] as const;
 const REQUIRED_CLAUDE_HOOKS = [
   'skill-activation.cjs',
@@ -99,10 +160,18 @@ const REQUIRED_CLAUDE_HOOKS = [
   'session-end-foldin.cjs',
 ] as const;
 
-type SkillChannelId = 'claude-code' | 'codex' | 'opencode';
+type SkillChannelId = 'claude-code' | 'codex' | 'opencode' | 'cursor';
 
-function missingProductSkills(skillsRoot: string): string[] {
-  return REQUIRED_PRODUCT_SKILLS.filter(
+function requiredProductSkills(channel: SkillChannelId): readonly string[] {
+  // claude-design requires a browser bridge that the Cursor channel does not
+  // install. Every other shipped product skill is portable to Cursor.
+  return channel === 'cursor'
+    ? REQUIRED_PRODUCT_SKILLS.filter((skill) => skill !== 'claude-design')
+    : REQUIRED_PRODUCT_SKILLS;
+}
+
+function missingProductSkills(skillsRoot: string, channel: SkillChannelId): string[] {
+  return requiredProductSkills(channel).filter(
     (skill) => !existsSync(join(skillsRoot, skill, 'SKILL.md')),
   );
 }
@@ -111,8 +180,82 @@ function missingDataFiles(dataRoot: string): string[] {
   return REQUIRED_DATA_FILES.filter((file) => !existsSync(join(dataRoot, file)));
 }
 
+function missingHarnessHelpers(dataRoot: string): string[] {
+  const missing: string[] = REQUIRED_HARNESS_HELPERS.filter(
+    (file) => !existsSync(join(dataRoot, 'scripts', file)),
+  );
+  for (const schema of REQUIRED_CORE_SCHEMA_FILES) {
+    if (!existsSync(join(dataRoot, 'scripts', 'schema', schema))) {
+      missing.push(`schema/${schema}`);
+    }
+  }
+  return missing;
+}
+
+function coreSchemaIntegrityIssues(installRoot: string, dataRoot: string): string[] {
+  const installedSchemas = REQUIRED_CORE_SCHEMA_FILES
+    .map((schema) => ({
+      schema,
+      path: join(dataRoot, 'scripts', 'schema', schema),
+    }))
+    .filter(({ path }) => existsSync(path) && !unsafeManagedPath(installRoot, path));
+  if (installedSchemas.length === 0) return [];
+
+  const bundleRoot = findBundleRoot();
+  if (!bundleRoot) return ['bundled Core schema authority is missing'];
+
+  const invalid: string[] = [];
+  for (const { schema, path } of installedSchemas) {
+    const trustedPath = join(bundleRoot, 'spec', 'schema', schema);
+    try {
+      if (
+        !existsSync(trustedPath) ||
+        !readFileSync(path).equals(readFileSync(trustedPath))
+      ) {
+        invalid.push(schema);
+      }
+    } catch {
+      invalid.push(schema);
+    }
+  }
+  return invalid.length > 0
+    ? [`invalid Core schema bytes: ${invalid.join(', ')}`]
+    : [];
+}
+
+function coreRuntimeIntegrityIssues(installRoot: string, dataRoot: string): string[] {
+  const installedHelpers = REQUIRED_CORE_RUNTIME_HELPERS
+    .map((helper) => ({
+      helper,
+      path: join(dataRoot, 'scripts', helper),
+    }))
+    .filter(({ path }) => existsSync(path) && !unsafeManagedPath(installRoot, path));
+  if (installedHelpers.length === 0) return [];
+
+  const bundleRoot = findBundleRoot();
+  if (!bundleRoot) return ['bundled Core runtime authority is missing'];
+
+  const invalid: string[] = [];
+  for (const { helper, path } of installedHelpers) {
+    const trustedPath = join(bundleRoot, 'scripts', helper);
+    try {
+      if (
+        !existsSync(trustedPath) ||
+        !readFileSync(path).equals(readFileSync(trustedPath))
+      ) {
+        invalid.push(helper);
+      }
+    } catch {
+      invalid.push(helper);
+    }
+  }
+  return invalid.length > 0
+    ? [`invalid Core runtime helper bytes: ${invalid.join(', ')}`]
+    : [];
+}
+
 function expectedSkillName(skill: string, channel: SkillChannelId): string {
-  if (channel === 'opencode' || skill === 'claude-design') return skill;
+  if (channel === 'opencode' || channel === 'cursor' || skill === 'claude-design') return skill;
   return skill.replace(/^omd-/, 'omd:');
 }
 
@@ -123,7 +266,8 @@ function skillContractIssues(
 ): string[] {
   const malformed: string[] = [];
   const unsafe: string[] = [];
-  for (const skill of REQUIRED_PRODUCT_SKILLS) {
+  const missingSidecars: string[] = [];
+  for (const skill of requiredProductSkills(channel)) {
     const path = join(skillsRoot, skill, 'SKILL.md');
     if (!existsSync(path)) continue;
     if (unsafeManagedPath(installRoot, path)) {
@@ -141,12 +285,21 @@ function skillContractIssues(
     if (
       !parsed ||
       rawName !== expectedSkillName(skill, channel) ||
-      (channel === 'opencode' && !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(rawName ?? '')) ||
+      ((channel === 'opencode' || channel === 'cursor') &&
+        !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(rawName ?? '')) ||
       !hasDescription ||
       !parsed[2].trim() ||
       !content.includes('omd:installed-skill')
     ) {
       malformed.push(skill);
+    }
+  }
+  for (const [skill, sidecar] of REQUIRED_SKILL_SIDECARS) {
+    if (
+      existsSync(join(skillsRoot, skill, 'SKILL.md')) &&
+      !existsSync(join(skillsRoot, skill, sidecar))
+    ) {
+      missingSidecars.push(`${skill}/${sidecar}`);
     }
   }
   return [
@@ -155,6 +308,9 @@ function skillContractIssues(
       : []),
     ...(malformed.length > 0
       ? [`invalid ${channel} skill definitions: ${malformed.join(', ')}`]
+      : []),
+    ...(missingSidecars.length > 0
+      ? [`missing ${channel} skill sidecars: ${missingSidecars.join(', ')}`]
       : []),
   ];
 }
@@ -165,10 +321,13 @@ function coreIssues(
   dataRoot: string,
   referenceIds: Set<string>,
   channel: SkillChannelId,
+  selfTest = false,
 ): string[] {
   const issues: string[] = [];
   const unsafeDataPaths = [
     ...REQUIRED_DATA_FILES.map((file) => join(dataRoot, file)),
+    ...REQUIRED_HARNESS_HELPERS.map((file) => join(dataRoot, 'scripts', file)),
+    ...REQUIRED_CORE_SCHEMA_FILES.map((file) => join(dataRoot, 'scripts', 'schema', file)),
     join(dataRoot, 'references'),
   ].filter((path) => existsSync(path) && unsafeManagedPath(installRoot, path));
   if (unsafeDataPaths.length > 0) {
@@ -178,14 +337,25 @@ function coreIssues(
         .join(', ')}`,
     );
   }
-  const missingSkills = missingProductSkills(skillsRoot);
+  const missingSkills = missingProductSkills(skillsRoot, channel);
   const missingData = missingDataFiles(dataRoot);
+  const missingHelpers = missingHarnessHelpers(dataRoot);
+  const runtimeIntegrityIssues = coreRuntimeIntegrityIssues(installRoot, dataRoot);
+  const schemaIntegrityIssues = coreSchemaIntegrityIssues(installRoot, dataRoot);
   if (missingSkills.length > 0) {
     issues.push(`missing product skills: ${missingSkills.join(', ')}`);
   }
   issues.push(...skillContractIssues(installRoot, skillsRoot, channel));
   if (missingData.length > 0) issues.push(`missing catalog data: ${missingData.join(', ')}`);
+  if (missingHelpers.length > 0) issues.push(`missing harness helpers: ${missingHelpers.join(', ')}`);
+  issues.push(...runtimeIntegrityIssues);
+  issues.push(...schemaIntegrityIssues);
+  if (selfTest && missingHelpers.length === 0) {
+    const plannerIssue = harnessContextPlannerSelfTestIssue(installRoot, dataRoot);
+    if (plannerIssue) issues.push(plannerIssue);
+  }
   if (referenceIds.size === 0) issues.push('reference catalog is empty');
+  let fingerprintIdsForQuality: Set<string> | null = null;
   const fingerprintsPath = join(dataRoot, 'reference-fingerprints.json');
   if (existsSync(fingerprintsPath)) {
     try {
@@ -212,6 +382,7 @@ function coreIssues(
             .filter((item): item is { id: string } => !invalidItems.includes(item))
             .map((item) => item.id);
           const uniqueFingerprintIds = new Set(fingerprintIds);
+          fingerprintIdsForQuality = uniqueFingerprintIds;
           if (invalidItems.length > 0) {
             issues.push(`reference-fingerprints.json has ${invalidItems.length} item(s) without an id`);
           }
@@ -259,6 +430,106 @@ function coreIssues(
       issues.push('reference-fingerprints.json is not valid JSON');
     }
   }
+  const qualityPath = join(dataRoot, 'reference-quality.json');
+  if (existsSync(qualityPath)) {
+    try {
+      const quality: unknown = JSON.parse(readFileSync(qualityPath, 'utf8'));
+      if (!isJsonObject(quality) || !Array.isArray(quality.items) || typeof quality.count !== 'number') {
+        issues.push('reference-quality.json has an invalid quality contract');
+      } else {
+        const validStatuses = new Set(['verified_v2', 'partial', 'legacy_snapshot']);
+        const qualityIds: string[] = [];
+        let invalidItems = 0;
+        for (const item of quality.items) {
+          if (
+            !isJsonObject(item) ||
+            typeof item.id !== 'string' ||
+            !validStatuses.has(String(item.status))
+          ) {
+            invalidItems += 1;
+          } else {
+            qualityIds.push(item.id);
+          }
+        }
+        const uniqueQualityIds = new Set(qualityIds);
+        if (invalidItems > 0) {
+          issues.push(`reference-quality.json has ${invalidItems} invalid item(s)`);
+        }
+        if (quality.count !== quality.items.length) {
+          issues.push(`quality mismatch: declared ${quality.count} entries but items contains ${quality.items.length}`);
+        }
+        if (uniqueQualityIds.size !== qualityIds.length) {
+          issues.push('reference-quality.json contains duplicate ids');
+        }
+        if (fingerprintIdsForQuality) {
+          const missingQuality = [...fingerprintIdsForQuality].filter((id) => !uniqueQualityIds.has(id));
+          const unknownQuality = [...uniqueQualityIds].filter((id) => !fingerprintIdsForQuality.has(id));
+          if (missingQuality.length > 0 || unknownQuality.length > 0) {
+            issues.push(
+              `catalog quality ids mismatch: ${missingQuality.length} missing / ${unknownQuality.length} unknown`,
+            );
+          }
+        }
+      }
+    } catch {
+      issues.push('reference-quality.json is not valid JSON');
+    }
+  }
+  const workflowsPath = join(dataRoot, 'workflow-capabilities.json');
+  if (existsSync(workflowsPath)) {
+    try {
+      const workflows: unknown = JSON.parse(readFileSync(workflowsPath, 'utf8'));
+      if (
+        !isJsonObject(workflows) ||
+        workflows.schema_version !== 1 ||
+        !isJsonObject(workflows.execution_assurance) ||
+        workflows.execution_assurance.contract_version !== 1 ||
+        !Array.isArray(workflows.execution_assurance.channels) ||
+        workflows.execution_assurance.channels.length !== 4 ||
+        workflows.execution_assurance.channels.some(
+          (channel) =>
+            !isJsonObject(channel) ||
+            typeof channel.id !== 'string' ||
+            channel.skill_contract !== 'advisory' ||
+            typeof channel.native_policy_surface !== 'string' ||
+            channel.omd_policy_adapter_default !== 'not-installed' ||
+            (
+              channel.omd_policy_adapter_opt_in !== undefined &&
+              (
+                !isJsonObject(channel.omd_policy_adapter_opt_in) ||
+                channel.omd_policy_adapter_opt_in.flag !== '--proof-policy' ||
+                !['project', 'project-git-root'].includes(String(channel.omd_policy_adapter_opt_in.scope)) ||
+                channel.omd_policy_adapter_opt_in.enforcement !== 'pre-tool-deny-after-host-trust' ||
+                channel.omd_policy_adapter_opt_in.remove_flag !== '--remove-proof-policy'
+              )
+            ) ||
+            typeof channel.host_native_pretool_blocking !== 'boolean' ||
+            typeof channel.effective_level !== 'string',
+        ) ||
+        !isJsonObject(workflows.execution_assurance.benchmark_controller) ||
+        workflows.execution_assurance.benchmark_controller.enforcement !== 'promotion-report' ||
+        workflows.execution_assurance.benchmark_controller.execution_blocking !== false ||
+        !isJsonObject(workflows.locale_contract) ||
+        workflows.locale_contract.source_locale !== 'ko' ||
+        typeof workflows.locale_contract.source_revision !== 'string' ||
+        JSON.stringify(workflows.locale_contract.supported_locales) !== JSON.stringify(['en', 'ko', 'ja', 'zh-CN', 'zh-TW']) ||
+        !Array.isArray(workflows.workflows) ||
+        workflows.workflows.length === 0 ||
+        workflows.workflows.some(
+          (workflow) =>
+            !isJsonObject(workflow) ||
+            typeof workflow.id !== 'string' ||
+            typeof workflow.entry_skill !== 'string' ||
+            !Array.isArray(workflow.stages) ||
+            !hasCompleteWorkflowLocales(workflow.locales),
+        )
+      ) {
+        issues.push('workflow-capabilities.json has an invalid workflow contract');
+      }
+    } catch {
+      issues.push('workflow-capabilities.json is not valid JSON');
+    }
+  }
   return issues;
 }
 
@@ -294,8 +565,8 @@ function referenceIdsAt(dataRoot: string): Set<string> {
   );
 }
 
-function countRequiredSkills(skillsRoot: string): number {
-  return REQUIRED_PRODUCT_SKILLS.filter(
+function countRequiredSkills(skillsRoot: string, channel: SkillChannelId): number {
+  return requiredProductSkills(channel).filter(
     (skill) => existsSync(join(skillsRoot, skill, 'SKILL.md')),
   ).length;
 }
@@ -364,6 +635,17 @@ type JsonObject = Record<string, unknown>;
 
 function isJsonObject(value: unknown): value is JsonObject {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function hasCompleteWorkflowLocales(value: unknown): boolean {
+  if (!isJsonObject(value)) return false;
+  return ['ja', 'zh-CN', 'zh-TW'].every((locale) => {
+    const copy = value[locale];
+    return isJsonObject(copy) &&
+      typeof copy.label === 'string' &&
+      typeof copy.prompt === 'string' &&
+      typeof copy.route_suffix === 'string';
+  });
 }
 
 const CLAUDE_HOOK_EVENTS: Record<(typeof REQUIRED_CLAUDE_HOOKS)[number], string> = {
@@ -437,6 +719,66 @@ function findBundleRoot(): string | null {
     current = parent;
   }
   return null;
+}
+
+export function harnessContextPlannerSelfTestIssue(
+  installRoot: string,
+  dataRoot: string,
+): string | null {
+  const installedPath = join(dataRoot, 'scripts', 'design-harness-context-plan.cjs');
+  if (!existsSync(installedPath)) return null;
+  if (unsafeManagedPath(installRoot, installedPath)) {
+    return 'harness context planner self-test skipped for unsafe managed path';
+  }
+  const bundleRoot = findBundleRoot();
+  const bundledPath = bundleRoot
+    ? join(bundleRoot, 'scripts', 'design-harness-context-plan.cjs')
+    : null;
+  if (!bundledPath || !existsSync(bundledPath)) {
+    return 'bundled harness context planner source is missing';
+  }
+  if (readFileSync(installedPath, 'utf8') !== readFileSync(bundledPath, 'utf8')) {
+    return 'installed harness context planner differs from the packaged source';
+  }
+
+  const scratch = mkdtempSync(join(tmpdir(), 'omd-doctor-context-plan-'));
+  const runDir = join(scratch, '.omd');
+  const handoffDir = join(runDir, 'handoff');
+  try {
+    // mkdir through the same helper invocation is intentionally avoided: the
+    // fixture exists before execution, and the helper may only add its plan.
+    mkdirSync(handoffDir, { recursive: true });
+    writeFileSync(
+      join(handoffDir, '.handoff.json'),
+      `${JSON.stringify({ state: 'PROPOSE_PLAN' }, null, 2)}\n`,
+      'utf8',
+    );
+    const result = spawnSync(process.execPath, [installedPath, scratch, runDir, 'relay'], {
+      cwd: scratch,
+      encoding: 'utf8',
+      timeout: 5_000,
+      env: { ...process.env, CI: '1', DISABLE_TELEMETRY: '1', DO_NOT_TRACK: '1' },
+    });
+    if (result.status !== 0 || result.error) {
+      return 'harness context planner self-test failed to execute';
+    }
+    const outputPath = join(handoffDir, 'context-plan.json');
+    if (!existsSync(outputPath)) return 'harness context planner self-test produced no plan';
+    const plan: unknown = JSON.parse(readFileSync(outputPath, 'utf8'));
+    if (
+      !isJsonObject(plan) ||
+      plan.action !== 'resume_master' ||
+      plan.master_required !== true ||
+      JSON.stringify(plan.sidecars) !== JSON.stringify(['master-execution-phases.md'])
+    ) {
+      return 'harness context planner self-test produced an invalid plan';
+    }
+    return null;
+  } catch {
+    return 'harness context planner self-test failed to validate output';
+  } finally {
+    rmSync(scratch, { recursive: true, force: true });
+  }
 }
 
 function bundledClaudeHookSource(hook: (typeof CLAUDE_HOOK_PATHS)[number]): string | null {
@@ -662,20 +1004,42 @@ function openCodeAgentIssues(root: string, agentsRoot: string): string[] {
   return issues;
 }
 
-function cursorRuleIssues(root: string): string[] {
+type CursorChannelMode = 'skills' | 'rule-only' | 'invalid' | 'missing';
+
+function cursorChannelMode(root: string): CursorChannelMode {
   const path = join(root, '.cursor', 'rules', 'omd-design.mdc');
-  if (!existsSync(path)) return [];
+  if (!existsSync(path)) return 'missing';
+  const content = readFileSync(path, 'utf8');
+  if (content.includes('<!-- omd:cursor-channel=skills -->')) return 'skills';
+  if (content.includes('<!-- omd:cursor-channel=rule-only -->')) return 'rule-only';
+  return 'invalid';
+}
+
+function cursorRuleIssues(root: string, installedSkills: number): string[] {
+  const path = join(root, '.cursor', 'rules', 'omd-design.mdc');
+  const mode = cursorChannelMode(root);
+  if (mode === 'missing') return ['Cursor DESIGN.md bootstrap rule is missing'];
   const unsafe = unsafeManagedPath(root, path);
   if (unsafe) return [`unsafe Cursor rule path (${unsafe})`];
   const content = readFileSync(path, 'utf8');
+  const hasStandaloneContract =
+    content.includes('Read the standalone design contract at `@DESIGN.md` before generating/modifying UI.') ||
+    content.includes('The standalone portable design contract lives at `@DESIGN.md` (repo root).');
   if (
     !content.startsWith('---\n') ||
     !content.includes('description: Authoritative brand & UI design system.') ||
     !/<!-- omd:start v=1 hash=[a-f0-9]{12} -->/.test(content) ||
-    !content.includes('The authoritative design spec lives at `@DESIGN.md` (repo root). Open and read before generating/modifying UI.') ||
+    !hasStandaloneContract ||
+    !/<!-- omd:cursor-channel=(?:skills|rule-only) -->/.test(content) ||
     !content.includes('<!-- omd:end -->')
   ) {
     return ['Cursor rule is not an OmD-managed design-system shim'];
+  }
+  if (mode === 'skills' && !/^alwaysApply:\s*true\s*$/m.test(content)) {
+    return ['Cursor Agent Skill bootstrap must be alwaysApply: true'];
+  }
+  if (mode === 'rule-only' && installedSkills > 0) {
+    return ['Cursor rule-only compatibility mode conflicts with installed Cursor Agent Skills'];
   }
   return [];
 }
@@ -689,15 +1053,17 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
     ? join(root, '.config', 'opencode')
     : join(root, '.opencode');
   const opencodeSkillsRoot = join(opencodeRoot, 'skills');
+  const cursorSkillsRoot = join(root, '.cursor', 'skills');
   const claudeAgentsRoot = join(root, '.claude', 'agents');
   const codexAgentsRoot = join(root, '.codex', 'agents');
   const opencodeAgentsRoot = join(opencodeRoot, 'agents');
   const claudeDataRoot = join(root, '.claude', 'data');
   const codexDataRoot = join(root, '.codex', 'data');
   const opencodeDataRoot = join(opencodeRoot, 'data');
-  const claudeSkills = countRequiredSkills(claudeSkillsRoot);
-  const codexSkills = countRequiredSkills(codexSkillsRoot);
-  const opencodeSkills = countRequiredSkills(opencodeSkillsRoot);
+  const claudeSkills = countRequiredSkills(claudeSkillsRoot, 'claude-code');
+  const codexSkills = countRequiredSkills(codexSkillsRoot, 'codex');
+  const opencodeSkills = countRequiredSkills(opencodeSkillsRoot, 'opencode');
+  const cursorSkills = countRequiredSkills(cursorSkillsRoot, 'cursor');
   const claudeAgents = countRequiredAgents(claudeAgentsRoot, '.md');
   const codexAgents = countRequiredAgents(codexAgentsRoot, '.toml');
   const opencodeAgents = countRequiredAgents(opencodeAgentsRoot, '.md');
@@ -724,7 +1090,8 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
     existsSync(join(codexDataRoot, 'reference-fingerprints.json'));
   const opencodeInstalled = opencodeSkills > 0 || opencodeAgents > 0 ||
     existsSync(join(opencodeDataRoot, 'reference-fingerprints.json'));
-  const cursorInstalled = !opts.global && existsSync(join(root, '.cursor', 'rules', 'omd-design.mdc'));
+  const cursorMode = opts.global ? 'missing' : cursorChannelMode(root);
+  const cursorInstalled = !opts.global && (cursorMode !== 'missing' || cursorSkills > 0);
 
   const claudeIssues = claudeInstalled
     ? [
@@ -734,9 +1101,11 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
           claudeDataRoot,
           claudeReferenceIds,
           'claude-code',
+          opts.selfTest,
         ),
         ...claudeAgentIssues(root),
         ...(opts.global ? [] : claudeActivationIssues(root)),
+        ...(opts.global ? [] : proofPolicyIssues(root, 'claude-code')),
       ]
     : [];
   const codexIssues = codexInstalled
@@ -747,8 +1116,10 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
           codexDataRoot,
           codexReferenceIds,
           'codex',
+          opts.selfTest,
         ),
         ...codexAgentIssues(root),
+        ...(opts.global ? [] : proofPolicyIssues(root, 'codex')),
       ]
     : [];
   const opencodeIssues = opencodeInstalled
@@ -759,20 +1130,33 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
             opencodeDataRoot,
             opencodeReferenceIds,
             'opencode',
+            opts.selfTest,
           ),
           ...openCodeAgentIssues(root, opencodeAgentsRoot),
         ]
     : [];
   const cursorIssues = cursorInstalled
-      ? coreIssues(
-        root,
-        join(root, '.cursor', '__no_skills__'),
-        claudeDataRoot,
-        claudeReferenceIds,
-        'claude-code',
-      ).filter((issue) => !issue.startsWith('missing product skills:'))
-        .filter((issue) => !issue.startsWith('invalid claude-code skill definitions:'))
-        .concat(cursorRuleIssues(root))
+      ? (
+        cursorMode === 'rule-only'
+          ? coreIssues(
+            root,
+            join(root, '.cursor', '__rule_only__'),
+            claudeDataRoot,
+            claudeReferenceIds,
+            'cursor',
+            opts.selfTest,
+          )
+            .filter((issue) => !issue.startsWith('missing product skills:'))
+            .filter((issue) => !issue.startsWith('invalid cursor skill definitions:'))
+          : coreIssues(
+            root,
+            cursorSkillsRoot,
+            claudeDataRoot,
+            claudeReferenceIds,
+            'cursor',
+            opts.selfTest,
+          )
+      ).concat(cursorRuleIssues(root, cursorSkills))
     : [];
 
   const channels: DoctorChannel[] = [
@@ -807,7 +1191,7 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
       id: 'cursor',
       installed: cursorInstalled,
       ready: cursorInstalled && cursorIssues.length === 0,
-      skills: 0,
+      skills: cursorSkills,
       agents: 0,
       references: claudeReferences,
       issues: cursorIssues,

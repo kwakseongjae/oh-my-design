@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.400",
+  "experiment_id": "field-sample-runtime-closure-luna-1.9.398",
+  "cell_id": "luna-field-r1-control",
+  "status": "complete",
+  "validity": "valid",
+  "retry": false,
+  "result": {
+    "deterministic_score": 81,
+    "deterministic_max": 85,
+    "ui_resolved": false,
+    "wall_time_ms": 655972,
+    "provider_tokens": 1504825,
+    "green": ["task-contract", "state-journey", "design-grounding", "evidence-honesty", "desktop-geometry", "390px-geometry", "accessibility", "keyboard"],
+    "red": ["320px-short-atomic-line-budget", "200%-reflow-short-atomic-line-budget"],
+    "proof_execution_gate": true,
+    "host_policy_gate": true,
+    "browser_attempts": 1,
+    "browser_proof": "unresolved-infrastructure",
+    "closure_state": "unresolved",
+    "closure_quality_pass": false
+  },
+  "artifact_hashes": {
+    "run_result_sha256": "35f2c8e82e07acf7618e400bdddb591189853d1c226febd56a6af781df7fad62",
+    "score_sha256": "5ecfefa6afb78ca9586554480f938dd86cb2ecb05e969ab6d5d9a5fdf58e8411",
+    "run_record_sha256": "78fc4979b9e2d64453b6f1f98e13378bfdfcbb750c0177bdd205b6b7d37beada",
+    "proof_trace_sha256": "e8c6154ff9bf594263698e7555576239778e68b383980642e1db3744a1f14cd3",
+    "host_policy_state_sha256": "2faf52723821959f33dfe5ca8c9bf4aec81ebf35c5c9c39cb3aef5b7c490eb53",
+    "benchmark_tree_sha256": "0e6fbb7a5a8d7d8e306879bdade66421e9f906c9ba87216751a5788beed89cc9"
+  },
+  "tokens_to_target_observed_minimum": 26134765,
+  "prior_usage_unavailable_cells": 5,
+  "next": "After fixed pacing and a fresh exact browser/auth preflight, run luna-field-r1-candidate once with no retry."
+}

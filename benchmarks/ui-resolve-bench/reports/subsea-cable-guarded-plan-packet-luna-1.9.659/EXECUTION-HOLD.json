@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.662",
+  "experiment_id": "subsea-cable-guarded-plan-packet-luna-1.9.659",
+  "status": "REMOTE_EXECUTION_BLOCKED_BEFORE_PROVIDER_ENTRY",
+  "attempted_command": "node benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs --root /private/tmp/u19660 --max-new-cells 1",
+  "expected_exit_code": 1,
+  "observed_error": "matrix-execution-hold:remote-execution-deferred",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "cells_started": 0,
+  "state_before_sha256": "2b445d749e95bc394847eca9d42e35698300ac89bc5ab08c88fa8bafe0d592d0",
+  "state_after_sha256": "2b445d749e95bc394847eca9d42e35698300ac89bc5ab08c88fa8bafe0d592d0",
+  "untouched_after_hold": {
+    "cells_without_run_record": 6,
+    "cells_without_score": 6,
+    "cells_with_original_index_sha256": 6,
+    "original_index_sha256": "670ddf8f4bc10a1f422aad0f04fa345340d94d6a71f4b9c5c19352a776fa19f4"
+  },
+  "execution_boundary": {
+    "hold_checked_before_provider_resolution": true,
+    "hold_checked_before_cell_lease": true,
+    "hold_checked_before_workspace_mutation": true,
+    "remote_execution_authorized": false
+  },
+  "claim_boundary": "The prepared runner proved that the no-remote hold stops this matrix before any provider, model, cell lease, score, or product mutation. It does not establish model transfer.",
+  "next": "The provider-free preparation lane is closed. Preserve the six cells until remote model execution is explicitly allowed, or continue with an independent local 2.0.0 product repair."
+}

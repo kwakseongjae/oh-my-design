@@ -1,0 +1,877 @@
+/* ==========================================================================
+   The Linden Quire — design system
+   --------------------------------------------------------------------------
+   Warm editorial language drawn from the shop photographs: walnut shelves,
+   paper dust-jackets, marble, terracotta spines, and one gold lamp.
+   Every page consumes these tokens and primitives. Do not invent one-off
+   type sizes or colors on a single page.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  --ink: #1c1410;
+  --ink-soft: #4a3b32;
+  --ink-mute: #6e5f54;
+  --paper: #f4eee6;
+  --paper-deep: #e8dfd2;
+  --paper-lift: #faf6f0;
+  --rule: #d3c6b6;
+  --rule-strong: #b8a894;
+  --walnut: #3a2618;
+  --walnut-deep: #24160e;
+  --terracotta: #8a4f34;
+  --gold: #b8956a;
+  --gold-ink: #6e4e28;
+  --olive: #5c5940;
+  --sage: #8a8772;
+  --cream: #f7f1e8;
+  --focus: #8a4f34;
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  --font-body: "Avenir Next", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --fs-kicker: 0.6875rem;
+  --fs-caption: 0.8125rem;
+  --fs-body: 1.0625rem;
+  --fs-lede: 1.25rem;
+  --fs-h3: 1.25rem;
+  --fs-h2: clamp(1.65rem, 2.4vw, 2.15rem);
+  --fs-h1: clamp(2.4rem, 6.2vw, 4.75rem);
+
+  --lh-display: 0.96;
+  --lh-body: 1.65;
+  --tracking-kicker: 0.16em;
+  --measure: 38rem;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 7rem;
+
+  --page: min(1120px, calc(100% - 2.5rem));
+  --gutter: clamp(1rem, 2vw, 1.5rem);
+  --radius: 2px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 180ms;
+  --dur-slow: 480ms;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--terracotta);
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure,
+blockquote {
+  margin: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   3. Typography primitives — identical on every page
+   -------------------------------------------------------------------------- */
+.kicker {
+  font-family: var(--font-body);
+  font-size: var(--fs-kicker);
+  font-weight: 600;
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  color: var(--terracotta);
+  line-height: 1.4;
+}
+
+h1,
+.display {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 400;
+  line-height: var(--lh-display);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-style: normal;
+}
+
+h1 em,
+.display em {
+  font-style: italic;
+  color: var(--walnut);
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
+.lede {
+  font-family: var(--font-display);
+  font-size: var(--fs-lede);
+  line-height: 1.45;
+  color: var(--ink-soft);
+  max-width: var(--measure);
+}
+
+p,
+.prose {
+  max-width: var(--measure);
+  color: var(--ink-soft);
+}
+
+.caption {
+  font-size: var(--fs-caption);
+  color: var(--ink-mute);
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+.folio {
+  font-family: var(--font-body);
+  font-size: var(--fs-kicker);
+  font-weight: 600;
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+/* --------------------------------------------------------------------------
+   4. Layout primitives
+   -------------------------------------------------------------------------- */
+.skip {
+  position: absolute;
+  left: var(--space-4);
+  top: -4rem;
+  z-index: 80;
+  background: var(--walnut);
+  color: var(--cream);
+  padding: var(--space-2) var(--space-4);
+}
+
+.skip:focus {
+  top: var(--space-4);
+  color: var(--cream);
+}
+
+.wrap {
+  width: var(--page);
+  margin-inline: auto;
+}
+
+.band {
+  padding-block: var(--space-8);
+}
+
+.band + .band {
+  border-top: 1px solid var(--rule);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.stack-tight {
+  gap: var(--space-3);
+}
+
+.stack-loose {
+  gap: var(--space-6);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.split {
+  display: grid;
+  gap: var(--space-6);
+}
+
+@media (min-width: 800px) {
+  .split {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+    align-items: start;
+  }
+
+  .split--uneven {
+    grid-template-columns: 5fr 7fr;
+  }
+
+  .split--invert {
+    grid-template-columns: 7fr 5fr;
+  }
+}
+
+.grid-cards {
+  display: grid;
+  gap: var(--space-6);
+}
+
+@media (min-width: 800px) {
+  .grid-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gutter);
+  }
+}
+
+.rule {
+  width: 3rem;
+  height: 1px;
+  background: var(--gold);
+  border: 0;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. Components
+   -------------------------------------------------------------------------- */
+
+/* Sample-content flag — used wherever fiction is presented as if live */
+.flag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-kicker);
+  font-weight: 600;
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  color: var(--olive);
+  border: 1px solid var(--rule-strong);
+  padding: 0.2rem 0.5rem;
+  background: var(--paper-lift);
+}
+
+/* Honest unpublished-info callout */
+.notice {
+  background: var(--paper-lift);
+  border-left: 3px solid var(--gold);
+  padding: var(--space-4) var(--space-5);
+  max-width: 36rem;
+}
+
+.notice p {
+  color: var(--ink);
+  max-width: none;
+}
+
+/* Primary action — identical on every page */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--walnut);
+  color: var(--cream);
+  padding: 0.9rem 1.35rem 0.85rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-kicker);
+  font-weight: 600;
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1;
+  border-radius: var(--radius);
+}
+
+.btn:hover {
+  color: var(--cream);
+  background: var(--walnut-deep);
+}
+
+.btn::after {
+  content: "→";
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 0;
+  transform: translateY(-0.05em);
+}
+
+.btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-kicker);
+  font-weight: 600;
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--walnut);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 0.15rem;
+}
+
+.btn-text:hover {
+  color: var(--terracotta);
+  border-bottom-color: var(--terracotta);
+}
+
+/* Masthead + site nav — same chrome on every page */
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  border-bottom: 1px solid var(--rule);
+  backdrop-filter: blur(12px);
+}
+
+.masthead.is-scrolled {
+  box-shadow: 0 1px 0 var(--rule);
+}
+
+.masthead__inner {
+  width: var(--page);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding-block: var(--space-4);
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.wordmark:hover {
+  color: var(--ink);
+}
+
+.wordmark__name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.wordmark__aside {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 0.2rem;
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--rule-strong);
+  background: var(--paper-lift);
+}
+
+.nav-toggle__bars {
+  display: block;
+  width: 1rem;
+  height: 1px;
+  background: var(--ink);
+  box-shadow: 0 -5px 0 var(--ink), 0 5px 0 var(--ink);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars {
+  box-shadow: none;
+  transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::after {
+  content: "";
+  display: block;
+  width: 1rem;
+  height: 1px;
+  background: var(--ink);
+  transform: rotate(-90deg);
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--space-5);
+}
+
+.site-nav a {
+  font-size: var(--fs-kicker);
+  font-weight: 600;
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-soft);
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid transparent;
+}
+
+.site-nav a:hover {
+  color: var(--ink);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--gold);
+}
+
+@media (max-width: 719px) {
+  .site-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--paper-lift);
+    border-bottom: 1px solid var(--rule);
+    padding: var(--space-4) 1.25rem var(--space-5);
+    display: none;
+  }
+
+  .site-nav.is-open {
+    display: block;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}
+
+@media (min-width: 720px) {
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* Media block */
+.media {
+  overflow: hidden;
+  background: var(--paper-deep);
+}
+
+.media img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.media--hero {
+  aspect-ratio: 1280 / 720;
+}
+
+.media--landscape {
+  aspect-ratio: 1248 / 832;
+}
+
+.media--portrait {
+  aspect-ratio: 864 / 1152;
+}
+
+.media figcaption {
+  padding-top: var(--space-3);
+}
+
+/* Event card */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  height: 100%;
+}
+
+.card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.card h3 a {
+  text-decoration: none;
+}
+
+.card h3 a:hover {
+  color: var(--terracotta);
+}
+
+/* Page intro */
+.intro {
+  padding-block: var(--space-8) var(--space-6);
+}
+
+.intro .display,
+.intro h1 {
+  max-width: 16ch;
+}
+
+.intro .lede {
+  margin-top: var(--space-5);
+}
+
+.intro .cluster {
+  margin-top: var(--space-6);
+}
+
+/* Footer — same on every page */
+.site-foot {
+  border-top: 1px solid var(--rule);
+  padding-block: var(--space-7) var(--space-6);
+  background: var(--walnut-deep);
+  color: var(--cream);
+}
+
+.site-foot a {
+  color: var(--cream);
+}
+
+.site-foot a:hover {
+  color: var(--gold);
+}
+
+.site-foot .wordmark__aside,
+.site-foot .caption,
+.site-foot .folio {
+  color: color-mix(in srgb, var(--cream) 62%, var(--gold));
+}
+
+.site-foot .site-nav a {
+  color: color-mix(in srgb, var(--cream) 78%, transparent);
+  border-bottom-color: transparent;
+}
+
+.site-foot .site-nav a[aria-current="page"] {
+  color: var(--cream);
+  border-bottom-color: var(--gold);
+}
+
+.site-foot__grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+@media (min-width: 800px) {
+  .site-foot__grid {
+    grid-template-columns: 2fr 1fr 1.4fr;
+    align-items: start;
+  }
+}
+
+.site-foot .site-nav {
+  position: static;
+  display: block;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+.site-foot .site-nav ul {
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Banner */
+.sample-banner {
+  background: var(--walnut);
+  color: var(--cream);
+  font-size: var(--fs-caption);
+  padding-block: 0.55rem;
+}
+
+.sample-banner p {
+  max-width: none;
+  color: inherit;
+}
+
+/* Detail meta row */
+.meta-row {
+  display: grid;
+  gap: var(--space-5);
+  padding-block: var(--space-5);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+@media (min-width: 720px) {
+  .meta-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.meta-row dt {
+  font-size: var(--fs-kicker);
+  font-weight: 600;
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: var(--space-2);
+}
+
+.meta-row dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  color: var(--ink);
+}
+
+/* Pull quote */
+.pull {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--walnut);
+  max-width: 22ch;
+}
+
+/* Numbered section label */
+.section-index {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--gold-ink);
+  letter-spacing: 0.08em;
+}
+
+/* --------------------------------------------------------------------------
+   6. Page compositions (still token-only)
+   -------------------------------------------------------------------------- */
+.hero-media {
+  margin-bottom: var(--space-8);
+}
+
+.shelf-pair {
+  display: grid;
+  gap: var(--space-5);
+}
+
+@media (min-width: 800px) {
+  .shelf-pair {
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: end;
+  }
+}
+
+.prose-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.prose-block p + p {
+  margin: 0;
+}
+
+.crumbs {
+  font-size: var(--fs-caption);
+  color: var(--ink-mute);
+  margin-bottom: var(--space-4);
+}
+
+.crumbs a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+
+.crumbs a:hover {
+  color: var(--terracotta);
+}
+
+.hours-list,
+.visit-facts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.hours-list li,
+.visit-facts li {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--rule);
+}
+
+/* --------------------------------------------------------------------------
+   7. Motion — only when the visitor has not asked to reduce it
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  a,
+  .btn,
+  .btn-text,
+  .site-nav a,
+  .nav-toggle,
+  .wordmark {
+    transition:
+      color var(--dur) var(--ease),
+      background-color var(--dur) var(--ease),
+      border-color var(--dur) var(--ease),
+      transform var(--dur) var(--ease);
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .media img {
+    transition: transform var(--dur-slow) var(--ease);
+  }
+
+  .card:hover .media img,
+  .media:hover img {
+    transform: scale(1.025);
+  }
+
+  .site-nav a[aria-current="page"] {
+    transition: border-color var(--dur) var(--ease);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .card:hover .media img,
+  .media:hover img {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. Print
+   -------------------------------------------------------------------------- */
+@media print {
+  .masthead,
+  .nav-toggle,
+  .sample-banner,
+  .skip {
+    position: static;
+  }
+
+  .btn {
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    background: none;
+  }
+
+  .site-foot {
+    background: none;
+    color: var(--ink);
+  }
+}

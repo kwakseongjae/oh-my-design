@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1",
+  "status": "gallery-ready",
+  "methodology_epoch": "deletion-owner-1.9.109-v1",
+  "source_root": "/tmp/u19108",
+  "public_gallery_root": "/tmp/u19109-public",
+  "private_reveal": "/tmp/u19109-private/reveal.json",
+  "reviewer_hash": "0ddec24fa9fa578d",
+  "families": 1,
+  "comparisons": 3,
+  "axes": 12,
+  "screenshots": 12,
+  "public_identity_leaks": 0,
+  "browser_harness": {
+    "desktop": {
+      "document_overflow_x": false,
+      "missing_images": 0
+    },
+    "mobile_390": {
+      "document_overflow_x": false,
+      "missing_images": 0
+    },
+    "incomplete_export_blocked": true,
+    "incomplete_export_status": "Complete every axis first."
+  },
+  "in_app_browser": {
+    "url": "http://127.0.0.1:4780/deletion-approval-v0.1/",
+    "visible": true,
+    "dom_contract": {
+      "comparison_sections": 3,
+      "axes_per_comparison": 4,
+      "choices_per_axis": 4
+    }
+  },
+  "next_required_input": "actual owner judgment export",
+  "synthetic_judgment_allowed": false
+}

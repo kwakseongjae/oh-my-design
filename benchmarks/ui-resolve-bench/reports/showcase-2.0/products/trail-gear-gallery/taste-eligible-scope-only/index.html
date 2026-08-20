@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Cairn - Trail gear locker (sample)</title>
+  <meta name="description" content="Sample trail-gear rental locker. Filter by job, open a card, and read an honest note: stock counts are not published.">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#locker">Skip to locker</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <span class="wordmark">Cairn</span>
+      <button type="button" class="theme-toggle" data-theme-toggle>Use dark</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="mast wrap" aria-labelledby="mast-title">
+      <div>
+        <h1 id="mast-title">Borrow the heavy kit</h1>
+        <p>Six sample pieces for weekend trips. Filter by job and open a card for details.</p>
+        <a class="btn" href="#locker">Browse kits</a>
+      </div>
+    </section>
+
+    <section class="locker wrap" id="locker" aria-labelledby="locker-title">
+      <div class="locker-head">
+        <h2 id="locker-title">The locker</h2>
+        <p class="status" id="filter-status" aria-live="polite">Showing 6 sample items</p>
+      </div>
+
+      <div class="locker-body">
+        <div class="filters" role="radiogroup" aria-label="Filter by category">
+          <button type="button" role="radio" aria-checked="true" data-filter="all">All</button>
+          <button type="button" role="radio" aria-checked="false" data-filter="shelter">Shelter</button>
+          <button type="button" role="radio" aria-checked="false" data-filter="carry">Carry</button>
+          <button type="button" role="radio" aria-checked="false" data-filter="camp">Camp</button>
+        </div>
+
+        <div class="locker-stage">
+          <div
+            class="gallery"
+            id="gallery"
+            role="listbox"
+            aria-label="Sample trail gear"
+            aria-multiselectable="false"
+          >
+          <article
+            class="card is-entering"
+            role="option"
+            tabindex="0"
+            id="card-tent"
+            data-id="tent"
+            data-category="shelter"
+            data-span="wide"
+            aria-selected="false"
+            aria-controls="item-detail"
+            style="--i: 0"
+          >
+            <div class="card-face">
+              <div class="card-media">
+                <img
+                  src="../assets/item-tent.jpg"
+                  width="1024"
+                  height="1024"
+                  alt="Olive two-person hiking tent with the door tied open, sample listing"
+                  decoding="async"
+                  fetchpriority="high"
+                >
+              </div>
+              <div class="card-body">
+                <p class="card-cat">Shelter</p>
+                <h3>Ridge Two</h3>
+                <p class="card-meta">Sample data</p>
+                <p class="card-stock">Stock not listed</p>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="card is-entering"
+            role="option"
+            tabindex="-1"
+            id="card-pack"
+            data-id="pack"
+            data-category="carry"
+            data-span="narrow"
+            aria-selected="false"
+            aria-controls="item-detail"
+            style="--i: 1"
+          >
+            <div class="card-face">
+              <div class="card-media">
+                <img
+                  src="../assets/item-pack.jpg"
+                  width="1024"
+                  height="1024"
+                  alt="Rust orange 45 liter hiking backpack standing upright, sample listing"
+                  decoding="async"
+                >
+              </div>
+              <div class="card-body">
+                <p class="card-cat">Carry</p>
+                <h3>Haul 45</h3>
+                <p class="card-meta">Sample data</p>
+                <p class="card-stock">Stock not listed</p>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="card is-entering"
+            role="option"
+            tabindex="-1"
+            id="card-stove"
+            data-id="stove"
+            data-category="camp"
+            data-span="narrow"
+            aria-selected="false"
+            aria-controls="item-detail"
+            style="--i: 2"
+          >
+            <div class="card-face">
+              <div class="card-media">
+                <img
+                  src="../assets/item-stove.jpg"
+                  width="1024"
+                  height="1024"
+                  alt="Small titanium camping stove with folded wire legs, sample listing"
+                  decoding="async"
+                  loading="lazy"
+                >
+              </div>
+              <div class="card-body">
+                <p class="card-cat">Camp</p>
+                <h3>Ember Can</h3>
+                <p class="card-meta">Sample data</p>
+                <p class="card-stock">Stock not listed</p>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="card is-entering"
+            role="option"
+            tabindex="-1"
+            id="card-poles"
+            data-id="poles"
+            data-category="carry"
+            data-span="wide"
+            aria-selected="false"
+            aria-controls="item-detail"
+            style="--i: 3"
+          >
+            <div class="card-face">
+              <div class="card-media">
+                <img
+                  src="../assets/item-poles.jpg"
+                  width="1024"
+                  height="1024"
+                  alt="Pair of collapsible trekking poles with foam grips, sample listing"
+                  decoding="async"
+                  loading="lazy"
+                >
+              </div>
+              <div class="card-body">
+                <p class="card-cat">Carry</p>
+                <h3>Switch Pair</h3>
+                <p class="card-meta">Sample data</p>
+                <p class="card-stock">Stock not listed</p>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="card is-entering"
+            role="option"
+            tabindex="-1"
+            id="card-lantern"
+            data-id="lantern"
+            data-category="camp"
+            data-span="half"
+            aria-selected="false"
+            aria-controls="item-detail"
+            style="--i: 4"
+          >
+            <div class="card-face">
+              <div class="card-media">
+                <img
+                  src="../assets/item-lantern.jpg"
+                  width="1024"
+                  height="1024"
+                  alt="Compact rechargeable camping lantern glowing on a grey studio sweep, sample listing"
+                  decoding="async"
+                  loading="lazy"
+                >
+              </div>
+              <div class="card-body">
+                <p class="card-cat">Camp</p>
+                <h3>Halo Mini</h3>
+                <p class="card-meta">Sample data</p>
+                <p class="card-stock">Stock not listed</p>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="card is-entering"
+            role="option"
+            tabindex="-1"
+            id="card-bag"
+            data-id="bag"
+            data-category="shelter"
+            data-span="half"
+            aria-selected="false"
+            aria-controls="item-detail"
+            style="--i: 5"
+          >
+            <div class="card-face">
+              <div class="card-media">
+                <img
+                  src="../assets/item-bag.jpg"
+                  width="1024"
+                  height="1024"
+                  alt="Rolled teal sleeping bag with black compression straps, sample listing"
+                  decoding="async"
+                  loading="lazy"
+                >
+              </div>
+              <div class="card-body">
+                <p class="card-cat">Shelter</p>
+                <h3>Tide Roll</h3>
+                <p class="card-meta">Sample data</p>
+                <p class="card-stock">Stock not listed</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="empty" id="empty-state" hidden>No sample items in this category.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog
+    class="detail"
+    id="item-detail"
+    aria-labelledby="detail-title"
+    aria-describedby="detail-availability"
+  >
+    <div class="detail-sheet" role="region" aria-labelledby="detail-title">
+      <div class="detail-bar">
+        <button type="button" class="detail-close" data-close>Close</button>
+      </div>
+      <div class="detail-media">
+        <img
+          id="detail-image"
+          src="../assets/item-tent.jpg"
+          width="1024"
+          height="1024"
+          alt=""
+        >
+      </div>
+      <div class="detail-body">
+        <p class="detail-kicker">Sample data</p>
+        <h2 id="detail-title">Ridge Two</h2>
+        <p class="detail-cat" id="detail-category">Shelter</p>
+        <p class="detail-copy" id="detail-copy">Two-person tent with a full fly and a vestibule for wet boots.</p>
+        <p class="detail-rate" id="detail-rate">$28 per weekend</p>
+        <p class="detail-rate-note">Sample price. Not a live rate.</p>
+        <section class="avail" aria-labelledby="avail-heading">
+          <h3 id="avail-heading">Availability</h3>
+          <p id="detail-availability">Rental stock counts are not published. Ask the locker if this piece can be held for your dates.</p>
+        </section>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Cairn trail locker. Sample catalog, not a live inventory.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

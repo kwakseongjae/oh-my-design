@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1",
+  "kind": "grok-build-cli-identity-preflight",
+  "pass": true,
+  "excluded_from_benchmark_denominator": true,
+  "source_commit": "9a6d22fab50ae18998b3782c5576e00f7e626125",
+  "generated_at": "2026-08-15T03:02:00Z",
+  "binary": {
+    "declared_path": "/Users/kwakseongjae/.grok/bin/grok",
+    "resolved_path": "/Users/kwakseongjae/.grok/downloads/grok-macos-aarch64",
+    "sha256": "09deaf06804955ff2d6ccef2042af4031c659c47fd16eb3c72664a8f533832da",
+    "is_symlink_to_regular_file": true,
+    "cli_version": "1.0.3"
+  },
+  "auth": {
+    "declared_path": "/Users/kwakseongjae/.grok/auth.json",
+    "sha256": "e193c65eb3825f6f2e5b38472a27c3b4e08c4402135839075cb41b387426100e"
+  },
+  "isolation": {
+    "proven": true,
+    "method": "HOME redirect with frozen auth.json and byte-gated models_cache.json",
+    "models_cache_volatile_fields": ["fetched_at", "etag"],
+    "global_skills_not_loaded": true,
+    "global_agents_md_not_loaded": true,
+    "global_mcp_not_loaded": true,
+    "smoke_validation": {
+      "smoke_01_exit_code": 0,
+      "smoke_01_infrastructure_invalid": false,
+      "smoke_01_wall_ms": 3176,
+      "smoke_02_exit_code": 0,
+      "smoke_02_infrastructure_invalid": false,
+      "smoke_02_wall_ms": 3934
+    }
+  },
+  "provider_calls": 0,
+  "model_calls": 0,
+  "network_calls": 0
+}

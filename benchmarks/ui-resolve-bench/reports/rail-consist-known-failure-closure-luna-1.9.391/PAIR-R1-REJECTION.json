@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.394",
+  "experiment_id": "rail-consist-known-failure-closure-luna-1.9.391",
+  "status": "REJECTED-MATHEMATICAL-EARLY-STOP",
+  "provider_calls": 2,
+  "completed_cells": 2,
+  "remaining_provider_calls": 0,
+  "control": {
+    "cell_id": "luna-rail-r1-control",
+    "run_status": "timed_out",
+    "validity": "valid",
+    "ui_resolved": false,
+    "objective_score": 75,
+    "objective_max": 85,
+    "wall_time_ms": 900014,
+    "provider_tokens": null,
+    "usage_disposition": "unavailable"
+  },
+  "candidate": {
+    "cell_id": "luna-rail-r1-candidate",
+    "run_status": "complete",
+    "validity": "valid",
+    "ui_resolved": false,
+    "objective_score": 81,
+    "objective_max": 85,
+    "wall_time_ms": 336121,
+    "provider_tokens": 760540,
+    "critical_gates": {
+      "task_contract": true,
+      "state_journey": true,
+      "responsive": false,
+      "accessibility": true,
+      "design_grounding": true,
+      "evidence_honesty": true
+    },
+    "closed_failures": ["horizontal-overflow", "identifier-fragmentation", "serious-color-contrast"],
+    "unresolved_failures": ["decision-evidence-short-atomic-wrap-at-320-and-200pct"],
+    "host_policy_gate": false,
+    "host_policy_reasons": ["installed-policy-delivery-incomplete", "installed-policy-browser-attempt-missing"],
+    "admission": {"disposition": "valid-system-failure", "reason": "installed-host-policy-rejected-system-output"}
+  },
+  "promotion_math": {
+    "candidate_ui_resolved_observed": 0,
+    "candidate_trials_observed": 1,
+    "candidate_trials_remaining": 2,
+    "maximum_possible_resolved_trials": 2,
+    "required_resolved_trials": 3,
+    "reachable": false
+  },
+  "artifact_sha256": {
+    "candidate_run_result": "8eeae0a0d55c7446a7b90e9f1347f4b2da05e2b3e9c6661e79143671343ff9ea",
+    "candidate_score": "b86439e587bbf15a6c752530b55b765d32e007f22ad76f8cd060a1ec360bd258",
+    "candidate_run_record": "84d3d6441a422300eecde19c4baba61a5949b3d86ad2026d7b7bc3252f43bb11",
+    "candidate_proof_trace": "81e4b39d454936922f430cb3963c7b90a52e7d15805904388de7dbbc5c83115d",
+    "candidate_host_policy_state": "94831f231cf742b508246360deea4b129a2cb269f57e514d013c7c6da780c447",
+    "candidate_reflow_closure": "49f2c4e0667675531b28f576bafdf80aa5cdb5f988f4a5667d8fbf9bbe5e8260",
+    "execution_state": "508228cba4c83f12d4b20b378785360af11bc32cd6bd7030ccfe83608ca1d50a"
+  },
+  "tokens_to_target": {
+    "observed_provider_tokens_minimum": 24629940,
+    "usage_unavailable_cells": 5,
+    "disposition": "right-censored"
+  },
+  "frozen_roots": ["/private/tmp/u19391", "/private/tmp/u19391-vendors"],
+  "next": "Repair the runtime contract so a known-failure closure cannot be finalized or delivered while any registered measured row remains unresolved; then exact-pin and use another fresh unseen holdout."
+}

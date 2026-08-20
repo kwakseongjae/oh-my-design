@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.384",
+  "experiment_id": "cold-chain-compact-artifact-luna-shared-socket-1.9.382",
+  "cell_id": "luna-coldchain-r1-control",
+  "status": "valid-checkpoint",
+  "validity": "valid",
+  "run_status": "complete",
+  "ui_resolved": true,
+  "objective": {
+    "score": 85,
+    "max": 85,
+    "task_contract": 25,
+    "design_grounding": 20,
+    "state_journey": 15,
+    "responsive": 10,
+    "accessibility": 10,
+    "evidence_honesty": 5,
+    "all_critical_gates": true
+  },
+  "provider": {
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "wall_time_ms": 564375,
+    "input_tokens": 1532429,
+    "cached_input_tokens": 1431808,
+    "output_tokens": 29198,
+    "reasoning_output_tokens": 9111,
+    "accounted_total_tokens": 1561627
+  },
+  "proof": {
+    "proof_execution_gate": true,
+    "host_policy_gate": true,
+    "browser_attempts": 1,
+    "browser_recovery_count": 0,
+    "delivery_ready_state_files": 1,
+    "delivery_blocked_state_files": 0,
+    "unblocked_violations": 0,
+    "agent_browser_attempt_outcome": "unresolved-module-not-found",
+    "independent_evaluator": "passed-desktop-390-320-200pct-behavior-accessibility"
+  },
+  "evidence_sha256": {
+    "execution_state": "9b3f89d416d8453de4ce8a3b353b1196aa0937537f0c2150d29838a487235c7b",
+    "run_result": "ca7679fb9449b4902a89b286c9795919524aa7ea28c5548c25a73e295e2708df",
+    "score": "5363ddb884e609a2554389767bcb2642d791df74099839f24b1e0363a08931fb",
+    "run_record": "b351e3faadd91d3eec689bd5e99b93b58940dce62132bb243519dc7ebd6fff8b",
+    "proof_trace": "2b22f07f355f80f65822464d9f11c882d285e1461181d0c6a2aac41b1ddcd3db",
+    "host_policy_state": "6e6de65a37b91b87327440d9e4e0bef61b910869a54be119c8eab30f746d3239"
+  },
+  "retry": false,
+  "next": "After the fixed 120-second pacing boundary, run only luna-coldchain-r1-compact from the same frozen matrix root."
+}

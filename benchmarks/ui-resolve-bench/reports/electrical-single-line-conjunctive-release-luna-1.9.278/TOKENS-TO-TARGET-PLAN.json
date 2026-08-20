@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1",
+  "goal_id": "omd-2.0.0-frontier-gates-from-1.9.278",
+  "measurement_start_patch": "1.9.278",
+  "attempt_unit": "bounded-patch-experiment",
+  "first_attempt": {
+    "order": 1,
+    "patch_version": "1.9.278",
+    "experiment_id": "electrical-single-line-conjunctive-release-luna-1.9.278"
+  },
+  "target_contract": "All nine gates in RELEASE-TRAIN.md section '2.0.0 frontier gates' pass without changing their normative definitions.",
+  "frontier_gate_count": 9,
+  "accounting": {
+    "candidate_tokens": "all scheduled candidate provider tokens through first full pass",
+    "total_experimental_tokens": "all candidate and control provider tokens, including timed-out and invalid scheduled runs, through first full pass",
+    "post_target_attempts": "excluded",
+    "unmet_goal": "right-censored",
+    "missing_component_telemetry": "not-reported-not-zero",
+    "cross_provider_pooling": "forbidden"
+  },
+  "historical_backfill": "retrospective-only-not-primary"
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.1",
+  "status": "accepted",
+  "provider_generation": 0,
+  "execution_contract": {
+    "runtime": "cursor-agent",
+    "model": "cursor-grok-4.5-high",
+    "timeout_ms": 300000,
+    "pacing_ms": 30000,
+    "global_concurrency": 1,
+    "max_new_invocations": 1,
+    "retry": false,
+    "fallback": false,
+    "response_repair": false,
+    "model_substitution": false
+  },
+  "validation": {
+    "focused_tests_passed": 9,
+    "focused_tests_total": 9,
+    "node_syntax": "pass",
+    "typescript": "pass",
+    "build": "pass"
+  },
+  "claim_boundary": {
+    "live_judgments": 0,
+    "public_model_attribution": false,
+    "automated_judges_count_as_practitioners": false
+  },
+  "next_action": "Commit the accepted runner, then open the fixed 54-invocation Grok root one checkpoint at a time and freeze at the first failure."
+}

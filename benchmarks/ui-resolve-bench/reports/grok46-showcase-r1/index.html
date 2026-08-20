@@ -1,0 +1,81 @@
+<!-- grok46 showcase r1 -->
+<meta charset="utf-8"><title>grok-4.6 UI Skill Showdown — r1</title>
+<style>
+body{font:15px/1.6 -apple-system,sans-serif;margin:2rem;max-width:1400px}
+table{border-collapse:collapse;margin:1rem 0}td,th{border:1px solid #ccc;padding:.4rem .8rem;text-align:center}
+td:first-child{text-align:left}.top{background:#e6f4ea;font-weight:700}
+.strip{display:flex;gap:12px;overflow-x:auto;padding:8px 0}
+figure{margin:0;flex:0 0 300px}figcaption{font-size:.85rem;margin-bottom:4px}
+img{width:300px;border:1px solid #ddd;border-radius:6px}
+.noshot{width:300px;height:180px;display:flex;align-items:center;justify-content:center;background:#f5f5f5;border:1px dashed #bbb;border-radius:6px;color:#888;text-align:center;font-size:.85rem}
+.diff{background:#f0f7ff;border:1px solid #cde;border-radius:8px;padding:1rem 1.4rem;margin:1.5rem 0}
+code{background:#eef;padding:1px 5px;border-radius:4px}
+</style>
+<h1>같은 프롬프트, 7개 스킬 — grok-4.6 r1 쇼다운</h1>
+<p>epoch <code>89e145bc</code> · 셀당 1회 · retry 0 · 1200초 예산 · 결정적 채점기(반응형·접근성·여정·정직성·런타임) · 전 셀 SHA 봉인.
+Hallmark는 경쟁자 동결 이후 등장한 스킬로 동일 조건 보충 등록으로 실행(공개 시 명시).</p>
+<h2>객관 점수 매트릭스</h2>
+<table><tr><th>skill \ task</th><th>도서관 랜딩</th><th>콜드체인 운영</th><th>클리닉 로케일</th></tr><tr><td>Model only</td><td class="">0</td><td class="">0</td><td class="">0</td></tr><tr><td>Anthropic Frontend Design</td><td class="">0</td><td class="">0</td><td class="">0</td></tr><tr><td>Impeccable</td><td class="">0 (timeout)</td><td class="">0</td><td class="">0 (timeout)</td></tr><tr><td>UI UX Pro Max</td><td class="top">50</td><td class="top">100</td><td class="">0</td></tr><tr><td>Taste</td><td class="">30</td><td class="">ineligible</td><td class="">ineligible</td></tr><tr><td>OmD Autopilot</td><td class="top">50</td><td class="">0</td><td class="">0</td></tr><tr><td>Hallmark (보충)</td><td class="top">60</td><td class="">0</td><td class="">0</td></tr></table>
+<div class="diff">
+<h2 style="margin-top:0">OmD만 남긴 것 — "UI 한 장"과 "디자인 하네스"의 차이</h2>
+<ul>
+<li><b>정식 adopted 디자인 시스템</b>: DESIGN.md 11,092B + Core v2 아티팩트 5종(graph/provenance/coverage/manifest/adoption-receipt) — <a href="omd-DESIGN-task1.md">DESIGN.md 보기</a>. 다른 6개 스킬의 산출물은 HTML 파일이 전부다.</li>
+<li><b>기계 검증 가능한 상태 계약</b>: <code>default</code> <code>disabled</code> <code>empty</code> <code>error</code> <code>loading</code> <code>success</code> <code>unavailable-information</code> — 경쟁 스킬 전부가 밤새 놓친 <code>unavailable-information</code>(모르는 정보의 정직한 표시) 포함.</li>
+<li><b>CTA 계약</b>: 주 행동 버튼 정확히 1개(<code>data-cta="primary"</code>) + 제출 1개 — model-only는 같은 버튼을 11번 복제해 여정 검사에서 죽었다.</li>
+<li><b>외부 권한 컨트롤러</b>: 디자인 시스템의 컴파일·검토·채택이 에이전트가 아닌 격리된 컨트롤러의 서명으로만 이뤄진다(activation 감사 PASS).</li>
+</ul>
+</div>
+<h2>과제 1 · 동네 공구 도서관 랜딩</h2><div class="strip"><figure><figcaption><b>Model only</b> · 0점</figcaption><img src="img/neighborhood-library-landing--model-only.png" loading="lazy" alt="Model only"></figure><figure><figcaption><b>Anthropic Frontend Design</b> · 0점</figcaption><img src="img/neighborhood-library-landing--anthropic-frontend-design.png" loading="lazy" alt="Anthropic Frontend Design"></figure><figure><figcaption><b>Impeccable</b> · 0 (timeout)점</figcaption><div class="noshot">스크린샷 없음<br><small>(timeout / 상태 미달로 캡처 전 종료)</small></div></figure><figure><figcaption><b>UI UX Pro Max</b> · 50점</figcaption><img src="img/neighborhood-library-landing--ui-ux-pro-max.png" loading="lazy" alt="UI UX Pro Max"></figure><figure><figcaption><b>Taste</b> · 30점</figcaption><img src="img/neighborhood-library-landing--taste-eligible-scope-only.png" loading="lazy" alt="Taste"></figure><figure><figcaption><b>OmD Autopilot</b> · 50점</figcaption><img src="img/neighborhood-library-landing--omd-autopilot-v2.png" loading="lazy" alt="OmD Autopilot"></figure><figure><figcaption><b>Hallmark (보충)</b> · 60점</figcaption><img src="img/neighborhood-library-landing--hallmark.png" loading="lazy" alt="Hallmark (보충)"></figure></div><h2>과제 2 · 콜드체인 운영 대시보드</h2><div class="strip"><figure><figcaption><b>Model only</b> · 0점</figcaption><img src="img/cold-chain-operations--model-only.png" loading="lazy" alt="Model only"></figure><figure><figcaption><b>Anthropic Frontend Design</b> · 0점</figcaption><img src="img/cold-chain-operations--anthropic-frontend-design.png" loading="lazy" alt="Anthropic Frontend Design"></figure><figure><figcaption><b>Impeccable</b> · 0점</figcaption><div class="noshot">스크린샷 없음<br><small>(timeout / 상태 미달로 캡처 전 종료)</small></div></figure><figure><figcaption><b>UI UX Pro Max</b> · 100점</figcaption><img src="img/cold-chain-operations--ui-ux-pro-max.png" loading="lazy" alt="UI UX Pro Max"></figure><figure><figcaption><b>Taste</b> · ineligible점</figcaption><div class="noshot">스크린샷 없음<br><small>(timeout / 상태 미달로 캡처 전 종료)</small></div></figure><figure><figcaption><b>OmD Autopilot</b> · 0점</figcaption><img src="img/cold-chain-operations--omd-autopilot-v2.png" loading="lazy" alt="OmD Autopilot"></figure><figure><figcaption><b>Hallmark (보충)</b> · 0점</figcaption><img src="img/cold-chain-operations--hallmark.png" loading="lazy" alt="Hallmark (보충)"></figure></div><h2>과제 3 · 클리닉 방문 준비 (5개 로케일)</h2><div class="strip"><figure><figcaption><b>Model only</b> · 0점</figcaption><img src="img/clinic-visit-prep-locales--model-only.png" loading="lazy" alt="Model only"></figure><figure><figcaption><b>Anthropic Frontend Design</b> · 0점</figcaption><img src="img/clinic-visit-prep-locales--anthropic-frontend-design.png" loading="lazy" alt="Anthropic Frontend Design"></figure><figure><figcaption><b>Impeccable</b> · 0 (timeout)점</figcaption><div class="noshot">스크린샷 없음<br><small>(timeout / 상태 미달로 캡처 전 종료)</small></div></figure><figure><figcaption><b>UI UX Pro Max</b> · 0점</figcaption><img src="img/clinic-visit-prep-locales--ui-ux-pro-max.png" loading="lazy" alt="UI UX Pro Max"></figure><figure><figcaption><b>Taste</b> · ineligible점</figcaption><div class="noshot">스크린샷 없음<br><small>(timeout / 상태 미달로 캡처 전 종료)</small></div></figure><figure><figcaption><b>OmD Autopilot</b> · 0점</figcaption><div class="noshot">스크린샷 없음<br><small>(timeout / 상태 미달로 캡처 전 종료)</small></div></figure><figure><figcaption><b>Hallmark (보충)</b> · 0점</figcaption><img src="img/clinic-visit-prep-locales--hallmark.png" loading="lazy" alt="Hallmark (보충)"></figure></div>
+<h2 style="margin-top:3rem;border-top:3px solid #333;padding-top:1.5rem">Epoch 8 — OmD v2.4 dry-check, 풀 매트릭스 3-trial (48셀)</h2>
+<p>epoch <code>8edf400a</code> · OmD v2.4는 activation을 소모하지 않는 <b>컨트롤러 dry-check</b>(무제한 전제조건 검증)를 도입.
+결과: <b>컨트롤러 파이프라인 9/9 성공, activation 낭비 0</b> (v2.4 이전 4개 epoch 통산 ~1/3). 5 arm × 3 과제 × 3 trial 전 셀 SHA 봉인.</p>
+<h3>랜딩 과제 3-trial 점수 (과제 2·3은 전 arm·전 trial 0)</h3>
+<table>
+<tr><th>arm</th><th>r1</th><th>r2</th><th>r3</th><th>평균</th></tr>
+<tr class="top"><td>OmD Autopilot v2.4</td><td>80</td><td><b>100 · 완전해결</b></td><td>60</td><td><b>80.0</b></td></tr>
+<tr><td>UI UX Pro Max</td><td>60</td><td>0</td><td>70</td><td>43.3</td></tr>
+<tr><td>Taste</td><td>70</td><td>0</td><td>0</td><td>23.3</td></tr>
+<tr><td>Model only</td><td>0</td><td>30</td><td>0</td><td>10.0</td></tr>
+<tr><td>Anthropic Frontend Design</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>Impeccable</td><td colspan="3">9/9 타임아웃 (전 셀)</td><td>0</td></tr>
+</table>
+<p><b>랩 최초 기록 3개:</b> OmD 단독 승리(r1 80), OmD 만점+ui_resolved 완전해결(r2 100 — 랩 통틀어 처음), 웨이브 게이트 생존(r1·r2 연속).
+<b>정직한 최종 판정:</b> r3에서 OmD 60 &lt; Pro Max 70 짝패배 1회가 나왔고, 사전등록 규칙(무패 요구)에 따라 릴리스 게이트는 폐쇄. 규칙은 재해석하지 않는다.</p>
+<h3>OmD r2 만점 셀 — 디자인 시스템이 만든 화면</h3>
+<div class="strip">
+<figure><figcaption><b>default</b> · desktop 1440</figcaption><img src="img/e8/omd-r2-landing-default--desktop-1440.png" loading="lazy" alt="OmD r2 default desktop"></figure>
+<figure><figcaption><b>default</b> · mobile 390</figcaption><img src="img/e8/omd-r2-landing-default--mobile-390.png" loading="lazy" alt="OmD r2 default mobile"></figure>
+<figure><figcaption><b>focus-visible</b> 상태</figcaption><img src="img/e8/omd-r2-landing-focus-visible--desktop-1440.png" loading="lazy" alt="OmD r2 focus-visible"></figure>
+<figure><figcaption><b>unavailable-information</b> 상태 — 경쟁 arm 전멸 지점</figcaption><img src="img/e8/omd-r2-landing-unavailable-information--desktop-1440.png" loading="lazy" alt="OmD r2 unavailable-information"></figure>
+</div>
+<p>이 셀은 adopted <a href="omd-DESIGN-e8-landing-r2.md">DESIGN.md Core v2</a>에서 토큰·상태 계약을 받아 빌드됐다.
+경쟁자들이 반복해서 죽은 <code>unavailable-information</code> 상태를 OmD는 시스템 계약의 필수 상태로 받아 구현했다 — 이것이 "UI 한 장"과 "디자인 하네스"의 차이다.</p>
+<h2 style="margin-top:3rem;border-top:3px solid #1a7f37;padding-top:1.5rem">Epoch 9 — 패치 5 (여정 계약), 릴리스 게이트 통과 ★</h2>
+<p>epoch <code>a59d048c</code> · autopilot 패치 5는 브리프의 여정 동사를 도달 가능한 상태 계약으로 구현하는 규범(aria 의미론 동시성 · main/h1 불변식 · 320/390/1440 반응형 · 명명된 정직 부재 문장 · SELF-WALK)을 추가.
+<b>결과: OmD 9 trial 3승 6무 0패 — 사전등록 무패 게이트 통과.</b> 파이프라인 통산 19/19.</p>
+<h3>랜딩 과제 3-trial (과제 2·3은 전 trial 전 arm 0 동점)</h3>
+<table>
+<tr><th>arm</th><th>r1</th><th>r2</th><th>r3</th><th>평균</th></tr>
+<tr class="top"><td>OmD Autopilot 패치5</td><td><b>100 · 완전해결</b></td><td><b>100 · 완전해결</b></td><td><b>70</b></td><td><b>90.0</b></td></tr>
+<tr><td>UI UX Pro Max</td><td>50</td><td>50</td><td>60</td><td>53.3</td></tr>
+<tr><td>Anthropic Frontend Design</td><td>50</td><td>40</td><td>30</td><td>40.0</td></tr>
+<tr><td>Model only</td><td>70</td><td>30</td><td>0</td><td>33.3</td></tr>
+<tr><td>Taste</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>Impeccable</td><td colspan="3">3/3 타임아웃 (랩 통산 18/18)</td><td>0</td></tr>
+</table>
+<p>e8 게이트를 닫았던 r3 매치업(vs Pro Max)을 <b>70 &gt; 60</b>으로 설욕 — 3 trial 전승.
+게이트 밖 진전: cold-chain에서 사상 최초 3/4 상태 도달(r1), clinic에서 locale-selected 최초 통과(2/3 trial) — 전 arm 0 지대의 균열은 전부 OmD가 냈다.</p>
+<div class="strip">
+<figure><figcaption><b>e9 r1 만점 셀</b> · default desktop</figcaption><img src="img/e9/omd-r1-landing-default--desktop-1440.png" loading="lazy" alt="e9 OmD default"></figure>
+<figure><figcaption>default · mobile 390</figcaption><img src="img/e9/omd-r1-landing-default--mobile-390.png" loading="lazy" alt="e9 OmD mobile"></figure>
+<figure><figcaption>unavailable-information 상태</figcaption><img src="img/e9/omd-r1-landing-unavailable-information--desktop-1440.png" loading="lazy" alt="e9 OmD unavailable"></figure>
+</div>
+<p>adopted <a href="omd-DESIGN-e9-landing-r1.md">DESIGN.md Core v2 (e9 r1)</a> · 전 셀 SHA 봉인, 판정 근거는 EXECUTION-RECORDS.final(sha 7053ec25…).</p>
+<h2>정직한 결론</h2>
+<ul>
+<li><b>[e6]</b> 과제 1(랜딩): Hallmark 60 &gt; OmD 50 = Pro Max 50 &gt; Taste 30 — OmD는 최강 경쟁자와 동점이면서 유일하게 시스템 아티팩트를 남겼다. Hallmark의 우세는 실측으로 인정.</li>
+<li><b>[e6]</b> 과제 2(운영): Pro Max가 유일한 100. OmD·Hallmark 포함 전원이 과제 고유 상태(selected/assigned)에서 죽었다 — OmD v2.3 패치 방향 확정.</li>
+<li><b>[e8]</b> 랜딩 3-trial 평균 OmD 80 vs 차점 43.3 — dry-check가 파이프라인 변동성을 제거하자 우위가 재현 가능해졌다. 단 r3 단판 60&lt;70으로 무패 게이트는 닫혔고, 그 패인(responsive·evidence_honesty 세대 편차)은 v2.5 백로그로.</li>
+<li><b>[공통]</b> 운영·로케일 과제의 과제 고유 상태(selected/filtered/in-progress)는 e8에서도 전 arm 30/30 실패 — 현 세대 스킬 전체의 미해결 영역.</li>
+<li>이 페이지의 모든 수치는 사전 등록된 규칙과 SHA 봉인 기록에서 나왔다. 실패도 그대로 실었다.</li>
+</ul>

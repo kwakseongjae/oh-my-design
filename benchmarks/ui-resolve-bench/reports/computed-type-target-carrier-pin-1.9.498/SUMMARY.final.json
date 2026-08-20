@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.498",
+  "experiment_id": "computed-type-target-carrier-pin-1.9.498",
+  "status": "EXACT_CANDIDATE_PINNED",
+  "provider_calls": 0,
+  "promotion": false,
+  "candidate": {
+    "id": "omd-computed-type-target-carrier-candidate",
+    "vendor_dir": "omd-1.9.497",
+    "commit": "14ed77650e7353e4f98dcb105660266102c01abc",
+    "skill_tree": "c8ebc909dcf25a1f4b2bd65fe112f7780b94d8da"
+  },
+  "source_sha256": {
+    "skill": "9f2eede6da0eb09cf91b29a614223ba212664763b908c1dd49c57a9e8ad87db9",
+    "browser_runner": "bbd1b2629037381873d230ce15c07a1b97275fc04ab327e51f0d6df1d4b309b3",
+    "artifact_helper": "4dff72e5034465a780f5a33f4823aee061934401b0d0006622c9d8335711ea67"
+  },
+  "next": "Lock another genuinely unseen task before exact control-versus-candidate transfer."
+}

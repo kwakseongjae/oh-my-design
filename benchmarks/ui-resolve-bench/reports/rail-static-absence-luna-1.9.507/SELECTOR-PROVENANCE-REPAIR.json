@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.511",
+  "experiment_id": "rail-static-absence-luna-1.9.507",
+  "provider_calls": 0,
+  "repair_scope": "proof-contract-only",
+  "root_cause": {
+    "row_group": "form-save",
+    "selector": ".event-log-form button",
+    "missing_pre_edit_anchor": "class:event-log-form",
+    "post_edit_only_anchor": true,
+    "actual_typography_delta_proven": false
+  },
+  "changes": [
+    "lock rejects snapshot-backed tag-only selectors",
+    "lock rejects snapshot-backed selector anchors absent from the snapshotted product",
+    "proof evaluation reports reflow-pre-edit-selector-unresolved separately from reflow-locked-typography-changed",
+    "lock stdout explains selector provenance semantics"
+  ],
+  "frozen_artifact_regression": {
+    "lock_result": "rejected-before-product-edit",
+    "proof_reasons_before": ["reflow-locked-typography-changed", "reflow-artifact-not-closed"],
+    "proof_reasons_after": ["reflow-pre-edit-selector-unresolved", "reflow-artifact-not-closed"]
+  },
+  "validation": {
+    "focused_tests": {"passed": 55, "failed": 0},
+    "typescript": "passed",
+    "provider_replay": "not_run_frozen_matrix"
+  },
+  "promotion": false,
+  "next": "Pin the provider-free repair immutably, then transfer it against another genuinely unseen task under a new preregistration."
+}

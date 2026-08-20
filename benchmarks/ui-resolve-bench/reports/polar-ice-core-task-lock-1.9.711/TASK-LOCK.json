@@ -1,0 +1,13 @@
+{
+  "schema_version": "0.1",
+  "task_id": "polar-ice-core-vial-custody-v0.1",
+  "status": "LOCKED_PROVIDER_ZERO",
+  "task_source_commit": "2a3749adf91f8d0bb0834aaf96acc718cd756cf7",
+  "task_git_tree": "22c265007835253a840541156c102357e87bcb05",
+  "prompt_sha256": "03f42a257de75b6a61665aaeb05fabde784014e53a3df9dd987ca3a346f84117",
+  "task_contract_sha256": "7b86f5395150325adf0db79e877e4a2791766119ac12d7dc3df09b075db1d6cc",
+  "design_sha256": "4e52adeeb3b2bdc91697d4dae7e0cf6e16b837e6b36cb89d1d5fb039bc7144f0",
+  "starter_index_sha256": "9c3385ac540d3b12b74ed35cf00784d91af00955f06941d3fd15429c41543fcc",
+  "provider_calls": 0,
+  "model_exposures": 0
+}

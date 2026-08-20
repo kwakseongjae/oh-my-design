@@ -1,0 +1,118 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.653",
+  "experiment_id": "frozen-plan-diagnostic-replay-1.9.653",
+  "status": "PROVIDER_ZERO_FROZEN_PLAN_REPLAY_ACCEPTED",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "mutation_allowed": false,
+  "recovery_contract": {
+    "source": "canonical task starter whose sha256 equals pre_edit_product_snapshot.sha256",
+    "measured_plan_required": true,
+    "measured_plan_attempts_required": 1,
+    "current_mutated_product_used_for_diagnosis": false,
+    "artifact_mutation": false
+  },
+  "selected_frozen_matrices": {
+    "roots": [
+      "/private/tmp/u19601",
+      "/private/tmp/u19611",
+      "/private/tmp/u19620",
+      "/private/tmp/u19629",
+      "/private/tmp/u19638"
+    ],
+    "artifacts": 10,
+    "counts": {
+      "ready": 6,
+      "irreconcilable": 3,
+      "not-diagnosable": 1,
+      "patch-required": 0
+    },
+    "all_snapshot_hashes_match_canonical_starters": true,
+    "all_current_products_changed_after_snapshot": true
+  },
+  "outcomes": [
+    {
+      "cell_id": "luna-backup-r1-candidate",
+      "artifact_sha256": "b15c26d0c347c4fe20af485607e9e83e09c255ce5761386fbee0e4782a302323",
+      "diagnosis": "ready"
+    },
+    {
+      "cell_id": "luna-backup-r1-control",
+      "artifact_sha256": "ffffac356601363240f940795674a4eeb51903f9df5d30aa610677fb12608073",
+      "diagnosis": "ready"
+    },
+    {
+      "cell_id": "luna-museum-r1-candidate",
+      "artifact_sha256": "d51201774afd01ef4e0ae14744f3e6ded57b44ac51514412e5ac040cd4e12404",
+      "diagnosis": "ready"
+    },
+    {
+      "cell_id": "luna-museum-r1-control",
+      "artifact_sha256": "066ea93cd19b8e01ca173e6e364eb1f713b5be2d06c0f043bc0a618729aca610",
+      "diagnosis": "ready"
+    },
+    {
+      "cell_id": "luna-runway-r1-candidate",
+      "artifact_sha256": "f2918d7a353b22de4e8d4f4b06ab4705a233ba1ddfd519a821f8bc28477e19eb",
+      "diagnosis": "not-diagnosable",
+      "reason": "one-persisted-measured-plan-required"
+    },
+    {
+      "cell_id": "luna-runway-r1-control",
+      "artifact_sha256": "6d342fd1c6d803e92ebc586ea903874973e7f7ecf98729839708125a5b07591d",
+      "diagnosis": "ready"
+    },
+    {
+      "cell_id": "luna-rail-r1-candidate",
+      "artifact_sha256": "3669616d89ac1a9c4850201c19223cf44e02137a9f39f321e33382f2470b6f28",
+      "diagnosis": "irreconcilable",
+      "issue_codes": [
+        "measured-id-set-mismatch",
+        "measured-id-set-mismatch"
+      ]
+    },
+    {
+      "cell_id": "luna-rail-r1-control",
+      "artifact_sha256": "af7bab63972cea142d67e77c3f3cf8492c9b7012d236c7e2ac6e4887a41c8dd0",
+      "diagnosis": "ready"
+    },
+    {
+      "cell_id": "luna-cold-r1-candidate",
+      "artifact_sha256": "240f184cd911755318ae0814b4e387f0231639ccc880f82e439bc865d0113284",
+      "diagnosis": "irreconcilable",
+      "issue_codes": [
+        "nested-registered-carrier"
+      ],
+      "compatible_patch_row_ids": [
+        "assessor-note-control"
+      ]
+    },
+    {
+      "cell_id": "luna-cold-r1-control",
+      "artifact_sha256": "fac55377826b77b7b79aa9e631d3df19c8825510cd55a53f061d0a9e05073c0f",
+      "diagnosis": "irreconcilable",
+      "issue_codes": [
+        "nested-registered-carrier"
+      ]
+    }
+  ],
+  "broader_local_scan": {
+    "prefix": "/private/tmp/u19*",
+    "artifacts_replayed": 90,
+    "counts": {
+      "source-not-recoverable": 52,
+      "not-diagnosable": 15,
+      "irreconcilable": 6,
+      "ready": 17,
+      "patch-required": 0
+    }
+  },
+  "patch_required_coverage": {
+    "historical_observation": "not observed in the recoverable frozen sample",
+    "deterministic_unit_fixture": "covered by diagnosePlanReconcile complete multi-row patch test",
+    "synthetic_history_claimed": false
+  },
+  "claim_boundary": "This is a provider-free replay of local frozen artifacts. It validates deterministic classification and recovery boundaries; it does not establish candidate transfer, quality lift, or competitor behavior.",
+  "next": "Convert diagnostic output into a fail-closed operator decision packet, then test that one packet can be applied without another browser measurement or model guess."
+}

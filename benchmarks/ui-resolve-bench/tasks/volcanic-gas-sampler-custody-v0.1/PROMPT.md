@@ -1,0 +1,5 @@
+Improve the supplied volcanic gas-sampler custody review so field technicians can inspect sampler-to-sample-canister assignments, lab-bay intake windows, and the custody decision confidently on desktop and narrow screens.
+
+Preserve all five sampler identifiers, all seven sample-canister identifiers and their exact sampler assignments, all four supplied intake windows, the three review views, the technician-note toggle, the custody-review form, and all stated summary evidence. Do not invent gas-composition verification, sample completeness, sampler calibration, site safety clearance, sample-canister integrity, transfer acceptance, archive publication, or chain-of-custody closure. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The sampler register, separate intake-window strip, and separate custody decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.

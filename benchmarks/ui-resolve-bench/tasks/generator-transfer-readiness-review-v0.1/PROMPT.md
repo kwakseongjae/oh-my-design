@@ -1,0 +1,5 @@
+Improve the supplied emergency-generator transfer review so facilities coordinators can inspect feeder-to-load assignments, generator availability windows, and the transfer handoff confidently on desktop and narrow screens.
+
+Preserve all six feeder identifiers, all eight load identifiers and their exact feeder assignments, all four supplied generator windows, the three review views, the draft-note toggle, the transfer-review form, and all stated summary evidence. Do not invent breaker closure, generator synchronization, load transfer, power restoration, electrical safety, facility clearance, or incident outcomes. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The feeder map, separate generator-window strip, and separate transfer handoff are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.

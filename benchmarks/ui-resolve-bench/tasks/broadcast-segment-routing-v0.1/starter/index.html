@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cueboard segment routing</title>
+  <style>
+    :root { --page:#E9EEF0;--surface:#FBFCFC;--ink:#172126;--muted:#5E6A70;--line:#B9C3C7;--route:#174F5C;--attention:#A44632;--s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:22px;--s6:30px;--s7:44px;--s8:64px;--fast:120ms ease-out;--standard:180ms ease-out; }
+    * { box-sizing: border-box; }
+    body { margin:0;background:var(--page);color:var(--ink);font:16px/25px Arial,Helvetica,sans-serif; }
+    nav,footer { display:flex;justify-content:space-between;gap:var(--s4);padding:var(--s5) var(--s7);border-bottom:1px solid var(--line); }
+    footer { border-top:1px solid var(--line);border-bottom:0;color:var(--muted); }
+    main { width:min(1120px,calc(100% - 40px));margin:var(--s7) auto; }
+    .sheet { overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:3px; }
+    .hero,.section,.review { padding:var(--s6); }
+    .hero { border-bottom:1px solid var(--line); }
+    .eyebrow,dt,label { font:700 12px/17px Arial,Helvetica,sans-serif;letter-spacing:.04em;text-transform:uppercase; }
+    .eyebrow,dt { color:var(--muted); }
+    h1,h2 { margin:0;font-family:Georgia,serif;font-weight:400; }
+    h1 { margin-top:var(--s3);font-size:46px;line-height:51px; }
+    h2 { margin-bottom:var(--s5);font-size:26px;line-height:31px; }
+    p { margin:var(--s3) 0 0; }
+    .target { font-weight:700; }
+    .evidence { color:var(--muted); }
+    .segments { border-bottom:1px solid var(--line); }
+    .segment-row { display:flex;padding:var(--s5) var(--s6);border-top:1px solid var(--line); }
+    .segment-row:first-child { border-top:0; }
+    .segment-row > dl { margin:0;min-width:0; }
+    .segment-row > dl:nth-child(1) { width:29%; }
+    .segment-row > dl:nth-child(2) { width:31%; }
+    .segment-row > dl:nth-child(3) { width:25%; }
+    .segment-row > dl:nth-child(4) { width:15%; }
+    dd { margin:var(--s1) 0 0;overflow-wrap:anywhere; }
+    .route-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s2); }
+    button,input { min-height:44px;border:1px solid var(--line);border-radius:2px;background:var(--surface);color:var(--ink);font:700 16px/20px Arial,Helvetica,sans-serif; }
+    button { padding:var(--s3) var(--s4);cursor:pointer;transition:background var(--fast),color var(--fast); }
+    button[aria-pressed="true"] { background:var(--route);border-color:var(--route);color:#fff; }
+    .toggle-row { display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:var(--s4);margin-top:var(--s5);padding-top:var(--s5);border-top:1px solid var(--line); }
+    .control-name { font-weight:700; }
+    .toggle-copy p { color:var(--muted); }
+    .review { border-top:1px solid var(--line); }
+    .state { margin:var(--s4) 0;padding:var(--s3) var(--s4);background:var(--page);font-weight:700; }
+    form { display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s2);align-items:end; }
+    input { width:100%;padding:var(--s2) var(--s3); }
+    .field { display:grid;gap:6px; }
+    .status { min-height:25px;margin:var(--s2) 0 0;font-weight:700; }
+    [aria-invalid="true"] { border-color:var(--attention); }
+    [data-primary-action] { background:var(--route);border-color:var(--route);color:#fff; }
+    :focus-visible { outline:3px solid var(--route);outline-offset:3px; }
+    @media (max-width:760px) {
+      nav,footer { padding-inline:var(--s4); }
+      main { width:calc(100% - 24px);margin-block:var(--s6); }
+      .hero,.section,.review { padding:var(--s4); }
+      h1 { font-size:33px;line-height:38px; }
+      .segment-row { display:block;padding:var(--s4); }
+      .route-grid { grid-template-columns:minmax(0,1fr); }
+      .toggle-row { grid-template-columns:minmax(0,1fr); }
+      .toggle-row [data-bench="context-toggle"] { width:100%; }
+      form { grid-template-columns:minmax(0,1fr); }
+      form button { width:100%; }
+    }
+    @media (max-width:320px) { main { width:calc(100% - 16px); }.hero,.section,.review,.segment-row { padding:var(--s3); } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important;transition:none!important; } }
+  </style>
+</head>
+<body data-route="sequence">
+  <nav aria-label="Product"><strong>Cueboard</strong><span>Rundown routing</span></nav>
+  <main>
+    <article class="sheet" data-bench-design-role="rundown-sheet" data-bench-decision-role="context">
+      <header class="hero">
+        <div class="eyebrow">Broadcast handoff</div>
+        <h1>Route supplied segments into rundown review.</h1>
+        <p>Keep every segment exact, choose a routing mode, and name the handoff before review.</p>
+        <p class="target" data-bench-decision-role="target">evening-rundown-routing.yaml</p>
+        <p class="evidence" data-bench-decision-role="evidence">4 supplied segments · 18m 40s total</p>
+      </header>
+      <div class="segments" aria-label="Segment mapping">
+        <div class="segment-row" data-bench="segment-row"><dl><dt>Segment</dt><dd>seg-evening-2026-041</dd></dl><dl><dt>Destination</dt><dd>rundown-open.local</dd></dl><dl><dt>Producer</dt><dd>producer-desk.han</dd></dl><dl><dt>Duration</dt><dd>04m 20s</dd></dl></div>
+        <div class="segment-row" data-bench="segment-row"><dl><dt>Segment</dt><dd>seg-weather-2026-118</dd></dl><dl><dt>Destination</dt><dd>rundown-weather.live</dd></dl><dl><dt>Producer</dt><dd>producer-weather.im</dd></dl><dl><dt>Duration</dt><dd>02m 10s</dd></dl></div>
+        <div class="segment-row" data-bench="segment-row"><dl><dt>Segment</dt><dd>seg-markets-2026-207</dd></dl><dl><dt>Destination</dt><dd>rundown-business.two</dd></dl><dl><dt>Producer</dt><dd>producer-economy.cho</dd></dl><dl><dt>Duration</dt><dd>05m 35s</dd></dl></div>
+        <div class="segment-row" data-bench="segment-row"><dl><dt>Segment</dt><dd>seg-culture-2026-266</dd></dl><dl><dt>Destination</dt><dd>rundown-close.feature</dd></dl><dl><dt>Producer</dt><dd>producer-culture.ryu</dd></dl><dl><dt>Duration</dt><dd>06m 35s</dd></dl></div>
+      </div>
+      <section class="section" aria-labelledby="route-heading">
+        <h2 id="route-heading">Routing mode</h2>
+        <div class="route-grid" role="group" aria-label="Routing mode">
+          <button type="button" data-bench="route-option" data-route="sequence" aria-pressed="true">Rundown sequence</button>
+          <button type="button" data-bench="route-option" data-route="desk" aria-pressed="false">Desk grouping</button>
+          <button type="button" data-bench="route-option" data-route="manual" aria-pressed="false">Manual placement</button>
+        </div>
+        <div class="toggle-row">
+          <div class="toggle-copy">
+            <span class="control-name" data-bench="compact-control-copy" id="rundown-context-label">Preserve original rundown-note context</span>
+            <p>Keep this setting reversible before review.</p>
+          </div>
+          <button type="button" data-bench="context-toggle" aria-pressed="false" aria-labelledby="rundown-context-label context-toggle-state"><span id="context-toggle-state">Off</span></button>
+        </div>
+      </section>
+      <section class="review" aria-labelledby="review-heading">
+        <h2 id="review-heading">Review boundary</h2>
+        <p class="state" data-bench-decision-role="state">Mode: Rundown sequence · notes off</p>
+        <form data-bench="handoff-form" novalidate>
+          <div class="field"><label for="handoff-name">Handoff name</label><input id="handoff-name" data-bench="handoff-name" aria-describedby="form-status" placeholder="Evening rundown handoff" autocomplete="off"></div>
+          <button type="submit" data-primary-action data-bench-decision-role="action">Review rundown</button>
+        </form>
+        <p id="form-status" class="status" data-bench="form-status" role="status" aria-live="polite"></p>
+      </section>
+    </article>
+  </main>
+  <footer><span>Cueboard · Fictional fixture</span><span>No broadcast performed</span></footer>
+  <script>
+    const routes=[...document.querySelectorAll('[data-bench="route-option"]')];
+    const toggle=document.querySelector('[data-bench="context-toggle"]');
+    const toggleState=document.querySelector('#context-toggle-state');
+    const state=document.querySelector('[data-bench-decision-role="state"]');
+    const form=document.querySelector('[data-bench="handoff-form"]');
+    const field=document.querySelector('[data-bench="handoff-name"]');
+    const status=document.querySelector('[data-bench="form-status"]');
+    const routeNames={sequence:'Rundown sequence',desk:'Desk grouping',manual:'Manual placement'};
+    function renderState(){const route=document.body.dataset.route;state.textContent=`Mode: ${routeNames[route]} · notes ${toggle.getAttribute('aria-pressed')==='true'?'on':'off'}`;}
+    routes.forEach((button)=>button.addEventListener('click',()=>{document.body.dataset.route=button.dataset.route;routes.forEach((item)=>item.setAttribute('aria-pressed',String(item===button)));renderState();}));
+    toggle.addEventListener('click',()=>{const next=toggle.getAttribute('aria-pressed')!=='true';toggle.setAttribute('aria-pressed',String(next));toggleState.textContent=next?'On':'Off';renderState();});
+    form.addEventListener('submit',(event)=>{event.preventDefault();const value=field.value.trim();if(!value){field.setAttribute('aria-invalid','true');status.textContent='Enter a handoff name before review.';field.focus();return;}field.removeAttribute('aria-invalid');status.textContent=`${value} is ready for rundown review.`;});
+  </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.2",
+  "default_action": "deny",
+  "known_models": {
+    "gpt-5.6-luna": {
+      "required_runtime": "codex",
+      "billing_type": "codex-native",
+      "ui_effort_policy": {
+        "recommended_default": "high",
+        "supported_efforts": ["low", "medium", "high", "xhigh", "max"],
+        "explicit_override": "preserve-if-supported",
+        "automatic_escalation_allowed": false
+      }
+    },
+    "gpt-5.6-sol": {
+      "required_runtime": "codex",
+      "billing_type": "codex-native",
+      "ui_effort_policy": {
+        "recommended_default": "high",
+        "supported_efforts": ["low", "medium", "high", "xhigh", "max", "ultra"],
+        "explicit_override": "preserve-if-supported",
+        "automatic_escalation_allowed": false
+      }
+    },
+    "gpt-5.6-terra": {
+      "required_runtime": "codex",
+      "billing_type": "codex-native",
+      "ui_effort_policy": {
+        "recommended_default": "high",
+        "supported_efforts": ["low", "medium", "high", "xhigh", "max", "ultra"],
+        "explicit_override": "preserve-if-supported",
+        "automatic_escalation_allowed": false
+      }
+    },
+    "cursor-grok-4.5-high": {
+      "required_runtime": "cursor",
+      "billing_type": "included",
+      "confirmation_env": "OMD_CURSOR_INCLUDED_USAGE_CONFIRMED",
+      "confirmation_value": "I_CONFIRM_CURSOR_INCLUDED_USAGE"
+    }
+  },
+  "cursor_live": {
+    "allowed_models": ["cursor-grok-4.5-high"],
+    "billing_env": "OMD_CURSOR_BILLING_TYPE",
+    "required_billing_type": "included",
+    "confirmation_env": "OMD_CURSOR_INCLUDED_USAGE_CONFIRMED",
+    "confirmation_value": "I_CONFIRM_CURSOR_INCLUDED_USAGE",
+    "fake_runtime_bypass_env": "OMD_BENCH_FAKE_RUNTIME",
+    "fake_runtime_bypass_value": "1"
+  },
+  "safety": {
+    "on_demand_is_always_denied": true,
+    "unknown_billing_is_denied": true,
+    "luna_terra_sol_cursor_route_is_denied": true,
+    "cursor_non_grok_route_is_denied": true,
+    "unsupported_effort_is_denied": true,
+    "automatic_effort_escalation_is_denied": true
+  },
+  "ui_effort_routing": {
+    "scope": "ui-design-execution",
+    "evidence_tier": "internal-three-task-descriptive",
+    "evidence_ref": "reports/codex-all-effort-sweep-1.9.826/SUMMARY.final.json",
+    "recommended_common_default": "high",
+    "catalog_default_is_not_overwritten": true,
+    "missing_model_policy": "require-explicit-effort",
+    "failure_policy": "return-failure-without-effort-retry",
+    "max_and_ultra_are_opt_in_only": true
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.438",
+  "cell_id": "luna-maritime-r1-candidate",
+  "status": "VALID_SYSTEM_FAILURE",
+  "provider_calls": 1,
+  "run_status": "complete",
+  "validity": "valid",
+  "ui_resolved": false,
+  "objective_score": 81,
+  "objective_max": 85,
+  "wall_time_ms": 474434,
+  "tokens": 1151694,
+  "remaining_red": ["320/200%-compound-parent-character-range-line-budget"],
+  "proof": {
+    "analyzable": true,
+    "browser_mechanism_count": 1,
+    "browser_recovery_probe_count": 0,
+    "browser_recovery_count": 0,
+    "duplicate_static_closure_count": 2,
+    "verification_after_ready_count": 2,
+    "compliance_pass": false,
+    "gate_reasons": ["duplicate-static-limit", "verification-after-ready-limit"]
+  },
+  "runtime_identity": {
+    "scope": "execution-home-post-run",
+    "tool_mode": "code_mode_only",
+    "model_profile_sha256": "0efd579e76b5f1ccc5b68f61fdf079c7df0adfe03281f65ec6bc07383e8c335f",
+    "cache_client_version": "0.144.1"
+  },
+  "paired_ratios": {"wall_time": 1.2911, "tokens": 1.1059},
+  "reliability_max_after_failure": "2/3",
+  "required_reliability": "3/3",
+  "tokens_to_target_minimum_after_cell": 39511114,
+  "usage_unavailable_cells": 6,
+  "artifact_hashes": {
+    "run_result_sha256": "5e0fca6fdb7e05bfbb0ea2e0dc7f41d316880b8b33bd8cbb41cbcb65c03e254f",
+    "score_sha256": "f6536c8b3a49a4c7bf5f5c7d8a87680d9dd4496fe6b4ce346aa5baeb23ba8056",
+    "run_record_sha256": "f7f3ba860bed893dea54784ab581206faf0f13e3e19645c006491a0b359de4be",
+    "proof_trace_sha256": "1b32c0770ed5b293ef108b172510a3b4a33d64fc6339f97072e650debf4a0072"
+  },
+  "remaining_cells_disposition": "SKIPPED_PROMOTION_MATHEMATICALLY_UNREACHABLE"
+}

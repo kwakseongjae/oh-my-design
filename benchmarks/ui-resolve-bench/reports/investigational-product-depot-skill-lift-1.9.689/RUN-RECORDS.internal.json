@@ -1,0 +1,1430 @@
+[
+  {
+    "run_id": "luna-depot-r1-control",
+    "benchmark_family": "skill",
+    "suite_version": "ui-resolve-v0.2",
+    "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "system_id": "raw-design-md",
+    "model_id": "gpt-5.6-luna",
+    "skill_id": null,
+    "harness_id": null,
+    "budget_tier": "high",
+    "task_id": "investigational-product-depot-release-v0.1",
+    "trial_index": 1,
+    "run_status": "complete",
+    "validity": "valid",
+    "attribution_scope": "provider-observed-only",
+    "public_model_attribution_eligible": false,
+    "ui_resolved": false,
+    "objective_score": 73,
+    "objective_max": 85,
+    "wall_time_ms": 333637,
+    "tokens": 396962,
+    "token_usage": {
+      "input_tokens": 379492,
+      "cached_input_tokens": 334848,
+      "output_tokens": 17470,
+      "reasoning_output_tokens": 5817,
+      "total_tokens": 396962,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "input_output_complete": true
+    },
+    "provider_cost_equivalent_usd": null,
+    "execution_control": {
+      "comparison_mode": "native-capability",
+      "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+      "temperature_policy": "runtime-default-frozen",
+      "timeout_seconds": 900,
+      "max_concurrency": 1,
+      "latency_comparison": "eligible",
+      "retry_policy": "none-primary",
+      "timeout_policy": "count-as-valid-failure",
+      "infrastructure_policy": "retain-freeze-and-repreregister",
+      "task_order_policy": "balanced-rotation",
+      "pacing": {
+        "policy": "fixed-inter-cell",
+        "inter_cell_delay_seconds": 120,
+        "applies_between_cells_only": true,
+        "counts_toward_cell_wall_time": false
+      },
+      "token_budget": {
+        "mode": "observed-only",
+        "limit_tokens": null,
+        "usage_required": true,
+        "account_components": [
+          "input",
+          "cached_input",
+          "output",
+          "reasoning_output"
+        ],
+        "cached_input_separate": true,
+        "cost_policy": "provider-reported-or-pinned-price-equivalent"
+      },
+      "step_budget": {
+        "mode": "observed-only",
+        "limit_steps": null
+      }
+    },
+    "usage_completeness": {
+      "evidence_mode": "provider-event",
+      "available": true,
+      "input_output_complete": true,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "reasoning_visibility": "reported",
+      "cached_input_visibility": "reported"
+    },
+    "runtime_model_usage": [
+      {
+        "model": "gpt-5.6-luna",
+        "input_tokens": 379492,
+        "cached_input_tokens": 334848,
+        "output_tokens": 17470,
+        "cost_usd": null,
+        "context_window": null,
+        "max_output_tokens": null
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "diagnostic_availability": {
+        "available": false,
+        "fields": [],
+        "reason": "codex-stream-diagnostic-normalization-not-supported"
+      },
+      "tool_error_count": null,
+      "recoverable_tool_error_count": null,
+      "infrastructure_tool_error_count": null,
+      "optional_verifier_environment_error_count": null,
+      "recovered_temp_path_error_count": null,
+      "sandbox_error_count": null,
+      "sandbox_cwd_error_count": null,
+      "agent_tool_call_count": null,
+      "agent_tool_error_count": null,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": null,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 4,
+        "product_revision_count": 3,
+        "last_product_edit_event_index": 23,
+        "post_edit_command_count": 3,
+        "static_closure_count": 3,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 0,
+        "verification_after_ready_count": 0,
+        "compliance_pass": true,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 12,
+            "last_edit_event_index": 12,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 14,
+                "command": "/opt/homebrew/bin/zsh -lc \"sed -n '1,40p' index.html && git diff -- index.html\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 2,
+            "first_edit_event_index": 17,
+            "last_edit_event_index": 19,
+            "edit_count": 2,
+            "commands": [
+              {
+                "index": 21,
+                "command": "/opt/homebrew/bin/zsh -lc \"rg -o 'IP-KIT-[A-Z0-9-]+|TEMP-LOG-[A-Z0-9-]+|DEPOT-LANE-[A-Z0-9-]+|Window [0-9:–-]+ UTC' index.html | sort | uniq -c && rg -o 'data-bench=\\\"kit-view-option\\\"|data-bench=\\\"product-kit-case\\\"|data-bench=\\\"temperature-log-id\\\"|data-bench=\\\"depot-lane-id\\\"|data-bench=\\\"transfer-window\\\"|data-bench=\\\"pharmacist-note-toggle\\\"|data-bench=\\\"release-review-form\\\"' index.html | sort | uniq -c && rg -n 'word-break|font-size:37|min-width:1120|min-width:980|min-width:960' index.html || true\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 3,
+            "first_edit_event_index": 23,
+            "last_edit_event_index": 23,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 26,
+                "command": "/opt/homebrew/bin/zsh -lc \"rg -n 'register|lanes|decision|@media|word-break|overflow-x|focus-visible|aria-invalid' index.html | sed -n '1,24p'\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null
+    },
+    "attribution": {
+      "runtime": {
+        "runtime_target": "codex",
+        "agent": "codex-cli",
+        "agent_version": null,
+        "binary_sha256": null,
+        "model_requested": "gpt-5.6-luna",
+        "model_reported": null,
+        "model_evidence_mode": "cli-argument",
+        "effort_requested": "high",
+        "auth_mode": null,
+        "provider_route": null,
+        "provider_effort_argument": null,
+        "hook_trust_bypassed": false,
+        "usage_attribution": {
+          "available": true,
+          "evidence_mode": "provider-event",
+          "reason": null
+        }
+      },
+      "source_commit": null,
+      "source_attestation": null,
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": null,
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "736df6b6a7aec7ead753a506c62260be5dd72c560f6c23087489c1d25abd32d6",
+          "after_sha256": "8ff621ac1dcabc0e139a61aa94bb011096982d8bf65119582b685026b395da73"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots",
+      "proof_trace": ".benchmark/proof-trace.json",
+      "host_policy_state": null
+    }
+  },
+  {
+    "run_id": "luna-depot-r1-omd",
+    "benchmark_family": "skill",
+    "suite_version": "ui-resolve-v0.2",
+    "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "system_id": "omd-apply-current",
+    "model_id": "gpt-5.6-luna",
+    "skill_id": "omd:apply",
+    "harness_id": null,
+    "budget_tier": "high",
+    "task_id": "investigational-product-depot-release-v0.1",
+    "trial_index": 1,
+    "run_status": "complete",
+    "validity": "valid",
+    "attribution_scope": "provider-observed-only",
+    "public_model_attribution_eligible": false,
+    "ui_resolved": true,
+    "objective_score": 85,
+    "objective_max": 85,
+    "wall_time_ms": 325961,
+    "tokens": 776704,
+    "token_usage": {
+      "input_tokens": 759863,
+      "cached_input_tokens": 693504,
+      "output_tokens": 16841,
+      "reasoning_output_tokens": 6203,
+      "total_tokens": 776704,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "input_output_complete": true
+    },
+    "provider_cost_equivalent_usd": null,
+    "execution_control": {
+      "comparison_mode": "native-capability",
+      "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+      "temperature_policy": "runtime-default-frozen",
+      "timeout_seconds": 900,
+      "max_concurrency": 1,
+      "latency_comparison": "eligible",
+      "retry_policy": "none-primary",
+      "timeout_policy": "count-as-valid-failure",
+      "infrastructure_policy": "retain-freeze-and-repreregister",
+      "task_order_policy": "balanced-rotation",
+      "pacing": {
+        "policy": "fixed-inter-cell",
+        "inter_cell_delay_seconds": 120,
+        "applies_between_cells_only": true,
+        "counts_toward_cell_wall_time": false
+      },
+      "token_budget": {
+        "mode": "observed-only",
+        "limit_tokens": null,
+        "usage_required": true,
+        "account_components": [
+          "input",
+          "cached_input",
+          "output",
+          "reasoning_output"
+        ],
+        "cached_input_separate": true,
+        "cost_policy": "provider-reported-or-pinned-price-equivalent"
+      },
+      "step_budget": {
+        "mode": "observed-only",
+        "limit_steps": null
+      }
+    },
+    "usage_completeness": {
+      "evidence_mode": "provider-event",
+      "available": true,
+      "input_output_complete": true,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "reasoning_visibility": "reported",
+      "cached_input_visibility": "reported"
+    },
+    "runtime_model_usage": [
+      {
+        "model": "gpt-5.6-luna",
+        "input_tokens": 759863,
+        "cached_input_tokens": 693504,
+        "output_tokens": 16841,
+        "cost_usd": null,
+        "context_window": null,
+        "max_output_tokens": null
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "diagnostic_availability": {
+        "available": false,
+        "fields": [],
+        "reason": "codex-stream-diagnostic-normalization-not-supported"
+      },
+      "tool_error_count": null,
+      "recoverable_tool_error_count": null,
+      "infrastructure_tool_error_count": null,
+      "optional_verifier_environment_error_count": null,
+      "recovered_temp_path_error_count": null,
+      "sandbox_error_count": null,
+      "sandbox_cwd_error_count": null,
+      "agent_tool_call_count": null,
+      "agent_tool_error_count": null,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": null,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 1,
+        "product_revision_count": 1,
+        "last_product_edit_event_index": 21,
+        "post_edit_command_count": 3,
+        "static_closure_count": 2,
+        "browser_mechanism_count": 1,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 1,
+        "verification_after_ready_count": 0,
+        "compliance_pass": false,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 21,
+            "last_edit_event_index": 21,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 23,
+                "command": "/opt/homebrew/bin/zsh -lc 'node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-close .omd/reflow-closure.json index.html'",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 28,
+                "command": "/opt/homebrew/bin/zsh -lc 'node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-close .omd/reflow-closure.json index.html'",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 31,
+                "command": "/opt/homebrew/bin/zsh -lc 'OMD_REFLOW_ARTIFACT=.omd/reflow-closure.json OMD_REFLOW_PRODUCT=index.html OMD_REFLOW_HELPER=.agents/skills/omd-apply/scripts/reflow-artifact.mjs browser-harness < .agents/skills/omd-apply/scripts/reflow-browser.py'",
+                "mechanism": "shell",
+                "browser": true,
+                "recovery_probe": false,
+                "static_verification": false,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 2,
+            "browser_mechanism_count": 1,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 1,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null
+    },
+    "attribution": {
+      "runtime": {
+        "runtime_target": "codex",
+        "agent": "codex-cli",
+        "agent_version": null,
+        "binary_sha256": null,
+        "model_requested": "gpt-5.6-luna",
+        "model_reported": null,
+        "model_evidence_mode": "cli-argument",
+        "effort_requested": "high",
+        "auth_mode": null,
+        "provider_route": null,
+        "provider_effort_argument": null,
+        "hook_trust_bypassed": false,
+        "usage_attribution": {
+          "available": true,
+          "evidence_mode": "provider-event",
+          "reason": null
+        }
+      },
+      "source_commit": "b109d4133ee94303058cb3b97469a5fb2813624f",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true,
+        "detached": false
+      },
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "736df6b6a7aec7ead753a506c62260be5dd72c560f6c23087489c1d25abd32d6",
+          "after_sha256": "54979a42020075e9b337d08daf8591930fadda37305ce32cd56a7da98b78f3c6"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots",
+      "proof_trace": ".benchmark/proof-trace.json",
+      "host_policy_state": null
+    }
+  },
+  {
+    "run_id": "luna-depot-r2-control",
+    "benchmark_family": "skill",
+    "suite_version": "ui-resolve-v0.2",
+    "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "system_id": "raw-design-md",
+    "model_id": "gpt-5.6-luna",
+    "skill_id": null,
+    "harness_id": null,
+    "budget_tier": "high",
+    "task_id": "investigational-product-depot-release-v0.1",
+    "trial_index": 2,
+    "run_status": "complete",
+    "validity": "valid",
+    "attribution_scope": "provider-observed-only",
+    "public_model_attribution_eligible": false,
+    "ui_resolved": false,
+    "objective_score": 73,
+    "objective_max": 85,
+    "wall_time_ms": 243034,
+    "tokens": 336992,
+    "token_usage": {
+      "input_tokens": 324420,
+      "cached_input_tokens": 278016,
+      "output_tokens": 12572,
+      "reasoning_output_tokens": 6168,
+      "total_tokens": 336992,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "input_output_complete": true
+    },
+    "provider_cost_equivalent_usd": null,
+    "execution_control": {
+      "comparison_mode": "native-capability",
+      "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+      "temperature_policy": "runtime-default-frozen",
+      "timeout_seconds": 900,
+      "max_concurrency": 1,
+      "latency_comparison": "eligible",
+      "retry_policy": "none-primary",
+      "timeout_policy": "count-as-valid-failure",
+      "infrastructure_policy": "retain-freeze-and-repreregister",
+      "task_order_policy": "balanced-rotation",
+      "pacing": {
+        "policy": "fixed-inter-cell",
+        "inter_cell_delay_seconds": 120,
+        "applies_between_cells_only": true,
+        "counts_toward_cell_wall_time": false
+      },
+      "token_budget": {
+        "mode": "observed-only",
+        "limit_tokens": null,
+        "usage_required": true,
+        "account_components": [
+          "input",
+          "cached_input",
+          "output",
+          "reasoning_output"
+        ],
+        "cached_input_separate": true,
+        "cost_policy": "provider-reported-or-pinned-price-equivalent"
+      },
+      "step_budget": {
+        "mode": "observed-only",
+        "limit_steps": null
+      }
+    },
+    "usage_completeness": {
+      "evidence_mode": "provider-event",
+      "available": true,
+      "input_output_complete": true,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "reasoning_visibility": "reported",
+      "cached_input_visibility": "reported"
+    },
+    "runtime_model_usage": [
+      {
+        "model": "gpt-5.6-luna",
+        "input_tokens": 324420,
+        "cached_input_tokens": 278016,
+        "output_tokens": 12572,
+        "cost_usd": null,
+        "context_window": null,
+        "max_output_tokens": null
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "diagnostic_availability": {
+        "available": false,
+        "fields": [],
+        "reason": "codex-stream-diagnostic-normalization-not-supported"
+      },
+      "tool_error_count": null,
+      "recoverable_tool_error_count": null,
+      "infrastructure_tool_error_count": null,
+      "optional_verifier_environment_error_count": null,
+      "recovered_temp_path_error_count": null,
+      "sandbox_error_count": null,
+      "sandbox_cwd_error_count": null,
+      "agent_tool_call_count": null,
+      "agent_tool_error_count": null,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": null,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 2,
+        "product_revision_count": 2,
+        "last_product_edit_event_index": 22,
+        "post_edit_command_count": 4,
+        "static_closure_count": 4,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 2,
+        "verification_after_ready_count": 0,
+        "compliance_pass": false,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 12,
+            "last_edit_event_index": 12,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 14,
+                "command": "/opt/homebrew/bin/zsh -lc \"sed -n '1,120p' index.html && git diff -- index.html\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 17,
+                "command": "/opt/homebrew/bin/zsh -lc 'rg -n \"min-width|word-break|overflow|font-size:37|data-bench|IP-KIT|TEMP-LOG|DEPOT-LANE|Release review pending|pharmacist-note\" index.html'",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 19,
+                "command": "/opt/homebrew/bin/zsh -lc \"node <<'NODE'\nconst fs = require('fs');\nconst html = fs.readFileSync('index.html', 'utf8');\nconst checks = {\n  productKits: (html.match(/data-bench=\\\"product-kit-case\\\"/g) || []).length,\n  temperatureLogs: (html.match(/data-bench=\\\"temperature-log-id\\\"/g) || []).length,\n  depotLanes: (html.match(/data-bench=\\\"depot-lane-id\\\"/g) || []).length,\n  viewControls: (html.match(/data-bench=\\\"kit-view-option\\\"/g) || []).length,\n  noteToggle: (html.match(/data-bench=\\\"pharmacist-note-toggle\\\"/g) || []).length,\n  reviewForms: (html.match(/data-bench=\\\"release-review-form\\\"/g) || []).length,\n  pendingState: (html.match(/Release review pending/g) || []).length,\n  mobileWordBreak: html.includes('word-break:break-all'),\n  fixedRegister: html.includes('min-width:1120px'),\n  fixedLanes: html.includes('min-width:980px')\n};\nconsole.log(JSON.stringify(checks, null, 2));\nNODE\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 3,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 2,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 2,
+            "first_edit_event_index": 22,
+            "last_edit_event_index": 22,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 24,
+                "command": "/opt/homebrew/bin/zsh -lc \"rg -o \\\"\\\\.pharmacist-note\\\\{[\"'^}]+'\"\\\\}|word-break:[\"'^;]+|min-width:[''^;]+\" index.html && node <<'\"'NODE'\nconst fs = require('fs');\nconst html = fs.readFileSync('index.html', 'utf8');\nconst required = [\n  'IP-KIT-COHORT-03-INITIAL-SUPPLY-2026-08-05-001',\n  'IP-KIT-COHORT-04-RESUPPLY-2026-08-05-002',\n  'IP-KIT-COHORT-06-QUARANTINE-2026-08-05-003',\n  'IP-KIT-COHORT-07-DEPOT-TRANSFER-2026-08-05-004',\n  'TEMP-LOG-RECEIPT-PROBE-104827', 'TEMP-LOG-PALLET-CORE-338516',\n  'TEMP-LOG-STAGING-BAY-570284', 'TEMP-LOG-QUARANTINE-SHELF-447260',\n  'TEMP-LOG-COLD-CHAIN-672904', 'TEMP-LOG-RETURN-PROBE-118463',\n  'DEPOT-LANE-NORTH-COLD-ROOM-DL04', 'DEPOT-LANE-EAST-QUARANTINE-DL11',\n  'Window 07:20–07:50 UTC', 'Window 08:10–08:40 UTC', 'Release review pending'\n];\nconsole.log('identifiers and state preserved:', required.every(value => html.includes(value)));\nconsole.log('prohibited mobile word break removed:', \"'!html.includes('\"'word-break:break-all'));\nNODE\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null
+    },
+    "attribution": {
+      "runtime": {
+        "runtime_target": "codex",
+        "agent": "codex-cli",
+        "agent_version": null,
+        "binary_sha256": null,
+        "model_requested": "gpt-5.6-luna",
+        "model_reported": null,
+        "model_evidence_mode": "cli-argument",
+        "effort_requested": "high",
+        "auth_mode": null,
+        "provider_route": null,
+        "provider_effort_argument": null,
+        "hook_trust_bypassed": false,
+        "usage_attribution": {
+          "available": true,
+          "evidence_mode": "provider-event",
+          "reason": null
+        }
+      },
+      "source_commit": null,
+      "source_attestation": null,
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": null,
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "736df6b6a7aec7ead753a506c62260be5dd72c560f6c23087489c1d25abd32d6",
+          "after_sha256": "95c37e185bd5d71d4861c7cec3739847c7ea848677e083fc1ee3d973db4bd99a"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots",
+      "proof_trace": ".benchmark/proof-trace.json",
+      "host_policy_state": null
+    }
+  },
+  {
+    "run_id": "luna-depot-r2-omd",
+    "benchmark_family": "skill",
+    "suite_version": "ui-resolve-v0.2",
+    "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "system_id": "omd-apply-current",
+    "model_id": "gpt-5.6-luna",
+    "skill_id": "omd:apply",
+    "harness_id": null,
+    "budget_tier": "high",
+    "task_id": "investigational-product-depot-release-v0.1",
+    "trial_index": 2,
+    "run_status": "complete",
+    "validity": "valid",
+    "attribution_scope": "provider-observed-only",
+    "public_model_attribution_eligible": false,
+    "ui_resolved": true,
+    "objective_score": 85,
+    "objective_max": 85,
+    "wall_time_ms": 342522,
+    "tokens": 529640,
+    "token_usage": {
+      "input_tokens": 511457,
+      "cached_input_tokens": 438272,
+      "output_tokens": 18183,
+      "reasoning_output_tokens": 8332,
+      "total_tokens": 529640,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "input_output_complete": true
+    },
+    "provider_cost_equivalent_usd": null,
+    "execution_control": {
+      "comparison_mode": "native-capability",
+      "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+      "temperature_policy": "runtime-default-frozen",
+      "timeout_seconds": 900,
+      "max_concurrency": 1,
+      "latency_comparison": "eligible",
+      "retry_policy": "none-primary",
+      "timeout_policy": "count-as-valid-failure",
+      "infrastructure_policy": "retain-freeze-and-repreregister",
+      "task_order_policy": "balanced-rotation",
+      "pacing": {
+        "policy": "fixed-inter-cell",
+        "inter_cell_delay_seconds": 120,
+        "applies_between_cells_only": true,
+        "counts_toward_cell_wall_time": false
+      },
+      "token_budget": {
+        "mode": "observed-only",
+        "limit_tokens": null,
+        "usage_required": true,
+        "account_components": [
+          "input",
+          "cached_input",
+          "output",
+          "reasoning_output"
+        ],
+        "cached_input_separate": true,
+        "cost_policy": "provider-reported-or-pinned-price-equivalent"
+      },
+      "step_budget": {
+        "mode": "observed-only",
+        "limit_steps": null
+      }
+    },
+    "usage_completeness": {
+      "evidence_mode": "provider-event",
+      "available": true,
+      "input_output_complete": true,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "reasoning_visibility": "reported",
+      "cached_input_visibility": "reported"
+    },
+    "runtime_model_usage": [
+      {
+        "model": "gpt-5.6-luna",
+        "input_tokens": 511457,
+        "cached_input_tokens": 438272,
+        "output_tokens": 18183,
+        "cost_usd": null,
+        "context_window": null,
+        "max_output_tokens": null
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "diagnostic_availability": {
+        "available": false,
+        "fields": [],
+        "reason": "codex-stream-diagnostic-normalization-not-supported"
+      },
+      "tool_error_count": null,
+      "recoverable_tool_error_count": null,
+      "infrastructure_tool_error_count": null,
+      "optional_verifier_environment_error_count": null,
+      "recovered_temp_path_error_count": null,
+      "sandbox_error_count": null,
+      "sandbox_cwd_error_count": null,
+      "agent_tool_call_count": null,
+      "agent_tool_error_count": null,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": null,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 1,
+        "product_revision_count": 1,
+        "last_product_edit_event_index": 18,
+        "post_edit_command_count": 1,
+        "static_closure_count": 1,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 0,
+        "verification_after_ready_count": 0,
+        "compliance_pass": true,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 18,
+            "last_edit_event_index": 18,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 20,
+                "command": "/opt/homebrew/bin/zsh -lc 'node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-close .omd/reflow-closure.json index.html'",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null
+    },
+    "attribution": {
+      "runtime": {
+        "runtime_target": "codex",
+        "agent": "codex-cli",
+        "agent_version": null,
+        "binary_sha256": null,
+        "model_requested": "gpt-5.6-luna",
+        "model_reported": null,
+        "model_evidence_mode": "cli-argument",
+        "effort_requested": "high",
+        "auth_mode": null,
+        "provider_route": null,
+        "provider_effort_argument": null,
+        "hook_trust_bypassed": false,
+        "usage_attribution": {
+          "available": true,
+          "evidence_mode": "provider-event",
+          "reason": null
+        }
+      },
+      "source_commit": "b109d4133ee94303058cb3b97469a5fb2813624f",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true,
+        "detached": false
+      },
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "736df6b6a7aec7ead753a506c62260be5dd72c560f6c23087489c1d25abd32d6",
+          "after_sha256": "70c59d2aa25d434d08112a224a256f8a479b774900786c1e5448b44720b9b9dc"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots",
+      "proof_trace": ".benchmark/proof-trace.json",
+      "host_policy_state": null
+    }
+  },
+  {
+    "run_id": "luna-depot-r3-control",
+    "benchmark_family": "skill",
+    "suite_version": "ui-resolve-v0.2",
+    "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "system_id": "raw-design-md",
+    "model_id": "gpt-5.6-luna",
+    "skill_id": null,
+    "harness_id": null,
+    "budget_tier": "high",
+    "task_id": "investigational-product-depot-release-v0.1",
+    "trial_index": 3,
+    "run_status": "complete",
+    "validity": "valid",
+    "attribution_scope": "provider-observed-only",
+    "public_model_attribution_eligible": false,
+    "ui_resolved": false,
+    "objective_score": 79,
+    "objective_max": 85,
+    "wall_time_ms": 404568,
+    "tokens": 724316,
+    "token_usage": {
+      "input_tokens": 703282,
+      "cached_input_tokens": 652288,
+      "output_tokens": 21034,
+      "reasoning_output_tokens": 7882,
+      "total_tokens": 724316,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "input_output_complete": true
+    },
+    "provider_cost_equivalent_usd": null,
+    "execution_control": {
+      "comparison_mode": "native-capability",
+      "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+      "temperature_policy": "runtime-default-frozen",
+      "timeout_seconds": 900,
+      "max_concurrency": 1,
+      "latency_comparison": "eligible",
+      "retry_policy": "none-primary",
+      "timeout_policy": "count-as-valid-failure",
+      "infrastructure_policy": "retain-freeze-and-repreregister",
+      "task_order_policy": "balanced-rotation",
+      "pacing": {
+        "policy": "fixed-inter-cell",
+        "inter_cell_delay_seconds": 120,
+        "applies_between_cells_only": true,
+        "counts_toward_cell_wall_time": false
+      },
+      "token_budget": {
+        "mode": "observed-only",
+        "limit_tokens": null,
+        "usage_required": true,
+        "account_components": [
+          "input",
+          "cached_input",
+          "output",
+          "reasoning_output"
+        ],
+        "cached_input_separate": true,
+        "cost_policy": "provider-reported-or-pinned-price-equivalent"
+      },
+      "step_budget": {
+        "mode": "observed-only",
+        "limit_steps": null
+      }
+    },
+    "usage_completeness": {
+      "evidence_mode": "provider-event",
+      "available": true,
+      "input_output_complete": true,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "reasoning_visibility": "reported",
+      "cached_input_visibility": "reported"
+    },
+    "runtime_model_usage": [
+      {
+        "model": "gpt-5.6-luna",
+        "input_tokens": 703282,
+        "cached_input_tokens": 652288,
+        "output_tokens": 21034,
+        "cost_usd": null,
+        "context_window": null,
+        "max_output_tokens": null
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "diagnostic_availability": {
+        "available": false,
+        "fields": [],
+        "reason": "codex-stream-diagnostic-normalization-not-supported"
+      },
+      "tool_error_count": null,
+      "recoverable_tool_error_count": null,
+      "infrastructure_tool_error_count": null,
+      "optional_verifier_environment_error_count": null,
+      "recovered_temp_path_error_count": null,
+      "sandbox_error_count": null,
+      "sandbox_cwd_error_count": null,
+      "agent_tool_call_count": null,
+      "agent_tool_error_count": null,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": null,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 5,
+        "product_revision_count": 3,
+        "last_product_edit_event_index": 35,
+        "post_edit_command_count": 7,
+        "static_closure_count": 6,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 1,
+        "browser_recovery_count": 1,
+        "duplicate_static_closure_count": 3,
+        "verification_after_ready_count": 0,
+        "compliance_pass": false,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 13,
+            "last_edit_event_index": 16,
+            "edit_count": 2,
+            "commands": [
+              {
+                "index": 18,
+                "command": "/opt/homebrew/bin/zsh -lc \"git diff -- index.html; echo '--- counts ---'; rg -o 'data-bench=\\\"product-kit-case\\\"' index.html | wc -l; rg -o 'data-bench=\\\"temperature-log-id\\\"' index.html | wc -l; rg -o 'data-bench=\\\"depot-lane-id\\\"' index.html | wc -l; rg -o 'data-bench=\\\"transfer-window\\\"' index.html | wc -l; rg -o 'data-bench=\\\"kit-view-option\\\"' index.html | wc -l; rg -n 'min-width|word-break|overflow-x|font: 50|font-size: 37|muted|decision|register|lanes' index.html | sed -n '1,160p'\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 20,
+                "command": "/opt/homebrew/bin/zsh -lc 'command -v chromium || command -v chromium-browser || command -v google-chrome || command -v playwright || command -v wkhtmltoimage || true; command -v html5validator || true; command -v node || true; command -v npm || true'",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": true,
+                "static_verification": false,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 1,
+            "browser_recovery_count": 1,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 2,
+            "first_edit_event_index": 22,
+            "last_edit_event_index": 22,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 25,
+                "command": "/opt/homebrew/bin/zsh -lc \"node - <<'NODE'\nconst fs = require('fs');\nconst vm = require('vm');\nconst html = fs.readFileSync('index.html', 'utf8');\nconst script = html.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)[1];\nnew vm.Script(script);\nconst checks = [\n  ['product kits', (html.match(/data-bench=\\\"product-kit-case\\\"/g) || []).length, 4],\n  ['temperature logs', (html.match(/data-bench=\\\"temperature-log-id\\\"/g) || []).length, 6],\n  ['depot lanes', (html.match(/data-bench=\\\"depot-lane-id\\\"/g) || []).length, 2],\n  ['transfer windows', (html.match(/data-bench=\\\"transfer-window\\\"/g) || []).length, 2],\n  ['view controls', (html.match(/data-view=\\\"(?:kit-register|depot-lanes|release-review)\\\" aria-pressed/g) || []).length, 3],\n  ['note toggle', (html.match(/data-bench=\\\"pharmacist-note-toggle\\\"/g) || []).length, 1],\n  ['release form', (html.match(/data-bench=\\\"release-review-form\\\"/g) || []).length, 1],\n];\nfor (const [name, actual, expected] of checks) {\n  if (actual \"'!== expected) throw new Error(`${name}: ${actual}, expected ${expected}`);\n}\nif (/word-break'\"\\\\s*:\\\\s*break-all/.test(html)) throw new Error('identifier word-breaking remains');\nif (\"'!/'\"\\\\.register[\\\\s\\\\S]*grid-template-columns: repeat\\\\(2, minmax\\\\(0, 1fr\\\\)/.test(html)) throw new Error('register reflow missing');\nif (\"'!/'\"\\\\.lanes[\\\\s\\\\S]*grid-template-columns: repeat\\\\(2, minmax\\\\(0, 1fr\\\\)/.test(html)) throw new Error('lane reflow missing');\nif (\"'!/'\"\\\\.decision strong[\\\\s\\\\S]*white-space: nowrap/.test(html)) throw new Error('decision target protection missing');\nconsole.log('integrity checks passed');\nNODE\nsed -n '1,340p' index.html | tail -n 90\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 27,
+                "command": "/opt/homebrew/bin/zsh -lc \"node - <<'NODE'\nconst fs = require('fs');\nconst vm = require('vm');\nconst html = fs.readFileSync('index.html', 'utf8');\nconst script = html.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)[1];\nnew vm.Script(script);\nconst checks = [\n  ['product kits', (html.match(/data-bench=\\\"product-kit-case\\\"/g) || []).length, 4],\n  ['temperature logs', (html.match(/data-bench=\\\"temperature-log-id\\\"/g) || []).length, 6],\n  ['depot lanes', (html.match(/data-bench=\\\"depot-lane-id\\\"/g) || []).length, 2],\n  ['transfer windows', (html.match(/data-bench=\\\"transfer-window\\\"/g) || []).length, 2],\n  ['view controls', (html.match(/data-bench=\\\"kit-view-option\\\" data-view=/g) || []).length, 3],\n  ['note toggle', (html.match(/data-bench=\\\"pharmacist-note-toggle\\\" aria-pressed=/g) || []).length, 1],\n  ['release form', (html.match(/data-bench=\\\"release-review-form\\\"/g) || []).length, 1],\n];\nfor (const [name, actual, expected] of checks) {\n  if (actual \"'!== expected) throw new Error(`${name}: ${actual}, expected ${expected}`);\n}\nif (/word-break'\"\\\\s*:\\\\s*break-all/.test(html)) throw new Error('identifier word-breaking remains');\nif (\"'!/'\"\\\\.register[\\\\s\\\\S]*grid-template-columns: repeat\\\\(2, minmax\\\\(0, 1fr\\\\)/.test(html)) throw new Error('register reflow missing');\nif (\"'!/'\"\\\\.lanes[\\\\s\\\\S]*grid-template-columns: repeat\\\\(2, minmax\\\\(0, 1fr\\\\)/.test(html)) throw new Error('lane reflow missing');\nif (\"'!/'\"\\\\.decision strong[\\\\s\\\\S]*white-space: nowrap/.test(html)) throw new Error('decision target protection missing');\nconsole.log('integrity checks passed');\nNODE\nrg -n 'QA|chain of custody|temperature compliance|patient allocation|pharmacy readiness|expiry approval|customs clearance|dispensation authorization' index.html || true\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 29,
+                "command": "/opt/homebrew/bin/zsh -lc \"node - <<'NODE'\nconst fs = require('fs');\nconst vm = require('vm');\nconst html = fs.readFileSync('index.html', 'utf8');\nconst script = html.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)[1];\nnew vm.Script(script);\nconst checks = [\n  ['product kits', /data-bench=\\\"product-kit-case\\\"/g, 4],\n  ['temperature logs', /data-bench=\\\"temperature-log-id\\\"/g, 6],\n  ['depot lanes', /data-bench=\\\"depot-lane-id\\\"/g, 2],\n  ['transfer windows', /data-bench=\\\"transfer-window\\\"/g, 2],\n  ['view controls', /data-bench=\\\"kit-view-option\\\" data-view=/g, 3],\n  ['note toggle', /data-bench=\\\"pharmacist-note-toggle\\\" aria-pressed=/g, 1],\n  ['release form', /data-bench=\\\"release-review-form\\\" novalidate/g, 1],\n];\nfor (const [name, pattern, expected] of checks) {\n  const actual = (html.match(pattern) || []).length;\n  if (actual \"'!== expected) throw new Error(`${name}: ${actual}, expected ${expected}`);\n}\nif (/word-break'\"\\\\s*:\\\\s*break-all/.test(html)) throw new Error('identifier word-breaking remains');\nif (\"'!/'\"\\\\.register[\\\\s\\\\S]*grid-template-columns: repeat\\\\(2, minmax\\\\(0, 1fr\\\\)/.test(html)) throw new Error('register reflow missing');\nif (\"'!/'\"\\\\.lanes[\\\\s\\\\S]*grid-template-columns: repeat\\\\(2, minmax\\\\(0, 1fr\\\\)/.test(html)) throw new Error('lane reflow missing');\nif (\"'!/'\"\\\\.decision strong[\\\\s\\\\S]*white-space: nowrap/.test(html)) throw new Error('decision target protection missing');\nconsole.log('integrity checks passed');\nNODE\nrg -n 'QA release|complete chain of custody|temperature compliance|patient allocation|pharmacy readiness|expiry approval|customs clearance|dispensation authorization' index.html || true\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 31,
+                "command": "/opt/homebrew/bin/zsh -lc \"sed -n '95,175p' index.html\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 4,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 3,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 3,
+            "first_edit_event_index": 33,
+            "last_edit_event_index": 35,
+            "edit_count": 2,
+            "commands": [
+              {
+                "index": 37,
+                "command": "/opt/homebrew/bin/zsh -lc \"node - <<'NODE'\nconst fs = require('fs');\nconst vm = require('vm');\nconst html = fs.readFileSync('index.html', 'utf8');\nconst script = html.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)[1];\nnew vm.Script(script);\nconst checks = [\n  ['product kits', /data-bench=\\\"product-kit-case\\\"/g, 4],\n  ['temperature logs', /data-bench=\\\"temperature-log-id\\\"/g, 6],\n  ['depot lanes', /data-bench=\\\"depot-lane-id\\\"/g, 2],\n  ['transfer windows', /data-bench=\\\"transfer-window\\\"/g, 2],\n  ['view controls', /data-bench=\\\"kit-view-option\\\" data-view=/g, 3],\n  ['note toggle', /data-bench=\\\"pharmacist-note-toggle\\\" aria-pressed=/g, 1],\n  ['release form', /data-bench=\\\"release-review-form\\\" novalidate/g, 1],\n];\nfor (const [name, pattern, expected] of checks) {\n  const actual = (html.match(pattern) || []).length;\n  if (actual \"'!== expected) throw new Error(`${name}: ${actual}, expected ${expected}`);\n}\nif (/word-break'\"\\\\s*:\\\\s*break-all/.test(html)) throw new Error('identifier word-breaking remains');\nif (/min-width\\\\s*:\\\\s*(?:9|1[0-9])\\\\d+px/.test(html)) throw new Error('forced page-wide minimum width remains');\nif (\"'!/'\"\\\\.decision strong[\\\\s\\\\S]*white-space: nowrap/.test(html)) throw new Error('decision target protection missing');\nconsole.log('integrity checks passed');\nNODE\nrg -n 'min-width: [1-9]|word-break|overflow-x: hidden' index.html || true\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null
+    },
+    "attribution": {
+      "runtime": {
+        "runtime_target": "codex",
+        "agent": "codex-cli",
+        "agent_version": null,
+        "binary_sha256": null,
+        "model_requested": "gpt-5.6-luna",
+        "model_reported": null,
+        "model_evidence_mode": "cli-argument",
+        "effort_requested": "high",
+        "auth_mode": null,
+        "provider_route": null,
+        "provider_effort_argument": null,
+        "hook_trust_bypassed": false,
+        "usage_attribution": {
+          "available": true,
+          "evidence_mode": "provider-event",
+          "reason": null
+        }
+      },
+      "source_commit": null,
+      "source_attestation": null,
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": null,
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "736df6b6a7aec7ead753a506c62260be5dd72c560f6c23087489c1d25abd32d6",
+          "after_sha256": "2e8b83398d4c2767227ee71c7a5ea404c9a793b0df68156acaa3b39ded162874"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots",
+      "proof_trace": ".benchmark/proof-trace.json",
+      "host_policy_state": null
+    }
+  },
+  {
+    "run_id": "luna-depot-r3-omd",
+    "benchmark_family": "skill",
+    "suite_version": "ui-resolve-v0.2",
+    "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "system_id": "omd-apply-current",
+    "model_id": "gpt-5.6-luna",
+    "skill_id": "omd:apply",
+    "harness_id": null,
+    "budget_tier": "high",
+    "task_id": "investigational-product-depot-release-v0.1",
+    "trial_index": 3,
+    "run_status": "complete",
+    "validity": "valid",
+    "attribution_scope": "provider-observed-only",
+    "public_model_attribution_eligible": false,
+    "ui_resolved": false,
+    "objective_score": 75,
+    "objective_max": 85,
+    "wall_time_ms": 200609,
+    "tokens": 469511,
+    "token_usage": {
+      "input_tokens": 459331,
+      "cached_input_tokens": 400128,
+      "output_tokens": 10180,
+      "reasoning_output_tokens": 2848,
+      "total_tokens": 469511,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "input_output_complete": true
+    },
+    "provider_cost_equivalent_usd": null,
+    "execution_control": {
+      "comparison_mode": "native-capability",
+      "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+      "temperature_policy": "runtime-default-frozen",
+      "timeout_seconds": 900,
+      "max_concurrency": 1,
+      "latency_comparison": "eligible",
+      "retry_policy": "none-primary",
+      "timeout_policy": "count-as-valid-failure",
+      "infrastructure_policy": "retain-freeze-and-repreregister",
+      "task_order_policy": "balanced-rotation",
+      "pacing": {
+        "policy": "fixed-inter-cell",
+        "inter_cell_delay_seconds": 120,
+        "applies_between_cells_only": true,
+        "counts_toward_cell_wall_time": false
+      },
+      "token_budget": {
+        "mode": "observed-only",
+        "limit_tokens": null,
+        "usage_required": true,
+        "account_components": [
+          "input",
+          "cached_input",
+          "output",
+          "reasoning_output"
+        ],
+        "cached_input_separate": true,
+        "cost_policy": "provider-reported-or-pinned-price-equivalent"
+      },
+      "step_budget": {
+        "mode": "observed-only",
+        "limit_steps": null
+      }
+    },
+    "usage_completeness": {
+      "evidence_mode": "provider-event",
+      "available": true,
+      "input_output_complete": true,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "reasoning_visibility": "reported",
+      "cached_input_visibility": "reported"
+    },
+    "runtime_model_usage": [
+      {
+        "model": "gpt-5.6-luna",
+        "input_tokens": 459331,
+        "cached_input_tokens": 400128,
+        "output_tokens": 10180,
+        "cost_usd": null,
+        "context_window": null,
+        "max_output_tokens": null
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "diagnostic_availability": {
+        "available": false,
+        "fields": [],
+        "reason": "codex-stream-diagnostic-normalization-not-supported"
+      },
+      "tool_error_count": null,
+      "recoverable_tool_error_count": null,
+      "infrastructure_tool_error_count": null,
+      "optional_verifier_environment_error_count": null,
+      "recovered_temp_path_error_count": null,
+      "sandbox_error_count": null,
+      "sandbox_cwd_error_count": null,
+      "agent_tool_call_count": null,
+      "agent_tool_error_count": null,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": null,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": false,
+        "product_edit_count": 0,
+        "product_revision_count": 0,
+        "last_product_edit_event_index": null,
+        "post_edit_command_count": 0,
+        "static_closure_count": 0,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 0,
+        "verification_after_ready_count": 0,
+        "compliance_pass": false,
+        "revisions": []
+      },
+      "proof_execution_gate": null,
+      "host_policy": null
+    },
+    "attribution": {
+      "runtime": {
+        "runtime_target": "codex",
+        "agent": "codex-cli",
+        "agent_version": null,
+        "binary_sha256": null,
+        "model_requested": "gpt-5.6-luna",
+        "model_reported": null,
+        "model_evidence_mode": "cli-argument",
+        "effort_requested": "high",
+        "auth_mode": null,
+        "provider_route": null,
+        "provider_effort_argument": null,
+        "hook_trust_bypassed": false,
+        "usage_attribution": {
+          "available": true,
+          "evidence_mode": "provider-event",
+          "reason": null
+        }
+      },
+      "source_commit": "b109d4133ee94303058cb3b97469a5fb2813624f",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true,
+        "detached": false
+      },
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": false,
+      "changed_product_files": []
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots",
+      "proof_trace": ".benchmark/proof-trace.json",
+      "host_policy_state": null
+    }
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "evaluator_schema": "0.5",
+  "product_version": "1.9.56",
+  "status": "execution_stopped_provider_resource_exhausted_composer_deferred",
+  "output_root": "/tmp/u1956",
+  "scheduled_cells": 9,
+  "prepared_cells": 9,
+  "matrix_sha256": "77f14fb6f93ae645c25cd6c8cad34ef95ce28035e3502b87def51bd5006b6317",
+  "source_commit": "a623c0b",
+  "representative_cell": {
+    "id": "pricing-t1-omd",
+    "files": [
+      ".benchmark/PROMPT.md",
+      ".benchmark/manifest.json",
+      ".benchmark/matrix-cell.json",
+      ".cursor/skills/omd-apply/SKILL.md",
+      ".cursor/skills/omd-apply/agents/openai.yaml",
+      "AGENTS.md",
+      "DESIGN.md",
+      "index.html"
+    ],
+    "manifest_sha256": "2ecf18c6035abef72ccb8b434b92970f99e1fa8bdaee29cc8a6819e3f9c2d516",
+    "matrix_cell_sha256": "0aadb6d98bf726fc9e9ad2915e0a964ca1a019f307934d67acb1ed3a2f98d3ba",
+    "starter_sha256": "07c3374778a21511822ca710d7018b1cd3b1a3dd449242e8063fcd73c8423705",
+    "design_md_sha256": "9521d3ef10d6f25823d6591ea8bab45967ec7ad0a078cac2de28a87b570ca721",
+    "installed_skill_sha256": "938c6f0a7bb2ce172786274599b56591f01a82ee8e6bd1bf3d54bef03c74e4c7",
+    "skill_sidecar_sha256": "f0ad5294de3f599bbed124708c61988be9098e20d4723ce3574023144751253e"
+  },
+  "source_attestation": {
+    "dirty": false,
+    "publishable": true,
+    "status_entries": 0
+  },
+  "controller": {
+    "workspace": "dependency-complete-primary",
+    "evaluator_preflight_passed": true,
+    "dependencies": [
+      "playwright-core",
+      "axe-core"
+    ]
+  },
+  "pacing": {
+    "policy": "fixed-inter-cell",
+    "inter_cell_delay_seconds": 120,
+    "planned_wait_count": 8,
+    "counts_toward_cell_wall_time": false
+  },
+  "provider_execution_started": true,
+  "provider_execution_completed": false,
+  "completed_cells": 0,
+  "stopped_cell": "pricing-t1-baseline",
+  "not_started_cells": 8,
+  "stop_reason": "process-failure: Cursor Provider resource_exhausted",
+  "approval": {
+    "received_for_this_fresh_root": true,
+    "scope": "Nine serial Cursor Composer 2.5 cells in /tmp/u1956 using only the locked per-cell file boundary and eight retained 120-second inter-cell waits.",
+    "authorization_basis": "The user granted standing approval for all future locked benchmark external transmissions in the Codex conversation.",
+    "retry_policy": "none-primary",
+    "stop_policy": "first failure freezes the matrix; no resume or immediate clone"
+  }
+}

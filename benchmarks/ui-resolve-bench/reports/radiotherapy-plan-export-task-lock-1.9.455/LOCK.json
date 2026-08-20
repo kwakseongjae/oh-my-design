@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.455",
+  "task_id": "radiotherapy-plan-export-review-v0.1",
+  "status": "locked-unseen",
+  "facts": {
+    "treatment_plans": 5,
+    "dicom_evidence_bundles": 7,
+    "qa_windows": 3,
+    "relationship_carriers": [
+      "plan-dicom-manifest",
+      "qa-window-strip",
+      "export-decision"
+    ],
+    "compound_atomic_target": "PLAN-HN-042731 + DICOM-RS-849103",
+    "actual_zoom_state": "Physics review pending"
+  },
+  "baseline": {
+    "deterministic_score": 75,
+    "deterministic_max": 85,
+    "ui_resolved": false,
+    "green": [
+      "task-contract",
+      "state-journey",
+      "design-grounding",
+      "evidence-honesty",
+      "desktop-geometry",
+      "minimum-targets",
+      "keyboard"
+    ],
+    "red": [
+      "390px-overflow-and-character-range-atomic-lines",
+      "320px-overflow-and-character-range-atomic-lines",
+      "actual-200%-overflow-and-character-range-atomic-lines",
+      "narrow-and-actual-state-two-line",
+      "serious-color-contrast"
+    ],
+    "contrast_ratios": {"muted_on_canvas": 4.12},
+    "passive_text_scroll_containers": 0
+  },
+  "sha256": {
+    "task": "ca9488e3a847f11110f8c2703b63403a4c71b16e75fd9e87b9f17569c814043c",
+    "prompt": "1c1a8e37d60fd5bac076517eb76d49e83bf60eb12376d5a2fe68aecf9961ace2",
+    "index": "592db3d6e2fedc66dc8dc844bbe77798d8630ba3b36ced9d63320e7b6fc3507b",
+    "design": "d7616051aa613605a678d9fae7edb1d0153083a5420be5196951da8649205d99",
+    "baseline_score": "813ed378e8fdd8e2675156970da1f42a2e53028a8b3b14a3b3688ecb2d8e7893"
+  },
+  "provider_calls": 0,
+  "next": "Preregister exact 1.9.409 control versus exact 1.9.453 candidate in a fresh runtime-bound Reliability@3 matrix."
+}

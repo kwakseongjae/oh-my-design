@@ -1,0 +1,60 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "support-routing-reflow-v7-grok-validation-1.9.150",
+  "status": "complete-v7-rejected",
+  "provider_calls": 6,
+  "output_root": "/tmp/u19150",
+  "prepared_cells": 6,
+  "equality": {
+    "task_version": "0.1.0",
+    "core_prompt_sha256": "21008e52911623f820b95c554af22381f547f3cd9886e118328fcb00bcb523fe",
+    "prompt_sha256": "f200de8b8e76125488c1f497f87a541d544148b6187c82cde9b56c0f6f1e7100",
+    "starter_sha256": "ea6e6a8eef2bf0039b83b6efbb92b30ad9ccea038cedff7860c4b9e6ec70750e",
+    "design_md_sha256": "23e2ca9af2a5100611fb2ef30352686632afab452a6d8ba2ba90c8794cd1a2ce",
+    "activation_delta_sha256": "01728b95555028b7db735816e304bd2e51ca60aee1a59fd65e9b97aa75c58a9f",
+    "runtime": "cursor",
+    "model": "cursor-grok-4.5-high",
+    "effort": "high",
+    "timeout_seconds": 900
+  },
+  "arms": {
+    "previous": {
+      "variant_id": "omd-portable-jade",
+      "source_commit": "f013dbd9f94a1e018f7cf8a4e500207fe982b00a",
+      "installed_cursor_skill_sha256": "d7a890ac08f8a4cce8c541b186039c9fcd4245a363f7f97132a2bbf8f46f52d5",
+      "source_clean": true,
+      "source_detached": true,
+      "source_publishable": true
+    },
+    "candidate": {
+      "variant_id": "omd-portable-reflow-v7-candidate",
+      "source_commit": "0b81b5264cf7bf955629d0dd2a98d1aaff56f0a3",
+      "installed_cursor_skill_sha256": "079c32e6a0974b696237b80e652e0796e4b86a260a6c9c071d61580ad75b928a",
+      "source_clean": true,
+      "source_detached": true,
+      "source_publishable": true
+    }
+  },
+  "execution_contract": {
+    "serial": true,
+    "inter_cell_delay_seconds": 120,
+    "max_new_cells_per_invocation": 1,
+    "retry": false,
+    "fallback": false,
+    "repair": false,
+    "replacement": false,
+    "model_substitution": false
+  },
+  "next_cell": null,
+  "result": {
+    "valid_cells": 6,
+    "previous_scores": [83, 81, 81],
+    "candidate_scores": [85, 71, 81],
+    "candidate_paired_wtl": [1, 1, 1],
+    "previous_ui_resolved": 0,
+    "candidate_ui_resolved": 1,
+    "previous_reliability_at_3": 0,
+    "candidate_reliability_at_3": 0,
+    "decision": "reject-v7"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "certificate-rotation-reflow-v6-grok-validation-1.9.146",
+  "status": "complete-v6-rejected",
+  "provider_calls": 6,
+  "output_root": "/tmp/u19146",
+  "prepared_cells": 6,
+  "diagnostic_capacity_probe": {
+    "excluded_from_denominator": true,
+    "workspace": "/tmp/omd-grok-capacity-20260801",
+    "requested_model": "cursor-grok-4.5-high",
+    "reported_model": "Cursor Grok 4.5 High",
+    "result": "OMD_CAPACITY_OK",
+    "wall_ms": 5659,
+    "input_tokens": 19369,
+    "cache_read_tokens": 256,
+    "output_tokens": 30
+  },
+  "equality": {
+    "task_version": "0.1.0",
+    "core_prompt_sha256": "f13515bbbf5ba002d4dc9636324fbe4f01a29c806d2684d8fbe96953a6278b56",
+    "prompt_sha256": "3fecf23cc2607825645f5a5e907a758238e79a37a794575a9f82cb3a64f78af4",
+    "starter_sha256": "4c631a5fdb81c7b3610e6e46926e171bf6778f473225cc12844cbb7396f3b2cd",
+    "design_md_sha256": "1ac1a3707b4078afb77ea6c44fec78788eae47b74aa88b45b0978d971deb628e",
+    "activation_delta_sha256": "01728b95555028b7db735816e304bd2e51ca60aee1a59fd65e9b97aa75c58a9f",
+    "runtime": "cursor",
+    "model": "cursor-grok-4.5-high",
+    "effort": "high",
+    "timeout_seconds": 900
+  },
+  "arms": {
+    "previous": {
+      "variant_id": "omd-portable-jade",
+      "source_commit": "f013dbd9f94a1e018f7cf8a4e500207fe982b00a",
+      "installed_cursor_skill_sha256": "22eb96d8ac5da85477c5120fadaa23605252ac9afed46ee19f33da16fd7a567d",
+      "source_clean": true,
+      "source_detached": true,
+      "source_publishable": true
+    },
+    "candidate": {
+      "variant_id": "omd-portable-reflow-v6-candidate",
+      "source_commit": "d971174a857827d58f11dac58ebb5fb6370d9c35",
+      "installed_cursor_skill_sha256": "07c75167d719ed7ff9a482aa30358bbbd2fc40269ec01ea7a80efaadaa9c012d",
+      "source_clean": true,
+      "source_detached": true,
+      "source_publishable": true
+    }
+  },
+  "execution_contract": {
+    "serial": true,
+    "inter_cell_delay_seconds": 120,
+    "max_new_cells_per_invocation": 1,
+    "retry": false,
+    "fallback": false,
+    "repair": false,
+    "replacement": false,
+    "model_substitution": false
+  },
+  "next_cell": null,
+  "result": {
+    "valid_cells": 6,
+    "previous_scores": [81, 77, 77],
+    "candidate_scores": [83, 85, 81],
+    "candidate_paired_wtl": [3, 0, 0],
+    "previous_ui_resolved": 0,
+    "candidate_ui_resolved": 1,
+    "previous_reliability_at_3": 0,
+    "candidate_reliability_at_3": 0,
+    "decision": "reject-v6"
+  }
+}

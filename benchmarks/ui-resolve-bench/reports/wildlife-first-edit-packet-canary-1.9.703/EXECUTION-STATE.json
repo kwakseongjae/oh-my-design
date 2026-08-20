@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.3",
+  "experiment_id": "wildlife-first-edit-packet-canary-1.9.703",
+  "status": "complete",
+  "scheduled_cells": 1,
+  "completed_cells": 1,
+  "started_at": "2026-08-05T13:51:07.838Z",
+  "finished_at": "2026-08-05T13:58:09.020Z",
+  "max_new_cells": 1,
+  "retry_count": 0,
+  "replacement_count": 0,
+  "locked_plan_sha256": "1a77e71fc2931bcc0a3ed2e15c32669dbed6c82f42e0789d047e3edf41e64103",
+  "preparation_state_sha256": "aa7e098836f2e1968909b871f70e7bbc18dd173cb21ffe103d54938a9082860a",
+  "cell": {
+    "id": "luna-wildlife-first-edit-r1",
+    "validity": "valid",
+    "run_status": "complete",
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "wall_time_ms": 418286,
+    "tokens": 2156519,
+    "run_result_sha256": "14071e467a9b88ef505f4fa8c91a388689e2bd7f3de3af85e17583201ff58e80",
+    "score_sha256": "72fd85948eb46bc9c785395cb248385618e5b799a9ceb216cd59b12c787d7dad",
+    "proof_trace_sha256": "85d8131815f5ee988e9b84bec9da161280e9167105fff43cd980503c4333c88f"
+  }
+}

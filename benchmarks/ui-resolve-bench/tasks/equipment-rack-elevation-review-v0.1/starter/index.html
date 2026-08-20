@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Northline equipment rack elevation review</title>
+  <style>
+    :root{--canvas:#F4F0E8;--surface:#FFFCF6;--ink:#1C2422;--muted:#68716D;--border:#AAB1AD;--action:#24423C;--signal:#C7653C}
+    *{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.5 Arial,sans-serif}h1{font:48px/1.04 Georgia,serif;margin:8px 0 14px;max-width:760px}button,input{font:inherit;border:1px solid var(--border);border-radius:2px;background:var(--surface);color:var(--ink);min-height:44px}button{padding:10px 16px;cursor:pointer}button[aria-pressed=true],[data-primary-action]{background:var(--action);color:white}input{padding:10px 12px;width:100%}.shell{max-width:1180px;margin:auto;padding:34px 28px 52px}nav{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:16px}.eyebrow,small{font-size:11px;letter-spacing:.16em;text-transform:uppercase}.muted{color:var(--muted)}.intro{margin:42px 0 28px}.controls{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}.toggle-line{display:flex;gap:12px;align-items:center;margin:18px 0}.thermal-note{border-left:3px solid var(--signal);padding:8px 12px}.rack-frame{border:1px solid var(--border);background:var(--surface);padding:18px}.rack{min-width:760px;border:1px solid var(--ink)}.rack-unit{display:grid;grid-template-columns:100px 1fr 130px;align-items:center;min-height:54px;border-bottom:1px solid var(--border)}.rack-unit:last-child{border-bottom:0}.unit-id{font:700 13px/1 monospace;padding:0 18px}.device,.reserved,.utility{height:100%;display:flex;align-items:center;padding:10px 18px;border-left:1px solid var(--border)}.device{background:#E8EEE9}.device-id{font-family:monospace;font-weight:700}.reserved{color:var(--muted);font-style:italic}.utility{color:var(--muted)}.feed{padding:0 14px;color:var(--muted);font-size:13px}.decision{display:grid;grid-template-columns:1.2fr 1fr 1fr auto;gap:18px;align-items:end;border:1px solid var(--border);background:var(--surface);margin-top:22px;padding:20px}.decision div{display:grid;gap:5px}.decision strong{font-size:18px}.state{color:var(--signal);font-weight:700}.form-card{border-top:1px solid var(--border);margin-top:26px;padding-top:24px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end}.field{display:grid;gap:7px}.status{grid-column:1/-1;min-height:24px}.compact{white-space:nowrap}footer{margin-top:32px;border-top:1px solid var(--border);padding-top:18px}
+    @media(max-width:720px){.shell{padding:22px 16px 36px}h1{font-size:38px}.rack-frame{padding:10px}.rack{min-width:700px}.unit-id,.device-id{word-break:break-all}.decision{grid-template-columns:1fr 1fr}.decision [data-bench-decision-role="action"]{grid-column:1/-1}.form-card{grid-template-columns:1fr}.form-card button{width:100%}.status{grid-column:auto}}
+    :focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+  </style>
+</head>
+<body data-view="front">
+  <div class="shell">
+    <nav aria-label="Review navigation"><strong>NORTHLINE / FACILITIES</strong><span class="muted">East equipment room</span></nav>
+    <main>
+      <header class="intro"><span class="eyebrow">Rack elevation evidence</span><h1>Review the supplied unit placement.</h1><p class="muted">Inspect twelve rack units, six device placements, and three reserved gaps. Positions are supplied planning evidence, not operational outcomes.</p></header>
+      <section aria-label="Elevation controls">
+        <div class="controls">
+          <button type="button" data-bench="elevation-view-option" data-view="front" aria-pressed="true">Front</button>
+          <button type="button" data-bench="elevation-view-option" data-view="power" aria-pressed="false">Power</button>
+          <button type="button" data-bench="elevation-view-option" data-view="network" aria-pressed="false">Network</button>
+        </div>
+        <div class="toggle-line"><button type="button" data-bench="thermal-toggle" aria-pressed="false"><span data-bench="compact-control-copy" class="compact">Show thermal notes</span></button><span class="muted">Optional supplied annotations</span></div>
+        <p class="thermal-note" hidden>Thermal note: DEV-CACHE-B04 is adjacent to reserved unit U11.</p>
+      </section>
+      <section class="rack-frame" data-bench-design-role="rack-elevation" aria-label="Supplied rack elevation">
+        <div class="rack">
+          <div class="rack-unit" data-bench="rack-unit"><span class="unit-id" data-bench="unit-id">U12</span><div class="device" data-bench="device-block"><span class="device-id" data-bench="device-id">DEV-EDGE-A17</span></div><span class="feed">FEED-A</span></div>
+          <div class="rack-unit" data-bench="rack-unit"><span class="unit-id" data-bench="unit-id">U11</span><div class="reserved" data-bench="reserved-gap">Reserved gap</div><span class="feed">—</span></div>
+          <div class="rack-unit" data-bench="rack-unit"><span class="unit-id" data-bench="unit-id">U10</span><div class="device" data-bench="device-block"><span class="device-id" data-bench="device-id">DEV-CACHE-B04</span></div><span class="feed">FEED-B</span></div>
+          <div class="rack-unit" data-bench="rack-unit"><span class="unit-id" data-bench="unit-id">U09</span><div class="utility">Cable guide</div><span class="feed">GUIDE-1</span></div>
+          <div class="rack-unit" data-bench="rack-unit"><span class="unit-id" data-bench="unit-id">U08</span><div class="device" data-bench="device-block"><span class="device-id" data-bench="device-id">DEV-SWITCH-C22</span></div><span class="feed">FEED-A</span></div>
+          <div class="rack-unit" data-bench="rack-unit"><span class="unit-id" data-bench="unit-id">U07</span><div class="reserved" data-bench="reserved-gap">Reserved gap</div><span class="feed">—</span></div>
+          <div class="rack-unit" data-bench="rack-unit"><span class="unit-id" data-bench="unit-id">U06</span><div class="device" data-bench="device-block"><span class="device-id" data-bench="device-id">DEV-STORE-D09</span></div><span class="feed">FEED-B</span></div>
+          <div class="rack-unit" data-bench="rack-unit"><span class="unit-id" data-bench="unit-id">U05</span><div class="utility">Cable guide</div><span class="feed">GUIDE-2</span></div>
+          <div class="rack-unit" data-bench="rack-unit"><span class="unit-id" data-bench="unit-id">U04</span><div class="device" data-bench="device-block"><span class="device-id" data-bench="device-id">DEV-PATCH-E31</span></div><span class="feed">FEED-A</span></div>
+          <div class="rack-unit" data-bench="rack-unit"><span class="unit-id" data-bench="unit-id">U03</span><div class="reserved" data-bench="reserved-gap">Reserved gap</div><span class="feed">—</span></div>
+          <div class="rack-unit" data-bench="rack-unit"><span class="unit-id" data-bench="unit-id">U02</span><div class="device" data-bench="device-block"><span class="device-id" data-bench="device-id">DEV-POWER-F06</span></div><span class="feed">FEED-B</span></div>
+          <div class="rack-unit" data-bench="rack-unit"><span class="unit-id" data-bench="unit-id">U01</span><div class="utility">Rack base</div><span class="feed">BASE-1</span></div>
+        </div>
+      </section>
+      <section class="decision" data-bench-decision-role="context" aria-label="Review handoff">
+        <div><small>Target</small><strong data-bench-decision-role="target">RACK-EAST-04 · U01–U12</strong></div>
+        <div><small>Evidence</small><span data-bench-decision-role="evidence">12 rack units · 6 devices · 3 reserved gaps</span></div>
+        <div><small>State</small><span class="state" data-bench-decision-role="state">Elevation review open</span></div>
+        <button type="button" data-primary-action data-bench-decision-role="action">Open handoff</button>
+      </section>
+      <form class="form-card" data-bench="rack-form" novalidate>
+        <div class="field"><label for="review-name">Review name</label><input id="review-name" data-bench="review-name" required></div><button data-primary-action>Save review</button><p class="status muted" data-bench="form-status" role="status"></p>
+      </form>
+    </main>
+    <footer class="muted">Northline · supplied rack evidence only</footer>
+  </div>
+  <script>
+    const views=[...document.querySelectorAll('[data-bench="elevation-view-option"]')];
+    views.forEach(button=>button.addEventListener('click',()=>{views.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));document.body.dataset.view=button.dataset.view}));
+    const toggle=document.querySelector('[data-bench="thermal-toggle"]');const note=document.querySelector('.thermal-note');
+    toggle.addEventListener('click',()=>{const on=toggle.getAttribute('aria-pressed')!=='true';toggle.setAttribute('aria-pressed',String(on));note.hidden=!on});
+    const form=document.querySelector('[data-bench="rack-form"]');const field=document.querySelector('[data-bench="review-name"]');const status=document.querySelector('[data-bench="form-status"]');
+    form.addEventListener('submit',event=>{event.preventDefault();const value=field.value.trim();if(!value){field.setAttribute('aria-invalid','true');status.textContent='Enter a review name.';field.focus();return}field.removeAttribute('aria-invalid');status.textContent=`Saved ${value}.`});
+  </script>
+</body>
+</html>

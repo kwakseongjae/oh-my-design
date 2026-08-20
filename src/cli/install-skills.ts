@@ -24,6 +24,12 @@ import {
   renderManagedHook,
 } from './hook-contract.js';
 import { unsafeManagedPath } from './install-path.js';
+import {
+  installProofPolicy,
+  removeProofPolicy,
+  type ProofPolicyTarget,
+} from './proof-policy.js';
+import type { WorkflowLanguage } from './workflows.js';
 
 export type SkillTarget = 'claude-code' | 'codex' | 'opencode' | 'cursor';
 
@@ -37,9 +43,17 @@ export function targetsAvailableForScope(
   return scope === 'global' ? targets.filter((target) => target !== 'cursor') : targets;
 }
 
-/** Channels that host SKILL.md trees. Cursor is NOT one — it consumes a
- *  `.cursor/rules` shim + the shared `.claude/data` catalog (issue #20). */
-type SkillChannel = Exclude<SkillTarget, 'cursor'>;
+export function skillInvocationName(
+  skill: string,
+  target: SkillTarget,
+): string {
+  return target === 'opencode' || target === 'cursor' || skill === 'claude-design'
+    ? skill
+    : skill.replace(/^omd-/, 'omd:');
+}
+
+/** Channels that host Agent Skills-compatible SKILL.md trees. */
+type SkillChannel = SkillTarget;
 
 export interface InstallSkillsOptions {
   dir?: string;
@@ -60,11 +74,181 @@ export interface InstallSkillsOptions {
   /** Minimal install: only the named skill files — skip sub-agents, data files,
    *  hooks, and settings.json. Ideal for shipping a single standalone skill. */
   skillsOnly?: boolean;
+  /** Compatibility mode for Cursor clients without Agent Skills support.
+   *  Installs only the legacy project rule + shared catalog for Cursor. */
+  cursorRuleOnly?: boolean;
+  /** Opt in to the project-local Claude Code/Codex proof-execution blocker. */
+  proofPolicy?: boolean;
+  /** Remove only the managed proof-policy hooks and files, preserving user hooks. */
+  removeProofPolicy?: boolean;
   /** Install to each channel's user-level directory instead of this project
    *  (`~/.claude`, `~/.agents` + `~/.codex`, or `~/.config/opencode`).
    *  Writes skills + sub-agents (+ data); never touches global hooks/settings.
    *  When unset and interactive, the TUI asks project-vs-global. */
   global?: boolean;
+  /** Language used for the post-install activation guidance. */
+  lang?: WorkflowLanguage;
+}
+
+interface PostInstallCopy {
+  title: string;
+  restartAgent: string;
+  restartCursor: string;
+  designSystemPrompt: string;
+  homePrompt: string;
+  routeExplanation: string;
+  walkthrough: string;
+  powerUser: string;
+  sessionWarning: string;
+  cursorSessionWarning: string;
+  cursorNative: string;
+  cursorCompatibility: string;
+  builder: string;
+  cursorApplyLabel: string;
+  cursorFullInstall: string;
+}
+
+const POST_INSTALL_COPY: Record<WorkflowLanguage, PostInstallCopy> = {
+  en: {
+    title: 'Next',
+    restartAgent: 'Restart your coding agent, then send this prompt:',
+    restartCursor: 'Restart Cursor, then continue with DESIGN.md:',
+    designSystemPrompt: 'Set up a Toss-inspired design system for a family meal-tracking app. Ask before writing DESIGN.md.',
+    homePrompt: 'Using this DESIGN.md, design the home screen.',
+    routeExplanation: 'OmD routes the request through omd:init, prepares an exact preview, and adopts the approved package atomically. Then continue with:',
+    walkthrough: 'Full walkthrough: “Your first 60 seconds” in the README. Routing is automatic; no slash command is required.',
+    powerUser: 'Power user: /omd-harness <task> opens the full checkpointed pipeline.',
+    sessionWarning: 'Already running? Restart the coding agent. Codex must also trust the project before loading project-local roles.',
+    cursorSessionWarning: 'Already running? Restart Cursor so it reloads the project rule.',
+    cursorNative: 'Cursor loads OmD Agent Skills from .cursor/skills and keeps DESIGN.md precedence in a small bootstrap rule.',
+    cursorCompatibility: 'Rule-only compatibility can apply an existing root DESIGN.md, but it cannot create one. The local catalog is read-only; do not copy or adapt it into the project.',
+    builder: 'If DESIGN.md is missing, download a standalone Core v2 file from Builder and validate it before building.',
+    cursorApplyLabel: 'After a valid root DESIGN.md exists, send:',
+    cursorFullInstall: 'For Agent Skills and Autopilot creation, reinstall Cursor without --cursor-rule-only.',
+  },
+  ko: {
+    title: '다음 단계',
+    restartAgent: '코딩 에이전트를 다시 시작한 뒤, 대화창에 이 요청을 입력하세요:',
+    restartCursor: 'Cursor를 다시 시작한 뒤 DESIGN.md 작업을 이어가세요:',
+    designSystemPrompt: '토스 스타일로 가족 식단 공유 앱의 디자인 시스템을 제안하고, DESIGN.md를 쓰기 전에 확인해줘.',
+    homePrompt: '이 DESIGN.md를 기준으로 홈 화면을 디자인해줘.',
+    routeExplanation: 'OmD가 요청을 omd:init으로 연결해 정확한 미리보기를 준비하고, 승인된 패키지만 원자적으로 채택합니다. 이어서 이렇게 요청하세요:',
+    walkthrough: '전체 사용법은 README의 “첫 60초”에서 볼 수 있습니다. 라우팅은 자동이라 슬래시 명령을 외울 필요가 없습니다.',
+    powerUser: '고급 사용: /omd-harness <task>로 체크포인트가 있는 전체 파이프라인을 시작합니다.',
+    sessionWarning: '이미 실행 중이었다면 코딩 에이전트를 다시 시작하세요. Codex는 프로젝트를 신뢰해야 로컬 역할을 불러옵니다.',
+    cursorSessionWarning: '이미 실행 중이었다면 Cursor를 다시 시작해 프로젝트 규칙을 새로 불러오세요.',
+    cursorNative: 'Cursor는 .cursor/skills의 OmD Agent Skills를 읽고, 작은 부트스트랩 규칙으로 DESIGN.md 우선순위를 지킵니다.',
+    cursorCompatibility: 'rule-only 호환 모드는 기존 루트 DESIGN.md를 적용할 수 있지만 새로 만들 수는 없습니다. 로컬 카탈로그는 읽기 전용이며 프로젝트로 복사하거나 각색하면 안 됩니다.',
+    builder: 'DESIGN.md가 없다면 Builder에서 독립 실행 가능한 Core v2 파일을 내려받고 검증한 뒤 구현하세요.',
+    cursorApplyLabel: '유효한 루트 DESIGN.md가 준비된 뒤 이렇게 요청하세요:',
+    cursorFullInstall: 'Agent Skills와 Autopilot 생성 기능이 필요하면 --cursor-rule-only 없이 Cursor를 다시 설치하세요.',
+  },
+  ja: {
+    title: '次の手順',
+    restartAgent: 'コーディングエージェントを再起動し、チャットに次の依頼を入力してください:',
+    restartCursor: 'Cursorを再起動し、DESIGN.mdの作業を続けてください:',
+    designSystemPrompt: 'Tossを参考に、家族向け食事記録アプリのデザインシステムを提案してください。DESIGN.mdを書く前に確認を取ってください。',
+    homePrompt: 'このDESIGN.mdを基準にホーム画面をデザインしてください。',
+    routeExplanation: 'OmDは依頼をomd:initに振り分け、正確なプレビューを準備し、承認されたパッケージだけをアトミックに採用します。続けて次のように依頼してください:',
+    walkthrough: '詳しい手順はREADMEの「最初の60秒」を参照してください。振り分けは自動なので、スラッシュコマンドを覚える必要はありません。',
+    powerUser: '上級者向け: /omd-harness <task> でチェックポイント付きの全工程を開始できます。',
+    sessionWarning: 'すでに起動中の場合はエージェントを再起動してください。Codexでは、プロジェクトを信頼するとローカルの役割が読み込まれます。',
+    cursorSessionWarning: 'すでに起動中の場合は、Cursorを再起動してプロジェクトルールを読み直してください。',
+    cursorNative: 'Cursorは.cursor/skillsのOmD Agent Skillsを読み込み、小さな起動ルールでDESIGN.mdの優先順位を保ちます。',
+    cursorCompatibility: 'rule-only互換モードは既存のルートDESIGN.mdを適用できますが、新規作成はできません。ローカルカタログは読み取り専用であり、プロジェクトへコピーまたは改変しないでください。',
+    builder: 'DESIGN.mdがない場合は、Builderから単独で使えるCore v2ファイルをダウンロードし、検証してから実装してください。',
+    cursorApplyLabel: '有効なルートDESIGN.mdを用意した後、次を送信してください:',
+    cursorFullInstall: 'Agent SkillsとAutopilotによる作成が必要な場合は、--cursor-rule-onlyを付けずにCursorを再インストールしてください。',
+  },
+  'zh-CN': {
+    title: '下一步',
+    restartAgent: '重启编程助手，然后在对话框中发送下面的任务:',
+    restartCursor: '重启 Cursor，然后继续处理 DESIGN.md:',
+    designSystemPrompt: '参考 Toss，为家庭饮食记录应用设计一套设计系统。写入 DESIGN.md 前先向我确认。',
+    homePrompt: '以这份 DESIGN.md 为依据，设计首页。',
+    routeExplanation: 'OmD 会把任务交给 omd:init，生成精确预览，并以原子方式采用已批准的包。接着发送:',
+    walkthrough: '完整步骤见 README 的“最初 60 秒”。任务会自动分流，不需要记忆斜杠命令。',
+    powerUser: '进阶用法: /omd-harness <task> 可启动带检查点的完整流程。',
+    sessionWarning: '如果助手已经在运行，请重启。Codex 还需要信任项目，才能加载项目内的角色。',
+    cursorSessionWarning: '如果 Cursor 已经在运行，请重启以重新加载项目规则。',
+    cursorNative: 'Cursor 从 .cursor/skills 加载 OmD Agent Skills，并用一条精简的启动规则确保 DESIGN.md 优先。',
+    cursorCompatibility: 'rule-only 兼容模式可以应用现有的根目录 DESIGN.md，但不能新建。 本地参考库为只读，不得复制或改写为项目文件。',
+    builder: '如果缺少 DESIGN.md，请从 Builder 下载可独立使用的 Core v2 文件，验证后再开始实现。',
+    cursorApplyLabel: '有效的根目录 DESIGN.md 就绪后，发送:',
+    cursorFullInstall: '如需 Agent Skills 和 Autopilot 创建功能，请不要使用 --cursor-rule-only，重新安装 Cursor。',
+  },
+  'zh-TW': {
+    title: '下一步',
+    restartAgent: '重新啟動程式助理，接著在對話框傳送以下工作:',
+    restartCursor: '重新啟動 Cursor，接著繼續處理 DESIGN.md:',
+    designSystemPrompt: '參考 Toss，為家庭飲食記錄應用設計一套設計系統。寫入 DESIGN.md 前先向我確認。',
+    homePrompt: '以這份 DESIGN.md 為依據，設計首頁。',
+    routeExplanation: 'OmD 會把工作交給 omd:init，產生精確預覽，並以原子方式採用已核准的套件。接著傳送:',
+    walkthrough: '完整步驟請見 README 的「最初 60 秒」。工作會自動分流，不需要記住斜線指令。',
+    powerUser: '進階用法: /omd-harness <task> 可啟動含檢查點的完整流程。',
+    sessionWarning: '若助理已在執行，請重新啟動。Codex 還需要信任專案，才能載入專案內的角色。',
+    cursorSessionWarning: '若 Cursor 已在執行，請重新啟動以重新載入專案規則。',
+    cursorNative: 'Cursor 會從 .cursor/skills 載入 OmD Agent Skills，並以精簡的啟動規則確保 DESIGN.md 優先。',
+    cursorCompatibility: 'rule-only 相容模式可以套用既有的根目錄 DESIGN.md，但不能新建。 本機參考庫為唯讀，不得複製或改寫成專案檔案。',
+    builder: '如果缺少 DESIGN.md，請從 Builder 下載可獨立使用的 Core v2 檔案，驗證後再開始實作。',
+    cursorApplyLabel: '有效的根目錄 DESIGN.md 就緒後，傳送:',
+    cursorFullInstall: '若需要 Agent Skills 與 Autopilot 建立功能，請不要使用 --cursor-rule-only，重新安裝 Cursor。',
+  },
+};
+
+export function postInstallGuidance(
+  lang: WorkflowLanguage,
+  options: { cursorOnly: boolean; cursorRuleOnly?: boolean },
+): { title: string; body: string } {
+  const copy = POST_INSTALL_COPY[lang];
+  if (options.cursorOnly) {
+    if (options.cursorRuleOnly) {
+      return {
+        title: copy.title,
+        body: [
+          copy.restartCursor,
+          '',
+          copy.cursorCompatibility,
+          copy.builder,
+          copy.cursorFullInstall,
+          '',
+          copy.cursorApplyLabel,
+          `  ${copy.homePrompt}`,
+          '',
+          `⚠ ${copy.cursorSessionWarning}`,
+        ].join('\n'),
+      };
+    }
+    return {
+      title: copy.title,
+      body: [
+        copy.restartCursor,
+        '',
+        `  ${copy.designSystemPrompt}`,
+        '',
+        copy.cursorNative,
+        copy.builder,
+        '',
+        `⚠ ${copy.cursorSessionWarning}`,
+      ].join('\n'),
+    };
+  }
+  return {
+    title: copy.title,
+    body: [
+      copy.restartAgent,
+      '',
+      `  ${copy.designSystemPrompt}`,
+      '',
+      copy.routeExplanation,
+      `  ${copy.homePrompt}`,
+      '',
+      copy.walkthrough,
+      copy.powerUser,
+      '',
+      `⚠ ${copy.sessionWarning}`,
+    ].join('\n'),
+  };
 }
 
 interface InstallPlan {
@@ -167,7 +351,17 @@ function parseCanonicalAgent(packageRoot: string, filename: string): ParsedAgent
  *  lines) breaks discovery. So we encode the managed-by-omd marker as a
  *  custom frontmatter field (`omd_managed: true`) instead of an HTML comment.
  */
-function renderClaudeAgent(a: ParsedAgent): string {
+function rewriteAgentSkillPaths(body: string, skillRoot: string): string {
+  return body.replace(
+    /(?:~\/)?\.(?:claude|agents|opencode)\/skills\//g,
+    `${skillRoot}/`,
+  );
+}
+
+function renderClaudeAgent(
+  a: ParsedAgent,
+  scope: 'project' | 'global',
+): string {
   const fm = [
     '---',
     `name: ${JSON.stringify(a.name)}`,
@@ -178,7 +372,8 @@ function renderClaudeAgent(a: ParsedAgent): string {
     '---',
     '',
   ].join('\n');
-  return fm + a.body;
+  const skillRoot = scope === 'global' ? '~/.claude/skills' : '.claude/skills';
+  return fm + rewriteAgentSkillPaths(a.body, skillRoot);
 }
 
 type NativeAgentChannel = 'codex' | 'opencode';
@@ -199,8 +394,7 @@ function nativeAgentBody(
     ? scope === 'global' ? '~/.agents/skills' : '.agents/skills'
     : scope === 'global' ? '~/.config/opencode/skills' : '.opencode/skills';
 
-  const nativeBody = body
-    .replace(/(?:~\/)?\.claude\/skills\//g, `${skillRoot}/`)
+  const nativeBody = rewriteAgentSkillPaths(body, skillRoot)
     .replace(/You are spawned as a Claude Code subagent/g, 'You run as a host-managed subagent')
     .replace(/Claude Code subagent/g, 'host-managed subagent')
     .replace(/the Agent tool/g, "the host's native sub-agent mechanism")
@@ -331,6 +525,15 @@ function planForTarget(
           : join(projectRoot, '.opencode', 'skills'),
         layout: 'folder',
       };
+    case 'cursor':
+      // Cursor 2.4+ discovers project Agent Skills from
+      // `.cursor/skills/<name>/SKILL.md`. Keep the native path instead of
+      // relying on cross-runtime `.agents/skills` discovery.
+      return {
+        target,
+        destDir: join(projectRoot, '.cursor', 'skills'),
+        layout: 'folder',
+      };
   }
 }
 
@@ -339,10 +542,9 @@ function planForTarget(
  * (catalog JSONs, reference DESIGN.md catalog, ctx-prime helper scripts).
  * Single lookup table replacing the repeated if-else/ternary chains (issue #28).
  * `null` = the channel hosts no data dir of its own:
- *   - cursor reads the SHARED `.claude/data` path (issue #20) — resolved by
+ *   - Cursor skills read the SHARED `.claude/data` path (issue #20) — resolved by
  *     `dataDirFor()` below, which also applies the claude-code dedup guard.
- *     (Helper scripts intentionally stay skill-channel-only — a cursor-only
- *     install gets the catalog + JSONs but no ctx-prime, matching the shim's scope.)
+ *     Modern Cursor installs receive the shared helper scripts there too.
  */
 type DataChannelDir = '.claude' | '.codex' | '.opencode' | '.config/opencode';
 
@@ -437,14 +639,15 @@ function renderSkillForChannel(
   // namespaced form (`omd:apply`) or portable Agent Skills hyphen-case
   // (`omd-apply`). Always derive the installed name from the folder so every
   // channel gets the contract it actually accepts.
-  const installedName = target === 'opencode'
+  const usesPortableSkillNames = target === 'opencode' || target === 'cursor';
+  const installedName = usesPortableSkillNames
     ? folderName
     : folderName.replace(/^omd-/, 'omd:');
   const rendered = src.replace(
     /^name:\s*[^\r\n]+$/m,
     `name: ${installedName}`,
   );
-  return target === 'opencode'
+  return usesPortableSkillNames
     ? rendered.replace(/\bomd:([a-z0-9][a-z0-9-]*)\b/g, 'omd-$1')
     : rendered;
 }
@@ -534,7 +737,7 @@ function parseSkillChannels(skillMd: string): SkillChannel[] | null {
   if (!fm) return null;
   const m = /^x-omd-channels:\s*(.+)$/m.exec(fm[1]);
   if (!m) return null;
-  const valid: SkillChannel[] = ['claude-code', 'codex', 'opencode'];
+  const valid: SkillChannel[] = ['claude-code', 'codex', 'opencode', 'cursor'];
   const list = m[1]
     .split(/[,\s]+/)
     .map((s) => s.trim())
@@ -552,7 +755,7 @@ function parseSkillChannels(skillMd: string): SkillChannel[] | null {
 function skillSupportedChannels(packageRoot: string, skill: string): SkillChannel[] {
   return (
     parseSkillChannels(readFileSync(join(packageRoot, 'skills', skill, 'SKILL.md'), 'utf8')) ??
-    (['claude-code', 'codex', 'opencode'] as SkillChannel[])
+    (['claude-code', 'codex', 'opencode', 'cursor'] as SkillChannel[])
   );
 }
 
@@ -913,7 +1116,7 @@ function installAgentFile(
       ? '.codex/data'
       : '.opencode/data';
   const rendered = channel === 'claude'
-    ? renderClaudeAgent(parsed)
+    ? renderClaudeAgent(parsed, scope)
     : channel === 'codex'
       ? renderCodexAgent(parsed, scope, nativeDataRoot)
       : renderOpenCodeAgent(parsed, scope, nativeDataRoot);
@@ -1092,32 +1295,51 @@ function installReferenceCatalog(
 }
 
 /**
- * Cursor channel shim — Cursor has no skill/agent surface; it consumes a
- * project rule at `.cursor/rules/omd-design.mdc`. Frontmatter, body, and the
- * body-hash marker below mirror the omd:sync skill's cursor template EXACTLY
- * (skills/omd-sync/SKILL.md, "whole" mode: hash = sha256 of the body text,
- * 12-char hex prefix), so a later omd:sync run reads the installer-written
- * file as `clean` rather than drifted (issue #20).
+ * Cursor Agent Skills need only a small always-on bootstrap. The procedural
+ * workflow lives under `.cursor/skills`; this rule establishes DESIGN.md
+ * precedence and the fail-closed unknown boundary before dynamic discovery.
  */
-const CURSOR_RULE_BODY = [
-  'The authoritative design spec lives at `@DESIGN.md` (repo root). Open and read before generating/modifying UI.',
+const CURSOR_SKILL_BOOTSTRAP_BODY = [
+  '<!-- omd:cursor-channel=skills -->',
+  'Read the standalone design contract at `@DESIGN.md` before generating/modifying UI. With an exact valid adopted `profile: portable-core` manifest, its hash-bound System Graph is machine authority and DESIGN.md is the projection. A migration candidate is non-authoritative.',
   '',
   'Pending preference corrections: `@.omd/preferences.md`.',
   '',
-  'Precedence: DESIGN.md > preferences.md > framework defaults.',
+  'Precedence: pending explicit preference corrections > adopted Bound System graph/standalone DESIGN.md > framework defaults. Fold pending corrections into the graph and regenerate DESIGN.md before clearing them.',
   '',
-  'If DESIGN.md is missing and the user asks to establish a design system:',
-  '1. Inspect the existing product, routes, and constraints.',
-  '2. Read `.claude/data/reference-fingerprints.json` and only recommend ids present there.',
-  '3. Load the chosen `.claude/data/references/<id>/DESIGN.md`, explain the project-specific delta, and ask before writing root DESIGN.md.',
-  '4. Unknown reference fields stay absent; never substitute a system font, generic component, or guessed token as a brand fact.',
+  'OmD Agent Skills live under `.cursor/skills/`. Use the smallest relevant `omd-*` skill automatically, or invoke it from Cursor with `/omd-<name>`.',
   '',
-  'When applying DESIGN.md, preserve existing behavior and user copy unless asked, then verify the actual product route and accessibility before reporting completion.',
-  'Cursor receives this rule and the catalog, not OmD named skills or sub-agents; execute the contract directly from natural-language requests.',
+  'Unknown fields stay absent. Never substitute a system font, generic component, guessed token, or adjacent surface as a product fact.',
 ].join('\n');
 
-function renderCursorRule(): string {
-  const hash = createHash('sha256').update(CURSOR_RULE_BODY).digest('hex').slice(0, 12);
+/**
+ * Explicit compatibility mode for Cursor clients that cannot load Agent
+ * Skills. Applying an existing DESIGN.md remains supported, but authoring is
+ * fail-closed because this channel has no Core v2 workflow or adoption gate.
+ */
+const CURSOR_RULE_ONLY_BODY = [
+  '<!-- omd:cursor-channel=rule-only -->',
+  'The standalone portable design contract lives at `@DESIGN.md` (repo root). Open and read it before generating/modifying UI; without an adopted Bound System package it is also the project design source of truth.',
+  '',
+  'Pending preference corrections: `@.omd/preferences.md`.',
+  '',
+  'Precedence: pending explicit preference corrections > adopted Bound System graph/standalone DESIGN.md > framework defaults. Fold pending corrections into the graph and regenerate DESIGN.md before clearing them.',
+  '',
+  'If DESIGN.md is missing, fail closed: rule-only mode MUST NOT create it by copying, paraphrasing, or adapting `.claude/data/references/<id>/DESIGN.md`. The installed catalog is read-only import context, not a project writer.',
+  'Obtain a standalone DESIGN.md Core v2 from the Builder download, or use a skill-enabled channel to complete the staged `design-md migrate` review and explicit portable-core adoption workflow.',
+  'Before accepting a newly supplied root file, run the bundled provider-free validator: `node .claude/data/scripts/migrate-design-md-core.cjs --input ./DESIGN.md --check --require-source-valid --require-portable-core`. It must start with `# <Product or project name> Design System`, never YAML frontmatter, and contain these exact anchors in order:',
+  '`<!-- design-md:section experience -->`, `<!-- design-md:section foundations -->`, `<!-- design-md:section typography-assets -->`, `<!-- design-md:section components-states -->`, `<!-- design-md:section layout-platforms -->`, `<!-- design-md:section content-locales -->`, `<!-- design-md:section governance -->`.',
+  'The standalone file must establish product scope and a primary task, actionable foundations or constraints, and Governance rules for authority, conflict priority, unknown absence, and changes without requiring OmD or sidecars.',
+  'Unknown fields stay absent; never substitute a system font, generic component, guessed token, or adjacent surface as a product fact.',
+  'A `migration-candidate` is non-authoritative and keeps the source DESIGN.md canonical. Only an explicitly adopted, valid manifest with `profile: portable-core` makes its hash-bound System Graph the machine authority; DESIGN.md remains the standalone portable contract.',
+  '',
+  'When applying DESIGN.md, preserve existing behavior and user copy unless asked, then verify the actual product route and accessibility before reporting completion.',
+  'Compatibility mode provides the rule, read-only catalog, and validation helpers only; OmD named skills and sub-agents are not installed.',
+].join('\n');
+
+function renderCursorRule(ruleOnly: boolean): string {
+  const body = ruleOnly ? CURSOR_RULE_ONLY_BODY : CURSOR_SKILL_BOOTSTRAP_BODY;
+  const hash = createHash('sha256').update(body).digest('hex').slice(0, 12);
   return [
     '---',
     'description: Authoritative brand & UI design system. Read DESIGN.md before UI work.',
@@ -1131,21 +1353,25 @@ function renderCursorRule(): string {
     '  - "**/tailwind.config.*"',
     '  - "**/components/**"',
     '  - "**/app/**/page.*"',
-    'alwaysApply: false',
+    `alwaysApply: ${ruleOnly ? 'false' : 'true'}`,
     '---',
     '',
     `<!-- omd:start v=1 hash=${hash} -->`,
-    CURSOR_RULE_BODY,
+    body,
     '<!-- omd:end -->',
     '',
   ].join('\n');
 }
 
-function installCursorRule(installRoot: string, force: boolean): InstallResult {
+function installCursorRule(
+  installRoot: string,
+  force: boolean,
+  ruleOnly: boolean,
+): InstallResult {
   const target: SkillTarget = 'cursor';
   const skillLabel = 'rule:omd-design.mdc';
   const destPath = join(installRoot, '.cursor', 'rules', 'omd-design.mdc');
-  const rendered = renderCursorRule();
+  const rendered = renderCursorRule(ruleOnly);
 
   if (unsafeManagedPath(installRoot, destPath)) {
     return { target, skill: skillLabel, destPath, status: 'skipped-drift', reason: 'unsafe-path' };
@@ -1156,8 +1382,8 @@ function installCursorRule(installRoot: string, force: boolean): InstallResult {
   if (exists && existing === rendered) {
     return { target, skill: skillLabel, destPath, status: 'unchanged' };
   }
-  // The omd marker block doubles as the managed sentinel (matching omd:sync's
-  // whole-mode rules): a file without it is user content → drift unless --force.
+  // The omd marker block doubles as the managed sentinel. A file without it is
+  // user content → drift unless --force.
   if (exists && !existing.includes('<!-- omd:start') && !force) {
     return { target, skill: skillLabel, destPath, status: 'skipped-drift' };
   }
@@ -1181,10 +1407,9 @@ function autoDetectTargets(projectRoot: string): SkillTarget[] {
   if (presence.claudeCode) targets.push('claude-code');
   if (presence.codex) targets.push('codex');
   if (presence.opencode) targets.push('opencode');
-  // Cursor hosts no skills — its channel writes the .cursor/rules shim + the
-  // shared .claude/data catalog (issue #20). Only when .cursor is detected;
-  // the no-signal fallback below stays skill-channel-only so we never drop a
-  // .cursor dir into projects that don't use Cursor.
+  // Cursor gets native project Agent Skills plus the small DESIGN.md bootstrap
+  // rule. Only select it when .cursor is detected; the no-signal fallback below
+  // must not introduce Cursor configuration into unrelated projects.
   if (presence.cursor) targets.push('cursor');
   if (targets.length === 0) {
     // Fallback: install for all three skill channels so user gets coverage
@@ -1343,8 +1568,8 @@ export async function runInstallSkills(
   // picker shows just Claude Code). Non-TTY / --all falls back to auto-resolution.
   const supportedTargets = ((): SkillTarget[] => {
     const set = new Set<SkillTarget>(skills.flatMap((s) => skillSupportedChannels(packageRoot, s)));
-    // Cursor consumes no skills — its channel install (.cursor/rules shim +
-    // shared .claude/data catalog) is skill-independent, so always offer it.
+    // Cursor supports native Agent Skills, and explicit rule-only compatibility
+    // mode still needs to remain selectable even for a filtered skill set.
     set.add('cursor');
     return targetsAvailableForScope(
       (['claude-code', 'codex', 'opencode', 'cursor'] as SkillTarget[]).filter((t) => set.has(t)),
@@ -1412,17 +1637,71 @@ export async function runInstallSkills(
     );
     return 1;
   }
+  if (opts.cursorRuleOnly && !targets.includes('cursor')) {
+    console.error(
+      pc.red('omd install-skills: --cursor-rule-only requires the cursor target.'),
+    );
+    return 1;
+  }
+  if (opts.cursorRuleOnly && minimal) {
+    console.error(
+      pc.red('omd install-skills: --cursor-rule-only cannot be combined with --skills-only.'),
+    );
+    return 1;
+  }
+  if (opts.proofPolicy && opts.removeProofPolicy) {
+    console.error(pc.red('omd install-skills: --proof-policy and --remove-proof-policy are mutually exclusive.'));
+    return 1;
+  }
+  const proofPolicyTargets = targets.filter(
+    (target): target is ProofPolicyTarget => target === 'claude-code' || target === 'codex',
+  );
+  if ((opts.proofPolicy || opts.removeProofPolicy) && (
+    scope !== 'project' || minimal || proofPolicyTargets.length === 0
+  )) {
+    console.error(pc.red(
+      'omd install-skills: proof policy requires a project-scoped Claude Code or Codex target and cannot be combined with --skills-only.',
+    ));
+    return 1;
+  }
+  if (opts.proofPolicy && proofPolicyTargets.includes('codex') && !existsSync(join(projectRoot, '.git'))) {
+    console.error(pc.red('omd install-skills: Codex proof policy requires a Git project root so its trusted hook can resolve the repository safely.'));
+    return 1;
+  }
 
   // Global scope roots everything at the home dir, so channel plans resolve to
   // ~/.claude, ~/.agents + ~/.codex, or ~/.config/opencode. Project scope uses
   // cwd (or --dir).
   const installRoot = scope === 'global' ? homedir() : projectRoot;
-  // Cursor hosts no SKILL.md tree — it's excluded from skill plans and handled
-  // below via the .cursor/rules shim + shared data copies (issue #20).
+  if (opts.removeProofPolicy) {
+    const removed = proofPolicyTargets.flatMap((target) => removeProofPolicy(installRoot, target));
+    for (const result of removed) {
+      p.log.message(
+        `  ${STATUS_LABEL[result.status]}  ${pc.dim(result.target.padEnd(12))} ${relative(installRoot, result.destPath)}`,
+      );
+    }
+    const drift = removed.filter((result) => result.status === 'skipped-drift').length;
+    p.outro(drift > 0
+      ? pc.yellow(`Proof policy removal stopped at ${drift} modified or unsafe managed file(s).`)
+      : pc.green('Proof policy removed. Existing user hooks were preserved.'));
+    return drift > 0 ? 2 : 0;
+  }
+  // Modern Cursor installs native Agent Skills. The explicit compatibility
+  // flag is the only path that suppresses the Cursor skill tree.
   const skillChannelTargets = targets.filter(
-    (t): t is SkillChannel => t !== 'cursor'
+    (target): target is SkillChannel => !(target === 'cursor' && opts.cursorRuleOnly),
   );
   const plans = skillChannelTargets.map((t) => planForTarget(installRoot, t, scope));
+  const compatibleSkills = skills.filter((skill) =>
+    skillChannelTargets.some((target) =>
+      skillSupportedChannels(packageRoot, skill).includes(target),
+    ),
+  );
+  // Cursor currently consumes project Agent Skills, not OmD's separately
+  // generated sub-agent definitions. Do not claim those roles were installed.
+  if (targets.every((target) => target === 'cursor')) {
+    canonicalAgents = [];
+  }
 
   p.log.message(
     pc.bold('Scope: ') +
@@ -1430,8 +1709,8 @@ export async function runInstallSkills(
       pc.dim(scope === 'global' ? '  (channel user directories)' : `  (${relative(process.cwd(), projectRoot) || '.'})`)
   );
   p.log.message(
-    pc.bold(`Skills (${skills.length}): `) +
-      skills.map((s) => pc.cyan(s)).join(', ')
+    pc.bold(`Skills (${compatibleSkills.length}): `) +
+      compatibleSkills.map((s) => pc.cyan(s)).join(', ')
   );
   if (minimal) {
     // --skills-only: sub-agents are intentionally skipped (minimal single-skill
@@ -1487,12 +1766,11 @@ export async function runInstallSkills(
   }
 
   if (!minimal) {
-  // Cursor channel: write the `.cursor/rules` shim (the exact content omd:sync
-  // renders for .cursor/rules/omd-design.mdc) so Cursor reads DESIGN.md before
-  // UI work. No skills/agents/hooks — the shim plus the shared .claude/data
-  // copies below are the whole Cursor install (issue #20).
+  // Cursor channel: keep a small always-on DESIGN.md bootstrap beside native
+  // Agent Skills. `--cursor-rule-only` deliberately installs the fuller legacy
+  // rule for older Cursor clients.
   if (targets.includes('cursor')) {
-    results.push(installCursorRule(installRoot, force));
+    results.push(installCursorRule(installRoot, force, opts.cursorRuleOnly === true));
   }
 
   // Ship the read-only data assets (reference fingerprints, controlled vocab,
@@ -1500,10 +1778,12 @@ export async function runInstallSkills(
   // on the host CLI's own model — no external API keys.
   const dataFiles = [
     'reference-fingerprints.json',
+    'reference-quality.json',
     'reference-tags.md',
     'vocabulary.json',
     'synonyms.json',
     'opt-out-corpus.json',
+    'workflow-capabilities.json',
   ];
   // Channel→dir resolution (incl. the cursor shared-`.claude/data` dedup guard,
   // issue #20) lives in dataDirFor — single source for all three copy loops.
@@ -1543,14 +1823,13 @@ export async function runInstallSkills(
     }
   }
 
-  // Copy ctx-prime.cjs (+ its companion context.cjs) into each selected skill
+  // Copy deterministic harness helpers into each selected skill
   // channel's scoped data tree so /omd-harness works after either a project or
-  // global install. Cursor has no skill runtime and intentionally gets no helper.
+  // global install. Cursor shares `.claude/data`, including these helpers.
   for (const target of targets) {
-    if (target === 'cursor') continue;
     const cd = dataDirForScope(target, targets, scope);
     if (!cd) continue;
-    for (const helper of ['ctx-prime.cjs', 'context.cjs']) {
+    for (const helper of ['ctx-prime.cjs', 'context.cjs', 'design-council-prime.cjs', 'design-council-reconcile.cjs', 'design-council-handoff.cjs', 'design-system-plan.cjs', 'design-md-core-schema.cjs', 'design-md-core-conformance.cjs', 'design-md-core.cjs', 'prepare-design-md-core-review.cjs', 'activate-autopilot-design-system.cjs', 'rebind-design-md-core-migration.cjs', 'compile-design-md-core.cjs', 'adopt-design-md-core.cjs', 'migrate-design-md-core.cjs', 'validate-project-design-system.cjs', 'autopilot-mission.cjs', 'autopilot-council-plan.cjs', 'autopilot-council-reconcile.cjs', 'design-harness-context-plan.cjs']) {
       const srcHelper = join(packageRoot, 'scripts', helper);
       if (!existsSync(srcHelper)) continue;
       const destHelper = join(installRoot, cd, 'data', 'scripts', helper);
@@ -1569,6 +1848,33 @@ export async function runInstallSkills(
       mkdirSync(dirname(destHelper), { recursive: true });
       writeFileSync(destHelper, srcTxt, 'utf8');
     }
+    for (const schema of [
+      'design-md-core-manifest-v2.schema.json',
+      'design-system-graph-v2.schema.json',
+      'design-system-provenance-v2.schema.json',
+      'design-system-coverage-v2.schema.json',
+      'design-md-core-adoption-review-v2.schema.json',
+      'design-md-core-adoption-receipt-v2.schema.json',
+      'design-md-core-project-checkpoint-v2.schema.json',
+    ]) {
+      const srcSchema = join(packageRoot, 'spec', 'schema', schema);
+      if (!existsSync(srcSchema)) continue;
+      const destSchema = join(installRoot, cd, 'data', 'scripts', 'schema', schema);
+      if (unsafeManagedPath(installRoot, destSchema)) {
+        results.push({
+          target,
+          skill: `data-script-schema:${schema}`,
+          destPath: destSchema,
+          status: 'skipped-drift',
+          reason: 'unsafe-path',
+        });
+        continue;
+      }
+      const srcTxt = readFileSync(srcSchema, 'utf8');
+      if (existsSync(destSchema) && readFileSync(destSchema, 'utf8') === srcTxt) continue;
+      mkdirSync(dirname(destSchema), { recursive: true });
+      writeFileSync(destSchema, srcTxt, 'utf8');
+    }
   }
 
   // Hooks + settings.json are PROJECT-SCOPED only — a global install must not
@@ -1586,6 +1892,11 @@ export async function runInstallSkills(
     }
     // settings.json (with merge, never clobber user)
     results.push(installSettingsJson(packageRoot, installRoot, force));
+  }
+  if (scope === 'project' && opts.proofPolicy) {
+    for (const target of proofPolicyTargets) {
+      results.push(...installProofPolicy(packageRoot, installRoot, target, force));
+    }
   }
   } // !minimal — skills-only skips data files, hooks, and settings.json
 
@@ -1645,49 +1956,36 @@ export async function runInstallSkills(
         `Done. Installed ${skills.map((s) => pc.bold(s)).join(', ')} ${scope === 'global' ? `globally for ${targets.join(', ')}` : `for ${targets.join(', ')}`}.`
       ) +
         pc.dim('  →  restart your agent, then use the skill (e.g. ') +
-        pc.cyan('/claude-design') +
+        pc.cyan(`/${skillInvocationName(compatibleSkills[0] ?? skills[0], targets[0])}`) +
         pc.dim(').')
     );
     return 0;
   }
 
-  // Friendly next-step nudge after successful install.
-  // The first prompt is kept identical to the README's "Your first 60 seconds"
-  // block so the README, the terminal, and the postinstall message all teach
-  // the same activation moment. Bilingual (EN + KR) so an English reader is not
-  // handed a Korean-only outro.
+  // Friendly next-step nudge after successful install. Keep this in the
+  // operator-selected locale so the first activation moment does not fall back
+  // to an EN/KR-only block after a five-locale install.
   const cursorOnly = targets.length === 1 && targets[0] === 'cursor';
-  const nextSteps = cursorOnly
-    ? [
-        `${pc.bold('Restart Cursor, then establish or apply DESIGN.md:')}`,
-        '',
-        `  ${pc.cyan('EN')}  ${pc.dim('Set up our design system — Toss-style, for a family meal-tracking app. Ask before writing DESIGN.md.')}`,
-        `  ${pc.cyan('KR')}  ${pc.dim('토스 스타일로 가족 식단 공유 앱 디자인 시스템을 제안하고 DESIGN.md 작성 전에 확인해줘')}`,
-        '',
-        `${pc.dim('Cursor uses the installed rule + local catalog directly. It does not receive OmD named skills or sub-agents.')}`,
-        `${pc.dim('You can also choose a reference in the Builder and download DESIGN.md before asking Cursor to build.')}`,
-        '',
-        `${pc.yellow('⚠ Already-running session?')} ${pc.dim('Restart Cursor so it reloads the project rule.')}`,
-      ].join('\n')
-    : [
-        `${pc.bold('Restart your agent, then type your first prompt:')}`,
-        '',
-        `  ${pc.cyan('EN')}  ${pc.dim('Set up our design system — Toss-style, for a family meal-tracking app.')}`,
-        `  ${pc.cyan('KR')}  ${pc.dim('토스 스타일로 가족 식단 공유 앱 디자인 시스템 잡아줘')}`,
-        '',
-        `${pc.dim('Your agent routes through omd:init and writes DESIGN.md after confirmation. Then build against it:')}`,
-        `  ${pc.cyan('EN')}  ${pc.dim('Design the home screen.')}   ${pc.cyan('KR')}  ${pc.dim('홈 화면 디자인해줘')}`,
-        '',
-        `${pc.dim('Full walkthrough → "Your first 60 seconds" in the README. Routing is automatic — no slash command needed.')}`,
-        `${pc.dim('Power user: ')}${pc.cyan('/omd-harness <task>')}${pc.dim(' — jump straight into the pipeline.')}`,
-        '',
-        `${pc.yellow('⚠ Already-running session?')} ${pc.dim('Restart the coding agent after install. Codex must also trust the project before it loads project-local .codex/agents roles.')}`,
-      ].join('\n');
-  p.note(nextSteps, 'Next');
+  const nextSteps = postInstallGuidance(opts.lang ?? 'en', {
+    cursorOnly,
+    cursorRuleOnly: opts.cursorRuleOnly,
+  });
+  if (opts.proofPolicy) {
+    p.note(
+      [
+        `${pc.bold('Proof policy is enabled for:')} ${proofPolicyTargets.join(', ')}`,
+        pc.dim('Restart the selected agent. Review/trust the project hook in the host before relying on it.'),
+        pc.dim('Check with `omd doctor`; remove with the same targets plus `--remove-proof-policy`.'),
+      ].join('\n'),
+      'Execution guard',
+    );
+  }
+  p.note(nextSteps.body, nextSteps.title);
 
   // Counts derived from what was actually resolved/installed — never hardcoded,
   // so the outro can't drift from the real skill/agent/hook set (or the README).
-  const hookCount = scope === 'project' && targets.includes('claude-code') ? 4 : 0;
+  const hookCount = (scope === 'project' && targets.includes('claude-code') ? 4 : 0) +
+    (opts.proofPolicy ? proofPolicyTargets.length : 0);
   if (catalogCount > 0) {
     p.log.message(
       pc.bold('Reference catalog: ') +
@@ -1695,7 +1993,7 @@ export async function runInstallSkills(
         pc.dim(` DESIGN.md synced → ${[...catalogDestinations].join(' + ')}`),
     );
   }
-  const reportedSkillCount = skillChannelTargets.length > 0 ? skills.length : 0;
+  const reportedSkillCount = compatibleSkills.length;
   const reportedAgentCount = skillChannelTargets.length > 0 ? canonicalAgents.length : 0;
   p.outro(
     pc.green(

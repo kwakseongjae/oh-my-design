@@ -1,0 +1,95 @@
+{
+  "schema_version": "0.1",
+  "contract_id": "omd-2.0-model-role-routing-v0.1",
+  "status": "provider-zero-ready-awaiting-user-go",
+  "activation_phrase": "ㄱㄱ",
+  "provider_execution_allowed_before_activation": false,
+  "roles": {
+    "planning_review_roadmap": {
+      "runtime": "codex",
+      "model": "gpt-5.6-sol",
+      "effort": "xhigh",
+      "responsibilities": [
+        "preregistration",
+        "release-gate-interpretation",
+        "implementation-review",
+        "failure-cluster-classification",
+        "roadmap-and-blog-plan",
+        "final-release-decision"
+      ],
+      "product_implementation_allowed": false,
+      "benchmark_cell_eligible": false
+    },
+    "implementation": {
+      "runtime": "codex",
+      "model": "gpt-5.6-sol",
+      "effort": "medium",
+      "responsibilities": [
+        "core-and-runner-implementation",
+        "schema-publication-preparation",
+        "competitor-freeze-tooling",
+        "bounded-product-repair",
+        "test-and-build-fixes"
+      ],
+      "requires_planning_review": true,
+      "benchmark_cell_eligible": false
+    },
+    "benchmark_generation": {
+      "runtime": "codex",
+      "model": "gpt-5.6-luna",
+      "effort": "max",
+      "responsibilities": [
+        "selector-effort-telemetry-preflight",
+        "wow-preview-cells",
+        "release-qualification-cells",
+        "harness-pareto-cells"
+      ],
+      "workspace_policy": "fresh-preregistered-isolated-cell-only",
+      "source_product_write_allowed": false,
+      "manual_product_edit_allowed": false
+    }
+  },
+  "separation": {
+    "same_model_required_within_each_skill_comparison": true,
+    "planning_tokens_reported_separately": true,
+    "implementation_tokens_reported_separately": true,
+    "benchmark_tokens_reported_per_cell_and_aggregate": true,
+    "planning_or_implementation_runs_count_as_benchmark_cells": false,
+    "benchmark_outputs_may_not_rewrite_preregistration_or_oracle": true,
+    "model_substitution_allowed": false,
+    "effort_substitution_allowed": false,
+    "failed_cell_retry_allowed": false,
+    "failed_cell_replacement_allowed": false,
+    "cross_model_score_pooling_allowed": false
+  },
+  "handoffs": [
+    {
+      "from": "planning_review_roadmap",
+      "to": "implementation",
+      "required_artifact": "bounded-work-packet"
+    },
+    {
+      "from": "implementation",
+      "to": "planning_review_roadmap",
+      "required_artifact": "implementation-diff-and-provider-zero-verification"
+    },
+    {
+      "from": "planning_review_roadmap",
+      "to": "benchmark_generation",
+      "required_artifact": "immutable-preregistration-and-admission-receipt"
+    },
+    {
+      "from": "benchmark_generation",
+      "to": "planning_review_roadmap",
+      "required_artifact": "immutable-run-records-and-evidence-package"
+    }
+  ],
+  "goal_start": {
+    "requires_user_activation_phrase": true,
+    "objective": "Prepare, execute and audit the OmD 2.0 Luna Max same-prompt release benchmark; ship only if every preregistered release gate passes, otherwise preserve the evidence and drive the smallest bounded product repair.",
+    "first_phase": "sol-xhigh-preregistration-and-bounded-work-packets"
+  },
+  "provider_calls": 0,
+  "model_calls": 0,
+  "browser_calls": 0
+}

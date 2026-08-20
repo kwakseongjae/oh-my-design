@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.3",
+  "product_version": "1.9.44",
+  "status": "stopped-preregistered",
+  "scheduled_cells": 9,
+  "attempted_cells": 1,
+  "valid_completed_cells": 0,
+  "stopped_cells": 1,
+  "not_started_cells": 8,
+  "stop_cell": "pricing-t1-baseline",
+  "stop_reason": "observed-model-mismatch",
+  "classification": "controller-schema-dispatch-defect",
+  "provider_result": {
+    "exit_code": 0,
+    "runtime": "cursor",
+    "model_requested": "cursor-grok-4.5-high",
+    "model_reported": "Cursor Grok 4.5 High",
+    "model_evidence_mode": "runtime-reported-display-name",
+    "wall_ms": 401042,
+    "usage": {
+      "input_tokens": 92125,
+      "cached_input_tokens": 652160,
+      "output_tokens": 27907,
+      "total_non_cached_tokens": 120032
+    },
+    "product_changed": true,
+    "changed_product_files": [
+      "index.html"
+    ]
+  },
+  "root_cause": "preregisteredStopReason routed schema 0.3 through the legacy schema 0.1 direct model-usage identifier comparison instead of runtimeAttributionStopReason. Cursor correctly returned its display label, so the frozen selector and observed runtime evidence were consistent.",
+  "score_status": "not-evaluated-and-excluded",
+  "retry_or_resume": false,
+  "replacement_plan": "Fix and regression-test schema 0.3 attribution dispatch, then preregister and prepare a fresh 1.9.45 denominator."
+}

@@ -1,0 +1,940 @@
+{
+  "schema_version": "0.3",
+  "aggregation_version": "1.9.76",
+  "methodology_epoch": "pricing-adaptive-v1",
+  "inputs": {
+    "reviewers": 3,
+    "review_units": 9,
+    "tasks": [
+      {
+        "id": "pricing-conversion-v0.1-trial-1",
+        "version": "0.3.0",
+        "core_prompt_sha256": "62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394"
+      },
+      {
+        "id": "pricing-conversion-v0.1-trial-2",
+        "version": "0.3.0",
+        "core_prompt_sha256": "62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394"
+      },
+      {
+        "id": "pricing-conversion-v0.1-trial-3",
+        "version": "0.3.0",
+        "core_prompt_sha256": "62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394"
+      }
+    ],
+    "candidates": [
+      {
+        "id": "omd-portable-ember",
+        "label": "oh-my-design apply skill"
+      },
+      {
+        "id": "omd-portable-slate",
+        "label": "oh-my-design apply skill"
+      }
+    ],
+    "primary_assignments": 9,
+    "reversed_assignments": 9
+  },
+  "coverage": {
+    "tasks": 3,
+    "unique_reviewers": 3,
+    "review_units": 9,
+    "candidates": {
+      "omd-portable-ember": {
+        "tasks_present": 3,
+        "tasks_missing": [],
+        "unique_reviewers": 3,
+        "primary_comparisons": 9
+      },
+      "omd-portable-slate": {
+        "tasks_present": 3,
+        "tasks_missing": [],
+        "unique_reviewers": 3,
+        "primary_comparisons": 9
+      }
+    },
+    "pair_axes": [
+      {
+        "task_key": "pricing-conversion-v0.1-trial-1@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+        "pair": [
+          "omd-portable-ember",
+          "omd-portable-slate"
+        ],
+        "axis": "functionality",
+        "candidate_pair_present": true,
+        "unique_reviewers": 3,
+        "primary_votes": 3,
+        "bradley_terry_valid_votes": 3,
+        "both_fail_votes": 0,
+        "both_fail_rate": 0
+      },
+      {
+        "task_key": "pricing-conversion-v0.1-trial-1@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+        "pair": [
+          "omd-portable-ember",
+          "omd-portable-slate"
+        ],
+        "axis": "usability",
+        "candidate_pair_present": true,
+        "unique_reviewers": 3,
+        "primary_votes": 3,
+        "bradley_terry_valid_votes": 3,
+        "both_fail_votes": 0,
+        "both_fail_rate": 0
+      },
+      {
+        "task_key": "pricing-conversion-v0.1-trial-1@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+        "pair": [
+          "omd-portable-ember",
+          "omd-portable-slate"
+        ],
+        "axis": "fidelity",
+        "candidate_pair_present": true,
+        "unique_reviewers": 3,
+        "primary_votes": 3,
+        "bradley_terry_valid_votes": 3,
+        "both_fail_votes": 0,
+        "both_fail_rate": 0
+      },
+      {
+        "task_key": "pricing-conversion-v0.1-trial-1@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+        "pair": [
+          "omd-portable-ember",
+          "omd-portable-slate"
+        ],
+        "axis": "ship_preference",
+        "candidate_pair_present": true,
+        "unique_reviewers": 3,
+        "primary_votes": 3,
+        "bradley_terry_valid_votes": 3,
+        "both_fail_votes": 0,
+        "both_fail_rate": 0
+      },
+      {
+        "task_key": "pricing-conversion-v0.1-trial-2@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+        "pair": [
+          "omd-portable-ember",
+          "omd-portable-slate"
+        ],
+        "axis": "functionality",
+        "candidate_pair_present": true,
+        "unique_reviewers": 3,
+        "primary_votes": 3,
+        "bradley_terry_valid_votes": 3,
+        "both_fail_votes": 0,
+        "both_fail_rate": 0
+      },
+      {
+        "task_key": "pricing-conversion-v0.1-trial-2@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+        "pair": [
+          "omd-portable-ember",
+          "omd-portable-slate"
+        ],
+        "axis": "usability",
+        "candidate_pair_present": true,
+        "unique_reviewers": 3,
+        "primary_votes": 3,
+        "bradley_terry_valid_votes": 3,
+        "both_fail_votes": 0,
+        "both_fail_rate": 0
+      },
+      {
+        "task_key": "pricing-conversion-v0.1-trial-2@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+        "pair": [
+          "omd-portable-ember",
+          "omd-portable-slate"
+        ],
+        "axis": "fidelity",
+        "candidate_pair_present": true,
+        "unique_reviewers": 3,
+        "primary_votes": 3,
+        "bradley_terry_valid_votes": 3,
+        "both_fail_votes": 0,
+        "both_fail_rate": 0
+      },
+      {
+        "task_key": "pricing-conversion-v0.1-trial-2@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+        "pair": [
+          "omd-portable-ember",
+          "omd-portable-slate"
+        ],
+        "axis": "ship_preference",
+        "candidate_pair_present": true,
+        "unique_reviewers": 3,
+        "primary_votes": 3,
+        "bradley_terry_valid_votes": 3,
+        "both_fail_votes": 0,
+        "both_fail_rate": 0
+      },
+      {
+        "task_key": "pricing-conversion-v0.1-trial-3@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+        "pair": [
+          "omd-portable-ember",
+          "omd-portable-slate"
+        ],
+        "axis": "functionality",
+        "candidate_pair_present": true,
+        "unique_reviewers": 3,
+        "primary_votes": 3,
+        "bradley_terry_valid_votes": 3,
+        "both_fail_votes": 0,
+        "both_fail_rate": 0
+      },
+      {
+        "task_key": "pricing-conversion-v0.1-trial-3@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+        "pair": [
+          "omd-portable-ember",
+          "omd-portable-slate"
+        ],
+        "axis": "usability",
+        "candidate_pair_present": true,
+        "unique_reviewers": 3,
+        "primary_votes": 3,
+        "bradley_terry_valid_votes": 3,
+        "both_fail_votes": 0,
+        "both_fail_rate": 0
+      },
+      {
+        "task_key": "pricing-conversion-v0.1-trial-3@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+        "pair": [
+          "omd-portable-ember",
+          "omd-portable-slate"
+        ],
+        "axis": "fidelity",
+        "candidate_pair_present": true,
+        "unique_reviewers": 3,
+        "primary_votes": 3,
+        "bradley_terry_valid_votes": 3,
+        "both_fail_votes": 0,
+        "both_fail_rate": 0
+      },
+      {
+        "task_key": "pricing-conversion-v0.1-trial-3@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+        "pair": [
+          "omd-portable-ember",
+          "omd-portable-slate"
+        ],
+        "axis": "ship_preference",
+        "candidate_pair_present": true,
+        "unique_reviewers": 3,
+        "primary_votes": 3,
+        "bradley_terry_valid_votes": 3,
+        "both_fail_votes": 0,
+        "both_fail_rate": 0
+      }
+    ],
+    "graphs": {
+      "functionality": {
+        "connected": true,
+        "component_count": 1,
+        "components": [
+          [
+            "omd-portable-ember",
+            "omd-portable-slate"
+          ]
+        ]
+      },
+      "usability": {
+        "connected": true,
+        "component_count": 1,
+        "components": [
+          [
+            "omd-portable-ember",
+            "omd-portable-slate"
+          ]
+        ]
+      },
+      "fidelity": {
+        "connected": true,
+        "component_count": 1,
+        "components": [
+          [
+            "omd-portable-ember",
+            "omd-portable-slate"
+          ]
+        ]
+      },
+      "ship_preference": {
+        "connected": true,
+        "component_count": 1,
+        "components": [
+          [
+            "omd-portable-ember",
+            "omd-portable-slate"
+          ]
+        ]
+      }
+    }
+  },
+  "readiness": {
+    "grade": "diagnostic",
+    "scope": "preference_plane_only",
+    "preview": {
+      "met": false,
+      "minimum_reviewers": 5,
+      "minimum_tasks": 24,
+      "blockers": [
+        "requires 21 more tasks to reach 24",
+        "requires 2 more unique reviewers",
+        "12 task-pair-axis cells are under-covered"
+      ],
+      "deficits": {
+        "additional_tasks": 21,
+        "additional_unique_reviewers": 2,
+        "missing_candidate_tasks": [],
+        "undercovered_pair_axes": [
+          {
+            "task_key": "pricing-conversion-v0.1-trial-1@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "functionality",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 2,
+            "additional_non_both_fail_votes": 2
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-1@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "usability",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 2,
+            "additional_non_both_fail_votes": 2
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-1@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "fidelity",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 2,
+            "additional_non_both_fail_votes": 2
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-1@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "ship_preference",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 2,
+            "additional_non_both_fail_votes": 2
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-2@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "functionality",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 2,
+            "additional_non_both_fail_votes": 2
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-2@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "usability",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 2,
+            "additional_non_both_fail_votes": 2
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-2@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "fidelity",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 2,
+            "additional_non_both_fail_votes": 2
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-2@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "ship_preference",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 2,
+            "additional_non_both_fail_votes": 2
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-3@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "functionality",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 2,
+            "additional_non_both_fail_votes": 2
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-3@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "usability",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 2,
+            "additional_non_both_fail_votes": 2
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-3@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "fidelity",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 2,
+            "additional_non_both_fail_votes": 2
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-3@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "ship_preference",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 2,
+            "additional_non_both_fail_votes": 2
+          }
+        ],
+        "disconnected_axes": []
+      },
+      "next_review_units": {
+        "existing_tasks": [
+          {
+            "task_key": "pricing-conversion-v0.1-trial-1@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "unique_reviewers": 3,
+            "additional_unique_reviewers": 2,
+            "minimum_additional_non_both_fail_review_units": 2
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-2@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "unique_reviewers": 3,
+            "additional_unique_reviewers": 2,
+            "minimum_additional_non_both_fail_review_units": 2
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-3@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "unique_reviewers": 3,
+            "additional_unique_reviewers": 2,
+            "minimum_additional_non_both_fail_review_units": 2
+          }
+        ],
+        "missing_tasks": {
+          "count": 21,
+          "minimum_review_units_each": 5
+        },
+        "minimum_total_assuming_non_both_fail": 111
+      }
+    },
+    "verified": {
+      "met": false,
+      "minimum_reviewers": 10,
+      "minimum_tasks": 24,
+      "blockers": [
+        "requires 21 more tasks to reach 24",
+        "requires 7 more unique reviewers",
+        "12 task-pair-axis cells are under-covered"
+      ],
+      "deficits": {
+        "additional_tasks": 21,
+        "additional_unique_reviewers": 7,
+        "missing_candidate_tasks": [],
+        "undercovered_pair_axes": [
+          {
+            "task_key": "pricing-conversion-v0.1-trial-1@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "functionality",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 7,
+            "additional_non_both_fail_votes": 7
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-1@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "usability",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 7,
+            "additional_non_both_fail_votes": 7
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-1@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "fidelity",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 7,
+            "additional_non_both_fail_votes": 7
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-1@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "ship_preference",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 7,
+            "additional_non_both_fail_votes": 7
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-2@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "functionality",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 7,
+            "additional_non_both_fail_votes": 7
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-2@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "usability",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 7,
+            "additional_non_both_fail_votes": 7
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-2@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "fidelity",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 7,
+            "additional_non_both_fail_votes": 7
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-2@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "ship_preference",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 7,
+            "additional_non_both_fail_votes": 7
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-3@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "functionality",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 7,
+            "additional_non_both_fail_votes": 7
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-3@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "usability",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 7,
+            "additional_non_both_fail_votes": 7
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-3@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "fidelity",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 7,
+            "additional_non_both_fail_votes": 7
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-3@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "pair": [
+              "omd-portable-ember",
+              "omd-portable-slate"
+            ],
+            "axis": "ship_preference",
+            "candidate_pair_present": true,
+            "unique_reviewers": 3,
+            "bradley_terry_valid_votes": 3,
+            "additional_unique_reviewers": 7,
+            "additional_non_both_fail_votes": 7
+          }
+        ],
+        "disconnected_axes": []
+      },
+      "next_review_units": {
+        "existing_tasks": [
+          {
+            "task_key": "pricing-conversion-v0.1-trial-1@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "unique_reviewers": 3,
+            "additional_unique_reviewers": 7,
+            "minimum_additional_non_both_fail_review_units": 7
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-2@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "unique_reviewers": 3,
+            "additional_unique_reviewers": 7,
+            "minimum_additional_non_both_fail_review_units": 7
+          },
+          {
+            "task_key": "pricing-conversion-v0.1-trial-3@0.3.0:62b68db5f043fbd7e951dcbe29169885eb4ed2c4f180eb3a8f0051b3429a6394",
+            "unique_reviewers": 3,
+            "additional_unique_reviewers": 7,
+            "minimum_additional_non_both_fail_review_units": 7
+          }
+        ],
+        "missing_tasks": {
+          "count": 21,
+          "minimum_review_units_each": 10
+        },
+        "minimum_total_assuming_non_both_fail": 231
+      }
+    },
+    "overall_benchmark_publishable": false,
+    "external_requirements": [
+      "automated run and trial coverage",
+      "runtime and skill attribution",
+      "task-quality and mutation acceptance",
+      "deterministic critical-gate eligibility"
+    ]
+  },
+  "method": {
+    "axes": [
+      "functionality",
+      "usability",
+      "fidelity",
+      "ship_preference"
+    ],
+    "choices": [
+      "a",
+      "b",
+      "tie",
+      "both_fail"
+    ],
+    "reversed_duplicates": "consistency-only; excluded from primary votes and ratings",
+    "ties": "half win for each candidate",
+    "both_fail": "reported separately; excluded from Bradley-Terry fitting",
+    "bradley_terry_regularization": {
+      "method": "observed-pair Jeffreys prior",
+      "half_wins_per_candidate_per_observed_pair": 0.5
+    },
+    "bootstrap": {
+      "hierarchy": "tasks, then reviewers within sampled tasks",
+      "iterations": 2000,
+      "seed": "20260730",
+      "interval": "percentile 95%"
+    }
+  },
+  "reversal_consistency": {
+    "comparisons": 36,
+    "consistent": 24,
+    "inconsistent": 12,
+    "rate": 0.666667,
+    "by_axis": {
+      "functionality": {
+        "comparisons": 9,
+        "consistent": 7,
+        "inconsistent": 2,
+        "rate": 0.777778
+      },
+      "usability": {
+        "comparisons": 9,
+        "consistent": 4,
+        "inconsistent": 5,
+        "rate": 0.444444
+      },
+      "fidelity": {
+        "comparisons": 9,
+        "consistent": 4,
+        "inconsistent": 5,
+        "rate": 0.444444
+      },
+      "ship_preference": {
+        "comparisons": 9,
+        "consistent": 9,
+        "inconsistent": 0,
+        "rate": 1
+      }
+    }
+  },
+  "axes": {
+    "functionality": {
+      "primary_vote_count": 9,
+      "tie_count": 0,
+      "tie_rate": 0,
+      "both_fail_count": 0,
+      "both_fail_rate": 0,
+      "modal_agreement": {
+        "groups": 3,
+        "modal_votes": 8,
+        "total_votes": 9,
+        "rate": 0.888889
+      },
+      "graph": {
+        "connected": true,
+        "component_count": 1,
+        "components": [
+          [
+            "omd-portable-ember",
+            "omd-portable-slate"
+          ]
+        ]
+      },
+      "candidates": {
+        "omd-portable-ember": {
+          "rating": 1150.665533,
+          "rank": 1,
+          "rating_95_ci": [
+            1017.430035,
+            1255.75072
+          ],
+          "rank_95_interval": [
+            1,
+            1
+          ]
+        },
+        "omd-portable-slate": {
+          "rating": 849.334467,
+          "rank": 2,
+          "rating_95_ci": [
+            744.24928,
+            982.569965
+          ],
+          "rank_95_interval": [
+            2,
+            2
+          ]
+        }
+      }
+    },
+    "usability": {
+      "primary_vote_count": 9,
+      "tie_count": 2,
+      "tie_rate": 0.222222,
+      "both_fail_count": 0,
+      "both_fail_rate": 0,
+      "modal_agreement": {
+        "groups": 3,
+        "modal_votes": 6,
+        "total_votes": 9,
+        "rate": 0.666667
+      },
+      "graph": {
+        "connected": true,
+        "component_count": 1,
+        "components": [
+          [
+            "omd-portable-ember",
+            "omd-portable-slate"
+          ]
+        ]
+      },
+      "candidates": {
+        "omd-portable-ember": {
+          "rating": 1095.424251,
+          "rank": 1,
+          "rating_95_ci": [
+            982.569965,
+            1255.75072
+          ],
+          "rank_95_interval": [
+            1,
+            2
+          ]
+        },
+        "omd-portable-slate": {
+          "rating": 904.575749,
+          "rank": 2,
+          "rating_95_ci": [
+            744.24928,
+            1017.430035
+          ],
+          "rank_95_interval": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    "fidelity": {
+      "primary_vote_count": 9,
+      "tie_count": 6,
+      "tie_rate": 0.666667,
+      "both_fail_count": 0,
+      "both_fail_rate": 0,
+      "modal_agreement": {
+        "groups": 3,
+        "modal_votes": 9,
+        "total_votes": 9,
+        "rate": 1
+      },
+      "graph": {
+        "connected": true,
+        "component_count": 1,
+        "components": [
+          [
+            "omd-portable-ember",
+            "omd-portable-slate"
+          ]
+        ]
+      },
+      "candidates": {
+        "omd-portable-ember": {
+          "rating": 1053.769062,
+          "rank": 1,
+          "rating_95_ci": [
+            1000,
+            1255.75072
+          ],
+          "rank_95_interval": [
+            1,
+            1.5
+          ]
+        },
+        "omd-portable-slate": {
+          "rating": 946.230938,
+          "rank": 2,
+          "rating_95_ci": [
+            744.24928,
+            1000
+          ],
+          "rank_95_interval": [
+            1.5,
+            2
+          ]
+        }
+      }
+    },
+    "ship_preference": {
+      "primary_vote_count": 9,
+      "tie_count": 0,
+      "tie_rate": 0,
+      "both_fail_count": 0,
+      "both_fail_rate": 0,
+      "modal_agreement": {
+        "groups": 3,
+        "modal_votes": 9,
+        "total_votes": 9,
+        "rate": 1
+      },
+      "graph": {
+        "connected": true,
+        "component_count": 1,
+        "components": [
+          [
+            "omd-portable-ember",
+            "omd-portable-slate"
+          ]
+        ]
+      },
+      "candidates": {
+        "omd-portable-ember": {
+          "rating": 1255.75072,
+          "rank": 1,
+          "rating_95_ci": [
+            1255.75072,
+            1255.75072
+          ],
+          "rank_95_interval": [
+            1,
+            1
+          ]
+        },
+        "omd-portable-slate": {
+          "rating": 744.24928,
+          "rank": 2,
+          "rating_95_ci": [
+            744.24928,
+            744.24928
+          ],
+          "rank_95_interval": [
+            2,
+            2
+          ]
+        }
+      }
+    }
+  },
+  "claim_limit": "Preference readiness is only one evidence plane; overall benchmark publication still requires automated run/trial, attribution, task-quality, and deterministic-gate acceptance."
+}

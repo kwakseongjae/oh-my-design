@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "patch": "1.9.43",
+  "status": "deterministic_acceptance_complete",
+  "provider_generation": false,
+  "cursor_default_mode": {
+    "skills": 19,
+    "sub_agents": 0,
+    "hooks": 0,
+    "skill_root": ".cursor/skills",
+    "rule": ".cursor/rules/omd-design.mdc",
+    "catalog_root": ".claude/data",
+    "rule_marker": "omd:cursor-channel=skills"
+  },
+  "cursor_compatibility_mode": {
+    "flag": "--cursor-rule-only",
+    "skills": 0,
+    "rule_marker": "omd:cursor-channel=rule-only"
+  },
+  "tests": {
+    "focused": {
+      "passed": 75,
+      "failed": 0
+    },
+    "web": {
+      "passed": 830,
+      "failed": 0,
+      "production_build_pages": 1459
+    },
+    "root": {
+      "passed": 230,
+      "conditional_skipped": 1,
+      "environment_failed": 2,
+      "environment_failure": "retained external vendor directories under /tmp lack Git metadata"
+    }
+  },
+  "live_cursor_discovery": "pending_separate_approval",
+  "benchmark_claim": "none"
+}

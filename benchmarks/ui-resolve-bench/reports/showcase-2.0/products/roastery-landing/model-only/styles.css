@@ -1,0 +1,404 @@
+/* Kiln Annex — page composition. Tokens and primitives live in design-system.css. */
+
+.wrap {
+  width: min(var(--wrap), calc(100% - var(--gutter) * 2));
+  margin-inline: auto;
+}
+
+.wrap--wide {
+  width: min(var(--wrap-wide), calc(100% - var(--gutter) * 2));
+}
+
+#roast,
+#cup,
+#room,
+#cupping,
+#ledger,
+#main {
+  scroll-margin-top: 5.5rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Header                                                                      */
+/* -------------------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 6;
+  background: rgb(243 238 230 / 0.9);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 4.25rem;
+}
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.wordmark__mark {
+  width: 1.7rem;
+  height: 1.7rem;
+  flex: 0 0 auto;
+  color: var(--color-accent);
+}
+
+.wordmark__name {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.wordmark__meta {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.site-nav__links {
+  display: none;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.site-nav__links a {
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color var(--motion-duration-fast) var(--motion-ease-ui);
+}
+
+.site-nav__links a:hover {
+  color: var(--color-ink);
+}
+
+@media (min-width: 52rem) {
+  .site-nav__links {
+    display: flex;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Hero                                                                        */
+/* -------------------------------------------------------------------------- */
+
+.hero {
+  padding-block: var(--space-8) var(--space-9);
+}
+
+.hero__grid {
+  display: grid;
+  gap: var(--space-7);
+  align-items: end;
+}
+
+@media (min-width: 64rem) {
+  .hero__grid {
+    grid-template-columns: minmax(20rem, 0.9fr) minmax(0, 1.15fr);
+    gap: var(--space-8);
+    align-items: center;
+  }
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+.hero__copy .display {
+  max-width: 12ch;
+}
+
+.hero__copy .lede {
+  max-width: 34rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.hero__note {
+  font-size: var(--step--1);
+  color: var(--color-ink-faint);
+  max-width: 18rem;
+}
+
+.hero__plate figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Chapters                                                                    */
+/* -------------------------------------------------------------------------- */
+
+.chapters {
+  padding-bottom: var(--space-9);
+}
+
+.chapter {
+  display: grid;
+  gap: var(--space-5);
+  padding-block: var(--space-8);
+  border-top: 1px solid var(--color-rule);
+}
+
+@media (min-width: 64rem) {
+  .chapter {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+    padding-block: var(--space-9);
+  }
+
+  .chapter--flip .chapter__media {
+    order: 2;
+  }
+}
+
+.chapter__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 34rem;
+}
+
+.chapter__index {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.08em;
+  color: var(--color-ink-faint);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Practice cards                                                              */
+/* -------------------------------------------------------------------------- */
+
+.practice {
+  padding-bottom: var(--space-9);
+}
+
+.practice__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 36rem;
+  margin-bottom: var(--space-6);
+}
+
+.practice__grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 48rem) {
+  .practice__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.practice .card {
+  min-height: 100%;
+}
+
+.practice .card__body {
+  flex: 1;
+  padding: var(--space-6);
+}
+
+.practice .eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Cupping band                                                                */
+/* -------------------------------------------------------------------------- */
+
+.cupping {
+  background: var(--color-ink);
+  color: var(--color-on-ink);
+  padding-block: var(--space-9);
+}
+
+.cupping :focus-visible {
+  outline-color: var(--color-paper);
+}
+
+.cupping .eyebrow {
+  color: var(--color-accent-soft);
+}
+
+.cupping .lede,
+.cupping .prose {
+  color: rgb(243 238 230 / 0.78);
+}
+
+.cupping__grid {
+  display: grid;
+  gap: var(--space-7);
+}
+
+@media (min-width: 64rem) {
+  .cupping__grid {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: end;
+  }
+}
+
+.cupping__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+.cupping__list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.cupping__list li {
+  padding-top: var(--space-4);
+  border-top: 1px solid rgb(243 238 230 / 0.14);
+}
+
+.cupping__list strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: var(--step-2);
+  font-weight: 400;
+  margin-bottom: var(--space-1);
+}
+
+.cupping__list span {
+  color: rgb(243 238 230 / 0.68);
+  font-size: 1rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Ledger — unpublished facts                                                  */
+/* -------------------------------------------------------------------------- */
+
+.ledger {
+  padding-block: var(--space-9);
+}
+
+.ledger__grid {
+  display: grid;
+  gap: var(--space-7);
+}
+
+@media (min-width: 64rem) {
+  .ledger__grid {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: var(--space-8);
+  }
+}
+
+.ledger__list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--color-rule);
+}
+
+.ledger__list li {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-rule);
+  font-size: 1rem;
+}
+
+.ledger__list dt,
+.ledger__kicker {
+  font-size: var(--step--1);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.ledger__list dd {
+  margin: 0;
+  color: var(--color-ink-soft);
+}
+
+@media (max-width: 36rem) {
+  .ledger__list li {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Footer                                                                      */
+/* -------------------------------------------------------------------------- */
+
+.site-footer {
+  border-top: 1px solid var(--color-rule);
+  padding-block: var(--space-7);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.site-footer p {
+  color: var(--color-ink-faint);
+  font-size: var(--step--1);
+  max-width: 34rem;
+}
+
+.site-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.site-footer a {
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.site-footer a:hover {
+  color: var(--color-ink);
+}

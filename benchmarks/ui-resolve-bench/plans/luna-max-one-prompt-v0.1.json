@@ -1,0 +1,140 @@
+{
+  "schema_version": "0.1",
+  "plan_id": "luna-max-one-prompt-v0.1",
+  "status": "RUNTIME_PINNED_MODEL_PREFLIGHT_OPEN",
+  "provider_calls": 0,
+  "purpose": "public-preview-same-prompt-portable-skill-comparison",
+  "claim_scope": "one-prompt descriptive preview; not a global skill or model ranking",
+  "execution_forbidden_until": [
+    "exact_model_selector_acceptance_preflight_green",
+    "native_effort_acceptance_preflight_green",
+    "public_task_and_hidden_oracle_pinned",
+    "prompt_bytes_and_starter_tree_pinned",
+    "competitor_sources_refreshed_and_frozen",
+    "evaluator_and_browser_preflight_green"
+  ],
+  "model_contract": {
+    "marketing_label": "Luna Max",
+    "exact_model_selector": null,
+    "exact_model_selector_candidate": "gpt-5.6-luna",
+    "runtime": "codex",
+    "runtime_version": "codex-cli 0.144.1",
+    "runtime_binary_locator": "command -v codex resolved through realpath at preregistration time",
+    "runtime_binary_sha256": "134063e133f0b4244fa3b251acf973d4fe4b4aeeacbdc135211bf480f59f1477",
+    "native_effort": null,
+    "native_effort_candidate": "max",
+    "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+    "attribution_required_for_publication": true
+  },
+  "provider_preflight": {
+    "status": "not_run",
+    "counts_as_benchmark_trial": false,
+    "counts_as_provider_spend": true,
+    "workspace": "fresh isolated non-product directory",
+    "sandbox": "read-only",
+    "network": "disabled after runtime authentication",
+    "prompt": "Return exactly LUNA_MAX_PREFLIGHT_OK and do not call tools.",
+    "required_observations": [
+      "process accepts exact selector gpt-5.6-luna",
+      "process accepts native effort max",
+      "run event identifies the selected model without alias ambiguity",
+      "usage telemetry schema is captured",
+      "no file or browser mutation occurs"
+    ],
+    "failure_policy": "stop without executing any comparison arm; do not silently downgrade selector or effort"
+  },
+  "portable_skill_track": {
+    "trials_per_arm_preview": 3,
+    "trials_per_task_verified": 10,
+    "arms": [
+      "baseline",
+      "raw-design-md",
+      "anthropic-frontend-design",
+      "taste-skill",
+      "impeccable-prompt-only",
+      "ui-ux-pro-max",
+      "omd-portable"
+    ],
+    "balanced_order": true,
+    "max_concurrency": 1,
+    "retry_policy": "none-primary",
+    "temperature_policy": "runtime-default-frozen",
+    "manual_product_edits_allowed": false,
+    "hooks_allowed": false,
+    "network_during_execution": false
+  },
+  "harness_track": {
+    "separate_from_portable_ranking": true,
+    "arms": ["omd-repair-harness", "omd-full-harness"],
+    "reporting": "quality-time-token-intervention-pareto"
+  },
+  "task_contract": {
+    "task_id": null,
+    "task_commit": null,
+    "starter_tree_sha256": null,
+    "prompt_sha256": null,
+    "oracle_sha256": null,
+    "prompt_style": "short social prompt with audience, primary task, required states, and protected behavior; no named visual solution",
+    "recommended_family": "stateful product surface with one primary journey and a narrow-screen decision boundary",
+    "showcase_quality_gate": {
+      "desktop_and_mobile_both_inspectable": true,
+      "at_least_three_required_states": true,
+      "real_task_completion_path": true,
+      "meaningful_data_relationship": true,
+      "decorative_landing_only_forbidden": true,
+      "visual_solution_prescription_in_prompt_forbidden": true
+    }
+  },
+  "primary_metrics": [
+    "UI-Resolved@1",
+    "Reliability@3-preview",
+    "Reliability@10-verified",
+    "Ship Preference",
+    "wall-time-distribution",
+    "provider-token-distribution",
+    "unplanned-human-intervention"
+  ],
+  "token_telemetry": {
+    "fresh_input": "required-or-not-reported",
+    "cached_input": "separate",
+    "output": "required",
+    "reasoning_output": "separate-or-not-reported",
+    "failed_and_timeout_spend_included": true,
+    "cross_provider_pooling": false,
+    "r_and_d_tokens_to_target_separate_from_generation_cost": true
+  },
+  "human_review": {
+    "labels_blinded": true,
+    "left_right_randomized": true,
+    "reversal_subset_required": true,
+    "tie_and_both_fail_allowed": true,
+    "preview_practitioners_min": 5,
+    "verified_practitioners_min": 10
+  },
+  "intervention_ledger": {
+    "required": true,
+    "categories": ["auth-only", "infrastructure-recovery", "clarification", "manual-product-edit", "human-judgment"],
+    "auth_only_excluded_from_product_intervention_count": true,
+    "infrastructure_recovery_reported_separately": true,
+    "manual_product_edit_invalidates_primary_cell": true,
+    "clarification_invalidates_one_prompt_label": true
+  },
+  "gallery_contract": {
+    "desktop_capture": true,
+    "mobile_capture": true,
+    "state_capture": true,
+    "labels_blinded_until_vote_export": true,
+    "raw_prompt_and_starter_downloadable": true,
+    "raw_result_and_failure_log_downloadable": true,
+    "per_run_time_and_token_badge": true,
+    "median_and_range_summary": true
+  },
+  "publication": {
+    "publish_all_runs": true,
+    "publish_failures_and_timeouts": true,
+    "publish_raw_artifacts_and_manifests": true,
+    "headline_statistic": "median with min/max and success denominator",
+    "best_of_cherry_pick_forbidden": true,
+    "global_best_claim_allowed": false
+  }
+}

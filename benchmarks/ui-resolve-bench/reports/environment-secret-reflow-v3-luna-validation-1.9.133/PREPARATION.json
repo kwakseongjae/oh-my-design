@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "environment-secret-reflow-v3-luna-validation-1.9.133",
+  "status": "complete-rejected",
+  "prepared_root": "/tmp/u19133",
+  "provider_calls": 6,
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "task": {
+    "id": "environment-secret-mapping-v0.1", "version": "0.1.0",
+    "core_prompt_sha256": "3cc247836ac459d434ee72cc52f6b19736247fa06c6532b8e419b95f86732af7",
+    "full_prompt_sha256": "d61f28fa6872a7ee0687834cd634c44f19edbe01869c48f774de373fba0c07e6",
+    "starter_sha256": "9d11df085fb80207a1c14b0cb2e94de5d9952e4d71e9aa907fefbd2132cdd91d",
+    "design_sha256": "74063a0dcfbb6b8260ddee750b9677a6fbe4db300f98429043236df28be12714"
+  },
+  "provider": { "runtime": "codex", "model": "gpt-5.6-luna", "effort": "high", "catalog_support_verified": true },
+  "arms": {
+    "previous": { "variant_id": "omd-portable-jade", "source_commit": "f013dbd9f94a1e018f7cf8a4e500207fe982b00a", "skill_sha256": "a8128ccca897a52a89d21d7c790b6b382cc8579e6769a4f1ad623a3b641486e4", "source_clean_detached_publishable": true },
+    "candidate": { "variant_id": "omd-portable-reflow-v3-candidate", "source_commit": "b85ad330b63d502ecabc6741c0a7c599da6d2f58", "skill_sha256": "e8822c07dfb09d5872f82f71bc47517c67a820424190feb03742ac0d67189f1f", "source_clean_detached_publishable": true }
+  },
+  "activation_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+  "controls": { "same_task_prompt_starter_design": true, "same_activation_across_arms": true, "exact_skill_tree_is_only_factor": true, "exact_detached_sources": true, "product_trees_untouched": true, "balanced_arm_first_order": "2/1", "provider_scope_separate_from_grok": true, "public_model_attribution_eligible": false },
+  "next_cell": null,
+  "retry_fallback_repair_substitution": 0,
+  "excluded_user_file": "web/public/llms-full.txt"
+}

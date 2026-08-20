@@ -1,0 +1,275 @@
+{
+  "schema_version": "0.2",
+  "contract_id": "omd-grok46-wow-preview-v0.2",
+  "experiment_id": "omd-grok46-wow-preview-2.0.0-v0.2",
+  "status": "preregistered-provider-zero-locked",
+  "provider_execution_allowed": false,
+  "activation_phrase": "ㄱㄱ",
+  "preregistration_note": "Bound to grok-4.6 via Grok Build CLI. Missing-data and wave rules are locked in score-gate config before any cell runs. WP2 of omd-grok46-restart-v0.1.",
+  "authorities": {
+    "model_role_routing": {
+      "path": "benchmarks/ui-resolve-bench/config/omd-2.0-model-role-routing-v0.1.json",
+      "sha256": "cb004c8f9799c00098964342d377b33b356b0a9204ef52bfbdce02ff98b436d0"
+    },
+    "task_set": {
+      "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json",
+      "sha256": "53634e4f8e79b34460ebd1d470b381b3167753bf6e07f03eb4aa7ce268e9bf6c"
+    },
+    "blank_starter": {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/blank-shell/index.html",
+      "sha256": "a9b82fcdf3efa04783d3be61544f84b0a4f3209f0fc5f6ac741ec853d03871b3"
+    },
+    "evaluator_adapters": {
+      "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json",
+      "sha256": "827e7933d360a139717a3790570b704544e6edbfc616353596e059f9b3de2c85"
+    },
+    "evaluator": {
+      "path": "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs",
+      "sha256": "4dd780a97d1083490efe370a67e2904af63b427c52d175ae2a70116227f2a944"
+    },
+    "task_set_validator": {
+      "path": "benchmarks/ui-resolve-bench/scripts/validate-autopilot-greenfield-task-set.mjs",
+      "sha256": "352556d77ff3e6614b1685131135772fdda34e11dca9c84718363fa43517aff7"
+    },
+    "adapter_validator": {
+      "path": "benchmarks/ui-resolve-bench/scripts/validate-autopilot-greenfield-adapters.mjs",
+      "sha256": "999bb73cd9acc9fda321e0cb71db33d5e9dfa3a6e6a9725150ee126897cd90aa"
+    },
+    "score_gate": {
+      "path": "benchmarks/ui-resolve-bench/config/omd-grok46-wow-preview-score-gate-v0.2.json",
+      "sha256": null
+    },
+    "runner": {
+      "path": "benchmarks/ui-resolve-bench/scripts/run-grok.mjs",
+      "sha256": null
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "neighborhood-library-landing",
+      "family": "landing",
+      "prompt_bytes": 261,
+      "prompt_sha256": "81a8389e65a7f75fbc185dde64f37419baabfea6bf75cd256083ec0dee441ba3"
+    },
+    {
+      "task_id": "cold-chain-operations",
+      "family": "dense-operations",
+      "prompt_bytes": 275,
+      "prompt_sha256": "e815cf2fd539fcacd92a697e8c61c46e3629a7a4b487c5d6bea5a5a6c01500ad"
+    },
+    {
+      "task_id": "clinic-visit-prep-locales",
+      "family": "five-locale-surface",
+      "prompt_bytes": 598,
+      "prompt_sha256": "d1c023f0093287ea1af717624fb5fcc769a9858ebd294d5f6efd540c29dde729"
+    }
+  ],
+  "task_selection_status": "selected-neutral-input-awaiting-packet-receipt",
+  "arms": [
+    "model-only",
+    "anthropic-frontend-design",
+    "impeccable-prompt-only",
+    "ui-ux-pro-max",
+    "taste-eligible-scope-only",
+    "omd-autopilot-v2"
+  ],
+  "arm_eligibility": {
+    "taste-eligible-scope-only": {
+      "eligible_families": [
+        "landing"
+      ],
+      "ineligible_policy": "retain-preregistered-slot-but-do-not-execute-or-score",
+      "reason": "Taste declares a marketing/landing-page scope; dense operations and multi-locale product UI are outside its claimed scope."
+    }
+  },
+  "matrix": {
+    "task_count": 3,
+    "arm_count": 6,
+    "trials_per_task_arm": 3,
+    "total_preregistered_cells": 54,
+    "preregistered_ineligible_cell_count": 6,
+    "scheduled_provider_cell_count": 48,
+    "cell_identity": "task_id x arm x trial, trial in 1..3",
+    "ineligible_reason": "taste-eligible-scope-only arm retains its preregistered slots on non-landing tasks but is never executed or scored (arm_eligibility.taste-eligible-scope-only).",
+    "preregistered_ineligible_cells": [
+      {
+        "arm": "taste-eligible-scope-only",
+        "task_id": "cold-chain-operations",
+        "trial": 1,
+        "status": "preregistered-ineligible"
+      },
+      {
+        "arm": "taste-eligible-scope-only",
+        "task_id": "cold-chain-operations",
+        "trial": 2,
+        "status": "preregistered-ineligible"
+      },
+      {
+        "arm": "taste-eligible-scope-only",
+        "task_id": "cold-chain-operations",
+        "trial": 3,
+        "status": "preregistered-ineligible"
+      },
+      {
+        "arm": "taste-eligible-scope-only",
+        "task_id": "clinic-visit-prep-locales",
+        "trial": 1,
+        "status": "preregistered-ineligible"
+      },
+      {
+        "arm": "taste-eligible-scope-only",
+        "task_id": "clinic-visit-prep-locales",
+        "trial": 2,
+        "status": "preregistered-ineligible"
+      },
+      {
+        "arm": "taste-eligible-scope-only",
+        "task_id": "clinic-visit-prep-locales",
+        "trial": 3,
+        "status": "preregistered-ineligible"
+      }
+    ]
+  },
+  "runtime": {
+    "provider": "grok-build-cli",
+    "model": "grok-4.6",
+    "effort": "high",
+    "serial": true,
+    "trials_per_task_arm": 3,
+    "maximum_cells": 54,
+    "scheduled_provider_cells": 48,
+    "retry_budget_per_cell": 0,
+    "replacement_budget_per_cell": 0,
+    "fallback_budget_per_cell": 0,
+    "model_substitution_budget": 0,
+    "effort_substitution_budget": 0,
+    "workspace_boundary_applies_to_every_arm": true,
+    "workspace_boundary_prompt_suffix": "Benchmark runtime boundary: keep every generated file and temporary validation artifact inside the current workspace (use .benchmark/tmp when needed), except an exact cell-local staging path explicitly disclosed by the controller for an arm whose native package adopter requires source/destination separation. Do not read or write any other external path, including /tmp, and do not launch or control browsers or use network access; the external evaluator owns browser checks.",
+    "execution_budget_ms": 1200000,
+    "execution_budget_note": "Raised 900s→1200s for ALL arms equally before epoch 5 (preregistration-phase change, no results in the new epoch yet): three arms hit the 900s wall on grok (impeccable 3/3 epochs, taste 893s near-miss, omd adopted at ~600s then cut mid-product). Equal budget, same serial/retry-0 contract."
+  },
+  "waves": {
+    "wave_order": [
+      "r1",
+      "r2",
+      "r3"
+    ],
+    "cells_per_wave": 16,
+    "applies_to": "scheduled_provider_cells",
+    "total_scheduled_cells": 48,
+    "rule": "Execution proceeds in round waves r1 then r2 then r3; each wave covers up to 16 scheduled cells; preregistered-ineligible Taste cells are never assigned to a wave. Wave gates are defined in the score-gate config.",
+    "score_gate_authority": "benchmarks/ui-resolve-bench/config/omd-grok46-wow-preview-score-gate-v0.2.json"
+  },
+  "admission": {
+    "clean_exact_head_required": true,
+    "source_authorities_must_be_byte_identical_to_head": true,
+    "fresh_output_root_outside_repository_required": true,
+    "neutral_task_packet_lock": {
+      "required": true,
+      "status": "unresolved",
+      "path": null,
+      "sha256": null,
+      "same_source_facts_for_every_arm": true,
+      "task_set_path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json",
+      "blank_starter_path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/blank-shell/index.html",
+      "forbidden_prepared_root_entries": [
+        "DESIGN.md",
+        ".omd/",
+        "oracle",
+        "mutant",
+        "hidden-examples"
+      ]
+    },
+    "official_competitor_freshness_lock": {
+      "required": true,
+      "status": "unresolved",
+      "path": null,
+      "sha256": null,
+      "required_source_ids": [
+        "anthropic-frontend-design-2.0",
+        "impeccable-4.0.4-prompt-bounded-2.0",
+        "ui-ux-pro-max-2.14.2-2.0",
+        "taste-skill-main-2.0"
+      ],
+      "arm_source_map": {
+        "anthropic-frontend-design": "anthropic-frontend-design-2.0",
+        "impeccable-prompt-only": "impeccable-4.0.4-prompt-bounded-2.0",
+        "ui-ux-pro-max": "ui-ux-pro-max-2.14.2-2.0",
+        "taste-eligible-scope-only": "taste-skill-main-2.0"
+      }
+    },
+    "public_core_schema_liveness_receipt": {
+      "required": true,
+      "status": "unresolved",
+      "path": null,
+      "sha256": null,
+      "required_schema_count": 7,
+      "exact_remote_local_byte_parity": true
+    },
+    "static_runtime_capability_receipt": {
+      "required": true,
+      "status": "unresolved",
+      "path": null,
+      "sha256": null,
+      "exact_model": "grok-4.6",
+      "provider_calls": 0,
+      "model_calls": 0
+    },
+    "runtime_attribution_telemetry_receipt": {
+      "required": true,
+      "status": "unresolved",
+      "path": null,
+      "sha256": null,
+      "exact_model": "grok-4.6",
+      "provider_calls": 1,
+      "model_calls": 1,
+      "excluded_from_benchmark_denominator": true
+    },
+    "grok_build_cli_identity_receipt": {
+      "required": true,
+      "status": "unresolved",
+      "path": null,
+      "sha256": null,
+      "receipt_version": "grok-build-cli-identity-v0.1",
+      "runtime": "grok-build-cli",
+      "model": "grok-4.6",
+      "isolation_proven": true,
+      "isolation_method": "HOME redirect with frozen auth.json and byte-gated models_cache.json",
+      "isolation_date": "2026-08-14",
+      "models_cache_byte_gate_excludes": [
+        "fetched_at",
+        "etag"
+      ],
+      "no_subagents": true,
+      "no_memory": true,
+      "disable_web_search": true,
+      "no_auto_update": true,
+      "provider_calls": 0,
+      "model_calls": 0,
+      "excluded_from_benchmark_denominator": true
+    },
+    "evaluation_runtime_receipt": {
+      "required": true,
+      "status": "unresolved",
+      "path": null,
+      "sha256": null,
+      "provider_calls": 0,
+      "model_calls": 0,
+      "browser_calls": 0,
+      "network_calls": 0,
+      "exact_evaluator_and_dependency_bytes": true,
+      "exact_browser_and_font_inventory": true
+    }
+  },
+  "preparation_calls": {
+    "provider_calls": 0,
+    "model_calls": 0,
+    "browser_calls": 0
+  },
+  "fairness_contract": {
+    "same_user_task_packet_bytes": true,
+    "native_activation_prefix_is_only_arm_specific_prompt_delta": true,
+    "activation_prefix_and_invocation_hash_public": true,
+    "arm_specific_design_or_task_facts_forbidden": true
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "digital-master-carrier-inventory-luna-1.9.300",
+  "status": "PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19300",
+  "vendors_root": "/private/tmp/u19300-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "locked_plan_sha256": "9afd13adf4483c8abf8198f92b5450289ac0cb5db826de89811635dc54eea08f",
+  "preparation_state_sha256": "9ae2fce1a530c16d1c0960f613995c2b0e74538877742e88abb581f525b0e71c",
+  "source_attestation": {
+    "conjunctive_control_commit": "3a414a0a70dcc7fc70fb166e923ff318d3c53c66",
+    "conjunctive_control_skill_tree_sha256": "2d57746474c4ba4ae440ed3ce0e0df9413291f67077ed2e519288edc2ffe0b24",
+    "carrier_inventory_commit": "a57c374152dede7d3e17e856eda5f806d6c7c375",
+    "carrier_inventory_skill_tree_sha256": "b9edc2815e87443a546dd0f30aef2264ed4f869cd8dca5797dbf8e1d3ac6c51f"
+  },
+  "shared_attestation": {
+    "core_prompt_sha256": "c41e37e336ba616fda8a54ecf606ab34f006aa894c1e73081b9de9c54d1a24f0",
+    "runtime_prompt_sha256": "10343368b33f559b73d4c249d9d007335d64b480ece0758c72c11a03a48b3a77",
+    "product_sha256": "777f5de42fc4243e2a0530d32b8b0170bfad6b57b5cf2584b69997533115bd7c",
+    "design_sha256": "074f6a8f9e9a6d4d5dffd9fd13f5bb5deff562567866c991cedf323f2facedc3",
+    "index_sha256": "ca6a4127b9dbdc3762762f916d83fedf6043be88c40c55fe7603d1e304a58778",
+    "host_policy_config_sha256": "57abe807f0c49ca67a94e75666fda10ad37e874ea2b428db38bcbb2b67803a4c"
+  },
+  "equality": {
+    "task": true,
+    "prompt": true,
+    "product": true,
+    "design": true,
+    "activation": true,
+    "runtime": true,
+    "model": true,
+    "effort": true,
+    "timeout": true,
+    "installed_proof_policy": true,
+    "git_root_all_cells": true,
+    "source_detached_all_cells": true,
+    "source_publishable_all_cells": true
+  },
+  "sole_arm_delta": "exact-installed-skill-source",
+  "tokens_to_target_attempt_order": 3,
+  "next_command": "node benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs --root /private/tmp/u19300 --max-new-cells 1",
+  "next_cell": "luna-master-r1-control",
+  "same_root_retry": false
+}

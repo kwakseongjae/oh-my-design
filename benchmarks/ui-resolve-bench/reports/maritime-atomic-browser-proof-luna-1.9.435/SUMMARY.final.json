@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.438",
+  "status": "FROZEN_PROMOTION_UNREACHABLE",
+  "provider_calls": 2,
+  "executed_cells": 2,
+  "skipped_cells": 4,
+  "control": {"ui_resolved": false, "score": 81, "wall_time_ms": 367461, "tokens": 1041430, "proof_compliant": false},
+  "candidate": {"ui_resolved": false, "score": 81, "wall_time_ms": 474434, "tokens": 1151694, "proof_compliant": false},
+  "candidate_ratios": {"wall_time": 1.2911, "tokens": 1.1059},
+  "reliability": {"observed": "0/1", "maximum": "2/3", "required": "3/3"},
+  "runtime_identity_boundary": "accepted",
+  "browser_recovery_repair": "accepted-observationally",
+  "quality_promotion": false,
+  "tokens_to_target_minimum": 39511114,
+  "usage_unavailable_cells": 6,
+  "next": "provider-free-parent-one-line-and-post-browser-terminal-closure-repair"
+}

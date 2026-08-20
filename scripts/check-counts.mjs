@@ -30,21 +30,33 @@ function authoritative() {
       ).length
     : 0;
   const pkg = JSON.parse(readFileSync(path.join(ROOT, 'package.json'), 'utf-8'));
-  const skills = (pkg.files || []).filter((f) => f.startsWith('skills/')).length;
+  const shippedSkillPaths = (pkg.files || []).filter((f) => f.startsWith('skills/'));
+  const skills = shippedSkillPaths.length;
+  const cursorSkills = shippedSkillPaths.filter((skillPath) => {
+    const skillMd = readFileSync(path.join(ROOT, skillPath, 'SKILL.md'), 'utf-8');
+    const frontmatter = /^---\n([\s\S]*?)\n---/.exec(skillMd)?.[1] ?? '';
+    const declaration = /^x-omd-channels:\s*(.+)$/m.exec(frontmatter)?.[1];
+    return !declaration || declaration.split(/[,\s]+/).includes('cursor');
+  }).length;
   const agentsDir = path.join(ROOT, 'agents');
   const subagents = existsSync(agentsDir)
     ? readdirSync(agentsDir).filter((f) => /^omd-.*\.md$/.test(f)).length
     : 0;
-  return { refs, skills, subagents };
+  return { refs, skills, cursorSkills, subagents };
 }
 
-const { refs, skills, subagents } = authoritative();
+const { refs, skills, cursorSkills, subagents } = authoritative();
 
 // Phrase-anchored: capture the number immediately before a canonical noun phrase.
 // Sub-counts ("15 specialists", "6 skills (v0.2 layer)") use different phrasing
 // and are intentionally not matched.
 const rules = [
   { label: 'skills', re: /\b(\d+)(?=\s+skills\b)/g, val: skills },
+  {
+    label: 'Cursor Agent Skills',
+    re: /\b(\d+)(?=\s+(?:compatible|native) Agent Skills\b)/g,
+    val: cursorSkills,
+  },
   { label: 'sub-agents', re: /\b(\d+)(?=\s+sub-agents\b)/g, val: subagents },
   {
     label: 'references',
@@ -56,6 +68,7 @@ const rules = [
 const SURFACES = [
   'README.md', 'README.ko.md', 'README.ja.md', 'README.zh-TW.md',
   'web/public/llms.txt',
+  'web/src/data/faq.ts',
   'web/src/app/layout.tsx', 'web/src/app/docs/layout.tsx',
   'web/src/app/builder/layout.tsx', 'web/src/app/design-systems/layout.tsx',
 ].map((p) => path.join(ROOT, p));
@@ -82,5 +95,5 @@ if (failures.length) {
   process.exit(1);
 }
 console.log(
-  `✓ check-counts: refs=${refs} skills=${skills} sub-agents=${subagents} consistent across ${SURFACES.length} surfaces`,
+  `✓ check-counts: refs=${refs} skills=${skills} cursor-skills=${cursorSkills} sub-agents=${subagents} consistent across ${SURFACES.length} surfaces`,
 );

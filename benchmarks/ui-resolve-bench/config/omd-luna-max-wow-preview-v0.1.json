@@ -1,0 +1,201 @@
+{
+  "schema_version": "0.1",
+  "contract_id": "omd-luna-max-wow-preview-v0.1",
+  "experiment_id": "omd-luna-max-wow-preview-2.0.0-v0.1",
+  "status": "provider-zero-template-blocked-on-required-receipts",
+  "provider_execution_allowed": false,
+  "activation_phrase": "ㄱㄱ",
+  "authorities": {
+    "release_plan": {
+      "path": "benchmarks/ui-resolve-bench/plans/luna-max-2.0-release-v0.1.json",
+      "sha256": "a6bc4b053b89002d72d2ac41a44a90425d0e07eef0acc9870fd847564bd5fde6"
+    },
+    "model_role_routing": {
+      "path": "benchmarks/ui-resolve-bench/config/omd-2.0-model-role-routing-v0.1.json",
+      "sha256": "cb004c8f9799c00098964342d377b33b356b0a9204ef52bfbdce02ff98b436d0"
+    },
+    "task_set": {
+      "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json",
+      "sha256": "53634e4f8e79b34460ebd1d470b381b3167753bf6e07f03eb4aa7ce268e9bf6c"
+    },
+    "blank_starter": {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/blank-shell/index.html",
+      "sha256": "a9b82fcdf3efa04783d3be61544f84b0a4f3209f0fc5f6ac741ec853d03871b3"
+    },
+    "evaluator_adapters": {
+      "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json",
+      "sha256": "827e7933d360a139717a3790570b704544e6edbfc616353596e059f9b3de2c85"
+    },
+    "evaluator": {
+      "path": "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs",
+      "sha256": "7c434565b37e5356f36bf7e479a154a08c0b8c09c7b19bf580e7889fb40db66c"
+    },
+    "task_set_validator": {
+      "path": "benchmarks/ui-resolve-bench/scripts/validate-autopilot-greenfield-task-set.mjs",
+      "sha256": "352556d77ff3e6614b1685131135772fdda34e11dca9c84718363fa43517aff7"
+    },
+    "adapter_validator": {
+      "path": "benchmarks/ui-resolve-bench/scripts/validate-autopilot-greenfield-adapters.mjs",
+      "sha256": "999bb73cd9acc9fda321e0cb71db33d5e9dfa3a6e6a9725150ee126897cd90aa"
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "neighborhood-library-landing",
+      "family": "landing",
+      "prompt_bytes": 261,
+      "prompt_sha256": "81a8389e65a7f75fbc185dde64f37419baabfea6bf75cd256083ec0dee441ba3"
+    },
+    {
+      "task_id": "cold-chain-operations",
+      "family": "dense-operations",
+      "prompt_bytes": 275,
+      "prompt_sha256": "e815cf2fd539fcacd92a697e8c61c46e3629a7a4b487c5d6bea5a5a6c01500ad"
+    },
+    {
+      "task_id": "clinic-visit-prep-locales",
+      "family": "five-locale-surface",
+      "prompt_bytes": 598,
+      "prompt_sha256": "d1c023f0093287ea1af717624fb5fcc769a9858ebd294d5f6efd540c29dde729"
+    }
+  ],
+  "task_selection_status": "selected-neutral-input-awaiting-packet-receipt",
+  "arms": [
+    "model-only",
+    "anthropic-frontend-design",
+    "impeccable-prompt-only",
+    "ui-ux-pro-max",
+    "taste-eligible-scope-only",
+    "omd-autopilot-v2"
+  ],
+  "arm_eligibility": {
+    "taste-eligible-scope-only": {
+      "eligible_families": ["landing"],
+      "ineligible_policy": "retain-preregistered-slot-but-do-not-execute-or-score",
+      "reason": "Taste declares a marketing/landing-page scope; dense operations and multi-locale product UI are outside its claimed scope."
+    }
+  },
+  "runtime": {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "effort": "max",
+    "serial": true,
+    "trials_per_task_arm": 3,
+    "maximum_cells": 54,
+    "scheduled_provider_cells": 48,
+    "retry_budget_per_cell": 0,
+    "replacement_budget_per_cell": 0,
+    "fallback_budget_per_cell": 0,
+    "model_substitution_budget": 0,
+    "effort_substitution_budget": 0,
+    "workspace_boundary_applies_to_every_arm": true,
+    "workspace_boundary_prompt_suffix": "Benchmark runtime boundary: keep every generated file and temporary validation artifact inside the current workspace (use .benchmark/tmp when needed), except an exact cell-local staging path explicitly disclosed by the controller for an arm whose native package adopter requires source/destination separation. Do not read or write any other external path, including /tmp, and do not launch or control browsers or use network access; the external evaluator owns browser checks."
+  },
+  "admission": {
+    "clean_exact_head_required": true,
+    "source_authorities_must_be_byte_identical_to_head": true,
+    "fresh_output_root_outside_repository_required": true,
+    "neutral_task_packet_lock": {
+      "required": true,
+      "status": "unresolved",
+      "path": null,
+      "sha256": null,
+      "same_source_facts_for_every_arm": true,
+      "task_set_path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json",
+      "blank_starter_path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/blank-shell/index.html",
+      "forbidden_prepared_root_entries": ["DESIGN.md", ".omd/", "oracle", "mutant", "hidden-examples"]
+    },
+    "official_competitor_freshness_lock": {
+      "required": true,
+      "status": "unresolved",
+      "path": null,
+      "sha256": null,
+      "required_source_ids": [
+        "anthropic-frontend-design-2.0",
+        "impeccable-4.0.4-prompt-bounded-2.0",
+        "ui-ux-pro-max-2.14.2-2.0",
+        "taste-skill-main-2.0"
+      ],
+      "arm_source_map": {
+        "anthropic-frontend-design": "anthropic-frontend-design-2.0",
+        "impeccable-prompt-only": "impeccable-4.0.4-prompt-bounded-2.0",
+        "ui-ux-pro-max": "ui-ux-pro-max-2.14.2-2.0",
+        "taste-eligible-scope-only": "taste-skill-main-2.0"
+      }
+    },
+    "public_core_schema_liveness_receipt": {
+      "required": true,
+      "status": "unresolved",
+      "path": null,
+      "sha256": null,
+      "required_schema_count": 7,
+      "exact_remote_local_byte_parity": true
+    },
+    "static_runtime_capability_receipt": {
+      "required": true,
+      "status": "unresolved",
+      "path": null,
+      "sha256": null,
+      "exact_model": "gpt-5.6-luna",
+      "exact_effort": "max",
+      "provider_calls": 0,
+      "model_calls": 0
+    },
+    "runtime_attribution_telemetry_receipt": {
+      "required": true,
+      "status": "unresolved",
+      "path": null,
+      "sha256": null,
+      "exact_model": "gpt-5.6-luna",
+      "exact_effort": "max",
+      "provider_calls": 1,
+      "model_calls": 1,
+      "excluded_from_benchmark_denominator": true
+    },
+    "codex_in_app_browser_identity_receipt": {
+      "required": true,
+      "status": "unresolved",
+      "path": null,
+      "sha256": null,
+      "receipt_version": "codex-in-app-browser-identity-v0.1",
+      "browser_type": "iab",
+      "browser_name": "Codex In-app Browser",
+      "capture_surface": "codex-in-app-browser-tool",
+      "capture_method": "agent.browsers.get(iab)+tabs.new",
+      "cryptographic_identity_verified": false,
+      "capture_statement": "Operator-attested Codex in-app Browser observation; not cryptographic browser identity.",
+      "controller_browser_launch_allowed": false,
+      "identity_tab_created": true,
+      "identity_tab_url": "about:blank",
+      "identity_tab_title": "about:blank",
+      "navigation_calls": 0,
+      "provider_calls": 0,
+      "model_calls": 0,
+      "browser_calls": 1,
+      "excluded_from_benchmark_denominator": true
+    },
+    "evaluation_runtime_receipt": {
+      "required": true,
+      "status": "unresolved",
+      "path": null,
+      "sha256": null,
+      "provider_calls": 0,
+      "model_calls": 0,
+      "browser_calls": 0,
+      "network_calls": 0,
+      "exact_evaluator_and_dependency_bytes": true,
+      "exact_browser_and_font_inventory": true
+    }
+  },
+  "preparation_calls": {
+    "provider_calls": 0,
+    "model_calls": 0,
+    "browser_calls": 0
+  },
+  "fairness_contract": {
+    "same_user_task_packet_bytes": true,
+    "native_activation_prefix_is_only_arm_specific_prompt_delta": true,
+    "activation_prefix_and_invocation_hash_public": true,
+    "arm_specific_design_or_task_facts_forbidden": true
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.356",
+  "experiment_id": "museum-compact-artifact-luna-1.9.355",
+  "status": "PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19355",
+  "vendors_root": "/private/tmp/u19355-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "next_cell": "luna-museum-r1-control",
+  "sole_arm_delta": "exact-installed-skill-source",
+  "hashes": {
+    "preregistered_plan_sha256": "88d3160a51ecfeb86ece30f4434e8fc8010f4ad334839e674510420575efea63",
+    "locked_plan_sha256": "40bdc302212cfd42278e550755706c6d8a48145832a6741a69584c3c05be67ca",
+    "matrix_state_sha256": "39dd078cdafb3ccbd04bd052b4d3e2462d21b58615c1281321eb362830ee7165",
+    "product_initial_sha256": "d5f78a45d6881e3c4fa8267c31097db9c7d9ac4fec647e6c3fc9e73c356b6aa3",
+    "index_sha256": "52979b7dbfbb4f2622ff3f58f37b821e9c6ef65b20b99129b66e223c45314f47",
+    "design_md_sha256": "0c778c279b6871f004dfeec228da5fc74a5053e847f00397d81d542e10e50d9a",
+    "activated_prompt_sha256": "37bd022d94ffee8aedd0dac8183feedc545a08302f77b5b3ef4de01fb653ea5b",
+    "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+    "host_config_sha256": "f9391c21eb68de265eb854e488d5ad37d7390eba452fa1ca293a1a1c7d267c39",
+    "installed_proof_policy_sha256": "de29ef030793f3c12268eb014d37a8a89b18ea8299fadb70e5ab36a9a5cd515d",
+    "control_skill_tree_sha256": "2d57746474c4ba4ae440ed3ce0e0df9413291f67077ed2e519288edc2ffe0b24",
+    "candidate_skill_tree_sha256": "36a44a1bb41fa1e584a6732d2e0c57a572eba6b9ca20c82c5462125eec07fd92"
+  },
+  "sources": {
+    "control": { "commit": "3a414a0a70dcc7fc70fb166e923ff318d3c53c66", "detached": true, "clean": true, "publishable": true },
+    "candidate": { "commit": "c1de0e4e9520c8ca333b59557217dd40219ae195", "detached": true, "clean": true, "publishable": true }
+  },
+  "equality": {
+    "task": true,
+    "prompt": true,
+    "product": true,
+    "design_md": true,
+    "activation": true,
+    "runtime": true,
+    "model": true,
+    "effort": true,
+    "timeout": true,
+    "installed_proof_policy": true,
+    "validity_admission_pin": true,
+    "checkpoint_resume_pin": true,
+    "timeout_accounting_pin": true,
+    "clean_baseline_all_cells": true,
+    "workspace_detached_all_cells": true,
+    "source_detached_all_cells": true,
+    "source_publishable_all_cells": true
+  },
+  "workspace_baselines": {
+    "luna-museum-r1-control": "0e2a01ca8995eca15b2de92be8bd560645b92498",
+    "luna-museum-r1-compact": "f8326717507489d3f0d59b46a8e6cf24190b321f",
+    "luna-museum-r2-compact": "f8326717507489d3f0d59b46a8e6cf24190b321f",
+    "luna-museum-r2-control": "953274dd7a4639d860e9f0393a8a2b48463f93da",
+    "luna-museum-r3-control": "953274dd7a4639d860e9f0393a8a2b48463f93da",
+    "luna-museum-r3-compact": "43cccb2c5acfc269b851825d247ee82de495fdf7"
+  },
+  "execution_contract": {
+    "max_new_cells": 1,
+    "retry": false,
+    "inter_cell_delay_seconds": 120,
+    "browser_preflight_required_before_provider": true
+  }
+}

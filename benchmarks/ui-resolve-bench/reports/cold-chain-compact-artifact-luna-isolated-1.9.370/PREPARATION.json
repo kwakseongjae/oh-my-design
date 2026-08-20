@@ -1,0 +1,34 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.371",
+  "experiment_id": "cold-chain-compact-artifact-luna-isolated-1.9.370",
+  "status": "PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19370",
+  "vendors_root": "/private/tmp/u19370-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "next_cell": "luna-coldchain-r1-control",
+  "sole_arm_delta": "exact-installed-skill-source",
+  "hashes": {
+    "preregistered_plan_sha256": "29477cf718bec26e4ef4e0a5c3e7335bd962818486e144a6c03223470460298e",
+    "locked_plan_sha256": "668ce8ea07eb1e313388376f5c32d3e3b61d2ece95d5b7bb47ade596fae92f57",
+    "matrix_state_sha256": "27e890947a194311bd510c4565b615fe818957b22fc162c2df6a30c657cc9df0",
+    "product_initial_sha256": "821acdd23e7b6ec1c3b476b4322366ae1dc123519e3307e0d83c9dcd72e02249",
+    "prompt_sha256": "12e676e68364b416746509c6d3dc0de7e5fb54fb2866471dffc1eee6f30c67c7",
+    "control_skill_tree_sha256": "2d57746474c4ba4ae440ed3ce0e0df9413291f67077ed2e519288edc2ffe0b24",
+    "candidate_skill_tree_sha256": "36a44a1bb41fa1e584a6732d2e0c57a572eba6b9ca20c82c5462125eec07fd92",
+    "isolated_state_pin_sha256": "6c7baf891869b6b753b3d7bd04a08f9b68e275af04f70be9df6317bac39e7f71",
+    "named_browser_pin_sha256": "f8fa71dc7676cf194a7cf8e5c2c00e577ac7125e9189c0ebcd5e9393a24eaca6"
+  },
+  "sources": {
+    "control": { "commit": "3a414a0a70dcc7fc70fb166e923ff318d3c53c66", "detached": true, "clean": true, "publishable": true },
+    "candidate": { "commit": "c1de0e4e9520c8ca333b59557217dd40219ae195", "detached": true, "clean": true, "publishable": true }
+  },
+  "equality": { "task_prompt_product_design_activation": true, "runtime_model_effort_timeout": true, "host_proof_and_all_execution_pins": true, "clean_detached_cells": 6, "clean_detached_sources": 2 },
+  "workspace_baselines": {
+    "control": "a07941984be15078ce99519b05f29d4e064fefbd",
+    "candidate": "e206d06fe35ce011d71a207737512bae1d9a9bd0"
+  },
+  "execution_contract": { "max_new_cells": 1, "retry": false, "inter_cell_delay_seconds": 120, "named_browser": "bench19366", "cdp_endpoint": "http://127.0.0.1:9336", "dual_preflight": true }
+}

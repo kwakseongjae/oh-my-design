@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "cave-canonical-css-canary-1.9.706",
+  "status": "PREPARED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "scheduled_cells": 1,
+  "prepared_cells": 1,
+  "locked_plan_sha256": "315fc216c37f9a7c6963df0c149d5c95fe93d1835ee7e61653d398d547b2535c",
+  "preparation_state_sha256": "dd21d3497f25caaf314977001be346caae97ff363b1a4956d0f23d500a5b970a",
+  "objective_evaluator": {
+    "score_schema_version": "0.6",
+    "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+    "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+  },
+  "source_attestation": {
+    "task_source_commit": "4bd03c7bb6d87509f7af71a0e4340aabaea5af50",
+    "task_git_tree": "fe3bb646e08e0825c0524a2044fd3c2afeb081ad",
+    "skill_source_commit": "984180ff35432aa22474cc51c04d07b5e63b4f6e",
+    "skill_sha256": "97b50cba24b3ce356439d09bc4d4bb64e6d7e2ca8299c27b054a7db367a9928f",
+    "skill_source_publishable": true,
+    "skill_source_dirty": false
+  },
+  "cell": {
+    "id": "luna-cave-canonical-css-r1",
+    "task_id": "cave-climate-sensor-custody-v0.1",
+    "variant_id": "omd-portable",
+    "runtime": "codex",
+    "model_id": "gpt-5.6-luna",
+    "effort": "high",
+    "timeout_seconds": 720,
+    "task_core_prompt_sha256": "ed22e7c47b6936a591b2d11377c3172c72cc1ec858a6fcef087ed58245b05c99",
+    "prepared_prompt_sha256": "c342e7de012bdecf31f36ff9938c6cbe86494c59b861d628471a323dfba439f7",
+    "starter_sha256": "f473f3ed0e478f6be0f7a9a7ca233a54f048ef154ba65209d5537b58c2cad835",
+    "untouched": true
+  },
+  "execution_admission": {
+    "allowed": true,
+    "execution_artifacts_absent": true,
+    "retry_allowed": false,
+    "public_ranking_eligible": false,
+    "frontier_gate_eligible": false
+  }
+}

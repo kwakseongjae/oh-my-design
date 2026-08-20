@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "source-contract-reliability-canary-1.9.722",
+  "status": "frozen-contract-hard-stop",
+  "reliability_contract": {
+    "required_cell_passes": 3,
+    "observed_cell_passes": 0,
+    "completed_cells": 1,
+    "remaining_cells_frozen": 2,
+    "pass": false
+  },
+  "first_cell_success_contract": {
+    "objective_score_85_of_85": false,
+    "ui_resolved": false,
+    "product_revision_count_1": true,
+    "successful_static_closure_count_1": false,
+    "failed_static_closure_count_0": false,
+    "user_handoff_count_0": true,
+    "proof_compliance": false,
+    "sealed_inventory_unchanged": true,
+    "all_pass": false
+  },
+  "objective": {
+    "baseline_score": 75,
+    "final_score": 81,
+    "objective_max": 85,
+    "critical_gates": {
+      "task_contract": true,
+      "design_grounding": true,
+      "state_journey": true,
+      "responsive": true,
+      "accessibility": false,
+      "evidence_honesty": true
+    },
+    "viewport_summary": {
+      "conditions": 4,
+      "horizontal_overflow_failures": 0,
+      "clipped_controls": 0,
+      "overlapping_controls": 0,
+      "text_geometry_failures": 0,
+      "color_contrast_failures": 4
+    }
+  },
+  "execution": {
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "wall_time_ms": 177191,
+    "observed_tokens": 558228,
+    "input_tokens": 549245,
+    "cached_input_tokens": 477952,
+    "output_tokens": 8983,
+    "reasoning_output_tokens": 2776,
+    "retry_count": 0,
+    "replacement_count": 0,
+    "provider_calls": 1
+  },
+  "scope": {
+    "diagnostic_only": true,
+    "visual_review": "not_run",
+    "public_ranking_change": false,
+    "public_superiority_claim": false,
+    "promotes_2_0_gate": false
+  },
+  "decision": "Freeze the two unexecuted cells. Add a provider-zero candidate preflight so exact sealed CSS and cascade-effective contrast can be checked before the single product edit, then validate only on newly locked tasks. Never replay these three cells."
+}

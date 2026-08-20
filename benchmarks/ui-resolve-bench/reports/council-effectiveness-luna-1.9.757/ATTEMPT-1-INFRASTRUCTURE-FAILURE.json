@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-effectiveness-luna-1.9.757",
+  "attempt": 1,
+  "classification": "infrastructure-invalid-before-provider",
+  "reason": "The sandboxed parent process could not open the Codex state database or initialize the in-process app-server client.",
+  "invocation_attempt_count": 4,
+  "provider_calls": 0,
+  "model_lane_calls": 0,
+  "cursor_calls": 0,
+  "workspace_unauthorized_write_count": 0,
+  "lane_artifact_count": 0,
+  "elapsed_ms": [
+    62,
+    53,
+    53,
+    58
+  ],
+  "disposition": "Operational rerun allowed because no provider call began and no benchmark output was produced. Task, oracle, model, effort, lane cap, and retry policy remain unchanged. The rerun must use the Codex-native state directory outside the parent sandbox."
+}

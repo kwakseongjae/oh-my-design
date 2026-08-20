@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.550",
+  "experiment_id": "subsea-valve-intervention-task-lock-1.9.550",
+  "status": "TASK_LOCKED_BEFORE_PROVIDER",
+  "provider_calls": 0,
+  "candidate_task_exposure": 0,
+  "promotion": false,
+  "task": {
+    "id": "subsea-valve-intervention-review-v0.1",
+    "version": "0.1.0",
+    "domain": "deep-sea subsea valve intervention review",
+    "registered_valve_assemblies": 4,
+    "registered_anomaly_records": 6,
+    "registered_intervention_consoles": 2,
+    "relationship_carriers": [
+      "valve-register",
+      "intervention-console-strip",
+      "intervention-review-decision"
+    ]
+  },
+  "untouched_baseline": {
+    "objective_score": 75,
+    "objective_max": 85,
+    "desktop_overflow_px": 0,
+    "mobile_overflow_px": 685,
+    "narrow_320_overflow_px": 755,
+    "actual_200pct_overflow_px": 1510,
+    "compound_target_fragment_lines": {
+      "mobile": [4, 4],
+      "narrow_320": [4, 5],
+      "actual_200pct": [4, 5]
+    },
+    "state_fragment_lines": {
+      "mobile": 2,
+      "narrow_320": 2,
+      "actual_200pct": 2
+    },
+    "muted_contrast_ratio": 3.88,
+    "serious_or_critical_axe_violations": 1,
+    "clipped_controls": 0,
+    "overlapping_controls": 0
+  },
+  "contract_validation": {
+    "task_contract": true,
+    "state_journey": true,
+    "design_grounding": true,
+    "evidence_honesty": true,
+    "responsive_intentionally_red": true,
+    "accessibility_intentionally_red": true
+  },
+  "next": "Preregister exact omd-1.9.541 first-edit-checklist control versus exact omd-1.9.548 fit-strategy candidate under Reliability@3 before preparing any provider workspace."
+}

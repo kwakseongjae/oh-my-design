@@ -1,0 +1,517 @@
+#!/usr/bin/env node
+import { spawn } from "node:child_process";
+import { createHash } from "node:crypto";
+import { appendFileSync, existsSync, lstatSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { basename, dirname, join, resolve } from "node:path";
+import { diffTreeManifests, parseArgs, readJson, treeManifest, writeJson } from "./_lib.mjs";
+import {
+  codexBrowserSandboxSpec,
+  isolatedCodexHome,
+  prepareIsolatedCodexHome,
+  preparedExactCodexRuntimeContract,
+  preparedWorkspaceRequiresBrowserProof,
+  verifyExactCodexCliRuntime,
+  verifyExactModelCatalogAuthority,
+  resolveCodexNativeExecutable,
+} from "./codex-browser-sandbox-contract.mjs";
+import { inspectCodexModelToolMode } from "./codex-tool-mode-contract.mjs";
+
+const args = parseArgs();
+const workspace = args.get("workspace") ? resolve(String(args.get("workspace"))) : null;
+const model = String(args.get("model") ?? "gpt-5.6-terra");
+const reasoning = String(args.get("reasoning") ?? "xhigh");
+const timeoutMs = Number(args.get("timeout-ms") ?? 900_000);
+const bypassHookTrust = args.get("bypass-hook-trust") === true;
+const loadUserConfig = args.get("load-user-config") === true;
+const disablePluginSkillSearch = args.get("disable-plugin-skill-search") === true;
+const expectedCliVersion = args.get("expected-codex-version") ? String(args.get("expected-codex-version")) : null;
+const expectedWrapperSha = args.get("expected-wrapper-sha") ? String(args.get("expected-wrapper-sha")) : null;
+const expectedNativePath = args.get("expected-native-path") ? resolve(String(args.get("expected-native-path"))) : null;
+const expectedNativeSha = args.get("expected-native-sha") ? String(args.get("expected-native-sha")) : null;
+const artifactSuffix = args.get("artifact-suffix") ? String(args.get("artifact-suffix")) : null;
+const additionalWritableRoot = args.get("additional-writable-root") ? resolve(String(args.get("additional-writable-root"))) : null;
+const OMD_CONTROLLER_ENV_KEYS = Object.freeze([
+  "OMD_BENCH_EXTERNAL_STAGING_ROOT", "OMD_BENCH_COMPILED_CORE_PACKAGE", "OMD_BENCH_CORE_CHECKPOINT",
+  "OMD_AUTHORITY_CONTROLLER_RECEIPT", "OMD_AUTHORITY_CONTROLLER_RECEIPT_SHA256",
+  "OMD_AUTHORITY_CONTROLLER_ACTIVATION_SHA256", "OMD_AUTHORITY_CONTROLLER_RUN_DIR",
+  "OMD_AUTHORITY_CONTROLLER_EXECUTABLE",
+]);
+
+if (!workspace) {
+  console.error("usage: run-codex.mjs --workspace <prepared-dir> [--model gpt-5.6-terra] [--reasoning xhigh]");
+  process.exit(2);
+}
+const benchmarkDir = join(workspace, ".benchmark");
+const manifestPath = join(benchmarkDir, "manifest.json");
+if (artifactSuffix && !/^repair-[1-2]$/.test(artifactSuffix)) {
+  throw new Error("artifact suffix must be repair-1 or repair-2");
+}
+const artifactDir = artifactSuffix ? join(benchmarkDir, "attempts", artifactSuffix) : benchmarkDir;
+mkdirSync(artifactDir, { recursive: true });
+const resultPath = join(artifactDir, "run-result.json");
+if (!existsSync(manifestPath)) throw new Error(`not a prepared benchmark workspace: ${workspace}`);
+if (existsSync(resultPath)) throw new Error(`refusing to overwrite completed run: ${resultPath}`);
+
+const manifest = readJson(manifestPath);
+if (manifest.runtime_target !== "codex") {
+  throw new Error("workspace was not prepared with --runtime codex");
+}
+if (additionalWritableRoot) {
+  const info = existsSync(additionalWritableRoot) ? lstatSync(additionalWritableRoot) : null;
+  if (!disablePluginSkillSearch || manifest.variant?.id !== "omd-autopilot-v2" || !info?.isDirectory() || info.isSymbolicLink()
+    || dirname(additionalWritableRoot) !== dirname(workspace) || basename(additionalWritableRoot) !== "omd-external-staging"
+    || resolve(process.env.OMD_BENCH_EXTERNAL_STAGING_ROOT ?? "") !== additionalWritableRoot) {
+    throw new Error("additional writable root must be the exact controller-bound OmD cell-local staging sibling");
+  }
+}
+const omdControllerEnv = {};
+if (manifest.variant?.id === "omd-autopilot-v2") {
+  if (!additionalWritableRoot || OMD_CONTROLLER_ENV_KEYS.some((key) => typeof process.env[key] !== "string" || !process.env[key])) {
+    throw new Error("OmD controller invocation requires the exact preregistered environment bindings");
+  }
+  const staging = resolve(process.env.OMD_BENCH_EXTERNAL_STAGING_ROOT);
+  const packageRoot = resolve(process.env.OMD_BENCH_COMPILED_CORE_PACKAGE);
+  const checkpoint = resolve(process.env.OMD_BENCH_CORE_CHECKPOINT);
+  const receiptPath = resolve(process.env.OMD_AUTHORITY_CONTROLLER_RECEIPT);
+  const executable = resolve(process.env.OMD_AUTHORITY_CONTROLLER_EXECUTABLE);
+  const executionRoot = dirname(workspace);
+  const receiptInfo = existsSync(receiptPath) ? lstatSync(receiptPath) : null;
+  const executableInfo = existsSync(executable) ? lstatSync(executable) : null;
+  const receiptBytes = receiptInfo?.isFile() && !receiptInfo.isSymbolicLink() ? readFileSync(receiptPath) : null;
+  const receiptSha = receiptBytes ? createHash("sha256").update(receiptBytes).digest("hex") : null;
+  const receipt = receiptBytes ? JSON.parse(receiptBytes) : null;
+  const expectedRunDir = `.omd/runs/${String(manifest.task?.id ?? "benchmark-task").replace(/-landing$/, "")}`;
+  if (staging !== additionalWritableRoot || dirname(packageRoot) !== staging || basename(packageRoot) !== "compiled-core"
+    || dirname(checkpoint) !== staging || basename(checkpoint) !== "project-adoption-checkpoint.json"
+    || dirname(receiptPath) !== executionRoot || basename(receiptPath) !== "OMD-AUTHORITY-CONTROLLER.json"
+    || !executableInfo?.isFile() || executableInfo.isSymbolicLink()
+    || dirname(dirname(executable)) !== join(executionRoot, "authority-controller-runtime")
+    || basename(executable) !== "activate-autopilot-design-system.cjs"
+    || receiptSha !== process.env.OMD_AUTHORITY_CONTROLLER_RECEIPT_SHA256
+    || receipt?.kind !== "omd-autopilot-external-authority-controller-activation"
+    || receipt?.scope?.project_workspace !== workspace || receipt?.scope?.run_dir !== expectedRunDir
+    || resolve(receipt?.scope?.controller_executable ?? "") !== executable
+    || receipt?.activation?.sha256 !== process.env.OMD_AUTHORITY_CONTROLLER_ACTIVATION_SHA256
+    || process.env.OMD_AUTHORITY_CONTROLLER_RUN_DIR !== expectedRunDir) {
+    throw new Error("OmD controller environment differs from the execution receipt/add-dir contract");
+  }
+  for (const key of OMD_CONTROLLER_ENV_KEYS) omdControllerEnv[key] = process.env[key];
+}
+const promptPath = artifactSuffix
+  ? join(benchmarkDir, "repair-prompts", `${artifactSuffix}.md`)
+  : join(benchmarkDir, "PROMPT.md");
+if (!existsSync(promptPath)) throw new Error(`run prompt is missing: ${promptPath}`);
+const prompt = readFileSync(promptPath, "utf8");
+const finalMessagePath = join(artifactDir, "final-message.txt");
+const eventsPath = join(artifactDir, "events.jsonl");
+writeFileSync(eventsPath, "", "utf8");
+const maxLogBytes = 50 * 1024 * 1024;
+const browserProofRequired = preparedWorkspaceRequiresBrowserProof(workspace, { readJson });
+const exactRuntimeContract = preparedExactCodexRuntimeContract(workspace, { readJson });
+const exactCodexHome = exactRuntimeContract ? isolatedCodexHome(workspace) : null;
+const strictIsolatedHome = disablePluginSkillSearch
+  ? exactCodexHome ?? resolve(String(process.env.CODEX_HOME ?? ""))
+  : null;
+if (disablePluginSkillSearch && !exactRuntimeContract) {
+  if (!process.env.HOME || !process.env.CODEX_HOME
+    || !resolve(process.env.HOME).startsWith("/")
+    || resolve(process.env.HOME) !== strictIsolatedHome) {
+    throw new Error("plugin/skill isolation requires exact absolute HOME === CODEX_HOME");
+  }
+}
+const executionCodexHome = exactCodexHome ?? strictIsolatedHome;
+const exactModelCatalogPath = exactCodexHome ? join(exactCodexHome, "model_catalog.json") : null;
+const codexBin = exactRuntimeContract
+  ? exactRuntimeContract.catalog_snapshot_contract.codex_cli.executable_path
+  : process.env.OMD_BENCH_CODEX_BIN ?? "codex";
+const sourceModelToolMode = exactRuntimeContract ? null : inspectCodexModelToolMode(model,
+  executionCodexHome ? { OMD_BENCH_AUTH_CODEX_HOME: executionCodexHome } : process.env);
+const innerCommand = [
+  "exec",
+  "--ephemeral",
+  ...(!loadUserConfig ? ["--ignore-user-config"] : []),
+  "--skip-git-repo-check",
+  ...(bypassHookTrust ? ["--dangerously-bypass-hook-trust"] : []),
+  ...(disablePluginSkillSearch ? ["--disable", "plugins", "--disable", "skill_search"] : []),
+  ...(browserProofRequired ? ["--dangerously-bypass-approvals-and-sandbox"] : ["--sandbox", "workspace-write"]),
+  "--cd",
+  workspace,
+  ...(additionalWritableRoot ? ["--add-dir", additionalWritableRoot] : []),
+  "--model",
+  model,
+  "--config",
+  `model_reasoning_effort=\"${reasoning}\"`,
+  ...(exactModelCatalogPath ? [
+    "--config",
+    `model_catalog_json=${JSON.stringify(exactModelCatalogPath)}`,
+  ] : []),
+  "--json",
+  "--output-last-message",
+  finalMessagePath,
+  "-",
+];
+const execution = browserProofRequired
+  ? codexBrowserSandboxSpec({ workspace, innerArgs: innerCommand, codexBin })
+  : {
+      executable: codexBin,
+      args: innerCommand,
+      env: executionCodexHome
+        ? { HOME: executionCodexHome, CODEX_HOME: executionCodexHome }
+        : {},
+      sandbox: "workspace-write",
+      ...(executionCodexHome ? { codex_home: executionCodexHome } : {}),
+    };
+if (browserProofRequired && !exactRuntimeContract) {
+  mkdirSync(execution.temp_dir, { recursive: true });
+  prepareIsolatedCodexHome(workspace);
+} else if (browserProofRequired) {
+  mkdirSync(execution.temp_dir, { recursive: true });
+}
+
+const startedAt = new Date();
+const startedNs = process.hrtime.bigint();
+let stdout = "";
+let stderr = "";
+let timedOut = false;
+let logsTruncated = false;
+let spawnError = null;
+
+const childEnv = {};
+for (const key of ["HOME", "PATH", "CODEX_HOME", "TMPDIR", "LANG", "LC_ALL", "TERM", "USER", "SHELL"]) {
+  if (process.env[key]) childEnv[key] = process.env[key];
+}
+Object.assign(childEnv, {
+  DISABLE_TELEMETRY: "1",
+  DO_NOT_TRACK: "1",
+  CI: "1",
+  OMD_PROOF_POLICY_EVENTS_PATH: eventsPath,
+  ...omdControllerEnv,
+  ...execution.env,
+});
+
+let exactCliRuntime = null;
+let exactPreRunModelToolMode = null;
+let exactModelCatalogAuthority = null;
+let strictPreProviderCacheBytes = null;
+if (exactRuntimeContract) {
+  prepareIsolatedCodexHome(workspace, process.env, {
+    exactRuntimeContract,
+    modelId: model,
+    effort: reasoning,
+  });
+  exactPreRunModelToolMode = inspectCodexModelToolMode(model, {
+    OMD_BENCH_AUTH_CODEX_HOME: exactCodexHome,
+  });
+  exactModelCatalogAuthority = verifyExactModelCatalogAuthority(
+    workspace,
+    exactRuntimeContract,
+    { modelId: model },
+  );
+  exactCliRuntime = verifyExactCodexCliRuntime(exactRuntimeContract);
+} else if (disablePluginSkillSearch) {
+  if (!expectedCliVersion || !/^[a-f0-9]{64}$/.test(expectedWrapperSha ?? "") || !expectedNativePath || !/^[a-f0-9]{64}$/.test(expectedNativeSha ?? "")) throw new Error("strict isolated mode requires exact admitted Codex CLI bindings");
+  const wrapperPath = resolve(process.env.OMD_BENCH_CODEX_BIN ?? "");
+  const nativePath = resolveCodexNativeExecutable(wrapperPath);
+  const digest = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
+  const versionOutput = await new Promise((done) => {
+    const child = spawn(wrapperPath, ["--version"], { stdio: ["ignore", "pipe", "pipe"] }); let output = "";
+    child.stdout.on("data", (chunk) => { output += chunk; }); child.stderr.on("data", (chunk) => { output += chunk; }); child.on("close", (code) => done({ code, output }));
+  });
+  const observedVersion = versionOutput.output.match(/codex-cli\s+([^\s]+)/i)?.[1] ?? null;
+  if (versionOutput.code !== 0 || observedVersion !== expectedCliVersion || digest(wrapperPath) !== expectedWrapperSha || nativePath !== expectedNativePath || digest(nativePath) !== expectedNativeSha) throw new Error("strict isolated Codex CLI binding drift");
+  exactCliRuntime = { executable_path: wrapperPath, binary_sha256: expectedWrapperSha, native_executable_path: nativePath, native_binary_sha256: expectedNativeSha, version: expectedCliVersion };
+}
+if (disablePluginSkillSearch && strictPreProviderCacheBytes === null) {
+  const preCachePath = join(execution.codex_home, "models_cache.json");
+  const preCacheInfo = lstatSync(preCachePath);
+  if (!preCacheInfo.isFile() || preCacheInfo.isSymbolicLink()) throw new Error("strict isolated pre-provider model cache is not a regular file");
+  strictPreProviderCacheBytes = readFileSync(preCachePath);
+}
+
+const appendCapped = (current, chunk) => {
+  if (Buffer.byteLength(current) >= maxLogBytes) {
+    logsTruncated = true;
+    return current;
+  }
+  const next = `${current}${chunk.toString()}`;
+  if (Buffer.byteLength(next) <= maxLogBytes) return next;
+  logsTruncated = true;
+  return Buffer.from(next).subarray(0, maxLogBytes).toString("utf8");
+};
+
+const exit = await new Promise((resolveExit) => {
+  const child = spawn(execution.executable, execution.args, {
+    cwd: workspace,
+    env: childEnv,
+    detached: true,
+    stdio: ["pipe", "pipe", "pipe"],
+  });
+  const timer = setTimeout(() => {
+    timedOut = true;
+    try { process.kill(-child.pid, "SIGTERM"); } catch { child.kill("SIGTERM"); }
+  }, timeoutMs);
+  child.stdout.on("data", (chunk) => {
+    appendFileSync(eventsPath, chunk);
+    stdout = appendCapped(stdout, chunk);
+  });
+  child.stderr.on("data", (chunk) => { stderr = appendCapped(stderr, chunk); });
+  child.on("error", (error) => {
+    clearTimeout(timer);
+    spawnError = error.message;
+    resolveExit({ code: null, signal: null });
+  });
+  child.on("close", (code, signal) => {
+    clearTimeout(timer);
+    resolveExit({ code, signal });
+  });
+  child.stdin.end(prompt);
+});
+
+const wallMs = Number(process.hrtime.bigint() - startedNs) / 1_000_000;
+const postProviderCachePath = join(artifactDir, "models-cache.post-provider.bin");
+let postProviderCacheArtifact = null;
+let postProviderCachePreservationError = null;
+let postProviderCacheBytes = null;
+if (disablePluginSkillSearch) {
+  try {
+    const liveCachePath = join(execution.codex_home, "models_cache.json");
+    const info = lstatSync(liveCachePath);
+    if (!info.isFile() || info.isSymbolicLink()) throw new Error("post-provider model cache is not a regular file");
+    const bytes = readFileSync(liveCachePath);
+    writeFileSync(postProviderCachePath, bytes, { flag: "wx", mode: 0o600 });
+    postProviderCacheBytes = bytes;
+    postProviderCacheArtifact = {
+      path: postProviderCachePath,
+      sha256: createHash("sha256").update(bytes).digest("hex"),
+      bytes: bytes.length,
+    };
+  } catch (error) {
+    postProviderCachePreservationError = String(error?.message ?? error);
+  }
+}
+const executionModelToolMode = browserProofRequired || exactRuntimeContract || disablePluginSkillSearch
+  ? inspectCodexModelToolMode(model, { OMD_BENCH_AUTH_CODEX_HOME: execution.codex_home })
+  : sourceModelToolMode;
+const modelToolMode = exactRuntimeContract || disablePluginSkillSearch
+  ? executionModelToolMode
+  : executionModelToolMode.reason === "model-cache-missing"
+    ? sourceModelToolMode
+    : executionModelToolMode;
+const modelToolModeEvidenceScope = modelToolMode === executionModelToolMode
+  ? "execution-home-post-run"
+  : "auth-source-fallback";
+const modelToolModeBeforeRun = exactRuntimeContract
+  ? exactPreRunModelToolMode
+  : sourceModelToolMode;
+const cacheFullBytesChanged = modelToolModeBeforeRun.cache_sha256 !== executionModelToolMode.cache_sha256;
+const cacheFetchedAtChanged = modelToolModeBeforeRun.cache_fetched_at !== executionModelToolMode.cache_fetched_at;
+const cacheIntegrityComparisons = {
+  full_bytes_sha256: { before: modelToolModeBeforeRun.cache_sha256, after: executionModelToolMode.cache_sha256, match: !cacheFullBytesChanged },
+  semantic_sha256: { before: modelToolModeBeforeRun.cache_semantic_sha256, after: executionModelToolMode.cache_semantic_sha256, match: modelToolModeBeforeRun.cache_semantic_sha256 === executionModelToolMode.cache_semantic_sha256 },
+  model_profile_sha256: { before: modelToolModeBeforeRun.model_profile_sha256, after: executionModelToolMode.model_profile_sha256, match: modelToolModeBeforeRun.model_profile_sha256 === executionModelToolMode.model_profile_sha256 },
+  client_version: { before: modelToolModeBeforeRun.cache_client_version, after: executionModelToolMode.cache_client_version, match: modelToolModeBeforeRun.cache_client_version === executionModelToolMode.cache_client_version },
+  tool_mode: { before: modelToolModeBeforeRun.tool_mode, after: executionModelToolMode.tool_mode, match: modelToolModeBeforeRun.tool_mode === executionModelToolMode.tool_mode },
+  fetched_at: { before: modelToolModeBeforeRun.cache_fetched_at, after: executionModelToolMode.cache_fetched_at, match: !cacheFetchedAtChanged },
+};
+const cacheSemanticIdentityIntact = cacheIntegrityComparisons.semantic_sha256.match
+  && cacheIntegrityComparisons.model_profile_sha256.match
+  && cacheIntegrityComparisons.client_version.match
+  && cacheIntegrityComparisons.tool_mode.match;
+const regexEscape = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+let fetchedAtRawDifferenceProof = { pass: false, reason: "not-applicable" };
+if (disablePluginSkillSearch && cacheFullBytesChanged && cacheFetchedAtChanged
+  && strictPreProviderCacheBytes && postProviderCacheBytes
+  && typeof modelToolModeBeforeRun.cache_fetched_at === "string"
+  && typeof executionModelToolMode.cache_fetched_at === "string") {
+  const beforeText = strictPreProviderCacheBytes.toString("utf8");
+  const beforeValue = JSON.stringify(modelToolModeBeforeRun.cache_fetched_at);
+  const afterValue = JSON.stringify(executionModelToolMode.cache_fetched_at);
+  const pattern = new RegExp(`("fetched_at"\\s*:\\s*)${regexEscape(beforeValue)}`, "g");
+  const matches = [...beforeText.matchAll(pattern)];
+  const expectedPost = matches.length === 1 ? beforeText.replace(pattern, `$1${afterValue}`) : null;
+  fetchedAtRawDifferenceProof = {
+    pass: expectedPost !== null && expectedPost === postProviderCacheBytes.toString("utf8"),
+    reason: matches.length !== 1
+      ? "fetched-at-token-not-unique"
+      : expectedPost === postProviderCacheBytes.toString("utf8") ? null : "raw-bytes-differ-outside-fetched-at-value",
+    before_token_occurrences: matches.length,
+  };
+}
+const cacheVolatileOnlyChange = cacheFullBytesChanged && cacheFetchedAtChanged
+  && cacheSemanticIdentityIntact && fetchedAtRawDifferenceProof.pass;
+const cacheIntegrityPass = !disablePluginSkillSearch || (
+  postProviderCacheArtifact !== null
+  && cacheSemanticIdentityIntact
+  && (!cacheFullBytesChanged || cacheVolatileOnlyChange)
+);
+const cacheIntegrity = {
+  applicable: disablePluginSkillSearch,
+  pass: cacheIntegrityPass,
+  reason: cacheIntegrityPass
+    ? null
+    : postProviderCacheArtifact === null
+      ? "post-provider-cache-evidence-unavailable"
+      : cacheSemanticIdentityIntact
+        ? "unapproved-nonvolatile-byte-drift"
+        : "semantic-profile-client-or-tool-mode-drift",
+  allowed_volatile_fields: ["fetched_at"],
+  observed_change_class: postProviderCacheArtifact === null
+    ? "evidence-unavailable"
+    : !cacheFullBytesChanged ? "none" : cacheVolatileOnlyChange ? "volatile-only" : "integrity-drift",
+  post_provider_cache_artifact: postProviderCacheArtifact,
+  post_provider_cache_preservation_error: postProviderCachePreservationError,
+  volatile_raw_difference_proof: fetchedAtRawDifferenceProof,
+  comparisons: cacheIntegrityComparisons,
+};
+writeFileSync(eventsPath, stdout, "utf8");
+writeFileSync(join(artifactDir, "stderr.log"), stderr, "utf8");
+
+const events = stdout.split("\n").filter(Boolean).flatMap((line) => {
+  try { return [JSON.parse(line)]; } catch { return []; }
+});
+const usageEvents = events.filter((event) => event.type?.includes("usage") || event.usage || event.token_usage);
+const modelReported = events
+  .map((event) => event?.model ?? event?.model_id ?? event?.session?.model ?? null)
+  .find((value) => typeof value === "string" && value.length > 0) ?? null;
+const modelUsage = usageEvents.flatMap((event) => {
+  const usage = event?.usage ?? event?.token_usage;
+  if (!usage) return [];
+  return [{
+    model: event?.model ?? event?.model_id ?? modelReported ?? model,
+    input_tokens: Number(usage.input_tokens ?? usage.inputTokens ?? 0),
+    cached_input_tokens: Number(usage.cached_input_tokens ?? usage.cachedInputTokens ?? 0),
+    output_tokens: Number(usage.output_tokens ?? usage.outputTokens ?? 0),
+    cost_usd: Number.isFinite(Number(usage.cost_usd ?? usage.costUSD))
+      ? Number(usage.cost_usd ?? usage.costUSD)
+      : null,
+    context_window: null,
+    max_output_tokens: null,
+  }];
+});
+const finalTree = treeManifest(workspace, { ignore: [".benchmark"] });
+const initialProductTree = {
+  sha256: manifest.workspace.product_initial_sha256,
+  files: manifest.workspace.product_initial_files ?? [],
+};
+const finalProductTree = treeManifest(workspace, {
+  ignore: manifest.workspace.product_ignore ?? [".benchmark"],
+});
+const changedProductFiles = diffTreeManifests(initialProductTree, finalProductTree);
+const productChanged = initialProductTree.sha256 !== finalProductTree.sha256;
+const result = {
+  schema_version: "0.2",
+  task_id: manifest.task.id,
+  variant_id: manifest.variant.id,
+  started_at: startedAt.toISOString(),
+  finished_at: new Date().toISOString(),
+  runtime: {
+    runtime_target: "codex",
+    agent: "codex-cli",
+    agent_version: exactCliRuntime?.version ?? process.env.CODEX_VERSION ?? null,
+    ...(exactCliRuntime ? {
+      binary_sha256: exactCliRuntime.binary_sha256,
+      native_binary_sha256: exactCliRuntime.native_binary_sha256,
+    } : {}),
+    model_requested: model,
+    model_reported: modelReported,
+    model_evidence_mode: modelReported ? "provider-observed" : "cli-argument",
+    effort_requested: reasoning,
+    model_tool_mode: modelToolMode.tool_mode,
+    model_tool_mode_evidence: {
+      scope: modelToolModeEvidenceScope,
+      cache_sha256: disablePluginSkillSearch
+        ? modelToolModeBeforeRun.cache_sha256
+        : modelToolMode.cache_sha256,
+      cache_semantic_sha256: modelToolMode.cache_semantic_sha256,
+      model_profile_sha256: modelToolMode.model_profile_sha256,
+      cache_fetched_at: modelToolMode.cache_fetched_at,
+      cache_client_version: modelToolMode.cache_client_version,
+      execution_home_post_run: {
+        cache_sha256: modelToolMode.cache_sha256,
+        cache_semantic_sha256: modelToolMode.cache_semantic_sha256,
+        model_profile_sha256: modelToolMode.model_profile_sha256,
+        cache_fetched_at: modelToolMode.cache_fetched_at,
+        cache_client_version: modelToolMode.cache_client_version,
+      },
+      auth_source_before_run: {
+        cache_sha256: modelToolModeBeforeRun.cache_sha256,
+        cache_semantic_sha256: modelToolModeBeforeRun.cache_semantic_sha256,
+        model_profile_sha256: modelToolModeBeforeRun.model_profile_sha256,
+        cache_fetched_at: modelToolModeBeforeRun.cache_fetched_at,
+        cache_client_version: modelToolModeBeforeRun.cache_client_version,
+      },
+      integrity: cacheIntegrity,
+    },
+    auth_mode: exactRuntimeContract
+      ? "immutable-snapshot-copy"
+      : disablePluginSkillSearch ? "strict-external-isolated-home" : null,
+    model_catalog_authority: exactModelCatalogAuthority,
+    provider_route: null,
+    model,
+    reasoning,
+    sandbox: execution.sandbox,
+    browser_socket_scope: browserProofRequired ? execution.runtime_dir : null,
+    codex_home: browserProofRequired || exactRuntimeContract || disablePluginSkillSearch
+      ? execution.codex_home : null,
+    browser_temp_dir: browserProofRequired ? execution.temp_dir : null,
+    ephemeral: true,
+    ignored_user_config: !loadUserConfig,
+    hook_trust_bypassed: bypassHookTrust,
+    plugin_skill_search_disabled: disablePluginSkillSearch,
+    additional_writable_root: additionalWritableRoot,
+  },
+  process: {
+    exit_code: exit.code,
+    child_exit_code: exit.code,
+    signal: exit.signal,
+    timed_out: timedOut,
+    spawn_error: spawnError,
+    wall_ms: Math.round(wallMs),
+  },
+  output: {
+    event_count: events.length,
+    usage_events: usageEvents,
+    model_usage: modelUsage,
+    usage_attribution: {
+      available: modelUsage.length > 0,
+      evidence_mode: modelUsage.length > 0 ? "provider-event" : "unavailable",
+      reason: modelUsage.length > 0 ? null : "provider-stream-contained-no-usage",
+    },
+    diagnostic_availability: {
+      available: false,
+      fields: [],
+      reason: "codex-stream-diagnostic-normalization-not-supported",
+    },
+    tool_error_count: null,
+    recoverable_tool_error_count: null,
+    infrastructure_tool_error_count: null,
+    optional_verifier_environment_error_count: null,
+    recovered_temp_path_error_count: null,
+    sandbox_error_count: null,
+    sandbox_cwd_error_count: null,
+    agent_tool_call_count: null,
+    agent_tool_error_count: null,
+    requested_agent_ids: [],
+    agent_calls: [],
+    final_message_present: existsSync(finalMessagePath),
+    stderr_bytes: Buffer.byteLength(stderr),
+    logs_truncated: logsTruncated,
+  },
+  workspace: {
+    initial_sha256: manifest.workspace.initial_sha256,
+    final_sha256: finalTree.sha256,
+    final_files: finalTree.files.length,
+    full_tree_changed: manifest.workspace.initial_sha256 !== finalTree.sha256,
+    product_initial_sha256: initialProductTree.sha256,
+    product_final_sha256: finalProductTree.sha256,
+    product_changed: productChanged,
+    changed_product_files: changedProductFiles,
+    changed: productChanged,
+  },
+};
+writeJson(resultPath, result);
+console.log(JSON.stringify(result, null, 2));
+if (exit.code !== 0 || timedOut || spawnError || !cacheIntegrityPass) {
+  if (!cacheIntegrityPass) console.error("strict isolated Codex home cache/profile integrity changed during provider invocation");
+  process.exitCode = 1;
+}

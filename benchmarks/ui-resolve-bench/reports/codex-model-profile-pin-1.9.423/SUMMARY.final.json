@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.423",
+  "status": "ACCEPTED",
+  "provider_calls": 0,
+  "focused_tests": {"passed": 27, "failed": 0},
+  "validation": {"typescript": "pass", "diff_check": "pass"},
+  "runtime_identity": {
+    "selected_model_profile_pin": "canonical-model-profile-sha256",
+    "whole_cache_sha256": "provenance-only",
+    "cache_fetched_at": "provenance-only",
+    "cache_client_version": "provenance-and-control-field"
+  },
+  "frozen_matrix": {
+    "experiment_id": "rail-signal-compound-atomic-luna-controller-1.9.422",
+    "prepared_cells": 6,
+    "executed_cells": 0,
+    "provider_calls": 0
+  },
+  "promotion": false,
+  "next": "exact-pin-this-patch-and-preregister-a-fresh-controller-matrix-with-selected-model-profile-hash"
+}

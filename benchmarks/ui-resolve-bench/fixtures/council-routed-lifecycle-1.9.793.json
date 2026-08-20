@@ -1,0 +1,11 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-routed-lifecycle-provider-zero-1.9.793",
+  "task_lock_ref": "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-task-lock-1.9.792/TASK-LOCK.json",
+  "variant_id": "omd-portable-state-routed-council-lifecycle",
+  "task_ids": [
+    "papyrus-leaf-return-v0.1",
+    "photographic-proof-return-v0.1",
+    "ceramic-sherd-return-v0.1"
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "source-contract-reliability-canary-1.9.725",
+  "status": "PREPARED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "scheduled_cells": 3,
+  "prepared_cells": 3,
+  "locked_plan_sha256": "2ed014ddab2664bb7f634f1056b27c0ca9e6b9bf729fe82881dde5c3153d8c70",
+  "preparation_state_sha256": "8fb75a14cf4cf1d7512190283cd562b96ccb608547d1d8887e4a3f1e205326ff",
+  "objective_evaluator": {
+    "score_schema_version": "0.6",
+    "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+    "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+    "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+  },
+  "normalization_policy": "cross-task-reliability",
+  "required_normalization": [
+    "cell_contract",
+    "task_id_distinct",
+    "variant_id",
+    "system_id",
+    "runtime",
+    "model_id",
+    "effort",
+    "timeout_seconds",
+    "skill_sha256",
+    "source_publishable",
+    "objective_evaluator",
+    "deterministic_reflow_contract",
+    "task_lock_attested"
+  ],
+  "normalization": {
+    "cell_contract": true,
+    "task_id": false,
+    "task_id_distinct": true,
+    "task_prompt_sha256": false,
+    "starter_sha256": false,
+    "product_initial_sha256": false,
+    "variant_id": true,
+    "system_id": true,
+    "runtime": true,
+    "model_id": true,
+    "effort": true,
+    "timeout_seconds": true,
+    "skill_sha256": true,
+    "source_publishable": true,
+    "objective_evaluator": true,
+    "deterministic_reflow": false,
+    "deterministic_reflow_contract": true,
+    "task_lock_attested": true
+  },
+  "systems": [
+    "omd-apply-current"
+  ],
+  "trials": [
+    1
+  ],
+  "source_attestation": {
+    "omd-apply-current": {
+      "source_commit": "73716105f2c3fcea95e7836b92de364cb0eed43f",
+      "skill_sha256": "4f02726f352592901916f7090fb2c1de1307ce4d998f01c9d2742d69114083c7",
+      "publishable": true
+    }
+  },
+  "execution_admission": {
+    "allowed": true,
+    "reason": null,
+    "execution_artifacts_absent": true,
+    "reprepare_on_objective_methodology_drift": true
+  },
+  "cells": [
+    {
+      "id": "luna-benthic-sample-transfer-r1",
+      "task_id": "benthic-sample-transfer-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "omd-apply-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "task_prompt_sha256": "2af48b7539b35ec3869409478d968b614722cd0b089464a804d74fff83bd73f3",
+      "starter_sha256": "a395407307dd5dcbfc206113a0cc1448170230468d14ce48988888e752486dd3",
+      "product_initial_sha256": "a395407307dd5dcbfc206113a0cc1448170230468d14ce48988888e752486dd3",
+      "skill_sha256": "4f02726f352592901916f7090fb2c1de1307ce4d998f01c9d2742d69114083c7",
+      "source_commit": "73716105f2c3fcea95e7836b92de364cb0eed43f",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "ff7fd83263fa9836639809fab03f6527381f099b72877fd276a4f9aae9c21c8c",
+        "source_contract_sha256": "f818e5d833ee6d659c6e33c42d6c53e6156236f6ca2d0854e270f0a31b38c1e9",
+        "inventory_sha256": "2158bb2543203e0f94587eb3a69dd8692f073c94697dd82d1e41042aa805e35a",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "4ca9874639ae5204aa0e44b8789a20eaa9c611080860954f3a75fc9536c6fabb"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "luna-conservation-frame-loan-r1",
+      "task_id": "conservation-frame-loan-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "omd-apply-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "task_prompt_sha256": "6848c99cb1c758b4dc416b333a53f55471757e5f0863affa6a3d1236bc603ffd",
+      "starter_sha256": "21bc22f849a1c019f2af6b63c002d3661433b3be2683b5d7b75eb916d480bb33",
+      "product_initial_sha256": "21bc22f849a1c019f2af6b63c002d3661433b3be2683b5d7b75eb916d480bb33",
+      "skill_sha256": "4f02726f352592901916f7090fb2c1de1307ce4d998f01c9d2742d69114083c7",
+      "source_commit": "73716105f2c3fcea95e7836b92de364cb0eed43f",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "8a9c8cedb8323a9b79519c91c3ce7b7cf50b1ff88a9afb65dd469007ff87391a",
+        "source_contract_sha256": "f3a64e12d6877a05de860d12a719c93242af91bf8cee114a1cf0b57b3c27cc0b",
+        "inventory_sha256": "e36e16f3f85714bc0df89853c12eaecf24cd6b028d3e8fe944b8101da3a360e8",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "1114ca267da38381a940e8f12b06c31b888d74ca7b07c69712029d88bc090973"
+        },
+        "attested": true
+      },
+      "untouched": true
+    },
+    {
+      "id": "luna-wind-tunnel-model-handoff-r1",
+      "task_id": "wind-tunnel-model-handoff-v0.1",
+      "variant_id": "omd-portable",
+      "system_id": "omd-apply-current",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "task_prompt_sha256": "36fe4f0a14b1251b954cb97d1f555c8736dadab858b7fbec951067861379dec8",
+      "starter_sha256": "a9e33e3ed9d440ba97f4591477c2bed4982bdb59edc9ceebc164de485a4c67be",
+      "product_initial_sha256": "a9e33e3ed9d440ba97f4591477c2bed4982bdb59edc9ceebc164de485a4c67be",
+      "skill_sha256": "4f02726f352592901916f7090fb2c1de1307ce4d998f01c9d2742d69114083c7",
+      "source_commit": "73716105f2c3fcea95e7836b92de364cb0eed43f",
+      "source_publishable": true,
+      "objective_evaluator": {
+        "score_schema_version": "0.6",
+        "epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+        "evaluator_source_sha256": "bf7dfe9ae05f22dc0b2d3a4d184dec951640103a62a52a681edebc7d5e3e4cc5",
+        "contract_source_sha256": "67ecaf3c2eb0a681e78420cdc4b31183bf997c233570d79a79a727ad40d42a81"
+      },
+      "deterministic_reflow": {
+        "mode": "provider-sealed-source-contract",
+        "artifact_sha256": "f4f02b995a4a426c70ef15a03ef4950fc86b24889eb9d0f97cb3136f8c10f990",
+        "source_contract_sha256": "d326bb2b10c0cc52fa8e01f5667374c43305975d155659d75374eec081149435",
+        "inventory_sha256": "2aeafa93378794b97e1cc8d91df6d71e4a633c9d46b58478ec57d141a9cb9ae1",
+        "provider_mutable": false,
+        "baseline_critical_gate_coverage": {
+          "failed_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "covered_critical_gates": [
+            "accessibility",
+            "responsive"
+          ],
+          "complete": true,
+          "path": "baseline-critical-gates.json",
+          "sha256": "a16d320120d570458309901e8f9875b4df257d682c011452bc4ed322eb4216aa"
+        },
+        "attested": true
+      },
+      "untouched": true
+    }
+  ]
+}

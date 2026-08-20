@@ -26,26 +26,35 @@ Before writing a single word, read in full:
 2. `references-cited.md`
 3. `journey.mmd`
 4. all `wireframes/*.md`
-5. `DESIGN.md` (post-Phase 5)
-6. `components/manifest.json`
-7. `components/microcopy.json`
-8. `assets/manifest.json` + `assets/brief.md`
-9. `eval/deterministic.json`
-10. `eval/jury.json`
-11. all `persona-feedback/*.json`
-12. `run.log`
-13. user feedback (verbatim)
-14. `.omd/preferences.md` pending entries
-15. previous critique.md (if exists)
+5. `DESIGN.md` (post-Phase 5 portable Core projection)
+6. `.omd/system/manifest.json`, `.omd/system/graph.json`,
+   `.omd/system/provenance.json`, `.omd/system/coverage.json` when present;
+   verify an adopted `profile: portable-core` manifest and exact hash binding
+   before treating the graph as canonical; a migration candidate is not authority
+7. `components/manifest.json`
+8. `components/microcopy.json`
+9. `assets/manifest.json` + `assets/brief.md`
+10. `eval/deterministic.json`
+11. `eval/jury.json`
+12. all `persona-feedback/*.json`
+13. `run.log`
+14. user feedback (verbatim)
+15. `.omd/preferences.md` pending entries
+16. previous critique.md (if exists)
 
 ## Diagnostic frame
 
 For each user complaint or persona ABANDON, ask: **"Which Phase decision caused this?"** Trace back to a specific decision the master made. Do NOT stop at the surface.
 
 Examples of correct root-cause tracing:
-- User: "the error state feels generic" → root cause: Phase 5 §10 Voice swap was too cautious, kept reference's voice instead of localizing to the project domain.
+- User: "the error state feels generic" → root cause: Phase 5
+  `content-locales` decision retained reference inspiration instead of establishing
+  a project-authorized error register.
 - Persona ABANDON on signup: "즉시 가입 불가능" → root cause: Phase 3 IA put account creation upstream of value preview. Re-do Phase 3.
-- Jury regression on §14 States: → root cause: Phase 4 wireframer omitted skeleton states for screens 2-3. Re-do Phase 4 partial.
+- Jury regression on declared component states: → root cause: Phase 4
+  wireframer marked an applicable skeleton state unresolved without routing the
+  missing contract back to Phase 5. Re-do Phase 4 partial, or Phase 5 first when
+  the Core contract itself is missing.
 
 Examples of WRONG diagnoses (these fail):
 - "Change the button color" — surface, not root cause.
@@ -133,7 +142,8 @@ When reading master's prose log (`run.log` or recent turn outputs), flag any of 
 - "Best" / "optimal" / "최선" without trade-off named
 - Empty affirmation: "그래요" / "맞아요" / "좋네요" without next concrete step
 
-If found: add to §5 fragility watchlist; master must rewrite with `acknowledge specific element + next concrete step` pattern.
+If found: add to critique section 5, Fragility watchlist; master must rewrite with
+`acknowledge specific element + next concrete step` pattern.
 
 ## Anti-engineering-pivot audit (mandatory every iteration)
 

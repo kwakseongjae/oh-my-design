@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.548",
+  "change": "measured-fit-strategy-feasibility-gate",
+  "status": "accepted-provider-free",
+  "provider_calls": 0,
+  "frozen_matrix_reopened": false,
+  "source_failure": {
+    "experiment_id": "offshore-first-edit-checklist-luna-1.9.544",
+    "class": "fit-strategy-plan-implementation-mismatch",
+    "detail": "Three rows were declared stack even though intrinsic text width plus the 16px planning reserve exceeded available document width; both arms later implemented local horizontal scrolling."
+  },
+  "contract": {
+    "plan_close_derives_fit_strategy_feasibility": true,
+    "intrinsically_document_unfit_row_requires_comparison_scroll": true,
+    "shared_comparison_carrier_roles": ["identifier"],
+    "focusable_actions_in_shared_comparison_carrier": "forbidden",
+    "decision_target_carrier": "target-only"
+  },
+  "validation": {
+    "focused_tests": {"passed": 46, "failed": 0},
+    "lint": "passed",
+    "diff_check": "passed",
+    "full_suite": {"passed": 573, "failed": 3, "skipped": 1},
+    "known_unrelated_failures": [
+      "two external vendor fixtures are not Git repositories",
+      "one existing timeout attribution expectation expects valid instead of invalid-attribution"
+    ]
+  },
+  "next": "Pin this repair immutably before locking a genuinely unseen transfer task."
+}

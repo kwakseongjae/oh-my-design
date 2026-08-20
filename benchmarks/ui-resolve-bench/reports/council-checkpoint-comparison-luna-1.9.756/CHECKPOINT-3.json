@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-checkpoint-comparison-luna-1.9.756",
+  "status": "CHECKPOINTED_AFTER_CELL_3",
+  "cursor_calls": 0,
+  "completed_cells": 3,
+  "remaining_unexposed_cells": 3,
+  "pacing_after_cell_2_ms": 30008.589042,
+  "cell": {
+    "id": "cylinder-luna-r1-council-off",
+    "arm": "omd-portable",
+    "validity": "valid",
+    "objective_score": "85/85",
+    "ui_resolved": true,
+    "wall_time_ms": 180158,
+    "token_usage": {
+      "input_tokens": 626019,
+      "cached_input_tokens": 572160,
+      "output_tokens": 8782,
+      "reasoning_output_tokens": 2855,
+      "total_tokens": 634801
+    },
+    "product_revision_count": 1,
+    "static_closure_count": 1,
+    "browser_recovery_count": 0,
+    "duplicate_static_closure_count": 0,
+    "proof_trace_compliance": true,
+    "proof_execution_gate_pass": true,
+    "candidate_final_bytes_match": true
+  },
+  "artifact_hashes": {
+    "execution_state_sha256": "05716c71543e0a11aac5e57ea05c67ad8ef8ef3141b5b64167cfac67f8888c7a",
+    "run_result_sha256": "58afd7927baeabe7e7b61c790229f9c0336585b346659710fc2ed718e593f78c",
+    "score_sha256": "5a03e4acdd0d4cb88ee4dab895747cb1115c15eb6c2deb056ce69822c0cceaa7",
+    "proof_trace_sha256": "4e9338a68c2f73214aadfd256fcf25047ab3c3b323011ef1f632ba1c4d2a9d92",
+    "run_record_sha256": "4dfd7e9d5be07cb0590c5c905d51312e5dd3bb0c50ccad3678fa8ed5429dc7c7"
+  },
+  "next_cell": "album-luna-r1-council-on"
+}

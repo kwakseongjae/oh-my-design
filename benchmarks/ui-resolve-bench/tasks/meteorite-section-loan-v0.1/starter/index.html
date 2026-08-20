@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Meteorite thin-section loan</title>
+  <style>
+    :root{--canvas:#EDF2F3;--surface:#FCFEFF;--ink:#172A31;--muted:#61717A;--border:#98A9B0;--primary:#185A6B;--accent:#8B5366}
+    *{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.5 Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}
+    header,main,footer{width:min(1120px,calc(100% - 40px));margin:auto}header{padding:34px 0 24px}h1{font:700 44px/1.05 Georgia,serif;margin:0 0 10px}.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+    nav{display:flex;gap:8px;margin:22px 0}.view{border:1px solid var(--border);border-radius:4px;background:var(--surface);padding:9px 13px}.view[aria-pressed=true]{background:var(--primary);color:white}
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) 312px;gap:18px}.panel{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:18px}.panel h2{font:700 24px/1.2 Georgia,serif;margin:0 0 8px}.muted{color:var(--muted)}
+    .sample-grid{display:grid;grid-template-columns:repeat(2,360px);gap:12px;margin-top:16px}.sample{border-top:3px solid var(--primary);padding:14px;background:#F5F8F9}.specimen-id,.case-id,.lab-id,.window-id{white-space:normal}.specimen-id{display:block;font-weight:700;margin-bottom:8px}.cases{display:flex;gap:8px;flex-wrap:wrap}.case-id{border:1px solid var(--border);padding:5px 7px;background:white}
+    .return-strip{display:grid;grid-template-columns:repeat(3,260px);gap:10px;margin-top:18px}.return{border:1px solid var(--border);padding:12px;background:var(--surface)}.lab-id,.window-id{display:block}
+    .decision{margin-top:18px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:start}.decision-target,.decision-evidence{min-width:520px}.decision-evidence{margin-top:8px;color:var(--muted)}.state{display:block;margin-top:12px;font-weight:700}.primary{border:0;border-radius:4px;background:var(--primary);color:white;padding:11px 16px}
+    .controls{display:grid;gap:12px}.toggle{display:flex;gap:8px;align-items:center}.review-form{display:grid;gap:8px}.review-form input{min-width:0;border:1px solid var(--border);border-radius:4px;padding:9px}.status{min-height:1.5em;color:var(--accent)}footer{padding:24px 0 36px;color:var(--muted)}
+    @media(max-width:760px){header,main,footer{width:calc(100% - 24px)}h1{font-size:36px}.layout{grid-template-columns:1fr}.decision{grid-template-columns:1fr auto}}
+  </style>
+</head>
+<body data-view="specimens">
+  <header><div class="eyebrow">Meteorite collection · loan ledger</div><h1>Thin-section loan review</h1><p class="muted">Inspect supplied assignments and return evidence before recording a reviewer name.</p>
+    <nav aria-label="Review views">
+      <button class="view" data-bench="routing-view-option" data-view="specimens" aria-pressed="true">Specimen register</button>
+      <button class="view" data-bench="routing-view-option" data-view="returns" aria-pressed="false">Lab returns</button>
+      <button class="view" data-bench="routing-view-option" data-view="loan" aria-pressed="false">Loan decision</button>
+    </nav>
+  </header>
+  <main>
+    <div class="layout">
+      <section class="panel" data-bench-design-role="specimen-register"><h2>Specimen register</h2><p class="muted">Four supplied specimens mapped to six slide cases.</p>
+        <div class="sample-grid">
+          <article class="sample" data-bench="specimen-case"><span class="specimen-id" data-bench="specimen-id">MET-LUN-017</span><div class="cases"><span class="case-id" data-bench="slide-case-id">CASE-44021</span><span class="case-id" data-bench="slide-case-id">CASE-44022</span></div></article>
+          <article class="sample" data-bench="specimen-case"><span class="specimen-id" data-bench="specimen-id">MET-MAR-028</span><div class="cases"><span class="case-id" data-bench="slide-case-id">CASE-44023</span></div></article>
+          <article class="sample" data-bench="specimen-case"><span class="specimen-id" data-bench="specimen-id">MET-ACH-031</span><div class="cases"><span class="case-id" data-bench="slide-case-id">CASE-44024</span><span class="case-id" data-bench="slide-case-id">CASE-44025</span></div></article>
+          <article class="sample" data-bench="specimen-case"><span class="specimen-id" data-bench="specimen-id">MET-IRI-044</span><div class="cases"><span class="case-id" data-bench="slide-case-id">CASE-44026</span></div></article>
+        </div>
+      </section>
+      <aside class="panel controls"><h2>Review controls</h2><button type="button" class="view toggle" data-bench="courier-note-toggle" aria-pressed="false"><span data-bench="compact-control-copy">Include courier note</span></button>
+        <form class="review-form" data-bench="loan-review-form"><label for="reviewer">Reviewer name</label><input id="reviewer" data-bench="reviewer-name" autocomplete="off"><button class="primary" type="submit">Record reviewer</button><div class="status" role="status" data-bench="form-status"></div></form>
+      </aside>
+    </div>
+    <section class="return-strip" data-bench="return-strip" aria-label="Laboratory return windows">
+      <article class="return"><strong class="lab-id" data-bench="return-lab-id">LAB-R3</strong><span class="window-id" data-bench="return-window">08:40–09:00</span></article>
+      <article class="return"><strong class="lab-id" data-bench="return-lab-id">LAB-R7</strong><span class="window-id" data-bench="return-window">10:10–10:30</span></article>
+      <article class="return"><strong class="lab-id" data-bench="return-lab-id">LAB-R9</strong><span class="window-id" data-bench="return-window">13:20–13:40</span></article>
+    </section>
+    <section class="panel decision" data-bench-decision-role="context">
+      <div><div class="decision-target"><strong data-bench-decision-role="target">MET-LUN-017 + CASE-44021</strong></div><div class="decision-evidence"><span data-bench-decision-role="evidence">4 specimens · 6 slide cases · 3 return windows</span></div><span class="state" data-bench-decision-role="state">Review open</span></div>
+      <button class="primary" data-primary-action data-bench-decision-role="action">Open loan record</button>
+    </section>
+  </main>
+  <footer>Meteorite collection · supplied loan evidence only</footer>
+  <script>
+    const views=[...document.querySelectorAll('[data-bench="routing-view-option"]')];views.forEach(button=>button.addEventListener('click',()=>{document.body.dataset.view=button.dataset.view;views.forEach(item=>item.setAttribute('aria-pressed',String(item===button)))}));
+    const note=document.querySelector('[data-bench="courier-note-toggle"]');note.addEventListener('click',()=>note.setAttribute('aria-pressed',String(note.getAttribute('aria-pressed')!=='true')));
+    document.querySelector('[data-bench="loan-review-form"]').addEventListener('submit',event=>{event.preventDefault();const field=document.querySelector('[data-bench="reviewer-name"]');const value=field.value.trim();const valid=Boolean(value);field.setAttribute('aria-invalid',String(!valid));document.querySelector('[data-bench="form-status"]').textContent=valid?`Reviewer recorded: ${value}`:'Enter a reviewer name.';if(!valid)field.focus()});
+  </script>
+</body>
+</html>

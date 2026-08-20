@@ -156,7 +156,7 @@ const ALTS: Record<string, Alt> = {
     whenOmd: [
       "한국 브랜드 depth가 필요할 때 — Toss·당근·배민·카카오·네이버·쿠팡·무신사·뱅크샐러드·29CM·컬리 등은 getdesign.md에 거의 없고 OmD가 두텁게 다룹니다.",
       "복사로 끝나는 카탈로그가 아니라 한 번 설치해 두는 에이전트 레이어가 필요할 때 — skills(omd:init/apply/harness/sync)와 서브에이전트가 워크플로에 상주합니다.",
-      "9-section보다 깊은 문서가 필요할 때 — OmD v0.1의 15-section 스키마는 Voice/Narrative/Principles/Personas/States/Motion까지 더하고, 한국어 docs·oh-my-design.kr·한국인 메인테이너의 한국어 네이티브 환경을 제공합니다.",
+      "토큰 목록보다 깊고 portable한 프로젝트 계약이 필요할 때 — OmD Core v2는 Experience, Foundations, Typography/Assets, Components/States, Layout/Platforms, Content/Locales, Governance를 한 문서에 담고, 한국어 네이티브 워크플로와 선택적 System Graph를 제공합니다.",
     ],
   },
 };
@@ -208,7 +208,7 @@ export default async function AlternativePage({
     { k: "목적", omd: "AI agent가 매 요청마다 읽는 brand spec", them: alt.purpose },
     { k: "Output", omd: "DESIGN.md (markdown spec)", them: alt.output },
     { k: "AI agent integration", omd: "Claude Code · Codex · Cursor · OpenCode 직결", them: alt.agent },
-    { k: "Brand voice", omd: "§10–15에서 명시 (voice/persona/motion)", them: alt.voice },
+    { k: "Brand voice", omd: "Core의 Content & Locales와 구조화 graph에서 명시", them: alt.voice },
     { k: "Install", omd: "`npx oh-my-design-cli@latest`", them: alt.install },
     { k: "Price", omd: "Free · MIT", them: alt.price },
     { k: "Open source", omd: "Yes (MIT)", them: alt.oss },

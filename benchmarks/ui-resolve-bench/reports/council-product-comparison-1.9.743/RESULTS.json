@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-product-comparison-1.9.743",
+  "status": "FROZEN_PROVIDER_LIMIT",
+  "provider_calls": 1,
+  "model_exposures": 1,
+  "completed_cells": 0,
+  "stopped_cell": "ocean-r1-council-off",
+  "not_started_cell": "ocean-r1-council-on",
+  "stop_reason": "cursor-grok-4.5-high usage limit",
+  "process_exit_code": 1,
+  "wall_ms": 7460,
+  "product_changed": false,
+  "workspace_changed": false,
+  "usage_attribution_available": false,
+  "retry_count": 0,
+  "replacement_count": 0,
+  "frontier_gate_pass": false
+}

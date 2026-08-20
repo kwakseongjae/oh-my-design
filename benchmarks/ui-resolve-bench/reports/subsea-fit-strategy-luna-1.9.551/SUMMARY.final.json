@@ -1,0 +1,9 @@
+{
+  "schema_version":"0.1","product_version":"1.9.554","experiment_id":"subsea-fit-strategy-luna-1.9.551","status":"FROZEN_PROMOTION_IMPOSSIBLE","promotion":false,"provider_calls":2,"completed_cells":2,"frozen_cells":4,
+  "candidate_reliability_at_3":{"observed_trials":1,"ui_resolved_trials":1,"proof_compliant_trials":0,"maximum_possible_proof_compliant_trials":2,"required":3,"gate":"failed"},
+  "paired_r1":{"control":{"objective":77,"ui_resolved":false,"proof":false,"wall_time_ms":547996,"tokens":1572472},"candidate":{"objective":85,"ui_resolved":true,"proof":false,"wall_time_ms":421974,"tokens":1884435},"candidate_wall_time_ratio":0.7700,"candidate_token_ratio":1.1984},
+  "accepted_delta":{"fit_strategy_feasibility_derived_before_edit":true,"intrinsically_unfit_identifier_rows_declared_comparison_scroll":true,"shared_identifier_carrier_used":true,"final_objective_ui_resolved":true},
+  "unresolved_failure":{"class":"decision-target-inventory-omission","detail":"The candidate measured eight rows but omitted the protected compound decision target, so plan-close could not require its target-only comparison carrier. First terminal proof measured document overflow; a corrective second edit produced 85/85 but reopened the exactly-once artifact.","first_terminal_overflow_px":{"390":69,"320":139,"actual_200pct_document":264},"control_protocol_failure":"Control bypassed browser-harness on its first plan command and never obtained a measured plan."},
+  "tokens_to_target":{"minimum":73512685,"usage_unavailable_cells":6},
+  "next":"Provider-free inventory completeness gate: when a protected decision target exists, lock must require exactly one target row and a distinct target-only carrier before plan-close."
+}

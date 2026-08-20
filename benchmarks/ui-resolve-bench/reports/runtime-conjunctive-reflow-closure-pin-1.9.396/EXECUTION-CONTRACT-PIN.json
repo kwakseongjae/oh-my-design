@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.396",
+  "pin_id": "runtime-conjunctive-reflow-closure-1.9.396",
+  "source_commit": "effd1d93d415f625cc9fb6222b9a2e89aca6f110",
+  "artifacts": [
+    {
+      "path": "skills/omd-apply/SKILL.md",
+      "sha256": "0d84cc917fb6f00a8c35966f3b406c0b9249e7bbd6cfd07da4e8ac233a77f1f8"
+    },
+    {
+      "path": "skills/omd-apply/scripts/reflow-artifact.mjs",
+      "sha256": "cff87455db63307b2e694ea4ca738252db7625357f9a5186eef80b42d924cf27"
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/scripts/proof-policy-hook.mjs",
+      "sha256": "5cdcd25225f05397d80974597f49f013f1547b90dad15fed639f45a5d5c6c55a"
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/experimental-skills/omd-decision-context-closure/SKILL.md",
+      "sha256": "8a65dd9c22fb6de72bea627332b552a8a83478bb9b12e880e0b313ebcb2a041f"
+    },
+    {
+      "path": "test/unit/skills/omd-reflow-artifact.test.mjs",
+      "sha256": "0dfba851ac4f6d25ad2fc85fba8de87820fea4981677f3fc73429ed4875b2d17"
+    },
+    {
+      "path": "test/unit/skills/omd-apply-contract.test.mjs",
+      "sha256": "ce88413a121349f320c49a29e9c3c71bbca1ebb22a78d64b206cdc9cc5203968"
+    },
+    {
+      "path": "test/unit/bench/ui-resolve-proof-policy-hook-runtime.test.mjs",
+      "sha256": "71c5fb03b429d39221d1a6060539e5478e7a9310b640cb3b5344a5a202b85a08"
+    },
+    {
+      "path": "test/unit/bench/ui-resolve-bench.test.mjs",
+      "sha256": "9775cf5b46fc6fa93f495f66b96b264d7bda2130a5528a8fc735bfc98b75dbd7"
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/reports/runtime-conjunctive-reflow-closure-repair-1.9.395/ACCEPTANCE.json",
+      "sha256": "ab94c8f4359eff645cff37c8513e7e74297beda964533599afa878f21cff269f"
+    }
+  ],
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "next": "Lock a fresh unseen replacement task before any provider call."
+}

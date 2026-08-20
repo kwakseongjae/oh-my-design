@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "field-sample-snapshot-carrier-diagnostic-1.9.700",
+  "status": "complete",
+  "scheduled_cells": 1,
+  "completed_cells": 1,
+  "valid_cells": 1,
+  "cells": [
+    {
+      "id": "luna-field-snapshot-carrier-r1",
+      "run_status": "complete",
+      "validity": "valid",
+      "ui_resolved": false,
+      "objective_score": 81,
+      "objective_max": 85,
+      "wall_time_ms": 689553,
+      "tokens": 4134638
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1",
+  "target_version": "2.0.0",
+  "snapshot_patch": "1.9.686",
+  "status_counts": {"open": 4, "partial": 3, "external": 2, "pass": 0},
+  "machine_pass_evidence_ready": 0,
+  "machine_pass_evidence_required": 9,
+  "promotion_allowed": false,
+  "decision": "BLOCK_2_0_PROMOTION",
+  "manipulation_tests": {
+    "relabel_all_pass_rejected": true,
+    "change_expected_value_to_current_evidence_rejected": true,
+    "missing_evidence_rejected": true,
+    "repository_escape_rejected": true
+  },
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "claim_boundary": "Narrative status cannot promote a gate unless its pinned machine predicate is satisfied."
+}

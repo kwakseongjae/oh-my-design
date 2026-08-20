@@ -1,0 +1,251 @@
+{
+  "schema_version": "0.2",
+  "experiment_id": "autopilot-luna-high-smoke-1.9.883",
+  "track": "portable-autopilot-skill",
+  "status": "provider-zero-preregistration-template",
+  "provider_execution_allowed": false,
+  "claim_state": "diagnostic-only-block-public-one-shot",
+  "selection": {
+    "method": "preregistered-coverage-spread-not-result-selected",
+    "task_ids": [
+      "neighborhood-library-landing",
+      "cold-chain-operations",
+      "clinic-visit-prep-locales"
+    ],
+    "families": [
+      "landing",
+      "dense-operations",
+      "five-locale-surface"
+    ],
+    "rationale": "Exercise brand-expression, dense operational state, and five-locale persistence before the larger same-prompt comparison."
+  },
+  "cells": [
+    {
+      "order": 1,
+      "task_id": "neighborhood-library-landing",
+      "prompt_sha256": "81a8389e65a7f75fbc185dde64f37419baabfea6bf75cd256083ec0dee441ba3",
+      "prompt_bytes": 261
+    },
+    {
+      "order": 2,
+      "task_id": "cold-chain-operations",
+      "prompt_sha256": "e815cf2fd539fcacd92a697e8c61c46e3629a7a4b487c5d6bea5a5a6c01500ad",
+      "prompt_bytes": 275
+    },
+    {
+      "order": 3,
+      "task_id": "clinic-visit-prep-locales",
+      "prompt_sha256": "d1c023f0093287ea1af717624fb5fcc769a9858ebd294d5f6efd540c29dde729",
+      "prompt_bytes": 598
+    }
+  ],
+  "authorities": {
+    "task_set_path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json",
+    "task_set_sha256": "53634e4f8e79b34460ebd1d470b381b3167753bf6e07f03eb4aa7ce268e9bf6c",
+    "adapter_set_path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json",
+    "adapter_set_sha256": "827e7933d360a139717a3790570b704544e6edbfc616353596e059f9b3de2c85",
+    "evaluator_path": "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs",
+    "evaluator_sha256": "5db495eb42babae3e568d3d671216defa54e8d9950f8b04a96efa61003591787",
+    "starter_path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/blank-shell/index.html",
+    "starter_sha256": "a9b82fcdf3efa04783d3be61544f84b0a4f3209f0fc5f6ac741ec853d03871b3",
+    "portable_bundle_sha256": "4fbec03ffe3304f29935d37fd59f8989b8a802eaa89c5a89bfe02c7695ee9232",
+    "portable_bundle_files": [
+      {
+        "path": "skills/omd-autopilot/SKILL.md",
+        "sha256": "c7c935cc42e065a0b3d8fbb8ca829ca09ffc4678f18b1a6ab7bdf6ce2a13a820",
+        "bytes": 16952
+      },
+      {
+        "path": "skills/omd-autopilot/references/design-system-contract.md",
+        "sha256": "b79e36a214786c7e19f6f2ee39881488b7290427de4dab86f1f2428b8b2bea86",
+        "bytes": 9585
+      },
+      {
+        "path": "agents/omd-design-system-architect.md",
+        "sha256": "b801bb38e766a25f3b0f95c1187978f4e1e12bd745fe3a16c33936fba16ea48c",
+        "bytes": 4708
+      },
+      {
+        "path": "agents/omd-ux-engineer.md",
+        "sha256": "03e273dc36c29b0176f4e954e179f7546f3324a1909c7840b59e495b861f75e3",
+        "bytes": 14538
+      },
+      {
+        "path": "agents/omd-ux-researcher.md",
+        "sha256": "bb4343943edb9c159d11ca600180487b124db6d33f6cee9e6a8e180b6e9fa2df",
+        "bytes": 3933
+      },
+      {
+        "path": "agents/omd-ux-writer.md",
+        "sha256": "d26eac941c9a454fb91af64224104105ccd01dc5bc369ba28874b2674e9ced2b",
+        "bytes": 10747
+      },
+      {
+        "path": "scripts/autopilot-mission.cjs",
+        "sha256": "1d3d6ffda411c1bfc34567567e9bcc9a5eaaab34e2d9fed2ade8affa6cdf7263",
+        "bytes": 37845
+      },
+      {
+        "path": "scripts/autopilot-council-plan.cjs",
+        "sha256": "cc4b7d39a054ca88369e804d9401da5013b1ceec73530c3e282711340282f073",
+        "bytes": 4699
+      },
+      {
+        "path": "scripts/autopilot-council-reconcile.cjs",
+        "sha256": "1b2f45acb9e48f3c3ce4192b157d7ddd9f45e7cf9bbd1e7be88b8cf8e298fb56",
+        "bytes": 3049
+      },
+      {
+        "path": "scripts/design-council-prime.cjs",
+        "sha256": "7332c2461fefb8619d41ad7fbf38dcf5a8278401e9fe1ae80a9a7ca620fc255c",
+        "bytes": 31263
+      },
+      {
+        "path": "scripts/design-council-handoff.cjs",
+        "sha256": "42807439d13ffecbc3d913d6c8a54f4d2633a9de0c534d3e75d3b762064f527f",
+        "bytes": 9085
+      },
+      {
+        "path": "scripts/design-council-reconcile.cjs",
+        "sha256": "1c2b7099ce9aa7e3394b7f730d1a2b804011e50577479b71ec6e9bd5c4db9fe9",
+        "bytes": 6178
+      },
+      {
+        "path": "scripts/design-system-plan.cjs",
+        "sha256": "f2c2bb8ac43d06ada7dde6ea2a85feb3587811a4e1f2dbfab77bebc1fb01c523",
+        "bytes": 4750
+      },
+      {
+        "path": "scripts/validate-project-design-system.cjs",
+        "sha256": "759c329d70e0d998f73425e108cfb5a7cbb3e93861cabfe0d856719ec004a418",
+        "bytes": 51308
+      },
+      {
+        "path": "scripts/design-md-core-schema.cjs",
+        "sha256": "410b52ca76d5f65482ad9cecec58ea97e334ee8984157e89f63c36242a53f5e4",
+        "bytes": 15155
+      },
+      {
+        "path": "scripts/design-md-core-conformance.cjs",
+        "sha256": "89fd4ad572bb3a5a372b7c22b7e42f845e2fcec98cfe0c7ee1f187ed749d8196",
+        "bytes": 25142
+      },
+      {
+        "path": "scripts/design-md-core.cjs",
+        "sha256": "8c973dcfddc003edd54c13147e400aefeed7f947b6981a7fd5eb4dcee351e810",
+        "bytes": 64493
+      },
+      {
+        "path": "scripts/prepare-design-md-core-review.cjs",
+        "sha256": "30586d65ce47bdf2b4493e66cb25c708b0657903a9bee4deb0c189ec3199ad88",
+        "bytes": 24050
+      },
+      {
+        "path": "scripts/compile-design-md-core.cjs",
+        "sha256": "b226d89ea7d922df9431e1e68ce87572fffb4aa69179540c682e005aa032ac23",
+        "bytes": 40374
+      },
+      {
+        "path": "scripts/adopt-design-md-core.cjs",
+        "sha256": "c7e95e31b09537032f09aac96d62cd78dc507e9bb4ded6a125438208dfdcbfa9",
+        "bytes": 49095
+      },
+      {
+        "path": "spec/schema/design-md-core-manifest-v2.schema.json",
+        "sha256": "cdd4d56ea619cdc496655a4d68d6b7c8dc98002805eddf845097e3e36bef83e8",
+        "bytes": 4500
+      },
+      {
+        "path": "spec/schema/design-system-graph-v2.schema.json",
+        "sha256": "d0a7218e37aea0590236de51496cfc728b2113a7fc1aff7654545b0f6e9b8e56",
+        "bytes": 13815
+      },
+      {
+        "path": "spec/schema/design-system-provenance-v2.schema.json",
+        "sha256": "580ee9f31d1d77fbde1c6c8595c861ea93a69eccd005b86cc0fed56ff130c1aa",
+        "bytes": 4588
+      },
+      {
+        "path": "spec/schema/design-system-coverage-v2.schema.json",
+        "sha256": "bb25e4bd857eea0a35bf1b508012f44e7716a575d9b8c30a7cb9b460f9373267",
+        "bytes": 5743
+      },
+      {
+        "path": "spec/schema/design-md-core-adoption-review-v2.schema.json",
+        "sha256": "e6e07b923c53e6a89e0eb75ad299128acd105e5e9947f88165c42f022aeeaed1",
+        "bytes": 4907
+      },
+      {
+        "path": "spec/schema/design-md-core-adoption-receipt-v2.schema.json",
+        "sha256": "6f08c91ab6d7b95b86abdb6121871d0376888c5bacc424a394e57e62caf0b0fc",
+        "bytes": 6179
+      },
+      {
+        "path": "spec/schema/design-md-core-project-checkpoint-v2.schema.json",
+        "sha256": "e981e5911a98853fe5c182dcb98440d0ba0c00187867be2989d6180018b9a8cc",
+        "bytes": 3609
+      }
+    ]
+  },
+  "runtime": {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "trial_count_per_task": 1,
+    "serial": true,
+    "timeout_seconds": 900,
+    "max_new_cells_per_invocation": 1,
+    "retry_budget_per_cell": 0,
+    "bounded_repair_model_calls_max": 2,
+    "replacement_budget_per_cell": 0,
+    "fallback_budget_per_cell": 0,
+    "model_substitution_budget": 0,
+    "effort_substitution_budget": 0,
+    "cursor_allowed": false,
+    "claude_code_allowed": false
+  },
+  "autonomy_contract": {
+    "slash_command_or_harness_setup_allowed": false,
+    "preselected_reference_allowed": false,
+    "task_specific_design_md_allowed": false,
+    "task_specific_component_or_token_setup_allowed": false,
+    "fully_authorized_prompt_question_batches_max": 0,
+    "fabricated_user_answer_artifacts_max": 0,
+    "unplanned_human_interventions_max": 0,
+    "active_mission_lineages_max": 1,
+    "terminal_mission_non_resumable": true,
+    "implementation_owner": "main-agent",
+    "read_only_council_lanes_max": 3,
+    "initial_turn_soft_budget_ms": 720000,
+    "minimum_controller_handoff_reserve_ms": 180000,
+    "advisory_lane_attempts_per_lane_max": 1,
+    "advisory_result_repair_calls_max": 0,
+    "advisory_coordination_calls_max": 6,
+    "acceptance_plan_required_before_product_build": true,
+    "atomic_proof_schema_version": "0.2",
+    "same_mission_repair_receipt_chain_required": true,
+    "repair_rounds_max": 2
+  },
+  "admission": {
+    "clean_committed_source_required": true,
+    "source_commit_must_contain_exact_authorities": true,
+    "immutable_codex_auth_and_model_catalog_required": true,
+    "exact_luna_high_profile_required": true,
+    "named_existing_browser_required": true,
+    "provider_zero_preflight_required": true,
+    "fresh_root_required": true,
+    "existing_oracle_or_mutant_bytes_may_enter_workspace": false
+  },
+  "diagnostic_gate": {
+    "scheduled_cells": 3,
+    "valid_terminal_cells_required": 3,
+    "ui_resolved_cells_required": 3,
+    "design_system_proof_pass_required": 3,
+    "zero_unsupported_product_facts_required": true,
+    "zero_question_batches_required": true,
+    "zero_unplanned_interventions_required": true,
+    "public_claim_allowed": false,
+    "next_if_pass": "prepare same-prompt competitor qualification without claiming superiority",
+    "next_if_fail": "retain the no-retry failure and repair the smallest product contract before a fresh experiment"
+  }
+}

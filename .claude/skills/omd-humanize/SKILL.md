@@ -21,7 +21,12 @@ description: "제품 문서·UX 카피·랜딩 카피를 KO/EN/JA/ZH-CN/ZH-TW �
 
 ## 시작 전에 읽을 것
 
-1. 프로젝트 `DESIGN.md` §10 voice와 `.omd/preferences.md`
+1. 프로젝트 `DESIGN.md`의 `content-locales` stable anchor와
+   `.omd/preferences.md`. 유효한 hash-bound `profile: portable-core` package가
+   있으면 `graph.content_locales`가 canonical이고, package가 없거나 invalid면
+   standalone DESIGN.md anchor를 사용한다. exact Core anchor가 전혀 없는
+   문서만 legacy compatibility input으로 읽어 의미 heading `Voice & Tone`을
+   `content-locales`로 매핑하며 숫자 section은 새 citation에 복사하지 않는다.
 2. 대상 파일과 같은 제품의 이미 승인된 카피
 3. [`references/locale-playbooks.md`](./references/locale-playbooks.md)의 **해당 locale 섹션만**
 4. 출처와 차용 범위가 필요하면 [`references/sources.md`](./references/sources.md)

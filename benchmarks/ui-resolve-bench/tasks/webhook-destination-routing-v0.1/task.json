@@ -1,0 +1,48 @@
+{
+  "id": "webhook-destination-routing-v0.1",
+  "version": "0.1.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "onboarding-v1",
+  "review_brief": "A webhook destination routing surface for an integration operations team. Compare whether the result keeps supplied event identifiers, selected source, delivery lane, signature policy, route label, and final review action legible without inventing delivery outcomes or breaking atomic identifiers on narrow screens.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": { "landmarks": { "h1_count": { "exact": 1 }, "main_count": { "exact": 1 }, "nav_count": { "min": 1 }, "footer_count": { "min": 1 } } },
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": [
+    "[data-bench='role-option']", "[data-bench='digest-toggle']", "[data-bench='workspace-form']", "[data-bench='workspace-name']", "[data-bench='form-status']", "[data-bench='mapping-row']",
+    "[data-bench-design-role='routing-console']", "[data-bench-decision-role='context']", "[data-bench-decision-role='target']", "[data-bench-decision-role='evidence']", "[data-bench-decision-role='state']", "[data-bench-decision-role='action']"
+  ],
+  "protected_hook_counts": {
+    "[data-bench='role-option']": 3, "[data-bench='digest-toggle']": 1, "[data-bench='workspace-form']": 1, "[data-bench='workspace-name']": 1, "[data-bench='form-status']": 1, "[data-bench='mapping-row']": 3,
+    "[data-bench-design-role='routing-console']": 1, "[data-bench-decision-role='context']": 1, "[data-bench-decision-role='target']": 1, "[data-bench-decision-role='evidence']": 1, "[data-bench-decision-role='state']": 1, "[data-bench-decision-role='action']": 1
+  },
+  "journey_oracle": {
+    "choice": { "selector": "[data-bench='role-option']", "value_attribute": "data-role", "body_dataset": "role", "values": ["primary", "backup", "paused"], "count": 3, "initial": "primary", "selected": "backup" },
+    "toggle": { "selector": "[data-bench='digest-toggle']" },
+    "form": { "form_selector": "[data-bench='workspace-form']", "field_selector": "[data-bench='workspace-name']", "status_selector": "[data-bench='form-status']", "invalid_value": "", "valid_value": "Checkout authorization route" }
+  },
+  "text_geometry_oracle": { "viewports": ["mobile", "narrow-320", "css-zoom-surrogate-200"], "scope_selectors": ["[data-bench='mapping-row']", "[data-bench-decision-role='context']"], "max_short_text_chars": 34, "max_short_text_lines": 1 },
+  "decision_hierarchy_oracle": {
+    "viewports": ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"], "minimum_action_gap_px": 8,
+    "roles": { "container": "[data-bench-decision-role='context']", "target": "[data-bench-decision-role='target']", "evidence": "[data-bench-decision-role='evidence']", "state": "[data-bench-decision-role='state']", "action": "[data-bench-decision-role='action']" }
+  },
+  "protected_unknown_patterns": [
+    "\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b",
+    "\\b(?:best|fastest|leading|top-rated|award-winning)\\s+(?:webhook|routing|delivery|integration|tool|platform)\\b", "\\btrusted by\\b",
+    "\\b(?:zero risk|fully validated|instant delivery|always safe|perfect routing)\\b", "\\b\\d[\\d,]*\\+?\\s+(?:customers|companies|deliveries|events|hooks)\\b", "[★☆]{3,}"
+  ],
+  "protected_known_patterns": ["evt.checkout.authorization.v2", "3 supplied events · 1 delivery lane"],
+  "protected_unknown_selectors": ["blockquote", "[class*='testimonial' i]", "[class*='logo-wall' i]", "[class*='social-proof' i]"],
+  "design_oracle": {
+    "page_background": "#F5F2EC", "primary_action": "#315A62", "accent": "#A45A3A", "ink": "#202B30", "surface": "#FFFFFF", "border": "#CBD2D1", "muted_text": "#59686B",
+    "card_radius_px": 8, "control_radius_px": 4, "font_family": { "body_any": ["Arial"], "display_any": ["Georgia"] },
+    "selectors": { "primary_action": "[data-primary-action]", "card": "[data-bench-design-role='routing-console']", "display": "h1" }
+  }
+}

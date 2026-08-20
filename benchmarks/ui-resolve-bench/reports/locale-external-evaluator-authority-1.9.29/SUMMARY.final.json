@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "locale-external-evaluator-authority-1.9.29",
+  "run_date": "2026-07-23",
+  "status": "calibration_complete",
+  "provider_generation": false,
+  "source_commit": "2249736",
+  "scope": "locale-benchmark-activation-only",
+  "production_skill_browser_capability_changed": false,
+  "activation": {
+    "provider_browser_authority": "none",
+    "external_evaluator_browser_authority": "exclusive",
+    "static_source_and_content_verification_only": true,
+    "browser_proof_without_attempt": "unresolved",
+    "replacement_verifier_forbidden": true
+  },
+  "gate_mutations": {
+    "zero_at_max_zero": "pass",
+    "one_at_max_zero": "fail",
+    "zero_at_max_one": "pass",
+    "one_at_max_one": "pass",
+    "two_at_max_one": "fail"
+  },
+  "prepared_activation_proof": {
+    "workspace": "/tmp/u1929-activation-proof",
+    "source_clean": true,
+    "source_publishable": true,
+    "source_commit": "2249736171eec6cacfdecf0eb1007d15dea3c1d7",
+    "manifest_activation_exact": true,
+    "prompt_activation_exact": true,
+    "one_direct_browser_allowance_absent": true
+  },
+  "verification": {
+    "focused_tests_passed": 27,
+    "full_tests_passed": 217,
+    "conditional_tests_skipped": 1,
+    "typescript": "pass",
+    "build": "pass",
+    "json": "pass",
+    "diff_check": "pass",
+    "prepared_activation": "pass"
+  },
+  "reporting_limits": [
+    "benchmark activation calibration only",
+    "no new provider generation",
+    "no retroactive 1.9.28 pass",
+    "no model, skill, quality lift, efficiency, or frontier claim"
+  ],
+  "next_fresh_experiment_version": "1.9.30",
+  "next_fresh_root": "/tmp/u1930"
+}

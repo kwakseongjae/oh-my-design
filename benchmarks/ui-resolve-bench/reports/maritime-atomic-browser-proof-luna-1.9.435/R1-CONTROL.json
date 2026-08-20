@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.437",
+  "cell_id": "luna-maritime-r1-control",
+  "status": "complete",
+  "validity": "valid-system-failure",
+  "retry": false,
+  "objective": {"score": 81, "max": 85, "ui_resolved": false},
+  "process": {"wall_time_ms": 367461, "timed_out": false},
+  "provider_usage": {
+    "input_tokens": 1022360,
+    "cached_input_tokens": 947456,
+    "output_tokens": 19070,
+    "reasoning_output_tokens": 8110,
+    "total_observed_tokens": 1041430
+  },
+  "runtime_identity": {
+    "requested_model": "gpt-5.6-luna",
+    "effort": "high",
+    "codex_cli_version": "0.144.1",
+    "model_profile_sha256": "0efd579e76b5f1ccc5b68f61fdf079c7df0adfe03281f65ec6bc07383e8c335f",
+    "model_tool_mode": "code_mode_only",
+    "evidence_scope": "execution-home-post-run"
+  },
+  "objective_failure": {
+    "gate": "responsive",
+    "viewports": ["narrow-320", "css-zoom-surrogate-200"],
+    "reason": "protected compound atomic target exceeds the one-line character-range budget"
+  },
+  "proof_trace": {
+    "analyzable": true,
+    "browser_mechanism_count": 1,
+    "browser_recovery_count": 1,
+    "duplicate_static_closure_count": 2,
+    "verification_after_ready_count": 1,
+    "compliance_pass": false
+  },
+  "proof_gate_reasons": [
+    "browser-recovery-limit",
+    "duplicate-static-limit",
+    "verification-after-ready-limit"
+  ],
+  "artifact_hashes": {
+    "run_result_sha256": "c96c90bdf267b80b464e1b7f224de45ce740874c146367376249e0a125981344",
+    "score_sha256": "584465403df061605752cc1cbc7ce74ef47dee8e18fdc3559ee4521cc0015772",
+    "run_record_sha256": "3c3cd0211e8ec6c1f5768a80fcd3203afc4232f1421fa918259e9e7da7170214",
+    "proof_trace_sha256": "8c3804cf07c2851d3ae1ff68f60fa0f20910999fbcfcfa5dbc65528b6c3808ae"
+  },
+  "tokens_to_target_observed_minimum_after_cell": 38359420,
+  "prior_usage_unavailable_cells": 6,
+  "next": "Run luna-maritime-r1-candidate after fixed pacing and fresh exact preflight."
+}

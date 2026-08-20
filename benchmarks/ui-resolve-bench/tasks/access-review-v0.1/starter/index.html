@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Permit access review</title>
+    <style>
+      :root {
+        --paper: #f2f0e9;
+        --surface: #ffffff;
+        --ink: #18231f;
+        --muted: #626c67;
+        --line: #d7d3c8;
+        --green: #1d5d4f;
+        --rust: #c45a3b;
+        --success: #287052;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; font: 16px/1.56 Arial, Helvetica, sans-serif; color: var(--ink); background: var(--paper); }
+      button { font: inherit; }
+      .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+      header { padding: 18px 0; border-bottom: 1px solid var(--line); }
+      nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+      nav a { color: inherit; }
+      main { padding: 56px 0 72px; }
+      .hero { max-width: 760px; margin-bottom: 32px; }
+      h1 { margin: 0 0 16px; font: 400 56px/58px Georgia, serif; }
+      h2 { font: 400 32px/36px Georgia, serif; }
+      .lede, .muted { color: var(--muted); }
+      .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
+      .button, .filters button {
+        min-height: 44px;
+        padding: 9px 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        color: var(--ink);
+        cursor: pointer;
+      }
+      .filters button[aria-pressed="true"], .button.primary {
+        border-color: var(--green);
+        background: var(--green);
+        color: #fff;
+      }
+      .console {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--surface);
+      }
+      .console-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        align-items: end;
+        padding: 20px;
+        border-bottom: 1px solid var(--line);
+      }
+      .console-head h2, .console-head p { margin: 0; }
+      .matrix { width: 100%; border-collapse: collapse; }
+      .matrix th, .matrix td { padding: 14px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+      .matrix th { color: var(--muted); font-size: 13px; }
+      .matrix tr:last-child td { border-bottom: 0; }
+      .identity strong, .identity span { display: block; }
+      .identity span, .scope small { color: var(--muted); }
+      .urgency { font-weight: 700; }
+      .urgency::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--line); }
+      [data-priority="urgent"] .urgency::before { background: var(--rust); }
+      .details { margin-top: 8px; }
+      .details button { padding: 0; border: 0; background: transparent; color: var(--green); text-decoration: underline; cursor: pointer; }
+      .details p { margin: 8px 0 0; color: var(--muted); max-width: 42ch; }
+      .review-action { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 20px; border-top: 1px solid var(--line); }
+      [data-bench="operation-status"] { margin: 0; color: var(--muted); }
+      footer { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted); }
+      :focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
+      @media (max-width: 760px) {
+        h1 { font-size: 40px; line-height: 42px; }
+        .console { overflow: visible; }
+        .console-head, .review-action { grid-template-columns: 1fr; display: grid; align-items: start; }
+        .matrix, .matrix tbody, .matrix tr, .matrix td { display: block; width: 100%; }
+        .matrix thead { display: none; }
+        .matrix tr { padding: 16px; border-bottom: 1px solid var(--line); }
+        .matrix tr:last-child { border-bottom: 0; }
+        .matrix td { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; padding: 5px 0; border: 0; }
+        .matrix td::before { content: attr(data-label); color: var(--muted); font-size: 13px; font-weight: 700; }
+        .review-action .button { width: 100%; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+      }
+    </style>
+  </head>
+  <body data-filter="all">
+    <header>
+      <nav class="wrap" aria-label="Primary navigation">
+        <strong>Permit</strong>
+        <a href="#review-console">Access review</a>
+      </nav>
+    </header>
+
+    <main class="wrap">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="muted">Quarterly access review · Internal fixture</p>
+        <h1 id="page-title">Review scope before approving access.</h1>
+        <p class="lede">Four requests need an accountable owner. Compare identity, requested scope, urgency, and the supplied evidence before completing the review.</p>
+      </section>
+
+      <div class="filters" aria-label="Filter access requests">
+        <button type="button" data-bench="filter-button" data-filter="all" aria-pressed="true">All requests</button>
+        <button type="button" data-bench="filter-button" data-filter="urgent" aria-pressed="false">Urgent</button>
+        <button type="button" data-bench="filter-button" data-filter="standard" aria-pressed="false">Standard</button>
+      </div>
+
+      <section class="console" id="review-console" data-bench-design-role="main-console" aria-labelledby="console-title">
+        <div class="console-head">
+          <div>
+            <h2 id="console-title">Open access requests</h2>
+            <p class="muted">Use only the evidence shown here.</p>
+          </div>
+          <p>4 access requests</p>
+        </div>
+
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th scope="col">Identity</th>
+              <th scope="col">Requested scope</th>
+              <th scope="col">Urgency</th>
+              <th scope="col">Evidence</th>
+              <th scope="col">Owner</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-bench="review-row" data-priority="urgent">
+              <td data-label="Identity" class="identity"><strong>Mina Park</strong><span>Finance operations</span></td>
+              <td data-label="Scope" class="scope">Finance export <small>Read and download</small></td>
+              <td data-label="Urgency" class="urgency">Urgent</td>
+              <td data-label="Evidence">
+                Quarter-close export
+                <div class="details">
+                  <button type="button" data-bench="details-button" aria-expanded="false" aria-controls="evidence-1">View evidence</button>
+                  <p id="evidence-1" hidden>Ticket PRM-104 requests access through Friday for the quarter-close reconciliation.</p>
+                </div>
+              </td>
+              <td data-label="Owner">Nora · Security</td>
+            </tr>
+            <tr data-bench="review-row" data-priority="urgent">
+              <td data-label="Identity" class="identity"><strong>Eli Chen</strong><span>Release engineering</span></td>
+              <td data-label="Scope" class="scope">Production deploy <small>Approve and execute</small></td>
+              <td data-label="Urgency" class="urgency">Urgent</td>
+              <td data-label="Evidence">
+                Release rotation
+                <div class="details">
+                  <button type="button" data-bench="details-button" aria-expanded="false" aria-controls="evidence-2">View evidence</button>
+                  <p id="evidence-2" hidden>Ticket PRM-109 names Eli as the release owner for version 2.8.</p>
+                </div>
+              </td>
+              <td data-label="Owner">Nora · Security</td>
+            </tr>
+            <tr data-bench="review-row" data-priority="standard">
+              <td data-label="Identity" class="identity"><strong>Asha Singh</strong><span>Product analytics</span></td>
+              <td data-label="Scope" class="scope">Analytics workspace <small>Edit dashboards</small></td>
+              <td data-label="Urgency" class="urgency">Standard</td>
+              <td data-label="Evidence">Dashboard maintenance</td>
+              <td data-label="Owner">Mateo · Data</td>
+            </tr>
+            <tr data-bench="review-row" data-priority="standard">
+              <td data-label="Identity" class="identity"><strong>Jon Bell</strong><span>Customer support</span></td>
+              <td data-label="Scope" class="scope">Support console <small>View customer cases</small></td>
+              <td data-label="Urgency" class="urgency">Standard</td>
+              <td data-label="Evidence">Weekend coverage</td>
+              <td data-label="Owner">Nora · Security</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="review-action">
+          <p data-bench="operation-status" role="status" aria-live="polite">Review open. Confirm the supplied evidence before completing it.</p>
+          <button class="button primary" type="button" data-bench="acknowledge" aria-pressed="false">Mark review complete</button>
+        </div>
+      </section>
+    </main>
+
+    <footer><div class="wrap">Permit · Fictional UI-Resolve Bench fixture</div></footer>
+
+    <script>
+      const filterButtons = [...document.querySelectorAll('[data-bench="filter-button"]')];
+      const reviewRows = [...document.querySelectorAll('[data-bench="review-row"]')];
+      filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const filter = button.dataset.filter;
+          document.body.dataset.filter = filter;
+          filterButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+          reviewRows.forEach((row) => { row.hidden = filter !== 'all' && row.dataset.priority !== filter; });
+        });
+      });
+
+      document.querySelectorAll('[data-bench="details-button"]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const detail = document.getElementById(button.getAttribute('aria-controls'));
+          const open = button.getAttribute('aria-expanded') !== 'true';
+          button.setAttribute('aria-expanded', String(open));
+          detail.hidden = !open;
+        });
+      });
+
+      const complete = document.querySelector('[data-bench="acknowledge"]');
+      const status = document.querySelector('[data-bench="operation-status"]');
+      complete.addEventListener('click', () => {
+        complete.setAttribute('aria-pressed', 'true');
+        complete.disabled = true;
+        status.textContent = 'Review complete. The four requests remain visible in this record.';
+        status.style.color = '#287052';
+      });
+    </script>
+  </body>
+</html>

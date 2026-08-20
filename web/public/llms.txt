@@ -1,6 +1,6 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode can receive the full 20-skill + 18-sub-agent bundle; Cursor receives a project rule and local catalog, not OmD skills or sub-agents. The quality-graded catalog contains 440 DESIGN.md references: 141 verified_v2, 159 partial, and 140 legacy. Use verified_v2 references for public demos.
+> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 21-skill + 18-sub-agent bundle; Cursor receives 21 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 440 DESIGN.md references: 141 verified_v2, 159 partial, and 140 legacy. Use verified_v2 references for public demos.
 
 ## What
 
@@ -51,10 +51,11 @@ When `omd:harness` activates, it runs three new steps **before** any reference q
 
 The `omd-master` sub-agent reads `prefilled_slots` on INTAKE and skips its slot-gate entirely, jumping straight to PROPOSE_PLAN. Net effect: the conversation feels like a senior designer who already read your repo, not an interrogation.
 
-## The 20 skills (Claude Code, Codex, OpenCode)
+## The 22 skills (Claude Code, Codex, OpenCode)
 
 Core flow (7):
 - **omd:apply** — Authoritative DESIGN.md context for every UI task. Routes complex requests to specialist sub-agents.
+- **omd:update** — Refreshes the existing installation without changing its scope, channels, or user-owned files, then verifies it with doctor.
 - **omd:init** — Bootstrap DESIGN.md from a reference with hybrid variation that preserves the reference voice while shifting only user-named axes.
 - **omd:harness** — `/omd-harness <task>` runs the 10-phase pipeline. 7 hero archetypes match brand vibe to layout; wordmark-only logo, reveal safety net, container-inner consistency.
 - **omd:remember** — Auto-captures user corrections to `.omd/preferences.md`.
@@ -83,7 +84,7 @@ Interface quality (2):
 Standalone (1):
 - **claude-design** — Analyzes the current codebase into a design-context brief and drives claude.ai/design (via logged-in Chrome) to generate a design, returning a result link.
 
-## The 18 sub-agents (Claude Code, Codex, OpenCode)
+## The 19 sub-agents (Claude Code, Codex, OpenCode)
 
 Specialists pair as advisor ↔ generator:
 
@@ -586,7 +587,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 
 ```
 oh-my-design/
-├── skills/              # 20 shipped product skills (source of truth)
+├── skills/              # 21 shipped product skills (source of truth)
 ├── agents/              # 18 sub-agent definitions
 ├── web/references/      # 440 reference DESIGN.md files (canonical)
 ├── data/                # reference fingerprints, vocabulary, opt-out corpus

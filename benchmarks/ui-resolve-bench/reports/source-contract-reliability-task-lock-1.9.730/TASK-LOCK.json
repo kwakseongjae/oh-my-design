@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.730",
+  "experiment_id": "source-contract-reliability-task-lock-1.9.730",
+  "status": "ONE_UNEXPOSED_TASK_PLUS_TWO_FRESH_TASKS_LOCKED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "skill": {
+    "source_commit": "4e9514b91837cbed269320083a39641f41582729",
+    "sha256": "05d0259e56e40190eead2e622cd77bc9e047ef0729717e4bffd6d5f71ec960f3",
+    "candidate_promotion": "static-promote",
+    "provider_mutable": false
+  },
+  "tasks": [
+    {
+      "id": "archaeology-tray-release-v0.1",
+      "provenance": "unexposed-frozen-cell-from-1.9.728",
+      "task_tree_sha256": "6127be579d6043070ad460b366b0b896a2888d733529fbf70f82d70810037e18",
+      "task_json_sha256": "602f89c16972806d48f26c589404842f126b86dd16210f79163f91e8e9548489",
+      "prompt_sha256": "8ade1625572bd9d2f0fb61ef670cfdf96670d7673593b64914ce60726f5b4283",
+      "starter_sha256": "8cb46a66bdfdf7e1142a81004d992557ae38310bd3822f43075fbb420ccbef2f",
+      "baseline_evidence_sha256": "a00d79ab8aacd9aa13f5cddae049e75eb48b317e17284d1aed429625631420de",
+      "source_contract_sha256": "873b415aa7f38e83a69de597604cc3c2d9511c7bc1edbf9159b235ef8096b68e",
+      "sealed_artifact_sha256": "e58aea91c02a93981ac0911c0ea8fff94bebffbdba70fc98cdccb687f6ca347d",
+      "sealed_inventory_sha256": "63ebd861af88b36920057a3346ae92a92de13fc1f3557f13055d95db64eece28"
+    },
+    {
+      "id": "paleontology-jacket-accession-v0.1",
+      "provenance": "fresh-provider-zero-1.9.730",
+      "task_tree_sha256": "76ed9930c768f0d5f1d2022894a6f43e67e80157a0d681e0ce9e541dd8669ac7",
+      "task_json_sha256": "8e7703abe44400ef9f3bd6297ed8f590033220c4505ad03258732de7e5cf95c4",
+      "prompt_sha256": "ce64f415ad9687c5e7fcd5bf89972bd7b04fb22c42899c5fd3a2321fe8418c4c",
+      "starter_sha256": "23272230eeec0c1908ad5887bd4c8d35cbfb1bd8a5a1e81c72025c4d8de5dad0",
+      "baseline_evidence_sha256": "a4ec28dc999c87cb6bce3dbba9c5a07e784810b6a351754014a15ad87134c849",
+      "source_contract_sha256": "7df89e2593125a3126027f57721e21fb1e5ef52219d5318165239829a7e7e00c",
+      "sealed_artifact_sha256": "8f082bba82101875fba2fd48ca081ed3c0a5def76839419f94d013c7efe74e70",
+      "sealed_inventory_sha256": "776bba2cfdb3183b01e9fe741fb9e147492da9166916af0403ebfb0abd0f5e3c"
+    },
+    {
+      "id": "textile-roll-conservation-v0.1",
+      "provenance": "fresh-provider-zero-1.9.730",
+      "task_tree_sha256": "572b174568dac3187255a0bea56b5aa8c348a6bbcf130acc8dd583e83410c1a6",
+      "task_json_sha256": "9a5efdfefd4cc22acefaff52d7939a13397823f5d538ed370c404d1ec93c624b",
+      "prompt_sha256": "e9f416fd2184b470cb0dfb77deaf3164e39ae68822dde45158e3eaa17e6978b9",
+      "starter_sha256": "41af23e3f82cf8245032584868dda91fc6b6b18e22410613f7661673d26e0a84",
+      "baseline_evidence_sha256": "91df33f695b7b1c2732a6d018f83b62d08438371c01533201bb7f61e2d946458",
+      "source_contract_sha256": "018c975fc25a42f6597ee1ac306999f6ea0998b35f65933f04b223ec8d8bdf29",
+      "sealed_artifact_sha256": "ba96da5e657b377846e9e8283a54a9bbfae6a20de05b7ad1b7cb1243103220ba",
+      "sealed_inventory_sha256": "bed594ea7a7a9ad47fa1ae224245324fdfa2e559b3089ae367917e210a92fc24"
+    }
+  ],
+  "raw_baseline": {
+    "scores": [75, 75, 75],
+    "objective_max": 85,
+    "failed_critical_gates": ["accessibility", "responsive"],
+    "accessibility_failure_targets": [".guidance-copy", "footer"],
+    "coverage_complete": true
+  },
+  "validation": {
+    "task_contracts": "pass",
+    "fresh_provider_free_browser_baseline": "pass",
+    "fresh_provider_sealed_smoke": "pass",
+    "installed_static_promote": "pass",
+    "task_inventory": 93,
+    "provider_calls": 0
+  },
+  "execution_allowed": false,
+  "next_gate": "Commit the exact task set, then preregister a fresh promotion-bound no-retry Reliability@3 plan."
+}

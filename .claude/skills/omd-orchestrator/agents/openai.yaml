@@ -1,0 +1,4 @@
+interface:
+  display_name: "Coordinate design specialists"
+  short_description: "Route specialists and return one actionable handoff"
+  default_prompt: "Use $omd-orchestrator to coordinate the needed design specialists and return one prioritized, evidence-backed handoff."

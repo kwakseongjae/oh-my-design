@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.617",
+  "task_id": "runway-lighting-return-to-service-v0.1",
+  "status": "FRESH_UNSEEN_TASK_BASELINED",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "task_tree_sha256": "54cdacba72bc516c08ca844d11e6f1bcb5819294d0e9d139cdcdffcab0e4848b",
+  "baseline": {
+    "variant_id": "raw-design-md",
+    "score_sha256": "0a0f7d4420cffd54016a9429983f65307da15a5303d8c109006aae19174c518c",
+    "objective_score": 75,
+    "objective_max": 85,
+    "automated_gate_pass": false,
+    "critical_gates": {
+      "task_contract": true,
+      "state_journey": true,
+      "responsive": false,
+      "accessibility": false,
+      "design_grounding": true,
+      "evidence_honesty": true
+    },
+    "document_widths": {
+      "desktop": {"scroll": 1440, "client": 1440},
+      "mobile": {"scroll": 1115, "client": 390},
+      "narrow_320": {"scroll": 1115, "client": 320},
+      "actual_200pct": {"scroll": 2230, "client": 640}
+    },
+    "fragmented_target_tokens_each_narrow_condition": 2,
+    "wrapped_short_atomic_rows": {
+      "mobile": 1,
+      "narrow_320": 2,
+      "actual_200pct": 2
+    },
+    "axe_serious_or_critical_each_viewport": 1,
+    "contrast_ratio_observed": 2.78
+  },
+  "locked_facts": {
+    "lighting_circuits": 4,
+    "test_records": 6,
+    "closure_windows": 2,
+    "view_controls": 3,
+    "target_only_pre_edit_carrier": "[data-bench-decision-carrier='target']",
+    "protected_hook_mismatches": 0
+  },
+  "browser_harness_attestation": {
+    "connection_name": "bench19366",
+    "url": "http://127.0.0.1:4783/",
+    "page_title": "Runway lighting return-to-service",
+    "desktop_screenshot_sha256": "e4cb45e3b3b0ff61ccba5ef4cfc5ecc5055b2229ca58c4fb9bf798fc4248986c",
+    "page_scroll_width": 1675,
+    "page_client_width": 1675
+  },
+  "unknown_boundary": [
+    "electrical isolation clearance",
+    "ATC approval",
+    "photometric acceptance",
+    "cable integrity",
+    "weather suitability",
+    "NOTAM closure",
+    "maintenance sign-off",
+    "operational return"
+  ],
+  "freshness": {
+    "prompt_sha256": "c192f4cc7a681d8a7a27f3f8b7799f0024f37f7d52eaf725025fc79ac029ba67",
+    "task_contract_sha256": "2179b2730bbf0726d4f42706e75faad5874a99a26e9cae170125e4bbed2a1130",
+    "starter_design_sha256": "bde9c9a5815b007c5f6edef9c88616ad247fd975ae256dcbca42111fefef097b",
+    "starter_product_sha256": "394182314e79c792a32e9a659391257dcc35c12105c262a6ba4eddc5ebed4495"
+  },
+  "next": "Commit and exact-pin the unseen task before any model or compared skill sees it."
+}

@@ -22,6 +22,7 @@ import { getLogoUrl, getLogoFallbackUrl } from "@/lib/logos";
 import { copyText } from "@/lib/clipboard";
 import { event } from "@/lib/gtag";
 import { trackInstallCopy } from "@/lib/activation/analytics";
+import { trackBenchmarkEntry } from "@/lib/benchmarks/analytics";
 import { INSTALL_CMD } from "@/components/install-cta";
 import { V2 } from "./tokens";
 
@@ -579,6 +580,15 @@ export function CliStrip() {
           </span>
           <span>No separate API key or MCP server</span>
           <span>MIT licensed</span>
+          <Link
+            href="/benchmarks"
+            onClick={trackBenchmarkEntry}
+            className="inline-flex min-h-11 items-center gap-1.5 text-white/65 underline decoration-white/25 underline-offset-4 transition-colors hover:text-white hover:decoration-white/60 focus-visible:rounded-md focus-visible:outline-none focus-visible:ring-2"
+            style={{ "--tw-ring-color": V2.accent } as React.CSSProperties}
+          >
+            Internal benchmark evidence
+            <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+          </Link>
         </div>
         <span className="sr-only" role="status" aria-live="polite">
           {copyStatus === "copied" ? "Installer command copied" : copyStatus === "failed" ? "Copy failed" : ""}

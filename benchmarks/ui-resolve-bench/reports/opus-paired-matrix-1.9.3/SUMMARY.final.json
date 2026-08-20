@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.2",
+  "report": "opus-paired-matrix-1.9.3",
+  "task_contract": "0.3.0",
+  "runtime": {
+    "agent": "claude-code",
+    "agent_version": "2.1.217",
+    "model": "claude-opus-4-8",
+    "effort": "xhigh"
+  },
+  "scheduled_runs": 6,
+  "attempted_runs": 2,
+  "valid_runs": 1,
+  "invalid_infrastructure_runs": 1,
+  "not_run_due_to_stop_rule": 4,
+  "comparison_allowed": false,
+  "publication_allowed": false,
+  "disposition": "stopped-permission-infrastructure",
+  "cells": [
+    {
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "raw-design-md",
+      "validity": "valid",
+      "ui_resolved": false,
+      "objective_score": 70,
+      "objective_max": 85,
+      "recoverable_tool_error_count": 1,
+      "infrastructure_tool_error_count": 0,
+      "first_builtin_product_write_ms": 216566,
+      "wall_time_ms": 555089,
+      "uncached_tokens": 109400,
+      "provider_cost_equivalent_usd": 2.1957219999999995,
+      "failed_gates": ["task_contract", "state_journey"]
+    },
+    {
+      "task_id": "pricing-conversion-v0.1",
+      "variant_id": "omd-portable",
+      "validity": "invalid-infrastructure",
+      "artifact_ui_resolved": false,
+      "objective_score_diagnostic_only": 59,
+      "objective_max": 85,
+      "recoverable_tool_error_count": 2,
+      "infrastructure_tool_error_count": 3,
+      "first_builtin_product_write_ms": 289910,
+      "wall_time_ms": 563507,
+      "uncached_tokens": 125360,
+      "provider_cost_equivalent_usd": 2.319703,
+      "failed_gates": ["task_contract", "state_journey", "accessibility"]
+    }
+  ],
+  "runner_finding": "relative built-in file-tool allow rules did not authorize absolute workspace paths under dontAsk",
+  "next_gate": "absolute read-edit-write Opus probe before replacement preregistration"
+}

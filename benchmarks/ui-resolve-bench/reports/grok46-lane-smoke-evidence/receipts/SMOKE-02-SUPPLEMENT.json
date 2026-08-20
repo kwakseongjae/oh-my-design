@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "kind": "grok46-smoke-call-supplement",
+  "pass": true,
+  "excluded_from_benchmark_denominator": true,
+  "source_commit": "9a6d22fab50ae18998b3782c5576e00f7e626125",
+  "generated_at": "2026-08-15T03:02:21Z",
+  "description": "Smoke call 2 — second isolated lane validation. Tiny fixed prompt 'Reply with exactly: SMOKE-PASS-2'. Response: SMOKE-PASS-2.",
+  "runtime": {
+    "provider": "grok-build-cli",
+    "model": "grok-4.6",
+    "binary_sha256": "09deaf06804955ff2d6ccef2042af4031c659c47fd16eb3c72664a8f533832da",
+    "isolation_verified": true,
+    "wall_ms": 3934,
+    "exit_code": 0,
+    "infrastructure_invalid": false
+  },
+  "raw_output_receipt": {
+    "run_result_path": "/private/tmp/omd-grok46-wow-smoke/smoke-02/.benchmark/run-result.json",
+    "run_result_sha256": "d8eb01b5d1b60443146fa01694cfaec59d0ac7acfbd8ddd2853f24c736115277",
+    "events_path": "/private/tmp/omd-grok46-wow-smoke/smoke-02/.benchmark/events.jsonl",
+    "events_sha256": "aa76a30282ba380b3ab703c66691fe96c50703d0d82b887bccdf3d7f9d387a7e",
+    "response": "SMOKE-PASS-2"
+  },
+  "provider_calls": 1,
+  "model_calls": 1,
+  "network_calls": 0
+}

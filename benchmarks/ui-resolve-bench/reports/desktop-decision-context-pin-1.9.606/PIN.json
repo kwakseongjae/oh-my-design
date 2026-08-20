@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.606",
+  "status": "PINNED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "candidate": {
+    "system_id": "omd-desktop-decision-context-candidate",
+    "vendor_version": "omd-1.9.605",
+    "source_commit": "e8a6f083f5cb278d18d1ab812b7d154a486a8c1b",
+    "source_tree": "3a55a636947858bcb16a6416b00202b17ce21a0a",
+    "skill_tree": "38eee231c7f2faaed855b8e671ee535f7691f155",
+    "artifacts": {
+      "skill_sha256": "b739d88b78232f241d2b7f3be36661919efaf73b1b163e314340f3791b977c26",
+      "reflow_artifact_sha256": "6b9ac983903e1fff18f4a6b6048e3f5ded761b5904c72ad4d23aa1542b02e665",
+      "reflow_browser_sha256": "b605f95d26d7afe3fccfa13f552bc2747bfe185db18acca851b3679f7b1a0bf8"
+    }
+  },
+  "repair_contract": {
+    "desktop_final_decision_context": true,
+    "narrow_final_decision_context": true,
+    "missing_final_observation_fails_closed": true,
+    "nested_comparison_carrier_rejected_pre_edit": true,
+    "contained_carrier_budget_retained": true,
+    "concise_decision_evidence_inventory_retained": true
+  },
+  "claim_boundary": "This pin identifies the exact provider-free repair candidate. It has not passed a fresh model-run transfer matrix.",
+  "next": "Create and baseline a genuinely unseen decision-context task before exposing it to either the historical control or this candidate."
+}

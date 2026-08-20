@@ -9,6 +9,7 @@ import {
 } from "@/lib/docs/locales";
 import { getDocsToc } from "@/components/cli-docs/docs-route";
 import { REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
+import { SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
 
 describe("localized CLI docs", () => {
   it("ships every requested locale with every page label", () => {
@@ -35,6 +36,36 @@ describe("localized CLI docs", () => {
       );
       expect(CLI_DOCS[locale].troubleshooting.cases).toHaveLength(
         baseline.troubleshooting.cases.length,
+      );
+    }
+  });
+
+  it("keeps installer and Cursor bundle counts aligned across all locales", () => {
+    const cursorSkillCount = SKILL_COUNT - 1;
+    const documentedSkills = CLI_DOCS.en.skills.groups.flatMap((group) => group.skills);
+
+    expect(documentedSkills).toContain("omd:autopilot");
+    expect(new Set(documentedSkills).size).toBe(SKILL_COUNT);
+
+    for (const locale of DOC_LOCALES) {
+      const dictionary = CLI_DOCS[locale];
+      const overviewCounts = `${dictionary.overview.truthBody} ${dictionary.overview.proof}`;
+      const skillCounts = `${dictionary.skills.title} ${dictionary.skills.lead} ${dictionary.skills.countNote}`;
+      const cursorChannel = dictionary.gettingStarted.channels.find(
+        (channel) => channel.name === "Cursor",
+      );
+
+      expect(overviewCounts, locale).toContain(String(SKILL_COUNT));
+      expect(overviewCounts, locale).toContain(String(SUBAGENT_COUNT));
+      expect(overviewCounts, locale).toContain(String(cursorSkillCount));
+      expect(skillCounts, locale).toContain(String(SKILL_COUNT));
+      expect(skillCounts, locale).toContain(String(SUBAGENT_COUNT));
+      expect(cursorChannel?.body, locale).toContain(String(cursorSkillCount));
+      expect(dictionary.showcase.previewStats.join(" "), locale).toContain(
+        String(SKILL_COUNT),
+      );
+      expect(dictionary.showcase.previewStats.join(" "), locale).toContain(
+        String(SUBAGENT_COUNT),
       );
     }
   });

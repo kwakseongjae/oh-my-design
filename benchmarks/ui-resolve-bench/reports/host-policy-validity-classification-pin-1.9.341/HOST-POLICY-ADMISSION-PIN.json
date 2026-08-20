@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.341",
+  "pin_id": "host-policy-validity-classification-1.9.341",
+  "source_commit": "38328c8adc2fcdc1ead98cc241461c69693477d1",
+  "files": {
+    "runner": {
+      "path": "benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs",
+      "sha256": "ac27832923162a490d6dbee5377cb10306c1da264c58495f3d9e41ad3b900af9"
+    },
+    "runner_contract_test": {
+      "path": "test/unit/bench/ui-resolve-run-matrix.test.mjs",
+      "sha256": "d06006dee71151d2bbadc6788d306224ff1dfa1736dc35bc6bcac870ffcce8e0"
+    },
+    "provider_neutral_test": {
+      "path": "test/unit/bench/ui-resolve-provider-neutral.test.mjs",
+      "sha256": "408cd027375a75b3207dd953e337244c23d53c14b2c1fa9f0c7fcbdafb459de6"
+    },
+    "acceptance": {
+      "path": "benchmarks/ui-resolve-bench/reports/host-policy-validity-classification-1.9.340/ACCEPTANCE.json",
+      "sha256": "a520dde4bdd45c1d5c9a4fb71b63e2edf4d679f182891f51443de9fe7178f716"
+    }
+  },
+  "admission_contract": {
+    "ready_host_pass": "admit",
+    "ready_host_rejects_system_output": "valid-system-failure",
+    "missing_or_inconsistent_host": "invalid-infrastructure"
+  },
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "next": "Lock a fresh unseen task before preregistering any provider comparison."
+}

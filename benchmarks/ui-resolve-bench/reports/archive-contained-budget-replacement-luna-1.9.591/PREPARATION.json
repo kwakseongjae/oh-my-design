@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.593",
+  "experiment_id": "archive-contained-budget-replacement-luna-1.9.591",
+  "status": "SIX_CELLS_PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19592",
+  "vendors_root": "/private/tmp/u19592-vendors",
+  "locked_plan_sha256": "678cd22681f068497bca810dfabedd7e50fcb7f7dbb6d0149fbbd5e245a3d418",
+  "preparation_state_sha256": "b2db7b6185fe4fc6c7f6e9b7cefc3e149c7e96965e06086444e3ccc1096a1539",
+  "equality": {
+    "scheduled_cells": 6,
+    "prepared_cells": 6,
+    "core_prompt_equal": 6,
+    "prompt_equal": 6,
+    "starter_equal": 6,
+    "product_tree_equal": 6,
+    "runtime_equal": 6,
+    "model_equal": 6,
+    "effort_equal": 6,
+    "timeout_equal": 6
+  },
+  "source_attestation": {
+    "control": {
+      "commit": "853db7bfe0939e0c58b1c8d01e7d2348100a14c8",
+      "detached": true,
+      "clean": true
+    },
+    "candidate": {
+      "commit": "5f78f1c5a23148778a49bdc54f6f6026a7b8c1d2",
+      "detached": true,
+      "clean": true
+    }
+  },
+  "installed_source_sha256": {
+    "control_skill": "a4c0e21a8096aa6f323a87657501ca62cfe6cb7a62adf81c4bc8b5a6b95494f4",
+    "candidate_skill": "4bcb083739c07d01813f6181ba05cf6666716bc6859423560cfa06c60cd45cef",
+    "control_browser_runner": "050f28dffd59a913a25e3a6195e8169a9fbc4419e46f8ea60768c6b4cacbf2a1",
+    "candidate_browser_runner": "5a4097b982af9f552b0cddc194e5f81842c81b4d7d3ea5b92cf9cd47f83097ad",
+    "shared_artifact_helper": "df16a41b4eba03e1054100e0520ba77395e0a50b6150ae9b099a72ead96f50f4"
+  },
+  "isolated_delta_guardrail": {
+    "control_contained_budget_formula_absent": true,
+    "control_contained_budget_field_absent": true,
+    "candidate_contained_budget_formula_present": true,
+    "candidate_contained_budget_field_present": true,
+    "all_three_control_cells_match": true,
+    "all_three_candidate_cells_match": true
+  },
+  "execution_contract": {
+    "next_cell": "luna-archive-r1-control",
+    "max_new_cells": 1,
+    "retry": false,
+    "inter_cell_delay_seconds": 120,
+    "named_browser": "bench19366",
+    "runtime_dir_shared": true,
+    "exact_named_socket": true
+  }
+}

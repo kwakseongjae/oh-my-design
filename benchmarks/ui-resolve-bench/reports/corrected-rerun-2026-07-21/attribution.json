@@ -1,0 +1,17 @@
+{
+  "schema_version": "0.1",
+  "artifacts": {
+    "taste-skill": {
+      "status": "valid-skill-observation",
+      "reason": "Pinned frontmatter, install directory, and $design-taste-frontend activation matched."
+    },
+    "ui-ux-pro-max": {
+      "status": "valid-skill-observation",
+      "reason": "The pinned official Codex template was rendered into .codex/skills with reviewed local data, scripts, and bundled skills."
+    },
+    "omd-portable": {
+      "status": "valid-skill-observation",
+      "reason": "Pinned omd-apply folder shim declared omd:apply and was invoked as $omd:apply."
+    }
+  }
+}

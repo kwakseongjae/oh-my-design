@@ -1,0 +1,43 @@
+{
+  "product_version": "1.9.67",
+  "experiment_id": "geometry-token-compliance-1.9.67",
+  "status": "accepted_provider_free",
+  "provider_generation": false,
+  "source_skill_sha256_before": "c63ba1e47fe1466c03299c475d8e51f0d6ce376b6631893d703bb110296a3e03",
+  "source_skill_sha256_after": "2ce11fb14cee0c34c9707d15bb2583fe606401beca1c3b9f22129d49d85f0845",
+  "sidecar_sha256": "f0ad5294de3f599bbed124708c61988be9098e20d4723ce3574023144751253e",
+  "candidate_delta": {
+    "name": "geometry-token closure",
+    "execution_point": "after foreground correction and before final interactive closure, optional browser verification, or delivery",
+    "required_zero_conditions": [
+      "mismatched_declared_radius",
+      "invented_radius_value",
+      "unresolved_changed_radius"
+    ],
+    "evaluator_changed": false,
+    "task_changed": false,
+    "provider_runtime_changed": false
+  },
+  "verification": {
+    "skill_contract_passed": 6,
+    "skill_contract_total": 6,
+    "install_skills_passed": 36,
+    "install_skills_total": 36,
+    "cursor_adaptation_passed": 1,
+    "cursor_adaptation_total": 1,
+    "selected_combined_passed": 55,
+    "selected_combined_total": 57,
+    "known_environment_failures": 2,
+    "typescript_passed": true,
+    "build_passed": true,
+    "diff_check_passed": true
+  },
+  "decision": {
+    "bounded_hypothesis_passed": true,
+    "fresh_incident_grok_recovery_unlocked": true,
+    "repeated_replacement_unlocked": false,
+    "model_compliance_proven": false,
+    "skill_lift_proven": false
+  },
+  "claim_boundary": "Provider-free skill contract and Cursor channel adaptation only. No model compliance, incident recovery, Skill Lift, reliability, efficiency, or frontier claim follows."
+}

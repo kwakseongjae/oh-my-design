@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "locale-browser-authority-recovery-1.9.28",
+  "output_root": "/tmp/u1928",
+  "family": "skill",
+  "baseline_system": "omd-locale-handoff-1.9.26-authority-failure",
+  "candidate_system": "omd-locale-handoff-browser-authority",
+  "bootstrap_samples": 0,
+  "bootstrap_seed": 20260808,
+  "reliability_k": 1,
+  "harness_delivery_gates": {
+    "variant_kinds": [
+      "locale-skill-stack"
+    ],
+    "first_product_write_ms_max": 450000,
+    "forbid_replacement_verifier": true,
+    "max_direct_browser_commands": 1
+  },
+  "cells": [
+    {
+      "id": "locale-browser-authority-recovery-t1",
+      "task_id": "locale-cli-handoff-v0.1",
+      "variant_id": "omd-locale-handoff",
+      "system_id": "omd-locale-handoff-browser-authority",
+      "runtime": "claude-code",
+      "model_id": "claude-opus-4-8",
+      "effort": "xhigh",
+      "timeout_seconds": 900,
+      "trial_index": 1
+    }
+  ]
+}

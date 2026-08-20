@@ -1,0 +1,2043 @@
+[
+  {
+    "run_id": "luna-book-r1-controller",
+    "benchmark_family": "factorial",
+    "suite_version": "ui-resolve-v0.2",
+    "system_id": "luna-omd-controller-observation",
+    "model_id": "gpt-5.6-luna",
+    "skill_id": "omd:apply",
+    "harness_id": "omd-portable-proof-close-latch-candidate",
+    "budget_tier": "high",
+    "task_id": "book-signature-imposition-v0.1",
+    "trial_index": 1,
+    "run_status": "complete",
+    "validity": "valid",
+    "attribution_scope": "provider-observed-only",
+    "public_model_attribution_eligible": false,
+    "ui_resolved": false,
+    "objective_score": 81,
+    "objective_max": 85,
+    "wall_time_ms": 234511,
+    "tokens": 378242,
+    "token_usage": {
+      "input_tokens": 366063,
+      "cached_input_tokens": 318208,
+      "output_tokens": 12179,
+      "reasoning_output_tokens": 6400,
+      "total_tokens": 378242,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "input_output_complete": true
+    },
+    "provider_cost_equivalent_usd": null,
+    "execution_control": {
+      "comparison_mode": "native-capability",
+      "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+      "temperature_policy": "runtime-default-frozen",
+      "timeout_seconds": 900,
+      "max_concurrency": 1,
+      "latency_comparison": "eligible",
+      "retry_policy": "none-primary",
+      "timeout_policy": "count-as-valid-failure",
+      "infrastructure_policy": "retain-freeze-and-repreregister",
+      "task_order_policy": "balanced-rotation",
+      "pacing": {
+        "policy": "fixed-inter-cell",
+        "inter_cell_delay_seconds": 120,
+        "applies_between_cells_only": true,
+        "counts_toward_cell_wall_time": false
+      },
+      "token_budget": {
+        "mode": "observed-only",
+        "limit_tokens": null,
+        "usage_required": true,
+        "account_components": [
+          "input",
+          "cached_input",
+          "output",
+          "reasoning_output"
+        ],
+        "cached_input_separate": true,
+        "cost_policy": "provider-reported-or-pinned-price-equivalent"
+      },
+      "step_budget": {
+        "mode": "observed-only",
+        "limit_steps": null
+      }
+    },
+    "usage_completeness": {
+      "evidence_mode": "provider-event",
+      "available": true,
+      "input_output_complete": true,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "reasoning_visibility": "reported",
+      "cached_input_visibility": "reported"
+    },
+    "runtime_model_usage": [
+      {
+        "model": "gpt-5.6-luna",
+        "input_tokens": 366063,
+        "cached_input_tokens": 318208,
+        "output_tokens": 12179,
+        "cost_usd": null,
+        "context_window": null,
+        "max_output_tokens": null
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "diagnostic_availability": {
+        "available": false,
+        "fields": [],
+        "reason": "codex-stream-diagnostic-normalization-not-supported"
+      },
+      "tool_error_count": null,
+      "recoverable_tool_error_count": null,
+      "infrastructure_tool_error_count": null,
+      "optional_verifier_environment_error_count": null,
+      "recovered_temp_path_error_count": null,
+      "sandbox_error_count": null,
+      "sandbox_cwd_error_count": null,
+      "agent_tool_call_count": null,
+      "agent_tool_error_count": null,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": null,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 1,
+        "product_revision_count": 1,
+        "last_product_edit_event_index": 14,
+        "post_edit_command_count": 3,
+        "static_closure_count": 2,
+        "browser_mechanism_count": 1,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 1,
+        "verification_after_ready_count": 0,
+        "compliance_pass": false,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 14,
+            "last_edit_event_index": 14,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 16,
+                "command": "/opt/homebrew/bin/zsh -lc \"git diff --check\nnode -e 'const fs=require(\\\"fs\\\"); const s=fs.readFileSync(\\\"index.html\\\",\\\"utf8\\\"); const count=(x)=>[...s.matchAll(new RegExp(x,\\\"g\\\"))].length; const exact={\\\"data-bench-design-role=\\\\\\\"signature-sheet\\\\\\\"\\\":1,\\\"data-bench-decision-role=\\\\\\\"context\\\\\\\"\\\":1,\\\"data-bench-decision-role=\\\\\\\"target\\\\\\\"\\\":1,\\\"data-bench-decision-role=\\\\\\\"evidence\\\\\\\"\\\":1,\\\"data-bench-decision-role=\\\\\\\"state\\\\\\\"\\\":1,\\\"data-bench-decision-role=\\\\\\\"action\\\\\\\"\\\":1,\\\"data-bench=\\\\\\\"folio-pair\\\\\\\"\\\":4,\\\"data-bench=\\\\\\\"binding-option\\\\\\\"\\\":3,\\\"data-bench=\\\\\\\"creep-toggle\\\\\\\"\\\":1,\\\"data-bench=\\\\\\\"imposition-form\\\\\\\"\\\":1,\\\"data-bench=\\\\\\\"job-name\\\\\\\"\\\":1,\\\"data-bench=\\\\\\\"form-status\\\\\\\"\\\":1}; for(const [k,v] of Object.entries(exact)){if(count(k)\"'!==v) throw new Error(`${k}: ${count(k)} !== ${v}`)}; for(const x of [\"signature-s04-front\",\"signature-s04-back\",\"folio-016-left__folio-001-right\",\"folio-002-left__folio-015-right\",\"folio-014-left__folio-003-right\",\"folio-004-left__folio-013-right\",\"148 × 210 mm\"]){if(!s.includes(x)) throw new Error(`missing ${x}`)}; for(const x of [\"<wbr\",\"<br\",\"'\"\\\\u200b\\\",\\\"&shy;\\\",\\\"overflow-wrap:anywhere\\\",\\\"word-break:break-all\\\"]){if(s.includes(x)) throw new Error(\"'`forbidden ${x}`)}; console.log(\"static closure: hooks, facts, marker cardinality, and break-opportunity checks passed\")'\"'\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              },
+              {
+                "index": 18,
+                "command": "/opt/homebrew/bin/zsh -lc \"git diff --check\nnode -e 'const fs=require(\\\"fs\\\"); const s=fs.readFileSync(\\\"index.html\\\",\\\"utf8\\\"); const dom=s.split(\\\"<script\\\")[0]; const count=(x)=>[...dom.matchAll(new RegExp(x,\\\"g\\\"))].length; const exact={\\\"data-bench-design-role=\\\\\\\"signature-sheet\\\\\\\"\\\":1,\\\"data-bench-decision-role=\\\\\\\"context\\\\\\\"\\\":1,\\\"data-bench-decision-role=\\\\\\\"target\\\\\\\"\\\":1,\\\"data-bench-decision-role=\\\\\\\"evidence\\\\\\\"\\\":1,\\\"data-bench-decision-role=\\\\\\\"state\\\\\\\"\\\":1,\\\"data-bench-decision-role=\\\\\\\"action\\\\\\\"\\\":1,\\\"data-bench=\\\\\\\"folio-pair\\\\\\\"\\\":4,\\\"data-bench=\\\\\\\"binding-option\\\\\\\"\\\":3,\\\"data-bench=\\\\\\\"creep-toggle\\\\\\\"\\\":1,\\\"data-bench=\\\\\\\"imposition-form\\\\\\\"\\\":1,\\\"data-bench=\\\\\\\"job-name\\\\\\\"\\\":1,\\\"data-bench=\\\\\\\"form-status\\\\\\\"\\\":1}; for(const [k,v] of Object.entries(exact)){if(count(k)\"'!==v) throw new Error(`${k}: ${count(k)} !== ${v}`)}; for(const x of [\"signature-s04-front\",\"signature-s04-back\",\"folio-016-left__folio-001-right\",\"folio-002-left__folio-015-right\",\"folio-014-left__folio-003-right\",\"folio-004-left__folio-013-right\",\"148 × 210 mm\"]){if(!dom.includes(x)) throw new Error(`missing ${x}`)}; for(const x of [\"<wbr\",\"<br\",\"'\"\\\\u200b\\\",\\\"&shy;\\\",\\\"overflow-wrap:anywhere\\\",\\\"word-break:break-all\\\"]){if(s.includes(x)) throw new Error(\"'`forbidden ${x}`)}; console.log(\"static closure: hooks, facts, marker cardinality, and break-opportunity checks passed\")'\"'\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              },
+              {
+                "index": 21,
+                "command": "/opt/homebrew/bin/zsh -lc \"browser-harness <<'PY'\nfrom pprint import pprint\n\nnew_tab('file:///tmp/u19210/luna-book-r1-controller/index.html')\nwait_for_load()\n\n\ndef metrics():\n    return js(\\\"\\\"\\\"(() => {\n      const text = s => document.querySelector(s)?.textContent.trim() || '';\n      const rows = [...document.querySelectorAll('[data-bench=\\\"folio-pair\\\"]')].map(el => ({\n        height: Math.round(el.getBoundingClientRect().height),\n        text: el.innerText.trim(),\n        lines: [...el.querySelectorAll('dd')].map(dd => Math.round(dd.getBoundingClientRect().height / parseFloat(getComputedStyle(dd).lineHeight)))\n      }));\n      const hierarchy = ['context','target','evidence','state','action'].map(role => document.querySelector(\"'`[data-bench-decision-role=\"${role}\"]`)?.getBoundingClientRect().height > 0);\n      return {\n        viewport: [window.innerWidth, window.innerHeight],\n        visualScale: window.visualViewport?.scale || 1,\n        pageWidth: document.documentElement.scrollWidth,\n        clientWidth: document.documentElement.clientWidth,\n        rows,\n        hierarchy,\n        active: document.activeElement?.id || document.activeElement?.textContent?.trim() || '\"'',\n        bindings: [...document.querySelectorAll('[data-bench=\\\"binding-option\\\"]')].map(b => [b.dataset.binding, b.getAttribute('aria-pressed')]),\n        creep: document.querySelector('[data-bench=\\\"creep-toggle\\\"]').getAttribute('aria-pressed'),\n        state: text('[data-bench-decision-role=\\\"state\\\"]'),\n        status: text('[data-bench=\\\"form-status\\\"]')\n      };\n    })()\\\"\\\"\\\")\n\n\ndef set_viewport(width, height, scale=1):\n    cdp('Emulation.setDeviceMetricsOverride', {'width': width, 'height': height, 'deviceScaleFactor': 1, 'mobile': False})\n    cdp('Emulation.setPageScaleFactor', {'pageScaleFactor': scale})\n    return metrics()\n\ncapture_screenshot()\nresults = {}\nresults['390'] = set_viewport(390, 844)\nresults['320'] = set_viewport(320, 720)\nresults['200pct'] = set_viewport(390, 844, 2)\n\nset_viewport(390, 844)\n# Exercise each binding method through visible controls.\nfor binding in ['perfect', 'saddle', 'sewn']:\n    rect = js(f\\\"(() => {{ const r = document.querySelector('[data-binding=\\\\\\\\\\\\\\\"{binding}\\\\\\\\\\\\\\\"]').getBoundingClientRect(); return {{x:r.x+r.width/2,y:r.y+r.height/2}}; }})()\\\")\n    capture_screenshot()\n    click_at_xy(rect['x'], rect['y'])\n    capture_screenshot()\n\n# Toggle creep compensation and verify the state.\nrect = js(\\\"(() => { const r = document.querySelector('[data-bench=\\\\\\\\\\\\\\\"creep-toggle\\\\\\\\\\\\\\\"]').getBoundingClientRect(); return {x:r.x+r.width/2,y:r.y+r.height/2}; })()\\\")\ncapture_screenshot()\nclick_at_xy(rect['x'], rect['y'])\ncapture_screenshot()\n\n# Submit empty, then focus and submit the requested valid name.\nsubmit = js(\\\"(() => { const r = document.querySelector('[data-primary-action]').getBoundingClientRect(); return {x:r.x+r.width/2,y:r.y+r.height/2}; })()\\\")\ncapture_screenshot()\nclick_at_xy(submit['x'], submit['y'])\nempty_result = metrics()\nfield = js(\\\"(() => { const r = document.querySelector('[data-bench=\\\\\\\\\\\\\\\"job-name\\\\\\\\\\\\\\\"]').getBoundingClientRect(); return {x:r.x+r.width/2,y:r.y+r.height/2}; })()\\\")\nclick_at_xy(field['x'], field['y'])\ntype_text('Atlas field guide signature')\ncapture_screenshot()\nclick_at_xy(submit['x'], submit['y'])\nvalid_result = metrics()\n\n# Verify keyboard-visible focus styling on the active form control.\nfocus_result = js(\\\"(() => { const el=document.querySelector('[data-bench=\\\\\\\\\\\\\\\"job-name\\\\\\\\\\\\\\\"]'); el.focus(); const s=getComputedStyle(el); return {active:document.activeElement.id, outline:s.outlineStyle, outlineWidth:s.outlineWidth, outlineColor:s.outlineColor}; })()\\\")\n\npprint({'viewports': results, 'empty_submit': empty_result, 'valid_submit': valid_result, 'focus': focus_result})\nPY\"",
+                "browser": true,
+                "recovery_probe": false,
+                "static_verification": false
+              }
+            ],
+            "static_closure_count": 2,
+            "browser_mechanism_count": 1,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 1,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": {
+        "enforcement": "promotion-report",
+        "pass": false,
+        "reasons": [
+          "duplicate-static-limit"
+        ],
+        "observed": {
+          "analyzable": true,
+          "browser_recovery_count": 0,
+          "duplicate_static_closure_count": 1,
+          "verification_after_ready_count": 0
+        },
+        "limits": {
+          "require_analyzable": true,
+          "max_browser_recovery_count": 0,
+          "max_duplicate_static_closure_count": 0,
+          "max_verification_after_ready_count": 0
+        }
+      },
+      "host_policy": {
+        "mode": "controller-observation",
+        "installation": {
+          "schema_version": "0.1",
+          "mode": "controller-observation",
+          "target": "codex",
+          "git_root": true,
+          "hooks_enabled": false,
+          "ready": true,
+          "config": null,
+          "source_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "e976f56545da281b98b5227894615eb6f48201d6af15ff0d5b513242995cd83e"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "9db556f2f65805d883eb239872b54242cc3a1d6aa2a790cf1ec8f106023ce5e7"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "41dd2a7f4d1d0c86f43b8359531bf6afde8c49f21c60f024d938fa18131e5712"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "1689379d50bf612b577086fc6d2e848e78bceb7857e16b1b407903b9b504b51d"
+            }
+          ],
+          "installed_files": [],
+          "expected_installed_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "d9de6f78910b2ee13702727702c2377bcc946c28e931a882eaa238145dfc0a54"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "aa20116ded0ef34d15384be964dd17584fe358438fe7a4c0873cfcf0d6fbea68"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "1752b6aa03113f734e89fa44896ad3d11109dbd100b17633112344a933f51eb0"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "7d9a696b07118e504f07df743c2bb7e7848dab1e390a5d20c054966985c4b75c"
+            }
+          ],
+          "state_dir": ".omd/proof-policy",
+          "delivery": "controller-observation-only"
+        },
+        "observed": {
+          "schema_version": "0.1",
+          "available": false,
+          "state_files": 0,
+          "valid_state_files": 0,
+          "decisions": 0,
+          "denied_decisions": 0,
+          "denied_reasons": {},
+          "violations": {
+            "browser_recovery": 0,
+            "duplicate_static_closure": 0,
+            "verification_after_ready": 0
+          }
+        },
+        "gate": {
+          "mode": "controller-observation",
+          "pass": true,
+          "reasons": [],
+          "observed": {
+            "policy_state_available": false
+          }
+        }
+      }
+    },
+    "attribution": {
+      "runtime": {
+        "runtime_target": "codex",
+        "agent": "codex-cli",
+        "agent_version": null,
+        "binary_sha256": null,
+        "model_requested": "gpt-5.6-luna",
+        "model_reported": null,
+        "model_evidence_mode": "cli-argument",
+        "effort_requested": "high",
+        "auth_mode": null,
+        "provider_route": null,
+        "provider_effort_argument": null,
+        "hook_trust_bypassed": false,
+        "usage_attribution": {
+          "available": true,
+          "evidence_mode": "provider-event",
+          "reason": null
+        }
+      },
+      "source_commit": "1d204afea6c3ab106752613b7f341ed2f76fd843",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true,
+        "detached": true
+      },
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "fefb537635f907fdb4e48fdf441eaa5cb3d3173df4603366b2e88689b9f200e8",
+          "after_sha256": "4814d2c783b8e712a693fc294c2235d2773c45a6753f229ead7c6a3fbaf4c0a2"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots",
+      "proof_trace": ".benchmark/proof-trace.json",
+      "host_policy_state": ".benchmark/host-policy-state.json"
+    }
+  },
+  {
+    "run_id": "luna-book-r1-policy",
+    "benchmark_family": "factorial",
+    "suite_version": "ui-resolve-v0.2",
+    "system_id": "luna-omd-installed-policy",
+    "model_id": "gpt-5.6-luna",
+    "skill_id": "omd:apply",
+    "harness_id": "omd-portable-proof-close-latch-candidate",
+    "budget_tier": "high",
+    "task_id": "book-signature-imposition-v0.1",
+    "trial_index": 1,
+    "run_status": "complete",
+    "validity": "valid",
+    "attribution_scope": "provider-observed-only",
+    "public_model_attribution_eligible": false,
+    "ui_resolved": false,
+    "objective_score": 79,
+    "objective_max": 85,
+    "wall_time_ms": 208638,
+    "tokens": 503968,
+    "token_usage": {
+      "input_tokens": 493416,
+      "cached_input_tokens": 426752,
+      "output_tokens": 10552,
+      "reasoning_output_tokens": 5970,
+      "total_tokens": 503968,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "input_output_complete": true
+    },
+    "provider_cost_equivalent_usd": null,
+    "execution_control": {
+      "comparison_mode": "native-capability",
+      "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+      "temperature_policy": "runtime-default-frozen",
+      "timeout_seconds": 900,
+      "max_concurrency": 1,
+      "latency_comparison": "eligible",
+      "retry_policy": "none-primary",
+      "timeout_policy": "count-as-valid-failure",
+      "infrastructure_policy": "retain-freeze-and-repreregister",
+      "task_order_policy": "balanced-rotation",
+      "pacing": {
+        "policy": "fixed-inter-cell",
+        "inter_cell_delay_seconds": 120,
+        "applies_between_cells_only": true,
+        "counts_toward_cell_wall_time": false
+      },
+      "token_budget": {
+        "mode": "observed-only",
+        "limit_tokens": null,
+        "usage_required": true,
+        "account_components": [
+          "input",
+          "cached_input",
+          "output",
+          "reasoning_output"
+        ],
+        "cached_input_separate": true,
+        "cost_policy": "provider-reported-or-pinned-price-equivalent"
+      },
+      "step_budget": {
+        "mode": "observed-only",
+        "limit_steps": null
+      }
+    },
+    "usage_completeness": {
+      "evidence_mode": "provider-event",
+      "available": true,
+      "input_output_complete": true,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "reasoning_visibility": "reported",
+      "cached_input_visibility": "reported"
+    },
+    "runtime_model_usage": [
+      {
+        "model": "gpt-5.6-luna",
+        "input_tokens": 493416,
+        "cached_input_tokens": 426752,
+        "output_tokens": 10552,
+        "cost_usd": null,
+        "context_window": null,
+        "max_output_tokens": null
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "diagnostic_availability": {
+        "available": false,
+        "fields": [],
+        "reason": "codex-stream-diagnostic-normalization-not-supported"
+      },
+      "tool_error_count": null,
+      "recoverable_tool_error_count": null,
+      "infrastructure_tool_error_count": null,
+      "optional_verifier_environment_error_count": null,
+      "recovered_temp_path_error_count": null,
+      "sandbox_error_count": null,
+      "sandbox_cwd_error_count": null,
+      "agent_tool_call_count": null,
+      "agent_tool_error_count": null,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": null,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 1,
+        "product_revision_count": 1,
+        "last_product_edit_event_index": 15,
+        "post_edit_command_count": 2,
+        "static_closure_count": 1,
+        "browser_mechanism_count": 1,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 0,
+        "verification_after_ready_count": 0,
+        "compliance_pass": true,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 15,
+            "last_edit_event_index": 15,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 17,
+                "command": "/opt/homebrew/bin/zsh -lc \"git diff -- index.html; printf '\\\\n--- static contract counts ---\\\\n'; rg -o 'data-bench(?:-design-role|-decision-role)?=\\\"[\"'^\"]+\"'\"' index.html | sort | uniq -c; printf '\\\\n--- forbidden break markers ---\\\\n'; rg -n '<wbr|<br|word-break|overflow-wrap|soft hyphen|&#8203;|&ZeroWidthSpace;|white-space' index.html || true\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              },
+              {
+                "index": 19,
+                "command": "/opt/homebrew/bin/zsh -lc \"browser-harness <<'PY'\nnew_tab('file:///tmp/u19210/luna-book-r1-policy/index.html')\nwait_for_load()\nprint(capture_screenshot())\nprint(js(\\\"JSON.stringify({innerWidth:window.innerWidth,innerHeight:window.innerHeight,scrollWidth:document.documentElement.scrollWidth,bodyWidth:document.body.getBoundingClientRect().width,folios:[...document.querySelectorAll('.folio')].map(el=>({w:el.getBoundingClientRect().width,h:el.getBoundingClientRect().height,text:[...el.querySelectorAll('dd')].map(x=>({text:x.textContent,rect:[x.getBoundingClientRect().width,x.getBoundingClientRect().height],scroll:x.scrollWidth,client:x.clientWidth,white:getComputedStyle(x).whiteSpace}))}))})\\\"))\nPY\"",
+                "browser": true,
+                "recovery_probe": false,
+                "static_verification": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 1,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": {
+        "mode": "installed-opt-in",
+        "installation": {
+          "schema_version": "0.1",
+          "mode": "installed-opt-in",
+          "target": "codex",
+          "git_root": true,
+          "hooks_enabled": true,
+          "ready": true,
+          "config": {
+            "path": ".codex/hooks.json",
+            "sha256": "36f15af51b01c3afb075fecfe9dbd1d63cab33225a9ac3bdbde261878910d581"
+          },
+          "source_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "e976f56545da281b98b5227894615eb6f48201d6af15ff0d5b513242995cd83e"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "9db556f2f65805d883eb239872b54242cc3a1d6aa2a790cf1ec8f106023ce5e7"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "41dd2a7f4d1d0c86f43b8359531bf6afde8c49f21c60f024d938fa18131e5712"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "1689379d50bf612b577086fc6d2e848e78bceb7857e16b1b407903b9b504b51d"
+            }
+          ],
+          "installed_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "d9de6f78910b2ee13702727702c2377bcc946c28e931a882eaa238145dfc0a54"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "aa20116ded0ef34d15384be964dd17584fe358438fe7a4c0873cfcf0d6fbea68"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "1752b6aa03113f734e89fa44896ad3d11109dbd100b17633112344a933f51eb0"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "7d9a696b07118e504f07df743c2bb7e7848dab1e390a5d20c054966985c4b75c"
+            }
+          ],
+          "expected_installed_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "d9de6f78910b2ee13702727702c2377bcc946c28e931a882eaa238145dfc0a54"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "aa20116ded0ef34d15384be964dd17584fe358438fe7a4c0873cfcf0d6fbea68"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "1752b6aa03113f734e89fa44896ad3d11109dbd100b17633112344a933f51eb0"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "7d9a696b07118e504f07df743c2bb7e7848dab1e390a5d20c054966985c4b75c"
+            }
+          ],
+          "state_dir": ".omd/proof-policy",
+          "delivery": "canonical-managed-files-and-production-config"
+        },
+        "observed": {
+          "schema_version": "0.1",
+          "available": true,
+          "state_files": 1,
+          "valid_state_files": 1,
+          "decisions": 6,
+          "denied_decisions": 1,
+          "denied_reasons": {
+            "verification-after-ready": 1
+          },
+          "violations": {
+            "browser_recovery": 0,
+            "duplicate_static_closure": 1,
+            "verification_after_ready": 1
+          },
+          "state_tree_sha256": "3a40b31f0dd5f8ae4e503b1fdaf417334d202c6f4a33068f7e729196f676e858"
+        },
+        "gate": {
+          "mode": "installed-opt-in",
+          "pass": true,
+          "reasons": [],
+          "observed": {
+            "policy_state_available": true,
+            "valid_state_files": 1,
+            "state_files": 1,
+            "denied_decisions": 1,
+            "denied_reasons": {
+              "verification-after-ready": 1
+            },
+            "violations": {
+              "browser_recovery": 0,
+              "duplicate_static_closure": 1,
+              "verification_after_ready": 1
+            },
+            "unblocked": {
+              "browser_recovery": 0,
+              "duplicate_static_closure": 0,
+              "verification_after_ready": 0
+            }
+          },
+          "limits": {
+            "require_installed_state": true,
+            "max_unblocked_browser_recovery_count": 0,
+            "max_unblocked_duplicate_static_closure_count": 0,
+            "max_unblocked_verification_after_ready_count": 0
+          }
+        }
+      }
+    },
+    "attribution": {
+      "runtime": {
+        "runtime_target": "codex",
+        "agent": "codex-cli",
+        "agent_version": null,
+        "binary_sha256": null,
+        "model_requested": "gpt-5.6-luna",
+        "model_reported": null,
+        "model_evidence_mode": "cli-argument",
+        "effort_requested": "high",
+        "auth_mode": null,
+        "provider_route": null,
+        "provider_effort_argument": null,
+        "hook_trust_bypassed": true,
+        "usage_attribution": {
+          "available": true,
+          "evidence_mode": "provider-event",
+          "reason": null
+        }
+      },
+      "source_commit": "1d204afea6c3ab106752613b7f341ed2f76fd843",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true,
+        "detached": true
+      },
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "fefb537635f907fdb4e48fdf441eaa5cb3d3173df4603366b2e88689b9f200e8",
+          "after_sha256": "8ed96bc1d6fe09b932b504adf546eb8a6b69224c0b16cfbe6b578afd8fa9db77"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots",
+      "proof_trace": ".benchmark/proof-trace.json",
+      "host_policy_state": ".benchmark/host-policy-state.json"
+    }
+  },
+  {
+    "run_id": "luna-book-r2-controller",
+    "benchmark_family": "factorial",
+    "suite_version": "ui-resolve-v0.2",
+    "system_id": "luna-omd-controller-observation",
+    "model_id": "gpt-5.6-luna",
+    "skill_id": "omd:apply",
+    "harness_id": "omd-portable-proof-close-latch-candidate",
+    "budget_tier": "high",
+    "task_id": "book-signature-imposition-v0.1",
+    "trial_index": 2,
+    "run_status": "complete",
+    "validity": "valid",
+    "attribution_scope": "provider-observed-only",
+    "public_model_attribution_eligible": false,
+    "ui_resolved": true,
+    "objective_score": 85,
+    "objective_max": 85,
+    "wall_time_ms": 287327,
+    "tokens": 496071,
+    "token_usage": {
+      "input_tokens": 481180,
+      "cached_input_tokens": 424448,
+      "output_tokens": 14891,
+      "reasoning_output_tokens": 8187,
+      "total_tokens": 496071,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "input_output_complete": true
+    },
+    "provider_cost_equivalent_usd": null,
+    "execution_control": {
+      "comparison_mode": "native-capability",
+      "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+      "temperature_policy": "runtime-default-frozen",
+      "timeout_seconds": 900,
+      "max_concurrency": 1,
+      "latency_comparison": "eligible",
+      "retry_policy": "none-primary",
+      "timeout_policy": "count-as-valid-failure",
+      "infrastructure_policy": "retain-freeze-and-repreregister",
+      "task_order_policy": "balanced-rotation",
+      "pacing": {
+        "policy": "fixed-inter-cell",
+        "inter_cell_delay_seconds": 120,
+        "applies_between_cells_only": true,
+        "counts_toward_cell_wall_time": false
+      },
+      "token_budget": {
+        "mode": "observed-only",
+        "limit_tokens": null,
+        "usage_required": true,
+        "account_components": [
+          "input",
+          "cached_input",
+          "output",
+          "reasoning_output"
+        ],
+        "cached_input_separate": true,
+        "cost_policy": "provider-reported-or-pinned-price-equivalent"
+      },
+      "step_budget": {
+        "mode": "observed-only",
+        "limit_steps": null
+      }
+    },
+    "usage_completeness": {
+      "evidence_mode": "provider-event",
+      "available": true,
+      "input_output_complete": true,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "reasoning_visibility": "reported",
+      "cached_input_visibility": "reported"
+    },
+    "runtime_model_usage": [
+      {
+        "model": "gpt-5.6-luna",
+        "input_tokens": 481180,
+        "cached_input_tokens": 424448,
+        "output_tokens": 14891,
+        "cost_usd": null,
+        "context_window": null,
+        "max_output_tokens": null
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "diagnostic_availability": {
+        "available": false,
+        "fields": [],
+        "reason": "codex-stream-diagnostic-normalization-not-supported"
+      },
+      "tool_error_count": null,
+      "recoverable_tool_error_count": null,
+      "infrastructure_tool_error_count": null,
+      "optional_verifier_environment_error_count": null,
+      "recovered_temp_path_error_count": null,
+      "sandbox_error_count": null,
+      "sandbox_cwd_error_count": null,
+      "agent_tool_call_count": null,
+      "agent_tool_error_count": null,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": null,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 2,
+        "product_revision_count": 2,
+        "last_product_edit_event_index": 21,
+        "post_edit_command_count": 4,
+        "static_closure_count": 3,
+        "browser_mechanism_count": 1,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 1,
+        "verification_after_ready_count": 0,
+        "compliance_pass": false,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 11,
+            "last_edit_event_index": 11,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 13,
+                "command": "/opt/homebrew/bin/zsh -lc \"git diff --check && printf '%s\\\\n' 'marker counts' && for pattern in 'data-bench-design-role=\\\"signature-sheet\\\"' 'data-bench-decision-role=\\\"context\\\"' 'data-bench-decision-role=\\\"target\\\"' 'data-bench-decision-role=\\\"evidence\\\"' 'data-bench-decision-role=\\\"state\\\"' 'data-bench-decision-role=\\\"action\\\"' 'data-bench=\\\"folio-pair\\\"' 'data-bench=\\\"binding-option\\\"'; do printf '%s ' \\\"\"'$pattern\"; rg -o -F \"$pattern\" index.html | wc -l | tr -d '\"' '; done && printf '%s\\\\n' 'protected values' && rg -n 'signature-s04-front|signature-s04-back|folio-016-left__folio-001-right|folio-002-left__folio-015-right|folio-014-left__folio-003-right|folio-004-left__folio-013-right|trim 148 × 210 mm|Atlas field guide signature|data-bench=' index.html && printf '%s\\\\n' 'forbidden break tokens' && if rg -n '<wbr|<br|\\\\u200b|\\\\u00ad|word-break|overflow-wrap:anywhere|white-space:pre' index.html; then exit 1; else printf '%s\\\\n' 'none'; fi && printf '%s\\\\n' 'diff summary' && git diff --stat\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              },
+              {
+                "index": 16,
+                "command": "/opt/homebrew/bin/zsh -lc 'python3 -m http.server 4173'",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              },
+              {
+                "index": 18,
+                "command": "/opt/homebrew/bin/zsh -lc \"browser-harness <<'PY'\nfrom browser_harness import *\n\nnew_tab('file:///tmp/u19210/luna-book-r2-controller/index.html')\nwait_for_load()\nprint(page_info())\ncapture_screenshot()\nprint('BASELINE', js(\\\"\\\"\\\"(() => ({\n  viewport: {width: innerWidth, height: innerHeight, dpr: devicePixelRatio},\n  pageOverflow: document.documentElement.scrollWidth - innerWidth,\n  markers: {\n    sheet: document.querySelectorAll('[data-bench-design-role=\\\"signature-sheet\\\"]').length,\n    context: document.querySelectorAll('[data-bench-decision-role=\\\"context\\\"]').length,\n    target: document.querySelectorAll('[data-bench-decision-role=\\\"target\\\"]').length,\n    evidence: document.querySelectorAll('[data-bench-decision-role=\\\"evidence\\\"]').length,\n    state: document.querySelectorAll('[data-bench-decision-role=\\\"state\\\"]').length,\n    action: document.querySelectorAll('[data-bench-decision-role=\\\"action\\\"]').length,\n    folios: document.querySelectorAll('[data-bench=\\\"folio-pair\\\"]').length,\n    bindings: document.querySelectorAll('[data-bench=\\\"binding-option\\\"]').length\n  },\n  facts: [...document.querySelectorAll('.folio dd, .target, .evidence')].map(el => el.textContent),\n  rows: [...document.querySelectorAll('.folio')].map(el => ({height: el.getBoundingClientRect().height, text: el.innerText})),\n  focus: document.activeElement.id || document.activeElement.tagName\n}))()\\\"\\\"\\\"))\n\nprint('INTERACTIONS', js(\\\"\\\"\\\"(() => {\n  const binding = document.querySelector('[data-binding=\\\"perfect\\\"]');\n  binding.click();\n  const toggle = document.querySelector('[data-bench=\\\"creep-toggle\\\"]');\n  toggle.click();\n  const form = document.querySelector('[data-bench=\\\"imposition-form\\\"]');\n  form.requestSubmit();\n  const empty = {invalid: document.querySelector('#job-name').getAttribute('aria-invalid'), focused: document.activeElement.id, status: document.querySelector('[data-bench=\\\"form-status\\\"]').textContent};\n  const field = document.querySelector('#job-name');\n  field.value = 'Atlas field guide signature';\n  form.requestSubmit();\n  return {binding: document.body.dataset.binding, bindingPressed: [...document.querySelectorAll('[data-bench=\\\"binding-option\\\"]')].map(el => [el.textContent, el.getAttribute('aria-pressed')]), creepPressed: toggle.getAttribute('aria-pressed'), creepState: document.querySelector('#creep-state').textContent, state: document.querySelector('[data-bench-decision-role=\\\"state\\\"]').textContent, empty, accepted: document.querySelector('[data-bench=\\\"form-status\\\"]').textContent, focusAfterAccepted: document.activeElement.id};\n})()\\\"\\\"\\\"))\n\nfor width, height in [(390,844),(320,720)]:\n  cdp('Emulation.setDeviceMetricsOverride', {'width': width, 'height': height, 'deviceScaleFactor': 1, 'mobile': False})\n  print('VIEWPORT', width, height, js(\\\"\\\"\\\"(() => {\n    const oneLine = selector => [...document.querySelectorAll(selector)].map(el => ({text: el.textContent, lines: Math.round(el.getBoundingClientRect().height / parseFloat(getComputedStyle(el).lineHeight)), width: el.getBoundingClientRect().width, scrollWidth: el.scrollWidth, clientWidth: el.clientWidth}));\n    return {viewport:{width:innerWidth,height:innerHeight}, pageOverflow:document.documentElement.scrollWidth-innerWidth, target:oneLine('[data-bench-decision-role=\\\"target\\\"]'), evidence:oneLine('[data-bench-decision-role=\\\"evidence\\\"]'), folios:oneLine('.folio dd'), controlLabels:oneLine('[data-bench=\\\"binding-option\\\"], [data-bench=\\\"compact-control-copy\\\"], [data-bench=\\\"creep-toggle\\\"], [data-bench-decision-role=\\\"action\\\"]'), state:oneLine('[data-bench-decision-role=\\\"state\\\"]')};\n  })()\\\"\\\"\\\"))\n  capture_screenshot()\n\ncdp('Emulation.setDeviceMetricsOverride', {'width': 390, 'height': 844, 'deviceScaleFactor': 1, 'mobile': False})\ncdp('Emulation.setPageScaleFactor', {'pageScaleFactor': 2})\nprint('ZOOM_200', js(\\\"\\\"\\\"(() => ({\n  viewport:{width:innerWidth,height:innerHeight}, pageOverflow:document.documentElement.scrollWidth-innerWidth, target:document.querySelector('[data-bench-decision-role=\\\"target\\\"]').getBoundingClientRect().toJSON(), evidence:document.querySelector('[data-bench-decision-role=\\\"evidence\\\"]').getBoundingClientRect().toJSON(), folioLines:[...document.querySelectorAll('.folio dd')].map(el=>Math.round(el.getBoundingClientRect().height/parseFloat(getComputedStyle(el).lineHeight)), state:document.querySelector('[data-bench-decision-role=\\\"state\\\"]').textContent\n}))()\\\"\\\"\\\"))\ncapture_screenshot()\nPY\"",
+                "browser": true,
+                "recovery_probe": false,
+                "static_verification": false
+              }
+            ],
+            "static_closure_count": 2,
+            "browser_mechanism_count": 1,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 1,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 2,
+            "first_edit_event_index": 21,
+            "last_edit_event_index": 21,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 23,
+                "command": "/opt/homebrew/bin/zsh -lc \"git diff --check && awk 'BEGIN{body=1} /<script>/{body=0} body{print}' index.html > /tmp/folioform-static-body.html && printf '%s\\\\n' 'DOM-source marker counts' && for pattern in 'data-bench-design-role=\\\"signature-sheet\\\"' 'data-bench-decision-role=\\\"context\\\"' 'data-bench-decision-role=\\\"target\\\"' 'data-bench-decision-role=\\\"evidence\\\"' 'data-bench-decision-role=\\\"state\\\"' 'data-bench-decision-role=\\\"action\\\"' 'data-bench=\\\"folio-pair\\\"' 'data-bench=\\\"binding-option\\\"'; do printf '%s ' \\\"\"'$pattern\"; rg -o -F \"$pattern\" /tmp/folioform-static-body.html | wc -l | tr -d '\"' '; done && printf '%s\\\\n' 'supplied facts and hooks' && rg -n 'signature-s04-front|signature-s04-back|folio-016-left__folio-001-right|folio-002-left__folio-015-right|folio-014-left__folio-003-right|folio-004-left__folio-013-right|trim 148 × 210 mm|Atlas field guide signature|data-bench=' index.html && printf '%s\\\\n' 'forbidden markup' && if rg -n '<wbr|<br|\\\\\\\\u200b|\\\\\\\\u00ad|&#8203;|&#173;' index.html; then exit 1; else printf '%s\\\\n' 'none'; fi && printf '%s\\\\n' 'responsive rules' && rg -n '@media|white-space|overflow-wrap|word-break|overflow-x|prefers-reduced-motion|aria-pressed|aria-invalid' index.html && printf '%s\\\\n' 'diff summary' && git diff --stat && rm -f /tmp/folioform-static-body.html\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": {
+        "enforcement": "promotion-report",
+        "pass": false,
+        "reasons": [
+          "duplicate-static-limit"
+        ],
+        "observed": {
+          "analyzable": true,
+          "browser_recovery_count": 0,
+          "duplicate_static_closure_count": 1,
+          "verification_after_ready_count": 0
+        },
+        "limits": {
+          "require_analyzable": true,
+          "max_browser_recovery_count": 0,
+          "max_duplicate_static_closure_count": 0,
+          "max_verification_after_ready_count": 0
+        }
+      },
+      "host_policy": {
+        "mode": "controller-observation",
+        "installation": {
+          "schema_version": "0.1",
+          "mode": "controller-observation",
+          "target": "codex",
+          "git_root": true,
+          "hooks_enabled": false,
+          "ready": true,
+          "config": null,
+          "source_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "e976f56545da281b98b5227894615eb6f48201d6af15ff0d5b513242995cd83e"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "9db556f2f65805d883eb239872b54242cc3a1d6aa2a790cf1ec8f106023ce5e7"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "41dd2a7f4d1d0c86f43b8359531bf6afde8c49f21c60f024d938fa18131e5712"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "1689379d50bf612b577086fc6d2e848e78bceb7857e16b1b407903b9b504b51d"
+            }
+          ],
+          "installed_files": [],
+          "expected_installed_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "d9de6f78910b2ee13702727702c2377bcc946c28e931a882eaa238145dfc0a54"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "aa20116ded0ef34d15384be964dd17584fe358438fe7a4c0873cfcf0d6fbea68"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "1752b6aa03113f734e89fa44896ad3d11109dbd100b17633112344a933f51eb0"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "7d9a696b07118e504f07df743c2bb7e7848dab1e390a5d20c054966985c4b75c"
+            }
+          ],
+          "state_dir": ".omd/proof-policy",
+          "delivery": "controller-observation-only"
+        },
+        "observed": {
+          "schema_version": "0.1",
+          "available": false,
+          "state_files": 0,
+          "valid_state_files": 0,
+          "decisions": 0,
+          "denied_decisions": 0,
+          "denied_reasons": {},
+          "violations": {
+            "browser_recovery": 0,
+            "duplicate_static_closure": 0,
+            "verification_after_ready": 0
+          }
+        },
+        "gate": {
+          "mode": "controller-observation",
+          "pass": true,
+          "reasons": [],
+          "observed": {
+            "policy_state_available": false
+          }
+        }
+      }
+    },
+    "attribution": {
+      "runtime": {
+        "runtime_target": "codex",
+        "agent": "codex-cli",
+        "agent_version": null,
+        "binary_sha256": null,
+        "model_requested": "gpt-5.6-luna",
+        "model_reported": null,
+        "model_evidence_mode": "cli-argument",
+        "effort_requested": "high",
+        "auth_mode": null,
+        "provider_route": null,
+        "provider_effort_argument": null,
+        "hook_trust_bypassed": false,
+        "usage_attribution": {
+          "available": true,
+          "evidence_mode": "provider-event",
+          "reason": null
+        }
+      },
+      "source_commit": "1d204afea6c3ab106752613b7f341ed2f76fd843",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true,
+        "detached": true
+      },
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "fefb537635f907fdb4e48fdf441eaa5cb3d3173df4603366b2e88689b9f200e8",
+          "after_sha256": "938cac4b209662c402f4ffa9145dbef71dd34f690b9d9c8adab9cf9cd2c39d88"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots",
+      "proof_trace": ".benchmark/proof-trace.json",
+      "host_policy_state": ".benchmark/host-policy-state.json"
+    }
+  },
+  {
+    "run_id": "luna-book-r2-policy",
+    "benchmark_family": "factorial",
+    "suite_version": "ui-resolve-v0.2",
+    "system_id": "luna-omd-installed-policy",
+    "model_id": "gpt-5.6-luna",
+    "skill_id": "omd:apply",
+    "harness_id": "omd-portable-proof-close-latch-candidate",
+    "budget_tier": "high",
+    "task_id": "book-signature-imposition-v0.1",
+    "trial_index": 2,
+    "run_status": "complete",
+    "validity": "valid",
+    "attribution_scope": "provider-observed-only",
+    "public_model_attribution_eligible": false,
+    "ui_resolved": false,
+    "objective_score": 79,
+    "objective_max": 85,
+    "wall_time_ms": 252346,
+    "tokens": 471707,
+    "token_usage": {
+      "input_tokens": 458824,
+      "cached_input_tokens": 404992,
+      "output_tokens": 12883,
+      "reasoning_output_tokens": 7791,
+      "total_tokens": 471707,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "input_output_complete": true
+    },
+    "provider_cost_equivalent_usd": null,
+    "execution_control": {
+      "comparison_mode": "native-capability",
+      "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+      "temperature_policy": "runtime-default-frozen",
+      "timeout_seconds": 900,
+      "max_concurrency": 1,
+      "latency_comparison": "eligible",
+      "retry_policy": "none-primary",
+      "timeout_policy": "count-as-valid-failure",
+      "infrastructure_policy": "retain-freeze-and-repreregister",
+      "task_order_policy": "balanced-rotation",
+      "pacing": {
+        "policy": "fixed-inter-cell",
+        "inter_cell_delay_seconds": 120,
+        "applies_between_cells_only": true,
+        "counts_toward_cell_wall_time": false
+      },
+      "token_budget": {
+        "mode": "observed-only",
+        "limit_tokens": null,
+        "usage_required": true,
+        "account_components": [
+          "input",
+          "cached_input",
+          "output",
+          "reasoning_output"
+        ],
+        "cached_input_separate": true,
+        "cost_policy": "provider-reported-or-pinned-price-equivalent"
+      },
+      "step_budget": {
+        "mode": "observed-only",
+        "limit_steps": null
+      }
+    },
+    "usage_completeness": {
+      "evidence_mode": "provider-event",
+      "available": true,
+      "input_output_complete": true,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "reasoning_visibility": "reported",
+      "cached_input_visibility": "reported"
+    },
+    "runtime_model_usage": [
+      {
+        "model": "gpt-5.6-luna",
+        "input_tokens": 458824,
+        "cached_input_tokens": 404992,
+        "output_tokens": 12883,
+        "cost_usd": null,
+        "context_window": null,
+        "max_output_tokens": null
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "diagnostic_availability": {
+        "available": false,
+        "fields": [],
+        "reason": "codex-stream-diagnostic-normalization-not-supported"
+      },
+      "tool_error_count": null,
+      "recoverable_tool_error_count": null,
+      "infrastructure_tool_error_count": null,
+      "optional_verifier_environment_error_count": null,
+      "recovered_temp_path_error_count": null,
+      "sandbox_error_count": null,
+      "sandbox_cwd_error_count": null,
+      "agent_tool_call_count": null,
+      "agent_tool_error_count": null,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": null,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 1,
+        "product_revision_count": 1,
+        "last_product_edit_event_index": 13,
+        "post_edit_command_count": 1,
+        "static_closure_count": 1,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 0,
+        "verification_after_ready_count": 0,
+        "compliance_pass": true,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 13,
+            "last_edit_event_index": 13,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 16,
+                "command": "/opt/homebrew/bin/zsh -lc \"find .benchmark -maxdepth 2 -type f -print -exec sed -n '1,120p' {} \\\\;\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": {
+        "mode": "installed-opt-in",
+        "installation": {
+          "schema_version": "0.1",
+          "mode": "installed-opt-in",
+          "target": "codex",
+          "git_root": true,
+          "hooks_enabled": true,
+          "ready": true,
+          "config": {
+            "path": ".codex/hooks.json",
+            "sha256": "36f15af51b01c3afb075fecfe9dbd1d63cab33225a9ac3bdbde261878910d581"
+          },
+          "source_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "e976f56545da281b98b5227894615eb6f48201d6af15ff0d5b513242995cd83e"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "9db556f2f65805d883eb239872b54242cc3a1d6aa2a790cf1ec8f106023ce5e7"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "41dd2a7f4d1d0c86f43b8359531bf6afde8c49f21c60f024d938fa18131e5712"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "1689379d50bf612b577086fc6d2e848e78bceb7857e16b1b407903b9b504b51d"
+            }
+          ],
+          "installed_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "d9de6f78910b2ee13702727702c2377bcc946c28e931a882eaa238145dfc0a54"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "aa20116ded0ef34d15384be964dd17584fe358438fe7a4c0873cfcf0d6fbea68"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "1752b6aa03113f734e89fa44896ad3d11109dbd100b17633112344a933f51eb0"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "7d9a696b07118e504f07df743c2bb7e7848dab1e390a5d20c054966985c4b75c"
+            }
+          ],
+          "expected_installed_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "d9de6f78910b2ee13702727702c2377bcc946c28e931a882eaa238145dfc0a54"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "aa20116ded0ef34d15384be964dd17584fe358438fe7a4c0873cfcf0d6fbea68"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "1752b6aa03113f734e89fa44896ad3d11109dbd100b17633112344a933f51eb0"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "7d9a696b07118e504f07df743c2bb7e7848dab1e390a5d20c054966985c4b75c"
+            }
+          ],
+          "state_dir": ".omd/proof-policy",
+          "delivery": "canonical-managed-files-and-production-config"
+        },
+        "observed": {
+          "schema_version": "0.1",
+          "available": true,
+          "state_files": 1,
+          "valid_state_files": 1,
+          "decisions": 6,
+          "denied_decisions": 3,
+          "denied_reasons": {
+            "static-closure-required": 1,
+            "duplicate-static-closure": 2
+          },
+          "violations": {
+            "browser_recovery": 0,
+            "duplicate_static_closure": 2,
+            "verification_after_ready": 0
+          },
+          "state_tree_sha256": "ddc51349d10717ef2f22748d915557dae61729bd5240ae721255bbc678beeb6e"
+        },
+        "gate": {
+          "mode": "installed-opt-in",
+          "pass": true,
+          "reasons": [],
+          "observed": {
+            "policy_state_available": true,
+            "valid_state_files": 1,
+            "state_files": 1,
+            "denied_decisions": 3,
+            "denied_reasons": {
+              "static-closure-required": 1,
+              "duplicate-static-closure": 2
+            },
+            "violations": {
+              "browser_recovery": 0,
+              "duplicate_static_closure": 2,
+              "verification_after_ready": 0
+            },
+            "unblocked": {
+              "browser_recovery": 0,
+              "duplicate_static_closure": 0,
+              "verification_after_ready": 0
+            }
+          },
+          "limits": {
+            "require_installed_state": true,
+            "max_unblocked_browser_recovery_count": 0,
+            "max_unblocked_duplicate_static_closure_count": 0,
+            "max_unblocked_verification_after_ready_count": 0
+          }
+        }
+      }
+    },
+    "attribution": {
+      "runtime": {
+        "runtime_target": "codex",
+        "agent": "codex-cli",
+        "agent_version": null,
+        "binary_sha256": null,
+        "model_requested": "gpt-5.6-luna",
+        "model_reported": null,
+        "model_evidence_mode": "cli-argument",
+        "effort_requested": "high",
+        "auth_mode": null,
+        "provider_route": null,
+        "provider_effort_argument": null,
+        "hook_trust_bypassed": true,
+        "usage_attribution": {
+          "available": true,
+          "evidence_mode": "provider-event",
+          "reason": null
+        }
+      },
+      "source_commit": "1d204afea6c3ab106752613b7f341ed2f76fd843",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true,
+        "detached": true
+      },
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "fefb537635f907fdb4e48fdf441eaa5cb3d3173df4603366b2e88689b9f200e8",
+          "after_sha256": "7eb5831e0c56a37ae9a75cc4a7e78b86c0b2c19ecd957456c72b55477d3def24"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots",
+      "proof_trace": ".benchmark/proof-trace.json",
+      "host_policy_state": ".benchmark/host-policy-state.json"
+    }
+  },
+  {
+    "run_id": "luna-book-r3-controller",
+    "benchmark_family": "factorial",
+    "suite_version": "ui-resolve-v0.2",
+    "system_id": "luna-omd-controller-observation",
+    "model_id": "gpt-5.6-luna",
+    "skill_id": "omd:apply",
+    "harness_id": "omd-portable-proof-close-latch-candidate",
+    "budget_tier": "high",
+    "task_id": "book-signature-imposition-v0.1",
+    "trial_index": 3,
+    "run_status": "complete",
+    "validity": "valid",
+    "attribution_scope": "provider-observed-only",
+    "public_model_attribution_eligible": false,
+    "ui_resolved": false,
+    "objective_score": 79,
+    "objective_max": 85,
+    "wall_time_ms": 373955,
+    "tokens": 1079458,
+    "token_usage": {
+      "input_tokens": 1060608,
+      "cached_input_tokens": 987136,
+      "output_tokens": 18850,
+      "reasoning_output_tokens": 9967,
+      "total_tokens": 1079458,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "input_output_complete": true
+    },
+    "provider_cost_equivalent_usd": null,
+    "execution_control": {
+      "comparison_mode": "native-capability",
+      "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+      "temperature_policy": "runtime-default-frozen",
+      "timeout_seconds": 900,
+      "max_concurrency": 1,
+      "latency_comparison": "eligible",
+      "retry_policy": "none-primary",
+      "timeout_policy": "count-as-valid-failure",
+      "infrastructure_policy": "retain-freeze-and-repreregister",
+      "task_order_policy": "balanced-rotation",
+      "pacing": {
+        "policy": "fixed-inter-cell",
+        "inter_cell_delay_seconds": 120,
+        "applies_between_cells_only": true,
+        "counts_toward_cell_wall_time": false
+      },
+      "token_budget": {
+        "mode": "observed-only",
+        "limit_tokens": null,
+        "usage_required": true,
+        "account_components": [
+          "input",
+          "cached_input",
+          "output",
+          "reasoning_output"
+        ],
+        "cached_input_separate": true,
+        "cost_policy": "provider-reported-or-pinned-price-equivalent"
+      },
+      "step_budget": {
+        "mode": "observed-only",
+        "limit_steps": null
+      }
+    },
+    "usage_completeness": {
+      "evidence_mode": "provider-event",
+      "available": true,
+      "input_output_complete": true,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "reasoning_visibility": "reported",
+      "cached_input_visibility": "reported"
+    },
+    "runtime_model_usage": [
+      {
+        "model": "gpt-5.6-luna",
+        "input_tokens": 1060608,
+        "cached_input_tokens": 987136,
+        "output_tokens": 18850,
+        "cost_usd": null,
+        "context_window": null,
+        "max_output_tokens": null
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "diagnostic_availability": {
+        "available": false,
+        "fields": [],
+        "reason": "codex-stream-diagnostic-normalization-not-supported"
+      },
+      "tool_error_count": null,
+      "recoverable_tool_error_count": null,
+      "infrastructure_tool_error_count": null,
+      "optional_verifier_environment_error_count": null,
+      "recovered_temp_path_error_count": null,
+      "sandbox_error_count": null,
+      "sandbox_cwd_error_count": null,
+      "agent_tool_call_count": null,
+      "agent_tool_error_count": null,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": null,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 3,
+        "product_revision_count": 3,
+        "last_product_edit_event_index": 39,
+        "post_edit_command_count": 9,
+        "static_closure_count": 9,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 6,
+        "verification_after_ready_count": 0,
+        "compliance_pass": false,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 11,
+            "last_edit_event_index": 11,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 13,
+                "command": "/opt/homebrew/bin/zsh -lc \"sed -n '1,260p' index.html\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              },
+              {
+                "index": 22,
+                "command": "/opt/homebrew/bin/zsh -lc \"node -e 'const fs=require(\\\"fs\\\"),cp=require(\\\"child_process\\\"); const s=fs.readFileSync(\\\"index.html\\\",\\\"utf8\\\"); const script=(s.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)||[])[1]; new Function(script); const checks={signatureSheet:(s.match(/data-bench-design-role=\\\"signature-sheet\\\"/g)||[]).length===1,context:(s.match(/data-bench-decision-role=\\\"context\\\"/g)||[]).length===1,target:(s.match(/data-bench-decision-role=\\\"target\\\"/g)||[]).length===1,evidence:(s.match(/data-bench-decision-role=\\\"evidence\\\"/g)||[]).length===1,state:(s.match(/data-bench-decision-role=\\\"state\\\"/g)||[]).length===1,action:(s.match(/data-bench-decision-role=\\\"action\\\"/g)||[]).length===1,folioPairs:(s.match(/data-bench=\\\"folio-pair\\\"/g)||[]).length===4,bindingOptions:(s.match(/data-bench=\\\"binding-option\\\"/g)||[]).length===3,forbiddenBreaks:\"'!/(<wbr|<br'\"\\\\b|&shy;|\\\\\\\\u200b|overflow-wrap|word-break|text-overflow|::before|::after|content\\\\s*:)/i.test(s),facts:[\\\"signature-s04-front\\\",\\\"signature-s04-back\\\",\\\"folio-016-left__folio-001-right\\\",\\\"folio-002-left__folio-015-right\\\",\\\"folio-014-left__folio-003-right\\\",\\\"folio-004-left__folio-013-right\\\",\\\"trim 148 × 210 mm\\\",\\\"Atlas field guide signature\\\"].every(v=>s.includes(v)),focus:/focus-visible/.test(s),reducedMotion:/prefers-reduced-motion:reduce/.test(s),diffCheck:cp.execFileSync(\\\"git\\\",[\\\"diff\\\",\\\"--check\\\"],{encoding:\\\"utf8\\\"})===\\\"\\\"}; if(\"'!Object.values(checks).every(Boolean)){console.error(checks);process.exit(1)} console.log(JSON.stringify(checks));'\"'\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              },
+              {
+                "index": 24,
+                "command": "/opt/homebrew/bin/zsh -lc \"rg -o 'data-bench-decision-role=\\\"[\"'^\"]+\"|data-bench=\"[''^\"]+\"|overflow-wrap|word-break|text-overflow|::before|::after|content'\"\\\\s*:' index.html | sort | uniq -c\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              },
+              {
+                "index": 26,
+                "command": "/opt/homebrew/bin/zsh -lc \"rg -n '::before|::after|content:' index.html\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              }
+            ],
+            "static_closure_count": 4,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 3,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 2,
+            "first_edit_event_index": 28,
+            "last_edit_event_index": 28,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 30,
+                "command": "/opt/homebrew/bin/zsh -lc \"node -e 'const fs=require(\\\"fs\\\"),cp=require(\\\"child_process\\\"); const s=fs.readFileSync(\\\"index.html\\\",\\\"utf8\\\"), dom=s.split(\\\"<script>\\\")[0], script=(s.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)||[])[1]; new Function(script); const count=(text,re)=>(text.match(re)||[]).length; const checks={signatureSheet:count(dom,/data-bench-design-role=\\\"signature-sheet\\\"/g)===1,context:count(dom,/data-bench-decision-role=\\\"context\\\"/g)===1,target:count(dom,/data-bench-decision-role=\\\"target\\\"/g)===1,evidence:count(dom,/data-bench-decision-role=\\\"evidence\\\"/g)===1,state:count(dom,/data-bench-decision-role=\\\"state\\\"/g)===1,action:count(dom,/data-bench-decision-role=\\\"action\\\"/g)===1,folioPairs:count(dom,/data-bench=\\\"folio-pair\\\"/g)===4,bindingOptions:count(dom,/data-bench=\\\"binding-option\\\"/g)===3,otherHooks:count(dom,/data-bench=\\\"(compact-control-copy|creep-toggle|imposition-form|job-name|form-status)\\\"/g)===5,forbiddenBreaks:\"'!/(<wbr|<br'\"\\\\b|&shy;|\\\\\\\\u200b|overflow-wrap|word-break|text-overflow|::before|::after|\\\\{[\"'^}]*'\"\\\\bcontent\\\\s*:)/i.test(s),noScroller:\"'!/(overflow'\"\\\\s*:\\\\s*(auto|scroll)|overflow-[xy]\\\\s*:\\\\s*(auto|scroll))/i.test(s),facts:[\\\"signature-s04-front\\\",\\\"signature-s04-back\\\",\\\"folio-016-left__folio-001-right\\\",\\\"folio-002-left__folio-015-right\\\",\\\"folio-014-left__folio-003-right\\\",\\\"folio-004-left__folio-013-right\\\",\\\"trim 148 × 210 mm\\\",\\\"Atlas field guide signature\\\"].every(v=>s.includes(v)),pressedState:/aria-pressed=\\\"true\\\"/.test(dom)&&/aria-pressed=\\\"false\\\"/.test(dom)&&/toggleState\\\\.textContent=next\\\\?'On':'Off'/.test(script),focus:/focus-visible/.test(s),reducedMotion:/prefers-reduced-motion:reduce/.test(s),mobileRows:/@media\\\\(max-width:740px\\\\).*?\\\\.sheet\\\\{grid-template-columns:minmax\\\\(0,1fr\\\\)\\\\}/s.test(s),diffCheck:cp.execFileSync(\\\"git\\\",[\\\"diff\\\",\\\"--check\\\"],{encoding:\\\"utf8\\\"})===\\\"\\\"}; if(\"'!Object.values(checks).every(Boolean)){console.error(checks);process.exit(1)} console.log(JSON.stringify(checks));'\"'\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              },
+              {
+                "index": 32,
+                "command": "/opt/homebrew/bin/zsh -lc \"node -e 'const fs=require(\\\"fs\\\"),cp=require(\\\"child_process\\\"); const s=fs.readFileSync(\\\"index.html\\\",\\\"utf8\\\"), dom=s.split(\\\"<script>\\\")[0], script=(s.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)||[])[1]; new Function(script); const count=(text,re)=>(text.match(re)||[]).length; const checks={signatureSheet:count(dom,/data-bench-design-role=\\\"signature-sheet\\\"/g)===1,context:count(dom,/data-bench-decision-role=\\\"context\\\"/g)===1,target:count(dom,/data-bench-decision-role=\\\"target\\\"/g)===1,evidence:count(dom,/data-bench-decision-role=\\\"evidence\\\"/g)===1,state:count(dom,/data-bench-decision-role=\\\"state\\\"/g)===1,action:count(dom,/data-bench-decision-role=\\\"action\\\"/g)===1,folioPairs:count(dom,/data-bench=\\\"folio-pair\\\"/g)===4,bindingOptions:count(dom,/data-bench=\\\"binding-option\\\"/g)===3,otherHooks:count(dom,/data-bench=\\\"(compact-control-copy|creep-toggle|imposition-form|job-name|form-status)\\\"/g)===5,forbiddenBreaks:\"'![\"<wbr\",\"<br\",\"&shy;\",\"'\"\\\\\\\\u200b\\\",\\\"overflow-wrap\\\",\\\"word-break\\\",\\\"text-overflow\\\",\\\"::before\\\",\\\"::after\\\"].some(v=>s.includes(v)),noScroller:\"'!/(overflow'\"\\\\s*:\\\\s*(auto|scroll)|overflow-[xy]\\\\s*:\\\\s*(auto|scroll))/i.test(s),facts:[\\\"signature-s04-front\\\",\\\"signature-s04-back\\\",\\\"folio-016-left__folio-001-right\\\",\\\"folio-002-left__folio-015-right\\\",\\\"folio-014-left__folio-003-right\\\",\\\"folio-004-left__folio-013-right\\\",\\\"trim 148 × 210 mm\\\",\\\"Atlas field guide signature\\\"].every(v=>s.includes(v)),pressedState:script.includes(\\\"toggleState.textContent=next?'On':'Off'\\\")&&dom.includes('aria-pressed=\\\"true\\\"')&&dom.includes('aria-pressed=\\\"false\\\"'),focus:/focus-visible/.test(s),reducedMotion:/prefers-reduced-motion:reduce/.test(s),mobileRows:/@media\\\\(max-width:740px\\\\).*?\\\\.sheet\\\\{grid-template-columns:minmax\\\\(0,1fr\\\\)\\\\}/s.test(s),diffCheck:cp.execFileSync(\\\"git\\\",[\\\"diff\\\",\\\"--check\\\"],{encoding:\\\"utf8\\\"})===\\\"\\\"}; if(\"'!Object.values(checks).every(Boolean)){console.error(checks);process.exit(1)} console.log(JSON.stringify(checks));'\"'\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              },
+              {
+                "index": 34,
+                "command": "/opt/homebrew/bin/zsh -lc \"node -e 'const fs=require(\\\"fs\\\"),cp=require(\\\"child_process\\\"); const s=fs.readFileSync(\\\"index.html\\\",\\\"utf8\\\"), dom=s.split(\\\"<script>\\\")[0], script=(s.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)||[])[1]; new Function(script); const count=(text,re)=>(text.match(re)||[]).length; const checks={signatureSheet:count(dom,/data-bench-design-role=\\\"signature-sheet\\\"/g)===1,context:count(dom,/data-bench-decision-role=\\\"context\\\"/g)===1,target:count(dom,/data-bench-decision-role=\\\"target\\\"/g)===1,evidence:count(dom,/data-bench-decision-role=\\\"evidence\\\"/g)===1,state:count(dom,/data-bench-decision-role=\\\"state\\\"/g)===1,action:count(dom,/data-bench-decision-role=\\\"action\\\"/g)===1,folioPairs:count(dom,/data-bench=\\\"folio-pair\\\"/g)===4,bindingOptions:count(dom,/data-bench=\\\"binding-option\\\"/g)===3,otherHooks:count(dom,/data-bench=\\\"(compact-control-copy|creep-toggle|imposition-form|job-name|form-status)\\\"/g)===5,forbiddenBreaks:\"'![\"<wbr\",\"<br\",\"&shy;\",\"'\"\\\\\\\\u200b\\\",\\\"overflow-wrap\\\",\\\"word-break\\\",\\\"text-overflow\\\",\\\"::before\\\",\\\"::after\\\"].some(v=>s.includes(v))===false,noScroller:\"'!/(overflow'\"\\\\s*:\\\\s*(auto|scroll)|overflow-[xy]\\\\s*:\\\\s*(auto|scroll))/i.test(s),facts:[\\\"signature-s04-front\\\",\\\"signature-s04-back\\\",\\\"folio-016-left__folio-001-right\\\",\\\"folio-002-left__folio-015-right\\\",\\\"folio-014-left__folio-003-right\\\",\\\"folio-004-left__folio-013-right\\\",\\\"trim 148 × 210 mm\\\",\\\"Atlas field guide signature\\\"].every(v=>s.includes(v)),pressedState:/toggleState\\\\.textContent=next/.test(script)&&/aria-pressed=\\\"true\\\"/.test(dom)&&/aria-pressed=\\\"false\\\"/.test(dom),focus:/focus-visible/.test(s),reducedMotion:/prefers-reduced-motion:reduce/.test(s),mobileRows:/@media\\\\(max-width:740px\\\\).*?\\\\.sheet\\\\{grid-template-columns:minmax\\\\(0,1fr\\\\)\\\\}/s.test(s),diffCheck:cp.execFileSync(\\\"git\\\",[\\\"diff\\\",\\\"--check\\\"],{encoding:\\\"utf8\\\"})===\\\"\\\"}; if(\"'!Object.values(checks).every(Boolean)){console.error(checks);process.exit(1)} console.log(JSON.stringify(checks));'\"'\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              },
+              {
+                "index": 36,
+                "command": "/opt/homebrew/bin/zsh -lc \"node -e 'const fs=require(\\\"fs\\\"),cp=require(\\\"child_process\\\"); const s=fs.readFileSync(\\\"index.html\\\",\\\"utf8\\\"), dom=s.split(\\\"<script>\\\")[0], script=(s.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)||[])[1]; new Function(script); const count=(text,re)=>(text.match(re)||[]).length; const checks={signatureSheet:count(dom,/data-bench-design-role=\\\"signature-sheet\\\"/g)===1,context:count(dom,/data-bench-decision-role=\\\"context\\\"/g)===1,target:count(dom,/data-bench-decision-role=\\\"target\\\"/g)===1,evidence:count(dom,/data-bench-decision-role=\\\"evidence\\\"/g)===1,state:count(dom,/data-bench-decision-role=\\\"state\\\"/g)===1,action:count(dom,/data-bench-decision-role=\\\"action\\\"/g)===1,folioPairs:count(dom,/data-bench=\\\"folio-pair\\\"/g)===4,bindingOptions:count(dom,/data-bench=\\\"binding-option\\\"/g)===3,otherHooks:count(dom,/data-bench=\\\"(compact-control-copy|creep-toggle|imposition-form|job-name|form-status)\\\"/g)===5,forbiddenBreaks:\"'![\"<wbr\",\"<br\",\"&shy;\",\"'\"\\\\\\\\u200b\\\",\\\"overflow-wrap\\\",\\\"word-break\\\",\\\"text-overflow\\\",\\\"::before\\\",\\\"::after\\\"].some(v=>s.includes(v)),noScroller:\"'!/(overflow'\"\\\\s*:\\\\s*(auto|scroll)|overflow-[xy]\\\\s*:\\\\s*(auto|scroll))/i.test(s),facts:[\\\"signature-s04-front\\\",\\\"signature-s04-back\\\",\\\"folio-016-left__folio-001-right\\\",\\\"folio-002-left__folio-015-right\\\",\\\"folio-014-left__folio-003-right\\\",\\\"folio-004-left__folio-013-right\\\",\\\"trim 148 × 210 mm\\\",\\\"Atlas field guide signature\\\"].every(v=>s.includes(v)),pressedState:/toggleState\\\\.textContent=next/.test(script)&&/aria-pressed=\\\"true\\\"/.test(dom)&&/aria-pressed=\\\"false\\\"/.test(dom),focus:/focus-visible/.test(s),reducedMotion:/prefers-reduced-motion:reduce/.test(s),mobileRows:/@media\\\\(max-width:740px\\\\).*?\\\\.sheet\\\\{grid-template-columns:minmax\\\\(0,1fr\\\\)\\\\}/s.test(s),diffCheck:cp.execFileSync(\\\"git\\\",[\\\"diff\\\",\\\"--check\\\"],{encoding:\\\"utf8\\\"})===\\\"\\\"}; if(\"'!Object.values(checks).every(Boolean)){console.error(checks);process.exit(1)} console.log(JSON.stringify(checks));'\"'\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              }
+            ],
+            "static_closure_count": 4,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 3,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 3,
+            "first_edit_event_index": 39,
+            "last_edit_event_index": 39,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 41,
+                "command": "/opt/homebrew/bin/zsh -lc \"node -e 'const fs=require(\\\"fs\\\"),cp=require(\\\"child_process\\\"); const s=fs.readFileSync(\\\"index.html\\\",\\\"utf8\\\"), dom=s.split(\\\"<script>\\\")[0], script=(s.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)||[])[1]; new Function(script); const count=(text,re)=>(text.match(re)||[]).length; const checks={signatureSheet:count(dom,/data-bench-design-role=\\\"signature-sheet\\\"/g)===1,context:count(dom,/data-bench-decision-role=\\\"context\\\"/g)===1,target:count(dom,/data-bench-decision-role=\\\"target\\\"/g)===1,evidence:count(dom,/data-bench-decision-role=\\\"evidence\\\"/g)===1,state:count(dom,/data-bench-decision-role=\\\"state\\\"/g)===1,action:count(dom,/data-bench-decision-role=\\\"action\\\"/g)===1,folioPairs:count(dom,/data-bench=\\\"folio-pair\\\"/g)===4,bindingOptions:count(dom,/data-bench=\\\"binding-option\\\"/g)===3,otherHooks:count(dom,/data-bench=\\\"(compact-control-copy|creep-toggle|imposition-form|job-name|form-status)\\\"/g)===5,forbiddenBreaks:\"'![\"<wbr\",\"<br\",\"&shy;\",\"'\"\\\\\\\\u200b\\\",\\\"overflow-wrap\\\",\\\"word-break\\\",\\\"text-overflow\\\",\\\"::before\\\",\\\"::after\\\"].some(v=>s.includes(v)),noScroller:\"'!/(overflow'\"\\\\s*:\\\\s*(auto|scroll)|overflow-[xy]\\\\s*:\\\\s*(auto|scroll))/i.test(s),facts:[\\\"signature-s04-front\\\",\\\"signature-s04-back\\\",\\\"folio-016-left__folio-001-right\\\",\\\"folio-002-left__folio-015-right\\\",\\\"folio-014-left__folio-003-right\\\",\\\"folio-004-left__folio-013-right\\\",\\\"trim 148 × 210 mm\\\",\\\"Atlas field guide signature\\\"].every(v=>s.includes(v)),pressedState:/toggleState\\\\.textContent=next/.test(script)&&/aria-pressed=\\\"true\\\"/.test(dom)&&/aria-pressed=\\\"false\\\"/.test(dom),focus:/focus-visible/.test(s),reducedMotion:/prefers-reduced-motion:reduce/.test(s),mobileRows:/@media\\\\(max-width:740px\\\\).*?\\\\.sheet\\\\{grid-template-columns:minmax\\\\(0,1fr\\\\)\\\\}/s.test(s),narrowInset:/@media\\\\(max-width:220px\\\\).*?main\\\\{width:100%;margin-inline:0\\\\}/s.test(s),diffCheck:cp.execFileSync(\\\"git\\\",[\\\"diff\\\",\\\"--check\\\"],{encoding:\\\"utf8\\\"})===\\\"\\\"}; if(\"'!Object.values(checks).every(Boolean)){console.error(checks);process.exit(1)} console.log(JSON.stringify(checks));'\"'\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": {
+        "enforcement": "promotion-report",
+        "pass": false,
+        "reasons": [
+          "duplicate-static-limit"
+        ],
+        "observed": {
+          "analyzable": true,
+          "browser_recovery_count": 0,
+          "duplicate_static_closure_count": 6,
+          "verification_after_ready_count": 0
+        },
+        "limits": {
+          "require_analyzable": true,
+          "max_browser_recovery_count": 0,
+          "max_duplicate_static_closure_count": 0,
+          "max_verification_after_ready_count": 0
+        }
+      },
+      "host_policy": {
+        "mode": "controller-observation",
+        "installation": {
+          "schema_version": "0.1",
+          "mode": "controller-observation",
+          "target": "codex",
+          "git_root": true,
+          "hooks_enabled": false,
+          "ready": true,
+          "config": null,
+          "source_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "e976f56545da281b98b5227894615eb6f48201d6af15ff0d5b513242995cd83e"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "9db556f2f65805d883eb239872b54242cc3a1d6aa2a790cf1ec8f106023ce5e7"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "41dd2a7f4d1d0c86f43b8359531bf6afde8c49f21c60f024d938fa18131e5712"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "1689379d50bf612b577086fc6d2e848e78bceb7857e16b1b407903b9b504b51d"
+            }
+          ],
+          "installed_files": [],
+          "expected_installed_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "d9de6f78910b2ee13702727702c2377bcc946c28e931a882eaa238145dfc0a54"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "aa20116ded0ef34d15384be964dd17584fe358438fe7a4c0873cfcf0d6fbea68"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "1752b6aa03113f734e89fa44896ad3d11109dbd100b17633112344a933f51eb0"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "7d9a696b07118e504f07df743c2bb7e7848dab1e390a5d20c054966985c4b75c"
+            }
+          ],
+          "state_dir": ".omd/proof-policy",
+          "delivery": "controller-observation-only"
+        },
+        "observed": {
+          "schema_version": "0.1",
+          "available": false,
+          "state_files": 0,
+          "valid_state_files": 0,
+          "decisions": 0,
+          "denied_decisions": 0,
+          "denied_reasons": {},
+          "violations": {
+            "browser_recovery": 0,
+            "duplicate_static_closure": 0,
+            "verification_after_ready": 0
+          }
+        },
+        "gate": {
+          "mode": "controller-observation",
+          "pass": true,
+          "reasons": [],
+          "observed": {
+            "policy_state_available": false
+          }
+        }
+      }
+    },
+    "attribution": {
+      "runtime": {
+        "runtime_target": "codex",
+        "agent": "codex-cli",
+        "agent_version": null,
+        "binary_sha256": null,
+        "model_requested": "gpt-5.6-luna",
+        "model_reported": null,
+        "model_evidence_mode": "cli-argument",
+        "effort_requested": "high",
+        "auth_mode": null,
+        "provider_route": null,
+        "provider_effort_argument": null,
+        "hook_trust_bypassed": false,
+        "usage_attribution": {
+          "available": true,
+          "evidence_mode": "provider-event",
+          "reason": null
+        }
+      },
+      "source_commit": "1d204afea6c3ab106752613b7f341ed2f76fd843",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true,
+        "detached": true
+      },
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "fefb537635f907fdb4e48fdf441eaa5cb3d3173df4603366b2e88689b9f200e8",
+          "after_sha256": "2d40b5d05eeb5a2608c75596da34fb01501f6a9844c55e1202f7346ee74fc20b"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots",
+      "proof_trace": ".benchmark/proof-trace.json",
+      "host_policy_state": ".benchmark/host-policy-state.json"
+    }
+  },
+  {
+    "run_id": "luna-book-r3-policy",
+    "benchmark_family": "factorial",
+    "suite_version": "ui-resolve-v0.2",
+    "system_id": "luna-omd-installed-policy",
+    "model_id": "gpt-5.6-luna",
+    "skill_id": "omd:apply",
+    "harness_id": "omd-portable-proof-close-latch-candidate",
+    "budget_tier": "high",
+    "task_id": "book-signature-imposition-v0.1",
+    "trial_index": 3,
+    "run_status": "complete",
+    "validity": "valid",
+    "attribution_scope": "provider-observed-only",
+    "public_model_attribution_eligible": false,
+    "ui_resolved": false,
+    "objective_score": 81,
+    "objective_max": 85,
+    "wall_time_ms": 207015,
+    "tokens": 462723,
+    "token_usage": {
+      "input_tokens": 452217,
+      "cached_input_tokens": 393984,
+      "output_tokens": 10506,
+      "reasoning_output_tokens": 5542,
+      "total_tokens": 462723,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "input_output_complete": true
+    },
+    "provider_cost_equivalent_usd": null,
+    "execution_control": {
+      "comparison_mode": "native-capability",
+      "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+      "temperature_policy": "runtime-default-frozen",
+      "timeout_seconds": 900,
+      "max_concurrency": 1,
+      "latency_comparison": "eligible",
+      "retry_policy": "none-primary",
+      "timeout_policy": "count-as-valid-failure",
+      "infrastructure_policy": "retain-freeze-and-repreregister",
+      "task_order_policy": "balanced-rotation",
+      "pacing": {
+        "policy": "fixed-inter-cell",
+        "inter_cell_delay_seconds": 120,
+        "applies_between_cells_only": true,
+        "counts_toward_cell_wall_time": false
+      },
+      "token_budget": {
+        "mode": "observed-only",
+        "limit_tokens": null,
+        "usage_required": true,
+        "account_components": [
+          "input",
+          "cached_input",
+          "output",
+          "reasoning_output"
+        ],
+        "cached_input_separate": true,
+        "cost_policy": "provider-reported-or-pinned-price-equivalent"
+      },
+      "step_budget": {
+        "mode": "observed-only",
+        "limit_steps": null
+      }
+    },
+    "usage_completeness": {
+      "evidence_mode": "provider-event",
+      "available": true,
+      "input_output_complete": true,
+      "observed_components": [
+        "cached_input_tokens",
+        "input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens"
+      ],
+      "reasoning_visibility": "reported",
+      "cached_input_visibility": "reported"
+    },
+    "runtime_model_usage": [
+      {
+        "model": "gpt-5.6-luna",
+        "input_tokens": 452217,
+        "cached_input_tokens": 393984,
+        "output_tokens": 10506,
+        "cost_usd": null,
+        "context_window": null,
+        "max_output_tokens": null
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "diagnostic_availability": {
+        "available": false,
+        "fields": [],
+        "reason": "codex-stream-diagnostic-normalization-not-supported"
+      },
+      "tool_error_count": null,
+      "recoverable_tool_error_count": null,
+      "infrastructure_tool_error_count": null,
+      "optional_verifier_environment_error_count": null,
+      "recovered_temp_path_error_count": null,
+      "sandbox_error_count": null,
+      "sandbox_cwd_error_count": null,
+      "agent_tool_call_count": null,
+      "agent_tool_error_count": null,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": null,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 1,
+        "product_revision_count": 1,
+        "last_product_edit_event_index": 12,
+        "post_edit_command_count": 1,
+        "static_closure_count": 1,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 0,
+        "verification_after_ready_count": 0,
+        "compliance_pass": true,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 12,
+            "last_edit_event_index": 12,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 18,
+                "command": "/opt/homebrew/bin/zsh -lc \"git diff --check && node -e 'const fs=require(\\\"fs\\\"); const current=fs.readFileSync(\\\"index.html\\\",\\\"utf8\\\"); const baseline=require(\\\"child_process\\\").execFileSync(\\\"git\\\",[\\\"show\\\",\\\"HEAD:index.html\\\"],{encoding:\\\"utf8\\\"}); const count=(s,re)=>[...s.matchAll(re)].length; const attrs=(s,re)=>[...s.matchAll(re)].map(m=>m[1]).sort(); const benchCurrent=attrs(current,/data-bench=\\\"([\"'^\"]+)\"/g); const benchBaseline=attrs(baseline,/data-bench=\"([''^\"]+)\"/g); const rolesCurrent=attrs(current,/data-bench-(?:design|decision)-role=\"([''^\"]+)\"/g); const rolesBaseline=attrs(baseline,/data-bench-(?:design|decision)-role=\"([''^\"]+)\"/g); if(JSON.stringify(benchCurrent)!==JSON.stringify(benchBaseline)) throw new Error(\"data-bench hook cardinality changed\"); if(JSON.stringify(rolesCurrent)!==JSON.stringify(rolesBaseline)) throw new Error(\"decision marker cardinality changed\"); for(const marker of [\"data-bench-design-role='\"\\\\\\\"signature-sheet\\\\\\\"\\\",\\\"data-bench-decision-role=\\\\\\\"context\\\\\\\"\\\",\\\"data-bench-decision-role=\\\\\\\"target\\\\\\\"\\\",\\\"data-bench-decision-role=\\\\\\\"evidence\\\\\\\"\\\",\\\"data-bench-decision-role=\\\\\\\"state\\\\\\\"\\\",\\\"data-bench-decision-role=\\\\\\\"action\\\\\\\"\\\"]) if(count(current,new RegExp(marker,\\\"g\\\"))\"'!==1) throw new Error(\"marker count: \"+marker); for(const fact of [\"signature-s04-front\",\"signature-s04-back\",\"folio-016-left__folio-001-right\",\"folio-002-left__folio-015-right\",\"folio-014-left__folio-003-right\",\"folio-004-left__folio-013-right\",\"trim 148 × 210 mm\",\"Atlas field guide signature\"]) if(!current.includes(fact)) throw new Error(\"missing supplied fact: \"+fact); if(/<'\"\\\\/?(?:wbr|br)\\\\b|\\\\u200b|\\\\u00ad|&shy;|word-break|overflow-wrap\\\\s*:\\\\s*anywhere/i.test(current)) throw new Error(\\\"forbidden text break rule\\\"); new Function(current.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/i)[1]); console.log(JSON.stringify({hooks:benchCurrent,markers:rolesCurrent,folioRows:count(current,/data-bench=\\\"folio-pair\\\"/g),forbiddenBreaks:false,scriptSyntax:true},null,2));'\"",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": {
+        "mode": "installed-opt-in",
+        "installation": {
+          "schema_version": "0.1",
+          "mode": "installed-opt-in",
+          "target": "codex",
+          "git_root": true,
+          "hooks_enabled": true,
+          "ready": true,
+          "config": {
+            "path": ".codex/hooks.json",
+            "sha256": "36f15af51b01c3afb075fecfe9dbd1d63cab33225a9ac3bdbde261878910d581"
+          },
+          "source_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "e976f56545da281b98b5227894615eb6f48201d6af15ff0d5b513242995cd83e"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "9db556f2f65805d883eb239872b54242cc3a1d6aa2a790cf1ec8f106023ce5e7"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "41dd2a7f4d1d0c86f43b8359531bf6afde8c49f21c60f024d938fa18131e5712"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "1689379d50bf612b577086fc6d2e848e78bceb7857e16b1b407903b9b504b51d"
+            }
+          ],
+          "installed_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "d9de6f78910b2ee13702727702c2377bcc946c28e931a882eaa238145dfc0a54"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "aa20116ded0ef34d15384be964dd17584fe358438fe7a4c0873cfcf0d6fbea68"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "1752b6aa03113f734e89fa44896ad3d11109dbd100b17633112344a933f51eb0"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "7d9a696b07118e504f07df743c2bb7e7848dab1e390a5d20c054966985c4b75c"
+            }
+          ],
+          "expected_installed_files": [
+            {
+              "filename": "proof-policy-hook.mjs",
+              "sha256": "d9de6f78910b2ee13702727702c2377bcc946c28e931a882eaa238145dfc0a54"
+            },
+            {
+              "filename": "proof-policy-hook-mapper.mjs",
+              "sha256": "aa20116ded0ef34d15384be964dd17584fe358438fe7a4c0873cfcf0d6fbea68"
+            },
+            {
+              "filename": "proof-policy-state.mjs",
+              "sha256": "1752b6aa03113f734e89fa44896ad3d11109dbd100b17633112344a933f51eb0"
+            },
+            {
+              "filename": "proof-trace-contract.mjs",
+              "sha256": "7d9a696b07118e504f07df743c2bb7e7848dab1e390a5d20c054966985c4b75c"
+            }
+          ],
+          "state_dir": ".omd/proof-policy",
+          "delivery": "canonical-managed-files-and-production-config"
+        },
+        "observed": {
+          "schema_version": "0.1",
+          "available": true,
+          "state_files": 1,
+          "valid_state_files": 1,
+          "decisions": 4,
+          "denied_decisions": 1,
+          "denied_reasons": {
+            "duplicate-static-closure": 1
+          },
+          "violations": {
+            "browser_recovery": 0,
+            "duplicate_static_closure": 1,
+            "verification_after_ready": 0
+          },
+          "state_tree_sha256": "ed4ccc4e2d7275b2c8a68acd78fecbd1c322e0c11211fb7b425b3995aabf5feb"
+        },
+        "gate": {
+          "mode": "installed-opt-in",
+          "pass": true,
+          "reasons": [],
+          "observed": {
+            "policy_state_available": true,
+            "valid_state_files": 1,
+            "state_files": 1,
+            "denied_decisions": 1,
+            "denied_reasons": {
+              "duplicate-static-closure": 1
+            },
+            "violations": {
+              "browser_recovery": 0,
+              "duplicate_static_closure": 1,
+              "verification_after_ready": 0
+            },
+            "unblocked": {
+              "browser_recovery": 0,
+              "duplicate_static_closure": 0,
+              "verification_after_ready": 0
+            }
+          },
+          "limits": {
+            "require_installed_state": true,
+            "max_unblocked_browser_recovery_count": 0,
+            "max_unblocked_duplicate_static_closure_count": 0,
+            "max_unblocked_verification_after_ready_count": 0
+          }
+        }
+      }
+    },
+    "attribution": {
+      "runtime": {
+        "runtime_target": "codex",
+        "agent": "codex-cli",
+        "agent_version": null,
+        "binary_sha256": null,
+        "model_requested": "gpt-5.6-luna",
+        "model_reported": null,
+        "model_evidence_mode": "cli-argument",
+        "effort_requested": "high",
+        "auth_mode": null,
+        "provider_route": null,
+        "provider_effort_argument": null,
+        "hook_trust_bypassed": true,
+        "usage_attribution": {
+          "available": true,
+          "evidence_mode": "provider-event",
+          "reason": null
+        }
+      },
+      "source_commit": "1d204afea6c3ab106752613b7f341ed2f76fd843",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true,
+        "detached": true
+      },
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "fefb537635f907fdb4e48fdf441eaa5cb3d3173df4603366b2e88689b9f200e8",
+          "after_sha256": "a5d3db3ab56013bf4d0f309a65f9d39266bc7af7dd04915ee00d04a2707a1db5"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots",
+      "proof_trace": ".benchmark/proof-trace.json",
+      "host_policy_state": ".benchmark/host-policy-state.json"
+    }
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.403",
+  "pin_id": "browser-attempt-completion-loop-1.9.403",
+  "source_commit": "f55815d5f2e0fa8e18f8a84493d9bbdb1de43ab7",
+  "artifacts": [
+    {"path":"skills/omd-apply/SKILL.md","sha256":"f3ff2de6c08bb8b253173bb3c6321bf01f49cbe15f332029f59b366141d39c39"},
+    {"path":"skills/omd-apply/scripts/reflow-artifact.mjs","sha256":"12894ecdcc1482f62fec1a740f0015d026c1521118e5b7d9e3dfada56fdc765d"},
+    {"path":"benchmarks/ui-resolve-bench/scripts/proof-trace-contract.mjs","sha256":"310e563bbf942ef03121b8278a3f5c1d8d6ef46c32b1ae681a2cdf29973fb124"},
+    {"path":"benchmarks/ui-resolve-bench/experimental-skills/omd-decision-context-closure/SKILL.md","sha256":"4fe3aac1bc9f561b01f1e4d767a02fce5589c348996cb9870fd3882ab70af512"},
+    {"path":"test/unit/skills/omd-reflow-artifact.test.mjs","sha256":"f201cbee2624cb1e2256c79fa82d28e33da382e005d2c222f2e26a71735f2216"},
+    {"path":"test/unit/bench/ui-resolve-proof-trace.test.mjs","sha256":"0277e5fae1afbf94d8c1a0f2b165b033ffd7c4cf3620c4e28016682fc8486ba2"},
+    {"path":"test/unit/bench/ui-resolve-proof-policy-hook.test.mjs","sha256":"1ab53cbd926964cd81f020816e04f50ec040cc8c8de5a50c6aba2350e01b2335"},
+    {"path":"test/unit/bench/ui-resolve-bench.test.mjs","sha256":"314a795a28bb6c2b15660f33748633ec5154780e14f0594abb9acdeb8416fec6"},
+    {"path":"benchmarks/ui-resolve-bench/reports/browser-attempt-completion-loop-repair-1.9.402/ACCEPTANCE.json","sha256":"add262ff5e56c5d027a96945d4133ed1b6199ac2ba8ddc0fa8dd0c24b64e7426"}
+  ],
+  "provider_calls": 0,
+  "quality_promotion": false,
+  "next": "Lock a fresh unseen replacement task before any provider call."
+}

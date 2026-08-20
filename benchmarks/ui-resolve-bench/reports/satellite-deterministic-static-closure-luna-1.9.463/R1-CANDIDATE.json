@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.466",
+  "cell_id": "luna-satellite-r1-candidate",
+  "status": "complete",
+  "validity": "valid",
+  "retry": false,
+  "objective": {"score":81,"max":85,"ui_resolved":false},
+  "process": {"wall_time_ms":365260,"timed_out":false},
+  "provider_usage": {"input_tokens":599884,"cached_input_tokens":547328,"output_tokens":18573,"reasoning_output_tokens":9022,"total_observed_tokens":618457},
+  "runtime_identity": {"requested_model":"gpt-5.6-luna","effort":"high","codex_cli_version":"0.144.1","model_profile_sha256":"0efd579e76b5f1ccc5b68f61fdf079c7df0adfe03281f65ec6bc07383e8c335f","model_tool_mode":"code_mode_only","evidence_scope":"execution-home-post-run"},
+  "objective_result": {
+    "all_critical_gates": false,
+    "responsive_viewports_green": ["desktop","mobile"],
+    "responsive_viewports_red": ["narrow-320","css-zoom-surrogate-200"],
+    "document_overflow_px": {"narrow_320":10,"actual_200pct":20},
+    "atomic_line_contract": "pass",
+    "serious_or_critical_contrast": 0,
+    "passive_protected_text_scroll_containers": 0
+  },
+  "proof_trace": {"analyzable":true,"product_edit_count":1,"browser_mechanism_count":1,"browser_recovery_count":0,"static_closure_count":1,"duplicate_static_closure_count":0,"verification_after_ready_count":0,"compliance_pass":true,"static_mechanism":"shipped-reflow-artifact-static-close"},
+  "paired_ratios": {"wall_time":0.8324,"tokens":0.9953},
+  "artifact_hashes": {"run_result_sha256":"18703468d209da020593a45e5bb3f81671cc33a485f942032f648376a5bc873f","score_sha256":"da7b5dfbe889a01a4f2cc442cf213f62b5b2106f3b3936126d27e8f92cb6220b","run_record_sha256":"b9514c79759e1526b102954a0bf91c4056067beb7b4b159a47b1451cc243e960","proof_trace_sha256":"6d870179b95a7dbff84761c620e533357ea31c5d5e6171b5bdff3067dc38ef47"},
+  "tokens_to_target_observed_minimum_after_cell": 46322200,
+  "prior_usage_unavailable_cells": 6,
+  "next": "Freeze remaining four cells because zero paired objective losses is mathematically unreachable."
+}

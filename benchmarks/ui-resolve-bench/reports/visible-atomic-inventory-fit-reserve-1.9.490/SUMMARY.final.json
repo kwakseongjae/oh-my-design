@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.490",
+  "experiment_id": "visible-atomic-inventory-fit-reserve-1.9.490",
+  "status": "PROVIDER_FREE_REPAIR_VALIDATED",
+  "provider_calls": 0,
+  "promotion": false,
+  "repair": {
+    "fit_reserve": "measure to the carrier inner border so intentional padding counts as safety reserve",
+    "atomic_inventory": "only visible non-empty dynamic states; evidence prose requires <=48 characters and an explicit one-line contract",
+    "excluded_inventory": ["initially empty or hidden status","general evidence prose without explicit one-line authority"]
+  },
+  "frozen_candidate_replay": {
+    "connection_name": "bench19366",
+    "raw_endpoint_disclosed": false,
+    "attached_existing": true,
+    "launched_browser": false,
+    "conditions": ["390","320","200pct"],
+    "before": {"unresolved_rows":3,"operator_note_reserve_css_px":1},
+    "reserve_only": {"unresolved_rows":2,"operator_note_reserve_css_px":16},
+    "repaired_inventory": {"registered_carriers":12,"registered_rows":28,"unresolved_carriers":0,"unresolved_rows":0,"closure":"closed","quality_pass":true,"terminal_marker":"OMD_DELIVERY_READY"}
+  },
+  "validation": {"typescript":"passed","focused_tests":{"passed":72,"failed":0},"experimental_mirror_contract":{"passed":1,"failed":0},"diff_check":"passed"},
+  "source_sha256": {"skill":"b7b8632d12aadf3e0fbb552a7b849998a962cbe972d21968c8e0522964823c9e","browser_runner":"3d0caae4ba57c86dd6e69d473cbbc681ab2a805911a0b33a040d04bc08dd40aa","artifact_helper":"169efc3cf4a42dc35900d2bbca807d2ef7b36ed62c5e40dd0c333ceba8d19796"},
+  "next": "Commit and exact-pin the repair, then lock another genuinely unseen task before provider exposure."
+}

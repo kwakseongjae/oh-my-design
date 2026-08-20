@@ -16,8 +16,20 @@ import { stripManagedHookMarker } from '../../../src/cli/hook-contract.js';
 import {
   runInstallSkills,
   dataDirFor,
+  skillInvocationName,
   targetsAvailableForScope,
+  postInstallGuidance,
 } from '../../../src/cli/install-skills.js';
+
+const CORE_V2_SCHEMAS = [
+  'design-md-core-manifest-v2.schema.json',
+  'design-system-graph-v2.schema.json',
+  'design-system-provenance-v2.schema.json',
+  'design-system-coverage-v2.schema.json',
+  'design-md-core-adoption-review-v2.schema.json',
+  'design-md-core-adoption-receipt-v2.schema.json',
+  'design-md-core-project-checkpoint-v2.schema.json',
+] as const;
 
 describe('install-skills', () => {
   let root: string;
@@ -45,6 +57,63 @@ describe('install-skills', () => {
       'opencode',
     ]);
     expect(targetsAvailableForScope([...channels], 'project')).toEqual(channels);
+  });
+
+  it('renders channel-native minimal-install invocation names', () => {
+    expect(skillInvocationName('omd-apply', 'cursor')).toBe('omd-apply');
+    expect(skillInvocationName('omd-apply', 'opencode')).toBe('omd-apply');
+    expect(skillInvocationName('omd-apply', 'claude-code')).toBe('omd:apply');
+    expect(skillInvocationName('omd-apply', 'codex')).toBe('omd:apply');
+    expect(skillInvocationName('claude-design', 'claude-code')).toBe('claude-design');
+  });
+
+  it('renders independent five-locale post-install activation guidance', () => {
+    const expected = {
+      en: ['Restart your coding agent', 'Using this DESIGN.md'],
+      ko: ['코딩 에이전트를 다시 시작', '이 DESIGN.md를 기준으로'],
+      ja: ['コーディングエージェントを再起動', 'このDESIGN.mdを基準に'],
+      'zh-CN': ['重启编程助手', '以这份 DESIGN.md 为依据'],
+      'zh-TW': ['重新啟動程式助理', '以這份 DESIGN.md 為依據'],
+    } as const;
+
+    for (const [lang, phrases] of Object.entries(expected)) {
+      const guidance = postInstallGuidance(
+        lang as keyof typeof expected,
+        { cursorOnly: false },
+      );
+      for (const phrase of phrases) expect(guidance.body).toContain(phrase);
+      expect(guidance.body).toContain('omd:init');
+      expect(guidance.body).toContain('/omd-harness <task>');
+      expect(guidance.body).not.toContain('EN  ');
+      expect(guidance.body).not.toContain('KR  ');
+    }
+
+    const cursorJa = postInstallGuidance('ja', { cursorOnly: true });
+    expect(cursorJa.body).toContain('.cursor/skills');
+    expect(cursorJa.body).toContain('DESIGN.md');
+    expect(cursorJa.body).toContain('Cursorを再起動');
+  });
+
+  it('fails closed in rule-only post-install guidance for every locale', () => {
+    const expected = {
+      en: ['cannot create one', 'read-only', 'standalone Core v2', 'without --cursor-rule-only'],
+      ko: ['새로 만들 수는 없습니다', '읽기 전용', 'Core v2', '--cursor-rule-only 없이'],
+      ja: ['新規作成はできません', '読み取り専用', 'Core v2', '--cursor-rule-onlyを付けずに'],
+      'zh-CN': ['不能新建', '只读', 'Core v2', '不要使用 --cursor-rule-only'],
+      'zh-TW': ['不能新建', '唯讀', 'Core v2', '不要使用 --cursor-rule-only'],
+    } as const;
+
+    for (const [lang, phrases] of Object.entries(expected)) {
+      const guidance = postInstallGuidance(
+        lang as keyof typeof expected,
+        { cursorOnly: true, cursorRuleOnly: true },
+      );
+      for (const phrase of phrases) expect(guidance.body).toContain(phrase);
+      expect(guidance.body).toContain('Builder');
+      expect(guidance.body).toContain('DESIGN.md');
+      expect(guidance.body).not.toContain('Toss');
+      expect(guidance.body).not.toContain('.claude/data/references');
+    }
   });
 
   it('installs all 5 skills × 3 agents when no agents detected (fallback)', async () => {
@@ -252,6 +321,50 @@ describe('install-skills', () => {
     }
   });
 
+  it('ships the deterministic reflow artifact helper with omd-apply', async () => {
+    const code = await runInstallSkills({
+      dir: root,
+      agents: ['claude-code', 'codex', 'opencode'],
+      skillsFilter: ['omd-apply'],
+      agentsFilter: [],
+      skillsOnly: true,
+    });
+
+    expect(code).toBe(0);
+    const installedHashes: string[] = [];
+    for (const channelRoot of [
+      join(root, '.claude', 'skills'),
+      join(root, '.agents', 'skills'),
+      join(root, '.opencode', 'skills'),
+    ]) {
+      const helper = join(channelRoot, 'omd-apply', 'scripts', 'reflow-artifact.mjs');
+      const browserRunner = join(channelRoot, 'omd-apply', 'scripts', 'reflow-browser.py');
+      const browserEntrypoint = join(channelRoot, 'omd-apply', 'scripts', 'reflow-browser-runner.sh');
+      const skillPath = join(channelRoot, 'omd-apply', 'SKILL.md');
+      expect(existsSync(helper), helper).toBe(true);
+      expect(existsSync(browserRunner), browserRunner).toBe(true);
+      expect(existsSync(browserEntrypoint), browserEntrypoint).toBe(true);
+      const helperSource = readFileSync(helper, 'utf8');
+      const runnerSource = readFileSync(browserRunner, 'utf8');
+      const entrypointSource = readFileSync(browserEntrypoint, 'utf8');
+      const skillSource = readFileSync(skillPath, 'utf8');
+      expect(helperSource).toContain('createPlanDecisionPacket');
+      expect(helperSource).toContain('applyPlanDecisionPacket');
+      expect(runnerSource).toContain('plan-packet');
+      expect(runnerSource).toContain('plan-apply');
+      expect(entrypointSource).toContain('exec browser-harness');
+      expect(entrypointSource).toContain('static_closure_manifest?.product_path');
+      expect(skillSource).toContain('operator_inputs.accessible_names');
+      installedHashes.push(createHash('sha256').update(
+        [helperSource, runnerSource, entrypointSource].join('\n--omd-distribution-boundary--\n'),
+      ).digest('hex'));
+      const usage = spawnSync(process.execPath, [helper], { encoding: 'utf8' });
+      expect(usage.status).toBe(2);
+      expect(usage.stderr).toContain('plan-diagnose|plan-packet|plan-apply|source-fallback-open|static-preview|static-promote|static-close');
+    }
+    expect(new Set(installedHashes).size).toBe(1);
+  });
+
   it('skips drift on existing user-edited files without marker', async () => {
     const target = join(root, '.claude/skills/omd-init/SKILL.md');
     mkdirSync(join(root, '.claude/skills/omd-init'), { recursive: true });
@@ -279,10 +392,20 @@ describe('install-skills', () => {
     // where omd:init resolution step 1 looks.
     const tossDesign = join(root, '.claude/data/references/toss/DESIGN.md');
     expect(existsSync(tossDesign), 'toss DESIGN.md copied').toBe(true);
+    expect(existsSync(join(root, '.claude/data/reference-quality.json'))).toBe(true);
+    expect(existsSync(join(root, '.claude/skills/omd-init/scripts/query-references.mjs'))).toBe(true);
     // Only DESIGN.md per id — keep install lean (no _promo.json/_research.md).
     expect(existsSync(join(root, '.claude/data/references/toss/_promo.json'))).toBe(false);
     // ctx-prime helper copied so harness CTX-PRIME works without the package dir.
     expect(existsSync(join(root, '.claude/data/scripts/ctx-prime.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.claude/data/scripts/design-council-prime.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.claude/data/scripts/design-council-reconcile.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.claude/data/scripts/design-council-handoff.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.claude/data/scripts/design-md-core-schema.cjs'))).toBe(true);
+    for (const schema of CORE_V2_SCHEMAS) {
+      expect(existsSync(join(root, '.claude/data/scripts/schema', schema))).toBe(true);
+    }
+    expect(existsSync(join(root, '.claude/data/scripts/design-harness-context-plan.cjs'))).toBe(true);
   });
 
   it('installs self-contained Codex roles with only the native project skill path', async () => {
@@ -290,13 +413,26 @@ describe('install-skills', () => {
     await runInstallSkills({
       dir: root,
       agents: ['codex'],
-      skillsFilter: ['omd-init', 'omd-apply', 'omd-final-qa', 'omd-orchestrator'],
+      skillsFilter: ['omd-init', 'omd-apply', 'omd-final-qa', 'omd-harness', 'omd-orchestrator'],
       agentsFilter: roleIds,
     });
 
     const init = readFileSync(join(root, '.agents/skills/omd-init/SKILL.md'), 'utf8');
     expect(init).toContain('.codex/data/reference-fingerprints.json');
+    expect(existsSync(join(root, '.codex/data/reference-quality.json'))).toBe(true);
+    expect(existsSync(join(root, '.agents/skills/omd-init/scripts/query-references.mjs'))).toBe(true);
     expect(existsSync(join(root, '.codex/data/references/toss/DESIGN.md'))).toBe(true);
+    expect(existsSync(join(root, '.codex/data/scripts/design-council-handoff.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.codex/data/scripts/design-md-core-schema.cjs'))).toBe(true);
+    for (const schema of CORE_V2_SCHEMAS) {
+      expect(existsSync(join(root, '.codex/data/scripts/schema', schema))).toBe(true);
+    }
+    expect(existsSync(join(root, '.codex/data/scripts/design-harness-context-plan.cjs'))).toBe(true);
+
+    const harness = readFileSync(join(root, '.agents/skills/omd-harness/SKILL.md'), 'utf8');
+    expect(harness).toContain('dispatch_suppressed_by_blocked: true');
+    expect(harness).toContain('choose-new/user-answerable/interview');
+    expect(harness).toContain('external-unverifiable/blocked');
 
     const master = readFileSync(join(root, '.codex/agents/omd-master.toml'), 'utf8');
     expect(master).toMatch(/^name = "omd-master"$/m);
@@ -311,6 +447,7 @@ describe('install-skills', () => {
     expect(master).not.toContain('omd init prepare');
     expect(master).not.toMatch(/\bomd remember\b/);
     expect(master).toContain('The OmD CLI exposes installation and diagnostics only');
+    expect(master).toContain('dispatch_suppressed_by_blocked: true');
     expect(existsSync(join(root, '.claude', 'skills'))).toBe(false);
 
     for (const roleId of roleIds) {
@@ -389,9 +526,74 @@ describe('install-skills', () => {
 
     const init = readFileSync(join(root, '.opencode/skills/omd-init/SKILL.md'), 'utf8');
     expect(init).toContain('.opencode/data/reference-fingerprints.json');
+    expect(existsSync(join(root, '.opencode/data/reference-quality.json'))).toBe(true);
+    expect(existsSync(join(root, '.opencode/skills/omd-init/scripts/query-references.mjs'))).toBe(true);
     expect(existsSync(join(root, '.opencode/data/references/toss/DESIGN.md'))).toBe(true);
     expect(existsSync(join(root, '.opencode/data/scripts/ctx-prime.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.opencode/data/scripts/design-council-prime.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.opencode/data/scripts/design-council-reconcile.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.opencode/data/scripts/design-council-handoff.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.opencode/data/scripts/design-harness-context-plan.cjs'))).toBe(true);
     expect(dataDirFor('opencode', ['opencode'])).toBe('.opencode');
+  });
+
+  it('keeps council authority semantics identical across Claude, Codex, and OpenCode installs', async () => {
+    await runInstallSkills({
+      dir: root,
+      agents: ['claude-code', 'codex', 'opencode'],
+      skillsFilter: ['omd-harness'],
+      agentsFilter: ['omd-master'],
+    });
+
+    const harnesses = [
+      join(root, '.claude/skills/omd-harness/SKILL.md'),
+      join(root, '.agents/skills/omd-harness/SKILL.md'),
+      join(root, '.opencode/skills/omd-harness/SKILL.md'),
+    ].map((file) => readFileSync(file, 'utf8'));
+    for (const harness of harnesses) {
+      expect(harness).toContain('design-council-handoff.cjs');
+      expect(harness).toContain('design-harness-context-plan.cjs');
+      expect(harness).toContain('choose-new/user-answerable/interview');
+      expect(harness).toContain('external-unverifiable/blocked');
+      expect(harness).toContain('if handoff.status == "blocked"');
+      expect(harness).toContain('ledger_sha256');
+      expect(harness).toContain('questions_sha256');
+      expect(harness).toContain('references/master-visual-grounding.md');
+    }
+    const groundingSidecars = [
+      join(root, '.claude/skills/omd-harness/references/master-visual-grounding.md'),
+      join(root, '.agents/skills/omd-harness/references/master-visual-grounding.md'),
+      join(root, '.opencode/skills/omd-harness/references/master-visual-grounding.md'),
+    ].map((file) => readFileSync(file, 'utf8'));
+    expect(groundingSidecars.every((content) => content.includes('Unknown means absent'))).toBe(true);
+    for (const sidecar of ['master-conversation.md', 'master-legacy-production.md', 'master-execution-phases.md']) {
+      expect(existsSync(join(root, '.claude/skills/omd-harness/references', sidecar))).toBe(true);
+      expect(existsSync(join(root, '.agents/skills/omd-harness/references', sidecar))).toBe(true);
+      expect(existsSync(join(root, '.opencode/skills/omd-harness/references', sidecar))).toBe(true);
+    }
+
+    const masters = [
+      join(root, '.claude/agents/omd-master.md'),
+      join(root, '.codex/agents/omd-master.toml'),
+      join(root, '.opencode/agents/omd-master.md'),
+    ].map((file) => readFileSync(file, 'utf8'));
+    for (const master of masters) {
+      expect(master).toContain('dispatch_suppressed_by_blocked: true');
+      expect(master).toContain('Never report a blocked item as a retained user');
+      expect(master).toContain('`blocked` — launcher relays the missing external evidence');
+      expect(master).toContain('master-execution-phases.md');
+      expect(master).toContain('master-conversation.md');
+    }
+    expect(masters[0]).toContain('.claude/skills/omd-harness/references/master-execution-phases.md');
+    expect(masters[1]).toContain('.agents/skills/omd-harness/references/master-execution-phases.md');
+    expect(masters[2]).toContain('.opencode/skills/omd-harness/references/master-execution-phases.md');
+
+    expect(existsSync(join(root, '.claude/data/scripts/design-council-handoff.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.codex/data/scripts/design-council-handoff.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.opencode/data/scripts/design-council-handoff.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.claude/data/scripts/design-harness-context-plan.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.codex/data/scripts/design-harness-context-plan.cjs'))).toBe(true);
+    expect(existsSync(join(root, '.opencode/data/scripts/design-harness-context-plan.cjs'))).toBe(true);
   });
 
   it('uses native OpenCode project skill paths in portable sub-agent bodies', async () => {
@@ -467,8 +669,12 @@ describe('install-skills', () => {
       expect(master).not.toContain('.claude/skills');
       expect(existsSync(join(root, '.claude', 'skills'))).toBe(false);
       expect(existsSync(join(globalRoot, 'data', 'reference-fingerprints.json'))).toBe(true);
+      expect(existsSync(join(globalRoot, 'data', 'reference-quality.json'))).toBe(true);
       expect(existsSync(join(globalRoot, 'data', 'references', 'toss', 'DESIGN.md'))).toBe(true);
       expect(existsSync(join(globalRoot, 'data', 'scripts', 'ctx-prime.cjs'))).toBe(true);
+      expect(existsSync(join(globalRoot, 'data', 'scripts', 'design-council-prime.cjs'))).toBe(true);
+      expect(existsSync(join(globalRoot, 'data', 'scripts', 'design-council-reconcile.cjs'))).toBe(true);
+      expect(existsSync(join(globalRoot, 'data', 'scripts', 'design-council-handoff.cjs'))).toBe(true);
       expect(existsSync(join(root, '.opencode'))).toBe(false);
     } finally {
       if (previousHome === undefined) delete process.env.HOME;
@@ -747,32 +953,194 @@ describe('install-skills', () => {
     expect(existsSync(join(root, '.claude/data/references'))).toBe(false);
   });
 
-  it('cursor channel installs the .cursor/rules shim + shared catalog (issue #20)', async () => {
+  it('cursor channel installs native Agent Skills + bootstrap rule + shared catalog', async () => {
     const code = await runInstallSkills({ dir: root, agents: ['cursor'] });
     expect(code).toBe(0);
 
-    // The shim mirrors omd:sync's cursor template — frontmatter first, then
-    // the hash-marked body block.
+    const skillsRoot = join(root, '.cursor/skills');
+    const installedSkills = readdirSync(skillsRoot)
+      .filter((skill) => existsSync(join(skillsRoot, skill, 'SKILL.md')))
+      .sort();
+    expect(installedSkills).toHaveLength(21);
+    expect(installedSkills).not.toContain('claude-design');
+    expect(installedSkills).toContain('omd-apply');
+    const applySkill = readFileSync(join(skillsRoot, 'omd-apply', 'SKILL.md'), 'utf8');
+    expect(applySkill.startsWith('---\n')).toBe(true);
+    expect(applySkill).toMatch(/^name:\s*omd-apply$/m);
+    expect(applySkill).toContain('omd:installed-skill');
+    expect(applySkill).not.toMatch(/\bomd:apply\b/);
+    expect(applySkill).toContain('foreground closure');
+    expect(applySkill).toContain('unresolved normal-text accent pair');
+    expect(applySkill).toContain('geometry-token closure');
+    expect(applySkill).toContain('mismatched_declared_radius: 0');
+    expect(applySkill).toContain('invented_radius_value: 0');
+    expect(applySkill).toContain('unresolved_changed_radius: 0');
+    expect(applySkill).toContain('interactive closure');
+    expect(applySkill).toContain('unauthorized_focusable_delta: 0');
+    expect(applySkill).toContain('permanently_clipped_focusable: 0');
+    expect(applySkill).toContain('unresolved_focus_reveal: 0');
+    expect(applySkill).toContain('visual equity ledger');
+    expect(applySkill).toContain(
+      '`identity`, `user_value`, `before_evidence`, `decision(preserve|reinforce|replace)`, `change_authority`',
+    );
+    expect(applySkill).toContain(
+      '`original user task`, `explicit DESIGN.md rule`, `same consumer route measured defect`',
+    );
+    expect(applySkill).toContain('visual-equity closure');
+    expect(applySkill).toContain('unsupported_hierarchy_loss: 0');
+    expect(applySkill).toContain('unsupported_state_signal_weakening: 0');
+    expect(applySkill).toContain('unsupported_reassurance_removal: 0');
+    expect(applySkill).toContain('unsupported_decision_boundary_collapse: 0');
+    expect(applySkill).toContain('protected ledger');
+    expect(applySkill).toContain('확인되지 않은 정보 — fallback으로 채우지 않음');
+    expect(applySkill).toContain('replacement verifier');
+    expect(applySkill).toContain('delivery_reserve: true');
+
+    // The always-on rule is a small bootstrap; procedural instructions live in
+    // the dynamically discovered native skill tree.
     const rule = join(root, '.cursor/rules/omd-design.mdc');
     expect(existsSync(rule), 'cursor rule shim').toBe(true);
     const content = readFileSync(rule, 'utf8');
     expect(content.startsWith('---\n')).toBe(true);
     expect(content).toMatch(/<!-- omd:start v=1 hash=[0-9a-f]{12} -->/);
+    expect(content).toContain('alwaysApply: true');
+    expect(content).toContain('<!-- omd:cursor-channel=skills -->');
     expect(content).toContain('`@DESIGN.md`');
-    expect(content).toContain('Cursor receives this rule and the catalog, not OmD named skills or sub-agents');
-    expect(content).toContain('Unknown reference fields stay absent');
+    expect(content).toContain('OmD Agent Skills live under `.cursor/skills/`');
+    expect(content).toContain('Unknown fields stay absent');
     expect(content).toContain('<!-- omd:end -->');
 
     // Catalog + data JSONs land in the single shared path (.claude/data) —
     // cursor agents read it; no second catalog location is invented.
     expect(existsSync(join(root, '.claude/data/references/toss/DESIGN.md'))).toBe(true);
     expect(existsSync(join(root, '.claude/data/reference-fingerprints.json'))).toBe(true);
+    expect(existsSync(join(root, '.claude/data/reference-quality.json'))).toBe(true);
 
     // No Claude-specific surfaces for a cursor-only install.
     expect(existsSync(join(root, '.claude/skills'))).toBe(false);
     expect(existsSync(join(root, '.claude/hooks'))).toBe(false);
     expect(existsSync(join(root, '.claude/settings.json'))).toBe(false);
     expect(existsSync(join(root, '.claude/agents'))).toBe(false);
+  });
+
+  it('installs the exact five-locale workflow manifest bytes in every supported channel', async () => {
+    const source = readFileSync(join(process.cwd(), 'data/workflow-capabilities.json'), 'utf8');
+    const expectedHash = createHash('sha256').update(source).digest('hex');
+    const channels = [
+      ['claude-code', '.claude/data'],
+      ['codex', '.codex/data'],
+      ['opencode', '.opencode/data'],
+      ['cursor', '.claude/data'],
+    ] as const;
+    const observedHashes: string[] = [];
+
+    for (const [channel, dataRoot] of channels) {
+      const channelRoot = join(root, channel);
+      expect(await runInstallSkills({
+        dir: channelRoot,
+        agents: [channel],
+        skillsFilter: ['omd-init'],
+      })).toBe(0);
+      const installed = readFileSync(
+        join(channelRoot, dataRoot, 'workflow-capabilities.json'),
+        'utf8',
+      );
+      expect(installed).toBe(source);
+      observedHashes.push(createHash('sha256').update(installed).digest('hex'));
+    }
+
+    expect(new Set(observedHashes)).toEqual(new Set([expectedHash]));
+  });
+
+  it('installs the exact Core v2 compiler closure in every supported channel data tree', async () => {
+    const helpers = [
+      'design-md-core-schema.cjs',
+      'design-md-core-conformance.cjs',
+      'design-md-core.cjs',
+      'prepare-design-md-core-review.cjs',
+      'activate-autopilot-design-system.cjs',
+      'rebind-design-md-core-migration.cjs',
+      'compile-design-md-core.cjs',
+      'adopt-design-md-core.cjs',
+    ] as const;
+    const channels = [
+      ['claude-code', '.claude/data'],
+      ['codex', '.codex/data'],
+      ['opencode', '.opencode/data'],
+      ['cursor', '.claude/data'],
+    ] as const;
+
+    for (const [channel, dataRoot] of channels) {
+      const channelRoot = join(root, `core-runtime-${channel}`);
+      expect(await runInstallSkills({
+        dir: channelRoot,
+        agents: [channel],
+        skillsFilter: ['omd-init'],
+        agentsFilter: [],
+      })).toBe(0);
+      for (const helper of helpers) {
+        expect(readFileSync(join(channelRoot, dataRoot, 'scripts', helper))).toEqual(
+          readFileSync(join(process.cwd(), 'scripts', helper)),
+        );
+      }
+      for (const schema of CORE_V2_SCHEMAS) {
+        expect(readFileSync(join(channelRoot, dataRoot, 'scripts/schema', schema))).toEqual(
+          readFileSync(join(process.cwd(), 'spec/schema', schema)),
+        );
+      }
+    }
+  });
+
+  it('cursor --cursor-rule-only applies existing Core files but fails closed on creation', async () => {
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['cursor'],
+      cursorRuleOnly: true,
+    })).toBe(0);
+
+    expect(existsSync(join(root, '.cursor/skills'))).toBe(false);
+    const rule = readFileSync(join(root, '.cursor/rules/omd-design.mdc'), 'utf8');
+    expect(rule).toContain('alwaysApply: false');
+    expect(rule).toContain('<!-- omd:cursor-channel=rule-only -->');
+    expect(rule).toContain('rule-only mode MUST NOT create it by copying, paraphrasing, or adapting');
+    expect(rule).not.toContain('Load the chosen `.claude/data/references/<id>/DESIGN.md`');
+    expect(rule).toContain('The standalone portable design contract lives at `@DESIGN.md`');
+    expect(rule).toContain('node .claude/data/scripts/migrate-design-md-core.cjs --input ./DESIGN.md --check --require-source-valid --require-portable-core');
+    expect(rule).toContain('never YAML frontmatter');
+    for (const anchor of [
+      'experience',
+      'foundations',
+      'typography-assets',
+      'components-states',
+      'layout-platforms',
+      'content-locales',
+      'governance',
+    ]) {
+      expect(rule).toContain(`<!-- design-md:section ${anchor} -->`);
+    }
+    expect(rule).toContain('without requiring OmD or sidecars');
+    expect(rule).toContain('A `migration-candidate` is non-authoritative');
+    expect(rule).toContain('`profile: portable-core`');
+    expect(rule).toContain('System Graph the machine authority');
+    expect(rule).toContain('DESIGN.md remains the standalone portable contract');
+    expect(rule).toContain('When applying DESIGN.md, preserve existing behavior');
+    expect(rule).toContain('Compatibility mode provides the rule, read-only catalog, and validation helpers only');
+    expect(existsSync(join(root, '.claude/data/references/toss/DESIGN.md'))).toBe(true);
+  });
+
+  it('rejects invalid --cursor-rule-only flag combinations before writing files', async () => {
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['codex'],
+      cursorRuleOnly: true,
+    })).toBe(1);
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['cursor'],
+      cursorRuleOnly: true,
+      skillsOnly: true,
+    })).toBe(1);
+    expect(existsSync(join(root, '.cursor'))).toBe(false);
   });
 
   it('cursor + claude-code combined install does not double-copy the catalog (issue #28)', async () => {
@@ -786,6 +1154,7 @@ describe('install-skills', () => {
     // No second catalog location is invented for cursor.
     expect(existsSync(join(root, '.cursor/data'))).toBe(false);
     expect(existsSync(join(root, '.codex/data'))).toBe(false);
+    expect(existsSync(join(root, '.cursor/skills/omd-apply/SKILL.md'))).toBe(true);
 
     // The dedup guard itself: cursor resolves to NO data dir when claude-code
     // is also selected (its pass already wrote .claude/data); standalone cursor
@@ -820,6 +1189,141 @@ describe('install-skills', () => {
       skillsFilter: ['omd-init'],
       repairHooks: true,
     })).toBe(1);
+  });
+
+  it('keeps proof policy absent by default and installs it only by explicit opt-in', async () => {
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code'],
+      all: true,
+    })).toBe(0);
+    expect(existsSync(join(
+      root,
+      '.claude/hooks/omd-proof-policy/proof-policy-hook.mjs',
+    ))).toBe(false);
+
+    const settingsPath = join(root, '.claude/settings.json');
+    const settings = JSON.parse(readFileSync(settingsPath, 'utf8'));
+    settings.hooks.PreToolUse = [{
+      matcher: 'Bash',
+      hooks: [{ type: 'command', command: 'node ./my-user-hook.mjs' }],
+    }];
+    writeFileSync(settingsPath, `${JSON.stringify(settings, null, 2)}\n`);
+
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code'],
+      all: true,
+      proofPolicy: true,
+    })).toBe(0);
+    const enabled = JSON.parse(readFileSync(settingsPath, 'utf8'));
+    expect(JSON.stringify(enabled)).toContain('node ./my-user-hook.mjs');
+    expect(JSON.stringify(enabled)).toContain(
+      'OMD_PROOF_POLICY_REFLOW_ARTIFACT=1 node ${CLAUDE_PROJECT_DIR}/.claude/hooks/omd-proof-policy/proof-policy-hook.mjs',
+    );
+    expect(JSON.stringify(enabled)).toContain('mcp__node_repl__js');
+    expect(JSON.stringify(enabled)).toContain('mcp__agent-browser__browser_.*');
+    for (const event of ['PreToolUse', 'PostToolUse', 'Stop']) {
+      expect(JSON.stringify(enabled.hooks[event]).match(/omd-proof-policy/g)).toHaveLength(1);
+    }
+  });
+
+  it('installs Codex proof policy only in a Git root and preserves hooks on removal', async () => {
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['codex'],
+      all: true,
+      proofPolicy: true,
+    })).toBe(1);
+    expect(existsSync(join(root, '.codex/hooks.json'))).toBe(false);
+
+    mkdirSync(join(root, '.git'));
+    mkdirSync(join(root, '.codex'), { recursive: true });
+    writeFileSync(join(root, '.codex/hooks.json'), JSON.stringify({
+      description: 'user config',
+      hooks: {
+        PreToolUse: [{
+          matcher: 'Bash',
+          hooks: [{ type: 'command', command: 'node ./my-codex-hook.mjs' }],
+        }],
+      },
+    }));
+
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['codex'],
+      all: true,
+      proofPolicy: true,
+    })).toBe(0);
+    const enabled = JSON.parse(readFileSync(join(root, '.codex/hooks.json'), 'utf8'));
+    expect(enabled.description).toBe('user config');
+    expect(JSON.stringify(enabled)).toContain('node ./my-codex-hook.mjs');
+    expect(JSON.stringify(enabled)).toContain(
+      'OMD_PROOF_POLICY_REFLOW_ARTIFACT=1 node \\"$(git rev-parse --show-toplevel)/.codex/hooks/omd-proof-policy/proof-policy-hook.mjs\\"',
+    );
+    expect(JSON.stringify(enabled)).toContain('mcp__node_repl__js');
+    expect(JSON.stringify(enabled)).toContain('mcp__agent-browser__browser_.*');
+    expect(existsSync(join(
+      root,
+      '.codex/hooks/omd-proof-policy/proof-policy-hook.mjs',
+    ))).toBe(true);
+
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['codex'],
+      all: true,
+      removeProofPolicy: true,
+    })).toBe(0);
+    const removed = JSON.parse(readFileSync(join(root, '.codex/hooks.json'), 'utf8'));
+    expect(JSON.stringify(removed)).toContain('node ./my-codex-hook.mjs');
+    expect(JSON.stringify(removed)).not.toContain('omd-proof-policy');
+    expect(existsSync(join(root, '.codex/hooks/omd-proof-policy'))).toBe(false);
+  });
+
+  it('rejects unsupported or unsafe proof-policy option combinations', async () => {
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['cursor'],
+      all: true,
+      proofPolicy: true,
+    })).toBe(1);
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code'],
+      all: true,
+      global: true,
+      proofPolicy: true,
+    })).toBe(1);
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code'],
+      all: true,
+      proofPolicy: true,
+      removeProofPolicy: true,
+    })).toBe(1);
+  });
+
+  it('does not delete proof-policy executables when its active config cannot be edited safely', async () => {
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code'],
+      all: true,
+      proofPolicy: true,
+    })).toBe(0);
+    const executable = join(
+      root,
+      '.claude/hooks/omd-proof-policy/proof-policy-hook.mjs',
+    );
+    expect(existsSync(executable)).toBe(true);
+    writeFileSync(join(root, '.claude/settings.json'), '{ invalid json\n');
+
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code'],
+      all: true,
+      removeProofPolicy: true,
+    })).toBe(2);
+    expect(existsSync(executable)).toBe(true);
   });
 
   it('detects installed agents and installs only for those (when present)', async () => {

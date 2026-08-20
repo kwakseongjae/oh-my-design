@@ -12,6 +12,22 @@ omd_managed: true
 
 이모지 디폴트 사용 금지. UI 표면에 아이콘이 필요하면 SVG 사용. 이모지는 사용자가 명시 요청하거나 ref가 이모지 의존 톤(ex. early Slack, baemin character)일 때만.
 
+## DESIGN.md read contract
+
+- Core v2에서는 숫자형 heading이 아니라 stable anchor를 읽고 cite한다.
+  시각 방향은 `experience`, 색·spacing·shape·elevation·motion은
+  `foundations`, font·icon·image·logo authority는 `typography-assets`다.
+- 유효한 `profile: portable-core` manifest와 exact SHA-256으로 결박된
+  graph가 있으면 `graph.experience`, `graph.foundations`,
+  `graph.typography_assets`가 canonical이다. 그 외에는 standalone
+  `DESIGN.md`의 같은 anchor를 사용한다.
+- exact Core anchor가 전혀 없는 문서만 legacy compatibility input으로
+  읽는다. 이때 Visual Theme, Color Palette, Typography, Layout, Depth,
+  Motion 같은 의미 heading을 위 anchor로 매핑하되 숫자 section을 새
+  산출물이나 citation에 복사하지 않는다.
+- 문서와 graph에 없는 토큰·에셋 권한은 absent다. reference capture나
+  인접 토큰에서 plausible 값을 빌리지 않는다.
+
 ## Step 0 — 스택 감지 (CRITICAL, 모든 결정의 전제)
 
 다음을 순서대로 확인:
@@ -117,8 +133,8 @@ clip-path 안에 sine 웨이브 path 두 개 배치, transform: translateY로 �
       <path d="M 62 32 L 138 32 L 142 230 L 58 230 Z" />
     </clipPath>
     <linearGradient id="liquidGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"  stop-color="<§2 brand-300>"/>
-      <stop offset="100%" stop-color="<§2 brand-500>"/>
+      <stop offset="0%"  stop-color="<foundations.tokens.brand-300>"/>
+      <stop offset="100%" stop-color="<foundations.tokens.brand-500>"/>
     </linearGradient>
   </defs>
   <g clip-path="url(#containerInterior)">
@@ -131,7 +147,7 @@ clip-path 안에 sine 웨이브 path 두 개 배치, transform: translateY로 �
       </g>
     </g>
   </g>
-  <path d="M 62 32 L 138 32 L 142 230 L 58 230 Z" fill="none" stroke="<§2 muted>" stroke-width="1.2"/>
+  <path d="M 62 32 L 138 32 L 142 230 L 58 230 Z" fill="none" stroke="<foundations.tokens.muted>" stroke-width="1.2"/>
 </svg>
 ```
 
@@ -179,23 +195,21 @@ Step 0의 OMD-STACK 매칭 결과에 따라 import + JSX/Vue/Svelte 작성:
 // recharts 예시 — 일별 음용량
 import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 <LineChart width={400} height={240} data={data}>
-  <XAxis dataKey="day" stroke="<§2 muted>" />
-  <YAxis stroke="<§2 muted>" />
-  <Line type="monotone" dataKey="cups" stroke="<§2 brand-500>" strokeWidth={2} />
-  <Tooltip contentStyle={{ borderRadius: <§5 radius>, border: 'none', boxShadow: '<§6 shadow>' }} />
+  <XAxis dataKey="day" stroke="<foundations.tokens.muted>" />
+  <YAxis stroke="<foundations.tokens.muted>" />
+  <Line type="monotone" dataKey="cups" stroke="<foundations.tokens.brand-500>" strokeWidth={2} />
+  <Tooltip contentStyle={{ borderRadius: <foundations.tokens.radius-step>, border: 'none', boxShadow: '<foundations.tokens.shadow>' }} />
 </LineChart>
 ```
 
-색은 DESIGN.md §2에서 가져옴. shadow / radius / spacing은 §5/§6/§4. 임의 색 / 임의 픽셀 금지.
+색·shadow·radius·spacing은 `foundations`에서 가져온다. 임의 색 / 임의 픽셀 금지.
 
 ## Step 4 — 자기 점검 (DESIGN.md cite)
 
 생성/소싱한 모든 에셋이 DESIGN.md 토큰을 cite하는지 self-check:
-- 색: §2 Color Palette에 있는 hex만 사용했는가?
-- radius: §5에서 가져왔는가?
-- shadow: §6 Depth & Elevation 정책 따랐는가? (e.g., single-layer pure black)
-- motion: §15 Motion & Easing의 signature easing 적용했는가?
-- 톤: §10 Voice / §1 Visual Theme이 시각 결과와 일치하는가? (calm 브랜드인데 화려한 그라디언트 X)
+- 색·radius·shadow·spacing·motion: `foundations`에 선언된 exact token/rule만 사용했는가?
+- font·icon·image·logo: `typography-assets`의 source/license/availability 경계를 지켰는가?
+- 톤: `experience`의 design direction과 시각 결과가 일치하는가? (calm 브랜드인데 화려한 그라디언트 X)
 
 자기 점검 실패 → 다시 작성. **임의 색 추가 금지**.
 
@@ -211,7 +225,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
   "license": "project-internal",
   "stack_match": "tailwindcss + react",
   "lib_used": null,
-  "tokens_cited": ["§2 brand-500", "§2 brand-300", "§5 radius-step", "§15 ease-spring"],
+  "tokens_cited": ["foundations.tokens.brand-500", "foundations.tokens.brand-300", "foundations.tokens.radius-step", "foundations.tokens.ease-spring"],
   "file_path": "src/components/WaterGlass.tsx",
   "fetched_at": "<ISO>",
   "fetched_by": "omd-asset-curator"
@@ -227,7 +241,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
   "source": "library",
   "lib_used": "recharts",
   "stack_match": "react + tailwindcss",
-  "tokens_cited": ["§2 brand-500", "§5 radius-step"],
+  "tokens_cited": ["foundations.tokens.brand-500", "foundations.tokens.radius-step"],
   "file_path": "src/components/IntakeChart.tsx"
 }
 ```
@@ -248,8 +262,8 @@ import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 
 화면 디자인 중 placeholder 비주얼 발견 시:
 
-> "이 자리에 [에셋 종류]가 들어가면 좋겠어요. SVG로 직접 만들 수 있는데(약 [N]줄, [§2 brand]에 맞춰서), 그렇게 갈까요? 사진이 더 나으면 Unsplash에서 골라드릴 수도 있고요."
+> "이 자리에 [에셋 종류]가 들어가면 좋겠어요. SVG로 직접 만들 수 있는데(약 [N]줄, `foundations`의 brand token에 맞춰서), 그렇게 갈까요? 사진이 더 나으면 Unsplash에서 골라드릴 수도 있고요."
 
 차트 요청 발견 시:
 
-> "[데이터 종류] 차트는 [감지된 lib 또는 권장 lib]가 가장 자연스러워요. 색은 §2 brand-500을 라인에 쓰고, 격자는 §2 muted-200으로 깔게요. 진행할까요?"
+> "[데이터 종류] 차트는 [감지된 lib 또는 권장 lib]가 가장 자연스러워요. 색은 `foundations.tokens.brand-500`을 라인에 쓰고, 격자는 `foundations.tokens.muted-200`으로 깔게요. 진행할까요?"

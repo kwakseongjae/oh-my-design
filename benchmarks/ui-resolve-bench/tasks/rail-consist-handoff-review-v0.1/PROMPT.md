@@ -1,0 +1,5 @@
+Improve the supplied freight-rail consist handoff review so yard coordinators can inspect wagon-to-seal assignments, departure windows, and the handoff decision confidently on desktop and narrow screens.
+
+Preserve all six wagon identifiers, all eight seal identifiers and their exact wagon assignments, all four supplied departure windows, the three review views, the inspection-note toggle, the handoff-review form, and all stated summary evidence. Do not invent brake clearance, seal validation, consist release, dispatch approval, customs release, damage clearance, route authorization, or handoff completion. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The consist register, separate departure-window strip, and separate handoff decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.

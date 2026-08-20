@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.423",
+  "experiment_id": "rail-signal-compound-atomic-luna-controller-1.9.422",
+  "status": "FROZEN_BEFORE_PROVIDER",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19422",
+  "vendors_root": "/private/tmp/u19422-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "executed_cells": 0,
+  "sole_arm_delta": "exact-installed-skill-source",
+  "sources": {
+    "control_commit": "3a414a0a70dcc7fc70fb166e923ff318d3c53c66",
+    "control_skill_sha256": "2d57746474c4ba4ae440ed3ce0e0df9413291f67077ed2e519288edc2ffe0b24",
+    "candidate_commit": "1480d7cc4235600980fab64cf344cb58e3929e74",
+    "candidate_skill_sha256": "ef6e0199c90f6fcda5069505548baeedce3b58bb1208eb612bea8de44d7881f5"
+  },
+  "hashes": {
+    "preregistered_plan_sha256": "ae0b3d70e697770ee425bbf6f7d2c08f8ccd094d45e992caa600c88fa5352b45",
+    "locked_plan_sha256": "1d5ca12af0b87faee76f7ec7ee3adc3194bfe63e9e08ab9ab012453cf1f2d705",
+    "matrix_state_sha256": "e89939f7e206a34da8cfaf3528c427308100923430ba9c998902a8250e8c4080",
+    "product_initial_sha256": "eecf8f66847934e458eddc689f48ac4e22251a21b2872a289a24ff0489e32c7a"
+  },
+  "equality": {
+    "shared_task_prompt_product_runtime_model_effort_timeout_browser_contract": "6/6",
+    "host_policy_absent": "6/6",
+    "detached_clean_sources": 2
+  },
+  "freeze_reason": "preregistered-whole-cache-hash-drifted-before-provider",
+  "preregistered_cache_sha256": "39e7f1cb227b90e1d776fab9af152fc3e910cb24f644168c789bcc26b7396a7e",
+  "observed_cache_sha256_at_first_preflight": "0efa37ed8ae941c4f5f243227711012035d5b7f3f44130f37d1955d47a98f29a"
+}

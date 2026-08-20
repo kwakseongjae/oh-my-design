@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-product-comparison-1.9.743",
+  "status": "PREPARED_PROVIDER_ZERO",
+  "prepared_root": "/private/tmp/omd-council-product-comparison-1.9.743",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "scheduled_cells": 2,
+  "prepared_cells": 2,
+  "locked_plan_sha256": "c2eae26be8e9c18be9900cf770d576ba56fef2adb85e00ce848c2e2c84cad451",
+  "preparation_state_sha256": "782e792d0c7dd6065d16e13b0e3a91d69911f95681cd3d9c8354681f5c464b03",
+  "normalization_policy": "exact-task-cross-arm",
+  "required_normalization_pass": true,
+  "task_lock_attested": true,
+  "source_publishable": true,
+  "execution_artifacts_absent": true,
+  "execution_admission_allowed": true,
+  "council_on": {
+    "question_count": 0,
+    "model_lane_calls": 0,
+    "provider_mutable": false
+  }
+}

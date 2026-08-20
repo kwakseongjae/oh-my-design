@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "patch": "1.9.226",
+  "source_experiment": "assay-plate-host-policy-luna-1.9.223",
+  "source_cell": "luna-assay-r2-policy",
+  "audit_type": "non-retroactive-frozen-event-reclassification",
+  "source_events_sha256": "0d9f87b8781853a9321f806b8015c54bdff4fe3b18f0ba6e260ec5d4e970414a",
+  "original_trace_sha256": "e5c4e880d3a18d71e5a3fbb171c282d2dbbe8571c5e844e9c1f5c735784ef64e",
+  "original": {
+    "static_closure_count": 2,
+    "browser_mechanism_count": 0,
+    "browser_recovery_count": 0,
+    "verification_after_ready_count": 0,
+    "compliance_pass": true
+  },
+  "native_tool_aware": {
+    "static_closure_count": 2,
+    "browser_mechanism_count": 2,
+    "browser_recovery_count": 1,
+    "verification_after_ready_count": 1,
+    "compliance_pass": false
+  },
+  "policy_state_at_execution": {
+    "browser_attempts": 0,
+    "delivery": "blocked"
+  },
+  "verdict": "native-browser-observability-defect-confirmed",
+  "retroactive_score_change": false
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.1",
+  "kind": "bench-image-preprocess-manifest",
+  "task_id": "bookshop-multipage",
+  "generator": "grok-build-cli image_gen (grok-imagine)",
+  "fairness": "single shared asset base generated once per task; all arms start from identical assets",
+  "pace_ms": 8000,
+  "generated_at": "2026-08-17T19:10:15.890Z",
+  "items": [
+    {
+      "file": "hero-shop.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 308183,
+      "sha256": "e2b56ac7df2d0cd36337f9ade40e68880314e254e6ae13394fcdeddd04f4421b",
+      "prompt": "Interior of an independent bookstore-cafe: tall wooden bookshelves, espresso bar in the back, warm afternoon light, a reading nook",
+      "style": "warm editorial film palette, soft grain, no readable text, no faces"
+    },
+    {
+      "file": "space-cafe.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 260798,
+      "sha256": "1250023dab6e31754c5c85bd5d4e0de4c17f9fb61141849aa7817d1f141b8405",
+      "prompt": "Corner of a bookstore cafe with a marble counter, two ceramic cups, pastry case softly out of focus",
+      "style": "warm editorial film palette, shallow depth, no text, no faces"
+    },
+    {
+      "file": "space-shelves.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 294852,
+      "sha256": "c50eb72fc59d39ff64f7da6d81f75284292c25c7562e7e3ee85366acaf31ee0f",
+      "prompt": "Close view of curated bookshelf spines in muted colors with small paper shelf-talkers",
+      "style": "warm editorial film palette, no readable text"
+    },
+    {
+      "file": "event-reading.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 322065,
+      "sha256": "a2bbb33cab8a24275498a8f09c847e50fc4fa0bd6d8ca4289c7e610ea87e9d7c",
+      "prompt": "Cozy evening author reading setup: empty chairs in rows, small stage stool, warm lamp light",
+      "style": "warm editorial film palette, no faces, no text"
+    },
+    {
+      "file": "event-workshop.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 329018,
+      "sha256": "8614478024e853e4afede8e3d9d2e1591eb207836c447c5b1f80288705d1a6b8",
+      "prompt": "Bookbinding workshop table with paper, thread, awls and folded signatures arranged neatly",
+      "style": "warm editorial film palette, overhead angle, no text"
+    },
+    {
+      "file": "event-club.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 324370,
+      "sha256": "61a2c45247978dd5879a65195b98bdcdb90b0bc2bba23bdf36800914310e57d3",
+      "prompt": "Book club table with open books, tea pot and cups, plants by a window",
+      "style": "warm editorial film palette, no faces, no readable text"
+    }
+  ]
+}

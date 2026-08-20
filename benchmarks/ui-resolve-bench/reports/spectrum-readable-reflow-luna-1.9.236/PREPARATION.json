@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "spectrum-readable-reflow-luna-1.9.236",
+  "status": "PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19236",
+  "vendors_root": "/private/tmp/u19236-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "locked_plan_sha256": "d06b1479e282564aebbeba11cd8087892d143564f433673b775da3acb777186b",
+  "preparation_state_sha256": "fc134454f5ec74d153211814d2604c5065e4c833916c85490f75af4507e37de3",
+  "equality": {
+    "task": true,
+    "prompt": true,
+    "product": true,
+    "design": true,
+    "activation": true,
+    "runtime": true,
+    "model": true,
+    "effort": true,
+    "timeout": true,
+    "installed_proof_policy": true,
+    "git_root_all_cells": true,
+    "source_publishable_all_cells": true
+  },
+  "sole_arm_delta": "exact-installed-skill-source",
+  "next_command": "node benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs --root /private/tmp/u19236 --max-new-cells 1",
+  "next_cell": "luna-spectrum-r1-close",
+  "same_root_retry": false
+}

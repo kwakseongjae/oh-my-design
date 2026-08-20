@@ -1,0 +1,44 @@
+{
+ "schema_version": "0.1",
+ "contract_id": "omd-grok46-activation-prefixes-v0.1",
+ "experiment_id": "omd-grok46-wow-preview-2.0.0-v0.2",
+ "provenance": "Byte-identical to the Luna caf0e62d preregistration invocation prefixes (extracted from the immutable caf0 materialized cells and SHA-verified against the preregistered task prompt hashes). The native activation prefix is the only arm-specific prompt delta; its exact bytes and hashes are public (fairness contract).",
+ "prefixes": {
+  "anthropic-frontend-design": {
+   "prefix": "Use the installed $frontend-design skill for this task.",
+   "bytes": 55,
+   "sha256": "22c4350b32cd1e1898997c00926ab39344ca3b928c60a65a0861d9c339255822"
+  },
+  "impeccable-prompt-only": {
+   "prefix": "Use the installed $impeccable skill for this task.",
+   "bytes": 50,
+   "sha256": "68013d0876e2b29999ac4855c1e4b1df764b797e15712148a8a166775d88eb2f"
+  },
+  "ui-ux-pro-max": {
+   "prefix": "Use the installed $ui-ux-pro-max skill for this task.",
+   "bytes": 53,
+   "sha256": "e78a5d0888626304c532a9ef3e06a18a109541dcb8eefedbb38fc741ded3a663"
+  },
+  "taste-eligible-scope-only": {
+   "prefix": "Use the installed $design-taste-frontend skill for this task.",
+   "bytes": 61,
+   "sha256": "d0c4adcdedf2e79844b92bd2647614628ec5f86af9d2a5dbbb7902af430eb34c"
+  },
+  "omd-autopilot-v2": {
+   "prefix": "Use the installed $omd-autopilot skill for this task.\n\nOmD native package activation v0.2: an immutable external authority controller is preregistered for this cell. The main agent is not the project owner and must never issue --reviewer/--authority-transition-approved or calculate package hashes. Bootstrap and use exactly $OMD_AUTHORITY_CONTROLLER_RUN_DIR as the mission run directory. After writing exactly one compiler-valid graph.json, provenance.json, and coverage.json draft under that run's system directory, invoke exactly once: node $OMD_AUTHORITY_CONTROLLER_EXECUTABLE . $OMD_AUTHORITY_CONTROLLER_RUN_DIR. These exact preregistered bindings are transported through the isolated Codex shell; they are not authority secrets. The execution-owned controller and its child runtime live outside provider-writable roots; only it may prepare, externally approve, compile, checkpoint, atomically adopt, and validate the package. If that one activation fails, stop system work and preserve the failure; never create review-v2/package-v2 or retry. Immediately reserve the remaining execution budget for the product route, including every required state and an explicit unavailable-information state.",
+   "bytes": 1200,
+   "sha256": "37a3d0c7a640e3f35178e7e509f346499ed8896c52527cd9a68fd25e73daee4c"
+  },
+  "model-only": {
+   "prefix": null,
+   "bytes": 0,
+   "sha256": null
+  },
+  "hallmark": {
+   "prefix": "Use the installed $hallmark skill for this task.",
+   "bytes": 48,
+   "sha256": "0d47b6da96b6d23c11a458845d2830726de8080743399ee0af5b86079d74174b",
+   "note": "supplementary arm (post-freeze discovery), same native-activation pattern as the other arms"
+  }
+ }
+}

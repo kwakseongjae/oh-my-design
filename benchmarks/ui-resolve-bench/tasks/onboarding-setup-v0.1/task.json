@@ -1,0 +1,89 @@
+{
+  "id": "onboarding-setup-v0.1",
+  "version": "0.3.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "onboarding-v1",
+  "review_brief": "A focused first-run setup flow for a small research workspace. Compare whether the result explains the next decision, keeps role and preference state legible, and makes creating the first workspace feel safe and reversible.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": {
+    "landmarks": {
+      "h1_count": { "exact": 1 },
+      "main_count": { "exact": 1 },
+      "nav_count": { "min": 0 },
+      "footer_count": { "min": 1 }
+    }
+  },
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": [
+    "[data-bench='role-option']",
+    "[data-bench='digest-toggle']",
+    "[data-bench='workspace-form']",
+    "[data-bench='workspace-name']",
+    "[data-bench='form-status']"
+  ],
+  "protected_hook_counts": {
+    "[data-bench='role-option']": 3,
+    "[data-bench='digest-toggle']": 1,
+    "[data-bench='workspace-form']": 1,
+    "[data-bench='workspace-name']": 1,
+    "[data-bench='form-status']": 1
+  },
+  "journey_oracle": {
+    "choice": {
+      "selector": "[data-bench='role-option']",
+      "value_attribute": "data-role",
+      "body_dataset": "role",
+      "values": ["founder", "designer", "engineer"],
+      "count": 3,
+      "initial": "founder",
+      "selected": "designer"
+    },
+    "toggle": { "selector": "[data-bench='digest-toggle']" },
+    "form": {
+      "form_selector": "[data-bench='workspace-form']",
+      "field_selector": "[data-bench='workspace-name']",
+      "status_selector": "[data-bench='form-status']",
+      "invalid_value": "",
+      "valid_value": "Field Notes"
+    }
+  },
+  "protected_unknown_patterns": [
+    "\\b(?:10x|99(?:\\.9)?%|number[ -]?one|guaranteed|revolutionary|supercharge|magical|seamless)\\b",
+    "\\btrusted by\\b",
+    "\\b\\d+(?:\\.\\d+)?[x×]\\s+(?:faster|better|more|improvement|productivity)\\b",
+    "\\b\\d[\\d,]*\\+?\\s+(?:customers|companies|teams|users|reviews)\\b",
+    "\\b(?:what customers say|customer stories|loved by|teams at|used by)\\b",
+    "[★☆]{3,}"
+  ],
+  "protected_unknown_selectors": [
+    "blockquote",
+    "[class*='testimonial' i]",
+    "[class*='logo-wall' i]",
+    "[class*='social-proof' i]"
+  ],
+  "design_oracle": {
+    "page_background": "#F4F2EC",
+    "primary_action": "#174E3A",
+    "accent": "#D97841",
+    "ink": "#15211B",
+    "surface": "#FFFFFF",
+    "border": "#D5D8CF",
+    "muted_text": "#5B675F",
+    "card_radius_px": 18,
+    "control_radius_px": 12,
+    "font_family": { "body_any": ["Arial"], "display_any": ["Georgia"] },
+    "selectors": {
+      "primary_action": "[data-primary-action]",
+      "card": "[data-onboarding-card]",
+      "display": "h1"
+    }
+  }
+}

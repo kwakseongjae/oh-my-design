@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.515",
+  "experiment_id": "satellite-selector-provenance-luna-1.9.514",
+  "status": "SIX_CELLS_PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19514",
+  "vendors_root": "/private/tmp/u19514-vendors",
+  "locked_plan_sha256": "5a1e924f6c9ffa433b511e773b848d533b84d1dff22f9d815d0611e28640ac7f",
+  "equality": {
+    "scheduled_cells": 6,
+    "prepared_cells": 6,
+    "core_prompt_equal": 6,
+    "prompt_equal": 6,
+    "starter_equal": 6,
+    "product_tree_equal": 6,
+    "runtime_equal": 6,
+    "model_equal": 6,
+    "effort_equal": 6,
+    "timeout_equal": 6
+  },
+  "source_attestation": {
+    "control": {"commit": "86546d5af67d4a71f0b6a867ec3869ec299f3159", "detached": true, "clean": true},
+    "candidate": {"commit": "b0aa9d5a95b3e60bd2c1652cc13773e51954820c", "detached": true, "clean": true}
+  },
+  "installed_source_sha256": {
+    "control_skill": "f71004fba4b8552a3c2c61fe25168c5d64be5bcaf07e4f5a08f5533b591dfdea",
+    "candidate_skill": "7bae4d81a4388442ae31643b11fa28450486f43bd3e252586924e2bc3f7c94ba",
+    "shared_browser_runner": "bbd1b2629037381873d230ce15c07a1b97275fc04ab327e51f0d6df1d4b309b3",
+    "control_artifact_helper": "4005623c6156e5f59981bb74a561d0baa04ea13eae10dd80e39fa3745a5230b7",
+    "candidate_artifact_helper": "89f254c5f44a6338dacecee1a7b81675158b26b0587775ae5a5197172fd8843f"
+  },
+  "candidate_guardrail_presence": {
+    "skill_pre_edit_selector_rule": true,
+    "helper_anchor_validation": true,
+    "lock_stdout_selector_semantics": true
+  },
+  "next": "Run luna-satellite-r1-control once with Luna/high and no retry; runtime preflight must confirm the exact named consumer browser and auth before provider execution."
+}

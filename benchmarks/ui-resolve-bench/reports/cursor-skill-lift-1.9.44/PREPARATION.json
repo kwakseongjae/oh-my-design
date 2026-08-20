@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.3",
+  "product_version": "1.9.44",
+  "status": "executed_stopped_preregistered",
+  "output_root": "/tmp/u1944",
+  "scheduled_cells": 9,
+  "prepared_cells": 9,
+  "matrix_sha256": "412efd7dcfde44768ab1095a57a37aaf718c474fda8362243f838e7cc019eba3",
+  "source_commit": "e331c451b510e7f3c64ca7219fbbf0c870e76057",
+  "compute_control_commit": "05cf4dbd50c0d02cb2481012df1a6a3b46d0f165",
+  "representative_cell": {
+    "id": "pricing-t1-omd",
+    "files": [
+      ".benchmark/PROMPT.md",
+      ".benchmark/manifest.json",
+      ".benchmark/matrix-cell.json",
+      ".cursor/skills/omd-apply/SKILL.md",
+      ".cursor/skills/omd-apply/agents/openai.yaml",
+      "AGENTS.md",
+      "DESIGN.md",
+      "index.html"
+    ],
+    "manifest_sha256": "24b9991eb780918f011f03983def8c8b077dd89a10b35a6529b9a8d247d97bca",
+    "matrix_cell_sha256": "701734bf9508995ae4deb8080a586e953e74b456cc546665a162849f5d01835e",
+    "starter_sha256": "07c3374778a21511822ca710d7018b1cd3b1a3dd449242e8063fcd73c8423705",
+    "design_md_sha256": "9521d3ef10d6f25823d6591ea8bab45967ec7ad0a078cac2de28a87b570ca721",
+    "installed_skill_sha256": "86671addde729ccb1bbfa3a1a04e1e912b71e3cd1eca182dcceea7f7f7b2d0a0",
+    "skill_sidecar_sha256": "f0ad5294de3f599bbed124708c61988be9098e20d4723ce3574023144751253e"
+  },
+  "provider_execution_started": true,
+  "approval": {
+    "received_in_codex_conversation": true,
+    "scope": "Nine serial Cursor Grok 4.5 High cells using only the locked per-cell file boundary.",
+    "last_review": "The user explicitly approved the full nine-cell per-workspace file boundary in the Codex conversation before matrix execution.",
+    "retry_policy": "none-primary",
+    "stop_policy": "first-failure"
+  }
+}

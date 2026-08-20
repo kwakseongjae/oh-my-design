@@ -1,0 +1,1559 @@
+{
+  "runs": [
+    {
+      "run_id": "cartography-r1-omd",
+      "benchmark_family": "skill",
+      "suite_version": "ui-resolve-v0.2",
+      "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+      "system_id": "luna-high-omd-1.9.731",
+      "model_id": "gpt-5.6-luna",
+      "skill_id": "omd:apply",
+      "harness_id": null,
+      "budget_tier": "high",
+      "task_id": "cartography-sheet-transfer-v0.1",
+      "trial_index": 1,
+      "run_status": "complete",
+      "validity": "valid",
+      "attribution_scope": "provider-observed-only",
+      "public_model_attribution_eligible": false,
+      "ui_resolved": true,
+      "objective_score": 85,
+      "objective_max": 85,
+      "wall_time_ms": 226185,
+      "tokens": 750186,
+      "token_usage": {
+        "input_tokens": 738777,
+        "cached_input_tokens": 664576,
+        "output_tokens": 11409,
+        "reasoning_output_tokens": 5984,
+        "total_tokens": 750186,
+        "observed_components": [
+          "cached_input_tokens",
+          "input_tokens",
+          "output_tokens",
+          "reasoning_output_tokens"
+        ],
+        "input_output_complete": true
+      },
+      "provider_cost_equivalent_usd": null,
+      "execution_control": {
+        "comparison_mode": "native-capability",
+        "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+        "temperature_policy": "runtime-default-frozen",
+        "timeout_seconds": 720,
+        "max_concurrency": 1,
+        "latency_comparison": "descriptive-only",
+        "retry_policy": "none-primary",
+        "timeout_policy": "count-as-valid-failure",
+        "infrastructure_policy": "retain-freeze-and-repreregister",
+        "task_order_policy": "fixed-preregistered",
+        "admission_normalization_policy": "paired-cross-task-comparison",
+        "pacing": {
+          "policy": "fixed-inter-cell",
+          "inter_cell_delay_seconds": 30,
+          "applies_between_cells_only": true,
+          "counts_toward_cell_wall_time": false
+        },
+        "token_budget": {
+          "mode": "observed-only",
+          "limit_tokens": null,
+          "usage_required": true,
+          "account_components": [
+            "input",
+            "cached_input",
+            "output",
+            "reasoning_output"
+          ],
+          "cached_input_separate": true,
+          "cost_policy": "provider-reported-or-pinned-price-equivalent"
+        },
+        "step_budget": {
+          "mode": "observed-only",
+          "limit_steps": null
+        }
+      },
+      "usage_completeness": {
+        "evidence_mode": "provider-event",
+        "available": true,
+        "input_output_complete": true,
+        "observed_components": [
+          "cached_input_tokens",
+          "input_tokens",
+          "output_tokens",
+          "reasoning_output_tokens"
+        ],
+        "reasoning_visibility": "reported",
+        "cached_input_visibility": "reported"
+      },
+      "runtime_model_usage": [
+        {
+          "model": "gpt-5.6-luna",
+          "input_tokens": 738777,
+          "cached_input_tokens": 664576,
+          "output_tokens": 11409,
+          "cost_usd": null,
+          "context_window": null,
+          "max_output_tokens": null
+        }
+      ],
+      "runtime_diagnostics": {
+        "child_exit_code": 0,
+        "diagnostic_availability": {
+          "available": false,
+          "fields": [],
+          "reason": "codex-stream-diagnostic-normalization-not-supported"
+        },
+        "tool_error_count": null,
+        "recoverable_tool_error_count": null,
+        "infrastructure_tool_error_count": null,
+        "optional_verifier_environment_error_count": null,
+        "recovered_temp_path_error_count": null,
+        "sandbox_error_count": null,
+        "sandbox_cwd_error_count": null,
+        "agent_tool_call_count": null,
+        "agent_tool_error_count": null,
+        "requested_agent_ids": [],
+        "agent_calls": [],
+        "milestones": null,
+        "proof_trace": {
+          "schema_version": "0.1",
+          "runtime": "codex",
+          "analyzable": true,
+          "product_edit_count": 1,
+          "product_revision_count": 1,
+          "last_product_edit_event_index": 20,
+          "post_edit_command_count": 2,
+          "static_closure_count": 1,
+          "failed_static_closure_count": 0,
+          "browser_mechanism_count": 1,
+          "browser_recovery_probe_count": 0,
+          "browser_recovery_count": 0,
+          "duplicate_static_closure_count": 0,
+          "verification_after_ready_count": 0,
+          "compliance_pass": true,
+          "revisions": [
+            {
+              "revision": 1,
+              "first_edit_event_index": 20,
+              "last_edit_event_index": 20,
+              "edit_count": 1,
+              "commands": [
+                {
+                  "index": 22,
+                  "command": "/opt/homebrew/bin/zsh -lc 'node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-close .omd/reflow-closure.json'",
+                  "mechanism": "shell",
+                  "command_outcome": "succeeded",
+                  "browser": false,
+                  "recovery_probe": false,
+                  "static_verification": true,
+                  "neutral": false
+                },
+                {
+                  "index": 25,
+                  "command": "/opt/homebrew/bin/zsh -lc 'OMD_REFLOW_ARTIFACT=.omd/reflow-closure.json OMD_REFLOW_PRODUCT=index.html OMD_REFLOW_HELPER=.agents/skills/omd-apply/scripts/reflow-artifact.mjs browser-harness < .agents/skills/omd-apply/scripts/reflow-browser.py'",
+                  "mechanism": "shell",
+                  "command_outcome": "failed",
+                  "browser": true,
+                  "recovery_probe": false,
+                  "static_verification": false,
+                  "neutral": false
+                }
+              ],
+              "static_closure_count": 1,
+              "failed_static_closure_count": 0,
+              "browser_mechanism_count": 1,
+              "browser_recovery_probe_count": 0,
+              "browser_recovery_count": 0,
+              "duplicate_static_closure_count": 0,
+              "verification_after_ready_count": 0
+            }
+          ]
+        },
+        "proof_execution_gate": null,
+        "host_policy": null,
+        "candidate_preflight": {
+          "required": true,
+          "receipt_present": true,
+          "receipt_state": "passed",
+          "receipt_valid": true,
+          "product_present": true,
+          "candidate_sha256": "8b2b5a10e718213a62c7b1a4e9f2d5575978d2e9a1cd4e95ad413ba32e7b5585",
+          "final_product_sha256": "8b2b5a10e718213a62c7b1a4e9f2d5575978d2e9a1cd4e95ad413ba32e7b5585",
+          "source_contract_sha256_match": true,
+          "sealed_inventory_sha256_match": true,
+          "candidate_final_bytes_match": true,
+          "pass": true
+        }
+      },
+      "attribution": {
+        "runtime": {
+          "runtime_target": "codex",
+          "agent": "codex-cli",
+          "agent_version": null,
+          "binary_sha256": null,
+          "model_requested": "gpt-5.6-luna",
+          "model_reported": null,
+          "model_evidence_mode": "cli-argument",
+          "effort_requested": "high",
+          "auth_mode": null,
+          "provider_route": null,
+          "provider_effort_argument": null,
+          "hook_trust_bypassed": false,
+          "usage_attribution": {
+            "available": true,
+            "evidence_mode": "provider-event",
+            "reason": null
+          }
+        },
+        "source_commit": "4e9514b91837cbed269320083a39641f41582729",
+        "source_attestation": {
+          "vcs": "git",
+          "dirty": false,
+          "explicit_dirty_opt_in": false,
+          "status_entries": 0,
+          "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "publishable": true,
+          "detached": true,
+          "workspace_commit": null
+        },
+        "agent_bundle_sha256": null,
+        "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+        "track_eligibility": {
+          "eligible": true,
+          "off_label": false,
+          "explicit_opt_in": false
+        }
+      },
+      "delivery": {
+        "product_changed": true,
+        "changed_product_files": [
+          {
+            "path": "index.html",
+            "status": "modified",
+            "before_sha256": "290763b0e3ed9e448a8e547c4735fbe3781942e791d32e51db08021bcd355eee",
+            "after_sha256": "8b2b5a10e718213a62c7b1a4e9f2d5575978d2e9a1cd4e95ad413ba32e7b5585"
+          }
+        ]
+      },
+      "evidence": {
+        "manifest": ".benchmark/manifest.json",
+        "run_result": ".benchmark/run-result.json",
+        "score": ".benchmark/score.json",
+        "screenshots": ".benchmark/screenshots",
+        "proof_trace": ".benchmark/proof-trace.json",
+        "host_policy_state": null,
+        "candidate_preflight_receipt": ".omd/static-preview-receipt.json"
+      }
+    },
+    {
+      "run_id": "cartography-r1-impeccable",
+      "benchmark_family": "skill",
+      "suite_version": "ui-resolve-v0.2",
+      "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+      "system_id": "luna-high-impeccable-prompt-only",
+      "model_id": "gpt-5.6-luna",
+      "skill_id": "impeccable",
+      "harness_id": null,
+      "budget_tier": "high",
+      "task_id": "cartography-sheet-transfer-v0.1",
+      "trial_index": 1,
+      "run_status": "complete",
+      "validity": "valid",
+      "attribution_scope": "provider-observed-only",
+      "public_model_attribution_eligible": false,
+      "ui_resolved": false,
+      "objective_score": 75,
+      "objective_max": 85,
+      "wall_time_ms": 176816,
+      "tokens": 174422,
+      "token_usage": {
+        "input_tokens": 165314,
+        "cached_input_tokens": 136704,
+        "output_tokens": 9108,
+        "reasoning_output_tokens": 2435,
+        "total_tokens": 174422,
+        "observed_components": [
+          "cached_input_tokens",
+          "input_tokens",
+          "output_tokens",
+          "reasoning_output_tokens"
+        ],
+        "input_output_complete": true
+      },
+      "provider_cost_equivalent_usd": null,
+      "execution_control": {
+        "comparison_mode": "native-capability",
+        "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+        "temperature_policy": "runtime-default-frozen",
+        "timeout_seconds": 720,
+        "max_concurrency": 1,
+        "latency_comparison": "descriptive-only",
+        "retry_policy": "none-primary",
+        "timeout_policy": "count-as-valid-failure",
+        "infrastructure_policy": "retain-freeze-and-repreregister",
+        "task_order_policy": "fixed-preregistered",
+        "admission_normalization_policy": "paired-cross-task-comparison",
+        "pacing": {
+          "policy": "fixed-inter-cell",
+          "inter_cell_delay_seconds": 30,
+          "applies_between_cells_only": true,
+          "counts_toward_cell_wall_time": false
+        },
+        "token_budget": {
+          "mode": "observed-only",
+          "limit_tokens": null,
+          "usage_required": true,
+          "account_components": [
+            "input",
+            "cached_input",
+            "output",
+            "reasoning_output"
+          ],
+          "cached_input_separate": true,
+          "cost_policy": "provider-reported-or-pinned-price-equivalent"
+        },
+        "step_budget": {
+          "mode": "observed-only",
+          "limit_steps": null
+        }
+      },
+      "usage_completeness": {
+        "evidence_mode": "provider-event",
+        "available": true,
+        "input_output_complete": true,
+        "observed_components": [
+          "cached_input_tokens",
+          "input_tokens",
+          "output_tokens",
+          "reasoning_output_tokens"
+        ],
+        "reasoning_visibility": "reported",
+        "cached_input_visibility": "reported"
+      },
+      "runtime_model_usage": [
+        {
+          "model": "gpt-5.6-luna",
+          "input_tokens": 165314,
+          "cached_input_tokens": 136704,
+          "output_tokens": 9108,
+          "cost_usd": null,
+          "context_window": null,
+          "max_output_tokens": null
+        }
+      ],
+      "runtime_diagnostics": {
+        "child_exit_code": 0,
+        "diagnostic_availability": {
+          "available": false,
+          "fields": [],
+          "reason": "codex-stream-diagnostic-normalization-not-supported"
+        },
+        "tool_error_count": null,
+        "recoverable_tool_error_count": null,
+        "infrastructure_tool_error_count": null,
+        "optional_verifier_environment_error_count": null,
+        "recovered_temp_path_error_count": null,
+        "sandbox_error_count": null,
+        "sandbox_cwd_error_count": null,
+        "agent_tool_call_count": null,
+        "agent_tool_error_count": null,
+        "requested_agent_ids": [],
+        "agent_calls": [],
+        "milestones": null,
+        "proof_trace": {
+          "schema_version": "0.1",
+          "runtime": "codex",
+          "analyzable": true,
+          "product_edit_count": 1,
+          "product_revision_count": 1,
+          "last_product_edit_event_index": 13,
+          "post_edit_command_count": 1,
+          "static_closure_count": 0,
+          "failed_static_closure_count": 0,
+          "browser_mechanism_count": 1,
+          "browser_recovery_probe_count": 0,
+          "browser_recovery_count": 0,
+          "duplicate_static_closure_count": 0,
+          "verification_after_ready_count": 0,
+          "compliance_pass": true,
+          "revisions": [
+            {
+              "revision": 1,
+              "first_edit_event_index": 13,
+              "last_edit_event_index": 13,
+              "edit_count": 1,
+              "commands": [
+                {
+                  "index": 16,
+                  "command": "/opt/homebrew/bin/zsh -lc \"browser-harness <<'PY'\nfrom agent_helpers import *\nnew_tab('file:///private/tmp/omd-fresh-frontier-comparison-1.9.732-v2/cartography-r1-impeccable/index.html')\nwait_for_load()\nprint(page_info())\ncapture_screenshot('/private/tmp/cartography-desktop.png')\nprint(js(\\\"\\\"\\\"(() => ({width: innerWidth, height: innerHeight, scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth, records: document.querySelectorAll('[data-bench=record-id]').length, units: document.querySelectorAll('[data-bench=unit-id]').length, windows: document.querySelectorAll('[data-bench=window-id]').length, bodyView: document.body.dataset.view}))()\\\"\\\"\\\"))\nPY\"",
+                  "mechanism": "shell",
+                  "command_outcome": "failed",
+                  "browser": true,
+                  "recovery_probe": false,
+                  "static_verification": false,
+                  "neutral": false
+                }
+              ],
+              "static_closure_count": 0,
+              "failed_static_closure_count": 0,
+              "browser_mechanism_count": 1,
+              "browser_recovery_probe_count": 0,
+              "browser_recovery_count": 0,
+              "duplicate_static_closure_count": 0,
+              "verification_after_ready_count": 0
+            }
+          ]
+        },
+        "proof_execution_gate": null,
+        "host_policy": null,
+        "candidate_preflight": {
+          "required": false,
+          "receipt_present": false,
+          "receipt_state": null,
+          "receipt_valid": false,
+          "product_present": false,
+          "candidate_sha256": null,
+          "final_product_sha256": null,
+          "source_contract_sha256_match": false,
+          "sealed_inventory_sha256_match": false,
+          "candidate_final_bytes_match": false,
+          "pass": true
+        }
+      },
+      "attribution": {
+        "runtime": {
+          "runtime_target": "codex",
+          "agent": "codex-cli",
+          "agent_version": null,
+          "binary_sha256": null,
+          "model_requested": "gpt-5.6-luna",
+          "model_reported": null,
+          "model_evidence_mode": "cli-argument",
+          "effort_requested": "high",
+          "auth_mode": null,
+          "provider_route": null,
+          "provider_effort_argument": null,
+          "hook_trust_bypassed": false,
+          "usage_attribution": {
+            "available": true,
+            "evidence_mode": "provider-event",
+            "reason": null
+          }
+        },
+        "source_commit": "4d849eb75f216109ea7053ed21530a11fafcc786",
+        "source_attestation": {
+          "vcs": "git",
+          "dirty": false,
+          "explicit_dirty_opt_in": false,
+          "status_entries": 0,
+          "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "publishable": true,
+          "detached": true,
+          "workspace_commit": null
+        },
+        "agent_bundle_sha256": null,
+        "activation_delta_sha256": "479405c9cba8dffb2088aac69c90ea53697f8760c19ccdf6008f91343a6cabfa",
+        "track_eligibility": {
+          "eligible": true,
+          "off_label": false,
+          "explicit_opt_in": false
+        }
+      },
+      "delivery": {
+        "product_changed": true,
+        "changed_product_files": [
+          {
+            "path": "index.html",
+            "status": "modified",
+            "before_sha256": "290763b0e3ed9e448a8e547c4735fbe3781942e791d32e51db08021bcd355eee",
+            "after_sha256": "bfdb177808f992a781cd2b6351b140d33f8a512c99231eabeea80d5dc61a403b"
+          }
+        ]
+      },
+      "evidence": {
+        "manifest": ".benchmark/manifest.json",
+        "run_result": ".benchmark/run-result.json",
+        "score": ".benchmark/score.json",
+        "screenshots": ".benchmark/screenshots",
+        "proof_trace": ".benchmark/proof-trace.json",
+        "host_policy_state": null,
+        "candidate_preflight_receipt": null
+      }
+    },
+    {
+      "run_id": "numismatics-r1-impeccable",
+      "benchmark_family": "skill",
+      "suite_version": "ui-resolve-v0.2",
+      "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+      "system_id": "luna-high-impeccable-prompt-only",
+      "model_id": "gpt-5.6-luna",
+      "skill_id": "impeccable",
+      "harness_id": null,
+      "budget_tier": "high",
+      "task_id": "numismatics-tray-accession-v0.1",
+      "trial_index": 1,
+      "run_status": "complete",
+      "validity": "valid",
+      "attribution_scope": "provider-observed-only",
+      "public_model_attribution_eligible": false,
+      "ui_resolved": false,
+      "objective_score": 75,
+      "objective_max": 85,
+      "wall_time_ms": 449591,
+      "tokens": 1414202,
+      "token_usage": {
+        "input_tokens": 1391027,
+        "cached_input_tokens": 1314560,
+        "output_tokens": 23175,
+        "reasoning_output_tokens": 8135,
+        "total_tokens": 1414202,
+        "observed_components": [
+          "cached_input_tokens",
+          "input_tokens",
+          "output_tokens",
+          "reasoning_output_tokens"
+        ],
+        "input_output_complete": true
+      },
+      "provider_cost_equivalent_usd": null,
+      "execution_control": {
+        "comparison_mode": "native-capability",
+        "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+        "temperature_policy": "runtime-default-frozen",
+        "timeout_seconds": 720,
+        "max_concurrency": 1,
+        "latency_comparison": "descriptive-only",
+        "retry_policy": "none-primary",
+        "timeout_policy": "count-as-valid-failure",
+        "infrastructure_policy": "retain-freeze-and-repreregister",
+        "task_order_policy": "fixed-preregistered",
+        "admission_normalization_policy": "paired-cross-task-comparison",
+        "pacing": {
+          "policy": "fixed-inter-cell",
+          "inter_cell_delay_seconds": 30,
+          "applies_between_cells_only": true,
+          "counts_toward_cell_wall_time": false
+        },
+        "token_budget": {
+          "mode": "observed-only",
+          "limit_tokens": null,
+          "usage_required": true,
+          "account_components": [
+            "input",
+            "cached_input",
+            "output",
+            "reasoning_output"
+          ],
+          "cached_input_separate": true,
+          "cost_policy": "provider-reported-or-pinned-price-equivalent"
+        },
+        "step_budget": {
+          "mode": "observed-only",
+          "limit_steps": null
+        }
+      },
+      "usage_completeness": {
+        "evidence_mode": "provider-event",
+        "available": true,
+        "input_output_complete": true,
+        "observed_components": [
+          "cached_input_tokens",
+          "input_tokens",
+          "output_tokens",
+          "reasoning_output_tokens"
+        ],
+        "reasoning_visibility": "reported",
+        "cached_input_visibility": "reported"
+      },
+      "runtime_model_usage": [
+        {
+          "model": "gpt-5.6-luna",
+          "input_tokens": 1391027,
+          "cached_input_tokens": 1314560,
+          "output_tokens": 23175,
+          "cost_usd": null,
+          "context_window": null,
+          "max_output_tokens": null
+        }
+      ],
+      "runtime_diagnostics": {
+        "child_exit_code": 0,
+        "diagnostic_availability": {
+          "available": false,
+          "fields": [],
+          "reason": "codex-stream-diagnostic-normalization-not-supported"
+        },
+        "tool_error_count": null,
+        "recoverable_tool_error_count": null,
+        "infrastructure_tool_error_count": null,
+        "optional_verifier_environment_error_count": null,
+        "recovered_temp_path_error_count": null,
+        "sandbox_error_count": null,
+        "sandbox_cwd_error_count": null,
+        "agent_tool_call_count": null,
+        "agent_tool_error_count": null,
+        "requested_agent_ids": [],
+        "agent_calls": [],
+        "milestones": null,
+        "proof_trace": {
+          "schema_version": "0.1",
+          "runtime": "codex",
+          "analyzable": true,
+          "product_edit_count": 5,
+          "product_revision_count": 2,
+          "last_product_edit_event_index": 42,
+          "post_edit_command_count": 10,
+          "static_closure_count": 6,
+          "failed_static_closure_count": 0,
+          "browser_mechanism_count": 2,
+          "browser_recovery_probe_count": 3,
+          "browser_recovery_count": 4,
+          "duplicate_static_closure_count": 4,
+          "verification_after_ready_count": 6,
+          "compliance_pass": false,
+          "revisions": [
+            {
+              "revision": 1,
+              "first_edit_event_index": 13,
+              "last_edit_event_index": 15,
+              "edit_count": 2,
+              "commands": [
+                {
+                  "index": 17,
+                  "command": "/opt/homebrew/bin/zsh -lc \"node .agents/skills/impeccable/scripts/detect.mjs --json index.html || true\nprintf '\\\\n--- required identifiers ---\\\\n'\nrg -o 'COIN-[A-Z]+-[0-9]+|TRAY-[0-9]+|CABINET-[A-Z][0-9]|[0-9]{2}:[0-9]{2}–[0-9]{2}:[0-9]{2}|Object register|Cabinet windows|Accession decision|Include mount-note copy|Accession curator|4 object groups · 6 cabinet trays · 3 cabinet windows' index.html | sort\nprintf '\\\\n--- forbidden validation claims ---\\\\n'\nrg -ni 'alloy verified|date certified|mount calibrated|provenance validated|tray seal verified|cabinet accepted|catalog published|accession approved' index.html || true\nprintf '\\\\n--- playwright ---\\\\n'\nplaywright --help | sed -n '1,80p'\"",
+                  "mechanism": "shell",
+                  "command_outcome": "succeeded",
+                  "browser": false,
+                  "recovery_probe": false,
+                  "static_verification": true,
+                  "neutral": false
+                },
+                {
+                  "index": 20,
+                  "command": "/opt/homebrew/bin/zsh -lc \"node -e \\\"import('playwright').then(m=>console.log('playwright module available',\"'!!m.chromium)).catch(e=>{console.error(e.message);process.exit(1)})\"; command -v python3'",
+                  "mechanism": "shell",
+                  "command_outcome": "succeeded",
+                  "browser": false,
+                  "recovery_probe": false,
+                  "static_verification": true,
+                  "neutral": false
+                },
+                {
+                  "index": 22,
+                  "command": "/opt/homebrew/bin/zsh -lc \"node --input-type=module -e 'import {chromium} from \\\"playwright\\\"; const browser=await chromium.launch({headless:true}); const page=await browser.newPage({viewport:{width:1120,height:900}}); await page.goto(\\\"file:///private/tmp/omd-fresh-frontier-comparison-1.9.732-v2/numismatics-r1-impeccable/index.html\\\"); console.log(await page.title()); console.log(await page.locator(\\\"[data-bench=record-id]\\\").count()); await browser.close();'\"",
+                  "mechanism": "shell",
+                  "command_outcome": "failed",
+                  "browser": true,
+                  "recovery_probe": true,
+                  "static_verification": false,
+                  "neutral": false
+                },
+                {
+                  "index": 24,
+                  "command": "/opt/homebrew/bin/zsh -lc \"command -v browser-harness || true; python3 -c \\\"import importlib.util; print(importlib.util.find_spec('browser_harness'))\\\"; python3 -m browser_harness --help 2>&1 | sed -n '1,100p'\"",
+                  "mechanism": "shell",
+                  "command_outcome": "succeeded",
+                  "browser": false,
+                  "recovery_probe": false,
+                  "static_verification": true,
+                  "neutral": false
+                },
+                {
+                  "index": 26,
+                  "command": "/opt/homebrew/bin/zsh -lc \"browser-harness --help 2>&1 | sed -n '1,160p'\"",
+                  "mechanism": "shell",
+                  "command_outcome": "succeeded",
+                  "browser": true,
+                  "recovery_probe": false,
+                  "static_verification": false,
+                  "neutral": false
+                },
+                {
+                  "index": 28,
+                  "command": "/opt/homebrew/bin/zsh -lc \"browser-harness --doctor 2>&1 | sed -n '1,220p'\"",
+                  "mechanism": "shell",
+                  "command_outcome": "succeeded",
+                  "browser": false,
+                  "recovery_probe": true,
+                  "static_verification": false,
+                  "neutral": false
+                },
+                {
+                  "index": 30,
+                  "command": "/opt/homebrew/bin/zsh -lc \"open -a \\\"Google Chrome\\\" \\\"file:///private/tmp/omd-fresh-frontier-comparison-1.9.732-v2/numismatics-r1-impeccable/index.html\\\" 2>&1 || true\nbrowser-harness --doctor 2>&1 | sed -n '1,120p'\"",
+                  "mechanism": "shell",
+                  "command_outcome": "succeeded",
+                  "browser": false,
+                  "recovery_probe": true,
+                  "static_verification": false,
+                  "neutral": false
+                },
+                {
+                  "index": 32,
+                  "command": "/opt/homebrew/bin/zsh -lc \"node --input-type=module -e 'for (const p of [\\\"jsdom\\\",\\\"linkedom\\\",\\\"happy-dom\\\"]) {try {const m=await import(p); console.log(p,\\\"available\\\")} catch(e){console.log(p,\\\"missing\\\")}}'\"",
+                  "mechanism": "shell",
+                  "command_outcome": "succeeded",
+                  "browser": false,
+                  "recovery_probe": false,
+                  "static_verification": true,
+                  "neutral": false
+                },
+                {
+                  "index": 35,
+                  "command": "/opt/homebrew/bin/zsh -lc \"node --input-type=module <<'NODE'\nimport fs from 'node:fs';\nimport vm from 'node:vm';\nconst html=fs.readFileSync('index.html','utf8');\nconst script=html.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)[1];\nnew Function(script);\nlet focused=null;\nclass Element {\n  constructor(){this.attributes={};this.handlers={};this.value='';}\n  addEventListener(type,handler){this.handlers[type]=handler;}\n  setAttribute(name,value){this.attributes[name]=String(value);}\n  getAttribute(name){return this.attributes[name] ?? null;}\n  focus(){focused=this;}\n}\nconst views=[new Element(),new Element(),new Element()];\nviews[0].dataset={view:'objects'};views[1].dataset={view:'windows'};views[2].dataset={view:'decision'};\nviews.forEach((view,i)=>view.setAttribute('aria-pressed',i===0));\nconst note=new Element();note.setAttribute('aria-pressed','false');\nconst field=new Element();\nconst status=new Element();\nconst state=new Element();state.textContent='Review open';\nconst form=new Element();\nconst action=new Element();\nconst document={body:{dataset:{view:'objects'}},querySelectorAll(selector){if(selector==='[data-bench=\\\"routing-view-option\\\"]') return views; throw new Error(\"'`Unexpected querySelectorAll: ${selector}`)},querySelector(selector){const map={'\"'[data-bench=\\\"form-status\\\"]':status,'[data-bench=\\\"note-toggle\\\"]':note,'[data-bench=\\\"review-form\\\"]':form,'[data-bench=\\\"reviewer-name\\\"]':field,'[data-bench-decision-role=\\\"action\\\"]':action,'[data-bench-decision-role=\\\"state\\\"]':state}; if(\"'!map[selector]) throw new Error(`Unexpected querySelector: ${selector}`); return map[selector]}};\nvm.runInNewContext(script,{document});\nviews[1].handlers.click();\nif(document.body.dataset.view!=='\"'windows'||views[1].getAttribute('aria-pressed')\"'!=='\"'true'||views[0].getAttribute('aria-pressed')\"'!=='\"'false') throw new Error('view routing failed');\nnote.handlers.click();\nif(note.getAttribute('aria-pressed')\"'!=='\"'true'||status.textContent\"'!=='\"'Mount-note copy included.') throw new Error('note toggle failed');\nform.handlers.submit({preventDefault(){}});\nif(status.textContent\"'!=='\"'Enter a reviewer name.'||field.getAttribute('aria-invalid')\"'!=='\"'true'||focused\"'!==field) throw new Error('\"'empty reviewer validation failed');\nfield.value='A. Curator';\nform.handlers.submit({preventDefault(){}});\nif(status.textContent\"'!=='\"'Reviewer recorded: A. Curator'||field.getAttribute('aria-invalid')\"'!=='\"'false') throw new Error('reviewer submit failed');\naction.handlers.click();\nif(status.textContent\"'!=='\"'Accession record open for review.'||focused\"'!==field||state.textContent!=='\"'Review open') throw new Error('decision action failed');\nconsole.log('runtime control checks passed: views, note toggle, empty form, valid form, decision action');\nNODE\nnode --input-type=module <<'NODE'\nimport fs from 'node:fs';\nconst html=fs.readFileSync('index.html','utf8');\nconst count=(re)=>[...html.matchAll(re)].length;\nconst exact={records:['COIN-REP-8246','COIN-MED-8371','COIN-TOK-8495','COIN-SEAL-8568'],trays:['TRAY-64130','TRAY-64131','TRAY-64132','TRAY-64133','TRAY-64134','TRAY-64135'],windows:['CABINET-N3|08:20–08:40','CABINET-E6|11:15–11:35','CABINET-S2|14:45–15:05']};\nfor(const [group,values] of Object.entries(exact)) for(const value of values){const [owner,time]=value.split('|');const needle=time?\"'`${owner}'\"\\\\\\\\S*\"'${time}`:value;if(!html.includes(owner||value)|| (time&&!html.includes(time))) throw new Error(`missing ${group}: ${value}`)}\nif(count(/data-bench=\"record-case\"/g)!==4||count(/data-bench=\"unit-id\"/g)!==6||count(/data-bench=\"window-owner\"/g)!==3||count(/data-bench=\"window-id\"/g)!==3) throw new Error('\"'data counts changed');\nfor(const forbidden of ['alloy verified','date certified','mount calibrated','provenance validated','tray seal verified','cabinet accepted','catalog published','accession approved']) if(html.toLowerCase().includes(forbidden)) throw new Error(\"'`forbidden claim: ${forbidden}`);\nconsole.log('\"'content assertions passed: identifiers, windows, evidence, and prohibited claims');\nNODE\nprintf '\\\\n--- focused responsive rules ---\\\\n'\nrg -n 'record-grid|window-strip|decision\\\\{|@media\\\\(max-width:480px\\\\)|min-width:556|min-width:389|repeat\\\\(2,389|repeat\\\\(3,275' index.html || true\"",
+                  "mechanism": "shell",
+                  "command_outcome": "succeeded",
+                  "browser": false,
+                  "recovery_probe": false,
+                  "static_verification": true,
+                  "neutral": false
+                }
+              ],
+              "static_closure_count": 5,
+              "failed_static_closure_count": 0,
+              "browser_mechanism_count": 2,
+              "browser_recovery_probe_count": 3,
+              "browser_recovery_count": 4,
+              "duplicate_static_closure_count": 4,
+              "verification_after_ready_count": 6
+            },
+            {
+              "revision": 2,
+              "first_edit_event_index": 37,
+              "last_edit_event_index": 42,
+              "edit_count": 3,
+              "commands": [
+                {
+                  "index": 44,
+                  "command": "/opt/homebrew/bin/zsh -lc \"node .agents/skills/impeccable/scripts/detect.mjs --json index.html\nnode --input-type=module <<'NODE'\nimport fs from 'node:fs';\nimport vm from 'node:vm';\nconst html=fs.readFileSync('index.html','utf8');\nconst script=html.match(/<script>([\\\\s\\\\S]*?)<\\\\/script>/)[1];\nnew Function(script);\nlet focused=null;\nclass Element{constructor(){this.attributes={};this.handlers={};this.value='';this.textContent=''}addEventListener(t,h){this.handlers[t]=h}setAttribute(n,v){this.attributes[n]=String(v)}getAttribute(n){return this.attributes[n]??null}focus(){focused=this}}\nconst views=[new Element(),new Element(),new Element()];views.forEach((v,i)=>{v.dataset={view:['objects','windows','decision'][i]};v.setAttribute('aria-pressed',i===0)});\nconst note=new Element(),field=new Element(),status=new Element(),state=new Element(),form=new Element(),action=new Element();note.setAttribute('aria-pressed','false');state.textContent='Review open';\nconst document={body:{dataset:{view:'objects'}},querySelectorAll:s=>{if(s==='[data-bench=\\\"routing-view-option\\\"]')return views;throw Error(s)},querySelector:s=>({'[data-bench=\\\"form-status\\\"]':status,'[data-bench=\\\"note-toggle\\\"]':note,'[data-bench=\\\"review-form\\\"]':form,'[data-bench=\\\"reviewer-name\\\"]':field,'[data-bench-decision-role=\\\"action\\\"]':action,'[data-bench-decision-role=\\\"state\\\"]':state}[s]??(()=>{throw Error(s)})())};\nvm.runInNewContext(script,{document});\nviews[2].handlers.click();if(document.body.dataset.view\"'!=='\"'decision'||views.filter(v=>v.getAttribute('aria-pressed')==='true').length\"'!==1)throw Error('\"'view');\nnote.handlers.click();if(status.textContent\"'!=='\"'Mount-note copy included.')throw Error('toggle');\nform.handlers.submit({preventDefault(){}});if(status.textContent\"'!=='\"'Enter a reviewer name.'||focused\"'!==field)throw Error('\"'empty form');\nfield.value='A. Curator';form.handlers.submit({preventDefault(){}});if(status.textContent\"'!=='\"'Reviewer recorded: A. Curator')throw Error('valid form');\naction.handlers.click();if(status.textContent\"'!=='\"'Accession record open for review.')throw Error('action');\nconsole.log('runtime controls: PASS');\nconst required=['COIN-REP-8246','COIN-MED-8371','COIN-TOK-8495','COIN-SEAL-8568','TRAY-64130','TRAY-64131','TRAY-64132','TRAY-64133','TRAY-64134','TRAY-64135','CABINET-N3','08:20–08:40','CABINET-E6','11:15–11:35','CABINET-S2','14:45–15:05','4 object groups · 6 cabinet trays · 3 cabinet windows','Object register','Cabinet windows','Accession decision','Include mount-note copy','Accession curator'];for(const value of required)if(\"'!html.includes(value))throw Error(`missing ${value}`);\nfor(const forbidden of ['\"'alloy verified','date certified','mount calibrated','provenance validated','tray seal verified','cabinet accepted','catalog published','accession approved'])if(html.toLowerCase().includes(forbidden))throw Error(\"'`forbidden ${forbidden}`);\nconsole.log('\"'content preservation: PASS');\nconst responsiveChecks=[['fluid record columns',/grid-template-columns:repeat\\\\(2,minmax\\\\(0,1fr\\\\)\\\\)/],['fluid window columns',/grid-template-columns:repeat\\\\(3,minmax\\\\(0,1fr\\\\)\\\\)/],['narrow record/window stack',/record-grid,\\\\.window-grid\\\\{grid-template-columns:1fr\\\\}/],['no decision min width',\"'!html.includes('\"'min-width:556')],['atomic identifiers',/\\\\.atomic-id\\\\{white-space:nowrap\\\\}/],['mobile decision action',/\\\\.decision \\\\.primary\\\\{width:100%\\\\}/]];\nfor(const [label,test] of responsiveChecks)if(typeof test==='boolean'?\"'!test:!test.test(html))throw Error(`responsive ${label}`);console.log('\"'responsive invariants: PASS (desktop, 390px, 320px, and 200% zoom-equivalent rules)');\nNODE\nprintf '\\\\n--- file summary ---\\\\n'\nwc -l -c index.html\nrg -n 'window-strip|window-grid|record-grid|decision-target|@media\\\\(max-width:480px\\\\)' index.html\"",
+                  "mechanism": "shell",
+                  "command_outcome": "succeeded",
+                  "browser": false,
+                  "recovery_probe": false,
+                  "static_verification": true,
+                  "neutral": false
+                }
+              ],
+              "static_closure_count": 1,
+              "failed_static_closure_count": 0,
+              "browser_mechanism_count": 0,
+              "browser_recovery_probe_count": 0,
+              "browser_recovery_count": 0,
+              "duplicate_static_closure_count": 0,
+              "verification_after_ready_count": 0
+            }
+          ]
+        },
+        "proof_execution_gate": null,
+        "host_policy": null,
+        "candidate_preflight": {
+          "required": false,
+          "receipt_present": false,
+          "receipt_state": null,
+          "receipt_valid": false,
+          "product_present": false,
+          "candidate_sha256": null,
+          "final_product_sha256": null,
+          "source_contract_sha256_match": false,
+          "sealed_inventory_sha256_match": false,
+          "candidate_final_bytes_match": false,
+          "pass": true
+        }
+      },
+      "attribution": {
+        "runtime": {
+          "runtime_target": "codex",
+          "agent": "codex-cli",
+          "agent_version": null,
+          "binary_sha256": null,
+          "model_requested": "gpt-5.6-luna",
+          "model_reported": null,
+          "model_evidence_mode": "cli-argument",
+          "effort_requested": "high",
+          "auth_mode": null,
+          "provider_route": null,
+          "provider_effort_argument": null,
+          "hook_trust_bypassed": false,
+          "usage_attribution": {
+            "available": true,
+            "evidence_mode": "provider-event",
+            "reason": null
+          }
+        },
+        "source_commit": "4d849eb75f216109ea7053ed21530a11fafcc786",
+        "source_attestation": {
+          "vcs": "git",
+          "dirty": false,
+          "explicit_dirty_opt_in": false,
+          "status_entries": 0,
+          "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "publishable": true,
+          "detached": true,
+          "workspace_commit": null
+        },
+        "agent_bundle_sha256": null,
+        "activation_delta_sha256": "479405c9cba8dffb2088aac69c90ea53697f8760c19ccdf6008f91343a6cabfa",
+        "track_eligibility": {
+          "eligible": true,
+          "off_label": false,
+          "explicit_opt_in": false
+        }
+      },
+      "delivery": {
+        "product_changed": true,
+        "changed_product_files": [
+          {
+            "path": "index.html",
+            "status": "modified",
+            "before_sha256": "6a1622e1bcb51f42758d2956b7abdbf8661e770320aea6ad946108b2ede00158",
+            "after_sha256": "7435fdcb69183fcc04e7d60b3c85fbcb7a8786893bdd6c90f8243418024ad943"
+          }
+        ]
+      },
+      "evidence": {
+        "manifest": ".benchmark/manifest.json",
+        "run_result": ".benchmark/run-result.json",
+        "score": ".benchmark/score.json",
+        "screenshots": ".benchmark/screenshots",
+        "proof_trace": ".benchmark/proof-trace.json",
+        "host_policy_state": null,
+        "candidate_preflight_receipt": null
+      }
+    },
+    {
+      "run_id": "numismatics-r1-omd",
+      "benchmark_family": "skill",
+      "suite_version": "ui-resolve-v0.2",
+      "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+      "system_id": "luna-high-omd-1.9.731",
+      "model_id": "gpt-5.6-luna",
+      "skill_id": "omd:apply",
+      "harness_id": null,
+      "budget_tier": "high",
+      "task_id": "numismatics-tray-accession-v0.1",
+      "trial_index": 1,
+      "run_status": "complete",
+      "validity": "valid",
+      "attribution_scope": "provider-observed-only",
+      "public_model_attribution_eligible": false,
+      "ui_resolved": true,
+      "objective_score": 85,
+      "objective_max": 85,
+      "wall_time_ms": 144147,
+      "tokens": 621860,
+      "token_usage": {
+        "input_tokens": 614752,
+        "cached_input_tokens": 551168,
+        "output_tokens": 7108,
+        "reasoning_output_tokens": 2350,
+        "total_tokens": 621860,
+        "observed_components": [
+          "cached_input_tokens",
+          "input_tokens",
+          "output_tokens",
+          "reasoning_output_tokens"
+        ],
+        "input_output_complete": true
+      },
+      "provider_cost_equivalent_usd": null,
+      "execution_control": {
+        "comparison_mode": "native-capability",
+        "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+        "temperature_policy": "runtime-default-frozen",
+        "timeout_seconds": 720,
+        "max_concurrency": 1,
+        "latency_comparison": "descriptive-only",
+        "retry_policy": "none-primary",
+        "timeout_policy": "count-as-valid-failure",
+        "infrastructure_policy": "retain-freeze-and-repreregister",
+        "task_order_policy": "fixed-preregistered",
+        "admission_normalization_policy": "paired-cross-task-comparison",
+        "pacing": {
+          "policy": "fixed-inter-cell",
+          "inter_cell_delay_seconds": 30,
+          "applies_between_cells_only": true,
+          "counts_toward_cell_wall_time": false
+        },
+        "token_budget": {
+          "mode": "observed-only",
+          "limit_tokens": null,
+          "usage_required": true,
+          "account_components": [
+            "input",
+            "cached_input",
+            "output",
+            "reasoning_output"
+          ],
+          "cached_input_separate": true,
+          "cost_policy": "provider-reported-or-pinned-price-equivalent"
+        },
+        "step_budget": {
+          "mode": "observed-only",
+          "limit_steps": null
+        }
+      },
+      "usage_completeness": {
+        "evidence_mode": "provider-event",
+        "available": true,
+        "input_output_complete": true,
+        "observed_components": [
+          "cached_input_tokens",
+          "input_tokens",
+          "output_tokens",
+          "reasoning_output_tokens"
+        ],
+        "reasoning_visibility": "reported",
+        "cached_input_visibility": "reported"
+      },
+      "runtime_model_usage": [
+        {
+          "model": "gpt-5.6-luna",
+          "input_tokens": 614752,
+          "cached_input_tokens": 551168,
+          "output_tokens": 7108,
+          "cost_usd": null,
+          "context_window": null,
+          "max_output_tokens": null
+        }
+      ],
+      "runtime_diagnostics": {
+        "child_exit_code": 0,
+        "diagnostic_availability": {
+          "available": false,
+          "fields": [],
+          "reason": "codex-stream-diagnostic-normalization-not-supported"
+        },
+        "tool_error_count": null,
+        "recoverable_tool_error_count": null,
+        "infrastructure_tool_error_count": null,
+        "optional_verifier_environment_error_count": null,
+        "recovered_temp_path_error_count": null,
+        "sandbox_error_count": null,
+        "sandbox_cwd_error_count": null,
+        "agent_tool_call_count": null,
+        "agent_tool_error_count": null,
+        "requested_agent_ids": [],
+        "agent_calls": [],
+        "milestones": null,
+        "proof_trace": {
+          "schema_version": "0.1",
+          "runtime": "codex",
+          "analyzable": true,
+          "product_edit_count": 1,
+          "product_revision_count": 1,
+          "last_product_edit_event_index": 27,
+          "post_edit_command_count": 2,
+          "static_closure_count": 1,
+          "failed_static_closure_count": 0,
+          "browser_mechanism_count": 1,
+          "browser_recovery_probe_count": 0,
+          "browser_recovery_count": 0,
+          "duplicate_static_closure_count": 0,
+          "verification_after_ready_count": 0,
+          "compliance_pass": true,
+          "revisions": [
+            {
+              "revision": 1,
+              "first_edit_event_index": 27,
+              "last_edit_event_index": 27,
+              "edit_count": 1,
+              "commands": [
+                {
+                  "index": 29,
+                  "command": "/opt/homebrew/bin/zsh -lc 'node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-close .omd/reflow-closure.json'",
+                  "mechanism": "shell",
+                  "command_outcome": "succeeded",
+                  "browser": false,
+                  "recovery_probe": false,
+                  "static_verification": true,
+                  "neutral": false
+                },
+                {
+                  "index": 32,
+                  "command": "/opt/homebrew/bin/zsh -lc 'OMD_REFLOW_ARTIFACT=.omd/reflow-closure.json OMD_REFLOW_PRODUCT=index.html OMD_REFLOW_HELPER=.agents/skills/omd-apply/scripts/reflow-artifact.mjs browser-harness < .agents/skills/omd-apply/scripts/reflow-browser.py'",
+                  "mechanism": "shell",
+                  "command_outcome": "failed",
+                  "browser": true,
+                  "recovery_probe": false,
+                  "static_verification": false,
+                  "neutral": false
+                }
+              ],
+              "static_closure_count": 1,
+              "failed_static_closure_count": 0,
+              "browser_mechanism_count": 1,
+              "browser_recovery_probe_count": 0,
+              "browser_recovery_count": 0,
+              "duplicate_static_closure_count": 0,
+              "verification_after_ready_count": 0
+            }
+          ]
+        },
+        "proof_execution_gate": null,
+        "host_policy": null,
+        "candidate_preflight": {
+          "required": true,
+          "receipt_present": true,
+          "receipt_state": "passed",
+          "receipt_valid": true,
+          "product_present": true,
+          "candidate_sha256": "3228933061150948ce5124b2428ca855ae47c1517fe17e7b07b292581cc6cd58",
+          "final_product_sha256": "3228933061150948ce5124b2428ca855ae47c1517fe17e7b07b292581cc6cd58",
+          "source_contract_sha256_match": true,
+          "sealed_inventory_sha256_match": true,
+          "candidate_final_bytes_match": true,
+          "pass": true
+        }
+      },
+      "attribution": {
+        "runtime": {
+          "runtime_target": "codex",
+          "agent": "codex-cli",
+          "agent_version": null,
+          "binary_sha256": null,
+          "model_requested": "gpt-5.6-luna",
+          "model_reported": null,
+          "model_evidence_mode": "cli-argument",
+          "effort_requested": "high",
+          "auth_mode": null,
+          "provider_route": null,
+          "provider_effort_argument": null,
+          "hook_trust_bypassed": false,
+          "usage_attribution": {
+            "available": true,
+            "evidence_mode": "provider-event",
+            "reason": null
+          }
+        },
+        "source_commit": "4e9514b91837cbed269320083a39641f41582729",
+        "source_attestation": {
+          "vcs": "git",
+          "dirty": false,
+          "explicit_dirty_opt_in": false,
+          "status_entries": 0,
+          "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "publishable": true,
+          "detached": true,
+          "workspace_commit": null
+        },
+        "agent_bundle_sha256": null,
+        "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+        "track_eligibility": {
+          "eligible": true,
+          "off_label": false,
+          "explicit_opt_in": false
+        }
+      },
+      "delivery": {
+        "product_changed": true,
+        "changed_product_files": [
+          {
+            "path": "index.html",
+            "status": "modified",
+            "before_sha256": "6a1622e1bcb51f42758d2956b7abdbf8661e770320aea6ad946108b2ede00158",
+            "after_sha256": "3228933061150948ce5124b2428ca855ae47c1517fe17e7b07b292581cc6cd58"
+          }
+        ]
+      },
+      "evidence": {
+        "manifest": ".benchmark/manifest.json",
+        "run_result": ".benchmark/run-result.json",
+        "score": ".benchmark/score.json",
+        "screenshots": ".benchmark/screenshots",
+        "proof_trace": ".benchmark/proof-trace.json",
+        "host_policy_state": null,
+        "candidate_preflight_receipt": ".omd/static-preview-receipt.json"
+      }
+    },
+    {
+      "run_id": "entomology-r1-omd",
+      "benchmark_family": "skill",
+      "suite_version": "ui-resolve-v0.2",
+      "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+      "system_id": "luna-high-omd-1.9.731",
+      "model_id": "gpt-5.6-luna",
+      "skill_id": "omd:apply",
+      "harness_id": null,
+      "budget_tier": "high",
+      "task_id": "entomology-drawer-loan-v0.1",
+      "trial_index": 1,
+      "run_status": "complete",
+      "validity": "valid",
+      "attribution_scope": "provider-observed-only",
+      "public_model_attribution_eligible": false,
+      "ui_resolved": true,
+      "objective_score": 85,
+      "objective_max": 85,
+      "wall_time_ms": 234600,
+      "tokens": 663430,
+      "token_usage": {
+        "input_tokens": 651593,
+        "cached_input_tokens": 574976,
+        "output_tokens": 11837,
+        "reasoning_output_tokens": 3792,
+        "total_tokens": 663430,
+        "observed_components": [
+          "cached_input_tokens",
+          "input_tokens",
+          "output_tokens",
+          "reasoning_output_tokens"
+        ],
+        "input_output_complete": true
+      },
+      "provider_cost_equivalent_usd": null,
+      "execution_control": {
+        "comparison_mode": "native-capability",
+        "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+        "temperature_policy": "runtime-default-frozen",
+        "timeout_seconds": 720,
+        "max_concurrency": 1,
+        "latency_comparison": "descriptive-only",
+        "retry_policy": "none-primary",
+        "timeout_policy": "count-as-valid-failure",
+        "infrastructure_policy": "retain-freeze-and-repreregister",
+        "task_order_policy": "fixed-preregistered",
+        "admission_normalization_policy": "paired-cross-task-comparison",
+        "pacing": {
+          "policy": "fixed-inter-cell",
+          "inter_cell_delay_seconds": 30,
+          "applies_between_cells_only": true,
+          "counts_toward_cell_wall_time": false
+        },
+        "token_budget": {
+          "mode": "observed-only",
+          "limit_tokens": null,
+          "usage_required": true,
+          "account_components": [
+            "input",
+            "cached_input",
+            "output",
+            "reasoning_output"
+          ],
+          "cached_input_separate": true,
+          "cost_policy": "provider-reported-or-pinned-price-equivalent"
+        },
+        "step_budget": {
+          "mode": "observed-only",
+          "limit_steps": null
+        }
+      },
+      "usage_completeness": {
+        "evidence_mode": "provider-event",
+        "available": true,
+        "input_output_complete": true,
+        "observed_components": [
+          "cached_input_tokens",
+          "input_tokens",
+          "output_tokens",
+          "reasoning_output_tokens"
+        ],
+        "reasoning_visibility": "reported",
+        "cached_input_visibility": "reported"
+      },
+      "runtime_model_usage": [
+        {
+          "model": "gpt-5.6-luna",
+          "input_tokens": 651593,
+          "cached_input_tokens": 574976,
+          "output_tokens": 11837,
+          "cost_usd": null,
+          "context_window": null,
+          "max_output_tokens": null
+        }
+      ],
+      "runtime_diagnostics": {
+        "child_exit_code": 0,
+        "diagnostic_availability": {
+          "available": false,
+          "fields": [],
+          "reason": "codex-stream-diagnostic-normalization-not-supported"
+        },
+        "tool_error_count": null,
+        "recoverable_tool_error_count": null,
+        "infrastructure_tool_error_count": null,
+        "optional_verifier_environment_error_count": null,
+        "recovered_temp_path_error_count": null,
+        "sandbox_error_count": null,
+        "sandbox_cwd_error_count": null,
+        "agent_tool_call_count": null,
+        "agent_tool_error_count": null,
+        "requested_agent_ids": [],
+        "agent_calls": [],
+        "milestones": null,
+        "proof_trace": {
+          "schema_version": "0.1",
+          "runtime": "codex",
+          "analyzable": true,
+          "product_edit_count": 1,
+          "product_revision_count": 1,
+          "last_product_edit_event_index": 27,
+          "post_edit_command_count": 2,
+          "static_closure_count": 1,
+          "failed_static_closure_count": 0,
+          "browser_mechanism_count": 1,
+          "browser_recovery_probe_count": 0,
+          "browser_recovery_count": 0,
+          "duplicate_static_closure_count": 0,
+          "verification_after_ready_count": 0,
+          "compliance_pass": true,
+          "revisions": [
+            {
+              "revision": 1,
+              "first_edit_event_index": 27,
+              "last_edit_event_index": 27,
+              "edit_count": 1,
+              "commands": [
+                {
+                  "index": 29,
+                  "command": "/opt/homebrew/bin/zsh -lc 'node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-close .omd/reflow-closure.json'",
+                  "mechanism": "shell",
+                  "command_outcome": "succeeded",
+                  "browser": false,
+                  "recovery_probe": false,
+                  "static_verification": true,
+                  "neutral": false
+                },
+                {
+                  "index": 32,
+                  "command": "/opt/homebrew/bin/zsh -lc \"browser-harness <<'PY'\nfrom browser_harness import *\n\nurl = \\\"file:///private/tmp/omd-fresh-frontier-comparison-1.9.732-v2/entomology-r1-omd/index.html\\\"\nnew_tab(url)\nwait_for_load()\ncapture_screenshot()\n\nprint(\\\"initial\\\", js(\\\"\\\"\\\"(() => ({\n  route: location.href,\n  view: document.body.dataset.view,\n  records: document.querySelectorAll('[data-bench=\\\"record-case\\\"]').length,\n  drawers: document.querySelectorAll('[data-bench=\\\"unit-id\\\"]').length,\n  windows: document.querySelectorAll('[data-bench=\\\"window-id\\\"]').length,\n  decision: document.querySelector('[data-bench-decision-role=\\\"target\\\"]')?.textContent.trim(),\n  overflow: {document: document.documentElement.scrollWidth, client: document.documentElement.clientWidth, body: document.body.scrollWidth}\n}))()\\\"\\\"\\\"))\n\n# Use the rendered coordinates after the required initial screenshot.\nrects = js(\\\"\\\"\\\"(() => Object.fromEntries([\n  ['specimens', document.querySelector('[data-view=\\\"specimens\\\"]').getBoundingClientRect()],\n  ['windows', document.querySelector('[data-view=\\\"windows\\\"]').getBoundingClientRect()],\n  ['decision', document.querySelector('[data-view=\\\"decision\\\"]').getBoundingClientRect()],\n  ['note', document.querySelector('[data-bench=\\\"note-toggle\\\"]').getBoundingClientRect()],\n  ['submit', document.querySelector('[data-bench=\\\"review-form\\\"] button[type=\\\"submit\\\"]').getBoundingClientRect()],\n  ['action', document.querySelector('[data-primary-action]').getBoundingClientRect()]\n].map(([key, r]) => [key, {x:r.x, y:r.y, width:r.width, height:r.height}])) )()\\\"\\\"\\\")\n\ndef center(key):\n    r = rects[key]\n    return (r['x'] + r['width'] / 2, r['y'] + r['height'] / 2)\n\nfor key in [\\\"windows\\\", \\\"decision\\\", \\\"specimens\\\"]:\n    x, y = center(key)\n    click_at_xy(x, y)\n    wait_for_load()\n    print(\\\"view\\\", key, js(\\\"\\\"\\\"(() => ({view: document.body.dataset.view, pressed: [...document.querySelectorAll('[data-bench=\\\"routing-view-option\\\"]')].map(b => [b.dataset.view, b.getAttribute('aria-pressed')])}))()\\\"\\\"\\\"))\n\nx, y = center(\\\"note\\\")\nclick_at_xy(x, y)\nprint(\\\"note\\\", js(\\\"document.querySelector('[data-bench=\\\\\\\\\\\"note-toggle\\\\\\\\\\\"]').getAttribute('aria-pressed')\\\"))\n\nx, y = center(\\\"submit\\\")\nclick_at_xy(x, y)\nprint(\\\"empty_form\\\", js(\\\"\\\"\\\"(() => ({status: document.querySelector('[data-bench=\\\"form-status\\\"]').textContent, invalid: document.querySelector('[data-bench=\\\"reviewer-name\\\"]').getAttribute('aria-invalid')}))()\\\"\\\"\\\"))\njs(\\\"\\\"\\\"(() => { const f = document.querySelector('[data-bench=\\\"reviewer-name\\\"]'); f.value = 'M. Rivera'; f.dispatchEvent(new Event('input', {bubbles:true})); })()\\\"\\\"\\\")\nx, y = center(\\\"submit\\\")\nclick_at_xy(x, y)\nprint(\\\"valid_form\\\", js(\\\"document.querySelector('[data-bench=\\\\\\\\\\\"form-status\\\\\\\\\\\"]').textContent\\\"))\n\nx, y = center(\\\"action\\\")\nclick_at_xy(x, y)\nprint(\\\"action\\\", js(\\\"document.querySelector('[data-primary-action]').textContent.trim()\\\"))\n\nconditions = [(\\\"desktop\\\", 1120, 820, 1), (\\\"390\\\", 390, 820, 1), (\\\"320\\\", 320, 900, 1), (\\\"200pct\\\", 640, 900, 2)]\nfor name, width, height, zoom in conditions:\n    cdp(\\\"Emulation.setDeviceMetricsOverride\\\", {\\\"width\\\": width, \\\"height\\\": height, \\\"deviceScaleFactor\\\": 1, \\\"mobile\\\": False})\n    js(f\\\"document.documentElement.style.zoom = '{zoom}'\\\")\n    wait_for_load()\n    capture_screenshot()\n    print(name, js(\\\"\\\"\\\"(() => {\n      const textLineCount = selector => {\n        const el = document.querySelector(selector);\n        if (\"'!el) return null;\n        const chars = [...el.childNodes].flatMap(node => {\n          if (node.nodeType === Node.TEXT_NODE) return [...node.textContent].map((_, i) => ({node, i}));\n          if (node.nodeType === Node.ELEMENT_NODE) return [...node.textContent].map((_, i) => ({node, i}));\n          return [];\n        }).filter(({node, i}) => /'\"\\\\\\\\S/.test(node.textContent[i] || ''));\n        const tops = chars.map(({node, i}) => {\n          const range = document.createRange();\n          range.setStart(node, i); range.setEnd(node, i + 1);\n          return Math.round(range.getBoundingClientRect().top);\n        });\n        return [...new Set(tops)].length;\n      };\n      const carrier = sel => { const e = document.querySelector(sel); return {scrollWidth:e.scrollWidth, clientWidth:e.clientWidth, overflow:getComputedStyle(e).overflowX}; };\n      return {\n        zoom: getComputedStyle(document.documentElement).zoom,\n        document: {scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth},\n        body: {scrollWidth: document.body.scrollWidth, clientWidth: document.body.clientWidth},\n        targetLines: textLineCount('[data-bench-decision-role=\\\"target\\\"]'),\n        evidenceLines: textLineCount('[data-bench-decision-role=\\\"evidence\\\"]'),\n        targetCarrier: carrier('[data-omd-source-fallback-carrier=\\\"target\\\"]'),\n        evidenceCarrier: carrier('[data-omd-source-fallback-carrier=\\\"evidence\\\"]'),\n        records: document.querySelectorAll('[data-bench=\\\"record-id\\\"]').length,\n        drawers: document.querySelectorAll('[data-bench=\\\"unit-id\\\"]').length,\n        windows: document.querySelectorAll('[data-bench=\\\"window-id\\\"]').length\n      };\n    })()\\\"\\\"\\\"))\nPY\"",
+                  "mechanism": "shell",
+                  "command_outcome": "failed",
+                  "browser": true,
+                  "recovery_probe": false,
+                  "static_verification": false,
+                  "neutral": false
+                }
+              ],
+              "static_closure_count": 1,
+              "failed_static_closure_count": 0,
+              "browser_mechanism_count": 1,
+              "browser_recovery_probe_count": 0,
+              "browser_recovery_count": 0,
+              "duplicate_static_closure_count": 0,
+              "verification_after_ready_count": 0
+            }
+          ]
+        },
+        "proof_execution_gate": null,
+        "host_policy": null,
+        "candidate_preflight": {
+          "required": true,
+          "receipt_present": true,
+          "receipt_state": "passed",
+          "receipt_valid": true,
+          "product_present": true,
+          "candidate_sha256": "6aebcf85785cba7710309527c350d7b37e95b1519b97f2d7ad8103c722dba583",
+          "final_product_sha256": "6aebcf85785cba7710309527c350d7b37e95b1519b97f2d7ad8103c722dba583",
+          "source_contract_sha256_match": true,
+          "sealed_inventory_sha256_match": true,
+          "candidate_final_bytes_match": true,
+          "pass": true
+        }
+      },
+      "attribution": {
+        "runtime": {
+          "runtime_target": "codex",
+          "agent": "codex-cli",
+          "agent_version": null,
+          "binary_sha256": null,
+          "model_requested": "gpt-5.6-luna",
+          "model_reported": null,
+          "model_evidence_mode": "cli-argument",
+          "effort_requested": "high",
+          "auth_mode": null,
+          "provider_route": null,
+          "provider_effort_argument": null,
+          "hook_trust_bypassed": false,
+          "usage_attribution": {
+            "available": true,
+            "evidence_mode": "provider-event",
+            "reason": null
+          }
+        },
+        "source_commit": "4e9514b91837cbed269320083a39641f41582729",
+        "source_attestation": {
+          "vcs": "git",
+          "dirty": false,
+          "explicit_dirty_opt_in": false,
+          "status_entries": 0,
+          "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "publishable": true,
+          "detached": true,
+          "workspace_commit": null
+        },
+        "agent_bundle_sha256": null,
+        "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+        "track_eligibility": {
+          "eligible": true,
+          "off_label": false,
+          "explicit_opt_in": false
+        }
+      },
+      "delivery": {
+        "product_changed": true,
+        "changed_product_files": [
+          {
+            "path": "index.html",
+            "status": "modified",
+            "before_sha256": "c30100389b9896023be0a12ec847fdc7eb31482219ab5d6161e780597b4913bf",
+            "after_sha256": "6aebcf85785cba7710309527c350d7b37e95b1519b97f2d7ad8103c722dba583"
+          }
+        ]
+      },
+      "evidence": {
+        "manifest": ".benchmark/manifest.json",
+        "run_result": ".benchmark/run-result.json",
+        "score": ".benchmark/score.json",
+        "screenshots": ".benchmark/screenshots",
+        "proof_trace": ".benchmark/proof-trace.json",
+        "host_policy_state": null,
+        "candidate_preflight_receipt": ".omd/static-preview-receipt.json"
+      }
+    },
+    {
+      "run_id": "entomology-r1-impeccable",
+      "benchmark_family": "skill",
+      "suite_version": "ui-resolve-v0.2",
+      "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+      "system_id": "luna-high-impeccable-prompt-only",
+      "model_id": "gpt-5.6-luna",
+      "skill_id": "impeccable",
+      "harness_id": null,
+      "budget_tier": "high",
+      "task_id": "entomology-drawer-loan-v0.1",
+      "trial_index": 1,
+      "run_status": "complete",
+      "validity": "valid",
+      "attribution_scope": "provider-observed-only",
+      "public_model_attribution_eligible": false,
+      "ui_resolved": false,
+      "objective_score": 79,
+      "objective_max": 85,
+      "wall_time_ms": 171596,
+      "tokens": 237280,
+      "token_usage": {
+        "input_tokens": 228454,
+        "cached_input_tokens": 198656,
+        "output_tokens": 8826,
+        "reasoning_output_tokens": 2301,
+        "total_tokens": 237280,
+        "observed_components": [
+          "cached_input_tokens",
+          "input_tokens",
+          "output_tokens",
+          "reasoning_output_tokens"
+        ],
+        "input_output_complete": true
+      },
+      "provider_cost_equivalent_usd": null,
+      "execution_control": {
+        "comparison_mode": "native-capability",
+        "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+        "temperature_policy": "runtime-default-frozen",
+        "timeout_seconds": 720,
+        "max_concurrency": 1,
+        "latency_comparison": "descriptive-only",
+        "retry_policy": "none-primary",
+        "timeout_policy": "count-as-valid-failure",
+        "infrastructure_policy": "retain-freeze-and-repreregister",
+        "task_order_policy": "fixed-preregistered",
+        "admission_normalization_policy": "paired-cross-task-comparison",
+        "pacing": {
+          "policy": "fixed-inter-cell",
+          "inter_cell_delay_seconds": 30,
+          "applies_between_cells_only": true,
+          "counts_toward_cell_wall_time": false
+        },
+        "token_budget": {
+          "mode": "observed-only",
+          "limit_tokens": null,
+          "usage_required": true,
+          "account_components": [
+            "input",
+            "cached_input",
+            "output",
+            "reasoning_output"
+          ],
+          "cached_input_separate": true,
+          "cost_policy": "provider-reported-or-pinned-price-equivalent"
+        },
+        "step_budget": {
+          "mode": "observed-only",
+          "limit_steps": null
+        }
+      },
+      "usage_completeness": {
+        "evidence_mode": "provider-event",
+        "available": true,
+        "input_output_complete": true,
+        "observed_components": [
+          "cached_input_tokens",
+          "input_tokens",
+          "output_tokens",
+          "reasoning_output_tokens"
+        ],
+        "reasoning_visibility": "reported",
+        "cached_input_visibility": "reported"
+      },
+      "runtime_model_usage": [
+        {
+          "model": "gpt-5.6-luna",
+          "input_tokens": 228454,
+          "cached_input_tokens": 198656,
+          "output_tokens": 8826,
+          "cost_usd": null,
+          "context_window": null,
+          "max_output_tokens": null
+        }
+      ],
+      "runtime_diagnostics": {
+        "child_exit_code": 0,
+        "diagnostic_availability": {
+          "available": false,
+          "fields": [],
+          "reason": "codex-stream-diagnostic-normalization-not-supported"
+        },
+        "tool_error_count": null,
+        "recoverable_tool_error_count": null,
+        "infrastructure_tool_error_count": null,
+        "optional_verifier_environment_error_count": null,
+        "recovered_temp_path_error_count": null,
+        "sandbox_error_count": null,
+        "sandbox_cwd_error_count": null,
+        "agent_tool_call_count": null,
+        "agent_tool_error_count": null,
+        "requested_agent_ids": [],
+        "agent_calls": [],
+        "milestones": null,
+        "proof_trace": {
+          "schema_version": "0.1",
+          "runtime": "codex",
+          "analyzable": true,
+          "product_edit_count": 1,
+          "product_revision_count": 1,
+          "last_product_edit_event_index": 20,
+          "post_edit_command_count": 2,
+          "static_closure_count": 0,
+          "failed_static_closure_count": 1,
+          "browser_mechanism_count": 1,
+          "browser_recovery_probe_count": 0,
+          "browser_recovery_count": 0,
+          "duplicate_static_closure_count": 0,
+          "verification_after_ready_count": 0,
+          "compliance_pass": false,
+          "revisions": [
+            {
+              "revision": 1,
+              "first_edit_event_index": 20,
+              "last_edit_event_index": 20,
+              "edit_count": 1,
+              "commands": [
+                {
+                  "index": 22,
+                  "command": "/opt/homebrew/bin/zsh -lc 'python3 -m http.server 4173'",
+                  "mechanism": "shell",
+                  "command_outcome": "failed",
+                  "browser": false,
+                  "recovery_probe": false,
+                  "static_verification": true,
+                  "neutral": false
+                },
+                {
+                  "index": 25,
+                  "command": "/opt/homebrew/bin/zsh -lc \"browser-harness <<'PY'\nfrom agent_helpers import *\nnew_tab('file:///private/tmp/omd-fresh-frontier-comparison-1.9.732-v2/entomology-r1-impeccable/index.html')\nwait_for_load()\nprint(page_info())\ncapture_screenshot('/private/tmp/ledger-desktop.png')\nPY\"",
+                  "mechanism": "shell",
+                  "command_outcome": "failed",
+                  "browser": true,
+                  "recovery_probe": false,
+                  "static_verification": false,
+                  "neutral": false
+                }
+              ],
+              "static_closure_count": 0,
+              "failed_static_closure_count": 1,
+              "browser_mechanism_count": 1,
+              "browser_recovery_probe_count": 0,
+              "browser_recovery_count": 0,
+              "duplicate_static_closure_count": 0,
+              "verification_after_ready_count": 0
+            }
+          ]
+        },
+        "proof_execution_gate": null,
+        "host_policy": null,
+        "candidate_preflight": {
+          "required": false,
+          "receipt_present": false,
+          "receipt_state": null,
+          "receipt_valid": false,
+          "product_present": false,
+          "candidate_sha256": null,
+          "final_product_sha256": null,
+          "source_contract_sha256_match": false,
+          "sealed_inventory_sha256_match": false,
+          "candidate_final_bytes_match": false,
+          "pass": true
+        }
+      },
+      "attribution": {
+        "runtime": {
+          "runtime_target": "codex",
+          "agent": "codex-cli",
+          "agent_version": null,
+          "binary_sha256": null,
+          "model_requested": "gpt-5.6-luna",
+          "model_reported": null,
+          "model_evidence_mode": "cli-argument",
+          "effort_requested": "high",
+          "auth_mode": null,
+          "provider_route": null,
+          "provider_effort_argument": null,
+          "hook_trust_bypassed": false,
+          "usage_attribution": {
+            "available": true,
+            "evidence_mode": "provider-event",
+            "reason": null
+          }
+        },
+        "source_commit": "4d849eb75f216109ea7053ed21530a11fafcc786",
+        "source_attestation": {
+          "vcs": "git",
+          "dirty": false,
+          "explicit_dirty_opt_in": false,
+          "status_entries": 0,
+          "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "publishable": true,
+          "detached": true,
+          "workspace_commit": null
+        },
+        "agent_bundle_sha256": null,
+        "activation_delta_sha256": "479405c9cba8dffb2088aac69c90ea53697f8760c19ccdf6008f91343a6cabfa",
+        "track_eligibility": {
+          "eligible": true,
+          "off_label": false,
+          "explicit_opt_in": false
+        }
+      },
+      "delivery": {
+        "product_changed": true,
+        "changed_product_files": [
+          {
+            "path": "index.html",
+            "status": "modified",
+            "before_sha256": "c30100389b9896023be0a12ec847fdc7eb31482219ab5d6161e780597b4913bf",
+            "after_sha256": "2ef12dd1f8897832f1e84b7d011185204e2fc472e7f160df1138c2dcda974dd2"
+          }
+        ]
+      },
+      "evidence": {
+        "manifest": ".benchmark/manifest.json",
+        "run_result": ".benchmark/run-result.json",
+        "score": ".benchmark/score.json",
+        "screenshots": ".benchmark/screenshots",
+        "proof_trace": ".benchmark/proof-trace.json",
+        "host_policy_state": null,
+        "candidate_preflight_receipt": null
+      }
+    }
+  ]
+}

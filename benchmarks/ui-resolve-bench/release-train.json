@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.1",
+  "product_baseline": "1.9.0",
+  "frontier_target": "2.0.0",
+  "releases": [
+    {
+      "version": "1.9.1",
+      "experiment": "measurement-delivery-contract-kernel",
+      "status": "calibration_complete",
+      "product_capability": "natural-language routing + shared work packet + single implementation owner + exact-route reverify"
+    },
+    { "version": "1.9.2", "experiment": "task-pack-calibration", "status": "calibration_complete" },
+    { "version": "1.9.3", "experiment": "fast-first-result", "status": "calibration_complete" },
+    { "version": "1.9.4", "experiment": "inspection-loop", "status": "calibration_complete" },
+    { "version": "1.9.5", "experiment": "reference-query-layer", "status": "candidate" },
+    { "version": "1.9.6", "experiment": "model-transfer", "status": "calibration_complete" },
+    { "version": "1.9.7", "experiment": "harness-efficiency", "status": "calibration_failed" },
+    { "version": "1.9.8", "experiment": "harness-delivery-budget-recovery", "status": "calibration_complete" },
+    { "version": "1.9.9", "experiment": "harness-efficiency-replacement", "status": "calibration_failed" },
+    { "version": "1.9.10", "experiment": "benchmark-robustness", "status": "calibration_complete" },
+    { "version": "1.9.11", "experiment": "classifier-integration-recovery", "status": "inconclusive" },
+    { "version": "1.9.12", "experiment": "renderer-observability", "status": "calibration_complete" },
+    { "version": "1.9.13", "experiment": "harness-efficiency-replacement-2", "status": "calibration_failed" },
+    { "version": "1.9.14", "experiment": "verification-authority-recovery", "status": "calibration_complete" },
+    { "version": "1.9.15", "experiment": "harness-efficiency-replacement-3", "status": "calibration_failed" },
+    { "version": "1.9.16", "experiment": "semantic-color-safety-recovery", "status": "calibration_complete" },
+    { "version": "1.9.17", "experiment": "harness-efficiency-replacement-4", "status": "calibration_failed" },
+    { "version": "1.9.18", "experiment": "advisory-to-edit-recovery", "status": "calibration_complete" },
+    { "version": "1.9.19", "experiment": "harness-efficiency-replacement-5", "status": "interrupted" },
+    { "version": "1.9.20", "experiment": "harness-efficiency-replacement-6", "status": "calibration_failed" },
+    { "version": "1.9.21", "experiment": "sandbox-scratch-recovery", "status": "calibration_complete" },
+    { "version": "1.9.22", "experiment": "harness-efficiency-replacement-7", "status": "calibration_complete" },
+    { "version": "1.9.23", "experiment": "locale-evidence-expansion", "status": "calibration_failed" },
+    { "version": "1.9.24", "experiment": "locale-delivery-authority-recovery", "status": "calibration_failed" },
+    { "version": "1.9.25", "experiment": "locale-oracle-standards-recovery", "status": "planned" },
+    { "version": "1.9.26", "experiment": "public-benchmark-ux", "status": "planned" },
+    { "version": "1.9.27", "experiment": "activation-reuse", "status": "planned" },
+    { "version": "1.9.28", "experiment": "independent-challenge", "status": "planned" },
+    {
+      "version": "2.0.0",
+      "experiment": "frontier-release",
+      "status": "gated",
+      "release_gate_plan": "benchmarks/ui-resolve-bench/plans/luna-max-2.0-release-v0.1.json",
+      "required_gate_classes": [
+        "clean-source-seal",
+        "public-schema-liveness",
+        "luna-max-wow-preview",
+        "same-prompt-qualification",
+        "blind-practitioner-review",
+        "three-model-transfer",
+        "independent-claim-audit"
+      ]
+    }
+  ],
+  "rules": {
+    "one_bounded_hypothesis_per_patch": true,
+    "benchmark_and_product_versions_are_separate": true,
+    "failed_experiments_remain_visible": true,
+    "score_rule_change_requires_suite_version": true,
+    "calendar_can_force_2_0_0": false,
+    "number_9_can_force_2_0_0": false,
+    "continue_patch_train_until_frontier_gates": true
+  },
+  "frontier_product_contract": [
+    "smallest-capable-workflow",
+    "evidence-backed-specialist-handoffs",
+    "one-implementation-owner",
+    "unknown-means-absent",
+    "quality-graded-reference-query",
+    "same-surface-reverification",
+    "harness-to-product-delivery",
+    "council-first-human-escalation"
+  ]
+}

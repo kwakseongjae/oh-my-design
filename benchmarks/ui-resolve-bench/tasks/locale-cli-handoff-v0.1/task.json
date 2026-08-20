@@ -1,0 +1,117 @@
+{
+  "id": "locale-cli-handoff-v0.1",
+  "version": "0.5.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "ko",
+  "browser_locale": "ko-KR",
+  "behavior_adapter": "locale-switch-v1",
+  "review_brief": "A five-locale setup handoff for a local UI workflow. Compare whether each locale preserves the same command and product facts while reading as an independent product interface rather than a mechanically translated English template.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": {
+    "landmarks": {
+      "h1_count": { "exact": 1 },
+      "main_count": { "exact": 1 },
+      "footer_count": { "min": 1 }
+    }
+  },
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": [
+    "[data-bench='locale-tab']",
+    "[data-bench='locale-panel']",
+    "[data-bench='copy-command']",
+    "[data-bench='copy-status']"
+  ],
+  "protected_hook_counts": {
+    "[data-bench='locale-tab']": { "total": 5, "visible": 5 },
+    "[data-bench='locale-panel']": { "total": 5, "visible": 1 },
+    "[data-bench='copy-command']": { "total": 5, "visible": 1 },
+    "[data-bench='copy-status']": { "total": 5, "visible": 1 }
+  },
+  "journey_oracle": {
+    "locale_switch": {
+      "button_selector": "[data-bench='locale-tab']",
+      "panel_selector": "[data-bench='locale-panel']",
+      "value_attribute": "data-locale",
+      "panel_value_attribute": "data-locale-panel",
+      "body_dataset": "locale",
+      "action_selector": "[data-bench='copy-command']",
+      "status_selector": "[data-bench='copy-status']",
+      "locales": ["ko", "en", "ja", "zh-CN", "zh-TW"],
+      "initial": "ko",
+      "clipboard_literal": "npx northstar-ui@1.4 setup --agent claude-code"
+    }
+  },
+  "locale_oracle": {
+    "protected_literals": [
+      "npx northstar-ui@1.4 setup --agent claude-code",
+      "12",
+      "3",
+      "DESIGN.md"
+    ],
+    "locales": {
+      "ko": {
+        "required_patterns": ["코딩 에이전트", "프로젝트", "명령"],
+        "forbidden_patterns": ["(?:用户|使用者|ユーザー)", "AI 编程助手", "AI 程式助理"]
+      },
+      "en": {
+        "required_patterns": ["(?:coding agent|coding assistant)", "(?:repository|project folder|codebase)", "command"],
+        "forbidden_patterns": ["[가-힣ぁ-んァ-ン一-龯]"]
+      },
+      "ja": {
+        "required_patterns": ["(?:コーディングエージェント|コーディングアシスタント)", "プロジェクト", "コマンド"],
+        "forbidden_patterns": ["(?:用户|使用者|코딩 에이전트)", "AI 编程助手", "AI 程式助理"]
+      },
+      "zh-CN": {
+        "required_patterns": ["AI 编程助手", "项目", "代码仓库"],
+        "forbidden_patterns": ["(?:軟體|資訊|使用者|專案|儲存|設定|登入|AI 程式助理)"]
+      },
+      "zh-TW": {
+        "required_patterns": ["AI 程式助理", "專案", "程式碼儲存庫"],
+        "forbidden_patterns": ["(?:软件|信息|用户|视频|默认|项目|保存|登录|AI 编程助手)"]
+      }
+    }
+  },
+  "protected_unknown_patterns": [
+    "\\b(?:10x|99(?:\\.9)?%|number[ -]?one|guaranteed|revolutionary|supercharge|magical|seamless)\\b",
+    "\\b(?:best|fastest|leading|top-rated|award-winning)\\s+(?:workflow|design|coding|agent|tool|platform)\\b",
+    "(?:최고|업계\\s*1위|가장\\s*빠른|완벽한|혁신적인)",
+    "(?:最高|最速|業界一|完全無欠|革新的)",
+    "(?:最佳|最强|最強|最快|领先|領先|赋能|賦能|无缝|無縫)",
+    "\\btrusted by\\b",
+    "\\b\\d[\\d,]*\\+?\\s+(?:customers|companies|teams|users|reviews)\\b",
+    "[★☆]{3,}"
+  ],
+  "protected_unknown_selectors": [
+    "blockquote",
+    "[class*='testimonial' i]",
+    "[class*='logo-wall' i]",
+    "[class*='social-proof' i]"
+  ],
+  "design_oracle": {
+    "page_background": "#FAFAFA",
+    "primary_action": "#5546FF",
+    "accent": "#A89CFF",
+    "ink": "#0A0A0F",
+    "surface": "#FFFFFF",
+    "border": "#E5E3EA",
+    "muted_text": "#66636F",
+    "card_radius_px": 14,
+    "control_radius_px": 10,
+    "font_family": {
+      "body_any": ["system-ui"],
+      "display_any": ["system-ui"]
+    },
+    "selectors": {
+      "primary_action": "[data-locale-panel='ko'] [data-bench='copy-command']",
+      "card": "[data-locale-panel='ko']",
+      "display": "h1"
+    }
+  }
+}

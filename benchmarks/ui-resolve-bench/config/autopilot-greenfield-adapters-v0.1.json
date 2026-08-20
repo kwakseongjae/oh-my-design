@@ -1,0 +1,111 @@
+{
+  "schema_version": "0.1",
+  "adapter_set_id": "autopilot-greenfield-observable-outcomes-v0.1",
+  "task_set_sha256": "53634e4f8e79b34460ebd1d470b381b3167753bf6e07f03eb4aa7ce268e9bf6c",
+  "status": "provider-zero-calibration-required",
+  "locator_policy": {
+    "role_and_accessible_name_only": true,
+    "required_ids_classes_or_testids": false,
+    "exact_dom_shape_required": false,
+    "exact_visual_token_required": false,
+    "unique_visible_match_required": true
+  },
+  "common_checks": [
+    "one-visible-main-and-h1",
+    "axe-serious-critical-zero-in-every-reached-state",
+    "keyboard-journey-complete",
+    "visible-unclipped-focus-indicator",
+    "dynamic-feedback-programmatically-announced",
+    "document-overflow-zero-1440-390-320-200-percent",
+    "critical-controls-reachable-and-unclipped",
+    "mobile-journey-touch-targets-at-least-44",
+    "console-page-error-and-external-request-zero",
+    "protected-unknowns-not-asserted-as-facts"
+  ],
+  "adapters": [
+    {
+      "task_id": "neighborhood-library-landing",
+      "accepted_structures": ["editorial-inline-reservation", "split-hero-reservation-dialog"],
+      "journey": ["understand-borrowing", "activate-reserve-tool", "reservation-start-state-visible-and-focused"],
+      "atomic_assertions": ["borrowing-purpose-visible", "how-reservation-works-at-least-two-stages", "unique-primary-reserve-action", "unavailable-information-honest"],
+      "mutant_detection": {"primary-action-removed": "unique-primary-reserve-action", "mobile-horizontal-overflow": "document-overflow-zero", "invented-social-proof": "protected-social-proof-absent"}
+    },
+    {
+      "task_id": "incident-response-dashboard",
+      "accepted_structures": ["incident-table-detail-drawer", "severity-card-lanes-detail-view"],
+      "journey": ["scan-two-sample-open-incidents", "keyboard-open-unique-highest-severity", "acknowledge-and-observe-same-incident-confirmation"],
+      "atomic_assertions": ["severity-textual-and-ranked", "sample-scope-visible", "acknowledged-state-persistent", "loading-empty-error-reachable"],
+      "mutant_detection": {"severity-hierarchy-flattened": "severity-textual-and-ranked", "acknowledgement-feedback-removed": "acknowledged-state-persistent", "keyboard-row-action-broken": "keyboard-open-unique-highest-severity"}
+    },
+    {
+      "task_id": "cold-chain-operations",
+      "accepted_structures": ["responsive-table-detail-drawer", "exception-cards-detail-view"],
+      "journey": ["activate-urgent-filter", "keyboard-open-sample-exception", "reject-empty-owner-then-assign-sample-owner"],
+      "atomic_assertions": ["filter-selected-and-persistently-visible", "evidence-detail-matches-shipment", "owner-error-associated", "assigned-owner-confirmed-and-persistent"],
+      "mutant_detection": {"table-clips-at-320": "critical-record-fields-reachable-320", "filter-state-hidden": "filter-selected-and-persistently-visible", "assignment-owner-not-confirmed": "assigned-owner-confirmed-and-persistent"}
+    },
+    {
+      "task_id": "caregiver-onboarding",
+      "accepted_structures": ["single-card-wizard", "full-page-stepper"],
+      "journey": ["purpose-to-preferences", "empty-choice-blocked-then-select", "review-back-preserves-choice-then-complete"],
+      "atomic_assertions": ["current-and-total-step-visible-and-programmatic", "preference-error-associated", "review-echoes-choice", "complete-announced"],
+      "mutant_detection": {"progress-context-removed": "current-and-total-step-visible-and-programmatic", "back-navigation-loses-state": "review-back-preserves-choice-then-complete", "required-choice-not-validated": "empty-choice-blocked-then-select"}
+    },
+    {
+      "task_id": "community-class-checkout",
+      "accepted_structures": ["inline-summary-form-receipt", "review-contact-confirmation-steps"],
+      "journey": ["review-sample-booking-and-visible-total", "empty-and-invalid-contact-blocked", "valid-contact-submits-then-confirms"],
+      "atomic_assertions": ["total-visible-before-confirm", "email-error-associated", "submitting-or-busy-observable", "success-only-after-confirm", "declined-recovery-reachable"],
+      "mutant_detection": {"total-obscured": "total-visible-before-confirm", "invalid-email-accepted": "email-error-associated", "premature-success-message": "success-only-after-confirm"}
+    },
+    {
+      "task_id": "research-data-deletion",
+      "accepted_structures": ["progressive-danger-panel", "review-plus-confirmation-step"],
+      "journey": ["inspect-sample-dataset-scope", "acknowledge-and-exact-phrase-required", "approve-or-fresh-cancel"],
+      "atomic_assertions": ["scope-parent-child-hierarchy", "wrong-phrase-blocks", "approve-requires-both-gates", "cancel-always-keyboard-reachable"],
+      "mutant_detection": {"confirmation-bypass": "approve-requires-both-gates", "scope-hierarchy-flattened": "scope-parent-child-hierarchy", "cancel-action-hidden": "cancel-always-keyboard-reachable"}
+    },
+    {
+      "task_id": "public-record-search",
+      "accepted_structures": ["sidebar-filters-result-route", "toolbar-filters-result-dialog"],
+      "journey": ["search-visible-fictional-record", "apply-two-filters-and-observe-count", "clear-filters-open-result-and-recover-no-results"],
+      "atomic_assertions": ["fictional-scope-visible", "both-active-filter-values-visible", "clear-contract-honored", "no-results-distinct-from-error", "opened-record-identity-matches"],
+      "mutant_detection": {"filter-state-invisible": "both-active-filter-values-visible", "clear-filters-broken": "clear-contract-honored", "no-results-missing": "no-results-distinct-from-error"}
+    },
+    {
+      "task_id": "field-notes-editorial",
+      "accepted_structures": ["longform-sticky-toc", "chapter-cards-endnotes"],
+      "journey": ["scan-valid-heading-outline", "navigate-second-section-and-observe-current", "distinguish-caption-citation-then-subscribe-with-validation"],
+      "atomic_assertions": ["heading-ranks-not-skipped", "section-target-and-current-match", "caption-and-source-separate-semantics", "email-error-associated", "subscription-announced"],
+      "mutant_detection": {"heading-order-broken": "heading-ranks-not-skipped", "caption-citation-conflated": "caption-and-source-separate-semantics", "subscription-validation-removed": "email-error-associated"}
+    },
+    {
+      "task_id": "mobile-transit-report",
+      "accepted_structures": ["mobile-stepper-review", "single-page-explicit-review-state"],
+      "journey": ["empty-issue-blocked", "select-issue-and-review-echo", "submit-fictional-report"],
+      "atomic_assertions": ["mobile-task-targets-44", "review-required-before-submit", "no-preconsent-geolocation", "fictional-submission-disclosed"],
+      "mutant_detection": {"touch-target-under-44": "mobile-task-targets-44", "review-step-skipped": "review-required-before-submit", "location-assumed": "no-preconsent-geolocation"}
+    },
+    {
+      "task_id": "grant-evidence-intake",
+      "accepted_structures": ["three-status-columns", "status-table-or-list"],
+      "journey": ["classify-pending-evidence", "keep-protected-fields-unresolved", "confirm-unresolved-warning-then-submit-draft"],
+      "atomic_assertions": ["every-item-status-textual", "protected-fields-empty-or-unresolved", "unresolved-warning-before-submit", "unresolved-count-persists"],
+      "mutant_detection": {"unknowns-auto-filled": "protected-fields-empty-or-unresolved", "evidence-status-color-only": "every-item-status-textual", "unresolved-submit-warning-removed": "unresolved-warning-before-submit"}
+    },
+    {
+      "task_id": "volunteer-import-recovery",
+      "accepted_structures": ["native-sample-csv-upload", "local-use-sample-csv-action"],
+      "journey": ["load-sample-valid-and-invalid-rows", "exclude-or-correct-invalid-row", "retry-preserves-valid-rows-and-completes"],
+      "atomic_assertions": ["row-error-associated-and-recoverable", "valid-row-identities-preserved", "state-transitions-announced", "completion-counts-unambiguous", "sample-local-only-disclosed"],
+      "mutant_detection": {"row-error-unrecoverable": "row-error-associated-and-recoverable", "retry-loses-valid-rows": "valid-row-identities-preserved", "completion-status-ambiguous": "completion-counts-unambiguous"}
+    },
+    {
+      "task_id": "clinic-visit-prep-locales",
+      "accepted_structures": ["native-locale-select", "locale-tabs-or-menu"],
+      "journey": ["switch-ko-en-ja-zh-cn-zh-tw", "check-one-and-preserve-progress-across-switches", "complete-and-preserve-after-return"],
+      "atomic_assertions": ["selected-label-html-lang-and-script-agree", "cjk-critical-content-unclipped", "progress-textual-and-persistent", "fictional-not-medical-advice"],
+      "mutant_detection": {"locale-label-mismatch": "selected-label-html-lang-and-script-agree", "cjk-overflow": "cjk-critical-content-unclipped", "progress-lost-on-locale-switch": "progress-textual-and-persistent"}
+    }
+  ]
+}

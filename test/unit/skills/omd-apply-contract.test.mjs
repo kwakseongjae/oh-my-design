@@ -1,0 +1,302 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { describe, expect, it } from "vitest";
+
+const repoRoot = resolve(import.meta.dirname, "../../..");
+const skill = readFileSync(resolve(repoRoot, "skills/omd-apply/SKILL.md"), "utf8");
+
+describe("omd:apply delivery contract", () => {
+  it("does not turn browser permission gates into unplanned human intervention", () => {
+    expect(skill).toContain("Non-interactive browser-infrastructure rule");
+    expect(skill).toContain("사용자에게 remote debugging 허용, permission dialog 클릭, 로그인, browser attach, 재개 응답을 요구하지 않는다");
+    expect(skill).toContain("한 번의 product edit + 저장소에 이미 있는 결정론 static evaluator/closure 한 번");
+    expect(skill).toContain("plan-close 전 product edit 금지");
+    expect(skill).toContain("유일한 infrastructure 예외");
+  });
+
+  it("fails closed on unmeasured compound one-line fit with a named relationship carrier", () => {
+    expect(skill).toContain("contained fit을 수치로 증명할 수 없으면");
+    expect(skill).toContain("distinct named relationship carrier");
+    expect(skill).toContain("row selector/passive text 자체나 action을 포함한 decision container를 scroll시키지 않는다");
+    expect(skill).toContain("accessible name, `tabindex=\"0\"`, visible `:focus-visible`");
+    expect(skill).toContain("target과 evidence를 한 scroller로 합치거나 state/action을 넣지 않는다");
+    expect(skill).toContain("실제 reserve·scrollWidth·keyboard 동작은 계속 `unresolved`");
+    expect(skill).toContain("source-fallback-open .omd/reflow-closure.json");
+    expect(skill).toContain("source_fallback_closure.state: opened");
+  });
+
+  it("treats provider-sealed reflow input as immutable", () => {
+    expect(skill).toContain("source_contract.state: provider-sealed");
+    expect(skill).toContain("source-packet .omd/reflow-closure.json");
+    expect(skill).toContain("static-preview .omd/reflow-closure.json .omd/product-candidate.html");
+    expect(skill).toContain("static-promote .omd/reflow-closure.json .omd/product-candidate.html");
+    expect(skill).toContain("candidate를 다시 읽거나 모델 edit으로 재작성하지 않고");
+    expect(skill).toContain("static-preview-receipt.json");
+    expect(skill).toContain("provider-sealed `static-close`는 이 결박이 없거나 다르면 closure를 소비하지 않고 거부한다");
+    expect(skill).toContain("sealed artifact는 모델의 작업물이 아니며");
+    expect(skill).toContain("provider 실행 전에 거부한다");
+  });
+
+  it("keeps implementation ownership with the main agent", () => {
+    expect(skill).toContain("본 에이전트가 실제 편집과 검증을 끝까지 소유");
+    expect(skill).toContain("audit/advice 요청만 자문 결과 요약으로 종료할 수 있다");
+    expect(skill).toContain("자문 완료를 구현 완료로 간주하지 않음");
+  });
+
+  it("defines recovery for unavailable and stale specialist roles", () => {
+    expect(skill).toContain("런타임 역할 사용 가능");
+    expect(skill).toContain("유효한 로컬 역할 파일 존재");
+    expect(skill).toContain("역할과 유효한 역할 파일 모두 없음");
+    expect(skill).toContain("역할을 실행했다고 표현하지 않음");
+  });
+
+  it("does not preserve the former dispatch-only dead end", () => {
+    expect(skill).not.toContain("그 후 인라인 처리는 하지 않고");
+    expect(skill).not.toContain("복합 작업을 인라인으로 처리 금지");
+  });
+
+  it("uses one shared work packet and exact consumer-route verification", () => {
+    expect(skill).toContain("Work packet");
+    expect(skill).toContain("consumer_route");
+    expect(skill).toContain("implementation_owner");
+    expect(skill).toContain("같은 consumer route");
+  });
+
+  it("bounds verification and preserves a final delivery reserve", () => {
+    expect(skill).toContain("Bounded verification + guaranteed delivery");
+    expect(skill).toContain("첫 제품 편집을 총 예산의 50% 전");
+    expect(skill).toContain("verification mechanism은 종류별로 한 번만 시도");
+    expect(skill).toContain("replacement verifier");
+    expect(skill).toContain("Acceptance packet은 실행 파일이 아니라 체크리스트와 관찰 결과");
+    expect(skill).toContain("80%에서 선택 검증을 끝내고 90% 전에는 최종 응답을 시작");
+    expect(skill).toContain("implemented / verified / unresolved");
+    expect(skill).toContain("final response를 잃는 것은 실패");
+  });
+
+  it("locks observable behavior before visual expansion", () => {
+    expect(skill).toContain("Contract-first edit + acceptance packet");
+    expect(skill).toContain("Release-blocker pass — polish보다 먼저 한 번만 닫기");
+    expect(skill.indexOf("Release-blocker pass")).toBeLessThan(
+      skill.indexOf("Acceptance packet은 실행 파일이 아니라 체크리스트와 관찰 결과"),
+    );
+    expect(skill).toContain("첫 edit transaction의 완료 조건");
+    expect(skill).toContain("pre_edit_release_invariant:");
+    expect(skill).toContain("known_failure_ledger:");
+    expect(skill).toContain("every supplied baseline failure and every pre-edit measured failing critical gate");
+    expect(skill).toContain("known_failure_ledger AND foreground_change AND comparison_carrier_set");
+    expect(skill).toContain("acceptance_debt_ledger");
+    expect(skill).toContain("직접 언급한 모든 실패 범주");
+    expect(skill).toContain("must-fix-before-static-close");
+    expect(skill).toContain("measured-but-unchanged");
+    expect(skill).toContain("measured_but_unchanged: 0");
+    expect(skill).toContain("unresolved_known_failures: 0");
+    expect(skill).toContain("foreground_change:");
+    expect(skill).toContain("comparison_carrier_set:");
+    expect(skill).toContain("every protected or named relationship scope containing registered atomic text");
+    expect(skill).toContain("carrier별** 390px·320px·실제 200% 결과");
+    expect(skill).toContain("browser_attempt:");
+    expect(skill).toContain("browser session 생성은 결과가 아니다");
+    expect(skill).toContain("실제 route를 열어야");
+    expect(skill).toContain("첫 edit diff에서 DESIGN.md의 검증된 text-role/ink token으로 실제 교체");
+    expect(skill).toContain("ratio 기록만 하고 교정을 미루면 transaction 미완료");
+    expect(skill).toContain("deterministic static-close helper 1회");
+    expect(skill).toContain("pre-edit fit-plan browser 1회");
+    expect(skill).toContain("current_count");
+    expect(skill).toContain("allowed_delta");
+    expect(skill).toContain("장식을 위해 제품 hook을 복제하지 않는다");
+    expect(skill).toContain("semantic_color_ledger");
+    expect(skill).toContain("foreground closure");
+    expect(skill).toContain("`muted`, `secondary`, `supporting`도 normal text면 exact pair");
+    expect(skill).toContain("반올림 전 값이 4.5 미만이면 실패");
+    expect(skill).toContain("failed_or_unresolved_normal_text_pairs: 0");
+    expect(skill).toContain("geometry-token closure");
+    expect(skill).toContain("interactive closure");
+    expect(skill).toContain("unauthorized_focusable_delta: 0");
+    expect(skill).toContain("permanently_clipped_focusable: 0");
+    expect(skill).toContain("unresolved_focus_reveal: 0");
+    expect(skill).toContain("새 hex를 만들지 않는다");
+    expect(skill).toContain("text-role token + 인접 non-text accent");
+    expect(skill).toContain("change_authority: original-user-task-only");
+    expect(skill).toContain("bounded-repair-advisory");
+    expect(skill).toContain("first_safe_edit");
+    expect(skill).toContain("rejected_contract_drift");
+    expect(skill).toContain("`initial_visibility`, `own_geometry`");
+    expect(skill).toContain("protected_selector_visibility_loss: 0");
+  });
+
+  it("runs reflow through one compact, measurable work packet", () => {
+    expect(skill).toContain("reflow-integrity closure");
+    expect(skill).toContain("reflow_work_packet:");
+    expect(skill).toContain('schema_version: "0.3"');
+    expect(skill).toContain("browser-harness named consumer CDP attachment");
+    expect(skill).toContain("scripts/reflow-browser-runner.sh");
+    expect(skill).toContain("runner가 artifact의 locked product path와 helper path를 직접 읽고");
+    expect(skill).toContain("required_fit_reserve_css_px: 8");
+    expect(skill).toContain("planned_fit_reserve_css_px: 16");
+    expect(skill).toContain("intrinsic nowrap width");
+    expect(skill).toContain("typography_contract:");
+    expect(skill).toContain("typography_contract: { source: deterministic-pre-edit-snapshot }");
+    expect(skill).toContain("ordered inventory와 편집 전 source를 잠근다");
+    expect(skill).toContain('measurement_conditions:');
+    expect(skill).toContain('{ id: "200pct", viewport_width: 640, zoom: 2 }');
+    expect(skill).toContain("acceptance_sequence:");
+    expect(skill).toContain("source_inspection_complete: true");
+    expect(skill).toContain("product_edit_transaction: single-planned-transaction");
+    expect(skill).toContain("post_edit_commands: [consolidated-static-closure, browser-harness-terminal]");
+    expect(skill).toContain("static_closure_manifest:");
+    expect(skill).toContain("required_literals:");
+    expect(skill).toContain("forbidden_patterns:");
+    expect(skill).toContain("count_literals:");
+    expect(skill).toContain("필요한 snapshot을 먼저 잠근다");
+    expect(skill).toContain("OMD_PLAN_NOT_ATTEMPTED");
+    expect(skill).toContain("`plan-close|plan-apply` 성공 stdout");
+    expect(skill).toContain("OMD_PLAN_MEASURED_RECONCILE_REQUIRED");
+    expect(skill).toContain("`plan-packet <artifact> <packet>`을 정확히 한 번 실행");
+    expect(skill).toContain("null인 `operator_inputs.accessible_names`");
+    expect(skill).toContain("key를 추가·누락하거나 다른 operator field를 넣으면 적용은 product mutation 전에 중단");
+    expect(skill).toContain("`irreconcilable`이면 새 row/carrier를 만들거나 제품을 수정하지 않고 run을 즉시 중단");
+    expect(skill).toContain("plan-apply");
+    expect(skill).toContain("plan_closure.state: closed");
+    expect(skill).toContain("OMD_REFLOW_MODE=plan");
+    expect(skill).toContain("pre_edit_fit_plan: { state: pending }");
+    expect(skill).toContain("intrinsic + 16px");
+    expect(skill).toContain("가장 작은 stable existing layout carrier");
+    expect(skill).toContain("각 row group은 정확히 한 aggregate carrier에만 결박");
+    expect(skill).toContain("aggregate carrier outer width");
+    expect(skill).toContain("required_outer_width_css_px = intrinsic_outer + 16px");
+    expect(skill).toContain("row의 16px budget만 green이어도 aggregate carrier가 available document width를 넘으면 계획은 red");
+    expect(skill).toContain("contained carrier inner budget");
+    expect(skill).toContain("min(live content box, available document width - carrier horizontal chrome - horizontal margin)");
+    expect(skill).toContain("available_carrier_inner_width_css_px");
+    expect(skill).toContain("reflow-artifact.mjs finalize");
+    expect(skill).toContain("finalize-unresolved");
+    expect(skill).toContain("등록 row/carrier 하나라도 unresolved면 resolved finalize를 거부");
+    expect(skill).toContain("browser를 실제 시도하지 않았거나 제품 결함을 발견한 상태는 unresolved accounting으로 우회할 수 없다");
+    expect(skill).toContain("row_group_ids:");
+    expect(skill).toContain("carriers:");
+    expect(skill).toContain('id: "stable relationship scope id"');
+    expect(skill).toContain('binds_row_groups: ["registered row group id"]');
+    expect(skill).toContain("expected_count:");
+    expect(skill).toContain("row_groups:");
+    expect(skill).toContain("all_registered_carriers_closed: true");
+    expect(skill).toContain("closure_manifest:");
+    expect(skill).toContain("quality_pass: true");
+    expect(skill).toContain("expanded instance counts");
+    expect(skill).toContain("같은 selector·역할·longest value를 공유하는 반복 행");
+    expect(skill).toContain("row selector 자체의 rendered text/value가 `longest_value`와 정확히 대응");
+    expect(skill).toContain("helper source나 hash 알고리즘을 읽지 않는다");
+    expect(skill).toContain("role: target|identifier|evidence|state|control-label");
+    expect(skill).toContain("decision: full-row|stack|relocate|comparison-scroll|keep|unresolved");
+    expect(skill).toContain("passive_text_scroll_container: false");
+    expect(skill).toContain("1. **INVENTORY.**");
+    expect(skill).toContain("측정 시작 state에서 non-empty로 보이는");
+    expect(skill).toContain("52자 이하의 concise evidence fact");
+    expect(skill).toContain("`role: evidence` atomic row로 반드시 등록");
+    expect(skill).toContain("현재 비어 있거나 hidden인 status는 row가 아니라 carrier 안의 보존 콘텐츠");
+    expect(skill).toContain("측정 시작 state에서 실제 렌더되는 값 중 가장 긴 값");
+    expect(skill).toContain("ordered `atomic_parts`");
+    expect(skill).toContain("`line_contract: parent-one-line`");
+    expect(skill).toContain("character-range-line-tops");
+    expect(skill).toContain("`element.getClientRects().length`는 line-count proof로 사용하지 않는다");
+    expect(skill).toContain("2. **FIT.**");
+    expect(skill).toContain("source-only 또는 경계에 딱 맞는 결과는 `unresolved`");
+    expect(skill).toContain("3. **REFLOW.**");
+    expect(skill).toContain("가장 좁은 조건에서 group의 longest atomic child");
+    expect(skill).toContain("parent row를 `full-row`, 다음으로 `stack`");
+    expect(skill).toContain("`atomic_parts`는 separator wrap 허가가 아니다");
+    expect(skill).toContain("parts와 separator 전체를 한 atomic group으로 유지");
+    expect(skill).toContain("parent selector 전체의 non-space character top 고유값이 정확히 1");
+    expect(skill).toContain("row selector와 다른 **named 관계 carrier**를 `comparison-scroll`로 쓴다");
+    expect(skill).toContain("decision target은 evidence·state·action을 포함하지 않는 target-only carrier");
+    expect(skill).toContain("supporting evidence/state/action보다 먼저 놓이는 dedicated full-row relationship row");
+    expect(skill).toContain("comparison-scroll carrier 안의 protected passive row를 별도 nested registered carrier로 쪼개지 않는다");
+    expect(skill).toContain("nested registered carrier를 발견하면 edit 전에 실패");
+    expect(skill).toContain("실제 content box(`clientWidth - inline padding`)");
+    expect(skill).toContain('protected decision-target hook가 있으면 정확히 하나의 `role: target` row');
+    expect(skill).toContain("target-only carrier 하나를 `plan-close` 전에 등록한다");
+    expect(skill).toContain("shared carrier를 쓸 수 있지만");
+    expect(skill).toContain("passive `identifier` 역할뿐");
+    expect(skill).toContain("comparison carrier 안의 focusable descendant");
+    expect(skill).toContain("protected target/identifier/state 같은 passive text 자체의 computed overflow가 `auto|scroll`이면");
+    expect(skill).toContain("기존 carrier 자체를 relocate");
+    expect(skill).toContain("generated content·`data-*`·aria-label·hook 없는 span 복제");
+    expect(skill).toContain("passive text scroller");
+    expect(skill).toContain("count가 `expected_count`와 다르면 그 group은 pass가 아니다");
+    expect(skill).toContain("4. **PROVE.**");
+    expect(skill).toContain('document.documentElement.style.zoom = String(zoom)');
+    expect(skill).toContain("640px만 열고 zoom을 생략한 결과는 200% proof가 아니다");
+    expect(skill).toContain("observed_document_zoom");
+    expect(skill).toContain("helper가 closure state에서 `OMD_DELIVERY_READY` 또는 `OMD_DELIVERY_UNRESOLVED`를 자동 출력");
+    expect(skill).toContain("모든 matched instance");
+    expect(skill).toContain("same_row_count: true");
+    expect(skill).toContain("same_decision_boundary: true");
+    expect(skill).toContain("no_text_hack: true");
+    expect(skill).toContain("unresolved_rows: 0");
+    expect(skill).toContain("unresolved_carriers: 0");
+    expect(skill).toContain("page_overflow: 0");
+    expect(skill).toContain("preview는 artifact의 attempts/state를 쓰지 않고 제품도 바꾸지 않으므로 candidate 단계에서 반복할 수 있다");
+    expect(skill).not.toContain("implicit_one_line_selector");
+    expect(skill).not.toContain("source_claim_without_selector_decision");
+  });
+
+  it("operationalizes proof as a revision-bound close latch", () => {
+    expect(skill).toContain("proof execution close latch");
+    expect(skill).toContain("proof_execution_latch:");
+    expect(skill).toContain("inventory: open|closed");
+    expect(skill).toContain("product_edit: pending|changed|stable");
+    expect(skill).toContain("known_failure_closure: { state: open|closed, unresolved: 0 }");
+    expect(skill).toContain("static_closure: { state: open|closed, revision: null, runs: 0 }");
+    expect(skill).toContain("browser_proof: { state: open|closed|unresolved, revision: null, attempts: 0, mechanism: null }");
+    expect(skill).toContain("delivery: blocked|ready");
+    expect(skill).toContain("verification_after_ready: 0");
+    expect(skill).toContain("reflow-artifact.mjs static-close .omd/reflow-closure.json");
+    expect(skill).toContain("model이 post-edit `node - <<`, inline JS");
+    expect(skill).toContain("`static-close`가 red면 exactly-once static budget이 소비된다");
+    expect(skill).toContain("helper를 고쳐서 다시 실행하지 않고");
+    expect(skill).toContain("`--doctor`, `--help`, executable/process/port discovery, 직접 Chrome launch");
+    expect(skill).toContain("준비된 mechanism은 같은 shipped runner를 exact named consumer connection에서 pre-edit plan 1회와 post-edit acceptance 1회 실행하는 두 단계");
+    expect(skill).toContain("OMD_REFLOW_MODE=plan sh <current-skill-dir>/scripts/reflow-browser-runner.sh");
+    expect(skill).toContain("post-edit command는 `sh <current-skill-dir>/scripts/reflow-browser-runner.sh`");
+    expect(skill).toContain("환경변수·redirect를 재조립하지 않는다");
+    expect(skill).toContain("`p.chromium.launch()`");
+    expect(skill).toContain("document/body `scrollWidth`와 `clientWidth`");
+    expect(skill).toContain("새 browser나 fallback을 만들지 않는다");
+    expect(skill).toContain("pre-edit fit-plan browser 1회 + pre-edit candidate static-preview(제품/계약 비변경) + task 전체 deterministic static-close helper 1회 + post-edit acceptance browser 1회");
+    expect(skill).toContain("static_edit_guardrails");
+    expect(skill).toContain("static_edit_guardrails.source_fallback_patch_contract");
+    expect(skill).toContain("canonical_acceptance_css_source");
+    expect(skill).toContain("required_css_declarations");
+    expect(skill).toContain("canonical_acceptance_css_source`를 candidate에 먼저 적용");
+    expect(skill).toContain("두 번째 product edit은 금지한다");
+    expect(skill).toContain("word-break: normal");
+    expect(skill).toContain("snapshot-backed row selector");
+    expect(skill).toContain("제품 edit에서 새로 붙일 `.event-log-form` 같은 class");
+    expect(skill).toContain("selector provenance");
+    expect(skill).toContain("첫 product edit 뒤 첫 shell command 하나가 static closure 전체");
+    expect(skill).toContain("두 번째 shell command는 duplicate static closure");
+    expect(skill).toContain("static_closure.state: passed");
+    expect(skill).toContain("`OMD_DELIVERY_READY` 또는 `OMD_DELIVERY_UNRESOLVED`");
+    expect(skill).toContain("command 반환 뒤 artifact `rg`/`sed`/`cat`을 실행하지 않는다");
+    expect(skill).toContain("`sed`/`rg`/`awk`/`wc`/diff도 제품 diff 뒤 실행하면 static closure");
+    expect(skill).toContain("이후 수정으로 revision을 올려도 task-level proof compliance는 복구되지 않는다");
+    expect(skill).toContain("제품 파일이 바뀌지 않았다면 어느 proof state도 reopen하지 않는다");
+    expect(skill).toContain("이 뒤 verification shell/browser command는");
+  });
+
+  it("preserves task-helpful visual equity under explicit change authority", () => {
+    expect(skill).toContain("visual equity ledger");
+    expect(skill).toContain("최대 5개");
+    expect(skill).toContain("`original user task`, `explicit DESIGN.md rule`, `same consumer route measured defect`");
+    expect(skill).toContain("`visual_equity: []`와 `visual-equity closure: N/A`");
+    expect(skill).toContain("visual-equity closure");
+    expect(skill).toContain("unsupported_hierarchy_loss: 0");
+    expect(skill).toContain("unsupported_state_signal_weakening: 0");
+    expect(skill).toContain("unsupported_reassurance_removal: 0");
+    expect(skill).toContain("unsupported_decision_boundary_collapse: 0");
+
+    expect(skill).toContain("protected ledger");
+    expect(skill).toContain("확인되지 않은 정보 — fallback으로 채우지 않음");
+    expect(skill).toContain("replacement verifier");
+    expect(skill).toContain("delivery_reserve: true");
+  });
+});

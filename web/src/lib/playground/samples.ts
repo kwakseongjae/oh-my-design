@@ -1,6 +1,6 @@
 /**
  * Narrative templates, persona copy, voice Do/Don't tables, and state-copy
- * templates used by `generate.ts` to build a 15-section DESIGN.md from a
+ * templates used by `generate.ts` to build the portable Core projection from a
  * PlaygroundState. All user-facing strings carry implicit <!-- illustrative -->
  * status since the Playground has no live surface to verify against.
  */

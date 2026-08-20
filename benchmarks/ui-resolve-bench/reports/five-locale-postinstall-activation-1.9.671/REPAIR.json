@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.671",
+  "status": "FIVE_LOCALE_POSTINSTALL_ACTIVATION_ACCEPTED",
+  "unresolved_frontier_gate": "activation-and-seven-day-reuse",
+  "bounded_hypothesis": "If the successful installer continues in the operator-selected locale, users can reach the first agent prompt without being dropped into an EN/KR-only activation block.",
+  "candidate_delta": "Add install-skills --lang for EN/KO/JA/ZH-CN/ZH-TW and independently adapt the post-install prompt, continuation, restart, Cursor, Builder, and harness guidance.",
+  "acceptance": {
+    "five_locale_flag_visible_in_built_help": true,
+    "five_locale_guidance_rendered": true,
+    "en_kr_bilingual_fallback_removed": true,
+    "cursor_native_path_localized": true,
+    "cursor_compatibility_path_localized": true,
+    "protected_identifiers_retained": ["DESIGN.md", "omd:init", "/omd-harness <task>", ".cursor/skills"]
+  },
+  "focused_test": {
+    "file": "test/unit/cli/install-skills.test.ts",
+    "passed": 43,
+    "failed": 0
+  },
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "rollback_gate": "Revert if a supported locale falls back to the former EN/KR block, loses a protected command, or changes installation behavior.",
+  "claim_boundary": "This repairs deterministic first-run guidance. It does not establish production activation or seven-day reuse lift.",
+  "next": "Keep the production activation gate open until install-to-first-surface and seven-day reuse are observed after release."
+}

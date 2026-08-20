@@ -1,0 +1,101 @@
+{
+  "schema_version": "0.2",
+  "report": "opus-transfer-1.9.3",
+  "benchmark_family": "factorial",
+  "task_contract": "0.3.0",
+  "task_id": "incident-operations-v0.1",
+  "runtime": {
+    "agent": "claude-code",
+    "agent_version_during_run": "2.1.217",
+    "model": "claude-opus-4-8",
+    "effort": "xhigh",
+    "authentication": "first-party-subscription-oauth"
+  },
+  "scheduled_runs": 2,
+  "completed_runs": 2,
+  "sandbox_clean_runs": 2,
+  "standard_schema_valid_runs": 2,
+  "preregistered_strict_valid_runs": 0,
+  "comparison_allowed": false,
+  "publication_allowed": false,
+  "disposition": "completed-diagnostic-preregistered-invalid",
+  "conditions": [
+    {
+      "variant_id": "raw-design-md",
+      "run_status": "complete",
+      "standard_schema_validity": "valid",
+      "preregistered_strict_validity": "invalid-recoverable-tool-errors",
+      "ui_resolved": false,
+      "objective_score": 75,
+      "objective_max": 85,
+      "wall_time_ms": 533026,
+      "milestones": {
+        "first_builtin_product_write_ms": 237840,
+        "last_builtin_product_write_ms": 491968,
+        "final_result_ms": 533026
+      },
+      "input_tokens": 64301,
+      "cached_input_tokens": 1151508,
+      "output_tokens": 42422,
+      "total_uncached_tokens": 106723,
+      "provider_cost_equivalent_usd": 2.270475,
+      "tool_error_count": 2,
+      "sandbox_error_count": 0,
+      "sandbox_cwd_error_count": 0,
+      "product_changed": true,
+      "final_message_present": true,
+      "failed_gates": [
+        "responsive",
+        "primary_action_color"
+      ]
+    },
+    {
+      "variant_id": "omd-portable",
+      "run_status": "complete",
+      "standard_schema_validity": "valid",
+      "preregistered_strict_validity": "invalid-recoverable-tool-errors",
+      "ui_resolved": true,
+      "objective_score": 85,
+      "objective_max": 85,
+      "wall_time_ms": 552355,
+      "milestones": {
+        "first_builtin_product_write_ms": 364767,
+        "last_builtin_product_write_ms": 523692,
+        "final_result_ms": 552355
+      },
+      "input_tokens": 70123,
+      "cached_input_tokens": 1132384,
+      "output_tokens": 44539,
+      "total_uncached_tokens": 114662,
+      "provider_cost_equivalent_usd": 2.371737,
+      "tool_error_count": 2,
+      "sandbox_error_count": 0,
+      "sandbox_cwd_error_count": 0,
+      "product_changed": true,
+      "final_message_present": true,
+      "failed_gates": []
+    }
+  ],
+  "diagnostic_deltas_raw_to_omd": {
+    "objective_points": 10,
+    "total_uncached_tokens_percent": 7.4389,
+    "input_tokens_percent": 9.0543,
+    "cached_input_percent": -1.6608,
+    "output_tokens_percent": 4.9903,
+    "wall_time_percent": 3.6263,
+    "provider_cost_equivalent_percent": 4.4599
+  },
+  "runner_findings": [
+    "parent-glob permission denies collided with the workspace sandbox and were removed",
+    "the corrected read-only Opus probe completed with zero tool and sandbox errors",
+    "both scored cells completed without timeout or sandbox errors",
+    "Claude auto-memory remained an avoidable source of global state and one raw tool error"
+  ],
+  "product_findings": [
+    "the 1.9.3 OmD delivery contract returned a final response before the timeout",
+    "the OmD artifact passed all deterministic gates while raw failed responsive and primary-action checks",
+    "omd-apply recovered honestly when specialist roles were unavailable in the isolated skill-only cell",
+    "skill-only and agent-harness effects must be measured as separate benchmark families"
+  ],
+  "next_gate": "fresh 0.3.0 paired matrix with auto-memory disabled and recoverable-vs-infrastructure tool errors separated"
+}

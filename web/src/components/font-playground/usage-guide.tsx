@@ -4,7 +4,7 @@
  * Stage 4 — post-save usage walkthrough.
  *
  * "You saved it. Now what?" Two concrete paths: Web (CSS snippet +
- * Google Fonts link) and DESIGN.md (drop-in OmD v0.1 §3 Typography for
+ * Google Fonts link) and DESIGN.md (drop-in Core v2 Typography & Assets for
  * AI agents). Figma is intentionally out of scope — designers already
  * know Figma; the playground's reason-to-exist is wiring fonts into
  * code + agent workflows.

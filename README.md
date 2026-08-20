@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>Give your coding agent a project-owned DESIGN.md workflow.</strong> Guided installer + doctor, 20 reusable skills, 18 specialist roles, and 440+ quality-graded company references. Local workflows need no separate API key or MCP server.
+  <strong>Give your coding agent a project-owned DESIGN.md workflow.</strong> Guided installer + doctor, 22 reusable skills, 19 specialist roles, and 440+ quality-graded company references. Local workflows need no separate API key or MCP server.
 </p>
 
 <p align="center">
@@ -25,7 +25,96 @@
 
 ## What is oh-my-design?
 
-**oh-my-design (OmD)** installs local design workflows into the coding tool you already use. Claude Code, Codex, and OpenCode receive reusable skills and specialist roles; Cursor receives a focused project rule that applies the same `DESIGN.md`. The file is a portable brand specification built from [Google Stitch](https://stitch.withgoogle.com/docs/design-md/overview/) tokens plus Voice, Narrative, Principles, Personas, States, and Motion. The package also includes 440+ quality-graded company references. **Core install and local workflows need no separate API key, daemon, or MCP server; inference stays inside your existing coding-agent session. The optional `claude-design` skill opens your logged-in claude.ai/design session in Chrome.**
+**oh-my-design (OmD)** installs local design workflows into the coding tool you already use. Claude Code, Codex, and OpenCode receive reusable skills and specialist roles; Cursor receives native Agent Skills plus a focused project rule that applies the same `DESIGN.md`. New design-system creation targets the vendor-neutral [DESIGN.md Core v2](./spec/design-md-core-v2.md): a concise portable contract that remains useful when pasted into a generic chat or attached to Claude Design/Open Design, with optional structured evidence under `.omd/system/`. The package also includes 440+ quality-graded company references. Existing reference formats remain readable during the lossless migration window. **Core install and local workflows need no separate API key, daemon, or MCP server; inference stays inside your existing coding-agent session. The optional `claude-design` skill opens your logged-in claude.ai/design session in Chrome.**
+
+### DESIGN.md Core v2
+
+The visible file starts with the project, not with OmD metadata. It has no YAML
+frontmatter, generator stamp, model name, verification tier, or internal path.
+Seven stable semantic anchors cover experience, foundations, typography/assets,
+components/states, layout/platforms, content/locales, and governance.
+
+When an adopted `profile: portable-core` manifest and `graph.json` are valid and
+hash-bound, the graph is the machine source of truth and `DESIGN.md` is its
+portable projection. A staged `migration-candidate` manifest remains
+non-authoritative: the named source DESIGN.md stays canonical until explicit
+adoption.
+Without those sidecars, Markdown that passes `omd design-md validate` is still a
+complete brief for a human or an unfamiliar design/coding tool. A seven-anchor
+file may be recognized as structural Core while failing the stronger Portable
+Core usefulness gate, for example when no primary task is evidenced. Unknown
+values stay absent instead of becoming plausible defaults.
+
+Browse the adopted system on a local port — tokens with the decision that
+produced them, component state matrices including the states that deliberately
+do not apply, contrast measured against the pairs the system promised, and the
+preset lineage:
+
+```bash
+npx oh-my-design-cli@latest book              # serves on :6060, re-reads on refresh
+npx oh-my-design-cli@latest book --static ./out   # standalone HTML for handoff
+```
+
+Inspect or stage a legacy migration without overwriting the source:
+
+```bash
+npx oh-my-design-cli@latest design-md inspect ./DESIGN.md
+npx oh-my-design-cli@latest design-md validate ./DESIGN.md
+npx oh-my-design-cli@latest design-md migrate ./DESIGN.md --out-dir .omd/migrations/core-v2
+```
+
+The migration is dual-read/single-write: legacy 13/15/16-section and unmarked
+documents remain readable, while new generation and refactoring write Core v2.
+A staged migration must preserve every source segment as a mapped Core decision
+or an opaque extension and report `dropped=0`. See the
+[migration plan](./docs/DESIGN_MD_CORE_V2_MIGRATION_PLAN.md).
+
+If repository facts or reviewed user decisions enrich the staged graph before
+review, rebind the unchanged migration ledger with the provider-free helper;
+never hand-edit report hashes:
+
+```bash
+npx oh-my-design-cli@latest design-md rebind-migration <migration-dir> \
+  --enrichment <safe-partial-enrichment.json> --provenance <provenance.json> \
+  --coverage <coverage.json> --out-dir <fresh-rebound-dir>
+```
+
+Use `--graph <complete-enriched-graph.json>` only when an external tool already
+produced the whole graph. The safer `--enrichment` form starts from the
+lossless candidate internally and forbids writes to opaque extensions,
+projection bindings, and schema identity.
+
+Adopting a graph-backed project system is an exact, receipt-gated transaction:
+
+```bash
+npx oh-my-design-cli@latest design-md prepare-review <graph.json> \
+  --provenance <provenance.json> --coverage <coverage.json> \
+  --out-dir <fresh-review-dir>
+npx oh-my-design-cli@latest design-md approve-review \
+  <fresh-review-dir>/review-request.json --reviewer <project-owner-id> \
+  --out <fresh-review-receipt.json> --authority-transition-approved
+npx oh-my-design-cli@latest design-md compile \
+  <fresh-review-dir>/input-graph.json \
+  --provenance <fresh-review-dir>/provenance.json \
+  --coverage <fresh-review-dir>/coverage.json \
+  --review-receipt <fresh-review-receipt.json> \
+  --out-dir <fresh-package-dir-outside-project> --adopt
+npx oh-my-design-cli@latest design-md prepare-checkpoint \
+  <fresh-package-dir-outside-project> --reviewer <project-owner-id> \
+  --out <fresh-project-checkpoint.json> --authority-transition-approved
+npx oh-my-design-cli@latest design-md adopt \
+  <fresh-package-dir-outside-project> --project-root <project-root> \
+  --checkpoint-receipt <fresh-project-checkpoint.json>
+```
+
+For migrated input, pass the reviewed or rebound `migration-report.json` to both
+`prepare-review` and `compile`. Only the project owner, or a pre-registered
+external authority controller acting under the owner's policy, may provide the
+two authority approvals. The generating or implementing agent cannot
+self-approve. Compilation proves Core shape, deterministic projection, and exact
+bindings; factual truth, provenance sufficiency, license permission, visual
+quality, and runtime conformance remain separate evidence gates. See the
+[CLI quickstart](./docs/CLI_QUICKSTART.md) for the artifact boundaries.
 
 ## Install
 
@@ -39,7 +128,14 @@ Then restart your agent so it discovers the newly installed channel files, and v
 npx oh-my-design-cli@latest doctor
 ```
 
-The CLI only bootstraps and diagnoses the bundle. Every design task after that is natural language to your agent.
+The CLI bootstraps and diagnoses the bundle. Every design task after that is natural language to your agent. If you are unsure what to say—or whether it belongs in the terminal—ask the local route guide:
+
+```bash
+npx oh-my-design-cli@latest workflows "improve our existing pricing page"
+# Korean output: add --lang ko
+```
+
+It prints one prompt to paste into your coding agent and the workflow that will own delivery. It does not run a second AI service.
 
 The installer asks **where** to install: **Project** (channel-local files in this repository, the default) or **Global** (user-level files available across projects). OpenCode uses `.opencode/` for project installs and `~/.config/opencode/` for global installs. Global installation leaves hooks/settings untouched. Use `npx oh-my-design-cli@latest install-skills --global` to select that scope non-interactively, then verify it with `npx oh-my-design-cli@latest doctor --global`.
 
@@ -53,9 +149,19 @@ This is the shortest path from install to a visible result.
 
    > Create a project-owned DESIGN.md for a family meal-tracking app. Use Toss as a reference, keep only verified reference facts, and ask before deciding product-specific facts.
 
-   Your skill-enabled agent runs **`omd:init`**: it recommends a reference from the 440+ quality-graded company catalog, asks you to confirm, and writes **`DESIGN.md`** to your project root. (`omd:sync` can then update the managed agent-instruction shims.)
+   Your skill-enabled agent runs **`omd:init`**: it recommends a reference from
+   the 440+ quality-graded company catalog and prepares the exact graph and
+   `DESIGN.md` preview. After the project owner (or a pre-registered external
+   authority controller) reviews and approves the exact bytes, OmD compiles a
+   hash-bound package and adopts it atomically into the project. The agent never
+   approves its own proposal. (`omd:sync` can then update the managed
+   agent-instruction shims.)
 
-   **That file is the handoff.** It stays in your repository, so later sessions can read the same decisions again.
+   **The adopted file and its bound sidecars are the handoff.** They stay in your
+   repository, so later sessions can read the same decisions again. “One shot”
+   means one initial brief and zero manual harness setup, not a silent authority
+   transition: exact preview and package adoption remain consequential
+   checkpoints.
 
 3. Now build against it:
 
@@ -63,34 +169,33 @@ This is the shortest path from install to a visible result.
 
    The agent reads `DESIGN.md`, works against the recorded decisions, and leaves a result you can inspect in the project.
 
+OmD keeps one implementation owner for that result. Specialist roles provide evidence and focused recommendations; the main agent changes the product and reverifies the same route, viewport, and state. A full new-surface harness uses its three required checkpoints, then hands approved artifacts back to the main agent for product integration when implementation was requested.
+
 Don't want Toss? Any brand works — `Stripe-style`, `Linear-clone B2B SaaS`, `Karrot-style marketplace`. Browse the full catalog at [oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems).
 
 ## Supported agents
 
 | Agent | Channel | What gets installed |
 |---|---|---|
-| **Claude Code** | `--agent claude-code` (default) | Full bundle — skills, 18 sub-agents, hooks, data under `.claude/` |
+| **Claude Code** | `--agent claude-code` (default) | Full bundle — skills, 19 sub-agents, hooks, data under `.claude/` |
 | **Codex** | `--agent codex` | Skills at `.agents/skills/`, embedded sub-agent roles under `.codex/agents/`, and the local catalog under `.codex/data/` |
 | **OpenCode** | `--agent opencode` | Project: skills, native sub-agents, and catalog under `.opencode/{skills,agents,data}/`; global: the same bundle under `~/.config/opencode/{skills,agents,data}/` |
-| **Cursor** | `--agent cursor` | Project rule `.cursor/rules/omd-design.mdc` + shared `.claude/data` catalog; no OmD skills, sub-agents, or hooks |
+| **Cursor** | `--agent cursor` | 21 compatible Agent Skills under `.cursor/skills/`, a small `.cursor/rules/omd-design.mdc` bootstrap, and the shared `.claude/data` catalog; no OmD sub-agent definitions or hooks |
 
 The default install targets every detected agent. For one non-interactive channel, run `npx oh-my-design-cli@latest install-skills --agent <name> --all`.
 
 ### Cursor's supported path
 
-Cursor is a rules-only channel, not a host for `omd:init`, `omd:feel`, or the OmD sub-agents. Create the project spec in one of two ways:
+Cursor 2.4+ discovers the 21 compatible OmD Agent Skills from `.cursor/skills/`. Restart Cursor after installation, then ask naturally: `Set up our design system — Toss-style, for a family meal-tracking app.` Cursor can route through `omd-init`, or you can invoke `/omd-init` explicitly. The small always-on rule keeps the non-negotiable contract in scope: `DESIGN.md` first, pending `.omd/preferences.md` corrections second, framework defaults last, and unknown facts absent.
 
-1. Choose/customize a reference in the [Builder](https://oh-my-design.kr/builder), download `DESIGN.md`, and save it at the project root; or
-2. ask Cursor: `Read .claude/data/references/toss/DESIGN.md and create a root DESIGN.md for this product using confirmed values only. Keep unknown facts absent.`
-
-Then prompt Cursor: `Read @DESIGN.md and redesign the home screen without changing behavior.` The installed rule enforces the minimal contract: `DESIGN.md` first, pending `.omd/preferences.md` corrections second, framework defaults last.
+For older Cursor clients, `--cursor-rule-only` installs the historical rule + catalog compatibility mode without Agent Skills. OmD's separately generated specialist sub-agent definitions and hooks remain unavailable in Cursor.
 
 ## What's inside
 
-**20 skills · 18 sub-agents · 440+ quality-graded references · activation hooks** make up the full skill-enabled bundle. Cursor intentionally receives only its rule and catalog.
+**22 skills · 19 sub-agents · 440+ quality-graded references · activation hooks** make up the full bundle. Cursor receives the 21 portable skills; `claude-design`, OmD sub-agent definitions, and activation hooks remain channel-specific.
 
-- **Skills** — core flow (`omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the writing and review layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), interface quality (`omd:feel` / `omd:slop-audit`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
-- **Sub-agents** — `omd-master` + 17 specialists (UX research, UI generation, asset curation, copy humanization, slop auditing, a11y audit, persona testing, critique, …).
+- **Skills** — core flow (`omd:autopilot` / `omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:update` / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the writing and review layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), interface quality (`omd:feel` / `omd:slop-audit`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
+- **Sub-agents** — `omd-master` + 18 specialists (UX research, UI generation, asset curation, copy humanization, slop auditing, a11y audit, persona testing, critique, …).
 - **References** — 440+ company `DESIGN.md` files with explicit evidence and quality status. Every reference is also served as raw markdown at `oh-my-design.kr/<id>/design.md`, so agents can fetch it directly.
 - **Hooks** — UserPromptSubmit / SessionStart / PostToolUse activation so the skills trigger on natural language, not just slash commands.
 
@@ -101,10 +206,10 @@ The old catalog MCP transport is retired. Skills and agents consume the local ca
 ## Upgrading
 
 ```bash
-npx oh-my-design-cli@latest
+npx oh-my-design-cli@latest update
 ```
 
-Idempotent. Managed files (those carrying OmD markers/hashes) are refreshed in place; files you edited are left untouched (`skipped-drift`). Run `doctor` and prefer the exact scoped repair command it prints. For stale managed Claude hooks that command includes `--repair-hooks`, which does not overwrite other unmarked files. Use `--force` only after reviewing intentional local drift. Restart your agent after re-running, then verify the refreshed bundle:
+The updater detects the current project/global scope and installed channels, then refreshes only that managed bundle. It does not add channels, enable optional hooks, or use `--force`. Files you edited remain untouched (`skipped-drift`); follow the exact scoped action when local drift needs a decision. Restart your agent after updating, then verify the refreshed bundle:
 
 ```bash
 npx oh-my-design-cli@latest doctor

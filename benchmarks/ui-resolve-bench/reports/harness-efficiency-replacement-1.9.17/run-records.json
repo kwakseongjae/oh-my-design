@@ -1,0 +1,731 @@
+[
+  {
+    "run_id": "onboarding-t1-harness",
+    "benchmark_family": "harness",
+    "suite_version": "1.9.7",
+    "system_id": "omd-repair-harness-semantic-color-safety",
+    "model_id": "claude-opus-4-8",
+    "skill_id": null,
+    "harness_id": "omd-repair-harness",
+    "budget_tier": "xhigh",
+    "task_id": "onboarding-setup-v0.1",
+    "trial_index": 1,
+    "run_status": "complete",
+    "validity": "valid",
+    "ui_resolved": true,
+    "objective_score": 85,
+    "objective_max": 85,
+    "wall_time_ms": 428677,
+    "tokens": 123566,
+    "token_usage": {
+      "input_tokens": 85151,
+      "cached_input_tokens": 263305,
+      "output_tokens": 38415,
+      "reasoning_output_tokens": 0,
+      "total_tokens": 123566
+    },
+    "provider_cost_equivalent_usd": 1.81290525,
+    "runtime_model_usage": [
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "input_tokens": 1384,
+        "cached_input_tokens": 0,
+        "output_tokens": 18,
+        "cost_usd": 0.001474,
+        "context_window": 200000,
+        "max_output_tokens": 32000
+      },
+      {
+        "model": "claude-opus-4-8",
+        "input_tokens": 83767,
+        "cached_input_tokens": 263305,
+        "output_tokens": 38397,
+        "cost_usd": 1.81143125,
+        "context_window": 1000000,
+        "max_output_tokens": 64000
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "tool_error_count": 2,
+      "recoverable_tool_error_count": 2,
+      "infrastructure_tool_error_count": 0,
+      "sandbox_error_count": 0,
+      "sandbox_cwd_error_count": 0,
+      "agent_tool_call_count": 2,
+      "agent_tool_error_count": 0,
+      "requested_agent_ids": [
+        "omd-ux-engineer",
+        "omd-ux-writer"
+      ],
+      "agent_calls": [
+        {
+          "agent_id": "omd-ux-writer",
+          "requested_model": "opus"
+        },
+        {
+          "agent_id": "omd-ux-engineer",
+          "requested_model": "opus"
+        }
+      ],
+      "milestones": {
+        "first_builtin_product_write_ms": 381648,
+        "last_builtin_product_write_ms": 381648,
+        "final_result_ms": 428677
+      }
+    },
+    "attribution": {
+      "source_commit": "e7ba74fd604d590335717a2c66c116a5986d81d8",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true
+      },
+      "agent_bundle_sha256": "49d29f446aa5450f2951c17ec65c465818d42696ff13123889890ec714ba8cf3",
+      "activation_delta_sha256": "c5cc0ff44f83389a67dc44496ac18b7d56f42e91976d689e59ab1587308624ff",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "ac9e78666ee78bf270e62e0aff79b8510081bf50e05312d557979ca00aabe652",
+          "after_sha256": "e6952b37be19f15da40b0ecdfca7e90ec4244742e78228d12721ce1d2572dfcf"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots"
+    }
+  },
+  {
+    "run_id": "onboarding-t1-portable",
+    "benchmark_family": "harness",
+    "suite_version": "1.9.7",
+    "system_id": "omd-portable",
+    "model_id": "claude-opus-4-8",
+    "skill_id": null,
+    "harness_id": "omd-portable",
+    "budget_tier": "xhigh",
+    "task_id": "onboarding-setup-v0.1",
+    "trial_index": 1,
+    "run_status": "complete",
+    "validity": "valid",
+    "ui_resolved": true,
+    "objective_score": 85,
+    "objective_max": 85,
+    "wall_time_ms": 401750,
+    "tokens": 86509,
+    "token_usage": {
+      "input_tokens": 56538,
+      "cached_input_tokens": 442129,
+      "output_tokens": 29971,
+      "reasoning_output_tokens": 0,
+      "total_tokens": 86509
+    },
+    "provider_cost_equivalent_usd": 1.5277175000000003,
+    "runtime_model_usage": [
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "input_tokens": 838,
+        "cached_input_tokens": 0,
+        "output_tokens": 16,
+        "cost_usd": 0.000918,
+        "context_window": 200000,
+        "max_output_tokens": 32000
+      },
+      {
+        "model": "claude-opus-4-8",
+        "input_tokens": 55700,
+        "cached_input_tokens": 442129,
+        "output_tokens": 29955,
+        "cost_usd": 1.5267995,
+        "context_window": 1000000,
+        "max_output_tokens": 64000
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "tool_error_count": 1,
+      "recoverable_tool_error_count": 1,
+      "infrastructure_tool_error_count": 0,
+      "sandbox_error_count": 0,
+      "sandbox_cwd_error_count": 0,
+      "agent_tool_call_count": 0,
+      "agent_tool_error_count": 0,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": {
+        "first_builtin_product_write_ms": 264393,
+        "last_builtin_product_write_ms": 375427,
+        "final_result_ms": 401750
+      }
+    },
+    "attribution": {
+      "source_commit": "e7ba74fd604d590335717a2c66c116a5986d81d8",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true
+      },
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "ac9e78666ee78bf270e62e0aff79b8510081bf50e05312d557979ca00aabe652",
+          "after_sha256": "f4bc5803605da9aa273d7d8c891eb461297176d36b819bb923ae5a0967a34f48"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots"
+    }
+  },
+  {
+    "run_id": "operations-t1-harness",
+    "benchmark_family": "harness",
+    "suite_version": "1.9.7",
+    "system_id": "omd-repair-harness-semantic-color-safety",
+    "model_id": "claude-opus-4-8",
+    "skill_id": null,
+    "harness_id": "omd-repair-harness",
+    "budget_tier": "xhigh",
+    "task_id": "incident-operations-v0.1",
+    "trial_index": 1,
+    "run_status": "complete",
+    "validity": "valid",
+    "ui_resolved": true,
+    "objective_score": 81,
+    "objective_max": 85,
+    "wall_time_ms": 597905,
+    "tokens": 157131,
+    "token_usage": {
+      "input_tokens": 104662,
+      "cached_input_tokens": 914531,
+      "output_tokens": 52469,
+      "reasoning_output_tokens": 0,
+      "total_tokens": 157131
+    },
+    "provider_cost_equivalent_usd": 2.6796664999999997,
+    "runtime_model_usage": [
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "input_tokens": 1391,
+        "cached_input_tokens": 0,
+        "output_tokens": 15,
+        "cost_usd": 0.001466,
+        "context_window": 200000,
+        "max_output_tokens": 32000
+      },
+      {
+        "model": "claude-opus-4-8",
+        "input_tokens": 103271,
+        "cached_input_tokens": 914531,
+        "output_tokens": 52454,
+        "cost_usd": 2.6782005,
+        "context_window": 1000000,
+        "max_output_tokens": 64000
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "tool_error_count": 1,
+      "recoverable_tool_error_count": 1,
+      "infrastructure_tool_error_count": 0,
+      "sandbox_error_count": 0,
+      "sandbox_cwd_error_count": 0,
+      "agent_tool_call_count": 2,
+      "agent_tool_error_count": 0,
+      "requested_agent_ids": [
+        "omd-ux-engineer",
+        "omd-ux-writer"
+      ],
+      "agent_calls": [
+        {
+          "agent_id": "omd-ux-writer",
+          "requested_model": "opus"
+        },
+        {
+          "agent_id": "omd-ux-engineer",
+          "requested_model": "opus"
+        }
+      ],
+      "milestones": {
+        "first_builtin_product_write_ms": 414907,
+        "last_builtin_product_write_ms": 571118,
+        "final_result_ms": 597905
+      }
+    },
+    "attribution": {
+      "source_commit": "e7ba74fd604d590335717a2c66c116a5986d81d8",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true
+      },
+      "agent_bundle_sha256": "49d29f446aa5450f2951c17ec65c465818d42696ff13123889890ec714ba8cf3",
+      "activation_delta_sha256": "c5cc0ff44f83389a67dc44496ac18b7d56f42e91976d689e59ab1587308624ff",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "0ea045c3b297e86dbee9a094da113e2b85f2d109daaf2c25631c2432d545217b",
+          "after_sha256": "5c092d7e35a726770df2c02626b28ccf9cc1a1f3eea0e1ed19273e94099d8cfe"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots"
+    }
+  },
+  {
+    "run_id": "operations-t1-portable",
+    "benchmark_family": "harness",
+    "suite_version": "1.9.7",
+    "system_id": "omd-portable",
+    "model_id": "claude-opus-4-8",
+    "skill_id": null,
+    "harness_id": "omd-portable",
+    "budget_tier": "xhigh",
+    "task_id": "incident-operations-v0.1",
+    "trial_index": 1,
+    "run_status": "complete",
+    "validity": "valid",
+    "ui_resolved": true,
+    "objective_score": 81,
+    "objective_max": 85,
+    "wall_time_ms": 430140,
+    "tokens": 112710,
+    "token_usage": {
+      "input_tokens": 80107,
+      "cached_input_tokens": 541998,
+      "output_tokens": 32603,
+      "reasoning_output_tokens": 0,
+      "total_tokens": 112710
+    },
+    "provider_cost_equivalent_usd": 1.879049,
+    "runtime_model_usage": [
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "input_tokens": 845,
+        "cached_input_tokens": 0,
+        "output_tokens": 15,
+        "cost_usd": 0.00092,
+        "context_window": 200000,
+        "max_output_tokens": 32000
+      },
+      {
+        "model": "claude-opus-4-8",
+        "input_tokens": 79262,
+        "cached_input_tokens": 541998,
+        "output_tokens": 32588,
+        "cost_usd": 1.878129,
+        "context_window": 1000000,
+        "max_output_tokens": 64000
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "tool_error_count": 0,
+      "recoverable_tool_error_count": 0,
+      "infrastructure_tool_error_count": 0,
+      "sandbox_error_count": 0,
+      "sandbox_cwd_error_count": 0,
+      "agent_tool_call_count": 0,
+      "agent_tool_error_count": 0,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": {
+        "first_builtin_product_write_ms": 237671,
+        "last_builtin_product_write_ms": 237671,
+        "final_result_ms": 430140
+      }
+    },
+    "attribution": {
+      "source_commit": "e7ba74fd604d590335717a2c66c116a5986d81d8",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true
+      },
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "0ea045c3b297e86dbee9a094da113e2b85f2d109daaf2c25631c2432d545217b",
+          "after_sha256": "d5efca6adf946eb738f8627d59d048f0ed660562c261257eb32cb59e2804f3dd"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots"
+    }
+  },
+  {
+    "run_id": "pricing-t1-harness",
+    "benchmark_family": "harness",
+    "suite_version": "1.9.7",
+    "system_id": "omd-repair-harness-semantic-color-safety",
+    "model_id": "claude-opus-4-8",
+    "skill_id": null,
+    "harness_id": "omd-repair-harness",
+    "budget_tier": "xhigh",
+    "task_id": "pricing-conversion-v0.1",
+    "trial_index": 1,
+    "run_status": "complete",
+    "validity": "valid",
+    "ui_resolved": true,
+    "objective_score": 85,
+    "objective_max": 85,
+    "wall_time_ms": 500022,
+    "tokens": 152485,
+    "token_usage": {
+      "input_tokens": 106560,
+      "cached_input_tokens": 734841,
+      "output_tokens": 45925,
+      "reasoning_output_tokens": 0,
+      "total_tokens": 152485
+    },
+    "provider_cost_equivalent_usd": 2.4238945000000007,
+    "runtime_model_usage": [
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "input_tokens": 1394,
+        "cached_input_tokens": 0,
+        "output_tokens": 16,
+        "cost_usd": 0.001474,
+        "context_window": 200000,
+        "max_output_tokens": 32000
+      },
+      {
+        "model": "claude-opus-4-8",
+        "input_tokens": 105166,
+        "cached_input_tokens": 734841,
+        "output_tokens": 45909,
+        "cost_usd": 2.4224205000000008,
+        "context_window": 1000000,
+        "max_output_tokens": 64000
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "tool_error_count": 0,
+      "recoverable_tool_error_count": 0,
+      "infrastructure_tool_error_count": 0,
+      "sandbox_error_count": 0,
+      "sandbox_cwd_error_count": 0,
+      "agent_tool_call_count": 2,
+      "agent_tool_error_count": 0,
+      "requested_agent_ids": [
+        "omd-ux-engineer",
+        "omd-ux-writer"
+      ],
+      "agent_calls": [
+        {
+          "agent_id": "omd-ux-engineer",
+          "requested_model": "opus"
+        },
+        {
+          "agent_id": "omd-ux-writer",
+          "requested_model": "opus"
+        }
+      ],
+      "milestones": {
+        "first_builtin_product_write_ms": 388952,
+        "last_builtin_product_write_ms": 477860,
+        "final_result_ms": 500022
+      }
+    },
+    "attribution": {
+      "source_commit": "e7ba74fd604d590335717a2c66c116a5986d81d8",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true
+      },
+      "agent_bundle_sha256": "49d29f446aa5450f2951c17ec65c465818d42696ff13123889890ec714ba8cf3",
+      "activation_delta_sha256": "c5cc0ff44f83389a67dc44496ac18b7d56f42e91976d689e59ab1587308624ff",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "07c3374778a21511822ca710d7018b1cd3b1a3dd449242e8063fcd73c8423705",
+          "after_sha256": "69e42910c1bf8e6cee62b184e1212b6a962d1e775ede45d416b0e2f4035da1ec"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots"
+    }
+  },
+  {
+    "run_id": "pricing-t1-portable",
+    "benchmark_family": "harness",
+    "suite_version": "1.9.7",
+    "system_id": "omd-portable",
+    "model_id": "claude-opus-4-8",
+    "skill_id": null,
+    "harness_id": "omd-portable",
+    "budget_tier": "xhigh",
+    "task_id": "pricing-conversion-v0.1",
+    "trial_index": 1,
+    "run_status": "complete",
+    "validity": "valid",
+    "ui_resolved": true,
+    "objective_score": 85,
+    "objective_max": 85,
+    "wall_time_ms": 486577,
+    "tokens": 105380,
+    "token_usage": {
+      "input_tokens": 66925,
+      "cached_input_tokens": 617138,
+      "output_tokens": 38455,
+      "reasoning_output_tokens": 0,
+      "total_tokens": 105380
+    },
+    "provider_cost_equivalent_usd": 1.931082,
+    "runtime_model_usage": [
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "input_tokens": 848,
+        "cached_input_tokens": 0,
+        "output_tokens": 16,
+        "cost_usd": 0.000928,
+        "context_window": 200000,
+        "max_output_tokens": 32000
+      },
+      {
+        "model": "claude-opus-4-8",
+        "input_tokens": 66077,
+        "cached_input_tokens": 617138,
+        "output_tokens": 38439,
+        "cost_usd": 1.9301540000000004,
+        "context_window": 1000000,
+        "max_output_tokens": 64000
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "tool_error_count": 1,
+      "recoverable_tool_error_count": 1,
+      "infrastructure_tool_error_count": 0,
+      "sandbox_error_count": 0,
+      "sandbox_cwd_error_count": 0,
+      "agent_tool_call_count": 0,
+      "agent_tool_error_count": 0,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": {
+        "first_builtin_product_write_ms": 337212,
+        "last_builtin_product_write_ms": 429359,
+        "final_result_ms": 486577
+      }
+    },
+    "attribution": {
+      "source_commit": "e7ba74fd604d590335717a2c66c116a5986d81d8",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true
+      },
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "07c3374778a21511822ca710d7018b1cd3b1a3dd449242e8063fcd73c8423705",
+          "after_sha256": "bca1d3da95f38e2393c9a616be00aabc5f72f97f60ec1d87d261c8bf50406072"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots"
+    }
+  },
+  {
+    "run_id": "pricing-t2-portable",
+    "benchmark_family": "harness",
+    "suite_version": "1.9.7",
+    "system_id": "omd-portable",
+    "model_id": "claude-opus-4-8",
+    "skill_id": null,
+    "harness_id": "omd-portable",
+    "budget_tier": "xhigh",
+    "task_id": "pricing-conversion-v0.1",
+    "trial_index": 2,
+    "run_status": "complete",
+    "validity": "valid",
+    "ui_resolved": true,
+    "objective_score": 85,
+    "objective_max": 85,
+    "wall_time_ms": 580269,
+    "tokens": 94721,
+    "token_usage": {
+      "input_tokens": 60368,
+      "cached_input_tokens": 291744,
+      "output_tokens": 34353,
+      "reasoning_output_tokens": 0,
+      "total_tokens": 94721
+    },
+    "provider_cost_equivalent_usd": 1.5974300000000001,
+    "runtime_model_usage": [
+      {
+        "model": "claude-haiku-4-5-20251001",
+        "input_tokens": 848,
+        "cached_input_tokens": 0,
+        "output_tokens": 16,
+        "cost_usd": 0.000928,
+        "context_window": 200000,
+        "max_output_tokens": 32000
+      },
+      {
+        "model": "claude-opus-4-8",
+        "input_tokens": 59520,
+        "cached_input_tokens": 291744,
+        "output_tokens": 34337,
+        "cost_usd": 1.596502,
+        "context_window": 1000000,
+        "max_output_tokens": 64000
+      }
+    ],
+    "runtime_diagnostics": {
+      "child_exit_code": 0,
+      "tool_error_count": 1,
+      "recoverable_tool_error_count": 1,
+      "infrastructure_tool_error_count": 0,
+      "sandbox_error_count": 0,
+      "sandbox_cwd_error_count": 0,
+      "agent_tool_call_count": 0,
+      "agent_tool_error_count": 0,
+      "requested_agent_ids": [],
+      "agent_calls": [],
+      "milestones": {
+        "first_builtin_product_write_ms": 476387,
+        "last_builtin_product_write_ms": 476387,
+        "final_result_ms": 580269
+      }
+    },
+    "attribution": {
+      "source_commit": "e7ba74fd604d590335717a2c66c116a5986d81d8",
+      "source_attestation": {
+        "vcs": "git",
+        "dirty": false,
+        "explicit_dirty_opt_in": false,
+        "status_entries": 0,
+        "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "publishable": true
+      },
+      "agent_bundle_sha256": null,
+      "activation_delta_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+      "track_eligibility": {
+        "eligible": true,
+        "off_label": false,
+        "explicit_opt_in": false
+      }
+    },
+    "delivery": {
+      "product_changed": true,
+      "changed_product_files": [
+        {
+          "path": "index.html",
+          "status": "modified",
+          "before_sha256": "07c3374778a21511822ca710d7018b1cd3b1a3dd449242e8063fcd73c8423705",
+          "after_sha256": "b1cb9c8c4967fd42be5bdd32bfa219076ce91423476c4d9450257c328aa9f5cb"
+        }
+      ]
+    },
+    "evidence": {
+      "manifest": ".benchmark/manifest.json",
+      "run_result": ".benchmark/run-result.json",
+      "score": ".benchmark/score.json",
+      "screenshots": ".benchmark/screenshots"
+    }
+  }
+]

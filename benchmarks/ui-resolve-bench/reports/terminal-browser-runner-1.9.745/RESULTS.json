@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1",
+  "patch": "1.9.745",
+  "status": "PROVIDER_FREE_CONTRACT_PASS",
+  "cause": "The council-on model transcribed a long post-edit browser command incorrectly, then performed discovery and a second attempt.",
+  "repair": {
+    "entrypoint": "skills/omd-apply/scripts/reflow-browser-runner.sh",
+    "plan_command": "OMD_REFLOW_MODE=plan sh <current-skill-dir>/scripts/reflow-browser-runner.sh",
+    "post_edit_command": "sh <current-skill-dir>/scripts/reflow-browser-runner.sh",
+    "derives_locked_product_from_artifact": true,
+    "derives_sibling_helper": true,
+    "proof_classification": "browser",
+    "browser_discovery_classification": "recovery_probe"
+  },
+  "verification": {
+    "focused_contract_tests_passed": 53,
+    "install_channel_tests_passed": 43,
+    "channels": ["claude-code", "codex", "opencode"],
+    "shell_syntax": "pass",
+    "typescript": "pass",
+    "provider_calls": 0,
+    "full_suite": "794 passed, 3 skipped"
+  },
+  "next": "Use only fresh tasks for a no-retry Reliability@3 comparison that requires both objective resolution and proof compliance."
+}

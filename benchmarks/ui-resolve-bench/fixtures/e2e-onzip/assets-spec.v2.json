@@ -1,0 +1,345 @@
+{
+ "task_id": "onzip-v2",
+ "items": [
+  {
+   "file": "prod-01-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"클라우드 3인 패브릭 소파\" (sofa/living furniture) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-01-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"클라우드 3인 패브릭 소파\" (sofa/living furniture): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-02-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"느티 원목 라운지 체어\" (sofa/living furniture) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-02-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"느티 원목 라운지 체어\" (sofa/living furniture): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-03-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"한낮 모듈 코너 소파\" (sofa/living furniture) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-03-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"한낮 모듈 코너 소파\" (sofa/living furniture): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-04-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"안온 2인 가죽 소파\" (sofa/living furniture) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-04-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"안온 2인 가죽 소파\" (sofa/living furniture): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-05-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"달빛 펜던트 조명\" (lamp or lighting fixture) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-05-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"달빛 펜던트 조명\" (lamp or lighting fixture): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-06-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"소소 스탠드 플로어램프\" (lamp or lighting fixture) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-06-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"소소 스탠드 플로어램프\" (lamp or lighting fixture): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-07-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"결빛 벽등 2개 세트\" (lamp or lighting fixture) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-07-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"결빛 벽등 2개 세트\" (lamp or lighting fixture): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-08-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"창가 단스탠드 무드등\" (lamp or lighting fixture) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-08-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"창가 단스탠드 무드등\" (lamp or lighting fixture): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-09-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"포근 울 라운드 러그 150\" (rug or carpet) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-09-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"포근 울 라운드 러그 150\" (rug or carpet): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-10-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"결결 체크 면 러그 200\" (rug or carpet) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-10-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"결결 체크 면 러그 200\" (rug or carpet): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-11-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"마루결 단모 사각 카페트\" (rug or carpet) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-11-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"마루결 단모 사각 카페트\" (rug or carpet): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-12-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"풀잎 미니 발매트 2장\" (rug or carpet) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-12-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"풀잎 미니 발매트 2장\" (rug or carpet): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-13-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"숨숨 오픈 선반 3단\" (storage furniture) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-13-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"숨숨 오픈 선반 3단\" (storage furniture): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-14-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"정리공작소 라탄 바스켓 세트\" (storage furniture) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-14-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"정리공작소 라탄 바스켓 세트\" (storage furniture): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-15-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"고요 슬라이딩 옷장 1200\" (storage furniture) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-15-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"고요 슬라이딩 옷장 1200\" (storage furniture): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-16-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"담담 벽걸이 수납함\" (storage furniture) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-16-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"담담 벽걸이 수납함\" (storage furniture): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-17-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"솜결 사계절 이불 세트 SS\" (bedding set) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-17-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"솜결 사계절 이불 세트 SS\" (bedding set): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-18-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"이불결 린넨 침구 세트 Q\" (bedding set) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-18-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"이불결 린넨 침구 세트 Q\" (bedding set): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-19-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"온집 메모리폼 베개 2개\" (bedding set) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-19-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"온집 메모리폼 베개 2개\" (bedding set): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-20-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"하린 거위털 차렵이불 K\" (bedding set) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-20-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"하린 거위털 차렵이불 K\" (bedding set): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-21-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"느린오후 세라믹 화병\" (home decor object) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-21-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"느린오후 세라믹 화병\" (home decor object): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-22-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"볕든집 린넨 커튼 한 폭\" (home decor object) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-22-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"볕든집 린넨 커튼 한 폭\" (home decor object): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-23-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"솔솔 우드 트레이\" (home decor object) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-23-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"솔솔 우드 트레이\" (home decor object): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "prod-24-life.jpg",
+   "prompt": "Lifestyle interior photo: the Korean home product \"느티하우스 벽걸이 거울\" (home decor object) placed naturally in a lived-in modern Korean apartment room, wider context showing how it sits in the space",
+   "style": "warm natural light, editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "prod-24-detail.jpg",
+   "prompt": "Extreme close-up detail shot of the Korean home product \"느티하우스 벽걸이 거울\" (home decor object): material texture, stitching or surface finish, craftsmanship focus",
+   "style": "macro product photography, shallow depth of field, soft light, no text"
+  },
+  {
+   "file": "post-1-g1.jpg",
+   "prompt": "Korean 원룸 home tour photo, about 6 pyeong, consistent with \"6평 원룸, 소파 하나로 거실이 생겼어요\": another corner of the same home showing furniture arrangement",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-1-g2.jpg",
+   "prompt": "Korean 원룸 home tour photo, about 6 pyeong, consistent with \"6평 원룸, 소파 하나로 거실이 생겼어요\": close vignette of a styled shelf or table in the same home",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-1-g3.jpg",
+   "prompt": "Korean 원룸 home tour photo, about 6 pyeong, consistent with \"6평 원룸, 소파 하나로 거실이 생겼어요\": the same home viewed toward the window with natural light",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-2-g1.jpg",
+   "prompt": "Korean 투룸 home tour photo, about 14 pyeong, consistent with \"투룸 첫 집들이, 빛부터 맞췄어요\": another corner of the same home showing furniture arrangement",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-2-g2.jpg",
+   "prompt": "Korean 투룸 home tour photo, about 14 pyeong, consistent with \"투룸 첫 집들이, 빛부터 맞췄어요\": close vignette of a styled shelf or table in the same home",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-2-g3.jpg",
+   "prompt": "Korean 투룸 home tour photo, about 14 pyeong, consistent with \"투룸 첫 집들이, 빛부터 맞췄어요\": the same home viewed toward the window with natural light",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-3-g1.jpg",
+   "prompt": "Korean 아파트 home tour photo, about 32 pyeong, consistent with \"32평 아파트 거실, 코너 소파로 자리를 잡다\": another corner of the same home showing furniture arrangement",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-3-g2.jpg",
+   "prompt": "Korean 아파트 home tour photo, about 32 pyeong, consistent with \"32평 아파트 거실, 코너 소파로 자리를 잡다\": close vignette of a styled shelf or table in the same home",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-3-g3.jpg",
+   "prompt": "Korean 아파트 home tour photo, about 32 pyeong, consistent with \"32평 아파트 거실, 코너 소파로 자리를 잡다\": the same home viewed toward the window with natural light",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-4-g1.jpg",
+   "prompt": "Korean 주택 home tour photo, about 38 pyeong, consistent with \"마당 있는 주택, 현관부터 정리했어요\": another corner of the same home showing furniture arrangement",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-4-g2.jpg",
+   "prompt": "Korean 주택 home tour photo, about 38 pyeong, consistent with \"마당 있는 주택, 현관부터 정리했어요\": close vignette of a styled shelf or table in the same home",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-4-g3.jpg",
+   "prompt": "Korean 주택 home tour photo, about 38 pyeong, consistent with \"마당 있는 주택, 현관부터 정리했어요\": the same home viewed toward the window with natural light",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-5-g1.jpg",
+   "prompt": "Korean 원룸 home tour photo, about 8 pyeong, consistent with \"침실만 먼저 고친 8평 원룸\": another corner of the same home showing furniture arrangement",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-5-g2.jpg",
+   "prompt": "Korean 원룸 home tour photo, about 8 pyeong, consistent with \"침실만 먼저 고친 8평 원룸\": close vignette of a styled shelf or table in the same home",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-5-g3.jpg",
+   "prompt": "Korean 원룸 home tour photo, about 8 pyeong, consistent with \"침실만 먼저 고친 8평 원룸\": the same home viewed toward the window with natural light",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-6-g1.jpg",
+   "prompt": "Korean 주택 home tour photo, about 42 pyeong, consistent with \"주말주택 다락방, 가죽 소파와 이불 한 채\": another corner of the same home showing furniture arrangement",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-6-g2.jpg",
+   "prompt": "Korean 주택 home tour photo, about 42 pyeong, consistent with \"주말주택 다락방, 가죽 소파와 이불 한 채\": close vignette of a styled shelf or table in the same home",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "post-6-g3.jpg",
+   "prompt": "Korean 주택 home tour photo, about 42 pyeong, consistent with \"주말주택 다락방, 가죽 소파와 이불 한 채\": the same home viewed toward the window with natural light",
+   "style": "warm editorial interior photography, no people, no readable text"
+  },
+  {
+   "file": "cur-1.jpg",
+   "prompt": "Wide banner-format interior scene for a Korean home-goods curation titled \"저녁 거실을 앉는 자리로\" — atmospheric styled room matching that theme",
+   "style": "wide cinematic crop, warm editorial palette, generous negative space on one side for text overlay, no readable text"
+  },
+  {
+   "file": "cur-2.jpg",
+   "prompt": "Wide banner-format interior scene for a Korean home-goods curation titled \"잠자리만 먼저 고치기\" — atmospheric styled room matching that theme",
+   "style": "wide cinematic crop, warm editorial palette, generous negative space on one side for text overlay, no readable text"
+  }
+ ]
+}

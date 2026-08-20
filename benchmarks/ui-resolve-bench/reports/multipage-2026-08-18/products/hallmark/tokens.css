@@ -1,0 +1,93 @@
+/* Quire · Almanac tokens · source of truth for the locked system in design.md */
+
+:root {
+  --color-paper: oklch(96.4% 0.014 82);
+  --color-paper-2: oklch(93.2% 0.016 80);
+  --color-paper-3: oklch(89.4% 0.018 78);
+  --color-ink: oklch(22% 0.022 48);
+  --color-ink-2: oklch(36% 0.018 50);
+  --color-ink-soft: oklch(42% 0.016 52);
+  --color-muted: oklch(42% 0.016 52);
+  --color-rule: oklch(78% 0.018 75);
+  --color-rule-2: oklch(70% 0.02 72);
+  --color-accent: oklch(38% 0.12 38);
+  --color-accent-ink: oklch(96.4% 0.014 82);
+  --color-focus: oklch(44% 0.14 38);
+  --color-focus-on-ink: oklch(84% 0.05 80);
+  --color-mark: oklch(88% 0.055 80);
+  --color-disabled: oklch(68% 0.014 75);
+  --color-error: oklch(42% 0.14 25);
+  --color-error-ink: oklch(96.4% 0.014 82);
+  --color-success: oklch(38% 0.08 145);
+  --color-success-ink: oklch(96.4% 0.014 82);
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", "Times New Roman", serif;
+  --font-body: Charter, "Bitstream Charter", "Sitka Text", Cambria, "Liberation Serif", "Times New Roman", serif;
+  --font-mono: "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", ui-monospace, monospace;
+  --font-wordmark: var(--font-display);
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.5625rem;
+  --text-xl: 1.9531rem;
+  --text-2xl: 2.4414rem;
+  --text-3xl: 3.0518rem;
+  --text-4xl: 3.8147rem;
+  --text-display-s: clamp(1.75rem, 2.4vw + 1rem, 2.75rem);
+  --text-display: clamp(2.25rem, 4vw + 0.75rem, 3.75rem);
+
+  --leading-display: 1.06;
+  --leading-body: 1.58;
+  --tracking-display: -0.022em;
+  --tracking-caps: 0.14em;
+
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 9rem;
+
+  --page-gutter: clamp(1rem, 4vw, 2.5rem);
+  --measure: 62ch;
+  --measure-narrow: 46ch;
+  --size-hit: 2.75rem;
+  --banner-height: 9.5rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --dur-micro: 100ms;
+  --dur-fast: 160ms;
+  --dur-short: 190ms;
+  --dur-base: 200ms;
+  --dur-slow: 270ms;
+  --dur-long: 360ms;
+  --dur-reduced: 150ms;
+
+  --rule-hair: 1px;
+  --rule-thick: 2px;
+
+  --radius-card: 0;
+  --radius-pill: 0;
+  --radius-input: 0;
+  --radius-cta: 0;
+
+  --shadow-whisper: 0 1px 2px oklch(22% 0.022 48 / 0.06);
+
+  --z-base: 1;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-sticky-nav: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+}

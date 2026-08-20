@@ -1,0 +1,130 @@
+{
+  "schema_version": "0.1",
+  "task_set_id": "autopilot-greenfield-hidden-v0.1",
+  "status": "provider-zero-calibration-required",
+  "task_specific_setup_allowed": false,
+  "task_specific_reference_allowed": false,
+  "task_specific_design_tokens_allowed": false,
+  "tasks": [
+    {
+      "id": "neighborhood-library-landing",
+      "family": "landing",
+      "prompt": "From scratch, create a landing page for a neighborhood tool library. Establish a project-owned design system. Help residents understand borrowing and make the primary action Reserve a tool. Do not invent inventory counts, prices, testimonials, or partner logos.",
+      "design_system_authority": "establish",
+      "primary_journey": ["understand borrowing", "inspect how reservation works", "start a reservation"],
+      "protected_unknowns": ["inventory counts", "prices", "testimonials", "partner logos"],
+      "required_states": ["default", "focus-visible", "unavailable-information"],
+      "targeted_mutants": ["primary-action-removed", "mobile-horizontal-overflow", "invented-social-proof"]
+    },
+    {
+      "id": "incident-response-dashboard",
+      "family": "saas-dashboard",
+      "prompt": "From scratch, create an incident-response dashboard for an on-call engineering team. Establish a project-owned design system. The operator must identify the highest-severity open incident, acknowledge it, and see confirmation. Use clearly labeled sample data and do not imply live infrastructure.",
+      "design_system_authority": "establish",
+      "primary_journey": ["scan incident priority", "open the highest-severity incident", "acknowledge and confirm"],
+      "protected_unknowns": ["live infrastructure", "real customer impact", "real responders"],
+      "required_states": ["loading", "empty", "error", "acknowledged"],
+      "targeted_mutants": ["severity-hierarchy-flattened", "acknowledgement-feedback-removed", "keyboard-row-action-broken"]
+    },
+    {
+      "id": "cold-chain-operations",
+      "family": "dense-operations",
+      "prompt": "From scratch, create a dense cold-chain exception queue for warehouse operators. Establish a project-owned design system. Operators must filter urgent shipments, inspect one exception, and assign an owner. Label all records as sample data and do not invent regulatory claims.",
+      "design_system_authority": "establish",
+      "primary_journey": ["filter urgent exceptions", "inspect shipment evidence", "assign an owner"],
+      "protected_unknowns": ["real shipments", "regulatory compliance", "real staff"],
+      "required_states": ["filtered", "selected", "assignment-error", "assigned"],
+      "targeted_mutants": ["table-clips-at-320", "filter-state-hidden", "assignment-owner-not-confirmed"]
+    },
+    {
+      "id": "caregiver-onboarding",
+      "family": "onboarding",
+      "prompt": "From scratch, create a three-step onboarding flow for a family caregiver coordination app. Establish a project-owned design system. A user must understand the purpose, choose notification preferences, review the choices, and finish. Do not assume diagnoses, family relationships, or consent.",
+      "design_system_authority": "establish",
+      "primary_journey": ["understand the setup", "choose preferences", "review and finish"],
+      "protected_unknowns": ["diagnoses", "family relationships", "consent"],
+      "required_states": ["current-step", "validation-error", "review", "complete"],
+      "targeted_mutants": ["progress-context-removed", "back-navigation-loses-state", "required-choice-not-validated"]
+    },
+    {
+      "id": "community-class-checkout",
+      "family": "checkout",
+      "prompt": "From scratch, create checkout for a community cooking class. Establish a project-owned design system. The user must review a clearly marked sample booking, enter contact details, see the total, and confirm. Do not invent discounts, scarcity, testimonials, or payment success before confirmation.",
+      "design_system_authority": "establish",
+      "primary_journey": ["review booking", "enter contact details", "confirm the sample purchase"],
+      "protected_unknowns": ["discounts", "scarcity", "testimonials", "payment status"],
+      "required_states": ["validation-error", "submitting", "declined", "confirmed"],
+      "targeted_mutants": ["total-obscured", "invalid-email-accepted", "premature-success-message"]
+    },
+    {
+      "id": "research-data-deletion",
+      "family": "transactional-approval",
+      "prompt": "From scratch, create a destructive approval screen for deleting a sample research dataset. Establish a project-owned design system. The reviewer must inspect scope, acknowledge consequences, type a confirmation phrase, and approve or cancel. Do not claim real retention, legal, or audit policies.",
+      "design_system_authority": "establish",
+      "primary_journey": ["inspect deletion scope", "acknowledge consequences", "confirm or cancel"],
+      "protected_unknowns": ["retention policy", "legal status", "audit status"],
+      "required_states": ["blocked", "ready", "validation-error", "approved", "cancelled"],
+      "targeted_mutants": ["confirmation-bypass", "scope-hierarchy-flattened", "cancel-action-hidden"]
+    },
+    {
+      "id": "public-record-search",
+      "family": "search-and-filter",
+      "prompt": "From scratch, create a public-record search interface using clearly labeled fictional records. Establish a project-owned design system. A user must search, apply two filters, understand result counts, clear filters, and open a record. Do not imply government affiliation or real people.",
+      "design_system_authority": "establish",
+      "primary_journey": ["search fictional records", "refine with filters", "open a result"],
+      "protected_unknowns": ["government affiliation", "real people", "official completeness"],
+      "required_states": ["initial", "filtered", "no-results", "error", "record-open"],
+      "targeted_mutants": ["filter-state-invisible", "clear-filters-broken", "no-results-missing"]
+    },
+    {
+      "id": "field-notes-editorial",
+      "family": "content-editorial",
+      "prompt": "From scratch, create an editorial field-notes page for an urban ecology collective. Establish a project-owned design system. Readers must understand the article structure, navigate sections, distinguish captions and citations, and subscribe through a validated email field. Do not invent authorship credentials, readership, or sponsors.",
+      "design_system_authority": "establish",
+      "primary_journey": ["scan article structure", "read evidence and captions", "subscribe with validation"],
+      "protected_unknowns": ["authorship credentials", "readership", "sponsors"],
+      "required_states": ["reading", "active-section", "email-error", "subscribed"],
+      "targeted_mutants": ["heading-order-broken", "caption-citation-conflated", "subscription-validation-removed"]
+    },
+    {
+      "id": "mobile-transit-report",
+      "family": "mobile-first",
+      "prompt": "From scratch, create a mobile-first form for reporting a fictional transit stop issue. Establish a project-owned design system. The rider must choose an issue type, add optional detail, review the report, and submit it. Do not claim submission to a real transit authority or expose location without consent.",
+      "design_system_authority": "establish",
+      "primary_journey": ["choose issue type", "review report", "submit fictional report"],
+      "protected_unknowns": ["real transit authority", "precise location", "real submission"],
+      "required_states": ["draft", "validation-error", "review", "submitted"],
+      "targeted_mutants": ["touch-target-under-44", "review-step-skipped", "location-assumed"]
+    },
+    {
+      "id": "grant-evidence-intake",
+      "family": "evidence-and-unknowns",
+      "prompt": "From scratch, create a grant evidence intake workspace for a nonprofit team. Establish a project-owned design system. Users must separate verified evidence, pending claims, and unresolved fields before submitting a draft. Do not fill missing outcomes, budgets, dates, or funder requirements.",
+      "design_system_authority": "establish",
+      "primary_journey": ["classify evidence", "resolve or leave unknown fields", "submit a draft"],
+      "protected_unknowns": ["outcomes", "budgets", "dates", "funder requirements"],
+      "required_states": ["verified", "pending", "unresolved", "draft-submitted"],
+      "targeted_mutants": ["unknowns-auto-filled", "evidence-status-color-only", "unresolved-submit-warning-removed"]
+    },
+    {
+      "id": "volunteer-import-recovery",
+      "family": "state-and-error-recovery",
+      "prompt": "From scratch, create a volunteer roster CSV import flow using sample data. Establish a project-owned design system. The coordinator must upload, inspect validation errors, correct or exclude invalid rows, retry, and reach a clear completion state. Do not imply real people were imported.",
+      "design_system_authority": "establish",
+      "primary_journey": ["upload sample file", "recover from row errors", "retry and complete"],
+      "protected_unknowns": ["real people", "real upload", "production persistence"],
+      "required_states": ["idle", "validating", "partial-error", "retrying", "complete"],
+      "targeted_mutants": ["row-error-unrecoverable", "retry-loses-valid-rows", "completion-status-ambiguous"]
+    },
+    {
+      "id": "clinic-visit-prep-locales",
+      "family": "five-locale-surface",
+      "prompt": "From scratch, create a clinic visit preparation checklist with locale switching for Korean, English, Japanese, Simplified Chinese, and Traditional Chinese. Establish a project-owned design system. All five locales must provide localized core checklist copy. A user must switch locale, review fictional preparation items, mark progress, and see completion. Include an honest unavailable-translation state for a secondary translation resource without replacing any of the five core locale journeys, and do not silently change the selected language. Do not provide medical advice or infer a diagnosis.",
+      "design_system_authority": "establish",
+      "primary_journey": ["switch locale", "review fictional checklist", "mark and confirm progress"],
+      "protected_unknowns": ["medical advice", "diagnosis", "real clinic policy"],
+      "required_states": ["locale-selected", "in-progress", "complete", "translation-unavailable"],
+      "targeted_mutants": ["locale-label-mismatch", "cjk-overflow", "progress-lost-on-locale-switch"]
+    }
+  ]
+}

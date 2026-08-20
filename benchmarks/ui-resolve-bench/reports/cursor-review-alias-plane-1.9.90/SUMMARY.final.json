@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "status": "accepted",
+  "provider_generation": 0,
+  "attribution": {
+    "scope": "internal-selector-plus-registered-alias",
+    "selector": "cursor-grok-4.5-high",
+    "known_display_aliases": [
+      "Cursor Grok 4.5",
+      "Cursor Grok 4.5 High"
+    ],
+    "registry_reprobed_before_every_invocation": true,
+    "unknown_label_rejected": true,
+    "public_model_attribution_eligible": false
+  },
+  "validation": {
+    "focused_tests_passed": 12,
+    "focused_tests_total": 12,
+    "node_syntax": "pass",
+    "typescript": "pass",
+    "build": "pass"
+  },
+  "next_action": "Commit the Internal alias plane, then start a fresh 54-invocation root with no transferred judgments."
+}

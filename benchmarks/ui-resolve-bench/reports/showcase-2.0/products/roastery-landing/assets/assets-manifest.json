@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "kind": "bench-image-preprocess-manifest",
+  "task_id": "roastery-landing",
+  "generator": "grok-build-cli image_gen (grok-imagine)",
+  "fairness": "single shared asset base generated once per task; all arms start from identical assets",
+  "pace_ms": 8000,
+  "generated_at": "2026-08-16T20:07:29.686Z",
+  "items": [
+    {
+      "file": "hero.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 364399,
+      "sha256": "420d1b0529e9e2d11ce9124f2728962ab790293e008d310a753d3d6bcc0b0f2e",
+      "prompt": "Wide editorial photograph-style illustration of a specialty coffee roastery interior: roasting machine, warm morning light through large windows, burlap sacks of green beans",
+      "style": "warm muted film palette, soft grain, no text, no people faces"
+    },
+    {
+      "file": "story-beans.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 352118,
+      "sha256": "85c172fc085175e0700eb31f989b7c5045ccd4b14d3dd09f0b8167bd40839c2f",
+      "prompt": "Close overhead shot of fresh roasted coffee beans spilling from a scoop onto a wooden counter",
+      "style": "warm muted film palette, shallow depth, no text"
+    },
+    {
+      "file": "story-brew.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 240570,
+      "sha256": "9094df562fac0c306adcb41115bf601b57ca4e1fa18ae3a4d628340c9741ae4c",
+      "prompt": "Barista hands pouring a slow pour-over coffee, steam rising, ceramic dripper",
+      "style": "warm muted film palette, soft light, no faces, no text"
+    },
+    {
+      "file": "story-space.jpg",
+      "ok": true,
+      "attempts": 1,
+      "bytes": 296566,
+      "sha256": "bbe0fb5229770aae56f94963f318d2f7966dedf3bf0ed5532a4c217b055aa9f2",
+      "prompt": "Cozy cafe corner with two linen chairs, small oak table, shelf of coffee jars and a plant",
+      "style": "warm muted film palette, airy, no text"
+    }
+  ]
+}

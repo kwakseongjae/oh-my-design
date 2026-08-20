@@ -1,0 +1,40 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.105",
+  "experiment_id": "payout-owner-review-1.9.104",
+  "status": "complete",
+  "scope": "Internal Diagnostic",
+  "owner_review": {
+    "comparisons": 3,
+    "axis_judgments": 12,
+    "functionality": {
+      "omd": 0,
+      "impeccable": 0,
+      "tie": 2,
+      "both_fail": 1
+    },
+    "usability": {
+      "omd": 0,
+      "impeccable": 2,
+      "tie": 0,
+      "both_fail": 1
+    },
+    "fidelity": {
+      "omd": 0,
+      "impeccable": 2,
+      "tie": 0,
+      "both_fail": 1
+    },
+    "ship_preference": {
+      "omd": 0,
+      "impeccable": 2,
+      "tie": 0,
+      "both_fail": 1
+    }
+  },
+  "diagnostic_hypothesis": "decision-context hierarchy closure",
+  "canonical_skill_changed": false,
+  "decision": "Retain current OmD. Test a bounded experimental decision-context hierarchy delta on a new unseen high-consequence decision family.",
+  "claim_limit": "One owner, one task family, three trials, Internal Diagnostic. No public skill winner or model claim.",
+  "next_action": "Create a provider-free unseen holdout contract before authoring or evaluating the experimental skill delta."
+}

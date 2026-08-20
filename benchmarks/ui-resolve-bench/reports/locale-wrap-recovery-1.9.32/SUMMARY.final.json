@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "locale-wrap-recovery-1.9.32",
+  "status": "calibration_failed",
+  "output_root": "/tmp/u1932",
+  "scheduled_cells": 1,
+  "attempted_cells": 1,
+  "completed_cells": 1,
+  "retry_or_resume_allowed": false,
+  "candidate": {
+    "matrix_status": "complete",
+    "validity": "valid",
+    "exact_parent_model": "claude-opus-4-8",
+    "provider_exit_code": 0,
+    "child_exit_code": 0,
+    "timed_out": false,
+    "wall_time_ms": 517279,
+    "uncached_tokens": 113725,
+    "first_product_write_ms": 377911,
+    "last_product_write_ms": 480965,
+    "final_message_present": true,
+    "product_changed_files": [
+      "index.html"
+    ],
+    "direct_browser_command_count": 0,
+    "direct_browser_command_max": 0,
+    "replacement_verifier_authored": false,
+    "tool_errors": 0,
+    "recoverable_tool_errors": 0,
+    "infrastructure_errors": 0,
+    "sandbox_errors": 0,
+    "cwd_errors": 0,
+    "external_evaluator_run": true,
+    "run_record_exported": true,
+    "objective_score": 80,
+    "objective_max": 85,
+    "ui_resolved": false,
+    "critical_gates_passed": 5,
+    "critical_gates_total": 6,
+    "responsive_geometry_all_pass": true,
+    "axe_serious_or_critical": 0
+  },
+  "clipboard_diagnostic": {
+    "standard_api_exact_command_all_locales": true,
+    "localized_status_changed_all_locales": true,
+    "data_copied_marker_all_locales": false
+  },
+  "promotion_decision": "rejected_hidden-marker-oracle",
+  "reporting_limits": [
+    "single candidate recovery cell",
+    "frozen 80/85 decision remains unchanged",
+    "no retry, resume, or manual product edit",
+    "no model, skill, locale-lift, efficiency, or frontier claim"
+  ],
+  "next_version": "1.9.33",
+  "next_action": "replace-hidden-copy-marker-with-standard-clipboard-oracle"
+}

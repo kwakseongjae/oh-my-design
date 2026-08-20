@@ -1,0 +1,50 @@
+/** Fictional memberships. Every amount is labeled sample data, not an offer. */
+export const plans = [
+  {
+    id: "shore",
+    name: "Shore",
+    depth: "Shallow water",
+    cadence: "Daylight hours",
+    sampleAmount: "18",
+    sampleUnit: "units / cycle",
+    blurb: "A light key for people who arrive with the sun and leave before the steam crowds.",
+    inclusions: [
+      "Daylight plunge window",
+      "Shared rest bench",
+      "Weekend steam hour",
+      "House linen on request",
+    ],
+  },
+  {
+    id: "channel",
+    name: "Channel",
+    depth: "Midwater",
+    cadence: "Open hours",
+    sampleAmount: "36",
+    sampleUnit: "units / cycle",
+    blurb: "The working membership: water when you need it, and a locker that stays yours.",
+    inclusions: [
+      "Open plunge hours",
+      "Reserved locker",
+      "Midweek steam sessions",
+      "House linen included",
+      "One guest morning each cycle",
+    ],
+  },
+  {
+    id: "crossing",
+    name: "Crossing",
+    depth: "Night water",
+    cadence: "After the tide turns",
+    sampleAmount: "54",
+    sampleUnit: "units / cycle",
+    blurb: "Night access, a private alcove, and the full cold-to-heat circuit.",
+    inclusions: [
+      "Night water access",
+      "Private rest alcove",
+      "Full cold and heat circuit",
+      "Two guest passes each cycle",
+      "Priority steam booking",
+    ],
+  },
+];

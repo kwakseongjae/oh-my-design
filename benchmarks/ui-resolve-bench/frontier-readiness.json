@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "target_version": "2.0.0",
+  "baseline_version": "1.9.0",
+  "required_gate_count": 10,
+  "snapshot_patch": "1.9.796",
+  "claim_policy": "Promotion is allowed only when all ten gates are pass and every gate retains repository evidence.",
+  "gates": [
+    {
+      "id": "verified-skill-lift",
+      "status": "partial",
+      "requirement": "OmD is statistically first or tied for first on the Verified Skill Lift track.",
+      "current_boundary": "The fresh Luna depot matrix showed OmD 2/3 resolved but an unstable proof path. The 1.9.691 public-task transfer then made the repaired browser fallback proof-compliant in 3/3 trials with zero user handoffs, but OmD resolved 0/3 and Reliability@3 remained zero.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/investigational-product-depot-skill-lift-1.9.689", "benchmarks/ui-resolve-bench/reports/field-sample-browser-fallback-transfer-1.9.691"],
+      "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/field-sample-browser-fallback-transfer-1.9.691/SUMMARY.final.json", "pointer": "/frontier_gate_pass", "equals": true}
+    },
+    {
+      "id": "three-model-positive-lift",
+      "status": "open",
+      "requirement": "Overall paired resolved-lift 95% lower bound is above zero with no material negative slice across at least three model families.",
+      "current_boundary": "Transfer calibration exists, but no current-epoch three-family confidence bound is eligible.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/three-model-transfer-1.9.6"],
+      "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/three-model-transfer-1.9.6/SUMMARY.final.json", "pointer": "/benchmark_status", "equals": "Verified"}
+    },
+    {
+      "id": "harness-pareto",
+      "status": "partial",
+      "requirement": "The full harness is Pareto non-dominated for resolved rate, elapsed time, and unplanned human intervention.",
+      "current_boundary": "An internal three-task repeated matrix is non-dominated; frontier scale and current-epoch transfer remain incomplete.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/harness-efficiency-replacement-1.9.22"],
+      "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/harness-efficiency-replacement-1.9.22/SUMMARY.final.json", "pointer": "/frontier_gate_pass", "equals": true}
+    },
+    {
+      "id": "hidden-task-coverage",
+      "status": "open",
+      "requirement": "At least 24 hidden tasks cover creation, repair, state, responsive, accessibility, evidence/unknown, screenshot fidelity, open briefs, and five locales.",
+      "current_boundary": "The inventory has 78 public tasks and zero hidden audit-eligible tasks. A commitments-only private registry boundary exists, but no private denominator is authored.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/hidden-task-coverage-audit-1.9.682", "benchmarks/ui-resolve-bench/reports/hidden-task-private-registry-boundary-1.9.683"],
+      "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/hidden-task-coverage-audit-1.9.682/COVERAGE.json", "pointer": "/gate_pass", "equals": true}
+    },
+    {
+      "id": "verified-scale-artifacts",
+      "status": "open",
+      "requirement": "Verified rows have ten runs per task and downloadable successes, failures, timeouts, manifests, and representative artifacts.",
+      "current_boundary": "Hash-verified success/failure/timeout package admission exists; real 24 by 10 completed current-epoch groups remain zero.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/scripts/aggregate-results.mjs", "benchmarks/ui-resolve-bench/reports/downloadable-verified-package-boundary-1.9.684"],
+      "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/downloadable-verified-package-boundary-1.9.684/BOUNDARY.json", "pointer": "/gate_pass", "equals": true}
+    },
+    {
+      "id": "practitioner-blind-review",
+      "status": "external",
+      "requirement": "Blind review includes at least ten practitioners with confidence intervals, agreement, reversal, and both-fail rates.",
+      "current_boundary": "Review operations and automated triage exist; the ten-practitioner panel has not been observed.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/reviewer-operations-package-1.9.77", "benchmarks/ui-resolve-bench/reports/automated-blind-review-runner-1.9.87"],
+      "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/reviewer-operations-package-1.9.77/SUMMARY.final.json", "pointer": "/frontier_gate_pass", "equals": true}
+    },
+    {
+      "id": "independent-task-audit",
+      "status": "external",
+      "requirement": "An independent task audit estimates fewer than 5% broken or ambiguous tasks and retires flagged tasks before ranking.",
+      "current_boundary": "All 78 public tasks pass core validation and 11 contract mutations are killed; an independent auditor sample and broken-rate estimate remain absent.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/task-contract-mutation-audit-1.9.685", "benchmarks/ui-resolve-bench/scripts/audit-prepared-matrix-admission.mjs"],
+      "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/task-contract-mutation-audit-1.9.685/AUDIT.json", "pointer": "/gate_pass", "equals": true}
+    },
+    {
+      "id": "activation-and-seven-day-reuse",
+      "status": "partial",
+      "requirement": "Install to first resolved surface and seven-day reuse improve over 1.9.0 without accessibility, evidence-honesty, or Builder regression.",
+      "current_boundary": "Four-channel day-eight technical survivability and local activation pass; behavioral reuse and production lift are unobserved.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/time-compressed-activation-reuse-1.9.672", "benchmarks/ui-resolve-bench/reports/local-activation-funnel-1.9.673", "benchmarks/ui-resolve-bench/reports/cli-activation-comparison-1.9.674"],
+      "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/time-compressed-activation-reuse-1.9.672/ACCEPTANCE.json", "pointer": "/frontier_gate_pass", "equals": true}
+    },
+    {
+      "id": "routing-ownership-reverify",
+      "status": "pass",
+      "requirement": "Natural-language routing selects the smallest capable workflow, specialists advise with evidence, one main agent owns edits, and the same consumer route is reverified.",
+      "current_boundary": "The installed Claude Code, Codex, and OpenCode trees preserve the same fail-closed deterministic routing contract. The fresh 1.9.795 Luna/high run then exercised all three runtime routes: exactly two evidence-bounded specialist lanes per eligible task, an exact authority receipt before interview resumption, zero dispatch for the external blocker, one implementation owner and revision per executable task, and exact same-consumer browser re-verification at 85/85 in 2/2 cells.",
+      "evidence_refs": ["benchmarks/ui-resolve-bench/reports/local-activation-funnel-1.9.673", "skills/omd-orchestrator/SKILL.md", "skills/omd-apply/SKILL.md", "test/unit/cli/installed-harness-context-plan.test.ts", "test/unit/cli/doctor-context-planner-self-test.test.ts", "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-luna-1.9.795/ACCEPTANCE.json", "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-luna-1.9.795/FINDINGS.md"],
+      "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-luna-1.9.795/ACCEPTANCE.json", "pointer": "/frontier_gate_passes/routing-ownership-reverify", "equals": true}
+    },
+    {
+      "id": "council-first-human-escalation",
+      "status": "pass",
+      "requirement": "The harness investigates and debates before intake, auto-decides only evidence-backed reversible choices, and asks the user only for authority-bearing decisions while retaining a reconstructable decision ledger.",
+      "current_boundary": "Authority calibration separates preserve-existing/defer, user-answerable/interview, and external-unverifiable/blocked. The fresh 1.9.795 Luna/high lifecycle passed every missing route: four bounded read-only lane artifacts reconciled with zero unauthorized writes; the authority-bearing interview resumed only after its hash-bound registered answer receipt; the external-evidence blocker kept dispatch, provider, answer, master, and product writes at zero; and both executable routes reached 85/85 with one owner revision and no unplanned questions.",
+      "evidence_refs": ["research/harness-design/24-council-first-interview-gate.md", "scripts/design-council-prime.cjs", "scripts/design-council-reconcile.cjs", "scripts/design-council-handoff.cjs", "scripts/design-harness-context-plan.cjs", "skills/omd-harness/SKILL.md", "benchmarks/ui-resolve-bench/reports/council-first-intake-1.9.733", "benchmarks/ui-resolve-bench/reports/council-intake-calibration-1.9.734", "benchmarks/ui-resolve-bench/reports/bounded-council-dispatch-1.9.735", "benchmarks/ui-resolve-bench/reports/council-effectiveness-pilot-1.9.736", "benchmarks/ui-resolve-bench/reports/council-lane-cap-replay-1.9.738", "benchmarks/ui-resolve-bench/reports/compact-council-live-1.9.739", "benchmarks/ui-resolve-bench/reports/maintenance-defer-1.9.740", "benchmarks/ui-resolve-bench/reports/installed-harness-checkpoint-luna-1.9.773/RESULT.json", "benchmarks/ui-resolve-bench/reports/council-state-routing-luna-1.9.782/RESULT.json", "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-luna-1.9.795/ACCEPTANCE.json", "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-luna-1.9.795/FINDINGS.md"],
+      "pass_evidence": {"ref": "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-luna-1.9.795/ACCEPTANCE.json", "pointer": "/frontier_gate_passes/council-first-human-escalation", "equals": true}
+    }
+  ]
+}

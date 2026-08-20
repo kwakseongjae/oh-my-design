@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1",
+  "status": "provider-free-accepted",
+  "patch": "1.9.79",
+  "contract": {
+    "name": "versioned OmD skill control",
+    "arms": [
+      {
+        "id": "omd-portable-slate",
+        "source_commit": "1aa81ddb1aa15defbd12b4af36b4dd6784131c9f"
+      },
+      {
+        "id": "omd-portable-ember",
+        "source_commit": "c285d25515ec8959e66ceeb7703417aad531cd95"
+      }
+    ],
+    "identity_neutral": true,
+    "detached_head_required": true,
+    "same_declared_skill": true,
+    "same_activation": true
+  },
+  "acceptance": {
+    "focused_tests": {
+      "passed": 2,
+      "failed": 0
+    },
+    "runtimes": [
+      "codex",
+      "cursor"
+    ],
+    "identity_leak_scan": "passed",
+    "attached_exact_commit_rejection": "passed",
+    "lint": "passed",
+    "build": "passed",
+    "independent_review": {
+      "blocks": 0,
+      "warnings": 0
+    },
+    "skill_sha256": {
+      "codex": {
+        "omd-portable-slate": "ea2966e52a59e4ea52ac10451c333ebc8d22182cb472ba5a0cacf4c367547da1",
+        "omd-portable-ember": "a8128ccca897a52a89d21d7c790b6b382cc8579e6769a4f1ad623a3b641486e4"
+      },
+      "cursor": {
+        "omd-portable-slate": "793eefab03fb0563a017fe370c8e05b93941aae83e7c4420d8ab5b9c667920b5",
+        "omd-portable-ember": "d7a890ac08f8a4cce8c541b186039c9fcd4245a363f7f97132a2bbf8f46f52d5"
+      }
+    },
+    "provider_calls": 0
+  },
+  "next_denominator": {
+    "tasks": [
+      "onboarding-setup-v0.1@0.3.0",
+      "incident-operations-v0.1@0.4.0",
+      "locale-cli-handoff-v0.1@0.5.0"
+    ],
+    "conditions": [
+      "omd-portable-slate",
+      "omd-portable-ember"
+    ],
+    "trials_per_condition": 3,
+    "cells": 18,
+    "raw_condition_included": false
+  },
+  "claim_limit": "Infrastructure acceptance only; preference lift requires the preregistered fresh live matrix and blind practitioner review."
+}

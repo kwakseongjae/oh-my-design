@@ -9,6 +9,12 @@ import path from "node:path";
 import { getAccessToken } from "./_google-auth.mjs";
 import { env, requireEnv, repoRoot } from "./_env.mjs";
 import { ga4CompleteDateRange } from "./_dates.mjs";
+import {
+  BENCHMARK_EXPERIMENT_VERSION,
+  BENCHMARK_PRODUCTION_HOST,
+  benchmarkActivationFilter,
+  benchmarkMeasurementStatus,
+} from "./benchmark-activation-contract.mjs";
 
 const arg = (n, d) => {
   const i = process.argv.indexOf(`--${n}`);
@@ -16,6 +22,7 @@ const arg = (n, d) => {
 };
 const DAYS = Number(arg("days", env("ANALYTICS_DAYS", "28")));
 const PROPERTY = requireEnv("GA4_PROPERTY_ID").replace(/^properties\//, "");
+const INTERNAL_TRAFFIC_FILTER_STATUS = env("GA4_INTERNAL_TRAFFIC_FILTER_STATUS", "unconfirmed");
 const SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"];
 const API = `https://analyticsdata.googleapis.com/v1beta/properties/${PROPERTY}:runReport`;
 
@@ -141,6 +148,22 @@ const REPORTS = {
     limit: 400,
     optional: true,
   },
+  benchmark_activation: {
+    dimensions: dims(
+      "eventName",
+      "customEvent:experiment_version",
+      "customEvent:target",
+      "customEvent:destination",
+      "customEvent:outcome",
+    ),
+    metrics: mets("eventCount", "totalUsers"),
+    dimensionFilter: benchmarkActivationFilter(),
+    orderBys: [
+      { dimension: { dimensionName: "eventName" } },
+      { metric: { metricName: "totalUsers" }, desc: true },
+    ],
+    limit: 100,
+  },
 };
 
 async function runReport(token, spec) {
@@ -172,11 +195,31 @@ async function runReport(token, spec) {
 }
 
 const token = await getAccessToken(SCOPES);
-const out = { _meta: { property: PROPERTY, days: DAYS, dateRange, completeDaysOnly: true, pulledAt: new Date().toISOString() } };
+const out = {
+  _meta: {
+    property: PROPERTY,
+    days: DAYS,
+    dateRange,
+    completeDaysOnly: true,
+    pulledAt: new Date().toISOString(),
+    benchmarkActivation: {
+      experimentVersion: BENCHMARK_EXPERIMENT_VERSION,
+      productionHost: BENCHMARK_PRODUCTION_HOST,
+      testingFilterRule: "testDataFilterName is empty",
+      internalTrafficFilterStatus: INTERNAL_TRAFFIC_FILTER_STATUS,
+      productionDecisionEligible: INTERNAL_TRAFFIC_FILTER_STATUS === "active",
+    },
+  },
+};
 let requiredFailures = 0;
 for (const [name, spec] of Object.entries(REPORTS)) {
   try {
     out[name] = await runReport(token, spec);
+    if (name === "benchmark_activation") {
+      const measurement = benchmarkMeasurementStatus(INTERNAL_TRAFFIC_FILTER_STATUS);
+      out[name].measurementStatus = measurement.status;
+      if (measurement.reason) out[name].measurementBlockReason = measurement.reason;
+    }
     console.log(`ga4:${name} → ${out[name].rows.length} rows`);
   } catch (e) {
     out[name] = { error: String(e.message || e) };

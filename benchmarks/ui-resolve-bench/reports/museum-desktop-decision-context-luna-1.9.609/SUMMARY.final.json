@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.614",
+  "experiment_id": "museum-desktop-decision-context-luna-1.9.609",
+  "status": "FROZEN_PROMOTION_UNREACHABLE_VERIFIER_FALSE_NEGATIVE",
+  "promotion": false,
+  "provider_calls": 2,
+  "completed_cells": 2,
+  "frozen_unstarted_cells": [
+    "luna-museum-r2-candidate",
+    "luna-museum-r2-control",
+    "luna-museum-r3-control",
+    "luna-museum-r3-candidate"
+  ],
+  "r1": {
+    "control": {"score": 85, "ui_resolved": true, "proof_pass": true, "wall_time_ms": 373337, "tokens": 1062466},
+    "candidate": {"score": 85, "ui_resolved": true, "proof_pass": false, "wall_time_ms": 424791, "tokens": 1848420}
+  },
+  "candidate_transfer_evidence": {
+    "desktop_decision_context_observed": true,
+    "narrow_decision_context_observed": true,
+    "decision_context_required_flags": [true, true, true, true],
+    "missing_observation_default_removed": true,
+    "nested_carrier_containment_attested": true,
+    "nested_registered_gallery_carriers_authored": false,
+    "all_registered_rows_and_carriers_pass": true,
+    "objective_ui_resolved": true,
+    "artifact_quality_pass": true,
+    "promotion_proof_pass": false
+  },
+  "verifier_false_negative": {
+    "condition_count": 4,
+    "reported_full_row": false,
+    "precedes_supporting": true,
+    "spatially_separated": true,
+    "browser_harness_desktop_measurement": {
+      "context_border_box_width_px": 1108,
+      "context_client_width_px": 1106,
+      "context_padding_left_px": 19,
+      "context_padding_right_px": 19,
+      "context_border_left_px": 1,
+      "context_border_right_px": 1,
+      "target_width_px": 1067.9921875,
+      "old_content_width_px": 1070,
+      "border_aware_content_width_px": 1068,
+      "old_full_row": false,
+      "border_aware_full_row": true
+    },
+    "root_cause": "browser_decision_context_script subtracted context padding from getBoundingClientRect width but did not subtract borders; target and true content box differed only by subpixel rounding",
+    "candidate_product_regression": false
+  },
+  "promotion_reachability": {
+    "candidate_trials_required": 3,
+    "candidate_ui_resolved_observed": 1,
+    "maximum_reachable_ui_resolved_trials": 3,
+    "candidate_proof_compliant_observed": 0,
+    "maximum_reachable_proof_compliant_trials": 2,
+    "promotion_reachable": false
+  },
+  "paired_efficiency": {
+    "wall_time_ratio_candidate_over_control": 1.137821860678154,
+    "token_ratio_candidate_over_control": 1.7397450836073813,
+    "maximum_allowed_ratio": 1.1,
+    "wall_time_gate": false,
+    "token_gate": false,
+    "causal_efficiency_claim_allowed": false
+  },
+  "artifact_hashes": {
+    "candidate_run_result_sha256": "9bf177672734dfb1868ce5c6eccd950b1fddcb032e018c831bf7a94f410a0968",
+    "candidate_score_sha256": "d6898ed9a3ea9439adcda44f52d879acbf18ffd6303bc3f5841413c1913dc3a9",
+    "candidate_run_record_sha256": "08b12a98f48d8271b586404f5e7eab7ffbfbef9ec2a8bc1ef3f42c5036968f9e",
+    "candidate_proof_trace_sha256": "fef4b3f04171499219c41c8ee30ec1546f5305f8c68d7a733b0171ff10c9b432",
+    "candidate_benchmark_tree_sha256": "1989a2ab4114a3c10686684a4b83a41f4a7ca8de584b8aa13053432dcf654525"
+  },
+  "tokens_to_target": {
+    "cumulative_observed_provider_tokens_minimum": 104755044,
+    "usage_unavailable_cells": 6,
+    "goal_status": "right-censored-open"
+  },
+  "next": "Do not resume this matrix. Repair decision-context full-row measurement to use the context content box provider-free, replay the actual candidate artifact, pin it, then use another genuinely unseen task."
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.2",
+  "families": {
+    "model": {
+      "label": "Model Track",
+      "fixed": ["agent_runtime", "task", "tool_budget", "reasoning_budget", "environment"],
+      "varies": ["model_snapshot"],
+      "skills_allowed": false,
+      "public_rank": true
+    },
+    "skill": {
+      "label": "Skill Lift Track",
+      "fixed": ["model_snapshot", "agent_runtime", "task", "tool_budget", "environment"],
+      "varies": ["portable_skill"],
+      "paired_baseline": "no-skill",
+      "public_rank": true
+    },
+    "harness": {
+      "label": "Harness Track",
+      "fixed": ["task", "budget_tier", "environment"],
+      "varies": ["documented_workflow"],
+      "rank_mode": "pareto",
+      "public_rank": true
+    },
+    "prompt-arena": {
+      "label": "Prompt Arena",
+      "fixed": ["rough_prompt", "assets", "viewport", "comparison_mode", "budget_tier"],
+      "varies": ["model_or_skill"],
+      "rank_mode": "blind-pairwise",
+      "public_rank": false
+    },
+    "factorial": {
+      "label": "Transfer Matrix",
+      "fixed": ["task", "agent_runtime", "environment", "budget_tier"],
+      "varies": ["model_snapshot", "portable_skill"],
+      "rank_mode": "generalization-audit",
+      "public_rank": false
+    }
+  },
+  "status_labels": ["internal", "preview", "verified", "retired"],
+  "sample_policy": {
+    "patch_smoke": { "tasks": 3, "runs_per_task": 3 },
+    "internal_candidate": { "tasks": 12, "runs_per_task": 5 },
+    "verified_public": { "minimum_tasks": 24, "runs_per_task": 10 },
+    "quarterly_live": { "minimum_new_tasks": 6, "runs_per_task": 5 }
+  }
+}

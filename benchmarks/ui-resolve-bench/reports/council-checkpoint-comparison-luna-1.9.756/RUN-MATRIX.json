@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "product_version": "1.9.756",
+  "execution_purpose": "council-off-on-checkpointed-three-task-internal-comparison-not-ranking",
+  "experiment_id": "council-checkpoint-comparison-luna-1.9.756",
+  "output_root": "/private/tmp/omd-council-checkpoint-comparison-1.9.756",
+  "attribution_scope": "provider-observed-only",
+  "family": "harness",
+  "status": "locked-awaiting-provider-zero-preparation",
+  "control_contract": {
+    "comparison_mode": "native-capability",
+    "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+    "temperature_policy": "runtime-default-frozen",
+    "timeout_seconds": 720,
+    "max_concurrency": 1,
+    "latency_comparison": "descriptive-only",
+    "retry_policy": "none-primary",
+    "timeout_policy": "count-as-valid-failure",
+    "infrastructure_policy": "retain-freeze-and-repreregister",
+    "task_order_policy": "fixed-preregistered",
+    "admission_normalization_policy": "paired-cross-task-comparison",
+    "pacing": {"policy": "fixed-inter-cell", "inter_cell_delay_seconds": 30, "applies_between_cells_only": true, "counts_toward_cell_wall_time": false},
+    "token_budget": {"mode": "observed-only", "limit_tokens": null, "usage_required": true, "account_components": ["input", "cached_input", "output", "reasoning_output"], "cached_input_separate": true, "cost_policy": "provider-reported-or-pinned-price-equivalent"},
+    "step_budget": {"mode": "observed-only", "limit_steps": null}
+  },
+  "provider_routing_contract": {"cursor_allowed": false, "allowed_runtime": "codex", "allowed_model_id": "gpt-5.6-luna", "fail_closed": true},
+  "browser_execution_contract": {"require_browser_proof": true, "runtime_dir_shared": true, "exact_named_socket": true, "allow_browser_launch": false, "mechanism": "browser-harness attachment to controller-started isolated local CDP Chrome", "connection_name": "omd1756", "user_profile": "none", "cloud_browser": "not-used"},
+  "checkpoint_continuation_contract": {"source_experiment": "checkpoint-reliability-canary-1.9.753", "max_new_cells_per_invocation": 1, "preserve_completed_preplan_receipts": true, "revalidate_only_unstarted_preplan_receipts": true, "completed_root_not_resumable": true},
+  "controller_pre_edit_plan_contract": {"mode": "provider-zero-shipped-runner", "required": true, "artifact_path": ".omd/reflow-closure.json", "runner_path": ".agents/skills/omd-apply/scripts/reflow-browser-runner.sh", "reflow_mode": "plan", "measured_attempts": 1, "provider_calls": 0, "cursor_calls": 0, "timeout_seconds": 120},
+  "proof_execution_gates": {"system_ids": ["luna-high-omd-current", "luna-high-omd-council"], "enforcement": "promotion-report", "require_analyzable": true, "require_closed_reflow_artifact": true, "require_measured_browser_attempt": true, "require_character_range_line_oracle": true, "require_actual_zoom_observation": true, "require_exact_named_consumer_attachment": true, "forbid_launched_browser": true, "require_locked_typography": true, "minimum_inline_fit_reserve_css_px": 8, "max_document_overflow_px": 0, "max_browser_recovery_count": 0, "max_duplicate_static_closure_count": 0, "max_verification_after_ready_count": 0, "max_passive_protected_text_scroll_containers": 0, "shipped_runner_system_ids": ["luna-high-omd-current", "luna-high-omd-council"], "shipped_runner_command_suffix": "scripts/reflow-browser-runner.sh"},
+  "task_lock_contract": {
+    "source_commit": "126b9a6f5b7d3f01079b1e4606a126c086d60047",
+    "prior_model_exposures_per_task": 0,
+    "tasks": [
+      {"task_id": "photograph-album-return-v0.1", "provenance": "fresh-provider-zero-1.9.754", "task_tree_sha256": "4c3836fc3104a239b67c77f88454c797102488c788276867e3e33dd60454d976", "prompt_sha256": "63d44614b468d773b69d7d5887eac883b0ea00ceb3c4efb3591d3f844361cdcc", "starter_sha256": "2ded990cbcd383b83cc138f436d4a97b3880c645949122ea6a88d4b4d6b40b49", "raw_baseline_score": "75/85", "baseline_evidence_sha256": "6b499ee62b8c245593a627536702678faa113b934d8d3786fc59d64503fc91a1", "source_contract_sha256": "30a1d8d75f64610b91890423a141fc96bbe589b8c69aac50e63557746657c9ff"},
+      {"task_id": "mineral-drawer-return-v0.1", "provenance": "fresh-provider-zero-1.9.754", "task_tree_sha256": "81a34598909425f6ce36e4a0c45ae4fbfed57720d6e764065e90e06bc38f65fb", "prompt_sha256": "c7db2ef3d22d8069d3f1f5056a682764e6faaa9f2547bb6d2a8b58938b77420d", "starter_sha256": "037908902082a9940fa1d1c2a4d73895119e32553300f1096181713f555b7b1f", "raw_baseline_score": "75/85", "baseline_evidence_sha256": "89345ca7e02c6dbcc028c4b24d6c97530b6945889575ef1df1925e151c345da5", "source_contract_sha256": "1f323a1ecc86f8c6e09b9e2160dff96f4a797a245bb2917081f9d9dabea54dd9"},
+      {"task_id": "wax-cylinder-return-v0.1", "provenance": "fresh-provider-zero-1.9.754", "task_tree_sha256": "9a7d8d605631dca11fb740c927b46e343a66097bad28d238fd688fa3cd2dd765", "prompt_sha256": "75d7158ec7c2fd4e68459a2dc19fad30118b72a15ba5bf5801f76e0e7e2f51db", "starter_sha256": "e7bbe3bb56f82ae19dabbf19a36d4703d93d0e7644e051d538f9b0bd20b52521", "raw_baseline_score": "75/85", "baseline_evidence_sha256": "4b852d86a38f540f9dd8583a6a86ecb54a8c89b4d1e6000840ef5d3c714fde6c", "source_contract_sha256": "2334e709c77f8f47c0399d4be383edd185215a11767b0c87a2dc90afa8b15dd4"}
+    ]
+  },
+  "skill_lock_contract": {"skill_id": "omd-apply-current-council-comparison", "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e", "skill_tree_sha256": "f46c9859a2765599a394f37ce9b9b43a2dc244f7da674b1a41a89680f42a33e0"},
+  "arm_contract": {
+    "shared_installed_skill_sha256": "f46c9859a2765599a394f37ce9b9b43a2dc244f7da674b1a41a89680f42a33e0",
+    "control": {"variant_id": "omd-portable", "activation_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7", "council_intake": null},
+    "candidate": {"variant_id": "omd-portable-council-gate", "activation_sha256": "85103c38c26f08f071381a0e697904ab13b6ad938208c9233553539e7ccba8cc", "council_intake_mode": "prime-only-no-dispatch", "question_count": 0, "model_lane_calls": 0, "provider_mutable": false}
+  },
+  "source_contract": {"schema_version": "0.2", "failed_critical_gates": ["accessibility", "responsive"], "covered_critical_gates": ["accessibility", "responsive"], "parent_containment_required": true, "exact_decision_cascade_required": true, "provider_mutable": false},
+  "candidate_preflight_contract": {"required": true, "complete_candidate_bytes": true, "same_static_evaluator": true, "passed_receipt_required_before_product_edit": true, "promotion_command": "static-promote", "model_retyping_after_preview_forbidden": true, "candidate_sha256_must_equal_final_product_sha256": true, "source_contract_sha256_must_match": true, "sealed_inventory_sha256_must_match": true},
+  "cell_success_contract": {"objective_score": 85, "objective_max": 85, "ui_resolved": true, "product_revision_count": 1, "successful_static_closure_count": 1, "failed_static_closure_count": 0, "user_handoff_count": 0, "proof_compliance": true, "browser_runner_recovery_count": 0, "sealed_inventory_unchanged": true, "candidate_preview_receipt_passed": true, "candidate_promoted_without_retyping": true, "candidate_sha256_equals_final_product_sha256": true},
+  "comparison_success_contract": {"control_reliability_required": 3, "candidate_reliability_required": 3, "paired_objective_loss_max": 0, "candidate_unplanned_human_interventions_max": 0, "quality_time_token_axes_reported_separately": true},
+  "reliability_contract": {"required_cell_passes_per_arm": 3, "total_cells_per_arm": 3, "pass_policy": "all-cells-must-satisfy-cell-success-contract", "contract_hard_stop": ["sealed-inventory-drift", "second-product-edit", "failed-static-closure", "contract-proof-noncompliance", "browser-runner-recovery", "candidate-preview-receipt-missing-or-failed", "candidate-final-byte-mismatch"], "objective_failure_policy": "record-failure-and-continue-only-when-lifecycle-contract-remains-clean"},
+  "comparison_claim_contract": {"publication_tier": "internal-preview", "forbid_claims": ["model-superiority", "industry-leader", "general-council-lift", "2.0-release-gate-from-this-test-alone"]},
+  "cells": [
+    {"id": "album-luna-r1-council-off", "task_id": "photograph-album-return-v0.1", "variant_id": "omd-portable", "system_id": "luna-high-omd-current", "runtime": "codex", "model_id": "gpt-5.6-luna", "effort": "high", "timeout_seconds": 720, "trial_index": 1},
+    {"id": "mineral-luna-r1-council-on", "task_id": "mineral-drawer-return-v0.1", "variant_id": "omd-portable-council-gate", "system_id": "luna-high-omd-council", "runtime": "codex", "model_id": "gpt-5.6-luna", "effort": "high", "timeout_seconds": 720, "trial_index": 1},
+    {"id": "cylinder-luna-r1-council-off", "task_id": "wax-cylinder-return-v0.1", "variant_id": "omd-portable", "system_id": "luna-high-omd-current", "runtime": "codex", "model_id": "gpt-5.6-luna", "effort": "high", "timeout_seconds": 720, "trial_index": 1},
+    {"id": "album-luna-r1-council-on", "task_id": "photograph-album-return-v0.1", "variant_id": "omd-portable-council-gate", "system_id": "luna-high-omd-council", "runtime": "codex", "model_id": "gpt-5.6-luna", "effort": "high", "timeout_seconds": 720, "trial_index": 1},
+    {"id": "mineral-luna-r1-council-off", "task_id": "mineral-drawer-return-v0.1", "variant_id": "omd-portable", "system_id": "luna-high-omd-current", "runtime": "codex", "model_id": "gpt-5.6-luna", "effort": "high", "timeout_seconds": 720, "trial_index": 1},
+    {"id": "cylinder-luna-r1-council-on", "task_id": "wax-cylinder-return-v0.1", "variant_id": "omd-portable-council-gate", "system_id": "luna-high-omd-council", "runtime": "codex", "model_id": "gpt-5.6-luna", "effort": "high", "timeout_seconds": 720, "trial_index": 1}
+  ]
+}

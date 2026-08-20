@@ -1,0 +1,71 @@
+{
+  "id": "aircraft-load-plan-review-v0.1",
+  "version": "0.1.0",
+  "track": "repair",
+  "grounding": "design-md",
+  "locale": "en",
+  "behavior_adapter": "onboarding-v1",
+  "review_brief": "An aircraft hold load-plan review for ground operations. Preserve six supplied bay identifiers, eight baggage-container identifiers, their exact bay assignments, the separate balance strip, three review views, note setting, review name, and summary facts without inventing weight validation, balance approval, airworthiness, loading completion, dispatch release, safety, security, or departure outcomes.",
+  "network": "disabled",
+  "entry": "index.html",
+  "semantic_oracle": { "landmarks": { "h1_count": { "exact": 1 }, "main_count": { "exact": 1 }, "nav_count": { "min": 1 }, "footer_count": { "min": 1 } } },
+  "viewports": [
+    { "name": "desktop", "width": 1440, "height": 1000 },
+    { "name": "mobile", "width": 390, "height": 844 },
+    { "name": "narrow-320", "width": 320, "height": 720 },
+    { "name": "css-zoom-surrogate-200", "width": 640, "height": 900, "zoom": 2 }
+  ],
+  "protected_selectors": [
+    "[data-bench='review-view-option']", "[data-bench='load-note-toggle']", "[data-bench='load-review-form']", "[data-bench='review-name']", "[data-bench='form-status']", "[data-bench='hold-bay']", "[data-bench='bay-id']", "[data-bench='container-id']", "[data-bench='balance-carrier']", "[data-bench='station-id']", "[data-bench='station-weight']", "[data-bench='compact-control-copy']", "[data-bench-design-role='load-plan']", "[data-bench-decision-role='context']", "[data-bench-decision-role='target']", "[data-bench-decision-role='evidence']", "[data-bench-decision-role='state']", "[data-bench-decision-role='action']"
+  ],
+  "protected_hook_counts": {
+    "[data-bench='review-view-option']": 3,
+    "[data-bench='load-note-toggle']": 1,
+    "[data-bench='load-review-form']": 1,
+    "[data-bench='review-name']": 1,
+    "[data-bench='form-status']": 1,
+    "[data-bench='hold-bay']": 6,
+    "[data-bench='bay-id']": 6,
+    "[data-bench='container-id']": 8,
+    "[data-bench='balance-carrier']": 1,
+    "[data-bench='station-id']": 4,
+    "[data-bench='station-weight']": 4,
+    "[data-bench='compact-control-copy']": 1,
+    "[data-bench-design-role='load-plan']": 1,
+    "[data-bench-decision-role='context']": 1,
+    "[data-bench-decision-role='target']": 1,
+    "[data-bench-decision-role='evidence']": 1,
+    "[data-bench-decision-role='state']": 1,
+    "[data-bench-decision-role='action']": 1
+  },
+  "journey_oracle": {
+    "choice": { "selector": "[data-bench='review-view-option']", "value_attribute": "data-view", "body_dataset": "view", "values": ["hold", "balance", "handoff"], "count": 3, "initial": "hold", "selected": "balance" },
+    "toggle": { "selector": "[data-bench='load-note-toggle']" },
+    "form": { "form_selector": "[data-bench='load-review-form']", "field_selector": "[data-bench='review-name']", "status_selector": "[data-bench='form-status']", "invalid_value": "", "valid_value": "Flight 7C load review" }
+  },
+  "text_geometry_oracle": {
+    "viewports": ["mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "scope_selectors": ["[data-bench-design-role='load-plan']", "[data-bench='balance-carrier']", "[data-bench-decision-role='context']"],
+    "atomic_scope_selectors": ["[data-bench='bay-id']", "[data-bench='container-id']", "[data-bench='station-id']", "[data-bench='station-weight']", "[data-bench-decision-role='target']", "[data-bench-decision-role='evidence']", "[data-bench-decision-role='state']"],
+    "compact_copy_selectors": ["[data-bench='compact-control-copy']"],
+    "max_short_text_chars": 48,
+    "max_short_text_lines": 1
+  },
+  "decision_hierarchy_oracle": {
+    "viewports": ["desktop", "mobile", "narrow-320", "css-zoom-surrogate-200"],
+    "minimum_action_gap_px": 8,
+    "roles": { "container": "[data-bench-decision-role='context']", "target": "[data-bench-decision-role='target']", "evidence": "[data-bench-decision-role='evidence']", "state": "[data-bench-decision-role='state']", "action": "[data-bench-decision-role='action']" }
+  },
+  "protected_unknown_patterns": [
+    "\\b(?:10x|99(?:\\.9)?%|guaranteed|revolutionary|supercharge|magical|seamless)\\b",
+    "\\b(?:weight validated|balance approved|airworthy|loading complete|dispatch released|safe|secured|cleared to depart)\\b",
+    "\\btrusted by\\b", "[★☆]{3,}"
+  ],
+  "protected_known_patterns": ["HOLD-AFT-21 + ULD-AKE-73018", "6 bays · 8 containers · 4 station readings"],
+  "protected_unknown_selectors": ["blockquote", "[class*='testimonial' i]", "[class*='logo-wall' i]", "[class*='social-proof' i]"],
+  "design_oracle": {
+    "page_background": "#F1F3F2", "primary_action": "#173D4D", "accent": "#B84E3A", "ink": "#192426", "surface": "#FCFDFB", "border": "#A8B1B2", "muted_text": "#687274", "card_radius_px": 0, "control_radius_px": 2,
+    "font_family": { "body_any": ["Arial"], "display_any": ["Georgia"] },
+    "selectors": { "primary_action": "[data-primary-action]", "card": "[data-bench-design-role='load-plan']", "display": "h1" }
+  }
+}

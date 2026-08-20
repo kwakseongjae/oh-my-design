@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1",
+  "gate_id": "omd-luna-max-wow-preview-score-gate-v0.1",
+  "experiment_id": "omd-luna-max-wow-preview-2.0.0-v0.1",
+  "slot_contract": {
+    "maximum_slots": 54,
+    "scheduled_cells": 48,
+    "ineligible_cells": 6,
+    "omd_scheduled_cells": 9,
+    "trials_per_task_arm": 3,
+    "allowed_terminal_statuses": ["completed", "failed", "timeout", "infrastructure-invalid"],
+    "failure_score": 0,
+    "missing_record_score": 0,
+    "missing_record_blocks_finalization": true
+  },
+  "runtime_contract": {
+    "provider": "codex",
+    "model": "gpt-5.6-luna",
+    "effort": "max",
+    "retry_count": 0,
+    "replacement_count": 0,
+    "fallback_count": 0,
+    "model_substitution_count": 0,
+    "effort_substitution_count": 0
+  },
+  "release_gates": {
+    "omd_ui_resolved_minimum": 8,
+    "omd_ui_resolved_per_task_minimum": 2,
+    "zero_unsupported_facts": true,
+    "zero_manual_product_edits": true,
+    "zero_follow_up_questions": true,
+    "zero_unplanned_interventions": true,
+    "publishable_evidence_every_scheduled_cell": true,
+    "strongest_competitor_rule": {
+      "selection": "For each task choose the eligible non-OmD arm by descending UI-Resolved count, then descending summed objective score with failures and omissions scored zero, then ascending variant_id.",
+      "comparison": "OmD must tie or beat that single selected arm in objective score in every same-task same-trial pair; a missing or non-completed result scores zero.",
+      "competitor_omission_score": 0,
+      "paired_losses_allowed": 0
+    },
+    "blind_human": {
+      "minimum_unique_practitioners": 5,
+      "required_task_count": 3,
+      "minimum_omd_first_or_tie_tasks": 2,
+      "labels_hidden": true,
+      "order_hidden": true,
+      "duplicate_or_synthetic_reviewer_blocks": true
+    },
+    "pareto": {
+      "dimensions": ["quality_desc", "provider_tokens_asc", "elapsed_ms_asc", "human_burden_asc"],
+      "omd_must_be_non_dominated": true,
+      "functional_failure_cannot_be_offset_by_average": true
+    }
+  },
+  "claim_policy": {
+    "public_claim_scope": "Only these three preregistered tasks, exact frozen arms, exact gpt-5.6-luna/max, and this run may be described.",
+    "global_best_claim_allowed": false
+  }
+}

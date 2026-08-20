@@ -1,0 +1,5 @@
+Improve the supplied museum-loan routing review so collections coordinators can inspect object-to-crate assignments, courier windows, and the routing handoff confidently on desktop and narrow screens.
+
+Preserve all six object identifiers, all eight crate identifiers and their exact object assignments, all four supplied courier windows, the three review views, the draft-note toggle, the routing-review form, and all stated summary evidence. Do not invent condition clearance, courier assignment, crate sealing, transit approval, insurance confirmation, customs release, or handoff completion. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The object register, separate courier-window strip, and separate routing handoff are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.

@@ -14,6 +14,9 @@ import { join } from 'node:path';
 import {
   collectDoctorReport,
   REQUIRED_AGENT_IDS,
+  REQUIRED_CORE_RUNTIME_HELPERS,
+  REQUIRED_CORE_SCHEMA_FILES,
+  REQUIRED_HARNESS_HELPERS,
   REQUIRED_PRODUCT_SKILLS,
 } from '../../../src/cli/doctor.js';
 import { runInstallSkills } from '../../../src/cli/install-skills.js';
@@ -24,17 +27,45 @@ describe('omd doctor', () => {
 
   function installProductSkills(
     channelRoot: string,
-    channel: 'claude-code' | 'codex' | 'opencode',
+    channel: 'claude-code' | 'codex' | 'opencode' | 'cursor',
   ): void {
-    for (const skill of REQUIRED_PRODUCT_SKILLS) {
+    const skills = channel === 'cursor'
+      ? REQUIRED_PRODUCT_SKILLS.filter((skill) => skill !== 'claude-design')
+      : REQUIRED_PRODUCT_SKILLS;
+    for (const skill of skills) {
       mkdirSync(join(channelRoot, skill), { recursive: true });
-      const name = channel === 'opencode' || skill === 'claude-design'
+      const name = channel === 'opencode' || channel === 'cursor' || skill === 'claude-design'
         ? skill
         : skill.replace(/^omd-/, 'omd:');
       writeFileSync(
         join(channelRoot, skill, 'SKILL.md'),
         `---\nname: ${name}\ndescription: Test skill\n---\n<!-- omd:installed-skill -->\n# ${skill}\n`,
       );
+      if (skill === 'omd-init') {
+        mkdirSync(join(channelRoot, skill, 'scripts'), { recursive: true });
+        writeFileSync(
+          join(channelRoot, skill, 'scripts', 'query-references.mjs'),
+          '#!/usr/bin/env node\n',
+        );
+      }
+      if (skill === 'omd-autopilot') {
+        mkdirSync(join(channelRoot, skill, 'references'), { recursive: true });
+        writeFileSync(
+          join(channelRoot, skill, 'references', 'design-system-contract.md'),
+          '# Project design-system proof contract\n',
+        );
+      }
+      if (skill === 'omd-harness') {
+        mkdirSync(join(channelRoot, skill, 'references'), { recursive: true });
+        for (const sidecar of [
+          'master-visual-grounding.md',
+          'master-conversation.md',
+          'master-legacy-production.md',
+          'master-execution-phases.md',
+        ]) {
+          writeFileSync(join(channelRoot, skill, 'references', sidecar), `# ${sidecar}\n`);
+        }
+      }
     }
   }
 
@@ -63,12 +94,81 @@ describe('omd doctor', () => {
     writeFileSync(join(dataRoot, 'references', 'toss', 'DESIGN.md'), '# Toss');
     for (const file of [
       'reference-fingerprints.json',
+      'reference-quality.json',
       'reference-tags.md',
       'vocabulary.json',
+      'workflow-capabilities.json',
     ]) {
       writeFileSync(
         join(dataRoot, file),
-        file === 'reference-fingerprints.json' ? '{"count":1,"items":[{"id":"toss"}]}' : '{}',
+        file === 'reference-fingerprints.json'
+          ? '{"count":1,"items":[{"id":"toss"}]}'
+          : file === 'reference-quality.json'
+            ? '{"count":1,"items":[{"id":"toss","status":"verified_v2"}]}'
+          : file === 'workflow-capabilities.json'
+              ? JSON.stringify({
+                schema_version: 1,
+                locale_contract: {
+                  source_locale: 'ko',
+                  source_revision: 'doctor-fixture-ko-v1',
+                  supported_locales: ['en', 'ko', 'ja', 'zh-CN', 'zh-TW'],
+                },
+                execution_assurance: {
+                  contract_version: 1,
+                  channels: ['claude-code', 'codex', 'opencode', 'cursor'].map((id) => ({
+                    id,
+                    skill_contract: 'advisory',
+                    native_policy_surface: 'test-policy-surface',
+                    omd_policy_adapter_default: 'not-installed',
+                    host_native_pretool_blocking: false,
+                    effective_level: id === 'claude-code' ? 'host-feedback' : 'skill-contract',
+                  })),
+                  benchmark_controller: {
+                    enforcement: 'promotion-report',
+                    execution_blocking: false,
+                  },
+                },
+                workflows: [{
+                  id: 'repair-existing-ui',
+                  entry_skill: 'omd:apply',
+                  stages: ['inspect', 'implement', 'verify'],
+                  locales: {
+                    ja: {
+                      label: '既存UIを改善',
+                      prompt: '既存画面を点検して改善します。',
+                      route_suffix: 'DESIGN.mdに従って作業してください。',
+                    },
+                    'zh-CN': {
+                      label: '改进现有 UI',
+                      prompt: '检查并改进现有界面。',
+                      route_suffix: '请按 DESIGN.md 执行。',
+                    },
+                    'zh-TW': {
+                      label: '改善現有 UI',
+                      prompt: '檢查並改善現有畫面。',
+                      route_suffix: '請依 DESIGN.md 執行。',
+                    },
+                  },
+                }],
+              })
+            : '{}',
+      );
+    }
+    mkdirSync(join(dataRoot, 'scripts'), { recursive: true });
+    const coreRuntimeHelpers = new Set<string>(REQUIRED_CORE_RUNTIME_HELPERS);
+    for (const helper of REQUIRED_HARNESS_HELPERS) {
+      writeFileSync(
+        join(dataRoot, 'scripts', helper),
+        coreRuntimeHelpers.has(helper)
+          ? readFileSync(join(process.cwd(), 'scripts', helper))
+          : '#!/usr/bin/env node\n',
+      );
+    }
+    mkdirSync(join(dataRoot, 'scripts', 'schema'), { recursive: true });
+    for (const schema of REQUIRED_CORE_SCHEMA_FILES) {
+      writeFileSync(
+        join(dataRoot, 'scripts', 'schema', schema),
+        readFileSync(join(process.cwd(), 'spec', 'schema', schema)),
       );
     }
   }
@@ -167,6 +267,110 @@ describe('omd doctor', () => {
     });
   });
 
+  it('fails the channel readiness check when a deterministic harness helper is missing', () => {
+    installProductSkills(join(root, '.agents', 'skills'), 'codex');
+    installAgentSet(join(root, '.codex/agents'), 'codex');
+    installCatalog(join(root, '.codex', 'data'));
+    rmSync(join(root, '.codex/data/scripts/design-council-handoff.cjs'));
+
+    const report = collectDoctorReport({ dir: root });
+    const codex = report.channels.find((channel) => channel.id === 'codex');
+    expect(report.state).toBe('incomplete');
+    expect(codex?.ready).toBe(false);
+    expect(codex?.issues).toContain('missing harness helpers: design-council-handoff.cjs');
+  });
+
+  it('fails closed when an installed Core schema differs from the packaged authority', () => {
+    installProductSkills(join(root, '.agents', 'skills'), 'codex');
+    installAgentSet(join(root, '.codex/agents'), 'codex');
+    installCatalog(join(root, '.codex', 'data'));
+    writeFileSync(
+      join(root, '.codex/data/scripts/schema/design-md-core-adoption-receipt-v2.schema.json'),
+      '{}\n',
+    );
+
+    const report = collectDoctorReport({ dir: root });
+    const codex = report.channels.find((channel) => channel.id === 'codex');
+    expect(report.state).toBe('incomplete');
+    expect(codex?.ready).toBe(false);
+    expect(codex?.issues).toContain(
+      'invalid Core schema bytes: design-md-core-adoption-receipt-v2.schema.json',
+    );
+  });
+
+  it('fails closed when an installed Core proof schema is missing', () => {
+    installProductSkills(join(root, '.agents', 'skills'), 'codex');
+    installAgentSet(join(root, '.codex/agents'), 'codex');
+    installCatalog(join(root, '.codex', 'data'));
+    rmSync(join(root, '.codex/data/scripts/schema/design-system-provenance-v2.schema.json'));
+
+    const report = collectDoctorReport({ dir: root });
+    const codex = report.channels.find((channel) => channel.id === 'codex');
+    expect(report.state).toBe('incomplete');
+    expect(codex?.ready).toBe(false);
+    expect(codex?.issues).toContain(
+      'missing harness helpers: schema/design-system-provenance-v2.schema.json',
+    );
+  });
+
+  it('fails closed when an installed Core runtime helper differs from the packaged authority', () => {
+    installProductSkills(join(root, '.agents', 'skills'), 'codex');
+    installAgentSet(join(root, '.codex/agents'), 'codex');
+    installCatalog(join(root, '.codex', 'data'));
+    writeFileSync(
+      join(root, '.codex/data/scripts/design-md-core-conformance.cjs'),
+      '#!/usr/bin/env node\n// stale helper\n',
+    );
+
+    const report = collectDoctorReport({ dir: root });
+    const codex = report.channels.find((channel) => channel.id === 'codex');
+    expect(report.state).toBe('incomplete');
+    expect(codex?.ready).toBe(false);
+    expect(codex?.issues).toContain(
+      'invalid Core runtime helper bytes: design-md-core-conformance.cjs',
+    );
+  });
+
+  it('rejects a byte-identical installed Core compiler reached through a symlink', () => {
+    installProductSkills(join(root, '.agents', 'skills'), 'codex');
+    installAgentSet(join(root, '.codex/agents'), 'codex');
+    installCatalog(join(root, '.codex', 'data'));
+    const compilerPath = join(root, '.codex/data/scripts/compile-design-md-core.cjs');
+    rmSync(compilerPath);
+    symlinkSync(join(process.cwd(), 'scripts/compile-design-md-core.cjs'), compilerPath);
+
+    const report = collectDoctorReport({ dir: root });
+    const codex = report.channels.find((channel) => channel.id === 'codex');
+    expect(report.state).toBe('incomplete');
+    expect(codex?.ready).toBe(false);
+    expect(codex?.issues.join('\n')).toContain(
+      'unsafe symlinked codex data paths: .codex/data/scripts/compile-design-md-core.cjs',
+    );
+  });
+
+  it('rejects a byte-identical Core schema reached through a symlink', () => {
+    installProductSkills(join(root, '.agents', 'skills'), 'codex');
+    installAgentSet(join(root, '.codex/agents'), 'codex');
+    installCatalog(join(root, '.codex', 'data'));
+    const schemaPath = join(
+      root,
+      '.codex/data/scripts/schema/design-md-core-project-checkpoint-v2.schema.json',
+    );
+    rmSync(schemaPath);
+    symlinkSync(
+      join(process.cwd(), 'spec/schema/design-md-core-project-checkpoint-v2.schema.json'),
+      schemaPath,
+    );
+
+    const report = collectDoctorReport({ dir: root });
+    const codex = report.channels.find((channel) => channel.id === 'codex');
+    expect(report.state).toBe('incomplete');
+    expect(codex?.ready).toBe(false);
+    expect(codex?.issues.join('\n')).toContain(
+      'unsafe symlinked codex data paths: .codex/data/scripts/schema/design-md-core-project-checkpoint-v2.schema.json',
+    );
+  });
+
   it('reports ready after DESIGN.md exists', () => {
     installProductSkills(join(root, '.opencode', 'skills'), 'opencode');
     installAgentSet(join(root, '.opencode', 'agents'), 'opencode');
@@ -262,6 +466,50 @@ describe('omd doctor', () => {
     expect(report.channels.find((channel) => channel.id === 'cursor')).toMatchObject({
       installed: true,
       ready: true,
+      skills: REQUIRED_PRODUCT_SKILLS.length - 1,
+      references: 440,
+      issues: [],
+    });
+  });
+
+  it('detects a missing native Cursor skill and points repair at Cursor only', async () => {
+    expect(await runInstallSkills({ dir: root, agents: ['cursor'], all: true })).toBe(0);
+    rmSync(join(root, '.cursor', 'skills', 'omd-apply'), { recursive: true });
+
+    const report = collectDoctorReport({ dir: root });
+    const cursor = report.channels.find((channel) => channel.id === 'cursor');
+    expect(report.state).toBe('incomplete');
+    expect(cursor?.ready).toBe(false);
+    expect(cursor?.issues.join('\n')).toContain('missing product skills: omd-apply');
+    expect(report.nextCommand).toBe(
+      `npx oh-my-design-cli@latest install-skills --agent cursor --all --dir '${root}'`,
+    );
+
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['cursor'],
+      all: true,
+      force: true,
+    })).toBe(0);
+    expect(collectDoctorReport({ dir: root }).channels.find(
+      (channel) => channel.id === 'cursor',
+    )?.ready).toBe(true);
+  });
+
+  it('accepts an explicit Cursor rule-only compatibility install without native skills', async () => {
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['cursor'],
+      all: true,
+      cursorRuleOnly: true,
+    })).toBe(0);
+
+    const report = collectDoctorReport({ dir: root });
+    expect(report.state).toBe('needs-design-md');
+    expect(report.channels.find((channel) => channel.id === 'cursor')).toMatchObject({
+      installed: true,
+      ready: true,
+      skills: 0,
       references: 440,
       issues: [],
     });
@@ -345,6 +593,68 @@ describe('omd doctor', () => {
     expect(collectDoctorReport({ dir: root }).state).toBe('ready');
   });
 
+  it('diagnoses opt-in proof-policy drift without claiming it exists by default', async () => {
+    mkdirSync(join(root, '.git'));
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code', 'codex'],
+      all: true,
+    })).toBe(0);
+    let report = collectDoctorReport({ dir: root });
+    expect(report.channels.find((channel) => channel.id === 'claude-code')?.issues)
+      .not.toEqual(expect.arrayContaining([expect.stringContaining('proof-policy')]));
+    expect(report.channels.find((channel) => channel.id === 'codex')?.issues)
+      .not.toEqual(expect.arrayContaining([expect.stringContaining('proof-policy')]));
+
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['claude-code', 'codex'],
+      all: true,
+      proofPolicy: true,
+    })).toBe(0);
+    report = collectDoctorReport({ dir: root });
+    expect(report.channels.find((channel) => channel.id === 'claude-code')?.issues)
+      .not.toEqual(expect.arrayContaining([expect.stringContaining('proof-policy')]));
+    expect(report.channels.find((channel) => channel.id === 'codex')?.issues)
+      .not.toEqual(expect.arrayContaining([expect.stringContaining('proof-policy')]));
+
+    const codexHooksPath = join(root, '.codex/hooks.json');
+    const codexHooks = JSON.parse(readFileSync(codexHooksPath, 'utf8'));
+    for (const event of ['PreToolUse', 'PostToolUse']) {
+      const managed = codexHooks.hooks[event].find((group: { hooks?: Array<{ command?: string }> }) =>
+        group.hooks?.some((hook) => hook.command?.includes('omd-proof-policy')));
+      managed.matcher = 'Bash|apply_patch|Edit';
+    }
+    writeFileSync(codexHooksPath, `${JSON.stringify(codexHooks, null, 2)}\n`);
+    const staleMatcher = collectDoctorReport({ dir: root }).channels.find(
+      (channel) => channel.id === 'codex',
+    );
+    expect(staleMatcher?.ready).toBe(false);
+    expect(staleMatcher?.issues).toEqual(expect.arrayContaining([
+      'codex proof-policy hook is not activated for PreToolUse',
+      'codex proof-policy hook is not activated for PostToolUse',
+    ]));
+
+    expect(await runInstallSkills({
+      dir: root,
+      agents: ['codex'],
+      all: true,
+      proofPolicy: true,
+    })).toBe(0);
+
+    writeFileSync(
+      join(root, '.codex/hooks/omd-proof-policy/proof-policy-state.mjs'),
+      '// locally modified\n',
+    );
+    const codex = collectDoctorReport({ dir: root }).channels.find(
+      (channel) => channel.id === 'codex',
+    );
+    expect(codex?.ready).toBe(false);
+    expect(codex?.issues).toContain(
+      'stale or modified codex proof-policy file: proof-policy-state.mjs',
+    );
+  });
+
   it('refuses symlinked Claude hook paths instead of writing through them', async () => {
     installProductSkills(join(root, '.claude', 'skills'), 'claude-code');
     installAgentSet(join(root, '.claude', 'agents'), 'claude');
@@ -384,6 +694,45 @@ describe('omd doctor', () => {
     expect(report.state).toBe('incomplete');
     expect(opencode?.issues).toContain(
       'reference-fingerprints.json is empty while references are installed',
+    );
+  });
+
+  it('fails closed when the reference quality manifest is missing', () => {
+    installProductSkills(join(root, '.opencode', 'skills'), 'opencode');
+    installCatalog(join(root, '.opencode', 'data'));
+    rmSync(join(root, '.opencode', 'data', 'reference-quality.json'));
+
+    const report = collectDoctorReport({ dir: root });
+    const opencode = report.channels.find((channel) => channel.id === 'opencode');
+    expect(report.state).toBe('incomplete');
+    expect(opencode?.issues).toContain('missing catalog data: reference-quality.json');
+  });
+
+  it('rejects quality ids that do not match the fingerprint catalog', () => {
+    installProductSkills(join(root, '.opencode', 'skills'), 'opencode');
+    installCatalog(join(root, '.opencode', 'data'));
+    writeFileSync(
+      join(root, '.opencode', 'data', 'reference-quality.json'),
+      '{"count":1,"items":[{"id":"not-toss","status":"verified_v2"}]}',
+    );
+
+    const report = collectDoctorReport({ dir: root });
+    const opencode = report.channels.find((channel) => channel.id === 'opencode');
+    expect(report.state).toBe('incomplete');
+    expect(opencode?.issues).toContain('catalog quality ids mismatch: 1 missing / 1 unknown');
+  });
+
+  it('requires the deterministic query sidecar beside omd-init', () => {
+    installProductSkills(join(root, '.agents', 'skills'), 'codex');
+    installAgentSet(join(root, '.codex', 'agents'), 'codex');
+    installCatalog(join(root, '.codex', 'data'));
+    rmSync(join(root, '.agents', 'skills', 'omd-init', 'scripts', 'query-references.mjs'));
+
+    const report = collectDoctorReport({ dir: root });
+    const codex = report.channels.find((channel) => channel.id === 'codex');
+    expect(report.state).toBe('incomplete');
+    expect(codex?.issues).toContain(
+      'missing codex skill sidecars: omd-init/scripts/query-references.mjs',
     );
   });
 
@@ -537,6 +886,20 @@ Read .claude/skills/omd-final-qa/SKILL.md.
     const opencode = report.channels.find((channel) => channel.id === 'opencode');
     expect(report.state).toBe('incomplete');
     expect(opencode?.issues).toContain('catalog mismatch: declared 2 fingerprints but items contains 1');
+  });
+
+  it('rejects an installed workflow catalog when one supported locale is incomplete', () => {
+    installProductSkills(join(root, '.opencode', 'skills'), 'opencode');
+    installCatalog(join(root, '.opencode', 'data'));
+    const workflowPath = join(root, '.opencode', 'data', 'workflow-capabilities.json');
+    const manifest = JSON.parse(readFileSync(workflowPath, 'utf8'));
+    delete manifest.workflows[0].locales['zh-TW'];
+    writeFileSync(workflowPath, JSON.stringify(manifest));
+
+    const report = collectDoctorReport({ dir: root });
+    const opencode = report.channels.find((channel) => channel.id === 'opencode');
+    expect(report.state).toBe('incomplete');
+    expect(opencode?.issues).toContain('workflow-capabilities.json has an invalid workflow contract');
   });
 
   it('requires the full sub-agent set, not only omd-master', () => {

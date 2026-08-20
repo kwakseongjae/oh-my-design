@@ -1,0 +1,656 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oh-my-design.kr/schemas/ui-resolve-run-record-v0.4.json",
+  "title": "UI-Resolve run record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "run_id",
+    "benchmark_family",
+    "suite_version",
+    "objective_methodology_epoch",
+    "system_id",
+    "task_id",
+    "trial_index",
+    "run_status",
+    "validity"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "record_kind": {
+      "enum": [
+        "codex-complete-block-effort-scaling-v1",
+        "codex-complete-block-effort-scaling-v2"
+      ]
+    },
+    "benchmark_family": { "enum": ["model", "skill", "harness", "prompt-arena", "factorial"] },
+    "suite_version": { "type": "string", "minLength": 1 },
+    "experiment_id": { "type": "string", "minLength": 1 },
+    "task_set_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "matrix_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "cell_id": { "type": "string", "minLength": 1 },
+    "objective_methodology_epoch": { "type": "string", "minLength": 1 },
+    "system_id": { "type": "string", "minLength": 1 },
+    "variant_id": { "type": "string", "minLength": 1 },
+    "model_id": { "type": ["string", "null"] },
+    "skill_id": { "type": ["string", "null"] },
+    "harness_id": { "type": ["string", "null"] },
+    "budget_tier": { "type": "string", "default": "standard" },
+    "effort": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "trial_index": { "type": "integer", "minimum": 1 },
+    "run_status": { "enum": ["complete", "failed", "timed_out", "incomplete"] },
+    "validity": { "enum": ["valid", "invalid-infrastructure", "invalid-attribution", "invalid-task"] },
+    "ui_resolved": { "type": "boolean" },
+    "objective_score": { "type": "number", "minimum": 0 },
+    "objective_max": { "type": "number", "exclusiveMinimum": 0 },
+    "wall_time_ms": { "type": "number", "minimum": 0 },
+    "tokens": { "type": ["number", "null"], "minimum": 0 },
+    "provider_cost_equivalent_usd": { "type": ["number", "null"], "minimum": 0 },
+    "execution_control": {
+      "type": ["object", "null"],
+      "properties": {
+        "comparison_mode": {
+          "enum": ["native-capability", "iso-external-budget", "effort-scaling"]
+        },
+        "effort_semantics": {
+          "const": "runtime-native-ordinal-not-cross-provider-equivalent"
+        },
+        "temperature_policy": {
+          "enum": ["explicit-fixed", "runtime-default-frozen"]
+        },
+        "timeout_seconds": { "type": "integer", "minimum": 1 },
+        "max_concurrency": { "type": "integer", "minimum": 1 },
+        "latency_comparison": { "enum": ["eligible", "descriptive-only"] },
+        "admission_normalization_policy": { "type": "string", "minLength": 1 },
+        "retry_policy": { "const": "none-primary" },
+        "timeout_policy": { "const": "count-as-valid-failure" },
+        "infrastructure_policy": { "const": "retain-freeze-and-repreregister" }
+      }
+    },
+    "usage_completeness": {
+      "type": "object",
+      "required": [
+        "available",
+        "input_output_complete",
+        "observed_components",
+        "reasoning_visibility",
+        "cached_input_visibility"
+      ],
+      "properties": {
+        "evidence_mode": { "type": ["string", "null"] },
+        "available": { "type": "boolean" },
+        "input_output_complete": { "type": "boolean" },
+        "observed_components": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "input_tokens",
+              "cached_input_tokens",
+              "output_tokens",
+              "reasoning_output_tokens"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "reasoning_visibility": { "enum": ["reported", "not-reported"] },
+        "cached_input_visibility": { "enum": ["reported", "not-reported"] }
+      }
+    },
+    "runtime_model_usage": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "required": ["model", "input_tokens", "cached_input_tokens", "output_tokens"],
+        "properties": {
+          "model": { "type": "string", "minLength": 1 },
+          "input_tokens": { "type": "number", "minimum": 0 },
+          "cached_input_tokens": { "type": "number", "minimum": 0 },
+          "output_tokens": { "type": "number", "minimum": 0 },
+          "cost_usd": { "type": ["number", "null"], "minimum": 0 },
+          "context_window": { "type": ["number", "null"], "minimum": 0 },
+          "max_output_tokens": { "type": ["number", "null"], "minimum": 0 }
+        }
+      }
+    },
+    "attribution": {
+      "type": "object",
+      "properties": {
+        "runtime": {
+          "type": "object",
+          "properties": {
+            "routing_attestation": {
+              "type": "object",
+              "required": [
+                "schema_version",
+                "runtime",
+                "model_id",
+                "effort",
+                "provider_route",
+                "checks",
+                "pass"
+              ],
+              "properties": {
+                "schema_version": { "enum": ["0.1", "0.2"] },
+                "runtime": { "const": "codex" },
+                "model_id": { "type": "string", "minLength": 1 },
+                "effort": { "type": "string", "minLength": 1 },
+                "provider_route": { "const": "codex" },
+                "provider_route_mode": { "type": ["string", "null"] },
+                "provider_route_reported": { "type": ["string", "null"] },
+                "provider_effort_argument": { "type": ["string", "null"] },
+                "pinned_profile": {
+                  "type": "object",
+                  "required": [
+                    "model_profile_sha256",
+                    "cache_sha256",
+                    "default_effort",
+                    "supported_efforts"
+                  ],
+                  "properties": {
+                    "model_profile_sha256": { "type": "string", "minLength": 1 },
+                    "cache_sha256": { "type": "string", "minLength": 1 },
+                    "default_effort": { "type": "string", "minLength": 1 },
+                    "supported_efforts": {
+                      "type": "array",
+                      "minItems": 1,
+                      "uniqueItems": true,
+                      "items": { "type": "string", "minLength": 1 }
+                    }
+                  }
+                },
+                "checks": {
+                  "type": "object",
+                  "required": [
+                    "locked_cell_exact",
+                    "runtime_codex",
+                    "model_requested_exact",
+                    "effort_requested_exact",
+                    "provider_effort_argument_exact",
+                    "provider_route_accepted",
+                    "pinned_profile_supports_effort"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "locked_cell_exact": { "type": "boolean" },
+                    "runtime_codex": { "type": "boolean" },
+                    "model_requested_exact": { "type": "boolean" },
+                    "effort_requested_exact": { "type": "boolean" },
+                    "provider_effort_argument_exact": { "type": "boolean" },
+                    "provider_route_accepted": { "type": "boolean" },
+                    "pinned_profile_supports_effort": { "type": "boolean" },
+                    "model_catalog_authority_present": { "type": "boolean" },
+                    "model_catalog_schema_version_exact": { "type": "boolean" },
+                    "model_catalog_mode_exact": { "type": "boolean" },
+                    "model_catalog_config_key_exact": { "type": "boolean" },
+                    "model_catalog_source_path_exact": { "type": "boolean" },
+                    "model_catalog_source_sha256_exact": { "type": "boolean" },
+                    "model_catalog_source_bytes_exact": { "type": "boolean" },
+                    "model_catalog_source_mode_exact": { "type": "boolean" },
+                    "model_catalog_isolated_path_exact": { "type": "boolean" },
+                    "model_catalog_isolated_sha256_exact": { "type": "boolean" },
+                    "model_catalog_isolated_bytes_exact": { "type": "boolean" },
+                    "model_catalog_copy_mode_exact": { "type": "boolean" },
+                    "model_catalog_selected_model_exact": { "type": "boolean" },
+                    "model_catalog_selected_profile_sha256_exact": { "type": "boolean" },
+                    "model_catalog_selected_default_effort_exact": { "type": "boolean" },
+                    "model_catalog_selected_effort_order_exact": { "type": "boolean" },
+                    "model_catalog_selected_effort_supported": { "type": "boolean" },
+                    "model_catalog_verified_before_provider_execution": { "type": "boolean" },
+                    "model_catalog_mutable_fallback_forbidden": { "type": "boolean" }
+                  }
+                },
+                "pass": { "type": "boolean" }
+              }
+            },
+            "model_catalog_authority": {
+              "type": ["object", "null"],
+              "additionalProperties": false,
+              "required": [
+                "schema_version",
+                "mode",
+                "config_key",
+                "source",
+                "isolated_copy",
+                "selected_profile",
+                "verified_before_provider_execution",
+                "mutable_fallback_allowed"
+              ],
+              "properties": {
+                "schema_version": { "const": "0.1" },
+                "mode": { "const": "immutable-local-model-catalog-json" },
+                "config_key": { "const": "model_catalog_json" },
+                "source": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["path", "sha256", "bytes", "source_mode"],
+                  "properties": {
+                    "path": { "type": "string", "minLength": 1 },
+                    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+                    "bytes": { "type": "integer", "minimum": 0 },
+                    "source_mode": { "const": "immutable-snapshot-only" }
+                  }
+                },
+                "isolated_copy": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["path", "sha256", "bytes", "copy_mode"],
+                  "properties": {
+                    "path": { "type": "string", "minLength": 1 },
+                    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+                    "bytes": { "type": "integer", "minimum": 0 },
+                    "copy_mode": { "const": "isolated-regular-file" }
+                  }
+                },
+                "selected_profile": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "model_id",
+                    "model_profile_sha256",
+                    "default_effort",
+                    "supported_efforts"
+                  ],
+                  "properties": {
+                    "model_id": { "type": "string", "minLength": 1 },
+                    "model_profile_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+                    "default_effort": { "type": "string", "minLength": 1 },
+                    "supported_efforts": {
+                      "type": "array",
+                      "minItems": 1,
+                      "uniqueItems": true,
+                      "items": { "type": "string", "minLength": 1 }
+                    }
+                  }
+                },
+                "verified_before_provider_execution": { "const": true },
+                "mutable_fallback_allowed": { "const": false }
+              }
+            }
+          }
+        }
+      }
+    },
+    "runtime_diagnostics": {
+      "type": "object",
+      "required": ["child_exit_code", "tool_error_count", "sandbox_error_count", "sandbox_cwd_error_count"],
+      "properties": {
+        "child_exit_code": { "type": ["integer", "null"] },
+        "tool_error_count": { "type": ["integer", "null"], "minimum": 0 },
+        "recoverable_tool_error_count": { "type": ["integer", "null"], "minimum": 0 },
+        "infrastructure_tool_error_count": { "type": ["integer", "null"], "minimum": 0 },
+        "sandbox_error_count": { "type": ["integer", "null"], "minimum": 0 },
+        "sandbox_cwd_error_count": { "type": ["integer", "null"], "minimum": 0 },
+        "agent_tool_call_count": { "type": ["integer", "null"], "minimum": 0 },
+        "agent_tool_error_count": { "type": ["integer", "null"], "minimum": 0 },
+        "requested_agent_ids": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "agent_calls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["agent_id", "requested_model"],
+            "properties": {
+              "agent_id": { "type": ["string", "null"] },
+              "requested_model": { "type": ["string", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "token_usage": {
+      "type": ["object", "null"],
+      "properties": {
+        "input_tokens": { "type": "number", "minimum": 0 },
+        "cached_input_tokens": { "type": "number", "minimum": 0 },
+        "output_tokens": { "type": "number", "minimum": 0 },
+        "reasoning_output_tokens": { "type": "number", "minimum": 0 },
+        "total_tokens": { "type": "number", "minimum": 0 },
+        "observed_components": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "input_output_complete": { "type": "boolean" }
+      }
+    },
+    "tool_calls": { "type": "number", "minimum": 0 },
+    "human_interventions": { "type": "number", "minimum": 0 },
+    "complete_block_outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "disposition", "reason", "tool_diagnostics"],
+      "properties": {
+        "schema_version": { "const": "0.1" },
+        "disposition": {
+          "enum": ["success", "terminal-provider-failure", "freeze-authority", "freeze-infrastructure"]
+        },
+        "reason": { "type": ["string", "null"] },
+        "tool_diagnostics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "availability",
+            "tool_error_count",
+            "recoverable_tool_error_count",
+            "agent_tool_call_count",
+            "agent_tool_error_count"
+          ],
+          "properties": {
+            "availability": { "type": ["object", "null"] },
+            "tool_error_count": { "type": ["number", "null"], "minimum": 0 },
+            "recoverable_tool_error_count": { "type": ["number", "null"], "minimum": 0 },
+            "agent_tool_call_count": { "type": ["number", "null"], "minimum": 0 },
+            "agent_tool_error_count": { "type": ["number", "null"], "minimum": 0 }
+          }
+        }
+      }
+    },
+    "sweep_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "experiment_id",
+        "locked_plan_sha256",
+        "schedule_sha256",
+        "suite_version",
+        "objective_methodology_epoch",
+        "objective_evaluator_contract_sha256",
+        "system_id",
+        "variant_id",
+        "skill_id",
+        "skill_source_commit",
+        "skill_source_tree_sha256",
+        "skill_tree_sha256",
+        "task_source_commit",
+        "task_git_tree_oid",
+        "task_tree_sha256",
+        "task_source_contract_sha256"
+      ],
+      "properties": {
+        "schema_version": { "const": "0.1" },
+        "experiment_id": { "type": "string", "minLength": 1 },
+        "locked_plan_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "schedule_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "suite_version": { "type": "string", "minLength": 1 },
+        "objective_methodology_epoch": { "type": "string", "minLength": 1 },
+        "objective_evaluator_contract_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "system_id": { "type": "string", "minLength": 1 },
+        "variant_id": { "type": "string", "minLength": 1 },
+        "skill_id": { "type": "string", "minLength": 1 },
+        "skill_source_commit": { "type": "string", "minLength": 1 },
+        "skill_source_tree_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "skill_tree_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "task_source_commit": { "type": "string", "minLength": 1 },
+        "task_git_tree_oid": { "type": "string", "minLength": 1 },
+        "task_tree_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "task_source_contract_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "validity": { "const": "valid" } } },
+      "then": { "required": ["ui_resolved"] }
+    },
+    {
+      "if": { "required": ["objective_score"] },
+      "then": { "required": ["objective_max"] }
+    },
+    {
+      "if": {
+        "anyOf": [
+          {
+            "required": ["record_kind"],
+            "properties": {
+              "record_kind": { "const": "codex-complete-block-effort-scaling-v1" }
+            }
+          },
+          {
+            "required": ["record_kind"],
+            "properties": {
+              "record_kind": { "const": "codex-complete-block-effort-scaling-v2" }
+            }
+          },
+          {
+            "required": ["execution_control"],
+            "properties": {
+              "execution_control": {
+                "type": "object",
+                "required": ["comparison_mode"],
+                "properties": {
+                  "comparison_mode": { "const": "effort-scaling" }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "then": {
+        "required": [
+          "record_kind",
+          "experiment_id",
+          "task_set_sha256",
+          "matrix_sha256",
+          "effort",
+          "cell_id",
+          "variant_id",
+          "sweep_identity",
+          "execution_control",
+          "attribution",
+          "complete_block_outcome"
+        ],
+        "properties": {
+          "record_kind": {
+            "enum": [
+              "codex-complete-block-effort-scaling-v1",
+              "codex-complete-block-effort-scaling-v2"
+            ]
+          },
+          "benchmark_family": { "const": "model" },
+          "trial_index": { "const": 1 },
+          "execution_control": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "comparison_mode",
+              "effort_semantics",
+              "temperature_policy",
+              "timeout_seconds",
+              "max_concurrency",
+              "latency_comparison",
+              "retry_policy",
+              "replacement_policy",
+              "fallback_policy",
+              "model_substitution_policy",
+              "effort_substitution_policy",
+              "task_substitution_policy",
+              "timeout_policy",
+              "infrastructure_policy",
+              "task_order_policy",
+              "admission_normalization_policy",
+              "pacing",
+              "token_budget",
+              "step_budget"
+            ],
+            "properties": {
+              "comparison_mode": { "const": "effort-scaling" },
+              "effort_semantics": { "const": "runtime-native-ordinal-not-cross-provider-equivalent" },
+              "temperature_policy": { "const": "runtime-default-frozen" },
+              "timeout_seconds": { "const": 720 },
+              "max_concurrency": { "const": 1 },
+              "latency_comparison": { "const": "descriptive-only" },
+              "retry_policy": { "const": "none-primary" },
+              "replacement_policy": { "const": "none" },
+              "fallback_policy": { "const": "none" },
+              "model_substitution_policy": { "const": "none" },
+              "effort_substitution_policy": { "const": "none" },
+              "task_substitution_policy": { "const": "none" },
+              "timeout_policy": { "const": "count-as-valid-failure" },
+              "infrastructure_policy": { "const": "retain-freeze-and-repreregister" },
+              "task_order_policy": { "const": "fixed-preregistered" },
+              "admission_normalization_policy": { "const": "complete-block-effort-scaling" },
+              "pacing": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "policy",
+                  "inter_cell_delay_seconds",
+                  "applies_between_cells_only",
+                  "counts_toward_cell_wall_time"
+                ],
+                "properties": {
+                  "policy": { "const": "fixed-inter-cell" },
+                  "inter_cell_delay_seconds": { "const": 30 },
+                  "applies_between_cells_only": { "const": true },
+                  "counts_toward_cell_wall_time": { "const": false }
+                }
+              },
+              "token_budget": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "mode",
+                  "limit_tokens",
+                  "usage_required",
+                  "account_components",
+                  "cached_input_separate",
+                  "cost_policy"
+                ],
+                "properties": {
+                  "mode": { "const": "observed-only" },
+                  "limit_tokens": { "const": null },
+                  "usage_required": { "const": true },
+                  "account_components": {
+                    "const": ["input", "cached_input", "output", "reasoning_output"]
+                  },
+                  "cached_input_separate": { "const": true },
+                  "cost_policy": { "const": "provider-reported-or-pinned-price-equivalent" }
+                }
+              },
+              "step_budget": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["mode", "limit_steps"],
+                "properties": {
+                  "mode": { "const": "observed-only" },
+                  "limit_steps": { "const": null }
+                }
+              }
+            }
+          },
+          "attribution": {
+            "required": ["runtime"],
+            "properties": {
+              "runtime": {
+                "required": ["routing_attestation"],
+                "properties": {
+                  "routing_attestation": {
+                    "required": ["pinned_profile"],
+                    "allOf": [
+                      {
+                        "if": {
+                          "required": ["pass"],
+                          "properties": { "pass": { "const": true } }
+                        },
+                        "then": {
+                          "properties": {
+                            "checks": {
+                              "properties": {
+                                "locked_cell_exact": { "const": true },
+                                "runtime_codex": { "const": true },
+                                "model_requested_exact": { "const": true },
+                                "effort_requested_exact": { "const": true },
+                                "provider_effort_argument_exact": { "const": true },
+                                "provider_route_accepted": { "const": true },
+                                "pinned_profile_supports_effort": { "const": true },
+                                "model_catalog_authority_present": { "const": true },
+                                "model_catalog_schema_version_exact": { "const": true },
+                                "model_catalog_mode_exact": { "const": true },
+                                "model_catalog_config_key_exact": { "const": true },
+                                "model_catalog_source_path_exact": { "const": true },
+                                "model_catalog_source_sha256_exact": { "const": true },
+                                "model_catalog_source_bytes_exact": { "const": true },
+                                "model_catalog_source_mode_exact": { "const": true },
+                                "model_catalog_isolated_path_exact": { "const": true },
+                                "model_catalog_isolated_sha256_exact": { "const": true },
+                                "model_catalog_isolated_bytes_exact": { "const": true },
+                                "model_catalog_copy_mode_exact": { "const": true },
+                                "model_catalog_selected_model_exact": { "const": true },
+                                "model_catalog_selected_profile_sha256_exact": { "const": true },
+                                "model_catalog_selected_default_effort_exact": { "const": true },
+                                "model_catalog_selected_effort_order_exact": { "const": true },
+                                "model_catalog_selected_effort_supported": { "const": true },
+                                "model_catalog_verified_before_provider_execution": { "const": true },
+                                "model_catalog_mutable_fallback_forbidden": { "const": true }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["record_kind"],
+        "properties": {
+          "record_kind": { "const": "codex-complete-block-effort-scaling-v2" }
+        }
+      },
+      "then": {
+        "properties": {
+          "attribution": {
+            "required": ["runtime"],
+            "properties": {
+              "runtime": {
+                "required": ["routing_attestation", "model_catalog_authority"],
+                "properties": {
+                  "routing_attestation": {
+                    "properties": {
+                      "schema_version": { "const": "0.2" },
+                      "checks": {
+                        "required": [
+                          "model_catalog_authority_present",
+                          "model_catalog_schema_version_exact",
+                          "model_catalog_mode_exact",
+                          "model_catalog_config_key_exact",
+                          "model_catalog_source_path_exact",
+                          "model_catalog_source_sha256_exact",
+                          "model_catalog_source_bytes_exact",
+                          "model_catalog_source_mode_exact",
+                          "model_catalog_isolated_path_exact",
+                          "model_catalog_isolated_sha256_exact",
+                          "model_catalog_isolated_bytes_exact",
+                          "model_catalog_copy_mode_exact",
+                          "model_catalog_selected_model_exact",
+                          "model_catalog_selected_profile_sha256_exact",
+                          "model_catalog_selected_default_effort_exact",
+                          "model_catalog_selected_effort_order_exact",
+                          "model_catalog_selected_effort_supported",
+                          "model_catalog_verified_before_provider_execution",
+                          "model_catalog_mutable_fallback_forbidden"
+                        ]
+                      }
+                    }
+                  },
+                  "model_catalog_authority": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -2,9 +2,9 @@
 
 > Deprecated and no longer built or published. oh-my-design skills and agents use the local reference catalog, raw `/<id>/design.md` routes, and the browser evidence pipeline directly. MCP is not required for reference capture or reverify.
 
-**Drop-in MCP server. 107 brand design systems. Zero AI calls. Free & open.**
+**Drop-in MCP server. 400+ brand design references. Zero AI calls. Free & open.**
 
-Give your coding agent (Claude Desktop, Cursor, Cline, Continue, Codex) instant access to a curated catalog of 107 brand DESIGN.md files — Toss, Stripe, Linear, Apple, Airbnb, Coupang, and 100 more — exposed as MCP resources, tools, and prompts.
+Give your coding agent (Claude Desktop, Cursor, Cline, Continue, Codex) instant access to a curated catalog of 400+ brand DESIGN.md files — Toss, Stripe, Linear, Apple, Airbnb, Coupang, and hundreds more — exposed as MCP resources, tools, and prompts.
 
 - **Local-only.** All data ships inside the npm tarball. No network calls at runtime. No API keys. No telemetry.
 - **Deterministic.** Tools are pure file reads + keyword search. Same input, same output.
@@ -31,7 +31,7 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
 }
 ```
 
-Restart Claude Desktop. You should see `oh-my-design` in the MCP server list with 3 tools and 107 resources.
+Restart Claude Desktop. You should see `oh-my-design` in the MCP server list with 3 tools and the bundled reference resources.
 
 ### Cursor
 
@@ -110,7 +110,7 @@ npx -y oh-my-design-mcp           # starts stdio server, waits for JSON-RPC on s
 
 ### Resources
 
-107 brand DESIGN.md files exposed at `design://<id>` — e.g. `design://toss`, `design://stripe`, `design://linear`, `design://apple`. Each resource is `text/markdown` and contains the canonical 15-section spec (Visual Theme, Color Palette, Typography, Components, …, Voice & Tone, Personas, Motion).
+400+ brand DESIGN.md files are bundled at `design://<id>` — e.g. `design://toss`, `design://stripe`, `design://linear`, `design://apple`. Each resource is `text/markdown`. Catalog sources remain readable in their legacy format during the Core v2 migration window; new project systems use the neutral seven-section Core projection.
 
 ### Prompts
 
@@ -147,13 +147,13 @@ npx -y oh-my-design-mcp           # starts stdio server, waits for JSON-RPC on s
 | Feature                  | oh-my-design-mcp     | Refero MCP                       | Static GitHub collection   |
 | ------------------------ | -------------------- | -------------------------------- | -------------------------- |
 | Cost                     | **Free, MIT**        | Paid subscription                | Free                       |
-| Catalog                  | 107 curated brands   | 130k screens                     | Varies                     |
+| Catalog                  | 400+ curated brands  | 130k screens                     | Varies                     |
 | Format                   | Canonical DESIGN.md  | Screen images + metadata         | Raw / inconsistent         |
 | Runtime network          | **None**             | Required (API calls)             | None                       |
 | API keys                 | **None**             | Required                         | None                       |
 | Vibe search              | Keyword (deterministic) | Embedding-based                 | None                       |
 | Drop-in install          | `npx -y` one snippet | Account + key setup              | Manual clone / copy        |
-| Token tagging / sections | Yes (15 sections)    | Image-level only                 | Inconsistent               |
+| Portable design context  | DESIGN.md (legacy-readable + Core v2) | Image-level only | Inconsistent               |
 
 We trade catalog breadth for **bundled, deterministic, offline access to a hand-curated, structured spec per brand.** Best paired with embedding-based image search (Refero) when you want both.
 

@@ -1,0 +1,5 @@
+Improve the supplied abyssal sediment-core custody review so marine archivists can inspect core-to-sleeve assignments, cold-vault intake windows, and the release decision confidently on desktop and narrow screens.
+
+Preserve all four core identifiers, all six archive-sleeve identifiers and their exact core assignments, all three supplied intake windows, the three review views, the archive-note toggle, the release-review form, and all stated summary evidence. Do not invent carbon dating, core completeness, depth calibration, dive provenance, sleeve-seal integrity, vault acceptance, catalog publication, or archival release. Use the existing DESIGN.md as ground truth.
+
+Finish the implementation in `index.html`, exercise the supplied controls and form, and verify the same route at desktop, 390px, 320px, and 200% zoom-equivalent conditions. The core register, separate intake-window strip, and separate release decision are independent relationship carriers; all must remain visible and understandable without page-level horizontal overflow or broken atomic identifiers.

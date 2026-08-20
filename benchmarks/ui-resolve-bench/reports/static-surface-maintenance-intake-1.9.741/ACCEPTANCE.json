@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "static-surface-maintenance-intake-1.9.741",
+  "status": "LOCAL_POLICY_PASS",
+  "provider_calls": 0,
+  "task_id": "meteorite-section-loan-v0.1",
+  "static_surface_detected": true,
+  "surface_path": "index.html",
+  "question_count": 0,
+  "planned_lane_calls": 0,
+  "deferred_decisions": [
+    "primary-audience",
+    "exit-scope",
+    "primary-cta"
+  ],
+  "forbidden_auto_count": 0,
+  "frontier_gate_pass": false
+}

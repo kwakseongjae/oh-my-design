@@ -12,9 +12,9 @@ import { REFERENCE_COUNT } from "@/lib/catalog-count";
 const SITE_URL = "https://oh-my-design.kr";
 
 export const metadata: Metadata = {
-  title: "What is DESIGN.md? — definition, origin, and the 15-section spec",
+  title: "What is DESIGN.md? — portable design context for people and AI",
   description:
-    "DESIGN.md는 프로젝트 루트에 두는 단일 마크다운 디자인 스펙입니다. Google Stitch가 처음 제안한 9-섹션 토큰 포맷에 oh-my-design이 6-섹션 브랜드 철학 layer를 더한 15-섹션 superset의 정의·기원·tailwind.config.js / Figma tokens와의 비교.",
+    "DESIGN.md는 프로젝트 루트에 두는 휴먼·AI 공용 디자인 스펙입니다. Google의 공개 규격과 OmD Core v2의 관계, 7개 portable section, typed System Graph, 기존 파일 마이그레이션, design token·Figma와의 차이를 설명합니다.",
   keywords: [
     "DESIGN.md",
     "design.md",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "What is DESIGN.md?",
     description:
-      "Definition, origin (Google Stitch), and the OmD 15-section superset. With comparison table and a minimal example.",
+      "Definition, origin, and the vendor-neutral DESIGN.md Core v2 contract, with migration and comparison guidance.",
     url: `${SITE_URL}/what-is-design-md`,
     type: "article",
   },
@@ -44,7 +44,7 @@ const jsonLd = {
       "@id": `${SITE_URL}/what-is-design-md#term`,
       name: "DESIGN.md",
       description:
-        "Single-file markdown design specification kept at the root of a project. It defines color, typography, components, layout, and (in OmD v0.1) brand voice, narrative, personas, states, and motion — and is the authoritative context AI coding agents read before generating UI.",
+        "A portable Markdown design contract kept at a project root. It gives people and AI tools explicit experience, foundation, component, layout, locale, asset, state, and governance decisions without requiring a particular vendor or framework.",
       inDefinedTermSet: {
         "@type": "DefinedTermSet",
         name: "oh-my-design glossary",
@@ -56,44 +56,46 @@ const jsonLd = {
       "@type": "Article",
       headline: "What is DESIGN.md?",
       description:
-        "Definition, origin, and the 15-section OmD superset of the DESIGN.md format.",
+        "Definition, origin, and the portable DESIGN.md Core v2 contract.",
       author: { "@type": "Organization", name: "oh-my-design" },
       publisher: { "@type": "Organization", name: "oh-my-design" },
       datePublished: "2026-05-28",
-      dateModified: "2026-05-28",
+      dateModified: "2026-08-12",
       mainEntityOfPage: `${SITE_URL}/what-is-design-md`,
     },
   ],
 };
 
-const SAMPLE = `---
-id: acme
-name: Acme
-country: KR
-primary_color: "#5546ff"
-verified: true
----
+const SAMPLE = `# Acme Design System
 
-# DESIGN.md — Acme
+<!-- design-md:section experience -->
+## 1. Experience
+Help operations teams review consequential changes without losing context.
 
-## 1. Visual Theme & Atmosphere
-Calm B2B fintech. Soft neutrals, one electric indigo accent, generous
-whitespace. Avoids gradient washes, decorative emoji, and saturated
-illustration. The product should feel quiet enough to use for eight
-hours straight.
+<!-- design-md:section foundations -->
+## 2. Foundations
+- **Action:** \`#2457e6\` — interactive emphasis only.
+- **Text:** \`#17181c\` on \`#ffffff\` — at least 4.5:1 contrast.
 
-## 2. Color Palette & Roles
-- **Indigo / brand** (\`#5546ff\`) — primary CTA, links, focus rings.
-- **Slate 950** (\`#0a0a0f\`) — primary text on light.
-- **Off-white** (\`#fafafa\`) — page background.
-- **Slate 200** (\`rgba(0,0,0,0.08)\`) — hairline borders.
-- Accent indigo (\`#a89cff\`) reserved for $-prompts and code highlights.
+<!-- design-md:section typography-assets -->
+## 3. Typography & Assets
+- Body: 16px / 1.5. Do not present an unverified font as the project font.
 
-## 3. Typography Rules
-- **Primary**: \`Geist\`, system-ui fallback.
-- **Monospace**: \`Geist Mono\`, ui-monospace fallback.
-- H1 \`clamp(2.5rem, 6vw, 4.25rem)\`, weight 700, tracking -0.02em.
-- Body 15-16px, leading 1.6. No uppercase headings.
+<!-- design-md:section components-states -->
+## 4. Components & States
+- Commit actions support default, focus-visible, disabled, loading, error, and success.
+
+<!-- design-md:section layout-platforms -->
+## 5. Layout & Platforms
+- Preserve task order at 320px and 200% reflow.
+
+<!-- design-md:section content-locales -->
+## 6. Content & Locales
+- Name the affected object and the recovery action.
+
+<!-- design-md:section governance -->
+## 7. Governance
+- Omit the smallest unresolved value; never replace it with a plausible default.
 `;
 
 export default function WhatIsDesignMdPage() {
@@ -146,24 +148,24 @@ export default function WhatIsDesignMdPage() {
           <p className="text-base sm:text-lg leading-relaxed">
             <strong>DESIGN.md</strong>는 프로젝트 루트에 두는 단일 마크다운 파일로,
             브랜드의 시각·언어·움직임을 한 곳에 모은 디자인 스펙입니다. AI coding agent가
-            UI를 만들 때 가장 먼저 읽는 권위 있는 컨텍스트로 동작하며, 토큰뿐 아니라
-            voice·persona·motion까지 포함합니다.
+            UI를 만들 때 함께 읽는 portable contract로 동작하며, 토큰뿐 아니라
+            experience·state·locale·asset·governance까지 포함할 수 있습니다.
           </p>
           <ul className="mt-5 space-y-2 text-sm leading-relaxed text-muted-foreground">
-            <li>• 색·타이포·컴포넌트·레이아웃·반응형 (Google Stitch 9-섹션, base layer)</li>
-            <li>• Voice·tone·narrative·principles·persona·states·motion (OmD §10–15, 철학 layer)</li>
+            <li>• Experience·foundations·typography/assets·components/states</li>
+            <li>• Layout/platforms·content/locales·governance</li>
             <li>• 사람과 agent 모두 읽을 수 있는 markdown 한 파일</li>
-            <li>• Git에 그대로 commit되며, 직접 수정한 부분은 보존되고 agent가 갱신한 부분만 변합니다</li>
+            <li>• 선택적 System Graph와 provenance는 sidecar에 두고, visible file에는 도구 메타데이터를 두지 않음</li>
           </ul>
         </div>
 
         {/* Origin */}
         <h2 className="mt-14 text-2xl sm:text-3xl font-bold tracking-tight">
-          기원 — Google Stitch부터 OmD까지
+          기원과 호환성 — Google 규격과 Core v2
         </h2>
         <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
-          <strong className="text-foreground">DESIGN.md</strong>라는 이름과 9-섹션 토큰
-          포맷은 Google이 발표한{" "}
+          Google은 DESIGN.md를 사람이 읽는 prose와 구조화된 design decisions를 함께 담는
+          공개 규격으로 발전시키고 있습니다. 원문과 도구는{" "}
           <a
             href="https://stitch.withgoogle.com/"
             target="_blank"
@@ -172,31 +174,26 @@ export default function WhatIsDesignMdPage() {
           >
             Stitch
           </a>
-          가 처음 제안했습니다. Visual Theme & Atmosphere · Color · Typography ·
-          Component Stylings · Layout · Depth · Do/Don&apos;ts · Responsive ·
-          Agent Prompt Guide — 컴포넌트 라이브러리 한 세트를 만들기에 충분한
-          토큰 문서입니다.
+          에서 확인할 수 있습니다. OmD는 이 규격을 공식 소유하거나 동일 규격이라고
+          주장하지 않습니다. 대신 legacy Google/Stitch 문서를 읽고 내보낼 수 있는
+          compatibility profile로 취급합니다.
         </p>
         <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
-          하지만 AI agent가 토큰만 보고 UI를 만들면 결과물은{" "}
-          <em>일관되긴 하지만 누구의 브랜드도 아닌</em> 학습 분포의 평균값으로 회귀합니다.
-          gradient · Inter on white · purple on white · 정당화되지 않은 emoji.
-          <strong className="text-foreground"> oh-my-design (OmD) v0.1</strong>은 이
-          공백을 메우기 위해 Stitch의 9-섹션 위에 6개 브랜드 철학 섹션
-          (§10 Voice & Tone, §11 Brand Narrative, §12 Principles,
-          §13 Personas, §14 States, §15 Motion & Easing)을 더한 15-섹션 superset을
-          정의합니다. Stitch가 만든 DESIGN.md는 OmD에서도 그대로 valid합니다 — 철학
-          layer는 additive입니다.
+          <strong className="text-foreground"> DESIGN.md Core v2</strong>는 특정 도구의
+          이름이나 검증 메타데이터를 visible file에서 제거하고, 7개의 stable semantic
+          anchor로 제품 의도와 실행 가능한 시스템 결정을 정리합니다. 정밀한 token,
+          component, evidence, coverage는 선택적 System Graph에 두되 DESIGN.md 한 파일만
+          전달해도 Claude Design, Open Design, generic chat이 이해할 수 있어야 합니다.
         </p>
         <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
           전체 스펙은{" "}
           <a
-            href="https://github.com/kwakseongjae/oh-my-design/blob/main/spec/omd-v0.1.md"
+            href="https://github.com/kwakseongjae/oh-my-design/blob/main/spec/design-md-core-v2.md"
             target="_blank"
             rel="noopener noreferrer"
             className="underline underline-offset-4 text-foreground"
           >
-            spec/omd-v0.1.md
+            spec/design-md-core-v2.md
           </a>
           에서 읽을 수 있고, {REFERENCE_COUNT} 실제 회사의 DESIGN.md 예시는{" "}
           <Link href="/design-systems" className="underline underline-offset-4 text-foreground">
@@ -231,7 +228,7 @@ export default function WhatIsDesignMdPage() {
                 ["포맷", "Markdown", "JS object", "JSON", "Figma plugin/JSON"],
                 ["주 독자", "AI agent + 사람", "Tailwind 컴파일러", "Style Dictionary 등 변환기", "디자이너"],
                 ["토큰 포함", "Yes", "Yes", "Yes", "Yes"],
-                ["Voice·persona·motion", "Yes (§10–15)", "No", "No", "Partial (motion만)"],
+                ["Experience·states·locales", "Yes", "No", "No", "Partial"],
                 ["코드 산출물", "No (spec only)", "CSS classes", "CSS/JS/iOS/Android 변환", "Figma 스타일"],
                 ["스택 의존성", "Stack-agnostic", "Tailwind 종속", "변환기 종속", "Figma 종속"],
                 ["수명", "스택보다 길게 유지", "Tailwind 버전 따라감", "툴체인 따라감", "Figma 따라감"],
@@ -262,7 +259,10 @@ export default function WhatIsDesignMdPage() {
           최소 DESIGN.md 예시
         </h2>
         <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
-          frontmatter + 첫 3개 섹션. 실제 {REFERENCE_COUNT} 레퍼런스는 §1–15를 모두 채웁니다 —
+          Visible YAML이나 vendor metadata가 없는 7-section Portable Core 예시입니다. 현재
+          {REFERENCE_COUNT}개 catalog 원본은 migration window 동안 legacy reader로도
+          보존되며, Builder download는 Core v2로 투영됩니다. 형식은 Core이지만
+          primary task 근거가 없는 reference는 validator에서 structural-only로 남습니다.
           전체 예시는{" "}
           <Link href="/design-systems" className="underline underline-offset-4 text-foreground">
             /design-systems
@@ -322,7 +322,7 @@ export default function WhatIsDesignMdPage() {
         <div className="mt-14 rounded-2xl border border-border/60 bg-card/30 p-6 sm:p-8">
           <h3 className="text-lg font-semibold">내 프로젝트에 적용하려면</h3>
           <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-            한 줄로 skill + 16개 sub-agent를 설치하고 자연어로 DESIGN.md를 부트스트랩합니다.
+            한 줄로 skill + specialist roles를 설치하고 자연어로 Core v2 디자인 시스템을 부트스트랩합니다.
           </p>
           <div className="mt-4 inline-flex items-center gap-2 rounded-lg border border-border bg-foreground/[0.03] px-3 py-2 font-mono text-sm">
             <span className="text-primary">$</span>

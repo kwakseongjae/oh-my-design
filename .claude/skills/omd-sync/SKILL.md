@@ -26,12 +26,17 @@ block 모드는 `<!-- omd:start v=1 hash=<sha256:12> -->` ~ `<!-- omd:end -->` �
 ```markdown
 # Design System (oh-my-design)
 
-The authoritative brand & UI spec is **@./DESIGN.md**.
-Read before any UI/styling/microcopy/motion work.
+Read the standalone design contract at **@./DESIGN.md** before any UI,
+styling, microcopy, or motion work. When a valid adopted Core v2
+`.omd/system/manifest.json` declares `profile: portable-core` and binds exact
+graph/projection hashes, the System Graph is machine authority and DESIGN.md is
+its standalone projection. A migration candidate is never adopted authority.
 
 Preference log (pending corrections): @./.omd/preferences.md
 
-Precedence: DESIGN.md > preferences.md > your defaults.
+Precedence: pending explicit preference corrections > adopted Bound System
+graph/standalone DESIGN.md > your defaults. Fold pending corrections into the
+graph and regenerate the projection before clearing them.
 ```
 
 ### AGENTS.md body
@@ -39,9 +44,9 @@ Precedence: DESIGN.md > preferences.md > your defaults.
 ```markdown
 ## Design System (oh-my-design)
 
-**Before any UI, styling, copy, or motion change, open and read `./DESIGN.md` in full.** It is the authoritative brand/design spec. Treat its tokens, voice, and component rules as binding unless the user overrides in chat.
+**Before any UI, styling, copy, or motion change, open and read `./DESIGN.md` in full.** It is the standalone design contract. If an exact valid adopted Core v2 manifest exists, its hash-bound System Graph is machine authority and DESIGN.md is the projection. A migration candidate remains non-authoritative.
 
-If present, read `./.omd/preferences.md` — pending corrections not yet folded into DESIGN.md. Apply them; flag conflicts.
+If present, read `./.omd/preferences.md` — pending explicit corrections override the current contract until atomically folded into the graph/projection. Apply them and flag conflicts.
 ```
 
 ### .cursor/rules/omd-design.mdc (whole, frontmatter 포함)
@@ -59,15 +64,20 @@ globs:
   - "**/tailwind.config.*"
   - "**/components/**"
   - "**/app/**/page.*"
-alwaysApply: false
+alwaysApply: true
 ---
 
 <!-- omd:start v=1 hash=<HASH> -->
-The authoritative design spec lives at `@DESIGN.md` (repo root). Open and read before generating/modifying UI.
+<!-- omd:cursor-channel=skills -->
+Read the standalone design contract at `@DESIGN.md` before generating/modifying UI. With an exact valid adopted `profile: portable-core` manifest, its hash-bound System Graph is machine authority and DESIGN.md is the projection. A migration candidate is non-authoritative.
 
 Pending preference corrections: `@.omd/preferences.md`.
 
-Precedence: DESIGN.md > preferences.md > framework defaults.
+Precedence: pending explicit preference corrections > adopted Bound System graph/standalone DESIGN.md > framework defaults. Fold pending corrections into the graph and regenerate DESIGN.md before clearing them.
+
+OmD Agent Skills live under `.cursor/skills/`. Use the smallest relevant `omd-*` skill automatically, or invoke it from Cursor with `/omd-<name>`.
+
+Unknown fields stay absent. Never substitute a system font, generic component, guessed token, or adjacent surface as a product fact.
 <!-- omd:end -->
 ```
 

@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "source-contract-reliability-canary-1.9.728",
+  "status": "FROZEN_PREREGISTERED_LIFECYCLE_STOP",
+  "provider_calls": 2,
+  "model_exposures": 2,
+  "retries": 0,
+  "replacements": 0,
+  "objective_passes": 2,
+  "executed_cells": 2,
+  "reliability_passes": 1,
+  "reliability_total": 3,
+  "controller_stop_reason": "second-product-edit",
+  "cells": [
+    {
+      "id": "luna-conservation-frame-loan-r1",
+      "task_id": "conservation-frame-loan-v0.1",
+      "objective_score": 85,
+      "objective_max": 85,
+      "ui_resolved": true,
+      "wall_time_ms": 293929,
+      "tokens": 800851,
+      "cached_input_tokens": 711168,
+      "product_revision_count": 1,
+      "successful_static_closure_count": 1,
+      "failed_static_closure_count": 0,
+      "proof_compliance": true,
+      "candidate_final_bytes_match": true,
+      "reliability_pass": true,
+      "artifact_hashes": {
+        "run_result_sha256": "68f6a13b483378a106bf99d2ca01e9d728b2d428a50d8b2631b549c848185b1a",
+        "score_sha256": "fa88be2676761bd3a1c9d6414a9e4777bd32fb97898fce746dcac870efdd1d2f",
+        "run_record_sha256": "54ea7350013216f2ca08c0e225719103b63ccb03ed2b95328accbd91a30f1f76",
+        "proof_trace_sha256": "5b0724d57dfd6cee1c4cf94a7676001c6a5bdb8d6c91b8caea8a94636adebab9",
+        "static_preview_receipt_sha256": "fcd5b39ece3c35c9b73af9b65049c72af9b6efe2d4f13d0cc74474a1bf3c36dd"
+      }
+    },
+    {
+      "id": "luna-wind-tunnel-model-handoff-r1",
+      "task_id": "wind-tunnel-model-handoff-v0.1",
+      "objective_score": 85,
+      "objective_max": 85,
+      "ui_resolved": true,
+      "wall_time_ms": 199031,
+      "tokens": 1071884,
+      "cached_input_tokens": 977152,
+      "product_revision_count": 2,
+      "successful_static_closure_count": 1,
+      "failed_static_closure_count": 1,
+      "proof_compliance": false,
+      "candidate_final_bytes_match": true,
+      "reliability_pass": false,
+      "failure_reason": "second-product-edit",
+      "artifact_hashes": {
+        "run_result_sha256": "4e400390952cdfbcc8c7ad93547b054818b2e3ae3196b6f4e0cc55bc223af494",
+        "score_sha256": "fdbbb977f872dd7dadfa87274d3f15bb60b9c04cb86f817c1f0d9fcb723f0a56",
+        "run_record_sha256": "6844a701cbabd03ac988db06dff0bec526c67a447afe5db7049586d5cfb04bc5",
+        "proof_trace_sha256": "9cebd5a002d7e7e0210b539574299a692bdc54ddd86656785105d7123cc37ce6",
+        "static_preview_receipt_sha256": "ae05748e2b11083b577e9546b548be141bd57cc783281f1d5b8c6c6e74366f4d"
+      }
+    }
+  ],
+  "frozen_cells": [
+    "luna-archaeology-tray-release-r1"
+  ],
+  "execution_state_sha256": "d282a89f7915314eccb1bd9bbf62ad710fd5a8d180d89c9e075865b3ce42151b",
+  "runner_repair_commit": "3830c1c4",
+  "disposition": "diagnostic only; not ranking evidence and not a 2.0 release gate pass",
+  "next_gate": "Remove the post-failure second-edit path from the OmD candidate workflow, prove it locally, then preregister a fresh no-replay Reliability@3 task set."
+}

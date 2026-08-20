@@ -1,0 +1,60 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.387",
+  "experiment_id": "cold-chain-compact-artifact-luna-shared-socket-1.9.382",
+  "status": "promotion-rejected-early-stop",
+  "completed_cells": 4,
+  "unexecuted_cells": 2,
+  "provider_calls": {"control": 2, "candidate": 2},
+  "r2_pair": {
+    "control": {
+      "cell_id": "luna-coldchain-r2-control",
+      "validity": "valid",
+      "ui_resolved": false,
+      "objective_score": 81,
+      "objective_max": 85,
+      "wall_time_ms": 624269,
+      "tokens": 2476082,
+      "failed_gate": "responsive"
+    },
+    "candidate": {
+      "cell_id": "luna-coldchain-r2-compact",
+      "validity": "valid",
+      "ui_resolved": false,
+      "objective_score": 81,
+      "objective_max": 85,
+      "wall_time_ms": 332411,
+      "tokens": 766628,
+      "failed_gate": "accessibility-color-contrast"
+    }
+  },
+  "efficiency": {
+    "candidate_to_control_wall_time_ratio": 0.532480,
+    "candidate_wall_time_reduction": 0.467520,
+    "candidate_to_control_token_ratio": 0.309613,
+    "candidate_token_reduction": 0.690387
+  },
+  "promotion_gate": {
+    "candidate_ui_resolved_required": 3,
+    "candidate_ui_resolved_observed": 1,
+    "candidate_trials_observed": 2,
+    "maximum_possible_after_remaining_trials": 2,
+    "mathematically_reachable": false,
+    "decision": "reject"
+  },
+  "candidate_root_cause": [
+    "The candidate measured muted-on-canvas contrast at 4.107:1 before editing but did not make that known failing gate part of its required closure.",
+    "Its deterministic reflow helper reduced process cost substantially and responsive checks passed, but the compact workflow optimized the targeted reflow without closing every known baseline critical gate."
+  ],
+  "artifact_sha256": {
+    "execution_state": "b3bdc7552d2801bfa629ee9967968155e620a0c4550c106dd1ea05c17a669c39",
+    "control_run_result": "cfbfc12544570880ea58a5c048a85cf4bfcf192f8c8b65349772e91500c128db",
+    "control_score": "70366a9f9c82012fdbefcb0e16c49e1259204f782a56f77de87ec0c572a3eabd",
+    "control_run_record": "93142e30157a02b9e063aabeb04e280757c0f847d850cacee9881dc73a847687",
+    "control_proof_trace": "2c78b260750492499e792df951cf5e11dce3f4c120ebadb8cbce30fd52f40a60",
+    "control_host_policy_state": "dc8e2a83fc0d7c42b94ecb20a700bfad986fdaccd454c46006636935fa4a4ba3"
+  },
+  "frozen_roots": ["/private/tmp/u19382", "/private/tmp/u19382-vendors"],
+  "retry": false,
+  "next": "Repair compact required-closure accounting provider-free, exact-pin it, then preregister a fresh unseen replacement task."
+}
