@@ -108,6 +108,14 @@ jobs:
       - name: Verify canonical reference pipeline
         run: npm run check:catalog
 
+      - name: Warm the npm metadata cache for offline install smoke tests
+        run: |
+          # npm ci fetches tarballs by resolved URL, so registry packuments stay
+          # uncached. The packaged smoke tests install the built tarball with
+          # --offline, which has to resolve those ranges from the cache.
+          DEPS=$(node -p "Object.keys(require('./package.json').dependencies).join(' ')")
+          npm install --no-save --no-package-lock --no-audit --no-fund \
+            --prefix "$RUNNER_TEMP/npm-warm" $DEPS
       - name: Test CLI runtime
         run: npm test
 
