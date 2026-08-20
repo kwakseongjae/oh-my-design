@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>Give your coding agent a project-owned DESIGN.md workflow.</strong> Guided installer + doctor, 22 reusable skills, 19 specialist roles, and 440+ quality-graded company references. Local workflows need no separate API key or MCP server.
+  <strong>A design system your coding agent can actually hold.</strong> <code>oh-my-design-cli</code> installs the middle that AI UI work keeps missing: a philosophy you declare, tokens and component contracts derived from it, numbered gates for the failures AI repeats, and <code>omd book</code> to read your own system back. 22 skills, 19 specialist roles, 93 preset contracts, 440+ quality-graded references. No API key or MCP server for the core workflows.
 </p>
 
 <p align="center">
@@ -22,6 +22,20 @@
 </p>
 
 ---
+
+## What you get back
+
+Three artifacts, all of them files in your repository:
+
+| | |
+|---|---|
+| **`DESIGN.md`** | Your philosophy with its sacrifices stated, a decision table where every choice carries an id, and tokens that point back at the decision that produced them. Portable enough to paste into a plain chat; specific enough that a designer can find out *why* a value is what it is. |
+| **A design system** | Component contracts with anatomy, a state matrix — including the states that deliberately do not apply and the reason — an accessibility contract, and the token slots your decisions fill. 93 preset contracts across fundamentals, shadcn/Radix-mapped primitives, screen genres, and reference-derived flavors. |
+| **`omd book`** | `npx oh-my-design-cli@latest book` serves your system on a local port: each token beside its decision, state matrices with their reasons, contrast measured live against the pairs you declared, and preset lineage. `--static` writes a single HTML file for handoff. |
+
+In v2.0.0 every layer above is a file you can edit — the philosophy, the presets, the gates, the references — and the next build has to justify itself against whatever you put there. Taste you cannot inspect cannot be improved.
+
+Full walkthrough: **[oh-my-design.kr/cli](https://oh-my-design.kr/cli)**.
 
 ## What is oh-my-design?
 

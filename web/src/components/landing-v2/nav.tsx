@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Star } from "lucide-react";
-import { BrowseModal } from "@/components/browse-modal";
+import { ArrowRight, Star, Terminal } from "lucide-react";
 import { event } from "@/lib/gtag";
 import { useGithubStars, formatStars } from "@/lib/use-github-stars";
 import { V2 } from "./tokens";
@@ -80,22 +79,21 @@ export function V2Nav() {
           </Link>
         </div>
 
-        {/* CENTER — browse */}
+        {/* CENTER — the CLI is the product; this is the way in */}
         <div className="justify-self-center">
-          <BrowseModal
+          <Link
+            href="/cli"
+            onClick={() => event("nav_click", { location: "v2_cli" })}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 sm:px-4 h-9 sm:h-10 text-xs sm:text-sm font-medium text-white/85 transition-colors hover:bg-white/[0.07] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a89cff]"
-          />
+          >
+            <Terminal className="h-3.5 w-3.5" style={{ color: V2.accent }} />
+            <span className="hidden sm:inline">oh-my-design-cli</span>
+            <span className="sm:hidden">omd-cli</span>
+          </Link>
         </div>
 
-        {/* RIGHT — docs + github + cta */}
+        {/* RIGHT — github + cta */}
         <div className="flex items-center gap-2 justify-self-end">
-          <Link
-            href="/docs/en"
-            onClick={() => event("nav_click", { location: "v2_docs" })}
-            className="hidden items-center gap-1.5 rounded-full h-9 sm:h-10 px-3 text-xs font-medium text-white/70 transition-colors hover:text-white sm:inline-flex"
-          >
-            Docs
-          </Link>
           <a
             href="https://github.com/kwakseongjae/oh-my-design"
             target="_blank"

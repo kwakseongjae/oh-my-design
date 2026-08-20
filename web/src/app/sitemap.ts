@@ -5,6 +5,7 @@ import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { REGISTRY } from "@/data/registry.generated";
 import { ENGLISH_REFERENCE_IDS } from "@/lib/references/editorial";
 import { DOC_LOCALES, DOC_PAGES, docsHref } from "@/lib/docs/locales";
+import { getAllPosts } from "@/lib/blog/posts";
 
 const siteUrl = "https://oh-my-design.kr";
 
@@ -60,6 +61,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/cli`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.75,
     },
     {
       url: `${siteUrl}/presets`,
@@ -126,6 +139,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.78,
   }));
 
+  const blogRoutes: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
+    url: `${siteUrl}/blog/${post.slug}`,
+    lastModified: new Date(`${post.date}T00:00:00Z`),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   const changelogRoutes: MetadataRoute.Sitemap = getChangelog().map((e) => ({
     url: `${siteUrl}/changelog/${e.version}`,
     lastModified: e.date ? new Date(e.date) : now,
@@ -156,5 +176,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...referenceRoutes,
     ...evolutionRoutes,
     ...changelogRoutes,
+    ...blogRoutes,
   ];
 }

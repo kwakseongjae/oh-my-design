@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AlertCircle, ArrowRight, Star, Check, Copy, Pause } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { trackInstallCopy } from "@/lib/activation/analytics";
-import { REFERENCE_COUNT } from "@/lib/catalog-count";
+import { PKG_VERSION } from "@/data/version.generated";
 import { copyText } from "@/lib/clipboard";
 import { V2 } from "./tokens";
 
@@ -161,7 +161,7 @@ export function HeroV2() {
               className="inline-block h-1.5 w-1.5 rounded-full"
               style={{ background: V2.accent }}
             />
-            DESIGN.md · brand DNA for AI agents
+            oh-my-design-cli · v{PKG_VERSION}
           </motion.div>
 
           <motion.h1
@@ -170,7 +170,7 @@ export function HeroV2() {
             transition={{ duration: 0.7, delay: 0.05 }}
             className="mt-6 text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.05] tracking-tight"
           >
-            Generate DESIGN.md
+            A design system
             <br />
             <span
               className="inline-block pb-1"
@@ -181,7 +181,7 @@ export function HeroV2() {
                 color: "transparent",
               }}
             >
-              from {REFERENCE_COUNT} quality-graded references.
+              your coding agent can hold.
             </span>
           </motion.h1>
 
@@ -191,11 +191,12 @@ export function HeroV2() {
             transition={{ duration: 0.6, delay: 0.18 }}
             className="mt-5 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg"
           >
-            One <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-sm">DESIGN.md</code>{" "}
-            spec, {REFERENCE_COUNT} company references with explicit quality grades,
-            and local workflows for Claude Code, Cursor, Codex, and OpenCode. Use
-            confirmed patterns without filling unknown brand facts. Free, MIT, and
-            no AI calls during install.
+            <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-sm">oh-my-design-cli</code>{" "}
+            installs the middle your agent is missing: a philosophy you declare, tokens and
+            component contracts derived from it, gates for the failures AI repeats, and{" "}
+            <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-sm">omd book</code>{" "}
+            to read your own system back. Claude Code, Cursor, Codex, OpenCode. MIT, and no AI
+            calls during install.
           </motion.p>
 
           {/* install snippet */}
@@ -238,7 +239,7 @@ export function HeroV2() {
             className="mt-5 flex items-center gap-2 sm:gap-3"
           >
             <Link
-              href="/builder"
+              href="/cli"
               className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-5 py-3 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0f] sm:px-6"
               style={{
                 background: V2.primary,
