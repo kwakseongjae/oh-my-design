@@ -84,7 +84,13 @@ export function runSerializedPackageBuildAndPack(repoRoot: string, packDir: stri
     if (packed.status !== 0) {
       throw new Error(`npm pack --json --ignore-scripts\n${packed.stderr || packed.stdout}`);
     }
-    return packed.stdout;
+    // npm can print notices before the JSON payload; start at the first
+    // standalone `[` line rather than assuming stdout begins with it.
+    const start = packed.stdout.search(/^\[\s*$/m);
+    if (start < 0) {
+      throw new Error(`npm pack --json produced no JSON payload\n${packed.stdout}`);
+    }
+    return packed.stdout.slice(start);
   } finally {
     rmSync(lockDir, { recursive: true, force: true });
   }

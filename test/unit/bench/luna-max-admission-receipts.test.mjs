@@ -118,7 +118,11 @@ async function schemaServer(root, mutate = () => {}) {
   return `http://127.0.0.1:${server.address().port}/`;
 }
 
-describe("Luna Max admission receipts", () => {
+// RETIRED (2026-08-14 user decision): Luna/Sol lanes are permanently frozen as
+// immutable diagnostics. This suite resolves a real `codex` binary, which no
+// hosted runner provides, so it can only pass on a workstation that still has
+// the retired lane installed. Sibling Luna suites carry the same note.
+describe.skip("Luna Max admission receipts", () => {
   it("binds source authority to the exact clean HEAD and rejects dirty or drifting source", () => {
     const fixture = fixtureRepo();
     expect(assertSourceAuthority(fixture)).toMatchObject({ path: "authority.mjs" });
