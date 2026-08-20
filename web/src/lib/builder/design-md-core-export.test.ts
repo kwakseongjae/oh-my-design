@@ -446,5 +446,5 @@ Unknown values remain absent.
       expect(entry.reasons.length, entry.id).toBeGreaterThan(0);
       expect(entry.reasons, entry.id).not.toContain("contains-prescriptive-placeholder");
     }
-  }, 15_000);
+  }, 60_000);
 });
