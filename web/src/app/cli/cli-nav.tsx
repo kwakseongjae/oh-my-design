@@ -12,6 +12,7 @@ import { ArrowLeft } from "lucide-react";
 const SECTIONS = [
   { id: "outputs", label: "What you get" },
   { id: "different", label: "Why different" },
+  { id: "derivation", label: "Derivation" },
   { id: "compare", label: "Comparison" },
   { id: "output-ui", label: "Output" },
   { id: "customize", label: "Customize" },
