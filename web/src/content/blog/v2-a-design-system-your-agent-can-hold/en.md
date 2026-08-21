@@ -10,9 +10,17 @@ write a careful prompt. You get a screen. The screen is fine. Then you ask for
 the next screen, and it is also fine — and it belongs to a different product.
 
 The usual explanation is that the model lacks taste. We think the more useful
-explanation is that nothing in the loop was ever asked to be consistent. A
-prompt is not a system. A component kit is a system, but it is *someone else's*
-— which is why products built on the same kit converge on the same face.
+explanation is that nothing in the loop was ever asked to be consistent.
+
+## A prompt is not a system
+
+A prompt is one request. It does not carry into the next one.
+
+A component kit is a system, but it is *someone else's* — which is why products
+built on the same kit converge on the same face.
+
+What we needed was the thing in between: something derived per project, and
+binding on the agent once it exists.
 
 ## What v2.0.0 changes
 
@@ -43,7 +51,23 @@ and what the accessibility contract is. The two layers stack.
 We measured the difference on the same fixture and brief, with and without the
 preset layer: first-render defects went from 7 to 3, and the three that
 remained were finish-level rather than gate violations. Input tokens dropped
-47%, because the model spends them selecting instead of rediscovering.
+47%, because the model spends them selecting instead of rediscovering. (Both
+figures come from the 2026-08-19 self-inspection, in `docs/design-excellence/`.)
+
+## Flavors are not copies
+
+The last of the four layers is five flavors: Toss, Karrot, Ohouse, Musinsa,
+Baemin — Korean products whose interface conventions are not in any global
+component kit's defaults.
+
+The name misleads if you read it as imitation. A flavor cites the section of the
+reference document a claim came from, and where the reference says nothing, it
+says so instead of filling the gap. That is the whole point: it stops
+unsupported values from entering a system under the cover of a brand name.
+
+Look at the screens and you can see what the defaults miss — how whitespace is
+spent, how dominant a price is allowed to be, how many facts a single list row
+carries.
 
 ## Gates that name the failure
 

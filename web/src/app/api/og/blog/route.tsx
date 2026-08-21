@@ -7,10 +7,13 @@ import { isPostLocale } from "@/lib/blog/locales";
  * OG card for a blog post.
  *
  * The canonical locale is Korean and none of the site's fonts carry Hangul, so
- * the title font is fetched per-render as a Google Fonts subset containing only
- * the characters in this title — a few KB, and the result is cached by the
- * crawlers that fetch OG images. Satori cannot parse woff2, hence the ancient
- * User-Agent: it makes Google serve a plain woff.
+ * the font is fetched per-render as a Google Fonts subset — a few KB, and the
+ * result is cached by the crawlers that fetch OG images. Satori cannot parse
+ * woff2, hence the ancient User-Agent: it makes Google serve a plain woff.
+ *
+ * The subset must cover *every* string the card draws, not just the title. Ask
+ * for the title alone and the date renders half in this font and half in the
+ * fallback, because "2" was in the title and "6" was not.
  *
  * If that fetch fails the card still renders, minus the title. A silent tofu
  * row of missing glyphs would look worse than a card that says less.
@@ -44,7 +47,9 @@ export async function GET(req: NextRequest) {
   const post = slug ? getPost(slug, locale) ?? getPost(slug) : undefined;
   if (!post) return new NextResponse("Unknown post", { status: 404 });
 
-  const font = await loadTitleFont(post.title);
+  const eyebrow = "OH-MY-DESIGN / BLOG";
+  const tags = post.tags.slice(0, 4);
+  const font = await loadTitleFont([eyebrow, post.title, post.date, ...tags].join(""));
 
   return new ImageResponse(
     (
@@ -63,7 +68,7 @@ export async function GET(req: NextRequest) {
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div style={{ fontSize: 24, letterSpacing: "0.08em", color: "#a89cff" }}>
-            OH-MY-DESIGN / BLOG
+            {eyebrow}
           </div>
           <div style={{ display: "flex", fontSize: 24, color: "#a89cff" }}>{post.date}</div>
         </div>
@@ -79,7 +84,7 @@ export async function GET(req: NextRequest) {
         )}
 
         <div style={{ display: "flex", gap: 14 }}>
-          {post.tags.slice(0, 4).map((tag) => (
+          {tags.map((tag) => (
             <div
               key={tag}
               style={{

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CANONICAL_LOCALE, getAllPosts, getPost, getPostLocales } from "./posts";
+import { CANONICAL_LOCALE, getAllPosts, getPost, getPostLocales, listPosts } from "./posts";
 
 /**
  * These run against the real src/content/blog tree, so a malformed post fails
@@ -36,26 +36,40 @@ describe("published posts", () => {
 });
 
 describe("locale fallback", () => {
-  it("serves a post that has no canonical translation yet", () => {
-    // The v2.0.0 post ships in English only until its Korean twin is written;
-    // the index must still show it rather than dropping it.
-    const post = getPost("v2-a-design-system-your-agent-can-hold");
-    expect(post).toBeDefined();
-    expect(getAllPosts().map((p) => p.slug)).toContain(post!.slug);
+  const slugs = [...new Set(getAllPosts().map((post) => post.slug))];
+
+  it("resolves every post to a locale it actually has", () => {
+    for (const slug of slugs) {
+      const locales = getPostLocales(slug);
+      expect(locales.length).toBeGreaterThan(0);
+      expect(locales).toContain(getPost(slug)!.locale);
+    }
   });
 
-  it("reports the locales a post actually has", () => {
-    const locales = getPostLocales("v2-a-design-system-your-agent-can-hold");
-    expect(locales).toContain("en");
-    expect(getPostLocales("no-such-post")).toEqual([]);
+  it("prefers the canonical locale when the post has one", () => {
+    for (const slug of slugs) {
+      if (getPostLocales(slug).includes(CANONICAL_LOCALE)) {
+        expect(getPost(slug)!.locale).toBe(CANONICAL_LOCALE);
+      }
+    }
   });
 
-  it("returns nothing when a specific missing locale is demanded", () => {
-    const slug = "v2-a-design-system-your-agent-can-hold";
-    const has = getPostLocales(slug);
-    if (!has.includes(CANONICAL_LOCALE)) {
-      expect(getPost(slug, CANONICAL_LOCALE)).toBeUndefined();
-      expect(getAllPosts(CANONICAL_LOCALE).map((p) => p.slug)).not.toContain(slug);
+  it("lists a post on every index, in its own locale when there is no translation", () => {
+    // A reader of one index still sees a post written only in the other —
+    // hiding it from half the audience is worse than admitting the gap.
+    for (const locale of ["ko", "en"] as const) {
+      expect(listPosts(locale).map((post) => post.slug).sort()).toEqual([...slugs].sort());
+    }
+  });
+
+  it("returns nothing when a locale the post does not have is demanded", () => {
+    for (const slug of slugs) {
+      for (const locale of ["ko", "en"] as const) {
+        if (!getPostLocales(slug).includes(locale)) {
+          expect(getPost(slug, locale)).toBeUndefined();
+          expect(getAllPosts(locale).map((post) => post.slug)).not.toContain(slug);
+        }
+      }
     }
   });
 });
