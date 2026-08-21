@@ -6,7 +6,7 @@ import { REGISTRY } from "@/data/registry.generated";
 import { ENGLISH_REFERENCE_IDS } from "@/lib/references/editorial";
 import { DOC_LOCALES, DOC_PAGES, docsHref } from "@/lib/docs/locales";
 import { getAllPosts } from "@/lib/blog/posts";
-import { blogIndexUrl, blogPostUrl } from "@/lib/site";
+import { BLOG_ON_SUBDOMAIN, blogIndexUrl, blogPostUrl } from "@/lib/site";
 
 const siteUrl = "https://oh-my-design.kr";
 
@@ -68,12 +68,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
-    },
-    {
-      url: blogIndexUrl(),
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.75,
     },
     {
       url: `${siteUrl}/presets`,
@@ -140,12 +134,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.78,
   }));
 
-  const blogRoutes: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
-    url: blogPostUrl(post.slug),
-    lastModified: new Date(`${post.date}T00:00:00Z`),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
+  // Once the blog is on its own host it publishes its own sitemap: a sitemap
+  // may only list URLs on the host that serves it. Until then the blog lives
+  // here and belongs in this one.
+  const blogRoutes: MetadataRoute.Sitemap = BLOG_ON_SUBDOMAIN
+    ? []
+    : [
+        {
+          url: blogIndexUrl(),
+          lastModified: now,
+          changeFrequency: "weekly" as const,
+          priority: 0.75,
+        },
+        // post.locale, not the canonical default: a post with no Korean
+        // version redirects from its Korean URL, and a sitemap that lists a
+        // redirect is asking the crawler to discard the entry.
+        ...getAllPosts().map((post) => ({
+          url: blogPostUrl(post.slug, post.locale),
+          lastModified: new Date(`${post.date}T00:00:00Z`),
+          changeFrequency: "monthly" as const,
+          priority: 0.7,
+        })),
+      ];
 
   const changelogRoutes: MetadataRoute.Sitemap = getChangelog().map((e) => ({
     url: `${siteUrl}/changelog/${e.version}`,

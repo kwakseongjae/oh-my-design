@@ -21,12 +21,9 @@
 import { readdirSync, readFileSync, statSync } from "fs";
 import { join } from "path";
 import { parseFrontmatter } from "./frontmatter";
+import { CANONICAL_LOCALE, POST_LOCALES, isPostLocale, type PostLocale } from "./locales";
 
-export const POST_LOCALES = ["ko", "en"] as const;
-export type PostLocale = (typeof POST_LOCALES)[number];
-
-/** The locale a post is written in first; the other is an adaptation of it. */
-export const CANONICAL_LOCALE: PostLocale = "ko";
+export { CANONICAL_LOCALE, POST_LOCALES, type PostLocale };
 
 export interface BlogPost {
   slug: string;
@@ -47,10 +44,6 @@ type PostsBySlug = Map<string, Partial<Record<PostLocale, BlogPost>>>;
 
 let _cache: PostsBySlug | null = null;
 
-function isLocale(value: string): value is PostLocale {
-  return (POST_LOCALES as readonly string[]).includes(value);
-}
-
 function loadPosts(): PostsBySlug {
   if (_cache) return _cache;
 
@@ -67,7 +60,7 @@ function loadPosts(): PostsBySlug {
     for (const file of readdirSync(dir)) {
       if (!file.endsWith(".md")) continue;
       const locale = file.slice(0, -".md".length);
-      if (!isLocale(locale)) {
+      if (!isPostLocale(locale)) {
         throw new Error(
           `blog: ${slug}/${file} — locale must be one of ${POST_LOCALES.join(", ")}`,
         );
@@ -105,6 +98,19 @@ function pick(
 export function getAllPosts(locale?: PostLocale): BlogPost[] {
   return [...loadPosts().values()]
     .map((byLocale) => pick(byLocale, locale))
+    .filter((post): post is BlogPost => Boolean(post))
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
+
+/**
+ * One entry per post for an index page: the requested locale when it exists,
+ * otherwise whatever locale does. A reader of the Korean index still sees an
+ * English-only post — the card links to the version that actually exists,
+ * which is better than hiding the post from half the audience.
+ */
+export function listPosts(locale: PostLocale): BlogPost[] {
+  return [...loadPosts().values()]
+    .map((byLocale) => byLocale[locale] ?? pick(byLocale))
     .filter((post): post is BlogPost => Boolean(post))
     .sort((a, b) => b.date.localeCompare(a.date));
 }

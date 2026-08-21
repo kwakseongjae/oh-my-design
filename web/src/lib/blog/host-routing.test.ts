@@ -35,11 +35,11 @@ describe("routing on the blog host", () => {
     ["/api/track", null],
     ["/logo.png", null],
     ["/favicon.ico", null],
-    // Reserved: these fall through to the main app until the blog-specific
-    // routes exist (A5 sitemap/robots, B4 feed).
-    ["/robots.txt", null],
-    ["/sitemap.xml", null],
-    ["/feed.xml", null],
+    // Dotted, but the blog owns these: they have blog-specific routes.
+    ["/robots.txt", { type: "rewrite", pathname: "/blog/robots.txt" }],
+    ["/sitemap.xml", { type: "rewrite", pathname: "/blog/sitemap.xml" }],
+    ["/feed.xml", { type: "rewrite", pathname: "/blog/feed.xml" }],
+    ["/en/feed.xml", { type: "rewrite", pathname: "/blog/en/feed.xml" }],
   ];
 
   it.each(cases)("maps %s", (pathname, expected) => {

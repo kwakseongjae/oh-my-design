@@ -3,6 +3,8 @@ import { REGISTRY } from "@/data/registry.generated";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import sitemap from "./sitemap";
 import { DOC_LOCALES, DOC_PAGES, docsHref } from "@/lib/docs/locales";
+import { getAllPosts, getPostLocales } from "@/lib/blog/posts";
+import { blogPostUrl } from "@/lib/site";
 
 describe("reference sitemap", () => {
   it("indexes every canonical registry reference", () => {
@@ -45,5 +47,21 @@ describe("reference sitemap", () => {
 
   it("indexes the public benchmark evidence page", () => {
     expect(sitemap().some((route) => route.url === "https://oh-my-design.kr/benchmarks")).toBe(true);
+  });
+});
+
+describe("blog routes in the sitemap", () => {
+  it("lists each post at a URL that answers 200, not one that redirects", () => {
+    const urls = new Set(sitemap().map((route) => route.url));
+    for (const post of getAllPosts()) {
+      const locales = getPostLocales(post.slug);
+      expect(urls).toContain(blogPostUrl(post.slug, post.locale));
+      // A locale the post does not have would redirect or 404.
+      for (const locale of ["ko", "en"] as const) {
+        if (!locales.includes(locale)) {
+          expect(urls).not.toContain(blogPostUrl(post.slug, locale));
+        }
+      }
+    }
   });
 });
