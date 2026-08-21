@@ -10,7 +10,30 @@
 
 ## 지금 (현재 위치)
 
-### 2026-08-21 (Fable) 🔨 blog 서브도메인 A2·A3·A6·B1·B2 구현 — 미커밋, A1 대기
+### 2026-08-21 (Fable) ✅ blog 서브도메인 — A1(도메인) 빼고 전부 구현 완료
+
+- **커밋 3개**: `2cb4ebc0`(호스트 라우팅 + 포스트 파일화) · `aa1b1abc`(로케일 2종 + 피드 +
+  블로그 사이트맵/robots + OG + 플래그 게이트 301) · `d8f46598`(KO 정본 발행 + OG 폰트 수정).
+  브랜치 `feat/blog-subdomain`. **PR 미생성.**
+- **구조**: `/blog`(ko 정본) · `/blog/en`. 블로그 호스트에선 `/` · `/en`. KO판 없는 글의
+  KO URL은 307로 있는 로케일로. hreflang은 실재 로케일만 신고. 인덱스는 없는 로케일 글도
+  배지 달아 노출.
+- **컷오버 = 환경변수 하나**: `NEXT_PUBLIC_BLOG_SUBDOMAIN=1`. 켜는 순간 canonical·OG·
+  JSON-LD·사이트맵·`/blog/*` 301이 한꺼번에 서브도메인으로 넘어간다. 꺼져 있으면 전부
+  메인에 남으므로 도메인 없이 머지해도 안전(dev 양쪽 상태 실측).
+- **실측으로 잡은 결함 4건**: ① redirect Location 호스트 어긋남 ② 블로그 호스트에서
+  메인 링크(`/cli`)가 `/blog/cli`로 rewrite돼 404 ③ 메인 사이트맵이 307 나는 URL 게재
+  ④ OG 카드 폰트가 제목/날짜로 갈림. 전부 수정 + 회귀 테스트.
+- **B6 = 발행 파이프라인 첫 실행**: omd:kr-writer(toss-tech-design) → 사실 검증 →
+  omd:final-qa 2라운드. R1에서 교차 로케일 패리티 FAIL(8 vs 6) → EN 보강 → R2 8/8 PASS.
+  기록 `docs/blog-reviews/v2-post-final-qa.md`.
+- **닫지 못한 게이트**: 1440/390 실렌더. 이 머신 Chrome이 헤드리스·MCP 양쪽에서 localhost를
+  못 잡음(curl 정상, 샌드박스 해제해도 동일). **배포 후 390px 헤더 내비게이션 먼저 볼 것**
+  (로케일 전환 링크가 하나 늘었음).
+- **검증**: 프로덕션 빌드 EXIT=0(블로그 라우트 10 + Proxy 컴파일) · 타입체크 · 웹 테스트
+  891 통과 · lint 에러 0.
+- **다음(사용자)**: Vercel Domains에 `blog.oh-my-design.kr` + DNS CNAME → Valid 확인 →
+  환경변수 켜기 → 재배포. 그 전에는 A4 301이 비활성이라 아무 영향 없음.
 
 - **브랜치**: `feat/blog-subdomain` (origin/main 69d7f583 기준). **커밋 안 함, 스테이지만.**
 - **신설**: `web/src/lib/site.ts`(오리진 상수 + blogIndexUrl/blogPostUrl),

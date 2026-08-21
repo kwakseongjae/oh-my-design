@@ -1,6 +1,6 @@
 # blog.oh-my-design.kr — 서브도메인 분리 + 발행 파이프라인 계획
 
-작성: 2026-08-21 · 상태: **A2·A3·A6·B1·B2 구현 완료(미커밋), A1 대기**
+작성: 2026-08-21 · 상태: **A1(도메인 연결) 빼고 전부 구현 완료 · 커밋 2cb4ebc0 / aa1b1abc / d8f46598**
 정본 결정 기록. 실행 중 변경이 생기면 이 문서를 먼저 고치고 CURRENT_STATE.md에 반영한다.
 
 ---
@@ -50,8 +50,8 @@
 | A1 | Vercel Domains에 `blog.oh-my-design.kr` 추가 + DNS CNAME | 도메인 Valid | **사용자 수동** (Vercel 대시보드 + 레지스트라) |
 | A2 | ✅ 오리진 상수 모듈 | `web/src/lib/site.ts` — `SITE_ORIGIN`/`BLOG_ORIGIN`/`blogIndexUrl()`/`blogPostUrl()` | 블로그 2파일 + sitemap + robots 전환. 나머지 40곳은 그대로 |
 | A3 | ✅ host rewrite | `web/src/proxy.ts` + `web/src/lib/blog/host-routing.ts` | `host === blog.*` 일 때 `/` → `/blog`, `/<slug>` → `/blog/<slug>`, `/en/<slug>` → `/blog/en/<slug>`, `/feed.xml` → `/blog/feed.xml`, `/sitemap.xml` → `/blog/sitemap.xml` |
-| A4 | 구 경로 301 | `next.config.ts` redirects: `/blog/:path*` → `BLOG_ORIGIN/:path*` | **A1 완료 후에만 켠다.** 도메인 미연결 상태에서 켜면 블로그가 죽는다 |
-| A5 | 사이트맵/robots 분리 | 메인 sitemap에서 blog URL 제거, `app/blog/sitemap.xml` + host별 robots | 두 호스트가 같은 URL을 중복 신고하지 않게 |
+| A4 | ✅ 구 경로 301 | `next.config.ts` redirects: `/blog/:path*` → `BLOG_ORIGIN/:path*` | **A1 완료 후에만 켠다.** 도메인 미연결 상태에서 켜면 블로그가 죽는다 |
+| A5 | ✅ 사이트맵/robots 분리 | 메인 sitemap에서 blog URL 제거, `app/blog/sitemap.xml` + host별 robots | 두 호스트가 같은 URL을 중복 신고하지 않게 |
 | A6 | ✅ 테스트 | `host-routing.test.ts` 15케이스 + `site.test.ts` 2케이스 | 매처가 `_next`/`api` 제외, 나머지는 순수 함수가 판단 |
 
 주의 (기존 부채에서 배운 것): `next.config.ts` 주석에 이미 기록돼 있듯, **호스트 정규화를 앱과 Vercel 두 레이어에서 동시에 하면 리다이렉트 루프가 난다.** apex↔www는 Vercel Domains가 소유한다. A4의 `/blog/*` 301은 경로 리다이렉트라 층이 겹치지 않지만, 배포 후 `curl -I`로 체인 길이를 실측한다.
@@ -66,10 +66,10 @@ TS 인라인 문자열은 1편일 때만 성립한다. 작성 스킬(`omd:kr-wri
 |---|---|---|
 | B1 | ✅ 콘텐츠 트리 | `web/src/content/blog/<slug>/{ko,en}.md` — frontmatter title/description/date/tags |
 | B2 | ✅ 로더 | `posts.ts` 공개 API 유지 + `locale` 인자 + `getPostLocales()`. `frontmatter.ts` 엄격 파서(미지의 키·잘못된 날짜·빈 tags는 빌드 실패) |
-| B3 | 라우트 | `/blog/[slug]`(ko 정본), `/blog/en/[slug]`. `alternates.languages` hreflang, JSON-LD `BlogPosting` + `inLanguage` |
-| B4 | 피드 | `/feed.xml` (+ `/en/feed.xml`), 사이트맵 연동 |
-| B5 | OG | 기존 `/api/og` 재사용해 제목 기반 동적 OG. 커버 아트가 필요한 편만 `omd:codex-image` |
-| B6 | 기존 1편 이관 | EN 본문을 `en.md`로, KO 번안 생성해 `ko.md` 정본화. **구 URL → 서브도메인 슬러그 301 체인 실측** |
+| B3 | ✅ 라우트 | `/blog/[slug]`(ko 정본), `/blog/en/[slug]`. `alternates.languages` hreflang, JSON-LD `BlogPosting` + `inLanguage` |
+| B4 | ✅ 피드 | `/feed.xml` (+ `/en/feed.xml`), 사이트맵 연동 |
+| B5 | ✅ OG | 기존 `/api/og` 재사용해 제목 기반 동적 OG. 커버 아트가 필요한 편만 `omd:codex-image` |
+| B6 | ✅ 기존 1편 이관 + KO 정본 | EN 본문을 `en.md`로, KO 번안 생성해 `ko.md` 정본화. **구 URL → 서브도메인 슬러그 301 체인 실측** |
 
 B6 주의: 구 URL(`oh-my-design.kr/blog/v2-a-design-system-your-agent-can-hold`)은 지금 EN을 서빙한다. 301 후 그 자리에 KO가 오면 기존 EN 링크의 언어가 바뀐다. 슬러그 참조는 현재 `posts.ts` 내부뿐(외부 배포물에 하드코딩 없음)이므로 손실은 없지만, 릴리스 노트/스레드에 이미 뿌린 링크가 있으면 **그 편만 EN 정본으로 예외 처리**한다.
 
@@ -203,3 +203,54 @@ A1(사용자) ─┬─> A2 → A3 → A6 ──┐
 ### 검증 상태
 
 타입체크 통과 · 웹 테스트 877개 통과(신규 28개 포함) · lint 에러 0(경고 40건은 전부 선재).
+
+
+---
+
+## 11. 2차 구현 메모 (B3·B4·B5·A4·A5·C·B6)
+
+### 구조
+
+- 로케일: `/blog`(ko 정본) · `/blog/en`. 블로그 호스트에서는 `/` · `/en`.
+- KO판이 없는 글의 KO URL은 **307로 있는 로케일로** 보낸다. 404도 아니고, 한국어
+  canonical에 영어 본문을 얹지도 않는다. 번역이 들어오면 리다이렉트가 저절로 사라진다.
+- hreflang은 **실제 있는 로케일만** 신고한다. 404 나는 alternate를 광고하지 않는다.
+- 인덱스는 없는 로케일의 글도 배지를 달아 노출한다. 절반의 독자에게 글을 숨기는 것보다 낫다.
+
+### 새 파일
+
+`lib/blog/locales.ts`(리프 — 엣지 번들에 fs가 딸려가지 않게) · `i18n.ts`(로케일별 크롬
+카피) · `metadata.ts`(canonical/hreflang/OG/JSON-LD 빌더) · `feed.ts` ·
+`components/blog/{blog-header,index-view,post-view}.tsx` ·
+`app/blog/{en,feed.xml,sitemap.xml,robots.txt}` · `app/api/og/blog`.
+
+### 실측으로 잡은 결함 3건
+
+1. **블로그 호스트에서 메인 사이트 링크가 죽는다.** 블로그 페이지의 `/cli`는 블로그
+   호스트에서 `/blog/cli`로 rewrite돼 404다. `siteHref()`가 컷오버 후 절대 URL을 내도록 했다.
+2. **메인 사이트맵이 307 나는 URL을 싣고 있었다.** 모든 글을 canonical 로케일 URL로
+   적었는데, KO판이 없는 글은 그 URL이 리다이렉트다. `post.locale` 기준으로 고치고
+   회귀 테스트를 붙였다.
+3. **OG 카드의 폰트가 반씩 갈렸다.** 폰트 서브셋을 제목 글자로만 요청해서 날짜의 "2"는
+   Noto Sans KR, "6"은 폴백으로 그려졌다. 카드가 그리는 모든 문자열을 서브셋에 넣었다.
+
+### 발행 파이프라인 첫 실행 (B6)
+
+`omd:kr-writer`(preset toss-tech-design) → 사실 검증 → `omd:final-qa` 2라운드.
+라운드 1에서 **교차 로케일 패리티 FAIL**(ko 8섹션 vs en 6섹션)이 나와 EN을 보강했고
+라운드 2에서 8/8 통과. 기록은 `docs/blog-reviews/v2-post-final-qa.md`.
+
+**닫지 못한 게이트**: 1440/390 실렌더 확인. 이 머신의 Chrome이 헤드리스·MCP 양쪽에서
+`localhost`/`127.0.0.1`을 못 잡는다(curl은 정상, 샌드박스 해제해도 동일). 헤더에 로케일
+전환 링크가 늘었으니 **배포 후 390px 내비게이션을 가장 먼저 볼 것.**
+
+### 검증 상태
+
+프로덕션 빌드 통과(EXIT=0, 블로그 라우트 10개 + Proxy 컴파일) · 타입체크 통과 ·
+웹 테스트 891개 통과 · lint 에러 0.
+
+### 남은 것 = A1 하나
+
+Vercel Domains에 `blog.oh-my-design.kr` 추가 + DNS CNAME → 도메인 Valid 확인 →
+Vercel 환경변수 `NEXT_PUBLIC_BLOG_SUBDOMAIN=1` → 재배포. 그 순간 canonical·OG·
+JSON-LD·사이트맵·301이 **한꺼번에** 서브도메인으로 넘어간다.

@@ -1,3 +1,9 @@
+## 2026-08-21 (Fable) blog 서브도메인 구현 — A1만 남음
+- 한 일: `feat/blog-subdomain`에 커밋 3개 — 호스트 라우팅(Next 16 `proxy.ts`) + 포스트 파일화, 로케일 2종·피드·블로그 사이트맵/robots·OG·플래그 게이트 301, KO 정본 발행. 컷오버는 환경변수 `NEXT_PUBLIC_BLOG_SUBDOMAIN=1` 하나.
+- 검증: 프로덕션 빌드 EXIT=0, 웹 테스트 891 통과, dev에서 Host 위조로 양쪽 플래그 상태 실측. 실측으로 결함 4건 사전 발견·수정.
+- 열린 것: **A1(Vercel 도메인 + CNAME)은 사용자 작업.** 1440/390 실렌더 확인 미수행(이 머신 Chrome이 localhost 미해결). PR 미생성.
+- 다음: 도메인 연결 → 환경변수 ON → 재배포 → 390px 헤더 내비 먼저 확인.
+
 ## 2026-08-21 (Fable) 서사 축 전환 — DESIGN.md·디자인 시스템 하네스
 - 한 일: 그록봇 학습용 컨텍스트 팩 신설(docs/NARRATIVE_CONTEXT_DESIGN_HARNESS.md — 모든 주장에 레포 경로, 인용 가능 실물 발췌 3종, 수치·출처 표, 금지 주장 6개, 반론 5종). README 4종 보강(EN 유도 사슬+검증 맵 신설·심층 트랜잭션은 details로 접음, KO는 산출물/사슬 섹션 자체가 없어 신설, JA/zh-TW 축약 이식). /cli에 derivation 섹션 신설(실제 생성 DESIGN.md 발췌 + 레포 검증 링크 8개).
 - 배포: PR #55 체크 통과 → main 머지(0ed6c476) + llms-full 동기(5c21bab9) → Vercel 프로덕션 실렌더 확인.
