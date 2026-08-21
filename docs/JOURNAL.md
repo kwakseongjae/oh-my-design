@@ -1,3 +1,8 @@
+## 2026-08-21 (Fable) 서사 축 전환 — DESIGN.md·디자인 시스템 하네스
+- 한 일: 그록봇 학습용 컨텍스트 팩 신설(docs/NARRATIVE_CONTEXT_DESIGN_HARNESS.md — 모든 주장에 레포 경로, 인용 가능 실물 발췌 3종, 수치·출처 표, 금지 주장 6개, 반론 5종). README 4종 보강(EN 유도 사슬+검증 맵 신설·심층 트랜잭션은 details로 접음, KO는 산출물/사슬 섹션 자체가 없어 신설, JA/zh-TW 축약 이식). /cli에 derivation 섹션 신설(실제 생성 DESIGN.md 발췌 + 레포 검증 링크 8개).
+- 열린 것: 블라인드 경쟁 비교, 자가 비평의 화면 부재. blog.oh-my-design.kr 서브도메인 매핑.
+- 다음: 사용자 검토 후 커밋(무커밋 원칙).
+
 ## 2026-08-20 (Fable) v2.0.0 릴리스 완료
 - 한 일: PR #52 머지, CI 4라운드 수리(전부 선재 부채), 태그 v2.0.0 → npm publish 성공(provenance 검증), 배포본으로 install/doctor/book 실검증.
 - 열린 것: 블라인드 경쟁 비교, 자가 비평의 화면 부재, 전역 1.6.7 잔존(로컬 환경).

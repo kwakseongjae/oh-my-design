@@ -94,6 +94,54 @@ const DIFFERENTIATORS = [
   },
 ];
 
+const CHAIN = [
+  "philosophy",
+  "decision table",
+  "tokens",
+  "component contracts",
+  "layout grammar",
+  "build",
+  "render critique",
+  "DESIGN.md",
+];
+
+const REPO = "https://github.com/kwakseongjae/oh-my-design";
+
+const REPO_EVIDENCE = [
+  {
+    path: "spec/design-md-core-v2.md",
+    what: "The portable contract itself — seven stable anchors, projection rules, conformance levels.",
+  },
+  {
+    path: "spec/schema/",
+    what: "Machine-readable schemas for the system graph, provenance, and coverage.",
+  },
+  {
+    path: "skills/omd-autopilot/references/derivation-chain.md",
+    what: "The chain above, written as the instructions the agent actually follows.",
+  },
+  {
+    path: "skills/omd-autopilot/references/slop-gates.md",
+    what: "54 anti-slop gates plus the 8 system-fidelity gates, each numbered and named.",
+  },
+  {
+    path: "skills/omd-autopilot/references/component-craft.md",
+    what: "45 component norms — geometry, hit targets, state matrices, optical alignment.",
+  },
+  {
+    path: "skills/omd-autopilot/references/presets/",
+    what: `${PRESET_TOTAL} preset contracts in four layers, with the shadcn/ui and Radix components each primitive maps to.`,
+  },
+  {
+    path: "benchmarks/ui-resolve-bench/e2e/",
+    what: "Three complete systems the harness produced, DESIGN.md and built product side by side.",
+  },
+  {
+    path: "src/cli/book.ts",
+    what: "How omd book renders a system back, including the live contrast measurement.",
+  },
+];
+
 type Cell = boolean | "partial";
 
 const COMPARISON: { label: string; prompt: Cell; kit: Cell; skill: Cell; omd: Cell }[] = [
@@ -275,6 +323,99 @@ npx oh-my-design-cli@latest book --static ./out   # standalone HTML for handoff`
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Derivation — the claim, shown in a real generated file */}
+      <section id="derivation" className="mx-auto max-w-4xl scroll-mt-20 px-4 py-14 sm:px-6">
+        <h2 className="text-2xl font-bold tracking-tight">How the system gets derived</h2>
+        <p className="mt-2 max-w-2xl text-muted-foreground">
+          A screen is the last step, not the first. Each stage constrains the next, and the
+          trail it leaves is the reason a value can be questioned later.
+        </p>
+
+        <ol className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-2 text-xs">
+          {/* The arrow leads each step rather than trailing it, so a wrapped row
+              starts with the connector instead of pointing off the edge. */}
+          {CHAIN.map((step, i) => (
+            <li key={step} className="flex items-center gap-2">
+              {i > 0 && (
+                <ArrowRight className="h-3 w-3 shrink-0 text-muted-foreground/50" aria-hidden />
+              )}
+              <span className="rounded-full border border-border/60 bg-card/40 px-3 py-1.5 font-medium">
+                {step}
+              </span>
+            </li>
+          ))}
+        </ol>
+
+        <p className="mt-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          A principle has to name what it sacrifices — one you cannot argue with is decoration.
+          Every decision gets an id and a line of rationale, and tokens carry that id back. So a
+          value with no decision behind it is a gate failure, not a matter of taste. Here is the
+          same id in a principle and in the token it produced, from a{" "}
+          <code className="rounded bg-foreground/5 px-1 py-0.5 text-[0.8em]">DESIGN.md</code> the
+          harness generated end to end:
+        </p>
+
+        <pre className="mt-4 overflow-x-auto rounded-xl border border-border/60 bg-card/40 p-5 text-xs leading-relaxed">
+{`### Principles
+- Accent is a signal — terracotta on linen, used for the primary
+  action, selected chip, and focus ring, never a full-card wash (D-P2-4).
+
+### Semantic tokens
+- **color.accent**: \`#8B4529\` — Terracotta signal. D-P2-4.
+  6.1:1 on paper. Area budget under 5 percent.`}
+        </pre>
+
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          Component contracts go a step further. They cite the preset they inherited from, and
+          they record which states deliberately do <em>not</em> apply, with the reason — which is
+          what stops a card from growing a fake disabled style nobody asked for:
+        </p>
+
+        <pre className="mt-4 overflow-x-auto rounded-xl border border-border/60 bg-card/40 p-5 text-xs leading-relaxed">
+{`### Component: product-card
+**Semantics:** P-CM-01. Price is the heaviest text. Whole-card link,
+no inner competing CTA. Painted hover uses four-sided space.4 (P-FN-07).
+
+| State    | Applicability  | Reason                                    |
+|----------|----------------|-------------------------------------------|
+| disabled | not-applicable | A sold-out item still opens its detail    |
+|          |                | page; stock is a badge, not a disabled card. |
+| loading  | not-applicable | Card media uses explicit width and height;|
+|          |                | the card itself is not a pending control. |`}
+        </pre>
+
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          <code className="rounded bg-foreground/5 px-1 py-0.5 text-[0.8em]">P-CM-01</code> and{" "}
+          <code className="rounded bg-foreground/5 px-1 py-0.5 text-[0.8em]">P-FN-07</code> are
+          catalog entries, so the build did not invent a card from zero. Two gates keep this
+          honest: <strong className="text-foreground">GS7</strong> fails a token with no decision
+          reference, and <strong className="text-foreground">GS8</strong> fails a component built
+          from scratch when a matching preset existed.
+        </p>
+
+        <div className="mt-10 rounded-xl border border-border/60 bg-card/30 p-6">
+          <h3 className="text-base font-semibold tracking-tight">Verify any of it yourself</h3>
+          <p className="mt-1 text-sm text-muted-foreground">
+            None of this needs the CLI installed to check — they are files in the public repo.
+          </p>
+          <ul className="mt-5 space-y-3 text-sm">
+            {REPO_EVIDENCE.map((item) => (
+              <li key={item.path} className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
+                <a
+                  href={`${REPO}/blob/main/${item.path}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="shrink-0 font-mono text-xs text-primary hover:underline"
+                >
+                  {item.path}
+                </a>
+                <span className="text-muted-foreground">{item.what}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

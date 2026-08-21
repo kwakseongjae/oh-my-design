@@ -23,6 +23,61 @@
 
 ---
 
+## 何が手に入るか
+
+成果物は 3 つ。いずれもリポジトリ内のファイルです。
+
+| | |
+|---|---|
+| **`DESIGN.md`** | 何を犠牲にしたかまで書かれた哲学、すべての選択に ID が付いた決定表、そして自分を生んだ決定を指し返すトークン。素のチャットに貼っても通用するほど可搬で、デザイナーが「なぜこの値なのか」を追えるほど具体的です。 |
+| **デザインシステム** | アナトミーを備えたコンポーネント契約、**あえて該当しない状態とその理由まで**書かれた状態マトリクス、アクセシビリティ契約、決定が埋めるトークンスロット。基礎・shadcn/Radix 対応プリミティブ・画面ジャンル・リファレンス由来のフレーバーという 4 層、93 のプリセット契約が土台になります。 |
+| **`omd book`** | `npx oh-my-design-cli@latest book` でローカルポートに自分のシステムを表示します。トークンの隣にその値を作った決定、理由付きの状態マトリクス、宣言したコントラスト対の実測値、プリセットの系譜。`--static` は受け渡し用の単一 HTML を書き出します。 |
+
+v2.0.0 では上のすべての層が**編集できるファイル**です — 哲学も、プリセットも、
+ゲートも、リファレンスも。そして次のビルドは、あなたがそこに書いたものに対して
+自分を正当化しなければなりません。検査できない趣味は改善できないからです。
+
+## システムはどう導出されるか
+
+画面は最初の一歩ではなく最後の一歩です。ハーネスはエージェントにまずシステムを
+作らせ、そのシステムに答えさせます。
+
+```
+哲学 → 決定表 → トークン → コンポーネント契約 → レイアウト文法 → ビルド → レンダー批評 → DESIGN.md
+```
+
+各段階が次の段階を拘束します。原則は**何を得るために何を犠牲にするか**を必ず
+述べます — 反論できない原則は飾りです。決定には `D-<原則>-<番号>` の ID と根拠が
+一行付き、トークンはその ID を参照し返します。根拠のないトークン値は好みの差では
+なく**ゲート失敗**です。
+
+ハーネスが実際に生成した `DESIGN.md`
+（[`benchmarks/ui-resolve-bench/e2e/onzip/DESIGN.md`](./benchmarks/ui-resolve-bench/e2e/onzip/DESIGN.md)、644 行）では次のようになります。
+
+```markdown
+### Principles
+- Accent is a signal — terracotta on linen, used for the primary action,
+  selected chip, and focus ring, never a full-card wash (D-P2-4).
+
+### Semantic tokens
+- **color.accent**: `#8B4529` — Terracotta signal. D-P2-4. 6.1:1 on paper.
+```
+
+原則とトークンに**同じ ID** が現れます。システム内のどの値からでも、その値を
+生んだ文へ遡れる — 要点はそれだけです。
+
+### 自分で確かめる
+
+CLI を入れなくても確認できます。すべてこのリポジトリ内のファイルです。
+
+| 見るもの | 場所 |
+|---|---|
+| 可搬な契約、7 つのアンカーと適合レベル | [`spec/design-md-core-v2.md`](./spec/design-md-core-v2.md) |
+| エージェントが従う導出チェーン | [`skills/omd-autopilot/references/derivation-chain.md`](./skills/omd-autopilot/references/derivation-chain.md) |
+| スロップゲート 54 + システム忠実度ゲート 8 | [`skills/omd-autopilot/references/slop-gates.md`](./skills/omd-autopilot/references/slop-gates.md) |
+| 4 層 93 のプリセット契約 | [`skills/omd-autopilot/references/presets/`](./skills/omd-autopilot/references/presets/) |
+| ハーネスが生成した完結システム 3 件 | [`benchmarks/ui-resolve-bench/e2e/`](./benchmarks/ui-resolve-bench/e2e/) |
+
 ## oh-my-design とは?
 
 **oh-my-design (OmD)** は、普段使っている AI コーディングツールにローカルのデザインワークフローを導入します。新しい `DESIGN.md Core v2` は、YAML やツール・モデル情報を表面に出さない 7 領域の vendor-neutral な契約です。Claude Design、Open Design、一般的なチャットにはファイル単体で渡せます。任意の `.omd/system` Graph は、検証済みプロジェクトでのみ machine authority になります。Google DESIGN.md との import/export 互換を目指しますが、同一仕様または Google 公式仕様とは主張しません。パッケージには品質と根拠の状態を明示した企業リファレンス 440 件以上も含まれます。**コアのインストールとローカルワークフローに別の API キー、デーモン、MCP サーバーは不要です。**

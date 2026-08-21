@@ -23,6 +23,59 @@
 
 ---
 
+## 你會拿到什麼
+
+三項產物，全部都是儲存庫裡的檔案。
+
+| | |
+|---|---|
+| **`DESIGN.md`** | 連犧牲了什麼都寫明的設計哲學、每個選擇都帶 ID 的決策表，以及回指產生自己的那個決策的 token。可攜到能直接貼進一般聊天，具體到設計師能查出「為什麼是這個值」。 |
+| **設計系統** | 具備解剖結構的元件契約、**連刻意不適用的狀態與理由都寫上**的狀態矩陣、無障礙契約，以及決策要填入的 token 欄位。基礎、對應 shadcn/Radix 的 primitives、畫面類型、參考來源風格四層共 93 個 preset 契約打底。 |
+| **`omd book`** | `npx oh-my-design-cli@latest book` 會在本機連接埠上呈現你的系統：token 旁邊放著產生它的決策、附理由的狀態矩陣、對你宣告的對比配對做的實測值，以及 preset 的來源脈絡。`--static` 會輸出單一 HTML 供交接。 |
+
+在 v2.0.0，上面每一層都是**你可以編輯的檔案** — 哲學、preset、gate、參考皆然。
+而下一次建置必須對你寫進去的內容自我證成。無法檢查的品味就無法改進。
+
+## 系統是怎麼被推導出來的
+
+畫面是最後一步，不是第一步。這套 harness 讓代理先建立一個系統，再讓它對那個
+系統負責。
+
+```
+哲學 → 決策表 → tokens → 元件契約 → 版面文法 → 建置 → 畫面批評 → DESIGN.md
+```
+
+每一步都約束下一步。原則必須說明**為了得到什麼而犧牲什麼** — 無法被反駁的原則
+只是裝飾。每個決策都有 `D-<原則>-<編號>` 的 ID 與一行理由，token 則回指該 ID。
+因此沒有決策依據的 token 值不是品味差異，而是**gate 失敗**。
+
+以下是 harness 實際產出的 `DESIGN.md`
+（[`benchmarks/ui-resolve-bench/e2e/onzip/DESIGN.md`](./benchmarks/ui-resolve-bench/e2e/onzip/DESIGN.md)，644 行）：
+
+```markdown
+### Principles
+- Accent is a signal — terracotta on linen, used for the primary action,
+  selected chip, and focus ring, never a full-card wash (D-P2-4).
+
+### Semantic tokens
+- **color.accent**: `#8B4529` — Terracotta signal. D-P2-4. 6.1:1 on paper.
+```
+
+原則和 token 出現**同一個 ID**。重點就在這裡：從系統裡任何一個值出發，都能回溯到
+造成它的那句話。
+
+### 自己驗證
+
+以上都不需要安裝 CLI 才能查證，全部是這個儲存庫裡的檔案。
+
+| 要看的東西 | 位置 |
+|---|---|
+| 可攜契約、七個錨點與符合等級 | [`spec/design-md-core-v2.md`](./spec/design-md-core-v2.md) |
+| 代理所遵循的推導鏈 | [`skills/omd-autopilot/references/derivation-chain.md`](./skills/omd-autopilot/references/derivation-chain.md) |
+| 54 個 slop gate + 8 個系統忠實度 gate | [`skills/omd-autopilot/references/slop-gates.md`](./skills/omd-autopilot/references/slop-gates.md) |
+| 四層共 93 個 preset 契約 | [`skills/omd-autopilot/references/presets/`](./skills/omd-autopilot/references/presets/) |
+| harness 產生的三套完整系統 | [`benchmarks/ui-resolve-bench/e2e/`](./benchmarks/ui-resolve-bench/e2e/) |
+
 ## 什麼是 oh-my-design?
 
 **oh-my-design (OmD)** 會把本機設計工作流程安裝到你原本使用的 AI 程式助理。新的 `DESIGN.md Core v2` 是不在可見頂部放置 YAML、工具或模型資訊的七領域 vendor-neutral 契約，可將單一檔案交給 Claude Design、Open Design 或一般聊天使用。選用的 `.omd/system` Graph 只在通過驗證的專案中成為 machine authority。它以與 Google DESIGN.md 的匯入／匯出相容為目標，但不宣稱是同一規格或 Google 官方規格。套件另附 440 個以上標示品質與依據狀態的企業參考。**核心安裝與本機工作流程不需要額外 API 金鑰、daemon 或 MCP 伺服器。**

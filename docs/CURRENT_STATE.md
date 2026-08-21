@@ -10,6 +10,28 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-21 (Fable) ✅ 서사 축 전환 — DESIGN.md·디자인 시스템 하네스 (미커밋)
+
+- **왜**: 대외 서사가 "한국 레퍼런스 최적화"로 축소돼 있었음. 중심축을 **DESIGN.md +
+  디자인 시스템을 먼저 유도하는 하네스**로 옮기고, 모든 주장을 **공개 레포에서 직접
+  확인 가능한 경로**에 묶음.
+- **신설**: `docs/NARRATIVE_CONTEXT_DESIGN_HARNESS.md` — 그록봇/에이전트 학습 컨텍스트.
+  포지셔닝 교정표, 유도 사슬(경로 포함), 세 산출물, **인용 가능한 실물 발췌 3종**
+  (onzip DESIGN.md의 D-P2-4 원칙↔토큰 일치 / product-card 프리셋 상속 + not-applicable
+  이유 / stock enum→토큰), 수치·출처 표 10행, **금지 주장 6개**(경쟁 우열 판정 금지,
+  Google 규격 주장 금지 등), 반론 5종, KO/EN 문장 재료.
+- **README 4종 보강**: EN에 "How the system gets derived"(사슬 + 실물 발췌 + 검증 맵 8행)
+  신설하고 graph adoption 트랜잭션 커맨드는 `<details>`로 접음. **KO는 산출물·사슬 섹션이
+  아예 없어 신설**(EN 대비 최대 결손이었음). JA/zh-TW는 축약본 이식.
+- **`/cli`**: `#derivation` 섹션 신설 — 8단계 사슬 칩, 실제 생성 DESIGN.md 발췌 2개,
+  GS7/GS8 설명, 레포 검증 링크 8개. 화면 검증 완료(1440/390), 줄바꿈 시 화살표가 허공을
+  가리키던 결함 1건 수정(화살표를 항목 앞으로). 가로 스크롤 0(scrollX 불변 실측).
+- **검증한 수치**: 프리셋 93(10/35/43/5), 게이트 54+8, 규범 45, 앵커 7, 레퍼런스 440,
+  스킬 22, 역할 19, book 684줄, 7→3·−47%(G3-SELF-INSPECTION-2026-08-19). 게이트 예시
+  5종(한글 세리프 폴백/마우스 포커스 링/native select/opacity disabled/와이드 빈 공간)
+  전부 slop-gates.md 실재 확인.
+- **상태**: 스테이징만, 커밋 안 함(무커밋 원칙). web tsc 통과, llms 아티팩트 동기 유지.
+
 ### 2026-08-20 (Fable) ✅ v2.0.0 릴리스 완료 — npm 게시 + provenance
 
 - **게시됨**: `oh-my-design-cli@2.0.0` (npm latest), dist.attestations present, `npm audit signatures` = verified attestation. PR #52 머지(8d4a2df2) → 태그 v2.0.0 → CI publish 성공.
