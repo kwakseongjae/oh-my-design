@@ -37,6 +37,82 @@ In v2.0.0 every layer above is a file you can edit — the philosophy, the prese
 
 Full walkthrough: **[oh-my-design.kr/cli](https://oh-my-design.kr/cli)**.
 
+## How the system gets derived
+
+A screen is the last step, not the first. The harness makes the agent build a
+system it then has to answer to:
+
+```
+philosophy → decision table → tokens → component contracts → layout grammar → build → render critique → DESIGN.md
+```
+
+Each step constrains the next. A principle has to name what it sacrifices — a
+principle you cannot argue with is decoration. Every decision gets an id
+(`D-<principle>-<n>`) and one line of rationale. Tokens carry that id back, so a
+value with no decision behind it is a gate failure, not a style preference. The
+chain is specified in
+[`skills/omd-autopilot/references/derivation-chain.md`](./skills/omd-autopilot/references/derivation-chain.md).
+
+Here is what that looks like in a `DESIGN.md` the harness actually produced
+([`benchmarks/ui-resolve-bench/e2e/onzip/DESIGN.md`](./benchmarks/ui-resolve-bench/e2e/onzip/DESIGN.md),
+644 lines, generated end to end):
+
+```markdown
+### Principles
+- Accent is a signal — terracotta on linen, used for the primary action,
+  selected chip, and focus ring, never a full-card wash (D-P2-4).
+
+### Semantic tokens
+- **color.accent**: `#8B4529` — Terracotta signal. D-P2-4. 6.1:1 on paper.
+  Area budget under 5 percent.
+```
+
+The same id appears in the principle and in the token. That is the whole idea:
+you can start at any value in the system and walk back to the sentence that
+caused it.
+
+Component contracts go one level further — they cite the preset they inherited
+from, and they state which interaction states *deliberately* do not apply, with
+the reason:
+
+```markdown
+### Component: product-card
+**Semantics:** P-CM-01. Price is the heaviest text. Whole-card link, no inner
+competing CTA. Painted hover uses four-sided space.4 (P-FN-07).
+
+| State | Applicability | Reason |
+|---|---|---|
+| disabled | not-applicable | A sold-out item still opens its detail page;
+                             stock is a badge, not a disabled card. |
+| loading  | not-applicable | Card media uses explicit width and height; the
+                             card itself is not a pending control. |
+```
+
+`P-CM-01` and `P-FN-07` are entries in the preset catalog, so the build did not
+invent a card from zero. shadcn/ui gives you the structure; the preset says which
+values must come from *your* decision table instead of a library default.
+
+Two of the numbered gates exist specifically to keep this honest —
+`GS7` fails a token that carries no decision reference, and `GS8` fails a
+component built from scratch when a matching preset existed. Both are in
+[`slop-gates.md`](./skills/omd-autopilot/references/slop-gates.md) alongside
+54 other checks.
+
+### Verify any of this yourself
+
+Nothing above needs the CLI installed to check — these are files in this repo:
+
+| What to look at | Where |
+|---|---|
+| The portable contract, its seven anchors and conformance levels | [`spec/design-md-core-v2.md`](./spec/design-md-core-v2.md) |
+| Machine-readable schemas for the graph, provenance, coverage | [`spec/schema/`](./spec/schema/) |
+| The derivation chain the agent follows | [`skills/omd-autopilot/references/derivation-chain.md`](./skills/omd-autopilot/references/derivation-chain.md) |
+| 54 slop gates + 8 system-fidelity gates | [`skills/omd-autopilot/references/slop-gates.md`](./skills/omd-autopilot/references/slop-gates.md) |
+| 45 component-craft norms (geometry, states, optical alignment) | [`skills/omd-autopilot/references/component-craft.md`](./skills/omd-autopilot/references/component-craft.md) |
+| 93 preset contracts in four layers | [`skills/omd-autopilot/references/presets/`](./skills/omd-autopilot/references/presets/) |
+| Three complete systems the harness generated | [`benchmarks/ui-resolve-bench/e2e/`](./benchmarks/ui-resolve-bench/e2e/) |
+| `omd book` — how the system gets rendered back | [`src/cli/book.ts`](./src/cli/book.ts) |
+
 ## What is oh-my-design?
 
 **oh-my-design (OmD)** installs local design workflows into the coding tool you already use. Claude Code, Codex, and OpenCode receive reusable skills and specialist roles; Cursor receives native Agent Skills plus a focused project rule that applies the same `DESIGN.md`. New design-system creation targets the vendor-neutral [DESIGN.md Core v2](./spec/design-md-core-v2.md): a concise portable contract that remains useful when pasted into a generic chat or attached to Claude Design/Open Design, with optional structured evidence under `.omd/system/`. The package also includes 440+ quality-graded company references. Existing reference formats remain readable during the lossless migration window. **Core install and local workflows need no separate API key, daemon, or MCP server; inference stays inside your existing coding-agent session. The optional `claude-design` skill opens your logged-in claude.ai/design session in Chrome.**
@@ -82,6 +158,9 @@ documents remain readable, while new generation and refactoring write Core v2.
 A staged migration must preserve every source segment as a mapped Core decision
 or an opaque extension and report `dropped=0`. See the
 [migration plan](./docs/DESIGN_MD_CORE_V2_MIGRATION_PLAN.md).
+
+<details>
+<summary><strong>Graph adoption and migration transactions</strong> — operator reference, not needed to get started</summary>
 
 If repository facts or reviewed user decisions enrich the staged graph before
 review, rebind the unchanged migration ledger with the provider-free helper;
@@ -129,6 +208,8 @@ self-approve. Compilation proves Core shape, deterministic projection, and exact
 bindings; factual truth, provenance sufficiency, license permission, visual
 quality, and runtime conformance remain separate evidence gates. See the
 [CLI quickstart](./docs/CLI_QUICKSTART.md) for the artifact boundaries.
+
+</details>
 
 ## Install
 

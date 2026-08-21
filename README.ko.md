@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>AI 코딩 에이전트가 프로젝트의 DESIGN.md를 기준으로 일하게 하세요.</strong> 안내형 설치와 doctor, 재사용 가능한 스킬 22개, 전문 역할 19개, 품질 등급을 매긴 기업 레퍼런스 440개 이상을 함께 제공합니다. 로컬 워크플로에는 별도 API 키나 MCP 서버가 필요 없습니다.
+  <strong>코딩 에이전트가 실제로 붙들 수 있는 디자인 시스템.</strong> <code>oh-my-design-cli</code>는 AI UI 작업에 늘 비어 있던 중간 단계를 설치합니다 — 직접 선언하는 철학, 거기서 유도된 토큰과 컴포넌트 계약, AI가 반복하는 실패에 번호를 붙인 게이트, 그리고 자기 시스템을 되읽는 <code>omd book</code>. 스킬 22개, 전문 역할 19개, 프리셋 계약 93개, 품질 등급 레퍼런스 440개 이상. 핵심 워크플로에 API 키도 MCP 서버도 필요 없습니다.
 </p>
 
 <p align="center">
@@ -22,6 +22,95 @@
 </p>
 
 ---
+
+## 무엇이 나오는가
+
+세 가지 산출물이고, 전부 저장소 안의 파일입니다.
+
+| | |
+|---|---|
+| **`DESIGN.md`** | 무엇을 희생했는지까지 적힌 철학, 모든 선택에 ID가 붙은 결정 표, 그리고 자기를 만든 결정을 되가리키는 토큰. 일반 채팅에 붙여넣어도 통할 만큼 이식 가능하고, 디자이너가 "왜 이 값인가"를 찾아낼 만큼 구체적입니다. |
+| **디자인 시스템** | 해부(anatomy)를 갖춘 컴포넌트 계약, **해당 없는 상태와 그 이유까지** 적힌 상태 매트릭스, 접근성 계약, 결정이 채워 넣을 토큰 슬롯. 기본기·shadcn/Radix 매핑 프리미티브·화면 장르·레퍼런스 유도 성향, 네 레이어에 걸친 프리셋 계약 93개가 바닥에 깔립니다. |
+| **`omd book`** | `npx oh-my-design-cli@latest book` — 로컬 포트에 자기 시스템을 띄웁니다. 토큰 옆에 그 값을 만든 결정, 이유가 달린 상태 매트릭스, 선언한 대비 쌍을 실제로 측정한 값, 프리셋 계보. `--static`은 핸드오프용 단일 HTML을 씁니다. |
+
+v2.0.0에서는 위의 모든 레이어가 **당신이 고칠 수 있는 파일**입니다 — 철학도,
+프리셋도, 게이트도, 레퍼런스도. 그리고 다음 빌드는 당신이 거기 써 넣은 것에
+스스로를 정당화해야 합니다. 검사할 수 없는 취향은 개선할 수 없으니까요.
+
+전체 안내: **[oh-my-design.kr/cli](https://oh-my-design.kr/cli)**
+
+## 시스템은 어떻게 유도되는가
+
+화면은 첫 단계가 아니라 마지막 단계입니다. 하네스는 에이전트가 먼저 시스템을
+만들게 하고, 그다음 그 시스템에 답하게 만듭니다.
+
+```
+철학 → 결정 표 → 토큰 → 컴포넌트 계약 → 레이아웃 문법 → 빌드 → 렌더 비평 → DESIGN.md
+```
+
+각 단계가 다음 단계를 구속합니다. 원칙은 **무엇을 얻기 위해 무엇을 희생하는지**
+반드시 밝혀야 합니다 — 반박할 수 없는 원칙은 장식 문장입니다. 모든 결정에는
+ID(`D-<원칙>-<번호>`)와 근거 한 줄이 붙고, 토큰은 그 ID를 되참조합니다. 그래서
+근거 없는 토큰 값은 취향 차이가 아니라 **게이트 실패**입니다. 사슬 규격은
+[`skills/omd-autopilot/references/derivation-chain.md`](./skills/omd-autopilot/references/derivation-chain.md)에
+있습니다.
+
+하네스가 실제로 만들어 낸 `DESIGN.md`에서는 이렇게 보입니다
+([`benchmarks/ui-resolve-bench/e2e/onzip/DESIGN.md`](./benchmarks/ui-resolve-bench/e2e/onzip/DESIGN.md),
+644줄, 처음부터 끝까지 생성물):
+
+```markdown
+### Principles
+- Accent is a signal — terracotta on linen, used for the primary action,
+  selected chip, and focus ring, never a full-card wash (D-P2-4).
+
+### Semantic tokens
+- **color.accent**: `#8B4529` — Terracotta signal. D-P2-4. 6.1:1 on paper.
+  Area budget under 5 percent.
+```
+
+원칙과 토큰에 **같은 ID**가 나옵니다. 요지는 그것뿐입니다 — 시스템 안 어느 값에서
+출발하든 그 값을 만든 문장까지 거슬러 올라갈 수 있다는 것.
+
+컴포넌트 계약은 한 단계 더 갑니다. 어떤 프리셋을 상속했는지 밝히고, 어떤 상태가
+**의도적으로 해당 없는지**를 이유와 함께 적습니다.
+
+```markdown
+### Component: product-card
+**Semantics:** P-CM-01. Price is the heaviest text. Whole-card link, no inner
+competing CTA. Painted hover uses four-sided space.4 (P-FN-07).
+
+| State | Applicability | Reason |
+|---|---|---|
+| disabled | not-applicable | A sold-out item still opens its detail page;
+                             stock is a badge, not a disabled card. |
+| loading  | not-applicable | Card media uses explicit width and height; the
+                             card itself is not a pending control. |
+```
+
+`P-CM-01`과 `P-FN-07`은 프리셋 카탈로그의 항목입니다. 즉 이 빌드는 카드를 0에서
+지어내지 않았습니다. **shadcn/ui가 구조를 주면, 프리셋은 어떤 값이 라이브러리
+기본값이 아니라 당신의 결정 표에서 와야 하는지를 말합니다.**
+
+이걸 정직하게 유지하려고 존재하는 게이트가 둘 있습니다 — `GS7`은 결정 참조가 없는
+토큰을 떨어뜨리고, `GS8`은 부합 프리셋이 있는데도 0에서 만든 컴포넌트를
+떨어뜨립니다. 나머지 54개 검사와 함께
+[`slop-gates.md`](./skills/omd-autopilot/references/slop-gates.md)에 있습니다.
+
+### 직접 확인하기
+
+위의 어느 것도 CLI를 설치해야 확인할 수 있는 게 아닙니다. 전부 이 저장소의 파일입니다.
+
+| 볼 것 | 위치 |
+|---|---|
+| 이식 가능한 계약, 7개 앵커와 준수 레벨 | [`spec/design-md-core-v2.md`](./spec/design-md-core-v2.md) |
+| graph·provenance·coverage 기계 판독 스키마 | [`spec/schema/`](./spec/schema/) |
+| 에이전트가 따르는 유도 사슬 | [`skills/omd-autopilot/references/derivation-chain.md`](./skills/omd-autopilot/references/derivation-chain.md) |
+| 슬롭 게이트 54개 + 시스템 충실도 게이트 8개 | [`skills/omd-autopilot/references/slop-gates.md`](./skills/omd-autopilot/references/slop-gates.md) |
+| 컴포넌트 장인 규범 45개(기하·상태·광학 정렬) | [`skills/omd-autopilot/references/component-craft.md`](./skills/omd-autopilot/references/component-craft.md) |
+| 네 레이어 프리셋 계약 93개 | [`skills/omd-autopilot/references/presets/`](./skills/omd-autopilot/references/presets/) |
+| 하네스가 생성한 완결된 시스템 3건 | [`benchmarks/ui-resolve-bench/e2e/`](./benchmarks/ui-resolve-bench/e2e/) |
+| `omd book` — 시스템을 되읽는 방식 | [`src/cli/book.ts`](./src/cli/book.ts) |
 
 ## oh-my-design이란?
 
