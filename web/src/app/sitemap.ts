@@ -6,6 +6,7 @@ import { REGISTRY } from "@/data/registry.generated";
 import { ENGLISH_REFERENCE_IDS } from "@/lib/references/editorial";
 import { DOC_LOCALES, DOC_PAGES, docsHref } from "@/lib/docs/locales";
 import { getAllPosts } from "@/lib/blog/posts";
+import { blogIndexUrl, blogPostUrl } from "@/lib/site";
 
 const siteUrl = "https://oh-my-design.kr";
 
@@ -69,7 +70,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${siteUrl}/blog`,
+      url: blogIndexUrl(),
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.75,
@@ -140,7 +141,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const blogRoutes: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
-    url: `${siteUrl}/blog/${post.slug}`,
+    url: blogPostUrl(post.slug),
     lastModified: new Date(`${post.date}T00:00:00Z`),
     changeFrequency: "monthly" as const,
     priority: 0.7,

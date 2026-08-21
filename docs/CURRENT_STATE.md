@@ -10,6 +10,45 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-21 (Fable) 🔨 blog 서브도메인 A2·A3·A6·B1·B2 구현 — 미커밋, A1 대기
+
+- **브랜치**: `feat/blog-subdomain` (origin/main 69d7f583 기준). **커밋 안 함, 스테이지만.**
+- **신설**: `web/src/lib/site.ts`(오리진 상수 + blogIndexUrl/blogPostUrl),
+  `web/src/lib/blog/host-routing.ts`(순수 매핑 함수), `web/src/proxy.ts`(Next 16 규약 —
+  `middleware.ts`는 deprecated이고 둘 다 있으면 E900),
+  `web/src/lib/blog/frontmatter.ts`(엄격 파서), `web/src/content/blog/<slug>/en.md`.
+- **컷오버 스위치 = 환경변수 `NEXT_PUBLIC_BLOG_SUBDOMAIN=1`.** OFF면 canonical·OG·
+  JSON-LD·사이트맵이 계속 `oh-my-design.kr/blog`를 가리켜 도메인 없이 머지해도 안전하고,
+  A1(Vercel 도메인 + CNAME) 후 Vercel 환경변수만 켜면 원자적 전환.
+- **실측 검증**: dev에서 Host 위조로 9케이스 통과(블로그 호스트 200/308/404, 메인 호스트
+  무변화), 플래그 ON 시 canonical·og:url·JSON-LD·sitemap 전부 blog 호스트로 전환 확인.
+  포스트 파일 이관 전후 렌더 HTML 문자 단위 동일. 타입체크 통과, 웹 테스트 877 통과
+  (신규 28), lint 에러 0.
+- **실측으로 잡은 결함 1건**: `NextResponse.redirect(nextUrl)`의 Location 호스트가 요청
+  호스트와 어긋남 → 검증된 Host 헤더로 `url.host` 고정.
+- **예약**: `/robots.txt`·`/sitemap.xml`·`/feed.xml`은 현재 메인 앱 것으로 통과. A5/B4에서
+  `host-routing.ts` 표에 항목 추가.
+- **다음**: 사용자 A1(Vercel Domains + DNS CNAME) → A4(301)·A5 → B3(hreflang)·B4·B5 →
+  C(발행 플레이북) → B6(기존 1편 KO 번안).
+
+### 2026-08-21 (Fable) 📋 blog 서브도메인 계획 확정 — 착수 전
+
+- **결정**: `blog.oh-my-design.kr`를 **정본 호스트**로, `oh-my-design.kr/blog/*`는 301.
+  코드는 분리하지 않는다 — 같은 레포·같은 Vercel 프로젝트(`web/`)에 middleware host
+  rewrite. 언어는 **KO 정본 + EN 동시**(hreflang ko/en/x-default), JA/zh-TW는 보류.
+  리듬은 **파이프라인 먼저** — 시드는 현행 1편 유지, 대량 집필은 인프라 완주 후.
+- **정본 문서**: `docs/BLOG_SUBDOMAIN_PLAN.md` (Phase A 인프라 / B 콘텐츠 파일화 /
+  C 발행 사슬 / D 계측·색인, 체크포인트 3개, 위험 5건).
+- **근거**: GSC 검색 클릭의 99.2%가 브랜드 쿼리 — 논브랜드 유입 엔진 부재. 블로그 KPI에
+  설치·전환은 걸지 않는다(활성화 누수는 블로그가 못 고침).
+- **발행 사슬(도그푸딩)**: omd:kr-writer → omd:humanize → omd:locale-adapter(EN) →
+  omd:designer-review + omd:slop-audit → omd:final-qa. FAIL 1건이면 발행 금지 +
+  NARRATIVE_CONTEXT 금지 주장 6개 준수 + 모든 수치에 측정일·레포 경로.
+- **사용자 선행 작업**: Vercel Domains에 `blog.oh-my-design.kr` 추가 + DNS CNAME(A1).
+  도메인 Valid 확인 전에는 `/blog/*` 301(A4)을 머지하지 않는다 — 켜면 블로그가 죽는다.
+- **주의**: 과거 `/blog`는 두 번 접혔다(4편 → dev 게이팅 → 1.5.0 제거 → v2에 1편 재도입).
+  이번 "파이프라인 먼저" 결정이 그 재발 대응.
+
 ### 2026-08-21 (Fable) ✅ 서사 축 전환 — DESIGN.md·디자인 시스템 하네스 (배포 완료)
 
 - **왜**: 대외 서사가 "한국 레퍼런스 최적화"로 축소돼 있었음. 중심축을 **DESIGN.md +

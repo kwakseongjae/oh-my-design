@@ -8,8 +8,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { Markdown } from "@/components/markdown";
 import { getAllPosts, getPost } from "@/lib/blog/posts";
-
-const SITE_URL = "https://oh-my-design.kr";
+import { blogPostUrl } from "@/lib/site";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -28,11 +27,11 @@ export async function generateMetadata({
     title: `${post.title} — oh-my-design`,
     description: post.description,
     keywords: post.tags,
-    alternates: { canonical: `${SITE_URL}/blog/${post.slug}` },
+    alternates: { canonical: blogPostUrl(post.slug) },
     openGraph: {
       title: post.title,
       description: post.description,
-      url: `${SITE_URL}/blog/${post.slug}`,
+      url: blogPostUrl(post.slug),
       type: "article",
       publishedTime: post.date,
     },
@@ -66,7 +65,7 @@ export default async function BlogPostPage({
     dateModified: post.date,
     author: { "@type": "Organization", name: "oh-my-design" },
     publisher: { "@type": "Organization", name: "oh-my-design" },
-    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+    mainEntityOfPage: blogPostUrl(post.slug),
   };
 
   return (

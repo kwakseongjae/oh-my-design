@@ -7,18 +7,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getAllPosts } from "@/lib/blog/posts";
-
-const SITE_URL = "https://oh-my-design.kr";
+import { blogIndexUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Blog — oh-my-design",
   description:
     "Notes on giving coding agents a design system they can be held to: derivation, presets, anti-slop gates, and what the measurements actually show.",
-  alternates: { canonical: `${SITE_URL}/blog` },
+  alternates: { canonical: blogIndexUrl() },
   openGraph: {
     title: "oh-my-design — Blog",
     description: "Notes on design systems for coding agents.",
-    url: `${SITE_URL}/blog`,
+    url: blogIndexUrl(),
     type: "website",
   },
 };

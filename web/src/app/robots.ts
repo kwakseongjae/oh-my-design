@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl = "https://oh-my-design.kr";
+import { SITE_ORIGIN as siteUrl } from "@/lib/site";
 
 /**
  * robots.txt — explicit allow for major crawlers including AI ones.
