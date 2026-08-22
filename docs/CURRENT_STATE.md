@@ -12,6 +12,31 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-22 (Fable) T3 증거 캡처 9/9 완료 · 루브릭 규칙 동결 (SHA 미기록)
+
+- **거버넌스 1회전 완주**: 기안(Opus 5) → 독립검토 A(sol, **BLOCK**)·B(grok-4.6,
+  PROCEED_WITH_CHANGES) → 개정 → 최종승인 **APPROVE_WITH_CONDITIONS**(C1~C7).
+  기록 `docs/reviews/3track-plan-2026-08-22-*.md`.
+- **조건 처리**: C1·C2·C3·C4·C5·C7 완료. C6(루브릭)은 sol 작성 → grok 반박 3회
+  (REVISE → REVISE → **FREEZE**). 규칙 본문 동결, **`RUBRIC_FROZEN_SHA` 미기록**
+  (§9 실행 게이트 8항 미충족 — 평가자 등록·verify.json 구현·arm 순서표 등).
+  **SHA 없으면 T3-3 안 연다.**
+- **증거 9/9**: apple 7 · baemin 1 · coupang 12 · figma 9 · karrot 12 · musinsa 12 ·
+  naver 0 · toss 2(video+canvas) · wanted 12. 95파일 입고, manifest SHA 전부 일치.
+  저장소 `~/.omd/evidence-store/<brand>/<capturedAt>/`.
+- **채널 정책 확정**: 기본 **Playwright**(`colorScheme: light` 고정 — 브라우저 프로필
+  다크 때문에 당근이 다크로 측정되던 것 차단). **Aside는 Playwright를 거절하는
+  사이트 전용**(쿠팡). Aside는 CDP Emulation 미노출로 색 구성 통제 불가 — 증거에 기록.
+- **측정기 결함 다수 수정(T3-0 + 후속)**: 캠페인 CTA를 브랜드 크롬으로 오인 / 해상
+  표본 미달 좌표 방출 / 광 방향 명명 / figure-ground 과잉해석 / 투명색을 검정으로 /
+  시맨틱 헤더 가정 / 풀블리드를 캐러셀로 오판 / srcset 재식별 실패 / video·canvas 미수집 /
+  사진 최빈색을 페이지 배경으로. 두 채널 측정 방식 통일(열거→개별 스크롤→크롭).
+- **T1-1 완료**: 440개 11.79MB, 중앙값 28,298B/423줄, **Core v2 일치 0개**(전량 legacy).
+  부록에 **이징 보일러플레이트** 기록 — `cubic-bezier(0.4,0,1,1)`가 218/440(49.5%)에
+  출처 표시 없이 브랜드 토큰처럼 존재. T1-2 입력.
+- **다음**: T3 코드북 동결됨 → 남은 §9 게이트(평가자·verify.json·순서표) 또는
+  T1-2(정수 판정, 이징 건 처리 결정).
+
 ### 2026-08-22 (grok-4.6) ✅ T3-2 루브릭 3차 반박 — FREEZE (T3-3은 §9 게이트까지 닫힘)
 
 - **대상**: `test-v2/90-comparison/RUBRIC.md` 2항 개정본. 2차 정본 `docs/reviews/rubric-2026-08-22-rebuttal-2.md`.
