@@ -1,3 +1,8 @@
+## 2026-08-22 (grok-4.6) T3-2 모델 평가자 개정 승인 — BLOCK
+- 한 일: 동결 이후 §3 개정 심사. 기록 `docs/reviews/rubric-2026-08-22-model-rater-amendment.md`.
+- 열린 것: 없음. 사람→모델 3종 결정은 수용, 개정 본문은 미채택.
+- 다음: §4·§7·§9 인간/5명 삭제, 계열·생성 모델 표, 회피 후 n<3 칸 열거, α 사전 고정 후 재승인. T3-3 닫힘.
+
 ## 2026-08-22 (grok-4.6) T1-2 정수 판정 반박 — REVISE
 - 한 일: 판정문·T1-1·Core v2 대조. 기록 `docs/reviews/essence-verdict-2026-08-22-rebuttal.md`.
 - 열린 것: 판정문 5항 개정(정수 입자, 수치 역할, §9/§14 착지, 커브-only 삭제).
@@ -7228,3 +7233,8 @@
 - exact 계약은 tab creation 1, browser launch/navigation 0, URL about:blank이며 raw operation/flag/count가 모두 일치해야 한다.
 - controller/admission/runner/receipt 60/60와 lint/diff-check green이고 rejected diagnostics는 분모 밖이다.
 - 다음: 새 commit에서 safe-blank first call로 fresh epoch를 재발급한다.
+## 2026-08-22 (Codex) T1-2 정수 판정 4항 개정 완료
+- 한 일: legacy 섹션 판정을 Portable Core MUST 필드/그룹 판정으로 교체하고 §1·§4·§6·§11 정수를 철회.
+- 한 일: T1-1 수치를 참고표로 분리, §9 삭제 경계와 §14 0/440 graph 이전 본문 보존·정확 경로를 명시.
+- 보존: 기존 「반박 반영」절과 이징 판정 무수정. 문서 끝 4항 대조표 추가.
+- 다음: 개정본 재검토 전까지 T1-3 닫힘.

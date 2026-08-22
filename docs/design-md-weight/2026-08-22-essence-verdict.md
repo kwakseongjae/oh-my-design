@@ -2,36 +2,67 @@
 
 ## 판정 범위와 읽는 법
 
-이 문서는 T1-1 정본 `docs/design-md-weight/2026-08-22-survey.md`의 440개 실측을 근거로 legacy 15개 섹션을 **정수 / 위임 / 의심**으로 판정한다. 새 규격이나 새 문법을 제안하지 않는다.
+이 문서는 T1-1 정본 `docs/design-md-weight/2026-08-22-survey.md`의 440개 legacy 문서를 Core v2의 **Portable Core MUST 필드/그룹**에 대조한다. 판정 입자는 legacy §1–§15가 아니라 Core 필드다. 따라서 §1·§4·§6·§11 전체를 정수라고 한 종전 판정은 철회한다.
 
-먼저 구조 보급률을 정수의 증거로 오해하지 않는다. 측정 대상은 legacy 계열 440개(100.00%)이고 Core v2 구조 일치 파일은 0개(0.00%)다. 15개 섹션 완비도 439/440이지만, 이는 440개가 같은 legacy 계열로 작성됐다는 사실이지 15개가 모두 본문 정수라는 독립 증거가 아니다. 번호형 §1–§15의 합계는 9,704,287바이트, 전체 11,794,363바이트의 82.28%다.
+여기서 **정수**는 “이 필드가 없으면 Portable Core가 성립하지 않거나, standalone `DESIGN.md`가 그 MUST 의미를 수행할 수 없다”는 뜻이다. 섹션의 보급률·플레이스홀더율·바이트 무게는 이 판정의 근거로 쓰지 않는다. 구조상 440개 모두 legacy이고 Core v2 일치 파일은 0개이므로, 아래 경로는 즉시 존재하는 카탈로그 저장 위치가 아니라 **검토를 거친 migration destination**이다.
 
-중복 수치는 두 층으로 읽는다.
+## 1. Portable Core MUST 필드/그룹 판정
 
-- T1-1의 일반 중복 측정은 정규화 후 **완전 일치 블록**만 세며, 반복 incidence는 105/20,685(0.51%), 반복 incidence 바이트는 21,217/8,866,668(0.24%)다. 섹션별 중복률은 산출되지 않았으므로 아래 표에서 이 전역값을 특정 섹션의 고유성 증거로 확대하지 않는다.
-- §15에는 값 단위 추가 측정이 있다. `cubic-bezier(0.4, 0.0, 1, 1)`은 218/440(49.5%), `cubic-bezier(0.2, 0.6, 0.25, 1)`은 168/440(38.2%)에 등장한다. nintendo·workday·barogo의 세 커브 표는 토큰과 값이 모두 같고 출처가 없다. 이 수치만 §15의 별도 중복 근거로 쓴다.
-
-## 1. 15개 섹션 판정표
-
-| 섹션 | 판정 | T1-1 수치 | 판정 이유와 처리 |
+| Portable Core 필드/그룹 | 판정 | 없으면 불가능해지는 것 | legacy 원천과 처리 |
 |---|---|---|---|
-| §1 Visual Theme & Atmosphere | **정수** | 1,012,491B, 전체 8.58%; 없음 0%, 비어 있음 0%, 플레이스홀더 0%; 일반 완전일치 중복 기준은 전역 0.51% incidence / 0.24% bytes | 제품·표면 범위와 구별되는 디자인 방향이 사라지면 나머지 토큰은 목적 없는 값 목록이 된다. 결손 신호가 전혀 없고 비중도 크므로 본문의 경험·디자인 방향으로 남긴다. |
-| §2 Color Palette & Roles | **정수** | 705,682B, 5.98%; 없음 0%, 비어 있음 0%, 플레이스홀더 0%; 일반 중복은 전역 기준만 존재 | 색의 값뿐 아니라 의미 역할과 사용 경계를 직접 렌더링 계약으로 사용한다. 440/440에 실내용이 있고 플레이스홀더가 없어 본문에 남긴다. 상세 scale은 그래프가 보유해도, 알려진 핵심 역할과 값은 본문에서 빠질 수 없다. |
-| §3 Typography Rules | **정수** | 814,773B, 6.91%; 없음 0%, 비어 있음 0%, 플레이스홀더 0%; 일반 중복은 전역 기준만 존재 | 글꼴의 실제 사용 여부, 역할별 크기·무게·행간은 대체를 금지하고 렌더링을 결정하는 계약이다. 결손이 0%이므로 본문에 알려진 역할과 가용성 경계를 남긴다. |
-| §4 Component Stylings | **정수** | 1,183,866B, 10.04%로 15개 중 최대; 없음 0%, 비어 있음 0%, 플레이스홀더 0%; 일반 중복은 전역 기준만 존재 | 독립 DESIGN.md가 실제 UI를 만들려면 컴포넌트 역할·해부·변형·적용 상태의 요약이 필요하다. 가장 큰 섹션이라는 사실만으로 내보낼 수 없고, 440/440 실내용·플레이스홀더 0%가 본문 계약의 필요성을 지지한다. 단, exhaustive matrix와 반복 토큰은 그래프에 두고 본문에는 실행 가능한 요약만 남긴다. |
-| §5 Layout Principles | **정수** | 444,613B, 3.77%; 없음 0%, 비어 있음 2/440(0.45%), 플레이스홀더 0%; 일반 중복은 전역 기준만 존재 | 배치 우선순위와 공간 변화 규칙은 토큰만으로 복원되지 않는다. 비어 있음이 0.45%에 그치고 플레이스홀더가 없어 본문에 남긴다. |
-| §6 Depth & Elevation | **정수** | 327,347B, 2.78%; 없음 0%, 비어 있음 1/440(0.23%), 플레이스홀더 0%; 일반 중복은 전역 기준만 존재 | 비중은 작지만 439/440에 실내용이 있고, flat·border·shadow 중 무엇이 위계를 만드는지 결정한다. 별도 장문의 섹션일 필요는 없어도 내용은 본문의 foundations에 남긴다. |
-| §7 Do's and Don'ts | **정수** | 503,419B, 4.27%; 없음 0%, 비어 있음 0%, 플레이스홀더 0%; 일반 중복은 전역 기준만 존재 | 값이 없는 모호한 상황에서 허용·금지 경계를 정하며, unknown과 충돌 우선순위를 적용하는 데 필요하다. 결손 신호가 0%이므로 본문의 짧은 디자인 방향·governance 규칙으로 남긴다. |
-| §8 Responsive Behavior | **정수** | 367,977B, 3.12%; 없음 0%, 비어 있음 1/440(0.23%), 플레이스홀더 2/440(0.45%); 일반 중복은 전역 기준만 존재 | 화면 폭 변화에서 우선순위·reflow·overflow를 정하는 계약이다. 비어 있음과 플레이스홀더가 각각 0.23%, 0.45%로 낮아, 관찰 가능한 범위만 본문에 남길 근거가 충분하다. |
-| §9 Agent Prompt Guide | **위임** | 652,089B, 5.53%; 없음 0%, 비어 있음 0%, 플레이스홀더 0%; 일반 중복은 전역 기준만 존재 | 필요성은 440/440 실내용과 0% 플레이스홀더가 지지하지만, 5.53%를 차지하는 도구별 재진술은 디자인 계약 자체가 아니다. 보편적인 적용 우선순위·unknown 규칙만 본문 governance에 합치고, 도구별 프롬프트와 예시는 소비자 adapter/skill로 옮긴다. |
-| §10 Voice & Tone | **정수** | 641,226B, 5.44%; 없음 0%, 비어 있음 0%, 플레이스홀더 2/440(0.45%); 일반 중복은 전역 기준만 존재 | CTA·오류·회복 문구의 선택을 좌우하므로 시각 토큰만큼 직접적인 제품 계약이다. 플레이스홀더율이 0.45%에 그쳐 본문 content 계약으로 남긴다. |
-| §11 Brand Narrative | **정수** | 650,960B, 5.52%; 없음 0%, 비어 있음 0%, 플레이스홀더 1/440(0.23%); 일반 중복은 전역 기준만 존재 | 제품이 무엇이고 어떤 변화를 거쳐 현재 표현을 택했는지 알아야 모호한 디자인 결정을 해석할 수 있다. 결손이 사실상 없으므로 근거 있는 제품·표면 맥락은 본문 experience에 남기되, 출처 원장과 긴 연혁은 provenance로 분리한다. |
-| §12 Principles | **정수** | 471,379B, 4.00%; 없음 0%, 비어 있음 0%, 플레이스홀더 2/440(0.45%); 일반 중복은 전역 기준만 존재 | 새 사례에서 토큰을 어떻게 적용할지 결정하는 규칙이다. 438/440이 플레이스홀더 없이 채워져 있어 본문 experience의 결정 원칙으로 남긴다. |
-| §13 Personas | **의심** | 434,544B, 3.68%; 없음 0%, 비어 있음 0%, 플레이스홀더 26/440(5.91%)로 15개 중 최고; 일반 중복은 전역 기준만 존재 | 형식상 440/440에 있지만 가장 높은 플레이스홀더율이 관찰·권위 확보의 취약성을 드러낸다. 샘플도 rayark의 집단형, toss의 task context, musinsa의 비승격 선언, nintendo·krds의 명시적 fictional archetype처럼 권위 수준이 섞인다. 검증된 audience/task는 §1의 제품 경험으로 흡수하고, 이름·나이·도시 같은 가상 biography는 본문 계약에서 제외한다. |
-| §14 States | **위임** | 511,759B, 4.34%; 없음 1/440(0.23%), 비어 있음 0%, 플레이스홀더 14/440(3.18%)로 §13·§15 다음; 일반 중복은 전역 기준만 존재 | 상태는 필요하지만 전역 표 하나보다 컴포넌트별 적용 여부와 관찰 증거가 정확하다. 439/440에 존재해 필요성은 강한 반면 플레이스홀더율 3.18%는 별도 전역 표를 억지로 채운 흔적이다. 독립 §14는 없애고 컴포넌트 상태 계약과 그래프로 착지시킨다. |
-| §15 Motion & Easing | **의심** | 982,162B, 8.33%로 두 번째로 큼; 없음 1/440(0.23%), 비어 있음 0%, 플레이스홀더 21/440(4.77%); 커브 반복 218/440(49.5%), 168/440(38.2%) | 높은 완비도와 큰 무게가 오히려 신뢰성을 보장하지 않는다. 15개 중 두 번째로 높은 플레이스홀더율에 값 단위 대량 반복과 무출처 동일 표가 겹친다. 검증된 모션만 foundations에 남기고, 미검증 duration·curve·signature motion은 unknown으로 보아 제거한다. |
+| `identity.scope` + Experience의 `scope` claim | **정수** | 소비자가 어떤 제품/표면에 계약을 적용할지 식별할 수 없다. | §1·§11에서 근거 있는 제품/표면 범위만 `experience.summary`에 투영한다. 분위기 에세이와 범위에 기여하지 않는 장기 연혁은 정수가 아니다. |
+| `experience.primary_tasks[]` + `primary-tasks` claim | **정수** | 최소 한 개의 일차 사용자 결과를 식별할 수 없어 Portable Core acceptance를 통과하지 못한다. | §1과 §13에서 검증된 task만 옮긴다. 가상 biography는 버린다. |
+| `foundations.tokens` 또는 `foundations.rules` 중 알려진 실행 값/규칙이나 명시적 제약 최소 1개 + `foundations` claim | **정수 그룹** | 알려진 foundation을 렌더하거나, 미확인 값을 발명하지 못하게 제약할 수 없다. | §2·§5·§6·§8·§15 등에서 **검증된** 값/규칙만 가장 작은 필드 단위로 옮긴다. 어느 legacy 섹션도 그 전체가 정수는 아니다. §3의 typography는 별도 `typography_assets` 계약이며 이 최소 foundation claim을 대신하지 않는다. |
+| `identity.kind` + Governance의 `authority` claim | **정수** | 문서가 프로젝트 시스템인지, 근거 기반 재구성인지, portable brief인지 판단할 수 없다. | §7·§9의 권위 문장과 실제 reference 성격을 대조해 하나를 선언한다. 도구 사용법은 권위 필드가 아니다. |
+| `governance.priority[]` + `application-priority` claim | **정수** | 사용자 지시·저장소 사실·시스템 계약·reference inspiration이 충돌할 때 적용 순서를 결정할 수 없다. | §7·§9의 보편 적용 우선순위만 남긴다. 브랜드별 금지/적용 규칙은 의미에 따라 `experience.avoid[]`, `experience.principles[]` 또는 foundation rule로 보존한다. |
+| `governance.unknown_policy` = `absent-at-smallest-unresolved-boundary` + `unknowns` claim | **정수** | 미확인 값을 그럴듯한 기본값으로 채우는 것을 막을 수 없다. | §7·§9의 unknown 규칙을 정규화한다. placeholder 자체는 옮기지 않는다. |
+| `governance.change_policy[]` + `changes` claim | **정수** | 확장·예외·변경을 어떤 검토 절차로 채택할지 결정할 수 없다. | §7·§9의 보편 변경 규칙만 남긴다. 도구별 실행 절차는 버린다. |
 
-반올림한 비중의 합으로 보면 **정수 60.41%**, **위임 9.87%**, **의심 12.01%**다. 합계 82.29%가 §1–§15의 실측 82.28%와 0.01%p 다른 것은 T1-1 표의 섹션별 비율을 소수 둘째 자리로 반올림해 더했기 때문이다. 이 비율은 목표 파일 크기가 아니라 현재 코퍼스에서 각 판정이 차지한 무게다.
+Core v2의 일곱 안정 섹션 컨테이너는 Structural Core 형식상 필요하지만, 내부 필드는 대부분 optional이다. Typography & Assets, Components & States, Layout & Platforms, Content & Locales의 검증된 계약은 standalone 유용성과 해당 기능 구현에 중요하고 선언했다면 보존해야 한다. 그러나 그것이 곧 legacy §3·§4·§5·§8·§10·§14 전체를 Portable Core **최소 정수**로 만든다는 뜻은 아니다.
+
+### legacy 섹션 판정 철회와 필드별 처리
+
+| legacy 섹션 | 개정 판정 | Core v2 처리 |
+|---|---|---|
+| §1 Visual Theme & Atmosphere | **섹션 정수 철회** | 범위는 `identity.scope`/`experience.summary`, primary task는 `experience.primary_tasks[]`; 검증된 방향·원칙·금지는 Experience의 선택 필드. 나머지 분위기 반복은 버린다. |
+| §2 Color Palette & Roles | **섹션 정수 철회** | 검증된 semantic role/value/rule만 `foundations.tokens`/`foundations.rules`. |
+| §3 Typography Rules | **섹션 정수 철회** | 검증된 역할·메트릭·가용성만 `typography_assets.roles[]`/`rules[]`; 미확인 family 대체 금지. |
+| §4 Component Stylings | **섹션 정수 철회** | 선언할 컴포넌트의 anatomy·variant·semantics·states만 Components & States 본문에 남긴다. exhaustive matrix는 그래프가 실제로 생긴 뒤 `components_states.components[]`에 둘 수 있다. |
+| §5 Layout Principles | **섹션 정수 철회** | 검증된 task priority·reflow·overflow·platform rule만 Layout & Platforms에 남긴다. |
+| §6 Depth & Elevation | **섹션 정수 철회** | 검증된 elevation 값/규칙 또는 flat/border 제약만 `foundations.tokens`/`rules`; 별도 장문 섹션은 필요 없다. |
+| §7 Do's and Don'ts | **섹션 정수 철회** | scope/design 결정은 Experience, 보편 priority·unknown·change 규칙은 Governance로 분해한다. |
+| §8 Responsive Behavior | **섹션 정수 철회** | 검증된 minimum width·reflow·touch·reading order·overflow만 Layout & Platforms에 남긴다. |
+| §9 Agent Prompt Guide | **분해 후 일부 보존·나머지 삭제** | 보편 authority·priority·unknown·change 규칙은 Governance에 남긴다. 근거 있는 브랜드 제약은 의미에 맞는 Experience/Foundation 필드에 남긴다. 도구별 명령, 프롬프트 포장, 작업 절차, 같은 규칙의 도구별 재진술과 예시는 **삭제한다**. 받을 슬롯이 없는 `omd-apply`/adapter로 위임하지 않는다. |
+| §10 Voice & Tone | **섹션 정수 철회** | 검증된 voice·terminology·label·error/recovery·locale behavior만 Content & Locales에 남긴다. |
+| §11 Brand Narrative | **섹션 정수 철회** | 현재 제품/표면 범위를 이해시키는 근거 있는 요약은 `experience.summary`. 근거 있는 서사 깊이·현재 evolution은 reference narrative로 보존할 수 있지만 조건부 맥락이지 Portable Core MUST 필드는 아니다. 출처 원장·freshness는 migration provenance로 분리하고, 현재 계약 해석에 기여하지 않는 연표식 나열만 버린다. |
+| §12 Principles | **섹션 정수 철회** | 검증된 결정 원칙/avoidance만 `experience.principles[]`/`avoid[]`; 일반론은 버린다. |
+| §13 Personas | **의심** | 검증된 audience/task만 Experience에 흡수하고 가상 biography는 버린다. |
+| §14 States | **migration 전 본문 보존** | 현재 카탈로그는 Core v2 그래프가 0개이므로 지금 삭제·그래프 위임하지 않는다. migration 전까지 같은 `DESIGN.md`의 상태 내용으로 보존하고, Core projection의 Components & States에서 컴포넌트별 applicability로 재작성한다. 그래프 채택 후 정확한 경로는 `components_states.components[].interaction.state_applicability`다. |
+| §15 Motion & Easing | **커브만 의심** | 검증된 motion 값/규칙과 reduced-motion은 Foundations에 남긴다. 삭제 대상은 아래 「반박 반영」절에서 확정한 무출처 커브뿐이다. |
+
+## T1-1 수치 — 판정과 분리한 참고
+
+아래 값은 migration 규모·감사 우선순위를 보여주는 참고치다. **정수 여부의 증거도, 삭제 임계값도 아니다.** 특히 종전의 “정수 60.41%”는 legacy 라벨의 바이트 합일 뿐 Portable Core MUST 질량이 아니므로 폐기한다.
+
+| legacy 섹션 | 합계 바이트 / 전체 무게 | 있음 | 플레이스홀더 |
+|---|---:|---:|---:|
+| §1 | 1,012,491B / 8.58% | 440/440 | 0/440 |
+| §2 | 705,682B / 5.98% | 440/440 | 0/440 |
+| §3 | 814,773B / 6.91% | 440/440 | 0/440 |
+| §4 | 1,183,866B / 10.04% | 440/440 | 0/440 |
+| §5 | 444,613B / 3.77% | 440/440 | 0/440 |
+| §6 | 327,347B / 2.78% | 440/440 | 0/440 |
+| §7 | 503,419B / 4.27% | 440/440 | 0/440 |
+| §8 | 367,977B / 3.12% | 440/440 | 2/440 |
+| §9 | 652,089B / 5.53% | 440/440 | 0/440 |
+| §10 | 641,226B / 5.44% | 440/440 | 2/440 |
+| §11 | 650,960B / 5.52% | 440/440 | 1/440 |
+| §12 | 471,379B / 4.00% | 440/440 | 2/440 |
+| §13 | 434,544B / 3.68% | 440/440 | 26/440 |
+| §14 | 511,759B / 4.34% | 439/440 | 14/440 |
+| §15 | 982,162B / 8.33% | 439/440 | 21/440 |
+
+일반 완전일치 반복 105/20,685(0.51%)와 반복 incidence 바이트 21,217/8,866,668(0.24%)도 참고치일 뿐 특정 필드의 고유성 증거가 아니다. 다만 §15의 두 커브 218/440(49.5%), 168/440(38.2%)은 **값 단위 출처 감사의 후보군**을 특정하므로, 정수 판정이 아니라 무출처 커브 교정 범위에만 사용한다.
 
 ## 2. 이징 보일러플레이트 처리 권고
 
@@ -51,25 +82,18 @@
 - **후속 비용:** 삭제 후 소비자가 임의 easing을 다시 브랜드 값으로 쓰지 않는지 검사해야 한다. 구현체가 자체 기본값을 쓰면 그것은 local implementation default로 남아야 하며 DESIGN.md로 역승격되면 안 된다.
 - **선택지 대비:** 선택지 2는 문구 수정 비용은 가장 낮지만 브랜드 계약 오염을 계속 관리해야 하고, 선택지 3은 440개 라이브 모션 캡처·상태 재현·reduced-motion 확인 비용이 가장 크다. 선택지 1은 증거 감사가 필요하지만 unknown 정책과 장기 유지비가 가장 일치한다.
 
-## 3. 위임 대상의 착지점
+## 3. §9와 §14의 실제 착지
 
-새 구조는 필요하지 않다. 현행 Core v2가 이미 “본문은 portable contract, 상세는 graph/sidecar”로 분리하고 있고, 저장소에도 `.omd/system/graph.json`, `provenance.json`, `coverage.json`과 소비자 skill이 존재한다.
-
-| 위임 대상 | 본문에 남는 것 | 구체적 착지점 | 이유 |
+| 대상 | 지금 남길 것 | 지금 버릴 것 | graph 채택 뒤 구조화 경로 |
 |---|---|---|---|
-| §9 Agent Prompt Guide | 모든 소비자에게 공통인 적용 우선순위, unknown=absent, 변경·예외 규칙만 짧은 governance로 남김 | 도구별 명령·예시 프롬프트·작업 절차는 기존 consumer adapter/skill(`skills/omd-apply/`, `skills/omd-harness/` 등). 권위·우선순위의 구조화 값은 `.omd/system/graph.json`의 `governance` | DESIGN.md 단독 사용성은 유지하면서 특정 도구의 사용법이 디자인 계약 5.53%를 차지하는 상태를 끝낸다. 별도 범용 prompt 파일을 새로 만들 이유는 없다. |
-| §14 States | 본문에는 선언된 컴포넌트와 핵심 상태 규칙의 짧은 요약만 §4와 함께 남김 | `.omd/system/graph.json`의 `components_states.components[].states`와 `interaction.state_applicability`; 상태별 출처는 `.omd/system/provenance.json`; 실제 렌더링·접근성 동작은 해당 코드 컴포넌트와 테스트 | 전역 empty/loading/error 표보다 컴포넌트별 default·hover·focus-visible·disabled·loading·error·success의 적용/비적용을 기록해야 unknown을 가장 작은 경계에서 지킬 수 있다. 기존 구조가 이미 이 위치를 제공한다. |
+| §9 Agent Prompt Guide | standalone 문서에 필요한 authority·application priority·unknown-absence·change 규칙. 근거 있는 브랜드별 원칙/금지는 의미에 맞는 Experience 또는 Foundations에 보존 | 도구별 명령, 복붙용 프롬프트, 도구별 workflow, 보편 규칙의 반복 예시. 이는 이동이 아니라 **삭제**다 | `identity.kind`, `governance.priority`, `governance.unknown_policy`, `governance.change_policy`; 브랜드별 규칙은 `experience.principles[]`, `experience.avoid[]` 또는 `foundations.rules[]` |
+| §14 States | 카탈로그에 graph가 생기기 전에는 상태 계약을 같은 `DESIGN.md` 안에 보존한다. Core migration 시 Components & States 본문에서 선언된 컴포넌트별 default·hover·focus-visible·disabled·loading·error·success의 적용/비적용과 이유를 표현한다 | 근거 없이 모든 컴포넌트에 일괄 부여한 상태와 placeholder | `components_states.components[].states` 및 **`components_states.components[].interaction.state_applicability`** |
 
-정수로 판정한 섹션에도 **상세의 위임**은 있다. 이는 섹션 자체를 위임으로 재분류하는 것이 아니다.
-
-- §2·§3·§4·§6의 exhaustive token scale, type role 목록, component matrix, elevation 값은 `.omd/system/graph.json`에 두고 본문에는 알려진 핵심 값과 결정 규칙을 투영한다.
-- §11의 출처 원장·evidence class·freshness는 `.omd/system/provenance.json`, 검증 범위는 `.omd/system/coverage.json`에 둔다. 본문에는 제품·표면 맥락과 구별되는 표현을 남긴다.
-- §13의 검증된 audience/task만 본문 experience로 흡수한다. 가상 biography는 다른 파일로 위임하지 않고 버린다. 허구를 sidecar로 옮겨도 권위가 생기지 않기 때문이다.
-- §15의 검증된 motion value·rule·reduced-motion 여부만 `.omd/system/graph.json`의 foundations와 provenance에 기록하고 본문 foundations에 요약한다. 미입증 값은 별도 파일로 보관하지 않고 가장 작은 필드 단위로 제거한다.
+T1-1에서 Core v2 일치가 0/440이므로 “지금 `.omd/system/graph.json`으로 보낸다”는 실행 지시는 금지한다. 카탈로그 migration은 legacy 본문을 입력으로 보존한 채 canary와 loss report를 거쳐야 하며, graph가 채택되기 전 §14 삭제는 위임이 아니라 유실이다. 상태별 provenance·코드·테스트 연결은 graph가 실제로 생성되고 채택된 뒤에만 추가할 수 있다.
 
 ## 결론
 
-DESIGN.md의 정수는 제품 경험과 방향, semantic foundations, typography/assets, 실행 가능한 component contract, layout/platform behavior, content/voice, 그리고 적용 경계다. legacy 15개 제목을 유지하는 것이 정수가 아니다. §9의 도구별 사용법과 §14의 전역 상태표는 기존 adapter·graph·component로 위임하고, §13의 가상 persona와 §15의 미입증 motion은 권위가 확인될 때까지 본문 계약에서 제외한다.
+DESIGN.md의 최소 정수는 제품/표면 범위, 일차 과업 1개 이상, 실행 가능한 foundation 값·규칙 또는 발명 방지 제약 1개 이상, 그리고 authority·priority·unknown·change의 governance 계약이다. 이는 legacy 섹션의 무게나 완비율로 정해지지 않는다. §9의 도구별 사용법은 받을 곳 없는 위임으로 가장하지 않고 삭제한다. §14 상태 계약은 0/440 graph 상태에서는 본문에 보존하고, migration이 실제로 graph를 채택한 뒤에만 정확한 컴포넌트별 경로로 구조화한다. §13의 가상 persona와 §15의 무출처 커브는 권위를 얻지 못하므로 가장 작은 경계에서 제외한다.
 
 ---
 
@@ -124,3 +148,12 @@ spec/omd-v0.1.md:262
 
 **유지되는 것**: §15 커브 의심, 완전일치 0.51%로 커브 반복을 가리지 말 것,
 가상 persona를 sidecar로 승격하지 말 것.
+
+## 개정 이력 — grok-4.6 반박 4항 대조
+
+| 반박 항목 | 개정 전 | 개정 후 |
+|---|---|---|
+| 1. 정수의 입자 | legacy §1·§4·§6·§11 등을 섹션 전체 정수로 판정 | 네 섹션의 정수 판정을 철회하고 `identity.scope`, `experience.primary_tasks[]`, foundation 최소 그룹, `identity.kind`와 governance의 priority·unknown·change를 Portable Core MUST 입자로 판정 |
+| 2. 완비율·무게의 역할 | 440/440, 플레이스홀더율, 10.04%, “정수 60.41%”가 판정 이유와 섞임 | 판정표에서 수치를 제거하고 별도 「T1-1 수치 — 판정과 분리한 참고」로 이동. “정수 60.41%” 해석 폐기. 커브 출현 수치만 출처 감사 후보군에 사용 |
+| 3. §9 처리 | 도구별 프롬프트·예시를 `omd-apply` 등 adapter/skill로 위임 | 보편 governance와 근거 있는 브랜드 규칙만 의미별 Core 필드에 보존. 받을 슬롯이 없는 도구별 명령·프롬프트·workflow·반복 예시는 위임이 아니라 삭제라고 명시 |
+| 4. §14 착지 | `interaction.state_applicability`로 부정확하게 표기하고 즉시 graph 위임 | 정확한 경로를 `components_states.components[].interaction.state_applicability`로 수정. Core v2 graph 0/440인 동안 같은 `DESIGN.md`에 보존하고, graph 채택 뒤에만 구조화하도록 migration 순서 명시 |

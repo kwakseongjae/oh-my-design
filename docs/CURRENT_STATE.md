@@ -4,8 +4,9 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: active Luna epoch source `caf0e62d3e98684d482c56a2bbe3ef93a05ea873` (exact Codex 0.147 cache serialization); immutable diagnostic Luna epochs `f6cd17e2`, `253a3abc`, `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
-- 갱신: 2026-08-22 · T1-2 정수 판정 반박 = **REVISE**. 정본 `docs/reviews/essence-verdict-2026-08-22-rebuttal.md`. 섹션 단위 정수 11개·§9 skill 착지·duration/signature 일괄 삭제는 수치·Core v2와 어긋남. §15 무출처 커브 삭제는 유지. T1-3/카탈로그 삭제는 개정 전까지 닫힘.
-- 갱신: 2026-08-22 · T3-2 `test-v2/90-comparison/RUBRIC.md` 3차 반박 = **FREEZE**. 2차 남은 2항은 본문 반영(N1–N5 재분류 삭제·원문 순서 보존, 합친 `B_raw` PASS 킬 삭제·형식 단서만 `COMPROMISED`). 정본: `docs/reviews/rubric-2026-08-22-rebuttal-3.md`. `RUBRIC_FROZEN_SHA`는 §9 나머지 게이트가 채워진 커밋에서 기록. 그 전 T3-3 닫힘.
+- 갱신: 2026-08-22 · T3-2 동결 이후 모델 평가자 개정 = **BLOCK**. 사용자 결정(사람 없음, grok-4.6·sol·sonnet5)은 수용. 개정 본문은 채택하지 않음 — 주장 축소가 식별력 한 축뿐, §4·§7·§9는 인간 5명, 자기채점 금지+3 평가자는 같이 두면 실험 불성립, α 파일럿 후 조정은 동결 배너와 모순. 정본: `docs/reviews/rubric-2026-08-22-model-rater-amendment.md`. T3-3·`RUBRIC_FROZEN_SHA` 닫힘.
+- 갱신: 2026-08-22 · T1-2 **REVISE 4항 개정 완료, 재검토 대기**. `docs/design-md-weight/2026-08-22-essence-verdict.md`를 Portable Core MUST 필드/그룹 판정으로 재작성하고 §1·§4·§6·§11 섹션 정수를 철회했다. 완비율·무게는 참고표로 분리, §9의 받을 곳 없는 도구 예시는 삭제, §14는 0/440 graph 동안 본문 보존 후 `components_states.components[].interaction.state_applicability`로 migration한다고 고정했다. 「반박 반영」과 이징 판정은 보존. T1-3은 재검토 전까지 닫힘.
+- 갱신: 2026-08-22 · T3-2 `test-v2/90-comparison/RUBRIC.md` 3차 반박 = **FREEZE**. 2차 남은 2항은 본문 반영(N1–N5 재분류 삭제·원문 순서 보존, 합친 `B_raw` PASS 킬 삭제·형식 단서만 `COMPROMISED`). 정본: `docs/reviews/rubric-2026-08-22-rebuttal-3.md`. 이후 모델 평가자 개정은 BLOCK(위). `RUBRIC_FROZEN_SHA`는 §9 나머지 게이트가 채워진 커밋에서 기록. 그 전 T3-3 닫힘.
 - 갱신: 2026-08-22 · 3트랙 계획 개정본 최종 승인 = **APPROVE_WITH_CONDITIONS**. 지금 열리는 것: T3-0 측정기 교정, 기존 musinsa/coupang PNG 보존, T1-1 440 무게 실측. T3-1 이후·T1-2 이후·T2는 조건 C1–C7 전까지 닫힘. 정본 판정: `docs/reviews/3track-plan-2026-08-22-grok-approval.md`. 계획 `docs/OMD_3TRACK_PLAN.md`의 **다음 행동은 실행 지시가 아님** (T3-2를 왕복으로 적음).
 - 갱신: 2026-08-14 저녁 · **사용자 결정으로 Luna·Sol 전면 은퇴.** caf0 partial epoch(terminal4/missing44)는 8/20 재개하지 않고 immutable diagnostic으로 영구 동결한다. 벤치마크는 grok-4.6 트랙으로 0셀부터 재시작하며 정본 seed는 `docs/OMD_2_0_GROK_RESTART_SEED.md`(= `~/.ouroboros/seeds/omd-grok46-restart-v0.1.md`)다. 이전 caf0 기록: order1 model-only=completed/50, order2 Anthropic=failed/0, order3 Impeccable=timeout/0, order4 UI UX Pro Max=usage-limit infra-invalid/0.
 - 역할 라우팅(개정): 기획·검수·오케스트레이션=Claude Fable, 구현 워커·독립 리뷰=grok-4.6(grok-fleet), 벤치마크 MUT=grok-4.6(격리 run-grok lane), 워크플로우 구조화=Ouroboros. 정본은 docs/PROVIDER_ROUTING_POLICY.md.
@@ -13,13 +14,23 @@
 
 ## 지금 (현재 위치)
 
-### 2026-08-22 (grok-4.6) 📋 T1-2 정수 판정 반박 — REVISE
+### 2026-08-22 (grok-4.6) ⛔ T3-2 동결 이후 모델 평가자 개정 — BLOCK
+
+- **대상**: `test-v2/90-comparison/RUBRIC.md` §3 개정 + §4 축 이름. 대조 FREEZE `docs/reviews/rubric-2026-08-22-rebuttal-3.md`.
+- **판정 기록**: `docs/reviews/rubric-2026-08-22-model-rater-amendment.md`.
+- **수용**: 사람 평가자 없음. 평가자 3종 grok-4.6 · sol · sonnet5.
+- **거절**: 이 개정 본문을 동결 본문으로 채택. 식별력만 주장 축소, §4 표는 여전히 인간 9지선다, 회피 1건이면 남은 2로 전항 무효, α는 파일럿 보고 정함.
+- **연 것**: 없음. 재제출 5항은 판정 기록 §6.
+- **닫은 것**: T3-3, `RUBRIC_FROZEN_SHA`. 동결 본문은 3차 FREEZE 본문(인간 5명 규칙)으로 남김 — 사용자 결정과 어긋나므로 그 본문으로 T3-3도 열지 않음.
+- **다음**: §4·§7·§9를 3종에 맞추고, 계열 경계+생성 모델 표+회피 후 3 미만 칸을 지금 열거하고, α를 파일럿 전에 고정한 뒤 재승인.
+
+### 2026-08-22 (Codex) ✅ T1-2 정수 판정 4항 개정 — 재검토 대기
 
 - **대상**: `docs/design-md-weight/2026-08-22-essence-verdict.md`. 대조 T1-1 `2026-08-22-survey.md`, Core v2 `spec/design-md-core-v2.md`.
-- **판정 기록**: `docs/reviews/essence-verdict-2026-08-22-rebuttal.md`.
-- **유지**: §15 커브 의심, 무출처 커브 삭제(선택지 1), 가상 persona sidecar 금지, 완전일치 0.51%로 커브 반복을 가리지 말 것.
-- **개정 5항**: 정수=Portable Core MUST 필드; §1·§4·§6·§11 섹션 정수 철회; 완비율을 정수 증거로 쓰지 말 것; §9 브랜드는 본문 governance; §14 경로는 `components[].interaction.state_applicability` + 카탈로그 0그래프에서 즉시 위임 금지; 이징 삭제는 커브만 + 라이터/`omd-feel` 재주입 차단.
-- **연 것**: 판정문 개정. **닫은 것**: 개정 전 T1-3·카탈로그 §15 일괄 삭제.
+- **반박 기록**: `docs/reviews/t1-2-essence-2026-08-22-rebuttal.md`.
+- **개정**: Portable Core MUST 7개 입자로 재판정; 모든 legacy 섹션 전체 정수 판정 철회; T1-1 완비율·무게 별도 참고화; §9 보존/삭제 경계 명시; §14 정확 경로와 migration 전 본문 보존 명시.
+- **보호**: 기존 「반박 반영」절과 확정된 이징 판정은 수정하지 않음. 문서 끝에 4항 대조표 추가.
+- **다음**: 개정본 재검토. 그 전 T1-3은 닫힘.
 
 ### 2026-08-22 (Fable) T3 증거 캡처 9/9 완료 · 루브릭 규칙 동결 (SHA 미기록)
 
