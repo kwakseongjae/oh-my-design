@@ -1,0 +1,333 @@
+{
+  "brand": "toss",
+  "capturedAt": "2026-08-22T11:51:27.680Z",
+  "source": {
+    "url": "https://toss.im/",
+    "status": 200,
+    "finalUrl": "https://toss.im/",
+    "title": "토스"
+  },
+  "method": {
+    "channel": "playwright",
+    "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
+    "imagerySamplesRequested": 12,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "locale": "ko-KR",
+    "colorScheme": "light"
+  },
+  "chrome": {
+    "pageBackgroundComputed": null,
+    "bodyColor": "#000000",
+    "header": {
+      "detectedBy": "geometry",
+      "background": null,
+      "heightPx": 64,
+      "borderBottom": null
+    },
+    "primaryButton": {
+      "fill": "solid",
+      "background": "#07194c",
+      "color": "#333840",
+      "radiusPx": 12,
+      "paddingY": 10,
+      "paddingX": 12,
+      "fontPx": 16,
+      "weight": "500",
+      "label": "앱\n \n다\n운\n로\n드\n앱\n \n다\n운\n로\n드",
+      "repeats": 1
+    },
+    "typeScale": [
+      {
+        "tag": "h2",
+        "fontPx": 80,
+        "weight": "700",
+        "family": "Toss Product Sans OTF",
+        "lineHeight": "96px",
+        "letterSpacing": "normal",
+        "color": "#ffffff"
+      },
+      {
+        "tag": "p",
+        "fontPx": 16,
+        "weight": "400",
+        "family": "Toss Product Sans OTF",
+        "lineHeight": "25.6px",
+        "letterSpacing": "-0.32px",
+        "color": "#ffffff"
+      },
+      {
+        "tag": "button",
+        "fontPx": 16,
+        "weight": "500",
+        "family": "Toss Product Sans OTF",
+        "lineHeight": "25.6px",
+        "letterSpacing": "-0.32px",
+        "color": "#333840"
+      }
+    ],
+    "notes": {
+      "buttonCandidatesAboveFold": 1,
+      "headerDetectedBy": "geometry"
+    },
+    "pageBackgroundRendered": {
+      "resolved": true,
+      "hex": "#fefdfe",
+      "coverage": 0.1671,
+      "source": "modal colour of the captured viewport"
+    }
+  },
+  "imagery": {
+    "sampled": 2,
+    "samples": [
+      {
+        "src": "https://static.toss.im/assets/toss-im/asset/intro-main.mp4",
+        "kind": "video",
+        "alt": "",
+        "docBox": {
+          "x": -151.4666748046875,
+          "y": -17.199996948242188,
+          "w": 1732.2667236328125,
+          "h": 974.4000244140625
+        },
+        "aspect": 1.778,
+        "areaShare": 1.3024,
+        "intrinsic": {
+          "w": 1920,
+          "h": 1080
+        },
+        "clipped": true,
+        "file": "capture/imagery-01.png",
+        "palette": [
+          {
+            "hex": "#fefdfe",
+            "coverage": 0.1563,
+            "saturation": 0.004,
+            "luma": 0.993
+          },
+          {
+            "hex": "#f3f5fa",
+            "coverage": 0.0448,
+            "saturation": 0.028,
+            "luma": 0.961
+          },
+          {
+            "hex": "#e5ebf2",
+            "coverage": 0.0424,
+            "saturation": 0.054,
+            "luma": 0.919
+          },
+          {
+            "hex": "#eaeef5",
+            "coverage": 0.0362,
+            "saturation": 0.045,
+            "luma": 0.932
+          },
+          {
+            "hex": "#ebf1f7",
+            "coverage": 0.0309,
+            "saturation": 0.049,
+            "luma": 0.942
+          },
+          {
+            "hex": "#7a848c",
+            "coverage": 0.0241,
+            "saturation": 0.129,
+            "luma": 0.512
+          }
+        ],
+        "light": {
+          "meanLuma": 0.654,
+          "p05": 0.049,
+          "p50": 0.765,
+          "p95": 1,
+          "dynamicRange": 0.951,
+          "gradient": {
+            "dx": -0.266,
+            "dy": -0.142
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 2.5
+        }
+      },
+      {
+        "src": "canvas@0,1710",
+        "kind": "canvas",
+        "alt": "",
+        "docBox": {
+          "x": 0,
+          "y": 1710,
+          "w": 1440,
+          "h": 900
+        },
+        "aspect": 1.6,
+        "areaShare": 1,
+        "intrinsic": {
+          "w": 2160,
+          "h": 1350
+        },
+        "clipped": false,
+        "file": "capture/imagery-02.png",
+        "palette": [
+          {
+            "hex": "#fcf9fd",
+            "coverage": 0.0853,
+            "saturation": 0.016,
+            "luma": 0.98
+          },
+          {
+            "hex": "#f3f5fa",
+            "coverage": 0.0493,
+            "saturation": 0.028,
+            "luma": 0.961
+          },
+          {
+            "hex": "#e5ebf2",
+            "coverage": 0.0484,
+            "saturation": 0.054,
+            "luma": 0.919
+          },
+          {
+            "hex": "#eaeef5",
+            "coverage": 0.0358,
+            "saturation": 0.045,
+            "luma": 0.932
+          },
+          {
+            "hex": "#ecf1f7",
+            "coverage": 0.0277,
+            "saturation": 0.045,
+            "luma": 0.943
+          },
+          {
+            "hex": "#010204",
+            "coverage": 0.0254,
+            "saturation": 0.75,
+            "luma": 0.008
+          }
+        ],
+        "light": {
+          "meanLuma": 0.596,
+          "p05": 0.056,
+          "p50": 0.533,
+          "p95": 0.979,
+          "dynamicRange": 0.923,
+          "gradient": {
+            "dx": -0.29,
+            "dy": -0.192
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 121
+        }
+      }
+    ],
+    "aggregate": {
+      "meanLuma": 0.654,
+      "dynamicRange": 0.951,
+      "luminanceGradients": {
+        "brighter left": 2
+      },
+      "aspects": 1.778,
+      "figureGroundResolved": "0/2",
+      "subjectNote": "fewer than 4 resolved samples — placement omitted"
+    }
+  },
+  "motion": {
+    "present": true,
+    "autoplay": true,
+    "loop": true,
+    "muted": true,
+    "poster": "https://static.toss.im/assets/toss-im/asset/intro-main-poster.webp",
+    "src": "https://static.toss.im/assets/toss-im/asset/intro-main.mp4",
+    "duration": 4.05,
+    "box": {
+      "w": 1.1111,
+      "h": 1
+    },
+    "aspect": 1.778,
+    "intrinsic": {
+      "w": 1920,
+      "h": 1080
+    },
+    "sampled": 8,
+    "frameDistances": [
+      {
+        "from": 0.25,
+        "to": 0.76,
+        "delta": 0.0007
+      },
+      {
+        "from": 0.76,
+        "to": 1.27,
+        "delta": 0.0005
+      },
+      {
+        "from": 1.27,
+        "to": 1.77,
+        "delta": 0.0009
+      },
+      {
+        "from": 1.77,
+        "to": 2.28,
+        "delta": 0.0006
+      },
+      {
+        "from": 2.28,
+        "to": 2.78,
+        "delta": 0.0007
+      },
+      {
+        "from": 2.78,
+        "to": 3.29,
+        "delta": 0.0112
+      },
+      {
+        "from": 3.29,
+        "to": 3.8,
+        "delta": 0.0107
+      }
+    ],
+    "motionMagnitude": 0.0036,
+    "cutCount": 0,
+    "cutsAt": [],
+    "shotLengthSec": 4.05
+  },
+  "mobile": {
+    "chrome": {
+      "pageBackgroundComputed": null,
+      "bodyColor": "#000000",
+      "header": {
+        "detectedBy": "geometry",
+        "background": null,
+        "heightPx": 56,
+        "borderBottom": null
+      },
+      "primaryButton": null,
+      "typeScale": [
+        {
+          "tag": "h2",
+          "fontPx": 40,
+          "weight": "700",
+          "family": "Toss Product Sans OTF",
+          "lineHeight": "46px",
+          "letterSpacing": "normal",
+          "color": "#ffffff"
+        }
+      ],
+      "notes": {
+        "buttonCandidatesAboveFold": 0,
+        "headerDetectedBy": "geometry"
+      }
+    }
+  }
+}

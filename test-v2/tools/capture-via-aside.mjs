@@ -29,7 +29,7 @@ import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
-import { aggregateSubject, cropTo, light, median, palette, subject, toRgb } from "./analysis.mjs";
+import { aggregateSubject, cropTo, light, median, palette, renderedCanvas, subject, toRgb } from "./analysis.mjs";
 
 const execFileAsync = promisify(execFile);
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -157,8 +157,13 @@ for (let pass = 0; pass < 3; pass++) {
   const imagery = [];
   for (const el of document.querySelectorAll("img")) {
     const r = el.getBoundingClientRect();
-    // Only what is wholly inside this screen — the crop comes out of this shot.
-    if (r.top < 0 || r.bottom > vh || r.width < 160 || r.height < 160) continue;
+    // A hero taller than the viewport is the most important image on the page,
+    // and requiring "wholly inside this screen" threw exactly those away —
+    // Apple has sixteen large images above the fold and one that fits. Take the
+    // visible part and say that is what was measured.
+    if (r.bottom <= 0 || r.top >= vh || r.width < 160) continue;
+    const visibleH = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+    if (visibleH < 160) continue;
     if (Math.min(r.right, vw) - Math.max(r.left, 0) < r.width * 0.9) continue;
     const src = el.currentSrc || el.src;
     if (!src) continue;
@@ -166,7 +171,8 @@ for (let pass = 0; pass < 3; pass++) {
       src, alt: (el.alt || "").slice(0, 80),
       box: { x: +(r.x / vw).toFixed(4), y: +(r.y / vh).toFixed(4), w: +(r.width / vw).toFixed(4), h: +(r.height / vh).toFixed(4) },
       // Device pixels, because the crop happens against the raw screenshot.
-      pixelBox: { x: Math.max(0, r.x * dpr), y: Math.max(0, r.y * dpr), w: r.width * dpr, h: r.height * dpr },
+      pixelBox: { x: Math.max(0, r.x * dpr), y: Math.max(0, r.top, 0) * dpr, w: r.width * dpr, h: visibleH * dpr },
+      clipped: r.top < 0 || r.bottom > vh,
       aspect: +(r.width / r.height).toFixed(3),
       areaShare: +((r.width * r.height) / (vw * vh)).toFixed(4),
       firstScreen: r.top < vh,
@@ -261,6 +267,7 @@ const evidence = {
   source: { url },
   method: {
     channel: "aside",
+    colorScheme: "browser profile default — not controllable through Aside (CDP Emulation domain unavailable)",
     why: "site refuses automated browsers; Playwright receives 403 Access Denied",
     note: "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
     imagerySamplesRequested: IMAGERY_SAMPLES,
@@ -301,9 +308,7 @@ try {
   const firstShot = shots.get(0);
   if (firstShot) {
     const [dominant] = palette(await toRgb(firstShot, 200));
-    evidence.chrome.pageBackgroundRendered = dominant
-      ? { hex: dominant.hex, coverage: dominant.coverage, source: "modal colour of the captured viewport" }
-      : null;
+    evidence.chrome.pageBackgroundRendered = renderedCanvas(dominant);
   }
 
   // Same treatment as the page canvas: when CSS says transparent, the header's

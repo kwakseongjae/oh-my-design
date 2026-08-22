@@ -1,6 +1,6 @@
 {
   "brand": "coupang",
-  "capturedAt": "2026-08-22T10:50:30.144Z",
+  "capturedAt": "2026-08-22T11:54:47.715Z",
   "source": {
     "url": "https://www.coupang.com/",
     "finalUrl": "https://www.coupang.com/",
@@ -8,6 +8,7 @@
   },
   "method": {
     "channel": "aside",
+    "colorScheme": "browser profile default — not controllable through Aside (CDP Emulation domain unavailable)",
     "why": "site refuses automated browsers; Playwright receives 403 Access Denied",
     "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
     "imagerySamplesRequested": 12,
@@ -65,8 +66,9 @@
       "headerDetectedBy": "geometry"
     },
     "pageBackgroundRendered": {
+      "resolved": true,
       "hex": "#fefefe",
-      "coverage": 0.357,
+      "coverage": 0.3585,
       "source": "modal colour of the captured viewport"
     }
   },
@@ -78,7 +80,7 @@
     "sampled": 12,
     "samples": [
       {
-        "src": "https://static.coupangcdn.com/ya/cmg_paperboy/image/1786689547420/PC.jpg",
+        "src": "https://image7.coupangcdn.com/image/ccm/banner/7b3e8e609febb599ae0c9f38900b90a2.jpg",
         "alt": "",
         "box": {
           "x": 0,
@@ -92,6 +94,7 @@
           "w": 2880,
           "h": 900
         },
+        "clipped": false,
         "aspect": 3.2,
         "areaShare": 0.5,
         "firstScreen": true,
@@ -103,68 +106,220 @@
         "file": "capture/imagery-01.png",
         "palette": [
           {
-            "hex": "#e6cbcb",
-            "coverage": 0.2115,
-            "saturation": 0.117,
-            "luma": 0.819
+            "hex": "#e4eaed",
+            "coverage": 0.1234,
+            "saturation": 0.038,
+            "luma": 0.913
           },
           {
-            "hex": "#f1dcdc",
-            "coverage": 0.1536,
-            "saturation": 0.087,
-            "luma": 0.88
+            "hex": "#dce2e6",
+            "coverage": 0.086,
+            "saturation": 0.043,
+            "luma": 0.882
           },
           {
-            "hex": "#ebd3d5",
-            "coverage": 0.0951,
-            "saturation": 0.102,
-            "luma": 0.848
-          },
-          {
-            "hex": "#ecd5d9",
-            "coverage": 0.0846,
-            "saturation": 0.097,
-            "luma": 0.856
-          },
-          {
-            "hex": "#eedadc",
-            "coverage": 0.0659,
-            "saturation": 0.084,
-            "luma": 0.872
+            "hex": "#e1e6ea",
+            "coverage": 0.0553,
+            "saturation": 0.038,
+            "luma": 0.899
           },
           {
             "hex": "#fefefe",
-            "coverage": 0.055,
+            "coverage": 0.053,
             "saturation": 0,
             "luma": 0.996
+          },
+          {
+            "hex": "#c4cacd",
+            "coverage": 0.0465,
+            "saturation": 0.044,
+            "luma": 0.788
+          },
+          {
+            "hex": "#d4dadd",
+            "coverage": 0.0455,
+            "saturation": 0.041,
+            "luma": 0.851
           }
         ],
         "light": {
-          "meanLuma": 0.796,
-          "p05": 0.391,
-          "p50": 0.842,
-          "p95": 0.989,
-          "dynamicRange": 0.598,
+          "meanLuma": 0.815,
+          "p05": 0.274,
+          "p50": 0.87,
+          "p95": 0.983,
+          "dynamicRange": 0.709,
           "gradient": {
-            "dx": -0.043,
-            "dy": -0.003
+            "dx": -0.126,
+            "dy": -0.023
           },
           "luminanceGradient": "brighter left"
         },
         "subject": {
-          "resolved": true,
-          "backgroundHex": "#e9d0d1",
-          "center": {
-            "x": 0.5901,
-            "y": 0.5043
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 25.8
+        }
+      },
+      {
+        "src": "https://static.coupangcdn.com/ja/cmg_paperboy/image/1787206475089/C2-1.jpeg",
+        "alt": "",
+        "box": {
+          "x": 0.1563,
+          "y": -0.1367,
+          "w": 0.3382,
+          "h": 0.3445
+        },
+        "pixelBox": {
+          "x": 450,
+          "y": 0,
+          "w": 974,
+          "h": 374.1875
+        },
+        "clipped": true,
+        "aspect": 1.57,
+        "areaShare": 0.1165,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 468,
+          "h": 298
+        },
+        "pass": 1,
+        "file": "capture/imagery-02.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.7764,
+            "saturation": 0,
+            "luma": 1
           },
-          "box": {
-            "x": 0.1437,
-            "y": 0.1,
-            "w": 0.7,
-            "h": 0.88
+          {
+            "hex": "#f2f2f2",
+            "coverage": 0.0345,
+            "saturation": 0,
+            "luma": 0.949
           },
-          "coverage": 0.2501
+          {
+            "hex": "#cfcfd0",
+            "coverage": 0.0088,
+            "saturation": 0.005,
+            "luma": 0.812
+          },
+          {
+            "hex": "#cccccd",
+            "coverage": 0.0084,
+            "saturation": 0.005,
+            "luma": 0.8
+          },
+          {
+            "hex": "#ebebeb",
+            "coverage": 0.0064,
+            "saturation": 0,
+            "luma": 0.922
+          },
+          {
+            "hex": "#e4e4e4",
+            "coverage": 0.0055,
+            "saturation": 0,
+            "luma": 0.894
+          }
+        ],
+        "light": {
+          "meanLuma": 0.917,
+          "p05": 0.322,
+          "p50": 1,
+          "p95": 1,
+          "dynamicRange": 0.678,
+          "gradient": {
+            "dx": -0.052,
+            "dy": 0.054
+          },
+          "luminanceGradient": "brighter bottom"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 31.4
+        }
+      },
+      {
+        "src": "https://static.coupangcdn.com/xa/cmg_paperboy/image/1787034819047/C2-2.jpeg",
+        "alt": "",
+        "box": {
+          "x": 0.5028,
+          "y": -0.1367,
+          "w": 0.3382,
+          "h": 0.3445
+        },
+        "pixelBox": {
+          "x": 1448,
+          "y": 0,
+          "w": 974,
+          "h": 374.1875
+        },
+        "clipped": true,
+        "aspect": 1.57,
+        "areaShare": 0.1165,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 468,
+          "h": 298
+        },
+        "pass": 1,
+        "file": "capture/imagery-03.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.5864,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#ecebeb",
+            "coverage": 0.0344,
+            "saturation": 0.004,
+            "luma": 0.922
+          },
+          {
+            "hex": "#f2f2f2",
+            "coverage": 0.0332,
+            "saturation": 0,
+            "luma": 0.949
+          },
+          {
+            "hex": "#cc3529",
+            "coverage": 0.0186,
+            "saturation": 0.799,
+            "luma": 0.33
+          },
+          {
+            "hex": "#cb3226",
+            "coverage": 0.0177,
+            "saturation": 0.813,
+            "luma": 0.32
+          },
+          {
+            "hex": "#ceced1",
+            "coverage": 0.0111,
+            "saturation": 0.014,
+            "luma": 0.809
+          }
+        ],
+        "light": {
+          "meanLuma": 0.833,
+          "p05": 0.29,
+          "p50": 1,
+          "p95": 1,
+          "dynamicRange": 0.71,
+          "gradient": {
+            "dx": -0.2,
+            "dy": 0.206
+          },
+          "luminanceGradient": "brighter bottom"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 47.9
         }
       },
       {
@@ -182,6 +337,7 @@
           "w": 974,
           "h": 620.1875
         },
+        "clipped": false,
         "aspect": 1.57,
         "areaShare": 0.1165,
         "firstScreen": true,
@@ -190,7 +346,7 @@
           "h": 298
         },
         "pass": 1,
-        "file": "capture/imagery-02.png",
+        "file": "capture/imagery-04.png",
         "palette": [
           {
             "hex": "#ffffff",
@@ -262,6 +418,7 @@
           "w": 475,
           "h": 620.828125
         },
+        "clipped": false,
         "aspect": 0.765,
         "areaShare": 0.0569,
         "firstScreen": true,
@@ -270,7 +427,7 @@
           "h": 298
         },
         "pass": 1,
-        "file": "capture/imagery-03.png",
+        "file": "capture/imagery-05.png",
         "palette": [
           {
             "hex": "#ffffff",
@@ -342,6 +499,7 @@
           "w": 475,
           "h": 620.828125
         },
+        "clipped": false,
         "aspect": 0.765,
         "areaShare": 0.0569,
         "firstScreen": true,
@@ -350,7 +508,7 @@
           "h": 298
         },
         "pass": 1,
-        "file": "capture/imagery-04.png",
+        "file": "capture/imagery-06.png",
         "palette": [
           {
             "hex": "#ffffff",
@@ -422,6 +580,7 @@
           "w": 475,
           "h": 620.828125
         },
+        "clipped": false,
         "aspect": 0.765,
         "areaShare": 0.0569,
         "firstScreen": true,
@@ -430,7 +589,7 @@
           "h": 298
         },
         "pass": 1,
-        "file": "capture/imagery-05.png",
+        "file": "capture/imagery-07.png",
         "palette": [
           {
             "hex": "#ffffff",
@@ -502,6 +661,7 @@
           "w": 475,
           "h": 620.828125
         },
+        "clipped": false,
         "aspect": 0.765,
         "areaShare": 0.0569,
         "firstScreen": true,
@@ -510,7 +670,7 @@
           "h": 298
         },
         "pass": 1,
-        "file": "capture/imagery-06.png",
+        "file": "capture/imagery-08.png",
         "palette": [
           {
             "hex": "#ffffff",
@@ -592,6 +752,7 @@
           "w": 475,
           "h": 620.828125
         },
+        "clipped": false,
         "aspect": 0.765,
         "areaShare": 0.0569,
         "firstScreen": true,
@@ -600,7 +761,7 @@
           "h": 298
         },
         "pass": 1,
-        "file": "capture/imagery-07.png",
+        "file": "capture/imagery-09.png",
         "palette": [
           {
             "hex": "#ffffff",
@@ -672,6 +833,7 @@
           "w": 475,
           "h": 620.828125
         },
+        "clipped": false,
         "aspect": 0.765,
         "areaShare": 0.0569,
         "firstScreen": true,
@@ -680,7 +842,7 @@
           "h": 298
         },
         "pass": 1,
-        "file": "capture/imagery-08.png",
+        "file": "capture/imagery-10.png",
         "palette": [
           {
             "hex": "#ffffff",
@@ -738,8 +900,8 @@
         }
       },
       {
-        "src": "https://thumbnail.coupangcdn.com/thumbnails/remote/292x292ex/image/retail/images/785828819303658-305bdd74-00fb-4bf3-8727-b35b9f1ef975.jpg",
-        "alt": "코코팜 화이트 요구르트, 340ml, 24개",
+        "src": "https://thumbnail.coupangcdn.com/thumbnails/remote/292x292ex/image/retail/images/239522928500786-a051b030-b308-4a92-894b-434b6db4a9dc.jpg",
+        "alt": "펩시 제로슈거 라임향, 1.5L, 24개",
         "box": {
           "x": 0.1507,
           "y": 0.0532,
@@ -752,6 +914,7 @@
           "w": 404,
           "h": 404
         },
+        "clipped": false,
         "aspect": 1,
         "areaShare": 0.0315,
         "firstScreen": true,
@@ -760,66 +923,76 @@
           "h": 292
         },
         "pass": 2,
-        "file": "capture/imagery-09.png",
+        "file": "capture/imagery-11.png",
         "palette": [
           {
             "hex": "#ffffff",
-            "coverage": 0.4414,
+            "coverage": 0.4662,
             "saturation": 0,
             "luma": 1
           },
           {
-            "hex": "#dcdcdc",
-            "coverage": 0.0059,
-            "saturation": 0,
-            "luma": 0.863
+            "hex": "#341413",
+            "coverage": 0.0063,
+            "saturation": 0.635,
+            "luma": 0.105
           },
           {
-            "hex": "#4ca3cc",
-            "coverage": 0.0053,
-            "saturation": 0.627,
-            "luma": 0.578
+            "hex": "#3b1514",
+            "coverage": 0.0061,
+            "saturation": 0.661,
+            "luma": 0.114
           },
           {
-            "hex": "#f3f4f3",
-            "coverage": 0.0053,
-            "saturation": 0.004,
-            "luma": 0.956
-          },
-          {
-            "hex": "#e3e3e3",
-            "coverage": 0.0052,
-            "saturation": 0,
-            "luma": 0.89
-          },
-          {
-            "hex": "#4394c4",
+            "hex": "#fdfef5",
             "coverage": 0.005,
-            "saturation": 0.658,
-            "luma": 0.526
+            "saturation": 0.035,
+            "luma": 0.993
+          },
+          {
+            "hex": "#431513",
+            "coverage": 0.0046,
+            "saturation": 0.716,
+            "luma": 0.12
+          },
+          {
+            "hex": "#5b1a14",
+            "coverage": 0.0033,
+            "saturation": 0.78,
+            "luma": 0.154
           }
         ],
         "light": {
-          "meanLuma": 0.832,
-          "p05": 0.531,
-          "p50": 0.893,
+          "meanLuma": 0.652,
+          "p05": 0.097,
+          "p50": 0.831,
           "p95": 1,
-          "dynamicRange": 0.469,
+          "dynamicRange": 0.903,
           "gradient": {
-            "dx": -0.013,
-            "dy": 0.035
+            "dx": 0.007,
+            "dy": -0.016
           },
           "luminanceGradient": "even"
         },
         "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 0.6
+          "resolved": true,
+          "backgroundHex": "#ffffff",
+          "center": {
+            "x": 0.451,
+            "y": 0.5185
+          },
+          "box": {
+            "x": 0.05,
+            "y": 0.0938,
+            "w": 0.8938,
+            "h": 0.8187
+          },
+          "coverage": 0.25
         }
       },
       {
-        "src": "https://thumbnail.coupangcdn.com/thumbnails/remote/292x292ex/image/retail/images/2026/03/12/18/9/cf20f4f7-4072-40ba-a1b7-aed4320d78be.jpg",
-        "alt": "몬스터에너지 드링크 울트라 판타지 루비 레드, 24개, 355ml",
+        "src": "https://thumbnail.coupangcdn.com/thumbnails/remote/292x292ex/image/retail/images/2024/11/14/18/8/4f383d10-2130-40c3-a719-24f69dde986a.jpg",
+        "alt": "해태htb 포도 봉봉 제로, 340ml, 24개",
         "box": {
           "x": 0.3278,
           "y": 0.0532,
@@ -832,176 +1005,7 @@
           "w": 404,
           "h": 404
         },
-        "aspect": 1,
-        "areaShare": 0.0315,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 292,
-          "h": 292
-        },
-        "pass": 2,
-        "file": "capture/imagery-10.png",
-        "palette": [
-          {
-            "hex": "#ffffff",
-            "coverage": 0.2407,
-            "saturation": 0,
-            "luma": 1
-          },
-          {
-            "hex": "#b4648d",
-            "coverage": 0.0319,
-            "saturation": 0.444,
-            "luma": 0.47
-          },
-          {
-            "hex": "#bb6b94",
-            "coverage": 0.0178,
-            "saturation": 0.428,
-            "luma": 0.498
-          },
-          {
-            "hex": "#b56591",
-            "coverage": 0.0152,
-            "saturation": 0.442,
-            "luma": 0.475
-          },
-          {
-            "hex": "#bb6592",
-            "coverage": 0.0149,
-            "saturation": 0.46,
-            "luma": 0.481
-          },
-          {
-            "hex": "#b46a92",
-            "coverage": 0.0123,
-            "saturation": 0.411,
-            "luma": 0.489
-          }
-        ],
-        "light": {
-          "meanLuma": 0.566,
-          "p05": 0.163,
-          "p50": 0.481,
-          "p95": 1,
-          "dynamicRange": 0.837,
-          "gradient": {
-            "dx": -0.019,
-            "dy": 0.042
-          },
-          "luminanceGradient": "brighter bottom"
-        },
-        "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 0.8
-        }
-      },
-      {
-        "src": "https://thumbnail.coupangcdn.com/thumbnails/remote/292x292ex/image/retail/images/457316668053458-b3c93065-1aa9-4ebd-88f6-e984eb66b1fa.jpg",
-        "alt": "몬스터에너지 울트라 시트라, 355ml, 24개",
-        "box": {
-          "x": 0.5049,
-          "y": 0.0532,
-          "w": 0.1403,
-          "h": 0.2244
-        },
-        "pixelBox": {
-          "x": 1454,
-          "y": 95.84375,
-          "w": 404,
-          "h": 404
-        },
-        "aspect": 1,
-        "areaShare": 0.0315,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 292,
-          "h": 292
-        },
-        "pass": 2,
-        "file": "capture/imagery-11.png",
-        "palette": [
-          {
-            "hex": "#fffffe",
-            "coverage": 0.2739,
-            "saturation": 0.004,
-            "luma": 1
-          },
-          {
-            "hex": "#f2db5c",
-            "coverage": 0.0228,
-            "saturation": 0.62,
-            "luma": 0.842
-          },
-          {
-            "hex": "#fdfd7c",
-            "coverage": 0.0101,
-            "saturation": 0.51,
-            "luma": 0.956
-          },
-          {
-            "hex": "#eeda5b",
-            "coverage": 0.0093,
-            "saturation": 0.618,
-            "luma": 0.836
-          },
-          {
-            "hex": "#eed65b",
-            "coverage": 0.0091,
-            "saturation": 0.618,
-            "luma": 0.824
-          },
-          {
-            "hex": "#fdfc74",
-            "coverage": 0.0084,
-            "saturation": 0.542,
-            "luma": 0.951
-          }
-        ],
-        "light": {
-          "meanLuma": 0.825,
-          "p05": 0.49,
-          "p50": 0.86,
-          "p95": 1,
-          "dynamicRange": 0.51,
-          "gradient": {
-            "dx": -0.024,
-            "dy": 0.028
-          },
-          "luminanceGradient": "even"
-        },
-        "subject": {
-          "resolved": true,
-          "backgroundHex": "#ffffff",
-          "center": {
-            "x": 0.5163,
-            "y": 0.4756
-          },
-          "box": {
-            "x": 0.05,
-            "y": 0.0625,
-            "w": 0.9187,
-            "h": 0.8688
-          },
-          "coverage": 0.2502
-        }
-      },
-      {
-        "src": "https://thumbnail.coupangcdn.com/thumbnails/remote/292x292ex/image/vendor_inventory/e3d9/71847eca075f50dbaecaadd40605fafa899bd943bc782e921f57d630827b.jpg",
-        "alt": "지오피씨 4K 영상편집 컴퓨터 유튜브 동영상편집 영상편집용 PC 데스크탑, 영상편집 06, 메모리 64GB 변경",
-        "box": {
-          "x": 0.6819,
-          "y": 0.0532,
-          "w": 0.1403,
-          "h": 0.2244
-        },
-        "pixelBox": {
-          "x": 1964,
-          "y": 95.84375,
-          "w": 404,
-          "h": 404
-        },
+        "clipped": false,
         "aspect": 1,
         "areaShare": 0.0315,
         "firstScreen": true,
@@ -1014,85 +1018,72 @@
         "palette": [
           {
             "hex": "#ffffff",
-            "coverage": 0.3054,
+            "coverage": 0.4214,
             "saturation": 0,
             "luma": 1
           },
           {
-            "hex": "#f4f4f4",
-            "coverage": 0.0491,
-            "saturation": 0,
-            "luma": 0.957
+            "hex": "#92bc44",
+            "coverage": 0.0059,
+            "saturation": 0.638,
+            "luma": 0.668
           },
           {
-            "hex": "#ecebec",
-            "coverage": 0.0257,
-            "saturation": 0.004,
-            "luma": 0.923
+            "hex": "#fcfdf4",
+            "coverage": 0.0055,
+            "saturation": 0.036,
+            "luma": 0.989
           },
           {
-            "hex": "#e3e3e3",
-            "coverage": 0.0252,
-            "saturation": 0,
-            "luma": 0.89
+            "hex": "#8dba43",
+            "coverage": 0.0051,
+            "saturation": 0.64,
+            "luma": 0.658
           },
           {
-            "hex": "#d3d3d4",
-            "coverage": 0.0166,
-            "saturation": 0.005,
-            "luma": 0.828
+            "hex": "#82ab3c",
+            "coverage": 0.005,
+            "saturation": 0.649,
+            "luma": 0.605
           },
           {
-            "hex": "#5c5b5c",
-            "coverage": 0.0152,
-            "saturation": 0.011,
-            "luma": 0.358
+            "hex": "#8cb543",
+            "coverage": 0.005,
+            "saturation": 0.63,
+            "luma": 0.643
           }
         ],
         "light": {
-          "meanLuma": 0.737,
-          "p05": 0.175,
-          "p50": 0.881,
+          "meanLuma": 0.817,
+          "p05": 0.424,
+          "p50": 0.875,
           "p95": 1,
-          "dynamicRange": 0.825,
+          "dynamicRange": 0.576,
           "gradient": {
-            "dx": 0.193,
-            "dy": -0.064
+            "dx": -0.003,
+            "dy": 0.012
           },
-          "luminanceGradient": "brighter right"
+          "luminanceGradient": "even"
         },
         "subject": {
-          "resolved": true,
-          "backgroundHex": "#ffffff",
-          "center": {
-            "x": 0.3572,
-            "y": 0.5387
-          },
-          "box": {
-            "x": 0.0688,
-            "y": 0.0437,
-            "w": 0.8375,
-            "h": 0.9
-          },
-          "coverage": 0.25
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 0.7
         }
       }
     ],
     "aggregate": {
-      "meanLuma": 0.844,
-      "dynamicRange": 0.691,
+      "meanLuma": 0.854,
+      "dynamicRange": 0.709,
       "luminanceGradients": {
         "brighter left": 1,
+        "brighter bottom": 2,
         "even": 6,
-        "brighter top": 3,
-        "brighter bottom": 1,
-        "brighter right": 1
+        "brighter top": 3
       },
       "aspects": 1,
-      "figureGroundResolved": "4/12",
-      "subjectCenterX": 0.516,
-      "subjectCenterY": 0.539,
-      "subjectCoverage": 0.25
+      "figureGroundResolved": "2/12",
+      "subjectNote": "fewer than 4 resolved samples — placement omitted"
     }
   }
 }

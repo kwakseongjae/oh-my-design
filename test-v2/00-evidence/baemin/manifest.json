@@ -1,0 +1,44 @@
+{
+  "brand": "baemin",
+  "captureId": "2026-08-22T11-52-50-288Z",
+  "capturedAt": "2026-08-22T11:52:50.288Z",
+  "channel": "playwright",
+  "source": {
+    "url": "https://www.baemin.com/",
+    "finalUrl": "https://www.baemin.com/",
+    "title": "배달의민족 - 배달팁 무료 배민클럽",
+    "status": 200
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "locale": "ko-KR",
+  "session": {
+    "profile": "fresh automation context",
+    "authenticated": false
+  },
+  "store": {
+    "root": "$OMD_EVIDENCE_STORE",
+    "path": "baemin/2026-08-22T11-52-50-288Z"
+  },
+  "files": [
+    {
+      "name": "imagery-09.png",
+      "bytes": 552026,
+      "sha256": "468552c1de852e49ce1fc2e87cf4a09e47a53e14cabd92f8eed3a08b6a1c0476"
+    },
+    {
+      "name": "viewport-1440.png",
+      "bytes": 6750554,
+      "sha256": "2d51c941b5581f897d75b32b49e0398762be3c0337e16f4e52079a54a89b775e"
+    },
+    {
+      "name": "viewport-390.png",
+      "bytes": 1798647,
+      "sha256": "1bf2157b075b986354de403dc1cb8713d4092574e441d27f6b1f9b0c2421d39f"
+    }
+  ],
+  "evidenceSha256": "43ea5aae81a23f55f1a510c952521efddb60fed5e788c363c8ec23762521099f",
+  "supersededBy": null
+}

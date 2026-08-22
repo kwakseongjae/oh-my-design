@@ -1,0 +1,99 @@
+{
+  "brand": "karrot",
+  "captureId": "2026-08-22T11-51-46-506Z",
+  "capturedAt": "2026-08-22T11:51:46.506Z",
+  "channel": "playwright",
+  "source": {
+    "url": "https://www.daangn.com/kr/buy-sell/s/?search=%EB%85%B8%ED%8A%B8%EB%B6%81",
+    "finalUrl": "https://www.daangn.com/kr/buy-sell/s/?in=%EC%B2%9C%ED%98%B8%EB%8F%99-6044&search=%EB%85%B8%ED%8A%B8%EB%B6%81",
+    "title": "노트북 중고거래 검색결과 | 당근",
+    "status": 200
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "locale": "ko-KR",
+  "session": {
+    "profile": "fresh automation context",
+    "authenticated": false
+  },
+  "store": {
+    "root": "$OMD_EVIDENCE_STORE",
+    "path": "karrot/2026-08-22T11-51-46-506Z"
+  },
+  "files": [
+    {
+      "name": "imagery-01.png",
+      "bytes": 226132,
+      "sha256": "435b53f285a39c8c1284016d1530481b3949d23822bf808eeff643f873340081"
+    },
+    {
+      "name": "imagery-02.png",
+      "bytes": 283776,
+      "sha256": "3c857d3c59d051c5eb5bc19fbc0c9a1e3e6f4011cb4826969909fb47d938ef54"
+    },
+    {
+      "name": "imagery-03.png",
+      "bytes": 191583,
+      "sha256": "5f289c57417ef5ad9cb6294f9204d3e660121f18c5f74aa33d99b7cf3c2fdc92"
+    },
+    {
+      "name": "imagery-04.png",
+      "bytes": 328037,
+      "sha256": "3dea1e1cf799b8106afb38afd9819fbefe0081e65fd7ad3b6f821cba3f6b0828"
+    },
+    {
+      "name": "imagery-05.png",
+      "bytes": 308431,
+      "sha256": "d3a9382098273cf08de02670de8273a9f9178a48304a1f83d4c742bb9477d1e2"
+    },
+    {
+      "name": "imagery-06.png",
+      "bytes": 391057,
+      "sha256": "273cbd54a0e9e404fa99152fe68d0c2c0e865e788dbfbd81a93ccc509065c949"
+    },
+    {
+      "name": "imagery-07.png",
+      "bytes": 437405,
+      "sha256": "9fd67f66def9db6d7736fcb7baf97b5bf085947a843d9bf679c717430bbbe76f"
+    },
+    {
+      "name": "imagery-08.png",
+      "bytes": 295271,
+      "sha256": "3618220407f6546e03a7f732c28622707233bea8afd9380f4b73035804863f1e"
+    },
+    {
+      "name": "imagery-09.png",
+      "bytes": 129058,
+      "sha256": "14819adf4fcb3564d6cb28e129626832ae4903c7f6a713b92b6799a2f0e70c84"
+    },
+    {
+      "name": "imagery-10.png",
+      "bytes": 331864,
+      "sha256": "db8dc53cb8aea371ed8b74ad082298fec4518cdef637602d4cb95caf40318af2"
+    },
+    {
+      "name": "imagery-11.png",
+      "bytes": 119191,
+      "sha256": "ef62fb0a1afe3e655e20841895b36222aedff8439579a358ecb5fd418f9bc214"
+    },
+    {
+      "name": "imagery-12.png",
+      "bytes": 6660,
+      "sha256": "58dda08941aecd329cfb9394c22c0d625bc290869089826b5c48cf9e29002d3d"
+    },
+    {
+      "name": "viewport-1440.png",
+      "bytes": 2805918,
+      "sha256": "d4b563df3cf1e0f2a2ca9eca778e3f2e144c30183aef6d38e6a324f3fd906067"
+    },
+    {
+      "name": "viewport-390.png",
+      "bytes": 1148119,
+      "sha256": "80f7587760b19f39876fde3f15d3707629ec74dfe3733f939e73301504898be4"
+    }
+  ],
+  "evidenceSha256": "bb58fc53ac883c1bc5c675d1e062359e61e0a01feaaa601398d7516658d0bf15",
+  "supersededBy": null
+}

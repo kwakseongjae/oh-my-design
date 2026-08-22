@@ -1,3 +1,8 @@
+## 2026-08-22 (grok-4.6) T3-2 루브릭 3차 반박 — FREEZE
+- 한 일: 2차 남은 2항을 표가 아니라 본문으로 대조. 기록 `docs/reviews/rubric-2026-08-22-rebuttal-3.md`.
+- 열린 것: 루브릭 본문 규칙 동결. T3-3은 §9 나머지 게이트·`RUBRIC_FROZEN_SHA` 기록 전까지 닫힘.
+- 다음: 배너 FROZEN. 코드북 9값 등 채운 커밋 SHA를 `RUBRIC_FROZEN_SHA`로 기록한 뒤에만 T3-3.
+
 ## 2026-08-22 (grok-4.6) T3-2 루브릭 재반박 — REVISE
 - 한 일: 1차 11항 표↔본문 대조. 기록 `docs/reviews/rubric-2026-08-22-rebuttal-2.md`. 11항은 본문 반영, 동결은 거절.
 - 열린 것: 없음. 루브릭 동결·T3-3 닫힘.

@@ -1,0 +1,99 @@
+{
+  "brand": "wanted",
+  "captureId": "2026-08-22T11-54-01-212Z",
+  "capturedAt": "2026-08-22T11:54:01.212Z",
+  "channel": "playwright",
+  "source": {
+    "url": "https://www.wanted.co.kr/wdlist",
+    "finalUrl": "https://www.wanted.co.kr/wdlist",
+    "title": "채용 정보 | 원티드",
+    "status": 200
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "locale": "ko-KR",
+  "session": {
+    "profile": "fresh automation context",
+    "authenticated": false
+  },
+  "store": {
+    "root": "$OMD_EVIDENCE_STORE",
+    "path": "wanted/2026-08-22T11-54-01-212Z"
+  },
+  "files": [
+    {
+      "name": "imagery-01.png",
+      "bytes": 179248,
+      "sha256": "74528995590cfb411abec23ed5ba4e27f0dc3cca0d8cfe47327b3459ee6de6c1"
+    },
+    {
+      "name": "imagery-02.png",
+      "bytes": 296393,
+      "sha256": "c86bb535906352862d8aa1031f33a49ce51da3884ce8a78ad886d7a3f8eb5ccc"
+    },
+    {
+      "name": "imagery-03.png",
+      "bytes": 174148,
+      "sha256": "12933de747de9cb928243cf73a5b166daf0679ab763de7d6681f6dda7b1fc63b"
+    },
+    {
+      "name": "imagery-04.png",
+      "bytes": 112945,
+      "sha256": "eb44a071190a8cab0dc8442decbfa8fca5b74c5c6a45a0b3916eec299fbd1ed0"
+    },
+    {
+      "name": "imagery-05.png",
+      "bytes": 157018,
+      "sha256": "384bc79facbec8bcc4d84a5be5a875b51461223b448b932f222a13fb8c3a6b1a"
+    },
+    {
+      "name": "imagery-06.png",
+      "bytes": 357597,
+      "sha256": "20882f3a611d04007168716aaac2846f00dd026f2156d65ca9c86b82cbfb6f74"
+    },
+    {
+      "name": "imagery-07.png",
+      "bytes": 128044,
+      "sha256": "25c423fdc22d27052d06024b69ae191f2da1b979ca966b06e5cc09e3dc232088"
+    },
+    {
+      "name": "imagery-08.png",
+      "bytes": 97688,
+      "sha256": "30dcf2c0e71adb067472b8ce074ccbcee65d5b32352617e916a8b8317fab6f36"
+    },
+    {
+      "name": "imagery-09.png",
+      "bytes": 226084,
+      "sha256": "cf3b604510b0b94ca2c69d3fbf949b1a4bc1fdee13cc4fbab169473637bd6e21"
+    },
+    {
+      "name": "imagery-10.png",
+      "bytes": 205619,
+      "sha256": "36170e04ed1237409edd1705e4379afbd77c24f9e2e6ac83bf3a7d6211e234c9"
+    },
+    {
+      "name": "imagery-11.png",
+      "bytes": 180834,
+      "sha256": "a22bbe28257ea9726423f0ad346306965a79142b2fae067ca88ed20f68c6bd01"
+    },
+    {
+      "name": "imagery-12.png",
+      "bytes": 138608,
+      "sha256": "199ca89ef53855133544a25974ab6162da4d99568521d707548fc63153d854fa"
+    },
+    {
+      "name": "viewport-1440.png",
+      "bytes": 1727633,
+      "sha256": "6f379e0de87f62cf70ce70bc5300f2821e0b19de9606954b0658deaf662b1b4f"
+    },
+    {
+      "name": "viewport-390.png",
+      "bytes": 511447,
+      "sha256": "f4b3498e938d9eb485ae7b05d0585843d854633388a13fd7d1dcc67adfc6adce"
+    }
+  ],
+  "evidenceSha256": "3ec43ff14ab2a61ec4a0d33e878a4d2ac322472e83f24e2342d61c18dd000c21",
+  "supersededBy": null
+}

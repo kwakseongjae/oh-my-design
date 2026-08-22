@@ -1,0 +1,1052 @@
+{
+  "brand": "karrot",
+  "capturedAt": "2026-08-22T11:51:46.506Z",
+  "source": {
+    "url": "https://www.daangn.com/kr/buy-sell/s/?search=%EB%85%B8%ED%8A%B8%EB%B6%81",
+    "status": 200,
+    "finalUrl": "https://www.daangn.com/kr/buy-sell/s/?in=%EC%B2%9C%ED%98%B8%EB%8F%99-6044&search=%EB%85%B8%ED%8A%B8%EB%B6%81",
+    "title": "노트북 중고거래 검색결과 | 당근"
+  },
+  "method": {
+    "channel": "playwright",
+    "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
+    "imagerySamplesRequested": 12,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "locale": "ko-KR",
+    "colorScheme": "light"
+  },
+  "chrome": {
+    "pageBackgroundComputed": "#ffffff",
+    "bodyColor": "#1a1c20",
+    "header": {
+      "detectedBy": "semantic",
+      "background": null,
+      "heightPx": 95,
+      "borderBottom": null
+    },
+    "primaryButton": {
+      "fill": "outline",
+      "background": null,
+      "borderColor": "#000000",
+      "color": "#1a1c20",
+      "radiusPx": 8,
+      "paddingY": 10,
+      "paddingX": 16,
+      "fontPx": 14,
+      "weight": "700",
+      "label": "서울시 강동구 천호동",
+      "repeats": 1
+    },
+    "typeScale": [
+      {
+        "tag": "h1",
+        "fontPx": 28,
+        "weight": "700",
+        "family": "-apple-system",
+        "lineHeight": "36.4px",
+        "letterSpacing": "normal",
+        "color": "#1a1c20"
+      },
+      {
+        "tag": "h2",
+        "fontPx": 20,
+        "weight": "700",
+        "family": "-apple-system",
+        "lineHeight": "28px",
+        "letterSpacing": "normal",
+        "color": "#1a1c20"
+      },
+      {
+        "tag": "h3",
+        "fontPx": 16,
+        "weight": "700",
+        "family": "-apple-system",
+        "lineHeight": "22px",
+        "letterSpacing": "normal",
+        "color": "#1a1c20"
+      },
+      {
+        "tag": "button",
+        "fontPx": 14,
+        "weight": "700",
+        "family": "-apple-system",
+        "lineHeight": "19px",
+        "letterSpacing": "normal",
+        "color": "#1a1c20"
+      }
+    ],
+    "notes": {
+      "buttonCandidatesAboveFold": 3,
+      "headerDetectedBy": "semantic"
+    },
+    "pageBackgroundRendered": {
+      "resolved": true,
+      "hex": "#ffffff",
+      "coverage": 0.5034,
+      "source": "modal colour of the captured viewport"
+    }
+  },
+  "imagery": {
+    "sampled": 12,
+    "samples": [
+      {
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202607/1784544447461d2c390d237e2deae8318b25d604249136935d7a7f4041a484eb6e0b0400e83ef0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "kind": "img",
+        "alt": "thumbnail",
+        "docBox": {
+          "x": 332,
+          "y": 199.40625,
+          "w": 248.5,
+          "h": 248.5
+        },
+        "aspect": 1,
+        "areaShare": 0.0476,
+        "intrinsic": {
+          "w": 1080,
+          "h": 1440
+        },
+        "clipped": false,
+        "file": "capture/imagery-01.png",
+        "palette": [
+          {
+            "hex": "#1b1a16",
+            "coverage": 0.0699,
+            "saturation": 0.185,
+            "luma": 0.102
+          },
+          {
+            "hex": "#141512",
+            "coverage": 0.0535,
+            "saturation": 0.143,
+            "luma": 0.081
+          },
+          {
+            "hex": "#23231c",
+            "coverage": 0.0532,
+            "saturation": 0.2,
+            "luma": 0.135
+          },
+          {
+            "hex": "#1d1d19",
+            "coverage": 0.0523,
+            "saturation": 0.138,
+            "luma": 0.113
+          },
+          {
+            "hex": "#2b2b24",
+            "coverage": 0.0405,
+            "saturation": 0.163,
+            "luma": 0.167
+          },
+          {
+            "hex": "#0c0c0b",
+            "coverage": 0.0399,
+            "saturation": 0.083,
+            "luma": 0.047
+          }
+        ],
+        "light": {
+          "meanLuma": 0.268,
+          "p05": 0.046,
+          "p50": 0.156,
+          "p95": 0.689,
+          "dynamicRange": 0.643,
+          "gradient": {
+            "dx": 0.071,
+            "dy": -0.225
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 110.5
+        }
+      },
+      {
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/14d2c301db713b607059bc1031a61fd52f4a17410373e8877b303130922caf6b_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "kind": "img",
+        "alt": "thumbnail",
+        "docBox": {
+          "x": 596.5,
+          "y": 199.40625,
+          "w": 248.5,
+          "h": 248.5
+        },
+        "aspect": 1,
+        "areaShare": 0.0476,
+        "intrinsic": {
+          "w": 1440,
+          "h": 1080
+        },
+        "clipped": false,
+        "file": "capture/imagery-02.png",
+        "palette": [
+          {
+            "hex": "#146bee",
+            "coverage": 0.0367,
+            "saturation": 0.916,
+            "luma": 0.384
+          },
+          {
+            "hex": "#0e63ee",
+            "coverage": 0.0196,
+            "saturation": 0.941,
+            "luma": 0.357
+          },
+          {
+            "hex": "#3a3d43",
+            "coverage": 0.0159,
+            "saturation": 0.134,
+            "luma": 0.238
+          },
+          {
+            "hex": "#0c34ed",
+            "coverage": 0.0157,
+            "saturation": 0.949,
+            "luma": 0.223
+          },
+          {
+            "hex": "#32353b",
+            "coverage": 0.0151,
+            "saturation": 0.153,
+            "luma": 0.207
+          },
+          {
+            "hex": "#0d3bed",
+            "coverage": 0.0148,
+            "saturation": 0.945,
+            "luma": 0.243
+          }
+        ],
+        "light": {
+          "meanLuma": 0.325,
+          "p05": 0.138,
+          "p50": 0.322,
+          "p95": 0.521,
+          "dynamicRange": 0.383,
+          "gradient": {
+            "dx": 0.031,
+            "dy": -0.035
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 78.1
+        }
+      },
+      {
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202607/6df5ac68cd5da81cfa28670b37f8624e6ab0ba365169108b81832e347af7b0a4_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "kind": "img",
+        "alt": "thumbnail",
+        "docBox": {
+          "x": 861,
+          "y": 199.40625,
+          "w": 248.5,
+          "h": 248.5
+        },
+        "aspect": 1,
+        "areaShare": 0.0476,
+        "intrinsic": {
+          "w": 810,
+          "h": 1440
+        },
+        "clipped": false,
+        "file": "capture/imagery-03.png",
+        "palette": [
+          {
+            "hex": "#62646c",
+            "coverage": 0.0737,
+            "saturation": 0.093,
+            "luma": 0.393
+          },
+          {
+            "hex": "#696b76",
+            "coverage": 0.0709,
+            "saturation": 0.11,
+            "luma": 0.421
+          },
+          {
+            "hex": "#5b5c64",
+            "coverage": 0.0678,
+            "saturation": 0.09,
+            "luma": 0.362
+          },
+          {
+            "hex": "#6a6d79",
+            "coverage": 0.0653,
+            "saturation": 0.124,
+            "luma": 0.428
+          },
+          {
+            "hex": "#666974",
+            "coverage": 0.0646,
+            "saturation": 0.121,
+            "luma": 0.412
+          },
+          {
+            "hex": "#636672",
+            "coverage": 0.0609,
+            "saturation": 0.132,
+            "luma": 0.401
+          }
+        ],
+        "light": {
+          "meanLuma": 0.436,
+          "p05": 0.293,
+          "p50": 0.412,
+          "p95": 0.701,
+          "dynamicRange": 0.408,
+          "gradient": {
+            "dx": -0.08,
+            "dy": -0.035
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 88.4
+        }
+      },
+      {
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/e285ed649abdb0f21c972130d75f2c48bcee8b645fcdeb930f1228a22c3185b0_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "kind": "img",
+        "alt": "thumbnail",
+        "docBox": {
+          "x": 1125.5,
+          "y": 199.40625,
+          "w": 248.5,
+          "h": 248.5
+        },
+        "aspect": 1,
+        "areaShare": 0.0476,
+        "intrinsic": {
+          "w": 1440,
+          "h": 1080
+        },
+        "clipped": false,
+        "file": "capture/imagery-04.png",
+        "palette": [
+          {
+            "hex": "#2b2b2c",
+            "coverage": 0.0239,
+            "saturation": 0.023,
+            "luma": 0.169
+          },
+          {
+            "hex": "#232324",
+            "coverage": 0.0223,
+            "saturation": 0.028,
+            "luma": 0.138
+          },
+          {
+            "hex": "#ebece4",
+            "coverage": 0.0189,
+            "saturation": 0.034,
+            "luma": 0.922
+          },
+          {
+            "hex": "#323334",
+            "coverage": 0.018,
+            "saturation": 0.038,
+            "luma": 0.199
+          },
+          {
+            "hex": "#33363a",
+            "coverage": 0.0147,
+            "saturation": 0.121,
+            "luma": 0.21
+          },
+          {
+            "hex": "#24262a",
+            "coverage": 0.0138,
+            "saturation": 0.143,
+            "luma": 0.148
+          }
+        ],
+        "light": {
+          "meanLuma": 0.506,
+          "p05": 0.148,
+          "p50": 0.516,
+          "p95": 0.909,
+          "dynamicRange": 0.761,
+          "gradient": {
+            "dx": 0.068,
+            "dy": -0.05
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 103.8
+        }
+      },
+      {
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/30e74657aea10bd8891b543e2833d8dbfc42d7ac0f7edd451ae1a2752bf47f50_1.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "kind": "img",
+        "alt": "thumbnail",
+        "docBox": {
+          "x": 332,
+          "y": 575.90625,
+          "w": 248.5,
+          "h": 248.5
+        },
+        "aspect": 1,
+        "areaShare": 0.0476,
+        "intrinsic": {
+          "w": 1440,
+          "h": 1080
+        },
+        "clipped": false,
+        "file": "capture/imagery-05.png",
+        "palette": [
+          {
+            "hex": "#0e121b",
+            "coverage": 0.0269,
+            "saturation": 0.481,
+            "luma": 0.07
+          },
+          {
+            "hex": "#4d5353",
+            "coverage": 0.0257,
+            "saturation": 0.072,
+            "luma": 0.32
+          },
+          {
+            "hex": "#545c5b",
+            "coverage": 0.0191,
+            "saturation": 0.087,
+            "luma": 0.354
+          },
+          {
+            "hex": "#8b9494",
+            "coverage": 0.0189,
+            "saturation": 0.061,
+            "luma": 0.573
+          },
+          {
+            "hex": "#737c7c",
+            "coverage": 0.0184,
+            "saturation": 0.073,
+            "luma": 0.479
+          },
+          {
+            "hex": "#33344a",
+            "coverage": 0.0184,
+            "saturation": 0.311,
+            "luma": 0.209
+          }
+        ],
+        "light": {
+          "meanLuma": 0.361,
+          "p05": 0.073,
+          "p50": 0.346,
+          "p95": 0.687,
+          "dynamicRange": 0.614,
+          "gradient": {
+            "dx": 0.151,
+            "dy": 0.086
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 70.1
+        }
+      },
+      {
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/36133bbb294a5f42483e7a706041adffa7c3d99d7f121ebc6b2a8728451922a2_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "kind": "img",
+        "alt": "thumbnail",
+        "docBox": {
+          "x": 596.5,
+          "y": 575.90625,
+          "w": 248.5,
+          "h": 248.5
+        },
+        "aspect": 1,
+        "areaShare": 0.0476,
+        "intrinsic": {
+          "w": 1008,
+          "h": 756
+        },
+        "clipped": false,
+        "file": "capture/imagery-06.png",
+        "palette": [
+          {
+            "hex": "#8d928c",
+            "coverage": 0.0258,
+            "saturation": 0.041,
+            "luma": 0.567
+          },
+          {
+            "hex": "#848a84",
+            "coverage": 0.0248,
+            "saturation": 0.043,
+            "luma": 0.534
+          },
+          {
+            "hex": "#959a94",
+            "coverage": 0.0235,
+            "saturation": 0.039,
+            "luma": 0.598
+          },
+          {
+            "hex": "#9da29c",
+            "coverage": 0.0225,
+            "saturation": 0.037,
+            "luma": 0.629
+          },
+          {
+            "hex": "#7c827c",
+            "coverage": 0.018,
+            "saturation": 0.046,
+            "luma": 0.503
+          },
+          {
+            "hex": "#757a74",
+            "coverage": 0.0168,
+            "saturation": 0.049,
+            "luma": 0.473
+          }
+        ],
+        "light": {
+          "meanLuma": 0.513,
+          "p05": 0.127,
+          "p50": 0.53,
+          "p95": 0.875,
+          "dynamicRange": 0.748,
+          "gradient": {
+            "dx": -0.015,
+            "dy": -0.047
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 94.4
+        }
+      },
+      {
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/5ad9110c0e91c1a9ee447de6e7872272b14539cf84f810bf8831087b934f2ad4_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "kind": "img",
+        "alt": "thumbnail",
+        "docBox": {
+          "x": 861,
+          "y": 575.90625,
+          "w": 248.5,
+          "h": 248.5
+        },
+        "aspect": 1,
+        "areaShare": 0.0476,
+        "intrinsic": {
+          "w": 1440,
+          "h": 1080
+        },
+        "clipped": false,
+        "file": "capture/imagery-07.png",
+        "palette": [
+          {
+            "hex": "#abb4b4",
+            "coverage": 0.036,
+            "saturation": 0.05,
+            "luma": 0.698
+          },
+          {
+            "hex": "#a3acac",
+            "coverage": 0.0337,
+            "saturation": 0.052,
+            "luma": 0.667
+          },
+          {
+            "hex": "#9ba4a4",
+            "coverage": 0.0288,
+            "saturation": 0.055,
+            "luma": 0.636
+          },
+          {
+            "hex": "#929c9b",
+            "coverage": 0.0282,
+            "saturation": 0.064,
+            "luma": 0.603
+          },
+          {
+            "hex": "#8b9494",
+            "coverage": 0.0248,
+            "saturation": 0.061,
+            "luma": 0.573
+          },
+          {
+            "hex": "#828d8b",
+            "coverage": 0.023,
+            "saturation": 0.078,
+            "luma": 0.543
+          }
+        ],
+        "light": {
+          "meanLuma": 0.458,
+          "p05": 0.094,
+          "p50": 0.487,
+          "p95": 0.722,
+          "dynamicRange": 0.628,
+          "gradient": {
+            "dx": 0.023,
+            "dy": 0.188
+          },
+          "luminanceGradient": "brighter bottom"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 77.2
+        }
+      },
+      {
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/178633868724987d3958c4e382c520425b45782e65d3b7563d5c2f83fd2b74e692c0635a5b3f50.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "kind": "img",
+        "alt": "thumbnail",
+        "docBox": {
+          "x": 1125.5,
+          "y": 575.90625,
+          "w": 248.5,
+          "h": 248.5
+        },
+        "aspect": 1,
+        "areaShare": 0.0476,
+        "intrinsic": {
+          "w": 1080,
+          "h": 1440
+        },
+        "clipped": false,
+        "file": "capture/imagery-08.png",
+        "palette": [
+          {
+            "hex": "#ebeae3",
+            "coverage": 0.0583,
+            "saturation": 0.034,
+            "luma": 0.916
+          },
+          {
+            "hex": "#e4e3dc",
+            "coverage": 0.0514,
+            "saturation": 0.035,
+            "luma": 0.889
+          },
+          {
+            "hex": "#2c2a24",
+            "coverage": 0.0443,
+            "saturation": 0.182,
+            "luma": 0.165
+          },
+          {
+            "hex": "#040404",
+            "coverage": 0.0439,
+            "saturation": 0,
+            "luma": 0.016
+          },
+          {
+            "hex": "#34312c",
+            "coverage": 0.0361,
+            "saturation": 0.154,
+            "luma": 0.193
+          },
+          {
+            "hex": "#3b3b3c",
+            "coverage": 0.0309,
+            "saturation": 0.017,
+            "luma": 0.232
+          }
+        ],
+        "light": {
+          "meanLuma": 0.439,
+          "p05": 0.027,
+          "p50": 0.259,
+          "p95": 0.918,
+          "dynamicRange": 0.891,
+          "gradient": {
+            "dx": 0.108,
+            "dy": 0.443
+          },
+          "luminanceGradient": "brighter bottom"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 105.1
+        }
+      },
+      {
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202607/80edcb04a946f67faf72ce67c23ae662ba3788a893febea2a5e2f107fc07ad1f_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "kind": "img",
+        "alt": "thumbnail",
+        "docBox": {
+          "x": 332,
+          "y": 952.40625,
+          "w": 248.5,
+          "h": 248.5
+        },
+        "aspect": 1,
+        "areaShare": 0.0476,
+        "intrinsic": {
+          "w": 1440,
+          "h": 1036
+        },
+        "clipped": false,
+        "file": "capture/imagery-09.png",
+        "palette": [
+          {
+            "hex": "#63625d",
+            "coverage": 0.0346,
+            "saturation": 0.061,
+            "luma": 0.384
+          },
+          {
+            "hex": "#9a9a94",
+            "coverage": 0.0345,
+            "saturation": 0.039,
+            "luma": 0.602
+          },
+          {
+            "hex": "#6b6a65",
+            "coverage": 0.0343,
+            "saturation": 0.056,
+            "luma": 0.415
+          },
+          {
+            "hex": "#73736c",
+            "coverage": 0.0339,
+            "saturation": 0.061,
+            "luma": 0.449
+          },
+          {
+            "hex": "#95938b",
+            "coverage": 0.0337,
+            "saturation": 0.067,
+            "luma": 0.576
+          },
+          {
+            "hex": "#7a7b75",
+            "coverage": 0.0334,
+            "saturation": 0.049,
+            "luma": 0.48
+          }
+        ],
+        "light": {
+          "meanLuma": 0.517,
+          "p05": 0.329,
+          "p50": 0.499,
+          "p95": 0.764,
+          "dynamicRange": 0.435,
+          "gradient": {
+            "dx": 0.159,
+            "dy": 0.04
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 92.7
+        }
+      },
+      {
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202607/17848657137016a25108a8775bcffce77eba5ca84906817dbd9eb2e86617960bc38896c272a2e0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "kind": "img",
+        "alt": "thumbnail",
+        "docBox": {
+          "x": 596.5,
+          "y": 952.40625,
+          "w": 248.5,
+          "h": 248.5
+        },
+        "aspect": 1,
+        "areaShare": 0.0476,
+        "intrinsic": {
+          "w": 1179,
+          "h": 884
+        },
+        "clipped": false,
+        "file": "capture/imagery-10.png",
+        "palette": [
+          {
+            "hex": "#dad6d2",
+            "coverage": 0.0581,
+            "saturation": 0.037,
+            "luma": 0.841
+          },
+          {
+            "hex": "#dcd9d5",
+            "coverage": 0.0532,
+            "saturation": 0.032,
+            "luma": 0.852
+          },
+          {
+            "hex": "#926d44",
+            "coverage": 0.0521,
+            "saturation": 0.534,
+            "luma": 0.447
+          },
+          {
+            "hex": "#8d6b43",
+            "coverage": 0.0373,
+            "saturation": 0.525,
+            "luma": 0.437
+          },
+          {
+            "hex": "#ac8a63",
+            "coverage": 0.0314,
+            "saturation": 0.424,
+            "luma": 0.558
+          },
+          {
+            "hex": "#94724b",
+            "coverage": 0.0304,
+            "saturation": 0.493,
+            "luma": 0.464
+          }
+        ],
+        "light": {
+          "meanLuma": 0.584,
+          "p05": 0.326,
+          "p50": 0.543,
+          "p95": 0.861,
+          "dynamicRange": 0.535,
+          "gradient": {
+            "dx": -0.046,
+            "dy": -0.107
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 70.4
+        }
+      },
+      {
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202602/26f08a19bd2fb959fb78359dfa9f9b78bee4ab3c653d1f667c4e6bff5d56af83_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "kind": "img",
+        "alt": "thumbnail",
+        "docBox": {
+          "x": 861,
+          "y": 952.40625,
+          "w": 248.5,
+          "h": 248.5
+        },
+        "aspect": 1,
+        "areaShare": 0.0476,
+        "intrinsic": {
+          "w": 1440,
+          "h": 1080
+        },
+        "clipped": false,
+        "file": "capture/imagery-11.png",
+        "palette": [
+          {
+            "hex": "#cacbcc",
+            "coverage": 0.198,
+            "saturation": 0.01,
+            "luma": 0.796
+          },
+          {
+            "hex": "#c2c3c5",
+            "coverage": 0.1503,
+            "saturation": 0.015,
+            "luma": 0.764
+          },
+          {
+            "hex": "#c7c9ca",
+            "coverage": 0.0623,
+            "saturation": 0.015,
+            "luma": 0.787
+          },
+          {
+            "hex": "#c4c6c9",
+            "coverage": 0.0505,
+            "saturation": 0.025,
+            "luma": 0.776
+          },
+          {
+            "hex": "#9b8a75",
+            "coverage": 0.0384,
+            "saturation": 0.245,
+            "luma": 0.549
+          },
+          {
+            "hex": "#babcbd",
+            "coverage": 0.0368,
+            "saturation": 0.016,
+            "luma": 0.736
+          }
+        ],
+        "light": {
+          "meanLuma": 0.67,
+          "p05": 0.406,
+          "p50": 0.748,
+          "p95": 0.8,
+          "dynamicRange": 0.394,
+          "gradient": {
+            "dx": -0.037,
+            "dy": -0.074
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 61.5
+        }
+      },
+      {
+        "src": "https://dnvefa72aowie.cloudfront.net/origin/category/202306/6a729d83f311aa3e8ffa12c9757cfda323591a0018ce2d25da6bf604615e33c2.png",
+        "kind": "img",
+        "alt": "thumbnail",
+        "docBox": {
+          "x": 1125.5,
+          "y": 952.40625,
+          "w": 248.5,
+          "h": 248.5
+        },
+        "aspect": 1,
+        "areaShare": 0.0476,
+        "intrinsic": {
+          "w": 560,
+          "h": 560
+        },
+        "clipped": false,
+        "file": "capture/imagery-12.png",
+        "palette": [
+          {
+            "hex": "#eff1f3",
+            "coverage": 0.8386,
+            "saturation": 0.016,
+            "luma": 0.944
+          },
+          {
+            "hex": "#d9dce0",
+            "coverage": 0.0964,
+            "saturation": 0.031,
+            "luma": 0.861
+          },
+          {
+            "hex": "#f0f2f3",
+            "coverage": 0.0221,
+            "saturation": 0.012,
+            "luma": 0.948
+          },
+          {
+            "hex": "#eceef1",
+            "coverage": 0.0189,
+            "saturation": 0.021,
+            "luma": 0.933
+          },
+          {
+            "hex": "#e7eaee",
+            "coverage": 0.0125,
+            "saturation": 0.029,
+            "luma": 0.916
+          },
+          {
+            "hex": "#d8dbdf",
+            "coverage": 0.0049,
+            "saturation": 0.031,
+            "luma": 0.857
+          }
+        ],
+        "light": {
+          "meanLuma": 0.935,
+          "p05": 0.861,
+          "p50": 0.944,
+          "p95": 0.944,
+          "dynamicRange": 0.083,
+          "gradient": {
+            "dx": -0.002,
+            "dy": 0.002
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 4.1
+        }
+      }
+    ],
+    "aggregate": {
+      "meanLuma": 0.506,
+      "dynamicRange": 0.614,
+      "luminanceGradients": {
+        "brighter top": 4,
+        "even": 2,
+        "brighter left": 1,
+        "brighter right": 3,
+        "brighter bottom": 2
+      },
+      "aspects": 1,
+      "figureGroundResolved": "0/12",
+      "subjectNote": "fewer than 4 resolved samples — placement omitted"
+    }
+  },
+  "motion": {
+    "present": false,
+    "note": "no video above the fold at capture time"
+  },
+  "mobile": {
+    "chrome": {
+      "pageBackgroundComputed": "#ffffff",
+      "bodyColor": "#1a1c20",
+      "header": {
+        "detectedBy": "semantic",
+        "background": null,
+        "heightPx": 60,
+        "borderBottom": null
+      },
+      "primaryButton": {
+        "fill": "outline",
+        "background": null,
+        "borderColor": "#000000",
+        "color": "#1a1c20",
+        "radiusPx": 8,
+        "paddingY": 10,
+        "paddingX": 16,
+        "fontPx": 14,
+        "weight": "700",
+        "label": "서울시 강동구 천호동",
+        "repeats": 1
+      },
+      "typeScale": [
+        {
+          "tag": "h1",
+          "fontPx": 24,
+          "weight": "700",
+          "family": "-apple-system",
+          "lineHeight": "32px",
+          "letterSpacing": "normal",
+          "color": "#1a1c20"
+        },
+        {
+          "tag": "button",
+          "fontPx": 14,
+          "weight": "700",
+          "family": "-apple-system",
+          "lineHeight": "19px",
+          "letterSpacing": "normal",
+          "color": "#1a1c20"
+        }
+      ],
+      "notes": {
+        "buttonCandidatesAboveFold": 3,
+        "headerDetectedBy": "semantic"
+      }
+    }
+  }
+}

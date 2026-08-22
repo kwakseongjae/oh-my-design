@@ -1,106 +1,99 @@
 {
   "brand": "musinsa",
-  "captureId": "2026-08-22T10-51-04-183Z",
-  "capturedAt": "2026-08-22T10:51:04.183Z",
-  "channel": "aside",
+  "captureId": "2026-08-22T11-50-41-983Z",
+  "capturedAt": "2026-08-22T11:50:41.983Z",
+  "channel": "playwright",
   "source": {
     "url": "https://www.musinsa.com/category/001",
     "finalUrl": "https://www.musinsa.com/category/001/goods?gf=A",
     "title": "상의 | 무신사 추천 상품",
-    "status": null
+    "status": 200
   },
   "viewport": {
-    "w": 1440,
-    "h": 900,
-    "dpr": 2
+    "width": 1440,
+    "height": 900
   },
   "locale": "ko-KR",
   "session": {
-    "profile": "aside user profile",
-    "authenticated": "unknown",
-    "note": "captured through a real browser profile; cookie state not inspected"
+    "profile": "fresh automation context",
+    "authenticated": false
   },
   "store": {
     "root": "$OMD_EVIDENCE_STORE",
-    "path": "musinsa/2026-08-22T10-51-04-183Z"
+    "path": "musinsa/2026-08-22T11-50-41-983Z"
   },
   "files": [
     {
       "name": "imagery-01.png",
-      "bytes": 86898,
-      "sha256": "640c6349c455839ca79d073833570a9a5e6c2273c5bf9f12aba13bb3366ba2ae"
+      "bytes": 220077,
+      "sha256": "7bf437a63670884c67beb1a1cc3aa43bc6b67a8b2816816563cd1c0c82df1d81"
     },
     {
       "name": "imagery-02.png",
-      "bytes": 557417,
-      "sha256": "eb21a36232d1ec58d1352fa72b04518a19209b5e1eace95040b465c6a8c83bde"
+      "bytes": 335812,
+      "sha256": "9a4d93ba0da901a9e0da9f78ee1556dd385f191bb56c4b77955e8882ad5affed"
     },
     {
       "name": "imagery-03.png",
-      "bytes": 409339,
-      "sha256": "8929f0b75e7af5ad86672d0c0c9a2a7ab5d8e73484123d02c64b148b1fffa732"
+      "bytes": 344005,
+      "sha256": "f1d1120ae74d41eab8cb1e941409ea5f6859508f4ca2dddd292ba43b49eed78e"
     },
     {
       "name": "imagery-04.png",
-      "bytes": 203995,
-      "sha256": "cf5b4302c5dd2f6587e1b638d462f59bd5de1c9046b56fd1f270542da9e9019e"
+      "bytes": 87398,
+      "sha256": "c00032a3a730ebbe0d33f6f4c405a8524fbead8841761f21da7a84193cd27052"
     },
     {
       "name": "imagery-05.png",
-      "bytes": 233700,
-      "sha256": "966a3800bcf6397787e9ca3d1a88aefbb211cc3f660b80cf87e839972fe9f0b3"
+      "bytes": 563411,
+      "sha256": "25cf11624ce952584fb08a4b0962fd37db9c04199f14abd6ed59c0b86213293e"
     },
     {
       "name": "imagery-06.png",
-      "bytes": 276053,
-      "sha256": "7c1c87c9bdee54514bfcb8fc7cd71230890acfef24d250d73efb3e87c142d6d0"
+      "bytes": 413608,
+      "sha256": "21158f4be561c01980f5cfcdae1aa6d9863559647695decc93689be0e6ae4d1b"
     },
     {
       "name": "imagery-07.png",
-      "bytes": 104492,
-      "sha256": "b089f9c9ee59828a94b2562967810b69fe7f47ceaf56691dbf0a1f03f74d33ca"
+      "bytes": 205262,
+      "sha256": "c7d827858b01fb89b05d5931a868bce3d0da1d5ea105f34ae0853bb0ede2d640"
     },
     {
       "name": "imagery-08.png",
-      "bytes": 68021,
-      "sha256": "5f5d5c70a32e018b8697da45651171f9fbc191d83463b37dfe2b405b14a87011"
+      "bytes": 231824,
+      "sha256": "1a4337108cef2959aded837e1188cb7e087582375d4da6cd230f9d55663c2f9a"
     },
     {
       "name": "imagery-09.png",
-      "bytes": 76603,
-      "sha256": "29db7183e9e6cca137894b333808945f0d50b9e4c659c518deba1d2100e28fd3"
+      "bytes": 253008,
+      "sha256": "649f531edc1d7c069955b7f0c02845fec5c03bc49cf92827267e85aff89673d5"
     },
     {
       "name": "imagery-10.png",
-      "bytes": 23039,
-      "sha256": "de74bcc96287b8f654dba675d9241c4c1ffbcb2391967243daf9b998182570eb"
+      "bytes": 211687,
+      "sha256": "41a1cbe7388640de3d8f5e0865894200b3e4096e123c2f36a5cc91a7308adb4d"
     },
     {
       "name": "imagery-11.png",
-      "bytes": 89049,
-      "sha256": "41ac2db11df07749e5ddd0737b4e729ecc38745c37e122d8918c52b407178d98"
+      "bytes": 182739,
+      "sha256": "348928920563f96c37d5c6a88e677e91888074760dc7c42a01bc8a4dcc61ebfb"
     },
     {
       "name": "imagery-12.png",
-      "bytes": 102191,
-      "sha256": "1a975368e4a718d663e95da060ec5eecc0c8eac1b7cc05c58b5059322ba94825"
+      "bytes": 79897,
+      "sha256": "ddd23c87c56d0e94d6cc89a2f85b90a46b132fe4991fc6dd7a83ed544925c757"
     },
     {
-      "name": "viewport-pass-0.png",
-      "bytes": 2097209,
-      "sha256": "246eade9f5e75a7178a4408f5363bd3229a0146e0b01434718665f0275f56cf5"
+      "name": "viewport-1440.png",
+      "bytes": 2098713,
+      "sha256": "da2eaf4bcfeea2e375db5512a8705017925f0b84190bc6c2b68f88380b7f8aea"
     },
     {
-      "name": "viewport-pass-1.png",
-      "bytes": 1834566,
-      "sha256": "6f1c5e4d6b1ae917857ba4527b07e76300b2681f5c81fb993119a3808cbcc676"
-    },
-    {
-      "name": "viewport-pass-2.png",
-      "bytes": 2540810,
-      "sha256": "c63532cbdeb1b676a23cb77921506c8c80f13bfd78c845c62463a110bdcc240f"
+      "name": "viewport-390.png",
+      "bytes": 407147,
+      "sha256": "5a73acb7c518317ebd5d080259cc0f45c7b9eb7115733b292a211c04d573fb0e"
     }
   ],
-  "evidenceSha256": "052d675a52461b64966d031304a0d3f4a17cbd507876a7ab1d71e5dd299623a8",
+  "evidenceSha256": "3b5280650077021cfc673e7e96f94fb67a352ad513b4763e3477c34add4f3150",
   "supersededBy": null
 }

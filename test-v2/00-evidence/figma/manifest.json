@@ -1,0 +1,84 @@
+{
+  "brand": "figma",
+  "captureId": "2026-08-22T11-53-15-939Z",
+  "capturedAt": "2026-08-22T11:53:15.939Z",
+  "channel": "playwright",
+  "source": {
+    "url": "https://www.figma.com/",
+    "finalUrl": "https://www.figma.com/ko-kr/",
+    "title": "Figma: 디자인, 코드, AI를 위한 협업 캔버스",
+    "status": 200
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "locale": "ko-KR",
+  "session": {
+    "profile": "fresh automation context",
+    "authenticated": false
+  },
+  "store": {
+    "root": "$OMD_EVIDENCE_STORE",
+    "path": "figma/2026-08-22T11-53-15-939Z"
+  },
+  "files": [
+    {
+      "name": "imagery-02.png",
+      "bytes": 358152,
+      "sha256": "b2291fc3daf501c1b358af15e88988df792c5298fccc7a74c676e6b7b5c75949"
+    },
+    {
+      "name": "imagery-03.png",
+      "bytes": 758180,
+      "sha256": "b1c60e4620b1bebaa45e0d9e6f423a5cbfaf0c5bd4014f7d5edace84563a9e27"
+    },
+    {
+      "name": "imagery-04.png",
+      "bytes": 398073,
+      "sha256": "ae11e4795421c93295b03d8289f78e4279c9e7469717063987fd4cf934df7588"
+    },
+    {
+      "name": "imagery-05.png",
+      "bytes": 106513,
+      "sha256": "a7cfaee6d84188c59bf3799dfc82d6a705998b5f2e72ddded746a1632db488ac"
+    },
+    {
+      "name": "imagery-06.png",
+      "bytes": 374667,
+      "sha256": "6beb79b960379c354d32a00a1fd4cd649132db5485d0c23368cb99dba8304dc1"
+    },
+    {
+      "name": "imagery-07.png",
+      "bytes": 325928,
+      "sha256": "2e1ca8e4e33203e1d1cb7cfb56cecb50f2fd6bb5da44d4c3f8d5425c72cf0f61"
+    },
+    {
+      "name": "imagery-08.png",
+      "bytes": 300653,
+      "sha256": "a9ca40034930fa40d9b73baab2b037c39a99b232f8b661b57b5ec2b3c608c1f2"
+    },
+    {
+      "name": "imagery-09.png",
+      "bytes": 372475,
+      "sha256": "4b30c536837d2022992c3bbca2d78da99ebe093c136ad2d995ecdd5aeedf3ae9"
+    },
+    {
+      "name": "imagery-10.png",
+      "bytes": 804243,
+      "sha256": "d48feed9be46df4d27b1c7074925220402dc0da3724f6a118bb4230773b88cc8"
+    },
+    {
+      "name": "viewport-1440.png",
+      "bytes": 879592,
+      "sha256": "a858e9f4f9f355edcafc39a255a133754552c9b7a816b624ae832a31a5f2e86c"
+    },
+    {
+      "name": "viewport-390.png",
+      "bytes": 83654,
+      "sha256": "733f5579a35fdb16dcc65fa106bedd2e07275f64a4fd90e5d486192b49e39365"
+    }
+  ],
+  "evidenceSha256": "3de3c45a561900d7b6c8f074762b64ddc8538bc5ac72bad2f87bff21eba8c4da",
+  "supersededBy": null
+}

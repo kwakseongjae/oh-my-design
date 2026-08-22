@@ -1,0 +1,74 @@
+{
+  "brand": "apple",
+  "captureId": "2026-08-22T11-52-32-729Z",
+  "capturedAt": "2026-08-22T11:52:32.729Z",
+  "channel": "playwright",
+  "source": {
+    "url": "https://www.apple.com/kr/",
+    "finalUrl": "https://www.apple.com/kr/",
+    "title": "Apple (대한민국)",
+    "status": 200
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "locale": "ko-KR",
+  "session": {
+    "profile": "fresh automation context",
+    "authenticated": false
+  },
+  "store": {
+    "root": "$OMD_EVIDENCE_STORE",
+    "path": "apple/2026-08-22T11-52-32-729Z"
+  },
+  "files": [
+    {
+      "name": "imagery-01.png",
+      "bytes": 439247,
+      "sha256": "1bbfb56cfd0fd5f9a82a5e72c6acaec4fcbed055dd7bf3d5c3a008fbcb496b66"
+    },
+    {
+      "name": "imagery-02.png",
+      "bytes": 985698,
+      "sha256": "29dc90cce7dc541bb3f107ba9b40cfbae6fb98c2691b3e46a77d966db6114195"
+    },
+    {
+      "name": "imagery-03.png",
+      "bytes": 2818594,
+      "sha256": "e23d991f3489e7cb1b3e47cd2ba5d2f0d9582bccf5c6f5a24dbfc1de09de9b4e"
+    },
+    {
+      "name": "imagery-04.png",
+      "bytes": 326547,
+      "sha256": "d3c8d17427597380f37aaf8001fab313911c2cce23b1bae54bbf59cf5c007f2e"
+    },
+    {
+      "name": "imagery-05.png",
+      "bytes": 495103,
+      "sha256": "cbcafc2171bbd2fc1f022131691c3e52815b251c78a85390718d3e7aa2585bfe"
+    },
+    {
+      "name": "imagery-06.png",
+      "bytes": 260337,
+      "sha256": "b0f2de08a97069aba2e9ee37b9a7316a58af17971be00e2202aeb288206de0a4"
+    },
+    {
+      "name": "imagery-07.png",
+      "bytes": 303098,
+      "sha256": "d8a56e6eaaa77a8dc9a5e931d39f6f674784d20d6f3872c4fc1479e33f9a360d"
+    },
+    {
+      "name": "viewport-1440.png",
+      "bytes": 524481,
+      "sha256": "6f92fbc97f6de8c79490b535e59279fb04206508694cc52b4779f67a70236dc7"
+    },
+    {
+      "name": "viewport-390.png",
+      "bytes": 413010,
+      "sha256": "e572f77a6ebf53bb47a2f62dfecc1975d045b9895c54de1975f066f3d8435cbe"
+    }
+  ],
+  "evidenceSha256": "149c8ab42374e1c457b43e500ae4d07f52e04afedc9fb7b7c25ea087740dfd52",
+  "supersededBy": null
+}

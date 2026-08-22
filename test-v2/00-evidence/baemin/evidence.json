@@ -1,0 +1,222 @@
+{
+  "brand": "baemin",
+  "capturedAt": "2026-08-22T11:52:50.288Z",
+  "source": {
+    "url": "https://www.baemin.com/",
+    "status": 200,
+    "finalUrl": "https://www.baemin.com/",
+    "title": "배달의민족 - 배달팁 무료 배민클럽"
+  },
+  "method": {
+    "channel": "playwright",
+    "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
+    "imagerySamplesRequested": 12,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "locale": "ko-KR",
+    "colorScheme": "light"
+  },
+  "chrome": {
+    "pageBackgroundComputed": "#f6f6f6",
+    "bodyColor": "#000000",
+    "header": {
+      "detectedBy": "geometry",
+      "background": null,
+      "heightPx": 96,
+      "borderBottom": null
+    },
+    "primaryButton": null,
+    "typeScale": [
+      {
+        "tag": "h2",
+        "fontPx": 24,
+        "weight": "700",
+        "family": "-apple-system",
+        "lineHeight": "normal",
+        "letterSpacing": "normal",
+        "color": "#0cefd3"
+      },
+      {
+        "tag": "p",
+        "fontPx": 60,
+        "weight": "800",
+        "family": "-apple-system",
+        "lineHeight": "84px",
+        "letterSpacing": "normal",
+        "color": "#0cefd3"
+      }
+    ],
+    "notes": {
+      "buttonCandidatesAboveFold": 0,
+      "headerDetectedBy": "geometry"
+    },
+    "pageBackgroundRendered": {
+      "resolved": false,
+      "reason": "no flat canvas in the frame — the dominant colour covers too little to be a background",
+      "dominantHex": "#425d52",
+      "coverage": 0.03
+    }
+  },
+  "imagery": {
+    "sampled": 1,
+    "samples": [
+      {
+        "src": "https://www.baemin.com/_next/static/media/main_text_03@3x.f4a7b72a.png",
+        "kind": "img",
+        "alt": "아침의 여유 식지 않도록",
+        "docBox": {
+          "x": 156,
+          "y": 177.5,
+          "w": 654.421875,
+          "h": 240
+        },
+        "aspect": 2.727,
+        "areaShare": 0.1212,
+        "intrinsic": {
+          "w": 1966,
+          "h": 721
+        },
+        "clipped": false,
+        "file": "capture/imagery-09.png",
+        "palette": [
+          {
+            "hex": "#0cefd3",
+            "coverage": 0.125,
+            "saturation": 0.95,
+            "luma": 0.74
+          },
+          {
+            "hex": "#0af1d5",
+            "coverage": 0.102,
+            "saturation": 0.959,
+            "luma": 0.745
+          },
+          {
+            "hex": "#7b9a8c",
+            "coverage": 0.0515,
+            "saturation": 0.201,
+            "luma": 0.574
+          },
+          {
+            "hex": "#749385",
+            "coverage": 0.0301,
+            "saturation": 0.211,
+            "luma": 0.547
+          },
+          {
+            "hex": "#5b7a6d",
+            "coverage": 0.0234,
+            "saturation": 0.254,
+            "luma": 0.449
+          },
+          {
+            "hex": "#6c8a7d",
+            "coverage": 0.0227,
+            "saturation": 0.217,
+            "luma": 0.512
+          }
+        ],
+        "light": {
+          "meanLuma": 0.582,
+          "p05": 0.389,
+          "p50": 0.566,
+          "p95": 0.75,
+          "dynamicRange": 0.361,
+          "gradient": {
+            "dx": 0.04,
+            "dy": -0.013
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#697e72",
+          "center": {
+            "x": 0.408,
+            "y": 0.4899
+          },
+          "box": {
+            "x": 0.0125,
+            "y": 0.0678,
+            "w": 0.7875,
+            "h": 0.8644
+          },
+          "coverage": 0.2544
+        }
+      }
+    ],
+    "aggregate": {
+      "meanLuma": 0.582,
+      "dynamicRange": 0.361,
+      "luminanceGradients": {
+        "brighter right": 1
+      },
+      "aspects": 2.727,
+      "figureGroundResolved": "1/1",
+      "subjectNote": "fewer than 4 resolved samples — placement omitted"
+    }
+  },
+  "motion": {
+    "present": false,
+    "note": "no video above the fold at capture time"
+  },
+  "mobile": {
+    "chrome": {
+      "pageBackgroundComputed": "#f6f6f6",
+      "bodyColor": "#000000",
+      "header": {
+        "detectedBy": "geometry",
+        "background": null,
+        "heightPx": 80,
+        "borderBottom": null
+      },
+      "primaryButton": {
+        "fill": "solid",
+        "background": "#0cefd3",
+        "color": "#000000",
+        "radiusPx": 9999,
+        "paddingY": 22,
+        "paddingX": 26,
+        "fontPx": 20,
+        "weight": "700",
+        "label": "Get the App",
+        "repeats": 1
+      },
+      "typeScale": [
+        {
+          "tag": "h2",
+          "fontPx": 24,
+          "weight": "700",
+          "family": "-apple-system",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "color": "#0cefd3"
+        },
+        {
+          "tag": "p",
+          "fontPx": 32,
+          "weight": "800",
+          "family": "-apple-system",
+          "lineHeight": "44.8px",
+          "letterSpacing": "normal",
+          "color": "#0cefd3"
+        },
+        {
+          "tag": "button",
+          "fontPx": 20,
+          "weight": "700",
+          "family": "Arial",
+          "lineHeight": "20px",
+          "letterSpacing": "normal",
+          "color": "#000000"
+        }
+      ],
+      "notes": {
+        "buttonCandidatesAboveFold": 1,
+        "headerDetectedBy": "geometry"
+      }
+    }
+  }
+}

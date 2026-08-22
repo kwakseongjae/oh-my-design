@@ -1,0 +1,863 @@
+{
+  "brand": "figma",
+  "capturedAt": "2026-08-22T11:53:15.939Z",
+  "source": {
+    "url": "https://www.figma.com/",
+    "status": 200,
+    "finalUrl": "https://www.figma.com/ko-kr/",
+    "title": "Figma: 디자인, 코드, AI를 위한 협업 캔버스"
+  },
+  "method": {
+    "channel": "playwright",
+    "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
+    "imagerySamplesRequested": 12,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "locale": "ko-KR",
+    "colorScheme": "light"
+  },
+  "chrome": {
+    "pageBackgroundComputed": null,
+    "bodyColor": "#000000",
+    "header": {
+      "detectedBy": "semantic",
+      "background": "#ffffff",
+      "heightPx": 78.4,
+      "borderBottom": null
+    },
+    "primaryButton": {
+      "fill": "solid",
+      "background": "#ffffff",
+      "color": "#000000",
+      "radiusPx": 8,
+      "paddingY": 12,
+      "paddingX": 22,
+      "fontPx": 16,
+      "weight": "400",
+      "label": "쿠키 허용 안 함",
+      "repeats": 2
+    },
+    "typeScale": [
+      {
+        "tag": "h1",
+        "fontPx": 56,
+        "weight": "400",
+        "family": "figmaSans",
+        "lineHeight": "56px",
+        "letterSpacing": "-1.25px",
+        "color": "#000000"
+      },
+      {
+        "tag": "h2",
+        "fontPx": 30,
+        "weight": "400",
+        "family": "figmaSans",
+        "lineHeight": "36px",
+        "letterSpacing": "-0.66px",
+        "color": "#000000"
+      },
+      {
+        "tag": "h3",
+        "fontPx": 16,
+        "weight": "400",
+        "family": "figmaSans",
+        "lineHeight": "22.4px",
+        "letterSpacing": "normal",
+        "color": "#000000"
+      },
+      {
+        "tag": "p",
+        "fontPx": 18,
+        "weight": "330",
+        "family": "figmaSans",
+        "lineHeight": "25.2px",
+        "letterSpacing": "normal",
+        "color": "#ffffff"
+      },
+      {
+        "tag": "button",
+        "fontPx": 18,
+        "weight": "330",
+        "family": "figmaSans",
+        "lineHeight": "25.2px",
+        "letterSpacing": "normal",
+        "color": "#ffffff"
+      }
+    ],
+    "notes": {
+      "buttonCandidatesAboveFold": 2,
+      "headerDetectedBy": "semantic"
+    },
+    "pageBackgroundRendered": {
+      "resolved": true,
+      "hex": "#ffffff",
+      "coverage": 0.6559,
+      "source": "modal colour of the captured viewport"
+    }
+  },
+  "imagery": {
+    "sampled": 9,
+    "samples": [
+      {
+        "src": "data:image/png;base64,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",
+        "kind": "img",
+        "alt": "커피숍에서 브런치를 홍보하는 소셜 미디어 그래픽",
+        "docBox": {
+          "x": 728,
+          "y": 7292.8125,
+          "w": 328,
+          "h": 492
+        },
+        "aspect": 0.667,
+        "areaShare": 0.1245,
+        "intrinsic": {
+          "w": 20,
+          "h": 30
+        },
+        "clipped": false,
+        "file": "capture/imagery-02.png",
+        "palette": [
+          {
+            "hex": "#ebebeb",
+            "coverage": 0.2254,
+            "saturation": 0,
+            "luma": 0.922
+          },
+          {
+            "hex": "#721c1b",
+            "coverage": 0.2192,
+            "saturation": 0.763,
+            "luma": 0.181
+          },
+          {
+            "hex": "#000000",
+            "coverage": 0.0291,
+            "saturation": 0,
+            "luma": 0
+          },
+          {
+            "hex": "#b3b1be",
+            "coverage": 0.019,
+            "saturation": 0.068,
+            "luma": 0.699
+          },
+          {
+            "hex": "#483628",
+            "coverage": 0.0127,
+            "saturation": 0.444,
+            "luma": 0.223
+          },
+          {
+            "hex": "#c5c59c",
+            "coverage": 0.0125,
+            "saturation": 0.208,
+            "luma": 0.761
+          }
+        ],
+        "light": {
+          "meanLuma": 0.556,
+          "p05": 0.153,
+          "p50": 0.644,
+          "p95": 0.928,
+          "dynamicRange": 0.775,
+          "gradient": {
+            "dx": -0.024,
+            "dy": -0.042
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 133.2
+        }
+      },
+      {
+        "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAIAAAC+dZmEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFWElEQVR4nGWP6VMaBxiH979rZtr0QzvJTJKmtpPEI0aLxgSSxgsERSSCF4jiIio3onKJHCL3wrIXC8u1LB5oFIWgRCffOiZtp9PMPPPO++H3zPv+AIqIZ3AoQ8RzJJxPJ78lm0p8DVCpxN9h/HZSRBwgkuEkFMASIYqIf2vmSDiDQwQSTiGRNA6lsVgKiaSQaAqNprEYQKJRDA4RyQhFJP6nUQSUwaIkGiaSQRIN315LxSniH1IJ4Db05Z9s6gtfFyKexiJY3BcP2mJ+S2xvA444iWSAIqD/tgNyZIIiIBIN4wk/CvmQmBeFfGjMCwXtu841u166vsy3rAic5rmgx4hA3gwe+9cHSCSExLxR/5Z/W+e2qt1by177qsemdpjkeiVPKX4xN/JYJmgBpSyzenzXqUFingwezZGJfBoG4iGnf1tvN8lNyyLtAk+jGNYrebpF7sosZ17YKum/J2J/L2L/IOm/rxA9N6pGd53aZNSdSgbTWATYdWq39DOaBS44xVZM/DE/3rkg6lwYb5fxf5P03xex7wr77oz13RGx70oGHijfsyyrYq9NHdwxRnwWwGGe1y8JlqSvFKKuedGLRXHX0vuuJXHH4vhTuaBllvfLDPfRLO8XGb9FIWwFJaw12Z+6hSH9ItcE8gHL2uSqbEAh6lJMdJlAwa5dFXJrQjsrIZc64FT5HeCeQ7XnXA5ur+w51Q6DRCNjK4StM7xfZ4YfA8Zl4fIMRzbWAUpfRrymk6NirXp8cVapnx9fVCsnFaZySB8flU6P90+PmRTstixz5YKWCc6Poy+/A3RLI+DUK9lom3qGjcfdl41a42O9Wq02m82bm+uzs9PDg4Ojw8Ozs7PmVeOAxt0bsypJp/Tdz8KXdwCtYhCU9snH2lZnOXjc87F2flyplGi6Vru4ubmu1S5OP3w4OTmuVs+uLhsnR3loz7i5yldNdspGHgOrcxxQ0qMY79DK36Zg72WjVq/Xz8+rnz41P3/+fH39qdlsNhqNer1+ddmonpYz2G7Ys+Y0SS3qEQCUdIPvXygnOjQyDhzcrJ6UG/XTy/pZs1FtXp5fNapXjfOrxvll46J5WaueMnQWIhEPHLFG/SZAIXyiFLWC4vaVaZZTL074DSnImoHtOcRewJw07qJJbzkbqTD46VGusp9mCnCBimVToTQWAOZ4jxSjLeDEM7XkuXaux7LEcawOeAzDQfNgdHMIsgkSLgkeUOVQB5OL7dNIuYiU8nAxm8hnIGBq8N48/6FK/FQz3WmQsdYXeu2q1x7N66C+B1pnJW1vUBc/tTebT5qZXPCARg5KKFNASvlkMQsD0v6f5kcerEnbzQt9VtWb7bV+n2EgZH4bX+/BrKz0DiftHab8E4XESpnyHZaShwy+T+NMAaNzyK0s5z3QTHVsLL12rL7z6AcDpoGoqS9h6sC32jLb3RkXK+3i5MNTZdJeKcGVffKQIctFnM4mgemh+/P8h5rpjk0VZ1s76DNyQ+uDMWNvwviM2HiS3W6nnM/Sjracn1vGjRUaOj5IHzIkU8AKFAzIBS2Lwt91c932tSGvRRy0TcUck7B1CNnsTTu6Cz5WwfM862rL+4cYVHdUjB6ViX2aKOWQQgYGQAlrWdplULAdOuGubT60o465QdglxVwjlG+oGHhX8PVm3azcnqCEGg7y4X0aZQoo/VU2q4VGkLuu4tp04p0Nhceq8lqVfut0zD6Oe8coP4/ysMkdDhWYLKLr5Vy4XEiW8kg+DZFYCHBbVc51mc0gtRtnHCa5zSjf0k1btRNu41jUPoa5R/GdYdzNpyJKmthm8hBTQIpZmEQD8ZDjLyjpMNi+jIkmAAAAAElFTkSuQmCC",
+        "kind": "img",
+        "alt": "텍스처 값을 보여주는 모의 웹사이트",
+        "docBox": {
+          "x": 0,
+          "y": 3352.140625,
+          "w": 348,
+          "h": 435
+        },
+        "aspect": 0.8,
+        "areaShare": 0.1168,
+        "intrinsic": {
+          "w": 20,
+          "h": 25
+        },
+        "clipped": true,
+        "file": "capture/imagery-03.png",
+        "palette": [
+          {
+            "hex": "#dad6cd",
+            "coverage": 0.1446,
+            "saturation": 0.06,
+            "luma": 0.84
+          },
+          {
+            "hex": "#ffffff",
+            "coverage": 0.1128,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#dddacd",
+            "coverage": 0.0319,
+            "saturation": 0.072,
+            "luma": 0.854
+          },
+          {
+            "hex": "#9b8c6b",
+            "coverage": 0.0318,
+            "saturation": 0.31,
+            "luma": 0.552
+          },
+          {
+            "hex": "#958563",
+            "coverage": 0.0256,
+            "saturation": 0.336,
+            "luma": 0.525
+          },
+          {
+            "hex": "#e2ded2",
+            "coverage": 0.023,
+            "saturation": 0.071,
+            "luma": 0.871
+          }
+        ],
+        "light": {
+          "meanLuma": 0.738,
+          "p05": 0.491,
+          "p50": 0.757,
+          "p95": 1,
+          "dynamicRange": 0.509,
+          "gradient": {
+            "dx": 0.067,
+            "dy": 0.021
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 51.1
+        }
+      },
+      {
+        "src": "data:image/png;base64,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",
+        "kind": "img",
+        "alt": "텍스트에 적용할 수 있는 다양한 브러시 효과를 보여주는 UI",
+        "docBox": {
+          "x": 0,
+          "y": 3803.140625,
+          "w": 348,
+          "h": 435
+        },
+        "aspect": 0.8,
+        "areaShare": 0.1168,
+        "intrinsic": {
+          "w": 20,
+          "h": 25
+        },
+        "clipped": false,
+        "file": "capture/imagery-04.png",
+        "palette": [
+          {
+            "hex": "#0d0d0d",
+            "coverage": 0.2761,
+            "saturation": 0,
+            "luma": 0.051
+          },
+          {
+            "hex": "#ffffff",
+            "coverage": 0.167,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#ebc0ad",
+            "coverage": 0.0675,
+            "saturation": 0.264,
+            "luma": 0.783
+          },
+          {
+            "hex": "#1b1a1a",
+            "coverage": 0.0181,
+            "saturation": 0.037,
+            "luma": 0.103
+          },
+          {
+            "hex": "#e6f4fe",
+            "coverage": 0.0172,
+            "saturation": 0.094,
+            "luma": 0.948
+          },
+          {
+            "hex": "#f3c2ab",
+            "coverage": 0.0118,
+            "saturation": 0.296,
+            "luma": 0.795
+          }
+        ],
+        "light": {
+          "meanLuma": 0.425,
+          "p05": 0.048,
+          "p50": 0.298,
+          "p95": 1,
+          "dynamicRange": 0.952,
+          "gradient": {
+            "dx": 0.269,
+            "dy": 0.249
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 145.9
+        }
+      },
+      {
+        "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAIAAAC+dZmEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD9UlEQVR4nGNgMDhDDGI0PMNkcIbD4rRgzHbpOX3KR0pVThcy4NNgcIZR/zSD/hlmwzNsxmd4LM/KeJxWj9iqUjFVbW2d2sliLJoZ9cHI4AyL8Rluq3P8jhcEnS7w254TcTiv7nfEzG+6cWitXlub+rYGBlR7QIjF6AyX5Tlh90tyMTd0S++ZtT/Wr34gFX5NyOGCrPMRPbe5hu7dKlELJRvnMcC1MRue4bQ4J+h6USbiuk7xPesJz9xXv/ff/zX45A+vvV+Ne59Lh14Ttj0tZbtXxnYnv/VBDo99DMyGZzjMzwo4XZQKvaaZf9ey56nr8nf+e7+GnPkZduVv+PX/4Tf+hV7767Xzi07xPQHbc+xGp9iNTjMbnmE0Os0gHXZNPfuOefsTl8VvfXd/CTn1M+zyH4iesOv/wq7/DwOzAw5+Myi/z2N9nlH/NCM8gFyXvfPd8Tn45I+wS39AqsF6QsF64Cj82l/vzR9VUm6ym55l1EcKXbA9KHrCr/8LR9Z841/ohd8OM1+J+V5mQouaUJjbwq6ByIirf6Mv/I66+Cf8GtzN/wMPfzeqecBrex7FWpDNCEv+hV3+G7D7i9/StxG7vkRd/hsOdkv41b+e6z8oJdxgMzmDS/O/sIu/vTd/Mm9+ZF7zIHDDx2iwZpCbz/2ym/pC1OsSk8Fp9BQVdg3kyZBzvzxWvzMou6+RdtNu8vPg4z9AzgZLBRz4ZlBxn8f6HCipomkG6Tz1w2XxG+3s28pR1yw7nwQe/BYG9fC/8Ct/PdZ8UIi5zmoMSksMaCjk0DenmS9VE2/K+l82qXvov/tL+NW/8HAOOfPLZuJzEfeLWHQanGGwqn+kHHVDyvOSfvE9ny0fwy//QUTv9X/++77qldzjtsTmZoMzDAIOF4WcLurk3PFc8z7s4m94qgJpvvLXbcU7+cjrrEbY3GxwhoFR/4yg00XLlsfBR7+DdIJjG+rm0z+tep8KuV5kQoshA7hmgzNcFue0cu74bvsETxhQN+/5olNwl8viHHr0GsAQg8EZZoMzYj6X7ae9CD37C5ROQZb/C7v8x3XZO9nwayw43MxodBqcn/XPcFmd1y26Cwrq639BMXQDFH+WXU8FnS9itZbJ7ASb+z5oScJieEYy8Ir99JdBJ36EXP4TfP635/oPGpm3Oc2xuJnR8DS71x6h6gVQzYz6Z7itz6km37SY8Nxm8TvL2W/0yu+LelxkNsRiLYvDIcHSxXLrGxFlGIvRGQH781L+l8VCrokHXhV3v8hpfhbdt4ZnWGyP8GWtklnWpnIcqfRkNDjDaXZW0OYsl/kZHouzAlbn2IxRs5H+GSbjU1xh2yRm9isdLlM5VQgAXy/IgUfhaUEAAAAASUVORK5CYII=",
+        "kind": "img",
+        "alt": "디자인을 편집하는 커서 벡터",
+        "docBox": {
+          "x": 364,
+          "y": 3803.140625,
+          "w": 348,
+          "h": 435
+        },
+        "aspect": 0.8,
+        "areaShare": 0.1168,
+        "intrinsic": {
+          "w": 20,
+          "h": 25
+        },
+        "clipped": false,
+        "file": "capture/imagery-05.png",
+        "palette": [
+          {
+            "hex": "#0030cb",
+            "coverage": 0.5586,
+            "saturation": 1,
+            "luma": 0.192
+          },
+          {
+            "hex": "#56d7ff",
+            "coverage": 0.3136,
+            "saturation": 0.663,
+            "luma": 0.747
+          },
+          {
+            "hex": "#002ccb",
+            "coverage": 0.0275,
+            "saturation": 1,
+            "luma": 0.181
+          },
+          {
+            "hex": "#24cb71",
+            "coverage": 0.025,
+            "saturation": 0.823,
+            "luma": 0.631
+          },
+          {
+            "hex": "#55d8ff",
+            "coverage": 0.0053,
+            "saturation": 0.667,
+            "luma": 0.749
+          },
+          {
+            "hex": "#000001",
+            "coverage": 0.0033,
+            "saturation": 1,
+            "luma": 0
+          }
+        ],
+        "light": {
+          "meanLuma": 0.405,
+          "p05": 0.192,
+          "p50": 0.192,
+          "p95": 0.747,
+          "dynamicRange": 0.555,
+          "gradient": {
+            "dx": -0.181,
+            "dy": -0.053
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 73.4
+        }
+      },
+      {
+        "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAIAAAC+dZmEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFcklEQVR4nD2U/W9SZxTH759U4N4HqLZWN9+3NW5aq2abc5plzi1Z1Bi3GY0u2bQU20rtC86praW11pbaF2wLhcKFCxSo0CKFtt6X53nuvdAWKFzgxwWzLfnm/HRycr7n+8khjizz+gSninM1MaEmwWsSLGAE/TQGr2VyStbYJU0AqpOcZv29JvW+9h37RQjemk0PD+To3iKhT7HUW15DIw0DQZxrWOEO++EBD9pNQ+BCpAerlqpDVXGeDEDdAqqj4ZEgPOtDVx0yoUmymiCk7KKegccW4Y1Z2TS69edE5keneNyL9kUE7SqnWuNUMYF0YDAhgymJcmJdQNgd4QnAQDAtaV9L+z3oli3tMhfi7aVIp2J/XHj2InvnTfoCgz+NCvUxXkdDMCN+aJbBtKTxQUI3h7Vjss4qfebC5pfbybYSulcRDBXeUEndL4ceKrYnO+ZX27/OyWfd+IgP1fuhzoMoB9bQiAC+6s7ULD7oQXcnMsGu4oax/N5YYVsrrKFa143leHuJ6SmO9+VNY1tXHNIpPzqwKOwKCQS5zFELmJoWdzvQGRe+P745PJAb68+P9edHP8jan598lrc/Lvi7ldBDZcFceGHJtUxmLjtkQptgKQaCqartOjs+6oVNi/BUCJ0OotNeXJUff+XFF13ibVvGMpgNdBcTbeW3JsVjLhInwrDuLU/RCExK2nGZWkCaOKdeY6mooJvHWicGTDWhWh9siArNi/DuVMb5qLBhLPOGCtE9unXOh+qiPOmFpEMkPUi1LNSs8uoABBMSNS1RM5J2TAY2UR2GIMp/EoS3bWm3ucAaKsSSSekfyl5yi4ciQu1bnopx6iSrXmPJKE8xkAoKVVMODOyYXMCkE4Og0BiBJutm7IFCcIZKvL1ke5JvG9/82SV+7UfNIXgyBJuDsDmAmoPwZAA1BmADA3XzmLKLGgbqY/z3HnHiWZ74P9Jwp2L/a8falxvpz408z738T8MDuUcj25fnpIM+CDyImhMBjRoXYetkhog9KLl7C+N9uSFLbsiSnXiWp3uqkG0YyxutlQ1jZd1YSbSVrX3579xibQACm0TN431Lwk8ekWh9vXnZKX0ZhMcjQlMInvfgm2/SFksu9FBhW6tLcYaK0FJZfKjcsqUbgpCar7JVF+XP+hGxP87XJllyjVWnWE2M0/vgPgaeYbBxYnPBXFi7X42Ea6l4e4rX5+T6RUi6qperDwvnGEyoUmxNkqtZ5Wre8Rof0k7IYFbUhYXGALxpS4/35QNdiqe32D26dTIEQYwn3Zhy4P1+eHVeItQMUoegOs5pEhygoc4qgzcSSSOdGx1g0AWPeGMmfW1GPulHtaucapVTLwlURDjhRz2vtghgk/QutD8sNC3C4x68z42oICRpRM2KYB7volEDjfa4kI6B6pUqPKoUW5/grjlkp7lAaL3wEI1+eZO2DGafvshecciHlwQQ4UkfqgJvTYMpGUxKYE5UL0FVitOn2G/8eNCSW20rE2SSbQ6ioYFcqq2cbC/P/L3zuy3zeQjWxnjgQWBWJBcwNY8pJ6KifEOC+5bBT4azUVOJM5QJKsodD8CnL7IrHSXOUA3W11PsGd265BaPBeDHIWFPlN8bEg4GYLMf/WaXhwdyga5i1FRKtpUIrR1/5EY/OCTzyPbs451Ip7LaVop1lOYe7zwZ3r43mbk9k75jS7dbt4YGct7eYrBLGX6eM1m3Bi1ZgpqR9NPiXgc+5kUXPeIftszzwazzUWHJpKx0lKIPSuFOJdypxDpKyx0lurf4aGT7vA8djQmn/YhQ0xi8TNcOyTpa0CbZvatcUxhed8gDg9lwp8Ia/v1n68ayy1xomdxsCkP92nv1Gqt6J/wDez8Hrb8sY54AAAAASUVORK5CYII=",
+        "kind": "img",
+        "alt": "분홍색 배경 위에 보라색과 청록색 경로를 따라 배치된 텍스트",
+        "docBox": {
+          "x": 1092,
+          "y": 3803.140625,
+          "w": 348,
+          "h": 435
+        },
+        "aspect": 0.8,
+        "areaShare": 0.1168,
+        "intrinsic": {
+          "w": 20,
+          "h": 25
+        },
+        "clipped": false,
+        "file": "capture/imagery-06.png",
+        "palette": [
+          {
+            "hex": "#33e0df",
+            "coverage": 0.3849,
+            "saturation": 0.772,
+            "luma": 0.734
+          },
+          {
+            "hex": "#e28cf7",
+            "coverage": 0.2783,
+            "saturation": 0.433,
+            "luma": 0.651
+          },
+          {
+            "hex": "#33e1e0",
+            "coverage": 0.0491,
+            "saturation": 0.773,
+            "luma": 0.737
+          },
+          {
+            "hex": "#34dfdf",
+            "coverage": 0.0397,
+            "saturation": 0.767,
+            "luma": 0.732
+          },
+          {
+            "hex": "#33dee1",
+            "coverage": 0.0269,
+            "saturation": 0.773,
+            "luma": 0.729
+          },
+          {
+            "hex": "#e38cf8",
+            "coverage": 0.0233,
+            "saturation": 0.435,
+            "luma": 0.652
+          }
+        ],
+        "light": {
+          "meanLuma": 0.678,
+          "p05": 0.454,
+          "p50": 0.731,
+          "p95": 0.739,
+          "dynamicRange": 0.285,
+          "gradient": {
+            "dx": 0.001,
+            "dy": 0
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 93.1
+        }
+      },
+      {
+        "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAIAAAC+dZmEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEzUlEQVR4nH2Ti08TdxzA7353LdAraq9gZwUpV6g8YtUWExRFiFEzo0O2iYrzlZhMzbaEYVPm5ubMwAVneRSYvLW0R1s6+qLUvp/0RVsLSoti9rcsPdA5YvbJ736/y/e+n9zd7/v9QRAEQxAMwxA1Z5dN/PsMhjdFPsz4j7zJ+biMUtAoEATZlI38LxCO42w2G8dxFouFYRiKoO99GooymcwtW/KZG2D5TCaGMTCMwcjLY+TlQdVV1dVVVRW7dxMEwSnkMHIZKEABDCAIYjCwol2lRHlVCb+ihF/B41eWllXz+FUlRGUxT1DEE0CH6w4frqs7WFsrFAqLdhZheRgdzaGhNAQgW/FCYe2J+qYbDc03j31++9Nzbc0XpS2td7+8+MOZ85KTLW1QA8XR+nqxSLyTuzM3JxdFUDpKz0FzPuESjc03W9sHrnWM375H/tw51y9zP+n19svcnd12adcc1NjYePRoQ/2RepFYxOVy6XR6dp8AQkNpRcXlp1u/v3VfIXmo7+5xkWMx09SSXrGse5oiJxLjo3GopqZm//79+/buq6ys5HA46zIF2FFEnL3cJukif++xKYZDpqmk9llSMZHUKlLm6YR5ehHicDiFFGw2G8Ow9WplCwUAl1fWckPyQDY7MuzXP1vUK1+MToaHJoJqVcIwHZocs2zUeR0AAOVR70XR4jLB1VsdfX+a1IqQmUz8RSZGlYFhpU+riWpJX7dc8y73HRvtAQCgobv45V9/Ix0btxjVEas2btIlVNqgYsanm40YZyPktHtzM27ICALotBKi7NvvpEqFxaKLOmbjdmPSYIzojEGjOWKzvvDYlj/WyTAMo1m5lOC3t0lnyDmbPuzUx93mpH0+brPG3LZUwLEScWfWtwZGQPZ/EZC9p76ZBug0guB3tEtNGpPLGHQZYz5LMmhfCjleRa2rMfNa3LIGsdkFOF7AYm2MrdvwPCYTzc2BUYRPED/dkTyfMfhMPrcx4rckE+7Mkns1blgNK9fCqjfQuaZLp09dOHni/MkT548fbzlUf4Yn2JObnw8DUE6U/iq945k1hC0BjzG0YE2+9K+mA6mUJR7TLEU1KUg9qBmTqYa6pwa7FbIuxZ323iMNzVu2FcAwLCB4nR2SoGE+Yg155/xR1+Kr4HJ6Ibzi9izNB1+YQ1CQDPvJgFfl95Jeh8o9/Fj92amvWKxCGAYCovRhx12PzjY/43qutye9kUxo+XUk9ibkWnE6k6YA5BlJeceTvvGkfzIWUC2Qct25M1dw1nYAg90Ev7vjvlVle/rEolfaljzRtVDibXTx78WFjM+XMEUghzztGEg7B9LOwWXPZEwt119ousqm5ApC0Cl5MDtpIUesTq33pcuf8dpfBxxvI4E3oXDaG4Mc/RlHf8bel7H3L7snYmq54eLZ6wU4B4ZB8Y7iy19cv9f+8NEvfeN/DE31PJ7q/U0l75oekqmHBzUjw5C9L23rXZmXvTLLkvbRsGZAf6k5KwMYMHKxXVxepUAoEoprReJa0d6Doj0HxcJDNfsOHRDVHRBD5scvDY9S6s64snPBOOSf7tddar5WgG+H4fV2AQjy4dl5TzYKqbsSigexoR8Dg/ecWrlT2TPT2nSlAC8EWXnjgFEXyEaoWLYZqfkfBn3mlZfHd8sAAAAASUVORK5CYII=",
+        "kind": "img",
+        "alt": "프롬프트 노드와 미리 선택된 이미지 노드가 연결되어 Figma Weave 인터페이스에서 나비 이미지를 생성합니다",
+        "docBox": {
+          "x": 364,
+          "y": 4254.140625,
+          "w": 348,
+          "h": 435
+        },
+        "aspect": 0.8,
+        "areaShare": 0.1168,
+        "intrinsic": {
+          "w": 20,
+          "h": 25
+        },
+        "clipped": false,
+        "file": "capture/imagery-07.png",
+        "palette": [
+          {
+            "hex": "#000000",
+            "coverage": 0.4115,
+            "saturation": 0,
+            "luma": 0
+          },
+          {
+            "hex": "#131313",
+            "coverage": 0.059,
+            "saturation": 0,
+            "luma": 0.075
+          },
+          {
+            "hex": "#2b2b2b",
+            "coverage": 0.0261,
+            "saturation": 0,
+            "luma": 0.169
+          },
+          {
+            "hex": "#0b0b0b",
+            "coverage": 0.0258,
+            "saturation": 0,
+            "luma": 0.043
+          },
+          {
+            "hex": "#bb92d6",
+            "coverage": 0.0156,
+            "saturation": 0.318,
+            "luma": 0.626
+          },
+          {
+            "hex": "#bb92d9",
+            "coverage": 0.0129,
+            "saturation": 0.327,
+            "luma": 0.627
+          }
+        ],
+        "light": {
+          "meanLuma": 0.31,
+          "p05": 0,
+          "p50": 0.082,
+          "p95": 0.801,
+          "dynamicRange": 0.801,
+          "gradient": {
+            "dx": 0.292,
+            "dy": 0.211
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 135.5
+        }
+      },
+      {
+        "src": "data:image/png;base64,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",
+        "kind": "img",
+        "alt": "나비 비트맵 모자이크 위에 간격과 최소 및 최대 크기를 조정할 수 있는 옵션이 표시된 UI",
+        "docBox": {
+          "x": 1092,
+          "y": 4254.140625,
+          "w": 348,
+          "h": 435
+        },
+        "aspect": 0.8,
+        "areaShare": 0.1168,
+        "intrinsic": {
+          "w": 20,
+          "h": 25
+        },
+        "clipped": false,
+        "file": "capture/imagery-08.png",
+        "palette": [
+          {
+            "hex": "#fefeff",
+            "coverage": 0.2304,
+            "saturation": 0.004,
+            "luma": 0.996
+          },
+          {
+            "hex": "#fbfd5f",
+            "coverage": 0.1372,
+            "saturation": 0.625,
+            "luma": 0.946
+          },
+          {
+            "hex": "#fefe62",
+            "coverage": 0.0465,
+            "saturation": 0.614,
+            "luma": 0.952
+          },
+          {
+            "hex": "#243c0c",
+            "coverage": 0.0443,
+            "saturation": 0.8,
+            "luma": 0.202
+          },
+          {
+            "hex": "#f5f5f5",
+            "coverage": 0.0412,
+            "saturation": 0,
+            "luma": 0.961
+          },
+          {
+            "hex": "#2b430d",
+            "coverage": 0.028,
+            "saturation": 0.806,
+            "luma": 0.227
+          }
+        ],
+        "light": {
+          "meanLuma": 0.694,
+          "p05": 0.209,
+          "p50": 0.909,
+          "p95": 1,
+          "dynamicRange": 0.791,
+          "gradient": {
+            "dx": -0.123,
+            "dy": 0.084
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 102.5
+        }
+      },
+      {
+        "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEz0lEQVR4nAHEBDv7AL29nqemfKCeb6KhdpKQaGpmRExGLFlVOHd0UGRhQUZBKDgzHzg0IlJQOFtZPjIvIBsYECYjFzg0IDk1IQC0s5CjoXWfnW+hoHWNimNjXj5JQypYVThubUpdXT1GRio6OCM3NiNOTjZVVDkwLh8bGRIlIxc0MB4zMB4AqKd+n51woaByn510gX5YVlE0RkAoU1Q1WmA9UVo3TFYzRUwuQUgtTVQ1UFY2Oz8oLTEgMDIgNDQhMDAeAKSidqKgdKOieJOSb29tUU1JNUdEMFFVOk1YOUlVNUtYN0dSNEZRM0tXNUtXNUVQMUFLL0BJLUJJLkRMLwCen3Kdn3OXmXOGinV4fXlxdHRvc3BudXBmbGFiYlBfY1BaYVNaY1ReZVReZFJaYE5VXEpPV0BWYkBmdUsAeIBXc3xUb3hYgIyGo7HDtMHXtcLVrrvOpaCnoIV0nol3nJuVnaSkoKWmo6OjoqKhlJaUdHptZ3RReYpaAD9MLjtHK0RQO3KEjKK74LLM97TN97bL77ittriFa7yMbsSzp8bKy8bO08rO087Q1L/Dxo+Wi257WHB/VAAkLxwgKhkzPTJne5F9ot96pO18pu2PreWuoq29hWW5g2G2n4+3t7S7w8bCyczIzM66vb6Jj4NcZ0pIVDcAHCQWGiEUMzs1c4SchKjkcp7rdKDqka7juqiqzJNst4Rgln1pkod7pJ6XubGrw7SprJ6TbmxeOUAtJzEfABQZEBUaEDU7OoORpqjC7J288qC+8rXF5cqvpNWZbcKTb52Jd5WGeKmWiMGols6mh7CJbGBSPicsHSMuGwAQEgwSFA43PUCKmbGzyvGwyfW0zPbAyuPNrJrXmWrZr43PxLnIw77Sx77bwa3ap4C2hV9dSjUjKBolMR0ADxALERIOPUJIkaK9uM/2t8/3uND3wcjfz6mS2Zho5LWR6NbG5drS59rP5siw3KR6sn9XVEMvHyQYJDAcAA4OChISDz1CR4mXrqq+3K3B4LHF5Lq8y8ifhNGQXtiecdyvi961luG4meCvitqdbqx6Uks8KBshFSIuGwAWFg8bHBQzNTFYX2VqdH9veod1gI9/foONcVqYakWfb0ikdU6qelSxgFm3hFu5hFmTakg/MyIYHBMeJxgAREMvREMvQkAvQUEzQUE2P0A4Pj84Pz41RDwtSjwqTj4qUUArVUIsWkYvZE40bVQ5WEQvKCIYExYPFhwSAHZ3VnNzVGtqTWNjRlxbQVZVPVBON0pJM0dFMUZEMUdFM0hHNEZEMkJAL0E+Kz47KC8tHh8gFhsfFBwiFgBrck5pcE1mbEtlaklkaEhlaEhpa0ptb01wcU9yc1J0dVZ2d1lyclVjY0lQUzpESTI/Ry9CSzJGUTZHUjcAUF44TVo2SlY0SVUzSlU0Tlk3V2I+Z3JKdoBXfoZfgIhhgIhie4JcbnZTa3RScX1ZeYZffIlie4lheIZeAFFhOE9fN09eN1FgOFFgOU9fOE1cNlJiPGBuR2p5UXKAVnWEWXaEWHWEWX6MYYiWa4+dc5KhdpGgdY6ccQBfb0JgcENic0VmdkhldUdcbEFNXDZDUTBCUDBIVjRSYDxgb0dufVJ2h1h4h1lzgVZzg1h/jmONnXCUpHa5iPtXpJ9OKwAAAABJRU5ErkJggg==",
+        "kind": "img",
+        "alt": "캠핑 웹사이트가 표시된 노트북",
+        "docBox": {
+          "x": 384,
+          "y": 7292.8125,
+          "w": 328,
+          "h": 328
+        },
+        "aspect": 1,
+        "areaShare": 0.083,
+        "intrinsic": {
+          "w": 20,
+          "h": 20
+        },
+        "clipped": false,
+        "file": "capture/imagery-09.png",
+        "palette": [
+          {
+            "hex": "#c2d6fc",
+            "coverage": 0.0607,
+            "saturation": 0.23,
+            "luma": 0.833
+          },
+          {
+            "hex": "#ffffff",
+            "coverage": 0.0372,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#0d0e0b",
+            "coverage": 0.0295,
+            "saturation": 0.214,
+            "luma": 0.053
+          },
+          {
+            "hex": "#12130e",
+            "coverage": 0.0289,
+            "saturation": 0.263,
+            "luma": 0.072
+          },
+          {
+            "hex": "#1c1b13",
+            "coverage": 0.0219,
+            "saturation": 0.321,
+            "luma": 0.104
+          },
+          {
+            "hex": "#d99663",
+            "coverage": 0.0211,
+            "saturation": 0.544,
+            "luma": 0.63
+          }
+        ],
+        "light": {
+          "meanLuma": 0.457,
+          "p05": 0.06,
+          "p50": 0.465,
+          "p95": 0.864,
+          "dynamicRange": 0.804,
+          "gradient": {
+            "dx": -0.02,
+            "dy": -0.024
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 143.9
+        }
+      },
+      {
+        "src": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEz0lEQVR4nAHEBDv7ADcLBjwMBkEOB0UQB0kRCEoRCEsSCUwTCUwUCUwUCkwUCk0VC1AXDFEYDVEYDlEYDVIXDlIYDlEYDlAYDQBTFgxXGA1bGg5fHA9hGw9iHA9jHQ9kHxJcIxlUKCJQJB9QHRVVGxFZHBBdHRBdHRBbHBBaHBBZGxBWGg4AnTsknz0koT4loj0lojsjoTsjoTsilz4peUxGZlxjYFheXUdKYzs4cDYtfzQliTMfijEdiDAchC8cfiwZANZbONVaONNYNs9UNM1RMc1RMMpRMa9YQohwcXuGlHmGlnJ7iXBvenZkaoRVT5hEMapBJ7ZGKrhHK7VFKQDcXTrcXTnYWjfUVTTSUzLRUzLIVjimZ1qLho6IlaSGlKWCkaJ+jp95hZVqYmpnNi+LMyC3RSrFSy7FSywA1lk21lk301c1z1Myz1ExzFExu1lBnXl1j5aikJunkJeijJWhipemfoqZVlRdQiEfcicYr0AnwUgrwUcqANVXNtFWNM9UM81SMsxQMcVQMq1jUpiLj5Seqp2doKOalZyZmZGapHl/iUk9QEcbFIYvHLZEKb9HK71FKQDSVTTOUjLMUjLLUTHJTy+7UzqfcWqVmKKYoayknZqvnI2nnZaSl55panFCKilgIRWhOyS8Ryu8Riq6RSoAzVEwzFAwylExyVAxw00vrllGl3+AlZ+rmaOwn5+ipZ2Yn56fhYyWVFBVRSAbfiwbsUMou0cru0crvUgsAMlOLshOL8dPMMVOL71PNa1pVqOPiZ2iqZikspahrZWdppCZpHJ4g0Y3OVcgFpg3IbhFKbpGKrxILL5JLQDHTS7FTC7FTC7CSy66WkK3hnTAqZq0sbCkrrmbp7WTn6yGkZ5eXmdDJiRxJxiqPya5RSq6Riu7Ryy4RisAx00vxEsuwUksvU0xsmhVspmRycK80dDQxsvRuMDJprC8g4uXT0VKTh8ZizEeskIpt0QquUUqtkQpqT0lAMdOMMJMLr5ILLpVPLF9brOno87OzuPk5OXm59/i5crQ1ouMkks1NWMjF6I7JLZDKbZDKbhFKq5AJ5EyHgDFTS/CSy6/TDC9alXBoZfLw7/e29rp6Ojt7e3v8vPU2duCfX9OKyd+LRyyQii4RCm1Qii1QymhOiN2JxcAw0wuwkotv1E2w4Ny2MjE5eTj6+no7Ovr7u7v7PDzvMHFZVhYVyQbljchu0UqukQot0MoskIokjMfYR4SAMNML8FKLcBRNsF7adG2sODY1enk4u7t7PP09OTo6pubnk83NWglF6k+Jr5GKrxFKLtFKq1AKIEsG1UZDwDETC7CSi3CTDDAW0G9c1/AjH/JqJ/XxcDi2tfKxcR3bGtMJSCBLRy2Qym+Riq9Riq7RiuiPCVwJRdOFw4AxkwvxUwuxUwvx1AxxFI1vFU7uF9JunRjvot/pX10bEI6aCYanjkivUcrv0cqvkcrtkQpkDMfXx4SShYNAMZMLsdNL8hOMMtRMstRMsZOL8NML8BPM7tUOqtNNpg9J546I7VDKL1HK71GKrxGKqs+JXwpGVMZD0kWDQDGTS7ITi/KTy/LUTHKUjLIUDHJUDHJUDHGTi/DTC6/Siy9SCu7Riq5RSm5RSm4RSqfOSNtIxZOFw5IFg3dA/mqAUW8rAAAAABJRU5ErkJggg==",
+        "kind": "img",
+        "alt": "지도를 표시하는 실행 중인 모바일 앱",
+        "docBox": {
+          "x": 1072,
+          "y": 7292.8125,
+          "w": 328,
+          "h": 328
+        },
+        "aspect": 1,
+        "areaShare": 0.083,
+        "intrinsic": {
+          "w": 20,
+          "h": 20
+        },
+        "clipped": false,
+        "file": "capture/imagery-10.png",
+        "palette": [
+          {
+            "hex": "#c44a2d",
+            "coverage": 0.0565,
+            "saturation": 0.77,
+            "luma": 0.384
+          },
+          {
+            "hex": "#fefefe",
+            "coverage": 0.0546,
+            "saturation": 0,
+            "luma": 0.996
+          },
+          {
+            "hex": "#cc5233",
+            "coverage": 0.0507,
+            "saturation": 0.75,
+            "luma": 0.415
+          },
+          {
+            "hex": "#4c140b",
+            "coverage": 0.0504,
+            "saturation": 0.855,
+            "luma": 0.123
+          },
+          {
+            "hex": "#bc452a",
+            "coverage": 0.0495,
+            "saturation": 0.777,
+            "luma": 0.362
+          },
+          {
+            "hex": "#d35434",
+            "coverage": 0.033,
+            "saturation": 0.754,
+            "luma": 0.426
+          }
+        ],
+        "light": {
+          "meanLuma": 0.405,
+          "p05": 0.085,
+          "p50": 0.388,
+          "p95": 0.989,
+          "dynamicRange": 0.904,
+          "gradient": {
+            "dx": -0.146,
+            "dy": 0.084
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 69.1
+        }
+      }
+    ],
+    "aggregate": {
+      "meanLuma": 0.457,
+      "dynamicRange": 0.791,
+      "luminanceGradients": {
+        "brighter top": 1,
+        "brighter right": 3,
+        "brighter left": 3,
+        "even": 2
+      },
+      "aspects": 0.8,
+      "figureGroundResolved": "0/9",
+      "subjectNote": "fewer than 4 resolved samples — placement omitted"
+    }
+  },
+  "motion": {
+    "present": false,
+    "note": "no video above the fold at capture time"
+  },
+  "mobile": {
+    "chrome": {
+      "pageBackgroundComputed": null,
+      "bodyColor": "#000000",
+      "header": {
+        "detectedBy": "semantic",
+        "background": "#ffffff",
+        "heightPx": 0,
+        "borderBottom": null
+      },
+      "primaryButton": {
+        "fill": "solid",
+        "background": "#ffffff",
+        "color": "#000000",
+        "radiusPx": 8,
+        "paddingY": 12,
+        "paddingX": 22,
+        "fontPx": 16,
+        "weight": "400",
+        "label": "모든 쿠키 허용",
+        "repeats": 2
+      },
+      "typeScale": [
+        {
+          "tag": "h1",
+          "fontPx": 36,
+          "weight": "400",
+          "family": "figmaSans",
+          "lineHeight": "36px",
+          "letterSpacing": "-1.25px",
+          "color": "#000000"
+        },
+        {
+          "tag": "h2",
+          "fontPx": 24,
+          "weight": "400",
+          "family": "figmaSans",
+          "lineHeight": "28.8px",
+          "letterSpacing": "-0.66px",
+          "color": "#000000"
+        },
+        {
+          "tag": "h3",
+          "fontPx": 16,
+          "weight": "400",
+          "family": "figmaSans",
+          "lineHeight": "22.4px",
+          "letterSpacing": "normal",
+          "color": "#000000"
+        },
+        {
+          "tag": "p",
+          "fontPx": 14,
+          "weight": "340",
+          "family": "figmaSans",
+          "lineHeight": "20.3px",
+          "letterSpacing": "normal",
+          "color": "#ffffff"
+        },
+        {
+          "tag": "button",
+          "fontPx": 14,
+          "weight": "340",
+          "family": "figmaSans",
+          "lineHeight": "20.3px",
+          "letterSpacing": "normal",
+          "color": "#ffffff"
+        }
+      ],
+      "notes": {
+        "buttonCandidatesAboveFold": 2,
+        "headerDetectedBy": "semantic"
+      }
+    }
+  }
+}

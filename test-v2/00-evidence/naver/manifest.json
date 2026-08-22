@@ -1,0 +1,39 @@
+{
+  "brand": "naver",
+  "captureId": "2026-08-22T11-53-07-061Z",
+  "capturedAt": "2026-08-22T11:53:07.061Z",
+  "channel": "playwright",
+  "source": {
+    "url": "https://www.naver.com/",
+    "finalUrl": "https://www.naver.com/",
+    "title": "NAVER",
+    "status": 200
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "locale": "ko-KR",
+  "session": {
+    "profile": "fresh automation context",
+    "authenticated": false
+  },
+  "store": {
+    "root": "$OMD_EVIDENCE_STORE",
+    "path": "naver/2026-08-22T11-53-07-061Z"
+  },
+  "files": [
+    {
+      "name": "viewport-1440.png",
+      "bytes": 933839,
+      "sha256": "273791695d944906ea1e695a2468a109b3bd8f703143e37de74e7fb2486fc313"
+    },
+    {
+      "name": "viewport-390.png",
+      "bytes": 335029,
+      "sha256": "fb34f4c4d2ebab3ebd5531ab3d11d91bf0433f3981cb52cdc4d5dd5ae72f46c2"
+    }
+  ],
+  "evidenceSha256": "4933f93a5b6d9b55cd288515e729a7fedd7038c4bebbf71d5395f2841a453261",
+  "supersededBy": null
+}

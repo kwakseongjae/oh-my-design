@@ -1,21 +1,22 @@
 {
   "brand": "musinsa",
-  "capturedAt": "2026-08-22T10:51:04.183Z",
+  "capturedAt": "2026-08-22T11:50:41.983Z",
   "source": {
     "url": "https://www.musinsa.com/category/001",
+    "status": 200,
     "finalUrl": "https://www.musinsa.com/category/001/goods?gf=A",
     "title": "상의 | 무신사 추천 상품"
   },
   "method": {
-    "channel": "aside",
-    "why": "site refuses automated browsers; Playwright receives 403 Access Denied",
+    "channel": "playwright",
     "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
     "imagerySamplesRequested": 12,
     "viewport": {
-      "w": 1440,
-      "h": 900,
-      "dpr": 2
-    }
+      "width": 1440,
+      "height": 900
+    },
+    "locale": "ko-KR",
+    "colorScheme": "light"
   },
   "chrome": {
     "pageBackgroundComputed": null,
@@ -23,7 +24,8 @@
     "header": {
       "detectedBy": "semantic",
       "background": "#f5f5f5",
-      "heightPx": 52
+      "heightPx": 52,
+      "borderBottom": null
     },
     "primaryButton": {
       "fill": "outline",
@@ -31,6 +33,8 @@
       "borderColor": "#e0e0e0",
       "color": "#666666",
       "radiusPx": 4,
+      "paddingY": 4,
+      "paddingX": 5,
       "fontPx": 13,
       "weight": "400",
       "label": "타임세일",
@@ -70,89 +74,302 @@
       "headerDetectedBy": "semantic"
     },
     "pageBackgroundRendered": {
-      "hex": "#fefdfd",
-      "coverage": 0.2226,
+      "resolved": true,
+      "hex": "#fdfdfd",
+      "coverage": 0.2213,
       "source": "modal colour of the captured viewport"
     }
-  },
-  "motion": {
-    "present": false,
-    "note": "no video above the fold at capture time"
   },
   "imagery": {
     "sampled": 12,
     "samples": [
       {
-        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260805/6998399/6998399_17863356295074_big.jpg?w=780",
-        "alt": "JS TOMIE HELLO KITTY TEE_WHITE(NG2GMUT540G)",
-        "box": {
-          "x": 0,
-          "y": 0.4844,
-          "w": 0.1667,
-          "h": 0.32
+        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260723/6912802/6912802_17851391692120_big.jpg?w=780",
+        "kind": "img",
+        "alt": "베이직 언발 오프숄더 긴팔티 차콜",
+        "docBox": {
+          "x": 240,
+          "y": 1502,
+          "w": 240,
+          "h": 316
         },
-        "pixelBox": {
+        "aspect": 0.759,
+        "areaShare": 0.0585,
+        "intrinsic": {
+          "w": 780,
+          "h": 1027
+        },
+        "clipped": false,
+        "file": "capture/imagery-01.png",
+        "palette": [
+          {
+            "hex": "#141b24",
+            "coverage": 0.063,
+            "saturation": 0.444,
+            "luma": 0.103
+          },
+          {
+            "hex": "#8494ac",
+            "coverage": 0.0629,
+            "saturation": 0.233,
+            "luma": 0.574
+          },
+          {
+            "hex": "#fffffe",
+            "coverage": 0.0495,
+            "saturation": 0.004,
+            "luma": 1
+          },
+          {
+            "hex": "#0d141a",
+            "coverage": 0.044,
+            "saturation": 0.5,
+            "luma": 0.074
+          },
+          {
+            "hex": "#73849c",
+            "coverage": 0.0385,
+            "saturation": 0.263,
+            "luma": 0.51
+          },
+          {
+            "hex": "#f5f5f5",
+            "coverage": 0.0356,
+            "saturation": 0,
+            "luma": 0.961
+          }
+        ],
+        "light": {
+          "meanLuma": 0.396,
+          "p05": 0.048,
+          "p50": 0.413,
+          "p95": 0.961,
+          "dynamicRange": 0.913,
+          "gradient": {
+            "dx": 0.091,
+            "dy": -0.039
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 114.1
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260722/6899645/6899645_17847228506222_big.jpg?w=780",
+        "kind": "img",
+        "alt": "FLOWER APLIQUE RAGLAN L/S TEE(PLUM)",
+        "docBox": {
+          "x": 960,
+          "y": 920,
+          "w": 240,
+          "h": 300
+        },
+        "aspect": 0.8,
+        "areaShare": 0.0556,
+        "intrinsic": {
+          "w": 780,
+          "h": 975
+        },
+        "clipped": false,
+        "file": "capture/imagery-02.png",
+        "palette": [
+          {
+            "hex": "#fbfbfb",
+            "coverage": 0.1013,
+            "saturation": 0,
+            "luma": 0.984
+          },
+          {
+            "hex": "#12242c",
+            "coverage": 0.0145,
+            "saturation": 0.591,
+            "luma": 0.128
+          },
+          {
+            "hex": "#4b3c53",
+            "coverage": 0.0125,
+            "saturation": 0.277,
+            "luma": 0.254
+          },
+          {
+            "hex": "#020b14",
+            "coverage": 0.0118,
+            "saturation": 0.9,
+            "luma": 0.038
+          },
+          {
+            "hex": "#0d222b",
+            "coverage": 0.0114,
+            "saturation": 0.698,
+            "luma": 0.118
+          },
+          {
+            "hex": "#152a34",
+            "coverage": 0.0109,
+            "saturation": 0.596,
+            "luma": 0.15
+          }
+        ],
+        "light": {
+          "meanLuma": 0.444,
+          "p05": 0.062,
+          "p50": 0.352,
+          "p95": 0.976,
+          "dynamicRange": 0.914,
+          "gradient": {
+            "dx": -0.041,
+            "dy": -0.29
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 115.9
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260722/6896783/6896783_17853840155941_big.jpg?w=780",
+        "kind": "img",
+        "alt": "롤업 레이어드 크롭 반팔티 [블랙]",
+        "docBox": {
+          "x": 720,
+          "y": 2004.625,
+          "w": 240,
+          "h": 290.765625
+        },
+        "aspect": 0.825,
+        "areaShare": 0.0538,
+        "intrinsic": {
+          "w": 780,
+          "h": 945
+        },
+        "clipped": false,
+        "file": "capture/imagery-03.png",
+        "palette": [
+          {
+            "hex": "#14191d",
+            "coverage": 0.0366,
+            "saturation": 0.31,
+            "luma": 0.095
+          },
+          {
+            "hex": "#0e1419",
+            "coverage": 0.0322,
+            "saturation": 0.44,
+            "luma": 0.075
+          },
+          {
+            "hex": "#11161a",
+            "coverage": 0.0312,
+            "saturation": 0.346,
+            "luma": 0.083
+          },
+          {
+            "hex": "#0c1116",
+            "coverage": 0.0278,
+            "saturation": 0.455,
+            "luma": 0.064
+          },
+          {
+            "hex": "#090e13",
+            "coverage": 0.0256,
+            "saturation": 0.526,
+            "luma": 0.052
+          },
+          {
+            "hex": "#645a4d",
+            "coverage": 0.0217,
+            "saturation": 0.23,
+            "luma": 0.358
+          }
+        ],
+        "light": {
+          "meanLuma": 0.429,
+          "p05": 0.059,
+          "p50": 0.411,
+          "p95": 0.863,
+          "dynamicRange": 0.804,
+          "gradient": {
+            "dx": 0.2,
+            "dy": -0.018
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 122.2
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260805/6998399/6998399_17863356295074_big.jpg?w=780",
+        "kind": "img",
+        "alt": "JS TOMIE HELLO KITTY TEE_WHITE(NG2GMUT540G)",
+        "docBox": {
           "x": 0,
-          "y": 872,
-          "w": 480,
-          "h": 576
+          "y": 436,
+          "w": 240,
+          "h": 288
         },
         "aspect": 0.833,
         "areaShare": 0.0533,
-        "firstScreen": true,
         "intrinsic": {
           "w": 780,
           "h": 936
         },
-        "pass": 0,
-        "file": "capture/imagery-01.png",
+        "clipped": false,
+        "file": "capture/imagery-04.png",
         "palette": [
           {
             "hex": "#fafafa",
-            "coverage": 0.6442,
+            "coverage": 0.6443,
             "saturation": 0,
             "luma": 0.98
           },
           {
             "hex": "#e5e4e1",
-            "coverage": 0.0589,
+            "coverage": 0.0564,
             "saturation": 0.017,
             "luma": 0.894
           },
           {
-            "hex": "#eae9e5",
-            "coverage": 0.0555,
-            "saturation": 0.021,
-            "luma": 0.913
+            "hex": "#ebeae5",
+            "coverage": 0.0501,
+            "saturation": 0.026,
+            "luma": 0.917
           },
           {
-            "hex": "#eeedea",
-            "coverage": 0.0383,
-            "saturation": 0.017,
+            "hex": "#f1efeb",
+            "coverage": 0.0432,
+            "saturation": 0.025,
+            "luma": 0.938
+          },
+          {
+            "hex": "#eeede9",
+            "coverage": 0.035,
+            "saturation": 0.021,
             "luma": 0.929
           },
           {
-            "hex": "#f1f0ec",
-            "coverage": 0.0343,
-            "saturation": 0.021,
-            "luma": 0.941
-          },
-          {
             "hex": "#e3e2de",
-            "coverage": 0.0304,
+            "coverage": 0.0324,
             "saturation": 0.022,
             "luma": 0.886
           }
         ],
         "light": {
           "meanLuma": 0.942,
-          "p05": 0.815,
+          "p05": 0.813,
           "p50": 0.98,
           "p95": 0.98,
-          "dynamicRange": 0.165,
+          "dynamicRange": 0.167,
           "gradient": {
             "dx": -0.007,
-            "dy": 0
+            "dy": 0.001
           },
           "luminanceGradient": "even"
         },
@@ -160,8 +377,8 @@
           "resolved": true,
           "backgroundHex": "#f8f8f8",
           "center": {
-            "x": 0.5223,
-            "y": 0.5618
+            "x": 0.5225,
+            "y": 0.5633
           },
           "box": {
             "x": 0.1125,
@@ -169,79 +386,73 @@
             "w": 0.85,
             "h": 0.7813
           },
-          "coverage": 0.2523
+          "coverage": 0.2501
         }
       },
       {
         "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260707/6797005/6797005_17852305721496_big.jpg?w=780",
+        "kind": "img",
         "alt": "Days Comfort Fit Shirt_White",
-        "box": {
-          "x": 0.1667,
-          "y": 0.4844,
-          "w": 0.1667,
-          "h": 0.32
-        },
-        "pixelBox": {
-          "x": 480,
-          "y": 872,
-          "w": 480,
-          "h": 576
+        "docBox": {
+          "x": 240,
+          "y": 436,
+          "w": 240,
+          "h": 288
         },
         "aspect": 0.833,
         "areaShare": 0.0533,
-        "firstScreen": true,
         "intrinsic": {
           "w": 780,
           "h": 936
         },
-        "pass": 0,
-        "file": "capture/imagery-02.png",
+        "clipped": false,
+        "file": "capture/imagery-05.png",
         "palette": [
           {
-            "hex": "#141b0c",
-            "coverage": 0.0435,
+            "hex": "#131b0c",
+            "coverage": 0.0424,
             "saturation": 0.556,
-            "luma": 0.096
+            "luma": 0.095
           },
           {
-            "hex": "#1c2313",
-            "coverage": 0.0335,
-            "saturation": 0.457,
-            "luma": 0.127
-          },
-          {
-            "hex": "#0e130a",
-            "coverage": 0.026,
+            "hex": "#0d130a",
+            "coverage": 0.0286,
             "saturation": 0.474,
-            "luma": 0.068
+            "luma": 0.067
           },
           {
-            "hex": "#030402",
-            "coverage": 0.0256,
+            "hex": "#1b2413",
+            "coverage": 0.0268,
+            "saturation": 0.472,
+            "luma": 0.129
+          },
+          {
+            "hex": "#020402",
+            "coverage": 0.024,
             "saturation": 0.5,
-            "luma": 0.014
+            "luma": 0.013
           },
           {
-            "hex": "#12150b",
-            "coverage": 0.0247,
-            "saturation": 0.476,
-            "luma": 0.077
+            "hex": "#1a240c",
+            "coverage": 0.0222,
+            "saturation": 0.667,
+            "luma": 0.126
           },
           {
-            "hex": "#232b14",
-            "coverage": 0.0234,
-            "saturation": 0.535,
-            "luma": 0.155
+            "hex": "#0c1305",
+            "coverage": 0.0215,
+            "saturation": 0.737,
+            "luma": 0.065
           }
         ],
         "light": {
-          "meanLuma": 0.308,
+          "meanLuma": 0.307,
           "p05": 0.041,
-          "p50": 0.222,
-          "p95": 0.757,
-          "dynamicRange": 0.716,
+          "p50": 0.219,
+          "p95": 0.756,
+          "dynamicRange": 0.715,
           "gradient": {
-            "dx": 0.023,
+            "dx": 0.024,
             "dy": 0.18
           },
           "luminanceGradient": "brighter bottom"
@@ -249,237 +460,219 @@
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 87
+          "borderVariance": 87.8
         }
       },
       {
         "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260703/6777736/6777736_17863473786191_big.jpg?w=780",
+        "kind": "img",
         "alt": "[SSG랜더스 컬래버] 피그먼트 다이드 베이스볼 셔츠 [차콜 그레이]",
-        "box": {
-          "x": 0.3333,
-          "y": 0.4844,
-          "w": 0.1667,
-          "h": 0.32
-        },
-        "pixelBox": {
-          "x": 960,
-          "y": 872,
-          "w": 480,
-          "h": 576
+        "docBox": {
+          "x": 480,
+          "y": 436,
+          "w": 240,
+          "h": 288
         },
         "aspect": 0.833,
         "areaShare": 0.0533,
-        "firstScreen": true,
         "intrinsic": {
           "w": 780,
           "h": 936
         },
-        "pass": 0,
-        "file": "capture/imagery-03.png",
+        "clipped": false,
+        "file": "capture/imagery-06.png",
         "palette": [
           {
             "hex": "#737374",
-            "coverage": 0.0412,
+            "coverage": 0.0393,
             "saturation": 0.009,
             "luma": 0.451
           },
           {
             "hex": "#6b6b6c",
-            "coverage": 0.0344,
+            "coverage": 0.0331,
             "saturation": 0.009,
             "luma": 0.42
           },
           {
             "hex": "#636365",
-            "coverage": 0.0211,
+            "coverage": 0.0203,
             "saturation": 0.02,
             "luma": 0.389
           },
           {
             "hex": "#cbcdd2",
-            "coverage": 0.0191,
+            "coverage": 0.0175,
             "saturation": 0.033,
             "luma": 0.804
           },
           {
             "hex": "#5a5a5d",
-            "coverage": 0.0191,
+            "coverage": 0.0175,
             "saturation": 0.032,
             "luma": 0.354
           },
           {
-            "hex": "#737a7d",
-            "coverage": 0.0159,
-            "saturation": 0.08,
-            "luma": 0.473
+            "hex": "#555559",
+            "coverage": 0.0167,
+            "saturation": 0.045,
+            "luma": 0.334
           }
         ],
         "light": {
           "meanLuma": 0.475,
-          "p05": 0.14,
-          "p50": 0.451,
-          "p95": 0.819,
+          "p05": 0.139,
+          "p50": 0.45,
+          "p95": 0.818,
           "dynamicRange": 0.679,
           "gradient": {
             "dx": -0.201,
-            "dy": -0.038
+            "dy": -0.037
           },
           "luminanceGradient": "brighter left"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 80.9
+          "borderVariance": 81.3
         }
       },
       {
         "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260703/6781113/6781113_17841672791850_big.jpg?w=780",
+        "kind": "img",
         "alt": "민소매 티셔츠 M - 블랙:하이퍼 핑크 / IM6145-011",
-        "box": {
-          "x": 0.5,
-          "y": 0.4844,
-          "w": 0.1667,
-          "h": 0.32
-        },
-        "pixelBox": {
-          "x": 1440,
-          "y": 872,
-          "w": 480,
-          "h": 576
+        "docBox": {
+          "x": 720,
+          "y": 436,
+          "w": 240,
+          "h": 288
         },
         "aspect": 0.833,
         "areaShare": 0.0533,
-        "firstScreen": true,
         "intrinsic": {
           "w": 780,
           "h": 936
         },
-        "pass": 0,
-        "file": "capture/imagery-04.png",
+        "clipped": false,
+        "file": "capture/imagery-07.png",
         "palette": [
           {
-            "hex": "#eaebe6",
-            "coverage": 0.4396,
-            "saturation": 0.021,
-            "luma": 0.919
+            "hex": "#eaeae6",
+            "coverage": 0.4397,
+            "saturation": 0.017,
+            "luma": 0.917
           },
           {
-            "hex": "#151a1b",
-            "coverage": 0.0522,
-            "saturation": 0.222,
-            "luma": 0.098
+            "hex": "#141a1b",
+            "coverage": 0.0594,
+            "saturation": 0.259,
+            "luma": 0.097
           },
           {
-            "hex": "#0d1213",
-            "coverage": 0.041,
-            "saturation": 0.316,
-            "luma": 0.067
+            "hex": "#0c1313",
+            "coverage": 0.0517,
+            "saturation": 0.368,
+            "luma": 0.069
           },
           {
-            "hex": "#1c2224",
-            "coverage": 0.0373,
-            "saturation": 0.222,
-            "luma": 0.129
+            "hex": "#1b2225",
+            "coverage": 0.0376,
+            "saturation": 0.27,
+            "luma": 0.128
           },
           {
-            "hex": "#060b09",
-            "coverage": 0.0201,
-            "saturation": 0.455,
-            "luma": 0.038
+            "hex": "#050c0a",
+            "coverage": 0.0276,
+            "saturation": 0.583,
+            "luma": 0.041
           },
           {
-            "hex": "#090e0d",
-            "coverage": 0.0196,
-            "saturation": 0.357,
-            "luma": 0.05
+            "hex": "#030906",
+            "coverage": 0.0194,
+            "saturation": 0.667,
+            "luma": 0.029
           }
         ],
         "light": {
-          "meanLuma": 0.543,
-          "p05": 0.043,
-          "p50": 0.663,
-          "p95": 0.919,
-          "dynamicRange": 0.876,
+          "meanLuma": 0.541,
+          "p05": 0.045,
+          "p50": 0.66,
+          "p95": 0.917,
+          "dynamicRange": 0.872,
           "gradient": {
             "dx": 0.076,
-            "dy": -0.321
+            "dy": -0.32
           },
           "luminanceGradient": "brighter top"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 98.7
+          "borderVariance": 98.9
         }
       },
       {
         "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260730/6957693/6957693_17853880605313_big.jpg?w=780",
+        "kind": "img",
         "alt": "시어서커 하드 트위스트 체크 셔츠 블랙",
-        "box": {
-          "x": 0.6667,
-          "y": 0.4844,
-          "w": 0.1667,
-          "h": 0.32
-        },
-        "pixelBox": {
-          "x": 1920,
-          "y": 872,
-          "w": 480,
-          "h": 576
+        "docBox": {
+          "x": 960,
+          "y": 436,
+          "w": 240,
+          "h": 288
         },
         "aspect": 0.833,
         "areaShare": 0.0533,
-        "firstScreen": true,
         "intrinsic": {
           "w": 780,
           "h": 936
         },
-        "pass": 0,
-        "file": "capture/imagery-05.png",
+        "clipped": false,
+        "file": "capture/imagery-08.png",
         "palette": [
           {
             "hex": "#f9f9f9",
-            "coverage": 0.3299,
+            "coverage": 0.3265,
             "saturation": 0,
             "luma": 0.976
           },
           {
             "hex": "#2b2b2c",
-            "coverage": 0.1648,
+            "coverage": 0.1618,
             "saturation": 0.023,
             "luma": 0.169
           },
           {
             "hex": "#232325",
-            "coverage": 0.1209,
+            "coverage": 0.1197,
             "saturation": 0.054,
             "luma": 0.138
           },
           {
             "hex": "#333234",
-            "coverage": 0.1006,
+            "coverage": 0.0978,
             "saturation": 0.038,
             "luma": 0.197
           },
           {
-            "hex": "#1c1c1d",
-            "coverage": 0.0401,
-            "saturation": 0.034,
-            "luma": 0.11
+            "hex": "#1c1b1d",
+            "coverage": 0.0394,
+            "saturation": 0.069,
+            "luma": 0.107
           },
           {
-            "hex": "#272628",
-            "coverage": 0.0353,
-            "saturation": 0.05,
-            "luma": 0.15
+            "hex": "#272629",
+            "coverage": 0.0373,
+            "saturation": 0.073,
+            "luma": 0.151
           }
         ],
         "light": {
           "meanLuma": 0.468,
-          "p05": 0.113,
+          "p05": 0.111,
           "p50": 0.198,
           "p95": 0.976,
-          "dynamicRange": 0.863,
+          "dynamicRange": 0.865,
           "gradient": {
             "dx": -0.001,
             "dy": -0.162
@@ -490,8 +683,8 @@
           "resolved": true,
           "backgroundHex": "#f9f9f9",
           "center": {
-            "x": 0.4998,
-            "y": 0.5842
+            "x": 0.5006,
+            "y": 0.5836
           },
           "box": {
             "x": 0.0813,
@@ -499,583 +692,381 @@
             "w": 0.825,
             "h": 0.9115
           },
-          "coverage": 0.251
+          "coverage": 0.2502
         }
       },
       {
-        "src": "https://image.msscdn.net/thumbnails/display/images/2026/08/19/3b5635648bd84d139703e832992988c8.jpg?w=780",
-        "alt": "힐다 × 고희 컬래버",
-        "box": {
-          "x": 0.8333,
-          "y": 0.4844,
-          "w": 0.1667,
-          "h": 0.32
-        },
-        "pixelBox": {
-          "x": 2400,
-          "y": 872,
-          "w": 480,
-          "h": 576
+        "src": "https://image.msscdn.net/thumbnails/display/images/2026/08/14/a6a83ce08bf44b7e89d0c0e200277f8f.jpg?w=780",
+        "kind": "img",
+        "alt": "언더커버 SS 26 시즌오프 ",
+        "docBox": {
+          "x": 1200,
+          "y": 436,
+          "w": 240,
+          "h": 288
         },
         "aspect": 0.833,
         "areaShare": 0.0533,
-        "firstScreen": true,
         "intrinsic": {
           "w": 780,
           "h": 936
         },
-        "pass": 0,
-        "file": "capture/imagery-06.png",
+        "clipped": false,
+        "file": "capture/imagery-09.png",
         "palette": [
           {
-            "hex": "#dad5cb",
-            "coverage": 0.0628,
-            "saturation": 0.069,
-            "luma": 0.837
+            "hex": "#3c424c",
+            "coverage": 0.1,
+            "saturation": 0.211,
+            "luma": 0.257
           },
           {
-            "hex": "#c3bcad",
-            "coverage": 0.046,
-            "saturation": 0.113,
-            "luma": 0.739
+            "hex": "#eae9e6",
+            "coverage": 0.0929,
+            "saturation": 0.017,
+            "luma": 0.914
           },
           {
-            "hex": "#cbc3b4",
-            "coverage": 0.0399,
-            "saturation": 0.113,
-            "luma": 0.767
-          },
-          {
-            "hex": "#bbb4a4",
-            "coverage": 0.0361,
-            "saturation": 0.123,
-            "luma": 0.707
-          },
-          {
-            "hex": "#b3ad9b",
-            "coverage": 0.0299,
-            "saturation": 0.134,
-            "luma": 0.678
-          },
-          {
-            "hex": "#dcd9ce",
-            "coverage": 0.0287,
-            "saturation": 0.064,
-            "luma": 0.85
-          }
-        ],
-        "light": {
-          "meanLuma": 0.64,
-          "p05": 0.139,
-          "p50": 0.71,
-          "p95": 0.859,
-          "dynamicRange": 0.72,
-          "gradient": {
-            "dx": 0.061,
-            "dy": -0.005
-          },
-          "luminanceGradient": "brighter right"
-        },
-        "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 39.4
-        }
-      },
-      {
-        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260722/6899645/6899645_17847228506222_big.jpg?w=780",
-        "alt": "FLOWER APLIQUE RAGLAN L/S TEE(PLUM)",
-        "box": {
-          "x": 0.6667,
-          "y": 0.0222,
-          "w": 0.1667,
-          "h": 0.3333
-        },
-        "pixelBox": {
-          "x": 1920,
-          "y": 40,
-          "w": 480,
-          "h": 600
-        },
-        "aspect": 0.8,
-        "areaShare": 0.0556,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 780,
-          "h": 975
-        },
-        "pass": 1,
-        "file": "capture/imagery-07.png",
-        "palette": [
-          {
-            "hex": "#f5f5f5",
-            "coverage": 0.5997,
-            "saturation": 0,
-            "luma": 0.961
-          },
-          {
-            "hex": "#1a1b1f",
+            "hex": "#353a44",
             "coverage": 0.077,
-            "saturation": 0.161,
-            "luma": 0.106
+            "saturation": 0.221,
+            "luma": 0.226
           },
           {
-            "hex": "#fdfdfd",
-            "coverage": 0.0222,
-            "saturation": 0,
-            "luma": 0.992
+            "hex": "#e9e7e3",
+            "coverage": 0.0496,
+            "saturation": 0.026,
+            "luma": 0.906
           },
           {
-            "hex": "#16191b",
-            "coverage": 0.0115,
-            "saturation": 0.185,
-            "luma": 0.096
+            "hex": "#393e49",
+            "coverage": 0.0405,
+            "saturation": 0.219,
+            "luma": 0.242
           },
           {
-            "hex": "#eaeaea",
-            "coverage": 0.0083,
-            "saturation": 0,
-            "luma": 0.918
-          },
-          {
-            "hex": "#e5e5e5",
-            "coverage": 0.0068,
-            "saturation": 0,
-            "luma": 0.898
+            "hex": "#424955",
+            "coverage": 0.0349,
+            "saturation": 0.224,
+            "luma": 0.284
           }
         ],
         "light": {
-          "meanLuma": 0.698,
-          "p05": 0.098,
-          "p50": 0.961,
-          "p95": 0.961,
-          "dynamicRange": 0.863,
+          "meanLuma": 0.45,
+          "p05": 0.142,
+          "p50": 0.273,
+          "p95": 0.912,
+          "dynamicRange": 0.77,
           "gradient": {
-            "dx": -0.027,
-            "dy": -0.143
+            "dx": -0.094,
+            "dy": -0.346
           },
           "luminanceGradient": "brighter top"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 174.3
+          "borderVariance": 109.2
         }
       },
       {
         "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260602/6595811/6595811_17859082075721_big.jpg?w=780",
+        "kind": "img",
         "alt": "우먼즈 CR 스트라이프 릴렉스드 긴소매 티셔츠 [올리브]",
-        "box": {
+        "docBox": {
           "x": 0,
-          "y": 0.0289,
-          "w": 0.1667,
-          "h": 0.32
-        },
-        "pixelBox": {
-          "x": 0,
-          "y": 52,
-          "w": 480,
-          "h": 576
+          "y": 926,
+          "w": 240,
+          "h": 288
         },
         "aspect": 0.833,
         "areaShare": 0.0533,
-        "firstScreen": true,
         "intrinsic": {
           "w": 780,
           "h": 936
         },
-        "pass": 1,
-        "file": "capture/imagery-08.png",
+        "clipped": false,
+        "file": "capture/imagery-10.png",
         "palette": [
           {
-            "hex": "#f5f5f5",
-            "coverage": 0.4997,
-            "saturation": 0,
-            "luma": 0.961
+            "hex": "#dadbdd",
+            "coverage": 0.1667,
+            "saturation": 0.014,
+            "luma": 0.859
           },
           {
-            "hex": "#1a1b1f",
-            "coverage": 0.071,
-            "saturation": 0.161,
-            "luma": 0.106
+            "hex": "#d3d3d4",
+            "coverage": 0.0912,
+            "saturation": 0.005,
+            "luma": 0.828
           },
           {
             "hex": "#bcbcbc",
-            "coverage": 0.0499,
+            "coverage": 0.0527,
             "saturation": 0,
             "luma": 0.737
           },
           {
-            "hex": "#eaeaea",
-            "coverage": 0.0401,
+            "hex": "#c3c3c3",
+            "coverage": 0.0511,
             "saturation": 0,
-            "luma": 0.918
+            "luma": 0.765
           },
           {
-            "hex": "#fafafa",
-            "coverage": 0.0269,
-            "saturation": 0,
-            "luma": 0.98
+            "hex": "#d6d6d9",
+            "coverage": 0.0455,
+            "saturation": 0.014,
+            "luma": 0.84
           },
           {
-            "hex": "#d3d4d4",
-            "coverage": 0.0267,
-            "saturation": 0.005,
-            "luma": 0.831
+            "hex": "#dddee0",
+            "coverage": 0.0399,
+            "saturation": 0.013,
+            "luma": 0.87
           }
         ],
         "light": {
-          "meanLuma": 0.762,
-          "p05": 0.106,
-          "p50": 0.96,
-          "p95": 0.965,
-          "dynamicRange": 0.859,
+          "meanLuma": 0.624,
+          "p05": 0.133,
+          "p50": 0.775,
+          "p95": 0.881,
+          "dynamicRange": 0.748,
           "gradient": {
-            "dx": 0.005,
-            "dy": -0.025
+            "dx": -0.059,
+            "dy": -0.116
           },
-          "luminanceGradient": "even"
+          "luminanceGradient": "brighter top"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 130.2
+          "borderVariance": 48.3
         }
       },
       {
         "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260618/6697403/6697403_17846969724474_big.jpg?w=780",
+        "kind": "img",
         "alt": "플라워 오프숄더 숏슬리브_베이지",
-        "box": {
-          "x": 0.1667,
-          "y": 0.0289,
-          "w": 0.1667,
-          "h": 0.32
-        },
-        "pixelBox": {
-          "x": 480,
-          "y": 52,
-          "w": 480,
-          "h": 576
+        "docBox": {
+          "x": 240,
+          "y": 926,
+          "w": 240,
+          "h": 288
         },
         "aspect": 0.833,
         "areaShare": 0.0533,
-        "firstScreen": true,
         "intrinsic": {
           "w": 780,
           "h": 936
         },
-        "pass": 1,
-        "file": "capture/imagery-09.png",
+        "clipped": false,
+        "file": "capture/imagery-11.png",
         "palette": [
           {
-            "hex": "#f5f5f5",
-            "coverage": 0.4992,
-            "saturation": 0,
-            "luma": 0.961
+            "hex": "#dadcdd",
+            "coverage": 0.147,
+            "saturation": 0.014,
+            "luma": 0.861
           },
           {
-            "hex": "#1a1b1f",
-            "coverage": 0.0716,
-            "saturation": 0.161,
-            "luma": 0.106
-          },
-          {
-            "hex": "#d6d9da",
-            "coverage": 0.0578,
+            "hex": "#dee1e2",
+            "coverage": 0.1186,
             "saturation": 0.018,
+            "luma": 0.88
+          },
+          {
+            "hex": "#e1e2e4",
+            "coverage": 0.1132,
+            "saturation": 0.013,
+            "luma": 0.886
+          },
+          {
+            "hex": "#dddee1",
+            "coverage": 0.1084,
+            "saturation": 0.018,
+            "luma": 0.871
+          },
+          {
+            "hex": "#d6d9db",
+            "coverage": 0.0736,
+            "saturation": 0.023,
             "luma": 0.849
           },
           {
-            "hex": "#d9dbdc",
-            "coverage": 0.0504,
-            "saturation": 0.014,
-            "luma": 0.857
-          },
-          {
-            "hex": "#eaeaea",
-            "coverage": 0.0361,
-            "saturation": 0,
-            "luma": 0.918
-          },
-          {
-            "hex": "#fafafa",
-            "coverage": 0.0265,
-            "saturation": 0,
-            "luma": 0.98
+            "hex": "#ccc5c2",
+            "coverage": 0.0227,
+            "saturation": 0.049,
+            "luma": 0.778
           }
         ],
         "light": {
-          "meanLuma": 0.789,
-          "p05": 0.106,
-          "p50": 0.953,
-          "p95": 0.965,
-          "dynamicRange": 0.859,
+          "meanLuma": 0.762,
+          "p05": 0.275,
+          "p50": 0.854,
+          "p95": 0.889,
+          "dynamicRange": 0.614,
           "gradient": {
-            "dx": -0.008,
-            "dy": 0.017
+            "dx": -0.009,
+            "dy": -0.047
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 62.3
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260728/6939618/6939618_17852201914605_big.jpg?w=780",
+        "kind": "img",
+        "alt": "짱구 닭살커플 반팔 티셔츠 2팩",
+        "docBox": {
+          "x": 480,
+          "y": 926,
+          "w": 240,
+          "h": 288
+        },
+        "aspect": 0.833,
+        "areaShare": 0.0533,
+        "intrinsic": {
+          "w": 780,
+          "h": 936
+        },
+        "clipped": false,
+        "file": "capture/imagery-12.png",
+        "palette": [
+          {
+            "hex": "#fafafa",
+            "coverage": 0.7029,
+            "saturation": 0,
+            "luma": 0.98
+          },
+          {
+            "hex": "#b3d665",
+            "coverage": 0.0737,
+            "saturation": 0.528,
+            "luma": 0.778
+          },
+          {
+            "hex": "#badd6b",
+            "coverage": 0.0593,
+            "saturation": 0.516,
+            "luma": 0.805
+          },
+          {
+            "hex": "#f96bbb",
+            "coverage": 0.0232,
+            "saturation": 0.57,
+            "luma": 0.561
+          },
+          {
+            "hex": "#b6d969",
+            "coverage": 0.0223,
+            "saturation": 0.516,
+            "luma": 0.79
+          },
+          {
+            "hex": "#b5d965",
+            "coverage": 0.0174,
+            "saturation": 0.535,
+            "luma": 0.788
+          }
+        ],
+        "light": {
+          "meanLuma": 0.911,
+          "p05": 0.569,
+          "p50": 0.98,
+          "p95": 0.98,
+          "dynamicRange": 0.411,
+          "gradient": {
+            "dx": -0.004,
+            "dy": -0.012
           },
           "luminanceGradient": "even"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 141.3
-        }
-      },
-      {
-        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260728/6939618/6939618_17852201914605_big.jpg?w=780",
-        "alt": "짱구 닭살커플 반팔 티셔츠 2팩",
-        "box": {
-          "x": 0.3333,
-          "y": 0.0289,
-          "w": 0.1667,
-          "h": 0.32
-        },
-        "pixelBox": {
-          "x": 960,
-          "y": 52,
-          "w": 480,
-          "h": 576
-        },
-        "aspect": 0.833,
-        "areaShare": 0.0533,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 780,
-          "h": 936
-        },
-        "pass": 1,
-        "file": "capture/imagery-10.png",
-        "palette": [
-          {
-            "hex": "#f5f5f5",
-            "coverage": 0.5251,
-            "saturation": 0,
-            "luma": 0.961
-          },
-          {
-            "hex": "#fafafa",
-            "coverage": 0.2717,
-            "saturation": 0,
-            "luma": 0.98
-          },
-          {
-            "hex": "#1a1b1f",
-            "coverage": 0.0688,
-            "saturation": 0.161,
-            "luma": 0.106
-          },
-          {
-            "hex": "#eaeaea",
-            "coverage": 0.0242,
-            "saturation": 0,
-            "luma": 0.918
-          },
-          {
-            "hex": "#e5e5e5",
-            "coverage": 0.0089,
-            "saturation": 0,
-            "luma": 0.898
-          },
-          {
-            "hex": "#17181c",
-            "coverage": 0.0065,
-            "saturation": 0.179,
-            "luma": 0.094
-          }
-        ],
-        "light": {
-          "meanLuma": 0.869,
-          "p05": 0.106,
-          "p50": 0.961,
-          "p95": 0.98,
-          "dynamicRange": 0.874,
-          "gradient": {
-            "dx": 0.006,
-            "dy": 0.173
-          },
-          "luminanceGradient": "brighter bottom"
-        },
-        "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 122.6
-        }
-      },
-      {
-        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260727/6927386/6927386_17851228499565_big.jpg?w=780",
-        "alt": "폴라리스 롤업 세미크롭 반팔 티셔츠 [버건디]",
-        "box": {
-          "x": 0.5,
-          "y": 0.0289,
-          "w": 0.1667,
-          "h": 0.32
-        },
-        "pixelBox": {
-          "x": 1440,
-          "y": 52,
-          "w": 480,
-          "h": 576
-        },
-        "aspect": 0.833,
-        "areaShare": 0.0533,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 780,
-          "h": 936
-        },
-        "pass": 1,
-        "file": "capture/imagery-11.png",
-        "palette": [
-          {
-            "hex": "#f5f5f5",
-            "coverage": 0.5674,
-            "saturation": 0,
-            "luma": 0.961
-          },
-          {
-            "hex": "#1a1b1f",
-            "coverage": 0.0935,
-            "saturation": 0.161,
-            "luma": 0.106
-          },
-          {
-            "hex": "#4c141a",
-            "coverage": 0.0238,
-            "saturation": 0.737,
-            "luma": 0.127
-          },
-          {
-            "hex": "#eaeaea",
-            "coverage": 0.0223,
-            "saturation": 0,
-            "luma": 0.918
-          },
-          {
-            "hex": "#441116",
-            "coverage": 0.02,
-            "saturation": 0.75,
-            "luma": 0.111
-          },
-          {
-            "hex": "#f9f9f9",
-            "coverage": 0.0174,
-            "saturation": 0,
-            "luma": 0.976
-          }
-        ],
-        "light": {
-          "meanLuma": 0.68,
-          "p05": 0.094,
-          "p50": 0.961,
-          "p95": 0.961,
-          "dynamicRange": 0.867,
-          "gradient": {
-            "dx": -0.005,
-            "dy": -0.194
-          },
-          "luminanceGradient": "brighter top"
-        },
-        "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 164.6
-        }
-      },
-      {
-        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260728/6941093/6941093_17852264003135_big.jpg?w=780",
-        "alt": "허쉬 슬리브리스 골지나시 (블루)",
-        "box": {
-          "x": 0.8333,
-          "y": 0.0289,
-          "w": 0.1667,
-          "h": 0.32
-        },
-        "pixelBox": {
-          "x": 2400,
-          "y": 52,
-          "w": 480,
-          "h": 576
-        },
-        "aspect": 0.833,
-        "areaShare": 0.0533,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 780,
-          "h": 936
-        },
-        "pass": 1,
-        "file": "capture/imagery-12.png",
-        "palette": [
-          {
-            "hex": "#f5f5f5",
-            "coverage": 0.6148,
-            "saturation": 0,
-            "luma": 0.961
-          },
-          {
-            "hex": "#1a1b1f",
-            "coverage": 0.0705,
-            "saturation": 0.161,
-            "luma": 0.106
-          },
-          {
-            "hex": "#b1aea5",
-            "coverage": 0.0198,
-            "saturation": 0.068,
-            "luma": 0.682
-          },
-          {
-            "hex": "#2a2a2d",
-            "coverage": 0.0154,
-            "saturation": 0.067,
-            "luma": 0.166
-          },
-          {
-            "hex": "#131316",
-            "coverage": 0.013,
-            "saturation": 0.136,
-            "luma": 0.075
-          },
-          {
-            "hex": "#ebebeb",
-            "coverage": 0.0107,
-            "saturation": 0,
-            "luma": 0.922
-          }
-        ],
-        "light": {
-          "meanLuma": 0.725,
-          "p05": 0.106,
-          "p50": 0.961,
-          "p95": 0.961,
-          "dynamicRange": 0.855,
-          "gradient": {
-            "dx": 0.005,
-            "dy": -0.137
-          },
-          "luminanceGradient": "brighter top"
-        },
-        "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 115.6
+          "borderVariance": 0
         }
       }
     ],
     "aggregate": {
-      "meanLuma": 0.698,
-      "dynamicRange": 0.859,
+      "meanLuma": 0.475,
+      "dynamicRange": 0.77,
       "luminanceGradients": {
-        "even": 3,
-        "brighter bottom": 2,
-        "brighter left": 1,
-        "brighter top": 5,
-        "brighter right": 1
+        "brighter right": 2,
+        "brighter top": 6,
+        "even": 2,
+        "brighter bottom": 1,
+        "brighter left": 1
       },
       "aspects": 0.833,
       "figureGroundResolved": "2/12",
       "subjectNote": "fewer than 4 resolved samples — placement omitted"
+    }
+  },
+  "motion": {
+    "present": false,
+    "note": "no video above the fold at capture time"
+  },
+  "mobile": {
+    "chrome": {
+      "pageBackgroundComputed": null,
+      "bodyColor": "#000000",
+      "header": {
+        "detectedBy": "semantic",
+        "background": "#f5f5f5",
+        "heightPx": 52,
+        "borderBottom": null
+      },
+      "primaryButton": {
+        "fill": "outline",
+        "background": null,
+        "borderColor": "#e0e0e0",
+        "color": "#666666",
+        "radiusPx": 4,
+        "paddingY": 4,
+        "paddingX": 5,
+        "fontPx": 13,
+        "weight": "400",
+        "label": "타임세일",
+        "repeats": 4
+      },
+      "typeScale": [
+        {
+          "tag": "h2",
+          "fontPx": 14,
+          "weight": "400",
+          "family": "Pretendard Variable",
+          "lineHeight": "21px",
+          "letterSpacing": "normal",
+          "color": "#000000"
+        },
+        {
+          "tag": "h3",
+          "fontPx": 14,
+          "weight": "400",
+          "family": "Pretendard Variable",
+          "lineHeight": "21px",
+          "letterSpacing": "normal",
+          "color": "#000000"
+        },
+        {
+          "tag": "button",
+          "fontPx": 11,
+          "weight": "500",
+          "family": "Pretendard Variable",
+          "lineHeight": "14px",
+          "letterSpacing": "normal",
+          "color": "#ffffff"
+        }
+      ],
+      "notes": {
+        "buttonCandidatesAboveFold": 4,
+        "headerDetectedBy": "semantic"
+      }
     }
   }
 }

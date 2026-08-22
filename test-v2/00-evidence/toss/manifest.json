@@ -1,0 +1,89 @@
+{
+  "brand": "toss",
+  "captureId": "2026-08-22T11-51-27-680Z",
+  "capturedAt": "2026-08-22T11:51:27.680Z",
+  "channel": "playwright",
+  "source": {
+    "url": "https://toss.im/",
+    "finalUrl": "https://toss.im/",
+    "title": "토스",
+    "status": 200
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "locale": "ko-KR",
+  "session": {
+    "profile": "fresh automation context",
+    "authenticated": false
+  },
+  "store": {
+    "root": "$OMD_EVIDENCE_STORE",
+    "path": "toss/2026-08-22T11-51-27-680Z"
+  },
+  "files": [
+    {
+      "name": "imagery-01.png",
+      "bytes": 2403032,
+      "sha256": "d058b3e8f61a0f0ecdba89cc2392eb39aba8dc7c6c2507b9fbbfad83d6b76f05"
+    },
+    {
+      "name": "imagery-02.png",
+      "bytes": 2805706,
+      "sha256": "e2e72a091dbb4aa5e906cbdbaedd835f78cb42c2e803e7ee0a4cf7833d55916d"
+    },
+    {
+      "name": "video-frame-01.png",
+      "bytes": 1063215,
+      "sha256": "954766b65f3d51a8e8466add3db53ed4e7c795b2b74adaa0a8e9bff48f2104b8"
+    },
+    {
+      "name": "video-frame-02.png",
+      "bytes": 1075446,
+      "sha256": "cb302337cdb408cdae899bc83fb722ec2f2d79e13f08031e7295f5d56d8e6548"
+    },
+    {
+      "name": "video-frame-03.png",
+      "bytes": 1089196,
+      "sha256": "8e10c47c1f018a4d56807004618fa4fb86a60ad0275e9e31abc7c615c1a08008"
+    },
+    {
+      "name": "video-frame-04.png",
+      "bytes": 1025826,
+      "sha256": "9128f65d6ac30690164166ceed0df2fe85eef9d22cf6072a04798cd56ad7d0df"
+    },
+    {
+      "name": "video-frame-05.png",
+      "bytes": 1098383,
+      "sha256": "6bc1a665a9e39b52d5e9cb48f12c64ea03733208d3c0528fbf6bd8869666ac50"
+    },
+    {
+      "name": "video-frame-06.png",
+      "bytes": 1105950,
+      "sha256": "7d370470807e7f9f58ec231c6d56a4e19975a724e89895bd54cec8fb7bc5d972"
+    },
+    {
+      "name": "video-frame-07.png",
+      "bytes": 1037190,
+      "sha256": "372ab79da6adca2da41c6df2c27698301e07a131e3929de089f0b17ece025454"
+    },
+    {
+      "name": "video-frame-08.png",
+      "bytes": 984916,
+      "sha256": "9f91b2215c16089deea5a572015fa764455ae6d7e576c67fe1d65e9bfb269b81"
+    },
+    {
+      "name": "viewport-1440.png",
+      "bytes": 2397117,
+      "sha256": "0555696893db9cbf680a68307049f50a59365753664b09608e847ca692ae4667"
+    },
+    {
+      "name": "viewport-390.png",
+      "bytes": 861817,
+      "sha256": "22c715e6afda78855f2d19e6ce823747a6a0748cb873ff5e53cddc7e1712e4ee"
+    }
+  ],
+  "evidenceSha256": "c97157871678af057399f3d1ef586e8e08012d35cb56c0fb53afc68ee50f8d0e",
+  "supersededBy": null
+}

@@ -1,0 +1,144 @@
+{
+  "brand": "naver",
+  "capturedAt": "2026-08-22T11:53:07.061Z",
+  "source": {
+    "url": "https://www.naver.com/",
+    "status": 200,
+    "finalUrl": "https://www.naver.com/",
+    "title": "NAVER"
+  },
+  "method": {
+    "channel": "playwright",
+    "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
+    "imagerySamplesRequested": 12,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "locale": "ko-KR",
+    "colorScheme": "light"
+  },
+  "chrome": {
+    "pageBackgroundComputed": "#ffffff",
+    "bodyColor": "#2e2e2e",
+    "header": {
+      "detectedBy": "semantic",
+      "background": null,
+      "heightPx": 216,
+      "borderBottom": null
+    },
+    "primaryButton": null,
+    "typeScale": [
+      {
+        "tag": "h1",
+        "fontPx": 14.7,
+        "weight": "700",
+        "family": "-apple-system",
+        "lineHeight": "17.85px",
+        "letterSpacing": "-0.4px",
+        "color": "#2e2e2e"
+      },
+      {
+        "tag": "p",
+        "fontPx": 14.7,
+        "weight": "500",
+        "family": "-apple-system",
+        "lineHeight": "20px",
+        "letterSpacing": "-0.4px",
+        "color": "#2e2e2e"
+      },
+      {
+        "tag": "button",
+        "fontPx": 14.7,
+        "weight": "500",
+        "family": "-apple-system",
+        "lineHeight": "17.85px",
+        "letterSpacing": "-0.4px",
+        "color": "#2e2e2e"
+      }
+    ],
+    "notes": {
+      "buttonCandidatesAboveFold": 0,
+      "headerDetectedBy": "semantic"
+    },
+    "pageBackgroundRendered": {
+      "resolved": true,
+      "hex": "#fefefe",
+      "coverage": 0.6963,
+      "source": "modal colour of the captured viewport"
+    }
+  },
+  "imagery": {
+    "sampled": 0,
+    "samples": [],
+    "aggregate": {
+      "meanLuma": null,
+      "dynamicRange": null,
+      "luminanceGradients": {},
+      "aspects": null,
+      "figureGroundResolved": "0/0",
+      "subjectNote": "fewer than 4 resolved samples — placement omitted"
+    }
+  },
+  "motion": {
+    "present": false,
+    "note": "no video above the fold at capture time"
+  },
+  "mobile": {
+    "chrome": {
+      "pageBackgroundComputed": "#ffffff",
+      "bodyColor": "#2e2e2e",
+      "header": {
+        "detectedBy": "semantic",
+        "background": null,
+        "heightPx": 216,
+        "borderBottom": null
+      },
+      "primaryButton": {
+        "fill": "solid",
+        "background": "#03c75a",
+        "color": "#ffffff",
+        "radiusPx": 28,
+        "paddingY": 0,
+        "paddingX": 17,
+        "fontPx": 14.7,
+        "weight": "500",
+        "label": "모바일 버전으로 보기",
+        "repeats": 1
+      },
+      "typeScale": [
+        {
+          "tag": "h1",
+          "fontPx": 14.7,
+          "weight": "700",
+          "family": "-apple-system",
+          "lineHeight": "17.85px",
+          "letterSpacing": "-0.4px",
+          "color": "#2e2e2e"
+        },
+        {
+          "tag": "p",
+          "fontPx": 14.7,
+          "weight": "500",
+          "family": "-apple-system",
+          "lineHeight": "20px",
+          "letterSpacing": "-0.4px",
+          "color": "#2e2e2e"
+        },
+        {
+          "tag": "button",
+          "fontPx": 14.7,
+          "weight": "500",
+          "family": "-apple-system",
+          "lineHeight": "17.85px",
+          "letterSpacing": "-0.4px",
+          "color": "#2e2e2e"
+        }
+      ],
+      "notes": {
+        "buttonCandidatesAboveFold": 1,
+        "headerDetectedBy": "semantic"
+      }
+    }
+  }
+}

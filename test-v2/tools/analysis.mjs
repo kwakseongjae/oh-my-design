@@ -201,6 +201,27 @@ export function aggregateSubject(resolved, sampled) {
 }
 
 /**
+ * The page canvas as rendered, or an admission that there isn't one.
+ *
+ * A modal colour covering 1.2% of the frame is not a background — that was
+ * Baemin, whose single-screen hero is a full-bleed photograph, and #0d0905 was
+ * the dim room in the picture. A flat canvas shows up as a large share; a
+ * photograph does not, so coverage decides whether this field gets a value.
+ */
+export function renderedCanvas(dominant) {
+  if (!dominant) return null;
+  if (dominant.coverage < 0.15) {
+    return {
+      resolved: false,
+      reason: "no flat canvas in the frame — the dominant colour covers too little to be a background",
+      dominantHex: dominant.hex,
+      coverage: dominant.coverage,
+    };
+  }
+  return { resolved: true, hex: dominant.hex, coverage: dominant.coverage, source: "modal colour of the captured viewport" };
+}
+
+/**
  * Crops a region out of a screenshot. The Aside channel returns one viewport
  * PNG rather than per-element shots, and cropping from it is steadier anyway —
  * element screenshots failed on transformed and carousel-parked nodes.

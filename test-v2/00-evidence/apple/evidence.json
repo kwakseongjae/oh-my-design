@@ -1,0 +1,689 @@
+{
+  "brand": "apple",
+  "capturedAt": "2026-08-22T11:52:32.729Z",
+  "source": {
+    "url": "https://www.apple.com/kr/",
+    "status": 200,
+    "finalUrl": "https://www.apple.com/kr/",
+    "title": "Apple (대한민국)"
+  },
+  "method": {
+    "channel": "playwright",
+    "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
+    "imagerySamplesRequested": 12,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "locale": "ko-KR",
+    "colorScheme": "light"
+  },
+  "chrome": {
+    "pageBackgroundComputed": "#ffffff",
+    "bodyColor": "#1d1d1f",
+    "header": {
+      "detectedBy": "geometry",
+      "background": "#fafafc",
+      "heightPx": 44,
+      "borderBottom": null
+    },
+    "primaryButton": {
+      "fill": "outline",
+      "background": null,
+      "borderColor": "#0066cc",
+      "color": "#0066cc",
+      "radiusPx": 980,
+      "paddingY": 11,
+      "paddingX": 21,
+      "fontPx": 17,
+      "weight": "400",
+      "label": "iPhone 쇼핑하기",
+      "repeats": 1
+    },
+    "typeScale": [
+      {
+        "tag": "h2",
+        "fontPx": 56,
+        "weight": "600",
+        "family": "SF Pro KR",
+        "lineHeight": "66.0045px",
+        "letterSpacing": "normal",
+        "color": "#1d1d1f"
+      },
+      {
+        "tag": "h3",
+        "fontPx": 40,
+        "weight": "600",
+        "family": "SF Pro KR",
+        "lineHeight": "44px",
+        "letterSpacing": "normal",
+        "color": "#f5f5f7"
+      },
+      {
+        "tag": "p",
+        "fontPx": 28,
+        "weight": "400",
+        "family": "SF Pro KR",
+        "lineHeight": "35px",
+        "letterSpacing": "0.196px",
+        "color": "#1d1d1f"
+      }
+    ],
+    "notes": {
+      "buttonCandidatesAboveFold": 2,
+      "headerDetectedBy": "geometry"
+    },
+    "pageBackgroundRendered": {
+      "resolved": true,
+      "hex": "#f5f5f7",
+      "coverage": 0.5744,
+      "source": "modal colour of the captured viewport"
+    }
+  },
+  "imagery": {
+    "sampled": 7,
+    "samples": [
+      {
+        "src": "https://www.apple.com/v/home/images/iphone-family/a/hero_iphone_family__be5jkzxszb1e_largetall_2x.jpg",
+        "kind": "img",
+        "alt": "왼쪽 상단의 프로 Fusion 카메라 시스템과 중앙의 Apple 로고가 보이는 딥 블루 색상 iPhone 17 Pro 뒷면, 왼쪽 상단의 듀얼 ",
+        "docBox": {
+          "x": -784,
+          "y": 44,
+          "w": 3008,
+          "h": 692
+        },
+        "aspect": 4.347,
+        "areaShare": 1.6061,
+        "intrinsic": {
+          "w": 3008,
+          "h": 692
+        },
+        "clipped": true,
+        "file": "capture/imagery-01.png",
+        "palette": [
+          {
+            "hex": "#f5f5f7",
+            "coverage": 0.7475,
+            "saturation": 0.008,
+            "luma": 0.961
+          },
+          {
+            "hex": "#f6f7f9",
+            "coverage": 0.0173,
+            "saturation": 0.012,
+            "luma": 0.968
+          },
+          {
+            "hex": "#faf5f4",
+            "coverage": 0.0166,
+            "saturation": 0.024,
+            "luma": 0.965
+          },
+          {
+            "hex": "#fbfbfc",
+            "coverage": 0.0159,
+            "saturation": 0.004,
+            "luma": 0.985
+          },
+          {
+            "hex": "#3d4353",
+            "coverage": 0.0119,
+            "saturation": 0.265,
+            "luma": 0.262
+          },
+          {
+            "hex": "#feedec",
+            "coverage": 0.0094,
+            "saturation": 0.071,
+            "luma": 0.943
+          }
+        ],
+        "light": {
+          "meanLuma": 0.882,
+          "p05": 0.26,
+          "p50": 0.961,
+          "p95": 0.965,
+          "dynamicRange": 0.705,
+          "gradient": {
+            "dx": 0.124,
+            "dy": -0.087
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 34.8
+        }
+      },
+      {
+        "src": "https://www.apple.com/v/home/images/macbook-air-m5/a/hero_macbook_air_m5__eb1idggd120y_largetall_2x.jpg",
+        "kind": "img",
+        "alt": "아래위로 나란히 놓인 스카이 블루 색상 MacBook Air 노트북 두 대가 살짝 열린 채 화살표 형태를 띠고 있는 모습. 얇은 두께가 돋보입니",
+        "docBox": {
+          "x": -784,
+          "y": 748,
+          "w": 3008,
+          "h": 692
+        },
+        "aspect": 4.347,
+        "areaShare": 1.6061,
+        "intrinsic": {
+          "w": 3008,
+          "h": 692
+        },
+        "clipped": true,
+        "file": "capture/imagery-02.png",
+        "palette": [
+          {
+            "hex": "#f2f6f9",
+            "coverage": 0.1234,
+            "saturation": 0.028,
+            "luma": 0.962
+          },
+          {
+            "hex": "#dbedf7",
+            "coverage": 0.1173,
+            "saturation": 0.113,
+            "luma": 0.917
+          },
+          {
+            "hex": "#ecf4f8",
+            "coverage": 0.1117,
+            "saturation": 0.048,
+            "luma": 0.951
+          },
+          {
+            "hex": "#d5eaf6",
+            "coverage": 0.1057,
+            "saturation": 0.134,
+            "luma": 0.904
+          },
+          {
+            "hex": "#f9f9f9",
+            "coverage": 0.0959,
+            "saturation": 0,
+            "luma": 0.976
+          },
+          {
+            "hex": "#e5f1f8",
+            "coverage": 0.0912,
+            "saturation": 0.077,
+            "luma": 0.937
+          }
+        ],
+        "light": {
+          "meanLuma": 0.87,
+          "p05": 0.356,
+          "p50": 0.936,
+          "p95": 0.976,
+          "dynamicRange": 0.62,
+          "gradient": {
+            "dx": -0.009,
+            "dy": -0.02
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 15.4
+        }
+      },
+      {
+        "src": "https://www.apple.com/v/home/images/ipad-air-m4/a/hero_ipad_air_m4__gc1zddfs5tiu_largetall_2x.jpg",
+        "kind": "img",
+        "alt": "iPad Air 모델들이 공중에 떠 있는 모습. 싱글 렌즈 카메라가 보이는 뒷면과 둥근 형태의 모서리, 블랙 디스플레이 베젤이 보이는 앞면.",
+        "docBox": {
+          "x": -784,
+          "y": 1452,
+          "w": 3008,
+          "h": 692
+        },
+        "aspect": 4.347,
+        "areaShare": 1.6061,
+        "intrinsic": {
+          "w": 3008,
+          "h": 692
+        },
+        "clipped": true,
+        "file": "capture/imagery-03.png",
+        "palette": [
+          {
+            "hex": "#addcee",
+            "coverage": 0.1701,
+            "saturation": 0.273,
+            "luma": 0.829
+          },
+          {
+            "hex": "#ebf3f5",
+            "coverage": 0.09,
+            "saturation": 0.041,
+            "luma": 0.947
+          },
+          {
+            "hex": "#c3e4f0",
+            "coverage": 0.0771,
+            "saturation": 0.188,
+            "luma": 0.87
+          },
+          {
+            "hex": "#bde2f0",
+            "coverage": 0.0767,
+            "saturation": 0.212,
+            "luma": 0.859
+          },
+          {
+            "hex": "#dbedf4",
+            "coverage": 0.0694,
+            "saturation": 0.102,
+            "luma": 0.916
+          },
+          {
+            "hex": "#e5f1f4",
+            "coverage": 0.0636,
+            "saturation": 0.061,
+            "luma": 0.936
+          }
+        ],
+        "light": {
+          "meanLuma": 0.848,
+          "p05": 0.55,
+          "p50": 0.87,
+          "p95": 0.954,
+          "dynamicRange": 0.404,
+          "gradient": {
+            "dx": 0.044,
+            "dy": 0.033
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 31.9
+        }
+      },
+      {
+        "src": "https://www.apple.com/v/home/images/macbook-pro/a/promo_macbook_pro__c9td9w1mc8ia_large_2x.jpg",
+        "kind": "img",
+        "alt": "M5 칩 라인업을 지칭하는 V자 모양으로 놓인 MacBook Pro",
+        "docBox": {
+          "x": -268,
+          "y": 2156,
+          "w": 1262,
+          "h": 580
+        },
+        "aspect": 2.176,
+        "areaShare": 0.5648,
+        "intrinsic": {
+          "w": 1262,
+          "h": 580
+        },
+        "clipped": true,
+        "file": "capture/imagery-04.png",
+        "palette": [
+          {
+            "hex": "#000000",
+            "coverage": 0.5723,
+            "saturation": 0,
+            "luma": 0
+          },
+          {
+            "hex": "#f5f5f7",
+            "coverage": 0.166,
+            "saturation": 0.008,
+            "luma": 0.961
+          },
+          {
+            "hex": "#020e24",
+            "coverage": 0.0267,
+            "saturation": 0.944,
+            "luma": 0.051
+          },
+          {
+            "hex": "#0b0b0c",
+            "coverage": 0.0233,
+            "saturation": 0.083,
+            "luma": 0.043
+          },
+          {
+            "hex": "#fefefe",
+            "coverage": 0.0159,
+            "saturation": 0,
+            "luma": 0.996
+          },
+          {
+            "hex": "#1d1d1d",
+            "coverage": 0.013,
+            "saturation": 0,
+            "luma": 0.114
+          }
+        ],
+        "light": {
+          "meanLuma": 0.26,
+          "p05": 0,
+          "p50": 0,
+          "p95": 0.961,
+          "dynamicRange": 0.961,
+          "gradient": {
+            "dx": 0.345,
+            "dy": -0.067
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 208.1
+        }
+      },
+      {
+        "src": "https://www.apple.com/kr/home/images/apple-watch-series-11/promo_apple_watch_series_11__gnlwqxe1jlu2_large_2x.jpg",
+        "kind": "img",
+        "alt": "로즈 골드 색상 알루미늄 케이스와 수면 점수가 화면에 보이는 Apple Watch Series 11. 오른쪽 옆면 외장에 Digital Crow",
+        "docBox": {
+          "x": 446,
+          "y": 2156,
+          "w": 1262,
+          "h": 580
+        },
+        "aspect": 2.176,
+        "areaShare": 0.5648,
+        "intrinsic": {
+          "w": 1262,
+          "h": 580
+        },
+        "clipped": true,
+        "file": "capture/imagery-05.png",
+        "palette": [
+          {
+            "hex": "#f5f5f7",
+            "coverage": 0.3728,
+            "saturation": 0.008,
+            "luma": 0.961
+          },
+          {
+            "hex": "#000000",
+            "coverage": 0.2706,
+            "saturation": 0,
+            "luma": 0
+          },
+          {
+            "hex": "#fdfdfd",
+            "coverage": 0.0331,
+            "saturation": 0,
+            "luma": 0.992
+          },
+          {
+            "hex": "#020e24",
+            "coverage": 0.0304,
+            "saturation": 0.944,
+            "luma": 0.051
+          },
+          {
+            "hex": "#f6f6f8",
+            "coverage": 0.0181,
+            "saturation": 0.008,
+            "luma": 0.965
+          },
+          {
+            "hex": "#d4d4d4",
+            "coverage": 0.0074,
+            "saturation": 0,
+            "luma": 0.831
+          }
+        ],
+        "light": {
+          "meanLuma": 0.549,
+          "p05": 0,
+          "p50": 0.773,
+          "p95": 0.965,
+          "dynamicRange": 0.965,
+          "gradient": {
+            "dx": 0.357,
+            "dy": -0.193
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 185.6
+        }
+      },
+      {
+        "src": "https://www.apple.com/v/home/images/airpods-pro-3/a/promo_airpods_pro_3__e4755qofhnyq_large_2x.jpg",
+        "kind": "img",
+        "alt": "무선 헤드폰, 화이트 색상, 실리콘 팁을 갖춘 AirPods Pro 3",
+        "docBox": {
+          "x": -268,
+          "y": 2748,
+          "w": 1262,
+          "h": 580
+        },
+        "aspect": 2.176,
+        "areaShare": 0.5648,
+        "intrinsic": {
+          "w": 1262,
+          "h": 580
+        },
+        "clipped": true,
+        "file": "capture/imagery-06.png",
+        "palette": [
+          {
+            "hex": "#f5f5f7",
+            "coverage": 0.5347,
+            "saturation": 0.008,
+            "luma": 0.961
+          },
+          {
+            "hex": "#000000",
+            "coverage": 0.2381,
+            "saturation": 0,
+            "luma": 0
+          },
+          {
+            "hex": "#fdfdfe",
+            "coverage": 0.039,
+            "saturation": 0.004,
+            "luma": 0.992
+          },
+          {
+            "hex": "#f6f6f8",
+            "coverage": 0.0241,
+            "saturation": 0.008,
+            "luma": 0.965
+          },
+          {
+            "hex": "#d3d3d5",
+            "coverage": 0.0123,
+            "saturation": 0.009,
+            "luma": 0.828
+          },
+          {
+            "hex": "#edeef2",
+            "coverage": 0.0092,
+            "saturation": 0.021,
+            "luma": 0.934
+          }
+        ],
+        "light": {
+          "meanLuma": 0.681,
+          "p05": 0,
+          "p50": 0.961,
+          "p95": 0.965,
+          "dynamicRange": 0.965,
+          "gradient": {
+            "dx": -0.46,
+            "dy": -0.007
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 185.5
+        }
+      },
+      {
+        "src": "https://www.apple.com/v/home/images/ipad-pro/a/promo_ipad_pro__emtduc920o02_large_2x.jpg",
+        "kind": "img",
+        "alt": "iPad Pro 두 대의 세로 방향 모습. 한 대는 앞면으로 블랙 디스플레이 베젤, 다채로운 색상의 곡선형 라인 아트가 표시된 디스플레이를 보여",
+        "docBox": {
+          "x": 446,
+          "y": 2748,
+          "w": 1262,
+          "h": 580
+        },
+        "aspect": 2.176,
+        "areaShare": 0.5648,
+        "intrinsic": {
+          "w": 1262,
+          "h": 580
+        },
+        "clipped": true,
+        "file": "capture/imagery-07.png",
+        "palette": [
+          {
+            "hex": "#000000",
+            "coverage": 0.5388,
+            "saturation": 0,
+            "luma": 0
+          },
+          {
+            "hex": "#f5f5f7",
+            "coverage": 0.2413,
+            "saturation": 0.008,
+            "luma": 0.961
+          },
+          {
+            "hex": "#0b0b0b",
+            "coverage": 0.039,
+            "saturation": 0,
+            "luma": 0.043
+          },
+          {
+            "hex": "#fefeff",
+            "coverage": 0.0173,
+            "saturation": 0.004,
+            "luma": 0.996
+          },
+          {
+            "hex": "#1d1d1d",
+            "coverage": 0.0168,
+            "saturation": 0,
+            "luma": 0.114
+          },
+          {
+            "hex": "#131313",
+            "coverage": 0.0155,
+            "saturation": 0,
+            "luma": 0.075
+          }
+        ],
+        "light": {
+          "meanLuma": 0.313,
+          "p05": 0,
+          "p50": 0,
+          "p95": 0.961,
+          "dynamicRange": 0.961,
+          "gradient": {
+            "dx": -0.444,
+            "dy": 0.018
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 206.9
+        }
+      }
+    ],
+    "aggregate": {
+      "meanLuma": 0.681,
+      "dynamicRange": 0.961,
+      "luminanceGradients": {
+        "brighter right": 4,
+        "even": 1,
+        "brighter left": 2
+      },
+      "aspects": 2.176,
+      "figureGroundResolved": "0/7",
+      "subjectNote": "fewer than 4 resolved samples — placement omitted"
+    }
+  },
+  "motion": {
+    "present": false,
+    "note": "no video above the fold at capture time"
+  },
+  "mobile": {
+    "chrome": {
+      "pageBackgroundComputed": "#ffffff",
+      "bodyColor": "#1d1d1f",
+      "header": {
+        "detectedBy": "geometry",
+        "background": null,
+        "heightPx": 50,
+        "borderBottom": null
+      },
+      "primaryButton": {
+        "fill": "outline",
+        "background": null,
+        "borderColor": "#0066cc",
+        "color": "#0066cc",
+        "radiusPx": 980,
+        "paddingY": 8,
+        "paddingX": 15,
+        "fontPx": 14,
+        "weight": "400",
+        "label": "iPhone 쇼핑하기",
+        "repeats": 3
+      },
+      "typeScale": [
+        {
+          "tag": "h2",
+          "fontPx": 32,
+          "weight": "600",
+          "family": "SF Pro KR",
+          "lineHeight": "37.7168px",
+          "letterSpacing": "normal",
+          "color": "#1d1d1f"
+        },
+        {
+          "tag": "h3",
+          "fontPx": 32,
+          "weight": "600",
+          "family": "SF Pro KR",
+          "lineHeight": "36px",
+          "letterSpacing": "0.064px",
+          "color": "#f5f5f7"
+        },
+        {
+          "tag": "p",
+          "fontPx": 19,
+          "weight": "400",
+          "family": "SF Pro KR",
+          "lineHeight": "25px",
+          "letterSpacing": "0.228px",
+          "color": "#1d1d1f"
+        },
+        {
+          "tag": "button",
+          "fontPx": 12,
+          "weight": "400",
+          "family": "SF Pro KR",
+          "lineHeight": "16.0005px",
+          "letterSpacing": "normal",
+          "color": "#000000"
+        }
+      ],
+      "notes": {
+        "buttonCandidatesAboveFold": 6,
+        "headerDetectedBy": "geometry"
+      }
+    }
+  }
+}

@@ -29,10 +29,10 @@
  */
 
 import { chromium } from "playwright-core";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { aggregateSubject, light, median, palette, subject, toRgb } from "./analysis.mjs";
+import { aggregateSubject, cropTo, light, median, palette, renderedCanvas, subject, toRgb } from "./analysis.mjs";
 const HERE = dirname(fileURLToPath(import.meta.url));
 const EVIDENCE_ROOT = resolve(HERE, "..", "00-evidence");
 
@@ -81,8 +81,13 @@ async function collectChrome(page) {
   return page.evaluate(() => {
     const cs = (el) => (el ? getComputedStyle(el) : null);
     const hexOf = (rgb) => {
-      const m = /rgba?\((\d+),\s*(\d+),\s*(\d+)/.exec(rgb || "");
-      return m ? `#${[m[1], m[2], m[3]].map((v) => Number(v).toString(16).padStart(2, "0")).join("")}` : null;
+      // A fully transparent background is not black. Same guard as the Aside
+      // channel — it lived in only one of the two, and this one kept reporting
+      // #000000 for pages whose canvas comes from the browser.
+      const m = /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?/.exec(rgb || "");
+      if (!m) return null;
+      if (m[4] !== undefined && Number(m[4]) === 0) return null;
+      return `#${[m[1], m[2], m[3]].map((v) => Number(v).toString(16).padStart(2, "0")).join("")}`;
     };
 
     // Geometry, not tag names. Coupang has a header — logo, search, category nav,
@@ -227,35 +232,36 @@ async function collectChrome(page) {
 async function collectImagery(page, limit) {
   return page.evaluate((max) => {
     const vw = window.innerWidth;
-    const vh = window.innerHeight;
     const seen = new Set();
     const out = [];
 
-    for (const el of document.querySelectorAll("img")) {
+    // Not only <img>. Toss's hero is a video and a canvas; a collector that
+    // reads img elements alone reports "no imagery" for a page built out of
+    // moving pictures.
+    for (const el of document.querySelectorAll("img, video, canvas")) {
       const r = el.getBoundingClientRect();
-      if (r.top > vh * 3 || r.bottom < 0) continue;
       if (r.width < 160 || r.height < 160) continue;
-      const visibleWidth = Math.min(r.right, vw) - Math.max(r.left, 0);
-      if (visibleWidth < r.width * 0.9) continue; // carousel slides parked off-screen
-      const src = el.currentSrc || el.src;
+      // A slide parked off-screen has its centre outside the frame. A full-bleed
+      // hero wider than the viewport does not — and the old coverage test could
+      // not tell them apart, which is why Apple, whose heroes overflow both
+      // edges, produced nothing at all.
+      const centreX = r.left + r.width / 2;
+      if (centreX < 0 || centreX > vw) continue;
+      const kind = el.tagName.toLowerCase();
+      const src = el.currentSrc || el.src || (kind === "canvas" ? `canvas@${Math.round(r.x)},${Math.round(r.y)}` : "");
       if (!src || seen.has(src)) continue;
       seen.add(src);
 
-      // A derived CSS path is not unique — `locator(path).first()` resolved to
-      // the same node for every sample, and nine "samples" measured identically.
-      // Tag the node instead so each screenshot targets exactly this element.
-      const marker = `omd-sample-${out.length + 1}`;
-      el.setAttribute("data-omd-sample", marker);
-
       out.push({
         src,
-        selector: `[data-omd-sample="${marker}"]`,
+        kind,
         alt: (el.alt || "").slice(0, 80),
-        box: { x: +(r.x / vw).toFixed(4), y: +(r.y / vh).toFixed(4), w: +(r.width / vw).toFixed(4), h: +(r.height / vh).toFixed(4) },
+        // Absolute document coordinates: each sample is scrolled to on its own
+        // rather than hoping it lands inside one of a few fixed passes.
+        docBox: { x: r.x + window.scrollX, y: r.y + window.scrollY, w: r.width, h: r.height },
         aspect: +(r.width / r.height).toFixed(3),
-        areaShare: +((r.width * r.height) / (vw * vh)).toFixed(4),
-        firstScreen: r.top < vh,
-        intrinsic: { w: el.naturalWidth || null, h: el.naturalHeight || null },
+        areaShare: +((r.width * r.height) / (vw * window.innerHeight)).toFixed(4),
+        intrinsic: { w: el.naturalWidth ?? el.videoWidth ?? el.width ?? null, h: el.naturalHeight ?? el.videoHeight ?? el.height ?? null },
       });
     }
     return out.sort((a, b) => b.areaShare - a.areaShare).slice(0, max);
@@ -346,6 +352,12 @@ const context = await browser.newContext({
   viewport: DESKTOP,
   deviceScaleFactor: 2,
   locale: "ko-KR",
+  // Pinned, not inherited. Karrot came back with a near-black canvas because
+  // the browser profile was in dark mode and the site honours the system
+  // preference — so brands were being measured under different schemes and the
+  // evidence was not comparable. Light is the baseline; a dark-first brand is a
+  // finding to record, not a setting to inherit.
+  colorScheme: "light",
   userAgent:
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
 });
@@ -356,9 +368,12 @@ const evidence = {
   capturedAt: new Date().toISOString(),
   source: { url },
   method: {
+    channel: "playwright",
     note: "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
     imagerySamplesRequested: IMAGERY_SAMPLES,
     viewport: DESKTOP,
+    locale: "ko-KR",
+    colorScheme: "light",
   },
 };
 
@@ -371,28 +386,72 @@ try {
   evidence.source.finalUrl = page.url();
   evidence.source.title = await page.title();
 
-  writeFileSync(join(captureDir, "viewport-1440.png"), await page.screenshot());
-
   evidence.chrome = await collectChrome(page);
 
-  // Scroll once so lazy-loaded product imagery attaches before we enumerate.
+  // Enumerate first, then visit each sample. Fixed scroll passes lost the
+  // images that mattered most: a hero taller than the viewport is never fully
+  // inside any single pass, and Apple's overflow both edges. Scrolling to each
+  // candidate costs one screenshot per sample and always frames it.
   await page.evaluate(() => window.scrollTo(0, window.innerHeight * 1.5));
-  await page.waitForTimeout(1500);
+  await page.waitForTimeout(1600);
   await page.evaluate(() => window.scrollTo(0, 0));
-  await page.waitForTimeout(800);
+  await page.waitForTimeout(900);
+
+  const firstShotPath = join(captureDir, "viewport-1440.png");
+  writeFileSync(firstShotPath, await page.screenshot());
+  const [dominant] = palette(await toRgb(firstShotPath, 200));
+  evidence.chrome.pageBackgroundRendered = renderedCanvas(dominant);
 
   const candidates = await collectImagery(page, IMAGERY_SAMPLES);
   const samples = [];
   for (const [i, candidate] of candidates.entries()) {
-    const shotPath = join(captureDir, `imagery-${String(i + 1).padStart(2, "0")}.png`);
-    const png = await page.locator(candidate.selector).first()
-      .screenshot({ timeout: 6000 }).catch(() => null);
-    if (!png) continue;
-    writeFileSync(shotPath, png);
-    const rgb = await toRgb(shotPath);
+    const label = String(i + 1).padStart(2, "0");
+    const framePath = join(captureDir, `frame-${label}.png`);
+    const cropPath = join(captureDir, `imagery-${label}.png`);
+
+    // Centre it, then read where it actually landed — lazy loading and sticky
+    // headers move things between the scroll and the shot.
+    const box = await page.evaluate((b) => {
+      window.scrollTo(0, Math.max(0, b.y + b.h / 2 - window.innerHeight / 2));
+      return null;
+    }, candidate.docBox).then(() => page.waitForTimeout(700)).then(() => page.evaluate((want) => {
+      // Re-find by geometry, not by src. Responsive images swap currentSrc as
+      // the viewport moves, and matching on it lost most of Figma's and
+      // Baemin's samples. Position in the document does not change under us.
+      let el = null;
+      let best = Infinity;
+      for (const n of document.querySelectorAll("img, video, canvas")) {
+        const r = n.getBoundingClientRect();
+        if (r.width < 120 || r.height < 120) continue;
+        const d = Math.hypot(r.x + window.scrollX - want.x, r.y + window.scrollY - want.y)
+          + Math.abs(r.width - want.w) + Math.abs(r.height - want.h);
+        if (d < best) { best = d; el = n; }
+      }
+      if (!el || best > 240) return null;
+      const r = el.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const visibleH = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
+      const visibleW = Math.min(r.right, window.innerWidth) - Math.max(r.left, 0);
+      if (visibleH < 120 || visibleW < 120) return null;
+      return {
+        pixelBox: { x: Math.max(0, r.left) * dpr, y: Math.max(0, r.top) * dpr, w: visibleW * dpr, h: visibleH * dpr },
+        clipped: r.top < 0 || r.bottom > window.innerHeight || r.left < 0 || r.right > window.innerWidth,
+      };
+    }, candidate.docBox));
+    if (!box) continue;
+
+    writeFileSync(framePath, await page.screenshot());
+    try {
+      await cropTo(framePath, cropPath, box.pixelBox);
+    } catch {
+      continue;
+    }
+    rmSync(framePath, { force: true });
+    const rgb = await toRgb(cropPath);
     samples.push({
       ...candidate,
-      file: `capture/imagery-${String(i + 1).padStart(2, "0")}.png`,
+      clipped: box.clipped,
+      file: `capture/imagery-${label}.png`,
       palette: palette(rgb),
       light: light(rgb),
       subject: subject(rgb),
