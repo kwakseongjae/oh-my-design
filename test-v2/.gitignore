@@ -1,0 +1,9 @@
+# Symlink into web/node_modules so the tools resolve playwright-core.
+tools/node_modules
+
+# Third-party captures. evidence.json holds the measurements, which are facts;
+# the source images are someone else's work and do not belong in this repo.
+00-evidence/*/capture/
+
+# Generated media is large and reproducible from 01-prompts + 03-runs.
+02-generated/

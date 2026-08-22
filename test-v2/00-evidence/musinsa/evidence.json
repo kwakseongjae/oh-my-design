@@ -1,0 +1,1048 @@
+{
+  "brand": "musinsa",
+  "capturedAt": "2026-08-22T07:48:37.274Z",
+  "source": {
+    "url": "https://www.musinsa.com/",
+    "status": 200,
+    "finalUrl": "https://www.musinsa.com/main/musinsa/recommend?gf=A",
+    "title": "무신사"
+  },
+  "method": {
+    "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
+    "imagerySamplesRequested": 12,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    }
+  },
+  "chrome": {
+    "pageBackground": "#000000",
+    "bodyColor": "#000000",
+    "header": {
+      "background": "#000000",
+      "heightPx": 56,
+      "borderBottom": null
+    },
+    "primaryButton": {
+      "background": "#5ccca8",
+      "color": "#000000",
+      "radiusPx": 0,
+      "paddingY": 0,
+      "paddingX": 0,
+      "fontPx": 14,
+      "weight": "400",
+      "label": ""
+    },
+    "typeScale": [
+      {
+        "tag": "h3",
+        "fontPx": 18,
+        "weight": "500",
+        "family": "Pretendard Variable",
+        "lineHeight": "24px",
+        "letterSpacing": "normal",
+        "color": "#000000"
+      },
+      {
+        "tag": "p",
+        "fontPx": 20,
+        "weight": "600",
+        "family": "Pretendard Variable",
+        "lineHeight": "26px",
+        "letterSpacing": "normal",
+        "color": "#ffffff"
+      },
+      {
+        "tag": "button",
+        "fontPx": 14,
+        "weight": "500",
+        "family": "Pretendard Variable",
+        "lineHeight": "20px",
+        "letterSpacing": "normal",
+        "color": "#ffffff"
+      }
+    ]
+  },
+  "imagery": {
+    "sampled": 12,
+    "samples": [
+      {
+        "src": "https://image.msscdn.net/display/images/2026/08/21/78162249d2f14b6ea5968648608efc0c.jpg",
+        "selector": "[data-omd-sample=\"omd-sample-1\"]",
+        "alt": "미리 확인하는\nFW 26 신상",
+        "box": {
+          "x": 0,
+          "y": 0.2133,
+          "w": 0.3333,
+          "h": 0.4667
+        },
+        "aspect": 1.143,
+        "areaShare": 0.1556,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 1029,
+          "h": 900
+        },
+        "file": "capture/imagery-01.png",
+        "palette": [
+          {
+            "hex": "#6e6a6b",
+            "coverage": 0.1107,
+            "saturation": 0.036,
+            "luma": 0.419
+          },
+          {
+            "hex": "#716d6e",
+            "coverage": 0.0633,
+            "saturation": 0.035,
+            "luma": 0.431
+          },
+          {
+            "hex": "#6a6565",
+            "coverage": 0.0539,
+            "saturation": 0.047,
+            "luma": 0.4
+          },
+          {
+            "hex": "#0e0a0b",
+            "coverage": 0.0501,
+            "saturation": 0.286,
+            "luma": 0.043
+          },
+          {
+            "hex": "#110d0e",
+            "coverage": 0.0475,
+            "saturation": 0.235,
+            "luma": 0.055
+          },
+          {
+            "hex": "#151113",
+            "coverage": 0.043,
+            "saturation": 0.19,
+            "luma": 0.071
+          }
+        ],
+        "light": {
+          "meanLuma": 0.31,
+          "p05": 0.043,
+          "p50": 0.363,
+          "p95": 0.652,
+          "dynamicRange": 0.609,
+          "gradient": {
+            "dx": 0.063,
+            "dy": -0.176
+          },
+          "direction": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 42
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/display/images/2026/08/21/be6166ecbde942e7a955734cdb54d2ad.jpg",
+        "selector": "[data-omd-sample=\"omd-sample-2\"]",
+        "alt": "스토커즈와 함께한\n빅토리아 울 컬렉션",
+        "box": {
+          "x": 0.3333,
+          "y": 0.2133,
+          "w": 0.3333,
+          "h": 0.4667
+        },
+        "aspect": 1.143,
+        "areaShare": 0.1556,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 1029,
+          "h": 900
+        },
+        "file": "capture/imagery-02.png",
+        "palette": [
+          {
+            "hex": "#c4b4ac",
+            "coverage": 0.0721,
+            "saturation": 0.122,
+            "luma": 0.717
+          },
+          {
+            "hex": "#141314",
+            "coverage": 0.0632,
+            "saturation": 0.05,
+            "luma": 0.076
+          },
+          {
+            "hex": "#1a1a1b",
+            "coverage": 0.047,
+            "saturation": 0.037,
+            "luma": 0.102
+          },
+          {
+            "hex": "#c3a294",
+            "coverage": 0.0367,
+            "saturation": 0.241,
+            "luma": 0.659
+          },
+          {
+            "hex": "#a48b7b",
+            "coverage": 0.0227,
+            "saturation": 0.25,
+            "luma": 0.561
+          },
+          {
+            "hex": "#444243",
+            "coverage": 0.0216,
+            "saturation": 0.029,
+            "luma": 0.261
+          }
+        ],
+        "light": {
+          "meanLuma": 0.424,
+          "p05": 0.075,
+          "p50": 0.415,
+          "p95": 0.724,
+          "dynamicRange": 0.649,
+          "gradient": {
+            "dx": 0.03,
+            "dy": -0.193
+          },
+          "direction": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 74.9
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/display/images/2026/08/21/77920950ff844b319133925596403a47.jpg",
+        "selector": "[data-omd-sample=\"omd-sample-3\"]",
+        "alt": "아티초크 아쿠아\n쿨링 선크림 발매",
+        "box": {
+          "x": 0.6667,
+          "y": 0.2133,
+          "w": 0.3333,
+          "h": 0.4667
+        },
+        "aspect": 1.143,
+        "areaShare": 0.1556,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 1029,
+          "h": 900
+        },
+        "file": "capture/imagery-03.png",
+        "palette": [
+          {
+            "hex": "#aeb36e",
+            "coverage": 0.0945,
+            "saturation": 0.385,
+            "luma": 0.678
+          },
+          {
+            "hex": "#acb283",
+            "coverage": 0.0582,
+            "saturation": 0.264,
+            "luma": 0.68
+          },
+          {
+            "hex": "#aaae7d",
+            "coverage": 0.0421,
+            "saturation": 0.282,
+            "luma": 0.665
+          },
+          {
+            "hex": "#adb27c",
+            "coverage": 0.0365,
+            "saturation": 0.303,
+            "luma": 0.679
+          },
+          {
+            "hex": "#adb174",
+            "coverage": 0.025,
+            "saturation": 0.345,
+            "luma": 0.674
+          },
+          {
+            "hex": "#acb28b",
+            "coverage": 0.0227,
+            "saturation": 0.219,
+            "luma": 0.682
+          }
+        ],
+        "light": {
+          "meanLuma": 0.687,
+          "p05": 0.468,
+          "p50": 0.684,
+          "p95": 0.832,
+          "dynamicRange": 0.364,
+          "gradient": {
+            "dx": -0.017,
+            "dy": -0.109
+          },
+          "direction": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 35.4
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20251027/5648943/5648943_17782087231255_500.jpg?w=780",
+        "selector": "[data-omd-sample=\"omd-sample-10\"]",
+        "alt": "메디힐랩핑 세럼 마스크 10매 6종 택 1 (티트리/마데카소사이드/히알루론산/피디알엔/콜라겐/비타민) 상품 이미지",
+        "box": {
+          "x": 0.5528,
+          "y": 1.1863,
+          "w": 0.1806,
+          "h": 0.3474
+        },
+        "aspect": 0.832,
+        "areaShare": 0.0627,
+        "firstScreen": false,
+        "intrinsic": {
+          "w": 780,
+          "h": 938
+        },
+        "file": "capture/imagery-04.png",
+        "palette": [
+          {
+            "hex": "#e3e3e3",
+            "coverage": 0.3727,
+            "saturation": 0,
+            "luma": 0.89
+          },
+          {
+            "hex": "#eaeaea",
+            "coverage": 0.1447,
+            "saturation": 0,
+            "luma": 0.918
+          },
+          {
+            "hex": "#252120",
+            "coverage": 0.0324,
+            "saturation": 0.135,
+            "luma": 0.132
+          },
+          {
+            "hex": "#dcdcdc",
+            "coverage": 0.0236,
+            "saturation": 0,
+            "luma": 0.863
+          },
+          {
+            "hex": "#e6e6e9",
+            "coverage": 0.0194,
+            "saturation": 0.013,
+            "luma": 0.903
+          },
+          {
+            "hex": "#221e1d",
+            "coverage": 0.0174,
+            "saturation": 0.147,
+            "luma": 0.121
+          }
+        ],
+        "light": {
+          "meanLuma": 0.735,
+          "p05": 0.129,
+          "p50": 0.882,
+          "p95": 0.921,
+          "dynamicRange": 0.792,
+          "gradient": {
+            "dx": -0.016,
+            "dy": -0.02
+          },
+          "direction": "even"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#d6e5e1",
+          "center": {
+            "x": 0.5072,
+            "y": 0.5027
+          },
+          "box": {
+            "x": 0.1625,
+            "y": 0.1244,
+            "w": 0.6813,
+            "h": 0.8135
+          },
+          "coverage": 0.25
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260622/6707858/6707858_17829524437221_500.jpg?w=780",
+        "selector": "[data-omd-sample=\"omd-sample-13\"]",
+        "alt": "메디힐[총 30매] 에센셜 마스크 팩 7종 30매 (7종 택 3/교차 가능) 상품 이미지",
+        "box": {
+          "x": 0.7333,
+          "y": 1.6307,
+          "w": 0.1806,
+          "h": 0.3474
+        },
+        "aspect": 0.832,
+        "areaShare": 0.0627,
+        "firstScreen": false,
+        "intrinsic": {
+          "w": 780,
+          "h": 938
+        },
+        "file": "capture/imagery-05.png",
+        "palette": [
+          {
+            "hex": "#e3e3e3",
+            "coverage": 0.4823,
+            "saturation": 0,
+            "luma": 0.89
+          },
+          {
+            "hex": "#eaeaea",
+            "coverage": 0.1024,
+            "saturation": 0,
+            "luma": 0.918
+          },
+          {
+            "hex": "#dddddd",
+            "coverage": 0.0618,
+            "saturation": 0,
+            "luma": 0.867
+          },
+          {
+            "hex": "#d4d4d3",
+            "coverage": 0.0161,
+            "saturation": 0.005,
+            "luma": 0.831
+          },
+          {
+            "hex": "#cccccb",
+            "coverage": 0.0146,
+            "saturation": 0.005,
+            "luma": 0.8
+          },
+          {
+            "hex": "#b4b4b4",
+            "coverage": 0.0142,
+            "saturation": 0,
+            "luma": 0.706
+          }
+        ],
+        "light": {
+          "meanLuma": 0.818,
+          "p05": 0.37,
+          "p50": 0.886,
+          "p95": 0.918,
+          "dynamicRange": 0.548,
+          "gradient": {
+            "dx": -0.024,
+            "dy": -0.074
+          },
+          "direction": "brighter top"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#ebebeb",
+          "center": {
+            "x": 0.518,
+            "y": 0.5555
+          },
+          "box": {
+            "x": 0.2125,
+            "y": 0.114,
+            "w": 0.75,
+            "h": 0.8497
+          },
+          "coverage": 0.251
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20230112/3020393/3020393_17670799892792_500.jpg?w=780",
+        "selector": "[data-omd-sample=\"omd-sample-4\"]",
+        "alt": "메디힐에센셜 마스크 팩 10매 7종 (티트리/마데카소사이드/콜라겐/히알루론산/비타민씨/세라마이드/피디알엔) 상품 이미지",
+        "box": {
+          "x": 0.0111,
+          "y": 1.1867,
+          "w": 0.1806,
+          "h": 0.3467
+        },
+        "aspect": 0.833,
+        "areaShare": 0.0626,
+        "firstScreen": false,
+        "intrinsic": {
+          "w": 780,
+          "h": 936
+        },
+        "file": "capture/imagery-06.png",
+        "palette": [
+          {
+            "hex": "#d3e4e9",
+            "coverage": 0.2535,
+            "saturation": 0.094,
+            "luma": 0.881
+          },
+          {
+            "hex": "#dce9ed",
+            "coverage": 0.0736,
+            "saturation": 0.072,
+            "luma": 0.904
+          },
+          {
+            "hex": "#d1e2e7",
+            "coverage": 0.0539,
+            "saturation": 0.095,
+            "luma": 0.874
+          },
+          {
+            "hex": "#cee1e6",
+            "coverage": 0.0355,
+            "saturation": 0.104,
+            "luma": 0.868
+          },
+          {
+            "hex": "#e1ecee",
+            "coverage": 0.0274,
+            "saturation": 0.055,
+            "luma": 0.917
+          },
+          {
+            "hex": "#d9e7eb",
+            "coverage": 0.0265,
+            "saturation": 0.077,
+            "luma": 0.895
+          }
+        ],
+        "light": {
+          "meanLuma": 0.793,
+          "p05": 0.281,
+          "p50": 0.877,
+          "p95": 0.93,
+          "dynamicRange": 0.649,
+          "gradient": {
+            "dx": -0.067,
+            "dy": -0.03
+          },
+          "direction": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 2.9
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20240507/4108584/4108584_17782087735450_500.jpg?w=780",
+        "selector": "[data-omd-sample=\"omd-sample-5\"]",
+        "alt": "메디힐마데카소사이드 수분 흔적 리페어 세럼 40ml 상품 이미지",
+        "box": {
+          "x": 0.0111,
+          "y": 1.6311,
+          "w": 0.1806,
+          "h": 0.3467
+        },
+        "aspect": 0.833,
+        "areaShare": 0.0626,
+        "firstScreen": false,
+        "intrinsic": {
+          "w": 780,
+          "h": 936
+        },
+        "file": "capture/imagery-07.png",
+        "palette": [
+          {
+            "hex": "#e3f5f9",
+            "coverage": 0.1908,
+            "saturation": 0.088,
+            "luma": 0.947
+          },
+          {
+            "hex": "#dceef4",
+            "coverage": 0.1081,
+            "saturation": 0.098,
+            "luma": 0.92
+          },
+          {
+            "hex": "#d4f2f9",
+            "coverage": 0.1065,
+            "saturation": 0.149,
+            "luma": 0.926
+          },
+          {
+            "hex": "#dcf4f8",
+            "coverage": 0.0939,
+            "saturation": 0.113,
+            "luma": 0.938
+          },
+          {
+            "hex": "#dbf2f6",
+            "coverage": 0.0788,
+            "saturation": 0.11,
+            "luma": 0.931
+          },
+          {
+            "hex": "#d4ecf2",
+            "coverage": 0.0643,
+            "saturation": 0.124,
+            "luma": 0.907
+          }
+        ],
+        "light": {
+          "meanLuma": 0.887,
+          "p05": 0.573,
+          "p50": 0.926,
+          "p95": 0.954,
+          "dynamicRange": 0.381,
+          "gradient": {
+            "dx": -0.001,
+            "dy": -0.017
+          },
+          "direction": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 10.9
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20230912/3551927/3551927_17847640828107_500.jpg?w=780",
+        "selector": "[data-omd-sample=\"omd-sample-6\"]",
+        "alt": "메디힐더마 365 뽑아쓰는 마스크팩 30매 4종 택 1 (티트리/마데카소사이드/피디알엔/콜라겐) 상품 이미지",
+        "box": {
+          "x": 0.1917,
+          "y": 1.1867,
+          "w": 0.1806,
+          "h": 0.3467
+        },
+        "aspect": 0.833,
+        "areaShare": 0.0626,
+        "firstScreen": false,
+        "intrinsic": {
+          "w": 780,
+          "h": 936
+        },
+        "file": "capture/imagery-08.png",
+        "palette": [
+          {
+            "hex": "#fafafa",
+            "coverage": 0.31,
+            "saturation": 0,
+            "luma": 0.98
+          },
+          {
+            "hex": "#e9e9e9",
+            "coverage": 0.1604,
+            "saturation": 0,
+            "luma": 0.914
+          },
+          {
+            "hex": "#f4f4f6",
+            "coverage": 0.1319,
+            "saturation": 0.008,
+            "luma": 0.957
+          },
+          {
+            "hex": "#f8f7fa",
+            "coverage": 0.0516,
+            "saturation": 0.012,
+            "luma": 0.97
+          },
+          {
+            "hex": "#f7f6f9",
+            "coverage": 0.0352,
+            "saturation": 0.012,
+            "luma": 0.966
+          },
+          {
+            "hex": "#e4e6e6",
+            "coverage": 0.0146,
+            "saturation": 0.009,
+            "luma": 0.9
+          }
+        ],
+        "light": {
+          "meanLuma": 0.869,
+          "p05": 0.481,
+          "p50": 0.953,
+          "p95": 0.98,
+          "dynamicRange": 0.499,
+          "gradient": {
+            "dx": -0.101,
+            "dy": -0.091
+          },
+          "direction": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 12
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20251217/5837298/5837298_17785460862049_500.jpg?w=780",
+        "selector": "[data-omd-sample=\"omd-sample-7\"]",
+        "alt": "메디힐[2개] 메디힐 마데카소사이드 수분 선세럼 흔적 리페어 더블 기획세트 상품 이미지",
+        "box": {
+          "x": 0.1917,
+          "y": 1.6311,
+          "w": 0.1806,
+          "h": 0.3467
+        },
+        "aspect": 0.833,
+        "areaShare": 0.0626,
+        "firstScreen": false,
+        "intrinsic": {
+          "w": 780,
+          "h": 936
+        },
+        "file": "capture/imagery-09.png",
+        "palette": [
+          {
+            "hex": "#f5f6f5",
+            "coverage": 0.0919,
+            "saturation": 0.004,
+            "luma": 0.964
+          },
+          {
+            "hex": "#dcf4f6",
+            "coverage": 0.0882,
+            "saturation": 0.106,
+            "luma": 0.937
+          },
+          {
+            "hex": "#bceef1",
+            "coverage": 0.0747,
+            "saturation": 0.22,
+            "luma": 0.892
+          },
+          {
+            "hex": "#f9f9f9",
+            "coverage": 0.0729,
+            "saturation": 0,
+            "luma": 0.976
+          },
+          {
+            "hex": "#cbf1f4",
+            "coverage": 0.0681,
+            "saturation": 0.168,
+            "luma": 0.914
+          },
+          {
+            "hex": "#d3f2f5",
+            "coverage": 0.0597,
+            "saturation": 0.139,
+            "luma": 0.924
+          }
+        ],
+        "light": {
+          "meanLuma": 0.914,
+          "p05": 0.767,
+          "p50": 0.93,
+          "p95": 0.974,
+          "dynamicRange": 0.207,
+          "gradient": {
+            "dx": -0.002,
+            "dy": 0.04
+          },
+          "direction": "brighter bottom"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 23.2
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20230112/3020375/3020375_17827151736043_500.jpg?w=780",
+        "selector": "[data-omd-sample=\"omd-sample-8\"]",
+        "alt": "메디힐더마 토너 패드 100매 7종 (교차선택) 상품 이미지",
+        "box": {
+          "x": 0.3722,
+          "y": 1.1867,
+          "w": 0.1806,
+          "h": 0.3467
+        },
+        "aspect": 0.833,
+        "areaShare": 0.0626,
+        "firstScreen": false,
+        "intrinsic": {
+          "w": 780,
+          "h": 936
+        },
+        "file": "capture/imagery-10.png",
+        "palette": [
+          {
+            "hex": "#f6f3f4",
+            "coverage": 0.0716,
+            "saturation": 0.012,
+            "luma": 0.956
+          },
+          {
+            "hex": "#f2eeeb",
+            "coverage": 0.0353,
+            "saturation": 0.029,
+            "luma": 0.936
+          },
+          {
+            "hex": "#e5e3e2",
+            "coverage": 0.0345,
+            "saturation": 0.013,
+            "luma": 0.892
+          },
+          {
+            "hex": "#e1dddb",
+            "coverage": 0.0304,
+            "saturation": 0.027,
+            "luma": 0.869
+          },
+          {
+            "hex": "#eae5e3",
+            "coverage": 0.0281,
+            "saturation": 0.03,
+            "luma": 0.902
+          },
+          {
+            "hex": "#edebea",
+            "coverage": 0.0262,
+            "saturation": 0.013,
+            "luma": 0.923
+          }
+        ],
+        "light": {
+          "meanLuma": 0.752,
+          "p05": 0.419,
+          "p50": 0.795,
+          "p95": 0.956,
+          "dynamicRange": 0.537,
+          "gradient": {
+            "dx": -0.032,
+            "dy": -0.195
+          },
+          "direction": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 50.8
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20230127/3044262/3044262_17755245173817_500.jpg?w=780",
+        "selector": "[data-omd-sample=\"omd-sample-9\"]",
+        "alt": "메디힐[총 20매] 에센셜 마스크 팩 7종 10매+10매 (티트리/마데카소사이드/콜라겐/히알루/비타민씨/세라마이드/피디알엔/교차 가능) 상품 이",
+        "box": {
+          "x": 0.3722,
+          "y": 1.6311,
+          "w": 0.1806,
+          "h": 0.3467
+        },
+        "aspect": 0.833,
+        "areaShare": 0.0626,
+        "firstScreen": false,
+        "intrinsic": {
+          "w": 780,
+          "h": 936
+        },
+        "file": "capture/imagery-11.png",
+        "palette": [
+          {
+            "hex": "#ededec",
+            "coverage": 0.0987,
+            "saturation": 0.004,
+            "luma": 0.929
+          },
+          {
+            "hex": "#acacac",
+            "coverage": 0.0979,
+            "saturation": 0,
+            "luma": 0.675
+          },
+          {
+            "hex": "#e4e4e3",
+            "coverage": 0.0477,
+            "saturation": 0.004,
+            "luma": 0.894
+          },
+          {
+            "hex": "#d4d4d3",
+            "coverage": 0.046,
+            "saturation": 0.005,
+            "luma": 0.831
+          },
+          {
+            "hex": "#c3c3c3",
+            "coverage": 0.0431,
+            "saturation": 0,
+            "luma": 0.765
+          },
+          {
+            "hex": "#cccccb",
+            "coverage": 0.043,
+            "saturation": 0.005,
+            "luma": 0.8
+          }
+        ],
+        "light": {
+          "meanLuma": 0.707,
+          "p05": 0.266,
+          "p50": 0.729,
+          "p95": 0.929,
+          "dynamicRange": 0.663,
+          "gradient": {
+            "dx": -0.074,
+            "dy": -0.037
+          },
+          "direction": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 44.9
+        }
+      },
+      {
+        "src": "https://image.msscdn.net/thumbnails/images/goods_img/20240314/3953077/3953077_17828673626754_500.jpg?w=780",
+        "selector": "[data-omd-sample=\"omd-sample-11\"]",
+        "alt": "메디힐더마 토너 패드 본품 100매 + 리필 100매 (교차가능) 상품 이미지",
+        "box": {
+          "x": 0.5528,
+          "y": 1.6311,
+          "w": 0.1806,
+          "h": 0.3467
+        },
+        "aspect": 0.833,
+        "areaShare": 0.0626,
+        "firstScreen": false,
+        "intrinsic": {
+          "w": 780,
+          "h": 936
+        },
+        "file": "capture/imagery-12.png",
+        "palette": [
+          {
+            "hex": "#f6f3f4",
+            "coverage": 0.0735,
+            "saturation": 0.012,
+            "luma": 0.956
+          },
+          {
+            "hex": "#e5e3e2",
+            "coverage": 0.0348,
+            "saturation": 0.013,
+            "luma": 0.892
+          },
+          {
+            "hex": "#f3edeb",
+            "coverage": 0.0337,
+            "saturation": 0.033,
+            "luma": 0.934
+          },
+          {
+            "hex": "#e1dddb",
+            "coverage": 0.0328,
+            "saturation": 0.027,
+            "luma": 0.869
+          },
+          {
+            "hex": "#ebe5e4",
+            "coverage": 0.0328,
+            "saturation": 0.03,
+            "luma": 0.903
+          },
+          {
+            "hex": "#fbfbfb",
+            "coverage": 0.0317,
+            "saturation": 0,
+            "luma": 0.984
+          }
+        ],
+        "light": {
+          "meanLuma": 0.74,
+          "p05": 0.31,
+          "p50": 0.79,
+          "p95": 0.962,
+          "dynamicRange": 0.652,
+          "gradient": {
+            "dx": -0.083,
+            "dy": -0.144
+          },
+          "direction": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 50.9
+        }
+      }
+    ],
+    "aggregate": {
+      "meanLuma": 0.752,
+      "dynamicRange": 0.609,
+      "lightDirections": {
+        "brighter top": 6,
+        "even": 2,
+        "brighter left": 3,
+        "brighter bottom": 1
+      },
+      "aspects": 0.833,
+      "figureGroundResolved": "2/12",
+      "subjectCenterX": 0.518,
+      "subjectCenterY": 0.555,
+      "subjectCoverage": 0.251
+    }
+  },
+  "motion": {
+    "present": false,
+    "note": "no video above the fold at capture time"
+  },
+  "mobile": {
+    "chrome": {
+      "pageBackground": "#000000",
+      "bodyColor": "#000000",
+      "header": {
+        "background": "#000000",
+        "heightPx": 56,
+        "borderBottom": null
+      },
+      "primaryButton": {
+        "background": "#5ccca8",
+        "color": "#000000",
+        "radiusPx": 0,
+        "paddingY": 0,
+        "paddingX": 0,
+        "fontPx": 14,
+        "weight": "400",
+        "label": ""
+      },
+      "typeScale": [
+        {
+          "tag": "h3",
+          "fontPx": 18,
+          "weight": "500",
+          "family": "Pretendard Variable",
+          "lineHeight": "24px",
+          "letterSpacing": "normal",
+          "color": "#000000"
+        },
+        {
+          "tag": "p",
+          "fontPx": 20,
+          "weight": "600",
+          "family": "Pretendard Variable",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "color": "#ffffff"
+        },
+        {
+          "tag": "button",
+          "fontPx": 11,
+          "weight": "500",
+          "family": "Pretendard Variable",
+          "lineHeight": "14px",
+          "letterSpacing": "normal",
+          "color": "#ffffff"
+        }
+      ]
+    }
+  }
+}
