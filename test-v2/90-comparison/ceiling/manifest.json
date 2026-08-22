@@ -1,0 +1,175 @@
+{
+  "builtAt": "2026-08-22T16:34:13.733Z",
+  "method": {
+    "kind": "selection, not alteration",
+    "rule": "a sample qualifies when it carries no text naming the brand or its products",
+    "thirdPartyMarks": "allowed — an LG laptop in a Karrot listing is what that brand photographs, not a label on it",
+    "inspectedAt": "2026-08-23, 380px per tile",
+    "rejectedApproach": "centre crop — web creative sets brand copy mid-frame, so cropping removed composition and kept the identifiers"
+  },
+  "stimuliPerBrand": 4,
+  "results": [
+    {
+      "brand": "apple",
+      "stimuli": 0,
+      "sufficient": false,
+      "shortfall": "0/4",
+      "built": []
+    },
+    {
+      "brand": "baemin",
+      "stimuli": 0,
+      "sufficient": false,
+      "shortfall": "0/4",
+      "built": []
+    },
+    {
+      "brand": "coupang",
+      "stimuli": 0,
+      "sufficient": false,
+      "shortfall": "0/4",
+      "built": []
+    },
+    {
+      "brand": "figma",
+      "stimuli": 2,
+      "sufficient": false,
+      "shortfall": "2/4",
+      "built": [
+        {
+          "label": "s4",
+          "from": "capture/imagery-05.png",
+          "sourceAlt": "디자인을 편집하는 커서 벡터",
+          "output": "ceiling/figma/s4.png"
+        },
+        {
+          "label": "s5",
+          "from": "capture/imagery-06.png",
+          "sourceAlt": "분홍색 배경 위에 보라색과 청록색 경로를 따라 배치된 텍스트",
+          "output": "ceiling/figma/s5.png"
+        }
+      ]
+    },
+    {
+      "brand": "karrot",
+      "stimuli": 4,
+      "sufficient": true,
+      "shortfall": null,
+      "built": [
+        {
+          "label": "s1",
+          "from": "capture/imagery-01.png",
+          "sourceAlt": "thumbnail",
+          "output": "ceiling/karrot/s1.png"
+        },
+        {
+          "label": "s2",
+          "from": "capture/imagery-02.png",
+          "sourceAlt": "thumbnail",
+          "output": "ceiling/karrot/s2.png"
+        },
+        {
+          "label": "s3",
+          "from": "capture/imagery-03.png",
+          "sourceAlt": "thumbnail",
+          "output": "ceiling/karrot/s3.png"
+        },
+        {
+          "label": "s4",
+          "from": "capture/imagery-04.png",
+          "sourceAlt": "thumbnail",
+          "output": "ceiling/karrot/s4.png"
+        }
+      ]
+    },
+    {
+      "brand": "musinsa",
+      "stimuli": 8,
+      "sufficient": true,
+      "shortfall": null,
+      "built": [
+        {
+          "label": "s1",
+          "from": "capture/imagery-01.png",
+          "sourceAlt": "베이직 언발 오프숄더 긴팔티 차콜",
+          "output": "ceiling/musinsa/s1.png"
+        },
+        {
+          "label": "s3",
+          "from": "capture/imagery-03.png",
+          "sourceAlt": "롤업 레이어드 크롭 반팔티 [블랙]",
+          "output": "ceiling/musinsa/s3.png"
+        },
+        {
+          "label": "s5",
+          "from": "capture/imagery-05.png",
+          "sourceAlt": "Days Comfort Fit Shirt_White",
+          "output": "ceiling/musinsa/s5.png"
+        },
+        {
+          "label": "s8",
+          "from": "capture/imagery-08.png",
+          "sourceAlt": "시어서커 하드 트위스트 체크 셔츠 블랙",
+          "output": "ceiling/musinsa/s8.png"
+        },
+        {
+          "label": "s9",
+          "from": "capture/imagery-09.png",
+          "sourceAlt": "언더커버 SS 26 시즌오프 ",
+          "output": "ceiling/musinsa/s9.png"
+        },
+        {
+          "label": "s10",
+          "from": "capture/imagery-10.png",
+          "sourceAlt": "우먼즈 CR 스트라이프 릴렉스드 긴소매 티셔츠 [올리브]",
+          "output": "ceiling/musinsa/s10.png"
+        },
+        {
+          "label": "s11",
+          "from": "capture/imagery-11.png",
+          "sourceAlt": "플라워 오프숄더 숏슬리브_베이지",
+          "output": "ceiling/musinsa/s11.png"
+        },
+        {
+          "label": "s12",
+          "from": "capture/imagery-12.png",
+          "sourceAlt": "짱구 닭살커플 반팔 티셔츠 2팩",
+          "output": "ceiling/musinsa/s12.png"
+        }
+      ]
+    },
+    {
+      "brand": "naver",
+      "stimuli": 0,
+      "reason": "brand has no imagery samples; no ceiling measurable"
+    },
+    {
+      "brand": "toss",
+      "stimuli": 1,
+      "sufficient": false,
+      "shortfall": "1/4",
+      "built": [
+        {
+          "label": "s1",
+          "from": "capture/imagery-01.png",
+          "sourceAlt": "",
+          "output": "ceiling/toss/s1.png"
+        }
+      ]
+    },
+    {
+      "brand": "wanted",
+      "stimuli": 1,
+      "sufficient": false,
+      "shortfall": "1/4",
+      "built": [
+        {
+          "label": "s1",
+          "from": "capture/imagery-01.png",
+          "sourceAlt": "교육 운영 매니저(5년이상)(팀장급)",
+          "output": "ceiling/wanted/s1.png"
+        }
+      ]
+    }
+  ]
+}
