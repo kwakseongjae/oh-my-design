@@ -1,0 +1,114 @@
+{
+  "brand": "coupang",
+  "captureId": "2026-08-22T09-28-20-775Z",
+  "capturedAt": "2026-08-22T09:28:20.775Z",
+  "channel": "aside",
+  "source": {
+    "url": "https://www.coupang.com/",
+    "finalUrl": "https://www.coupang.com/",
+    "title": "로켓배송으로 빠르게, 로켓와우 멤버십으로 할인과 무료 반품까지 | 쿠팡",
+    "status": null
+  },
+  "viewport": {
+    "w": 1440,
+    "h": 900,
+    "dpr": 2
+  },
+  "locale": "ko-KR",
+  "session": {
+    "profile": "aside user profile",
+    "authenticated": "unknown",
+    "note": "captured through a real browser profile; cookie state not inspected"
+  },
+  "store": {
+    "root": "$OMD_EVIDENCE_STORE",
+    "path": "coupang/2026-08-22T09-28-20-775Z"
+  },
+  "files": [
+    {
+      "name": "imagery-01.png",
+      "bytes": 2977741,
+      "sha256": "880fb7a3369daae5343283c6980bb3e876b3a79fce8a246fc6be31f525108583"
+    },
+    {
+      "name": "imagery-02.png",
+      "bytes": 109303,
+      "sha256": "e7a07e875f823ac9eaffb722327cb58efa9f3855b5d1c34b28405eb8434d26cc"
+    },
+    {
+      "name": "imagery-03.png",
+      "bytes": 64361,
+      "sha256": "d7fe6e3821d3f150e0f2d3c61eb202ae4821fd325f36f7c1a81c01d704038c88"
+    },
+    {
+      "name": "imagery-04.png",
+      "bytes": 83289,
+      "sha256": "be6c89266513f3d03816272876d1d30abfa611d643478e42d40b900f682b891c"
+    },
+    {
+      "name": "imagery-05.png",
+      "bytes": 99759,
+      "sha256": "4db48463d67b8dacbe46d664a16fdaeaedc0c466d487bbc8c26d1714432a41e5"
+    },
+    {
+      "name": "imagery-06.png",
+      "bytes": 160690,
+      "sha256": "a1dd1c143e4663bee5ac6ba740b0370c01477d93f4e3b30a05a0a7faa6b358cb"
+    },
+    {
+      "name": "imagery-07.png",
+      "bytes": 107236,
+      "sha256": "cb7257fb9920d3b10dc09ec3262a3a42db53cea74301c2acaa8a0d4f1902a73c"
+    },
+    {
+      "name": "imagery-08.png",
+      "bytes": 136060,
+      "sha256": "6cb1f0748dd4038ad9828cedbfc329fd9f329c0b0fc7b14995506e0816ee2d08"
+    },
+    {
+      "name": "imagery-09.png",
+      "bytes": 123617,
+      "sha256": "6402d6fe6e1dca1ce70c7edc62059328322601c36c82ba8ec9a245da3d7bd797"
+    },
+    {
+      "name": "imagery-10.png",
+      "bytes": 130101,
+      "sha256": "43deed9f3c6bad2e3f2ddf320ef2cf5fc81c0f21280ba81bc892a267e03dc440"
+    },
+    {
+      "name": "imagery-11.png",
+      "bytes": 198649,
+      "sha256": "dd6a94d7d8ebe376c86c7578ddc4c0871047f4e2349a6a8ba53c792f000909f0"
+    },
+    {
+      "name": "imagery-12.png",
+      "bytes": 200424,
+      "sha256": "a71a4114a14d85368d30cf7bb15790b65b66443f925594101c2ee52463164b8c"
+    },
+    {
+      "name": "viewport-pass-0.png",
+      "bytes": 3462853,
+      "sha256": "95e715c2e78ebe1b815dba8678c96a1ffc41f5857ec9bea94477c53f29910644"
+    },
+    {
+      "name": "viewport-pass-1.png",
+      "bytes": 1345846,
+      "sha256": "c361bdce5dee11fc784f0dc6637f808e11344413cc17bb09688dabbac492d0d3"
+    },
+    {
+      "name": "viewport-pass-2.png",
+      "bytes": 1504453,
+      "sha256": "1a2d8d822b533dfca219c9797fd98736bd7cb76d477ae1bfc02481f8c0fd286e"
+    }
+  ],
+  "evidenceSha256": "64d11db077a7e2508efcacad1226c02314e2abecf4254dcf6a9af99d62d495a9",
+  "supersededBy": {
+    "reason": "captured before T3-0 measurement fixes; must not be cited in prompts",
+    "defects": [
+      "chrome.primaryButton may be a campaign CTA rather than brand chrome",
+      "imagery.aggregate.subjectCenter* emitted below the resolved-sample floor",
+      "light.direction was a half-frame luminance difference named as a light direction"
+    ],
+    "action": "recapture under T3-2.5 (musinsa) / T3-4 (coupang)"
+  }
+}

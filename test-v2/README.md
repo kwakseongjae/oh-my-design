@@ -134,9 +134,23 @@ node capture-via-aside.mjs --brand coupang --url https://www.coupang.com/
 같은 `evidence.json`은 두 번 다시 나오지 않는다. 원본을 잃으면 "근거에서 유도했는가"라는
 이 프로젝트의 핵심 질문 자체가 감사 불가능해진다.
 
-원본은 **git 밖 불변 저장소**에 보관하고, `manifest.json`에 URL · 캡처 시각 ·
-viewport · locale · 로그인 상태 · 파일 SHA를 묶는다. 스냅샷 하나가 3자 비교의
+원본은 **git 밖 불변 저장소**에 보관하고, `manifest.json`(레포에 커밋)이 URL · 캡처 시각 ·
+viewport · locale · 세션 상태 · 파일 SHA-256으로 그것을 묶는다. 스냅샷 하나가 3자 비교의
 공유 입력 단위다.
+
+```sh
+node ingest-captures.mjs --all       # 저장소로 입고 + manifest 생성
+node ingest-captures.mjs --verify    # manifest SHA == 저장소 파일 SHA
+```
+
+저장소 기본 경로는 `~/.omd/evidence-store/<brand>/<capturedAt>/`이고
+`OMD_EVIDENCE_STORE`로 바꿀 수 있다. 캡처 시각이 스냅샷의 신원이다 — 같은 URL이
+내일은 다른 페이지를 준다.
+
+**세션 상태는 기록하되 추정하지 않는다.** Playwright 채널은 새 익명 컨텍스트라
+`authenticated: false`가 사실이지만, Aside 채널은 사용자의 실제 프로필을 쓰므로
+쿠키 상태를 우리가 모른다 — 그래서 `unknown`으로 적는다. 익명이라고 적으면 근거 없는
+주장이 된다.
 
 ## 7. 생성 채널 — Grok Imagine (실측 2026-08-22)
 

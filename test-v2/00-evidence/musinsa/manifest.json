@@ -1,0 +1,107 @@
+{
+  "brand": "musinsa",
+  "captureId": "2026-08-22T07-48-37-274Z",
+  "capturedAt": "2026-08-22T07:48:37.274Z",
+  "channel": "playwright",
+  "source": {
+    "url": "https://www.musinsa.com/",
+    "finalUrl": "https://www.musinsa.com/main/musinsa/recommend?gf=A",
+    "title": "무신사",
+    "status": 200
+  },
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "locale": "ko-KR",
+  "session": {
+    "profile": "fresh automation context",
+    "authenticated": false
+  },
+  "store": {
+    "root": "$OMD_EVIDENCE_STORE",
+    "path": "musinsa/2026-08-22T07-48-37-274Z"
+  },
+  "files": [
+    {
+      "name": "imagery-01.png",
+      "bytes": 1120472,
+      "sha256": "3fa5b81e31638cc489b7bba80255ac1461a715ee6d1ff1cf7e9b198310a09176"
+    },
+    {
+      "name": "imagery-02.png",
+      "bytes": 1041896,
+      "sha256": "e3043a309ba3ec81a59141457277d89dce782491330bbd7dcfbdfca07bbd21b4"
+    },
+    {
+      "name": "imagery-03.png",
+      "bytes": 804702,
+      "sha256": "bbd5449c042ccc13cd002c7201d8996b1f3045d71c03beb4ada602569d3f31b5"
+    },
+    {
+      "name": "imagery-04.png",
+      "bytes": 173018,
+      "sha256": "25871f040f62fd4296b111e2dede0cf7eec835bee90905c1e4b6e5f3573f6e75"
+    },
+    {
+      "name": "imagery-05.png",
+      "bytes": 180055,
+      "sha256": "ed5233f89067f0b68d6b73a7558f004948f5e9944766d990e880e75cf2c69dde"
+    },
+    {
+      "name": "imagery-06.png",
+      "bytes": 258063,
+      "sha256": "9fcf08a10d7b489c3a99c1fb1d50c7b4f38fa7809441c10a02c997f2a3ecf702"
+    },
+    {
+      "name": "imagery-07.png",
+      "bytes": 149229,
+      "sha256": "67940f39601a77abf46c9662551ca420a2f1519ff8d6d7da41055ac0dc395f2b"
+    },
+    {
+      "name": "imagery-08.png",
+      "bytes": 135648,
+      "sha256": "54a3aff7c3d7bbb6ad3f7a1e4158b4ad229349d724687c5c753d29b18429d61b"
+    },
+    {
+      "name": "imagery-09.png",
+      "bytes": 131239,
+      "sha256": "da10171f18d36b55e830e612d820321b67739919a624315bf4a88184defeb318"
+    },
+    {
+      "name": "imagery-10.png",
+      "bytes": 185761,
+      "sha256": "891a63757779381dbbf8f29f6201af215a3f364490a6779b1792e5fd591c85a8"
+    },
+    {
+      "name": "imagery-11.png",
+      "bytes": 225189,
+      "sha256": "c3818253ce92db312104d3960b778b2c6ac6fbf399944b01bff41d957e0360a6"
+    },
+    {
+      "name": "imagery-12.png",
+      "bytes": 194334,
+      "sha256": "943de01a8bee30c9edbd61ef88d34326b95661d933b0a8ed790d7a6f9972b2cd"
+    },
+    {
+      "name": "viewport-1440.png",
+      "bytes": 3129377,
+      "sha256": "755e11fd4b8dbdf03314ff4d3d591d1627b6dcef4956266def7c1decf74dc64a"
+    },
+    {
+      "name": "viewport-390.png",
+      "bytes": 498106,
+      "sha256": "bdf0fc910f8dc0f7e87413e72d3fa3a504c769777779ba4b16a864f9f76566d8"
+    }
+  ],
+  "evidenceSha256": "51099c9ef7658a525122f55f7e0921b08771c4202c12032e129f07d8aae81382",
+  "supersededBy": {
+    "reason": "captured before T3-0 measurement fixes; must not be cited in prompts",
+    "defects": [
+      "chrome.primaryButton may be a campaign CTA rather than brand chrome",
+      "imagery.aggregate.subjectCenter* emitted below the resolved-sample floor",
+      "light.direction was a half-frame luminance difference named as a light direction"
+    ],
+    "action": "recapture under T3-2.5 (musinsa) / T3-4 (coupang)"
+  }
+}
