@@ -1,7 +1,7 @@
 {
   "brand": "coupang",
-  "captureId": "2026-08-22T09-28-20-775Z",
-  "capturedAt": "2026-08-22T09:28:20.775Z",
+  "captureId": "2026-08-22T10-50-30-144Z",
+  "capturedAt": "2026-08-22T10:50:30.144Z",
   "channel": "aside",
   "source": {
     "url": "https://www.coupang.com/",
@@ -22,13 +22,18 @@
   },
   "store": {
     "root": "$OMD_EVIDENCE_STORE",
-    "path": "coupang/2026-08-22T09-28-20-775Z"
+    "path": "coupang/2026-08-22T10-50-30-144Z"
   },
   "files": [
     {
+      "name": "header-band.png",
+      "bytes": 173534,
+      "sha256": "d560501968a0442661c8455f6c04e57ce3438a5ad20d3fa389a70233608ee7e0"
+    },
+    {
       "name": "imagery-01.png",
-      "bytes": 2977741,
-      "sha256": "880fb7a3369daae5343283c6980bb3e876b3a79fce8a246fc6be31f525108583"
+      "bytes": 888089,
+      "sha256": "5e72c38f3ba5607ef02950d3ade1609f1e75ddcbd606e3b853fc00c8841643fa"
     },
     {
       "name": "imagery-02.png",
@@ -67,28 +72,28 @@
     },
     {
       "name": "imagery-09.png",
-      "bytes": 123617,
-      "sha256": "6402d6fe6e1dca1ce70c7edc62059328322601c36c82ba8ec9a245da3d7bd797"
+      "bytes": 197121,
+      "sha256": "c5692533167637adb26044cd1d263e4242d822b7a2442bfc40fa63f5a98988f7"
     },
     {
       "name": "imagery-10.png",
-      "bytes": 130101,
-      "sha256": "43deed9f3c6bad2e3f2ddf320ef2cf5fc81c0f21280ba81bc892a267e03dc440"
+      "bytes": 263140,
+      "sha256": "484c5e43cb486d655586ee3b7abc64036e0b707a8d632a6d04ec9a9c2f4dc838"
     },
     {
       "name": "imagery-11.png",
-      "bytes": 198649,
-      "sha256": "dd6a94d7d8ebe376c86c7578ddc4c0871047f4e2349a6a8ba53c792f000909f0"
+      "bytes": 260038,
+      "sha256": "31757024a70b96bc136aacfbbeb327c72b86053343c318c09c2fb09989f7bf9c"
     },
     {
       "name": "imagery-12.png",
-      "bytes": 200424,
-      "sha256": "a71a4114a14d85368d30cf7bb15790b65b66443f925594101c2ee52463164b8c"
+      "bytes": 168231,
+      "sha256": "da709ece98c583afd4ac0edf87568d35e515d3baf56f9a2e8f05f17f48925386"
     },
     {
       "name": "viewport-pass-0.png",
-      "bytes": 3462853,
-      "sha256": "95e715c2e78ebe1b815dba8678c96a1ffc41f5857ec9bea94477c53f29910644"
+      "bytes": 1366301,
+      "sha256": "2a784516878da9366629a4ae113dd7e44cdcf836229ff5de2948e04b5453c84c"
     },
     {
       "name": "viewport-pass-1.png",
@@ -97,18 +102,10 @@
     },
     {
       "name": "viewport-pass-2.png",
-      "bytes": 1504453,
-      "sha256": "1a2d8d822b533dfca219c9797fd98736bd7cb76d477ae1bfc02481f8c0fd286e"
+      "bytes": 1822683,
+      "sha256": "b227bc499386f0d207ebaed8b13afa31860512f3166e8c87b35e6f6bf95a3ea0"
     }
   ],
-  "evidenceSha256": "64d11db077a7e2508efcacad1226c02314e2abecf4254dcf6a9af99d62d495a9",
-  "supersededBy": {
-    "reason": "captured before T3-0 measurement fixes; must not be cited in prompts",
-    "defects": [
-      "chrome.primaryButton may be a campaign CTA rather than brand chrome",
-      "imagery.aggregate.subjectCenter* emitted below the resolved-sample floor",
-      "light.direction was a half-frame luminance difference named as a light direction"
-    ],
-    "action": "recapture under T3-2.5 (musinsa) / T3-4 (coupang)"
-  }
+  "evidenceSha256": "cbb41039db278fbcb415f8639e23e5302c5ce941448d77a433b84b3099ffb15c",
+  "supersededBy": null
 }

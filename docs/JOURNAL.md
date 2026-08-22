@@ -1,3 +1,8 @@
+## 2026-08-22 (grok-4.6) T3-2 루브릭 재반박 — REVISE
+- 한 일: 1차 11항 표↔본문 대조. 기록 `docs/reviews/rubric-2026-08-22-rebuttal-2.md`. 11항은 본문 반영, 동결은 거절.
+- 열린 것: 없음. 루브릭 동결·T3-3 닫힘.
+- 다음: sol이 남은 2항(N1–N5 재분류 삭제, `COMPROMISED` PASS 킬 제거)만 수정 → 3차 반박.
+
 ## 2026-08-22 (grok-4.6) 3트랙 계획 최종 승인 — 조건부
 - 한 일: 개정본 `docs/OMD_3TRACK_PLAN.md` 판정. 기록 `docs/reviews/3track-plan-2026-08-22-grok-approval.md`. VERDICT APPROVE_WITH_CONDITIONS.
 - 열린 것: T3-0, 기존 PNG 보존, T1-1. 닫힌 것: T3-1 이후 / T1-2 이후 / T2. 계획 「다음 행동」은 실행 지시가 아님.

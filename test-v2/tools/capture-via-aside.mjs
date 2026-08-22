@@ -73,7 +73,27 @@ for (let pass = 0; pass < 3; pass++) {
     return "#" + [m[1], m[2], m[3]].map((v) => Number(v).toString(16).padStart(2, "0")).join("");
   };
 
-  const header = document.querySelector("header, [role=banner], nav");
+  // Geometry, not tag names. Coupang has a header — logo, search, category nav,
+  // visible in any screenshot — and no <header>, no [role=banner], no <nav>;
+  // its whole page is divs. The hero detector already refuses to trust class
+  // names for exactly this reason, and reading chrome by semantics contradicted
+  // it. The header is the band pinned to the top of the frame.
+  const headerOf = () => {
+    const semantic = document.querySelector("header, [role=banner]");
+    if (semantic) return { el: semantic, by: "semantic" };
+    let best = null;
+    for (const el of document.querySelectorAll("div, section, nav")) {
+      const r = el.getBoundingClientRect();
+      if (r.top > 8 || r.height < 40 || r.height > 220) continue;
+      if (r.width < window.innerWidth * 0.8) continue;
+      if (!el.querySelector("a, img, input")) continue;
+      if (!best || r.height * r.width > best.r.height * best.r.width) best = { el, r };
+    }
+    return best ? { el: best.el, by: "geometry" } : null;
+  };
+  const headerHit = headerOf();
+  const header = headerHit?.el ?? null;
+
 
   // Same rule as the Playwright channel: the button the brand keeps, not the
   // campaign CTA of the day. Promotional containers out, unlabelled controls
@@ -86,18 +106,32 @@ for (let pass = 0; pass < 3; pass++) {
     }
     return false;
   };
+  // A brand's primary control is not always a filled rectangle. Musinsa's
+  // category page has 34 controls above the fold and none with an opaque
+  // background — reporting "no primary button" there described the collector,
+  // not the page. Outline and text buttons count, and which kind it is gets
+  // recorded rather than flattened away.
+  const fillOf = (st) => {
+    const solid = st.backgroundColor && st.backgroundColor !== "rgba(0, 0, 0, 0)";
+    if (solid) return "solid";
+    const bw = parseFloat(st.borderTopWidth) || 0;
+    const bc = st.borderTopColor || "";
+    if (bw > 0 && bc && bc !== "rgba(0, 0, 0, 0)") return "outline";
+    return "text";
+  };
   const signature = new Map();
   const candidates = [];
   for (const el of document.querySelectorAll("button, a[class*=btn i], a[class*=button i], [role=button]")) {
     const r = el.getBoundingClientRect();
     if (r.top > vh || r.width < 60 || r.height < 28) continue;
     const st = getComputedStyle(el);
-    if (!st.backgroundColor || st.backgroundColor === "rgba(0, 0, 0, 0)") continue;
     const label = (el.innerText || "").trim();
     if (!label || inPromo(el)) continue;
-    const key = st.backgroundColor + "|" + st.borderRadius + "|" + st.fontSize + "|" + st.fontWeight;
+    const fill = fillOf(st);
+    if (fill === "text") continue; // a bare text link is navigation, not a control surface
+    const key = fill + "|" + st.backgroundColor + "|" + st.borderTopColor + "|" + st.borderRadius + "|" + st.fontSize;
     signature.set(key, (signature.get(key) ?? 0) + 1);
-    candidates.push({ el, s: st, r, key, label });
+    candidates.push({ el, s: st, r, key, label, fill });
   }
   candidates.sort((a, b) => {
     const rep = (signature.get(b.key) ?? 0) - (signature.get(a.key) ?? 0);
@@ -152,17 +186,34 @@ for (let pass = 0; pass < 3; pass++) {
     atBottom: window.scrollY + vh >= document.body.scrollHeight - 4,
     viewport: { w: vw, h: vh, dpr },
     chrome: {
-      pageBackground: hexOf(getComputedStyle(document.body).backgroundColor),
+      // body and html are both transparent on plenty of sites, which means the
+      // canvas the reader sees comes from the browser, not from CSS. Say so,
+      // and let the host measure it off the screenshot instead of guessing.
+      pageBackgroundComputed: hexOf(getComputedStyle(document.body).backgroundColor)
+        ?? hexOf(getComputedStyle(document.documentElement).backgroundColor),
       bodyColor: hexOf(getComputedStyle(document.body).color),
-      header: header ? { background: hexOf(getComputedStyle(header).backgroundColor), heightPx: +header.getBoundingClientRect().height.toFixed(1) } : null,
+      header: header ? {
+        detectedBy: headerHit.by,
+        background: hexOf(getComputedStyle(header).backgroundColor),
+        heightPx: +header.getBoundingClientRect().height.toFixed(1),
+      } : null,
       primaryButton: primary ? {
-        background: hexOf(primary.s.backgroundColor), color: hexOf(primary.s.color),
+        fill: primary.fill,
+        background: hexOf(primary.s.backgroundColor),
+        borderColor: primary.fill === "outline" ? hexOf(primary.s.borderTopColor) : undefined,
+        color: hexOf(primary.s.color),
         radiusPx: +parseFloat(primary.s.borderRadius).toFixed(1),
         fontPx: +parseFloat(primary.s.fontSize).toFixed(1), weight: primary.s.fontWeight,
         label: primary.label.slice(0, 40),
         repeats: signature.get(primary.key) ?? 1,
       } : null,
       typeScale,
+      // An absence a reader can interpret. Bare null cannot distinguish "this
+      // page has no primary control" from "the collector could not see one".
+      notes: {
+        buttonCandidatesAboveFold: candidates.length,
+        headerDetectedBy: headerHit ? headerHit.by : "not found",
+      },
     },
     imagery,
     motion: v ? {
@@ -242,6 +293,30 @@ try {
   evidence.method.viewport = collected.viewport;
   evidence.chrome = collected.chrome;
   evidence.motion = collected.motion;
+
+  // What the reader actually sees behind the content. When CSS reports
+  // transparent for both body and html, this is the only honest answer — the
+  // modal colour of the rendered frame, with the share of the frame it covers
+  // so a thin claim is visible as a thin claim.
+  const firstShot = shots.get(0);
+  if (firstShot) {
+    const [dominant] = palette(await toRgb(firstShot, 200));
+    evidence.chrome.pageBackgroundRendered = dominant
+      ? { hex: dominant.hex, coverage: dominant.coverage, source: "modal colour of the captured viewport" }
+      : null;
+  }
+
+  // Same treatment as the page canvas: when CSS says transparent, the header's
+  // colour is whatever the reader sees in that band.
+  if (firstShot && evidence.chrome.header && !evidence.chrome.header.background) {
+    const dpr = collected.viewport.dpr || 1;
+    const bandPath = join(captureDir, "header-band.png");
+    try {
+      await cropTo(firstShot, bandPath, { x: 0, y: 0, w: collected.viewport.w * dpr, h: Math.max(8, evidence.chrome.header.heightPx * dpr) });
+      const [band] = palette(await toRgb(bandPath, 200));
+      if (band) evidence.chrome.header.backgroundRendered = { hex: band.hex, coverage: band.coverage, source: "modal colour of the header band" };
+    } catch {}
+  }
 
   const samples = [];
   for (const [i, candidate] of collected.imagery.entries()) {

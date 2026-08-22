@@ -85,8 +85,27 @@ async function collectChrome(page) {
       return m ? `#${[m[1], m[2], m[3]].map((v) => Number(v).toString(16).padStart(2, "0")).join("")}` : null;
     };
 
-    const header = document.querySelector("header, [role=banner], nav")?.closest("header, [role=banner], nav") ?? null;
-    const headerStyle = cs(header);
+    // Geometry, not tag names. Coupang has a header — logo, search, category nav,
+    // visible in any screenshot — and no <header>, no [role=banner], no <nav>;
+    // its whole page is divs. The hero detector already refuses to trust class
+    // names for exactly this reason, and reading chrome by semantics contradicted
+    // it. The header is the band pinned to the top of the frame.
+    const headerOf = () => {
+      const semantic = document.querySelector("header, [role=banner]");
+      if (semantic) return { el: semantic, by: "semantic" };
+      let best = null;
+      for (const el of document.querySelectorAll("div, section, nav")) {
+        const r = el.getBoundingClientRect();
+        if (r.top > 8 || r.height < 40 || r.height > 220) continue;
+        if (r.width < window.innerWidth * 0.8) continue;
+        if (!el.querySelector("a, img, input")) continue;
+        if (!best || r.height * r.width > best.r.height * best.r.width) best = { el, r };
+      }
+      return best ? { el: best.el, by: "geometry" } : null;
+    };
+    const headerHit = headerOf();
+    const header = headerHit?.el ?? null;
+
 
     // The primary button: a control the brand keeps, not the campaign CTA of the
     // day. Musinsa's largest opaque above-the-fold button was #5ccca8 with an
@@ -103,20 +122,31 @@ async function collectChrome(page) {
       return false;
     };
 
+    // A brand's primary control is not always a filled rectangle. Musinsa's
+    // category page has 34 controls above the fold and none with an opaque
+    // background — reporting "no primary button" there described the collector,
+    // not the page. Outline buttons count, and which kind it is gets recorded.
+    const fillOf = (st) => {
+      if (st.backgroundColor && st.backgroundColor !== "rgba(0, 0, 0, 0)" && st.backgroundColor !== "transparent") return "solid";
+      const bw = parseFloat(st.borderTopWidth) || 0;
+      const bc = st.borderTopColor || "";
+      if (bw > 0 && bc && bc !== "rgba(0, 0, 0, 0)") return "outline";
+      return "text";
+    };
     const signature = new Map();
     const candidates = [];
     for (const el of document.querySelectorAll("button, a[class*=btn i], a[class*=button i], [role=button]")) {
       const r = el.getBoundingClientRect();
       if (r.top > window.innerHeight || r.width < 60 || r.height < 28) continue;
       const s = getComputedStyle(el);
-      const bg = s.backgroundColor;
-      if (!bg || bg === "rgba(0, 0, 0, 0)" || bg === "transparent") continue;
       const label = (el.innerText || "").trim();
       if (!label) continue;
       if (inPromo(el)) continue;
-      const key = `${bg}|${s.borderRadius}|${s.fontSize}|${s.fontWeight}`;
+      const fill = fillOf(s);
+      if (fill === "text") continue; // a bare text link is navigation, not a control surface
+      const key = `${fill}|${s.backgroundColor}|${s.borderTopColor}|${s.borderRadius}|${s.fontSize}`;
       signature.set(key, (signature.get(key) ?? 0) + 1);
-      candidates.push({ el, s, r, key, label });
+      candidates.push({ el, s, r, key, label, fill });
     }
 
     let primary = null;
@@ -149,15 +179,21 @@ async function collectChrome(page) {
     }
 
     return {
-      pageBackground: hexOf(cs(document.body)?.backgroundColor),
+      // body and html are both transparent on plenty of sites, which means the
+      // canvas the reader sees comes from the browser, not from CSS.
+      pageBackgroundComputed: hexOf(cs(document.body)?.backgroundColor)
+        ?? hexOf(cs(document.documentElement)?.backgroundColor),
       bodyColor: hexOf(cs(document.body)?.color),
-      header: headerStyle ? {
-        background: hexOf(headerStyle.backgroundColor),
+      header: header ? {
+        detectedBy: headerHit.by,
+        background: hexOf(getComputedStyle(header).backgroundColor),
         heightPx: +header.getBoundingClientRect().height.toFixed(1),
-        borderBottom: headerStyle.borderBottomWidth === "0px" ? null : headerStyle.borderBottomColor,
+        borderBottom: getComputedStyle(header).borderBottomWidth === "0px" ? null : getComputedStyle(header).borderBottomColor,
       } : null,
       primaryButton: primary ? {
+        fill: primary.fill,
         background: hexOf(primary.s.backgroundColor),
+        borderColor: primary.fill === "outline" ? hexOf(primary.s.borderTopColor) : undefined,
         color: hexOf(primary.s.color),
         radiusPx: +parseFloat(primary.s.borderRadius).toFixed(1),
         paddingY: +parseFloat(primary.s.paddingTop).toFixed(1),
@@ -168,6 +204,18 @@ async function collectChrome(page) {
         repeats: signature.get(primary.key) ?? 1,
       } : null,
       typeScale,
+      // An absence a reader can interpret. Bare null cannot distinguish "this
+      // page has no primary control" from "the collector could not see one".
+      notes: {
+        buttonCandidatesAboveFold: candidates.length,
+        headerDetectedBy: headerHit ? headerHit.by : "not found",
+      },
+      // An absence a reader can interpret. "null" alone cannot distinguish
+      // "this page has no primary control" from "the collector could not see one".
+      notes: {
+        buttonCandidatesAboveFold: candidates.length,
+        headerDetectedBy: headerHit?.by ?? "not found",
+      },
     };
   });
 }

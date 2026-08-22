@@ -4,12 +4,22 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: active Luna epoch source `caf0e62d3e98684d482c56a2bbe3ef93a05ea873` (exact Codex 0.147 cache serialization); immutable diagnostic Luna epochs `f6cd17e2`, `253a3abc`, `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-22 · T3-2 `test-v2/90-comparison/RUBRIC.md` 재반박 = **REVISE**. 1차 11항은 표·본문 모두 반영. 남은 2항 = N1–N5 재분류 전사, `COMPROMISED`를 합친 `B_raw` PASS에 건 것. 동결·T3-3 닫힘. 정본: `docs/reviews/rubric-2026-08-22-rebuttal-2.md`.
 - 갱신: 2026-08-22 · 3트랙 계획 개정본 최종 승인 = **APPROVE_WITH_CONDITIONS**. 지금 열리는 것: T3-0 측정기 교정, 기존 musinsa/coupang PNG 보존, T1-1 440 무게 실측. T3-1 이후·T1-2 이후·T2는 조건 C1–C7 전까지 닫힘. 정본 판정: `docs/reviews/3track-plan-2026-08-22-grok-approval.md`. 계획 `docs/OMD_3TRACK_PLAN.md`의 **다음 행동은 실행 지시가 아님** (T3-2를 왕복으로 적음).
 - 갱신: 2026-08-14 저녁 · **사용자 결정으로 Luna·Sol 전면 은퇴.** caf0 partial epoch(terminal4/missing44)는 8/20 재개하지 않고 immutable diagnostic으로 영구 동결한다. 벤치마크는 grok-4.6 트랙으로 0셀부터 재시작하며 정본 seed는 `docs/OMD_2_0_GROK_RESTART_SEED.md`(= `~/.ouroboros/seeds/omd-grok46-restart-v0.1.md`)다. 이전 caf0 기록: order1 model-only=completed/50, order2 Anthropic=failed/0, order3 Impeccable=timeout/0, order4 UI UX Pro Max=usage-limit infra-invalid/0.
 - 역할 라우팅(개정): 기획·검수·오케스트레이션=Claude Fable, 구현 워커·독립 리뷰=grok-4.6(grok-fleet), 벤치마크 MUT=grok-4.6(격리 run-grok lane), 워크플로우 구조화=Ouroboros. 정본은 docs/PROVIDER_ROUTING_POLICY.md.
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol selector는 신규 호출 금지(retired).
 
 ## 지금 (현재 위치)
+
+### 2026-08-22 (grok-4.6) 📋 T3-2 루브릭 재반박 — REVISE (T3-3 닫힘)
+
+- **대상**: `test-v2/90-comparison/RUBRIC.md` 반박 1차 반영본. 1차 정본 `docs/reviews/rubric-2026-08-22-rebuttal-1.md`.
+- **판정 기록**: `docs/reviews/rubric-2026-08-22-rebuttal-2.md`.
+- **11항**: 표만 고친 항목 없음. DOM 삭제, 잠금표 게이트, `g`/`C_b` 분리, N/A 식, 팔레트 5-bit/k=6, 항목 1·4 재앵커, 고정문, 시맨틱 격리, 브리프 경계, 레인 세션 분리는 본문에 있다.
+- **동결 불가 이유**: N1–N5가 §4.4 5항목으로 재분류되어 전사가 숨은 채점이다. `B_raw` 축별 분모가 없고, 합친 파손률 `COMPROMISED`가 PASS·단독 우승을 죽인다(처치 효과와 레이블 누수 혼동).
+- **닫은 것**: 루브릭 동결, T3-3 무신사 파일럿. `RUBRIC_FROZEN_SHA` 금지.
+- **다음**: sol이 재반박 남은 2항만 수정 → grok 3차. 통과 전 파일럿 금지.
 
 ### 2026-08-22 (grok-4.6) 📋 3트랙 계획 개정본 — APPROVE_WITH_CONDITIONS
 

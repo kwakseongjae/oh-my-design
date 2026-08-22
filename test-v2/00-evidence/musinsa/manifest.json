@@ -1,107 +1,106 @@
 {
   "brand": "musinsa",
-  "captureId": "2026-08-22T07-48-37-274Z",
-  "capturedAt": "2026-08-22T07:48:37.274Z",
-  "channel": "playwright",
+  "captureId": "2026-08-22T10-51-04-183Z",
+  "capturedAt": "2026-08-22T10:51:04.183Z",
+  "channel": "aside",
   "source": {
-    "url": "https://www.musinsa.com/",
-    "finalUrl": "https://www.musinsa.com/main/musinsa/recommend?gf=A",
-    "title": "무신사",
-    "status": 200
+    "url": "https://www.musinsa.com/category/001",
+    "finalUrl": "https://www.musinsa.com/category/001/goods?gf=A",
+    "title": "상의 | 무신사 추천 상품",
+    "status": null
   },
   "viewport": {
-    "width": 1440,
-    "height": 900
+    "w": 1440,
+    "h": 900,
+    "dpr": 2
   },
   "locale": "ko-KR",
   "session": {
-    "profile": "fresh automation context",
-    "authenticated": false
+    "profile": "aside user profile",
+    "authenticated": "unknown",
+    "note": "captured through a real browser profile; cookie state not inspected"
   },
   "store": {
     "root": "$OMD_EVIDENCE_STORE",
-    "path": "musinsa/2026-08-22T07-48-37-274Z"
+    "path": "musinsa/2026-08-22T10-51-04-183Z"
   },
   "files": [
     {
       "name": "imagery-01.png",
-      "bytes": 1120472,
-      "sha256": "3fa5b81e31638cc489b7bba80255ac1461a715ee6d1ff1cf7e9b198310a09176"
+      "bytes": 86898,
+      "sha256": "640c6349c455839ca79d073833570a9a5e6c2273c5bf9f12aba13bb3366ba2ae"
     },
     {
       "name": "imagery-02.png",
-      "bytes": 1041896,
-      "sha256": "e3043a309ba3ec81a59141457277d89dce782491330bbd7dcfbdfca07bbd21b4"
+      "bytes": 557417,
+      "sha256": "eb21a36232d1ec58d1352fa72b04518a19209b5e1eace95040b465c6a8c83bde"
     },
     {
       "name": "imagery-03.png",
-      "bytes": 804702,
-      "sha256": "bbd5449c042ccc13cd002c7201d8996b1f3045d71c03beb4ada602569d3f31b5"
+      "bytes": 409339,
+      "sha256": "8929f0b75e7af5ad86672d0c0c9a2a7ab5d8e73484123d02c64b148b1fffa732"
     },
     {
       "name": "imagery-04.png",
-      "bytes": 173018,
-      "sha256": "25871f040f62fd4296b111e2dede0cf7eec835bee90905c1e4b6e5f3573f6e75"
+      "bytes": 203995,
+      "sha256": "cf5b4302c5dd2f6587e1b638d462f59bd5de1c9046b56fd1f270542da9e9019e"
     },
     {
       "name": "imagery-05.png",
-      "bytes": 180055,
-      "sha256": "ed5233f89067f0b68d6b73a7558f004948f5e9944766d990e880e75cf2c69dde"
+      "bytes": 233700,
+      "sha256": "966a3800bcf6397787e9ca3d1a88aefbb211cc3f660b80cf87e839972fe9f0b3"
     },
     {
       "name": "imagery-06.png",
-      "bytes": 258063,
-      "sha256": "9fcf08a10d7b489c3a99c1fb1d50c7b4f38fa7809441c10a02c997f2a3ecf702"
+      "bytes": 276053,
+      "sha256": "7c1c87c9bdee54514bfcb8fc7cd71230890acfef24d250d73efb3e87c142d6d0"
     },
     {
       "name": "imagery-07.png",
-      "bytes": 149229,
-      "sha256": "67940f39601a77abf46c9662551ca420a2f1519ff8d6d7da41055ac0dc395f2b"
+      "bytes": 104492,
+      "sha256": "b089f9c9ee59828a94b2562967810b69fe7f47ceaf56691dbf0a1f03f74d33ca"
     },
     {
       "name": "imagery-08.png",
-      "bytes": 135648,
-      "sha256": "54a3aff7c3d7bbb6ad3f7a1e4158b4ad229349d724687c5c753d29b18429d61b"
+      "bytes": 68021,
+      "sha256": "5f5d5c70a32e018b8697da45651171f9fbc191d83463b37dfe2b405b14a87011"
     },
     {
       "name": "imagery-09.png",
-      "bytes": 131239,
-      "sha256": "da10171f18d36b55e830e612d820321b67739919a624315bf4a88184defeb318"
+      "bytes": 76603,
+      "sha256": "29db7183e9e6cca137894b333808945f0d50b9e4c659c518deba1d2100e28fd3"
     },
     {
       "name": "imagery-10.png",
-      "bytes": 185761,
-      "sha256": "891a63757779381dbbf8f29f6201af215a3f364490a6779b1792e5fd591c85a8"
+      "bytes": 23039,
+      "sha256": "de74bcc96287b8f654dba675d9241c4c1ffbcb2391967243daf9b998182570eb"
     },
     {
       "name": "imagery-11.png",
-      "bytes": 225189,
-      "sha256": "c3818253ce92db312104d3960b778b2c6ac6fbf399944b01bff41d957e0360a6"
+      "bytes": 89049,
+      "sha256": "41ac2db11df07749e5ddd0737b4e729ecc38745c37e122d8918c52b407178d98"
     },
     {
       "name": "imagery-12.png",
-      "bytes": 194334,
-      "sha256": "943de01a8bee30c9edbd61ef88d34326b95661d933b0a8ed790d7a6f9972b2cd"
+      "bytes": 102191,
+      "sha256": "1a975368e4a718d663e95da060ec5eecc0c8eac1b7cc05c58b5059322ba94825"
     },
     {
-      "name": "viewport-1440.png",
-      "bytes": 3129377,
-      "sha256": "755e11fd4b8dbdf03314ff4d3d591d1627b6dcef4956266def7c1decf74dc64a"
+      "name": "viewport-pass-0.png",
+      "bytes": 2097209,
+      "sha256": "246eade9f5e75a7178a4408f5363bd3229a0146e0b01434718665f0275f56cf5"
     },
     {
-      "name": "viewport-390.png",
-      "bytes": 498106,
-      "sha256": "bdf0fc910f8dc0f7e87413e72d3fa3a504c769777779ba4b16a864f9f76566d8"
+      "name": "viewport-pass-1.png",
+      "bytes": 1834566,
+      "sha256": "6f1c5e4d6b1ae917857ba4527b07e76300b2681f5c81fb993119a3808cbcc676"
+    },
+    {
+      "name": "viewport-pass-2.png",
+      "bytes": 2540810,
+      "sha256": "c63532cbdeb1b676a23cb77921506c8c80f13bfd78c845c62463a110bdcc240f"
     }
   ],
-  "evidenceSha256": "51099c9ef7658a525122f55f7e0921b08771c4202c12032e129f07d8aae81382",
-  "supersededBy": {
-    "reason": "captured before T3-0 measurement fixes; must not be cited in prompts",
-    "defects": [
-      "chrome.primaryButton may be a campaign CTA rather than brand chrome",
-      "imagery.aggregate.subjectCenter* emitted below the resolved-sample floor",
-      "light.direction was a half-frame luminance difference named as a light direction"
-    ],
-    "action": "recapture under T3-2.5 (musinsa) / T3-4 (coupang)"
-  }
+  "evidenceSha256": "052d675a52461b64966d031304a0d3f4a17cbd507876a7ab1d71e5dd299623a8",
+  "supersededBy": null
 }
