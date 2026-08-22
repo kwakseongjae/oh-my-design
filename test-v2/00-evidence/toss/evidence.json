@@ -1,6 +1,6 @@
 {
   "brand": "toss",
-  "capturedAt": "2026-08-22T11:51:27.680Z",
+  "capturedAt": "2026-08-22T19:09:45.967Z",
   "source": {
     "url": "https://toss.im/",
     "status": 200,
@@ -75,12 +75,29 @@
     "pageBackgroundRendered": {
       "resolved": true,
       "hex": "#fefdfe",
-      "coverage": 0.1671,
+      "coverage": 0.1672,
       "source": "modal colour of the captured viewport"
     }
   },
   "imagery": {
     "sampled": 2,
+    "funnel": {
+      "found": 4,
+      "sizeOk": 2,
+      "centreInFrame": 2,
+      "srcOk": 2,
+      "kept": 2,
+      "framed": 2,
+      "cropped": 2,
+      "analysed": 2
+    },
+    "attrition": {
+      "suspect": true,
+      "reasons": [
+        "only 2 samples analysed"
+      ],
+      "note": "verify before using downstream"
+    },
     "samples": [
       {
         "src": "https://static.toss.im/assets/toss-im/asset/intro-main.mp4",
@@ -103,50 +120,50 @@
         "palette": [
           {
             "hex": "#fefdfe",
-            "coverage": 0.1563,
+            "coverage": 0.1566,
             "saturation": 0.004,
             "luma": 0.993
           },
           {
             "hex": "#f3f5fa",
-            "coverage": 0.0448,
+            "coverage": 0.042,
             "saturation": 0.028,
             "luma": 0.961
           },
           {
             "hex": "#e5ebf2",
-            "coverage": 0.0424,
+            "coverage": 0.0418,
             "saturation": 0.054,
             "luma": 0.919
           },
           {
             "hex": "#eaeef5",
-            "coverage": 0.0362,
+            "coverage": 0.0359,
             "saturation": 0.045,
             "luma": 0.932
           },
           {
-            "hex": "#ebf1f7",
-            "coverage": 0.0309,
-            "saturation": 0.049,
-            "luma": 0.942
+            "hex": "#ecf1f7",
+            "coverage": 0.0313,
+            "saturation": 0.045,
+            "luma": 0.943
           },
           {
             "hex": "#7a848c",
-            "coverage": 0.0241,
+            "coverage": 0.0243,
             "saturation": 0.129,
             "luma": 0.512
           }
         ],
         "light": {
-          "meanLuma": 0.654,
-          "p05": 0.049,
-          "p50": 0.765,
+          "meanLuma": 0.655,
+          "p05": 0.05,
+          "p50": 0.767,
           "p95": 1,
-          "dynamicRange": 0.951,
+          "dynamicRange": 0.95,
           "gradient": {
-            "dx": -0.266,
-            "dy": -0.142
+            "dx": -0.267,
+            "dy": -0.141
           },
           "luminanceGradient": "brighter left"
         },
@@ -182,16 +199,16 @@
             "luma": 0.98
           },
           {
+            "hex": "#e5ebf2",
+            "coverage": 0.0498,
+            "saturation": 0.054,
+            "luma": 0.919
+          },
+          {
             "hex": "#f3f5fa",
             "coverage": 0.0493,
             "saturation": 0.028,
             "luma": 0.961
-          },
-          {
-            "hex": "#e5ebf2",
-            "coverage": 0.0484,
-            "saturation": 0.054,
-            "luma": 0.919
           },
           {
             "hex": "#eaeef5",
@@ -201,25 +218,25 @@
           },
           {
             "hex": "#ecf1f7",
-            "coverage": 0.0277,
+            "coverage": 0.0271,
             "saturation": 0.045,
             "luma": 0.943
           },
           {
             "hex": "#010204",
-            "coverage": 0.0254,
+            "coverage": 0.0255,
             "saturation": 0.75,
             "luma": 0.008
           }
         ],
         "light": {
           "meanLuma": 0.596,
-          "p05": 0.056,
+          "p05": 0.055,
           "p50": 0.533,
           "p95": 0.979,
-          "dynamicRange": 0.923,
+          "dynamicRange": 0.924,
           "gradient": {
-            "dx": -0.29,
+            "dx": -0.291,
             "dy": -0.192
           },
           "luminanceGradient": "brighter left"
@@ -232,8 +249,8 @@
       }
     ],
     "aggregate": {
-      "meanLuma": 0.654,
-      "dynamicRange": 0.951,
+      "meanLuma": 0.655,
+      "dynamicRange": 0.95,
       "luminanceGradients": {
         "brighter left": 2
       },

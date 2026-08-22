@@ -1,6 +1,6 @@
 {
   "brand": "baemin",
-  "capturedAt": "2026-08-22T11:52:50.288Z",
+  "capturedAt": "2026-08-22T19:09:29.072Z",
   "source": {
     "url": "https://www.baemin.com/",
     "status": 200,
@@ -61,6 +61,28 @@
   },
   "imagery": {
     "sampled": 1,
+    "funnel": {
+      "found": 20,
+      "sizeOk": 9,
+      "centreInFrame": 9,
+      "srcOk": 9,
+      "kept": 9,
+      "framed": 1,
+      "cropped": 1,
+      "analysed": 1
+    },
+    "attrition": {
+      "suspect": true,
+      "reasons": [
+        "89% dropped at kept → framed",
+        "only 1 samples analysed"
+      ],
+      "stage": "kept → framed",
+      "before": 9,
+      "after": 1,
+      "lost": 0.889,
+      "note": "verify before using downstream"
+    },
     "samples": [
       {
         "src": "https://www.baemin.com/_next/static/media/main_text_03@3x.f4a7b72a.png",
@@ -101,7 +123,7 @@
           },
           {
             "hex": "#749385",
-            "coverage": 0.0301,
+            "coverage": 0.0302,
             "saturation": 0.211,
             "luma": 0.547
           },
@@ -113,7 +135,7 @@
           },
           {
             "hex": "#6c8a7d",
-            "coverage": 0.0227,
+            "coverage": 0.023,
             "saturation": 0.217,
             "luma": 0.512
           }

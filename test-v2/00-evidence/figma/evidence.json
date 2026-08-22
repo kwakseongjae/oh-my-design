@@ -1,6 +1,6 @@
 {
   "brand": "figma",
-  "capturedAt": "2026-08-22T11:53:15.939Z",
+  "capturedAt": "2026-08-22T19:07:02.159Z",
   "source": {
     "url": "https://www.figma.com/",
     "status": 200,
@@ -93,12 +93,25 @@
     "pageBackgroundRendered": {
       "resolved": true,
       "hex": "#ffffff",
-      "coverage": 0.6559,
+      "coverage": 0.6347,
       "source": "modal colour of the captured viewport"
     }
   },
   "imagery": {
     "sampled": 9,
+    "funnel": {
+      "found": 84,
+      "sizeOk": 16,
+      "centreInFrame": 10,
+      "srcOk": 10,
+      "kept": 10,
+      "framed": 9,
+      "cropped": 9,
+      "analysed": 9
+    },
+    "attrition": {
+      "suspect": false
+    },
     "samples": [
       {
         "src": "data:image/png;base64,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",
@@ -194,58 +207,58 @@
         "file": "capture/imagery-03.png",
         "palette": [
           {
-            "hex": "#dad6cd",
-            "coverage": 0.1446,
-            "saturation": 0.06,
-            "luma": 0.84
-          },
-          {
             "hex": "#ffffff",
-            "coverage": 0.1128,
+            "coverage": 0.1153,
             "saturation": 0,
             "luma": 1
           },
           {
-            "hex": "#dddacd",
-            "coverage": 0.0319,
-            "saturation": 0.072,
-            "luma": 0.854
+            "hex": "#dad6cc",
+            "coverage": 0.1144,
+            "saturation": 0.064,
+            "luma": 0.84
           },
           {
             "hex": "#9b8c6b",
-            "coverage": 0.0318,
+            "coverage": 0.0341,
             "saturation": 0.31,
             "luma": 0.552
           },
           {
+            "hex": "#dddacd",
+            "coverage": 0.0328,
+            "saturation": 0.072,
+            "luma": 0.854
+          },
+          {
             "hex": "#958563",
-            "coverage": 0.0256,
+            "coverage": 0.0269,
             "saturation": 0.336,
             "luma": 0.525
           },
           {
-            "hex": "#e2ded2",
-            "coverage": 0.023,
+            "hex": "#e1ddd1",
+            "coverage": 0.0218,
             "saturation": 0.071,
-            "luma": 0.871
+            "luma": 0.867
           }
         ],
         "light": {
-          "meanLuma": 0.738,
-          "p05": 0.491,
-          "p50": 0.757,
+          "meanLuma": 0.734,
+          "p05": 0.49,
+          "p50": 0.744,
           "p95": 1,
-          "dynamicRange": 0.509,
+          "dynamicRange": 0.51,
           "gradient": {
-            "dx": 0.067,
-            "dy": 0.021
+            "dx": 0.069,
+            "dy": 0.026
           },
           "luminanceGradient": "brighter right"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 51.1
+          "borderVariance": 50.2
         }
       },
       {
@@ -639,57 +652,57 @@
         "palette": [
           {
             "hex": "#c2d6fc",
-            "coverage": 0.0607,
+            "coverage": 0.0609,
             "saturation": 0.23,
             "luma": 0.833
           },
           {
-            "hex": "#ffffff",
-            "coverage": 0.0372,
-            "saturation": 0,
-            "luma": 1
-          },
-          {
             "hex": "#0d0e0b",
-            "coverage": 0.0295,
+            "coverage": 0.0297,
             "saturation": 0.214,
             "luma": 0.053
           },
           {
             "hex": "#12130e",
-            "coverage": 0.0289,
+            "coverage": 0.0291,
             "saturation": 0.263,
             "luma": 0.072
           },
           {
             "hex": "#1c1b13",
-            "coverage": 0.0219,
+            "coverage": 0.0229,
             "saturation": 0.321,
             "luma": 0.104
           },
           {
             "hex": "#d99663",
-            "coverage": 0.0211,
+            "coverage": 0.0209,
             "saturation": 0.544,
             "luma": 0.63
+          },
+          {
+            "hex": "#0f100b",
+            "coverage": 0.0199,
+            "saturation": 0.313,
+            "luma": 0.06
           }
         ],
         "light": {
-          "meanLuma": 0.457,
+          "meanLuma": 0.444,
           "p05": 0.06,
-          "p50": 0.465,
-          "p95": 0.864,
-          "dynamicRange": 0.804,
+          "p50": 0.443,
+          "p95": 0.84,
+          "dynamicRange": 0.78,
           "gradient": {
-            "dx": -0.02,
-            "dy": -0.024
+            "dx": -0.026,
+            "dy": -0.032
           },
           "luminanceGradient": "even"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 143.9
+          "borderVariance": 74.7
         }
       },
       {
@@ -768,8 +781,8 @@
       }
     ],
     "aggregate": {
-      "meanLuma": 0.457,
-      "dynamicRange": 0.791,
+      "meanLuma": 0.444,
+      "dynamicRange": 0.78,
       "luminanceGradients": {
         "brighter top": 1,
         "brighter right": 3,

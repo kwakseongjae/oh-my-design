@@ -1,6 +1,6 @@
 {
   "brand": "musinsa",
-  "capturedAt": "2026-08-22T11:50:41.983Z",
+  "capturedAt": "2026-08-22T19:04:48.232Z",
   "source": {
     "url": "https://www.musinsa.com/category/001",
     "status": 200,
@@ -76,12 +76,25 @@
     "pageBackgroundRendered": {
       "resolved": true,
       "hex": "#fdfdfd",
-      "coverage": 0.2213,
+      "coverage": 0.222,
       "source": "modal colour of the captured viewport"
     }
   },
   "imagery": {
     "sampled": 12,
+    "funnel": {
+      "found": 83,
+      "sizeOk": 24,
+      "centreInFrame": 24,
+      "srcOk": 24,
+      "kept": 12,
+      "framed": 12,
+      "cropped": 12,
+      "analysed": 12
+    },
+    "attrition": {
+      "suspect": false
+    },
     "samples": [
       {
         "src": "https://image.msscdn.net/thumbnails/images/goods_img/20260723/6912802/6912802_17851391692120_big.jpg?w=780",
@@ -484,39 +497,39 @@
         "palette": [
           {
             "hex": "#737374",
-            "coverage": 0.0393,
+            "coverage": 0.0388,
             "saturation": 0.009,
             "luma": 0.451
           },
           {
             "hex": "#6b6b6c",
-            "coverage": 0.0331,
+            "coverage": 0.0334,
             "saturation": 0.009,
             "luma": 0.42
           },
           {
             "hex": "#636365",
-            "coverage": 0.0203,
+            "coverage": 0.02,
             "saturation": 0.02,
             "luma": 0.389
           },
           {
-            "hex": "#cbcdd2",
-            "coverage": 0.0175,
-            "saturation": 0.033,
-            "luma": 0.804
-          },
-          {
             "hex": "#5a5a5d",
-            "coverage": 0.0175,
+            "coverage": 0.0177,
             "saturation": 0.032,
             "luma": 0.354
           },
           {
             "hex": "#555559",
-            "coverage": 0.0167,
+            "coverage": 0.0171,
             "saturation": 0.045,
             "luma": 0.334
+          },
+          {
+            "hex": "#cbcdd2",
+            "coverage": 0.017,
+            "saturation": 0.033,
+            "luma": 0.804
           }
         ],
         "light": {
@@ -534,7 +547,7 @@
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 81.3
+          "borderVariance": 81.2
         }
       },
       {
@@ -632,50 +645,50 @@
         "palette": [
           {
             "hex": "#f9f9f9",
-            "coverage": 0.3265,
+            "coverage": 0.328,
             "saturation": 0,
             "luma": 0.976
           },
           {
             "hex": "#2b2b2c",
-            "coverage": 0.1618,
+            "coverage": 0.1624,
             "saturation": 0.023,
             "luma": 0.169
           },
           {
             "hex": "#232325",
-            "coverage": 0.1197,
+            "coverage": 0.1196,
             "saturation": 0.054,
             "luma": 0.138
           },
           {
             "hex": "#333234",
-            "coverage": 0.0978,
+            "coverage": 0.0982,
             "saturation": 0.038,
             "luma": 0.197
           },
           {
             "hex": "#1c1b1d",
-            "coverage": 0.0394,
+            "coverage": 0.0392,
             "saturation": 0.069,
             "luma": 0.107
           },
           {
-            "hex": "#272629",
-            "coverage": 0.0373,
-            "saturation": 0.073,
-            "luma": 0.151
+            "hex": "#272628",
+            "coverage": 0.0374,
+            "saturation": 0.05,
+            "luma": 0.15
           }
         ],
         "light": {
           "meanLuma": 0.468,
-          "p05": 0.111,
+          "p05": 0.113,
           "p50": 0.198,
           "p95": 0.976,
-          "dynamicRange": 0.865,
+          "dynamicRange": 0.863,
           "gradient": {
             "dx": -0.001,
-            "dy": -0.162
+            "dy": -0.161
           },
           "luminanceGradient": "brighter top"
         },
@@ -683,8 +696,8 @@
           "resolved": true,
           "backgroundHex": "#f9f9f9",
           "center": {
-            "x": 0.5006,
-            "y": 0.5836
+            "x": 0.5001,
+            "y": 0.584
           },
           "box": {
             "x": 0.0813,
@@ -692,13 +705,13 @@
             "w": 0.825,
             "h": 0.9115
           },
-          "coverage": 0.2502
+          "coverage": 0.2521
         }
       },
       {
-        "src": "https://image.msscdn.net/thumbnails/display/images/2026/08/14/a6a83ce08bf44b7e89d0c0e200277f8f.jpg?w=780",
+        "src": "https://image.msscdn.net/thumbnails/display/images/2026/08/21/dd801862ce34471eb264dddf9dd49e32.jpg?w=780",
         "kind": "img",
-        "alt": "언더커버 SS 26 시즌오프 ",
+        "alt": "단 72시간 특가",
         "docBox": {
           "x": 1200,
           "y": 436,
@@ -715,58 +728,58 @@
         "file": "capture/imagery-09.png",
         "palette": [
           {
-            "hex": "#3c424c",
-            "coverage": 0.1,
-            "saturation": 0.211,
-            "luma": 0.257
+            "hex": "#d2d5d1",
+            "coverage": 0.1398,
+            "saturation": 0.019,
+            "luma": 0.832
           },
           {
-            "hex": "#eae9e6",
-            "coverage": 0.0929,
-            "saturation": 0.017,
-            "luma": 0.914
+            "hex": "#1c2a25",
+            "coverage": 0.0797,
+            "saturation": 0.333,
+            "luma": 0.152
           },
           {
-            "hex": "#353a44",
-            "coverage": 0.077,
-            "saturation": 0.221,
-            "luma": 0.226
+            "hex": "#cdd2d0",
+            "coverage": 0.045,
+            "saturation": 0.024,
+            "luma": 0.819
           },
           {
-            "hex": "#e9e7e3",
-            "coverage": 0.0496,
-            "saturation": 0.026,
-            "luma": 0.906
+            "hex": "#1a2622",
+            "coverage": 0.0399,
+            "saturation": 0.316,
+            "luma": 0.138
           },
           {
-            "hex": "#393e49",
-            "coverage": 0.0405,
-            "saturation": 0.219,
-            "luma": 0.242
+            "hex": "#cdd1ce",
+            "coverage": 0.0389,
+            "saturation": 0.019,
+            "luma": 0.815
           },
           {
-            "hex": "#424955",
-            "coverage": 0.0349,
-            "saturation": 0.224,
-            "luma": 0.284
+            "hex": "#23332b",
+            "coverage": 0.0316,
+            "saturation": 0.314,
+            "luma": 0.184
           }
         ],
         "light": {
-          "meanLuma": 0.45,
-          "p05": 0.142,
-          "p50": 0.273,
-          "p95": 0.912,
-          "dynamicRange": 0.77,
+          "meanLuma": 0.478,
+          "p05": 0.131,
+          "p50": 0.469,
+          "p95": 0.832,
+          "dynamicRange": 0.701,
           "gradient": {
-            "dx": -0.094,
-            "dy": -0.346
+            "dx": -0.101,
+            "dy": -0.23
           },
           "luminanceGradient": "brighter top"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 109.2
+          "borderVariance": 93.2
         }
       },
       {
@@ -790,37 +803,37 @@
         "palette": [
           {
             "hex": "#dadbdd",
-            "coverage": 0.1667,
+            "coverage": 0.1648,
             "saturation": 0.014,
             "luma": 0.859
           },
           {
             "hex": "#d3d3d4",
-            "coverage": 0.0912,
+            "coverage": 0.0898,
             "saturation": 0.005,
             "luma": 0.828
           },
           {
             "hex": "#bcbcbc",
-            "coverage": 0.0527,
+            "coverage": 0.0532,
             "saturation": 0,
             "luma": 0.737
           },
           {
             "hex": "#c3c3c3",
-            "coverage": 0.0511,
+            "coverage": 0.0505,
             "saturation": 0,
             "luma": 0.765
           },
           {
             "hex": "#d6d6d9",
-            "coverage": 0.0455,
+            "coverage": 0.0466,
             "saturation": 0.014,
             "luma": 0.84
           },
           {
             "hex": "#dddee0",
-            "coverage": 0.0399,
+            "coverage": 0.0401,
             "saturation": 0.013,
             "luma": 0.87
           }
@@ -833,7 +846,7 @@
           "dynamicRange": 0.748,
           "gradient": {
             "dx": -0.059,
-            "dy": -0.116
+            "dy": -0.115
           },
           "luminanceGradient": "brighter top"
         },
@@ -993,8 +1006,8 @@
       }
     ],
     "aggregate": {
-      "meanLuma": 0.475,
-      "dynamicRange": 0.77,
+      "meanLuma": 0.478,
+      "dynamicRange": 0.748,
       "luminanceGradients": {
         "brighter right": 2,
         "brighter top": 6,

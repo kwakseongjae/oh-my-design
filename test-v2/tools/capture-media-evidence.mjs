@@ -234,23 +234,31 @@ async function collectImagery(page, limit) {
     const vw = window.innerWidth;
     const seen = new Set();
     const out = [];
+    // Counted at every stage so a zero yield names its own cause. Tracing why
+    // Apple, Figma and Toss each returned nothing took a separate investigation
+    // per brand; this turns that into one line in the evidence file.
+    const funnel = { found: 0, sizeOk: 0, centreInFrame: 0, srcOk: 0 };
 
     // Not only <img>. Toss's hero is a video and a canvas; a collector that
     // reads img elements alone reports "no imagery" for a page built out of
     // moving pictures.
     for (const el of document.querySelectorAll("img, video, canvas")) {
+      funnel.found++;
       const r = el.getBoundingClientRect();
       if (r.width < 160 || r.height < 160) continue;
+      funnel.sizeOk++;
       // A slide parked off-screen has its centre outside the frame. A full-bleed
       // hero wider than the viewport does not — and the old coverage test could
       // not tell them apart, which is why Apple, whose heroes overflow both
       // edges, produced nothing at all.
       const centreX = r.left + r.width / 2;
       if (centreX < 0 || centreX > vw) continue;
+      funnel.centreInFrame++;
       const kind = el.tagName.toLowerCase();
       const src = el.currentSrc || el.src || (kind === "canvas" ? `canvas@${Math.round(r.x)},${Math.round(r.y)}` : "");
       if (!src || seen.has(src)) continue;
       seen.add(src);
+      funnel.srcOk++;
 
       out.push({
         src,
@@ -264,7 +272,7 @@ async function collectImagery(page, limit) {
         intrinsic: { w: el.naturalWidth ?? el.videoWidth ?? el.width ?? null, h: el.naturalHeight ?? el.videoHeight ?? el.height ?? null },
       });
     }
-    return out.sort((a, b) => b.areaShare - a.areaShare).slice(0, max);
+    return { funnel, candidates: out.sort((a, b) => b.areaShare - a.areaShare).slice(0, max) };
   }, limit);
 }
 
@@ -402,7 +410,9 @@ try {
   const [dominant] = palette(await toRgb(firstShotPath, 200));
   evidence.chrome.pageBackgroundRendered = renderedCanvas(dominant);
 
-  const candidates = await collectImagery(page, IMAGERY_SAMPLES);
+  const collected = await collectImagery(page, IMAGERY_SAMPLES);
+  const candidates = collected.candidates;
+  const funnel = { ...collected.funnel, kept: candidates.length, framed: 0, cropped: 0, analysed: 0 };
   const samples = [];
   for (const [i, candidate] of candidates.entries()) {
     const label = String(i + 1).padStart(2, "0");
@@ -439,6 +449,7 @@ try {
       };
     }, candidate.docBox));
     if (!box) continue;
+    funnel.framed++;
 
     writeFileSync(framePath, await page.screenshot());
     try {
@@ -446,8 +457,10 @@ try {
     } catch {
       continue;
     }
+    funnel.cropped++;
     rmSync(framePath, { force: true });
     const rgb = await toRgb(cropPath);
+    funnel.analysed++;
     samples.push({
       ...candidate,
       clipped: box.clipped,
@@ -462,6 +475,33 @@ try {
   const resolvedSubjects = samples.map((s) => s.subject).filter((s) => s?.resolved);
   evidence.imagery = {
     sampled: samples.length,
+    funnel,
+    // Which stage ate the candidates. A brand that legitimately has no imagery
+    // (Naver) and a collector that silently dropped everything (Apple, before
+    // the centre-position fix) both used to read as `sampled: 0`.
+    attrition: (() => {
+      const order = ["found", "sizeOk", "centreInFrame", "srcOk", "kept", "framed", "cropped", "analysed"];
+      const reasons = [];
+      let worst = null;
+      for (let i = 1; i < order.length; i++) {
+        const before = funnel[order[i - 1]];
+        const after = funnel[order[i]];
+        if (!before) continue;
+        const lost = 1 - after / before;
+        // 80%, not 90%. Baemin lost eight of nine candidates at one stage —
+        // 88.9% — and passed a 90% gate while ending up with a single sample.
+        if (lost >= 0.8 && (!worst || lost > worst.lost)) {
+          worst = { stage: `${order[i - 1]} → ${order[i]}`, before, after, lost: +lost.toFixed(3) };
+        }
+      }
+      if (worst) reasons.push(`${Math.round(worst.lost * 100)}% dropped at ${worst.stage}`);
+      // An absolute floor as well as a ratio: thin evidence is the risk itself,
+      // and a brand that yields three samples is thin however gently it got there.
+      if (funnel.analysed > 0 && funnel.analysed < 4) reasons.push(`only ${funnel.analysed} samples analysed`);
+      return reasons.length
+        ? { suspect: true, reasons, ...(worst ?? {}), note: "verify before using downstream" }
+        : { suspect: false };
+    })(),
     samples,
     aggregate: {
       meanLuma: median(lits.map((l) => l.meanLuma)),

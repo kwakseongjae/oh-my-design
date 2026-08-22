@@ -1,6 +1,6 @@
 {
   "brand": "wanted",
-  "capturedAt": "2026-08-22T11:54:01.212Z",
+  "capturedAt": "2026-08-22T19:07:47.340Z",
   "source": {
     "url": "https://www.wanted.co.kr/wdlist",
     "status": 200,
@@ -52,6 +52,19 @@
   },
   "imagery": {
     "sampled": 12,
+    "funnel": {
+      "found": 64,
+      "sizeOk": 60,
+      "centreInFrame": 60,
+      "srcOk": 38,
+      "kept": 12,
+      "framed": 12,
+      "cropped": 12,
+      "analysed": 12
+    },
+    "attrition": {
+      "suspect": false
+    },
     "samples": [
       {
         "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F30177%2F50ogifhpl4kh4mva__400_400.png&w=400&q=75",

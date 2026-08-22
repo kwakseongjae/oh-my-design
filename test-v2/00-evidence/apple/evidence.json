@@ -1,6 +1,6 @@
 {
   "brand": "apple",
-  "capturedAt": "2026-08-22T11:52:32.729Z",
+  "capturedAt": "2026-08-22T19:06:19.032Z",
   "source": {
     "url": "https://www.apple.com/kr/",
     "status": 200,
@@ -82,6 +82,19 @@
   },
   "imagery": {
     "sampled": 7,
+    "funnel": {
+      "found": 34,
+      "sizeOk": 16,
+      "centreInFrame": 10,
+      "srcOk": 8,
+      "kept": 8,
+      "framed": 7,
+      "cropped": 7,
+      "analysed": 7
+    },
+    "attrition": {
+      "suspect": false
+    },
     "samples": [
       {
         "src": "https://www.apple.com/v/home/images/iphone-family/a/hero_iphone_family__be5jkzxszb1e_largetall_2x.jpg",

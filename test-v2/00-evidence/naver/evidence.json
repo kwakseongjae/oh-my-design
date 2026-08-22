@@ -1,6 +1,6 @@
 {
   "brand": "naver",
-  "capturedAt": "2026-08-22T11:53:07.061Z",
+  "capturedAt": "2026-08-22T19:10:32.550Z",
   "source": {
     "url": "https://www.naver.com/",
     "status": 200,
@@ -39,6 +39,15 @@
         "color": "#2e2e2e"
       },
       {
+        "tag": "h3",
+        "fontPx": 13.7,
+        "weight": "700",
+        "family": "-apple-system",
+        "lineHeight": "17px",
+        "letterSpacing": "-0.4px",
+        "color": "#2e2e2e"
+      },
+      {
         "tag": "p",
         "fontPx": 14.7,
         "weight": "500",
@@ -64,12 +73,33 @@
     "pageBackgroundRendered": {
       "resolved": true,
       "hex": "#fefefe",
-      "coverage": 0.6963,
+      "coverage": 0.6799,
       "source": "modal colour of the captured viewport"
     }
   },
   "imagery": {
     "sampled": 0,
+    "funnel": {
+      "found": 67,
+      "sizeOk": 0,
+      "centreInFrame": 0,
+      "srcOk": 0,
+      "kept": 0,
+      "framed": 0,
+      "cropped": 0,
+      "analysed": 0
+    },
+    "attrition": {
+      "suspect": true,
+      "reasons": [
+        "100% dropped at found → sizeOk"
+      ],
+      "stage": "found → sizeOk",
+      "before": 67,
+      "after": 0,
+      "lost": 1,
+      "note": "verify before using downstream"
+    },
     "samples": [],
     "aggregate": {
       "meanLuma": null,

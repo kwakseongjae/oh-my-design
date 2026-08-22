@@ -1,6 +1,6 @@
 {
   "brand": "karrot",
-  "capturedAt": "2026-08-22T11:51:46.506Z",
+  "capturedAt": "2026-08-22T19:05:34.636Z",
   "source": {
     "url": "https://www.daangn.com/kr/buy-sell/s/?search=%EB%85%B8%ED%8A%B8%EB%B6%81",
     "status": 200,
@@ -85,12 +85,25 @@
     "pageBackgroundRendered": {
       "resolved": true,
       "hex": "#ffffff",
-      "coverage": 0.5034,
+      "coverage": 0.5039,
       "source": "modal colour of the captured viewport"
     }
   },
   "imagery": {
     "sampled": 12,
+    "funnel": {
+      "found": 27,
+      "sizeOk": 24,
+      "centreInFrame": 24,
+      "srcOk": 24,
+      "kept": 12,
+      "framed": 12,
+      "cropped": 12,
+      "analysed": 12
+    },
+    "attrition": {
+      "suspect": false
+    },
     "samples": [
       {
         "src": "https://img.kr.gcp-karroter.net/origin/article/202607/1784544447461d2c390d237e2deae8318b25d604249136935d7a7f4041a484eb6e0b0400e83ef0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
@@ -241,7 +254,7 @@
         }
       },
       {
-        "src": "https://img.kr.gcp-karroter.net/origin/article/202607/6df5ac68cd5da81cfa28670b37f8624e6ab0ba365169108b81832e347af7b0a4_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/e285ed649abdb0f21c972130d75f2c48bcee8b645fcdeb930f1228a22c3185b0_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
         "alt": "thumbnail",
         "docBox": {
@@ -253,69 +266,69 @@
         "aspect": 1,
         "areaShare": 0.0476,
         "intrinsic": {
-          "w": 810,
-          "h": 1440
+          "w": 1440,
+          "h": 1080
         },
         "clipped": false,
         "file": "capture/imagery-03.png",
         "palette": [
           {
-            "hex": "#62646c",
-            "coverage": 0.0737,
-            "saturation": 0.093,
-            "luma": 0.393
+            "hex": "#2b2b2c",
+            "coverage": 0.0289,
+            "saturation": 0.023,
+            "luma": 0.169
           },
           {
-            "hex": "#696b76",
-            "coverage": 0.0709,
-            "saturation": 0.11,
-            "luma": 0.421
+            "hex": "#232324",
+            "coverage": 0.0231,
+            "saturation": 0.028,
+            "luma": 0.138
           },
           {
-            "hex": "#5b5c64",
-            "coverage": 0.0678,
-            "saturation": 0.09,
-            "luma": 0.362
+            "hex": "#ebece5",
+            "coverage": 0.0189,
+            "saturation": 0.03,
+            "luma": 0.923
           },
           {
-            "hex": "#6a6d79",
-            "coverage": 0.0653,
-            "saturation": 0.124,
-            "luma": 0.428
+            "hex": "#323334",
+            "coverage": 0.0176,
+            "saturation": 0.038,
+            "luma": 0.199
           },
           {
-            "hex": "#666974",
-            "coverage": 0.0646,
+            "hex": "#33363a",
+            "coverage": 0.0143,
             "saturation": 0.121,
-            "luma": 0.412
+            "luma": 0.21
           },
           {
-            "hex": "#636672",
-            "coverage": 0.0609,
-            "saturation": 0.132,
-            "luma": 0.401
+            "hex": "#e3e3dc",
+            "coverage": 0.0138,
+            "saturation": 0.031,
+            "luma": 0.888
           }
         ],
         "light": {
-          "meanLuma": 0.436,
-          "p05": 0.293,
-          "p50": 0.412,
-          "p95": 0.701,
-          "dynamicRange": 0.408,
+          "meanLuma": 0.505,
+          "p05": 0.148,
+          "p50": 0.515,
+          "p95": 0.909,
+          "dynamicRange": 0.761,
           "gradient": {
-            "dx": -0.08,
-            "dy": -0.035
+            "dx": 0.073,
+            "dy": -0.051
           },
-          "luminanceGradient": "brighter left"
+          "luminanceGradient": "brighter right"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 88.4
+          "borderVariance": 115.3
         }
       },
       {
-        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/e285ed649abdb0f21c972130d75f2c48bcee8b645fcdeb930f1228a22c3185b0_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202607/6df5ac68cd5da81cfa28670b37f8624e6ab0ba365169108b81832e347af7b0a4_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
         "alt": "thumbnail",
         "docBox": {
@@ -327,65 +340,65 @@
         "aspect": 1,
         "areaShare": 0.0476,
         "intrinsic": {
-          "w": 1440,
-          "h": 1080
+          "w": 810,
+          "h": 1440
         },
         "clipped": false,
         "file": "capture/imagery-04.png",
         "palette": [
           {
-            "hex": "#2b2b2c",
-            "coverage": 0.0239,
-            "saturation": 0.023,
-            "luma": 0.169
+            "hex": "#62646c",
+            "coverage": 0.0738,
+            "saturation": 0.093,
+            "luma": 0.393
           },
           {
-            "hex": "#232324",
-            "coverage": 0.0223,
-            "saturation": 0.028,
-            "luma": 0.138
+            "hex": "#696b76",
+            "coverage": 0.0718,
+            "saturation": 0.11,
+            "luma": 0.421
           },
           {
-            "hex": "#ebece4",
-            "coverage": 0.0189,
-            "saturation": 0.034,
-            "luma": 0.922
+            "hex": "#5b5c64",
+            "coverage": 0.0665,
+            "saturation": 0.09,
+            "luma": 0.362
           },
           {
-            "hex": "#323334",
-            "coverage": 0.018,
-            "saturation": 0.038,
-            "luma": 0.199
+            "hex": "#6a6d79",
+            "coverage": 0.064,
+            "saturation": 0.124,
+            "luma": 0.428
           },
           {
-            "hex": "#33363a",
-            "coverage": 0.0147,
+            "hex": "#666974",
+            "coverage": 0.0634,
             "saturation": 0.121,
-            "luma": 0.21
+            "luma": 0.412
           },
           {
-            "hex": "#24262a",
-            "coverage": 0.0138,
-            "saturation": 0.143,
-            "luma": 0.148
+            "hex": "#636672",
+            "coverage": 0.0614,
+            "saturation": 0.132,
+            "luma": 0.401
           }
         ],
         "light": {
-          "meanLuma": 0.506,
-          "p05": 0.148,
-          "p50": 0.516,
-          "p95": 0.909,
-          "dynamicRange": 0.761,
+          "meanLuma": 0.438,
+          "p05": 0.292,
+          "p50": 0.412,
+          "p95": 0.709,
+          "dynamicRange": 0.417,
           "gradient": {
-            "dx": 0.068,
-            "dy": -0.05
+            "dx": -0.081,
+            "dy": -0.035
           },
-          "luminanceGradient": "brighter right"
+          "luminanceGradient": "brighter left"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 103.8
+          "borderVariance": 94.3
         }
       },
       {
@@ -463,7 +476,7 @@
         }
       },
       {
-        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/36133bbb294a5f42483e7a706041adffa7c3d99d7f121ebc6b2a8728451922a2_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/f130bc93f5a45f18ab14ecbff90f878808c6080975ac320b394a3b861f1419b9_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
         "alt": "thumbnail",
         "docBox": {
@@ -475,139 +488,65 @@
         "aspect": 1,
         "areaShare": 0.0476,
         "intrinsic": {
-          "w": 1008,
-          "h": 756
+          "w": 1440,
+          "h": 1080
         },
         "clipped": false,
         "file": "capture/imagery-06.png",
         "palette": [
           {
-            "hex": "#8d928c",
-            "coverage": 0.0258,
-            "saturation": 0.041,
-            "luma": 0.567
+            "hex": "#8b9cac",
+            "coverage": 0.0414,
+            "saturation": 0.192,
+            "luma": 0.602
           },
           {
-            "hex": "#848a84",
-            "coverage": 0.0248,
-            "saturation": 0.043,
-            "luma": 0.534
+            "hex": "#93a3b4",
+            "coverage": 0.0348,
+            "saturation": 0.183,
+            "luma": 0.631
           },
           {
-            "hex": "#959a94",
-            "coverage": 0.0235,
-            "saturation": 0.039,
-            "luma": 0.598
+            "hex": "#8da1b4",
+            "coverage": 0.026,
+            "saturation": 0.217,
+            "luma": 0.62
           },
           {
-            "hex": "#9da29c",
-            "coverage": 0.0225,
-            "saturation": 0.037,
-            "luma": 0.629
+            "hex": "#1a1612",
+            "coverage": 0.0246,
+            "saturation": 0.308,
+            "luma": 0.088
           },
           {
-            "hex": "#7c827c",
-            "coverage": 0.018,
-            "saturation": 0.046,
-            "luma": 0.503
+            "hex": "#1d1916",
+            "coverage": 0.0244,
+            "saturation": 0.241,
+            "luma": 0.101
           },
           {
-            "hex": "#757a74",
-            "coverage": 0.0168,
-            "saturation": 0.049,
-            "luma": 0.473
+            "hex": "#9cb3cb",
+            "coverage": 0.0199,
+            "saturation": 0.232,
+            "luma": 0.69
           }
         ],
         "light": {
-          "meanLuma": 0.513,
-          "p05": 0.127,
-          "p50": 0.53,
-          "p95": 0.875,
-          "dynamicRange": 0.748,
+          "meanLuma": 0.557,
+          "p05": 0.104,
+          "p50": 0.612,
+          "p95": 0.785,
+          "dynamicRange": 0.681,
           "gradient": {
-            "dx": -0.015,
-            "dy": -0.047
+            "dx": -0.004,
+            "dy": -0.083
           },
           "luminanceGradient": "brighter top"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 94.4
-        }
-      },
-      {
-        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/5ad9110c0e91c1a9ee447de6e7872272b14539cf84f810bf8831087b934f2ad4_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
-        "kind": "img",
-        "alt": "thumbnail",
-        "docBox": {
-          "x": 861,
-          "y": 575.90625,
-          "w": 248.5,
-          "h": 248.5
-        },
-        "aspect": 1,
-        "areaShare": 0.0476,
-        "intrinsic": {
-          "w": 1440,
-          "h": 1080
-        },
-        "clipped": false,
-        "file": "capture/imagery-07.png",
-        "palette": [
-          {
-            "hex": "#abb4b4",
-            "coverage": 0.036,
-            "saturation": 0.05,
-            "luma": 0.698
-          },
-          {
-            "hex": "#a3acac",
-            "coverage": 0.0337,
-            "saturation": 0.052,
-            "luma": 0.667
-          },
-          {
-            "hex": "#9ba4a4",
-            "coverage": 0.0288,
-            "saturation": 0.055,
-            "luma": 0.636
-          },
-          {
-            "hex": "#929c9b",
-            "coverage": 0.0282,
-            "saturation": 0.064,
-            "luma": 0.603
-          },
-          {
-            "hex": "#8b9494",
-            "coverage": 0.0248,
-            "saturation": 0.061,
-            "luma": 0.573
-          },
-          {
-            "hex": "#828d8b",
-            "coverage": 0.023,
-            "saturation": 0.078,
-            "luma": 0.543
-          }
-        ],
-        "light": {
-          "meanLuma": 0.458,
-          "p05": 0.094,
-          "p50": 0.487,
-          "p95": 0.722,
-          "dynamicRange": 0.628,
-          "gradient": {
-            "dx": 0.023,
-            "dy": 0.188
-          },
-          "luminanceGradient": "brighter bottom"
-        },
-        "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 77.2
+          "borderVariance": 60.3
         }
       },
       {
@@ -615,7 +554,7 @@
         "kind": "img",
         "alt": "thumbnail",
         "docBox": {
-          "x": 1125.5,
+          "x": 861,
           "y": 575.90625,
           "w": 248.5,
           "h": 248.5
@@ -627,65 +566,139 @@
           "h": 1440
         },
         "clipped": false,
-        "file": "capture/imagery-08.png",
+        "file": "capture/imagery-07.png",
         "palette": [
           {
-            "hex": "#ebeae3",
-            "coverage": 0.0583,
+            "hex": "#ebebe3",
+            "coverage": 0.0586,
             "saturation": 0.034,
-            "luma": 0.916
+            "luma": 0.919
           },
           {
             "hex": "#e4e3dc",
-            "coverage": 0.0514,
+            "coverage": 0.053,
             "saturation": 0.035,
             "luma": 0.889
           },
           {
-            "hex": "#2c2a24",
-            "coverage": 0.0443,
-            "saturation": 0.182,
-            "luma": 0.165
-          },
-          {
             "hex": "#040404",
-            "coverage": 0.0439,
+            "coverage": 0.0445,
             "saturation": 0,
             "luma": 0.016
           },
           {
-            "hex": "#34312c",
-            "coverage": 0.0361,
+            "hex": "#2c2a24",
+            "coverage": 0.0434,
+            "saturation": 0.182,
+            "luma": 0.165
+          },
+          {
+            "hex": "#34322c",
+            "coverage": 0.0365,
             "saturation": 0.154,
-            "luma": 0.193
+            "luma": 0.196
           },
           {
             "hex": "#3b3b3c",
-            "coverage": 0.0309,
+            "coverage": 0.032,
             "saturation": 0.017,
             "luma": 0.232
           }
         ],
         "light": {
-          "meanLuma": 0.439,
+          "meanLuma": 0.438,
           "p05": 0.027,
-          "p50": 0.259,
-          "p95": 0.918,
-          "dynamicRange": 0.891,
+          "p50": 0.256,
+          "p95": 0.919,
+          "dynamicRange": 0.892,
           "gradient": {
-            "dx": 0.108,
-            "dy": 0.443
+            "dx": 0.11,
+            "dy": 0.444
           },
           "luminanceGradient": "brighter bottom"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 105.1
+          "borderVariance": 125.4
         }
       },
       {
-        "src": "https://img.kr.gcp-karroter.net/origin/article/202607/80edcb04a946f67faf72ce67c23ae662ba3788a893febea2a5e2f107fc07ad1f_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/5ad9110c0e91c1a9ee447de6e7872272b14539cf84f810bf8831087b934f2ad4_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "kind": "img",
+        "alt": "thumbnail",
+        "docBox": {
+          "x": 1125.5,
+          "y": 575.90625,
+          "w": 248.5,
+          "h": 248.5
+        },
+        "aspect": 1,
+        "areaShare": 0.0476,
+        "intrinsic": {
+          "w": 1440,
+          "h": 1080
+        },
+        "clipped": false,
+        "file": "capture/imagery-08.png",
+        "palette": [
+          {
+            "hex": "#abb4b4",
+            "coverage": 0.0362,
+            "saturation": 0.05,
+            "luma": 0.698
+          },
+          {
+            "hex": "#a3acac",
+            "coverage": 0.032,
+            "saturation": 0.052,
+            "luma": 0.667
+          },
+          {
+            "hex": "#929c9b",
+            "coverage": 0.0282,
+            "saturation": 0.064,
+            "luma": 0.603
+          },
+          {
+            "hex": "#9ba4a4",
+            "coverage": 0.0279,
+            "saturation": 0.055,
+            "luma": 0.636
+          },
+          {
+            "hex": "#8b9494",
+            "coverage": 0.0267,
+            "saturation": 0.061,
+            "luma": 0.573
+          },
+          {
+            "hex": "#838d8c",
+            "coverage": 0.0244,
+            "saturation": 0.071,
+            "luma": 0.544
+          }
+        ],
+        "light": {
+          "meanLuma": 0.46,
+          "p05": 0.094,
+          "p50": 0.489,
+          "p95": 0.722,
+          "dynamicRange": 0.628,
+          "gradient": {
+            "dx": 0.021,
+            "dy": 0.188
+          },
+          "luminanceGradient": "brighter bottom"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 73.2
+        }
+      },
+      {
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/36133bbb294a5f42483e7a706041adffa7c3d99d7f121ebc6b2a8728451922a2_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
         "alt": "thumbnail",
         "docBox": {
@@ -697,69 +710,69 @@
         "aspect": 1,
         "areaShare": 0.0476,
         "intrinsic": {
-          "w": 1440,
-          "h": 1036
+          "w": 1008,
+          "h": 756
         },
         "clipped": false,
         "file": "capture/imagery-09.png",
         "palette": [
           {
-            "hex": "#63625d",
-            "coverage": 0.0346,
-            "saturation": 0.061,
-            "luma": 0.384
+            "hex": "#8d928c",
+            "coverage": 0.0262,
+            "saturation": 0.041,
+            "luma": 0.567
           },
           {
-            "hex": "#9a9a94",
-            "coverage": 0.0345,
+            "hex": "#848a84",
+            "coverage": 0.0261,
+            "saturation": 0.043,
+            "luma": 0.534
+          },
+          {
+            "hex": "#9ca29c",
+            "coverage": 0.0247,
+            "saturation": 0.037,
+            "luma": 0.629
+          },
+          {
+            "hex": "#959a94",
+            "coverage": 0.0233,
             "saturation": 0.039,
-            "luma": 0.602
+            "luma": 0.598
           },
           {
-            "hex": "#6b6a65",
-            "coverage": 0.0343,
-            "saturation": 0.056,
-            "luma": 0.415
+            "hex": "#7d827c",
+            "coverage": 0.0185,
+            "saturation": 0.046,
+            "luma": 0.504
           },
           {
-            "hex": "#73736c",
-            "coverage": 0.0339,
-            "saturation": 0.061,
-            "luma": 0.449
-          },
-          {
-            "hex": "#95938b",
-            "coverage": 0.0337,
-            "saturation": 0.067,
-            "luma": 0.576
-          },
-          {
-            "hex": "#7a7b75",
-            "coverage": 0.0334,
+            "hex": "#757a74",
+            "coverage": 0.0143,
             "saturation": 0.049,
-            "luma": 0.48
+            "luma": 0.473
           }
         ],
         "light": {
-          "meanLuma": 0.517,
-          "p05": 0.329,
-          "p50": 0.499,
-          "p95": 0.764,
-          "dynamicRange": 0.435,
+          "meanLuma": 0.511,
+          "p05": 0.127,
+          "p50": 0.531,
+          "p95": 0.874,
+          "dynamicRange": 0.747,
           "gradient": {
-            "dx": 0.159,
-            "dy": 0.04
+            "dx": -0.013,
+            "dy": -0.051
           },
-          "luminanceGradient": "brighter right"
+          "luminanceGradient": "brighter top"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 92.7
+          "borderVariance": 82.5
         }
       },
       {
-        "src": "https://img.kr.gcp-karroter.net/origin/article/202607/17848657137016a25108a8775bcffce77eba5ca84906817dbd9eb2e86617960bc38896c272a2e0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202607/80edcb04a946f67faf72ce67c23ae662ba3788a893febea2a5e2f107fc07ad1f_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
         "alt": "thumbnail",
         "docBox": {
@@ -771,69 +784,69 @@
         "aspect": 1,
         "areaShare": 0.0476,
         "intrinsic": {
-          "w": 1179,
-          "h": 884
+          "w": 1440,
+          "h": 1036
         },
         "clipped": false,
         "file": "capture/imagery-10.png",
         "palette": [
           {
-            "hex": "#dad6d2",
-            "coverage": 0.0581,
-            "saturation": 0.037,
-            "luma": 0.841
+            "hex": "#6b6a65",
+            "coverage": 0.0353,
+            "saturation": 0.056,
+            "luma": 0.415
           },
           {
-            "hex": "#dcd9d5",
-            "coverage": 0.0532,
-            "saturation": 0.032,
-            "luma": 0.852
+            "hex": "#63625d",
+            "coverage": 0.0351,
+            "saturation": 0.061,
+            "luma": 0.384
           },
           {
-            "hex": "#926d44",
-            "coverage": 0.0521,
-            "saturation": 0.534,
-            "luma": 0.447
+            "hex": "#9a9a94",
+            "coverage": 0.0345,
+            "saturation": 0.039,
+            "luma": 0.602
           },
           {
-            "hex": "#8d6b43",
-            "coverage": 0.0373,
-            "saturation": 0.525,
-            "luma": 0.437
+            "hex": "#95938b",
+            "coverage": 0.0339,
+            "saturation": 0.067,
+            "luma": 0.576
           },
           {
-            "hex": "#ac8a63",
-            "coverage": 0.0314,
-            "saturation": 0.424,
-            "luma": 0.558
+            "hex": "#7a7b75",
+            "coverage": 0.0332,
+            "saturation": 0.049,
+            "luma": 0.48
           },
           {
-            "hex": "#94724b",
-            "coverage": 0.0304,
-            "saturation": 0.493,
-            "luma": 0.464
+            "hex": "#73736c",
+            "coverage": 0.0332,
+            "saturation": 0.061,
+            "luma": 0.449
           }
         ],
         "light": {
-          "meanLuma": 0.584,
-          "p05": 0.326,
-          "p50": 0.543,
-          "p95": 0.861,
-          "dynamicRange": 0.535,
+          "meanLuma": 0.518,
+          "p05": 0.329,
+          "p50": 0.502,
+          "p95": 0.765,
+          "dynamicRange": 0.436,
           "gradient": {
-            "dx": -0.046,
-            "dy": -0.107
+            "dx": 0.158,
+            "dy": 0.04
           },
-          "luminanceGradient": "brighter top"
+          "luminanceGradient": "brighter right"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 70.4
+          "borderVariance": 108.9
         }
       },
       {
-        "src": "https://img.kr.gcp-karroter.net/origin/article/202602/26f08a19bd2fb959fb78359dfa9f9b78bee4ab3c653d1f667c4e6bff5d56af83_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/c0a75f5f3d59347b30378e8239e2da707374e5a3388101cbb08cd8901e8f0978_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
         "alt": "thumbnail",
         "docBox": {
@@ -845,65 +858,65 @@
         "aspect": 1,
         "areaShare": 0.0476,
         "intrinsic": {
-          "w": 1440,
-          "h": 1080
+          "w": 1080,
+          "h": 1440
         },
         "clipped": false,
         "file": "capture/imagery-11.png",
         "palette": [
           {
-            "hex": "#cacbcc",
-            "coverage": 0.198,
-            "saturation": 0.01,
-            "luma": 0.796
+            "hex": "#936b44",
+            "coverage": 0.0445,
+            "saturation": 0.537,
+            "luma": 0.442
           },
           {
-            "hex": "#c2c3c5",
-            "coverage": 0.1503,
-            "saturation": 0.015,
-            "luma": 0.764
+            "hex": "#72767d",
+            "coverage": 0.0333,
+            "saturation": 0.088,
+            "luma": 0.461
           },
           {
-            "hex": "#c7c9ca",
-            "coverage": 0.0623,
-            "saturation": 0.015,
-            "luma": 0.787
+            "hex": "#767983",
+            "coverage": 0.0241,
+            "saturation": 0.099,
+            "luma": 0.475
           },
           {
-            "hex": "#c4c6c9",
-            "coverage": 0.0505,
-            "saturation": 0.025,
-            "luma": 0.776
+            "hex": "#6d727a",
+            "coverage": 0.0232,
+            "saturation": 0.107,
+            "luma": 0.445
           },
           {
-            "hex": "#9b8a75",
-            "coverage": 0.0384,
-            "saturation": 0.245,
-            "luma": 0.549
+            "hex": "#7c828c",
+            "coverage": 0.0215,
+            "saturation": 0.114,
+            "luma": 0.508
           },
           {
-            "hex": "#babcbd",
-            "coverage": 0.0368,
-            "saturation": 0.016,
-            "luma": 0.736
+            "hex": "#b3b2ae",
+            "coverage": 0.019,
+            "saturation": 0.028,
+            "luma": 0.698
           }
         ],
         "light": {
-          "meanLuma": 0.67,
-          "p05": 0.406,
-          "p50": 0.748,
-          "p95": 0.8,
-          "dynamicRange": 0.394,
+          "meanLuma": 0.452,
+          "p05": 0.186,
+          "p50": 0.434,
+          "p95": 0.907,
+          "dynamicRange": 0.721,
           "gradient": {
-            "dx": -0.037,
-            "dy": -0.074
+            "dx": 0.091,
+            "dy": 0.211
           },
-          "luminanceGradient": "brighter top"
+          "luminanceGradient": "brighter bottom"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 61.5
+          "borderVariance": 93.5
         }
       },
       {
@@ -982,14 +995,14 @@
       }
     ],
     "aggregate": {
-      "meanLuma": 0.506,
-      "dynamicRange": 0.614,
+      "meanLuma": 0.46,
+      "dynamicRange": 0.643,
       "luminanceGradients": {
-        "brighter top": 4,
+        "brighter top": 3,
         "even": 2,
-        "brighter left": 1,
         "brighter right": 3,
-        "brighter bottom": 2
+        "brighter left": 1,
+        "brighter bottom": 3
       },
       "aspects": 1,
       "figureGroundResolved": "0/12",
