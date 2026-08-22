@@ -1,0 +1,61 @@
+{
+  "brand": "karrot",
+  "what": "each source sample scored against the brand's own aggregate",
+  "why": "an arm's score is only meaningful against this spread",
+  "n": 12,
+  "min": 25,
+  "p25": 41.5,
+  "median": 55.38,
+  "p75": 67.25,
+  "max": 76.43,
+  "samples": [
+    {
+      "file": "capture/imagery-01.png",
+      "score": 71.38
+    },
+    {
+      "file": "capture/imagery-02.png",
+      "score": 41.5
+    },
+    {
+      "file": "capture/imagery-03.png",
+      "score": 43.59
+    },
+    {
+      "file": "capture/imagery-04.png",
+      "score": 76.43
+    },
+    {
+      "file": "capture/imagery-05.png",
+      "score": 72.27
+    },
+    {
+      "file": "capture/imagery-06.png",
+      "score": 57.38
+    },
+    {
+      "file": "capture/imagery-07.png",
+      "score": 67.25
+    },
+    {
+      "file": "capture/imagery-08.png",
+      "score": 63.13
+    },
+    {
+      "file": "capture/imagery-09.png",
+      "score": 53.08
+    },
+    {
+      "file": "capture/imagery-10.png",
+      "score": 55.38
+    },
+    {
+      "file": "capture/imagery-11.png",
+      "score": 29.5
+    },
+    {
+      "file": "capture/imagery-12.png",
+      "score": 25
+    }
+  ]
+}

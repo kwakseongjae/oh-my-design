@@ -1,0 +1,21 @@
+{
+  "brand": "toss",
+  "what": "each source sample scored against the brand's own aggregate",
+  "why": "an arm's score is only meaningful against this spread",
+  "n": 2,
+  "min": 61.19,
+  "p25": 61.19,
+  "median": 61.19,
+  "p75": 61.19,
+  "max": 75,
+  "samples": [
+    {
+      "file": "capture/imagery-01.png",
+      "score": 75
+    },
+    {
+      "file": "capture/imagery-02.png",
+      "score": 61.19
+    }
+  ]
+}

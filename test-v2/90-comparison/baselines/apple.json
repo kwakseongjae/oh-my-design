@@ -1,0 +1,41 @@
+{
+  "brand": "apple",
+  "what": "each source sample scored against the brand's own aggregate",
+  "why": "an arm's score is only meaningful against this spread",
+  "n": 7,
+  "min": 37.92,
+  "p25": 38.16,
+  "median": 49.62,
+  "p75": 49.62,
+  "max": 74.05,
+  "samples": [
+    {
+      "file": "capture/imagery-01.png",
+      "score": 38.74
+    },
+    {
+      "file": "capture/imagery-02.png",
+      "score": 37.92
+    },
+    {
+      "file": "capture/imagery-03.png",
+      "score": 38.16
+    },
+    {
+      "file": "capture/imagery-04.png",
+      "score": 49.62
+    },
+    {
+      "file": "capture/imagery-05.png",
+      "score": 57.6
+    },
+    {
+      "file": "capture/imagery-06.png",
+      "score": 74.05
+    },
+    {
+      "file": "capture/imagery-07.png",
+      "score": 49.62
+    }
+  ]
+}
