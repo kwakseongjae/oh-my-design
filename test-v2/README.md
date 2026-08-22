@@ -98,6 +98,28 @@ node capture-media-evidence.mjs --brand musinsa --url https://www.musinsa.com/
 | 종횡비 중앙값 | 0.833 (4:5) |
 | figure-ground 분리 | 2/12 |
 
+## 5.1 차단 사이트 — Aside 채널
+
+쿠팡은 Playwright 구동 Chrome에 **403 "Access Denied"**를 준다(이미지 0개). 같은 URL을
+**Aside Browser**로 열면 실제 홈이 온다(타이틀 정상, 큰 이미지 39개).
+
+```sh
+open -a Aside https://example.com          # 프로필에 창이 하나 열려 있어야 한다
+node capture-via-aside.mjs --brand coupang --url https://www.coupang.com/
+```
+
+측정은 `analysis.mjs`를 두 채널이 공유한다 — 채널이 달라도 수치가 같은 의미여야
+비교가 성립한다. 구조적 차이는 하나뿐이다: Aside REPL에는 파일시스템이 없어서
+스크린샷이 base64로 stdout을 타고 나오고, 크롭은 호스트에서 자른다.
+
+**넘지 않는 선**: CAPTCHA 우회도, 봇 탐지 회피도 하지 않는다. 사이트가 페이지 대신
+챌린지를 주면 그건 거절이고 해당 브랜드는 세트에서 뺀다. 쿠팡은 첫 요청에 평소 홈을
+그대로 줬다.
+
+쿠팡 실측(2026-08-22): 표본 12장, 평균 휘도 0.844, 다이내믹 레인지 0.796,
+종횡비 1.0(정사각 타일), figure-ground 3/12, 피사체 중심 (0.505, 0.582),
+`pageBackground`는 투명이라 **미해결로 비움**.
+
 ## 6. 원본 캡처는 커밋하지 않는다
 
 `capture/*.png`는 타사 저작물이다. 측정값(`evidence.json`)은 사실이라 커밋하고,

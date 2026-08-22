@@ -1,0 +1,1069 @@
+{
+  "brand": "coupang",
+  "capturedAt": "2026-08-22T09:28:20.775Z",
+  "source": {
+    "url": "https://www.coupang.com/",
+    "finalUrl": "https://www.coupang.com/",
+    "title": "로켓배송으로 빠르게, 로켓와우 멤버십으로 할인과 무료 반품까지 | 쿠팡"
+  },
+  "method": {
+    "channel": "aside",
+    "why": "site refuses automated browsers; Playwright receives 403 Access Denied",
+    "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
+    "imagerySamplesRequested": 12,
+    "viewport": {
+      "w": 1440,
+      "h": 900,
+      "dpr": 2
+    }
+  },
+  "chrome": {
+    "pageBackground": null,
+    "bodyColor": "#000000",
+    "header": null,
+    "primaryButton": null,
+    "typeScale": [
+      {
+        "tag": "h2",
+        "fontPx": 24,
+        "weight": "700",
+        "family": "Apple SD Gothic Neo",
+        "lineHeight": "33px",
+        "letterSpacing": "normal",
+        "color": "#000000"
+      },
+      {
+        "tag": "h3",
+        "fontPx": 20,
+        "weight": "400",
+        "family": "Apple SD Gothic Neo",
+        "lineHeight": "33px",
+        "letterSpacing": "normal",
+        "color": "#212b36"
+      },
+      {
+        "tag": "p",
+        "fontPx": 11,
+        "weight": "400",
+        "family": "Apple SD Gothic Neo",
+        "lineHeight": "16.5px",
+        "letterSpacing": "normal",
+        "color": "#7b7b7b"
+      }
+    ]
+  },
+  "motion": {
+    "present": false,
+    "note": "no video above the fold at capture time"
+  },
+  "imagery": {
+    "sampled": 12,
+    "samples": [
+      {
+        "src": "https://static.coupangcdn.com/oa/cmg_paperboy/image/1787300343622/C1_PC1.jpg",
+        "alt": "",
+        "box": {
+          "x": 0,
+          "y": 0.2467,
+          "w": 1,
+          "h": 0.5
+        },
+        "pixelBox": {
+          "x": 0,
+          "y": 444,
+          "w": 2880,
+          "h": 900
+        },
+        "aspect": 3.2,
+        "areaShare": 0.5,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 1920,
+          "h": 450
+        },
+        "pass": 0,
+        "file": "capture/imagery-01.png",
+        "palette": [
+          {
+            "hex": "#fefffe",
+            "coverage": 0.0526,
+            "saturation": 0.004,
+            "luma": 0.999
+          },
+          {
+            "hex": "#544224",
+            "coverage": 0.0174,
+            "saturation": 0.571,
+            "luma": 0.265
+          },
+          {
+            "hex": "#5b4324",
+            "coverage": 0.0131,
+            "saturation": 0.604,
+            "luma": 0.274
+          },
+          {
+            "hex": "#4c3d23",
+            "coverage": 0.012,
+            "saturation": 0.539,
+            "luma": 0.244
+          },
+          {
+            "hex": "#241b1b",
+            "coverage": 0.0091,
+            "saturation": 0.25,
+            "luma": 0.113
+          },
+          {
+            "hex": "#4b3b1d",
+            "coverage": 0.0089,
+            "saturation": 0.613,
+            "luma": 0.236
+          }
+        ],
+        "light": {
+          "meanLuma": 0.478,
+          "p05": 0.109,
+          "p50": 0.429,
+          "p95": 0.99,
+          "dynamicRange": 0.881,
+          "gradient": {
+            "dx": -0.057,
+            "dy": -0.134
+          },
+          "direction": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 107.6
+        }
+      },
+      {
+        "src": "https://static.coupangcdn.com/fa/cmg_paperboy/image/1787206637091/C2-7.jpeg",
+        "alt": "",
+        "box": {
+          "x": 0.1563,
+          "y": 0.5795,
+          "w": 0.3382,
+          "h": 0.3445
+        },
+        "pixelBox": {
+          "x": 450,
+          "y": 1043.015625,
+          "w": 974,
+          "h": 620.1875
+        },
+        "aspect": 1.57,
+        "areaShare": 0.1165,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 468,
+          "h": 298
+        },
+        "pass": 1,
+        "file": "capture/imagery-02.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.77,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#f3f3f3",
+            "coverage": 0.0544,
+            "saturation": 0,
+            "luma": 0.953
+          },
+          {
+            "hex": "#cdeccb",
+            "coverage": 0.0123,
+            "saturation": 0.14,
+            "luma": 0.89
+          },
+          {
+            "hex": "#ececec",
+            "coverage": 0.0117,
+            "saturation": 0,
+            "luma": 0.925
+          },
+          {
+            "hex": "#d5f2d4",
+            "coverage": 0.0113,
+            "saturation": 0.124,
+            "luma": 0.916
+          },
+          {
+            "hex": "#dbf5db",
+            "coverage": 0.0085,
+            "saturation": 0.106,
+            "luma": 0.932
+          }
+        ],
+        "light": {
+          "meanLuma": 0.964,
+          "p05": 0.812,
+          "p50": 1,
+          "p95": 1,
+          "dynamicRange": 0.188,
+          "gradient": {
+            "dx": 0.015,
+            "dy": 0
+          },
+          "direction": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 1.6
+        }
+      },
+      {
+        "src": "https://static.coupangcdn.com/ja/cmg_paperboy/image/1787034802055/C2-3.jpeg",
+        "alt": "",
+        "box": {
+          "x": 0.1563,
+          "y": 0.2212,
+          "w": 0.1649,
+          "h": 0.3449
+        },
+        "pixelBox": {
+          "x": 450,
+          "y": 398.1875,
+          "w": 475,
+          "h": 620.828125
+        },
+        "aspect": 0.765,
+        "areaShare": 0.0569,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 228,
+          "h": 298
+        },
+        "pass": 1,
+        "file": "capture/imagery-03.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.7156,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#343434",
+            "coverage": 0.039,
+            "saturation": 0,
+            "luma": 0.204
+          },
+          {
+            "hex": "#4c4c4c",
+            "coverage": 0.0319,
+            "saturation": 0,
+            "luma": 0.298
+          },
+          {
+            "hex": "#3b3b3b",
+            "coverage": 0.0307,
+            "saturation": 0,
+            "luma": 0.231
+          },
+          {
+            "hex": "#434343",
+            "coverage": 0.0302,
+            "saturation": 0,
+            "luma": 0.263
+          },
+          {
+            "hex": "#e3e3e3",
+            "coverage": 0.0205,
+            "saturation": 0,
+            "luma": 0.89
+          }
+        ],
+        "light": {
+          "meanLuma": 0.844,
+          "p05": 0.204,
+          "p50": 1,
+          "p95": 1,
+          "dynamicRange": 0.796,
+          "gradient": {
+            "dx": -0.007,
+            "dy": -0.158
+          },
+          "direction": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 7.8
+        }
+      },
+      {
+        "src": "https://static.coupangcdn.com/ma/cmg_paperboy/image/1787034724214/C2-4.jpeg",
+        "alt": "",
+        "box": {
+          "x": 0.3295,
+          "y": 0.2212,
+          "w": 0.1649,
+          "h": 0.3449
+        },
+        "pixelBox": {
+          "x": 949,
+          "y": 398.1875,
+          "w": 475,
+          "h": 620.828125
+        },
+        "aspect": 0.765,
+        "areaShare": 0.0569,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 228,
+          "h": 298
+        },
+        "pass": 1,
+        "file": "capture/imagery-04.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.7968,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#e3e3e3",
+            "coverage": 0.0231,
+            "saturation": 0,
+            "luma": 0.89
+          },
+          {
+            "hex": "#cfcfd0",
+            "coverage": 0.0153,
+            "saturation": 0.005,
+            "luma": 0.812
+          },
+          {
+            "hex": "#f2f2f2",
+            "coverage": 0.0138,
+            "saturation": 0,
+            "luma": 0.949
+          },
+          {
+            "hex": "#ededed",
+            "coverage": 0.0105,
+            "saturation": 0,
+            "luma": 0.929
+          },
+          {
+            "hex": "#cccccd",
+            "coverage": 0.0067,
+            "saturation": 0.005,
+            "luma": 0.8
+          }
+        ],
+        "light": {
+          "meanLuma": 0.922,
+          "p05": 0.385,
+          "p50": 1,
+          "p95": 1,
+          "dynamicRange": 0.615,
+          "gradient": {
+            "dx": 0.001,
+            "dy": -0.008
+          },
+          "direction": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 7.8
+        }
+      },
+      {
+        "src": "https://static.coupangcdn.com/ya/cmg_paperboy/image/1787034913948/C2-5.jpeg",
+        "alt": "",
+        "box": {
+          "x": 0.5028,
+          "y": 0.2212,
+          "w": 0.1649,
+          "h": 0.3449
+        },
+        "pixelBox": {
+          "x": 1448,
+          "y": 398.1875,
+          "w": 475,
+          "h": 620.828125
+        },
+        "aspect": 0.765,
+        "areaShare": 0.0569,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 228,
+          "h": 298
+        },
+        "pass": 1,
+        "file": "capture/imagery-05.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.7398,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#e3e3e3",
+            "coverage": 0.021,
+            "saturation": 0,
+            "luma": 0.89
+          },
+          {
+            "hex": "#cfcfd0",
+            "coverage": 0.0163,
+            "saturation": 0.005,
+            "luma": 0.812
+          },
+          {
+            "hex": "#010101",
+            "coverage": 0.014,
+            "saturation": 0,
+            "luma": 0.004
+          },
+          {
+            "hex": "#f2f2f2",
+            "coverage": 0.0103,
+            "saturation": 0,
+            "luma": 0.949
+          },
+          {
+            "hex": "#434344",
+            "coverage": 0.0095,
+            "saturation": 0.015,
+            "luma": 0.263
+          }
+        ],
+        "light": {
+          "meanLuma": 0.854,
+          "p05": 0.146,
+          "p50": 1,
+          "p95": 1,
+          "dynamicRange": 0.854,
+          "gradient": {
+            "dx": 0.005,
+            "dy": -0.096
+          },
+          "direction": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 7.8
+        }
+      },
+      {
+        "src": "https://static.coupangcdn.com/qa/cmg_paperboy/image/1787034696268/C2-6.jpeg",
+        "alt": "",
+        "box": {
+          "x": 0.676,
+          "y": 0.2212,
+          "w": 0.1649,
+          "h": 0.3449
+        },
+        "pixelBox": {
+          "x": 1947,
+          "y": 398.1875,
+          "w": 475,
+          "h": 620.828125
+        },
+        "aspect": 0.765,
+        "areaShare": 0.0569,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 228,
+          "h": 298
+        },
+        "pass": 1,
+        "file": "capture/imagery-06.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.5541,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#242422",
+            "coverage": 0.0227,
+            "saturation": 0.056,
+            "luma": 0.141
+          },
+          {
+            "hex": "#2c2c2a",
+            "coverage": 0.0211,
+            "saturation": 0.045,
+            "luma": 0.172
+          },
+          {
+            "hex": "#e3e3e3",
+            "coverage": 0.0203,
+            "saturation": 0,
+            "luma": 0.89
+          },
+          {
+            "hex": "#030302",
+            "coverage": 0.0187,
+            "saturation": 0.333,
+            "luma": 0.011
+          },
+          {
+            "hex": "#73e454",
+            "coverage": 0.0129,
+            "saturation": 0.632,
+            "luma": 0.759
+          }
+        ],
+        "light": {
+          "meanLuma": 0.748,
+          "p05": 0.094,
+          "p50": 1,
+          "p95": 1,
+          "dynamicRange": 0.906,
+          "gradient": {
+            "dx": 0.012,
+            "dy": -0.225
+          },
+          "direction": "brighter top"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#e6e6e6",
+          "center": {
+            "x": 0.5049,
+            "y": 0.605
+          },
+          "box": {
+            "x": 0.075,
+            "y": 0.0766,
+            "w": 0.8438,
+            "h": 0.8469
+          },
+          "coverage": 0.25
+        }
+      },
+      {
+        "src": "https://static.coupangcdn.com/ea/cmg_paperboy/image/1787034544728/C2-8.jpeg",
+        "alt": "",
+        "box": {
+          "x": 0.5028,
+          "y": 0.5795,
+          "w": 0.1649,
+          "h": 0.3449
+        },
+        "pixelBox": {
+          "x": 1448,
+          "y": 1043.015625,
+          "w": 475,
+          "h": 620.828125
+        },
+        "aspect": 0.765,
+        "areaShare": 0.0569,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 228,
+          "h": 298
+        },
+        "pass": 1,
+        "file": "capture/imagery-07.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.7581,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#e3e3e3",
+            "coverage": 0.0197,
+            "saturation": 0,
+            "luma": 0.89
+          },
+          {
+            "hex": "#cfcfd0",
+            "coverage": 0.0163,
+            "saturation": 0.005,
+            "luma": 0.812
+          },
+          {
+            "hex": "#edecf5",
+            "coverage": 0.0094,
+            "saturation": 0.037,
+            "luma": 0.929
+          },
+          {
+            "hex": "#eeeeee",
+            "coverage": 0.0088,
+            "saturation": 0,
+            "luma": 0.933
+          },
+          {
+            "hex": "#f1f1f2",
+            "coverage": 0.0086,
+            "saturation": 0.004,
+            "luma": 0.945
+          }
+        ],
+        "light": {
+          "meanLuma": 0.908,
+          "p05": 0.309,
+          "p50": 1,
+          "p95": 1,
+          "dynamicRange": 0.691,
+          "gradient": {
+            "dx": 0.017,
+            "dy": -0.001
+          },
+          "direction": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 7.8
+        }
+      },
+      {
+        "src": "https://static.coupangcdn.com/la/cmg_paperboy/image/1787034708639/C2-9.jpeg",
+        "alt": "",
+        "box": {
+          "x": 0.676,
+          "y": 0.5795,
+          "w": 0.1649,
+          "h": 0.3449
+        },
+        "pixelBox": {
+          "x": 1947,
+          "y": 1043.015625,
+          "w": 475,
+          "h": 620.828125
+        },
+        "aspect": 0.765,
+        "areaShare": 0.0569,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 228,
+          "h": 298
+        },
+        "pass": 1,
+        "file": "capture/imagery-08.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.6952,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#e3e3e3",
+            "coverage": 0.0196,
+            "saturation": 0,
+            "luma": 0.89
+          },
+          {
+            "hex": "#cfcfd0",
+            "coverage": 0.0121,
+            "saturation": 0.005,
+            "luma": 0.812
+          },
+          {
+            "hex": "#a9ce45",
+            "coverage": 0.0108,
+            "saturation": 0.665,
+            "luma": 0.738
+          },
+          {
+            "hex": "#499cd5",
+            "coverage": 0.0096,
+            "saturation": 0.657,
+            "luma": 0.559
+          },
+          {
+            "hex": "#f2f2f2",
+            "coverage": 0.0086,
+            "saturation": 0,
+            "luma": 0.949
+          }
+        ],
+        "light": {
+          "meanLuma": 0.904,
+          "p05": 0.535,
+          "p50": 1,
+          "p95": 1,
+          "dynamicRange": 0.465,
+          "gradient": {
+            "dx": 0.003,
+            "dy": -0.027
+          },
+          "direction": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 7.8
+        }
+      },
+      {
+        "src": "https://thumbnail.coupangcdn.com/thumbnails/remote/292x292ex/image/vendor_inventory/ceea/2f77ad56d1a8661a284b910f914bd413808b22e4eda04724805e2f10da60.png",
+        "alt": "보아스컴퓨터 조립 컴퓨터 게이밍PC 게임용 본체 하이엔드PC 롤 메이플 오버워치 피파 배그 배틀그라운드 디아블로 GTA6 데스크탑 고사양, i7",
+        "box": {
+          "x": 0.1507,
+          "y": 0.0532,
+          "w": 0.1403,
+          "h": 0.2244
+        },
+        "pixelBox": {
+          "x": 434,
+          "y": 95.84375,
+          "w": 404,
+          "h": 404
+        },
+        "aspect": 1,
+        "areaShare": 0.0315,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 292,
+          "h": 292
+        },
+        "pass": 2,
+        "file": "capture/imagery-09.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.3173,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#cbcbcb",
+            "coverage": 0.0632,
+            "saturation": 0,
+            "luma": 0.796
+          },
+          {
+            "hex": "#ececec",
+            "coverage": 0.0568,
+            "saturation": 0,
+            "luma": 0.925
+          },
+          {
+            "hex": "#f2f2f2",
+            "coverage": 0.0468,
+            "saturation": 0,
+            "luma": 0.949
+          },
+          {
+            "hex": "#e4e4e4",
+            "coverage": 0.0311,
+            "saturation": 0,
+            "luma": 0.894
+          },
+          {
+            "hex": "#bcbbbc",
+            "coverage": 0.022,
+            "saturation": 0.005,
+            "luma": 0.734
+          }
+        ],
+        "light": {
+          "meanLuma": 0.786,
+          "p05": 0.254,
+          "p50": 0.863,
+          "p95": 1,
+          "dynamicRange": 0.746,
+          "gradient": {
+            "dx": -0.049,
+            "dy": 0.033
+          },
+          "direction": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 0
+        }
+      },
+      {
+        "src": "https://thumbnail.coupangcdn.com/thumbnails/remote/292x292ex/image/vendor_inventory/cbde/32cb29b89f0764078ab9dd02950d5cfd1fc6c81fe22ff4006a8dda98e78c.png",
+        "alt": "컴집 게이밍컴퓨터 컴퓨터본체 GTA6 배틀그라운드 디아블로4 롤 오버워치2 피파온라인 메이플 패스오브엑자일 붉은사막 게이밍PC, 3D전문가용29",
+        "box": {
+          "x": 0.3278,
+          "y": 0.0532,
+          "w": 0.1403,
+          "h": 0.2244
+        },
+        "pixelBox": {
+          "x": 944,
+          "y": 95.84375,
+          "w": 404,
+          "h": 404
+        },
+        "aspect": 1,
+        "areaShare": 0.0315,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 292,
+          "h": 292
+        },
+        "pass": 2,
+        "file": "capture/imagery-10.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.4381,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#2b2b2c",
+            "coverage": 0.0281,
+            "saturation": 0.023,
+            "luma": 0.169
+          },
+          {
+            "hex": "#131414",
+            "coverage": 0.027,
+            "saturation": 0.05,
+            "luma": 0.078
+          },
+          {
+            "hex": "#434343",
+            "coverage": 0.0237,
+            "saturation": 0,
+            "luma": 0.263
+          },
+          {
+            "hex": "#333334",
+            "coverage": 0.0236,
+            "saturation": 0.019,
+            "luma": 0.2
+          },
+          {
+            "hex": "#3c3c3c",
+            "coverage": 0.0222,
+            "saturation": 0,
+            "luma": 0.235
+          }
+        ],
+        "light": {
+          "meanLuma": 0.644,
+          "p05": 0.075,
+          "p50": 0.784,
+          "p95": 1,
+          "dynamicRange": 0.925,
+          "gradient": {
+            "dx": -0.302,
+            "dy": -0.143
+          },
+          "direction": "brighter left"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#ffffff",
+          "center": {
+            "x": 0.644,
+            "y": 0.5824
+          },
+          "box": {
+            "x": 0.3312,
+            "y": 0.2062,
+            "w": 0.625,
+            "h": 0.7
+          },
+          "coverage": 0.25
+        }
+      },
+      {
+        "src": "https://thumbnail.coupangcdn.com/thumbnails/remote/292x292ex/image/vendor_inventory/06cc/9ad07bb012662460c340474492fd07736c374113d6e61e5712b2c15ac33e.jpg",
+        "alt": "해태htb 포도봉봉, 340ml, 24개",
+        "box": {
+          "x": 0.5049,
+          "y": 0.0532,
+          "w": 0.1403,
+          "h": 0.2244
+        },
+        "pixelBox": {
+          "x": 1454,
+          "y": 95.84375,
+          "w": 404,
+          "h": 404
+        },
+        "aspect": 1,
+        "areaShare": 0.0315,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 292,
+          "h": 292
+        },
+        "pass": 2,
+        "file": "capture/imagery-11.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.4456,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#235543",
+            "coverage": 0.01,
+            "saturation": 0.588,
+            "luma": 0.287
+          },
+          {
+            "hex": "#255a45",
+            "coverage": 0.0047,
+            "saturation": 0.589,
+            "luma": 0.303
+          },
+          {
+            "hex": "#f5fbfb",
+            "coverage": 0.0044,
+            "saturation": 0.024,
+            "luma": 0.979
+          },
+          {
+            "hex": "#3c7c6a",
+            "coverage": 0.004,
+            "saturation": 0.516,
+            "luma": 0.428
+          },
+          {
+            "hex": "#ebecec",
+            "coverage": 0.0038,
+            "saturation": 0.004,
+            "luma": 0.925
+          }
+        ],
+        "light": {
+          "meanLuma": 0.802,
+          "p05": 0.331,
+          "p50": 0.904,
+          "p95": 1,
+          "dynamicRange": 0.669,
+          "gradient": {
+            "dx": -0.01,
+            "dy": 0.057
+          },
+          "direction": "brighter bottom"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "no figure-ground separation (edge-to-edge composition)",
+          "borderVariance": 0.4
+        }
+      },
+      {
+        "src": "https://thumbnail.coupangcdn.com/thumbnails/remote/292x292ex/image/retail/images/411270223489905-b5013647-f8c6-4bbb-85c6-4ea04cc5767e.jpg",
+        "alt": "몬스터에너지 그린, 355ml, 24개",
+        "box": {
+          "x": 0.6819,
+          "y": 0.0532,
+          "w": 0.1403,
+          "h": 0.2244
+        },
+        "pixelBox": {
+          "x": 1964,
+          "y": 95.84375,
+          "w": 404,
+          "h": 404
+        },
+        "aspect": 1,
+        "areaShare": 0.0315,
+        "firstScreen": true,
+        "intrinsic": {
+          "w": 292,
+          "h": 292
+        },
+        "pass": 2,
+        "file": "capture/imagery-12.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.2864,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#131313",
+            "coverage": 0.1293,
+            "saturation": 0,
+            "luma": 0.075
+          },
+          {
+            "hex": "#1b1b1b",
+            "coverage": 0.0279,
+            "saturation": 0,
+            "luma": 0.106
+          },
+          {
+            "hex": "#434343",
+            "coverage": 0.0219,
+            "saturation": 0,
+            "luma": 0.263
+          },
+          {
+            "hex": "#12130d",
+            "coverage": 0.0219,
+            "saturation": 0.316,
+            "luma": 0.072
+          },
+          {
+            "hex": "#232323",
+            "coverage": 0.0208,
+            "saturation": 0,
+            "luma": 0.137
+          }
+        ],
+        "light": {
+          "meanLuma": 0.481,
+          "p05": 0.067,
+          "p50": 0.326,
+          "p95": 1,
+          "dynamicRange": 0.933,
+          "gradient": {
+            "dx": 0,
+            "dy": 0.013
+          },
+          "direction": "even"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#ffffff",
+          "center": {
+            "x": 0.4325,
+            "y": 0.4916
+          },
+          "box": {
+            "x": 0.0375,
+            "y": 0.075,
+            "w": 0.9063,
+            "h": 0.8438
+          },
+          "coverage": 0.2501
+        }
+      }
+    ],
+    "aggregate": {
+      "meanLuma": 0.844,
+      "dynamicRange": 0.796,
+      "lightDirections": {
+        "brighter top": 4,
+        "even": 5,
+        "brighter left": 2,
+        "brighter bottom": 1
+      },
+      "aspects": 1,
+      "figureGroundResolved": "3/12",
+      "subjectCenterX": 0.505,
+      "subjectCenterY": 0.582,
+      "subjectCoverage": 0.25
+    }
+  }
+}
