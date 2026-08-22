@@ -71,8 +71,14 @@ export function palette({ data, width, height }) {
 }
 
 /**
- * Light description: how bright, how contrasty, and which way the brightness
- * falls off — a usable stand-in for "key light from camera left".
+ * Brightness description: how bright, how contrasty, and which way brightness
+ * falls off across the frame.
+ *
+ * `luminanceGradient` is NOT a light direction. It is the difference between
+ * half-frame averages, so a bright garment on one side, a white background, or
+ * the subject sitting off-centre all read as "brighter left". It must not be
+ * promoted into a key-light instruction in a prompt — that is a different
+ * physical quantity than the one measured here.
  */
 export function light({ data, width, height }) {
   const lumas = new Float64Array(width * height);
@@ -94,13 +100,14 @@ export function light({ data, width, height }) {
   const strongest = Math.abs(dx) >= Math.abs(dy)
     ? (dx > 0 ? "brighter right" : "brighter left")
     : (dy > 0 ? "brighter bottom" : "brighter top");
+  // Named for what it is, not for what one might wish it were.
 
   return {
     meanLuma: +(sum / (width * height)).toFixed(3),
     p05: at(0.05), p50: at(0.5), p95: at(0.95),
     dynamicRange: +(at(0.95) - at(0.05)).toFixed(3),
     gradient: { dx, dy },
-    direction: Math.max(Math.abs(dx), Math.abs(dy)) >= 0.04 ? strongest : "even",
+    luminanceGradient: Math.max(Math.abs(dx), Math.abs(dy)) >= 0.04 ? strongest : "even",
   };
 }
 
@@ -152,7 +159,10 @@ export function subject({ data, width, height }) {
   const boxH = (maxY - minY) / height;
   const separated = borderVar < 40 && boxW < 0.92 && boxH < 0.92;
   if (!separated) {
-    return { resolved: false, reason: "no figure-ground separation (edge-to-edge composition)", borderVariance: +borderVar.toFixed(1) };
+    // Says what the algorithm did, not what the picture is. A busy border, a
+    // multi-subject frame and a textured background all fail the same way, so
+    // "edge-to-edge crop" is a claim this measurement cannot make.
+    return { resolved: false, reason: "algorithm could not separate figure from ground", borderVariance: +borderVar.toFixed(1) };
   }
 
   return {
@@ -164,6 +174,31 @@ export function subject({ data, width, height }) {
   };
 }
 
+
+/**
+ * Minimum resolved samples before a subject-placement median means anything.
+ * Two out of twelve produced a median that sat at the centre of the frame —
+ * a number the plan forbids citing, supplied by the plan's own tool.
+ */
+export const MIN_RESOLVED_SUBJECTS = 4;
+
+/**
+ * Subject aggregate, or nothing. Callers spread the result, so an omitted field
+ * simply does not appear in evidence.json — which is the point: a prompt cannot
+ * cite a key that is absent.
+ */
+export function aggregateSubject(resolved, sampled) {
+  const base = { figureGroundResolved: `${resolved.length}/${sampled}` };
+  if (resolved.length < MIN_RESOLVED_SUBJECTS) {
+    return { ...base, subjectNote: `fewer than ${MIN_RESOLVED_SUBJECTS} resolved samples — placement omitted` };
+  }
+  return {
+    ...base,
+    subjectCenterX: median(resolved.map((s) => s.center.x)),
+    subjectCenterY: median(resolved.map((s) => s.center.y)),
+    subjectCoverage: median(resolved.map((s) => s.coverage)),
+  };
+}
 
 /**
  * Crops a region out of a screenshot. The Aside channel returns one viewport

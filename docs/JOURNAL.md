@@ -1,3 +1,8 @@
+## 2026-08-22 (grok-4.6) 3트랙 계획 최종 승인 — 조건부
+- 한 일: 개정본 `docs/OMD_3TRACK_PLAN.md` 판정. 기록 `docs/reviews/3track-plan-2026-08-22-grok-approval.md`. VERDICT APPROVE_WITH_CONDITIONS.
+- 열린 것: T3-0, 기존 PNG 보존, T1-1. 닫힌 것: T3-1 이후 / T1-2 이후 / T2. 계획 「다음 행동」은 실행 지시가 아님.
+- 다음: C1–C7 문서 패치 후 T3-1. 코드는 T3-0 측정기부터.
+
 ## 2026-08-21 (Fable) blog 서브도메인 구현 — A1만 남음
 - 한 일: `feat/blog-subdomain`에 커밋 3개 — 호스트 라우팅(Next 16 `proxy.ts`) + 포스트 파일화, 로케일 2종·피드·블로그 사이트맵/robots·OG·플래그 게이트 301, KO 정본 발행. 컷오버는 환경변수 `NEXT_PUBLIC_BLOG_SUBDOMAIN=1` 하나.
 - 검증: 프로덕션 빌드 EXIT=0, 웹 테스트 891 통과, dev에서 Host 위조로 양쪽 플래그 상태 실측. 실측으로 결함 4건 사전 발견·수정.

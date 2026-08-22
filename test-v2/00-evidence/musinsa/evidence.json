@@ -1044,5 +1044,14 @@
         }
       ]
     }
+  },
+  "supersededBy": {
+    "reason": "captured before T3-0 measurement fixes; must not be cited in prompts",
+    "defects": [
+      "chrome.primaryButton may be a campaign CTA rather than brand chrome",
+      "imagery.aggregate.subjectCenter* emitted below the resolved-sample floor",
+      "light.direction was a half-frame luminance difference named as a light direction"
+    ],
+    "action": "recapture under T3-2.5 (musinsa) / T3-4 (coupang)"
   }
 }

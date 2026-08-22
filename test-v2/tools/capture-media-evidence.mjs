@@ -32,7 +32,7 @@ import { chromium } from "playwright-core";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { light, median, palette, subject, toRgb } from "./analysis.mjs";
+import { aggregateSubject, light, median, palette, subject, toRgb } from "./analysis.mjs";
 const HERE = dirname(fileURLToPath(import.meta.url));
 const EVIDENCE_ROOT = resolve(HERE, "..", "00-evidence");
 
@@ -88,17 +88,45 @@ async function collectChrome(page) {
     const header = document.querySelector("header, [role=banner], nav")?.closest("header, [role=banner], nav") ?? null;
     const headerStyle = cs(header);
 
-    // The primary button: the most visually committed control above the fold.
-    let primary = null;
-    let bestScore = -1;
+    // The primary button: a control the brand keeps, not the campaign CTA of the
+    // day. Musinsa's largest opaque above-the-fold button was #5ccca8 with an
+    // empty label — a promo tile, while the catalog records primary #000000.
+    // So: skip promotional containers, require a real label, and prefer a
+    // signature that repeats, because reusable UI repeats and a campaign
+    // banner is a one-off.
+    const PROMO = /banner|promo|carousel|swiper|slide|event|campaign|advert|\bad\b/i;
+    const inPromo = (node) => {
+      for (let cur = node; cur && cur !== document.body; cur = cur.parentElement) {
+        const id = (cur.id || "") + " " + (cur.className || "").toString();
+        if (PROMO.test(id)) return true;
+      }
+      return false;
+    };
+
+    const signature = new Map();
+    const candidates = [];
     for (const el of document.querySelectorAll("button, a[class*=btn i], a[class*=button i], [role=button]")) {
       const r = el.getBoundingClientRect();
       if (r.top > window.innerHeight || r.width < 60 || r.height < 28) continue;
       const s = getComputedStyle(el);
       const bg = s.backgroundColor;
       if (!bg || bg === "rgba(0, 0, 0, 0)" || bg === "transparent") continue;
-      const score = r.width * r.height;
-      if (score > bestScore) { bestScore = score; primary = { el, s, r }; }
+      const label = (el.innerText || "").trim();
+      if (!label) continue;
+      if (inPromo(el)) continue;
+      const key = `${bg}|${s.borderRadius}|${s.fontSize}|${s.fontWeight}`;
+      signature.set(key, (signature.get(key) ?? 0) + 1);
+      candidates.push({ el, s, r, key, label });
+    }
+
+    let primary = null;
+    if (candidates.length) {
+      candidates.sort((a, b) => {
+        const rep = (signature.get(b.key) ?? 0) - (signature.get(a.key) ?? 0);
+        if (rep !== 0) return rep;
+        return b.r.width * b.r.height - a.r.width * a.r.height;
+      });
+      primary = candidates[0];
     }
 
     const typeScale = [];
@@ -136,7 +164,8 @@ async function collectChrome(page) {
         paddingX: +parseFloat(primary.s.paddingLeft).toFixed(1),
         fontPx: +parseFloat(primary.s.fontSize).toFixed(1),
         weight: primary.s.fontWeight,
-        label: (primary.el.innerText || "").trim().slice(0, 40),
+        label: primary.label.slice(0, 40),
+        repeats: signature.get(primary.key) ?? 1,
       } : null,
       typeScale,
     };
@@ -330,12 +359,9 @@ try {
     aggregate: {
       meanLuma: median(lits.map((l) => l.meanLuma)),
       dynamicRange: median(lits.map((l) => l.dynamicRange)),
-      lightDirections: lits.reduce((acc, l) => ({ ...acc, [l.direction]: (acc[l.direction] ?? 0) + 1 }), {}),
+      luminanceGradients: lits.reduce((acc, l) => ({ ...acc, [l.luminanceGradient]: (acc[l.luminanceGradient] ?? 0) + 1 }), {}),
       aspects: median(samples.map((s) => s.aspect)),
-      figureGroundResolved: `${resolvedSubjects.length}/${samples.length}`,
-      subjectCenterX: median(resolvedSubjects.map((s) => s.center.x)),
-      subjectCenterY: median(resolvedSubjects.map((s) => s.center.y)),
-      subjectCoverage: median(resolvedSubjects.map((s) => s.coverage)),
+      ...aggregateSubject(resolvedSubjects, samples.length),
     },
   };
 

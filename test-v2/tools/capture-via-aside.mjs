@@ -29,7 +29,7 @@ import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
-import { cropTo, light, median, palette, subject, toRgb } from "./analysis.mjs";
+import { aggregateSubject, cropTo, light, median, palette, subject, toRgb } from "./analysis.mjs";
 
 const execFileAsync = promisify(execFile);
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -74,15 +74,36 @@ for (let pass = 0; pass < 3; pass++) {
   };
 
   const header = document.querySelector("header, [role=banner], nav");
-  let primary = null, best = -1;
+
+  // Same rule as the Playwright channel: the button the brand keeps, not the
+  // campaign CTA of the day. Promotional containers out, unlabelled controls
+  // out, and a repeating signature wins over raw size.
+  const PROMO = /banner|promo|carousel|swiper|slide|event|campaign|advert|\bad\b/i;
+  const inPromo = (node) => {
+    for (let cur = node; cur && cur !== document.body; cur = cur.parentElement) {
+      const id = (cur.id || "") + " " + (cur.className || "").toString();
+      if (PROMO.test(id)) return true;
+    }
+    return false;
+  };
+  const signature = new Map();
+  const candidates = [];
   for (const el of document.querySelectorAll("button, a[class*=btn i], a[class*=button i], [role=button]")) {
     const r = el.getBoundingClientRect();
     if (r.top > vh || r.width < 60 || r.height < 28) continue;
-    const s = getComputedStyle(el);
-    if (!s.backgroundColor || s.backgroundColor === "rgba(0, 0, 0, 0)") continue;
-    const area = r.width * r.height;
-    if (area > best) { best = area; primary = { el, s }; }
+    const st = getComputedStyle(el);
+    if (!st.backgroundColor || st.backgroundColor === "rgba(0, 0, 0, 0)") continue;
+    const label = (el.innerText || "").trim();
+    if (!label || inPromo(el)) continue;
+    const key = st.backgroundColor + "|" + st.borderRadius + "|" + st.fontSize + "|" + st.fontWeight;
+    signature.set(key, (signature.get(key) ?? 0) + 1);
+    candidates.push({ el, s: st, r, key, label });
   }
+  candidates.sort((a, b) => {
+    const rep = (signature.get(b.key) ?? 0) - (signature.get(a.key) ?? 0);
+    return rep !== 0 ? rep : b.r.width * b.r.height - a.r.width * a.r.height;
+  });
+  const primary = candidates[0] ?? null;
 
   const typeScale = [];
   for (const tag of ["h1", "h2", "h3", "p", "button"]) {
@@ -138,7 +159,8 @@ for (let pass = 0; pass < 3; pass++) {
         background: hexOf(primary.s.backgroundColor), color: hexOf(primary.s.color),
         radiusPx: +parseFloat(primary.s.borderRadius).toFixed(1),
         fontPx: +parseFloat(primary.s.fontSize).toFixed(1), weight: primary.s.fontWeight,
-        label: (primary.el.innerText || "").trim().slice(0, 40),
+        label: primary.label.slice(0, 40),
+        repeats: signature.get(primary.key) ?? 1,
       } : null,
       typeScale,
     },
@@ -252,12 +274,9 @@ try {
     aggregate: {
       meanLuma: median(lits.map((l) => l.meanLuma)),
       dynamicRange: median(lits.map((l) => l.dynamicRange)),
-      lightDirections: lits.reduce((acc, l) => ({ ...acc, [l.direction]: (acc[l.direction] ?? 0) + 1 }), {}),
+      luminanceGradients: lits.reduce((acc, l) => ({ ...acc, [l.luminanceGradient]: (acc[l.luminanceGradient] ?? 0) + 1 }), {}),
       aspects: median(samples.map((s) => s.aspect)),
-      figureGroundResolved: `${resolved.length}/${samples.length}`,
-      subjectCenterX: median(resolved.map((s) => s.center.x)),
-      subjectCenterY: median(resolved.map((s) => s.center.y)),
-      subjectCoverage: median(resolved.map((s) => s.coverage)),
+      ...aggregateSubject(resolved, samples.length),
     },
   };
 } catch (error) {

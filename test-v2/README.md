@@ -96,12 +96,12 @@ node capture-media-evidence.mjs --brand musinsa --url https://www.musinsa.com/
 | 항목 | 값 |
 |---|---|
 | chrome 배경 | `#000000` |
-| chrome 주 버튼 | `#5ccca8` |
+| chrome 주 버튼 | ⚠️ `#5ccca8` — **유효하지 않다.** 라벨이 빈 문자열이고, 카탈로그의 무신사는 primary `#000000`이다. 수집기가 캠페인 CTA를 잡았다 (T3-0 #1에서 수정) |
 | imagery 표본 | 12장 |
 | 평균 휘도 / 다이내믹 레인지 | 0.752 / 0.609 |
 | 광 방향 분포 | top 6 · left 3 · even 2 · bottom 1 |
 | 종횡비 중앙값 | 0.833 (4:5) |
-| figure-ground 분리 | 2/12 |
+| figure-ground 분리 | 2/12 — 분리 실패이지 "엣지투엣지"의 직접 증거는 아니다 |
 
 ## 5.1 차단 사이트 — Aside 채널
 
@@ -125,10 +125,18 @@ node capture-via-aside.mjs --brand coupang --url https://www.coupang.com/
 종횡비 1.0(정사각 타일), figure-ground 3/12, 피사체 중심 (0.505, 0.582),
 `pageBackground`는 투명이라 **미해결로 비움**.
 
-## 6. 원본 캡처는 커밋하지 않는다
+## 6. 원본 캡처는 커밋하지 않되, 버리지도 않는다
 
-`capture/*.png`는 타사 저작물이다. 측정값(`evidence.json`)은 사실이라 커밋하고,
-이미지 자체는 로컬 증거로만 둔다. 재현이 필요하면 캡처를 다시 돌리면 된다.
+`capture/*.png`는 타사 저작물이라 레포에 커밋하지 않는다. 측정값(`evidence.json`)은
+사실이라 커밋한다.
+
+**재캡처는 원본의 대체재가 아니다.** 커머스 크리에이티브는 캠페인마다 바뀌므로
+같은 `evidence.json`은 두 번 다시 나오지 않는다. 원본을 잃으면 "근거에서 유도했는가"라는
+이 프로젝트의 핵심 질문 자체가 감사 불가능해진다.
+
+원본은 **git 밖 불변 저장소**에 보관하고, `manifest.json`에 URL · 캡처 시각 ·
+viewport · locale · 로그인 상태 · 파일 SHA를 묶는다. 스냅샷 하나가 3자 비교의
+공유 입력 단위다.
 
 ## 7. 생성 채널 — Grok Imagine (실측 2026-08-22)
 
@@ -158,7 +166,7 @@ node capture-via-aside.mjs --brand coupang --url https://www.coupang.com/
 
 ## 9. 남은 단계
 
-1. 나머지 9개 브랜드 증거 캡처
+1. 무신사 재캡처(대상 화면 불일치) + 잔여 7개 브랜드 증거 캡처
 2. evidence → 프롬프트 유도 규칙 (수치 인용 강제)
 3. 생성 + 대조 검증 루프
 4. omd vs 경쟁 스킬 2종 3자 비교 — omd는 DESIGN.md·디자인 시스템·book 동반 검증
