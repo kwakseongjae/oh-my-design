@@ -10,6 +10,68 @@
 
 ## 지금 (현재 위치)
 
+### 2026-08-21 (Fable) ✅ blog 서브도메인 — A1(도메인) 빼고 전부 구현 완료
+
+- **커밋 3개**: `2cb4ebc0`(호스트 라우팅 + 포스트 파일화) · `aa1b1abc`(로케일 2종 + 피드 +
+  블로그 사이트맵/robots + OG + 플래그 게이트 301) · `d8f46598`(KO 정본 발행 + OG 폰트 수정).
+  브랜치 `feat/blog-subdomain`. **PR 미생성.**
+- **구조**: `/blog`(ko 정본) · `/blog/en`. 블로그 호스트에선 `/` · `/en`. KO판 없는 글의
+  KO URL은 307로 있는 로케일로. hreflang은 실재 로케일만 신고. 인덱스는 없는 로케일 글도
+  배지 달아 노출.
+- **컷오버 = 환경변수 하나**: `NEXT_PUBLIC_BLOG_SUBDOMAIN=1`. 켜는 순간 canonical·OG·
+  JSON-LD·사이트맵·`/blog/*` 301이 한꺼번에 서브도메인으로 넘어간다. 꺼져 있으면 전부
+  메인에 남으므로 도메인 없이 머지해도 안전(dev 양쪽 상태 실측).
+- **실측으로 잡은 결함 4건**: ① redirect Location 호스트 어긋남 ② 블로그 호스트에서
+  메인 링크(`/cli`)가 `/blog/cli`로 rewrite돼 404 ③ 메인 사이트맵이 307 나는 URL 게재
+  ④ OG 카드 폰트가 제목/날짜로 갈림. 전부 수정 + 회귀 테스트.
+- **B6 = 발행 파이프라인 첫 실행**: omd:kr-writer(toss-tech-design) → 사실 검증 →
+  omd:final-qa 2라운드. R1에서 교차 로케일 패리티 FAIL(8 vs 6) → EN 보강 → R2 8/8 PASS.
+  기록 `docs/blog-reviews/v2-post-final-qa.md`.
+- **닫지 못한 게이트**: 1440/390 실렌더. 이 머신 Chrome이 헤드리스·MCP 양쪽에서 localhost를
+  못 잡음(curl 정상, 샌드박스 해제해도 동일). **배포 후 390px 헤더 내비게이션 먼저 볼 것**
+  (로케일 전환 링크가 하나 늘었음).
+- **검증**: 프로덕션 빌드 EXIT=0(블로그 라우트 10 + Proxy 컴파일) · 타입체크 · 웹 테스트
+  891 통과 · lint 에러 0.
+- **다음(사용자)**: Vercel Domains에 `blog.oh-my-design.kr` + DNS CNAME → Valid 확인 →
+  환경변수 켜기 → 재배포. 그 전에는 A4 301이 비활성이라 아무 영향 없음.
+
+- **브랜치**: `feat/blog-subdomain` (origin/main 69d7f583 기준). **커밋 안 함, 스테이지만.**
+- **신설**: `web/src/lib/site.ts`(오리진 상수 + blogIndexUrl/blogPostUrl),
+  `web/src/lib/blog/host-routing.ts`(순수 매핑 함수), `web/src/proxy.ts`(Next 16 규약 —
+  `middleware.ts`는 deprecated이고 둘 다 있으면 E900),
+  `web/src/lib/blog/frontmatter.ts`(엄격 파서), `web/src/content/blog/<slug>/en.md`.
+- **컷오버 스위치 = 환경변수 `NEXT_PUBLIC_BLOG_SUBDOMAIN=1`.** OFF면 canonical·OG·
+  JSON-LD·사이트맵이 계속 `oh-my-design.kr/blog`를 가리켜 도메인 없이 머지해도 안전하고,
+  A1(Vercel 도메인 + CNAME) 후 Vercel 환경변수만 켜면 원자적 전환.
+- **실측 검증**: dev에서 Host 위조로 9케이스 통과(블로그 호스트 200/308/404, 메인 호스트
+  무변화), 플래그 ON 시 canonical·og:url·JSON-LD·sitemap 전부 blog 호스트로 전환 확인.
+  포스트 파일 이관 전후 렌더 HTML 문자 단위 동일. 타입체크 통과, 웹 테스트 877 통과
+  (신규 28), lint 에러 0.
+- **실측으로 잡은 결함 1건**: `NextResponse.redirect(nextUrl)`의 Location 호스트가 요청
+  호스트와 어긋남 → 검증된 Host 헤더로 `url.host` 고정.
+- **예약**: `/robots.txt`·`/sitemap.xml`·`/feed.xml`은 현재 메인 앱 것으로 통과. A5/B4에서
+  `host-routing.ts` 표에 항목 추가.
+- **다음**: 사용자 A1(Vercel Domains + DNS CNAME) → A4(301)·A5 → B3(hreflang)·B4·B5 →
+  C(발행 플레이북) → B6(기존 1편 KO 번안).
+
+### 2026-08-21 (Fable) 📋 blog 서브도메인 계획 확정 — 착수 전
+
+- **결정**: `blog.oh-my-design.kr`를 **정본 호스트**로, `oh-my-design.kr/blog/*`는 301.
+  코드는 분리하지 않는다 — 같은 레포·같은 Vercel 프로젝트(`web/`)에 middleware host
+  rewrite. 언어는 **KO 정본 + EN 동시**(hreflang ko/en/x-default), JA/zh-TW는 보류.
+  리듬은 **파이프라인 먼저** — 시드는 현행 1편 유지, 대량 집필은 인프라 완주 후.
+- **정본 문서**: `docs/BLOG_SUBDOMAIN_PLAN.md` (Phase A 인프라 / B 콘텐츠 파일화 /
+  C 발행 사슬 / D 계측·색인, 체크포인트 3개, 위험 5건).
+- **근거**: GSC 검색 클릭의 99.2%가 브랜드 쿼리 — 논브랜드 유입 엔진 부재. 블로그 KPI에
+  설치·전환은 걸지 않는다(활성화 누수는 블로그가 못 고침).
+- **발행 사슬(도그푸딩)**: omd:kr-writer → omd:humanize → omd:locale-adapter(EN) →
+  omd:designer-review + omd:slop-audit → omd:final-qa. FAIL 1건이면 발행 금지 +
+  NARRATIVE_CONTEXT 금지 주장 6개 준수 + 모든 수치에 측정일·레포 경로.
+- **사용자 선행 작업**: Vercel Domains에 `blog.oh-my-design.kr` 추가 + DNS CNAME(A1).
+  도메인 Valid 확인 전에는 `/blog/*` 301(A4)을 머지하지 않는다 — 켜면 블로그가 죽는다.
+- **주의**: 과거 `/blog`는 두 번 접혔다(4편 → dev 게이팅 → 1.5.0 제거 → v2에 1편 재도입).
+  이번 "파이프라인 먼저" 결정이 그 재발 대응.
+
 ### 2026-08-21 (Fable) ✅ 서사 축 전환 — DESIGN.md·디자인 시스템 하네스 (배포 완료)
 
 - **왜**: 대외 서사가 "한국 레퍼런스 최적화"로 축소돼 있었음. 중심축을 **DESIGN.md +
