@@ -4,6 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: active Luna epoch source `caf0e62d3e98684d482c56a2bbe3ef93a05ea873` (exact Codex 0.147 cache serialization); immutable diagnostic Luna epochs `f6cd17e2`, `253a3abc`, `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-23 · T3-2 C2 호스트 확정 후 정련 = **REVISE**. 상수 성분 제외·레인 A 「측정 불가」·호스트 `grok-4.6` 유지는 수용. 레인 B 「측정됨」은 처치 공선이라 `SELF_PREFERENCE` 테스트가 아님. 정본: `docs/reviews/rubric-2026-08-23-c2-refine.md`. 그 전 개정 본문 미동결, T3-3·`RUBRIC_FROZEN_SHA` 닫힘.
 - 갱신: 2026-08-22 · T3-2 모델 평가자 재제출 = **APPROVE_WITH_CONDITIONS**. 회피 삭제·네 축 주장 표·§4/7/9 3종 치환·α 0.67/0.80/0.67 동결은 본문 반영. `bias_j`는 같은-호스트 표준 설계에서 식별되지 않음 — 죽은 플래그를 측정으로 두지 말 것. 정본: `docs/reviews/rubric-2026-08-22-s3-resubmit.md` C1–C6. 그 전 개정 본문 미동결, T3-3·`RUBRIC_FROZEN_SHA` 닫힘.
 - 갱신: 2026-08-22 · T1-2 **REVISE 4항 개정 완료, 재검토 대기**. `docs/design-md-weight/2026-08-22-essence-verdict.md`를 Portable Core MUST 필드/그룹 판정으로 재작성하고 §1·§4·§6·§11 섹션 정수를 철회했다. 완비율·무게는 참고표로 분리, §9의 받을 곳 없는 도구 예시는 삭제, §14는 0/440 graph 동안 본문 보존 후 `components_states.components[].interaction.state_applicability`로 migration한다고 고정했다. 「반박 반영」과 이징 판정은 보존. T1-3은 재검토 전까지 닫힘.
 - 갱신: 2026-08-22 · T3-2 `test-v2/90-comparison/RUBRIC.md` 3차 반박 = **FREEZE**. 2차 남은 2항은 본문 반영(N1–N5 재분류 삭제·원문 순서 보존, 합친 `B_raw` PASS 킬 삭제·형식 단서만 `COMPROMISED`). 정본: `docs/reviews/rubric-2026-08-22-rebuttal-3.md`. 이후 모델 평가자 개정은 BLOCK(위). `RUBRIC_FROZEN_SHA`는 §9 나머지 게이트가 채워진 커밋에서 기록. 그 전 T3-3 닫힘.
@@ -13,6 +14,16 @@
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol selector는 신규 호출 금지(retired).
 
 ## 지금 (현재 위치)
+
+### 2026-08-23 (grok-4.6) ⚠️ T3-2 C2 호스트 확정 후 정련 — REVISE
+
+- **대상**: `test-v2/90-comparison/RUBRIC.md` §3.2 C2 (호스트 `grok-4.6`/`xai` 확정 후 상수 성분 제외).
+- **판정 기록**: `docs/reviews/rubric-2026-08-23-c2-refine.md`.
+- **수용**: 상수 술어를 조인에서 빼는 것. 레인 A `bias_j = N/A` · 리포트 「측정 불가」. 공유 호스트 grok-4.6 유지(레인 A 진단 소생 거래 아님).
+- **개정 필요**: 레인 B 시각 칸을 공선 대비로. `SELF_PREFERENCE`를 그 칸에 붙이지 않음. 축 범위(문서 N/A). sol·sonnet 칸. 97–98행 `gpt-image-2`와 115행 모순. C1 120행 호스트 미정 문장 삭제.
+- **연 것**: 없음. 정련 방향은 수용, 본문 동결은 6항 패치 후.
+- **닫은 것**: T3-3, `RUBRIC_FROZEN_SHA`. 호스트 재선택, 레인 A 대체 추정량, 회피/4번째 계열.
+- **다음**: 위 6항 본문 패치 후 재승인.
 
 ### 2026-08-22 (grok-4.6) ⚠️ T3-2 모델 평가자 재제출 — APPROVE_WITH_CONDITIONS
 
