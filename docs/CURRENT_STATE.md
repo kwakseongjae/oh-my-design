@@ -4,6 +4,7 @@
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
 - 기준 소스: active Luna epoch source `caf0e62d3e98684d482c56a2bbe3ef93a05ea873` (exact Codex 0.147 cache serialization); immutable diagnostic Luna epochs `f6cd17e2`, `253a3abc`, `68a19aa0-v2`, `9c65f56d`, `a0d3d944`; capacity fail-close commit `675457fc` + npm release tag `v1.9.0`; rollback tag `checkpoint/cli-v1.9-pre-conversion-20260721`
+- 갱신: 2026-08-22 · T1-2 정수 판정 반박 = **REVISE**. 정본 `docs/reviews/essence-verdict-2026-08-22-rebuttal.md`. 섹션 단위 정수 11개·§9 skill 착지·duration/signature 일괄 삭제는 수치·Core v2와 어긋남. §15 무출처 커브 삭제는 유지. T1-3/카탈로그 삭제는 개정 전까지 닫힘.
 - 갱신: 2026-08-22 · T3-2 `test-v2/90-comparison/RUBRIC.md` 3차 반박 = **FREEZE**. 2차 남은 2항은 본문 반영(N1–N5 재분류 삭제·원문 순서 보존, 합친 `B_raw` PASS 킬 삭제·형식 단서만 `COMPROMISED`). 정본: `docs/reviews/rubric-2026-08-22-rebuttal-3.md`. `RUBRIC_FROZEN_SHA`는 §9 나머지 게이트가 채워진 커밋에서 기록. 그 전 T3-3 닫힘.
 - 갱신: 2026-08-22 · 3트랙 계획 개정본 최종 승인 = **APPROVE_WITH_CONDITIONS**. 지금 열리는 것: T3-0 측정기 교정, 기존 musinsa/coupang PNG 보존, T1-1 440 무게 실측. T3-1 이후·T1-2 이후·T2는 조건 C1–C7 전까지 닫힘. 정본 판정: `docs/reviews/3track-plan-2026-08-22-grok-approval.md`. 계획 `docs/OMD_3TRACK_PLAN.md`의 **다음 행동은 실행 지시가 아님** (T3-2를 왕복으로 적음).
 - 갱신: 2026-08-14 저녁 · **사용자 결정으로 Luna·Sol 전면 은퇴.** caf0 partial epoch(terminal4/missing44)는 8/20 재개하지 않고 immutable diagnostic으로 영구 동결한다. 벤치마크는 grok-4.6 트랙으로 0셀부터 재시작하며 정본 seed는 `docs/OMD_2_0_GROK_RESTART_SEED.md`(= `~/.ouroboros/seeds/omd-grok46-restart-v0.1.md`)다. 이전 caf0 기록: order1 model-only=completed/50, order2 Anthropic=failed/0, order3 Impeccable=timeout/0, order4 UI UX Pro Max=usage-limit infra-invalid/0.
@@ -11,6 +12,14 @@
 - 추가 안전 설정: Cursor live 호출은 `cursor-grok-4.5-high` + 명시적 `included` 확인 없이는 spawn 전에 fail-close한다. Luna/Sol selector는 신규 호출 금지(retired).
 
 ## 지금 (현재 위치)
+
+### 2026-08-22 (grok-4.6) 📋 T1-2 정수 판정 반박 — REVISE
+
+- **대상**: `docs/design-md-weight/2026-08-22-essence-verdict.md`. 대조 T1-1 `2026-08-22-survey.md`, Core v2 `spec/design-md-core-v2.md`.
+- **판정 기록**: `docs/reviews/essence-verdict-2026-08-22-rebuttal.md`.
+- **유지**: §15 커브 의심, 무출처 커브 삭제(선택지 1), 가상 persona sidecar 금지, 완전일치 0.51%로 커브 반복을 가리지 말 것.
+- **개정 5항**: 정수=Portable Core MUST 필드; §1·§4·§6·§11 섹션 정수 철회; 완비율을 정수 증거로 쓰지 말 것; §9 브랜드는 본문 governance; §14 경로는 `components[].interaction.state_applicability` + 카탈로그 0그래프에서 즉시 위임 금지; 이징 삭제는 커브만 + 라이터/`omd-feel` 재주입 차단.
+- **연 것**: 판정문 개정. **닫은 것**: 개정 전 T1-3·카탈로그 §15 일괄 삭제.
 
 ### 2026-08-22 (Fable) T3 증거 캡처 9/9 완료 · 루브릭 규칙 동결 (SHA 미기록)
 
@@ -34,8 +43,8 @@
 - **T1-1 완료**: 440개 11.79MB, 중앙값 28,298B/423줄, **Core v2 일치 0개**(전량 legacy).
   부록에 **이징 보일러플레이트** 기록 — `cubic-bezier(0.4,0,1,1)`가 218/440(49.5%)에
   출처 표시 없이 브랜드 토큰처럼 존재. T1-2 입력.
-- **다음**: T3 코드북 동결됨 → 남은 §9 게이트(평가자·verify.json·순서표) 또는
-  T1-2(정수 판정, 이징 건 처리 결정).
+- **다음**: T3 코드북 동결됨 → 남은 §9 게이트(평가자·verify.json·순서표).
+  T1-2는 반박 **REVISE** — 판정문 5항 개정 후에만 T1-3.
 
 ### 2026-08-22 (grok-4.6) ✅ T3-2 루브릭 3차 반박 — FREEZE (T3-3은 §9 게이트까지 닫힘)
 
