@@ -1,0 +1,181 @@
+{
+  "brand": "coupang",
+  "shots": [
+    {
+      "file": "images/01.jpg",
+      "role": "hero",
+      "prompt": "A wide commercial lifestyle photograph of an outdoor picnic still life in front of a distant open-air concert at dusk. In the foreground, unlabeled clear plastic water bottles, an unlabeled fruit-drink stand-up pouch with orange fruit printed on the pack, an unlabeled dark beverage can, and two hamburgers sit on a red picnic blanket. Behind them a metal stage truss, LED screens, and a seated crowd recede into a warm sunset sky of peach and gold. Photorealistic catalog-hero lighting, sharp product detail in front, softly glowing sky behind. Blank packaging with no lettering, no logos, no watermarks, no captions.",
+      "citedFacts": [],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/02.jpg",
+      "role": "hero",
+      "prompt": "A wide high-key commercial still life on a seamless #fefefe studio table. Isolated retail objects sit far apart in a pale field: a navy short-sleeve polo folded to the left, two silver lipstick tubes with a reddish gloss smear, and an unlabeled fruit-drink stand-up pouch. The surround is almost pure white #fafafa with faint #f5f5f5 and #ebebec shadows, extremely bright mean luma, and a very narrow dynamic range. Photorealistic e-commerce catalog lighting, lots of empty canvas, even soft fill. Blank surfaces with no lettering, no logos, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/03.jpg",
+      "role": "imagery",
+      "prompt": "A cropped commercial fashion photograph of a seated person's lower legs on pale architectural stone. Light-wash blue jeans, white leather court sneakers with a dark green heel panel and no side branding, and white crew socks with thin dark horizontal stripes. White block steps and pale gray paving in hard daylight, crisp contact shadows, high-key outdoor catalog look. Photorealistic, tight crop on shoes and stone, no faces, no lettering, no logos, no watermarks.",
+      "citedFacts": [],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/04.jpg",
+      "role": "imagery",
+      "prompt": "A commercial catalog photograph of two young adults standing close together in matching short-sleeve pajama sets with vertical cream, pale-blue, and pale-pink stripes, cream buttons, and chest pockets. Soft cream wallpaper with a faint small floral print fills the background. Even studio lighting, gentle skin tones, calm posed glance, waist-up framing. Photorealistic fashion-e-commerce look. Fabric and wallpaper only, no lettering, no logos, no watermarks.",
+      "citedFacts": [],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/05.jpg",
+      "role": "imagery",
+      "prompt": "A square e-commerce catalog photograph of a single navy short-sleeve pique polo shirt, neatly folded, centered on a seamless #fefefe studio sweep. Soft even fill light, faint #f5f5f5 contact shadow, almost no contrast, very high luma. Photorealistic product still life, generous empty white canvas around the garment. Plain fabric and buttons only, no lettering, no logos, no tags, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/06.jpg",
+      "role": "imagery",
+      "prompt": "A square beauty-catalog photograph of two silver lipstick tubes standing on a seamless #fefefe surface, one cap off revealing a reddish lipstick bullet, with a single glossy reddish smear beside them. Even high-key studio light, faint #ebebec shadow, very high mean luma and narrow dynamic range. Photorealistic, centered still life, lots of pale canvas. Metal and lipstick only, no lettering, no logos, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/07.jpg",
+      "role": "imagery",
+      "prompt": "A close commercial still life of unlabeled picnic drinks on a red woven picnic blanket: two clear plastic water bottles with blank caps, an unlabeled stand-up pouch printed only with sliced oranges, and a plain dark beverage can. Tight three-quarter crop, photorealistic, warm dusk rim light on the pack, shallow depth of field. Blank packaging with no lettering, no logos, no barcodes, no watermarks.",
+      "citedFacts": [],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/08.jpg",
+      "role": "imagery",
+      "prompt": "A commercial food still life of mixed nuts and dried fruit in a small pale bowl on a #fefefe table: pecans, walnuts, almonds, and a few raisins. High-key catalog lighting, faint #f5f5f5 shadow, lots of empty white canvas, photorealistic grocery photography. Bowl and food only, no lettering, no logos, no packaging print, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/09.jpg",
+      "role": "texture",
+      "prompt": "An empty seamless studio canvas filling the entire frame, almost pure #fefefe white with a barely visible #fafafa field and a faint horizontal band of #f5f5f5 fading into #ebebec at the lower third. Extremely high mean luma near 1.0, very narrow dynamic range, no objects, no people, no horizon, no texture grain stronger than pale paper. Photorealistic photograph of a blank high-key sweep. No lettering, no logos, no watermarks, no marks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/10.jpg",
+      "role": "texture",
+      "prompt": "A square close-up photograph of pale architectural stone paving and a white concrete step edge in hard daylight. Cool gray-white slabs the color of #f5f5f5 and #ebebec, thin grout lines of #ced2dc, crisp but soft contact shadows, high-key outdoor catalog surface. Photorealistic texture fill, no objects, no people. No lettering, no logos, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/11.jpg",
+      "role": "texture",
+      "prompt": "A close photograph of cream wallpaper with a faint repeating small floral vine print in pale dusty pink and muted sage, filling the frame as a textile-like interior texture. Soft even indoor light, high-key, low contrast, paper surface visible. Photorealistic catalog background. Pattern only, no lettering, no logos, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/12.jpg",
+      "role": "mobile",
+      "prompt": "A tall mobile catalog photograph of a seated person's lower legs on pale architectural stone steps. Light-wash blue jeans, white leather court sneakers with a dark green heel panel and no side branding, white crew socks with thin dark horizontal stripes. Hard daylight, white block steps, pale paving, crisp shadows. Photorealistic, vertical 9:16 crop emphasizing shoes. No faces, no lettering, no logos, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/13.jpg",
+      "role": "mobile",
+      "prompt": "A tall mobile fashion-catalog photograph of two young adults standing close in matching short-sleeve pajama sets with vertical cream, pale-blue, and pale-pink stripes, cream buttons, and chest pockets. Soft cream wallpaper with a faint small floral print behind them. Even studio lighting, calm posed glance, vertical 9:16 framing from mid-thigh up. Photorealistic e-commerce look. No lettering, no logos, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/14.jpg",
+      "role": "mobile",
+      "prompt": "A tall mobile beauty-catalog photograph of two silver lipstick tubes on a seamless #fefefe studio sweep, one cap off with a reddish lipstick bullet, a glossy reddish smear nearby. Extremely high-key lighting, faint #f5f5f5 shadow, lots of empty white canvas above and below, vertical 9:16 composition. Photorealistic. Metal and lipstick only, no lettering, no logos, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/15.jpg",
+      "role": "imagery",
+      "prompt": "A square e-commerce catalog photograph of a plain white wet-wipe soft pack lying on a seamless #fafafa surface. Soft even studio light, faint #ebebec contact shadow, very high luma and narrow dynamic range. Photorealistic household-goods still life, generous empty canvas. Completely blank packaging with no lettering, no logos, no icons, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/16.jpg",
+      "role": "mobile",
+      "prompt": "A tall mobile lifestyle photograph of unlabeled picnic drinks on a red picnic blanket: clear water bottles with blank caps, a stand-up pouch printed only with sliced oranges, and a plain dark beverage can. Warm dusk light, shallow depth, vertical 9:16 crop filling the frame with the still life. Photorealistic. Blank packaging with no lettering, no logos, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "9:16"
+    }
+  ],
+  "videos": [
+    {
+      "file": "videos/01.mp4",
+      "fromImage": "images/01.jpg",
+      "motivation": "The outdoor picnic-and-concert still is the homepage hero grammar: unlabeled drinks and food on a red blanket, stage truss and dusk crowd behind. A 6s 720p push-in keeps that still and does not add a scene.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/02.mp4",
+      "fromImage": "images/03.jpg",
+      "motivation": "Cropped white sneakers on pale architectural stone is the footwear catalog tile from the captured carousel. Slow push-in holds the high-key outdoor crop.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/03.mp4",
+      "fromImage": "images/04.jpg",
+      "motivation": "Matching pastel-striped short pajamas against cream floral wallpaper is the homewear catalog tile. A 6s 720p push-in stays inside that studio pose.",
+      "durationSec": 6
+    }
+  ]
+}

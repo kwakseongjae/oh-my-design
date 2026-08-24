@@ -1,0 +1,370 @@
+{
+  "version": 1,
+  "builtFrom": {
+    "tasks": "RUBRIC.md §4.1 잠금표 핵심 과업 (전사)",
+    "requiredOutputs": "RUBRIC.md §2",
+    "snapshots": "test-v2/00-evidence/<brand>/manifest.json"
+  },
+  "contract": {
+    "contains": "지정 화면의 과업, 공통 필수 산출물, 스냅샷 handle",
+    "excludes": "T3-1 슬롯 문장, evidence 필드 해석, 구도·브랜드·이미지 역할에 관한 우리 측 해석",
+    "note": "세 arm이 같은 브리프를 받는다. 화면별 핵심 콘텐츠와 대표 이미지 역할은 채점자 코드북에만 있다."
+  },
+  "requiredOutputs": [
+    "지정 화면의 실행 가능한 첫 렌더",
+    "그 화면에 쓰는 대표 생성 이미지",
+    "형식 자유인 디자인 시스템 설명 문서"
+  ],
+  "brands": [
+    {
+      "brand": "apple",
+      "url": "https://www.apple.com/kr/",
+      "screen": "홈",
+      "task": "첫 화면에서 특정 제품 한 종의 소개 경로로 이동한다.",
+      "snapshot": {
+        "snapshotId": "2026-08-22T19-46-47-156Z",
+        "capturedAt": "2026-08-22T19:46:47.156Z",
+        "channel": "playwright",
+        "evidenceSha256": "18b574b75073321abe996e5e269e96dcedf9d3997fb41d04d7a30ed6c4b31cfb",
+        "surfaces": [
+          {
+            "surface": "desktop-1440",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "framePng": {
+              "name": "desktop-1440-viewport.png",
+              "sha256": "6f92fbc97f6de8c79490b535e59279fb04206508694cc52b4779f67a70236dc7"
+            },
+            "verifyBlockId": "sha256:36099dd81e57e64686ee716be071f63d",
+            "usableAsVerifyBasis": true
+          },
+          {
+            "surface": "mobile-390",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "framePng": {
+              "name": "mobile-390-viewport.png",
+              "sha256": "a310f6733fef346662b43a62bd6466d8c904e3ea603f9d0cbeccf23cb2a9b859"
+            },
+            "verifyBlockId": "sha256:adc01b3cbaf8c0ce68fc8889517677b4",
+            "usableAsVerifyBasis": true
+          }
+        ]
+      }
+    },
+    {
+      "brand": "baemin",
+      "url": "https://www.baemin.com/",
+      "screen": "홈",
+      "task": "앱 설치 경로(스토어 배지 또는 QR) 하나를 연다.",
+      "snapshot": {
+        "snapshotId": "2026-08-22T19-47-32-522Z",
+        "capturedAt": "2026-08-22T19:47:32.522Z",
+        "channel": "playwright",
+        "evidenceSha256": "18573d4b279afa33b9768cb7819cff23c5df6c6762a29e9dbea35611521114fb",
+        "surfaces": [
+          {
+            "surface": "desktop-1440",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "framePng": {
+              "name": "desktop-1440-viewport.png",
+              "sha256": "8dc7559b175ad846018a91cfc7b49faedfd334835cb05351738f01f25141f917"
+            },
+            "verifyBlockId": "sha256:a85a9e6d421eaf1232e838d9cae1e572",
+            "usableAsVerifyBasis": true
+          },
+          {
+            "surface": "mobile-390",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "framePng": {
+              "name": "mobile-390-viewport.png",
+              "sha256": "3f8d26748b970c42502db8086c9a5ff004605e62df646efa1cf00bce5496aa05"
+            },
+            "verifyBlockId": "sha256:5f81ba1ad28752e993c875e4c21c5201",
+            "usableAsVerifyBasis": true
+          }
+        ]
+      }
+    },
+    {
+      "brand": "coupang",
+      "url": "https://www.coupang.com/",
+      "screen": "홈",
+      "task": "검색창에 질의를 입력해 상품 목록으로 이동한다.",
+      "snapshot": {
+        "snapshotId": "2026-08-22T19-48-17-298Z",
+        "capturedAt": "2026-08-22T19:48:17.298Z",
+        "channel": "aside",
+        "evidenceSha256": "9fc1ad553b6c1f6a5bbdfdd9446d2b0b30b78245675eb7e051d01dee3a777e8a",
+        "surfaces": [
+          {
+            "surface": "desktop-1440",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "framePng": {
+              "name": "desktop-1440-viewport.png",
+              "sha256": "53b40086b6432d883b5529259134a7d1aeaded703013e2699aa914e2f3e48aa4"
+            },
+            "verifyBlockId": "sha256:161760ec64352003862712260f31fd7a",
+            "usableAsVerifyBasis": true
+          }
+        ],
+        "surfaceLimit": "Aside cannot resize its window from the REPL; only the window's own viewport is captured"
+      }
+    },
+    {
+      "brand": "figma",
+      "url": "https://www.figma.com/",
+      "screen": "홈",
+      "task": "무료 시작 CTA를 눌러 가입 흐름에 진입한다.",
+      "snapshot": {
+        "snapshotId": "2026-08-22T19-48-41-602Z",
+        "capturedAt": "2026-08-22T19:48:41.602Z",
+        "channel": "playwright",
+        "evidenceSha256": "8ff0237ff64db87d1ef1788640be474fbc931459991e057395e33a38afcac0f2",
+        "surfaces": [
+          {
+            "surface": "desktop-1440",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "framePng": {
+              "name": "desktop-1440-viewport.png",
+              "sha256": "2f5845047593e647ee9363d70c67185ba69efcb9e04aa0ea22f75861acb46eda"
+            },
+            "verifyBlockId": "sha256:a181859d5c200883a5c99bf9aff55ad0",
+            "usableAsVerifyBasis": true
+          },
+          {
+            "surface": "mobile-390",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "framePng": {
+              "name": "mobile-390-viewport.png",
+              "sha256": "9d024c2338baefa1fcc9326dfb173f9bdd8391d8f66e460a4b749ae09aa34cfd"
+            },
+            "verifyBlockId": "sha256:154d218742d077b94f4d4ea8fc58f4e1",
+            "usableAsVerifyBasis": true
+          }
+        ]
+      }
+    },
+    {
+      "brand": "karrot",
+      "url": "https://www.daangn.com/kr/buy-sell/s/?search=%EB%85%B8%ED%8A%B8%EB%B6%81",
+      "screen": "검색 결과",
+      "task": "결과에서 매물 카드 하나를 열어 상세로 이동한다.",
+      "snapshot": {
+        "snapshotId": "2026-08-22T19-49-29-044Z",
+        "capturedAt": "2026-08-22T19:49:29.044Z",
+        "channel": "playwright",
+        "evidenceSha256": "8135186ab77eb67eef66a34537cf29a355e6cba113e06340e5c0ab25517c73a8",
+        "surfaces": [
+          {
+            "surface": "desktop-1440",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "framePng": {
+              "name": "desktop-1440-viewport.png",
+              "sha256": "b684c762d6862bace1364143e1baee6c444b4f4ab158599b2a2c5e53447ba75e"
+            },
+            "verifyBlockId": "sha256:cc975d36b8150dfa9e7cea63dbf4ec00",
+            "usableAsVerifyBasis": true
+          },
+          {
+            "surface": "mobile-390",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "framePng": {
+              "name": "mobile-390-viewport.png",
+              "sha256": "4bd87070b3b83fa07ade8344509062ad2395fc972485569479462e0982044f36"
+            },
+            "verifyBlockId": "sha256:96a7b5e7d9905185200be0124aefd039",
+            "usableAsVerifyBasis": true
+          }
+        ]
+      }
+    },
+    {
+      "brand": "musinsa",
+      "url": "https://www.musinsa.com/category/001",
+      "screen": "상의 카테고리",
+      "task": "필터를 하나 적용해 상품 그리드를 좁힌다.",
+      "snapshot": {
+        "snapshotId": "2026-08-22T19-50-15-466Z",
+        "capturedAt": "2026-08-22T19:50:15.466Z",
+        "channel": "playwright",
+        "evidenceSha256": "c67e22dbbc9d63331e1f1f9ed5a4056584c428bcd8e5c30294eece9d789bf62e",
+        "surfaces": [
+          {
+            "surface": "desktop-1440",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "framePng": {
+              "name": "desktop-1440-viewport.png",
+              "sha256": "f79b05ff97831dd24eccd7bca5c771d45f80f95771cc2882876294823551d885"
+            },
+            "verifyBlockId": "sha256:3ecc849d9464408a0e0af310d9c39354",
+            "usableAsVerifyBasis": true
+          },
+          {
+            "surface": "mobile-390",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "framePng": {
+              "name": "mobile-390-viewport.png",
+              "sha256": "fd3dbaefda45552f8849b9cd06afa607fb342c210ffce6a6f82a364909b1f6ea"
+            },
+            "verifyBlockId": "sha256:2cff98df703f80146774c28361297007",
+            "usableAsVerifyBasis": true
+          }
+        ]
+      }
+    },
+    {
+      "brand": "naver",
+      "url": "https://www.naver.com/",
+      "screen": "홈",
+      "task": "검색어를 입력해 검색 결과로 이동한다.",
+      "snapshot": {
+        "snapshotId": "2026-08-22T19-51-00-372Z",
+        "capturedAt": "2026-08-22T19:51:00.372Z",
+        "channel": "playwright",
+        "evidenceSha256": "a1ed096831edc87f1c5c9f899f3c280cb381db2856488a4290509cd38abd874a",
+        "surfaces": [
+          {
+            "surface": "desktop-1440",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "framePng": {
+              "name": "desktop-1440-viewport.png",
+              "sha256": "c46b1f272b5227cab80b8585ea34957a1bbafc76bf193d29151443528981066f"
+            },
+            "verifyBlockId": "sha256:44136fa355b3678a1146ad16f7e8649e",
+            "usableAsVerifyBasis": false,
+            "unusableReason": "이 서피스에는 §4.2가 요구하는 수치 필드가 둘 미만이다"
+          },
+          {
+            "surface": "mobile-390",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "framePng": {
+              "name": "mobile-390-viewport.png",
+              "sha256": "defa8f74d1f62fa4c81360523fa245cd8d8a2a4ea46279777e4b4c54d18228db"
+            },
+            "verifyBlockId": "sha256:162153ef87272ffda1b852f10d266e01",
+            "usableAsVerifyBasis": true
+          }
+        ]
+      }
+    },
+    {
+      "brand": "toss",
+      "url": "https://toss.im/",
+      "screen": "홈",
+      "task": "상단 내비에서 서비스 하나를 선택해 이동한다.",
+      "snapshot": {
+        "snapshotId": "2026-08-22T19-51-46-001Z",
+        "capturedAt": "2026-08-22T19:51:46.001Z",
+        "channel": "playwright",
+        "evidenceSha256": "5fb80bcc2c5aad7195d288c9831559056debc15a7b814cf755a4174ea7f32426",
+        "surfaces": [
+          {
+            "surface": "desktop-1440",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "framePng": {
+              "name": "desktop-1440-viewport.png",
+              "sha256": "a09e018319fe590014c4c8a91329a5144c459bfb4f087c968f9f8bdd1147f9d9"
+            },
+            "verifyBlockId": "sha256:b53339dc08263a3ae7247fae00050772",
+            "usableAsVerifyBasis": true
+          },
+          {
+            "surface": "mobile-390",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "framePng": {
+              "name": "mobile-390-viewport.png",
+              "sha256": "e2b796b73c9489f09c5aa5ddc56af0e30edcfc1bf297d16b6c65c9b512626f8c"
+            },
+            "verifyBlockId": "sha256:a32d21e0d8b2080b368516374bafe601",
+            "usableAsVerifyBasis": true
+          }
+        ]
+      }
+    },
+    {
+      "brand": "wanted",
+      "url": "https://www.wanted.co.kr/wdlist",
+      "screen": "채용 목록",
+      "task": "필터를 적용해 채용 카드 하나를 연다.",
+      "snapshot": {
+        "snapshotId": "2026-08-22T19-52-31-934Z",
+        "capturedAt": "2026-08-22T19:52:31.934Z",
+        "channel": "playwright",
+        "evidenceSha256": "fbc0a45167b06492b5fe97c525af50e06f6bc957f43266c6e53d518b38215412",
+        "surfaces": [
+          {
+            "surface": "desktop-1440",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "framePng": {
+              "name": "desktop-1440-viewport.png",
+              "sha256": "6f379e0de87f62cf70ce70bc5300f2821e0b19de9606954b0658deaf662b1b4f"
+            },
+            "verifyBlockId": "sha256:7f4d59fdb4a2d534b3c5cfe62cd9e250",
+            "usableAsVerifyBasis": true
+          },
+          {
+            "surface": "mobile-390",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "framePng": {
+              "name": "mobile-390-viewport.png",
+              "sha256": "239ec48ae4735a7d79aa324463673a71a15003eb4a304217159650a4a9695498"
+            },
+            "verifyBlockId": "sha256:92823a43b432e8ad3627bc7ac47c4cbc",
+            "usableAsVerifyBasis": true
+          }
+        ]
+      }
+    }
+  ],
+  "briefSha256": "sha256:3f17857688dd17185d923556acfa70f3f7e16608cba14e49830f159c1fc649fe"
+}

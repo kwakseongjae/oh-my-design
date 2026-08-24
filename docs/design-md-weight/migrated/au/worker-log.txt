@@ -1,0 +1,22 @@
+T2 마이그레이션을 시작하기 전에 규칙집·골든 샘플·레거시 AU 본문을 순서대로 읽고, 이어서 Core v2 산출물을 작성하겠습니다.규격과 규칙집은 확인했습니다. 이어서 대응표, T1 제약, 골든 샘플, AU 레거시 본문을 읽겠습니다.골든 샘플·레거시 AU·최근 통과 이관본을 대조해 형태와 의미 보존 규칙을 맞추겠습니다.최근 통과 이관본의 컴포넌트 상태·B2a 한정 형태를 확인한 뒤 AU에 같은 계약을 적용하겠습니다.토큰·부정문 어휘가 게이트에 걸릴 수 있어, 레거시 AU 본문의 수치와 단어를 먼저 대조합니다.레거시 값과 형태를 고정한 뒤 Core v2 `DESIGN.md`를 작성합니다. 해석 문장에는 인접 B2a 한정을 붙입니다.본문을 다시 읽어 B2a 한정과 D1 어휘를 고치고, 이어서 provenance를 작성합니다.provenance 줄 번호를 맞춘 뒤, grep으로 확인한 목적지로 migration-log를 작성합니다.게이트가 `10px`/`20px` 발명과 scope claim을 막았습니다. 원인부터 찾아 고치겠습니다.scope/primary-tasks 안의 `not … product/task` 패턴과 로그의 `10px`/`20px`가 게이트를 막고 있습니다. 해당 문장만 고칩니다.라인 번호가 어긋난 원장 구간을 현재 `DESIGN.md` grep 결과로 다시 맞추겠습니다.`web/references/au/DESIGN.md`를 Core v2로 옮겼습니다. 규칙집은 **v7**입니다.
+
+산출물:
+- `docs/design-md-weight/migrated/au/DESIGN.md`
+- `docs/design-md-weight/migrated/au/provenance.md`
+- `docs/design-md-weight/migrated/au/migration-log.md`
+
+보존한 계약:
+- YAML 비율 `1.4` / `2.5`와 본문 `22.4px` / `21px` / `30px`는 합치지 않음
+- primitive type `button`×2, `input`, `tab`, `card`, `badge`를 컴포넌트별로 유지
+- `ds.type: brand`는 Scope와 provenance 양쪽
+- Google favicon URL은 provenance만, Assets는 URL 없는 경계 문장
+- card/badge는 kind·applicability map 생략 (C4)
+- orange/outline action·search는 loading/error/success 생략 (C2)
+- catalog tab은 역할상 loading/error/success `not-applicable`
+- §14의 tab-selection 1건과 미관측 상태 부재를 본문에 유지
+- Motion은 값 없이 B3 다섯 증거 종류 게이트만 유지
+- 공식 SIMPLE/voice는 first-party, UI implication과 관측 해석은 인접 B2a
+
+F1(B2a 전편 재독)과 F2(grep 대조)를 수행했습니다. `--gate-only` PASS, Portable Core `true`. DESIGN SHA-256 `9ffd4fcdc51adda42c5d6dedec5d2d0404c1a85a2a038ba09fd7f54d95595ad6`. F3·카탈로그 채택은 이 작업 범위 밖입니다.
+
+DONE migrated=1

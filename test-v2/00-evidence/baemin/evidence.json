@@ -1,0 +1,2864 @@
+{
+  "brand": "baemin",
+  "capturedAt": "2026-08-22T19:47:32.522Z",
+  "source": {
+    "url": "https://www.baemin.com/",
+    "status": 200,
+    "finalUrl": "https://www.baemin.com/",
+    "title": "배달의민족 - 배달팁 무료 배민클럽"
+  },
+  "method": {
+    "channel": "playwright",
+    "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
+    "imagerySamplesRequested": 12,
+    "locale": "ko-KR",
+    "colorScheme": "light",
+    "surfaces": [
+      "desktop-1440",
+      "mobile-390"
+    ],
+    "totalDurationMs": 44839
+  },
+  "surfaces": {
+    "desktop-1440": {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "chrome": {
+        "pageBackgroundComputed": "#f6f6f6",
+        "bodyColor": "#000000",
+        "header": {
+          "detectedBy": "geometry",
+          "background": null,
+          "heightPx": 96
+        },
+        "primaryButton": null,
+        "typeScale": [
+          {
+            "tag": "h2",
+            "fontPx": 24,
+            "weight": "700",
+            "family": "-apple-system",
+            "lineHeight": "normal",
+            "letterSpacing": "normal",
+            "color": "#0cefd3"
+          },
+          {
+            "tag": "p",
+            "fontPx": 60,
+            "weight": "800",
+            "family": "-apple-system",
+            "lineHeight": "84px",
+            "letterSpacing": "normal",
+            "color": "#0cefd3"
+          }
+        ],
+        "notes": {
+          "buttonCandidatesAboveFold": 0,
+          "headerDetectedBy": "geometry"
+        },
+        "pageBackgroundRendered": {
+          "dominantHex": "#a2834b",
+          "coverage": 0.045,
+          "resolved": false,
+          "reason": "no flat canvas in the frame — the dominant colour covers too little to be a background"
+        }
+      },
+      "imagery": {
+        "sampled": 12,
+        "funnel": {
+          "found": 20,
+          "sizeOk": 17,
+          "centreInFrame": 17,
+          "srcOk": 17,
+          "cap": 12,
+          "kept": 12,
+          "framed": 12,
+          "cropped": 12,
+          "analysed": 12
+        },
+        "attrition": {
+          "suspect": false,
+          "sizeFilterLoss": 0.15
+        },
+        "samples": [
+          {
+            "src": "https://www.baemin.com/_next/static/media/baemin.1adead95.gif",
+            "kind": "img",
+            "tag": "c2",
+            "alt": "",
+            "docBox": {
+              "x": 817.734375,
+              "y": 900,
+              "w": 622.265625,
+              "h": 900
+            },
+            "aspect": 0.691,
+            "areaShare": 0.4321,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-01.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.8825,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.0164,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#0dfadd",
+                "coverage": 0.0153,
+                "saturation": 0.948,
+                "luma": 0.775
+              },
+              {
+                "hex": "#000101",
+                "coverage": 0.0126,
+                "saturation": 1,
+                "luma": 0.003
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.0083,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#0be5ca",
+                "coverage": 0.0025,
+                "saturation": 0.952,
+                "luma": 0.709
+              }
+            ],
+            "light": {
+              "meanLuma": 0.715,
+              "p05": 0.592,
+              "p50": 0.74,
+              "p95": 0.743,
+              "dynamicRange": 0.151,
+              "gradient": {
+                "dx": 0.024,
+                "dy": -0.053
+              },
+              "luminanceGradient": "brighter top"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/food.02e6070e.gif",
+            "kind": "img",
+            "tag": "c4",
+            "alt": "",
+            "docBox": {
+              "x": 817.734375,
+              "y": 1800,
+              "w": 622.265625,
+              "h": 900
+            },
+            "aspect": 0.691,
+            "areaShare": 0.4321,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-02.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.9486,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.0057,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#000101",
+                "coverage": 0.0053,
+                "saturation": 1,
+                "luma": 0.003
+              },
+              {
+                "hex": "#0dfadd",
+                "coverage": 0.0046,
+                "saturation": 0.948,
+                "luma": 0.775
+              },
+              {
+                "hex": "#05efd2",
+                "coverage": 0.0022,
+                "saturation": 0.979,
+                "luma": 0.734
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.0021,
+                "saturation": 0.951,
+                "luma": 0.761
+              }
+            ],
+            "light": {
+              "meanLuma": 0.73,
+              "p05": 0.74,
+              "p50": 0.74,
+              "p95": 0.74,
+              "dynamicRange": 0,
+              "gradient": {
+                "dx": -0.002,
+                "dy": -0.022
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/club.2196419a.gif",
+            "kind": "img",
+            "tag": "c6",
+            "alt": "",
+            "docBox": {
+              "x": 817.734375,
+              "y": 2700,
+              "w": 622.265625,
+              "h": 900
+            },
+            "aspect": 0.691,
+            "areaShare": 0.4321,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-03.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.9526,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.0053,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#000101",
+                "coverage": 0.0046,
+                "saturation": 1,
+                "luma": 0.003
+              },
+              {
+                "hex": "#0dfadd",
+                "coverage": 0.0041,
+                "saturation": 0.948,
+                "luma": 0.775
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.0024,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#05efd2",
+                "coverage": 0.0022,
+                "saturation": 0.979,
+                "luma": 0.734
+              }
+            ],
+            "light": {
+              "meanLuma": 0.732,
+              "p05": 0.74,
+              "p50": 0.74,
+              "p95": 0.74,
+              "dynamicRange": 0,
+              "gradient": {
+                "dx": -0.015,
+                "dy": -0.019
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/bmart.682591dd.gif",
+            "kind": "img",
+            "tag": "c8",
+            "alt": "",
+            "docBox": {
+              "x": 817.734375,
+              "y": 3600,
+              "w": 622.265625,
+              "h": 900
+            },
+            "aspect": 0.691,
+            "areaShare": 0.4321,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-04.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.9144,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.012,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#0cfadc",
+                "coverage": 0.0099,
+                "saturation": 0.952,
+                "luma": 0.773
+              },
+              {
+                "hex": "#000101",
+                "coverage": 0.0081,
+                "saturation": 1,
+                "luma": 0.003
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.0064,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#010c0b",
+                "coverage": 0.0024,
+                "saturation": 0.917,
+                "luma": 0.038
+              }
+            ],
+            "light": {
+              "meanLuma": 0.723,
+              "p05": 0.738,
+              "p50": 0.74,
+              "p95": 0.74,
+              "dynamicRange": 0.002,
+              "gradient": {
+                "dx": 0.011,
+                "dy": -0.036
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/shopping.22a0489d.gif",
+            "kind": "img",
+            "tag": "c10",
+            "alt": "",
+            "docBox": {
+              "x": 817.734375,
+              "y": 4500,
+              "w": 622.265625,
+              "h": 900
+            },
+            "aspect": 0.691,
+            "areaShare": 0.4321,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-05.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.9556,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.0054,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#000101",
+                "coverage": 0.0038,
+                "saturation": 1,
+                "luma": 0.003
+              },
+              {
+                "hex": "#0cf9dc",
+                "coverage": 0.0033,
+                "saturation": 0.952,
+                "luma": 0.771
+              },
+              {
+                "hex": "#05efd2",
+                "coverage": 0.0022,
+                "saturation": 0.979,
+                "luma": 0.734
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.002,
+                "saturation": 0.951,
+                "luma": 0.761
+              }
+            ],
+            "light": {
+              "meanLuma": 0.732,
+              "p05": 0.74,
+              "p50": 0.74,
+              "p95": 0.74,
+              "dynamicRange": 0,
+              "gradient": {
+                "dx": 0.01,
+                "dy": -0.017
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/gift.418c68c2.gif",
+            "kind": "img",
+            "tag": "c12",
+            "alt": "",
+            "docBox": {
+              "x": 817.734375,
+              "y": 5400,
+              "w": 622.265625,
+              "h": 900
+            },
+            "aspect": 0.691,
+            "areaShare": 0.4321,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-06.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.9607,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.0048,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#0dfadd",
+                "coverage": 0.0034,
+                "saturation": 0.948,
+                "luma": 0.775
+              },
+              {
+                "hex": "#000101",
+                "coverage": 0.0026,
+                "saturation": 1,
+                "luma": 0.003
+              },
+              {
+                "hex": "#05efd2",
+                "coverage": 0.0022,
+                "saturation": 0.979,
+                "luma": 0.734
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.0018,
+                "saturation": 0.951,
+                "luma": 0.761
+              }
+            ],
+            "light": {
+              "meanLuma": 0.734,
+              "p05": 0.74,
+              "p50": 0.74,
+              "p95": 0.74,
+              "dynamicRange": 0,
+              "gradient": {
+                "dx": -0.013,
+                "dy": -0.014
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/hyper.f8fa7367.gif",
+            "kind": "img",
+            "tag": "c14",
+            "alt": "",
+            "docBox": {
+              "x": 817.734375,
+              "y": 6300,
+              "w": 622.265625,
+              "h": 900
+            },
+            "aspect": 0.691,
+            "areaShare": 0.4321,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-07.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.9588,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.005,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#0dfadd",
+                "coverage": 0.0037,
+                "saturation": 0.948,
+                "luma": 0.775
+              },
+              {
+                "hex": "#05efd2",
+                "coverage": 0.0022,
+                "saturation": 0.979,
+                "luma": 0.734
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.0022,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#000101",
+                "coverage": 0.0021,
+                "saturation": 1,
+                "luma": 0.003
+              }
+            ],
+            "light": {
+              "meanLuma": 0.734,
+              "p05": 0.74,
+              "p50": 0.74,
+              "p95": 0.74,
+              "dynamicRange": 0,
+              "gradient": {
+                "dx": -0.014,
+                "dy": -0.015
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/pay.9d9cf377.gif",
+            "kind": "img",
+            "tag": "c16",
+            "alt": "",
+            "docBox": {
+              "x": 817.734375,
+              "y": 7200,
+              "w": 622.265625,
+              "h": 900
+            },
+            "aspect": 0.691,
+            "areaShare": 0.4321,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-08.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.9445,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#000101",
+                "coverage": 0.0075,
+                "saturation": 1,
+                "luma": 0.003
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.0052,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#0dfadd",
+                "coverage": 0.0048,
+                "saturation": 0.948,
+                "luma": 0.775
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.0029,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#05efd2",
+                "coverage": 0.0022,
+                "saturation": 0.979,
+                "luma": 0.734
+              }
+            ],
+            "light": {
+              "meanLuma": 0.728,
+              "p05": 0.74,
+              "p50": 0.74,
+              "p95": 0.74,
+              "dynamicRange": 0,
+              "gradient": {
+                "dx": -0.01,
+                "dy": -0.025
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/main_text_05@3x.ef8973cd.png",
+            "kind": "img",
+            "tag": "c1",
+            "alt": "건강 관리 열정 식지 않도록",
+            "docBox": {
+              "x": 156,
+              "y": 177.5,
+              "w": 654.421875,
+              "h": 240
+            },
+            "aspect": 2.727,
+            "areaShare": 0.1212,
+            "intrinsic": {
+              "w": 1966,
+              "h": 721
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-09.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.1345,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0af1d5",
+                "coverage": 0.0813,
+                "saturation": 0.959,
+                "luma": 0.745
+              },
+              {
+                "hex": "#06f3d7",
+                "coverage": 0.0541,
+                "saturation": 0.975,
+                "luma": 0.747
+              },
+              {
+                "hex": "#7c7d7a",
+                "coverage": 0.0359,
+                "saturation": 0.024,
+                "luma": 0.489
+              },
+              {
+                "hex": "#8c8c85",
+                "coverage": 0.0357,
+                "saturation": 0.05,
+                "luma": 0.547
+              },
+              {
+                "hex": "#81827e",
+                "coverage": 0.0302,
+                "saturation": 0.031,
+                "luma": 0.508
+              }
+            ],
+            "light": {
+              "meanLuma": 0.622,
+              "p05": 0.468,
+              "p50": 0.608,
+              "p95": 0.748,
+              "dynamicRange": 0.28,
+              "gradient": {
+                "dx": 0.037,
+                "dy": -0.018
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 35.4
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/food.f99a939d.png",
+            "kind": "img",
+            "tag": "c5",
+            "alt": "음식배달",
+            "docBox": {
+              "x": 156,
+              "y": 1994.203125,
+              "w": 682.796875,
+              "h": 140
+            },
+            "aspect": 4.877,
+            "areaShare": 0.0738,
+            "intrinsic": {
+              "w": 1390,
+              "h": 285
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-10.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.4642,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#000000",
+                "coverage": 0.2015,
+                "saturation": 0,
+                "luma": 0
+              },
+              {
+                "hex": "#0bf1d5",
+                "coverage": 0.0369,
+                "saturation": 0.954,
+                "luma": 0.745
+              },
+              {
+                "hex": "#0dfadd",
+                "coverage": 0.0318,
+                "saturation": 0.948,
+                "luma": 0.775
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.014,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#078a7a",
+                "coverage": 0.0125,
+                "saturation": 0.949,
+                "luma": 0.427
+              }
+            ],
+            "light": {
+              "meanLuma": 0.533,
+              "p05": 0,
+              "p50": 0.74,
+              "p95": 0.762,
+              "dynamicRange": 0.762,
+              "gradient": {
+                "dx": 0.241,
+                "dy": -0.001
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": true,
+              "backgroundHex": "#0cedd1",
+              "center": {
+                "x": 0.3164,
+                "y": 0.4752
+              },
+              "box": {
+                "x": 0,
+                "y": 0.1515,
+                "w": 0.725,
+                "h": 0.6667
+              },
+              "coverage": 0.2502
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/club.05c12703.png",
+            "kind": "img",
+            "tag": "c7",
+            "alt": "배민클럽",
+            "docBox": {
+              "x": 156,
+              "y": 2879.703125,
+              "w": 682.796875,
+              "h": 140
+            },
+            "aspect": 4.877,
+            "areaShare": 0.0738,
+            "intrinsic": {
+              "w": 1390,
+              "h": 285
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-11.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.4299,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#000000",
+                "coverage": 0.2093,
+                "saturation": 0,
+                "luma": 0
+              },
+              {
+                "hex": "#0dfadd",
+                "coverage": 0.0456,
+                "saturation": 0.948,
+                "luma": 0.775
+              },
+              {
+                "hex": "#0bf2d5",
+                "coverage": 0.0314,
+                "saturation": 0.955,
+                "luma": 0.748
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.0104,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#011412",
+                "coverage": 0.0097,
+                "saturation": 0.95,
+                "luma": 0.062
+              }
+            ],
+            "light": {
+              "meanLuma": 0.521,
+              "p05": 0,
+              "p50": 0.74,
+              "p95": 0.784,
+              "dynamicRange": 0.784,
+              "gradient": {
+                "dx": 0.273,
+                "dy": 0.019
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": true,
+              "backgroundHex": "#0ce6cb",
+              "center": {
+                "x": 0.2922,
+                "y": 0.4777
+              },
+              "box": {
+                "x": 0,
+                "y": 0.1515,
+                "w": 0.5813,
+                "h": 0.6667
+              },
+              "coverage": 0.2506
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/gift.4a13ba14.png",
+            "kind": "img",
+            "tag": "c13",
+            "alt": "선물하기",
+            "docBox": {
+              "x": 156,
+              "y": 5595.59375,
+              "w": 682.796875,
+              "h": 140
+            },
+            "aspect": 4.877,
+            "areaShare": 0.0738,
+            "intrinsic": {
+              "w": 1390,
+              "h": 285
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-12.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.454,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#000000",
+                "coverage": 0.1907,
+                "saturation": 0,
+                "luma": 0
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.0394,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#0dfadc",
+                "coverage": 0.0367,
+                "saturation": 0.948,
+                "luma": 0.774
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.0157,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#000b0a",
+                "coverage": 0.0078,
+                "saturation": 1,
+                "luma": 0.034
+              }
+            ],
+            "light": {
+              "meanLuma": 0.522,
+              "p05": 0,
+              "p50": 0.74,
+              "p95": 0.768,
+              "dynamicRange": 0.768,
+              "gradient": {
+                "dx": 0.203,
+                "dy": 0.012
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": true,
+              "backgroundHex": "#0ceed2",
+              "center": {
+                "x": 0.3545,
+                "y": 0.4645
+              },
+              "box": {
+                "x": 0.0063,
+                "y": 0.0303,
+                "w": 0.7375,
+                "h": 0.8485
+              },
+              "coverage": 0.2502
+            }
+          }
+        ],
+        "aggregate": {
+          "meanLuma": 0.728,
+          "dynamicRange": 0.002,
+          "luminanceGradients": {
+            "brighter top": 1,
+            "even": 8,
+            "brighter right": 3
+          },
+          "aspects": 0.691,
+          "figureGroundResolved": "3/12",
+          "subjectNote": "fewer than 4 resolved samples — placement omitted"
+        }
+      },
+      "motion": {
+        "present": false,
+        "note": "no video above the fold at capture time"
+      },
+      "durationMs": 15945
+    },
+    "mobile-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "chrome": {
+        "pageBackgroundComputed": "#f6f6f6",
+        "bodyColor": "#000000",
+        "header": {
+          "detectedBy": "geometry",
+          "background": null,
+          "heightPx": 126
+        },
+        "primaryButton": {
+          "fill": "solid",
+          "background": "#0cefd3",
+          "color": "#000000",
+          "radiusPx": 9999,
+          "fontPx": 20,
+          "weight": "700",
+          "label": "Get the App",
+          "repeats": 1
+        },
+        "typeScale": [
+          {
+            "tag": "h2",
+            "fontPx": 24,
+            "weight": "700",
+            "family": "-apple-system",
+            "lineHeight": "normal",
+            "letterSpacing": "normal",
+            "color": "#0cefd3"
+          },
+          {
+            "tag": "p",
+            "fontPx": 32,
+            "weight": "800",
+            "family": "-apple-system",
+            "lineHeight": "44.8px",
+            "letterSpacing": "normal",
+            "color": "#0cefd3"
+          },
+          {
+            "tag": "button",
+            "fontPx": 20,
+            "weight": "700",
+            "family": "Arial",
+            "lineHeight": "20px",
+            "letterSpacing": "normal",
+            "color": "#000000"
+          }
+        ],
+        "notes": {
+          "buttonCandidatesAboveFold": 1,
+          "headerDetectedBy": "geometry"
+        },
+        "pageBackgroundRendered": {
+          "dominantHex": "#0cefd3",
+          "coverage": 0.8236,
+          "resolved": false,
+          "reason": "the frame's dominant colour disagrees with the computed page background; it is measuring content, not canvas",
+          "computedHex": "#f6f6f6",
+          "distance": 54.5
+        }
+      },
+      "imagery": {
+        "sampled": 9,
+        "funnel": {
+          "found": 18,
+          "sizeOk": 9,
+          "centreInFrame": 9,
+          "srcOk": 9,
+          "cap": 12,
+          "kept": 9,
+          "framed": 9,
+          "cropped": 9,
+          "analysed": 9
+        },
+        "attrition": {
+          "suspect": false,
+          "sizeFilterLoss": 0.5
+        },
+        "samples": [
+          {
+            "src": "https://www.baemin.com/_next/static/media/baemin.1adead95.gif",
+            "kind": "img",
+            "tag": "c2",
+            "alt": "",
+            "docBox": {
+              "x": 4.875,
+              "y": -4085.03125,
+              "w": 385.125,
+              "h": 557.03125
+            },
+            "aspect": 0.691,
+            "areaShare": 0.6517,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-01.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.8491,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.0206,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#000100",
+                "coverage": 0.0205,
+                "saturation": 1,
+                "luma": 0.003
+              },
+              {
+                "hex": "#0dfadd",
+                "coverage": 0.0171,
+                "saturation": 0.948,
+                "luma": 0.775
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.0123,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#0ce5ca",
+                "coverage": 0.0032,
+                "saturation": 0.948,
+                "luma": 0.709
+              }
+            ],
+            "light": {
+              "meanLuma": 0.699,
+              "p05": 0.31,
+              "p50": 0.74,
+              "p95": 0.743,
+              "dynamicRange": 0.433,
+              "gradient": {
+                "dx": 0.052,
+                "dy": -0.022
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0.7
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/food.02e6070e.gif",
+            "kind": "img",
+            "tag": "c3",
+            "alt": "",
+            "docBox": {
+              "x": 4.875,
+              "y": -3241.03125,
+              "w": 385.125,
+              "h": 557.03125
+            },
+            "aspect": 0.691,
+            "areaShare": 0.6517,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": true,
+            "matchedBy": "geometry",
+            "file": "capture/mobile-390-imagery-02.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.9085,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#000000",
+                "coverage": 0.0155,
+                "saturation": 0,
+                "luma": 0
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.0101,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#0dfadd",
+                "coverage": 0.0059,
+                "saturation": 0.948,
+                "luma": 0.775
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.0056,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#0ce5ca",
+                "coverage": 0.0024,
+                "saturation": 0.948,
+                "luma": 0.709
+              }
+            ],
+            "light": {
+              "meanLuma": 0.713,
+              "p05": 0.563,
+              "p50": 0.74,
+              "p95": 0.74,
+              "dynamicRange": 0.177,
+              "gradient": {
+                "dx": 0.051,
+                "dy": 0.055
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0.9
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/club.2196419a.gif",
+            "kind": "img",
+            "tag": "c4",
+            "alt": "",
+            "docBox": {
+              "x": 4.875,
+              "y": -2397.03125,
+              "w": 385.125,
+              "h": 557.03125
+            },
+            "aspect": 0.691,
+            "areaShare": 0.6517,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-03.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.8582,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.0217,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#000000",
+                "coverage": 0.0131,
+                "saturation": 0,
+                "luma": 0
+              },
+              {
+                "hex": "#0df9dc",
+                "coverage": 0.0103,
+                "saturation": 0.948,
+                "luma": 0.772
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.0091,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#0bdcc3",
+                "coverage": 0.0038,
+                "saturation": 0.95,
+                "luma": 0.681
+              }
+            ],
+            "light": {
+              "meanLuma": 0.705,
+              "p05": 0.391,
+              "p50": 0.74,
+              "p95": 0.74,
+              "dynamicRange": 0.349,
+              "gradient": {
+                "dx": 0.026,
+                "dy": 0.034
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 2.6
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/bmart.682591dd.gif",
+            "kind": "img",
+            "tag": "c5",
+            "alt": "",
+            "docBox": {
+              "x": 4.875,
+              "y": -1553.03125,
+              "w": 385.125,
+              "h": 557.03125
+            },
+            "aspect": 0.691,
+            "areaShare": 0.6517,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": true,
+            "matchedBy": "geometry",
+            "file": "capture/mobile-390-imagery-04.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.7529,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.0327,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#0dfadd",
+                "coverage": 0.0305,
+                "saturation": 0.948,
+                "luma": 0.775
+              },
+              {
+                "hex": "#000101",
+                "coverage": 0.0258,
+                "saturation": 1,
+                "luma": 0.003
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.019,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#000c0a",
+                "coverage": 0.0051,
+                "saturation": 1,
+                "luma": 0.036
+              }
+            ],
+            "light": {
+              "meanLuma": 0.687,
+              "p05": 0.153,
+              "p50": 0.74,
+              "p95": 0.768,
+              "dynamicRange": 0.615,
+              "gradient": {
+                "dx": 0.048,
+                "dy": 0.039
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": true,
+              "backgroundHex": "#0cefd3",
+              "center": {
+                "x": 0.404,
+                "y": 0.3819
+              },
+              "box": {
+                "x": 0.0313,
+                "y": 0.0472,
+                "w": 0.9063,
+                "h": 0.7075
+              },
+              "coverage": 0.2525
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/shopping.22a0489d.gif",
+            "kind": "img",
+            "tag": "c6",
+            "alt": "",
+            "docBox": {
+              "x": 4.875,
+              "y": -709.03125,
+              "w": 385.125,
+              "h": 557.03125
+            },
+            "aspect": 0.691,
+            "areaShare": 0.6517,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-05.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.8821,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.0213,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.0085,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#0df9dc",
+                "coverage": 0.0061,
+                "saturation": 0.948,
+                "luma": 0.772
+              },
+              {
+                "hex": "#0bd3bb",
+                "coverage": 0.0055,
+                "saturation": 0.948,
+                "luma": 0.654
+              },
+              {
+                "hex": "#0ce5ca",
+                "coverage": 0.0055,
+                "saturation": 0.948,
+                "luma": 0.709
+              }
+            ],
+            "light": {
+              "meanLuma": 0.718,
+              "p05": 0.571,
+              "p50": 0.74,
+              "p95": 0.74,
+              "dynamicRange": 0.169,
+              "gradient": {
+                "dx": 0.027,
+                "dy": 0.011
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0.1
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/gift.418c68c2.gif",
+            "kind": "img",
+            "tag": "c7",
+            "alt": "",
+            "docBox": {
+              "x": 4.875,
+              "y": 134.96875,
+              "w": 385.125,
+              "h": 557.03125
+            },
+            "aspect": 0.691,
+            "areaShare": 0.6517,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": true,
+            "matchedBy": "geometry",
+            "file": "capture/mobile-390-imagery-06.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.8849,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#000101",
+                "coverage": 0.0126,
+                "saturation": 1,
+                "luma": 0.003
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.011,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#0dfadd",
+                "coverage": 0.0089,
+                "saturation": 0.948,
+                "luma": 0.775
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.0069,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#03eed1",
+                "coverage": 0.005,
+                "saturation": 0.987,
+                "luma": 0.729
+              }
+            ],
+            "light": {
+              "meanLuma": 0.72,
+              "p05": 0.678,
+              "p50": 0.74,
+              "p95": 0.746,
+              "dynamicRange": 0.068,
+              "gradient": {
+                "dx": -0.002,
+                "dy": 0.023
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/hyper.f8fa7367.gif",
+            "kind": "img",
+            "tag": "c8",
+            "alt": "",
+            "docBox": {
+              "x": 4.875,
+              "y": 978.96875,
+              "w": 385.125,
+              "h": 557.03125
+            },
+            "aspect": 0.691,
+            "areaShare": 0.6517,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-07.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.9105,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.0146,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#0cf6d9",
+                "coverage": 0.008,
+                "saturation": 0.951,
+                "luma": 0.761
+              },
+              {
+                "hex": "#0df9dc",
+                "coverage": 0.0067,
+                "saturation": 0.948,
+                "luma": 0.772
+              },
+              {
+                "hex": "#057b6d",
+                "coverage": 0.0025,
+                "saturation": 0.959,
+                "luma": 0.38
+              },
+              {
+                "hex": "#0cdcc2",
+                "coverage": 0.0023,
+                "saturation": 0.945,
+                "luma": 0.682
+              }
+            ],
+            "light": {
+              "meanLuma": 0.723,
+              "p05": 0.661,
+              "p50": 0.74,
+              "p95": 0.74,
+              "dynamicRange": 0.079,
+              "gradient": {
+                "dx": 0.004,
+                "dy": 0.008
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/pay.9d9cf377.gif",
+            "kind": "img",
+            "tag": "c9",
+            "alt": "",
+            "docBox": {
+              "x": 4.875,
+              "y": 1822.96875,
+              "w": 385.125,
+              "h": 557.03125
+            },
+            "aspect": 0.691,
+            "areaShare": 0.6517,
+            "intrinsic": {
+              "w": 1416,
+              "h": 2048
+            },
+            "clipped": true,
+            "matchedBy": "geometry",
+            "file": "capture/mobile-390-imagery-08.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.8074,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0cf1d5",
+                "coverage": 0.0336,
+                "saturation": 0.95,
+                "luma": 0.746
+              },
+              {
+                "hex": "#000000",
+                "coverage": 0.0154,
+                "saturation": 0,
+                "luma": 0
+              },
+              {
+                "hex": "#0cf5d9",
+                "coverage": 0.0111,
+                "saturation": 0.951,
+                "luma": 0.759
+              },
+              {
+                "hex": "#0bd3bb",
+                "coverage": 0.0096,
+                "saturation": 0.948,
+                "luma": 0.654
+              },
+              {
+                "hex": "#0bdcc2",
+                "coverage": 0.0087,
+                "saturation": 0.95,
+                "luma": 0.681
+              }
+            ],
+            "light": {
+              "meanLuma": 0.698,
+              "p05": 0.352,
+              "p50": 0.74,
+              "p95": 0.743,
+              "dynamicRange": 0.391,
+              "gradient": {
+                "dx": 0.068,
+                "dy": 0.081
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 4.1
+            }
+          },
+          {
+            "src": "https://www.baemin.com/_next/static/media/main_text_05@3x.ef8973cd.png",
+            "kind": "img",
+            "tag": "c1",
+            "alt": "건강 관리 열정 식지 않도록",
+            "docBox": {
+              "x": 20,
+              "y": -5072,
+              "w": 335.390625,
+              "h": 123
+            },
+            "aspect": 2.727,
+            "areaShare": 0.1253,
+            "intrinsic": {
+              "w": 1966,
+              "h": 721
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-09.png",
+            "palette": [
+              {
+                "hex": "#0cefd3",
+                "coverage": 0.1349,
+                "saturation": 0.95,
+                "luma": 0.74
+              },
+              {
+                "hex": "#0af1d5",
+                "coverage": 0.0926,
+                "saturation": 0.959,
+                "luma": 0.745
+              },
+              {
+                "hex": "#06f5d9",
+                "coverage": 0.0442,
+                "saturation": 0.976,
+                "luma": 0.754
+              },
+              {
+                "hex": "#857a53",
+                "coverage": 0.043,
+                "saturation": 0.376,
+                "luma": 0.477
+              },
+              {
+                "hex": "#8a7d53",
+                "coverage": 0.0418,
+                "saturation": 0.399,
+                "luma": 0.489
+              },
+              {
+                "hex": "#82837a",
+                "coverage": 0.0404,
+                "saturation": 0.069,
+                "luma": 0.51
+              }
+            ],
+            "light": {
+              "meanLuma": 0.587,
+              "p05": 0.446,
+              "p50": 0.532,
+              "p95": 0.751,
+              "dynamicRange": 0.305,
+              "gradient": {
+                "dx": -0.029,
+                "dy": -0.011
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 27.3
+            }
+          }
+        ],
+        "aggregate": {
+          "meanLuma": 0.705,
+          "dynamicRange": 0.305,
+          "luminanceGradients": {
+            "brighter right": 2,
+            "brighter bottom": 2,
+            "even": 5
+          },
+          "aspects": 0.691,
+          "figureGroundResolved": "1/9",
+          "subjectNote": "fewer than 4 resolved samples — placement omitted"
+        }
+      },
+      "motion": {
+        "present": false,
+        "note": "no video above the fold at capture time"
+      },
+      "durationMs": 11276
+    }
+  },
+  "chrome": {
+    "pageBackgroundComputed": "#f6f6f6",
+    "bodyColor": "#000000",
+    "header": {
+      "detectedBy": "geometry",
+      "background": null,
+      "heightPx": 96
+    },
+    "primaryButton": null,
+    "typeScale": [
+      {
+        "tag": "h2",
+        "fontPx": 24,
+        "weight": "700",
+        "family": "-apple-system",
+        "lineHeight": "normal",
+        "letterSpacing": "normal",
+        "color": "#0cefd3"
+      },
+      {
+        "tag": "p",
+        "fontPx": 60,
+        "weight": "800",
+        "family": "-apple-system",
+        "lineHeight": "84px",
+        "letterSpacing": "normal",
+        "color": "#0cefd3"
+      }
+    ],
+    "notes": {
+      "buttonCandidatesAboveFold": 0,
+      "headerDetectedBy": "geometry"
+    },
+    "pageBackgroundRendered": {
+      "dominantHex": "#a2834b",
+      "coverage": 0.045,
+      "resolved": false,
+      "reason": "no flat canvas in the frame — the dominant colour covers too little to be a background"
+    }
+  },
+  "imagery": {
+    "sampled": 12,
+    "funnel": {
+      "found": 20,
+      "sizeOk": 17,
+      "centreInFrame": 17,
+      "srcOk": 17,
+      "cap": 12,
+      "kept": 12,
+      "framed": 12,
+      "cropped": 12,
+      "analysed": 12
+    },
+    "attrition": {
+      "suspect": false,
+      "sizeFilterLoss": 0.15
+    },
+    "samples": [
+      {
+        "src": "https://www.baemin.com/_next/static/media/baemin.1adead95.gif",
+        "kind": "img",
+        "tag": "c2",
+        "alt": "",
+        "docBox": {
+          "x": 817.734375,
+          "y": 900,
+          "w": 622.265625,
+          "h": 900
+        },
+        "aspect": 0.691,
+        "areaShare": 0.4321,
+        "intrinsic": {
+          "w": 1416,
+          "h": 2048
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-01.png",
+        "palette": [
+          {
+            "hex": "#0cefd3",
+            "coverage": 0.8825,
+            "saturation": 0.95,
+            "luma": 0.74
+          },
+          {
+            "hex": "#0cf1d5",
+            "coverage": 0.0164,
+            "saturation": 0.95,
+            "luma": 0.746
+          },
+          {
+            "hex": "#0dfadd",
+            "coverage": 0.0153,
+            "saturation": 0.948,
+            "luma": 0.775
+          },
+          {
+            "hex": "#000101",
+            "coverage": 0.0126,
+            "saturation": 1,
+            "luma": 0.003
+          },
+          {
+            "hex": "#0cf6d9",
+            "coverage": 0.0083,
+            "saturation": 0.951,
+            "luma": 0.761
+          },
+          {
+            "hex": "#0be5ca",
+            "coverage": 0.0025,
+            "saturation": 0.952,
+            "luma": 0.709
+          }
+        ],
+        "light": {
+          "meanLuma": 0.715,
+          "p05": 0.592,
+          "p50": 0.74,
+          "p95": 0.743,
+          "dynamicRange": 0.151,
+          "gradient": {
+            "dx": 0.024,
+            "dy": -0.053
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 0
+        }
+      },
+      {
+        "src": "https://www.baemin.com/_next/static/media/food.02e6070e.gif",
+        "kind": "img",
+        "tag": "c4",
+        "alt": "",
+        "docBox": {
+          "x": 817.734375,
+          "y": 1800,
+          "w": 622.265625,
+          "h": 900
+        },
+        "aspect": 0.691,
+        "areaShare": 0.4321,
+        "intrinsic": {
+          "w": 1416,
+          "h": 2048
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-02.png",
+        "palette": [
+          {
+            "hex": "#0cefd3",
+            "coverage": 0.9486,
+            "saturation": 0.95,
+            "luma": 0.74
+          },
+          {
+            "hex": "#0cf1d5",
+            "coverage": 0.0057,
+            "saturation": 0.95,
+            "luma": 0.746
+          },
+          {
+            "hex": "#000101",
+            "coverage": 0.0053,
+            "saturation": 1,
+            "luma": 0.003
+          },
+          {
+            "hex": "#0dfadd",
+            "coverage": 0.0046,
+            "saturation": 0.948,
+            "luma": 0.775
+          },
+          {
+            "hex": "#05efd2",
+            "coverage": 0.0022,
+            "saturation": 0.979,
+            "luma": 0.734
+          },
+          {
+            "hex": "#0cf6d9",
+            "coverage": 0.0021,
+            "saturation": 0.951,
+            "luma": 0.761
+          }
+        ],
+        "light": {
+          "meanLuma": 0.73,
+          "p05": 0.74,
+          "p50": 0.74,
+          "p95": 0.74,
+          "dynamicRange": 0,
+          "gradient": {
+            "dx": -0.002,
+            "dy": -0.022
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 0
+        }
+      },
+      {
+        "src": "https://www.baemin.com/_next/static/media/club.2196419a.gif",
+        "kind": "img",
+        "tag": "c6",
+        "alt": "",
+        "docBox": {
+          "x": 817.734375,
+          "y": 2700,
+          "w": 622.265625,
+          "h": 900
+        },
+        "aspect": 0.691,
+        "areaShare": 0.4321,
+        "intrinsic": {
+          "w": 1416,
+          "h": 2048
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-03.png",
+        "palette": [
+          {
+            "hex": "#0cefd3",
+            "coverage": 0.9526,
+            "saturation": 0.95,
+            "luma": 0.74
+          },
+          {
+            "hex": "#0cf1d5",
+            "coverage": 0.0053,
+            "saturation": 0.95,
+            "luma": 0.746
+          },
+          {
+            "hex": "#000101",
+            "coverage": 0.0046,
+            "saturation": 1,
+            "luma": 0.003
+          },
+          {
+            "hex": "#0dfadd",
+            "coverage": 0.0041,
+            "saturation": 0.948,
+            "luma": 0.775
+          },
+          {
+            "hex": "#0cf6d9",
+            "coverage": 0.0024,
+            "saturation": 0.951,
+            "luma": 0.761
+          },
+          {
+            "hex": "#05efd2",
+            "coverage": 0.0022,
+            "saturation": 0.979,
+            "luma": 0.734
+          }
+        ],
+        "light": {
+          "meanLuma": 0.732,
+          "p05": 0.74,
+          "p50": 0.74,
+          "p95": 0.74,
+          "dynamicRange": 0,
+          "gradient": {
+            "dx": -0.015,
+            "dy": -0.019
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 0
+        }
+      },
+      {
+        "src": "https://www.baemin.com/_next/static/media/bmart.682591dd.gif",
+        "kind": "img",
+        "tag": "c8",
+        "alt": "",
+        "docBox": {
+          "x": 817.734375,
+          "y": 3600,
+          "w": 622.265625,
+          "h": 900
+        },
+        "aspect": 0.691,
+        "areaShare": 0.4321,
+        "intrinsic": {
+          "w": 1416,
+          "h": 2048
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-04.png",
+        "palette": [
+          {
+            "hex": "#0cefd3",
+            "coverage": 0.9144,
+            "saturation": 0.95,
+            "luma": 0.74
+          },
+          {
+            "hex": "#0cf1d5",
+            "coverage": 0.012,
+            "saturation": 0.95,
+            "luma": 0.746
+          },
+          {
+            "hex": "#0cfadc",
+            "coverage": 0.0099,
+            "saturation": 0.952,
+            "luma": 0.773
+          },
+          {
+            "hex": "#000101",
+            "coverage": 0.0081,
+            "saturation": 1,
+            "luma": 0.003
+          },
+          {
+            "hex": "#0cf6d9",
+            "coverage": 0.0064,
+            "saturation": 0.951,
+            "luma": 0.761
+          },
+          {
+            "hex": "#010c0b",
+            "coverage": 0.0024,
+            "saturation": 0.917,
+            "luma": 0.038
+          }
+        ],
+        "light": {
+          "meanLuma": 0.723,
+          "p05": 0.738,
+          "p50": 0.74,
+          "p95": 0.74,
+          "dynamicRange": 0.002,
+          "gradient": {
+            "dx": 0.011,
+            "dy": -0.036
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 0
+        }
+      },
+      {
+        "src": "https://www.baemin.com/_next/static/media/shopping.22a0489d.gif",
+        "kind": "img",
+        "tag": "c10",
+        "alt": "",
+        "docBox": {
+          "x": 817.734375,
+          "y": 4500,
+          "w": 622.265625,
+          "h": 900
+        },
+        "aspect": 0.691,
+        "areaShare": 0.4321,
+        "intrinsic": {
+          "w": 1416,
+          "h": 2048
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-05.png",
+        "palette": [
+          {
+            "hex": "#0cefd3",
+            "coverage": 0.9556,
+            "saturation": 0.95,
+            "luma": 0.74
+          },
+          {
+            "hex": "#0cf1d5",
+            "coverage": 0.0054,
+            "saturation": 0.95,
+            "luma": 0.746
+          },
+          {
+            "hex": "#000101",
+            "coverage": 0.0038,
+            "saturation": 1,
+            "luma": 0.003
+          },
+          {
+            "hex": "#0cf9dc",
+            "coverage": 0.0033,
+            "saturation": 0.952,
+            "luma": 0.771
+          },
+          {
+            "hex": "#05efd2",
+            "coverage": 0.0022,
+            "saturation": 0.979,
+            "luma": 0.734
+          },
+          {
+            "hex": "#0cf6d9",
+            "coverage": 0.002,
+            "saturation": 0.951,
+            "luma": 0.761
+          }
+        ],
+        "light": {
+          "meanLuma": 0.732,
+          "p05": 0.74,
+          "p50": 0.74,
+          "p95": 0.74,
+          "dynamicRange": 0,
+          "gradient": {
+            "dx": 0.01,
+            "dy": -0.017
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 0
+        }
+      },
+      {
+        "src": "https://www.baemin.com/_next/static/media/gift.418c68c2.gif",
+        "kind": "img",
+        "tag": "c12",
+        "alt": "",
+        "docBox": {
+          "x": 817.734375,
+          "y": 5400,
+          "w": 622.265625,
+          "h": 900
+        },
+        "aspect": 0.691,
+        "areaShare": 0.4321,
+        "intrinsic": {
+          "w": 1416,
+          "h": 2048
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-06.png",
+        "palette": [
+          {
+            "hex": "#0cefd3",
+            "coverage": 0.9607,
+            "saturation": 0.95,
+            "luma": 0.74
+          },
+          {
+            "hex": "#0cf1d5",
+            "coverage": 0.0048,
+            "saturation": 0.95,
+            "luma": 0.746
+          },
+          {
+            "hex": "#0dfadd",
+            "coverage": 0.0034,
+            "saturation": 0.948,
+            "luma": 0.775
+          },
+          {
+            "hex": "#000101",
+            "coverage": 0.0026,
+            "saturation": 1,
+            "luma": 0.003
+          },
+          {
+            "hex": "#05efd2",
+            "coverage": 0.0022,
+            "saturation": 0.979,
+            "luma": 0.734
+          },
+          {
+            "hex": "#0cf6d9",
+            "coverage": 0.0018,
+            "saturation": 0.951,
+            "luma": 0.761
+          }
+        ],
+        "light": {
+          "meanLuma": 0.734,
+          "p05": 0.74,
+          "p50": 0.74,
+          "p95": 0.74,
+          "dynamicRange": 0,
+          "gradient": {
+            "dx": -0.013,
+            "dy": -0.014
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 0
+        }
+      },
+      {
+        "src": "https://www.baemin.com/_next/static/media/hyper.f8fa7367.gif",
+        "kind": "img",
+        "tag": "c14",
+        "alt": "",
+        "docBox": {
+          "x": 817.734375,
+          "y": 6300,
+          "w": 622.265625,
+          "h": 900
+        },
+        "aspect": 0.691,
+        "areaShare": 0.4321,
+        "intrinsic": {
+          "w": 1416,
+          "h": 2048
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-07.png",
+        "palette": [
+          {
+            "hex": "#0cefd3",
+            "coverage": 0.9588,
+            "saturation": 0.95,
+            "luma": 0.74
+          },
+          {
+            "hex": "#0cf1d5",
+            "coverage": 0.005,
+            "saturation": 0.95,
+            "luma": 0.746
+          },
+          {
+            "hex": "#0dfadd",
+            "coverage": 0.0037,
+            "saturation": 0.948,
+            "luma": 0.775
+          },
+          {
+            "hex": "#05efd2",
+            "coverage": 0.0022,
+            "saturation": 0.979,
+            "luma": 0.734
+          },
+          {
+            "hex": "#0cf6d9",
+            "coverage": 0.0022,
+            "saturation": 0.951,
+            "luma": 0.761
+          },
+          {
+            "hex": "#000101",
+            "coverage": 0.0021,
+            "saturation": 1,
+            "luma": 0.003
+          }
+        ],
+        "light": {
+          "meanLuma": 0.734,
+          "p05": 0.74,
+          "p50": 0.74,
+          "p95": 0.74,
+          "dynamicRange": 0,
+          "gradient": {
+            "dx": -0.014,
+            "dy": -0.015
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 0
+        }
+      },
+      {
+        "src": "https://www.baemin.com/_next/static/media/pay.9d9cf377.gif",
+        "kind": "img",
+        "tag": "c16",
+        "alt": "",
+        "docBox": {
+          "x": 817.734375,
+          "y": 7200,
+          "w": 622.265625,
+          "h": 900
+        },
+        "aspect": 0.691,
+        "areaShare": 0.4321,
+        "intrinsic": {
+          "w": 1416,
+          "h": 2048
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-08.png",
+        "palette": [
+          {
+            "hex": "#0cefd3",
+            "coverage": 0.9445,
+            "saturation": 0.95,
+            "luma": 0.74
+          },
+          {
+            "hex": "#000101",
+            "coverage": 0.0075,
+            "saturation": 1,
+            "luma": 0.003
+          },
+          {
+            "hex": "#0cf1d5",
+            "coverage": 0.0052,
+            "saturation": 0.95,
+            "luma": 0.746
+          },
+          {
+            "hex": "#0dfadd",
+            "coverage": 0.0048,
+            "saturation": 0.948,
+            "luma": 0.775
+          },
+          {
+            "hex": "#0cf6d9",
+            "coverage": 0.0029,
+            "saturation": 0.951,
+            "luma": 0.761
+          },
+          {
+            "hex": "#05efd2",
+            "coverage": 0.0022,
+            "saturation": 0.979,
+            "luma": 0.734
+          }
+        ],
+        "light": {
+          "meanLuma": 0.728,
+          "p05": 0.74,
+          "p50": 0.74,
+          "p95": 0.74,
+          "dynamicRange": 0,
+          "gradient": {
+            "dx": -0.01,
+            "dy": -0.025
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 0
+        }
+      },
+      {
+        "src": "https://www.baemin.com/_next/static/media/main_text_05@3x.ef8973cd.png",
+        "kind": "img",
+        "tag": "c1",
+        "alt": "건강 관리 열정 식지 않도록",
+        "docBox": {
+          "x": 156,
+          "y": 177.5,
+          "w": 654.421875,
+          "h": 240
+        },
+        "aspect": 2.727,
+        "areaShare": 0.1212,
+        "intrinsic": {
+          "w": 1966,
+          "h": 721
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-09.png",
+        "palette": [
+          {
+            "hex": "#0cefd3",
+            "coverage": 0.1345,
+            "saturation": 0.95,
+            "luma": 0.74
+          },
+          {
+            "hex": "#0af1d5",
+            "coverage": 0.0813,
+            "saturation": 0.959,
+            "luma": 0.745
+          },
+          {
+            "hex": "#06f3d7",
+            "coverage": 0.0541,
+            "saturation": 0.975,
+            "luma": 0.747
+          },
+          {
+            "hex": "#7c7d7a",
+            "coverage": 0.0359,
+            "saturation": 0.024,
+            "luma": 0.489
+          },
+          {
+            "hex": "#8c8c85",
+            "coverage": 0.0357,
+            "saturation": 0.05,
+            "luma": 0.547
+          },
+          {
+            "hex": "#81827e",
+            "coverage": 0.0302,
+            "saturation": 0.031,
+            "luma": 0.508
+          }
+        ],
+        "light": {
+          "meanLuma": 0.622,
+          "p05": 0.468,
+          "p50": 0.608,
+          "p95": 0.748,
+          "dynamicRange": 0.28,
+          "gradient": {
+            "dx": 0.037,
+            "dy": -0.018
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 35.4
+        }
+      },
+      {
+        "src": "https://www.baemin.com/_next/static/media/food.f99a939d.png",
+        "kind": "img",
+        "tag": "c5",
+        "alt": "음식배달",
+        "docBox": {
+          "x": 156,
+          "y": 1994.203125,
+          "w": 682.796875,
+          "h": 140
+        },
+        "aspect": 4.877,
+        "areaShare": 0.0738,
+        "intrinsic": {
+          "w": 1390,
+          "h": 285
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-10.png",
+        "palette": [
+          {
+            "hex": "#0cefd3",
+            "coverage": 0.4642,
+            "saturation": 0.95,
+            "luma": 0.74
+          },
+          {
+            "hex": "#000000",
+            "coverage": 0.2015,
+            "saturation": 0,
+            "luma": 0
+          },
+          {
+            "hex": "#0bf1d5",
+            "coverage": 0.0369,
+            "saturation": 0.954,
+            "luma": 0.745
+          },
+          {
+            "hex": "#0dfadd",
+            "coverage": 0.0318,
+            "saturation": 0.948,
+            "luma": 0.775
+          },
+          {
+            "hex": "#0cf6d9",
+            "coverage": 0.014,
+            "saturation": 0.951,
+            "luma": 0.761
+          },
+          {
+            "hex": "#078a7a",
+            "coverage": 0.0125,
+            "saturation": 0.949,
+            "luma": 0.427
+          }
+        ],
+        "light": {
+          "meanLuma": 0.533,
+          "p05": 0,
+          "p50": 0.74,
+          "p95": 0.762,
+          "dynamicRange": 0.762,
+          "gradient": {
+            "dx": 0.241,
+            "dy": -0.001
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#0cedd1",
+          "center": {
+            "x": 0.3164,
+            "y": 0.4752
+          },
+          "box": {
+            "x": 0,
+            "y": 0.1515,
+            "w": 0.725,
+            "h": 0.6667
+          },
+          "coverage": 0.2502
+        }
+      },
+      {
+        "src": "https://www.baemin.com/_next/static/media/club.05c12703.png",
+        "kind": "img",
+        "tag": "c7",
+        "alt": "배민클럽",
+        "docBox": {
+          "x": 156,
+          "y": 2879.703125,
+          "w": 682.796875,
+          "h": 140
+        },
+        "aspect": 4.877,
+        "areaShare": 0.0738,
+        "intrinsic": {
+          "w": 1390,
+          "h": 285
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-11.png",
+        "palette": [
+          {
+            "hex": "#0cefd3",
+            "coverage": 0.4299,
+            "saturation": 0.95,
+            "luma": 0.74
+          },
+          {
+            "hex": "#000000",
+            "coverage": 0.2093,
+            "saturation": 0,
+            "luma": 0
+          },
+          {
+            "hex": "#0dfadd",
+            "coverage": 0.0456,
+            "saturation": 0.948,
+            "luma": 0.775
+          },
+          {
+            "hex": "#0bf2d5",
+            "coverage": 0.0314,
+            "saturation": 0.955,
+            "luma": 0.748
+          },
+          {
+            "hex": "#0cf6d9",
+            "coverage": 0.0104,
+            "saturation": 0.951,
+            "luma": 0.761
+          },
+          {
+            "hex": "#011412",
+            "coverage": 0.0097,
+            "saturation": 0.95,
+            "luma": 0.062
+          }
+        ],
+        "light": {
+          "meanLuma": 0.521,
+          "p05": 0,
+          "p50": 0.74,
+          "p95": 0.784,
+          "dynamicRange": 0.784,
+          "gradient": {
+            "dx": 0.273,
+            "dy": 0.019
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#0ce6cb",
+          "center": {
+            "x": 0.2922,
+            "y": 0.4777
+          },
+          "box": {
+            "x": 0,
+            "y": 0.1515,
+            "w": 0.5813,
+            "h": 0.6667
+          },
+          "coverage": 0.2506
+        }
+      },
+      {
+        "src": "https://www.baemin.com/_next/static/media/gift.4a13ba14.png",
+        "kind": "img",
+        "tag": "c13",
+        "alt": "선물하기",
+        "docBox": {
+          "x": 156,
+          "y": 5595.59375,
+          "w": 682.796875,
+          "h": 140
+        },
+        "aspect": 4.877,
+        "areaShare": 0.0738,
+        "intrinsic": {
+          "w": 1390,
+          "h": 285
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-12.png",
+        "palette": [
+          {
+            "hex": "#0cefd3",
+            "coverage": 0.454,
+            "saturation": 0.95,
+            "luma": 0.74
+          },
+          {
+            "hex": "#000000",
+            "coverage": 0.1907,
+            "saturation": 0,
+            "luma": 0
+          },
+          {
+            "hex": "#0cf1d5",
+            "coverage": 0.0394,
+            "saturation": 0.95,
+            "luma": 0.746
+          },
+          {
+            "hex": "#0dfadc",
+            "coverage": 0.0367,
+            "saturation": 0.948,
+            "luma": 0.774
+          },
+          {
+            "hex": "#0cf6d9",
+            "coverage": 0.0157,
+            "saturation": 0.951,
+            "luma": 0.761
+          },
+          {
+            "hex": "#000b0a",
+            "coverage": 0.0078,
+            "saturation": 1,
+            "luma": 0.034
+          }
+        ],
+        "light": {
+          "meanLuma": 0.522,
+          "p05": 0,
+          "p50": 0.74,
+          "p95": 0.768,
+          "dynamicRange": 0.768,
+          "gradient": {
+            "dx": 0.203,
+            "dy": 0.012
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#0ceed2",
+          "center": {
+            "x": 0.3545,
+            "y": 0.4645
+          },
+          "box": {
+            "x": 0.0063,
+            "y": 0.0303,
+            "w": 0.7375,
+            "h": 0.8485
+          },
+          "coverage": 0.2502
+        }
+      }
+    ],
+    "aggregate": {
+      "meanLuma": 0.728,
+      "dynamicRange": 0.002,
+      "luminanceGradients": {
+        "brighter top": 1,
+        "even": 8,
+        "brighter right": 3
+      },
+      "aspects": 0.691,
+      "figureGroundResolved": "3/12",
+      "subjectNote": "fewer than 4 resolved samples — placement omitted"
+    }
+  },
+  "motion": {
+    "present": false,
+    "note": "no video above the fold at capture time"
+  }
+}

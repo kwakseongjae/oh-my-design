@@ -256,6 +256,11 @@ uses cerulean, she assumes it's imitating Toss.
 
 **Easings:**
 
+> **비브랜드 구현 기본값.** 아래 curve들은 이 legacy 규격의 *예시*이지 어떤 브랜드의
+> 관측된 토큰이 아니다. reference DESIGN.md나 Core v2 `foundations.tokens`로 이 값을
+> 옮기지 마라 — 브랜드 모션 값은 그 브랜드 표면에서 실측된 경우에만 존재한다.
+> (T1-3 재주입 차단: `docs/reviews/t1-3-golden-2026-08-23-sol-review.md` §4)
+
 | Token | Curve | Use |
 |---|---|---|
 | `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Things appearing — fast start, settle |

@@ -1,0 +1,89 @@
+{
+  "brand": "coupang",
+  "source": {
+    "url": "https://www.coupang.com/",
+    "finalUrl": "https://www.coupang.com/",
+    "capturedAt": "2026-08-22T19:48:17.298Z"
+  },
+  "task": [
+    "브랜드 coupang의 공식 표면 캡처와 실측값을 보고, 이 브랜드 스타일의 생성 에셋 세트를 만든다.",
+    "이미지 최대 16장, 영상 최대 3개. 넉넉하게 만들되 상한을 넘기지 않는다.",
+    "샷 리스트는 네가 정한다 — 히어로 후보, 이 브랜드가 실제로 찍는 종류의 사진, 배경/텍스처, 모바일 세로 컷을 섞어라.",
+    "영상은 생성한 이미지 중 가장 브랜드다운 것을 골라 image_to_video로 만든다 (6초, 720p). 텍스트만으로 영상을 만들지 마라."
+  ],
+  "hardRules": [
+    "모든 시각적 결정은 아래 실측값과 참조 이미지에서만 나온다. 실측에 없는 색·구도·분위기를 발명하지 않는다.",
+    "이미지 안에 글자·로고·워드마크를 넣지 않는다. 브랜드명을 프롬프트에 쓰지 않는다 — 브랜드는 색·빛·구도·피사체로만 드러나야 한다.",
+    "실측에 없는 값이 필요하면 그 샷을 포기한다. 추정으로 채우지 않는다.",
+    "각 이미지의 프롬프트에 어떤 실측값을 인용했는지 shots.json에 기록한다."
+  ],
+  "measuredFacts": {
+    "surfaces": {
+      "desktop-1440": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "imagerySampled": 6,
+        "canvas": "#fefefe",
+        "dominantImageryPalette": [
+          {
+            "hex": "#fafafa",
+            "coverage": 0.9497
+          },
+          {
+            "hex": "#f5f5f5",
+            "coverage": 0.0101
+          },
+          {
+            "hex": "#ebebec",
+            "coverage": 0.0032
+          },
+          {
+            "hex": "#ced2dc",
+            "coverage": 0.0024
+          }
+        ],
+        "meanLuma": 0.995,
+        "dynamicRange": 0.019,
+        "typicalAspect": 0.542
+      }
+    }
+  },
+  "referenceImages": [
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/coupang/capture/desktop-1440-viewport.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/coupang/capture/desktop-1440-imagery-01.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/coupang/capture/desktop-1440-imagery-02.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/coupang/capture/desktop-1440-imagery-03.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/coupang/capture/desktop-1440-imagery-04.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/coupang/capture/desktop-1440-imagery-05.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/coupang/capture/desktop-1440-imagery-06.png"
+  ],
+  "outputContract": {
+    "imagesDir": "images/",
+    "videosDir": "videos/",
+    "manifest": "shots.json",
+    "manifestShape": {
+      "brand": "string",
+      "shots": [
+        {
+          "file": "images/NN.jpg",
+          "role": "hero|imagery|texture|mobile",
+          "prompt": "실제 사용한 프롬프트",
+          "citedFacts": [
+            "measuredFacts에서 인용한 키"
+          ],
+          "aspect": "16:9|9:16|3:2|1:1"
+        }
+      ],
+      "videos": [
+        {
+          "file": "videos/NN.mp4",
+          "fromImage": "images/NN.jpg",
+          "motivation": "왜 이 이미지를 움직였나",
+          "durationSec": 6
+        }
+      ]
+    }
+  }
+}

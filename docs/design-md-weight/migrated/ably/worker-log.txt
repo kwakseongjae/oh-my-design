@@ -1,0 +1,12 @@
+T2 마이그레이션을 시작하기 위해 규칙집과 원문부터 순서대로 읽겠습니다.필수 문서와 골든 샘플을 이어서 읽겠습니다.이미 `ably/` 폴더가 있어 기존 산출과 필수 문서를 함께 확인하겠습니다.골든 샘플과 Ably 원문, 최근 통과본을 대조하겠습니다.최근 통과본의 상태 판정·B2a·로그 형태를 확인한 뒤 Ably를 맞추겠습니다.원문 값을 기준으로 Core v2 본문과 provenance를 작성합니다.본문을 처음부터 다시 읽고 B2a 문장과 근거 종류를 점검합니다.F1에서 잡힌 해석 문장과 provenance 이중 목적지 모순을 고칩니다.F2용으로 본문·provenance에서 값을 직접 grep합니다.게이트와 Portable Core 검사를 실행합니다. 로그의 pass 주장은 이 결과와 맞출 때만 유지합니다.Ably legacy `DESIGN.md`를 Core v2로 옮겼습니다. 카탈로그 채택은 아닙니다.
+
+산출:
+- `docs/design-md-weight/migrated/ably/DESIGN.md`
+- `docs/design-md-weight/migrated/ably/provenance.md`
+- `docs/design-md-weight/migrated/ably/migration-log.md` (규칙집 v7)
+
+검증: `inspectDesignMd` `portable_core: true`, placeholders 0. `migrate-reference.mjs --brand ably --gate-only` PASS.
+
+보존한 핵심: unitless line-height `1.25`/`1.33`/`1.27`/`1.4`/`1.5`/`1.6`, button×5 + card, `ds.type: brand`, Google s2 favicon은 identity-only, §14 본문, 역할별 loading/error/success, story card는 kind/map 생략, B3 다섯 증거 종류. F1·F2 수행.
+
+DONE migrated=1

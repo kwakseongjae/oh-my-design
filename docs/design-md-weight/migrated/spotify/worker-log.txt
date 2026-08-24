@@ -1,0 +1,19 @@
+T2 Spotify 마이그레이션을 시작합니다. 규칙집·스펙·골든 샘플부터 순서대로 읽고, 그다음 legacy DESIGN.md를 Core v2로 옮기겠습니다.규칙집과 Core 스펙을 확인했습니다. 이제 대응표·제약·골든 샘플·Spotify legacy 본문을 이어서 읽겠습니다.골든 샘플과 Spotify legacy, 그리고 최근 통과한 이관본 형태를 대조해 읽겠습니다.Spotify legacy 본문은 확보했습니다. 최근 통과본의 컴포넌트 상태·B2a 한정 처리와 YAML에만 있는 값들을 대조합니다.스펙과 승인본 형태를 맞췄습니다. 이제 Spotify Core v2 `DESIGN.md`를 작성합니다.본문 초안을 썼습니다. F1 B2a 스캔을 위해 DESIGN.md를 처음부터 다시 읽고, 해석 문장마다 근거 class를 확인합니다.F2 대조를 위해 legacy 값마다 DESIGN.md와 provenance에서 실제 위치를 grep으로 확인합니다.기계 게이트와 Portable Core 검사는 통과했습니다. CURRENT_STATE와 JOURNAL을 갱신한 뒤 로그 준수 주장을 한 번 더 대조합니다.Spotify legacy `DESIGN.md`를 Core v2로 옮겼습니다. 카탈로그 채택은 아닙니다.
+
+산출물:
+- `docs/design-md-weight/migrated/spotify/DESIGN.md`
+- `docs/design-md-weight/migrated/spotify/provenance.md`
+- `docs/design-md-weight/migrated/spotify/migration-log.md` (규칙집 **v6**)
+
+기계 확인: `inspectDesignMd` `portable_core: true`, placeholders 0. `migrate-reference.mjs --brand spotify --gate-only` **PASS**.
+
+의미 보존에서 맞춘 점:
+- 범위는 Open Spotify home / `/search` / company-info newsroom. Player chrome, newsroom, partner-integration은 서로 다른 증거 영역.
+- `#1ed760`는 newsroom/editorial Spotify Green이자 catalog `primary_color`이지, player control fill이 아님.
+- Player Search는 `Type: input`, outlined/icon/filled/hollow CTA는 `Type: button`.
+- Principles numbered stem은 developer guidance / design writing first-party. *UI implication*과 capture-bound만 B2a 한정.
+- generic `Focus`(newsroom `#25d564` / `#1dd35e` 포함)는 `focus-visible`로 올리지 않음. loading/error/success는 역할로 `not-applicable`.
+- Hollow newsroom CTA는 YAML에 없어 Components + provenance selector 이중 목적지. Simple Icons logo는 provenance identity-only.
+- §14 본문 유지, 무출처 커브 없음, B3 다섯 증거 종류 게이트 본문 유지. F1·F2 수행.
+
+DONE migrated=1

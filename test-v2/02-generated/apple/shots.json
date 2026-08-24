@@ -1,0 +1,205 @@
+{
+  "brand": "apple",
+  "shots": [
+    {
+      "file": "images/01.jpg",
+      "role": "hero",
+      "prompt": "A studio product photograph of four smartphones standing upright in a tight overlapping row, cropped so the bodies rise from the bottom of a wide frame. Left: deep slate-navy body matching #43485b, a raised horizontal camera plateau with three large circular lenses in a row across the top. Next: glossy white dual circular lenses stacked vertically. Next: pale blush body matching #faeceb with one circular lens near the top. Far right: a wafer-thin silver side profile. Completely blank glass backs, uninterrupted color, zero printing. Seamless backdrop #f5f5f7, even high-key commercial light, generous empty field above. Photoreal.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.canvas"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/02.jpg",
+      "role": "hero",
+      "prompt": "A pale ice-blue aluminum laptop split fully open like a floating clamshell, hovering in mid-air. The lid screen shows an abstract wallpaper of repeating glossy cyan-blue leaf blades with no writing. The base shows a black keyboard and a large unmarked trackpad. Seamless studio gradient from light sky blue into #f5f5f7 white. Even high-key light, high dynamic range, photoreal commercial product hero.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.meanLuma"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/03.jpg",
+      "role": "imagery",
+      "prompt": "Four ultrathin tablets fanned in a diagonal stack on a pale sky-blue studio gradient that falls into #f5f5f7. The front tablet faces the camera, screen filled with an abstract translucent blue glass-ribbon wallpaper and no writing. The three rear tablets show plain pastel backs in ice blue, lavender, champagne, and charcoal. Soft even lighting, photoreal commercial still, generous empty field around the stack.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.meanLuma"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/04.jpg",
+      "role": "imagery",
+      "prompt": "A space-black aluminum laptop open at a sharp angle on a true black void. Unmarked dark-metal lid catching one narrow specular highlight; black keyboard visible along the inner edge. High dynamic range near 0.96, mean luma low, no environment, photoreal luxury product still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/05.jpg",
+      "role": "imagery",
+      "prompt": "A rose-gold aluminum smartwatch in three-quarter side view on a seamless #f5f5f7 studio field. Cream silicone band, rounded-square dark glass, a side button and a fluted digital crown. The face is a dark blue field with three silent colored arcs in blue, green, and coral only — no numerals, no letters, no icons. Even high-key commercial lighting, photoreal product still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.meanLuma"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/06.jpg",
+      "role": "imagery",
+      "prompt": "Two separate glossy white wireless earbuds standing independently on a seamless #f5f5f7 studio field, not joined. Each has a short stem pointing down, a silicone ear tip, and a black oval mesh speaker grille on the inner face. Even high-key commercial lighting, unmarked white surfaces, photoreal product still, generous empty space.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.meanLuma"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/07.jpg",
+      "role": "imagery",
+      "prompt": "Extreme close-up of a slate-navy smartphone camera plateau matching #43485b, three large circular glass lenses in a horizontal row, brushed metal rings, seamless #f5f5f7 studio field filling the rest of the frame. No printing, no badges. Even high-key light, photoreal macro still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/08.jpg",
+      "role": "imagery",
+      "prompt": "A black tablet standing on a true black void, screen filled with an abstract liquid-metal wallpaper of stacked glossy black bars edged in rainbow refraction. Unmarked chassis, high dynamic range, photoreal luxury product still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/09.jpg",
+      "role": "imagery",
+      "prompt": "A single wafer-thin silver smartphone seen strictly from the side, camera bump as a small circle at the top, standing on a seamless #f5f5f7 studio field. Even high-key commercial lighting, unmarked metal, photoreal product still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.meanLuma"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/10.jpg",
+      "role": "texture",
+      "prompt": "Seamless empty photographic studio backdrop, a flat field of #f5f5f7 with barely visible tonal shifts into #f6f7f9 and #fbfbfc. High luma, no objects, no grain, smooth paper-like surface, photoreal.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.meanLuma"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/11.jpg",
+      "role": "texture",
+      "prompt": "Seamless empty studio gradient falling from pale sky blue at the top through #f6f7f9 into #f5f5f7 white at the bottom. No objects, photographic, smooth, high luma.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/12.jpg",
+      "role": "texture",
+      "prompt": "Seamless empty studio field of warm #faeceb blending softly into #faf5f4 and #f5f5f7. High luma, no objects, photographic paper smoothness.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.canvas"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/13.jpg",
+      "role": "texture",
+      "prompt": "Seamless true black studio void with a faint cool specular falloff, high dynamic range, no objects, photographic.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/14.jpg",
+      "role": "mobile",
+      "prompt": "Reframe this four-phone lineup into a tall 9:16 studio still. Keep the exact devices, camera layouts, blank unmarked backs, and even high-key light. Place the phones in the lower half of the frame around vertical center 0.63, with a generous empty #f5f5f7 field filling the upper half. Do not add emblems or letters.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.subjectCentre",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.viewport"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/15.jpg",
+      "role": "mobile",
+      "prompt": "Vertical 9:16 studio product photograph of two separate glossy white wireless earbuds with short downward stems and black mesh grilles, sitting in the lower half of the frame around vertical center 0.63, horizontally centered. Seamless #f5f5f7 filling the upper field. Even high-key commercial lighting, unmarked, photoreal.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.subjectCentre",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.viewport"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/16.jpg",
+      "role": "mobile",
+      "prompt": "Vertical 9:16 studio product photograph of a pale ice-blue aluminum laptop split fully open like a floating clamshell. The device sits in the lower half of the frame around vertical center 0.63, horizontally centered. Lid screen shows an abstract wallpaper of repeating glossy cyan-blue blade shapes with no writing. Black keyboard, unmarked chassis. Pale sky-blue-to-#f5f5f7 gradient filling the upper field. Even high-key light, photoreal.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.subjectCentre",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.canvas"
+      ],
+      "aspect": "9:16"
+    }
+  ],
+  "videos": [
+    {
+      "file": "videos/01.mp4",
+      "fromImage": "images/01.jpg",
+      "motivation": "The four-phone lineup on #f5f5f7 is the homepage hero grammar: slate-navy, white, blush, silver edge, subject cropped from the bottom. A 6s 720p push-in keeps the still and does not add a scene.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/02.mp4",
+      "fromImage": "images/02.jpg",
+      "motivation": "The split ice-blue laptop on a pale sky-to-#f5f5f7 field is the second homepage product still. Slow push-in holds the floating clamshell and abstract blade wallpaper.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/03.mp4",
+      "fromImage": "images/03.jpg",
+      "motivation": "The fanned pastel tablets on the same sky-blue studio wash are the third product tile type on the captured surface. A 6s 720p push-in stays inside that still.",
+      "durationSec": 6
+    }
+  ]
+}

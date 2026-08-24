@@ -1,0 +1,191 @@
+{
+  "brand": "apple",
+  "captureId": "2026-08-22T19-46-47-156Z",
+  "capturedAt": "2026-08-22T19:46:47.156Z",
+  "channel": "playwright",
+  "source": {
+    "url": "https://www.apple.com/kr/",
+    "finalUrl": "https://www.apple.com/kr/",
+    "title": "Apple (대한민국)",
+    "status": 200
+  },
+  "surfaces": [
+    {
+      "id": "desktop-1440",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "imagerySamples": 8,
+      "durationMs": 13365
+    },
+    {
+      "id": "mobile-390",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "imagerySamples": 10,
+      "durationMs": 12639
+    }
+  ],
+  "surfaceLimit": null,
+  "locale": "ko-KR",
+  "session": {
+    "profile": "fresh automation context",
+    "authenticated": false
+  },
+  "store": {
+    "root": "$OMD_EVIDENCE_STORE",
+    "path": "apple/2026-08-22T19-46-47-156Z"
+  },
+  "files": [
+    {
+      "name": "desktop-1440-imagery-01.png",
+      "bytes": 439247,
+      "sha256": "1bbfb56cfd0fd5f9a82a5e72c6acaec4fcbed055dd7bf3d5c3a008fbcb496b66"
+    },
+    {
+      "name": "desktop-1440-imagery-02.png",
+      "bytes": 985698,
+      "sha256": "29dc90cce7dc541bb3f107ba9b40cfbae6fb98c2691b3e46a77d966db6114195"
+    },
+    {
+      "name": "desktop-1440-imagery-03.png",
+      "bytes": 2818594,
+      "sha256": "e23d991f3489e7cb1b3e47cd2ba5d2f0d9582bccf5c6f5a24dbfc1de09de9b4e"
+    },
+    {
+      "name": "desktop-1440-imagery-04.png",
+      "bytes": 326547,
+      "sha256": "d3c8d17427597380f37aaf8001fab313911c2cce23b1bae54bbf59cf5c007f2e"
+    },
+    {
+      "name": "desktop-1440-imagery-05.png",
+      "bytes": 495103,
+      "sha256": "cbcafc2171bbd2fc1f022131691c3e52815b251c78a85390718d3e7aa2585bfe"
+    },
+    {
+      "name": "desktop-1440-imagery-06.png",
+      "bytes": 260339,
+      "sha256": "a1c840cad2e480128bb614a7fa237edec1e41c3776d6997f91edc423ef886267"
+    },
+    {
+      "name": "desktop-1440-imagery-07.png",
+      "bytes": 303100,
+      "sha256": "13fd794097e9f15b334d1eaeaf506edf505a3062a6b7cf59a1edeebfba7d1278"
+    },
+    {
+      "name": "desktop-1440-imagery-08.png",
+      "bytes": 396264,
+      "sha256": "b3e388db92c029632afa5bbc725ef8b170ee14320ca5ed5ff74fa7a66c7149b9"
+    },
+    {
+      "name": "desktop-1440-viewport.png",
+      "bytes": 524481,
+      "sha256": "6f92fbc97f6de8c79490b535e59279fb04206508694cc52b4779f67a70236dc7"
+    },
+    {
+      "name": "imagery-01.png",
+      "bytes": 439247,
+      "sha256": "1bbfb56cfd0fd5f9a82a5e72c6acaec4fcbed055dd7bf3d5c3a008fbcb496b66"
+    },
+    {
+      "name": "imagery-02.png",
+      "bytes": 985698,
+      "sha256": "29dc90cce7dc541bb3f107ba9b40cfbae6fb98c2691b3e46a77d966db6114195"
+    },
+    {
+      "name": "imagery-03.png",
+      "bytes": 2818594,
+      "sha256": "e23d991f3489e7cb1b3e47cd2ba5d2f0d9582bccf5c6f5a24dbfc1de09de9b4e"
+    },
+    {
+      "name": "imagery-04.png",
+      "bytes": 326547,
+      "sha256": "d3c8d17427597380f37aaf8001fab313911c2cce23b1bae54bbf59cf5c007f2e"
+    },
+    {
+      "name": "imagery-05.png",
+      "bytes": 495103,
+      "sha256": "cbcafc2171bbd2fc1f022131691c3e52815b251c78a85390718d3e7aa2585bfe"
+    },
+    {
+      "name": "imagery-06.png",
+      "bytes": 260337,
+      "sha256": "b0f2de08a97069aba2e9ee37b9a7316a58af17971be00e2202aeb288206de0a4"
+    },
+    {
+      "name": "imagery-07.png",
+      "bytes": 303098,
+      "sha256": "d8a56e6eaaa77a8dc9a5e931d39f6f674784d20d6f3872c4fc1479e33f9a360d"
+    },
+    {
+      "name": "mobile-390-imagery-01.png",
+      "bytes": 157360,
+      "sha256": "32950012403dd777823822adb57b023514436863b5abcd3cdea10dd5069cc82e"
+    },
+    {
+      "name": "mobile-390-imagery-02.png",
+      "bytes": 354760,
+      "sha256": "2f3df8b77018e8f758cce6af7b0b8718e86524cd91e891428ef98a55a4dc8359"
+    },
+    {
+      "name": "mobile-390-imagery-03.png",
+      "bytes": 646970,
+      "sha256": "2c2237cd585d704f732322d87460f969c665d2d0c8a5c78adf1537774e3b8a37"
+    },
+    {
+      "name": "mobile-390-imagery-04.png",
+      "bytes": 126424,
+      "sha256": "65864e7cb293f56a7648ec3f33043dba2d47b6cdf338b4197c79b8e0ba546dd8"
+    },
+    {
+      "name": "mobile-390-imagery-05.png",
+      "bytes": 215109,
+      "sha256": "edd02ca7929f15d2b549d55551da86bc07834cd4d024fe80c4de6941c0991396"
+    },
+    {
+      "name": "mobile-390-imagery-06.png",
+      "bytes": 105072,
+      "sha256": "fd3d3cc34291cae4b4a26ced2446ba5dde7f3d933f7dd6c1601a8c4a3ed24c08"
+    },
+    {
+      "name": "mobile-390-imagery-07.png",
+      "bytes": 167679,
+      "sha256": "aa34ac3a33bd8161a13c70857720c6443a1883a829135ddb51024b7316eeaa94"
+    },
+    {
+      "name": "mobile-390-imagery-08.png",
+      "bytes": 278936,
+      "sha256": "be1915f7be5c39e78efab4769c35ccc629f9e0ee5ab26ba26ee7a69f0ad7d73c"
+    },
+    {
+      "name": "mobile-390-imagery-09.png",
+      "bytes": 204607,
+      "sha256": "ff8e4dc2217afb42d533f2e381db5111a05f28a1123c0a1b87fa9a08c2704196"
+    },
+    {
+      "name": "mobile-390-imagery-10.png",
+      "bytes": 401962,
+      "sha256": "5302c06df60dbc24c22762f3d781315cdfb75fb064354a9c5589a83b45c2cef5"
+    },
+    {
+      "name": "mobile-390-viewport.png",
+      "bytes": 366650,
+      "sha256": "a310f6733fef346662b43a62bd6466d8c904e3ea603f9d0cbeccf23cb2a9b859"
+    },
+    {
+      "name": "viewport-1440.png",
+      "bytes": 524481,
+      "sha256": "6f92fbc97f6de8c79490b535e59279fb04206508694cc52b4779f67a70236dc7"
+    },
+    {
+      "name": "viewport-390.png",
+      "bytes": 413010,
+      "sha256": "e572f77a6ebf53bb47a2f62dfecc1975d045b9895c54de1975f066f3d8435cbe"
+    }
+  ],
+  "evidenceSha256": "18b574b75073321abe996e5e269e96dcedf9d3997fb41d04d7a30ed6c4b31cfb",
+  "supersededBy": null
+}

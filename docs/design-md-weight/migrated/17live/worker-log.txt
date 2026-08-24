@@ -1,0 +1,27 @@
+17LIVE 레거시를 Core v2로 옮기겠습니다. 지정된 규격·규칙집·골든 샘플부터 읽고, 본문 작성 후 B2a·E2 패스를 돌리겠습니다.세션 맥락은 T2 이관 레인입니다. 지정된 규격·규칙집·골든 샘플을 순서대로 읽겠습니다.골든 샘플과 17LIVE 원본, 최근 통과 이관본 형태를 함께 읽겠습니다.원본은 live 미검증·근사 hex가 많습니다. 통과한 유사 이관본과 게이트 조건을 대조하겠습니다.원본은 live 미검증·템플릿 커브·가상 페르소나가 섞여 있습니다. Discord/OpenAI 이관 형태를 기준으로 본문을 작성합니다.본문·provenance를 작성합니다. live 미검증 경계, 무출처 커브 생략, 가상 페르소나 제외를 고정합니다.F1 스캔을 위해 DESIGN.md를 처음부터 다시 읽고, 해석 문장마다 인접 한정을 확인합니다.F1에서 Audience·모션 캐릭터·에셋 URL·폰트 폴백 경계를 고칩니다. Google s2 URL은 provenance 전용으로 둡니다.17LIVE 레거시 `DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 **v7**. 산출물은 `docs/design-md-weight/migrated/17live/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 카탈로그 채택은 아닙니다.
+
+**보존한 것**
+- 제품 범위(`https://17.live`), LIVER 용어, brief-provided `#FF4F6E`, 기록된 색·간격·도형·컴포넌트 기하, §14 11행 상태 표, duration 5개, signature motion 4개, reduce-motion, WebFetch 태그라인 `Live Streaming 直播互動娛樂平台`, Wikipedia 서사(미감사 수치 한정 포함).
+- YAML vs 본문 충돌은 평균하지 않고 둘 다 남겼습니다(15px / 15–16px / 16px, Gift 2-stop vs 3-stop, LIVE `#FF4F6E` vs `#27C76F` 점 등).
+
+**분리·삭제한 것**
+- 무출처 cubic-bezier 3개(레거시 템플릿과 동일) → provenance omission ledger. 토큰 이름·용도는 본문에 유지. B3 다섯 증거 종류 게이트 전문을 Foundations Motion에 적었습니다.
+- §9 도구 프롬프트는 삭제. §9에만 있던 28px 아바타·15px 이름 등은 Components로 옮겼습니다.
+- §13 가상 페르소나(さくら / 阿哲 / Kevin)는 삭제했고 sidecar에도 넣지 않았습니다.
+- Google s2 파비콘 URL·`pinkoi` 스타일 참조는 provenance-only.
+
+**상태 계약**
+- Primary(GO LIVE/CTA/sign-up)와 Default Input(search/login/profile)은 mixed role이라 loading/error/success 세 필드를 생략했습니다.
+- Gift loading은 §14 in-button spinner라 applicable.
+- Stream Card / List Card는 kind+map 생략(C4). LIVE/Rank Badge·Avatar는 `Kind: non-interactive`.
+- generic Focus(`#FF4F6E` 보더)는 `focus-visible` treatment로 올리지 않았습니다.
+
+**검증**
+- F1 B2a 전편 재독, F2 grep 대조 수행.
+- `inspectDesignMd` `portable_core: true`
+- `--gate-only` PASS, problems 0
+- `migrate-design-md-core.cjs --check --require-portable-core` exit 0 / `portable_core: true`
+
+다음 단계는 하네스의 F3 감사와 sol 의미 레인입니다.
+
+DONE migrated=1

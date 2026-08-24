@@ -1,0 +1,21 @@
+{
+  "pinnedAt": "2026-08-23",
+  "root": "benchmarks/ui-resolve-bench/fixtures/competitor-skills-2.0",
+  "packs": {
+    "omd": {
+      "dir": "omd-autopilot-v2",
+      "files": 32,
+      "treeSha256": "21a8c1add443f3212a31fa15ec8681160107a5290ac2b2e575fb69cff8833649"
+    },
+    "hallmark": {
+      "dir": "hallmark",
+      "files": 109,
+      "treeSha256": "365843c99c5fae9180e53c0f9442a47601a389f6fb34eb5efe7ba15f7bee4cbb"
+    },
+    "uiuxpromax": {
+      "dir": "ui-ux-pro-max",
+      "files": 147,
+      "treeSha256": "edb3306cad05ab57516a69ad857193bd4c6d75001fce826c2af1b71794cf20f7"
+    }
+  }
+}

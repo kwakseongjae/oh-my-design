@@ -1,9 +1,0 @@
-{
-  "schema_version":"0.1","product_version":"1.9.545","experiment_id":"offshore-first-edit-checklist-luna-1.9.544","status":"SIX_CELLS_PREPARED","provider_calls":0,
-  "output_root":"/private/tmp/u19544","vendors_root":"/private/tmp/u19544-vendors","locked_plan_sha256":"3d32e99bc275893d5132b1308be34d22b26ed76f0a8bc91cea0ff4d72933e690",
-  "equality":{"scheduled_cells":6,"prepared_cells":6,"core_prompt_equal":6,"prompt_equal_within_arm":6,"starter_equal":6,"product_tree_equal":6,"runtime_equal":6,"model_equal":6,"effort_equal":6,"timeout_equal":6},
-  "source_attestation":{"control":{"commit":"0b93fa971c5d4e086b2645f2de9dd09fe1b365fe","detached":true,"clean":true},"candidate":{"commit":"28f9620035fc1adae32b17965a7f51312c3ca2f5","detached":true,"clean":true}},
-  "installed_source_sha256":{"control_skill":"2a73d015b5fd727b68c258726ac358a4a02010819b26ebe6ca7dd042f9bf0f3a","candidate_skill":"911048af669ef51b3e826c318e410f9d729e41ca3ce63a6c6575406eb4d6c24e","control_browser_runner":"4649a04a84f616a7943a31e9d7d14117b534c60a1810d950987f6632d676ce94","candidate_browser_runner":"4649a04a84f616a7943a31e9d7d14117b534c60a1810d950987f6632d676ce94","control_artifact_helper":"def49405314c22a186c6d9baddd4ebb9b241dd898c1bd28af5632993d4a56a7e","candidate_artifact_helper":"a807e33e79e150b2c286781325010d05d224d01213b74018f9f24f0015589ad6"},
-  "candidate_guardrail_presence":{"structured_css_declaration_schema":true,"positive_length_contract":true,"any_declaration_contract":true,"safe_zero_reset_semantics":true,"acceptance_debt_manifest_binding":true,"ordered_first_edit_checklist":true,"checklist_contract_terminal_red":true,"aggregate_carrier_plan_retained":true,"browser_runner_identical":true},
-  "next":"Run runtime browser, CLI, and auth preflight, then execute luna-offshore-r1-control once with Luna/high and no retry."
-}

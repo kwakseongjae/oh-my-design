@@ -92,3 +92,17 @@ data/analytics/
 # Deterministic reverify queue/task packets (CI artifact, never source data)
 artifacts/reverify/
 artifacts/reference-evidence/
+
+# Benchmark outputs and third-party packs live in the immutable store
+# (~/.omd/bench-store) with SHA manifests committed under
+# benchmarks/ui-resolve-bench/manifests/. `scripts/bench-store.mjs --verify`
+# checks custody; REPRODUCE.md explains how a stranger re-runs everything.
+benchmarks/ui-resolve-bench/reports/
+benchmarks/ui-resolve-bench/e2e/
+benchmarks/ui-resolve-bench/fixtures/competitor-skills-2.0/
+
+# SuperClaude plugin scratch output.
+claudedocs/
+
+# Ouroboros runtime state.
+.ouroboros/

@@ -1,0 +1,14 @@
+T2 GitHub 마이그레이션을 시작합니다. 지정된 규격·규칙집·골든 샘플을 순서대로 읽고, 그다음에 legacy `DESIGN.md`를 Core v2로 옮기겠습니다.규격과 규칙집 v6을 확인했습니다. 승인된 대응표, T1 제약, 골든 샘플, 그리고 GitHub legacy 원본을 이어서 읽겠습니다.골든 샘플과 GitHub 원본, 그리고 이미 통과한 이관본 형태를 대조해 옮길 슬롯을 잡겠습니다.GitHub 원본이 길고, 통과된 이관본의 처리 패턴을 맞춰야 해서 원본과 최근 PASS 샘플을 같이 읽겠습니다.원본은 Primer 기반이고 §13은 가상 페르소나입니다. 게이트·모션 출처·유사 PASS 이관본을 대조해 옮길 경계를 확정하겠습니다.게이트가 hex·px·ms 손실을 막으므로, 원본 토큰 목록과 `inspectDesignMd` 요구를 먼저 뽑겠습니다.원본 토큰·컴포넌트 경계를 고정했습니다. Core v2 `DESIGN.md`를 골든 샘플 형태로 작성합니다.본문 전체를 다시 읽고 B2a 스캔을 한 뒤, 로그 각 행은 grep으로 대조하겠습니다.GitHub legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출은 `docs/design-md-weight/migrated/github/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v6**, F1(B2a 전편 재독)·F2(로그 grep 대조)를 제출 전에 수행했습니다.
+
+기계 확인: `inspectDesignMd` `portable_core: true`, placeholders 0. `migrate-reference.mjs --brand github --gate-only` **PASS**. 카탈로그 채택은 아닙니다.
+
+보존한 경계:
+
+- YAML unitless line-height `1.25` / `1.5` / `1.4` / `1.45`는 비율 그대로.
+- 컴포넌트 primitive type은 항목별로 유지(button×5, input×3, toggle×3, tab×4, listItem×2, token badge). Box/Dialog/Overlay 등은 kind/map 생략(C4).
+- 이름 있는 `Focus (keyboard)` 링은 `focus-visible` treatment로 올리지 않음. §14 13행은 본문에 유지. loading/error/success는 역할로 판정.
+- §13 가상 페르소나는 Audience·provenance 모두에 없음. Primary tasks 3건은 Create/Commit/Merge, diff/issue 리뷰, Code/Issues/PR/Actions.
+- 무출처 cubic-bezier 3개만 빼고 duration·easing 이름·signature·reduced-motion과 B3 다섯 증거 종류 게이트는 Foundations에 남김.
+- 파생 해석(대기 분위기, diff 상속, Octocat 배분, voice)은 인접 B2a 한정.
+
+DONE migrated=1

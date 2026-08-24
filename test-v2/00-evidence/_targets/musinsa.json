@@ -1,0 +1,580 @@
+{
+  "brand": "musinsa",
+  "home": "https://www.musinsa.com/",
+  "discoveredAt": "2026-08-22T19:57:13.182Z",
+  "method": {
+    "note": "surface class is read from the page; URL patterns only rank candidates",
+    "gate": "corporate and docs surfaces are never selected — they cannot populate a product surface's tokens",
+    "refusals": "a challenge or login wall ends the attempt on that surface; nothing is worked around"
+  },
+  "candidatesConsidered": 14,
+  "selection": {
+    "chosen": "https://www.musinsa.com/main/musinsa",
+    "surfaceClass": "product",
+    "reason": "product surface (60 repeated tiles of one size; 31 price-shaped strings); linked from the brand's own nav; 58 large media elements",
+    "channel": "playwright",
+    "runnerUp": "https://www.musinsa.com/",
+    "excluded": [
+      {
+        "url": "https://www.musinsa.com/mypage",
+        "why": "account or session-state surface"
+      },
+      {
+        "url": "https://www.musinsa.com/order/cart",
+        "why": "account or session-state surface"
+      }
+    ]
+  },
+  "rows": [
+    {
+      "url": "https://www.musinsa.com/",
+      "path": "/",
+      "text": "(home)",
+      "inNav": false,
+      "inFooter": false,
+      "aboveFold": true,
+      "score": 99,
+      "prior": "landing",
+      "signals": {
+        "title": "무신사",
+        "url": "https://www.musinsa.com/main/musinsa/recommend?gf=A",
+        "gridRepeat": 60,
+        "priceLike": 30,
+        "bigImages": 58,
+        "docsNav": 1,
+        "codeBlocks": 0,
+        "corporateWords": 2,
+        "loginWall": false,
+        "textLength": 5794,
+        "links": 349
+      },
+      "reachability": {
+        "reachable": true,
+        "verdict": "OK",
+        "status": 200
+      },
+      "classification": {
+        "class": "product",
+        "reason": "60 repeated tiles of one size; 30 price-shaped strings",
+        "votes": [
+          {
+            "cls": "product",
+            "why": "60 repeated tiles of one size"
+          },
+          {
+            "cls": "product",
+            "why": "30 price-shaped strings"
+          }
+        ]
+      },
+      "durationMs": 2094
+    },
+    {
+      "url": "https://www.musinsa.com/menu/category",
+      "text": "",
+      "inNav": true,
+      "inFooter": false,
+      "aboveFold": true,
+      "path": "/menu/category",
+      "score": 7,
+      "prior": "product",
+      "signals": {
+        "title": "무신사",
+        "url": "https://www.musinsa.com/menu/category",
+        "gridRepeat": 5,
+        "priceLike": 0,
+        "bigImages": 0,
+        "docsNav": 0,
+        "codeBlocks": 0,
+        "corporateWords": 2,
+        "loginWall": false,
+        "textLength": 3094,
+        "links": 319
+      },
+      "reachability": {
+        "reachable": true,
+        "verdict": "OK",
+        "status": 200
+      },
+      "classification": {
+        "class": "unclassified",
+        "reason": "no signal reached its threshold",
+        "votes": []
+      },
+      "durationMs": 1972
+    },
+    {
+      "url": "https://www.musinsa.com/like/goods",
+      "text": "좋아요",
+      "inNav": true,
+      "inFooter": false,
+      "aboveFold": true,
+      "path": "/like/goods",
+      "score": 7,
+      "prior": "product",
+      "signals": {
+        "title": "무신사",
+        "url": "https://www.musinsa.com/like/goods",
+        "gridRepeat": 0,
+        "priceLike": 0,
+        "bigImages": 0,
+        "docsNav": 1,
+        "codeBlocks": 0,
+        "corporateWords": 0,
+        "loginWall": false,
+        "textLength": 173,
+        "links": 16
+      },
+      "reachability": {
+        "reachable": false,
+        "verdict": "EMPTY",
+        "channelHint": "aside"
+      },
+      "classification": {
+        "class": "unclassified",
+        "reason": "no signal reached its threshold",
+        "votes": []
+      },
+      "durationMs": 1963
+    },
+    {
+      "url": "https://www.musinsa.com/main/musinsa",
+      "text": "MUSINSA",
+      "inNav": true,
+      "inFooter": false,
+      "aboveFold": true,
+      "path": "/main/musinsa",
+      "score": 4,
+      "prior": null,
+      "signals": {
+        "title": "무신사",
+        "url": "https://www.musinsa.com/main/musinsa/recommend?gf=A",
+        "gridRepeat": 60,
+        "priceLike": 31,
+        "bigImages": 58,
+        "docsNav": 1,
+        "codeBlocks": 0,
+        "corporateWords": 2,
+        "loginWall": false,
+        "textLength": 5432,
+        "links": 349
+      },
+      "reachability": {
+        "reachable": true,
+        "verdict": "OK",
+        "status": 200
+      },
+      "classification": {
+        "class": "product",
+        "reason": "60 repeated tiles of one size; 31 price-shaped strings",
+        "votes": [
+          {
+            "cls": "product",
+            "why": "60 repeated tiles of one size"
+          },
+          {
+            "cls": "product",
+            "why": "31 price-shaped strings"
+          }
+        ]
+      },
+      "durationMs": 2031
+    },
+    {
+      "url": "https://www.musinsa.com/snap",
+      "text": "SNAP",
+      "inNav": true,
+      "inFooter": false,
+      "aboveFold": true,
+      "path": "/snap",
+      "score": 4,
+      "prior": null,
+      "signals": {
+        "title": "누적 콘텐츠 100만 이상, 트렌디한 데일리룩 구경하기",
+        "url": "https://www.musinsa.com/snap/main/recommend?gf=A",
+        "gridRepeat": 21,
+        "priceLike": 0,
+        "bigImages": 0,
+        "docsNav": 0,
+        "codeBlocks": 0,
+        "corporateWords": 0,
+        "loginWall": false,
+        "textLength": 185,
+        "links": 36
+      },
+      "reachability": {
+        "reachable": false,
+        "verdict": "EMPTY",
+        "channelHint": "aside"
+      },
+      "classification": {
+        "class": "product",
+        "reason": "21 repeated tiles of one size",
+        "votes": [
+          {
+            "cls": "product",
+            "why": "21 repeated tiles of one size"
+          }
+        ]
+      },
+      "durationMs": 2255
+    },
+    {
+      "url": "https://www.musinsa.com/offline",
+      "text": "오프라인 스토어",
+      "inNav": true,
+      "inFooter": false,
+      "aboveFold": true,
+      "path": "/offline",
+      "score": 4,
+      "prior": null,
+      "signals": {
+        "title": "무신사 ㅣ 오프라인 스토어",
+        "url": "https://www.musinsa.com/offline",
+        "gridRepeat": 0,
+        "priceLike": 0,
+        "bigImages": 0,
+        "docsNav": 1,
+        "codeBlocks": 0,
+        "corporateWords": 1,
+        "loginWall": false,
+        "textLength": 4448,
+        "links": 16
+      },
+      "reachability": {
+        "reachable": true,
+        "verdict": "OK",
+        "status": 200
+      },
+      "classification": {
+        "class": "unclassified",
+        "reason": "no signal reached its threshold",
+        "votes": []
+      },
+      "durationMs": 1892
+    },
+    {
+      "url": "https://www.musinsa.com/mypage",
+      "text": "마이",
+      "inNav": true,
+      "inFooter": false,
+      "aboveFold": true,
+      "path": "/mypage",
+      "score": 4,
+      "prior": null,
+      "signals": {
+        "title": "마이페이지 | 무신사",
+        "url": "https://www.musinsa.com/mypage",
+        "gridRepeat": 5,
+        "priceLike": 0,
+        "bigImages": 0,
+        "docsNav": 1,
+        "codeBlocks": 0,
+        "corporateWords": 2,
+        "loginWall": false,
+        "textLength": 1592,
+        "links": 75
+      },
+      "reachability": {
+        "reachable": true,
+        "verdict": "OK",
+        "status": 200
+      },
+      "classification": {
+        "class": "unclassified",
+        "reason": "no signal reached its threshold",
+        "votes": []
+      },
+      "durationMs": 2040
+    },
+    {
+      "url": "https://www.musinsa.com/order/cart",
+      "text": "장바구니",
+      "inNav": true,
+      "inFooter": false,
+      "aboveFold": true,
+      "path": "/order/cart",
+      "score": 4,
+      "prior": null,
+      "signals": {
+        "title": "장바구니 | 무신사",
+        "url": "https://www.musinsa.com/order/cart",
+        "gridRepeat": 100,
+        "priceLike": 100,
+        "bigImages": 0,
+        "docsNav": 0,
+        "codeBlocks": 0,
+        "corporateWords": 1,
+        "loginWall": false,
+        "textLength": 4022,
+        "links": 275
+      },
+      "reachability": {
+        "reachable": true,
+        "verdict": "OK",
+        "status": 200
+      },
+      "classification": {
+        "class": "product",
+        "reason": "100 repeated tiles of one size; 100 price-shaped strings",
+        "votes": [
+          {
+            "cls": "product",
+            "why": "100 repeated tiles of one size"
+          },
+          {
+            "cls": "product",
+            "why": "100 price-shaped strings"
+          }
+        ]
+      },
+      "durationMs": 2116
+    },
+    {
+      "url": "https://www.musinsa.com/auth/login?referer=https%3A%2F%2Fwww.musinsa.com%2Fmain%2Fmusinsa%2Frecommend%3Fgf%3DA",
+      "text": "",
+      "inNav": true,
+      "inFooter": false,
+      "aboveFold": true,
+      "path": "/auth/login?referer=https%3A%2F%2Fwww.musinsa.com%2Fmain%2Fmusinsa%2Frecommend%3Fgf%3DA",
+      "score": 4,
+      "prior": null,
+      "signals": {
+        "title": "로그인/회원가입 | 무신사",
+        "url": "https://member.one.musinsa.com/login?entryToken=377a5cc1b117abab837d83a27e34b0296832c888",
+        "gridRepeat": 0,
+        "priceLike": 0,
+        "bigImages": 0,
+        "docsNav": 0,
+        "codeBlocks": 0,
+        "corporateWords": 0,
+        "loginWall": true,
+        "textLength": 138,
+        "links": 6
+      },
+      "reachability": {
+        "reachable": false,
+        "verdict": "LOGIN_WALL",
+        "channelHint": null
+      },
+      "classification": {
+        "class": "unclassified",
+        "reason": "no signal reached its threshold",
+        "votes": []
+      },
+      "durationMs": 2013
+    },
+    {
+      "url": "https://www.musinsa.com/category/003/goods?gf=F&sortCode=LIKE_ONE_WEEK_COUNT&utm_source=/main/musinsa/recommend&utm_medium=main_display_big_banner&utm_campaign=12",
+      "text": "와이드 & 숏 팬츠\n클리어런스 찬스유희, 탄산마그네슘 외",
+      "inNav": false,
+      "inFooter": false,
+      "aboveFold": true,
+      "path": "/category/003/goods?gf=F&sortCode=LIKE_ONE_WEEK_COUNT&utm_source=/main/musinsa/recommend&utm_medium=main_display_big_banner&utm_campaign=12",
+      "score": 4,
+      "prior": "product",
+      "signals": {
+        "title": "바지 | 무신사 추천 상품",
+        "url": "https://www.musinsa.com/category/003/goods?gf=F&sortCode=LIKE_ONE_WEEK_COUNT&utm_source=%2Fmain%2Fmusinsa%2Frecommend&utm_medium=main_display_big_banner&utm_campaign=12",
+        "gridRepeat": 60,
+        "priceLike": 30,
+        "bigImages": 30,
+        "docsNav": 1,
+        "codeBlocks": 0,
+        "corporateWords": 1,
+        "loginWall": false,
+        "textLength": 2962,
+        "links": 164
+      },
+      "reachability": {
+        "reachable": true,
+        "verdict": "OK",
+        "status": 200
+      },
+      "classification": {
+        "class": "product",
+        "reason": "60 repeated tiles of one size; 30 price-shaped strings",
+        "votes": [
+          {
+            "cls": "product",
+            "why": "60 repeated tiles of one size"
+          },
+          {
+            "cls": "product",
+            "why": "30 price-shaped strings"
+          }
+        ]
+      },
+      "durationMs": 2238
+    },
+    {
+      "url": "https://www.musinsa.com/brand/sinoon/products?sortCode=POPULAR&utm_source=/main/musinsa/recommend&utm_medium=main_display_big_banner&utm_campaign=19",
+      "text": "단독으로 만나는\n브랜드위크 혜택시눈",
+      "inNav": false,
+      "inFooter": false,
+      "aboveFold": true,
+      "path": "/brand/sinoon/products?sortCode=POPULAR&utm_source=/main/musinsa/recommend&utm_medium=main_display_big_banner&utm_campaign=19",
+      "score": 4,
+      "prior": "product",
+      "signals": {
+        "title": "시눈(SINOON) | 무신사 추천 브랜드",
+        "url": "https://www.musinsa.com/brand/sinoon/products?sortCode=POPULAR&utm_source=%2Fmain%2Fmusinsa%2Frecommend&utm_medium=main_display_big_banner&utm_campaign=19&gf=F",
+        "gridRepeat": 48,
+        "priceLike": 24,
+        "bigImages": 24,
+        "docsNav": 1,
+        "codeBlocks": 0,
+        "corporateWords": 15,
+        "loginWall": false,
+        "textLength": 3026,
+        "links": 122
+      },
+      "reachability": {
+        "reachable": true,
+        "verdict": "OK",
+        "status": 200
+      },
+      "classification": {
+        "class": "product",
+        "reason": "48 repeated tiles of one size; 24 price-shaped strings",
+        "votes": [
+          {
+            "cls": "product",
+            "why": "48 repeated tiles of one size"
+          },
+          {
+            "cls": "product",
+            "why": "24 price-shaped strings"
+          },
+          {
+            "cls": "corporate",
+            "why": "15 corporate-register terms"
+          }
+        ]
+      },
+      "durationMs": 1988
+    },
+    {
+      "url": "https://www.musinsa.com/content/list?tagList=&contentCategoryCode=016002&pinnedCmsId=1536998335625378926",
+      "text": "시퀸즈 × 주술회전",
+      "inNav": false,
+      "inFooter": false,
+      "aboveFold": true,
+      "path": "/content/list?tagList=&contentCategoryCode=016002&pinnedCmsId=1536998335625378926",
+      "score": 4,
+      "prior": "product",
+      "signals": {
+        "title": "스페셜",
+        "url": "https://www.musinsa.com/content/list?tagList=&contentCategoryCode=016002&pinnedCmsId=1536998335625378926&gender=F",
+        "gridRepeat": 3,
+        "priceLike": 0,
+        "bigImages": 3,
+        "docsNav": 1,
+        "codeBlocks": 0,
+        "corporateWords": 0,
+        "loginWall": false,
+        "textLength": 529,
+        "links": 37
+      },
+      "reachability": {
+        "reachable": true,
+        "verdict": "OK",
+        "status": 200
+      },
+      "classification": {
+        "class": "landing",
+        "reason": "3 full-width media, no product grid",
+        "votes": [
+          {
+            "cls": "landing",
+            "why": "3 full-width media, no product grid"
+          }
+        ]
+      },
+      "durationMs": 2003
+    },
+    {
+      "url": "https://www.musinsa.com/campaign/list?kind=BRAND_WEEK",
+      "text": "브랜드위크",
+      "inNav": false,
+      "inFooter": false,
+      "aboveFold": true,
+      "path": "/campaign/list?kind=BRAND_WEEK",
+      "score": 4,
+      "prior": "product",
+      "signals": {
+        "title": "캠페인 | 무신사",
+        "url": "https://www.musinsa.com/campaign/list?kind=BRAND_WEEK",
+        "gridRepeat": 43,
+        "priceLike": 0,
+        "bigImages": 43,
+        "docsNav": 0,
+        "codeBlocks": 0,
+        "corporateWords": 0,
+        "loginWall": false,
+        "textLength": 2173,
+        "links": 16
+      },
+      "reachability": {
+        "reachable": true,
+        "verdict": "OK",
+        "status": 200
+      },
+      "classification": {
+        "class": "product",
+        "reason": "43 repeated tiles of one size",
+        "votes": [
+          {
+            "cls": "product",
+            "why": "43 repeated tiles of one size"
+          }
+        ]
+      },
+      "durationMs": 2010
+    },
+    {
+      "url": "https://www.musinsa.com/search/goods?keyword=%EC%B5%9C%EC%A0%80%EA%B0%80+%EB%8F%84%EC%A0%84&keywordType=keyword&isLowestPrice=true",
+      "text": "최저가 도전",
+      "inNav": false,
+      "inFooter": false,
+      "aboveFold": true,
+      "path": "/search/goods?keyword=%EC%B5%9C%EC%A0%80%EA%B0%80+%EB%8F%84%EC%A0%84&keywordType=keyword&isLowestPrice=true",
+      "score": 4,
+      "prior": "product",
+      "signals": {
+        "title": "최저가 도전 | 무신사 추천 상품",
+        "url": "https://www.musinsa.com/search/goods?keyword=%EC%B5%9C%EC%A0%80%EA%B0%80+%EB%8F%84%EC%A0%84&keywordType=keyword&isLowestPrice=true&gf=F",
+        "gridRepeat": 60,
+        "priceLike": 30,
+        "bigImages": 30,
+        "docsNav": 1,
+        "codeBlocks": 0,
+        "corporateWords": 2,
+        "loginWall": false,
+        "textLength": 3704,
+        "links": 164
+      },
+      "reachability": {
+        "reachable": true,
+        "verdict": "OK",
+        "status": 200
+      },
+      "classification": {
+        "class": "product",
+        "reason": "60 repeated tiles of one size; 30 price-shaped strings",
+        "votes": [
+          {
+            "cls": "product",
+            "why": "60 repeated tiles of one size"
+          },
+          {
+            "cls": "product",
+            "why": "30 price-shaped strings"
+          }
+        ]
+      },
+      "durationMs": 2291
+    }
+  ],
+  "totalDurationMs": 45446
+}

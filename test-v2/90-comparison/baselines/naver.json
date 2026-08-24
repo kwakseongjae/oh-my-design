@@ -1,0 +1,12 @@
+{
+  "brand": "naver",
+  "what": "each source sample scored against the brand's own aggregate",
+  "why": "an arm's score is only meaningful against this spread",
+  "n": 0,
+  "min": null,
+  "p25": null,
+  "median": null,
+  "p75": null,
+  "max": null,
+  "samples": []
+}

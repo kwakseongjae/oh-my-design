@@ -1,0 +1,18 @@
+T2 Acer 마이그레이션을 시작하겠습니다. 먼저 세션 상태를 복원하고, 지정된 규격·규칙집·골든 샘플을 순서대로 읽겠습니다.규격은 확보했습니다. 대응표, T1 제약, 골든 샘플, 규칙집, 레거시 Acer 본문을 이어서 읽겠습니다.골든 샘플·레거시 Acer·이미 통과한 이관본 형태를 대조해 쓰겠습니다.통과한 이관본의 컴포넌트·B2a·B3 처리와 게이트 조건을 확인한 뒤 Acer에 맞추겠습니다.규칙과 통과본 형태를 기준으로 Acer 본문을 작성합니다. 값·타입·B2a 한정을 원문 경계에 맞춰 옮기겠습니다.원문 토큰과 어휘 경계를 확인했습니다. Core v2 `DESIGN.md`를 작성합니다.본문 전체를 다시 읽고 B2a 스캔을 적용한 뒤, 로그용 값을 grep으로 대조하겠습니다.이제 로그에 쓸 값마다 실제 파일·절을 grep으로 확인합니다.로그는 grep으로 확인한 줄 번호만 넣고, 이어서 게이트를 돌리겠습니다.Portable Core가 두 항목에서 실패했습니다. scope claim 인식과 placeholder 탐지 기준을 확인하겠습니다.Acer 레거시 `DESIGN.md`를 Core v2로 옮겼습니다. 카탈로그 채택은 아닙니다.
+
+산출물:
+- `docs/design-md-weight/migrated/acer/DESIGN.md`
+- `docs/design-md-weight/migrated/acer/provenance.md`
+- `docs/design-md-weight/migrated/acer/migration-log.md` (규칙집 **v7**)
+
+보존·처리 요약:
+- 검증 hex/px와 primitive type(`button`×2, `card`, `input`)을 컴포넌트별로 유지. YAML line-height는 `normal`과 `28.368px`를 섞지 않음.
+- Google favicon URL은 provenance만, Assets/Named gaps는 URL 없는 경계 문장.
+- Primary/Tertiary CTA의 loading/error/success는 목적지 미해상으로 생략(C2). Feature Card는 kind/map 생략(C4). Locale Select의 세 상태는 locale-choice 의미로 `not-applicable`.
+- §14 10행은 구현 안내로 본문 보존. 무출처 커브 없음. B3 다섯 증거 종류는 Foundations에 전문 유지.
+- §13 이해관계자 그룹만 Audience. 가상 persona는 sidecar에 재수록하지 않음.
+- F1 B2a 전편 재독, F2 grep 대조 수행.
+
+검증: `--gate-only` PASS (problems 0). Core check exit 0, `portable_core: true`. SHA-256 `e3d95b1876d02716e02324ca4718e85df2fa3d46d9126cf9d0da83ecc1a96ff8`. F3 감사와 sol 의미 레인은 대기입니다.
+
+DONE migrated=1

@@ -1,0 +1,11 @@
+T2 마이그레이션을 시작하기 위해 규격·규칙집·골든 샘플·원문을 순서대로 읽고, 이어서 11st 레거시를 Core v2로 옮기겠습니다.필수 규격·골든 샘플·11st 원문을 이어서 읽고, 이관 형태를 그 기준에 맞춥니다.골든 샘플 형태와 11st 원문·기존 산출물을 대조해, 이관 슬롯을 확정합니다.11st 원문 전체와 최근 통과 이관본을 읽어 컴포넌트·상태·B2a 처리 패턴을 맞춥니다.이관 패턴과 검사기 제약을 확인한 뒤, 11st 컴포넌트·상태 판정을 그 기준에 맞춥니다.원문 토큰을 보존한 Core v2 본문과 provenance를 작성합니다. B2a 한정은 해석 문장 옆에 붙입니다.본문을 다시 읽고 B2a를 스캔한 뒤, 게이트에 걸릴 토큰·부정 claim을 대조합니다.B2a 한정을 해석 문장 옆에 더 붙이고, 게이트가 잡는 `synthetic` 부정 claim은 원문 어휘로 바꿉니다.F2용으로 원문 값의 실제 위치를 grep으로 확인한 뒤, 그 결과에만 맞춰 migration-log를 씁니다.CURRENT_STATE 최신 항목을 맨 위로 옮기고, 이관 상태를 다른 웨이브 6 건과 같은 표현으로 맞춥니다.11st 레거시 `DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 **v7**, 산출물은 아래 세 파일입니다.
+
+- `docs/design-md-weight/migrated/11st/DESIGN.md`
+- `docs/design-md-weight/migrated/11st/provenance.md`
+- `docs/design-md-weight/migrated/11st/migration-log.md`
+
+보존한 핵심: unitless line-height `1.50` / `2.44` / `1.85`, 컴포넌트별 `Type: input`·`button`·`card`·`dialog`, Search `Focus`/`Pressed` `#111111`(focus-visible 비승격), Deal Card·Header Inventory Dialog는 kind/map 생략, §14 4행 본문 유지, B3 다섯 증거 종류+컴포넌트별 computed 게이트. 가상 persona sidecar 없음. 해석 문장은 인접 B2a 한정.
+
+검증: `--gate-only` PASS (problems 0), `inspectDesignMd` / `--require-portable-core` → `portable_core: true`, placeholders 0. F1·F2 수행. F3 감사와 sol 의미 레인은 후속. 카탈로그 채택은 아님.
+
+DONE migrated=1

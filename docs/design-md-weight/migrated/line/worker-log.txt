@@ -1,0 +1,20 @@
+T2 마이그레이션은 규칙집과 골든 샘플을 먼저 고정한 뒤 LINE 레거시를 옮기겠습니다. 지정된 문서를 순서대로 읽고 시작합니다.규칙집과 musinsa 골든 샘플, LINE 원문, 최근 v5 통과 이관을 함께 읽겠습니다.이미 `migrated/line`이 있는지, musinsa 개정 골든과 최근 v5 통과본 형태를 확인하겠습니다.최근 v5 통과본과 게이트 스크립트를 읽어 LINE에 적용할 형태를 맞추겠습니다.규칙집 v5와 musinsa·최근 통과본 형태를 기준으로 LINE 이관 산출물을 작성합니다.게이트와 Portable Core 검사를 돌리고, 토큰 손실·D1 부정 claim도 같이 확인합니다.`web/references/line/DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/line/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v5**.
+
+기계 검사: `inspectDesignMd` `portable_core: true`, placeholders 0. `migrate-reference.mjs --brand line --gate-only` **PASS**. 카탈로그 채택은 아닙니다.
+
+의미 보존에서 특히 맞춘 점:
+
+- Messenger 시스템 폰트와 마케팅 `LINESeed`를 한 시스템으로 합치지 않음
+- `#06c755` / `#4cc764` / `#638dff`를 합치지 않음
+- `lineHeight` `1.334`는 비율로 유지, product 크기는 `pt`
+- `Type: button` ×4, `input`, `dialog`, `tab`, `badge`를 컴포넌트별로 유지
+- Popup은 `Type: dialog`, kind/map 생략 (C4)
+- 공식 6원칙은 first-party, *UI implication*만 B2a 한정
+- LINE Voice는 first-party라 derived로 뒤집지 않음
+- §14 10행 본문 보존. `not captured`를 `not-applicable` 사유로 쓰지 않음
+- generic focused `#06c755`를 `focus-visible` 처리로 승격하지 않음
+- `SFPro`는 `Unresolved claim` 유지
+- §15 `[FILL IN: …]`는 provenance omission ledger (E2b)
+- 가상 persona sidecar 없음
+
+DONE migrated=1

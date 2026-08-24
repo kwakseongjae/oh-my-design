@@ -1,0 +1,7 @@
+Asana legacy DESIGN.md를 Core v2로 옮기기 위해, 지정된 규격·규칙집·골든 샘플부터 순서대로 읽고 이어서 마이그레이션을 진행합니다.골든 샘플과 Asana legacy 원문, 그리고 이미 통과한 이관본 형태를 이어서 읽겠습니다.기존 asana 이관 폴더와 게이트·통과 표본을 대조해, Asana에 적용할 형태와 삭제 범위를 확정합니다.게이트가 잡는 hex·px·ms 토큰을 원문에서 전부 뽑고, 이관본에 빠지지 않게 대조하겠습니다.토큰 목록과 골든·v7 형태를 맞춰 Asana Core v2 초안을 작성합니다. 해석 문장에는 처음부터 B2a 한정을 붙입니다.본문 초안을 처음부터 다시 읽어 B2a 한정이 빠진 해석 문장을 찾고, 이어서 provenance를 씁니다.F1에서 한정이 비는 해석 문장을 붙인 뒤, provenance와 migration-log를 작성합니다.패스 2: 로그에 쓸 값·목적지가 실제 파일에 있는지 grep으로 대조합니다.Asana legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/asana/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 v7.
+
+검증된 색·타입·컴포넌트 값은 최소 필드 단위로 보존했고, 해석 문장에는 인접 B2a 한정을 달았습니다. 가상 페르소나는 본문과 provenance 모두에 없습니다. 무출처 cubic-bezier 3개(그중 `ease-exit`는 규격 템플릿과 동일)는 provenance에만 두었습니다. Motion 본문에는 B3 다섯 증거 종류 게이트를 그대로 적었습니다.
+
+기계 검사: `--gate-only` PASS, Portable Core `true`. SHA-256 `3f74cc680f99f0e095131de5f87ddc007f979816ee3b4c126d2af92b22fafc3d`. 이 세션에서 F3는 돌리지 않았습니다.
+
+DONE migrated=1

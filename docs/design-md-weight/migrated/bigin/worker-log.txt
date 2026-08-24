@@ -1,0 +1,7 @@
+T2 마이그레이션을 시작하기 전에 규칙집·대응표·골든 샘플을 순서대로 읽고, bigin legacy 본문을 그 규격에 맞춰 옮기겠습니다.필수 규격·골든 샘플·제약 문서를 이어서 읽고, 이관 시 형태와 의미 보존 조건을 맞춥니다.골든 샘플 형태와 Core v2 나머지, 그리고 최근 통과 이관본을 대조해 이관 형식을 맞춥니다.레거시 본문 나머지와 승인된 musinsa 골든 샘플, 최근 통과 이관본을 읽어 형식을 맞춥니다.게이트 규칙과 최근 통과 이관본·모션 템플릿을 대조해, bigin 고유값과 삭제 대상을 구분합니다.게이트가 hex·px·rem·ms·%를 전부 대조하니, 레거시에서 그 토큰을 먼저 전부 뽑겠습니다.토큰 목록을 고정한 뒤 Core v2 본문을 작성합니다. 해석 문장에는 인접 한정을 붙이고, 무출처 커브와 가상 persona는 본문에 올리지 않습니다.이어서 provenance 원장을 쓰고, 본문 해석 문장과 토큰 누락을 대조합니다.패스 1은 본문 해석 문장을 다시 읽고, 패스 2는 게이트 토큰·값 위치를 grep으로 대조합니다.패치 이후 줄 번호를 다시 잡아, migration-log에 실제 목적지를 적겠습니다.이제 grep으로 확인한 목적지로 migration-log를 작성합니다.게이트가 같은 줄의 `focus-visible`과 hex를 승격으로 오인합니다. 해당 문장을 나눠 고칩니다.`web/references/bigin/DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/bigin/{DESIGN.md,provenance.md,migration-log.md}`입니다. 규칙집은 v7입니다.
+
+보존한 값은 YAML unitless line-height `1.3` / `1.4` / `1.5`, rem 동반값 8개, primitive type(button×3, tab, card×4, badge, listItem), `#006fff`와 `#0066cc` 분리, CTA glow `rgba(0,104,255,0.4)`와 connect glow `rgba(0,111,255,0.4)` 분리, §14 9행입니다. 가상 persona는 본문·원장 모두에 없고, 무출처 cubic-bezier 3개는 provenance omission ledger에만 있습니다.
+
+기계 검사: `--gate-only` PASS, Core `portable_core: true`. SHA-256 `5c501a61223069c85a0c40cad21f0c1fd4702c58a5e810d4a4a9a087b2ac3683`. F3 감사와 sol 의미 레인은 아직입니다. 카탈로그 채택은 아닙니다.
+
+DONE migrated=1

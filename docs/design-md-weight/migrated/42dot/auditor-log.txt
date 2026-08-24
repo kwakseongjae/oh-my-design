@@ -1,0 +1,14 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 42dot 산출물부터 읽고, 문장 한정과 원장만 고치겠습니다.이전 감사 로그 형식과 42dot 세 산출물·원본을 함께 읽겠습니다.원본과 최근 감사 로그 형식을 대조하고, DESIGN.md의 해석 문장을 전부 분류하겠습니다.최근 F3 감사 로그와 웨이브 6 판정에서 어떤 문장이 누락됐는지 확인합니다.B2a 한정 문장과 해석 문장을 전편에서 대조하고, 로그 값을 세 파일에서 grep으로 확인합니다.원장 주장과 본문 실재를 값 단위로 대조합니다. `precision-over-decoration` 같은 로그 문구가 실제로 있는지도 확인합니다.B2a 누락 문장과 원장 불일치를 확인했습니다. 한정만 붙이고 로그·provenance를 실제 grep에 맞춥니다.42dot F3 감사(B2a·E2만)를 마쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 건드리지 않았습니다.
+
+**B2a.** 편집 해석인데 인접 한정이 없던 곳에 `derived editorial implementation inference` / `not 42dot-authored or a separately published UI specification`을 붙였습니다.
+
+- Scope — 설립·인수 서사를 토큰이 아니라고 적용한 문장
+- Assets — 파비콘 한정이 문법상 못 덮던 1st-party 이미지 문장
+- Layout — `comfortable tapping` / `compact but tappable` / collapsing packet-rows / `stay legible`
+- Content — 톤 표, Forbidden-register
+
+**E2.** 로그·provenance를 grep 결과에 맞췄습니다. `#786efa`(Principles·capture-bound 포함), `live-extract`(Font evidence), shadow 삼중 목적지, inspect px의 Font evidence, carousel `50%` radius와 nav `50%` white 분리. provenance derived 범위에서 본문에 없는 `precision-over-decoration`을 빼고, 이번에 붙인 한정을 넣었습니다.
+
+수정 목록은 `docs/design-md-weight/migrated/42dot/audit-log.md`에 있습니다.
+
+AUDIT_DONE fixes=27

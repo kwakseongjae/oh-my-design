@@ -1,0 +1,11 @@
+T2 마이그레이션을 시작하기 전에 규칙집·골든 샘플·레거시 Airtable 문서를 순서대로 읽고, 그 대응표대로만 옮기겠습니다.규칙집·스펙·골든 샘플·레거시 Airtable을 한꺼번에 읽겠습니다.골든 샘플 형태와 Core v2 §4.4, 레거시 Airtable 본문을 이어서 읽습니다.최근 통과한 이관본의 B2a·컴포넌트 Type·§14 처리와 게이트 스크립트를 대조하겠습니다.레거시 토큰을 전부 뽑아 손실·발명이 없도록 대조한 뒤 본문을 작성합니다.토큰 목록과 골든 샘플 형태를 기준으로 Core v2 세 파일을 작성합니다.패스 1(B2a)을 위해 이관본 전체를 처음부터 다시 읽고, 해석 문장마다 근거 class를 붙이겠습니다.F1에서 네 곳을 고칩니다. 첫 문장의 하이브리드 단정, capture-bound B2a 미완결, Avoid의 color-belongs 한정, Haas를 live computed로 과분류한 부분입니다.패스 2(E2)로 로그에 적을 값을 파일에서 grep으로 확인합니다.기계 게이트와 Portable Core 검사를 돌리고, 토큰 손실·발명이 없는지도 확인합니다.Airtable legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/airtable/`입니다.
+
+- `DESIGN.md` — Portable Core 7 claim, 규칙집 v7
+- `provenance.md` — 원장·freshness·omission ledger
+- `migration-log.md` — 섹션별 옮김/분리/삭제 + F1/F2
+
+검증: `inspectDesignMd` `portable_core: true`, placeholders 0. `migrate-reference.mjs --brand airtable --gate-only` **PASS**.
+
+카탈로그 채택은 하지 않았습니다. F3 감사와 sol 표본은 하네스 몫입니다.
+
+DONE migrated=1

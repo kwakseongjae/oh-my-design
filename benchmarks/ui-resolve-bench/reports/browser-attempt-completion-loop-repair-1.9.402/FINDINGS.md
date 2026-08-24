@@ -1,7 +1,0 @@
-# Browser-attempt and completion-loop repair — 1.9.402
-
-The field-sample candidate exposed two mechanical gaps and one sequencing gap. Its `osascript` command targeted Google Chrome and the same local route, but the proof classifier treated it as another static command and denied it after static closure. The artifact then asserted that this denied command was an infrastructure attempt. The independent host still rejected delivery, but the local helper accepted the self-authored attempt metadata.
-
-The classifier now recognizes same-route `osascript` automation for Chrome, Chromium, and Safari as browser proof. In installed-host runs, `finalize-unresolved` additionally reads the persisted host state and requires exactly one observed browser attempt whose proof state is closed or unresolved. A blocked pre-tool command therefore cannot become an attempt merely because the artifact says so.
-
-The skill now puts a three-step completion loop immediately before release blocking: fix known normal-text contrast using an existing text token, give exact atomic rows carrier-local space or named local scrolling, and make a second product edit whenever a known failure lacks a real correction. Focused tests are green, the exact candidate pin test is green, type-check and diff checks pass, and the broad suite retains only the two pre-existing missing external-vendor Git-root failures. No provider was called and no quality promotion is claimed.

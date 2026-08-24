@@ -1,0 +1,78 @@
+{
+  "pinnedAt": "2026-08-23",
+  "note": "실행 전 봉인 값. 여기 없는 값을 실행 중에 정하면 그 run은 무효다.",
+  "armHost": {
+    "model": "grok-4.6",
+    "vendor": "xai",
+    "rationale": "RUBRIC.md §3.2 C1 — 세 arm이 같은 호스트를 공유한다(SHALL). arm별 호스트 분기는 닫혔다.",
+    "sharedBy": [
+      "omd",
+      "hallmark",
+      "uiuxpromax"
+    ]
+  },
+  "laneA": {
+    "imageGeneration": "Grok Imagine",
+    "rationale": "RUBRIC.md §1 — 레인 A는 생성 채널을 고정해 지시 품질만 비교한다."
+  },
+  "laneB": {
+    "imageGeneration": "각 팩의 고정 SHA가 정한 네이티브 경로",
+    "rationale": "RUBRIC.md §1 — 레인 B는 팩 본래 워크플로가 무엇을 완성하는지 본다."
+  },
+  "evaluators": [
+    {
+      "id": "grok-4.6",
+      "vendor": "xai",
+      "role": "채점 + 최종 승인권"
+    },
+    {
+      "id": "sol",
+      "vendor": "openai-codex",
+      "role": "채점"
+    },
+    {
+      "id": "sonnet5",
+      "vendor": "anthropic",
+      "role": "채점"
+    }
+  ],
+  "scoring": {
+    "temperature": 0,
+    "seed": 20260823,
+    "chosenHere": true,
+    "why": "루브릭이 값을 지정하지 않는다. 채점은 재현 가능해야 하므로 온도 0과 arm 순서와 같은 시드를 쓴다. 다른 값을 쓰려면 실행 전에 이 파일을 바꾸고 SHA를 다시 기록한다.",
+    "note": "온도 0이 결정성을 보장하지는 않는다. 같은 프롬프트로 두 번 채점해 불일치가 나오면 그대로 기록한다."
+  },
+  "independenceLimits": [
+    "평가자 3종은 공개 웹을 공유한다. 높은 α를 사람 합의의 대체값으로 읽지 않는다 (RUBRIC.md §3.7).",
+    "천장 측정은 학습 기억을 섞는다. 5개 브랜드에서만 자극이 충분하다 (figma·karrot·musinsa·naver·toss)."
+  ],
+  "selfPreference": {
+    "biasIdentifiable": false,
+    "why": "세 arm이 같은 호스트를 공유하므로 자기 계열 크기가 0 또는 3이고, bias_j는 이 설계에서 식별되지 않는다 (RUBRIC.md §3.2 C2). 죽은 플래그를 측정으로 두지 않는다."
+  },
+  "transcriber": {
+    "id": "opus5",
+    "vendor": "anthropic",
+    "runtimeModelString": "claude-opus-5[1m]",
+    "assignedBy": "사용자 (2026-08-23)",
+    "approvedBy": "grok-4.6 ACCEPT_WITH_CONDITIONS — docs/reviews/rubric-2026-08-23-c-transcriber-resubmit.md",
+    "familyIndependence": "면책. 평가자 sonnet5와 같은 anthropic 계열이다.",
+    "sessionIsolation": "채점 세션과 대화·메모리 비공유. 입력은 TRANSCRIPTION.md와 해당 run 원문 하나뿐.",
+    "excludedFrom": [
+      "채점",
+      "파일럿 앵커 조정",
+      "arm 추측",
+      "결과 해석",
+      "§7.1 기계 검증 실행"
+    ],
+    "semanticVerifier": "WAIVED — TRANSCRIPTION.md §5.2·§7.2. 미검증 항목 2종은 리포트 한계 절에 적는다.",
+    "machineVerifier": {
+      "path": "test-v2/tools/transcribe-verify.mjs",
+      "sha256": "73d13200a2903e68c63596caea33cbd53e35de1a1956e0f9da926c86c005cd41",
+      "runBy": "전사자가 아닌 실행 관리자",
+      "selftest": "7/7 (grok-4.6 반례 4건 포함)"
+    },
+    "reportSentence": "문서 축 중립 전사는 평가자 sonnet5와 같은 anthropic 계열의 별개 인스턴스 opus5가 수행한다. 채점 세션·메모리는 공유하지 않으나 계열 독립 조건은 충족하지 못한다. 전사 왜곡은 허용 변환 세 가지와 fail-close, 전수 기계 검증으로 통제했고 비기계 의미 검증은 두지 않았다. 이 상관을 채점 사전확률과 같은 줄에 두지 않는다."
+  }
+}

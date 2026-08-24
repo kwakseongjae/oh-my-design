@@ -1,6 +1,0 @@
-{
-  "schema_version":"0.1","experiment_id":"checkpoint-reliability-canary-1.9.753","status":"CHECKPOINTED_AFTER_CELL_1","cursor_calls":0,"completed_cells":1,"remaining_unexposed_cells":2,
-  "cell":{"id":"luna-architectural-drawing-return-r1","validity":"valid","objective_score":"85/85","ui_resolved":true,"wall_time_ms":179225,"token_usage":{"input_tokens":594480,"cached_input_tokens":526848,"output_tokens":8491,"reasoning_output_tokens":3054,"total_tokens":602971},"product_revision_count":1,"static_closure_count":1,"browser_mechanism_count":1,"browser_recovery_count":0,"duplicate_static_closure_count":0,"proof_compliance":true,"candidate_final_bytes_match":true},
-  "artifact_hashes":{"execution_state_sha256":"71c8b6d9dedc14fc691c7b4040e61cc4676eb492a0d370a6017150699c6522db","run_result_sha256":"bbf4dd4f1aa94d7ff870b9a76255b21013be62196fa68d6b0b00ef9c2196c52a","score_sha256":"ab1efe2aad62876498602627dee4a78fd4b92d59c5471a7c8bcd3d16e04bfabc","proof_trace_sha256":"e3c2fe80a48fff684330201071cf532ee48c5db619ff35eca3105b526820a48f"},
-  "next_gate":"Commit this checkpoint, then prove repaired continuation by executing only the ceramic cell once."
-}

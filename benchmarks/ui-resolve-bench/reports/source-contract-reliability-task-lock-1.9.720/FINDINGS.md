@@ -1,9 +1,0 @@
-# Source-contract Reliability@3 task lock — 1.9.720
-
-Three fresh fictional repair tasks are locked with provider calls 0 and model exposures 0: orbital-optics transfer, seed-vault accession, and audio-archive ingest. They vary domain, visual tokens, record cardinality, assigned-container cardinality, operational-window cardinality, identifier length, fixed-grid density, and decision width. They are not replays or renamed copies of the meteorite task.
-
-Every provider-free raw DESIGN.md baseline is exactly 75/85. Task contract, design grounding, state journey, and evidence honesty pass; responsive and accessibility fail. Desktop geometry is green. At 390px, 320px, and the 200% surrogate, the fixed register, window strip, and decision relationship escape the viewport or clip controls. Header guidance and footer canvas text produce serious contrast failures. The raw score bytes are normalized into task-local evidence and hash-locked.
-
-Source-contract 0.2 admission proves the exact false critical-gate set equals the declared debt coverage for all three tasks. Each provider-sealed smoke includes register reflow, window-strip reflow, decision parent containment, target/evidence relationship carriers, and exact ink-role contrast corrections. Every artifact is provider-immutable and has an independently locked inventory hash.
-
-This checkpoint contains no model result and no reliability claim. The tasks must be committed before a matrix is preregistered. The eventual three-cell plan uses the exact same clean OmD skill, Luna/high, one trial per fresh task, no retry or replacement, and diagnostic-only attribution. Reliability@3 passes only if all three cells satisfy 85/85, one product revision, one successful static closure, zero failed closures, zero user handoffs, proof compliance, and unchanged sealed inventory.

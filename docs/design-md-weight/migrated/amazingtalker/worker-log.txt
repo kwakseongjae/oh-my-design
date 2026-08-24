@@ -1,0 +1,12 @@
+T2 마이그레이션을 시작하기 전에 규격·규칙집·골든 샘플과 원본 DESIGN.md를 순서대로 읽겠습니다.규격·규칙집·골든 샘플과 원본을 한꺼번에 읽고, 이미 있는 amazingtalker 산출물이 있는지도 확인합니다.골든 샘플과 amazingtalker 원본을 읽고, 최근 통과 이관본의 형태도 대조합니다.게이트·검증 원장·최근 통과 이관본을 대조해 값 보존과 B2a 한정의 실제 형태를 확인합니다.게이트가 잡는 토큰을 원본에서 전부 뽑아 손실·발명이 없도록 맞춘 뒤 본문을 작성합니다.원본 토큰과 충돌쌍을 모두 챙긴 뒤 Core v2 세 파일을 작성합니다.게이트가 `focus-visible`과 hex를 같은 줄에서 잡는 문장을 끊고, Distinctive·Spacing·Layout에 빠진 B2a 한정을 보강합니다.AmazingTalker legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/amazingtalker/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v7**.
+
+핵심 처리:
+
+- **보존:** 14 hex, YAML line-height `1.30`/`1.50`, button×3 + card + badge + tab, duration `0/150/240/360ms`, `prefers-reduced-motion`, §14 9행
+- **비합침:** Course Card 가격 `#484848` vs live `#ffffff`; heading `#363636` vs live H2 `#484848`; YAML ambient vs standard shadow; YAML `subhead` 1.30 vs Category Head 1.60
+- **삭제:** §9 도구 프롬프트; §13 가상 페르소나(sidecar 없음); 무출처 cubic-bezier 3개(`ease-exit`는 템플릿 일치) → provenance omission ledger
+- **C2/C4/B1/B3:** Hero/Section/Ghost L/E/S 생략; Card/Badge kind·map 생략; generic Focus를 `focus-visible`로 올리지 않음; B3 다섯 증거 종류는 Foundations Motion 본문에만 전문
+
+`--gate-only` PASS, `portable_core: true`. SHA-256 `b9eca221d701682e9592dfa2fe06451a4a295090f8b2f1d9320a93ef5690c971`. F3·카탈로그 채택은 이 워커 범위 밖입니다.
+
+DONE migrated=1

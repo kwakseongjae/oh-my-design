@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 들어가겠습니다. 룰북의 해당 조항과 ASOS 산출물부터 읽고, 문장 분류와 원장 대조를 진행합니다.룰북 B2·E2만 기준으로 두고, ASOS 산출물과 이전 감사 로그 형식을 대조합니다.이전 감사에서 자주 놓친 패턴과 원본·로그를 대조해, 한정 누락과 목적지 불일치를 좁힙니다.로그에 적힌 목적지와 본문 hex·URL을 실제 grep으로 대조합니다.문장 한정 누락과 로그 목적지 불일치를 확인했습니다. DESIGN.md에 인접 B2a를 붙인 뒤 원장을 실제 grep에 맞춥니다.본문 한정을 붙였습니다. 바뀐 줄 번호로 provenance·migration-log를 맞춥니다.provenance 범위를 본문 실제 B2a 사이트에 맞추고, 잘못된 목적지를 고칩니다.게이트가 `focus-visible` 승격을 잡았습니다. 감사 수정이 원인인지 확인합니다.ASOS F3 감사(B2a·E2만)를 끝냈습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 건드리지 않았습니다.
+
+**B2a.** 편집 해석인데 한정이 없거나 이름을 덜 댄 문장에 인접 완전 한정을 붙였습니다. 대상은 Scope 분위기 부가 읽기·neutral-monochrome-frame, Audience no-individual-personas, Avoid completing-purchase-signal, Spacing harvested padding, Shape 목록 앞 한정, Elevation 부가 읽기, Motion spec-template/fully-navigable, Font alternate-not-second-identity, Type-role omitted-tracking, Capture-record 부가 성격 규정, Gender Nav hover-name-not-copied/unmerged-field, Layout commerce-first/whitespace/tints입니다.
+
+**E2.** 로그·provenance 목적지를 grep에 맞췄습니다. Avoid는 `#2d2d2d`/`#018849` 목적지가 아니고, Foundations unmerged-role 95는 그 세 accent hex의 목적지가 아닙니다. 카탈로그 홈 URL(슬래시 없음)과 live-inspect 홈 URL(슬래시 있음)은 분리했습니다.
+
+기록: `docs/design-md-weight/migrated/asos/audit-log.md`. 게이트 `--gate-only` PASS, Core `portable_core: true`. SHA-256 `8ea6e76dd473167fbd22d449393685e4fddb96d924bb232768c2dfa821fad3c9`.
+
+AUDIT_DONE fixes=31

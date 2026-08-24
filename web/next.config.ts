@@ -1,5 +1,11 @@
 import type { NextConfig } from "next";
 
+// Mirrors src/lib/site.ts. next.config is loaded outside the tsconfig path
+// aliases, so it cannot import that module; __tests__/blog-redirects.test.ts
+// asserts the two stay in agreement.
+const BLOG_ORIGIN = "https://blog.oh-my-design.kr";
+const BLOG_ON_SUBDOMAIN = process.env.NEXT_PUBLIC_BLOG_SUBDOMAIN === "1";
+
 const nextConfig: NextConfig = {
   trailingSlash: false,
   // Hide the dev-only on-screen route indicator (the floating "N" badge in
@@ -34,6 +40,15 @@ const nextConfig: NextConfig = {
       // builder / directory so no link equity is lost.
       { source: "/curation", destination: "/builder", permanent: true },
       { source: "/result/:typeCode", destination: "/design-systems", permanent: true },
+      // The blog moved to its own host. Gated on the same flag as the canonical
+      // URLs, so this stays off until the domain resolves — turning it on
+      // before then would 301 every reader into a host that does not answer.
+      ...(BLOG_ON_SUBDOMAIN
+        ? [
+            { source: "/blog", destination: BLOG_ORIGIN, permanent: true },
+            { source: "/blog/:path*", destination: `${BLOG_ORIGIN}/:path*`, permanent: true },
+          ]
+        : []),
     ];
   },
   // NOTE: the previous commit (4ab523d) added a `www → apex` redirect here

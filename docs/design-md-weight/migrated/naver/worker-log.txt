@@ -1,0 +1,14 @@
+Naver T2 마이그레이션을 시작합니다. 규칙집과 대응표를 먼저 읽고, 골든 샘플 형태에 맞춰 옮기겠습니다.규칙집 v4를 확인했습니다. 지정된 규격·판정문·골든 샘플을 이어서 읽습니다.골든 샘플과 Naver 원문, 최근 PASS 이관본을 함께 읽어 형태와 의미 보존 기준을 맞춥니다.Naver 출력 폴더와 골든·PASS 이관본, 게이트 스크립트를 확인합니다.최근 PASS 이관본과 게이트 스크립트를 읽어 C2·B2a·B3 처리 형태를 맞춥니다.규칙집 v4와 PASS 이관본 형태를 기준으로, 값·타입·상태 의미를 유지한 산출물을 작성합니다.기계 게이트와 Portable Core 검사로 값 손실·발명·placeholder를 확인합니다.스코프 부정문과 원문에 없는 `8px` 표기를 고칩니다. `not unpublished product`가 범위 claim을 깨고, YAML의 `8`을 `8px`로 쓰면 토큰 발명으로 잡힙니다.Naver legacy `DESIGN.md`를 Core v2 Portable Core로 옮겼습니다. 출력은 `docs/design-md-weight/migrated/naver/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v4**.
+
+기계 확인: `inspectDesignMd` `portable_core: true`, placeholders 0, `migrate-reference.mjs --brand naver --gate-only` **PASS**. 카탈로그 채택은 아닙니다.
+
+의미 보존에서 특히 맞춘 점:
+
+- 검증값 유지: `#03C75A`, Search Input `#000000`(Ink와 비합침), `14.7px` / `17.85px` / `-0.16px`, primitive `Type` input/button/tab/badge/card/listItem
+- §14 본문 유지. `not captured` → `not-applicable` 없음. 탭·캐러셀·메뉴·쿼리/제출의 loading/error/success는 역할로 판정
+- Filter Chip·Result Card는 kind/map 생략
+- generic `focus`를 `focus-visible` 처리로 올리지 않음
+- §13은 세 task context만 Primary tasks. 가상 persona 없음
+- Motion은 B3 다섯 증거 종류 + 컴포넌트별 computed 게이트. 무출처 커브 없음
+
+DONE migrated=1

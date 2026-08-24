@@ -1,0 +1,13 @@
+쿠팡 T2 마이그레이션을 시작합니다. 먼저 규격·규칙집·골든 샘플과 원문을 순서대로 읽고, 규칙집 전 조항을 기준으로 Core v2로 옮기겠습니다.규칙집 v4와 Core v2 규격을 확인했습니다. 이어서 대응표, T1 제약, 의미 보존 조건, 골든 샘플, 쿠팡 원문을 읽겠습니다.골든 샘플과 통과한 웨이브 1 산출물, 쿠팡 원문을 대조해 형태와 의미 보존 기준을 맞춥니다.통과한 v4 샘플과 게이트 스크립트를 읽어, 쿠팡에 적용할 형태·의미 보존 조건을 맞춥니다.게이트가 잡는 토큰·플레이스홀더를 원문에서 기계적으로 뽑아, 손실·발명이 없게 맞춥니다.원문 값·상태 의미·규칙집 v4를 맞춰 Core v2 세 파일을 작성합니다.게이트는 통과했지만 Portable Core가 scope claim을 못 읽습니다. 검사 기준을 확인하고 본문을 고치겠습니다.기계 게이트와 Portable Core는 통과했습니다. 세션 복원 문서를 갱신한 뒤 마무리합니다.쿠팡 legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/coupang/`입니다.
+
+규칙집 **v4** 기준으로 검증된 값만 옮겼고, 미해상은 가장 작은 경계에서 생략했습니다.
+
+- **Experience:** 한국 커머스 홈 캡처만 범위. 1차 과업 2건(헤더 검색, 메뉴·계정 유틸). §13 `[FILL IN]` 페르소나는 승격하지 않음.
+- **Foundations:** `#ffffff` `#000000` `#555555` `#333333` `#212b36` `#e5e7eb`. YAML `lineHeight` **1.5 / 1.25**는 비율로 보존하고, 24px / 21px / 15–32px / 16.5px는 크기별 관측으로 분리.
+- **Components:** `listItem` / `button` / `input`을 컴포넌트별로 보존. `not captured`를 `not-applicable` 사유로 쓰지 않음. loading/error/success는 헤더 역할 의미로만 `not-applicable`.
+- **Motion:** B3 다섯 증거 종류 + 컴포넌트별 computed 관측 게이트를 Foundations에 명시.
+- **Provenance:** `ds.type: brand`, freshness, claim ledger, capture selector, `[FILL IN]` 9개 생략 원장. 가상 persona는 sidecar에 다시 싣지 않음.
+
+`inspectDesignMd` → `portable_core: true`, placeholders 0. `migrate-reference.mjs --brand coupang --gate-only` → **PASS**. 카탈로그 채택은 아님.
+
+DONE migrated=1

@@ -1,0 +1,1652 @@
+{
+  "brand": "toss",
+  "capturedAt": "2026-08-22T19:51:46.001Z",
+  "source": {
+    "url": "https://toss.im/",
+    "status": 200,
+    "finalUrl": "https://toss.im/",
+    "title": "토스"
+  },
+  "method": {
+    "channel": "playwright",
+    "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
+    "imagerySamplesRequested": 12,
+    "locale": "ko-KR",
+    "colorScheme": "light",
+    "surfaces": [
+      "desktop-1440",
+      "mobile-390"
+    ],
+    "totalDurationMs": 45510
+  },
+  "surfaces": {
+    "desktop-1440": {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "chrome": {
+        "pageBackgroundComputed": null,
+        "bodyColor": "#000000",
+        "header": {
+          "detectedBy": "geometry",
+          "background": null,
+          "heightPx": 64
+        },
+        "primaryButton": {
+          "fill": "solid",
+          "background": "#07194c",
+          "color": "#333840",
+          "radiusPx": 12,
+          "fontPx": 16,
+          "weight": "500",
+          "label": "앱\n \n다\n운\n로\n드\n앱\n \n다\n운\n로\n드",
+          "repeats": 1
+        },
+        "typeScale": [
+          {
+            "tag": "h2",
+            "fontPx": 80,
+            "weight": "700",
+            "family": "Toss Product Sans OTF",
+            "lineHeight": "96px",
+            "letterSpacing": "normal",
+            "color": "#ffffff"
+          },
+          {
+            "tag": "p",
+            "fontPx": 16,
+            "weight": "400",
+            "family": "Toss Product Sans OTF",
+            "lineHeight": "25.6px",
+            "letterSpacing": "-0.32px",
+            "color": "#ffffff"
+          },
+          {
+            "tag": "button",
+            "fontPx": 16,
+            "weight": "500",
+            "family": "Toss Product Sans OTF",
+            "lineHeight": "25.6px",
+            "letterSpacing": "-0.32px",
+            "color": "#333840"
+          }
+        ],
+        "notes": {
+          "buttonCandidatesAboveFold": 1,
+          "headerDetectedBy": "geometry"
+        },
+        "pageBackgroundRendered": {
+          "dominantHex": "#fdfdfe",
+          "coverage": 0.1625,
+          "resolved": true,
+          "hex": "#fdfdfe",
+          "source": "modal colour of the captured viewport",
+          "agreesWithComputed": null
+        }
+      },
+      "imagery": {
+        "sampled": 2,
+        "funnel": {
+          "found": 4,
+          "sizeOk": 2,
+          "centreInFrame": 2,
+          "srcOk": 2,
+          "cap": 12,
+          "kept": 2,
+          "framed": 2,
+          "cropped": 2,
+          "analysed": 2
+        },
+        "attrition": {
+          "suspect": true,
+          "reasons": [
+            "only 2 samples analysed"
+          ],
+          "sizeFilterLoss": 0.5,
+          "note": "verify before using downstream"
+        },
+        "samples": [
+          {
+            "src": "https://static.toss.im/assets/toss-im/asset/intro-main.mp4",
+            "kind": "video",
+            "tag": "c1",
+            "alt": "",
+            "docBox": {
+              "x": -151.4666748046875,
+              "y": -17.199996948242188,
+              "w": 1732.2667236328125,
+              "h": 974.4000244140625
+            },
+            "aspect": 1.778,
+            "areaShare": 1.3024,
+            "intrinsic": {
+              "w": 1920,
+              "h": 1080
+            },
+            "clipped": true,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-01.png",
+            "palette": [
+              {
+                "hex": "#fdfdfe",
+                "coverage": 0.1568,
+                "saturation": 0.004,
+                "luma": 0.992
+              },
+              {
+                "hex": "#e5ebf2",
+                "coverage": 0.0494,
+                "saturation": 0.054,
+                "luma": 0.919
+              },
+              {
+                "hex": "#eaeef5",
+                "coverage": 0.0414,
+                "saturation": 0.045,
+                "luma": 0.932
+              },
+              {
+                "hex": "#f3f5fa",
+                "coverage": 0.0372,
+                "saturation": 0.028,
+                "luma": 0.961
+              },
+              {
+                "hex": "#010204",
+                "coverage": 0.0248,
+                "saturation": 0.75,
+                "luma": 0.008
+              },
+              {
+                "hex": "#7a848c",
+                "coverage": 0.022,
+                "saturation": 0.129,
+                "luma": 0.512
+              }
+            ],
+            "light": {
+              "meanLuma": 0.652,
+              "p05": 0.049,
+              "p50": 0.759,
+              "p95": 1,
+              "dynamicRange": 0.951,
+              "gradient": {
+                "dx": -0.265,
+                "dy": -0.141
+              },
+              "luminanceGradient": "brighter left"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 2.5
+            }
+          },
+          {
+            "src": "canvas@0,1710",
+            "kind": "canvas",
+            "tag": "c2",
+            "alt": "",
+            "docBox": {
+              "x": 0,
+              "y": 1710,
+              "w": 1440,
+              "h": 900
+            },
+            "aspect": 1.6,
+            "areaShare": 1,
+            "intrinsic": {
+              "w": 2160,
+              "h": 1350
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-02.png",
+            "palette": [
+              {
+                "hex": "#fcf9fd",
+                "coverage": 0.0932,
+                "saturation": 0.016,
+                "luma": 0.98
+              },
+              {
+                "hex": "#f3f5fa",
+                "coverage": 0.0457,
+                "saturation": 0.028,
+                "luma": 0.961
+              },
+              {
+                "hex": "#e5ebf2",
+                "coverage": 0.0447,
+                "saturation": 0.054,
+                "luma": 0.919
+              },
+              {
+                "hex": "#eaeef5",
+                "coverage": 0.0339,
+                "saturation": 0.045,
+                "luma": 0.932
+              },
+              {
+                "hex": "#ecf1f7",
+                "coverage": 0.0275,
+                "saturation": 0.045,
+                "luma": 0.943
+              },
+              {
+                "hex": "#010203",
+                "coverage": 0.0264,
+                "saturation": 0.667,
+                "luma": 0.007
+              }
+            ],
+            "light": {
+              "meanLuma": 0.598,
+              "p05": 0.053,
+              "p50": 0.538,
+              "p95": 0.981,
+              "dynamicRange": 0.928,
+              "gradient": {
+                "dx": -0.292,
+                "dy": -0.193
+              },
+              "luminanceGradient": "brighter left"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 121.4
+            }
+          }
+        ],
+        "aggregate": {
+          "meanLuma": 0.652,
+          "dynamicRange": 0.951,
+          "luminanceGradients": {
+            "brighter left": 2
+          },
+          "aspects": 1.778,
+          "figureGroundResolved": "0/2",
+          "subjectNote": "fewer than 4 resolved samples — placement omitted"
+        }
+      },
+      "motion": {
+        "present": true,
+        "autoplay": true,
+        "loop": true,
+        "muted": true,
+        "poster": "https://static.toss.im/assets/toss-im/asset/intro-main-poster.webp",
+        "duration": 4.05,
+        "aspect": 1.778,
+        "intrinsic": {
+          "w": 1920,
+          "h": 1080
+        },
+        "sampled": 8,
+        "frameDistances": [
+          {
+            "from": 0.25,
+            "to": 0.76,
+            "delta": 0.0007
+          },
+          {
+            "from": 0.76,
+            "to": 1.27,
+            "delta": 0.0004
+          },
+          {
+            "from": 1.27,
+            "to": 1.77,
+            "delta": 0.0007
+          },
+          {
+            "from": 1.77,
+            "to": 2.28,
+            "delta": 0.0005
+          },
+          {
+            "from": 2.28,
+            "to": 2.78,
+            "delta": 0.0006
+          },
+          {
+            "from": 2.78,
+            "to": 3.29,
+            "delta": 0.0076
+          },
+          {
+            "from": 3.29,
+            "to": 3.8,
+            "delta": 0.0073
+          }
+        ],
+        "motionMagnitude": 0.0025,
+        "cutCount": 0,
+        "cutsAt": [],
+        "shotLengthSec": 4.05
+      },
+      "durationMs": 13724
+    },
+    "mobile-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "chrome": {
+        "pageBackgroundComputed": null,
+        "bodyColor": "#000000",
+        "header": {
+          "detectedBy": "geometry",
+          "background": null,
+          "heightPx": 56
+        },
+        "primaryButton": null,
+        "typeScale": [
+          {
+            "tag": "h2",
+            "fontPx": 40,
+            "weight": "700",
+            "family": "Toss Product Sans OTF",
+            "lineHeight": "46px",
+            "letterSpacing": "normal",
+            "color": "#ffffff"
+          }
+        ],
+        "notes": {
+          "buttonCandidatesAboveFold": 0,
+          "headerDetectedBy": "geometry"
+        },
+        "pageBackgroundRendered": {
+          "dominantHex": "#fefefe",
+          "coverage": 0.207,
+          "resolved": true,
+          "hex": "#fefefe",
+          "source": "modal colour of the captured viewport",
+          "agreesWithComputed": null
+        }
+      },
+      "imagery": {
+        "sampled": 12,
+        "funnel": {
+          "found": 55,
+          "sizeOk": 42,
+          "centreInFrame": 18,
+          "srcOk": 18,
+          "cap": 12,
+          "kept": 12,
+          "framed": 12,
+          "cropped": 12,
+          "analysed": 12
+        },
+        "attrition": {
+          "suspect": false,
+          "sizeFilterLoss": 0.236
+        },
+        "samples": [
+          {
+            "src": "canvas@-361,7284",
+            "kind": "canvas",
+            "tag": "c12",
+            "alt": "",
+            "docBox": {
+              "x": -361.5,
+              "y": 7284.1513671875,
+              "w": 1001,
+              "h": 1000.9892578125
+            },
+            "aspect": 1,
+            "areaShare": 3.0441,
+            "intrinsic": {
+              "w": 1400,
+              "h": 1400
+            },
+            "clipped": true,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-01.png",
+            "palette": [
+              {
+                "hex": "#ffffff",
+                "coverage": 0.5219,
+                "saturation": 0,
+                "luma": 1
+              },
+              {
+                "hex": "#d5d5d5",
+                "coverage": 0.3638,
+                "saturation": 0,
+                "luma": 0.835
+              },
+              {
+                "hex": "#dadbdb",
+                "coverage": 0.0418,
+                "saturation": 0.005,
+                "luma": 0.858
+              },
+              {
+                "hex": "#d6d7d9",
+                "coverage": 0.0184,
+                "saturation": 0.014,
+                "luma": 0.843
+              },
+              {
+                "hex": "#f4f5f5",
+                "coverage": 0.015,
+                "saturation": 0.004,
+                "luma": 0.96
+              },
+              {
+                "hex": "#d7d8da",
+                "coverage": 0.0136,
+                "saturation": 0.014,
+                "luma": 0.847
+              }
+            ],
+            "light": {
+              "meanLuma": 0.923,
+              "p05": 0.831,
+              "p50": 0.985,
+              "p95": 1,
+              "dynamicRange": 0.169,
+              "gradient": {
+                "dx": 0.005,
+                "dy": 0.015
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 22.1
+            }
+          },
+          {
+            "src": "https://static.toss.im/assets/toss-im/asset/hero-mobile/intro-loop.mp4",
+            "kind": "video",
+            "tag": "c1",
+            "alt": "",
+            "docBox": {
+              "x": -39.00001525878906,
+              "y": -84.4000244140625,
+              "w": 468,
+              "h": 1012.800048828125
+            },
+            "aspect": 0.462,
+            "areaShare": 1.44,
+            "intrinsic": {
+              "w": 750,
+              "h": 1624
+            },
+            "clipped": true,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-02.png",
+            "palette": [
+              {
+                "hex": "#fefefe",
+                "coverage": 0.2004,
+                "saturation": 0,
+                "luma": 0.996
+              },
+              {
+                "hex": "#f5f6fa",
+                "coverage": 0.0307,
+                "saturation": 0.02,
+                "luma": 0.965
+              },
+              {
+                "hex": "#010304",
+                "coverage": 0.0242,
+                "saturation": 0.75,
+                "luma": 0.01
+              },
+              {
+                "hex": "#e4ebf2",
+                "coverage": 0.0232,
+                "saturation": 0.058,
+                "luma": 0.918
+              },
+              {
+                "hex": "#02060a",
+                "coverage": 0.0211,
+                "saturation": 0.8,
+                "luma": 0.021
+              },
+              {
+                "hex": "#0d1115",
+                "coverage": 0.0185,
+                "saturation": 0.381,
+                "luma": 0.064
+              }
+            ],
+            "light": {
+              "meanLuma": 0.544,
+              "p05": 0.029,
+              "p50": 0.458,
+              "p95": 1,
+              "dynamicRange": 0.971,
+              "gradient": {
+                "dx": 0.16,
+                "dy": -0.122
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0.8
+            }
+          },
+          {
+            "src": "https://static.toss.im/assets/toss-im/asset/shopping/admin-kor.png",
+            "kind": "img",
+            "tag": "c16",
+            "alt": "",
+            "docBox": {
+              "x": 144.125,
+              "y": 10449.046875,
+              "w": 388,
+              "h": 759.59375
+            },
+            "aspect": 0.511,
+            "areaShare": 0.8954,
+            "intrinsic": {
+              "w": 2400,
+              "h": 2854
+            },
+            "clipped": true,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-03.png",
+            "palette": [
+              {
+                "hex": "#fbfbfb",
+                "coverage": 0.7031,
+                "saturation": 0,
+                "luma": 0.984
+              },
+              {
+                "hex": "#f4f4f5",
+                "coverage": 0.1728,
+                "saturation": 0.004,
+                "luma": 0.957
+              },
+              {
+                "hex": "#ebeced",
+                "coverage": 0.023,
+                "saturation": 0.008,
+                "luma": 0.925
+              },
+              {
+                "hex": "#eff0f1",
+                "coverage": 0.0149,
+                "saturation": 0.008,
+                "luma": 0.941
+              },
+              {
+                "hex": "#eeeff0",
+                "coverage": 0.0114,
+                "saturation": 0.008,
+                "luma": 0.937
+              },
+              {
+                "hex": "#f6f7f9",
+                "coverage": 0.0092,
+                "saturation": 0.012,
+                "luma": 0.968
+              }
+            ],
+            "light": {
+              "meanLuma": 0.969,
+              "p05": 0.913,
+              "p50": 0.976,
+              "p95": 1,
+              "dynamicRange": 0.087,
+              "gradient": {
+                "dx": -0.009,
+                "dy": -0.005
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 6.5
+            }
+          },
+          {
+            "src": "https://static.toss.im/assets/toss-im/asset/hero-mobile/intro-flow-kr.mp4",
+            "kind": "video",
+            "tag": "c2",
+            "alt": "",
+            "docBox": {
+              "x": 19.5,
+              "y": 886.1875,
+              "w": 351,
+              "h": 460
+            },
+            "aspect": 0.763,
+            "areaShare": 0.4905,
+            "intrinsic": {
+              "w": 704,
+              "h": 1524
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-04.png",
+            "palette": [
+              {
+                "hex": "#dbe4ee",
+                "coverage": 0.0819,
+                "saturation": 0.08,
+                "luma": 0.889
+              },
+              {
+                "hex": "#f6f1ec",
+                "coverage": 0.07,
+                "saturation": 0.041,
+                "luma": 0.948
+              },
+              {
+                "hex": "#f3eeea",
+                "coverage": 0.0466,
+                "saturation": 0.037,
+                "luma": 0.936
+              },
+              {
+                "hex": "#d6e1ec",
+                "coverage": 0.0279,
+                "saturation": 0.093,
+                "luma": 0.876
+              },
+              {
+                "hex": "#d3dee9",
+                "coverage": 0.0237,
+                "saturation": 0.094,
+                "luma": 0.865
+              },
+              {
+                "hex": "#e2e9f1",
+                "coverage": 0.0232,
+                "saturation": 0.062,
+                "luma": 0.91
+              }
+            ],
+            "light": {
+              "meanLuma": 0.628,
+              "p05": 0.107,
+              "p50": 0.711,
+              "p95": 0.949,
+              "dynamicRange": 0.842,
+              "gradient": {
+                "dx": 0.007,
+                "dy": -0.423
+              },
+              "luminanceGradient": "brighter top"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 131.2
+            }
+          },
+          {
+            "src": "https://framerusercontent.com/images/n7pky7Ga0axJGWNIOIt8Qlx6TDo.png",
+            "kind": "img",
+            "tag": "c7",
+            "alt": "",
+            "docBox": {
+              "x": 20,
+              "y": 4158.671875,
+              "w": 350,
+              "h": 420
+            },
+            "aspect": 0.833,
+            "areaShare": 0.4466,
+            "intrinsic": {
+              "w": 1000,
+              "h": 1200
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-05.png",
+            "palette": [
+              {
+                "hex": "#fdfdfe",
+                "coverage": 0.2128,
+                "saturation": 0.004,
+                "luma": 0.992
+              },
+              {
+                "hex": "#dae6f3",
+                "coverage": 0.0438,
+                "saturation": 0.103,
+                "luma": 0.896
+              },
+              {
+                "hex": "#d5e3f3",
+                "coverage": 0.0414,
+                "saturation": 0.123,
+                "luma": 0.883
+              },
+              {
+                "hex": "#f3f6fa",
+                "coverage": 0.0359,
+                "saturation": 0.028,
+                "luma": 0.963
+              },
+              {
+                "hex": "#ccdcf1",
+                "coverage": 0.031,
+                "saturation": 0.154,
+                "luma": 0.855
+              },
+              {
+                "hex": "#dde8f2",
+                "coverage": 0.029,
+                "saturation": 0.087,
+                "luma": 0.903
+              }
+            ],
+            "light": {
+              "meanLuma": 0.913,
+              "p05": 0.795,
+              "p50": 0.914,
+              "p95": 1,
+              "dynamicRange": 0.205,
+              "gradient": {
+                "dx": -0.048,
+                "dy": 0.021
+              },
+              "luminanceGradient": "brighter left"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 30
+            }
+          },
+          {
+            "src": "https://framerusercontent.com/images/RgoQMvlXO09MqYjNwNDHWDTjtA.png",
+            "kind": "img",
+            "tag": "c8",
+            "alt": "",
+            "docBox": {
+              "x": 20,
+              "y": 4743.515625,
+              "w": 350,
+              "h": 420
+            },
+            "aspect": 0.833,
+            "areaShare": 0.4466,
+            "intrinsic": {
+              "w": 1000,
+              "h": 1200
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-06.png",
+            "palette": [
+              {
+                "hex": "#dbebfc",
+                "coverage": 0.0916,
+                "saturation": 0.131,
+                "luma": 0.913
+              },
+              {
+                "hex": "#cbddf5",
+                "coverage": 0.0794,
+                "saturation": 0.171,
+                "luma": 0.858
+              },
+              {
+                "hex": "#c5daf6",
+                "coverage": 0.0698,
+                "saturation": 0.199,
+                "luma": 0.845
+              },
+              {
+                "hex": "#bcd4f6",
+                "coverage": 0.0653,
+                "saturation": 0.236,
+                "luma": 0.821
+              },
+              {
+                "hex": "#d6e9fa",
+                "coverage": 0.0594,
+                "saturation": 0.144,
+                "luma": 0.903
+              },
+              {
+                "hex": "#d2e5fb",
+                "coverage": 0.0582,
+                "saturation": 0.163,
+                "luma": 0.888
+              }
+            ],
+            "light": {
+              "meanLuma": 0.874,
+              "p05": 0.8,
+              "p50": 0.873,
+              "p95": 0.964,
+              "dynamicRange": 0.164,
+              "gradient": {
+                "dx": 0.014,
+                "dy": 0.02
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 20.4
+            }
+          },
+          {
+            "src": "https://framerusercontent.com/images/3uno5ksiZ2dOLRkQqpA6WoJwI.png",
+            "kind": "img",
+            "tag": "c11",
+            "alt": "",
+            "docBox": {
+              "x": 20,
+              "y": 5328.359375,
+              "w": 350,
+              "h": 420
+            },
+            "aspect": 0.833,
+            "areaShare": 0.4466,
+            "intrinsic": {
+              "w": 1000,
+              "h": 1200
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-07.png",
+            "palette": [
+              {
+                "hex": "#fbfbfe",
+                "coverage": 0.203,
+                "saturation": 0.012,
+                "luma": 0.985
+              },
+              {
+                "hex": "#f6f9fd",
+                "coverage": 0.1126,
+                "saturation": 0.028,
+                "luma": 0.975
+              },
+              {
+                "hex": "#d3e2f3",
+                "coverage": 0.0894,
+                "saturation": 0.132,
+                "luma": 0.879
+              },
+              {
+                "hex": "#d2ddf3",
+                "coverage": 0.0609,
+                "saturation": 0.136,
+                "luma": 0.864
+              },
+              {
+                "hex": "#f2f6fc",
+                "coverage": 0.0592,
+                "saturation": 0.04,
+                "luma": 0.963
+              },
+              {
+                "hex": "#edf3fb",
+                "coverage": 0.0529,
+                "saturation": 0.056,
+                "luma": 0.95
+              }
+            ],
+            "light": {
+              "meanLuma": 0.913,
+              "p05": 0.819,
+              "p50": 0.909,
+              "p95": 0.989,
+              "dynamicRange": 0.17,
+              "gradient": {
+                "dx": 0.004,
+                "dy": -0.018
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 16.9
+            }
+          },
+          {
+            "src": "https://static.toss.im/assets/toss-im/asset/shopping/shopping-lowprice-11.png",
+            "kind": "img",
+            "tag": "c13",
+            "alt": "",
+            "docBox": {
+              "x": 20,
+              "y": 8338.828125,
+              "w": 350,
+              "h": 350
+            },
+            "aspect": 1,
+            "areaShare": 0.3722,
+            "intrinsic": {
+              "w": 670,
+              "h": 720
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-08.png",
+            "palette": [
+              {
+                "hex": "#f6f7f9",
+                "coverage": 0.4748,
+                "saturation": 0.012,
+                "luma": 0.968
+              },
+              {
+                "hex": "#fdfdfe",
+                "coverage": 0.1331,
+                "saturation": 0.004,
+                "luma": 0.992
+              },
+              {
+                "hex": "#e3dfd6",
+                "coverage": 0.1175,
+                "saturation": 0.057,
+                "luma": 0.875
+              },
+              {
+                "hex": "#f7f8fa",
+                "coverage": 0.0293,
+                "saturation": 0.012,
+                "luma": 0.972
+              },
+              {
+                "hex": "#f3f4f6",
+                "coverage": 0.0271,
+                "saturation": 0.012,
+                "luma": 0.957
+              },
+              {
+                "hex": "#dbd9d4",
+                "coverage": 0.0162,
+                "saturation": 0.032,
+                "luma": 0.851
+              }
+            ],
+            "light": {
+              "meanLuma": 0.903,
+              "p05": 0.57,
+              "p50": 0.968,
+              "p95": 1,
+              "dynamicRange": 0.43,
+              "gradient": {
+                "dx": -0.014,
+                "dy": 0.002
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 20.2
+            }
+          },
+          {
+            "src": "https://static.toss.im/assets/toss-im/asset/shopping/shopping-lowprice-2.png",
+            "kind": "img",
+            "tag": "c14",
+            "alt": "",
+            "docBox": {
+              "x": 20,
+              "y": 8852.234375,
+              "w": 350,
+              "h": 350
+            },
+            "aspect": 1,
+            "areaShare": 0.3722,
+            "intrinsic": {
+              "w": 670,
+              "h": 720
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-09.png",
+            "palette": [
+              {
+                "hex": "#f2f4f7",
+                "coverage": 0.5147,
+                "saturation": 0.02,
+                "luma": 0.956
+              },
+              {
+                "hex": "#fbfcfc",
+                "coverage": 0.0945,
+                "saturation": 0.004,
+                "luma": 0.987
+              },
+              {
+                "hex": "#b6b2ab",
+                "coverage": 0.0714,
+                "saturation": 0.06,
+                "luma": 0.699
+              },
+              {
+                "hex": "#f4f5f8",
+                "coverage": 0.0596,
+                "saturation": 0.016,
+                "luma": 0.961
+              },
+              {
+                "hex": "#d3d2d2",
+                "coverage": 0.0144,
+                "saturation": 0.005,
+                "luma": 0.824
+              },
+              {
+                "hex": "#f6f9fa",
+                "coverage": 0.0141,
+                "saturation": 0.016,
+                "luma": 0.974
+              }
+            ],
+            "light": {
+              "meanLuma": 0.866,
+              "p05": 0.454,
+              "p50": 0.956,
+              "p95": 0.987,
+              "dynamicRange": 0.533,
+              "gradient": {
+                "dx": -0.006,
+                "dy": 0.063
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": true,
+              "backgroundHex": "#eff1f2",
+              "center": {
+                "x": 0.4991,
+                "y": 0.3256
+              },
+              "box": {
+                "x": 0.2188,
+                "y": 0,
+                "w": 0.5563,
+                "h": 0.8313
+              },
+              "coverage": 0.2507
+            }
+          },
+          {
+            "src": "https://static.toss.im/assets/toss-im/asset/phone_screen02.png",
+            "kind": "img",
+            "tag": "c3",
+            "alt": "내 자산 모아보기",
+            "docBox": {
+              "x": 57.79999923706055,
+              "y": 1656.354736328125,
+              "w": 315,
+              "h": 260.109375
+            },
+            "aspect": 1.211,
+            "areaShare": 0.2489,
+            "intrinsic": {
+              "w": 730,
+              "h": 602
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-10.png",
+            "palette": [
+              {
+                "hex": "#fbfbfc",
+                "coverage": 0.6408,
+                "saturation": 0.004,
+                "luma": 0.985
+              },
+              {
+                "hex": "#f5f6f9",
+                "coverage": 0.0914,
+                "saturation": 0.016,
+                "luma": 0.965
+              },
+              {
+                "hex": "#f2f3f6",
+                "coverage": 0.0856,
+                "saturation": 0.016,
+                "luma": 0.953
+              },
+              {
+                "hex": "#f7f8fa",
+                "coverage": 0.0424,
+                "saturation": 0.012,
+                "luma": 0.972
+              },
+              {
+                "hex": "#eaebed",
+                "coverage": 0.0063,
+                "saturation": 0.013,
+                "luma": 0.921
+              },
+              {
+                "hex": "#edeef1",
+                "coverage": 0.0055,
+                "saturation": 0.017,
+                "luma": 0.933
+              }
+            ],
+            "light": {
+              "meanLuma": 0.948,
+              "p05": 0.747,
+              "p50": 0.985,
+              "p95": 0.989,
+              "dynamicRange": 0.242,
+              "gradient": {
+                "dx": 0.048,
+                "dy": 0.01
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 3.5
+            }
+          },
+          {
+            "src": "video@71,10866",
+            "kind": "video",
+            "tag": "c17",
+            "alt": "",
+            "docBox": {
+              "x": 71.46875,
+              "y": 10866.109375,
+              "w": 247.046875,
+              "h": 247.046875
+            },
+            "aspect": 1,
+            "areaShare": 0.1854,
+            "intrinsic": {
+              "w": null,
+              "h": null
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-11.png",
+            "palette": [
+              {
+                "hex": "#fdfdfd",
+                "coverage": 0.4565,
+                "saturation": 0,
+                "luma": 0.992
+              },
+              {
+                "hex": "#9bc1ee",
+                "coverage": 0.1044,
+                "saturation": 0.349,
+                "luma": 0.738
+              },
+              {
+                "hex": "#cbd6e5",
+                "coverage": 0.0726,
+                "saturation": 0.114,
+                "luma": 0.834
+              },
+              {
+                "hex": "#d1d9e6",
+                "coverage": 0.0435,
+                "saturation": 0.091,
+                "luma": 0.848
+              },
+              {
+                "hex": "#ced8e6",
+                "coverage": 0.0386,
+                "saturation": 0.104,
+                "luma": 0.843
+              },
+              {
+                "hex": "#a3c5ec",
+                "coverage": 0.0356,
+                "saturation": 0.309,
+                "luma": 0.755
+              }
+            ],
+            "light": {
+              "meanLuma": 0.893,
+              "p05": 0.736,
+              "p50": 0.921,
+              "p95": 0.992,
+              "dynamicRange": 0.256,
+              "gradient": {
+                "dx": 0,
+                "dy": 0.036
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 17
+            }
+          },
+          {
+            "src": "https://static.toss.im/assets/toss-im/asset/shopping/ads-01-mo.png",
+            "kind": "img",
+            "tag": "c18",
+            "alt": "판매량 늘리고 싶다면",
+            "docBox": {
+              "x": 36,
+              "y": 11637.3125,
+              "w": 216,
+              "h": 243.5625
+            },
+            "aspect": 0.887,
+            "areaShare": 0.1598,
+            "intrinsic": {
+              "w": 752,
+              "h": 848
+            },
+            "clipped": true,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-12.png",
+            "palette": [
+              {
+                "hex": "#fefefe",
+                "coverage": 0.1755,
+                "saturation": 0,
+                "luma": 0.996
+              },
+              {
+                "hex": "#e6e4e3",
+                "coverage": 0.1431,
+                "saturation": 0.013,
+                "luma": 0.896
+              },
+              {
+                "hex": "#ebeae9",
+                "coverage": 0.1136,
+                "saturation": 0.009,
+                "luma": 0.918
+              },
+              {
+                "hex": "#e8e7e6",
+                "coverage": 0.0992,
+                "saturation": 0.009,
+                "luma": 0.906
+              },
+              {
+                "hex": "#cbc5bc",
+                "coverage": 0.0594,
+                "saturation": 0.074,
+                "luma": 0.775
+              },
+              {
+                "hex": "#e9e8e7",
+                "coverage": 0.0558,
+                "saturation": 0.009,
+                "luma": 0.91
+              }
+            ],
+            "light": {
+              "meanLuma": 0.857,
+              "p05": 0.631,
+              "p50": 0.903,
+              "p95": 1,
+              "dynamicRange": 0.369,
+              "gradient": {
+                "dx": 0.052,
+                "dy": 0.047
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": true,
+              "backgroundHex": "#edeceb",
+              "center": {
+                "x": 0.3703,
+                "y": 0.4238
+              },
+              "box": {
+                "x": 0.1187,
+                "y": 0.1709,
+                "w": 0.6438,
+                "h": 0.6734
+              },
+              "coverage": 0.2501
+            }
+          }
+        ],
+        "aggregate": {
+          "meanLuma": 0.903,
+          "dynamicRange": 0.256,
+          "luminanceGradients": {
+            "even": 6,
+            "brighter right": 3,
+            "brighter top": 1,
+            "brighter left": 1,
+            "brighter bottom": 1
+          },
+          "aspects": 0.887,
+          "figureGroundResolved": "2/12",
+          "subjectNote": "fewer than 4 resolved samples — placement omitted"
+        }
+      },
+      "motion": {
+        "present": true,
+        "autoplay": false,
+        "loop": true,
+        "muted": true,
+        "poster": null,
+        "duration": null,
+        "aspect": 0.462,
+        "intrinsic": {
+          "w": null,
+          "h": null
+        }
+      },
+      "durationMs": 15354
+    }
+  },
+  "chrome": {
+    "pageBackgroundComputed": null,
+    "bodyColor": "#000000",
+    "header": {
+      "detectedBy": "geometry",
+      "background": null,
+      "heightPx": 64
+    },
+    "primaryButton": {
+      "fill": "solid",
+      "background": "#07194c",
+      "color": "#333840",
+      "radiusPx": 12,
+      "fontPx": 16,
+      "weight": "500",
+      "label": "앱\n \n다\n운\n로\n드\n앱\n \n다\n운\n로\n드",
+      "repeats": 1
+    },
+    "typeScale": [
+      {
+        "tag": "h2",
+        "fontPx": 80,
+        "weight": "700",
+        "family": "Toss Product Sans OTF",
+        "lineHeight": "96px",
+        "letterSpacing": "normal",
+        "color": "#ffffff"
+      },
+      {
+        "tag": "p",
+        "fontPx": 16,
+        "weight": "400",
+        "family": "Toss Product Sans OTF",
+        "lineHeight": "25.6px",
+        "letterSpacing": "-0.32px",
+        "color": "#ffffff"
+      },
+      {
+        "tag": "button",
+        "fontPx": 16,
+        "weight": "500",
+        "family": "Toss Product Sans OTF",
+        "lineHeight": "25.6px",
+        "letterSpacing": "-0.32px",
+        "color": "#333840"
+      }
+    ],
+    "notes": {
+      "buttonCandidatesAboveFold": 1,
+      "headerDetectedBy": "geometry"
+    },
+    "pageBackgroundRendered": {
+      "dominantHex": "#fdfdfe",
+      "coverage": 0.1625,
+      "resolved": true,
+      "hex": "#fdfdfe",
+      "source": "modal colour of the captured viewport",
+      "agreesWithComputed": null
+    }
+  },
+  "imagery": {
+    "sampled": 2,
+    "funnel": {
+      "found": 4,
+      "sizeOk": 2,
+      "centreInFrame": 2,
+      "srcOk": 2,
+      "cap": 12,
+      "kept": 2,
+      "framed": 2,
+      "cropped": 2,
+      "analysed": 2
+    },
+    "attrition": {
+      "suspect": true,
+      "reasons": [
+        "only 2 samples analysed"
+      ],
+      "sizeFilterLoss": 0.5,
+      "note": "verify before using downstream"
+    },
+    "samples": [
+      {
+        "src": "https://static.toss.im/assets/toss-im/asset/intro-main.mp4",
+        "kind": "video",
+        "tag": "c1",
+        "alt": "",
+        "docBox": {
+          "x": -151.4666748046875,
+          "y": -17.199996948242188,
+          "w": 1732.2667236328125,
+          "h": 974.4000244140625
+        },
+        "aspect": 1.778,
+        "areaShare": 1.3024,
+        "intrinsic": {
+          "w": 1920,
+          "h": 1080
+        },
+        "clipped": true,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-01.png",
+        "palette": [
+          {
+            "hex": "#fdfdfe",
+            "coverage": 0.1568,
+            "saturation": 0.004,
+            "luma": 0.992
+          },
+          {
+            "hex": "#e5ebf2",
+            "coverage": 0.0494,
+            "saturation": 0.054,
+            "luma": 0.919
+          },
+          {
+            "hex": "#eaeef5",
+            "coverage": 0.0414,
+            "saturation": 0.045,
+            "luma": 0.932
+          },
+          {
+            "hex": "#f3f5fa",
+            "coverage": 0.0372,
+            "saturation": 0.028,
+            "luma": 0.961
+          },
+          {
+            "hex": "#010204",
+            "coverage": 0.0248,
+            "saturation": 0.75,
+            "luma": 0.008
+          },
+          {
+            "hex": "#7a848c",
+            "coverage": 0.022,
+            "saturation": 0.129,
+            "luma": 0.512
+          }
+        ],
+        "light": {
+          "meanLuma": 0.652,
+          "p05": 0.049,
+          "p50": 0.759,
+          "p95": 1,
+          "dynamicRange": 0.951,
+          "gradient": {
+            "dx": -0.265,
+            "dy": -0.141
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 2.5
+        }
+      },
+      {
+        "src": "canvas@0,1710",
+        "kind": "canvas",
+        "tag": "c2",
+        "alt": "",
+        "docBox": {
+          "x": 0,
+          "y": 1710,
+          "w": 1440,
+          "h": 900
+        },
+        "aspect": 1.6,
+        "areaShare": 1,
+        "intrinsic": {
+          "w": 2160,
+          "h": 1350
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-02.png",
+        "palette": [
+          {
+            "hex": "#fcf9fd",
+            "coverage": 0.0932,
+            "saturation": 0.016,
+            "luma": 0.98
+          },
+          {
+            "hex": "#f3f5fa",
+            "coverage": 0.0457,
+            "saturation": 0.028,
+            "luma": 0.961
+          },
+          {
+            "hex": "#e5ebf2",
+            "coverage": 0.0447,
+            "saturation": 0.054,
+            "luma": 0.919
+          },
+          {
+            "hex": "#eaeef5",
+            "coverage": 0.0339,
+            "saturation": 0.045,
+            "luma": 0.932
+          },
+          {
+            "hex": "#ecf1f7",
+            "coverage": 0.0275,
+            "saturation": 0.045,
+            "luma": 0.943
+          },
+          {
+            "hex": "#010203",
+            "coverage": 0.0264,
+            "saturation": 0.667,
+            "luma": 0.007
+          }
+        ],
+        "light": {
+          "meanLuma": 0.598,
+          "p05": 0.053,
+          "p50": 0.538,
+          "p95": 0.981,
+          "dynamicRange": 0.928,
+          "gradient": {
+            "dx": -0.292,
+            "dy": -0.193
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 121.4
+        }
+      }
+    ],
+    "aggregate": {
+      "meanLuma": 0.652,
+      "dynamicRange": 0.951,
+      "luminanceGradients": {
+        "brighter left": 2
+      },
+      "aspects": 1.778,
+      "figureGroundResolved": "0/2",
+      "subjectNote": "fewer than 4 resolved samples — placement omitted"
+    }
+  },
+  "motion": {
+    "present": true,
+    "autoplay": true,
+    "loop": true,
+    "muted": true,
+    "poster": "https://static.toss.im/assets/toss-im/asset/intro-main-poster.webp",
+    "duration": 4.05,
+    "aspect": 1.778,
+    "intrinsic": {
+      "w": 1920,
+      "h": 1080
+    },
+    "sampled": 8,
+    "frameDistances": [
+      {
+        "from": 0.25,
+        "to": 0.76,
+        "delta": 0.0007
+      },
+      {
+        "from": 0.76,
+        "to": 1.27,
+        "delta": 0.0004
+      },
+      {
+        "from": 1.27,
+        "to": 1.77,
+        "delta": 0.0007
+      },
+      {
+        "from": 1.77,
+        "to": 2.28,
+        "delta": 0.0005
+      },
+      {
+        "from": 2.28,
+        "to": 2.78,
+        "delta": 0.0006
+      },
+      {
+        "from": 2.78,
+        "to": 3.29,
+        "delta": 0.0076
+      },
+      {
+        "from": 3.29,
+        "to": 3.8,
+        "delta": 0.0073
+      }
+    ],
+    "motionMagnitude": 0.0025,
+    "cutCount": 0,
+    "cutsAt": [],
+    "shotLengthSec": 4.05
+  }
+}

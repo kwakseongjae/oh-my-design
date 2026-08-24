@@ -1,0 +1,11 @@
+[
+  { "brand": "apple",   "url": "https://www.apple.com/kr/",                                                  "channel": "playwright", "surface": "landing", "why": "kr storefront landing; product surface is behind a store nav that reflows per campaign" },
+  { "brand": "baemin",  "url": "https://www.baemin.com/",                                                    "channel": "playwright", "surface": "landing", "why": "ordering is app-only; the web landing is the only public product-adjacent surface" },
+  { "brand": "coupang", "url": "https://www.coupang.com/",                                                   "channel": "aside",      "surface": "product", "why": "product grid home; refuses automated Chrome with 403, so the ladder starts at aside" },
+  { "brand": "figma",   "url": "https://www.figma.com/",                                                     "channel": "playwright", "surface": "landing", "why": "the editor is behind an account; the landing carries the brand's own imagery" },
+  { "brand": "karrot",  "url": "https://www.daangn.com/kr/buy-sell/s/?search=%EB%85%B8%ED%8A%B8%EB%B6%81",   "channel": "playwright", "surface": "product", "why": "search results are the real product surface and are public; user-listed photos are what this brand shows" },
+  { "brand": "musinsa", "url": "https://www.musinsa.com/category/001",                                       "channel": "playwright", "surface": "product", "why": "category grid, not the promo-heavy home, so chrome is not read off a campaign banner" },
+  { "brand": "naver",   "url": "https://www.naver.com/",                                                     "channel": "playwright", "surface": "landing", "why": "the portal home is the product; it carries almost no large imagery, which is a brand fact" },
+  { "brand": "toss",    "url": "https://toss.im/",                                                           "channel": "playwright", "surface": "landing", "why": "the app is not public; the landing hero is video and canvas" },
+  { "brand": "wanted",  "url": "https://www.wanted.co.kr/wdlist",                                            "channel": "playwright", "surface": "product", "why": "job list is the public product surface" }
+]

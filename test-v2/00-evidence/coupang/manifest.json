@@ -1,0 +1,243 @@
+{
+  "brand": "coupang",
+  "captureId": "2026-08-22T19-48-17-298Z",
+  "capturedAt": "2026-08-22T19:48:17.298Z",
+  "channel": "aside",
+  "source": {
+    "url": "https://www.coupang.com/",
+    "finalUrl": "https://www.coupang.com/",
+    "title": "로켓배송으로 빠르게, 로켓와우 멤버십으로 할인과 무료 반품까지 | 쿠팡",
+    "status": null
+  },
+  "surfaces": [
+    {
+      "id": "desktop-1440",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "imagerySamples": 6,
+      "durationMs": 23405
+    }
+  ],
+  "surfaceLimit": "Aside cannot resize its window from the REPL; only the window's own viewport is captured",
+  "locale": "ko-KR",
+  "session": {
+    "profile": "aside user profile",
+    "authenticated": "unknown",
+    "note": "captured through a real browser profile; cookie state not inspected"
+  },
+  "store": {
+    "root": "$OMD_EVIDENCE_STORE",
+    "path": "coupang/2026-08-22T19-48-17-298Z"
+  },
+  "files": [
+    {
+      "name": "desktop-1440-frame-01.png",
+      "bytes": 599403,
+      "sha256": "22a0342cfaa9656d67d9c9f1b929d70f103d025a5a73e1ff1918b443893d68a6"
+    },
+    {
+      "name": "desktop-1440-frame-02.png",
+      "bytes": 2246671,
+      "sha256": "14c5985d84df66de7eb24a416991c64b102d0285c30322eb39543c79ccbc5180"
+    },
+    {
+      "name": "desktop-1440-frame-03.png",
+      "bytes": 2246518,
+      "sha256": "afb39b115b3a6e9779c6cbbbb8927c66a051bfa51385fc22b8b8bb978180f55b"
+    },
+    {
+      "name": "desktop-1440-frame-04.png",
+      "bytes": 2179891,
+      "sha256": "23d171821eeb917d3040e7ae53c8d8693bc9bf7213486b533e3d733f876e3c73"
+    },
+    {
+      "name": "desktop-1440-frame-05.png",
+      "bytes": 1957467,
+      "sha256": "67de21ee121116e50ddc6fea9640229b53685fe2aa80dfa2128c24d930741eef"
+    },
+    {
+      "name": "desktop-1440-frame-06.png",
+      "bytes": 1632995,
+      "sha256": "a9f8e00e17e4cef67dfdbcbc258325b5f669295a19383db480114a04e0a106a2"
+    },
+    {
+      "name": "desktop-1440-frame-07.png",
+      "bytes": 1328006,
+      "sha256": "d56ac88d162c618600b954c04d781db51ac1ffcda04ac1573dc4173c0286a551"
+    },
+    {
+      "name": "desktop-1440-frame-08.png",
+      "bytes": 1868121,
+      "sha256": "c02c8fc60785d3026b2c2e8eabd402420bc55613d08e6296981c7809e5d9da88"
+    },
+    {
+      "name": "desktop-1440-frame-09.png",
+      "bytes": 1859376,
+      "sha256": "693d7d44d9cca21da028f22e0db5202d15028950e364f14104e7e89cd7a94096"
+    },
+    {
+      "name": "desktop-1440-frame-10.png",
+      "bytes": 1859376,
+      "sha256": "693d7d44d9cca21da028f22e0db5202d15028950e364f14104e7e89cd7a94096"
+    },
+    {
+      "name": "desktop-1440-frame-11.png",
+      "bytes": 1965836,
+      "sha256": "4d3e1f8b0797af133fe67483854e9cf4ddb7e66281044d919594a4fe61364769"
+    },
+    {
+      "name": "desktop-1440-frame-12.png",
+      "bytes": 1965738,
+      "sha256": "da560efc03cf8831f8cca9914392fe6b3060825724d60e56a14744fdef3bcb7c"
+    },
+    {
+      "name": "desktop-1440-imagery-01.png",
+      "bytes": 125114,
+      "sha256": "564bb89e89aa457ab90f18a675e271a6e6eea61a9e2aa7bd05dce315cd5535f8"
+    },
+    {
+      "name": "desktop-1440-imagery-02.png",
+      "bytes": 27056,
+      "sha256": "a4385b0e7c89d628223b7d6347d6bd4b0853f3be16dafddcc8711c64eb870ca9"
+    },
+    {
+      "name": "desktop-1440-imagery-03.png",
+      "bytes": 1389766,
+      "sha256": "7f4ba5b89c31869c6b377797902f0ffe93dfd686924819f5915f00a8f2718266"
+    },
+    {
+      "name": "desktop-1440-imagery-04.png",
+      "bytes": 27056,
+      "sha256": "a4385b0e7c89d628223b7d6347d6bd4b0853f3be16dafddcc8711c64eb870ca9"
+    },
+    {
+      "name": "desktop-1440-imagery-05.png",
+      "bytes": 1038884,
+      "sha256": "0630331e3e2eae37e6848ac68efd6d654dcb3479679bfe57ce178fc0b9d82bbc"
+    },
+    {
+      "name": "desktop-1440-imagery-06.png",
+      "bytes": 5176,
+      "sha256": "63f3052456b7af5b3c9db315551d938540222f700a39dd20294953325cdefacc"
+    },
+    {
+      "name": "desktop-1440-imagery-07.png",
+      "bytes": 47476,
+      "sha256": "41162b8cff8fd918948dc40ebf40bf1c9e1f54b40c6a568221d1460590adcb85"
+    },
+    {
+      "name": "desktop-1440-imagery-08.png",
+      "bytes": 785260,
+      "sha256": "66688f4388b98b7618e7eb15ea473e27362c10a734b66fc6fcf13fbd672d386f"
+    },
+    {
+      "name": "desktop-1440-imagery-09.png",
+      "bytes": 702151,
+      "sha256": "9ef2a53b5582959840dd1ebf434338ace7537f855d39e435e67be0601798f64a"
+    },
+    {
+      "name": "desktop-1440-imagery-10.png",
+      "bytes": 6880,
+      "sha256": "7efe12754d9377cd36b0e5bf622cbcb52736c162a351b9da9c39a7279dbaebbe"
+    },
+    {
+      "name": "desktop-1440-imagery-11.png",
+      "bytes": 967594,
+      "sha256": "8804dc4a1b757aa70973be9e1b2af667f33e087bbe7e55b36133cfc6493af368"
+    },
+    {
+      "name": "desktop-1440-imagery-12.png",
+      "bytes": 634646,
+      "sha256": "15ecac358331378f891e0bc544f54fee0c0138521f1e9575d555ff56049a01c5"
+    },
+    {
+      "name": "desktop-1440-viewport.png",
+      "bytes": 3460610,
+      "sha256": "53b40086b6432d883b5529259134a7d1aeaded703013e2699aa914e2f3e48aa4"
+    },
+    {
+      "name": "header-band.png",
+      "bytes": 173534,
+      "sha256": "d560501968a0442661c8455f6c04e57ce3438a5ad20d3fa389a70233608ee7e0"
+    },
+    {
+      "name": "imagery-01.png",
+      "bytes": 751344,
+      "sha256": "b640a59aa505f0c09da51921e2c37d648e8747d487a2628392ec478d4a3197a3"
+    },
+    {
+      "name": "imagery-02.png",
+      "bytes": 92113,
+      "sha256": "06cc9a6fe131a87ecd65fcc1f05bfbf149478669dbe11bafc2ca3b27542cca79"
+    },
+    {
+      "name": "imagery-03.png",
+      "bytes": 161018,
+      "sha256": "e0c857c894699f375f92eb0849fc314c7ab60a019e5a207b99bf6c7891f4b4ac"
+    },
+    {
+      "name": "imagery-04.png",
+      "bytes": 109303,
+      "sha256": "e7a07e875f823ac9eaffb722327cb58efa9f3855b5d1c34b28405eb8434d26cc"
+    },
+    {
+      "name": "imagery-05.png",
+      "bytes": 64361,
+      "sha256": "d7fe6e3821d3f150e0f2d3c61eb202ae4821fd325f36f7c1a81c01d704038c88"
+    },
+    {
+      "name": "imagery-06.png",
+      "bytes": 83289,
+      "sha256": "be6c89266513f3d03816272876d1d30abfa611d643478e42d40b900f682b891c"
+    },
+    {
+      "name": "imagery-07.png",
+      "bytes": 99759,
+      "sha256": "4db48463d67b8dacbe46d664a16fdaeaedc0c466d487bbc8c26d1714432a41e5"
+    },
+    {
+      "name": "imagery-08.png",
+      "bytes": 160690,
+      "sha256": "a1dd1c143e4663bee5ac6ba740b0370c01477d93f4e3b30a05a0a7faa6b358cb"
+    },
+    {
+      "name": "imagery-09.png",
+      "bytes": 107236,
+      "sha256": "cb7257fb9920d3b10dc09ec3262a3a42db53cea74301c2acaa8a0d4f1902a73c"
+    },
+    {
+      "name": "imagery-10.png",
+      "bytes": 136060,
+      "sha256": "6cb1f0748dd4038ad9828cedbfc329fd9f329c0b0fc7b14995506e0816ee2d08"
+    },
+    {
+      "name": "imagery-11.png",
+      "bytes": 209044,
+      "sha256": "8aea070b2309a04acd1c440325c13f45f91da0496bc8298cb2fa6f23bb220bf7"
+    },
+    {
+      "name": "imagery-12.png",
+      "bytes": 213164,
+      "sha256": "7d89a0987552598dd20a65c7bd63df1fd22a9eee6bb03e8e6d036d85bb78f828"
+    },
+    {
+      "name": "viewport-pass-0.png",
+      "bytes": 1229289,
+      "sha256": "77c19f3f846964ae7533059f2cf769a75acbb2c5fa1a263669c343c0089d9422"
+    },
+    {
+      "name": "viewport-pass-1.png",
+      "bytes": 1345846,
+      "sha256": "c361bdce5dee11fc784f0dc6637f808e11344413cc17bb09688dabbac492d0d3"
+    },
+    {
+      "name": "viewport-pass-2.png",
+      "bytes": 1661085,
+      "sha256": "f4ff2895b29f87ce1fdfb17e5996042b340f87feea29bdd0ab0f4bc28e7c4897"
+    }
+  ],
+  "evidenceSha256": "9fc1ad553b6c1f6a5bbdfdd9446d2b0b30b78245675eb7e051d01dee3a777e8a",
+  "supersededBy": null
+}

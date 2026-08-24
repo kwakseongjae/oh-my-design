@@ -1,0 +1,12 @@
+T2 배민 마이그레이션을 위해 규격·규칙집·골든 샘플·레거시 원문을 먼저 읽겠습니다.골든 샘플과 배민 원문, 이미 마이그레이션된 산출물을 이어서 읽습니다.이미 `migrated/baemin`이 있으니 기존 산출물과 개정 골든 샘플, 배민 원문을 대조합니다.C2와 A3를 반영한 최신 이관본·게이트 스크립트를 확인한 뒤 배민 컴포넌트 역할을 판정하겠습니다.게이트가 토큰 손실을 잡으므로 원문의 hex·px 값을 먼저 전부 뽑고, Portable Core 검사 방법도 확인합니다.원문 값과 C2 역할 판정을 기준으로 세 산출물을 작성합니다.Portable Core가 placeholder로 떨어진 원인을 검사기에서 찾습니다.`web/references/baemin/DESIGN.md`를 Core v2 portable 계약으로 옮겼습니다. 산출은 `docs/design-md-weight/migrated/baemin/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집은 v2입니다.
+
+의미 보존에서 핵심만 적습니다.
+
+- **표면 분리:** `#0cefd3`·baemin.com 메트릭, Woowa corporate, 폰트 카탈로그, 공식 앱 패밀리 WORK(`BAEMINWORK`)를 한 시스템으로 합치지 않았습니다. 라이브 System/Pretendard Variable을 WORK 대체로 쓰지 않았습니다.
+- **§14:** 4행 캡처 표를 본문에 남겼습니다. 미관측을 `not-applicable`로 바꾸지 않았습니다. 다운로드 카드·내비·read-more·패밀리 사이트 셀렉터·캐러셀의 loading/error/success는 역할 이유로 비적용이고, 폰트 다운로드의 loading/error만 파일 다운로드 역할로 적용입니다.
+- **§13:** 우아한형제들 보고의 고객·사장님·라이더만 Audience로 썼습니다. 가상 persona는 승격도 sidecar 재수록도 없습니다.
+- **§9:** 도구 프롬프트는 삭제했고, 그 안의 수치·WORK·Woowa 제약은 이미 Components/Typography/Experience에 있습니다.
+
+`inspectDesignMd`는 `portable_core: true`이고, `migrate-reference.mjs --brand baemin --gate-only`는 PASS입니다. 카탈로그 채택이 아닙니다.
+
+DONE migrated=1

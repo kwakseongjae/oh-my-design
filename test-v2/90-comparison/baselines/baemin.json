@@ -1,0 +1,17 @@
+{
+  "brand": "baemin",
+  "what": "each source sample scored against the brand's own aggregate",
+  "why": "an arm's score is only meaningful against this spread",
+  "n": 1,
+  "min": 98.63,
+  "p25": 98.63,
+  "median": 98.63,
+  "p75": 98.63,
+  "max": 98.63,
+  "samples": [
+    {
+      "file": "capture/imagery-09.png",
+      "score": 98.63
+    }
+  ]
+}

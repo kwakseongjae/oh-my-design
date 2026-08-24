@@ -1,0 +1,1630 @@
+{
+  "brand": "coupang",
+  "surface": "desktop-1440",
+  "images": 16,
+  "videos": 3,
+  "manifestPresent": true,
+  "verifyScores": [
+    0,
+    3.9,
+    15.31,
+    16.6,
+    20.33,
+    23.35,
+    27.57,
+    29.65,
+    30.02,
+    36.87,
+    41.57,
+    45.97,
+    46.97
+  ],
+  "medianVerify": 27.57,
+  "note": "verify는 그날 스냅샷 추종이지 브랜드 정체성 점수가 아니다. --baseline 분포와 비교해 읽는다.",
+  "measuredAt": "2026-08-23T06:24:21.093Z",
+  "detail": {
+    "images": [
+      {
+        "file": "images/01.jpg",
+        "role": "hero",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#e3b495",
+            "coverage": 0.0301,
+            "saturation": 0.344,
+            "luma": 0.736
+          },
+          {
+            "hex": "#f5c39c",
+            "coverage": 0.0289,
+            "saturation": 0.363,
+            "luma": 0.795
+          },
+          {
+            "hex": "#ecbc9a",
+            "coverage": 0.0184,
+            "saturation": 0.347,
+            "luma": 0.768
+          },
+          {
+            "hex": "#932b34",
+            "coverage": 0.0172,
+            "saturation": 0.707,
+            "luma": 0.258
+          }
+        ],
+        "light": {
+          "meanLuma": 0.45,
+          "p05": 0.064,
+          "p50": 0.434,
+          "p95": 0.795,
+          "dynamicRange": 0.731,
+          "gradient": {
+            "dx": 0.089,
+            "dy": -0.24
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 91.3
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/01.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 2.2804,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.545,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.712,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 21.0991,
+              "score": 15.6
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 3.9,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/02.jpg",
+        "role": "hero",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#ebedec",
+            "coverage": 0.4486,
+            "saturation": 0.008,
+            "luma": 0.927
+          },
+          {
+            "hex": "#eef1f1",
+            "coverage": 0.1044,
+            "saturation": 0.012,
+            "luma": 0.943
+          },
+          {
+            "hex": "#e3e5e5",
+            "coverage": 0.0926,
+            "saturation": 0.009,
+            "luma": 0.896
+          },
+          {
+            "hex": "#e7eae9",
+            "coverage": 0.0422,
+            "saturation": 0.013,
+            "luma": 0.915
+          }
+        ],
+        "light": {
+          "meanLuma": 0.855,
+          "p05": 0.175,
+          "p50": 0.924,
+          "p95": 0.943,
+          "dynamicRange": 0.768,
+          "gradient": {
+            "dx": 0.062,
+            "dy": -0.079
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 10.8
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/02.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 2.2804,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.14,
+              "score": 30
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.749,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 2.4793,
+              "score": 90.08
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 30.02,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/03.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#e3e4e5",
+            "coverage": 0.106,
+            "saturation": 0.009,
+            "luma": 0.894
+          },
+          {
+            "hex": "#d3d3cc",
+            "coverage": 0.0904,
+            "saturation": 0.033,
+            "luma": 0.825
+          },
+          {
+            "hex": "#d2d4d3",
+            "coverage": 0.0847,
+            "saturation": 0.009,
+            "luma": 0.829
+          },
+          {
+            "hex": "#cccdca",
+            "coverage": 0.0673,
+            "saturation": 0.015,
+            "luma": 0.802
+          }
+        ],
+        "light": {
+          "meanLuma": 0.698,
+          "p05": 0.285,
+          "p50": 0.805,
+          "p95": 0.904,
+          "dynamicRange": 0.619,
+          "gradient": {
+            "dx": 0.135,
+            "dy": 0.105
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 77.9
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/03.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.7583,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.297,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.6,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 4.6711,
+              "score": 81.32
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 20.33,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/04.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#dbd9cd",
+            "coverage": 0.0971,
+            "saturation": 0.064,
+            "luma": 0.849
+          },
+          {
+            "hex": "#dddcd1",
+            "coverage": 0.0825,
+            "saturation": 0.054,
+            "luma": 0.86
+          },
+          {
+            "hex": "#d5d2c5",
+            "coverage": 0.0714,
+            "saturation": 0.075,
+            "luma": 0.822
+          },
+          {
+            "hex": "#d9d6ca",
+            "coverage": 0.0457,
+            "saturation": 0.069,
+            "luma": 0.838
+          }
+        ],
+        "light": {
+          "meanLuma": 0.721,
+          "p05": 0.392,
+          "p50": 0.767,
+          "p95": 0.862,
+          "dynamicRange": 0.47,
+          "gradient": {
+            "dx": -0.11,
+            "dy": -0.025
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 41.3
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/04.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.7583,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.274,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.451,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 8.4013,
+              "score": 66.39
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 16.6,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/05.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#f2f2f2",
+            "coverage": 0.3116,
+            "saturation": 0,
+            "luma": 0.949
+          },
+          {
+            "hex": "#ebebeb",
+            "coverage": 0.209,
+            "saturation": 0,
+            "luma": 0.922
+          },
+          {
+            "hex": "#e4e4e4",
+            "coverage": 0.2041,
+            "saturation": 0,
+            "luma": 0.894
+          },
+          {
+            "hex": "#1a2234",
+            "coverage": 0.0618,
+            "saturation": 0.5,
+            "luma": 0.132
+          }
+        ],
+        "light": {
+          "meanLuma": 0.742,
+          "p05": 0.12,
+          "p50": 0.91,
+          "p95": 0.949,
+          "dynamicRange": 0.829,
+          "gradient": {
+            "dx": -0.037,
+            "dy": -0.047
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#e9e9e9",
+          "center": {
+            "x": 0.5139,
+            "y": 0.5185
+          },
+          "box": {
+            "x": 0.2687,
+            "y": 0.2313,
+            "w": 0.4875,
+            "h": 0.5437
+          },
+          "coverage": 0.2502
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/05.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.845,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.253,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.81,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 1.6486,
+              "score": 93.41
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 23.35,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/06.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#ecede9",
+            "coverage": 0.5006,
+            "saturation": 0.017,
+            "luma": 0.927
+          },
+          {
+            "hex": "#e9eae6",
+            "coverage": 0.2896,
+            "saturation": 0.017,
+            "luma": 0.916
+          },
+          {
+            "hex": "#e7e8e4",
+            "coverage": 0.0584,
+            "saturation": 0.017,
+            "luma": 0.908
+          },
+          {
+            "hex": "#e5e6e2",
+            "coverage": 0.0353,
+            "saturation": 0.017,
+            "luma": 0.9
+          }
+        ],
+        "light": {
+          "meanLuma": 0.9,
+          "p05": 0.752,
+          "p50": 0.924,
+          "p95": 0.931,
+          "dynamicRange": 0.179,
+          "gradient": {
+            "dx": -0.022,
+            "dy": -0.011
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 4.1
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/06.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.845,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.095,
+              "score": 52.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.16,
+              "score": 20
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 1.5585,
+              "score": 93.77
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 41.57,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/07.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#6c2a3d",
+            "coverage": 0.017,
+            "saturation": 0.611,
+            "luma": 0.225
+          },
+          {
+            "hex": "#844353",
+            "coverage": 0.0161,
+            "saturation": 0.492,
+            "luma": 0.321
+          },
+          {
+            "hex": "#7c3b4c",
+            "coverage": 0.0148,
+            "saturation": 0.524,
+            "luma": 0.29
+          },
+          {
+            "hex": "#743244",
+            "coverage": 0.0136,
+            "saturation": 0.569,
+            "luma": 0.256
+          }
+        ],
+        "light": {
+          "meanLuma": 0.361,
+          "p05": 0.114,
+          "p50": 0.346,
+          "p95": 0.628,
+          "dynamicRange": 0.514,
+          "gradient": {
+            "dx": -0.042,
+            "dy": -0.106
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 42.9
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/07.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.7583,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.634,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.495,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 53.2915,
+              "score": 0
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 0,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/08.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#ebebeb",
+            "coverage": 0.503,
+            "saturation": 0,
+            "luma": 0.922
+          },
+          {
+            "hex": "#f0f0f0",
+            "coverage": 0.098,
+            "saturation": 0,
+            "luma": 0.941
+          },
+          {
+            "hex": "#e6e6e5",
+            "coverage": 0.0825,
+            "saturation": 0.004,
+            "luma": 0.902
+          },
+          {
+            "hex": "#eff0ee",
+            "coverage": 0.0136,
+            "saturation": 0.008,
+            "luma": 0.94
+          }
+        ],
+        "light": {
+          "meanLuma": 0.832,
+          "p05": 0.313,
+          "p50": 0.914,
+          "p95": 0.941,
+          "dynamicRange": 0.628,
+          "gradient": {
+            "dx": 0.133,
+            "dy": -0.138
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#eaebe9",
+          "center": {
+            "x": 0.367,
+            "y": 0.6618
+          },
+          "box": {
+            "x": 0.1,
+            "y": 0.3271,
+            "w": 0.55,
+            "h": 0.6542
+          },
+          "coverage": 0.2512
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/08.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.7583,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.163,
+              "score": 18.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.609,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 2.0609,
+              "score": 91.76
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 27.57,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/09.jpg",
+        "role": "texture",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#edeeeb",
+            "coverage": 0.4281,
+            "saturation": 0.013,
+            "luma": 0.932
+          },
+          {
+            "hex": "#e4e4e3",
+            "coverage": 0.1608,
+            "saturation": 0.004,
+            "luma": 0.894
+          },
+          {
+            "hex": "#e9eae6",
+            "coverage": 0.11,
+            "saturation": 0.017,
+            "luma": 0.916
+          },
+          {
+            "hex": "#eff0ee",
+            "coverage": 0.1074,
+            "saturation": 0.008,
+            "luma": 0.94
+          }
+        ],
+        "light": {
+          "meanLuma": 0.923,
+          "p05": 0.882,
+          "p50": 0.928,
+          "p95": 0.944,
+          "dynamicRange": 0.062,
+          "gradient": {
+            "dx": 0.001,
+            "dy": -0.017
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 7.9
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/09.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 2.2804,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.072,
+              "score": 64
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.043,
+              "score": 78.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 2.3292,
+              "score": 90.68
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 58.3,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/10.jpg",
+        "role": "texture",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#c5cbcc",
+            "coverage": 0.3938,
+            "saturation": 0.034,
+            "luma": 0.791
+          },
+          {
+            "hex": "#c9cece",
+            "coverage": 0.091,
+            "saturation": 0.024,
+            "luma": 0.804
+          },
+          {
+            "hex": "#ccd2d1",
+            "coverage": 0.0831,
+            "saturation": 0.029,
+            "luma": 0.818
+          },
+          {
+            "hex": "#d9dedc",
+            "coverage": 0.0818,
+            "saturation": 0.023,
+            "luma": 0.866
+          }
+        ],
+        "light": {
+          "meanLuma": 0.811,
+          "p05": 0.771,
+          "p50": 0.799,
+          "p95": 0.87,
+          "dynamicRange": 0.099,
+          "gradient": {
+            "dx": 0.033,
+            "dy": 0.005
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 11.6
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/10.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.845,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.184,
+              "score": 8
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.08,
+              "score": 60
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 6.835,
+              "score": 72.66
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 35.16,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/11.jpg",
+        "role": "texture",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#d6d5c9",
+            "coverage": 0.2793,
+            "saturation": 0.061,
+            "luma": 0.833
+          },
+          {
+            "hex": "#d4d2c6",
+            "coverage": 0.2084,
+            "saturation": 0.066,
+            "luma": 0.822
+          },
+          {
+            "hex": "#d8d7cb",
+            "coverage": 0.1709,
+            "saturation": 0.06,
+            "luma": 0.841
+          },
+          {
+            "hex": "#d3cec2",
+            "coverage": 0.0946,
+            "saturation": 0.081,
+            "luma": 0.809
+          }
+        ],
+        "light": {
+          "meanLuma": 0.82,
+          "p05": 0.756,
+          "p50": 0.83,
+          "p95": 0.844,
+          "dynamicRange": 0.088,
+          "gradient": {
+            "dx": 0.011,
+            "dy": -0.005
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 9.7
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/11.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.7583,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.175,
+              "score": 12.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.069,
+              "score": 65.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 9.4014,
+              "score": 62.39
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 35.1,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/12.jpg",
+        "role": "mobile",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#eaecea",
+            "coverage": 0.0983,
+            "saturation": 0.008,
+            "luma": 0.923
+          },
+          {
+            "hex": "#b4b5b3",
+            "coverage": 0.0344,
+            "saturation": 0.011,
+            "luma": 0.708
+          },
+          {
+            "hex": "#bbbcba",
+            "coverage": 0.0269,
+            "saturation": 0.011,
+            "luma": 0.736
+          },
+          {
+            "hex": "#6d8492",
+            "coverage": 0.0241,
+            "saturation": 0.253,
+            "luma": 0.502
+          }
+        ],
+        "light": {
+          "meanLuma": 0.596,
+          "p05": 0.318,
+          "p50": 0.541,
+          "p95": 0.924,
+          "dynamicRange": 0.606,
+          "gradient": {
+            "dx": 0.099,
+            "dy": 0.241
+          },
+          "luminanceGradient": "brighter bottom"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 87.2
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/12.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0387,
+              "score": 61.25
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.399,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.587,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 3.4417,
+              "score": 86.23
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 36.87,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/13.jpg",
+        "role": "mobile",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#d5d2c5",
+            "coverage": 0.1013,
+            "saturation": 0.075,
+            "luma": 0.822
+          },
+          {
+            "hex": "#cac3b4",
+            "coverage": 0.0833,
+            "saturation": 0.109,
+            "luma": 0.766
+          },
+          {
+            "hex": "#d2cec2",
+            "coverage": 0.0599,
+            "saturation": 0.076,
+            "luma": 0.808
+          },
+          {
+            "hex": "#c3bcac",
+            "coverage": 0.0524,
+            "saturation": 0.118,
+            "luma": 0.739
+          }
+        ],
+        "light": {
+          "meanLuma": 0.688,
+          "p05": 0.295,
+          "p50": 0.757,
+          "p95": 0.838,
+          "dynamicRange": 0.543,
+          "gradient": {
+            "dx": -0.025,
+            "dy": -0.045
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 45.1
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/13.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0387,
+              "score": 61.25
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.307,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.524,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 10.6642,
+              "score": 57.34
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 29.65,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/14.jpg",
+        "role": "mobile",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#ebebeb",
+            "coverage": 0.4224,
+            "saturation": 0,
+            "luma": 0.922
+          },
+          {
+            "hex": "#e4e4e4",
+            "coverage": 0.1463,
+            "saturation": 0,
+            "luma": 0.894
+          },
+          {
+            "hex": "#f1f1f1",
+            "coverage": 0.1413,
+            "saturation": 0,
+            "luma": 0.945
+          },
+          {
+            "hex": "#dddddd",
+            "coverage": 0.0805,
+            "saturation": 0,
+            "luma": 0.867
+          }
+        ],
+        "light": {
+          "meanLuma": 0.855,
+          "p05": 0.459,
+          "p50": 0.914,
+          "p95": 0.945,
+          "dynamicRange": 0.486,
+          "gradient": {
+            "dx": 0.008,
+            "dy": -0.14
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 10.4
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/14.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0387,
+              "score": 61.25
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.14,
+              "score": 30
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.467,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 1.8463,
+              "score": 92.61
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 45.97,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/15.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#dcdddc",
+            "coverage": 0.3165,
+            "saturation": 0.005,
+            "luma": 0.866
+          },
+          {
+            "hex": "#e4e4e3",
+            "coverage": 0.3121,
+            "saturation": 0.004,
+            "luma": 0.894
+          },
+          {
+            "hex": "#e9e9e9",
+            "coverage": 0.0985,
+            "saturation": 0,
+            "luma": 0.914
+          },
+          {
+            "hex": "#e1e2de",
+            "coverage": 0.045,
+            "saturation": 0.018,
+            "luma": 0.884
+          }
+        ],
+        "light": {
+          "meanLuma": 0.878,
+          "p05": 0.818,
+          "p50": 0.88,
+          "p95": 0.916,
+          "dynamicRange": 0.098,
+          "gradient": {
+            "dx": 0.01,
+            "dy": -0.043
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 9.1
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/15.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.845,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.117,
+              "score": 41.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.079,
+              "score": 60.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 3.5269,
+              "score": 85.89
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 46.97,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/16.jpg",
+        "role": "mobile",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#343b22",
+            "coverage": 0.024,
+            "saturation": 0.424,
+            "luma": 0.218
+          },
+          {
+            "hex": "#333b1d",
+            "coverage": 0.0198,
+            "saturation": 0.508,
+            "luma": 0.216
+          },
+          {
+            "hex": "#732c3c",
+            "coverage": 0.0186,
+            "saturation": 0.617,
+            "luma": 0.236
+          },
+          {
+            "hex": "#2c351b",
+            "coverage": 0.0168,
+            "saturation": 0.491,
+            "luma": 0.193
+          }
+        ],
+        "light": {
+          "meanLuma": 0.303,
+          "p05": 0.084,
+          "p50": 0.289,
+          "p95": 0.534,
+          "dynamicRange": 0.45,
+          "gradient": {
+            "dx": -0.065,
+            "dy": -0.105
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 55.3
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "coupang",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/coupang/images/16.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0387,
+              "score": 61.25
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.692,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.431,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 62.3698,
+              "score": 0
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 15.31,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      }
+    ],
+    "videos": [
+      {
+        "file": "videos/01.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#e3b495",
+              "coverage": 0.0368,
+              "saturation": 0.344,
+              "luma": 0.736
+            },
+            {
+              "hex": "#f5c39c",
+              "coverage": 0.0254,
+              "saturation": 0.363,
+              "luma": 0.795
+            },
+            {
+              "hex": "#dbad93",
+              "coverage": 0.0174,
+              "saturation": 0.329,
+              "luma": 0.709
+            }
+          ],
+          "light": {
+            "meanLuma": 0.448,
+            "p05": 0.063,
+            "p50": 0.433,
+            "p95": 0.793,
+            "dynamicRange": 0.73,
+            "gradient": {
+              "dx": 0.089,
+              "dy": -0.24
+            },
+            "luminanceGradient": "brighter top"
+          }
+        },
+        "fromImage": "images/01.jpg"
+      },
+      {
+        "file": "videos/02.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#e3e4e5",
+              "coverage": 0.1219,
+              "saturation": 0.009,
+              "luma": 0.894
+            },
+            {
+              "hex": "#d2d3d3",
+              "coverage": 0.0833,
+              "saturation": 0.005,
+              "luma": 0.827
+            },
+            {
+              "hex": "#d3d3cc",
+              "coverage": 0.0778,
+              "saturation": 0.033,
+              "luma": 0.825
+            }
+          ],
+          "light": {
+            "meanLuma": 0.701,
+            "p05": 0.297,
+            "p50": 0.806,
+            "p95": 0.906,
+            "dynamicRange": 0.609,
+            "gradient": {
+              "dx": 0.122,
+              "dy": 0.084
+            },
+            "luminanceGradient": "brighter right"
+          }
+        },
+        "fromImage": "images/03.jpg"
+      },
+      {
+        "file": "videos/03.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#dcd9cd",
+              "coverage": 0.0858,
+              "saturation": 0.068,
+              "luma": 0.85
+            },
+            {
+              "hex": "#d9d6ca",
+              "coverage": 0.078,
+              "saturation": 0.069,
+              "luma": 0.838
+            },
+            {
+              "hex": "#dedbd2",
+              "coverage": 0.077,
+              "saturation": 0.054,
+              "luma": 0.859
+            }
+          ],
+          "light": {
+            "meanLuma": 0.717,
+            "p05": 0.383,
+            "p50": 0.762,
+            "p95": 0.859,
+            "dynamicRange": 0.476,
+            "gradient": {
+              "dx": -0.11,
+              "dy": -0.012
+            },
+            "luminanceGradient": "brighter left"
+          }
+        },
+        "fromImage": "images/04.jpg"
+      }
+    ]
+  }
+}

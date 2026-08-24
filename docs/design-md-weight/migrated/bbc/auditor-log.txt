@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 BBC 이관 산출물부터 읽고, 문장 분류와 원장 대조를 시작하겠습니다.규칙서 B2a·E2와 최근 감사 로그 형식을 확인했습니다. BBC 산출물과 원본을 읽겠습니다.문장 단위로 해석·인과를 찾고, 마이그레이션 로그 값도 grep으로 대조하겠습니다.로그가 가리키는 값과 줄 번호를 실제 파일에서 대조하고, B2a가 빠지거나 이름이 짧은 문장도 같이 잡겠습니다.문장 분류와 원장 대조가 끝났습니다. 한정이 없거나 이름이 짧은 B2a부터 본문에 붙이고, 이어서 provenance·migration-log를 맞추겠습니다.B2a 한정을 붙였습니다. 이제 줄 번호를 다시 짚고 provenance·migration-log를 실제 목적지에 맞춥니다.provenance 원장의 derived 범위와 URL·토큰 노트 목적지를 실제 본문에 맞춥니다.BBC 이관본 B2a·E2 감사를 마쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 건드리지 않았습니다.
+
+**B2a.** 편집적 해석인데 인접 한정이 없거나 읽기를 끝까지 이름 대지 않은 문장에 `derived editorial implementation inference` / `not BBC-authored…`를 붙이거나 이름을 보탰습니다. Scope 라이브/카탈로그 URL 비합침, GEL·상업 미디어 읽기, Distinctive SVG 레드 비합침, Semantic Dark Nav fill, Motion 템플릿 커브·reduced-motion, Font evidence-class, Type GEL 불완전 한정, Capture 표 성격화, Search 폰트 사이즈 미발명, Skip/Nav 표 뒤 문장, Toggle 기하 미발명, Layout collapsing/touch, Content voice 가 해당합니다.
+
+**E2.** 로그·provenance를 grep과 맞춰 고쳤습니다. 토큰 노트 문장은 Foundations가 아니라 Scope+원장, GEL URL은 Font evidence 206이 아님, Toggle C2는 435, `#D30000`은 실제 히트 전부, derived inventory는 본문 실제 한정 위치입니다. B3 전문은 Motion 194에만 있습니다.
+
+기록: `docs/design-md-weight/migrated/bbc/audit-log.md`. Post-F3 SHA-256 `32f0d007…8c299b27`. `--gate-only` PASS, `portable_core: true`. sol 의미 레인 대기. 카탈로그 채택 아님.
+
+AUDIT_DONE fixes=28

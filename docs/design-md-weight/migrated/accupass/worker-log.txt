@@ -1,0 +1,16 @@
+T2 Accupass 마이그레이션을 규칙집과 골든 샘플부터 읽고 시작합니다. 지정된 규격·제약·모범을 순서대로 확인한 뒤 legacy 본문을 옮기겠습니다.골든 샘플과 Accupass 원문을 읽고, 최근 통과 이관 형태도 맞춰 확인합니다.최근 통과 이관본과 모션 템플릿·게이트를 대조해 Accupass에 맞는 처리 규칙을 확정합니다.게이트가 잡는 토큰(hex/px/ms)을 원문에서 전부 추출한 뒤 본문을 작성합니다.원문 토큰·상태·권위 경계를 유지한 Core v2 본문을 작성합니다.Accupass legacy `DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 **v7**, F1 B2a 전편 재독, F2 grep 대조까지 반영했습니다.
+
+산출물:
+- `docs/design-md-weight/migrated/accupass/DESIGN.md`
+- `docs/design-md-weight/migrated/accupass/provenance.md`
+- `docs/design-md-weight/migrated/accupass/migration-log.md`
+
+보존·분리 요지:
+- YAML `lineHeight` `1.50` / `1.33`은 비율로 유지. `type: button`×4, `badge`×3, `card`, `tab`은 컴포넌트별로 유지.
+- §14 10행은 본문 보존. Register Now는 역할상 loading/error 적용, success는 확인 화면이라 비적용. Ask ACCUPASS의 loading/error/success는 목적지 미해상으로 생략. Event Card·badge·Notice는 kind/map 생략.
+- 무출처 cubic-bezier 3개만 provenance omission ledger로 분리(`ease-exit`는 규격 템플릿과 동일). duration·easing 이름·carousel signature·`prefers-reduced-motion`과 B3 다섯 증거 종류는 본문에 유지.
+- §13 가상 persona는 Audience/provenance에 재수록하지 않음. Primary tasks는 homepage 탐색 / Register Now / Create Event 3항.
+
+검증: `--gate-only` PASS, `portable_core: true`, placeholders 0. DESIGN SHA-256 `582ae7142d7fb3abbd966782222c228f48b57e084bcd9032480713b542d880b3`. 카탈로그 채택 아님. F3는 하네스 소유.
+
+DONE migrated=1

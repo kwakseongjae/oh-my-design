@@ -1,0 +1,13 @@
+T2 Discord 마이그레이션을 시작합니다. 규칙집·골든 샘플·소스 DESIGN.md를 순서대로 읽고, 본문 작성 후 B2a/E2 패스를 돌리겠습니다.규칙집 v6을 확인했습니다. 이어서 목적지 규격, 골든 샘플, Discord 원본을 읽습니다.골든 샘플과 Discord 원본, 최근 PASS 이관본을 함께 읽겠습니다.Slack·Toss 승인본의 상태·모션·B2a 처리와 게이트 스크립트를 대조합니다. Discord 원본은 토큰이 prose-derived이고 가상 persona·무출처 커브가 있습니다.게이트는 hex/px/ms를 산출물 전체에서 잃지 못하게 막습니다. 원본 토큰을 전부 뽑은 뒤 본문을 작성합니다.Slack 승인본 구조에 맞춰 Discord 본문을 작성합니다. 토큰 충돌·unitless 비율·가상 persona·무출처 커브는 규칙대로 분리합니다.본문을 처음부터 다시 읽어 B2a 스캔을 하고, 이어서 로그 행을 grep으로 대조합니다.Provenance에 가상 persona 이름이 들어가 D2를 어겼습니다. 이름을 제거하고 F2 grep 대조로 들어갑니다.CURRENT_STATE에서 Spotify 항목이 Discord 본문으로 덮였습니다. 원래 Spotify 줄을 복구합니다.Discord legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/discord/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v6**. `inspectDesignMd`는 `portable_core: true`, placeholders 0이고 `--gate-only`는 PASS입니다.
+
+보존·분리 요지:
+- unitless line-height `1.1` / `1.25` / `1.30` / `1.375` / `1.29` / `1.33`은 비율로 유지했습니다.
+- 컴포넌트 primitive type은 컴포넌트별로 유지했습니다 (`button` ×7, `input` ×2, `card` ×3, `badge` ×2, `tab` ×2, toast, dialog, toggle).
+- YAML과 본문의 녹/적/노랑 hex, pill `28px` vs `9999px`, 메시지 아바타 `32px` vs `40px`는 합치지 않았습니다.
+- §13 가상 persona는 삭제했고 sidecar에도 넣지 않았습니다.
+- 무출처 cubic-bezier 4개만 빼되 duration·signature·`ease-*` 이름과 B3 다섯 증거 종류 게이트는 본문에 남겼습니다.
+- F1(B2a 전편 재독)·F2(로그 grep 대조)를 제출 전에 수행했습니다.
+
+카탈로그 채택은 아닙니다.
+
+DONE migrated=1

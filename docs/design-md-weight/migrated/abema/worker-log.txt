@@ -1,0 +1,17 @@
+T2 마이그레이션을 시작하기 전에 규칙집·대응표·골든 샘플과 소스 DESIGN.md를 순서대로 읽고, 세션 상태도 확인하겠습니다.규칙집 정본과 무신사 골든 샘플, Abema 원문, 최근 PASS 산출물을 이어서 읽겠습니다.골든 샘플 형태와 기존 이관 산출물, 게이트 스크립트를 대조해 같은 구조로 쓰겠습니다.형태는 무신사 골든을 따르되, 토큰이 많은 스트리밍 레퍼런스는 최근 PASS 이관본의 컴포넌트·상태 처리와 맞춰야 합니다.게이트가 잡는 토큰·비율을 원문에서 뽑고, `inspectDesignMd`가 요구하는 claim 형식도 확인하겠습니다.원문 토큰·상태·해석 경계를 고정한 뒤 Core v2 세 파일을 작성합니다.본문 전수 재독과 토큰·부정문 게이트를 먼저 돌린 뒤, grep으로 로그 행을 맞추겠습니다.게이트가 잡을 D1·B1 문장과, 상태 표의 편집 한정을 고칩니다.음성 샘플 문자열이 provenance에 없어서 이중 목적지가 비었습니다. 원장에 넣고 CADC URL 목적지도 바로잡습니다.ABEMA legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/abema/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v7**.
+
+검증: `inspectDesignMd` `portable_core: true`, placeholders 0. `migrate-reference.mjs --brand abema --gate-only` **PASS**.
+
+의미 보존에서 특히 맞춘 점:
+
+- YAML unitless `lineHeight` **1.5**는 비율로 유지. Title L/M/S는 YAML에 line-height가 없어서 body-table 1.3을 역주입하지 않음.
+- 검증된 primitive type을 컴포넌트별로 유지 (`Type: button` ×4 + Primary Dark, input, card, badge, tab ×2, toggle, toast).
+- Round Tab generic `Focus` (`#e6e6e6` / `#212121`)는 `focus-visible`로 올리지 않음.
+- §14 10행은 본문에 보존. `not captured`를 `not-applicable` 사유로 쓰지 않음. LIVE/Pre-Broadcast/NEW는 non-interactive, Floating Panel/Title Card/Notification/Modal은 kind/map 생략.
+- `cubic-bezier(.33, 1, .68, 1)`는 shipped CSS 귀속이라 유지. B3 다섯 증거 종류 게이트는 Foundations에 전문으로 둠.
+- §13 가상 페르소나는 삭제·sidecar 없음. Primary tasks 3건은 linear watch / home rails / VOD.
+- F1: Principles 안팎 해석 문장에 인접 B2a. F2: 이중 목적지는 로그에 둘 다 기록.
+
+카탈로그 채택은 이 산출물의 범위가 아닙니다.
+
+DONE migrated=1

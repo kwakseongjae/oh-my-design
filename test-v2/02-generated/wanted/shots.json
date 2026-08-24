@@ -1,0 +1,178 @@
+{
+  "brand": "wanted",
+  "shots": [
+    {
+      "file": "images/01.jpg",
+      "role": "hero",
+      "prompt": "A wide photograph of an empty workplace lounge: cream walls and floor in #fbe6cc, #fcead3 and #fbebdb, a long light-oak stepped bench with circular dark pads, two yellow-ochre cylindrical stools, a wall-recessed bookshelf of unmarked spines, and a glass partition opening to a white room of #ffffff. Interior light falls brighter from the left, high brightness, gentle contrast. Photoreal unmarked interior, blank surfaces, landscape still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/02.jpg",
+      "role": "imagery",
+      "prompt": "Close photograph of light-oak stepped seating in a cream room of #fbe6cc and #fde9cd, a row of circular dark seat pads on the bench, one yellow cylindrical stool in the foreground, pale floor, white wall. Interior light brighter on the left. Photoreal workplace interior, unmarked wood, landscape still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.canvas"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/03.jpg",
+      "role": "imagery",
+      "prompt": "Overhead pack-shot of unmarked beverage bottles and plain food cartons arranged on a flat matte field of deep red. Bottles in yellow, pink, and clear plastic with blank caps; rectangular cartons in muted green and black with blank faces. Even lighting, mid-low brightness. Photoreal product still of blank packaging only.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/04.jpg",
+      "role": "imagery",
+      "prompt": "Dim restaurant interior: dark wood-slat wall near #0b1919, three warm-white pendant lamps over a long pale wood table, black chairs, a planter of green foliage behind the table. Light brighter on the left, low overall brightness. Photoreal hospitality space, unmarked surfaces, landscape still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/05.jpg",
+      "role": "imagery",
+      "prompt": "A woman in a white sports bra, dark gray leggings and white sneakers, captured mid-jump against a seamless black field of #131313. Athletic pose, arms near her head, one knee lifted. Even studio lighting on the figure, high contrast against the void. Photoreal unmarked clothing, empty background, landscape still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.meanLuma"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/06.jpg",
+      "role": "imagery",
+      "prompt": "Studio still life of three clear glass bottles with matte black caps, filled with amber and pale-gold liquid, standing in front of plain white boxes on a cream sweep of #ebe5db, #e4ddd2 and #f3ece3. Soft light brighter on the right. Photoreal product photograph, completely blank glass and unmarked boxes, landscape still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/07.jpg",
+      "role": "imagery",
+      "prompt": "Several blank foil snack pouches and one round unmarked tub resting on a smooth blue field of #0173cc. Pouches in orange, green, and light blue; a few unmarked chocolate wafer cookies beside them. Light brighter toward the top. Photoreal pack-shot of blank packaging only, landscape still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.meanLuma"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/08.jpg",
+      "role": "texture",
+      "prompt": "Fill-the-frame photograph of light-oak bench boards with circular dark felt seat pads, a sliver of cream floor in #fbe6cc at the edge. Soft interior light from the left. Wood grain texture only, unmarked, photoreal landscape still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/09.jpg",
+      "role": "texture",
+      "prompt": "Fill-the-frame photograph of a smooth cream interior wall meeting a pale floor in #fbe6cc, #fcead3, #fbebdb and #fde9cd. Soft left-side interior light, high brightness, gentle falloff. Empty painted plaster and pale floor, photoreal texture, landscape still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/10.jpg",
+      "role": "texture",
+      "prompt": "Fill-the-frame photograph of vertical dark wood slats near #0b1919, a warm circular pendant lamp glowing in the upper third. Low brightness, photoreal interior texture, unmarked wood, landscape still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.meanLuma"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/11.jpg",
+      "role": "mobile",
+      "prompt": "Vertical photograph of a cream workplace corner: one yellow cylindrical stool, light-oak bench with a round dark felt pad, a recessed bookshelf of unmarked spines on a #fbe6cc wall, pale floor. Interior light brighter on the left. Photoreal unmarked interior, portrait still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.viewport"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/12.jpg",
+      "role": "mobile",
+      "prompt": "Vertical studio still life of two clear glass bottles with matte black caps and amber liquid on a cream sweep of #ebe5db, one plain white box behind them. Soft light from the right. Photoreal, blank glass, unmarked box, portrait still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.viewport"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/13.jpg",
+      "role": "mobile",
+      "prompt": "Vertical photograph of a woman mid-jump in a white sports bra, dark gray leggings and plain unmarked white athletic shoes against seamless #000000. Studio light on the figure only. Photoreal unmarked clothing, empty background, portrait still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.meanLuma"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/14.jpg",
+      "role": "hero",
+      "prompt": "Wide dim dining room: dark wood-slat wall near #0b1919, a row of three warm pendant lamps, indoor plants in a long planter, pale wood table and black chairs, slight foreground softness. Low brightness, light stronger on the left. Photoreal hospitality interior, unmarked surfaces, landscape still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "16:9"
+    }
+  ],
+  "videos": [
+    {
+      "file": "videos/01.mp4",
+      "fromImage": "images/01.jpg",
+      "motivation": "The cream workplace lounge is the measured dominant palette (#fbe6cc / #fcead3 / #fbebdb on a #ffffff room) and the first sampled job-card photograph. A 6s 720p push-in keeps the oak steps and yellow stools in frame without adding a new scene.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/02.mp4",
+      "fromImage": "images/04.jpg",
+      "motivation": "Dark wood-slat dining with warm pendants is the other interior type the job-card grid actually runs, pulling the set toward the measured mean luma near 0.49. Simple lamp-and-table geometry so a slow push does not invent props.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/03.mp4",
+      "fromImage": "images/06.jpg",
+      "motivation": "Unmarked amber bottles on a cream sweep match the product-still cards and the peach imagery palette. Glass and boxes are simple enough for a 6s 720p push of light across liquid without lettering.",
+      "durationSec": 6
+    }
+  ]
+}

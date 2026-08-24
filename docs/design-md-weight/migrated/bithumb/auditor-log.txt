@@ -1,0 +1,11 @@
+B2a·E2 감사부터 시작합니다. 규칙서의 해당 조항과 빗썸 이관 산출물·원본을 읽고, 문장 분류와 원장 대조를 진행합니다.이관본 세 파일과 원본, 그리고 직전 F3 감사 로그 형식을 함께 읽습니다.원본과 최근 승인 F3 감사의 B2a 한정 패턴을 대조해, 한정 누락과 원장 목적지부터 잡습니다.provenance의 derived 목록 형식과 마이그레이션 로그가 가리키는 실제 행을 grep으로 대조합니다.로그가 가리키는 hex·URL·줄번호가 세 파일에 실제로 있는지 한꺼번에 대조합니다.문장 단위 B2a 한정을 붙이고, Shape 한정은 목록 앞으로 옮깁니다. 원장 줄번호는 본문 수정 뒤 grep으로 다시 맞춥니다.본문 한정을 붙인 뒤, 실제 줄번호와 hex·URL 히트를 다시 뽑아 원장에 맞춥니다.provenance derived 범위와 migration-log 목적지를 실제 히트에 맞춥니다.Bithumb F3 감사를 마쳤습니다. B2a·E2만 다뤘고, 토큰 값·컴포넌트 표·상태 applicability·구조는 건드리지 않았습니다.
+
+**B2a.** 편집적 해석인데 인접 한정이 없거나 읽기를 끝까지 이름 붙이지 않은 문장에 `derived editorial implementation inference` / `not Bithumb-authored or a separately published UI specification`을 붙였습니다. Primary tasks의 YAML-use 매핑, Audience의 개인 페르소나 배제, Distinctive·Semantic 추가 분리, Avoid 마지막 항목, Shape 목록 앞 한정, 모션 미승격, 다섯 컴포넌트 field-note, Layout의 뷰포트 비확장, Content voice 추가 이름 등입니다.
+
+**E2.** migration-log를 grep으로 다시 맞춰 고쳤습니다. `#1C2028` 목적지를 빠진 히트까지 적고 Avoid는 목적지가 아님을 유지했습니다. Primary tasks를 본문에 없는 “independently verified”로 적지 않았고, B3 전문은 Motion 128입니다. provenance derived 목록을 본문 실제 35개 B2a 자리에 맞췄습니다.
+
+기록: `docs/design-md-weight/migrated/bithumb/audit-log.md`  
+Post-F3 SHA-256 `5e0a99b3c2a40325729a971dd368c26c9bed52a8821df916361e40422357131c`  
+`--gate-only` PASS, `portable_core: true`
+
+AUDIT_DONE fixes=24

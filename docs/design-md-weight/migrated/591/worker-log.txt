@@ -1,0 +1,14 @@
+T2 마이그레이션을 시작합니다. 규칙집·골든 샘플·원문 591을 순서대로 읽고, 작성 후 B2a/E2 패스를 돌리겠습니다.규칙집 v7을 확인했습니다. 목적지 규격, 골든 샘플, 원문 591을 이어서 읽습니다.원문 591, 골든 샘플, T1-3 §5를 읽고 형태를 맞춥니다.원문이 깁니다. 최근 PASS 이관본·골든 provenance·게이트 스크립트를 대조해 형태를 고정합니다.원문 값·충돌·C2 경계를 고정한 뒤 DESIGN.md를 작성합니다. 이어서 provenance와 migration-log를 맞춥니다.토큰 목록을 고정했습니다. `24px`/`32px`는 원문에 없어 발명하지 않습니다. DESIGN.md를 작성합니다.F1용으로 DESIGN.md를 처음부터 다시 읽고, F2용으로 로그 후보 값을 grep합니다.`web/references/591/DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 v7, F1 B2a 전편 재독, F2 grep 대조까지 반영했습니다.
+
+산출물:
+- `docs/design-md-weight/migrated/591/DESIGN.md`
+- `docs/design-md-weight/migrated/591/provenance.md`
+- `docs/design-md-weight/migrated/591/migration-log.md`
+
+보존한 값: YAML 비율 `1.31` / `1.5`, 컴포넌트 primitive `button×3` `tab×3` `input×3` `card×2` `badge×2`, 16 hex, duration `100ms`/`200ms`/`300ms`, `linear`, `prefers-reduced-motion`, §14 10행. `#333333` vs live `#999999`, `#262626` vs `rgba(0,0,0,0.8)`, `9999` vs `50%`는 합치지 않았습니다.
+
+삭제한 것: §9 도구 프롬프트, §13 가상 persona(sidecar 없음), 무출처 커브 `cubic-bezier(0.2, 0.6, 0.25, 1)` / `cubic-bezier(0.4, 0.0, 1, 1)`(이름은 Foundations에 유지, 값은 provenance omission ledger).
+
+검증: `--gate-only` PASS, Core `portable_core: true`, SHA-256 `0da9651dab19cc7f08eb703be95f609491bc2144fda3a147696fcad96489240b`. F3·sol 의미 레인은 아직입니다. 카탈로그 채택 아님.
+
+DONE migrated=1

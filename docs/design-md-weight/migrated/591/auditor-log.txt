@@ -1,0 +1,16 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 591 이관 산출물부터 읽고, 문장 한정과 원장만 대조하겠습니다.규칙서 B2·E2 구간과 최근 통과 감사 로그를 기준으로, 591 산출물 문장을 같은 방식으로 분류하겠습니다.591 DESIGN.md·provenance·migration-log를 전부 읽고 문장 단위로 분류합니다.원본과 문장 단위로 대조하고, 로그가 적은 목적지·불완전 B2a를 찾겠습니다.로그 주장과 본문을 값 단위로 대조합니다. 한정이 없는 해석 문장과 목적지 불일치부터 잡겠습니다.문장 분류에서 한정이 비거나 불완전한 해석만 고치고, 원장 목적지는 grep 결과에 맞춥니다.본문 한정을 붙였습니다. provenance 목적지와 derived 범위를 실제 grep에 맞춥니다.591은 B2a·E2만 감사했고, 토큰·표·applicability·구조는 건드리지 않았습니다.
+
+**B2a.** 편집 해석인데 인접 완전 한정이 없거나 불완전했던 다섯 곳을 고쳤습니다.
+
+- Semantic: inactive-tab `#dddddd` ≠ Muted Light, listing-card ink ≠ badge fills
+- Type roles: Nav Item ≠ hero tab, listing Search CTA ≠ homepage CTA
+- Capture record: graph 미채택 보존 + shimmer/brand-loading/disabled 성격
+- Listing Search Input: homepage YAML `input-search`와 비합침
+- Listing Row Card: §9 `16px bold` ≠ Body Large 400
+
+**E2.** 로그·provenance 목적지를 grep에 맞췄습니다. `#ff8000`은 Avoid에 없고, 제목 문자열은 Hero/Primary tasks가 아니며, HTML 주석 `"conventions over design innovation"`은 본문에 없습니다. rgb 빈도 샘플은 Semantic+Named gaps+ledger 삼중입니다.
+
+기록: `docs/design-md-weight/migrated/591/audit-log.md`  
+Post-F3 SHA-256 `05899c6caf772de65e823896e2f9f4c597ed8f27c0ea66a728962dc835cb7d9d`, `portable_core: true`, `--gate-only` PASS.
+
+AUDIT_DONE fixes=23

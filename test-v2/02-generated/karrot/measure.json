@@ -1,0 +1,1610 @@
+{
+  "brand": "karrot",
+  "surface": "desktop-1440",
+  "images": 16,
+  "videos": 3,
+  "manifestPresent": true,
+  "verifyScores": [
+    48.66,
+    49.43,
+    49.5,
+    53.78,
+    60.34,
+    63.84,
+    65.29,
+    65.54,
+    66.16,
+    79.75,
+    81.63,
+    81.67,
+    82.23
+  ],
+  "medianVerify": 65.29,
+  "note": "verify는 그날 스냅샷 추종이지 브랜드 정체성 점수가 아니다. --baseline 분포와 비교해 읽는다.",
+  "measuredAt": "2026-08-23T06:04:44.663Z",
+  "detail": {
+    "images": [
+      {
+        "file": "images/01.jpg",
+        "role": "hero",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#1b2225",
+            "coverage": 0.0461,
+            "saturation": 0.27,
+            "luma": 0.128
+          },
+          {
+            "hex": "#242d32",
+            "coverage": 0.0441,
+            "saturation": 0.28,
+            "luma": 0.17
+          },
+          {
+            "hex": "#1c252a",
+            "coverage": 0.0321,
+            "saturation": 0.333,
+            "luma": 0.139
+          },
+          {
+            "hex": "#2b353b",
+            "coverage": 0.0262,
+            "saturation": 0.271,
+            "luma": 0.201
+          }
+        ],
+        "light": {
+          "meanLuma": 0.416,
+          "p05": 0.093,
+          "p50": 0.389,
+          "p95": 0.787,
+          "dynamicRange": 0.694,
+          "gradient": {
+            "dx": -0.024,
+            "dy": -0.279
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 83.3
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "karrot",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/01.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0,
+              "score": 100
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.042,
+              "score": 79
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.051,
+              "score": 74.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 6.146,
+              "score": 75.42
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 82.23,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/02.jpg",
+        "role": "hero",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#23231b",
+            "coverage": 0.024,
+            "saturation": 0.229,
+            "luma": 0.135
+          },
+          {
+            "hex": "#9b8c6b",
+            "coverage": 0.0175,
+            "saturation": 0.31,
+            "luma": 0.552
+          },
+          {
+            "hex": "#1c1d19",
+            "coverage": 0.017,
+            "saturation": 0.138,
+            "luma": 0.112
+          },
+          {
+            "hex": "#020602",
+            "coverage": 0.0163,
+            "saturation": 0.667,
+            "luma": 0.019
+          }
+        ],
+        "light": {
+          "meanLuma": 0.295,
+          "p05": 0.065,
+          "p50": 0.276,
+          "p95": 0.607,
+          "dynamicRange": 0.542,
+          "gradient": {
+            "dx": 0.022,
+            "dy": -0.124
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 97.3
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "karrot",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/02.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0,
+              "score": 100
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.163,
+              "score": 18.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.101,
+              "score": 49.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 1.7112,
+              "score": 93.16
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 65.29,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/03.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#141514",
+            "coverage": 0.0378,
+            "saturation": 0.048,
+            "luma": 0.081
+          },
+          {
+            "hex": "#1b1c1b",
+            "coverage": 0.0266,
+            "saturation": 0.036,
+            "luma": 0.109
+          },
+          {
+            "hex": "#151a1b",
+            "coverage": 0.0229,
+            "saturation": 0.222,
+            "luma": 0.098
+          },
+          {
+            "hex": "#242523",
+            "coverage": 0.022,
+            "saturation": 0.054,
+            "luma": 0.144
+          }
+        ],
+        "light": {
+          "meanLuma": 0.401,
+          "p05": 0.077,
+          "p50": 0.355,
+          "p95": 0.797,
+          "dynamicRange": 0.72,
+          "gradient": {
+            "dx": -0.077,
+            "dy": -0.041
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 108.3
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "karrot",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/03.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0,
+              "score": 100
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.057,
+              "score": 71.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.077,
+              "score": 61.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 1.621,
+              "score": 93.52
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 81.63,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/04.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#545142",
+            "coverage": 0.0519,
+            "saturation": 0.214,
+            "luma": 0.316
+          },
+          {
+            "hex": "#43433c",
+            "coverage": 0.0514,
+            "saturation": 0.104,
+            "luma": 0.261
+          },
+          {
+            "hex": "#4d4d44",
+            "coverage": 0.0437,
+            "saturation": 0.117,
+            "luma": 0.299
+          },
+          {
+            "hex": "#514f42",
+            "coverage": 0.0352,
+            "saturation": 0.185,
+            "luma": 0.308
+          }
+        ],
+        "light": {
+          "meanLuma": 0.37,
+          "p05": 0.184,
+          "p50": 0.319,
+          "p95": 0.698,
+          "dynamicRange": 0.514,
+          "gradient": {
+            "dx": 0.1,
+            "dy": -0.081
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 106.4
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "karrot",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/04.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0,
+              "score": 100
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.088,
+              "score": 56
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.129,
+              "score": 35.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 12.5348,
+              "score": 49.86
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 60.34,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/05.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#1b1c1c",
+            "coverage": 0.0356,
+            "saturation": 0.036,
+            "luma": 0.109
+          },
+          {
+            "hex": "#1d2223",
+            "coverage": 0.0208,
+            "saturation": 0.171,
+            "luma": 0.129
+          },
+          {
+            "hex": "#0c141a",
+            "coverage": 0.0175,
+            "saturation": 0.538,
+            "luma": 0.073
+          },
+          {
+            "hex": "#242a2c",
+            "coverage": 0.0154,
+            "saturation": 0.182,
+            "luma": 0.16
+          }
+        ],
+        "light": {
+          "meanLuma": 0.323,
+          "p05": 0.063,
+          "p50": 0.215,
+          "p95": 0.82,
+          "dynamicRange": 0.757,
+          "gradient": {
+            "dx": -0.039,
+            "dy": -0.147
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 93
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "karrot",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/05.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0,
+              "score": 100
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.135,
+              "score": 32.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.114,
+              "score": 43
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 2.7118,
+              "score": 89.15
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 66.16,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/06.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#cbcbc4",
+            "coverage": 0.0452,
+            "saturation": 0.034,
+            "luma": 0.794
+          },
+          {
+            "hex": "#c4c3bc",
+            "coverage": 0.0271,
+            "saturation": 0.041,
+            "luma": 0.764
+          },
+          {
+            "hex": "#d2d2cc",
+            "coverage": 0.0239,
+            "saturation": 0.029,
+            "luma": 0.822
+          },
+          {
+            "hex": "#cecdc9",
+            "coverage": 0.0229,
+            "saturation": 0.024,
+            "luma": 0.804
+          }
+        ],
+        "light": {
+          "meanLuma": 0.505,
+          "p05": 0.052,
+          "p50": 0.52,
+          "p95": 0.874,
+          "dynamicRange": 0.822,
+          "gradient": {
+            "dx": 0.128,
+            "dy": 0.203
+          },
+          "luminanceGradient": "brighter bottom"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 66.6
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "karrot",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/06.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0,
+              "score": 100
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.047,
+              "score": 76.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.179,
+              "score": 10.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 6.2085,
+              "score": 75.17
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 65.54,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/07.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#343224",
+            "coverage": 0.0516,
+            "saturation": 0.308,
+            "luma": 0.194
+          },
+          {
+            "hex": "#23241c",
+            "coverage": 0.0443,
+            "saturation": 0.222,
+            "luma": 0.138
+          },
+          {
+            "hex": "#13140e",
+            "coverage": 0.0342,
+            "saturation": 0.3,
+            "luma": 0.076
+          },
+          {
+            "hex": "#1b1b14",
+            "coverage": 0.0308,
+            "saturation": 0.259,
+            "luma": 0.104
+          }
+        ],
+        "light": {
+          "meanLuma": 0.28,
+          "p05": 0.065,
+          "p50": 0.206,
+          "p95": 0.804,
+          "dynamicRange": 0.739,
+          "gradient": {
+            "dx": -0.029,
+            "dy": -0.16
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 54.4
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "karrot",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/07.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0,
+              "score": 100
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.178,
+              "score": 11
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.096,
+              "score": 52
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 1.9052,
+              "score": 92.38
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 63.84,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/08.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#6b6d6b",
+            "coverage": 0.0358,
+            "saturation": 0.018,
+            "luma": 0.425
+          },
+          {
+            "hex": "#727573",
+            "coverage": 0.0297,
+            "saturation": 0.026,
+            "luma": 0.456
+          },
+          {
+            "hex": "#636563",
+            "coverage": 0.0281,
+            "saturation": 0.02,
+            "luma": 0.394
+          },
+          {
+            "hex": "#353633",
+            "coverage": 0.027,
+            "saturation": 0.056,
+            "luma": 0.21
+          }
+        ],
+        "light": {
+          "meanLuma": 0.427,
+          "p05": 0.111,
+          "p50": 0.422,
+          "p95": 0.802,
+          "dynamicRange": 0.691,
+          "gradient": {
+            "dx": -0.053,
+            "dy": -0.053
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 93
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "karrot",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/08.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0,
+              "score": 100
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.031,
+              "score": 84.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.048,
+              "score": 76
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 8.4488,
+              "score": 66.2
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 81.67,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/09.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#3c2c1b",
+            "coverage": 0.0449,
+            "saturation": 0.55,
+            "luma": 0.181
+          },
+          {
+            "hex": "#44321c",
+            "coverage": 0.042,
+            "saturation": 0.588,
+            "luma": 0.205
+          },
+          {
+            "hex": "#4b351d",
+            "coverage": 0.0329,
+            "saturation": 0.613,
+            "luma": 0.219
+          },
+          {
+            "hex": "#9ca5b3",
+            "coverage": 0.0305,
+            "saturation": 0.128,
+            "luma": 0.644
+          }
+        ],
+        "light": {
+          "meanLuma": 0.451,
+          "p05": 0.146,
+          "p50": 0.387,
+          "p95": 0.845,
+          "dynamicRange": 0.699,
+          "gradient": {
+            "dx": -0.049,
+            "dy": 0.013
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 43.2
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "karrot",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/09.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0,
+              "score": 100
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.007,
+              "score": 96.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.056,
+              "score": 72
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 12.3708,
+              "score": 50.52
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 79.75,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/10.jpg",
+        "role": "texture",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#232424",
+            "coverage": 0.0799,
+            "saturation": 0.028,
+            "luma": 0.14
+          },
+          {
+            "hex": "#2a2c2c",
+            "coverage": 0.0727,
+            "saturation": 0.045,
+            "luma": 0.171
+          },
+          {
+            "hex": "#1b1c1c",
+            "coverage": 0.0691,
+            "saturation": 0.036,
+            "luma": 0.109
+          },
+          {
+            "hex": "#323435",
+            "coverage": 0.0602,
+            "saturation": 0.057,
+            "luma": 0.203
+          }
+        ],
+        "light": {
+          "meanLuma": 0.268,
+          "p05": 0.081,
+          "p50": 0.214,
+          "p95": 0.739,
+          "dynamicRange": 0.658,
+          "gradient": {
+            "dx": -0.008,
+            "dy": -0.123
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 39.7
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "karrot",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/10.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0,
+              "score": 100
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.19,
+              "score": 5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.015,
+              "score": 92.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 3.1284,
+              "score": 87.49
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 71.25,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/11.jpg",
+        "role": "texture",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#535c4b",
+            "coverage": 0.0464,
+            "saturation": 0.185,
+            "luma": 0.348
+          },
+          {
+            "hex": "#5b6454",
+            "coverage": 0.0451,
+            "saturation": 0.16,
+            "luma": 0.38
+          },
+          {
+            "hex": "#636b5c",
+            "coverage": 0.0373,
+            "saturation": 0.14,
+            "luma": 0.409
+          },
+          {
+            "hex": "#4c5443",
+            "coverage": 0.0317,
+            "saturation": 0.202,
+            "luma": 0.318
+          }
+        ],
+        "light": {
+          "meanLuma": 0.471,
+          "p05": 0.146,
+          "p50": 0.447,
+          "p95": 0.818,
+          "dynamicRange": 0.672,
+          "gradient": {
+            "dx": 0.126,
+            "dy": -0.217
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 43.3
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "karrot",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/11.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0,
+              "score": 100
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.013,
+              "score": 93.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.029,
+              "score": 85.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 16.6719,
+              "score": 33.31
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 78.08,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/12.jpg",
+        "role": "texture",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#ab9c83",
+            "coverage": 0.0301,
+            "saturation": 0.234,
+            "luma": 0.617
+          },
+          {
+            "hex": "#a48c6b",
+            "coverage": 0.0251,
+            "saturation": 0.348,
+            "luma": 0.56
+          },
+          {
+            "hex": "#b3ada3",
+            "coverage": 0.0233,
+            "saturation": 0.089,
+            "luma": 0.681
+          },
+          {
+            "hex": "#1b1c1d",
+            "coverage": 0.0199,
+            "saturation": 0.069,
+            "luma": 0.109
+          }
+        ],
+        "light": {
+          "meanLuma": 0.581,
+          "p05": 0.131,
+          "p50": 0.637,
+          "p95": 0.81,
+          "dynamicRange": 0.679,
+          "gradient": {
+            "dx": -0.222,
+            "dy": 0.098
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 69.3
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "karrot",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/12.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0,
+              "score": 100
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.123,
+              "score": 38.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.036,
+              "score": 82
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 4.5515,
+              "score": 81.79
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 75.57,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/13.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#1b242c",
+            "coverage": 0.0363,
+            "saturation": 0.386,
+            "luma": 0.136
+          },
+          {
+            "hex": "#6b6d6a",
+            "coverage": 0.0242,
+            "saturation": 0.028,
+            "luma": 0.425
+          },
+          {
+            "hex": "#6a6b65",
+            "coverage": 0.0221,
+            "saturation": 0.056,
+            "luma": 0.417
+          },
+          {
+            "hex": "#0b141b",
+            "coverage": 0.0217,
+            "saturation": 0.593,
+            "luma": 0.073
+          }
+        ],
+        "light": {
+          "meanLuma": 0.431,
+          "p05": 0.074,
+          "p50": 0.419,
+          "p95": 0.829,
+          "dynamicRange": 0.755,
+          "gradient": {
+            "dx": -0.154,
+            "dy": -0.118
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 85.3
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "karrot",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/13.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.437,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.028,
+              "score": 86
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.113,
+              "score": 43.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 7.8722,
+              "score": 68.51
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 49.5,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/14.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#c3ccca",
+            "coverage": 0.0595,
+            "saturation": 0.044,
+            "luma": 0.792
+          },
+          {
+            "hex": "#c4cbc6",
+            "coverage": 0.0329,
+            "saturation": 0.034,
+            "luma": 0.789
+          },
+          {
+            "hex": "#64523d",
+            "coverage": 0.032,
+            "saturation": 0.39,
+            "luma": 0.331
+          },
+          {
+            "hex": "#5c4c3b",
+            "coverage": 0.03,
+            "saturation": 0.359,
+            "luma": 0.307
+          }
+        ],
+        "light": {
+          "meanLuma": 0.416,
+          "p05": 0.161,
+          "p50": 0.335,
+          "p95": 0.794,
+          "dynamicRange": 0.633,
+          "gradient": {
+            "dx": -0.033,
+            "dy": -0.003
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 73.4
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "karrot",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/14.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.437,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.043,
+              "score": 78.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.009,
+              "score": 95.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 19.0664,
+              "score": 23.73
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 49.43,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/15.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#dddddb",
+            "coverage": 0.0503,
+            "saturation": 0.009,
+            "luma": 0.866
+          },
+          {
+            "hex": "#dbdcd3",
+            "coverage": 0.0343,
+            "saturation": 0.041,
+            "luma": 0.859
+          },
+          {
+            "hex": "#dadace",
+            "coverage": 0.0212,
+            "saturation": 0.055,
+            "luma": 0.852
+          },
+          {
+            "hex": "#141512",
+            "coverage": 0.0193,
+            "saturation": 0.143,
+            "luma": 0.081
+          }
+        ],
+        "light": {
+          "meanLuma": 0.448,
+          "p05": 0.059,
+          "p50": 0.409,
+          "p95": 0.876,
+          "dynamicRange": 0.817,
+          "gradient": {
+            "dx": -0.008,
+            "dy": 0.165
+          },
+          "luminanceGradient": "brighter bottom"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 74.8
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "karrot",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/15.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.437,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.011,
+              "score": 94.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.175,
+              "score": 12.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 3.0935,
+              "score": 87.63
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 48.66,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/16.jpg",
+        "role": "hero",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#0b0c0b",
+            "coverage": 0.0295,
+            "saturation": 0.083,
+            "luma": 0.046
+          },
+          {
+            "hex": "#1c1c1b",
+            "coverage": 0.0244,
+            "saturation": 0.036,
+            "luma": 0.11
+          },
+          {
+            "hex": "#141413",
+            "coverage": 0.023,
+            "saturation": 0.05,
+            "luma": 0.078
+          },
+          {
+            "hex": "#24221b",
+            "coverage": 0.0206,
+            "saturation": 0.25,
+            "luma": 0.133
+          }
+        ],
+        "light": {
+          "meanLuma": 0.364,
+          "p05": 0.051,
+          "p50": 0.359,
+          "p95": 0.755,
+          "dynamicRange": 0.704,
+          "gradient": {
+            "dx": -0.091,
+            "dy": -0.181
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 100.5
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "karrot",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/karrot/images/16.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:49:29.044Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.778,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.094,
+              "score": 53
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.061,
+              "score": 69.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 1.8406,
+              "score": 92.64
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 53.78,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      }
+    ],
+    "videos": [
+      {
+        "file": "videos/01.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#524e42",
+              "coverage": 0.0546,
+              "saturation": 0.195,
+              "luma": 0.306
+            },
+            {
+              "hex": "#43433c",
+              "coverage": 0.0537,
+              "saturation": 0.104,
+              "luma": 0.261
+            },
+            {
+              "hex": "#4d4d44",
+              "coverage": 0.0466,
+              "saturation": 0.117,
+              "luma": 0.299
+            }
+          ],
+          "light": {
+            "meanLuma": 0.364,
+            "p05": 0.2,
+            "p50": 0.316,
+            "p95": 0.678,
+            "dynamicRange": 0.478,
+            "gradient": {
+              "dx": 0.099,
+              "dy": -0.068
+            },
+            "luminanceGradient": "brighter right"
+          }
+        },
+        "fromImage": "images/04.jpg"
+      },
+      {
+        "file": "videos/02.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#0c0b0b",
+              "coverage": 0.0293,
+              "saturation": 0.083,
+              "luma": 0.044
+            },
+            {
+              "hex": "#141413",
+              "coverage": 0.0228,
+              "saturation": 0.05,
+              "luma": 0.078
+            },
+            {
+              "hex": "#1c1c1b",
+              "coverage": 0.0224,
+              "saturation": 0.036,
+              "luma": 0.11
+            }
+          ],
+          "light": {
+            "meanLuma": 0.362,
+            "p05": 0.048,
+            "p50": 0.356,
+            "p95": 0.752,
+            "dynamicRange": 0.704,
+            "gradient": {
+              "dx": -0.091,
+              "dy": -0.181
+            },
+            "luminanceGradient": "brighter top"
+          }
+        },
+        "fromImage": "images/16.jpg"
+      },
+      {
+        "file": "videos/03.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#9ca4b3",
+              "coverage": 0.0369,
+              "saturation": 0.128,
+              "luma": 0.641
+            },
+            {
+              "hex": "#a3acba",
+              "coverage": 0.0367,
+              "saturation": 0.124,
+              "luma": 0.671
+            },
+            {
+              "hex": "#3c2b1b",
+              "coverage": 0.0337,
+              "saturation": 0.55,
+              "luma": 0.178
+            }
+          ],
+          "light": {
+            "meanLuma": 0.478,
+            "p05": 0.133,
+            "p50": 0.507,
+            "p95": 0.854,
+            "dynamicRange": 0.721,
+            "gradient": {
+              "dx": -0.04,
+              "dy": 0.008
+            },
+            "luminanceGradient": "brighter left"
+          }
+        },
+        "fromImage": "images/09.jpg"
+      }
+    ]
+  }
+}

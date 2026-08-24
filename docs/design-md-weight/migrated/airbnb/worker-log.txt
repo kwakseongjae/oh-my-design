@@ -1,0 +1,13 @@
+T2 Airbnb 마이그레이션을 시작합니다. 지정된 규격·규칙집·골든 샘플을 먼저 읽고, 그다음 레거시 DESIGN.md를 Core v2로 옮기겠습니다.골든 샘플·Core v2 규격·Airbnb 원본과 기존 마이그레이션 산출물을 이어서 읽겠습니다.Airbnb 원본 나머지와 최근 통과 이관본을 대조해, C2 상태 판정과 B2/B3 한정을 어떻게 썼는지 확인합니다.게이트 스크립트와 최근 통과 로그를 확인해, 기계 차단 조항을 빠뜨리지 않겠습니다.규칙과 골든 샘플에 맞춰 Airbnb 세 산출물을 작성합니다. 값 형태(A1a), C2 역할 판정, B3 모션 게이트를 본문에 직접 넣겠습니다.게이트가 `migration-log.md`의 `4px` 언급을 발명으로 잡았습니다. 원본에 없는 그 표기를 로그에서 빼겠습니다.Airbnb 레거시 `DESIGN.md`를 Core v2 이식본으로 옮겼습니다. 산출은 `docs/design-md-weight/migrated/airbnb/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v5**.
+
+검증: `inspectDesignMd`는 `portable_core: true`(placeholders 0), `migrate-reference.mjs --brand airbnb --gate-only`는 **PASS**. 카탈로그 채택은 아닙니다.
+
+의미 보존에서 특히 닫은 것:
+- unitless line-height `1.18` / `1.43` / `1.29` / `1.5` / `1.56`는 비율로 유지하고, 본문 표의 px는 크기별 관측으로만 둠
+- `Type: button|tab|input|listItem`을 컴포넌트별로 유지
+- Help list row는 kind/map 생략 (C4)
+- loading/error/success는 역할로 `not-applicable` 판정 (C2). `not captured`를 사유로 쓰지 않음
+- Principles에 B2a 한정 예문을 인접 배치
+- Motion은 B3 다섯 증거 종류 + 컴포넌트별 computed 관측 게이트를 Foundations에 명시
+
+DONE migrated=1

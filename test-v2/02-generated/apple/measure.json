@@ -1,0 +1,1662 @@
+{
+  "brand": "apple",
+  "surface": "desktop-1440",
+  "images": 16,
+  "videos": 3,
+  "manifestPresent": true,
+  "verifyScores": [
+    0,
+    0,
+    22.12,
+    24.73,
+    28.32,
+    35.72,
+    35.94,
+    38.22,
+    40.54,
+    42.57,
+    46.3,
+    65.55
+  ],
+  "medianVerify": 35.94,
+  "note": "verify는 그날 스냅샷 추종이지 브랜드 정체성 점수가 아니다. --baseline 분포와 비교해 읽는다.",
+  "measuredAt": "2026-08-23T06:16:23.161Z",
+  "detail": {
+    "images": [
+      {
+        "file": "images/01.jpg",
+        "role": "hero",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#e4e4e4",
+            "coverage": 0.5754,
+            "saturation": 0,
+            "luma": 0.894
+          },
+          {
+            "hex": "#dcdcdc",
+            "coverage": 0.0483,
+            "saturation": 0,
+            "luma": 0.863
+          },
+          {
+            "hex": "#223345",
+            "coverage": 0.0379,
+            "saturation": 0.507,
+            "luma": 0.191
+          },
+          {
+            "hex": "#e2d5cd",
+            "coverage": 0.0344,
+            "saturation": 0.093,
+            "luma": 0.844
+          }
+        ],
+        "light": {
+          "meanLuma": 0.746,
+          "p05": 0.139,
+          "p50": 0.89,
+          "p95": 0.902,
+          "dynamicRange": 0.763,
+          "gradient": {
+            "dx": 0.164,
+            "dy": -0.175
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 49.4
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "apple",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/01.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1829,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.065,
+              "score": 67.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.198,
+              "score": 1
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 3.9112,
+              "score": 84.36
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 38.22,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/02.jpg",
+        "role": "hero",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#8dc9e9",
+            "coverage": 0.074,
+            "saturation": 0.395,
+            "luma": 0.747
+          },
+          {
+            "hex": "#eaebeb",
+            "coverage": 0.0599,
+            "saturation": 0.004,
+            "luma": 0.921
+          },
+          {
+            "hex": "#e4e9ec",
+            "coverage": 0.0503,
+            "saturation": 0.034,
+            "luma": 0.91
+          },
+          {
+            "hex": "#dde6ea",
+            "coverage": 0.0492,
+            "saturation": 0.056,
+            "luma": 0.896
+          }
+        ],
+        "light": {
+          "meanLuma": 0.73,
+          "p05": 0.238,
+          "p50": 0.775,
+          "p95": 0.92,
+          "dynamicRange": 0.682,
+          "gradient": {
+            "dx": 0.005,
+            "dy": 0.046
+          },
+          "luminanceGradient": "brighter bottom"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 38.8
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "apple",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/02.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1829,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.049,
+              "score": 75.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.279,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 3.3346,
+              "score": 86.66
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 40.54,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/03.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#b4d4eb",
+            "coverage": 0.2074,
+            "saturation": 0.234,
+            "luma": 0.811
+          },
+          {
+            "hex": "#bbd6ec",
+            "coverage": 0.1248,
+            "saturation": 0.208,
+            "luma": 0.823
+          },
+          {
+            "hex": "#e4e4e3",
+            "coverage": 0.1152,
+            "saturation": 0.004,
+            "luma": 0.894
+          },
+          {
+            "hex": "#bdd9ec",
+            "coverage": 0.0719,
+            "saturation": 0.199,
+            "luma": 0.833
+          }
+        ],
+        "light": {
+          "meanLuma": 0.757,
+          "p05": 0.353,
+          "p50": 0.817,
+          "p95": 0.895,
+          "dynamicRange": 0.542,
+          "gradient": {
+            "dx": -0.013,
+            "dy": -0.039
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#cadce8",
+          "center": {
+            "x": 0.5078,
+            "y": 0.5746
+          },
+          "box": {
+            "x": 0.2125,
+            "y": 0.2222,
+            "w": 0.6438,
+            "h": 0.6222
+          },
+          "coverage": 0.2501
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "apple",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/03.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1829,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.076,
+              "score": 62
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.419,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 4.7795,
+              "score": 80.88
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 35.72,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/04.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#010101",
+            "coverage": 0.6274,
+            "saturation": 0,
+            "luma": 0.004
+          },
+          {
+            "hex": "#0a0b0d",
+            "coverage": 0.0397,
+            "saturation": 0.231,
+            "luma": 0.043
+          },
+          {
+            "hex": "#191b1e",
+            "coverage": 0.0356,
+            "saturation": 0.167,
+            "luma": 0.105
+          },
+          {
+            "hex": "#121415",
+            "coverage": 0.0293,
+            "saturation": 0.143,
+            "luma": 0.077
+          }
+        ],
+        "light": {
+          "meanLuma": 0.059,
+          "p05": 0,
+          "p50": 0.008,
+          "p95": 0.268,
+          "dynamicRange": 0.268,
+          "gradient": {
+            "dx": 0.04,
+            "dy": 0.001
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#010101",
+          "center": {
+            "x": 0.5114,
+            "y": 0.5247
+          },
+          "box": {
+            "x": 0.15,
+            "y": 0.1111,
+            "w": 0.7188,
+            "h": 0.7667
+          },
+          "coverage": 0.2507
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "apple",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/04.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1829,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.622,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.693,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 79.1812,
+              "score": 0
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 0,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/05.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#e4e4e4",
+            "coverage": 0.3732,
+            "saturation": 0,
+            "luma": 0.894
+          },
+          {
+            "hex": "#e2d3c3",
+            "coverage": 0.0669,
+            "saturation": 0.137,
+            "luma": 0.835
+          },
+          {
+            "hex": "#ddccbb",
+            "coverage": 0.0485,
+            "saturation": 0.154,
+            "luma": 0.809
+          },
+          {
+            "hex": "#dddddc",
+            "coverage": 0.0376,
+            "saturation": 0.005,
+            "luma": 0.866
+          }
+        ],
+        "light": {
+          "meanLuma": 0.709,
+          "p05": 0.192,
+          "p50": 0.828,
+          "p95": 0.902,
+          "dynamicRange": 0.71,
+          "gradient": {
+            "dx": -0.062,
+            "dy": -0.002
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#e0ddd9",
+          "center": {
+            "x": 0.5239,
+            "y": 0.5001
+          },
+          "box": {
+            "x": 0.0938,
+            "y": 0.1333,
+            "w": 0.8375,
+            "h": 0.8556
+          },
+          "coverage": 0.2505
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "apple",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/05.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1829,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.028,
+              "score": 86
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.251,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 3.929,
+              "score": 84.28
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 42.57,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/06.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#ececec",
+            "coverage": 0.8576,
+            "saturation": 0,
+            "luma": 0.925
+          },
+          {
+            "hex": "#e3e4e4",
+            "coverage": 0.0222,
+            "saturation": 0.004,
+            "luma": 0.893
+          },
+          {
+            "hex": "#dbdbdc",
+            "coverage": 0.0144,
+            "saturation": 0.005,
+            "luma": 0.859
+          },
+          {
+            "hex": "#d3d3d4",
+            "coverage": 0.0112,
+            "saturation": 0.005,
+            "luma": 0.828
+          }
+        ],
+        "light": {
+          "meanLuma": 0.901,
+          "p05": 0.723,
+          "p50": 0.925,
+          "p95": 0.925,
+          "dynamicRange": 0.202,
+          "gradient": {
+            "dx": 0.002,
+            "dy": 0.015
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 0.2
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "apple",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/06.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1829,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.22,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.759,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 2.8764,
+              "score": 88.49
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 22.12,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/07.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#e9e9e9",
+            "coverage": 0.189,
+            "saturation": 0,
+            "luma": 0.914
+          },
+          {
+            "hex": "#e6e7e7",
+            "coverage": 0.0713,
+            "saturation": 0.004,
+            "luma": 0.905
+          },
+          {
+            "hex": "#435463",
+            "coverage": 0.06,
+            "saturation": 0.323,
+            "luma": 0.319
+          },
+          {
+            "hex": "#62758b",
+            "coverage": 0.0504,
+            "saturation": 0.295,
+            "luma": 0.449
+          }
+        ],
+        "light": {
+          "meanLuma": 0.485,
+          "p05": 0.107,
+          "p50": 0.396,
+          "p95": 0.914,
+          "dynamicRange": 0.807,
+          "gradient": {
+            "dx": 0.042,
+            "dy": -0.344
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 113.4
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "apple",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/07.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1829,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.196,
+              "score": 2
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.154,
+              "score": 23
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 2.9312,
+              "score": 88.28
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 28.32,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/08.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#050505",
+            "coverage": 0.304,
+            "saturation": 0,
+            "luma": 0.02
+          },
+          {
+            "hex": "#0b0b0b",
+            "coverage": 0.2434,
+            "saturation": 0,
+            "luma": 0.043
+          },
+          {
+            "hex": "#141413",
+            "coverage": 0.1643,
+            "saturation": 0.05,
+            "luma": 0.078
+          },
+          {
+            "hex": "#1a1a1a",
+            "coverage": 0.0247,
+            "saturation": 0,
+            "luma": 0.102
+          }
+        ],
+        "light": {
+          "meanLuma": 0.102,
+          "p05": 0.016,
+          "p50": 0.047,
+          "p95": 0.402,
+          "dynamicRange": 0.386,
+          "gradient": {
+            "dx": 0.009,
+            "dy": 0.001
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#0b0b0b",
+          "center": {
+            "x": 0.5082,
+            "y": 0.4908
+          },
+          "box": {
+            "x": 0.2437,
+            "y": 0.0889,
+            "w": 0.5062,
+            "h": 0.8667
+          },
+          "coverage": 0.2574
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "apple",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/08.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1829,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.579,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.575,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 71.0995,
+              "score": 0
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 0,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/09.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#dddbe3",
+            "coverage": 0.2845,
+            "saturation": 0.035,
+            "luma": 0.863
+          },
+          {
+            "hex": "#e5e4ea",
+            "coverage": 0.1324,
+            "saturation": 0.026,
+            "luma": 0.897
+          },
+          {
+            "hex": "#d5d2db",
+            "coverage": 0.0977,
+            "saturation": 0.041,
+            "luma": 0.829
+          },
+          {
+            "hex": "#e1dee6",
+            "coverage": 0.0928,
+            "saturation": 0.035,
+            "luma": 0.875
+          }
+        ],
+        "light": {
+          "meanLuma": 0.844,
+          "p05": 0.766,
+          "p50": 0.858,
+          "p95": 0.907,
+          "dynamicRange": 0.141,
+          "gradient": {
+            "dx": -0.065,
+            "dy": 0.007
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 17.7
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "apple",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/09.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.313,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.163,
+              "score": 18.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.82,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 4.9005,
+              "score": 80.4
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 24.73,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/10.jpg",
+        "role": "texture",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#e9e9e9",
+            "coverage": 0.6715,
+            "saturation": 0,
+            "luma": 0.914
+          },
+          {
+            "hex": "#e7e7e7",
+            "coverage": 0.3185,
+            "saturation": 0,
+            "luma": 0.906
+          },
+          {
+            "hex": "#e8e9e7",
+            "coverage": 0.0086,
+            "saturation": 0.009,
+            "luma": 0.912
+          },
+          {
+            "hex": "#e7e9e8",
+            "coverage": 0.0008,
+            "saturation": 0.009,
+            "luma": 0.912
+          }
+        ],
+        "light": {
+          "meanLuma": 0.911,
+          "p05": 0.906,
+          "p50": 0.91,
+          "p95": 0.922,
+          "dynamicRange": 0.016,
+          "gradient": {
+            "dx": 0,
+            "dy": -0.005
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 3.1
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "apple",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/10.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1829,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.23,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.945,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 3.6392,
+              "score": 85.44
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 21.36,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/11.jpg",
+        "role": "texture",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#e4e4e8",
+            "coverage": 0.1553,
+            "saturation": 0.017,
+            "luma": 0.895
+          },
+          {
+            "hex": "#bcd5eb",
+            "coverage": 0.1464,
+            "saturation": 0.2,
+            "luma": 0.821
+          },
+          {
+            "hex": "#c3d4e9",
+            "coverage": 0.1207,
+            "saturation": 0.163,
+            "luma": 0.823
+          },
+          {
+            "hex": "#e5e5e7",
+            "coverage": 0.1166,
+            "saturation": 0.009,
+            "luma": 0.899
+          }
+        ],
+        "light": {
+          "meanLuma": 0.851,
+          "p05": 0.811,
+          "p50": 0.842,
+          "p95": 0.906,
+          "dynamicRange": 0.095,
+          "gradient": {
+            "dx": -0.004,
+            "dy": 0.058
+          },
+          "luminanceGradient": "brighter bottom"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 23
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "apple",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/11.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1829,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.17,
+              "score": 15
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.866,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 4.1908,
+              "score": 83.24
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 24.56,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/12.jpg",
+        "role": "texture",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#ecd3c3",
+            "coverage": 0.0844,
+            "saturation": 0.174,
+            "luma": 0.844
+          },
+          {
+            "hex": "#f2dccb",
+            "coverage": 0.0649,
+            "saturation": 0.161,
+            "luma": 0.876
+          },
+          {
+            "hex": "#e5cabb",
+            "coverage": 0.0512,
+            "saturation": 0.183,
+            "luma": 0.81
+          },
+          {
+            "hex": "#f5e2d4",
+            "coverage": 0.0506,
+            "saturation": 0.135,
+            "luma": 0.898
+          }
+        ],
+        "light": {
+          "meanLuma": 0.845,
+          "p05": 0.782,
+          "p50": 0.849,
+          "p95": 0.901,
+          "dynamicRange": 0.119,
+          "gradient": {
+            "dx": 0.001,
+            "dy": -0.009
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 20.6
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "apple",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/12.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1829,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.164,
+              "score": 18
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.842,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 7.2248,
+              "score": 71.1
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 22.27,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/13.jpg",
+        "role": "texture",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#030304",
+            "coverage": 0.2993,
+            "saturation": 0.25,
+            "luma": 0.012
+          },
+          {
+            "hex": "#090a0c",
+            "coverage": 0.2914,
+            "saturation": 0.25,
+            "luma": 0.039
+          },
+          {
+            "hex": "#060609",
+            "coverage": 0.0887,
+            "saturation": 0.333,
+            "luma": 0.024
+          },
+          {
+            "hex": "#0c0d12",
+            "coverage": 0.0777,
+            "saturation": 0.333,
+            "luma": 0.052
+          }
+        ],
+        "light": {
+          "meanLuma": 0.062,
+          "p05": 0.004,
+          "p50": 0.036,
+          "p95": 0.242,
+          "dynamicRange": 0.238,
+          "gradient": {
+            "dx": 0.059,
+            "dy": -0.055
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 34
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "apple",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/13.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1829,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.619,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.723,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 82.6146,
+              "score": 0
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 0,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/14.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#e3e4e2",
+            "coverage": 0.7041,
+            "saturation": 0.009,
+            "luma": 0.893
+          },
+          {
+            "hex": "#dcdddc",
+            "coverage": 0.0663,
+            "saturation": 0.005,
+            "luma": 0.866
+          },
+          {
+            "hex": "#e2d4cc",
+            "coverage": 0.0177,
+            "saturation": 0.097,
+            "luma": 0.841
+          },
+          {
+            "hex": "#223344",
+            "coverage": 0.0146,
+            "saturation": 0.5,
+            "luma": 0.191
+          }
+        ],
+        "light": {
+          "meanLuma": 0.808,
+          "p05": 0.184,
+          "p50": 0.893,
+          "p95": 0.897,
+          "dynamicRange": 0.713,
+          "gradient": {
+            "dx": 0.094,
+            "dy": -0.17
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 3.5
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "apple",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/14.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.6165,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.007,
+              "score": 96.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.032,
+              "score": 84
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "generated frame has no figure-ground separation"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 4.5805,
+              "score": 81.68
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 65.55,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/15.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#dee3e5",
+            "coverage": 0.7251,
+            "saturation": 0.031,
+            "luma": 0.887
+          },
+          {
+            "hex": "#e0e5e7",
+            "coverage": 0.0928,
+            "saturation": 0.03,
+            "luma": 0.894
+          },
+          {
+            "hex": "#e1e6e9",
+            "coverage": 0.0425,
+            "saturation": 0.034,
+            "luma": 0.899
+          },
+          {
+            "hex": "#e4e9eb",
+            "coverage": 0.0235,
+            "saturation": 0.03,
+            "luma": 0.91
+          }
+        ],
+        "light": {
+          "meanLuma": 0.871,
+          "p05": 0.771,
+          "p50": 0.887,
+          "p95": 0.898,
+          "dynamicRange": 0.127,
+          "gradient": {
+            "dx": 0.002,
+            "dy": -0.034
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 2.2
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "apple",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/15.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.6165,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.056,
+              "score": 72
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.554,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "generated frame has no figure-ground separation"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 7.0658,
+              "score": 71.74
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 35.94,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/16.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#c5e1ec",
+            "coverage": 0.1371,
+            "saturation": 0.165,
+            "luma": 0.862
+          },
+          {
+            "hex": "#cbe3ee",
+            "coverage": 0.0894,
+            "saturation": 0.147,
+            "luma": 0.873
+          },
+          {
+            "hex": "#accad4",
+            "coverage": 0.0569,
+            "saturation": 0.189,
+            "luma": 0.77
+          },
+          {
+            "hex": "#d5e9f0",
+            "coverage": 0.0471,
+            "saturation": 0.113,
+            "luma": 0.899
+          }
+        ],
+        "light": {
+          "meanLuma": 0.718,
+          "p05": 0.108,
+          "p50": 0.839,
+          "p95": 0.934,
+          "dynamicRange": 0.826,
+          "gradient": {
+            "dx": 0.023,
+            "dy": -0.207
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#c5dde6",
+          "center": {
+            "x": 0.497,
+            "y": 0.6121
+          },
+          "box": {
+            "x": 0.1125,
+            "y": 0.4085,
+            "w": 0.7438,
+            "h": 0.4085
+          },
+          "coverage": 0.25
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "apple",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/apple/images/16.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.6165,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.097,
+              "score": 51.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.145,
+              "score": 27.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": true,
+              "error": 0.0149,
+              "score": 94.03
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 10.3871,
+              "score": 58.45
+            }
+          ],
+          "eligibleCount": 5,
+          "usable": true,
+          "numericScore": 46.3,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      }
+    ],
+    "videos": [
+      {
+        "file": "videos/01.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#e4e4e4",
+              "coverage": 0.5732,
+              "saturation": 0,
+              "luma": 0.894
+            },
+            {
+              "hex": "#dcdcdc",
+              "coverage": 0.0503,
+              "saturation": 0,
+              "luma": 0.863
+            },
+            {
+              "hex": "#e2d4cc",
+              "coverage": 0.039,
+              "saturation": 0.097,
+              "luma": 0.841
+            }
+          ],
+          "light": {
+            "meanLuma": 0.745,
+            "p05": 0.137,
+            "p50": 0.89,
+            "p95": 0.902,
+            "dynamicRange": 0.765,
+            "gradient": {
+              "dx": 0.164,
+              "dy": -0.176
+            },
+            "luminanceGradient": "brighter top"
+          }
+        },
+        "fromImage": "images/01.jpg"
+      },
+      {
+        "file": "videos/02.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#eaebeb",
+              "coverage": 0.0599,
+              "saturation": 0.004,
+              "luma": 0.921
+            },
+            {
+              "hex": "#8cc8e9",
+              "coverage": 0.0585,
+              "saturation": 0.399,
+              "luma": 0.744
+            },
+            {
+              "hex": "#95cae9",
+              "coverage": 0.0507,
+              "saturation": 0.361,
+              "luma": 0.757
+            }
+          ],
+          "light": {
+            "meanLuma": 0.728,
+            "p05": 0.232,
+            "p50": 0.774,
+            "p95": 0.917,
+            "dynamicRange": 0.685,
+            "gradient": {
+              "dx": 0.005,
+              "dy": 0.046
+            },
+            "luminanceGradient": "brighter bottom"
+          }
+        },
+        "fromImage": "images/02.jpg"
+      },
+      {
+        "file": "videos/03.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#b4d3eb",
+              "coverage": 0.2077,
+              "saturation": 0.234,
+              "luma": 0.808
+            },
+            {
+              "hex": "#bbd6ec",
+              "coverage": 0.1515,
+              "saturation": 0.208,
+              "luma": 0.823
+            },
+            {
+              "hex": "#e4e4e3",
+              "coverage": 0.1159,
+              "saturation": 0.004,
+              "luma": 0.894
+            }
+          ],
+          "light": {
+            "meanLuma": 0.755,
+            "p05": 0.351,
+            "p50": 0.815,
+            "p95": 0.893,
+            "dynamicRange": 0.542,
+            "gradient": {
+              "dx": -0.013,
+              "dy": -0.039
+            },
+            "luminanceGradient": "even"
+          }
+        },
+        "fromImage": "images/03.jpg"
+      }
+    ]
+  }
+}

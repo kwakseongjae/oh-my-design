@@ -1,0 +1,19 @@
+Stripe T2 마이그레이션을 시작합니다. 지정된 규격·규칙집·골든 샘플부터 순서대로 읽고, 이어서 legacy Stripe DESIGN.md를 Core v2로 옮기겠습니다.규칙집 v5와 개정 골든 샘플, Stripe 원문, 최근 통과 이관본을 이어서 읽습니다.Stripe 원문과 개정 골든 샘플, 최근 v5 통과 이관본을 대조해 형식을 맞춥니다.통과한 v5 이관본·게이트 스크립트·Stripe와 비슷한 Docs 표본을 대조해 의미 보존 규칙을 확인합니다.원문 토큰을 전부 뽑은 뒤, 규칙집 v5와 골든 샘플 형태로 Stripe Core v2 세 파일을 작성합니다.원문 토큰·의미 경계를 유지한 채 Core v2 세 파일을 작성합니다.Stripe legacy `DESIGN.md`를 Core v2로 옮겼습니다. 카탈로그 채택은 아닙니다.
+
+산출물:
+- `docs/design-md-weight/migrated/stripe/DESIGN.md`
+- `docs/design-md-weight/migrated/stripe/provenance.md`
+- `docs/design-md-weight/migrated/stripe/migration-log.md` (규칙집 **v5**)
+
+기계 확인: `inspectDesignMd` `portable_core: true`, placeholders 0. `migrate-reference.mjs --brand stripe --gate-only` **PASS**.
+
+의미 보존에서 특히 맞춘 점:
+- 범위는 Docs home / Payments / API reference뿐. marketing home·Dashboard·checkout는 원문 경계 그대로.
+- YAML `lineHeight` `1.43` / `1.25`는 비율로 두고, `20px or normal` / `40px`는 크기 로컬 관측으로 분리.
+- Search Prompt·Secondary Action은 `Type: button`, Content Tab은 `Type: tab`.
+- 운영 원칙은 jobs/culture first-party, UI implication만 B2a 한정. Scope의 “documentation chrome” 문단과 Voice의 “direct and concrete”도 같은 한정.
+- generic `Focus`는 `focus-visible` 처리로 올리지 않음. loading/error/success는 역할로 `not-applicable`.
+- `#635bff`와 Simple Icons 로고는 Docs 토큰/portable 마크가 아님. Source Code Pro·Menlo는 `Unresolved claim`.
+- §14 본문 유지, 무출처 커브 없음, B3 다섯 증거 종류 게이트 본문 유지.
+
+DONE migrated=1

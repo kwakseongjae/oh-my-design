@@ -1,0 +1,2194 @@
+{
+  "brand": "toss",
+  "surface": "mobile-390",
+  "images": 22,
+  "videos": 3,
+  "manifestPresent": true,
+  "verifyScores": [
+    13.87,
+    14.98,
+    15.58,
+    16.32,
+    16.86,
+    17.1,
+    19.9,
+    20.09,
+    20.77,
+    29.53,
+    42.63,
+    45.8,
+    45.87,
+    46.39,
+    50.13,
+    55.37,
+    62.74
+  ],
+  "medianVerify": 20.77,
+  "note": "verify는 그날 스냅샷 추종이지 브랜드 정체성 점수가 아니다. --baseline 분포와 비교해 읽는다.",
+  "measuredAt": "2026-08-23T06:32:44.089Z",
+  "detail": {
+    "images": [
+      {
+        "file": "images/01.jpg",
+        "role": "hero",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#dcdaec",
+            "coverage": 0.0674,
+            "saturation": 0.076,
+            "luma": 0.862
+          },
+          {
+            "hex": "#8c9393",
+            "coverage": 0.0306,
+            "saturation": 0.048,
+            "luma": 0.571
+          },
+          {
+            "hex": "#dbdcf1",
+            "coverage": 0.0276,
+            "saturation": 0.091,
+            "luma": 0.868
+          },
+          {
+            "hex": "#8c959b",
+            "coverage": 0.0225,
+            "saturation": 0.097,
+            "luma": 0.579
+          }
+        ],
+        "light": {
+          "meanLuma": 0.536,
+          "p05": 0.087,
+          "p50": 0.565,
+          "p95": 0.865,
+          "dynamicRange": 0.778,
+          "gradient": {
+            "dx": -0.223,
+            "dy": -0.122
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 98.3
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/01.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.0045,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.367,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.522,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 10.0143,
+              "score": 59.94
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 14.98,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/02.jpg",
+        "role": "hero",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#c2cadb",
+            "coverage": 0.0596,
+            "saturation": 0.114,
+            "luma": 0.79
+          },
+          {
+            "hex": "#d3d4e3",
+            "coverage": 0.035,
+            "saturation": 0.07,
+            "luma": 0.835
+          },
+          {
+            "hex": "#cdd5f2",
+            "coverage": 0.0349,
+            "saturation": 0.153,
+            "luma": 0.837
+          },
+          {
+            "hex": "#bcc5d5",
+            "coverage": 0.0279,
+            "saturation": 0.117,
+            "luma": 0.77
+          }
+        ],
+        "light": {
+          "meanLuma": 0.534,
+          "p05": 0.097,
+          "p50": 0.51,
+          "p95": 0.849,
+          "dynamicRange": 0.752,
+          "gradient": {
+            "dx": -0.09,
+            "dy": -0.071
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 54.2
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/02.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.0045,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.369,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.496,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 9.4201,
+              "score": 62.32
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 15.58,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/03.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#7c8193",
+            "coverage": 0.0639,
+            "saturation": 0.156,
+            "luma": 0.507
+          },
+          {
+            "hex": "#d4e2ec",
+            "coverage": 0.0455,
+            "saturation": 0.102,
+            "luma": 0.877
+          },
+          {
+            "hex": "#737b8e",
+            "coverage": 0.0224,
+            "saturation": 0.19,
+            "luma": 0.481
+          },
+          {
+            "hex": "#13253a",
+            "coverage": 0.0223,
+            "saturation": 0.672,
+            "luma": 0.136
+          }
+        ],
+        "light": {
+          "meanLuma": 0.482,
+          "p05": 0.066,
+          "p50": 0.49,
+          "p95": 0.872,
+          "dynamicRange": 0.806,
+          "gradient": {
+            "dx": 0.076,
+            "dy": 0.036
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 64.5
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/03.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.0045,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.421,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.55,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 8.14,
+              "score": 67.44
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 16.86,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/04.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#6c7383",
+            "coverage": 0.0292,
+            "saturation": 0.176,
+            "luma": 0.45
+          },
+          {
+            "hex": "#656b7b",
+            "coverage": 0.0241,
+            "saturation": 0.179,
+            "luma": 0.419
+          },
+          {
+            "hex": "#5d6373",
+            "coverage": 0.0202,
+            "saturation": 0.191,
+            "luma": 0.388
+          },
+          {
+            "hex": "#b5b5c2",
+            "coverage": 0.0184,
+            "saturation": 0.067,
+            "luma": 0.713
+          }
+        ],
+        "light": {
+          "meanLuma": 0.603,
+          "p05": 0.304,
+          "p50": 0.594,
+          "p95": 0.91,
+          "dynamicRange": 0.606,
+          "gradient": {
+            "dx": -0.007,
+            "dy": -0.001
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 81.7
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/04.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.0045,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.3,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.35,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 4.2253,
+              "score": 83.1
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 20.77,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/05.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#6b7374",
+            "coverage": 0.0556,
+            "saturation": 0.078,
+            "luma": 0.445
+          },
+          {
+            "hex": "#636c6d",
+            "coverage": 0.0334,
+            "saturation": 0.092,
+            "luma": 0.416
+          },
+          {
+            "hex": "#ccdbe9",
+            "coverage": 0.024,
+            "saturation": 0.124,
+            "luma": 0.85
+          },
+          {
+            "hex": "#cddae5",
+            "coverage": 0.0211,
+            "saturation": 0.105,
+            "luma": 0.847
+          }
+        ],
+        "light": {
+          "meanLuma": 0.528,
+          "p05": 0.093,
+          "p50": 0.492,
+          "p95": 0.873,
+          "dynamicRange": 0.78,
+          "gradient": {
+            "dx": -0.003,
+            "dy": -0.184
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 92.5
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/05.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.0045,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.375,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.524,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 8.685,
+              "score": 65.26
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 16.32,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/06.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#0a1324",
+            "coverage": 0.0605,
+            "saturation": 0.722,
+            "luma": 0.072
+          },
+          {
+            "hex": "#040d1d",
+            "coverage": 0.0392,
+            "saturation": 0.862,
+            "luma": 0.048
+          },
+          {
+            "hex": "#c3ccd4",
+            "coverage": 0.0376,
+            "saturation": 0.08,
+            "luma": 0.795
+          },
+          {
+            "hex": "#cbd4db",
+            "coverage": 0.0329,
+            "saturation": 0.073,
+            "luma": 0.826
+          }
+        ],
+        "light": {
+          "meanLuma": 0.559,
+          "p05": 0.052,
+          "p50": 0.729,
+          "p95": 0.893,
+          "dynamicRange": 0.841,
+          "gradient": {
+            "dx": -0.112,
+            "dy": -0.014
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 72.5
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/06.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.0045,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.344,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.585,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 7.8968,
+              "score": 68.41
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 17.1,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/07.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#cbd5db",
+            "coverage": 0.0833,
+            "saturation": 0.073,
+            "luma": 0.829
+          },
+          {
+            "hex": "#dce5eb",
+            "coverage": 0.0784,
+            "saturation": 0.064,
+            "luma": 0.892
+          },
+          {
+            "hex": "#e2e9ee",
+            "coverage": 0.0356,
+            "saturation": 0.05,
+            "luma": 0.909
+          },
+          {
+            "hex": "#d3dde3",
+            "coverage": 0.0333,
+            "saturation": 0.07,
+            "luma": 0.86
+          }
+        ],
+        "light": {
+          "meanLuma": 0.759,
+          "p05": 0.475,
+          "p50": 0.782,
+          "p95": 0.908,
+          "dynamicRange": 0.433,
+          "gradient": {
+            "dx": 0.061,
+            "dy": -0.113
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 63.2
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/07.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.0045,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.144,
+              "score": 28
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.177,
+              "score": 11.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 5.344,
+              "score": 78.62
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 29.53,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/08.jpg",
+        "role": "texture",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#959a9a",
+            "coverage": 0.1272,
+            "saturation": 0.032,
+            "luma": 0.6
+          },
+          {
+            "hex": "#9a9d9c",
+            "coverage": 0.1231,
+            "saturation": 0.019,
+            "luma": 0.613
+          },
+          {
+            "hex": "#9da2a2",
+            "coverage": 0.1175,
+            "saturation": 0.031,
+            "luma": 0.631
+          },
+          {
+            "hex": "#929695",
+            "coverage": 0.1087,
+            "saturation": 0.027,
+            "luma": 0.585
+          }
+        ],
+        "light": {
+          "meanLuma": 0.605,
+          "p05": 0.536,
+          "p50": 0.607,
+          "p95": 0.67,
+          "dynamicRange": 0.134,
+          "gradient": {
+            "dx": -0.024,
+            "dy": -0.013
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 14.7
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/08.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.0045,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.298,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.122,
+              "score": 39
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 17.9375,
+              "score": 28.25
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 16.81,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/09.jpg",
+        "role": "texture",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#e3e3e2",
+            "coverage": 0.2598,
+            "saturation": 0.004,
+            "luma": 0.89
+          },
+          {
+            "hex": "#eae9e6",
+            "coverage": 0.1477,
+            "saturation": 0.017,
+            "luma": 0.914
+          },
+          {
+            "hex": "#dadcde",
+            "coverage": 0.1186,
+            "saturation": 0.018,
+            "luma": 0.862
+          },
+          {
+            "hex": "#ccd2db",
+            "coverage": 0.0952,
+            "saturation": 0.068,
+            "luma": 0.821
+          }
+        ],
+        "light": {
+          "meanLuma": 0.866,
+          "p05": 0.798,
+          "p50": 0.874,
+          "p95": 0.914,
+          "dynamicRange": 0.116,
+          "gradient": {
+            "dx": -0.014,
+            "dy": -0.002
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 9.1
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/09.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.0045,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.037,
+              "score": 81.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.14,
+              "score": 30
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 3.4396,
+              "score": 86.24
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 49.44,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/10.jpg",
+        "role": "texture",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#b9c3cc",
+            "coverage": 0.5885,
+            "saturation": 0.093,
+            "luma": 0.759
+          },
+          {
+            "hex": "#b7c1ca",
+            "coverage": 0.0645,
+            "saturation": 0.094,
+            "luma": 0.751
+          },
+          {
+            "hex": "#c3ccd3",
+            "coverage": 0.0585,
+            "saturation": 0.076,
+            "luma": 0.794
+          },
+          {
+            "hex": "#b3bcc5",
+            "coverage": 0.0444,
+            "saturation": 0.091,
+            "luma": 0.732
+          }
+        ],
+        "light": {
+          "meanLuma": 0.773,
+          "p05": 0.733,
+          "p50": 0.759,
+          "p95": 0.872,
+          "dynamicRange": 0.139,
+          "gradient": {
+            "dx": 0.024,
+            "dy": -0.026
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 1.8
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/10.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.0045,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.13,
+              "score": 35
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.117,
+              "score": 41.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 6.3392,
+              "score": 74.64
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 37.78,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/11.jpg",
+        "role": "texture",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#ececed",
+            "coverage": 0.236,
+            "saturation": 0.004,
+            "luma": 0.926
+          },
+          {
+            "hex": "#e3e4eb",
+            "coverage": 0.1881,
+            "saturation": 0.034,
+            "luma": 0.895
+          },
+          {
+            "hex": "#ecedf1",
+            "coverage": 0.1319,
+            "saturation": 0.021,
+            "luma": 0.93
+          },
+          {
+            "hex": "#f1f3f5",
+            "coverage": 0.0749,
+            "saturation": 0.016,
+            "luma": 0.952
+          }
+        ],
+        "light": {
+          "meanLuma": 0.903,
+          "p05": 0.827,
+          "p50": 0.911,
+          "p95": 0.948,
+          "dynamicRange": 0.121,
+          "gradient": {
+            "dx": -0.029,
+            "dy": -0.026
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 14.5
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/11.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.0045,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0,
+              "score": 100
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.135,
+              "score": 32.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 3.6331,
+              "score": 85.47
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 54.49,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/12.jpg",
+        "role": "texture",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#d5dae3",
+            "coverage": 0.5167,
+            "saturation": 0.062,
+            "luma": 0.853
+          },
+          {
+            "hex": "#d3d6e2",
+            "coverage": 0.0719,
+            "saturation": 0.066,
+            "luma": 0.84
+          },
+          {
+            "hex": "#e4edec",
+            "coverage": 0.0323,
+            "saturation": 0.038,
+            "luma": 0.922
+          },
+          {
+            "hex": "#eaece9",
+            "coverage": 0.0276,
+            "saturation": 0.013,
+            "luma": 0.923
+          }
+        ],
+        "light": {
+          "meanLuma": 0.843,
+          "p05": 0.706,
+          "p50": 0.851,
+          "p95": 0.918,
+          "dynamicRange": 0.212,
+          "gradient": {
+            "dx": -0.01,
+            "dy": -0.035
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#d5d9e3",
+          "center": {
+            "x": 0.5653,
+            "y": 0.5598
+          },
+          "box": {
+            "x": 0.2,
+            "y": 0.1444,
+            "w": 0.6438,
+            "h": 0.7667
+          },
+          "coverage": 0.2504
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/12.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 1.0045,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.06,
+              "score": 70
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.044,
+              "score": 78
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 3.9946,
+              "score": 84.02
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 58,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/13.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#e3eaed",
+            "coverage": 0.0358,
+            "saturation": 0.042,
+            "luma": 0.913
+          },
+          {
+            "hex": "#cbd5da",
+            "coverage": 0.0273,
+            "saturation": 0.069,
+            "luma": 0.828
+          },
+          {
+            "hex": "#556162",
+            "coverage": 0.0243,
+            "saturation": 0.133,
+            "luma": 0.371
+          },
+          {
+            "hex": "#050a0b",
+            "coverage": 0.0205,
+            "saturation": 0.545,
+            "luma": 0.035
+          }
+        ],
+        "light": {
+          "meanLuma": 0.527,
+          "p05": 0.059,
+          "p50": 0.514,
+          "p95": 0.911,
+          "dynamicRange": 0.852,
+          "gradient": {
+            "dx": -0.167,
+            "dy": -0.04
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 114.2
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/13.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.3653,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.376,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.596,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 5.1031,
+              "score": 79.59
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 19.9,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/14.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#f1f4e7",
+            "coverage": 0.0864,
+            "saturation": 0.053,
+            "luma": 0.951
+          },
+          {
+            "hex": "#d4dbe4",
+            "coverage": 0.0351,
+            "saturation": 0.07,
+            "luma": 0.856
+          },
+          {
+            "hex": "#e2e5ea",
+            "coverage": 0.0281,
+            "saturation": 0.034,
+            "luma": 0.897
+          },
+          {
+            "hex": "#dde1e6",
+            "coverage": 0.0244,
+            "saturation": 0.039,
+            "luma": 0.88
+          }
+        ],
+        "light": {
+          "meanLuma": 0.683,
+          "p05": 0.319,
+          "p50": 0.73,
+          "p95": 0.951,
+          "dynamicRange": 0.632,
+          "gradient": {
+            "dx": -0.011,
+            "dy": -0.246
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 91.8
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/14.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.3653,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.22,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.376,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 4.9102,
+              "score": 80.36
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 20.09,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/15.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#3d454a",
+            "coverage": 0.039,
+            "saturation": 0.176,
+            "luma": 0.265
+          },
+          {
+            "hex": "#3b4345",
+            "coverage": 0.0352,
+            "saturation": 0.145,
+            "luma": 0.257
+          },
+          {
+            "hex": "#021324",
+            "coverage": 0.0326,
+            "saturation": 0.944,
+            "luma": 0.065
+          },
+          {
+            "hex": "#9abce4",
+            "coverage": 0.0315,
+            "saturation": 0.325,
+            "luma": 0.72
+          }
+        ],
+        "light": {
+          "meanLuma": 0.463,
+          "p05": 0.061,
+          "p50": 0.433,
+          "p95": 0.822,
+          "dynamicRange": 0.761,
+          "gradient": {
+            "dx": 0.141,
+            "dy": -0.122
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 95.7
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/15.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.3653,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.44,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.505,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 11.1279,
+              "score": 55.49
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 13.87,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/16.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#ecedea",
+            "coverage": 0.2578,
+            "saturation": 0.013,
+            "luma": 0.928
+          },
+          {
+            "hex": "#f1f2ed",
+            "coverage": 0.2109,
+            "saturation": 0.021,
+            "luma": 0.947
+          },
+          {
+            "hex": "#e9eae6",
+            "coverage": 0.1592,
+            "saturation": 0.017,
+            "luma": 0.916
+          },
+          {
+            "hex": "#e2e4e5",
+            "coverage": 0.1227,
+            "saturation": 0.013,
+            "luma": 0.893
+          }
+        ],
+        "light": {
+          "meanLuma": 0.921,
+          "p05": 0.878,
+          "p50": 0.924,
+          "p95": 0.951,
+          "dynamicRange": 0.073,
+          "gradient": {
+            "dx": -0.011,
+            "dy": -0.023
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 6.3
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/16.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.3653,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.018,
+              "score": 91
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.183,
+              "score": 8.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 3.4875,
+              "score": 86.05
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 46.39,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/17.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#b4d2e9",
+            "coverage": 0.0891,
+            "saturation": 0.227,
+            "luma": 0.805
+          },
+          {
+            "hex": "#eeccb4",
+            "coverage": 0.0642,
+            "saturation": 0.244,
+            "luma": 0.822
+          },
+          {
+            "hex": "#ebcbba",
+            "coverage": 0.042,
+            "saturation": 0.209,
+            "luma": 0.818
+          },
+          {
+            "hex": "#dce4ec",
+            "coverage": 0.0411,
+            "saturation": 0.068,
+            "luma": 0.89
+          }
+        ],
+        "light": {
+          "meanLuma": 0.831,
+          "p05": 0.788,
+          "p50": 0.817,
+          "p95": 0.935,
+          "dynamicRange": 0.147,
+          "gradient": {
+            "dx": -0.01,
+            "dy": -0.004
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 35
+        },
+        "aspect": 0.667,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/17.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.248,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.072,
+              "score": 64
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.109,
+              "score": 45.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 6.5051,
+              "score": 73.98
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 45.87,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/18.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#d1d5e3",
+            "coverage": 0.0706,
+            "saturation": 0.079,
+            "luma": 0.836
+          },
+          {
+            "hex": "#8bc6e4",
+            "coverage": 0.0555,
+            "saturation": 0.39,
+            "luma": 0.736
+          },
+          {
+            "hex": "#a3d3e9",
+            "coverage": 0.0548,
+            "saturation": 0.3,
+            "luma": 0.794
+          },
+          {
+            "hex": "#95cbe9",
+            "coverage": 0.0465,
+            "saturation": 0.361,
+            "luma": 0.76
+          }
+        ],
+        "light": {
+          "meanLuma": 0.773,
+          "p05": 0.688,
+          "p50": 0.768,
+          "p95": 0.881,
+          "dynamicRange": 0.193,
+          "gradient": {
+            "dx": -0.063,
+            "dy": 0.032
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 34.5
+        },
+        "aspect": 0.667,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/18.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.248,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.13,
+              "score": 35
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.063,
+              "score": 68.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 8.2509,
+              "score": 67
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 42.63,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/19.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#f4f4f4",
+            "coverage": 0.115,
+            "saturation": 0,
+            "luma": 0.957
+          },
+          {
+            "hex": "#fafafa",
+            "coverage": 0.0751,
+            "saturation": 0,
+            "luma": 0.98
+          },
+          {
+            "hex": "#ededed",
+            "coverage": 0.0488,
+            "saturation": 0,
+            "luma": 0.929
+          },
+          {
+            "hex": "#ab9de3",
+            "coverage": 0.0347,
+            "saturation": 0.308,
+            "luma": 0.647
+          }
+        ],
+        "light": {
+          "meanLuma": 0.805,
+          "p05": 0.644,
+          "p50": 0.793,
+          "p95": 0.978,
+          "dynamicRange": 0.334,
+          "gradient": {
+            "dx": -0.04,
+            "dy": 0.037
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#c3c1e0",
+          "center": {
+            "x": 0.5276,
+            "y": 0.4904
+          },
+          "box": {
+            "x": 0.2062,
+            "y": 0.1292,
+            "w": 0.7625,
+            "h": 0.7792
+          },
+          "coverage": 0.2511
+        },
+        "aspect": 0.667,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/19.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.248,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.098,
+              "score": 51
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.078,
+              "score": 61
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 2.8679,
+              "score": 88.53
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 50.13,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/20.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#f0f1ed",
+            "coverage": 0.1657,
+            "saturation": 0.017,
+            "luma": 0.943
+          },
+          {
+            "hex": "#eff0ec",
+            "coverage": 0.1568,
+            "saturation": 0.017,
+            "luma": 0.939
+          },
+          {
+            "hex": "#edede5",
+            "coverage": 0.135,
+            "saturation": 0.034,
+            "luma": 0.927
+          },
+          {
+            "hex": "#f1f1f1",
+            "coverage": 0.1174,
+            "saturation": 0,
+            "luma": 0.945
+          }
+        ],
+        "light": {
+          "meanLuma": 0.879,
+          "p05": 0.513,
+          "p50": 0.935,
+          "p95": 0.945,
+          "dynamicRange": 0.432,
+          "gradient": {
+            "dx": -0.022,
+            "dy": -0.054
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 4.6
+        },
+        "aspect": 0.667,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/20.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.248,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.024,
+              "score": 88
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.176,
+              "score": 12
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 4.2012,
+              "score": 83.2
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 45.8,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/21.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#e1e2de",
+            "coverage": 0.3512,
+            "saturation": 0.018,
+            "luma": 0.884
+          },
+          {
+            "hex": "#f3f4ee",
+            "coverage": 0.2754,
+            "saturation": 0.025,
+            "luma": 0.954
+          },
+          {
+            "hex": "#d2cbb9",
+            "coverage": 0.0291,
+            "saturation": 0.119,
+            "luma": 0.797
+          },
+          {
+            "hex": "#dddeda",
+            "coverage": 0.0246,
+            "saturation": 0.018,
+            "luma": 0.869
+          }
+        ],
+        "light": {
+          "meanLuma": 0.858,
+          "p05": 0.673,
+          "p50": 0.884,
+          "p95": 0.954,
+          "dynamicRange": 0.281,
+          "gradient": {
+            "dx": -0.041,
+            "dy": 0.057
+          },
+          "luminanceGradient": "brighter bottom"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#e1e2de",
+          "center": {
+            "x": 0.567,
+            "y": 0.436
+          },
+          "box": {
+            "x": 0.1375,
+            "y": 0.1796,
+            "w": 0.8063,
+            "h": 0.6831
+          },
+          "coverage": 0.25
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/21.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.3653,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.045,
+              "score": 77.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.025,
+              "score": 87.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 3.513,
+              "score": 85.95
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 62.74,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/22.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#ebecf2",
+            "coverage": 0.0369,
+            "saturation": 0.029,
+            "luma": 0.926
+          },
+          {
+            "hex": "#dcdceb",
+            "coverage": 0.0304,
+            "saturation": 0.064,
+            "luma": 0.867
+          },
+          {
+            "hex": "#bdeacc",
+            "coverage": 0.0223,
+            "saturation": 0.192,
+            "luma": 0.872
+          },
+          {
+            "hex": "#e3e4ed",
+            "coverage": 0.0215,
+            "saturation": 0.042,
+            "luma": 0.896
+          }
+        ],
+        "light": {
+          "meanLuma": 0.842,
+          "p05": 0.735,
+          "p50": 0.844,
+          "p95": 0.936,
+          "dynamicRange": 0.201,
+          "gradient": {
+            "dx": -0.023,
+            "dy": -0.043
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 23.8
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "toss",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/22.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1274,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.061,
+              "score": 69.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.055,
+              "score": 72.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 5.1266,
+              "score": 79.49
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 55.37,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      }
+    ],
+    "videos": [
+      {
+        "file": "videos/01.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#dcdaed",
+              "coverage": 0.0685,
+              "saturation": 0.08,
+              "luma": 0.862
+            },
+            {
+              "hex": "#8c9293",
+              "coverage": 0.0258,
+              "saturation": 0.048,
+              "luma": 0.568
+            },
+            {
+              "hex": "#8c959b",
+              "coverage": 0.0236,
+              "saturation": 0.097,
+              "luma": 0.579
+            }
+          ],
+          "light": {
+            "meanLuma": 0.534,
+            "p05": 0.085,
+            "p50": 0.563,
+            "p95": 0.863,
+            "dynamicRange": 0.778,
+            "gradient": {
+              "dx": -0.223,
+              "dy": -0.122
+            },
+            "luminanceGradient": "brighter left"
+          }
+        },
+        "fromImage": "images/01.jpg"
+      },
+      {
+        "file": "videos/02.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#e3eaed",
+              "coverage": 0.0312,
+              "saturation": 0.042,
+              "luma": 0.913
+            },
+            {
+              "hex": "#cbd5da",
+              "coverage": 0.0288,
+              "saturation": 0.069,
+              "luma": 0.828
+            },
+            {
+              "hex": "#dbe5ec",
+              "coverage": 0.0215,
+              "saturation": 0.072,
+              "luma": 0.892
+            }
+          ],
+          "light": {
+            "meanLuma": 0.524,
+            "p05": 0.057,
+            "p50": 0.511,
+            "p95": 0.909,
+            "dynamicRange": 0.852,
+            "gradient": {
+              "dx": -0.168,
+              "dy": -0.04
+            },
+            "luminanceGradient": "brighter left"
+          }
+        },
+        "fromImage": "images/13.jpg"
+      },
+      {
+        "file": "videos/03.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#cbd4dc",
+              "coverage": 0.0959,
+              "saturation": 0.077,
+              "luma": 0.826
+            },
+            {
+              "hex": "#dce4eb",
+              "coverage": 0.0762,
+              "saturation": 0.064,
+              "luma": 0.889
+            },
+            {
+              "hex": "#d3dce4",
+              "coverage": 0.0362,
+              "saturation": 0.075,
+              "luma": 0.858
+            }
+          ],
+          "light": {
+            "meanLuma": 0.757,
+            "p05": 0.473,
+            "p50": 0.78,
+            "p95": 0.907,
+            "dynamicRange": 0.434,
+            "gradient": {
+              "dx": 0.061,
+              "dy": -0.113
+            },
+            "luminanceGradient": "brighter top"
+          }
+        },
+        "fromImage": "images/07.jpg"
+      }
+    ]
+  }
+}

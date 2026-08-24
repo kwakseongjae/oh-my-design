@@ -1,0 +1,1446 @@
+{
+  "brand": "wanted",
+  "surface": "desktop-1440",
+  "images": 14,
+  "videos": 3,
+  "manifestPresent": true,
+  "verifyScores": [
+    21.5,
+    24.17,
+    30.45,
+    30.8,
+    33.94,
+    36.29,
+    37.54,
+    40.26,
+    47.33,
+    58.42,
+    68.96
+  ],
+  "medianVerify": 36.29,
+  "note": "verify는 그날 스냅샷 추종이지 브랜드 정체성 점수가 아니다. --baseline 분포와 비교해 읽는다.",
+  "measuredAt": "2026-08-23T06:03:24.293Z",
+  "detail": {
+    "images": [
+      {
+        "file": "images/01.jpg",
+        "role": "hero",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#d3c5a3",
+            "coverage": 0.0233,
+            "saturation": 0.227,
+            "luma": 0.775
+          },
+          {
+            "hex": "#e5e2d4",
+            "coverage": 0.0225,
+            "saturation": 0.074,
+            "luma": 0.885
+          },
+          {
+            "hex": "#e2ddcb",
+            "coverage": 0.0219,
+            "saturation": 0.102,
+            "luma": 0.866
+          },
+          {
+            "hex": "#cbbd9b",
+            "coverage": 0.0192,
+            "saturation": 0.236,
+            "luma": 0.743
+          }
+        ],
+        "light": {
+          "meanLuma": 0.731,
+          "p05": 0.412,
+          "p50": 0.762,
+          "p95": 0.94,
+          "dynamicRange": 0.528,
+          "gradient": {
+            "dx": -0.093,
+            "dy": -0.067
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 40.9
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "wanted",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/wanted/images/01.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1853,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.237,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.096,
+              "score": 52
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 7.1972,
+              "score": 71.21
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 30.8,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/02.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#cbcccc",
+            "coverage": 0.0346,
+            "saturation": 0.005,
+            "luma": 0.799
+          },
+          {
+            "hex": "#d4bd94",
+            "coverage": 0.0322,
+            "saturation": 0.302,
+            "luma": 0.749
+          },
+          {
+            "hex": "#ccb49c",
+            "coverage": 0.032,
+            "saturation": 0.235,
+            "luma": 0.719
+          },
+          {
+            "hex": "#d5bb8c",
+            "coverage": 0.0318,
+            "saturation": 0.343,
+            "luma": 0.742
+          }
+        ],
+        "light": {
+          "meanLuma": 0.701,
+          "p05": 0.403,
+          "p50": 0.743,
+          "p95": 0.829,
+          "dynamicRange": 0.426,
+          "gradient": {
+            "dx": -0.068,
+            "dy": -0.054
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 57.1
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "wanted",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/wanted/images/02.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0033,
+              "score": 96.67
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.207,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.198,
+              "score": 1
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 9.1583,
+              "score": 63.37
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 40.26,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/03.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#8b2c2c",
+            "coverage": 0.0911,
+            "saturation": 0.683,
+            "luma": 0.252
+          },
+          {
+            "hex": "#943232",
+            "coverage": 0.0791,
+            "saturation": 0.662,
+            "luma": 0.278
+          },
+          {
+            "hex": "#842525",
+            "coverage": 0.0531,
+            "saturation": 0.72,
+            "luma": 0.224
+          },
+          {
+            "hex": "#a23d3c",
+            "coverage": 0.0424,
+            "saturation": 0.63,
+            "luma": 0.323
+          }
+        ],
+        "light": {
+          "meanLuma": 0.297,
+          "p05": 0.107,
+          "p50": 0.268,
+          "p95": 0.635,
+          "dynamicRange": 0.528,
+          "gradient": {
+            "dx": -0.05,
+            "dy": -0.11
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 32.3
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "wanted",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/wanted/images/03.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0033,
+              "score": 96.67
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.197,
+              "score": 1.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.096,
+              "score": 52
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 48.1821,
+              "score": 0
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 37.54,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/04.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#0a0d0b",
+            "coverage": 0.0732,
+            "saturation": 0.231,
+            "luma": 0.048
+          },
+          {
+            "hex": "#0d1312",
+            "coverage": 0.0699,
+            "saturation": 0.316,
+            "luma": 0.069
+          },
+          {
+            "hex": "#0d110d",
+            "coverage": 0.0636,
+            "saturation": 0.235,
+            "luma": 0.062
+          },
+          {
+            "hex": "#121613",
+            "coverage": 0.0612,
+            "saturation": 0.182,
+            "luma": 0.082
+          }
+        ],
+        "light": {
+          "meanLuma": 0.207,
+          "p05": 0.024,
+          "p50": 0.098,
+          "p95": 0.751,
+          "dynamicRange": 0.727,
+          "gradient": {
+            "dx": -0.134,
+            "dy": 0.006
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 95.2
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "wanted",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/wanted/images/04.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0033,
+              "score": 96.67
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.287,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.103,
+              "score": 48.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 84.5702,
+              "score": 0
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 36.29,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/05.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#0a0c0d",
+            "coverage": 0.3026,
+            "saturation": 0.231,
+            "luma": 0.046
+          },
+          {
+            "hex": "#121415",
+            "coverage": 0.1565,
+            "saturation": 0.143,
+            "luma": 0.077
+          },
+          {
+            "hex": "#0e1012",
+            "coverage": 0.1259,
+            "saturation": 0.222,
+            "luma": 0.062
+          },
+          {
+            "hex": "#0d0f10",
+            "coverage": 0.0845,
+            "saturation": 0.188,
+            "luma": 0.057
+          }
+        ],
+        "light": {
+          "meanLuma": 0.09,
+          "p05": 0.026,
+          "p50": 0.057,
+          "p95": 0.289,
+          "dynamicRange": 0.263,
+          "gradient": {
+            "dx": -0.019,
+            "dy": -0.024
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 13.7
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "wanted",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/wanted/images/05.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0033,
+              "score": 96.67
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.404,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.361,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 84.9002,
+              "score": 0
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 24.17,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/06.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#c9c4ad",
+            "coverage": 0.0325,
+            "saturation": 0.139,
+            "luma": 0.766
+          },
+          {
+            "hex": "#bcc3cb",
+            "coverage": 0.0282,
+            "saturation": 0.074,
+            "luma": 0.761
+          },
+          {
+            "hex": "#cac5b2",
+            "coverage": 0.0247,
+            "saturation": 0.119,
+            "luma": 0.771
+          },
+          {
+            "hex": "#c4bb9d",
+            "coverage": 0.0236,
+            "saturation": 0.199,
+            "luma": 0.732
+          }
+        ],
+        "light": {
+          "meanLuma": 0.67,
+          "p05": 0.216,
+          "p50": 0.74,
+          "p95": 0.902,
+          "dynamicRange": 0.686,
+          "gradient": {
+            "dx": 0.124,
+            "dy": -0.021
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 38.9
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "wanted",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/wanted/images/06.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0033,
+              "score": 96.67
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.176,
+              "score": 12
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.062,
+              "score": 69
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 10.9977,
+              "score": 56.01
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 58.42,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/07.jpg",
+        "role": "imagery",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#0d5c92",
+            "coverage": 0.0477,
+            "saturation": 0.911,
+            "luma": 0.31
+          },
+          {
+            "hex": "#e2e2e1",
+            "coverage": 0.0321,
+            "saturation": 0.004,
+            "luma": 0.886
+          },
+          {
+            "hex": "#05558c",
+            "coverage": 0.0305,
+            "saturation": 0.964,
+            "luma": 0.282
+          },
+          {
+            "hex": "#2475ac",
+            "coverage": 0.0262,
+            "saturation": 0.791,
+            "luma": 0.407
+          }
+        ],
+        "light": {
+          "meanLuma": 0.427,
+          "p05": 0.159,
+          "p50": 0.385,
+          "p95": 0.865,
+          "dynamicRange": 0.706,
+          "gradient": {
+            "dx": -0.029,
+            "dy": -0.004
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#24699d",
+          "center": {
+            "x": 0.5094,
+            "y": 0.5231
+          },
+          "box": {
+            "x": 0.0875,
+            "y": 0.1308,
+            "w": 0.85,
+            "h": 0.7103
+          },
+          "coverage": 0.2501
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "wanted",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/wanted/images/07.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0033,
+              "score": 96.67
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.067,
+              "score": 66.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.082,
+              "score": 59
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 11.5841,
+              "score": 53.66
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 68.96,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/08.jpg",
+        "role": "texture",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#ab835c",
+            "coverage": 0.0667,
+            "saturation": 0.462,
+            "luma": 0.536
+          },
+          {
+            "hex": "#c39d72",
+            "coverage": 0.0616,
+            "saturation": 0.415,
+            "luma": 0.635
+          },
+          {
+            "hex": "#b38c63",
+            "coverage": 0.053,
+            "saturation": 0.447,
+            "luma": 0.57
+          },
+          {
+            "hex": "#bb946a",
+            "coverage": 0.0471,
+            "saturation": 0.433,
+            "luma": 0.601
+          }
+        ],
+        "light": {
+          "meanLuma": 0.496,
+          "p05": 0.157,
+          "p50": 0.551,
+          "p95": 0.768,
+          "dynamicRange": 0.611,
+          "gradient": {
+            "dx": 0.053,
+            "dy": 0.033
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 70.7
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "wanted",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/wanted/images/08.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0033,
+              "score": 96.67
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.002,
+              "score": 99
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.013,
+              "score": 93.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 19.1086,
+              "score": 23.57
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 78.19,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/09.jpg",
+        "role": "texture",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#f3dec3",
+            "coverage": 0.0905,
+            "saturation": 0.198,
+            "luma": 0.88
+          },
+          {
+            "hex": "#ecdac2",
+            "coverage": 0.0772,
+            "saturation": 0.178,
+            "luma": 0.863
+          },
+          {
+            "hex": "#e3d4be",
+            "coverage": 0.0679,
+            "saturation": 0.163,
+            "luma": 0.838
+          },
+          {
+            "hex": "#cbc4b4",
+            "coverage": 0.0497,
+            "saturation": 0.113,
+            "luma": 0.77
+          }
+        ],
+        "light": {
+          "meanLuma": 0.815,
+          "p05": 0.728,
+          "p50": 0.817,
+          "p95": 0.888,
+          "dynamicRange": 0.16,
+          "gradient": {
+            "dx": -0.083,
+            "dy": 0.011
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 27.9
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "wanted",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/wanted/images/09.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0033,
+              "score": 96.67
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.321,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.464,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 2.9037,
+              "score": 88.39
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 46.27,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/10.jpg",
+        "role": "texture",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#131314",
+            "coverage": 0.089,
+            "saturation": 0.05,
+            "luma": 0.075
+          },
+          {
+            "hex": "#0b0b0b",
+            "coverage": 0.0692,
+            "saturation": 0,
+            "luma": 0.043
+          },
+          {
+            "hex": "#1c1b1c",
+            "coverage": 0.0537,
+            "saturation": 0.036,
+            "luma": 0.107
+          },
+          {
+            "hex": "#2b2d32",
+            "coverage": 0.0409,
+            "saturation": 0.14,
+            "luma": 0.176
+          }
+        ],
+        "light": {
+          "meanLuma": 0.135,
+          "p05": 0.029,
+          "p50": 0.124,
+          "p95": 0.268,
+          "dynamicRange": 0.239,
+          "gradient": {
+            "dx": 0.027,
+            "dy": -0.01
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 18.6
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "wanted",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/wanted/images/10.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0033,
+              "score": 96.67
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.359,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.385,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 71.2869,
+              "score": 0
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 24.17,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/11.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#b4a483",
+            "coverage": 0.0244,
+            "saturation": 0.272,
+            "luma": 0.647
+          },
+          {
+            "hex": "#ecebdc",
+            "coverage": 0.0222,
+            "saturation": 0.068,
+            "luma": 0.918
+          },
+          {
+            "hex": "#b29c74",
+            "coverage": 0.0193,
+            "saturation": 0.348,
+            "luma": 0.619
+          },
+          {
+            "hex": "#bbac8b",
+            "coverage": 0.0191,
+            "saturation": 0.257,
+            "luma": 0.678
+          }
+        ],
+        "light": {
+          "meanLuma": 0.581,
+          "p05": 0.214,
+          "p50": 0.609,
+          "p95": 0.922,
+          "dynamicRange": 0.708,
+          "gradient": {
+            "dx": -0.057,
+            "dy": 0.064
+          },
+          "luminanceGradient": "brighter bottom"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 51.5
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "wanted",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/wanted/images/11.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.5776,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.091,
+              "score": 54.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.066,
+              "score": 67
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 8.0458,
+              "score": 67.82
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 47.33,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/12.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#d2cbbd",
+            "coverage": 0.0688,
+            "saturation": 0.1,
+            "luma": 0.798
+          },
+          {
+            "hex": "#d4c5aa",
+            "coverage": 0.056,
+            "saturation": 0.198,
+            "luma": 0.777
+          },
+          {
+            "hex": "#ccbda3",
+            "coverage": 0.0438,
+            "saturation": 0.201,
+            "luma": 0.746
+          },
+          {
+            "hex": "#daceb2",
+            "coverage": 0.0395,
+            "saturation": 0.183,
+            "luma": 0.81
+          }
+        ],
+        "light": {
+          "meanLuma": 0.725,
+          "p05": 0.319,
+          "p50": 0.786,
+          "p95": 0.895,
+          "dynamicRange": 0.576,
+          "gradient": {
+            "dx": 0.061,
+            "dy": -0.067
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 25.1
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "wanted",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/wanted/images/12.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.5776,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.235,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.066,
+              "score": 67
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 7.813,
+              "score": 68.75
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 33.94,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/13.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#020202",
+            "coverage": 0.8038,
+            "saturation": 0,
+            "luma": 0.008
+          },
+          {
+            "hex": "#0a0a0a",
+            "coverage": 0.0178,
+            "saturation": 0,
+            "luma": 0.039
+          },
+          {
+            "hex": "#222325",
+            "coverage": 0.0057,
+            "saturation": 0.081,
+            "luma": 0.137
+          },
+          {
+            "hex": "#e3e4e4",
+            "coverage": 0.0051,
+            "saturation": 0.004,
+            "luma": 0.893
+          }
+        ],
+        "light": {
+          "meanLuma": 0.077,
+          "p05": 0,
+          "p50": 0.008,
+          "p95": 0.585,
+          "dynamicRange": 0.585,
+          "gradient": {
+            "dx": 0.022,
+            "dy": -0.044
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#020202",
+          "center": {
+            "x": 0.4377,
+            "y": 0.4847
+          },
+          "box": {
+            "x": 0,
+            "y": 0.1972,
+            "w": 0.85,
+            "h": 0.7993
+          },
+          "coverage": 0.2698
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "wanted",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/wanted/images/13.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.5776,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.413,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.057,
+              "score": 71.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 12.427,
+              "score": 50.29
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 30.45,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/14.jpg",
+        "role": "hero",
+        "scoredAgainst": "desktop-1440",
+        "palette": [
+          {
+            "hex": "#0c0d0a",
+            "coverage": 0.0659,
+            "saturation": 0.231,
+            "luma": 0.049
+          },
+          {
+            "hex": "#131512",
+            "coverage": 0.0638,
+            "saturation": 0.143,
+            "luma": 0.08
+          },
+          {
+            "hex": "#12130d",
+            "coverage": 0.0477,
+            "saturation": 0.316,
+            "luma": 0.072
+          },
+          {
+            "hex": "#1a1a15",
+            "coverage": 0.0401,
+            "saturation": 0.192,
+            "luma": 0.101
+          }
+        ],
+        "light": {
+          "meanLuma": 0.227,
+          "p05": 0.046,
+          "p50": 0.165,
+          "p95": 0.642,
+          "dynamicRange": 0.596,
+          "gradient": {
+            "dx": -0.13,
+            "dy": 0.048
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 92.9
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "wanted",
+          "surface": "desktop-1440",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/wanted/images/14.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+          "paletteSource": "capture/desktop-1440-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1853,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.267,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.028,
+              "score": 86
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 82.3378,
+              "score": 0
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 21.5,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      }
+    ],
+    "videos": [
+      {
+        "file": "videos/01.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#d3c4a3",
+              "coverage": 0.0256,
+              "saturation": 0.227,
+              "luma": 0.772
+            },
+            {
+              "hex": "#e3dccb",
+              "coverage": 0.0235,
+              "saturation": 0.106,
+              "luma": 0.864
+            },
+            {
+              "hex": "#ccbd9b",
+              "coverage": 0.0207,
+              "saturation": 0.24,
+              "luma": 0.744
+            }
+          ],
+          "light": {
+            "meanLuma": 0.729,
+            "p05": 0.41,
+            "p50": 0.76,
+            "p95": 0.937,
+            "dynamicRange": 0.527,
+            "gradient": {
+              "dx": -0.093,
+              "dy": -0.067
+            },
+            "luminanceGradient": "brighter left"
+          }
+        },
+        "fromImage": "images/01.jpg"
+      },
+      {
+        "file": "videos/02.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#0b0d0a",
+              "coverage": 0.0668,
+              "saturation": 0.231,
+              "luma": 0.048
+            },
+            {
+              "hex": "#121513",
+              "coverage": 0.0606,
+              "saturation": 0.143,
+              "luma": 0.079
+            },
+            {
+              "hex": "#141b1b",
+              "coverage": 0.0578,
+              "saturation": 0.259,
+              "luma": 0.1
+            }
+          ],
+          "light": {
+            "meanLuma": 0.22,
+            "p05": 0.027,
+            "p50": 0.108,
+            "p95": 0.764,
+            "dynamicRange": 0.737,
+            "gradient": {
+              "dx": -0.151,
+              "dy": 0.022
+            },
+            "luminanceGradient": "brighter left"
+          }
+        },
+        "fromImage": "images/04.jpg"
+      },
+      {
+        "file": "videos/03.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#c9c3ad",
+              "coverage": 0.0393,
+              "saturation": 0.139,
+              "luma": 0.763
+            },
+            {
+              "hex": "#c4bda3",
+              "coverage": 0.0339,
+              "saturation": 0.168,
+              "luma": 0.74
+            },
+            {
+              "hex": "#e1ddca",
+              "coverage": 0.0276,
+              "saturation": 0.102,
+              "luma": 0.865
+            }
+          ],
+          "light": {
+            "meanLuma": 0.651,
+            "p05": 0.203,
+            "p50": 0.726,
+            "p95": 0.903,
+            "dynamicRange": 0.7,
+            "gradient": {
+              "dx": 0.136,
+              "dy": -0.033
+            },
+            "luminanceGradient": "brighter right"
+          }
+        },
+        "fromImage": "images/06.jpg"
+      }
+    ]
+  }
+}

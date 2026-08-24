@@ -42,6 +42,11 @@ export const MOTION_RULES: Record<MotionPreset, MotionTokens> = {
       "Motion is nearly invisible — transitions support perception, never demand attention. Spring is forbidden because overshoot reads as uncertain about the fact being committed.",
     tagline: "Fintech-grade restraint, crossfade-only",
   },
+  // NON-BRAND IMPLEMENTATION DEFAULTS. These curves are playground presets,
+  // not observed brand tokens. Writers must never copy them into a reference
+  // DESIGN.md or a Core v2 foundations block — a brand's motion values exist
+  // only where they were measured on that brand's surfaces.
+  // (T1-3 re-injection guard: docs/reviews/t1-3-golden-2026-08-23-sol-review.md §4)
   standard: {
     durations: { instant: 0, fast: 150, standard: 250, slow: 400, page: 300 },
     easings: {

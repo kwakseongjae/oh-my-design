@@ -1,0 +1,195 @@
+{
+  "brand": "figma",
+  "shots": [
+    {
+      "file": "images/01.jpg",
+      "role": "hero",
+      "prompt": "A wide empty white studio canvas colored #ffffff. In the center, several overlapping portrait-oriented boards stacked at slight angles, typical board proportion near 0.8. The front board is a three-by-three grid of large rounded squares in #ebebeb, each holding one physical mineral specimen photographed as an object: a green malachite slice, a purple crystal cube, a rose stone, a banded geode, a pale white crystal. Soft rounded-square wells, no captions. A warm peach panel peeks from behind the grid, and a thin sliver of #000000 sits at the lower edge. Even product lighting, overall mean brightness around 0.61, fairly high contrast near 0.78. No lettering, no logos, no interface chrome, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/02.jpg",
+      "role": "hero",
+      "prompt": "A wide white #ffffff studio canvas. Centered on it, a deep wine-red #721c1b rectangle filled with an editorial photo collage of hard-cropped fragments: outdoor patio glasses of orange citrus drinks, a sunlit shoulder, a patch of pale sky, and a pale tiled surface near #ebebeb. Overlapping rectangular photo pieces, some with irregular cutout edges. A muted lavender-gray #b3b1be fragment at one corner. Overall brightness around 0.61 with strong contrast between the dark red field and the pale tiles, dynamic range near 0.78. No posters, no lettering, no logos, no brand marks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/03.jpg",
+      "role": "imagery",
+      "prompt": "An overhead product photograph of polished mineral specimens, each resting in its own large rounded-square well colored #ebebeb. Specimens include a cube-cut purple crystal, a malachite slice, a blue mineral cluster, and a pale geode. Soft gray-lavender #b3b1be shadows in the wells. Surrounding field is clean #ffffff. Even studio light, mean brightness around 0.61, contrast near 0.78. Square-ish portrait crop near aspect 0.8. No labels, no lettering, no logos, no UI.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/04.jpg",
+      "role": "imagery",
+      "prompt": "A bright daylight editorial still of two hands passing tall glasses of orange citrus drinks across a sunlit outdoor table, patio umbrellas above, cropped as a photographic fragment. Warm highlights, pale sky, skin tones against a deep wine-red #721c1b edge of the frame as if this photo sits on a burgundy collage board. Pale tiled table near #ebebeb. Mean brightness around 0.56, high contrast near 0.78. No lettering, no logos, no signage, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/05.jpg",
+      "role": "imagery",
+      "prompt": "A flat graphic close-up of a large cyan rounded triangle sitting on a deep cobalt-blue field. Thin white construction lines connect circular white nodes along the shape, like bezier handles. A solid black arrow pointer with a white outline rests on one node at the upper right. A curved green segment occupies one corner of the frame. Hard-edged flat color, no gradients, no shadows, no lettering, no logos, no numerals.",
+      "citedFacts": [],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/06.jpg",
+      "role": "imagery",
+      "prompt": "A flat graphic of a thick cyan winding S-shaped ribbon filling the frame on a lavender-pink field. A thinner darker cyan line runs down the center of the ribbon. Small solid purple dots scatter along the ribbon in loose clusters, never forming letters, words, or numerals. Hard-edged flat color, no shadows, no lettering, no logos.",
+      "citedFacts": [],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/07.jpg",
+      "role": "imagery",
+      "prompt": "A silver laptop open on a plush olive-green velvet sofa, photographed at a three-quarter angle in soft window light. The screen shows only a photograph of orange sand dunes meeting a pale ocean, filling the display with no browser chrome, no captions, no interface. Plain unmarked bezel, no badges. Mean brightness around 0.61, moderate-high contrast near 0.78. No lettering, no logos, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/08.jpg",
+      "role": "imagery",
+      "prompt": "A smartphone lying on rust-orange woven fabric in hard sunlight, casting a sharp rectangular shadow. The screen shows only a pale unlabeled map-like graphic with a few orange circular pins and a soft orange region, no street names, no captions, no interface bars. Mean brightness around 0.61, contrast near 0.78. No lettering, no logos, no watermarks, no brand marks on the device.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/09.jpg",
+      "role": "texture",
+      "prompt": "A full-bleed flat graphic field of warm beige #dad6cc and #dddacd, covered in a sprayed stipple of gold-khaki #9b8c6b dots denser toward the center and fading toward the edges, like a digital grain overlay on a wellness page. Even lighting, mean brightness around 0.68, contrast near 0.79. Not a beach photograph. No objects, no lettering, no logos.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/10.jpg",
+      "role": "texture",
+      "prompt": "A square deep wine-red #721c1b field used as a collaged background. Along the edges, overlapping photographic fragments: a strip of pale #ebebeb tiles, a sliver of sky, a cropped shoulder in sunlight, and a small #b3b1be lavender-gray paper piece. Most of the frame is the flat burgundy. Mean brightness pulled down by the red field, contrast near 0.78. No lettering, no logos, no posters.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/11.jpg",
+      "role": "texture",
+      "prompt": "A pale cool-gray design canvas near #ebebeb and #b3b1be. Dashed purple rounded rectangles, corner radius 8px, outline empty regions. Inside one region, four unlabeled pill shapes: one filled orange, one filled pale blue-gray, one filled #000000, one filled #ffffff, all with 8px-radius ends and completely empty faces. Another empty rounded rectangle in a darker gray. Even flat lighting, mean brightness around 0.61. No lettering, no icons, no logos, no numerals.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.primaryButton.radiusPx",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/12.jpg",
+      "role": "mobile",
+      "prompt": "A tall white #ffffff canvas. Two overlapping portrait boards stacked slightly off-center, typical board proportion near 0.8. The front board is a muted lavender field with two large concentric rings in a slightly lighter violet, no captions. Behind it, a board showing a soft out-of-focus green landscape photograph. Mean brightness around 0.68, contrast near 0.79. No lettering, no logos, no dates, no watermarks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/13.jpg",
+      "role": "mobile",
+      "prompt": "A tall white #ffffff canvas. Centered, a floating white rounded rectangle with 8px corner radius sitting on a sprayed gold-khaki grain of #dad6cc, #dddacd, and #9b8c6b. The card face is empty except for a small 4-by-4 grid of black dots. Mean brightness around 0.68. No lettering, no logos, no numerals.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.primaryButton.radiusPx",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/14.jpg",
+      "role": "mobile",
+      "prompt": "A tall white #ffffff canvas. Filling most of the frame, a portrait board of pale #ebebeb rounded-square wells, each holding one mineral specimen: malachite slice, purple crystal cube, rose stone, geode. Soft product light, mean brightness around 0.68, contrast near 0.79, board proportion near 0.8. No lettering, no logos, no captions.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/15.jpg",
+      "role": "imagery",
+      "prompt": "A close crop of dark red and pink tulips photographed against near-black. A wide pale-peach brushstroke sits over the flowers, enclosed by a thin blue rectangle with small square handles at the corners, as if a painted shape is selected. A black arrowhead mouse pointer with a white outline hovers at one handle. No lettering, no logos, no numerals, no UI panels.",
+      "citedFacts": [],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/16.jpg",
+      "role": "imagery",
+      "prompt": "Green foliage photographed close, overlaid with a bright yellow stippled mosaic of round dots that break the leaves into a bitmap pattern. In front, an empty white rounded rectangle with 8px corner radius, face completely blank. A black arrowhead mouse pointer with a white outline rests on the card. Mean brightness mixed, contrast near 0.79. No lettering, no logos, no sliders, no numerals.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.primaryButton.radiusPx",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "3:2"
+    }
+  ],
+  "videos": [
+    {
+      "file": "videos/01.mp4",
+      "fromImage": "images/05.jpg",
+      "motivation": "The sampled desktop imagery is a cyan bezier triangle on cobalt with white nodes and a black pointer — the product's own vector-edit still. A 6s 720p slow push-in keeps those flat shapes still and only eases the camera toward the selected node.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/02.mp4",
+      "fromImage": "images/01.jpg",
+      "motivation": "The homepage hero is overlapping portrait boards on a #ffffff canvas, with mineral tiles in #ebebeb wells. A 6s 720p push-in with slight scale is the motion that still belongs to that stacked-mockup still.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/03.mp4",
+      "fromImage": "images/06.jpg",
+      "motivation": "A cyan winding ribbon on lavender with purple dots (no letterforms) is the other flat graphic the captures actually publish. A 6s 720p gentle push-in holds the path still instead of inventing new motion.",
+      "durationSec": 6
+    }
+  ]
+}

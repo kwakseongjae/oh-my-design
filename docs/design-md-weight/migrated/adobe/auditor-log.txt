@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 Adobe 이관 산출물부터 읽고, 문장 한정과 원장만 고치겠습니다.규칙서 B2·E2와 Adobe 산출물 전체를 읽고, 최근 통과 감사 로그 형식도 맞춰 두겠습니다.원본과 최근 통과 감사 로그를 대조하고, 한정 누락·원장 불일치를 문장 단위로 집어내겠습니다.문장 분류와 로그 행을 grep으로 대조합니다. 한정이 이름만 부족한 곳과 목적지가 어긋난 행을 먼저 집겠습니다.문장 한정이 이름만 부족한 곳부터 본문에 붙이고, 이어서 provenance·migration-log를 실제 grep에 맞춥니다.provenance의 derived 범위와 잘못된 목적지를 본문 grep에 맞춥니다.Adobe 이관본 F3 감사를 마쳤습니다. 토큰·컴포넌트 표·상태 applicability·구조는 그대로 두고, 편집 한정과 원장만 고쳤습니다.
+
+**B2a.** 세 번째 부류인데 인접 완전 한정이 없거나 이름이 비었던 문장에 `derived editorial implementation inference` / `not Adobe-authored or a separately published UI specification`를 붙였습니다. Scope 제품 스토리 범위, 분위기 읽기(가장 무거운 히어로 비교 포함), Distinctive 무그림자, Semantic 정체성/Spectrum 1 재현 전용, Spacing 기록 스케일, Pause를 접근성 약속으로 읽는 판단, Type-role 줄간격 비승격, Audience Tab 캡처 변형, Assistant fill, Layout 접힘/이미지 행동, Content 인용 성격이 대상입니다.
+
+**E2.** `migration-log` 목적지를 grep과 맞췄습니다. Type 줄은 442/463, Named gaps는 585/587/588, Empowering Observed는 525, Tier 1 웹 URL은 여섯 개입니다. `#eb1000`은 Named gaps에 없고, “Create at the highest level.”는 Primary tasks가 아닙니다. provenance derived 목록은 본문 실제 B2a 위치에 맞췄습니다.
+
+기록: `docs/design-md-weight/migrated/adobe/audit-log.md`. Post-F3 SHA-256 `64c274ec205314fc5dbaea4457d524fcb4696c8ba6ac197b2ab07e64c5db13f3`. `--gate-only` PASS, `portable_core: true`.
+
+AUDIT_DONE fixes=31

@@ -1,0 +1,13 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 Bigin 이관 산출물부터 읽고, 문장 분류와 원장 대조를 한 뒤 한정·로그만 고치겠습니다.규칙서 B2·E2만 기준으로 Bigin 산출물과 최근 감사 로그 형식을 대조합니다.최근 F3 감사에서 한정을 어떻게 붙였는지 확인하고, 원본 Bigin DESIGN.md의 해석 문장과 줄 번호를 대조합니다.문장 단위로 한정이 빠지거나 이름이 짧은 곳을 먼저 고치고, 이어서 원장 목적지를 grep으로 맞춥니다.한정이 짧거나 인접하지 않은 문장부터 붙입니다. 토큰·표·구조는 건드리지 않습니다.B1 Focus 문장과 Elevation 철학 한정을 보강하고, 줄 번호를 다시 맞춥니다.게이트가 migrated 경로가 아니라 카탈로그를 보고 있을 수 있어, 검사 대상부터 확인합니다.Form Input 필드 노트에서 `focus-visible`과 hex가 같은 줄에 붙어 게이트가 막혔습니다. 한정을 유지한 채 줄을 나눕니다.원장 줄 번호와 `#006fff` 목적지를 실제 grep에 맞춥니다. 본문 값은 그대로 둡니다.Bigin F3 감사를 마쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 건드리지 않았고, 한정 문장과 원장만 고쳤습니다.
+
+**B2a.** 편집적 해석인데 한정이 없거나 이름이 짧은 문장에 인접 완전 한정을 붙였습니다. 대표적으로 Scope 증거 도메인·분위기 이름, Audience `no-individual-personas`, Avoid 마지막 Don’t, Semantic 역할 서술·Connect Chip glow, Elevation 표 Use, Motion easing/reduce-motion, 필드 노트 unmerge, Nav captured-variant, Layout collapsing, Content voice 라벨입니다.
+
+**E2.** `migration-log`를 grep과 맞췄습니다. `#006fff`의 Content Observed 목적지는 허위라 뺐고(본문은 `"상담 신청"` 문자열만), Layout `485`/`510` → `489`/`508`, Avoid last-bullet `84`, B3 전문은 Motion `173`, Named gaps 커브는 `582`입니다. 워커 SHA는 철회했습니다.
+
+**E1.** `provenance` derived 목록을 실제 B2a 위치에 맞췄습니다.
+
+기록: `docs/design-md-weight/migrated/bigin/audit-log.md`  
+Post-F3 SHA-256 `2d8ca6cc44201d2aa79af7ca0a768cf1d28da315e0ba287df15729c6344fa47f`  
+`--gate-only` PASS, `portable_core: true`
+
+AUDIT_DONE fixes=40

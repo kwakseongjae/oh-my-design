@@ -1,0 +1,9 @@
+B2a·E2 감사만 수행한다. 규칙서의 해당 조항과 11st 이관 산출물부터 읽고, 문장 한정과 원장 불일치만 고친다.이관본·원본·최근 감사 로그를 같이 읽어, 문장 분류와 원장 대조의 기준을 맞춘다.원본 DESIGN.md와 최근 성공 F3 감사 로그를 대조해, 한정 누락과 로그 불일치를 문장 단위로 잡는다.E2용으로 로그에 적힌 값·목적지를 세 파일에서 직접 grep한다.문장 분류가 끝났다. 한정이 없는 편집 해석에 B2a를 붙이고, 원장은 grep 결과에 맞춘다.본문 한정을 다시 읽고, 남은 편집 해석과 provenance 범위를 맞춘다.provenance의 derived 범위와 primary_color 목적지를 본문 grep 결과에 맞춘다.11st F3 감사는 한정 문장과 원장만 고쳤다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 그대로다.
+
+**B2a.** 편집적 해석인데 인접 완전 한정이 없던 문장에 `derived editorial implementation inference` / `not 11st-authored or a separately published UI specification`을 붙였다. Scope 증거 도메인·읽기 역할·인가, Audience 가상 persona 금지, Distinctive/Brand red filled-CTA 비승격, `#F43142` 생략 인과, Elevation 스케일 부정, Motion dialog-open 인과, Font evidence 적용 읽기, Family related-but-distinct, Capture record 합성 금지, Billboard 필드 비합침, Layout 추론 생략.
+
+**E2.** `primary_color`는 identity+Foundations만이 아니라 Scope·Distinctive·Named gaps에도 있다. `design.11stcorp.com`, `tokens.note`, `#F43142` 철회 목록, `#999999`, layout/motion 부재도 실제 목적지가 더 넓었다. 로그와 provenance derived 범위를 그 grep에 맞추고, 워커 F1/F2 준수 완료 주장은 거뒀다.
+
+수정 목록: `docs/design-md-weight/migrated/11st/audit-log.md`
+
+AUDIT_DONE fixes=24

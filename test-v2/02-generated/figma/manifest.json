@@ -1,0 +1,116 @@
+{
+  "brand": "figma",
+  "storeId": "2026-08-23T06-29-51-730Z",
+  "ingestedAt": "2026-08-23T06:29:51.730Z",
+  "generator": {
+    "channel": "grok-build-cli",
+    "model": "grok-4.6",
+    "tools": [
+      "image_gen",
+      "image_to_video"
+    ]
+  },
+  "brief": "01-prompts/figma/asset-brief.json",
+  "store": {
+    "root": "$OMD_GENERATED_STORE",
+    "path": "figma/2026-08-23T06-29-51-730Z"
+  },
+  "files": [
+    {
+      "name": "images/01.jpg",
+      "bytes": 183535,
+      "sha256": "a401727d797ccc43f9a16d86a42587c3874f980ae44f390e30f55247cf5f53d7"
+    },
+    {
+      "name": "images/02.jpg",
+      "bytes": 253481,
+      "sha256": "5232ea20aaf8885335a63e0c659795604500e574a6a4b8e07a4406faf0f3ff99"
+    },
+    {
+      "name": "images/03.jpg",
+      "bytes": 224412,
+      "sha256": "4299bcb0aea79ff68fe3cbae10386330de92a18d99c4e929c214dca5eaa3e9ae"
+    },
+    {
+      "name": "images/04.jpg",
+      "bytes": 258879,
+      "sha256": "4959a27b19ebb7e4398d6b7852a49094094b7c514785cee71063d8f5fa744cf4"
+    },
+    {
+      "name": "images/05.jpg",
+      "bytes": 116937,
+      "sha256": "57ffb9b1c7eea42423179a6fe6fc70eee28e3596dba1a1e713f0f260c64e7b27"
+    },
+    {
+      "name": "images/06.jpg",
+      "bytes": 125179,
+      "sha256": "69015d3ec0ea79e1ed3c90789f7a4c93336479e457367ebfc543fb31cbe39cab"
+    },
+    {
+      "name": "images/07.jpg",
+      "bytes": 293986,
+      "sha256": "db830b39e00b2f56a63458a075f72e7d1e3146b58c1a252f5d0dd3d1510f6183"
+    },
+    {
+      "name": "images/08.jpg",
+      "bytes": 513330,
+      "sha256": "3d8605cda8fede13f2bcaaf504875ea39bce5051b22c8577ee258edb12fef1fd"
+    },
+    {
+      "name": "images/09.jpg",
+      "bytes": 241803,
+      "sha256": "828a517337e27efdaa3de5f8d9955aa85c682f821ce9b64079533713ee355e51"
+    },
+    {
+      "name": "images/10.jpg",
+      "bytes": 272639,
+      "sha256": "a6b338b03a77194077ab1183937c03d60d7cd8aa3304e7175288678035f5c349"
+    },
+    {
+      "name": "images/11.jpg",
+      "bytes": 111511,
+      "sha256": "a9119ac09e3323622016357d6895c7cc3230b0963d60095dbfb7f25f543877c6"
+    },
+    {
+      "name": "images/12.jpg",
+      "bytes": 180553,
+      "sha256": "395548682699afd2b239530995fb1b6da4135eedcbd8e7beef157db35faaf214"
+    },
+    {
+      "name": "images/13.jpg",
+      "bytes": 272089,
+      "sha256": "eac7d2086d414b5d6f193d621105f121a43e62d018e5d0430aadea1894107ce6"
+    },
+    {
+      "name": "images/14.jpg",
+      "bytes": 219319,
+      "sha256": "8e5558bdda3532fe29c747ac900a63efca303a72434c1ba48b21a9361068e3c0"
+    },
+    {
+      "name": "images/15.jpg",
+      "bytes": 272357,
+      "sha256": "57d81fe246138d6b7cc2f43662cf818d1ed73297a8fd00ad76ab2a09283e3605"
+    },
+    {
+      "name": "images/16.jpg",
+      "bytes": 542941,
+      "sha256": "cd4a86633dc07541f55f9fd7c5a267c8fe7e55d9fc3055871925e73189aaa234"
+    },
+    {
+      "name": "videos/01.mp4",
+      "bytes": 264095,
+      "sha256": "c2a3aead2539eed04850ff10d242d62ba2aa6478045a20d07d67a6020d7792a3"
+    },
+    {
+      "name": "videos/02.mp4",
+      "bytes": 332830,
+      "sha256": "973c4a13a668eabf2ffe3788b76a5d528a0acdca552d8bd4d8e4c4c838d2f45f"
+    },
+    {
+      "name": "videos/03.mp4",
+      "bytes": 263597,
+      "sha256": "1a6c4b39d60a981f0192b11eb26a337863aec1e9d3c7650ef6c14151a18afdd3"
+    }
+  ],
+  "shotsSha256": "d57bc5790cb15376b1dea4a042f2b2ad5bd6eaccb1e1c40c5e93a54c8f07953c"
+}

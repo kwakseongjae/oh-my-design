@@ -1,0 +1,203 @@
+{
+  "brand": "naver",
+  "shots": [
+    {
+      "file": "images/01.jpg",
+      "role": "hero",
+      "prompt": "Three people rest on three identical pale grey quilted mattresses lined in a row on a near-white floor in #fefefe, seen from a slightly high three-quarter view. They wear unmarked casual clothes; faces are turned into the mattress or aside. Even indoor daylight, overall mid brightness near mean luma 0.497, contrast near 0.723 dynamic range, cool grey in the folds near #cbd3dd and #d2dbe5. Clean white room, unlettered photograph, landscape 16:9.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/02.jpg",
+      "role": "hero",
+      "prompt": "A young East Asian child in a plain white t-shirt stands against a white textured stucco wall, holding a round gold medal on a purple ribbon with both hands and smiling with an open mouth. Even indoor light, wall and air in cool grey-blue #cbd3dd, #d2dbe5, #ced6e1, and #ced9e2. Mid brightness with contrast near 0.723 dynamic range. Unmarked clothing, unlettered documentary photograph, 3:2 frame.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/03.jpg",
+      "role": "hero",
+      "prompt": "A wide empty interior: near-white wall and floor in #fefefe under even daylight, a soft cool grey-blue falloff toward #cbd3dd and #ced6e1 along the left. No furniture, no people. Overall mid brightness near mean luma 0.497, contrast near 0.723 dynamic range, unlettered landscape 16:9.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/04.jpg",
+      "role": "imagery",
+      "prompt": "Slightly overhead still life of a dozen small oblong baked cakes in two loose rows on a warm cream board — golden financiers and darker chocolate ones, some finished with nuts or crumbs. Even studio light, mid brightness near mean luma 0.497, contrast near 0.723 dynamic range. Unlettered food photograph, 3:2 frame.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/05.jpg",
+      "role": "imagery",
+      "prompt": "Overhead still of a meal on a white table: a round central plate of sliced beef and shrimp, ringed by black square dishes of yellow radish, shredded white radish, greens, crab sticks, bean sprouts, and two small sauce bowls. Even overhead light, mid brightness near mean luma 0.497, contrast near 0.723 dynamic range. Unlettered food photograph, 3:2 frame.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/06.jpg",
+      "role": "imagery",
+      "prompt": "Three young East Asian women walk toward the camera on a narrow commercial alley in daylight — one in a white tee, one in a red gingham shirt, one in a white tank. Behind them, solid-color awnings and hanging round lamps recede; facades are unlettered. Daylight brighter toward the ground, mid brightness near mean luma 0.497, contrast near 0.723 dynamic range. Documentary street photograph, 3:2 frame.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/07.jpg",
+      "role": "imagery",
+      "prompt": "Close indoor documentary portrait of a smiling East Asian woman with shoulder-length dark hair facing the camera, shallow focus, warm indoor bokeh of seated people behind. Mid brightness near mean luma 0.497, contrast near 0.723 dynamic range, cooler grey #cbd3dd at the frame edge. Unmarked clothing, unlettered photograph, 3:2 frame.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/08.jpg",
+      "role": "imagery",
+      "prompt": "Clean digital illustration of a young man with short black hair and a pale open-collar shirt, standing between two beige curtains, facing forward, even indoor window light behind him. Cel-shaded, mid brightness near mean luma 0.497, contrast near 0.723 dynamic range. Unlettered 3:2 frame.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/09.jpg",
+      "role": "imagery",
+      "prompt": "Close photograph of pale grey quilted mattress fabric filling a 3:2 frame, a person's arm and unmarked sleeve resting on it, even indoor light, cool grey #cbd3dd in the folds, mid brightness near mean luma 0.497, contrast near 0.723 dynamic range. Unlettered.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/10.jpg",
+      "role": "texture",
+      "prompt": "Square close-up of white stucco plaster filling the frame, fine bumpy texture, even high-key indoor light with a cool grey-blue cast of #cbd3dd, #d2dbe5, #ced6e1, and #ced9e2. No objects. Unlettered.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/11.jpg",
+      "role": "texture",
+      "prompt": "Square field of near-white #fefefe paint filling the frame, a faint cool veil of #ced6e1 along one edge, even illumination, smooth matte. No objects. Unlettered.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/12.jpg",
+      "role": "texture",
+      "prompt": "Square close-up of a smooth physical object in solid #03c75a, a large rounded corner matching a 28-pixel radius, filling most of the frame, sitting on a #fefeff ground. Even light, soft contact shadow, unmarked, unlettered.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.primaryButton.background",
+        "measuredFacts.surfaces.mobile-390.primaryButton.radiusPx"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/13.jpg",
+      "role": "mobile",
+      "prompt": "Young East Asian child in a plain white t-shirt against a white textured stucco wall, holding a gold medal on a purple ribbon, open-mouthed smile, vertical 9:16. Even indoor light, cool grey-blue wall in #cbd3dd, #d2dbe5, #ced6e1. Unmarked clothing, unlettered documentary photograph.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/14.jpg",
+      "role": "mobile",
+      "prompt": "Three young East Asian women walking toward the camera on a narrow commercial alley, vertical 9:16. White tee, red gingham shirt, white tank. Solid-color awnings, hanging lamps, unlettered facades, daylight brighter toward the ground, mid brightness near mean luma 0.497, contrast near 0.723 dynamic range.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/15.jpg",
+      "role": "mobile",
+      "prompt": "A wide smooth rounded bar in solid #03c75a with generously rounded ends matching a 28-pixel corner radius, lying on a #fefeff table, photographed from slightly above in a vertical 9:16 frame. Matte silicone or ceramic surface, even light, soft contact shadow, unmarked, unlettered.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.primaryButton.background",
+        "measuredFacts.surfaces.mobile-390.primaryButton.radiusPx"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/16.jpg",
+      "role": "mobile",
+      "prompt": "Slightly overhead vertical 9:16 still life of small oblong baked cakes on a warm cream board, golden and chocolate, even studio light, mid brightness near mean luma 0.497, contrast near 0.723 dynamic range. Unlettered food photograph.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange"
+      ],
+      "aspect": "9:16"
+    }
+  ],
+  "videos": [
+    {
+      "file": "videos/01.mp4",
+      "fromImage": "images/01.jpg",
+      "motivation": "Desktop above-fold photograph on the captured 1440 viewport: three people on pale grey quilted mattresses in a #fefefe room. Slow 6s 720p push-in on that still.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/02.mp4",
+      "fromImage": "images/04.jpg",
+      "motivation": "Matches the captured bakery still-life sample (warm cream board, oblong cakes). Simple overhead food photograph that animates cleanly with a slow push-in.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/03.mp4",
+      "fromImage": "images/12.jpg",
+      "motivation": "Physical close-up of the measured primary fill #03c75a with the 28px radius language on a #fefeff ground — the chrome accent as material, not a wordmark.",
+      "durationSec": 6
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+T2 Appier 마이그레이션을 시작하겠습니다. 먼저 규칙집·골든 샘플·레거시 원문을 순서대로 읽고, 그 다음에 Core v2 산출물을 작성합니다.규칙집과 Core 규격을 확인했습니다. 이제 대응표·제약·골든 샘플·레거시 Appier 원문을 이어서 읽습니다.골든 샘플과 Appier 원문, 최근 통과 이관본을 함께 읽어 형태를 맞춥니다.Appier는 라이브 inspect가 없고 근사 팔레트가 있어, 같은 성격의 최근 통과본과 게이트 규칙을 대조합니다.원문 값·충돌·증거 경계를 모두 확보했습니다. Core v2 본문부터 작성합니다.본문을 처음부터 다시 읽어 B2a를 점검하고, 로그에 넣을 값은 grep으로 대조합니다.B2a 재독에서 한정이 비어 있는 문장 몇 개를 고친 뒤, 로그를 grep 결과에 맞춰 작성합니다.Appier 레거시를 Core v2로 옮겼습니다. 규칙집 **v7**을 썼고, 제출 전에 B2a 전편 재독과 E2 grep 대조를 했습니다.
+
+산출물:
+- `docs/design-md-weight/migrated/appier/DESIGN.md`
+- `docs/design-md-weight/migrated/appier/provenance.md`
+- `docs/design-md-weight/migrated/appier/migration-log.md`
+
+보존한 경계:
+- YAML `lineHeight` `1.5`는 비율로 유지
+- `button` ×2, `card` ×2, `input`, `badge`는 컴포넌트별로 유지
+- brief-provided `#1D2EFF`와 근사 팔레트, YAML `#101130`과 `#0A0E27`/`#1A1A2E`는 합치지 않음
+- Input generic Focus `#1D2EFF`는 `focus-visible`로 올리지 않음
+- §13 가상 페르소나는 삭제했고 provenance에도 다시 싣지 않음
+- 무출처 cubic-bezier 3개만 빼고 duration/`ease-*`/`ease-in-out`/reduced-motion은 본문에 남김
+- 카드·뱃지·헤더는 kind/map 생략(C4), mixed CTA는 loading/error/success 생략(C2)
+- §14 10행과 B3 다섯 증거 종류는 본문에 유지
+
+`--gate-only` PASS, `portable_core: true`. SHA-256 `e599ff5c0e190a7cf94fbff36bcc4748e86608561973a5aa3ddfbe4dd0340e99`. F3와 sol 의미 레인은 아직이다. 카탈로그 채택은 아니다.
+
+DONE migrated=1

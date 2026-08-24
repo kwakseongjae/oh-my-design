@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 3o3 이관 산출물부터 읽고, 문장 분류와 원장 대조를 시작하겠습니다.이관 산출물과 최근 감사 로그 형식을 읽어, 문장 분류와 원장 대조 기준으로 맞춥니다.최근 감사 로그 형식과 원본 레퍼런스를 대조해, 한정 누락과 원장 불일치를 찾겠습니다.최근 F3 감사 로그와 원본 나머지를 읽어, 이 작업에서 실제로 잡히던 한정·원장 결함 패턴을 맞춥니다.Semantic color·Spacing 등 Principles 밖 한정 누락이 과거 F3에서 자주 나왔습니다. 그 감사 로그와 본문을 대조합니다.문장 분류와 로그 행을 실제 파일에서 grep으로 대조합니다. 한정 누락과 목적지 불일치만 고칩니다.문장 한정 누락과 원장 불일치를 확인했습니다. DESIGN.md에 인접 B2a를 붙인 뒤 provenance·migration-log를 실제 grep 결과에 맞춥니다.DESIGN.md 한정을 붙였습니다. provenance 원장의 derived 범위와 목적지부터 실제 본문에 맞춥니다.3o3 F3 감사(B2a·E2만)를 반영했습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 건드리지 않았습니다.
+
+**B2a.** 편집적 해석인데 인접 한정이 없거나 불완전했던 문장에 `derived editorial implementation inference` / `not 3o3-authored or a separately published UI specification`을 붙였습니다. Scope 서사·3.3% 비토큰, Distinctive 역할 분리, Semantic 비합침, Font/Family 치환 금지, Type roles 잉크·다크밴드, Capture-record `#f0f1f2`, Info Chip field note, Layout 실측치.
+
+**E2.** 로그·provenance를 grep에 맞췄습니다. 파비콘 URL은 identity+Assets 이중(Named gaps는 URL 없는 문구), `#0c64e6`에 Principles item 4, 홈 타이틀은 Distinctive/Primary tasks가 아님, 48px floor는 YAML `xl`(32)이 아님, `158-86-00171`은 Scope에 없음, Named gaps는 B3 다섯 종류 전문이 아님.
+
+기록: `docs/design-md-weight/migrated/3o3/audit-log.md`
+
+AUDIT_DONE fixes=31

@@ -1,0 +1,9 @@
+감사 범위는 B2a·E2뿐입니다. 규칙과 이관 산출물부터 읽고, 문장 분류와 원장 대조를 시작하겠습니다.이전 감사 로그 형식과 Abema 산출물·원본을 함께 읽어 문장 단위로 대조하겠습니다.이전 감사 로그와 원본 Abema DESIGN.md를 대조해 B2a 한정이 빠진 문장을 잡겠습니다.F3 감사 워커 프롬프트와 최근 B2a FAIL 사례를 읽어, 같은 기준으로 Abema 문장을 분류하겠습니다.문장 분류와 로그 행별 grep 대조를 병렬로 진행합니다.B2a는 봉투 한정이 불완전하고, Semantic·Layout 등 인접 한정이 빠진 해석이 있습니다. 한정 문장과 원장만 고치겠습니다.Abema F3 감사는 B2a·E2만 다뤘고, 토큰·컴포넌트 표·상태 applicability·구조는 건드리지 않았습니다.
+
+**B2a.** 편집·인과 읽기 9곳에 인접 완전 한정(`derived editorial implementation inference` / `not ABEMA-authored or a separately published UI specification`)을 붙이거나 채웠습니다. Scope 봉투 한정은 `or a separately published`가 빠져 불완전했습니다. Distinctive의 `role-locked`/`deliberately light`, Semantic color 네 읽기, Motion `fast in, soft settle`, Layout `structural exception`과 collapsing/fixed-anchor는 한정이 없었습니다.
+
+**E2.** provenance의 derived 목록이 실제보다 좁았습니다. Homepage는 Primary tasks에도, `times.abema.tv`는 Named gaps에도, 「テレビの再発明」는 Principles에도 있는데 원장은 Scope+provenance만 적었습니다. F1은 Distinctive를 토큰 나열로만 보고 준수를 과하게 주장했습니다. 로그·provenance를 실제 목적지에 맞췄습니다.
+
+목록은 `docs/design-md-weight/migrated/abema/audit-log.md`에 있습니다.
+
+AUDIT_DONE fixes=14

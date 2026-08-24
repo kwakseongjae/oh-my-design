@@ -1,0 +1,9 @@
+B2a·E2 감사만 수행합니다. 룰북 해당 조항과 17live 이관 산출물·원본부터 대조하겠습니다.룰북 B2a·E2와 최근 감사 형식, 17live 세 파일·원본을 같이 읽겠습니다.이전 웨이브 F3 감사에서 어떤 문장을 세 번째 부류로 잡았는지 대조하고, 원본 17live DESIGN.md도 같이 읽겠습니다.문장 분류와 로그 행 grep을 동시에 진행합니다. 불완전 한정과 목적지 불일치부터 집습니다.한정 누락 문장부터 DESIGN.md에 인접 완전 B2a를 붙입니다.본문 한정은 붙였습니다. provenance 파생 범위와 목적지부터 실제 grep에 맞춥니다.원장을 맞춘 뒤 `audit-log.md`와 세션 복원 문서를 씁니다.CURRENT_STATE 맨 위에 17live F3 항목이 빠져 있어 복원 지점부터 고칩니다.17live F3 감사는 B2a·E2만 고쳤다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 그대로다.
+
+**B2a.** 세 번째 부류인데 인접 완전 한정이 없던 문장에 `derived editorial implementation inference` / `not 17LIVE-authored or a separately published UI specification`을 붙였다. 대표 결함은 Content의 불완전 한정(`derived editorial reconstruction`), Family의 `migration/runtime` 조각, Avoid 파비콘 경계, Scope의 매칭·권한·위키 비토큰 판정, Semantic 비해석 합침, Font evidence 적용 읽기, Assets identity-not-captured, Layout Twitch/thumb 해석이다.
+
+**E2.** migration-log를 grep에 맞춰 고쳤다. `#FF4F6E`는 Foundations+identity가 아니라 Scope·Distinctive·Principles·Components·Named gaps까지, `prose-derived`는 Foundations가 아니라 Scope+Typography, `15px`/`28px`는 Avatar Use·Layout까지. F1/F2의 준수 과장과 pre-F3 Core/gate 재주장은 철회했다. provenance derived 목록은 본문 실제 B2a 위치에 맞췄다.
+
+기록: `docs/design-md-weight/migrated/17live/audit-log.md`
+
+AUDIT_DONE fixes=34

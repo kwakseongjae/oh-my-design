@@ -1,0 +1,23 @@
+# Symlink into web/node_modules so the tools resolve playwright-core.
+tools/node_modules
+
+# Third-party captures. evidence.json holds the measurements, which are facts;
+# the source images are someone else's work and do not belong in this repo.
+00-evidence/*/capture/
+
+# Generated media is large and — because generation is stochastic — NOT
+# reproducible from its prompts. The files themselves live in the immutable
+# store (~/.omd/generated-store, via ingest-generated.mjs); the repo keeps the
+# manifests and measurements, which are the part reviews need.
+02-generated/**
+!02-generated/*/
+!02-generated/*/shots.json
+!02-generated/*/measure.json
+!02-generated/*/manifest.json
+
+# The lane run tree is scaffolded deterministically from arm-order.json
+# (`node tools/lanes.mjs --scaffold`), so 216 empty run.json files are noise in
+# review. Once real outputs land here, decide what to preserve the way evidence
+# is preserved — an immutable store plus a manifest — rather than committing
+# images into the repo.
+03-runs/

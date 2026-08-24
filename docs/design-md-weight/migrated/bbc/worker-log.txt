@@ -1,0 +1,18 @@
+BBC legacy DESIGN.md를 Core v2로 옮기겠습니다. 먼저 세션 상태와 지정된 규격·규칙집부터 순서대로 읽습니다.필수 규격과 규칙집, BBC 원문, 골든 샘플을 병렬로 읽습니다.규칙집과 Core 스펙 앞부분을 확인했습니다. 나머지 정본과 BBC 원문, 골든 샘플을 이어서 읽습니다.골든 샘플과 BBC 원문을 읽고, 최근 PASS 이관본 형태도 대조합니다.BBC 원문 값·최근 PASS 이관 형태·게이트 제약을 더 대조합니다. C2/C4 상태 처리와 B2a 인접 한정이 핵심입니다.원문 값과 C2/C4·B2a 패턴을 맞춰 DESIGN.md부터 작성합니다. 해석 문장에는 인접 한정을 붙입니다.BBC 이관본을 musinsa 골격과 최근 PASS의 B2a·C2/C4 처리에 맞춰 작성합니다.F1 스캔에서 인접 한정이 비거나 D1에 해당하는 문장을 고칩니다.provenance.md를 원장·이중 목적지·derived inventory에 맞춰 작성합니다.BBC legacy `DESIGN.md`를 Core v2 portable 계약으로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/bbc/`입니다.
+
+- `DESIGN.md` — 일곱 섹션, Portable Core claim, 검증된 토큰·컴포넌트·§14 상태
+- `provenance.md` — 원장·freshness·무출처 커브 원장
+- `migration-log.md` — 규칙집 v7, 섹션별 옮김/분리/삭제
+
+의미 보존에서 닫아 둔 경계는 다음과 같습니다.
+
+- YAML unitless `lineHeight` `1.25` / `1.50` / `1.00`는 비율로 유지했습니다.
+- `type: button|input|tab|card|badge|toggle`는 컴포넌트별로 유지했습니다.
+- 카드·배지·Dark Nav는 kind/map을 생략했고(C4), Register/Sign In/Toggle의 loading·error·success는 역할이 닫히지 않아 생략했습니다(C2).
+- generic Focus `2px solid #000000`은 `focus-visible` 행에 넣지 않았습니다(B1).
+- 템플릿과 같은 cubic-bezier 3개는 본문에서 빼고 provenance에만 두었습니다. duration·easing 이름·`prefers-reduced-motion`·B3 다섯 증거 종류는 본문에 남겼습니다.
+- §13 가상 persona는 삭제했고 sidecar에도 다시 싣지 않았습니다. `360px`만 토큰 손실 방지용으로 provenance에 있습니다.
+
+기계 검사: `--gate-only` PASS, Core `portable_core: true`. SHA-256 `68f59a0fcf0b14c48cea54634eaec82882d591435ed78697944b720d2e30d234`. F3 감사와 sol 의미 레인은 이 세션 밖입니다. 카탈로그 채택은 하지 않았습니다.
+
+DONE migrated=1

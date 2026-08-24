@@ -1,0 +1,14 @@
+T2 마이그레이션을 규칙집과 골든 샘플부터 맞춘 뒤 Linear 레거시를 Core v2로 옮기겠습니다. 먼저 세션 상태와 지정 문서를 순서대로 읽습니다.규칙집 v2를 확인했습니다. 지정 문서와 골든 샘플, Linear 레거시를 이어서 읽습니다.의미 보존 조건을 확인했습니다. 개정 골든 샘플, Notion 통과본, Linear 레거시를 읽습니다.Notion 통과본의 C2 처리와 Linear 관련 게이트/워커 프롬프트를 확인합니다.게이트 검사 항목과 Linear 보조 증거를 확인한 뒤 본문을 작성합니다.토큰 집합과 C2 역할 판정을 고정했습니다. 이제 세 산출물을 작성합니다.`Unresolved`가 표 칸에서 플레이스홀더로 잡혔습니다. 증거 등급 라벨을 고친 뒤 다시 검사합니다.Linear 레거시 `DESIGN.md`를 Core v2 Portable Core로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/linear.app/`에 있습니다.
+
+검증: `inspectDesignMd` `portable_core: true`, 게이트 `PASS`, 토큰 손실 0 / 발명 0, `[FILL IN]` 0. 규칙집 **v2**.
+
+의미 보존에서 특히 닫은 점:
+
+- **§14 본문 유지.** public nav focus/hover/pressed·menu-open, embedded selected/open은 검증; loading/empty/error/success/disabled workflow/command-palette는 부재로만 기록. 미관측을 `not-applicable`로 뒤집지 않음.
+- **C2 역할 판정.** get-started / contact-sales는 전환 액션으로 loading·error·success `applicable` (treatment 생략). navigation trigger와 embedded menu row는 메뉴 역할이라 세 상태 `not-applicable`. customer card는 kind/map 생략 (C4).
+- **B1.** 원본 `focus`는 `focus-visible` treatment로 올리지 않음. `focus-visible` 행에 색값 없음.
+- **D1/D2.** `storefront` 부정 claim 없음. §13은 public task context 3개만 primary-tasks로; 가상 persona는 sidecar에도 없음.
+- **§9** 도구 프롬프트는 삭제. 고유 값은 이미 Foundations/Components에 있음.
+- 원본 표의 `Unresolved` 칸 라벨만 Portable Core placeholder 금지 때문에 `Outside this capture`로 바꿨고, workspace/native·desktop가 이 캡처 밖이라는 의미는 유지.
+
+DONE migrated=1

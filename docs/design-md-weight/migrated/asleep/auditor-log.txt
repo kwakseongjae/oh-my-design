@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 룰북의 해당 조항과 asleep 이관 산출물을 읽고, 문장 분류·로그 대조부터 하겠습니다.룰북 B2·E2와 asleep 산출물, 그리고 최근 F3 감사 로그 형식을 대조해 읽겠습니다.원본과 최근 F3 감사 로그를 대조해, 한정 누락과 원장 불일치를 문장 단위로 잡겠습니다.원본 나머지와 값·한정 구문을 파일 전체에서 대조해, 인접 한정 누락과 원장 불일치를 집겠습니다.문장 분류에서 인접 한정 누락·원장 불일치를 확인했습니다. 한정 문장과 로그·provenance만 고치겠습니다.본문 한정을 붙였습니다. 이제 실제 줄 번호를 grep으로 다시 잡고 provenance·migration-log를 맞춥니다.줄 번호를 다시 맞춘 뒤 provenance 파생 범위와 migration-log를 실제 grep에 맞게 고칩니다.Core 검사는 통과했습니다. migration-log 줄 번호와 목적지를 실제 grep에 맞춰 고칩니다.Elevation 한정이 관측 YAML과 해석 문장 사이에 떨어지지 않게, 한정→표→철학 문단 순으로 붙이겠습니다.asleep F3 감사(B2a·E2만)를 마쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 건드리지 않았습니다.
+
+**본문.** 세 번째 부류인데 인접 한정이 없거나 독해를 끝까지 안 적은 곳에 `derived editorial implementation inference` / `not Asleep-authored or a separately published UI specification`를 붙이거나 이름을 보탰습니다. Scope 분위기 부가명, Shape 역할 라벨(한정문을 목록 앞으로), Elevation 표 Use(한정문을 표 앞으로), Motion spec-template 대 모션 규칙 분리, type-rule compact/legibility-bump, Docs Nav Observed captured-variant, Layout YAML-versus-body-px, Content Observed 인용 성격 재지정.
+
+**원장.** `migration-log`는 grep과 다른 목적지·줄 번호를 고쳤고, 이중 목적지는 둘 다 적었습니다. 워커 SHA는 폐기했습니다. provenance derived 목록은 본문 실제 한정 위치에 맞췄습니다.
+
+수정 목록은 `docs/design-md-weight/migrated/asleep/audit-log.md`에 있습니다. 게이트 `--gate-only` PASS, Core `portable_core: true`. Post-F3 SHA-256 `6d54313a5a32835037c3787aa1ac692408bb06bcd25ea81acdf5ddc40e11c166`.
+
+AUDIT_DONE fixes=30

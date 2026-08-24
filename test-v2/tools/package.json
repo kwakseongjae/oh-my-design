@@ -1,0 +1,9 @@
+{
+  "name": "omd-test-v2-tools",
+  "private": true,
+  "type": "module",
+  "description": "Media-evidence capture for the brand image/video dataset. Resolves playwright-core from web/node_modules via the symlinked node_modules directory.",
+  "scripts": {
+    "capture": "node capture-media-evidence.mjs"
+  }
+}

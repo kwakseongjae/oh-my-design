@@ -1,0 +1,332 @@
+{
+  "brand": "toss",
+  "shots": [
+    {
+      "file": "images/01.jpg",
+      "role": "hero",
+      "prompt": "A young East Asian woman with black shoulder-length hair sits on a grey woven transit bench, wearing a cream knit sweater, looking down with a small smile at a white smartphone held in both hands. A large window with a deep navy frame in #07194c sits beside her; beyond the glass a pale river and hazy distant buildings recede under cool daylight. Interior plastics and walls sit near #e5ebf2 and #eaeef5, seat fabric near #d5d5d5, highlights near #fdfdfe. Cinematic still, overall mid-bright around mean luma 0.652, wide contrast near 0.951 dynamic range. Blank pale screen, unmarked clothing, landscape 16:9 frame.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.primaryButton.background",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/02.jpg",
+      "role": "hero",
+      "prompt": "A wider cinematic still of the same transit interior: an East Asian woman in a cream knit sweater sits toward the right of the frame on a grey fabric bench, looking at a white smartphone. Most of the frame is the large window, pale river, and hazy city skyline in cool daylight, with a deep navy window frame in #07194c. Cabin wall near #eaeef5, seat cloth near #d5d5d5, sky and water highlights near #fdfdfe and #f3f5fa. Mid-bright overall near mean luma 0.652, contrast near 0.951 dynamic range. Blank phone screen, unmarked clothing, landscape 16:9 frame.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.primaryButton.background",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/03.jpg",
+      "role": "imagery",
+      "prompt": "A close cinematic still of an East Asian woman with black shoulder-length hair and a cream knit sweater, face filling the left of the frame, eyes lowered toward a white smartphone in her hands. Behind her a window of pale river light and a deep navy frame in #07194c, cabin wall near #eaeef5, highlights on skin and knit near #fdfdfe. Soft cool daylight, mid-bright around mean luma 0.652, contrast near 0.951 dynamic range. Blank pale screen, unmarked clothing, landscape 16:9 frame.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.primaryButton.background"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/04.jpg",
+      "role": "imagery",
+      "prompt": "A landscape still of two hands in cream knit sleeves holding a white smartphone above a grey woven transit bench. The phone face is a blank pale field near #fdfdfe. Seat fabric reads #d5d5d5, #dadbdb, and #d6d7d9, with cool window light and a cabin wall near #e5ebf2. Mid-bright overall near mean luma 0.652, contrast near 0.951 dynamic range. Unmarked clothing, blank screen, 16:9 frame.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/05.jpg",
+      "role": "imagery",
+      "prompt": "An empty transit cabin photographed in landscape 16:9: a grey woven bench in #d5d5d5, #dadbdb, and #d6d7d9 runs along a large window with a deep navy frame in #07194c. Beyond the glass a pale river and hazy buildings sit under cool daylight, interior wall near #eaeef5, highlights near #fdfdfe. No people, no signs. Mid-bright around mean luma 0.652, contrast near 0.951 dynamic range.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.primaryButton.background",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/06.jpg",
+      "role": "imagery",
+      "prompt": "A landscape still looking through a transit window at a pale river and a hazy distant city under cool daylight. The glass sits in a deep navy frame in #07194c; water and sky hold near #fdfdfe, #f3f5fa, and #eaeef5. Interior edge of grey seat fabric in #d5d5d5 peeks along the bottom. Mid-bright around mean luma 0.652, contrast near 0.951 dynamic range. No people, no lettering, 16:9 frame.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.desktop-1440.primaryButton.background",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/07.jpg",
+      "role": "imagery",
+      "prompt": "A close still of a right hand holding a white smartphone against an out-of-focus outdoor field of water and sky. The screen is a blank pale wash near #fefefe. Background bokeh sits in #e5ebf2, #eaeef5, and #d6d7d9, with cool daylight and mid-bright exposure near mean luma 0.652, contrast near 0.951 dynamic range. Unmarked device, blank screen, landscape 16:9 frame.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/08.jpg",
+      "role": "texture",
+      "prompt": "A fill-the-frame photograph of grey woven upholstery, the kind of dense fabric on a transit bench. Threads read #d5d5d5, #dadbdb, and #d6d7d9, with soft cool daylight and faint highlights near #fefefe. Tight even lighting, high overall brightness near mean luma 0.903, shallow contrast near 0.256 dynamic range. Unmarked cloth only, landscape 16:9 texture still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/09.jpg",
+      "role": "texture",
+      "prompt": "A quiet full-frame still of a pale wall-like field. The ground is #fdfdfe with cooler patches of #e5ebf2, #eaeef5, and #f3f5fa drifting across it like soft daylight on matte paint. High overall brightness near mean luma 0.903, shallow contrast near 0.256 dynamic range. No objects, no lettering, landscape 16:9 texture.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/10.jpg",
+      "role": "texture",
+      "prompt": "A large pale grey sphere filling a rounded field, its surface a fine white halftone of tiny dots that fade toward the edges. Ground color #e5ebf2 with the sphere in #d5d5d5, #dadbdb, and #d6d7d9, highlights near #ffffff. Soft even studio light, high brightness near mean luma 0.903, shallow contrast near 0.256 dynamic range. Abstract object only, landscape 16:9 still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/11.jpg",
+      "role": "texture",
+      "prompt": "Empty frosted white cards with 12px corner radius float on a soft gradient of #f3f5fa into #eaeef5 and #e5ebf2. Each card is a blank rounded rectangle in #fdfdfe, no marks on the faces. High overall brightness near mean luma 0.903, shallow contrast near 0.256 dynamic range. Abstract still, landscape 16:9.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.primaryButton.radiusPx",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/12.jpg",
+      "role": "texture",
+      "prompt": "Two overlapping plastic cards with 12px corner radius float on a pale field of #e5ebf2. Faces are pearl-white near #fefefe with a cool iridescent wash of #eaeef5 and #f3f5fa, completely unmarked. Soft studio light, high brightness near mean luma 0.903, shallow contrast near 0.256 dynamic range. Abstract product still, landscape 16:9.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.primaryButton.radiusPx",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/13.jpg",
+      "role": "mobile",
+      "prompt": "A vertical 9:16 still of a young East Asian woman with black shoulder-length hair and a cream knit sweater, looking down with a small smile at a white smartphone. She sits by a transit window with a deep navy frame in #07194c; pale river light and a grey cabin wall in #eaeef5 fill the background. Seat fabric near #d5d5d5, highlights near #fefefe. Cool daylight, mid-bright around mean luma 0.652, contrast near 0.951 dynamic range. Blank pale screen, unmarked clothing.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.primaryButton.background",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/14.jpg",
+      "role": "mobile",
+      "prompt": "A vertical 9:16 still of a hand holding a white smartphone against a soft outdoor bokeh of water and sky. The screen is a blank pale field near #fefefe. Background sits in #e5ebf2, #d5d5d5, and #d6d7d9. Cool daylight, mid-bright around mean luma 0.652, contrast near 0.951 dynamic range. Unmarked device, blank screen.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/15.jpg",
+      "role": "mobile",
+      "prompt": "A vertical 9:16 still of an empty transit window: grey woven bench in #d5d5d5 along the bottom, deep navy frame in #07194c, pale river and hazy buildings beyond the glass. Cabin wall near #eaeef5, highlights near #fefefe. Cool daylight, mid-bright around mean luma 0.652, contrast near 0.951 dynamic range. No people, no signs.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.primaryButton.background"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/16.jpg",
+      "role": "mobile",
+      "prompt": "A vertical 9:16 still of a single empty frosted card with 12px corner radius centered on a pale field of #fefefe. The card face is #ffffff with a cooler edge of #e5ebf2 and #f3f5fa. High overall brightness near mean luma 0.903, shallow contrast near 0.256 dynamic range. Blank face, no marks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.primaryButton.radiusPx"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/17.jpg",
+      "role": "imagery",
+      "prompt": "A tall frosted-white rounded rectangle card floats in the center of a vertical frame, sitting on a soft studio gradient that washes from pale sky blue at the top through lavender into a warm peach at the bottom. Inside the card, four empty rounded bars of different widths stack as blank placeholders, each a slightly brighter white than the card. A faint pale-grey circular disc sits in the lower right of the gradient, matching a soft shadow. Even high-key lighting, overall brightness near mean luma 0.903, shallow contrast near 0.256 dynamic range. Completely blank surfaces with no marks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect",
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "2:3"
+    },
+    {
+      "file": "images/18.jpg",
+      "role": "imagery",
+      "prompt": "Two overlapping rounded plastic cards hover in the center of a vertical sky-blue gradient. The front card is pearlescent with a soft iridescent wash of lavender, sky blue, and mint, a small gold rectangle near the top, otherwise unmarked. A plain white card peeks from behind. A large pale circular shape fills the lower left of the background. Soft studio light, high brightness near mean luma 0.903, shallow contrast near 0.256 dynamic range. Blank card faces with no marks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect",
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "2:3"
+    },
+    {
+      "file": "images/19.jpg",
+      "role": "imagery",
+      "prompt": "A digital mobile UI still, not paper and not watercolor. A tall frosted-glass white rounded card floats on a smooth digital gradient of lavender, sky blue, and pale pink. Inside the card, five empty inner rows stack as blank rounded rectangles of slightly brighter white, like skeleton UI pills with generous corner rounding. Soft even studio lighting, high brightness near mean luma 0.903, shallow contrast near 0.256 dynamic range. Completely unmarked faces, smooth glass surfaces, no paper texture.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect",
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "2:3"
+    },
+    {
+      "file": "images/20.jpg",
+      "role": "imagery",
+      "prompt": "A vertical white studio still of rounded product photo cards floating on a field of #fefefe. The center card is a tall rounded rectangle showing a glass jar of red sauce with a silver lid on a beige table, the jar unlabeled. Two smaller rounded photo cards float to the left and right, each showing a similar unlabeled glass bottle of red sauce on beige. Soft grey shadows under each card near #d5d5d5. High brightness near mean luma 0.903, shallow contrast near 0.256 dynamic range. No marks on labels or cards.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect",
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "2:3"
+    },
+    {
+      "file": "images/21.jpg",
+      "role": "imagery",
+      "prompt": "A vertical mobile UI still: a large rounded-corner white card floats on a pale grey field of #fefefe. The upper half of the card holds a rounded square photograph of a small white speaker cube with a fabric wrist strap on a beige seamless backdrop. Empty pale space fills the lower half of the card. Soft grey drop shadow under the card. High brightness near mean luma 0.903, shallow contrast near 0.256 dynamic range. Unmarked object, no lettering.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect",
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/22.jpg",
+      "role": "imagery",
+      "prompt": "Empty frosted-white rounded cards overlap on a soft mint-to-lavender-to-sky-blue gradient. Each card is a blank rounded rectangle with a gentle drop shadow in #d5d5d5. High overall brightness near mean luma 0.903, shallow contrast near 0.256 dynamic range. Abstract UI still with no marks.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect",
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette"
+      ],
+      "aspect": "1:1"
+    }
+  ],
+  "videos": [
+    {
+      "file": "videos/01.mp4",
+      "fromImage": "images/01.jpg",
+      "motivation": "Desktop hero still that matches the captured train-window lifestyle frame: cream knit, white phone, river light, #07194c frame. Sampled motion is one 4.05s take with cutCount 0, so this is a 6s 720p single push-in on that still rather than a new scene.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/02.mp4",
+      "fromImage": "images/13.jpg",
+      "motivation": "Mobile 9:16 crop of the same captured hero grammar. Vertical viewport 390x844 imagery, same 0-cut continuous take as desktop-1440.motion.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/03.mp4",
+      "fromImage": "images/07.jpg",
+      "motivation": "Hand-and-phone still of the kind sampled on mobile (blank pale screen, cool water/sky bokeh in #e5ebf2). Simple geometry so a 6s 720p push-in can move without inventing a cut or a new palette.",
+      "durationSec": 6
+    }
+  ]
+}
