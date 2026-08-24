@@ -159,7 +159,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@clack/prompts": "^0.9.1",
+    "@clack/prompts": "^1.7.0",
     "commander": "^13.1.0",
     "picocolors": "^1.1.1"
   },
