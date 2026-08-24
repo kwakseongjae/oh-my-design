@@ -53,7 +53,7 @@
     "zod": "4.4.3"
   },
   "devDependencies": {
-    "@projectwallace/css-analyzer": "^9.9.0",
+    "@projectwallace/css-analyzer": "^9.9.3",
     "@tailwindcss/postcss": "^4",
     "@types/mixpanel-browser": "^2.60.0",
     "@types/node": "^20",
