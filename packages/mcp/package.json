@@ -44,7 +44,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@modelcontextprotocol/sdk": "^1.30.0",
     "fast-uri": "^3.1.6",
     "hono": "^4.13.3",
     "zod": "^3.25.0"
