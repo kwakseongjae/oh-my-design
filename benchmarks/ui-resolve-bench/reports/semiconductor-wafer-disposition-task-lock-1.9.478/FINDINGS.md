@@ -1,7 +1,0 @@
-# Semiconductor wafer disposition holdout — 1.9.478
-
-This fresh repair task transfers the shipped consumer-browser runner into a semiconductor wafer-lot disposition workflow. Five supplied lot identifiers retain seven exact metrology-scan assignments; a separate three-chamber process strip and a separate disposition decision remain visible. Its identifiers, facts, state vocabulary, interaction copy, evidence boundary, palette, typography, counts, and selectors are unseen by the exact 1.9.474 control and exact 1.9.476 candidate sources.
-
-The untouched baseline is 75/85 and unresolved. Task facts, controls, form states, DESIGN.md grounding, evidence honesty, desktop geometry, target sizing, and keyboard traversal are green. Intended defects are 390px, 320px, and actual 200% overflow; character-range fragmentation of the compound lot/metrology target; the multi-line `Process engineering review pending` state; and serious muted-text contrast at 3.88:1. No protected text is initially a scroll container.
-
-The task is immutable for the next experiment. No provider has seen it. The comparison must use fresh detached exact sources, the same runtime-bound model identity, immutable 390/1×, 320/1×, and 640/2× conditions, schema 0.3, the exact named consumer CDP connection, pre-edit typography locks, 8 CSS px fit reserve, one exactly-once shipped `static-close`, the shipped model-independent browser runner, terminal browser accounting, and the passive-text scroll prohibition.

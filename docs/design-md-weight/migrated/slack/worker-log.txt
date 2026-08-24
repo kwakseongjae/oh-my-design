@@ -1,0 +1,13 @@
+Slack DESIGN.md를 Core v2로 옮기려면 먼저 목적지 규격·대응표·규칙집·골든 샘플을 순서대로 읽고, 이어서 레거시 원문을 섹션 단위로 매핑하겠습니다.필수 판정문·골든 샘플·Slack 원문을 이어서 읽고, 최근 통과한 이관본 형태도 맞춰 보겠습니다.Slack 원문과 musinsa 골든 샘플, 이미 통과한 이관본을 대조해 형태를 맞추겠습니다.통과한 최근 이관본과 게이트 스크립트를 읽어, Slack에 적용할 상태 판정·B2a 한정·로그 형태를 맞추겠습니다.게이트가 잡는 토큰·claim 형식을 확인한 뒤, Slack 원문의 값 목록을 뽑아 이관본에 빠짐없이 넣겠습니다.원문 값·C2 역할 판정·B2a 한정을 반영해 세 산출물을 작성합니다. Slack은 OpenAI와 같이 prose-derived SaaS라 그 이관 형태를 따릅니다.게이트와 Portable Core 검사를 돌려 토큰 손실·발명·claim 형식을 확인합니다.게이트는 통과했지만 `scope` claim이 Portable Core에서 거절됐습니다. 검사 조건을 확인하겠습니다.`scope` claim이 `not … product` 패턴에 걸려 Portable Core가 실패했습니다. 그 문장만 고치겠습니다.Slack legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/slack/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v5**. `inspectDesignMd`는 `portable_core: true`, 게이트는 PASS입니다. 카탈로그 채택은 아닙니다.
+
+의미 보존에서 특히 맞춘 점:
+
+- **A1a** YAML unitless line-height `1.14` / `1.18` / `1.25` / `1.33` / `1.44` / `1.50` / `1.46` / `1.38`을 비율로 유지하고, 표의 px는 size-local 관측으로만 둠
+- **A1b** primitive type을 컴포넌트별로 유지 (`button` ×6, `input` ×2, `card` ×4, `badge` ×2, `tab` ×2, `toast`, `dialog`, `toggle`)
+- **B2a** Principles 8항과 Scope / Elevation / Layout / type / Voice 해석 문장에 `derived editorial implementation inference / not Slack-authored or a separately published UI specification` 한정을 인접 배치
+- **C2** loading / error / success는 역할로 판정. 마케팅 CTA·탭·토글·composer는 `not-applicable`, Text Field error만 관측 근거로 `applicable`
+- **C4** Dialog / Card / Banner는 kind·map 생략
+- **D2** Maya / Daniel / Priya는 삭제, provenance에도 재수록하지 않음
+- **B3** duration·signature·`ease-*` 이름은 유지하고, 무출처 cubic-bezier 4개만 삭제. 다섯 증거 종류 + 컴포넌트별 computed 게이트는 Foundations에 유지
+
+DONE migrated=1

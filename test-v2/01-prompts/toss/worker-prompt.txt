@@ -1,0 +1,144 @@
+너는 브랜드 에셋 생성 워커다. 아래 브리프의 hardRules를 절대 어기지 마라.
+
+절차:
+1. referenceImages의 파일들을 열어 브랜드의 실제 시각 언어를 파악한다 (view 도구).
+2. measuredFacts와 대조해 샷 리스트를 정한다.
+3. image_gen으로 순서대로 생성한다. 각 생성 직후 결과를 /Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/images/NN.jpg (NN=01부터)로 cp한다.
+4. 가장 브랜드다운 이미지 몇 장을 골라 image_to_video로 영상을 만들고 /Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/videos/NN.mp4로 cp한다.
+5. /Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/toss/shots.json을 outputContract.manifestShape 형태로 작성한다. 프롬프트는 실제 사용한 문자열 그대로.
+6. 마지막 줄에 'DONE images=<n> videos=<n>'을 출력한다.
+
+브리프:
+{
+  "brand": "toss",
+  "source": {
+    "url": "https://toss.im/",
+    "finalUrl": "https://toss.im/",
+    "capturedAt": "2026-08-22T19:51:46.001Z"
+  },
+  "task": [
+    "브랜드 toss의 공식 표면 캡처와 실측값을 보고, 이 브랜드 스타일의 생성 에셋 세트를 만든다.",
+    "이미지 최대 16장, 영상 최대 3개. 넉넉하게 만들되 상한을 넘기지 않는다.",
+    "샷 리스트는 네가 정한다 — 히어로 후보, 이 브랜드가 실제로 찍는 종류의 사진, 배경/텍스처, 모바일 세로 컷을 섞어라.",
+    "영상은 생성한 이미지 중 가장 브랜드다운 것을 골라 image_to_video로 만든다 (6초, 720p). 텍스트만으로 영상을 만들지 마라."
+  ],
+  "hardRules": [
+    "모든 시각적 결정은 아래 실측값과 참조 이미지에서만 나온다. 실측에 없는 색·구도·분위기를 발명하지 않는다.",
+    "이미지 안에 글자·로고·워드마크를 넣지 않는다. 브랜드명을 프롬프트에 쓰지 않는다 — 브랜드는 색·빛·구도·피사체로만 드러나야 한다.",
+    "실측에 없는 값이 필요하면 그 샷을 포기한다. 추정으로 채우지 않는다.",
+    "각 이미지의 프롬프트에 어떤 실측값을 인용했는지 shots.json에 기록한다."
+  ],
+  "measuredFacts": {
+    "surfaces": {
+      "desktop-1440": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "imagerySampled": 2,
+        "canvas": "#fdfdfe",
+        "primaryButton": {
+          "background": "#07194c",
+          "radiusPx": 12
+        },
+        "dominantImageryPalette": [
+          {
+            "hex": "#fdfdfe",
+            "coverage": 0.1568
+          },
+          {
+            "hex": "#e5ebf2",
+            "coverage": 0.0494
+          },
+          {
+            "hex": "#eaeef5",
+            "coverage": 0.0414
+          },
+          {
+            "hex": "#f3f5fa",
+            "coverage": 0.0372
+          }
+        ],
+        "meanLuma": 0.652,
+        "dynamicRange": 0.951,
+        "typicalAspect": 1.778,
+        "motion": {
+          "duration": 4.05,
+          "shotLengthSec": 4.05,
+          "cutCount": 0
+        }
+      },
+      "mobile-390": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "imagerySampled": 12,
+        "canvas": "#fefefe",
+        "dominantImageryPalette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.5219
+          },
+          {
+            "hex": "#d5d5d5",
+            "coverage": 0.3638
+          },
+          {
+            "hex": "#dadbdb",
+            "coverage": 0.0418
+          },
+          {
+            "hex": "#d6d7d9",
+            "coverage": 0.0184
+          }
+        ],
+        "meanLuma": 0.903,
+        "dynamicRange": 0.256,
+        "typicalAspect": 0.887,
+        "motion": {
+          "duration": null,
+          "shotLengthSec": null,
+          "cutCount": null
+        }
+      }
+    }
+  },
+  "referenceImages": [
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/toss/capture/desktop-1440-viewport.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/toss/capture/mobile-390-viewport.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/toss/capture/desktop-1440-imagery-01.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/toss/capture/desktop-1440-imagery-02.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/toss/capture/imagery-01.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/toss/capture/imagery-02.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/toss/capture/mobile-390-imagery-01.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/toss/capture/mobile-390-imagery-02.png"
+  ],
+  "outputContract": {
+    "imagesDir": "images/",
+    "videosDir": "videos/",
+    "manifest": "shots.json",
+    "manifestShape": {
+      "brand": "string",
+      "shots": [
+        {
+          "file": "images/NN.jpg",
+          "role": "hero|imagery|texture|mobile",
+          "prompt": "실제 사용한 프롬프트",
+          "citedFacts": [
+            "measuredFacts에서 인용한 키"
+          ],
+          "aspect": "16:9|9:16|3:2|1:1"
+        }
+      ],
+      "videos": [
+        {
+          "file": "videos/NN.mp4",
+          "fromImage": "images/NN.jpg",
+          "motivation": "왜 이 이미지를 움직였나",
+          "durationSec": 6
+        }
+      ]
+    }
+  }
+}

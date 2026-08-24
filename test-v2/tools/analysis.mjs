@@ -208,17 +208,56 @@ export function aggregateSubject(resolved, sampled) {
  * the dim room in the picture. A flat canvas shows up as a large share; a
  * photograph does not, so coverage decides whether this field gets a value.
  */
-export function renderedCanvas(dominant) {
+export function renderedCanvas(dominant, computedHex) {
   if (!dominant) return null;
+  const base = { dominantHex: dominant.hex, coverage: dominant.coverage };
   if (dominant.coverage < 0.15) {
     return {
+      ...base,
       resolved: false,
       reason: "no flat canvas in the frame — the dominant colour covers too little to be a background",
-      dominantHex: dominant.hex,
-      coverage: dominant.coverage,
     };
   }
-  return { resolved: true, hex: dominant.hex, coverage: dominant.coverage, source: "modal colour of the captured viewport" };
+  // High coverage is not the same as being the canvas. Baemin's phone layout is
+  // a full-bleed mint hero, so the frame's modal colour is #0cefd3 at 82% while
+  // CSS says the page background is #f6f6f6. Reporting the hero as the canvas
+  // is the same mistake as the sage-green palette, arriving by a different road.
+  if (computedHex && labDistance(dominant.hex, computedHex) > 25) {
+    return {
+      ...base,
+      resolved: false,
+      reason: "the frame's dominant colour disagrees with the computed page background; it is measuring content, not canvas",
+      computedHex,
+      distance: +labDistance(dominant.hex, computedHex).toFixed(1),
+    };
+  }
+  return { ...base, resolved: true, hex: dominant.hex, source: "modal colour of the captured viewport", agreesWithComputed: computedHex ?? null };
+}
+
+/* Colour distance, shared by the canvas check. Plain CIE76 — enough to
+   separate "the same colour" from "a different colour", which is all this
+   decision needs. */
+const hexToRgb = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+
+function rgbToLab(r, g, b) {
+  const lin = (c) => {
+    const v = c / 255;
+    return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+  };
+  const [R, G, B] = [lin(r), lin(g), lin(b)];
+  const X = (0.4124564 * R + 0.3575761 * G + 0.1804375 * B) / 0.95047;
+  const Y = 0.2126729 * R + 0.7151522 * G + 0.0721750 * B;
+  const Z = (0.0193339 * R + 0.1191920 * G + 0.9503041 * B) / 1.08883;
+  const f = (t) => (t > 216 / 24389 ? Math.cbrt(t) : (841 / 108) * t + 4 / 29);
+  const [fx, fy, fz] = [f(X), f(Y), f(Z)];
+  return [116 * fy - 16, 500 * (fx - fy), 200 * (fy - fz)];
+}
+
+export function labDistance(hexA, hexB) {
+  if (!hexA || !hexB) return Infinity;
+  const [l1, a1, b1] = rgbToLab(...hexToRgb(hexA));
+  const [l2, a2, b2] = rgbToLab(...hexToRgb(hexB));
+  return Math.hypot(l1 - l2, a1 - a2, b1 - b2);
 }
 
 /**

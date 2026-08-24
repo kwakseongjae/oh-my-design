@@ -1,7 +1,7 @@
 {
   "brand": "figma",
-  "captureId": "2026-08-22T11-53-15-939Z",
-  "capturedAt": "2026-08-22T11:53:15.939Z",
+  "captureId": "2026-08-22T19-48-41-602Z",
+  "capturedAt": "2026-08-22T19:48:41.602Z",
   "channel": "playwright",
   "source": {
     "url": "https://www.figma.com/",
@@ -9,10 +9,27 @@
     "title": "Figma: 디자인, 코드, AI를 위한 협업 캔버스",
     "status": 200
   },
-  "viewport": {
-    "width": 1440,
-    "height": 900
-  },
+  "surfaces": [
+    {
+      "id": "desktop-1440",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "imagerySamples": 9,
+      "durationMs": 17455
+    },
+    {
+      "id": "mobile-390",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "imagerySamples": 6,
+      "durationMs": 12216
+    }
+  ],
+  "surfaceLimit": null,
   "locale": "ko-KR",
   "session": {
     "profile": "fresh automation context",
@@ -20,9 +37,64 @@
   },
   "store": {
     "root": "$OMD_EVIDENCE_STORE",
-    "path": "figma/2026-08-22T11-53-15-939Z"
+    "path": "figma/2026-08-22T19-48-41-602Z"
   },
   "files": [
+    {
+      "name": "desktop-1440-imagery-01.png",
+      "bytes": 188159,
+      "sha256": "94521d2e55f0ed0f54e8e45cd11e637e59116775ca7b5090006d643320b9a301"
+    },
+    {
+      "name": "desktop-1440-imagery-02.png",
+      "bytes": 358152,
+      "sha256": "b2291fc3daf501c1b358af15e88988df792c5298fccc7a74c676e6b7b5c75949"
+    },
+    {
+      "name": "desktop-1440-imagery-03.png",
+      "bytes": 758159,
+      "sha256": "dbf1f8e10c0721471daa82b859b96a6744d45cbcf3fceb51470d4a5a65027467"
+    },
+    {
+      "name": "desktop-1440-imagery-04.png",
+      "bytes": 269993,
+      "sha256": "15c36cc9e8f97a224874cf8384b46a032aa029e453453a99903b99052cc65de7"
+    },
+    {
+      "name": "desktop-1440-imagery-05.png",
+      "bytes": 106513,
+      "sha256": "a7cfaee6d84188c59bf3799dfc82d6a705998b5f2e72ddded746a1632db488ac"
+    },
+    {
+      "name": "desktop-1440-imagery-06.png",
+      "bytes": 374667,
+      "sha256": "6beb79b960379c354d32a00a1fd4cd649132db5485d0c23368cb99dba8304dc1"
+    },
+    {
+      "name": "desktop-1440-imagery-07.png",
+      "bytes": 23852,
+      "sha256": "4b0372d782ca00173c7f030a299b013a551f3b27b3844c1e32f4cc351d7d0229"
+    },
+    {
+      "name": "desktop-1440-imagery-08.png",
+      "bytes": 106563,
+      "sha256": "b3ded43554af7d85e88a2a6f94eaf04a72b0f60ff48b0a49d9446ec1e56b7a1c"
+    },
+    {
+      "name": "desktop-1440-imagery-09.png",
+      "bytes": 376552,
+      "sha256": "8abbdf9d31a367609455b7b0ec21a09ef925d960007d411d545a51f97725e235"
+    },
+    {
+      "name": "desktop-1440-imagery-10.png",
+      "bytes": 804243,
+      "sha256": "d48feed9be46df4d27b1c7074925220402dc0da3724f6a118bb4230773b88cc8"
+    },
+    {
+      "name": "desktop-1440-viewport.png",
+      "bytes": 743713,
+      "sha256": "2f5845047593e647ee9363d70c67185ba69efcb9e04aa0ea22f75861acb46eda"
+    },
     {
       "name": "imagery-02.png",
       "bytes": 358152,
@@ -30,8 +102,8 @@
     },
     {
       "name": "imagery-03.png",
-      "bytes": 758180,
-      "sha256": "b1c60e4620b1bebaa45e0d9e6f423a5cbfaf0c5bd4014f7d5edace84563a9e27"
+      "bytes": 756465,
+      "sha256": "e93ea1c8432971a2450e93b4d11b8981230e5b152c0d61be6f195a9f6319bb0f"
     },
     {
       "name": "imagery-04.png",
@@ -60,8 +132,8 @@
     },
     {
       "name": "imagery-09.png",
-      "bytes": 372475,
-      "sha256": "4b30c536837d2022992c3bbca2d78da99ebe093c136ad2d995ecdd5aeedf3ae9"
+      "bytes": 376552,
+      "sha256": "8abbdf9d31a367609455b7b0ec21a09ef925d960007d411d545a51f97725e235"
     },
     {
       "name": "imagery-10.png",
@@ -69,9 +141,49 @@
       "sha256": "d48feed9be46df4d27b1c7074925220402dc0da3724f6a118bb4230773b88cc8"
     },
     {
+      "name": "mobile-390-imagery-01.png",
+      "bytes": 121121,
+      "sha256": "7df4269dafdd0c366c1449b26264d5ada2e05a58912c633613ea6c004c164dfb"
+    },
+    {
+      "name": "mobile-390-imagery-02.png",
+      "bytes": 251499,
+      "sha256": "20ed8ac7615dd0d116923cccb15c3f16f9428f1e08557467d5208ebbe7626023"
+    },
+    {
+      "name": "mobile-390-imagery-03.png",
+      "bytes": 152843,
+      "sha256": "2ace0537825be7e7915887b99cc82c80a650d1800f3dfc0ae688ce35f4069107"
+    },
+    {
+      "name": "mobile-390-imagery-04.png",
+      "bytes": 40037,
+      "sha256": "b366c63e00f936c3600ce9c97513d49f442258a96408d715b985fb2fb16b6993"
+    },
+    {
+      "name": "mobile-390-imagery-05.png",
+      "bytes": 135746,
+      "sha256": "0a5819b441fc099d57d09e1430553dd630b65b7aeecb56fca225531748beecb2"
+    },
+    {
+      "name": "mobile-390-imagery-06.png",
+      "bytes": 119984,
+      "sha256": "489da389ecb20c3bf90b066ebc02e48d28ccc850a72434f9d6c1febcd0190d8c"
+    },
+    {
+      "name": "mobile-390-imagery-07.png",
+      "bytes": 130884,
+      "sha256": "bd40919fddac5a453f9010c170e631cfac0902431eaef0abd92a1afa8c2e0a0a"
+    },
+    {
+      "name": "mobile-390-viewport.png",
+      "bytes": 650159,
+      "sha256": "9d024c2338baefa1fcc9326dfb173f9bdd8391d8f66e460a4b749ae09aa34cfd"
+    },
+    {
       "name": "viewport-1440.png",
-      "bytes": 879592,
-      "sha256": "a858e9f4f9f355edcafc39a255a133754552c9b7a816b624ae832a31a5f2e86c"
+      "bytes": 772090,
+      "sha256": "049d75103c5e7ed55135d7fa8b550f413df1df09be45e7b873cdfb81026c861d"
     },
     {
       "name": "viewport-390.png",
@@ -79,6 +191,6 @@
       "sha256": "733f5579a35fdb16dcc65fa106bedd2e07275f64a4fd90e5d486192b49e39365"
     }
   ],
-  "evidenceSha256": "3de3c45a561900d7b6c8f074762b64ddc8538bc5ac72bad2f87bff21eba8c4da",
+  "evidenceSha256": "8ff0237ff64db87d1ef1788640be474fbc931459991e057395e33a38afcac0f2",
   "supersededBy": null
 }

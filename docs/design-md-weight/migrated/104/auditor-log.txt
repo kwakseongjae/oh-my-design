@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 들어갑니다. 규칙서의 해당 조항과 104번 산출물부터 읽고, 문장 분류·원장 대조를 바로 시작하겠습니다.규칙서 B2a·E2만 고정했고, 이제 104 산출물 세 파일과 원본을 문장 단위로 대조합니다.이전 웨이브 F3 감사 로그와 승인본 한정 문장 형식을 맞춰, 104에서 같은 결함만 잡겠습니다.원본과 로그 목적지를 grep으로 대조해, 한정이 빠진 해석 문장과 원장 불일치를 확정합니다.문장 분류가 끝났습니다. 해석·인과 문장에 인접 B2a를 붙이고, 이어서 원장 목적지를 실제 grep에 맞춥니다.318행 Content 한정이 비인접 no-synthetic을 덮는다고 적혀 있어, 그 주장을 빼고 334행 인접 한정만 남깁니다. 이어서 본문 전체를 다시 읽고 줄 번호를 확정합니다.104人力銀行 산출물을 B2a·E2만 감사해 한정 문장과 원장을 맞췄습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 건드리지 않았습니다.
+
+**B2a.** 편집·인과 문장인데 인접 완전 한정이 없던 자리에 `derived editorial implementation inference` / `not 104人力銀行-authored or a separately published UI specification`을 붙였습니다. 제품 서사(grew-into-ecosystem), Audience 가상 페르소나 제한, Distinctive 틸/미관측 상태, Semantic 역할·증거영역, Elevation 헤어라인, Font evidence, Type-role 패밀리 경계, Capture-record 생략 인접, Layout 측정 경계, Content 합성 보이스가 해당합니다.
+
+**E2.** `#ff9100`·캠페인 색·Arial/`MsJhengHeiBold` 다중 목적지가 로그·provenance보다 넓었습니다. 실제 grep에 맞춰 넓혔고, provenance derived 목록을 본문 B2a 사이트와 같게 고쳤습니다. 워커 Portable Core 통과 주장은 철회했습니다(E2c).
+
+수정 목록은 `docs/design-md-weight/migrated/104/audit-log.md`에 있습니다.
+
+AUDIT_DONE fixes=28

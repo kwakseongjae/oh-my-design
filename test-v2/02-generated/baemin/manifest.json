@@ -1,0 +1,116 @@
+{
+  "brand": "baemin",
+  "storeId": "2026-08-23T06-29-51-715Z",
+  "ingestedAt": "2026-08-23T06:29:51.715Z",
+  "generator": {
+    "channel": "grok-build-cli",
+    "model": "grok-4.6",
+    "tools": [
+      "image_gen",
+      "image_to_video"
+    ]
+  },
+  "brief": "01-prompts/baemin/asset-brief.json",
+  "store": {
+    "root": "$OMD_GENERATED_STORE",
+    "path": "baemin/2026-08-23T06-29-51-715Z"
+  },
+  "files": [
+    {
+      "name": "images/01.jpg",
+      "bytes": 86882,
+      "sha256": "3884fb92e787d493eba1fa769fb91d399932fd7b9709eede2b3bf1d3667beba1"
+    },
+    {
+      "name": "images/02.jpg",
+      "bytes": 114570,
+      "sha256": "ec0043f8bacf7cbd0ea44ee1da4a2801d676acf0472a319dd1170c69f080c1bf"
+    },
+    {
+      "name": "images/03.jpg",
+      "bytes": 96956,
+      "sha256": "8e63fd43699eee59e65eceba9b5c8e611a7005ab1d442522bdd39eb399319d15"
+    },
+    {
+      "name": "images/04.jpg",
+      "bytes": 88227,
+      "sha256": "15ff9eb03bd9d1a5a591f850d7a06104570baf81f5e8cc91e786b498c42111a6"
+    },
+    {
+      "name": "images/05.jpg",
+      "bytes": 112092,
+      "sha256": "b98c44f4b2fe81d53bfcdfa8efd493c9278f34ec8af6400708c2bf733839785c"
+    },
+    {
+      "name": "images/06.jpg",
+      "bytes": 106953,
+      "sha256": "ec4ed4ec10598a1de7f9338956b8015059272ed8970f889046cac545921b26b6"
+    },
+    {
+      "name": "images/07.jpg",
+      "bytes": 74032,
+      "sha256": "3342c5f24cb4be944719e510bec39cf955b1d05133d4f6b5fe91729082dcb1a3"
+    },
+    {
+      "name": "images/08.jpg",
+      "bytes": 87457,
+      "sha256": "fb0792f35f4b0b25fe174e229c8249136850809d4911ef125635024824b7b556"
+    },
+    {
+      "name": "images/09.jpg",
+      "bytes": 50310,
+      "sha256": "ac0b1eb7b1d8706cf9e27cefaea75050739afe0268e2a7c0647938817f758744"
+    },
+    {
+      "name": "images/10.jpg",
+      "bytes": 61100,
+      "sha256": "f30c11116ed22dfe690b8eff5ee7841cef811fbc77226fe6d8c8ccda0ed44b41"
+    },
+    {
+      "name": "images/11.jpg",
+      "bytes": 35742,
+      "sha256": "806a102e2aa2b2c5ccf0f4b99fe3f8e160199c79251069b069f588629a549a14"
+    },
+    {
+      "name": "images/12.jpg",
+      "bytes": 88499,
+      "sha256": "5759393a473051547427c557b7f0b43fe8e33b1d66c336039b844316b79f8c52"
+    },
+    {
+      "name": "images/13.jpg",
+      "bytes": 101380,
+      "sha256": "7f94284b5c77569fdee3c3284e7d32d32062804332629d8eaf3397c364751ee6"
+    },
+    {
+      "name": "images/14.jpg",
+      "bytes": 80636,
+      "sha256": "c5c7b18420848d9024e26c5ba03dd58b2a06da5d115ec64bfdd95eda5a82f44a"
+    },
+    {
+      "name": "images/15.jpg",
+      "bytes": 232583,
+      "sha256": "a2635e2d4043dddb333ab806904d03d5bdccf19eae48f912b48fbc976dca6955"
+    },
+    {
+      "name": "images/16.jpg",
+      "bytes": 245781,
+      "sha256": "c74f560ed50a58b64f0a1d1e98df10b7483b6e52239b839d68723a736f74cc32"
+    },
+    {
+      "name": "videos/01.mp4",
+      "bytes": 418883,
+      "sha256": "6efbd1464b9ab04567e49e1512815034d192c48197422ff568157acbfe5dccc4"
+    },
+    {
+      "name": "videos/02.mp4",
+      "bytes": 311563,
+      "sha256": "d2cf806c17151643e8a23d3499aa60c8090d95fdc6f0864bc35313a8cc623cb3"
+    },
+    {
+      "name": "videos/03.mp4",
+      "bytes": 713291,
+      "sha256": "92a57586ebae3c809d18535864b4b54c3bd7f4b8f0713e26590e02490064fde2"
+    }
+  ],
+  "shotsSha256": "171cf5825eac756b7c7569e95c30df4dba87a7e78930c9f23131cfa3c49dbc55"
+}

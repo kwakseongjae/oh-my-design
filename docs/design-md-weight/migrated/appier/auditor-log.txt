@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 Appier 이관 산출물부터 대조하겠습니다.이전 F3 감사 형식과 규칙서 B2·E2 조항, Appier 산출물을 함께 대조합니다.이전 F3 감사의 한정 문장 기준과 Appier 본문의 미한정 해석을 더 맞춰 보겠습니다.문장 분류가 끝났습니다. 한정이 없거나 읽기를 이름 붙이지 않은 해석부터 본문에 붙이고, 이어서 원장을 맞춥니다.본문 한정은 붙였습니다. provenance 파생 범위와 목적지 목록을 실제 grep에 맞춥니다.게이트는 통과했습니다. 이제 migration-log 목적지를 grep 결과에 맞춥니다.Appier F3 B2a·E2 감사를 마쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 섹션 구조는 건드리지 않았고, 한정 문장과 원장만 고쳤습니다.
+
+**B2a.** 세 번째 부류인데 인접 완전 한정이 없거나 읽기를 이름 붙이지 않은 자리에 `derived editorial implementation inference` / `not Appier-authored or a separately published UI specification`을 붙이거나 확장했습니다. 범위는 Scope coverage·reconstruction-authority·분위기 추가 이름·thesis/product-story, Audience, Distinctive, Avoid의 portable Don’ts 판단(`muddy the single-blue brand signal`), Semantic 추가 역할·On-primary 비합침, Spacing/Shape 한정 위치, Elevation table Use, Motion, Font/type-character, Type-role `lineHeight`, Capture graph-not-adopted, Industry Tab captured-variant, Layout collapsing/image-behavior, Content `41%`·`Contact Us`/`Get Started`입니다.
+
+**E2.** migration-log와 provenance를 grep에 맞췄습니다. `#1D2EFF` 목적지를 본문 전 히트로 넓혔고, `https://www.appier.com/en`은 provenance-only이며, Observed 문자열의 추가 휴대 위치를 적었고, Avoid 원문 인과 인용·Named gaps unlisted-surface B2a·“independently verified Primary tasks”는 로그에서 거뒀습니다.
+
+기계 검사: `--gate-only` PASS, `portable_core: true`. Post-F3 SHA-256 `e9ca264a63723c2738fda42fa8eaebb8e02611e32d0b734ca148fae86d99e5cf`. 상세는 `docs/design-md-weight/migrated/appier/audit-log.md`.
+
+AUDIT_DONE fixes=37

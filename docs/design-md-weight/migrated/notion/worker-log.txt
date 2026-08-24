@@ -1,0 +1,15 @@
+T2 마이그레이션을 시작하기 위해 규격·제약·골든 샘플과 Notion legacy 원문을 순서대로 읽겠습니다.골든 샘플 개정본과 Notion 원문을 읽고, 이미 이관된 T2 샘플이 있으면 형태를 맞춰 가겠습니다.이미 있는 Notion 이관본과 원문 전체를 대조해 무엇을 고칠지 잡겠습니다.검증 스크립트와 이관 산출물 형식을 확인한 뒤 Notion 원문을 필드 단위로 옮기겠습니다.원문을 필드 단위로 옮기고, 골든 샘플과 같은 Portable Core 형태·상태 적용 규칙으로 세 파일을 작성합니다.Portable Core 검사와 플레이스홀더 여부를 돌려 이관본이 규격을 실제로 통과하는지 확인합니다.원문 표현을 더 가깝게 맞추고, 세션 복원 문서를 갱신한 뒤 검사를 한 번 더 돌리겠습니다.Notion legacy `DESIGN.md`를 Core v2 Portable Core로 옮겼습니다. `inspectDesignMd` 결과는 `portable_core: true`, 플레이스홀더 0입니다.
+
+산출물:
+- `docs/design-md-weight/migrated/notion/DESIGN.md`
+- `docs/design-md-weight/migrated/notion/provenance.md`
+- `docs/design-md-weight/migrated/notion/migration-log.md`
+
+의미 보존에서 골든 샘플 FAIL을 피한 처리:
+- 세 public 표면(마케팅 / 제품 마케팅 / Help chrome)만 범위로 두고, 인증 워크스페이스는 생략했습니다.
+- 일차 과업 3개는 About·Careers 공식 문장에서만 가져왔습니다. §13의 추론 archetype은 승격하지 않았고 provenance에도 다시 싣지 않았습니다.
+- §14 8행 표는 Components & States에 그대로 남겼습니다. 선언된 인터랙티브 컨트롤은 의미상 7상태를 `applicable`로 닫고, 미관측 treatment만 생략했습니다. Compact card는 kind/map을 만들지 않았습니다.
+- `#0075de`, NotionInter 메트릭, CTA/Help 기하, 캐러셀 4층 섀도는 본문에 남겼습니다. 상태색은 ramp가 아니고, 모션 값은 없습니다.
+- §9 도구 프롬프트는 삭제했고, 세 표면 분리·fallback 금지 같은 브랜드 제약만 Experience에 남겼습니다.
+
+DONE migrated=1

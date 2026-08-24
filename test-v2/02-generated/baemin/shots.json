@@ -1,0 +1,212 @@
+{
+  "brand": "baemin",
+  "shots": [
+    {
+      "file": "images/01.jpg",
+      "role": "hero",
+      "prompt": "A full-bleed flat mint-cyan field in #0cefd3, even and bright, mean luma about 0.73, almost no contrast. In the lower right, a naive black #000101 marker drawing of a small round-headed figure with a rectangular torso, thin limbs, and both arms raised in a V, no face. Vast empty mint occupies the rest of the frame. No letters, logos, captions, or UI. Graphic illustration, not a photograph.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.primaryButton.background"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/02.jpg",
+      "role": "hero",
+      "prompt": "A full-bleed highly saturated electric aqua mint field matching hex #0cefd3. Lower left only: one irregular amoeba blob outline in naive black #000101 marker. Inside the blob, and nowhere else, six tiny simple line icons: a burger, a fish, an apple, a bottle, a phone, a leafy plant. Three short speed dashes to the right of the blob. The rest of the frame is empty mint. No drawings outside the blob except the dashes. No letters, logos, or UI. Graphic illustration, not a photograph.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.primaryButton.background"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/03.jpg",
+      "role": "imagery",
+      "prompt": "A full-bleed highly saturated electric aqua mint field matching hex #0cefd3, not pale pastel. In the lower center, three tiny separate childlike black #000101 marker doodles, each only a few strokes, not overlapping, no hatching, no shading: a simple pizza slice, a simple noodle bowl with two stick chopsticks, a simple chicken drumstick. Vast empty mint around them. No letters, logos, captions, or UI. Graphic illustration, not a photograph.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.primaryButton.background"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/04.jpg",
+      "role": "imagery",
+      "prompt": "A full-bleed highly saturated electric aqua mint field matching hex #0cefd3, not pale pastel. In the lower right, an extremely simple childlike black #000101 marker doodle of a delivery scooter: two circle wheels, a boxy body, a round-headed rider with a circle helmet and a rectangular torso, a square box on the back, two short speed dashes. No face, no fingers, no headlights, no fenders. Vast empty mint. No letters, logos, captions, or UI. Graphic illustration, not a photograph.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.primaryButton.background"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/05.jpg",
+      "role": "imagery",
+      "prompt": "A full-bleed highly saturated electric aqua mint field matching hex #0cefd3, not pale pastel. In the lower center, an extremely simple childlike black #000101 marker doodle of a shopping cart on two circle wheels, filled with a baguette, a rectangular box, and leafy greens, plus two short speed dashes to the right. No extra objects, no letters, logos, captions, or UI. Vast empty mint around the cart. Graphic illustration, not a photograph.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.primaryButton.background"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/06.jpg",
+      "role": "imagery",
+      "prompt": "A full-bleed highly saturated electric aqua mint field matching hex #0cefd3. On the lower left, a naive black #000101 outline-only stick figure: circle head, rectangular torso showing mint through it, circle hands, line legs. The right hand holds a single curved black hose line that arcs into an outline-only jagged splash shape, also empty mint inside. No black fills, no face, no letters, logos, or UI. Graphic illustration, not a photograph.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.primaryButton.background"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/07.jpg",
+      "role": "imagery",
+      "prompt": "A full-bleed highly saturated electric aqua mint field matching hex #0cefd3, not pale pastel. In the lower right, an extremely simple childlike black #000101 marker doodle of a boxy truck with two circle wheels and a rectangular package tilting off the flatbed. Only a few strokes, no shading, no windows with detail, no letters on the truck. Vast empty mint above. No logos, captions, or UI. Graphic illustration, not a photograph.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.primaryButton.background"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/08.jpg",
+      "role": "imagery",
+      "prompt": "A full-bleed highly saturated electric aqua mint field matching hex #0cefd3, not pale pastel. In the lower center, an extremely simple childlike black #000101 marker doodle of a tilted blank payment card, a short stack of coins, one coin standing on edge, and one coin lying flat. No letters, no numbers, no currency marks on the coins or card. Vast empty mint. Graphic illustration, not a photograph.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.primaryButton.background"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/09.jpg",
+      "role": "texture",
+      "prompt": "A seamless full-frame field of highly saturated electric aqua mint matching hex #0cefd3, perfectly even, mean luma about 0.73, dynamic range near zero. No objects, no grain, no vignette, no letters. Pure graphic color field.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/10.jpg",
+      "role": "texture",
+      "prompt": "A seamless square field of highly saturated electric aqua mint matching hex #0cefd3, with a barely visible brighter band toward the top using neighboring hex #0dfadd, otherwise perfectly even, no clouds, no stains, no grain, no letters.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/11.jpg",
+      "role": "texture",
+      "prompt": "A seamless full-frame field of pale gray matching hex #f6f6f6, even and matte, no objects, no paper texture, no letters, no vignette. Pure graphic color field.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.mobile-390.canvas"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/12.jpg",
+      "role": "mobile",
+      "prompt": "A tall portrait frame of highly saturated electric aqua mint matching hex #0cefd3. A tiny naive black #000101 marker figure sits in the bottom fifth of the frame: round head, rectangular torso, circle hands, both arms raised in a V, no face. The upper four-fifths is empty mint. No sparkles, no extra marks, no letters, logos, or UI. Graphic illustration, not a photograph.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.typicalAspect",
+        "measuredFacts.surfaces.mobile-390.primaryButton.background"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/13.jpg",
+      "role": "mobile",
+      "prompt": "A tall portrait frame of highly saturated electric aqua mint matching hex #0cefd3. In the lower third, a naive black #000101 marker amoeba blob containing simple line icons of a burger, fish, apple, bottle, phone, and plant, with three short speed dashes to the right. Empty mint above. Nothing drawn outside the blob except the dashes. No letters, logos, or UI. Graphic illustration, not a photograph.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.typicalAspect",
+        "measuredFacts.surfaces.mobile-390.primaryButton.background"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/14.jpg",
+      "role": "mobile",
+      "prompt": "A tall portrait frame of highly saturated electric aqua mint matching hex #0cefd3. In the lower right, an extremely simple childlike black #000101 marker doodle of a round-headed rider on a two-wheel scooter with a square box on the back and two speed dashes. No face, no letters, logos, or UI. Empty mint above. Graphic illustration, not a photograph.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.typicalAspect",
+        "measuredFacts.surfaces.mobile-390.primaryButton.background"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/15.jpg",
+      "role": "imagery",
+      "prompt": "A close food photograph of a clear square plastic takeout salad container on a pale wooden table, three-quarter view from the left. Inside: orange salmon slices, halved red tomatoes, yellow corn kernels, green lettuce, purple cabbage, and a small round cup of pale creamy dressing. Soft indoor daylight, shallow depth of field, wood grain going creamy out of focus. No packaging print, no letters, no logos, no captions.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.viewport"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/16.jpg",
+      "role": "mobile",
+      "prompt": "A tall close food photograph of a clear plastic takeout salad filling the frame, salmon slices and halved red tomatoes nearest the lens, green lettuce and a small pale dressing cup behind, pale wood table at the edges. Soft indoor daylight, shallow depth of field. No packaging print, no letters, no logos, no captions.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.viewport",
+        "measuredFacts.surfaces.mobile-390.typicalAspect"
+      ],
+      "aspect": "9:16"
+    }
+  ],
+  "videos": [
+    {
+      "file": "videos/01.mp4",
+      "fromImage": "images/01.jpg",
+      "motivation": "The raised-arm outline figure on a flat #0cefd3 field is the sampled GIF language of this surface. A 6s 720p zoom toward the lower-right doodle keeps the even mint and does not add a new scene.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/02.mp4",
+      "fromImage": "images/04.jpg",
+      "motivation": "The naive scooter doodle with a rear box is the delivery drawing this site actually loops. A slow rightward pan is the only motion that still belongs to those speed dashes.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/03.mp4",
+      "fromImage": "images/15.jpg",
+      "motivation": "The clear takeout salad on pale wood is the photograph on the desktop hero. A slow push-in holds the indoor daylight and unmarked container.",
+      "durationSec": 6
+    }
+  ]
+}

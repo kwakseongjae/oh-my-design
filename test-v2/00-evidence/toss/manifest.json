@@ -1,0 +1,226 @@
+{
+  "brand": "toss",
+  "captureId": "2026-08-22T19-51-46-001Z",
+  "capturedAt": "2026-08-22T19:51:46.001Z",
+  "channel": "playwright",
+  "source": {
+    "url": "https://toss.im/",
+    "finalUrl": "https://toss.im/",
+    "title": "토스",
+    "status": 200
+  },
+  "surfaces": [
+    {
+      "id": "desktop-1440",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "imagerySamples": 2,
+      "durationMs": 13724
+    },
+    {
+      "id": "mobile-390",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "imagerySamples": 12,
+      "durationMs": 15354
+    }
+  ],
+  "surfaceLimit": null,
+  "locale": "ko-KR",
+  "session": {
+    "profile": "fresh automation context",
+    "authenticated": false
+  },
+  "store": {
+    "root": "$OMD_EVIDENCE_STORE",
+    "path": "toss/2026-08-22T19-51-46-001Z"
+  },
+  "files": [
+    {
+      "name": "desktop-1440-imagery-01.png",
+      "bytes": 2318345,
+      "sha256": "9f03ebf93cb3ed74f12c1f3f53726ace3ca3afa437006d06df545d1764d7f4ef"
+    },
+    {
+      "name": "desktop-1440-imagery-02.png",
+      "bytes": 2838996,
+      "sha256": "1a4a8532fa74400f9cea7ade548ef22deb994ae19e07973393570fbdc48972f2"
+    },
+    {
+      "name": "desktop-1440-video-frame-01.png",
+      "bytes": 955966,
+      "sha256": "530568f80c0247fbb71c821da0466cfb28161423dc43389a6c419135efae8778"
+    },
+    {
+      "name": "desktop-1440-video-frame-02.png",
+      "bytes": 965161,
+      "sha256": "2a4913c149ea8c5deb96a9593997d6757525a2297f51a7d0971cc60c0a838caf"
+    },
+    {
+      "name": "desktop-1440-video-frame-03.png",
+      "bytes": 973998,
+      "sha256": "2443ede5c0d31e6aa62ff69b5a326f9885c9292798226795f872860ba15216de"
+    },
+    {
+      "name": "desktop-1440-video-frame-04.png",
+      "bytes": 927485,
+      "sha256": "f03efd577c75473d1cf8fe70edb62a8a3d7ad59846de6d74925e24f190a4debd"
+    },
+    {
+      "name": "desktop-1440-video-frame-05.png",
+      "bytes": 983291,
+      "sha256": "edb2796eb829e6737d20fa67444e62fd735e7e8748b1a0adcc85246d1df8e2c4"
+    },
+    {
+      "name": "desktop-1440-video-frame-06.png",
+      "bytes": 988407,
+      "sha256": "4b4c26aa0cf35382d9b2b2f04aac639778c946515a5f046846349fd2854fccf8"
+    },
+    {
+      "name": "desktop-1440-video-frame-07.png",
+      "bytes": 935646,
+      "sha256": "159fcf394538cc50f31683ec8914b7d11628455f3e76b5baac8d1d85ad8606a7"
+    },
+    {
+      "name": "desktop-1440-video-frame-08.png",
+      "bytes": 893505,
+      "sha256": "1c351001491830aa8930b610fdf7d633896d602a6577129ebe75d6151deca01f"
+    },
+    {
+      "name": "desktop-1440-viewport.png",
+      "bytes": 2502207,
+      "sha256": "a09e018319fe590014c4c8a91329a5144c459bfb4f087c968f9f8bdd1147f9d9"
+    },
+    {
+      "name": "imagery-01.png",
+      "bytes": 2412841,
+      "sha256": "72d9f8ccbb8e2369c6cf29510bcea463f3b632d931e26efbff39bcbc3bfb8ecc"
+    },
+    {
+      "name": "imagery-02.png",
+      "bytes": 2798750,
+      "sha256": "26d15446757d0f6ac73335985e9fbbbb43a6717db27170abe5fddf2531983528"
+    },
+    {
+      "name": "mobile-390-imagery-01.png",
+      "bytes": 177877,
+      "sha256": "bcf198e325f83542260a18c5c813b4da1b023a85d765f1fc561f208ccf4ad2cd"
+    },
+    {
+      "name": "mobile-390-imagery-02.png",
+      "bytes": 868434,
+      "sha256": "f3b264f68d43563730b2278421ca0d6e212a5b9ac38a9750da3a3d672e3a3896"
+    },
+    {
+      "name": "mobile-390-imagery-03.png",
+      "bytes": 90082,
+      "sha256": "00b5761104ff3599fa1576eb7973bc09056cbbe0e2531b2ac7554cea9333e371"
+    },
+    {
+      "name": "mobile-390-imagery-04.png",
+      "bytes": 535270,
+      "sha256": "7521e602d920a9cbc815a6b7fd7d5509b1a8d889fd6359bbca522c8528372728"
+    },
+    {
+      "name": "mobile-390-imagery-05.png",
+      "bytes": 545959,
+      "sha256": "a3758db15aef363634a4990f8eae4eb964b9a0b0dc902231a9d712c2996167ca"
+    },
+    {
+      "name": "mobile-390-imagery-06.png",
+      "bytes": 193472,
+      "sha256": "7be1a7110e55479b713600e7ce3c0b18c9b59e4a20392f37924cfaaf16f905b8"
+    },
+    {
+      "name": "mobile-390-imagery-07.png",
+      "bytes": 553234,
+      "sha256": "5241ecaf33b02a9be6decf128a3dc914182e3e3f6e754f02660ac8bdebca94f6"
+    },
+    {
+      "name": "mobile-390-imagery-08.png",
+      "bytes": 160472,
+      "sha256": "99df1b48a4f9971749eb329a40846390b293d8a3b508999f70cef24635888d85"
+    },
+    {
+      "name": "mobile-390-imagery-09.png",
+      "bytes": 133864,
+      "sha256": "2d3749f57ffbb6fcbb7df7dac919781ee1a3f57b07fae95f74a646798edb67ab"
+    },
+    {
+      "name": "mobile-390-imagery-10.png",
+      "bytes": 87263,
+      "sha256": "c349f23c836275513bb603e858768598ff11d469d8e922d5224e9c448e5f072d"
+    },
+    {
+      "name": "mobile-390-imagery-11.png",
+      "bytes": 150166,
+      "sha256": "5c385afe3fef7e729fbb72f32a4481d79612a4bfe1fa82929abf14e3cdddbefa"
+    },
+    {
+      "name": "mobile-390-imagery-12.png",
+      "bytes": 147853,
+      "sha256": "c90ca1ff259b650932de783a95c52483dcab032cad1d37e2e5681fb5cac4dbb6"
+    },
+    {
+      "name": "mobile-390-viewport.png",
+      "bytes": 846238,
+      "sha256": "e2b796b73c9489f09c5aa5ddc56af0e30edcfc1bf297d16b6c65c9b512626f8c"
+    },
+    {
+      "name": "video-frame-01.png",
+      "bytes": 1063215,
+      "sha256": "954766b65f3d51a8e8466add3db53ed4e7c795b2b74adaa0a8e9bff48f2104b8"
+    },
+    {
+      "name": "video-frame-02.png",
+      "bytes": 1075446,
+      "sha256": "cb302337cdb408cdae899bc83fb722ec2f2d79e13f08031e7295f5d56d8e6548"
+    },
+    {
+      "name": "video-frame-03.png",
+      "bytes": 1089196,
+      "sha256": "8e10c47c1f018a4d56807004618fa4fb86a60ad0275e9e31abc7c615c1a08008"
+    },
+    {
+      "name": "video-frame-04.png",
+      "bytes": 1025826,
+      "sha256": "9128f65d6ac30690164166ceed0df2fe85eef9d22cf6072a04798cd56ad7d0df"
+    },
+    {
+      "name": "video-frame-05.png",
+      "bytes": 1098383,
+      "sha256": "6bc1a665a9e39b52d5e9cb48f12c64ea03733208d3c0528fbf6bd8869666ac50"
+    },
+    {
+      "name": "video-frame-06.png",
+      "bytes": 1105950,
+      "sha256": "7d370470807e7f9f58ec231c6d56a4e19975a724e89895bd54cec8fb7bc5d972"
+    },
+    {
+      "name": "video-frame-07.png",
+      "bytes": 1037190,
+      "sha256": "372ab79da6adca2da41c6df2c27698301e07a131e3929de089f0b17ece025454"
+    },
+    {
+      "name": "video-frame-08.png",
+      "bytes": 984916,
+      "sha256": "9f91b2215c16089deea5a572015fa764455ae6d7e576c67fe1d65e9bfb269b81"
+    },
+    {
+      "name": "viewport-1440.png",
+      "bytes": 2368069,
+      "sha256": "8b4475f37596ff345f290efe4e3e6d8e69355f6c6e5a5f77534218bf7b0faad3"
+    },
+    {
+      "name": "viewport-390.png",
+      "bytes": 855795,
+      "sha256": "e6af4be57be918b188fafc5906ebf435837e66d7df81e422cb35ceac6c249696"
+    }
+  ],
+  "evidenceSha256": "5fb80bcc2c5aad7195d288c9831559056debc15a7b814cf755a4174ea7f32426",
+  "supersededBy": null
+}

@@ -1,6 +1,6 @@
 {
   "brand": "naver",
-  "capturedAt": "2026-08-22T19:10:32.550Z",
+  "capturedAt": "2026-08-22T19:51:00.372Z",
   "source": {
     "url": "https://www.naver.com/",
     "status": 200,
@@ -11,12 +11,972 @@
     "channel": "playwright",
     "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
     "imagerySamplesRequested": 12,
-    "viewport": {
-      "width": 1440,
-      "height": 900
-    },
     "locale": "ko-KR",
-    "colorScheme": "light"
+    "colorScheme": "light",
+    "surfaces": [
+      "desktop-1440",
+      "mobile-390"
+    ],
+    "totalDurationMs": 44998
+  },
+  "surfaces": {
+    "desktop-1440": {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "chrome": {
+        "pageBackgroundComputed": "#ffffff",
+        "bodyColor": "#2e2e2e",
+        "header": {
+          "detectedBy": "semantic",
+          "background": null,
+          "heightPx": 216
+        },
+        "primaryButton": null,
+        "typeScale": [
+          {
+            "tag": "h1",
+            "fontPx": 14.7,
+            "weight": "700",
+            "family": "-apple-system",
+            "lineHeight": "17.85px",
+            "letterSpacing": "-0.4px",
+            "color": "#2e2e2e"
+          },
+          {
+            "tag": "p",
+            "fontPx": 14.7,
+            "weight": "500",
+            "family": "-apple-system",
+            "lineHeight": "20px",
+            "letterSpacing": "-0.4px",
+            "color": "#2e2e2e"
+          },
+          {
+            "tag": "button",
+            "fontPx": 14.7,
+            "weight": "500",
+            "family": "-apple-system",
+            "lineHeight": "17.85px",
+            "letterSpacing": "-0.4px",
+            "color": "#2e2e2e"
+          }
+        ],
+        "notes": {
+          "buttonCandidatesAboveFold": 0,
+          "headerDetectedBy": "semantic"
+        },
+        "pageBackgroundRendered": {
+          "dominantHex": "#fefefe",
+          "coverage": 0.6884,
+          "resolved": true,
+          "hex": "#fefefe",
+          "source": "modal colour of the captured viewport",
+          "agreesWithComputed": "#ffffff"
+        }
+      },
+      "imagery": {
+        "sampled": 0,
+        "funnel": {
+          "found": 71,
+          "sizeOk": 0,
+          "centreInFrame": 0,
+          "srcOk": 0,
+          "cap": 12,
+          "kept": 0,
+          "framed": 0,
+          "cropped": 0,
+          "analysed": 0
+        },
+        "attrition": {
+          "suspect": true,
+          "reasons": [
+            "no media element reaches the size floor at this viewport (71 found) — a property of the surface, not a collection failure"
+          ],
+          "sizeFilterLoss": 1,
+          "note": "verify before using downstream"
+        },
+        "samples": [],
+        "aggregate": {
+          "meanLuma": null,
+          "dynamicRange": null,
+          "luminanceGradients": {},
+          "aspects": null,
+          "figureGroundResolved": "0/0",
+          "subjectNote": "fewer than 4 resolved samples — placement omitted"
+        }
+      },
+      "motion": {
+        "present": false,
+        "note": "no video above the fold at capture time"
+      },
+      "durationMs": 3932
+    },
+    "mobile-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "chrome": {
+        "pageBackgroundComputed": "#ffffff",
+        "bodyColor": "#2e2e2e",
+        "header": {
+          "detectedBy": "semantic",
+          "background": null,
+          "heightPx": 216
+        },
+        "primaryButton": {
+          "fill": "solid",
+          "background": "#03c75a",
+          "color": "#ffffff",
+          "radiusPx": 28,
+          "fontPx": 14.7,
+          "weight": "500",
+          "label": "모바일 버전으로 보기",
+          "repeats": 1
+        },
+        "typeScale": [
+          {
+            "tag": "h1",
+            "fontPx": 14.7,
+            "weight": "700",
+            "family": "-apple-system",
+            "lineHeight": "17.85px",
+            "letterSpacing": "-0.4px",
+            "color": "#2e2e2e"
+          },
+          {
+            "tag": "p",
+            "fontPx": 14.7,
+            "weight": "500",
+            "family": "-apple-system",
+            "lineHeight": "20px",
+            "letterSpacing": "-0.4px",
+            "color": "#2e2e2e"
+          },
+          {
+            "tag": "button",
+            "fontPx": 14.7,
+            "weight": "500",
+            "family": "-apple-system",
+            "lineHeight": "17.85px",
+            "letterSpacing": "-0.4px",
+            "color": "#2e2e2e"
+          }
+        ],
+        "notes": {
+          "buttonCandidatesAboveFold": 1,
+          "headerDetectedBy": "semantic"
+        },
+        "pageBackgroundRendered": {
+          "dominantHex": "#fefeff",
+          "coverage": 0.7987,
+          "resolved": true,
+          "hex": "#fefeff",
+          "source": "modal colour of the captured viewport",
+          "agreesWithComputed": "#ffffff"
+        }
+      },
+      "imagery": {
+        "sampled": 10,
+        "funnel": {
+          "found": 71,
+          "sizeOk": 21,
+          "centreInFrame": 10,
+          "srcOk": 10,
+          "cap": 12,
+          "kept": 10,
+          "framed": 10,
+          "cropped": 10,
+          "analysed": 10
+        },
+        "attrition": {
+          "suspect": false,
+          "sizeFilterLoss": 0.704
+        },
+        "samples": [
+          {
+            "src": "https://s.pstatic.net/dthumb.phinf/?src=%22https%3A%2F%2Fhappybean-phinf.pstatic.net%2F20260731_283%2F17854824242449uhIA_PNG%2Fimage.png%3Ftype%3Df464_260%22&type=ff364_236&service=navermain",
+            "kind": "img",
+            "tag": "c5",
+            "alt": "",
+            "docBox": {
+              "x": 50,
+              "y": 2045,
+              "w": 182.5,
+              "h": 120
+            },
+            "aspect": 1.521,
+            "areaShare": 0.0665,
+            "intrinsic": {
+              "w": 364,
+              "h": 236
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-01.png",
+            "palette": [
+              {
+                "hex": "#cbd3dd",
+                "coverage": 0.2392,
+                "saturation": 0.081,
+                "luma": 0.824
+              },
+              {
+                "hex": "#d2dbe5",
+                "coverage": 0.1364,
+                "saturation": 0.083,
+                "luma": 0.854
+              },
+              {
+                "hex": "#ced6e1",
+                "coverage": 0.1339,
+                "saturation": 0.084,
+                "luma": 0.836
+              },
+              {
+                "hex": "#ced9e2",
+                "coverage": 0.0504,
+                "saturation": 0.088,
+                "luma": 0.844
+              },
+              {
+                "hex": "#c3cbd5",
+                "coverage": 0.0441,
+                "saturation": 0.085,
+                "luma": 0.792
+              },
+              {
+                "hex": "#c6ced9",
+                "coverage": 0.0317,
+                "saturation": 0.088,
+                "luma": 0.804
+              }
+            ],
+            "light": {
+              "meanLuma": 0.767,
+              "p05": 0.414,
+              "p50": 0.824,
+              "p95": 0.862,
+              "dynamicRange": 0.448,
+              "gradient": {
+                "dx": 0.019,
+                "dy": 0.015
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 43.1
+            }
+          },
+          {
+            "src": "https://s.pstatic.net/dthumb.phinf/?src=%22https%3A%2F%2Fhappybean-phinf.pstatic.net%2F20260820_174%2F1787210670277KSW8D_JPEG%2F%25EB%25B0%25A4%25EB%25D7%25D9_364.jpg%3Ftype%3Df464_260%22&type=ff364_236&service=navermain",
+            "kind": "img",
+            "tag": "c6",
+            "alt": "",
+            "docBox": {
+              "x": 252.5,
+              "y": 2045,
+              "w": 182.5,
+              "h": 120
+            },
+            "aspect": 1.521,
+            "areaShare": 0.0665,
+            "intrinsic": {
+              "w": 364,
+              "h": 236
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-02.png",
+            "palette": [
+              {
+                "hex": "#f4ecda",
+                "coverage": 0.0386,
+                "saturation": 0.107,
+                "luma": 0.927
+              },
+              {
+                "hex": "#faf4e4",
+                "coverage": 0.0343,
+                "saturation": 0.088,
+                "luma": 0.957
+              },
+              {
+                "hex": "#eee4cb",
+                "coverage": 0.0297,
+                "saturation": 0.147,
+                "luma": 0.895
+              },
+              {
+                "hex": "#f2ead5",
+                "coverage": 0.0273,
+                "saturation": 0.12,
+                "luma": 0.918
+              },
+              {
+                "hex": "#f1e5cd",
+                "coverage": 0.0201,
+                "saturation": 0.149,
+                "luma": 0.901
+              },
+              {
+                "hex": "#fbf6ea",
+                "coverage": 0.0185,
+                "saturation": 0.068,
+                "luma": 0.965
+              }
+            ],
+            "light": {
+              "meanLuma": 0.564,
+              "p05": 0.128,
+              "p50": 0.537,
+              "p95": 0.953,
+              "dynamicRange": 0.825,
+              "gradient": {
+                "dx": -0.026,
+                "dy": -0.014
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 84.9
+            }
+          },
+          {
+            "src": "https://s.pstatic.net/dthumb.phinf/?src=%22https%3A%2F%2Fs.pstatic.net%2Fimgnews%2Fimage%2F047%2F2026%2F08%2F22%2F0002526365_001_20260822133608644.jpg%22&type=ff364_236&service=navermain",
+            "kind": "img",
+            "tag": "c1",
+            "alt": "",
+            "docBox": {
+              "x": 50,
+              "y": 1512,
+              "w": 154,
+              "h": 100
+            },
+            "aspect": 1.54,
+            "areaShare": 0.0468,
+            "intrinsic": {
+              "w": 364,
+              "h": 236
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-03.png",
+            "palette": [
+              {
+                "hex": "#c3c3be",
+                "coverage": 0.0308,
+                "saturation": 0.026,
+                "luma": 0.763
+              },
+              {
+                "hex": "#bec2bb",
+                "coverage": 0.019,
+                "saturation": 0.036,
+                "luma": 0.755
+              },
+              {
+                "hex": "#babcb5",
+                "coverage": 0.0187,
+                "saturation": 0.037,
+                "luma": 0.734
+              },
+              {
+                "hex": "#141413",
+                "coverage": 0.0186,
+                "saturation": 0.05,
+                "luma": 0.078
+              },
+              {
+                "hex": "#1b1c1b",
+                "coverage": 0.017,
+                "saturation": 0.036,
+                "luma": 0.109
+              },
+              {
+                "hex": "#b2b4ad",
+                "coverage": 0.0166,
+                "saturation": 0.039,
+                "luma": 0.702
+              }
+            ],
+            "light": {
+              "meanLuma": 0.497,
+              "p05": 0.096,
+              "p50": 0.539,
+              "p95": 0.81,
+              "dynamicRange": 0.714,
+              "gradient": {
+                "dx": -0.106,
+                "dy": -0.093
+              },
+              "luminanceGradient": "brighter left"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 40.9
+            }
+          },
+          {
+            "src": "https://s.pstatic.net/dthumb.phinf/?src=%22https%3A%2F%2Fclip-service-phinf.pstatic.net%2FMjAyNjA4MjBfMjc3%2FMDAxNzg3MTg2MDk3NzQ2.S6PEm4jV5FATlrWL3g7IYO2LeeYdJ-FHpaZ_os7Lagcg.HO1GBNadUrkEfLOmdC9DQEvnX-BkOwZHikjpvHsCsuAg.JPEG%2Fthumbnail-142D799B-EAF2-4317-A8A9-9126DD9A2217.jpg%22&type=ff364_236&service=navermain",
+            "kind": "img",
+            "tag": "c2",
+            "alt": "",
+            "docBox": {
+              "x": 50,
+              "y": 1628,
+              "w": 154,
+              "h": 100
+            },
+            "aspect": 1.54,
+            "areaShare": 0.0468,
+            "intrinsic": {
+              "w": 364,
+              "h": 236
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-04.png",
+            "palette": [
+              {
+                "hex": "#010101",
+                "coverage": 0.0609,
+                "saturation": 0,
+                "luma": 0.004
+              },
+              {
+                "hex": "#0c0c0a",
+                "coverage": 0.0248,
+                "saturation": 0.167,
+                "luma": 0.046
+              },
+              {
+                "hex": "#121a2c",
+                "coverage": 0.0185,
+                "saturation": 0.591,
+                "luma": 0.1
+              },
+              {
+                "hex": "#0d1523",
+                "coverage": 0.017,
+                "saturation": 0.629,
+                "luma": 0.08
+              },
+              {
+                "hex": "#141312",
+                "coverage": 0.0141,
+                "saturation": 0.1,
+                "luma": 0.075
+              },
+              {
+                "hex": "#0c121c",
+                "coverage": 0.0116,
+                "saturation": 0.571,
+                "luma": 0.068
+              }
+            ],
+            "light": {
+              "meanLuma": 0.326,
+              "p05": 0.008,
+              "p50": 0.249,
+              "p95": 0.731,
+              "dynamicRange": 0.723,
+              "gradient": {
+                "dx": 0.046,
+                "dy": -0.015
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 91.9
+            }
+          },
+          {
+            "src": "https://s.pstatic.net/dthumb.phinf/?src=%22https%3A%2F%2Fclip-service-phinf.pstatic.net%2FMjAyNjA4MjFfMTc5%2FMDAxNzg3Mjk5MjIzODM1.JaD_XUG2e2sy5NXWPF9xrIQqJbv4TRqdJW5Msq26hcog.QHZgMqchZdpZlxH7SkrqbQAe9OkNeg043aedyC7-A9wg.JPEG%2F8BvfnfQcA6_05.jpg%22&type=ff364_236&service=navermain",
+            "kind": "img",
+            "tag": "c3",
+            "alt": "",
+            "docBox": {
+              "x": 50,
+              "y": 1744,
+              "w": 154,
+              "h": 100
+            },
+            "aspect": 1.54,
+            "areaShare": 0.0468,
+            "intrinsic": {
+              "w": 364,
+              "h": 236
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-05.png",
+            "palette": [
+              {
+                "hex": "#000000",
+                "coverage": 0.1226,
+                "saturation": 0,
+                "luma": 0
+              },
+              {
+                "hex": "#e9e9eb",
+                "coverage": 0.0198,
+                "saturation": 0.009,
+                "luma": 0.914
+              },
+              {
+                "hex": "#fdfdfd",
+                "coverage": 0.0089,
+                "saturation": 0,
+                "luma": 0.992
+              },
+              {
+                "hex": "#e4e4ea",
+                "coverage": 0.0073,
+                "saturation": 0.026,
+                "luma": 0.896
+              },
+              {
+                "hex": "#bcbbbc",
+                "coverage": 0.0066,
+                "saturation": 0.005,
+                "luma": 0.734
+              },
+              {
+                "hex": "#a5a2a4",
+                "coverage": 0.0061,
+                "saturation": 0.018,
+                "luma": 0.638
+              }
+            ],
+            "light": {
+              "meanLuma": 0.477,
+              "p05": 0,
+              "p50": 0.519,
+              "p95": 0.888,
+              "dynamicRange": 0.888,
+              "gradient": {
+                "dx": 0.032,
+                "dy": 0.118
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 115.9
+            }
+          },
+          {
+            "src": "https://s.pstatic.net/dthumb.phinf/?src=%22https%3A%2F%2Fclip-service-phinf.pstatic.net%2FMjAyNjA4MjBfODQg%2FMDAxNzg3MjIzNDAzNTky.pFCL3u7MyKRPXhIjSto-rfM4uH4rePl1BBGadwrSm-wg.ggcb1wLTl4x-7ofj_gvOvva4E-gviUebWwEnHkZO7KEg.PNG%2Fimage.png%22&type=ff364_236&service=navermain",
+            "kind": "img",
+            "tag": "c4",
+            "alt": "",
+            "docBox": {
+              "x": 50,
+              "y": 1860,
+              "w": 154,
+              "h": 100
+            },
+            "aspect": 1.54,
+            "areaShare": 0.0468,
+            "intrinsic": {
+              "w": 364,
+              "h": 236
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-06.png",
+            "palette": [
+              {
+                "hex": "#e7e8e3",
+                "coverage": 0.1011,
+                "saturation": 0.022,
+                "luma": 0.908
+              },
+              {
+                "hex": "#b3947c",
+                "coverage": 0.0465,
+                "saturation": 0.307,
+                "luma": 0.599
+              },
+              {
+                "hex": "#e6e7e2",
+                "coverage": 0.0424,
+                "saturation": 0.022,
+                "luma": 0.904
+              },
+              {
+                "hex": "#e9e9e3",
+                "coverage": 0.0344,
+                "saturation": 0.026,
+                "luma": 0.912
+              },
+              {
+                "hex": "#020202",
+                "coverage": 0.0251,
+                "saturation": 0,
+                "luma": 0.008
+              },
+              {
+                "hex": "#cbba9d",
+                "coverage": 0.0141,
+                "saturation": 0.227,
+                "luma": 0.735
+              }
+            ],
+            "light": {
+              "meanLuma": 0.646,
+              "p05": 0.107,
+              "p50": 0.667,
+              "p95": 0.91,
+              "dynamicRange": 0.803,
+              "gradient": {
+                "dx": 0.028,
+                "dy": 0.071
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 45.1
+            }
+          },
+          {
+            "src": "https://s.pstatic.net/dthumb.phinf/?src=%22https%3A%2F%2Fs.pstatic.net%2Ftvcast.phinf%2F20260817_169%2FNsoIX_17869011975065wgmm_JPEG%2FXuJasgdbzZ_03.jpg%22&type=ff364_236&service=navermain",
+            "kind": "img",
+            "tag": "c7",
+            "alt": "",
+            "docBox": {
+              "x": 50,
+              "y": 2288,
+              "w": 154,
+              "h": 100
+            },
+            "aspect": 1.54,
+            "areaShare": 0.0468,
+            "intrinsic": {
+              "w": 364,
+              "h": 236
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-07.png",
+            "palette": [
+              {
+                "hex": "#d5c4bb",
+                "coverage": 0.0415,
+                "saturation": 0.122,
+                "luma": 0.78
+              },
+              {
+                "hex": "#030203",
+                "coverage": 0.0322,
+                "saturation": 0.333,
+                "luma": 0.009
+              },
+              {
+                "hex": "#0b090d",
+                "coverage": 0.0243,
+                "saturation": 0.308,
+                "luma": 0.038
+              },
+              {
+                "hex": "#06060a",
+                "coverage": 0.0235,
+                "saturation": 0.4,
+                "luma": 0.025
+              },
+              {
+                "hex": "#29262a",
+                "coverage": 0.0201,
+                "saturation": 0.095,
+                "luma": 0.153
+              },
+              {
+                "hex": "#0d0c11",
+                "coverage": 0.0186,
+                "saturation": 0.294,
+                "luma": 0.049
+              }
+            ],
+            "light": {
+              "meanLuma": 0.374,
+              "p05": 0.024,
+              "p50": 0.348,
+              "p95": 0.788,
+              "dynamicRange": 0.764,
+              "gradient": {
+                "dx": 0.096,
+                "dy": 0.147
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 63.6
+            }
+          },
+          {
+            "src": "https://s.pstatic.net/dthumb.phinf/?src=%22https%3A%2F%2Fs.pstatic.net%2Ftvcast.phinf%2F20260818_71%2F9tTDH_1787045074891akfHy_JPEG%2Fthumbnail-5DF1BBCA-7830-4A43-9028-3FE8A1166C53.jpg%22&type=ff364_236&service=navermain",
+            "kind": "img",
+            "tag": "c8",
+            "alt": "",
+            "docBox": {
+              "x": 50,
+              "y": 2404,
+              "w": 154,
+              "h": 100
+            },
+            "aspect": 1.54,
+            "areaShare": 0.0468,
+            "intrinsic": {
+              "w": 364,
+              "h": 236
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-08.png",
+            "palette": [
+              {
+                "hex": "#fefefe",
+                "coverage": 0.0181,
+                "saturation": 0,
+                "luma": 0.996
+              },
+              {
+                "hex": "#cbbcb4",
+                "coverage": 0.0102,
+                "saturation": 0.113,
+                "luma": 0.747
+              },
+              {
+                "hex": "#33323c",
+                "coverage": 0.0084,
+                "saturation": 0.167,
+                "luma": 0.2
+              },
+              {
+                "hex": "#c5b9b2",
+                "coverage": 0.0081,
+                "saturation": 0.096,
+                "luma": 0.734
+              },
+              {
+                "hex": "#a3cad4",
+                "coverage": 0.0076,
+                "saturation": 0.231,
+                "luma": 0.762
+              },
+              {
+                "hex": "#e4e1db",
+                "coverage": 0.0065,
+                "saturation": 0.039,
+                "luma": 0.883
+              }
+            ],
+            "light": {
+              "meanLuma": 0.588,
+              "p05": 0.195,
+              "p50": 0.62,
+              "p95": 0.909,
+              "dynamicRange": 0.714,
+              "gradient": {
+                "dx": -0.164,
+                "dy": -0.047
+              },
+              "luminanceGradient": "brighter left"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 97.8
+            }
+          },
+          {
+            "src": "https://s.pstatic.net/dthumb.phinf/?src=%22http%3A%2F%2Fblogfiles.naver.net%2FMjAyNjA4MTVfNjcg%2FMDAxNzg2Nzk0OTg2MDE4.vl8PZkDypA6sMsqJ58sbbFGSQtoWcOw_vqYywtl5iqYg.VAzoHp5o2zbPhdgwVDWpJ545XqRfKMcho3FUAwHz0bYg.JPEG%2Foutput_628541142.jpg%22&type=ff364_236&service=navermain",
+            "kind": "img",
+            "tag": "c9",
+            "alt": "",
+            "docBox": {
+              "x": 50,
+              "y": 2520,
+              "w": 154,
+              "h": 100
+            },
+            "aspect": 1.54,
+            "areaShare": 0.0468,
+            "intrinsic": {
+              "w": 364,
+              "h": 236
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-09.png",
+            "palette": [
+              {
+                "hex": "#6a92b2",
+                "coverage": 0.0587,
+                "saturation": 0.404,
+                "luma": 0.548
+              },
+              {
+                "hex": "#1e3953",
+                "coverage": 0.0468,
+                "saturation": 0.639,
+                "luma": 0.208
+              },
+              {
+                "hex": "#6a8ead",
+                "coverage": 0.037,
+                "saturation": 0.387,
+                "luma": 0.536
+              },
+              {
+                "hex": "#658cac",
+                "coverage": 0.0344,
+                "saturation": 0.413,
+                "luma": 0.526
+              },
+              {
+                "hex": "#1b344d",
+                "coverage": 0.0293,
+                "saturation": 0.649,
+                "luma": 0.19
+              },
+              {
+                "hex": "#242c33",
+                "coverage": 0.0234,
+                "saturation": 0.294,
+                "luma": 0.168
+              }
+            ],
+            "light": {
+              "meanLuma": 0.413,
+              "p05": 0.136,
+              "p50": 0.436,
+              "p95": 0.696,
+              "dynamicRange": 0.56,
+              "gradient": {
+                "dx": -0.113,
+                "dy": 0.074
+              },
+              "luminanceGradient": "brighter left"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 82.3
+            }
+          },
+          {
+            "src": "https://s.pstatic.net/dthumb.phinf/?src=%22http%3A%2F%2Fblogfiles.naver.net%2FMjAyNjA4MDdfMTk1%2FMDAxNzg2MDk4Njk4ODc3.uIMCKF8cxM37s93DYXOMkF4C9ZqKTu-tA2Ic79RhFAMg.yHajFcnypfjqAAzFSriiZq6KDp4Ovs1BBFrhyIw_DSwg.JPEG%2F%EB%82%98%EB%AC%B4%EB%8A%98%EB%B3%B4%EB%82%98%EB%B0%A9d.jpg%22&type=ff364_236&service=navermain",
+            "kind": "img",
+            "tag": "c10",
+            "alt": "",
+            "docBox": {
+              "x": 50,
+              "y": 2636,
+              "w": 154,
+              "h": 100
+            },
+            "aspect": 1.54,
+            "areaShare": 0.0468,
+            "intrinsic": {
+              "w": 364,
+              "h": 236
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-10.png",
+            "palette": [
+              {
+                "hex": "#131413",
+                "coverage": 0.0426,
+                "saturation": 0.05,
+                "luma": 0.077
+              },
+              {
+                "hex": "#0c0c0b",
+                "coverage": 0.0359,
+                "saturation": 0.083,
+                "luma": 0.047
+              },
+              {
+                "hex": "#0d1214",
+                "coverage": 0.0256,
+                "saturation": 0.35,
+                "luma": 0.067
+              },
+              {
+                "hex": "#12130d",
+                "coverage": 0.021,
+                "saturation": 0.316,
+                "luma": 0.072
+              },
+              {
+                "hex": "#151a14",
+                "coverage": 0.014,
+                "saturation": 0.231,
+                "luma": 0.096
+              },
+              {
+                "hex": "#1b1b14",
+                "coverage": 0.0125,
+                "saturation": 0.259,
+                "luma": 0.104
+              }
+            ],
+            "light": {
+              "meanLuma": 0.305,
+              "p05": 0.052,
+              "p50": 0.237,
+              "p95": 0.766,
+              "dynamicRange": 0.714,
+              "gradient": {
+                "dx": 0.137,
+                "dy": -0.077
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 90.7
+            }
+          }
+        ],
+        "aggregate": {
+          "meanLuma": 0.497,
+          "dynamicRange": 0.723,
+          "luminanceGradients": {
+            "even": 2,
+            "brighter left": 3,
+            "brighter right": 2,
+            "brighter bottom": 3
+          },
+          "aspects": 1.54,
+          "figureGroundResolved": "0/10",
+          "subjectNote": "fewer than 4 resolved samples — placement omitted"
+        }
+      },
+      "motion": {
+        "present": false,
+        "note": "no video above the fold at capture time"
+      },
+      "durationMs": 12535
+    }
   },
   "chrome": {
     "pageBackgroundComputed": "#ffffff",
@@ -24,8 +984,7 @@
     "header": {
       "detectedBy": "semantic",
       "background": null,
-      "heightPx": 216,
-      "borderBottom": null
+      "heightPx": 216
     },
     "primaryButton": null,
     "typeScale": [
@@ -35,15 +994,6 @@
         "weight": "700",
         "family": "-apple-system",
         "lineHeight": "17.85px",
-        "letterSpacing": "-0.4px",
-        "color": "#2e2e2e"
-      },
-      {
-        "tag": "h3",
-        "fontPx": 13.7,
-        "weight": "700",
-        "family": "-apple-system",
-        "lineHeight": "17px",
         "letterSpacing": "-0.4px",
         "color": "#2e2e2e"
       },
@@ -71,19 +1021,22 @@
       "headerDetectedBy": "semantic"
     },
     "pageBackgroundRendered": {
+      "dominantHex": "#fefefe",
+      "coverage": 0.6884,
       "resolved": true,
       "hex": "#fefefe",
-      "coverage": 0.6799,
-      "source": "modal colour of the captured viewport"
+      "source": "modal colour of the captured viewport",
+      "agreesWithComputed": "#ffffff"
     }
   },
   "imagery": {
     "sampled": 0,
     "funnel": {
-      "found": 67,
+      "found": 71,
       "sizeOk": 0,
       "centreInFrame": 0,
       "srcOk": 0,
+      "cap": 12,
       "kept": 0,
       "framed": 0,
       "cropped": 0,
@@ -92,12 +1045,9 @@
     "attrition": {
       "suspect": true,
       "reasons": [
-        "100% dropped at found → sizeOk"
+        "no media element reaches the size floor at this viewport (71 found) — a property of the surface, not a collection failure"
       ],
-      "stage": "found → sizeOk",
-      "before": 67,
-      "after": 0,
-      "lost": 1,
+      "sizeFilterLoss": 1,
       "note": "verify before using downstream"
     },
     "samples": [],
@@ -113,62 +1063,5 @@
   "motion": {
     "present": false,
     "note": "no video above the fold at capture time"
-  },
-  "mobile": {
-    "chrome": {
-      "pageBackgroundComputed": "#ffffff",
-      "bodyColor": "#2e2e2e",
-      "header": {
-        "detectedBy": "semantic",
-        "background": null,
-        "heightPx": 216,
-        "borderBottom": null
-      },
-      "primaryButton": {
-        "fill": "solid",
-        "background": "#03c75a",
-        "color": "#ffffff",
-        "radiusPx": 28,
-        "paddingY": 0,
-        "paddingX": 17,
-        "fontPx": 14.7,
-        "weight": "500",
-        "label": "모바일 버전으로 보기",
-        "repeats": 1
-      },
-      "typeScale": [
-        {
-          "tag": "h1",
-          "fontPx": 14.7,
-          "weight": "700",
-          "family": "-apple-system",
-          "lineHeight": "17.85px",
-          "letterSpacing": "-0.4px",
-          "color": "#2e2e2e"
-        },
-        {
-          "tag": "p",
-          "fontPx": 14.7,
-          "weight": "500",
-          "family": "-apple-system",
-          "lineHeight": "20px",
-          "letterSpacing": "-0.4px",
-          "color": "#2e2e2e"
-        },
-        {
-          "tag": "button",
-          "fontPx": 14.7,
-          "weight": "500",
-          "family": "-apple-system",
-          "lineHeight": "17.85px",
-          "letterSpacing": "-0.4px",
-          "color": "#2e2e2e"
-        }
-      ],
-      "notes": {
-        "buttonCandidatesAboveFold": 1,
-        "headerDetectedBy": "semantic"
-      }
-    }
   }
 }

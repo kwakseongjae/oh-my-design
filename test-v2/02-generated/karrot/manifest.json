@@ -1,0 +1,116 @@
+{
+  "brand": "karrot",
+  "storeId": "2026-08-23T06-29-51-750Z",
+  "ingestedAt": "2026-08-23T06:29:51.750Z",
+  "generator": {
+    "channel": "grok-build-cli",
+    "model": "grok-4.6",
+    "tools": [
+      "image_gen",
+      "image_to_video"
+    ]
+  },
+  "brief": "01-prompts/karrot/asset-brief.json",
+  "store": {
+    "root": "$OMD_GENERATED_STORE",
+    "path": "karrot/2026-08-23T06-29-51-750Z"
+  },
+  "files": [
+    {
+      "name": "images/01.jpg",
+      "bytes": 242863,
+      "sha256": "029224a53cbd1a998989da0fe1d62761abf1c04b8747c997f1c1563378cf0fe6"
+    },
+    {
+      "name": "images/02.jpg",
+      "bytes": 233211,
+      "sha256": "7556056adcaf204d4f018262be249989622ef9a9c0c29fc35563836ba58cd2b8"
+    },
+    {
+      "name": "images/03.jpg",
+      "bytes": 287265,
+      "sha256": "ce30ce2495e9ed4114ef69702f63eb1cdab883fcc27c8378f42a6851f4c24d69"
+    },
+    {
+      "name": "images/04.jpg",
+      "bytes": 211408,
+      "sha256": "49eedd25bfe311758b9279ae82e439bda46c414ea70046354214bea16a9a407c"
+    },
+    {
+      "name": "images/05.jpg",
+      "bytes": 281000,
+      "sha256": "28e1013976f5dfcdece204dcd4c8ea3fe332d85c053387553129cdea40fd5b79"
+    },
+    {
+      "name": "images/06.jpg",
+      "bytes": 202789,
+      "sha256": "7fd6c68cbfe413d199496ae0817507b509efdb7a30d53860194fb70db80c7e6a"
+    },
+    {
+      "name": "images/07.jpg",
+      "bytes": 311110,
+      "sha256": "745fda23c517face8faa8d79d72b08375bb87af7573aacc2aa4ba2c2e4c27860"
+    },
+    {
+      "name": "images/08.jpg",
+      "bytes": 325811,
+      "sha256": "f3736302fcd5b29b2935419f655034c9643091929865d7cf118bea65fb677940"
+    },
+    {
+      "name": "images/09.jpg",
+      "bytes": 288395,
+      "sha256": "83a37208217ac1922ed36f4a66b76c7a19bc08ad83a140896bc6083d7423275d"
+    },
+    {
+      "name": "images/10.jpg",
+      "bytes": 338161,
+      "sha256": "59973006d370a74a18e2f68361219f37c6d660fb94d040ad44072b0e0d0925cd"
+    },
+    {
+      "name": "images/11.jpg",
+      "bytes": 200395,
+      "sha256": "5964758a232c8baaef45bd086d756771c78b2d5ab0104e458969d79820d31b25"
+    },
+    {
+      "name": "images/12.jpg",
+      "bytes": 261882,
+      "sha256": "87242afcd5d858835883236d38fc58ecf0077e30381f5e8a3e27c37c7018aa49"
+    },
+    {
+      "name": "images/13.jpg",
+      "bytes": 173657,
+      "sha256": "664e006196befb30eb5517848e145b26ec992cadac843289bd30c0ad91073ea6"
+    },
+    {
+      "name": "images/14.jpg",
+      "bytes": 232762,
+      "sha256": "9b7de39aaf5f68cac8375d88ebcd21d392b19e7cdfcec7b7ef485cde906bb1a4"
+    },
+    {
+      "name": "images/15.jpg",
+      "bytes": 209349,
+      "sha256": "11a8f22354a490a1e7c334fd851ec7095c105fe0411d9ab1129d34441ed341a1"
+    },
+    {
+      "name": "images/16.jpg",
+      "bytes": 177810,
+      "sha256": "632fe88a60e8c6393c42eeb2d0d44a9030c59c5ee6d7f855a1b331dd9afcaf3f"
+    },
+    {
+      "name": "videos/01.mp4",
+      "bytes": 693774,
+      "sha256": "0ce76737f9833f7014709910f03a690257ac22995526a91332dd144b80780692"
+    },
+    {
+      "name": "videos/02.mp4",
+      "bytes": 671334,
+      "sha256": "3736efdbd484ae5dd6811898ef0d275e91420ff2e254c9fa13c0d32a2fd091db"
+    },
+    {
+      "name": "videos/03.mp4",
+      "bytes": 764742,
+      "sha256": "44cde24db5174e8595e8caa22de17ad48ff1c2394ca67109e96d2ca00bba5b64"
+    }
+  ],
+  "shotsSha256": "53cae9d56791f74d573c113dc40b874d03b6956e639907881ea1ffad2d1cd60d"
+}

@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행한다. 규칙서의 해당 조항과 Alipay 이관 산출물부터 읽고, 문장 분류와 원장 대조를 시작한다.규칙서 B2·E2 조항과 최근 감사 로그 형식을 확인한 뒤 Alipay 산출물을 전편 분류한다.문장 단위 분류와 원장 grep을 병행한다. 기존 F3에서 자주 놓친 추가 관측 문장·Use 줄의 판단문부터 대조한다.B2a로 붙일 문장을 확정했고, 원장 행은 grep으로 목적지를 대조한다.B2a가 비거나 이름이 짧은 문장부터 한정하고, 원장은 본문 수정 뒤 줄번호로 맞춘다.본문 한정을 붙였다. 새 줄번호로 grep한 뒤 provenance와 migration-log를 맞춘다.provenance의 derived 범위와 목적지 줄번호를 본문 실제에 맞춘다.migration-log를 grep 결과에 맞춰 고친다. SHA는 게이트 검사 뒤에 넣는다.Alipay 이관본을 B2a·E2만 감사해 한정 문장과 원장을 고쳤다. 토큰 값, 컴포넌트 표, 상태 applicability, 섹션 구조는 그대로다.
+
+**B2a.** 세 번째 부류인데 인접 완전 한정이 없거나 이름이 짧던 11곳에 `derived editorial implementation inference` / `not Alipay-authored or a separately published UI specification`을 붙이거나 확장했다. related-but-distinct 문단 끝의 Open Platform APIs/tools 문장은 1차 서사로 분리해 Scope 21에 한정 없이 남겼다.
+
+**E2.** `migration-log` 행을 grep과 맞춰 줄번호·이중 목적지를 고쳤다. `#1677FF`는 Distinctive extra·Semantic에도 있다. `2026-07-13`은 Scope와 freshness 양쪽이다. `data-omd-capture="1"`은 Type-roles+provenance이지 Top nav Use가 아니다. provenance derived 목록을 본문 실제 한정 위치에 맞췄다.
+
+기록: `docs/design-md-weight/migrated/alipay/audit-log.md`. Post-F3 SHA-256 `4b58d4d180c095427dc85c41287df49987ec9a66aff526cec54feff7cce368b3`. Core `portable_core: true`. `--gate-only` PASS.
+
+AUDIT_DONE fixes=27

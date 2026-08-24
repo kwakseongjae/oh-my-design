@@ -1,0 +1,17 @@
+Netflix legacy DESIGN.md를 Core v2로 옮기려면 규격·규칙집·골든 샘플을 먼저 읽고, 그다음에 본문과 provenance/로그를 쓰겠습니다.규칙집 v6과 현재 웨이브 4 맥락을 확인했습니다. 이어서 대응표·제약·골든 샘플과 Netflix 원문을 읽겠습니다.골든 샘플과 승인된 최근 이관본, Netflix 원문, 게이트 스크립트를 함께 읽어 형태와 보존 규칙을 맞추겠습니다.Netflix 원문의 나머지 섹션과 최근 승인된 이관본 형태를 이어서 읽겠습니다.게이트 검사와, 모션·다수 컴포넌트 처리가 비슷한 승인 이관본을 대조하겠습니다.원문 토큰과 OpenAI/Slack 이관 형태를 맞춰 DESIGN.md를 작성한 뒤, provenance와 로그는 F1·F2 스캔 후에 확정합니다.DESIGN.md를 처음부터 다시 읽어 B2a(인과·해석 문장)를 점검하고, 이어서 provenance를 작성합니다.패스 2(E2): 로그에 적을 값이 본문·provenance에 실제로 있는지 grep으로 대조합니다.`web/references/netflix/DESIGN.md`를 Core v2로 옮겼습니다. 산출은 `docs/design-md-weight/migrated/netflix/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 v6, F1·F2 수행.
+
+보존한 핵심만 적으면 이렇습니다.
+
+- YAML unitless line-height `1.1` / `1.15` / `1.2` / `1.25` / `1.3` / `1.4` / `1.5`는 비율로 유지
+- primitive type은 컴포넌트별: button×4, input×2, card×2, badge×3, tab, toast, dialog, toggle
+- Principles·Scope 시각 문단·Elevation·Layout·type-character·Content voice에 B2a 인접 한정
+- form-error `#E50914`와 YAML `#E87C03`은 충돌로 둘 다 유지
+- §13 fictional archetypes는 삭제, sidecar 없음
+- 무출처 cubic-bezier 4개만 삭제하고 duration·signature·`ease-*` 이름은 유지. B3 다섯 증거 종류는 Foundations에 전문
+- generic Auth `Focus`는 `focus-visible`로 올리지 않음
+- Expanded Preview / badges / Progress / Banner / Dialog는 kind/map 생략 (C4)
+- §14 11행은 본문 보존, loading/error/success는 역할로 판정
+
+검증: `inspectDesignMd` `portable_core: true`, placeholders 0. `migrate-reference.mjs --brand netflix --gate-only` PASS. 카탈로그 채택은 아닙니다.
+
+DONE migrated=1

@@ -1,7 +1,7 @@
 {
   "brand": "musinsa",
-  "captureId": "2026-08-22T11-50-41-983Z",
-  "capturedAt": "2026-08-22T11:50:41.983Z",
+  "captureId": "2026-08-22T19-50-15-466Z",
+  "capturedAt": "2026-08-22T19:50:15.466Z",
   "channel": "playwright",
   "source": {
     "url": "https://www.musinsa.com/category/001",
@@ -9,10 +9,27 @@
     "title": "상의 | 무신사 추천 상품",
     "status": 200
   },
-  "viewport": {
-    "width": 1440,
-    "height": 900
-  },
+  "surfaces": [
+    {
+      "id": "desktop-1440",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "imagerySamples": 12,
+      "durationMs": 16974
+    },
+    {
+      "id": "mobile-390",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "imagerySamples": 12,
+      "durationMs": 13901
+    }
+  ],
+  "surfaceLimit": null,
   "locale": "ko-KR",
   "session": {
     "profile": "fresh automation context",
@@ -20,80 +37,140 @@
   },
   "store": {
     "root": "$OMD_EVIDENCE_STORE",
-    "path": "musinsa/2026-08-22T11-50-41-983Z"
+    "path": "musinsa/2026-08-22T19-50-15-466Z"
   },
   "files": [
     {
-      "name": "imagery-01.png",
+      "name": "desktop-1440-imagery-01.png",
       "bytes": 220077,
       "sha256": "7bf437a63670884c67beb1a1cc3aa43bc6b67a8b2816816563cd1c0c82df1d81"
     },
     {
-      "name": "imagery-02.png",
+      "name": "desktop-1440-imagery-02.png",
       "bytes": 335812,
       "sha256": "9a4d93ba0da901a9e0da9f78ee1556dd385f191bb56c4b77955e8882ad5affed"
     },
     {
-      "name": "imagery-03.png",
+      "name": "desktop-1440-imagery-03.png",
       "bytes": 344005,
       "sha256": "f1d1120ae74d41eab8cb1e941409ea5f6859508f4ca2dddd292ba43b49eed78e"
     },
     {
-      "name": "imagery-04.png",
+      "name": "desktop-1440-imagery-04.png",
       "bytes": 87398,
       "sha256": "c00032a3a730ebbe0d33f6f4c405a8524fbead8841761f21da7a84193cd27052"
     },
     {
-      "name": "imagery-05.png",
+      "name": "desktop-1440-imagery-05.png",
       "bytes": 563411,
       "sha256": "25cf11624ce952584fb08a4b0962fd37db9c04199f14abd6ed59c0b86213293e"
     },
     {
-      "name": "imagery-06.png",
-      "bytes": 413608,
-      "sha256": "21158f4be561c01980f5cfcdae1aa6d9863559647695decc93689be0e6ae4d1b"
+      "name": "desktop-1440-imagery-06.png",
+      "bytes": 409222,
+      "sha256": "b2dbc422d27d0e5114950dca5ec8c520340108941dcad5ea932e906fa6554f97"
     },
     {
-      "name": "imagery-07.png",
+      "name": "desktop-1440-imagery-07.png",
       "bytes": 205262,
       "sha256": "c7d827858b01fb89b05d5931a868bce3d0da1d5ea105f34ae0853bb0ede2d640"
     },
     {
-      "name": "imagery-08.png",
+      "name": "desktop-1440-imagery-08.png",
       "bytes": 231824,
       "sha256": "1a4337108cef2959aded837e1188cb7e087582375d4da6cd230f9d55663c2f9a"
     },
     {
-      "name": "imagery-09.png",
-      "bytes": 253008,
-      "sha256": "649f531edc1d7c069955b7f0c02845fec5c03bc49cf92827267e85aff89673d5"
+      "name": "desktop-1440-imagery-09.png",
+      "bytes": 357685,
+      "sha256": "4ee9fd7aac466ea200fa5088019523afa5170965713ac6ac52383980b3bac211"
     },
     {
-      "name": "imagery-10.png",
+      "name": "desktop-1440-imagery-10.png",
       "bytes": 211687,
       "sha256": "41a1cbe7388640de3d8f5e0865894200b3e4096e123c2f36a5cc91a7308adb4d"
     },
     {
-      "name": "imagery-11.png",
+      "name": "desktop-1440-imagery-11.png",
       "bytes": 182739,
       "sha256": "348928920563f96c37d5c6a88e677e91888074760dc7c42a01bc8a4dcc61ebfb"
     },
     {
-      "name": "imagery-12.png",
+      "name": "desktop-1440-imagery-12.png",
       "bytes": 79897,
       "sha256": "ddd23c87c56d0e94d6cc89a2f85b90a46b132fe4991fc6dd7a83ed544925c757"
     },
     {
-      "name": "viewport-1440.png",
-      "bytes": 2098713,
-      "sha256": "da2eaf4bcfeea2e375db5512a8705017925f0b84190bc6c2b68f88380b7f8aea"
+      "name": "desktop-1440-viewport.png",
+      "bytes": 2197155,
+      "sha256": "f79b05ff97831dd24eccd7bca5c771d45f80f95771cc2882876294823551d885"
     },
     {
-      "name": "viewport-390.png",
-      "bytes": 407147,
-      "sha256": "5a73acb7c518317ebd5d080259cc0f45c7b9eb7115733b292a211c04d573fb0e"
+      "name": "mobile-390-imagery-01.png",
+      "bytes": 77968,
+      "sha256": "9fa935a8de7324e1b6d919643f6d8919fd3843a39f59bab070ab0ecc00681757"
+    },
+    {
+      "name": "mobile-390-imagery-02.png",
+      "bytes": 30028,
+      "sha256": "27927fd26e105e28e9192e5561c47d40d69c25f543a40e69afeb59f4b2b68b0b"
+    },
+    {
+      "name": "mobile-390-imagery-03.png",
+      "bytes": 155242,
+      "sha256": "7a0dea231e5bb810c7a59f05e816ce9188bccc07125114c31f3fa7a57b157ae2"
+    },
+    {
+      "name": "mobile-390-imagery-04.png",
+      "bytes": 129757,
+      "sha256": "8248e751b4ad45cd2bcbddf0350d26d68d23e37762d2178c1b6df9ef768de339"
+    },
+    {
+      "name": "mobile-390-imagery-05.png",
+      "bytes": 63982,
+      "sha256": "9c26fdc506c4744a9532ac03b201787dbcbe79dee8139cc32e4772c796b46aee"
+    },
+    {
+      "name": "mobile-390-imagery-06.png",
+      "bytes": 75911,
+      "sha256": "f67f232e36cfd238d605e297f01fa927be230f4f349d505555a72cd913d15eb9"
+    },
+    {
+      "name": "mobile-390-imagery-07.png",
+      "bytes": 109805,
+      "sha256": "db0eb57ecfbda92ad3e3e9479ed1b37fcaea4018786b54b2a2300af6581151c4"
+    },
+    {
+      "name": "mobile-390-imagery-08.png",
+      "bytes": 56951,
+      "sha256": "3ef8132d98da6b0992b83051bd708d6ad8a6090da484620cbcfa938f34d0882c"
+    },
+    {
+      "name": "mobile-390-imagery-09.png",
+      "bytes": 60562,
+      "sha256": "6d1a418fffa2c801ee5705a47e736780351da779ee1c644a84f5e595fe1c5af6"
+    },
+    {
+      "name": "mobile-390-imagery-10.png",
+      "bytes": 119821,
+      "sha256": "0a577406dd6bcdfa67165491401982b7216a6ff21bc555224e7bf2c3391966b9"
+    },
+    {
+      "name": "mobile-390-imagery-11.png",
+      "bytes": 107628,
+      "sha256": "c1cddb26f03f5648c348d9e4e627b8dcb0da2546dd4e2d1a72c8c3e9134d85a8"
+    },
+    {
+      "name": "mobile-390-imagery-12.png",
+      "bytes": 106472,
+      "sha256": "07ebfe991546e9b5ee0a75b8874175e429646b7f2ccb93235f691bf27b30cbfe"
+    },
+    {
+      "name": "mobile-390-viewport.png",
+      "bytes": 489743,
+      "sha256": "fd3dbaefda45552f8849b9cd06afa607fb342c210ffce6a6f82a364909b1f6ea"
     }
   ],
-  "evidenceSha256": "3b5280650077021cfc673e7e96f94fb67a352ad513b4763e3477c34add4f3150",
+  "evidenceSha256": "c67e22dbbc9d63331e1f1f9ed5a4056584c428bcd8e5c30294eece9d789bf62e",
   "supersededBy": null
 }

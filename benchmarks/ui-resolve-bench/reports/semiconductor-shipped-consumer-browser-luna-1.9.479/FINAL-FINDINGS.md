@@ -1,9 +1,0 @@
-# Semiconductor shipped consumer-browser transfer — 1.9.482 final
-
-The experiment stopped after the first pair. The control scored 83/85 and the candidate scored 85/85. The candidate fully resolved the objective UI, used 0.8383× the control's observed provider tokens, and took 0.6720× its wall time. It also followed the intended command shape exactly: one product edit, one attribute-aware static closure, one invocation of the shipped runner, no browser recovery, no duplicate static closure, and no work after readiness.
-
-Promotion still fails. The shipped runner required both `BU_NAME` and raw `BU_CDP_URL`, while the benchmark controller deliberately removes raw CDP endpoint variables from the model sandbox and grants only the exact named browser socket. The runner therefore stopped before attempting attachment. Its schema 0.3 artifact truthfully remained at browser attempts 0, outcome `not-run`, and closure `open`. A command-shaped trace is not consumer-browser proof, even when the independent objective evaluator gives the product 85/85.
-
-This is a valuable boundary failure rather than a reason to relax the gate. The provider-free repair is to make the shipped runner consume the named socket contract without requiring a raw endpoint, then have the automatic proof gate inspect the final schema artifact for a successful existing attachment, all three measured conditions, and closed invariants. The four untouched cells are frozen because candidate proof compliance 3/3 became mathematically impossible after the first valid candidate failure. No retry or environment substitution was used.
-
-Tokens-to-Target is now at least 49,239,471 observed provider tokens plus six usage-unavailable cells. The next exact candidate must preserve the 85/85 UI behavior while turning the currently manual artifact audit into a deterministic automatic gate.

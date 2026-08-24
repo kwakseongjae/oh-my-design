@@ -1,0 +1,20 @@
+T2 마이그레이션을 위해 규격·규칙집·골든 샘플부터 읽고, OpenAI legacy DESIGN.md를 Core v2로 옮기겠습니다.세션 상태를 복원했습니다. 규격·규칙집·골든 샘플·레거시 원문을 순서대로 읽겠습니다.규칙집 v4와 의미 보존 조건을 확인했습니다. 골든 샘플·최근 PASS 이관본·OpenAI 원문을 대조합니다.OpenAI 디렉터리와 최근 PASS 이관본의 형태를 확인한 뒤, 컴포넌트·상태·거버넌스 처리 패턴을 맞춥니다.PASS 이관본의 거버넌스·상태 표와 게이트 스크립트를 확인해, OpenAI에 같은 조항을 적용하겠습니다.원문 토큰과 v4 조항을 기준으로 Core v2 세 파일을 작성합니다.기계 게이트와 Portable Core 검사를 돌리고, 토큰 손실·발명도 대조합니다.다이얼로그 hover·disabled를 포인터 웹 역할에 맞춰 `applicable`로 고칩니다. 원문 미관측을 비적용으로 두지 않습니다.OpenAI legacy `DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 **v4**. 카탈로그 채택이 아닙니다.
+
+| 산출물 | 경로 |
+|---|---|
+| Portable Core | `docs/design-md-weight/migrated/openai/DESIGN.md` |
+| 출처 원장 | `docs/design-md-weight/migrated/openai/provenance.md` |
+| 이관 로그 | `docs/design-md-weight/migrated/openai/migration-log.md` |
+
+기계 검증: `inspectDesignMd` `portable_core: true`, placeholders 0, `migrate-reference.mjs --brand openai --gate-only` **PASS**.
+
+의미 보존에서 특히 지킨 것:
+
+- YAML unitless line-height `1.07`–`1.38`은 비율로 두고, 본문 px는 크기 국소 관측으로 분리
+- 컴포넌트별 `Type` 보존 (button×5, input×2, card×2, listItem, badge, tab×2, toast, dialog, toggle)
+- generic `Focus` 색을 `focus-visible` 행에 올리지 않음
+- §13 fictional archetypes는 삭제, provenance에도 재수록하지 않음
+- 무출처 cubic-bezier 3개만 삭제 (`ease-in`은 규격 템플릿과 동일). duration·signature motion·reduced-motion은 본문 유지
+- §14 12행은 Components 본문에 두고, loading/error/success는 역할로 판정
+
+DONE migrated=1

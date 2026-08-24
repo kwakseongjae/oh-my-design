@@ -1,6 +1,6 @@
 {
   "brand": "coupang",
-  "capturedAt": "2026-08-22T11:54:47.715Z",
+  "capturedAt": "2026-08-22T19:48:17.298Z",
   "source": {
     "url": "https://www.coupang.com/",
     "finalUrl": "https://www.coupang.com/",
@@ -8,14 +8,540 @@
   },
   "method": {
     "channel": "aside",
-    "colorScheme": "browser profile default — not controllable through Aside (CDP Emulation domain unavailable)",
     "why": "site refuses automated browsers; Playwright receives 403 Access Denied",
+    "colorScheme": "browser profile default — not controllable through Aside (CDP Emulation domain unavailable)",
     "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
     "imagerySamplesRequested": 12,
-    "viewport": {
-      "w": 1440,
-      "h": 900,
-      "dpr": 2
+    "surfaces": [
+      "desktop-1440"
+    ],
+    "surfaceLimit": "Aside cannot resize its window from the REPL; only the window's own viewport is captured",
+    "totalDurationMs": 23405
+  },
+  "surfaces": {
+    "desktop-1440": {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "chrome": {
+        "pageBackgroundComputed": null,
+        "bodyColor": "#000000",
+        "header": {
+          "detectedBy": "geometry",
+          "background": null,
+          "heightPx": 70
+        },
+        "primaryButton": null,
+        "typeScale": [
+          {
+            "tag": "h2",
+            "fontPx": 24,
+            "weight": "700",
+            "family": "Apple SD Gothic Neo",
+            "lineHeight": "33px",
+            "letterSpacing": "normal",
+            "color": "#000000"
+          },
+          {
+            "tag": "h3",
+            "fontPx": 20,
+            "weight": "400",
+            "family": "Apple SD Gothic Neo",
+            "lineHeight": "33px",
+            "letterSpacing": "normal",
+            "color": "#212b36"
+          },
+          {
+            "tag": "p",
+            "fontPx": 11,
+            "weight": "400",
+            "family": "Apple SD Gothic Neo",
+            "lineHeight": "16.5px",
+            "letterSpacing": "normal",
+            "color": "#7b7b7b"
+          }
+        ],
+        "notes": {
+          "buttonCandidatesAboveFold": 0,
+          "headerDetectedBy": "geometry"
+        },
+        "pageBackgroundRendered": {
+          "dominantHex": "#fefefe",
+          "coverage": 0.3526,
+          "resolved": true,
+          "hex": "#fefefe",
+          "source": "modal colour of the captured viewport",
+          "agreesWithComputed": null
+        }
+      },
+      "imagery": {
+        "sampled": 6,
+        "funnel": {
+          "found": 1432,
+          "sizeOk": 158,
+          "centreInFrame": 65,
+          "srcOk": 65,
+          "cap": 12,
+          "kept": 12,
+          "framed": 6,
+          "cropped": 6,
+          "analysed": 6
+        },
+        "attrition": {
+          "suspect": false,
+          "sizeFilterLoss": 0.89
+        },
+        "samples": [
+          {
+            "src": "https://static.coupangcdn.com/ya/cmg_paperboy/image/1786689547420/PC.jpg",
+            "kind": "img",
+            "tag": "c1",
+            "alt": "",
+            "docBox": {
+              "x": 0,
+              "y": 222,
+              "w": 1440,
+              "h": 450
+            },
+            "aspect": 3.2,
+            "areaShare": 0.5,
+            "intrinsic": {
+              "w": 1920,
+              "h": 450
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-01.png",
+            "palette": [
+              {
+                "hex": "#fafafa",
+                "coverage": 0.9497,
+                "saturation": 0,
+                "luma": 0.98
+              },
+              {
+                "hex": "#f5f5f5",
+                "coverage": 0.0101,
+                "saturation": 0,
+                "luma": 0.961
+              },
+              {
+                "hex": "#ebebec",
+                "coverage": 0.0032,
+                "saturation": 0.004,
+                "luma": 0.922
+              },
+              {
+                "hex": "#ced2dc",
+                "coverage": 0.0024,
+                "saturation": 0.064,
+                "luma": 0.823
+              },
+              {
+                "hex": "#dce3f4",
+                "coverage": 0.002,
+                "saturation": 0.098,
+                "luma": 0.889
+              },
+              {
+                "hex": "#d3d3d3",
+                "coverage": 0.0019,
+                "saturation": 0,
+                "luma": 0.827
+              }
+            ],
+            "light": {
+              "meanLuma": 0.973,
+              "p05": 0.973,
+              "p50": 0.98,
+              "p95": 0.992,
+              "dynamicRange": 0.019,
+              "gradient": {
+                "dx": -0.014,
+                "dy": -0.002
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0
+            }
+          },
+          {
+            "src": "https://thumbnail10.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_48306255-60a6-4493-8e5c-f4f69732b6a7.png",
+            "kind": "img",
+            "tag": "c12",
+            "alt": "",
+            "docBox": {
+              "x": 405,
+              "y": 3375.1328125,
+              "w": 411,
+              "h": 758.765625
+            },
+            "aspect": 0.542,
+            "areaShare": 0.2406,
+            "intrinsic": {
+              "w": 325,
+              "h": 600
+            },
+            "clipped": true,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-02.png",
+            "palette": [
+              {
+                "hex": "#ffffff",
+                "coverage": 0.965,
+                "saturation": 0,
+                "luma": 1
+              },
+              {
+                "hex": "#f3f3f3",
+                "coverage": 0.0098,
+                "saturation": 0,
+                "luma": 0.953
+              },
+              {
+                "hex": "#ededed",
+                "coverage": 0.0079,
+                "saturation": 0,
+                "luma": 0.929
+              },
+              {
+                "hex": "#fae3ec",
+                "coverage": 0.0015,
+                "saturation": 0.092,
+                "luma": 0.912
+              },
+              {
+                "hex": "#f5cbdb",
+                "coverage": 0.0013,
+                "saturation": 0.171,
+                "luma": 0.836
+              },
+              {
+                "hex": "#f8dae6",
+                "coverage": 0.001,
+                "saturation": 0.121,
+                "luma": 0.883
+              }
+            ],
+            "light": {
+              "meanLuma": 0.995,
+              "p05": 1,
+              "p50": 1,
+              "p95": 1,
+              "dynamicRange": 0,
+              "gradient": {
+                "dx": -0.01,
+                "dy": 0.009
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 9.9
+            }
+          },
+          {
+            "src": "https://thumbnail1.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_c429331b-08cc-48b2-a9c4-32ee42e7addf.png",
+            "kind": "img",
+            "tag": "c13",
+            "alt": "",
+            "docBox": {
+              "x": 816,
+              "y": 3375.1328125,
+              "w": 411,
+              "h": 758.765625
+            },
+            "aspect": 0.542,
+            "areaShare": 0.2406,
+            "intrinsic": {
+              "w": 325,
+              "h": 600
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-03.png",
+            "palette": [
+              {
+                "hex": "#fcfbeb",
+                "coverage": 0.0399,
+                "saturation": 0.067,
+                "luma": 0.981
+              },
+              {
+                "hex": "#e47ca2",
+                "coverage": 0.0316,
+                "saturation": 0.456,
+                "luma": 0.584
+              },
+              {
+                "hex": "#f9f6e3",
+                "coverage": 0.0281,
+                "saturation": 0.088,
+                "luma": 0.962
+              },
+              {
+                "hex": "#f6f4e2",
+                "coverage": 0.027,
+                "saturation": 0.081,
+                "luma": 0.953
+              },
+              {
+                "hex": "#f5f2dd",
+                "coverage": 0.0259,
+                "saturation": 0.098,
+                "luma": 0.946
+              },
+              {
+                "hex": "#f3eddb",
+                "coverage": 0.0218,
+                "saturation": 0.099,
+                "luma": 0.929
+              }
+            ],
+            "light": {
+              "meanLuma": 0.757,
+              "p05": 0.432,
+              "p50": 0.791,
+              "p95": 0.971,
+              "dynamicRange": 0.539,
+              "gradient": {
+                "dx": -0.014,
+                "dy": -0.087
+              },
+              "luminanceGradient": "brighter top"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 70.7
+            }
+          },
+          {
+            "src": "https://thumbnail9.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_474a16b2-f734-4ac4-95e5-b04bc8e54dd4.png",
+            "kind": "img",
+            "tag": "c14",
+            "alt": "",
+            "docBox": {
+              "x": 1227,
+              "y": 3375.1328125,
+              "w": 411,
+              "h": 758.765625
+            },
+            "aspect": 0.542,
+            "areaShare": 0.2406,
+            "intrinsic": {
+              "w": 325,
+              "h": 600
+            },
+            "clipped": true,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-04.png",
+            "palette": [
+              {
+                "hex": "#ffffff",
+                "coverage": 0.965,
+                "saturation": 0,
+                "luma": 1
+              },
+              {
+                "hex": "#f3f3f3",
+                "coverage": 0.0098,
+                "saturation": 0,
+                "luma": 0.953
+              },
+              {
+                "hex": "#ededed",
+                "coverage": 0.0079,
+                "saturation": 0,
+                "luma": 0.929
+              },
+              {
+                "hex": "#fae3ec",
+                "coverage": 0.0015,
+                "saturation": 0.092,
+                "luma": 0.912
+              },
+              {
+                "hex": "#f5cbdb",
+                "coverage": 0.0013,
+                "saturation": 0.171,
+                "luma": 0.836
+              },
+              {
+                "hex": "#f8dae6",
+                "coverage": 0.001,
+                "saturation": 0.121,
+                "luma": 0.883
+              }
+            ],
+            "light": {
+              "meanLuma": 0.995,
+              "p05": 1,
+              "p50": 1,
+              "p95": 1,
+              "dynamicRange": 0,
+              "gradient": {
+                "dx": -0.01,
+                "dy": 0.009
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 9.9
+            }
+          },
+          {
+            "src": "https://thumbnail7.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_5d20d168-4a4f-4bf0-bad3-07e625e784e2.png",
+            "kind": "img",
+            "tag": "c16",
+            "alt": "",
+            "docBox": {
+              "x": 816,
+              "y": 4157.8984375,
+              "w": 411,
+              "h": 758.765625
+            },
+            "aspect": 0.542,
+            "areaShare": 0.2406,
+            "intrinsic": {
+              "w": 411,
+              "h": 759
+            },
+            "clipped": true,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-06.png",
+            "palette": [
+              {
+                "hex": "#ffffff",
+                "coverage": 1,
+                "saturation": 0,
+                "luma": 1
+              }
+            ],
+            "light": {
+              "meanLuma": 1,
+              "p05": 1,
+              "p50": 1,
+              "p95": 1,
+              "dynamicRange": 0,
+              "gradient": {
+                "dx": 0,
+                "dy": 0
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 0
+            }
+          },
+          {
+            "src": "https://thumbnail3.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_8d492e47-e3ff-46e9-b6ac-17f7aaa71823.png",
+            "kind": "img",
+            "tag": "c17",
+            "alt": "",
+            "docBox": {
+              "x": 1227,
+              "y": 4157.8984375,
+              "w": 411,
+              "h": 758.765625
+            },
+            "aspect": 0.542,
+            "areaShare": 0.2406,
+            "intrinsic": {
+              "w": 411,
+              "h": 759
+            },
+            "clipped": true,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-07.png",
+            "palette": [
+              {
+                "hex": "#ffffff",
+                "coverage": 0.941,
+                "saturation": 0,
+                "luma": 1
+              },
+              {
+                "hex": "#f3f3f3",
+                "coverage": 0.0225,
+                "saturation": 0,
+                "luma": 0.953
+              },
+              {
+                "hex": "#ededed",
+                "coverage": 0.0071,
+                "saturation": 0,
+                "luma": 0.929
+              },
+              {
+                "hex": "#bbbbbb",
+                "coverage": 0.0022,
+                "saturation": 0,
+                "luma": 0.733
+              },
+              {
+                "hex": "#b3b3b3",
+                "coverage": 0.0018,
+                "saturation": 0,
+                "luma": 0.702
+              },
+              {
+                "hex": "#c3c3c3",
+                "coverage": 0.0015,
+                "saturation": 0,
+                "luma": 0.765
+              }
+            ],
+            "light": {
+              "meanLuma": 0.991,
+              "p05": 0.957,
+              "p50": 1,
+              "p95": 1,
+              "dynamicRange": 0.043,
+              "gradient": {
+                "dx": -0.018,
+                "dy": 0.011
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 11.2
+            }
+          }
+        ],
+        "aggregate": {
+          "meanLuma": 0.995,
+          "dynamicRange": 0.019,
+          "luminanceGradients": {
+            "even": 5,
+            "brighter top": 1
+          },
+          "aspects": 0.542,
+          "figureGroundResolved": "0/6",
+          "subjectNote": "fewer than 4 resolved samples — placement omitted"
+        }
+      },
+      "motion": {
+        "present": false,
+        "note": "no video above the fold at capture time"
+      },
+      "durationMs": 23405,
+      "viewportMeasured": {
+        "w": 1440,
+        "h": 900,
+        "dpr": 2
+      }
     }
   },
   "chrome": {
@@ -24,12 +550,7 @@
     "header": {
       "detectedBy": "geometry",
       "background": null,
-      "heightPx": 70,
-      "backgroundRendered": {
-        "hex": "#ffffff",
-        "coverage": 0.315,
-        "source": "modal colour of the header band"
-      }
+      "heightPx": 70
     },
     "primaryButton": null,
     "typeScale": [
@@ -66,333 +587,372 @@
       "headerDetectedBy": "geometry"
     },
     "pageBackgroundRendered": {
+      "dominantHex": "#fefefe",
+      "coverage": 0.3526,
       "resolved": true,
       "hex": "#fefefe",
-      "coverage": 0.3585,
-      "source": "modal colour of the captured viewport"
+      "source": "modal colour of the captured viewport",
+      "agreesWithComputed": null
     }
   },
-  "motion": {
-    "present": false,
-    "note": "no video above the fold at capture time"
-  },
   "imagery": {
-    "sampled": 12,
+    "sampled": 6,
+    "funnel": {
+      "found": 1432,
+      "sizeOk": 158,
+      "centreInFrame": 65,
+      "srcOk": 65,
+      "cap": 12,
+      "kept": 12,
+      "framed": 6,
+      "cropped": 6,
+      "analysed": 6
+    },
+    "attrition": {
+      "suspect": false,
+      "sizeFilterLoss": 0.89
+    },
     "samples": [
       {
-        "src": "https://image7.coupangcdn.com/image/ccm/banner/7b3e8e609febb599ae0c9f38900b90a2.jpg",
+        "src": "https://static.coupangcdn.com/ya/cmg_paperboy/image/1786689547420/PC.jpg",
+        "kind": "img",
+        "tag": "c1",
         "alt": "",
-        "box": {
+        "docBox": {
           "x": 0,
-          "y": 0.2467,
-          "w": 1,
-          "h": 0.5
+          "y": 222,
+          "w": 1440,
+          "h": 450
         },
-        "pixelBox": {
-          "x": 0,
-          "y": 444,
-          "w": 2880,
-          "h": 900
-        },
-        "clipped": false,
         "aspect": 3.2,
         "areaShare": 0.5,
-        "firstScreen": true,
         "intrinsic": {
           "w": 1920,
           "h": 450
         },
-        "pass": 0,
-        "file": "capture/imagery-01.png",
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-01.png",
         "palette": [
           {
-            "hex": "#e4eaed",
-            "coverage": 0.1234,
-            "saturation": 0.038,
-            "luma": 0.913
-          },
-          {
-            "hex": "#dce2e6",
-            "coverage": 0.086,
-            "saturation": 0.043,
-            "luma": 0.882
-          },
-          {
-            "hex": "#e1e6ea",
-            "coverage": 0.0553,
-            "saturation": 0.038,
-            "luma": 0.899
-          },
-          {
-            "hex": "#fefefe",
-            "coverage": 0.053,
+            "hex": "#fafafa",
+            "coverage": 0.9497,
             "saturation": 0,
-            "luma": 0.996
+            "luma": 0.98
           },
           {
-            "hex": "#c4cacd",
-            "coverage": 0.0465,
-            "saturation": 0.044,
-            "luma": 0.788
-          },
-          {
-            "hex": "#d4dadd",
-            "coverage": 0.0455,
-            "saturation": 0.041,
-            "luma": 0.851
-          }
-        ],
-        "light": {
-          "meanLuma": 0.815,
-          "p05": 0.274,
-          "p50": 0.87,
-          "p95": 0.983,
-          "dynamicRange": 0.709,
-          "gradient": {
-            "dx": -0.126,
-            "dy": -0.023
-          },
-          "luminanceGradient": "brighter left"
-        },
-        "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 25.8
-        }
-      },
-      {
-        "src": "https://static.coupangcdn.com/ja/cmg_paperboy/image/1787206475089/C2-1.jpeg",
-        "alt": "",
-        "box": {
-          "x": 0.1563,
-          "y": -0.1367,
-          "w": 0.3382,
-          "h": 0.3445
-        },
-        "pixelBox": {
-          "x": 450,
-          "y": 0,
-          "w": 974,
-          "h": 374.1875
-        },
-        "clipped": true,
-        "aspect": 1.57,
-        "areaShare": 0.1165,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 468,
-          "h": 298
-        },
-        "pass": 1,
-        "file": "capture/imagery-02.png",
-        "palette": [
-          {
-            "hex": "#ffffff",
-            "coverage": 0.7764,
+            "hex": "#f5f5f5",
+            "coverage": 0.0101,
             "saturation": 0,
-            "luma": 1
+            "luma": 0.961
           },
           {
-            "hex": "#f2f2f2",
-            "coverage": 0.0345,
-            "saturation": 0,
-            "luma": 0.949
-          },
-          {
-            "hex": "#cfcfd0",
-            "coverage": 0.0088,
-            "saturation": 0.005,
-            "luma": 0.812
-          },
-          {
-            "hex": "#cccccd",
-            "coverage": 0.0084,
-            "saturation": 0.005,
-            "luma": 0.8
-          },
-          {
-            "hex": "#ebebeb",
-            "coverage": 0.0064,
-            "saturation": 0,
-            "luma": 0.922
-          },
-          {
-            "hex": "#e4e4e4",
-            "coverage": 0.0055,
-            "saturation": 0,
-            "luma": 0.894
-          }
-        ],
-        "light": {
-          "meanLuma": 0.917,
-          "p05": 0.322,
-          "p50": 1,
-          "p95": 1,
-          "dynamicRange": 0.678,
-          "gradient": {
-            "dx": -0.052,
-            "dy": 0.054
-          },
-          "luminanceGradient": "brighter bottom"
-        },
-        "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 31.4
-        }
-      },
-      {
-        "src": "https://static.coupangcdn.com/xa/cmg_paperboy/image/1787034819047/C2-2.jpeg",
-        "alt": "",
-        "box": {
-          "x": 0.5028,
-          "y": -0.1367,
-          "w": 0.3382,
-          "h": 0.3445
-        },
-        "pixelBox": {
-          "x": 1448,
-          "y": 0,
-          "w": 974,
-          "h": 374.1875
-        },
-        "clipped": true,
-        "aspect": 1.57,
-        "areaShare": 0.1165,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 468,
-          "h": 298
-        },
-        "pass": 1,
-        "file": "capture/imagery-03.png",
-        "palette": [
-          {
-            "hex": "#ffffff",
-            "coverage": 0.5864,
-            "saturation": 0,
-            "luma": 1
-          },
-          {
-            "hex": "#ecebeb",
-            "coverage": 0.0344,
+            "hex": "#ebebec",
+            "coverage": 0.0032,
             "saturation": 0.004,
             "luma": 0.922
           },
           {
-            "hex": "#f2f2f2",
-            "coverage": 0.0332,
+            "hex": "#ced2dc",
+            "coverage": 0.0024,
+            "saturation": 0.064,
+            "luma": 0.823
+          },
+          {
+            "hex": "#dce3f4",
+            "coverage": 0.002,
+            "saturation": 0.098,
+            "luma": 0.889
+          },
+          {
+            "hex": "#d3d3d3",
+            "coverage": 0.0019,
             "saturation": 0,
-            "luma": 0.949
-          },
-          {
-            "hex": "#cc3529",
-            "coverage": 0.0186,
-            "saturation": 0.799,
-            "luma": 0.33
-          },
-          {
-            "hex": "#cb3226",
-            "coverage": 0.0177,
-            "saturation": 0.813,
-            "luma": 0.32
-          },
-          {
-            "hex": "#ceced1",
-            "coverage": 0.0111,
-            "saturation": 0.014,
-            "luma": 0.809
+            "luma": 0.827
           }
         ],
         "light": {
-          "meanLuma": 0.833,
-          "p05": 0.29,
-          "p50": 1,
-          "p95": 1,
-          "dynamicRange": 0.71,
+          "meanLuma": 0.973,
+          "p05": 0.973,
+          "p50": 0.98,
+          "p95": 0.992,
+          "dynamicRange": 0.019,
           "gradient": {
-            "dx": -0.2,
-            "dy": 0.206
+            "dx": -0.014,
+            "dy": -0.002
           },
-          "luminanceGradient": "brighter bottom"
+          "luminanceGradient": "even"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 47.9
+          "borderVariance": 0
         }
       },
       {
-        "src": "https://static.coupangcdn.com/fa/cmg_paperboy/image/1787206637091/C2-7.jpeg",
+        "src": "https://thumbnail10.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_48306255-60a6-4493-8e5c-f4f69732b6a7.png",
+        "kind": "img",
+        "tag": "c12",
         "alt": "",
-        "box": {
-          "x": 0.1563,
-          "y": 0.5795,
-          "w": 0.3382,
-          "h": 0.3445
+        "docBox": {
+          "x": 405,
+          "y": 3375.1328125,
+          "w": 411,
+          "h": 758.765625
         },
-        "pixelBox": {
-          "x": 450,
-          "y": 1043.015625,
-          "w": 974,
-          "h": 620.1875
-        },
-        "clipped": false,
-        "aspect": 1.57,
-        "areaShare": 0.1165,
-        "firstScreen": true,
+        "aspect": 0.542,
+        "areaShare": 0.2406,
         "intrinsic": {
-          "w": 468,
-          "h": 298
+          "w": 325,
+          "h": 600
         },
-        "pass": 1,
-        "file": "capture/imagery-04.png",
+        "clipped": true,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-02.png",
         "palette": [
           {
             "hex": "#ffffff",
-            "coverage": 0.77,
+            "coverage": 0.965,
             "saturation": 0,
             "luma": 1
           },
           {
             "hex": "#f3f3f3",
-            "coverage": 0.0544,
+            "coverage": 0.0098,
             "saturation": 0,
             "luma": 0.953
           },
           {
-            "hex": "#cdeccb",
-            "coverage": 0.0123,
-            "saturation": 0.14,
-            "luma": 0.89
-          },
-          {
-            "hex": "#ececec",
-            "coverage": 0.0117,
+            "hex": "#ededed",
+            "coverage": 0.0079,
             "saturation": 0,
-            "luma": 0.925
+            "luma": 0.929
           },
           {
-            "hex": "#d5f2d4",
-            "coverage": 0.0113,
-            "saturation": 0.124,
-            "luma": 0.916
+            "hex": "#fae3ec",
+            "coverage": 0.0015,
+            "saturation": 0.092,
+            "luma": 0.912
           },
           {
-            "hex": "#dbf5db",
-            "coverage": 0.0085,
-            "saturation": 0.106,
-            "luma": 0.932
+            "hex": "#f5cbdb",
+            "coverage": 0.0013,
+            "saturation": 0.171,
+            "luma": 0.836
+          },
+          {
+            "hex": "#f8dae6",
+            "coverage": 0.001,
+            "saturation": 0.121,
+            "luma": 0.883
           }
         ],
         "light": {
-          "meanLuma": 0.964,
-          "p05": 0.812,
+          "meanLuma": 0.995,
+          "p05": 1,
           "p50": 1,
           "p95": 1,
-          "dynamicRange": 0.188,
+          "dynamicRange": 0,
           "gradient": {
-            "dx": 0.015,
+            "dx": -0.01,
+            "dy": 0.009
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 9.9
+        }
+      },
+      {
+        "src": "https://thumbnail1.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_c429331b-08cc-48b2-a9c4-32ee42e7addf.png",
+        "kind": "img",
+        "tag": "c13",
+        "alt": "",
+        "docBox": {
+          "x": 816,
+          "y": 3375.1328125,
+          "w": 411,
+          "h": 758.765625
+        },
+        "aspect": 0.542,
+        "areaShare": 0.2406,
+        "intrinsic": {
+          "w": 325,
+          "h": 600
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-03.png",
+        "palette": [
+          {
+            "hex": "#fcfbeb",
+            "coverage": 0.0399,
+            "saturation": 0.067,
+            "luma": 0.981
+          },
+          {
+            "hex": "#e47ca2",
+            "coverage": 0.0316,
+            "saturation": 0.456,
+            "luma": 0.584
+          },
+          {
+            "hex": "#f9f6e3",
+            "coverage": 0.0281,
+            "saturation": 0.088,
+            "luma": 0.962
+          },
+          {
+            "hex": "#f6f4e2",
+            "coverage": 0.027,
+            "saturation": 0.081,
+            "luma": 0.953
+          },
+          {
+            "hex": "#f5f2dd",
+            "coverage": 0.0259,
+            "saturation": 0.098,
+            "luma": 0.946
+          },
+          {
+            "hex": "#f3eddb",
+            "coverage": 0.0218,
+            "saturation": 0.099,
+            "luma": 0.929
+          }
+        ],
+        "light": {
+          "meanLuma": 0.757,
+          "p05": 0.432,
+          "p50": 0.791,
+          "p95": 0.971,
+          "dynamicRange": 0.539,
+          "gradient": {
+            "dx": -0.014,
+            "dy": -0.087
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 70.7
+        }
+      },
+      {
+        "src": "https://thumbnail9.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_474a16b2-f734-4ac4-95e5-b04bc8e54dd4.png",
+        "kind": "img",
+        "tag": "c14",
+        "alt": "",
+        "docBox": {
+          "x": 1227,
+          "y": 3375.1328125,
+          "w": 411,
+          "h": 758.765625
+        },
+        "aspect": 0.542,
+        "areaShare": 0.2406,
+        "intrinsic": {
+          "w": 325,
+          "h": 600
+        },
+        "clipped": true,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-04.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 0.965,
+            "saturation": 0,
+            "luma": 1
+          },
+          {
+            "hex": "#f3f3f3",
+            "coverage": 0.0098,
+            "saturation": 0,
+            "luma": 0.953
+          },
+          {
+            "hex": "#ededed",
+            "coverage": 0.0079,
+            "saturation": 0,
+            "luma": 0.929
+          },
+          {
+            "hex": "#fae3ec",
+            "coverage": 0.0015,
+            "saturation": 0.092,
+            "luma": 0.912
+          },
+          {
+            "hex": "#f5cbdb",
+            "coverage": 0.0013,
+            "saturation": 0.171,
+            "luma": 0.836
+          },
+          {
+            "hex": "#f8dae6",
+            "coverage": 0.001,
+            "saturation": 0.121,
+            "luma": 0.883
+          }
+        ],
+        "light": {
+          "meanLuma": 0.995,
+          "p05": 1,
+          "p50": 1,
+          "p95": 1,
+          "dynamicRange": 0,
+          "gradient": {
+            "dx": -0.01,
+            "dy": 0.009
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 9.9
+        }
+      },
+      {
+        "src": "https://thumbnail7.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_5d20d168-4a4f-4bf0-bad3-07e625e784e2.png",
+        "kind": "img",
+        "tag": "c16",
+        "alt": "",
+        "docBox": {
+          "x": 816,
+          "y": 4157.8984375,
+          "w": 411,
+          "h": 758.765625
+        },
+        "aspect": 0.542,
+        "areaShare": 0.2406,
+        "intrinsic": {
+          "w": 411,
+          "h": 759
+        },
+        "clipped": true,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-06.png",
+        "palette": [
+          {
+            "hex": "#ffffff",
+            "coverage": 1,
+            "saturation": 0,
+            "luma": 1
+          }
+        ],
+        "light": {
+          "meanLuma": 1,
+          "p05": 1,
+          "p50": 1,
+          "p95": 1,
+          "dynamicRange": 0,
+          "gradient": {
+            "dx": 0,
             "dy": 0
           },
           "luminanceGradient": "even"
@@ -400,690 +960,100 @@
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 1.6
+          "borderVariance": 0
         }
       },
       {
-        "src": "https://static.coupangcdn.com/ja/cmg_paperboy/image/1787034802055/C2-3.jpeg",
+        "src": "https://thumbnail3.coupangcdn.com/thumbnails/remote/x/image/bannerunit/bannerunit_8d492e47-e3ff-46e9-b6ac-17f7aaa71823.png",
+        "kind": "img",
+        "tag": "c17",
         "alt": "",
-        "box": {
-          "x": 0.1563,
-          "y": 0.2212,
-          "w": 0.1649,
-          "h": 0.3449
+        "docBox": {
+          "x": 1227,
+          "y": 4157.8984375,
+          "w": 411,
+          "h": 758.765625
         },
-        "pixelBox": {
-          "x": 450,
-          "y": 398.1875,
-          "w": 475,
-          "h": 620.828125
-        },
-        "clipped": false,
-        "aspect": 0.765,
-        "areaShare": 0.0569,
-        "firstScreen": true,
+        "aspect": 0.542,
+        "areaShare": 0.2406,
         "intrinsic": {
-          "w": 228,
-          "h": 298
+          "w": 411,
+          "h": 759
         },
-        "pass": 1,
-        "file": "capture/imagery-05.png",
+        "clipped": true,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-07.png",
         "palette": [
           {
             "hex": "#ffffff",
-            "coverage": 0.7156,
+            "coverage": 0.941,
             "saturation": 0,
             "luma": 1
           },
           {
-            "hex": "#343434",
-            "coverage": 0.039,
+            "hex": "#f3f3f3",
+            "coverage": 0.0225,
             "saturation": 0,
-            "luma": 0.204
-          },
-          {
-            "hex": "#4c4c4c",
-            "coverage": 0.0319,
-            "saturation": 0,
-            "luma": 0.298
-          },
-          {
-            "hex": "#3b3b3b",
-            "coverage": 0.0307,
-            "saturation": 0,
-            "luma": 0.231
-          },
-          {
-            "hex": "#434343",
-            "coverage": 0.0302,
-            "saturation": 0,
-            "luma": 0.263
-          },
-          {
-            "hex": "#e3e3e3",
-            "coverage": 0.0205,
-            "saturation": 0,
-            "luma": 0.89
-          }
-        ],
-        "light": {
-          "meanLuma": 0.844,
-          "p05": 0.204,
-          "p50": 1,
-          "p95": 1,
-          "dynamicRange": 0.796,
-          "gradient": {
-            "dx": -0.007,
-            "dy": -0.158
-          },
-          "luminanceGradient": "brighter top"
-        },
-        "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 7.8
-        }
-      },
-      {
-        "src": "https://static.coupangcdn.com/ma/cmg_paperboy/image/1787034724214/C2-4.jpeg",
-        "alt": "",
-        "box": {
-          "x": 0.3295,
-          "y": 0.2212,
-          "w": 0.1649,
-          "h": 0.3449
-        },
-        "pixelBox": {
-          "x": 949,
-          "y": 398.1875,
-          "w": 475,
-          "h": 620.828125
-        },
-        "clipped": false,
-        "aspect": 0.765,
-        "areaShare": 0.0569,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 228,
-          "h": 298
-        },
-        "pass": 1,
-        "file": "capture/imagery-06.png",
-        "palette": [
-          {
-            "hex": "#ffffff",
-            "coverage": 0.7968,
-            "saturation": 0,
-            "luma": 1
-          },
-          {
-            "hex": "#e3e3e3",
-            "coverage": 0.0231,
-            "saturation": 0,
-            "luma": 0.89
-          },
-          {
-            "hex": "#cfcfd0",
-            "coverage": 0.0153,
-            "saturation": 0.005,
-            "luma": 0.812
-          },
-          {
-            "hex": "#f2f2f2",
-            "coverage": 0.0138,
-            "saturation": 0,
-            "luma": 0.949
+            "luma": 0.953
           },
           {
             "hex": "#ededed",
-            "coverage": 0.0105,
+            "coverage": 0.0071,
             "saturation": 0,
             "luma": 0.929
           },
           {
-            "hex": "#cccccd",
-            "coverage": 0.0067,
-            "saturation": 0.005,
-            "luma": 0.8
+            "hex": "#bbbbbb",
+            "coverage": 0.0022,
+            "saturation": 0,
+            "luma": 0.733
+          },
+          {
+            "hex": "#b3b3b3",
+            "coverage": 0.0018,
+            "saturation": 0,
+            "luma": 0.702
+          },
+          {
+            "hex": "#c3c3c3",
+            "coverage": 0.0015,
+            "saturation": 0,
+            "luma": 0.765
           }
         ],
         "light": {
-          "meanLuma": 0.922,
-          "p05": 0.385,
+          "meanLuma": 0.991,
+          "p05": 0.957,
           "p50": 1,
           "p95": 1,
-          "dynamicRange": 0.615,
+          "dynamicRange": 0.043,
           "gradient": {
-            "dx": 0.001,
-            "dy": -0.008
+            "dx": -0.018,
+            "dy": 0.011
           },
           "luminanceGradient": "even"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 7.8
-        }
-      },
-      {
-        "src": "https://static.coupangcdn.com/ya/cmg_paperboy/image/1787034913948/C2-5.jpeg",
-        "alt": "",
-        "box": {
-          "x": 0.5028,
-          "y": 0.2212,
-          "w": 0.1649,
-          "h": 0.3449
-        },
-        "pixelBox": {
-          "x": 1448,
-          "y": 398.1875,
-          "w": 475,
-          "h": 620.828125
-        },
-        "clipped": false,
-        "aspect": 0.765,
-        "areaShare": 0.0569,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 228,
-          "h": 298
-        },
-        "pass": 1,
-        "file": "capture/imagery-07.png",
-        "palette": [
-          {
-            "hex": "#ffffff",
-            "coverage": 0.7398,
-            "saturation": 0,
-            "luma": 1
-          },
-          {
-            "hex": "#e3e3e3",
-            "coverage": 0.021,
-            "saturation": 0,
-            "luma": 0.89
-          },
-          {
-            "hex": "#cfcfd0",
-            "coverage": 0.0163,
-            "saturation": 0.005,
-            "luma": 0.812
-          },
-          {
-            "hex": "#010101",
-            "coverage": 0.014,
-            "saturation": 0,
-            "luma": 0.004
-          },
-          {
-            "hex": "#f2f2f2",
-            "coverage": 0.0103,
-            "saturation": 0,
-            "luma": 0.949
-          },
-          {
-            "hex": "#434344",
-            "coverage": 0.0095,
-            "saturation": 0.015,
-            "luma": 0.263
-          }
-        ],
-        "light": {
-          "meanLuma": 0.854,
-          "p05": 0.146,
-          "p50": 1,
-          "p95": 1,
-          "dynamicRange": 0.854,
-          "gradient": {
-            "dx": 0.005,
-            "dy": -0.096
-          },
-          "luminanceGradient": "brighter top"
-        },
-        "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 7.8
-        }
-      },
-      {
-        "src": "https://static.coupangcdn.com/qa/cmg_paperboy/image/1787034696268/C2-6.jpeg",
-        "alt": "",
-        "box": {
-          "x": 0.676,
-          "y": 0.2212,
-          "w": 0.1649,
-          "h": 0.3449
-        },
-        "pixelBox": {
-          "x": 1947,
-          "y": 398.1875,
-          "w": 475,
-          "h": 620.828125
-        },
-        "clipped": false,
-        "aspect": 0.765,
-        "areaShare": 0.0569,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 228,
-          "h": 298
-        },
-        "pass": 1,
-        "file": "capture/imagery-08.png",
-        "palette": [
-          {
-            "hex": "#ffffff",
-            "coverage": 0.5541,
-            "saturation": 0,
-            "luma": 1
-          },
-          {
-            "hex": "#242422",
-            "coverage": 0.0227,
-            "saturation": 0.056,
-            "luma": 0.141
-          },
-          {
-            "hex": "#2c2c2a",
-            "coverage": 0.0211,
-            "saturation": 0.045,
-            "luma": 0.172
-          },
-          {
-            "hex": "#e3e3e3",
-            "coverage": 0.0203,
-            "saturation": 0,
-            "luma": 0.89
-          },
-          {
-            "hex": "#030302",
-            "coverage": 0.0187,
-            "saturation": 0.333,
-            "luma": 0.011
-          },
-          {
-            "hex": "#73e454",
-            "coverage": 0.0129,
-            "saturation": 0.632,
-            "luma": 0.759
-          }
-        ],
-        "light": {
-          "meanLuma": 0.748,
-          "p05": 0.094,
-          "p50": 1,
-          "p95": 1,
-          "dynamicRange": 0.906,
-          "gradient": {
-            "dx": 0.012,
-            "dy": -0.225
-          },
-          "luminanceGradient": "brighter top"
-        },
-        "subject": {
-          "resolved": true,
-          "backgroundHex": "#e6e6e6",
-          "center": {
-            "x": 0.5049,
-            "y": 0.605
-          },
-          "box": {
-            "x": 0.075,
-            "y": 0.0766,
-            "w": 0.8438,
-            "h": 0.8469
-          },
-          "coverage": 0.25
-        }
-      },
-      {
-        "src": "https://static.coupangcdn.com/ea/cmg_paperboy/image/1787034544728/C2-8.jpeg",
-        "alt": "",
-        "box": {
-          "x": 0.5028,
-          "y": 0.5795,
-          "w": 0.1649,
-          "h": 0.3449
-        },
-        "pixelBox": {
-          "x": 1448,
-          "y": 1043.015625,
-          "w": 475,
-          "h": 620.828125
-        },
-        "clipped": false,
-        "aspect": 0.765,
-        "areaShare": 0.0569,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 228,
-          "h": 298
-        },
-        "pass": 1,
-        "file": "capture/imagery-09.png",
-        "palette": [
-          {
-            "hex": "#ffffff",
-            "coverage": 0.7581,
-            "saturation": 0,
-            "luma": 1
-          },
-          {
-            "hex": "#e3e3e3",
-            "coverage": 0.0197,
-            "saturation": 0,
-            "luma": 0.89
-          },
-          {
-            "hex": "#cfcfd0",
-            "coverage": 0.0163,
-            "saturation": 0.005,
-            "luma": 0.812
-          },
-          {
-            "hex": "#edecf5",
-            "coverage": 0.0094,
-            "saturation": 0.037,
-            "luma": 0.929
-          },
-          {
-            "hex": "#eeeeee",
-            "coverage": 0.0088,
-            "saturation": 0,
-            "luma": 0.933
-          },
-          {
-            "hex": "#f1f1f2",
-            "coverage": 0.0086,
-            "saturation": 0.004,
-            "luma": 0.945
-          }
-        ],
-        "light": {
-          "meanLuma": 0.908,
-          "p05": 0.309,
-          "p50": 1,
-          "p95": 1,
-          "dynamicRange": 0.691,
-          "gradient": {
-            "dx": 0.017,
-            "dy": -0.001
-          },
-          "luminanceGradient": "even"
-        },
-        "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 7.8
-        }
-      },
-      {
-        "src": "https://static.coupangcdn.com/la/cmg_paperboy/image/1787034708639/C2-9.jpeg",
-        "alt": "",
-        "box": {
-          "x": 0.676,
-          "y": 0.5795,
-          "w": 0.1649,
-          "h": 0.3449
-        },
-        "pixelBox": {
-          "x": 1947,
-          "y": 1043.015625,
-          "w": 475,
-          "h": 620.828125
-        },
-        "clipped": false,
-        "aspect": 0.765,
-        "areaShare": 0.0569,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 228,
-          "h": 298
-        },
-        "pass": 1,
-        "file": "capture/imagery-10.png",
-        "palette": [
-          {
-            "hex": "#ffffff",
-            "coverage": 0.6952,
-            "saturation": 0,
-            "luma": 1
-          },
-          {
-            "hex": "#e3e3e3",
-            "coverage": 0.0196,
-            "saturation": 0,
-            "luma": 0.89
-          },
-          {
-            "hex": "#cfcfd0",
-            "coverage": 0.0121,
-            "saturation": 0.005,
-            "luma": 0.812
-          },
-          {
-            "hex": "#a9ce45",
-            "coverage": 0.0108,
-            "saturation": 0.665,
-            "luma": 0.738
-          },
-          {
-            "hex": "#499cd5",
-            "coverage": 0.0096,
-            "saturation": 0.657,
-            "luma": 0.559
-          },
-          {
-            "hex": "#f2f2f2",
-            "coverage": 0.0086,
-            "saturation": 0,
-            "luma": 0.949
-          }
-        ],
-        "light": {
-          "meanLuma": 0.904,
-          "p05": 0.535,
-          "p50": 1,
-          "p95": 1,
-          "dynamicRange": 0.465,
-          "gradient": {
-            "dx": 0.003,
-            "dy": -0.027
-          },
-          "luminanceGradient": "even"
-        },
-        "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 7.8
-        }
-      },
-      {
-        "src": "https://thumbnail.coupangcdn.com/thumbnails/remote/292x292ex/image/retail/images/239522928500786-a051b030-b308-4a92-894b-434b6db4a9dc.jpg",
-        "alt": "펩시 제로슈거 라임향, 1.5L, 24개",
-        "box": {
-          "x": 0.1507,
-          "y": 0.0532,
-          "w": 0.1403,
-          "h": 0.2244
-        },
-        "pixelBox": {
-          "x": 434,
-          "y": 95.84375,
-          "w": 404,
-          "h": 404
-        },
-        "clipped": false,
-        "aspect": 1,
-        "areaShare": 0.0315,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 292,
-          "h": 292
-        },
-        "pass": 2,
-        "file": "capture/imagery-11.png",
-        "palette": [
-          {
-            "hex": "#ffffff",
-            "coverage": 0.4662,
-            "saturation": 0,
-            "luma": 1
-          },
-          {
-            "hex": "#341413",
-            "coverage": 0.0063,
-            "saturation": 0.635,
-            "luma": 0.105
-          },
-          {
-            "hex": "#3b1514",
-            "coverage": 0.0061,
-            "saturation": 0.661,
-            "luma": 0.114
-          },
-          {
-            "hex": "#fdfef5",
-            "coverage": 0.005,
-            "saturation": 0.035,
-            "luma": 0.993
-          },
-          {
-            "hex": "#431513",
-            "coverage": 0.0046,
-            "saturation": 0.716,
-            "luma": 0.12
-          },
-          {
-            "hex": "#5b1a14",
-            "coverage": 0.0033,
-            "saturation": 0.78,
-            "luma": 0.154
-          }
-        ],
-        "light": {
-          "meanLuma": 0.652,
-          "p05": 0.097,
-          "p50": 0.831,
-          "p95": 1,
-          "dynamicRange": 0.903,
-          "gradient": {
-            "dx": 0.007,
-            "dy": -0.016
-          },
-          "luminanceGradient": "even"
-        },
-        "subject": {
-          "resolved": true,
-          "backgroundHex": "#ffffff",
-          "center": {
-            "x": 0.451,
-            "y": 0.5185
-          },
-          "box": {
-            "x": 0.05,
-            "y": 0.0938,
-            "w": 0.8938,
-            "h": 0.8187
-          },
-          "coverage": 0.25
-        }
-      },
-      {
-        "src": "https://thumbnail.coupangcdn.com/thumbnails/remote/292x292ex/image/retail/images/2024/11/14/18/8/4f383d10-2130-40c3-a719-24f69dde986a.jpg",
-        "alt": "해태htb 포도 봉봉 제로, 340ml, 24개",
-        "box": {
-          "x": 0.3278,
-          "y": 0.0532,
-          "w": 0.1403,
-          "h": 0.2244
-        },
-        "pixelBox": {
-          "x": 944,
-          "y": 95.84375,
-          "w": 404,
-          "h": 404
-        },
-        "clipped": false,
-        "aspect": 1,
-        "areaShare": 0.0315,
-        "firstScreen": true,
-        "intrinsic": {
-          "w": 292,
-          "h": 292
-        },
-        "pass": 2,
-        "file": "capture/imagery-12.png",
-        "palette": [
-          {
-            "hex": "#ffffff",
-            "coverage": 0.4214,
-            "saturation": 0,
-            "luma": 1
-          },
-          {
-            "hex": "#92bc44",
-            "coverage": 0.0059,
-            "saturation": 0.638,
-            "luma": 0.668
-          },
-          {
-            "hex": "#fcfdf4",
-            "coverage": 0.0055,
-            "saturation": 0.036,
-            "luma": 0.989
-          },
-          {
-            "hex": "#8dba43",
-            "coverage": 0.0051,
-            "saturation": 0.64,
-            "luma": 0.658
-          },
-          {
-            "hex": "#82ab3c",
-            "coverage": 0.005,
-            "saturation": 0.649,
-            "luma": 0.605
-          },
-          {
-            "hex": "#8cb543",
-            "coverage": 0.005,
-            "saturation": 0.63,
-            "luma": 0.643
-          }
-        ],
-        "light": {
-          "meanLuma": 0.817,
-          "p05": 0.424,
-          "p50": 0.875,
-          "p95": 1,
-          "dynamicRange": 0.576,
-          "gradient": {
-            "dx": -0.003,
-            "dy": 0.012
-          },
-          "luminanceGradient": "even"
-        },
-        "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 0.7
+          "borderVariance": 11.2
         }
       }
     ],
     "aggregate": {
-      "meanLuma": 0.854,
-      "dynamicRange": 0.709,
+      "meanLuma": 0.995,
+      "dynamicRange": 0.019,
       "luminanceGradients": {
-        "brighter left": 1,
-        "brighter bottom": 2,
-        "even": 6,
-        "brighter top": 3
+        "even": 5,
+        "brighter top": 1
       },
-      "aspects": 1,
-      "figureGroundResolved": "2/12",
+      "aspects": 0.542,
+      "figureGroundResolved": "0/6",
       "subjectNote": "fewer than 4 resolved samples — placement omitted"
     }
+  },
+  "motion": {
+    "present": false,
+    "note": "no video above the fold at capture time"
   }
 }

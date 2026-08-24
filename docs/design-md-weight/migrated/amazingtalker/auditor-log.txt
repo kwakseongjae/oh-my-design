@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 이관 산출물부터 읽고, 문장 분류와 원장 대조를 시작합니다.최근 승인된 감사 로그 형식과 amazingtalker 산출물·원본을 함께 읽겠습니다.원본과 워커 로그, 최근 감사에서 빠지기 쉬운 문장 패턴을 대조합니다.문장 한정과 원장 목적지를 값 단위로 grep해 실제 위치를 확인합니다.문장 한정이 빠지거나 이름이 짧은 곳과, grep과 어긋난 원장 행을 고칩니다. 토큰·표·applicability·구조는 건드리지 않습니다.본문 한정은 붙였습니다. provenance 파생 범위와 hex·rgb 목적지를 grep 결과에 맞춥니다.migration-log 목적지를 grep 결과에 맞추고, F1·F2 준수 과장을 걷어냅니다.B2a·E2 감사만 수행했습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 바꾸지 않았습니다.
+
+**B2a.** 세 번째 부류인데 인접 완전 한정이 없거나 이름이 짧은 문장에 `derived editorial implementation inference` / `not AmazingTalker-authored or a separately published UI specification`를 붙이거나 이름을 넓혔습니다. 대상은 Scope 제품 기원·friendly-weight·Stripe/Apple 비유, Spacing 한정 위치, Shape Sharp/Standard/Comfortable/Pill, Motion “marketplace stays fully functional”, Capture-record graph-not-adopted, Layout visual-rhythm/clean-header, Content 섹션 제목 인용입니다.
+
+**E2.** grep으로 로그·provenance를 맞췄습니다. `#02cab9`는 Motion CTA(`#02b3a4`)와 Avoid에 없고, 역할 rgb와 live-scan 횟수는 portable Semantic에 있으며, 태그라인은 Type roles/Primary tasks가 아닙니다. `~32px`는 Layout collapsing뿐입니다. F1/F2 준수 과장은 철회했습니다.
+
+`--gate-only` PASS, `portable_core: true`. Post-F3 SHA-256 `8589286390f9697c16207eb9472c836108984b72cdcd8fe211f304fb133f327e`. 기록은 `docs/design-md-weight/migrated/amazingtalker/audit-log.md`입니다.
+
+AUDIT_DONE fixes=27

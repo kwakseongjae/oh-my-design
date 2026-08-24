@@ -1,8 +1,0 @@
-{
-  "schema_version":"0.1","product_version":"1.9.380","change":"shared-named-browser-socket","status":"accepted-for-exact-pin",
-  "invalidated_root":{"path":"/private/tmp/u19378","provider_events":0,"disposition":"frozen"},
-  "contract":{"runtime_dir_shared":true,"socket":"BH_RUNTIME_DIR/bu-$BU_NAME.sock","socket_scope":"exact","personal_default_selected":false},
-  "validation":{"outer_sandbox_fixture":{"daemon_alive":true,"named_connection_active":true,"page":"https://example.com/"},"focused_tests":{"passed":73,"failed":0},"lint":"pass","diff_check":"pass"},
-  "sha256":{"sandbox_contract":"b02fd3eb3cced9da0f0064f96eb8d0cd619ca2dafb732404410193ff969e6dfb","sandbox_test":"3140eb2e7856ca1dc7d503dbde413a7af42683175aecb0114bbc08ca492f9d16"},
-  "provider_calls":0,"quality_promotion":false,"next":"Exact-pin, then one final fresh matrix root."
-}

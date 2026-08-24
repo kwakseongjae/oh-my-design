@@ -1,9 +1,0 @@
-# Final findings — satellite deterministic static-closure transfer 1.9.466
-
-The experiment is frozen after the first pair. The control produced 85/85 and the candidate 81/85. Both proof traces are valid and compliant, but the preregistration allows zero paired objective losses; the first candidate loss caps 3/3 reliability at 2/3. The remaining four provider calls cannot change the decision and are skipped.
-
-The intended execution repair transferred. The candidate used the shipped `reflow-artifact.mjs static-close` immediately after its single product edit, authored no inline static verifier, ran one browser mechanism, and recorded zero recovery, duplicate-static, or post-ready violations. It completed in 365.260 seconds and 618,457 tokens, respectively 0.8324× and 0.9953× the control. Contrast, evidence, behavior, protected counts, atomic line integrity, and passive protected-text scroll prohibition are green.
-
-The remaining defect is consumer-browser fit. The candidate reduced the decision target to an unsupported 13px mobile size instead of allocating enough relationship-carrier width or using the permitted distinct comparison carrier. Its own freshly launched headless Chromium proof reported closure, while the objective consumer-browser evaluator measured 10px document overflow at 320px and 20px at actual 200% zoom. Desktop and 390px pass; 320px and actual 200% fail.
-
-The next repair is provider-free. Browser acceptance must attach to the exact named consumer browser rather than launch an independent engine, and fit closure must retain a measurable inline reserve so a borderline engine/font difference cannot turn into document overflow. Existing typography may not be shrunk below its declared role to manufacture that reserve. Tokens-to-Target is now at least 46,322,200 plus six usage-unavailable cells. Quality promotion remains false.

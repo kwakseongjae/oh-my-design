@@ -1,0 +1,14 @@
+T2 Adobe 마이그레이션을 규칙집·골든 샘플 기준으로 진행합니다. 먼저 세션 상태와 지정된 규격을 순서대로 읽겠습니다.지정된 규격·규칙집·골든 샘플을 순서대로 읽습니다.골든 샘플과 Adobe 원문을 읽고, 최근 통과한 T2 이관본의 형태도 대조합니다.Adobe 산출물 폴더와 골든 샘플, 통과한 T2 이관본의 형태를 대조합니다.Adobe는 공식 Spectrum 원칙이 있어, 최근 통과 이관본과 게이트 규칙을 대조하겠습니다.공식 원칙을 가진 이관본과 게이트 스크립트를 더 대조합니다. 컴포넌트 상태 처리와 B3 모션 문구도 확인합니다.게이트는 hex·px·ms 손실과 발명만 기계 검사합니다. 본문을 쓰면서 공식 Spectrum 원칙과 편집 해석을 분리하고, 무출처 커브는 빼되 duration은 남깁니다.Adobe Core v2 본문을 작성합니다. 공식 Spectrum 원칙은 first-party로, 편집 해석은 인접 B2a로 구분합니다.F1 B2a 전수 재독과 F2 grep 대조를 로그 작성 전에 수행합니다.§9에만 있는 Glass 카드 16px 텍스트를 컴포넌트로 옮깁니다. A3 고유값입니다.Adobe legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/adobe/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v7**.
+
+핵심 보존·분리:
+
+- YAML unitless line-height `1.5` / `1.25`는 비율로 유지하고, 본문 `27px` / `20px`와 합치지 않았습니다.
+- 컴포넌트 primitive는 `button`×5 + `tab` + `card` + `listItem`으로 유지했습니다.
+- Spectrum 원칙 1–4는 first-party 인용입니다. item 5와 *UI implication*만 derived로 한정했습니다.
+- 무출처 cubic-bezier 3개(`ease-exit`는 템플릿 일치)는 provenance omission ledger로 뺐고, duration·이름·`prefers-reduced-motion`·Pause/Reduce-motion은 본문에 남겼습니다.
+- Buy now 등 CTA의 loading/error/success는 역할 매핑이 닫히지 않아 생략(C2)했고, Category Tile / Glass / Promo는 kind/map을 생략(C4)했습니다.
+- §13 가상 persona는 Audience도 sidecar도 아닙니다. §9-only Glass `16px` 텍스트는 A3로 컴포넌트에 옮겼습니다.
+
+검증: `--gate-only` PASS / problems 0. `portable_core: true`. SHA-256 `118c3175aa4e4665184487aa74de4f69ee7298f225d113395253e4f0be4a97ba`. F3·sol 의미 레인은 대기입니다. 카탈로그 채택이 아닙니다.
+
+DONE migrated=1

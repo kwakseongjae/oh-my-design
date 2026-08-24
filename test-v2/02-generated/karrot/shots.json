@@ -1,0 +1,210 @@
+{
+  "brand": "karrot",
+  "shots": [
+    {
+      "file": "images/01.jpg",
+      "role": "hero",
+      "prompt": "An overhead phone snapshot of an open used laptop filling a square frame, shot from slightly above like a casual indoor listing photo. The chassis is matte black matching #1b1a16 and #141512, unmarked keycaps with a faint cool cyan glow, and a plain bezel with no badges. The display shows only a photograph of a low sun over still water in peach and slate, no interface. The laptop sits on a light wooden desk under mixed indoor window and room light, mean brightness around mid-gray, with a moderate contrast between the dark body and the glowing screen. Photographed with a slightly imperfect handheld angle, everyday apartment light, square crop.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/02.jpg",
+      "role": "hero",
+      "prompt": "An indoor phone snapshot of an open used laptop filling a square frame, camera almost over the keyboard looking up at the glossy display. The chassis and blank unmarked keycaps are matte black near #141512 and #1d1d19, with a plain bezel and no badges. The display is filled only with a vivid blue abstract bloom photograph, glass catching indoor ceiling lights. Mixed room lighting, mid-gray overall brightness, moderate contrast, slightly imperfect handheld angle, square amateur listing photo.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/03.jpg",
+      "role": "imagery",
+      "prompt": "An indoor phone snapshot of an open used laptop filling a square frame from slightly above. Pale silver unibody chassis, blank unmarked black keycaps, and a plain bezel with no badges. The display shows only a photograph of a city skyline across water at warm sunset, no interface. Dark desk surface under the machine. Mixed indoor light, mid-gray brightness, moderate contrast between the pale body and the glowing screen, square amateur listing photo.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/04.jpg",
+      "role": "imagery",
+      "prompt": "A square overhead phone photo of a closed used laptop lid filling the whole frame. Dark brushed metal in #1b1a16 and #23231c, a bright fluorescent streak running across the lid, faint wear and fingerprints, no badges. A sliver of light wood and a green edge visible at the right. Indoor room light, mid-gray mean brightness, moderate dynamic range, casual handheld listing photo.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/05.jpg",
+      "role": "imagery",
+      "prompt": "An indoor phone snapshot of an open used laptop filling a square frame from slightly above. Matte black chassis near #1b1a16 with blank unmarked keycaps and a plain bezel with no badges. The display shows only a photograph of a sea cave opening onto a sunlit beach and rock stacks. Mixed apartment light, mid-gray brightness, moderate contrast between the dark body and the bright shoreline on screen, square amateur listing photo.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/06.jpg",
+      "role": "imagery",
+      "prompt": "A casual indoor phone photo of a used white laptop held in two hands, filling a square frame. The display is powered off, black glass showing ceiling and window reflections plus fine scratches and smudges. Pale unmarked keyboard with blank keycaps, plain bezel with no badges. Apartment interior around the edges, mid-gray brightness, moderate contrast, handheld listing snapshot.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/07.jpg",
+      "role": "imagery",
+      "prompt": "An indoor phone snapshot of an open used dark laptop filling a square frame from above the keyboard. Chassis and blank unmarked keycaps in #141512 and #23231c, textured palm rest, plain bezel with no badges. The display shows only a photograph of a long tiled arcade with red columns and a stone floor receding into shadow. Dark table underneath, mixed indoor light, mid-gray brightness, moderate contrast, square amateur listing photo.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/08.jpg",
+      "role": "imagery",
+      "prompt": "An indoor phone snapshot of an open used gray laptop filling a square frame from slightly above. Unmarked blank keycaps, plain bezel with no badges, dark desk underneath. The display shows only a photograph of a sunlit stone cliff town with a high bridge over a gorge. Mixed indoor light, mid-gray brightness, moderate contrast, square amateur listing photo.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/09.jpg",
+      "role": "imagery",
+      "prompt": "A square indoor phone snapshot of a closed used laptop. An adult hand holds the thin pale-blue lid from the bottom edge on a dark wood table. The lid is unmarked, no badges, with a fine metallic grain under warm indoor light. Mid-gray brightness, moderate contrast, casual listing photo from slightly above.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/10.jpg",
+      "role": "texture",
+      "prompt": "A square macro phone photo of brushed dark metal from a used laptop lid. Horizontal grain in #1b1a16 and #141512, a cool white fluorescent streak, tiny scratches and dust. Indoor room light, mid-gray brightness, moderate contrast, no badges, filling the frame as a texture.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/11.jpg",
+      "role": "texture",
+      "prompt": "A square close-up phone photo of a closed used laptop lid filling the frame. Smooth silver-gray metal near the dark olive tones of #23231c in the shadows, a soft window-light bloom washing across the surface, faint fingerprints, no badges. Indoor mixed light, mid-gray brightness, moderate dynamic range, overhead listing snapshot.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/12.jpg",
+      "role": "texture",
+      "prompt": "A square indoor phone photo of a light wooden desk surface with the dark corner of a closed used laptop lid in #1b1a16 entering from one side. Visible wood grain, mixed window light, mid-gray brightness, moderate contrast. Casual listing-table background, no objects with writing.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/13.jpg",
+      "role": "mobile",
+      "prompt": "A vertical phone snapshot of an open used laptop on a light wooden desk, framed for a tall 9:16 listing photo. Matte black chassis near #1b1a16, blank unmarked keycaps, plain bezel with no badges. The display shows only a photograph of a low sun over still water. Mixed indoor window light, mid-gray brightness, moderate contrast, more desk and floor around the machine than a square crop, amateur handheld angle.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.viewport"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/14.jpg",
+      "role": "mobile",
+      "prompt": "A vertical phone snapshot of a closed used laptop on a dark wood table, framed for a tall 9:16 listing photo. An adult hand holds a thin unmarked pale-blue lid from the bottom edge. Warm indoor light, mid-gray brightness, moderate contrast, extra table surface above and below the machine, no badges, casual listing snapshot.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.viewport"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/15.jpg",
+      "role": "mobile",
+      "prompt": "A vertical phone snapshot of a used white laptop held in two hands, framed for a tall 9:16 listing photo. The display is powered off, black glass with ceiling reflections, fine scratches, and smudges. Pale blank unmarked keycaps, plain bezel with no badges. Apartment interior filling the extra height, mixed indoor light, mid-gray brightness, moderate contrast.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.viewport"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/16.jpg",
+      "role": "hero",
+      "prompt": "A wide indoor phone snapshot of an open used laptop on a light wooden desk, 16:9 listing photo. Matte black chassis near #1b1a16 and #141512, blank unmarked keycaps, plain bezel with no badges. The display shows only a photograph of a low sun over still water. Mixed window and room light, mid-gray brightness, moderate contrast, extra desk surface on both sides, slightly imperfect handheld angle.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "16:9"
+    }
+  ],
+  "videos": [
+    {
+      "file": "videos/01.mp4",
+      "fromImage": "images/04.jpg",
+      "motivation": "Closed dark lid with a cool fluorescent streak is the listing-condition photo this surface actually publishes. A 6s 720p pan along that streak moves the indoor light without adding a new scene.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/02.mp4",
+      "fromImage": "images/16.jpg",
+      "motivation": "Wide open-laptop still on a wooden desk with a sunset photograph on the display matches the typical search-result hero. Slow push-in keeps the amateur indoor light and blank chassis.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/03.mp4",
+      "fromImage": "images/09.jpg",
+      "motivation": "A hand holding a closed unmarked lid on a dark wood table is the seller-proof gesture in the sampled listings. Slight handheld drift is the only motion that still belongs to that photo.",
+      "durationSec": 6
+    }
+  ]
+}

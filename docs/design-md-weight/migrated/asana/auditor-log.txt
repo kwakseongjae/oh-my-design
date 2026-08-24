@@ -1,0 +1,11 @@
+B2a·E2 전담 감사로 진행합니다. 세션 연속성부터 복원하고, 규칙서의 B2·E2 조항과 Asana 이관 산출물을 대조하겠습니다.Asana 이관 산출물과 최근 F3 감사 로그 형식을 먼저 읽고, 문장 단위 B2a 분류로 들어갑니다.원본 Asana DESIGN.md와 최근 승인 감사본을 대조해, 워커가 한정을 붙인 범위와 빠진 문장을 가려내겠습니다.워커가 한정을 붙였다고 적은 문장과 본문이 실제로 다른 지점을 찾고, 최근 F3가 잡은 패턴과 맞춰 보겠습니다.문장 분류를 마쳤습니다. 한정이 없거나 독해를 이름 붙이지 않은 편집 해석부터 붙이고, 이어서 원장을 grep으로 맞추겠습니다.본문 한정을 붙였습니다. provenance derived 범위와 migration-log 목적지를 실제 grep 결과에 맞춥니다.Asana F3 B2a·E2 감사를 마쳤습니다. 한정 문장과 원장만 고쳤고, 토큰 값·컴포넌트 표·applicability·구조는 그대로입니다.
+
+워커가 이미 한정을 붙인 독해는 유지했습니다. 한정이 없거나 독해를 이름 붙이지 않은 편집 해석에만 인접 완전 B2a(`derived editorial implementation inference` / `not Asana-authored or a separately published UI specification`)를 붙였습니다. 예: Audience의 no-individual-personas, Semantic 추가 성격화, Shape 역할 라벨, Elevation 표 Use, 필드 노트 비해석, collapsing/image-behavior, harvested CTA를 Observed로 두는 판단.
+
+원장은 grep에 맞춰 고쳤습니다. `primary_color` 필드와 hex `#f06a6a` 목적지를 분리했고, F1/F2의 준수 과장과 워커 SHA는 SUPERSEDED입니다.
+
+기록: `docs/design-md-weight/migrated/asana/audit-log.md`  
+Post-F3 SHA-256 `3206212379ec0319a87cced9e934513e5dd47283b3b42b83733a41962266d52e`  
+`--gate-only` PASS, `portable_core: true`
+
+AUDIT_DONE fixes=45

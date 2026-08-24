@@ -1,0 +1,18 @@
+T2 마이그레이션을 시작하기 전에 규칙집·골든 샘플·소스 DESIGN.md를 순서대로 읽고, 세션 상태도 복원하겠습니다.필수 문서와 골든 샘플, 소스 `DESIGN.md`를 이어서 읽습니다.골든 샘플과 소스, 기존 asleep 산출물, 최근 통과 이관본을 함께 읽겠습니다.최근 통과 이관본과 게이트 스크립트를 대조해, asleep에 적용할 형태를 확정하겠습니다.소스에서 게이트가 추적하는 토큰을 전부 뽑고, 이관 초안을 쓰기 전에 누락 지점을 확인합니다.소스 토큰과 airbridge·musinsa 형태를 맞춰 `DESIGN.md`를 작성합니다. 해석 문장에는 인접 B2a 한정을 붙입니다.F1 B2a 스캔을 위해 방금 쓴 본문을 처음부터 다시 읽고, 한정 빠진 해석 문장을 찾겠습니다.F2 대조를 위해 본문에서 실제 줄 번호를 뽑고, provenance와 migration-log를 그에 맞춰 쓰겠습니다.provenance와 migration-log를 실제 grep 줄 번호에 맞춰 작성합니다.Asleep legacy `DESIGN.md`를 Core v2로 옮겼다. 규칙집 **v7**. 산출물은 `docs/design-md-weight/migrated/asleep/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`.
+
+보존·분리 요약:
+
+- YAML unitless line-height `1.31` / `1.30` / `1.20` / `1.43`는 비율로 유지했고, Hero `68px`·Body `20px`와 합치지 않았다.
+- primitive type은 컴포넌트별: button×2, tab, card×2, input, listItem. Feature Card·Info Tint는 YAML type이 없어 Cards/Badges 분류만 Type으로 남겼다.
+- `#2a75fc` / `#3a61f2` / `#118cfd`는 역할로 분리했다.
+- 무출처 cubic-bezier 3개(ease-exit는 템플릿 예시와 일치)는 provenance omission ledger로 보냈고, duration·easing 이름·`prefers-reduced-motion`·B3 다섯 증거 종류는 Foundations에 남겼다.
+- §13 가상 persona는 삭제했고 sidecar에도 다시 싣지 않았다. Primary tasks는 `API 도입 문의하기` / `API Docs ↗` / `Dashboard ↗` 세 개다.
+- C2: Primary·Outlined는 loading/error/success 필드를 생략. Docs Search는 error만 적용. Top Nav·Docs Nav는 역할상 not-applicable.
+- C4: Feature Card·Docs Callout·Info Tint는 kind/map 생략.
+- Google favicon URL은 provenance-only. portable Assets는 URL 없는 identity 경계만.
+
+F1 B2a 전편 재독, F2 grep 대조를 수행했다.
+
+`--gate-only` PASS / problems 0. Core `portable_core: true`. DESIGN SHA-256 `9ff9b1d218bc693120fd6f450824e915d048c44ac844fa48565382200e0b0e84`. F3·sol 의미 레인 대기. 카탈로그 채택 아님.
+
+DONE migrated=1

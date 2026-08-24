@@ -83,7 +83,17 @@ function ingestBrand(brand) {
       title: evidence.source?.title ?? null,
       status: evidence.source?.status ?? null,
     },
-    viewport: evidence.method?.viewport ?? null,
+    // One capture now covers several viewports, so the manifest records each
+    // surface with its sample count. A single `viewport` field went null the
+    // moment the surfaces split, and a null reads as "not recorded" rather
+    // than "recorded elsewhere".
+    surfaces: Object.entries(evidence.surfaces ?? {}).map(([id, s]) => ({
+      id,
+      viewport: s.viewport ?? s.viewportMeasured ?? null,
+      imagerySamples: s.imagery?.sampled ?? 0,
+      durationMs: s.durationMs ?? null,
+    })),
+    surfaceLimit: evidence.method?.surfaceLimit ?? null,
     locale: evidence.method?.locale ?? "ko-KR",
     session: sessionStateFor(channel),
     store: { root: "$OMD_EVIDENCE_STORE", path: join(brand, captureId) },
@@ -123,7 +133,11 @@ if (has("verify")) {
   process.exit(allGood ? 0 : 1);
 }
 
-const brands = has("all") ? readdirSync(EVIDENCE_ROOT) : [arg("brand")].filter(Boolean);
+// Underscore-prefixed directories under the evidence root hold run reports and
+// discovery output, not brands.
+const brands = has("all")
+  ? readdirSync(EVIDENCE_ROOT).filter((b) => !b.startsWith("_") && !b.startsWith(".")).sort()
+  : [arg("brand")].filter(Boolean);
 if (brands.length === 0) {
   console.error("usage: ingest-captures.mjs --brand <id> | --all | --verify");
   process.exit(1);

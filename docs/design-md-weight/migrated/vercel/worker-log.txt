@@ -1,0 +1,20 @@
+T2 마이그레이션을 위해 규칙집·골든 샘플·레거시 Vercel DESIGN.md를 순서대로 읽고, 그다음에 Core v2로 옮기겠습니다.필수 판정문·골든 샘플·원본 Vercel DESIGN.md를 이어서 읽습니다.원본 Vercel DESIGN.md와 승인된 musinsa·최근 PASS 샘플을 대조해 형식을 맞춥니다.최근 PASS 샘플의 B2a·C2·로고 처리와 Vercel YAML 토큰을 대조합니다.원본의 모든 검증 토큰을 목록으로 뽑은 뒤 DESIGN.md를 작성합니다.Core v2 본문과 provenance를 작성합니다. 규칙집 v6의 값 보존·B2a 한정·§4.4 역할 판정을 반영합니다.F2 대조를 위해 본문·provenance에서 값이 실제로 어디에 있는지 확인합니다.Vercel legacy DESIGN.md를 Core v2로 옮겼습니다. 산출은 `docs/design-md-weight/migrated/vercel/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다.
+
+규칙집 **v6**을 썼고, 제출 전 최종 패스 두 개를 돌렸습니다.
+
+- **F1 (B2a):** Scope의 시각 성격·서사, Principles+capture-bound, Layout 명령문, Content 보이스 해석에 인접 한정을 붙였습니다. `derived editorial implementation inference`이며 Vercel이 쓴 문서나 따로 발행된 UI 규격이 아닙니다.
+- **F2 (E2):** 로그 각 행을 grep으로 맞춰 두었습니다. `#171717`, Geist URL, `tokens.note`, font OFL URL처럼 두 곳 이상 가는 값은 목적지를 모두 적었습니다.
+
+보존한 핵심 값:
+
+- unitless line-height `1` / `1.1` / `1.33` / `1.5` / `1.43` (고정 px와 합치지 않음)
+- primitive type: button×3, input, toggle, card
+- `ds.type: system`은 provenance만
+- Simple Icons 로고는 identity-only
+- §14 본문(radio unchecked, icon disabled) + 역할별 loading/error/success
+- Geist example card는 kind/map 생략
+- 무출처 커브 없음, B3 다섯 증거 종류 게이트는 Foundations에 전문 유지
+
+검증: `inspectDesignMd` `portable_core: true`, placeholders 0. `migrate-reference.mjs --brand vercel --gate-only` **PASS**. 카탈로그 채택은 아닙니다.
+
+DONE migrated=1

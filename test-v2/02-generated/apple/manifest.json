@@ -1,0 +1,116 @@
+{
+  "brand": "apple",
+  "storeId": "2026-08-23T06-29-51-695Z",
+  "ingestedAt": "2026-08-23T06:29:51.695Z",
+  "generator": {
+    "channel": "grok-build-cli",
+    "model": "grok-4.6",
+    "tools": [
+      "image_gen",
+      "image_to_video"
+    ]
+  },
+  "brief": "01-prompts/apple/asset-brief.json",
+  "store": {
+    "root": "$OMD_GENERATED_STORE",
+    "path": "apple/2026-08-23T06-29-51-695Z"
+  },
+  "files": [
+    {
+      "name": "images/01.jpg",
+      "bytes": 103072,
+      "sha256": "1941d00c89a33f511fb231d88e73e9a7eee7d34837fbb66cc9f26175fa083602"
+    },
+    {
+      "name": "images/02.jpg",
+      "bytes": 159183,
+      "sha256": "8123858664aef022bced32d95d6762bdc83aeb7268f3e2d063143100938119f7"
+    },
+    {
+      "name": "images/03.jpg",
+      "bytes": 128742,
+      "sha256": "d1b9455b90d57ae5ec8063a46d4c8ba38ba2ea3e928e2147a9decb31bde62f5b"
+    },
+    {
+      "name": "images/04.jpg",
+      "bytes": 111626,
+      "sha256": "7aa3259b93b34d6e63f3ba500eb5701ad45628dbd9c825850f9eeb491b335a3a"
+    },
+    {
+      "name": "images/05.jpg",
+      "bytes": 144979,
+      "sha256": "f75b32492a637d70ba2b43ab75fb3cf2279e863c89d42793d540ee0c0f8590f3"
+    },
+    {
+      "name": "images/06.jpg",
+      "bytes": 61737,
+      "sha256": "5c12aae8269f133ed0be1e6e984adb4bb4a42639fb60493f72ea0236d8b12bed"
+    },
+    {
+      "name": "images/07.jpg",
+      "bytes": 197464,
+      "sha256": "14cb3e8a01e2f8d4cb2494440d2318ac006280879b8f26ba8cdcdebdd6d8ba40"
+    },
+    {
+      "name": "images/08.jpg",
+      "bytes": 170881,
+      "sha256": "574c63ebaaabd73ee89b60b308449f8aeb354753065740ac65c998558cd18565"
+    },
+    {
+      "name": "images/09.jpg",
+      "bytes": 90715,
+      "sha256": "513d962acdbdb89260e48c50cbf5b039a9030f83b90fe45a74cd31b2b1e79d42"
+    },
+    {
+      "name": "images/10.jpg",
+      "bytes": 46021,
+      "sha256": "595ae8c132d2324990a466905dea520296e26665ee8cde6009e2253a185078be"
+    },
+    {
+      "name": "images/11.jpg",
+      "bytes": 68776,
+      "sha256": "8751c558d1098d41db9d126d7e0a8c60ef5b85d308c378f919fd1a6bd87a810a"
+    },
+    {
+      "name": "images/12.jpg",
+      "bytes": 165794,
+      "sha256": "598e9c3c51df8b3e9bbe633321b0db44ef4e762cb11820cca97613d5b1cfbe8c"
+    },
+    {
+      "name": "images/13.jpg",
+      "bytes": 103535,
+      "sha256": "0e734e4f2ce662371cd36a9589a07091ca81f345bf7d41f6b9241e8bf4ff68ff"
+    },
+    {
+      "name": "images/14.jpg",
+      "bytes": 83868,
+      "sha256": "c8325919f3b54fb29d6332f0b6696cf2f9e2ada02dbbc996061d6c1ba29bf883"
+    },
+    {
+      "name": "images/15.jpg",
+      "bytes": 83737,
+      "sha256": "50dc7ea111c825a29348b6a1b034e38ba7b1cd0f13fee95bb7f3d9d435d73482"
+    },
+    {
+      "name": "images/16.jpg",
+      "bytes": 160278,
+      "sha256": "c90ea67723a32d0b91178aa1f8ec78975804fff85829fdf815ac8df345dcb4fd"
+    },
+    {
+      "name": "videos/01.mp4",
+      "bytes": 505414,
+      "sha256": "336626b7a5e5a4c7880f1990170fce51a8e9ba1507a29679cff20b22beaa9112"
+    },
+    {
+      "name": "videos/02.mp4",
+      "bytes": 775810,
+      "sha256": "9743287f93f63fcdff6411c9340cce92993742faa77f3aeb9fa7357fd968b597"
+    },
+    {
+      "name": "videos/03.mp4",
+      "bytes": 634969,
+      "sha256": "b69065b77056c0f4a5b582feef3781f205cd9819eb77e5979109ccdc0df836d6"
+    }
+  ],
+  "shotsSha256": "29b149bc95cdfb794031c55d8ab46d010152582e8f98981b4ae3ec41b616cbb4"
+}

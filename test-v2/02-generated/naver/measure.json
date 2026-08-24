@@ -1,0 +1,1660 @@
+{
+  "brand": "naver",
+  "surface": "mobile-390",
+  "images": 16,
+  "videos": 3,
+  "manifestPresent": true,
+  "verifyScores": [
+    21.46,
+    22.33,
+    22.59,
+    38.85,
+    39.76,
+    42.88,
+    43.02,
+    43.3,
+    49.41,
+    55.6,
+    63.77,
+    64.5,
+    66.62
+  ],
+  "medianVerify": 43.02,
+  "note": "verify는 그날 스냅샷 추종이지 브랜드 정체성 점수가 아니다. --baseline 분포와 비교해 읽는다.",
+  "measuredAt": "2026-08-23T06:17:12.897Z",
+  "detail": {
+    "images": [
+      {
+        "file": "images/01.jpg",
+        "role": "hero",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#c3c5c5",
+            "coverage": 0.0652,
+            "saturation": 0.01,
+            "luma": 0.771
+          },
+          {
+            "hex": "#a4a49d",
+            "coverage": 0.0592,
+            "saturation": 0.043,
+            "luma": 0.641
+          },
+          {
+            "hex": "#babdbd",
+            "coverage": 0.0539,
+            "saturation": 0.016,
+            "luma": 0.739
+          },
+          {
+            "hex": "#c5c9cb",
+            "coverage": 0.048,
+            "saturation": 0.03,
+            "luma": 0.785
+          }
+        ],
+        "light": {
+          "meanLuma": 0.594,
+          "p05": 0.078,
+          "p50": 0.647,
+          "p95": 0.782,
+          "dynamicRange": 0.704,
+          "gradient": {
+            "dx": -0.019,
+            "dy": 0.11
+          },
+          "luminanceGradient": "brighter bottom"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 30.1
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/01.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1545,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.097,
+              "score": 51.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.019,
+              "score": 90.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 4.8963,
+              "score": 80.41
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 55.6,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/02.jpg",
+        "role": "hero",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#a4bbcc",
+            "coverage": 0.1531,
+            "saturation": 0.196,
+            "luma": 0.719
+          },
+          {
+            "hex": "#9cb3c5",
+            "coverage": 0.1324,
+            "saturation": 0.208,
+            "luma": 0.688
+          },
+          {
+            "hex": "#acc2d3",
+            "coverage": 0.0992,
+            "saturation": 0.185,
+            "luma": 0.747
+          },
+          {
+            "hex": "#93acbd",
+            "coverage": 0.0625,
+            "saturation": 0.222,
+            "luma": 0.658
+          }
+        ],
+        "light": {
+          "meanLuma": 0.637,
+          "p05": 0.376,
+          "p50": 0.684,
+          "p95": 0.765,
+          "dynamicRange": 0.389,
+          "gradient": {
+            "dx": 0.16,
+            "dy": -0.04
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 30.7
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/02.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0292,
+              "score": 70.78
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.14,
+              "score": 30
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.334,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 7.1713,
+              "score": 71.31
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 43.02,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/03.jpg",
+        "role": "hero",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#d9d5cb",
+            "coverage": 0.0736,
+            "saturation": 0.065,
+            "luma": 0.836
+          },
+          {
+            "hex": "#cbcdd3",
+            "coverage": 0.0541,
+            "saturation": 0.038,
+            "luma": 0.804
+          },
+          {
+            "hex": "#cccccc",
+            "coverage": 0.05,
+            "saturation": 0,
+            "luma": 0.8
+          },
+          {
+            "hex": "#dcdad4",
+            "coverage": 0.0496,
+            "saturation": 0.036,
+            "luma": 0.855
+          }
+        ],
+        "light": {
+          "meanLuma": 0.78,
+          "p05": 0.634,
+          "p50": 0.793,
+          "p95": 0.855,
+          "dynamicRange": 0.221,
+          "gradient": {
+            "dx": 0.06,
+            "dy": 0.002
+          },
+          "luminanceGradient": "brighter right"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 23.8
+        },
+        "aspect": 1.778,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/03.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.1545,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.283,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.502,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 3.5421,
+              "score": 85.83
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 21.46,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/04.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#e3dbc3",
+            "coverage": 0.0929,
+            "saturation": 0.141,
+            "luma": 0.859
+          },
+          {
+            "hex": "#f4f2e3",
+            "coverage": 0.0506,
+            "saturation": 0.07,
+            "luma": 0.946
+          },
+          {
+            "hex": "#f3eddb",
+            "coverage": 0.0501,
+            "saturation": 0.099,
+            "luma": 0.929
+          },
+          {
+            "hex": "#ebe2cc",
+            "coverage": 0.0473,
+            "saturation": 0.132,
+            "luma": 0.888
+          }
+        ],
+        "light": {
+          "meanLuma": 0.637,
+          "p05": 0.123,
+          "p50": 0.786,
+          "p95": 0.941,
+          "dynamicRange": 0.818,
+          "gradient": {
+            "dx": -0.124,
+            "dy": -0.061
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#e7e1cd",
+          "center": {
+            "x": 0.5773,
+            "y": 0.5375
+          },
+          "box": {
+            "x": 0.0938,
+            "y": 0.1682,
+            "w": 0.8313,
+            "h": 0.6636
+          },
+          "coverage": 0.2501
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/04.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0292,
+              "score": 70.78
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.14,
+              "score": 30
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.095,
+              "score": 52.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 13.9149,
+              "score": 44.34
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 49.41,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/05.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#d9dddd",
+            "coverage": 0.105,
+            "saturation": 0.018,
+            "luma": 0.863
+          },
+          {
+            "hex": "#cdceca",
+            "coverage": 0.0946,
+            "saturation": 0.019,
+            "luma": 0.806
+          },
+          {
+            "hex": "#d5dbdb",
+            "coverage": 0.0504,
+            "saturation": 0.027,
+            "luma": 0.854
+          },
+          {
+            "hex": "#d2d4d3",
+            "coverage": 0.0412,
+            "saturation": 0.009,
+            "luma": 0.829
+          }
+        ],
+        "light": {
+          "meanLuma": 0.616,
+          "p05": 0.076,
+          "p50": 0.773,
+          "p95": 0.871,
+          "dynamicRange": 0.795,
+          "gradient": {
+            "dx": -0.054,
+            "dy": -0.008
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#d3d6d4",
+          "center": {
+            "x": 0.501,
+            "y": 0.4802
+          },
+          "box": {
+            "x": 0.1313,
+            "y": 0.0374,
+            "w": 0.75,
+            "h": 0.8972
+          },
+          "coverage": 0.2501
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/05.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0292,
+              "score": 70.78
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.119,
+              "score": 40.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.072,
+              "score": 64
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 5.0524,
+              "score": 79.79
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 63.77,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/06.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#f5f6f6",
+            "coverage": 0.0168,
+            "saturation": 0.004,
+            "luma": 0.964
+          },
+          {
+            "hex": "#656c65",
+            "coverage": 0.0136,
+            "saturation": 0.065,
+            "luma": 0.416
+          },
+          {
+            "hex": "#6c716c",
+            "coverage": 0.0126,
+            "saturation": 0.044,
+            "luma": 0.438
+          },
+          {
+            "hex": "#6a6d63",
+            "coverage": 0.0123,
+            "saturation": 0.092,
+            "luma": 0.422
+          }
+        ],
+        "light": {
+          "meanLuma": 0.428,
+          "p05": 0.133,
+          "p50": 0.422,
+          "p95": 0.789,
+          "dynamicRange": 0.656,
+          "gradient": {
+            "dx": 0.05,
+            "dy": -0.07
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 78.5
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/06.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0292,
+              "score": 70.78
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.069,
+              "score": 65.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.067,
+              "score": 66.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 9.0771,
+              "score": 63.69
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 66.62,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/07.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#141b24",
+            "coverage": 0.0377,
+            "saturation": 0.444,
+            "luma": 0.103
+          },
+          {
+            "hex": "#161e29",
+            "coverage": 0.0231,
+            "saturation": 0.463,
+            "luma": 0.114
+          },
+          {
+            "hex": "#19222d",
+            "coverage": 0.0193,
+            "saturation": 0.444,
+            "luma": 0.129
+          },
+          {
+            "hex": "#17202b",
+            "coverage": 0.0162,
+            "saturation": 0.465,
+            "luma": 0.121
+          }
+        ],
+        "light": {
+          "meanLuma": 0.343,
+          "p05": 0.084,
+          "p50": 0.343,
+          "p95": 0.69,
+          "dynamicRange": 0.606,
+          "gradient": {
+            "dx": -0.002,
+            "dy": -0.175
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 74
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/07.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0292,
+              "score": 70.78
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.154,
+              "score": 23
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.117,
+              "score": 41.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 19.9727,
+              "score": 20.11
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 38.85,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/08.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#a3927c",
+            "coverage": 0.0537,
+            "saturation": 0.239,
+            "luma": 0.58
+          },
+          {
+            "hex": "#94826c",
+            "coverage": 0.0499,
+            "saturation": 0.27,
+            "luma": 0.519
+          },
+          {
+            "hex": "#9b8a74",
+            "coverage": 0.0495,
+            "saturation": 0.252,
+            "luma": 0.549
+          },
+          {
+            "hex": "#aca0a6",
+            "coverage": 0.0401,
+            "saturation": 0.07,
+            "luma": 0.639
+          }
+        ],
+        "light": {
+          "meanLuma": 0.576,
+          "p05": 0.367,
+          "p50": 0.562,
+          "p95": 0.904,
+          "dynamicRange": 0.537,
+          "gradient": {
+            "dx": 0.025,
+            "dy": -0.021
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 37.4
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/08.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0292,
+              "score": 70.78
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.079,
+              "score": 60.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.186,
+              "score": 7
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 16.2692,
+              "score": 34.92
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 43.3,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/09.jpg",
+        "role": "imagery",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#acb5ba",
+            "coverage": 0.1129,
+            "saturation": 0.075,
+            "luma": 0.704
+          },
+          {
+            "hex": "#a4adb2",
+            "coverage": 0.1107,
+            "saturation": 0.079,
+            "luma": 0.672
+          },
+          {
+            "hex": "#9ba5aa",
+            "coverage": 0.0782,
+            "saturation": 0.088,
+            "luma": 0.64
+          },
+          {
+            "hex": "#b3bdc2",
+            "coverage": 0.0627,
+            "saturation": 0.077,
+            "luma": 0.734
+          }
+        ],
+        "light": {
+          "meanLuma": 0.641,
+          "p05": 0.485,
+          "p50": 0.66,
+          "p95": 0.74,
+          "dynamicRange": 0.255,
+          "gradient": {
+            "dx": -0.028,
+            "dy": 0.015
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 32
+        },
+        "aspect": 1.495,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/09.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.0292,
+              "score": 70.78
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.144,
+              "score": 28
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.468,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 6.8188,
+              "score": 72.72
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 42.88,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/10.jpg",
+        "role": "texture",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#b4beca",
+            "coverage": 0.2271,
+            "saturation": 0.109,
+            "luma": 0.74
+          },
+          {
+            "hex": "#b9c3cd",
+            "coverage": 0.2048,
+            "saturation": 0.098,
+            "luma": 0.759
+          },
+          {
+            "hex": "#b6c1cc",
+            "coverage": 0.1285,
+            "saturation": 0.108,
+            "luma": 0.751
+          },
+          {
+            "hex": "#b2bbc6",
+            "coverage": 0.1192,
+            "saturation": 0.101,
+            "luma": 0.729
+          }
+        ],
+        "light": {
+          "meanLuma": 0.744,
+          "p05": 0.705,
+          "p50": 0.744,
+          "p95": 0.775,
+          "dynamicRange": 0.07,
+          "gradient": {
+            "dx": 0.01,
+            "dy": -0.006
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 8.1
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/10.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.3506,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.247,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.653,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 4.0137,
+              "score": 83.95
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 20.99,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/11.jpg",
+        "role": "texture",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#e1e2dd",
+            "coverage": 0.5022,
+            "saturation": 0.022,
+            "luma": 0.884
+          },
+          {
+            "hex": "#e4e5e1",
+            "coverage": 0.1723,
+            "saturation": 0.017,
+            "luma": 0.896
+          },
+          {
+            "hex": "#dcdeda",
+            "coverage": 0.1111,
+            "saturation": 0.018,
+            "luma": 0.868
+          },
+          {
+            "hex": "#dfe0db",
+            "coverage": 0.0899,
+            "saturation": 0.022,
+            "luma": 0.876
+          }
+        ],
+        "light": {
+          "meanLuma": 0.873,
+          "p05": 0.782,
+          "p50": 0.884,
+          "p95": 0.896,
+          "dynamicRange": 0.114,
+          "gradient": {
+            "dx": -0.031,
+            "dy": 0.001
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 27.5
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/11.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.3506,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.376,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.609,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 4.6016,
+              "score": 81.59
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 20.4,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/12.jpg",
+        "role": "texture",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#76a82b",
+            "coverage": 0.2209,
+            "saturation": 0.744,
+            "luma": 0.582
+          },
+          {
+            "hex": "#74a729",
+            "coverage": 0.1909,
+            "saturation": 0.754,
+            "luma": 0.577
+          },
+          {
+            "hex": "#72a526",
+            "coverage": 0.1514,
+            "saturation": 0.77,
+            "luma": 0.569
+          },
+          {
+            "hex": "#e2e2e6",
+            "coverage": 0.0288,
+            "saturation": 0.017,
+            "luma": 0.887
+          }
+        ],
+        "light": {
+          "meanLuma": 0.615,
+          "p05": 0.474,
+          "p50": 0.579,
+          "p95": 0.895,
+          "dynamicRange": 0.421,
+          "gradient": {
+            "dx": 0.017,
+            "dy": 0.001
+          },
+          "luminanceGradient": "even"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 73.6
+        },
+        "aspect": 1,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/12.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.3506,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.118,
+              "score": 41
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.302,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 5.3924,
+              "score": 78.43
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 29.86,
+          "note": "fields are same-day snapshot adherence, not brand invariants",
+          "comparable": false,
+          "why": "texture shot — the imagery aggregate describes the brand's photographic subjects, not its material close-ups"
+        }
+      },
+      {
+        "file": "images/13.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#b3c3c4",
+            "coverage": 0.3159,
+            "saturation": 0.087,
+            "luma": 0.752
+          },
+          {
+            "hex": "#abbcbd",
+            "coverage": 0.074,
+            "saturation": 0.095,
+            "luma": 0.723
+          },
+          {
+            "hex": "#b5c5c9",
+            "coverage": 0.0695,
+            "saturation": 0.1,
+            "luma": 0.76
+          },
+          {
+            "hex": "#aebec1",
+            "coverage": 0.0471,
+            "saturation": 0.098,
+            "luma": 0.733
+          }
+        ],
+        "light": {
+          "meanLuma": 0.664,
+          "p05": 0.25,
+          "p50": 0.736,
+          "p95": 0.768,
+          "dynamicRange": 0.518,
+          "gradient": {
+            "dx": -0.019,
+            "dy": -0.104
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#a8b6b7",
+          "center": {
+            "x": 0.5351,
+            "y": 0.7108
+          },
+          "box": {
+            "x": 0.0938,
+            "y": 0.1162,
+            "w": 0.9,
+            "h": 0.8803
+          },
+          "coverage": 0.2501
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/13.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.6344,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.167,
+              "score": 16.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.205,
+              "score": 0
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 6.7924,
+              "score": 72.83
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 22.33,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/14.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#ebe4cc",
+            "coverage": 0.0284,
+            "saturation": 0.132,
+            "luma": 0.893
+          },
+          {
+            "hex": "#bccbcb",
+            "coverage": 0.0261,
+            "saturation": 0.074,
+            "luma": 0.784
+          },
+          {
+            "hex": "#b5c3c3",
+            "coverage": 0.024,
+            "saturation": 0.072,
+            "luma": 0.753
+          },
+          {
+            "hex": "#e3dcc4",
+            "coverage": 0.0199,
+            "saturation": 0.137,
+            "luma": 0.862
+          }
+        ],
+        "light": {
+          "meanLuma": 0.516,
+          "p05": 0.133,
+          "p50": 0.512,
+          "p95": 0.87,
+          "dynamicRange": 0.737,
+          "gradient": {
+            "dx": 0.016,
+            "dy": -0.092
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 73.9
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/14.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.6344,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.019,
+              "score": 90.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.014,
+              "score": 93
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 6.3795,
+              "score": 74.48
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 64.5,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/15.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#d2d4d3",
+            "coverage": 0.1905,
+            "saturation": 0.009,
+            "luma": 0.829
+          },
+          {
+            "hex": "#d3dad4",
+            "coverage": 0.08,
+            "saturation": 0.032,
+            "luma": 0.847
+          },
+          {
+            "hex": "#cccdd2",
+            "coverage": 0.0717,
+            "saturation": 0.029,
+            "luma": 0.805
+          },
+          {
+            "hex": "#ced3d2",
+            "coverage": 0.0642,
+            "saturation": 0.024,
+            "luma": 0.823
+          }
+        ],
+        "light": {
+          "meanLuma": 0.711,
+          "p05": 0.338,
+          "p50": 0.816,
+          "p95": 0.874,
+          "dynamicRange": 0.536,
+          "gradient": {
+            "dx": 0.022,
+            "dy": -0.058
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#d1d4d4",
+          "center": {
+            "x": 0.4972,
+            "y": 0.5151
+          },
+          "box": {
+            "x": 0.1187,
+            "y": 0.2254,
+            "w": 0.7875,
+            "h": 0.581
+          },
+          "coverage": 0.2501
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/15.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.6344,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.214,
+              "score": 0
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.187,
+              "score": 6.5
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 4.0371,
+              "score": 83.85
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 22.59,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      },
+      {
+        "file": "images/16.jpg",
+        "role": "mobile",
+        "scoredAgainst": "mobile-390",
+        "palette": [
+          {
+            "hex": "#e3ddcb",
+            "coverage": 0.1042,
+            "saturation": 0.106,
+            "luma": 0.867
+          },
+          {
+            "hex": "#dcd5c2",
+            "coverage": 0.1005,
+            "saturation": 0.118,
+            "luma": 0.836
+          },
+          {
+            "hex": "#dad2bd",
+            "coverage": 0.0419,
+            "saturation": 0.133,
+            "luma": 0.824
+          },
+          {
+            "hex": "#d5cdbb",
+            "coverage": 0.0345,
+            "saturation": 0.122,
+            "luma": 0.805
+          }
+        ],
+        "light": {
+          "meanLuma": 0.636,
+          "p05": 0.127,
+          "p50": 0.789,
+          "p95": 0.882,
+          "dynamicRange": 0.755,
+          "gradient": {
+            "dx": -0.088,
+            "dy": 0.021
+          },
+          "luminanceGradient": "brighter left"
+        },
+        "subject": {
+          "resolved": true,
+          "backgroundHex": "#d8d0bf",
+          "center": {
+            "x": 0.5196,
+            "y": 0.4981
+          },
+          "box": {
+            "x": 0.0625,
+            "y": 0.1127,
+            "w": 0.8812,
+            "h": 0.7782
+          },
+          "coverage": 0.25
+        },
+        "aspect": 0.563,
+        "verify": {
+          "brand": "naver",
+          "surface": "mobile-390",
+          "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/naver/images/16.jpg",
+          "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+          "paletteSource": "capture/mobile-390-imagery-01.png",
+          "fields": [
+            {
+              "field": "aspect",
+              "eligible": true,
+              "error": 0.6344,
+              "score": 0
+            },
+            {
+              "field": "meanLuma",
+              "eligible": true,
+              "error": 0.139,
+              "score": 30.5
+            },
+            {
+              "field": "dynamicRange",
+              "eligible": true,
+              "error": 0.032,
+              "score": 84
+            },
+            {
+              "field": "subjectCentre",
+              "eligible": false,
+              "reason": "source placement omitted — fewer than the resolved-sample floor"
+            },
+            {
+              "field": "palette",
+              "eligible": true,
+              "error": 13.8629,
+              "score": 44.55
+            }
+          ],
+          "eligibleCount": 4,
+          "usable": true,
+          "numericScore": 39.76,
+          "note": "fields are same-day snapshot adherence, not brand invariants"
+        }
+      }
+    ],
+    "videos": [
+      {
+        "file": "videos/01.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#c3c5c4",
+              "coverage": 0.0628,
+              "saturation": 0.01,
+              "luma": 0.771
+            },
+            {
+              "hex": "#a4a49d",
+              "coverage": 0.0609,
+              "saturation": 0.043,
+              "luma": 0.641
+            },
+            {
+              "hex": "#c4c6c9",
+              "coverage": 0.0587,
+              "saturation": 0.025,
+              "luma": 0.776
+            }
+          ],
+          "light": {
+            "meanLuma": 0.591,
+            "p05": 0.077,
+            "p50": 0.645,
+            "p95": 0.78,
+            "dynamicRange": 0.703,
+            "gradient": {
+              "dx": -0.019,
+              "dy": 0.11
+            },
+            "luminanceGradient": "brighter bottom"
+          }
+        },
+        "fromImage": "images/01.jpg"
+      },
+      {
+        "file": "videos/02.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#f3eddb",
+              "coverage": 0.0568,
+              "saturation": 0.099,
+              "luma": 0.929
+            },
+            {
+              "hex": "#e3dac3",
+              "coverage": 0.0554,
+              "saturation": 0.141,
+              "luma": 0.856
+            },
+            {
+              "hex": "#f4f1e3",
+              "coverage": 0.0437,
+              "saturation": 0.07,
+              "luma": 0.944
+            }
+          ],
+          "light": {
+            "meanLuma": 0.589,
+            "p05": 0.109,
+            "p50": 0.651,
+            "p95": 0.937,
+            "dynamicRange": 0.828,
+            "gradient": {
+              "dx": -0.137,
+              "dy": -0.067
+            },
+            "luminanceGradient": "brighter left"
+          }
+        },
+        "fromImage": "images/04.jpg"
+      },
+      {
+        "file": "videos/03.mp4",
+        "durationSec": 6,
+        "firstFrame": {
+          "palette": [
+            {
+              "hex": "#74a629",
+              "coverage": 0.4602,
+              "saturation": 0.753,
+              "luma": 0.574
+            },
+            {
+              "hex": "#72a526",
+              "coverage": 0.2242,
+              "saturation": 0.77,
+              "luma": 0.569
+            },
+            {
+              "hex": "#76a82b",
+              "coverage": 0.0824,
+              "saturation": 0.744,
+              "luma": 0.582
+            }
+          ],
+          "light": {
+            "meanLuma": 0.583,
+            "p05": 0.49,
+            "p50": 0.574,
+            "p95": 0.738,
+            "dynamicRange": 0.248,
+            "gradient": {
+              "dx": 0.002,
+              "dy": -0.006
+            },
+            "luminanceGradient": "even"
+          }
+        },
+        "fromImage": "images/12.jpg"
+      }
+    ]
+  }
+}

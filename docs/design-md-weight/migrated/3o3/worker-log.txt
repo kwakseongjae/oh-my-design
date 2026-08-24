@@ -1,0 +1,13 @@
+T2 마이그레이션을 시작합니다. 규칙집·대응표·골든 샘플과 원문을 순서대로 읽고, 작성 후 B2a·E2 최종 패스를 돌리겠습니다.규칙집·대응표·골든 샘플·원문을 병렬로 읽습니다. 이미 `migrated/3o3/`가 있으면 상태를 확인한 뒤 정본대로 다시 씁니다.원문·Core v2 §4.4·골든 샘플 형태를 이어서 읽습니다.최근 웨이브 6 이관본과 §14 예시 처리 방식을 대조해 형태를 맞춥니다.게이트가 hex·px·ms 손실을 기계 차단하므로, 원문의 토큰을 전부 뽑아 누락 없이 옮기겠습니다.원문 토큰·컴포넌트 타입·§14 본문을 보존한 Core v2 초안을 작성합니다. 해석 문장에는 인접 B2a를 달고, 무출처 커브는 본문에서 빼 provenance에만 둡니다.본문 전체를 다시 읽어 B2a 한정이 빠진 해석 문장을 찾고, 이어서 grep으로 로그 행을 대조합니다.F1에서 빠진 한정 네 곳을 고칩니다. 블로그 범위, Avoid 출처 구분, Assets 문장, Motion 규칙 문단입니다.Portable Core가 scope claim을 인식하지 못했습니다. 검사기가 무엇을 요구하는지 코드를 확인합니다.`web/references/3o3/DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/3o3/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v7**.
+
+검증된 값·비율·컴포넌트 타입은 그대로 두고, 해석 문장만 인접 한정으로 갈랐습니다. 가상 페르소나와 무출처 커브는 본문에 올리지 않았습니다.
+
+- Funnel / app / brand-center / corporate를 서로 대리하지 않는 네 도메인으로 유지. 블로그는 Tier-1로만 남기고 색·타입·컴포넌트 값은 붙이지 않음.
+- YAML unitless line-height `1.50` / `1.00` / `1.40` / `1.22` / `1.60`을 비율로 보존. `#0c64e6`은 브랜드 본색이지 퍼널 CTA 채움이 아님.
+- `Type: button` ×5, `badge`, `card` ×2, `listItem`을 컴포넌트별로 보존. Chip·Card·Dark Band·Footnote는 kind/map 생략. Funnel/Kakao/Ghost의 loading·error·success는 역할 매핑이 닫히지 않아 생략.
+- §14 11행은 본문에 보존하되, 원문 주석대로 illustrative로 한정. `120ms` / `200ms` / `300ms`와 실측 `transform 0.3s ease-in-out`은 남기고, 무출처 `cubic-bezier` 두 개만 provenance에 보관. B3 다섯 증거 종류 게이트는 Foundations에 전문으로 둠.
+- §13 가상 인물은 portable에도 provenance에도 없음. Google favicon은 provenance + Assets 경계 + Named gaps.
+
+기계 검사: `--gate-only` PASS, `portable_core: true`, placeholders 없음. F1 B2a 전편 재독과 F2 grep 대조는 로그에 적어 두었습니다. F3 감사와 sol 의미 레인은 다음 단계입니다. 카탈로그 채택은 아닙니다.
+
+DONE migrated=1

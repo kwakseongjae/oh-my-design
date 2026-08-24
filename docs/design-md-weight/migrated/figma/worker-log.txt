@@ -1,0 +1,19 @@
+T2 마이그레이션을 규칙집과 골든 샘플부터 읽고 시작합니다. 먼저 연속성 복원과 지정된 문서·레거시 원문을 순서대로 확인합니다.규칙집과 Core 규격을 확인했습니다. 이어서 대응표, T1 제약, 골든 샘플, Figma 원문을 읽습니다.Figma 대상 폴더와 개정 골든 샘플, 최근 PASS 이관본을 함께 대조합니다.최신 PASS 이관본과 게이트 스크립트를 대조해 C2·A1b·B3 처리 기준을 확인합니다.게이트가 잡을 토큰·비율을 원문에서 추출하고, `inspectDesignMd` 요구도 확인합니다.원문·규칙집·PASS 이관본을 기준으로 세 산출물을 작성합니다.기계 게이트와 Portable Core 검사를 돌리고, 토큰 손실·발명도 대조합니다.게이트가 `focus-visible`과 색값을 같은 줄에서 묶고, `not captured` 문장에 원문 밖 단어를 잡았습니다. 그 두 줄만 고칩니다.Primary tasks를 컴포넌트에서 추론한 문장 대신, 원문 §13의 검증된 task context로 되돌립니다. `keyboard` 수식도 원문에 없어 제거합니다.Figma legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/figma/`입니다.
+
+- `DESIGN.md` — Portable Core 일곱 claim, 규칙집 v4
+- `provenance.md` — 원장·freshness·`ds.type: brand`
+- `migration-log.md` — 섹션별 옮김/분리/삭제 표, 머리에 규칙집 v4
+
+의미 보존에서 특히 닫은 항목:
+
+- 검증된 값 손실 0, 발명 0. unitless line-height `1` / `1.1` / `1.42` / `1.3` 비율 유지
+- 컴포넌트별 `Type`: button × 4, tab × 1
+- generic `focus` (`2px dashed #0d99ff`)를 `focus-visible` treatment로 올리지 않음
+- loading/error/success는 역할로 판정: get-started·sales-contact는 applicable, indigo hero·segment tab·carousel은 not-applicable
+- §14 본문 보존, 미관측을 `not-applicable` 사유로 쓰지 않음
+- §13 public task contexts만 primary-tasks, 가상 persona sidecar 없음
+- §9 도구 프롬프트 삭제. 원칙 인접 B2a 한정, motion B3 다섯 증거 종류
+
+기계 확인: `inspectDesignMd` `portable_core: true`, placeholders 0, `migrate-reference.mjs --brand figma --gate-only` PASS. 카탈로그 채택은 하지 않았습니다.
+
+DONE migrated=1

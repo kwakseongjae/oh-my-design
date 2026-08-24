@@ -1,0 +1,29 @@
+T2 마이그레이션을 시작하기 전에 규칙집·골든 샘플·레거시 원문을 순서대로 읽고, 그 다음에 8percent를 Core v2로 옮기겠습니다.필수 문서와 레거시 원문, 골든 샘플, 이미 있는 8percent 산출물을 병렬로 읽겠습니다.규칙집 v7은 확인했습니다. 이제 규격·대응표·골든 샘플·8percent 원문을 읽겠습니다.레거시 원문의 나머지 섹션을 이어서 읽고, 최근 통과한 웨이브 6 산출물의 형태도 대조하겠습니다.게이트가 요구하는 토큰·비율을 레거시에서 뽑고, 그다음 본문을 쓰겠습니다.레거시 토큰·비율·타입을 확보했습니다. Core v2 본문부터 작성하고, 이어서 provenance와 로그를 맞추겠습니다.8percent legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/8percent/`입니다.
+
+**옮긴 것**
+- 검증된 색·타입·간격·컴포넌트 값 전부. YAML 비율 `1.10` / `1.50` / `1.15`는 비율로 유지했습니다.
+- 컴포넌트 primitive type은 항목별로 유지했습니다: button×4, input, card, badge, tab.
+- §14 상태 표는 Components 본문에 그대로 두었습니다.
+- §11 서사(온투업 1호, 누적 대출액, 이효진, Yellen, ~8% 이름 논지)는 Scope에 남겼고, 해석 문장에는 인접 B2a 한정을 붙였습니다.
+
+**분리·삭제한 것**
+- 출처 원장·freshness·Proof → `provenance.md` (`tokens.source: live-extract`).
+- §9 도구 프롬프트는 삭제했습니다.
+- §13 가상 persona는 본문·provenance 모두에서 빼었습니다.
+- 무출처 cubic-bezier 3개(그중 `ease-exit`는 템플릿과 동일)는 본문에서 빼고 provenance omission ledger에만 두었습니다. duration / easing 이름 / `prefers-reduced-motion`은 유지했습니다.
+
+**상태 계약**
+- EdsTextfield의 generic Focus `#3282f0`는 `focus-visible`로 올리지 않았습니다.
+- Primary / Soft / News-More / Confirm / Notice의 loading·error·success는 생략했습니다 (C2).
+- Product Card / Credit-Grade Tag는 kind/map을 생략했습니다 (C4).
+- Foundations Motion에 B3 다섯 증거 종류 게이트 전문이 있습니다.
+
+**검증**
+- `inspectDesignMd` → `portable_core: true`, placeholders 0
+- `--gate-only` → PASS, problems []
+- Core check → exit 0 / `portable_core: true`
+- SHA-256 `f0c0978083248d491a69f27531a800304d0d6f22c72fc47dc68aeea281739b39`
+
+F1(B2a 전편 재독)과 F2(grep 대조)를 수행했습니다. F3 감사와 sol 의미 레인은 다음 단계입니다. 카탈로그 채택은 아닙니다.
+
+DONE migrated=1

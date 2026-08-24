@@ -1,0 +1,9 @@
+T2 마이그레이션을 시작하기 전에 규칙집·골든 샘플·레거시 본문을 순서대로 읽고, 이어서 91app을 Core v2로 옮기겠습니다.91app은 웨이브 7 대상입니다. 규칙집·골든 샘플·레거시 본문을 순서대로 읽고 이관을 시작합니다.규칙집 v7은 확인했습니다. 이제 규격, 제약, 골든 샘플, 91app 레거시를 한꺼번에 읽겠습니다.골든 샘플과 91app 레거시 본문을 읽고, 최근 통과한 이관 형태도 대조하겠습니다.91app은 prose-derived이고 페르소나가 가상입니다. 최근 통과본의 컴포넌트·C2·B2a 처리와 Core 검사 요구를 대조합니다.본문 초안을 작성합니다. YAML `prose-derived`와 푸터 live DOM은 합치지 않고, 가상 페르소나와 무출처 호버 값은 올리지 않습니다.F1 재독에서 한정 없는 해석 문장을 몇 개 찾았습니다. Spacing·Motion·Type roles·YAML padding 인접에 B2a를 붙입니다.F2 대조가 끝난 뒤 migration-log를 쓰고, 이어서 Core·게이트를 돌리겠습니다.게이트가 `8px`·`24px`·`32px` 발명을 잡았습니다. 세 파일에서 출처를 찾아 제거합니다.`web/references/91app/DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/91app/{DESIGN.md,provenance.md,migration-log.md}`입니다. 규칙집 **v7**.
+
+유지한 값: navy `#061C3D` / coral `#E85040` / 강조 `#CB200E` / 뉴트럴 `#F7F6FB` / 캔버스 `#FFFFFF`, Noto Sans TC, 버튼 3개(`Type: button`) + 히어로(`Type: card`), YAML spacing `8 / 16 / 24 / 32`(px 접미사 없음). YAML `error`는 강조 텍스트이지 폼 에러가 아닙니다.
+
+생략·분리: §13 가상 페르소나(sidecar 없음), Primary/Coral/Neutral의 loading·error·success(C2), Hero Heading kind/map(C4), §9 도구 프롬프트, 무출처 커브(원본에 없음). §14 본문은 보존했습니다. hover 값을 어둡게/밝게 만들라는 원문 안내는 토큰으로 올리지 않았습니다.
+
+검증: `--gate-only` PASS, `portable_core: true`, SHA-256 `7dbd3fcfa22c30dccc53f1f59525e08440b2a1ed57772300482b103a248a0aaa`. F1·F2 수행. F3 감사와 sol 의미 레인은 다음 단계입니다. 카탈로그 채택이 아닙니다.
+
+DONE migrated=1

@@ -1,0 +1,12 @@
+T2 Kakao 마이그레이션을 시작합니다. 지정된 규격·규칙집·골든 샘플부터 순서대로 읽고, 이어서 legacy `kakao/DESIGN.md`를 Core v2로 옮기겠습니다.이어서 T1-2/T1-3 제약과 골든 샘플, Kakao 원본을 읽습니다.Kakao 원본과 승인된 musinsa 골든 샘플, 그리고 이미 통과한 이관본 형태를 대조합니다.통과한 이관본과 게이트 스크립트를 읽어, Kakao에 적용할 형태와 상태 판정 기준을 맞춥니다.원본 토큰·상태·표면 경계를 유지한 채 Core v2 세 산출물을 작성합니다.게이트는 통과했지만 Portable Core가 placeholder로 막혔습니다. 검출 규칙을 찾아 해당 문구를 고칩니다.Kakao legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/kakao/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v5**.
+
+검증: `inspectDesignMd` `portable_core: true`, placeholders 0. `migrate-reference.mjs --brand kakao --gate-only` **PASS**. 토큰 손실/발명 0. 카탈로그 채택은 아닙니다.
+
+유지한 경계:
+- Login `#fee500` / marketing `#fae100` 분리, Login foreground `rgba(0, 0, 0, 0.85)`를 YAML `login-label` `#000000`과 합치지 않음
+- `Type: button` ×5 + `Type: badge` 컴포넌트별 보존, Dark Marketing Tag는 kind/map 생략
+- §14 5행 본문 보존, `not captured`를 `not-applicable` 사유로 쓰지 않음, loading/error/success는 역할로 판정
+- §13 공식 이해관계자는 Audience, 캡처된 표면에서 확인된 과업만 Primary tasks (`count=3`)
+- 무출처 커브 없음, B3 다섯 증거 종류 + 컴포넌트별 computed 관측 게이트를 Foundations에 유지
+
+DONE migrated=1

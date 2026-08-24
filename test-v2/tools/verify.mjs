@@ -24,6 +24,7 @@
  * the distribution to compare arms against.
  */
 
+import { createHash } from "node:crypto";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -140,8 +141,9 @@ const hexToRgb = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16)
 const brand = arg("brand");
 const generatedPath = arg("generated");
 const baselineMode = process.argv.includes("--baseline");
-if (!brand || (!generatedPath && !baselineMode)) {
-  console.error("usage: verify.mjs --brand <id> (--generated <image> | --baseline) [--out <verify.json>]");
+const blockMode = process.argv.includes("--block");
+if (!brand || (!generatedPath && !baselineMode && !blockMode)) {
+  console.error("usage: verify.mjs --brand <id> (--generated <image> | --baseline | --block) [--surface <id>] [--out <verify.json>]");
   process.exit(1);
 }
 
@@ -151,8 +153,20 @@ if (!existsSync(evidencePath)) {
   process.exit(1);
 }
 const evidence = JSON.parse(readFileSync(evidencePath, "utf8"));
-const aggregate = evidence.imagery?.aggregate ?? {};
-const samples = evidence.imagery?.samples ?? [];
+
+// A capture now covers several viewports and they are not interchangeable:
+// Naver measures zero large images on desktop and ten on the phone. Scoring a
+// phone-briefed image against the desktop aggregate would compare it to
+// nothing. The surface is therefore named, never inferred.
+const surfaceId = arg("surface") ?? "desktop-1440";
+const surface = evidence.surfaces?.[surfaceId]
+  ?? (surfaceId === "desktop-1440" ? { imagery: evidence.imagery } : null);
+if (!surface) {
+  console.error(`no surface ${surfaceId} in ${brand}'s capture (have: ${Object.keys(evidence.surfaces ?? {}).join(", ") || "none"})`);
+  process.exit(1);
+}
+const aggregate = surface.imagery?.aggregate ?? {};
+const samples = surface.imagery?.samples ?? [];
 
 // The palette reference is the largest sample — which, given samples are sorted
 // by area share, is the frame the codebook calls H1. Named here because the
@@ -209,6 +223,7 @@ const numericScore = eligible.length
 
 return {
   brand,
+  surface: surfaceId,
   generated: imagePath,
   evidenceCapturedAt: evidence.capturedAt,
   paletteSource: paletteSource?.file ?? null,
@@ -222,6 +237,43 @@ return {
     ? "fields are same-day snapshot adherence, not brand invariants"
     : "fewer than two eligible numeric fields — replace this block before running",
 };
+}
+
+/**
+ * The block an arm is allowed to cite: the resolved source numbers for one
+ * (brand, surface), and an id over exactly those numbers. The id is what the
+ * brief carries, so a run can be checked afterwards against the values it was
+ * actually given rather than against whatever the file says today.
+ */
+function sourceBlock() {
+  const entries = {
+    aspect: aggregate.aspects ?? null,
+    meanLuma: aggregate.meanLuma ?? null,
+    dynamicRange: aggregate.dynamicRange ?? null,
+    subjectCenterX: aggregate.subjectCenterX ?? null,
+    subjectCenterY: aggregate.subjectCenterY ?? null,
+    paletteSource: paletteSource?.file ?? null,
+    paletteBins: paletteSource?.palette ?? null,
+  };
+  const resolved = Object.entries(entries).filter(([, v]) => v !== null && v !== undefined);
+  const canonical = JSON.stringify(Object.fromEntries(resolved.sort(([a], [b]) => a.localeCompare(b))));
+  return {
+    brand,
+    surface: surfaceId,
+    capturedAt: evidence.capturedAt,
+    fields: Object.fromEntries(resolved),
+    omitted: Object.entries(entries).filter(([, v]) => v === null || v === undefined).map(([k]) => k),
+    // Numeric fields only — the palette is scored by its own procedure and the
+    // two-field floor in §4.2 counts numeric adherence fields.
+    numericFieldCount: ["aspect", "meanLuma", "dynamicRange", "subjectCenterX"].filter((k) => entries[k] != null).length,
+    blockId: `sha256:${createHash("sha256").update(canonical).digest("hex").slice(0, 32)}`,
+  };
+}
+
+if (blockMode) {
+  const block = sourceBlock();
+  console.log(JSON.stringify(block, null, 1));
+  process.exit(block.numericFieldCount >= 2 ? 0 : 2);
 }
 
 if (baselineMode) {

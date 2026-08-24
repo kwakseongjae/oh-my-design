@@ -1,7 +1,0 @@
-# Radiotherapy plan export holdout — 1.9.455
-
-This fresh repair task transfers accessible compound fit into a radiotherapy plan export workflow. Five supplied treatment-plan identifiers retain seven exact DICOM evidence-bundle assignments; a separate three-window QA strip and a separate export decision remain visible. Its identifiers, facts, state vocabulary, interaction copy, evidence boundary, palette, typography, counts, and selectors are unseen by the exact 1.9.453 source.
-
-The untouched baseline is 75/85 and unresolved. Task facts, controls, form states, DESIGN.md grounding, evidence honesty, desktop geometry, target sizing, and keyboard traversal are green. Intended defects are 390px, 320px, and actual 200% overflow; character-range fragmentation of the compound plan/DICOM target; the two-line `Physics review pending` state; and serious muted-text contrast at 4.12:1 on the canvas. No protected text is initially a scroll container, so the candidate must improve fit without creating a new accessibility defect.
-
-The task is immutable for the next experiment. No provider has seen it. The comparison must use a fresh matrix root, exact historical control and exact 1.9.453 candidate source, runtime-bound model identity, immutable 390/1×, 320/1×, and 640/2× measurement conditions, one task-wide static closure, a helper-owned terminal browser marker, and the passive-text scroll prohibition.

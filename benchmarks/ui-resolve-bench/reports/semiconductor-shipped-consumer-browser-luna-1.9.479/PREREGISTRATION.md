@@ -1,7 +1,0 @@
-# Semiconductor shipped consumer-browser transfer — 1.9.479
-
-This provider-zero plan tests whether the exact 1.9.476 shipped consumer-browser runner transfers to the unseen semiconductor wafer-disposition task locked in 1.9.478. The exact 1.9.474 attribute-aware verifier source is the control; the exact 1.9.476 source, which adds the distributed model-independent browser runner and its invocation contract, is the candidate.
-
-Luna/high, Codex CLI 0.144.1, 900-second timeout, one-cell concurrency, 120-second pacing, task prompt, product starter, named consumer browser, isolated execution home, objective evaluator, and runtime-bound model identity are shared. The sole arm delta is the exact installed skill source. Both arms must attach to the same named existing consumer CDP session without launching a browser; the candidate must use its shipped runner and may not author replacement browser-measurement code.
-
-Attempt 29 starts from Tokens-to-Target 47,697,272 plus six usage-unavailable cells. This task has zero prior provider exposure. Promotion requires candidate UI-Resolved 3/3, proof compliance 3/3, shipped-runner execution 3/3, exact named consumer attachment, no typography shrink, at least 8 CSS px fit reserve, no document/body overflow, no paired objective losses, no serious/critical contrast, and mean wall-time and provider-token ratios no greater than 1.1. No retry is permitted; a mathematically impossible 3/3 stops remaining cells.

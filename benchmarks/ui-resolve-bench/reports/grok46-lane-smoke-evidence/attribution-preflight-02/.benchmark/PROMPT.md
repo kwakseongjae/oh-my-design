@@ -1,1 +1,0 @@
-Reply with exactly: PREFLIGHT-STREAMING-OK

@@ -1,9 +1,0 @@
-{
-  "schema_version":"0.1","product_version":"1.9.559","experiment_id":"spent-fuel-decision-target-luna-1.9.558","status":"SIX_CELLS_PREPARED","provider_calls":0,
-  "output_root":"/private/tmp/u19558","vendors_root":"/private/tmp/u19558-vendors","locked_plan_sha256":"cb7f831e707e8ba1100f50472bfa82efbd7cafb280000a33e70fd6ff00ecce0c",
-  "equality":{"scheduled_cells":6,"prepared_cells":6,"core_prompt_equal":6,"prompt_equal":6,"starter_equal":6,"product_tree_equal":6,"runtime_equal":6,"model_equal":6,"effort_equal":6,"timeout_equal":6},
-  "source_attestation":{"control":{"commit":"84329948762fc75b33de39e13e68535d89fd3447","detached":true,"clean":true},"candidate":{"commit":"6142925c153dbf9e8c17f7f456279c86c539c8e8","detached":true,"clean":true}},
-  "installed_source_sha256":{"control_skill":"a6f1eb1effb5bf907b8992c0cba8d1754ee0abd9d71281fb10fcb4c1cf3b6808","candidate_skill":"21740887a2dd2e851e286d6cc85e9dea12f95edddb0ea454a462733f484dfe41","control_browser_runner":"4649a04a84f616a7943a31e9d7d14117b534c60a1810d950987f6632d676ce94","candidate_browser_runner":"4649a04a84f616a7943a31e9d7d14117b534c60a1810d950987f6632d676ce94","control_artifact_helper":"334aad58c3cd3ed448d9162ba059ad9e4876eda4a0e15ad89b0ea343641b8c5d","candidate_artifact_helper":"1a3976a4bcef3ed448d9162ba059ad9e4876eda4a0e15ad89b0ea343641b8c5d"},
-  "candidate_guardrail_presence":{"snapshot_target_presence_witness":true,"exact_one_target_row":true,"target_hook_cardinality_match":true,"stable_target_selector_anchor":true,"distinct_target_carrier":true,"target_only_binding":true,"fit_strategy_feasibility_retained":true,"structured_first_edit_checklist_retained":true,"browser_runner_identical":true},
-  "next":"Run runtime browser, CLI, and auth preflight, then execute luna-spent-fuel-r1-control once with Luna/high and no retry."
-}

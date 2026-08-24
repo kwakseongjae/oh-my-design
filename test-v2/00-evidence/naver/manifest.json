@@ -1,7 +1,7 @@
 {
   "brand": "naver",
-  "captureId": "2026-08-22T11-53-07-061Z",
-  "capturedAt": "2026-08-22T11:53:07.061Z",
+  "captureId": "2026-08-22T19-51-00-372Z",
+  "capturedAt": "2026-08-22T19:51:00.372Z",
   "channel": "playwright",
   "source": {
     "url": "https://www.naver.com/",
@@ -9,10 +9,27 @@
     "title": "NAVER",
     "status": 200
   },
-  "viewport": {
-    "width": 1440,
-    "height": 900
-  },
+  "surfaces": [
+    {
+      "id": "desktop-1440",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "imagerySamples": 0,
+      "durationMs": 3932
+    },
+    {
+      "id": "mobile-390",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "imagerySamples": 10,
+      "durationMs": 12535
+    }
+  ],
+  "surfaceLimit": null,
   "locale": "ko-KR",
   "session": {
     "profile": "fresh automation context",
@@ -20,20 +37,90 @@
   },
   "store": {
     "root": "$OMD_EVIDENCE_STORE",
-    "path": "naver/2026-08-22T11-53-07-061Z"
+    "path": "naver/2026-08-22T19-51-00-372Z"
   },
   "files": [
     {
+      "name": "desktop-1440-viewport.png",
+      "bytes": 928410,
+      "sha256": "c46b1f272b5227cab80b8585ea34957a1bbafc76bf193d29151443528981066f"
+    },
+    {
+      "name": "mobile-390-imagery-01.png",
+      "bytes": 81732,
+      "sha256": "2c017994d79ee272f453e35efa1137bcde149ae619c4ac7431fb737d71faffd0"
+    },
+    {
+      "name": "mobile-390-imagery-02.png",
+      "bytes": 146803,
+      "sha256": "7a5b5b81b21641f28ad585d242457cd7baabad7d952879fbcef5531dd4821d17"
+    },
+    {
+      "name": "mobile-390-imagery-03.png",
+      "bytes": 104536,
+      "sha256": "c044e5c03920a19af0963180500afc781e3101b2096d2c2ce9c3e697f2032221"
+    },
+    {
+      "name": "mobile-390-imagery-04.png",
+      "bytes": 95123,
+      "sha256": "3f2d3672df5666b174ada1ab019c3c47981e52231caa5383cc4b08fb98ddb71b"
+    },
+    {
+      "name": "mobile-390-imagery-05.png",
+      "bytes": 99617,
+      "sha256": "992655eb12c03141aa83b6aecd86e005463b958ac17e17c6362cfe9b673710d9"
+    },
+    {
+      "name": "mobile-390-imagery-06.png",
+      "bytes": 92806,
+      "sha256": "1755cc1e3cdf245b1110052bcd5c3db9f5b7d4c3f59a8a3e7c2a956d1de3d5b5"
+    },
+    {
+      "name": "mobile-390-imagery-07.png",
+      "bytes": 85964,
+      "sha256": "06e8a8bed6bac95ee3bff21ec0397cebf73fdddb00b53e637eb6122e32e8dedf"
+    },
+    {
+      "name": "mobile-390-imagery-08.png",
+      "bytes": 115687,
+      "sha256": "3a2f941a270f6ea4221d6911fcd3ffc2c51b59e25288143be6ec628c658ae718"
+    },
+    {
+      "name": "mobile-390-imagery-09.png",
+      "bytes": 70084,
+      "sha256": "466cb3807e98698a84c5e1e0114b3472915ec51000d9b2b0e66d9483b2c17233"
+    },
+    {
+      "name": "mobile-390-imagery-10.png",
+      "bytes": 105142,
+      "sha256": "6ca0f615118281d18cced13f22d1f42dfe900f4695b8cbc44966cce7c06433d2"
+    },
+    {
+      "name": "mobile-390-imagery-11.png",
+      "bytes": 113616,
+      "sha256": "00ad008a630cfe9acc7cd5c8f8d4d8de7a404c711b793775de3ed521bff59ff0"
+    },
+    {
+      "name": "mobile-390-imagery-12.png",
+      "bytes": 89489,
+      "sha256": "55d0f8ff7a7291184e489eb3e37cef099d082a856f312f4355340646b2f70b01"
+    },
+    {
+      "name": "mobile-390-viewport.png",
+      "bytes": 145663,
+      "sha256": "defa8f74d1f62fa4c81360523fa245cd8d8a2a4ea46279777e4b4c54d18228db"
+    },
+    {
       "name": "viewport-1440.png",
-      "bytes": 933839,
-      "sha256": "273791695d944906ea1e695a2468a109b3bd8f703143e37de74e7fb2486fc313"
+      "bytes": 965687,
+      "sha256": "50dd24344184668b072e3a9f50e6f0699d02bc4b50888b3d0bddcbac02f65195"
     },
     {
       "name": "viewport-390.png",
-      "bytes": 335029,
-      "sha256": "fb34f4c4d2ebab3ebd5531ab3d11d91bf0433f3981cb52cdc4d5dd5ae72f46c2"
+      "bytes": 162794,
+      "sha256": "f21cc83d697075e2665e7f7caf7717c2fab0002affb75e0e209b66efd4610b09"
     }
   ],
-  "evidenceSha256": "4933f93a5b6d9b55cd288515e729a7fedd7038c4bebbf71d5395f2841a453261",
+  "evidenceSha256": "a1ed096831edc87f1c5c9f899f3c280cb381db2856488a4290509cd38abd874a",
   "supersededBy": null
 }

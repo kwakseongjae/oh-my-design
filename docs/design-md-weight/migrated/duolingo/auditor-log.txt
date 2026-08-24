@@ -1,0 +1,15 @@
+B2a·E2 전담 감사 (wave5 sol resubmit, fresh session). 워커 개정 뒤 별도 세션.
+
+웨이브 5 재제출 산출물을 B2a·E2만 다시 대조했다. 워커가 확정한 값·표·applicability·구조는 그대로 두었다.
+
+**B2a.** 편집적 판단인데 인접 완전 한정이 없던 세 문장에 `derived editorial implementation inference` / `not Duolingo-authored or a separately published UI specification`을 붙였다.
+
+- Scope — 레슨 값을 마케팅/Super/설정 프록시로 쓰지 말라는 evidence-domain 문장
+- Foundations Shape — 12px/16px는 local geometry이지 전면 radius가 아니라는 읽기
+- Layout 말미 — 명명된 측정값을 미수록 표면에 일반화하지 말라는 적용 판단
+
+**E2.** 로그·provenance를 grep에 맞췄다. `www.duolingo.com`은 Scope+provenance dual이 아니라 Foundations corroboration·Font evidence까지 간다. rapid-tapping 출처는 §5가 아니라 §8이다. Footer Note 전체를 provenance 분리로 적던 행은 실제 disposition으로 고쳤다. F1의 Scope 잔여=사실 면제와 F2의 준수 동치 주장은 본문보다 강해 철회했다.
+
+목록은 `docs/design-md-weight/migrated/duolingo/audit-log.md`.
+
+AUDIT_DONE fixes=14

@@ -1,0 +1,192 @@
+{
+  "recordedAt": "2026-08-23",
+  "note": "RUBRIC.md는 FREEZE 상태다. 이 파일은 §9 체크리스트의 진행 상태만 별도로 기록하며 루브릭 본문을 수정하지 않는다. 체크 반영 여부는 grok-4.6이 정한다.",
+  "items": [
+    {
+      "n": 1,
+      "item": "grok-4.6 반박과 수정 완료",
+      "state": "DONE",
+      "evidence": "docs/reviews/rubric-2026-08-22-rebuttal-3.md",
+      "closedBy": "이전 세션"
+    },
+    {
+      "n": 2,
+      "item": "세 pack SHA, 모델·버전, 브리프 SHA 기록",
+      "state": "DONE",
+      "evidence": [
+        "90-comparison/pack-sha.json",
+        "90-comparison/run-config.json",
+        "90-comparison/brief.json (briefSha256: sha256:3f17857688dd17185d923556acfa70f3f7e16608cba14e49830f159c1fc649fe)"
+      ],
+      "note": "온도 0과 시드 20260823은 루브릭이 값을 정하지 않아 여기서 골랐다. run-config.json의 chosenHere=true에 그 사실이 적혀 있다."
+    },
+    {
+      "n": 3,
+      "item": "9개 스냅샷 URL·PNG·JSON·manifest SHA 일치",
+      "state": "DONE",
+      "evidence": "node ingest-captures.mjs --verify — manifest SHA == store file SHA, 문제 0"
+    },
+    {
+      "n": 4,
+      "item": "원본 천장 자극과 중성 마스크 좌표 동결",
+      "state": "DONE",
+      "why": "중앙 크롭 마스킹은 폐기되고 선별로 바뀌었으므로 「중성 마스크 좌표」는 존재하지 않는다. 자극 선별은 완료되고 캡처에 핀으로 고정됐다. 다만 §4.3의 동결된 브랜드별 표가 새 실측과 다르다 — 아래 conflicts 참조.",
+      "evidence": "90-comparison/ceiling/manifest.json",
+      "resolvedBy": "grok-4.6 C-CEILING REVISE — 마스크 좌표는 폐기된 접근이고 선별이 캡처 핀으로 동결됐다"
+    },
+    {
+      "n": 5,
+      "item": "9개 화면 코드북 동결",
+      "state": "DONE",
+      "why": "naver·toss 항목이 데스크탑 전용 관측에 기대고 있다 — 아래 conflicts 참조.",
+      "resolvedBy": "grok-4.6 C-NAVER-H1 REVISE / C-TOSS-H1 REJECT — 코드북은 유지, naver 인용만 정정"
+    },
+    {
+      "n": 6,
+      "item": "평가자 3종 채점 프롬프트·모델 버전·온도·시드 봉인, 파일럿 교정",
+      "state": "PARTIAL",
+      "done": [
+        "모델·버전·온도·시드 = run-config.json",
+        "채점 프롬프트 = 90-comparison/scoring-prompts.md (네 축 + 사후 추측 + 응답 스키마, 앵커는 루브릭에서 그대로 전사)"
+      ],
+      "open": [
+        "파일럿 교정 — T3-3은 봉인 커밋 뒤에 연다 (grok-4.6 CONFIRM 2026-08-23)"
+      ]
+    },
+    {
+      "n": 7,
+      "item": "전사 절차·전사 담당자·문장 대응표 봉인",
+      "state": "DONE",
+      "why": "사용자가 전사자를 opus5로 지정. grok-4.6 재심 = ACCEPT_WITH_CONDITIONS. 검증기 5항 CONFIRM (2026-08-23-verifier-confirm).",
+      "done": [
+        "사용자 지정 ID = opus5",
+        "재심 정본 docs/reviews/rubric-2026-08-23-c-transcriber-resubmit.md"
+      ],
+      "open": [],
+      "evidence": [
+        "TRANSCRIPTION.md §5 (전사자·격리·WAIVED·리포트 문장)",
+        "transcribe-verify.mjs sha256:73d13200a2903e68c63596caea33cbd53e35de1a1956e0f9da926c86c005cd41 (자체 테스트 7/7)",
+        "run-config.json transcriber 블록",
+        "docs/reviews/rubric-2026-08-23-verifier-confirm.md"
+      ],
+      "resolvedBy": "사용자 지정 opus5 + grok-4.6 ACCEPT_WITH_CONDITIONS (5조건 전부 반영)"
+    },
+    {
+      "n": 8,
+      "item": "레인별 독립 채점 세션, 교차 레인 순서와 난수 표시 순서 동결",
+      "state": "DONE",
+      "evidence": "90-comparison/scoring-order.json — 6세션(평가자 3 × 레인 2), 세션당 36 run, 레인 순서 A→B/B→A/A→B 교차, 표시 순서는 생성 순서와 다른 salt"
+    },
+    {
+      "n": 9,
+      "item": "arm 순서표와 반복별 Grok 변형 위치(v1→v4)",
+      "state": "DONE",
+      "evidence": "90-comparison/arm-order.json — 72행(레인 2 × 브랜드 9 × 반복 4), grokVariant 1–4, 순열 6종"
+    },
+    {
+      "n": 10,
+      "item": "verify.json 구현이 §4.2 식과 결측 규칙을 재현",
+      "state": "DONE",
+      "evidence": "node verify-conformance.mjs — 18/18 pass (팔레트 5-bit·상위 6 bin·coverage 4자리, 필드별 허용오차, clamp, 결측 비대체, 2필드 하한, 산술평균, D65/sRGB, coverage 가중·일대일 비강제)"
+    },
+    {
+      "n": 11,
+      "item": "레인 A/B 출력 디렉터리와 리포트 분리",
+      "state": "DONE",
+      "evidence": "node lanes.mjs --check — 218파일 검사, 문제 0. 03-runs/lane-a·lane-b 트리 216슬롯, 두 레인을 함께 언급하는 리포트는 게이트가 거부한다."
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "C-NAVER-H1",
+      "where": "RUBRIC.md §4.1 naver",
+      "frozen": "H1 없음. 큰 이미지 0장이 실측값이다 (naver/evidence.json imagery.sampled = 0). 대표 이미지 부재가 이 화면의 사실이므로 H1 관련 결함은 이 브랜드에 적용하지 않는다.",
+      "measuredNow": "desktop-1440 0장, mobile-390 10장. 데스크탑에서 미디어 83개 중 크기 하한을 넘는 게 없다는 건 맞지만, 폰 레이아웃에는 대형 이미지가 10장 있다.",
+      "whyItChanged": "동결 당시 측정은 데스크탑 전용이었다. 두 서피스 측정은 이번에 처음 들어갔다.",
+      "impact": "§4.1은 두 viewport에 결함을 표시하라고 하면서 naver의 H1을 전면 면제한다. 모바일 viewport에서는 그 면제의 근거가 없다.",
+      "decidesWho": "grok-4.6",
+      "verdict": "REVISE",
+      "decidedAt": "2026-08-23",
+      "evidence": "docs/reviews/rubric-2026-08-23-capture-conflicts.md",
+      "by": "grok-4.6",
+      "at": "2026-08-23",
+      "ruling": "H1 면제 유지. 모바일 10장은 전부 docY ≥ 1512로 폴드 아래이므로 첫 렌더 H1이 아니다. 인용만 고친다: 데스크탑 수집기 0 / 모바일 문서 10(폴드 아래) / 두 첫 캡처 H1 없음.",
+      "verifiedHere": "naver/mobile-390 최소 docY 1512, 폴드 844 → 폴드 안 0장",
+      "applied": "수집기가 표본마다 aboveFold를 기록한다. 문서 표본 수를 첫 렌더 답으로 읽은 것이 이 충돌의 원인이었다."
+    },
+    {
+      "id": "C-TOSS-H1",
+      "where": "RUBRIC.md §4.1 toss",
+      "frozen": "이 브랜드의 대표 매체는 정지 이미지가 아니라 영상이다 (toss/evidence.json video:1 canvas:1).",
+      "measuredNow": "desktop-1440 2장 + 영상, mobile-390 12장. 데스크탑에서는 여전히 영상이 지배적이지만 폰에서는 정지 이미지 12장이 나온다.",
+      "whyItChanged": "위와 같다.",
+      "impact": "H1의 매체 정의가 viewport에 따라 달라진다.",
+      "decidesWho": "grok-4.6",
+      "verdict": "REJECT",
+      "decidedAt": "2026-08-23",
+      "evidence": "docs/reviews/rubric-2026-08-23-capture-conflicts.md",
+      "by": "grok-4.6",
+      "at": "2026-08-23",
+      "ruling": "동결 본문 유지. 대표 매체는 양쪽 첫 캡처 모두 영상이다. mobile-390 12장은 문서 풀이지 첫 렌더 매체가 아니다.",
+      "verifiedHere": "toss 두 서피스 모두 motion.present=true, 폴드 안 표본은 히어로 자신(docY -84 / -17) 1장뿐",
+      "applied": "변경 없음"
+    },
+    {
+      "id": "C-CEILING",
+      "where": "RUBRIC.md §4.3 브랜드별 적격 자극 표",
+      "frozen": "원본 천장은 9개 중 2개 브랜드에서만 측정된다. karrot 4 ✅ / musinsa 8 ✅ / figma 2 ❌ / toss 1 ❌ / wanted 1 ❌ / apple 0 ❌",
+      "measuredNow": "figma 4 ✅ / karrot 11 ✅ / musinsa 16 ✅ / naver 7 ✅ / toss 8 ✅ / apple 0 / baemin 0 / coupang 0 / wanted 0 — 9개 중 5개",
+      "whyItChanged": "두 서피스 표본이 들어오면서 자극 풀이 커졌고(naver·toss는 모바일에서만 나온다), 전 표본을 400px 콘택트 시트로 다시 검토했다. wanted는 반대 방향으로 바뀌었다 — 「합격보상금 100만원」 캠페인 오버레이가 12장 전부에 실려 1장도 안 남는다.",
+      "impact": "천장이 없는 브랜드에서는 arm의 식별력 점수를 해석할 수 없다는 §4.3의 전제가 5개 브랜드로 넓어진다. 표 자체가 채점 입력이다.",
+      "decidesWho": "grok-4.6",
+      "verdict": "REVISE",
+      "decidedAt": "2026-08-23",
+      "evidence": "docs/reviews/rubric-2026-08-23-capture-conflicts.md",
+      "by": "grok-4.6",
+      "at": "2026-08-23",
+      "ruling": "「9개 중 2개」 표는 버린다. 선별 규칙·자극 4개·C_b 식은 유지. 두 서피스 풀에 같은 규칙 재적용 후 ≥4만 ✅. 토스 8은 그대로 받지 않는다 — m3·m5·m7은 자기 제품 UI. 적격 풀이 4를 넘으면 식별 결과를 보지 않은 채 build 앞 4개만 C_b에 쓴다. 「브랜드 성질」 문구는 apple·baemin·coupang·wanted에만.",
+      "applied": "토스 8→5, C_b는 앞 4개로 상한, shortfallIsBrandProperty를 네 브랜드로 제한. 결과: figma 4 / karrot 11 / musinsa 16 / naver 7 / toss 5 → 9개 중 5개 측정 가능."
+    },
+    {
+      "id": "C-TRANSCRIBER",
+      "where": "TRANSCRIPTION.md §5",
+      "frozen": "전사 담당 유형은 사람으로 고정한다. 모델 전사는 사용하지 않는다. 바꾸려면 평가자 세 계열과 독립인 전사 모델을 먼저 봉인해야 한다.",
+      "situation": "사용자 결정은 「사람 검수 없음」에 이어 전사자를 opus5로 지정했다. 평가자 sonnet5와 같은 anthropic 계열이다. 세션·메모리는 공유하지 않는다.",
+      "options": [
+        "평가자를 2종으로 줄이고 남는 계열을 전사에 쓴다 — §3의 3평가자 설계 변경",
+        "같은 계열 모델을 세션·메모리 격리 조건으로 쓰고 독립성 약화를 리포트 한계 절에 명시",
+        "네 번째 계열 모델을 붙인다 (사용자 작업)",
+        "사용자가 전사를 맡는다"
+      ],
+      "decidesWho": "사용자 → grok-4.6 승인",
+      "verdict": "ACCEPT_WITH_CONDITIONS",
+      "decidedAt": "2026-08-23",
+      "resubmittedAt": "2026-08-23",
+      "evidence": "docs/reviews/rubric-2026-08-23-c-transcriber-resubmit.md",
+      "priorEvidence": "docs/reviews/rubric-2026-08-23-capture-conflicts.md",
+      "blockedOptions": [
+        "평가자를 2종으로 줄이고 남는 계열을 전사에 쓴다 — §3의 3평가자 설계 변경",
+        "승인권자가 같은 계열 전사자를 고른다",
+        "sonnet5 전사",
+        "opus5의 채점·파일럿·arm 추측·결과 해석 참여"
+      ],
+      "by": "grok-4.6",
+      "at": "2026-08-23",
+      "ruling": "사용자가 opus5를 지정했고 grok-4.6이 5조건으로 수용했다. 계열 독립 면책, 세션·메모리 격리 유지, 의미 검증자 WAIVED, 기계 검증기 봉인, 리포트 첫 절 문장 고정. 평가자 2종화는 여전히 BLOCK.",
+      "needs": "resubmit 문서의 조건 5항을 파일에 반영",
+      "resolvedAt": "2026-08-23",
+      "record": "docs/reviews/rubric-2026-08-23-c-transcriber-resubmit.md"
+    }
+  ],
+  "ruling": "docs/reviews/rubric-2026-08-23-capture-conflicts.md",
+  "transcriberRuling": "docs/reviews/rubric-2026-08-23-c-transcriber-resubmit.md",
+  "frozenShaWritable": true,
+  "frozenShaBlockers": [],
+  "frozenShaNote": "grok-4.6 CONFIRM (docs/reviews/rubric-2026-08-23-verifier-confirm.md). 값은 이 트리를 봉인하는 커밋 SHA다. 커밋 뒤 RUBRIC.md §9에 기록하고 T3-3을 연다.",
+  "rulings": [
+    "docs/reviews/rubric-2026-08-23-capture-conflicts.md",
+    "docs/reviews/rubric-2026-08-23-c-transcriber-resubmit.md",
+    "docs/reviews/rubric-2026-08-23-verifier-resubmit.md",
+    "docs/reviews/rubric-2026-08-23-verifier-confirm.md"
+  ]
+}

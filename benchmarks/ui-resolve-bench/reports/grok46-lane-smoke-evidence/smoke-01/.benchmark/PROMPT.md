@@ -1,1 +1,0 @@
-Reply with exactly: SMOKE-PASS-1

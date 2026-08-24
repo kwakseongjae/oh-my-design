@@ -1,0 +1,143 @@
+너는 브랜드 에셋 생성 워커다. 아래 브리프의 hardRules를 절대 어기지 마라.
+
+절차:
+1. referenceImages의 파일들을 열어 브랜드의 실제 시각 언어를 파악한다 (view 도구).
+2. measuredFacts와 대조해 샷 리스트를 정한다.
+3. image_gen으로 순서대로 생성한다. 각 생성 직후 결과를 /Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/musinsa/images/NN.jpg (NN=01부터)로 cp한다.
+4. 가장 브랜드다운 이미지 몇 장을 골라 image_to_video로 영상을 만들고 /Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/musinsa/videos/NN.mp4로 cp한다.
+5. /Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/02-generated/musinsa/shots.json을 outputContract.manifestShape 형태로 작성한다. 프롬프트는 실제 사용한 문자열 그대로.
+6. 마지막 줄에 'DONE images=<n> videos=<n>'을 출력한다.
+
+브리프:
+{
+  "brand": "musinsa",
+  "source": {
+    "url": "https://www.musinsa.com/category/001",
+    "finalUrl": "https://www.musinsa.com/category/001/goods?gf=A",
+    "capturedAt": "2026-08-22T19:50:15.466Z"
+  },
+  "task": [
+    "브랜드 musinsa의 공식 표면 캡처와 실측값을 보고, 이 브랜드 스타일의 생성 에셋 세트를 만든다.",
+    "이미지 최대 16장, 영상 최대 3개. 넉넉하게 만들되 상한을 넘기지 않는다.",
+    "샷 리스트는 네가 정한다 — 히어로 후보, 이 브랜드가 실제로 찍는 종류의 사진, 배경/텍스처, 모바일 세로 컷을 섞어라.",
+    "영상은 생성한 이미지 중 가장 브랜드다운 것을 골라 image_to_video로 만든다 (6초, 720p). 텍스트만으로 영상을 만들지 마라."
+  ],
+  "hardRules": [
+    "모든 시각적 결정은 아래 실측값과 참조 이미지에서만 나온다. 실측에 없는 색·구도·분위기를 발명하지 않는다.",
+    "이미지 안에 글자·로고·워드마크를 넣지 않는다. 브랜드명을 프롬프트에 쓰지 않는다 — 브랜드는 색·빛·구도·피사체로만 드러나야 한다.",
+    "실측에 없는 값이 필요하면 그 샷을 포기한다. 추정으로 채우지 않는다.",
+    "각 이미지의 프롬프트에 어떤 실측값을 인용했는지 shots.json에 기록한다."
+  ],
+  "measuredFacts": {
+    "surfaces": {
+      "desktop-1440": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "imagerySampled": 12,
+        "canvas": "#fefdfd",
+        "primaryButton": {
+          "background": null,
+          "radiusPx": 4
+        },
+        "dominantImageryPalette": [
+          {
+            "hex": "#141b24",
+            "coverage": 0.063
+          },
+          {
+            "hex": "#8494ac",
+            "coverage": 0.0629
+          },
+          {
+            "hex": "#fffffe",
+            "coverage": 0.0495
+          },
+          {
+            "hex": "#0d141a",
+            "coverage": 0.044
+          }
+        ],
+        "meanLuma": 0.541,
+        "dynamicRange": 0.748,
+        "typicalAspect": 0.833
+      },
+      "mobile-390": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "imagerySampled": 12,
+        "canvas": "#fefefe",
+        "primaryButton": {
+          "background": null,
+          "radiusPx": 4
+        },
+        "dominantImageryPalette": [
+          {
+            "hex": "#141b24",
+            "coverage": 0.0623
+          },
+          {
+            "hex": "#8494ac",
+            "coverage": 0.0618
+          },
+          {
+            "hex": "#ffffff",
+            "coverage": 0.0528
+          },
+          {
+            "hex": "#0d141a",
+            "coverage": 0.0447
+          }
+        ],
+        "meanLuma": 0.512,
+        "dynamicRange": 0.714,
+        "typicalAspect": 0.833
+      }
+    }
+  },
+  "referenceImages": [
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/musinsa/capture/desktop-1440-viewport.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/musinsa/capture/mobile-390-viewport.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/musinsa/capture/desktop-1440-imagery-01.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/musinsa/capture/desktop-1440-imagery-02.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/musinsa/capture/desktop-1440-imagery-03.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/musinsa/capture/desktop-1440-imagery-04.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/musinsa/capture/desktop-1440-imagery-05.png",
+    "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/00-evidence/musinsa/capture/desktop-1440-imagery-06.png"
+  ],
+  "outputContract": {
+    "imagesDir": "images/",
+    "videosDir": "videos/",
+    "manifest": "shots.json",
+    "manifestShape": {
+      "brand": "string",
+      "shots": [
+        {
+          "file": "images/NN.jpg",
+          "role": "hero|imagery|texture|mobile",
+          "prompt": "실제 사용한 프롬프트",
+          "citedFacts": [
+            "measuredFacts에서 인용한 키"
+          ],
+          "aspect": "16:9|9:16|3:2|1:1"
+        }
+      ],
+      "videos": [
+        {
+          "file": "videos/NN.mp4",
+          "fromImage": "images/NN.jpg",
+          "motivation": "왜 이 이미지를 움직였나",
+          "durationSec": 6
+        }
+      ]
+    }
+  },
+  "existing": {
+    "images": 4,
+    "videos": 1,
+    "rule": "images/05.jpg부터 이어서 번호를 매기고, 기존 파일을 덮어쓰지 마라. shots.json은 기존 항목을 보존하고 새 항목을 추가한다."
+  }
+}

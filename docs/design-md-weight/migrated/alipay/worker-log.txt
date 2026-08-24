@@ -1,0 +1,21 @@
+Alipay T2 마이그레이션을 시작하겠습니다. 먼저 규칙집·골든 샘플·레거시 원문을 순서대로 읽고, 그다음 Core v2로 옮기겠습니다.필수 스펙·골든 샘플·레거시 Alipay 원문과 기존 이관 산출물을 함께 읽겠습니다.골든 샘플 형태와 레거시 Alipay 원문, 최근 통과 이관본을 대조해 구조를 맞추겠습니다.최근 통과 이관본과 Core 체커·게이트 요구를 확인한 뒤, Alipay 컴포넌트 상태 처리를 맞추겠습니다.형태는 무신사, B2a·C2 처리는 최근 통과본을 기준으로 본문을 작성합니다. 작성 후 F1 재독과 F2 grep을 돌리겠습니다.Core v2 `DESIGN.md`를 무신사 섹션 구조에 맞춰 작성합니다. 해석 문장에는 인접 B2a 한정을 붙입니다.Content의 원본에 없는 storefront 부정 문장을 고치고, Spacing 해석에도 B2a를 붙인 뒤 provenance를 작성합니다.provenance.md를 원장·이중 목적지·derived inventory까지 맞춰 작성합니다.F2 grep으로 확인한 목적지를 바탕으로 `migration-log.md`를 작성합니다.`web/references/alipay/DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 v7, F1 B2a 전편 재독, F2 grep 대조까지 반영했습니다.
+
+산출물:
+- `docs/design-md-weight/migrated/alipay/DESIGN.md`
+- `docs/design-md-weight/migrated/alipay/provenance.md`
+- `docs/design-md-weight/migrated/alipay/migration-log.md`
+
+보존·분리 요지:
+- YAML 비율 `1.5715` / `3.3333` / `2.5`는 본문 22px / 60px / 40px와 합치지 않음
+- primitive type은 컴포넌트별 유지: banner `button`, search `input`, tool-card `card`
+- `#1890FF`는 Open Platform banner action, `#1677FF`는 Ant Design 문서값
+- Search의 collector `focus`(투명 배경, 0px border, no shadow)는 generic Focus로 두고 `focus-visible`로 올리지 않음
+- tool-card는 kind/map 생략(C4); banner/search/nav/footer의 loading·error·success는 역할 매핑이 안 닫혀 필드 생략(C2)
+- Google favicon URL은 provenance만; portable Assets/Named gaps는 URL 없는 first-party-mark 경계
+- `tokens.source: live-extract`, `ds.type: system`은 provenance
+- §13 이해관계자 그룹은 Audience만, sidecar 없음
+- Foundations Motion에 B3 다섯 증거 종류 전문 유지
+
+검증: `--gate-only` PASS / problems `[]`. Core `--require-portable-core` exit 0, `portable_core: true`. DESIGN SHA-256 `a9281e21eb5c6d47188bf28b07fd43d623fa5545adf641af907bc7fe8e7892da`. F3는 이 세션에서 실행하지 않았습니다.
+
+DONE migrated=1

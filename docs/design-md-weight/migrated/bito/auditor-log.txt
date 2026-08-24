@@ -1,0 +1,9 @@
+B2a·E2 감사부터 진행합니다. 규칙서의 해당 조항과 bito 이관 산출물을 읽고, 문장 분류·원장 대조부터 하겠습니다.이전 F3 감사 로그 형식과 bito 산출물 전문을 대조합니다.이전 승인 F3가 표·Avoid·Shape에서 한정을 어디에 붙였는지 확인하고, 원본 DESIGN.md와 대조합니다.이관 로그의 값·줄 번호부터 grep으로 대조하고, 본문에서 한정이 빠지거나 과소한 문장을 집습니다.문장 한정이 비거나 과소한 곳을 고치고, 원장 목적지는 본문 수정 뒤 다시 grep하겠습니다.원장 목적지와 derived 범위를 실제 grep에 맞춥니다.Bito F3 감사는 한정 문장과 원장만 고쳤고, 토큰·표·applicability·구조는 그대로 뒀다.
+
+**B2a.** 편집·인과 문장에 인접 완전 한정을 붙이거나, 이미 있던 한정이 읽기를 빠뜨린 이름을 채웠다. Scope evidence-domain / atmosphere(실재하는 읽기만) / craft-first, Audience, Avoid Don’ts와 마지막 항목, Elevation 표 Use(표 앞), Motion 생략 곡선, Font·Family·Type-rule, Capture 표 성격, Layout·Content voice가 해당한다. B3 다섯 증거 게이트는 관측·정책으로 남겨 한정을 붙이지 않았다.
+
+**E2.** `migration-log`와 `provenance`를 grep에 맞췄다. `#f92c16`은 Principles 61에도 있고 Avoid에는 없다. `https://bito.tv/`는 Primary tasks·Content에도 있다. `滿滿大平台`는 Scope 9이지 23이 아니다. `"the entire image is interactive"`는 246뿐이다. Behance는 Content 449이다. `live-extract`는 provenance-only이다. derived inventory는 본문 실제 한정 부위에 맞췄다.
+
+기록: `docs/design-md-weight/migrated/bito/audit-log.md`. Post-F3 SHA-256 `fa46a892ac43a9a2a45fdbbf41c287397ee65570f617c8a0541c261cf392822f`. `--gate-only` PASS, `portable_core: true`. sol 의미 레인 대기. 카탈로그 채택 아님.
+
+AUDIT_DONE fixes=26

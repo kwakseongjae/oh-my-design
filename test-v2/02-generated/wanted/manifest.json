@@ -1,0 +1,106 @@
+{
+  "brand": "wanted",
+  "storeId": "2026-08-23T06-29-51-832Z",
+  "ingestedAt": "2026-08-23T06:29:51.832Z",
+  "generator": {
+    "channel": "grok-build-cli",
+    "model": "grok-4.6",
+    "tools": [
+      "image_gen",
+      "image_to_video"
+    ]
+  },
+  "brief": "01-prompts/wanted/asset-brief.json",
+  "store": {
+    "root": "$OMD_GENERATED_STORE",
+    "path": "wanted/2026-08-23T06-29-51-832Z"
+  },
+  "files": [
+    {
+      "name": "images/01.jpg",
+      "bytes": 170000,
+      "sha256": "a6906b1339fa9c04338dbb13850e0852645f846a91bd87a4797d94b60c4e0baf"
+    },
+    {
+      "name": "images/02.jpg",
+      "bytes": 194942,
+      "sha256": "7100470a182a712206e8beb7f7aa150652eecf27364307085f708eba6d1cc7b9"
+    },
+    {
+      "name": "images/03.jpg",
+      "bytes": 224034,
+      "sha256": "1803907e3d7a019a6ea85292e25c25c44563c42a5483b36be11285aee5a7148d"
+    },
+    {
+      "name": "images/04.jpg",
+      "bytes": 242625,
+      "sha256": "dbed5f34b2c4d20b9b09fcbfb0895e3c0bd5a78a8a900c2cb7a2e46af7d4e966"
+    },
+    {
+      "name": "images/05.jpg",
+      "bytes": 122411,
+      "sha256": "8c6954fa1476e7a1bac269a78035db79fe0b1592908a42e7482033232fa72500"
+    },
+    {
+      "name": "images/06.jpg",
+      "bytes": 191930,
+      "sha256": "9c524618cfabeb41f34887bcb6d173c95697ffdcad09236236cb3a9d50c3cf72"
+    },
+    {
+      "name": "images/07.jpg",
+      "bytes": 211779,
+      "sha256": "229466f1aac7cd7b9b942abac6f48fe3f026570499023a2774500dac62566ee6"
+    },
+    {
+      "name": "images/08.jpg",
+      "bytes": 388888,
+      "sha256": "5ea90f7a0981d18ac36898846c003a89f6b971833534a814295988f28b5ca839"
+    },
+    {
+      "name": "images/09.jpg",
+      "bytes": 139403,
+      "sha256": "f2011002705826236f3b6a4113934db03134c07df139f1114725897ba916f0a2"
+    },
+    {
+      "name": "images/10.jpg",
+      "bytes": 240124,
+      "sha256": "47c8b0a2ef4a9533cda46b329d64ea4461a55ddd0d914509885c47024e1a6376"
+    },
+    {
+      "name": "images/11.jpg",
+      "bytes": 188877,
+      "sha256": "9e234ebde0dae619d7409879ba2706d355bde70f87ab7b64223df2d673ca6872"
+    },
+    {
+      "name": "images/12.jpg",
+      "bytes": 156864,
+      "sha256": "cd4f5df3660a2153d21d67b1e1c07f7925d49d786d37b0d3633009bf8e5b6151"
+    },
+    {
+      "name": "images/13.jpg",
+      "bytes": 117627,
+      "sha256": "8283b6ea130f1532cd829e827546bccb9109f6eb177f103d3575cd708c8e583b"
+    },
+    {
+      "name": "images/14.jpg",
+      "bytes": 243074,
+      "sha256": "f6236a3ac4555b971870e50a1853120ca0e26b3ad71d7cadf4999db78531b979"
+    },
+    {
+      "name": "videos/01.mp4",
+      "bytes": 382881,
+      "sha256": "1740e93544938be80fb0582fba576d47dcd7d9b714a40f3c7cb9f2f6182c8646"
+    },
+    {
+      "name": "videos/02.mp4",
+      "bytes": 430491,
+      "sha256": "ab5588078a47861aab3d8ac925829f5f5a6e52580d845157bab8990149d118c3"
+    },
+    {
+      "name": "videos/03.mp4",
+      "bytes": 409177,
+      "sha256": "0bc60ffae70de7b5fb345eeddaf7cf0f84f960c5cf66883b4c6a7476fffbfb8f"
+    }
+  ],
+  "shotsSha256": "f1718b83a80119aec935a79eaa84b095d45229fc7a150aca7c6546e5acac034c"
+}

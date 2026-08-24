@@ -1,7 +1,7 @@
 {
   "brand": "baemin",
-  "captureId": "2026-08-22T11-52-50-288Z",
-  "capturedAt": "2026-08-22T11:52:50.288Z",
+  "captureId": "2026-08-22T19-47-32-522Z",
+  "capturedAt": "2026-08-22T19:47:32.522Z",
   "channel": "playwright",
   "source": {
     "url": "https://www.baemin.com/",
@@ -9,10 +9,27 @@
     "title": "배달의민족 - 배달팁 무료 배민클럽",
     "status": 200
   },
-  "viewport": {
-    "width": 1440,
-    "height": 900
-  },
+  "surfaces": [
+    {
+      "id": "desktop-1440",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "imagerySamples": 12,
+      "durationMs": 15945
+    },
+    {
+      "id": "mobile-390",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "imagerySamples": 9,
+      "durationMs": 11276
+    }
+  ],
+  "surfaceLimit": null,
   "locale": "ko-KR",
   "session": {
     "profile": "fresh automation context",
@@ -20,25 +37,140 @@
   },
   "store": {
     "root": "$OMD_EVIDENCE_STORE",
-    "path": "baemin/2026-08-22T11-52-50-288Z"
+    "path": "baemin/2026-08-22T19-47-32-522Z"
   },
   "files": [
     {
+      "name": "desktop-1440-imagery-01.png",
+      "bytes": 92305,
+      "sha256": "f9726c6e0cd8993f729173004a2a34cdce767f0cecd48e356cbe0fc737f9c5fc"
+    },
+    {
+      "name": "desktop-1440-imagery-02.png",
+      "bytes": 48921,
+      "sha256": "f376cefa2989b8e4363b3f93de588bb14203b4283a83644bf383244568dbe78c"
+    },
+    {
+      "name": "desktop-1440-imagery-03.png",
+      "bytes": 40673,
+      "sha256": "dbe47171fb5c8e930e61cb2f84a8787baf40f7f62c2411d78a130ee7605cac5f"
+    },
+    {
+      "name": "desktop-1440-imagery-04.png",
+      "bytes": 60560,
+      "sha256": "53d85fe15ce8e42dad5ebb4edecbcdffa43740139a5b85a6207ef608a45c0ce0"
+    },
+    {
+      "name": "desktop-1440-imagery-05.png",
+      "bytes": 37165,
+      "sha256": "454de6ec0a9452799c55053c174888842e9f6c6f4bce2dff020bcfe39f460eee"
+    },
+    {
+      "name": "desktop-1440-imagery-06.png",
+      "bytes": 35193,
+      "sha256": "100f6a1efa549bc23dfa93df9c37f16438d2336c7396af3ad72feb9dc2684a33"
+    },
+    {
+      "name": "desktop-1440-imagery-07.png",
+      "bytes": 34591,
+      "sha256": "2d535bf2d5169cfdf74f64aacf922d121833ed2621cb405335a587e27ea876d3"
+    },
+    {
+      "name": "desktop-1440-imagery-08.png",
+      "bytes": 49903,
+      "sha256": "b1c063c9387f5025626d6bee74f2c401753ff9bde73427998a368fe8ad535faf"
+    },
+    {
+      "name": "desktop-1440-imagery-09.png",
+      "bytes": 349973,
+      "sha256": "c78cef8e64fbe644dd0ca0ab0afb341d0a300e2e33f728164e36a7a5bce2a1f3"
+    },
+    {
+      "name": "desktop-1440-imagery-10.png",
+      "bytes": 56974,
+      "sha256": "e30aba66fba9e48b9a5972b7d90c5bc014dbcbf0de0f4b71637bd62b65232c26"
+    },
+    {
+      "name": "desktop-1440-imagery-11.png",
+      "bytes": 61712,
+      "sha256": "705df2d7f52dd377eeec2217187ee5e449b0e5a9d05f250631bd7824ed40cacd"
+    },
+    {
+      "name": "desktop-1440-imagery-12.png",
+      "bytes": 76576,
+      "sha256": "c8827a5d5a4d23cbd14a6388d328f4f81c8c07a6f754e22c8e734837e0effdb5"
+    },
+    {
+      "name": "desktop-1440-viewport.png",
+      "bytes": 4737071,
+      "sha256": "8dc7559b175ad846018a91cfc7b49faedfd334835cb05351738f01f25141f917"
+    },
+    {
       "name": "imagery-09.png",
-      "bytes": 552026,
-      "sha256": "468552c1de852e49ce1fc2e87cf4a09e47a53e14cabd92f8eed3a08b6a1c0476"
+      "bytes": 551532,
+      "sha256": "3ece93a1bab35f94f87e5e5e8943fe76a38b8126a0b2828fecc468be44be73d3"
+    },
+    {
+      "name": "mobile-390-imagery-01.png",
+      "bytes": 73624,
+      "sha256": "ee5159143e359135e79a822909dba4b6e89f9e1af0c22ff9333096d42a48687a"
+    },
+    {
+      "name": "mobile-390-imagery-02.png",
+      "bytes": 14745,
+      "sha256": "e57ea323b23e4642a339a534169489a0b934fa916ba5a3f5c898c36313badbf6"
+    },
+    {
+      "name": "mobile-390-imagery-03.png",
+      "bytes": 50469,
+      "sha256": "124a3bf44456d08a608266612c62706a60f2e9d56b4c8cd07bfc90ede7eff8ed"
+    },
+    {
+      "name": "mobile-390-imagery-04.png",
+      "bytes": 62950,
+      "sha256": "fc695dc7c4ec730263ddad36bc8056ff3add1b95a80dc63fc4df73157123554f"
+    },
+    {
+      "name": "mobile-390-imagery-05.png",
+      "bytes": 49994,
+      "sha256": "738ee577e0d48de4ba3e29903c1622648f3c9cc978fcb0d5e944a3e53bf7898f"
+    },
+    {
+      "name": "mobile-390-imagery-06.png",
+      "bytes": 28889,
+      "sha256": "35f8587ea9f07a0d13cffd1405a62c5fcec5b2728cc7d8f5184f28a77fb28b77"
+    },
+    {
+      "name": "mobile-390-imagery-07.png",
+      "bytes": 37823,
+      "sha256": "eac1446b3e738353eb2418ffc24ee0617d0425ef54a790930635a6e0ea802038"
+    },
+    {
+      "name": "mobile-390-imagery-08.png",
+      "bytes": 32160,
+      "sha256": "6318b701cd1b0c7f20f07b772598f2dc89d8b9adaa26aafb42a8341836790546"
+    },
+    {
+      "name": "mobile-390-imagery-09.png",
+      "bytes": 92409,
+      "sha256": "300d4722496db2276190e8522798700454c0aa1c50a2fe06812a42de3f251b8f"
+    },
+    {
+      "name": "mobile-390-viewport.png",
+      "bytes": 89004,
+      "sha256": "3f8d26748b970c42502db8086c9a5ff004605e62df646efa1cf00bce5496aa05"
     },
     {
       "name": "viewport-1440.png",
-      "bytes": 6750554,
-      "sha256": "2d51c941b5581f897d75b32b49e0398762be3c0337e16f4e52079a54a89b775e"
+      "bytes": 6749414,
+      "sha256": "13d1238cc96e5242b2f03d47fc09c043ffc0e13458bb47c20252a64eda64915d"
     },
     {
       "name": "viewport-390.png",
-      "bytes": 1798647,
-      "sha256": "1bf2157b075b986354de403dc1cb8713d4092574e441d27f6b1f9b0c2421d39f"
+      "bytes": 1798705,
+      "sha256": "647ae73b40ba21ee5d262be67bdbad1a83f003e2d388415218be3385679d9d4a"
     }
   ],
-  "evidenceSha256": "43ea5aae81a23f55f1a510c952521efddb60fed5e788c363c8ec23762521099f",
+  "evidenceSha256": "18573d4b279afa33b9768cb7819cff23c5df6c6762a29e9dbea35611521114fb",
   "supersededBy": null
 }

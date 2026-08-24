@@ -1,0 +1,11 @@
+B2a·E2 전담 감사(wave5 full resubmit, 신선 세션). 이관 워커가 아님. reconstruction-boundary 면제 없음.
+
+**B2a.** 인접 완전 한정(`derived editorial implementation inference` / `not Pinterest-authored or a separately published UI specification`)이 없던 인과·편집·적용 판단에 한정을 붙이거나 판단을 제거했다. Scope Gestalt 공식-context/no-promote, Audience 가상 persona, Avoid의 first-party가 아닌 source Don’ts, Semantic color 소비자 unmerged-role, Elevation not-local-field, Font evidence 적용 읽기, Assets Simple Icons, Capture omit/variant, 컴포넌트 A4 판단 삭제, Observed shadow, Layout retained-only, Content copy-library.
+
+**E2.** provenance derived 목록과 primary_color / Gestalt no-promote / shadow Observed 목적지를 본문 grep에 맞췄다. migration-log source-row·F1·F2 준수 과장을 줄이고, 워커 SHA를 재주장하지 않는다.
+
+C2 생략, 2px shadow 비결합, §9 프롬프트 삭제는 되돌리지 않았다. 값·컴포넌트 표·applicability map·구조는 그대로다.
+
+목록은 `docs/design-md-weight/migrated/pinterest/audit-log.md`에 있다.
+
+AUDIT_DONE fixes=24

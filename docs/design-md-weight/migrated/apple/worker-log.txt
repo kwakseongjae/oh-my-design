@@ -1,0 +1,13 @@
+Apple T2 마이그레이션을 시작합니다. 세션 상태를 복원하고, 지정된 규격·규칙집·골든 샘플을 순서대로 읽겠습니다.세션을 복원했습니다. 지정된 규격·규칙집·골든 샘플을 순서대로 읽습니다.골든 샘플과 Apple 원본, 게이트 스크립트를 이어서 읽습니다.Notion 개정본과 게이트 스크립트를 읽어, Apple 컴포넌트 상태 판정 기준을 맞춥니다.원본 토큰·§14 표·역할 기반 상태를 유지한 채 Core v2 산출물을 작성합니다.Portable Core가 `Unresolved` 표 칸을 플레이스홀더로 읽습니다. 해당 칸 문구를 고친 뒤 다시 검사합니다.게이트와 Portable Core가 통과했습니다. 세션 상태 문서를 갱신합니다.Apple 레거시 `DESIGN.md`를 Core v2로 옮겼습니다. 산출은 `docs/design-md-weight/migrated/apple/`이고, 카탈로그 `web/references/apple/`은 그대로입니다.
+
+**검증:** `inspectDesignMd` `portable_core: true`, placeholders 0. `migrate-reference.mjs --brand apple --gate-only` PASS. hex/px 손실 0, 발명 0. 규칙집 **v2**.
+
+**의미 처리 (T1-3 FAIL / 규칙집 v2 기준):**
+- 세 evidence domain만 범위로 둠 — `apple.com` 마케팅, Store 커머스, HIG 문서 사이트 chrome. Liquid Glass는 native 서사로 남기고 웹 토큰으로 올리지 않음.
+- §14 3행을 Components 캡처 기록으로 보존. 미관측을 `not-applicable` 사유로 쓰지 않음.
+- 마케팅 CTA 3개 / gallery tab / HIG index card의 loading·error·success는 **역할**로 `not-applicable` (C2). hover·`focus-visible`은 applicable, 시각값은 생략 (C1·B1). 원본에 `focus-visible` 값 없음.
+- §13 HIG design contexts는 Audience에만 두고 primary-tasks·provenance sidecar로 옮기지 않음 (D2).
+- §9 복붙 프롬프트는 삭제. 수치·`transparent` outline은 이미 Components에 있음 (A3·A4).
+- 무출처 커브 없음. motion 승격 조건(HIG + reduced-motion, 웹 duration/easing은 검증 전 local extension)은 Foundations에 유지 (B3).
+
+DONE migrated=1

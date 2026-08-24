@@ -125,10 +125,20 @@ async function checkBrand(brand) {
   }
 
   const chrome = evidence.chrome ?? {};
+  // Every surface is searched, not only the one mirrored at the top level.
+  // Naver's desktop portal yields no imagery at all and its phone layout
+  // yields twelve; searching desktop alone would report the brand's colour
+  // missing from a capture that plainly contains it.
+  const surfaces = Object.entries(evidence.surfaces ?? { "desktop-1440": { chrome, imagery: evidence.imagery } });
   const captured = {
-    canvas: chrome.pageBackgroundRendered?.resolved === false
-      ? null
-      : chrome.pageBackgroundRendered?.hex ?? chrome.pageBackgroundComputed ?? null,
+    // When the rendered canvas is unresolved the computed value is still an
+    // independent measurement of the same thing, and declining to compare
+    // threw away a check we could have made. Which source was used is
+    // reported, because they can disagree for good reasons.
+    canvas: chrome.pageBackgroundRendered?.resolved
+      ? chrome.pageBackgroundRendered.hex
+      : chrome.pageBackgroundComputed ?? null,
+    canvasSource: chrome.pageBackgroundRendered?.resolved ? "rendered" : "computed",
     primary: chrome.primaryButton?.background ?? chrome.primaryButton?.borderColor ?? null,
     ink: chrome.bodyColor ?? null,
   };
@@ -139,7 +149,7 @@ async function checkBrand(brand) {
   if (catalog.canvas && captured.canvas) {
     const d = labDistance(catalog.canvas, captured.canvas);
     rows.push({
-      field: "canvas", catalog: catalog.canvas, captured: captured.canvas, distance: +d.toFixed(1),
+      field: "canvas", catalog: catalog.canvas, captured: captured.canvas, capturedFrom: captured.canvasSource, distance: +d.toFixed(1),
       verdict: d <= AGREE ? "AGREE" : d >= CONFLICT ? "CONFLICT" : "DRIFT",
     });
   } else {
@@ -150,27 +160,31 @@ async function checkBrand(brand) {
   // field. Everything the capture saw is a candidate site for it.
   const seen = [];
   const push = (hex, where) => { if (hex) seen.push({ hex: hex.toLowerCase(), where }); };
-  push(captured.canvas, "chrome.canvas");
-  push(chrome.pageBackgroundComputed, "chrome.pageBackgroundComputed");
-  push(chrome.bodyColor, "chrome.bodyColor");
-  push(chrome.header?.background ?? chrome.header?.backgroundRendered?.hex, "chrome.header");
-  push(chrome.primaryButton?.background, "chrome.primaryButton.background");
-  push(chrome.primaryButton?.borderColor, "chrome.primaryButton.border");
-  push(chrome.primaryButton?.color, "chrome.primaryButton.label");
-  for (const t of chrome.typeScale ?? []) push(t.color, `typeScale.${t.tag}`);
-  for (const [i, sample] of (evidence.imagery?.samples ?? []).entries()) {
-    for (const bin of sample.palette ?? []) push(bin.hex, `imagery[${i + 1}]`);
+  for (const [id, surface] of surfaces) {
+    const c = surface?.chrome ?? {};
+    push(c.pageBackgroundRendered?.resolved === false ? null : c.pageBackgroundRendered?.hex, `${id}/chrome.canvas`);
+    push(c.pageBackgroundComputed, `${id}/chrome.pageBackgroundComputed`);
+    push(c.bodyColor, `${id}/chrome.bodyColor`);
+    push(c.header?.background ?? c.header?.backgroundRendered?.hex, `${id}/chrome.header`);
+    push(c.primaryButton?.background, `${id}/chrome.primaryButton.background`);
+    push(c.primaryButton?.borderColor, `${id}/chrome.primaryButton.border`);
+    push(c.primaryButton?.color, `${id}/chrome.primaryButton.label`);
+    for (const t of c.typeScale ?? []) push(t.color, `${id}/typeScale.${t.tag}`);
+    for (const [i, sample] of (surface?.imagery?.samples ?? []).entries()) {
+      for (const bin of sample.palette ?? []) push(bin.hex, `${id}/imagery[${i + 1}]`);
+    }
   }
   // The whole frame, not only the sampled crops. Naver has no imagery and no
   // qualifying button, so without this there is almost nothing to search and
   // "brand colour absent" would only be saying the capture was thin.
-  for (const name of ["viewport-1440.png", "viewport-pass-0.png"]) {
+  // Surface-keyed names first; the two older ones stay so a capture taken
+  // before the surfaces split is still searchable.
+  for (const name of ["desktop-1440-viewport.png", "mobile-390-viewport.png", "viewport-1440.png", "viewport-pass-0.png"]) {
     const shot = join(EVIDENCE_ROOT, brand, "capture", name);
     if (!existsSync(shot)) continue;
     try {
-      for (const bin of palette(await toRgb(shot, 200))) push(bin.hex, "viewport");
+      for (const bin of palette(await toRgb(shot, 200))) push(bin.hex, `viewport:${name.replace("-viewport.png", "")}`);
     } catch { /* a missing frame is not a finding */ }
-    break;
   }
 
   if (catalog.primary && seen.length) {
@@ -180,6 +194,7 @@ async function checkBrand(brand) {
       field: "brandColourPresent", catalog: catalog.primary,
       nearest: best.hex, foundIn: best.where, distance: +best.d.toFixed(1),
       searchedSites: seen.length,
+      searchedSurfaces: surfaces.map(([id]) => id),
       // NOT_DOMINANT, not "absent". The search set is built from dominant
       // colour bins and a handful of chrome fields, so a brand colour used only
       // in a logo will not appear — Karrot's orange survives 87 candidate sites

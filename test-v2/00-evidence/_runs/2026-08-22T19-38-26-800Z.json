@@ -1,0 +1,396 @@
+{
+  "startedAt": "2026-08-22T19:38:26.800Z",
+  "targets": 9,
+  "stages": {
+    "conformance": {
+      "passed": 10,
+      "ran": 10,
+      "failed": 0,
+      "seconds": 5.7
+    }
+  },
+  "brands": [
+    {
+      "brand": "apple",
+      "url": "https://www.apple.com/kr/",
+      "capture": {
+        "stage": "capture",
+        "channel": "playwright",
+        "attempts": [
+          {
+            "channel": "playwright",
+            "ok": true,
+            "seconds": 46.1,
+            "error": null
+          }
+        ],
+        "surfaces": {
+          "desktop-1440": {
+            "samples": 8,
+            "suspect": false,
+            "canvas": "#f5f5f7"
+          },
+          "mobile-390": {
+            "samples": 10,
+            "suspect": false,
+            "canvas": "#f5f5f7"
+          }
+        }
+      },
+      "ingest": {
+        "ok": true,
+        "seconds": 0.1
+      },
+      "crossCheck": {
+        "status": "OK",
+        "priority": "none",
+        "rows": [
+          "canvas:AGREE",
+          "brandColourPresent:PRESENT"
+        ]
+      },
+      "seconds": 46.3
+    },
+    {
+      "brand": "baemin",
+      "url": "https://www.baemin.com/",
+      "capture": {
+        "stage": "capture",
+        "channel": "playwright",
+        "attempts": [
+          {
+            "channel": "playwright",
+            "ok": true,
+            "seconds": 47.3,
+            "error": null
+          }
+        ],
+        "surfaces": {
+          "desktop-1440": {
+            "samples": 12,
+            "suspect": false,
+            "canvas": null
+          },
+          "mobile-390": {
+            "samples": 9,
+            "suspect": false,
+            "canvas": "#0cefd3"
+          }
+        }
+      },
+      "ingest": {
+        "ok": true,
+        "seconds": 0.1
+      },
+      "crossCheck": {
+        "status": "OK",
+        "priority": "none",
+        "rows": [
+          "canvas:NOT_COMPARABLE",
+          "brandColourPresent:PRESENT"
+        ]
+      },
+      "seconds": 47.6
+    },
+    {
+      "brand": "coupang",
+      "url": "https://www.coupang.com/",
+      "capture": {
+        "stage": "capture",
+        "channel": "aside",
+        "attempts": [
+          {
+            "channel": "aside",
+            "ok": true,
+            "seconds": 22.2,
+            "error": null
+          }
+        ],
+        "surfaces": {
+          "desktop-1440": {
+            "samples": 5,
+            "suspect": false
+          }
+        }
+      },
+      "ingest": {
+        "ok": true,
+        "seconds": 0.1
+      },
+      "crossCheck": {
+        "status": "OK",
+        "priority": "none",
+        "rows": [
+          "canvas:AGREE",
+          "brandColourPresent:PRESENT"
+        ]
+      },
+      "seconds": 22.5
+    },
+    {
+      "brand": "figma",
+      "url": "https://www.figma.com/",
+      "capture": {
+        "stage": "capture",
+        "channel": "playwright",
+        "attempts": [
+          {
+            "channel": "playwright",
+            "ok": true,
+            "seconds": 47,
+            "error": null
+          }
+        ],
+        "surfaces": {
+          "desktop-1440": {
+            "samples": 9,
+            "suspect": false,
+            "canvas": "#ffffff"
+          },
+          "mobile-390": {
+            "samples": 6,
+            "suspect": false,
+            "canvas": "#ffffff"
+          }
+        }
+      },
+      "ingest": {
+        "ok": true,
+        "seconds": 0.1
+      },
+      "crossCheck": {
+        "status": "OK",
+        "priority": "none",
+        "rows": [
+          "canvas:AGREE",
+          "brandColourPresent:PRESENT"
+        ]
+      },
+      "seconds": 47.2
+    },
+    {
+      "brand": "karrot",
+      "url": "https://www.daangn.com/kr/buy-sell/s/?search=%EB%85%B8%ED%8A%B8%EB%B6%81",
+      "capture": {
+        "stage": "capture",
+        "channel": "playwright",
+        "attempts": [
+          {
+            "channel": "playwright",
+            "ok": true,
+            "seconds": 45.9,
+            "error": null
+          }
+        ],
+        "surfaces": {
+          "desktop-1440": {
+            "samples": 12,
+            "suspect": false,
+            "canvas": "#ffffff"
+          },
+          "mobile-390": {
+            "samples": 12,
+            "suspect": false,
+            "canvas": "#ffffff"
+          }
+        }
+      },
+      "ingest": {
+        "ok": true,
+        "seconds": 0.1
+      },
+      "crossCheck": {
+        "status": "THIN_COVERAGE",
+        "priority": "review coverage — the brand's colour is not among what this capture saw",
+        "rows": [
+          "canvas:AGREE",
+          "brandColourPresent:NOT_DOMINANT"
+        ]
+      },
+      "seconds": 46.1
+    },
+    {
+      "brand": "musinsa",
+      "url": "https://www.musinsa.com/category/001",
+      "capture": {
+        "stage": "capture",
+        "channel": "playwright",
+        "attempts": [
+          {
+            "channel": "playwright",
+            "ok": true,
+            "seconds": 45,
+            "error": null
+          }
+        ],
+        "surfaces": {
+          "desktop-1440": {
+            "samples": 12,
+            "suspect": false,
+            "canvas": "#fefefd"
+          },
+          "mobile-390": {
+            "samples": 12,
+            "suspect": false,
+            "canvas": "#fefefe"
+          }
+        }
+      },
+      "ingest": {
+        "ok": true,
+        "seconds": 0
+      },
+      "crossCheck": {
+        "status": "OK",
+        "priority": "none",
+        "rows": [
+          "canvas:AGREE",
+          "brandColourPresent:PRESENT"
+        ]
+      },
+      "seconds": 45.2
+    },
+    {
+      "brand": "naver",
+      "url": "https://www.naver.com/",
+      "capture": {
+        "stage": "capture",
+        "channel": "playwright",
+        "attempts": [
+          {
+            "channel": "playwright",
+            "ok": true,
+            "seconds": 17.8,
+            "error": null
+          }
+        ],
+        "surfaces": {
+          "desktop-1440": {
+            "samples": 0,
+            "suspect": [
+              "no media element reaches the size floor at this viewport (59 found) — a property of the surface, not a collection failure"
+            ],
+            "canvas": "#fefefe"
+          },
+          "mobile-390": {
+            "samples": 6,
+            "suspect": false,
+            "canvas": "#fefeff"
+          }
+        }
+      },
+      "ingest": {
+        "ok": true,
+        "seconds": 0
+      },
+      "crossCheck": {
+        "status": "OK",
+        "priority": "none",
+        "rows": [
+          "canvas:AGREE",
+          "brandColourPresent:PRESENT"
+        ]
+      },
+      "seconds": 18
+    },
+    {
+      "brand": "toss",
+      "url": "https://toss.im/",
+      "capture": {
+        "stage": "capture",
+        "channel": "playwright",
+        "attempts": [
+          {
+            "channel": "playwright",
+            "ok": true,
+            "seconds": 46.3,
+            "error": null
+          }
+        ],
+        "surfaces": {
+          "desktop-1440": {
+            "samples": 2,
+            "suspect": [
+              "only 2 samples analysed"
+            ],
+            "canvas": "#fdfdfe"
+          },
+          "mobile-390": {
+            "samples": 12,
+            "suspect": false,
+            "canvas": "#fefefe"
+          }
+        }
+      },
+      "ingest": {
+        "ok": true,
+        "seconds": 0.1
+      },
+      "crossCheck": {
+        "status": "THIN_COVERAGE",
+        "priority": "review coverage — the brand's colour is not among what this capture saw",
+        "rows": [
+          "canvas:AGREE",
+          "brandColourPresent:NOT_DOMINANT"
+        ]
+      },
+      "seconds": 46.6
+    },
+    {
+      "brand": "wanted",
+      "url": "https://www.wanted.co.kr/wdlist",
+      "capture": {
+        "stage": "capture",
+        "channel": "playwright",
+        "attempts": [
+          {
+            "channel": "playwright",
+            "ok": true,
+            "seconds": 47.4,
+            "error": null
+          }
+        ],
+        "surfaces": {
+          "desktop-1440": {
+            "samples": 12,
+            "suspect": false,
+            "canvas": "#ffffff"
+          },
+          "mobile-390": {
+            "samples": 12,
+            "suspect": false,
+            "canvas": "#ffffff"
+          }
+        }
+      },
+      "ingest": {
+        "ok": true,
+        "seconds": 0.1
+      },
+      "crossCheck": {
+        "status": "OK",
+        "priority": "none",
+        "rows": [
+          "canvas:AGREE",
+          "brandColourPresent:PRESENT"
+        ]
+      },
+      "seconds": 47.7
+    }
+  ],
+  "endedAt": "2026-08-22T19:44:39.659Z",
+  "summary": {
+    "captured": 9,
+    "failed": 0,
+    "medianSecondsPerBrand": 46.3,
+    "totalMinutes": 6.2,
+    "crossCheck": {
+      "OK": 7,
+      "THIN_COVERAGE": 2
+    },
+    "needsAttention": [
+      "karrot: THIN_COVERAGE",
+      "toss: THIN_COVERAGE"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "brand": "wanted",
-  "capturedAt": "2026-08-22T19:07:47.340Z",
+  "capturedAt": "2026-08-22T19:52:31.934Z",
   "source": {
     "url": "https://www.wanted.co.kr/wdlist",
     "status": 200,
@@ -11,12 +11,1995 @@
     "channel": "playwright",
     "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
     "imagerySamplesRequested": 12,
-    "viewport": {
-      "width": 1440,
-      "height": 900
-    },
     "locale": "ko-KR",
-    "colorScheme": "light"
+    "colorScheme": "light",
+    "surfaces": [
+      "desktop-1440",
+      "mobile-390"
+    ],
+    "totalDurationMs": 46552
+  },
+  "surfaces": {
+    "desktop-1440": {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "chrome": {
+        "pageBackgroundComputed": "#ffffff",
+        "bodyColor": "#171719",
+        "header": {
+          "detectedBy": "geometry",
+          "background": null,
+          "heightPx": 61
+        },
+        "primaryButton": null,
+        "typeScale": [
+          {
+            "tag": "button",
+            "fontPx": 15,
+            "weight": "600",
+            "family": "Pretendard Variable",
+            "lineHeight": "22px",
+            "letterSpacing": "0.144px",
+            "color": "#171719"
+          }
+        ],
+        "notes": {
+          "buttonCandidatesAboveFold": 0,
+          "headerDetectedBy": "geometry"
+        },
+        "pageBackgroundRendered": {
+          "dominantHex": "#ffffff",
+          "coverage": 0.5322,
+          "resolved": true,
+          "hex": "#ffffff",
+          "source": "modal colour of the captured viewport",
+          "agreesWithComputed": "#ffffff"
+        }
+      },
+      "imagery": {
+        "sampled": 12,
+        "funnel": {
+          "found": 64,
+          "sizeOk": 60,
+          "centreInFrame": 60,
+          "srcOk": 38,
+          "cap": 12,
+          "kept": 12,
+          "framed": 12,
+          "cropped": 12,
+          "analysed": 12
+        },
+        "attrition": {
+          "suspect": false,
+          "sizeFilterLoss": 0.063
+        },
+        "samples": [
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F30177%2F50ogifhpl4kh4mva__400_400.png&w=400&q=75",
+            "kind": "img",
+            "tag": "c1",
+            "alt": "교육 운영 매니저(5년이상)(팀장급)",
+            "docBox": {
+              "x": 80,
+              "y": 316,
+              "w": 308,
+              "h": 205.328125
+            },
+            "aspect": 1.5,
+            "areaShare": 0.0488,
+            "intrinsic": {
+              "w": 400,
+              "h": 292
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-01.png",
+            "palette": [
+              {
+                "hex": "#fbe6cc",
+                "coverage": 0.0672,
+                "saturation": 0.187,
+                "luma": 0.912
+              },
+              {
+                "hex": "#fcead3",
+                "coverage": 0.0496,
+                "saturation": 0.163,
+                "luma": 0.926
+              },
+              {
+                "hex": "#fbebdb",
+                "coverage": 0.026,
+                "saturation": 0.127,
+                "luma": 0.93
+              },
+              {
+                "hex": "#fde9cd",
+                "coverage": 0.0244,
+                "saturation": 0.19,
+                "luma": 0.922
+              },
+              {
+                "hex": "#fde4c4",
+                "coverage": 0.0242,
+                "saturation": 0.225,
+                "luma": 0.906
+              },
+              {
+                "hex": "#fddbab",
+                "coverage": 0.0152,
+                "saturation": 0.324,
+                "luma": 0.874
+              }
+            ],
+            "light": {
+              "meanLuma": 0.759,
+              "p05": 0.509,
+              "p50": 0.788,
+              "p95": 0.929,
+              "dynamicRange": 0.42,
+              "gradient": {
+                "dx": -0.106,
+                "dy": -0.006
+              },
+              "luminanceGradient": "brighter left"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 74.5
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F1698%2Fudvwzhtwjsf68uwu__400_400.jpg&w=400&q=75",
+            "kind": "img",
+            "tag": "c2",
+            "alt": "[클룹(CLOOP)] 콘텐츠 마케터 (PD)",
+            "docBox": {
+              "x": 404,
+              "y": 316,
+              "w": 308,
+              "h": 205.328125
+            },
+            "aspect": 1.5,
+            "areaShare": 0.0488,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-02.png",
+            "palette": [
+              {
+                "hex": "#aa232e",
+                "coverage": 0.1236,
+                "saturation": 0.794,
+                "luma": 0.253
+              },
+              {
+                "hex": "#a5232e",
+                "coverage": 0.0602,
+                "saturation": 0.788,
+                "luma": 0.249
+              },
+              {
+                "hex": "#9c222b",
+                "coverage": 0.0225,
+                "saturation": 0.782,
+                "luma": 0.238
+              },
+              {
+                "hex": "#fefefd",
+                "coverage": 0.0193,
+                "saturation": 0.004,
+                "luma": 0.996
+              },
+              {
+                "hex": "#7b1a22",
+                "coverage": 0.0182,
+                "saturation": 0.789,
+                "luma": 0.185
+              },
+              {
+                "hex": "#aa2331",
+                "coverage": 0.0158,
+                "saturation": 0.794,
+                "luma": 0.254
+              }
+            ],
+            "light": {
+              "meanLuma": 0.377,
+              "p05": 0.169,
+              "p50": 0.262,
+              "p95": 0.736,
+              "dynamicRange": 0.567,
+              "gradient": {
+                "dx": -0.027,
+                "dy": 0.006
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 77.4
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F53483%2Fzeylkl8whm4upfvy__400_400.png&w=400&q=75",
+            "kind": "img",
+            "tag": "c3",
+            "alt": "퍼포먼스 마케팅 AE",
+            "docBox": {
+              "x": 728,
+              "y": 316,
+              "w": 308,
+              "h": 205.328125
+            },
+            "aspect": 1.5,
+            "areaShare": 0.0488,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-03.png",
+            "palette": [
+              {
+                "hex": "#0b1919",
+                "coverage": 0.1915,
+                "saturation": 0.56,
+                "luma": 0.086
+              },
+              {
+                "hex": "#0a171a",
+                "coverage": 0.078,
+                "saturation": 0.615,
+                "luma": 0.08
+              },
+              {
+                "hex": "#0a1515",
+                "coverage": 0.0757,
+                "saturation": 0.524,
+                "luma": 0.073
+              },
+              {
+                "hex": "#121d1b",
+                "coverage": 0.0387,
+                "saturation": 0.379,
+                "luma": 0.104
+              },
+              {
+                "hex": "#1a2523",
+                "coverage": 0.031,
+                "saturation": 0.297,
+                "luma": 0.135
+              },
+              {
+                "hex": "#232c23",
+                "coverage": 0.0307,
+                "saturation": 0.205,
+                "luma": 0.162
+              }
+            ],
+            "light": {
+              "meanLuma": 0.189,
+              "p05": 0.073,
+              "p50": 0.128,
+              "p95": 0.524,
+              "dynamicRange": 0.451,
+              "gradient": {
+                "dx": -0.078,
+                "dy": -0.041
+              },
+              "luminanceGradient": "brighter left"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 77
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F15034%2Fsi7p3rly7h6eaxn8__400_400.jpg&w=400&q=75",
+            "kind": "img",
+            "tag": "c4",
+            "alt": "유니티 개발자",
+            "docBox": {
+              "x": 1052,
+              "y": 316,
+              "w": 308,
+              "h": 205.328125
+            },
+            "aspect": 1.5,
+            "areaShare": 0.0488,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-04.png",
+            "palette": [
+              {
+                "hex": "#131313",
+                "coverage": 0.4146,
+                "saturation": 0,
+                "luma": 0.075
+              },
+              {
+                "hex": "#000000",
+                "coverage": 0.2504,
+                "saturation": 0,
+                "luma": 0
+              },
+              {
+                "hex": "#0d0d0d",
+                "coverage": 0.0774,
+                "saturation": 0,
+                "luma": 0.051
+              },
+              {
+                "hex": "#fefefe",
+                "coverage": 0.0179,
+                "saturation": 0,
+                "luma": 0.996
+              },
+              {
+                "hex": "#5d5d5d",
+                "coverage": 0.0089,
+                "saturation": 0,
+                "luma": 0.365
+              },
+              {
+                "hex": "#13130d",
+                "coverage": 0.0061,
+                "saturation": 0.316,
+                "luma": 0.073
+              }
+            ],
+            "light": {
+              "meanLuma": 0.148,
+              "p05": 0,
+              "p50": 0.078,
+              "p95": 0.703,
+              "dynamicRange": 0.703,
+              "gradient": {
+                "dx": -0.001,
+                "dy": -0.009
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 86.7
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F39505%2Fiexp7ewglvmwqqmo__400_400.jpg&w=400&q=75",
+            "kind": "img",
+            "tag": "c5",
+            "alt": "그로스 마케터",
+            "docBox": {
+              "x": 80,
+              "y": 637.328125,
+              "w": 308,
+              "h": 205.328125
+            },
+            "aspect": 1.5,
+            "areaShare": 0.0488,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-05.png",
+            "palette": [
+              {
+                "hex": "#ebe5db",
+                "coverage": 0.1495,
+                "saturation": 0.068,
+                "luma": 0.9
+              },
+              {
+                "hex": "#e4ddd2",
+                "coverage": 0.0468,
+                "saturation": 0.079,
+                "luma": 0.869
+              },
+              {
+                "hex": "#f3ece3",
+                "coverage": 0.0275,
+                "saturation": 0.066,
+                "luma": 0.929
+              },
+              {
+                "hex": "#eee9de",
+                "coverage": 0.0252,
+                "saturation": 0.067,
+                "luma": 0.915
+              },
+              {
+                "hex": "#d4cdc4",
+                "coverage": 0.0245,
+                "saturation": 0.075,
+                "luma": 0.807
+              },
+              {
+                "hex": "#dbd4cb",
+                "coverage": 0.0237,
+                "saturation": 0.073,
+                "luma": 0.835
+              }
+            ],
+            "light": {
+              "meanLuma": 0.756,
+              "p05": 0.445,
+              "p50": 0.819,
+              "p95": 0.919,
+              "dynamicRange": 0.474,
+              "gradient": {
+                "dx": 0.093,
+                "dy": 0.03
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 65.7
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F14940%2Ffmzeviur6cgrevgj__400_400.png&w=400&q=75",
+            "kind": "img",
+            "tag": "c6",
+            "alt": "재무회계 담당자 (FP&A)",
+            "docBox": {
+              "x": 404,
+              "y": 637.328125,
+              "w": 308,
+              "h": 205.328125
+            },
+            "aspect": 1.5,
+            "areaShare": 0.0488,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-06.png",
+            "palette": [
+              {
+                "hex": "#fdfffe",
+                "coverage": 0.0251,
+                "saturation": 0.008,
+                "luma": 0.998
+              },
+              {
+                "hex": "#0173cc",
+                "coverage": 0.0141,
+                "saturation": 0.995,
+                "luma": 0.381
+              },
+              {
+                "hex": "#016dca",
+                "coverage": 0.0128,
+                "saturation": 0.995,
+                "luma": 0.364
+              },
+              {
+                "hex": "#91a5ac",
+                "coverage": 0.0121,
+                "saturation": 0.157,
+                "luma": 0.632
+              },
+              {
+                "hex": "#012c9a",
+                "coverage": 0.0097,
+                "saturation": 0.994,
+                "luma": 0.168
+              },
+              {
+                "hex": "#8daab5",
+                "coverage": 0.0087,
+                "saturation": 0.221,
+                "luma": 0.646
+              }
+            ],
+            "light": {
+              "meanLuma": 0.479,
+              "p05": 0.151,
+              "p50": 0.444,
+              "p95": 0.922,
+              "dynamicRange": 0.771,
+              "gradient": {
+                "dx": 0.068,
+                "dy": -0.078
+              },
+              "luminanceGradient": "brighter top"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 78
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F20947%2Fizyvwevuqdjqkvwu__400_400.png&w=400&q=75",
+            "kind": "img",
+            "tag": "c7",
+            "alt": "DevOps 엔지니어(SRE)(시니어)",
+            "docBox": {
+              "x": 728,
+              "y": 637.328125,
+              "w": 308,
+              "h": 205.328125
+            },
+            "aspect": 1.5,
+            "areaShare": 0.0488,
+            "intrinsic": {
+              "w": 400,
+              "h": 292
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-07.png",
+            "palette": [
+              {
+                "hex": "#ffeb00",
+                "coverage": 0.4442,
+                "saturation": 1,
+                "luma": 0.872
+              },
+              {
+                "hex": "#eaa125",
+                "coverage": 0.1051,
+                "saturation": 0.842,
+                "luma": 0.657
+              },
+              {
+                "hex": "#bbac00",
+                "coverage": 0.0232,
+                "saturation": 1,
+                "luma": 0.638
+              },
+              {
+                "hex": "#fffffe",
+                "coverage": 0.0201,
+                "saturation": 0.004,
+                "luma": 1
+              },
+              {
+                "hex": "#d3c300",
+                "coverage": 0.0193,
+                "saturation": 1,
+                "luma": 0.723
+              },
+              {
+                "hex": "#fae601",
+                "coverage": 0.0148,
+                "saturation": 0.996,
+                "luma": 0.854
+              }
+            ],
+            "light": {
+              "meanLuma": 0.747,
+              "p05": 0.271,
+              "p50": 0.868,
+              "p95": 0.889,
+              "dynamicRange": 0.618,
+              "gradient": {
+                "dx": -0.087,
+                "dy": 0.094
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 84.1
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F44962%2Fltim91phzssjisvl__400_400.png&w=400&q=75",
+            "kind": "img",
+            "tag": "c8",
+            "alt": "프로덕트 매니저 (PM) - 디스터",
+            "docBox": {
+              "x": 1052,
+              "y": 637.328125,
+              "w": 308,
+              "h": 205.328125
+            },
+            "aspect": 1.5,
+            "areaShare": 0.0488,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-08.png",
+            "palette": [
+              {
+                "hex": "#000000",
+                "coverage": 0.5984,
+                "saturation": 0,
+                "luma": 0
+              },
+              {
+                "hex": "#fefefe",
+                "coverage": 0.1002,
+                "saturation": 0,
+                "luma": 0.996
+              },
+              {
+                "hex": "#e3e3e3",
+                "coverage": 0.0176,
+                "saturation": 0,
+                "luma": 0.89
+              },
+              {
+                "hex": "#ebebeb",
+                "coverage": 0.0175,
+                "saturation": 0,
+                "luma": 0.922
+              },
+              {
+                "hex": "#f3f3f3",
+                "coverage": 0.0154,
+                "saturation": 0,
+                "luma": 0.953
+              },
+              {
+                "hex": "#d3d3d3",
+                "coverage": 0.0145,
+                "saturation": 0,
+                "luma": 0.827
+              }
+            ],
+            "light": {
+              "meanLuma": 0.282,
+              "p05": 0,
+              "p50": 0,
+              "p95": 1,
+              "dynamicRange": 1,
+              "gradient": {
+                "dx": 0.458,
+                "dy": 0.034
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 133.9
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F21913%2F7cly4s91hqemkkir__400_400.jpg&w=400&q=75",
+            "kind": "img",
+            "tag": "c9",
+            "alt": "B2B 북미 해외영업 1년 이상",
+            "docBox": {
+              "x": 80,
+              "y": 958.65625,
+              "w": 308,
+              "h": 205.328125
+            },
+            "aspect": 1.5,
+            "areaShare": 0.0488,
+            "intrinsic": {
+              "w": 400,
+              "h": 292
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-09.png",
+            "palette": [
+              {
+                "hex": "#726c5c",
+                "coverage": 0.0579,
+                "saturation": 0.193,
+                "luma": 0.424
+              },
+              {
+                "hex": "#5a5345",
+                "coverage": 0.0573,
+                "saturation": 0.233,
+                "luma": 0.327
+              },
+              {
+                "hex": "#6a6455",
+                "coverage": 0.0561,
+                "saturation": 0.198,
+                "luma": 0.393
+              },
+              {
+                "hex": "#625c4d",
+                "coverage": 0.0463,
+                "saturation": 0.214,
+                "luma": 0.362
+              },
+              {
+                "hex": "#c2bdb4",
+                "coverage": 0.0286,
+                "saturation": 0.072,
+                "luma": 0.743
+              },
+              {
+                "hex": "#7a7464",
+                "coverage": 0.0265,
+                "saturation": 0.18,
+                "luma": 0.455
+              }
+            ],
+            "light": {
+              "meanLuma": 0.494,
+              "p05": 0.316,
+              "p50": 0.438,
+              "p95": 0.785,
+              "dynamicRange": 0.469,
+              "gradient": {
+                "dx": -0.152,
+                "dy": -0.081
+              },
+              "luminanceGradient": "brighter left"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 49.9
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F22550%2Fkyhy70mnlfjmjzc1__400_400.png&w=400&q=75",
+            "kind": "img",
+            "tag": "c10",
+            "alt": "사내 IT 및 오피스 운영 담당",
+            "docBox": {
+              "x": 404,
+              "y": 958.65625,
+              "w": 308,
+              "h": 205.328125
+            },
+            "aspect": 1.5,
+            "areaShare": 0.0488,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-10.png",
+            "palette": [
+              {
+                "hex": "#9ba2b3",
+                "coverage": 0.0784,
+                "saturation": 0.134,
+                "luma": 0.634
+              },
+              {
+                "hex": "#949cac",
+                "coverage": 0.0688,
+                "saturation": 0.14,
+                "luma": 0.61
+              },
+              {
+                "hex": "#12151c",
+                "coverage": 0.0346,
+                "saturation": 0.357,
+                "luma": 0.082
+              },
+              {
+                "hex": "#0e121a",
+                "coverage": 0.0338,
+                "saturation": 0.462,
+                "luma": 0.07
+              },
+              {
+                "hex": "#8c93a3",
+                "coverage": 0.0235,
+                "saturation": 0.141,
+                "luma": 0.575
+              },
+              {
+                "hex": "#999eae",
+                "coverage": 0.0171,
+                "saturation": 0.121,
+                "luma": 0.62
+              }
+            ],
+            "light": {
+              "meanLuma": 0.425,
+              "p05": 0.07,
+              "p50": 0.475,
+              "p95": 0.694,
+              "dynamicRange": 0.624,
+              "gradient": {
+                "dx": 0.088,
+                "dy": -0.216
+              },
+              "luminanceGradient": "brighter top"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 88.3
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F7062%2Fi4y5decgcqcegvky__400_400.png&w=400&q=75",
+            "kind": "img",
+            "tag": "c11",
+            "alt": "산후 케어매니저 (CS, 고객 관리)",
+            "docBox": {
+              "x": 1052,
+              "y": 958.65625,
+              "w": 308,
+              "h": 205.328125
+            },
+            "aspect": 1.5,
+            "areaShare": 0.0488,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-11.png",
+            "palette": [
+              {
+                "hex": "#fdfdfc",
+                "coverage": 0.0518,
+                "saturation": 0.004,
+                "luma": 0.992
+              },
+              {
+                "hex": "#edeef1",
+                "coverage": 0.0466,
+                "saturation": 0.017,
+                "luma": 0.933
+              },
+              {
+                "hex": "#fb7303",
+                "coverage": 0.0439,
+                "saturation": 0.988,
+                "luma": 0.533
+              },
+              {
+                "hex": "#fb6d02",
+                "coverage": 0.0348,
+                "saturation": 0.992,
+                "luma": 0.516
+              },
+              {
+                "hex": "#fb9b14",
+                "coverage": 0.0323,
+                "saturation": 0.92,
+                "luma": 0.65
+              },
+              {
+                "hex": "#ececed",
+                "coverage": 0.0308,
+                "saturation": 0.004,
+                "luma": 0.926
+              }
+            ],
+            "light": {
+              "meanLuma": 0.67,
+              "p05": 0.353,
+              "p50": 0.643,
+              "p95": 0.98,
+              "dynamicRange": 0.627,
+              "gradient": {
+                "dx": 0.126,
+                "dy": 0.048
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 57.2
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F10997%2Frftdfkwx70a2ztau__400_400.jpg&w=400&q=75",
+            "kind": "img",
+            "tag": "c12",
+            "alt": "Enterprise Sales Manager",
+            "docBox": {
+              "x": 404,
+              "y": 1279.984375,
+              "w": 308,
+              "h": 205.328125
+            },
+            "aspect": 1.5,
+            "areaShare": 0.0488,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-12.png",
+            "palette": [
+              {
+                "hex": "#fdfdfd",
+                "coverage": 0.2448,
+                "saturation": 0,
+                "luma": 0.992
+              },
+              {
+                "hex": "#0284ec",
+                "coverage": 0.1883,
+                "saturation": 0.992,
+                "luma": 0.439
+              },
+              {
+                "hex": "#f4fafe",
+                "coverage": 0.0212,
+                "saturation": 0.039,
+                "luma": 0.977
+              },
+              {
+                "hex": "#f3f4f4",
+                "coverage": 0.021,
+                "saturation": 0.004,
+                "luma": 0.956
+              },
+              {
+                "hex": "#015ea9",
+                "coverage": 0.0193,
+                "saturation": 0.994,
+                "luma": 0.312
+              },
+              {
+                "hex": "#015ba3",
+                "coverage": 0.019,
+                "saturation": 0.994,
+                "luma": 0.302
+              }
+            ],
+            "light": {
+              "meanLuma": 0.63,
+              "p05": 0.193,
+              "p50": 0.504,
+              "p95": 1,
+              "dynamicRange": 0.807,
+              "gradient": {
+                "dx": 0.195,
+                "dy": 0.295
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 134.6
+            }
+          }
+        ],
+        "aggregate": {
+          "meanLuma": 0.494,
+          "dynamicRange": 0.624,
+          "luminanceGradients": {
+            "brighter left": 3,
+            "even": 2,
+            "brighter right": 3,
+            "brighter top": 2,
+            "brighter bottom": 2
+          },
+          "aspects": 1.5,
+          "figureGroundResolved": "0/12",
+          "subjectNote": "fewer than 4 resolved samples — placement omitted"
+        }
+      },
+      "motion": {
+        "present": false,
+        "note": "no video above the fold at capture time"
+      },
+      "durationMs": 16556
+    },
+    "mobile-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "chrome": {
+        "pageBackgroundComputed": "#ffffff",
+        "bodyColor": "#171719",
+        "header": {
+          "detectedBy": "geometry",
+          "background": null,
+          "heightPx": 56
+        },
+        "primaryButton": null,
+        "typeScale": [
+          {
+            "tag": "button",
+            "fontPx": 14,
+            "weight": "400",
+            "family": "Pretendard Variable",
+            "lineHeight": "normal",
+            "letterSpacing": "normal",
+            "color": "#0066ff"
+          }
+        ],
+        "notes": {
+          "buttonCandidatesAboveFold": 0,
+          "headerDetectedBy": "geometry"
+        },
+        "pageBackgroundRendered": {
+          "dominantHex": "#ffffff",
+          "coverage": 0.5338,
+          "resolved": true,
+          "hex": "#ffffff",
+          "source": "modal colour of the captured viewport",
+          "agreesWithComputed": "#ffffff"
+        }
+      },
+      "imagery": {
+        "sampled": 12,
+        "funnel": {
+          "found": 66,
+          "sizeOk": 60,
+          "centreInFrame": 60,
+          "srcOk": 38,
+          "cap": 12,
+          "kept": 12,
+          "framed": 12,
+          "cropped": 12,
+          "analysed": 12
+        },
+        "attrition": {
+          "suspect": false,
+          "sizeFilterLoss": 0.091
+        },
+        "samples": [
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F30177%2F50ogifhpl4kh4mva__400_400.png&w=400&q=75",
+            "kind": "img",
+            "tag": "c1",
+            "alt": "교육 운영 매니저(5년이상)(팀장급)",
+            "docBox": {
+              "x": 18,
+              "y": 207,
+              "w": 169,
+              "h": 126.75
+            },
+            "aspect": 1.333,
+            "areaShare": 0.0651,
+            "intrinsic": {
+              "w": 400,
+              "h": 292
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-01.png",
+            "palette": [
+              {
+                "hex": "#fbe5cc",
+                "coverage": 0.0655,
+                "saturation": 0.187,
+                "luma": 0.909
+              },
+              {
+                "hex": "#fcead3",
+                "coverage": 0.0509,
+                "saturation": 0.163,
+                "luma": 0.926
+              },
+              {
+                "hex": "#faebdb",
+                "coverage": 0.0309,
+                "saturation": 0.124,
+                "luma": 0.93
+              },
+              {
+                "hex": "#fde9cd",
+                "coverage": 0.0225,
+                "saturation": 0.19,
+                "luma": 0.922
+              },
+              {
+                "hex": "#fde4c4",
+                "coverage": 0.0224,
+                "saturation": 0.225,
+                "luma": 0.906
+              },
+              {
+                "hex": "#ac9373",
+                "coverage": 0.0136,
+                "saturation": 0.331,
+                "luma": 0.588
+              }
+            ],
+            "light": {
+              "meanLuma": 0.753,
+              "p05": 0.511,
+              "p50": 0.776,
+              "p95": 0.929,
+              "dynamicRange": 0.418,
+              "gradient": {
+                "dx": -0.11,
+                "dy": 0.003
+              },
+              "luminanceGradient": "brighter left"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 78.9
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F1698%2Fudvwzhtwjsf68uwu__400_400.jpg&w=400&q=75",
+            "kind": "img",
+            "tag": "c2",
+            "alt": "[클룹(CLOOP)] 콘텐츠 마케터 (PD)",
+            "docBox": {
+              "x": 203,
+              "y": 207,
+              "w": 169,
+              "h": 126.75
+            },
+            "aspect": 1.333,
+            "areaShare": 0.0651,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-02.png",
+            "palette": [
+              {
+                "hex": "#a9232e",
+                "coverage": 0.1078,
+                "saturation": 0.793,
+                "luma": 0.252
+              },
+              {
+                "hex": "#a5232e",
+                "coverage": 0.0582,
+                "saturation": 0.788,
+                "luma": 0.249
+              },
+              {
+                "hex": "#9c222b",
+                "coverage": 0.022,
+                "saturation": 0.782,
+                "luma": 0.238
+              },
+              {
+                "hex": "#fefefd",
+                "coverage": 0.0214,
+                "saturation": 0.004,
+                "luma": 0.996
+              },
+              {
+                "hex": "#7b1a22",
+                "coverage": 0.0176,
+                "saturation": 0.789,
+                "luma": 0.185
+              },
+              {
+                "hex": "#aa2331",
+                "coverage": 0.0157,
+                "saturation": 0.794,
+                "luma": 0.254
+              }
+            ],
+            "light": {
+              "meanLuma": 0.381,
+              "p05": 0.17,
+              "p50": 0.272,
+              "p95": 0.751,
+              "dynamicRange": 0.581,
+              "gradient": {
+                "dx": -0.029,
+                "dy": -0.006
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 84.1
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F53483%2Fzeylkl8whm4upfvy__400_400.png&w=400&q=75",
+            "kind": "img",
+            "tag": "c3",
+            "alt": "퍼포먼스 마케팅 AE",
+            "docBox": {
+              "x": 18,
+              "y": 455.75,
+              "w": 169,
+              "h": 126.75
+            },
+            "aspect": 1.333,
+            "areaShare": 0.0651,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-03.png",
+            "palette": [
+              {
+                "hex": "#0b1919",
+                "coverage": 0.1823,
+                "saturation": 0.56,
+                "luma": 0.086
+              },
+              {
+                "hex": "#0a1515",
+                "coverage": 0.0707,
+                "saturation": 0.524,
+                "luma": 0.073
+              },
+              {
+                "hex": "#0a171a",
+                "coverage": 0.0706,
+                "saturation": 0.615,
+                "luma": 0.08
+              },
+              {
+                "hex": "#121d1b",
+                "coverage": 0.0373,
+                "saturation": 0.379,
+                "luma": 0.104
+              },
+              {
+                "hex": "#232c23",
+                "coverage": 0.0284,
+                "saturation": 0.205,
+                "luma": 0.162
+              },
+              {
+                "hex": "#1b2523",
+                "coverage": 0.0272,
+                "saturation": 0.27,
+                "luma": 0.136
+              }
+            ],
+            "light": {
+              "meanLuma": 0.199,
+              "p05": 0.072,
+              "p50": 0.135,
+              "p95": 0.655,
+              "dynamicRange": 0.583,
+              "gradient": {
+                "dx": -0.08,
+                "dy": -0.066
+              },
+              "luminanceGradient": "brighter left"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 82.1
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F15034%2Fsi7p3rly7h6eaxn8__400_400.jpg&w=400&q=75",
+            "kind": "img",
+            "tag": "c4",
+            "alt": "유니티 개발자",
+            "docBox": {
+              "x": 203,
+              "y": 455.75,
+              "w": 169,
+              "h": 126.75
+            },
+            "aspect": 1.333,
+            "areaShare": 0.0651,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-04.png",
+            "palette": [
+              {
+                "hex": "#131313",
+                "coverage": 0.418,
+                "saturation": 0,
+                "luma": 0.075
+              },
+              {
+                "hex": "#000000",
+                "coverage": 0.228,
+                "saturation": 0,
+                "luma": 0
+              },
+              {
+                "hex": "#0d0d0d",
+                "coverage": 0.0942,
+                "saturation": 0,
+                "luma": 0.051
+              },
+              {
+                "hex": "#fefefe",
+                "coverage": 0.0223,
+                "saturation": 0,
+                "luma": 0.996
+              },
+              {
+                "hex": "#2a2a2a",
+                "coverage": 0.0089,
+                "saturation": 0,
+                "luma": 0.165
+              },
+              {
+                "hex": "#1b1b1b",
+                "coverage": 0.0059,
+                "saturation": 0,
+                "luma": 0.106
+              }
+            ],
+            "light": {
+              "meanLuma": 0.154,
+              "p05": 0,
+              "p50": 0.078,
+              "p95": 0.722,
+              "dynamicRange": 0.722,
+              "gradient": {
+                "dx": 0,
+                "dy": -0.031
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 80.4
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F39505%2Fiexp7ewglvmwqqmo__400_400.jpg&w=400&q=75",
+            "kind": "img",
+            "tag": "c5",
+            "alt": "그로스 마케터",
+            "docBox": {
+              "x": 18,
+              "y": 682.5,
+              "w": 169,
+              "h": 126.75
+            },
+            "aspect": 1.333,
+            "areaShare": 0.0651,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-05.png",
+            "palette": [
+              {
+                "hex": "#ebe5db",
+                "coverage": 0.1232,
+                "saturation": 0.068,
+                "luma": 0.9
+              },
+              {
+                "hex": "#e4ddd3",
+                "coverage": 0.0434,
+                "saturation": 0.075,
+                "luma": 0.87
+              },
+              {
+                "hex": "#dbd4cb",
+                "coverage": 0.0302,
+                "saturation": 0.073,
+                "luma": 0.835
+              },
+              {
+                "hex": "#d3cdc3",
+                "coverage": 0.0285,
+                "saturation": 0.076,
+                "luma": 0.806
+              },
+              {
+                "hex": "#cbc4bb",
+                "coverage": 0.0276,
+                "saturation": 0.079,
+                "luma": 0.772
+              },
+              {
+                "hex": "#f2ece3",
+                "coverage": 0.0238,
+                "saturation": 0.062,
+                "luma": 0.928
+              }
+            ],
+            "light": {
+              "meanLuma": 0.748,
+              "p05": 0.437,
+              "p50": 0.801,
+              "p95": 0.92,
+              "dynamicRange": 0.483,
+              "gradient": {
+                "dx": 0.098,
+                "dy": 0.033
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 35.2
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F14940%2Ffmzeviur6cgrevgj__400_400.png&w=400&q=75",
+            "kind": "img",
+            "tag": "c6",
+            "alt": "재무회계 담당자 (FP&A)",
+            "docBox": {
+              "x": 203,
+              "y": 682.5,
+              "w": 169,
+              "h": 126.75
+            },
+            "aspect": 1.333,
+            "areaShare": 0.0651,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-06.png",
+            "palette": [
+              {
+                "hex": "#fdfefe",
+                "coverage": 0.0298,
+                "saturation": 0.004,
+                "luma": 0.995
+              },
+              {
+                "hex": "#9aacb3",
+                "coverage": 0.0187,
+                "saturation": 0.14,
+                "luma": 0.661
+              },
+              {
+                "hex": "#012593",
+                "coverage": 0.014,
+                "saturation": 0.993,
+                "luma": 0.146
+              },
+              {
+                "hex": "#9ba6aa",
+                "coverage": 0.0139,
+                "saturation": 0.088,
+                "luma": 0.643
+              },
+              {
+                "hex": "#0173cc",
+                "coverage": 0.0123,
+                "saturation": 0.995,
+                "luma": 0.381
+              },
+              {
+                "hex": "#016dca",
+                "coverage": 0.0117,
+                "saturation": 0.995,
+                "luma": 0.364
+              }
+            ],
+            "light": {
+              "meanLuma": 0.482,
+              "p05": 0.142,
+              "p50": 0.449,
+              "p95": 0.938,
+              "dynamicRange": 0.796,
+              "gradient": {
+                "dx": 0.063,
+                "dy": -0.109
+              },
+              "luminanceGradient": "brighter top"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 82.3
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F20947%2Fizyvwevuqdjqkvwu__400_400.png&w=400&q=75",
+            "kind": "img",
+            "tag": "c7",
+            "alt": "DevOps 엔지니어(SRE)(시니어)",
+            "docBox": {
+              "x": 18,
+              "y": 909.25,
+              "w": 169,
+              "h": 126.75
+            },
+            "aspect": 1.333,
+            "areaShare": 0.0651,
+            "intrinsic": {
+              "w": 400,
+              "h": 292
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-07.png",
+            "palette": [
+              {
+                "hex": "#ffeb00",
+                "coverage": 0.415,
+                "saturation": 1,
+                "luma": 0.872
+              },
+              {
+                "hex": "#eaa125",
+                "coverage": 0.0925,
+                "saturation": 0.842,
+                "luma": 0.657
+              },
+              {
+                "hex": "#baac00",
+                "coverage": 0.0284,
+                "saturation": 1,
+                "luma": 0.637
+              },
+              {
+                "hex": "#fffffe",
+                "coverage": 0.0227,
+                "saturation": 0.004,
+                "luma": 1
+              },
+              {
+                "hex": "#d4c300",
+                "coverage": 0.0198,
+                "saturation": 1,
+                "luma": 0.724
+              },
+              {
+                "hex": "#b3a500",
+                "coverage": 0.017,
+                "saturation": 1,
+                "luma": 0.612
+              }
+            ],
+            "light": {
+              "meanLuma": 0.747,
+              "p05": 0.284,
+              "p50": 0.849,
+              "p95": 0.895,
+              "dynamicRange": 0.611,
+              "gradient": {
+                "dx": -0.081,
+                "dy": 0.104
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 93.3
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F44962%2Fltim91phzssjisvl__400_400.png&w=400&q=75",
+            "kind": "img",
+            "tag": "c8",
+            "alt": "프로덕트 매니저 (PM) - 디스터",
+            "docBox": {
+              "x": 203,
+              "y": 909.25,
+              "w": 169,
+              "h": 126.75
+            },
+            "aspect": 1.333,
+            "areaShare": 0.0651,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-08.png",
+            "palette": [
+              {
+                "hex": "#000000",
+                "coverage": 0.593,
+                "saturation": 0,
+                "luma": 0
+              },
+              {
+                "hex": "#fefefe",
+                "coverage": 0.1086,
+                "saturation": 0,
+                "luma": 0.996
+              },
+              {
+                "hex": "#ececec",
+                "coverage": 0.0199,
+                "saturation": 0,
+                "luma": 0.925
+              },
+              {
+                "hex": "#dbdbdb",
+                "coverage": 0.0192,
+                "saturation": 0,
+                "luma": 0.859
+              },
+              {
+                "hex": "#e4e4e4",
+                "coverage": 0.0172,
+                "saturation": 0,
+                "luma": 0.894
+              },
+              {
+                "hex": "#d4d3d4",
+                "coverage": 0.0151,
+                "saturation": 0.005,
+                "luma": 0.829
+              }
+            ],
+            "light": {
+              "meanLuma": 0.29,
+              "p05": 0,
+              "p50": 0,
+              "p95": 1,
+              "dynamicRange": 1,
+              "gradient": {
+                "dx": 0.449,
+                "dy": 0.045
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 163.2
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F21913%2F7cly4s91hqemkkir__400_400.jpg&w=400&q=75",
+            "kind": "img",
+            "tag": "c9",
+            "alt": "B2B 북미 해외영업 1년 이상",
+            "docBox": {
+              "x": 18,
+              "y": 1158,
+              "w": 169,
+              "h": 126.75
+            },
+            "aspect": 1.333,
+            "areaShare": 0.0651,
+            "intrinsic": {
+              "w": 400,
+              "h": 292
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-09.png",
+            "palette": [
+              {
+                "hex": "#5a5345",
+                "coverage": 0.0638,
+                "saturation": 0.233,
+                "luma": 0.327
+              },
+              {
+                "hex": "#726c5c",
+                "coverage": 0.0553,
+                "saturation": 0.193,
+                "luma": 0.424
+              },
+              {
+                "hex": "#6a6455",
+                "coverage": 0.0506,
+                "saturation": 0.198,
+                "luma": 0.393
+              },
+              {
+                "hex": "#625c4d",
+                "coverage": 0.0431,
+                "saturation": 0.214,
+                "luma": 0.362
+              },
+              {
+                "hex": "#6e695a",
+                "coverage": 0.027,
+                "saturation": 0.182,
+                "luma": 0.412
+              },
+              {
+                "hex": "#c2bdb4",
+                "coverage": 0.0257,
+                "saturation": 0.072,
+                "luma": 0.743
+              }
+            ],
+            "light": {
+              "meanLuma": 0.49,
+              "p05": 0.316,
+              "p50": 0.433,
+              "p95": 0.788,
+              "dynamicRange": 0.472,
+              "gradient": {
+                "dx": -0.139,
+                "dy": -0.084
+              },
+              "luminanceGradient": "brighter left"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 60.3
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F22550%2Fkyhy70mnlfjmjzc1__400_400.png&w=400&q=75",
+            "kind": "img",
+            "tag": "c10",
+            "alt": "사내 IT 및 오피스 운영 담당",
+            "docBox": {
+              "x": 203,
+              "y": 1158,
+              "w": 169,
+              "h": 126.75
+            },
+            "aspect": 1.333,
+            "areaShare": 0.0651,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-10.png",
+            "palette": [
+              {
+                "hex": "#949bac",
+                "coverage": 0.066,
+                "saturation": 0.14,
+                "luma": 0.607
+              },
+              {
+                "hex": "#9ba2b3",
+                "coverage": 0.0581,
+                "saturation": 0.134,
+                "luma": 0.634
+              },
+              {
+                "hex": "#0e121a",
+                "coverage": 0.0368,
+                "saturation": 0.462,
+                "luma": 0.07
+              },
+              {
+                "hex": "#12151d",
+                "coverage": 0.0328,
+                "saturation": 0.379,
+                "luma": 0.082
+              },
+              {
+                "hex": "#8c94a3",
+                "coverage": 0.0258,
+                "saturation": 0.141,
+                "luma": 0.578
+              },
+              {
+                "hex": "#feffff",
+                "coverage": 0.0213,
+                "saturation": 0.004,
+                "luma": 0.999
+              }
+            ],
+            "light": {
+              "meanLuma": 0.425,
+              "p05": 0.07,
+              "p50": 0.462,
+              "p95": 0.786,
+              "dynamicRange": 0.716,
+              "gradient": {
+                "dx": 0.086,
+                "dy": -0.219
+              },
+              "luminanceGradient": "brighter top"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 86.2
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F7062%2Fi4y5decgcqcegvky__400_400.png&w=400&q=75",
+            "kind": "img",
+            "tag": "c11",
+            "alt": "산후 케어매니저 (CS, 고객 관리)",
+            "docBox": {
+              "x": 203,
+              "y": 1406.75,
+              "w": 169,
+              "h": 126.75
+            },
+            "aspect": 1.333,
+            "areaShare": 0.0651,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-11.png",
+            "palette": [
+              {
+                "hex": "#fdfdfc",
+                "coverage": 0.0477,
+                "saturation": 0.004,
+                "luma": 0.992
+              },
+              {
+                "hex": "#eceef1",
+                "coverage": 0.0405,
+                "saturation": 0.021,
+                "luma": 0.933
+              },
+              {
+                "hex": "#fb7303",
+                "coverage": 0.0381,
+                "saturation": 0.988,
+                "luma": 0.533
+              },
+              {
+                "hex": "#fb9b14",
+                "coverage": 0.0347,
+                "saturation": 0.92,
+                "luma": 0.65
+              },
+              {
+                "hex": "#b34401",
+                "coverage": 0.0278,
+                "saturation": 0.994,
+                "luma": 0.34
+              },
+              {
+                "hex": "#ebeced",
+                "coverage": 0.0278,
+                "saturation": 0.008,
+                "luma": 0.925
+              }
+            ],
+            "light": {
+              "meanLuma": 0.661,
+              "p05": 0.334,
+              "p50": 0.645,
+              "p95": 0.976,
+              "dynamicRange": 0.642,
+              "gradient": {
+                "dx": 0.113,
+                "dy": 0.063
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 80.2
+            }
+          },
+          {
+            "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F10997%2Frftdfkwx70a2ztau__400_400.jpg&w=400&q=75",
+            "kind": "img",
+            "tag": "c12",
+            "alt": "Enterprise Sales Manager",
+            "docBox": {
+              "x": 203,
+              "y": 1655.5,
+              "w": 169,
+              "h": 126.75
+            },
+            "aspect": 1.333,
+            "areaShare": 0.0651,
+            "intrinsic": {
+              "w": 400,
+              "h": 293
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-12.png",
+            "palette": [
+              {
+                "hex": "#fdfdfd",
+                "coverage": 0.2436,
+                "saturation": 0,
+                "luma": 0.992
+              },
+              {
+                "hex": "#0284ec",
+                "coverage": 0.1617,
+                "saturation": 0.992,
+                "luma": 0.439
+              },
+              {
+                "hex": "#015ca4",
+                "coverage": 0.032,
+                "saturation": 0.994,
+                "luma": 0.305
+              },
+              {
+                "hex": "#f4fafe",
+                "coverage": 0.0212,
+                "saturation": 0.039,
+                "luma": 0.977
+              },
+              {
+                "hex": "#f4f4f4",
+                "coverage": 0.021,
+                "saturation": 0,
+                "luma": 0.957
+              },
+              {
+                "hex": "#0161ac",
+                "coverage": 0.0193,
+                "saturation": 0.994,
+                "luma": 0.322
+              }
+            ],
+            "light": {
+              "meanLuma": 0.636,
+              "p05": 0.255,
+              "p50": 0.538,
+              "p95": 1,
+              "dynamicRange": 0.745,
+              "gradient": {
+                "dx": 0.186,
+                "dy": 0.3
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 102.2
+            }
+          }
+        ],
+        "aggregate": {
+          "meanLuma": 0.49,
+          "dynamicRange": 0.642,
+          "luminanceGradients": {
+            "brighter left": 3,
+            "even": 2,
+            "brighter right": 3,
+            "brighter top": 2,
+            "brighter bottom": 2
+          },
+          "aspects": 1.333,
+          "figureGroundResolved": "0/12",
+          "subjectNote": "fewer than 4 resolved samples — placement omitted"
+        }
+      },
+      "motion": {
+        "present": false,
+        "note": "no video above the fold at capture time"
+      },
+      "durationMs": 14239
+    }
   },
   "chrome": {
     "pageBackgroundComputed": "#ffffff",
@@ -24,8 +2007,7 @@
     "header": {
       "detectedBy": "geometry",
       "background": null,
-      "heightPx": 61,
-      "borderBottom": "rgba(112, 115, 124, 0.16)"
+      "heightPx": 61
     },
     "primaryButton": null,
     "typeScale": [
@@ -44,10 +2026,12 @@
       "headerDetectedBy": "geometry"
     },
     "pageBackgroundRendered": {
+      "dominantHex": "#ffffff",
+      "coverage": 0.5322,
       "resolved": true,
       "hex": "#ffffff",
-      "coverage": 0.5322,
-      "source": "modal colour of the captured viewport"
+      "source": "modal colour of the captured viewport",
+      "agreesWithComputed": "#ffffff"
     }
   },
   "imagery": {
@@ -57,18 +2041,21 @@
       "sizeOk": 60,
       "centreInFrame": 60,
       "srcOk": 38,
+      "cap": 12,
       "kept": 12,
       "framed": 12,
       "cropped": 12,
       "analysed": 12
     },
     "attrition": {
-      "suspect": false
+      "suspect": false,
+      "sizeFilterLoss": 0.063
     },
     "samples": [
       {
         "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F30177%2F50ogifhpl4kh4mva__400_400.png&w=400&q=75",
         "kind": "img",
+        "tag": "c1",
         "alt": "교육 운영 매니저(5년이상)(팀장급)",
         "docBox": {
           "x": 80,
@@ -83,7 +2070,8 @@
           "h": 292
         },
         "clipped": false,
-        "file": "capture/imagery-01.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-01.png",
         "palette": [
           {
             "hex": "#fbe6cc",
@@ -143,6 +2131,7 @@
       {
         "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F1698%2Fudvwzhtwjsf68uwu__400_400.jpg&w=400&q=75",
         "kind": "img",
+        "tag": "c2",
         "alt": "[클룹(CLOOP)] 콘텐츠 마케터 (PD)",
         "docBox": {
           "x": 404,
@@ -157,7 +2146,8 @@
           "h": 293
         },
         "clipped": false,
-        "file": "capture/imagery-02.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-02.png",
         "palette": [
           {
             "hex": "#aa232e",
@@ -217,6 +2207,7 @@
       {
         "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F53483%2Fzeylkl8whm4upfvy__400_400.png&w=400&q=75",
         "kind": "img",
+        "tag": "c3",
         "alt": "퍼포먼스 마케팅 AE",
         "docBox": {
           "x": 728,
@@ -231,7 +2222,8 @@
           "h": 293
         },
         "clipped": false,
-        "file": "capture/imagery-03.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-03.png",
         "palette": [
           {
             "hex": "#0b1919",
@@ -291,6 +2283,7 @@
       {
         "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F15034%2Fsi7p3rly7h6eaxn8__400_400.jpg&w=400&q=75",
         "kind": "img",
+        "tag": "c4",
         "alt": "유니티 개발자",
         "docBox": {
           "x": 1052,
@@ -305,7 +2298,8 @@
           "h": 293
         },
         "clipped": false,
-        "file": "capture/imagery-04.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-04.png",
         "palette": [
           {
             "hex": "#131313",
@@ -365,6 +2359,7 @@
       {
         "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F39505%2Fiexp7ewglvmwqqmo__400_400.jpg&w=400&q=75",
         "kind": "img",
+        "tag": "c5",
         "alt": "그로스 마케터",
         "docBox": {
           "x": 80,
@@ -379,7 +2374,8 @@
           "h": 293
         },
         "clipped": false,
-        "file": "capture/imagery-05.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-05.png",
         "palette": [
           {
             "hex": "#ebe5db",
@@ -439,6 +2435,7 @@
       {
         "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F14940%2Ffmzeviur6cgrevgj__400_400.png&w=400&q=75",
         "kind": "img",
+        "tag": "c6",
         "alt": "재무회계 담당자 (FP&A)",
         "docBox": {
           "x": 404,
@@ -453,7 +2450,8 @@
           "h": 293
         },
         "clipped": false,
-        "file": "capture/imagery-06.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-06.png",
         "palette": [
           {
             "hex": "#fdfffe",
@@ -513,6 +2511,7 @@
       {
         "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F20947%2Fizyvwevuqdjqkvwu__400_400.png&w=400&q=75",
         "kind": "img",
+        "tag": "c7",
         "alt": "DevOps 엔지니어(SRE)(시니어)",
         "docBox": {
           "x": 728,
@@ -527,7 +2526,8 @@
           "h": 292
         },
         "clipped": false,
-        "file": "capture/imagery-07.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-07.png",
         "palette": [
           {
             "hex": "#ffeb00",
@@ -587,6 +2587,7 @@
       {
         "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F44962%2Fltim91phzssjisvl__400_400.png&w=400&q=75",
         "kind": "img",
+        "tag": "c8",
         "alt": "프로덕트 매니저 (PM) - 디스터",
         "docBox": {
           "x": 1052,
@@ -601,7 +2602,8 @@
           "h": 293
         },
         "clipped": false,
-        "file": "capture/imagery-08.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-08.png",
         "palette": [
           {
             "hex": "#000000",
@@ -661,6 +2663,7 @@
       {
         "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F21913%2F7cly4s91hqemkkir__400_400.jpg&w=400&q=75",
         "kind": "img",
+        "tag": "c9",
         "alt": "B2B 북미 해외영업 1년 이상",
         "docBox": {
           "x": 80,
@@ -675,7 +2678,8 @@
           "h": 292
         },
         "clipped": false,
-        "file": "capture/imagery-09.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-09.png",
         "palette": [
           {
             "hex": "#726c5c",
@@ -735,6 +2739,7 @@
       {
         "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F22550%2Fkyhy70mnlfjmjzc1__400_400.png&w=400&q=75",
         "kind": "img",
+        "tag": "c10",
         "alt": "사내 IT 및 오피스 운영 담당",
         "docBox": {
           "x": 404,
@@ -749,7 +2754,8 @@
           "h": 293
         },
         "clipped": false,
-        "file": "capture/imagery-10.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-10.png",
         "palette": [
           {
             "hex": "#9ba2b3",
@@ -809,6 +2815,7 @@
       {
         "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F7062%2Fi4y5decgcqcegvky__400_400.png&w=400&q=75",
         "kind": "img",
+        "tag": "c11",
         "alt": "산후 케어매니저 (CS, 고객 관리)",
         "docBox": {
           "x": 1052,
@@ -823,7 +2830,8 @@
           "h": 293
         },
         "clipped": false,
-        "file": "capture/imagery-11.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-11.png",
         "palette": [
           {
             "hex": "#fdfdfc",
@@ -883,6 +2891,7 @@
       {
         "src": "https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F10997%2Frftdfkwx70a2ztau__400_400.jpg&w=400&q=75",
         "kind": "img",
+        "tag": "c12",
         "alt": "Enterprise Sales Manager",
         "docBox": {
           "x": 404,
@@ -897,7 +2906,8 @@
           "h": 293
         },
         "clipped": false,
-        "file": "capture/imagery-12.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-12.png",
         "palette": [
           {
             "hex": "#fdfdfd",
@@ -973,33 +2983,5 @@
   "motion": {
     "present": false,
     "note": "no video above the fold at capture time"
-  },
-  "mobile": {
-    "chrome": {
-      "pageBackgroundComputed": "#ffffff",
-      "bodyColor": "#171719",
-      "header": {
-        "detectedBy": "geometry",
-        "background": null,
-        "heightPx": 57,
-        "borderBottom": "rgba(112, 115, 124, 0.16)"
-      },
-      "primaryButton": null,
-      "typeScale": [
-        {
-          "tag": "button",
-          "fontPx": 14,
-          "weight": "400",
-          "family": "Pretendard Variable",
-          "lineHeight": "normal",
-          "letterSpacing": "normal",
-          "color": "#0066ff"
-        }
-      ],
-      "notes": {
-        "buttonCandidatesAboveFold": 0,
-        "headerDetectedBy": "geometry"
-      }
-    }
   }
 }

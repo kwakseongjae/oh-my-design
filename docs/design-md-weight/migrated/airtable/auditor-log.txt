@@ -1,0 +1,13 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 Airtable 이관 산출물부터 읽고, 문장 분류와 원장 대조를 시작합니다.규칙서 B2·E2 구간과 Airtable 세 산출물을 읽어 문장 분류와 원장 대조를 시작합니다.기존 감사 로그 형식과 원본을 대조해, DESIGN.md 문장을 하나씩 분류하고 로그 행을 grep으로 확인합니다.B2a 판정 기준을 최근 표본 FAIL과 대조하고, 원본 나머지와 DESIGN.md의 해석 문장을 전수 분류합니다.해석·인과 표지와 로그 주장값을 전수 검색해, 한정 누락과 원장 불일치를 가립니다.문장 분류와 grep 대조가 끝났습니다. B2a 한정이 비거나 불완전한 곳과, 로그·provenance가 실제 목적지와 어긋난 행만 고칩니다.Layout 한정이 뒤 문단까지 이름으로 덮도록 인접 범위를 명시합니다.Airtable 이관본을 B2a·E2만 감사해 한정 문장과 원장을 맞췄다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 건드리지 않았다.
+
+**B2a.** 편집·인과 문장인데 인접 완전 한정이 없거나 불완전했던 7곳:
+- Scope token-note의 color-belongs 한정을 `derived editorial implementation inference`까지 채움
+- Distinctive의 cookie 2px local 읽기, Avoid의 deliberately-sharp, Shape local-geometry, Cookie Use, Layout의 gutter/viewport/grid 판단, Content Forbidden phrases에 인접 완전 한정
+
+**E2.** 로그가 본문과 다르던 행: §2 그림자를 semantic color로 적은 것(실제는 Elevation + 버튼/카드), Cookie 2px를 그 컨트롤만이라고 한 것, §6에 붙인 brand-blue 인과의 원천(§7 Do), `#0f4ba0`·homepage 문자열·empty-state의 이중 목적지, F1/F2 준수 과장.
+
+**E1.** provenance derived 범위가 본문보다 넓고 좁았다. portable에 없는 `sophisticated simplicity`를 빼고, 이번에 한정한 자리를 목록에 넣었다.
+
+목록: `docs/design-md-weight/migrated/airtable/audit-log.md`
+
+AUDIT_DONE fixes=25

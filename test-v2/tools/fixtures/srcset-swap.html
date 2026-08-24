@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>srcset</title>
+<style>*{box-sizing:border-box}body{margin:0;font-family:system-ui}</style>
+</head><body>
+
+<img id="h" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==" style="width:90vw;height:60vh;background:#0acf83" alt="responsive hero">
+<div style="height:220vh"></div>
+<script>
+  // The src is replaced once the page has scrolled, which is exactly what
+  // broke re-identification by currentSrc.
+  addEventListener("scroll", () => { document.getElementById("h").src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==#v2"; }, { once: true });
+</script>
+
+</body></html>

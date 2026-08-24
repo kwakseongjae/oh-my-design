@@ -1,0 +1,11 @@
+B2a·E2 전담 감사로 시작합니다. 룰북의 해당 조항과 beusable 산출물부터 읽고, 문장 분류와 원장 대조를 진행하겠습니다.룰북 B2/B2a·E2와 최근 감사 산출물 형식을 확인한 뒤, beusable 세 파일을 전수 읽겠습니다.이관 산출물 세 파일과 원본 DESIGN.md를 전수 읽어 문장 분류부터 진행합니다.문장 분류를 위해 B2a 한정 위치·불완전 한정·원장 줄번호를 한꺼번에 대조합니다.원본 후반과 로그가 가리키는 값들의 실제 히트를 대조합니다. 한정이 표·목록 뒤에 붙은 자리부터 고칩니다.한정이 목록·표 뒤에 붙은 자리와 이름이 빠진 해석부터 본문에 붙입니다. 토큰·표·applicability는 건드리지 않습니다.본문 한정을 붙인 뒤, 새 줄번호로 원장 목적지를 다시 grep합니다.provenance 목적지와 derived 목록을 실제 본문에 맞춥니다.migration-log의 잘못된 목적지와 F1/F2 준수 과장을 고칩니다.Beusable F3 감사를 마쳤습니다. 이관 워커가 아니라 감사자로, B2a·E2만 보고 한정 문장과 원장을 고쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 그대로입니다.
+
+**본문 (B2a).** 세 번째 부류인데 인접 완전 한정이 없거나 이름을 빠뜨린 자리에 `derived editorial implementation inference` / `not Beusable-authored or a separately published UI specification`을 붙였습니다. Distinctive·Elevation Use·Layout breakpoint는 한정을 목록/표 앞으로 옮겼고, Avoid 마지막 항목과 Top Nav/Feature Dropdown Observed의 captured-variant에도 그 자리 한정을 달았습니다.
+
+**원장 (E2).** migration-log를 grep과 맞춰 고쳤습니다. `#ec0047` hover 행은 `#ff1553`이라 목적지에서 뺐고, `#00b7ff` Text는 303/330, `38px`는 Sign In Height 281을 포함하며, `9,000개 기업이 발견한 것`은 Layout §9-only가 아닙니다. HTML-comment `rgb(236,0,71)`/`rgb(246,225,54)`는 Semantic 92이고 provenance `rgb(238,0,71)`/`rgb(248,225,54)`와 이중이 아닙니다. B3 전문은 Motion 164입니다. 워커 F1/F2 완료 주장은 현재 클래스가 아닙니다 (E2c).
+
+**provenance.** derived 목록을 실제 인접 B2a 자리에 맞췄습니다.
+
+수정 목록은 `docs/design-md-weight/migrated/beusable/audit-log.md`에 있습니다. Post-F3 SHA-256 `168cb79a888dad1e156b336c22c9c9d627390d0b50b317e9c20e3b9cf619d175`. Core `portable_core: true`, `--gate-only` PASS.
+
+AUDIT_DONE fixes=32

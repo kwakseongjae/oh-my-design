@@ -1,0 +1,9 @@
+B2a·E2 전담 감사 (wave5 sol resubmit, fresh session). 워커 개정 뒤 별도 세션.
+
+웨이브 5 재제출본을 B2a·E2만 다시 대조했다. 값·표·applicability·구조와 워커의 C2/D1/`verification_v2`/`components_harvested` 결정은 그대로 뒀다.
+
+Compact app-entry field note에 완전 B2a를 붙였고, provenance derived 범위와 로그의 control-size 이중 목적지·F1/F2를 grep에 맞췄다.
+
+목록은 `docs/design-md-weight/migrated/ably/audit-log.md`.
+
+AUDIT_DONE fixes=7

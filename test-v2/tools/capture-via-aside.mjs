@@ -3,20 +3,21 @@
  * automated browsers.
  *
  * Coupang answers Playwright-driven Chrome with a 403 "Access Denied" and zero
- * images; it answers Aside with its actual homepage — 39 large images, the real
- * title, the real hero. Aside is a browser a person uses, driven from the
- * terminal, so the request looks like what it is.
+ * images; it answers Aside with its actual homepage. Aside is a browser a
+ * person uses, driven from the terminal, so the request looks like what it is.
  *
  * The line this does not cross: no CAPTCHA solving, no bot-detection evasion.
- * If a site presents a challenge rather than a page, that is a refusal and the
- * brand comes out of the set. Coupang served its normal homepage on the first
- * request.
+ * A site that serves a challenge rather than a page is refusing, and the brand
+ * comes out of the set.
  *
- * Same evidence schema and the same measurements as the Playwright channel
- * (analysis.mjs is shared), so evidence from the two is comparable. The one
- * structural difference: Aside's REPL has no filesystem, so the page hands back
- * one viewport screenshot as base64 over stdout and the crops are cut from it
- * here. That turned out to be steadier than per-element screenshots anyway.
+ * Page code comes from collectors.mjs, the same source the Playwright channel
+ * runs. Two copies cost the same bug twice and left this channel without a
+ * collection funnel for a whole round of captures.
+ *
+ * Structural differences that remain, both recorded in the evidence:
+ *   - Aside's REPL has no filesystem, so screenshots come back as base64.
+ *   - Its CDP Emulation domain is unavailable, so colour scheme cannot be
+ *     pinned. Whatever the browser profile is set to is what gets measured.
  *
  *   node capture-via-aside.mjs --brand coupang --url https://www.coupang.com/
  *
@@ -25,227 +26,156 @@
  */
 
 import { execFile } from "node:child_process";
-import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
-import { aggregateSubject, cropTo, light, median, palette, renderedCanvas, subject, toRgb } from "./analysis.mjs";
+import {
+  attritionOf, COLLECT_CHROME, COLLECT_IMAGERY, DISMISS_SELECTORS, FIND_VIDEO, REFIND_BOX, SCROLL_TO,
+} from "./collectors.mjs";
+import {
+  aggregateSubject, cropTo, light, median, palette, renderedCanvas, subject, toRgb,
+} from "./analysis.mjs";
 
 const execFileAsync = promisify(execFile);
 const HERE = dirname(fileURLToPath(import.meta.url));
 const EVIDENCE_ROOT = resolve(HERE, "..", "00-evidence");
 const ASIDE = join(process.env.HOME ?? "", ".local/bin/aside");
 
+const SURFACES = [
+  { id: "desktop-1440", viewport: { width: 1440, height: 900 } },
+  { id: "mobile-390", viewport: { width: 390, height: 844 } },
+];
 const IMAGERY_SAMPLES = 12;
 
-function arg(name, fallback) {
+function arg(name) {
   const i = process.argv.indexOf(`--${name}`);
-  return i === -1 ? fallback : process.argv[i + 1];
+  return i === -1 ? undefined : process.argv[i + 1];
 }
 
 /**
- * The in-page half. Runs inside Aside's REPL, which has the browser but no
- * modules, so everything it learns leaves through console.log.
+ * One REPL script per surface. Everything the page learns leaves through
+ * console.log, because the REPL cannot write files.
  */
-function replSource(url, samples) {
+function replSource(url, surface, samples) {
+  const dismiss = JSON.stringify(DISMISS_SELECTORS);
   return `
 const p = await openTab(${JSON.stringify(url)});
 await new Promise(r => setTimeout(r, 5000));
-
-for (const sel of ['[aria-label*="close" i]', '[aria-label*="닫기"]', '[id*="cookie" i] button', '[class*="cookie" i] button', '[id*="consent" i] button']) {
-  try { const el = await p.$(sel); if (el) await el.click({ timeout: 500 }); } catch {}
+for (const sel of ${dismiss}) {
+  try { const el = await p.$(sel); if (el) await el.click({ timeout: 400 }); } catch {}
 }
 await new Promise(r => setTimeout(r, 1200));
 
-const passes = [];
-for (let pass = 0; pass < 3; pass++) {
-  await p.evaluate((n) => window.scrollTo(0, window.innerHeight * n), pass);
-  await new Promise(r => setTimeout(r, 1400));
-  const found = await p.evaluate((max) => {
-  const vw = window.innerWidth, vh = window.innerHeight;
-  const dpr = window.devicePixelRatio || 1;
-  const hexOf = (rgb) => {
-    // A fully transparent background is not black. Reporting #000000 here gave
-    // Coupang a black page background it does not have.
-    const m = /rgba?\\((\\d+),\\s*(\\d+),\\s*(\\d+)(?:,\\s*([\\d.]+))?/.exec(rgb || "");
-    if (!m) return null;
-    if (m[4] !== undefined && Number(m[4]) === 0) return null;
-    return "#" + [m[1], m[2], m[3]].map((v) => Number(v).toString(16).padStart(2, "0")).join("");
-  };
+const chrome = await p.evaluate(${COLLECT_CHROME});
+await p.evaluate(() => window.scrollTo(0, window.innerHeight * 1.5));
+await new Promise(r => setTimeout(r, 1600));
+await p.evaluate(() => window.scrollTo(0, 0));
+await new Promise(r => setTimeout(r, 900));
 
-  // Geometry, not tag names. Coupang has a header — logo, search, category nav,
-  // visible in any screenshot — and no <header>, no [role=banner], no <nav>;
-  // its whole page is divs. The hero detector already refuses to trust class
-  // names for exactly this reason, and reading chrome by semantics contradicted
-  // it. The header is the band pinned to the top of the frame.
-  const headerOf = () => {
-    const semantic = document.querySelector("header, [role=banner]");
-    if (semantic) return { el: semantic, by: "semantic" };
-    let best = null;
-    for (const el of document.querySelectorAll("div, section, nav")) {
-      const r = el.getBoundingClientRect();
-      if (r.top > 8 || r.height < 40 || r.height > 220) continue;
-      if (r.width < window.innerWidth * 0.8) continue;
-      if (!el.querySelector("a, img, input")) continue;
-      if (!best || r.height * r.width > best.r.height * best.r.width) best = { el, r };
-    }
-    return best ? { el: best.el, by: "geometry" } : null;
-  };
-  const headerHit = headerOf();
-  const header = headerHit?.el ?? null;
+const collected = await p.evaluate(${COLLECT_IMAGERY}, ${samples});
+const video = await p.evaluate(${FIND_VIDEO});
+const meta = await p.evaluate(() => ({
+  title: document.title.slice(0, 120),
+  finalUrl: location.href,
+  viewport: { w: innerWidth, h: innerHeight, dpr: devicePixelRatio || 1 },
+}));
 
+const frames = [];
+for (const c of collected.candidates) {
+  const want = { ...c.docBox, tag: c.tag };
+  await p.evaluate(${SCROLL_TO}, want);
+  await new Promise(r => setTimeout(r, 700));
+  const box = await p.evaluate(${REFIND_BOX}, want);
+  if (!box) { frames.push(null); continue; }
+  const shot = await p.screenshot();
+  frames.push({ box, b64: shot.toString("base64") });
+}
+await p.evaluate(() => window.scrollTo(0, 0));
+const viewportShot = await p.screenshot();
 
-  // Same rule as the Playwright channel: the button the brand keeps, not the
-  // campaign CTA of the day. Promotional containers out, unlabelled controls
-  // out, and a repeating signature wins over raw size.
-  const PROMO = /banner|promo|carousel|swiper|slide|event|campaign|advert|\bad\b/i;
-  const inPromo = (node) => {
-    for (let cur = node; cur && cur !== document.body; cur = cur.parentElement) {
-      const id = (cur.id || "") + " " + (cur.className || "").toString();
-      if (PROMO.test(id)) return true;
-    }
-    return false;
-  };
-  // A brand's primary control is not always a filled rectangle. Musinsa's
-  // category page has 34 controls above the fold and none with an opaque
-  // background — reporting "no primary button" there described the collector,
-  // not the page. Outline and text buttons count, and which kind it is gets
-  // recorded rather than flattened away.
-  const fillOf = (st) => {
-    const solid = st.backgroundColor && st.backgroundColor !== "rgba(0, 0, 0, 0)";
-    if (solid) return "solid";
-    const bw = parseFloat(st.borderTopWidth) || 0;
-    const bc = st.borderTopColor || "";
-    if (bw > 0 && bc && bc !== "rgba(0, 0, 0, 0)") return "outline";
-    return "text";
-  };
-  const signature = new Map();
-  const candidates = [];
-  for (const el of document.querySelectorAll("button, a[class*=btn i], a[class*=button i], [role=button]")) {
-    const r = el.getBoundingClientRect();
-    if (r.top > vh || r.width < 60 || r.height < 28) continue;
-    const st = getComputedStyle(el);
-    const label = (el.innerText || "").trim();
-    if (!label || inPromo(el)) continue;
-    const fill = fillOf(st);
-    if (fill === "text") continue; // a bare text link is navigation, not a control surface
-    const key = fill + "|" + st.backgroundColor + "|" + st.borderTopColor + "|" + st.borderRadius + "|" + st.fontSize;
-    signature.set(key, (signature.get(key) ?? 0) + 1);
-    candidates.push({ el, s: st, r, key, label, fill });
-  }
-  candidates.sort((a, b) => {
-    const rep = (signature.get(b.key) ?? 0) - (signature.get(a.key) ?? 0);
-    return rep !== 0 ? rep : b.r.width * b.r.height - a.r.width * a.r.height;
+console.log("META:" + JSON.stringify({ chrome, collected, video, meta }));
+console.log("VIEWPORT_B64:" + viewportShot.toString("base64"));
+for (const [i, f] of frames.entries()) {
+  if (f) console.log("FRAME_" + i + "_B64:" + f.b64);
+}
+console.log("BOXES:" + JSON.stringify(frames.map(f => f && f.box)));
+`;
+}
+
+async function captureSurface(url, surface, captureDir) {
+  const startedAt = Date.now();
+  const { stdout } = await execFileAsync(ASIDE, ["repl", replSource(url, surface, IMAGERY_SAMPLES)], {
+    maxBuffer: 512 * 1024 * 1024,
+    timeout: 300000,
   });
-  const primary = candidates[0] ?? null;
+  const lines = stdout.split("\n");
+  const pick = (prefix) => lines.find((l) => l.startsWith(prefix));
 
-  const typeScale = [];
-  for (const tag of ["h1", "h2", "h3", "p", "button"]) {
-    const el = [...document.querySelectorAll(tag)].find((n) => {
-      const r = n.getBoundingClientRect();
-      return r.top < vh * 3 && r.height > 8 && (n.innerText || "").trim();
-    });
-    if (!el) continue;
-    const s = getComputedStyle(el);
-    typeScale.push({
-      tag, fontPx: +parseFloat(s.fontSize).toFixed(1), weight: s.fontWeight,
-      family: s.fontFamily.split(",")[0].replace(/["']/g, "").trim(),
-      lineHeight: s.lineHeight, letterSpacing: s.letterSpacing, color: hexOf(s.color),
+  const metaLine = pick("META:");
+  if (!metaLine) throw new Error("Aside returned no page data");
+  const { chrome, collected, video, meta } = JSON.parse(metaLine.slice("META:".length));
+  const boxes = JSON.parse((pick("BOXES:") ?? "BOXES:[]").slice("BOXES:".length));
+
+  const viewportLine = pick("VIEWPORT_B64:");
+  const frameShot = join(captureDir, `${surface.id}-viewport.png`);
+  if (viewportLine) writeFileSync(frameShot, Buffer.from(viewportLine.slice("VIEWPORT_B64:".length), "base64"));
+  chrome.pageBackgroundRendered = viewportLine
+    ? renderedCanvas(palette(await toRgb(frameShot, 200))[0], chrome.pageBackgroundComputed)
+    : null;
+
+  const funnel = { ...collected.funnel, kept: collected.candidates.length, framed: 0, cropped: 0, analysed: 0 };
+  const samples = [];
+  for (const [i, candidate] of collected.candidates.entries()) {
+    const box = boxes[i];
+    const frameLine = pick(`FRAME_${i}_B64:`);
+    if (!box || !frameLine) continue;
+    funnel.framed++;
+    const label = String(i + 1).padStart(2, "0");
+    const framePath = join(captureDir, `${surface.id}-frame-${label}.png`);
+    const cropPath = join(captureDir, `${surface.id}-imagery-${label}.png`);
+    writeFileSync(framePath, Buffer.from(frameLine.slice(`FRAME_${i}_B64:`.length), "base64"));
+    try {
+      await cropTo(framePath, cropPath, box.pixelBox);
+    } catch {
+      continue;
+    }
+    funnel.cropped++;
+    const rgb = await toRgb(cropPath);
+    funnel.analysed++;
+    samples.push({
+      ...candidate,
+      clipped: box.clipped,
+      matchedBy: box.matchedBy,
+      file: `capture/${surface.id}-imagery-${label}.png`,
+      palette: palette(rgb),
+      light: light(rgb),
+      subject: subject(rgb),
     });
   }
 
-  const imagery = [];
-  for (const el of document.querySelectorAll("img")) {
-    const r = el.getBoundingClientRect();
-    // A hero taller than the viewport is the most important image on the page,
-    // and requiring "wholly inside this screen" threw exactly those away —
-    // Apple has sixteen large images above the fold and one that fits. Take the
-    // visible part and say that is what was measured.
-    if (r.bottom <= 0 || r.top >= vh || r.width < 160) continue;
-    const visibleH = Math.min(r.bottom, vh) - Math.max(r.top, 0);
-    if (visibleH < 160) continue;
-    if (Math.min(r.right, vw) - Math.max(r.left, 0) < r.width * 0.9) continue;
-    const src = el.currentSrc || el.src;
-    if (!src) continue;
-    imagery.push({
-      src, alt: (el.alt || "").slice(0, 80),
-      box: { x: +(r.x / vw).toFixed(4), y: +(r.y / vh).toFixed(4), w: +(r.width / vw).toFixed(4), h: +(r.height / vh).toFixed(4) },
-      // Device pixels, because the crop happens against the raw screenshot.
-      pixelBox: { x: Math.max(0, r.x * dpr), y: Math.max(0, r.top, 0) * dpr, w: r.width * dpr, h: visibleH * dpr },
-      clipped: r.top < 0 || r.bottom > vh,
-      aspect: +(r.width / r.height).toFixed(3),
-      areaShare: +((r.width * r.height) / (vw * vh)).toFixed(4),
-      firstScreen: r.top < vh,
-      intrinsic: { w: el.naturalWidth || null, h: el.naturalHeight || null },
-    });
-  }
-  imagery.sort((a, b) => b.areaShare - a.areaShare);
-
-  const v = [...document.querySelectorAll("video")].find((el) => {
-    const r = el.getBoundingClientRect();
-    return r.top < vh && r.width > 200;
-  });
-
+  const lits = samples.map((s) => s.light);
+  const resolved = samples.map((s) => s.subject).filter((s) => s?.resolved);
   return {
-    title: document.title.slice(0, 120),
-    finalUrl: location.href,
-    atBottom: window.scrollY + vh >= document.body.scrollHeight - 4,
-    viewport: { w: vw, h: vh, dpr },
-    chrome: {
-      // body and html are both transparent on plenty of sites, which means the
-      // canvas the reader sees comes from the browser, not from CSS. Say so,
-      // and let the host measure it off the screenshot instead of guessing.
-      pageBackgroundComputed: hexOf(getComputedStyle(document.body).backgroundColor)
-        ?? hexOf(getComputedStyle(document.documentElement).backgroundColor),
-      bodyColor: hexOf(getComputedStyle(document.body).color),
-      header: header ? {
-        detectedBy: headerHit.by,
-        background: hexOf(getComputedStyle(header).backgroundColor),
-        heightPx: +header.getBoundingClientRect().height.toFixed(1),
-      } : null,
-      primaryButton: primary ? {
-        fill: primary.fill,
-        background: hexOf(primary.s.backgroundColor),
-        borderColor: primary.fill === "outline" ? hexOf(primary.s.borderTopColor) : undefined,
-        color: hexOf(primary.s.color),
-        radiusPx: +parseFloat(primary.s.borderRadius).toFixed(1),
-        fontPx: +parseFloat(primary.s.fontSize).toFixed(1), weight: primary.s.fontWeight,
-        label: primary.label.slice(0, 40),
-        repeats: signature.get(primary.key) ?? 1,
-      } : null,
-      typeScale,
-      // An absence a reader can interpret. Bare null cannot distinguish "this
-      // page has no primary control" from "the collector could not see one".
-      notes: {
-        buttonCandidatesAboveFold: candidates.length,
-        headerDetectedBy: headerHit ? headerHit.by : "not found",
+    meta,
+    viewport: surface.viewport,
+    chrome,
+    imagery: {
+      sampled: samples.length,
+      funnel,
+      attrition: attritionOf(funnel),
+      samples,
+      aggregate: {
+        meanLuma: median(lits.map((l) => l.meanLuma)),
+        dynamicRange: median(lits.map((l) => l.dynamicRange)),
+        luminanceGradients: lits.reduce((acc, l) => ({ ...acc, [l.luminanceGradient]: (acc[l.luminanceGradient] ?? 0) + 1 }), {}),
+        aspects: median(samples.map((s) => s.aspect)),
+        ...aggregateSubject(resolved, samples.length),
       },
     },
-    imagery,
-    motion: v ? {
-      present: true, autoplay: v.autoplay, loop: v.loop, muted: v.muted,
-      duration: Number.isFinite(v.duration) && v.duration > 0 ? +v.duration.toFixed(2) : null,
-      aspect: +(v.getBoundingClientRect().width / v.getBoundingClientRect().height).toFixed(3),
-    } : { present: false, note: "no video above the fold at capture time" },
+    motion: video,
+    durationMs: Date.now() - startedAt,
   };
-}, ${samples});
-  const shot = await p.screenshot();
-  passes.push({ pass, found, b64: shot.toString("base64") });
-  if (found.atBottom) break;
-}
-
-const merged = { ...passes[0].found, imagery: [] };
-const seen = new Set();
-for (const entry of passes) {
-  for (const item of entry.found.imagery) {
-    if (seen.has(item.src) || merged.imagery.length >= ${samples}) continue;
-    seen.add(item.src);
-    merged.imagery.push({ ...item, pass: entry.pass });
-  }
-}
-console.log("COLLECTED:" + JSON.stringify(merged));
-for (const entry of passes) console.log("SHOT_B64_" + entry.pass + ":" + entry.b64);
-`;
 }
 
 /* ----------------------------------------------------------------- main ---- */
@@ -261,106 +191,47 @@ const outDir = join(EVIDENCE_ROOT, brand);
 const captureDir = join(outDir, "capture");
 mkdirSync(captureDir, { recursive: true });
 
+const startedAt = Date.now();
 const evidence = {
   brand,
   capturedAt: new Date().toISOString(),
   source: { url },
   method: {
     channel: "aside",
-    colorScheme: "browser profile default — not controllable through Aside (CDP Emulation domain unavailable)",
     why: "site refuses automated browsers; Playwright receives 403 Access Denied",
+    colorScheme: "browser profile default — not controllable through Aside (CDP Emulation domain unavailable)",
     note: "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
     imagerySamplesRequested: IMAGERY_SAMPLES,
+    surfaces: SURFACES.map((s) => s.id),
   },
+  surfaces: {},
 };
 
 try {
-  const { stdout } = await execFileAsync(ASIDE, ["repl", replSource(url, IMAGERY_SAMPLES)], {
-    maxBuffer: 256 * 1024 * 1024,
-    timeout: 180000,
-  });
-
-  const lines = stdout.split("\n");
-  const collectedLine = lines.find((l) => l.startsWith("COLLECTED:"));
-  if (!collectedLine) throw new Error("Aside returned no page data");
-  const collected = JSON.parse(collectedLine.slice("COLLECTED:".length));
-
-  const shots = new Map();
-  for (const line of lines) {
-    const m = /^SHOT_B64_(\d+):/.exec(line);
-    if (!m) continue;
-    const shotPath = join(captureDir, `viewport-pass-${m[1]}.png`);
-    writeFileSync(shotPath, Buffer.from(line.slice(m[0].length), "base64"));
-    shots.set(Number(m[1]), shotPath);
+  for (const surface of SURFACES) {
+    // Aside drives a real browser window whose size we do not control, so a
+    // surface here is the window as it stands rather than a set viewport. The
+    // measured size is recorded instead of the requested one.
+    const captured = await captureSurface(url, surface, captureDir);
+    evidence.source.finalUrl = captured.meta.finalUrl;
+    evidence.source.title = captured.meta.title;
+    captured.viewportMeasured = captured.meta.viewport;
+    delete captured.meta;
+    evidence.surfaces[surface.id] = captured;
+    break; // one pass only until window sizing is controllable
   }
-  if (shots.size === 0) throw new Error("Aside returned no screenshot");
-
-  evidence.source.finalUrl = collected.finalUrl;
-  evidence.source.title = collected.title;
-  evidence.method.viewport = collected.viewport;
-  evidence.chrome = collected.chrome;
-  evidence.motion = collected.motion;
-
-  // What the reader actually sees behind the content. When CSS reports
-  // transparent for both body and html, this is the only honest answer — the
-  // modal colour of the rendered frame, with the share of the frame it covers
-  // so a thin claim is visible as a thin claim.
-  const firstShot = shots.get(0);
-  if (firstShot) {
-    const [dominant] = palette(await toRgb(firstShot, 200));
-    evidence.chrome.pageBackgroundRendered = renderedCanvas(dominant);
-  }
-
-  // Same treatment as the page canvas: when CSS says transparent, the header's
-  // colour is whatever the reader sees in that band.
-  if (firstShot && evidence.chrome.header && !evidence.chrome.header.background) {
-    const dpr = collected.viewport.dpr || 1;
-    const bandPath = join(captureDir, "header-band.png");
-    try {
-      await cropTo(firstShot, bandPath, { x: 0, y: 0, w: collected.viewport.w * dpr, h: Math.max(8, evidence.chrome.header.heightPx * dpr) });
-      const [band] = palette(await toRgb(bandPath, 200));
-      if (band) evidence.chrome.header.backgroundRendered = { hex: band.hex, coverage: band.coverage, source: "modal colour of the header band" };
-    } catch {}
-  }
-
-  const samples = [];
-  for (const [i, candidate] of collected.imagery.entries()) {
-    const cropPath = join(captureDir, `imagery-${String(i + 1).padStart(2, "0")}.png`);
-    const source = shots.get(candidate.pass);
-    if (!source) continue;
-    try {
-      await cropTo(source, cropPath, candidate.pixelBox);
-    } catch {
-      continue;
-    }
-    const rgb = await toRgb(cropPath);
-    samples.push({
-      ...candidate,
-      file: `capture/imagery-${String(i + 1).padStart(2, "0")}.png`,
-      palette: palette(rgb),
-      light: light(rgb),
-      subject: subject(rgb),
-    });
-  }
-
-  const lits = samples.map((s) => s.light);
-  const resolved = samples.map((s) => s.subject).filter((s) => s?.resolved);
-  evidence.imagery = {
-    sampled: samples.length,
-    note: samples.length < collected.imagery.length
-      ? `${collected.imagery.length - samples.length} candidates sat below the captured viewport and were skipped`
-      : undefined,
-    samples,
-    aggregate: {
-      meanLuma: median(lits.map((l) => l.meanLuma)),
-      dynamicRange: median(lits.map((l) => l.dynamicRange)),
-      luminanceGradients: lits.reduce((acc, l) => ({ ...acc, [l.luminanceGradient]: (acc[l.luminanceGradient] ?? 0) + 1 }), {}),
-      aspects: median(samples.map((s) => s.aspect)),
-      ...aggregateSubject(resolved, samples.length),
-    },
-  };
+  evidence.method.surfaces = Object.keys(evidence.surfaces);
+  evidence.method.surfaceLimit = "Aside cannot resize its window from the REPL; only the window's own viewport is captured";
 } catch (error) {
   evidence.error = String(error).split("\n")[0];
+}
+
+evidence.method.totalDurationMs = Date.now() - startedAt;
+const primary = Object.values(evidence.surfaces)[0];
+if (primary) {
+  evidence.chrome = primary.chrome;
+  evidence.imagery = primary.imagery;
+  evidence.motion = primary.motion;
 }
 
 writeFileSync(join(outDir, "evidence.json"), `${JSON.stringify(evidence, null, 2)}\n`, "utf8");
@@ -369,11 +240,10 @@ console.log(JSON.stringify({
   channel: "aside",
   ok: !evidence.error,
   error: evidence.error ?? null,
-  title: evidence.source.title ?? null,
-  chrome: evidence.chrome ? {
-    pageBackground: evidence.chrome.pageBackground,
-    primaryButton: evidence.chrome.primaryButton?.background ?? null,
-  } : null,
-  imagery: evidence.imagery?.aggregate ?? null,
+  seconds: +(evidence.method.totalDurationMs / 1000).toFixed(1),
+  surfaces: Object.fromEntries(Object.entries(evidence.surfaces).map(([id, s]) => [id, {
+    samples: s.imagery.sampled,
+    suspect: s.imagery.attrition.suspect ? s.imagery.attrition.reasons : false,
+  }])),
   out: outDir,
 }, null, 1));

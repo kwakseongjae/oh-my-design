@@ -1,0 +1,2226 @@
+{
+  "seed": 20260823,
+  "generatedAt": "2026-08-23",
+  "derivedFrom": "arm-order.json",
+  "method": {
+    "displayOrder": "sha256(\"<evaluator>|<lane>|<brand>|<rep>|display|<seed>\") 첫 바이트를 6개 순열에 매핑",
+    "laneOrder": "평가자 인덱스로 교차 배정 — 해시로 뽑으면 셋이 같은 레인부터 볼 수 있다",
+    "separateSalt": "생성 순서와 다른 salt. 같은 salt를 쓰면 표시 순서가 생성 순서의 사본이 된다",
+    "note": "표시 순서는 익명 산출물에 적용된다. 평가자는 어떤 arm이 어느 자리인지 모른다."
+  },
+  "evaluators": [
+    "grok-4.6",
+    "sol",
+    "sonnet5"
+  ],
+  "sessions": [
+    {
+      "evaluator": "grok-4.6",
+      "lane": "A",
+      "lanePosition": 1,
+      "runs": 36,
+      "rows": [
+        {
+          "brand": "apple",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|A|apple|1|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "grok-4.6|A|apple|2|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|A|apple|3|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "grok-4.6|A|apple|4|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "grok-4.6|A|baemin|1|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "grok-4.6|A|baemin|2|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "grok-4.6|A|baemin|3|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|A|baemin|4|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "grok-4.6|A|coupang|1|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 2,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|A|coupang|2|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|A|coupang|3|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|A|coupang|4|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "grok-4.6|A|figma|1|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|A|figma|2|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|A|figma|3|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|A|figma|4|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 1,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|A|karrot|1|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "grok-4.6|A|karrot|2|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|A|karrot|3|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|A|karrot|4|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|A|musinsa|1|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 2,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "grok-4.6|A|musinsa|2|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "grok-4.6|A|musinsa|3|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|A|musinsa|4|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|A|naver|1|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|A|naver|2|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|A|naver|3|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|A|naver|4|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|A|toss|1|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 2,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|A|toss|2|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|A|toss|3|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|A|toss|4|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|A|wanted|1|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|A|wanted|2|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "grok-4.6|A|wanted|3|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "grok-4.6|A|wanted|4|display|20260823"
+        }
+      ]
+    },
+    {
+      "evaluator": "grok-4.6",
+      "lane": "B",
+      "lanePosition": 2,
+      "runs": 36,
+      "rows": [
+        {
+          "brand": "apple",
+          "rep": 1,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|B|apple|1|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 2,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|B|apple|2|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "grok-4.6|B|apple|3|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|B|apple|4|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|B|baemin|1|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 2,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "grok-4.6|B|baemin|2|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|B|baemin|3|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|B|baemin|4|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 1,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "grok-4.6|B|coupang|1|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 2,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|B|coupang|2|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|B|coupang|3|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|B|coupang|4|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|B|figma|1|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "grok-4.6|B|figma|2|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "grok-4.6|B|figma|3|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|B|figma|4|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "grok-4.6|B|karrot|1|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 2,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|B|karrot|2|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|B|karrot|3|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|B|karrot|4|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|B|musinsa|1|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 2,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "grok-4.6|B|musinsa|2|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|B|musinsa|3|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|B|musinsa|4|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|B|naver|1|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "grok-4.6|B|naver|2|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "grok-4.6|B|naver|3|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "grok-4.6|B|naver|4|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "grok-4.6|B|toss|1|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "grok-4.6|B|toss|2|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|B|toss|3|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|B|toss|4|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|B|wanted|1|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "grok-4.6|B|wanted|2|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|B|wanted|3|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "grok-4.6|B|wanted|4|display|20260823"
+        }
+      ]
+    },
+    {
+      "evaluator": "sol",
+      "lane": "B",
+      "lanePosition": 1,
+      "runs": 36,
+      "rows": [
+        {
+          "brand": "apple",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sol|B|apple|1|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sol|B|apple|2|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|apple|3|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|apple|4|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sol|B|baemin|1|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 2,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sol|B|baemin|2|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sol|B|baemin|3|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sol|B|baemin|4|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 1,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|coupang|1|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 2,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|coupang|2|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sol|B|coupang|3|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sol|B|coupang|4|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 1,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|figma|1|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 2,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sol|B|figma|2|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sol|B|figma|3|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sol|B|figma|4|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sol|B|karrot|1|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 2,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sol|B|karrot|2|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sol|B|karrot|3|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|karrot|4|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sol|B|musinsa|1|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|musinsa|2|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sol|B|musinsa|3|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|musinsa|4|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sol|B|naver|1|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 2,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|naver|2|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sol|B|naver|3|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|naver|4|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 1,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|toss|1|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|toss|2|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|toss|3|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sol|B|toss|4|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|wanted|1|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 2,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sol|B|wanted|2|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sol|B|wanted|3|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sol|B|wanted|4|display|20260823"
+        }
+      ]
+    },
+    {
+      "evaluator": "sol",
+      "lane": "A",
+      "lanePosition": 2,
+      "runs": 36,
+      "rows": [
+        {
+          "brand": "apple",
+          "rep": 1,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sol|A|apple|1|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 2,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sol|A|apple|2|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sol|A|apple|3|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sol|A|apple|4|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sol|A|baemin|1|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sol|A|baemin|2|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sol|A|baemin|3|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sol|A|baemin|4|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sol|A|coupang|1|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 2,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sol|A|coupang|2|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sol|A|coupang|3|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sol|A|coupang|4|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sol|A|figma|1|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 2,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sol|A|figma|2|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sol|A|figma|3|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sol|A|figma|4|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sol|A|karrot|1|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sol|A|karrot|2|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sol|A|karrot|3|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sol|A|karrot|4|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 1,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sol|A|musinsa|1|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sol|A|musinsa|2|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sol|A|musinsa|3|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sol|A|musinsa|4|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sol|A|naver|1|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 2,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sol|A|naver|2|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sol|A|naver|3|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sol|A|naver|4|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sol|A|toss|1|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sol|A|toss|2|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sol|A|toss|3|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sol|A|toss|4|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sol|A|wanted|1|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 2,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sol|A|wanted|2|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sol|A|wanted|3|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sol|A|wanted|4|display|20260823"
+        }
+      ]
+    },
+    {
+      "evaluator": "sonnet5",
+      "lane": "A",
+      "lanePosition": 1,
+      "runs": 36,
+      "rows": [
+        {
+          "brand": "apple",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sonnet5|A|apple|1|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|apple|2|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sonnet5|A|apple|3|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sonnet5|A|apple|4|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 1,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|baemin|1|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sonnet5|A|baemin|2|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|baemin|3|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|baemin|4|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sonnet5|A|coupang|1|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 2,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|coupang|2|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sonnet5|A|coupang|3|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sonnet5|A|coupang|4|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sonnet5|A|figma|1|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 2,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|figma|2|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|figma|3|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sonnet5|A|figma|4|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sonnet5|A|karrot|1|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|karrot|2|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|karrot|3|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sonnet5|A|karrot|4|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sonnet5|A|musinsa|1|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 2,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sonnet5|A|musinsa|2|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|musinsa|3|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|musinsa|4|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 1,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|naver|1|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 2,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sonnet5|A|naver|2|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|naver|3|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sonnet5|A|naver|4|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sonnet5|A|toss|1|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sonnet5|A|toss|2|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sonnet5|A|toss|3|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|toss|4|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sonnet5|A|wanted|1|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 2,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sonnet5|A|wanted|2|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|wanted|3|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|A|wanted|4|display|20260823"
+        }
+      ]
+    },
+    {
+      "evaluator": "sonnet5",
+      "lane": "B",
+      "lanePosition": 2,
+      "runs": 36,
+      "rows": [
+        {
+          "brand": "apple",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|apple|1|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|B|apple|2|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|apple|3|display|20260823"
+        },
+        {
+          "brand": "apple",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|apple|4|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|B|baemin|1|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|B|baemin|2|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|baemin|3|display|20260823"
+        },
+        {
+          "brand": "baemin",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|baemin|4|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 1,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sonnet5|B|coupang|1|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|B|coupang|2|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sonnet5|B|coupang|3|display|20260823"
+        },
+        {
+          "brand": "coupang",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|B|coupang|4|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|figma|1|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sonnet5|B|figma|2|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|B|figma|3|display|20260823"
+        },
+        {
+          "brand": "figma",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|figma|4|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|karrot|1|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sonnet5|B|karrot|2|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|B|karrot|3|display|20260823"
+        },
+        {
+          "brand": "karrot",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|B|karrot|4|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sonnet5|B|musinsa|1|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sonnet5|B|musinsa|2|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 3,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|B|musinsa|3|display|20260823"
+        },
+        {
+          "brand": "musinsa",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|musinsa|4|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 1,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|B|naver|1|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 2,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|B|naver|2|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|naver|3|display|20260823"
+        },
+        {
+          "brand": "naver",
+          "rep": 4,
+          "displayOrder": [
+            "hallmark",
+            "omd",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|B|naver|4|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 1,
+          "displayOrder": [
+            "uiuxpromax",
+            "hallmark",
+            "omd"
+          ],
+          "salt": "sonnet5|B|toss|1|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 2,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|toss|2|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 3,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|toss|3|display|20260823"
+        },
+        {
+          "brand": "toss",
+          "rep": 4,
+          "displayOrder": [
+            "omd",
+            "hallmark",
+            "uiuxpromax"
+          ],
+          "salt": "sonnet5|B|toss|4|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 1,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|wanted|1|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 2,
+          "displayOrder": [
+            "omd",
+            "uiuxpromax",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|wanted|2|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 3,
+          "displayOrder": [
+            "hallmark",
+            "uiuxpromax",
+            "omd"
+          ],
+          "salt": "sonnet5|B|wanted|3|display|20260823"
+        },
+        {
+          "brand": "wanted",
+          "rep": 4,
+          "displayOrder": [
+            "uiuxpromax",
+            "omd",
+            "hallmark"
+          ],
+          "salt": "sonnet5|B|wanted|4|display|20260823"
+        }
+      ]
+    }
+  ]
+}

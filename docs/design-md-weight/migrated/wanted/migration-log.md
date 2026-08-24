@@ -1,0 +1,81 @@
+# Wanted migration log
+
+Source: `web/references/wanted/DESIGN.md`
+Destination: `docs/design-md-weight/migrated/wanted/DESIGN.md`
+Provenance: `docs/design-md-weight/migrated/wanted/provenance.md`
+Date: 2026-08-23
+Worker: grok-4.6 T2
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v7
+Portable Core: worker SHA/command results withdrawn after F3 body edits; this log does not re-assert them (E2c). Pre-F3 SHA-256 `37e5b4142c4607111b0d42988518761b552123d4336dc11ce90f3a3d9ec89a2e` is the worker resubmit hash, not a claim about the current file.
+
+| Legacy | Disposition | Destination / reason |
+|---|---|---|
+| YAML identity (id, name, country, category, homepage, primary_color, logo) | 분리 → provenance; logo 경계 옮김 → Typography & Assets + Named gaps; primary_color 옮김 → Distinctive / Foundations / Components | Portable file has no frontmatter. Name kept as H1 `Wanted Design System`. Catalog `primary_color` `#0066ff` is multi-destination (E2a): provenance identity 14/24 + Distinctive 36 + capture-bound 53 + Foundations Primary 76 + header account Text 177 + Scope quieter/denser 13 (under B2a). Catalog homepage `https://www.wanted.co.kr` is provenance identity 13 + Scope 9 + Surfaces/Sources/Tier 1 (E2a). Catalog favicon `https://www.google.com/s2/favicons?domain=wanted.co.kr&sz=256` is triple (E2a): provenance identity 15/26 + portable Assets 153 + Named gaps 344 (`first-party logo mark beyond catalog Google-favicon identity`). Not a captured first-party mark. |
+| YAML `ds` (Wanted Montage name/url/type/description) | 분리 → provenance; name/url/description 옮김 → Experience `scope` | 출처 원장. `ds.type: system` 포함 (A1c) — provenance-only type field. `ds.name` Wanted Montage, `ds.url` `https://montage.wanted.co.kr/`, and `ds.description` (official product-experience design system with foundations, cross-platform components, UI kits, utilities, and usage guidance) are dual provenance 17–20/28 + portable Scope 9 (E2a). |
+| YAML `omd`, `verified`, `verification_v2` surfaces/sources, token claims, `tokens.source` / `extracted` / `note` | 분리 → provenance; surfaces/sources URL 옮김 → Experience `scope`; token note 옮김 → Typography | 출처 원장·freshness·Proof. Verification surfaces/sources URLs are dual Scope 9 + provenance Surfaces/Sources (E2a). Token note (Pretendard Variable visible; Wanted Sans / Pretendard JP declared-only) remains Typography family/evidence as well. Footer `(omd:migrate)` is provenance 44. |
+| YAML `tokens.colors` / `typography` / `spacing` / `rounded` / `shadow` / `components` | 옮김 → Foundations, Typography & Assets, Components & States | 검증된 값만 최소 필드 단위. YAML unitless `lineHeight` 1.36 / 1.5 / 1.43 / 1.33은 비율로 보존하고 표의 30px / 24px / 20px / 16px와 합치지 않음 (A1a). 검증된 primitive type은 컴포넌트별로 보존: button / button / card / card / input / dialog. `Kind: interactive`로 뭉개지 않음 (A1b). Montage menu keeps `Type: dialog`; Kind+map omitted (C4). |
+| §1 Visual Theme & Atmosphere | 옮김 → Experience `scope` claim, distinctive traits | 다섯 first-party 표면, Wanted Montage name/URL, 현재 표현, Montage 2026 framing, Pretendard Variable vs declared-only faces. Quieter/denser + signature-unit and Montage→product evidence-boundary sit under adjacent complete B2a. 반복 분위기 문장은 범위에 기여하는 요약만. |
+| §2 Color Palette & Roles | 옮김 → Foundations semantic color + Avoid + Named gaps | `#0066ff` `#171719` `#333333` `#858688` `#ffffff` `#f8f8f8` `#e8e9ea` 및 61% / 16% 관측 조건. 구 마케팅 색과 `#f7f7f8` 비승격은 Foundations 85 (unpromoted-role adjacent complete B2a) + Avoid 65 + Named gaps 334 (E2a). |
+| §3 Typography Rules | 옮김 → Typography & Assets + Named gaps | 증거 등급 5종. Campaign-only Wanted Sans and native-app overrides remain **Unresolved claim** 128, not `Outside this capture`. Pretendard Variable 1,575, 역할 메트릭(§3 표의 Supporting title 15px / 600 / 22px / 0.144px 포함 — YAML에 없는 검증 행). Display 1–Caption 2는 시스템 맥락이지 machine token이 아님 (Type roles 149 + Named gaps 337). Font/scale gaps also Named gaps 335–337 (Wanted Sans / campaign / Montage scale) (E2a). Official-distributed-asset license-check has adjacent complete B2a (120); also Assets 153. 미확인 family 대체 금지는 Family 135 + Avoid 64/68. |
+| §3 Montage font-resource license caveat | 옮김 → Typography & Assets | “asset licensing must be checked per resource before redistribution”. Adjacent complete B2a on Font evidence 120; also Assets 153 (E2a). URL은 provenance narrative + Scope 9 (typography-doc). |
+| §4 Component Stylings | 옮김 → Components & States + Named gaps | Header account action, job filter trigger, mini job card, directory job card, search dialog, Montage menu. YAML 기하와 본문 기하를 같은 슬롯에 유지. capture selector는 원본에 없음 — 발명하지 않음. Capture-record omitted-rather-than-synthesized / no filled apply CTA without a matching sample has adjacent complete B2a (164). Component-state gaps also Named gaps 338–339 / 345–348 (hover/error/kind; Montage kind/map; header L/E/S omitted; search-dialog error omitted) (E2a). |
+| §4 mini job card / directory job card / Montage menu | 옮김 → Components & States | `Type: card` / `Type: card` / `Type: dialog` 보존. Mini/directory: interactive-kind 근거가 없어 kind와 applicability map 생략 (C4). Montage menu: source `type: dialog`, geometry, shadow, overlay/menu use, open state only — Kind+map omitted the same way; dialog internals being interactive ≠ overlay hover/disabled/loading (C4). |
+| §5 Layout Principles | 옮김 → Layout & Platforms + Foundations shape | 12px media vs 8px control vs 16px overlay, flat card body, product≠Montage evidence. Adjacent complete B2a on the layout application (285). grid/breakpoint는 원본대로 생략. |
+| §6 Depth & Elevation | 옮김 → Foundations elevation + Named gaps | 제품 카드 flat, control inset `1px inset rgba(112,115,124,0.16)`, Montage menu two-layer shadow. generic modal shadow 비승격은 Elevation 108 + Named gaps 342 (E2a). |
+| §7 Do's | 옮김 → Experience principles (capture-bound application) | 브랜드 적용 규칙. Adjacent complete B2a on the capture-bound list (51). Governance 통제 문구에 넣지 않음. |
+| §7 Don'ts | 옮김 → Experience avoid | 브랜드 금지. Adjacent complete B2a on the Avoid list (62). Wanted Sans UI 금지, 구 스냅샷 semantic/filled CTA 발명 금지, shadowed 12px card 남용 금지. |
+| §8 Responsive Behavior | 옮김 → Layout & Platforms + Named gaps | 반복 job unit + search overlay, 동일 type/radius hierarchy. Exact breakpoints와 native-app navigation 미수립은 Layout 287 + Named gaps 341 (E2a). Desktop-capture measurement-boundary reading has adjacent complete B2a (289). |
+| §9 Agent Prompt Guide | 삭제 | 도구별 복붙 프롬프트. 흰 캔버스·`#171719`/`#333333`/`#0066ff`·Pretendard Variable·flat job cards·12px media·8px filter·observed search-dialog only·status colors/native patterns 금지는 이미 Foundations/Components/Typography/§14에 있음 (A3: §9-only 고유값 없음). 슬롯 없는 위임 없음. |
+| §10 Voice & Tone | 옮김 → Content & Locales | Official system-language fact remains unqualified. Product-copy / search-filter-job-detail / employer-documentation / direct-label / no-synthetic-voice application has adjacent complete B2a (296). 합성 보이스 샘플 없음. 원본에 없는 storefront 등 부정 claim 신설 없음 (D1). |
+| §11 Brand Narrative | 옮김 → Experience `scope` Brand-narrative paragraph + provenance Narrative | Unique propositions restored in portable Scope 19 under adjacent complete B2a: “career decisions require both emotional confidence and reliable comparison”; “Typography stays neutral and highly legible so role and company evidence can lead.” Also provenance Narrative 94 + Derived inventory. Not provenance-only, not deleted. Montage URL is dual Scope + provenance. |
+| §12 Principles | 옮김 → Experience principles | Principles 1–4 as a whole sit under adjacent complete B2a: derived editorial implementation inference from the verified surfaces; they are not Wanted-authored or a separately published UI specification (44). 1–2 are not classified as first-party. First-party Montage/product *facts* (URLs, Pretendard Variable 1,575 uses, Montage is official product-experience DS) stay unqualified outside that numbered list. Governance 일반 문구는 그 한정의 대체물이 아님. |
+| §13 Personas | 옮김 → Experience `primary-tasks` + Audience | 원문이 public task contexts이며 verified biographical personas가 아니라고 명시. 세 항목을 user-outcomes로 흡수. 가상 biography 없음. sidecar에 fictional demographics 재수록 없음 (D2, E2a 이중 목적지). Audience no-invented-personas / observable-work has adjacent complete B2a (32). D2 source task-context sentences stay unqualified. |
+| §14 States | 옮김 → Components & States capture record + per-component applicability + Named gaps | 본문 보존: search dialog·Montage menu open 캡처, default buttons/filters without hover/focus expansion, error/success/loading/empty/disabled/application-completion 부재. Capture record 160–168 + Named gaps 338–339 / 345–348 (E2a). Omitted-rather-than-synthesized / no filled apply CTA without a matching sample has adjacent complete B2a (164). 선언 컴포넌트는 의미로 적용하되 미관측 시각값은 발명하지 않음. `not captured`를 `not-applicable` 사유로 쓰지 않음 (C1). Header account action: loading/error/success omitted at the field boundary; source names only current product header account action; exact selector/label/destination/request/outcome unresolved (C2) — not closed as destination. Search dialog: error applicability omitted (exact query-validation unresolved; source unobserved/unpromoted error is not a not-applicable reason) (C1); loading/success remain query-entry role-based. Job filter trigger loading/error/success remain local-filter role-based. Montage menu: Kind+map omitted (C4). graph 위임 없음. This is not a complete state-coverage claim (C3). |
+| §15 Motion & Easing | 옮김 → Foundations motion + Named gaps | 무출처 커브 없음(삭제할 값 없음). duration/easing 비승격. Dialog/menu expansion은 state change only — universal curve 아님. Foundations Motion 112 + Named gaps 343 (E2a). Foundations Motion은 B3 다섯 증거 종류(transition properties · animation name · duration · easing · reduced-motion behavior)를 컴포넌트별 computed 관측한 뒤에만 승격한다는 게이트를 전문 명시. “공식 출처로 검증될 때까지” 약화 문구 없음 (B3, E2c). |
+| Footer **Verified** / Tier 1 / Tier 2 / Conflicts | 분리 → provenance; Tier 1 URL 옮김 → Experience `scope` | Verified 2026-07-12 (omd:migrate) freshness is provenance 44. Tier 2 unusable records and Conflicts unresolved stay provenance-only. Footer Tier 1 URLs (five surfaces plus typography-doc and text-button-doc) are dual Scope 9 + provenance Tier 1 (E2a). |
+
+### F1 / F2 (v7 mandatory final passes)
+
+Recorded in the revision block below after the 2026-08-23 retro sol reread.
+
+## Revision 2026-08-23 (retro sol resubmit)
+
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v7. Source FAIL: `docs/reviews/t2-1-retro-2026-08-23-sol-1.md` §3 Wanted. Worker SHA-256 `37e5b4142c4607111b0d42988518761b552123d4336dc11ce90f3a3d9ec89a2e` is pre-F3; F3 body edits mean this log does not re-assert that hash as the current file (E2c). F3 writes `audit-log.md`.
+
+| Item | Correction |
+|---|---|
+| Font evidence A1 | Campaign-only Wanted Sans and native-app overrides restored to **Unresolved claim** (Typography 128). Capture-range explanation is not that class. |
+| §11 unique narrative E1 | “career decisions require both emotional confidence and reliable comparison” and “Typography stays neutral and highly legible so role and company evidence can lead” restored in Scope Brand-narrative 19 with adjacent complete B2a, and in provenance Narrative 94. |
+| Footer A1c | `(omd:migrate)` kept at provenance 44. |
+| Principles B2a / F1 | Principles 1–4 as a whole are derived editorial, not 1–2 first-party. Adjacent complete B2a also on Scope quieter/denser + signature-unit, Montage→product causal, Brand-narrative, capture-bound, Avoid, Foundations/Layout/Content application. Phrase used: derived editorial implementation inference from the verified surfaces; not Wanted-authored or a separately published UI specification. |
+| Header account C2 | Loading/error/success rows omitted. After table: source names this control only as current product header account action; exact selector/label/destination/request/outcome unresolved. |
+| Search dialog C1 | Error applicability field omitted. Loading/success kept as independently query-entry role-based, not as unobserved-as-not-applicable. |
+| Montage menu C4 | `Type: dialog` kept. Kind and the 7-state map omitted, same pattern as Mini job card / Directory job card. |
+| Source-row E2/E2a | Destinations in the table above: favicon triple; catalog `primary_color` `#0066ff` multi-destination; homepage dual Scope+ledger; `ds` name/url/description dual Scope; verification/footer Tier 1 URLs dual Scope; §2/§3/§4/§14/§6/§8/§15 Named gaps included. |
+
+### F1 B2a scan (full DESIGN.md reread)
+
+Adjacent complete B2a (`derived editorial implementation inference` / `not Wanted-authored or a separately published UI specification`) on: Scope capture-bound coverage (11); Scope quieter/denser and signature-unit (13); Scope Montage→product evidence-boundary (17); Scope Brand-narrative (19); Audience no-invented-personas / observable-work (32); numbered Principles 1–4 (44); capture-bound application (51); Avoid (62); Semantic color unpromoted-role (85); Spacing not-a-strict-mathematical-scale (91); Shape not-a-universal-radius (100); Elevation no generic modal shadow (108); Font evidence Official-distributed-asset license-check (120); Family font-use boundary (135); Type-role Montage scale as system context (149); Assets Google-favicon identity-not-captured (153); Capture-record omitted-rather-than-synthesized / no filled apply CTA without a matching sample (164); Layout application (285); Layout desktop-capture measurements (289); Content application including no-synthetic-voice (296). Left unqualified as first-party or observed-technical: Wanted service idea; surface/source URLs including Wanted Montage name/URL and official DS description; Montage is official product-experience DS; Pretendard Variable 1,575 uses; declared-only Wanted Sans Variable / Pretendard JP Variable existence; YAML `ds.type: system`; token measurements and component anatomy; B3 five-kind gate; Core C1/C2/C3 capture-record policy and per-control C2 omission / C4 kind-omission notes; job-filter loading/error/success role map; Governance; Named gaps inventory. Provenance derived inventory lists Principles 1–4 as derived (not 1–2 first-party). Reconstruction-boundary exemption not used.
+
+### F2 E2 grep (value + field/role context)
+
+- Catalog `primary_color` `#0066ff` → provenance identity 14/24 + Distinctive 36 + capture-bound 53 + Foundations Primary 76 + header account Text 177 + Scope quieter/denser 13.
+- Catalog homepage `www.wanted.co.kr` → provenance identity 13 + Scope 9 + Surfaces/Sources/Tier 1.
+- Google favicon `s2/favicons?domain=wanted.co.kr` → provenance identity 15/26 + Assets 153 + Named gaps 344 (triple, not provenance-only).
+- YAML `ds.name` / `ds.url` / `ds.description` → provenance 17–20/28 + Scope 9.
+- YAML `ds.type: system` → provenance only (A1c).
+- verification surfaces/sources + footer Tier 1 URLs (`wanted.co.kr`, `wdlist/518`, `company`, `montage.wanted.co.kr`, `docs/foundations`, typography-style, text-button/design) → Scope 9 + provenance Surfaces/Sources/Tier 1.
+- Footer `(omd:migrate)` → provenance 44.
+- §2 omitted colors → Foundations 85 (unpromoted-role B2a) + Avoid 65 + Named gaps 334.
+- §3 Unresolved claim / Wanted Sans / campaign / Montage scale → Typography 128/135/149 + Named gaps 335–337. Official-distributed-asset license-check → Font evidence 120 + Assets 153.
+- §4/§14 component-state gaps → Components 160–168 / 193 / 225 / 236 / 265 / 273 + Named gaps 338–339 / 345–348. Capture-record omitted-rather-than-synthesized B2a → 164.
+- Header account loading/error/success omitted sentence → Components 193 + Named gaps 346; no destination-invention rows.
+- Search-dialog error omitted → Components 265 + Named gaps 347; no `not-applicable` error row.
+- Montage C4 kind/map omitted → Components 168 / 273 + Named gaps 345; `Type: dialog` kept.
+- §6 generic modal shadow → Foundations 108 + Named gaps 342.
+- §8 breakpoints / native-app navigation → Layout 287 + Named gaps 341.
+- §15 motion five-kind gate → Foundations 112 + Named gaps 343.
+- §11 unique Brand-narrative propositions → Scope 19 + provenance 94.
+- §13 Audience observable-work B2a → DESIGN 32 + provenance Derived inventory.
+- Principles 1–4 derived limiter → DESIGN 44 + provenance Derived inventory (not 1–2 first-party).
+- Pre-F3 Portable Core SHA is not re-asserted after F3 body edits (E2c).

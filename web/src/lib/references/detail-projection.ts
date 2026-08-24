@@ -149,6 +149,107 @@ function compareDetails(legacy: ReferenceDetail, detail: ReferenceDetail): reado
  * absent canonical fact remains visible in `compatibilityFallbacks` instead of
  * being silently represented as authoritative AST data.
  */
+/**
+ * Core v2 documents carry no frontmatter and none of the legacy section
+ * numbering — identity moved to the provenance sidecar, and tokens live as
+ * role-labelled bullets inside marker-delimited contract sections:
+ *
+ *   - **Canvas** (`#ffffff`): repeated white page surface.
+ *
+ * So a v2 document gets its own extractor instead of returning a detail whose
+ * every field silently fell through two parsers built for the old shape. What
+ * a role bullet does not state is left empty — the builder already renders
+ * absent fields as absent, and inventing a value here would undo the exact
+ * rule the migration enforces.
+ */
+export function isCoreV2Document(designMd: string): boolean {
+  return designMd.includes("design-md:section") && designMd.includes("design-md:claim");
+}
+
+function coreV2Section(designMd: string, section: string): string {
+  const re = new RegExp(`<!-- design-md:section ${section} -->([\\s\\S]*?)(?=<!-- design-md:section |$)`);
+  return re.exec(designMd)?.[1] ?? "";
+}
+
+/**
+ * Role-labelled colour bullets. Two notations exist across the migrated set —
+ * `- **Role** (\`#hex\`): …` and `- **Role** — \`#hex\`: …` — so the parser
+ * accepts a role in bold followed by hexes anywhere before the line's prose.
+ */
+function roleBullets(sectionText: string): Array<{ role: string; hexes: string[]; description: string }> {
+  const out: Array<{ role: string; hexes: string[]; description: string }> = [];
+  for (const m of sectionText.matchAll(/^- \*\*([^*]+)\*\*\s*(?:\(([^)]*)\)|[—–-]\s*(`[^:\n]*))\s*:?\s*([^\n]*)/gm)) {
+    const head = m[2] ?? m[3] ?? "";
+    const hexes = [...head.matchAll(/#[0-9a-fA-F]{6}/g)].map((h) => h[0]);
+    if (hexes.length) out.push({ role: m[1].trim(), hexes, description: m[4] ?? "" });
+  }
+  return out;
+}
+
+export function extractCoreV2ReferenceDetail(
+  id: string,
+  designMd: string,
+  registryPrimary?: string,
+): ReferenceDetail {
+  const foundations = coreV2Section(designMd, "foundations");
+  const typography = coreV2Section(designMd, "typography-assets");
+  const experience = coreV2Section(designMd, "experience");
+
+  const bullets = roleBullets(foundations);
+  const byRole = (re: RegExp) => bullets.find((b) => re.test(b.role));
+  const byDescription = (re: RegExp) => bullets.find((b) => re.test(b.description));
+
+  const primary =
+    byRole(/\bprimary\b/i) ??
+    byDescription(/primary_color|YAML `primary`|primary action/i) ??
+    null;
+  const canvas =
+    byRole(/\bcanvas\b|\bbackground\b|\bbase\b|\bpage surface\b/i) ??
+    byDescription(/YAML `canvas`|\bcanvas\b|page (?:and control )?surfaces?|default page/i) ??
+    null;
+  const foreground =
+    byRole(/\bforeground\b|\bink\b/i) ?? byDescription(/YAML `foreground`/i) ?? null;
+  const border = byRole(/\bborder\b|\bline\b|hairline/i) ?? null;
+
+  // Typography: the Family contract's canonical bullet carries the face in a
+  // code span — "**Canonical visible UI family:** \`Toss Product Sans\`".
+  // A system-stack answer ("operating-system stack beginning \`-apple-system\`")
+  // is a real answer too, but it is not a named face, so it stays empty here —
+  // rendering \`-apple-system\` as though it were a brand font is exactly the
+  // substitution the documents forbid.
+  const familyBullet =
+    /\*\*[^*]*(?:UI family|visible[^*]*family)[^*]*:\*\*\s*([^\n]+)/i.exec(typography)?.[1] ?? "";
+  // The code span may hold a full CSS stack — the named face is its first
+  // entry, quoted or bare ("Netflix Sans", Helvetica, ... / Pretendard, ...).
+  const stack = /`([^`]{1,120})`/.exec(familyBullet)?.[1] ?? "";
+  const firstEntry = stack.split(",")[0]?.trim().replace(/^["']|["']$/g, "") ?? "";
+  const fontFamily = /^-|^system|sans-serif|serif$|^monospace/i.test(firstEntry) ? "" : firstEntry;
+
+  // Shape: the first px value a radius sentence commits to.
+  const radius =
+    /(?:radius|corner)[^\n]{0,60}?(\d+(?:\.\d+)?px)/i.exec(foundations)?.[1] ??
+    /(\d+(?:\.\d+)?px)[^\n]{0,40}?(?:radius|corner)/i.exec(foundations)?.[1] ??
+    "";
+
+  // Mood: the scope claim's opening paragraph — the sentence the document
+  // itself leads with.
+  const mood =
+    /### Scope\s*\n+([\s\S]*?)(?=\n\n|\n<!--)/.exec(experience)?.[1]?.trim().slice(0, 400) ?? "";
+
+  return {
+    id,
+    designMd,
+    primary: primary?.hexes[0] ?? registryPrimary ?? "",
+    background: canvas?.hexes[0] ?? "",
+    foreground: foreground?.hexes[0] ?? "",
+    fontFamily,
+    headingWeight: "",
+    radius,
+    mood,
+    border: border?.hexes[0],
+  };
+}
+
 export function projectAstReferenceDetail(
   ast: ReferenceAst,
   legacy: ReferenceDetail,

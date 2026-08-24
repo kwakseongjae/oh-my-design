@@ -1,7 +1,0 @@
-# Rail-signal repaired-host stop — 1.9.419
-
-The fresh replacement control completed in 701.833 seconds with 2,582,886 provider tokens and 79/85, but it is excluded as infrastructure-invalid. The post-run trace observed three static shell closures, zero browser proof, and one duplicate closure. The installed host state observed twelve `apply_patch` denials but zero shell decisions, so the second static closure was not blocked before execution.
-
-This is not a candidate-quality result. The exact Luna profile cached by Codex 0.144.1 is `code_mode_only`. Its run emitted fourteen nested `command_execution` events and twelve nested `file_change` events, while the installed project hook recorded only the edit-policy branch. The direct-shell hook contract proven in earlier Codex smokes therefore cannot be claimed for this code-mode-only execution path. Adding more shell aliases to the matcher would not establish interception of a path that emitted no shell hook decisions.
-
-The whole `/private/tmp/u19417` matrix is frozen with no retry and the remaining five cells are not run. Observed Tokens-to-Target is now at least 34,208,487 plus six usage-unavailable cells. The next provider-free repair must make runtime tool mode an admission property: `installed-opt-in` proof enforcement is eligible only when the runtime exposes an interceptable direct shell path; `code_mode_only` must use controller observation and may never report host-enforced proof closure.

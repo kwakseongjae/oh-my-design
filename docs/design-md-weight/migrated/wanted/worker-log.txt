@@ -1,0 +1,16 @@
+T2 마이그레이션을 위해 규칙집·골든 샘플·레거시 원문을 순서대로 읽고, 이어서 Wanted를 Core v2로 옮기겠습니다.골든 샘플과 원문, 최근 PASS 이관본을 대조해 형태와 의미 보존 규칙을 맞추겠습니다.Wanted 원문과 PASS 이관본·게이트를 더 읽어, type·line-height·persona 처리 방식을 맞추겠습니다.원문 토큰을 기계적으로 뽑은 뒤, 규칙집 v4에 맞춰 세 산출물을 작성합니다.원문 값·type·line-height를 유지한 채 Core v2 세 파일을 작성합니다.게이트는 통과했지만 Portable Core의 scope claim이 인식되지 않아, 검사기가 무엇을 요구하는지 확인하겠습니다.scope claim이 `does not … product` 패턴에 걸려 Portable Core가 실패한 것이라, 그 문장만 고칩니다.Wanted legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/wanted/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v4**.
+
+의미 보존에서 특히 맞춘 점:
+
+- **A1a** YAML unitless line-height `1.36` / `1.5` / `1.43` / `1.33`을 비율로 유지하고, 표의 px 관측과 합치지 않음
+- **A1b** 컴포넌트별 `Type`: button, button, card, card, input, dialog
+- **A1c** provenance에 `ds.type: system` (Wanted Montage)
+- **C4** mini/directory job card는 interactive-kind 근거가 없어 kind·applicability map 생략
+- **C2** header action / filter / search input / Montage menu의 loading·error·success는 역할로 판정 (`not captured`를 사유로 쓰지 않음)
+- **B2a** §12 3–4항만 derived editorial inference로 한정, 1–2항은 Wanted/Montage first-party
+- **B3** motion은 다섯 증거 종류 + 컴포넌트별 computed 관측 뒤에만 승격
+- **D2** §13은 공개 task context를 primary-tasks로만 흡수, fictional persona sidecar 없음
+
+`inspectDesignMd`는 `portable_core: true`, placeholders 0. `migrate-reference.mjs --brand wanted --gate-only`는 PASS. 카탈로그 채택은 하지 않았습니다.
+
+DONE migrated=1

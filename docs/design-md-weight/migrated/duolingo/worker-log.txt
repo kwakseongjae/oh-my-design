@@ -1,0 +1,19 @@
+T2 마이그레이션을 시작합니다. 규칙집·골든 샘플·원본을 먼저 읽고, 그다음 Core v2로 옮기겠습니다.규칙집 v7과 웨이브 5 위치를 확인했습니다. 목적지 규격·대응표·골든 샘플·원본을 이어서 읽겠습니다.골든 샘플·원본 Duolingo·기존 이관 산출물 형태를 대조해 읽겠습니다.최근 통과 표본의 B2a·C2·B3 처리와 게이트 스크립트를 확인한 뒤 원본을 필드 단위로 옮기겠습니다.원본 토큰·역할·상태를 보존하는 Core v2 본문을 작성합니다. 해석 문장에는 인접 한정을 붙입니다.본문을 처음부터 다시 읽어 B2a 스캔을 돌립니다. 인과·해석 문장마다 근거 class를 확인합니다.B2a 스캔에서 Distinctive traits와 Content 앞단의 해석 문장에 한정이 빠져 있습니다. 그 두 곳을 고친 뒤 provenance를 씁니다.패스 2: 로그에 적을 값마다 grep으로 실제 위치를 확인합니다.Duolingo legacy `DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 **v7**.
+
+산출:
+- `docs/design-md-weight/migrated/duolingo/DESIGN.md`
+- `docs/design-md-weight/migrated/duolingo/provenance.md`
+- `docs/design-md-weight/migrated/duolingo/migration-log.md`
+
+보존·분리 요지:
+- YAML unitless line-height `1.2` / `1.25` / `1.5` 비율 유지. `Type: button` ×4, `Type: card` ×3, input / tab / toggle는 컴포넌트별로 유지.
+- YAML lip `0 4px 0 0 #58a700`와 본문 `0 4px 0 #58A700`, card shadow `rgba(0,0,0,0.1)`와 카드 `none`은 합치지 않음.
+- §14 11행은 Components 캡처 기록에 보존. Primary CHECK만 loading applicable. 카드·필·배지·프로그레스·피드백 바·모달은 kind/map 생략.
+- 가입 필드 generic Focus `#1CB0F6`는 `focus-visible`로 올리지 않음.
+- 무출처 cubic-bezier 4개는 provenance omission ledger만. duration / easing 이름·용도 / signature / `prefers-reduced-motion`과 B3 다섯 증거 종류 게이트는 Foundations에 유지.
+- §13 Maya / Daniel / Sofia는 본문·provenance 모두에 없음. Primary tasks 3건은 레슨 / CHECK / 스트릭·XP.
+- Principles·Scope 인과·voice 해석 등 편집 문장에는 인접 B2a 한정.
+
+검증: `inspectDesignMd` `portable_core: true`, placeholders 0. `--gate-only` PASS.
+
+DONE migrated=1

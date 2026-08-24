@@ -1,6 +1,6 @@
 {
   "brand": "karrot",
-  "capturedAt": "2026-08-22T19:05:34.636Z",
+  "capturedAt": "2026-08-22T19:49:29.044Z",
   "source": {
     "url": "https://www.daangn.com/kr/buy-sell/s/?search=%EB%85%B8%ED%8A%B8%EB%B6%81",
     "status": 200,
@@ -11,12 +11,2051 @@
     "channel": "playwright",
     "note": "chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero",
     "imagerySamplesRequested": 12,
-    "viewport": {
-      "width": 1440,
-      "height": 900
-    },
     "locale": "ko-KR",
-    "colorScheme": "light"
+    "colorScheme": "light",
+    "surfaces": [
+      "desktop-1440",
+      "mobile-390"
+    ],
+    "totalDurationMs": 45762
+  },
+  "surfaces": {
+    "desktop-1440": {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "chrome": {
+        "pageBackgroundComputed": "#ffffff",
+        "bodyColor": "#1a1c20",
+        "header": {
+          "detectedBy": "semantic",
+          "background": null,
+          "heightPx": 95
+        },
+        "primaryButton": {
+          "fill": "outline",
+          "background": null,
+          "borderColor": "#000000",
+          "color": "#1a1c20",
+          "radiusPx": 8,
+          "fontPx": 14,
+          "weight": "700",
+          "label": "서울시 강동구 천호동",
+          "repeats": 1
+        },
+        "typeScale": [
+          {
+            "tag": "h1",
+            "fontPx": 28,
+            "weight": "700",
+            "family": "-apple-system",
+            "lineHeight": "36.4px",
+            "letterSpacing": "normal",
+            "color": "#1a1c20"
+          },
+          {
+            "tag": "h2",
+            "fontPx": 20,
+            "weight": "700",
+            "family": "-apple-system",
+            "lineHeight": "28px",
+            "letterSpacing": "normal",
+            "color": "#1a1c20"
+          },
+          {
+            "tag": "h3",
+            "fontPx": 16,
+            "weight": "700",
+            "family": "-apple-system",
+            "lineHeight": "22px",
+            "letterSpacing": "normal",
+            "color": "#1a1c20"
+          },
+          {
+            "tag": "button",
+            "fontPx": 14,
+            "weight": "700",
+            "family": "-apple-system",
+            "lineHeight": "19px",
+            "letterSpacing": "normal",
+            "color": "#1a1c20"
+          }
+        ],
+        "notes": {
+          "buttonCandidatesAboveFold": 3,
+          "headerDetectedBy": "semantic"
+        },
+        "pageBackgroundRendered": {
+          "dominantHex": "#ffffff",
+          "coverage": 0.5034,
+          "resolved": true,
+          "hex": "#ffffff",
+          "source": "modal colour of the captured viewport",
+          "agreesWithComputed": "#ffffff"
+        }
+      },
+      "imagery": {
+        "sampled": 12,
+        "funnel": {
+          "found": 27,
+          "sizeOk": 24,
+          "centreInFrame": 24,
+          "srcOk": 24,
+          "cap": 12,
+          "kept": 12,
+          "framed": 12,
+          "cropped": 12,
+          "analysed": 12
+        },
+        "attrition": {
+          "suspect": false,
+          "sizeFilterLoss": 0.111
+        },
+        "samples": [
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202607/1784544447461d2c390d237e2deae8318b25d604249136935d7a7f4041a484eb6e0b0400e83ef0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c1",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 332,
+              "y": 199.40625,
+              "w": 248.5,
+              "h": 248.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0476,
+            "intrinsic": {
+              "w": 1080,
+              "h": 1440
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-01.png",
+            "palette": [
+              {
+                "hex": "#1b1a16",
+                "coverage": 0.0699,
+                "saturation": 0.185,
+                "luma": 0.102
+              },
+              {
+                "hex": "#141512",
+                "coverage": 0.0535,
+                "saturation": 0.143,
+                "luma": 0.081
+              },
+              {
+                "hex": "#23231c",
+                "coverage": 0.0532,
+                "saturation": 0.2,
+                "luma": 0.135
+              },
+              {
+                "hex": "#1d1d19",
+                "coverage": 0.0523,
+                "saturation": 0.138,
+                "luma": 0.113
+              },
+              {
+                "hex": "#2b2b24",
+                "coverage": 0.0405,
+                "saturation": 0.163,
+                "luma": 0.167
+              },
+              {
+                "hex": "#0c0c0b",
+                "coverage": 0.0399,
+                "saturation": 0.083,
+                "luma": 0.047
+              }
+            ],
+            "light": {
+              "meanLuma": 0.268,
+              "p05": 0.046,
+              "p50": 0.156,
+              "p95": 0.689,
+              "dynamicRange": 0.643,
+              "gradient": {
+                "dx": 0.071,
+                "dy": -0.225
+              },
+              "luminanceGradient": "brighter top"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 110.5
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/14d2c301db713b607059bc1031a61fd52f4a17410373e8877b303130922caf6b_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c2",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 596.5,
+              "y": 199.40625,
+              "w": 248.5,
+              "h": 248.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0476,
+            "intrinsic": {
+              "w": 1440,
+              "h": 1080
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-02.png",
+            "palette": [
+              {
+                "hex": "#146bee",
+                "coverage": 0.0367,
+                "saturation": 0.916,
+                "luma": 0.384
+              },
+              {
+                "hex": "#0e63ee",
+                "coverage": 0.0196,
+                "saturation": 0.941,
+                "luma": 0.357
+              },
+              {
+                "hex": "#3a3d43",
+                "coverage": 0.0159,
+                "saturation": 0.134,
+                "luma": 0.238
+              },
+              {
+                "hex": "#0c34ed",
+                "coverage": 0.0157,
+                "saturation": 0.949,
+                "luma": 0.223
+              },
+              {
+                "hex": "#32353b",
+                "coverage": 0.0151,
+                "saturation": 0.153,
+                "luma": 0.207
+              },
+              {
+                "hex": "#0d3bed",
+                "coverage": 0.0148,
+                "saturation": 0.945,
+                "luma": 0.243
+              }
+            ],
+            "light": {
+              "meanLuma": 0.325,
+              "p05": 0.138,
+              "p50": 0.322,
+              "p95": 0.521,
+              "dynamicRange": 0.383,
+              "gradient": {
+                "dx": 0.031,
+                "dy": -0.035
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 78.1
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/e285ed649abdb0f21c972130d75f2c48bcee8b645fcdeb930f1228a22c3185b0_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c3",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 861,
+              "y": 199.40625,
+              "w": 248.5,
+              "h": 248.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0476,
+            "intrinsic": {
+              "w": 1440,
+              "h": 1080
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-03.png",
+            "palette": [
+              {
+                "hex": "#2b2b2c",
+                "coverage": 0.0289,
+                "saturation": 0.023,
+                "luma": 0.169
+              },
+              {
+                "hex": "#232324",
+                "coverage": 0.0231,
+                "saturation": 0.028,
+                "luma": 0.138
+              },
+              {
+                "hex": "#ebece5",
+                "coverage": 0.0189,
+                "saturation": 0.03,
+                "luma": 0.923
+              },
+              {
+                "hex": "#323334",
+                "coverage": 0.0176,
+                "saturation": 0.038,
+                "luma": 0.199
+              },
+              {
+                "hex": "#33363a",
+                "coverage": 0.0143,
+                "saturation": 0.121,
+                "luma": 0.21
+              },
+              {
+                "hex": "#e3e3dc",
+                "coverage": 0.0138,
+                "saturation": 0.031,
+                "luma": 0.888
+              }
+            ],
+            "light": {
+              "meanLuma": 0.505,
+              "p05": 0.148,
+              "p50": 0.515,
+              "p95": 0.909,
+              "dynamicRange": 0.761,
+              "gradient": {
+                "dx": 0.073,
+                "dy": -0.051
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 115.3
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202607/6df5ac68cd5da81cfa28670b37f8624e6ab0ba365169108b81832e347af7b0a4_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c4",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 1125.5,
+              "y": 199.40625,
+              "w": 248.5,
+              "h": 248.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0476,
+            "intrinsic": {
+              "w": 810,
+              "h": 1440
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-04.png",
+            "palette": [
+              {
+                "hex": "#62646c",
+                "coverage": 0.0738,
+                "saturation": 0.093,
+                "luma": 0.393
+              },
+              {
+                "hex": "#696b76",
+                "coverage": 0.0718,
+                "saturation": 0.11,
+                "luma": 0.421
+              },
+              {
+                "hex": "#5b5c64",
+                "coverage": 0.0665,
+                "saturation": 0.09,
+                "luma": 0.362
+              },
+              {
+                "hex": "#6a6d79",
+                "coverage": 0.064,
+                "saturation": 0.124,
+                "luma": 0.428
+              },
+              {
+                "hex": "#666974",
+                "coverage": 0.0634,
+                "saturation": 0.121,
+                "luma": 0.412
+              },
+              {
+                "hex": "#636672",
+                "coverage": 0.0614,
+                "saturation": 0.132,
+                "luma": 0.401
+              }
+            ],
+            "light": {
+              "meanLuma": 0.438,
+              "p05": 0.292,
+              "p50": 0.412,
+              "p95": 0.709,
+              "dynamicRange": 0.417,
+              "gradient": {
+                "dx": -0.081,
+                "dy": -0.035
+              },
+              "luminanceGradient": "brighter left"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 94.3
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/30e74657aea10bd8891b543e2833d8dbfc42d7ac0f7edd451ae1a2752bf47f50_1.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c5",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 332,
+              "y": 575.90625,
+              "w": 248.5,
+              "h": 248.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0476,
+            "intrinsic": {
+              "w": 1440,
+              "h": 1080
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-05.png",
+            "palette": [
+              {
+                "hex": "#0e121b",
+                "coverage": 0.0269,
+                "saturation": 0.481,
+                "luma": 0.07
+              },
+              {
+                "hex": "#4d5353",
+                "coverage": 0.0257,
+                "saturation": 0.072,
+                "luma": 0.32
+              },
+              {
+                "hex": "#545c5b",
+                "coverage": 0.0191,
+                "saturation": 0.087,
+                "luma": 0.354
+              },
+              {
+                "hex": "#8b9494",
+                "coverage": 0.0189,
+                "saturation": 0.061,
+                "luma": 0.573
+              },
+              {
+                "hex": "#737c7c",
+                "coverage": 0.0184,
+                "saturation": 0.073,
+                "luma": 0.479
+              },
+              {
+                "hex": "#33344a",
+                "coverage": 0.0184,
+                "saturation": 0.311,
+                "luma": 0.209
+              }
+            ],
+            "light": {
+              "meanLuma": 0.361,
+              "p05": 0.073,
+              "p50": 0.346,
+              "p95": 0.687,
+              "dynamicRange": 0.614,
+              "gradient": {
+                "dx": 0.151,
+                "dy": 0.086
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 70.1
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/178633868724987d3958c4e382c520425b45782e65d3b7563d5c2f83fd2b74e692c0635a5b3f50.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c6",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 596.5,
+              "y": 575.90625,
+              "w": 248.5,
+              "h": 248.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0476,
+            "intrinsic": {
+              "w": 1080,
+              "h": 1440
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-06.png",
+            "palette": [
+              {
+                "hex": "#ebeae3",
+                "coverage": 0.0583,
+                "saturation": 0.034,
+                "luma": 0.916
+              },
+              {
+                "hex": "#e4e3dc",
+                "coverage": 0.0514,
+                "saturation": 0.035,
+                "luma": 0.889
+              },
+              {
+                "hex": "#2c2a24",
+                "coverage": 0.0443,
+                "saturation": 0.182,
+                "luma": 0.165
+              },
+              {
+                "hex": "#040404",
+                "coverage": 0.0439,
+                "saturation": 0,
+                "luma": 0.016
+              },
+              {
+                "hex": "#34312c",
+                "coverage": 0.0361,
+                "saturation": 0.154,
+                "luma": 0.193
+              },
+              {
+                "hex": "#3b3b3c",
+                "coverage": 0.0309,
+                "saturation": 0.017,
+                "luma": 0.232
+              }
+            ],
+            "light": {
+              "meanLuma": 0.439,
+              "p05": 0.027,
+              "p50": 0.259,
+              "p95": 0.918,
+              "dynamicRange": 0.891,
+              "gradient": {
+                "dx": 0.108,
+                "dy": 0.443
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 105.1
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/5ad9110c0e91c1a9ee447de6e7872272b14539cf84f810bf8831087b934f2ad4_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c7",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 861,
+              "y": 575.90625,
+              "w": 248.5,
+              "h": 248.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0476,
+            "intrinsic": {
+              "w": 1440,
+              "h": 1080
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-07.png",
+            "palette": [
+              {
+                "hex": "#abb4b4",
+                "coverage": 0.036,
+                "saturation": 0.05,
+                "luma": 0.698
+              },
+              {
+                "hex": "#a3acac",
+                "coverage": 0.0337,
+                "saturation": 0.052,
+                "luma": 0.667
+              },
+              {
+                "hex": "#9ba4a4",
+                "coverage": 0.0288,
+                "saturation": 0.055,
+                "luma": 0.636
+              },
+              {
+                "hex": "#929c9b",
+                "coverage": 0.0282,
+                "saturation": 0.064,
+                "luma": 0.603
+              },
+              {
+                "hex": "#8b9494",
+                "coverage": 0.0248,
+                "saturation": 0.061,
+                "luma": 0.573
+              },
+              {
+                "hex": "#828d8b",
+                "coverage": 0.023,
+                "saturation": 0.078,
+                "luma": 0.543
+              }
+            ],
+            "light": {
+              "meanLuma": 0.458,
+              "p05": 0.094,
+              "p50": 0.487,
+              "p95": 0.722,
+              "dynamicRange": 0.628,
+              "gradient": {
+                "dx": 0.023,
+                "dy": 0.188
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 77.2
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/36133bbb294a5f42483e7a706041adffa7c3d99d7f121ebc6b2a8728451922a2_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c8",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 1125.5,
+              "y": 575.90625,
+              "w": 248.5,
+              "h": 248.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0476,
+            "intrinsic": {
+              "w": 1008,
+              "h": 756
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-08.png",
+            "palette": [
+              {
+                "hex": "#8d928c",
+                "coverage": 0.0258,
+                "saturation": 0.041,
+                "luma": 0.567
+              },
+              {
+                "hex": "#848a84",
+                "coverage": 0.0248,
+                "saturation": 0.043,
+                "luma": 0.534
+              },
+              {
+                "hex": "#959a94",
+                "coverage": 0.0235,
+                "saturation": 0.039,
+                "luma": 0.598
+              },
+              {
+                "hex": "#9da29c",
+                "coverage": 0.0225,
+                "saturation": 0.037,
+                "luma": 0.629
+              },
+              {
+                "hex": "#7c827c",
+                "coverage": 0.018,
+                "saturation": 0.046,
+                "luma": 0.503
+              },
+              {
+                "hex": "#757a74",
+                "coverage": 0.0168,
+                "saturation": 0.049,
+                "luma": 0.473
+              }
+            ],
+            "light": {
+              "meanLuma": 0.513,
+              "p05": 0.127,
+              "p50": 0.53,
+              "p95": 0.875,
+              "dynamicRange": 0.748,
+              "gradient": {
+                "dx": -0.015,
+                "dy": -0.047
+              },
+              "luminanceGradient": "brighter top"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 94.4
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/f130bc93f5a45f18ab14ecbff90f878808c6080975ac320b394a3b861f1419b9_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c9",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 332,
+              "y": 952.40625,
+              "w": 248.5,
+              "h": 248.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0476,
+            "intrinsic": {
+              "w": 1440,
+              "h": 1080
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-09.png",
+            "palette": [
+              {
+                "hex": "#8c9cac",
+                "coverage": 0.0434,
+                "saturation": 0.186,
+                "luma": 0.603
+              },
+              {
+                "hex": "#93a3b4",
+                "coverage": 0.0356,
+                "saturation": 0.183,
+                "luma": 0.631
+              },
+              {
+                "hex": "#8da1b4",
+                "coverage": 0.0264,
+                "saturation": 0.217,
+                "luma": 0.62
+              },
+              {
+                "hex": "#1a1613",
+                "coverage": 0.026,
+                "saturation": 0.269,
+                "luma": 0.089
+              },
+              {
+                "hex": "#1d1916",
+                "coverage": 0.0252,
+                "saturation": 0.241,
+                "luma": 0.101
+              },
+              {
+                "hex": "#95a9bc",
+                "coverage": 0.0196,
+                "saturation": 0.207,
+                "luma": 0.651
+              }
+            ],
+            "light": {
+              "meanLuma": 0.555,
+              "p05": 0.104,
+              "p50": 0.611,
+              "p95": 0.785,
+              "dynamicRange": 0.681,
+              "gradient": {
+                "dx": 0,
+                "dy": -0.085
+              },
+              "luminanceGradient": "brighter top"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 78.4
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202607/80edcb04a946f67faf72ce67c23ae662ba3788a893febea2a5e2f107fc07ad1f_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c10",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 596.5,
+              "y": 952.40625,
+              "w": 248.5,
+              "h": 248.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0476,
+            "intrinsic": {
+              "w": 1440,
+              "h": 1036
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-10.png",
+            "palette": [
+              {
+                "hex": "#6b6a65",
+                "coverage": 0.0353,
+                "saturation": 0.056,
+                "luma": 0.415
+              },
+              {
+                "hex": "#63625d",
+                "coverage": 0.0351,
+                "saturation": 0.061,
+                "luma": 0.384
+              },
+              {
+                "hex": "#9a9a94",
+                "coverage": 0.0345,
+                "saturation": 0.039,
+                "luma": 0.602
+              },
+              {
+                "hex": "#95938b",
+                "coverage": 0.0339,
+                "saturation": 0.067,
+                "luma": 0.576
+              },
+              {
+                "hex": "#7a7b75",
+                "coverage": 0.0332,
+                "saturation": 0.049,
+                "luma": 0.48
+              },
+              {
+                "hex": "#73736c",
+                "coverage": 0.0332,
+                "saturation": 0.061,
+                "luma": 0.449
+              }
+            ],
+            "light": {
+              "meanLuma": 0.518,
+              "p05": 0.329,
+              "p50": 0.502,
+              "p95": 0.765,
+              "dynamicRange": 0.436,
+              "gradient": {
+                "dx": 0.158,
+                "dy": 0.04
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 108.9
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/c0a75f5f3d59347b30378e8239e2da707374e5a3388101cbb08cd8901e8f0978_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c11",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 861,
+              "y": 952.40625,
+              "w": 248.5,
+              "h": 248.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0476,
+            "intrinsic": {
+              "w": 1080,
+              "h": 1440
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-11.png",
+            "palette": [
+              {
+                "hex": "#936b44",
+                "coverage": 0.0445,
+                "saturation": 0.537,
+                "luma": 0.442
+              },
+              {
+                "hex": "#72767d",
+                "coverage": 0.0333,
+                "saturation": 0.088,
+                "luma": 0.461
+              },
+              {
+                "hex": "#767983",
+                "coverage": 0.0241,
+                "saturation": 0.099,
+                "luma": 0.475
+              },
+              {
+                "hex": "#6d727a",
+                "coverage": 0.0232,
+                "saturation": 0.107,
+                "luma": 0.445
+              },
+              {
+                "hex": "#7c828c",
+                "coverage": 0.0215,
+                "saturation": 0.114,
+                "luma": 0.508
+              },
+              {
+                "hex": "#b3b2ae",
+                "coverage": 0.019,
+                "saturation": 0.028,
+                "luma": 0.698
+              }
+            ],
+            "light": {
+              "meanLuma": 0.452,
+              "p05": 0.186,
+              "p50": 0.434,
+              "p95": 0.907,
+              "dynamicRange": 0.721,
+              "gradient": {
+                "dx": 0.091,
+                "dy": 0.211
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 93.5
+            }
+          },
+          {
+            "src": "https://dnvefa72aowie.cloudfront.net/origin/category/202306/6a729d83f311aa3e8ffa12c9757cfda323591a0018ce2d25da6bf604615e33c2.png",
+            "kind": "img",
+            "tag": "c12",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 1125.5,
+              "y": 952.40625,
+              "w": 248.5,
+              "h": 248.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0476,
+            "intrinsic": {
+              "w": 560,
+              "h": 560
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/desktop-1440-imagery-12.png",
+            "palette": [
+              {
+                "hex": "#eff1f3",
+                "coverage": 0.8386,
+                "saturation": 0.016,
+                "luma": 0.944
+              },
+              {
+                "hex": "#d9dce0",
+                "coverage": 0.0964,
+                "saturation": 0.031,
+                "luma": 0.861
+              },
+              {
+                "hex": "#f0f2f3",
+                "coverage": 0.0221,
+                "saturation": 0.012,
+                "luma": 0.948
+              },
+              {
+                "hex": "#eceef1",
+                "coverage": 0.0189,
+                "saturation": 0.021,
+                "luma": 0.933
+              },
+              {
+                "hex": "#e7eaee",
+                "coverage": 0.0125,
+                "saturation": 0.029,
+                "luma": 0.916
+              },
+              {
+                "hex": "#d8dbdf",
+                "coverage": 0.0049,
+                "saturation": 0.031,
+                "luma": 0.857
+              }
+            ],
+            "light": {
+              "meanLuma": 0.935,
+              "p05": 0.861,
+              "p50": 0.944,
+              "p95": 0.944,
+              "dynamicRange": 0.083,
+              "gradient": {
+                "dx": -0.002,
+                "dy": 0.002
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 4.1
+            }
+          }
+        ],
+        "aggregate": {
+          "meanLuma": 0.458,
+          "dynamicRange": 0.643,
+          "luminanceGradients": {
+            "brighter top": 3,
+            "even": 2,
+            "brighter right": 3,
+            "brighter left": 1,
+            "brighter bottom": 3
+          },
+          "aspects": 1,
+          "figureGroundResolved": "0/12",
+          "subjectNote": "fewer than 4 resolved samples — placement omitted"
+        }
+      },
+      "motion": {
+        "present": false,
+        "note": "no video above the fold at capture time"
+      },
+      "durationMs": 17187
+    },
+    "mobile-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "chrome": {
+        "pageBackgroundComputed": "#ffffff",
+        "bodyColor": "#1a1c20",
+        "header": {
+          "detectedBy": "semantic",
+          "background": null,
+          "heightPx": 60
+        },
+        "primaryButton": {
+          "fill": "outline",
+          "background": null,
+          "borderColor": "#000000",
+          "color": "#1a1c20",
+          "radiusPx": 8,
+          "fontPx": 14,
+          "weight": "700",
+          "label": "서울시 강동구 천호동",
+          "repeats": 1
+        },
+        "typeScale": [
+          {
+            "tag": "h1",
+            "fontPx": 24,
+            "weight": "700",
+            "family": "-apple-system",
+            "lineHeight": "32px",
+            "letterSpacing": "normal",
+            "color": "#1a1c20"
+          },
+          {
+            "tag": "button",
+            "fontPx": 14,
+            "weight": "700",
+            "family": "-apple-system",
+            "lineHeight": "19px",
+            "letterSpacing": "normal",
+            "color": "#1a1c20"
+          }
+        ],
+        "notes": {
+          "buttonCandidatesAboveFold": 3,
+          "headerDetectedBy": "semantic"
+        },
+        "pageBackgroundRendered": {
+          "dominantHex": "#ffffff",
+          "coverage": 0.5471,
+          "resolved": true,
+          "hex": "#ffffff",
+          "source": "modal colour of the captured viewport",
+          "agreesWithComputed": "#ffffff"
+        }
+      },
+      "imagery": {
+        "sampled": 12,
+        "funnel": {
+          "found": 27,
+          "sizeOk": 24,
+          "centreInFrame": 24,
+          "srcOk": 24,
+          "cap": 12,
+          "kept": 12,
+          "framed": 12,
+          "cropped": 12,
+          "analysed": 12
+        },
+        "attrition": {
+          "suspect": false,
+          "sizeFilterLoss": 0.111
+        },
+        "samples": [
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202607/1784544447461d2c390d237e2deae8318b25d604249136935d7a7f4041a484eb6e0b0400e83ef0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c1",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 16,
+              "y": 333,
+              "w": 171.5,
+              "h": 171.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0894,
+            "intrinsic": {
+              "w": 1080,
+              "h": 1440
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-01.png",
+            "palette": [
+              {
+                "hex": "#1b1a16",
+                "coverage": 0.0706,
+                "saturation": 0.185,
+                "luma": 0.102
+              },
+              {
+                "hex": "#141512",
+                "coverage": 0.0565,
+                "saturation": 0.143,
+                "luma": 0.081
+              },
+              {
+                "hex": "#1d1d19",
+                "coverage": 0.0526,
+                "saturation": 0.138,
+                "luma": 0.113
+              },
+              {
+                "hex": "#23231c",
+                "coverage": 0.0516,
+                "saturation": 0.2,
+                "luma": 0.135
+              },
+              {
+                "hex": "#2b2b24",
+                "coverage": 0.04,
+                "saturation": 0.163,
+                "luma": 0.167
+              },
+              {
+                "hex": "#0c0c0b",
+                "coverage": 0.0396,
+                "saturation": 0.083,
+                "luma": 0.047
+              }
+            ],
+            "light": {
+              "meanLuma": 0.268,
+              "p05": 0.045,
+              "p50": 0.157,
+              "p95": 0.687,
+              "dynamicRange": 0.642,
+              "gradient": {
+                "dx": 0.071,
+                "dy": -0.224
+              },
+              "luminanceGradient": "brighter top"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 111.3
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/14d2c301db713b607059bc1031a61fd52f4a17410373e8877b303130922caf6b_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c2",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 202.5,
+              "y": 333,
+              "w": 171.5,
+              "h": 171.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0894,
+            "intrinsic": {
+              "w": 1440,
+              "h": 1080
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-02.png",
+            "palette": [
+              {
+                "hex": "#146bee",
+                "coverage": 0.0369,
+                "saturation": 0.916,
+                "luma": 0.384
+              },
+              {
+                "hex": "#0e63ee",
+                "coverage": 0.0185,
+                "saturation": 0.941,
+                "luma": 0.357
+              },
+              {
+                "hex": "#0c34ed",
+                "coverage": 0.0155,
+                "saturation": 0.949,
+                "luma": 0.223
+              },
+              {
+                "hex": "#146df0",
+                "coverage": 0.0146,
+                "saturation": 0.917,
+                "luma": 0.39
+              },
+              {
+                "hex": "#0d3bed",
+                "coverage": 0.0146,
+                "saturation": 0.945,
+                "luma": 0.243
+              },
+              {
+                "hex": "#42454b",
+                "coverage": 0.0141,
+                "saturation": 0.12,
+                "luma": 0.27
+              }
+            ],
+            "light": {
+              "meanLuma": 0.326,
+              "p05": 0.135,
+              "p50": 0.322,
+              "p95": 0.524,
+              "dynamicRange": 0.389,
+              "gradient": {
+                "dx": 0.028,
+                "dy": -0.036
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 87.8
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/e285ed649abdb0f21c972130d75f2c48bcee8b645fcdeb930f1228a22c3185b0_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c3",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 16,
+              "y": 616.5,
+              "w": 171.5,
+              "h": 171.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0894,
+            "intrinsic": {
+              "w": 1440,
+              "h": 1080
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-03.png",
+            "palette": [
+              {
+                "hex": "#2b2b2c",
+                "coverage": 0.0261,
+                "saturation": 0.023,
+                "luma": 0.169
+              },
+              {
+                "hex": "#232325",
+                "coverage": 0.0219,
+                "saturation": 0.054,
+                "luma": 0.138
+              },
+              {
+                "hex": "#323334",
+                "coverage": 0.0182,
+                "saturation": 0.038,
+                "luma": 0.199
+              },
+              {
+                "hex": "#ebebe4",
+                "coverage": 0.0175,
+                "saturation": 0.03,
+                "luma": 0.92
+              },
+              {
+                "hex": "#e3e4dc",
+                "coverage": 0.0137,
+                "saturation": 0.035,
+                "luma": 0.891
+              },
+              {
+                "hex": "#33363a",
+                "coverage": 0.0126,
+                "saturation": 0.121,
+                "luma": 0.21
+              }
+            ],
+            "light": {
+              "meanLuma": 0.506,
+              "p05": 0.147,
+              "p50": 0.519,
+              "p95": 0.909,
+              "dynamicRange": 0.762,
+              "gradient": {
+                "dx": 0.07,
+                "dy": -0.052
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 95.4
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202607/6df5ac68cd5da81cfa28670b37f8624e6ab0ba365169108b81832e347af7b0a4_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c4",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 202.5,
+              "y": 616.5,
+              "w": 171.5,
+              "h": 171.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0894,
+            "intrinsic": {
+              "w": 810,
+              "h": 1440
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-04.png",
+            "palette": [
+              {
+                "hex": "#62646c",
+                "coverage": 0.0737,
+                "saturation": 0.093,
+                "luma": 0.393
+              },
+              {
+                "hex": "#696b76",
+                "coverage": 0.0711,
+                "saturation": 0.11,
+                "luma": 0.421
+              },
+              {
+                "hex": "#6a6d79",
+                "coverage": 0.0642,
+                "saturation": 0.124,
+                "luma": 0.428
+              },
+              {
+                "hex": "#666974",
+                "coverage": 0.0638,
+                "saturation": 0.121,
+                "luma": 0.412
+              },
+              {
+                "hex": "#5b5c64",
+                "coverage": 0.0623,
+                "saturation": 0.09,
+                "luma": 0.362
+              },
+              {
+                "hex": "#636672",
+                "coverage": 0.0611,
+                "saturation": 0.132,
+                "luma": 0.401
+              }
+            ],
+            "light": {
+              "meanLuma": 0.44,
+              "p05": 0.291,
+              "p50": 0.413,
+              "p95": 0.714,
+              "dynamicRange": 0.423,
+              "gradient": {
+                "dx": -0.081,
+                "dy": -0.038
+              },
+              "luminanceGradient": "brighter left"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 81.7
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/30e74657aea10bd8891b543e2833d8dbfc42d7ac0f7edd451ae1a2752bf47f50_1.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c5",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 16,
+              "y": 900,
+              "w": 171.5,
+              "h": 171.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0894,
+            "intrinsic": {
+              "w": 1440,
+              "h": 1080
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-05.png",
+            "palette": [
+              {
+                "hex": "#4d5353",
+                "coverage": 0.0279,
+                "saturation": 0.072,
+                "luma": 0.32
+              },
+              {
+                "hex": "#0d121b",
+                "coverage": 0.0275,
+                "saturation": 0.519,
+                "luma": 0.069
+              },
+              {
+                "hex": "#8b9494",
+                "coverage": 0.0185,
+                "saturation": 0.061,
+                "luma": 0.573
+              },
+              {
+                "hex": "#7b8484",
+                "coverage": 0.0181,
+                "saturation": 0.068,
+                "luma": 0.51
+              },
+              {
+                "hex": "#33344a",
+                "coverage": 0.0178,
+                "saturation": 0.311,
+                "luma": 0.209
+              },
+              {
+                "hex": "#4c524d",
+                "coverage": 0.017,
+                "saturation": 0.073,
+                "luma": 0.315
+              }
+            ],
+            "light": {
+              "meanLuma": 0.36,
+              "p05": 0.073,
+              "p50": 0.344,
+              "p95": 0.686,
+              "dynamicRange": 0.613,
+              "gradient": {
+                "dx": 0.151,
+                "dy": 0.083
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 65.2
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/178633868724987d3958c4e382c520425b45782e65d3b7563d5c2f83fd2b74e692c0635a5b3f50.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c6",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 202.5,
+              "y": 900,
+              "w": 171.5,
+              "h": 171.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0894,
+            "intrinsic": {
+              "w": 1080,
+              "h": 1440
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-06.png",
+            "palette": [
+              {
+                "hex": "#ebebe3",
+                "coverage": 0.0563,
+                "saturation": 0.034,
+                "luma": 0.919
+              },
+              {
+                "hex": "#e4e3dc",
+                "coverage": 0.0524,
+                "saturation": 0.035,
+                "luma": 0.889
+              },
+              {
+                "hex": "#040404",
+                "coverage": 0.0439,
+                "saturation": 0,
+                "luma": 0.016
+              },
+              {
+                "hex": "#2c2a24",
+                "coverage": 0.0436,
+                "saturation": 0.182,
+                "luma": 0.165
+              },
+              {
+                "hex": "#33312c",
+                "coverage": 0.0366,
+                "saturation": 0.137,
+                "luma": 0.192
+              },
+              {
+                "hex": "#3b3b3c",
+                "coverage": 0.0304,
+                "saturation": 0.017,
+                "luma": 0.232
+              }
+            ],
+            "light": {
+              "meanLuma": 0.44,
+              "p05": 0.027,
+              "p50": 0.259,
+              "p95": 0.918,
+              "dynamicRange": 0.891,
+              "gradient": {
+                "dx": 0.109,
+                "dy": 0.446
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 96.2
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/5ad9110c0e91c1a9ee447de6e7872272b14539cf84f810bf8831087b934f2ad4_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c7",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 16,
+              "y": 1183.5,
+              "w": 171.5,
+              "h": 171.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0894,
+            "intrinsic": {
+              "w": 1440,
+              "h": 1080
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-07.png",
+            "palette": [
+              {
+                "hex": "#abb4b4",
+                "coverage": 0.0356,
+                "saturation": 0.05,
+                "luma": 0.698
+              },
+              {
+                "hex": "#a3acac",
+                "coverage": 0.0348,
+                "saturation": 0.052,
+                "luma": 0.667
+              },
+              {
+                "hex": "#9ba4a4",
+                "coverage": 0.0311,
+                "saturation": 0.055,
+                "luma": 0.636
+              },
+              {
+                "hex": "#939c9c",
+                "coverage": 0.0266,
+                "saturation": 0.058,
+                "luma": 0.604
+              },
+              {
+                "hex": "#8b9493",
+                "coverage": 0.0237,
+                "saturation": 0.061,
+                "luma": 0.573
+              },
+              {
+                "hex": "#b2bbbc",
+                "coverage": 0.0237,
+                "saturation": 0.053,
+                "luma": 0.726
+              }
+            ],
+            "light": {
+              "meanLuma": 0.459,
+              "p05": 0.095,
+              "p50": 0.485,
+              "p95": 0.722,
+              "dynamicRange": 0.627,
+              "gradient": {
+                "dx": 0.023,
+                "dy": 0.182
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 66.6
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/36133bbb294a5f42483e7a706041adffa7c3d99d7f121ebc6b2a8728451922a2_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c8",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 202.5,
+              "y": 1183.5,
+              "w": 171.5,
+              "h": 171.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0894,
+            "intrinsic": {
+              "w": 1008,
+              "h": 756
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-08.png",
+            "palette": [
+              {
+                "hex": "#8d928c",
+                "coverage": 0.0265,
+                "saturation": 0.041,
+                "luma": 0.567
+              },
+              {
+                "hex": "#9da29c",
+                "coverage": 0.0254,
+                "saturation": 0.037,
+                "luma": 0.629
+              },
+              {
+                "hex": "#858b84",
+                "coverage": 0.0233,
+                "saturation": 0.05,
+                "luma": 0.538
+              },
+              {
+                "hex": "#959a94",
+                "coverage": 0.023,
+                "saturation": 0.039,
+                "luma": 0.598
+              },
+              {
+                "hex": "#7d827c",
+                "coverage": 0.0185,
+                "saturation": 0.046,
+                "luma": 0.504
+              },
+              {
+                "hex": "#757a74",
+                "coverage": 0.0155,
+                "saturation": 0.049,
+                "luma": 0.473
+              }
+            ],
+            "light": {
+              "meanLuma": 0.515,
+              "p05": 0.129,
+              "p50": 0.536,
+              "p95": 0.876,
+              "dynamicRange": 0.747,
+              "gradient": {
+                "dx": -0.015,
+                "dy": -0.052
+              },
+              "luminanceGradient": "brighter top"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 60.3
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/f130bc93f5a45f18ab14ecbff90f878808c6080975ac320b394a3b861f1419b9_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c9",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 16,
+              "y": 1467,
+              "w": 171.5,
+              "h": 171.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0894,
+            "intrinsic": {
+              "w": 1440,
+              "h": 1080
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-09.png",
+            "palette": [
+              {
+                "hex": "#8b9cac",
+                "coverage": 0.0434,
+                "saturation": 0.192,
+                "luma": 0.602
+              },
+              {
+                "hex": "#93a3b4",
+                "coverage": 0.0345,
+                "saturation": 0.183,
+                "luma": 0.631
+              },
+              {
+                "hex": "#8da1b4",
+                "coverage": 0.0261,
+                "saturation": 0.217,
+                "luma": 0.62
+              },
+              {
+                "hex": "#1a1613",
+                "coverage": 0.0257,
+                "saturation": 0.269,
+                "luma": 0.089
+              },
+              {
+                "hex": "#1d1916",
+                "coverage": 0.0248,
+                "saturation": 0.241,
+                "luma": 0.101
+              },
+              {
+                "hex": "#95a9bc",
+                "coverage": 0.0204,
+                "saturation": 0.207,
+                "luma": 0.651
+              }
+            ],
+            "light": {
+              "meanLuma": 0.556,
+              "p05": 0.104,
+              "p50": 0.612,
+              "p95": 0.786,
+              "dynamicRange": 0.682,
+              "gradient": {
+                "dx": -0.001,
+                "dy": -0.082
+              },
+              "luminanceGradient": "brighter top"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 80
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202607/80edcb04a946f67faf72ce67c23ae662ba3788a893febea2a5e2f107fc07ad1f_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c10",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 202.5,
+              "y": 1467,
+              "w": 171.5,
+              "h": 171.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0894,
+            "intrinsic": {
+              "w": 1440,
+              "h": 1036
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-10.png",
+            "palette": [
+              {
+                "hex": "#63625d",
+                "coverage": 0.0352,
+                "saturation": 0.061,
+                "luma": 0.384
+              },
+              {
+                "hex": "#6b6a65",
+                "coverage": 0.0347,
+                "saturation": 0.056,
+                "luma": 0.415
+              },
+              {
+                "hex": "#9a9a94",
+                "coverage": 0.0346,
+                "saturation": 0.039,
+                "luma": 0.602
+              },
+              {
+                "hex": "#95938b",
+                "coverage": 0.0344,
+                "saturation": 0.067,
+                "luma": 0.576
+              },
+              {
+                "hex": "#73736c",
+                "coverage": 0.0339,
+                "saturation": 0.061,
+                "luma": 0.449
+              },
+              {
+                "hex": "#7a7b75",
+                "coverage": 0.0333,
+                "saturation": 0.049,
+                "luma": 0.48
+              }
+            ],
+            "light": {
+              "meanLuma": 0.52,
+              "p05": 0.328,
+              "p50": 0.504,
+              "p95": 0.762,
+              "dynamicRange": 0.434,
+              "gradient": {
+                "dx": 0.157,
+                "dy": 0.043
+              },
+              "luminanceGradient": "brighter right"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 117.4
+            }
+          },
+          {
+            "src": "https://img.kr.gcp-karroter.net/origin/article/202608/c0a75f5f3d59347b30378e8239e2da707374e5a3388101cbb08cd8901e8f0978_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+            "kind": "img",
+            "tag": "c11",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 16,
+              "y": 1750.5,
+              "w": 171.5,
+              "h": 171.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0894,
+            "intrinsic": {
+              "w": 1080,
+              "h": 1440
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-11.png",
+            "palette": [
+              {
+                "hex": "#936b44",
+                "coverage": 0.0427,
+                "saturation": 0.537,
+                "luma": 0.442
+              },
+              {
+                "hex": "#72757d",
+                "coverage": 0.0332,
+                "saturation": 0.088,
+                "luma": 0.459
+              },
+              {
+                "hex": "#767983",
+                "coverage": 0.0243,
+                "saturation": 0.099,
+                "luma": 0.475
+              },
+              {
+                "hex": "#6d727a",
+                "coverage": 0.0229,
+                "saturation": 0.107,
+                "luma": 0.445
+              },
+              {
+                "hex": "#7c828c",
+                "coverage": 0.0213,
+                "saturation": 0.114,
+                "luma": 0.508
+              },
+              {
+                "hex": "#b3b2ae",
+                "coverage": 0.0184,
+                "saturation": 0.028,
+                "luma": 0.698
+              }
+            ],
+            "light": {
+              "meanLuma": 0.453,
+              "p05": 0.186,
+              "p50": 0.436,
+              "p95": 0.907,
+              "dynamicRange": 0.721,
+              "gradient": {
+                "dx": 0.09,
+                "dy": 0.205
+              },
+              "luminanceGradient": "brighter bottom"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 69.9
+            }
+          },
+          {
+            "src": "https://dnvefa72aowie.cloudfront.net/origin/category/202306/6a729d83f311aa3e8ffa12c9757cfda323591a0018ce2d25da6bf604615e33c2.png",
+            "kind": "img",
+            "tag": "c12",
+            "alt": "thumbnail",
+            "docBox": {
+              "x": 202.5,
+              "y": 1750.5,
+              "w": 171.5,
+              "h": 171.5
+            },
+            "aspect": 1,
+            "areaShare": 0.0894,
+            "intrinsic": {
+              "w": 560,
+              "h": 560
+            },
+            "clipped": false,
+            "matchedBy": "tag",
+            "file": "capture/mobile-390-imagery-12.png",
+            "palette": [
+              {
+                "hex": "#eff1f3",
+                "coverage": 0.8465,
+                "saturation": 0.016,
+                "luma": 0.944
+              },
+              {
+                "hex": "#d9dce0",
+                "coverage": 0.0938,
+                "saturation": 0.031,
+                "luma": 0.861
+              },
+              {
+                "hex": "#f0f2f3",
+                "coverage": 0.0175,
+                "saturation": 0.012,
+                "luma": 0.948
+              },
+              {
+                "hex": "#e9ebef",
+                "coverage": 0.0126,
+                "saturation": 0.025,
+                "luma": 0.921
+              },
+              {
+                "hex": "#e4e7ec",
+                "coverage": 0.0122,
+                "saturation": 0.034,
+                "luma": 0.905
+              },
+              {
+                "hex": "#d8dbdf",
+                "coverage": 0.0055,
+                "saturation": 0.031,
+                "luma": 0.857
+              }
+            ],
+            "light": {
+              "meanLuma": 0.935,
+              "p05": 0.861,
+              "p50": 0.944,
+              "p95": 0.944,
+              "dynamicRange": 0.083,
+              "gradient": {
+                "dx": -0.002,
+                "dy": 0.001
+              },
+              "luminanceGradient": "even"
+            },
+            "subject": {
+              "resolved": false,
+              "reason": "algorithm could not separate figure from ground",
+              "borderVariance": 9.4
+            }
+          }
+        ],
+        "aggregate": {
+          "meanLuma": 0.459,
+          "dynamicRange": 0.642,
+          "luminanceGradients": {
+            "brighter top": 3,
+            "even": 2,
+            "brighter right": 3,
+            "brighter left": 1,
+            "brighter bottom": 3
+          },
+          "aspects": 1,
+          "figureGroundResolved": "0/12",
+          "subjectNote": "fewer than 4 resolved samples — placement omitted"
+        }
+      },
+      "motion": {
+        "present": false,
+        "note": "no video above the fold at capture time"
+      },
+      "durationMs": 14461
+    }
   },
   "chrome": {
     "pageBackgroundComputed": "#ffffff",
@@ -24,8 +2063,7 @@
     "header": {
       "detectedBy": "semantic",
       "background": null,
-      "heightPx": 95,
-      "borderBottom": null
+      "heightPx": 95
     },
     "primaryButton": {
       "fill": "outline",
@@ -33,8 +2071,6 @@
       "borderColor": "#000000",
       "color": "#1a1c20",
       "radiusPx": 8,
-      "paddingY": 10,
-      "paddingX": 16,
       "fontPx": 14,
       "weight": "700",
       "label": "서울시 강동구 천호동",
@@ -83,10 +2119,12 @@
       "headerDetectedBy": "semantic"
     },
     "pageBackgroundRendered": {
+      "dominantHex": "#ffffff",
+      "coverage": 0.5034,
       "resolved": true,
       "hex": "#ffffff",
-      "coverage": 0.5039,
-      "source": "modal colour of the captured viewport"
+      "source": "modal colour of the captured viewport",
+      "agreesWithComputed": "#ffffff"
     }
   },
   "imagery": {
@@ -96,18 +2134,21 @@
       "sizeOk": 24,
       "centreInFrame": 24,
       "srcOk": 24,
+      "cap": 12,
       "kept": 12,
       "framed": 12,
       "cropped": 12,
       "analysed": 12
     },
     "attrition": {
-      "suspect": false
+      "suspect": false,
+      "sizeFilterLoss": 0.111
     },
     "samples": [
       {
         "src": "https://img.kr.gcp-karroter.net/origin/article/202607/1784544447461d2c390d237e2deae8318b25d604249136935d7a7f4041a484eb6e0b0400e83ef0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
+        "tag": "c1",
         "alt": "thumbnail",
         "docBox": {
           "x": 332,
@@ -122,7 +2163,8 @@
           "h": 1440
         },
         "clipped": false,
-        "file": "capture/imagery-01.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-01.png",
         "palette": [
           {
             "hex": "#1b1a16",
@@ -182,6 +2224,7 @@
       {
         "src": "https://img.kr.gcp-karroter.net/origin/article/202608/14d2c301db713b607059bc1031a61fd52f4a17410373e8877b303130922caf6b_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
+        "tag": "c2",
         "alt": "thumbnail",
         "docBox": {
           "x": 596.5,
@@ -196,7 +2239,8 @@
           "h": 1080
         },
         "clipped": false,
-        "file": "capture/imagery-02.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-02.png",
         "palette": [
           {
             "hex": "#146bee",
@@ -256,6 +2300,7 @@
       {
         "src": "https://img.kr.gcp-karroter.net/origin/article/202608/e285ed649abdb0f21c972130d75f2c48bcee8b645fcdeb930f1228a22c3185b0_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
+        "tag": "c3",
         "alt": "thumbnail",
         "docBox": {
           "x": 861,
@@ -270,7 +2315,8 @@
           "h": 1080
         },
         "clipped": false,
-        "file": "capture/imagery-03.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-03.png",
         "palette": [
           {
             "hex": "#2b2b2c",
@@ -330,6 +2376,7 @@
       {
         "src": "https://img.kr.gcp-karroter.net/origin/article/202607/6df5ac68cd5da81cfa28670b37f8624e6ab0ba365169108b81832e347af7b0a4_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
+        "tag": "c4",
         "alt": "thumbnail",
         "docBox": {
           "x": 1125.5,
@@ -344,7 +2391,8 @@
           "h": 1440
         },
         "clipped": false,
-        "file": "capture/imagery-04.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-04.png",
         "palette": [
           {
             "hex": "#62646c",
@@ -404,6 +2452,7 @@
       {
         "src": "https://img.kr.gcp-karroter.net/origin/article/202608/30e74657aea10bd8891b543e2833d8dbfc42d7ac0f7edd451ae1a2752bf47f50_1.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
+        "tag": "c5",
         "alt": "thumbnail",
         "docBox": {
           "x": 332,
@@ -418,7 +2467,8 @@
           "h": 1080
         },
         "clipped": false,
-        "file": "capture/imagery-05.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-05.png",
         "palette": [
           {
             "hex": "#0e121b",
@@ -476,85 +2526,12 @@
         }
       },
       {
-        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/f130bc93f5a45f18ab14ecbff90f878808c6080975ac320b394a3b861f1419b9_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/178633868724987d3958c4e382c520425b45782e65d3b7563d5c2f83fd2b74e692c0635a5b3f50.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
+        "tag": "c6",
         "alt": "thumbnail",
         "docBox": {
           "x": 596.5,
-          "y": 575.90625,
-          "w": 248.5,
-          "h": 248.5
-        },
-        "aspect": 1,
-        "areaShare": 0.0476,
-        "intrinsic": {
-          "w": 1440,
-          "h": 1080
-        },
-        "clipped": false,
-        "file": "capture/imagery-06.png",
-        "palette": [
-          {
-            "hex": "#8b9cac",
-            "coverage": 0.0414,
-            "saturation": 0.192,
-            "luma": 0.602
-          },
-          {
-            "hex": "#93a3b4",
-            "coverage": 0.0348,
-            "saturation": 0.183,
-            "luma": 0.631
-          },
-          {
-            "hex": "#8da1b4",
-            "coverage": 0.026,
-            "saturation": 0.217,
-            "luma": 0.62
-          },
-          {
-            "hex": "#1a1612",
-            "coverage": 0.0246,
-            "saturation": 0.308,
-            "luma": 0.088
-          },
-          {
-            "hex": "#1d1916",
-            "coverage": 0.0244,
-            "saturation": 0.241,
-            "luma": 0.101
-          },
-          {
-            "hex": "#9cb3cb",
-            "coverage": 0.0199,
-            "saturation": 0.232,
-            "luma": 0.69
-          }
-        ],
-        "light": {
-          "meanLuma": 0.557,
-          "p05": 0.104,
-          "p50": 0.612,
-          "p95": 0.785,
-          "dynamicRange": 0.681,
-          "gradient": {
-            "dx": -0.004,
-            "dy": -0.083
-          },
-          "luminanceGradient": "brighter top"
-        },
-        "subject": {
-          "resolved": false,
-          "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 60.3
-        }
-      },
-      {
-        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/178633868724987d3958c4e382c520425b45782e65d3b7563d5c2f83fd2b74e692c0635a5b3f50.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
-        "kind": "img",
-        "alt": "thumbnail",
-        "docBox": {
-          "x": 861,
           "y": 575.90625,
           "w": 248.5,
           "h": 248.5
@@ -566,69 +2543,71 @@
           "h": 1440
         },
         "clipped": false,
-        "file": "capture/imagery-07.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-06.png",
         "palette": [
           {
-            "hex": "#ebebe3",
-            "coverage": 0.0586,
+            "hex": "#ebeae3",
+            "coverage": 0.0583,
             "saturation": 0.034,
-            "luma": 0.919
+            "luma": 0.916
           },
           {
             "hex": "#e4e3dc",
-            "coverage": 0.053,
+            "coverage": 0.0514,
             "saturation": 0.035,
             "luma": 0.889
           },
           {
-            "hex": "#040404",
-            "coverage": 0.0445,
-            "saturation": 0,
-            "luma": 0.016
-          },
-          {
             "hex": "#2c2a24",
-            "coverage": 0.0434,
+            "coverage": 0.0443,
             "saturation": 0.182,
             "luma": 0.165
           },
           {
-            "hex": "#34322c",
-            "coverage": 0.0365,
+            "hex": "#040404",
+            "coverage": 0.0439,
+            "saturation": 0,
+            "luma": 0.016
+          },
+          {
+            "hex": "#34312c",
+            "coverage": 0.0361,
             "saturation": 0.154,
-            "luma": 0.196
+            "luma": 0.193
           },
           {
             "hex": "#3b3b3c",
-            "coverage": 0.032,
+            "coverage": 0.0309,
             "saturation": 0.017,
             "luma": 0.232
           }
         ],
         "light": {
-          "meanLuma": 0.438,
+          "meanLuma": 0.439,
           "p05": 0.027,
-          "p50": 0.256,
-          "p95": 0.919,
-          "dynamicRange": 0.892,
+          "p50": 0.259,
+          "p95": 0.918,
+          "dynamicRange": 0.891,
           "gradient": {
-            "dx": 0.11,
-            "dy": 0.444
+            "dx": 0.108,
+            "dy": 0.443
           },
           "luminanceGradient": "brighter bottom"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 125.4
+          "borderVariance": 105.1
         }
       },
       {
         "src": "https://img.kr.gcp-karroter.net/origin/article/202608/5ad9110c0e91c1a9ee447de6e7872272b14539cf84f810bf8831087b934f2ad4_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
+        "tag": "c7",
         "alt": "thumbnail",
         "docBox": {
-          "x": 1125.5,
+          "x": 861,
           "y": 575.90625,
           "w": 248.5,
           "h": 248.5
@@ -640,19 +2619,26 @@
           "h": 1080
         },
         "clipped": false,
-        "file": "capture/imagery-08.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-07.png",
         "palette": [
           {
             "hex": "#abb4b4",
-            "coverage": 0.0362,
+            "coverage": 0.036,
             "saturation": 0.05,
             "luma": 0.698
           },
           {
             "hex": "#a3acac",
-            "coverage": 0.032,
+            "coverage": 0.0337,
             "saturation": 0.052,
             "luma": 0.667
+          },
+          {
+            "hex": "#9ba4a4",
+            "coverage": 0.0288,
+            "saturation": 0.055,
+            "luma": 0.636
           },
           {
             "hex": "#929c9b",
@@ -661,32 +2647,26 @@
             "luma": 0.603
           },
           {
-            "hex": "#9ba4a4",
-            "coverage": 0.0279,
-            "saturation": 0.055,
-            "luma": 0.636
-          },
-          {
             "hex": "#8b9494",
-            "coverage": 0.0267,
+            "coverage": 0.0248,
             "saturation": 0.061,
             "luma": 0.573
           },
           {
-            "hex": "#838d8c",
-            "coverage": 0.0244,
-            "saturation": 0.071,
-            "luma": 0.544
+            "hex": "#828d8b",
+            "coverage": 0.023,
+            "saturation": 0.078,
+            "luma": 0.543
           }
         ],
         "light": {
-          "meanLuma": 0.46,
+          "meanLuma": 0.458,
           "p05": 0.094,
-          "p50": 0.489,
+          "p50": 0.487,
           "p95": 0.722,
           "dynamicRange": 0.628,
           "gradient": {
-            "dx": 0.021,
+            "dx": 0.023,
             "dy": 0.188
           },
           "luminanceGradient": "brighter bottom"
@@ -694,16 +2674,17 @@
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 73.2
+          "borderVariance": 77.2
         }
       },
       {
         "src": "https://img.kr.gcp-karroter.net/origin/article/202608/36133bbb294a5f42483e7a706041adffa7c3d99d7f121ebc6b2a8728451922a2_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
+        "tag": "c8",
         "alt": "thumbnail",
         "docBox": {
-          "x": 332,
-          "y": 952.40625,
+          "x": 1125.5,
+          "y": 575.90625,
           "w": 248.5,
           "h": 248.5
         },
@@ -714,66 +2695,144 @@
           "h": 756
         },
         "clipped": false,
-        "file": "capture/imagery-09.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-08.png",
         "palette": [
           {
             "hex": "#8d928c",
-            "coverage": 0.0262,
+            "coverage": 0.0258,
             "saturation": 0.041,
             "luma": 0.567
           },
           {
             "hex": "#848a84",
-            "coverage": 0.0261,
+            "coverage": 0.0248,
             "saturation": 0.043,
             "luma": 0.534
           },
           {
-            "hex": "#9ca29c",
-            "coverage": 0.0247,
-            "saturation": 0.037,
-            "luma": 0.629
-          },
-          {
             "hex": "#959a94",
-            "coverage": 0.0233,
+            "coverage": 0.0235,
             "saturation": 0.039,
             "luma": 0.598
           },
           {
-            "hex": "#7d827c",
-            "coverage": 0.0185,
+            "hex": "#9da29c",
+            "coverage": 0.0225,
+            "saturation": 0.037,
+            "luma": 0.629
+          },
+          {
+            "hex": "#7c827c",
+            "coverage": 0.018,
             "saturation": 0.046,
-            "luma": 0.504
+            "luma": 0.503
           },
           {
             "hex": "#757a74",
-            "coverage": 0.0143,
+            "coverage": 0.0168,
             "saturation": 0.049,
             "luma": 0.473
           }
         ],
         "light": {
-          "meanLuma": 0.511,
+          "meanLuma": 0.513,
           "p05": 0.127,
-          "p50": 0.531,
-          "p95": 0.874,
-          "dynamicRange": 0.747,
+          "p50": 0.53,
+          "p95": 0.875,
+          "dynamicRange": 0.748,
           "gradient": {
-            "dx": -0.013,
-            "dy": -0.051
+            "dx": -0.015,
+            "dy": -0.047
           },
           "luminanceGradient": "brighter top"
         },
         "subject": {
           "resolved": false,
           "reason": "algorithm could not separate figure from ground",
-          "borderVariance": 82.5
+          "borderVariance": 94.4
+        }
+      },
+      {
+        "src": "https://img.kr.gcp-karroter.net/origin/article/202608/f130bc93f5a45f18ab14ecbff90f878808c6080975ac320b394a3b861f1419b9_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
+        "kind": "img",
+        "tag": "c9",
+        "alt": "thumbnail",
+        "docBox": {
+          "x": 332,
+          "y": 952.40625,
+          "w": 248.5,
+          "h": 248.5
+        },
+        "aspect": 1,
+        "areaShare": 0.0476,
+        "intrinsic": {
+          "w": 1440,
+          "h": 1080
+        },
+        "clipped": false,
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-09.png",
+        "palette": [
+          {
+            "hex": "#8c9cac",
+            "coverage": 0.0434,
+            "saturation": 0.186,
+            "luma": 0.603
+          },
+          {
+            "hex": "#93a3b4",
+            "coverage": 0.0356,
+            "saturation": 0.183,
+            "luma": 0.631
+          },
+          {
+            "hex": "#8da1b4",
+            "coverage": 0.0264,
+            "saturation": 0.217,
+            "luma": 0.62
+          },
+          {
+            "hex": "#1a1613",
+            "coverage": 0.026,
+            "saturation": 0.269,
+            "luma": 0.089
+          },
+          {
+            "hex": "#1d1916",
+            "coverage": 0.0252,
+            "saturation": 0.241,
+            "luma": 0.101
+          },
+          {
+            "hex": "#95a9bc",
+            "coverage": 0.0196,
+            "saturation": 0.207,
+            "luma": 0.651
+          }
+        ],
+        "light": {
+          "meanLuma": 0.555,
+          "p05": 0.104,
+          "p50": 0.611,
+          "p95": 0.785,
+          "dynamicRange": 0.681,
+          "gradient": {
+            "dx": 0,
+            "dy": -0.085
+          },
+          "luminanceGradient": "brighter top"
+        },
+        "subject": {
+          "resolved": false,
+          "reason": "algorithm could not separate figure from ground",
+          "borderVariance": 78.4
         }
       },
       {
         "src": "https://img.kr.gcp-karroter.net/origin/article/202607/80edcb04a946f67faf72ce67c23ae662ba3788a893febea2a5e2f107fc07ad1f_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
+        "tag": "c10",
         "alt": "thumbnail",
         "docBox": {
           "x": 596.5,
@@ -788,7 +2847,8 @@
           "h": 1036
         },
         "clipped": false,
-        "file": "capture/imagery-10.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-10.png",
         "palette": [
           {
             "hex": "#6b6a65",
@@ -848,6 +2908,7 @@
       {
         "src": "https://img.kr.gcp-karroter.net/origin/article/202608/c0a75f5f3d59347b30378e8239e2da707374e5a3388101cbb08cd8901e8f0978_0.webp?q=95&s=1440x1440&t=inside&service=web-mixer",
         "kind": "img",
+        "tag": "c11",
         "alt": "thumbnail",
         "docBox": {
           "x": 861,
@@ -862,7 +2923,8 @@
           "h": 1440
         },
         "clipped": false,
-        "file": "capture/imagery-11.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-11.png",
         "palette": [
           {
             "hex": "#936b44",
@@ -922,6 +2984,7 @@
       {
         "src": "https://dnvefa72aowie.cloudfront.net/origin/category/202306/6a729d83f311aa3e8ffa12c9757cfda323591a0018ce2d25da6bf604615e33c2.png",
         "kind": "img",
+        "tag": "c12",
         "alt": "thumbnail",
         "docBox": {
           "x": 1125.5,
@@ -936,7 +2999,8 @@
           "h": 560
         },
         "clipped": false,
-        "file": "capture/imagery-12.png",
+        "matchedBy": "tag",
+        "file": "capture/desktop-1440-imagery-12.png",
         "palette": [
           {
             "hex": "#eff1f3",
@@ -995,7 +3059,7 @@
       }
     ],
     "aggregate": {
-      "meanLuma": 0.46,
+      "meanLuma": 0.458,
       "dynamicRange": 0.643,
       "luminanceGradients": {
         "brighter top": 3,
@@ -1012,54 +3076,5 @@
   "motion": {
     "present": false,
     "note": "no video above the fold at capture time"
-  },
-  "mobile": {
-    "chrome": {
-      "pageBackgroundComputed": "#ffffff",
-      "bodyColor": "#1a1c20",
-      "header": {
-        "detectedBy": "semantic",
-        "background": null,
-        "heightPx": 60,
-        "borderBottom": null
-      },
-      "primaryButton": {
-        "fill": "outline",
-        "background": null,
-        "borderColor": "#000000",
-        "color": "#1a1c20",
-        "radiusPx": 8,
-        "paddingY": 10,
-        "paddingX": 16,
-        "fontPx": 14,
-        "weight": "700",
-        "label": "서울시 강동구 천호동",
-        "repeats": 1
-      },
-      "typeScale": [
-        {
-          "tag": "h1",
-          "fontPx": 24,
-          "weight": "700",
-          "family": "-apple-system",
-          "lineHeight": "32px",
-          "letterSpacing": "normal",
-          "color": "#1a1c20"
-        },
-        {
-          "tag": "button",
-          "fontPx": 14,
-          "weight": "700",
-          "family": "-apple-system",
-          "lineHeight": "19px",
-          "letterSpacing": "normal",
-          "color": "#1a1c20"
-        }
-      ],
-      "notes": {
-        "buttonCandidatesAboveFold": 3,
-        "headerDetectedBy": "semantic"
-      }
-    }
   }
 }

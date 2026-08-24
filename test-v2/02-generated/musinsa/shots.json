@@ -1,0 +1,212 @@
+{
+  "brand": "musinsa",
+  "shots": [
+    {
+      "file": "images/01.jpg",
+      "role": "hero",
+      "prompt": "A young East Asian woman with long straight black hair sits on rumpled bedding in #fffffe, wearing an oversized charcoal off-shoulder long-sleeve knit in #141b24 over a heather-gray tank, hands on her lap, calm gaze toward camera. Behind her a cool slate studio wall in #8494ac fills the width of the frame. Soft directional studio light, mid overall brightness, deep shadow pockets in #0d141a, highlights holding at #fffffe, contrast matching a 0.748 dynamic range. Wide fashion-editorial still of unmarked clothing on a #fefdfd canvas feel.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/02.jpg",
+      "role": "imagery",
+      "prompt": "Ghost-mannequin product photograph of an oversized lightweight long-sleeve shirt in a dark windowpane check of #141b24 and #0d141a, hanging on an empty cool white seamless sweep of #fefdfd. Sheer cotton weave, black buttons, single chest pocket, unmarked collar. Even daylight-balanced catalog lighting, faint cool shadow, fabric highlights at #fffffe. Square e-commerce still of the garment only.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/03.jpg",
+      "role": "texture",
+      "prompt": "Fill-the-frame photograph of a galvanized chain-link fence. Diamond mesh of steel in #8494ac catching cool studio light, openings revealing a pale wall of #fffffe, shadow pockets in #0d141a. High contrast near 0.748 dynamic range, mid-bright overall. Unmarked metal only. Landscape still used as a background texture.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.meanLuma"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/04.jpg",
+      "role": "mobile",
+      "prompt": "A young East Asian woman stands full-length on a pale concrete path in front of a dense ivy wall, wearing an oversized unmarked shirt in #fffffe and light-wash wide-leg jeans, looking down as she adjusts her waistband with both hands. A light wood bench with concrete legs sits behind her. Hard natural daylight, overall mid brightness near mean luma 0.512, contrast near 0.714 dynamic range, deep shadow in #0d141a. Vertical fashion-catalog still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.viewport"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/05.jpg",
+      "role": "hero",
+      "prompt": "A young East Asian man with a buzz cut stands before a galvanized chain-link fence, wearing an unmarked washed short-sleeve baseball jersey in #141b24 over a plain crew undershirt in #fffffe, with light-wash jeans, holding a smooth wooden baseball bat horizontally at his hips. Cool studio key light from camera-left, mid overall brightness near mean luma 0.541, highlights holding at #fffffe, deep shadow pockets in #0d141a, contrast matching a 0.748 dynamic range. Fence mesh reads #8494ac against a pale wall. Fashion-catalog still of unmarked clothing only.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange",
+        "measuredFacts.surfaces.desktop-1440.canvas"
+      ],
+      "aspect": "16:9"
+    },
+    {
+      "file": "images/06.jpg",
+      "role": "imagery",
+      "prompt": "A young East Asian man with black hair sits beside a large cafe window at a wood table, wearing an unmarked short-sleeve tee in #141b24 with cuffs rolled to a heather underside, light-wash jeans, a thin dark bracelet, holding a clear plastic cup of iced coffee with a black straw. Soft daylight from the window, mid brightness near mean luma 0.541, contrast near 0.748 dynamic range, interior shadow in #0d141a. Unmarked room; street outside the glass with no readable signs. Fashion-catalog still.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/07.jpg",
+      "role": "imagery",
+      "prompt": "Ghost-mannequin product photograph of an unmarked washed sleeveless tank in #141b24 hanging on an empty seamless sweep of #fefdfd. Sheer cotton jersey weave, bound crew neck, no marks. Even daylight-balanced catalog lighting, faint cool shadow, fabric highlights at #fffffe, fold shadows in #0d141a. Square e-commerce still of the garment only.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/08.jpg",
+      "role": "imagery",
+      "prompt": "Ghost-mannequin product photograph of an unmarked short-sleeve crewneck tee in #fffffe on a seamless canvas of #fefdfd. Plain cotton jersey, set-in sleeves, no marks. Even daylight-balanced catalog lighting, faint cool shadow tinted #8494ac, mid brightness. Square e-commerce still of the garment only.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.typicalAspect"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/09.jpg",
+      "role": "imagery",
+      "prompt": "A young East Asian woman with long dark hair stands against a seamless studio sweep of #fefefe, wearing an unmarked long-sleeve knit with fine horizontal stripes in #141b24 and #8494ac, a matching dark layer tied at her waist. Calm three-quarter pose, one hand resting at her hip, gaze toward camera. Soft even studio light, mid brightness near mean luma 0.541, highlights at #fffffe, shadow in #0d141a, contrast near 0.748 dynamic range. Fashion-catalog still of unmarked clothing only.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "1:1"
+    },
+    {
+      "file": "images/10.jpg",
+      "role": "texture",
+      "prompt": "Fill-the-frame photograph of rumpled bedding. Satin-cotton sheets in #fffffe with deep fold pockets in #0d141a and cool mid-tones in #8494ac. Soft directional studio light, mid overall brightness near mean luma 0.541, contrast matching a 0.748 dynamic range. Unmarked fabric only. Landscape still used as a background texture.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/11.jpg",
+      "role": "texture",
+      "prompt": "Fill-the-frame photograph of a completely plain cool slate plaster wall painted evenly in #8494ac. Soft directional studio light from one side, a pale highlight near #fffffe, a vertical shadow falloff into #0d141a. Mid brightness near mean luma 0.541, contrast matching a 0.748 dynamic range. Empty painted surface only. Landscape still used as a background texture.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/12.jpg",
+      "role": "texture",
+      "prompt": "Fill-the-frame close-up photograph of cotton jersey knit in #141b24. Visible stitch loops, a soft highlight at #fffffe on the yarn, shadow wells in #0d141a, a cool sheen of #8494ac across the weave. Mid brightness near mean luma 0.541, contrast matching a 0.748 dynamic range. Unmarked fabric only. Landscape still used as a background texture.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "3:2"
+    },
+    {
+      "file": "images/13.jpg",
+      "role": "mobile",
+      "prompt": "A young East Asian woman with long brown hair stands in a pale apartment by a large window with a black frame, wearing an unmarked oversized raglan long-sleeve tee with a body in #141b24 and sleeves in #0d141a, one hand in her pocket. A low black leather sofa sits behind her on a #fefefe floor. Cool daylight from the window, overall mid brightness near mean luma 0.512, contrast near 0.714 dynamic range, deep shadow in #0d141a. Vertical fashion-catalog still of unmarked clothing.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.viewport"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/14.jpg",
+      "role": "mobile",
+      "prompt": "A young East Asian woman with dark hair in a low ponytail and bangs stands against a seamless studio sweep of #fefefe, wearing an unmarked off-shoulder short-sleeve knit in #8494ac over a sliver of heather undershirt, dark denim at the waist, one hand holding the hem. Soft even studio light, mid brightness near mean luma 0.512, highlights at #ffffff, shadow in #0d141a, contrast near 0.714 dynamic range. Vertical fashion-catalog still of unmarked clothing.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.viewport"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/15.jpg",
+      "role": "mobile",
+      "prompt": "A young East Asian man with a buzz cut stands full-length before a galvanized chain-link fence, wearing an unmarked washed short-sleeve baseball jersey in #141b24 over a plain undershirt in #ffffff, light-wash jeans, a wooden baseball bat held low across his thighs. Cool studio key light, overall mid brightness near mean luma 0.512, contrast near 0.714 dynamic range, fence mesh in #8494ac, deep shadow in #0d141a. Vertical fashion-catalog still, unmarked clothing only.",
+      "citedFacts": [
+        "measuredFacts.surfaces.mobile-390.canvas",
+        "measuredFacts.surfaces.mobile-390.dominantImageryPalette",
+        "measuredFacts.surfaces.mobile-390.meanLuma",
+        "measuredFacts.surfaces.mobile-390.dynamicRange",
+        "measuredFacts.surfaces.mobile-390.viewport"
+      ],
+      "aspect": "9:16"
+    },
+    {
+      "file": "images/16.jpg",
+      "role": "hero",
+      "prompt": "A young East Asian man in an unmarked dark cap and an unmarked washed sleeveless tank in #141b24 looks aside against a seamless studio sweep of #fefdfd. Soft even catalog lighting, mid brightness near mean luma 0.541, highlights at #fffffe, shadow in #0d141a, contrast matching a 0.748 dynamic range. Fashion-editorial still of unmarked clothing only.",
+      "citedFacts": [
+        "measuredFacts.surfaces.desktop-1440.canvas",
+        "measuredFacts.surfaces.desktop-1440.dominantImageryPalette",
+        "measuredFacts.surfaces.desktop-1440.meanLuma",
+        "measuredFacts.surfaces.desktop-1440.dynamicRange"
+      ],
+      "aspect": "16:9"
+    }
+  ],
+  "videos": [
+    {
+      "file": "videos/01.mp4",
+      "fromImage": "images/01.jpg",
+      "motivation": "Studio on-model still that matches the sampled catalog portrait: charcoal knit on #8494ac slate, #fffffe bedding, #0d141a shadows. Simplest geometry of the four shots, so a 6s 720p push-in can move hair and fabric without inventing a new scene.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/02.mp4",
+      "fromImage": "images/05.jpg",
+      "motivation": "Chain-link plus unmarked washed jersey is the catalog on-model type in the sampled grid. Geometry is a fence mesh and a still figure, so a 6s 720p push-in can hold the subject without inventing a new scene.",
+      "durationSec": 6
+    },
+    {
+      "file": "videos/03.mp4",
+      "fromImage": "images/06.jpg",
+      "motivation": "Window-seat iced-coffee still matches the sampled cafe lifestyle cut: #141b24 tee, rolled heather cuff, daylight into #0d141a interior shadow. A 6s 720p push-in stays inside that frame.",
+      "durationSec": 6
+    }
+  ]
+}
