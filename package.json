@@ -165,7 +165,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.13.10",
-    "axe-core": "4.11.2",
+    "axe-core": "4.13.0",
     "playwright-core": "^1.61.1",
     "tsup": "^8.4.0",
     "typescript": "^5.8.2",
