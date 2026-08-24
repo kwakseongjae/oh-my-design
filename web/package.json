@@ -60,7 +60,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitest/ui": "^4.1.4",
-    "eslint": "^9",
+    "eslint": "^10",
     "eslint-config-next": "16.2.3",
     "husky": "^9.1.7",
     "playwright-core": "^1.61.1",
