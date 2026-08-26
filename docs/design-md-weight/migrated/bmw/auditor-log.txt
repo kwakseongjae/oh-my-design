@@ -1,0 +1,11 @@
+B2a·E2 전담 감사로 들어가겠습니다. 세션 복원과 룰북·BMW 산출물부터 읽고, 두 결함 계열만 직접 고치겠습니다.룰북 B2·E2와 BMW 산출물, 최근 감사 로그 형식을 같이 읽겠습니다.워커가 이미 붙인 B2a와 원장 줄번호를 실제 본문과 대조하고, 최근 F3에서 어떤 문장을 세 번째 부류로 잡았는지도 확인하겠습니다.원장에 적힌 목적지부터 grep으로 확인하고, 본문에서 한정이 빠졌거나 이름이 모자란 문장을 같이 집겠습니다.B2a가 이름을 못 붙인 해석 문장부터 본문에 인접 한정을 붙이겠습니다. 토큰·표·상태는 건드리지 않습니다.원장 목적지를 실제 grep에 맞추고, derived 목록을 본문 한정에 맞게 고치겠습니다.BMW F3 감사만 수행했습니다. 이관 워커가 아니라 감사자로서 B2a·E2 두 계열만 고쳤고, 토큰 값·컴포넌트 표·상태 applicability·구조는 그대로입니다.
+
+**B2a.** 세 번째 부류인데 인접 완전 한정이 없거나 읽기를 이름하지 못한 문장에 `derived editorial implementation inference` / `not BMW-authored or a separately published UI specification`을 붙이거나 이름을 보강했습니다. 대상은 Scope 인증 표면 제외·Neue Klasse driving-pleasure, Audience user-flow, Distinctive mostly-square/미승격 상태, Principles UI implication 세 꼬리, Do’s lawful-fallback, Semantic 생략 인과, Spacing 관측 px(한정을 역할 목록 앞으로), Elevation 패널 부재, Font licence-boundary, Type-role size-local 쌍, Build-your-own surface-specific, Layout 1440×900(한정을 collector 문장 앞으로), Content 보이스/표 라벨입니다.
+
+**E2.** `migration-log` hex 목적지를 grep에 맞췄습니다. Semantic 70은 `#1c69d4`/`#414141`/`#262626`/`#ffffff`/`#f2f2f2` 허위 목적지였고, `#ffffff`는 Background 168이 아니라 Text 169입니다. YAML rounded는 Shape 88 / 92–93입니다. provenance derived 목록은 본문 실제 한정에 맞췄습니다. 워커 F1 완결 주장은 철회했습니다.
+
+`docs/design-md-weight/migrated/bmw/audit-log.md`에 수정 목록을 적었습니다.
+
+Post-F3 SHA-256 `4e9797e243afba2d3bb550bac4656268af58afe2ac13b52a71958351198279e2`. `--gate-only` PASS, `portable_core: true`.
+
+AUDIT_DONE fixes=18

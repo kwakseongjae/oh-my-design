@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 Cloudflare 이관 산출물부터 읽고, 문장 분류와 원장 대조를 시작합니다.규칙서 B2a·E2와 최근 감사 로그 형식을 기준으로, Cloudflare 세 산출물을 전수 읽겠습니다.원본과 기존 감사 패턴을 대조해, 한정 누락 문장과 원장 목적지부터 전수 확인합니다.원본 §7·§12와 HTML 주석, 로그가 적은 목적지를 대조합니다.문장 분류와 원장 대조가 끝났습니다. 인접 한정이 없거나 이름을 덜 붙인 해석 문장부터 고치고, 로그 목적지는 grep 결과에 맞춥니다.원장 목적지를 현재 줄번호에 맞추고, provenance의 derived 목록을 본문 실제 한정 위치에 맞춥니다.Cloudflare F3 감사는 B2a·E2만 다뤘다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 건드리지 않았다.
+
+**B2a.** 편집적 해석·인과 문장 중 인접 완전 한정이 없거나 이름을 덜 붙인 곳에 `derived editorial implementation inference` / `not Cloudflare-authored or a separately published UI specification`을 붙이거나 확장했다. 예: Scope 13 오렌지 주도 스펙, 15 두 번째 grounding path, 17 공개 사실≠토큰, Distinctive 앞, §7 Do/Don’t 목록 머리, Semantic 목록 뒤, Spacing/Shape, Motion 150ms·Focus 비승격, Primary 36/40/6px 비평균, Compact/Icon L/E/S 생략, Dark CTA YAML type 없음.
+
+**E2.** migration-log를 grep으로 맞췄다. kumo/style-guide URL은 Scope 9이지 13이 아니고, Simple Icons는 262, Foundations `#F6821F`는 96, B3 전문은 Motion 208이다. provenance derived 목록을 실제 52곳 한정에 맞췄다. 워커 F1/F2 완결 주장은 현행 주장이 아니다.
+
+수정 목록은 `docs/design-md-weight/migrated/cloudflare/audit-log.md`에 있다. SHA-256 `411c17c271d94896f2482763931fe6ef39f1ec5aa1eb9e0d588008a5f53256a4`. `--gate-only` PASS, `portable_core: true`.
+
+AUDIT_DONE fixes=39

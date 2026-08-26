@@ -125,10 +125,16 @@ export function gateTexts(legacy, doc, provenance, log) {
   const problems = [];
   const all = doc + provenance + log;
 
-  // Token loss / invention across the whole output set.
-  const lt = tokenBag(legacy), nt = tokenBag(all);
+  // Token loss is checked across every output file — a value must survive
+  // somewhere. Invention is checked against the PORTABLE DOC only: the
+  // provenance ledger legitimately quotes values from sibling canonical files
+  // (.verification.md colours, mirror SHAs) that the legacy DESIGN.md never
+  // carried. Scanning the ledger for invention taught a worker to dodge the
+  // scanner by writing "# faf9f5" with a space — an evasion the rulebook now
+  // bans outright (E3). The gate stops rewarding it by not overreaching.
+  const lt = tokenBag(legacy), nt = tokenBag(all), dt = tokenBag(doc);
   const lost = [...lt.keys()].filter((k) => !nt.has(k));
-  const invented = [...nt.keys()].filter((k) => !lt.has(k));
+  const invented = [...dt.keys()].filter((k) => !lt.has(k));
   if (lost.length) problems.push({ check: "token-loss", detail: lost.slice(0, 8).join(", "), count: lost.length });
   if (invented.length) problems.push({ check: "token-invention", detail: invented.slice(0, 8).join(", "), count: invented.length });
 
@@ -198,9 +204,14 @@ export function gateTexts(legacy, doc, provenance, log) {
   // B1 — a focus-visible row may not carry a colour treatment the source
   // never attributed to focus-visible. Generic focus captures are a different
   // evidence type; notion's trial promoted three of them.
+  // Narrowed to state-table rows after two workers dodged the broad line
+  // regex by splitting sentences (and said so in their logs — sol's E3 catch).
+  // The defect this guards is a focus-visible TABLE ROW carrying a treatment
+  // value; prose that mentions focus-visible near a generic-focus observation
+  // hex is legitimate and was the false positive being evaded.
   if (!/focus-visible/i.test(legacy)) {
-    const rows = doc.match(/focus-visible[^\n]*#[0-9a-fA-F]{6}/gi);
-    if (rows) problems.push({ check: "focus-visible-promotion", detail: `${rows.length} focus-visible row(s) carry treatments but the source never records focus-visible` });
+    const rows = doc.match(/^\|[^|\n]*focus-visible[^|\n]*\|[^\n]*#[0-9a-fA-F]{6}[^\n]*$/gim);
+    if (rows) problems.push({ check: "focus-visible-promotion", detail: `${rows.length} focus-visible table row(s) carry treatments but the source never records focus-visible` });
   }
 
   // D1 — a negative coverage claim may not introduce vocabulary the source

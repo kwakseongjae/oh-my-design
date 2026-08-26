@@ -1,0 +1,19 @@
+BMW T2 마이그레이션을 시작합니다. 지정된 규격·규칙집·골든 샘플부터 순서대로 읽고, 그다음에 legacy BMW 본문을 옮기겠습니다.규칙집과 골든 샘플, BMW 원문을 이어서 읽겠습니다.BMW 원문과 승인된 musinsa 골든 샘플, 최근 PASS 이관본 형태를 대조해 읽겠습니다.최근 PASS 이관본과 게이트가 실제로 검사하는 항목을 확인한 뒤 BMW 컴포넌트·상태 표를 맞추겠습니다.원문 값·상태·증거 경계를 고정한 뒤 Core v2 본문을 작성합니다. YAML 비율·표면별 색·§14 원문을 잃지 않겠습니다.본문을 처음부터 다시 읽어 B2a 한정이 빠지거나 근거 class가 섞인 문장을 잡겠습니다.F1에서 해석 문장 몇 개를 고칩니다. 2020 발표에 없는 타이포 부정, 표 뒤쪽 한정, `Type` 미발명 문장을 인접 B2a에 붙입니다.원장과 마이그레이션 로그를 grep으로 확인한 줄 번호에 맞춰 작성합니다.Foundations claim이 `not`…`rule` 패턴에 걸려 Portable Core가 막혔습니다. Shape 한정의 그 단어를 바꿉니다.BMW legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/bmw/`의 세 파일입니다.
+
+**옮긴 계약**
+- 범위는 캡처된 BMW USA home / models / build-your-own 세 표면입니다. 카탈로그 homepage `https://www.bmw.com`은 신원만이고 캡처 페이지가 아닙니다.
+- Primary tasks 3건은 그 세 경로에서만 잡았습니다. §13 이해관계자 그룹은 Audience에만 두었고, 가상 persona는 sidecar에도 없습니다.
+- 색은 합치지 않았습니다: home CTA `#1c69d4`, home `#414141`, configurator `#262626`, on-dark `#ffffff`와 CTA on-fill `#ffffff`, outline `#f2f2f2`, flyout `#666666`.
+- YAML line-height `1.43` / `1.56` / `1.6` / `1.5`는 비율로 남겼고, 본문 표의 50px / 28px / 24px / 30px는 크기별 관측입니다.
+- YAML `components`는 비어 있어 Type을 만들지 않았습니다. Home CTA 두 개의 loading/error/success는 생략(C2), flyout은 역할상 not-applicable, 입력/카드/배지/다이얼로그/챗봇/메뉴는 kind/map 생략(C4).
+- §14 collector-zero 문장은 본문에 보존했습니다. 무출처 커브는 없었고, B3 다섯 증거 종류 승격 게이트는 Foundations Motion에 전문으로 남겼습니다.
+
+**검사**
+- 규칙집 v7. F1 B2a 전수 스캔, F2 dest grep 수행.
+- `--gate-only` PASS / problems `[]`
+- Core `portable_core: true`
+- DESIGN SHA-256 `2fb9aaf6e262e70b857dcfd2958609475c6e580f2777e81c506a3545c9502e6c`
+
+카탈로그 채택은 아닙니다. F3 감사와 sol 의미 레인은 대기입니다.
+
+DONE migrated=1

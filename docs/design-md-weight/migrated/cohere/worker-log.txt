@@ -1,0 +1,21 @@
+T2 마이그레이션을 규칙집부터 읽고 시작합니다. 지정된 문서와 Cohere 레거시 원문을 순서대로 확인합니다.필수 문서와 골든 샘플을 이어서 읽고, Cohere 레거시 원문도 같이 엽니다.골든 샘플 형태와 Cohere 레거시 원문을 읽고, 최근 통과 이관본 하나도 대조합니다.최근 통과된 AI 레퍼런스와 게이트 스크립트를 대조해, 형태는 골든 샘플을 따르되 v8 조항을 맞춥니다.레거시 토큰과 Proof 경계를 확인했습니다. Core v2 본문부터 작성합니다.본문 줄번호를 기준으로 provenance 원장을 작성합니다.패스 1(B2a)로 본문을 다시 읽고, 패스 2용 값 대조를 같이 돌립니다.게이트는 통과했지만 Portable Core의 scope claim이 거부됐습니다. 검사기가 무엇을 요구하는지 확인합니다.Cohere 레거시 `DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 **v8**을 썼고, 제출 전 F1(B2a)·F2(E2)를 수행했습니다.
+
+산출물:
+- `docs/design-md-weight/migrated/cohere/DESIGN.md`
+- `docs/design-md-weight/migrated/cohere/provenance.md`
+- `docs/design-md-weight/migrated/cohere/migration-log.md`
+
+보존한 값·경계:
+- YAML 비율 `1` / `1.2` / `1.5` / `1.4` (고정 px로 바꾸지 않음)
+- primitive `tab` × 1, `card` × 1. Dark/Inverse/Outlined CTA는 YAML type이 없어 발명하지 않음
+- `#17171c` / `#000000` / `#212121`, canvas `#ffffff` / inverse `#fafafa` / dark-CTA on-fill을 합치지 않음
+- 9999px pill / 22px media card / 8px dialog / 4px control / 0px tab을 하나의 radius로 평탄화하지 않음
+- Selected tab의 loading/error/success는 탭 의미로 `not-applicable`. 세 CTA의 L/E/S는 요청·결과 매핑이 안 닫혀 생략. Home marketing media는 kind/map 생략
+- 무출처 커브 없음. Motion에 B3 다섯 증거 종류 게이트 전문 유지
+- GitHub slug `cohere-ai`는 신원 경계만. `reconciled` / `ds.type: brand` / Proof-only transparent fill·dialog tuple은 provenance
+
+검사: `--gate-only` PASS, `portable_core: true`. SHA-256 `3ff9a9e45dfa161ddf8f490510bc0cd5ed5eeb2382e71c0930fe40c82af9fd17`. F3 감사와 sol 의미 레인은 대기. 카탈로그 채택이 아닙니다.
+
+DONE migrated=1
+
+Revision 2026-08-25 (wave16 sol resubmit): conditions 1–6 only. Type: anchor on three public actions; Home marketing media Kind: interactive + map; footer lineage from sidecar :5 not canonical footer; support/legal copy negative deleted; exclusive-font gap narrowed to sidecar CohereText/CohereMono discovery result. New F3 not run. No F1/F2/F3 closed claim. E3: no gate-evasion rewrite.

@@ -1,0 +1,10 @@
+B2a·E2 전담 감사로 들어가겠습니다. 규칙서의 해당 조항과 Coinbase 이관 산출물부터 읽고, 문장 분류와 원장 대조를 바로 시작하겠습니다.규칙서 B2·E2와 최근 감사 로그 형식을 먼저 맞춘 뒤, Coinbase 세 파일을 전수 분류하겠습니다.DESIGN.md 나머지와 provenance·migration-log를 이어서 읽고, 문장 단위 분류를 시작합니다.이전 감사본의 한정 문장 패턴과 원본 레퍼런스를 대조해, 누락·과잉 한정을 정확히 잡겠습니다.문장 분류와 원장 목적지 grep을 한꺼번에 돌리겠습니다. 한정이 빠졌거나 로그가 틀린 줄만 고칩니다.문장 한정을 기존 줄에 붙여 줄번호 변동을 막고, 원장 목적지는 그다음에 맞추겠습니다.Tier 1 목적지가 빈 줄 70을 가리키고 있어, 실제 `coinbase.com` 행인 71로 고칩니다.Coinbase F3 B2a·E2 감사를 마쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 건드리지 않았고, 한정 문장과 원장만 고쳤습니다.
+
+**B2a.** 세 번째 부류인데 인접 완전 한정이 없거나 읽기를 이름 붙이지 않은 문장에 `derived editorial implementation inference` / `not Coinbase-authored or a separately published UI specification`를 붙이거나 확장했습니다. 대표적으로 Scope 홈페이지 identity·this-contract-covers, Primary tasks 세 일, Spacing YAML-without-px·64, Shape 목록 앞 한정, Elevation 모달 스크림, Motion `standard cubic-bezier` 생략(B3 다섯 증거 종류는 그대로), Font 표 뒤 do-not-substitute, caption 600 비합침, CDS siblings Type 미발명, §9 로컬 튜플, Layout 간격/기하, Content 톤 표 안내입니다.
+
+**E2.** migration-log를 grep으로 다시 맞춰 빈 줄·잘못된 줄(live hosts 66→71, C4 638/651/660→639/650/662, breakpoint 706→707–716, github 57/67 이중 목적지 등)을 고쳤고, provenance derived 목록을 실제 45곳 B2a 사이트에 맞췄습니다.
+
+기록: `docs/design-md-weight/migrated/coinbase/audit-log.md`  
+Post-F3 SHA-256 `0749f48768b46679048e8e514c8945eb63584284243c973d6a5dda496b37b390`. `--gate-only` PASS, `portable_core: true`.
+
+AUDIT_DONE fixes=17

@@ -1,0 +1,14 @@
+T2 마이그레이션은 규격·규칙집부터 읽고, 그 다음 코인원 레거시와 골든 샘플을 대조하겠습니다.규칙집·규격·골든 샘플과 코인원 레거시를 순서대로 읽습니다. 최근 통과 이관본도 형태 기준으로 대조하겠습니다.골든 샘플 원장·최근 통과 이관본·코인원 사이드카를 대조해 착지 형태를 잡겠습니다.사이드카 `.verification.md`가 있어 존재만 원장에 남기고, 본문에는 채택하지 않겠습니다. 검증 원문과 게이트 규칙을 이어서 읽습니다.사이드카 Proof는 채택하지 않고, 레거시 본문만 Core 슬롯에 옮깁니다. DESIGN.md부터 작성합니다.F1에서 인용 성격·정적 상태 재진술·`were not captured` 어휘를 고친 뒤, 줄번호를 잡아 원장을 씁니다.원장에 출처·freshness·B2a 목록을 적고, 줄번호는 본문 grep과 맞춥니다.Portable Core가 scope claim을 못 읽습니다. 검사기가 무엇을 요구하는지 확인하겠습니다.`web/references/coinone/DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 **v8**.
+
+산출물:
+- `docs/design-md-weight/migrated/coinone/DESIGN.md`
+- `docs/design-md-weight/migrated/coinone/provenance.md`
+- `docs/design-md-weight/migrated/coinone/migration-log.md`
+
+유지한 값: YAML `lineHeight` `1.38` 비율, `Type: button` ×2 / `Type: tab` ×2, 공식 블루 `#006BD6`와 홈 관측 `#0B59D5` 비합침, 홈 `pretendardCoinone`와 트레이딩 `Spoqa Han Sans` 경계, §14 상태 본문, B3 모션 승격 게이트 전문.
+
+분리·생략: `tokens.source: reconciled`는 provenance만, Google favicon URL은 provenance만, `.verification.md`는 존재하나 미채택·Proof 미수입, 사인인/컴팩트 CTA의 loading·error·success는 역할 미해상으로 생략, 탭 L/E/S는 패널 선택 역할로 `not-applicable`.
+
+`--gate-only` PASS, `portable_core: true`. SHA-256 `c984483f9abbd28f9e591088f763554ac7831d3f8e5d1c2065e623d032241c76`. F3 감사·의미 레인 대기. 카탈로그 채택 아님.
+
+DONE migrated=1

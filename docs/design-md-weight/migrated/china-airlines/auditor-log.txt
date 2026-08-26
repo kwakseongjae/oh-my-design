@@ -1,0 +1,10 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 china-airlines 산출물부터 읽고, 문장 한정과 원장만 대조하겠습니다.산출물 세 파일과 최근 F3 감사 로그 형식을 같이 읽습니다.원본과 값 목적지를 grep으로 대조하고, 최근 F3 감사에서 어떤 문장을 세 번째 부류로 잡았는지 확인합니다.문장 한정 누락과 원장 목적지 불일치를 확인했습니다. DESIGN.md 한정부터 붙이고, provenance·migration-log는 실제 grep에 맞춥니다.원장 목적지와 derived 범위를 실제 본문에 맞춥니다.migration-log 목적지를 grep 결과에 맞춰 고칩니다. 같은 파일은 순차로 수정합니다.B2a·E2 감사만 수행했고, 토큰·표·applicability·구조는 건드리지 않았습니다.
+
+**B2a.** 편집 해석인데 인접 한정이 없거나 그 독해를 이름 붙이지 않은 문장 9곳에 `derived editorial implementation inference` / `not China Airlines-authored or a separately published UI specification`을 붙이거나 확장했습니다. Scope 11·15, capture-bound 57, Family 144, Assets 160, Capture 167, Search Kind 248, Content 274·288.
+
+**E2.** 로그·provenance 목적지를 grep과 맞췄습니다. 카탈로그 homepage는 Scope 9뿐(11 아님). `verification_v2.schema: 2`는 provenance에 없음. `#d81159`는 203. YAML `pill` 40·body px·selector·license URL은 이중 목적지를 실제 행으로 고쳤습니다. 준수 주장(B3 전문 Motion 121)은 본문에 실재합니다.
+
+산출물: `docs/design-md-weight/migrated/china-airlines/audit-log.md`  
+Post-F3 SHA-256 `8fb4175f0f87db792a2438ecb4bba6db47e751e79b62965be288a1b8ba245d8f`. `--gate-only` PASS, `portable_core: true`. 카탈로그 채택 아님.
+
+AUDIT_DONE fixes=14

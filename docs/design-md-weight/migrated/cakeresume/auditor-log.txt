@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 CakeResume 이관 산출물부터 읽고, 문장 한정과 원장만 점검하겠습니다.이전 F3 감사 로그 형식과 CakeResume 세 산출물을 같이 열어, 한정 문장과 원장만 대조하겠습니다.유사 감사에서 B2a를 어디까지 붙였는지와 CakeResume 원본을 대조해, 한정 누락만 집어내겠습니다.문장 분류와 로그 목적지를 grep으로 맞춰 보겠습니다. 한정이 없거나 이름만 덜 적힌 해석, 그리고 원장 불일치만 고칩니다.한정이 빠졌거나 이름만 덜 적힌 해석부터 DESIGN.md에 붙이겠습니다. 토큰·표·applicability·구조는 건드리지 않습니다.DESIGN.md 한정은 붙였습니다. 이제 세 파일에서 목적지 줄을 다시 grep해 원장을 맞춥니다.원장 목적지와 derived 범위를 실제 본문에 맞춥니다.CakeResume F3 감사를 마쳤습니다. B2a·E2만 고쳤고, 토큰 값·컴포넌트 표·상태 applicability·구조는 그대로입니다.
+
+**B2a.** 편집적 해석인데 한정이 없거나 이름만 덜 적힌 문장에, 인접한 완전 한정(`derived editorial implementation inference` / `not Cake-authored or a separately published UI specification`)을 붙이거나 이름을 보탰습니다. Primary tasks, Audience 머리 문장, Semantic 목록 앞, Capture graph-not-adopted가 여기에 해당합니다.
+
+**E2.** migration-log 목적지를 세 파일 grep에 맞춰 고쳤습니다. `#13AB67` 이중 목적지, homepage/favicon, Inter, GitHub/Medium URL, B3 전문(117, Named gaps 324 아님)이 어긋나 있었습니다. provenance derived 목록도 본문 실제에 맞췄습니다.
+
+수정 목록은 `docs/design-md-weight/migrated/cakeresume/audit-log.md`에 있습니다. Post-F3 SHA-256 `c1e1778a655b55f53feac403c6aee369513263ea4c99eae080e08dbc04f90777`. `--gate-only` PASS, `portable_core: true`.
+
+AUDIT_DONE fixes=22

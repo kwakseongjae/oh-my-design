@@ -1,0 +1,60 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 coinone 이관 산출물부터 읽고, 문장 분류와 원장 대조를 시작하겠습니다.이전 F3가 있어도 이번 세션은 독립 감사입니다. 산출물·기존 audit-log·웨이브 17 판정을 함께 읽어 B2a·E2만 다시 대조합니다.Content 297 삭제 뒤 줄번호가 밀렸을 가능성이 있어, B2a 문장·로그 목적지를 실제 파일에서 grep으로 대조합니다.Shape 101에 인접 한정이 없고, 로그는 297·338·342·SHA가 실제와 어긋납니다. 본문 한정과 원장을 맞춘 뒤 게이트를 돌리겠습니다.
+AUDIT_ERROR: Error: Command failed: /Users/kwakseongjae/.grok/bin/grok -p B2a·E2 전담 감사. 너는 이관 워커가 아니라 감사자다. docs/design-md-weight/migrated 산출물에서 두 결함 계열만 찾아 직접 수정해라.
+Internal error: {
+  "message": "API error (status 402 Payment Required): Grok Build usage balance exhausted",
+  "http_status": 402,
+  "promptUsage": {
+    "inputTokens": 2054516,
+    "outputTokens": 35072,
+    "totalTokens": 2089588,
+    "cachedReadTokens": 1766784,
+    "cacheCreationTokens": 0,
+    "reasoningTokens": 33332,
+    "modelCalls": 16,
+    "apiDurationMs": 560033,
+    "costUsdTicks": 2837789600,
+    "modelUsage": {
+      "grok-4.6-build": {
+        "inputTokens": 2054516,
+        "outputTokens": 35072,
+        "totalTokens": 2089588,
+        "cachedReadTokens": 1766784,
+        "cacheCreationTokens": 0,
+        "reasoningTokens": 33332,
+        "modelCalls": 16,
+        "apiDurationMs": 560033,
+        "costUsdTicks": 2837789600
+      }
+    },
+    "numTurns": 16
+  }
+}
+Error: Internal error: {
+  "message": "API error (status 402 Payment Required): Grok Build usage balance exhausted",
+  "http_status": 402,
+  "promptUsage": {
+    "inputTokens": 2054516,
+    "outputTokens": 35072,
+    "totalTokens": 2089588,
+    "cachedReadTokens": 1766784,
+    "cacheCreationTokens": 0,
+    "reasoningTokens": 33332,
+    "modelCalls": 16,
+    "apiDurationMs": 560033,
+    "costUsdTicks": 2837789600,
+    "modelUsage": {
+      "grok-4.6-build": {
+        "inputTokens": 2054516,
+        "outputTokens": 35072,
+        "totalTokens": 2089588,
+        "cachedReadTokens": 1766784,
+        "cacheCreationTokens": 0,
+        "reasoningTokens": 33332,
+        "modelCalls": 16,
+        "apiDurationMs": 560033,
+        "costUsdTicks": 2837789600
+      }
+    },
+    "numTurns": 16
+  }
+}

@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서와 CGV 산출물·원본을 먼저 읽고, 문장 분류와 원장 대조부터 하겠습니다.규칙서 B2/B2a·E1/E2와 최근 감사 로그 형식을 확인한 뒤 CGV 세 파일을 읽겠습니다.CGV 산출물과 원본을 읽고, 최근 감사 로그 형식에 맞춰 문장 단위로 분류하겠습니다.DESIGN.md 나머지와 원본을 읽어, 한정 없이 남은 편집적 해석 문장을 찾겠습니다.문장 분류와 원장 목적지 grep을 병렬로 돌려, 한정 누락과 로그 불일치를 잡겠습니다.문장 분류가 끝났습니다. 인접 한정이 없거나 읽기를 끝까지 이름 붙이지 않은 편집적 해석에만 한정을 붙이겠습니다.본문 한정은 같은 줄에서만 늘렸습니다. 이제 세 파일에서 목적지를 다시 grep하고 원장을 맞춥니다.원장 목적지와 derived 범위를 본문 실제에 맞춥니다. `1,217`이 Font 130 한정에도 생겼고, Named gaps 레이아웃은 359입니다.목적지가 본문과 맞습니다. `audit-log.md`를 쓰고 세션 원장을 갱신합니다.CGV F3 감사는 B2a·E2만 고쳤고, 토큰·표·applicability·구조는 그대로 뒀습니다.
+
+**B2a.** 편집적 해석인데 인접 완전 한정이 없거나 읽기 이름을 끝까지 안 붙인 문장 12곳에 `derived editorial implementation inference` / `not CGV-authored or a separately published UI specification`을 붙이거나 확장했습니다. 가장 큰 구멍은 Capture 184(selector-backed static만 canonical, 0 interaction → 상태 추론 금지)였고, Scope·Primary tasks·Audience·Motion·Font·Assets·Layout·Content 한정도 같은 방식으로 닫았습니다.
+
+**E2.** 로그 목적지를 세 파일 grep으로 맞춰 고쳤습니다. `#121212`에 Scope 13, Semantic 생략 86(87 아님), 인증 레이아웃 Named gaps 359(360 아님), claim ledger 85–101, 캡처 호스트 provenance 24, 리포트 URL은 61/67만. provenance derived 목록은 본문 실제 B2a 사이트에 맞췄습니다.
+
+기계 결과: `--gate-only` PASS, `portable_core: true`. SHA-256 `efcbe5cc3f7564dbfbb1d8899e144dfc0291926e201bf03651ad15c53e279939`. 상세는 `docs/design-md-weight/migrated/cgv/audit-log.md`.
+
+AUDIT_DONE fixes=20

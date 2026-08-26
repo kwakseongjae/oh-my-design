@@ -1,0 +1,122 @@
+# CJ ONSTYLE migration log
+
+Source: `web/references/cjonstyle/DESIGN.md`
+Destination: `docs/design-md-weight/migrated/cjonstyle/DESIGN.md`
+Provenance: `docs/design-md-weight/migrated/cjonstyle/provenance.md`
+Date: 2026-08-24
+Worker: grok-4.6 T2
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v7
+Portable Core: command outputs are recorded after F1/F2. This is not a catalog-adoption claim (E2c).
+카탈로그 채택 아님.
+
+| Legacy | Disposition | Destination / reason |
+|---|---|---|
+| YAML identity (id, name, display_name_kr, country, category, homepage, primary_color, logo) | 분리 → provenance; homepage 옮김 → Experience Scope; `primary_color` 옮김 → Scope token-note + Distinctive + Foundations CJ ONSTYLE Violet / Semantic unmerged-role + capture-bound + Buy Primary + local recipes; logo URL 분리 → provenance only | Portable file has no frontmatter. Name kept as H1 `CJ ONSTYLE Design System`. Homepage `https://www.cjonstyle.com` is dual Scope 9/11 + provenance identity 14/26 / surfaces 48 / sources 56 / Tier 1 63 / country-sources 71 / Proof 85 (E2a). Redirect host `display.cjonstyle.com/p/homeTab/main` is dual Scope 11 + provenance identity 26 / surfaces 48 / sources 56 / Proof 85, not a separate Tier 1 host string (E2a). Catalog `primary_color` `#640faf` is identity + portable Scope token-note 13 / atmosphere 15, Distinctive unmerged B2a 44 / bullet 46, Principles 59 / capture-bound 64 / Do 66, Semantic unmerged-role 93 / CJ ONSTYLE Violet 95, Capture-record table characterizations 231 / Loading 238 / named-active 359/361/363/376/390, Buy Primary Background 258 / Border 260 / field note 266, Inquiry 283/284, Wishlist field note 315, local recipes 490/494/515/519, Named gaps 635, provenance Identity (E2a). Avoid 85 names `#ec0040`, not this hex. Content Observed 572–579 is the live CTA/nav strings without this hex. Catalog Google favicon URL `https://www.google.com/s2/favicons?domain=cjonstyle.com&sz=128` is provenance identity only. Portable Assets 220 is URL-free identity-boundary (E2a). A first-party-mark gap sentence was not generated. |
+| YAML `omd`, `verified`, `added`, token claims, `tokens.source` / `extracted` / `note`, `components_harvested` | mixed: `omd` / `verified` / `added` / `extracted` / `components_harvested` / `tokens.source` YAML keys 분리 → provenance; `tokens.note` 옮김 → Experience Scope + provenance; `live-extract` 값 옮김 → Font evidence live computed + provenance | `tokens.source: live-extract` YAML key and `components_harvested: true` are provenance-only as keys (A1c; provenance Identity). The live-extract extraction class is dual: provenance Identity/Claim ledger + portable Font evidence table row 196 (E2a). Line 180 is the adjacent complete B2a on evidence-class application, not the live-extract restatement. Token note is dual Scope 13 + provenance identity (E2a, B2/B2a). YAML `verified` / `added` / `extracted` 2026-07-02 are provenance freshness. Footer Verified is provenance freshness. |
+| YAML `tokens.colors` / `typography` / `spacing` / `rounded` / `shadow` / `components` | 옮김 → Foundations, Typography & Assets, Components & States; YAML `use` also Primary tasks | 검증된 값만 최소 필드 단위. YAML unitless lineHeight 1.4 / 1.5 비율 보존 (A1a) Type-role limiter 202 / type-rule 204 / Nav 212 / Body 215. Font evidence 190 restates body 1.5 (18px) as the live-computed companion, not as a rewrite of the YAML ratio (E2a). YAML typography `use` field restored on Type roles 208–216 (A1) together with body Notes as a separate field on each row. YAML spacing xs 2 / sm 4 / base 8 / md 12 / lg 20 / xl 26 / xxl 48는 숫자 보존, px 접미사 비발명 (Spacing 115, Layout 538). Body 2px / 4px / 8px / 12px / 20px / 26px / 48px는 Spacing 115 / Layout 538에 별도 유지. YAML `rounded.full` 9999는 YAML step으로 보존되고 harvested pill로 비변환; 50% pause와 비합침 (Distinctive 44, Shape 121/123/131/133, Buy Primary field note 266, Carousel field note 476). 검증된 primitive type은 컴포넌트별로 보존: button×3 (256, 281, 305) + tab×2 (355, 383) + card (409) + input (330) + badge (423). Utility / Skip-link Bar / Carousel Control YAML `tokens.components` row 없음 — Type 발명 없음 (A1b). `#640faf`와 `#ec0040`, `#ffffff` canvas와 on-primary, `#000000`와 `#111111`와 `#2a2a2a`는 비합침 (A4). YAML shadow.none는 Elevation 146. Primary tasks dests from these YAML `use` strings: 33–35 (buy-primary 264, search-input 338, product-card 414). |
+| §1 Visual Theme & Atmosphere | 옮김 → Experience `scope` claim, distinctive traits | 제품/표면 범위. URL evidence-domain assignment (11) names the source-footer Tier 1 URLs. Product-origin (9), token-note register-split (13), atmosphere extra names (15), public-history (17), ON-plus-STYLE name semantics (19), retail-TV urgency (21), curated-versus-bargain-bin (23), refusal/embrace (25) 문단 인접에 derived editorial implementation inference / not CJ ONSTYLE-authored or a separately published UI specification 한정 (B2/B2a). Distinctive unmerged-role extras have adjacent complete B2a immediately before the bullets (44). `https://www.cjonstyle.com` / `https://display.cjonstyle.com/p/item/2086524438` / `https://medium.com/cj-onstyle`는 provenance와 dual (E2a). |
+| §1 / footer / §11 공식 URL | 분리 → provenance; 본문 Scope에도 | 서사·freshness 원장. 본문은 토큰 경계 한정을 유지. Homepage / PDP remain named as brand-owned Tier 1. Medium is Scope 11 country-identity + provenance Country sources (E2a). Evidence class is public-history narrative plus live homepage/PDP strings. |
+| §2 Color Palette & Roles | 옮김 → Foundations semantic color | 17 YAML hex 전부. Unmerged-role extra characterizations have adjacent complete B2a at 87 (B2/B2a). `#640faf` vs `#ec0040` vs `#d53225` vs `#f26d00`, `#000000` / `#111111` / `#2a2a2a`, `#f5f5f5` / `#f0f0f0`, `#e5e5e5` / `#b2b2b2` 비합침. |
+| §3 Typography Rules | 옮김 → Typography & Assets | 증거 등급. Nanum Barun Gothic vs Pretendard kept as base/alt families (195–196). YAML `use` nine fields restored (208–216). Body-table Notes restored on Type roles (208–216) (A1/A4). Font evidence-class B2a (186). Live computed surface-use row 190; YAML family keys name those live computed families. No Font Official product-use row. Family font-use (198) / type-rule (204) / ratio-versus-size-local (202) 독해는 각 인접 완전 B2a (B2/B2a). 원본에 없는 FontFaceSet / exclusive-file 부정은 만들지 않음 (D1). |
+| §4 Component Stylings | 옮김 → Components & States + Primary tasks | Buy Primary / Inquiry / Wishlist `Type: button` 256/281/305; Global Nav / PDP Section Tab `Type: tab` 355/383; Product Card `Type: card` 409; Header Search `Type: input` 330; Sale / Benefit Pill `Type: badge` 423 (Product Card / Sale kind/map 생략, C4 250/418/433). Utility / Skip-link Bar / Carousel Control YAML `tokens.components` row 없음 — Type 발명 없음 (A1b, dests 250/446/475). Carousel Kind `interactive` 464 from body Use as prev/next/pause. Capture selector 없음 — 발명하지 않음. Buy Primary loading·error·success omitted (C2) 275. Inquiry omitted 299. Wishlist omitted 324. Header Search omitted 349. Global Nav / PDP Section Tab / Utility / Carousel L/E/S는 destination/selection 또는 chrome 역할로 not-applicable 372–374 / 399–401 / 455–457 / 484–486 (C2; `not captured` 사유 아님, C1). Named GNB active `#640faf` / PDP active `#111111` + 1px `#e5e5e5`는 named active로 보존되고 focus-visible 행에 hex 없음 (B1). Field notes have adjacent complete B2a on unmerged-field readings (266/290/315/340/362/389/416/431/447/476). YAML-row-absent Type-not-invented has adjacent complete B2a on the component sentences 446 / 475 as well as Capture-record 250. Primary tasks from these YAML/§4 uses: 33–35. |
+| §5 Layout | 옮김 → Layout & Platforms + Foundations spacing/shape | YAML scale + body 2px/4px/8px/12px/20px/26px/48px + harvested heights. Shape local-geometry limiter precedes the labeled list (123). Layout extras (540)와 recorded-span / collapsing / image-behavior including consistent-with-the-flat-system / scrim-to-preserve-legibility / not-cross-viewport (549, limiter precedes the breakpoint table) plus after-table collapsing 559 / image-behavior 561 / touch-purpose 563는 각 절 인접 완전 B2a (B2/B2a). |
+| §6 Depth & Elevation | 옮김 → Foundations elevation | YAML none + four-level table 139–144. Elevation-table Use limiter precedes the table; extra philosophy names sit on that limiter rather than as after-table sentences (137) (B2/B2a). Live-inspection-`box-shadow: none` / tint-and-hairline / scrim-as-imagery-legibility has adjacent complete B2a on the following-the-table sentence (148). |
+| §7 Do's | 옮김 → Experience principles (capture-bound application) | Capture-bound grouping of §7 Do’s named rules has adjacent complete B2a (64) (B2/B2a). Governance 통제 문구에 넣지 않음. |
+| §7 Don'ts | 옮김 → Experience avoid | 브랜드 금지. Avoid list-head named Don’ts 인접 완전 B2a (77); last-bullet 인접 완전 B2a (85) (B2/B2a). `#ec0040` dests: Scope token-note 13 / atmosphere 15, Distinctive unmerged 44 / bullet 47, Principles 58, capture-bound 64 / Do 67, Avoid limiter 77 / Don’t 85, Semantic unmerged-role 93 / Sale Magenta 97, Buy Primary field note 266, Inquiry field note 290, Promo banner local 526/530, provenance identity 22/28 / freshness 42 / Proof 116/121 / claim 139 (E2a). |
+| §8 Responsive Behavior | 옮김 → Layout & Platforms | Source breakpoint table Mobile <768px / Tablet 768-1024px / Desktop 1024-1440px 보존 (555–557). Touch-purpose / collapsing / image-behavior / source-stated-heights-not-cross-viewport 독해는 Layout precede 549 plus after-table collapsing 559 / image-behavior 561 / touch-purpose 563 각 인접 완전 B2a (B2/B2a). |
+| §9 Agent Prompt Guide | mixed: 도구 프롬프트 삭제; 고유 parent-child tuple 옮김 → local recipes | 도구별 복붙 프롬프트·Quick Color Reference·Iteration Guide 삭제 (A2). 검증된 hex/radius/height/family는 이미 Foundations/Type/Components에 있음. Unique tuples restored (A3/A4): Product-detail buy bar 488–497 (`바로구매` + 찜); Product card with sale overlay 499–511 (white parent + 12px Nanum title + Pretendard badge on scrim); Global header assembly 513–522 (`#26292a` utility bar + 15px GNB + Pretendard 18px search); Promo banner headline 524–533 (Pretendard 26px/700 white + magenta `#ec0040` rate). Tuples are not promoted as global tokens. Kind/map omitted on those local recipes: 496/510/521/532 (E2a). Remaining prompt-only constructions stay omitted in provenance omitted-prompts. |
+| §10 Voice & Tone | 옮김 → Content Observed + derived voice (인접 B2a) | Live Observed strings 572–579 under em-dash role-label citation-character B2a (570). Derived editorial voice + tone table + forbidden register under adjacent complete B2a (585). Last-sentence “The deal is the message” 인접 완전 B2a (597). Treating §14 rows as state-contract not extra voice samples has adjacent complete B2a (581) (B2/B2a, E1). |
+| §11 Brand Narrative | 옮김 → Experience `scope`; 서사 원장 분리 → provenance | 2021 relaunch / CJ오쇼핑 / unified TV-mobile-web style-and-living destination restated in portable Scope 17; ON+STYLE name semantics Scope 19; retail-TV urgency Scope 21; curated-versus-bargain-bin and quiet-chrome-versus-noisy-promo Scope 23; refusal/embrace Scope 25; each derived relationship has adjacent complete B2a (A1, B2/B2a). Medium URL dual Scope 11 + provenance Country sources. Evidence class is public-history narrative plus live homepage/PDP strings. |
+| §12 Principles | 옮김 → Experience principles | 다섯 항목 전체 editorial readings. 인접 본문에 derived editorial implementation inference / not CJ ONSTYLE-authored or a separately published UI specification (56). Capture-bound grouping (§7 Do’s) has adjacent complete B2a (64). Governance 일반 문구는 그 한정의 대체물이 아님 (B2/B2a, E1). |
+| §13 Personas | mixed: 가상 biography 삭제·sidecar 재수록 없음; Audience는 배제 경계만 | 원본이 named fictional archetypes. Names/biographies/ages/cities는 portable Audience에도 provenance에도 없음 (D2). Generic deletion only: fictional archetype material deleted; not re-hosted. Audience no-individual-personas-promoted + observable-work-follows-three-tasks application have adjacent complete B2a (40) (B2/B2a). Primary tasks 3건 dests are on the YAML/§4 source-rows (YAML `use` → Primary tasks 33–35), under adjacent complete B2a as YAML-use-strings-not-from-§13 / independently-verified-homepage-and-PDP-URLs / harvested-strings-controls-not-independently-verified-destination-routes (31). The portable body does not call those tasks independently verified destination routes (E2c). |
+| §14 States | 옮김 → Components & States capture record + per-component applicability | 본문 보존: Empty (no search results) / Empty (empty cart) / Loading (grid fetch) / Loading (buy action) / Error (payment/checkout failed) / Error (form validation) / Success (order placed) / Skeleton / Sold out / Disabled (A2) 235–244. Capture-record table characterizations have adjacent complete B2a immediately before the table (231) (B2/B2a). Graph-not-adopted / philosophy-layer preservation sentence has adjacent complete B2a (229). 선언 컴포넌트는 §4.4를 닫되 미관측 시각값은 발명하지 않음. `not captured` / `not named`를 `not-applicable` 사유로 쓰지 않음 (C1). Buy Primary loading·error·success omitted (C2) 275. Inquiry omitted 299. Wishlist omitted 324. Header Search omitted 349. Global Nav / PDP / Utility / Carousel L/E/S role-based not-applicable 372–374 / 399–401 / 455–457 / 484–486. Product Card / Sale kind/map 생략 (C4) 250/418/433. Local recipes kind/map omit 496/510/521/532. Utility / Carousel YAML-row-absent Type-not-invented 250/446/475. Named Focus hex는 원본에 없고 focus-visible 행에 없음 (B1, 246). graph 위임 없음. State coverage 완료 주장 없음 (C3, 246/248). |
+| §15 Motion & Easing | 옮김 → Foundations motion | Durations 120ms / 200ms / 400ms 155–157; easing names 164–166; signature carousel / tap-feedback / reduced-motion 174–176. No-bounce / auto-advance / tap-feedback / storefront-remains-fully-functional restored in the signature-motion body under adjacent complete B2a (152 and 170) (B2/B2a). Source-stated classification under adjacent complete B2a (152); not computed CSS. 무출처 cubic-bezier 3개 (`ease-enter` `cubic-bezier(0.2, 0.6, 0.25, 1)` / `ease-exit` `cubic-bezier(0.4, 0.0, 1, 1)` 템플릿 일치 / `ease-standard` `cubic-bezier(0.25, 0.1, 0.25, 1)`)는 provenance omission ledger (E2b). Foundations Motion은 B3 다섯 증거 종류(transition properties · animation name · duration · easing · reduced-motion behavior)를 컴포넌트별 computed 관측한 뒤에만 승격한다는 게이트를 전문 명시 (178). “공식 출처로 검증될 때까지” 약화 문구는 쓰지 않음 (B3, E2c). Named gaps 638 lists animation/transition/duration and refers to all five kinds; the B3 full promotion-gate sentence is Foundations Motion 178 only. |
+| Footer **Verified** / Tier 1 / Tier 2 / HTML-comment Proof | mixed: freshness 분리 → provenance; live URLs는 portable에도; Proof sidecar + HTML comment 연결 → provenance | Dual (E2a): homepage `https://www.cjonstyle.com`는 Scope 9/11 + provenance identity 14/26 / surfaces 48 / sources 56 / Tier 1 63 / country-sources 71 / Proof 85. PDP는 Scope 11 + provenance 26/49/57/64/72/86. Medium는 Scope 11 + provenance 26/50/58/65/73. Redirect host `homeTab/main`는 Scope 11 + provenance 26/48/56/85, not Tier 1. Footer verified 2026-07-02는 provenance freshness only. Source HTML comment raw samples + canonical sidecar `web/references/cjonstyle/.verification.md` 분리 → provenance Proof. Derived mirror `design-md/cjonstyle/.verification.md` has the same SHA-256 `0b61b722a959905f70f7f4abc2b5b33f2f96f73f303c48bb2b53599ce845145f`. Canonical is `web/references`. Sidecar Inspected 2026-07-02; Method playwright getComputedStyle; Sources the inspected URLs. Portable body does not re-host the Proof rgb dump (E1). |
+
+### F1 / F2 (v7 mandatory final passes)
+
+F1 and F2 dest maps below were the worker draft. Worker completeness and worker SHA are not current-class claims (E2c). This is not a catalog-adoption claim and is not a claim that no unqualified sentence remains (E2c). Reconstruction-boundary exemption not used. F3 dests and SHA are recorded at the end of this file.
+
+### F1 B2a scan (full DESIGN.md reread)
+
+Worker F1 is not a current-class completeness claim (E2c). Adjacent complete B2a sites are listed in provenance Derived inventory. Governance Authority is not a substitute. No “no unqualified sentence remains” claim (E2c).
+
+### F2 grep (this draft)
+
+F2 after body edits (three files: DESIGN.md, provenance.md, migration-log.md):
+
+- Canonical Proof sidecar `web/references/cjonstyle/.verification.md` → provenance Proof. Derived mirror `design-md/cjonstyle/.verification.md` same SHA-256 `0b61b722a959905f70f7f4abc2b5b33f2f96f73f303c48bb2b53599ce845145f`. Portable DESIGN.md does not re-host the Proof rgb dump.
+- Catalog `primary_color` `#640faf` → DESIGN 13/15/44/46/59/64/66/93/95/231/238/258/260/266/283/290/315/359/361/363/376/390/490/494/515/519/635 + provenance Identity. Avoid 85 does not contain `#640faf`. Content Observed 572–579 is the live CTA/nav string without this hex.
+- Sale `#ec0040` → DESIGN 13/15/44/47/58/64/67/77/85/93/97/266/290/526/530 + provenance identity.
+- Google favicon URL → provenance identity only (not portable Assets URL, not Named gaps).
+- Homepage `https://www.cjonstyle.com` → Scope 9/11 + provenance identity 14/26 / surfaces 48 / sources 56 / Tier 1 63 / country-sources 71 / Proof 85. PDP `https://display.cjonstyle.com/p/item/2086524438` → Scope 11 + provenance 26/49/57/64/72/86. Medium `https://medium.com/cj-onstyle` → Scope 11 + provenance 26/50/58/65/73. Redirect host `homeTab/main` → Scope 11 + provenance 26/48/56/85, not Tier 1.
+- `tokens.source` / `components_harvested` YAML keys → provenance only; portable Font evidence table row 190 names live computed surface-use. Line 186 is B2a evidence-class, not the live-extract restatement.
+- YAML `use` strings → Type roles 208–216 and YAML component Use 264/288/313/338/360/387/414/429; Primary tasks 33–35 carry buy CTA / search / product-card uses. Local-recipe Use on 488/499/513/524 recipes.
+- `Type: button` ×3 → 256/281/305. `Type: tab` ×2 → 355/383. `Type: card` → 409. `Type: input` → 330. `Type: badge` → 423. Utility / Carousel YAML-row-absent Type-not-invented → Capture-record 250 + component sentences 446/475 + field notes 447/476.
+- Buy Primary omission sentence → 275. Inquiry omission → 299. Wishlist omission → 324. Header Search omission → 349. Not destination `not-applicable` rows.
+- Product Card / Sale C4 omit-kind → 418/433. Local recipes kind/map omit → 496/510/521/532.
+- Sale/benefit hairline `rgba(255,255,255,0.3)` → canonical §4; portable Component Observed 430; provenance Proof 96 and claim-ledger hairline row (E2a). Not §6. Not portable Elevation.
+- Carousel local fields → prev `18px 0 0 18px` 468, next `0 18px 18px 0` 469, pause-only `rgb(209, 209, 209)` 471, YAML-row-absent 475, field note 476.
+- Persona names absent from DESIGN.md and provenance.
+- `omd-apply` / `npx omd` / `[FILL IN]` absent from portable body.
+- §14 ten rows → Capture record 235–244.
+- YAML `rounded.full` 9999 → Distinctive 44, Shape 121/123/131/133, Buy Primary field note 266, Carousel field note 476 as a YAML step. No px suffix is added to that YAML number. 9999px appears as the source-body writing at Shape 131.
+- YAML spacing numbers 2/4/8/12/20/26/48 → Spacing 115 and Layout 538 without a required px suffix on the YAML steps; body 2px/4px/8px/12px/20px/26px/48px kept beside them.
+- B3 five-kind gate → Foundations Motion 178 (`transition properties, animation name, duration, easing, and reduced-motion behavior` + per component + “Official documentation of a single curve or duration is not that gate”). Named gaps 629 is inventory; it is not the B3 full promotion-gate sentence.
+- Cubic-bezier values absent from DESIGN.md tables (names only at 164–166); provenance omitted-curves stores the three source curves.
+- `prefers-reduced-motion` → Motion 176.
+- §9 local recipes → Product-detail buy bar 488–497, Product card with sale overlay 499–511, Global header assembly 513–522, Promo banner headline 524–533.
+- Font evidence: Live computed 190; no Official product-use row.
+- YAML unitless lineHeight 1.4 / 1.5 → Type-role limiter 202 / type-rule 204 / Nav 212 / Body 215. Font evidence 190 restates body 1.5 (18px) as the live-computed companion (E2a).
+
+Worker SHA-256 `9927327569741ed58b8b16cf7607c8421d813ea68ac673bf4729ff47d38733d7` is the pre-F3 worker draft, not a current-class file SHA (E2c). `--gate-only` PASS, problems []. `--require-portable-core` exit 0, `portable_core: true` were worker-run results, not re-asserted as current here. Not a catalog-adoption claim (E2c).
+
+## Revision 2026-08-24 (F3 B2a·E2 audit)
+
+Auditor grok-4.6, not the T2 worker. Body hedges and dest maps only. Token values, component tables, state applicability, and section structure unchanged. Current DESIGN SHA-256 `e89aeaeedd04b0b18e4a64bd5b9e25b44bfbddbd698002fcd32ec19af9e2358d`. `migrate-reference.mjs --brand cjonstyle --gate-only` PASS, problems []. Core `portable_core: true`. Details in `audit-log.md`. Not a catalog-adoption claim (E2c).
+
+## Revision 2026-08-24 (wave14 sol resubmit)
+
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v7. Source remainder: `docs/reviews/t2-1-wave14-2026-08-24-sol-full.md` cjonstyle conditions 1–5. New F3 not required. E2c: this revision does not re-assert F1/F2/F3 closed. Not a catalog-adoption claim.
+
+1. Linked Proof raw values restored in provenance (H1 57 px, GNB ~55 px, utility 51 px, prev/next directional radii, pause-only rgb(209, 209, 209), PDP widths 400 px/64 px, price 14 px/400/Nanum/no-decoration, radius frequency including 100 percent ×15 / 13 px ×6 / `8px` ×6 / 14 px ×2, Tier-2 URL/status). Not portable global tokens.
+2. Carousel prev/next/pause local fields split: prev `18px 0 0 18px`, next `0 18px 18px 0`, pause-only rgb(209, 209, 209) / 50%.
+3. §11 unification / ON+STYLE name semantics / retail-TV urgency / curated positioning restored in portable Scope 17/19/21/23/25 with adjacent complete B2a on each derived relationship.
+4. `rgba(255,255,255,0.3)` source is canonical §4; portable dest Component Observed 430; provenance dests Proof 96 and claim-ledger hairline row. Not §6. Not portable Elevation.
+5. provenance/migration/audit/F2 dests grepped against current files. `--gate-only` and portable Core re-run. **[SUPERSEDED dest 2026-08-24 wave14 pointer sync — current dests in Revision 2026-08-24 (wave14 pointer sync).]**
+
+Current DESIGN SHA-256 `0f39717dbc6a5997d9bf9a0b5ff5591d65af064ad4e5a030da6f58fd6c19826d`.
+
+## Revision 2026-08-24 (wave14 pointer sync)
+
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v7. Source remainder: `docs/reviews/t2-1-wave14-2026-08-24-sol-recheck.md` cjonstyle condition 5. DESIGN.md not edited. New F3 not required. E2c: this revision does not re-assert F1/F2/F3 closed. Unmarked current dests from Revision 2026-08-24 (wave14 sol resubmit) are **[SUPERSEDED dest 2026-08-24 wave14 pointer sync]**.
+
+| Item | Prior current dest | Actual current dest |
+|---|---|---|
+| Scope refusal/embrace | 19 | 25 |
+| New derived Scope ON+STYLE / retail-TV / curated | (missing) | 19 / 21 / 23 |
+| Primary tasks / Audience B2a | 25 / 34 | 31 / 40 |
+| Type button×3 / tab×2 / card / input / badge | 250/275/299 / 349/377 / 403 / 324 / 417 | 256/281/305 / 355/383 / 409 / 330 / 423 |
+| C2 omit Buy/Inquiry/Wishlist/Search | 269/293/318/343 | 275/299/324/349 |
+| L/E/S GNB/PDP/Utility/Carousel | 366–368 / 393–395 / 449–451 / 473–475 | 372–374 / 399–401 / 455–457 / 484–486 |
+| Utility / Carousel YAML-row-absent | 440 / 464 | 446 / 475 |
+| Utility / Carousel field note | 441 / 465 | 447 / 476 |
+| Layout after-table collapsing / image / touch | 548 / 550 / 552 | 559 / 561 / 563 |
+| Content Observed / §14-not-extra / last-sentence | 559 / 570 / 586 | 570 / 581 / 597 |
+| B3 five-kind gate | 184 | 178 |
+
+### F1 / F2 (v7; this pointer sync)
+
+F1: current adjacent complete B2a sites match `provenance.md` Derived inventory, including Scope 19/21/23/25.
+
+F2 (this revision; value + field/role context; not a claim that every source-row destination is closed):
+
+- Scope public-history → 17; ON+STYLE name → 19; retail-TV → 21; curated → 23; refusal/embrace → 25; Primary tasks B2a → 31; Audience → 40
+- Utility YAML-row-absent → 446; field note → 447; Carousel YAML-row-absent → 475; field note → 476; Kind `interactive` → 464
+- Layout after-table collapsing → 559; image-behavior → 561; touch-purpose → 563
+- Content Observed citation → 570; strings → 572–579; §14-not-extra → 581; last-sentence → 597
+- B3 five-kind gate → Foundations Motion 178; Named gaps inventory → 638
+- SHA-256 `0f39717dbc6a5997d9bf9a0b5ff5591d65af064ad4e5a030da6f58fd6c19826d` unchanged (DESIGN.md not edited)
+
+This log does not claim F2 completeness beyond those greps, and does not re-assert F1/F2/F3 compliance as closed (E2c). Not a catalog-adoption claim (E2c). F3 was not re-run.
+

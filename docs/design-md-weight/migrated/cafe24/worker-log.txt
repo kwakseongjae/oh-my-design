@@ -1,0 +1,7 @@
+T2 Cafe24 마이그레이션을 시작합니다. 규칙집·골든 샘플·소스 DESIGN.md를 순서대로 읽고, 작성 후 B2a/E2 패스를 돌리겠습니다.규칙집 v7은 확인했습니다. 스펙·골든 샘플·소스 DESIGN.md를 병렬로 읽습니다.골든 샘플과 T1-3 의미 보존 조건을 확인했습니다. 스펙·대응표·소스 DESIGN.md를 이어서 읽습니다.소스가 깁니다. 나머지 섹션과 Core v2 §4.4, 최근 PASS 이관본 구조를 이어서 읽겠습니다.소스 본문은 확보했습니다. 게이트 규칙, 검증 파일, 최근 PASS 이관본의 컴포넌트/모션 처리를 대조합니다.토큰 손실·발명 게이트에 걸리기 않게, 소스의 hex/px/rem/ms/%를 전부 뽑겠습니다.토큰 목록을 확보했습니다. Core v2 본문을 작성한 뒤 B2a 스캔과 게이트를 돌리겠습니다.B2a 스캔에서 Scope 첫 문장과 Elevation 표 앞 한정이 빠졌습니다. 인접 한정을 붙인 뒤 provenance를 작성합니다.B2a 43곳 확인했습니다. provenance와 migration-log를 실제 줄번호로 작성합니다.게이트는 통과했습니다. Core 검사기가 Scope claim을 못 읽습니다. 판정 조건을 확인합니다.Cafe24 레거시 `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/cafe24/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v7**.
+
+보존한 값만 요약하면 이렇습니다. 마케팅 `#084fff` 필 CTA와 이로그인 `#3971ff` 4px 버튼은 합치지 않았고, YAML unitless line-height `1.21`–`1.00`은 비율로 남겼습니다. 컴포넌트 primitive type은 button×3, tab, card, input, badge×2로 각각 유지했습니다. 출처 없는 cubic-bezier 3개(그중 `ease-exit`는 템플릿과 동일)는 provenance 생략 원장으로 보냈고, duration 이름·`prefers-reduced-motion`·B3 다섯 증거 종류 게이트는 Foundations에 남겼습니다. §13 가상 persona는 삭제했고 sidecar에도 다시 싣지 않았습니다.
+
+F1 B2a 전수 스캔과 F2 dest grep을 본문 작성 뒤에 수행했습니다. `--gate-only` PASS(problems 0), Core `portable_core: true`. DESIGN SHA-256 `374370ea8f8a3378543d3ce5d9a12cbeeb23f4579168c9eecd374ff2ae513e12`. F3 감사와 sol 의미 레인은 아직입니다. 카탈로그 채택은 아닙니다.
+
+DONE migrated=1

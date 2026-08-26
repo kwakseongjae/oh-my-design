@@ -1,0 +1,9 @@
+T2 마이그레이션을 시작하기 위해 규격·규칙집·골든 샘플·원본 Claude 레퍼런스를 순서대로 읽겠습니다.규격·판정문·골든 샘플·원본 Claude DESIGN.md를 이어서 읽습니다.골든 샘플과 원본 Claude DESIGN.md, 그리고 최근 통과한 이관본 형태를 대조합니다.이미 `migrated/claude/`가 있으니 원본·골든 샘플·기존 이관본을 함께 읽겠습니다.기존 이관본과, 탭·카드가 있는 최근 통과 샘플을 대조해 상태 applicability 처리를 맞추겠습니다.기존 이관본이 거의 완성돼 있습니다. 게이트·검증 원장·누락된 `migration-log` 형식과 원본 고유값을 대조하겠습니다.게이트는 원본 DESIGN.md에 없는 hex/px를 발명으로 막습니다. 토큰 집합을 먼저 대조한 뒤 본문을 고치겠습니다.기존 초안에서 `#faf9f5` 발명, Appearance Toggle의 kind 발명, B2a 공백을 고친 뒤 원장과 로그를 맞추겠습니다.Spacing 절의 해석 문장 앞에 B2a 한정을 붙이겠습니다.DESIGN 줄 번호가 고정됐으니 provenance와 migration-log를 그 목적지에 맞춰 작성합니다.Claude 레퍼런스를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/claude/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v7**.
+
+보존한 값: YAML unitless `lineHeight` `1.10` / `1.20` / `1.60`; primitive type `tab`×1 + `card`×3; 여덟 semantic hex와 `#5d5c58` / `#4d4c48` / `#d1cfc5` 비합침; §14 본문; B3 다섯 증거 종류는 Motion 121.
+
+닫은 경계: Appearance Toggle은 YAML type이 없어 kind/map 생략(C4). Overview Tab loading/error/success는 패널 선택 역할로 `not-applicable`(C2). `focus-visible`에 hex 없음(B1). §13 가상 biography와 아키타입 제목은 sidecar에도 없음(D2). Proof sidecar의 원본 없는 두 번째 canvas hex는 복사하지 않음. `tokens.source: reconciled`는 provenance-only.
+
+`--gate-only` PASS / `problems: []`. Portable Core `true`. DESIGN SHA-256 `062b0756646d4a2b2f1b7e801e2d637b516138d5f4f0c7ef75a09b85f4badb56`. F1·F2 수행. F3 감사와 sol 의미 레인은 대기. 카탈로그 채택 아님.
+
+DONE migrated=1

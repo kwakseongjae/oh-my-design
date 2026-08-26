@@ -1,0 +1,18 @@
+B2a·E2 감사부터 진행합니다. 세션 연속성 복원과 규칙서 B2/E2 조항, 채널톡 이관 산출물을 먼저 읽겠습니다.이전 F3 감사 형식과 채널톡 이관본·원본을 함께 읽어, B2a 문장 한정과 E2 원장만 대조하겠습니다.이전 F3 감사에서 어떤 문장을 세 번째 부류로 잡았는지, 채널톡 본문의 한정 공백과 맞춰 보겠습니다.본문 문장 분류와 로그 행을 grep으로 맞춰 보겠습니다. 한정 누락과 목적지 불일치를 같이 잡습니다.한정 누락과 로그 목적지 불일치를 확인했습니다. 본문 한정은 같은 줄에서만 늘리고, 원장은 실제 grep 결과에 맞춥니다.본문 한정을 해당 문장에 붙이고, 원장의 `reconciled` 이중 목적지와 `#242428` 누락 dest를 고칩니다.원장 파생 범위와 `reconciled` 목적지를 본문 grep 결과에 맞춥니다.게이트가 `focus-visible`과 hex가 같은 줄에 있으면 막습니다. 265 한정에서 hex와 겹치지 않게 이름을 고칩니다.Channel Talk F3 감사(B2a·E2만)를 마쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 건드리지 않았습니다.
+
+**B2a.** 세 번째 부류인데 인접 한정이 없거나 독해를 끝까지 안 적은 문장에, 같은 자리에서 완전 한정(`derived editorial implementation inference` / `not Channel Talk-authored or a separately published UI specification`)을 붙였습니다.
+
+- Scope 15·17·19, Distinctive 44, Semantic 85, Family 151, Type 155, Capture 177, Tab 265, Docs icon 292, Layout 309·316, Content 323
+
+**E2.** 로그·provenance를 grep에 맞춰 고쳤습니다.
+
+- `reconciled`는 본문에 없음 → provenance-only (Scope 13은 token note만)
+- `#242428` dest에 card 247 추가
+- YAML `9999`와 30–45px의 이중 목적지를 모두 기록
+- §2의 `careers-style` 문구 삭제
+
+기록: `docs/design-md-weight/migrated/channeltalk/audit-log.md`  
+게이트: `--gate-only` PASS, `portable_core: true`  
+SHA-256 `8b903d73774fa1607ad5196dc63195856038ed6da2fdb338a89880db3eb9c931`
+
+AUDIT_DONE fixes=17

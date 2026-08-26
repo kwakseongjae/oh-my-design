@@ -1,0 +1,11 @@
+B2a·E2 감사만 수행합니다. 규칙서의 해당 조항과 ClickHouse 이관 산출물부터 읽고, 문장 한정과 원장만 고치겠습니다.최근 F3 감사 형식과 ClickHouse 원문을 대조한 뒤, 문장 단위 한정과 원장 목적지를 전수 확인하겠습니다.문장 분류와 원장 목적지를 grep으로 대조합니다. 한정 누락과 로그·provenance 불일치만 고칩니다.문장 한정 누락과 원장 목적지 불일치를 반영해 DESIGN·provenance·migration-log를 고칩니다.ClickHouse F3 감사는 B2a 한정과 E2 원장만 고쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 그대로입니다.
+
+**본문 (인접 완전 B2a)**  
+Scope 17·19, Primary tasks 25, Distinctive 38, Principles 48, Spacing 99, Capture 188(과잉 한정 축소), Content 432.
+
+**원장**  
+`#faff69` 목적지 보강, 세 공개 URL의 Primary tasks 이중 목적지, `data-omd-capture="4"` 176/181/250, YAML `1.50`은 Distinctive 38이 아님, forest-green·4px/8px card는 provenance-only.
+
+수정 목록은 `docs/design-md-weight/migrated/clickhouse/audit-log.md`에 있습니다. Post-F3 SHA-256 `5f370bd76b23af69c60a525b178b836c8deeda52765ce2c741c1c272f77e6ba9`. `--gate-only` PASS, `portable_core: true`.
+
+AUDIT_DONE fixes=20

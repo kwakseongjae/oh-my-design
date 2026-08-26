@@ -1,0 +1,9 @@
+T2 Clay 마이그레이션을 규칙집 기준으로 옮기겠습니다. 지정된 규격·제약·골든 샘플·소스부터 순서대로 읽고, 본문 작성 후 B2a·E2 패스를 돌리겠습니다.이미 `migrated/clay`가 있습니다. 소스·규칙집·골든 샘플과 기존 산출물을 대조해 이관 기준을 잡겠습니다.기존 `migrated/clay`가 있습니다. 산출물과 골든 샘플, Core 규격, 소스 DESIGN.md를 함께 읽겠습니다.기존 Clay 초안은 있습니다. 규격 §4.4와 최근 PASS 이관본 형태를 대조한 뒤, 브랜드 사실과 편집 해석을 분리해 다시 쓰겠습니다.소스 값과 최근 PASS 이관본의 컴포넌트·provenance 형식을 뽑아, 라인 번호가 어긋난 기존 초안을 다시 짜겠습니다.게이트가 막는 토큰 손실·발명을 피하려고, 소스에 있는 hex·px 값을 먼저 전부 뽑겠습니다.본문을 작성합니다. 브랜드가 발행한 사실과 관측에서 나온 해석을 갈라 적고, 게이트가 잡는 토큰·상태 규칙은 소스 값만 쓰겠습니다.본문을 처음부터 다시 읽어 B2a를 스캔하고, 게이트와 Portable Core 검사도 같이 돌리겠습니다.스코프 부정 패턴과 `focus-visible` 줄의 hex가 게이트를 막고 있습니다. 그 두 곳만 고치겠습니다.게이트와 Portable Core는 통과했습니다. 이어서 줄 번호를 grep으로 확인하고 provenance와 migration-log를 쓰겠습니다.줄 번호를 맞춘 provenance와 migration-log를 작성합니다.Clay legacy `DESIGN.md`를 Core v2 Portable Core로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/clay/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v7**.
+
+보존한 값: `#000000` / `#fefdfb` / `#f3f2ed` / `#79756d` / `#f4f3f0` / `#aaebfd` / `#ffffff` / `#1b1a18` / `#d1cdc7`, Roobertvf, YAML `20.88` 숫자, `Type: card`. `#000000`과 `#1b1a18`, `#fefdfb`과 `#ffffff`, `#f3f2ed`과 `#f4f3f0`, radius 12 / `18px` / `8px`는 합치지 않았습니다.
+
+적용한 제약: §9 도구 프롬프트 삭제, §13 가상 persona 미수록, 미관측 hover를 `not-applicable`로 바꾸지 않음, Customer-logo card는 kind/map 생략(C4), Marketing tab loading/error/success는 역할로만 닫음(C2), Dark/Oat L/E/S와 Pricing select loading/success는 생략, Motion은 B3 다섯 증거 종류 전문, customer-logo ownership unclaimed.
+
+검사: `inspectDesignMd` `portable_core: true`, `--gate-only` **PASS**. SHA-256 `d18b6b1f56b124dab0c0eec4ce6dc396e0e9530658984998189234a7948b8efc`. F3 감사와 sol 의미 레인은 아직입니다. 카탈로그 채택은 하지 않았습니다.
+
+DONE migrated=1

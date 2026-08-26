@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 이관 산출물부터 읽고, 문장 분류·원장 대조만 하겠습니다.규칙서 B2/B2a·E1/E2만 기준으로 이관 산출물과 최근 감사 로그 형식을 대조합니다.본문 한정을 문장 단위로 훑고, provenance와 migration-log를 원문·원본과 대조합니다.원문 값과 로그가 가리키는 목적지를 실제 파일에서 grep으로 대조합니다.문장 한정은 기존 줄 안에서만 늘리고, 원장 목적지는 grep 결과에 맞춥니다.원장 목적지와 derived 범위를 실제 본문에 맞춥니다.migration-log의 목적지와 F1/F2 주장을 grep 결과에 맞춥니다.한정이 `focus-visible` 뒤에 색값을 두는 게이트를 건드리지 않도록, 한정 이름을 같은 줄에서 바꿉니다.중화텔레콤 이관본 B2a·E2 감사를 마쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 건드리지 않았고, 한정 문장과 원장만 고쳤습니다.
+
+**B2a.** 인접 한정이 없거나 독해를 이름 붙이지 않은 편집 해석 10곳의 기존 줄을 확장했습니다. Scope 분위기(15), Semantic named-hover(87), Motion 캐러셀 two-way 토큰(159), Family 동일 스택(188), Primary CTA named-hover(256)와 session-expired 페이지 행(265), Primary Tab(305), Search Small/Label(357), 로컬 레시피 sub-nav(437)·Small/Label(460).
+
+**E2.** 로그·provenance 목적지를 grep에 맞췄습니다. `#209cff`에 407 추가, `#ff874d`는 457이고 71/460이 아님, `#0083ec`는 233이 아님, `#000000`은 Avoid 71/78만. derived 목록에서 235/237을 별도 B2a 사이트로 빼 Core 정책 재진술로 고쳤습니다.
+
+상세 목록은 `docs/design-md-weight/migrated/chunghwa/audit-log.md`에 있습니다. Post-F3 SHA-256 `046e292c241960a6a9930e9d2cb5a2d375f9cdde930b8d661d85252b3424adcd`. `--gate-only` PASS, `portable_core: true`.
+
+AUDIT_DONE fixes=14

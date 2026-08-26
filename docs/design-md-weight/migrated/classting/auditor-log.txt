@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 먼저 규칙서의 해당 조항과 classting 산출물·원본을 읽고, 문장 분류와 원장 대조부터 하겠습니다.규칙 범위는 B2a·E2로 고정했습니다. 승인된 한정 문장 형태와 기존 감사 로그 형식을 확인한 뒤 classting 세 파일을 문장 단위로 읽겠습니다.기존 감사 로그 형식과 classting 원본을 대조해, 한정 없는 해석 문장과 원장 목적지 불일치를 찾겠습니다.문장 분류와 로그 목적지 대조를 위해, 한정 누락 후보와 로그가 가리키는 값을 한꺼번에 grep합니다.문장 단위 분류가 끝났습니다. 한정 없는 해석 문장에 인접 B2a를 붙이고, 원장 목적지는 grep 결과에 맞춥니다. 줄 번호가 밀리지 않게 기존 줄에만 한정 문구를 붙입니다.본문 한정은 같은 줄에 붙였습니다. provenance derived 범위와 `#00C896` 목적지를 실제 grep에 맞춥니다.게이트가 `focus-visible` 뒤에 같은 줄의 hex를 승격으로 봅니다. Semantic 85 한정에서 그 토큰을 빼고 증거 종류만 남기겠습니다.Classting F3 감사(B2a·E2만)를 끝냈습니다. 이관 워커가 아니라 감사자로, 한정 문장과 원장만 고쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 그대로입니다.
+
+**B2a.** 편집적 해석인데 인접 한정이 없거나 한정이 실제 문장을 못 가리키던 자리에 `derived editorial implementation inference` / `not Classting-authored or a separately published UI specification`를 붙이거나 이름을 맞췄습니다. 표·리스트 뒤 문장(Motion 159, Shape 126, Capture 229, Layout 396)과 Orange tag type-not-invented(382/385)가 여기에 해당합니다.
+
+**E2.** 로그·provenance 목적지를 grep으로 다시 맞췄습니다. 예: `#00C896`은 Freshness에 없고, Hero 56px→36px는 Layout 394가 아니라 Type-rule 199/205/207, Proof `20px 24px`는 provenance 샘플과 Outline CTA 320의 이중 목적지입니다.
+
+수정 목록은 `docs/design-md-weight/migrated/classting/audit-log.md`에 있습니다. 게이트 `--gate-only` PASS, `portable_core: true`, SHA-256 `f8d9c84d959b6d5960378a2b84aa8f61146a877c32a4d4734554a38b4869cf65`.
+
+AUDIT_DONE fixes=20

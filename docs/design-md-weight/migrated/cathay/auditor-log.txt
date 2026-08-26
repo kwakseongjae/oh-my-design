@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 세션 연속성부터 복원하고, 규칙서의 해당 조항과 Cathay 산출물을 대조하겠습니다.Cathay 산출물·원본·기존 감사 로그 형식을 읽고, B2a·E2만 문장 단위로 대조합니다.최근 F3 감사 로그와 원본 DESIGN.md를 대조해, 한정이 빠진 해석 문장과 원장 불일치를 찾습니다.문장 분류와 원장 행을 grep으로 대조합니다. 한정이 빠졌거나 목적지가 어긋난 곳만 고칩니다.한정이 빠진 해석 문장과 원장 목적지 불일치를 확인했습니다. 본문은 한정만 같은 줄에서 보강하고, 로그는 실제 grep에 맞춥니다.게이트가 `focus-visible` 승격을 차단했습니다. 검사 기준을 보고, 한정 문장이 표 행으로 오인됐는지 확인합니다.Cathay F3 감사(B2a·E2만)를 마쳤습니다. 이관 워커가 아니라 감사자로, 한정 문장과 원장만 고쳤고 토큰·표·applicability·구조는 그대로입니다.
+
+**B2a.** 편집적 해석인데 인접 한정이 없거나 이름을 빼먹은 문장에 `derived editorial implementation inference` / `not Cathay-authored or a separately published UI specification`을 붙였습니다. 대상은 Primary tasks의 independently-verified 경계, Elevation overlay/scrim 비해석, Motion signature 인과, Family의 표면 밖 치환 금지, Capture의 philosophy-layer, YAML 행 부재에서 Type을 발명하지 않은 판단, Primary CTA named-press, Form Input named Focus입니다.
+
+**E2.** migration-log와 provenance를 grep과 맞춰 `#e87c07`·YAML `9999`·Hero Notes 203만·C4 local recipe 437/452/464·Type-not-invented 239/326/342를 실제 목적지로 고쳤고, 워커 SHA·F1 완료 주장은 현재 클래스가 아니라고 적었습니다.
+
+기록은 `docs/design-md-weight/migrated/cathay/audit-log.md`입니다. 기계 결과: `--gate-only` PASS, `portable_core: true`, SHA-256 `3814808edcc122e389349cb282f37cbfc9ad55cac8928eb8da6501f57058ae88`.
+
+AUDIT_DONE fixes=20

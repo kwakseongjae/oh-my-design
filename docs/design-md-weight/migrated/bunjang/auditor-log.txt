@@ -1,0 +1,7 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 bunjang 이관 산출물부터 읽고, 문장 한정과 원장만 고치겠습니다.최근 F3 감사 형식과 bunjang 산출물을 함께 읽어, 문장 한정과 원장만 대조하겠습니다.원본 DESIGN.md와 최근 F3 감사에서 잡은 패턴을 대조해, 한정이 빠지거나 원장이 어긋난 문장만 집겠습니다.문장 한정부터 붙인 뒤, 줄번호가 바뀌면 원장을 다시 grep하겠습니다. 먼저 Scope·Audience·Do/Don’t 쪽 누락 한정을 넣습니다.한정이 없거나 이름이 모자란 문장부터 DESIGN.md에 인접 완전 B2a를 붙입니다.본문을 다시 읽어 한정이 끊긴 문장이 남았는지 확인하고, 이어서 원장 줄번호를 다시 grep하겠습니다.본원장 줄번호와 derived 범위를 실제 본문에 맞춥니다.B2a·E2만 감사했고, 토큰·표·applicability·구조는 건드리지 않았습니다.
+
+한정이 없거나 이름이 모자란 편집 문장에는 인접 완전 B2a를 붙였습니다. 원장은 grep 결과에 맞춰 고쳤습니다. `docs/design-md-weight/migrated/bunjang/audit-log.md`에 위치와 수정 내용을 적었습니다.
+
+Post-F3 DESIGN SHA-256 `fecb6b1792e18e985d65ea905da9ee11a74a243e5d137f03209375697b75bcb3`. `--gate-only` PASS, `portable_core: true`.
+
+AUDIT_DONE fixes=26

@@ -1,0 +1,20 @@
+T2 마이그레이션을 시작합니다. 먼저 세션 상태와 지정된 규격·규칙집·골든 샘플을 순서대로 읽고, 그다음 Coinbase legacy를 Core v2로 옮기겠습니다.규칙집 v8을 확인했습니다. 이어서 목적지 규격, 대응표, T1 제약, 골든 샘플, Coinbase legacy를 읽습니다.골든 샘플과 Coinbase legacy, 그리고 최근 PASS 이관본의 형태를 함께 대조합니다.Coinbase는 CDS와 라이브 관측이 섞여 있어, 최근 PASS 이관본과 게이트 기준을 맞춰 형태를 잡겠습니다.규격·골든 형태·게이트를 맞춰 본문을 작성합니다. 값·타입·충돌은 합치지 않고, 해석 문장에는 B2a 한정을 붙입니다.본문 초안을 쓰고, 이어서 provenance와 게이트 검증을 돌리겠습니다.패스 1(B2a)과 패스 2(E2/토큰)를 돌리기 전에, 본문을 다시 읽고 게이트 토큰을 대조합니다.게이트가 `focus-visible`과 hex를 같은 줄에서 잡습니다. 그 줄을 나누고, 한정이 빠진 필드 노트에 B2a를 붙입니다.Coinbase legacy `DESIGN.md`를 Core v2로 옮겼습니다. 규칙집은 **v8**입니다.
+
+산출물:
+- `docs/design-md-weight/migrated/coinbase/DESIGN.md`
+- `docs/design-md-weight/migrated/coinbase/provenance.md`
+- `docs/design-md-weight/migrated/coinbase/migration-log.md`
+
+보존·분리 요지:
+- YAML 단위 없는 line-height (`1.00`–`1.23`)는 비율로 유지했고, 컴포넌트 primitive type은 button/tab/card/badge/input/toggle/listItem/dialog/toast로 각각 남겼습니다.
+- `#0052ff` / `#578bfa` / `#0667d0`, YAML `100000px` vs §4 `56px`, YAML spacing vs §5 px 스케일은 합치지 않았습니다.
+- `standard cubic-bezier`는 빼고 duration·price-flash·`prefers-reduced-motion`·`no bounce`와 B3 다섯 증거 종류 게이트는 Foundations에 남겼습니다.
+- §13 가상 persona는 Audience/primary tasks/provenance 어디에도 올리지 않았습니다.
+- 해석 문장에는 인접 B2a 한정을 붙였고, migration-log 행은 grep으로 목적지를 맞춘 뒤 썼습니다.
+
+검증: `--gate-only` **PASS** (`problems: []`), Core **`portable_core: true`**. SHA-256 `690294c0708ecd7576c19cda431a77df5c10ab8f4ffbe672a7c249692c2c81ad`. 카탈로그 채택은 아닙니다.
+
+DONE migrated=1
+
+## Revision 2026-08-25 (wave16 sol resubmit)
+E3: 이전 세션이 `focus-visible`+hex 오탐을 줄 분리로 피했다고 기록한 문장을 원복했습니다. 게이트는 이제 표 행만 검사합니다. 자연스러운 한 문장(색/hex와 `focus-visible`이 같은 줄)을 유지했고, 오탐 repro는 migration-log Revision에 남겼습니다. 줄을 다시 나누지 않았습니다. New F3 not run. SUPERSEDED prior SHA. Not a closed F1/F2/F3 claim.

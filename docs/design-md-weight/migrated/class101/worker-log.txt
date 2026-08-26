@@ -1,0 +1,13 @@
+T2 마이그레이션을 위해 규격·규칙집·골든 샘플·원문을 순서대로 읽고 이어서 옮기겠습니다.규칙집·골든 샘플·원문 class101을 이어서 읽습니다.이미 `migrated/class101/`가 있어 원문 나머지와 골든 샘플, 승인된 최근 이관본을 대조합니다.기존 class101 산출물과 최근 통과본·게이트를 대조해 이관 기준을 맞춥니다.게이트·최근 통과 이관본·유사 브랜드를 확인해 제출 형태를 맞춥니다.원문 토큰을 먼저 추출한 뒤, 최신 통과본 패턴에 맞춰 본문을 다시 씁니다.기존 초안의 최신 FAIL 패턴을 고치고, 토큰·상태·B2a를 맞춰 본문을 다시 작성합니다.본문 행 번호를 실제 grep으로 잡고, 그 결과에 맞춰 provenance를 씁니다.Class101 legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/class101/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 v7.
+
+보존한 값·경계:
+- YAML 비율 `1.25` / `1.29` / `1.38` / `1.67` / `1`은 그대로 두고, 본문 표의 px는 크기 로컬로만 적었습니다.
+- `type: listItem`은 유지했고, 홈 내비게이션·아웃라인 버튼에는 YAML type을 만들지 않았습니다.
+- 홈 버튼의 loading/error/success는 역할 매핑이 안 닫혀 생략했고, 탭만 패널 선택 역할로 `not-applicable`입니다. 리스트 아이템은 kind/map을 생략했습니다.
+- Google favicon URL은 provenance에만 두고, Assets는 URL 없는 identity 경계이며 ownership은 unclaimed입니다.
+- `#FF5D00`과 오렌지 CTA, `#0C0C0C`와 `#000000`, 캔버스 `#FFFFFF`와 아웃라인 `rgba(255,255,255,0.298)`는 합치지 않았습니다.
+- 무출처 커브는 없었고, B3 다섯 증거 종류 승격 게이트는 Foundations Motion에 전문으로 남겼습니다.
+
+검사: `--gate-only` PASS, `portable_core: true`. SHA-256 `ab304f713eaef002c9b06d28fe3f1fdebb59b7a4bb0c25362290c7cf2ad6d950`. F3 감사와 sol 의미 레인은 대기입니다. 카탈로그 채택이 아닙니다.
+
+DONE migrated=1

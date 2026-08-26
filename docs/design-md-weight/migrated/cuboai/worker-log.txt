@@ -1,0 +1,20 @@
+T2 마이그레이션을 시작합니다. 먼저 세션 상태와 지정된 규격·규칙집·골든 샘플을 순서대로 읽겠습니다.규격과 규칙집은 확인했습니다. 이어서 대응표, T1 제약, 골든 샘플, 원본 cuboai를 읽겠습니다.골든 샘플·T1-3 의미 보존 조건·원본 cuboai를 이어서 읽습니다.최근 통과 이관본의 모션·상태·B2a 처리와 cuboai 원본의 검증 사이드카를 대조합니다.원본 토큰·타입을 빠짐없이 집계한 뒤 본문 초안을 작성합니다.원본 값과 골든/codeit 형태를 기준으로 Core v2 본문을 작성합니다. YAML 섀도우 끝의 `0px`와 §9 전용 레시피(`#6d6d6d` 본문, 뉴스레터 옆 submit)는 합치지 않습니다.본문을 다시 읽어 B2a 한정이 빠졌는지 확인하고, 줄 번호를 잡아 provenance에 쓰겠습니다.F2 대조를 위해 본문·원장의 실제 줄 번호를 grep으로 확인합니다.원장 줄 번호가 어긋난 곳을 실제 grep 결과에 맞춰 고칩니다.migration-log를 실제 grep 목적지와 함께 작성합니다.Cubo Ai 레거시 `DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 **v8**을 썼고, 본문 작성 뒤 F1(B2a) 재독과 F2(grep) 대조를 수행했습니다.
+
+산출물:
+- `docs/design-md-weight/migrated/cuboai/DESIGN.md`
+- `docs/design-md-weight/migrated/cuboai/provenance.md`
+- `docs/design-md-weight/migrated/cuboai/migration-log.md`
+
+보존·처리 요약:
+- YAML 단위 없는 line-height `1.20` / `1.50`을 비율로 유지 (body-table px는 size-local)
+- `type: button`×2, `input`, `badge`, `card`×2, `tab`, `listItem`을 컴포넌트별로 유지
+- `live-extract`는 Scope + provenance 이중 목적지
+- Google favicon URL은 provenance만, Assets는 URL 없는 lookup 경계
+- 무출처 cubic-bezier 3개는 생략하고 duration 120/220/320ms, easing 역할, `prefers-reduced-motion`, B3 다섯 증거 종류는 Foundations에 유지
+- §13 가상 persona는 삭제, sidecar 재수록 없음
+- §14 9행 본문 보존. Primary/Compact Add는 L/E/S 생략(C2). Pill Input은 error만 applicable. Nav는 역할별 not-applicable. Card/badge/listItem은 kind/map 생략(C4)
+- §9 전용 레시피(히어로 조합, 뉴스레터 옆 teal submit, feature-card body `#6d6d6d`, tinted section)는 로컬 레시피로 이전
+
+검사: `--gate-only` PASS / `problems: []`. Core `portable_core: true`. SHA-256 `2af12aa1be02bc83a037144c5369afbc65172ff2abbc98ba31f9bbcbd73a06b6`. 카탈로그 채택 아님. F3 감사는 이 세션에서 돌리지 않았습니다.
+
+DONE migrated=1

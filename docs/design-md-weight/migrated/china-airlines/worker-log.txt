@@ -1,0 +1,18 @@
+T2 마이그레이션을 시작하기 전에 세션 상태와 지정된 규격·규칙집·골든 샘플부터 순서대로 읽겠습니다.지정된 규격·규칙집·골든 샘플·원본을 순서대로 읽고, 최근 통과 이관 패턴도 대조하겠습니다.골든 샘플과 원본, 최근 통과 이관본을 대조해 산출물 형태를 맞추겠습니다.원본 DESIGN.md와 골든 샘플 원장, 항공사 이관 표본을 읽어 구조와 의미 보존 조건을 맞춥니다.최근 통과 항공사·버튼 이관본과 게이트 스크립트를 대조해 컴포넌트 상태·원장 형태를 확정합니다.점파일 검증 원장이 실제로 있습니다. 두 경로의 SHA와 본문을 대조한 뒤 이관 본문을 작성합니다.원장 SHA가 확인됐습니다. 본문을 작성한 뒤 F1·F2를 실제 행 번호로 대조하겠습니다.F1 스캔에서 Content·Capture의 해석 문장이 한정 앞에 있는 곳을 바로잡습니다.원장과 마이그레이션 로그를 실제 DESIGN 행에 맞춰 작성합니다.게이트가 같은 줄의 `focus-visible`과 hex를 승격으로 읽습니다. 해당 필드 노트를 줄 단위로 나눕니다.`web/references/china-airlines/DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 v7, F1(B2a)·F2(E2)까지 수행했습니다.
+
+산출물:
+- `docs/design-md-weight/migrated/china-airlines/DESIGN.md`
+- `docs/design-md-weight/migrated/china-airlines/provenance.md`
+- `docs/design-md-weight/migrated/china-airlines/migration-log.md`
+
+보존한 핵심:
+- YAML `lineHeight` 28/56는 비율로 바꾸지 않음
+- `Type: button` ×2, `Type: dialog` 유지. Search dialog는 kind/map 생략 (C4)
+- Primary blue의 loading/error/success는 생략 (C2). Selected menu option의 그 세 상태는 선택 역할로 `not-applicable`
+- `#23569d` / `#1d6dcd` / `#d81159`, ink `#17181c` / dialog `#000000`, 8px / 20px / YAML `pill` 40는 합치지 않음
+- 무출처 커브 없음. B3 다섯 증거 종류는 Foundations Motion에 전문 유지
+- Canonical Proof: `web/references/china-airlines/.verification.md`
+
+검증: `--gate-only` PASS, `portable_core: true`. SHA-256 `15c0a5514b9e2e4ca4490db2f5ed551fc0cc316b008e56752aad27e4ee825379`. F3 감사와 sol 의미 레인은 대기. 카탈로그 채택은 아닙니다.
+
+DONE migrated=1

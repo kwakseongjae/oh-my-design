@@ -1,0 +1,11 @@
+B2a·E2 전담 감사로 시작합니다. 규칙서의 해당 조항과 Cash App 이관 산출물부터 읽고, 문장 분류와 원장 대조를 진행합니다.규칙서 B2·E2와 Cash App 산출물, 최근 감사 로그 형식을 대조해 문장 분류부터 진행합니다.원장 두 파일과 원본을 읽고, DESIGN.md 문장을 한 줄씩 분류합니다.원본 Scope·원칙·분위기 문장을 대조해, 한정이 실제 본문보다 넓거나 좁은지부터 가립니다.문장 분류와 로그 목적지 grep을 병렬로 돌려, 한정이 빠지거나 원장 행이 어긋난 곳만 집어냅니다.원본에 `.verification.md`가 있는데 원장은 없다고 적혀 있습니다. Proof 원장과 본문 한정을 이어서 대조합니다.한정이 본문 실제보다 좁거나 뒤에 달린 문장부터 고칩니다. 토큰·표·구조는 건드리지 않습니다.본문 한정을 붙인 뒤, 세 파일에서 목적지와 derived 범위를 다시 grep합니다.원장 목적지가 본문과 어긋난 행부터 고칩니다. Proof 사이드카 허위 부재 주장도 함께 바로잡습니다.Cash App 이관본 B2a·E2 감사를 마쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 그대로 두고, 한정 문장과 원장만 고쳤습니다.
+
+**B2a.** 세 번째 부류인데 인접 한정이 없거나 이름을 덜 적은 문장에 완전 한정을 붙였습니다. Elevation에서 본문에 없는 anti-corporate 등 허상 이름은 뺐습니다. Spacing·Layout whitespace는 한정을 표/목록 **앞**으로 옮겼습니다.
+
+**E2.** `migration-log` 목적지를 세 파일 grep으로 맞췄습니다. Use 필드 251→252 등, `country` 11, Narrative 103/105, `web/references/cashapp/.verification.md` 허위 부재를 정정했습니다. provenance derived 목록도 본문 실제에 맞췄습니다.
+
+기록: `docs/design-md-weight/migrated/cashapp/audit-log.md`  
+검증: `--gate-only` PASS, `portable_core: true`  
+SHA-256 `99b0960afde126c010c27a48397eadf0bce37db1cbf33d744b98c7b445856d01`
+
+AUDIT_DONE fixes=18

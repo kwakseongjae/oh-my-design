@@ -1,0 +1,24 @@
+T2 Cash App 마이그레이션을 규칙집·골든 샘플부터 읽고 시작합니다. 먼저 지정된 규격과 기존 산출물 위치를 확인합니다.규칙집과 정수 판정은 확인했습니다. T1 검토·골든 샘플·Cash App 원문을 이어서 읽습니다.골든 샘플 형태와 Cash App 원문을 읽고, 이미 있는 `migrated/cashapp` 산출물 여부도 확인합니다.골든 샘플의 provenance·로그와, 최근 통과에 가까운 T2 산출물·게이트 규칙을 대조합니다.최근 통과 패턴(모션·상태·§9 로컬 튜플)과 게이트 스크립트를 확인한 뒤 Cash App 본문을 쓰겠습니다.원문 토큰과 cafe24 형태를 기준으로 Core v2 본문을 작성합니다. 먼저 DESIGN.md를 쓰고, 이어서 provenance와 로그를 grep으로 맞춥니다.Core v2 `DESIGN.md`를 작성합니다. 해석 문장마다 인접 B2a를 붙입니다.본문 초안을 다시 읽으며 B2a 누락과 줄 번호를 확인한 뒤 provenance를 씁니다.줄 번호를 맞춰 provenance.md를 작성합니다.패스 2: 로그에 적을 값마다 grep으로 실제 위치를 확인합니다.게이트가 잡은 `focus-visible` 행은 같은 줄에 hex가 붙어 B1로 차단됩니다. 그 줄을 나눕니다.Scope 문장의 `not`이 32자 안에 `product`와 붙어 Portable Core가 실패한 상태입니다. 그 표현을 고칩니다.Cash App legacy `DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 **v7**, F1(B2a)와 F2(E2 grep)까지 반영한 산출물입니다.
+
+**산출물**
+- `docs/design-md-weight/migrated/cashapp/DESIGN.md`
+- `docs/design-md-weight/migrated/cashapp/provenance.md`
+- `docs/design-md-weight/migrated/cashapp/migration-log.md`
+
+**보존·분리 요지**
+- YAML unitless line-height `1.0` / `1.1` / `1.2` / `1.5`는 비율로 유지 (A1a)
+- primitive type: `button`×3, `tab`×2, `card`×2, `badge`, `avatar` (A1b). Default Input은 YAML type이 없어 발명하지 않음
+- `#00e013` / `#d8ff14` / `#3860be`, `999px` / `9999px` / `50%` / `2px` / `20px`는 역할·필드로 분리 (A4)
+- 무출처 cubic-bezier 3개(그중 `ease-exit`는 스펙 템플릿과 일치)는 provenance omission ledger로 분리. duration 120/220/360ms, easing 이름, `prefers-reduced-motion`, B3 다섯 증거 종류는 Foundations에 유지
+- §14 9행은 Capture record에 본문 보존. `not captured`를 `not-applicable` 사유로 쓰지 않음. Sign Up / Log In / Sign Up on Dark는 L/E/S 생략 (C2). Card/Badge는 kind/map 생략 (C4)
+- §13 fictional archetypes는 삭제. provenance에도 이름·나이·도시·세그먼트를 재수록하지 않음 (D2)
+- §9 프롬프트 wrapper는 삭제. unique tuple은 White Hero / Feature Card / Dark Section / Marketing Top Nav local recipe로 복원 (A3)
+
+**검증**
+- `--gate-only` PASS, problems `[]`
+- Core `portable_core: true`
+- SHA-256 `46efba83d5815a796297757bd55e6da54bc609f4439ccbec99c5cb7f3e41a7ef`
+
+F3 감사와 sol 의미 레인은 이 워커 세션 밖입니다. 카탈로그 채택은 하지 않았습니다.
+
+DONE migrated=1

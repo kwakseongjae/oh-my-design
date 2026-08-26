@@ -1,0 +1,10 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 clay 산출물부터 읽고, 문장 한정과 원장만 고치겠습니다.규칙서 B2a·E2를 확인했습니다. clay 산출물과 최근 감사 로그 형식을 이어서 읽겠습니다.완료된 감사 로그 형식과 원본 clay DESIGN.md를 대조해 문장 분류를 시작하겠습니다.문장 단위로 한정이 빠졌거나 원장 목적지가 어긋난 곳을 찾기 위해 DESIGN.md와 로그를 grep으로 대조합니다.한정이 빠진 문장과 로그 목적지 불일치를 값 단위로 대조합니다.한정을 같은 줄에서 보강하고, 원장 목적지는 grep 결과에 맞춥니다. 줄 번호가 밀리지 않게 본문은 제자리에서만 고칩니다.B2a 한정이 비거나 인접하지 않은 문장부터 같은 줄에서 보강합니다.migration-log 목적지를 grep 결과에 맞춰 고칩니다.B2a·E2 감사만 수행했고, 토큰·컴포넌트 표·상태 applicability·구조는 건드리지 않았습니다.
+
+**B2a.** 편집적 해석인데 인접 완전 한정이 없거나 한정이 실제 문장을 못 가리키던 곳에 `derived editorial implementation inference` / `not Clay-authored or a separately published UI specification`을 붙이거나 이름을 맞췄습니다. 예: Scope 11 `this-contract-covers`, Scope 15 범위 한정, Spacing 91, Elevation 110, 표 뒤 Pressed/Focus(198·225)와 active tab(169·251), YAML type 미발명(171). Distinctive의 Rube Goldberg, Font의 Arial, Layout 297의 비인접 extras처럼 한정이 실제보다 넓던 곳은 줄였습니다.
+
+**E2.** 로그·provenance 목적지를 grep으로 맞춰습니다. 카탈로그 homepage(슬래시 없음)는 Scope 9이지 11이 아니고, Rube Goldberg는 13+156이며, Font 표에 없는 `official distributed none` 주장은 뺐습니다.
+
+산출물: `docs/design-md-weight/migrated/clay/audit-log.md`  
+검증: `--gate-only` PASS, `portable_core: true`, SHA-256 `a21f84fb00cb45e01bb7a5570ca64d02f476ceead0f72ea164ecf7fe21c8082f`
+
+AUDIT_DONE fixes=22
