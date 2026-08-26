@@ -163,7 +163,7 @@ The rows below sort this record's font evidence into classes. The sorting is a d
 | Evidence class | Resolution |
 |---|---|
 | Official product-use | This record's evidence is live inspection of two web surfaces; it carries no FriendliAI-published type specification. |
-| Live computed surface-use | Both captured surfaces compute visible text as Saans, served as `SaansLocalFont` with a local fallback. |
+| Live computed surface-use | The homepage computes visible text through the stack this record names `Saans`, served as `SaansLocalFont` with a local fallback. The record states one family across every text role rather than recording a separate computed family for the blog surface. |
 | Official distributed asset | The record establishes the family in use and carries no FriendliAI-distributed font file. |
 | Declared-only | The record lists no declared-but-unused family for these surfaces. |
 | License | No license or distribution statement accompanies the family in this record. |
@@ -173,7 +173,7 @@ The rows below sort this record's font evidence into classes. The sorting is a d
 
 - **Current visible UI family:** `Saans`, served as `SaansLocalFont` with a local fallback
 - On both captured surfaces a single family covers hero, navigation, body, and UI text alike; no second family is computed for display type.
-- Do not substitute a system font or another grotesk for Saans and present it as the brand face. Saans is canonical here because computed visible use on both captured surfaces agrees on it.
+- Do not substitute a system font or another grotesk for Saans and present it as the brand face. Saans is the family this record names for visible use, and the served face behind that name is `SaansLocalFont` with a local fallback; what the two names leave unresolved is stated under Named gaps.
 
 ### Type roles
 
@@ -492,3 +492,4 @@ These decisions are unnamed values, not permissions to invent:
 - the license and distribution terms for `Saans`, the family this record establishes as the one in use
 - computed per-component values behind the empty, loading, error, success, skeleton, and disabled treatments described above
 - dark-section component values beyond the `#102a43` and `#243b53` fills with white text
+- the family name to record for visible UI. This record names the typeface `Saans` and describes it as served as `SaansLocalFont` with a local fallback, while the computed stack behind that name reads `SaansLocalFont, "SaansLocalFont Fallback"` and never contains the token `Saans`. Neither name is selected over the other: they name one face at two levels, a typeface and a served stack. Nothing here establishes which system family, if any, sits behind the fallback face, and the blog surface carries no computed family value of its own.

@@ -57,9 +57,115 @@ Verification method recorded by the source: `omd:add-reference` CREATE, live ins
 - getdesign.md/friendliai — 0 DESIGN.md files (no entry)
 - styles.refero.design/?q=friendli — no FriendliAI match (default browse grid returned)
 
+## Canonical proof — sibling verification file
+
+**Adopted 2026-08-26.** The earlier migration recorded that this file did not exist. It does. The measurement that produced that claim was wrong, not the repository — see the revision entry in `migration-log.md`. Every field below is transcribed from the file itself.
+
+| Field | Value |
+|---|---|
+| sibling | `web/references/friendliai/.verification.md` |
+| bytes | 6,380 |
+| lines | 67 |
+| SHA-256 | `1415e992dc2bc5c17bbdffbf21b35505824d68b03db372aa62996ddd61a1e967` |
+| heading | `# FriendliAI — Verification Notes (2026-07-02)` |
+| grade | `## Proof — Tier 1 live inspect` |
+| inspected | 2026-07-02 |
+| raw samples | 20 — bullet lines matching `^- ` inside the sibling's `### Raw samples` block, counted with `awk` over that block; the block has no wrapped bullets, so bullets and lines coincide there |
+
+**Why it is adopted.** The date, the method family (`playwright getComputedStyle`), and the three brand-owned URLs all agree with what the source `DESIGN.md` footer and trailing comment state in short form, so the sibling corroborates the source rather than contradicting or widening it. It is the raw record the source's own trailing comment points at ("see web/references/friendliai/.verification.md for raw samples"), and it carries the per-element measurements that the source states only in aggregate.
+
+**Method, quoted from the sibling:** "playwright getComputedStyle (live DOM) — global playwright (chromium, headless, 1440×900), goto `domcontentloaded` + 3.5s settle, cookie/modal dismissal pass, then `getComputedStyle` on body, h1/h2/h3, header/nav, buttons, links, cards, badges, inputs, plus a full-DOM background/text color frequency scan across two surfaces."
+
+The viewport in that quote, 1440×900, is the only viewport the sibling records. It is the sole ground under the portable body's single-viewport qualification on the breakpoint table (portable line 403), which until now rested on the source's silence rather than on a stated viewport.
+
+**Sources, from the sibling's `**Sources:**` list:**
+
+- https://friendli.ai/ — homepage, live computed style
+- https://friendli.ai/blog — "FriendliAI official blog — brand-owned, second surface"
+- https://docs.friendli.ai/guides/intro — "FriendliAI official docs — brand-owned; HEAD 200"
+
+The third is the same URL the source footer lists and the same treatment: `HEAD 200` is reachability, not a computed value, so nothing is attributed to it and nothing is promoted from it. That matches the Tier 1 row above, which was written from the source alone and is now backed.
+
+### Korean regional requirement, from the sibling
+
+The sibling names the same three brand-owned URLs as satisfying the KR ≥2 requirement, and adds, quoted: "getdesign.md / refero.design / Google favicon are explicitly NOT counted toward the KR brand-owned requirement." The catalog `logo` slug is that Google favicon proxy. The Identity note above already declined to present it as a brand asset in the portable body; the ground for that decision is now the sibling's own exclusion rather than an inference.
+
+### Third-party consent widget, excluded on the sibling's own terms
+
+The sibling states, quoted: "the cookie-consent widget buttons ("Accept" / "Decline" / "Preferences") render in `Roboto` with `rgb(0, 58, 250)` (#003afa) and 3px radius — this is a third-party consent tool, NOT FriendliAI's brand system, and was excluded from the palette and component tokens."
+
+The migration reflects that exclusion in full, and it did so before the sibling was read — the source `DESIGN.md` never carried these values either, because the source author had already applied the exclusion upstream. What changes now is the ground: the exclusion is an explicit, quoted decision in the verification record, not a silent absence.
+
+Measured in the portable body (`grep -oF … | wc -l`, and word-boundary `grep -oE` for the radius, which would otherwise match inside `13px`):
+
+| Excluded value | Portable body |
+|---|---|
+| `Accept` | 0 |
+| `Decline` | 0 |
+| `Preferences` | 0 |
+| `Roboto` | 0 |
+| `003afa` | 0 |
+| `rgb(0, 58, 250)` | 0 |
+| `3px` as a standalone length (`(^|[^0-9])3px`) | 0 |
+
+The two `3px` substring hits in the portable body are both `13px`, the Tag type role, at lines 188 and 378.
+
+### Tier 2 record stays out of the portable body (E1)
+
+The sibling's Tier 2 cross-check reports that `getdesign.md/friendliai` returns "friendliai — 0 DESIGN.md files | getdesign.md" and that `styles.refero.design/?q=friendli` returns its default browse grid with the landing copy "Browse 2,000+ AI-readable design systems". Both strings are third-party page copy, not FriendliAI copy, and the finding itself is a statement about this catalog's verification coverage rather than a fact about the FriendliAI brand. It is ledger material and stays here. Portable-body counts: `getdesign` 0, `refero` 0, and 0 for both quoted strings.
+
+The sibling's conflict matrix resolves ten fields to Tier 1 with "**Conflicts unresolved:** none", matching the source footer already quoted under Freshness.
+
+### Sibling-only values, recorded here and not promoted
+
+The sibling measures the live DOM; the portable contract reconstructs the source `DESIGN.md`. Those are different evidence domains, so a value that exists only in the sibling is a ledger entry and never a portable token.
+
+| Sibling-only value | Portable body |
+|---|---|
+| Blog H1 headline text, truncated in the sibling itself: `How Kilo Code and FriendliAI Bring…` | 0 |
+| Homepage `document.title`: `FriendliAI \| The Frontier AI Inference Cloud` | 0 |
+| Blog `document.title`: `FriendliAI Blog` | 0 |
+| Announcement banner geometry: height 48px, `padding: 0px 16px` | 0 for `0px 16px` |
+| Radius frequency scan: 4px ×48, 8px ×40, 12px ×15, 32px ×10, 360px ×8, 3px ×3, 5px ×1, 6px ×1 | 0 for `6px` as a standalone length; 0 for every count |
+| Background frequency scan: `rgb(255,255,255)` ×80, `rgb(247,248,250)` ×19, `rgb(217,226,236)` ×15, `rgb(0,149,255)` ×7, `rgb(10,16,26)` ×2, `rgb(42,98,219)` ×1, `rgb(36,59,83)` ×1, `rgb(16,42,67)` ×1 | 0 |
+| Text frequency scan: `rgb(10,16,26)` ×822, `rgb(36,83,186)` ×292, `rgb(0,0,0)` ×124, `rgb(72,101,129)` ×74, `rgb(36,59,83)` ×51, `rgb(255,255,255)` ×29, `rgb(110,122,132)` ×21, `rgb(167,173,178)` ×13, `rgb(83,118,150)` ×3 | 0 |
+| Feature card `box-shadow: none` stated as a computed declaration | 0 for `box-shadow` |
+| Elevated spotlight card `padding: 30px 30px 0px` | 0 |
+| Inline link `font-size: 16px` bound to the `#2453ba` anchor | 0 as a binding |
+| Method detail: `1440×900`, `domcontentloaded`, `3.5s settle`, chromium headless, the dismissal pass, the element set, the frequency scan | 0 for `domcontentloaded`, `900`, `getComputedStyle`, `playwright` |
+| `docs.friendli.ai` `HEAD 200` | 0 for `HEAD 200` |
+| The two third-party Tier 2 page strings above | 0 |
+
+Verified literally: `grep -oF '<value>' docs/design-md-weight/migrated/friendliai/DESIGN.md | wc -l` = 0 for `How Kilo Code`, `FriendliAI | The Frontier AI Inference Cloud`, `FriendliAI Blog`, `0px 16px`, `30px 30px 0px`, `box-shadow`, `document.title`, `domcontentloaded`, `getComputedStyle`, `playwright`, `HEAD 200`, `rgb(`, `×822`, `×292`, `getdesign`, `refero`, `Accept`, `Decline`, `Preferences`, `Roboto`, `003afa`. Word-boundary `grep -oE '(^|[^0-9])(3|6)px'` = 0. Non-promotion list size: **21 literal values plus 2 word-boundary lengths = 23 checked, all 0.**
+
+**One deliberate exception, and its authorization.** `SaansLocalFont Fallback` is a sibling-only string and it now appears **once** in the portable body, in Named gaps, by explicit instruction to record both sides of the family-name divergence rather than select one. It is carried there as the marker of an unresolved question, never as a token: no type role, no component record, and no rule in the body uses it as a family value. It is also the sibling's literal spelling of something the source itself already establishes in paraphrase — the source's §3 says Saans is "served as `SaansLocalFont` with a local fallback", and `"SaansLocalFont Fallback"` is the name of that fallback face. Portable-body count for `SaansLocalFont Fallback`: 1, at the Named gaps entry.
+
+## Where the sibling and the source diverge
+
+Eight places. None is repaired by choosing a side; the values in the portable body are unchanged.
+
+**Direct contradictions (2)**
+
+1. **Elevated Spotlight Card padding.** Sibling: `padding: 30px 30px 0px` — asymmetric, bottom side zero. Source frontmatter: `padding: "30px"`; source §4: `Padding: 30px`. The source collapses a three-value padding into one. The portable body carries the source's form (line 365) and it stays. Recorded here rather than in the body, because the source establishes no four-side question for that card and inventing one in the body would rest a portable gap on a sibling-only value.
+2. **Font family, naming level.** Sibling computes `font-family: SaansLocalFont, "SaansLocalFont Fallback"` on body and `SaansLocalFont` on h1 and the nav link. The token `Saans` appears nowhere in any computed sample. The source names the typeface `Saans` and calls the served form `SaansLocalFont` "with a local fallback". Neither name is selected; both are now stated in the portable Named gaps.
+
+**Portable-body claims the sibling does not support (2)**
+
+3. **Surface coverage of the family.** The sibling records a `font-family` only for homepage elements — body, hero h1, nav link. None of its four blog samples (blog h1, HIGHLIGHTS badge, topic tag pill, search input) carries a family value. The portable body's Font evidence row previously read "Both captured surfaces compute visible text as Saans"; corrected 2026-08-26 to state the homepage computation and to say plainly that no separate computed family is recorded for the blog. The Family bullet's justification was corrected in the same pass for the same reason.
+4. **Line heights marked "live computed" in the claim ledger.** Of the five unitless line heights, only the body role's is backed by a raw sample: the sibling records `line-height: 24.8px` on body, which is the source's `1.55`. The sibling's h1, h2, nav, blog-h1, and tag samples record size, weight, and colour with **no** line-height. So `1.10`, `1.20`, `1.30`, and `1.40` are source-stated, not individually corroborated. The ledger rows below are left as the source's own `live-extract` assertion, and this boundary note is the qualification on them.
+
+**Values one record carries and the other does not (4)**
+
+5. **Radius `6px ×1`** appears in the sibling's radius frequency scan. The source's `rounded` scale is 4 / 8 / 12 / 32 / 360 plus the card-local 5px, and neither record explains the 6px. Not promoted; portable-body count 0.
+6. **Topic Tag Pill border.** Source §4 and the portable record carry `Border: 1px solid #d9e2ec`. The sibling's tag-pill sample records background, colour, radius, padding, and font, and **no** border. Source-only, not corroborated. Value unchanged.
+7. **Log in (Quiet) font.** Source §4 and the portable record carry `Font: 14px / 530 / Saans`. The sibling's "Log in" quiet-link sample records colour, radius, padding, and height, and **no** font. Source-only, not corroborated. Value unchanged.
+8. **Body weight 400 and the secondary button's padding.** The sibling's body sample records family, colour, size, line height, and background, and no `font-weight`; its "Talk to an engineer" sample records no padding. The source states `400` and `0 12px` respectively. Source-only, not corroborated. Values unchanged.
+
+What the sibling **does** corroborate, element by element: every hex in the palette; the primary CTA's full record; the secondary CTA's fill, text, radius, height, and font; the search input including its `#d9e2ec` border; the HIGHLIGHTS badge in full; the tag pill except its border; the feature card including `border-radius: 32px` and its `#d9e2ec` border; the elevated card's `5px` radius and its `rgba(0, 0, 0, 0.25) 0px 0px 35px 0px` shadow byte for byte; sizes and weights for hero, blog title, subhead, nav, body, button, and tag; and the four voice samples verbatim.
+
 ## Raw live-inspect record
 
-Reproduced from the source's own sources comment, which the source states is backed by raw samples in the sibling `web/references/friendliai/.verification.md`.
+Reproduced from the source's own sources comment. The sibling adopted above is the raw record that comment points at, and it has now been read; the aggregate below and the sibling's per-element samples agree everywhere they overlap, with the eight exceptions listed under the divergence section.
 
 - Homepage — hero H1 "The Frontier AI Inference Cloud" (Saans 56px / weight 650 / color rgb(10,16,26) #0a101a); subhead H2 "Inference performance drives profitability" (22px / 530 / rgb(72,101,129) #486581); "Get started" CTA bg rgb(42,98,219) #2a62db / white / radius 4px / 32px height; "Talk to an engineer" bg white / black text; announcement banner "GLM-5.2 is live. #1 throughput on OpenRouter" bg rgb(0,149,255) #0095ff; feature cards white / 1px #d9e2ec / 32px radius; body font SaansLocalFont / rgb(10,16,26) / 16px / lh 24.8px; canvas rgb(247,248,250) #f7f8fa.
 - Blog — blog H1 36px / weight 600; HIGHLIGHTS badge bg rgb(10,16,26) #0a101a / white / 360px pill; topic tag pills white / rgb(36,59,83) #243b53 / 360px; search input white / 1px rgb(217,226,236) #d9e2ec / 360px pill.
