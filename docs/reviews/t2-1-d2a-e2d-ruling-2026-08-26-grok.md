@@ -71,3 +71,45 @@ Q5: **조문이 따로 필요하다** — E2 문언의 주어는 migration-log�
 ```
 
 RULING: D2의 재수록은 원장·로그의 이름·나이·도시 나열을 포함하고 표기는 무식별이며, 본문 승격은 다른 급이고, 소급 전수는 없으며, 자기부정 원장 행은 E2d로 못 박는다.
+
+---
+
+## v12에 함께 넣을 세 번째 후보 — B2a 표준 문구의 숨은 전제 (2026-08-26 추가)
+
+**판정 요청 대상 아님. 기록만.** 위반 0건이므로 백로그가 아니라 미래 함정이다.
+
+gitlab 이관 워커가 보고했다:
+
+> 규칙집의 B2a 고정 예문은 그 추론이 **"not a separately published UI specification"** 이라고
+> 적는다. 그런데 GitLab의 **Pajamas는 실제로 그것이다.** 예문을 그대로 복사하면 이 브랜드에
+> 대해 거짓을 단언하게 된다. 그래서 "not GitLab-authored or taken from a separately published
+> UI specification, **including the published Pajamas documentation**"으로 적었다 — 증거 종류는
+> 그대로 닫으면서 거짓은 말하지 않는 형태다.
+
+즉 **표준 문구가 「이 브랜드에는 1차 발행 디자인 시스템이 없다」를 전제로 깔고 있다.**
+그 전제가 깨지는 브랜드에서 문구를 복사하면 B2a를 지키려다 A1(발명 금지)을 어긴다.
+
+### 실측 — 현재 위반은 없다
+
+| | 수 |
+|---|---|
+| 이관 완료본 | 135 |
+| 그중 1차 발행 DS 보유(키워드 검출) | 20 |
+| 그중 **기본형 문구를 쓴 것** | **0** |
+| 적응형을 쓴 것 | 1 (gitlab) |
+
+처음 스캔에서 clickhouse를 위반으로 올렸으나 오탐이었다 — 내 검출기의
+`type:\s*["\']?system` 갈래가 일반 YAML에 걸린 것이고, 원본에 1차 DS 신호는 하나도 없다.
+DS가 없으면 그 문구는 **참**이므로 결함이 아니다. (오늘 내 계측이 좁거나 헐거웠던 여섯 번째다.)
+
+나머지 19개는 그 문구를 아예 쓰지 않는다 — B2a 예문이 보편 적용되고 있지 않다는 뜻이기도 하다.
+
+### 제안 문안 (v12에 함께)
+
+B2a 예문 옆에 한 줄:
+
+> *(예문의 「not a separately published UI specification」은 **그 브랜드에 1차 발행 디자인
+> 시스템이 없을 때만 참이다.** Pajamas·Polaris·Spectrum·Carbon처럼 발행 사양이 있는 브랜드에서는
+> 예문을 복사하지 말고 그 사양을 명시해 닫는다 — 예: 「not GitLab-authored or taken from a
+> separately published UI specification, including the published Pajamas documentation」.
+> 증거 종류를 닫는 것이 목적이지 발행 사양의 부재를 주장하는 것이 아니다.)*
