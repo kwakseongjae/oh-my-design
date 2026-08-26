@@ -52,6 +52,7 @@
  },
  "independenceLimits": [
   "평가자 3종은 공개 웹을 공유한다. 높은 α를 사람 합의의 대체값으로 읽지 않는다 (RUBRIC.md §3.7).",
+  "평가자 3종은 같은 서빙 플랫폼(cursor)을 지나고 그중 composer-2.5는 그 플랫폼 사업자 자신의 모델이다. 계열 3종은 여전히 다르고 arm 호스트가 xAI라 자기 산출물 채점도 아니지만, 「서로 다른 계열 3종」이 곧 「서로 독립인 3종」이 아니라는 경고가 한 겹 두꺼워진다 (RUBRIC.md §3.2a). 리포트 첫 절에 기재한다.",
   "천장 측정은 학습 기억을 섞는다. 5개 브랜드에서만 자극이 충분하다 (figma·karrot·musinsa·naver·toss)."
  ],
  "selfPreference": {
@@ -83,5 +84,5 @@
   "reportSentence": "문서 축 중립 전사는 평가자 sonnet5와 같은 anthropic 계열의 별개 인스턴스 opus5가 수행한다. 채점 세션·메모리는 공유하지 않으나 계열 독립 조건은 충족하지 못한다. 전사 왜곡은 허용 변환 세 가지와 fail-close, 전수 기계 검증으로 통제했고 비기계 의미 검증은 두지 않았다. 이 상관을 채점 사전확률과 같은 줄에 두지 않는다."
  },
  "resealedAt": "2026-08-26",
- "resealNote": "평가자 1자리 교체(sol→composer-2.5)와 호출 경로 기록. 임계값·가중치·결측 규칙·프롬프트·온도·시드·arm 순서는 불변. 근거 docs/reviews/t3-3-reseal-proposal-2026-08-26-opus5.md"
+ "resealNote": "평가자 1자리 교체(sol→composer-2.5)와 호출 경로 기록. 임계값·가중치·결측 규칙·프롬프트·온도·시드·arm 순서는 불변. 근거 docs/reviews/t3-3-reseal-proposal-2026-08-26-opus5.md · 2026-08-26 파생 드리프트 정정(grok-4.6 판정 Q1 APPROVE / Q2·Q3·Q4 REVISE): scoring-order.json 재생성 유지, RUBRIC §3.2 표 4자리 라벨 정정, TRANSCRIPTION §5 전제 재작성, generatedAt을 명부 봉인일에서 유도, independenceLimits에 §3.2a 추가. 근거 docs/reviews/t3-3-reseal-drift-2026-08-26-opus5.md"
 }

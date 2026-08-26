@@ -121,7 +121,7 @@
   | 칸 | 상태 | 이유 |
   |---|---|---|
   | 레인 A · 전 축 | **N/A** | 호스트도 이미지도 세 arm 공통 `xai`. 달라지는 성분이 없다 |
-  | 레인 B · sol·sonnet | **N/A** | 두 계열은 어느 arm에도 없다 (`|자기 계열| = 0`) |
+  | 레인 B · composer·sonnet | **N/A** | 두 계열은 어느 arm에도 없다 (`|자기 계열| = 0`) |
   | 레인 B · grok · 시각 축 | **공선** | 달라지는 유일한 성분이 네이티브 이미지 계열이고, grok의 자기 계열은 omd뿐이다. 그 대비는 **레인 B 이미지 처치 그 자체**다 |
   | 레인 B · grok · 문서 축 | **무의미** | 이미지 계열로 조인하면 문서 축에는 omd vs 나머지 라벨만 붙는다 |
 
@@ -139,7 +139,7 @@
 
   | 항목 | 계열 | 상태 |
   |---|---|---|
-  | 평가자 | `xai`(grok-4.6) · `openai`(sol) · `anthropic`(sonnet5) | 확정 |
+  | 평가자 | `xai`(grok-4.6) · `anysphere`(composer-2.5) · `anthropic`(sonnet5) | 확정 |
   | 레인 A 이미지 (세 arm 공통) | Grok Imagine → `xai` | 확정 |
   | 레인 B 이미지 — omd | Grok Imagine → `xai` | 확정 |
   | 레인 B 이미지 — hallmark | nanobanana · recraft · flux → `google` / `recraft` / `bfl` | 확정 |
@@ -193,13 +193,19 @@
   4. 남은 성분으로 `own` / `other`를 나눈다. `|own| ∈ {0, 3}`이면 `bias_j = N/A`다.
 
   절차를 세 평가자에 돌리면 다음 한 장이 나온다. grok 한 줄만 적으면 구현자가
-  sol·sonnet에 식을 새로 만들게 된다.
+  composer·sonnet에 식을 새로 만들게 된다.
 
   | 평가자 | 레인 A | 레인 B 시각 (식별력 · 근거 추종 30% · `HERO`) | 레인 B 문서 |
   |---|---|---|---|
   | grok (`xai`) | N/A | `own = omd` — **공선** | N/A |
-  | sol (`openai`) | N/A | N/A (`|own| = 0`) | N/A |
+  | composer-2.5 (`anysphere`) | N/A | N/A (`|own| = 0`) | N/A |
   | sonnet5 (`anthropic`) | N/A | N/A (`|own| = 0`) | N/A |
+
+  *(라벨 정정 2026-08-26 — grok-4.6 판정 Q2 REVISE. 판정 결론은 교체 전후로 같다:
+  `anysphere`도 어느 arm 호스트·이미지 계열에 없으므로 `|자기 계열| = 0`이고 `bias_j = N/A`다.
+  바뀐 것은 **그 N/A의 이유**뿐이다 — 「`openai`가 arm에 없다」가 아니라 「`anysphere`가
+  arm에 없다」이다. 동결이 보호하는 것은 이 결론과 §3.2의 조인 절차이지 은퇴한 참가자의
+  이름 문자열이 아니다. 근거: `docs/reviews/t3-3-reseal-drift-2026-08-26-opus5.md`)*
 
   - `|자기 계열| ∈ {0, 3}`이면 `bias_j = N/A`이며, **N/A에 `SELF_PREFERENCE`를 붙이지
     않는다.** 플래그가 안 붙은 것은 편향이 없다는 뜻이 아니라 **잴 수 없었다**는 뜻이다.
