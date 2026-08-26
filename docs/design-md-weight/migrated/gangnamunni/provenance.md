@@ -82,7 +82,7 @@ Conflicts unresolved: none. `verification_v2.schema: 2`.
 
 ## Claim ledger
 
-The source uses four YAML anchors, each a `computed-style` observation captured 2026-07-13:
+The source uses five YAML anchors, each a `computed-style` observation captured 2026-07-13:
 
 | Anchor | surface_id | source_id | method | selector |
 |---|---|---|---|---|

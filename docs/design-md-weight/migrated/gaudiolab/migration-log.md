@@ -115,7 +115,7 @@ interactive 6개 × 7상태 = 42행(실측 applicable 30 + not-applicable 12 = 4
 | 1차 대조에서 미생존 | **1** |
 | 복원 후 재대조 미생존 | **0** |
 
-바늘 62건의 구성: CTA·버튼 라벨 5 (`Contact us` · `문의하기` · `All products` · `Watch the Film` · `Open app launcher`) / 내비 라벨 7 (`Products` · `Technology` · `Blog & News` · `Careers` · `About us` · `제품` · `기술`) / 섹션 표제 3 (`The Science of Sound` · `Wherever Sound Goes` · `Our Milestone`) / 슬로건·미션·히어로 7 / 마일스톤 카피 11 / 제품·서비스명 11 / 파트너명 4 / 사명·문서 제목 4 / sibling 전용 형태 2 / 서사 수치 5 / §14 금지 예시 문자열 2.
+바늘 62건의 구성: CTA·버튼 라벨 5 (`Contact us` · `문의하기` · `All products` · `Watch the Film` · `Open app launcher`) / 내비 라벨 7 (`Products` · `Technology` · `Blog & News` · `Careers` · `About us` · `제품` · `기술`) / 섹션 표제 3 (`The Science of Sound` · `Wherever Sound Goes` · `Our Milestone`) / 슬로건·미션·히어로 7 / 마일스톤 카피 12 / 제품·서비스명 11 / 파트너명 4 / 사명·문서 제목 4 / sibling 전용 형태 2 / 서사 수치 5 / §14 금지 예시 문자열 2.
 
 **미생존 1건과 그 처분:** `Over 40 audio experts including 9 Ph.D` — §10이 대문자 O로 인용한 형태. 초안은 §11·주석의 소문자 형태(`over 40 audio experts…`)만 옮기고 §10의 evidence-framing 인용을 산문으로 압축했는데, A5는 대소문자 정규화도 손실로 본다. Content & Locales 첫 문단에 §10의 인용 형태를 그대로 복원했다(doc 1회). 나머지 61건은 1차 대조에서 이미 생존.
 

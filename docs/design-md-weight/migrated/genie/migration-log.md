@@ -54,17 +54,19 @@ The sibling exists — confirmed with `find web/references/genie -type f`, since
 
 ## A5 / A5a verification
 
-The gate's `copy-loss` needles come only from contiguous non-Latin runs of four characters or more inside quotations. Measured at audit time: `coverage.copy-loss compared 7 / candidates 144` — **4.9%**. `compared < candidates`, so the A5a hand sweep is mandatory and was run. The six machine needles were 지니뮤직, 로그인·회원가입, 그리고 설레임, 검색 결과가 없습니다, 실시간 차트, 오류가 발생했습니다; every published label joined by `/` or `,` (종합, 국내, 국외, 듣기, 담기, 다운, 검색, 차트, 최신음악, 라디오, 매거진, 인기검색어, 최근검색어) is under the four-character run threshold or split by a separator, so none of them was a needle.
+The gate's `copy-loss` needles come only from contiguous non-Latin runs of four characters or more inside quotations. Measured at audit time: `coverage.copy-loss compared 7 / candidates 144` — **4.9%**. `compared < candidates`, so the A5a hand sweep is mandatory and was run. The six machine needles were 지니뮤직, 로그인·회원가입, 그리고 설레임, 검색 결과가 없습니다, 실시간 차트, 오류가 발생했습니다; every other published label escaped the check for one of two reasons. 종합, 국내, 국외, 듣기, 담기, 다운 and 검색 are quoted in the source but joined by `/` or `,`, which the run regex treats as separators, leaving two-character fragments below the four-character threshold. 차트, 최신음악, 라디오, 매거진, 인기검색어, 최근검색어 and 최근검색어 전체삭제 appear unquoted in the §10 register table, so they were never candidates at all.
 
-| Sweep | Extracted | Missing from all three outputs | Published copy among the missing | Handling |
+| Sweep | Extracted | Missing from `DESIGN.md` + `provenance.md` | Published copy among the missing | Handling |
 |---|---:|---:|---:|---|
 | All Korean runs in the source, any length | 14 distinct | 0 | 0 | — |
 | All Korean runs in the sibling, any length | 9 distinct | 0 | 0 | — |
 | All backtick / straight-double / curly-double / 「」/（）/() delimited strings in the source, 2–80 chars | 145 | 5 | 0 | See the disposition list below. |
-| All the same in the sibling | 42 | 2 | 0 | `Tier 1 / brand-owned, KR` and `live brand surface; tagline "지니 : 음악, 그리고 설레임" confirmed in DOM \`<title>\`` are the sibling's own classification and description text, not brand-published strings. The tagline inside the second one survives at `DESIGN.md` 13/438 and `provenance.md` 72/73/80. |
+| All the same in the sibling | 42 | 2 | 0 | `Tier 1 / brand-owned, KR` and `live brand surface; tagline "지니 : 음악, 그리고 설레임" confirmed in DOM \`<title>\`` are the sibling's own classification and description text, not brand-published strings. The tagline inside the second one survives at `DESIGN.md` 13/438 and `provenance.md` 72/115. |
 | `node test-v2/tools/latin-copy-audit.mjs --brand genie` | 24 candidates | 3 reported | 0 | Candidate output, not a verdict. Two are §13 persona prose (`redesign`, `fast and to the point`), deleted with the personas under D2. The third is `this is the thing you press.` — the source's own editorial sentence, whose label survives at `DESIGN.md` 11 without the sentence-final period. |
 
-Disposition of the five source quotations that do not survive verbatim:
+Survival is measured against `DESIGN.md` and `provenance.md`, the two files that carry content. This log quotes six of the seven non-survivors in the disposition list below, so measuring against all three files would score them as present and hide exactly what the sweep exists to surface.
+
+Disposition of the five source quotations that do not survive verbatim in `DESIGN.md` or `provenance.md`:
 
 1. `this is the thing you press.` — survives at `DESIGN.md` 11 without the trailing period; the period is sentence punctuation outside the quoted label.
 2. `strengthens to #27282d on hover` — a §9 prompt fragment. The fact survives at `DESIGN.md` 379 ("title strengthens to `#27282d` on hover/selection") and in the token-set use string at 382.

@@ -6,6 +6,7 @@ Destination: `docs/design-md-weight/migrated/gaudiy/DESIGN.md`
 Provenance: `docs/design-md-weight/migrated/gaudiy/provenance.md`
 Rulebook: **v11** (`docs/design-md-weight/MIGRATION_RULEBOOK.md`)
 Date: 2026-08-26
+Portable Core: **pass** (`scripts/design-md-core.cjs` `evaluatePortableCore` → `level: portable-core`, `structurally_valid: true`, `portable_core: true`, `reasons: []`, placeholders 0)
 
 ## Disposition table
 
@@ -72,18 +73,24 @@ Date: 2026-08-26
 | primitive type (A1b) | button 3 · card 3 · tab 1 — legacy YAML 실측과 동수. badge는 §4 산문 유래라 `Primitive group`으로 1회. |
 | A5 비라틴 (게이트 바늘) | 게이트 `copy-loss` **0건 손실**. 단 이 검사는 **인용 문자열 152개 중 18개**(`coverage.compared` 18 / `candidates` 152 = 11.8%)에서 뽑은 비라틴 run만 본 것이다 — `verdict: PASS`는 「대조한 바늘 중 잃은 것이 없다」이지 카피 전량 보존의 증명이 아니다. 나머지는 아래 손 스윕이 담당한다. |
 | **A5a 발행 문자열 손 대조 (바늘 밖 전수)** | `compared < candidates`이므로 손 스윕을 수행했다. legacy 본문·YAML·닫는 주석과 sibling 양쪽에서 인용 문자열을 전수 추출(legacy 152 / sibling 87)한 뒤, **브랜드가 발행한 문자열만** 바늘로 남겼다 — **추출 38건**(legacy 34 + sibling 전용 4). 비라틴 20건: くわしく見る · カジュアル面談に申し込む · コーポレートサイトへ · ファンと共に、時代を進める。 · ファン国家の創造 · たぶんチャンス。 · 採用特設サイト \| 株式会社Gaudiy Group · 株式会社Gaudiy Group · プロダクトデザイナー · データサイエンティスト · デザイナー · エンジニア · 法務 · 労務 · 石川裕也 · 松竹 · 東映アニメーション · 東宝 · エラーが発生しました · 必須. 라틴 14건: PdM · Gaudiy Fanlink · Tech Blog · Gaudiy AI Lab · AI Lab · Member note · CEO'S note · With fans, advance the era. · creating a nation of fans · nation of fans · Yuya Ishikawa · Shochiku · Toei Animation · Toho. sibling 전용 4건: Gaudiy Groupが松竹、東映アニメーション、東宝より追加調達… · デザインディレクター · Corporate IT · 株式会社Gaudiy Group｜ファンと共に、時代を進める。 — **미생존 0건, 복원 0건, 처분 기재 0건.** 바늘에서 제외한 것: 폰트 스택(`Noto Sans JP` 등), CSS·토큰 이름(`box-shadow: none`, `prefers-reduced-motion: reduce`, `cubic-bezier(…)`, `motion-fast` …), 점 경로·YAML `use:` 서술문, 카피에 대한 서술(`Level 0`, `elevation`, `monochrome as conviction`), 제3자 문자열(`No designs found for 'gaudiy'` — getdesign.md의 메시지; `Gaudi - Design System` — sibling이 스스로 제외), 그리고 브랜드가 거부하는 register의 예시(`revolutionary`, `to the moon`). 제외한 것들도 세 파일 어딘가에 그대로 남아 있으나 A5 분모에는 넣지 않았다. |
-| `[FILL IN]` | legacy 0건, 산출 `DESIGN.md` 0건. provenance에 1회 — 「원본에 placeholder가 없다」는 원장 문장의 범주 라벨이며 구체형(`[FILL IN: …]`)이 아니다. |
+| `[FILL IN]` | legacy 0건, 산출 `DESIGN.md` 0건. provenance에 1회 — 「원본에 placeholder가 없다」는 원장 문장의 범주 라벨(대괄호 안 지시문 없는 맨 토큰)이며, 지시문을 콜론 뒤에 담는 구체형이 아니다. 29cm 승인본 provenance가 같은 용법을 쓴다. |
 | C1 (`not captured`/`not named`를 not-applicable 사유로) | **0건.** 상태 표 28행(4개 interactive 컴포넌트 × 7) 중 `applicable` 21행 / `not-applicable` 7행이고, 7행 전부 역할 사유로 닫혔다 — press destination 2행(Solid Black Inline CTA error·success), 즉시 로컬 dismissal 3행(Round Close Control loading·error·success), destination 선택 2행(Navigation Item error·success). |
 | C2 (역할 판단 없는 일괄 개방 / 일괄 폐쇄) | 일괄 처리 없음. 같은 primitive(`button`)인데 판정이 갈렸다 — Outline CTA는 「カジュアル面談に申し込む」가 신청을 커밋하므로 loading·error·success `applicable`(§14 값으로 사유를 채움), Solid Black Inline CTA와 Round Close Control은 커밋 연산이 없어 일부 `not-applicable`. `tab`으로 검증된 Navigation Item은 목적지 선택이므로 error·success 폐쇄. 사유는 전부 의미상 근거이고 관측 부재가 아니다. |
 | C3 | "This is not a claim that state coverage is finished." 를 `Components & States` 머리에 1회 명시. 완료 주장 0건. |
 | C4 | News / Press Card와 Job-Role Card는 interactive-kind 근거가 없어 **kind와 applicability map 자체를 생략**했다(primitive type `card`만 보존). Grey Section Band와 Inverted Label은 레이아웃 밴드·라벨이라는 역할 근거가 있어 `kind: non-interactive` + 사유로 닫았다. |
 | B1 | 원본에 `focus-visible` 0회. 산출 `DESIGN.md`의 `focus-visible` 행 4개는 전부 값 없이 "visual treatment omitted"이며 hex 0건. sibling의 구조 관측(h2 라벨, 섹션 표제)도 본문 사실로 승격하지 않았다. |
 | D1 / D1a | `Governance` → `Recorded unresolved decisions` 8항과 Font evidence의 `Outside these captures` 명사구 목록은 전부 원본이 세운 도메인이다 — Fanlink(§11) · mobile/app(§8·§11) · Tech Blog / Gaudiy AI Lab / Member note / CEO'S note(§4) · easing curves(§15) · hover/press/focus(§9·§14·§15) · disabled opacity(§14) · skeleton pulse(§14) · glitch/cut(§15) · tablet 2-up grid(§8) · nav touch target(§8). 원본에 0회인 `license`·`distributed`·`photography`·`authenticated`·`native`·`parity`는 어느 목록에도 없다. |
-| E3 | 게이트 회피 0건. 값 표기를 왜곡하거나 문장을 게이트 어휘 주변으로 다시 쓴 자리 없음. 보고할 오탐도 없었다 — 첫 실행부터 `verdict: PASS`, `problems: []`. |
+| E3 | 값 표기를 왜곡한 자리 0건. `migrate-reference.mjs` 게이트는 첫 실행부터 `problems: []`. 다만 **conformance checker 오탐 1건을 아래에 보고**한다(우회하지 않고 기재). |
 
 ## 게이트
 
 `node test-v2/tools/migrate-reference.mjs --brand gaudiy --gate-only` 계열 검사 결과: `verdict: PASS`, `problems: []`, `coverage.copy-loss: compared 18 / candidates 152`.
+
+### E3 보고 — conformance checker `explicitlyNegatesClaim('scope', …)` 오탐
+
+`scripts/design-md-core-conformance.cjs` 285행의 scope 부정 패턴 `/(?:\b(?:no|not|without)\b|does?\s+not).{0,32}\b(?:product|surface|scope)\b/i` 이, Scope claim 안의 문장 **「The accent scan returned no saturated hue on either surface.」**를 「이 문서가 자기 product surface를 부정한다」로 읽고 `portable_core: false` / `missing-product-surface-scope`를 냈다. 그 문장은 scope를 부정하지 않는다 — accent hue 관측 제약이다. `no` 와 `surface` 가 32자 안에 들어온 것이 원인이고, 같은 함수의 `ATTRIBUTED` 가드는 문장에 출처 귀속 어휘가 없어 발동하지 않았다.
+
+조문이 금지하는 「표기를 바꿔 피하기」는 하지 않았다. 대신 그 문장의 실제 결함을 고쳤다 — **관측의 주체를 밝히지 않은 문장**이었으므로 「The source's accent scan records no saturated hue on either surface.」로 귀속을 명시했다. 같은 사실이 `Foundations` → `Semantic color`에는 처음부터 귀속형("the source records no saturated accent hue anywhere on either surface, and its accent scan returned empty")으로 적혀 있었고, 이 수정은 두 자리의 증거 귀속 규율을 일치시킨 것이지 게이트 어휘를 피해 문장을 재배치한 것이 아니다. 값·카피·의미 변화 0건(수정 전후 A5a 38/38 생존, 토큰 37/37 동일). 패턴 자체는 그대로 두었으므로 오탐은 남아 있다 — 이관본 135개 중 이 조건에 걸린 것은 gaudiy 하나였다.
 
 이 PASS를 적합성 증거로 인용하지 않는다. 이 게이트는 A5 손실·E1 좁은 원장·E2 허위 목적지·B1 분류 승격을 통과시킨 전력이 있고, 이 브랜드에서는 인용 문자열의 11.8%만 기계 대조했다. 나머지 88.2%에 대한 판단 근거는 위 A5a 손 스윕 행(추출 38 / 미생존 0 / 처리 0)이다.
 

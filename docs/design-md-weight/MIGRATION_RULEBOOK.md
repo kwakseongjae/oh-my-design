@@ -1,6 +1,6 @@
 # 마이그레이션 규칙집 — legacy → Core v2
 
-> **v11 · 2026-08-26.** 이 파일이 워커에게 주어지는 하드 룰의 정본이다.
+> **v12 · 2026-08-26.** 이 파일이 워커에게 주어지는 하드 룰의 정본이다.
 > `migrate-reference.mjs`가 이 파일을 읽어 워커 프롬프트에 넣고, 각 migration-log가
 > 사용한 규칙집 버전을 기록한다.
 >
@@ -85,6 +85,12 @@
   "공식 출처로 검증될 때까지" 같은 약화 문구는 curve 하나 확인으로 충족될 수 있어
   동치가 아니다. *(29cm §3B; toss —
   `t2-1-wave1-2026-08-23-sol-sample.md` §1.1)*
+    *(예문의 「not a separately published UI specification」은 **그 브랜드에 1차 발행
+    디자인 시스템이 없을 때만 참이다.** Pajamas·Polaris·Spectrum·Carbon처럼 발행 사양이
+    있으면 예문을 복사하지 말고 그 사양을 명시해 닫는다 — 예: `not GitLab-authored or taken
+    from a separately published UI specification, including the published Pajamas
+    documentation`. 목적은 증거 종류를 닫는 것이지 발행 사양의 부재를 주장하는 것이 아니다.
+    현재 위반 0건 — 1차 DS 보유 이관본 20개 중 예문을 쓴 것은 gitlab뿐이고 적응시켰다.)*
 
 ## C. State applicability (게이트 부분 기계화)
 
@@ -119,6 +125,15 @@
 - **D2.** 가상 페르소나는 승격도 provenance 재수록도 금지. 독립 검증된 task만
   claim한다. **게이트 기계화 없음 — sol 레인 전담.** *(karrot §13 —
   `t1-3-golden-2026-08-23-sol-review.md` §2B; grok 조건 2, `t2-1-open-2026-08-23-grok.md`)*
+- **D2a. 삭제 처분의 표기는 무식별이다.** 원장·로그가 삭제를 적을 때는 원본 절·인원·빠진
+  필드 종류로 족하다 — `§13 페르소나 N인(이름·나이·도시 포함)`이면 충분하고, 원본 줄 번호
+  포인터는 허용이나 요구가 아니다. 이름·나이·도시·전기를 Item 칸이나 로그 행에 옮겨 적는
+  것은 삭제가 아니라 **재수록**이다. 본문 0회를 grep으로 보이려고 원장에 그 문자열을 심는
+  것도 재수록이다. 본문 잔존은 **승격**, 원장 잔존은 **재수록** — 같은 조항의 다른 동사다.
+  *(funnow Omission ledger가 이름·나이·도시를 Item에 둔 채 "this file에 없다"고 적음.
+  승인본 karrot·furiosaai는 무식별 — furiosaai는 "not even as names or cities". 소급은
+  forward-only: 이후 이관과 F3가 다시 연 파일에서만 고친다.
+  `t2-1-d2a-e2d-ruling-2026-08-26-grok.md`)*
 
 ## E. 분리 원칙
 
@@ -133,6 +148,12 @@
     disposition이다 — "값 생략"만 적으면 불일치다. *(bilibili — 같은 판정 §2.2)*
   - **E2c.** 준수 주장은 실제 본문보다 강하게 적지 않는다. 로그가 "B3 유지"라고
     적으려면 본문이 실제로 B3 전문을 담고 있어야 한다. *(toss §1.1)*
+  - **E2d.** 부재를 단언하는 원장 문장은 **자기 자신을 분모에 넣는다.** "이 파일에 없다" ·
+    "세 파일 어디에도 없다"고 적으면서 같은 행이 그 항목을 나열하면 **거짓 원장**이다.
+    mention(처분 지목)과 use(사실 재수록)를 가르려면 그 구별을 문장에 적고 부재를
+    단언하지 않는다. *(한 웨이브 두 건 — funnow provenance Omission ledger의 페르소나 행,
+    furiosaai `provenance.md:183`의 sibling 전용 항목. 둘 다 F3가 실측에 맞춰 고쳤으나
+    furiosaai는 이를 E1로 오분류했다. `t2-1-d2a-e2d-ruling-2026-08-26-grok.md`)*
 
 ## F. 의무 최종 패스 (절차 — 하네스가 워커 프롬프트에 강제)
 
@@ -168,3 +189,4 @@
 | v9 | 2026-08-26 | **A5**(브랜드 발행 문자열 바이트 보존) · **D1a**(D1이 명사구 gap 목록에도 적용) | 웨이브 19: datadog이 검증 카피 6종을 의역·소실(`SEE THE PLATFORM`→"inspect the platform"), dcard가 번체 포럼명 9종을 영문 의역으로 대체 — 한 웨이브 두 건이 같은 계열. D1a는 databricks·datadog이 원본에 0회인 `native-client`를 미해상 도메인으로 열거해 게이트 PASS 상태로 통과 (`t2-1-wave19-20-2026-08-26-opus5.md`, `t2-1-a5-copy-loss-2026-08-26-opus5.md`) |
 | v10 | 2026-08-26 | **C2 조문 개정** — 금지 대상을 문자열에서 **행위**(역할 판단 없는 일괄 개방)로 명확화 | 조문이 `"Interactive control"`·`"Button control"`을 금지 형태로 지목했으나 **승인 골든 샘플 3건이 그 형태를 사용**(musinsa 18·29cm 11·karrot 5)하고 이관본 96건 546회가 동형 — 조문과 승인 기준이 충돌. 최종 승인권자 판정: 골든 샘플은 v1(C1) 산출이라 C2 이후 미보수 상태이고, C2 출처인 notion 시정본은 Hero CTA를 그 형태로 남긴 채 지목된 네 자리만 역할 사유로 닫았다(실측: primitive 형태 21회와 역할 사유 12행 공존) (`t2-1-c2-ruling-2026-08-26-grok.md`) |
 | v11 | 2026-08-26 | **A5a**(바늘 밖 발행 카피의 손 대조와 분모 기재) | 게이트의 `copy-loss` 바늘이 연속 비라틴 런에서만 나와 이관본 130개 전수 커버리지가 **인용 문자열 22,377개 중 991개 = 4.4%**, 50%를 넘는 브랜드 0개, 비교 0건 63개. furiosaai는 181개 중 1개만 대조하고 PASS를 냈는데 손 스윕에서 27건 미생존; funnow는 바늘 8개 PASS 뒤 자기 슬로건의 영어 gloss 2건이 의역돼 있었다. 바늘 확대는 설명문 오탐→차단 게이트 우회(E3)로 이미 기각됐으므로 절차가 기계를 대신한다. 최종 승인권자 판정: 트리거는 `compared < candidates`(정성 표현은 1/181을 검사된 얼굴로 읽는다), E2c 확대와 전수 소급은 하지 않으며, 인용 전량이 아니라 **발행 카피만** 대조한다 (`t2-1-a5-latin-blindspot-2026-08-26-opus5.md`) |
+| v12 | 2026-08-26 | **D2a**(삭제 처분의 무식별 표기) · **E2d**(부재 단언은 자기 자신을 분모에 넣는다) · B2a 예문의 전제 주석 | funnow Omission ledger 한 행이 Item 칸에 페르소나 4인의 이름·나이·도시를 담은 채 Status 칸에 「this file에 없다」고 적었고, furiosaai `provenance.md:183`이 sibling 전용 항목의 부재를 단언하며 그 문장이 그것들을 나열했다 — 한 웨이브 두 건. D2 원문이 이미 「승격도 provenance 재수록도 금지」이고 그 조항을 만든 karrot FAIL B의 차단 사유가 원장에 가상 세그먼트를 다시 열거한 것이었다. 최종 승인권자 판정: 무식별 표기로 족하고, 본문 승격과 원장 재수록은 같은 조항의 다른 동사이며, 소급은 A5a와 같이 forward-only. 자기부정 원장 행은 E2c로 흡수하지 않고 E2d로 세운다. B2a 예문은 gitlab/Pajamas에서 전제가 깨졌다 (`t2-1-d2a-e2d-ruling-2026-08-26-grok.md`) |
