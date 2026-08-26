@@ -10,11 +10,11 @@ Gate: `node test-v2/tools/migrate-reference.mjs --brand fugle --gate-only` — r
 
 ## A5 — brand-published strings
 
-The source **does** carry non-Latin runs, so `copy-loss` is machine-checked for this reference and did not report `unchecked`. Measured: 13 contiguous Traditional-Chinese runs exist in the file, 12 of which are long enough and quoted such that the gate builds a needle from them. The one run the gate cannot see is `富果` — two characters, below the four-character needle floor — and it is carried anyway, twice, at portable lines 9 and 387.
+The source **does** carry non-Latin runs, so `copy-loss` is machine-checked for this reference and did not report `unchecked`. Measured: **11** contiguous Traditional-Chinese runs exist in the file — `開始交易`, `新增自選股`, `富果`, `認真的投資人值得更好的工具`, the three illustrative lines, and the four persona labels — one occurrence each. **10** of them are long enough and quoted such that the gate builds a needle from them, which is exactly the `compared: 10` the gate reports against `candidates: 151`. The one run the gate cannot see is `富果` — two characters, below the four-character needle floor — and it is carried anyway, twice, at portable lines 9 and 387. *(Audit correction: this line originally read "13 … 12 of which". Re-measured with a contiguous-non-Latin-run extraction over the source and against the gate's own `coverage` object; the reasoning — that the only unseen run is `富果` — held, but both counts were one and two too high.)*
 
 ### Traditional Chinese, string by string
 
-Counts are `grep -noF -e '<string>' <file>` — occurrences with their line numbers, not matching lines. `grep -c` is not used anywhere in this log.
+Counts are `grep -noF -e '<string>' <file>` — occurrences with their line numbers, not matching lines. Every count of a repeatable string in this log is an occurrence count, never a matching-line count. *(Audit correction: this line originally claimed `grep -c` was not used anywhere in the log. It was — as the stated measurement command in the C2 section and in the `focus-visible` check. Both were re-run in `grep -o … | wc -l` form; the numbers were unchanged, because each of those patterns is line-anchored and cannot match twice on one line.)*
 
 | String | Class | Portable body | Lines |
 |---|---|---:|---|
@@ -82,7 +82,7 @@ Line numbers in `DESIGN.md`, measured with `grep -noF`.
 
 | Legacy | Disposition | Destination / reason |
 |---|---|---|
-| YAML `id` / `name` / `country` / `category` | 분리 → provenance Identity | Portable file carries no frontmatter. `name` `Fugle` is dual (E2a): the ledger + the H1 `# Fugle Design System` and the body throughout. `id`, `country`, `category` are ledger-only as fields. The category value `fintech` does return **1** from `grep -oF -e 'fintech' DESIGN.md \| wc -l`, at line 403 — that hit is the source's own §11 phrase "positioning itself at the intersection of fintech and developer tooling", which is prose, not the field |
+| YAML `id` / `name` / `country` / `category` | 분리 → provenance Identity | Portable file carries no frontmatter. `name` `Fugle` is dual (E2a): the ledger + the H1 `# Fugle Design System` and the body throughout. `id`, `country`, `category` are ledger-only as fields. The category value `fintech` does return **1** from `grep -oF -e 'fintech' DESIGN.md \| wc -l`, at line 403 — that hit is the source's own §11 phrase "positioning itself at the intersection of fintech and developer tooling", which is prose, not the field. The country value `TW` likewise returns **2**, at lines 96 and 97, both inside the source's own §2 parentheticals "(TW convention: red = up)" and "(TW convention: green = down)" — again prose, not the field. The id value `fugle` returns **5**, at 11 ×2, 216, 316 and 403, every one of them inside a brand domain, the favicon slug or the `fugle-trade-box` class the source itself names |
 | YAML `homepage` `https://www.fugle.tw` | 옮김 → Experience Scope (as `www.fugle.tw`); 분리 → provenance Identity / Surfaces / Sources | Dual (E2a) |
 | YAML `primary_color` `#f4af1c` | 옮김 → Foundations Semantic color (84) and eight further portable locations; 분리 → provenance Identity | Dual (E2a), listed in full above |
 | YAML `logo` (`type: favicon`, `https://www.fugle.tw/images/favicon.ico`) | 옮김 → Typography & Assets Imagery and assets; 분리 → provenance Identity | Dual (E2a) |
@@ -99,14 +99,14 @@ Line numbers in `DESIGN.md`, measured with `grep -noF`.
 | Subtitle line ("Taiwan's visual-first stock research and trading platform, built by investors for serious investors") | 옮김 → Experience Scope (9) + Audience (32) | The product category and the "serious investors" stakeholder framing survive; the editorial adjective "visual-first" is not carried as a fact |
 | §1 Visual Theme & Atmosphere | 옮김 → Experience Scope (15) + Distinctive traits | The whole paragraph is a characterization, so it sits under the qualification at line 15. Its embedded values — `#f5f5f5`, `#ffffff`, `#f4af1c`, `#131313`, `#323232`, the 4 px / 8 px radii and the 12–14 px body type — are also token rows in Foundations and Typography |
 | §2 Color Palette & Roles | 옮김 → Foundations Semantic color | Carried in the record's exact line form after the first draft's rewrite was reverted (see the A5 fix table) |
-| §3 Typography Rules | 옮김 → Typography & Assets Font evidence / Family / Type roles | Lato via Google Fonts on the main platform; Noto Sans TC and Microsoft JhengHei on the developer portal; Material Icons; "No custom variable fonts detected"; the px restatement of the scale and the 18–24 px highlight range, which conflicts with the YAML's single `24` and is carried as a conflict rather than resolved |
+| §3 Typography Rules | 옮김 → Typography & Assets Font evidence / Family / Type roles / Icons (212); 옮김 → Content & Locales Script pairing (412) | Lato via Google Fonts on the main platform; Noto Sans TC and Microsoft JhengHei on the developer portal; Material Icons; "No custom variable fonts detected"; the px restatement of the scale and the 18–24 px highlight range, which conflicts with the YAML's single `24` and is carried as a conflict rather than resolved |
 | §4 Component Stylings | 옮김 → Components & States | Six components plus three prose-only variant blocks — `Amber CTA Hover`, `Input Group (with label)`, `Hovered Stock Row` — that exist in §4 and not in the YAML. All three are carried as named variants on their components (A3) |
 | Mid-file footer **Verified** / Tier 1 / Tier 2 | 분리 → provenance Freshness / Sources | Grading vocabulary is ledger-only. `grep -oF -e 'Tier 1 sources' DESIGN.md \| wc -l` = 0. The date and the two brand domains are dual and reach the body as prose |
 | Mid-file footer **Conflicts unresolved** (`#f4af1c` vs manifest `#fbcc67`) | 옮김 → Governance Recorded conflicts (448); 분리 → provenance Freshness | Dual. Both hexes are carried in the body. The record's own "likely a PWA splash-screen approximation" reading is attributed to the record rather than asserted |
 | §5 Layout Principles | 옮김 → Layout & Platforms (351–358) | 50 px header, `--watchListWidth`, `--tradingWidth`, 1508 px cap, `max-width: initial`, the five Bootstrap breakpoints, `repeat(N, 1fr)` and the 2→5 column scaling |
 | §6 Depth & Elevation | 옮김 → Foundations Elevation (136–148) | Merged with the YAML `tokens.shadow`, which holds three of the five. The two the YAML lacks — **Focus / active ring** and **Side panel frame**, including `--color-component-web-frame-shadow-default` and its light/dark `rgba` resolutions — exist only in §6 and are carried (A3). The "signals interactive hierarchy" and "inverse glow" readings sit under the qualification at 138 |
-| §7 Do's (6) | 옮김 → Experience Recorded application rules (54–63) | All six, under the qualification at 56 |
-| §7 Don'ts (6) | 옮김 → Experience Avoid (65–74) | All six, under the qualification at 67 |
+| §7 Do's (6) | 옮김 → Experience Recorded application rules (54–63); 옮김 → Content & Locales Locale (411, 412) | All six sit under the qualification at 56. **Dual (E2a):** two of the six also reach Content & Locales as recorded locale behaviors — the red-rise/green-fall rule at 411 (`Taiwan Stock Exchange` = 2 in the body, at 59 and 411) and the Lato / Noto Sans TC pairing rule at 412 (`data-dense` = 2, at 61 and 412; `Latin numerals` = 2, at 61 and 412) |
+| §7 Don'ts (6) | 옮김 → Experience Avoid (65–74); 옮김 → Typography & Assets Imagery and assets (217) | All six sit under the qualification at 67. **Dual (E2a):** the illustration / gradient Don't also reaches Imagery and assets — `decorative illustration`, `gradient washes` and `chart data is the visual` each = 2 in the body, at 73 and 217. The 217 restatement carries its own adjacent qualification (audit fix) |
 | §8 Responsive Behavior | 옮김 → Layout & Platforms (360–362) | Desktop-first 1024 px, tablet degradation, sidebar collapse, the trading panel slide-in, the by-breakpoint column counts, and the native-app statement. The last, at line 362, carries its own qualification, because the only first-party iOS artifact in the record is a store listing |
 | §9 Agent Prompt Guide | **삭제** | Tool-facing construction prompt. Its rules restate values carried elsewhere — the canvas pair, `#f4af1c` with `#e49b00` hover and `4px`, the `55px` row with its `1px #eaeaea` border and `rgba(0,0,0,0.04)` hover, red-rise/green-fall, the card shadow, the `32px` / `4px` / `#eaeaea` / `16px` input, and `0.2s cubic-bezier(.4,.6,.2,1)`. Its **one unique value**, the dark-mode `#222222` surface, was **not** deleted: it is carried into Governance → Recorded conflicts at line 449 (A3). The seven colon-less declaration forms are quoted in provenance. No slot-less delegation |
 | §10 Voice & Tone (adjectives + 4-row table) | 옮김 → Content & Locales Voice reading (367–378) | Three adjectives and all four Do/Don't rows verbatim, including the quoted `we research too` and `our platform provides`, under the qualification at 369 |
@@ -115,7 +115,7 @@ Line numbers in `DESIGN.md`, measured with `grep -noF`.
 | §12 Principles (5) | 옮김 → Experience Principles (44–52) | All five with their UI implications, under the qualification at 46 |
 | §13 Personas (4) | **삭제** | Fictional; the section marks itself so. Nothing is carried to the body **or** to provenance (D2). The four Chinese labels are named only on the A5 rows above |
 | §14 States (7) | 옮김 → Components & States Surface states (232–242) + the three per-component tables | **A2.** All seven carried verbatim in meaning, with their values: the `新增自選股` empty state, the amber `50%` / 11 px `lds-ellipsis` dots at 0.6 s, the inline `#8b8a8a` no-data message, the `#d12a2a` field border with its 12 px message, the `#6c9c46` order-submitted confirmation with its 3 s auto-dismiss, the `placeHolderShimmer` / `loadingDelay` 500 ms skeleton, and the four disabled-button `rgba` values. No graph delegation |
-| §15 Motion & Easing | 옮김 → Foundations Motion (150–176) | Six duration steps, three curves, four rules. **No unattributed curve was removed, because there is none to remove** — see the curve note below |
+| §15 Motion & Easing | 옮김 → Foundations Motion (150–176) | Six duration steps, three curves, four rules. The three curve characterizations sit under the qualification at 167; the four **Rules** sit under the qualification at 169 (audit fix — they are the source's own author-side prescriptions, the same class as the §7 Do/Don't rows above, and stood unqualified). **No unattributed curve was removed, because there is none to remove** — see the curve note below |
 
 ## Curve provenance (T1-3 constraint 5)
 
@@ -156,7 +156,7 @@ Checked in the reverse direction as well: the portable body contains **0** sente
 
 ## C2 — state applicability by role
 
-Six components are declared: three interactive with a full seven-state map, three with no kind and no map. Measured: `grep -c '^| State | Applicability | Reason |' DESIGN.md` = **3** tables, `grep -c '^- Kind:' DESIGN.md` = **3**, `grep -c '^- Type:' DESIGN.md` = **6**, `grep -oF -e 'not-applicable' DESIGN.md | wc -l` = **4** (2 table cells + 2 in the Record boundary rule), `grep -oE '^\| [a-z-]+ \| applicable \|' DESIGN.md | wc -l` = **19**.
+Six components are declared: three interactive with a full seven-state map, three with no kind and no map. Measured, all as occurrence counts: `grep -o '^| State | Applicability | Reason |' DESIGN.md | wc -l` = **3** tables, `grep -o '^- Kind:' DESIGN.md | wc -l` = **3**, `grep -o '^- Type:' DESIGN.md | wc -l` = **6**, `grep -oF -e 'not-applicable' DESIGN.md | wc -l` = **4** (2 table cells at 311 and 312 + 2 in the Record boundary rule at 226), `grep -oE '^\| [a-z-]+ \| applicable \|' DESIGN.md | wc -l` = **19**.
 
 | Component | Kind | loading | error | success | Basis |
 |---|---|---|---|---|---|
@@ -171,7 +171,7 @@ The v10 reading was applied in both directions. The three interactive controls w
 
 `disabled` is `applicable` on all three maps: the Primary Button's is **recorded** (§14 states the four `rgba` values for buttons), and the input and row carry it as a meaningful control state with the treatment omitted.
 
-No `focus-visible` row carries a colour value (B1): `grep -icE '^\|[^|]*focus-visible[^|]*\|[^|]*#[0-9a-f]{6}' DESIGN.md` = 0. The source uses `focus-visible` zero times; its §6 `Focus / active ring` shadow is a differently-typed observation and stays in Foundations → Elevation under its own name, with a sentence at line 148 and again at 228 saying so explicitly.
+No `focus-visible` row carries a colour value (B1): `grep -oiE '^\|[^|]*focus-visible[^|]*\|[^|]*#[0-9a-f]{6}' DESIGN.md | wc -l` = 0. The source uses `focus-visible` zero times; its §6 `Focus / active ring` shadow is a differently-typed observation and stays in Foundations → Elevation under its own name, with a sentence at line 148 and again at 228 saying so explicitly.
 
 ## B1 — sibling adoption without promotion
 
@@ -185,7 +185,9 @@ No `focus-visible` row carries a colour value (B1): `grep -icE '^\|[^|]*focus-vi
 | `.lds-ellipsis div` (raw sample 1) | Foundations → Motion, as "the site's inline style on `.lds-ellipsis div`" | Removed. The source names `lds-ellipsis` as an animation in §14 and never the selector |
 | `--ifm-color-primary-dark` (raw sample 11) | Foundations → Semantic color, on the Amber Dark role | Removed. The source's §2 assigns `#e49b00` that role under `--p60`; the extra property name is a sibling observation |
 
-Two further attributions were sibling-derived without being sibling-only strings, and both were rewritten: Audience said the mission line is an "App Store line" that "addresses" serious investors, and Brand-published lines attributed it "to Fugle and to the Taiwan App Store listing". The source's §11 attributes it to Fugle's mission framing and does not tie it to the store listing; only the sibling does. Both now say what §11 says.
+Three further attributions were sibling-derived without being sibling-only strings, and all three were rewritten: Audience said the mission line is an "App Store line" that "addresses" serious investors; Brand-published lines attributed it "to Fugle and to the Taiwan App Store listing"; and Scope said "The App Store listing is where the record takes its published Traditional Chinese copy." The source's §11 attributes the mission line to Fugle's mission framing and does not tie it to the store listing; only the sibling does, at `web/references/fugle/.verification.md` line 29. All three now say what §11 says.
+
+*(Wave-26 revision correction: this paragraph originally read "Two further attributions … Both now say what §11 says", and the Scope sentence was not among them — it was in fact **introduced** by B2a fix #1 in the Final passes table below, so at the time this section was written the body still carried the very attribution the section claimed to have removed. The third site is now genuinely removed; see **Wave-26 revision (v11)** at the end of this file.)*
 
 Classification observations from the sibling are not promoted either: that it numbers its samples, that it groups sources under a `Proof — Tier 1 live inspect` heading, and that it lists three regional sources against a `≥2` requirement are facts about the verification file, not about Fugle's interface, and none appears in the body.
 
@@ -201,7 +203,7 @@ The dark-theme trading pair `#ff3737` / `#6fda1a` is the sharpest case: it sits 
 
 | # | Location | Was | Now |
 |---|---|---|---|
-| 1 | Scope (13) | "The App Store listing supplies published copy, not interface values." | "The App Store listing is where the record takes its published Traditional Chinese copy." — the original was my judgment and it sat against §8, which does read a token claim off that same artifact |
+| 1 | Scope (13) | "The App Store listing supplies published copy, not interface values." | *(Superseded — see the wave-26 revision.)* This pass replaced it with "The App Store listing is where the record takes its published Traditional Chinese copy.", on the reasoning that the original was my judgment and sat against §8, which does read a token claim off that same artifact. That replacement was a B1 promotion: it swapped one unsupported judgment for a **sibling-derived** one. The sentence now reads "The one place the record ties a named domain to specific text is its voice section, which marks a set of illustrative samples as modelled on App Store copy tone" — what the source itself establishes at §10 |
 | 2 | Foundations → Evidence-domain boundary (108) | "Two color values … disagree" | "Two pairs of color values … disagree … all four values are carried" — there are two pairs, not two values |
 | 3 | Foundations → Shape (134) | "`4px` is the uniform corner for buttons, inputs and cards; `8px` is reserved for highlighted info boxes." | Named the four components the `4px` corner is recorded on and the one the `8px` is. The original restated a §7 Do — a derived rule — as a bare Foundations fact |
 | 4 | Foundations → Elevation (138, 146) | The qualification covered only the "signals interactive hierarchy" reading; "Dark mode shadows use white-alpha variants to create the inverse glow effect" then stood unqualified below it | Both readings moved inside one qualification; the sentence below now states only the measured fact, that the dark variants are white-alpha |
@@ -214,7 +216,15 @@ The dark-theme trading pair `#ff3737` / `#6fda1a` is the sharpest case: it sits 
 | 11 | Components → Surface states (234) | "seven states at the panel, card and field level" | "most of them at the panel, card or field level …; the last is stated for buttons" — one of the seven is control-level |
 | 12 | Layout (360), Voice reading (369) | "The platform targets desktop-first…" stated flatly; the voice adjectives attributed to App Store copy tone | Layout now attributes the desktop-first and "degrades gracefully" characterization to the record. §10 ties only its *samples* to App Store tone, not its adjectives, so the adjectives are now presented as the material's own voice guidance |
 
-After the fixes, **ten** readings remain and each carries an adjacent complete qualification. `grep -o 'derived editorial' DESIGN.md | wc -l` = **10** and `grep -o 'not Fugle-authored' DESIGN.md | wc -l` = **10**, on ten distinct lines: 15, 36, 46, 56, 67, 138, 167, 362, 369, 405. The 1:1 map of occurrence to portable location is the *Portable derived-editorial scope* table in `provenance.md`.
+After the fixes, **twelve** readings carry an adjacent complete qualification. `grep -o 'derived editorial' DESIGN.md | wc -l` = **12** and `grep -o 'not Fugle-authored' DESIGN.md | wc -l` = **12**, on twelve distinct lines: 15, 36, 46, 56, 67, 138, 167, 169, 217, 362, 369, 405. The 1:1 map of occurrence to portable location is the *Portable derived-editorial scope* table in `provenance.md`.
+
+**Ten of the twelve came out of this pass; two came out of the separate F3 audit** and are recorded in `audit-log.md`:
+
+| Line | Reading that stood unqualified | Why it is a reading |
+|---|---|---|
+| 169 | Foundations → Motion, the four **Rules** | The source's own author-side prescriptions — the same class as the §7 Do and Don't blocks, which this pass did qualify at 56 and 67. The qualification at 167 sits two lines above but scopes itself explicitly to "those three curves", so it did not reach the Rules |
+| 217 | Typography & Assets → Imagery and assets, "The chart data is the visual" | A restatement of the §7 Don't whose qualification lives at 67, 150 lines away in another section. B2a requires adjacency, so the restatement needed its own |
+
 
 The opposite error was checked too: no measured value or documentary fact was demoted by attaching a qualification to it. The fifteen colour roles and their custom-property names, the spacing and radius scales, the five shadow values, the six duration steps and the three curves, every component field and variant, the type metrics and the two unitless ratios, the layout frame measurements, the seven state treatments, the four source artifacts and both dates, and the published Traditional Chinese strings all stand unqualified, because they are recorded values and document facts rather than readings. The two carried conflicts are stated flatly as well — that two passages of the same document give different values is a document fact, not an interpretation.
 
@@ -248,4 +258,64 @@ Three assertions were wrong on first write and were corrected against the measur
 
 Portable Core: `inspectDesignMd(...).conformance` from `scripts/design-md-core.cjs` → `level: "portable-core"`, `portable_core: true`, `reasons: []`, all 13 checks passing. Run separately from the gate, because the gate does not evaluate canonical claim bytes.
 
-**The gate is not conformance evidence for most of the above.** It did check A5 here — 12 non-Latin needles, unlike the Latin-only references where it silently checks nothing — but it built no needle for the 2-character `富果` and none at all for the 174 Latin strings, so the Latin sweep above is hand work that the gate would have passed either way. B1 sibling promotion, D1a noun lists, C2 role reasoning, B2a adjacency and E2 log accuracy are all judgments it does not evaluate, and it returns the same verdict whether the qualifications are adjacent and complete or absent.
+**The gate is not conformance evidence for most of the above.** It did check A5 here — its `coverage` object reports `compared: 10`, `candidates: 151`, unlike the Latin-only references where it silently checks nothing — but it built no needle for the 2-character `富果` and none at all for the Latin strings, so the Latin sweep above is hand work that the gate would have passed either way. Ten of 151 quoted strings is **6.6%** coverage; `verdict: PASS` here means "nothing was lost among the ten", not "copy preserved". B1 sibling promotion, D1a noun lists, C2 role reasoning, B2a adjacency and E2 log accuracy are all judgments it does not evaluate, and it returns the same verdict whether the qualifications are adjacent and complete or absent.
+
+## Wave-26 revision (rulebook v11)
+
+The migration above was executed against rulebook **v10**; the `Rulebook:` field at the top of this file records that
+execution fact and is unchanged. This revision section, and only this section, is written against **v11**.
+
+### B1 — three classification promotions, corrected
+
+The F3 audit found three places where no *value* had crossed from the sibling but a *classification or attribution*
+had. Value greps were 0 in all three; the machine gate does not evaluate this class and returned PASS either way.
+
+| # | Site | Was | Now | Route |
+|---|---|---|---|---|
+| 1 | `DESIGN.md` Scope, line 13 | "The App Store listing is where the record takes its published Traditional Chinese copy." | "The one place the record ties a named domain to specific text is its voice section, which marks a set of illustrative samples as modelled on App Store copy tone; those samples are carried under that marker below." | **(a) reverted to what the source establishes.** The source names the App Store once, at line 218, and it is about the *tone* its illustrative samples are modelled on, not about where its published copy comes from. The only link from the published mission line to the store listing is in the sibling, `web/references/fugle/.verification.md` line 29 — which already lives in `provenance.md` as raw sample 14 and is labelled there as a sibling observation |
+| 2 | `DESIGN.md` lines 11 and 448 | "its inline styles, **meta tags** and PWA manifest"; "The site's `theme-color` **meta tag** is `#f4af1c`" | "its HTML, inline CSS and PWA manifest"; "The site's HTML `theme-color` is `#f4af1c`" | **(a) reverted to what the source establishes.** The source footer writes "(HTML, inline CSS, manifest.json)" and "HTML `theme-color`". The tag form is the sibling's (raw sample 2), and `provenance.md` line 109 already says so in as many words — "the source names the `theme-color` attribute in its footer conflict note but not the tag" — while the body promoted exactly that classification twice |
+| 3 | `provenance.md` line 254 | class: "published App Store line, sample 14" | class: "published — the belief §11 says Fugle frames its mission around; the sibling verification record observes the same string in the App Store description (raw sample 14)" | **(b) evidence kind made explicit in provenance.** The class is kept in the ledger, where a sibling observation belongs, but it now names *which record observed what*. This aligns it with line 21 of this log, which had already been corrected to the §11 attribution while the ledger kept the withdrawn one |
+
+Measured before → after, `grep -o <pattern> <file> | wc -l`, occurrence counts:
+
+| Pattern | source `web/references/fugle/DESIGN.md` | sibling `web/references/fugle/.verification.md` | portable `DESIGN.md` | `provenance.md` |
+|---|---:|---:|---:|---:|
+| `meta tags?` | 0 | 1 | 2 → **0** | 1 → 1 |
+| `published App Store line` | 0 | 0 | 0 | 1 → **0** |
+| `App Store` | 1 | 3 | 5 → 6 | 4 → 4 |
+
+The `App Store` count in the portable body rises by one because the replacement sentence names the artifact twice in
+restating what §10 actually says about it. The count is not the finding — the source establishes the App Store as an
+inspected artifact and as a tone model, so naming it is permitted; what was forbidden was attributing published copy
+to it, and that attribution is gone. No brand string, value, metric or section moved.
+
+**No string was lost by this revision.** `認真的投資人值得更好的工具` is still at 3 occurrences in the portable body
+(lines 32, 384, 403), `開始交易` 2, `新增自選股` 3, `富果` 2 — unchanged from the A5 table above.
+
+### A5a — hand sweep denominator (v11, newly required)
+
+**Trigger.** `--gate-only` reports `coverage.compared: 10` against `candidates: 151` = **6.6%**. `compared` is below
+`candidates`, so A5a applies and the machine result cannot stand in for the copy check.
+
+**Extraction / non-survival / disposition, over the source and the sibling:**
+
+- **Extracted: 176** distinct backticked, bolded and double-quoted strings from `web/references/fugle/DESIGN.md`.
+- **Survive verbatim in the portable body: 155.**
+- **Survive verbatim in the portable body or `provenance.md`: 172.**
+- **Absent from both: 4** — `Illustrative: The Research-First Investor (個人投資者)`,
+  `Illustrative: The Developer-Investor (開發者投資人)`, `Illustrative: The Active Trader (短線交易者)`,
+  `Illustrative: The Student Investor (學習型投資人)`.
+- **Disposition of the 4:** all four are the fictional persona headings deleted under **D2**, recorded on the four
+  persona rows of the A5 table above. None is a brand-published string; each is the source's own illustrative
+  archetype title, and D2 forbids both promotion and provenance re-hosting. Nothing to restore.
+
+This is the F3 auditor's independent sweep, re-measured here rather than re-derived: the run reproduces
+**176 / 155 / 172 / 4** and the identical absent set. It differs from the worker's earlier "174 / 153 / 170 / 4"
+sweep in §*Latin strings — hand sweep* above only in the extraction rule, which admits two more distinct strings; the
+absent set is the same four in both. The sibling's own quoted strings were checked in the same pass and add no
+brand-published needle beyond the four Traditional Chinese strings already tabled, which are byte-exact in the body.
+
+**Verdict wording.** The gate's `PASS` here means "nothing was lost among the ten needles it built", i.e. 6.6% of the
+quoted-string surface. The A5 claim for this reference rests on the hand sweep and its 176 denominator, not on the
+gate. And the gate is cited for nothing in the B1 section above: it does not check classification promotion, which is
+why all three findings survived a PASS.

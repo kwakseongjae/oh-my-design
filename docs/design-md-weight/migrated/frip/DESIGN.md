@@ -450,7 +450,7 @@ Where an English gloss sits beside a Korean string above, the gloss is the revie
 
 - The product is 프립 in Korean and Frip in Latin script; the origin name is 프렌트립 (Frientrip).
 - Members are addressed as 크루.
-- Trusted hosts carry the 슈퍼호스트 badge; first-party inventory carries the 프립단독 tag.
+- Trusted hosts carry the 슈퍼호스트 badge; the 프립단독 tag is the one the reviewed material reads as flagging first-party inventory that cannot be had elsewhere. That inventory reading is a derived editorial implementation inference from the verified surfaces; it is not Frip-authored or a separately published UI specification. The recorded parts are the two published tag strings and the values recorded against them.
 - 고감도 경험 is the phrase that sits inside the curated shelf heading 크루님을 위한 고감도 경험.
 
 Keep each byte-exact. The reviewed material calls the badge and tag terms terse trust and urgency signals. Keep them in Korean rather than substituting an English rendering; the English glosses in this document are the reviewed material's own and sit beside the Korean rather than in place of it.

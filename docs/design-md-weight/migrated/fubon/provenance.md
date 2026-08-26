@@ -143,3 +143,94 @@ The §9 Quick Color Reference and Iteration Guide contributed no value that is a
 - `components_harvested: true`; ten component records in the source token set.
 - No interaction expansion, pseudo-state capture, hover/focus computed sample, or motion sample is present in the evidence. Uncaptured hover, focus-visible, disabled, loading, error, and success treatments are omitted as values; they are not turned into `not-applicable`. Applicability follows control role. State coverage is not claimed complete.
 - Public-history material (1961 founding, Tsai family, 2005 merger, 2024–2026 digital push, 150+ branches) is narrative context, not a token source.
+
+## Derived-inference ledger (B2 / B2a)
+
+Every passage in the portable `DESIGN.md` that carries the derived-editorial
+qualification, one row per occurrence. The qualification itself stays in the body
+— this table records its extent, it does not hold it (E1). Measured with
+`grep -o "derived editorial implementation inference" DESIGN.md | wc -l` → **18
+occurrences on 17 lines** (line 67 carries two, one per clause); `provenance.md`
+1 (inside the grep command quoted just above), `migration-log.md` 2 (lines 38-39 —
+one quotation of the fixed form and one description of it, neither a use).
+
+| `DESIGN.md` line | Section | What the qualification covers |
+|---|---|---|
+| 9 | 1 Scope | Treating a bank-homepage value as not a proxy for the group homepage, the Fubon+ app, the 富邦人壽 / 富邦證券 / 富邦銀行 subsidiary sites, or branch and offline material |
+| 11 | 1 Scope | Reading the captured white/one-blue restraint as clear, accessible and dependably institutional, and the motto `正向力量 成就可能` as embedded optimism rather than compliance language |
+| 13 | 1 Scope | Reading the 1961/2005 heritage as a civic-professional balance distinguishing Fubon from startup-aesthetic peers, and the 2024–2026 digital push as modernisation over a steady core |
+| 19 | 1 Primary tasks | Reading the observed CTA labels and modules as the primary tasks users come to these surfaces to perform |
+| 29 | 1 Audience | Reading the served-group range as a design constraint spanning young digital-first customers and older branch visitors |
+| 33 | 1 Distinctive traits | Every trait bullet that characterizes a value instead of stating it |
+| 46 | 1 Principles | All five numbered principles and their UI implications |
+| 54 | 1 Principles (capture-bound application) | Grouping the source's Do list as application rules for the two captured surfaces |
+| 67 (1st) | 1 Avoid | The reason each of the eight prohibitions gives — approachability, warmth, gentle rather than dramatic elevation, the tint's cool warmth, mixing the blues "without intent" |
+| 67 (2nd) | 1 Avoid | The ninth line, which restates this contract's scope boundary as a prohibition |
+| 119 | 2 Shape | Reading 12px as the workhorse interactive radius and 0px on large CTA banners as an authoritative, institutional feel |
+| 137 | 2 Elevation | Reading elevation as used sparingly, tinted bands as the dominant grouping device, and the 30px spread as depth that does not compete with the brand blue |
+| 145 | 2 Motion | Reading the motion rules as functional and conservative, matching the institution's temperament |
+| 189 | 3 Type rules | Equal visual weight across Latin and TC, 16px/14px as comfort and accessibility choices, default tracking as trust in the typefaces, the 700 ceiling as a system rule — and the instruction to pair the two families |
+| 201 | 4 Surface state contract | Nine of the ten rows; the `台北富邦銀行系統暫停服務` row is excluded because it is anchored to an observed site announcement |
+| 218 | 4 How applicability is decided here | The role judgments and every Reason cell in the six per-component applicability tables that follow (headers at 230, 250, 268, 287, 306, 323) |
+| 384 | 5 Layout & Platforms | The whitespace-split reading, the 8-icon-grid-as-affordance reading, and the 60px/padded-container thumb-target reading |
+| 403 | 6 Content & Locales | Everything from that line to the end of §6: the voice reading, the tagline reading, the register table, and the forbidden-register list |
+
+Rows 19, 67 (both clauses), 189 (the pairing instruction) and 218 (the Reason
+cells) were added by the B2a audit recorded in `audit-log.md`; the rest were
+present at migration time.
+
+## Omission ledger — A5a addendum (wave-26 revision)
+
+Appended below the ledger above rather than interleaved into it, so that the
+line citations the F3 audit measured into this file stay valid. These rows are
+part of the same omission ledger.
+
+Nine source phrases survive in none of the three outputs and were not recorded
+anywhere in the ledger. Each is the reference author's characterization of a
+value rather than a Fubon-published string, so under A5a the disposition is
+recorded here and the phrase is **not** restored — quotation is not
+publication. Every value the nine phrases describe is carried in the portable
+body and is unaffected.
+
+Extraction and measurement: the source's §2 role descriptors and §3 Font Family
+rationales were compared as exact strings against
+`DESIGN.md`, `provenance.md`, and `migration-log.md` with
+`grep -o -F "<phrase>" <file> | wc -l`, per file. Measured **before** these rows
+were written, each of the nine measured 1 in `web/references/fubon/DESIGN.md`
+and 0 in `DESIGN.md`, 0 in `provenance.md`, 0 in `migration-log.md`.
+Re-measured **after**: portable `DESIGN.md` 0 and `migration-log.md` 0 are
+unchanged, and `provenance.md` is now 1 for each — the ledger row below quotes
+the phrase it disposes of. That quotation is the disposition record, not a
+survival of the phrase in a reader-facing surface; holding a thing in the ledger
+is itself a disposition and is logged as one (E2b).
+
+| Omitted (source line) | Boundary | Reason |
+|---|---|---|
+| `clean, neutral, highly legible for dense financial UI` (§3, 109) | rationale clause only; the `Roboto` Latin-primary record is kept at `DESIGN.md` 163 | Author's characterization of a typeface, not a Fubon-published string. Dropped as author commentary (B2); ledgered rather than restored (A5a). |
+| `complete TC Unicode coverage, pairs seamlessly with Roboto` (§3, 110) | rationale clause only; the `Noto Sans TC` record and its glyph-coverage role are kept at `DESIGN.md` 164 | Same class: author characterization, not brand-published copy. |
+| `broad compatibility across TW Windows/macOS environments` (§3, 111) | rationale clause only; the full fallback stack is kept byte-for-byte at `DESIGN.md` 165 | Same class. |
+| `A calm, trustworthy green-teal that complements the blue anchor` (§2 Teal Accent, 90) | descriptor sentence only; `#00a59b` and its three uses are kept at `DESIGN.md` 93 | Same class. |
+| `Deep red that reads clearly on white canvas without visual aggression` (§2 Error Red, 91) | descriptor sentence only; `#d32f2f` and its use are kept at `DESIGN.md` 94 | Same class. |
+| `Subtle cool-grey` (§2 Surface Grey, 96) | the qualifier `Subtle` only; `#f5f5f5` and "cool-grey tinted section backgrounds" are kept at `DESIGN.md` 100 | Same class. |
+| `Very light blue-tinted surface` (§2 Surface Sky, 97) | descriptor phrase only; `#f3fbfe` and its use are kept at `DESIGN.md` 101 | Same class. |
+| `soft separators` (§2 Hairline, 98) | the qualifiers `Thin` and `soft` only; `#d7d6db` with dividers, input borders, and separators is kept at `DESIGN.md` 102 | Same class. |
+| `a very dark blue-black with financial gravitas` (§2 Ink Navy, 102) | descriptor clause only; `#0c0e1f` and its three uses are kept at `DESIGN.md` 107 | Same class. |
+
+## Evidence-class note — extent of the `font-family` observation (wave-26 revision)
+
+`font-family` is recorded for exactly two elements across the whole evidence
+base: `body` (source philosophy comment line 414; sibling line 13) and
+H1 `個人金融` (source 415, written `/ Roboto/Noto Sans TC` without the literal
+property name; sibling 14). Measured with `grep -o "font-family" <file> | wc -l`
+→ source 1, sibling 2, plus the source's 415 record of the same fact.
+
+Seven further selectors were captured and **were not observed for family** —
+their records carry colour, size, and weight only: `.title-primary` (three
+captures: `熱門服務`, `外幣匯率`, `全方位守護`), `.nav-link-p`, `.art-more-btn`,
+`.ann-more-btn`, `.blue-btn`, `.gray-btn`, `.main-btn`.
+
+The portable §3 live-computed-surface-use row was therefore narrowed to the two
+observed elements and the seven-selector claim it carried was deleted, not
+qualified (B1). The declared family token — `Roboto` / `Noto Sans TC` in §3
+Family and in the Family column of the §3 Type roles table — is the source's own
+token record, a separate evidence class, and is unaffected by this narrowing.

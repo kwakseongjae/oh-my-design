@@ -18,7 +18,7 @@ The readings in this section — that the captured layer above runs a light/dark
 <!-- design-md:claim primary-tasks kind=user-outcomes count=5 lang=en -->
 ### Primary tasks
 
-These five outcomes are read out of the controls, labels, and surfaces this record captures, since the source declares no task list of its own.
+These five outcomes are a derived editorial implementation inference from the verified surfaces; they are not FuriosaAI-authored or a separately published UI specification. They are read out of the controls, labels, and surfaces this record captures, since the source declares no task list of its own.
 
 - Read the RNGD architecture and product case on the black statement bands, where the record captures headlines such as `Tensor Contraction Processor` and `INFERENCE WITHOUT CONSTRAINTS`.
 - Take the primary call to action: `Watch the sessions`, `Get started`, `Get started with Furiosa Access`.
@@ -202,7 +202,7 @@ The following type-hierarchy readings are a derived editorial implementation inf
 ### Assets
 
 - Product renders and chip photography sit on the black bands at full contrast.
-- Blog and newsroom cards carry flat category chips rather than decorative imagery.
+- Blog and newsroom cards carry flat category chips rather than decorative imagery — that contrast is a derived editorial implementation inference from the verified surfaces; it is not FuriosaAI-authored or a separately published UI specification. The chips and their values are live-computed.
 - This record's only asset entry is a favicon logo, recorded as a ledger field in the source and kept in the source ledger rather than presented here as a separately published FuriosaAI brand-asset file.
 
 <!-- design-md:section components-states -->

@@ -54,7 +54,7 @@ These five items are a derived editorial implementation inference from the verif
 4. **Photography sells, UI serves.** The experience photo is the persuasion layer. *UI implication:* image-led tiles with thin neutral chrome; text over photos rides a scrim, not a styled panel.
 5. **Off-peak is a win, not a discount bin.** Dynamic pricing reframes empty hours as smart deals. *UI implication:* deal tags read energetic and positive (indigo + exclamatory copy), never apologetic clearance styling.
 
-Application rules the source states as its Do list, kept as written:
+Application rules the source states as its Do list, kept as written. These seven rules, and the reasons attached to them — Material conservatism as part of the utilitarian read, immediacy as the brand promise — are a derived editorial implementation inference from the verified surfaces; they are not FunNow-authored or a separately published UI specification.
 
 - Reserve solid `#ff5537` fills for "book/act now" moments — one solid button per view.
 - Use indigo `#5a69eb` only for time-limited deals so urgency types stay distinguishable.
@@ -66,7 +66,7 @@ Application rules the source states as its Do list, kept as written:
 
 ### Avoid
 
-The source states these as its Don't list; they are kept as its rules, reasons included.
+The source states these as its Don't list; they are kept as its rules, reasons included. These six prohibitions, and the reasons inside them — the catalog being flat by design, density as a feature of a spontaneity marketplace — are a derived editorial implementation inference from the verified surfaces; they are not FunNow-authored or a separately published UI specification.
 
 - Do not spread orange-red across decorative elements — it must keep meaning "bookable right now".
 - Do not add drop shadows to product tiles — the catalog is flat by design.
@@ -140,7 +140,7 @@ Listing tiles are explicitly `v-card--flat`; separation comes from the grey canv
 
 ### Motion
 
-The source attributes its token-level claims to a live inspection of computed color, type, spacing, radius, border, and shadow on three surfaces. The motion contract below sits outside that attribution: it is presented as a system-level statement rather than as per-component measured values, and reading it that way is a derived editorial implementation inference from the verified surfaces; it is not FunNow-authored or a separately published UI specification.
+The source attributes its token-level claims to a live inspection of computed color, type, spacing, radius, border, and shadow on three surfaces. The motion contract below sits outside that attribution: it is a system-level statement rather than a set of per-component measured values. The durations, easing roles, and motion rules below are therefore a derived editorial implementation inference from the verified surfaces; they are not FunNow-authored or a separately published UI specification.
 
 Durations:
 
@@ -426,7 +426,7 @@ Responsive behavior:
 
 The product runs in English and Traditional Chinese. The source credits the Helvetica-then-PingFang stack with keeping the two scripts at parity at identical sizes, and it records a register difference between them rather than a translation: the Traditional Chinese copy is upbeat, benefit-led, and comfortable with exclamation marks, while the English copy stays casual and second-person.
 
-The source characterizes the voice as spontaneous, friendly, and deal-smart — a fun-loving local friend who knows where you can get in tonight and what it should cost — with copy that is short, imperative, and time-anchored, speaking in "now". That characterization, the reading that "energy is part of the brand", and the tone table below are a derived editorial implementation inference from the verified surfaces; they are not FunNow-authored or a separately published UI specification.
+The source characterizes the voice as spontaneous, friendly, and deal-smart — a fun-loving local friend who knows where you can get in tonight and what it should cost — with copy that is short, imperative, and time-anchored, speaking in "now". That characterization, the register reading in the paragraph above, the reading that "energy is part of the brand", and the tone table below are a derived editorial implementation inference from the verified surfaces; they are not FunNow-authored or a separately published UI specification.
 
 | Context | Tone |
 |---|---|

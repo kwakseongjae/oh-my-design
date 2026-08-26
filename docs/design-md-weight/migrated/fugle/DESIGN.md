@@ -8,9 +8,9 @@
 
 Fugle (富果, glossed in the reviewed material as "rich harvest") is a Taiwan stock research and trading platform. The reviewed material records that it was founded in Taiwan by Fortuna Intelligence, a team that describes itself as being simultaneously developers and practicing investors who watch the markets daily, and that it launched as a web trading app paired with a market data API.
 
-This contract covers the first-party artifacts the record inspected on 2026-06-03: the `www.fugle.tw` site with its inline styles, meta tags and PWA manifest; the desktop web trading platform's stylesheet bundles; the `developer.fugle.tw` documentation portal stylesheet; and the Taiwan App Store listing for the Fugle app, id `1542310263`.
+This contract covers the first-party artifacts the record inspected on 2026-06-03: the `www.fugle.tw` site with its HTML, inline CSS and PWA manifest; the desktop web trading platform's stylesheet bundles; the `developer.fugle.tw` documentation portal stylesheet; and the Taiwan App Store listing for the Fugle app, id `1542310263`.
 
-Those four are separate evidence domains. The record lists them together as its sources without attaching each individual value to one of them, so every value below carries the role name and CSS custom-property name the record gives it and none is re-attributed to a domain the record does not name for it. The App Store listing is where the record takes its published Traditional Chinese copy. No value here describes a logged-in account surface. The record's machine-readable value set is dated 2026-06-09 and was drawn from the record's own prose rather than from a separate capture, so the prose wording each value came from is preserved beside it below.
+Those four are separate evidence domains. The record lists them together as its sources without attaching each individual value to one of them, so every value below carries the role name and CSS custom-property name the record gives it and none is re-attributed to a domain the record does not name for it. The one place the record ties a named domain to specific text is its voice section, which marks a set of illustrative samples as modelled on App Store copy tone; those samples are carried under that marker below. No value here describes a logged-in account surface. The record's machine-readable value set is dated 2026-06-09 and was drawn from the record's own prose rather than from a separate capture, so the prose wording each value came from is preserved beside it below.
 
 The characterization of the interface that follows is a derived editorial implementation inference from the reviewed material; it is not Fugle-authored or a separately published UI specification. The light canvas — `#f5f5f5` for secondary surfaces and `#ffffff` for foreground containers — is read there as keeping dense Taiwan equity data scannable, with the signature amber `#f4af1c` appearing sparingly on loading indicators, live-chat buttons, version badges and chart reference lines. The dark theme is read as inverting that arrangement onto a near-black `#131313` base with `#323232` surface layers so that red and green trading signals carry strong luminance contrast, and both themes are read as sharing one structural rhythm — compact rows, 4 px and 8 px radii, and tight 12–14 px body type — appropriate to active trading.
 <!-- design-md:claim-end -->
@@ -166,7 +166,7 @@ The **Focus / active ring** entry is recorded as an elevation value under that n
 
 The readings the reviewed material attaches to those three curves — that the first of them is Fugle's signature curve; a sharp initial acceleration at the `.6` control point with a gentle deceleration giving a confident, purposeful feel; a slow start and fast exit creating a "snap open" character; an exaggerated overshoot as the brand's only playful motion moment — are a derived editorial implementation inference from the reviewed material and are not Fugle-authored or a separately published motion specification. The curve values themselves are recorded values.
 
-**Rules:**
+**Rules:** The four rules below are the reviewed material's own prescriptions and are a derived editorial implementation inference from it; they are not Fugle-authored or a separately published motion specification. The durations and the custom-property name inside them are recorded values.
 
 - All data-row hover transitions use `0.2s` or less; never animate data values themselves.
 - Layout changes (watchlist open/close, trading panel) use the `--layoutDuration` CSS variable with the primary cubic-bezier curve.
@@ -214,7 +214,7 @@ The record names the Material Icons font as handling iconography throughout. No 
 ### Imagery and assets
 
 - Logo entry: type `favicon`, slug `https://www.fugle.tw/images/favicon.ico`.
-- The record establishes no illustration or gradient treatment to apply, and its own boundary rule keeps decorative illustration and gradient washes off the trading canvas. The chart data is the visual.
+- The record establishes no illustration or gradient treatment to apply, and its own boundary rule keeps decorative illustration and gradient washes off the trading canvas on the reading that the chart data is the visual. That reading is a derived editorial implementation inference from the reviewed material; it is not Fugle-authored or a separately published art-direction specification.
 
 <!-- design-md:section components-states -->
 ## 4. Components & States
@@ -445,7 +445,7 @@ Record, review, and validate changes before adoption.
 
 Two value pairs disagree inside the record and neither side is chosen here.
 
-- **Brand primary.** The site's `theme-color` meta tag is `#f4af1c` while the PWA manifest's `theme_color` is `#fbcc67`, a lighter amber. The record resolves the primary as `#f4af1c` on the grounds that the CSS custom property `--p` and the developer portal's `--ifm-color-primary` both canonically define it, and reads the manifest value as likely a PWA splash-screen approximation. That reading is the record's own; both values are carried.
+- **Brand primary.** The site's HTML `theme-color` is `#f4af1c` while the PWA manifest's `theme_color` is `#fbcc67`, a lighter amber. The record resolves the primary as `#f4af1c` on the grounds that the CSS custom property `--p` and the developer portal's `--ifm-color-primary` both canonically define it, and reads the manifest value as likely a PWA splash-screen approximation. That reading is the record's own; both values are carried.
 - **Dark-mode surface layer.** One passage puts `#323232` surface layers over the `#131313` dark base; another puts the dark-mode surfaces at `#131313` / `#222222`. `#323232` is also the light-theme body-text role. Both surface values are carried and neither is promoted over the other.
 
 ### Named gaps

@@ -16,7 +16,7 @@ Public history places 富邦金控's origin in 台北市產物保險, establishe
 <!-- design-md:claim primary-tasks kind=user-outcomes count=4 lang=en -->
 ### Primary tasks
 
-These four come from CTA labels and modules named on the two captured surfaces. They do not come from the source's persona section, which the source itself marks as illustrative archetypes.
+These four come from CTA labels and modules named on the two captured surfaces. They do not come from the source's persona section, which the source itself marks as illustrative archetypes. Reading those labels and modules as the primary tasks users come to these surfaces to perform is a derived editorial implementation inference from the verified surfaces; it is not Fubon-authored or a separately published UI specification.
 
 - Look up foreign-currency rates in the `外幣匯率` module on the bank homepage.
 - Open the full announcement list from the `更多最新公告` link.
@@ -63,6 +63,8 @@ Capture-bound application. Grouping the source's Do list as application rules fo
 - Keep the shadow soft and diffused — `rgba(0,0,0,0.11) 5px 5px 30px`, not harsh drop shadows.
 
 ### Avoid
+
+The eight prohibitions below restate the source's Don't list. The reason each one gives — approachability, warmth, elevation that is gentle rather than dramatic, the tint's cool warmth, and mixing the two blues "without intent" — is a derived editorial implementation inference from the verified surfaces; it is not Fubon-authored or a separately published UI specification. The ninth line restates this contract's scope boundary as a prohibition; like that boundary, it is a derived editorial implementation inference from the verified surfaces and is not Fubon-authored or a separately published UI specification.
 
 - Do not use more than one saturated hue on the same surface — Fubon Blue is the single action color.
 - Do not apply ultra-bold display weights (800+) — 700 is the maximum.
@@ -136,11 +138,11 @@ The token set records the card shadow as `rgba(0, 0, 0, 0.11) 5px 5px 30px 0px` 
 
 ### Motion
 
-Durations: `motion-fast` 150ms (button press, tab switch, focus ring) · `motion-standard` 250ms (dropdown open/close, card reveal, accordion) · `motion-slow` 400ms (page-level section fade, banner transition).
+Durations, as the source records them rather than as anything the capture measured: `motion-fast` 150ms (button press, tab switch, focus ring) · `motion-standard` 250ms (dropdown open/close, card reveal, accordion) · `motion-slow` 400ms (page-level section fade, banner transition).
 
-Easing token names and their roles: `ease-enter` for arriving panels, sheets, and expanding menus; `ease-exit` for dismissals and collapsing accordions; `ease-standard` for toggles and two-directional transitions. No curve value is promoted here. The three curves the source carried have no observation behind them, and one of them is byte-identical to the example table in the legacy specification template. A curve may be promoted only after a per-component computed observation records all five evidence kinds for that component: transition properties, animation name, duration, easing, and reduced-motion behavior.
+Easing token names and their roles: `ease-enter` for arriving panels, sheets, and expanding menus; `ease-exit` for dismissals and collapsing accordions; `ease-standard` for toggles and two-directional transitions. No curve value is promoted here. Nothing in this Motion subsection rests on an observation: the capture recorded no transition, animation, or easing sample, so the durations above, these token names and roles, and the rules below are all carried as the source's record and not as measurements. The three curve values the source carried are withheld rather than carried on a further ground — one of them is byte-identical to the example table in the legacy specification template. A curve may be promoted only after a per-component computed observation records all five evidence kinds for that component: transition properties, animation name, duration, easing, and reduced-motion behavior.
 
-Motion rules: navigation dropdowns ease in smoothly; page banner transitions use a clean fade rather than parallax or spring; mobile touch targets respond immediately on press, with sub-100ms feedback. Under `prefers-reduced-motion: reduce`, all animated transitions collapse to an instant cut and the site remains fully usable. Reading this as motion that is functional and conservative, matching the institution's temperament, is a derived editorial implementation inference from the verified surfaces; it is not Fubon-authored or a separately published UI specification.
+Motion rules, on the same footing — the source's record, not an observation: navigation dropdowns ease in smoothly; page banner transitions use a clean fade rather than parallax or spring; mobile touch targets respond immediately on press, with sub-100ms feedback; and under `prefers-reduced-motion: reduce`, all animated transitions collapse to an instant cut and the site remains fully usable. Reading this as motion that is functional and conservative, matching the institution's temperament, is a derived editorial implementation inference from the verified surfaces; it is not Fubon-authored or a separately published UI specification.
 <!-- design-md:claim-end -->
 
 <!-- design-md:section typography-assets -->
@@ -151,7 +153,7 @@ Motion rules: navigation dropdowns ease in smoothly; page banner transitions use
 | Evidence class | Resolution |
 |---|---|
 | Official product-use | The source names no published Fubon typography specification. |
-| Live computed surface-use | The bank homepage body computes `font-family Roboto, "Noto Sans TC"`; the H1, the `.title-primary` headings, the nav link, the more-links, and the popup buttons all compute in that pairing. |
+| Live computed surface-use | A computed `font-family` is recorded for exactly two elements: the bank homepage `body` computes `Roboto, "Noto Sans TC"`, and the H1 `個人金融` computes `Roboto / Noto Sans TC`. |
 | Official distributed asset | The source names no Fubon-distributed or Fubon-hosted type family. |
 | License | The source records no license statement for either family. |
 | Outside these captures | Fubon+ app, subsidiary-site, and offline typography stay outside the two captured surfaces. |
@@ -184,7 +186,7 @@ Line heights are unitless ratios in the source and stay ratios here. The source 
 
 ### Type rules
 
-Reading Roboto + Noto Sans TC as holding equal visual weight across Latin and TC glyphs with no size compensation needed, 16px body and 14px caption as comfort and accessibility choices for mixed-age Taiwanese banking users, default tracking as trust in the typefaces' own spacing, and the 700 ceiling as a system rule that admits no 800 or 900 display weight, is a derived editorial implementation inference from the verified surfaces; it is not Fubon-authored or a separately published UI specification. Pair the two families for bilingual UI rather than using either alone.
+Reading Roboto + Noto Sans TC as holding equal visual weight across Latin and TC glyphs with no size compensation needed, 16px body and 14px caption as comfort and accessibility choices for mixed-age Taiwanese banking users, default tracking as trust in the typefaces' own spacing, and the 700 ceiling as a system rule that admits no 800 or 900 display weight, is a derived editorial implementation inference from the verified surfaces; it is not Fubon-authored or a separately published UI specification. The instruction to pair the two families for bilingual UI rather than use either alone falls inside that same qualification.
 
 ### Assets
 
@@ -213,7 +215,7 @@ The ten rows below are the source's state contract for the captured surfaces. Th
 
 ### How applicability is decided here
 
-Each declared component keeps the primitive type the source verified for it. Applicability is judged by control role, never by how much the capture happened to cover: `default` and `focus-visible` apply to every interactive control; a state that is meaningful for the role stays `applicable` with its visual treatment omitted where the source supplies none; `not-applicable` is used only where the role has no such outcome to represent. Where the source supplies no interaction evidence for a container at all, its kind and applicability map are omitted rather than decided. These role judgments are a derived editorial implementation inference from the verified surfaces; they are not Fubon-authored or a separately published UI specification. This is not a complete state-coverage claim.
+Each declared component keeps the primitive type the source verified for it. Applicability is judged by control role, never by how much the capture happened to cover: `default` and `focus-visible` apply to every interactive control; a state that is meaningful for the role stays `applicable` with its visual treatment omitted where the source supplies none; `not-applicable` is used only where the role has no such outcome to represent. Where the source supplies no interaction evidence for a container at all, its kind and applicability map are omitted rather than decided. These role judgments — including every Reason cell in the per-component tables below — are a derived editorial implementation inference from the verified surfaces; they are not Fubon-authored or a separately published UI specification. This is not a complete state-coverage claim.
 
 ### Primary Button (`確認` / `同意`)
 

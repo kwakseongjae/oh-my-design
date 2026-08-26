@@ -251,7 +251,7 @@ Brand-published Traditional Chinese strings, byte-exact:
 
 | String | In the portable body | Class |
 |---|---:|---|
-| `認真的投資人值得更好的工具` | 3 | published App Store line, sample 14 |
+| `認真的投資人值得更好的工具` | 3 | published — the belief §11 says Fugle frames its mission around; the sibling verification record observes the same string in the App Store description (raw sample 14) |
 | `開始交易` | 2 | published CTA label |
 | `新增自選股` | 3 | published empty-state action label |
 | `富果` | 2 | published brand name |
@@ -278,12 +278,14 @@ Every interpretive claim in the portable body carries an adjacent complete quali
 | 4 | Experience → Recorded application rules | the six Do rules |
 | 5 | Experience → Avoid | the six Don't rules |
 | 6 | Foundations → Elevation | the "signals interactive hierarchy without dramatic depth" reading |
-| 7 | Foundations → Motion | the three curve-character readings |
-| 8 | Layout & Platforms | the "shares the brand's color and typography tokens" statement about the native app |
-| 9 | Content & Locales → Voice reading | the three adjectives and the four Do/Don't rows |
-| 10 | Content & Locales → Recorded narrative | the founding-frustration, dual-strategy and middle-ground readings |
+| 7 | Foundations → Motion, curve note | the three curve-character readings |
+| 8 | Foundations → Motion, **Rules** lead-in | the four motion rules, which are the reviewed material's own author-side prescriptions *(added by the F3 audit; the note at #7 scopes itself to the three curves and did not reach them)* |
+| 9 | Typography & Assets → Imagery and assets | the "chart data is the visual" reading, restated there from the Avoid block *(added by the F3 audit; the Avoid qualification at #5 is 150 lines away and B2a requires adjacency)* |
+| 10 | Layout & Platforms | the "shares the brand's color and typography tokens" statement about the native app |
+| 11 | Content & Locales → Voice reading | the three adjectives and the four Do/Don't rows |
+| 12 | Content & Locales → Recorded narrative | the founding-frustration, dual-strategy and middle-ground readings |
 
-`grep -o 'derived editorial' <doc> | wc -l` = 10 and `grep -o 'not Fugle-authored' <doc> | wc -l` = 10.
+`grep -o 'derived editorial' <doc> | wc -l` = 12 and `grep -o 'not Fugle-authored' <doc> | wc -l` = 12, on twelve distinct lines: 15, 36, 46, 56, 67, 138, 167, 169, 217, 362, 369, 405 — one per row above, in order.
 
 Facts that stand unqualified, because they are recorded values or document facts rather than readings: every color role and value, the spacing and radius scales, the five shadow values, the duration scale, the three curve values, every component field, the type metrics and the two unitless ratios, the layout frame measurements, the four source artifacts and the dates, the seven state treatments, and the published Traditional Chinese strings.
 
