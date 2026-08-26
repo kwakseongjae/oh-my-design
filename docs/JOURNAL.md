@@ -1,3 +1,58 @@
+## 2026-08-26 (opus5) — 웨이브 24 개정 finda (B1 분류 승격)
+- 한 일: sibling의 h3 구조 관측이 원본 사실로 승격돼 있던 `:13`·`:434`를 처리 (a)로 시정 — 원본 §10 톤 표 분류로 복귀, h3 결합은 provenance로.
+- 열린 것: 같은 계열(값이 아닌 **분류**의 도메인 이동)은 게이트·sibling-only 값 grep 어느 쪽도 못 잡는다. 다른 sibling 채택 건 점검 미실시.
+- 다음: 오케스트레이터 지시 대기. 507행·모든 원장 포인터·A5 24건 재실측 통과, gate PASS/`portable_core:true`.
+
+## 2026-08-26 (grok) — T3-3 스모크런 omd/apple/rep-1
+- 한 일: 이미지 제외 첫 렌더·시스템 문서 기록. 홈→iPhone 소개 경로, 네트워크 없음.
+- 열린 것: Imagine 한도. 나머지 arm·본 실험 36회는 이 스모크와 별개.
+- 다음: 호스트가 다른 arm/브랜드 스모크를 주면 같은 계약으로.
+
+## 2026-08-26 (opus5+grok) — 웨이브 23 마감(118/440), 규칙집 v10, 3트랙 중 1트랙만 진행
+
+- 한 일: 웨이브 23 완주(검토를 grok-4.6/cursor로 환원). C2 조문 충돌을 최종 승인권자 판정으로 해소해 v10. 적합성 검사 오탐 2종 추가 수정.
+- 열린 것: Neon URL 미수령, T3-3 봉인 커밋 미승인, 미커밋 변경 누적. R2(E1 96건 + sibling 62건) 대기.
+- 다음: 사용자 입력 3건 처리 후 웨이브 24 또는 R2.
+
+## 2026-08-26 — C2 최종 판정 (조문 vs 골든 샘플)
+- 한 일: C2는 역할 없는 일괄 개방을 금하고, 문구·applicable 자체는 금하지 않는다고 확정. 546회 일괄 미개정, farfetch 역할 판정은 유효, 조문 v10 후보.
+- 열린 것: 규칙집 C2 대체 문안 미반영. 골든 샘플(musinsa nav·29cm carousel) C2 미보수.
+- 다음: 지시 있으면 규칙집 v10 C2 개정. 546회 일괄 재작성 금지.
+
+## 2026-08-26 (opus5) — 웨이브 19~22 마감(113/440), 규칙집 v9, 검사 3종 수정
+- 한 일: 전 역할 opus5 전환 후 4개 웨이브 완주. A5·D1a 신설(v9), A5 부채 9건 해소, 적합성 오탐 수정으로 113건 전량 통과, process-leak 검사 신설.
+- 열린 것: R2(E1 누출 93건/199회), v10 후보 7건(A6 서사 이관이 최대), 사용자 자격 대기(R2 토큰·Neon URL·블로그 DNS).
+- 다음: 재개 지시 시 CURRENT_STATE 최상단부터. 웨이브 23은 여집합 다음 5개.
+
+## 2026-08-25 (opus5) — 웨이브 18 마감·19 감사까지, 디스크 75GB 회수, 일시 중단
+- 한 일: 웨이브 18 전체 루프 마감(95/440) + 웨이브 19 이관·F3·게이트 완료. reclaim-disk.mjs 신설, 74.7GB+437MB 회수, 웨이브 절차에 배선.
+- 열린 것: 웨이브 19 의미 검토부터 (opus5 5기 → 개정 → 원장). 사용자 자격 대기: R2 토큰·Neon URL·블로그 DNS.
+- 다음: 재개 지시 시 CURRENT_STATE 최상단 항목부터.
+
+## 2026-08-25 (Codex) T2-1 웨이브 18 F3 감사 배치 5건
+- 한 일: databricks→datadog→datarize→dcard→dealicious를 B2/B2a·E1/E2/E2a–c만으로 전수 감사·직접 수정했다.
+- 기록: audit sentinel fixes 12/15/28/27/30, provenance derived 범위와 migration-log 목적지·current SHA를 실제 파일에 동기화했다.
+- 검증: SHA 일치 5/5, gate PASS/`[]` 5/5, Core `portable_core:true` 5/5, 원본·금지 표면 불변, E3 오탐 0.
+- 열린 것/다음: 없음. `ALL_AUDITS_DONE`.
+
+## 2026-08-25 (sol) T2-1 웨이브 18 워커 이관 — databricks~dealicious
+- 한 일: databricks·datadog·datarize·dcard·dealicious 5건을 규칙집 v8 Core v2 후보 3파일로 직렬 이관했다.
+- 보존: source+canonical Proof 리터럴 0손실, 비합침 conflict/sidecar-only 값은 provenance, §14는 portable+역할별 applicability, fictional biography는 삭제했다.
+- 검증: 5/5 gate PASS/problems `[]`, claims/anchors exact, `[FILL IN]` 0, B2a 전문 누락 0, source/Proof 및 current SHA 원장 일치.
+- 열린 것/다음: opus5/F3 의미 검토 대기. 카탈로그 채택 아님.
+
+## 2026-08-25 (Codex) T2-1 웨이브 18 Opus 5 회부분 개정
+- 한 일: dabang E2/E2c/F2와 dable §11 disposition을 판정문·규칙집 v8대로 최소 수정했다.
+- 원장: dabang 26/26, dable 25/25 목적지를 실측 grep했고 명시 포인터 58/108 및 source 342→portable 340, stale 0을 기록했다.
+- 검증: 두 gate PASS/problems `[]`; 원본·토큰·컴포넌트 표·state applicability·section 구조 불변, E3 오탐 없음.
+- 열린 것/다음: Opus 5 표적 재확인 대기. 카탈로그 채택 아님.
+
+## 2026-08-25 (sol) T2-1 웨이브 18 워커 이관
+- 한 일: cursor·cybozu·dabang·dable·danawa 5건을 규칙집 v8 Core v2 후보 `{DESIGN.md,provenance.md,migration-log.md}`로 직렬 이관.
+- 보존: 값/형태/primitive/§14 0손실, fictional biography 삭제, sidecar-only·미입증 responsive/motion 값은 provenance에 exact 분리, B2a·E2 이중 목적지 동기화.
+- 검증: 5/5 gate PASS/problems `[]`, Core `portable_core:true`, `[FILL IN]` 0, 원본 5건 무변경, current SHA는 각 migration-log와 일치.
+- 열린 것/다음: opus5/F3 의미 검토 대기. 카탈로그 채택 아님.
+
 ## 2026-08-25 (sol) T2-1 웨이브 17 최종 확인 3차
 - 한 일: 2차의 네 잔여 지목만 재대조해 `docs/reviews/t2-1-wave17-2026-08-25-sol-final3.md` 작성.
 - 판정: **전체 PASS, PASS 4/4** — composio/cookpad/corca/cuboai 모두 stale SHA superseded + `wave17 ledger sync` actual SHA 선언 충족.
