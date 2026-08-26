@@ -98,6 +98,14 @@ artifacts/reference-evidence/
 # benchmarks/ui-resolve-bench/manifests/. `scripts/bench-store.mjs --verify`
 # checks custody; REPRODUCE.md explains how a stranger re-runs everything.
 benchmarks/ui-resolve-bench/reports/
+# …except the four runs the Autopilot 2.0 readiness gate binds as machine
+# evidence. Those are not bulk run output: the manifest names them by path and
+# the audit refuses to report without them, so a gate whose evidence sits
+# outside git could be edited with nothing to compare against. 76KB total.
+!benchmarks/ui-resolve-bench/reports/autopilot-luna-high-smoke-1.9.879/
+!benchmarks/ui-resolve-bench/reports/autopilot-v2-provider-zero-1.9.881/
+!benchmarks/ui-resolve-bench/reports/reviewer-operations-package-1.9.77/
+!benchmarks/ui-resolve-bench/reports/task-contract-mutation-audit-1.9.685/
 benchmarks/ui-resolve-bench/e2e/
 benchmarks/ui-resolve-bench/fixtures/competitor-skills-2.0/
 

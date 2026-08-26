@@ -38,10 +38,26 @@ const SETS = [
   { id: "competitor-skills-2.0", dir: join(BENCH, "fixtures", "competitor-skills-2.0"), why: "third-party skill packs — pinned by pack-sha.json, not ours to republish" },
 ];
 
+/**
+ * Runs the Autopilot 2.0 readiness manifest binds by path. They live under
+ * reports/ but are not run output in the sense this script means: the audit
+ * refuses to produce a verdict without them, so moving them to the store would
+ * put a gate's evidence somewhere the gate cannot reach and nothing in git
+ * could contradict a later edit. 76KB, and .gitignore carries the matching
+ * negations.
+ */
+const GATE_BOUND = [
+  "autopilot-luna-high-smoke-1.9.879",
+  "autopilot-v2-provider-zero-1.9.881",
+  "reviewer-operations-package-1.9.77",
+  "task-contract-mutation-audit-1.9.685",
+].map((r) => `benchmarks/ui-resolve-bench/reports/${r}/`);
+
 const sha256 = (p) => createHash("sha256").update(readFileSync(p)).digest("hex");
 const tracked = (dir) =>
   execFileSync("git", ["ls-files", "-z", relative(ROOT, dir)], { cwd: ROOT })
-    .toString("utf8").split("\0").filter(Boolean);
+    .toString("utf8").split("\0").filter(Boolean)
+    .filter((rel) => !GATE_BOUND.some((keep) => rel.startsWith(keep)));
 
 function ingest() {
   mkdirSync(MANIFEST_DIR, { recursive: true });

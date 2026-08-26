@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "target_version": "2.0.0",
+  "snapshot_patch": "1.9.685",
+  "status": "LOCAL_CONTRACT_MUTATIONS_GREEN_INDEPENDENT_AUDIT_PENDING",
+  "public_tasks_checked": 78,
+  "public_tasks_passed": 78,
+  "mutations_killed": 11,
+  "mutation_classes": [
+    "invalid-task-id",
+    "invalid-version",
+    "network-enabled",
+    "entry-path-escape",
+    "duplicate-viewport",
+    "invalid-viewport-size",
+    "extra-protected-hook",
+    "invalid-protected-hook-expectation",
+    "empty-unknown-boundary",
+    "missing-design-oracle",
+    "directory-id-mismatch"
+  ],
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "independent_auditors": 0,
+  "gate_pass": false,
+  "claim_boundary": "Local mutation coverage strengthens contract validation but cannot estimate the independent broken-task rate."
+}
