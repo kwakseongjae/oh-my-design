@@ -55,3 +55,45 @@ Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v7. Source FAIL: `docs/r
 F1: product-origin / problem thesis added to the adjacent-complete inventory.
 
 F2: FontFace / reproduction-kit / first-party-logo-file / microcopy-guide negatives absent from DESIGN.md Named gaps. `158-86-00171` grep-matches Compliance Footnote + provenance, not the §11 row. Logo gap was not moved from YAML. Prior Core SHA is withdrawn (E2c).
+
+## Revision 2026-08-26 (A5 copy restoration)
+
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v9. Trigger: the new A5 clause (브랜드 발행 문자열은 바이트 그대로) and its `copy-loss` gate check, which flagged five non-Latin runs quoted in the legacy source and absent from every output: `모든 사람이` / `삼쩜삼 세금 신고` / `삼쩜삼에서 알려드릴게요` / `브랜드센터` / `세무 상담 미포함`.
+
+Root cause of the first three: the legacy §3 Hierarchy table has two description columns' worth of content — the YAML `use` field and the body table's Notes column, which carried a copy specimen per role. The wave-6 migration restored the YAML `use` strings onto Type roles (logged under the `tokens.typography` and §3 rows) and dropped the body-table Notes column with them, so the specimens went with it. The Notes column was a distinct source value, not a restatement of `use` (A3).
+
+| Legacy site | Published string | Disposition | Destination / reason |
+|---|---|---|---|
+| §3 Typography Rules → Hierarchy table, Lead row Notes (`Mission lead ("모든 사람이…")`) | `모든 사람이…` | 복원 → Typography & Assets Type roles + Content & Locales Observed | Corporate mission lead, byte-exact. The source elides the line with `…` itself, so `모든 사람이…` **is** the source form and is reproduced as it stands — not expanded, not guessed at, not translated. English wording ("the corporate mission lead") sits beside it as description, not in place of it (A5). Dual destination (E2a): the loss site under Type roles and the verification-sample slot under Content & Locales. |
+| §3 Typography Rules → Hierarchy table, Subsection row Notes (`Service titles ("삼쩜삼 세금 신고"), EN subheads`) | `삼쩜삼 세금 신고` | 복원 → Typography & Assets Type roles + Content & Locales Observed | Service title, byte-exact. Kept in Korean; "a service title" is the English description beside it (A5). Dual destination (E2a). The `, EN subheads` fragment of the same cell is a description, and it survives in the Type roles `use` column as `Service card titles, EN subsection heads`. |
+| §3 Typography Rules → Hierarchy table, Body Large row Notes (`Sub-leads ("삼쩜삼에서 알려드릴게요")`) | `삼쩜삼에서 알려드릴게요` | 복원 → Typography & Assets Type roles + Content & Locales Observed | Sub-lead microcopy, byte-exact. English gloss is "a sub-lead", written alongside (A5). Dual destination (E2a). |
+| §11 Brand Narrative (`one mandated brand blue governed by a public brand resource center ("브랜드센터")`) | `브랜드센터` | 복원 → Experience Scope refusal/expansion-arc sentence + Content & Locales Observed | The source's own Korean name for the public brand resource center at `https://brand.3o3.co.kr`. The wave-6 pass carried the §11 sentence into Scope but compressed it to "one mandated brand blue", dropping the published name. Restored in that same Scope sentence (the loss site) with the English description kept adjacent, and listed as a published-name sample under Content & Locales (E2a). The surface URL was never lost — only its published Korean name was. |
+| §13 Personas → 이서연 biography (`the platform prints its limitations (세무 상담 미포함) plainly`) | `세무 상담 미포함` | 삭제 — 복원하지 않음 | 이 문자열은 legacy 전체에서 §13 가상 페르소나 본문 안에만 1회 등장하고, 페르소나 밖의 어떤 표면·인용·근거 행에도 나오지 않는다 (grep: `web/references/3o3/DESIGN.md` L389 단일 매치). 원본 스스로 §13을 "fictional archetypes … not individual people"라고 명시하므로, 이 괄호 안 문자열은 브랜드가 발행한 카피가 아니라 가상 인물의 전기(biography)가 서술한 내용이다. D2(가상 페르소나는 승격도 provenance 재수록도 금지)에 따라 portable 본문·provenance 어느 쪽으로도 옮기지 않는다. A5는 발행 카피를 번역·의역에서 지키는 조항이지 발명 콘텐츠를 되살리는 조항이 아니므로 A5는 복원 근거가 되지 못한다. 관련 실제 근거인 컴플라이언스 등록(세무대리 범위, 사업자등록번호 `158-86-00171`, 누적 신고 고객 `7,208,747`)은 이미 Compliance Footnote / Scope / Content에 남아 있으며, 그 자리에 이 미검증 문구를 얹지 않는다. |
+
+### E3 — 오탐 보고
+
+없음. 이번 다섯 건 중 게이트 오탐은 0건이다. 다섯 needle 모두 legacy가 실제로 인용부호 안에 담아 발행 문자열로 표시한 것이고, 어느 것도 `use:` 필드가 여러 라벨을 한 줄에 이어붙인 형태가 아니다. 표기를 왜곡해 게이트를 피한 곳도 없다 — 네 건은 원문 바이트 그대로 본문에 복원했고, 한 건은 원장에 삭제 사유로 기록했다 (E3).
+
+기록해 둘 게이트 표기 특성 하나 (오탐 아님): `모든 사람이` needle은 원문 `모든 사람이…`의 절단형이다. `NONLATIN_RUN` 문자 클래스에 `…`(U+2026)가 없어 run이 `이`에서 끊기기 때문이다. 원문 형태(`모든 사람이…`)를 그대로 복원하면 needle이 부분 문자열로 포함되므로 게이트가 만족된다. 이 절단을 피하려고 `…`를 떼어내 `모든 사람이`로 적는 것은 E3가 금지하는 표기 왜곡이므로 하지 않았다.
+
+### 이번 개정의 비수정 범위
+
+토큰 값, 컴포넌트 표의 값, state applicability 판정, 일곱 절 구조, 그리고 원본 `web/references/3o3/DESIGN.md`는 손대지 않았다. 편집은 (1) Experience Scope 한 문장에 `브랜드센터` 병기, (2) Type roles 표 **다음**에 body-table specimen 문장 1개 추가(표 자체는 미변경), (3) Content & Locales Observed 목록에 항목 2개 추가 — 이상 3곳뿐이다.
+
+### F2 E2 대조 (이번 개정분, 실측 grep)
+
+원장에는 줄번호 포인터가 없어 갱신할 밀린 줄번호는 없다. 대신 이번 개정이 만든 목적지를 전부 실측했다 (`docs/design-md-weight/migrated/3o3/`):
+
+- `모든 사람이…` → DESIGN.md L225 (Type roles, 표 다음 문장) + L488 (Content & Locales Observed). provenance.md 0건 — 의도된 값이다. 이 세 specimen은 portable 본문 이중 목적지이고 provenance 원장 항목이 아니다.
+- `삼쩜삼 세금 신고` → DESIGN.md L225 + L488. provenance.md 0건.
+- `삼쩜삼에서 알려드릴게요` → DESIGN.md L225 + L488. provenance.md 0건.
+- `브랜드센터` → DESIGN.md L21 (Experience Scope, refusal/expansion-arc 문장) + L489 (Content & Locales Observed). provenance.md 0건.
+- `세무 상담 미포함` → DESIGN.md 0건, provenance.md 0건, 이 원장의 삭제 행 1건. D2 처분과 일치한다.
+- 절 경계 실측: L4 Experience / L92 Foundations / L184 Typography & Assets / L236 Components & States / L450 Layout & Platforms / L478 Content & Locales / L511 Governance. 위 포인터는 모두 명시한 절 안에 있다.
+- 앞선 개정들의 F2 주장 재확인: 페르소나 이름 `박지훈` / `이서연` / `최민수`는 DESIGN.md·provenance.md 양쪽에서 여전히 0건이다.
+
+### 기계 게이트 (이번 개정 후)
+
+- `node test-v2/tools/migrate-reference.mjs --brand 3o3 --gate-only` → PASS, problems [].
+- `node scripts/migrate-design-md-core.cjs --input docs/design-md-weight/migrated/3o3/DESIGN.md --check --require-portable-core --json` → exit 0, `portable_core: true`, SHA-256 `56d5e2bdc5636c6c8d1ca2582dd7b3ba2c6c0b2e037e04931cbf27d5e387ba35`.
+- 2026-08-24 resubmit이 기록한 SHA-256 `e950dc178f85cf019c65a0d903e20b07bf4bdf636d0bc04b017d991f9f461a23`는 본문이 바뀌었으므로 철회한다 (E2c).

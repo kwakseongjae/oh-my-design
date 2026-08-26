@@ -119,3 +119,72 @@ F2 (this revision; value + field/role context; not a claim that every source-row
 - SHA-256 `b050dd6577bd01f79c0ca97d0298e8c5e0fc6b8575e8ffc610bc3c52c37e9d69` unchanged (DESIGN.md not edited)
 
 This log does not claim F2 completeness beyond those greps, and does not re-assert F1/F2/F3 compliance as closed (E2c). Not a catalog-adoption claim (E2c). F3 was not re-run.
+
+## Revision 2026-08-26 (A5 카피 복원, 규칙집 v9)
+
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v9 — A5(브랜드 발행 문자열 바이트 보존) 신설 + 게이트 `copy-loss` 신설. v9 게이트가 이 이관본을 `MIGRATION_BLOCKED / copy-loss` 로 차단했다: `원스톱 운영대행`. **오탐 아님 — 실제 A5 손실이었다.**
+
+### 손실의 정체 (legacy grep)
+
+`grep -n '원스톱\|운영대행' web/references/cafe24/DESIGN.md` → `383` 단 1행, §11 Brand Narrative:
+
+> That philosophy — take the operational burden off the seller so they can focus on creativity and brand — is visible in everything from the "원스톱 운영대행" (one-stop operations agency) framing to the "처음이어도 할 수 있어요" encouragement.
+
+`원스톱 운영대행`은 원본이 영문 병기(`(one-stop operations agency)`)까지 달아 인용한 **브랜드 서비스 framing 명**이다. 서술어가 아니라 발행 문자열이므로 A5 대상.
+
+이관본은 §11의 founding-premise 문단을 Scope로 옮기면서 창업연도·KOSDAQ·Naver 지분·창업자 인용까지는 보존했으나, `founding premise is merchant empowerment` 문장과 그 문장이 인용하던 **서비스명 자체**를 통째로 떨어뜨렸다. 짝을 이루던 `처음이어도 할 수 있어요`는 Principles `57` / Content Observed `547` / Derived voice `559`로 살아남아 게이트 needle을 충족했기 때문에, 소실은 `원스톱 운영대행` 한 건만 표면화됐다.
+
+### 복원
+
+`옮김 → Experience Scope (§11 public-history 문단)` — `DESIGN.md:17`. 원본 §11 문장 자리에 서비스명을 **바이트 그대로** 되돌리고 원본이 달아둔 영문 병기도 함께 복원했다 (A5: 영문은 원문 **옆에** 병기, 대체 금지):
+
+> The source states the company's founding premise is merchant empowerment — take the operational burden off the seller so they can focus on creativity and brand — and reads that philosophy as visible in everything from the "원스톱 운영대행" (one-stop operations agency) framing to the "처음이어도 할 수 있어요" encouragement.
+
+복원 문장 **바로 앞**에 인접 완전 B2a 한정을 새로 달았다 (`17`): `Treating the source's founding-premise reading — merchant empowerment, and that premise being legible in the brand's own one-stop service framing and its first-timer encouragement — as public-history narrative rather than an interface token is a derived editorial implementation inference from the verified surfaces; it is not Cafe24-authored or a separately published UI specification.` 기존 public-history 한정(문단 머리)은 손대지 않았고, 그 한정이 덮지 않던 새 인과 독해(`philosophy → framing에서 보인다`)만 새 한정이 덮는다 (B2/B2a).
+
+**Content & Locales Observed에는 넣지 않았다.** 그 목록은 원본 §10이 `Voice samples (verbatim from live surfaces, 2026-06-26)`로 명기한 live 관측 문자열만 담는다. `원스톱 운영대행`은 §11 서사 인용이지 2026-06-26 live 캡처가 아니므로, Observed로 올리면 증거 종류 승격이다 (B1). 토큰 값·컴포넌트 표·state applicability·섹션 구조는 손대지 않았다.
+
+### 복원하지 않은 것 (사유 명기)
+
+- **§13 페르소나 대사 안의 인용 2종** — `"처음이어도 할 수 있어요"`(`legacy:400`), `"쇼핑몰 솔루션 이전"`(`legacy:404`). 삭제 — 가상 페르소나 진술이라 D2로 제거된 문맥이며 승격·재수록 금지. 두 문자열의 **발행 형태 자체**는 페르소나와 무관하게 이미 본문에 있다: `처음이어도 할 수 있어요` → Principles `57` / Content Observed `547` / Derived voice `559`; `쇼핑몰 솔루션 이전` → Nav Link Observed `348`. A5 손실 아님.
+- **§13 세그먼트 라벨** — 신규 창업자 / 크리에이터 / 기업형 / 글로벌. 페르소나 문단 쪽 서술은 D2로 삭제 유지. 라벨 자체는 §10 tone 표에서 온 발행 문자열로 Content `564`에 이미 바이트 보존(추가로 Persona/Segment Card Observed `373`, Layout `518`).
+
+### 이번 복원 범위 밖에서 grep으로 관측된 잔여 (미수정, 보고 대상)
+
+게이트의 `copy-loss` needle은 **비라틴 연속 구간**만 검사하므로 라틴 문자열 손실은 보이지 않는다. 이번 grep 중 다음이 관측됐고, **고치지 않고 그대로 보고한다** (E3: 표기 왜곡으로 회피하지 않음, 그리고 지정 범위 밖 임의 수정 금지):
+
+- `legacy:381` §11 두 번째 문장 `It grew into Korea's foundational global e-commerce platform — providing the infrastructure to **build, operate, and market** online stores on a one-stop basis.` 가 이관본에 없다. Scope `9`는 §1 `legacy:72` 원문 `the infrastructure that builds, operates, and markets a huge share of the country's online stores` 를 바이트 그대로 담고 있으나, §11 쪽의 `global` · `on a one-stop basis` 한정과 `**build, operate, and market**` 원형은 어느 파일에도 없다. `grep -n 'one-stop' DESIGN.md provenance.md` → portable 4행(`17` 이번 복원 `(one-stop operations agency)`, `56` Principles의 `one-stop framing`, `543` Observed 인용 성격 목록, `549` store hub headline `(one-stop promise)`), provenance 0행. `on a one-stop basis` 원형은 그 어디에도 없다.
+- `legacy:406` 페르소나 문장의 `the platform's one-stop "build, operate, market" promise` 는 D2 삭제 문맥이라 복원 대상이 아니지만, 위 §11 원형이 없으므로 그 promise 문구의 원형이 이관본 어디에도 남지 않았다.
+
+둘 다 라틴이라 `copy-loss`가 잡지 못한다. A5 판정(원본 저자의 서술인가, 브랜드 발행 문자열인가)이 필요한 자리이므로 sol 의미 검토로 올린다. 이 절은 관측 보고이며 준수 주장이 아니다 (E2c).
+
+### F2 E2 대조 (실측 grep, 복원 후)
+
+- `grep -n '원스톱 운영대행' docs/design-md-weight/migrated/cafe24/DESIGN.md` → `17` 1행(복원 자리). 목적지는 portable Scope 단일이며 provenance 이중 목적지 아님 — `grep -c '원스톱 운영대행' provenance.md` → `0` (E2a 해당 없음).
+- legacy `383`의 인용 단위(`"원스톱 운영대행" (one-stop operations agency) framing to the "처음이어도 할 수 있어요" encouragement`)와 복원 문자열 비교 → BYTE-IDENTICAL.
+- `grep -n '처음이어도' DESIGN.md` → `17`(복원), `57`(Principles 2), `547`(Content Observed, `!` 포함 live 형태), `559`(Derived voice). live 목록의 `처음이어도 할 수 있어요!`와 §11/§12의 `!` 없는 형태는 각각 제 원본 바이트를 유지하며 합치지 않았다 (A1a 정신).
+- `grep -n '쇼핑몰 솔루션 이전' DESIGN.md` → `348` (Nav Link Observed). provenance 0행.
+- 페르소나 이름 김도윤 / 이서아 / 박준호 / Mei Chen 은 여전히 DESIGN.md·provenance 양쪽에 부재 (D2 유지).
+- 이번 편집은 Scope 문단 1곳만 건드렸다. 토큰 hex·YAML 비율·`Type:` 행·state 표는 diff에 없다.
+
+### 게이트
+
+`cd test-v2/tools && node migrate-reference.mjs --brand cafe24 --gate-only` → **PASS, problems []**. 복원 후 portable DESIGN SHA-256 `c83936a858c2fa55969efac094c7ebde05cfabc232ad055a52ab17df52d06723` (직전 `b050dd6577bd01f79c0ca97d0298e8c5e0fc6b8575e8ffc610bc3c52c37e9d69` 를 대체). 이 절은 명령 출력 기록이며 카탈로그 채택 주장이 아니다 (E2c). 게이트 오탐 회피용 표기 왜곡 없음 (E3).
+
+### A5 판정 — 잔여 관측분 (2026-08-26, 검토자 opus5)
+
+복원 워커가 범위 밖 잔여로 올린 원본 §11 문장
+
+> It grew into Korea's foundational global e-commerce platform — providing the
+> infrastructure to build, operate, and market online stores on a one-stop basis.
+
+은 **A5 대상이 아니다.** 이것은 브랜드가 발행한 문자열이 아니라 원본 레퍼런스 저자가
+KED Global·Wikipedia를 인용해 쓴 **서술문**이다. A5가 지키는 것은 라벨·CTA·마이크로카피·
+사명처럼 브랜드가 자기 표면에 실제로 띄운 바이트다. 저자 서술을 A5로 끌어들이면 조항이
+"원본 문장 전부 보존"으로 팽창해 Core v2 이관 자체가 불가능해진다.
+
+또한 그 문장이 담은 실질(one-stop 인프라 성격)은 같은 패스에서 복원된 발행 서비스명
+`원스톱 운영대행`과 그 영문 병기로 본문에 살아 있다. 사실관계(1999 창업·창업자·
+2018 KOSDAQ·2021 Naver 지분)도 이관 시 보존됐음이 확인됐다.
+
+처분: 복원하지 않는다. 이후 웨이브에서 같은 문장이 다시 올라오면 이 판정을 참조하라.

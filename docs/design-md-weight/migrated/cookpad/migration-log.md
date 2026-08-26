@@ -99,3 +99,41 @@ Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v8. Source remainder: `d
 - 판정문 지목 앵커의 stale current-class·포인터·SHA에 명시적 superseded 표시.
 - **Actual current DESIGN SHA-256 `31a151505a0d676e9f0398e4ce4e78e96677f350aa507c02a360c24006df575b`** — 이 행이 현행 SHA 선언이다.
 - 수행: opus5 (grok 잔액 소진으로 기계적 원장 동기화만 직접 수행 — 본문 무변경).
+
+
+## Revision 2026-08-26 (A5 카피 원장 기록)
+
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v9 — **A5** (브랜드 발행 문자열은
+바이트 그대로) 및 신설 게이트 `copy-loss`. 수행: opus5. **DESIGN.md·provenance.md 무변경** —
+이 개정은 원장 기록만 한다. 값·컴포넌트 표·상태 applicability·섹션 구조·원본 파일 무변경.
+F1/F2/F3 종료를 주장하지 않는다 (E2c). 카탈로그 채택 아님.
+
+게이트가 §13에서만 나오는 일본어 런 2건을 `copy-loss`로 지목했다. 원본을 재grep한 결과 두
+문자열 모두 §13 Personas 본문에만 있고 다른 자리에는 0회다 — 따라서 A5의 복원 대상이 아니라
+D2의 삭제 대상이며, A5가 요구하는 것은 **그 손실이 원장에서 보이는 것**이다. 기존 §13 행의
+"Generic deletion only"를 항목 단위로 대체한다. provenance 재수록은 하지 않는다 (D2) — 아래
+기록은 disposition 원장(E2)이지 provenance sidecar가 아니다.
+
+| Legacy | Disposition | Destination / reason |
+|---|---|---|
+| §13 Personas 인용 `鶏むね肉` (source line 310) | 삭제 — 복원 대상 아님 | 원본 전체 1회, §13 高橋 由美 페르소나 문장의 검색어 예시 안에만 존재 (`grep -c` = 1). §13 머리글이 "Personas are fictional archetypes … not real individuals"로 자기 선언한 가상 인물의 발화 예시이므로 브랜드 발행 문자열이 아니다. 승격·provenance 재수록 모두 금지 (D2). 검색 관련 검증값은 별도 자리에 이미 있다 — YAML `search-input` `use`가 Primary tasks 25(`search-input`)와 Search Field 351–375(`Type: input` 355, `Use` 361)를 세운다. |
+| §13 Personas 인용 `ごはんもの` (source line 312, `麺 / ごはんもの`) | 삭제 — 복원 대상 아님 | 원본 전체 1회, §13 中村 健 페르소나 문장의 카테고리 타일 예시 안에만 존재 (`grep -c` = 1). 카테고리 라벨의 **검증된** 집합은 §4 Category Tiles의 `野菜 / お肉 / 魚介 / たまご …` (source line 160)이고 이것은 portable Category Tile Role 299에 바이트 그대로 살아 있다. `麺` · `ごはんもの`는 그 검증 집합에 없는 가상 페르소나 예시이므로 D2로 제거한다. (`麺`는 1자라 게이트 런 최소 길이 미만이라 지목되지 않았으나 같은 사유로 같이 제거 상태다.) |
+
+기존 `| §13 Personas | 삭제; sidecar 재수록 없음 |` 행의 사유는 유효하되, 그 행의 "Generic
+deletion only"는 이 개정의 항목별 기록으로 **구체화**된다 (E2). 페르소나 이름·나이·도시
+(高橋 由美 / 中村 健 / 小林 さち)는 여전히 삭제 상태이고 sidecar에도 없다.
+
+### F2 grep (this revision)
+
+각 행은 이 문장을 쓰기 전에 실제 파일 grep으로 확인했다.
+
+- `鶏むね肉` → legacy 310 (1회). portable `DESIGN.md` 0회 / `provenance.md` 0회 — 삭제 상태 유지 (D2).
+- `ごはんもの` → legacy 312 (1회). portable `DESIGN.md` 0회 / `provenance.md` 0회 — 삭제 상태 유지 (D2).
+- `麺` → legacy 312 (1회, 페르소나 문장). portable 0회 — 같은 사유로 삭제 상태.
+- `野菜` · `お肉` · `魚介` · `たまご` → legacy 160 (§4 Category Tiles `use`) → portable `DESIGN.md` 299 각 1회. 검증된 카테고리 라벨 집합은 손실 없음.
+- `つくれぽ` → portable `DESIGN.md` 32/53/136/212/223/249/313/323/379/385/418/427 + `provenance.md` 3회. 커뮤니티 용어는 §13 밖 근거로 이미 보존됨.
+
+DESIGN SHA-256 `31a151505a0d676e9f0398e4ce4e78e96677f350aa507c02a360c24006df575b` — 이 개정에서
+DESIGN.md는 편집되지 않았으므로 wave17 ledger sync 선언 SHA와 동일하다. `--gate-only` PASS,
+problems []. Core `portable_core: true`. F3 재실행 없음. 게이트 오탐 없음 (E3) — 게이트는
+복원이 아니라 원장 가시화를 요구했고, 그 요구가 충족되었다.

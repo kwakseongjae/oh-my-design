@@ -345,9 +345,9 @@ Touch-target record (source §8): buttons minimum 42px height (default), 56px fo
 
 ### Observed (live surfaces, 2026-07-12)
 
-The live strings below are source-stated. Treating the parenthetical characterizations (home positioning / comparison copy / concrete product action / risk plus next action) as citation-character of those live strings is a derived editorial implementation inference from the verified surfaces; it is not Banksalad-authored or a separately published UI specification.
+The live strings below are source-stated. Treating the parenthetical characterizations (home positioning / full-tagline record / comparison copy / concrete product action / risk plus next action) as citation-character of those live strings is a derived editorial implementation inference from the verified surfaces; it is not Banksalad-authored or a separately published UI specification.
 
-- “금융을 넘어 건강 자산까지” — current home positioning. *(verified: https://www.banksalad.com/)*
+- “금융을 넘어 건강 자산까지” — current home positioning; the source’s 2026-05-13 home verification note records the full tagline as “뱅크샐러드 | 금융을 넘어 건강 자산까지”, kept byte-exact here (A5). *(verified: https://www.banksalad.com/)*
 - “신용대출, 햇살론, 직장인 대출까지 한 번에 비교하세요” — comparison copy. *(verified: https://www.banksalad.com/contents)*
 - “내 대출금리 조회” — concrete product action. *(verified: https://www.banksalad.com/contents)*
 - “명의 도용 의심 도용사고·보이스피싱 신고 및 행동 요령을 확인하세요” — risk plus next action. *(verified: https://www.banksalad.com/customer-safety)*

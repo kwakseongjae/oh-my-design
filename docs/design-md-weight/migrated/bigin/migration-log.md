@@ -76,3 +76,46 @@ Adjacent complete B2a (`derived editorial implementation inference` / `not Bigin
 - Empty/Loading/Error/Success/Skeleton/Disabled §14 rows grep-matched Capture record `235-243`.
 - `.verification.md` exists at `web/references/bigin/.verification.md`; provenance Tier 1 records Proof / method / three surfaces. Absence claim deleted.
 - These are command outputs, not a catalog-adoption claim (E2c).
+
+## Revision 2026-08-26 (A5 카피 복원, 규칙집 v9)
+
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v9 — A5(브랜드 발행 문자열 바이트 보존) 신설 + 게이트 `copy-loss` 신설. v9 게이트가 이 이관본을 `MIGRATION_BLOCKED / copy-loss` 로 차단했다: `고객 획득부터 충성고객 확보까지 마케팅 전략은 선택이 아닌 필수입니다`. **오탐 아님 — 실제 A5 손실이었다.**
+
+### 손실의 정체 (legacy grep)
+
+`grep -n '고객 획득' web/references/bigin/DESIGN.md` → 4행. 원본은 히어로 헤드라인을 **두 가지 바이트 형태**로 인용한다:
+
+| legacy | 인용 형태 | 절 |
+|---|---|---|
+| `72` | `"고객 획득부터 충성고객 확보까지 마케팅 전략은 선택이 아닌 필수입니다."` (단일 공백) | §1 Visual Theme & Atmosphere — 700 weight가 만드는 voice의 예시로 괄호 안 인용 |
+| `346` | `"고객 획득부터 충성고객 확보까지 마케팅 전략은 선택이 아닌 필수입니다."` + 영문 병기 `("From customer acquisition to loyalty — marketing strategy is a necessity, not a choice")` (단일 공백) | §10 Voice & Tone — "The hero line … sets the register" |
+| `350` | `"고객 획득부터 충성고객 확보까지…"` (말줄임) | §10 tone 표 Hero headlines 행 |
+| `357` | `"고객 획득부터 충성고객 확보까지  마케팅 전략은 선택이 아닌 필수입니다."` (**이중 공백**) | §10 verified live copy 목록 |
+
+즉 **본문 카피가 아니라 히어로 헤드라인**이며, 원본 §10이 스스로 `hero headline`으로 명기한 발행 문자열이다.
+
+이관본은 `357`의 이중 공백 형태(→ Content Observed)와 `350`의 말줄임 형태(→ Content tone 표)는 옮겼으나, `72`·`346`이 공유하는 **단일 공백 전문**은 어느 파일에도 없었다. 워커가 §10 문장을 "The hero line is read as setting the register"로 재서술하면서 인용을 통째로 떨어뜨렸고, §1의 괄호 인용도 같이 사라졌다.
+
+### 복원
+
+`옮김 → Content & Locales / Derived editorial voice` — `DESIGN.md:553`. §10 원문 문장 자리에 인용을 **바이트 그대로** 되돌리고 원본이 달아둔 영문 병기도 함께 복원했다 (A5: 영문은 원문 **옆에** 병기, 대체 금지):
+
+> The hero line "고객 획득부터 충성고객 확보까지 마케팅 전략은 선택이 아닌 필수입니다." ("From customer acquisition to loyalty — marketing strategy is a necessity, not a choice") is read as setting the register: …
+
+`… is read as …` 라는 파생 독해 표기는 그대로 두었다 — 인접 B2a 한정(`551`)이 이 문단 전체를 덮고 있고, 이번 복원은 문자열만 되돌린 것이지 권위 등급을 바꾸지 않는다. §1(`legacy:72`)의 인용은 §10과 **동일 바이트**이므로 `553` 한 자리가 두 인용을 모두 보존한다 — Scope(`9-23`)에는 새 인용을 넣지 않았다. 토큰 값·컴포넌트 표·state applicability·섹션 구조는 손대지 않았다.
+
+### 복원하지 않은 것 (사유 명기)
+
+- **§13 페르소나 대사 안의 인용 2종** — `"모든 마케팅 액션, 한 번에"`(`legacy:384`), `"상담 신청"`(`legacy:386`). 삭제 — 가상 페르소나 진술이라 D2로 제거된 문맥이며 승격·재수록 금지. 두 문자열의 **발행 형태 자체**는 페르소나와 무관하게 이미 Content Observed(`541`, `545`)에 살아 있으므로 A5 손실이 아니다.
+- **§10 두 번째 인용의 영문 병기** — `("모든 마케팅 액션, 한 번에 집행하세요" — run every marketing action in one place)`(`legacy:346`). 한국어 원문은 Content Observed `541`에 바이트 그대로 있고 게이트 needle도 충족한다. 이번 복원 범위를 차단 문자열로 한정했으므로 영문 주석만 미복원 — 값 손실 없음.
+
+### F2 E2 대조 (실측 grep, 복원 후)
+
+- `grep -n '고객 획득' docs/design-md-weight/migrated/bigin/DESIGN.md` → `540`(Observed, legacy `357` 이중 공백 형태) / `553`(복원, legacy `72`·`346` 단일 공백 형태 + 영문 병기) / `557`(tone 표, legacy `350` 말줄임 형태). 세 형태가 각각 제 원본 바이트를 유지한다.
+- `grep -n '고객 획득' docs/design-md-weight/migrated/bigin/provenance.md` → 0행. 이 문자열의 목적지는 portable 본문 단일이며 provenance 이중 목적지 아님 (E2a 해당 없음).
+- legacy 문자열과 복원 문자열 `diff` 동일 확인 (영문 병기 포함 전체 인용 단위 비교) → BYTE-IDENTICAL.
+- 페르소나 이름 김도현 / 이서연 / 박준영 은 여전히 DESIGN.md·provenance 양쪽에 부재 (D2 유지).
+
+### 게이트
+
+`cd test-v2/tools && node migrate-reference.mjs --brand bigin --gate-only` → **PASS, problems []**. 복원 후 portable DESIGN SHA-256 `06bf082a8f98f2b0a7d72c3279423202963791e04d3eb6e3a3dba4e42068e4a2`. 이 절은 명령 출력 기록이며 카탈로그 채택 주장이 아니다 (E2c). 게이트 오탐 회피용 표기 왜곡 없음 (E3).

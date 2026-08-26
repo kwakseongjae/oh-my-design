@@ -24,7 +24,7 @@ Portable Core: command outputs are recorded in the F2 block below. This is not a
 | §7 Do's and Don'ts | mixed: Do 옮김 → Experience principles (capture-bound); Don't 옮김 → Experience avoid | Capture-bound grouping of §7 Do’s named rules has adjacent complete B2a (59). Avoid named Don’ts 인접 완전 B2a (70). Unique §9 purple-only-in-AI-feature-or-self-directed-learning is Distinctive 43 / Semantic 90 / Avoid 77. |
 | §8 Responsive Behavior | 옮김 → Layout & Platforms + Type-rule | Hero 56px→36px (`--fontSizes-700: 2.25rem`) and display-lg 42px→28px are Type-rule limiter 199 / recipe 205 / scale 207. Layout 394 does not contain 56px or 36px; it holds flex column→row at 720px, feature 50%/100%, CTA full-width mobile, consult padding tightens, `data-collapse="all"`. Invented extra breakpoints were not in the source and are not added (D1, A1). |
 | §9 Agent Prompt Guide | 삭제; 고유 제약만 옮김 | 도구별 명령·복붙 프롬프트 삭제. 슬롯 없는 위임 없음. Unique brand values already have Experience/Foundations/Components slots: `--primary: #00C896` / `--text-dark: #424242` → Semantic 102 (A3); Primary CTA `500 14px/14px "Noto Sans KR"` → Green CTA Font 246 (A3); hero heading `56px / 700 / 68px / #424242` → Type recipe 205 (A3); section wash `linear-gradient(120deg, #EDF9F6, #FAF5FF)` → Distinctive 36/42 (A3); `max-width: 1248px; margin: 0 auto; padding: 0 16px` → Layout 389/391 (A3); KR 400+500+700 / TW Noto Sans HK → Distinctive 44 + Family 181/183 + Content 414 (A3, E2a); purple only in AI-feature or self-directed-learning → Avoid 77 (A3). Cards / tag pill / 8px fill already in Components. `omd-apply` / `npx omd` absent. |
-| §10 Voice & Tone | 옮김 → Content & Locales | Three adjectives + Do/Don't table 400–408. Voice-register extras 인접 완전 B2a (400). Table-as-reconstruction / no-illustrative-samples 인접 완전 B2a (410). Source-stated empty-state label dual Capture 220 + Content 412 (not a §10 dest). KR/TW font-loading-not-complete-locale 414 (B2/B2a, E1). Source *Illustrative:* samples not promoted. 원본에 없는 도메인 부정 claim 신설 없음 (D1). |
+| §10 Voice & Tone | mixed: 옮김 → Content & Locales; *Illustrative* voice samples 3건 삭제 | Three adjectives + Do/Don't table 400–408. Voice-register extras 인접 완전 B2a (400). Table-as-reconstruction / no-illustrative-samples 인접 완전 B2a (410). Source-stated empty-state label dual Capture 220 + Content 412 (not a §10 dest). KR/TW font-loading-not-complete-locale 414 (B2/B2a, E1). Source *Illustrative:* samples not promoted — 세 문자열의 바이트 원문과 삭제 사유는 Revision 2026-08-26 (v9 A5 카피 패스) 표 (A5, D2). 원본에 없는 도메인 부정 claim 신설 없음 (D1). |
 | §11 Brand Narrative | 옮김 → Experience `scope`; 서사 원장 분리 → provenance | Founding / 30-plus-students / communication-to-intelligence / adoption / CT / CLST+ELO / 91.5% / mission-as-tool-to-infrastructure / student-mastery restated in portable Scope under adjacent complete B2a (15, 17) (A1, B2/B2a). Dual portable Scope + provenance Narrative. Evidence class is official history and the CT Corp. brand-guidelines citation; they do not by themselves supply interface tokens. |
 | §12 Principles | 옮김 → Experience principles | 다섯 항목 전체 editorial readings. 인접 본문에 derived editorial implementation inference / not Classting-authored or a separately published UI specification (51). Capture-bound grouping (§7 Do’s) has adjacent complete B2a (59). Governance 일반 문구는 그 한정의 대체물이 아님 (B2/B2a, E1). |
 | §13 Personas | mixed: lede groups만 Audience; 가상 biography 삭제·sidecar 재수록 없음 | 원본 *Illustrative* named-person entries는 fictional archetypes. Groups from the product lede (teachers, students, parents)는 portable Audience 32. Names/ages/locations/biographies는 원본 이관본에도 provenance에도 없음 (D2). Audience no-individual-personas-promoted + fictional-archetypes-not-tasks have adjacent complete B2a (32) (B2/B2a). Primary tasks 3건 dests are on the YAML/§4 source-rows (YAML `use` 247/357/344 → Primary tasks 25–27), under adjacent complete B2a as YAML-use-strings-not-from-§13 (23). The portable body does not call those tasks independently verified (E2c). |
@@ -116,3 +116,62 @@ Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v7. Source remainder: `d
 8. Dest pointers grepped against the current three files. `--gate-only` and portable Core re-run; SHA below. Existing fresh F3 execution evidence is retained. Canonical Proof was not dropped.
 
 Current DESIGN SHA-256 `c93c25b8c6171e6b7e42713009e95b8a641f5818f554dec225e3a384b8c90f7e`. `node test-v2/tools/migrate-reference.mjs --brand classting --gate-only` → PASS, problems `[]`. `node scripts/migrate-design-md-core.cjs --input docs/design-md-weight/migrated/classting/DESIGN.md --check --require-portable-core --json` → exit 0 / `portable_core: true`. Command outputs, not catalog adoption (E2c).
+
+## Revision 2026-08-26 (v9 A5 카피 패스)
+
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v9 — 신설 A5(브랜드가 발행한 문자열은 바이트 그대로) + 게이트 `copy-loss` 대응. 이 패스는 토큰 값, 컴포넌트 표의 값, state applicability 판정, 섹션 구조, 그리고 원본 `web/references/classting/DESIGN.md`를 변경하지 않았다. F1/F2/F3가 닫혔다는 재주장이 아니고 카탈로그 채택 주장도 아니다 (E2c).
+
+### A5 실측 — 게이트가 지목한 5개 needle의 원본 출처
+
+| needle (게이트 보고) | 원본 위치 | 원본이 붙인 성격 |
+|---|---|---|
+| `진단부터 추천까지. 데이터가 길을 만듭니다` | 원본 §10 `:235` | `**Voice samples (illustrative):**`(`:234`) 머리글 아래, 행 접두 `*Illustrative:*` |
+| `선생님이 매 학생을 개별적으로 파악하기 어려운 게 현실입니다. 클래스팅` | 원본 §10 `:236` | 같은 머리글 아래 `*Illustrative:*` — 한 인용문의 앞 조각 |
+| `가 그 공백을 채웁니다` | 원본 §10 `:236` | 같은 인용문의 뒤 조각 (라틴 `AI`에서 run이 끊긴 자리) |
+| `맞춤 교육` | 원본 §10 `:237` | 같은 머리글 아래 `*Illustrative:*` — 한 문장의 앞 조각 |
+| `지금 시작하세요` | 원본 §10 `:237` | 같은 문장의 뒤 조각 (콤마 구분자에서 갈린 자리) |
+
+원본에 있는 것은 5개가 아니라 **3개 인용문**이다. 게이트가 콤마와 라틴 문자를 run 구분자로 쓰기 때문에 `맞춤 교육, 지금 시작하세요.`가 둘로, `선생님이 매 학생을 개별적으로 파악하기 어려운 게 현실입니다. 클래스팅 AI가 그 공백을 채웁니다.`가 `AI`에서 둘로 쪼개져 보고됐다.
+
+### A5 판정 — 세 문자열은 브랜드 발행 문자열이 아니다 (복원하지 않음)
+
+원본이 스스로 세 문자열을 illustrative로 명기했다: `:234`의 머리글 `**Voice samples (illustrative):**`와 `:235`–`:237` 각 행의 `*Illustrative:*` 접두. 검증 sibling `web/references/classting/.verification.md`의 Proof raw samples 열 행은 전부 CSS custom property·셀렉터 선언이며, 카피 문자열을 측정 대상으로 명기한 행이 하나도 없다 — A5 후단의 "검증 sibling이 측정 대상으로 명기한 문자열" 경로도 성립하지 않는다.
+
+그러므로 A5의 대상이 아니다. 이 셋을 portable Content & Locales로 올리면 §13 *Illustrative* named-person 항목과 같은 등급의 가상 카피를 마이크로카피 계약으로 승격하는 것이 되어 D2 위반이다. 이관본 Content & Locales 410은 이미 "not promoting the source’s three *Illustrative:* voice samples"를 인접 완전 B2a와 함께 담고 있고, 이 절은 그 disposition에 원문 바이트를 붙여 소실을 가시화한다 — A5가 요구하는 것은 무삭제가 아니라 소실의 가시화다.
+
+같은 브랜드 안의 일관성 근거: 원본 §14 `:275`의 empty-state 라벨은 `*Illustrative*` 표시가 없는 source-stated 카피이고, 삭제되지 않고 이관본 Capture 220 + Content 412 두 곳에 바이트 그대로 남아 있다 (E2a). 발행/비발행 구분은 이 브랜드에서 일관되게 적용됐다.
+
+| 원본 위치 | 원문 (바이트 그대로) · 영문은 원본 병기 gloss, 대체 아님 | Disposition |
+|---|---|---|
+| §10 `:235` 태그라인 | "진단부터 추천까지. 데이터가 길을 만듭니다." (From diagnosis to recommendation. Data makes the path.) | **삭제** — 원본이 illustrative로 명기한 비발행 예시. 발행 근거 없음, 검증 sibling 측정 대상 아님. 승격 시 D2 위반. |
+| §10 `:236` 본문 | "선생님이 매 학생을 개별적으로 파악하기 어려운 게 현실입니다. 클래스팅 AI가 그 공백을 채웁니다." (It's reality that teachers can't track every student individually. Classting AI fills that gap.) | **삭제** — 같은 사유 (D2). 게이트는 라틴 `AI`에서 두 needle로 쪼갰으나 원본의 단위는 이 한 문장이다. |
+| §10 `:237` CTA | "맞춤 교육, 지금 시작하세요." (Start personalized education now.) | **삭제** — 같은 사유 (D2). 게이트는 콤마에서 두 needle로 쪼갰으나 원본의 단위는 이 한 문장이다. |
+
+세 문자열은 이관본 `DESIGN.md`에도 `provenance.md`에도 없다 (D2: 승격도 provenance 재수록도 금지). 위 표가 유일한 감사 기록이다.
+
+### 게이트 보고 (E3 — 표기를 왜곡해 피하지 않았다)
+
+1. 소실 판정 자체는 오탐이 아니다. 세 문자열은 실제로 세 산출물 어디에도 없었고 원장에 disposition 행도 없었다 — 게이트는 "기록되지 않은 드롭"을 정확히 드러냈다. 위 표가 그 기록을 붙여 해소한다.
+2. needle 단위가 원본의 단위와 어긋난다(보고 정밀도). A5의 단위는 라벨인데, 콤마 구분자 규칙이 한 문장 CTA를 두 조각으로, non-Latin run 규칙이 `클래스팅 AI가`의 라틴 `AI`에서 한 문장을 두 조각으로 나눈다. 뒤 조각 `가 그 공백을 채웁니다`는 조사에서 시작하는 문장 파편이라 그 자체로는 어떤 라벨도 아니다. 원문 표기는 그대로 두고 여기 기록만 한다.
+3. needle 추출은 원본의 `*Illustrative:*` 표시를 읽지 않는다. 그래서 발행 카피와, 원본이 스스로 비발행이라 밝힌 예시가 같은 급으로 보고된다. 발행/비발행 판정은 기계가 아니라 의미 검토의 몫이고, 이 브랜드는 3건 전부 후자였다.
+
+### 원장 포인터 실측 재검증 (F2; 이번 세션 grep)
+
+§10 행 포인터는 현행과 일치했다: Do/Don't 표 402–408, voice-register B2a 400, table-as-reconstruction·no-illustrative-samples B2a 410, source-stated empty-state 412 (dual Capture 220), KR/TW font-loading 414. 다음도 현행과 일치했다 — `Type: button` 239/264/313, `Type: card` 337/351, `Type: badge` 364, Orange CTA type-not-invented 296, C2 생략문 258/283/307/332, C4 omit-kind 346/359/372/384, B3 다섯 증거 종류 161, Assets 211, Audience 32, Primary tasks 25–27, Spacing 106, Shape 116/118/124/126, Elevation 133–135/138, Family 181/183, Type roles 187/194/195, Green CTA Font 246, Outline padding 319, Named gaps 452/456/457.
+
+아래 여섯 건은 wave15 개정(Orange CTA `Type: button` 삭제 등)으로 행이 밀린 뒤 갱신되지 않은 stale 포인터다. 값은 그대로이고 행 번호만 바뀌었다. 이전 개정 블록의 기재를 고쳐 쓰지 않고 여기서 supersede한다.
+
+| 원장 기재 | 실측 현행 |
+|---|---|
+| F2 `#00C896` dest 끝부분 `348 / 358` | `353` / `358` — 348은 `### Section Banner (Consult)` 제목 행이고 hex는 353 |
+| F2 `#ED872D` / `#ED872C` dest `85/91/100/299/317/318/324/456` | `#ED872D` 85/91/100/298/316/317/323/454, `#ED872C` 85/100/298/317/323/454 |
+| F2 Orange 500 `#ED8936` dest `43/85/91/291/299/324` | 43/85/91/290/298/323 |
+| F2 Green 050 `#EFFFFA` dest `89/455` | 89/453 (상단 표 §2 행의 `Named gaps 453`가 맞다) |
+| Revision 2026-08-24 항목 8 `Outline CTA 320` | 319 (`- Padding: 20px 24px`) |
+| Revision 2026-08-24 F1 `C4 … (347/360/373)` | 346/359/372 (Orange tag는 384) |
+
+상단 표 §4 행의 field-note 목록 `249/274/296/298/323/358/383` 중 296은 field note가 아니라 Orange CTA `Use:` 행이다. 현행 field note 행은 249/274/298/323/358/383이다.
+
+`provenance.md` 87/122와 위 F2 블록이 아직 "Space after `#` so gate token-invention does not treat sidecar-only hex as a portable token"라고 적고 있으나, 실측하면 두 행 모두 `#6EC090` → `#2B5CAA`를 공백 없이 정상 표기한다 (v8에서 원복된 상태). 그 설명 문장은 현행 파일과 불일치하는 stale 기재다. 이 패스는 값 표기를 건드리지 않으므로 여기에 기록만 한다 (E3, E2).
+
+DESIGN.md는 이 패스에서 바뀌지 않았다 — SHA-256 `c93c25b8c6171e6b7e42713009e95b8a641f5818f554dec225e3a384b8c90f7e`로 wave15 기록과 동일하다. `node test-v2/tools/migrate-reference.mjs --brand classting --gate-only` → PASS, problems `[]`. `node scripts/migrate-design-md-core.cjs --input docs/design-md-weight/migrated/classting/DESIGN.md --check --require-portable-core --json` → exit 0 / `portable_core: true`. 명령 출력이지 카탈로그 채택 주장이 아니다 (E2c).

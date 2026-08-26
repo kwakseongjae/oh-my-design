@@ -1,6 +1,6 @@
 # 마이그레이션 규칙집 — legacy → Core v2
 
-> **v8 · 2026-08-25.** 이 파일이 워커에게 주어지는 하드 룰의 정본이다.
+> **v10 · 2026-08-26.** 이 파일이 워커에게 주어지는 하드 룰의 정본이다.
 > `migrate-reference.mjs`가 이 파일을 읽어 워커 프롬프트에 넣고, 각 migration-log가
 > 사용한 규칙집 버전을 기록한다.
 >
@@ -30,6 +30,16 @@
   `t1-4-notion-2026-08-23-sol-spotcheck.md` §2)*
 - **A4.** 검증된 필드 결합을 다른 역할로 합치지 않는다. `help-search.fg: #000000`은
   그 컴포넌트의 renderable field이지 일반 Ink가 아니다. *(같은 판정 §2)*
+
+- **A5.** 브랜드가 발행한 문자열은 **바이트 그대로** 옮긴다. 라벨·CTA·포럼명·
+  마이크로카피·사명은 값이지 서술이 아니다 — 번역·의역·대소문자 정규화·영문
+  대체는 전부 손실이다. 원문이 비라틴 문자면 그 문자로 남기고, 독자를 위한 영문
+  설명이 필요하면 원문 **옆에 병기**하되 원문을 대체하지 않는다. 검증 sibling이
+  측정 대상으로 명기한 문자열도 같은 급으로 취급한다.
+  *(datadog §4·§10 — `SEE THE PLATFORM`이 "inspect the platform"으로 재작성되고
+  검증 카피 6종이 소실; dcard §10 — 번체 포럼명 9종(`女孩`·`男生`·`心情` 등)이
+  영문 의역으로 대체되고 레지스터 대비 `你`/`您`가 소실. 원문 자신이 "Never
+  bilingual labels; the forum name IS the space"라고 못박은 자리였다)*
 
 ## B. 증거 종류와 승격 (게이트 부분 기계화)
 
@@ -67,10 +77,13 @@
 - **C1.** `not captured` / `not named`는 `not-applicable`의 사유가 될 수 없다.
   applicability는 컴포넌트 의미로 판정하고, 미해상 시각 treatment는 값만 생략한다.
   *(3건 공통 — 게이트 기계화됨)*
-- **C2.** 반대 방향 발명도 금지다. primitive 종류("Interactive control", "Button
-  control")만으로 loading/error/success를 일괄 `applicable`로 만들지 않는다.
-  tab·arrow·dialog trigger·toggle 각각의 **역할**에 그 상태가 의미가 있는지 판정하고,
-  비적용이면 관측 부재가 아닌 의미상 이유를 적는다. *(notion §3)*
+- **C2.** 반대 방향 발명도 금지다. loading/error/success를 primitive 종류만으로 **역할 판단
+  없이 일괄** `applicable`로 만들지 않는다. `"Interactive control"`·`"Button control"`은 그
+  일괄 행위의 **진단 표지이지 금지 문자열이 아니다.** 역할상 그 상태가 의미 있으면
+  `applicable`을 유지하고 미해상 treatment만 생략한다(C1). tab·arrow·dialog trigger·toggle·
+  destination link처럼 **커밋하는 연산이 없는 역할**이면 `not-applicable`로 두고, 관측 부재가
+  아닌 의미상 이유를 적는다. *(notion §3 — 조문 개정 2026-08-26, grok-4.6 판정. 근거·실측은
+  `docs/reviews/t2-1-c2-ruling-2026-08-26-grok.md`)*
 - **C3.** state coverage 완료를 주장하지 않는다. *(게이트 기계화됨 — 부정문 허용)*
 - **C4.** interactive-kind 근거가 없는 컴포넌트는 kind와 applicability map 자체를
   생략한다. 확정하지 않는다. *(29cm Product Grid Item — 승인된 처리)*
@@ -81,6 +94,14 @@
   표본 범위가 marketing/Help면 storefront 문장은 존재할 수 없다 — 미해상의 최소
   경계 생략은 "안 적는 것"이지 "안 됐다고 적는 것"이 아니다. *(notion §4 — 게이트:
   부정 claim 문장의 내용어가 원본에 없으면 차단)*
+  **D1a.** D1은 문장만이 아니라 **명사구 목록**에도 걸린다. `Named gaps: A, B, C`
+  형태로 도메인을 열거하는 것은 "그 도메인이 존재하되 미해상"이라는 주장이고,
+  원본이 그 도메인의 존재 자체를 세우지 않았다면 D1 위반이다. 게이트의 D1 검사는
+  부정 **문장**(`not captured` / `were not` / `않았다` …)만 트리거하므로 명사구
+  목록은 통과한다 — 이 조항은 워커와 검토자가 지켜야 한다.
+  *(databricks·datadog §Named gaps — 원본에 0회인 `native-client`·`parity`·
+  `authenticated`를 미해상 도메인으로 열거. 두 건 모두 게이트 PASS 상태로
+  의미 검토에서 잡혔다)*
 - **D2.** 가상 페르소나는 승격도 provenance 재수록도 금지. 독립 검증된 task만
   claim한다. **게이트 기계화 없음 — sol 레인 전담.** *(karrot §13 —
   `t1-3-golden-2026-08-23-sol-review.md` §2B; grok 조건 2, `t2-1-open-2026-08-23-grok.md`)*
@@ -130,3 +151,5 @@
 | v6 | 2026-08-23 | F1·F2 의무 최종 패스 (규칙→절차 전환) | 웨이브 3도 같은 두 계열만 재발 — 규칙 지식이 아니라 스캔 절차 부재가 원인 (`t2-1-wave3-2026-08-23-sol-sample.md`) |
 | v7 | 2026-08-23 | F3 별도 세션 감사 워커 (절차→구조 전환) | 웨이브 4: F1·F2 수행 기록에도 재발 — 동일 저자 맹점. 목록 받은 개정 세션은 4웨이브 연속 100% 수렴 → 신선한 세션에 탐지 임무 부여 (`t2-1-wave4-…`) |
 | v8 | 2026-08-25 | E3 게이트 회피 금지 + 게이트 invention 범위를 portable 본문으로 축소 | 웨이브 15: 워커가 오탐 회피를 위해 hex 표기 왜곡 (`# faf9f5`) — cafe24·claude·classting 원장에서 발견·원복 |
+| v9 | 2026-08-26 | **A5**(브랜드 발행 문자열 바이트 보존) · **D1a**(D1이 명사구 gap 목록에도 적용) | 웨이브 19: datadog이 검증 카피 6종을 의역·소실(`SEE THE PLATFORM`→"inspect the platform"), dcard가 번체 포럼명 9종을 영문 의역으로 대체 — 한 웨이브 두 건이 같은 계열. D1a는 databricks·datadog이 원본에 0회인 `native-client`를 미해상 도메인으로 열거해 게이트 PASS 상태로 통과 (`t2-1-wave19-20-2026-08-26-opus5.md`, `t2-1-a5-copy-loss-2026-08-26-opus5.md`) |
+| v10 | 2026-08-26 | **C2 조문 개정** — 금지 대상을 문자열에서 **행위**(역할 판단 없는 일괄 개방)로 명확화 | 조문이 `"Interactive control"`·`"Button control"`을 금지 형태로 지목했으나 **승인 골든 샘플 3건이 그 형태를 사용**(musinsa 18·29cm 11·karrot 5)하고 이관본 96건 546회가 동형 — 조문과 승인 기준이 충돌. 최종 승인권자 판정: 골든 샘플은 v1(C1) 산출이라 C2 이후 미보수 상태이고, C2 출처인 notion 시정본은 Hero CTA를 그 형태로 남긴 채 지목된 네 자리만 역할 사유로 닫았다(실측: primitive 형태 21회와 역할 사유 12행 공존) (`t2-1-c2-ruling-2026-08-26-grok.md`) |

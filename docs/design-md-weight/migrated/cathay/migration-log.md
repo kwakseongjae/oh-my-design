@@ -122,3 +122,28 @@ Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v7. Source remainder: `d
 - Quiet Nav Type `link` → 320; Utility Sign-in Type `link` → 345; Form Input named Focus → 418/432; Form Input error `#e87c07` → 428
 
 SHA-256 `cafa12233729a0b3830fd37cb6481d348faa254f18b1206ddc4354dbf8b0d583` unchanged (DESIGN.md not edited). This log does not claim F2 completeness beyond those greps, and does not re-assert F1/F2/F3 compliance as closed (E2c). Not a catalog-adoption claim (E2c). F3 was not re-run.
+
+
+## Revision 2026-08-26 (A5 카피 복원)
+
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v9 — **A5** (브랜드 발행 문자열은
+바이트 그대로; 사명 포함) 및 신설 게이트 `copy-loss`. 수행: opus5. 값·컴포넌트 표·상태
+applicability·섹션 구조·원본 파일 무변경. 이 개정은 F1/F2/F3 종료를 주장하지 않는다 (E2c).
+카탈로그 채택 아님.
+
+| Legacy | Disposition | Destination / reason |
+|---|---|---|
+| §11 Brand Narrative 정식 사명 `國泰世華商業銀行` (source line 327) | 복원 → Experience Scope product-origin 9 | A5. 이관 시 이 자리에는 §1·Sources의 통용 단축형 `國泰世華銀行`만 남고 §11의 정식 사명이 소실돼 게이트 `copy-loss`가 차단했다. 정식 사명을 바이트 그대로 Scope 9에 복원하고, 영문 사명 `Cathay United Bank`는 대체가 아니라 **병기**로 유지했다 (A5). 캡처 홈페이지 표기인 단축형 `國泰世華銀行`도 같은 문장에 함께 남겨 두 발행 표기를 모두 보존한다 — Scope 9 / 11. §11의 나머지 서사(2003 병합, 그룹사, CUBE, 태그라인) dest는 기존 §11 행 그대로 (Scope 9/17/19). |
+
+### F2 grep (this revision)
+
+각 행은 이 문장을 쓰기 전에 실제 파일 grep으로 확인했다.
+
+- `國泰世華商業銀行` → legacy `web/references/cathay/DESIGN.md` 327 → portable `DESIGN.md` 9 (1회). provenance.md 0회 — 사명은 portable 본문 값이므로 sidecar 재수록 없음.
+- `國泰世華銀行` (단축형) → portable `DESIGN.md` 9 / 11. 기존 11의 캡처 홈페이지 지칭 문장 무변경.
+- `國泰金控` → DESIGN 9 / 444 / 542. `國泰人壽` · `國泰產險` · `國泰綜合證券` → DESIGN 11 / 17 / 444 / 542.
+  `國泰投信` → DESIGN 11 / 17. `世華聯合商業銀行` → DESIGN 17 + provenance 119. 이 개정에서 값·자리 무변경 —
+  444는 Footer Observed 상태 행, 542는 Content 관측 카피 행이다.
+
+Post-revision DESIGN SHA-256 `d941546f6a9acbc402639246d1a8490a63d0d1d4a6160fbc8e0965160cf6888a`.
+`--gate-only` PASS, problems []. Core `portable_core: true`. F3 재실행 없음. 게이트 오탐 없음 (E3).
