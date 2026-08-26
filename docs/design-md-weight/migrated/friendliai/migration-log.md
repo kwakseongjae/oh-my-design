@@ -71,6 +71,8 @@ Every row below was checked by grepping the three output files before it was wri
 
 ## Sibling files (E2)
 
+> **SUPERSEDED 2026-08-26 — the paragraph below is false in every clause, including its stated method. It is kept verbatim because an audit record that is edited to look correct stops being an audit record. The correction, the cause, and the re-judgment are in [Revision 2026-08-26](#revision-2026-08-26-wave25--e2-sibling-adoption-a5-latin-sweep) at the end of this file. Read that section, not this paragraph.**
+
 `web/references/friendliai/` contains exactly one file, `DESIGN.md` (checked with `ls`). The source's trailing comment points at a sibling `.verification.md` for raw samples; that file does not exist in the repository. **No sibling was adopted, and the single non-adopted item is that absent `.verification.md`.** No value in these three outputs comes from a sibling file, and no sibling promotion occurred. The pointer itself is recorded in provenance so the gap is visible rather than silent.
 
 ## State applicability decisions (C2)
@@ -87,8 +89,170 @@ Judged by role meaning, not by primitive name and not by capture completeness.
 
 Counted in DESIGN.md: 30 `applicable` rows, 6 `not-applicable` rows, plus one prose use of each term in the capture record.
 
+> **Count corrected 2026-08-26 — the sentence above is kept as written and is wrong by one.** The rows are **29** `applicable` and 6 `not-applicable`; 30 and 7 are the *word* totals, each being the rows plus one prose use in the Capture record. The `applicable` figure counted the word total, called it a row count, and then added the prose use again. Measurement, both methods, and the per-component breakdown are in [§10 of the revision](#10-ledger-counts-re-synced-f2). No applicability verdict changes and the table above this note is unaffected.
+
 ## Checks run
 
 - `node test-v2/tools/migrate-reference.mjs --brand friendliai --gate-only` → `PASS`, problems 0
 - `inspectDesignMd` portable-core conformance on the migrated `DESIGN.md` → `portable_core: true`, `level: portable-core`, reasons 0
 - `node test-v2/tools/process-leak-check.mjs` (E1) over the migrated body → 0 hits
+
+> The "Checks run" block above was run before the 2026-08-26 revision. Both checks were re-run after it; the results are at the end of the revision section below.
+
+## Revision 2026-08-26 (wave25 — E2 sibling adoption, A5 Latin sweep)
+
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` **v10**. Clauses engaged: **E2** (log disposition must match reality), **A5** (brand-published strings), **B1** (evidence-class promotion), **E1** (verification record stays out of the portable body), **D1a** (gap lists are existence claims).
+
+### 1. The false statement, and why the measurement produced it
+
+The **Sibling files (E2)** section above states that `web/references/friendliai/` "contains exactly one file, `DESIGN.md` (checked with `ls`)" and that the sibling `.verification.md` "does not exist in the repository."
+
+**Both clauses are false, and so is the method clause.**
+
+```
+$ ls -a web/references/friendliai/
+.  ..  .verification.md  DESIGN.md
+
+$ find web/references/friendliai -name '.verification.md' -exec wc -c {} \;
+    6380 web/references/friendliai/.verification.md
+```
+
+The file is 6,380 bytes, 67 lines, SHA-256 `1415e992dc2bc5c17bbdffbf21b35505824d68b03db372aa62996ddd61a1e967`.
+
+**Cause: the instrument, not the repository.** `.verification.md` begins with a dot. Plain `ls` hides dotfiles, and a `*` glob does not expand to them. So `ls` returned exactly one name and the worker read that as the directory's contents. The evidence sentence "(checked with `ls`)" is therefore not merely wrong in its conclusion — **it names the method that caused the error**, and it made the claim look verified. `ls` cannot answer "what files are in this directory"; only `ls -a` or `find … -name` can.
+
+**Corrected evidence sentence.** Where the superseded paragraph says "checked with `ls`", read: *checked with `ls -a` and with `find web/references/friendliai -name '.verification.md'`, which is what a dotfile requires; the original `ls` did not measure the directory's contents and its result is void, not zero.*
+
+This is a repository-wide trap rather than a one-off: `test-v2/tools/README.md` records under "sibling은 dotfile이다" that **410 of 440** references carry this dotfile, and that a shell answering `no matches found` is reporting *not measured*, not *zero*. The identical failure was found on `finda` in wave 24.
+
+**Not a rewrite.** The superseded paragraph is left byte-for-byte with a marker above it. An audit trail that is edited until it reads correctly records nothing.
+
+### 2. E2 re-judgment: the sibling is adopted
+
+Adopted, on the evidence rather than on its existence. It is a legitimate FriendliAI verification record: `## Proof — Tier 1 live inspect`, dated 2026-07-02 — the same date as the source's `verified`, `added`, and `tokens.extracted` — carrying 20 raw samples taken by `playwright getComputedStyle` at 1440×900 across three brand-owned surfaces (`friendli.ai`, `friendli.ai/blog`, `docs.friendli.ai`), plus two full-DOM colour frequency scans, a radius frequency scan, a conflict matrix, and a country-sources block. Its date, method family, and three URLs agree with what the source `DESIGN.md` footer and trailing comment state in short form, and the source's own trailing comment points at it by name. It corroborates the source rather than widening it.
+
+Landed in **`provenance.md` § Canonical proof — sibling verification file**, with the bytes, hash, heading, grade, sample count, quoted method, and quoted source list. Four subsections follow it: the Korean regional requirement, the third-party consent widget, the Tier 2 record, and the sibling-only non-promotion table.
+
+**Nothing was promoted.** Not one token value, component-table value, type-role metric, or state verdict changed. The portable body's three edits are listed in §4 below and none of them is a value.
+
+### 3. Non-promotion list — 23 checks, all 0
+
+Verified against the post-revision portable body, `grep -oF … | wc -l` per value, plus `grep -oE '(^|[^0-9])(3|6)px'` for the two lengths that would otherwise match inside `13px` and `16px`/`36px`/`56px`:
+
+`How Kilo Code` · `FriendliAI | The Frontier AI Inference Cloud` · `FriendliAI Blog` · `0px 16px` · `30px 30px 0px` · `box-shadow` · `document.title` · `domcontentloaded` · `getComputedStyle` · `playwright` · `HEAD 200` · `rgb(` · `×822` · `×292` · `getdesign` · `refero` · `Accept` · `Decline` · `Preferences` · `Roboto` · `003afa` — **21 literals, each 0.** Word-boundary `3px` and `6px` — **2 lengths, each 0.**
+
+**One deliberate exception.** `SaansLocalFont Fallback` now occurs **1×** in the portable body, in Named gaps only, under the explicit instruction to write both sides of the family-name divergence rather than select one. It is carried as the marker of an unresolved question and is used as a family value by no type role, no component record, and no rule. It is also the sibling's literal spelling of what the source itself already establishes in paraphrase ("served as `SaansLocalFont` with a local fallback"). Recorded with its authorization in provenance.
+
+### 4. Portable body — three edits, no values
+
+| # | Line | Was | Now | Why |
+|---|---:|---|---|---|
+| 1 | 166 | "Both captured surfaces compute visible text as Saans, served as `SaansLocalFont` with a local fallback." | "The homepage computes visible text through the stack this record names `Saans`… The record states one family across every text role rather than recording a separate computed family for the blog surface." | The sibling records a `font-family` only on homepage elements — body, hero h1, nav link. None of its four blog samples carries one. The claim asserted a computation for a surface no record measures. |
+| 2 | 176 | "Saans is canonical here because computed visible use on both captured surfaces agrees on it." | "Saans is the family this record names for visible use, and the served face behind that name is `SaansLocalFont` with a local fallback; what the two names leave unresolved is stated under Named gaps." | Same defect, and a second one: the computed samples agree on `SaansLocalFont`, not on `Saans`. The prohibition itself — do not substitute a system font or another grotesk — is unchanged. |
+| 3 | 495 | — | New Named gaps entry: the family name to record for visible UI, with `Saans` and `SaansLocalFont, "SaansLocalFont Fallback"` both stated and neither selected. | Instructed treatment for the typography divergence. Also the reason edits 1 and 2 do not leave the body silent. |
+
+Edits 1 and 2 are single-line replacements and edit 3 appends after the last line, so **every line reference in this log and in `provenance.md` still resolves.** Re-checked rather than assumed: 166, 176, 356 (`Title text: #0a101a; body text: #6e7a84`), 365 (`Padding: 30px`), 397 (right-aligned primary button), 494 (last pre-existing Named gap). Body length 494 → 495 lines.
+
+The Elevated Spotlight Card padding contradiction was **not** given a Named gaps entry, deliberately. The source establishes no four-side question for that card, so a portable gap there would rest entirely on a sibling-only value — the D1a shape, where a gap list asserts a domain the source never sets up. It is recorded in the ledger instead.
+
+### 5. Source ↔ sibling divergences — 8 found
+
+Full text in `provenance.md` § "Where the sibling and the source diverge". Summary:
+
+| # | Class | Finding |
+|---|---|---|
+| 1 | Direct contradiction | Elevated Spotlight Card: sibling `padding: 30px 30px 0px` (asymmetric, bottom 0) vs source `30px`. Neither selected; portable value unchanged at line 365. |
+| 2 | Direct contradiction | Family naming: sibling computes `SaansLocalFont, "SaansLocalFont Fallback"`; the token `Saans` is in no computed sample. Both sides in Named gaps, neither selected. |
+| 3 | Portable overclaim | "Both captured surfaces compute…" — the sibling records a family only for the homepage. Corrected (edit 1). |
+| 4 | Portable overclaim | Claim ledger marks five line heights "live computed". Only body's `1.55` has a raw sample (`line-height: 24.8px`); `1.10` / `1.20` / `1.30` / `1.40` have none. Ledger rows left as the source's own `live-extract` assertion, with a boundary note added. |
+| 5 | Sibling-only | Radius frequency records `6px ×1`, outside the source's 4 / 8 / 12 / 32 / 360 scale and its card-local 5px. Unexplained by both records. Not promoted; portable 0. |
+| 6 | Source-only | Topic Tag Pill `Border: 1px solid #d9e2ec` — the sibling's tag-pill sample records no border. Value unchanged. |
+| 7 | Source-only | Log in (Quiet) `Font: 14px / 530 / Saans` — the sibling's Log in sample records no font. Value unchanged. |
+| 8 | Source-only | Body `font-weight: 400` and secondary-button `padding: 0 12px` — neither appears in the corresponding sibling sample. Values unchanged. |
+
+**The consent-widget exclusion is agreement, not divergence, and is now grounded.** The sibling states in its own words that the cookie-consent buttons (`Accept` / `Decline` / `Preferences`, `Roboto`, `#003afa`, 3px radius) are "a third-party consent tool, NOT FriendliAI's brand system, and was excluded from the palette and component tokens." The migration already reflected that exclusion in full — because the source author applied it upstream, so the values never reached the source `DESIGN.md`. What the sibling changes is the **ground**: an explicit quoted decision replaces a silent absence. Portable counts for all seven markers: 0.
+
+**The Tier 2 cross-check is verification record, not brand fact (E1).** The sibling's finding that `getdesign.md/friendliai` and `styles.refero.design/?q=friendli` hold no FriendliAI data describes this catalog's coverage, and its two quoted strings (`friendliai — 0 DESIGN.md files | getdesign.md`, `Browse 2,000+ AI-readable design systems`) are third-party page copy, not FriendliAI copy. Kept in provenance; portable counts 0 for `getdesign`, `refero`, and both strings.
+
+### 6. A5 — exhaustive Latin sweep across source **and** sibling
+
+The gate needle does not reach this brand: FriendliAI's published copy is Latin, so nothing here trips a non-Latin loss check. The sweep was therefore done by extraction, not by needle.
+
+**Method.** Every double-quoted run of 2–120 characters was extracted from both source files with `re.findall(r'"([^"\n]{2,120})"')` plus the curly-quote variant, deduplicated, then counted with `str.count()` against all three outputs. `grep -c` was not used anywhere: it counts matching lines, and several of these strings occur more than once on a line.
+
+**Extraction.** 87 unique from the source, 19 from the sibling, 10 shared → **96 unique strings**. `node test-v2/tools/latin-copy-audit.mjs --brand friendliai` was run first and reported 50 candidates / 17 lost; it is a low-precision assist and the judgment below is not its output. Of its 17, eight are the source's own descriptive `use:` labels or editorial glosses, four are third-party strings the sibling explicitly excludes, three are punctuation variants of strings that do survive (`The Frontier AI Inference Cloud.` etc., the tone table's sentence-final periods), and one is `0 12px`, a token value that survives in the portable body as `0px 12px`, the source's own §4 spelling.
+
+**Classification of the 96.** 27 are brand-published strings in A5 scope — 24 from the source, 3 from the sibling only. The remaining 69 are token values (hexes, lengths, font specs), the source frontmatter's `use:` descriptions, the source author's editorial glosses in quotes (`ship-now`, `look here`, `do this`, `go here`), and third-party strings.
+
+**Survival: 23 of 27 survive in the portable body. 4 do not, each with a recorded disposition. 0 unaccounted.**
+
+| String | Origin | Portable | Disposition |
+|---|---|---:|---|
+| `Book a demo` | source §13 | 0 | Deleted with the personas (D2), and deliberately not re-recorded as a persona artifact. It appears in the source only inside persona reasoning and is attributed to *other* vendors, not to FriendliAI. Recorded in the provenance omission ledger (prov `§13 personas` row) and in the §13 row of the section table above. The FriendliAI-attributed contrast, `Request a demo`, survives at portable line 449. |
+| `How Kilo Code and FriendliAI Bring…` | sibling only | 0 | A FriendliAI-published blog headline, and truncated with an ellipsis in the sibling itself, so the sibling does not hold the complete string either. Sibling-only: it is in the live-DOM domain and the portable contract reconstructs the source `DESIGN.md`. Non-promotion instructed. Recorded byte-exact in the provenance sibling-only table. |
+| `FriendliAI \| The Frontier AI Inference Cloud` | sibling only | 0 | Homepage `document.title`. Same class. Recorded byte-exact in the provenance sibling-only table and, unescaped, in its verification line. Its brand-bearing half, `The Frontier AI Inference Cloud`, survives 3× in the portable body as the hero H1. |
+| `FriendliAI Blog` | sibling only | 0 | Blog `document.title`. Same class. Recorded byte-exact in the provenance sibling-only table. |
+
+Nothing was restored, because nothing was lost without a disposition. The 23 survivors were counted individually and every count is ≥1: `The Frontier AI Inference Cloud` 3, `Inference performance drives profitability` 2, `GLM-5.2 is live. #1 throughput on OpenRouter` 2, `Get started` 9, `Talk to an engineer` 6, `Log in` 3, `Search blogs` 1, `GLM-5.2` 3, `Inference` 6, `NVIDIA` 1, `HIGHLIGHTS` 6, `Product` 4, `Solutions` 3, `Models` 2, `Developers` 2, `Customers` 2, `Company` 2, `Pricing` 2, `Something went wrong` 1, `Required` 1, `Request a demo` 1, `revolutionary` 1, `game-changing` 1.
+
+Two source-side editorial glosses in quotes do not survive as quoted phrases: `ship-now` (source §1, "the loud 'ship-now' banner") and `look here` (source §6, elevation "a deliberate signal of 'look here'"). Neither is brand-published copy — both are the source author's own figures of speech about the design — so neither is in A5 scope. Their content survives as the portable body's banner and elevation readings at lines 39 and 131.
+
+### 7. Not changed
+
+No token value, no component-table value, no state applicability verdict, no section structure. Neither source file was touched: `web/references/friendliai/DESIGN.md` SHA-256 `9b8b5ee61763549aa1e872faf6b35b005676831792897578783bcc4f8d61159f`, sibling `1415e992dc2bc5c17bbdffbf21b35505824d68b03db372aa62996ddd61a1e967`.
+
+Specifically preserved: the two A3 rescues (Feature Card `Title text: #0a101a; body text: #6e7a84` at line 356, and the right-aligned header placement of the primary button at line 397); the D2 persona deletion, including the choice not to re-record the three names — re-grepped across all three outputs after this revision, 0 hits each; and the C2 verdicts closing `loading` / `error` / `success` as `not-applicable` on `Log in (Quiet)` and `Top Navigation Item` for role reasons, which the sibling gives no ground to reopen since it records no interaction states at all.
+
+Applicability counts re-measured after the revision: 30 `applicable` rows and 6 `not-applicable` rows, unchanged.
+
+### 8. E3
+
+No gate false positive was encountered, and no notation was reshaped to avoid one. The `\|` inside one provenance table cell is markdown table escaping, not value distortion; the same string is written unescaped on the verification line directly below that table.
+
+### 9. Checks re-run after the revision
+
+- `node test-v2/tools/migrate-reference.mjs --brand friendliai --gate-only` → **PASS**, `problems: []`
+- `inspectDesignMd` portable-core conformance → `portable_core: true`, `level: portable-core`, `reasons: []`
+- `node test-v2/tools/process-leak-check.mjs` (E1) over the migrated body → 0 hits
+
+**The gate is not evidence of conformance for this defect.** The gate never reads sibling files, so it returned the same `PASS` when the log asserted the sibling did not exist and after the sibling was read and adopted. It also does not evaluate E2 disposition accuracy, A5 survival for Latin copy, B1 in its class form, or D1a. Every finding in this revision lives outside what the gate checks; the two results above say only that nothing in the repair broke a mechanical rule.
+
+### 10. Ledger counts re-synced (F2)
+
+Every count this log asserts was re-measured after the revision with `grep -oF … | wc -l` (never `grep -c`, which counts lines). Four provenance-side counts moved because the revision added text to `provenance.md`; none of them is a portable-body count, and no portable-body count changed except the two that the three edits touch.
+
+| Row | Asserted | Now | Why |
+|---|---|---|---|
+| Frontmatter `id`… | `friendli.ai` 7× in provenance, 0× in DESIGN.md | **11×** in provenance, 0× in DESIGN.md | The adopted sibling's source list repeats the three brand-owned URLs. Portable side unchanged at 0. |
+| `logo.type` / `logo.slug` | `favicon` 0 in DESIGN.md, 3 in provenance | 0 in DESIGN.md, **5** in provenance | The sibling's own exclusion of the Google favicon proxy from the Korean requirement is now quoted. |
+| `tokens.source` | `live-extract` 0 in DESIGN.md, 1 in provenance | 0 in DESIGN.md, **3** in provenance | The divergence note and the Proof note both name the source's `live-extract` assertion when qualifying the line-height rows. |
+| §3 Hierarchy | `24.8px` 1× in DESIGN.md, 2× in provenance | 1× in DESIGN.md, **4×** in provenance | The divergence note and the Proof note each cite the sibling's `line-height: 24.8px` as the one corroborated line height. |
+| `family.sans: Saans` | `SaansLocalFont` 2× in DESIGN.md, 2× in provenance | **6×** in DESIGN.md, **10×** in provenance | Portable: 1 each at lines 166, 174, 176 and 3 in the new Named gaps entry (the bare name, then the two members of the computed stack). Provenance: the family divergence, the non-promotion exception, and the quoted raw record. |
+| `display_name_kr` | 2 in DESIGN.md, 1 in provenance | unchanged | — |
+| `components_harvested` | 0 in DESIGN.md, 1 in provenance | unchanged | — |
+| `tokens.components.*` | `Type: button` 2, `card` 2, `badge` 2, `input` 1, `tab` 1 | unchanged | Re-measured individually. |
+| §13 personas | three names, 0 hits across the three outputs | unchanged — `Daniel Cho` 0/0/0, `Priya Nair` 0/0/0, `Marcus Feld` 0/0/0 | Re-grepped after the revision. |
+
+**One pre-existing count was wrong and is corrected here.** The *State applicability decisions (C2)* section above ends: "Counted in DESIGN.md: 30 `applicable` rows, 6 `not-applicable` rows, plus one prose use of each term in the capture record." The `applicable` figure is off by one, and it double-counts.
+
+Measured two ways, as the counting rule requires:
+
+```
+$ grep -oE '^\| [a-z-]+ \| applicable \|'     DESIGN.md | wc -l   → 29
+$ grep -oE '^\| [a-z-]+ \| not-applicable \|' DESIGN.md | wc -l   → 6
+```
+
+and independently, parsing each state table's second column in Python: `Counter({'applicable': 29, 'not-applicable': 6})`. Both agree.
+
+The rows are **29 applicable / 6 not-applicable**: Get Started 7/0, Talk to an Engineer 7/0, Log in (Quiet) 4/3, Search (Pill) 7/0, Top Navigation Item 4/3. The word `applicable` standing alone occurs 30 times and `not-applicable` 7 times — in each case the table rows plus exactly one prose use in the Capture record. So the original row counted the *word* total for `applicable` (29 + 1 prose = 30), called it a row count, and then added "plus one prose use" on top, counting that prose occurrence twice. The `not-applicable` side (6 rows + 1 prose) was right.
+
+The correct sentence is: **29 `applicable` rows and 6 `not-applicable` rows, plus one prose use of each term in the Capture record — 30 and 7 as word totals.** No verdict changes; this is an arithmetic correction to the ledger, not to the contract. The distribution across the five components is identical to what the C2 table above states, and that table is unaffected.
+
+### 11. Hashes
+
+| File | SHA-256 |
+|---|---|
+| `web/references/friendliai/DESIGN.md` (source, unmodified) | `9b8b5ee61763549aa1e872faf6b35b005676831792897578783bcc4f8d61159f` |
+| `web/references/friendliai/.verification.md` (sibling, unmodified) | `1415e992dc2bc5c17bbdffbf21b35505824d68b03db372aa62996ddd61a1e967` |
+| `docs/design-md-weight/migrated/friendliai/DESIGN.md` (post-revision, 495 lines) | `890968ea0bd42a2076109ca18128e095353e53fb5ee73b9d140bae90a8b9527c` |
+| `docs/design-md-weight/migrated/friendliai/provenance.md` (post-revision, 242 lines) | `83fc4a35d35590d2ffff15ea41ebdf207425f2663d336c2aa921b60f99fefe5d` |
