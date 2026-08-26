@@ -123,6 +123,11 @@ export function gate(brand, outDir) {
 
 export function gateTexts(legacy, doc, provenance, log) {
   const problems = [];
+  // Distinct from `problems`: things this run did not examine. A check that
+  // had nothing to look at must not read the same as a check that looked and
+  // found nothing — that conflation is what let 66 already-migrated bodies
+  // pass A5 without a single machine comparison.
+  const unchecked = [];
   const all = doc + provenance + log;
 
   // Token loss is checked across every output file — a value must survive
@@ -144,6 +149,89 @@ export function gateTexts(legacy, doc, provenance, log) {
   // bracket-pair — the earlier exact match never fired on the real format).
   // provenance may QUOTE the source's placeholders as an omission ledger, so
   // only a placeholder string absent from the legacy source is an emission.
+  // A5: brand-published strings move as bytes. The legacy files quote real UI
+  // copy — CTA labels, forum names, state messages — and a translation or an
+  // English paraphrase silently destroys the thing the reference exists to
+  // carry. Only contiguous non-Latin runs are checked, because those cannot be
+  // coincidental and cannot survive paraphrase: if the run is gone from all
+  // three outputs, the copy is gone, not relocated. A run recorded in the log
+  // as a deletion still counts as present here — the ledger is the audit trail,
+  // and A5 asks that the loss be visible, not that nothing ever be dropped.
+  // Quote forms the legacy files actually use, CJK brackets included — copy is
+  // quoted with 「」 and （） as often as with " " in the JP/TW references.
+  // Each pair must open and close with the SAME mark. The earlier form put every
+  // delimiter in one character class, so a closing backtick could pair with the
+  // opening quote of the next label and swallow it: on the fastcampus green ramp
+  // the span `") — success state, "` matched, and `"수강신청 완료"` never became a
+  // needle. Three published labels were lost under a PASS that way.
+  // Regex literals, not strings: writing these as strings ate the backslashes
+  // and turned the paren branch into `(([^)\n]{2,60}))`, which required no
+  // parens at all and matched any prose — every fixture's own sentence became
+  // a needle. Literals also keep each pair readable as a pair.
+  const QUOTED_COPY = new RegExp([
+    /`([^`\n]{2,60})`/,                    // backtick pair
+    /"([^"\n]{2,60})"/,                    // straight double
+    /\u201c([^\u201d\n]{2,60})\u201d/,     // curly double, open -> close
+    /\u300c([^\u300d\n]{2,60})\u300d/,     // 「」
+    /\u300e([^\u300f\n]{2,60})\u300f/,     // 『』
+    /\uff08([^\uff09\n]{2,60})\uff09/,     // （）
+    /\(([^)\n]{2,60})\)/,                  // ()
+  ].map((r) => r.source).join("|"), "g");
+  // A comma ends a run: the legacy `use:` fields routinely join several labels
+  // into one line ("자세히 보기, 광고계정 생성하기, 시작하기"), and treating the
+  // joined line as a single published string reports a loss when every label
+  // survives separately. A5's unit is the label.
+  const NONLATIN_RUN = /[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af][\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af0-9\s\u00b7.!?]*[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/g;  // `,` `/` 미포함 = 구분자
+  // Two needle shapes per quotation. The whole quoted string is the better
+  // needle when it carries any non-Latin: it survives mixed labels like
+  // "企業・IR" whose non-Latin run alone is too short to trust, and its length
+  // makes a coincidental match elsewhere in the outputs far less likely. The
+  // contiguous run stays as the fallback for copy quoted inside a longer
+  // sentence. Both are still substring tests, so a needle that happens to sit
+  // inside an unrelated quotation reads as preserved — a known limit, and the
+  // reason semantic review keeps looking at copy too.
+  const copyRuns = new Set();
+  for (const m of legacy.matchAll(QUOTED_COPY)) {
+    const quoted = (m.slice(1).find((g) => g != null) ?? "").trim();
+    if (!quoted) continue;
+    // Only the contiguous non-Latin segments become needles. Using the whole
+    // quotation was tried and reverted: the legacy files quote descriptions as
+    // often as copy ("Top utility nav (로그인 / 관심 / 최근)"), so whole-quotation
+    // needles reported losses for prose that never was a published string,
+    // while the labels inside it had survived. A blocking gate that cries wolf
+    // gets worked around, which is the E3 failure mode it exists to prevent —
+    // so this check buys precision with recall, and semantic review keeps
+    // reading the copy that short or mixed-script labels slip past.
+    for (const run of quoted.match(NONLATIN_RUN) ?? []) {
+      const t = run.trim();
+      if (t.length >= 4) copyRuns.add(t);
+    }
+  }
+  // Where the string has to survive: the portable body or the provenance
+  // sidecar. The log counts too, but only when its line actually dispositions
+  // the string as dropped — a ledger that merely quotes a string it did not
+  // keep would otherwise mask the very absence this check exists to surface.
+  const logLinesFor = (t) => log.split("\n").filter((l) => l.includes(t));
+  const DISPOSITIONED = /삭제|제거|미이관|드롭|deleted|removed|omitted|dropped|not\s+carried|withheld/i;
+  const lostCopy = [...copyRuns].filter((t) => {
+    if (doc.includes(t) || provenance.includes(t)) return false;
+    return !logLinesFor(t).some((l) => DISPOSITIONED.test(l));
+  });
+  if (lostCopy.length) {
+    problems.push({ check: "copy-loss", detail: lostCopy.slice(0, 6).join(" / "), count: lostCopy.length });
+  }
+  // Needles come only from contiguous non-Latin runs, so a Latin-only source
+  // yields none and this check silently has no opinion. 195 of 440 references
+  // are in that state (docs/reviews/t2-1-a5-latin-blindspot-2026-08-26-opus5.md),
+  // and a fully paraphrased body would pass every one of them. Say so instead
+  // of returning a clean PASS the worker will read as "A5 verified".
+  if (!copyRuns.size) {
+    unchecked.push({
+      check: "copy-loss",
+      detail: "원본에 비라틴 런이 없어 바늘이 0개다 — 이 브랜드에서 A5는 기계 검사되지 않았다. 발행 라틴 문자열을 손으로 전수 대조하라.",
+    });
+  }
+
   if (/\[FILL IN/.test(doc)) problems.push({ check: "fill-in", detail: "placeholder in the portable doc" });
   // Only the concrete form ("[FILL IN: instruction]") must trace to the
   // source. The bare "[FILL IN]" token is how an omission ledger *talks about*
@@ -234,7 +322,7 @@ export function gateTexts(legacy, doc, provenance, log) {
     problems.push({ check: "tool-prompt", detail: "tool-specific command or prompt wrapper in the portable body" });
   }
 
-  return { verdict: problems.length ? "MIGRATION_BLOCKED" : "PASS", problems };
+  return { verdict: problems.length ? "MIGRATION_BLOCKED" : "PASS", problems, ...(unchecked.length ? { unchecked } : {}) };
 }
 
 /* ------------------------------------------------------------- selftest --- */
@@ -254,10 +342,26 @@ export function selftest() {
     { name: "coverage 완료 주장", doc: `${claims}\nState coverage is complete.\n#123456`, mustFlag: "coverage-claim" },
     { name: "claim 누락", doc: `#123456`, mustFlag: "portable-core" },
     { name: "[FILL IN] 방출", doc: `${claims}\n[FILL IN: later]\n#123456`, mustFlag: "fill-in" },
+    { name: "브랜드 카피 유실", doc: `${claims}\n#123456`, legacy: '본문 색은 #123456이고 CTA는 "지금 시작하기"다.', mustFlag: "copy-loss" },
+    { name: "카피 삭제가 원장에 기록됨", doc: `${claims}\n#123456`, legacy: '본문 색은 #123456이고 CTA는 "지금 시작하기"다.', log: "| §10 | 삭제 — \"지금 시작하기\"는 가상 페르소나 인용이라 D2로 제거 |", mustNotFlag: "copy-loss" },
+    { name: "원장이 인용만 하고 본문엔 없음", doc: `${claims}\n#123456`, legacy: '본문 색은 #123456이고 CTA는 "지금 시작하기"다.', log: "| §10 | 옮김 → Content: \"지금 시작하기\" |", mustFlag: "copy-loss" },
+    { name: "콤마로 이어붙인 라벨 목록(오탐 금지)", doc: `${claims}\n자세히 보기 / 시작하기\n#123456`, legacy: '본문 색은 #123456이고 use는 "자세히 보기, 시작하기"다.', mustNotFlag: "copy-loss" },
+    // The blind spot itself, as a case: a Latin-only source must report that it
+    // was not checked, and must not report it when there was copy to check.
+    { name: "라틴 전용 원본 = 미검사 보고", doc: `${claims}\n#123456`, legacy: 'Body color is #123456 and the CTA reads "Get started".', mustReportUnchecked: "copy-loss" },
+    { name: "비라틴 있으면 미검사 아님", doc: `${claims}\n지금 시작하기\n#123456`, legacy: '본문 색은 #123456이고 CTA는 "지금 시작하기"다.', mustNotReportUnchecked: "copy-loss" },
   ];
-  return cases.map(({ name, doc, mustFlag }) => {
-    const r = gateTexts(base.legacy, doc, base.provenance, base.log);
-    return { case: name, pass: r.problems.some((p) => p.check === mustFlag), flagged: r.problems.map((p) => p.check) };
+  return cases.map((c) => {
+    const { name, doc, mustFlag, mustNotFlag, mustReportUnchecked, mustNotReportUnchecked } = c;
+    const r = gateTexts(c.legacy ?? base.legacy, doc, base.provenance, c.log ?? base.log);
+    const flagged = r.problems.map((p) => p.check);
+    const skipped = (r.unchecked ?? []).map((u) => u.check);
+    const pass =
+      mustReportUnchecked ? skipped.includes(mustReportUnchecked)
+      : mustNotReportUnchecked ? !skipped.includes(mustNotReportUnchecked)
+      : mustNotFlag ? !flagged.includes(mustNotFlag)
+      : flagged.includes(mustFlag);
+    return { case: name, pass, flagged, ...(skipped.length ? { skipped } : {}) };
   });
 }
 
@@ -303,6 +407,17 @@ if (!existsSync(join(LEGACY_ROOT, brand, "DESIGN.md"))) { console.error(`no lega
 
 const outDir = join(OUT_ROOT, brand);
 mkdirSync(outDir, { recursive: true });
+
+// The worker/auditor prose below is the canonical prompt text; the execution
+// path under it is not. Roles now run as host subagents (grok and codex are
+// both retired), so --print-prompt hands the same text to whoever executes it
+// and keeps one source of truth for what a worker or auditor is told.
+if (flag("print-prompt")) {
+  const which = arg("print-prompt");
+  if (which !== "worker" && which !== "auditor") { console.error("--print-prompt worker|auditor"); process.exit(1); }
+  console.log(which === "worker" ? workerPrompt(brand, outDir) : auditorPrompt(brand, outDir));
+  process.exit(0);
+}
 
 if (!flag("gate-only")) {
   const startedAt = Date.now();
