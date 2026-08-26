@@ -123,11 +123,12 @@ export function gate(brand, outDir) {
 
 export function gateTexts(legacy, doc, provenance, log) {
   const problems = [];
-  // Distinct from `problems`: things this run did not examine. A check that
-  // had nothing to look at must not read the same as a check that looked and
-  // found nothing — that conflation is what let 66 already-migrated bodies
-  // pass A5 without a single machine comparison.
-  const unchecked = [];
+  // Distinct from `problems`: how much each check actually examined. A check
+  // that looked at one string of 181 must not read the same as one that looked
+  // at all of them, and neither must read as "verified" — that conflation is
+  // what let 66 already-migrated bodies pass A5 without a single machine
+  // comparison, and funnow/furiosaai pass with a token one.
+  const coverage = [];
   const all = doc + provenance + log;
 
   // Token loss is checked across every output file — a value must survive
@@ -191,9 +192,12 @@ export function gateTexts(legacy, doc, provenance, log) {
   // inside an unrelated quotation reads as preserved — a known limit, and the
   // reason semantic review keeps looking at copy too.
   const copyRuns = new Set();
+  const quotedAll = new Set();
+  const quotedWithNeedle = new Set();
   for (const m of legacy.matchAll(QUOTED_COPY)) {
     const quoted = (m.slice(1).find((g) => g != null) ?? "").trim();
     if (!quoted) continue;
+    quotedAll.add(quoted);
     // Only the contiguous non-Latin segments become needles. Using the whole
     // quotation was tried and reverted: the legacy files quote descriptions as
     // often as copy ("Top utility nav (로그인 / 관심 / 최근)"), so whole-quotation
@@ -204,7 +208,7 @@ export function gateTexts(legacy, doc, provenance, log) {
     // reading the copy that short or mixed-script labels slip past.
     for (const run of quoted.match(NONLATIN_RUN) ?? []) {
       const t = run.trim();
-      if (t.length >= 4) copyRuns.add(t);
+      if (t.length >= 4) { copyRuns.add(t); quotedWithNeedle.add(quoted); }
     }
   }
   // Where the string has to survive: the portable body or the provenance
@@ -220,17 +224,25 @@ export function gateTexts(legacy, doc, provenance, log) {
   if (lostCopy.length) {
     problems.push({ check: "copy-loss", detail: lostCopy.slice(0, 6).join(" / "), count: lostCopy.length });
   }
-  // Needles come only from contiguous non-Latin runs, so a Latin-only source
-  // yields none and this check silently has no opinion. 195 of 440 references
-  // are in that state (docs/reviews/t2-1-a5-latin-blindspot-2026-08-26-opus5.md),
-  // and a fully paraphrased body would pass every one of them. Say so instead
-  // of returning a clean PASS the worker will read as "A5 verified".
-  if (!copyRuns.size) {
-    unchecked.push({
-      check: "copy-loss",
-      detail: "원본에 비라틴 런이 없어 바늘이 0개다 — 이 브랜드에서 A5는 기계 검사되지 않았다. 발행 라틴 문자열을 손으로 전수 대조하라.",
-    });
-  }
+  // How much of the published copy this check actually looked at.
+  //
+  // The first version of this reported only the zero case, which was the same
+  // mistake one level up: a single needle silenced the warning while the rest
+  // went unexamined. furiosaai has exactly one non-Latin run, so the machine
+  // compared 1 of its 181 quoted strings and said nothing — a hand sweep then
+  // found 27 non-survivors. Full coverage and 1% coverage must not share a
+  // face, so the ratio is always reported rather than a boolean.
+  //
+  // Measured per quoted string, not per needle: needles are runs *inside*
+  // quotations, so counting them against quotations would not be a ratio.
+  coverage.push({
+    check: "copy-loss",
+    compared: quotedWithNeedle.size,
+    candidates: quotedAll.size,
+    detail: quotedWithNeedle.size === 0
+      ? "바늘 0개 — 이 브랜드에서 A5는 기계 검사되지 않았다. 발행 라틴 문자열을 손으로 전수 대조하라."
+      : `인용 문자열 ${quotedAll.size}개 중 ${quotedWithNeedle.size}개만 비교했다 — 나머지는 라틴이라 바늘이 되지 않는다. 라틴 전수 대조는 손으로 하라.`,
+  });
 
   if (/\[FILL IN/.test(doc)) problems.push({ check: "fill-in", detail: "placeholder in the portable doc" });
   // Only the concrete form ("[FILL IN: instruction]") must trace to the
@@ -322,7 +334,7 @@ export function gateTexts(legacy, doc, provenance, log) {
     problems.push({ check: "tool-prompt", detail: "tool-specific command or prompt wrapper in the portable body" });
   }
 
-  return { verdict: problems.length ? "MIGRATION_BLOCKED" : "PASS", problems, ...(unchecked.length ? { unchecked } : {}) };
+  return { verdict: problems.length ? "MIGRATION_BLOCKED" : "PASS", problems, ...(coverage.length ? { coverage } : {}) };
 }
 
 /* ------------------------------------------------------------- selftest --- */
@@ -346,22 +358,23 @@ export function selftest() {
     { name: "카피 삭제가 원장에 기록됨", doc: `${claims}\n#123456`, legacy: '본문 색은 #123456이고 CTA는 "지금 시작하기"다.', log: "| §10 | 삭제 — \"지금 시작하기\"는 가상 페르소나 인용이라 D2로 제거 |", mustNotFlag: "copy-loss" },
     { name: "원장이 인용만 하고 본문엔 없음", doc: `${claims}\n#123456`, legacy: '본문 색은 #123456이고 CTA는 "지금 시작하기"다.', log: "| §10 | 옮김 → Content: \"지금 시작하기\" |", mustFlag: "copy-loss" },
     { name: "콤마로 이어붙인 라벨 목록(오탐 금지)", doc: `${claims}\n자세히 보기 / 시작하기\n#123456`, legacy: '본문 색은 #123456이고 use는 "자세히 보기, 시작하기"다.', mustNotFlag: "copy-loss" },
-    // The blind spot itself, as a case: a Latin-only source must report that it
-    // was not checked, and must not report it when there was copy to check.
-    { name: "라틴 전용 원본 = 미검사 보고", doc: `${claims}\n#123456`, legacy: 'Body color is #123456 and the CTA reads "Get started".', mustReportUnchecked: "copy-loss" },
-    { name: "비라틴 있으면 미검사 아님", doc: `${claims}\n지금 시작하기\n#123456`, legacy: '본문 색은 #123456이고 CTA는 "지금 시작하기"다.', mustNotReportUnchecked: "copy-loss" },
+    // The blind spot as three cases. The middle one is furiosaai's shape and is
+    // the reason the boolean was replaced: one needle among many quotations
+    // used to silence the report entirely.
+    { name: "라틴 전용 원본 → 비교 0", doc: `${claims}\n#123456`, legacy: 'Body color is #123456 and the CTA reads "Get started".', coverage: { compared: 0 } },
+    { name: "바늘 하나 + 라틴 다수 → 부분 비교를 숨기지 않는다", doc: `${claims}\n지금 시작하기\n#123456`, legacy: '색 #123456. CTA는 "지금 시작하기"이고 라벨은 "Get started"·"Talk to us"·"Read the docs"다.', coverage: { compared: 1, candidates: 4 } },
+    { name: "전부 비라틴 → 전량 비교", doc: `${claims}\n지금 시작하기\n#123456`, legacy: '본문 색은 #123456이고 CTA는 "지금 시작하기"다.', coverage: { compared: 1, candidates: 1 } },
   ];
   return cases.map((c) => {
-    const { name, doc, mustFlag, mustNotFlag, mustReportUnchecked, mustNotReportUnchecked } = c;
+    const { name, doc, mustFlag, mustNotFlag, coverage } = c;
     const r = gateTexts(c.legacy ?? base.legacy, doc, base.provenance, c.log ?? base.log);
     const flagged = r.problems.map((p) => p.check);
-    const skipped = (r.unchecked ?? []).map((u) => u.check);
-    const pass =
-      mustReportUnchecked ? skipped.includes(mustReportUnchecked)
-      : mustNotReportUnchecked ? !skipped.includes(mustNotReportUnchecked)
+    const cov = (r.coverage ?? []).find((x) => x.check === "copy-loss");
+    const pass = coverage
+      ? Boolean(cov) && Object.entries(coverage).every(([k, v]) => cov[k] === v)
       : mustNotFlag ? !flagged.includes(mustNotFlag)
       : flagged.includes(mustFlag);
-    return { case: name, pass, flagged, ...(skipped.length ? { skipped } : {}) };
+    return { case: name, pass, flagged, ...(cov ? { coverage: `${cov.compared}/${cov.candidates}` } : {}) };
   });
 }
 
