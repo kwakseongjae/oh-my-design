@@ -7,8 +7,14 @@
 > grok-4.6 반박 3회(REVISE → REVISE → **FREEZE**)를 거쳤고, 판정 이후 **본문 규칙은
 > 더 고치지 않는다.** 결과를 본 뒤 임계값·가중치·결측 규칙을 바꾸지 않는다.
 >
-> **`RUBRIC_FROZEN_SHA` = `1e79bd247c13f5cc1e2b275dccdc9401f56ec861`** (기록 2026-08-26). §9 실행 게이트 11/11 DONE이며
+> **`RUBRIC_FROZEN_SHA` = `a052804740a932341643bada088dbb55df1ff3c6`** (기록 2026-08-26). §9 실행 게이트 11/11 DONE이며
 > 이 커밋이 그 상태를 봉인한다. **T3-3은 이제 열 수 있다.**
+>
+> 봉인 이력: `1e79bd24…`(최초) → `ceadd00c…`(SHA 기록) → **이 SHA**. 마지막 이동은 평가자
+> 교체가 닿지 않은 파생 자리 넷을 고친 커밋이다 — `scoring-order.json` 재생성, §3.2 표
+> 라벨 정정, TRANSCRIPTION §5 전제 재작성, `independenceLimits`에 §3.2a 추가. 임계값·가중치·
+> 결측 규칙·프롬프트·온도·시드·arm 순서는 세 커밋 내내 불변이다. grok-4.6 판정 Q1 APPROVE /
+> Q2·Q3·Q4 REVISE (`docs/reviews/t3-3-reseal-drift-2026-08-26-opus5.md`).
 >
 > 이전 기록: 다만 `RUBRIC_FROZEN_SHA`는 아직 기록하지 않았다. §9의 실행 게이트 중 평가자 등록,
 > `verify.json` 구현, arm 순서표처럼 **아직 존재하지 않는 것**들이 남아 있고, 그것들이

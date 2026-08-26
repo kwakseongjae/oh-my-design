@@ -190,7 +190,7 @@
   "docs/reviews/rubric-2026-08-23-verifier-confirm.md"
  ],
  "resealedAt": "2026-08-26",
- "resealNote": "평가자 sol→composer-2.5 교체(사용자 결정). 근거 docs/reviews/t3-3-reseal-proposal-2026-08-26-opus5.md",
- "RUBRIC_FROZEN_SHA": "1e79bd247c13f5cc1e2b275dccdc9401f56ec861",
+ "resealNote": "평가자 sol→composer-2.5 교체(사용자 결정). 근거 docs/reviews/t3-3-reseal-proposal-2026-08-26-opus5.md · 2026-08-26 파생 드리프트 정정으로 봉인 SHA 이동(1e79bd24 → a0528047). 근거 docs/reviews/t3-3-reseal-drift-2026-08-26-opus5.md",
+ "RUBRIC_FROZEN_SHA": "a052804740a932341643bada088dbb55df1ff3c6",
  "frozenAt": "2026-08-26"
 }
