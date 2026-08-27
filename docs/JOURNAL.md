@@ -1,3 +1,98 @@
+## 2026-08-28 — 개정 goorm FAIL 1
+- 한 일: Scope ¶3에 §11 `open-sourced as **Vapor UI**, a WCAG-compliant React component library`를 원본 표현으로 복원. 줄 수 526 불변, B2a 26=26.
+- 열린 것: 없음. 원본 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 28 마감(원장·wave-close) 또는 남은 개정.
+
+## 2026-08-28 — 개정 google FAIL 1
+- 한 일: Scope 15행에 §11 `Product Sans addressed product lockups after the 2015 identity update`를 원본 표현으로 복원. 줄 수 388 불변, B2a 16=16.
+- 열린 것: 없음. 원본 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 28 남은 개정(goorm·gogolook).
+
+## 2026-08-28 — 개정 gogoro FAIL 2
+- 한 일: Scope ¶4에 §11 구독·교환 모델(`monthly subscription`/`Gogoro Network`/`depleted battery`)과 확장 지리(`Asia`/`Middle East`/`Latin America`)를 원본 표현으로 복원. 줄 수 502 불변, B2a 24=24.
+- 열린 것: 없음. 원본 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 28 남은 개정(goorm·google·gogolook).
+
+## 2026-08-28 — 개정 gogolook
+- 한 일: 웨이브 28 FAIL 1 개정. Premium Type role에 복제된 `1.0`을 `—`로 되돌림(Pill만 유지). DESIGN `1.0` 2→1.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 28 남은 개정 gogoro·google·goorm.
+
+## 2026-08-28 — 의미 검토 gogoro
+- 한 일: 독립 의미 검토(A·C·D, 웨이브 27 추가형 7–9 포함). YAML 키경로·C2 쌍닫힘·sibling 부재·페르소나 파생물은 실측 PASS. 결함 2: 원본 §11 `monthly subscription`/`Gogoro Network`와 `Asia`/`Middle East`/`Latin America`가 산출 4파일 0.
+- 열린 것: 개정으로 닫힘.
+- 다음: 웨이브 28 남은 개정.
+
+## 2026-08-28 — 의미 검토 goorm
+- 한 일: 독립 의미 검토(A·C·D). YAML 키경로·C2 쌍닫힘·sibling 융합·페르소나 파생물은 실측 PASS. 결함 1: 원본 §11 `React component library`가 산출 4파일 0.
+- 열린 것: 개정 대기. 산출물 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 28 나머지 의미 검토 또는 goorm 개정.
+
+## 2026-08-28 — 의미 검토 goodpatch
+- 한 일: 독립 의미 검토(A·C·D, 웨이브 27 추가형 7–9 포함). YAML 키경로·연혁 고유명사·C2 쌍닫힘·sibling 비전용·페르소나 파생물·F2 계수 실측 PASS.
+- 열린 것: 없음. 산출물 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 28 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 google
+- 한 일: 독립 의미 검토(A·C·D). YAML 키경로·C2·sibling 융합·페르소나 파생물은 실측 PASS. 결함 1: 원본 §11 `2015 identity update`가 산출 4파일 0.
+- 열린 것: 개정으로 닫힘.
+- 다음: 웨이브 28 남은 개정.
+
+## 2026-08-28 — 의미 검토 gogolook
+- 한 일: 독립 값 계열 검토(A·C·D). 판정 FAIL 1 — button `1.0`을 Premium Type role에 복제(A4/A1). 산출 미수정.
+- 열린 것: 개정 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 28 나머지 의미 검토 또는 gogolook 개정.
+
+## 2026-08-28 — F3 감사 goorm
+- 한 일: B2a·E2 전담 감사. 한정 24→26=26. 로그 목적지·`100개 추가` 출처 교정. `AUDIT_DONE fixes=15`.
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님. 원본·sibling 미수정.
+- 다음: 웨이브 28 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 google
+- 한 일: B2a·E2 전담 감사. 본문 한정 9→16, 원장 9→16. 로그 거짓 2차 목적지(경계 전문 Foundations 0, YAML states DESIGN 0). `AUDIT_DONE fixes=16`.
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 28 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 gogolook
+- 한 일: B2a·E2 전담 감사. Spacing·Family 한정 신설(15→17=17). 로그 포인터·E2d RGB 단언 교정. `AUDIT_DONE fixes=12`.
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님. 원본·sibling 미수정.
+- 다음: 웨이브 28 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 goodpatch
+- 한 일: B2a·E2 전담 감사. 본문 한정 22=22 유지. 로그 거짓 2차 목적지 2계열 교정(`box-shadow: none` provenance 0, `グッドパッチ` Identity 0). `AUDIT_DONE fixes=4`.
+- 열린 것: 본문·원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 28 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 gogoro
+- 한 일: B2a·E2 전담 감사. Elevation glow 한정 확장, 원장 행 15 동기화, 로그 `full: 9999` 계수·green/`2026-05-19` 이중 목적지·§13 무식별. `AUDIT_DONE fixes=6`.
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 28 형제 F3 또는 의미 검토.
+
+## 2026-08-28 — T2 이관 goodpatch
+- 한 일: legacy `web/references/goodpatch/DESIGN.md`를 Core v2로 이관. 규칙집 v12. 세 파일 작성, F1·F2 수행, gate PASS.
+- 열린 것: 원본 미수정. 카탈로그 채택 아님. F3 감사·의미 검토는 하네스.
+- 다음: 웨이브 28 형제 이관 또는 감사.
+
+## 2026-08-28 — T2 이관 goorm
+- 한 일: `web/references/goorm/DESIGN.md`를 Core v2로 이관. Vapor UI 발행 사양 한정, §13 페르소나 삭제(무식별), 무출처 커브 3 삭제, C2 역할별 L/E/S. 게이트 PASS. SHA `f5124343…`.
+- 열린 것: F3 감사·의미 검토 대기. 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 28 남은 브랜드 이관 또는 F3.
+
+## 2026-08-28 — T2 이관 gogolook
+- 한 일: legacy `web/references/gogolook/DESIGN.md`를 Core v2로 이관. 규칙집 v12. 세 파일 작성, F1·F2·A5a 수행, gate PASS.
+- 열린 것: 원본 미수정. 카탈로그 채택 아님. F3 감사·의미 검토는 하네스.
+- 다음: 웨이브 28 형제 이관 또는 감사.
+
+## 2026-08-28 — T2 이관 google
+- 한 일: legacy `web/references/google/DESIGN.md`를 Core v2로 이관. 규칙집 v12. 세 파일 작성, F1·F2 수행, gate PASS.
+- 열린 것: 원본 미수정. 카탈로그 채택 아님. F3 감사·의미 검토는 하네스.
+- 다음: 웨이브 28 형제 이관 또는 감사.
+
+## 2026-08-28 — T2 이관 gogoro
+- 한 일: legacy `web/references/gogoro/DESIGN.md`를 Core v2로 옮김. 규칙집 v12. B2a 24=24, C2 역할 판단, 무출처 커브 삭제, §13 무식별.
+- 열린 것: gate PASS, portable_core true. 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 28 형제 이관 또는 F3.
+
 ## 2026-08-28 — 웨이브 27 개정 gaudiy
 - 한 일: 확정 4건만 고침. Fanlink 능력 목록 복원, sibling `measures 1440px` 제거, `mobile app` 삭제, 목적지 loading 폐쇄.
 - 열린 것: B2a 22=22, dest 453행 불변, 원본 무변경.
