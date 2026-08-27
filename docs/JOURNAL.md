@@ -1,3 +1,83 @@
+## 2026-08-28 — 개정 govuk
+- 한 일: 웨이브 29 FAIL 3만 수정. vestibular/epilepsy 복원, `:97` sibling 융합 제거, native application/back-office 삭제. B2a 25=25. 줄 600→599, 포인터 전수 갱신.
+- 열린 것: 없음. 원본 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 개정(있으면) 또는 웨이브 클로즈.
+
+## 2026-08-28 — 개정 greeting
+- 한 일: 웨이브 29 FAIL 1 / D1만 개정. `measures 1440px` 부정문을 본문·원장에서 삭제. Desktop `1024-1440px` 범위는 유지.
+- 열린 것: 없음. 원본·sibling 미수정. B2a 26=26. 줄 수 528 불변.
+- 다음: 웨이브 29 남은 개정 또는 wave-close.
+
+## 2026-08-28 — 의미 검토 govuk
+- 한 일: 독립 검토(A·C·D, 웨이브 27 추가형 7–9 포함). YAML 키경로·§11·C2 쌍닫힘·페르소나 본문 0·F2 계수는 실측 PASS.
+- 열린 것: FAIL 3 — §15 vestibular/epilepsy 소실, `:98` sibling `link token` 융합 귀속, D1 `native application`/`back-office`. 산출물 미수정.
+- 다음: 개정 또는 웨이브 29 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 grip
+- 한 일: 독립 검토(A·C·D). YAML 키경로·§11·C2·페르소나·sibling 융합·F2 포인터는 실측 PASS.
+- 열린 것: 없음. 산출물 미수정.
+- 다음: 웨이브 29 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 greeting
+- 한 일: 독립 검토(A·C·D). YAML 키경로·§11·C2·페르소나·sibling 융합은 실측 PASS. D1 `:452` `measures 1440px` 부정문 FAIL 1.
+- 열린 것: 개정 대기. 산출물 미수정.
+- 다음: 웨이브 29 나머지 의미 검토 또는 greeting 개정.
+
+## 2026-08-28 — 의미 검토 greencar
+- 한 일: 독립 의미 검토(A·C·D, 웨이브 27 추가형 7–9 포함). YAML 키경로·연혁 고유명사·C2 쌍닫힘·sibling 비전용·페르소나 파생물·F2 계수 실측 PASS.
+- 열린 것: 없음. 산출물 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 greenvines
+- 한 일: 웨이브 29 greenvines 독립 의미 검토(A·C·D, 웨이브 27 추가형 포함). PASS. 산출 미수정.
+- 열린 것: 없음.
+- 다음: 웨이브 29 나머지 브랜드 의미 검토.
+
+## 2026-08-28 — F3 greenvines B2a·E2
+- 한 일: 산출물·원본·sibling만 보고 B2a·E2 감사. 본문 한정 22→26, 원장 26=26. 로그 `9999`·`box-shadow: none` 목적지 교정. `audit-log.md` 기록.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경.
+- 다음: 웨이브 29 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 greeting B2a·E2
+- 한 일: 산출물·원본·sibling만 보고 B2a·E2 감사. 본문 한정 24→26, 원장 26=26. 로그 목적지·`measures 1440px` dest·Named gaps 교정. `audit-log.md` 기록.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경.
+- 다음: 웨이브 29 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 greencar
+- 한 일: B2a·E2 전담 감사. 본문 한정 25→27, 원장 27=27. 로그 `9999`·`motion-standard` 계수 교정. `AUDIT_DONE fixes=10`.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 grip
+- 한 일: B2a·E2 전담 감사. 본문 한정 20→22(Spacing·Family 신설), 원장 22=22. 로그 provenance 포인터 다수 교정(부분문자열·빈 줄).
+- 열린 것: 없음. 토큰·표·구조·원본 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 브랜드 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 govuk
+- 한 일: B2a·E2 전담 감사. 본문 한정 24→26, 원장 26=26. 로그 목적지 14행 실측 교정. `AUDIT_DONE fixes=19`.
+- 열린 것: 없음. 토큰·표·구조·원본 미수정.
+- 다음: 웨이브 29 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — T2 이관 greeting
+- 한 일: legacy `web/references/greeting/DESIGN.md`를 Core v2로 이관. 산출 `docs/design-md-weight/migrated/greeting/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v12. B2a 24=24. gate PASS.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 브랜드 이관 또는 F3.
+
+## 2026-08-28 — T2 이관 grip
+- 한 일: legacy `web/references/grip/DESIGN.md`를 Core v2로 이관. 산출 `docs/design-md-weight/migrated/grip/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v12. B2a 20=20. gate PASS.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 브랜드 이관 또는 F3.
+
+## 2026-08-28 — T2 이관 greencar
+- 한 일: legacy `web/references/greencar/DESIGN.md`를 Core v2로 이관. 산출 `docs/design-md-weight/migrated/greencar/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v12. B2a 25=25. gate PASS.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 브랜드 이관 또는 F3.
+
+## 2026-08-28 — T2 이관 govuk
+- 한 일: legacy `web/references/govuk/DESIGN.md`를 Core v2로 이관. 산출 `docs/design-md-weight/migrated/govuk/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v12. B2a 24=24, §11 연혁 원문 착지, `full: 1` Shape 유지.
+- 열린 것: F3 감사 대기. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 브랜드 또는 govuk F3.
+
 ## 2026-08-28 — 개정 goorm FAIL 1
 - 한 일: Scope ¶3에 §11 `open-sourced as **Vapor UI**, a WCAG-compliant React component library`를 원본 표현으로 복원. 줄 수 526 불변, B2a 26=26.
 - 열린 것: 없음. 원본 미수정. 카탈로그 채택 아님.
