@@ -5,6 +5,9 @@
 #   claim 자기부정으로 오인)으로 진단됨. 산출물 결함 아님. 검사 수정 후 재확인 예정.
 # [2026-08-26] 적합성 검사 오탐(dell·dmm·drnow·easywallet) = 해소. 검사 수정 후 113건 전량 portable_core 통과.
 #   근거 docs/reviews/t2-1-conformance-fp-2026-08-26-opus5.md
+# [2026-08-28] 웨이브 23~29의 31 id가 누락돼 있었다 — `wave-close.mjs`가 이 파일을 갱신하지 않아
+#   「웨이브 닫힐 때만 추가」가 사람 손에 남아 있었고, 여섯 웨이브 동안 아무도 하지 않았다.
+#   각 웨이브 판정문(docs/reviews/t2-1-wave*.md)의 양 레인 통과 기록을 근거로 일괄 추가한다.
 musinsa
 karrot
 29cm
@@ -123,3 +126,34 @@ evaair
 expo
 familymart-tw
 farfetch
+fastcampus
+ferrari
+finda
+firstory
+fitpet
+flex
+flo
+framer
+freee
+friendliai
+frip
+fubon
+fugle
+funnow
+furiosaai
+gangnamunni
+gaudiolab
+gaudiy
+genie
+gitlab
+gmarket
+gogolook
+gogoro
+goodpatch
+google
+goorm
+govuk
+greencar
+greenvines
+greeting
+grip
