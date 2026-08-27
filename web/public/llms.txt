@@ -579,6 +579,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - [Builder](https://oh-my-design.kr/builder): generate DESIGN.md from any bundled reference
 - [Design Systems catalog](https://oh-my-design.kr/design-systems): browse all references
 - [npm package](https://www.npmjs.com/package/oh-my-design-cli)
+- [Blog](https://oh-my-design.kr/blog): release notes and what held up in the harness — Korean canonical with English versions at /blog/en, RSS at /blog/feed.xml
 - [Retired connector notice](https://oh-my-design.kr/docs/connector): the old MCP transport is archived; skills use local catalogs and raw DESIGN.md endpoints
 - [GitHub](https://github.com/kwakseongjae/oh-my-design)
 - [License: MIT](https://github.com/kwakseongjae/oh-my-design/blob/main/LICENSE)

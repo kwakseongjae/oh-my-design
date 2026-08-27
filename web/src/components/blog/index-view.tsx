@@ -6,7 +6,9 @@
 
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { BlogFooter } from "./blog-footer";
 import { BlogHeader } from "./blog-header";
+import { BlogHtmlLang } from "./blog-lang";
 import { BLOG_CHROME, formatPostDate } from "@/lib/blog/i18n";
 import { OTHER_LOCALE, type PostLocale } from "@/lib/blog/locales";
 import { listPosts } from "@/lib/blog/posts";
@@ -18,7 +20,8 @@ export function BlogIndexView({ locale }: { locale: PostLocale }) {
   const other = OTHER_LOCALE[locale];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
+      <BlogHtmlLang locale={locale} />
       <BlogHeader locale={locale} switchTo={blogIndexHref(other)} />
 
       <section className="mx-auto max-w-3xl px-4 pt-12 pb-8 sm:px-6">
@@ -26,7 +29,7 @@ export function BlogIndexView({ locale }: { locale: PostLocale }) {
           href={siteHref("/")}
           className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
-          <ArrowLeft className="h-3.5 w-3.5" /> {chrome.home}
+          <ArrowLeft className="h-3.5 w-3.5" /> {chrome.mainSite}
         </Link>
         <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
           {chrome.postCount(posts.length)}
@@ -81,6 +84,10 @@ export function BlogIndexView({ locale }: { locale: PostLocale }) {
           ))}
         </ol>
       </section>
+
+      <div className="mt-auto">
+        <BlogFooter locale={locale} />
+      </div>
     </div>
   );
 }

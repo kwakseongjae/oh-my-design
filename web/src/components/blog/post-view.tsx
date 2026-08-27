@@ -5,7 +5,9 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Markdown } from "@/components/markdown";
+import { BlogFooter } from "./blog-footer";
 import { BlogHeader } from "./blog-header";
+import { BlogHtmlLang } from "./blog-lang";
 import { BLOG_CHROME, formatPostDate } from "@/lib/blog/i18n";
 import { OTHER_LOCALE, type PostLocale } from "@/lib/blog/locales";
 import type { BlogPost } from "@/lib/blog/posts";
@@ -28,7 +30,8 @@ export function BlogPostView({
     : undefined;
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
+      <BlogHtmlLang locale={post.locale} />
       <BlogHeader locale={locale} switchTo={switchTo} />
 
       <article className="mx-auto max-w-3xl px-4 pt-12 pb-24 sm:px-6" lang={post.locale}>
@@ -81,6 +84,10 @@ export function BlogPostView({
           </Link>
         </div>
       </article>
+
+      <div className="mt-auto">
+        <BlogFooter locale={locale} />
+      </div>
     </div>
   );
 }
