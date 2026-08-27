@@ -1,3 +1,8 @@
+## 2026-08-27 (opus5) — main CI red 수리, Dependabot 폐지
+- 한 일: `ee445abc`가 테스트가 경로로 읽는 `reports/`를 untrack해 클린 체크아웃만 실패하던 것을 수리 — `reports/.gitignore`(`/*`+negation 115) 신설, `GATE_BOUND`를 파생으로 교체(`--sync-ignore`), 395파일 재추적, custody 테스트 신설. 워크트리 시뮬에서 137 failed → 0. `.github/dependabot.yml` 삭제 + PR 16건 close.
+- 열린 것: 스위트 중 `npm run build`가 추적 산출물을 덮어쓰는 기존 오염(컨트롤에서도 재현)과 `readiness-generator` 15s 타임아웃 여유. `.gitignore` negation 무효는 원래부터였고 `3b14d6b1`의 `add -f`가 그 증상이었다.
+- 다음: 이 브랜치가 main에 머지돼야 스케줄 실패 메일이 멎는다. 커밋은 사용자 지시 대기.
+
 ## 2026-08-26 (opus5) — 웨이브 24 개정 finda (B1 분류 승격)
 - 한 일: sibling의 h3 구조 관측이 원본 사실로 승격돼 있던 `:13`·`:434`를 처리 (a)로 시정 — 원본 §10 톤 표 분류로 복귀, h3 결합은 provenance로.
 - 열린 것: 같은 계열(값이 아닌 **분류**의 도메인 이동)은 게이트·sibling-only 값 grep 어느 쪽도 못 잡는다. 다른 sibling 채택 건 점검 미실시.
