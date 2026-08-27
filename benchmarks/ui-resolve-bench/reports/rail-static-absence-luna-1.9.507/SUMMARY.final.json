@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.510",
+  "experiment_id": "rail-static-absence-luna-1.9.507",
+  "status": "STOPPED_NO_PROMOTION",
+  "provider_cells_completed": 2,
+  "provider_cells_frozen": 4,
+  "provider_retries": 0,
+  "promotion": false,
+  "stop_reason": "candidate_proof_reliability_3_of_3_mathematically_impossible",
+  "paired_r1": {
+    "control": {"score": 85, "ui_resolved": true, "proof_compliant": true, "wall_time_ms": 259353, "provider_tokens": 580237},
+    "candidate": {"score": 85, "ui_resolved": true, "proof_compliant": false, "wall_time_ms": 269608, "provider_tokens": 719791},
+    "objective_delta": 0,
+    "wall_time_ratio": 1.0395,
+    "provider_token_ratio": 1.2405
+  },
+  "reliability": {
+    "required_candidate_passes": 3,
+    "observed_candidate_passes": 0,
+    "maximum_possible_candidate_passes": 2,
+    "promotion_reachable": false
+  },
+  "intervention_learning": {
+    "static_absence_guardrail": "validated_observationally",
+    "candidate_static_closure": "passed_once_without_neutral_value_substitution",
+    "promotion_result": "rejected",
+    "new_failure_mode": "A row selector introduced by the product edit cannot establish deterministic pre-edit computed typography."
+  },
+  "frozen_cells": [
+    "luna-rail-r2-candidate",
+    "luna-rail-r2-control",
+    "luna-rail-r3-control",
+    "luna-rail-r3-candidate"
+  ],
+  "tokens_to_target_observed_minimum": 56409193,
+  "usage_unavailable_cells": 6,
+  "next": "Provider-free repair: reject row and carrier selectors whose anchors do not exist in the snapshotted pre-edit product, emit a distinct selector-provenance failure reason, and verify with the frozen candidate artifact plus focused tests before exact pinning."
+}

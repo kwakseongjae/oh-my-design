@@ -1,0 +1,73 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.661",
+  "experiment_id": "subsea-cable-guarded-plan-packet-luna-1.9.659",
+  "status": "PREPARED_PROVIDER_ZERO_REMOTE_EXECUTION_DEFERRED",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "output_root": "/private/tmp/u19660",
+  "vendors_root": "/private/tmp/u19660-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "locked_plan_sha256": "c6aa067ecbd6b9963b71cb9c741e200a0a8f4b9568f596577a2447972bfb387b",
+  "prepared_locked_copy_sha256": "be8c245af01c8a40724e56be0f96462b6c7a1888352e39b8d9d62d461fb41888",
+  "prepared_state_sha256": "2b445d749e95bc394847eca9d42e35698300ac89bc5ab08c88fa8bafe0d592d0",
+  "equality_attestation": {
+    "core_prompt_equal": 6,
+    "full_prompt_equal": 6,
+    "starter_equal": 6,
+    "product_tree_equal": 6,
+    "runtime_equal": 6,
+    "model_equal": 6,
+    "effort_equal": 6,
+    "timeout_equal": 6,
+    "core_prompt_sha256": "3676c73059cb6c490e5db9c945f99588bf293cdf93a932376458c682db800e34",
+    "full_prompt_sha256": "9c8fe7018c75b423648eddd00b1af94c431c88ecefa52dce5171ce8f1a1c1cd7",
+    "starter_sha256": "896798c1679fcfcaae25c0d71b3fbf16d97f03a1ba699537a11a935db3feac73",
+    "product_tree_sha256": "896798c1679fcfcaae25c0d71b3fbf16d97f03a1ba699537a11a935db3feac73",
+    "model_id": "gpt-5.6-luna",
+    "effort": "high",
+    "timeout_seconds": 900
+  },
+  "source_attestation": {
+    "control": {
+      "commit": "7df5be63beff5083265e0013f2f51f72e8c4bef9",
+      "detached": true,
+      "clean": true,
+      "prepared_skill_sha256": "a29d55f157934a7208bd40c27d6d1352c28efeb86af29c5d73dc1bd47f82791f"
+    },
+    "candidate": {
+      "commit": "1a3beca8279d36e10c457760e11b582e6a9a08fa",
+      "detached": true,
+      "clean": true,
+      "prepared_skill_sha256": "2a7bfb06739196543c7f281305e9420e2b668ea16da601232fbf8363cb7e0a93"
+    }
+  },
+  "isolated_delta_guardrail": {
+    "shared_complete_non_mutating_diagnosis": true,
+    "shared_measured_plan_attempts_max": 1,
+    "shared_measured_browser_rerun_allowed": false,
+    "candidate_hash_guarded_packet": true,
+    "candidate_operator_input_keys_allowed": ["accessible_names"],
+    "candidate_packet_generation_mutates_artifact": false,
+    "candidate_apply_invocations_max": 1,
+    "candidate_rejects_drift_tamper_and_irreconcilable": true,
+    "all_three_control_cells_match": true,
+    "all_three_candidate_cells_match": true
+  },
+  "untouched_attestation": {
+    "cells_without_run_record": 6,
+    "cells_without_score": 6,
+    "prepared_product_matches_starter": 6
+  },
+  "execution_hold": {
+    "remote_execution_authorized": false,
+    "next_cell_when_reauthorized": "luna-cable-r1-control",
+    "max_new_cells": 1,
+    "retry": false,
+    "inter_cell_delay_seconds": 120,
+    "prepared_workspaces_must_remain_untouched": true
+  },
+  "claim_boundary": "Six exact cells are prepared and equal, but no model has seen the task. This preparation establishes experimental parity only; it does not measure control or candidate transfer.",
+  "next": "Keep all six cells untouched. Continue provider-free 2.0.0 work locally; execute a cell only after the no-remote constraint changes."
+}

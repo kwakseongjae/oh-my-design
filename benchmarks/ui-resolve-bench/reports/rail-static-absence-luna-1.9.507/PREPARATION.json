@@ -1,0 +1,34 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.508",
+  "experiment_id": "rail-static-absence-luna-1.9.507",
+  "status": "SIX_CELLS_PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19507",
+  "vendors_root": "/private/tmp/u19507-vendors",
+  "locked_plan_sha256": "4b29635f1b0da5bd8d69209dd3324cfeb88b56cd7e5dcbfbf661b71dce793679",
+  "equality": {
+    "scheduled_cells": 6,
+    "prepared_cells": 6,
+    "core_prompt_equal": 6,
+    "prompt_equal": 6,
+    "starter_equal": 6,
+    "product_tree_equal": 6,
+    "runtime_equal": 6,
+    "model_equal": 6,
+    "effort_equal": 6,
+    "timeout_equal": 6
+  },
+  "source_attestation": {
+    "control": {"commit":"14ed77650e7353e4f98dcb105660266102c01abc","detached":true,"clean":true},
+    "candidate": {"commit":"86546d5af67d4a71f0b6a867ec3869ec299f3159","detached":true,"clean":true}
+  },
+  "installed_source_sha256": {
+    "control_skill":"cb9d4f2218ef26f1cf1abbb2e65750a4560239a94e05d0a793885d76f9f739bc",
+    "candidate_skill":"f71004fba4b8552a3c2c61fe25168c5d64be5bcaf07e4f5a08f5533b591dfdea",
+    "shared_browser_runner":"bbd1b2629037381873d230ce15c07a1b97275fc04ab327e51f0d6df1d4b309b3",
+    "control_artifact_helper":"4dff72e5034465a780f5a33f4823aee061934401b0d0006622c9d8335711ea67",
+    "candidate_artifact_helper":"4005623c6156e5f59981bb74a561d0baa04ea13eae10dd80e39fa3745a5230b7"
+  },
+  "next": "Run luna-rail-r1-control once with Luna/high and no retry; runtime preflight must confirm exact named consumer browser and auth before provider execution."
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.531",
+  "experiment_id": "observatory-measured-fit-plan-luna-1.9.528",
+  "cell_id": "luna-observatory-r1-candidate",
+  "status": "VALID_UI_RESOLVED_PROOF_PASSED",
+  "provider_calls": 1,
+  "runtime": "codex",
+  "model_id": "gpt-5.6-luna",
+  "effort": "high",
+  "objective": {
+    "score": 85,
+    "max": 85,
+    "ui_resolved": true
+  },
+  "efficiency": {
+    "wall_time_seconds": 487.89,
+    "provider_tokens": 958166,
+    "input_tokens": 932312,
+    "cached_input_tokens": 863744,
+    "output_tokens": 25854,
+    "paired_wall_time_ratio": 0.9779,
+    "paired_provider_tokens_ratio": 0.8235
+  },
+  "objective_observation": {
+    "accessibility": "pass",
+    "desktop_overflow_px": 0,
+    "mobile_overflow_px": 0,
+    "narrow_320_overflow_px": 0,
+    "actual_200pct_overflow_px": 0,
+    "clipped_controls_all_viewports": 0,
+    "fragmented_tokens_all_viewports": 0,
+    "serious_or_critical_axe_violations": 0
+  },
+  "measured_fit_plan": {
+    "pass": true,
+    "state": "measured",
+    "recorded_attempts": 1,
+    "oracle": "intrinsic-nowrap-text-width",
+    "conditions": ["390", "320", "200pct"],
+    "rows": 10,
+    "planning_reserve_css_px": 16,
+    "largest_required_carrier_inner_width_css_px": 692.5781,
+    "first_invalid_snapshot_attempts": 1,
+    "failed_plan_invocations_before_valid_snapshot": 1
+  },
+  "proof_trace": {
+    "product_edits": 1,
+    "product_revisions": 1,
+    "static_closures": 1,
+    "post_edit_browser_mechanisms": 1,
+    "browser_recovery": 0,
+    "duplicate_static_closure": 0,
+    "verification_after_ready": 0,
+    "trace_compliance": true,
+    "shipped_runner_invoked": true,
+    "attached_existing": true,
+    "launched_browser": false,
+    "measured_conditions": ["390", "320", "200pct"]
+  },
+  "artifact_gate": {
+    "pass": true,
+    "reasons": [],
+    "static_closure_state": "passed",
+    "browser_attempts": 1,
+    "browser_outcome": "measured",
+    "closure_state": "closed",
+    "unresolved_acceptance_debts": 0
+  },
+  "root_cause": {
+    "outcome": "The measured plan supplied exact 16px-reserved carrier budgets before the only product edit; the final product closed every responsive, contrast, and evidence gate.",
+    "execution_friction": "The first snapshot was rejected because comparison-scroll rows were bound to broad carriers. One premature plan invocation failed before the model corrected the still-unedited inventory, then a valid snapshot and measured plan closed.",
+    "classification": "valid paired candidate success with pre-edit inventory-authoring friction"
+  },
+  "tokens_to_target_observed_minimum": 62511936,
+  "tokens_to_target_usage_unavailable_cells": 6,
+  "next": "Continue the preregistered balanced order with luna-observatory-r2-candidate after fixed 120-second pacing; no retry."
+}

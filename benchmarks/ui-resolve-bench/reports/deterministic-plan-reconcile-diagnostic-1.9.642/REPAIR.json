@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.642",
+  "status": "PROVIDER_FREE_REPAIR_GREEN",
+  "provider_calls": 0,
+  "source_failure": {
+    "experiment_id": "cold-chain-plan-reconcile-luna-1.9.637",
+    "artifact_only_reconcile_invocations": 5,
+    "artifact_only_reconcile_successes": 0,
+    "failure_mode": "the validator exposed one semantic conflict per invocation, causing iterative artifact guessing and product mutation without a successful plan close"
+  },
+  "repair": {
+    "deterministic_command": "plan-diagnose",
+    "non_mutating": true,
+    "browser_rerun_allowed": false,
+    "outputs": ["ready", "patch-required", "irreconcilable"],
+    "complete_patch_in_one_response": true,
+    "aggregate_issue_list_in_one_response": true,
+    "plan_reconcile_rejects_non_ready_diagnosis": true,
+    "product_mutation_before_ready_forbidden": true,
+    "empty_host_state_directory_is_not_browser_proof": true
+  },
+  "frozen_artifact_replay": {
+    "status": "irreconcilable",
+    "issues": [
+      {
+        "code": "nested-registered-carrier",
+        "row_id": "decision-evidence",
+        "carrier_id": "excursion-decision",
+        "contained_carrier_ids": ["decision-target-comparison"]
+      }
+    ],
+    "compatible_patch_rows_also_reported": ["assessor-note-control"],
+    "would_abort_before_product_edit": true
+  },
+  "verification": {
+    "focused_tests_passed": 60,
+    "python_compile": "pass",
+    "typescript_lint": "pass",
+    "skill_quick_validate": "pass",
+    "diff_check": "pass"
+  },
+  "claim_boundary": "This is a provider-free deterministic repair. It proves aggregate diagnosis and fail-closed behavior on the frozen artifact, not model transfer reliability.",
+  "next": "Pin the exact repaired source, then create a genuinely unseen task whose pre-edit carrier graph can distinguish ready, patch-required, and irreconcilable behavior before any provider exposure."
+}

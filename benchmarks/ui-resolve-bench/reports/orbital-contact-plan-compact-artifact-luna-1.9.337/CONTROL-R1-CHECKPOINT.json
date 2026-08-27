@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.339",
+  "experiment_id": "orbital-contact-plan-compact-artifact-luna-1.9.337",
+  "cell_id": "luna-orbit-r1-control",
+  "disposition": "matrix-frozen-infrastructure-invalid",
+  "retry": false,
+  "candidate_cells_executed": 0,
+  "provider": {
+    "model": "gpt-5.6-luna",
+    "effort": "high",
+    "wall_time_ms": 763451,
+    "input_tokens": 1964660,
+    "cached_input_tokens": 1859840,
+    "output_tokens": 39394,
+    "reasoning_output_tokens": 13331,
+    "accounted_total_tokens": 2004054
+  },
+  "objective": {
+    "deterministic_score": 75,
+    "deterministic_max": 85,
+    "ui_resolved": false,
+    "responsive_gate": false,
+    "accessibility_gate": false
+  },
+  "proof": {
+    "proof_execution_gate": true,
+    "host_policy_gate": false,
+    "host_policy_reason": "installed-policy-delivery-incomplete",
+    "delivery_ready_state_files": 0,
+    "delivery_blocked_state_files": 1,
+    "browser_attempts": 1,
+    "duplicate_static_closure_violations": 2
+  },
+  "root_cause": {
+    "class": "artifact-host-state-divergence",
+    "artifact_registered_rows": 34,
+    "host_registered_rows": 33,
+    "artifact_browser_outcome": "unresolved",
+    "observed_browser_command_count": 1,
+    "summary": "The control manually authored a compact artifact whose declared row cardinality diverged from the installed host state and marked a performed browser attempt as daemon-unresolved. The installed policy therefore kept delivery blocked."
+  },
+  "evidence_sha256": {
+    "run_result": "d622c2d5934c27e0a6cdd20b5091d90b304da006e60ec5e1a98e972828b7200a",
+    "score": "1783b9a5ad012e3f544a9662574a1ae1a36b1b8964e7e9d7abf44c477ebd42be",
+    "host_policy_state": "9c4b4c009c053262c696d5aa735795192a61da295de2b52a5b0091e66b51a5dc",
+    "reflow_closure": "1ecc7a5ba9ff21121779f04461bd2b10971086eefd003889650b0af64e8bc481",
+    "proof_policy_state": "00dc9be6ced69c6a71bd3f278ec61d4ebc1724992896f67464a116b9216f6096",
+    "execution_state": "0e1380db390528e3d6e1bde9640229a990aaa1f9a66202e0bcee9a6b44670346"
+  },
+  "next": "Repair benchmark validity classification so unavailable or inconsistent host installation remains infrastructure-invalid while an installed policy that correctly blocks an agent-authored invalid artifact is recorded as a valid system failure. Re-preregister on a fresh unseen task; do not reuse or resume /private/tmp/u19337."
+}

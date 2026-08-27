@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.639",
+  "experiment_id": "cold-chain-plan-reconcile-luna-1.9.637",
+  "status": "PREPARED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19638",
+  "vendors_root": "/private/tmp/u19638-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "locked_plan_sha256": "5dbb18647c84033a65849c9d8a2de93220beab3984545d30e979924bfaeba863",
+  "prepared_state_sha256": "85e0d95dc8d653af152231eb8776495ebbfa78dfc3175fb1136c8d2ec7455638",
+  "equality_attestation": {
+    "core_prompt_equal": 6,
+    "starter_equal": 6,
+    "product_tree_equal": 6,
+    "runtime_equal": 6,
+    "model_equal": 6,
+    "effort_equal": 6,
+    "timeout_equal": 6
+  },
+  "source_attestation": {
+    "control": {
+      "commit": "4ac756df227d4f0cf42dc77d722819242d07d6b8",
+      "detached": true,
+      "clean": true,
+      "skill_sha256": "e8c3081c4c09a61c629ed3b2bc173ab86424518087e680b315c38aaff50e4bbb"
+    },
+    "candidate": {
+      "commit": "e4b0c890ccdcc1e736cc70babcfbc1a5b72b7391",
+      "detached": true,
+      "clean": true,
+      "skill_sha256": "e17a2157b19745623a9b1910b095d5bf388e060c4bf9063bf3684e0c1077be1c"
+    }
+  },
+  "isolated_delta_guardrail": {
+    "shared_atomic_snapshot_bootstrap": true,
+    "shared_zero_attempt_validation": true,
+    "shared_context_client_width": true,
+    "shared_carrier_offset_width": true,
+    "candidate_persists_measured_plan_before_semantic_close": true,
+    "candidate_reconciles_artifact_without_browser_rerun": true,
+    "candidate_blocks_product_edit_until_plan_close": true,
+    "candidate_requires_static_plan_stamp_and_hash": true,
+    "all_three_control_cells_match": true,
+    "all_three_candidate_cells_match": true
+  },
+  "execution_contract": {
+    "next_cell": "luna-cold-r1-control",
+    "max_new_cells": 1,
+    "retry": false,
+    "inter_cell_delay_seconds": 120
+  },
+  "next": "Run browser, Codex authentication, evaluator, and proof-policy preflights; then execute only luna-cold-r1-control once."
+}

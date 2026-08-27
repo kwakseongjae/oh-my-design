@@ -1,0 +1,17 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-lane-cap-replay-1.9.738",
+  "status": "LOCAL_REPLAY_PASS",
+  "provider_calls": 0,
+  "case_count": 3,
+  "original_lane_count": 12,
+  "compact_lane_count": 6,
+  "exact_disposition_match": true,
+  "changed_decision_count": 0,
+  "projected_retained_wall_ms": 481744,
+  "projected_retained_combined_reported_tokens": 891673,
+  "projected_wall_reduction_ratio": 0.43265,
+  "projected_token_reduction_ratio": 0.48852,
+  "frontier_gate_pass": false,
+  "claim_boundary": "Retained 1.9.736 claims reproduce all three full-council disposition maps with two lanes. A fresh compact live run is required before effectiveness or cost claims."
+}

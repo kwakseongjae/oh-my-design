@@ -1,0 +1,73 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.649",
+  "experiment_id": "airworthiness-complete-plan-diagnostic-luna-1.9.646",
+  "status": "PREPARED_PROVIDER_ZERO_REMOTE_EXECUTION_DEFERRED",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "output_root": "/private/tmp/u19648",
+  "vendors_root": "/private/tmp/u19648-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "locked_plan_sha256": "6ff4b4c5a90af59c49b8660bd02cbca5980e58ebabc77259cb2c06beaa584dfc",
+  "prepared_state_sha256": "f8bdcc2231d0618cbe4353382c08c7ce828b93882f3bcbc2a9e9a7bc7f64e1da",
+  "local_in_app_preflight": {
+    "validation_id": "airworthiness-local-inapp-validation-1.9.647",
+    "surface": "codex-in-app-browser",
+    "authentication_required": false,
+    "desktop_overflow": false,
+    "narrow_390_overflow": true,
+    "mobile_320_overflow": true,
+    "counts_as_model_transfer": false
+  },
+  "equality_attestation": {
+    "core_prompt_equal": 6,
+    "starter_equal": 6,
+    "product_tree_equal": 6,
+    "runtime_equal": 6,
+    "model_equal": 6,
+    "effort_equal": 6,
+    "timeout_equal": 6,
+    "core_prompt_sha256": "1c93cb96dc03f3efef0f1ebc1c54db0d0b3d8edbabfc3da0196414db0b92ff85",
+    "starter_sha256": "9db4b7fa544ced77645348d789b88f129ce73667cfc837cf80f028b96d55e17e",
+    "product_tree_sha256": "9db4b7fa544ced77645348d789b88f129ce73667cfc837cf80f028b96d55e17e"
+  },
+  "source_attestation": {
+    "control": {
+      "commit": "e4b0c890ccdcc1e736cc70babcfbc1a5b72b7391",
+      "detached": true,
+      "clean": true,
+      "prepared_skill_sha256": "cd252c2062bf31065008c998c8ef1b1cb0ef47c66ee91c0922763f36b79d7dbd"
+    },
+    "candidate": {
+      "commit": "7df5be63beff5083265e0013f2f51f72e8c4bef9",
+      "detached": true,
+      "clean": true,
+      "prepared_skill_sha256": "a29d55f157934a7208bd40c27d6d1352c28efeb86af29c5d73dc1bd47f82791f"
+    }
+  },
+  "isolated_delta_guardrail": {
+    "shared_atomic_snapshot_bootstrap": true,
+    "shared_zero_attempt_validation": true,
+    "shared_measured_plan_persistence": true,
+    "shared_context_client_width": true,
+    "shared_carrier_offset_width": true,
+    "candidate_single_complete_diagnosis": true,
+    "candidate_complete_patch_or_irreconcilable": true,
+    "candidate_reconciles_at_most_once_without_browser_rerun": true,
+    "candidate_blocks_non_ready_reconcile": true,
+    "candidate_blocks_product_edit_until_plan_close": true,
+    "all_three_control_cells_match": true,
+    "all_three_candidate_cells_match": true
+  },
+  "execution_hold": {
+    "remote_execution_authorized": false,
+    "next_cell_when_reauthorized": "luna-air-r1-control",
+    "max_new_cells": 1,
+    "retry": false,
+    "inter_cell_delay_seconds": 120,
+    "prepared_workspaces_must_remain_untouched": true
+  },
+  "claim_boundary": "Six exact cells are prepared and equal, but no model has seen the task. Local in-app browser evidence covers only the frozen starter and cannot establish control or candidate transfer.",
+  "next": "Keep all six cells untouched. Continue provider-free 2.0.0 work locally; execute a cell only after the user explicitly changes the no-remote constraint."
+}

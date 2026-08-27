@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.589",
+  "task_id": "archive-film-element-custody-v0.1",
+  "status": "FRESH_UNSEEN_TASK_BASELINED",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "task_tree_sha256": "54f5c61c23c6aa76080fa3b8d13c30252120925d2f625beb4d50d6eaceb18b8e",
+  "baseline": {
+    "variant_id": "raw-design-md",
+    "score_sha256": "0fa0e770e57b4af387b7190123458f2ff3608448808527cd82e3146a6330bb40",
+    "objective_score": 75,
+    "objective_max": 85,
+    "automated_gate_pass": false,
+    "critical_gates": {
+      "task_contract": true,
+      "state_journey": true,
+      "responsive": false,
+      "accessibility": false,
+      "design_grounding": true,
+      "evidence_honesty": true
+    },
+    "document_widths": {
+      "desktop": {"scroll": 1440, "client": 1440},
+      "mobile": {"scroll": 1115, "client": 390},
+      "narrow_320": {"scroll": 1115, "client": 320},
+      "actual_200pct": {"scroll": 2230, "client": 640}
+    },
+    "fragmented_target_tokens_each_narrow_condition": 2,
+    "wrapped_short_atomic_rows": {
+      "mobile": 2,
+      "narrow_320": 2,
+      "actual_200pct": 2
+    },
+    "axe_serious_or_critical_each_viewport": 1,
+    "contrast_ratio_observed": 3.71
+  },
+  "locked_facts": {
+    "source_reels": 4,
+    "chain_labels": 6,
+    "vault_bays": 2,
+    "view_controls": 3,
+    "target_only_pre_edit_carrier": "[data-bench-decision-carrier='target']",
+    "protected_hook_mismatches": 0
+  },
+  "unknown_boundary": [
+    "emulsion integrity",
+    "label validity",
+    "scan completion",
+    "rights clearance",
+    "restoration approval",
+    "vault release",
+    "transport readiness",
+    "archive release"
+  ],
+  "freshness": {
+    "prompt_sha256": "2671bbd8b19a041e81450ac3cb738002cb1983a40bf98390390b426b38984e84",
+    "task_contract_sha256": "19d05222cdb40edb68fe3cc8d1c92ecf613db75985d745cb65f3702d4bec3a0a",
+    "starter_design_sha256": "417689c3bb0fc8dbd9b9a64b457a5308cfdace7718aee725152c8d4ef13141b3",
+    "starter_product_sha256": "daf3a495b269e7da000b787464bfcb1c00ef4c9b9e46981b809aeeef6067d242"
+  },
+  "next": "Commit and exact-pin the unseen task before any model or compared skill sees it."
+}

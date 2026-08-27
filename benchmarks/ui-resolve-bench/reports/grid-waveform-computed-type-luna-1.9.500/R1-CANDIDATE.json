@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.503",
+  "experiment_id": "grid-waveform-computed-type-luna-1.9.500",
+  "cell_id": "luna-grid-r1-candidate",
+  "status": "VALID_UI_RESOLVED_PROOF_PASSED",
+  "provider_calls": 1,
+  "runtime": "codex",
+  "model_id": "gpt-5.6-luna",
+  "effort": "high",
+  "objective": {"score":85,"max":85,"ui_resolved":true},
+  "efficiency": {
+    "wall_time_seconds": 312.356,
+    "provider_tokens": 824978,
+    "paired_wall_ratio": 0.9959220112551214,
+    "paired_token_ratio": 1.2803378319655339
+  },
+  "proof_trace": {
+    "product_edits": 1,
+    "static_closures": 1,
+    "browser_mechanisms": 1,
+    "browser_recovery": 0,
+    "duplicate_static_closure": 0,
+    "verification_after_ready": 0,
+    "trace_compliance": true,
+    "shipped_runner_invoked": true,
+    "attached_existing": true,
+    "launched_browser": false,
+    "measured_conditions": ["390","320","200pct"]
+  },
+  "artifact_gate": {
+    "pass": true,
+    "reasons": [],
+    "static_closure_state": "passed",
+    "browser_attempts": 1,
+    "browser_outcome": "measured",
+    "closure_state": "closed",
+    "computed_typography": {
+      "capture_window": {"font_size_px":14,"line_height_px":21.7,"font_weight":700},
+      "decision_target": {"font_size_px":18,"line_height_px":27.9,"font_weight":700}
+    },
+    "target_only_comparison_carrier": true,
+    "unresolved_rows": 0
+  },
+  "evaluator_repair": {
+    "provider_calls": 0,
+    "model_rerun": false,
+    "product_mutated": false,
+    "reason": "The promotion evaluator treated a deterministic pre-edit snapshot typography contract as the legacy numeric contract.",
+    "repair": "Verify the locked source SHA-256 and compare observed computed typography with the snapshot's pre_edit values; validate the target-only comparison carrier binding.",
+    "original_false_reason": "reflow-locked-typography-changed"
+  },
+  "tokens_to_target_observed_minimum": 53203330,
+  "tokens_to_target_usage_unavailable_cells": 6,
+  "reliability_progress": {"candidate_passes":1,"candidate_trials":1,"target_passes":3,"target_trials":3},
+  "next": "Run luna-grid-r2-candidate once with no retry; the preregistered mean token-ratio gate remains open but is not yet decided."
+}

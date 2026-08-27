@@ -1,0 +1,114 @@
+{
+  "schema_version": "0.2",
+  "task_id": "smoke-01",
+  "variant_id": "lane-validation",
+  "started_at": "2026-08-14T18:02:07.928Z",
+  "finished_at": "2026-08-14T18:02:11.106Z",
+  "runtime": {
+    "runtime_target": "grok",
+    "agent": "grok-build-cli",
+    "agent_version": null,
+    "binary_sha256": "09deaf06804955ff2d6ccef2042af4031c659c47fd16eb3c72664a8f533832da",
+    "model_requested": "grok-4.6",
+    "model_reported": null,
+    "model_evidence_mode": "cli-argument",
+    "model_tool_mode": null,
+    "auth_mode": "isolated-home-frozen-auth-copy",
+    "auth_sha256": "e193c65eb3825f6f2e5b38472a27c3b4e08c4402135839075cb41b387426100e",
+    "iso_home": "/var/folders/zj/v6yd5tj104l14xhlpn1bx1r80000gn/T/grok-bench-iso/run-39589-1786730527928",
+    "cache_integrity": {
+      "applicable": true,
+      "pass": true,
+      "reason": null,
+      "allowed_volatile_fields": [
+        "fetched_at",
+        "etag"
+      ],
+      "observed_change_class": "none",
+      "pre_provider_sha256": "286046a250571211407fe386ab7fd72760c8d0ecea4fa95fb07ab07b38a1bd40",
+      "post_provider_cache_artifact": {
+        "path": "/private/tmp/omd-grok46-wow-smoke/smoke-01/.benchmark/models-cache.post-provider.bin",
+        "sha256": "286046a250571211407fe386ab7fd72760c8d0ecea4fa95fb07ab07b38a1bd40",
+        "bytes": 4471
+      },
+      "post_provider_cache_preservation_error": null,
+      "volatile_raw_difference_proof": {
+        "pass": false,
+        "reason": "not-applicable"
+      }
+    },
+    "provider_route": "grok-build-cli-direct",
+    "model": "grok-4.6",
+    "sandbox": "none",
+    "ephemeral": true,
+    "fixed_flags": [
+      "--no-auto-update",
+      "--no-subagents",
+      "--no-memory",
+      "--disable-web-search",
+      "--always-approve",
+      "--reasoning-effort",
+      "high"
+    ],
+    "retry_count": 0,
+    "replacement_count": 0,
+    "fallback_count": 0,
+    "model_substitution_count": 0,
+    "effort_substitution_count": 0
+  },
+  "process": {
+    "exit_code": 0,
+    "signal": null,
+    "timed_out": false,
+    "spawn_error": null,
+    "wall_ms": 3176,
+    "infrastructure_invalid": false,
+    "infrastructure_invalid_reason": null
+  },
+  "output": {
+    "stdout_bytes": 13,
+    "stderr_bytes": 0,
+    "logs_truncated": false,
+    "model_usage": [],
+    "usage_attribution": {
+      "available": false,
+      "evidence_mode": "unavailable",
+      "reason": "plain-text-stream-contained-no-json-usage-event"
+    },
+    "final_message_present": true
+  },
+  "workspace": {
+    "initial_sha256": null,
+    "final_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "final_files": 0,
+    "full_tree_changed": true,
+    "product_initial_sha256": null,
+    "product_final_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "product_changed": true,
+    "changed_product_files": []
+  },
+  "receipts": {
+    "grok_binary": {
+      "path": "/Users/kwakseongjae/.grok/bin/grok",
+      "resolved_path": "/Users/kwakseongjae/.grok/downloads/grok-macos-aarch64",
+      "sha256": "09deaf06804955ff2d6ccef2042af4031c659c47fd16eb3c72664a8f533832da"
+    },
+    "auth_source": {
+      "path": "/Users/kwakseongjae/.grok/auth.json",
+      "sha256": "e193c65eb3825f6f2e5b38472a27c3b4e08c4402135839075cb41b387426100e"
+    },
+    "iso_auth_copy": {
+      "path": "/var/folders/zj/v6yd5tj104l14xhlpn1bx1r80000gn/T/grok-bench-iso/run-39589-1786730527928/.grok/auth.json",
+      "sha256": "e193c65eb3825f6f2e5b38472a27c3b4e08c4402135839075cb41b387426100e"
+    },
+    "pre_provider_cache": {
+      "sha256": "286046a250571211407fe386ab7fd72760c8d0ecea4fa95fb07ab07b38a1bd40",
+      "bytes": 4471
+    },
+    "post_provider_cache": {
+      "path": "/private/tmp/omd-grok46-wow-smoke/smoke-01/.benchmark/models-cache.post-provider.bin",
+      "sha256": "286046a250571211407fe386ab7fd72760c8d0ecea4fa95fb07ab07b38a1bd40",
+      "bytes": 4471
+    }
+  }
+}

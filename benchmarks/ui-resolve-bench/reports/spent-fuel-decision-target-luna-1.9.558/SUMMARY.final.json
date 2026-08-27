@@ -1,0 +1,13 @@
+{
+  "schema_version":"0.1","product_version":"1.9.561","experiment_id":"spent-fuel-decision-target-luna-1.9.558","status":"FROZEN_NO_PROMOTION",
+  "provider_calls":2,"scheduled_cells":6,"completed_cells":2,"frozen_cells":4,
+  "arms":{
+    "control":{"completed":1,"ui_resolved":1,"proof_compliant":0,"proof_reliability_at_3_max":"2/3","objective_score":85,"wall_time_ms":543074,"provider_tokens":2987256},
+    "candidate":{"completed":1,"ui_resolved":1,"proof_compliant":0,"proof_reliability_at_3_max":"2/3","objective_score":85,"wall_time_ms":443875,"provider_tokens":1612523,"wall_ratio_to_control":0.817338,"token_ratio_to_control":0.539774}
+  },
+  "target_inventory_transfer":{"candidate_inventory_locked":true,"exact_target_row":true,"distinct_target_only_carrier":true,"promotion_conclusion":"not established because the candidate bypassed the required pre-edit browser-harness plan mechanism and edited after its plan failed"},
+  "promotion":false,
+  "freeze_reason":"Candidate trial 1 failed proof compliance. Proof-compliant Reliability@3 cannot reach the preregistered 3/3 threshold, so four additional provider calls cannot restore eligibility.",
+  "tokens_to_target_observed_minimum":78112464,"tokens_to_target_usage_unavailable_cells":6,
+  "next":"Provider-free runner self-dispatch repair, exact pin, unseen task, and a fresh preregistered matrix. Do not resume the frozen suffix."
+}

@@ -97,15 +97,10 @@ artifacts/reference-evidence/
 # (~/.omd/bench-store) with SHA manifests committed under
 # benchmarks/ui-resolve-bench/manifests/. `scripts/bench-store.mjs --verify`
 # checks custody; REPRODUCE.md explains how a stranger re-runs everything.
-benchmarks/ui-resolve-bench/reports/
-# …except the four runs the Autopilot 2.0 readiness gate binds as machine
-# evidence. Those are not bulk run output: the manifest names them by path and
-# the audit refuses to report without them, so a gate whose evidence sits
-# outside git could be edited with nothing to compare against. 76KB total.
-!benchmarks/ui-resolve-bench/reports/autopilot-luna-high-smoke-1.9.879/
-!benchmarks/ui-resolve-bench/reports/autopilot-v2-provider-zero-1.9.881/
-!benchmarks/ui-resolve-bench/reports/reviewer-operations-package-1.9.77/
-!benchmarks/ui-resolve-bench/reports/task-contract-mutation-audit-1.9.685/
+# reports/ is governed by its own benchmarks/ui-resolve-bench/reports/.gitignore,
+# which keeps the runs git binds by path and drops the rest. It has to live
+# there: git does not descend into an excluded directory, so a `!` negation
+# written here could never re-include anything under an ignored reports/.
 benchmarks/ui-resolve-bench/e2e/
 benchmarks/ui-resolve-bench/fixtures/competitor-skills-2.0/
 

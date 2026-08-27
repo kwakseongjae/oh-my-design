@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.503",
+  "scope": "provider-free promotion evaluator repair",
+  "model_runs_added": 0,
+  "product_files_changed": 0,
+  "changes": [
+    "validate deterministic pre-edit source_base64 against source_sha256",
+    "compare snapshot-backed computed type against pre_edit_font_size_px, pre_edit_line_height_px, and pre_edit_font_weight",
+    "retain the legacy numeric typography contract path",
+    "validate that comparison-scroll is bound only to the registered target-only carrier"
+  ],
+  "reclassification": {
+    "luna-grid-r1-control": {"before":false,"after":false},
+    "luna-grid-r1-candidate": {"before":false,"after":true}
+  },
+  "tests": {"focused":16,"focused_passed":16,"lint":"passed"}
+}

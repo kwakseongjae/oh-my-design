@@ -1,0 +1,117 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "product_version": "1.9.601",
+  "execution_purpose": "decision-context-closure-transfer-reliability-replacement",
+  "experiment_id": "backup-decision-context-replacement-luna-1.9.600",
+  "output_root": "/private/tmp/u19601",
+  "vendors_root": "/private/tmp/u19601-vendors",
+  "attribution_scope": "provider-observed-only",
+  "family": "skill",
+  "status": "locked-awaiting-fresh-preparation",
+  "tokens_to_target_contract": {
+    "goal_id": "omd-2.0.0-frontier-gates-from-1.9.278",
+    "attempt_order": 45,
+    "candidate_system_id": "luna-decision-context-closure-candidate",
+    "count_all_scheduled_spend": true,
+    "unmet_goal_disposition": "right-censored",
+    "cross_provider_pooling": false,
+    "prior_observed_provider_tokens_minimum": 96173681,
+    "prior_usage_unavailable_cells": 6
+  },
+  "control_contract": {
+    "comparison_mode": "native-capability",
+    "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+    "temperature_policy": "runtime-default-frozen",
+    "timeout_seconds": 900,
+    "max_concurrency": 1,
+    "latency_comparison": "eligible",
+    "retry_policy": "none-primary",
+    "timeout_policy": "count-as-valid-failure",
+    "infrastructure_policy": "retain-freeze-and-repreregister",
+    "task_order_policy": "balanced-rotation",
+    "pacing": {"policy": "fixed-inter-cell", "inter_cell_delay_seconds": 120, "applies_between_cells_only": true, "counts_toward_cell_wall_time": false},
+    "token_budget": {
+      "mode": "observed-only",
+      "limit_tokens": null,
+      "usage_required": true,
+      "account_components": ["input", "cached_input", "output", "reasoning_output"],
+      "cached_input_separate": true,
+      "cost_policy": "provider-reported-or-pinned-price-equivalent"
+    },
+    "step_budget": {"mode": "observed-only", "limit_steps": null}
+  },
+  "browser_execution_contract": {
+    "require_browser_proof": true,
+    "runtime_dir_shared": true,
+    "exact_named_socket": true,
+    "allow_browser_launch": false,
+    "mechanism": "browser-harness named consumer CDP attachment"
+  },
+  "proof_execution_gates": {
+    "system_ids": ["luna-contained-budget-control", "luna-decision-context-closure-candidate"],
+    "enforcement": "promotion-report",
+    "require_analyzable": true,
+    "max_browser_recovery_count": 0,
+    "max_duplicate_static_closure_count": 0,
+    "max_verification_after_ready_count": 0,
+    "max_document_overflow_px": 0,
+    "max_passive_protected_text_scroll_containers": 0,
+    "require_closed_reflow_artifact": true,
+    "require_measured_browser_attempt": true,
+    "require_character_range_line_oracle": true,
+    "require_actual_zoom_observation": true,
+    "require_exact_named_consumer_attachment": true,
+    "forbid_launched_browser": true,
+    "require_locked_typography": true,
+    "minimum_inline_fit_reserve_css_px": 8,
+    "shipped_runner_system_ids": ["luna-contained-budget-control", "luna-decision-context-closure-candidate"],
+    "shipped_runner_command_suffix": "scripts/reflow-browser.py"
+  },
+  "task_lock_contract": {
+    "task_id": "backup-restore-point-handoff-v0.1",
+    "source_commit": "84b54559fbbde15f5cf78004139113fcd292046c",
+    "task_tree": "759253016aabbdc1f0996fcc668325d358a59539",
+    "acceptance_sha256": "2e5e0451f5a4f48e5e14e99b2f2813808b691b89324fc0d0e09b718898a94838",
+    "scored_model_exposure_before_replacement": false,
+    "prior_control_exposures": 0,
+    "prior_candidate_exposures": 0
+  },
+  "control_source_contract": {
+    "variant_id": "omd-contained-carrier-budget-candidate",
+    "source_commit": "5f78f1c5a23148778a49bdc54f6f6026a7b8c1d2",
+    "browser_runner_sha256": "5a4097b982af9f552b0cddc194e5f81842c81b4d7d3ea5b92cf9cd47f83097ad"
+  },
+  "candidate_source_contract": {
+    "variant_id": "omd-decision-context-closure-candidate",
+    "source_commit": "5eaa26c9739a9e697f4707b06c31a32773706c16",
+    "browser_runner_sha256": "9da0ee5611a737c562c61437ede0034f0b5608c4107e18592828f39cf2ab1f9a"
+  },
+  "decision_context_closure_contract": {
+    "shared_contained_carrier_budget": true,
+    "candidate_concise_evidence_inventory_required": true,
+    "candidate_target_dedicated_full_row_required": true,
+    "candidate_target_precedes_supporting_roles_required": true,
+    "candidate_target_supporting_spatial_separation_required": true,
+    "conditions": ["desktop", "viewport-390", "viewport-320", "actual-200pct"]
+  },
+  "promotion_gates": {
+    "candidate_ui_resolved_trials_required": 3,
+    "candidate_proof_compliant_trials_required": 3,
+    "candidate_shipped_runner_trials_required": 3,
+    "candidate_concise_evidence_row_observed_trials_required": 3,
+    "candidate_target_full_row_order_spatial_trials_required": 3,
+    "paired_objective_losses_allowed": 0,
+    "candidate_mean_wall_time_ratio_max": 1.1,
+    "candidate_mean_provider_tokens_ratio_max": 1.1,
+    "freeze_when_three_of_three_unreachable": true
+  },
+  "cells": [
+    {"id":"luna-backup-r1-control","task_id":"backup-restore-point-handoff-v0.1","variant_id":"omd-contained-carrier-budget-candidate","system_id":"luna-contained-budget-control","runtime":"codex","model_id":"gpt-5.6-luna","effort":"high","trial_index":1,"timeout_seconds":900},
+    {"id":"luna-backup-r1-candidate","task_id":"backup-restore-point-handoff-v0.1","variant_id":"omd-decision-context-closure-candidate","system_id":"luna-decision-context-closure-candidate","runtime":"codex","model_id":"gpt-5.6-luna","effort":"high","trial_index":1,"timeout_seconds":900},
+    {"id":"luna-backup-r2-candidate","task_id":"backup-restore-point-handoff-v0.1","variant_id":"omd-decision-context-closure-candidate","system_id":"luna-decision-context-closure-candidate","runtime":"codex","model_id":"gpt-5.6-luna","effort":"high","trial_index":2,"timeout_seconds":900},
+    {"id":"luna-backup-r2-control","task_id":"backup-restore-point-handoff-v0.1","variant_id":"omd-contained-carrier-budget-candidate","system_id":"luna-contained-budget-control","runtime":"codex","model_id":"gpt-5.6-luna","effort":"high","trial_index":2,"timeout_seconds":900},
+    {"id":"luna-backup-r3-control","task_id":"backup-restore-point-handoff-v0.1","variant_id":"omd-contained-carrier-budget-candidate","system_id":"luna-contained-budget-control","runtime":"codex","model_id":"gpt-5.6-luna","effort":"high","trial_index":3,"timeout_seconds":900},
+    {"id":"luna-backup-r3-candidate","task_id":"backup-restore-point-handoff-v0.1","variant_id":"omd-decision-context-closure-candidate","system_id":"luna-decision-context-closure-candidate","runtime":"codex","model_id":"gpt-5.6-luna","effort":"high","trial_index":3,"timeout_seconds":900}
+  ]
+}

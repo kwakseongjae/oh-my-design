@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.502",
+  "experiment_id": "grid-waveform-computed-type-luna-1.9.500",
+  "cell_id": "luna-grid-r1-control",
+  "status": "VALID_UI_RESOLVED_PROOF_FAILED",
+  "provider_calls": 1,
+  "runtime": "codex",
+  "model_id": "gpt-5.6-luna",
+  "effort": "high",
+  "objective": {"score":85,"max":85,"ui_resolved":true},
+  "efficiency": {"wall_time_seconds":313.635,"provider_tokens":644344},
+  "proof_trace": {
+    "product_edits": 1,
+    "static_closures": 1,
+    "browser_mechanisms": 1,
+    "browser_recovery": 0,
+    "duplicate_static_closure": 0,
+    "verification_after_ready": 0,
+    "trace_compliance": true,
+    "shipped_runner_invoked": true,
+    "attached_existing": true,
+    "launched_browser": false,
+    "measured_conditions": ["390","320","200pct"]
+  },
+  "artifact_gate": {
+    "pass": false,
+    "reasons": ["reflow-locked-typography-changed","reflow-artifact-not-closed"],
+    "static_closure_state": "passed",
+    "browser_attempts": 1,
+    "browser_outcome": "measured",
+    "closure_state": "open"
+  },
+  "root_causes": [
+    "capture-window font weight was guessed as 400 while the consumer browser computed 700",
+    "long decision evidence was promoted to an atomic row and stayed unresolved at 320 and actual 200%"
+  ],
+  "tokens_to_target_observed_minimum": 52378352,
+  "tokens_to_target_usage_unavailable_cells": 6,
+  "next": "After the preregistered 120-second pacing boundary, run luna-grid-r1-candidate once with no retry."
+}

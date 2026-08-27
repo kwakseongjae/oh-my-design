@@ -1,0 +1,87 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.632",
+  "experiment_id": "rail-signal-plan-bootstrap-luna-1.9.628",
+  "status": "FROZEN_PROMOTION_UNREACHABLE_PLAN_CLOSE_AND_UI_RED",
+  "promotion": false,
+  "provider_calls": 2,
+  "completed_cells": 2,
+  "frozen_unstarted_cells": [
+    "luna-rail-r2-candidate",
+    "luna-rail-r2-control",
+    "luna-rail-r3-control",
+    "luna-rail-r3-candidate"
+  ],
+  "r1": {
+    "control": {
+      "validity": "valid",
+      "score": 85,
+      "ui_resolved": true,
+      "proof_pass": true,
+      "wall_time_ms": 628966,
+      "tokens": 2871023
+    },
+    "candidate": {
+      "validity": "valid",
+      "score": 83,
+      "ui_resolved": false,
+      "proof_pass": false,
+      "wall_time_ms": 407942,
+      "tokens": 1320225
+    }
+  },
+  "candidate_plan_behavior": {
+    "malformed_plan_command_before_runner": 1,
+    "zero_attempt_validation_markers": 2,
+    "measured_plan_attempts": 1,
+    "measured_plan_close_rejections": 1,
+    "forbidden_measured_attempt_reruns": 1,
+    "successful_plan_closes": 0,
+    "product_edit_count": 1,
+    "product_edit_before_successful_plan_close": 1,
+    "static_closure_state": "open",
+    "final_browser_attempts": 0,
+    "artifact_closed": false,
+    "shipped_runner_invoked": true
+  },
+  "candidate_objective_failure": {
+    "responsive_pass": false,
+    "desktop_action_spatially_separated": false,
+    "narrow_and_actual_200pct_reflow_pass": true,
+    "accessibility_pass": true,
+    "evidence_honesty_pass": true
+  },
+  "promotion_reachability": {
+    "candidate_ui_resolved_observed": 0,
+    "maximum_reachable_ui_resolved_trials": 2,
+    "candidate_proof_compliant_observed": 0,
+    "maximum_reachable_proof_compliant_trials": 2,
+    "candidate_successful_plan_close_observed": 0,
+    "maximum_reachable_successful_plan_close_trials": 2,
+    "candidate_product_edit_before_plan_violations": 1,
+    "required_each": 3,
+    "promotion_reachable": false
+  },
+  "paired_efficiency": {
+    "candidate_control_wall_time_ratio": 0.649,
+    "candidate_control_token_ratio": 0.46,
+    "wall_time_gate": true,
+    "token_gate": true,
+    "causal_efficiency_claim_allowed": false,
+    "reason": "candidate quality and proof gates failed"
+  },
+  "candidate_artifact_hashes": {
+    "run_result_sha256": "d9ebf906bc6c3be49375c78f5bacc21b2d213d7af8e16d7074eb1a0c6bf53960",
+    "score_sha256": "5fbca063aff32ebcdb872d2e9291480cbd90426cd3a0e848b559a915b62806ac",
+    "run_record_sha256": "019e8582517e8f7460c10b2e4353fca3d120425344a6c733e1e84a57ee344e8b",
+    "proof_trace_sha256": "f45eb2f9a4d9eb768f5044a544a363550cc881bdf71980ddc1ec0aa05bf38594",
+    "benchmark_tree_sha256": "51faee72c816d863b0dcd1040112bb7bb5f52383af9d77a1594521faa0177ac4"
+  },
+  "tokens_to_target": {
+    "cumulative_observed_provider_tokens_minimum": 111241511,
+    "usage_unavailable_cells": 6,
+    "goal_status": "right-censored-open"
+  },
+  "claim_boundary": "The candidate proved that pre-navigation validation can be classified as zero-attempt, but it did not preserve a successful plan-close path or solve the full UI task. Its lower wall time and token use are not promotion evidence.",
+  "next": "Provider-free repair: persist the single measured fit-plan result before semantic plan-close validation, allow deterministic artifact reconciliation without a second browser measurement, and enforce product mutation only after reconciled plan-close plus static edit guardrails."
+}

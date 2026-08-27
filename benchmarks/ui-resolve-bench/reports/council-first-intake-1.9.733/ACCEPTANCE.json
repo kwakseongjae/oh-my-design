@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-first-intake-1.9.733",
+  "scope": "local-deterministic-contract",
+  "candidate_status": "local_contract_complete",
+  "slice_a_pass": true,
+  "verification": {
+    "focused_tests": "52/52 passed across the focused council, installer, readiness, and execution-boundary suites",
+    "full_suite": "784 passed, 3 skipped",
+    "typecheck": "pass",
+    "build": "pass",
+    "catalog_consistency": "440 references, 21 skills, 18 sub-agents across 9 surfaces"
+  },
+  "grok_review": {
+    "runtime": "cursor",
+    "requested_model": "cursor-grok-4.5-high",
+    "mode": "read-only architecture review",
+    "verdict": "adopt the ledger-gated intake now; delay multi-lane council dispatch until disposition calibration rejects unsupported auto-decisions"
+  },
+  "multi_lane_council_observed": false,
+  "repeated_human_intervention_lift_observed": false,
+  "frontier_gate_pass": false,
+  "claim_boundary": "The deterministic intake boundary may be described after verification; council effectiveness and 2.0 promotion may not."
+}

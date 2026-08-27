@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.609",
+  "experiment_id": "museum-desktop-decision-context-luna-1.9.609",
+  "status": "PREREGISTERED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "execution_purpose": "desktop-final-decision-context-and-nested-carrier-transfer-reliability",
+  "tokens_to_target": {
+    "goal_id": "omd-2.0.0-frontier-gates-from-1.9.278",
+    "attempt_order": 46,
+    "prior_observed_provider_tokens_minimum": 101844158,
+    "prior_usage_unavailable_cells": 6,
+    "count_all_scheduled_spend": true,
+    "unmet_goal_disposition": "right-censored"
+  },
+  "task": {
+    "id": "museum-loan-crate-release-v0.1",
+    "pin_id": "museum-loan-crate-release-1.9.608",
+    "source_commit": "e77c3d8ae959078b3cb51f5ea1960b8a30f14dcc",
+    "task_tree": "f50c6925588f8fef4a3a84d3d306146bef91ce4d",
+    "baseline_score_sha256": "c9ed447f5ad203a15033ec13e5bc3fee7034cccaf385ffbb56e69165db6ed2c4",
+    "model_exposures": 0,
+    "stable_target_carrier": "[data-bench-decision-carrier='target']",
+    "concise_evidence": "4 crates · 6 reports · 2 galleries"
+  },
+  "sources": {
+    "control": {
+      "system_id": "luna-decision-context-closure-control",
+      "variant_id": "omd-decision-context-closure-candidate",
+      "source_commit": "5eaa26c9739a9e697f4707b06c31a32773706c16",
+      "pin_id": "decision-context-closure-1.9.597",
+      "skill_tree": "ae1306fe525395086836f2b95a1312152fb0eb28",
+      "skill_sha256": "60dae0b6873fd8de945bcd67e8202535e18e58396ece50afbce4a219107b8ffb",
+      "artifact_helper_sha256": "1375a5efdc9dbe422ec52cfd9dd1db3f5c5f034f17bd2e606fd003a3e2fa90f8",
+      "browser_runner_sha256": "9da0ee5611a737c562c61437ede0034f0b5608c4107e18592828f39cf2ab1f9a",
+      "decision_context_contract": "narrow-only final context with absent observation default-pass and no nested-carrier containment attestation"
+    },
+    "candidate": {
+      "system_id": "luna-desktop-decision-context-candidate",
+      "variant_id": "omd-desktop-decision-context-candidate",
+      "source_commit": "e8a6f083f5cb278d18d1ab812b7d154a486a8c1b",
+      "pin_id": "desktop-decision-context-1.9.606",
+      "skill_tree": "38eee231c7f2faaed855b8e671ee535f7691f155",
+      "skill_sha256": "b739d88b78232f241d2b7f3be36661919efaf73b1b163e314340f3791b977c26",
+      "artifact_helper_sha256": "6b9ac983903e1fff18f4a6b6048e3f5ded761b5904c72ad4d23aa1542b02e665",
+      "browser_runner_sha256": "b605f95d26d7afe3fccfa13f552bc2747bfe185db18acca851b3679f7b1a0bf8",
+      "decision_context_contract": "desktop-plus-narrow final context with fail-closed observation and pre-edit nested-carrier containment rejection"
+    }
+  },
+  "isolated_delta_contract": {
+    "shared_contained_carrier_budget": true,
+    "shared_concise_evidence_inventory": true,
+    "shared_target_full_row_order_and_spatial_semantics": true,
+    "candidate_adds_desktop_final_product_measurement": true,
+    "candidate_removes_missing_observation_default_pass": true,
+    "candidate_adds_nested_registered_carrier_pre_edit_rejection": true,
+    "candidate_adds_per_condition_carrier_diagnostics": true,
+    "causal_transfer_claim_requires_desktop_and_narrow_context_plus_nested_closure_observed": true
+  },
+  "matrix": {
+    "runtime": "codex",
+    "model_id": "gpt-5.6-luna",
+    "effort": "high",
+    "trials_per_arm": 3,
+    "scheduled_cells": 6,
+    "order": ["r1-control", "r1-candidate", "r2-candidate", "r2-control", "r3-control", "r3-candidate"],
+    "timeout_seconds": 900,
+    "max_concurrency": 1,
+    "inter_cell_delay_seconds": 120,
+    "retry_policy": "none-primary",
+    "temperature_policy": "runtime-default-frozen",
+    "browser_connection": "bench19366",
+    "allow_browser_launch": false
+  },
+  "promotion_gates": {
+    "candidate_ui_resolved_trials_required": 3,
+    "candidate_proof_compliant_trials_required": 3,
+    "candidate_shipped_runner_trials_required": 3,
+    "candidate_desktop_decision_context_observed_trials_required": 3,
+    "candidate_narrow_decision_context_observed_trials_required": 3,
+    "candidate_nested_carrier_inventory_closed_trials_required": 3,
+    "paired_objective_losses_allowed": 0,
+    "serious_or_critical_contrast_trials_allowed": 0,
+    "candidate_mean_wall_time_ratio_max": 1.1,
+    "candidate_mean_provider_tokens_ratio_max": 1.1,
+    "freeze_when_three_of_three_unreachable": true
+  },
+  "claim_boundary": "The task and exact sources are pinned, but no cell has run. The provider-free repair and prior frozen matrix are not transfer proof for this experiment.",
+  "next": "Materialize the executable locked matrix, exact detached vendors, and six untouched cells without calling a provider."
+}

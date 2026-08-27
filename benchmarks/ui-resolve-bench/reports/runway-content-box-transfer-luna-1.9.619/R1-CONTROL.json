@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.622",
+  "experiment_id": "runway-content-box-transfer-luna-1.9.619",
+  "cell_id": "luna-runway-r1-control",
+  "status": "CHECKPOINTED_VALID_CONTROL_UI_AND_PROOF_RED",
+  "validity": "valid",
+  "retry_count": 0,
+  "provider_calls": 1,
+  "wall_time_ms": 381138,
+  "provider_tokens": {
+    "input": 1302108,
+    "cached_input": 1229056,
+    "output": 19385,
+    "reasoning_output": 7083,
+    "comparison_total": 1321493
+  },
+  "objective": {
+    "score": 83,
+    "max": 85,
+    "ui_resolved": false,
+    "task_contract": true,
+    "state_journey": true,
+    "design_grounding": true,
+    "evidence_honesty": true,
+    "accessibility": true,
+    "responsive": false,
+    "narrow_atomic_wraps": 0,
+    "actual_200pct_atomic_wraps": 0,
+    "desktop_target_action_spatially_separated": false
+  },
+  "proof": {
+    "analyzable": true,
+    "static_closure_count": 1,
+    "browser_mechanism_count": 1,
+    "browser_recovery_count": 0,
+    "duplicate_static_closure_count": 0,
+    "verification_after_ready_count": 0,
+    "shipped_runner_invoked": true,
+    "attached_existing_named_browser": true,
+    "launched_browser": false,
+    "artifact_closed": false,
+    "execution_gate_pass": false,
+    "failure_reasons": ["reflow-artifact-not-closed"]
+  },
+  "decision_context_observation": {
+    "required_flags": [true, true, true, true],
+    "full_row_flags": [false, false, false, false],
+    "precedes_supporting_flags": [true, true, true, true],
+    "spatially_separated_flags": [true, true, true, true],
+    "coordinate_contract": "contextRect.width-minus-padding versus carrierRect.width"
+  },
+  "additional_artifact_debt": {
+    "closure_window_carrier_outcomes": ["unresolved", "unresolved", "unresolved"],
+    "closure_window_carrier_visible_and_bound": true,
+    "closure_window_carrier_scroll_and_focus": false,
+    "must_not_be_misattributed_to_content_box_delta": true
+  },
+  "artifact_hashes": {
+    "run_result_sha256": "e6d6994893d2d1fda9f2461add23d5386ed95bba5513b02319812d98bed21176",
+    "score_sha256": "bdacb4553f1ed992ab03b4ddcdab2a111f228446d1fca8f1eb5f20dbf22087f6",
+    "run_record_sha256": "680b9a36284a0d56778ba05fe593b609691ad2c43e24f370b0855f9bf18776d6",
+    "proof_trace_sha256": "37607653535d8dbcd71722db16e9e286608ca6bdf32d5bf6d885ac206af19b71",
+    "benchmark_tree_sha256": "db0ab5631d61dbc5c2f8c06cb053fd8d2fce8edfb0e4b1d9a32abc258c2a0b10"
+  },
+  "tokens_to_target": {
+    "observed_provider_tokens_minimum_after_cell": 106076537,
+    "usage_unavailable_cells": 6,
+    "goal_status": "right-censored"
+  },
+  "execution_contract": {
+    "matrix_status": "checkpointed",
+    "completed_cells": 1,
+    "next_cell": "luna-runway-r1-candidate",
+    "retry": false,
+    "inter_cell_delay_seconds": 120
+  },
+  "next": "After the fixed pacing interval, execute only the untouched r1 candidate once."
+}

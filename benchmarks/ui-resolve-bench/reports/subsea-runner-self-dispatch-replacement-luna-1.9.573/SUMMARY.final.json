@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.578",
+  "experiment_id": "subsea-runner-self-dispatch-replacement-luna-1.9.573",
+  "status": "FROZEN_PROMOTION_UNREACHABLE",
+  "provider_calls": 2,
+  "completed_cells": 2,
+  "frozen_unstarted_cells": [
+    "luna-subsea-cable-r2-candidate",
+    "luna-subsea-cable-r2-control",
+    "luna-subsea-cable-r3-control",
+    "luna-subsea-cable-r3-candidate"
+  ],
+  "r1": {
+    "control": {"valid": true, "ui_resolved": false, "proof_pass": false, "score": 81, "wall_time_ms": 485680, "tokens": 2403089},
+    "candidate": {"valid": true, "ui_resolved": false, "proof_pass": false, "score": 81, "wall_time_ms": 444242, "tokens": 1615647}
+  },
+  "descriptive_only_ratios": {
+    "candidate_to_control_wall_time": 0.9147,
+    "candidate_to_control_tokens": 0.6723,
+    "causal_efficiency_claim_eligible": false
+  },
+  "promotion_reachability": {
+    "required_candidate_ui_resolved_trials": 3,
+    "required_candidate_proof_compliant_trials": 3,
+    "required_candidate_runner_self_dispatch_trials": 3,
+    "observed_candidate_ui_resolved_trials": 0,
+    "observed_candidate_proof_compliant_trials": 0,
+    "observed_candidate_runner_self_dispatch_trials": 0,
+    "remaining_candidate_trials": 2,
+    "maximum_reachable_per_gate": 2,
+    "promotion_reachable": false
+  },
+  "causal_conclusion": {
+    "runner_self_dispatch_transfer_proven": false,
+    "paired_efficiency_eligible": false,
+    "reason": "The candidate used the correct browser-harness command directly, so the plain-Python safety path was not observed; both arms also failed responsive and proof acceptance."
+  },
+  "root_cause": {
+    "class": "row-fit-compared-to-document-instead-of-carrier-inner-width",
+    "detail": "Fit feasibility compared the row's required inner width with document width, ignoring the bound carrier's actual content box after nested padding and chrome."
+  },
+  "tokens_to_target": {
+    "attempt_order": 42,
+    "cumulative_observed_provider_tokens_minimum": 84725753,
+    "prior_usage_unavailable_cells": 6,
+    "goal_status": "right-censored-open"
+  },
+  "next": "Measure and bind each aggregate carrier's actual inner content width before editing, require row feasibility against that carrier-local budget, prove the repair provider-free, pin it, and use a fresh unseen task for any replacement transfer run."
+}

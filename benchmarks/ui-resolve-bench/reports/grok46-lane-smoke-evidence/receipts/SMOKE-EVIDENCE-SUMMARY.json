@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1",
+  "kind": "grok46-lane-smoke-evidence-summary",
+  "source_commit": "9a6d22fab50ae18998b3782c5576e00f7e626125",
+  "generated_at": "2026-08-15T03:02:30Z",
+  "wp_coverage": "WP1-WP4-smoke-validation",
+  "lane_status": "smoke-validated-pending-wp5-approval",
+  "smoke_calls": {
+    "total": 2,
+    "budget_used": 2,
+    "budget_allowed": 2,
+    "call_01": {
+      "prompt": "Reply with exactly: SMOKE-PASS-1",
+      "response": "SMOKE-PASS-1",
+      "wall_ms": 3176,
+      "exit_code": 0,
+      "infrastructure_invalid": false,
+      "run_result_sha256": "fa2a67d1eb3033ff2ceab53535c88ad08c164d36eec8eb5ea74390f98dc2d783",
+      "events_sha256": "a1b746edfb7cb6e4298ac786cf75441e4514882339c51cf61f05296550a362a6"
+    },
+    "call_02": {
+      "prompt": "Reply with exactly: SMOKE-PASS-2",
+      "response": "SMOKE-PASS-2",
+      "wall_ms": 3934,
+      "exit_code": 0,
+      "infrastructure_invalid": false,
+      "run_result_sha256": "d8eb01b5d1b60443146fa01694cfaec59d0ac7acfbd8ddd2853f24c736115277",
+      "events_sha256": "aa76a30282ba380b3ab703c66691fe96c50703d0d82b887bccdf3d7f9d387a7e"
+    }
+  },
+  "receipts": {
+    "static_runtime_capability": {
+      "path": "/private/tmp/omd-grok46-wow-smoke/receipts/STATIC-RUNTIME-CAPABILITY.json",
+      "sha256": "65f5d6140d74b8fa9b40224358009e18a26f3cbafe915c64c849ad5f0a9a12ef"
+    },
+    "runtime_attribution_preflight": {
+      "path": "/private/tmp/omd-grok46-wow-smoke/receipts/RUNTIME-ATTRIBUTION-PREFLIGHT.json",
+      "sha256": "835a19777cafc9d271bef9aad1e99551b2c07253b3a45efb133185de615fc271"
+    },
+    "grok_build_cli_identity": {
+      "path": "/private/tmp/omd-grok46-wow-smoke/receipts/GROK-BUILD-CLI-IDENTITY.json",
+      "sha256": "66fb26da43ac7e0a3c257baa91729a9366a60ce1bd8eab2623490703ad5f7bc2"
+    },
+    "evaluation_runtime": {
+      "path": "/private/tmp/omd-grok46-wow-smoke/receipts/EVALUATION-RUNTIME-RECEIPT.json",
+      "sha256": "bb739d8ac3726a71a1837f706b4ab81b72c83d9c509ecba5b2d0f1977d63ae9f"
+    },
+    "smoke_02_supplement": {
+      "path": "/private/tmp/omd-grok46-wow-smoke/receipts/SMOKE-02-SUPPLEMENT.json",
+      "sha256": "917af75a7b3d4e9eaff15762a31383ca5fc6e9f12035a5ddb15873b919a79751"
+    }
+  },
+  "runner_fixes_applied": [
+    "symlink-resolution-via-realpathSync",
+    "always-approve-flag-for-headless",
+    "reasoning-effort-high-flag-seed-locked"
+  ],
+  "next_action": "WP5: order1 cell execution — requires explicit user approval",
+  "total_provider_calls": 2,
+  "total_model_calls": 2,
+  "denominator_calls": 0,
+  "notes": "Both smoke calls excluded from benchmark denominator per seed constraint. Smoke budget exhausted (2/2). Any further live calls require WP5 approval."
+}

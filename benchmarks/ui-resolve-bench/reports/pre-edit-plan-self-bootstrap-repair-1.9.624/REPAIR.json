@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.624",
+  "repair_id": "pre-edit-plan-self-bootstrap-repair-1.9.624",
+  "status": "PROVIDER_FREE_REPAIR_VERIFIED",
+  "provider_calls": 0,
+  "source_failure": {
+    "experiment_id": "runway-content-box-transfer-luna-1.9.619",
+    "candidate_cell": "luna-runway-r1-candidate",
+    "score": 83,
+    "pre_edit_fit_plan_state": "pending",
+    "product_edit_count": 1,
+    "browser_attempts": 0,
+    "shipped_runner_invoked": false,
+    "reported_named_browser_unavailable": true,
+    "runtime_preflight_named_browser_ready": true
+  },
+  "root_cause": {
+    "class": "pre-navigation-artifact-validation-misclassified-as-measured-attempt",
+    "sequence": [
+      "the model authored the closure artifact",
+      "a separate snapshot command failed artifact validation",
+      "the exact plan command was invoked before a successful snapshot and failed before navigation",
+      "the model treated that pre-navigation failure as the one measured browser attempt",
+      "the model edited the product while pre_edit_fit_plan remained pending"
+    ],
+    "content_box_formula_implicated": false,
+    "provider_or_browser_capacity_implicated": false
+  },
+  "repair_contract": {
+    "atomic_plan_bootstrap": "the shipped plan runner invokes the deterministic snapshot helper when the snapshot is absent, before browser navigation",
+    "zero_attempt_marker": "OMD_PLAN_NOT_ATTEMPTED",
+    "zero_attempt_scope": "artifact or snapshot validation failures before browser navigation",
+    "allowed_recovery": "correct artifact bookkeeping only and rerun the exact plan command",
+    "measured_or_infrastructure_attempt_rerun_allowed": false,
+    "product_mutation_gate": "successful plan-close stdout plus static_edit_guardrails",
+    "browser_unavailable_claim_for_pre_navigation_validation": false,
+    "silent_fallback": false
+  },
+  "verification": {
+    "focused_tests": {
+      "files": [
+        "test/unit/skills/omd-reflow-artifact.test.mjs",
+        "test/unit/skills/omd-apply-contract.test.mjs"
+      ],
+      "passed": 54,
+      "failed": 0
+    },
+    "behavioral_replays": [
+      {
+        "case": "missing valid snapshot",
+        "result": "snapshot was locked before the instrumented measured-browser sentinel was reached"
+      },
+      {
+        "case": "invalid snapshot selector provenance",
+        "result": "OMD_PLAN_NOT_ATTEMPTED was emitted, browser sentinel was not reached, artifact remained pending, and no snapshot was written"
+      }
+    ],
+    "python_compile": "pass",
+    "typescript_lint": "pass",
+    "diff_check": "pass"
+  },
+  "tokens_to_target": {
+    "cumulative_observed_provider_tokens_minimum": 107050263,
+    "usage_unavailable_cells": 6,
+    "goal_status": "right-censored-open",
+    "tokens_added_by_repair": 0
+  },
+  "claim_boundary": "This provider-free repair closes the observed ordering ambiguity. It does not promote the content-box candidate until the exact repaired source passes a fresh unseen transfer matrix.",
+  "next": "Pin the exact repair source, create a genuinely unseen decision-context task, and preregister a replacement Luna/high transfer matrix."
+}
