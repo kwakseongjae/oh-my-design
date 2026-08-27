@@ -23,7 +23,7 @@ Every destination line below was checked with `grep` against the three output fi
 | YAML `tokens.components` (9 records) | 옮김 → Components & States | `DESIGN.md` 258–409. Verified primitive types preserved per component, not flattened to `Kind` (A1b): `Type: button` ×2 (260/280), `Type: badge` ×2 (299/406), `Type: tab` ×2 (318/338), `Type: input` (357), `Type: listItem` (376), `Type: card` (397). All nine YAML `use` strings restored verbatim as `Token-set use:` lines (266/285/304/323/342/362/382/401/409). The `font` shorthand byte forms are kept as `token-set font record` lines (264/284/303/322/341/361/379/408). The two `active` records are kept verbatim: `active text #0096ff bold` at 323 and `#fa4065 with bottom border` at 342. |
 | §1 Visual Theme & Atmosphere (legacy 61–76) | 옮김 → Experience Scope + Distinctive traits | Scope `DESIGN.md` 9–13; Key Characteristics as Distinctive traits 35–41. The atmosphere readings ("a working jukebox interface", the gray-scaffolding rationale, `#fa4065` as "this is the thing you press") carry an adjacent complete qualifier at 11; the trait list carries one at 33 (B2/B2a). |
 | §2 Color Palette & Roles (legacy 78–105) | 옮김 → Foundations semantic color | `DESIGN.md` 112–138. The source's own group headings (Primary, Text Neutrals, Interactive, Surface & Borders, Chips, On-color) are kept as the grouping. The characterizing phrases the source attaches to three roles are covered by the adjacent qualifier at 108 (B2/B2a). |
-| §3 Typography Rules — family, hierarchy (legacy 107–122) | 옮김 → Typography & Assets | Evidence classes `DESIGN.md` 192–199; family 203–204; hierarchy table 209–215. The source's "no custom web font is loaded / platform `dotum`/Gothic rendering" statement is at 196. |
+| §3 Typography Rules — family, hierarchy (legacy 107–122) | 옮김 → Typography & Assets | Evidence classes `DESIGN.md` 192–199; family 203–204; hierarchy table 209–215. The source's "no custom web font is loaded / platform `dotum`/Gothic rendering, which keeps the catalog fast and consistent across Korean Windows clients" statement is at 196. The License-row reading that treats `dotum` as a platform-supplied face, not a Genie brand asset, carries an adjacent complete qualifier at 198 (B2/B2a). |
 | §3 Principles — 12px workhorse, weight lever, two sizes plus nav, normal tracking (legacy 124–128) | 옮김 → Typography & Assets Type rules | The observable half of the scale is stated plainly at `DESIGN.md` 223; the interpretive half sits inside the qualified sentence at 225 (B2/B2a). |
 | §4 Component Stylings (legacy 130–190) | 옮김 → Components & States | `DESIGN.md` 258–409. §4 body values and YAML `use` strings are both kept where they differ — for example the ghost button's `Background: transparent` and `Border: 1px solid #d2d2d2` (283) alongside the token-set record (285). |
 | Footer **Verified** / **Tier 1 sources** block (legacy 192–195) | 분리 → provenance; 두 URL 옮김 → Experience Scope + Typography & Assets + Governance | Freshness `provenance.md` 27–36; Tier 1 list 46–49. `https://company.genie.co.kr` is dual: `DESIGN.md` 9/199/501 + `provenance.md` 49/73/119 (E2a). |
@@ -33,7 +33,7 @@ Every destination line below was checked with `grep` against the three output fi
 | §7 Don'ts (legacy 242–249) | 옮김 → Experience avoid | `DESIGN.md` 84–90, under the qualifier at 80. |
 | §8 Responsive Behavior (legacy 251–276) | 옮김 → Layout & Platforms; image behavior 옮김 → Typography & Assets Assets | Breakpoint table `DESIGN.md` 420–425 with the "declared behavior rather than an observation" note at 418; touch targets 427; collapsing strategy 429. The artwork/placeholder behavior is at 230, where the "first-party catalog content" reading is qualified (B2/B2a). The 25px chip height and 12px horizontal padding are also the source's own evidence that the chip is a tap target, which is why the chip is declared interactive at `DESIGN.md` 300 (A3). |
 | §9 Agent Prompt Guide — Quick Color Reference, Example Component Prompts, Iteration Guide (legacy 278–308) | 삭제 | Tool-facing copy-paste prompts and restatements; no receiving slot and no delegation. Every value §9 names was checked against the portable body before deletion and each was already present — the twelve hexes, the 4px/8px/13px radii, the 11px/12px/18px sizes, the 400/700 weights, the 8px 18px and 0px 12px and 0px 8px paddings, the `rgba(0,0,0,0.12) 0px 4px 12px` panel shadow, and the `1px #eef1f4` / `1px #d2d2d2` borders (A2, A3). The check is itemised at `provenance.md` 100. |
-| §10 Voice & Tone (legacy 311–324) | 옮김 → Content & Locales | Published strings `DESIGN.md` 436–446; register table 450–457; forbidden register 459. The qualifier precedes the derived material at 448, so the table and the forbidden-register rule are inside its scope (B2/B2a). The source's own English gloss of the tagline is kept and marked as a reader aid that never replaces the label at 438 (A5). |
+| §10 Voice & Tone (legacy 311–324) | 옮김 → Content & Locales | Published strings `DESIGN.md` 436–446; register table 450–457; forbidden register 459. The qualifier at 448 still covers the table and the forbidden-register rule (B2/B2a). The source's own English gloss of the tagline is kept at 438; reading it as a reader aid that never replaces the label carries its own adjacent complete qualifier on that same line (B2/B2a, A5). |
 | §11 Brand Narrative (legacy 326–332) | 옮김 → Experience Scope | `DESIGN.md` 13: 지니뮤직 (Genie Music Corporation), the KT (Korea Telecom) affiliation, the Melon/FLO market placement, the tagline, the genie/lamp metaphor, and the embraces/avoids pair. Marked there as narrative context that supplies no interface tokens; the Korean-web-portal heritage reading carries an adjacent complete qualifier in the same paragraph (B2/B2a). Also noted as narrative-not-token-source at `provenance.md` 123. |
 | §12 Principles — 7 numbered (legacy 334–342) | 옮김 → Experience principles | `DESIGN.md` 47–53 under the fixed B2a form at 45: "These seven items are a derived editorial implementation inference from the verified surface; they are not Genie Music-authored or a separately published UI specification." |
 | §13 Personas — 4 entries (legacy 344–354) | 삭제 | The source's own italic line at legacy 346 labels them fictional archetypes informed by publicly observable segments, not individual people. Not promoted to Audience or to `primary-tasks`, and not re-hosted in the sidecar: no name, age, city, occupation, or segment appears in either output (D2). Disposition at `provenance.md` 97. Audience at `DESIGN.md` 29 carries only the group-level description the source's own §12 states, under an adjacent qualifier. The four `primary-tasks` at 21–24 come from modules and labels the source records; 19 says so and qualifies the step from label to "primary task". |
@@ -62,17 +62,17 @@ The gate's `copy-loss` needles come only from contiguous non-Latin runs of four 
 | All Korean runs in the sibling, any length | 9 distinct | 0 | 0 | — |
 | All backtick / straight-double / curly-double / 「」/（）/() delimited strings in the source, 2–80 chars | 145 | 5 | 0 | See the disposition list below. |
 | All the same in the sibling | 42 | 2 | 0 | `Tier 1 / brand-owned, KR` and `live brand surface; tagline "지니 : 음악, 그리고 설레임" confirmed in DOM \`<title>\`` are the sibling's own classification and description text, not brand-published strings. The tagline inside the second one survives at `DESIGN.md` 13/438 and `provenance.md` 72/115. |
-| `node test-v2/tools/latin-copy-audit.mjs --brand genie` | 24 candidates | 3 reported | 0 | Candidate output, not a verdict. Two are §13 persona prose (`redesign`, `fast and to the point`), deleted with the personas under D2. The third is `this is the thing you press.` — the source's own editorial sentence, whose label survives at `DESIGN.md` 11 without the sentence-final period. |
+| `node test-v2/tools/latin-copy-audit.mjs --brand genie` | 24 candidates | 3 reported | 0 | Candidate output, not a verdict. Two are quoted fragments from §13 fictional-persona prose, deleted with the personas under D2 (D2a: not restated). The third is `this is the thing you press.` — the source's own editorial sentence, whose label survives at `DESIGN.md` 11 without the sentence-final period. |
 
-Survival is measured against `DESIGN.md` and `provenance.md`, the two files that carry content. This log quotes six of the seven non-survivors in the disposition list below, so measuring against all three files would score them as present and hide exactly what the sweep exists to surface.
+Survival is measured against `DESIGN.md` and `provenance.md`, the two files that carry content. This log quotes three of the five non-survivors in the disposition list below (the two §13 fictional-persona fragments are named only as a count, D2a). Measuring against all three files would score the quoted items as present and hide exactly what the sweep exists to surface.
 
 Disposition of the five source quotations that do not survive verbatim in `DESIGN.md` or `provenance.md`:
 
 1. `this is the thing you press.` — survives at `DESIGN.md` 11 without the trailing period; the period is sentence punctuation outside the quoted label.
 2. `strengthens to #27282d on hover` — a §9 prompt fragment. The fact survives at `DESIGN.md` 379 ("title strengthens to `#27282d` on hover/selection") and in the token-set use string at 382.
 3. `#fa4065, 4px radius, 8px 18px padding, white 12px/700 text, hover #d62952` — a §9 prompt fragment. Every value in it is on the Primary Listen / Play Button at `DESIGN.md` 260–266.
-4. `redesign` — §13 persona prose, deleted under D2.
-5. `fast and to the point` — §13 persona prose, deleted under D2.
+4. One quoted fragment from §13 fictional-persona prose — deleted under D2 (D2a: not restated).
+5. One quoted fragment from §13 fictional-persona prose — deleted under D2 (D2a: not restated).
 
 Sub-needle labels the machine check could not see were confirmed present individually in `DESIGN.md`: 종합, 국내, 국외, 듣기, 담기, 다운, 검색, 차트, 최신음악, 라디오, 매거진, 인기검색어, 최근검색어, 최근검색어 전체삭제, 설레임, 돋움, 지니뮤직, 실시간 차트, 로그인·회원가입, 검색 결과가 없습니다, 오류가 발생했습니다, 지니 : 음악, 그리고 설레임.
 
@@ -84,7 +84,7 @@ Token accounting, measured rather than asserted: the source carries 36 distinct 
 
 ## Deviations recorded
 
-- `DESIGN.md` is 6,161 words by `wc -w`, above the spec's 600–1,800-word SHOULD budget. The budget yielded to A1: nine declared components with dual `use`/`font` records, a ten-row surface state contract, a 49-row applicability matrix, two separate Do lists and two separate Don't lists that may not be merged, and the B2a qualifications cannot be compressed without dropping verified values or dropping the qualifications. Recorded rather than silently accepted.
+- `DESIGN.md` is 6,213 words by `wc -w`, above the spec's 600–1,800-word SHOULD budget. The budget yielded to A1: nine declared components with dual `use`/`font` records, a ten-row surface state contract, a 49-row applicability matrix, two separate Do lists and two separate Don't lists that may not be merged, and the B2a qualifications cannot be compressed without dropping verified values or dropping the qualifications. Recorded rather than silently accepted. Prior log figure 6,202 was the post-F3 / pre-wave27-review count; 6,161 was the pre-F3 count.
 - The source names two Tier 1 URLs but supplies computed evidence for only one of them. The corporate URL is therefore carried as a named source with no design value attached, in Scope, in the Font-evidence table, and in Named gaps, rather than being treated as a second captured surface.
 - The source's `#fa406580` disabled value is an 8-digit form the token scanner does not see. It is carried anyway, at `DESIGN.md` 249 and `provenance.md` 87.
 
@@ -100,5 +100,34 @@ Token accounting, measured rather than asserted: the source carries 36 distinct 
   7. Assets (230) — "album artwork is first-party catalog content" was a reading presented as a fact; the observable half now stands plainly and the reading is qualified.
   8. Layout (418) — a draft sentence asserted the inspect was a desktop-web capture. The source states no viewport. The sentence now says only that the source records no measurement at these widths, which is what makes the breakpoint table declared behavior.
 - **F2 (E2 collation).** Every row above was grepped against the three files before it was written; dual destinations are recorded on both sides (E2a); the §15 curve row records both the deletion and its provenance ledger location (E2b). The only compliance claim made in this log is B3, and it is made because `DESIGN.md` 179 carries the five evidence kinds and the per-component gate in full text (E2c).
+
+## Revision 2026-08-27 (F3 B2a·E2 audit)
+
+Independent of the worker F1/F2 notes above. Body line numbers unchanged (qualifiers appended on existing lines).
+
+- B2a: License `DESIGN.md` 198 and tagline-gloss `DESIGN.md` 438 now carry the adjacent complete form. Measured `grep -o 'derived editorial implementation inference' DESIGN.md | wc -l` = **23**; same 23 lines also carry `not Genie Music-authored` and `separately published UI specification`.
+- E1: provenance derived ledger was 18 rows against 21 body qualifiers (narrow = FAIL), then 21 against 23 after the two new body qualifiers. Ledger is now 23 rows, 1:1.
+- D2a: A5 disposition no longer restates §13 fictional-persona quoted fragments.
+- E2: §3 row records the License qualifier at 198; §10 row records the gloss qualifier at 438; word count 6,161 → 6,202.
+
+## Revision 2026-08-28 (wave27 review)
+
+Confirmed defect only: A1 unique-fact loss of the source §3:111 clause `which keeps the catalog fast and consistent across Korean Windows clients`. Orchestrator reconfirmed the absence; existence is not re-litigated.
+
+- Restore: Official distributed-asset row `DESIGN.md` 196 (same line that already carried `no custom web font is loaded` and platform `dotum`/Gothic rendering). Source wording restored as a source-stated fact, not as a derived reading — no new B2a qualifier, no new provenance derived row. B2a remains **23 = 23**.
+- Not touched: token values, component tables, state rows, existing B2a sentences, provenance 1:1, `web/references/genie/**`.
+- Line count: `DESIGN.md` still **501** (in-place edit). F2 pointers 45 · 179 · 196 · 198 · 438 re-read against the current file and still land on Principles qualifier / motion promotion condition / Official distributed asset / License qualifier / tagline gloss. Provenance pointers 9–132 (identity, sibling stack, omission, claim, proof) re-read; no dest moved.
+- Word count: `wc -w` 6,202 → **6,213**.
+
+실측 (`find`로 산출 4파일·원본 존재 확인 후 `grep -o <패턴> <파일> | wc -l`, 파일별. `no matches found` 아님):
+
+| 패턴 | 원본 | DESIGN.md | provenance.md | migration-log.md | audit-log.md |
+|---|---:|---:|---:|---:|---:|
+| `Korean Windows clients` | 1 | **1** | 0 | 3 | 0 |
+| `Windows clients` | 1 | **1** | 0 | 4 | 0 |
+| `Windows` | 1 | **1** | 0 | 5 | 0 |
+| `keeps the catalog fast` | 1 | **1** | 0 | 3 | 0 |
+
+Review-time portable-body counts were DESIGN **0**. After this revision the portable body is **1** (line 196). The log's extra hits are the §3 dest row plus this revision section (E2d: this file is in its own denominator). Provenance 0 is correct: the clause is a source fact, not a derived inference.
 
 DONE migrated=1

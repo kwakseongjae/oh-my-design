@@ -42,7 +42,7 @@ The footer's conflict line in full: "none. (Two-surface variance noted, not a co
 
 ## Sibling verification file (E2)
 
-`web/references/gaudiy/.verification.md` exists (confirmed by path, not by glob — it is a dotfile). It was read in full and used as an evidence grade only. No sibling-only value and no sibling structural classification was promoted into the portable body (B1).
+`web/references/gaudiy/.verification.md` exists (confirmed by path, not by glob — it is a dotfile). It was read in full and used as an evidence grade only. Sibling-only values stay in this ledger; none of them is a portable-body fact (B1). The wave27 revision removed the earlier portable Breakpoints clause that had treated the sibling band width as a body measurement.
 
 Method, verbatim from the sibling: playwright getComputedStyle (live DOM) — global playwright (chromium, headless, Chrome UA, ja-JP locale), goto each surface with `waitUntil: domcontentloaded` + 4.5s settle, cookie/modal dismissal pass, then `getComputedStyle` on body, h1/h2/h3, header/nav, buttons, links, plus a full-DOM background/text/border/font frequency scan.
 
@@ -53,7 +53,7 @@ Sibling-only values deliberately kept out of the portable document, so that no v
 | recruit outline CTA "カジュアル面談に申し込む" height 80px | The legacy component record states 64px, measured on "コーポレートサイトへ". Both heights are real; only the legacy-declared one is promoted. |
 | news/press card height 100px | Sibling-only measurement; the legacy record carries the border, radius, and padding but no height. |
 | solid black inline CTA width 136px / height 30px | Sibling-only measurement. |
-| grey section band measured 1440×4474px | The legacy carries the ~4474px page height; the 1440px width appears in the portable body only through the legacy's own Desktop breakpoint range (1024-1440px). |
+| grey section band measured 1440×4474px | Sibling-only. The sample is here. The portable body carries the source Desktop range `1024-1440px` (Breakpoints table) and the source height `~4474px` (Grid & Container). This sibling band-width measurement stays in this ledger. |
 | favicon 128×128 PNG, 995 bytes, content-type image/png, 450B generic-globe threshold | Logo-decision evidence, below. |
 | body (gaudiy.com) `color: rgb(0, 0, 0)`, `font-size: 16px` | The document-level body color differs from the dominant text color the legacy promotes (`#333333`); both are recorded here and only the legacy's promoted role is in the portable body. |
 
@@ -63,7 +63,7 @@ The source's closing HTML comment separates its own layers, verbatim in substanc
 
 - Token-level claims (its sections 1–9) are sourced from the two live inspections below.
 - Voice samples (its section 10) are verbatim from the live surfaces — corporate hero, vision subhead, recruit title.
-- Brand narrative (its section 11): founding year 2018, Tokyo, CEO 石川裕也 (Yuya Ishikawa), product Gaudiy Fanlink, Web3 fan-community platform. The Sony Group + Bandai Namco strategic partnership and the 松竹 / 東映アニメーション / 東宝 funding are stated on the corporate hero's live news cards (verified live 2026-06-17). The founding year and CEO are, in the source's words, widely documented public facts about the company, not directly quoted from a verified Gaudiy statement in that turn.
+- Brand narrative (its section 11): founding year 2018, Tokyo, CEO 石川裕也 (Yuya Ishikawa), product Gaudiy Fanlink, a fan-community platform that lets IP and entertainment brands run digital fan experiences — fan tokens, digital collectibles, community engagement — on top of blockchain rails. The Sony Group + Bandai Namco strategic partnership and the 松竹 / 東映アニメーション / 東宝 funding are stated on the corporate hero's live news cards (verified live 2026-06-17). The founding year and CEO are, in the source's words, widely documented public facts about the company, not directly quoted from a verified Gaudiy statement in that turn.
 - Personas (its section 13) are fictional archetypes; names are illustrative and do not refer to real people.
 - Interpretive claims — the source names "monochrome as conviction" and "editorial-brutalist as a rejection of glossy crypto branding" — are editorial readings connecting the observed design to Gaudiy's positioning, not sourced Gaudiy statements.
 
@@ -181,7 +181,7 @@ JP country — the ≥2 brand-owned regional source rule is a KR/TW gate and doe
 
 ## Derived editorial inventory
 
-Index of the sentences in the portable body that carry the complete derived-editorial qualifier, so the qualification can be audited without re-reading the whole file. Measured, not remembered: **19 qualifier sites across 18 headings** in `DESIGN.md`, counted with `grep -o` on the full qualifier string. Each is a reading the migration attached to observation, not a Gaudiy publication.
+Index of the sentences in the portable body that carry the complete derived-editorial qualifier, so the qualification can be audited without re-reading the whole file. Measured, not remembered: **22 qualifier sites across 21 headings** in `DESIGN.md`, counted with `grep -o` on the full qualifier string (`derived editorial implementation inference` 22 / `not Gaudiy-authored` 22 / `separately published UI specification` 22). Each is a reading the migration attached to observation, not a Gaudiy publication.
 
 | # | Portable location | Reading qualified |
 |---:|---|---|
@@ -193,17 +193,20 @@ Index of the sentences in the portable body that carry the complete derived-edit
 | 6 | Experience → Principles | the five principles and their UI implications |
 | 7 | Experience → Application rules | the Do list, the moved restraint rule, and the attached reasons |
 | 8 | Experience → Avoid | the Don't list and the attached reasons |
-| 9 | Foundations → Semantic color | charcoal as a softened black for warmth and readability, border ink as the color that draws every box, inversion rather than color as the emphasis mechanic |
+| 9 | Foundations → Semantic color | charcoal as a softened black for warmth and readability, border ink as the color that draws every box, inversion rather than color as the emphasis mechanic, plus the following constraint (do not add a hue; retain the corporate/recruit split as two variants) |
 | 10 | Foundations → Spacing | asymmetric padding read as an optically balanced editorial touch |
 | 11 | Foundations → Elevation | editorial-brutalist choice, sharp/graphic/defiant, opposite-of-consumer-tech, and the four levels read as an elevation ladder |
 | 12 | Foundations → Motion | durations, easing role names, Use assignments, inversion-flip signature, glitch/cut punctuation, no-bounce/no-spring, reduced-motion line — all as source-stated rather than computed |
-| 13 | Typography & Assets → Type roles | weight/font-switch as the hierarchy signals and no color hierarchy; tracking flip as a deliberate editorial signature; charcoal as comfort for long Japanese copy; the two script-to-font roles as never swapped |
-| 14 | Components & States → How to read | every role description, every interactive-kind verdict, every applicability verdict, each reason, and the English readings placed beside the Japanese labels |
-| 15 | Components & States → State record | the nine rows read as the system's state contract, and their per-state assignments |
-| 16 | Layout & Platforms → Whitespace | whitespace, segmentation, and border repetition read as rhythm and philosophy |
-| 17 | Layout & Platforms → Breakpoints | the three-tier table read as a responsive contract, extended by name to touch targets, collapsing strategy, and image behavior |
-| 18 | Content & Locales, voice paragraph | voice characterisation, register readings in the tone table, and the design-carries-the-same-seriousness claim |
-| 19 | Content & Locales, forbidden register | the restraint-signals-seriousness explanation |
+| 13 | Typography & Assets → Family | scripts kept on separate faces; no substitute family; generic fallback not presented as a brand display face |
+| 14 | Typography & Assets → Type roles | weight/font-switch as the hierarchy signals and no color hierarchy; tracking flip as a deliberate editorial signature; charcoal as comfort for long Japanese copy; the two script-to-font roles as never swapped |
+| 15 | Typography & Assets → Assets | third-party favicon pointer not promoted as a brand image; no-shadow imagery read as consistent with the flat system |
+| 16 | Components & States → How to read | every role description, every interactive-kind verdict, every applicability verdict, each reason, and the English readings placed beside the Japanese labels |
+| 17 | Components & States → State record | the nine rows read as the system's state contract, and their per-state assignments |
+| 18 | Layout & Platforms → Whitespace | whitespace, segmentation, and border repetition read as rhythm and philosophy |
+| 19 | Layout & Platforms → Breakpoints | the three-tier table read as a responsive contract, extended by name to touch targets, collapsing strategy, and image behavior |
+| 20 | Content & Locales, voice paragraph | voice characterisation, register readings in the tone table, and the design-carries-the-same-seriousness claim |
+| 21 | Content & Locales, forbidden register | the restraint-signals-seriousness explanation |
+| 22 | Governance → Recorded unresolved decisions | corporate/recruit variance read as an intentional two-surface split rather than a conflict to reconcile |
 
 Evidence-class boundary sentences, distinct from the qualifiers above, that state what a piece of evidence is rather than what it means: the Fanlink-description-belongs-to-the-narrative pointer in Scope; the narrative-does-not-supply-tokens line in Scope; the founding-year/CEO public-fact line in Scope; the hex-values-are-the-observed-part line in Semantic color; the accent-scan constraint in Semantic color; the two-surface-variance line in Semantic color; the philosophy-layer line in Motion; the record-scope row in Font evidence; the no-computed-hover/focus/pressed line in Components; the labels-are-verbatim line in Components; the philosophy-layer/two-inspections line in the State record; the single-desktop-width line in Breakpoints; the Japanese-is-the-published-string line in Content & Locales; the cited-clichés-are-not-Gaudiy-copy line in Content & Locales.
 
@@ -214,7 +217,7 @@ Evidence-class boundary sentences, distinct from the qualifiers above, that stat
 | `ease-enter` curve | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Unattributed. The sibling records no transition, animation, duration, or easing sample; the source's own closing note places its motion section in the philosophy layer, outside the live-inspect list. Name and use survive in the portable Motion table. |
 | `ease-exit` curve | `cubic-bezier(0.4, 0.0, 1, 1)` | Unattributed, and identical to the `ease-exit` example in `spec/omd-v0.1.md` — the legacy spec table that names itself a non-brand implementation default and forbids moving its curves into a reference DESIGN.md. |
 | `ease-standard` curve | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Unattributed, on the same evidence as the two above. |
-| Personas — three named figures | Not re-hosted. The identifiers 佐藤 美咲 / 田中 蓮 / Daniel Park appear here once, and once in the migration log, solely to name what was removed. | D2: the source labels them fictional archetypes with illustrative names. Ages, cities, and biographies are carried in neither file. |
+| Personas — fictional personas 3인, §13, D2 삭제 | Not re-hosted. Names, ages, cities, and biographies are omitted from this ledger (D2a). | D2: the source labels them fictional archetypes with illustrative names. |
 | Tool-facing section (its section 9) | Quick Color Reference, Example Component Prompts, and Iteration Guide are not carried. | Tool-specific commands, prompt wrappers, and restatements of rules already held as values. One restraint rule stated only there — use the solid black inversion CTA sparingly, for the single primary action — was moved into the portable Application rules rather than dropped (A3). |
 
 The source contains no `[FILL IN]` placeholder, so this migration emits none and the ledger records none.

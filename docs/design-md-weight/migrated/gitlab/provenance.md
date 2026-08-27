@@ -44,7 +44,7 @@ The `*(verified live 2026-06-17)*` markers that sat beside each of the three voi
 - **Inspected:** 2026-06-17
 - **Method (verbatim):** playwright getComputedStyle (live DOM) — global playwright (chromium, headless, viewport 1440×900/1200), goto each surface `domcontentloaded`, cookie/modal dismissal pass, then `getComputedStyle` on body, h1/h2/h3, buttons/links/inputs, `.gl-button`/`.gl-badge`/`.gl-form-input`, plus a full-DOM background/text color + radius frequency scan.
 - **Raw samples:** 26 records.
-- Token comparison: the sibling introduces no hex, px, rem, ms, or percentage value that the legacy `DESIGN.md` does not already carry (measured: sibling-only token set is empty).
+- Token comparison: the sibling introduces no hex, px, rem, ms, or percentage value that the legacy `DESIGN.md` does not already carry (measured: sibling-only token set is empty), except the padding on the nav-card grid. Raw sample 6 records `nav-card grid radius 14px / padding 16px`. The source body establishes only `Product-nav cards arranged in a multi-card grid inside dropdown panels (14px radius)` and YAML `nav-card` `padding: 24px` / `radius: 16px`. The `16px` grid padding stays here as a sibling observation and is not a portable-body fact.
 
 ## Evidence class
 
@@ -162,7 +162,7 @@ Every value below is claimed from the 2026-06-17 live inspection recorded in the
 | `tokens.typography.family.sans` `GitLab Sans` + declared fallback stack | both | Typography & Assets → Font evidence, Family |
 | `tokens.typography` six roles (size / weight / unitless lineHeight / tracking / use) | both | Typography & Assets → Type roles |
 | `tokens.spacing` 8 keys, verbatim `{ xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }` | both | Foundations → Spacing; Layout & Platforms |
-| `tokens.rounded` 4 keys, verbatim `{ sm: 4, md: 8, lg: 16, full: 9999 }` — `full: 9999` is the pill step the source renders as a 160px radius on the badges | both | Foundations → Shape |
+| `tokens.rounded` 4 keys, verbatim `{ sm: 4, md: 8, lg: 16, full: 9999 }` — Shape Pill value cell carries `full: 9999` with the source-body alias `(160px / full)` | both | Foundations → Shape |
 | `tokens.shadow.inset-border`, `tokens.shadow.elevated` | pajamas | Foundations → Elevation |
 | `tokens.components.button-confirm` / `button-danger` / `button-default` / `button-marketing` | pajamas / marketing | Components & States, one record each |
 | `tokens.components.input-text` | pajamas | Components → Text Input (Pajamas) |
@@ -196,14 +196,22 @@ Sentences in the portable body that read a purpose, cause, or classification int
 
 | Location | Interpretive content |
 |---|---|
+| Experience → Scope, second paragraph | Characterizations "ink-forward", "editorial", "restrained geometry" built on recorded measurements |
+| Experience → Scope, third paragraph | The refuses/embraces pairing read off the same design |
 | Experience → Scope, final paragraph | The two-layer split as one identity, the palette as role-per-color discipline, the near-flat treatment as a consequence of the transparency posture, and the "engineering tool that learned typography" impression |
+| Experience → Primary tasks, head | Naming three jobs from the two captured surfaces |
+| Experience → Audience | Grouping the two captured surfaces into practitioners and builders |
 | Experience → Distinctive traits, head | The groupings "two-tier color logic", "restrained radius", "cool neutral text ladder" |
 | Experience → Principles, head | The five principles' UI implications, which link posture to treatment |
 | Experience → Application rules, head | The justifications attached to the eight rules |
+| Experience → Avoid, head | The reasons attached to the eight avoidances |
+| Foundations, section head | Explanatory clauses attached to recorded values — why a padding is tight, what a shadow is *for*, what a color rule protects |
 | Foundations → Elevation, closing | Reading the shadow measurements as a deliberate emphasis strategy |
 | Foundations → Motion, head | The whole motion contract — durations, easing roles, motion rules |
 | Typography & Assets → Typography rules, head | What a weight or a tracking value is *for* |
+| Typography & Assets → Assets, logo file | Classing the catalog logo entry as a third-party rendering |
 | Components & States → How to read this section | Every interactive-kind verdict, every applicability verdict, and the reasons given |
+| Components & States → Status Badge | Grouping four token-block badges plus warning and neutral into one component with six variants |
 | Layout & Platforms → Whitespace | "Generous marketing, dense product", "flat banding for rhythm", "pill cadence in status" |
 | Content & Locales, opening | Naming the register and tying it to the transparency posture |
 
@@ -214,7 +222,7 @@ Sentences in the portable body that read a purpose, cause, or classification int
 | §15 easing curve values — `cubic-bezier(0.2, 0.6, 0.25, 1)` (`ease-enter`), `cubic-bezier(0.4, 0.0, 1, 1)` (`ease-exit`), `cubic-bezier(0.25, 0.1, 0.25, 1)` (`ease-standard`) | Removed from the portable body as unsourced curves; kept here verbatim. The sibling's method and its 26 raw samples record no transition, animation, duration, or easing observation, and `cubic-bezier(0.4, 0.0, 1, 1)` is the example value that `spec/omd-v0.1.md` carries and defines as a non-brand implementation default that must not be moved into a reference. The roles and their uses stay in the portable body. |
 | §13 Personas — three archetypes | Deleted. The source's own persona header and its closing note both state that the archetypes are fictional and that the names are illustrative. Biographies, ages, cities, and the segment list are not re-hosted here. |
 | `*(verified live 2026-06-17)*` markers beside the three voice samples | Freshness metadata; recorded in Freshness above, removed from the portable body. The sample strings themselves stay in the portable body verbatim. |
-| §9 Agent Prompt Guide — Quick Color Reference, five Example Component Prompts, seven-step Iteration Guide | Deleted as tool-facing restatement. One value was unique to §9 and was moved rather than dropped: the dark proof-stat card's typography ("Large stat in GitLab Sans 660, caption in 16px/400"), now on the Dark Proof-Stat Card record. |
+| §9 Agent Prompt Guide — Quick Color Reference, five Example Component Prompts, seven-step Iteration Guide | Deleted as tool-facing restatement. One value was unique to §9 and was restated rather than dropped: the dark proof-stat card's typography ("Large stat in GitLab Sans 660, caption in 16px/400"), now on the Dark Proof-Stat Card record as "the large stat is set in GitLab Sans 660 and the caption at 16px / 400". |
 | Legacy H1 `# Design System Inspiration of GitLab` | Replaced by the Core v2 identity line `# GitLab Design System`. |
 | Legacy footer `**Verified:** … / Tier 1 / Tier 2 / Conflicts unresolved` | Moved to Freshness and Sources above. |
 

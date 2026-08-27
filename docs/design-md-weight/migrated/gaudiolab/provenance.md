@@ -42,7 +42,7 @@ Conflicts unresolved: none. The source states `Conflicts unresolved: none (Tier 
 
 ## Sibling verification file (E2)
 
-`web/references/gaudiolab/.verification.md` was read and **adopted as evidence grading only**. No sibling-only value and no sibling structural classification was promoted into the portable body (B1). The sibling-only items are listed below and appear in this ledger alone.
+`web/references/gaudiolab/.verification.md` was read and **adopted as evidence grading only**. No sibling-only value and no sibling structural classification was promoted into the portable body (B1). The sibling-only items are listed below as records in this ledger; they are absent from the portable body. The same strings may appear in the migration log as disposition mentions, not as use.
 
 **Method, quoted from the sibling:** playwright `getComputedStyle` (live DOM) — global playwright (chromium, headless), goto with desktop Chrome UA, `waitUntil: domcontentloaded` + 3.5s settle, cookie/modal dismissal pass, then `getComputedStyle` on body, h1/h2/h3, header/nav buttons, CTAs, links, cards, plus a full-DOM background/text color + radius frequency scan.
 
@@ -194,7 +194,7 @@ Every value's legacy origin and its portable destination. `home` = `https://www.
 
 ## Derived editorial inventory
 
-Seventeen sentences in the portable body carry the full B2a qualification — "a derived editorial implementation inference from the verified surfaces; … not Gaudio Lab-authored or a separately published UI specification". They are indexed here so a reviewer can confirm each one sits adjacent to the claim it qualifies rather than only in this sidecar. Measured on the output: 17 occurrences in `DESIGN.md`; the single occurrence in this file is the quotation of the clause in the sentence above, not a qualification.
+Twenty sentences in the portable body carry the full B2a qualification — "a derived editorial implementation inference from the verified surfaces; … not Gaudio Lab-authored or a separately published UI specification". They are indexed here so a reviewer can confirm each one sits adjacent to the claim it qualifies rather than only in this sidecar. Measured on the output: 20 occurrences in `DESIGN.md`; the single occurrence in this file is the quotation of the clause in the sentence above, not a qualification.
 
 | # | Portable location | What is qualified |
 |---:|---|---|
@@ -213,8 +213,11 @@ Seventeen sentences in the portable body carry the full B2a qualification — "a
 | 13 | Components `How to read this section` | Every kind verdict, every applicability verdict, and the reason given for either |
 | 14 | Components `State record` | The nine state treatments as an unattributed system-level statement |
 | 15 | Layout & Platforms, paragraph after the layout bullets | "Content over chrome", flat segmentation, and immersive-rhythm readings |
-| 16 | Layout & Platforms, responsive paragraph | The breakpoints, collapsing strategy, and image behavior as system-level statements rather than cross-viewport measurements |
+| 16 | Layout & Platforms, responsive paragraph | The breakpoints, collapsing strategy, image behavior, and the "comfortably tappable" reading of recorded target sizes, as system-level statements rather than cross-viewport measurements |
 | 17 | Content & Locales, paragraph 1 | The voice characterization, the Korean register reading, the evidence-over-adjectives reading, and the tone table |
+| 18 | Foundations `Semantic color`, after the two-CTA note | Role readings inside Recorded use: `#00b7ff` as the single action color, `#fafafa` as softer-than-white by an MUI convention, `#f0f9ff` as the palest echo of the brand blue |
+| 19 | Typography & Assets `Assets` | Treating first-party video/waveform/film as the emotional carrier, and the instruction not to replace it with invented brand-color decoration |
+| 20 | Content & Locales, Forbidden register | "Science first and feeling second, never as a gimmick" as a characterization of the register |
 
 ### Evidence-class boundary statements — related but not the same clause
 
@@ -226,7 +229,7 @@ These sentences separate one evidence domain from another. They are not B2a qual
 | Foundations `Semantic color`, closing line | The two blue CTAs carry two different label colours (`#fafafa`, `#ffffff`); both are kept rather than merged. |
 | Foundations `Semantic color`, MUI chrome ink row | The two blacks are two values on two layers; the split is kept rather than collapsed. |
 | Foundations `Motion`, easing paragraph | The curve values are omitted because they are not traceable to Gaudio Lab evidence, while the roles and uses are kept. |
-| Foundations `Motion` and Governance | The B3 promotion condition: five evidence kinds plus a per-component computed-observation gate, with partial confirmation explicitly excluded. Present in full in both places. |
+| Foundations `Motion` and Governance | The B3 promotion condition: five evidence kinds plus a per-component computed-observation gate are present in both places. The partial-confirmation exclusion sentence is in Foundations `Motion` only, not in Governance. |
 | Typography & Assets `Font evidence`, Korean-hero half of the attribution row | The Korean hero's computed family is the system stack; Noto Sans KR is the source's own attribution of the resolved face. |
 | Typography & Assets `Assets` | The catalog logo entry is a third-party favicon service, not a Gaudio Lab-hosted asset, and is held in this ledger rather than presented as a brand asset. |
 | Components `News Card` and `Product Row` | Neither an interactive nor a non-interactive kind is established, so kind and applicability map are both withheld (C4). |

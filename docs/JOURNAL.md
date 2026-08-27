@@ -1,3 +1,118 @@
+## 2026-08-28 — 웨이브 27 개정 gaudiy
+- 한 일: 확정 4건만 고침. Fanlink 능력 목록 복원, sibling `measures 1440px` 제거, `mobile app` 삭제, 목적지 loading 폐쇄.
+- 열린 것: B2a 22=22, dest 453행 불변, 원본 무변경.
+- 다음: 웨이브 27 원장 마감.
+
+## 2026-08-28 — 웨이브 27 개정 gaudiolab
+- 한 일: 확정 결함 4 개정. A1 연혁 복원 · C2 loading 5행 폐쇄 · A4 motion-slow 귀속 제거 · D1 applications 문장 삭제. B2a 20=20. DESIGN 482 불변.
+- 열린 것: 원본 미수정. 카탈로그 채택 아님. 형제 개정 gitlab·genie·gaudiy는 별 세션.
+- 다음: 웨이브 27 원장 마감 또는 다음 웨이브.
+
+## 2026-08-28 — 웨이브 27 개정 gitlab
+- 한 일: FAIL 4만 수정. Shape `full: 9999` 복원 · sibling 16px padding 본문 제거 · `product application` 3문장 삭제 · Primary tasks 페르소나 동기 삭제. 620행, B2a 18=18. `FIX_DONE gitlab fixes=4`.
+- 열린 것: 토큰·표 구조·한정·원본 미수정.
+- 다음: 남은 개정 gaudiolab·gaudiy.
+
+## 2026-08-28 — 웨이브 27 개정 genie
+- 한 일: A1 `Korean Windows clients`를 `DESIGN.md` 196에 원본 표현으로 복원. 줄 수 501 불변, B2a 23=23. `FIX_DONE genie fixes=1`.
+- 열린 것: 토큰·표·한정·원본 미수정. 남은 개정 gaudiolab·gaudiy·gitlab.
+- 다음: 나머지 웨이브 27 개정.
+
+## 2026-08-27 — 웨이브 27 의미 검토 gaudiolab
+- 한 일: 독립 검토. `gaudiolab` **FAIL 4** (A1 연혁 소실 · C2 loading · motion-slow 귀속 · D1 applications). 산출 미수정.
+- 열린 것: A1 키경로·발행 카피·§15 규칙·F2 목록은 실측 통과. B2a·E2는 범위 밖.
+- 다음: 오케스트레이터 처분 또는 남은 브랜드 의미 검토.
+
+## 2026-08-27 — 웨이브 27 의미 검토 gangnamunni
+- 한 일: 독립 검토. `gangnamunni` **PASS**. A1 키경로(20 충돌 쌍 포함)·고유 사실·§제약·C·D1·F2 실측 통과.
+- 열린 것: B2a·E2는 범위 밖. 산출 미수정.
+- 다음: 남은 웨이브 27 의미 검토 또는 개정.
+
+## 2026-08-27 — 웨이브 27 의미 검토 gitlab
+- 한 일: 독립 검토. `gitlab` FAIL 4 (A1 `9999` · A1 sibling padding · D1 product application · D2 페르소나 메아리). 산출 미수정.
+- 열린 것: C·모션 규칙·F2 목록은 결함 아님. 형제 의미 검토 진행 중(gaudiy FAIL 4 선행).
+- 다음: 개정 또는 남은 브랜드 의미 검토.
+
+## 2026-08-27 — 웨이브 27 의미 검토 genie
+- 한 일: 독립 검토. `genie` FAIL 1 — 원본 §3 `Korean Windows clients`가 산출 네 파일 0.
+- 열린 것: A1 키경로·발행 카피·C·D1·F2는 실측 통과. 산출 미수정.
+- 다음: 오케스트레이터 처분.
+
+## 2026-08-27 — 웨이브 27 의미 검토 gaudiy
+- 한 일: 독립 검토. `gaudiy` FAIL 4 (A1 능력 목록 · A1/D 밴드폭 귀속 · D1a 유령 도메인 · C2 목적지 loading). 산출 미수정.
+- 열린 것: 웨이브 27 나머지 4브랜드 의미 검토.
+- 다음: gangnamunni·gaudiolab·genie·gitlab 검토 후 개정.
+
+## 2026-08-27 — 웨이브 27 F3 gangnamunni (B2a·E2)
+- 한 일: 본문 한정 10→13, 원장 0→13, Surface split 2차 목적지 축소, 계수 3종·`grep -cE` 교정. `AUDIT_DONE fixes=12`.
+- 열린 것: 이전 CURRENT_STATE 「13=13 재실측」은 파일과 불일치로 superseded. A5a 1/91은 보고만.
+- 다음: 오케스트레이터 마감.
+
+## 2026-08-27 — 웨이브 27 F3 gitlab (B2a·E2, 정본)
+- 한 일: 본문 한정 13→18, 원장 10→18, hex·§9·9999 목적지 교정, §13/A5a D2a 무식별. `AUDIT_DONE fixes=14`.
+- 열린 것: 형제 gaudiy·gaudiolab 삭제 행 식별자 잔존(범위 밖). 이전 fixes=5 기록은 파일과 불일치로 superseded.
+- 다음: 오케스트레이터 마감.
+
+## 2026-08-27 — 웨이브 27 F3 gaudiy 재실측 (B2a·E2)
+- 한 일: Family·Assets·Governance 한정 + Semantic constraint, 원장 19→22, §13 D2a 무식별, 1440px 2차 목적지. `AUDIT_DONE fixes=10`.
+- 열린 것: B1 sibling `1440px` 본문 사실화는 미수정. 형제 gaudiolab·gitlab 삭제 행에 식별자 잔존.
+- 다음: 오케스트레이터 마감.
+
+## 2026-08-27 — 웨이브 27 F3 gaudiolab 재실측 (B2a·E2)
+- 한 일: 본문 한정 17→21, 원장 21=21, live-extract 2차 목적지 철회, B3 2회 과대 철회, §13 D2a 무식별. `AUDIT_DONE fixes=12`.
+- 열린 것: 형제 gaudiy·gitlab 삭제 행에 식별자 잔존(이 감사 범위 밖).
+- 다음: 오케스트레이터 마감.
+
+## 2026-08-27 — 웨이브 27 F3 genie 착지 (B2a·E2)
+- 한 일: License 198·gloss 438 한정, 원장 18→23, A5 D2a 무식별, 로그 §3/§10·단어 수 6,202. `AUDIT_DONE fixes=8`. SHA `2e816085…`.
+- 열린 것: 게이트 7/144. 발행 카피 손실 안 보임. 형제 4브랜드 삭제 행은 감사 시점 무식별.
+- 다음: 오케스트레이터 마감.
+
+## 2026-08-27 — 웨이브 27 F3 gitlab (B2a·E2)
+- 한 일: Status Badge 그룹핑 한정, Scope 거짓 포인터 삭제, derived 원장 17→18, 로그 hex 목적지·B2a 18회 교정. `AUDIT_DONE fixes=5`.
+- 열린 것: 웨이브 27 F3 5기 감사 완료(gangnamunni·gaudiolab·gaudiy·genie·gitlab).
+- 다음: 오케스트레이터 마감.
+
+## 2026-08-27 — 웨이브 27 F3 genie 완료 (B2a·E2)
+- 한 일: License 198·gloss 438 한정, 원장 18→23, A5 D2a 무식별, 로그 목적지·F2·단어 수 동기화. `AUDIT_DONE fixes=8`.
+- 열린 것: 발행 카피 손실 안 보임(게이트 7/144). B1 sibling 승격 없음.
+- 다음: 오케스트레이터 마감. gitlab이 남으면 그쪽.
+
+## 2026-08-27 — 웨이브 27 F3 gaudiolab 완료 (B2a·E2)
+- 한 일: 한정 4문장+responsive 범위, 원장 17→21, live-extract·B3·D2a 로그 정정. `AUDIT_DONE fixes=10`.
+- 열린 것: 발행 라틴 손실 안 보임(게이트 6/201). 같은 웨이브는 gitlab이 남으면 그쪽.
+- 다음: 오케스트레이터 마감.
+
+## 2026-08-27 — 웨이브 27 F3 gangnamunni 재실측 (B2a·E2)
+- 한 일: 본문 한정 13=원장 13 재확인. Surface split 전문은 DESIGN 0인데 로그가 2차 목적지로 적혀 있어 둘째 절만 dual로 좁힘. `grep -cE` 원장을 `grep -oF`로 교체. `AUDIT_DONE fixes=12`.
+- 열린 것: 웨이브 27 F3 남은 gaudiolab·gitlab.
+- 다음: 남은 2브랜드 F3.
+
+## 2026-08-27 — 웨이브 27 F3 genie (B2a·E2)
+- 한 일: License 행 한정, derived 원장 18→22, A5 삭제 행 무식별, F1/F2 동기화. `AUDIT_DONE fixes=7`.
+- 열린 것: 웨이브 27 F3 남은 gaudiolab·gitlab.
+- 다음: 남은 2브랜드 F3.
+
+## 2026-08-27 — 웨이브 27 F3 gaudiy (B2a·E2)
+- 한 일: Family·Assets·Governance 한정 3, derived 원장 19→22, §13/Omission 무식별(D2a·E2d), sibling 1440px 2차 목적지 원장 교정. `AUDIT_DONE fixes=10`.
+- 열린 것: 본문 1440px 측정폭은 B1(범위 밖, 미수정). gaudiolab·gitlab 로그 삭제 행이 같은 D2a 형태.
+- 다음: 웨이브 27 나머지 F3(gaudiolab·genie·gitlab).
+
+## 2026-08-27 — 웨이브 27 F3 gangnamunni (B2a·E2)
+- 한 일: 산출물·원본만 대조해 B2a 3문장 한정, provenance derived 절 13행 신설, 원장/로그 계수 3쌍 교정. `AUDIT_DONE fixes=10`.
+- 열린 것: 웨이브 27 F3 남은 gaudiolab·genie·gitlab.
+- 다음: 남은 3브랜드 F3.
+
+## 2026-08-27 — 웨이브 27 F3 gaudiolab (B2a·E2)
+- 한 일: 한정 4문장+responsive 범위, 원장 17→21, live-extract·B3·D2a 로그 정정. `AUDIT_DONE fixes=10`.
+- 열린 것: 같은 웨이브 F3 잔여 4기. 발행 라틴 손실은 안 보임(6/201 바늘).
+- 다음: gangnamunni·gaudiy·genie·gitlab F3.
+
+## 2026-08-27 (grok) — 웨이브 27 F3 gaudiolab
+- 한 일: B2a 한정 4+1, derived 원장 17→21, live-extract/B3 로그 과대 주장 철회, §13 삭제 행 무식별. `AUDIT_DONE fixes=11`.
+- 열린 것: gaudiy·gitlab D2a(및 gitlab E2d)는 해당 F3 몫. 카탈로그 채택 아님.
+- 다음: 웨이브 27 나머지 F3(gangnamunni·gaudiy·genie·gitlab).
+
 ## 2026-08-27 (opus5) — main CI red 수리, Dependabot 폐지
 - 한 일: `ee445abc`가 테스트가 경로로 읽는 `reports/`를 untrack해 클린 체크아웃만 실패하던 것을 수리 — `reports/.gitignore`(`/*`+negation 115) 신설, `GATE_BOUND`를 파생으로 교체(`--sync-ignore`), 395파일 재추적, custody 테스트 신설. 워크트리 시뮬에서 137 failed → 0. `.github/dependabot.yml` 삭제 + PR 16건 close.
 - 열린 것: 스위트 중 `npm run build`가 추적 산출물을 덮어쓰는 기존 오염(컨트롤에서도 재현)과 `readiness-generator` 15s 타임아웃 여유. `.gitignore` negation 무효는 원래부터였고 `3b14d6b1`의 `add -f`가 그 증상이었다.
