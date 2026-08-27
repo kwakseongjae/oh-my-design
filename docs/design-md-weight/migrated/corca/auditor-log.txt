@@ -1,0 +1,60 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 corca 산출물부터 읽고, 문장 한정과 원장 정합만 고치겠습니다.이미 감사 산출물이 있으니 기존 감사 기록과 본문·원장을 함께 읽고, 문장 단위로 B2a·E2만 대조하겠습니다.이전 F3은 wave17 재제출 전에 찍힌 상태입니다. 원본과 현재 본문을 문장 단위로 다시 분류하고, 로그·provenance는 grep으로 대조하겠습니다.wave17 복원 뒤 줄 번호가 밀렸을 가능성이 큽니다. B2a 인접 여부와 로그 목적지를 실제 파일에서 grep으로 대조합니다.문장 한정은 인접이 끊긴 곳만 고치고, 로그·provenance 목적지는 wave17 이후 실제 줄에 맞추겠습니다.migration-log 목적지를 실제 줄에 맞추고, §9 child-tuple 이관 주장도 본문과 같게 고칩니다.
+AUDIT_ERROR: Error: Command failed: /Users/kwakseongjae/.grok/bin/grok -p B2a·E2 전담 감사. 너는 이관 워커가 아니라 감사자다. docs/design-md-weight/migrated 산출물에서 두 결함 계열만 찾아 직접 수정해라.
+Internal error: {
+  "message": "API error (status 402 Payment Required): Grok Build usage balance exhausted",
+  "http_status": 402,
+  "promptUsage": {
+    "inputTokens": 3077797,
+    "outputTokens": 39826,
+    "totalTokens": 3117623,
+    "cachedReadTokens": 2900352,
+    "cacheCreationTokens": 0,
+    "reasoningTokens": 33956,
+    "modelCalls": 23,
+    "apiDurationMs": 578639,
+    "costUsdTicks": 3474837400,
+    "modelUsage": {
+      "grok-4.6-build": {
+        "inputTokens": 3077797,
+        "outputTokens": 39826,
+        "totalTokens": 3117623,
+        "cachedReadTokens": 2900352,
+        "cacheCreationTokens": 0,
+        "reasoningTokens": 33956,
+        "modelCalls": 23,
+        "apiDurationMs": 578639,
+        "costUsdTicks": 3474837400
+      }
+    },
+    "numTurns": 23
+  }
+}
+Error: Internal error: {
+  "message": "API error (status 402 Payment Required): Grok Build usage balance exhausted",
+  "http_status": 402,
+  "promptUsage": {
+    "inputTokens": 3077797,
+    "outputTokens": 39826,
+    "totalTokens": 3117623,
+    "cachedReadTokens": 2900352,
+    "cacheCreationTokens": 0,
+    "reasoningTokens": 33956,
+    "modelCalls": 23,
+    "apiDurationMs": 578639,
+    "costUsdTicks": 3474837400,
+    "modelUsage": {
+      "grok-4.6-build": {
+        "inputTokens": 3077797,
+        "outputTokens": 39826,
+        "totalTokens": 3117623,
+        "cachedReadTokens": 2900352,
+        "cacheCreationTokens": 0,
+        "reasoningTokens": 33956,
+        "modelCalls": 23,
+        "apiDurationMs": 578639,
+        "costUsdTicks": 3474837400
+      }
+    },
+    "numTurns": 23
+  }
+}

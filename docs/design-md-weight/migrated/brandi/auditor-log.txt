@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 규칙집의 해당 조항과 brandi 산출물부터 읽고, 문장 분류·원장 대조를 시작합니다.규칙집 B2·E2와 최근 감사 로그 형식을 읽고, brandi 산출물 전체를 대조합니다.최근 감사에서 붙인 한정 문장 형식과 원본 brandi를 대조해, 미한정·원장 불일치를 집습니다.이관 로그에 적힌 목적지·값을 세 파일에서 실제 grep으로 대조합니다.문장 단위로 세 번째 부류만 집어, 인접한 완전 B2a 한정을 본문에 붙입니다. 토큰·표·구조는 건드리지 않습니다.원장 목적지를 grep 결과에 맞추고, derived 범위를 본문 실제 한정 위치에 맞춥니다.Brandi F3 감사는 B2a 한정과 E2 원장만 고쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 그대로입니다.
+
+**B2a.** 세 번째 부류인데 인접 한정이 없거나 읽기를 끝까지 이름 붙이지 않은 문장에 `derived editorial implementation inference` / `not Brandi-authored or a separately published UI specification`를 붙였습니다. Scope 계약 범위·분위기·데스크톱 경계·origin 비권위, Distinctive 추가 비합침, Principles 공식 원칙 부재+named Do, Avoid named Don’ts+마지막 항목, Semantic 목록 특성, Shape 비보편 반경+목록 뒤 재진술, Elevation 한정 선행, Family 목록 뒤 Don’t, Type-role 공유 13px, Assets Pretendard declared-only, field-note YAML type 미발명, Layout 생략 규칙입니다.
+
+**E2.** migration-log 목적지를 세 파일 grep에 맞췄습니다. `#1e1e1e`는 Principles 50을 포함하고 Avoid에는 없습니다. `18px 4px`는 185이지 184가 아닙니다. listbox 반경은 106이지 107이 아닙니다. `#ff204b`는 Avoid 62,64입니다. option no-hover Named gaps는 335입니다. provenance derived 목록은 본문 실제 한정 위치와 같습니다.
+
+기계 검사: `--gate-only` PASS, problems []. Core `portable_core: true`. SHA-256 `f0d0ff42822760644aa7f4c2587ce7cd2e6185be6d68e0cbd911a7fa952d0d4c`. 상세는 `docs/design-md-weight/migrated/brandi/audit-log.md`.
+
+AUDIT_DONE fixes=24

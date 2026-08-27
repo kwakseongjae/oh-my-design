@@ -29,8 +29,17 @@
 결함 제보의 식별자는 (viewport, region ID, defect code, 보이는 증상)이다.
 region ID는 잠금표의 K*·H1 또는 고정 격자 G[row,column]를 쓴다.
 
-고정 defect code: LOAD(빈 화면·crash), TASK(잠긴 핵심 과업 불가),
-CLIP(캡처 사각형 안에서 필수 픽셀·문자·컨트롤이 경계나 다른 요소에 잘림), OVERLAP, ...
+고정 defect code는 아래 **12종이 전부다.** 여기 없는 코드를 만들지 않는다. 어느 코드에도
+맞지 않는 관찰은 결함으로 제보하지 않는다.
+
+LOAD(빈 화면·crash) · TASK(잠긴 핵심 과업 불가) · CLIP(캡처 사각형 **안에서** 필수
+픽셀·문자·컨트롤이 경계나 다른 요소에 의해 잘림) · OVERLAP · H-OVERFLOW · STATE ·
+CONTRAST · FOCUS · KEYBOARD · HERO · BRAND-MARK · LOCAL
+
+정상적으로 캡처 아래로 이어지는 문서 흐름과 잠금표의 허용 폴드 아래 콘텐츠는 CLIP이
+아니다. CONTRAST는 캡처 색상 샘플로 WCAG 2.x contrast ratio를 계산해 일반 텍스트
+`<4.5:1`, 큰 텍스트·필수 UI 경계·아이콘 `<3:1`일 때만 성립하며 측정 좌표·전경·배경
+RGB와 계산값을 기록한다.
 
 다음을 모두 만족할 때만 여러 제보를 한 결함으로 합친다: defect code가 같고,
 region ID가 같고, 보이는 증상이 같은 시각적 연속체다. 두 viewport의 제보도 이 규칙을
@@ -140,3 +149,21 @@ region ID가 같고, 보이는 증상이 같은 시각적 연속체다. 두 view
 ```
 
 축마다 해당 필드만 채우고 나머지는 생략한다. 생략은 미채점이며 0점이 아니다.
+
+### viewport 표기 — 파일럿 교정 (2026-08-26)
+
+합치 규칙에 따라 **두 viewport의 제보를 하나로 합친 결함**은 `viewport`를 **배열**로 쓴다:
+
+```json
+{"viewport": ["desktop-1440", "mobile-390"], "regionId": "K2", "code": "CLIP", "…": "…"}
+```
+
+한 viewport에서만 보인 결함은 문자열 그대로 둔다(`"viewport": "desktop-1440"`).
+
+이유: 파일럿에서 세 평가자가 합치 규칙 자체는 **똑같이** 적용했는데(K2 CLIP을 두
+viewport에 걸쳐 하나로 합침) 표기는 셋 다 달랐다 — `"desktop-1440"`(하나만 고르고
+symptom에 서술) · `"desktop-1440,mobile-390"` · `"desktop-1440, mobile-390"`. 봉인 스키마가
+합쳐진 경우의 표기를 정하지 않아서다. 집계기가 세 형태를 파싱할 수 없으므로 배열로 고정한다.
+
+**이것은 채점 기준 변경이 아니다.** 합치 규칙·앵커·severity 판정은 그대로이고 직렬화
+형태만 정한다. 파일럿 교정이 존재하는 이유가 이런 자리다.

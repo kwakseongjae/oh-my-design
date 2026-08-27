@@ -31,6 +31,29 @@ const MIGRATED = [
 ];
 
 const flag = (n) => process.argv.includes(`--${n}`);
+
+/**
+ * Read the connection string from a gitignored env file when the shell does
+ * not carry one. Without this the wave close skipped the sync on every run and
+ * said so in one line nobody read, so the serving replica quietly fell behind
+ * the catalog — which is the one thing a mirror must not do silently.
+ *
+ * An explicit DATABASE_URL in the environment wins: a file on disk should
+ * never override what the operator typed for this invocation.
+ */
+if (!process.env.DATABASE_URL) {
+  for (const name of [".env.local", ".env"]) {
+    const file = join(ROOT, name);
+    if (!existsSync(file)) continue;
+    try {
+      process.loadEnvFile(file);
+    } catch {
+      // A malformed env file is the operator's to fix; failing closed below
+      // with the provisioning steps beats guessing at a connection string.
+    }
+    if (process.env.DATABASE_URL) break;
+  }
+}
 const sha256 = (s) => createHash("sha256").update(s).digest("hex");
 
 const SCHEMA = `
@@ -116,8 +139,10 @@ if (flag("dry-run")) {
 if (!process.env.DATABASE_URL) {
   console.error([
     "DATABASE_URL이 없다 — 아무것도 실행하지 않았다.",
+    "  (환경변수와 레포 루트의 .env.local · .env를 모두 확인했다)",
     "  1) https://neon.tech 무료 프로젝트 생성 (0.5GB면 충분 — 카탈로그 전체가 수 MB다)",
-    "  2) 연결 문자열 복사 → export DATABASE_URL='postgres://...'",
+    "  2) 연결 문자열 복사 → .env.local에 DATABASE_URL=postgres://... (gitignore됨)",
+    "     또는 export DATABASE_URL='postgres://...'",
     "  3) npm i -D @neondatabase/serverless   # HTTP 드라이버, 순수 JS",
     "  4) node scripts/sync-neon.mjs --schema && node scripts/sync-neon.mjs",
   ].join("\n"));

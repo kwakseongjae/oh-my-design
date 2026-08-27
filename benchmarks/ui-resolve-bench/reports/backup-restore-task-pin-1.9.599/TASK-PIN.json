@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.599",
+  "pin_id": "backup-restore-point-handoff-1.9.599",
+  "status": "TASK_PINNED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "task_id": "backup-restore-point-handoff-v0.1",
+  "source_commit": "84b54559fbbde15f5cf78004139113fcd292046c",
+  "task_git_tree": "759253016aabbdc1f0996fcc668325d358a59539",
+  "repository_tree": "1ead96a5d9772002efdff4af1a89004792022ad0",
+  "portable_task_tree_sha256": "b49d193cf699de2be1cb1e615223f5c5c360653ad1ccfac6e30e81d3bfbe6d96",
+  "baseline_summary_sha256": "ce7fa8eea4a67cf7f758e4d0464da59dcbd888a58c09fd86d12e5b8b805a170a",
+  "baseline_score_sha256": "2e5e0451f5a4f48e5e14e99b2f2813808b691b89324fc0d0e09b718898a94838",
+  "baseline_score": {"objective": 75, "max": 85},
+  "freshness_contract": {
+    "model_seen": false,
+    "control_seen": false,
+    "candidate_seen": false,
+    "task_mutation_after_pin_allowed": false
+  },
+  "next": "Preregister the exact contained-budget control versus the exact decision-context closure candidate on Luna/high 2x3 with no retry, fixed pacing, and a 3/3 UI+proof+hierarchy gate."
+}

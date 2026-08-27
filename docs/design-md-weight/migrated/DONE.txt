@@ -1,5 +1,10 @@
 # 양 레인(게이트+sol) 통과가 기록된 id — 웨이브 러너가 이 목록을 거부한다.
 # 근거 판정문은 docs/reviews/t2-1-*.md. 수동 편집 금지, 웨이브 닫힐 때만 추가.
+# [2026-08-26] A5 카피 부채 = 해소됨. 복원 또는 원장 기록으로 전건 처리, 정착 빌드에서 원장 전량 게이트 PASS.
+#   근거 docs/reviews/t2-1-a5-copy-loss-2026-08-26-opus5.md (판정·검사 개정 경위·잔여 한계 포함).
+#   claim 자기부정으로 오인)으로 진단됨. 산출물 결함 아님. 검사 수정 후 재확인 예정.
+# [2026-08-26] 적합성 검사 오탐(dell·dmm·drnow·easywallet) = 해소. 검사 수정 후 113건 전량 portable_core 통과.
+#   근거 docs/reviews/t2-1-conformance-fp-2026-08-26-opus5.md
 musinsa
 karrot
 29cm
@@ -58,3 +63,63 @@ beusable
 bigin
 bithumb
 bito
+bmw
+brandi
+bunjang
+buzzvil
+cafe24
+cakeresume
+cal
+cashapp
+catchtable
+cathay
+cgv
+channeltalk
+china-airlines
+chunghwa
+cjonstyle
+class101
+classting
+classum
+claude
+clay
+clickhouse
+cloudflare
+codeit
+cohere
+coinbase
+coinone
+composio
+cookpad
+corca
+cuboai
+cursor
+cybozu
+dabang
+dable
+danawa
+databricks
+datadog
+datarize
+dcard
+dealicious
+deliveroo
+dell
+devsisters
+digital-agency-jp
+dji
+dmm
+doordash
+drdiary
+drnow
+dropbox
+easywallet
+elastic
+elevenlabs
+elice
+eslite
+esunbank
+evaair
+expo
+familymart-tw
+farfetch

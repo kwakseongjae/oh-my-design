@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 세션 상태와 룰북 B2/E2만 읽고, class101 세 파일을 문장 단위로 분류한 뒤 한정·원장만 고치겠습니다.룰북 B2/E2와 class101 산출물, 최근 감사 로그 형식을 함께 읽겠습니다.세 산출물 전체를 읽고 문장 분류와 원장 대조를 시작합니다.문장 분류와 원장 대조를 위해 한정 위치, 원본, 유사 감사 로그를 확인합니다.원장 목적지와 값 위치를 실제 파일에서 전수 grep으로 대조합니다.B2a 한정이 빠지거나 이름이 짧은 문장부터 DESIGN.md에 붙입니다.한정 위치와 값 목적지를 다시 grep한 뒤 원장을 맞춥니다.원장 derived 범위와 잘못된 목적지를 실제 grep에 맞춥니다.class101은 B2a·E2만 감사했고, 토큰·컴포넌트 표·applicability·구조는 그대로 뒀습니다.
+
+**B2a.** 세 번째 부류인데 인접 한정이 없거나 그 읽기를 이름 붙이지 않은 문장 11곳에 완전 한정을 붙이거나 확장했습니다. Scope 15 제품홈/약관 크롬 분리, Principles 49 UI implication, Semantic 85 미승격 인과, Elevation 105 hover·overlay 생략, Family 129 시스템 폰트 대체 금지, Type 137 `normal` tracking, Assets 151 ownership unclaimed, Capture 164 `#202020` 제거, Legal tab 256 문서 크롬≠제품 내비, Layout 292 반응형·컨트롤 크기, Content 297 표 use-boundary.
+
+**E2.** migration-log 목적지를 세 파일 grep과 맞췄습니다. `#FF5D00` freshness 45, `#FFFFFF` Proof 146, CLASS101+·creator URL은 Scope 11뿐(13 아님), `verification_v2.schema: 2`는 136이 아님, YAML lineHeight는 147·45, `6,121px`는 290만. provenance derived는 본문 실제 한정 범위로 줄이고, B3 111·168의 `role="tab"` 과대 기재를 뺐습니다.
+
+기록: `docs/design-md-weight/migrated/class101/audit-log.md`. SHA-256 `5278e4dd2d32f166d5c0af9b850a1e151a95e0436999097acf3a4608fce854e2`. `--gate-only` PASS, `portable_core: true`.
+
+AUDIT_DONE fixes=15

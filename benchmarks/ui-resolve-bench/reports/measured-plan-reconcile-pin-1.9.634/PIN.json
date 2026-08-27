@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.634",
+  "status": "PINNED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "candidate": {
+    "system_id": "omd-measured-plan-reconcile-candidate",
+    "vendor_version": "omd-1.9.633",
+    "source_commit": "e4b0c890ccdcc1e736cc70babcfbc1a5b72b7391",
+    "source_tree": "d479bfd24603865bd9d38f5d7d730df08c2cf9c6",
+    "skill_tree": "b2e622bb788769268bc4b9b1001102d7355f598e",
+    "artifacts": {
+      "skill_sha256": "684f38e0396b996b6e32195921d92922f5ae2692d09956a8c794a79d58b2f1ed",
+      "reflow_artifact_sha256": "2ff828b0632a1aade2d7a035791f66d7e6a3390bb4038452b1219e31f4c1e0ea",
+      "reflow_browser_sha256": "ebbb06941d8161c9292dba548b5ec50b9acbc9f748f7c32ae12be4e5831debd1"
+    }
+  },
+  "repair_contract": {
+    "atomic_snapshot_bootstrap_preserved": true,
+    "zero_attempt_validation_preserved": true,
+    "measured_plan_persisted_before_semantic_close": true,
+    "measured_plan_browser_rerun_allowed": false,
+    "artifact_only_plan_reconcile_available": true,
+    "pre_edit_product_hash_enforced_until_plan_close": true,
+    "static_close_requires_plan_stamp_and_measured_plan_hash": true
+  },
+  "claim_boundary": "This pin identifies the exact provider-free measured-plan reconcile repair. It has not passed a fresh model-run transfer matrix and is not promoted.",
+  "next": "Create and baseline a genuinely unseen decision-context task before exposing it to either the historical control or this candidate."
+}

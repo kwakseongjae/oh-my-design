@@ -1,0 +1,797 @@
+{
+  "schema_version": "0.3",
+  "experiment_id": "field-sample-browser-fallback-transfer-1.9.691",
+  "suite_version": "ui-resolve-v0.2",
+  "product_version": "1.9.691",
+  "execution_purpose": "authorized-browser-infrastructure-fallback-transfer-raw-vs-omd-comparison",
+  "status": "complete",
+  "scheduled_cells": 6,
+  "completed_cells": 6,
+  "current_cell": null,
+  "cells": [
+    {
+      "id": "luna-field-r1-control",
+      "order": 1,
+      "status": "complete",
+      "workspace": "/private/tmp/omd-field-sample-transfer-matrix-1.9.691/luna-field-r1-control",
+      "validity": "valid",
+      "run_status": "complete",
+      "ui_resolved": false,
+      "objective_score": 77,
+      "objective_max": 85,
+      "wall_time_ms": 380623,
+      "tokens": 960693,
+      "recoverable_tool_errors": null,
+      "agent_tool_calls": null,
+      "evidence_and_unknown_pass": true,
+      "first_product_write_ms": null,
+      "last_advisory_to_first_product_write_ms": null,
+      "first_product_write_transaction": null,
+      "replacement_verifier_authored": false,
+      "direct_browser_command_count": 0,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 3,
+        "product_revision_count": 3,
+        "last_product_edit_event_index": 53,
+        "post_edit_command_count": 11,
+        "static_closure_count": 8,
+        "browser_mechanism_count": 3,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 2,
+        "duplicate_static_closure_count": 5,
+        "verification_after_ready_count": 6,
+        "compliance_pass": false,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 27,
+            "last_edit_event_index": 27,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 29,
+                "command": "/opt/homebrew/bin/zsh -lc \"browser-harness <<'PY'\nprint(page_info())\nPY\"",
+                "mechanism": "shell",
+                "browser": true,
+                "recovery_probe": false,
+                "static_verification": false,
+                "neutral": false
+              },
+              {
+                "index": 32,
+                "command": "/opt/homebrew/bin/zsh -lc \"'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --no-sandbox --disable-gpu --user-data-dir=/private/tmp/chrome-codex-headless --window-size=1160,900 --screenshot=/private/tmp/custody-desktop.png 'file:///private/tmp/omd-field-sample-transfer-matrix-1.9.691/luna-field-r1-control/index.html'\"",
+                "mechanism": "shell",
+                "browser": true,
+                "recovery_probe": false,
+                "static_verification": false,
+                "neutral": false
+              },
+              {
+                "index": 34,
+                "command": "/opt/homebrew/bin/zsh -lc \"ls -l /private/tmp/custody-desktop.png 2>/dev/null || true; ps aux | rg '[G]oogle Chrome' || true; rg -o 'FS-TC-24-[0-9]{3}|BAG-SEAL-[0-9]{6}|LAB-[A-Z]+-[0-9]{2}|[0-9]{2}:[0-9]{2}–[0-9]{2}:[0-9]{2} UTC|Field review open|6 samples · 8 seals · 4 intake windows' index.html | sort | uniq -c\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 36,
+                "command": "/opt/homebrew/bin/zsh -lc \"'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --user-data-dir=/private/tmp/chrome-codex-headless-2 --dump-dom 'file:///private/tmp/omd-field-sample-transfer-matrix-1.9.691/luna-field-r1-control/index.html' 2>&1 | head -20\"",
+                "mechanism": "shell",
+                "browser": true,
+                "recovery_probe": false,
+                "static_verification": false,
+                "neutral": false
+              },
+              {
+                "index": 38,
+                "command": "/opt/homebrew/bin/zsh -lc \"git diff -- index.html | sed -n '1,280p'; printf '\\\\n--- forbidden/factual scan ---\\\\n'; rg -n 'provenance|contamination|authentic|approval|acceptance|dating|catalog|closure|clearance|transfer' index.html DESIGN.md || true; printf '\\\\n--- hook selectors ---\\\\n'; rg -o 'data-bench(?:-design-role)?=\\\"[\"'^\"]+\"|data-bench-decision-role=\"[''^\"]+\"'\"' index.html | sort | uniq -c\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 40,
+                "command": "/opt/homebrew/bin/zsh -lc \"node -e \\\"const fs=require('fs');const h=fs.readFileSync('index.html','utf8');const s=h.match(/<script>([\\\\\\\\s\\\\\\\\S]*)<\\\\\\\\/script>/)[1];new Function(s);console.log('inline script syntax: ok')\\\" && node -e \\\"const fs=require('fs');const h=fs.readFileSync('index.html','utf8');for (const marker of ['data-bench-design-role=\\\\\\\"sample-register\\\\\\\"','data-bench=\\\\\\\"carrier-strip\\\\\\\"','data-bench-decision-role=\\\\\\\"context\\\\\\\"','data-bench=\\\\\\\"routing-review-form\\\\\\\"']) if(\"'!h.includes(marker)) throw new Error('\"'missing '+marker); console.log('required carriers/hooks: ok')\\\" && node -e \\\"const fs=require('fs');const h=fs.readFileSync('index.html','utf8');const samples=[...h.matchAll(/data-bench=\\\\\\\"sample-id\\\\\\\">([\"'^<]+)/g)].map(x=>x[1]);const seals=[...h.matchAll(/data-bench='\"\\\\\\\"seal-id\\\\\\\">([\"'^<]+)/g)].map(x=>x[1]);const windows=[...h.matchAll(/data-bench='\"\\\\\\\"carrier-window\\\\\\\">([\"'^<]+)/g)].map(x=>x[1]);if(samples.length!==6||seals.length!==8||windows.length!==4)throw new Error([samples.length,seals.length,windows.length].join('\"'/'));console.log('identifier cardinality: 6 samples / 8 seals / 4 windows')\\\"\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 42,
+                "command": "/opt/homebrew/bin/zsh -lc \"node - <<'NODE'\nconst fs=require('fs');\nconst h=fs.readFileSync('index.html','utf8');\nconst blocks=[...h.matchAll(/<article class=\\\"sample-case\\\"[\\\\s\\\\S]*?<\\\\/article>/g)].map(x=>x[0]);\nconst expected=[['FS-TC-24-003',['BAG-SEAL-883971']],['FS-TC-24-008',['BAG-SEAL-883986','BAG-SEAL-883987']],['FS-TC-24-011',['BAG-SEAL-884002']],['FS-TC-24-014',['BAG-SEAL-884013']],['FS-TC-24-017',['BAG-SEAL-884021','BAG-SEAL-884022']],['FS-TC-24-023',['BAG-SEAL-884039']]];\nfor (let i=0;i<expected.length;i++) {\n  const [sample,seals]=expected[i];\n  if (\"'!blocks[i].includes(sample) || !seals.every(seal=>blocks[i].includes(seal))) throw new Error('\"'assignment mismatch '+sample);\n}\nconsole.log('sample-to-seal assignments: exact');\nNODE\nprintf '\\\\n--- changed file size ---\\\\n'\nwc -l -c index.html\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 4,
+            "browser_mechanism_count": 3,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 2,
+            "duplicate_static_closure_count": 3,
+            "verification_after_ready_count": 6
+          },
+          {
+            "revision": 2,
+            "first_edit_event_index": 45,
+            "last_edit_event_index": 45,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 47,
+                "command": "/opt/homebrew/bin/zsh -lc \"sed -n '1,360p' index.html | tail -120 && printf '\\\\n--- integrity checks ---\\\\n' && node - <<'NODE'\nconst fs=require('fs');\nconst h=fs.readFileSync('index.html','utf8');\nconst samples=[...h.matchAll(/data-bench=\\\"sample-id\\\">([\"'^<]+)/g)].map(m=>m[1]);\nconst seals=[...h.matchAll(/data-bench=\"seal-id\">([''^<]+)/g)].map(m=>m[1]);\nconst windows=[...h.matchAll(/data-bench=\"carrier-window\">([''^<]+)/g)].map(m=>m[1]);\nconst views=[...h.matchAll(/data-bench=\"routing-view-option\"/g)].length;\nconst assignmentBlocks=[...h.matchAll(/<article class=\"sample-case\"['\"\\\\s\\\\S]*?<\\\\/article>/g)].map(m=>m[0]);\nconst expected=[['FS-TC-24-003',['BAG-SEAL-883971']],['FS-TC-24-008',['BAG-SEAL-883986','BAG-SEAL-883987']],['FS-TC-24-011',['BAG-SEAL-884002']],['FS-TC-24-014',['BAG-SEAL-884013']],['FS-TC-24-017',['BAG-SEAL-884021','BAG-SEAL-884022']],['FS-TC-24-023',['BAG-SEAL-884039']]];\nconst exact=expected.every(([sample,assigned],i)=>assignmentBlocks[i].includes(sample)&&assigned.every(seal=>assignmentBlocks[i].includes(seal)));\nconst checks={samples:samples.length,seals:seals.length,windows:windows.length,views,exactAssignments:exact,fieldNote:h.includes('data-bench=\\\"draft-note-toggle\\\"'),reviewForm:h.includes('data-bench=\\\"routing-review-form\\\"'),summary:h.includes('6 samples · 8 seals · 4 intake windows'),state:h.includes('Field review open')};\nif(\"'!exact||Object.values(checks).some(value=>value===false)) process.exitCode=1;\nconsole.log(checks);\nNODE\nnode -e \"const fs=require('\"'fs');const h=fs.readFileSync('index.html','utf8');new Function(h.match(/<script>([\\\\\\\\s\\\\\\\\S]*)<\\\\\\\\/script>/)[1]);console.log('script syntax: ok')\\\"\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 49,
+                "command": "/opt/homebrew/bin/zsh -lc \"nl -ba index.html | sed -n '1,34p;86,180p;216,320p'\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 51,
+                "command": "/opt/homebrew/bin/zsh -lc \"ls -l index.html DESIGN.md .benchmark/PROMPT.md AGENTS.md && rg -n 'min-width|word-break|overflow-x|@media' index.html\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 3,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 2,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 3,
+            "first_edit_event_index": 53,
+            "last_edit_event_index": 53,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 55,
+                "command": "/opt/homebrew/bin/zsh -lc \"node - <<'NODE'\nconst fs=require('fs');const h=fs.readFileSync('index.html','utf8');\nconst count=(re)=>[...h.matchAll(re)].length;\nconst blocks=[...h.matchAll(/<article class=\\\"sample-case\\\"[\\\\s\\\\S]*?<\\\\/article>/g)].map(m=>m[0]);\nconst expected=[['FS-TC-24-003',['BAG-SEAL-883971']],['FS-TC-24-008',['BAG-SEAL-883986','BAG-SEAL-883987']],['FS-TC-24-011',['BAG-SEAL-884002']],['FS-TC-24-014',['BAG-SEAL-884013']],['FS-TC-24-017',['BAG-SEAL-884021','BAG-SEAL-884022']],['FS-TC-24-023',['BAG-SEAL-884039']]];\nif(count(/data-bench=\\\"sample-id\\\">/g)\"'!==6||count(/data-bench=\"seal-id\">/g)!==8||count(/data-bench=\"carrier-window\">/g)!==4||blocks.length!==6||!expected.every(([s,ss],i)=>blocks[i].includes(s)&&ss.every(x=>blocks[i].includes(x))))process.exit(1);\nnew Function(h.match(/<script>(['\"\\\\s\\\\S]*)<\\\\/script>/)[1]);\nconsole.log('PASS: data integrity, assignments, and inline script syntax');\nNODE\nrg -n 'min-width: [\"'^0]|word-break|overflow-x'\"' index.html || true\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null,
+      "host_policy_gate": null,
+      "host_policy_admission": null,
+      "artifact_hashes": {
+        "run_result_sha256": "31d7f0212d33a124ac039b49c68e10b328f4f75adf9cc8f54bf973f605df86c7",
+        "score_sha256": "9c4052d28f1078438be8cd0478202593bd908588d87538782ac9a42949d45b0d",
+        "run_record_sha256": "b63ad140ab695cbe5268c8e0adfb3c35e175022c1d262b277f432503b4c2a9fc",
+        "proof_trace_sha256": "54da7160f3dd2f70f5582f652c26f42da5724ce95a15acade80575776b730681",
+        "benchmark_tree_sha256": "efb1d08ba1db3ddbe0008beaac4102bc9a1bd3a3cf638a9b575aa1c8ce5f7ab5"
+      },
+      "completed_in_invocation": 1
+    },
+    {
+      "id": "luna-field-r1-omd",
+      "order": 2,
+      "status": "complete",
+      "workspace": "/private/tmp/omd-field-sample-transfer-matrix-1.9.691/luna-field-r1-omd",
+      "validity": "valid",
+      "run_status": "complete",
+      "ui_resolved": false,
+      "objective_score": 79,
+      "objective_max": 85,
+      "wall_time_ms": 187286,
+      "tokens": 646370,
+      "recoverable_tool_errors": null,
+      "agent_tool_calls": null,
+      "evidence_and_unknown_pass": true,
+      "first_product_write_ms": null,
+      "last_advisory_to_first_product_write_ms": null,
+      "first_product_write_transaction": null,
+      "replacement_verifier_authored": false,
+      "direct_browser_command_count": 0,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 1,
+        "product_revision_count": 1,
+        "last_product_edit_event_index": 23,
+        "post_edit_command_count": 1,
+        "static_closure_count": 1,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 0,
+        "verification_after_ready_count": 0,
+        "compliance_pass": true,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 23,
+            "last_edit_event_index": 23,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 26,
+                "command": "/opt/homebrew/bin/zsh -lc \"rg -n -o 'FS-TC-24-[0-9]{3}|BAG-SEAL-[0-9]{6}|LAB-[A-Z]+-[0-9]{2}|[0-9]{2}:[0-9]{2}–[0-9]{2}:[0-9]{2} UTC|data-bench=\\\"routing-view-option\\\"|data-bench=\\\"draft-note-toggle\\\"|data-bench=\\\"routing-review-form\\\"' index.html && rg -n 'min-width:(970px|950px|810px|790px)|word-break:break-all' index.html || true && rg -n 'sample-register\\\\{min-width:0|carrier-strip\\\\{min-width:0|grid-template-areas:none|white-space:nowrap|nav \\\\.muted' index.html\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null,
+      "host_policy_gate": null,
+      "host_policy_admission": null,
+      "artifact_hashes": {
+        "run_result_sha256": "1942acfb7f531c0b603af811ec29f8965e484004c3309a0238880d28760ac8fa",
+        "score_sha256": "5ea8218657c52a95b51ab7b1a55f860e123f9aface09428f3a2e43f5a316f3bc",
+        "run_record_sha256": "5c0734dcecef86010b0e07cdfd283ea91a1ff049582e69391e9eeb8e948e96b6",
+        "proof_trace_sha256": "7963363851c15a414bc10654aecb599d63e3c676410ed19473b058934c3226ff",
+        "benchmark_tree_sha256": "8fa1a737cacdd8d054b6f7036180e440824146de5a37137b71c9ee12d32e361c"
+      },
+      "completed_in_invocation": 1
+    },
+    {
+      "id": "luna-field-r2-omd",
+      "order": 3,
+      "status": "complete",
+      "workspace": "/private/tmp/omd-field-sample-transfer-matrix-1.9.691/luna-field-r2-omd",
+      "validity": "valid",
+      "run_status": "complete",
+      "ui_resolved": false,
+      "objective_score": 81,
+      "objective_max": 85,
+      "wall_time_ms": 316042,
+      "tokens": 544288,
+      "recoverable_tool_errors": null,
+      "agent_tool_calls": null,
+      "evidence_and_unknown_pass": true,
+      "first_product_write_ms": null,
+      "last_advisory_to_first_product_write_ms": null,
+      "first_product_write_transaction": null,
+      "replacement_verifier_authored": false,
+      "direct_browser_command_count": 0,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 1,
+        "product_revision_count": 1,
+        "last_product_edit_event_index": 18,
+        "post_edit_command_count": 1,
+        "static_closure_count": 1,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 0,
+        "verification_after_ready_count": 0,
+        "compliance_pass": true,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 18,
+            "last_edit_event_index": 18,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 20,
+                "command": "/opt/homebrew/bin/zsh -lc 'node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-close .omd/reflow-closure.json index.html'",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null,
+      "host_policy_gate": null,
+      "host_policy_admission": null,
+      "artifact_hashes": {
+        "run_result_sha256": "333f236885c0438e768cd76d8fa5e1959e896e9083ca3d28c95a4ca5cb63fdf6",
+        "score_sha256": "26f7b791bbb81ee9f6ecee807e9d2f267342d56410a2c8cd20b2b23e40edb308",
+        "run_record_sha256": "d36c04bba3cbb11c024218a1933606562179c8b508da04293f43ffca15774b57",
+        "proof_trace_sha256": "ef6ec58d4f53fae3fd0b03ae3e6a48d845c053da03e70f35a3a4799135ca8fd2",
+        "benchmark_tree_sha256": "fa3575b40759e65f13b7cfec4945c51de3772a526df0574091bae6d90ef7ac6d"
+      },
+      "completed_in_invocation": 1
+    },
+    {
+      "id": "luna-field-r2-control",
+      "order": 4,
+      "status": "complete",
+      "workspace": "/private/tmp/omd-field-sample-transfer-matrix-1.9.691/luna-field-r2-control",
+      "validity": "valid",
+      "run_status": "complete",
+      "ui_resolved": false,
+      "objective_score": 75,
+      "objective_max": 85,
+      "wall_time_ms": 23827,
+      "tokens": 81044,
+      "recoverable_tool_errors": null,
+      "agent_tool_calls": null,
+      "evidence_and_unknown_pass": true,
+      "first_product_write_ms": null,
+      "last_advisory_to_first_product_write_ms": null,
+      "first_product_write_transaction": null,
+      "replacement_verifier_authored": false,
+      "direct_browser_command_count": 0,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": false,
+        "product_edit_count": 0,
+        "product_revision_count": 0,
+        "last_product_edit_event_index": null,
+        "post_edit_command_count": 0,
+        "static_closure_count": 0,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 0,
+        "verification_after_ready_count": 0,
+        "compliance_pass": false,
+        "revisions": []
+      },
+      "proof_execution_gate": null,
+      "host_policy": null,
+      "host_policy_gate": null,
+      "host_policy_admission": null,
+      "artifact_hashes": {
+        "run_result_sha256": "3e315783dd1a8ce92f15c4680008e07205b53dc179c8c3688075c8f073cd55d3",
+        "score_sha256": "41743584e9fe6aa5d6e464abe543707aedc2c074a38109e00ec68693c51cf6ac",
+        "run_record_sha256": "235021340d37b29163b0da569bf56f5aef9d4d55d11ed35cebefea72b475f102",
+        "proof_trace_sha256": "6421f80cb71cf3b972309c92f1174feb2f483aa131cd9a39ce4306accd529a83",
+        "benchmark_tree_sha256": "7503d0be396d2273577dcc3b7ec263c62e18dd55ad64d5961b206b75920f9e59"
+      },
+      "completed_in_invocation": 1
+    },
+    {
+      "id": "luna-field-r3-control",
+      "order": 5,
+      "status": "complete",
+      "workspace": "/private/tmp/omd-field-sample-transfer-matrix-1.9.691/luna-field-r3-control",
+      "validity": "valid",
+      "run_status": "complete",
+      "ui_resolved": false,
+      "objective_score": 77,
+      "objective_max": 85,
+      "wall_time_ms": 238513,
+      "tokens": 482740,
+      "recoverable_tool_errors": null,
+      "agent_tool_calls": null,
+      "evidence_and_unknown_pass": true,
+      "first_product_write_ms": null,
+      "last_advisory_to_first_product_write_ms": null,
+      "first_product_write_transaction": null,
+      "replacement_verifier_authored": false,
+      "direct_browser_command_count": 0,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 4,
+        "product_revision_count": 3,
+        "last_product_edit_event_index": 30,
+        "post_edit_command_count": 5,
+        "static_closure_count": 5,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 2,
+        "verification_after_ready_count": 0,
+        "compliance_pass": false,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 14,
+            "last_edit_event_index": 14,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 17,
+                "command": "/opt/homebrew/bin/zsh -lc \"printf '%s\\\\n' '---required identifiers---' && rg -o 'FS-TC-24-[0-9]{3}|BAG-SEAL-[0-9]{6}|LAB-[A-Z]+-[0-9]{2}|[0-9]{2}:[0-9]{2}–[0-9]{2}:[0-9]{2} UTC' index.html | sort | uniq -c && printf '%s\\\\n' '---structure hooks---' && rg -o 'data-bench=\\\"[\"'^\"]+\"|data-bench-decision-role=\"[''^\"]+\"|data-view=\"[''^\"]+\"'\"' index.html | sort | uniq -c && printf '%s\\\\n' '---served bytes---' && curl -sS http://127.0.0.1:4173/index.html | wc -c\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 2,
+            "first_edit_event_index": 20,
+            "last_edit_event_index": 20,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 23,
+                "command": "/opt/homebrew/bin/zsh -lc \"git diff --stat && git diff --check && printf '\\\\n---css minimum-width scan---\\\\n' && rg -n 'min-width|word-break|overflow-x|grid-template-columns' index.html\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 25,
+                "command": "/opt/homebrew/bin/zsh -lc \"printf '%s\\\\n' '---whitespace check---' && sed -n '1,999p' index.html | awk '/[[:blank:]]+\"'$/{print NR \": trailing whitespace\"}'\"' && printf '%s\\\\n' '---responsive rules---' && rg -n 'min-width|word-break|overflow-x|grid-template-columns' index.html\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 2,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 1,
+            "verification_after_ready_count": 0
+          },
+          {
+            "revision": 3,
+            "first_edit_event_index": 28,
+            "last_edit_event_index": 30,
+            "edit_count": 2,
+            "commands": [
+              {
+                "index": 33,
+                "command": "/opt/homebrew/bin/zsh -lc \"nl -ba index.html | sed -n '1,260p' | tail -n 30\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              },
+              {
+                "index": 35,
+                "command": "/opt/homebrew/bin/zsh -lc \"nl -ba index.html | sed -n '261,345p'\"",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 2,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 1,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null,
+      "host_policy_gate": null,
+      "host_policy_admission": null,
+      "artifact_hashes": {
+        "run_result_sha256": "432b217bf6e779ec5d38aab384e4aad5e23a733a461797171e40ad3f6c0bebec",
+        "score_sha256": "c022cc386dda05cc8e8f27fe79b838f752669deeddb32debf7c3e6e8e3bfd6b8",
+        "run_record_sha256": "5e95acdcb22b490a2ccbf055042f9131298bd109bc9fa3321f5a911ff1ad9335",
+        "proof_trace_sha256": "5cd268d0d53a74201ada892792be7982d0c4b376f6b9c3d1dbd5cba847087e4d",
+        "benchmark_tree_sha256": "ecc110043a084cc86accf04f231dee7c603a596108b62a88f72b725e6f62b762"
+      },
+      "completed_in_invocation": 1
+    },
+    {
+      "id": "luna-field-r3-omd",
+      "order": 6,
+      "status": "complete",
+      "workspace": "/private/tmp/omd-field-sample-transfer-matrix-1.9.691/luna-field-r3-omd",
+      "validity": "valid",
+      "run_status": "complete",
+      "ui_resolved": false,
+      "objective_score": 81,
+      "objective_max": 85,
+      "wall_time_ms": 287922,
+      "tokens": 747097,
+      "recoverable_tool_errors": null,
+      "agent_tool_calls": null,
+      "evidence_and_unknown_pass": true,
+      "first_product_write_ms": null,
+      "last_advisory_to_first_product_write_ms": null,
+      "first_product_write_transaction": null,
+      "replacement_verifier_authored": false,
+      "direct_browser_command_count": 0,
+      "proof_trace": {
+        "schema_version": "0.1",
+        "runtime": "codex",
+        "analyzable": true,
+        "product_edit_count": 1,
+        "product_revision_count": 1,
+        "last_product_edit_event_index": 26,
+        "post_edit_command_count": 1,
+        "static_closure_count": 1,
+        "browser_mechanism_count": 0,
+        "browser_recovery_probe_count": 0,
+        "browser_recovery_count": 0,
+        "duplicate_static_closure_count": 0,
+        "verification_after_ready_count": 0,
+        "compliance_pass": true,
+        "revisions": [
+          {
+            "revision": 1,
+            "first_edit_event_index": 26,
+            "last_edit_event_index": 26,
+            "edit_count": 1,
+            "commands": [
+              {
+                "index": 28,
+                "command": "/opt/homebrew/bin/zsh -lc 'node .agents/skills/omd-apply/scripts/reflow-artifact.mjs static-close .omd/reflow-closure.json index.html'",
+                "mechanism": "shell",
+                "browser": false,
+                "recovery_probe": false,
+                "static_verification": true,
+                "neutral": false
+              }
+            ],
+            "static_closure_count": 1,
+            "browser_mechanism_count": 0,
+            "browser_recovery_probe_count": 0,
+            "browser_recovery_count": 0,
+            "duplicate_static_closure_count": 0,
+            "verification_after_ready_count": 0
+          }
+        ]
+      },
+      "proof_execution_gate": null,
+      "host_policy": null,
+      "host_policy_gate": null,
+      "host_policy_admission": null,
+      "artifact_hashes": {
+        "run_result_sha256": "09481d32e6bf7611bc5292060bd9e2b3bb16e48c118044a5344c67ab52802025",
+        "score_sha256": "896eaa376fed9041f57645a6d736e6405dcb427f0961e9ceff288ec76efed250",
+        "run_record_sha256": "e47295835e36a0e3e9281c075eb278ec9f7fed6a3077868c2bb0d6dbcc2d1c2f",
+        "proof_trace_sha256": "42868df925f7ba24f6d28dfdab80e5e66a3f753aa282cdf4554842a20fb548ab",
+        "benchmark_tree_sha256": "2f31b9afb8d25ce7ed34b9f453ca8da01d844be30740b5cb8c70cc73e58c0d00"
+      },
+      "completed_in_invocation": 1
+    }
+  ],
+  "execution_contract": {
+    "mode": "checkpoint-bounded",
+    "max_new_cells": 6
+  },
+  "locked_plan_sha256": "b443925907902fa80798b8522f10d58ac4ae11fb19e5e865e1acd828b4096ba7",
+  "preparation_state_sha256": "62c43c668d0cba48d7fda306561688d94cdf15c32ce9a3446bc97531627fba21",
+  "invocation_history": [
+    {
+      "invocation": 1,
+      "max_new_cells": 6,
+      "started_at": "2026-08-05T11:40:17.228Z",
+      "finished_at": "2026-08-05T12:14:27.768Z",
+      "status": "complete",
+      "completed_cells_before": 0,
+      "completed_cells_after": 6,
+      "new_cells_completed": 6
+    }
+  ],
+  "checkpoint_history": [],
+  "evaluator_preflight_history": [
+    {
+      "status": "complete",
+      "started_at": "2026-08-05T11:40:17.229Z",
+      "finished_at": "2026-08-05T11:40:17.400Z",
+      "dependencies": [
+        "playwright-core",
+        "axe-core"
+      ],
+      "invocation": 1
+    }
+  ],
+  "pacing_history": [
+    {
+      "policy": "fixed-inter-cell",
+      "after_cell_id": "luna-field-r1-control",
+      "before_cell_id": "luna-field-r1-omd",
+      "delay_seconds": 120,
+      "counts_toward_cell_wall_time": false,
+      "status": "complete",
+      "started_at": "2026-08-05T11:46:41.347Z",
+      "finished_at": "2026-08-05T11:48:41.353Z",
+      "invocation": 1,
+      "monotonic_started_ms": 384147.013459,
+      "monotonic_finished_ms": 504152.589334,
+      "monotonic_elapsed_ms": 120005.57587500004,
+      "wall_elapsed_ms": 120006,
+      "clock_disagreement_ms": 0.4241249999613501,
+      "clock_difference_ms": 0.4241249999613501,
+      "acceptance_window_ms": {
+        "min": 120000,
+        "max": 125000,
+        "max_clock_disagreement": 5000
+      }
+    },
+    {
+      "policy": "fixed-inter-cell",
+      "after_cell_id": "luna-field-r1-omd",
+      "before_cell_id": "luna-field-r2-omd",
+      "delay_seconds": 120,
+      "counts_toward_cell_wall_time": false,
+      "status": "complete",
+      "started_at": "2026-08-05T11:51:51.117Z",
+      "finished_at": "2026-08-05T11:53:51.120Z",
+      "invocation": 1,
+      "monotonic_started_ms": 693916.693875,
+      "monotonic_finished_ms": 813919.265709,
+      "monotonic_elapsed_ms": 120002.57183400006,
+      "wall_elapsed_ms": 120003,
+      "clock_disagreement_ms": 0.4281659999396652,
+      "clock_difference_ms": 0.4281659999396652,
+      "acceptance_window_ms": {
+        "min": 120000,
+        "max": 125000,
+        "max_clock_disagreement": 5000
+      }
+    },
+    {
+      "policy": "fixed-inter-cell",
+      "after_cell_id": "luna-field-r2-omd",
+      "before_cell_id": "luna-field-r2-control",
+      "delay_seconds": 120,
+      "counts_toward_cell_wall_time": false,
+      "status": "complete",
+      "started_at": "2026-08-05T11:59:10.200Z",
+      "finished_at": "2026-08-05T12:01:10.203Z",
+      "invocation": 1,
+      "monotonic_started_ms": 1132997.472042,
+      "monotonic_finished_ms": 1253000.781084,
+      "monotonic_elapsed_ms": 120003.30904199998,
+      "wall_elapsed_ms": 120003,
+      "clock_disagreement_ms": 0.30904199997894466,
+      "clock_difference_ms": 0.30904199997894466,
+      "acceptance_window_ms": {
+        "min": 120000,
+        "max": 125000,
+        "max_clock_disagreement": 5000
+      }
+    },
+    {
+      "policy": "fixed-inter-cell",
+      "after_cell_id": "luna-field-r2-control",
+      "before_cell_id": "luna-field-r3-control",
+      "delay_seconds": 120,
+      "counts_toward_cell_wall_time": false,
+      "status": "complete",
+      "started_at": "2026-08-05T12:01:36.568Z",
+      "finished_at": "2026-08-05T12:03:36.571Z",
+      "invocation": 1,
+      "monotonic_started_ms": 1279365.491375,
+      "monotonic_finished_ms": 1399368.558042,
+      "monotonic_elapsed_ms": 120003.06666700006,
+      "wall_elapsed_ms": 120003,
+      "clock_disagreement_ms": 0.06666700006462634,
+      "clock_difference_ms": 0.06666700006462634,
+      "acceptance_window_ms": {
+        "min": 120000,
+        "max": 125000,
+        "max_clock_disagreement": 5000
+      }
+    },
+    {
+      "policy": "fixed-inter-cell",
+      "after_cell_id": "luna-field-r3-control",
+      "before_cell_id": "luna-field-r3-omd",
+      "delay_seconds": 120,
+      "counts_toward_cell_wall_time": false,
+      "status": "complete",
+      "started_at": "2026-08-05T12:07:37.554Z",
+      "finished_at": "2026-08-05T12:09:37.536Z",
+      "invocation": 1,
+      "monotonic_started_ms": 1640349.996584,
+      "monotonic_finished_ms": 1760353.674,
+      "monotonic_elapsed_ms": 120003.67741600005,
+      "wall_elapsed_ms": 119982,
+      "clock_disagreement_ms": 21.67741600004956,
+      "clock_difference_ms": 21.67741600004956,
+      "acceptance_window_ms": {
+        "min": 120000,
+        "max": 125000,
+        "max_clock_disagreement": 5000
+      }
+    }
+  ],
+  "pacing": null,
+  "prepared_cell_attestations": {
+    "luna-field-r1-control": {
+      "benchmark_tree_sha256": "b43dcf1085b599ee29ad6df0e2ebed1017968685a59151d971e61674abba052c",
+      "product_tree_sha256": "c5bbad11b8172d15fd460088258da288d0fb815f1e7e09c59c3dfc6e59beb5d2"
+    },
+    "luna-field-r1-omd": {
+      "benchmark_tree_sha256": "cccaa2cbd179bf745fa9b6b8d5cb28280290932ca4bc33ed4b498416f5835f07",
+      "product_tree_sha256": "c5bbad11b8172d15fd460088258da288d0fb815f1e7e09c59c3dfc6e59beb5d2"
+    },
+    "luna-field-r2-omd": {
+      "benchmark_tree_sha256": "12cfdf6bc76d298a2ccb6c1adc5786eeed1c916bc3a91dc8b89303d9ed896746",
+      "product_tree_sha256": "c5bbad11b8172d15fd460088258da288d0fb815f1e7e09c59c3dfc6e59beb5d2"
+    },
+    "luna-field-r2-control": {
+      "benchmark_tree_sha256": "02fdb6d52613d9def41ac9ed8a4985b401da72492a867fdafce2d34a364a637e",
+      "product_tree_sha256": "c5bbad11b8172d15fd460088258da288d0fb815f1e7e09c59c3dfc6e59beb5d2"
+    },
+    "luna-field-r3-control": {
+      "benchmark_tree_sha256": "6de1b8baec49b17ddfe8062e2afc10ad9dae0e935ad55a97d9b3af074b54171f",
+      "product_tree_sha256": "c5bbad11b8172d15fd460088258da288d0fb815f1e7e09c59c3dfc6e59beb5d2"
+    },
+    "luna-field-r3-omd": {
+      "benchmark_tree_sha256": "7636275cbc663def7e34360b7875a181b1c778b315f7bf9dc47591ea6155365a",
+      "product_tree_sha256": "c5bbad11b8172d15fd460088258da288d0fb815f1e7e09c59c3dfc6e59beb5d2"
+    }
+  },
+  "evaluator_preflight": {
+    "status": "complete",
+    "started_at": "2026-08-05T11:40:17.229Z",
+    "finished_at": "2026-08-05T11:40:17.400Z",
+    "dependencies": [
+      "playwright-core",
+      "axe-core"
+    ],
+    "invocation": 1
+  },
+  "proof_execution_gate": null,
+  "host_policy_gate": null
+}

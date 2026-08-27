@@ -77,7 +77,12 @@ for (const [i, evaluator] of EVALUATORS.entries()) {
 
 const out = {
   seed: order.seed,
-  generatedAt: "2026-08-23",
+  // Stamped from the roster seal date rather than the clock. The table is a
+  // function of (arm-order seed, evaluator roster) and nothing else, so a
+  // rerun has to reproduce the file byte for byte — but when the roster is
+  // resealed the stamp has to move with it, or the file dates itself to a
+  // roster it no longer describes.
+  generatedAt: config.resealedAt ?? config.pinnedAt,
   derivedFrom: "arm-order.json",
   method: {
     displayOrder: 'sha256("<evaluator>|<lane>|<brand>|<rep>|display|<seed>") 첫 바이트를 6개 순열에 매핑',

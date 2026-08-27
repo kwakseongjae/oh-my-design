@@ -1,0 +1,18 @@
+T2 번개장터 마이그레이션을 시작합니다. 규칙집과 원문을 순서대로 읽고, 작성 후 B2a·E2 패스를 돌리겠습니다.세션 상태를 복원하고, 지정된 규격·규칙집·골든 샘플을 순서대로 읽겠습니다.규격은 확인했습니다. 대응표, T1 제약, 골든 샘플, 번개장터 원문을 이어서 읽겠습니다.골든 샘플 형태와 번개장터 원문, 기존 산출물 유무를 확인합니다.번개장터 원문과 최근 통과 이관본의 형태를 대조합니다.원문은 13절 변형본입니다. 게이트 규칙과 유사 통과 이관본, 번개장터 부가 자료를 확인합니다.게이트가 요구하는 원문 토큰(hex·px·%)을 전부 뽑고, 컴포넌트 타입과 lineHeight도 확인합니다.원문 값과 B2a 한정을 반영해 Core v2 본문부터 작성합니다. 해석 문장은 인접 한정, 관측 hex·px는 그대로 둡니다.본문 전체를 다시 읽어 B2a를 점검하고, 게이트 토큰 대조를 돌립니다.게이트가 잡은 `24px` 발명과 같은 줄의 `focus-visible`+hex를 고치고, Distinctive 한정을 목록 앞으로 옮깁니다.번개장터 legacy `DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 **v7**, F1 B2a·F2 E2 수행.
+
+산출물:
+- `docs/design-md-weight/migrated/bunjang/DESIGN.md`
+- `docs/design-md-weight/migrated/bunjang/provenance.md`
+- `docs/design-md-weight/migrated/bunjang/migration-log.md`
+
+보존·분리 요약:
+- YAML `lineHeight` `1.2`는 비율로 유지. 검색 `18`/`18px`와 본문 `normal`은 합치지 않음.
+- primitive type은 컴포넌트별 유지: button×2, input, card, badge×3, toggle.
+- `#c00b15`는 interpolated 기록으로만 두고 hover/`focus-visible` 페인트로 올리지 않음.
+- 분위기용 가상 인구 라벨은 portable·provenance 모두에서 삭제(재수록 없음).
+- 원문에 States/Motion 절이 없어 Capture record와 B3 다섯 증거 종류 게이트만 본문에 남김.
+- Product Card·칩은 kind/map 생략(C4). Secondary/Search/Heart의 loading·error·success는 필드 경계에서 생략(C2). Primary CTA는 앱 핸드오프 의미로 그 세 상태를 `not-applicable`.
+
+`--gate-only` PASS, `portable_core: true`. SHA-256 `1548726bd01a367066b3a8986c42fa5aa4874bf9c8978a1de742d0f534e72b0b`. F3·sol 의미 레인은 아직이다. 카탈로그 채택이 아니다.
+
+DONE migrated=1

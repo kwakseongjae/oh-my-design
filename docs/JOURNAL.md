@@ -1,3 +1,559 @@
+## 2026-08-27 (opus5) — main CI red 수리, Dependabot 폐지
+- 한 일: `ee445abc`가 테스트가 경로로 읽는 `reports/`를 untrack해 클린 체크아웃만 실패하던 것을 수리 — `reports/.gitignore`(`/*`+negation 115) 신설, `GATE_BOUND`를 파생으로 교체(`--sync-ignore`), 395파일 재추적, custody 테스트 신설. 워크트리 시뮬에서 137 failed → 0. `.github/dependabot.yml` 삭제 + PR 16건 close.
+- 열린 것: 스위트 중 `npm run build`가 추적 산출물을 덮어쓰는 기존 오염(컨트롤에서도 재현)과 `readiness-generator` 15s 타임아웃 여유. `.gitignore` negation 무효는 원래부터였고 `3b14d6b1`의 `add -f`가 그 증상이었다.
+- 다음: 이 브랜치가 main에 머지돼야 스케줄 실패 메일이 멎는다. 커밋은 사용자 지시 대기.
+
+## 2026-08-26 (opus5) — 웨이브 24 개정 finda (B1 분류 승격)
+- 한 일: sibling의 h3 구조 관측이 원본 사실로 승격돼 있던 `:13`·`:434`를 처리 (a)로 시정 — 원본 §10 톤 표 분류로 복귀, h3 결합은 provenance로.
+- 열린 것: 같은 계열(값이 아닌 **분류**의 도메인 이동)은 게이트·sibling-only 값 grep 어느 쪽도 못 잡는다. 다른 sibling 채택 건 점검 미실시.
+- 다음: 오케스트레이터 지시 대기. 507행·모든 원장 포인터·A5 24건 재실측 통과, gate PASS/`portable_core:true`.
+
+## 2026-08-26 — 웨이브 24~27, A5 사각 규명, T3-3 재봉인 (opus5)
+
+**한 일.** 웨이브 24 마감(의미 검토 5/5, 개정 4건) · 25~27 이관 15건 → 원장 118→139. A5 게이트 커버리지를 실측해 **4.4%**(인용 22,377개 중 991개, 50% 넘는 브랜드 0개)임을 밝히고 게이트가 매 실행 분모를 출력하게 고침. 규칙집 v10→**v12**(A5a·D2a·E2d·B2a 주석). T3-3 재봉인이 하류에 닿지 않은 자리 넷을 grok 판정으로 집행하고 `RUBRIC_FROZEN_SHA`를 `a0528047`로 이동. Neon이 매 마감 조용히 건너뛰던 것(자격증명 탐색 위치)과 벤치 게이트 근거 파일 untrack 회귀를 고침 — 전체 스위트 1399/0.
+
+**열린 것.** 웨이브 27 F3 미착수(v12로 돌아야 gaudiy 페르소나 원장이 D2a로 정리됨). A5 소급 표본 감사(비교 0건 63건 모집단, 영문 카피=브랜드 자산 층 우선). R2 개선 4계열. T3-3 본 실험은 Grok Imagine 쿼터(8/29) 대기 — 봉인은 완료.
+
+**다음.** 웨이브 27 F3 → 검토 → 개정 → 마감 → 웨이브 28(gmarket·gogolook·gogoro·goodpatch·google).
+
+**배운 것.** 게이트가 볼 수 있었던 결함은 F3 71건 중 0건. 반복 계열 셋 — 자기 내용에 대해 거짓인 원장 행, 본문보다 좁은 derived 원장, sibling 분류의 본문 승격(값 grep은 전량 0이라 기계가 못 잡는다). 그리고 **과대 주장에 한정을 붙이면 세탁이 된다** — 처방은 행을 좁히는 것이다. 내 계측이 워커보다 좁거나 어긋난 것이 오늘 여섯 번(`grep -c`, dotfile 글로브, 소수점 px, 「네 파일」 오독, dcard 지시 대상, `type: system` 오탐) — 전부 상대가 맞았다.
+
+
+## 2026-08-26 (grok) — T3-3 스모크런 omd/apple/rep-1
+- 한 일: 이미지 제외 첫 렌더·시스템 문서 기록. 홈→iPhone 소개 경로, 네트워크 없음.
+- 열린 것: Imagine 한도. 나머지 arm·본 실험 36회는 이 스모크와 별개.
+- 다음: 호스트가 다른 arm/브랜드 스모크를 주면 같은 계약으로.
+
+## 2026-08-26 (opus5+grok) — 웨이브 23 마감(118/440), 규칙집 v10, 3트랙 중 1트랙만 진행
+
+- 한 일: 웨이브 23 완주(검토를 grok-4.6/cursor로 환원). C2 조문 충돌을 최종 승인권자 판정으로 해소해 v10. 적합성 검사 오탐 2종 추가 수정.
+- 열린 것: Neon URL 미수령, T3-3 봉인 커밋 미승인, 미커밋 변경 누적. R2(E1 96건 + sibling 62건) 대기.
+- 다음: 사용자 입력 3건 처리 후 웨이브 24 또는 R2.
+
+## 2026-08-26 — C2 최종 판정 (조문 vs 골든 샘플)
+- 한 일: C2는 역할 없는 일괄 개방을 금하고, 문구·applicable 자체는 금하지 않는다고 확정. 546회 일괄 미개정, farfetch 역할 판정은 유효, 조문 v10 후보.
+- 열린 것: 규칙집 C2 대체 문안 미반영. 골든 샘플(musinsa nav·29cm carousel) C2 미보수.
+- 다음: 지시 있으면 규칙집 v10 C2 개정. 546회 일괄 재작성 금지.
+
+## 2026-08-26 (opus5) — 웨이브 19~22 마감(113/440), 규칙집 v9, 검사 3종 수정
+- 한 일: 전 역할 opus5 전환 후 4개 웨이브 완주. A5·D1a 신설(v9), A5 부채 9건 해소, 적합성 오탐 수정으로 113건 전량 통과, process-leak 검사 신설.
+- 열린 것: R2(E1 누출 93건/199회), v10 후보 7건(A6 서사 이관이 최대), 사용자 자격 대기(R2 토큰·Neon URL·블로그 DNS).
+- 다음: 재개 지시 시 CURRENT_STATE 최상단부터. 웨이브 23은 여집합 다음 5개.
+
+## 2026-08-25 (opus5) — 웨이브 18 마감·19 감사까지, 디스크 75GB 회수, 일시 중단
+- 한 일: 웨이브 18 전체 루프 마감(95/440) + 웨이브 19 이관·F3·게이트 완료. reclaim-disk.mjs 신설, 74.7GB+437MB 회수, 웨이브 절차에 배선.
+- 열린 것: 웨이브 19 의미 검토부터 (opus5 5기 → 개정 → 원장). 사용자 자격 대기: R2 토큰·Neon URL·블로그 DNS.
+- 다음: 재개 지시 시 CURRENT_STATE 최상단 항목부터.
+
+## 2026-08-25 (Codex) T2-1 웨이브 18 F3 감사 배치 5건
+- 한 일: databricks→datadog→datarize→dcard→dealicious를 B2/B2a·E1/E2/E2a–c만으로 전수 감사·직접 수정했다.
+- 기록: audit sentinel fixes 12/15/28/27/30, provenance derived 범위와 migration-log 목적지·current SHA를 실제 파일에 동기화했다.
+- 검증: SHA 일치 5/5, gate PASS/`[]` 5/5, Core `portable_core:true` 5/5, 원본·금지 표면 불변, E3 오탐 0.
+- 열린 것/다음: 없음. `ALL_AUDITS_DONE`.
+
+## 2026-08-25 (sol) T2-1 웨이브 18 워커 이관 — databricks~dealicious
+- 한 일: databricks·datadog·datarize·dcard·dealicious 5건을 규칙집 v8 Core v2 후보 3파일로 직렬 이관했다.
+- 보존: source+canonical Proof 리터럴 0손실, 비합침 conflict/sidecar-only 값은 provenance, §14는 portable+역할별 applicability, fictional biography는 삭제했다.
+- 검증: 5/5 gate PASS/problems `[]`, claims/anchors exact, `[FILL IN]` 0, B2a 전문 누락 0, source/Proof 및 current SHA 원장 일치.
+- 열린 것/다음: opus5/F3 의미 검토 대기. 카탈로그 채택 아님.
+
+## 2026-08-25 (Codex) T2-1 웨이브 18 Opus 5 회부분 개정
+- 한 일: dabang E2/E2c/F2와 dable §11 disposition을 판정문·규칙집 v8대로 최소 수정했다.
+- 원장: dabang 26/26, dable 25/25 목적지를 실측 grep했고 명시 포인터 58/108 및 source 342→portable 340, stale 0을 기록했다.
+- 검증: 두 gate PASS/problems `[]`; 원본·토큰·컴포넌트 표·state applicability·section 구조 불변, E3 오탐 없음.
+- 열린 것/다음: Opus 5 표적 재확인 대기. 카탈로그 채택 아님.
+
+## 2026-08-25 (sol) T2-1 웨이브 18 워커 이관
+- 한 일: cursor·cybozu·dabang·dable·danawa 5건을 규칙집 v8 Core v2 후보 `{DESIGN.md,provenance.md,migration-log.md}`로 직렬 이관.
+- 보존: 값/형태/primitive/§14 0손실, fictional biography 삭제, sidecar-only·미입증 responsive/motion 값은 provenance에 exact 분리, B2a·E2 이중 목적지 동기화.
+- 검증: 5/5 gate PASS/problems `[]`, Core `portable_core:true`, `[FILL IN]` 0, 원본 5건 무변경, current SHA는 각 migration-log와 일치.
+- 열린 것/다음: opus5/F3 의미 검토 대기. 카탈로그 채택 아님.
+
+## 2026-08-25 (sol) T2-1 웨이브 17 최종 확인 3차
+- 한 일: 2차의 네 잔여 지목만 재대조해 `docs/reviews/t2-1-wave17-2026-08-25-sol-final3.md` 작성.
+- 판정: **전체 PASS, PASS 4/4** — composio/cookpad/corca/cuboai 모두 stale SHA superseded + `wave17 ledger sync` actual SHA 선언 충족.
+- 검증: 선언 SHA와 실제 DESIGN SHA 4/4 일치. 새 기준·새 F3·새 기계검사 없음.
+- 열린 것/다음: 없음. 카탈로그 채택 아님.
+
+## 2026-08-25 (sol) T2-1 웨이브 17 최종 확인 2차
+- 한 일: `sol-recheck.md`의 다섯 잔여 조건만 원장 재대조해 `docs/reviews/t2-1-wave17-2026-08-25-sol-final2.md` 작성.
+- 판정: **전체 FAIL, PASS 1/5** — coinone만 PASS; composio/cookpad/corca/cuboai는 원장·SHA 조건 일부 미반영.
+- 검증: 5개 DESIGN SHA는 recheck 기준과 동일해 본문 무변경; cookpad observed 표현 정정 확인. 새 기준·새 F3·새 기계검사 없음.
+- 열린 것/다음: 네 FAIL의 지목 앵커와 actual SHA만 완전 동기화 후 동일 sol 재확인. 카탈로그 채택 아님.
+
+## 2026-08-25 (sol) T2-1 웨이브 17 최종 확인
+- 한 일: `sol-recheck.md`의 브랜드별 잔여 조건만 재대조해 `docs/reviews/t2-1-wave17-2026-08-25-sol-final.md` 작성.
+- 판정: **FAIL 5/5, PASS 0/5** — 다섯 건 모두 잔여 current-class/F1/F2·포인터·SHA 조건이 완전히 반영되지 않음.
+- 열린 것/다음: `sol-recheck.md`의 잔여 조건만 교정 후 동일 sol 재확인. 새 기준·새 F3·새 기계검사 없음. 카탈로그 채택 아님.
+
+## 2026-08-25 (sol) T2-1 웨이브 17 집중 재심
+- 한 일: 선행 sol 재제출 조건만 대조해 `docs/reviews/t2-1-wave17-2026-08-25-sol-recheck.md` 작성.
+- 판정: **FAIL 5/5, PASS 0/5**, 조건 21/28 PASS — 다섯 건 모두 current-class/F2/SHA 계열 잔여.
+- 검증: current 5/5 gate PASS/`[]`, Core `portable_core:true`; 새 기준·새 F3 실행/요구 없음.
+- 열린 것/다음: 정본의 브랜드별 잔여 조건만 교정 후 동일 sol 재심. 카탈로그 채택 아님.
+
+## 2026-08-25 (sol) T2-1 웨이브 17 첫 전수 검토
+- 한 일: canonical/채택 Proof/current packet을 v8 전 조항으로 대조하고 정본 `docs/reviews/t2-1-wave17-2026-08-25-sol-full.md` 작성.
+- 판정: **FAIL 5/5, PASS 0/5** — 다섯 건 모두 고정 목록 재제출.
+- 검증: 5/5 gate PASS/`[]`, `portable_core:true`, fresh F3/current SHA 일치, E3 회피 없음.
+- 열린 것/다음: 고정 목록 개정 + affected F1/F2/current-class + 새 SHA/F3/gates 후 동일 sol 재심. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 corca F3 B2a·E2 감사
+- 한 일: 이관 산출물 B2a 인접 한정 보강, provenance derived 범위·migration-log 목적지 grep 교정. `audit-log.md` 기록.
+- 검증: `--gate-only` PASS/`[]`, `portable_core: true`. Post-F3 SHA-256 `4483983caf1e1c85411820eadb24d653cfb9026beefbd0cc537aef09d8c160e2`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 composio F3 B2a·E2 감사
+- 한 일: 이관 산출물 B2a 인접 한정 보강, provenance derived 범위·migration-log 목적지 grep 교정. `audit-log.md` 기록.
+- 검증: `--gate-only` PASS/`[]`, `portable_core: true`. Post-F3 SHA-256 `a3f575ab8febc740e3c20e47afcb2d2bbe8346efc12ff7bad04d3c02fa23d06c`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 cookpad F3 B2a·E2 감사
+- 한 일: 이관 산출물 B2a 인접 한정 보강, provenance derived 범위·migration-log 목적지 grep 교정. `audit-log.md` 기록.
+- 검증: `--gate-only` PASS/`[]`, `portable_core: true`. Post-F3 SHA-256 `e7ee909e96ed6a9713967acb54ea1afdc8eb2d376ed4301aeb61bd503559dec1`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 cuboai F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/cuboai/` DESIGN 한정 9곳 + provenance/migration dest grep 정정. `audit-log.md` 기록.
+- 검증: `--gate-only` PASS/`[]`, `portable_core: true`. SHA-256 `c2760aefd46d6e8d4ebf9b1e9894a69d3c73f7d6fa81995aee8986e1e0bc643e`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 coinone F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/coinone/` B2a 인접 한정 17곳 + provenance/migration-log 원장 교정. 토큰·표·applicability·구조 미변경.
+- 검증: `--gate-only` PASS/`[]`, `portable_core: true`. Post-F3 SHA-256 `4f8056f56fce47320d858c232eca4e458a6904da6e73d77a45a0c654d9393735`. `AUDIT_DONE fixes=20`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 corca 수동 이관
+- 한 일: `web/references/corca/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/corca/{DESIGN.md,provenance.md,migration-log.md}` 작성. 규칙집 v8. F1 B2a 스캔·F2 grep 수행.
+- 검증: `--gate-only` PASS/`[]`, `portable_core: true`. SHA-256 `79580b2d981a83e916ad9e2ef1be4c0c766c64e22224700244903d69c3676f4f`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 composio 수동 이관
+- 한 일: `web/references/composio/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/composio/{DESIGN.md,provenance.md,migration-log.md}` 작성. 규칙집 v8. F1 B2a 스캔·F2 grep 수행.
+- 검증: `--gate-only` PASS/`[]`, `portable_core: true`. SHA-256 `c57c9cc2f9c4bc9c4b06fa609169cc4d5689459d856c51ba5bfe76136c641613`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 워커 coinone 수동 이관
+- 한 일: `web/references/coinone/DESIGN.md` → Core v2 `docs/design-md-weight/migrated/coinone/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v8. F1 B2a·F2 E2 수행.
+- 검증: `--gate-only` PASS/`[]`, Core `portable_core: true`. SHA-256 `c984483f9abbd28f9e591088f763554ac7831d3f8e5d1c2065e623d032241c76`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 cuboai 수동 이관
+- 한 일: `web/references/cuboai/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/cuboai/{DESIGN.md,provenance.md,migration-log.md}` 작성. 규칙집 v8. F1 B2a 스캔·F2 grep 수행.
+- 검증: `--gate-only` PASS/`[]`, `portable_core: true`. SHA-256 `2af12aa1be02bc83a037144c5369afbc65172ff2abbc98ba31f9bbcbd73a06b6`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 cookpad 수동 이관
+- 한 일: `web/references/cookpad/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/cookpad/{DESIGN.md,provenance.md,migration-log.md}` 작성. 규칙집 v8. F1 B2a 스캔·F2 grep 수행.
+- 검증: `--gate-only` PASS/`[]`, `portable_core: true`. SHA-256 `259f93d4fe046f9badeb4830111188cd691a83a87b897ac2b4269a05cf40a0e6`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (sol) T2-1 웨이브 16 clickhouse 최종 확인
+- 한 일: 선행 recheck의 잔여 조건 1·4만 재확인하고 `docs/reviews/t2-1-wave16-2026-08-25-sol-final.md`에 한 줄 판정 기록.
+- 판정: PASS — `.verification.md:25` tuple과 provenance 193이 문자 단위로 동일하고 Proof current-class 원장이 실제 disposition과 일치. 새 기준·새 F3 없음.
+- 열린 것/다음: 없음. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2-1 웨이브 16 clickhouse final resubmit
+- 한 일: `.verification.md:25` tuple을 provenance 193에 byte-exact 복원. §11 dual dest Proof disposition을 실제 원장과 맞춤. `Revision 2026-08-25 (wave16 final resubmit)`.
+- 검증: SHA 불변 `60cb67aa…1c57`. gate PASS/`[]`, Core portable true. 원장 포인터 전수 재검증. 새 F3 없음.
+- 열린 것/다음: 동일 sol 목록-only 재심. 카탈로그 채택 아님.
+
+## 2026-08-25 (sol) T2-1 웨이브 16 집중 재심
+- 한 일: 선행 재제출 조건만 재확인해 `docs/reviews/t2-1-wave16-2026-08-25-sol-recheck.md` 기록. 새 기준·새 F3 없음.
+- 판정: 전체 FAIL — clickhouse FAIL(3/5; Proof `.verification.md:25` tuple 누락 + 원장 과대), cloudflare/codeit/cohere/coinbase PASS. 조건 30/32.
+- 검증: 5/5 gate PASS·Core portable true·SHA 일치. codeit/coinbase E3 자연 문장 원복과 row-aware gate 양방향 동작 확인.
+- 열린 것/다음: clickhouse exact tuple + current-class 원장/SHA/gates 재동기화 후 동일 sol 재심. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2-1 웨이브 16 sol 재제출
+- 한 일: clickhouse/cloudflare/codeit/cohere/coinbase 고정 목록-only 개정. codeit·coinbase E3 분할 문장 원복. migration-log `Revision 2026-08-25 (wave16 sol resubmit)`.
+- 검증: 5/5 `--gate-only` PASS/problems `[]`, Core `portable_core: true`. SHA clickhouse `60cb67aa…1c57` / cloudflare `7993d305…842b` / codeit `c64a9f02…8286` / cohere `cd7e0cbc…ffde` / coinbase `1a113108…8e4f`. 원장 포인터 전수 재검증. 새 F3 없음.
+- 열린 것/다음: 동일 sol 목록-only 재심. 카탈로그 채택 아님.
+
+## 2026-08-25 (sol) T2-1 웨이브 16 전수 검토
+- 한 일: clickhouse/cloudflare/codeit/cohere/coinbase를 Rulebook v8 전 조항과 canonical/채택 Proof에 대조해 `docs/reviews/t2-1-wave16-2026-08-25-sol-full.md` 기록.
+- 판정: FAIL 5/5; Codeit·Coinbase E3 줄 분리 회피, 나머지 source/Proof/state/negative/provenance 결함을 건별 고정.
+- 검증: 5/5 gate PASS, Core `portable_core:true`, fresh F3 실행·current SHA 일치; 기계·절차 PASS는 의미 PASS가 아님.
+- 열린 것/다음: 고정 목록-only 동일 sol 재심; affected F1/F2/current-class·SHA·gates 재동기화, 새 F3 불필요. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 codeit F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/codeit/{DESIGN.md,provenance.md,migration-log.md,audit-log.md}` 한정 문장·원장만 수정. 토큰·표·구조 미변경.
+- 검증: `--gate-only` PASS/problems `[]`, Core `portable_core: true`. SHA-256 `f1979590ce4497919385d860d856c45981b624530115f716b287e08c122b5cda`. `AUDIT_DONE fixes=20`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 clickhouse F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/clickhouse/{DESIGN.md,provenance.md,migration-log.md,audit-log.md}` 한정 문장·원장만 수정. 토큰·표·구조 미변경.
+- 검증: `--gate-only` PASS/problems `[]`, Core `portable_core: true`. SHA-256 `5f370bd76b23af69c60a525b178b836c8deeda52765ce2c741c1c272f77e6ba9`. `AUDIT_DONE fixes=20`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 cloudflare F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/cloudflare/` DESIGN 한정 35곳 + provenance inventory/dest + migration-log dest/F1·F2. `audit-log.md` 기록.
+- 검증: `--gate-only` PASS/problems `[]`, Core `portable_core: true`. SHA-256 `411c17c271d94896f2482763931fe6ef39f1ec5aa1eb9e0d588008a5f53256a4`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 cohere F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/cohere/` DESIGN 한정 15곳 + provenance inventory/dest + migration-log dest/F1·F2. `audit-log.md` 기록.
+- 검증: `--gate-only` PASS/problems `[]`, Core `portable_core: true`. SHA-256 `b92f263ec9f289e831f8e138928ee5a989fae6121c6515c2a48c6ebece0fefa1`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 coinbase F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/coinbase/` DESIGN 한정 14곳 + provenance inventory + migration-log dest/F1·F2. `audit-log.md` 기록.
+- 검증: `--gate-only` PASS/problems `[]`, Core `portable_core: true`. SHA-256 `0749f48768b46679048e8e514c8945eb63584284243c973d6a5dda496b37b390`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 codeit 이관
+- 한 일: `web/references/codeit/DESIGN.md` → `docs/design-md-weight/migrated/codeit/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v8. F1 B2a / F2 E2 수행.
+- 검증: `--gate-only` PASS/problems `[]`, Core `portable_core: true`. SHA-256 `3e7835a9a1284b6709d23c9dca3457357f3123f3ff9cfabbdecd2689489dac7e`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 clickhouse F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/clickhouse/{DESIGN.md,provenance.md,migration-log.md,audit-log.md}` 한정 문장·원장만 수정. 토큰·표·구조 미변경.
+- 검증: `--gate-only` PASS/problems `[]`, Core `portable_core: true`. SHA-256 `5f370bd76b23af69c60a525b178b836c8deeda52765ce2c741c1c272f77e6ba9`. `AUDIT_DONE fixes=20`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 clickhouse 이관
+- 한 일: `web/references/clickhouse/DESIGN.md` → `docs/design-md-weight/migrated/clickhouse/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v8. F1 B2a / F2 E2 수행.
+- 검증: `--gate-only` PASS/problems `[]`, Core `portable_core: true`. SHA-256 `eb9b8ee40beb12623e241146bb30c8c643a4a7da83800a26b911cb0c30df6533` (F3 후 superseded).
+- 열린 것/다음: F3 완료. sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 cloudflare 이관
+- 한 일: `web/references/cloudflare/DESIGN.md` → `docs/design-md-weight/migrated/cloudflare/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v8. F1 B2a / F2 E2 수행.
+- 검증: `--gate-only` PASS/problems `[]`, Core `portable_core: true`. SHA-256 `84e513c07bf5ccfaa2fac3730e9a696bea1c4b9ffe62895855ce8a8a400a9e99`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 cohere 이관
+- 한 일: `web/references/cohere/DESIGN.md` → `docs/design-md-weight/migrated/cohere/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v8. F1 B2a / F2 E2 수행.
+- 검증: `--gate-only` PASS/problems `[]`, Core `portable_core: true`. SHA-256 `3ff9a9e45dfa161ddf8f490510bc0cd5ed5eeb2382e71c0930fe40c82af9fd17`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 coinbase 이관
+- 한 일: `web/references/coinbase/DESIGN.md` → `docs/design-md-weight/migrated/coinbase/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v8. F1 B2a / F2 E2 수행.
+- 검증: `--gate-only` PASS/problems `[]`, Core `portable_core: true`. SHA-256 `690294c0708ecd7576c19cda431a77df5c10ab8f4ffbe672a7c249692c2c81ad`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-25 (sol) T2-1 웨이브 15 집중 재심
+- 한 일: class101·classting·classum·claude를 선행 sol 재제출 조건에만 대조하고 `docs/reviews/t2-1-wave15-2026-08-25-sol-recheck.md` 기록.
+- 판정: 4/4 PASS, 고정 조건 23/23 PASS. 선행 clay PASS 포함 웨이브 5/5.
+- 검증: 4/4 gate-only PASS/problems `[]`, portable_core true, current SHA 일치. 새 기준·새 F3 없음.
+- 열린 것/다음: 카탈로그 채택 주장은 아님.
+
+## 2026-08-25 (grok-4.6) T2-1 웨이브 15 sol 재제출
+- 한 일: class101·classting·classum·claude 고정 목록 개정. clay 미변경. 각 `migration-log.md`에 `Revision 2026-08-25 (wave15 sol resubmit)`.
+- 검증: 4/4 `--gate-only` PASS/problems `[]`, Core `portable_core: true`. 세 원장 줄번호 전수 grep.
+- 열린 것/다음: 동일 sol 목록-only 재심. 새 F3 없음. 카탈로그 채택 아님.
+
+## 2026-08-25 (sol) T2-1 웨이브 15 전수 검토
+- 한 일: class101·classting·classum·claude·clay canonical/current packet을 규칙집 v7 전 조항으로 대조해 정본 docs/reviews/t2-1-wave15-2026-08-25-sol-full.md 작성.
+- 판정: 전체 FAIL, PASS 1/5. class101·classting·classum·claude FAIL; clay PASS.
+- 검증: 5/5 gate-only PASS, portable_core true, fresh F3 실행/current SHA 결속 PASS.
+- 열린 것/다음: 고정 목록-only 동일 sol 재심; 새 F3 요구 없음; 카탈로그 채택 아님.
+
+## 2026-08-25 (grok-4.6) T2 classum F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/classum/` DESIGN 한정 22곳 + provenance derived/dest + migration-log dest/F1·F2. 토큰·표·구조 미변경.
+- 검증: `--gate-only` PASS; `portable_core: true`; SHA `471ef0c848d0a76d962093cc75dcc35bade4766b3cb38766e4868a501871c6e4`. `AUDIT_DONE fixes=26`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 clay F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/clay/` DESIGN 한정 20곳 + provenance derived/dest + migration-log dest/F1·F2. 토큰·표·구조 미변경.
+- 검증: `--gate-only` PASS; `portable_core: true`; SHA `a21f84fb00cb45e01bb7a5570ca64d02f476ceead0f72ea164ecf7fe21c8082f`. `AUDIT_DONE fixes=22`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 claude F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/claude/` DESIGN 한정 15곳 + provenance derived/dest + migration-log dest/F1·F2. 토큰·표·구조 미변경.
+- 검증: `--gate-only` PASS; `portable_core: true`; SHA `18d981af51a29cb5571dbb598e03bc55c7c357a81910ecf41dc9f14336cdf08f`. `AUDIT_DONE fixes=20`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 class101 F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/class101/` DESIGN 한정 11곳 + provenance derived/dest + migration-log dest/F1·F2. 토큰·표·구조 미변경.
+- 검증: `--gate-only` PASS; `portable_core: true`; SHA `5278e4dd2d32f166d5c0af9b850a1e151a95e0436999097acf3a4608fce854e2`. `AUDIT_DONE fixes=15`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 classting F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/classting/` DESIGN 한정 문장 + provenance/migration-log 원장 교정. `audit-log.md` 작성. `AUDIT_DONE fixes=20`.
+- 검증: `--gate-only` PASS/problems `[]`; `portable_core: true`; SHA `f8d9c84d959b6d5960378a2b84aa8f61146a877c32a4d4734554a38b4869cf65`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 classum 수동 이관
+- 한 일: `web/references/classum/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/classum/{DESIGN.md,provenance.md,migration-log.md}` 작성. 규칙집 v7. F1 B2a·F2 E2 grep 수행.
+- 검증: `--gate-only` PASS/problems `[]`; `portable_core: true`; SHA `fe7db5ba6e93936fbd5c2cc2cd7279fa097b3d017f710539d565ee4b874b5fdf`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 clay 수동 이관
+- 한 일: `web/references/clay/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/clay/{DESIGN.md,provenance.md,migration-log.md}` 작성. 규칙집 v7. F1 B2a·F2 E2 grep 수행.
+- 검증: `--gate-only` PASS/problems `[]`; `portable_core: true`; SHA `d18b6b1f56b124dab0c0eec4ce6dc396e0e9530658984998189234a7948b8efc`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 class101 수동 이관
+- 한 일: `web/references/class101/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/class101/{DESIGN.md,provenance.md,migration-log.md}` 작성. 규칙집 v7. F1 B2a·F2 E2 grep 수행.
+- 검증: `--gate-only` PASS/problems `[]`; `portable_core: true`; SHA `ab304f713eaef002c9b06d28fe3f1fdebb59b7a4bb0c25362290c7cf2ad6d950`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 classting 수동 이관
+- 한 일: `web/references/classting/DESIGN.md`를 Core v2로 옮김. `docs/design-md-weight/migrated/classting/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v7. F1 B2a · F2 E2 수행.
+- 검증: `--gate-only` PASS/problems `[]`, Core `portable_core: true`. SHA `caf36542429f89f6de162b7dd90c3223d1e6e2e393bbb877d359e5a76aa06d4d`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 claude 이관
+- 한 일: `web/references/claude/DESIGN.md` → `docs/design-md-weight/migrated/claude/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v7. F1 B2a·F2 E2 수행.
+- 검증: `--gate-only` PASS, Core `portable_core: true`. SHA-256 `062b0756646d4a2b2f1b7e801e2d637b516138d5f4f0c7ef75a09b85f4badb56`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (sol) T2-1 웨이브 14 최종 확인
+- 한 일: `sol-recheck.md`의 chunghwa·cjonstyle 잔여 current 원장 동기화 조건 두 건만 재대조하고 `docs/reviews/t2-1-wave14-2026-08-24-sol-final.md` 기록.
+- 판정: 전체 PASS — chunghwa PASS / cjonstyle PASS, 잔여 2/2·선행 재제출 조건 20/20. 새 기준·새 F3 없음.
+- 열린 것/다음: 웨이브 14 목록 검증 종료. 카탈로그 채택 주장은 아님.
+
+## 2026-08-24 (grok-4.6) T2-1 웨이브 14 포인터 동기화
+- 한 일: chunghwa·cjonstyle provenance/migration/audit current 포인터 전수 정정. 각 `Revision 2026-08-24 (wave14 pointer sync)`. DESIGN.md 미변경.
+- 검증: B2a inventory = 본문 실측 전수 일치. SHA 2건 불변.
+- 열린 것/다음: 동일 sol 목록-only 재심. 카탈로그 채택 아님.
+
+## 2026-08-24 (sol) T2-1 웨이브 14 집중 재심
+- 한 일: 선행 sol-full의 고정 재제출 조건만 다섯 개정본에 재대조하고 `docs/reviews/t2-1-wave14-2026-08-24-sol-recheck.md` 기록. 새 기준·새 F3 없음.
+- 판정: 전체 FAIL — cgv/channeltalk/china-airlines PASS, chunghwa/cjonstyle FAIL. 대상 3/5, 조건 18/20 PASS.
+- 검증: 현재 파일 5/5 `--gate-only` PASS/problems `[]`, Core `portable_core:true`, SHA 일치.
+- 열린 것/다음: chunghwa와 cjonstyle의 stale current provenance/migration/audit 목적지만 고정 조건 범위에서 동기화 후 동일 sol 재제출. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2-1 웨이브 14 sol 재제출
+- 한 일: cgv·channeltalk·china-airlines·chunghwa·cjonstyle 고정 조건 개정. 각 `migration-log.md`에 `Revision 2026-08-24 (wave14 sol resubmit)`. 원장 dest 전수 재grep.
+- 검증: 5/5 `--gate-only` PASS, Core `portable_core: true`. SHA cgv `9f9ca84a…7792` / channeltalk `a9e42f8d…b1bf` / china-airlines 불변 `8fb4175f…d8f` / chunghwa `4f7e86db…c488` / cjonstyle `0f39717d…826d`.
+- 열린 것/다음: 동일 sol 목록-only 재심. 새 F3 없음. 카탈로그 채택 아님.
+
+## 2026-08-24 (sol) T2-1 웨이브 14 전수 검토
+- 한 일: canonical 본문/packet-linked Proof와 migrated 5건을 Rulebook v7 전 조항으로 대조해 `docs/reviews/t2-1-wave14-2026-08-24-sol-full.md` 기록.
+- 판정/검증: FAIL 5/5. 5/5 gate/Core 및 기존 fresh F3 실행·current SHA 결속은 PASS이나 의미·Proof·원장 결함은 미치유.
+- 열린 것/다음: 고정 재제출 조건만 동일 sol 재심. 새 F3 요구 없음. 5/5 PASS 전 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 cjonstyle F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/cjonstyle/` DESIGN 한정 8곳, provenance derived·dest, migration-log dest·F1/F2. `audit-log.md`.
+- 검증: `--gate-only` PASS, `portable_core: true`. SHA `e89aeaeedd04b0b18e4a64bd5b9e25b44bfbddbd698002fcd32ec19af9e2358d`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 chunghwa F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/chunghwa/` DESIGN 한정 10곳, provenance derived·dest, migration-log dest·F1/F2. `audit-log.md`.
+- 검증: `--gate-only` PASS, `portable_core: true`. SHA `046e292c241960a6a9930e9d2cb5a2d375f9cdde930b8d661d85252b3424adcd`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 cgv F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/cgv/` DESIGN 한정 12곳, provenance derived·dest, migration-log dest·F1/F2. `audit-log.md`.
+- 검증: `--gate-only` PASS, `portable_core: true`. SHA `efcbe5cc3f7564dbfbb1d8899e144dfc0291926e201bf03651ad15c53e279939`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 channeltalk F3 B2a·E2 감사
+- 한 일: `migrated/channeltalk` B2a 인접 한정 13곳 + provenance/migration-log dest (`reconciled` provenance-only, `#242428` 247, YAML `9999`, 30–45px 316). `audit-log.md`.
+- 검증: `--gate-only` PASS, `portable_core: true`. SHA `8b903d73774fa1607ad5196dc63195856038ed6da2fdb338a89880db3eb9c931`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 china-airlines F3 감사
+- 한 일: B2a·E2만 감사. DESIGN 한정 9곳, provenance derived/dest, migration-log dest·F1/F2. `audit-log.md`.
+- 검증: `--gate-only` PASS, `portable_core: true`. SHA `8fb4175f0f87db792a2438ecb4bba6db47e751e79b62965be288a1b8ba245d8f`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 chunghwa 이관
+- 한 일: `web/references/chunghwa/DESIGN.md` → `docs/design-md-weight/migrated/chunghwa/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v7. F1 B2a 전수, F2 grep dest.
+- 검증: `--gate-only` PASS, `portable_core: true`. SHA `70e4858c3d183ef19f742330c44ed3a953a361718f5cfd508187d60aaf60612e`.
+- 열린 것/다음: F3 B2a·E2 감사. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 china-airlines 이관
+- 한 일: `web/references/china-airlines/DESIGN.md` → `docs/design-md-weight/migrated/china-airlines/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v7. F1 B2a 전수, F2 grep dest.
+- 검증: `--gate-only` PASS, `portable_core: true`. SHA `15c0a5514b9e2e4ca4490db2f5ed551fc0cc316b008e56752aad27e4ee825379`.
+- 열린 것/다음: F3 B2a·E2 감사. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 channeltalk 이관
+- 한 일: `web/references/channeltalk/DESIGN.md` → `docs/design-md-weight/migrated/channeltalk/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v7. F1 B2a 전수, F2 grep dest.
+- 검증: `--gate-only` PASS, `portable_core: true`. SHA `2f201346e63bb87c587cc896c49db7b0e6ce6d6b2cb8ea2fcde7d084f1664f09`.
+- 열린 것/다음: F3 B2a·E2 감사. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 cjonstyle 이관
+- 한 일: `web/references/cjonstyle/DESIGN.md` → `docs/design-md-weight/migrated/cjonstyle/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v7. F1 B2a 전수, F2 grep dest.
+- 검증: `--gate-only` PASS, `portable_core: true`. SHA `9927327569741ed58b8b16cf7607c8421d813ea68ac673bf4729ff47d38733d7`.
+- 열린 것/다음: F3 B2a·E2 감사. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 cgv 이관
+- 한 일: `web/references/cgv/DESIGN.md` → `docs/design-md-weight/migrated/cgv/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v7. F1 B2a 전수, F2 grep dest.
+- 검증: `--gate-only` PASS, `portable_core: true`. SHA `b6b28c4ba25f2cf1c5d92713bf9c1971460c1a02f6646e5e26b1c2a0440a0ec0`.
+- 열린 것/다음: F3 B2a·E2 감사. 카탈로그 채택 아님.
+
+## 2026-08-24 (sol) T2-1 웨이브 13 최종 확인
+- 한 일: `sol-recheck.md`의 다섯 대상 잔여 조건만 재대조해 `docs/reviews/t2-1-wave13-2026-08-24-sol-final.md` 기록. 새 기준·새 F3 없음.
+- 판정/검증: cakeresume 5/5, cal 5/5, cashapp 4/4, catchtable 3/3, cathay 7/7 — 전체 PASS 5/5, 선행 목록 24/24.
+- 열린 것/다음: 웨이브 13 잔여 조건 닫힘. 카탈로그 채택 주장은 아님.
+
+## 2026-08-24 (grok-4.6) T2-1 웨이브 13 원장 동기화
+- 한 일: cakeresume·cal·cashapp·catchtable·cathay provenance current 포인터 전수 정정. cal 세 Font negative current 삭제. cathay `rgb(0,0,0)→#000000 — 45` 복원. 각 `Revision 2026-08-24 (wave13 ledger sync)`. DESIGN.md 미변경.
+- 검증: 줄번호 실측 grep. SHA 5건 불변.
+- 열린 것/다음: 동일 sol 목록-only 재심. 5/5 PASS 전 카탈로그 채택 아님.
+
+## 2026-08-24 (sol) T2-1 웨이브 13 집중 재심
+- 한 일: 선행 sol 재제출 조건만 재대조해 `docs/reviews/t2-1-wave13-2026-08-24-sol-recheck.md` 기록. 새 기준·새 F3 없음.
+- 판정/검증: FAIL 5/5, 조건 17/24 PASS. 5/5 gate/Core 및 current SHA는 PASS.
+- 열린 것/다음: 네 건 provenance current 원장 동기화 + cathay `#000000 — 45`; cal unsupported negative 제거. 5/5 PASS 전 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2-1 웨이브 13 sol 재제출
+- 한 일: cakeresume·cal·cashapp·catchtable·cathay 고정 조건만 개정. 원장 전수 재대조 + `Revision 2026-08-24 (wave13 sol resubmit)`.
+- 검증: 5/5 `--gate-only` PASS, Core `portable_core: true`. 새 F3 없음.
+- 열린 것/다음: 동일 sol 목록-only 재심. 5/5 PASS 전 카탈로그 채택 아님.
+
+## 2026-08-24 (sol) T2-1 웨이브 13 전수 검토
+- 한 일: canonical/proof와 migrated packet 5건을 Rulebook v7 전 조항으로 대조해 `docs/reviews/t2-1-wave13-2026-08-24-sol-full.md` 기록.
+- 판정/검증: FAIL 5/5. 5/5 gate/Core 및 기존 fresh F3 실행·SHA 결속은 PASS이나 의미 결함은 미치유.
+- 열린 것/다음: 고정 재제출 조건만 동일 sol 재심. 새 F3 요구 없음. 5/5 PASS 전 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 cathay F3 감사
+- 한 일: `migrated/cathay` B2a 인접 한정 + E2 원장 dest grep 교정. 토큰·표·applicability·구조 미변경.
+- 검증: `--gate-only` PASS. Core `portable_core: true`. SHA-256 `3814808edcc122e389349cb282f37cbfc9ad55cac8928eb8da6501f57058ae88`. `AUDIT_DONE fixes=20`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 cal F3 감사
+- 한 일: `migrated/cal` B2a 인접 한정 + E2 원장 dest grep 교정. 토큰·표·applicability·구조 미변경.
+- 검증: `--gate-only` PASS. Core `portable_core: true`. SHA-256 `2ec1adc92cc798f79fcedbd97518bc5bddc58d75f3f80bd0272c92d46f33e923`. `AUDIT_DONE fixes=38`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 cashapp F3 감사
+- 한 일: `migrated/cashapp` B2a 인접 한정 + E2 원장 dest grep 교정. 토큰·표·applicability·구조 미변경.
+- 검증: `--gate-only` PASS. Core `portable_core: true`. SHA-256 `99b0960afde126c010c27a48397eadf0bce37db1cbf33d744b98c7b445856d01`. `AUDIT_DONE fixes=18`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 cal F3 감사
+- 한 일: `migrated/cal` B2a 인접 한정 + E2 원장 dest grep 교정. 토큰·표·applicability·구조 미변경.
+- 검증: `--gate-only` PASS. Core `portable_core: true`. SHA-256 `2ec1adc92cc798f79fcedbd97518bc5bddc58d75f3f80bd0272c92d46f33e923`. `AUDIT_DONE fixes=38`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 cakeresume F3 감사
+- 한 일: `migrated/cakeresume` B2a 인접 한정 + E2 원장 dest grep 교정. 토큰·표·applicability·구조 미변경.
+- 검증: `--gate-only` PASS. Core `portable_core: true`. SHA-256 `c1e1778a655b55f53feac403c6aee369513263ea4c99eae080e08dbc04f90777`. `AUDIT_DONE fixes=22`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 catchtable F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/catchtable/` DESIGN 한정 9 + provenance 원장 + migration-log 목적지. `audit-log.md`.
+- 검증: `--gate-only` PASS/problems `[]`. Core `portable_core: true`. SHA-256 `3fe295155a4fbffa56f03f19b356b689e082bc76421efa236bb4ca30ef4e7485`. `AUDIT_DONE fixes=13`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 cathay 이관
+- 한 일: `web/references/cathay/DESIGN.md` → `docs/design-md-weight/migrated/cathay/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v7. F1 B2a · F2 E2 수행.
+- 검증: `--gate-only` PASS/problems `[]`. Core `portable_core: true`. SHA-256 `d03d2255986ecefcb473146f76002965ef31b0fa34c45b5950025cf4f09a1950`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 catchtable 이관
+- 한 일: `web/references/catchtable/DESIGN.md` → `docs/design-md-weight/migrated/catchtable/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v7. F1 B2a · F2 E2 수행.
+- 검증: `--gate-only` PASS/problems `[]`. Core `portable_core: true`. SHA-256 `01ee03fe3956eda6cf4047bb4bf69bfc47da5fd0453aedb4acecadd7d937c552`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 cashapp 이관
+- 한 일: `web/references/cashapp/DESIGN.md` → `docs/design-md-weight/migrated/cashapp/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v7. F1 B2a · F2 E2 수행.
+- 검증: `--gate-only` PASS/problems `[]`. Core `portable_core: true`. SHA-256 `46efba83d5815a796297757bd55e6da54bc609f4439ccbec99c5cb7f3e41a7ef`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 cal 이관
+- 한 일: `web/references/cal/DESIGN.md` → `docs/design-md-weight/migrated/cal/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v7. F1 B2a · F2 E2 수행.
+- 검증: `--gate-only` PASS/problems `[]`. Core `portable_core: true`. SHA-256 `2c5d4d0f05a93d8521d588a79ecae50e8ac8a5a831da44d7c0b38b285d30cf57`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (sol) T2-1 cafe24 최종 재확인
+- 한 일: 기존 sol recheck의 조건 8(원장 줄번호 동기화)만 재대조하고 `docs/reviews/t2-1-wave12-2026-08-24-sol-final.md`에 1행 기록.
+- 판정: PASS. Circular `436–458` / 상태표 `451–458` / L·E·S `456–458`, Login White Card 4px `492`·`495` 동기화 확인. 새 기준 없음.
+- 열린 것/다음: 없음.
+
+## 2026-08-24 (grok-4.6) T2-1 cafe24 wave12 pointer sync
+- 한 일: cafe24 조건 8 원장 포인터만 교정. Circular `436–458` / 상태표 `451–458` / L/E/S `456–458`, Login White Card 4px `492`·`495`. `Revision 2026-08-24 (wave12 pointer sync)`.
+- 검증: DESIGN.md 미변경 SHA `b050dd6577bd01f79c0ca97d0298e8c5e0fc6b8575e8ffc610bc3c52c37e9d69`. gate PASS / Core `portable_core: true`. 새 F3 없음.
+- 열린 것/다음: 동일 sol 목록-only 재심. 카탈로그 채택 아님.
+
+## 2026-08-24 (sol) T2-1 웨이브 12 집중 재심
+- 한 일: 선행 sol-full의 재제출 조건만으로 bmw/brandi/bunjang/buzzvil/cafe24를 목록-only 재확인하고 `docs/reviews/t2-1-wave12-2026-08-24-sol-recheck.md` 기록.
+- 판정: bmw·brandi·bunjang·buzzvil PASS, cafe24 7/8 FAIL; 전체 22/23, 새 기준·새 F3 없음.
+- 검증: 5/5 gate PASS/problems `[]`, Core `portable_core:true`, SHA 일치.
+- 열린 것/다음: cafe24 Circular 상태표/L·E·S 및 Login White Card tuple의 current provenance/source-row/F2 포인터만 교정 후 동일 sol 재제출. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2-1 웨이브 12 sol 재제출
+- 한 일: bmw/brandi/bunjang/buzzvil/cafe24 고정 재제출 조건을 본문에 반영하고 provenance·migration-log·audit-log dest를 전수 재대조. 각 `migration-log.md`에 `Revision 2026-08-24 (wave12 sol resubmit)` 기록.
+- 검증: 5/5 `--gate-only` PASS/problems `[]`; Core `portable_core: true`. SHA bmw `77492c4d…` / brandi `6debdbbc…` / bunjang `1ad844e1…` / buzzvil `73150154…` / cafe24 `b050dd65…`. 새 F3 없음.
+- 열린 것/다음: 동일 sol 목록-only 재심. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 bmw wave12 sol resubmit
+- 한 일: `verification_v2.schema: 2` provenance 복원, §13 세 그룹 고유 관계 Audience 복원, Font Official product-use 행 삭제, Named-gaps 다중 목적지·SHA 동기화.
+- 검증: `--gate-only` PASS; Core `portable_core: true`. SHA-256 `77492c4dae561d58c335a606c6ebd2e48e6375961544302b3ea511c17e5a8dec`. 새 F3 없음.
+- 열린 것/다음: 동일 sol 목록-only 재심. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 cafe24 wave12 sol resubmit
+- 한 일: canonical Proof 교정, Circular Icon Type/kind/map 복원, Persona Open 축소, §9 네 local recipe, Type Notes·§11/§15 관계, Font class, App Blue submit/4px 분리, 원장 dest/SHA 동기화.
+- 검증: `--gate-only` PASS; Core `portable_core: true`. SHA-256 `b050dd6577bd01f79c0ca97d0298e8c5e0fc6b8575e8ffc610bc3c52c37e9d69`. 새 F3 없음.
+- 열린 것/다음: 동일 sol 목록-only 재심. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 bunjang wave12 sol resubmit
+- 한 일: 버튼 family cardinality 복원, Font table을 live computed만 유지, Scope lookup host 제거, provenance `--remote-allow-origins` 복원, 원장 dest/SHA 동기화.
+- 검증: `--gate-only` PASS; Core `portable_core: true`. SHA-256 `1ad844e1e575ca33779d1e0644f05cc5584a9633aaae8f1cf338c0819c41f089`. 새 F3 없음.
+- 열린 것/다음: 동일 sol 목록-only 재심. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2-1 웨이브 12 buzzvil sol resubmit
+- 한 일: D2 세 segment literal을 buzzvil portable/provenance/migration/audit에서 제거. Generic deletion only. Audience B2a 유지, 라벨 미재수록. F3 미재실행.
+- 검증: `--gate-only` PASS; Core `portable_core: true`. SHA-256 `7315015474e081c4c7ff79202e847b4c133a7e87fc3d6214832cc1380aa1f98c`.
+- 열린 것/다음: 동일 sol 목록-only 재심. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2-1 웨이브 12 brandi sol resubmit
+- 한 일: C4 omitted-as-value Type/Kind 필드 삭제, source-row dest에 provenance 색·Named gaps 보강, wave12 revision/audit 기록.
+- 검증: `--gate-only` PASS; Core `portable_core: true`. SHA-256 `6debdbbc8cd32af5ea9121a4f20beabfe74111a3a41873e40fefdbfec5dcf32f`. `Type: omitted`/`Kind: omitted` 0건.
+- 열린 것/다음: 동일 sol 목록-only 재심. 새 F3 없음. 카탈로그 채택 아님.
+
+## 2026-08-24 (sol) T2-1 웨이브 12 전수 검토
+- 한 일: bmw/brandi/bunjang/buzzvil/cafe24를 rulebook v7 전 조항으로 원본·portable·provenance·migration/audit 원장까지 대조하고 `docs/reviews/t2-1-wave12-2026-08-24-sol-full.md` 기록.
+- 판정: FAIL 5/5, PASS 0/5. 의미·evidence kind·local binding·C4·D2·proof/source-row 결함을 고정 재제출 목록으로 봉인.
+- 검증/다음: 5/5 gate/Core/fresh F3·SHA 결속 PASS. 새 F3 없이 동일 sol 목록-only 재심 대기; 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 bunjang F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/bunjang/` DESIGN 한정 문장 + provenance/migration-log 원장만 수정. `audit-log.md` 기록.
+- 검증: `--gate-only` PASS; Core `portable_core: true`. SHA-256 `fecb6b1792e18e985d65ea905da9ee11a74a243e5d137f03209375697b75bcb3`. `AUDIT_DONE fixes=26`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 cafe24 F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/cafe24/` DESIGN 한정 문장 + provenance/migration-log 목적지 교정. `audit-log.md` 기록.
+- 검증: `--gate-only` PASS; Core `portable_core: true`. SHA-256 `fde9399b9e7a63abe8d6553cfba583c398ec68d8f95aed8e1659760649d4ded0`. `AUDIT_DONE fixes=23`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 brandi F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/brandi/` 한정 문장·원장만 수정. `audit-log.md` 기록.
+- 검증: `--gate-only` PASS; Core `portable_core: true`. SHA-256 `f0d0ff42822760644aa7f4c2587ce7cd2e6185be6d68e0cbd911a7fa952d0d4c`. `AUDIT_DONE fixes=24`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 buzzvil F3 B2a·E2 감사
+- 한 일: `docs/design-md-weight/migrated/buzzvil/` 한정 문장·원장만 수정. `audit-log.md` 기록.
+- 검증: `--gate-only` PASS; Core `portable_core: true`. SHA-256 `e7ee118cdc4f1c0ebac1abf6efe906fe2641f3b0474cfeca586ede39bbd1cf5c`. `AUDIT_DONE fixes=16`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 bmw F3 B2a·E2 감사
+- 한 일: `migrated/bmw` DESIGN 한정 문장 14곳 + provenance derived/목적지 + migration-log dest/F1·F2. `audit-log.md` 기록.
+- 검증: `--gate-only` PASS/problems 0; Core `portable_core: true`. SHA-256 `4e9797e243afba2d3bb550bac4656268af58afe2ac13b52a71958351198279e2`. `AUDIT_DONE fixes=18`.
+- 열린 것/다음: sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 bunjang 수동 이관
+- 한 일: `web/references/bunjang/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/bunjang/{DESIGN.md,provenance.md,migration-log.md}` 기록. 규칙집 v7. F1 B2a·F2 E2 수행.
+- 검증: `--gate-only` PASS/problems 0; Core `portable_core: true`. SHA-256 `1548726b…e72b0b`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 cafe24 수동 이관
+- 한 일: `web/references/cafe24/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/cafe24/{DESIGN.md,provenance.md,migration-log.md}` 작성. 규칙집 v7. F1 B2a 전수 스캔, F2 dest grep.
+- 검증: `--gate-only` PASS/problems 0; Core `portable_core: true`. SHA-256 `374370ea8f8a3378543d3ce5d9a12cbeeb23f4579168c9eecd374ff2ae513e12`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 buzzvil 수동 이관
+- 한 일: `web/references/buzzvil/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/buzzvil/{DESIGN.md,provenance.md,migration-log.md}` 작성. 규칙집 v7. F1 B2a 전수 스캔, F2 dest grep.
+- 검증: `--gate-only` PASS/problems 0; Core `portable_core: true`. SHA-256 `be62c8d441a094c999580124618cd39e6a52e6115912e44694ce8194f903ba32`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 brandi 수동 이관
+- 한 일: `web/references/brandi/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/brandi/{DESIGN.md,provenance.md,migration-log.md}` 작성. 규칙집 v7. F1 B2a 전수 스캔, F2 dest grep.
+- 검증: `--gate-only` PASS/problems 0; Core `portable_core: true`. SHA-256 `c850a8f7b72fd7e631a09e9d03f29815675a69e2cfa15644a7688574d617a3bc`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 bmw 수동 이관
+- 한 일: `web/references/bmw/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/bmw/{DESIGN.md,provenance.md,migration-log.md}` 작성. 규칙집 v7. F1 B2a 전수 스캔, F2 dest grep.
+- 검증: `--gate-only` PASS/problems 0; Core `portable_core: true`. SHA-256 `2fb9aaf6e262e70b857dcfd2958609475c6e580f2777e81c506a3545c9502e6c`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
+## 2026-08-24 (grok-4.6) T2 워커 bunjang 수동 이관
+- 한 일: `web/references/bunjang/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/bunjang/{DESIGN.md,provenance.md,migration-log.md}` 기록. 규칙집 v7. F1 B2a·F2 E2 수행.
+- 검증: `--gate-only` PASS/problems 0; Core `portable_core: true`. SHA-256 `1548726b…e72b0b`.
+- 열린 것/다음: F3 감사·sol 의미 레인. 카탈로그 채택 아님.
+
 ## 2026-08-24 (sol) T2-1 웨이브 11 bito 최종 확인
 - 한 일: `sol-recheck.md`의 bito 조건 4(파생 라벨 재수록 제거)만 재대조. 새 기준 없음.
 - 판정: PASS. 네 persona-derived label literal 0건, `provenance.md:95` generic deletion 및 `:153,168`·`migration-log.md:65` 일치.

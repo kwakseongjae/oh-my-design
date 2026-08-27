@@ -62,13 +62,16 @@ export const metadata: Metadata = {
   verification: {
     google: "5mZuqjPvdwYTXpJrByQX2i7xM73aQj3Vn1UcpyJhCr4",
     other: {
-      // Two tokens: the legacy www.oh-my-design.kr property and the apex
-      // oh-my-design.kr property (apex is the canonical 200 host crawlers see;
-      // www 308-redirects to it). Next renders one <meta> per array entry, so
-      // both Search Advisor properties verify off the same deployment.
+      // Three tokens, one per Search Advisor property: the legacy
+      // www.oh-my-design.kr, the apex oh-my-design.kr (the canonical 200 host
+      // crawlers see; www 308-redirects to it), and blog.oh-my-design.kr —
+      // Naver registers each subdomain as its own site. One deployment serves
+      // every host, and Next renders one <meta> per array entry, so all three
+      // properties verify off the same page head.
       "naver-site-verification": [
         "ecee2aa716d5ed7e257dcce5f72222e03f3512d4",
         "a2e4997db92c96180459be3eca9d4daeb4d14152",
+        "5ef2baec69d5697ae04ffcc6a9750578316a4197",
       ],
     },
   },

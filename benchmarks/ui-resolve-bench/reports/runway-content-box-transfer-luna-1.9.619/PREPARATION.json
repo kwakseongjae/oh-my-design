@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.621",
+  "experiment_id": "runway-content-box-transfer-luna-1.9.619",
+  "status": "PREPARED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19620",
+  "vendors_root": "/private/tmp/u19620-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "locked_plan_sha256": "5c9f339f815404f8e616b27286d0f736059b3e593019be7b161596e8ead9d432",
+  "prepared_state_sha256": "a176712aafd8e2f0b71019634473f74b2455da35c794e71e1200b6de0838d1fa",
+  "equality_attestation": {
+    "core_prompt_equal": 6,
+    "starter_equal": 6,
+    "product_tree_equal": 6,
+    "runtime_equal": 6,
+    "model_equal": 6,
+    "effort_equal": 6,
+    "timeout_equal": 6
+  },
+  "source_attestation": {
+    "control": {"commit": "e8a6f083f5cb278d18d1ab812b7d154a486a8c1b", "detached": true, "clean": true},
+    "candidate": {"commit": "0c4af9273a19bbb7cdcf6a17ef2a58f3627f1419", "detached": true, "clean": true}
+  },
+  "isolated_delta_guardrail": {
+    "control_uses_context_rect_width": true,
+    "control_uses_carrier_rect_width": true,
+    "candidate_uses_context_client_width": true,
+    "candidate_uses_carrier_offset_width": true,
+    "all_three_control_cells_match": true,
+    "all_three_candidate_cells_match": true
+  },
+  "execution_contract": {
+    "next_cell": "luna-runway-r1-control",
+    "max_new_cells": 1,
+    "retry": false,
+    "inter_cell_delay_seconds": 120
+  },
+  "next": "Run runtime browser, Codex authentication, evaluator, and proof-policy preflights; then execute only luna-runway-r1-control once."
+}

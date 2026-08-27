@@ -1,0 +1,17 @@
+T2 마이그레이션을 시작하기 전에 규칙집·골든 샘플·레거시 Cal 문서를 순서대로 읽고, 세션 상태도 복원하겠습니다.규칙집과 골든 샘플, 레거시 Cal 문서부터 순서대로 읽겠습니다.필수 판정문·골든 샘플·레거시 Cal 본문을 이어서 읽겠습니다.레거시 Cal 원문과 최근 통과 표본의 형태를 대조하겠습니다.게이트 검사와 최근 통과 표본의 형태를 확인하고, Cal 원문의 충돌·고유 값도 같이 잡겠습니다.원문 값·충돌·§9 고유 수치를 목록화한 뒤, Airtable과 같은 형태로 Core v2 초안을 작성합니다.초안을 쓰면서 B2a 한정을 처음부터 붙이고, YAML과 본문 값은 합치지 않겠습니다.본문 전체를 다시 읽어 B2a 한정이 빠진 해석 문장을 찾고, 이어서 로그 행을 grep으로 대조합니다.B2a 스캔에서 한정 없는 해석과 FontAwesome 부정 claim을 고치고, 누락된 레이아웃 값도 복원합니다.`web/references/cal/DESIGN.md`를 Core v2로 옮겼습니다. 규칙집은 **v7**입니다.
+
+산출물:
+- `docs/design-md-weight/migrated/cal/DESIGN.md`
+- `docs/design-md-weight/migrated/cal/provenance.md`
+- `docs/design-md-weight/migrated/cal/migration-log.md`
+
+보존한 경계:
+- YAML Charcoal `#242424`와 catalog `primary_color` `#111827`, live-DOM Black `#000000` / Cream `#f3f2ed` / `13.92px`는 합치지 않음
+- unitless line-height `1.10`–`1.14`와 primitive type (`button`×5, `input`×2, `card`×3, `badge`×2, `tab`)
+- §14 11행 본문 보존; loading/error/success는 역할 매핑이 안 닫혀 생략 (미관측 ≠ `not-applicable`)
+- 가상 persona는 portable·provenance 모두 미수록
+- Motion은 duration 3개 + reduced-motion + B3 다섯 종류 게이트. 숫자 cubic-bezier는 원본에 없어 발명하지 않음
+
+검증: `--gate-only` PASS. Core `portable_core: true`. SHA-256 `2c5d4d0f05a93d8521d588a79ecae50e8ac8a5a831da44d7c0b38b285d30cf57`. 카탈로그 채택은 아님.
+
+DONE migrated=1

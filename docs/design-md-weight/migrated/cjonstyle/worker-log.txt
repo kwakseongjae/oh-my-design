@@ -1,0 +1,7 @@
+T2 마이그레이션을 시작합니다. 규칙집·골든 샘플·원본을 순서대로 읽고, 작성 후 B2a·E2 패스를 돌리겠습니다.규칙집과 Core 규격을 확인했습니다. 대응표·골든 샘플·원본을 이어서 읽습니다.골든 샘플, T1-3 의미 보존 조건, 원본 DESIGN.md를 읽습니다.원본과 최근 통과본의 형태를 대조한 뒤 이관을 시작합니다.원본 구조를 파악했습니다. verification 사이드카와 최근 통과본의 컴포넌트·상태 처리 패턴을 확인합니다.canonical Proof 사이드카와 게이트 요구를 확인한 뒤 본문을 씁니다.게이트는 원본에 없는 px·hex를 세 파일 모두에서 차단합니다. 본문을 그 경계에 맞춰 작성합니다.본문에서 philosophy-layer 구간 오기와 B2a 누락을 먼저 고친 다음, 줄 번호를 잡아 원장을 씁니다.게이트가 같은 줄의 `focus-visible`+hex를 승격으로 잡습니다. 해당 줄을 끊고, claim 마커와 B2a를 재점검합니다.캡처 기록의 applicability·C4 문단에 인접 B2a를 붙입니다.원장과 마이그레이션 로그를 실제 줄 번호에 맞춰 작성합니다.원장 목적지를 실제 줄에 맞춥니다. 캡처 표는 229–238, Inquiry Use는 282입니다.`web/references/cjonstyle/DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/cjonstyle/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v7**.
+
+검증된 값(바이올렛 `#640faf`, 세일 마젠타 `#ec0040`, Nanum Barun Gothic / Pretendard, unitless `1.4`/`1.5`, YAML 타입 button×3·tab×2·card·input·badge)은 최소 필드 단위로 유지했고, 합치지 않았습니다. §13 가상 페르소나는 삭제했고 sidecar에도 다시 싣지 않았습니다. 무출처 cubic-bezier 3개는 provenance에만 두고, duration·easing 이름·`prefers-reduced-motion`과 B3 다섯 증거 종류는 Foundations에 남겼습니다. 미관측 상태를 `not-applicable`로 바꾸지 않았고, Buy/Inquiry/Wishlist/Search의 loading·error·success는 역할이 닫히지 않아 생략했습니다.
+
+`--gate-only` PASS (`problems: []`). Portable Core `true`. SHA-256 `9927327569741ed58b8b16cf7607c8421d813ea68ac673bf4729ff47d38733d7`. F3 감사와 sol 의미 레인은 아직입니다. 카탈로그 채택이 아닙니다.
+
+DONE migrated=1

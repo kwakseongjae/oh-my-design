@@ -1,0 +1,418 @@
+{
+  "schema_version": "0.2",
+  "generated_at": "2026-08-05T11:27:39.988Z",
+  "bootstrap": {
+    "method": "hierarchical-percentile-task-then-run",
+    "samples": 10000,
+    "seed": 20260805
+  },
+  "reliability_k": 3,
+  "groups": [
+    {
+      "benchmark_family": "skill",
+      "suite_version": "ui-resolve-v0.2",
+      "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+      "system_id": "omd-apply-current",
+      "model_id": "gpt-5.6-luna",
+      "skill_id": "omd:apply",
+      "harness_id": null,
+      "budget_tier": "high",
+      "runs": {
+        "scheduled_trials": 3,
+        "valid_trials": 3,
+        "complete": 3,
+        "failed": 0,
+        "timed_out": 0,
+        "incomplete": 0,
+        "invalid_attempts": 0,
+        "unreplaced_invalid_trials": [],
+        "completion_rate": 1
+      },
+      "ui_resolved": {
+        "passed": 2,
+        "rate": 0.6667,
+        "confidence_95": {
+          "lower": 0,
+          "upper": 1,
+          "samples": 10000
+        }
+      },
+      "reliability": {
+        "k": 3,
+        "eligible_tasks": 1,
+        "passed_tasks": 0,
+        "rate": 0
+      },
+      "objective_percent": {
+        "count": 3,
+        "mean": 96.0784,
+        "median": 100,
+        "standard_deviation": 6.7924,
+        "min": 88.2353,
+        "p10": 90.5882,
+        "p25": 94.1176,
+        "p75": 100,
+        "p90": 100,
+        "max": 100,
+        "iqr": 5.8824
+      },
+      "wall_time_ms": {
+        "count": 3,
+        "mean": 289697.3333,
+        "median": 325961,
+        "standard_deviation": 77595.8442,
+        "min": 200609,
+        "p10": 225679.4,
+        "p25": 263285,
+        "p75": 334241.5,
+        "p90": 339209.8,
+        "max": 342522,
+        "iqr": 70956.5
+      },
+      "tokens": {
+        "count": 3,
+        "mean": 591951.6667,
+        "median": 529640,
+        "standard_deviation": 162800.3153,
+        "min": 469511,
+        "p10": 481536.8,
+        "p25": 499575.5,
+        "p75": 653172,
+        "p90": 727291.2,
+        "max": 776704,
+        "iqr": 153596.5
+      },
+      "provider_cost_equivalent_usd": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null,
+        "total": null,
+        "per_resolved_run": null
+      },
+      "tool_calls": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null
+      },
+      "human_interventions": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null
+      },
+      "proof_execution": {
+        "scheduled_valid_runs": 3,
+        "available_runs": 3,
+        "analyzable_runs": 2,
+        "analyzable_rate": 0.6667,
+        "compliant_runs": 1,
+        "compliance_rate": 0.5,
+        "browser_recovery_count": {
+          "count": 2,
+          "mean": 0,
+          "median": 0,
+          "standard_deviation": 0,
+          "min": 0,
+          "p10": 0,
+          "p25": 0,
+          "p75": 0,
+          "p90": 0,
+          "max": 0,
+          "iqr": 0
+        },
+        "duplicate_static_closure_count": {
+          "count": 2,
+          "mean": 0.5,
+          "median": 0.5,
+          "standard_deviation": 0.7071,
+          "min": 0,
+          "p10": 0.1,
+          "p25": 0.25,
+          "p75": 0.75,
+          "p90": 0.9,
+          "max": 1,
+          "iqr": 0.5
+        },
+        "verification_after_ready_count": {
+          "count": 2,
+          "mean": 0,
+          "median": 0,
+          "standard_deviation": 0,
+          "min": 0,
+          "p10": 0,
+          "p25": 0,
+          "p75": 0,
+          "p90": 0,
+          "max": 0,
+          "iqr": 0
+        },
+        "compliance_publication_ready": false
+      },
+      "usage_telemetry": {
+        "scheduled_valid_runs": 3,
+        "available_runs": 3,
+        "input_output_complete_runs": 3,
+        "availability_rate": 1,
+        "input_output_complete_rate": 1,
+        "reasoning_reported_runs": 3,
+        "cached_input_reported_runs": 3
+      },
+      "execution_control": {
+        "complete": true,
+        "consistent": true,
+        "latency_comparable": true
+      },
+      "representative_runs": {
+        "worst_run_id": "luna-depot-r3-omd",
+        "median_run_id": "luna-depot-r1-omd",
+        "best_run_id": "luna-depot-r2-omd"
+      },
+      "publication_ready": true,
+      "efficiency_publication_ready": true
+    },
+    {
+      "benchmark_family": "skill",
+      "suite_version": "ui-resolve-v0.2",
+      "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+      "system_id": "raw-design-md",
+      "model_id": "gpt-5.6-luna",
+      "skill_id": null,
+      "harness_id": null,
+      "budget_tier": "high",
+      "runs": {
+        "scheduled_trials": 3,
+        "valid_trials": 3,
+        "complete": 3,
+        "failed": 0,
+        "timed_out": 0,
+        "incomplete": 0,
+        "invalid_attempts": 0,
+        "unreplaced_invalid_trials": [],
+        "completion_rate": 1
+      },
+      "ui_resolved": {
+        "passed": 0,
+        "rate": 0,
+        "confidence_95": {
+          "lower": 0,
+          "upper": 0,
+          "samples": 10000
+        }
+      },
+      "reliability": {
+        "k": 3,
+        "eligible_tasks": 1,
+        "passed_tasks": 0,
+        "rate": 0
+      },
+      "objective_percent": {
+        "count": 3,
+        "mean": 88.2353,
+        "median": 85.8824,
+        "standard_deviation": 4.0754,
+        "min": 85.8824,
+        "p10": 85.8824,
+        "p25": 85.8824,
+        "p75": 89.4118,
+        "p90": 91.5294,
+        "max": 92.9412,
+        "iqr": 3.5294
+      },
+      "wall_time_ms": {
+        "count": 3,
+        "mean": 327079.6667,
+        "median": 333637,
+        "standard_deviation": 80966.3958,
+        "min": 243034,
+        "p10": 261154.6,
+        "p25": 288335.5,
+        "p75": 369102.5,
+        "p90": 390381.8,
+        "max": 404568,
+        "iqr": 80767
+      },
+      "tokens": {
+        "count": 3,
+        "mean": 486090,
+        "median": 396962,
+        "standard_deviation": 208477.3861,
+        "min": 336992,
+        "p10": 348986,
+        "p25": 366977,
+        "p75": 560639,
+        "p90": 658845.2,
+        "max": 724316,
+        "iqr": 193662
+      },
+      "provider_cost_equivalent_usd": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null,
+        "total": null,
+        "per_resolved_run": null
+      },
+      "tool_calls": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null
+      },
+      "human_interventions": {
+        "count": 0,
+        "mean": null,
+        "median": null,
+        "standard_deviation": null,
+        "min": null,
+        "p10": null,
+        "p25": null,
+        "p75": null,
+        "p90": null,
+        "max": null,
+        "iqr": null
+      },
+      "proof_execution": {
+        "scheduled_valid_runs": 3,
+        "available_runs": 3,
+        "analyzable_runs": 3,
+        "analyzable_rate": 1,
+        "compliant_runs": 1,
+        "compliance_rate": 0.3333,
+        "browser_recovery_count": {
+          "count": 3,
+          "mean": 0.3333,
+          "median": 0,
+          "standard_deviation": 0.5774,
+          "min": 0,
+          "p10": 0,
+          "p25": 0,
+          "p75": 0.5,
+          "p90": 0.8,
+          "max": 1,
+          "iqr": 0.5
+        },
+        "duplicate_static_closure_count": {
+          "count": 3,
+          "mean": 1.6667,
+          "median": 2,
+          "standard_deviation": 1.5275,
+          "min": 0,
+          "p10": 0.4,
+          "p25": 1,
+          "p75": 2.5,
+          "p90": 2.8,
+          "max": 3,
+          "iqr": 1.5
+        },
+        "verification_after_ready_count": {
+          "count": 3,
+          "mean": 0,
+          "median": 0,
+          "standard_deviation": 0,
+          "min": 0,
+          "p10": 0,
+          "p25": 0,
+          "p75": 0,
+          "p90": 0,
+          "max": 0,
+          "iqr": 0
+        },
+        "compliance_publication_ready": true
+      },
+      "usage_telemetry": {
+        "scheduled_valid_runs": 3,
+        "available_runs": 3,
+        "input_output_complete_runs": 3,
+        "availability_rate": 1,
+        "input_output_complete_rate": 1,
+        "reasoning_reported_runs": 3,
+        "cached_input_reported_runs": 3
+      },
+      "execution_control": {
+        "complete": true,
+        "consistent": true,
+        "latency_comparable": true
+      },
+      "representative_runs": {
+        "worst_run_id": "luna-depot-r1-control",
+        "median_run_id": "luna-depot-r1-control",
+        "best_run_id": "luna-depot-r3-control"
+      },
+      "publication_ready": true,
+      "efficiency_publication_ready": true
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "benchmark_family": "skill",
+      "suite_version": "ui-resolve-v0.2",
+      "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+      "model_id": "gpt-5.6-luna",
+      "budget_tier": "high",
+      "candidate_system_id": "omd-apply-current",
+      "baseline_system_id": "raw-design-md",
+      "matched_pairs": 3,
+      "resolved_lift_percentage_points": 66.6667,
+      "resolved_lift_confidence_95": {
+        "lower": 0,
+        "upper": 100,
+        "samples": 10000
+      },
+      "win_tie_loss": {
+        "wins": 2,
+        "ties": 1,
+        "losses": 0
+      },
+      "objective_lift_percentage_points": {
+        "count": 3,
+        "mean": 7.8431,
+        "median": 14.1176,
+        "standard_deviation": 10.8678,
+        "min": -4.7059,
+        "p10": -0.9412,
+        "p25": 4.7059,
+        "p75": 14.1176,
+        "p90": 14.1176,
+        "max": 14.1176,
+        "iqr": 9.4118
+      }
+    }
+  ]
+}

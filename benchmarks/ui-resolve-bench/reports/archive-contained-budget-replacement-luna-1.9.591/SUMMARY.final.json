@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.595",
+  "experiment_id": "archive-contained-budget-replacement-luna-1.9.591",
+  "status": "FROZEN_PROMOTION_UNREACHABLE",
+  "promotion": false,
+  "provider_calls": 2,
+  "completed_cells": 2,
+  "frozen_unstarted_cells": [
+    "luna-archive-r2-candidate",
+    "luna-archive-r2-control",
+    "luna-archive-r3-control",
+    "luna-archive-r3-candidate"
+  ],
+  "r1": {
+    "control": {
+      "score": 81,
+      "ui_resolved": false,
+      "proof_pass": false,
+      "wall_time_ms": 575655,
+      "tokens": 2908997
+    },
+    "candidate": {
+      "score": 79,
+      "ui_resolved": false,
+      "proof_pass": true,
+      "contained_budget_plan_observed": true,
+      "wall_time_ms": 637846,
+      "tokens": 3551241
+    }
+  },
+  "candidate_contained_budget_evidence": {
+    "artifact_closed": true,
+    "static_closure_count": 1,
+    "browser_mechanism_count": 1,
+    "browser_recovery_count": 0,
+    "shipped_runner_invoked": true,
+    "measured_conditions": ["390", "320", "200pct"],
+    "source_reel_register_budgets": [368, 298, 298],
+    "vault_bay_strip_budgets": [354, 284, 284],
+    "decision_target_budgets": [151.5, 121.3359, 121.332],
+    "invalid_raw_overflow_budget_count": 0
+  },
+  "candidate_ui_failure": {
+    "narrow_atomic_text": "4 source reels · 6 chain labels · 2 vault bays",
+    "narrow_320_lines": 2,
+    "actual_200pct_lines": 2,
+    "desktop_target_action_spatial_separation": false,
+    "root_causes": [
+      "concise decision evidence was omitted from the measured row inventory",
+      "an intrinsically unfit decision target stayed in the desktop peer grid instead of moving to a dedicated full-width relationship row"
+    ]
+  },
+  "promotion_reachability": {
+    "candidate_trials_required": 3,
+    "candidate_ui_resolved_observed": 0,
+    "maximum_reachable_ui_resolved_trials": 2,
+    "candidate_proof_compliant_observed": 1,
+    "maximum_reachable_proof_compliant_trials": 3,
+    "promotion_reachable": false
+  },
+  "paired_efficiency": {
+    "wall_time_ratio_candidate_over_control": 1.1080351946912648,
+    "token_ratio_candidate_over_control": 1.2207785020060178,
+    "maximum_allowed_ratio": 1.1,
+    "wall_time_gate": false,
+    "token_gate": false,
+    "causal_efficiency_claim_allowed": false
+  },
+  "artifact_hashes": {
+    "candidate_run_result_sha256": "cbd1bb6ae7d55e8a3d9567c746b8199cf8a313e1b4127233e27635363d78438f",
+    "candidate_score_sha256": "f6f754f16c518a385be9fdc674ed0d181169f3cf9ed07266d068151440d84fa0",
+    "candidate_run_record_sha256": "c585723b0c183d339bbd88a7f21b21220f986641b33e9ee2527ada4efd19328c",
+    "candidate_proof_trace_sha256": "a3e48f7d4403d82761c9f10ab29b02dd5d1f09b455452849b7f279ad90ae7047",
+    "candidate_benchmark_tree_sha256": "e120de1346338b5251c5193c33891dc0cf98bd1787f588c0df24357554487e0b"
+  },
+  "tokens_to_target": {
+    "cumulative_observed_provider_tokens_minimum": 96173681,
+    "usage_unavailable_cells": 6,
+    "goal_status": "right-censored-open"
+  },
+  "next": "Do not resume this matrix. Repair decision-context inventory and full-row target placement provider-free, pin it, then use a genuinely unseen task."
+}

@@ -1,0 +1,22 @@
+T2 마이그레이션을 시작합니다. 지정된 규격·규칙집·골든 샘플과 원본 `cathay` DESIGN.md를 순서대로 읽고, 이어서 Core v2 산출물을 작성합니다.핵심 제약·규칙집·골든 샘플·원본 `cathay`를 이어서 읽습니다.골든 샘플 형태와 원본 `cathay` DESIGN.md, 빈 `migrated/cathay` 상태를 확인합니다.승인된 최근 이관본·검증 파일·템플릿 커브를 대조해, cathay에 적용할 형태를 확정합니다.원본 토큰·컴포넌트·철학층 경계를 고정한 뒤 Core v2 `DESIGN.md`를 작성합니다.본문을 처음부터 다시 읽어 B2a 한정을 점검하고, 실제 행 번호를 잡아 provenance에 넣습니다.F1에서 Assets 장식 금지와 ‘native’ 표현을 고친 뒤, 행 번호로 provenance를 작성합니다.`64px`는 원본에 없는 값이라 발명으로 잡힙니다. YAML `64`만 남기고 `px` 접미사는 뺍니다.F1 한정을 반영한 뒤, grep으로 확인한 행 번호로 provenance와 migration-log를 작성합니다.게이트가 `focus-visible`과 hex가 같은 줄에 있으면 B1으로 막습니다. 그 두 문장을 줄 단위로 분리합니다.`web/references/cathay/DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 **v7**.
+
+산출물:
+- `docs/design-md-weight/migrated/cathay/DESIGN.md`
+- `docs/design-md-weight/migrated/cathay/provenance.md`
+- `docs/design-md-weight/migrated/cathay/migration-log.md`
+
+보존·분리 요약:
+- Portable Core 일곱 claim, `lang=en`, authority `evidence-backed-reconstruction`
+- YAML `1.50` 비율, rem 동반치, 12 hex, spacing 숫자(64에 px 접미사 없음), `rounded.full` 9999를 YAML step으로만 유지
+- primitive type: `button`×2, `tab`×2, `card`×2, `input`×1. Quiet Nav / 登入은 Type 미발명 (C4)
+- named Focus `#00512a`는 observed Focus로만. `focus-visible` 행에 hex 없음 (B1)
+- Primary CTA / Outline의 loading·error·success 생략 (C2). Input은 error만 applicable
+- Nav / Footer L/E/S는 destination 역할로 `not-applicable` (`not captured` 사유 없음)
+- §14 7행은 Capture record에 보존. philosophy-layer로 한정
+- 무출처 cubic-bezier 3개(ease-exit는 템플릿 일치)는 provenance. duration 150/250/400ms, easing 이름, signature motion, `prefers-reduced-motion`, B3 다섯 증거 종류는 본문
+- §13 fictional archetypes는 삭제. provenance에도 재수록 없음 (D2)
+- §9 고유 tuple은 Off-white Hero / Product Card / Mint Highlight Band local recipe (A3)
+
+검증: `--gate-only` PASS / problems `[]`. Core `portable_core: true`. SHA-256 `d03d2255986ecefcb473146f76002965ef31b0fa34c45b5950025cf4f09a1950`. F3·sol 의미 레인 대기. 카탈로그 채택 아님.
+
+DONE migrated=1

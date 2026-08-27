@@ -17,6 +17,7 @@
  *
  *   node scripts/bench-store.mjs --ingest        # copy → manifest → untrack
  *   node scripts/bench-store.mjs --verify        # store bytes vs manifest
+ *   node scripts/bench-store.mjs --sync-ignore   # refresh what stays in git
  */
 
 import { createHash } from "node:crypto";
@@ -38,10 +39,65 @@ const SETS = [
   { id: "competitor-skills-2.0", dir: join(BENCH, "fixtures", "competitor-skills-2.0"), why: "third-party skill packs — pinned by pack-sha.json, not ours to republish" },
 ];
 
+/**
+ * Runs that something in git binds BY PATH. They live under reports/ but are not
+ * run output in the sense this script means: bench tests and the readiness
+ * manifests read these directories directly, so a run that exists only in the
+ * store is a gate whose evidence the gate cannot reach — and nothing in git
+ * could contradict a later edit.
+ *
+ * The list is derived, never hand-kept. Hand-keeping it is what broke CI once
+ * already: --ingest untracked 634 report directories while nine test files went
+ * on reading them, so the suite passed on this machine (working copies survive
+ * an untrack) and failed on every clean checkout. `--sync-ignore` rewrites
+ * reports/.gitignore from what the tracked sources actually reference, and
+ * ui-resolve-bench-store-custody.test.mjs fails when the two drift.
+ */
+const REPORTS_DIR = join(BENCH, "reports");
+const REPORTS_IGNORE = join(REPORTS_DIR, ".gitignore");
+const REPORT_REF = /benchmarks\/ui-resolve-bench\/reports\/([A-Za-z0-9][A-Za-z0-9._-]*)/g;
+
+/**
+ * Report dirs referenced by machine-read sources anywhere in git — tests, runners,
+ * gate manifests, and the public-data builder under scripts/. Scoping this to the
+ * benchmark tree is what let `bench:ui:public-data:check` stay broken behind an
+ * earlier failing step: it reads five report summaries by literal path from
+ * scripts/build-ui-benchmark-public-data.mjs.
+ */
+export function boundReportDirs() {
+  const sources = execFileSync("git", ["ls-files", "-z"], { cwd: ROOT })
+    .toString("utf8").split("\0").filter(Boolean)
+    .filter((rel) => /\.(mjs|cjs|js|ts|tsx|json)$/.test(rel))
+    // Run outputs cite sibling runs as provenance. Scanning them would make
+    // custody transitive and pull the whole store back into git — what a gate
+    // reads is the question, not what a result mentions.
+    .filter((rel) => !rel.startsWith(`${relative(ROOT, REPORTS_DIR)}/`));
+  const referenced = new Set();
+  for (const rel of sources) {
+    for (const hit of readFileSync(join(ROOT, rel), "utf8").matchAll(REPORT_REF)) referenced.add(hit[1]);
+  }
+  // A reference that resolves to nothing is a negative-test fixture
+  // (`does-not-exist`) or a template prefix — neither is custody.
+  return [...referenced].filter((d) => existsSync(join(REPORTS_DIR, d))).sort();
+}
+
+/** The negations committed in reports/.gitignore — what --ingest must never untrack. */
+export function ignoredExceptions() {
+  if (!existsSync(REPORTS_IGNORE)) return [];
+  return readFileSync(REPORTS_IGNORE, "utf8").split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith("!/") && line.endsWith("/"))
+    .map((line) => line.slice(2, -1))
+    .sort();
+}
+
+const GATE_BOUND = ignoredExceptions().map((r) => `${relative(ROOT, REPORTS_DIR)}/${r}/`);
+
 const sha256 = (p) => createHash("sha256").update(readFileSync(p)).digest("hex");
 const tracked = (dir) =>
   execFileSync("git", ["ls-files", "-z", relative(ROOT, dir)], { cwd: ROOT })
-    .toString("utf8").split("\0").filter(Boolean);
+    .toString("utf8").split("\0").filter(Boolean)
+    .filter((rel) => !GATE_BOUND.some((keep) => rel.startsWith(keep)));
 
 function ingest() {
   mkdirSync(MANIFEST_DIR, { recursive: true });
@@ -97,8 +153,41 @@ function verify() {
   return summary;
 }
 
-const mode = process.argv.includes("--ingest") ? ingest : process.argv.includes("--verify") ? verify : null;
-if (!mode) { console.error("usage: bench-store.mjs --ingest | --verify"); process.exit(1); }
-const result = mode();
-console.log(JSON.stringify(result, null, 1));
-if (result.some((r) => r.ok === false)) process.exit(1);
+/**
+ * Rewrites reports/.gitignore so the runs git binds by path stay in git and
+ * everything else stays in the store. Anchored `/*` matches only entries
+ * directly inside reports/, so a negated directory re-includes its contents —
+ * an unanchored `*` would keep matching them at depth and silently drop the
+ * files back out.
+ */
+function syncIgnore() {
+  const dirs = boundReportDirs();
+  const body = [
+    "# Bench run outputs live in the immutable store (~/.omd/bench-store) with",
+    "# SHA-256 manifests in ../manifests/ — see ../REPRODUCE.md.",
+    "#",
+    "# The exceptions below are the runs something in git reads BY PATH: bench",
+    "# tests under test/unit/bench and the readiness manifests. A gate whose",
+    "# evidence lives only in the store cannot run on a clean checkout, and",
+    "# nothing in git could contradict a later edit of it.",
+    "#",
+    "# Generated by `node scripts/bench-store.mjs --sync-ignore`. Do not hand-edit:",
+    "# ui-resolve-bench-store-custody.test.mjs fails when this drifts from what",
+    "# the tracked sources actually reference.",
+    "/*",
+    "!/.gitignore",
+    ...dirs.map((d) => `!/${d}/`),
+  ].join("\n");
+  writeFileSync(REPORTS_IGNORE, `${body}\n`, "utf8");
+  return [{ set: "reports", bound: dirs.length, wrote: relative(ROOT, REPORTS_IGNORE) }];
+}
+
+const MODES = { "--ingest": ingest, "--verify": verify, "--sync-ignore": syncIgnore };
+const isCli = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (isCli) {
+  const mode = MODES[process.argv.find((a) => a in MODES)];
+  if (!mode) { console.error(`usage: bench-store.mjs ${Object.keys(MODES).join(" | ")}`); process.exit(1); }
+  const result = mode();
+  console.log(JSON.stringify(result, null, 1));
+  if (result.some((r) => r.ok === false)) process.exit(1);
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.583",
+  "experiment_id": "orbital-carrier-inner-fit-replacement-luna-1.9.583",
+  "status": "PREREGISTERED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "execution_purpose": "internal-carrier-inner-fit-transfer-reliability-replacement",
+  "tokens_to_target": {
+    "goal_id": "omd-2.0.0-frontier-gates-from-1.9.278",
+    "attempt_order": 43,
+    "prior_observed_provider_tokens_minimum": 84725753,
+    "prior_usage_unavailable_cells": 6,
+    "count_all_scheduled_spend": true,
+    "unmet_goal_disposition": "right-censored"
+  },
+  "task": {
+    "id": "orbital-sample-return-custody-v0.1",
+    "pin_id": "orbital-sample-return-custody-1.9.582",
+    "source_commit": "536aa793d851d178827c4780bb8adccd98c1da65",
+    "task_tree": "32800908687f398cf4a00ed3bbb6520034905426",
+    "model_exposures": 0,
+    "stable_target_carrier": "[data-bench-decision-carrier='target']"
+  },
+  "sources": {
+    "control": {
+      "system_id": "luna-pre-edit-carrier-anchor-control",
+      "source_commit": "a6ebdc8a923538a997d2724f90a09e1eb63f46f2",
+      "pin_id": "pre-edit-carrier-anchor-1.9.570",
+      "artifact_helper_sha256": "276020bdd2e699df0ee4af1fd34d83723edb045e92ee37c7a5de5e0781c95ac1",
+      "browser_runner_sha256": "b57a2a405fcbac8493d69df7e17f5d4d45685467df98bb3c1cdc14517d219927",
+      "plain_python_self_dispatch": true,
+      "snapshot_carrier_anchor_gate": true,
+      "row_fit_budget": "available_document_width_css_px"
+    },
+    "candidate": {
+      "system_id": "luna-carrier-inner-fit-candidate",
+      "source_commit": "853db7bfe0939e0c58b1c8d01e7d2348100a14c8",
+      "pin_id": "carrier-inner-fit-feasibility-1.9.580",
+      "artifact_helper_sha256": "df16a41b4eba03e1054100e0520ba77395e0a50b6150ae9b099a72ead96f50f4",
+      "browser_runner_sha256": "050f28dffd59a913a25e3a6195e8169a9fbc4419e46f8ea60768c6b4cacbf2a1",
+      "plain_python_self_dispatch": true,
+      "snapshot_carrier_anchor_gate": true,
+      "row_fit_budget": "available_carrier_inner_width_css_px"
+    }
+  },
+  "isolated_delta_contract": {
+    "shared_runner_self_dispatch": true,
+    "shared_snapshot_carrier_anchor_gate": true,
+    "shared_aggregate_outer_width_gate": true,
+    "control_row_feasibility_budget": "document width",
+    "candidate_row_feasibility_budget": "bound carrier content-box width",
+    "causal_transfer_claim_requires_candidate_carrier_inner_plan_observed": true
+  },
+  "matrix": {
+    "runtime": "codex",
+    "model_id": "gpt-5.6-luna",
+    "effort": "high",
+    "trials_per_arm": 3,
+    "scheduled_cells": 6,
+    "order": ["r1-control","r1-candidate","r2-candidate","r2-control","r3-control","r3-candidate"],
+    "timeout_seconds": 900,
+    "max_concurrency": 1,
+    "inter_cell_delay_seconds": 120,
+    "retry_policy": "none-primary",
+    "temperature_policy": "runtime-default-frozen",
+    "browser_connection": "bench19366",
+    "allow_browser_launch": false
+  },
+  "promotion_gates": {
+    "candidate_ui_resolved_trials_required": 3,
+    "candidate_proof_compliant_trials_required": 3,
+    "candidate_shipped_runner_trials_required": 3,
+    "candidate_carrier_inner_plan_trials_required": 3,
+    "paired_objective_losses_allowed": 0,
+    "serious_or_critical_contrast_trials_allowed": 0,
+    "candidate_mean_wall_time_ratio_max": 1.1,
+    "candidate_mean_provider_tokens_ratio_max": 1.1,
+    "freeze_when_three_of_three_unreachable": true
+  },
+  "next": "Materialize the executable locked matrix, exact detached vendors, and six untouched cells without calling a provider."
+}

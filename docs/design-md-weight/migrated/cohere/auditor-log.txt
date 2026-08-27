@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 Cohere 산출물부터 읽고, 문장 분류·로그 대조·provenance 범위를 맞추겠습니다.이전 감사 로그 형식과 Cohere 산출물·원본을 같이 열어 문장 단위로 대조합니다.이전 감사본의 한정 문장 형식과 원본·로그 목적지를 대조해, 누락된 B2a와 잘못된 dest만 집어내겠습니다.로그에 적힌 줄 번호와 hex·URL 목적지를 실제 세 파일에서 대조합니다.문장 분류가 끝났습니다. 한정이 없거나 이름이 모자란 편집 해석만 본문에 붙이고, 목적지가 틀린 원장은 로그 쪽에서 고치겠습니다.줄 번호는 그대로입니다. provenance 범위와 migration-log 목적지를 실제 grep에 맞춥니다.Cohere F3 감사는 끝났다. 이관 워커가 아니라 감사자로, B2a·E2만 고쳤다. 토큰 값·컴포넌트 표·상태 applicability·구조는 그대로다.
+
+**B2a.** 편집적 해석인데 인접 완전 한정이 없거나 이름이 모자란 문장에 `derived editorial implementation inference` / `not Cohere-authored or a separately published UI specification`를 붙이거나 이름을 보탰다. Scope 17 공개-표면 한정, Scope 11 이 계약의 범위, 분위기 꼬리, Primary tasks 세 작업명, Audience 행동지표 비창작, Distinctive 보편 카드 거부, capture-bound 다크 CTA 레시피, Semantic 인과, Spacing 로컬 기하, Shape 4px 아이콘, Assets 라이선스 한정을 앞쪽으로, Capture 클래스명/Use 형용사, Layout 불릿 직전, Content 톤 표 지침.
+
+**E2.** 로그·provenance를 grep에 맞췄다. `#17171c`는 atmosphere 15가 아니고, `#ffffff`는 15·Dark solid 배경 188이 아니다. YAML `use`는 263/286, Careers는 Principles 48/52–53, Home marketing 반지름/no-fill은 285–287이다. B3 전문은 Motion 120에만 있다.
+
+기록: `docs/design-md-weight/migrated/cohere/audit-log.md`. SHA-256 `b92f263ec9f289e831f8e138928ee5a989fae6121c6515c2a48c6ebece0fefa1`. `--gate-only` PASS, `portable_core: true`.
+
+AUDIT_DONE fixes=18

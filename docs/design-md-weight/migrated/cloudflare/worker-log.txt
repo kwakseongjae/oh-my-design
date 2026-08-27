@@ -1,0 +1,16 @@
+Cloudflare T2 마이그레이션을 시작합니다. 지정된 규격·규칙집·골든 샘플을 먼저 읽고, 그다음 legacy 원문을 Core v2로 옮기겠습니다.규격과 규칙집을 확인했습니다. 이제 대응표, T1 제약, 골든 샘플, Cloudflare legacy 원문을 읽겠습니다.골든 샘플 형태를 확인했습니다. 이어서 T1-3 §5와 Cloudflare legacy 원문, 최근 T2 산출물 패턴을 대조합니다.원문 끝의 권위 주석이 핵심입니다. 게이트 규칙, 유사 이관본, Cloudflare 토큰 전수를 이어서 대조합니다.GitHub 이관이 같은 `design-system` 원천이라 형태를 그 패턴에 맞추고, musinsa 골든 샘플의 섹션·claim 구조를 따릅니다. 이제 세 산출물을 작성합니다.Cloudflare legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/cloudflare/`입니다.
+
+규칙집 **v8**. 게이트 `--gate-only` **PASS** / `problems []`. Portable Core `true`. SHA-256 `84e513c07bf5ccfaa2fac3730e9a696bea1c4b9ffe62895855ce8a8a400a9e99`.
+
+유지한 핵심 의미:
+
+- YAML unitless line-height `1.1`–`1.6`은 비율로 보존 (px 환산은 Notes에만)
+- `Type: button` ×6 + `tab` + `card`는 컴포넌트별로 유지
+- kumo `--color-kumo-brand` **blue**와 마케팅 Orange `#F6821F`는 합치지 않음
+- 무출처 cubic-bezier 4개는 provenance omission ledger로만 보관. duration·easing 이름·signature motion·reduced-motion과 B3 다섯 증거 종류는 Foundations에 유지
+- §13 가상 persona는 삭제, sidecar에도 없음. Primary tasks 3건은 YAML `use` / §4 Use만
+- named `Focus` 링은 `focus-visible`로 승격하지 않음
+
+F3 감사와 sol 의미 레인은 이 워커 범위 밖입니다. 카탈로그 채택은 아닙니다.
+
+DONE migrated=1

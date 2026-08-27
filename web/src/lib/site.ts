@@ -69,6 +69,11 @@ export function blogPostHref(slug: string, locale: PostLocale = CANONICAL_LOCALE
   return `${blogBasePath()}${localeSegment(locale)}/${slug}`;
 }
 
+/** In-blog link to the RSS feed. Relative, same host as the page. */
+export function blogFeedHref(locale: PostLocale = CANONICAL_LOCALE): string {
+  return `${blogBasePath()}${localeSegment(locale)}/feed.xml`;
+}
+
 /**
  * Link from a blog page back to the main site.
  *

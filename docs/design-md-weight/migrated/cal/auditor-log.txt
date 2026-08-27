@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 Cal 이관 산출물을 먼저 읽고, 문장 한정과 원장만 대조하겠습니다.규칙서 B2a·E2와 최근 감사 로그 형식을 확인한 뒤 Cal 세 파일을 문장 단위로 읽겠습니다.원본과 최근 F3 감사 패턴을 대조해, Cal 본문에서 한정이 빠진 해석 문장과 원장 불일치를 찾겠습니다.문장 한정이 비거나 이름이 모자란 곳부터 DESIGN.md에 인접 완전 B2a를 붙이겠습니다. 토큰·표·구조는 건드리지 않습니다.본문을 다시 훑어 한정이 빠졌거나 인접하지 않은 해석 문장이 남았는지 확인합니다.Layout 한정문을 측정 문장 앞으로 옮겨 인접 조건을 맞춥니다.Semantic 한정도 목록 앞으로 옮깁니다.provenance와 migration-log의 목적지·derived 범위를 실제 본문에 맞춥니다.Select field note가 같은 줄에서 `focus-visible` 뒤에 hex를 넣어 게이트가 막혔습니다. 줄을 나눠 B1을 유지합니다.Cal.com 이관본을 B2a·E2만 감사해 한정 문장과 원장을 맞췄습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 그대로입니다.
+
+**본문 (B2a).** 편집적 해석인데 인접 완전 한정이 없거나 이름만 모자란 문장에 `derived editorial implementation inference` / `not Cal.com-authored or a separately published UI specification`를 붙이거나 확장했습니다. 범위는 Scope 재구성 범위·분위기·공적 서사, Primary tasks/Audience, Distinctive/Principles/Avoid, Semantic·Spacing·Shape·Elevation, Font/Type/Assets, Capture·필드 노트, Layout, Content voice입니다. Select의 `--framer-focus-outline` 한정은 `focus-visible` 줄에 hex가 붙지 않도록 줄을 나눴습니다.
+
+**원장 (E2).** `migration-log`에서 실제와 다른 목적지를 고쳤습니다. 예: `"Get started"`는 Scope가 아니라 Primary tasks 27, live-DOM `13.92px`는 Foundations가 아님, trust-bar `16px gap`은 Typography “not promoted”가 아님, B3 전문은 Motion 147입니다. `provenance` derived 목록도 본문 실제에 맞췄습니다.
+
+상세는 `docs/design-md-weight/migrated/cal/audit-log.md`. Post-F3 SHA-256 `2ec1adc92cc798f79fcedbd97518bc5bddc58d75f3f80bd0272c92d46f33e923`. `--gate-only` PASS, `portable_core: true`.
+
+AUDIT_DONE fixes=38

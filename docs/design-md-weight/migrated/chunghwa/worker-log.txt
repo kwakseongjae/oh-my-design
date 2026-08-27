@@ -1,0 +1,27 @@
+T2 마이그레이션을 시작합니다. 규칙집·골든 샘플·소스 DESIGN.md를 순서대로 읽고, 그다음에 Core v2로 옮기겠습니다.규칙집 v7을 확인했습니다. 스펙·골든 샘플·레거시 소스와 기존 `chunghwa` 산출물을 이어서 읽겠습니다.필수 스펙과 골든 샘플, 레거시 소스를 병렬로 읽습니다.게이트가 잡는 토큰 집합을 소스에서 뽑은 뒤, 그 목록을 기준으로 본문을 쓰겠습니다.토큰·타입·비율 목록을 확보했습니다. Core v2 본문을 작성한 다음, 줄 번호를  Grep으로 맞춰 provenance와 migration-log를 쓰겠습니다.Core v2 `DESIGN.md`를 작성합니다. 해석 문장에는 B2a 한정을 붙이고, YAML 값과 본문 충돌은 합치지 않습니다.캡처 기록의 근거 한정 두 곳을 보강한 뒤, 줄 번호를 다시 맞춰 provenance와 migration-log를 작성합니다.줄 번호를 확인했습니다. provenance와 migration-log를 그 번호에 맞춰 작성합니다.게이트가 `focus-visible`과 색값이 한 줄에 있는 행을 잡고, Portable Core는 scope claim 본문을 못 읽습니다. 두 곳을 고칩니다.줄 번호가 밀렸습니다. provenance와 migration-log의 DESIGN 목적지를 현재 본문에 맞춰 고칩니다.T2 `chunghwa` 이관을 마쳤습니다. `web/references/chunghwa/DESIGN.md`를 Core v2로 옮겨 아래 세 파일에 썼습니다.
+
+- `docs/design-md-weight/migrated/chunghwa/DESIGN.md`
+- `docs/design-md-weight/migrated/chunghwa/provenance.md`
+- `docs/design-md-weight/migrated/chunghwa/migration-log.md`
+
+규칙집 **v7**. 마이그레이션 로그 머리에 그 버전을 적었습니다.
+
+보존·분리 요지:
+
+- YAML unitless line-height `1.40` / `1.42` / `1.38` / `1.60` / `1.44` / `1.50`은 비율로 유지했습니다.
+- primitive type은 컴포넌트별로 유지했습니다: button×2, tab×2, card, input, badge×2. Blue Tint Card는 YAML type이 없어 발명하지 않았습니다.
+- `#209cff` / `#0083ec` / `#ff874d`, `#cbcbcb` / `#eaeaea`, YAML 50px·`100px` / live 54px·`30px`은 합치지 않았습니다.
+- named hover `#0083ec`는 hover로만 두고 `focus-visible`로 올리지 않았습니다.
+- §13 가상 persona는 삭제했고 sidecar에도 다시 싣지 않았습니다.
+- 무출처 cubic-bezier 3개(ease-exit는 템플릿과 동일)는 provenance omission ledger로만 두었습니다. duration 100/200/300ms, easing 이름, `prefers-reduced-motion`은 본문에 남겼습니다.
+- B3 다섯 증거 종류 게이트는 Foundations Motion에 전문으로 있습니다.
+
+F1 B2a 전수 재독, F2 dest grep을 수행했습니다.
+
+- `--gate-only` PASS, problems `[]`
+- Core `portable_core: true`
+- DESIGN SHA-256 `70e4858c3d183ef19f742330c44ed3a953a361718f5cfd508187d60aaf60612e`
+
+F3 감사와 sol 의미 레인은 아직입니다. 카탈로그 채택이 아닙니다.
+
+DONE migrated=1

@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.603",
+  "experiment_id": "backup-decision-context-replacement-luna-1.9.600",
+  "cell_id": "luna-backup-r1-control",
+  "status": "CHECKPOINTED_VALID_CONTROL_FAILED",
+  "validity": "valid",
+  "retry_count": 0,
+  "wall_time_ms": 526814,
+  "provider_tokens": {
+    "input": 2657642,
+    "cached_input": 2550528,
+    "output": 25462,
+    "reasoning_output": 9238,
+    "comparison_total": 2683104
+  },
+  "objective": {
+    "score": 79,
+    "max": 85,
+    "ui_resolved": false,
+    "task_contract": true,
+    "state_journey": true,
+    "responsive": false,
+    "accessibility": true,
+    "design_grounding": true,
+    "evidence_honesty": true,
+    "document_overflow_px": 0,
+    "mobile_atomic_wraps": 0,
+    "narrow_atomic_wraps": 1,
+    "actual_200pct_atomic_wraps": 1,
+    "desktop_target_action_spatially_separated": false
+  },
+  "proof": {
+    "analyzable": true,
+    "product_edit_count": 2,
+    "static_closure_count": 1,
+    "browser_mechanism_count": 1,
+    "browser_recovery_count": 0,
+    "duplicate_static_closure_count": 0,
+    "shipped_runner_invoked": true,
+    "browser_attached_existing": true,
+    "artifact_closed": false,
+    "execution_gate_pass": false,
+    "unresolved_carriers": 1,
+    "unresolved_carrier_id": "review-controls",
+    "failure_class": "review-controls-carrier-unresolved"
+  },
+  "artifact_hashes": {
+    "run_result_sha256": "bd6878ec0dd7f5fcd40235907d2f84acffb21df19559f53a6f74a7b714b75870",
+    "score_sha256": "6168c5680342a5966dee29acef1cb1617fed8f320ac1f547b57799c8e49e6a74",
+    "run_record_sha256": "1ca6c4378eff5c77501d3a073513104eaeca9f17d54597a024c442734e09bd55",
+    "proof_trace_sha256": "4a01800649e22d56a9c5a7a06f75d4306abbcbefe8b7ddef74fa46de8c0d9d00",
+    "benchmark_tree_sha256": "85646fa89037af917d6ca1c55a9a223d0dc37efd473527d64aa76c06f9bba18f"
+  },
+  "tokens_to_target": {
+    "prior_observed_provider_tokens_minimum": 96173681,
+    "observed_provider_tokens_minimum_after_cell": 98856785,
+    "usage_unavailable_cells": 6,
+    "goal_status": "right-censored"
+  },
+  "next": "After the fixed 120-second pacing interval, run luna-backup-r1-candidate once with no retry."
+}

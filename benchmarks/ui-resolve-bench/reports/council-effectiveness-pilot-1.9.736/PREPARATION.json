@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-effectiveness-pilot-1.9.736",
+  "status": "PROVIDER_ZERO_READY",
+  "prepared_root": "/private/tmp/omd-council-effectiveness-1.9.736-prep",
+  "live_root": "/private/tmp/omd-council-effectiveness-1.9.736-live",
+  "model": "cursor-grok-4.5-high",
+  "effort": "high",
+  "case_count": 3,
+  "planned_lane_calls": 12,
+  "retry_budget": 0,
+  "provider_calls_observed": 0,
+  "baseline_question_count": 8,
+  "provider_zero_council_question_count": 8,
+  "authority_retained": true,
+  "expected_blocked_retained": true,
+  "forbidden_auto_count": 0,
+  "hashes": {
+    "fixture_sha256": "dffa2c63ddafa1c6c43caf212033504274928d7d9c0ed63668c0a9647f98ae2e",
+    "runner_sha256": "9cb9400011ae7a30c99d64189ea29e3c2e51eb2934daf211ca85ff46baa5850d",
+    "prime_sha256": "243580e4c10ae0f7910dde7842e5d19a671012449de22d24a501d800cef5025f",
+    "reconcile_sha256": "3a20d1374ce9c98da4ef00fbe15d99ff6a53c811862a9476edb97c8f76c73cd0"
+  }
+}

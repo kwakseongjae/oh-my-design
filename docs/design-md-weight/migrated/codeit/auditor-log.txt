@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 규칙서의 해당 조항과 codeit 이관 산출물부터 읽고, 문장 분류·원장 대조를 시작하겠습니다.규칙서 B2a·E2만 고정했습니다. 최근 완료된 감사 로그 형식과 codeit 산출물 세 파일을 대조합니다.원본 §12·§7와 기존 감사 로그의 한정 문장 패턴을 대조해, 누락·과잉 한정을 가려내겠습니다.문장 분류와 원장 목적지 grep을 같이 돌리겠습니다. 한정 누락·목적지 불일치만 잡습니다.한정이 비거나 이름이 모자란 문장, 원장 목적지 불일치를 확정했습니다. DESIGN.md부터 인접 완전 B2a를 붙이겠습니다.원장 목적지와 derived 범위를 본문 실제 줄에 맞춥니다.Codeit F3 B2a·E2 감사를 마쳤습니다. 이관 워커가 아니라 감사자로만 일했고, 토큰 값·컴포넌트 표·상태 applicability·구조는 건드리지 않았습니다.
+
+**본문 (B2a).** 편집적 해석인데 인접 한정이 없거나 이름이 모자란 문장에 `derived editorial implementation inference` / `not Codeit-authored or a separately published UI specification`을 붙이거나 확장했습니다. 대표적으로 Scope `live-extract`·공식 소개 페이지 경계, Primary tasks 4개 작업명, Audience, Principles 논지, Avoid 인과, Motion 무출처 커브, Font/Family/Type extras, Hero/Neutral/Search/Nav 역할 판단, Content 톤 표입니다. Capture 238은 Core C1/C2를 derived editorial로 감싼 과잉 한정을 줄였습니다.
+
+**원장 (E2).** migration-log 목적지를 세 파일 grep으로 다시 맞춰 로그를 고쳤고, provenance derived 범위를 실제 한정 위치에 맞췄습니다. 워커 F1/F2 준수 주장은 현행이 아닙니다.
+
+상세 수정 목록은 `docs/design-md-weight/migrated/codeit/audit-log.md`입니다. Post-F3 SHA-256 `f1979590ce4497919385d860d856c45981b624530115f716b287e08c122b5cda`. `--gate-only` PASS, `portable_core: true`.
+
+AUDIT_DONE fixes=20

@@ -1,0 +1,97 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.628",
+  "experiment_id": "rail-signal-plan-bootstrap-luna-1.9.628",
+  "status": "PREREGISTERED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "execution_purpose": "pre-edit-plan-self-bootstrap-transfer-reliability",
+  "tokens_to_target": {
+    "goal_id": "omd-2.0.0-frontier-gates-from-1.9.278",
+    "attempt_order": 48,
+    "prior_observed_provider_tokens_minimum": 107050263,
+    "prior_usage_unavailable_cells": 6,
+    "count_all_scheduled_spend": true,
+    "unmet_goal_disposition": "right-censored"
+  },
+  "task": {
+    "id": "rail-signal-speed-restriction-release-v0.1",
+    "pin_id": "rail-signal-speed-restriction-release-1.9.627",
+    "source_commit": "e41f7daf89dde48e5aabd35af0c2961ec5a1eea8",
+    "task_tree": "02f724df21e9da668ed8aea0014dc7a252a07219",
+    "portable_task_tree_sha256": "474d984e11a7cc3d2496e63399f61ff12b75d45a136c3ddb80cd01ebf60d15e5",
+    "baseline_score_sha256": "c3bf6115094ca92178b448c882ccca85f53ba1d158e947dd4558d06ac90e5b1f",
+    "model_exposures": 0,
+    "stable_target_carrier": "[data-bench-decision-carrier='target']",
+    "concise_evidence": "4 assets · 6 inspections · 2 possessions"
+  },
+  "sources": {
+    "control": {
+      "system_id": "luna-content-box-plan-order-control",
+      "variant_id": "omd-content-box-decision-context-candidate",
+      "source_commit": "0c4af9273a19bbb7cdcf6a17ef2a58f3627f1419",
+      "pin_id": "decision-context-content-box-1.9.616",
+      "skill_tree": "300b89c75a5c075c07ea82446185334005b91808",
+      "skill_sha256": "5fbcfe16dae90f0cc9333378b0026128a90ddf8ba9169e4201086eddb7046bbd",
+      "artifact_helper_sha256": "6b9ac983903e1fff18f4a6b6048e3f5ded761b5904c72ad4d23aa1542b02e665",
+      "browser_runner_sha256": "e3ba580adda4c7be774e870bca599a05cc97e82275fca31672b0109c6c48f368",
+      "plan_order_contract": "model runs a separate snapshot helper before the exact measured plan command"
+    },
+    "candidate": {
+      "system_id": "luna-plan-self-bootstrap-candidate",
+      "variant_id": "omd-plan-self-bootstrap-candidate",
+      "source_commit": "4ac756df227d4f0cf42dc77d722819242d07d6b8",
+      "pin_id": "pre-edit-plan-self-bootstrap-1.9.625",
+      "skill_tree": "62e7df31829a09793c1be5d9f449d97bb57e76dd",
+      "skill_sha256": "253d0bb4ad6eabc773f3dd3f220ad73cd6701a54354b0af0346d47b3bbf93646",
+      "artifact_helper_sha256": "6b9ac983903e1fff18f4a6b6048e3f5ded761b5904c72ad4d23aa1542b02e665",
+      "browser_runner_sha256": "b54d244269afcf82c56fd1b1119661933398e67585634805be85c8020a49e95b",
+      "plan_order_contract": "the exact plan runner atomically snapshots before navigation and distinguishes zero-attempt validation"
+    }
+  },
+  "isolated_delta_contract": {
+    "shared_content_box_decision_context_formula": true,
+    "shared_desktop_and_narrow_final_measurement": true,
+    "shared_missing_observation_fail_closed": true,
+    "shared_nested_carrier_pre_edit_rejection": true,
+    "shared_contained_carrier_budget": true,
+    "shared_concise_evidence_inventory": true,
+    "shared_target_full_row_order_and_spatial_semantics": true,
+    "candidate_bootstraps_missing_snapshot_before_navigation": true,
+    "candidate_marks_pre_navigation_validation_as_zero_attempt": true,
+    "candidate_requires_plan_close_and_guardrails_before_product_edit": true,
+    "candidate_forbids_rerun_after_measured_or_infrastructure_attempt": true,
+    "candidate_does_not_change_product_acceptance_or_task_prompt": true,
+    "causal_transfer_claim_requires_ui_and_proof_three_of_three": true
+  },
+  "matrix": {
+    "runtime": "codex",
+    "model_id": "gpt-5.6-luna",
+    "effort": "high",
+    "trials_per_arm": 3,
+    "scheduled_cells": 6,
+    "order": ["r1-control", "r1-candidate", "r2-candidate", "r2-control", "r3-control", "r3-candidate"],
+    "timeout_seconds": 900,
+    "max_concurrency": 1,
+    "inter_cell_delay_seconds": 120,
+    "retry_policy": "none-primary",
+    "temperature_policy": "runtime-default-frozen",
+    "browser_connection": "bench19366",
+    "allow_browser_launch": false
+  },
+  "promotion_gates": {
+    "candidate_ui_resolved_trials_required": 3,
+    "candidate_proof_compliant_trials_required": 3,
+    "candidate_shipped_runner_trials_required": 3,
+    "candidate_measured_pre_edit_plan_trials_required": 3,
+    "candidate_product_edit_before_plan_allowed": 0,
+    "candidate_desktop_decision_context_observed_trials_required": 3,
+    "candidate_narrow_decision_context_observed_trials_required": 3,
+    "paired_objective_losses_allowed": 0,
+    "serious_or_critical_contrast_trials_allowed": 0,
+    "candidate_mean_wall_time_ratio_max": 1.1,
+    "candidate_mean_provider_tokens_ratio_max": 1.1,
+    "freeze_when_three_of_three_unreachable": true
+  },
+  "claim_boundary": "The task and exact sources are pinned, but no cell has run. Provider-free behavioral replay proves only the ordering repair, not fresh model transfer on this task.",
+  "next": "Materialize and validate the executable locked matrix without calling a provider."
+}

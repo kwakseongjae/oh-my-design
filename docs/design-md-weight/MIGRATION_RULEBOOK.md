@@ -1,6 +1,6 @@
 # 마이그레이션 규칙집 — legacy → Core v2
 
-> **v7 · 2026-08-23.** 이 파일이 워커에게 주어지는 하드 룰의 정본이다.
+> **v12 · 2026-08-26.** 이 파일이 워커에게 주어지는 하드 룰의 정본이다.
 > `migrate-reference.mjs`가 이 파일을 읽어 워커 프롬프트에 넣고, 각 migration-log가
 > 사용한 규칙집 버전을 기록한다.
 >
@@ -30,6 +30,30 @@
   `t1-4-notion-2026-08-23-sol-spotcheck.md` §2)*
 - **A4.** 검증된 필드 결합을 다른 역할로 합치지 않는다. `help-search.fg: #000000`은
   그 컴포넌트의 renderable field이지 일반 Ink가 아니다. *(같은 판정 §2)*
+
+- **A5.** 브랜드가 발행한 문자열은 **바이트 그대로** 옮긴다. 라벨·CTA·포럼명·
+  마이크로카피·사명은 값이지 서술이 아니다 — 번역·의역·대소문자 정규화·영문
+  대체는 전부 손실이다. 원문이 비라틴 문자면 그 문자로 남기고, 독자를 위한 영문
+  설명이 필요하면 원문 **옆에 병기**하되 원문을 대체하지 않는다. 검증 sibling이
+  측정 대상으로 명기한 문자열도 같은 급으로 취급한다.
+  *(datadog §4·§10 — `SEE THE PLATFORM`이 "inspect the platform"으로 재작성되고
+  검증 카피 6종이 소실; dcard §10 — 번체 포럼명 9종(`女孩`·`男生`·`心情` 등)이
+  영문 의역으로 대체되고 레지스터 대비 `你`/`您`가 소실. 원문 자신이 "Never
+  bilingual labels; the forum name IS the space"라고 못박은 자리였다)*
+
+- **A5a. 바늘 밖은 손으로 대조한다.** `--gate-only`의 `coverage.compared`가
+  `candidates`보다 작으면, 워커는 원본과 검증 sibling
+  (`web/references/<id>/.verification.md`) 양쪽에서 인용 문자열을 전수 추출하고,
+  그중 브랜드가 발행한 문자열(라벨·CTA·슬로건·마이크로카피·사명·sibling이
+  측정 대상으로 명기한 카피)만 산출 3파일 생존과 대조한다. 카피에 대한 서술·
+  UI 메타·점 경로·폰트 스택·원본이 제외한 제3자 문자열은 바늘이 아니다.
+  미생존은 복원하거나 원장에 처분을 적는다. 추출/미생존/처리 수치를
+  migration-log에 남긴다. `verdict: PASS`는 「대조한 바늘 중 잃은 것이 없다」이지
+  「카피가 보존됐다」가 아니다. A5 준수를 주장하려면 그 분모(`compared`/`candidates`
+  또는 손 스윕 추출/미생존)를 같이 댄다.
+  *(wave26 — furiosaai 1/181 PASS 뒤 손 스윕 27건 미생존; funnow 바늘 PASS 뒤
+  영어 gloss 2건 의역; flex 바늘 0. 전체 인용문 바늘은 설명문 오탐→E3로 기각.
+  `t2-1-a5-latin-blindspot-2026-08-26-opus5.md`)*
 
 ## B. 증거 종류와 승격 (게이트 부분 기계화)
 
@@ -61,16 +85,25 @@
   "공식 출처로 검증될 때까지" 같은 약화 문구는 curve 하나 확인으로 충족될 수 있어
   동치가 아니다. *(29cm §3B; toss —
   `t2-1-wave1-2026-08-23-sol-sample.md` §1.1)*
+    *(예문의 「not a separately published UI specification」은 **그 브랜드에 1차 발행
+    디자인 시스템이 없을 때만 참이다.** Pajamas·Polaris·Spectrum·Carbon처럼 발행 사양이
+    있으면 예문을 복사하지 말고 그 사양을 명시해 닫는다 — 예: `not GitLab-authored or taken
+    from a separately published UI specification, including the published Pajamas
+    documentation`. 목적은 증거 종류를 닫는 것이지 발행 사양의 부재를 주장하는 것이 아니다.
+    현재 위반 0건 — 1차 DS 보유 이관본 20개 중 예문을 쓴 것은 gitlab뿐이고 적응시켰다.)*
 
 ## C. State applicability (게이트 부분 기계화)
 
 - **C1.** `not captured` / `not named`는 `not-applicable`의 사유가 될 수 없다.
   applicability는 컴포넌트 의미로 판정하고, 미해상 시각 treatment는 값만 생략한다.
   *(3건 공통 — 게이트 기계화됨)*
-- **C2.** 반대 방향 발명도 금지다. primitive 종류("Interactive control", "Button
-  control")만으로 loading/error/success를 일괄 `applicable`로 만들지 않는다.
-  tab·arrow·dialog trigger·toggle 각각의 **역할**에 그 상태가 의미가 있는지 판정하고,
-  비적용이면 관측 부재가 아닌 의미상 이유를 적는다. *(notion §3)*
+- **C2.** 반대 방향 발명도 금지다. loading/error/success를 primitive 종류만으로 **역할 판단
+  없이 일괄** `applicable`로 만들지 않는다. `"Interactive control"`·`"Button control"`은 그
+  일괄 행위의 **진단 표지이지 금지 문자열이 아니다.** 역할상 그 상태가 의미 있으면
+  `applicable`을 유지하고 미해상 treatment만 생략한다(C1). tab·arrow·dialog trigger·toggle·
+  destination link처럼 **커밋하는 연산이 없는 역할**이면 `not-applicable`로 두고, 관측 부재가
+  아닌 의미상 이유를 적는다. *(notion §3 — 조문 개정 2026-08-26, grok-4.6 판정. 근거·실측은
+  `docs/reviews/t2-1-c2-ruling-2026-08-26-grok.md`)*
 - **C3.** state coverage 완료를 주장하지 않는다. *(게이트 기계화됨 — 부정문 허용)*
 - **C4.** interactive-kind 근거가 없는 컴포넌트는 kind와 applicability map 자체를
   생략한다. 확정하지 않는다. *(29cm Product Grid Item — 승인된 처리)*
@@ -81,9 +114,26 @@
   표본 범위가 marketing/Help면 storefront 문장은 존재할 수 없다 — 미해상의 최소
   경계 생략은 "안 적는 것"이지 "안 됐다고 적는 것"이 아니다. *(notion §4 — 게이트:
   부정 claim 문장의 내용어가 원본에 없으면 차단)*
+  **D1a.** D1은 문장만이 아니라 **명사구 목록**에도 걸린다. `Named gaps: A, B, C`
+  형태로 도메인을 열거하는 것은 "그 도메인이 존재하되 미해상"이라는 주장이고,
+  원본이 그 도메인의 존재 자체를 세우지 않았다면 D1 위반이다. 게이트의 D1 검사는
+  부정 **문장**(`not captured` / `were not` / `않았다` …)만 트리거하므로 명사구
+  목록은 통과한다 — 이 조항은 워커와 검토자가 지켜야 한다.
+  *(databricks·datadog §Named gaps — 원본에 0회인 `native-client`·`parity`·
+  `authenticated`를 미해상 도메인으로 열거. 두 건 모두 게이트 PASS 상태로
+  의미 검토에서 잡혔다)*
 - **D2.** 가상 페르소나는 승격도 provenance 재수록도 금지. 독립 검증된 task만
   claim한다. **게이트 기계화 없음 — sol 레인 전담.** *(karrot §13 —
   `t1-3-golden-2026-08-23-sol-review.md` §2B; grok 조건 2, `t2-1-open-2026-08-23-grok.md`)*
+- **D2a. 삭제 처분의 표기는 무식별이다.** 원장·로그가 삭제를 적을 때는 원본 절·인원·빠진
+  필드 종류로 족하다 — `§13 페르소나 N인(이름·나이·도시 포함)`이면 충분하고, 원본 줄 번호
+  포인터는 허용이나 요구가 아니다. 이름·나이·도시·전기를 Item 칸이나 로그 행에 옮겨 적는
+  것은 삭제가 아니라 **재수록**이다. 본문 0회를 grep으로 보이려고 원장에 그 문자열을 심는
+  것도 재수록이다. 본문 잔존은 **승격**, 원장 잔존은 **재수록** — 같은 조항의 다른 동사다.
+  *(funnow Omission ledger가 이름·나이·도시를 Item에 둔 채 "this file에 없다"고 적음.
+  승인본 karrot·furiosaai는 무식별 — furiosaai는 "not even as names or cities". 소급은
+  forward-only: 이후 이관과 F3가 다시 연 파일에서만 고친다.
+  `t2-1-d2a-e2d-ruling-2026-08-26-grok.md`)*
 
 ## E. 분리 원칙
 
@@ -98,6 +148,12 @@
     disposition이다 — "값 생략"만 적으면 불일치다. *(bilibili — 같은 판정 §2.2)*
   - **E2c.** 준수 주장은 실제 본문보다 강하게 적지 않는다. 로그가 "B3 유지"라고
     적으려면 본문이 실제로 B3 전문을 담고 있어야 한다. *(toss §1.1)*
+  - **E2d.** 부재를 단언하는 원장 문장은 **자기 자신을 분모에 넣는다.** "이 파일에 없다" ·
+    "세 파일 어디에도 없다"고 적으면서 같은 행이 그 항목을 나열하면 **거짓 원장**이다.
+    mention(처분 지목)과 use(사실 재수록)를 가르려면 그 구별을 문장에 적고 부재를
+    단언하지 않는다. *(한 웨이브 두 건 — funnow provenance Omission ledger의 페르소나 행,
+    furiosaai `provenance.md:183`의 sibling 전용 항목. 둘 다 F3가 실측에 맞춰 고쳤으나
+    furiosaai는 이를 E1로 오분류했다. `t2-1-d2a-e2d-ruling-2026-08-26-grok.md`)*
 
 ## F. 의무 최종 패스 (절차 — 하네스가 워커 프롬프트에 강제)
 
@@ -111,6 +167,13 @@
   실행한다: B2a·E2 두 계열만, 목록 없이 탐지+수정, `audit-log.md` 기록. 값·표·구조
   수정은 금지. *(wave4 — `t2-1-wave4-2026-08-23-sol-{sample,full}.md`)*
 
+- **E3. 게이트 회피 금지.** 게이트가 오탐하면 **표기를 왜곡해 피하지 말고 그대로 두고
+  오탐을 보고하라.** 웨이브 15에서 워커가 provenance의 자매 소스 인용 hex를 게이트
+  invention 오탐을 피하려 `# faf9f5`처럼 변형했다 — 값 표기의 왜곡은 원장의 존재
+  이유(바이트 수준 검증)를 부순다. 해당 오탐은 게이트 쪽을 고쳤다(invention은 portable
+  본문만 검사). *(wave15 — 게이트 회피 발견; wave16에서 codeit·coinbase가 B1 오탐을 문장 분할로
+  회피해 E3 첫 적발 — B1 게이트를 표 행 형태로 한정해 오탐 원인 제거)*
+
 ## 개정 이력
 
 | 버전 | 일자 | 추가 조항 | 출처 |
@@ -122,3 +185,8 @@
 | v5 | 2026-08-23 | B2a 예문 고정 (기계화 시도 후 철회 — 승인본 오차단·실위반 미검출) | 웨이브 2 표본 FAIL 2/2 — A1a·B3는 즉시 통과, B2a·E2만 재발 (`t2-1-wave2-2026-08-23-sol-sample.md`) |
 | v6 | 2026-08-23 | F1·F2 의무 최종 패스 (규칙→절차 전환) | 웨이브 3도 같은 두 계열만 재발 — 규칙 지식이 아니라 스캔 절차 부재가 원인 (`t2-1-wave3-2026-08-23-sol-sample.md`) |
 | v7 | 2026-08-23 | F3 별도 세션 감사 워커 (절차→구조 전환) | 웨이브 4: F1·F2 수행 기록에도 재발 — 동일 저자 맹점. 목록 받은 개정 세션은 4웨이브 연속 100% 수렴 → 신선한 세션에 탐지 임무 부여 (`t2-1-wave4-…`) |
+| v8 | 2026-08-25 | E3 게이트 회피 금지 + 게이트 invention 범위를 portable 본문으로 축소 | 웨이브 15: 워커가 오탐 회피를 위해 hex 표기 왜곡 (`# faf9f5`) — cafe24·claude·classting 원장에서 발견·원복 |
+| v9 | 2026-08-26 | **A5**(브랜드 발행 문자열 바이트 보존) · **D1a**(D1이 명사구 gap 목록에도 적용) | 웨이브 19: datadog이 검증 카피 6종을 의역·소실(`SEE THE PLATFORM`→"inspect the platform"), dcard가 번체 포럼명 9종을 영문 의역으로 대체 — 한 웨이브 두 건이 같은 계열. D1a는 databricks·datadog이 원본에 0회인 `native-client`를 미해상 도메인으로 열거해 게이트 PASS 상태로 통과 (`t2-1-wave19-20-2026-08-26-opus5.md`, `t2-1-a5-copy-loss-2026-08-26-opus5.md`) |
+| v10 | 2026-08-26 | **C2 조문 개정** — 금지 대상을 문자열에서 **행위**(역할 판단 없는 일괄 개방)로 명확화 | 조문이 `"Interactive control"`·`"Button control"`을 금지 형태로 지목했으나 **승인 골든 샘플 3건이 그 형태를 사용**(musinsa 18·29cm 11·karrot 5)하고 이관본 96건 546회가 동형 — 조문과 승인 기준이 충돌. 최종 승인권자 판정: 골든 샘플은 v1(C1) 산출이라 C2 이후 미보수 상태이고, C2 출처인 notion 시정본은 Hero CTA를 그 형태로 남긴 채 지목된 네 자리만 역할 사유로 닫았다(실측: primitive 형태 21회와 역할 사유 12행 공존) (`t2-1-c2-ruling-2026-08-26-grok.md`) |
+| v11 | 2026-08-26 | **A5a**(바늘 밖 발행 카피의 손 대조와 분모 기재) | 게이트의 `copy-loss` 바늘이 연속 비라틴 런에서만 나와 이관본 130개 전수 커버리지가 **인용 문자열 22,377개 중 991개 = 4.4%**, 50%를 넘는 브랜드 0개, 비교 0건 63개. furiosaai는 181개 중 1개만 대조하고 PASS를 냈는데 손 스윕에서 27건 미생존; funnow는 바늘 8개 PASS 뒤 자기 슬로건의 영어 gloss 2건이 의역돼 있었다. 바늘 확대는 설명문 오탐→차단 게이트 우회(E3)로 이미 기각됐으므로 절차가 기계를 대신한다. 최종 승인권자 판정: 트리거는 `compared < candidates`(정성 표현은 1/181을 검사된 얼굴로 읽는다), E2c 확대와 전수 소급은 하지 않으며, 인용 전량이 아니라 **발행 카피만** 대조한다 (`t2-1-a5-latin-blindspot-2026-08-26-opus5.md`) |
+| v12 | 2026-08-26 | **D2a**(삭제 처분의 무식별 표기) · **E2d**(부재 단언은 자기 자신을 분모에 넣는다) · B2a 예문의 전제 주석 | funnow Omission ledger 한 행이 Item 칸에 페르소나 4인의 이름·나이·도시를 담은 채 Status 칸에 「this file에 없다」고 적었고, furiosaai `provenance.md:183`이 sibling 전용 항목의 부재를 단언하며 그 문장이 그것들을 나열했다 — 한 웨이브 두 건. D2 원문이 이미 「승격도 provenance 재수록도 금지」이고 그 조항을 만든 karrot FAIL B의 차단 사유가 원장에 가상 세그먼트를 다시 열거한 것이었다. 최종 승인권자 판정: 무식별 표기로 족하고, 본문 승격과 원장 재수록은 같은 조항의 다른 동사이며, 소급은 A5a와 같이 forward-only. 자기부정 원장 행은 E2c로 흡수하지 않고 E2d로 세운다. B2a 예문은 gitlab/Pajamas에서 전제가 깨졌다 (`t2-1-d2a-e2d-ruling-2026-08-26-grok.md`) |

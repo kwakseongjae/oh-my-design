@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 룰북의 해당 조항과 cafe24 산출물부터 읽고, 문장 한정·원장 정합성만 고치겠습니다.룰북 B2·E2와 최근 감사 로그 형식을 먼저 맞춘 뒤 cafe24 세 파일을 전수 읽겠습니다.DESIGN.md 나머지와 provenance·migration-log를 이어서 읽고, 문장마다 한정 누락을 잡겠습니다.DESIGN.md 후반부와 원본 대조에 필요한 문장을 마저 읽겠습니다.원본 문장과 로그가 가리키는 값의 실제 위치를 대조한 뒤, 한정 누락과 원장 불일치만 고치겠습니다.문장 한정을 본문에 붙인 뒤, 목적지는 grep으로 다시 맞춰 원장을 고치겠습니다.본문 한정을 붙였습니다. 이제 줄 번호를 다시 세고 원장 목적지를 grep으로 맞춥니다.provenance 줄이 밀리지 않게 `display_name_kr` 문장은 기존 단락에 합치겠습니다.게이트가 `focus-visible`에서 막혔습니다. 입력 경로와 판정 기준을 확인한 뒤, 적용성 표는 건드리지 않고 원인만 가리겠습니다.346번 필드 노트에 `focus-visible`과 hex가 같은 줄에 있어 게이트가 막혔습니다. 한정을 358번에 두고 346에서는 그 단어를 빼겠습니다.Cafe24 F3 감사를 마쳤습니다. 토큰 값·컴포넌트 표·상태 applicability·구조는 그대로 두고, 편집적 해석에 인접 한정만 붙이고 원장 목적지를 grep에 맞췄습니다.
+
+**본문 (B2a).** Scope의 비-proxy·분위기·거절/수용, Semantic 역할 분리, Shape의 비보편 기하, Elevation hairline 비합침, Motion의 Arriving/Dismissals/Two-way, Font 증거 등급, Type-role tracking, 여러 필드 노트 비합침, Nav captured-variant, Layout 한정(표 앞으로 이동), Content 보이스 라벨에 완전 한정을 붙였습니다. Motion 한정에서 본문에 없는 “functional and friendly” / “dependability, not gimmickry”는 뺐습니다.
+
+**원장 (E2).** `#084fff`는 Content Observed 488에 없고 Principles 59·App Submit 292에 있습니다. `display_name_kr` 카페24는 Scope 9와 provenance 11 이중 목적지입니다. live computed 재서술은 Font 190입니다. Layout recorded-span은 474가 아니라 460입니다.
+
+기록: `docs/design-md-weight/migrated/cafe24/audit-log.md`. Post-F3 SHA-256 `fde9399b9e7a63abe8d6553cfba583c398ec68d8f95aed8e1659760649d4ded0`. `--gate-only` PASS, `portable_core: true`. sol 의미 레인 대기. 카탈로그 채택 아님.
+
+AUDIT_DONE fixes=23

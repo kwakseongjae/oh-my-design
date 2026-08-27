@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "bounded-council-dispatch-1.9.735",
+  "candidate_status": "local_contract_complete",
+  "selected_lane_cap": 4,
+  "pre_ship_contrarian_cap": 1,
+  "retry_budget": 0,
+  "automatic_dispositions_changed": 0,
+  "cited_claims_required": true,
+  "one_implementation_owner": true,
+  "focused_tests_passed": 49,
+  "full_tests_passed": 788,
+  "full_tests_skipped": 3,
+  "lint_build_count_pass": true,
+  "live_multi_agent_effectiveness_observed": false,
+  "human_intervention_lift_observed": false,
+  "frontier_gate_pass": false,
+  "claim_boundary": "The bounded advisory dispatch and reconciliation contract is implemented and locally verified. This does not establish live council quality, fewer user interventions, or 2.0 promotion."
+}

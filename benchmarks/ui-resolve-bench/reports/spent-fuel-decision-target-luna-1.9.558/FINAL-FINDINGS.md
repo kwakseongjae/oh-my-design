@@ -1,0 +1,7 @@
+# Spent-fuel decision-target inventory transfer findings
+
+Both first-round cells produced objective 85/85 surfaces, but neither produced a closed proof artifact. The control bound each handling-station comparison carrier only to its identifier while the carrier also contained a separately registered transfer-window row. Browser proof correctly rejected both instances. The candidate successfully locked the new protected decision target as one exact target row with one distinct target-only carrier.
+
+The candidate then invoked the shipped browser runner with plain Python instead of piping it through the exact named `browser-harness` mechanism. The resulting `ensure_real_tab` error was recorded before edit, but the model continued with one product edit. Static close and final browser proof could no longer pass because the measured pre-edit plan did not exist. This is a protocol-adherence failure, not a UI-quality failure and not evidence against the target-inventory gate.
+
+The candidate was faster and used fewer tokens than control: 443.875 seconds and 1,612,523 tokens versus 543.074 seconds and 2,987,256 tokens, ratios 0.8173× and 0.5398×. Those efficiency observations do not qualify for promotion because proof Reliability@3 is already capped at 2/3. The remaining four cells are frozen without provider calls. The next bounded repair is a self-dispatching shipped runner that routes a mistaken plain-Python invocation into the exact named browser-harness process before touching the artifact.

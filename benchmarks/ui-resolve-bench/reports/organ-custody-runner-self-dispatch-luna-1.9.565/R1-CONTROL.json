@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.567",
+  "experiment_id": "organ-custody-runner-self-dispatch-luna-1.9.565",
+  "cell_id": "luna-organ-r1-control",
+  "status": "complete",
+  "validity": "valid",
+  "run_status": "complete",
+  "ui_resolved": false,
+  "objective_score": 79,
+  "objective_max": 85,
+  "wall_time_ms": 523045,
+  "provider_tokens": 1900170,
+  "provider_usage": {
+    "input_tokens": 1875579,
+    "cached_input_tokens": 1792000,
+    "output_tokens": 24591,
+    "reasoning_output_tokens": 10573
+  },
+  "proof_trace": {
+    "analyzable": true,
+    "compliance_pass": true,
+    "product_edit_count": 1,
+    "product_revision_count": 1,
+    "static_closure_count": 1,
+    "browser_mechanism_count": 1,
+    "browser_recovery_count": 0,
+    "duplicate_static_closure_count": 0,
+    "verification_after_ready_count": 0
+  },
+  "proof_execution_gate": {
+    "pass": false,
+    "reasons": [
+      "reflow-static-closure-not-passed",
+      "reflow-browser-attempt-not-measured",
+      "reflow-exact-consumer-attachment-missing",
+      "reflow-browser-launch-detected",
+      "reflow-measurement-conditions-incomplete",
+      "reflow-document-overflow-limit",
+      "reflow-locked-typography-changed",
+      "reflow-artifact-not-closed"
+    ],
+    "artifact_present": true,
+    "static_closure_state": "open",
+    "browser_attempts": 0,
+    "browser_outcome": "not-run",
+    "closure_state": "open",
+    "shipped_runner_required": true,
+    "shipped_runner_invoked": true
+  },
+  "objective_failures": {
+    "desktop_action_spatially_separated": false,
+    "narrow_320_short_atomic_text_within_line_budget": false,
+    "actual_200pct_short_atomic_text_within_line_budget": false
+  },
+  "failure_boundary": {
+    "class": "control-runner-missing-plain-python-self-dispatch",
+    "detail": "The control invoked its shipped pre-edit fit runner through plain Python. browser-harness helpers were unavailable, measurements remained open, static closure failed, and the terminal browser command could not close the artifact.",
+    "expected_by_preregistration": true,
+    "retry": false
+  },
+  "artifact_hashes": {
+    "run_result_sha256": "9c38dbba710bb25cbd8a47d78a7f71c66eb63e4ee1427aaccb30db5fbb366f24",
+    "score_sha256": "be3a87771bd1e844e9fe51360b501702ea60d9cda370eda5cee290ad4307b751",
+    "run_record_sha256": "96756653b6997cd67ae2fea8a1c2852141736ece7b5b96cb3eed44a57bf252bc",
+    "proof_trace_sha256": "ad5c7614daf40973bf43a252fc87ef6e46e451d7b35bc05938b8a590fa30a825",
+    "benchmark_tree_sha256": "b9db2a23f1f0e99d7c6f2fe759d88147704443c44f8177ef6ae03e9ba5a0b998"
+  },
+  "tokens_to_target": {
+    "attempt_order": 41,
+    "prior_observed_provider_tokens_minimum": 78112464,
+    "this_cell_provider_tokens": 1900170,
+    "cumulative_observed_provider_tokens_minimum": 80012634,
+    "goal_status": "right-censored-open"
+  },
+  "next": "Run luna-organ-r1-candidate once after the preregistered pacing interval. Do not retry or repair the control cell."
+}

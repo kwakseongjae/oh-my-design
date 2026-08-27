@@ -1,0 +1,9 @@
+T2 마이그레이션을 시작합니다. 지정된 규격·규칙집·골든 샘플을 먼저 읽고, 그다음 CakeResume legacy DESIGN.md를 Core v2로 옮기겠습니다.규격과 규칙집을 읽었습니다. 승인된 musinsa 골든 샘플과 CakeResume 원문, 이미 통과한 이관본을 대조하겠습니다.골든 샘플 형태와 승인된 toss 이관본, CakeResume 기존 산출물을 대조합니다.승인된 이관본에서 B2a·C2·B3 처리와 CakeResume 유사 레퍼런스를 확인합니다.게이트 스크립트와 얇은 prose-derived 이관본의 컴포넌트·상태 처리도 확인합니다.원문 값·상태·서사를 정리한 뒤 Core v2 본문을 작성합니다. 해석 문장에는 B2a 한정을 붙이고, 미관측 상태는 `not-applicable`로 닫지 않습니다.본문을 처음부터 다시 읽고 B2a 스캔을 합니다. 인과·해석 문장마다 근거 class를 가릅니다.F1에서 한정 빠진 해석 문장을 찾았습니다. Scope 범위 지정, Audience의 가상 archetype 분류, Content의 마이크로카피 해석에 B2a를 붙입니다.게이트와 Portable Core 검사를 돌린 뒤, grep으로 확인한 줄 번호로 migration-log를 쓰겠습니다.게이트가 로그의 `320px`/`200%`를 발명 토큰으로 잡았습니다. 그 수치를 로그에서 빼고 다시 검사합니다.Audience에 가상 persona 이름 세 개가 남아 있습니다. D2를 위해 항목 이름 없이 제외만 남기고 SHA를 다시 맞춥니다.CakeResume legacy `DESIGN.md`를 Core v2 Portable Core로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/cakeresume/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v7**.
+
+보존한 값: `#13AB67` / `#0C4129` / `#378060` / `#FFFFFF` / `#000000` / `#E2E6E4` / `#D1D6D4` / `#0E0E0F`, Inter + Apple SD Gothic Neo, 4px / 32px / 38px / 16px / 14px, YAML `type` button·button·input·badge. YAML `rounded.full` 9999와 pill 금지는 충돌로 남기고 알약 토큰으로 올리지 않았습니다.
+
+적용한 제약: §9 도구 프롬프트 삭제, §13 가상 persona 미수록, 미관측 hover를 `not-applicable`로 바꾸지 않음, Chip은 kind/map 생략(C4), Language Selector loading/error/success는 역할로만 닫음(C2), Motion은 B3 다섯 증거 종류 전문.
+
+검사: `inspectDesignMd` `portable_core: true`, `--gate-only` **PASS**. SHA-256 `c50ea4851304b222e5ce5aae4b4ba443a70ee5a08f3ba0b00321fc1dd11f7f37`. F3 감사와 sol 의미 레인은 아직입니다. 카탈로그 채택은 하지 않았습니다.
+
+DONE migrated=1

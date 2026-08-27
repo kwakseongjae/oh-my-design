@@ -1,0 +1,9 @@
+B2a·E2 전담 감사를 시작합니다. 규칙서의 해당 조항과 catchtable 산출물부터 읽고, 문장 한정과 원장만 고치겠습니다.규칙서 B2/B2a·E2는 확인했습니다. catchtable 산출물 세 파일과 최근 감사 로그 형식을 읽겠습니다.문장 분류와 원장 grep을 병렬로 진행합니다. 원본 DESIGN.md와 불완전 B2a·인과 표현을 대조합니다.원장 목적지를 값 단위로 grep하고, 원본 후반부와 미한정 인과 문장을 대조합니다.원장에서 잘못된 줄 번호와 허위 이중 목적지를 확인했습니다. DESIGN.md 한정은 기존 줄에만 붙여 줄 번호가 밀리지 않게 하겠습니다.B2a 한정을 기존 줄에 붙이고, 원장의 잘못된 목적지를 고치겠습니다.본문 한정은 기존 줄에 붙였습니다. provenance 파생 범위와 원장 목적지를 실제 grep 결과에 맞춥니다.CatchTable F3 감사는 B2a·E2만 고쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 그대로입니다.
+
+**B2a.** 편집적 해석인데 인접 한정이 없거나 독해를 끝까지 안 적은 문장에 `derived editorial implementation inference` / `not CatchTable-authored or a separately published UI specification`을 붙였습니다. Scope 13 values-stay-attached, Motion 127 intentionally-undocumented, Type-role 157의 13px 라벨, Family 153 declared-only 폰트, Assets 170 아이콘 라이브러리 미청구, Capture 179 default-only/`surface-2`, Capture 181 §14 미닫힘, Layout 312  extras, Merchant 281 `surface-2` not-copied.
+
+**E2.** 로그를 grep으로 맞춰 고쳤습니다. consumer URL `58→57`, merchant `59→58`, careers에 `59` 추가, declared-only Don’t는 Family 153만(Capture 183은 대비 페어링), `#002d4e`는 Claim 106이지 107이 아님, `#ff3d00`에 Freshness 43. provenance derived 목록도 본문 실제 한정과 같게 맞췄습니다.
+
+기록: `docs/design-md-weight/migrated/catchtable/audit-log.md`. Post-F3 SHA-256 `3fe295155a4fbffa56f03f19b356b689e082bc76421efa236bb4ca30ef4e7485`. `--gate-only` PASS, `portable_core: true`.
+
+AUDIT_DONE fixes=13

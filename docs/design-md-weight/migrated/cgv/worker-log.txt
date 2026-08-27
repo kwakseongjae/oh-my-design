@@ -1,0 +1,22 @@
+T2 마이그레이션을 시작합니다. 규격·승인 대응표·제약·골든 샘플·규칙집을 먼저 읽고, 이어서 CGV legacy를 Core v2로 옮기겠습니다.규칙집 v7을 확인했습니다. 이어서 목적지 규격, 대응표, T1 제약, 골든 샘플, CGV legacy를 순서대로 읽습니다.골든 샘플, T1-3 의미 보존 조건, CGV legacy, 최근 통과 이관본을 함께 읽습니다.골든 샘플의 provenance/migration-log와 최근 통과 이관본, Core v2 나머지 규격을 이어서 읽습니다.형태는 musinsa/catchtable을, B2a·C2·A1은 최근 통과본 기준으로 맞추고 DESIGN.md부터 작성합니다.Named gaps의 first-party mark 행은 발명된 부정 claim이므로 빼고, Portable Core 검사와 B2a 재독을 진행합니다.Portable Core는 통과했습니다. 이제 본문 전체를 다시 읽어 B2a 스캔을 합니다.B2a 보강 반영 후, 로그용 줄번호를 grep으로 실측합니다.provenance.md를 실측 줄번호로 작성합니다.게이트가 `8px` 발명을 차단했습니다. 원본은 `8/10/16/24px`와 unitless `8`만 있으므로 분리된 `8px`를 모두 고칩니다.CGV legacy `DESIGN.md`를 Core v2로 옮겼습니다. 규칙집 **v7**, F1 B2a 전수, F2 grep dest 대조까지 반영했습니다.
+
+산출물:
+- `docs/design-md-weight/migrated/cgv/DESIGN.md`
+- `docs/design-md-weight/migrated/cgv/provenance.md`
+- `docs/design-md-weight/migrated/cgv/migration-log.md`
+
+검증: `--gate-only` PASS (`problems: []`), `portable_core: true`. DESIGN SHA-256 `b6b28c4ba25f2cf1c5d92713bf9c1971460c1a02f6646e5e26b1c2a0440a0ec0`.
+
+보존한 값의 요지:
+- 색 `#121212` / `#ffffff` / `#f4f4f4` / `#454545` / `#d9d9d9` / `#fc5555` (시그널은 primary·error로 승격하지 않음)
+- YAML lineHeight `1.4` / `1` 비율, tracking `-0.4` / `-0.2`
+- 컴포넌트 primitive `button` ×2, `badge`, `listItem` (tab으로 뒤집거나 listItem을 button으로 바꾸지 않음)
+- Screen Format Badge는 kind/map 생략 (C4)
+- Outline Action loading/error/success는 매핑 미해상으로 생략 (C2)
+- 무출처 커브 없음. Motion 승격 게이트 5종은 Foundations에 전문으로 남김
+- Google s2 favicon은 1st-party 마크로 승격하지 않음
+- §13는 이해관계자 그룹만 Audience. 가상 persona는 sidecar에도 없음
+
+카탈로그 채택 주장은 아닙니다. F3 감사는 이 세션 밖입니다.
+
+DONE migrated=1

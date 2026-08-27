@@ -1,0 +1,28 @@
+T2 ClickHouse 마이그레이션을 시작합니다. 먼저 규칙집·골든 샘플·소스 DESIGN.md를 순서대로 읽고, 그 다음 Core v2 본문을 작성합니다.규칙집 v8, 골든 샘플, 소스 ClickHouse DESIGN.md를 한꺼번에 읽습니다.클릭하우스 소스와 골든 샘플, Core v2 스펙, 판정문을 이어서 읽습니다.골든 샘플과 최근 통과 이관본, ClickHouse 원문을 이어서 읽습니다.원문 나머지를 이어서 읽고, 최근 통과 이관본 한 건을 형태 참고로 대조합니다.클릭하우스 Proof와 유사 이관본의 컴포넌트 처리(C2·C4)를 확인합니다.원문 토큰·공식 경계·C2/C4를 고정한 뒤 Core v2 세 파일을 작성합니다.Core v2 `DESIGN.md`를 작성합니다. B2a 한정을 해석 문장 옆에 붙입니다.DESIGN.md 줄번호가 안정됐으니 provenance.md를 작성합니다.Scope claim이 Portable Core에서 거절됐습니다. 검사기가 무엇을 요구하는지 확인합니다.ClickHouse legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 아래 세 파일입니다.
+
+- `docs/design-md-weight/migrated/clickhouse/DESIGN.md`
+- `docs/design-md-weight/migrated/clickhouse/provenance.md`
+- `docs/design-md-weight/migrated/clickhouse/migration-log.md`
+
+규칙집 **v8**. F1(B2a 전수 재독)과 F2(원장 dest grep)를 제출 전에 수행했습니다.
+
+보존한 경계 중 중요한 것만 적으면:
+
+- YAML unitless `lineHeight` `1.25` / `1.50` / `1.43`는 비율로 유지
+- `Type: listItem`만 컴포넌트별로 유지. 나머지 컨트롤은 YAML type 없음 → 발명하지 않음
+- `tokens.source: reconciled`는 provenance-only. `ds.type: system`은 Scope + provenance
+- Simple Icons `clickhouse`는 identity 경계. first-party mark로 올리지 않음
+- 내비 focus/hover/pressed는 추가 관측 상태. `focus-visible` 행에 색 없음
+- §13 `[FILL IN]`·가상 persona는 삭제. sidecar 재수록 없음
+- 무출처 커브 없음. B3 다섯 증거 종류는 Foundations Motion에 전문
+- Public List Item은 kind/map 생략(C4)
+- Primary/Secondary/Cookie Dialog의 loading·error·success는 생략(C2). Nav/Select Menu/Toggle은 역할상 not-applicable
+- `#faff69`와 쿠키 그린 `#166534`, canvas/surface/overlay/toggle, on-action과 `#ffffff`, hairline/accent/cookie border, home `10px 16px`와 pricing `12px 24px`는 합치지 않음
+
+검증: `--gate-only` PASS / `problems []`. Core `portable_core: true`. SHA-256 `eb9b8ee40beb12623e241146bb30c8c643a4a7da83800a26b911cb0c30df6533`. F3 감사와 sol 의미 레인은 별도 세션. 카탈로그 채택은 아님.
+
+DONE migrated=1
+
+Revision 2026-08-25 (wave16 final resubmit): restored canonical `.verification.md:25` selector-bound raw tuple on provenance 193; resynced §11 Proof disposition ledgers. DESIGN.md unchanged. SHA `60cb67aa2497bf9243ea21ad9ff25c567e208263ad709cbff03f228dfa6d1c57`. `--gate-only` PASS, problems `[]`. portable_core true. New F3 not run.
+
+DONE revised=1

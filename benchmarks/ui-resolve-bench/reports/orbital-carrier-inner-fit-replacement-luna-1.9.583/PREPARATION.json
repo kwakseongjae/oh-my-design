@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.584",
+  "experiment_id": "orbital-carrier-inner-fit-replacement-luna-1.9.583",
+  "status": "SIX_CELLS_PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19583",
+  "vendors_root": "/private/tmp/u19583-vendors",
+  "locked_plan_sha256": "4b4027e7eb28a77279601faaadcb7091ea6fe0dd3136406559b352cd2cf14cc5",
+  "equality": {
+    "scheduled_cells": 6,
+    "prepared_cells": 6,
+    "core_prompt_equal": 6,
+    "prompt_equal": 6,
+    "starter_equal": 6,
+    "product_tree_equal": 6,
+    "runtime_equal": 6,
+    "model_equal": 6,
+    "effort_equal": 6,
+    "timeout_equal": 6
+  },
+  "source_attestation": {
+    "control": {"commit": "a6ebdc8a923538a997d2724f90a09e1eb63f46f2", "detached": true, "clean": true},
+    "candidate": {"commit": "853db7bfe0939e0c58b1c8d01e7d2348100a14c8", "detached": true, "clean": true}
+  },
+  "installed_source_sha256": {
+    "control_skill": "e1d41f84309c288a8bc5764c66eaa0e36b10afbca5bb1de3cb08a022b8184649",
+    "candidate_skill": "3859dffc08b15729ee44976e5240a690f93210444f8605772e84a1b117955617",
+    "control_browser_runner": "b57a2a405fcbac8493d69df7e17f5d4d45685467df98bb3c1cdc14517d219927",
+    "candidate_browser_runner": "050f28dffd59a913a25e3a6195e8169a9fbc4419e46f8ea60768c6b4cacbf2a1",
+    "control_artifact_helper": "276020bdd2e699df0ee4af1fd34d83723edb045e92ee37c7a5de5e0781c95ac1",
+    "candidate_artifact_helper": "df16a41b4eba03e1054100e0520ba77395e0a50b6150ae9b099a72ead96f50f4"
+  },
+  "shared_guardrail_presence": {
+    "stable_pre_edit_target_carrier": true,
+    "snapshot_target_presence_witness": true,
+    "exact_one_target_row": true,
+    "distinct_target_only_carrier": true,
+    "runner_self_dispatch": true,
+    "snapshot_carrier_anchor_validation": true,
+    "aggregate_outer_width_gate": true,
+    "structured_first_edit_checklist": true
+  },
+  "isolated_delta_guardrail": {
+    "control_document_width_field_present": true,
+    "control_carrier_inner_width_field_absent": true,
+    "candidate_document_width_field_retained": true,
+    "candidate_carrier_inner_width_field_present": true,
+    "candidate_minimum_across_carrier_instances": true,
+    "candidate_feasibility_uses_bound_carrier_inner_width": true
+  },
+  "next": "Run runtime browser, CLI, authentication, and evaluator preflight, then execute luna-orbital-sample-r1-control once with Luna/high and no retry."
+}

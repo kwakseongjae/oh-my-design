@@ -1,0 +1,20 @@
+B2a·E2 전담 감사로 진행합니다. 룰북의 해당 조항과 이관 산출물을 읽고, 문장 분류와 원장 대조부터 하겠습니다.완료된 감사 로그와 원본을 대조해, 한정 누락과 원장 불일치를 같은 기준으로 잡겠습니다.완료된 F3 감사에서 어떤 문장을 세 번째 부류로 잡았는지 확인하고, 본문에서 한정이 빠진 문장을 찾겠습니다.문장 분류는 거의 끝났고, 이제 로그·provenance의 목적지 줄번호를 본문에서 직접 grep으로 대조합니다.문장 분류에서 인접 한정이 없거나 원장 목적지가 틀린 지점을 확정했습니다. 한정은 기존 줄에 붙이고, 로그·provenance는 grep 결과에 맞춥니다.B2a·E2 전담 감사를 마쳤습니다. 토큰 값, 컴포넌트 표, 상태 applicability, 구조는 건드리지 않았습니다.
+
+**본문 한정 (8)**
+- Elevation 131: 표 뒤에 없다는 extra philosophy를 limiter-local로 정정
+- Utility 440 / Carousel 464: YAML-row-absent Type-not-invented (Carousel는 Kind `interactive` 포함)에 인접 완전 B2a
+- Layout 538: `consistent-with-the-flat-system` / `scrim-to-preserve-legibility` 명명
+- Layout 548/550/552: 브레이크포인트 표 뒤 collapsing / image / touch에 인접 완전 B2a
+- Content 559: 없는 괄호 성격 대신 실제 em-dash 역할 라벨로 한정을 맞춤
+
+**원장 (4)**
+- `#640faf` Capture 225 누락 보강, `#ec0040` 목적지 완전 목록
+- homepage / `homeTab` / PDP / medium 이중 목적지 분리 (`homeTab`은 Tier 1 문자열이 아님)
+- YAML lineHeight dest를 196/198/206/209로 수정 (202–210 과대 주장 제거)
+- provenance derived 범위를 실제 63개 B2a 자리에 맞춤
+- worker SHA는 current-class가 아님 (E2c)
+
+기록: `docs/design-md-weight/migrated/cjonstyle/audit-log.md`  
+Post-F3 SHA-256 `e89aeaeedd04b0b18e4a64bd5b9e25b44bfbddbd698002fcd32ec19af9e2358d`. `--gate-only` PASS, `portable_core: true`. 카탈로그 채택 아님.
+
+AUDIT_DONE fixes=12

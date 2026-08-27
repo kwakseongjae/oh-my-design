@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "transit-semantic-carrier-luna-1.9.255",
+  "status": "PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19256",
+  "vendors_root": "/private/tmp/u19256-vendors",
+  "scheduled_cells": 6,
+  "prepared_cells": 6,
+  "locked_plan_sha256": "1376631a18529c74997148b121fe620f36d4daedcd6b350983fbe60f5ab69683",
+  "preparation_state_sha256": "1aad4610b4d920b9d33f780bfc2b1fd98399eb6cc46bd4d9a1526ed9d7ac4d83",
+  "source_attestation": {
+    "close_latch_commit": "1d204afea6c3ab106752613b7f341ed2f76fd843",
+    "close_latch_skill_tree_sha256": "7336c0374eeef7f1e60a8992c582b99d5a09effc2faaa5a4e839f43ae8c7cbcb",
+    "semantic_carrier_commit": "ba8fb546b48c1a49e9e8b31227aab438c8a0ce2f",
+    "semantic_carrier_skill_tree_sha256": "3a45091b876df7f1ae2426ffd0f12fac6b812a441749fdd03e429b2e924a53e2"
+  },
+  "shared_attestation": {
+    "core_prompt_sha256": "1ce4c5dfd53e06604325bf304a8a8fd47dce652dd70d8d699cb7f642bd7167ee",
+    "runtime_prompt_sha256": "2aeff0b6d1735c3fb45e5b2cb32314d4dfe074d7984d1c49ac3a0442581bd5c4",
+    "product_sha256": "87ac1327e337a6e3261b16f446d8fe968eedd1acd66056742df78fceeeaa277b",
+    "activation_sha256": "79911390d47fc1626153de4416567dbb8f77f6deea25b6c6757d24952d3732a7",
+    "host_policy_config_sha256": "57abe807f0c49ca67a94e75666fda10ad37e874ea2b428db38bcbb2b67803a4c"
+  },
+  "equality": {
+    "task": true,
+    "prompt": true,
+    "product": true,
+    "design": true,
+    "activation": true,
+    "runtime": true,
+    "model": true,
+    "effort": true,
+    "timeout": true,
+    "installed_proof_policy": true,
+    "git_root_all_cells": true,
+    "source_detached_all_cells": true,
+    "source_publishable_all_cells": true
+  },
+  "sole_arm_delta": "exact-installed-skill-source",
+  "next_command": "node benchmarks/ui-resolve-bench/scripts/run-prepared-matrix.mjs --root /private/tmp/u19256 --max-new-cells 1",
+  "next_cell": "luna-transit-r1-close",
+  "same_root_retry": false
+}

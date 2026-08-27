@@ -29,7 +29,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "prepare": "husky"
+    "prepare": "husky",
+    "indexnow": "node scripts/indexnow-ping.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.98.0",

@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.540",
+  "experiment_id": "pharmaceutical-aggregate-carrier-luna-1.9.536",
+  "status": "FROZEN_NO_PROMOTION",
+  "provider_calls": 3,
+  "scheduled_cells": 6,
+  "completed_cells": 3,
+  "frozen_cells": 3,
+  "arms": {
+    "control": {
+      "completed": 1,
+      "ui_resolved": 0,
+      "proof_compliant": 0,
+      "objective_score": 79,
+      "wall_time_seconds": 489.213,
+      "provider_tokens": 1131127
+    },
+    "candidate": {
+      "completed": 2,
+      "ui_resolved": 1,
+      "proof_compliant": 0,
+      "aggregate_fit_plan_complete": 2,
+      "proof_reliability_at_3_max": "1/3",
+      "objective_scores": [85, 79],
+      "mean_wall_time_seconds": 451.0795,
+      "mean_provider_tokens": 1025886,
+      "paired_r1_wall_ratio_to_control": 1.0063927161,
+      "paired_r1_token_ratio_to_control": 0.9035357215
+    }
+  },
+  "aggregate_carrier_transfer": {
+    "pre_edit_aggregate_measurement_executed_trials": 2,
+    "carrier_reflow_classification_complete_trials": 2,
+    "ui_resolved_trials": 1,
+    "proof_closed_trials": 0,
+    "promotion_conclusion": "not established because both candidate trials missed an exactly-once static guardrail on the first edit"
+  },
+  "promotion": false,
+  "freeze_reason": "Candidate trials 1 and 2 both failed proof compliance. Candidate proof Reliability@3 can reach at most 1/3, so three additional provider calls cannot restore eligibility.",
+  "tokens_to_target_observed_minimum": 66556830,
+  "tokens_to_target_usage_unavailable_cells": 6,
+  "next": "Provider-free repair must distinguish safe zero min-width resets from positive fixed-width locks and make every locked forbidden assertion an explicit first-edit checklist before the exactly-once static close."
+}

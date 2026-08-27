@@ -1,0 +1,15 @@
+T2 cookpad 마이그레이션을 시작하기 전에 규칙집·골든 샘플·원본 DESIGN.md를 순서대로 읽고, 이어서 Core v2로 옮기겠습니다.규칙집과 Core 규격을 확인했습니다. 이어서 대응표, T1 제약, 골든 샘플, cookpad 원본을 읽습니다.골든 샘플과 cookpad 원본을 읽어 형태와 옮길 값을 확정합니다.최근 통과 이관본의 문장 형태와 게이트 조건을 확인한 뒤 cookpad 값을 매핑합니다.원본 값과 최근 이관 형태를 맞춰 `DESIGN.md`부터 작성합니다.본문 줄번호를 잡은 뒤 provenance와 migration-log를 씁니다.Capture record의 Core §4.4·C4 문장에 B2a 한정을 붙인 뒤 provenance를 작성합니다.F2 grep·게이트·Portable Core를 실제로 돌려 로그에 적은 목적지를 대조합니다.게이트가 `50%` 손실을 잡습니다. 원본 위치를 찾아 보존합니다.Cookpad legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/cookpad/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집 **v8**.
+
+보존한 값과 경계를 요약하면 다음과 같습니다.
+
+- YAML unitless line-height `1.3` / `1.4` / `1.5`를 비율 그대로 유지했습니다.
+- 컴포넌트 primitive type을 컴포넌트별로 유지했습니다 (`button` ×5, `card` ×2, `input`, `badge`).
+- `tokens.source: prose-derived`와 Google favicon URL은 provenance에만 두고, 본문 Assets는 lookup/non-promotion만 적었습니다.
+- Search의 named Focus `#FF9933` ring은 `focus-visible`로 올리지 않았습니다.
+- §13 가상 persona는 삭제했고 sidecar에도 다시 싣지 않았습니다.
+- 무출처 cubic-bezier 4개는 provenance omission ledger로 분리했고, duration 0/150/250/300ms·easing 이름·signature·reduced-motion·B3 다섯 증거 종류는 Foundations에 남겼습니다.
+- Recipe/Promoted card는 kind/map을 생략했습니다 (C4). Primary error/success, Secondary/Text L/E/S는 역할상 닫지 못했습니다 (C2). Category L/E/S는 의미상 `not-applicable`입니다.
+
+F1 B2a 스캔과 F2 grep을 제출 전에 수행했습니다. `--gate-only` PASS (`problems: []`), Portable Core `true`. SHA-256 `259f93d4fe046f9badeb4830111188cd691a83a87b897ac2b4269a05cf40a0e6`. F3 감사와 sol 의미 레인은 대기입니다.
+
+DONE migrated=1

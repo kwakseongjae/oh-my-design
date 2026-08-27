@@ -485,6 +485,52 @@ This document is the project design contract. User direction wins over repositor
     ]));
   });
 
+  it('separates a scope body that denies its subject from one that bounds its evidence', () => {
+    const scopeBody = 'Atlas helps dispatchers resolve exceptions while preserving shipment identity and ownership.';
+    const withScope = (body: string) => fixture('core-v2.md').replace(scopeBody, body);
+
+    // Denies the subject outright — the claim is empty prose and must not certify.
+    const denies = engine.inspectDesignMd(withScope('This reference names no product surface.')).conformance;
+    expect(denies.portable_core).toBe(false);
+
+    // States the scope, then bounds the evidence behind it. Three migration workers
+    // reworded correct prose to get past the old window; that is the document
+    // distorting itself to satisfy a checker, so boundary talk must stay legal.
+    const bounds = engine.inspectDesignMd(withScope(
+      `${scopeBody} It describes those surfaces only; the product and documentation surfaces named in the source stay outside this evidence base, and no computed observation backs any product value here.`,
+    )).conformance;
+    expect(bounds.portable_core).toBe(true);
+    expect(bounds.reasons).toEqual([]);
+  });
+
+  it.each([
+    ['the source lacks it', 'Reading them out of the recorded components, since the source declares no task list of its own.'],
+    ['the contract stops', 'It does not treat either surface as a proxy for the individual service products behind them.'],
+    ['the source records none', 'The source records no reduced-motion rule for any of the above.'],
+    ['classification, not denial', 'This is a derived editorial reading, not a quoted rule.'],
+  ])('keeps a scope claim that attributes the absence to the source (%s)', (_label, tail) => {
+    const scopeBody = 'Atlas helps dispatchers resolve exceptions while preserving shipment identity and ownership.';
+    const conformance = engine.inspectDesignMd(
+      fixture('core-v2.md').replace(scopeBody, `${scopeBody} ${tail}`),
+    ).conformance;
+    expect(conformance.portable_core).toBe(true);
+    expect(conformance.reasons).toEqual([]);
+  });
+
+  it('keeps a foundations claim whose unresolved subject is the source, not the claim', () => {
+    const scopeBody = 'Atlas helps dispatchers resolve exceptions while preserving shipment identity and ownership.';
+    // The sentence the expo migration worker hit: measured values sit above it,
+    // and what is unresolved is the source's motion record, not this claim.
+    const conformance = engine.inspectDesignMd(
+      fixture('core-v2.md').replace(
+        scopeBody,
+        `${scopeBody} The source records no reduced-motion rule. Motion tokens are unresolved and stay absent rather than being filled with a plausible default.`,
+      ),
+    ).conformance;
+    expect(conformance.portable_core).toBe(true);
+    expect(conformance.reasons).toEqual([]);
+  });
+
   it('rejects contradictory governance prose even when claim markers are copied', () => {
     const source = fixture('core-v2.md')
       .replace('This document is the project design contract for the declared scope.', 'This document carries zero authority.')

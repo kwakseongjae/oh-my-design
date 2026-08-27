@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.504",
+  "execution_root": "/private/tmp/u19503",
+  "cell_id": "luna-grid-r1-control",
+  "status": "VALID_UI_RESOLVED_PROOF_FAILED",
+  "objective": {"score":85,"max":85,"ui_resolved":true},
+  "efficiency": {"wall_time_seconds":353.206,"provider_tokens":1134209},
+  "proof": {
+    "pass": false,
+    "reasons": [
+      "reflow-pre-edit-product-snapshot-invalid",
+      "reflow-locked-typography-changed",
+      "reflow-inline-fit-reserve-insufficient",
+      "reflow-artifact-not-closed"
+    ],
+    "product_edits": 1,
+    "static_closures": 1,
+    "browser_mechanisms": 1,
+    "browser_recovery": 0,
+    "attached_existing": true,
+    "launched_browser": false
+  }
+}

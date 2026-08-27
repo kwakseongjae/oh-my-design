@@ -1,0 +1,577 @@
+{
+  "schema_version": "0.2",
+  "snapshot_patch": "1.9.882",
+  "source_commit": "d3a32ce8fd64c95372499c6f12b0f1ad1719f10c",
+  "execution_scope": "provider-zero-clean-commit-deterministic-tests",
+  "provider_calls": 0,
+  "model_calls": 0,
+  "browser_calls": 0,
+  "cursor_calls": 0,
+  "source_bindings": [
+    {
+      "path": "agents/omd-design-system-architect.md",
+      "sha256": "b801bb38e766a25f3b0f95c1187978f4e1e12bd745fe3a16c33936fba16ea48c",
+      "bytes": 4708
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/autopilot-v2-readiness-1.9.882.json",
+      "sha256": "a8a6cf9b29e2c836abc8ae05509c9fca9adf67100904c6ce2b272c57ba597752",
+      "bytes": 7356
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json",
+      "sha256": "827e7933d360a139717a3790570b704544e6edbfc616353596e059f9b3de2c85",
+      "bytes": 8925
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json",
+      "sha256": "53634e4f8e79b34460ebd1d470b381b3167753bf6e07f03eb4aa7ce268e9bf6c",
+      "bytes": 10548
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/config/autopilot-luna-high-smoke-v0.2.json",
+      "sha256": "d942b2e1255157dc3018e82383ecc6503ba87ca1a18fd4f52767680801ca12c6",
+      "bytes": 9673
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/config/autopilot-v2-qualification.json",
+      "sha256": "8fdf2ad3cb4a7fdb2af7095a128bf7e0ab96f174cc40fd72599115a2ed5af113",
+      "bytes": 5620
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/caregiver-onboarding/oracle-a/index.html",
+      "sha256": "fe4fe0b9b4530a33be0e63cb7b8142630ecb08b98a0677f0545d1d74fd5129b1",
+      "bytes": 4827
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/caregiver-onboarding/oracle-b/index.html",
+      "sha256": "3efecb70d5882ec520950bc86a41d712270e0cd4861ee56c1ba9ac035c144e92",
+      "bytes": 5379
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/clinic-visit-prep-locales/oracle-a/index.html",
+      "sha256": "9e57cf67971dcec21722f54e8c5c7ae3ff4ccb4155892cf74e582d4000907131",
+      "bytes": 4729
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/clinic-visit-prep-locales/oracle-b/index.html",
+      "sha256": "2c526631330a3111af7ef92277c1e90c7b2d3d918217189725fcd4646b90818e",
+      "bytes": 4659
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/cold-chain-operations/oracle-a/index.html",
+      "sha256": "74d7e86d43095db04b5a5933143057d040fe3e24efa3a0f3b39b22b09ac5d453",
+      "bytes": 7863
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/cold-chain-operations/oracle-b/index.html",
+      "sha256": "b24dd4c0f9e954a86483c8af59253933cb5fc7713141874a7d2afc896df1c36b",
+      "bytes": 6537
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/community-class-checkout/oracle-a/index.html",
+      "sha256": "0579bee5d5bf4c1a3db7f4f2bd3907563ac6147509942566d07379c63cedb898",
+      "bytes": 4344
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/community-class-checkout/oracle-b/index.html",
+      "sha256": "105473eb093faa66a054e6df2ba0ce4a937409be26c2c0d054387bfd933638ed",
+      "bytes": 4881
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/field-notes-editorial/oracle-a/index.html",
+      "sha256": "946dcc65f607803d4427748fa4380beefba072555a6b27497f3b7b8924ac7e92",
+      "bytes": 4829
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/field-notes-editorial/oracle-b/index.html",
+      "sha256": "861677ef7f167ac0af9fdae69ba618ee549e968b9233af88e2ce126fc55b5cee",
+      "bytes": 4674
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/grant-evidence-intake/oracle-a/index.html",
+      "sha256": "f63db7a1f27cad7b84e3722978382b94181515e1cac5304991669c9ab44bdf08",
+      "bytes": 4746
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/grant-evidence-intake/oracle-b/index.html",
+      "sha256": "45c3adf0a478bd1783a7c1d63803fac56b83d17fbcc3aae8c8a097f062d451bf",
+      "bytes": 4247
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/incident-response-dashboard/oracle-a/index.html",
+      "sha256": "281cca115e6cb98c394103580fd0c3bb1c05c72ab95c68382b4b207d73019e22",
+      "bytes": 24431
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/incident-response-dashboard/oracle-b/index.html",
+      "sha256": "ee0d5c3b8e3cee9467649f5cfa92d49e47531b9d42ebf8850322865a4c66c2e5",
+      "bytes": 26127
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/mobile-transit-report/oracle-a/index.html",
+      "sha256": "75c0e99ad19c61293f78ab5595407bcdb0e3ed54040283f06d380b555f70e0ef",
+      "bytes": 5075
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/mobile-transit-report/oracle-b/index.html",
+      "sha256": "dfba522a95257726260f5ec66678258188229f2a8d8572d267601215e2e2ab74",
+      "bytes": 3940
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/neighborhood-library-landing/oracle-a/index.html",
+      "sha256": "4cbf5a28ab582b8e39c955beed24792a9173697c7c89bf2afce7b84d0091c762",
+      "bytes": 16564
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/neighborhood-library-landing/oracle-b/index.html",
+      "sha256": "1547fb992e331ebc0e7e8bb874041eb1da66bfb84d2b6d71edc5935ef9f543c1",
+      "bytes": 22872
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/public-record-search/oracle-a/index.html",
+      "sha256": "5d3e23908bd99a9bfce20ad6975546308a602a2c89a0c985727e5f4b4c038ce7",
+      "bytes": 5835
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/public-record-search/oracle-b/index.html",
+      "sha256": "71c194e065095eeea1355e3c6bb2205f13d64faa47d34dd8d49e10aebe7b31f4",
+      "bytes": 5524
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/research-data-deletion/oracle-a/index.html",
+      "sha256": "c9b1b58b07b6e05b722e19733f7713daa348b7dc2ec3ac0e8cbe4c980928d68a",
+      "bytes": 4762
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/research-data-deletion/oracle-b/index.html",
+      "sha256": "503fc34715499d2bd3195ae48feaec94c6e3016ef3fae1cc7d605ea21fcb103f",
+      "bytes": 4995
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/volunteer-import-recovery/oracle-a/index.html",
+      "sha256": "f41383c7d813866f69733057a32729cdc2a5a3dbf2c2c906fd0ad8240b465257",
+      "bytes": 3934
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/volunteer-import-recovery/oracle-b/index.html",
+      "sha256": "d6c2acda263f0d030cb4ccdf5f9d9f485f29747331a62dea14cbca784f81603d",
+      "bytes": 3274
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/reports/autopilot-v2-provider-zero-1.9.881/ACCEPTANCE.json",
+      "sha256": "3d619abfd088160e33c255a57cf9efcb2a66f2f8c84508cc0015f228683ad43f",
+      "bytes": 4150
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/scripts/audit-autopilot-v2-readiness.mjs",
+      "sha256": "46b388547d8feecdfe914f246e794707777a32cc002f6ac6db3980a6f1c38910",
+      "bytes": 24649
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/scripts/autopilot-smoke-controller.mjs",
+      "sha256": "77c96e90a4024d15adeb5ac451f14eceb220cf2d120f478f9899221690317ca8",
+      "bytes": 67308
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs",
+      "sha256": "5db495eb42babae3e568d3d671216defa54e8d9950f8b04a96efa61003591787",
+      "bytes": 158847
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/scripts/generate-autopilot-v2-readiness.mjs",
+      "sha256": "f8df4f77aa6aeaf2c8e6d6240a90176af8c438bef54dd472dbb721e4ac40f9e0",
+      "bytes": 19140
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/scripts/run-autopilot-clean-dir-canary.mjs",
+      "sha256": "9fcba2fd2b4c0d96254deaead52d18d571419c209a92bdd51d5aab79e9f62a3d",
+      "bytes": 28942
+    },
+    {
+      "path": "bin/oh-my-design.ts",
+      "sha256": "8582592277308c6bf7575215a736408d4902d2e3ec2e1b457d8dc59a5064bb89",
+      "bytes": 14970
+    },
+    {
+      "path": "package.json",
+      "sha256": "5ca96d45ec81945fd2f0f92657b0f277116e123f7d78df5e82c15b4a22842790",
+      "bytes": 7827
+    },
+    {
+      "path": "scripts/adopt-design-md-core.cjs",
+      "sha256": "c7e95e31b09537032f09aac96d62cd78dc507e9bb4ded6a125438208dfdcbfa9",
+      "bytes": 49095
+    },
+    {
+      "path": "scripts/compile-design-md-core.cjs",
+      "sha256": "b226d89ea7d922df9431e1e68ce87572fffb4aa69179540c682e005aa032ac23",
+      "bytes": 40374
+    },
+    {
+      "path": "scripts/design-md-core-conformance.cjs",
+      "sha256": "89fd4ad572bb3a5a372b7c22b7e42f845e2fcec98cfe0c7ee1f187ed749d8196",
+      "bytes": 25142
+    },
+    {
+      "path": "scripts/design-md-core-schema.cjs",
+      "sha256": "410b52ca76d5f65482ad9cecec58ea97e334ee8984157e89f63c36242a53f5e4",
+      "bytes": 15155
+    },
+    {
+      "path": "scripts/design-md-core.cjs",
+      "sha256": "8c973dcfddc003edd54c13147e400aefeed7f947b6981a7fd5eb4dcee351e810",
+      "bytes": 64493
+    },
+    {
+      "path": "scripts/migrate-design-md-core.cjs",
+      "sha256": "d91981f8e7e3b2a11f2dc5a65d0bbbb98812da0dce78335cbdb3a599dca5b83d",
+      "bytes": 6042
+    },
+    {
+      "path": "scripts/prepare-design-md-core-review.cjs",
+      "sha256": "30586d65ce47bdf2b4493e66cb25c708b0657903a9bee4deb0c189ec3199ad88",
+      "bytes": 24050
+    },
+    {
+      "path": "scripts/validate-project-design-system.cjs",
+      "sha256": "759c329d70e0d998f73425e108cfb5a7cbb3e93861cabfe0d856719ec004a418",
+      "bytes": 51308
+    },
+    {
+      "path": "skills/omd-autopilot/references/design-system-contract.md",
+      "sha256": "b79e36a214786c7e19f6f2ee39881488b7290427de4dab86f1f2428b8b2bea86",
+      "bytes": 9585
+    },
+    {
+      "path": "skills/omd-autopilot/SKILL.md",
+      "sha256": "c7c935cc42e065a0b3d8fbb8ca829ca09ffc4678f18b1a6ab7bdf6ce2a13a820",
+      "bytes": 16952
+    },
+    {
+      "path": "spec/design-md-core-v2.md",
+      "sha256": "f8cd0ddfb1696a59c431ee1d459964ba925ead29275f9a448444caff9c93a1a4",
+      "bytes": 39800
+    },
+    {
+      "path": "spec/schema/design-md-core-adoption-receipt-v2.schema.json",
+      "sha256": "6f08c91ab6d7b95b86abdb6121871d0376888c5bacc424a394e57e62caf0b0fc",
+      "bytes": 6179
+    },
+    {
+      "path": "spec/schema/design-md-core-adoption-review-v2.schema.json",
+      "sha256": "e6e07b923c53e6a89e0eb75ad299128acd105e5e9947f88165c42f022aeeaed1",
+      "bytes": 4907
+    },
+    {
+      "path": "spec/schema/design-md-core-manifest-v2.schema.json",
+      "sha256": "cdd4d56ea619cdc496655a4d68d6b7c8dc98002805eddf845097e3e36bef83e8",
+      "bytes": 4500
+    },
+    {
+      "path": "spec/schema/design-md-core-project-checkpoint-v2.schema.json",
+      "sha256": "e981e5911a98853fe5c182dcb98440d0ba0c00187867be2989d6180018b9a8cc",
+      "bytes": 3609
+    },
+    {
+      "path": "spec/schema/design-system-coverage-v2.schema.json",
+      "sha256": "bb25e4bd857eea0a35bf1b508012f44e7716a575d9b8c30a7cb9b460f9373267",
+      "bytes": 5743
+    },
+    {
+      "path": "spec/schema/design-system-graph-v2.schema.json",
+      "sha256": "d0a7218e37aea0590236de51496cfc728b2113a7fc1aff7654545b0f6e9b8e56",
+      "bytes": 13815
+    },
+    {
+      "path": "spec/schema/design-system-provenance-v2.schema.json",
+      "sha256": "580ee9f31d1d77fbde1c6c8595c861ea93a69eccd005b86cc0fed56ff130c1aa",
+      "bytes": 4588
+    },
+    {
+      "path": "src/cli/design-md.ts",
+      "sha256": "6bdc3b93e1d14f09dcf692b44b3f022ba9e06f81f0f8eef3f3ddd5452bc01920",
+      "bytes": 7349
+    },
+    {
+      "path": "src/cli/doctor.ts",
+      "sha256": "80ebaec88ee14682b27fe866bcaf1ca55bcafba1f8ac7f7163b128bd5753d875",
+      "bytes": 51103
+    },
+    {
+      "path": "src/cli/install-skills.ts",
+      "sha256": "cfa9a2856f39f007912d12ddc5a959d944bbe5794b0f4758d7ec82ee669d5910",
+      "bytes": 84904
+    },
+    {
+      "path": "test/unit/bench/ui-resolve-autopilot-clean-dir-canary.test.mjs",
+      "sha256": "c9d30ccd9dc05231ed8c9aecd72812fac39a38f208865e663b7f6265b4f01163",
+      "bytes": 2902
+    },
+    {
+      "path": "test/unit/bench/ui-resolve-autopilot-v2-readiness-generator.test.mjs",
+      "sha256": "972cc7b81aba7d58ef38fbe46ddf8af9f5d220ba9f2991a3980109c6d62c30c1",
+      "bytes": 9982
+    },
+    {
+      "path": "test/unit/cli/packaged-autopilot-smoke.test.ts",
+      "sha256": "e1a7913f2606a24e268337fdb2658a4d183006b66fc25f31f001224cf970a74b",
+      "bytes": 15724
+    },
+    {
+      "path": "test/unit/cli/packaged-design-md-core-smoke.test.ts",
+      "sha256": "0aaa5cb09eece290811f6942a7a140f762a334e6c24f6bbd9ffec9015f48912e",
+      "bytes": 10174
+    },
+    {
+      "path": "tsup.config.ts",
+      "sha256": "6c513da6a00f40fbaa81a41f01651e26625198bdebcffa126930848f29c1e059",
+      "bytes": 5932
+    }
+  ],
+  "readiness_manifest": {
+    "path": "benchmarks/ui-resolve-bench/autopilot-v2-readiness-1.9.882.json",
+    "sha256": "a8a6cf9b29e2c836abc8ae05509c9fca9adf67100904c6ce2b272c57ba597752",
+    "bytes": 7356
+  },
+  "deterministic_test_evidence": {
+    "pass": true,
+    "commands": [
+      {
+        "argv": [
+          "npm",
+          "exec",
+          "--offline",
+          "--",
+          "vitest",
+          "run",
+          "test/unit/cli/packaged-autopilot-smoke.test.ts",
+          "test/unit/cli/packaged-design-md-core-smoke.test.ts",
+          "test/unit/bench/ui-resolve-autopilot-clean-dir-canary.test.mjs"
+        ],
+        "exit_code": 0,
+        "assertions": [
+          "npm-pack-tarball-offline-four-channel-install-and-doctor",
+          "installed-autopilot-handoff-and-six-case-authority-matrix",
+          "packaged-design-md-core-v2-transaction",
+          "provider-zero-clean-directory-canary-handoff"
+        ]
+      }
+    ]
+  },
+  "distribution": {
+    "pass": true,
+    "source": "npm-pack-tarball-offline-consumer-install",
+    "channels": [
+      "claude-code",
+      "codex",
+      "opencode",
+      "cursor"
+    ],
+    "doctor_state": "ready",
+    "installed_helper_terminal_state": "HANDOFF",
+    "question_batches": 0,
+    "bounded_repairs": 1
+  },
+  "authority_matrix": {
+    "pass": true,
+    "case_count": 6,
+    "outcomes": {
+      "existing-compatible-design-system": "reuse",
+      "explicit-establish-authority": "establish",
+      "explicit-refresh-authority": "refresh",
+      "explicit-surface-local-only": "surface-local-only",
+      "broad-greenfield-missing-authority": "AWAIT_USER",
+      "exact-brand-missing-source": "blocked"
+    },
+    "unsupported_auto_decisions": 0,
+    "maximum_question_batches": 1
+  },
+  "design_system_proof": {
+    "portable_core_v2_transaction_pass": true,
+    "hash_bound_adoption_required": true,
+    "unknown_as_absence_required": true,
+    "scheduled_model_task_rate_observed": false
+  },
+  "calibration": {
+    "pass": true,
+    "evidence_mode": "immutable-historical-inheritance",
+    "browser_replay_executed_in_this_snapshot": false,
+    "task_count": 12,
+    "authority_case_count": 6,
+    "valid_oracle_count": 24,
+    "targeted_mutant_definition_count": 36,
+    "targeted_mutant_cell_count": 72,
+    "viewports": [
+      "1440x900",
+      "390x844",
+      "320x720",
+      "720x450-reflow-200pct"
+    ],
+    "inherited_from": {
+      "mode": "immutable-historical-browser-replay",
+      "path": "benchmarks/ui-resolve-bench/reports/autopilot-v2-provider-zero-1.9.881/ACCEPTANCE.json",
+      "sha256": "3d619abfd088160e33c255a57cf9efcb2a66f2f8c84508cc0015f228683ad43f",
+      "bytes": 4150,
+      "evidence_commit": "4bc4c997e3c94bd2df0a3f131001f89dc3812e14",
+      "source_commit": "2a74ba73c7663cc9824e843c95a6fd4655e23598",
+      "authority_bindings": [
+        {
+          "path": "benchmarks/ui-resolve-bench/config/autopilot-v2-qualification.json",
+          "sha256": "8fdf2ad3cb4a7fdb2af7095a128bf7e0ab96f174cc40fd72599115a2ed5af113",
+          "bytes": 5620
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-tasks-v0.1.json",
+          "sha256": "53634e4f8e79b34460ebd1d470b381b3167753bf6e07f03eb4aa7ce268e9bf6c",
+          "bytes": 10548
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/config/autopilot-greenfield-adapters-v0.1.json",
+          "sha256": "827e7933d360a139717a3790570b704544e6edbfc616353596e059f9b3de2c85",
+          "bytes": 8925
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/scripts/evaluate-autopilot-greenfield-task.mjs",
+          "sha256": "5db495eb42babae3e568d3d671216defa54e8d9950f8b04a96efa61003591787",
+          "bytes": 158847
+        }
+      ],
+      "fixture_bindings": [
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/neighborhood-library-landing/oracle-a/index.html",
+          "sha256": "4cbf5a28ab582b8e39c955beed24792a9173697c7c89bf2afce7b84d0091c762",
+          "bytes": 16564
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/neighborhood-library-landing/oracle-b/index.html",
+          "sha256": "1547fb992e331ebc0e7e8bb874041eb1da66bfb84d2b6d71edc5935ef9f543c1",
+          "bytes": 22872
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/incident-response-dashboard/oracle-a/index.html",
+          "sha256": "281cca115e6cb98c394103580fd0c3bb1c05c72ab95c68382b4b207d73019e22",
+          "bytes": 24431
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/incident-response-dashboard/oracle-b/index.html",
+          "sha256": "ee0d5c3b8e3cee9467649f5cfa92d49e47531b9d42ebf8850322865a4c66c2e5",
+          "bytes": 26127
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/cold-chain-operations/oracle-a/index.html",
+          "sha256": "74d7e86d43095db04b5a5933143057d040fe3e24efa3a0f3b39b22b09ac5d453",
+          "bytes": 7863
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/cold-chain-operations/oracle-b/index.html",
+          "sha256": "b24dd4c0f9e954a86483c8af59253933cb5fc7713141874a7d2afc896df1c36b",
+          "bytes": 6537
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/caregiver-onboarding/oracle-a/index.html",
+          "sha256": "fe4fe0b9b4530a33be0e63cb7b8142630ecb08b98a0677f0545d1d74fd5129b1",
+          "bytes": 4827
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/caregiver-onboarding/oracle-b/index.html",
+          "sha256": "3efecb70d5882ec520950bc86a41d712270e0cd4861ee56c1ba9ac035c144e92",
+          "bytes": 5379
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/community-class-checkout/oracle-a/index.html",
+          "sha256": "0579bee5d5bf4c1a3db7f4f2bd3907563ac6147509942566d07379c63cedb898",
+          "bytes": 4344
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/community-class-checkout/oracle-b/index.html",
+          "sha256": "105473eb093faa66a054e6df2ba0ce4a937409be26c2c0d054387bfd933638ed",
+          "bytes": 4881
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/research-data-deletion/oracle-a/index.html",
+          "sha256": "c9b1b58b07b6e05b722e19733f7713daa348b7dc2ec3ac0e8cbe4c980928d68a",
+          "bytes": 4762
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/research-data-deletion/oracle-b/index.html",
+          "sha256": "503fc34715499d2bd3195ae48feaec94c6e3016ef3fae1cc7d605ea21fcb103f",
+          "bytes": 4995
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/public-record-search/oracle-a/index.html",
+          "sha256": "5d3e23908bd99a9bfce20ad6975546308a602a2c89a0c985727e5f4b4c038ce7",
+          "bytes": 5835
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/public-record-search/oracle-b/index.html",
+          "sha256": "71c194e065095eeea1355e3c6bb2205f13d64faa47d34dd8d49e10aebe7b31f4",
+          "bytes": 5524
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/field-notes-editorial/oracle-a/index.html",
+          "sha256": "946dcc65f607803d4427748fa4380beefba072555a6b27497f3b7b8924ac7e92",
+          "bytes": 4829
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/field-notes-editorial/oracle-b/index.html",
+          "sha256": "861677ef7f167ac0af9fdae69ba618ee549e968b9233af88e2ce126fc55b5cee",
+          "bytes": 4674
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/mobile-transit-report/oracle-a/index.html",
+          "sha256": "75c0e99ad19c61293f78ab5595407bcdb0e3ed54040283f06d380b555f70e0ef",
+          "bytes": 5075
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/mobile-transit-report/oracle-b/index.html",
+          "sha256": "dfba522a95257726260f5ec66678258188229f2a8d8572d267601215e2e2ab74",
+          "bytes": 3940
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/grant-evidence-intake/oracle-a/index.html",
+          "sha256": "f63db7a1f27cad7b84e3722978382b94181515e1cac5304991669c9ab44bdf08",
+          "bytes": 4746
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/grant-evidence-intake/oracle-b/index.html",
+          "sha256": "45c3adf0a478bd1783a7c1d63803fac56b83d17fbcc3aae8c8a097f062d451bf",
+          "bytes": 4247
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/volunteer-import-recovery/oracle-a/index.html",
+          "sha256": "f41383c7d813866f69733057a32729cdc2a5a3dbf2c2c906fd0ad8240b465257",
+          "bytes": 3934
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/volunteer-import-recovery/oracle-b/index.html",
+          "sha256": "d6c2acda263f0d030cb4ccdf5f9d9f485f29747331a62dea14cbca784f81603d",
+          "bytes": 3274
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/clinic-visit-prep-locales/oracle-a/index.html",
+          "sha256": "9e57cf67971dcec21722f54e8c5c7ae3ff4ccb4155892cf74e582d4000907131",
+          "bytes": 4729
+        },
+        {
+          "path": "benchmarks/ui-resolve-bench/fixtures/autopilot-greenfield/clinic-visit-prep-locales/oracle-b/index.html",
+          "sha256": "2c526631330a3111af7ef92277c1e90c7b2d3d918217189725fcd4646b90818e",
+          "bytes": 4659
+        }
+      ]
+    },
+    "claim_boundary": "unchanged-evaluator-calibration-only-not-model-or-skill-performance"
+  },
+  "gate_evidence": {
+    "natural-language-package-parity": true,
+    "selective-authority-escalation": true,
+    "design-system-quality-and-conformance": false,
+    "greenfield-reliability": false,
+    "same-prompt-skill-lift": false,
+    "three-model-transfer": false,
+    "autonomy-quality-cost-pareto": false,
+    "calibrated-greenfield-denominator": true,
+    "blind-practitioner-review": false,
+    "reproducible-independent-claim-audit": false
+  }
+}

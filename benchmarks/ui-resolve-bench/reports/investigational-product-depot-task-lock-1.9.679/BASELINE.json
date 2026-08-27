@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "task_id": "investigational-product-depot-release-v0.1",
+  "task_version": "0.1.0",
+  "status": "FROZEN_PROVIDER_ZERO_BASELINE",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "human_judgments": 0,
+  "objective_methodology_epoch": "ui-resolve-objective-2026q3-passive-scroll-v1",
+  "prompt_sha256": "6f83138e9d886de9b97df114db59ab7f35ad5bc13ff40385307357ce07186bd4",
+  "starter_sha256": "736df6b6a7aec7ead753a506c62260be5dd72c560f6c23087489c1d25abd32d6",
+  "deterministic": {
+    "score": 75,
+    "max_score": 85,
+    "automated_gate_pass": false,
+    "points": {
+      "task_contract": 25,
+      "design_grounding": 20,
+      "state_journey": 15,
+      "responsive": 4,
+      "accessibility": 6,
+      "evidence_honesty": 5
+    },
+    "critical_gates": {
+      "task_contract": true,
+      "state_journey": true,
+      "responsive": false,
+      "accessibility": false,
+      "design_grounding": true,
+      "evidence_honesty": true
+    }
+  },
+  "failure_classes": {
+    "desktop_geometry": false,
+    "mobile_horizontal_overflow": true,
+    "narrow_320_horizontal_overflow": true,
+    "css_zoom_surrogate_200_horizontal_overflow": true,
+    "atomic_text_fragmentation": true,
+    "short_atomic_text_wrapping": true,
+    "serious_color_contrast": true,
+    "contrast_ratio": 2.71
+  },
+  "preserved_contract": {
+    "protected_hooks_exact": true,
+    "known_evidence_exact": true,
+    "unsupported_claims": 0,
+    "passive_text_scrollers": 0,
+    "keyboard_all_viewports": true,
+    "console_errors": 0,
+    "external_requests": 0
+  },
+  "in_app_browser": {
+    "surface": "Codex in-app browser",
+    "viewport": {
+      "inner_width": 1280,
+      "client_width": 1265,
+      "scroll_width": 1265
+    },
+    "cardinality": {
+      "product_kits": 4,
+      "temperature_logs": 6,
+      "depot_lanes": 2,
+      "review_views": 3
+    },
+    "choice_selected": "depot-lanes",
+    "toggle": {
+      "pressed": "true",
+      "note_hidden": false
+    },
+    "invalid_form": {
+      "aria_invalid": "true",
+      "status": "Enter a release review name."
+    },
+    "valid_form": {
+      "aria_invalid": null,
+      "status": "Saved Cohort 7 depot release review."
+    },
+    "console_errors": 0
+  },
+  "claim_boundary": "This is an intentionally unresolved starter baseline, not a model or skill result and not evidence of comparative superiority."
+}

@@ -1,0 +1,9 @@
+B2a·E2 전담 감사로 진행합니다. 먼저 세션 상태와 규칙서 B2/E2, classum 산출물을 읽고 문장 분류부터 시작합니다.규칙서 B2a·E2만 기준으로 classum 세 파일과 승인된 감사 예시를 대조합니다.DESIGN.md는 읽었습니다. provenance·migration-log와 최근 유사 F3 감사 형식을 이어서 대조합니다.문장 분류와 로그 목적지를 실제 grep으로 대조합니다. 한정이 빠졌거나 원장이 어긋난 곳만 고칩니다.문장 분류가 끝났습니다. 한정이 없거나 독해를 못 가리키는 문장부터 붙이고, 원장은 본문 확정 뒤 grep으로 맞춥니다.본문 한정을 붙였습니다. 이제 실제 줄 번호로 원장을 다시 맞춥니다.원장 줄 번호를 본문 실측과 맞춥니다. provenance derived 범위와 migration-log 목적지를 고칩니다.Classum F3 B2a·E2 감사를 마쳤습니다. 이관 워커가 아니라 감사자로, 편집 해석 한정과 원장 목적지 불일치만 고쳤습니다. 토큰 값·컴포넌트 표·상태 applicability·구조는 건드리지 않았습니다.
+
+**B2a.** 세 번째 부류(편집적 해석·인과 판단)인데 인접 완전 한정이 없거나 독해를 못 가리키던 문장에 `derived editorial implementation inference` / `not Classum-authored or a separately published UI specification`을 붙이거나 확장했습니다. 계약 범위, 토큰 노트 비승격, 1인칭 서사 경계, Primary tasks 세 일, Audience 40, Distinctive, Principles UI implication, Do/Don’t, Semantic 86/96, Spacing 30px 거터, Elevation `gradient-11`, Motion 부재, Font/Family, Capture graph-not-adopted, Layout 323/325, Content 330/338입니다.
+
+**E2.** `migration-log` 각 행을 세 파일에서 grep으로 대조했습니다. 로그가 본문보다 세거나 줄 번호가 틀린 곳은 로그만 고쳤습니다. 예: home URL은 Scope 9 + Primary tasks 27(이중), `verification_v2.schema: 2`는 21/91/148, semantic palette는 86/96/375(13 아님), B3 전문은 Motion 120입니다. provenance derived 목록을 실제 34곳 B2a 사이트에 맞췄습니다.
+
+수정 목록은 `docs/design-md-weight/migrated/classum/audit-log.md`에 있습니다. 게이트 `--gate-only` PASS, `portable_core: true`. Post-F3 SHA-256 `471ef0c848d0a76d962093cc75dcc35bade4766b3cb38766e4868a501871c6e4`.
+
+AUDIT_DONE fixes=26

@@ -18,7 +18,7 @@ The following distinctive-among-fintechs and Toss-comparison reading is a derive
 
 Treating the following public-history facts as narrative rather than interface tokens, including the 3.3% name origin as widely documented public knowledge rather than a UI token, is a derived editorial implementation inference from the verified surfaces; it is not 3o3-authored or a separately published UI specification. Public history recorded in the source (operator corporate site and the app statutory footer): 자비스앤빌런즈 founded August 2015, CEO 김범섭 named on the live footer. First product 자비스 (Jarvis), an AI bookkeeping service for small businesses; 삼쩜삼 launched May 2020. The source states that the 3.3% name origin (the withholding-tax rate) is widely documented public knowledge. The following product-origin / problem thesis is a derived editorial implementation inference from the source Brand Narrative; it is not 3o3-authored or a separately published UI specification. The source records that gig workers, freelancers, and platform laborers had overpaid taxes sitting unclaimed because the refund process assumed an accountant, and that 삼쩜삼 turned that recovery into a consumer app. The app disclosure line counts **7,208,747** cumulative filing customers between 2020.05.01 and 2026.04.01. The corporate site reports the platform passing 24 million cumulative users with over 2조원 in refunds processed as of mid-2025, Korean 예비유니콘 designation in 2023, and a mission frame of “더 많은 부”, “더 많은 시간”, and “더 많은 권리”. Homepage title: “삼쩜삼 - 생활 밀착 환급·혜택 플랫폼”.
 
-The following refusal and expansion-arc reading is a derived editorial implementation inference from the verified surfaces; it is not 3o3-authored or a separately published UI specification. The source treats 삼쩜삼 as refusing the intimidating chrome of tax authorities and legacy 세무 software, and the dark-pattern vagueness of “free check” services that hide their fee, and as embracing a treasure-hunt verbal frame on a disclosed legal base, one mandated brand blue, and an expansion from tax refunds toward the everyday hidden-money platform the homepage title claims.
+The following refusal and expansion-arc reading is a derived editorial implementation inference from the verified surfaces; it is not 3o3-authored or a separately published UI specification. The source treats 삼쩜삼 as refusing the intimidating chrome of tax authorities and legacy 세무 software, and the dark-pattern vagueness of “free check” services that hide their fee, and as embracing a treasure-hunt verbal frame on a disclosed legal base, one mandated brand blue governed by a public brand resource center (“브랜드센터” — the source’s own Korean name for it), and an expansion from tax refunds toward the everyday hidden-money platform the homepage title claims.
 <!-- design-md:claim-end -->
 
 <!-- design-md:claim primary-tasks kind=user-outcomes count=3 lang=en -->
@@ -221,6 +221,8 @@ Verified YAML line-height values are the unitless ratios `1.50`, `1.00`, `1.40`,
 | App CTA (YAML `button-app`) | Pretendard | 16px | 700 | 1.50 | 24px at this size | `#141618` | App CTA label (Kakao login) |
 | Chip | Pretendard | 12px | 700 | 1.50 | 18px at this size | `#788391` | Info chip label |
 | Caption | Pretendard | 12px | 500 | 1.50 | 18px at this size | `#a4acb4` | Compliance footnotes, disclosures |
+
+The legacy body table carried a copy specimen alongside three of these roles. Those specimens are brand-published strings, kept byte-exact here and under Content & Locales, with the English wording as description beside them rather than in place of them: Lead — “모든 사람이…” (the corporate mission lead; the ellipsis is the source’s own elision and is reproduced as it stands); Subsection — “삼쩜삼 세금 신고” (a service title); Body Large — “삼쩜삼에서 알려드릴게요” (a sub-lead). The YAML `use` strings in the table above are the token descriptions, and these are the copy measured at each role.
 
 The following dark-band type-role reading is a derived editorial implementation inference from the verified surfaces; it is not 3o3-authored or a separately published UI specification. Dark-band copy on the funnel is recorded as white 20px/400 (“숨은 환급금 간편하게 찾아보세요”). That 20px/400 is not Body Large 20px/500.
 
@@ -483,6 +485,8 @@ Image behavior: funnel persuasion blocks as optimized webp bands swapped per bre
 - “쩜 쉬운 세금 관리의 시작” — jobisnvillains.com headline
 - “SZS Blue는 삼쩜삼을 대표하는 색상입니다. 일관된 표현을 위해 브랜드 색상은 반드시 준수하여 사용합니다.” — brand resource center
 - Funnel/app control strings: “숨은 환급금 간편하게 찾아보세요”; “내 환급금 조회하기”; “지금 환급 신청하기”; “지금 찾으러 가기”; “안전하게 환급 신청하기”; “대상자 여부 확인하기”; “카카오 계정으로 계속하기”; “예상 환급액을 계산하는 기준”; “채용 중인 직무 보러 가기”
+- Type-role specimens recorded on the source §3 hierarchy table, byte-exact, each with the role it was measured at: “모든 사람이…” — Lead, the corporate mission lead (the ellipsis is the source’s own elision and is reproduced as it stands); “삼쩜삼 세금 신고” — Subsection, a service title; “삼쩜삼에서 알려드릴게요” — Body Large, a sub-lead
+- “브랜드센터” — the source’s Korean name for the public brand resource center at `https://brand.3o3.co.kr`
 
 Treating the §14 empty/loading/error/success strings as part of the illustrative state contract, not extra Observed voice samples, is a derived editorial implementation inference from the verified surfaces; it is not 3o3-authored or a separately published UI specification.
 

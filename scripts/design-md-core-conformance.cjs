@@ -267,9 +267,17 @@ function containsUnresolvedSemanticClaim(kind, value) {
     foundations: '(?:foundation|rule|constraint|기반|파운데이션|규칙|제약|基盤|制約|ルール|基础|基礎|规则|規則|约束|約束)',
   };
   const unresolved = '(?:unknown|unresolved|unspecified|not\\s+specified|tbd|todo|미확정|미정|알\\s*수\\s*없|명시되지\\s*않|정해지지\\s*않|未確定|不明|未指定|指定されていない|決まっていない|未确定|未知|尚未确定|尚未確定)';
+  // Same distinction the negation check had to learn: what matters is WHAT is
+  // unresolved. A claim saying "the source records no motion token, so every
+  // motion value stays absent" is a provenance statement sitting next to real
+  // measured values — not a claim that resolves to nothing. Reported by the
+  // expo migration worker; see t2-1-conformance-fp-2026-08-26.
+  const ATTRIBUTED_UNKNOWN = /\b(?:token|value|curve|duration|rule|field|record|sample)s?\b[^.]{0,40}\b(?:are|is|stay|stays|remain|remains)\b[^.]{0,20}(?:unresolved|absent|unspecified)|\b(?:the\s+)?(?:source|legacy|original|record|capture)\w*\b[^.]{0,60}(?:unresolved|no\s|not\s)/i;
   const subjectThenUnknown = new RegExp(`${subjects[kind]}.{0,40}${unresolved}`, 'iu');
   const leadingUnknown = new RegExp(`^${unresolved}(?:\\b|[:：—-])`, 'iu');
-  return subjectThenUnknown.test(plain) || leadingUnknown.test(plain);
+  const sentences = plain.split(/(?<=[.!?。！？])\s+|\n+/).filter(Boolean);
+  const hits = sentences.filter((sentence) => subjectThenUnknown.test(sentence) && !ATTRIBUTED_UNKNOWN.test(sentence));
+  return hits.length > 0 || leadingUnknown.test(plain);
 }
 
 function explicitlyNegatesClaim(kind, value) {
@@ -294,7 +302,40 @@ function explicitlyNegatesClaim(kind, value) {
       /(?:基础|基礎|约束|約束|规则|規則).{0,24}(?:没有|沒有|不是|不包含)/,
     ],
   };
-  return patterns[kind].some((pattern) => pattern.test(plain));
+  // The check exists to catch a claim body that denies its own subject ("this
+  // reference names no product surface"). It must not fire on the opposite and
+  // very common case: a body that HAS the claim and then bounds its evidence
+  // ("...; the product surfaces named in the source stay outside this evidence
+  // base"). Two migration workers independently reworded correct prose to get
+  // past this window, which is the document distorting itself to satisfy a
+  // checker — the failure mode rule E3 exists to forbid. So a negation only
+  // counts when its own sentence is not evidence-boundary talk.
+  // What the check is for: a claim body that denies its own subject ("this
+  // reference names no product surface"). What it must not touch: a body that
+  // HAS the claim and then says what the SOURCE lacks, or where the contract
+  // stops. Those are provenance and boundary statements, and they are the
+  // normal way an evidence-backed reconstruction talks.
+  //
+  // A word list was tried first and failed twice — "recorded", "proxy" and
+  // "records" all slipped past it, taking dell, dmm, drnow and easywallet down
+  // with them. The reliable signal is not vocabulary but the SUBJECT of the
+  // negation: when the sentence attributes the absence to the source, to the
+  // legacy document, or to the reach of this contract, the claim itself is
+  // intact. See t2-1-conformance-fp-2026-08-26.
+  const ATTRIBUTED = new RegExp([
+    // the source / the legacy record / the sibling proof lacks it
+    "\\b(?:the\\s+)?(?:source|legacy|original|sibling|record|ledger|capture)\\w*\\b[^.]{0,60}?\\b(?:no|not|never|nothing)\\b",
+    "\\b(?:no|not|never|nothing)\\b[^.]{0,60}?\\b(?:in|from|by)\\s+the\\s+(?:source|legacy|original|record|capture)",
+    // this contract / document stops here — scope boundary, not self-denial
+    "\\b(?:this\\s+(?:contract|document|reconstruction)|it)\\s+does\\s+not\\s+(?:treat|extend|reach|cover|speak)",
+    "\\bdoes\\s+not\\s+(?:treat|extend|reach)\\b[^.]{0,40}?\\bas\\s+a\\s+proxy\\b",
+    // explicit evidence-boundary vocabulary (the original guard, kept)
+    "\\b(?:evidence|proof|captur\\w*|observ\\w*|outside|beyond|coverage|verified|sample[sd]?)\\b",
+    "근거|증거|관측|캡처|범위\\s*밖|証拠|観測|证据|證據",
+  ].join("|"), "i");
+  const sentences = plain.split(/(?<=[.!?。！？])\s+|\n+/).filter(Boolean);
+  return patterns[kind].some((pattern) =>
+    sentences.some((sentence) => pattern.test(sentence) && !ATTRIBUTED.test(sentence)));
 }
 
 function evaluatePortableCoreClaims(markdown, options = {}) {

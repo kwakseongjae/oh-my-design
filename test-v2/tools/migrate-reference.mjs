@@ -123,12 +123,24 @@ export function gate(brand, outDir) {
 
 export function gateTexts(legacy, doc, provenance, log) {
   const problems = [];
+  // Distinct from `problems`: how much each check actually examined. A check
+  // that looked at one string of 181 must not read the same as one that looked
+  // at all of them, and neither must read as "verified" — that conflation is
+  // what let 66 already-migrated bodies pass A5 without a single machine
+  // comparison, and funnow/furiosaai pass with a token one.
+  const coverage = [];
   const all = doc + provenance + log;
 
-  // Token loss / invention across the whole output set.
-  const lt = tokenBag(legacy), nt = tokenBag(all);
+  // Token loss is checked across every output file — a value must survive
+  // somewhere. Invention is checked against the PORTABLE DOC only: the
+  // provenance ledger legitimately quotes values from sibling canonical files
+  // (.verification.md colours, mirror SHAs) that the legacy DESIGN.md never
+  // carried. Scanning the ledger for invention taught a worker to dodge the
+  // scanner by writing "# faf9f5" with a space — an evasion the rulebook now
+  // bans outright (E3). The gate stops rewarding it by not overreaching.
+  const lt = tokenBag(legacy), nt = tokenBag(all), dt = tokenBag(doc);
   const lost = [...lt.keys()].filter((k) => !nt.has(k));
-  const invented = [...nt.keys()].filter((k) => !lt.has(k));
+  const invented = [...dt.keys()].filter((k) => !lt.has(k));
   if (lost.length) problems.push({ check: "token-loss", detail: lost.slice(0, 8).join(", "), count: lost.length });
   if (invented.length) problems.push({ check: "token-invention", detail: invented.slice(0, 8).join(", "), count: invented.length });
 
@@ -138,6 +150,100 @@ export function gateTexts(legacy, doc, provenance, log) {
   // bracket-pair — the earlier exact match never fired on the real format).
   // provenance may QUOTE the source's placeholders as an omission ledger, so
   // only a placeholder string absent from the legacy source is an emission.
+  // A5: brand-published strings move as bytes. The legacy files quote real UI
+  // copy — CTA labels, forum names, state messages — and a translation or an
+  // English paraphrase silently destroys the thing the reference exists to
+  // carry. Only contiguous non-Latin runs are checked, because those cannot be
+  // coincidental and cannot survive paraphrase: if the run is gone from all
+  // three outputs, the copy is gone, not relocated. A run recorded in the log
+  // as a deletion still counts as present here — the ledger is the audit trail,
+  // and A5 asks that the loss be visible, not that nothing ever be dropped.
+  // Quote forms the legacy files actually use, CJK brackets included — copy is
+  // quoted with 「」 and （） as often as with " " in the JP/TW references.
+  // Each pair must open and close with the SAME mark. The earlier form put every
+  // delimiter in one character class, so a closing backtick could pair with the
+  // opening quote of the next label and swallow it: on the fastcampus green ramp
+  // the span `") — success state, "` matched, and `"수강신청 완료"` never became a
+  // needle. Three published labels were lost under a PASS that way.
+  // Regex literals, not strings: writing these as strings ate the backslashes
+  // and turned the paren branch into `(([^)\n]{2,60}))`, which required no
+  // parens at all and matched any prose — every fixture's own sentence became
+  // a needle. Literals also keep each pair readable as a pair.
+  const QUOTED_COPY = new RegExp([
+    /`([^`\n]{2,60})`/,                    // backtick pair
+    /"([^"\n]{2,60})"/,                    // straight double
+    /\u201c([^\u201d\n]{2,60})\u201d/,     // curly double, open -> close
+    /\u300c([^\u300d\n]{2,60})\u300d/,     // 「」
+    /\u300e([^\u300f\n]{2,60})\u300f/,     // 『』
+    /\uff08([^\uff09\n]{2,60})\uff09/,     // （）
+    /\(([^)\n]{2,60})\)/,                  // ()
+  ].map((r) => r.source).join("|"), "g");
+  // A comma ends a run: the legacy `use:` fields routinely join several labels
+  // into one line ("자세히 보기, 광고계정 생성하기, 시작하기"), and treating the
+  // joined line as a single published string reports a loss when every label
+  // survives separately. A5's unit is the label.
+  const NONLATIN_RUN = /[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af][\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af0-9\s\u00b7.!?]*[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/g;  // `,` `/` 미포함 = 구분자
+  // Two needle shapes per quotation. The whole quoted string is the better
+  // needle when it carries any non-Latin: it survives mixed labels like
+  // "企業・IR" whose non-Latin run alone is too short to trust, and its length
+  // makes a coincidental match elsewhere in the outputs far less likely. The
+  // contiguous run stays as the fallback for copy quoted inside a longer
+  // sentence. Both are still substring tests, so a needle that happens to sit
+  // inside an unrelated quotation reads as preserved — a known limit, and the
+  // reason semantic review keeps looking at copy too.
+  const copyRuns = new Set();
+  const quotedAll = new Set();
+  const quotedWithNeedle = new Set();
+  for (const m of legacy.matchAll(QUOTED_COPY)) {
+    const quoted = (m.slice(1).find((g) => g != null) ?? "").trim();
+    if (!quoted) continue;
+    quotedAll.add(quoted);
+    // Only the contiguous non-Latin segments become needles. Using the whole
+    // quotation was tried and reverted: the legacy files quote descriptions as
+    // often as copy ("Top utility nav (로그인 / 관심 / 최근)"), so whole-quotation
+    // needles reported losses for prose that never was a published string,
+    // while the labels inside it had survived. A blocking gate that cries wolf
+    // gets worked around, which is the E3 failure mode it exists to prevent —
+    // so this check buys precision with recall, and semantic review keeps
+    // reading the copy that short or mixed-script labels slip past.
+    for (const run of quoted.match(NONLATIN_RUN) ?? []) {
+      const t = run.trim();
+      if (t.length >= 4) { copyRuns.add(t); quotedWithNeedle.add(quoted); }
+    }
+  }
+  // Where the string has to survive: the portable body or the provenance
+  // sidecar. The log counts too, but only when its line actually dispositions
+  // the string as dropped — a ledger that merely quotes a string it did not
+  // keep would otherwise mask the very absence this check exists to surface.
+  const logLinesFor = (t) => log.split("\n").filter((l) => l.includes(t));
+  const DISPOSITIONED = /삭제|제거|미이관|드롭|deleted|removed|omitted|dropped|not\s+carried|withheld/i;
+  const lostCopy = [...copyRuns].filter((t) => {
+    if (doc.includes(t) || provenance.includes(t)) return false;
+    return !logLinesFor(t).some((l) => DISPOSITIONED.test(l));
+  });
+  if (lostCopy.length) {
+    problems.push({ check: "copy-loss", detail: lostCopy.slice(0, 6).join(" / "), count: lostCopy.length });
+  }
+  // How much of the published copy this check actually looked at.
+  //
+  // The first version of this reported only the zero case, which was the same
+  // mistake one level up: a single needle silenced the warning while the rest
+  // went unexamined. furiosaai has exactly one non-Latin run, so the machine
+  // compared 1 of its 181 quoted strings and said nothing — a hand sweep then
+  // found 27 non-survivors. Full coverage and 1% coverage must not share a
+  // face, so the ratio is always reported rather than a boolean.
+  //
+  // Measured per quoted string, not per needle: needles are runs *inside*
+  // quotations, so counting them against quotations would not be a ratio.
+  coverage.push({
+    check: "copy-loss",
+    compared: quotedWithNeedle.size,
+    candidates: quotedAll.size,
+    detail: quotedWithNeedle.size === 0
+      ? "바늘 0개 — 이 브랜드에서 A5는 기계 검사되지 않았다. 발행 라틴 문자열을 손으로 전수 대조하라."
+      : `인용 문자열 ${quotedAll.size}개 중 ${quotedWithNeedle.size}개만 비교했다 — 나머지는 라틴이라 바늘이 되지 않는다. 라틴 전수 대조는 손으로 하라.`,
+  });
+
   if (/\[FILL IN/.test(doc)) problems.push({ check: "fill-in", detail: "placeholder in the portable doc" });
   // Only the concrete form ("[FILL IN: instruction]") must trace to the
   // source. The bare "[FILL IN]" token is how an omission ledger *talks about*
@@ -198,9 +304,14 @@ export function gateTexts(legacy, doc, provenance, log) {
   // B1 — a focus-visible row may not carry a colour treatment the source
   // never attributed to focus-visible. Generic focus captures are a different
   // evidence type; notion's trial promoted three of them.
+  // Narrowed to state-table rows after two workers dodged the broad line
+  // regex by splitting sentences (and said so in their logs — sol's E3 catch).
+  // The defect this guards is a focus-visible TABLE ROW carrying a treatment
+  // value; prose that mentions focus-visible near a generic-focus observation
+  // hex is legitimate and was the false positive being evaded.
   if (!/focus-visible/i.test(legacy)) {
-    const rows = doc.match(/focus-visible[^\n]*#[0-9a-fA-F]{6}/gi);
-    if (rows) problems.push({ check: "focus-visible-promotion", detail: `${rows.length} focus-visible row(s) carry treatments but the source never records focus-visible` });
+    const rows = doc.match(/^\|[^|\n]*focus-visible[^|\n]*\|[^\n]*#[0-9a-fA-F]{6}[^\n]*$/gim);
+    if (rows) problems.push({ check: "focus-visible-promotion", detail: `${rows.length} focus-visible table row(s) carry treatments but the source never records focus-visible` });
   }
 
   // D1 — a negative coverage claim may not introduce vocabulary the source
@@ -223,7 +334,7 @@ export function gateTexts(legacy, doc, provenance, log) {
     problems.push({ check: "tool-prompt", detail: "tool-specific command or prompt wrapper in the portable body" });
   }
 
-  return { verdict: problems.length ? "MIGRATION_BLOCKED" : "PASS", problems };
+  return { verdict: problems.length ? "MIGRATION_BLOCKED" : "PASS", problems, ...(coverage.length ? { coverage } : {}) };
 }
 
 /* ------------------------------------------------------------- selftest --- */
@@ -243,10 +354,27 @@ export function selftest() {
     { name: "coverage 완료 주장", doc: `${claims}\nState coverage is complete.\n#123456`, mustFlag: "coverage-claim" },
     { name: "claim 누락", doc: `#123456`, mustFlag: "portable-core" },
     { name: "[FILL IN] 방출", doc: `${claims}\n[FILL IN: later]\n#123456`, mustFlag: "fill-in" },
+    { name: "브랜드 카피 유실", doc: `${claims}\n#123456`, legacy: '본문 색은 #123456이고 CTA는 "지금 시작하기"다.', mustFlag: "copy-loss" },
+    { name: "카피 삭제가 원장에 기록됨", doc: `${claims}\n#123456`, legacy: '본문 색은 #123456이고 CTA는 "지금 시작하기"다.', log: "| §10 | 삭제 — \"지금 시작하기\"는 가상 페르소나 인용이라 D2로 제거 |", mustNotFlag: "copy-loss" },
+    { name: "원장이 인용만 하고 본문엔 없음", doc: `${claims}\n#123456`, legacy: '본문 색은 #123456이고 CTA는 "지금 시작하기"다.', log: "| §10 | 옮김 → Content: \"지금 시작하기\" |", mustFlag: "copy-loss" },
+    { name: "콤마로 이어붙인 라벨 목록(오탐 금지)", doc: `${claims}\n자세히 보기 / 시작하기\n#123456`, legacy: '본문 색은 #123456이고 use는 "자세히 보기, 시작하기"다.', mustNotFlag: "copy-loss" },
+    // The blind spot as three cases. The middle one is furiosaai's shape and is
+    // the reason the boolean was replaced: one needle among many quotations
+    // used to silence the report entirely.
+    { name: "라틴 전용 원본 → 비교 0", doc: `${claims}\n#123456`, legacy: 'Body color is #123456 and the CTA reads "Get started".', coverage: { compared: 0 } },
+    { name: "바늘 하나 + 라틴 다수 → 부분 비교를 숨기지 않는다", doc: `${claims}\n지금 시작하기\n#123456`, legacy: '색 #123456. CTA는 "지금 시작하기"이고 라벨은 "Get started"·"Talk to us"·"Read the docs"다.', coverage: { compared: 1, candidates: 4 } },
+    { name: "전부 비라틴 → 전량 비교", doc: `${claims}\n지금 시작하기\n#123456`, legacy: '본문 색은 #123456이고 CTA는 "지금 시작하기"다.', coverage: { compared: 1, candidates: 1 } },
   ];
-  return cases.map(({ name, doc, mustFlag }) => {
-    const r = gateTexts(base.legacy, doc, base.provenance, base.log);
-    return { case: name, pass: r.problems.some((p) => p.check === mustFlag), flagged: r.problems.map((p) => p.check) };
+  return cases.map((c) => {
+    const { name, doc, mustFlag, mustNotFlag, coverage } = c;
+    const r = gateTexts(c.legacy ?? base.legacy, doc, base.provenance, c.log ?? base.log);
+    const flagged = r.problems.map((p) => p.check);
+    const cov = (r.coverage ?? []).find((x) => x.check === "copy-loss");
+    const pass = coverage
+      ? Boolean(cov) && Object.entries(coverage).every(([k, v]) => cov[k] === v)
+      : mustNotFlag ? !flagged.includes(mustNotFlag)
+      : flagged.includes(mustFlag);
+    return { case: name, pass, flagged, ...(cov ? { coverage: `${cov.compared}/${cov.candidates}` } : {}) };
   });
 }
 
@@ -292,6 +420,17 @@ if (!existsSync(join(LEGACY_ROOT, brand, "DESIGN.md"))) { console.error(`no lega
 
 const outDir = join(OUT_ROOT, brand);
 mkdirSync(outDir, { recursive: true });
+
+// The worker/auditor prose below is the canonical prompt text; the execution
+// path under it is not. Roles now run as host subagents (grok and codex are
+// both retired), so --print-prompt hands the same text to whoever executes it
+// and keeps one source of truth for what a worker or auditor is told.
+if (flag("print-prompt")) {
+  const which = arg("print-prompt");
+  if (which !== "worker" && which !== "auditor") { console.error("--print-prompt worker|auditor"); process.exit(1); }
+  console.log(which === "worker" ? workerPrompt(brand, outDir) : auditorPrompt(brand, outDir));
+  process.exit(0);
+}
 
 if (!flag("gate-only")) {
   const startedAt = Date.now();

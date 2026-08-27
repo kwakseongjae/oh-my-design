@@ -111,7 +111,7 @@ Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v7. Source remainder: `d
 | Item | Correction |
 |---|---|
 | 1. Density / section-rhythm | Restored to portable Layout whitespace 313–316 as current source §5 body. Density-as-brand is 315. `#ffffff` / `#fbfbfb` section-rhythm is 316; `#fbfbfb` is that fill, not Canvas and not a second YAML canvas token. |
-| 2. Extra radius roles | Restored 4px / 8px / 10–12px / 30–41px / 50% as current source §5 roles, unmerged from YAML chip 6 / action 16 / card 24 / full 9999 / disclosure `0px`. Shape 117–123; Layout 318–324. 2px default remains reverted (340). |
+| 2. Extra radius roles | Restored 4px / 8px / 10–12px / 30–41px / 50% as current source §5 roles, unmerged from YAML chip 6 / action 16 / card 24 / full 9999 / disclosure `0px`. Shape 117–123; Layout 318–324. 2px default remains reverted (340). **[POINTER CORRECTED 2026-08-26 T2-1 A5 restore — the Layout-tail revert sentence is 341, not 340; Shape 117 / Layout 318 carry the same clause in their list heads.]** |
 | 3. Omission remainder | Provenance no longer keeps density / `#fbfbfb` / extra radius as omitted source text. Snapshot Status Pill 41px stays unmerged from 30–41px. Soft Variant 8px stays unmerged from §5 8px. |
 
 ### F1 / F2 (v7; this final resubmit)
@@ -137,3 +137,95 @@ F2 (this revision; value + field/role context):
 - `--require-portable-core` exit 0, `portable_core: true`
 
 Prior ledger-sync omission remainder for `#fbfbfb` / 50% / extra radius is superseded. Gate/Core outputs are not a catalog-adoption claim (E2c).
+
+## Revision 2026-08-26 (T2-1 A5 copy restoration)
+
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v9. Trigger: gate `copy-loss` × 17 on banksalad — the largest copy debt in the wave. New F3 not required; no token value, no component-table value, no state applicability verdict, no section structure, and no source file was touched.
+
+**Disposition principle used.** The 17 runs split into two evidence classes. Two are brand-published and source-verified, so they belong in the portable body. Fifteen come from source `<details>` blocks the source itself heads “Superseded 2026-05 legacy snapshot — retained for audit history, not canonical”, “Superseded voice hypotheses — not current official guidance”, and “Superseded synthetic state proposals — not verified product facts”. A5 requires those strings to survive as published bytes; A1 forbids promoting them into the portable body as current Banksalad facts. They are therefore restored byte-exact onto the provenance omission ledgers that already hold the rest of those same tables, and no per-component state applicability row was rewritten. Prior ledger rows that claimed those tables were “provenance 174 / 176 only” were true about the token values and false about the copy — the copy had been abbreviated (`아직 연동된 카드가 없어요. …`) or dropped entirely. That is the E2 defect this revision closes.
+
+| # | String (byte-exact) | Legacy site | Disposition |
+|---|---|---|---|
+| 1 | `내 카드 추천 받기` | §4 Legacy Buttons › Primary CTA (Salad Green) `Use:` (source 262) | 복원 → provenance 168 snapshot `Use:` labels |
+| 2 | `앱 다운로드` | §4 Legacy Buttons › Primary CTA — Large Display `Use:` (source 274) | 복원 → provenance 168 |
+| 3 | `지금 시작하기` | §4 Legacy Buttons › Primary CTA — Large Display `Use:` (source 274) | 복원 → provenance 168 |
+| 4 | `다시 시도` | §4 Legacy Buttons › Primary CTA — Hover-Inverted (Retry) `Use:` (source 284) | 복원 → provenance 168 |
+| 5 | `자세히 보기` | §4 Legacy Buttons › Link Button `Use:` (source 321) | 복원 → provenance 168 |
+| 6 | `연회비 없음` | §4 Badges & Tags › Status Pill (Brand) `Use:` (source 393) | 복원 → provenance 168 |
+| 7 | `주유 할인` | §4 Badges & Tags › Status Pill (Brand) `Use:` (source 393) | 복원 → provenance 168 |
+| 8 | `시작하기 →` | §10 Voice table › CTAs row, named there as the rejected arrow-flourish form (source 623) | 복원 → provenance 176. The `지금 시작하기` label at provenance 168 is the §4 site of the same run; both are kept, neither substitutes for the other |
+| 9 | `이번 달, 얼마나 썼는지 보러 갈까요?` | §10 Voice table › Section headlines row, named as the rejected hook (source 624) | 복원 → provenance 176 |
+| 10 | `약 124만원` | §10 Voice table › Financial figures row, named forbidden on primary surfaces (source 626) | 복원 → provenance 176. [POINTER ADDED] 같은 성격의 짝 `약 120만원` (§7 Don't, source 545)은 이 패스에서 누락됐고 Revision 2026-08-26b에서 provenance 170으로 복원됨 — 두 행을 함께 읽을 것 |
+| 11 | `오류가 발생했습니다` | §10 Voice table › Error / validation row, named as rejected (source 628) | 복원 → provenance 176 |
+| 12 | `아직 연동된 카드가 없어요. 카드를 연동하면 자동으로 지출 분석이 시작돼요.` | §10 Voice table › Empty states row (source 629) **and** §14 States table › Empty (no linked accounts) (source 683) | 복원 → provenance 176 (§10 site) + provenance 174 (§14 site). Prior ledger truncated it to `아직 연동된 카드가 없어요. …`; the ellipsis was the loss (E2a: two source sites, two ledger destinations) |
+| 13 | `조건에 맞는 결과가 없어요. 필터를 조정해주세요.` | §14 States table › Empty (filter cleared) (source 684) | 복원 → provenance 174 |
+| 14 | `선택한 기간에 거래 내역이 없어요. 다른 기간을 선택하거나 카드 연동을 확인해보세요.` | §14 States table › Empty (no transactions this period) (source 685) | 복원 → provenance 174 |
+| 15 | `다시 시도하기` | §14 States table › Error (recommendation fetch failed) retry button label (source 689) | 복원 → provenance 174 |
+| 16 | `뱅크샐러드` — the brand-name half of the full home tagline (the tagline itself is quoted whole, unescaped, at Content Observed 350 / provenance 188 / this log’s F2 list, because a markdown table cell cannot hold its `|` without distorting the bytes) | HTML-comment Sources: home “confirms current tagline” (source 740) | 복원 → portable Content Observed 350 + provenance 188 (E2a). First-party, source-verified, so it is portable body, not ledger-only. The Korean brand name is kept as published; no English substitute |
+| 17 | `정보 비대칭성을 해소해 누구나 똑똑해지는 세상을 만들겠다` | HTML-comment Sources: founder mission quote attributed to Kim Tae-hoon via Korean press summaries (source 759) | 복원 → provenance 97 Narrative, byte-exact. Not promoted to portable Experience: the visible §11 states this reference does not rely on third-party founder mythology, and the attribution is press-summary, not first-party publication (D2 boundary kept). Prior ledger carried only the English paraphrase — that paraphrase now sits **beside** the Korean, not in place of it (A5) |
+
+**Also byte-exact in the same restoration (source-quoted in the same tables, below the gate's ≥4-character run threshold or already partially held):** `취소` (§4 Neutral / Cancel `Use:`, source 302) → provenance 168; `주민등록번호가 일치하지 않아요. 다시 확인해주세요.` (§10 Error row + §14 Error (inline field), source 628/687) → provenance 176 + 174; `--원` (§14 Loading / Skeleton amount placeholder, source 686/693) → provenance 174.
+
+**Not restored, and why.** Nothing in this list was refused. The HTML-comment fictional persona archetypes and Yi Su-yeon's illustrative Toss-vs-Banksalad paraphrase remain deleted under D2, as recorded in the original §13 row and provenance 195; they carry no non-Latin run the gate tracks and no byte-exact quote was added for them, because promoting a fictional persona quotation is the defect D2 exists to prevent.
+
+### F1 / F2 (v9; this restoration)
+
+F1: the two sentences added to the portable body are the Content Observed limiter (348, extended with `full-tagline record` so the added citation-character stays inside the existing adjacent complete B2a) and the tagline clause inside Content Observed 350, which is source-stated, not interpretive. No new unqualified interpretive sentence was introduced. No `[FILL IN]` emitted.
+
+F2 (this revision; value + field/role context, grep-verified after the edit):
+
+- `내 카드 추천 받기` / `신청하기` / `앱 다운로드` / `지금 시작하기` / `다시 시도` / `취소` / `자세히 보기` / `연회비 없음` / `주유 할인` → provenance 168
+- `시작하기 →` / `이번 달, 얼마나 썼는지 보러 갈까요?` / `약 124만원` / `오류가 발생했습니다` / `내 카드 찾기` / `대출 한도 확인하기` / `이번 달 지출 분석` / `연 30만원 이상 절약될 수 있어요` / `1,240,000원` / `신용점수가 855점으로 올랐어요.` / `이번 검사로 18가지 항목을 확인할 수 있어요` → provenance 176
+- `아직 연동된 카드가 없어요. 카드를 연동하면 자동으로 지출 분석이 시작돼요.` → provenance 176 (§10 site) + provenance 174 (§14 site)
+- `조건에 맞는 결과가 없어요. 필터를 조정해주세요.` / `선택한 기간에 거래 내역이 없어요. 다른 기간을 선택하거나 카드 연동을 확인해보세요.` / `다시 시도하기` / `--원` → provenance 174
+- `주민등록번호가 일치하지 않아요. 다시 확인해주세요.` → provenance 176 + 174
+- `뱅크샐러드 | 금융을 넘어 건강 자산까지` → portable Content Observed 350 + provenance 188
+- `정보 비대칭성을 해소해 누구나 똑똑해지는 세상을 만들겠다` → provenance 97
+- Pointer re-verification by grep against the current files: every B2a site in the active F1 list (11, 13, 15, 17, 19, 21, 36, 40, 51, 64, 75, 81, 89, 101, 107, 115, 129, 135, 145, 163, 165, 169, 182, 184, 191, 214, 239, 262, 279, 295, 348, 355, 359) still carries both halves of the limiter; every active value pointer in the wave10 final-resubmit F2 list and in the main table (Shape 117–123, Layout 300/302/313/315/316/318–324/335/337/339, Spacing 107, Components 203/209/212/223/229/232/237/247/254/257/270/288, Content 348/350/352/355/359, Named gaps 397/399/400/401, Motion 133/135/137, Foundations 91/92/95/111/113/127) resolves to the stated content. Provenance pointers 13–34, 40–45, 48, 50, 56/66/76, 71–72/81–82, 86–91, 95, 97, 148–150, 154, 156–176, 180/181, 188, 195, 198 also resolve.
+- One stale pointer found and corrected in place: wave10 final resubmit item 2 wrote `2px default remains reverted (340)`; the Layout-tail sentence is 341. Marked `[POINTER CORRECTED]` there rather than silently rewritten.
+- Line counts unchanged: DESIGN.md 404 lines, provenance.md 199 lines. All restorations are in-line appends, so no other pointer shifted.
+- DESIGN.md SHA-256 `6886644a7070b72dea7992a0ad9f2e1e13e8974da8352239966a212a55fb9ad9`; provenance.md SHA-256 `ea8a493aa17ca72e5b2528d99193559437f547a43b63be1701b71043f67a58de`
+- `--gate-only` PASS, problems `[]`; `copy-loss` no longer fires. Gate binary at verification time: `test-v2/tools/migrate-reference.mjs` SHA-256 `3170bb7e4f789a555e26639a78581e5b094e1301e59c1564ccc91c63fed28d6e`. One intermediate run during this session returned `copy-loss × 2` with needles that carried their own quote characters (`"자세히 보기"`, `~합니다`); the file was being edited concurrently and the next run on the settled build returned PASS. Recorded rather than worked around: no output text was changed in response to that transient (E3).
+- `scripts/migrate-design-md-core.cjs --input … --check --require-portable-core` exit 0, `portable_core: true`, `validation.valid: true` — unchanged by this restoration
+
+No gate evasion was used: no string was re-spelled, spaced, or transliterated to dodge a check (E3). Gate output is not a catalog-adoption claim (E2c).
+
+## Revision 2026-08-26b (T2-1 A5 residual: `약 120만원`)
+
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` v9. Trigger: the `copy-loss` gate's needle extractor was fixed this session to pair opening and closing quote characters with the same symbol; re-verification across the 123-reference wave surfaced exactly one remaining loss, and it is this one. The prior needle bug had been masking it. No new F3 required; no token value, no component-table value, no state applicability verdict, no section structure, and no source file was touched.
+
+**Nature check (the question this revision had to answer first).** `약 120만원` (source 545) and `약 124만원` (source 626) are the same kind of string: in both, Banksalad's own guidance names a concrete currency approximation as the form to *not* use, and pairs it with the comma-separated numeral that should be used instead (`12,400,000원` at source 536; `1,240,000원` at source 626). Neither is Banksalad product copy; both are rejected-form citations inside a rule. They therefore take the same disposition, and the split state — one restored, one wholly absent — was not defensible.
+
+They differ only in which source section published them, and that difference decides the ledger paragraph, not the disposition:
+
+| String | Source site | In a `<details>` superseded block? | Ledger paragraph |
+|---|---|---|---|
+| `약 124만원` | §10 Voice & Tone table › Financial figures (source 626) | Yes — block 618–633, "Superseded voice hypotheses — not current official guidance" | provenance 176 (§10 ledger) |
+| `약 120만원` | §7 Do's and Don'ts › Don't (source 545) | No — §7 is live source body (524–549) | provenance 170 (§7 ledger) |
+
+§7 is not inside a `<details>` block, but it reached the same destination by the other route: the original migration already ruled the §7 Do/Don't list stale against the 2026-07-12 capture (main table rows §7 Do's / §7 Don'ts) and parked its commands on provenance 170 under the head "Stale §7 Do/Don't (contradicts current capture; not portable Avoid as a current rule set)". That paragraph already held this item's own neighbours byte-exact — `12,400,000원`, the BM JUA command, the `#0099ff` command, the weight-400 command — and was missing only the currency-approximation command. So provenance 170 is where the rest of this string's table already lives, which is the same placement rule the 2026-08-26 pass used for all fifteen `<details>` strings.
+
+| # | String (byte-exact) | Legacy site | Disposition |
+|---|---|---|---|
+| 18 | `약 120만원` | §7 Don't › "Don't approximate currency amounts (`약 120만원`) on primary financial surfaces — bare numerals with commas only" (source 545) | 복원 → provenance 170, quoted as the source stated the command, immediately after the `12,400,000원` Do it is the counterpart to. Same disposition as row 10; different ledger paragraph only because the source section differs |
+
+**Not promoted to the portable body, and why.** Neither string has a portable site, and this revision did not create one. The portable Experience Avoid list (DESIGN.md 73–81) carries only capture-bound evidence-hygiene rules (unmerged-legacy, unobserved-state-not-invented, BPL-2020-not-current-tokens, unobserved-accent-face-not-Pretendard, BM-JUA-not-current, one-captured-surface-not-native-or-unlisted-authenticated); it holds no currency-format rule, and `12,400,000원` / `1,240,000원` are both absent from DESIGN.md. Writing a currency-formatting rule into the portable Avoid list now would promote a command the migration already found stale against the current capture — the A1 defect the 170 paragraph exists to prevent. The string is restored as published bytes, not as a current Banksalad rule (A5 satisfied without A1 breach), exactly as row 10 was.
+
+### F1 / F2 (v9; this revision)
+
+F1: no sentence was added to the portable body. DESIGN.md is byte-identical to the 2026-08-26 revision. No `[FILL IN]` emitted.
+
+F2 (this revision; value + field/role context, grep-verified after the edit, counted with `grep -o … | wc -l` per file):
+
+- `약 120만원` → provenance 170. Per-file counts after restore: source `web/references/banksalad/DESIGN.md` 1 (use); `provenance.md` 1 (use); `DESIGN.md` 0; `migration-log.md` not tallied (mentions only — ledger prose, not use sites); `audit-log.md` 0.
+- `약 124만원` (pair, unchanged by this revision) → provenance 176. Per-file counts: source 1 (use); `provenance.md` 1 (use); `DESIGN.md` 0; `migration-log.md` not tallied (mentions only); `audit-log.md` 0. The two strings now match at every counted file. The migration-log figure is deliberately left untallied: this ledger's own prose quotes the strings while describing them, so any number written here changes the number, and a mention was never a use to begin with.
+- Counting rule applied: `migration-log.md` and `audit-log.md` occurrences are mentions, not uses. Summing across files would make an unrestored loss look restored, so counts are reported per file and the ledger files are excluded from the use tally.
+- Pointer re-verification by grep against the current files: provenance 170 and 176 both resolve to the stated paragraphs and both now carry their currency string. The 2026-08-26 F2 destinations (provenance 97, 168, 174, 176, 188; portable Content Observed 350) all still resolve. Every B2a site in the active F1 list and every active value pointer in the main table re-resolve unchanged.
+- No stale pointer found in this pass. Row 10 of the 2026-08-26 table gained a `[POINTER ADDED]` forward reference to this revision rather than being renumbered or rewritten, so that sealed revision's record stays intact while the pair reads together.
+- Line counts: DESIGN.md 404 lines (untouched), provenance.md 199 lines (unchanged — the restoration is an in-line append inside 170). No pointer shifted.
+- DESIGN.md SHA-256 `6886644a7070b72dea7992a0ad9f2e1e13e8974da8352239966a212a55fb9ad9` — byte-identical to the 2026-08-26 revision, confirming the portable body was not touched; provenance.md SHA-256 `5d7316a48b7c884a765edcf4e4b3790cee5dadf941dce53e9bc11ec980b8e250` (was `ea8a493aa17ca72e5b2528d99193559437f547a43b63be1701b71043f67a58de`).
+- `cd test-v2/tools && node migrate-reference.mjs --brand banksalad --gate-only` → `verdict: PASS`, problems `[]`.
+- `node scripts/migrate-design-md-core.cjs --input docs/design-md-weight/migrated/banksalad/DESIGN.md --check --require-portable-core` → exit 0, `portable_core: true`, `validation.valid: true`, `clean_top: true`, `opaque_extension_preserved: true` — unchanged by this revision, as expected from the identical DESIGN.md hash.
+- Gate PASS is not cited as evidence that this disposition is correct. The gate only observes that the byte run is present somewhere in the output set; it cannot tell a ledger citation from a promoted rule. The argument for placing `약 120만원` on provenance 170 rather than in the portable Avoid list is the nature check above, not the gate result (E2c).
+
+No gate evasion was used: no string was re-spelled, spaced, or transliterated to dodge a check (E3). The needle-extractor fix that surfaced this loss was a gate-side correction made before this revision; no output text was changed in response to it beyond the single restoration recorded here.

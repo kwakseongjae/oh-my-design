@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.610",
+  "status": "PLAN_ADVANCED_PROVIDER_ZERO",
+  "provider_calls": 0,
+  "plan_id": "luna-max-one-prompt-v0.1",
+  "runtime_pin": {
+    "version": "codex-cli 0.144.1",
+    "binary_sha256": "134063e133f0b4244fa3b251acf973d4fe4b4aeeacbdc135211bf480f59f1477"
+  },
+  "unverified_candidates": {
+    "model_selector": "gpt-5.6-luna",
+    "native_effort": "max",
+    "public_attribution_allowed": false
+  },
+  "new_fail_closed_gates": {
+    "provider_preflight_before_any_arm": true,
+    "silent_model_or_effort_downgrade_forbidden": true,
+    "decorative_landing_only_task_forbidden": true,
+    "manual_product_edit_invalidates_primary_cell": true,
+    "clarification_invalidates_one_prompt_label": true
+  },
+  "publication_package": {
+    "desktop_mobile_and_state_captures": true,
+    "raw_prompt_starter_response_diff_and_failures": true,
+    "blinded_until_vote_export": true,
+    "per_run_time_and_token_badge": true,
+    "headline_median_range_and_success_denominator": true
+  },
+  "claim_boundary": "No Luna Max provider call has been made. The selector and max effort remain candidates until the isolated acceptance preflight succeeds.",
+  "next": "After the current 2.0 transfer matrix reaches a safe checkpoint, run one isolated non-product Luna Max acceptance preflight and pin its raw telemetry before choosing the public task."
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.792",
+  "experiment_id": "council-routed-lifecycle-task-lock-1.9.792",
+  "status": "THREE_FRESH_ROUTED_STATES_LOCKED_PROVIDER_ZERO",
+  "task_source_commit": "4f1fe866b919772220e750f173075e1d72e71458",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "cursor_calls": 0,
+  "runtime_policy": "Codex-native gpt-5.6-luna high only",
+  "helper_hashes": {
+    "scripts/design-council-prime.cjs": "a73a6e1935d278b5fa634697a73e42e9942f29591f4b41d8e8df5178ef1a0c78",
+    "scripts/design-council-reconcile.cjs": "1c2b7099ce9aa7e3394b7f730d1a2b804011e50577479b71ec6e9bd5c4db9fe9",
+    "scripts/design-council-handoff.cjs": "42807439d13ffecbc3d913d6c8a54f4d2633a9de0c534d3e75d3b762064f527f",
+    "scripts/design-harness-context-plan.cjs": "1228f50422cf6402370a2d3e61a88f2fc9610af36826d476ad2d233133532074",
+    "skills/omd-apply/SKILL.md": "7a5265b14d8cfd3398dcfd4da39676258677f5a8fd20261c180de617bd854a0f",
+    "benchmarks/ui-resolve-bench/scripts/prepare-sandbox.mjs": "87b454b3f41ec698353d6077c476cc4284d45fb17591821cfe3f3afff87b55cd",
+    "benchmarks/ui-resolve-bench/competitors.json": "b51d5153b567b269a8d1649ae01982975cb24003ae64756ca33486aa4313ba7b"
+  },
+  "tasks": [
+    {
+      "task_id": "papyrus-leaf-return-v0.1",
+      "route": "product-authority-interview",
+      "task_tree_sha256": "a8762b78169848d052ab854aa093869ddaed9d0c8d072eeb501cfe6eccccab80",
+      "prompt_sha256": "8f8957c3bd010e3acacea34a00651be60f2c55b34132cdfdb1569449e0701a11",
+      "starter_index_sha256": "0b18976d3705cccff8f27d341dbd402aa9df7c0adc614bae31083837500d6256",
+      "starter_design_sha256": "174a2dd3045f1535fbab2beaae0655d616293717f9399555ccd45f81bdcb8dc5",
+      "task_json_sha256": "00e6091979fe8872e7b98bb2792fb945ed68d136528fd4e388add77b07a86120",
+      "baseline_evidence_sha256": "4d5905f5cf4ad34cb7c9078f5f4686b40242d9269291d2028acdc32f930e59f2",
+      "source_contract_sha256": "47beaa488c2afe2d933532d300ad294d8af22ef8bda091704326e656f89fb17e",
+      "council_oracle_sha256": "366d629ac735e257f29567026e5ec8d66fd24e189120593210ccfab4f948cc70"
+    },
+    {
+      "task_id": "photographic-proof-return-v0.1",
+      "route": "external-evidence-blocker",
+      "task_tree_sha256": "91f0611cbd020dfc4f38efe39b12c93fac24cc555e28984f14724f8904855ce6",
+      "prompt_sha256": "9e29c6f97071152692224935945229da5c56a77b477a314145c4208bf0e286f0",
+      "starter_index_sha256": "d82a33046ced1088348ece6b7a95079f5941fd17c8efc1a7298b705f56d4ff3e",
+      "starter_design_sha256": "c9f17773d2c40824094593c82e0db1c99ce660660b7a5874ffafff69c2747f41",
+      "task_json_sha256": "29465e7672850bb0df9a017a7b91858b07b19b922d9a65287530d61c3794d1fa",
+      "baseline_evidence_sha256": "298730989b87025129321c41c317f007feded5edcd76421a7c6c2cfa54366dbe",
+      "source_contract_sha256": "c67b194e4cea8ed4adea7da9df50220bfeb9d84ae8705895b69da76b1929d97b",
+      "council_oracle_sha256": "45147b3448b595b09503156e42c42c1d67117e092f8050e7fa5f4808f6632e47"
+    },
+    {
+      "task_id": "ceramic-sherd-return-v0.1",
+      "route": "bounded-advisory-ready",
+      "task_tree_sha256": "3953a2305cb04188146d2e8d34320c9da316b82763f063439a52e0390a11dff0",
+      "prompt_sha256": "573aae72de4354fe9409d1ef3308c32375ca3399e692e133705578a5818e6b92",
+      "starter_index_sha256": "89517055d6126b919eb7f7fdc361888b8256b604aa3ecff6a050d641b0ce8afd",
+      "starter_design_sha256": "23691be7a9c1cca39d0bd9134bd239de0848f7616919120aa21292b15aca2990",
+      "task_json_sha256": "1ecf2f87e025afc944665425b0c23b6c42fcfb0a7b22b6f4a5afe464c1ae363c",
+      "baseline_evidence_sha256": "aaac9ae8ee592d688f8a0e595be81028567fd57c22890ce7e780a71fdc668559",
+      "source_contract_sha256": "1288db0dc6a3b7cf5c66f7b62806f2bf23e271ceca2a43970fde4289763361d1",
+      "council_oracle_sha256": "626a9a9ccf532494fa3b74244923f81427e36ffa24c2ea813a265baebc2cf386"
+    }
+  ],
+  "raw_baseline": {
+    "scores": [75, 75, 75],
+    "objective_max": 85,
+    "failed_critical_gates": ["accessibility", "responsive"]
+  },
+  "lifecycle_contract": {
+    "interview": "No product write before exact registered answer receipt; one implementation revision allowed after receipt.",
+    "blocked": "No advisory dispatch, no product write, no simulated answer, and final product bytes must equal starter bytes.",
+    "advisory_ready": "No product write before all preregistered read-only lane artifacts reconcile; one implementation owner and revision afterward.",
+    "unplanned_question_count_max": 0,
+    "retry_budget": 0,
+    "replacement_budget": 0,
+    "cursor_calls": 0
+  },
+  "execution_allowed": false,
+  "next_gate": "Implement and test the provider-zero lifecycle controller, then preregister its exact Luna/high execution matrix."
+}

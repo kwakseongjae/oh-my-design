@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.655",
+  "experiment_id": "plan-decision-packet-distribution-1.9.655",
+  "status": "PROVIDER_ZERO_DISTRIBUTION_ACCEPTED",
+  "provider_calls": 0,
+  "model_exposures": 0,
+  "channels": [
+    "claude-code",
+    "codex",
+    "opencode"
+  ],
+  "contract": {
+    "installed_skill_mentions_operator_input_boundary": true,
+    "installed_helper_exports_packet_create_and_apply": true,
+    "installed_runner_routes_to_packet_commands": true,
+    "helper_and_runner_identical_across_channels": true,
+    "channel_native_skill_frontmatter_allowed": true
+  },
+  "source_sha256": {
+    "skill": "2542baa1b467002e2ced972d8cdc37448c647b962aae1265a05f2bf31568ecf7",
+    "artifact_helper": "878d13e0551a15546b2357e13c40029305aa7651dcecc529b71d23bc3d0e743c",
+    "browser_runner": "13f9ab26c1bab3f75a569f7824330e746b15662f7a3cfe4f6973e7422ea19da5",
+    "distributed_helper_runner_composite": "5c5c7168d1d7ee832701ad2f1179247915fb9f4b7da10af434fa9faabd521e3b"
+  },
+  "verification": {
+    "three_channel_install": "pass",
+    "channel_hash_equality": "pass",
+    "installed_helper_usage": "pass",
+    "focused_distribution_test": {
+      "passed": 1,
+      "failed": 0
+    },
+    "full_benchmark_unit": {
+      "passed": 224,
+      "optional_skipped": 2,
+      "failed": 0
+    },
+    "typescript_lint": "pass",
+    "diff_check": "pass"
+  },
+  "claim_boundary": "Distribution acceptance proves the guarded packet workflow reaches all three supported host skill directories. It does not prove host-model compliance or UI quality lift.",
+  "next": "Commit and exact-pin this source, then use that immutable candidate for a genuinely unseen provider transfer task."
+}

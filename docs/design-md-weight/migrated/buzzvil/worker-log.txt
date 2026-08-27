@@ -1,0 +1,9 @@
+Buzzvil T2 마이그레이션을 시작합니다. 규칙집과 골든 샘플을 먼저 읽고, 레거시 DESIGN.md를 Core v2로 옮기겠습니다.필수 문서와 골든 샘플부터 읽고, Buzzvil 레거시 본문을 대조합니다.골든 샘플과 Buzzvil 원본을 읽고, 최근 통과 이관 형식도 대조합니다.최근 통과 이관과 게이트 스크립트를 읽어, Buzzvil에 적용할 형식을 맞춥니다.원본 값과 §9 로컬 튜플을 유지한 채 Core v2 본문을 작성합니다.본문을 다시 읽고 B2a 한정이 빠졌는지 확인한 뒤, 줄 번호를 잡아 provenance에 넣겠습니다.B2a 한정이 붙은 본문 줄 번호를 기준으로 provenance를 작성합니다.Buzzvil legacy `DESIGN.md`를 Core v2로 옮겼습니다. 산출물은 `docs/design-md-weight/migrated/buzzvil/`의 `DESIGN.md`, `provenance.md`, `migration-log.md`입니다. 규칙집은 v7입니다.
+
+보존한 값: YAML unitless line-height `1.19` / `1.31` / `1.50`, primitive type button×5 + tab×2 + card×2, §14 9행, duration `120ms` / `200ms` / `320ms`, `prefers-reduced-motion`, B3 다섯 증거 종류 전문. §9 전용 결합은 로컬로 남겼습니다(75px sticky nav의 right-aligned 문의하기/광고센터, dark hero 24px/`#f2f5f7` subhead, stat card number `#0e171f` + label `#3e5463`).
+
+삭제한 것: §9 도구 프롬프트, 무출처 cubic-bezier 3개(`ease-exit`는 템플릿 일치, provenance omission ledger만), §13 fictional archetypes(sidecar 재수록 없음). Contact/Ghost의 loading/error/success는 역할 매핑이 닫히지 않아 생략했고, 카드는 kind/map을 생략했습니다.
+
+`--gate-only` PASS, `portable_core: true`. DESIGN SHA-256 `be62c8d441a094c999580124618cd39e6a52e6115912e44694ce8194f903ba32`. F3 감사와 sol 의미 레인은 대기입니다. 카탈로그 채택이 아닙니다.
+
+DONE migrated=1

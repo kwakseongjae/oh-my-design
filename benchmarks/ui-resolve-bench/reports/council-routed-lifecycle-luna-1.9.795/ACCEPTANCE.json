@@ -1,0 +1,96 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "council-routed-lifecycle-luna-1.9.795",
+  "status": "COMPLETE_ACCEPTED_INTERNAL",
+  "runtime": "codex",
+  "model_id": "gpt-5.6-luna",
+  "effort": "high",
+  "execution": {
+    "lane_calls": 4,
+    "implementation_calls": 2,
+    "provider_calls": 6,
+    "cursor_calls": 0,
+    "retry_count": 0,
+    "replacement_count": 0,
+    "fallback_count": 0,
+    "model_substitution_count": 0
+  },
+  "lifecycle": {
+    "routes": 3,
+    "interview_registered_answer_applied": true,
+    "interview_resumed_after_receipt": true,
+    "advisory_resumed_after_lane_reconcile": true,
+    "blocker_dispatch_count": 0,
+    "blocker_provider_calls": 0,
+    "blocker_product_writes": 0,
+    "blocker_starter_bytes_exact": true,
+    "pre_implementation_product_writes": 0,
+    "unplanned_question_count": 0,
+    "gate": true
+  },
+  "implementation_cells": [
+    {
+      "id": "papyrus-luna-r1-routed-lifecycle",
+      "task_id": "papyrus-leaf-return-v0.1",
+      "objective_score": 85,
+      "objective_max": 85,
+      "ui_resolved": true,
+      "product_revision_count": 1,
+      "proof_compliance": true,
+      "browser_attempts": 1,
+      "browser_recovery_count": 0,
+      "candidate_final_bytes_match": true,
+      "wall_ms": 386334,
+      "input_tokens": 2279289,
+      "cached_input_tokens": 2172416,
+      "output_tokens": 18487,
+      "reasoning_output_tokens": 8160,
+      "run_result_sha256": "a00a25d805067bfe66444fad7a2339a8a58feced13fc192bc5041ed9a313989d",
+      "score_sha256": "e9e048ae98dff3c433d6ede477847f1e0c41f61a4e23e9cb0177a9b073c052cc"
+    },
+    {
+      "id": "ceramic-luna-r1-routed-lifecycle",
+      "task_id": "ceramic-sherd-return-v0.1",
+      "objective_score": 85,
+      "objective_max": 85,
+      "ui_resolved": true,
+      "product_revision_count": 1,
+      "proof_compliance": true,
+      "browser_attempts": 1,
+      "browser_recovery_count": 0,
+      "candidate_final_bytes_match": true,
+      "wall_ms": 179235,
+      "input_tokens": 887644,
+      "cached_input_tokens": 812544,
+      "output_tokens": 7975,
+      "reasoning_output_tokens": 3297,
+      "run_result_sha256": "20e3db2674150e85cc090345d51cfd898129d59019c4d5d3dbe51cebd1a7053f",
+      "score_sha256": "9c4e6302c8ff85f9cb1eff39c6602427e095c57cf4b5a61debc3d127e9538bb9"
+    }
+  ],
+  "usage": {
+    "lane_wall_ms_sum": 149458,
+    "implementation_wall_ms_sum": 565569,
+    "provider_wall_ms_sum": 715027,
+    "input_tokens": 3459785,
+    "cached_input_tokens": 3210752,
+    "output_tokens": 32685,
+    "reasoning_output_tokens": 15254,
+    "comparison_policy": "descriptive-only"
+  },
+  "blocker_product_sha256": {
+    "index_html": "d82a33046ced1088348ece6b7a95079f5941fd17c8efc1a7298b705f56d4ff3e",
+    "design_md": "c9f17773d2c40824094593c82e0db1c99ce660660b7a5874ffafff69c2747f41"
+  },
+  "artifact_sha256": {
+    "council_lifecycle": "cc26bea20b14753df0056aa9ea75c824a2cd40c1d65224bc189a826b2ef19fa7"
+  },
+  "reliability": "2/2",
+  "overall_gate": true,
+  "frontier_gate_passes": {
+    "routing-ownership-reverify": true,
+    "council-first-human-escalation": true
+  },
+  "visual_review": "not_run",
+  "claim_scope": "fresh routed lifecycle acceptance only; not model ranking or 2.0 promotion by itself"
+}

@@ -97,7 +97,10 @@ artifacts/reference-evidence/
 # (~/.omd/bench-store) with SHA manifests committed under
 # benchmarks/ui-resolve-bench/manifests/. `scripts/bench-store.mjs --verify`
 # checks custody; REPRODUCE.md explains how a stranger re-runs everything.
-benchmarks/ui-resolve-bench/reports/
+# reports/ is governed by its own benchmarks/ui-resolve-bench/reports/.gitignore,
+# which keeps the runs git binds by path and drops the rest. It has to live
+# there: git does not descend into an excluded directory, so a `!` negation
+# written here could never re-include anything under an ignored reports/.
 benchmarks/ui-resolve-bench/e2e/
 benchmarks/ui-resolve-bench/fixtures/competitor-skills-2.0/
 

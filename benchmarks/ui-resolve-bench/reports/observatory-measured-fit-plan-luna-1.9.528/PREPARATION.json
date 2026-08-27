@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1",
+  "product_version": "1.9.529",
+  "experiment_id": "observatory-measured-fit-plan-luna-1.9.528",
+  "status": "SIX_CELLS_PREPARED",
+  "provider_calls": 0,
+  "output_root": "/private/tmp/u19528",
+  "vendors_root": "/private/tmp/u19528-vendors",
+  "locked_plan_sha256": "259ed93ef28768f8140c145e9713946e0bf7206456a1c5395ad8cf9dea888053",
+  "equality": {
+    "scheduled_cells": 6,
+    "prepared_cells": 6,
+    "core_prompt_equal": 6,
+    "prompt_equal": 6,
+    "starter_equal": 6,
+    "product_tree_equal": 6,
+    "runtime_equal": 6,
+    "model_equal": 6,
+    "effort_equal": 6,
+    "timeout_equal": 6
+  },
+  "source_attestation": {
+    "control": {
+      "commit": "8d647987fbcacabcf406c6eb393d8d40330ced05",
+      "detached": true,
+      "clean": true
+    },
+    "candidate": {
+      "commit": "b3b83bf7cc3808c643beb34934ad1096ee334270",
+      "detached": true,
+      "clean": true
+    }
+  },
+  "installed_source_sha256": {
+    "control_skill": "69a01441a61768751b46d5992b5b646c53410b0804be3c58a6c602785aca67e1",
+    "candidate_skill": "b2ff359c23bbf92fff851db67a29374f67d49893648287bb205dea7c02907728",
+    "control_browser_runner": "bbd1b2629037381873d230ce15c07a1b97275fc04ab327e51f0d6df1d4b309b3",
+    "candidate_browser_runner": "f532c36d37712e6177514c1230f1e98a4632219030f43a7cfe6c7481897e9fa4",
+    "control_artifact_helper": "f913682ecc5796866467d9bb296c7c01be075e021a321249bd9eec6d7e501025",
+    "candidate_artifact_helper": "aef593819c3639a24c1fcd0bbe92f8cc0d4ed3177c8b77309c2c7837e601a1d4"
+  },
+  "candidate_guardrail_presence": {
+    "skill_measured_fit_plan_rule": true,
+    "helper_pending_fit_plan_state": true,
+    "helper_plan_close_command": true,
+    "browser_named_plan_mode": true,
+    "intrinsic_nowrap_width_oracle": true,
+    "planned_fit_reserve_16": true,
+    "measured_fit_reserve_8": true
+  },
+  "next": "Run runtime browser, CLI, and auth preflight, then execute luna-observatory-r1-control once with Luna/high and no retry."
+}

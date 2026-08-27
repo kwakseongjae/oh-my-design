@@ -1,0 +1,225 @@
+{
+  "schema_version": "0.3",
+  "suite_version": "ui-resolve-v0.2",
+  "product_version": "1.9.795",
+  "execution_purpose": "fresh-routed-council-lifecycle-internal-acceptance-not-ranking",
+  "experiment_id": "council-routed-lifecycle-luna-1.9.795",
+  "output_root": "/private/tmp/omd-council-routed-lifecycle-luna-1.9.795",
+  "attribution_scope": "provider-observed-only",
+  "family": "harness",
+  "status": "locked-awaiting-provider-zero-preparation",
+  "control_contract": {
+    "comparison_mode": "native-capability",
+    "effort_semantics": "runtime-native-ordinal-not-cross-provider-equivalent",
+    "temperature_policy": "runtime-default-frozen",
+    "timeout_seconds": 720,
+    "max_concurrency": 1,
+    "latency_comparison": "descriptive-only",
+    "retry_policy": "none-primary",
+    "timeout_policy": "count-as-valid-failure",
+    "infrastructure_policy": "retain-freeze-and-repreregister",
+    "task_order_policy": "fixed-preregistered",
+    "admission_normalization_policy": "cross-task-reliability",
+    "pacing": {
+      "policy": "fixed-inter-cell",
+      "inter_cell_delay_seconds": 30,
+      "applies_between_cells_only": true,
+      "counts_toward_cell_wall_time": false
+    },
+    "token_budget": {
+      "mode": "observed-only",
+      "limit_tokens": null,
+      "usage_required": true,
+      "account_components": ["input", "cached_input", "output", "reasoning_output"],
+      "cached_input_separate": true,
+      "cost_policy": "provider-reported-or-pinned-price-equivalent"
+    },
+    "step_budget": {"mode": "observed-only", "limit_steps": null}
+  },
+  "provider_routing_contract": {
+    "cursor_allowed": false,
+    "allowed_runtime": "codex",
+    "allowed_model_id": "gpt-5.6-luna",
+    "allowed_effort": "high",
+    "fail_closed": true
+  },
+  "browser_execution_contract": {
+    "require_browser_proof": true,
+    "runtime_dir_shared": true,
+    "exact_named_socket": true,
+    "allow_browser_launch": false,
+    "mechanism": "browser-harness attachment to controller-started isolated local CDP Chrome",
+    "connection_name": "omd1795",
+    "cdp_port": 9355,
+    "user_profile": "none",
+    "cloud_browser": "not-used"
+  },
+  "checkpoint_continuation_contract": {
+    "max_new_cells_per_invocation": 1,
+    "preserve_completed_lifecycle_receipts": true,
+    "completed_root_not_resumable": true
+  },
+  "council_lifecycle_contract": {
+    "executor": "benchmarks/ui-resolve-bench/scripts/execute-council-lanes-on-matrix.mjs",
+    "task_lock_ref": "benchmarks/ui-resolve-bench/reports/council-routed-lifecycle-task-lock-1.9.792/TASK-LOCK.json",
+    "lane_model_id": "gpt-5.6-luna",
+    "lane_effort": "high",
+    "lane_timeout_seconds": 300,
+    "lane_call_count_exact": 4,
+    "implementation_call_count_exact": 2,
+    "provider_call_count_exact": 6,
+    "blocker_task_id": "photographic-proof-return-v0.1",
+    "blocker_provider_calls": 0,
+    "blocker_product_writes": 0,
+    "pre_implementation_product_writes": 0,
+    "registered_answer_receipt_required": true,
+    "unplanned_question_count_max": 0,
+    "retry_count_max": 0,
+    "replacement_count_max": 0,
+    "fallback_count_max": 0,
+    "model_substitution_count_max": 0,
+    "cursor_calls": 0
+  },
+  "controller_pre_edit_plan_contract": {
+    "mode": "provider-zero-shipped-runner",
+    "required": true,
+    "artifact_path": ".omd/reflow-closure.json",
+    "runner_path": ".agents/skills/omd-apply/scripts/reflow-browser-runner.sh",
+    "reflow_mode": "plan",
+    "measured_attempts": 1,
+    "provider_calls": 0,
+    "cursor_calls": 0,
+    "timeout_seconds": 120
+  },
+  "proof_execution_gates": {
+    "system_ids": ["luna-high-omd-routed-lifecycle"],
+    "enforcement": "promotion-report",
+    "require_analyzable": true,
+    "require_closed_reflow_artifact": true,
+    "require_measured_browser_attempt": true,
+    "require_character_range_line_oracle": true,
+    "require_actual_zoom_observation": true,
+    "require_exact_named_consumer_attachment": true,
+    "forbid_launched_browser": true,
+    "require_locked_typography": true,
+    "minimum_inline_fit_reserve_css_px": 8,
+    "max_document_overflow_px": 0,
+    "max_browser_recovery_count": 0,
+    "max_duplicate_static_closure_count": 0,
+    "max_verification_after_ready_count": 0,
+    "max_passive_protected_text_scroll_containers": 0,
+    "shipped_runner_system_ids": ["luna-high-omd-routed-lifecycle"],
+    "shipped_runner_command_suffix": "scripts/reflow-browser-runner.sh"
+  },
+  "task_lock_contract": {
+    "source_commit": "4f1fe866b919772220e750f173075e1d72e71458",
+    "prior_model_exposures_per_task": 0,
+    "tasks": [
+      {
+        "task_id": "papyrus-leaf-return-v0.1",
+        "route": "product-authority-interview",
+        "task_tree_sha256": "a8762b78169848d052ab854aa093869ddaed9d0c8d072eeb501cfe6eccccab80",
+        "prompt_sha256": "8f8957c3bd010e3acacea34a00651be60f2c55b34132cdfdb1569449e0701a11",
+        "starter_sha256": "e2711992e19c3b250388e2688be638654c443fa89b112e086434e43f6f3487a1",
+        "baseline_evidence_sha256": "4d5905f5cf4ad34cb7c9078f5f4686b40242d9269291d2028acdc32f930e59f2",
+        "source_contract_sha256": "47beaa488c2afe2d933532d300ad294d8af22ef8bda091704326e656f89fb17e",
+        "council_oracle_sha256": "366d629ac735e257f29567026e5ec8d66fd24e189120593210ccfab4f948cc70"
+      },
+      {
+        "task_id": "ceramic-sherd-return-v0.1",
+        "route": "bounded-advisory-ready",
+        "task_tree_sha256": "3953a2305cb04188146d2e8d34320c9da316b82763f063439a52e0390a11dff0",
+        "prompt_sha256": "573aae72de4354fe9409d1ef3308c32375ca3399e692e133705578a5818e6b92",
+        "starter_sha256": "4ce3a39887d37789014ec05662b35fc83adab9533fd17cc8731a093e60856c32",
+        "baseline_evidence_sha256": "aaac9ae8ee592d688f8a0e595be81028567fd57c22890ce7e780a71fdc668559",
+        "source_contract_sha256": "1288db0dc6a3b7cf5c66f7b62806f2bf23e271ceca2a43970fde4289763361d1",
+        "council_oracle_sha256": "626a9a9ccf532494fa3b74244923f81427e36ffa24c2ea813a265baebc2cf386"
+      }
+    ]
+  },
+  "skill_lock_contract": {
+    "skill_id": "omd-apply-routed-council-lifecycle",
+    "source_commit": "c7031e2c0b8b76132ab6535ef20a009f7242f97e",
+    "skill_tree_sha256": "f46c9859a2765599a394f37ce9b9b43a2dc244f7da674b1a41a89680f42a33e0",
+    "activation_sha256": "474e41e6d6d71fe2b7465fb4752e77023644035a329d9392eebd9bcbf53ecf7b",
+    "lifecycle_executor_commit": "03ad5576"
+  },
+  "source_contract": {
+    "schema_version": "0.2",
+    "failed_critical_gates": ["accessibility", "responsive"],
+    "covered_critical_gates": ["accessibility", "responsive"],
+    "parent_containment_required": true,
+    "exact_decision_cascade_required": true,
+    "provider_mutable": false
+  },
+  "candidate_preflight_contract": {
+    "required": true,
+    "complete_candidate_bytes": true,
+    "same_static_evaluator": true,
+    "passed_receipt_required_before_product_edit": true,
+    "promotion_command": "static-promote",
+    "model_retyping_after_preview_forbidden": true,
+    "candidate_sha256_must_equal_final_product_sha256": true,
+    "source_contract_sha256_must_match": true,
+    "sealed_inventory_sha256_must_match": true
+  },
+  "cell_success_contract": {
+    "objective_score": 85,
+    "objective_max": 85,
+    "ui_resolved": true,
+    "product_revision_count": 1,
+    "successful_static_closure_count": 1,
+    "failed_static_closure_count": 0,
+    "proof_compliance": true,
+    "browser_runner_recovery_count": 0,
+    "sealed_inventory_unchanged": true,
+    "candidate_preview_receipt_passed": true,
+    "candidate_promoted_without_retyping": true,
+    "candidate_sha256_equals_final_product_sha256": true,
+    "unplanned_question_count": 0
+  },
+  "reliability_contract": {
+    "required_cell_passes": 2,
+    "total_cells": 2,
+    "pass_policy": "all-cells-must-satisfy-cell-success-contract",
+    "contract_hard_stop": [
+      "sealed-inventory-drift",
+      "second-product-edit",
+      "failed-static-closure",
+      "contract-proof-noncompliance",
+      "browser-runner-recovery",
+      "candidate-preview-receipt-missing-or-failed",
+      "candidate-final-byte-mismatch",
+      "unplanned-question",
+      "lifecycle-receipt-missing-or-failed"
+    ]
+  },
+  "comparison_claim_contract": {
+    "publication_tier": "internal-preview",
+    "forbid_claims": ["model-superiority", "industry-leader", "general-council-lift", "2.0-release-gate-from-this-test-alone"]
+  },
+  "cells": [
+    {
+      "id": "papyrus-luna-r1-routed-lifecycle",
+      "task_id": "papyrus-leaf-return-v0.1",
+      "variant_id": "omd-portable-state-routed-council-lifecycle",
+      "system_id": "luna-high-omd-routed-lifecycle",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1
+    },
+    {
+      "id": "ceramic-luna-r1-routed-lifecycle",
+      "task_id": "ceramic-sherd-return-v0.1",
+      "variant_id": "omd-portable-state-routed-council-lifecycle",
+      "system_id": "luna-high-omd-routed-lifecycle",
+      "runtime": "codex",
+      "model_id": "gpt-5.6-luna",
+      "effort": "high",
+      "timeout_seconds": 720,
+      "trial_index": 1
+    }
+  ]
+}

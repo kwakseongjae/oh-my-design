@@ -1,0 +1,34 @@
+{
+  "schema_version": "0.1",
+  "kind": "grok46-runtime-attribution-preflight",
+  "pass": true,
+  "excluded_from_benchmark_denominator": true,
+  "source_commit": "9a6d22fab50ae18998b3782c5576e00f7e626125",
+  "generated_at": "2026-08-15T03:02:07Z",
+  "description": "Smoke call 1 — isolated lane end-to-end proof. Tiny fixed prompt 'Reply with exactly: SMOKE-PASS-1'. Response: SMOKE-PASS-1. Provider-zero for benchmark denominator; this call is excluded.",
+  "runtime": {
+    "provider": "grok-build-cli",
+    "model": "grok-4.6",
+    "binary_sha256": "09deaf06804955ff2d6ccef2042af4031c659c47fd16eb3c72664a8f533832da",
+    "auth_sha256": "e193c65eb3825f6f2e5b38472a27c3b4e08c4402135839075cb41b387426100e",
+    "isolation_method": "HOME redirect with frozen auth.json and byte-gated models_cache.json",
+    "isolation_verified": true,
+    "fixed_flags": ["--no-auto-update", "--no-subagents", "--no-memory", "--disable-web-search", "--always-approve", "--reasoning-effort", "high"],
+    "retry_calls": 0,
+    "replacement_calls": 0,
+    "fallback_calls": 0,
+    "wall_ms": 3176,
+    "exit_code": 0,
+    "infrastructure_invalid": false
+  },
+  "raw_output_receipt": {
+    "run_result_path": "/private/tmp/omd-grok46-wow-smoke/smoke-01/.benchmark/run-result.json",
+    "run_result_sha256": "fa2a67d1eb3033ff2ceab53535c88ad08c164d36eec8eb5ea74390f98dc2d783",
+    "events_path": "/private/tmp/omd-grok46-wow-smoke/smoke-01/.benchmark/events.jsonl",
+    "events_sha256": "a1b746edfb7cb6e4298ac786cf75441e4514882339c51cf61f05296550a362a6",
+    "response": "SMOKE-PASS-1"
+  },
+  "provider_calls": 1,
+  "model_calls": 1,
+  "network_calls": 0
+}
