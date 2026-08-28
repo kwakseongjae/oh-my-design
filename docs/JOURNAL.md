@@ -1,3 +1,88 @@
+## 2026-08-28 — 의미 검토 hyundaicard
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0.
+- 열린 것: 없음. PASS.
+- 다음: 웨이브 32 나머지 검토.
+- `REVIEW_DONE hyundaicard PASS`.
+
+## 2026-08-28 — 의미 검토 hyundai
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0.
+- 열린 것: 없음. PASS.
+- 다음: 웨이브 32 나머지 검토.
+- `REVIEW_DONE hyundai PASS`.
+
+## 2026-08-28 — 의미 검토 humanscape
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0.
+- 열린 것: 없음. PASS.
+- 다음: 웨이브 32 나머지 검토.
+- `REVIEW_DONE humanscape PASS`.
+
+## 2026-08-28 — 웨이브 32 의미 검토 hwahae
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 파생물·sibling 융합 실측.
+- 열린 것: 없음. PASS. 고치지 않음.
+- 다음: 웨이브 32 나머지 검토.
+- `REVIEW_DONE hwahae PASS`.
+
+## 2026-08-28 — 의미 검토 hyperconnect
+- 한 일: 웨이브 32 독립 검토(A·C·D, 추가형 7–9). YAML 키경로·§11 결론·C2 쌍닫힘·페르소나 파생물 0·sibling 융합 0.
+- 열린 것: 없음. PASS.
+- 다음: 웨이브 32 나머지 검토.
+- 고치지 않음. `REVIEW_DONE hyperconnect PASS`.
+
+## 2026-08-28 — F3 감사 hyperconnect
+- 한 일: B2a·E2 전담 감사. 본문 한정 30→32(Grid·Unresolved). 원장 32=32. 로그 dest 10곳 실측 교정.
+- 열린 것: A5a compared 0/123. 발행 라틴 손실 안 보임. B1·D2a·E2d 이 브랜드 0.
+- 다음: 웨이브 32 나머지 F3.
+- SHA `a0be6103d617b3bf1204f8f05d4adb10eea317ddf4d3b08d15d2abd1ca7c1875`. `AUDIT_DONE fixes=16`.
+
+## 2026-08-28 — F3 감사 hyundai
+- 한 일: B2a·E2 전담 감사. 본문 한정 21=21(Family·Assets·Layout 범위 확장). 원장 21=21. 로그 dest 2곳 실측 교정.
+- 열린 것: A5a compared 0/92. 발행 라틴 손실 안 보임. B1·D2a·E2d 이 브랜드 0.
+- 다음: 웨이브 32 나머지 F3.
+- SHA `f715c0a7fd15032c47d6b0707b0bd7556aa65c31cd3720257ff8e709e7a062b9`. `AUDIT_DONE fixes=9`.
+
+## 2026-08-28 — F3 감사 hyundaicard
+- 한 일: B2a·E2 전담 감사. 본문 한정 22→24(DIVE omission·Capture reinspect). 원장 24=24. 로그 dest 10곳 실측 교정.
+- 열린 것: A5a compared 0/77. 발행 라틴 손실 안 보임. B1·D2a·E2d 이 브랜드 0.
+- 다음: 웨이브 32 나머지 F3.
+- SHA `7d818565cea5447d947e15a9218d4f8322991cc5d68ef6db805fbb8e9bd78325`. `AUDIT_DONE fixes=18`.
+
+## 2026-08-28 — F3 감사 hwahae
+- 한 일: B2a·E2 전담 감사. 본문 한정 30→33(On-Brand·Forbidden register·Unresolved). 원장 33=33. 로그 dest 11곳 실측 교정.
+- 열린 것: 없음. A5a 17/204는 범위 밖 보고만.
+- 다음: 웨이브 32 나머지 F3.
+- SHA `10d6e6906076f080d58b35554e600a957698cbe0742e056508373aa8ec68eb4c`. `AUDIT_DONE fixes=18`.
+
+## 2026-08-28 — F3 감사 humanscape
+- 한 일: B2a·E2 전담 감사. 본문 한정 33→35(Declared-only·voice-sample 괄호). 원장 35=35. 로그 dest 8곳 실측 교정.
+- 열린 것: D2a 로그 A5a 칸이 삭제 식별자를 mention — 범위 밖, 미수정.
+- 다음: 웨이브 32 나머지 F3.
+- SHA `5de5b511e435d10138767650673ca49cd246e44231cc009645581d6eb0d3a21a`. `AUDIT_DONE fixes=12`.
+
+## 2026-08-28 — 이관 hwahae
+- 한 일: T2 이관. 제품 홈 + 테크 블로그 두 표면. 규칙집 v12. B2a 30=30. §11 연혁·HDS·결론 문장 Scope 착지. C2 목적지 4컨트롤 닫힘.
+- 열린 것: 없음. 원본 미수정. gate PASS / portable_core. SHA `80ac7377f8ba71089829c24c8365befc08337913d557d4f8dfb163e0fb9dbe3b`.
+- 다음: 웨이브 32 나머지 또는 F3.
+
+## 2026-08-28 — 이관 hyundai
+- 한 일: T2 이관. KR 홈·카탈로그·IONIQ 6 세 표면. 규칙집 v12. B2a 21=21. §11 연혁·ccNC 결론 문장 Scope 착지. C2 목적지 7컨트롤 닫힘.
+- 열린 것: 없음. 원본 미수정. gate PASS / portable_core. SHA `ab5f394d6ed827bdb84a02ac7b8e9887843a01c81c1d78fec54d05c5c2a70965`.
+- 다음: 웨이브 32 나머지 또는 F3.
+
+## 2026-08-28 — 이관 hyundaicard
+- 한 일: T2 이관. 제품 홈 + 법인 2라우트. 규칙집 v12. B2a 22=22. §11 연혁·결론 문장 Scope 착지. C2 목적지 3컨트롤 닫힘.
+- 열린 것: 없음. 원본 미수정. gate PASS / portable_core. SHA `614e8bd7917e5790deb70728b8a4be58aeeae747df2ffb4a25f3373f53655cbe`.
+- 다음: 웨이브 32 나머지 또는 F3.
+
+## 2026-08-28 — 이관 humanscape
+- 한 일: T2 이관. humanscape.io→lifex.io + our-business. 규칙집 v12. B2a 33=33. §11 연혁·결론 문장 Scope 착지. C2 목적지 3컨트롤 닫힘.
+- 열린 것: 없음. 원본 미수정. gate PASS / portable_core. SHA `3e0e5f80a6a6a992d3717120e88814af31ccd9935d8b37df4f0b9cb0d0237027`.
+- 다음: 웨이브 32 나머지(hwahae·hyperconnect·hyundai·hyundaicard) 또는 F3.
+
+## 2026-08-28 — 이관 hyperconnect
+- 한 일: T2 Core v2 이관. 산출 migrated/hyperconnect 3파일. 규칙집 v12. B2a 30=30. gate PASS / portable_core true.
+- 열린 것: 없음. 원본·sibling 미수정. SHA `1484a305b70f7d829f731f95b47101306edde245f23f43c752bcf7194452e85c`.
+- 다음: F3 감사 세션.
+
 ## 2026-08-28 — 개정 hogangnono
 - 한 일: 웨이브 31 FAIL 2. §11 결론 문장 Scope 복원, Outline Primitive type을 `not in the token set`으로 되돌림.
 - 열린 것: 없음. 원본 미수정. B2a 31=31. SHA `2a5136d75485e0f87c60d9d7230bf5ae96c826a38ec940a0a1ce561cdbca9334`.
