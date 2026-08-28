@@ -197,3 +197,8 @@ kakaopay
 kakaot
 kb-kookmin
 kbank
+kbpay
+kcd
+kdan
+kia
+kintone

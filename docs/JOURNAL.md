@@ -1,3 +1,123 @@
+## 2026-08-28 — 웨이브 27형 의미 검토 kia
+
+**한 일.** 독립 검토(A·C·D, 항목 7–11). 산출 4+원본+sibling 대조. YAML 10색·8 spacing·4 rounded 키 경로 분리, C2 방향 일치, 페르소나 동기 미승격, YAML/§ 긴 쪽 병기. **PASS.**
+
+**열린 것.** 산출·원본·sibling 미수정. 카탈로그 채택 아님. B2a·E2는 F3 범위라 미판정.
+
+**다음.** 웨이브 38 판정문 또는 웨이브 마감.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 kintone
+
+**한 일.** 독립 검토(A·C·D, 항목 7–11). `find` 6파일. 셸 `grep -o|wc -l` 거절 → ripgrep+Read. YAML 19색·8 spacing·4 rounded 키 경로 분리, C2 방향 일치, 페르소나 동기 미승격, §4 긴 쪽 병기. **PASS.**
+
+**열린 것.** 산출·원본·sibling 미수정. 카탈로그 채택 아님. B2a·E2는 F3 범위라 미판정.
+
+**다음.** 같은 웨이브 kia 검토 또는 웨이브 마감.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 kcd
+
+**한 일.** 독립 검토(A·C·D, 항목 7–11). `find` 6파일. 셸 `grep -o|wc -l` 거절 → ripgrep+Read. YAML 16색·8 spacing·5 rounded 키 경로 분리, C2 쌍닫힘, 페르소나 동기 미승격, 표면 귀속 유지. **PASS.**
+
+**열린 것.** 산출·원본·sibling 미수정. 카탈로그 채택 아님. B2a·E2는 F3 범위라 미판정.
+
+**다음.** 같은 웨이브 다음 브랜드 또는 웨이브 마감.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 kbpay
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). 산출 4+원본+sibling 대조. YAML 키 경로·§11·C2 쌍·페르소나 미승격·표면 귀속 착지. **PASS**. 고치지 않음.
+
+**열린 것.** 카탈로그 채택 아님. B2a·E2는 F3 범위라 미판정.
+
+**다음.** 같은 웨이브 다음 브랜드 또는 웨이브 마감.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 kdan
+
+**한 일.** 독립 검토(A·C·D, 항목 7–11). `find` 6파일. 셸 `grep -o|wc -l` 거절 → ripgrep+Read. YAML 12색·6 spacing·4 rounded 키 경로 분리, use 8 verbatim, C2 쌍닫힘, 페르소나 동기 미승격. **PASS.**
+
+**열린 것.** 산출·원본·sibling 미수정. 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 다음 브랜드.
+
+## 2026-08-28 — T2 F3 감사 kia
+
+**한 일.** B2a·E2 전담. 본문 40→41 / 원장 40→41. Motion B3 `:162` 신설, Audience·Font·Content 한정 확장, 로그 목적지 19건 교정. `AUDIT_DONE fixes=28`. SHA `be090778…`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 또는 검토.
+
+## 2026-08-28 — T2 F3 감사 kintone
+
+**한 일.** B2a·E2 전담. 본문 40→41 / 원장 40→41. Assets `:222` 한정 신설, Semantic two-key 확장, 로그 목적지 5행 교정. `AUDIT_DONE fixes=15`. SHA `be741e05…`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 또는 검토.
+
+## 2026-08-28 — T2 F3 감사 kbpay
+
+**한 일.** B2a·E2 전담. 본문 한정 3곳 확장(253/353/418) + 원장 3행 맞춤 + 로그 목적지 16건. 40=40. `AUDIT_DONE fixes=22`. SHA `33294c15…d6d6ca3`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정. 로그 §13 D2a 전기 문구는 범위 밖 관찰만.
+
+**다음.** 같은 웨이브 잔여 브랜드 F3 또는 검토.
+
+## 2026-08-28 — F3 감사 kcd
+
+**한 일.** B2a·E2만. Motion `:159` use-name keep 접어 넣음. 원장 9행 범위 맞춤(36=36). 로그 identity·§11 P dest 실측 수정. `AUDIT_DONE fixes=12`. SHA `b57411f0…c5bcb9`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** 웨이브 38 잔여 브랜드 F3 또는 오케스트레이터 검토.
+
+## 2026-08-28 — T2 F3 감사 kdan
+
+**한 일.** B2a·E2 전담. 본문 27=27 유지(한정 4곳 확장). 로그 목적지 14건 교정. `AUDIT_DONE fixes=22`. SHA `f1d09189…36e4ed`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정. 토큰·표·구조 무변경.
+
+**다음.** 같은 웨이브 다음 브랜드 감사 또는 검토.
+
+## 2026-08-28 — T2 이관 kbpay
+
+**한 일.** legacy `web/references/kbpay/DESIGN.md` → Core v2 산출 3파일. 규칙집 v12. B2a 40=40. gate PASS, `portable_core:true`. SHA `05a06c04…310cfd`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정. 웨이브 38 잔여 브랜드 검토 대기.
+
+**다음.** 같은 웨이브 다음 브랜드 또는 검토.
+
+## 2026-08-28 — T2 이관 kia
+
+**한 일.** `web/references/kia` → `docs/design-md-weight/migrated/kia/` Core v2. 규칙집 v12. B2a 40=40. gate PASS / `portable_core:true`. SHA `7ca83416…`. `DONE migrated=1`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** F3 감사 또는 오케스트레이터 검토.
+
+## 2026-08-28 — T2 이관 kintone
+
+**한 일.** legacy `web/references/kintone/DESIGN.md` → Core v2 산출 3파일. 규칙집 v12. B2a 40=40. gate PASS, `portable_core:true`. SHA `c603874…d10ced`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정. 웨이브 38 잔여 브랜드 검토 대기.
+
+**다음.** 같은 웨이브 다음 브랜드 또는 검토.
+
+## 2026-08-28 — T2 이관 kcd
+
+**한 일.** `web/references/kcd/DESIGN.md` → `docs/design-md-weight/migrated/kcd/` Core v2 (규칙집 v12). gate PASS, `portable_core:true`. `DONE migrated=1`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** F3 감사 세션.
+
+## 2026-08-28 — T2 이관 kdan
+
+**한 일.** `web/references/kdan` → `docs/design-md-weight/migrated/kdan/` Core v2 (규칙집 v12). B2a 27=27, kdan-ui published-spec form. 첫 게이트 `999px` 부정 표기 삭제 후 PASS / `portable_core:true`. `DONE migrated=1`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** 웨이브 38 잔여(`kbpay`·`kcd`·`kia`·`kintone`) 또는 F3.
+
 ## 2026-08-28 — 웨이브 37 개정 kakaot
 
 **한 일.** FAIL 1 확정 결함만. Caption Type roles `:199`에 원본 §3 `ETA sublabels` 복원. 줄 589 불변, B2a 35=35. `FIX_DONE kakaot fixes=1`.
