@@ -26,3 +26,6 @@ T2-1 웨이브 27 의미 검토. 너는 이관 워커도 F3 감사자도 아니�
 7. **삭제된 페르소나의 파생물이 본문에 남아 있는지** — 원장 표기는 무식별인데 §13 인물의 동기·목표 문장이 Primary tasks나 Audience에 승격돼 있는 경우(gitlab). 원장만 보지 말고 본문을 봐라.
 8. **C2 방향 불일치** — 같은 컨트롤에서 `error`는 "커밋 연산 없음"으로 닫고 `loading`만 여는 자리. `destination link`·`tab`·`dialog trigger`·`toggle`은 둘 다 닫혀야 한다.
 9. **sibling 단편의 융합 승격** — 원본에도 sibling에도 **그 문자열로는 없는데** 두 단편을 합쳐 만든 측정 주장(gitlab `14px radius with 16px padding`, gaudiy `measures 1440px`). 개별 값 grep은 통과하므로 문자열 단위로 대조해라.
+10. **표면 간 측정 이전** — 원본 한 문장이 여러 표면을 기록할 때 괄호·수식어의 귀속이
+    산출에서 옮겨졌는지(웨이브 35 intercom: intercom.com 전용 측정이 Compact·fin.ai로).
+    모든 값이 원본에 실재하므로 값 grep으로는 안 잡힌다 — **어느 표면에 붙었는지**를 봐라.

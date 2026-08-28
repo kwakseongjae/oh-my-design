@@ -49,3 +49,11 @@ hogangnono는 `type: button` 3회가 `button-primary`/`button-tint`/`button-disa
 산출이 Outline에 `Primitive type: \`button\``을 붙였다 — disabled의 타입을 다른 컴포넌트로
 옮긴 것이다. §4에만 있는 컴포넌트는 `not in the token set`으로 두라(같은 파일의 Filter·
 Search·Modal·FAB는 그렇게 했다).
+
+**표면 간 측정 이전 금지 (웨이브 35 intercom).** 원본 한 문장이 여러 표면을 기록할 때,
+괄호·수식어가 정하는 **귀속**을 지켜라. intercom 원본 `:268`은 한 줄에서 Hero Primary의
+`42px / 12×16 / 16px·400`을 `(intercom.com Cream 캔버스)`로 한정하고, fin.ai에는 `#fff` 6px만
+세우며, Compact Primary에는 서체 칸을 두지 않는다. 산출은 셋을 섞었다 — intercom.com 전용
+서체를 Compact에, padding·height·font를 fin.ai에 붙였다.
+**값이 원본에 있다는 것과 그 표면의 값이라는 것은 다르다.** 값 grep·키 경로 대조·sibling
+대조가 전부 통과하므로, 표면 귀속은 문장을 읽어야만 지킬 수 있다.
