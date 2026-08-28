@@ -193,9 +193,9 @@ Signature motions the source names: a tab scope switch between 종합 / 국내 /
 |---|---|
 | Official product-use | The source records no published Genie Music typography specification. |
 | Live computed surface-use | The captured homepage renders visible text in `dotum` (돋움) at a 12px base. |
-| Official distributed asset | The source states that no custom web font is loaded and that the surface relies on platform `dotum`/Gothic rendering. No Genie-distributed type asset is claimed here. |
+| Official distributed asset | The source states that no custom web font is loaded and that the surface relies on platform `dotum`/Gothic rendering, which keeps the catalog fast and consistent across Korean Windows clients. No Genie-distributed type asset is claimed here. |
 | Declared-only | The source records no declared-but-unused face. |
-| License | The source records no font license. `dotum` is treated here as a platform-supplied Korean Gothic face, not a Genie brand asset. |
+| License | The source records no font license. Treating `dotum` as a platform-supplied Korean Gothic face, not a Genie brand asset, is a derived editorial implementation inference from the verified surface; it is not Genie Music-authored or a separately published UI specification. |
 | Outside this capture | Type for `https://company.genie.co.kr` is outside this capture. |
 
 ### Family
@@ -435,7 +435,7 @@ Locale: Korean (ko). The captured surface is a Korean first-party site and its i
 
 Published strings the source records, carried verbatim:
 
-- Tagline: 지니 : 음악, 그리고 설레임. The source supplies its own English gloss, "Genie: Music, and the flutter of excitement"; the gloss is a reader aid and never replaces the label.
+- Tagline: 지니 : 음악, 그리고 설레임. The source supplies its own English gloss, "Genie: Music, and the flutter of excitement". Reading that gloss as a reader aid that never replaces the label is a derived editorial implementation inference from the verified surface; it is not Genie Music-authored or a separately published UI specification.
 - Chart scope tabs: 종합 / 국내 / 국외
 - Nav and menu labels: 차트, 최신음악, 라디오, 매거진
 - Account / utility links: 로그인·회원가입

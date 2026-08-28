@@ -6,11 +6,11 @@
 <!-- design-md:claim scope kind=product-surface lang=en -->
 ### Scope
 
-GitLab is a DevSecOps platform — a single application spanning the whole software lifecycle: plan, build, secure, and deploy. That description is the source's own, and its closing note classes the history it belongs to as widely documented public fact rather than a quotation from a single verified GitLab statement. This contract covers two first-party web surfaces that were inspected live: the marketing chrome at `about.gitlab.com`, and the open Pajamas design system at `design.gitlab.com` together with its canonical button, badge, and text-input component pages. It does not treat these two captures as a proxy for the GitLab product application itself, for the handbook, or for the docs site beyond the Pajamas pages listed here.
+GitLab is a DevSecOps platform — a single application spanning the whole software lifecycle: plan, build, secure, and deploy. That description is the source's own, and its closing note classes the history it belongs to as widely documented public fact rather than a quotation from a single verified GitLab statement. This contract covers two first-party web surfaces that were inspected live: the marketing chrome at `about.gitlab.com`, and the open Pajamas design system at `design.gitlab.com` together with its canonical button, badge, and text-input component pages.
 
 The two surfaces share one typeface and split their color logic. The marketing layer is ink-forward and editorial: pure white (`#ffffff`) under a near-black plum ink (`#171321`) set in the custom **GitLab Sans**, with the hero headline "Ship faster. With trust." running at 96px / weight 660 / -2.88px tracking. The Pajamas layer at `design.gitlab.com` is GitLab's open, "radically transparent" design system, and its canonical action color is the Pajamas blue `#1f75cb`. The Tanuki orange `#fc6d26` is the brand mark and accent — it appears in the logo, icon flourishes, and emphasis labels — and the source records that it is deliberately *not* the primary button color; that role belongs to the blue. A GitLab Duo purple `#7759c2` marks AI-assisted surfaces. Geometry is restrained across both layers: marketing CTAs use a sharp 4px corner, the Pajamas component library standardizes on 8px for buttons and inputs and 16px for cards, and badges run as full pills at 160px radius. Marketing carries essentially no decorative shadow; depth is built from flat ink panels and a single soft inset border on form fields. The measurements in this paragraph are recorded values; the characterizations built on them — ink-forward, editorial, restrained geometry — are a derived editorial implementation inference from the verified surfaces; they are not GitLab-authored or taken from a separately published UI specification, including the published Pajamas documentation.
 
-GitLab began in **2011** when **Dmitriy Zaporozhets**, a Ukrainian developer, started building an open-source Git repository manager because the collaboration tools available to him were inadequate; **Sytse "Sid" Sijbrandij** founded the company around the project in **2014** and became CEO. The product grew from a self-hosted Git tool into a single-application DevSecOps platform spanning plan, build, secure, and deploy, and the company went public on the Nasdaq in **2021**. Its defining cultural trait is **radical transparency**: the handbook, the processes, and the **Pajamas** design system are all public by default, and the company has operated as an all-remote organization at scale. Pajamas is a genuinely open, documented component library — tokens, usage, Vue implementation — that anyone can read and build against. The source also reads GitLab's refusals and embraces off the same design: what it refuses is "the closed, screenshot-only “trust us” posture of legacy enterprise software, and hype-driven marketing that substitutes adjectives for outcomes"; what it embraces is "a single open platform, a published design system, plain outcome-framed copy backed by numbers, and a restrained multi-accent palette (action blue, Tanuki orange, Duo purple) that stays disciplined about which color means what." That refuses/embraces pairing is one of the editorial readings named in the final paragraph of this section, not a GitLab-published statement. The source's own closing note records this history as widely documented public facts rather than as a statement quoted from a single verified GitLab source in that turn.
+GitLab began in **2011** when **Dmitriy Zaporozhets**, a Ukrainian developer, started building an open-source Git repository manager because the collaboration tools available to him were inadequate; **Sytse "Sid" Sijbrandij** founded the company around the project in **2014** and became CEO. The product grew from a self-hosted Git tool into a single-application DevSecOps platform spanning plan, build, secure, and deploy, and the company went public on the Nasdaq in **2021**. Its defining cultural trait is **radical transparency**: the handbook, the processes, and the **Pajamas** design system are all public by default, and the company has operated as an all-remote organization at scale. Pajamas is a genuinely open, documented component library — tokens, usage, Vue implementation — that anyone can read and build against. The source also reads GitLab's refusals and embraces off the same design: what it refuses is "the closed, screenshot-only “trust us” posture of legacy enterprise software, and hype-driven marketing that substitutes adjectives for outcomes"; what it embraces is "a single open platform, a published design system, plain outcome-framed copy backed by numbers, and a restrained multi-accent palette (action blue, Tanuki orange, Duo purple) that stays disciplined about which color means what." That refuses/embraces pairing is a derived editorial implementation inference from the verified surfaces; it is not GitLab-authored or taken from a separately published UI specification, including the published Pajamas documentation. The source's own closing note records this history as widely documented public facts rather than as a statement quoted from a single verified GitLab source in that turn.
 
 Two boundaries follow from the capture and must be kept while reading the rest of this document. First, the marketing chrome and the Pajamas system are separate evidence domains: a marketing measurement (4px CTA corner, 96px headline, ink fill) is not a Pajamas product token, and a Pajamas token (8px control radius, 32px control height, 14px UI text) is not a marketing value. Every value below carries the domain it was observed in. That separation is the source's own: its token note attributes the ink chrome to `about.gitlab.com` and the canonical component tokens to `design.gitlab.com`, and its conflict matrix resolves the one place the two disagree — button radius — by retaining both as separate variant subgroups rather than merging them. Second, the sibling verification file classes Pajamas as "the open Pajamas design system, an official first-party DS", so its component values are documented product tokens rather than incidental observations — but only the button, badge, and text-input pages were read, and the rest of Pajamas is outside this capture.
 
@@ -20,9 +20,11 @@ Reading the two-layer split as "one identity across two surfaces", the multi-acc
 <!-- design-md:claim primary-tasks kind=user-outcomes count=3 lang=en -->
 ### Primary tasks
 
+The three jobs below name what the two captured surfaces are for. That naming is a derived editorial implementation inference from the verified surfaces; it is not GitLab-authored or taken from a separately published UI specification, including the published Pajamas documentation.
+
 - Evaluate the DevSecOps platform from the marketing homepage and act on its trial or demo CTA ("Get free trial", "Try for free", "Request a demo").
 - Read the open Pajamas design system and its canonical component pages for button, badge, and text-input tokens.
-- Build an interface against the published Pajamas component library — tokens, usage, Vue implementation — so that the result matches GitLab's own product UI.
+- Build an interface against the published Pajamas component library — tokens, usage, Vue implementation.
 <!-- design-md:claim-end -->
 
 ### Audience
@@ -67,7 +69,7 @@ The source's eight application rules, kept as brand rules rather than as univers
 
 ### Avoid
 
-The first eight avoidances are the source's own, and the reasons attached to them share the evidence class named under Application rules. The last item is a scope boundary added by this migration rather than a source statement.
+These eight avoidances are the source's own. The reasons attached to them — why a color or a radius must stay in one role — are a derived editorial implementation inference from the verified surfaces; they are not GitLab-authored or taken from a separately published UI specification, including the published Pajamas documentation.
 
 - Use the Tanuki orange as a primary button fill — the primary action color is blue `#1f75cb`
 - Mix marketing 4px CTA radius with Pajamas 8px control radius on the same surface
@@ -77,7 +79,6 @@ The first eight avoidances are the source's own, and the reasons attached to the
 - Add drop shadows to marketing cards — the marketing layer is shadow-free
 - Pair a badge tint with a mismatched text color — each semantic has a fixed tint+text pair
 - Set positive letter-spacing at display sizes — GitLab tracks tight (-2.88px at 96px)
-- Present these two captures as authority for the GitLab product application, the handbook, or Pajamas pages other than button, badge, and text-input
 
 <!-- design-md:section foundations -->
 ## 2. Foundations
@@ -155,7 +156,7 @@ Two further values belong to component states rather than to the palette: the se
 | Standard | 8px | Pajamas buttons and inputs — the product workhorse; also Pajamas docs nav items |
 | Card | 14px | Product-nav card grid inside the marketing dropdown panels |
 | Card | 16px | Marketing nav/feature cards and dark proof-stat cards |
-| Pill | 160px (full) | Badges and status chips |
+| Pill | full: 9999 (160px / full) | Badges and status chips |
 
 The source records the marketing card family at 14–16px and keeps the two measurements distinct by element rather than reconciling them into one card radius; both are kept here with their elements.
 
@@ -214,7 +215,6 @@ Motion rules, as the source states them:
 | Live computed surface-use | The source's Tier 1 live inspection reads GitLab Sans on both surfaces, and the source records it as the face used for everything — marketing display, product UI, docs. The computed records themselves are in the provenance sidecar. |
 | Declared fallback stack | `-apple-system, system-ui, Segoe UI, Roboto, Noto Sans` is the declared fallback behind GitLab Sans. It is a fallback stack, not the brand face, and must not be presented as one. |
 | Official distributed asset | This capture reached no GitLab-distributed font file and no license statement for GitLab Sans; neither is asserted here. |
-| Outside these captures | Typography inside the GitLab product application, the handbook, and Pajamas pages other than button, badge, and text-input is outside these two captures. |
 
 ### Family
 
@@ -247,7 +247,7 @@ The four rules below are the source's own. Their reasoning — what a weight or 
 ### Assets
 
 - **Brand mark.** The Tanuki is the GitLab brand mark and carries the Tanuki orange `#fc6d26`; the marketing capture measures that same orange on hero emphasis labels and icons. Brand iconography keeps `#fc6d26` at all sizes.
-- **Logo file.** The catalog entry points at a third-party icon-set rendering of the mark rather than at a GitLab-distributed logo file; that entry, its byte size, and its fill attribute are recorded in the provenance sidecar, and no GitLab-hosted logo asset is asserted here. Classing that entry as a third-party rendering is this migration's evidence judgment about the catalog's logo field, not a GitLab statement.
+- **Logo file.** The catalog entry points at a third-party icon-set rendering of the mark rather than at a GitLab-distributed logo file; that entry, its byte size, and its fill attribute are recorded in the provenance sidecar, and no GitLab-hosted logo asset is asserted here. Classing that entry as a third-party rendering is a derived editorial implementation inference from the verified surfaces; it is not GitLab-authored or taken from a separately published UI specification, including the published Pajamas documentation.
 - **Product screenshots** sit inside 16px-radius cards with no shadow.
 - Dark stat cards keep the `#1f1c2e` background and 16px radius across breakpoints.
 
@@ -438,7 +438,7 @@ Every interactive-kind verdict, every applicability verdict, and the reason give
 - Radius: 16px
 - Padding: 24px
 - Recorded use: "Homepage product nav / feature card on dark band"
-- The dropdown-panel variant of this card is measured separately at 14px radius with 16px padding inside the multi-card grid.
+- Product-nav cards arranged in a multi-card grid inside dropdown panels (14px radius).
 - No interactive kind and no state-applicability map is declared for this card: the source declares it as a container and names no control, action, or state on the card itself.
 
 ### Dark Proof-Stat Card
@@ -465,7 +465,7 @@ Every interactive-kind verdict, every applicability verdict, and the reason give
 - Font: 12px / 400 / GitLab Sans
 - Kind reason: a badge displays a status. The source names no action, control, or state on the badge itself, so it declares no state-applicability map.
 - Each semantic is a fixed tint + text pair; pairing a tint with another semantic's text color is listed among the avoidances.
-- Declaration shape: the token block declares four of these as separate components — `badge-info`, `badge-success`, `badge-danger`, `badge-tier`, each `type: badge` — and the source's component section adds warning and neutral. They are grouped into one component with six variants here because they differ only in the tint + text pair; every declared variant keeps its own values below, and the four token-block records are kept separately in the provenance sidecar.
+- Declaration shape: the token block declares four of these as separate components — `badge-info`, `badge-success`, `badge-danger`, `badge-tier`, each `type: badge` — and the source's component section adds warning and neutral. They are grouped into one component with six variants here because they differ only in the tint + text pair. That grouping is a derived editorial implementation inference from the verified surfaces; it is not GitLab-authored or taken from a separately published UI specification, including the published Pajamas documentation. Every declared variant keeps its own values below, and the four token-block records are kept separately in the provenance sidecar.
 
 | Variant | Background | Text | Recorded use |
 |---|---|---|---|

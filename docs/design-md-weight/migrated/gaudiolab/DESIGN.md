@@ -6,13 +6,13 @@
 <!-- design-md:claim scope kind=product-surface lang=en -->
 ### Scope
 
-Gaudio Lab (가우디오랩) is a Seoul-based Korean AI-audio technology company. This contract covers the three first-party web surfaces the source inspected live: the English homepage at `https://www.gaudiolab.com/`, the English brand/company page at `https://www.gaudiolab.com/company/brand`, and its Korean counterpart at `https://www.gaudiolab.com/ko/company/brand`. Values stay attached to the surface that established them, and these marketing surfaces are not treated as a proxy for the applications the company ships.
+Gaudio Lab (가우디오랩) is a Seoul-based Korean AI-audio technology company. This contract covers the three first-party web surfaces the source inspected live: the English homepage at `https://www.gaudiolab.com/`, the English brand/company page at `https://www.gaudiolab.com/company/brand`, and its Korean counterpart at `https://www.gaudiolab.com/ko/company/brand`. Values stay attached to the surface that established them.
 
 The inspected interface layer is almost entirely pure white (`#ffffff`), sectioned by wide bands of full-bleed video and near-black immersive blocks (`#1e1e1f`) where the sound-wave imagery lives. A single saturated sky-blue (`#00b7ff`) is the accent the source records as the only chromatic one in the system, appearing on the "Contact us" / "문의하기" call-to-action and on the border and text of the "All products" button. Everything else is calibrated grayscale. The typographic layer is a hybrid stack: the English marketing layer runs in Poppins, climbing to weight 900 for section titles such as "The Science of Sound"; the functional chrome — nav, milestone stats, blog cards — is Roboto on Material UI, carrying the MUI default ink `rgba(0,0,0,0.87)` and 0.15px tracking on its `<h1>` stats; Korean copy resolves through the system stack, where the brand hero "우리는 좋은 소리를 만들고 좋은 소리는 우리를 만듭니다" ("We make good sound, and good sound makes us") is set at 80px / weight 700. On the newer marketing sections the heading ink shifts to a crisper near-black `#111214`. Live inspection returned `box-shadow: none` across the hero, nav, CTAs, headings, and cards. Separation comes instead from flat sky-tinted panels (`#f0f9ff`), thin `#d6d6d6` hairlines around 12px-radius news cards, and hard cuts into dark sections (`#1e1e1f`, and a deeper navy `#12354e`). Geometry mixes full pills (`9999px`) for product-list rows and the circular app-launcher with a tight small-radius scale (4px / 6px CTAs, 12px / 16px cards). Text steps down through a cool neutral ladder — `#d3d5da` faint labels on dark, `#9ca3af` muted captions, `#fafafa` near-white on the blue CTA.
 
 Reading the site as a research lab that learned restraint from consumer product design, reading the rationed blue as a trained signal where "blue means act", reading the calibrated grayscale as making the interface feel engineered and trustworthy rather than decorated, reading the hybrid type stack as the tell of an engineering-led site rather than an agency showpiece, reading the absent shadow as a refusal of elevation, and reading the whole as a flat, fast, science-forward aesthetic that lets the audio content rather than the chrome do the talking, are derived editorial implementation inferences from the verified surfaces; they are not Gaudio Lab-authored or a separately published UI specification. The source itself marks readings of this kind — "one color, one action", flat-and-fast as a rejection of ornamented consumer audio chrome, and "sound is science first" — as its own editorial readings rather than quoted Gaudio Lab statements.
 
-Brand narrative recorded by the source, kept separate from the interface evidence above, and separated by evidence class the way the source separates it. Quoted from the company's own live brand/company page: the mission line "We provide an excellent sound experience through innovative technologies.", the tagline "Where sound is, Gaudio Lab is there.", the positioning line "Sound is science, from smartphone to movie theaters", and the staffing claim "over 40 audio experts including 9 Ph.D" dedicated to R&D. Also published on those pages and recorded as milestone figures: **50M worldwide daily users**, **16.9 billion KRW (~$13M) in Series B** funding, **119 items of intellectual property**, and **35 partners and investors** including Genie Music, Melon, KT Alpha Shopping, and META48, plus **CES Innovation Awards 2026 for a fourth consecutive year**. The product line, taken from the homepage app-launcher and milestone timeline, spans **GSA** (Spatial Audio), **Gaudio Sing** (AI Karaoke), **GTS / Gaudio Text Sync**, **LM1** (Loudness Normalizer), **Gaudio Studio Pro** (AI Content Localization), and **Gaudio Developers**, an API platform for audio AI. Two items in this paragraph carry a weaker class and the source says so: the founding year is an inference — the homepage timeline marks a **10th anniversary in 2025**, from which the source reads a founding circa 2015 — and the Seoul, KR headquarters is described by the source as widely documented public knowledge rather than a statement quoted from these pages. This narrative supplies product context; it does not by itself supply interface tokens.
+Brand narrative recorded by the source, kept separate from the interface evidence above, and separated by evidence class the way the source separates it. The source records the company as spun out of academic sound research. Quoted from the company's own live brand/company page: the mission line "We provide an excellent sound experience through innovative technologies.", the tagline "Where sound is, Gaudio Lab is there.", the positioning line "Sound is science, from smartphone to movie theaters", and the staffing claim "over 40 audio experts including 9 Ph.D" dedicated to R&D. Also published on those pages and recorded as milestone figures: **50M worldwide daily users**, **16.9 billion KRW (~$13M) in Series B** funding, **119 items of intellectual property**, and **35 partners and investors** including Genie Music, Melon, KT Alpha Shopping, and META48, plus **CES Innovation Awards 2026 for a fourth consecutive year**. The product line, taken from the homepage app-launcher and milestone timeline, spans **GSA** (Spatial Audio), **Gaudio Sing** (AI Karaoke), **GTS / Gaudio Text Sync**, **LM1** (Loudness Normalizer), **Gaudio Studio Pro** (AI Content Localization), and **Gaudio Developers**, an API platform for audio AI. Two items in this paragraph carry a weaker class and the source says so: the founding year is an inference — the homepage timeline marks a **10th anniversary in 2025**, from which the source reads a founding circa 2015 — and the Seoul, KR headquarters is described by the source as widely documented public knowledge rather than a statement quoted from these pages. This narrative supplies product context; it does not by itself supply interface tokens.
 <!-- design-md:claim-end -->
 
 <!-- design-md:claim primary-tasks kind=user-outcomes count=4 lang=en -->
@@ -116,6 +116,8 @@ Dark sections:
 | Ocean | `#12354e` | A deep navy-teal used as an accent dark-section background (`rgb(18, 53, 78)`). |
 
 The white CTA label is not uniform across the two blue CTAs and the source keeps both: the header CTA label is `#fafafa`, and the hero CTA label is `#ffffff`.
+
+Calling `#00b7ff` the single action color, calling `#fafafa` softer than pure white by an MUI convention, and calling `#f0f9ff` the palest echo of the brand blue, are derived editorial implementation inferences from the verified surfaces; they are not Gaudio Lab-authored or a separately published UI specification.
 
 ### Spacing
 
@@ -221,7 +223,7 @@ The source states these four as its typography principles. Reading the measured 
 
 ### Assets
 
-- Full-bleed video, sound-wave, and film imagery is first-party content and the source treats it as the emotional carrier of the page; do not replace it with invented brand-color decoration.
+- Full-bleed video, sound-wave, and film imagery is first-party content and the source treats it as the emotional carrier of the page; do not replace it with invented brand-color decoration. Treating that imagery as the emotional carrier, and the instruction not to replace it with invented brand-color decoration, are a derived editorial implementation inference from the verified surfaces; they are not Gaudio Lab-authored or a separately published UI specification.
 - The catalog's logo entry for this reference is a Google favicon-service URL rather than a Gaudio Lab-hosted file. The source's own sibling excludes that service from brand-owned sources, so the URL is recorded in the provenance ledger and is not presented here as a Gaudio Lab brand asset.
 
 <!-- design-md:section components-states -->
@@ -248,7 +250,7 @@ The source declares each component with a primitive type (`button`, `tab`, `card
 | hover | applicable | The system declares CTAs responding to hover/press with a subtle opacity/scale shift; no opacity or scale value is given |
 | focus-visible | applicable | Interactive control; visual treatment omitted |
 | disabled | applicable | The system declares a disabled treatment in which the blue action fades rather than turning grey, preserving the brand read; no opacity value is given |
-| loading | applicable | Leaving for the contact surface runs the page-level transition the system assigns to `motion-slow` |
+| loading | not-applicable | This control takes the reader to the contact surface; it does not commit an operation whose in-progress state it could report. |
 | error | not-applicable | This control takes the reader to the contact surface; it does not commit an operation whose outcome it could report. The system's form-validation failure language belongs to the field on that surface. |
 | success | not-applicable | Same role reason: reaching a destination is not an operation with a success result; the system's submitted-confirmation belongs to the form that commits it. |
 
@@ -268,7 +270,7 @@ The source declares each component with a primitive type (`button`, `tab`, `card
 | hover | applicable | The system declares CTAs responding to hover/press with a subtle opacity/scale shift; no opacity or scale value is given |
 | focus-visible | applicable | Interactive control; visual treatment omitted |
 | disabled | applicable | The system's blue-action fade applies; no opacity value is given |
-| loading | applicable | Leaving for the contact surface runs the page-level transition the system assigns to `motion-slow` |
+| loading | not-applicable | Same role as the header CTA: it opens the contact surface rather than committing an operation whose in-progress state it could report. |
 | error | not-applicable | Same role as the header CTA: it opens the contact surface rather than committing an operation it could report on. |
 | success | not-applicable | Same role reason: opening a destination is not an operation with a success result. |
 
@@ -289,7 +291,7 @@ The source declares each component with a primitive type (`button`, `tab`, `card
 | hover | applicable | The system declares CTAs responding to hover/press with a subtle opacity/scale shift; no opacity or scale value is given |
 | focus-visible | applicable | Interactive control; visual treatment omitted |
 | disabled | applicable | An entry point whose availability can lapse; the system's faint/muted disabled text treatment applies and no control-specific value is promoted |
-| loading | applicable | Moving to the product listing runs the page-level transition the system assigns to `motion-slow` |
+| loading | not-applicable | This control sends the reader to the product listing; reaching a listing is not a commit whose in-progress state the button reports. |
 | error | not-applicable | This control sends the reader to the product listing; the listing, not the button, reports whether that request failed. |
 | success | not-applicable | Same role reason: navigating to a listing is not an operation that commits and reports success. |
 
@@ -327,7 +329,7 @@ The source declares each component with a primitive type (`button`, `tab`, `card
 | hover | applicable | The system declares the app-launcher rows and CTAs responding to hover/press with a subtle opacity/scale shift; no opacity or scale value is given |
 | focus-visible | applicable | Interactive control; visual treatment omitted |
 | disabled | applicable | A menu entry point whose availability can lapse; the system's faint/muted disabled text treatment applies |
-| loading | applicable | The system assigns menu open to `motion-standard` |
+| loading | not-applicable | This control opens the launcher menu; it does not commit an operation whose in-progress state it could report. |
 | error | not-applicable | This control opens the launcher menu; it does not commit an operation whose outcome it could report. |
 | success | not-applicable | Same role reason: opening a menu is not an operation with a success result. |
 
@@ -349,7 +351,7 @@ The source declares each component with a primitive type (`button`, `tab`, `card
 | hover | applicable | Pointer-web control; visual treatment omitted |
 | focus-visible | applicable | Interactive control; visual treatment omitted |
 | disabled | applicable | A destination can be unavailable while its item stays legible; the system's faint/muted disabled text treatment applies |
-| loading | applicable | Moving to a nav destination runs the page-level transition the system assigns to `motion-slow` |
+| loading | not-applicable | A nav item changes which page the reader is on; choosing a destination is not a commit whose in-progress state the item reports. |
 | error | not-applicable | A nav item changes which page the reader is on; the destination page, not the item, reports whether that request failed. |
 | success | not-applicable | Same role reason: choosing a destination is not an operation that commits and reports success. |
 
@@ -403,7 +405,7 @@ The source's state contract, preserved with its values and copy. The source's ow
 
 Reading the generous white space as "content over chrome" — framing the audio and video content so the imagery rather than the UI holds attention — reading the background swaps as flat segmentation, and reading the dark bands as immersive rhythm, are derived editorial implementation inferences from the verified surfaces; they are not Gaudio Lab-authored or a separately published UI specification.
 
-Responsive behavior. The source's live inspection was run with a desktop Chrome user agent, and its own evidence note attributes token-level claims to that inspection; the breakpoints, collapsing strategy, and image behavior below are stated by the source at system level rather than measured across viewports, so they are a derived editorial implementation inference from the verified surfaces and are not Gaudio Lab-authored or a separately published UI specification.
+Responsive behavior. The source's live inspection was run with a desktop Chrome user agent, and its own evidence note attributes token-level claims to that inspection; the breakpoints, collapsing strategy, image behavior, and the source's "comfortably tappable" reading of the recorded target sizes are stated by the source at system level rather than measured across viewports, so they are a derived editorial implementation inference from the verified surfaces and are not Gaudio Lab-authored or a separately published UI specification.
 
 | Name | Width | Key changes |
 |---|---|---|
@@ -434,7 +436,7 @@ Voice samples, verbatim from the live surfaces. The Korean text is the string; t
 - "Sound is the most fundamental means of connecting with people or touching their emotions." — the "The Science of Sound" section.
 - "우리는 좋은 소리를 만들고 좋은 소리는 우리를 만듭니다" — Korean brand hero ("We make good sound, and good sound makes us").
 
-**Forbidden register:** hype superlatives, exclamation-heavy marketing, undefined buzzwords, and any framing that hides the engineering behind vague "magic". The source states that sound is presented as science first and feeling second, never as a gimmick.
+**Forbidden register:** hype superlatives, exclamation-heavy marketing, undefined buzzwords, and any framing that hides the engineering behind vague "magic". The source states that sound is presented as science first and feeling second, never as a gimmick — that characterization is a derived editorial implementation inference from the verified surfaces; it is not Gaudio Lab-authored or a separately published UI specification.
 
 Reproduce the Korean strings above, the English UI labels recorded in the component roles, and the two Korean strings in the State record byte-exact rather than translating or re-casing them. Korean and English headings keep their own stacks; a bilingual surface does not merge them.
 

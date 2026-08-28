@@ -1,3 +1,827 @@
+## 2026-08-28 — 웨이브 27~35 완주 (opus5 오케스트레이터 · grok-4.6 워커/감사/검토)
+
+**한 일.** 9웨이브 45브랜드를 이관→게이트→F3→의미검토→개정→마감으로 완주. 원장 139→**178**(이관 175 + 골든 3).
+F3 **648건**, 검토 판정 45건(FAIL 25 / PASS 20), 개정 27건. 전 브랜드 한정=원장 1:1 · 게이트 PASS · `portable_core:true`.
+그 밖에 main CI 수리(8/24 이후 첫 초록), dependabot 폐지, 블로그 크롬 4종, IndexNow 파이프라인, 네이버 3속성 검증.
+
+**이 구간이 만든 것 — 되먹임 루프.** 검토가 찾은 결함을 규칙집·F3 조건절·워커 지시로 되먹였고,
+그때마다 다음 웨이브 워커가 그 결함을 만들지 않았다. 확정 판정 13건이 프롬프트 3층
+(`docs/design-md-weight/prompts/`)에 실측 근거와 함께 남아 있다 — B1/D1 대칭(sibling 승격 ↔ 과잉 방어 부정문),
+C2 방향 일치, D2a 삭제검사 3종(식별자·동기·소속분류), §11 연혁+문단 결론, 도메인 발명,
+sibling 융합, `Primitive type` 출처, A1 키 경로, 표면 간 측정 이전.
+
+**배운 것 셋.** (1) **지시 강화가 답이 아닐 때가 있다** — w33 icook은 워커 지시에 이미 있던 조항으로 뚫렸고,
+검출 책임을 F3로 옮겨야 잡혔다. (2) **1:1이면 정합이 아니다** — w34 inflearn은 21=21로 숫자가 맞았지만
+양쪽이 함께 좁았다. 내가 매 웨이브 돌린 계수 대조는 이 형태를 못 잡는다. (3) **전수 PASS는 표본 크기의 함수다**
+— w30의 5/5를 루프 종결로 읽었다면 w31의 새 결함형 셋이 그대로 나갔다.
+
+**열린 것.** 잔여 262브랜드(웨이브 36~). 규칙집 v12 본문은 이 구간 판정 13건을 아직 흡수하지 않았다(프롬프트에만 있음) — v13 승격 검토 필요.
+
+**다음.** 웨이브 36 대상은 `jobkorea·jobplanet·jumpit·kakaobank` 이후 알파벳 순. 프롬프트는 `docs/design-md-weight/prompts/README.md` 절차대로 조립한다.
+
+## 2026-08-28 — 웨이브 35 개정 intercom
+- 한 일: FAIL 2 확정 결함만. Compact Font `16px·400` 삭제. Hero fin.ai는 `#fff` 6px만. `40-42px` DESIGN 0. 줄 460. B2a 35=35.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 35 나머지 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 intercom
+- 한 일: 독립 검토 A·C·D(+형 7–9). FAIL 2. Compact `16px·400` footer 오귀속 · fin.ai `40-42px` sibling 승격. 고치지 않음.
+- 열린 것: 카탈로그 채택 아님. 원본·산출 미수정.
+- 다음: 개정 또는 웨이브 35 나머지 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 ipassmoney
+- 한 일: 독립 검토 A·C·D(+형 7–9). PASS. YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 미승격·sibling 미용합. 고치지 않음.
+- 열린 것: 카탈로그 채택 아님. 원본·산출 미수정.
+- 다음: 웨이브 35 나머지 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 intuit
+- 한 일: 독립 검토 A·C·D(+형 7–9). PASS. YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 미승격·sibling 미용합. 고치지 않음.
+- 열린 것: 카탈로그 채택 아님. 원본·산출 미수정.
+- 다음: 웨이브 35 나머지 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 jkopay
+- 한 일: 독립 검토 A·C·D(+형 7–9). PASS. YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 미승격·sibling 미용합. 고치지 않음.
+- 열린 것: 카탈로그 채택 아님. 원본·산출 미수정.
+- 다음: 웨이브 35 나머지 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 jandi
+- 한 일: 독립 검토 A·C·D(+형 7–9). PASS. YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 미승격·sibling 미용합. 고치지 않음.
+- 열린 것: 카탈로그 채택 아님. 원본·산출 미수정.
+- 다음: 웨이브 35 나머지 검토.
+
+## 2026-08-28 — T2 F3 감사 jkopay
+- 한 일: B2a·E2 전담. 본문 36→37 / 원장 36→37. Voice-sample `:408` 신설. 로그 dest 12건(`#C9191D` 13, `full: 9999` dest 3, inventory 135–171).
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 35 나머지 F3.
+
+## 2026-08-28 — T2 F3 감사 intercom
+- 한 일: B2a·E2 전담. 본문 34→35 / 원장 34→35. Nav `:314` 신설 + Family·Type roles·Assets·Hero 기존 한정 확장. 로그 dest 8건(prose-derived 372, full:9999 dest 3, Tier 빈 줄).
+- 열린 것: 카탈로그 채택 아님. 원본 미수정. B1 `canvas-inverted`는 보고만.
+- 다음: 웨이브 35 나머지 F3.
+
+## 2026-08-28 — T2 F3 감사 intuit
+- 한 일: B2a·E2 전담. 본문 24=24였으나 한정 5곳이 같은 단락 판단을 빠뜨려 범위를 닫음. 로그 dest 10건 정정. `AUDIT_DONE fixes=20`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 35 나머지 F3·검토.
+
+## 2026-08-28 — T2 F3 감사 ipassmoney
+- 한 일: B2a·E2 전담. Type roles `:207`에 unitless-ratio 한정 접어 넣음(36=36). 로그 목적지 10건 실측 줄로 교정. `AUDIT_DONE fixes=12`.
+- 열린 것: 카탈로그 채택 아님. 원본·토큰·표·구조 무변경.
+- 다음: 웨이브 35 나머지 F3 또는 검토.
+
+## 2026-08-28 — T2 F3 감사 jandi
+- 한 일: B2a·E2 전담 감사. 본문 23=23이되 한정 5곳 범위 확장. 로그 목적지·Noto URL fitpet형 정정. `AUDIT_DONE fixes=20`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 35 검토.
+
+## 2026-08-28 — T2 이관 jandi
+- 한 일: legacy `web/references/jandi/DESIGN.md` → Core v2 산출 3파일. 규칙집 v12. B2a 23=23. §11 2015/Project 2.0과 결론 문장 Scope 착지. 게이트 PASS.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 35 검토.
+
+## 2026-08-28 — T2 이관 jkopay
+- 한 일: legacy `web/references/jkopay/DESIGN.md` → Core v2 산출 3파일. 규칙집 v12. B2a 36=36. §11 2015/Kevin Hu/街口/2023/不止支付와 결론 문장 Scope 착지. 게이트 첫 차단 `18px` 정정 후 PASS.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 35 나머지 이관·검토.
+
+## 2026-08-28 — T2 이관 ipassmoney
+- 한 일: legacy `web/references/ipassmoney/DESIGN.md` → Core v2 산출 3파일. 규칙집 v12. B2a 36=36. §11 연혁·early 2026 LINE Pay·결론 문장 Scope 착지. 게이트 PASS.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 35 나머지(`intuit·jandi·jkopay`) 이관.
+
+## 2026-08-28 — T2 이관 intuit
+- 한 일: legacy `web/references/intuit/DESIGN.md` → Core v2 산출 3파일. 규칙집 v12. B2a 24=24. §11 1983/Cook/Proulx/Quicken과 결론 문장 Scope 착지. 게이트 PASS, `portable_core:true`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 35 나머지(`ipassmoney·jandi·jkopay`) 이관.
+
+## 2026-08-28 — T2 이관 intercom
+- 한 일: legacy `web/references/intercom/DESIGN.md` → Core v2 산출 3파일. 규칙집 v12. B2a 34=34. §11 연혁·Fin/fin.ai 결론 문장 Scope 착지. 게이트 첫 차단 2건 정정 후 PASS.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 35 나머지(`intuit·ipassmoney·jandi·jkopay`) 이관.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 imweb
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0. **PASS**.
+- 열린 것: 산출 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 34 나머지 의미 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 instacart
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0. **PASS**.
+- 열린 것: 산출 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 34 나머지 의미 검토.
+- `REVIEW_DONE instacart PASS`
+
+## 2026-08-28 — 웨이브 27형 의미 검토 ikala
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0. **PASS**.
+- 열린 것: 산출 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 34 나머지 의미 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 iicombined
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0. **PASS**.
+- 열린 것: 산출 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 34 나머지 의미 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 inflearn
+- 한 일: 독립 검토 A·C·D. YAML 키 경로·§11·C2 쌍닫힘·페르소나/sibling/융합 0. **PASS**.
+- 열린 것: 카탈로그 채택 아님. 산출 미수정.
+- 다음: 웨이브 34 나머지 검토.
+- `REVIEW_DONE inflearn PASS`
+
+## 2026-08-28 — T2 F3 감사 inflearn
+- 한 일: B2a·E2 감사. 본문 21→27 / 원장 21→27. 로그 dest 15건 정정. `AUDIT_DONE fixes=32`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 34 나머지 게이트/감사.
+- SHA `a9f65f7b6a326366161a00fcb38f9f29ad4ebf23813788863c3172a33a8b95d6`
+
+## 2026-08-28 — T2 F3 감사 iicombined
+- 한 일: B2a·E2 감사. 본문 한정 33→35, 원장 1:1. 로그 dest 10건 정정. `AUDIT_DONE fixes=18`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 34 나머지 게이트/감사.
+- SHA `8fcf8324cf6dceff847147c56227325e5f52184143cbaffbfe0cd9236bc5e251`
+
+## 2026-08-28 — T2 F3 감사 ikala
+- 한 일: B2a·E2 감사. Shape workhorse 한정 확장. 로그 dest 6건 정정. `AUDIT_DONE fixes=8`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 34 나머지 게이트/감사.
+- SHA `bc7e06196b6999bc1675ae6c5eddf830812e67dfb82e3b5f7bd45e14371044f4`
+
+## 2026-08-28 — T2 F3 감사 imweb
+- 한 일: B2a·E2 전담 감사. Scope `:11`·Elevation `:145` 한정 범위 확장(+0). 로그 dest 9행 실측 교정. 35=35.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 34 나머지 감사.
+- `AUDIT_DONE fixes=12`
+
+## 2026-08-28 — T2 F3 감사 instacart
+- 한 일: B2a·E2 전담 감사. 본문 33→34 / 원장 34. 로그 dest 교정. `audit-log.md` 기록.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 34 나머지 감사.
+- `AUDIT_DONE fixes=20`
+
+## 2026-08-28 — 웨이브 34 게이트 정정 inflearn
+- 한 일: Type roles Course badge Size `11px`→`11`. 원본 `size: 11`·`11px` 0. 게이트 PASS.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 34 나머지 게이트/감사.
+- `FIX_DONE inflearn fixes=1`
+
+## 2026-08-28 — T2 이관 ikala
+- 한 일: legacy `web/references/ikala/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/ikala/{DESIGN.md,provenance.md,migration-log.md}`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정. F3 감사 대기.
+- 다음: 웨이브 34 나머지 브랜드 또는 감사.
+- `DONE migrated=1`
+
+## 2026-08-28 — T2 이관 instacart
+- 한 일: legacy `web/references/instacart/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/instacart/{DESIGN.md,provenance.md,migration-log.md}`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정. F3 감사 대기.
+- 다음: 웨이브 34 나머지 브랜드 또는 감사.
+- `DONE migrated=1`
+
+## 2026-08-28 — T2 이관 imweb
+- 한 일: legacy `web/references/imweb/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/imweb/{DESIGN.md,provenance.md,migration-log.md}`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정. F3 감사 대기.
+- 다음: 웨이브 34 나머지 브랜드 또는 감사.
+- `DONE migrated=1`
+
+## 2026-08-28 — T2 마이그레이션 iicombined
+- 한 일: legacy `web/references/iicombined/DESIGN.md`를 Core v2로 이관. 규칙집 v12.
+- 열린 것: 카탈로그 채택 아님. F3 감사 대기.
+- 다음: F3 또는 웨이브 34 다음 브랜드.
+- `DONE migrated=1`
+
+## 2026-08-28 — T2 이관 inflearn
+- 한 일: legacy Inflearn DESIGN.md를 Core v2로 이관. 규칙집 v12. F1/F2 수행. §11 연혁·결론 문장 보존.
+- 열린 것: 게이트 `px:11px` 오탐 보고. F3 감사 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 34 나머지 브랜드 또는 F3.
+- `DONE migrated=1`
+
+- 한 일: A1 `recipe-card.fg` `#564e4a`를 Story Card Text 행으로 복원. 줄 포인터 전수 갱신.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 33 마감 또는 다음 브랜드.
+- `FIX_DONE icook fixes=1`
+
+## 2026-08-28 — 웨이브 33 의미 검토 igaworks
+- 한 일: 독립 검토 A·C·D(+7–9). 값 경로·§11·C2·페르소나 파생물·sibling 융합·발명 도메인 0. PASS.
+- 열린 것: 카탈로그 채택 아님. 고치지 않음.
+- 다음: 웨이브 33 나머지 브랜드 검토.
+- `REVIEW_DONE igaworks PASS`
+
+## 2026-08-28 — T2 의미 검토 idus
+- 한 일: 독립 검토(A·C·D, w27형 7–9). YAML 키 경로 분리·§11 서사·C2 방향·페르소나 파생물 0.
+- 열린 것: 없음. 고치지 않음. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지 브랜드 검토.
+- `REVIEW_DONE idus PASS`
+
+## 2026-08-28 — T2 의미 검토 ichef
+- 한 일: 독립 검토(A·C·D, w27형 7–9). YAML 키 경로 분리·§11 서사·C2 방향·페르소나 파생물 0.
+- 열린 것: 없음. 고치지 않음. sibling 없음. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지 브랜드 검토.
+- `REVIEW_DONE ichef PASS`
+
+## 2026-08-28 — T2 의미 검토 icook
+- 한 일: 독립 검토(A·C·D, w27형 7–9). YAML `recipe-card.fg` 키 경로 미착지 1건.
+- 열린 것: FAIL 1. 고치지 않음. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지 브랜드 검토 또는 개정.
+- `REVIEW_DONE icook FAIL 1`
+
+## 2026-08-28 — 웨이브 33 의미 검토 ibm
+- 한 일: 독립 검토 A·C·D(+w27형 7–9). YAML 키 경로·§11 연혁·C2 쌍닫힘·페르소나 파생물·sibling 융합 실측. 판정 PASS.
+- 열린 것: 개정 없음. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지 검토.
+- `REVIEW_DONE ibm PASS`
+
+## 2026-08-28 — T2 F3 감사 idus
+- 한 일: B2a·E2 전담 감사. 본문 한정 33→35(`:487`·`:506` 신설, `:11`·`:133` 확장). 로그 dest 9행 교정(`audit-log.md`, fixes=17).
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 검토.
+- `AUDIT_DONE fixes=17`
+
+## 2026-08-28 — T2 F3 감사 ichef
+- 한 일: B2a·E2 전담 감사. 본문 한정 31→32(`:246` 신설·`:132` 확장). 로그 dest 9행 교정(`audit-log.md`, fixes=14).
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님. sibling 없음.
+- 다음: 웨이브 33 검토.
+- `AUDIT_DONE fixes=14`
+
+## 2026-08-28 — T2 F3 감사 ibm
+- 한 일: B2a·E2 전담 감사. 본문 한정 21=21 유지(Spacing·Font 범위 확장). 로그 dest 5행 교정(`audit-log.md`, fixes=9).
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 검토.
+- `AUDIT_DONE fixes=9`
+
+## 2026-08-28 — T2 F3 감사 igaworks
+- 한 일: B2a·E2 전담 감사. 본문 한정 33=33 유지. 로그 dest 6행+F2 교정(`audit-log.md`, fixes=7). DESIGN 무수정.
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 검토.
+- `AUDIT_DONE fixes=7`
+
+## 2026-08-28 — T2 F3 감사 icook
+- 한 일: B2a·E2 전담 감사. Family/Motion 한정 범위 확장(+0). 로그 dest 14건 교정. 33=33.
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지 감사.
+- `AUDIT_DONE fixes=18`.
+
+## 2026-08-28 — T2 이관 igaworks
+- 한 일: legacy `web/references/igaworks/DESIGN.md` → Core v2 `docs/design-md-weight/migrated/igaworks/` (규칙집 v12). B2a 33=33. §11 mobile advertising attribution / AI Moat / we are the data layer 결론 Scope 착지.
+- 열린 것: F3 감사·의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 닫기(검토).
+- `DONE migrated=1`.
+
+## 2026-08-28 — T2 이관 icook
+- 한 일: legacy `web/references/icook/DESIGN.md` → Core v2 `docs/design-md-weight/migrated/icook/` (규칙집 v12). B2a 33=33. §11 2011/Polydice/愛料理/anyone can post a recipe 결론 Scope 착지.
+- 열린 것: F3 감사·의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지(`igaworks`) 이관.
+- `DONE migrated=1`.
+
+## 2026-08-28 — T2 이관 idus
+- 한 일: legacy `web/references/idus/DESIGN.md` → Core v2 `docs/design-md-weight/migrated/idus/` (규칙집 v12). B2a 33=33. §11 2014/텀블벅/hard-sell scarcity 결론 Scope 착지.
+- 열린 것: F3 감사·의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지(`igaworks`) 이관.
+- `DONE migrated=1`.
+
+## 2026-08-28 — T2 이관 ichef
+- 한 일: legacy `web/references/ichef/DESIGN.md` → Core v2 `docs/design-md-weight/migrated/ichef/` (규칙집 v12). prose-derived·라이브 미검·B2a 31=31. §11 2012/Mazendo/noodle-counter 결론 Scope 착지.
+- 열린 것: F3 감사·의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지(`icook·idus·igaworks`) 이관.
+- `DONE migrated=1`.
+
+## 2026-08-28 — T2 이관 ibm
+- 한 일: legacy `web/references/ibm/DESIGN.md` → Core v2 `docs/design-md-weight/migrated/ibm/` (규칙집 v12). Carbon 닫힘 B2a 21=21. §11 1911/1924 결론 문장 Scope 착지.
+- 열린 것: F3 감사·의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지(`ichef·icook·idus·igaworks`) 이관.
+- `DONE migrated=1`.
+
+## 2026-08-28 — 의미 검토 hyundaicard
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0.
+- 열린 것: 없음. PASS.
+- 다음: 웨이브 32 나머지 검토.
+- `REVIEW_DONE hyundaicard PASS`.
+
+## 2026-08-28 — 의미 검토 hyundai
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0.
+- 열린 것: 없음. PASS.
+- 다음: 웨이브 32 나머지 검토.
+- `REVIEW_DONE hyundai PASS`.
+
+## 2026-08-28 — 의미 검토 humanscape
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0.
+- 열린 것: 없음. PASS.
+- 다음: 웨이브 32 나머지 검토.
+- `REVIEW_DONE humanscape PASS`.
+
+## 2026-08-28 — 웨이브 32 의미 검토 hwahae
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 파생물·sibling 융합 실측.
+- 열린 것: 없음. PASS. 고치지 않음.
+- 다음: 웨이브 32 나머지 검토.
+- `REVIEW_DONE hwahae PASS`.
+
+## 2026-08-28 — 의미 검토 hyperconnect
+- 한 일: 웨이브 32 독립 검토(A·C·D, 추가형 7–9). YAML 키경로·§11 결론·C2 쌍닫힘·페르소나 파생물 0·sibling 융합 0.
+- 열린 것: 없음. PASS.
+- 다음: 웨이브 32 나머지 검토.
+- 고치지 않음. `REVIEW_DONE hyperconnect PASS`.
+
+## 2026-08-28 — F3 감사 hyperconnect
+- 한 일: B2a·E2 전담 감사. 본문 한정 30→32(Grid·Unresolved). 원장 32=32. 로그 dest 10곳 실측 교정.
+- 열린 것: A5a compared 0/123. 발행 라틴 손실 안 보임. B1·D2a·E2d 이 브랜드 0.
+- 다음: 웨이브 32 나머지 F3.
+- SHA `a0be6103d617b3bf1204f8f05d4adb10eea317ddf4d3b08d15d2abd1ca7c1875`. `AUDIT_DONE fixes=16`.
+
+## 2026-08-28 — F3 감사 hyundai
+- 한 일: B2a·E2 전담 감사. 본문 한정 21=21(Family·Assets·Layout 범위 확장). 원장 21=21. 로그 dest 2곳 실측 교정.
+- 열린 것: A5a compared 0/92. 발행 라틴 손실 안 보임. B1·D2a·E2d 이 브랜드 0.
+- 다음: 웨이브 32 나머지 F3.
+- SHA `f715c0a7fd15032c47d6b0707b0bd7556aa65c31cd3720257ff8e709e7a062b9`. `AUDIT_DONE fixes=9`.
+
+## 2026-08-28 — F3 감사 hyundaicard
+- 한 일: B2a·E2 전담 감사. 본문 한정 22→24(DIVE omission·Capture reinspect). 원장 24=24. 로그 dest 10곳 실측 교정.
+- 열린 것: A5a compared 0/77. 발행 라틴 손실 안 보임. B1·D2a·E2d 이 브랜드 0.
+- 다음: 웨이브 32 나머지 F3.
+- SHA `7d818565cea5447d947e15a9218d4f8322991cc5d68ef6db805fbb8e9bd78325`. `AUDIT_DONE fixes=18`.
+
+## 2026-08-28 — F3 감사 hwahae
+- 한 일: B2a·E2 전담 감사. 본문 한정 30→33(On-Brand·Forbidden register·Unresolved). 원장 33=33. 로그 dest 11곳 실측 교정.
+- 열린 것: 없음. A5a 17/204는 범위 밖 보고만.
+- 다음: 웨이브 32 나머지 F3.
+- SHA `10d6e6906076f080d58b35554e600a957698cbe0742e056508373aa8ec68eb4c`. `AUDIT_DONE fixes=18`.
+
+## 2026-08-28 — F3 감사 humanscape
+- 한 일: B2a·E2 전담 감사. 본문 한정 33→35(Declared-only·voice-sample 괄호). 원장 35=35. 로그 dest 8곳 실측 교정.
+- 열린 것: D2a 로그 A5a 칸이 삭제 식별자를 mention — 범위 밖, 미수정.
+- 다음: 웨이브 32 나머지 F3.
+- SHA `5de5b511e435d10138767650673ca49cd246e44231cc009645581d6eb0d3a21a`. `AUDIT_DONE fixes=12`.
+
+## 2026-08-28 — 이관 hwahae
+- 한 일: T2 이관. 제품 홈 + 테크 블로그 두 표면. 규칙집 v12. B2a 30=30. §11 연혁·HDS·결론 문장 Scope 착지. C2 목적지 4컨트롤 닫힘.
+- 열린 것: 없음. 원본 미수정. gate PASS / portable_core. SHA `80ac7377f8ba71089829c24c8365befc08337913d557d4f8dfb163e0fb9dbe3b`.
+- 다음: 웨이브 32 나머지 또는 F3.
+
+## 2026-08-28 — 이관 hyundai
+- 한 일: T2 이관. KR 홈·카탈로그·IONIQ 6 세 표면. 규칙집 v12. B2a 21=21. §11 연혁·ccNC 결론 문장 Scope 착지. C2 목적지 7컨트롤 닫힘.
+- 열린 것: 없음. 원본 미수정. gate PASS / portable_core. SHA `ab5f394d6ed827bdb84a02ac7b8e9887843a01c81c1d78fec54d05c5c2a70965`.
+- 다음: 웨이브 32 나머지 또는 F3.
+
+## 2026-08-28 — 이관 hyundaicard
+- 한 일: T2 이관. 제품 홈 + 법인 2라우트. 규칙집 v12. B2a 22=22. §11 연혁·결론 문장 Scope 착지. C2 목적지 3컨트롤 닫힘.
+- 열린 것: 없음. 원본 미수정. gate PASS / portable_core. SHA `614e8bd7917e5790deb70728b8a4be58aeeae747df2ffb4a25f3373f53655cbe`.
+- 다음: 웨이브 32 나머지 또는 F3.
+
+## 2026-08-28 — 이관 humanscape
+- 한 일: T2 이관. humanscape.io→lifex.io + our-business. 규칙집 v12. B2a 33=33. §11 연혁·결론 문장 Scope 착지. C2 목적지 3컨트롤 닫힘.
+- 열린 것: 없음. 원본 미수정. gate PASS / portable_core. SHA `3e0e5f80a6a6a992d3717120e88814af31ccd9935d8b37df4f0b9cb0d0237027`.
+- 다음: 웨이브 32 나머지(hwahae·hyperconnect·hyundai·hyundaicard) 또는 F3.
+
+## 2026-08-28 — 이관 hyperconnect
+- 한 일: T2 Core v2 이관. 산출 migrated/hyperconnect 3파일. 규칙집 v12. B2a 30=30. gate PASS / portable_core true.
+- 열린 것: 없음. 원본·sibling 미수정. SHA `1484a305b70f7d829f731f95b47101306edde245f23f43c752bcf7194452e85c`.
+- 다음: F3 감사 세션.
+
+## 2026-08-28 — 개정 hogangnono
+- 한 일: 웨이브 31 FAIL 2. §11 결론 문장 Scope 복원, Outline Primitive type을 `not in the token set`으로 되돌림.
+- 열린 것: 없음. 원본 미수정. B2a 31=31. SHA `2a5136d75485e0f87c60d9d7230bf5ae96c826a38ec940a0a1ce561cdbca9334`.
+- 다음: 웨이브 31 wave-close (hubspot 개정도 완료).
+
+## 2026-08-28 — 개정 hubspot
+- 한 일: 웨이브 31 FAIL 1. Audience `:28`에서 페르소나 파생 `Solutions Partner agencies` 삭제. 도입 목록 네 그룹만 유지.
+- 열린 것: 없음. 원본 미수정. B2a 26=26. SHA `f3955b8a86af5a134ca32fd571c48bbbf5fe01fac5182bdc9b87054e8e8bbf06`.
+- 다음: 웨이브 31 남은 개정 hogangnono.
+
+## 2026-08-28 — 의미 검토 hp
+- 한 일: 독립 검토(A·C·D, 웨이브 27형 7–9). YAML 키경로·§11·C2 방향·sibling 융합·D1·페르소나 본문 파생물 실측 PASS.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 31 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 heydealer
+- 한 일: 독립 검토(A·C·D, 웨이브 27형 7–9). YAML 키경로·§11·C2·sibling 융합·D1·페르소나 파생물 실측 PASS.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 31 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 hogangnono
+- 한 일: 독립 검토(A·C·D, 웨이브 27형 7–9). YAML 키경로·C2·sibling 융합·D1·페르소나 본문은 실측 PASS. §11 결제거절 문장 소실 + Outline type 발명.
+- 열린 것: FAIL 2. 산출 미수정.
+- 다음: 개정 또는 웨이브 31 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 heptabase
+- 한 일: 독립 검토(A·C·D, 웨이브 27형 7–9). YAML 키경로·§11·C2·sibling 융합·D1·페르소나 파생물 실측 PASS.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 31 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 hubspot
+- 한 일: 독립 검토(A·C·D, 웨이브 27형 7–9). YAML 키경로·§11·C2·sibling 융합·D1은 실측 PASS. Audience `Solutions Partner agencies`만 D2.
+- 열린 것: FAIL 1. 산출 미수정.
+- 다음: 개정 또는 웨이브 31 나머지 의미 검토.
+
+## 2026-08-28 — F3 감사 hp
+- 한 일: B2a·E2 전담 감사. 본문 완전형 30→33, 원장 30→33. Live computed·Assets logo·Search keep-both 신설 + Scope ¶2·¶3 확장. 로그 `#0096D6` 22→20 및 줄포인터 9행 교정. `AUDIT_DONE fixes=18`.
+- 열린 것: 카탈로그 채택 아님. 범위 밖 D2a 로그 A5a 전기 조각 mention. 의미 검토 대기.
+- 다음: 웨이브 31 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 hogangnono
+- 한 일: B2a·E2 전담 감사. 본문 한정 27→31, 원장 27→31. Photoswipe/배포서체/계약밖/Layout 재서술 신설 + Type roles 확장. 로그 dest 20·79–105·463·52–61 교정.
+- 열린 것: 카탈로그 채택 아님. 의미 검토 대기.
+- 다음: 웨이브 31 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 heptabase
+- 한 일: B2a·E2 전담 감사. 본문 완전형 29→32, 원장 32=32. 한정 신설 3·확장 3, 로그 목적지 9행 교정. `AUDIT_DONE fixes=16`. SHA `daae28f9…`.
+- 열린 것: 카탈로그 채택 아님. 범위 밖 B1 `:224` sibling 분류 인용, D2a 로그 A5a 전기 조각 mention.
+- 다음: 웨이브 31 나머지 감사 또는 의미 검토.
+
+## 2026-08-28 — T2 F3 감사 heydealer
+- 한 일: B2a·E2만. Scope `:9` 한정 확장, Official distributed asset `:186` 한정 신설, 원장 31=31, 로그 dest 9건(442·62–68·187/193·외부/실내·B3 534). `audit-log.md`. `AUDIT_DONE fixes=12`.
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 31 나머지 감사 또는 검토.
+
+## 2026-08-28 — 웨이브 31 F3 hubspot
+- 한 일: B2a·E2 전담 감사. 본문 24→26 / 원장 26=26. Semantic `:90`·Layout `:553` 한정 신설, Scope `:13` 접기. 로그 `full: 9999`·canvas P 73·spacing compact dest 교정. `AUDIT_DONE fixes=13`.
+- 열린 것: 카탈로그 채택 아님. 의미 검토 대기. Audience `Solutions Partner agencies`는 D2a 범위 밖 관찰.
+- 다음: 웨이브 31 나머지 감사 또는 의미 검토.
+
+## 2026-08-28 — T2 이관 hp
+- 한 일: legacy `web/references/hp/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/hp/{DESIGN,provenance,migration-log}.md`. 규칙집 v12. gate PASS / portable_core true / B2a 30=30.
+- 열린 것: 카탈로그 채택 아님. F3 감사·의미 검토 대기.
+- 다음: 웨이브 31 나머지 이관 또는 감사.
+
+## 2026-08-28 — T2 이관 hogangnono
+- 한 일: legacy `web/references/hogangnono/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/hogangnono/{DESIGN,provenance,migration-log}.md`. 규칙집 v12. gate PASS / portable_core true / B2a 27=27.
+- 열린 것: 카탈로그 채택 아님. F3 감사·의미 검토 대기.
+- 다음: 웨이브 31 나머지(`hp`) 이관 또는 감사.
+
+## 2026-08-28 — T2 이관 heydealer
+- 한 일: legacy `web/references/heydealer/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/heydealer/{DESIGN,provenance,migration-log}.md`. 규칙집 v12. gate PASS / portable_core true / B2a 30=30.
+- 열린 것: 카탈로그 채택 아님. F3 감사·의미 검토 대기.
+- 다음: 웨이브 31 나머지(`hogangnono·hp`) 이관 또는 감사.
+
+## 2026-08-28 — T2 이관 heptabase
+- 한 일: legacy `web/references/heptabase/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/heptabase/{DESIGN,provenance,migration-log}.md`. 규칙집 v12. gate PASS / portable_core true / B2a 29=29.
+- 열린 것: 카탈로그 채택 아님. F3 감사·의미 검토 대기.
+- 다음: 웨이브 31 나머지(`heydealer·hogangnono·hp·hubspot`) 이관.
+
+## 2026-08-28 — T2 이관 hubspot
+- 한 일: 규칙집 v12로 `web/references/hubspot/DESIGN.md` → `docs/design-md-weight/migrated/hubspot/{DESIGN,provenance,migration-log}.md`. Canvas 닫힘 B2a 24=24. §11 연혁 착지. 게이트 PASS.
+- 열린 것: 카탈로그 채택 아님. F3 감사·의미 검토 대기.
+- 다음: 웨이브 31 나머지 이관 또는 감사.
+
+## 2026-08-28 — 의미 검토 headspace
+- 한 일: 독립 검토(A·C·D). YAML 키 경로·§11 고유명사·C2 방향·페르소나 파생물 0·sibling 융합 0·F2 포인터 현행. **PASS**.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 30 나머지 브랜드 의미 검토.
+
+## 2026-08-28 — 의미 검토 hana
+- 한 일: 독립 검토(A·C·D, 웨이브 27 추가형 7–9). YAML 키 경로·§11 고유명사·C2 쌍닫힘·페르소나 파생물 0·sibling 융합 0·F2 포인터 현행. **PASS**.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 30 나머지 브랜드 의미 검토.
+
+## 2026-08-28 — 의미 검토 hackle
+- 한 일: 독립 검토(A·C·D). YAML 키 경로·§11 고유명사·C2 쌍닫힘·페르소나 파생물 0·sibling 융합 0·F2 포인터 현행. **PASS**.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 30 나머지 브랜드 의미 검토.
+
+## 2026-08-28 — 의미 검토 hashicorp
+- 한 일: 독립 검토(A·C·D). YAML 키 경로·§11 연혁·C2 쌍닫힘·페르소나 파생물 없음·sibling 융합 없음·F2 포인터 현행. **PASS**.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 30 나머지 브랜드 의미 검토.
+
+## 2026-08-28 — 의미 검토 hahow
+- 한 일: 독립 검토(A·C·D). YAML 키 경로·§11 고유명사·C2 쌍닫힘·페르소나 파생물 0·sibling 융합 0·F2 포인터 현행. **PASS**.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 30 나머지 브랜드 의미 검토.
+
+## 2026-08-28 — F3 감사 hahow
+- 한 일: B2a·E2 전담 감사. 본문 한정 24→26, 원장 26=26. palette-role·Type roles 신설, Surface state·Layout 주어 확장. 로그 목적지 11건 실측 교정. `AUDIT_DONE fixes=16`.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경.
+- 다음: 웨이브 30 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 headspace
+- 한 일: B2a·E2 전담 감사. 본문 한정 25→27, 원장 27=27. License·Type roles 신설, Family·Assets 주어 확장. 로그 목적지 9건 실측 교정. `AUDIT_DONE fixes=15`.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경.
+- 다음: 웨이브 30 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 hashicorp
+- 한 일: B2a·E2 전담 감사. 본문 한정 13→16, 원장 16=16. 로그 homepage DESIGN 9 허위 이중·Helios/Tier/Narrative 포인터 실측 교정. `AUDIT_DONE fixes=18`.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경.
+- 다음: 웨이브 30 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 hackle
+- 한 일: B2a·E2 전담 감사. 본문 한정 26→30, 원장 30=30. 로그 목적지(`full: 9999`, Do 61–68, C2/C4) 실측 교정. `AUDIT_DONE fixes=18`.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경.
+- 다음: 웨이브 30 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 hana
+- 한 일: B2a·E2 전담 감사. 본문 한정 27→30, 원장 30=30. 로그 줄포인터 5곳 교정. `AUDIT_DONE fixes=15`.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경.
+- 다음: 웨이브 30 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — T2 이관 headspace
+- 한 일: legacy `web/references/headspace/DESIGN.md`를 Core v2로 이관. 규칙집 v12. B2a 25=25. §11 2010/Puddicombe/Italic/Colophon 착지. 커브 3 삭제·duration 유지.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 30 나머지 또는 F3.
+
+## 2026-08-28 — T2 이관 hahow
+- 한 일: legacy `web/references/hahow/DESIGN.md`를 Core v2로 이관. 규칙집 v12. B2a 24=24(`hahow-design` 닫힘). §11 好學校/learn-and-teach 착지. 커브 없음·B3 유지.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 30 나머지 또는 F3.
+
+## 2026-08-28 — T2 이관 hackle
+- 한 일: legacy `web/references/hackle/DESIGN.md`를 Core v2로 이관. 규칙집 v12. B2a 26=26. §11 서울/SDK/개발자 문서 착지. 커브 3 삭제·duration 유지.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 30 나머지(`hahow`·`hana`·`hashicorp`·`headspace`) 또는 F3.
+
+## 2026-08-28 — T2 이관 hashicorp
+- 한 일: legacy `web/references/hashicorp/DESIGN.md` → Core v2 초안 3파일. 규칙집 v12. 연혁·키 경로·Helios B2a 13=13. gate PASS.
+- 열린 것: F3 감사·의미 검토 대기. 원본 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 30 나머지 또는 F3.
+
+## 2026-08-28 — T2 이관 hana
+- 한 일: `web/references/hana/DESIGN.md`를 Core v2로 이관. 산출 `docs/design-md-weight/migrated/hana/` 3파일. 규칙집 v12. F1 27=27, F2 grep 대조, A5a 31/186.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님. gate PASS, portable_core true.
+- 다음: F3 감사 또는 웨이브 검토.
+
+## 2026-08-28 — 개정 govuk
+- 한 일: 웨이브 29 FAIL 3만 수정. vestibular/epilepsy 복원, `:97` sibling 융합 제거, native application/back-office 삭제. B2a 25=25. 줄 600→599, 포인터 전수 갱신.
+- 열린 것: 없음. 원본 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 개정(있으면) 또는 웨이브 클로즈.
+
+## 2026-08-28 — 개정 greeting
+- 한 일: 웨이브 29 FAIL 1 / D1만 개정. `measures 1440px` 부정문을 본문·원장에서 삭제. Desktop `1024-1440px` 범위는 유지.
+- 열린 것: 없음. 원본·sibling 미수정. B2a 26=26. 줄 수 528 불변.
+- 다음: 웨이브 29 남은 개정 또는 wave-close.
+
+## 2026-08-28 — 의미 검토 govuk
+- 한 일: 독립 검토(A·C·D, 웨이브 27 추가형 7–9 포함). YAML 키경로·§11·C2 쌍닫힘·페르소나 본문 0·F2 계수는 실측 PASS.
+- 열린 것: FAIL 3 — §15 vestibular/epilepsy 소실, `:98` sibling `link token` 융합 귀속, D1 `native application`/`back-office`. 산출물 미수정.
+- 다음: 개정 또는 웨이브 29 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 grip
+- 한 일: 독립 검토(A·C·D). YAML 키경로·§11·C2·페르소나·sibling 융합·F2 포인터는 실측 PASS.
+- 열린 것: 없음. 산출물 미수정.
+- 다음: 웨이브 29 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 greeting
+- 한 일: 독립 검토(A·C·D). YAML 키경로·§11·C2·페르소나·sibling 융합은 실측 PASS. D1 `:452` `measures 1440px` 부정문 FAIL 1.
+- 열린 것: 개정 대기. 산출물 미수정.
+- 다음: 웨이브 29 나머지 의미 검토 또는 greeting 개정.
+
+## 2026-08-28 — 의미 검토 greencar
+- 한 일: 독립 의미 검토(A·C·D, 웨이브 27 추가형 7–9 포함). YAML 키경로·연혁 고유명사·C2 쌍닫힘·sibling 비전용·페르소나 파생물·F2 계수 실측 PASS.
+- 열린 것: 없음. 산출물 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 greenvines
+- 한 일: 웨이브 29 greenvines 독립 의미 검토(A·C·D, 웨이브 27 추가형 포함). PASS. 산출 미수정.
+- 열린 것: 없음.
+- 다음: 웨이브 29 나머지 브랜드 의미 검토.
+
+## 2026-08-28 — F3 greenvines B2a·E2
+- 한 일: 산출물·원본·sibling만 보고 B2a·E2 감사. 본문 한정 22→26, 원장 26=26. 로그 `9999`·`box-shadow: none` 목적지 교정. `audit-log.md` 기록.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경.
+- 다음: 웨이브 29 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 greeting B2a·E2
+- 한 일: 산출물·원본·sibling만 보고 B2a·E2 감사. 본문 한정 24→26, 원장 26=26. 로그 목적지·`measures 1440px` dest·Named gaps 교정. `audit-log.md` 기록.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경.
+- 다음: 웨이브 29 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 greencar
+- 한 일: B2a·E2 전담 감사. 본문 한정 25→27, 원장 27=27. 로그 `9999`·`motion-standard` 계수 교정. `AUDIT_DONE fixes=10`.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 grip
+- 한 일: B2a·E2 전담 감사. 본문 한정 20→22(Spacing·Family 신설), 원장 22=22. 로그 provenance 포인터 다수 교정(부분문자열·빈 줄).
+- 열린 것: 없음. 토큰·표·구조·원본 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 브랜드 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 govuk
+- 한 일: B2a·E2 전담 감사. 본문 한정 24→26, 원장 26=26. 로그 목적지 14행 실측 교정. `AUDIT_DONE fixes=19`.
+- 열린 것: 없음. 토큰·표·구조·원본 미수정.
+- 다음: 웨이브 29 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — T2 이관 greeting
+- 한 일: legacy `web/references/greeting/DESIGN.md`를 Core v2로 이관. 산출 `docs/design-md-weight/migrated/greeting/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v12. B2a 24=24. gate PASS.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 브랜드 이관 또는 F3.
+
+## 2026-08-28 — T2 이관 grip
+- 한 일: legacy `web/references/grip/DESIGN.md`를 Core v2로 이관. 산출 `docs/design-md-weight/migrated/grip/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v12. B2a 20=20. gate PASS.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 브랜드 이관 또는 F3.
+
+## 2026-08-28 — T2 이관 greencar
+- 한 일: legacy `web/references/greencar/DESIGN.md`를 Core v2로 이관. 산출 `docs/design-md-weight/migrated/greencar/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v12. B2a 25=25. gate PASS.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 브랜드 이관 또는 F3.
+
+## 2026-08-28 — T2 이관 govuk
+- 한 일: legacy `web/references/govuk/DESIGN.md`를 Core v2로 이관. 산출 `docs/design-md-weight/migrated/govuk/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v12. B2a 24=24, §11 연혁 원문 착지, `full: 1` Shape 유지.
+- 열린 것: F3 감사 대기. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 29 나머지 브랜드 또는 govuk F3.
+
+## 2026-08-28 — 개정 goorm FAIL 1
+- 한 일: Scope ¶3에 §11 `open-sourced as **Vapor UI**, a WCAG-compliant React component library`를 원본 표현으로 복원. 줄 수 526 불변, B2a 26=26.
+- 열린 것: 없음. 원본 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 28 마감(원장·wave-close) 또는 남은 개정.
+
+## 2026-08-28 — 개정 google FAIL 1
+- 한 일: Scope 15행에 §11 `Product Sans addressed product lockups after the 2015 identity update`를 원본 표현으로 복원. 줄 수 388 불변, B2a 16=16.
+- 열린 것: 없음. 원본 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 28 남은 개정(goorm·gogolook).
+
+## 2026-08-28 — 개정 gogoro FAIL 2
+- 한 일: Scope ¶4에 §11 구독·교환 모델(`monthly subscription`/`Gogoro Network`/`depleted battery`)과 확장 지리(`Asia`/`Middle East`/`Latin America`)를 원본 표현으로 복원. 줄 수 502 불변, B2a 24=24.
+- 열린 것: 없음. 원본 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 28 남은 개정(goorm·google·gogolook).
+
+## 2026-08-28 — 개정 gogolook
+- 한 일: 웨이브 28 FAIL 1 개정. Premium Type role에 복제된 `1.0`을 `—`로 되돌림(Pill만 유지). DESIGN `1.0` 2→1.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 28 남은 개정 gogoro·google·goorm.
+
+## 2026-08-28 — 의미 검토 gogoro
+- 한 일: 독립 의미 검토(A·C·D, 웨이브 27 추가형 7–9 포함). YAML 키경로·C2 쌍닫힘·sibling 부재·페르소나 파생물은 실측 PASS. 결함 2: 원본 §11 `monthly subscription`/`Gogoro Network`와 `Asia`/`Middle East`/`Latin America`가 산출 4파일 0.
+- 열린 것: 개정으로 닫힘.
+- 다음: 웨이브 28 남은 개정.
+
+## 2026-08-28 — 의미 검토 goorm
+- 한 일: 독립 의미 검토(A·C·D). YAML 키경로·C2 쌍닫힘·sibling 융합·페르소나 파생물은 실측 PASS. 결함 1: 원본 §11 `React component library`가 산출 4파일 0.
+- 열린 것: 개정 대기. 산출물 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 28 나머지 의미 검토 또는 goorm 개정.
+
+## 2026-08-28 — 의미 검토 goodpatch
+- 한 일: 독립 의미 검토(A·C·D, 웨이브 27 추가형 7–9 포함). YAML 키경로·연혁 고유명사·C2 쌍닫힘·sibling 비전용·페르소나 파생물·F2 계수 실측 PASS.
+- 열린 것: 없음. 산출물 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 28 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 google
+- 한 일: 독립 의미 검토(A·C·D). YAML 키경로·C2·sibling 융합·페르소나 파생물은 실측 PASS. 결함 1: 원본 §11 `2015 identity update`가 산출 4파일 0.
+- 열린 것: 개정으로 닫힘.
+- 다음: 웨이브 28 남은 개정.
+
+## 2026-08-28 — 의미 검토 gogolook
+- 한 일: 독립 값 계열 검토(A·C·D). 판정 FAIL 1 — button `1.0`을 Premium Type role에 복제(A4/A1). 산출 미수정.
+- 열린 것: 개정 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 28 나머지 의미 검토 또는 gogolook 개정.
+
+## 2026-08-28 — F3 감사 goorm
+- 한 일: B2a·E2 전담 감사. 한정 24→26=26. 로그 목적지·`100개 추가` 출처 교정. `AUDIT_DONE fixes=15`.
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님. 원본·sibling 미수정.
+- 다음: 웨이브 28 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 google
+- 한 일: B2a·E2 전담 감사. 본문 한정 9→16, 원장 9→16. 로그 거짓 2차 목적지(경계 전문 Foundations 0, YAML states DESIGN 0). `AUDIT_DONE fixes=16`.
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 28 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 gogolook
+- 한 일: B2a·E2 전담 감사. Spacing·Family 한정 신설(15→17=17). 로그 포인터·E2d RGB 단언 교정. `AUDIT_DONE fixes=12`.
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님. 원본·sibling 미수정.
+- 다음: 웨이브 28 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 goodpatch
+- 한 일: B2a·E2 전담 감사. 본문 한정 22=22 유지. 로그 거짓 2차 목적지 2계열 교정(`box-shadow: none` provenance 0, `グッドパッチ` Identity 0). `AUDIT_DONE fixes=4`.
+- 열린 것: 본문·원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 28 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 gogoro
+- 한 일: B2a·E2 전담 감사. Elevation glow 한정 확장, 원장 행 15 동기화, 로그 `full: 9999` 계수·green/`2026-05-19` 이중 목적지·§13 무식별. `AUDIT_DONE fixes=6`.
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 28 형제 F3 또는 의미 검토.
+
+## 2026-08-28 — T2 이관 goodpatch
+- 한 일: legacy `web/references/goodpatch/DESIGN.md`를 Core v2로 이관. 규칙집 v12. 세 파일 작성, F1·F2 수행, gate PASS.
+- 열린 것: 원본 미수정. 카탈로그 채택 아님. F3 감사·의미 검토는 하네스.
+- 다음: 웨이브 28 형제 이관 또는 감사.
+
+## 2026-08-28 — T2 이관 goorm
+- 한 일: `web/references/goorm/DESIGN.md`를 Core v2로 이관. Vapor UI 발행 사양 한정, §13 페르소나 삭제(무식별), 무출처 커브 3 삭제, C2 역할별 L/E/S. 게이트 PASS. SHA `f5124343…`.
+- 열린 것: F3 감사·의미 검토 대기. 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 28 남은 브랜드 이관 또는 F3.
+
+## 2026-08-28 — T2 이관 gogolook
+- 한 일: legacy `web/references/gogolook/DESIGN.md`를 Core v2로 이관. 규칙집 v12. 세 파일 작성, F1·F2·A5a 수행, gate PASS.
+- 열린 것: 원본 미수정. 카탈로그 채택 아님. F3 감사·의미 검토는 하네스.
+- 다음: 웨이브 28 형제 이관 또는 감사.
+
+## 2026-08-28 — T2 이관 google
+- 한 일: legacy `web/references/google/DESIGN.md`를 Core v2로 이관. 규칙집 v12. 세 파일 작성, F1·F2 수행, gate PASS.
+- 열린 것: 원본 미수정. 카탈로그 채택 아님. F3 감사·의미 검토는 하네스.
+- 다음: 웨이브 28 형제 이관 또는 감사.
+
+## 2026-08-28 — T2 이관 gogoro
+- 한 일: legacy `web/references/gogoro/DESIGN.md`를 Core v2로 옮김. 규칙집 v12. B2a 24=24, C2 역할 판단, 무출처 커브 삭제, §13 무식별.
+- 열린 것: gate PASS, portable_core true. 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 28 형제 이관 또는 F3.
+
+## 2026-08-28 — 웨이브 27 개정 gaudiy
+- 한 일: 확정 4건만 고침. Fanlink 능력 목록 복원, sibling `measures 1440px` 제거, `mobile app` 삭제, 목적지 loading 폐쇄.
+- 열린 것: B2a 22=22, dest 453행 불변, 원본 무변경.
+- 다음: 웨이브 27 원장 마감.
+
+## 2026-08-28 — 웨이브 27 개정 gaudiolab
+- 한 일: 확정 결함 4 개정. A1 연혁 복원 · C2 loading 5행 폐쇄 · A4 motion-slow 귀속 제거 · D1 applications 문장 삭제. B2a 20=20. DESIGN 482 불변.
+- 열린 것: 원본 미수정. 카탈로그 채택 아님. 형제 개정 gitlab·genie·gaudiy는 별 세션.
+- 다음: 웨이브 27 원장 마감 또는 다음 웨이브.
+
+## 2026-08-28 — 웨이브 27 개정 gitlab
+- 한 일: FAIL 4만 수정. Shape `full: 9999` 복원 · sibling 16px padding 본문 제거 · `product application` 3문장 삭제 · Primary tasks 페르소나 동기 삭제. 620행, B2a 18=18. `FIX_DONE gitlab fixes=4`.
+- 열린 것: 토큰·표 구조·한정·원본 미수정.
+- 다음: 남은 개정 gaudiolab·gaudiy.
+
+## 2026-08-28 — 웨이브 27 개정 genie
+- 한 일: A1 `Korean Windows clients`를 `DESIGN.md` 196에 원본 표현으로 복원. 줄 수 501 불변, B2a 23=23. `FIX_DONE genie fixes=1`.
+- 열린 것: 토큰·표·한정·원본 미수정. 남은 개정 gaudiolab·gaudiy·gitlab.
+- 다음: 나머지 웨이브 27 개정.
+
+## 2026-08-27 — 웨이브 27 의미 검토 gaudiolab
+- 한 일: 독립 검토. `gaudiolab` **FAIL 4** (A1 연혁 소실 · C2 loading · motion-slow 귀속 · D1 applications). 산출 미수정.
+- 열린 것: A1 키경로·발행 카피·§15 규칙·F2 목록은 실측 통과. B2a·E2는 범위 밖.
+- 다음: 오케스트레이터 처분 또는 남은 브랜드 의미 검토.
+
+## 2026-08-27 — 웨이브 27 의미 검토 gangnamunni
+- 한 일: 독립 검토. `gangnamunni` **PASS**. A1 키경로(20 충돌 쌍 포함)·고유 사실·§제약·C·D1·F2 실측 통과.
+- 열린 것: B2a·E2는 범위 밖. 산출 미수정.
+- 다음: 남은 웨이브 27 의미 검토 또는 개정.
+
+## 2026-08-27 — 웨이브 27 의미 검토 gitlab
+- 한 일: 독립 검토. `gitlab` FAIL 4 (A1 `9999` · A1 sibling padding · D1 product application · D2 페르소나 메아리). 산출 미수정.
+- 열린 것: C·모션 규칙·F2 목록은 결함 아님. 형제 의미 검토 진행 중(gaudiy FAIL 4 선행).
+- 다음: 개정 또는 남은 브랜드 의미 검토.
+
+## 2026-08-27 — 웨이브 27 의미 검토 genie
+- 한 일: 독립 검토. `genie` FAIL 1 — 원본 §3 `Korean Windows clients`가 산출 네 파일 0.
+- 열린 것: A1 키경로·발행 카피·C·D1·F2는 실측 통과. 산출 미수정.
+- 다음: 오케스트레이터 처분.
+
+## 2026-08-27 — 웨이브 27 의미 검토 gaudiy
+- 한 일: 독립 검토. `gaudiy` FAIL 4 (A1 능력 목록 · A1/D 밴드폭 귀속 · D1a 유령 도메인 · C2 목적지 loading). 산출 미수정.
+- 열린 것: 웨이브 27 나머지 4브랜드 의미 검토.
+- 다음: gangnamunni·gaudiolab·genie·gitlab 검토 후 개정.
+
+## 2026-08-27 — 웨이브 27 F3 gangnamunni (B2a·E2)
+- 한 일: 본문 한정 10→13, 원장 0→13, Surface split 2차 목적지 축소, 계수 3종·`grep -cE` 교정. `AUDIT_DONE fixes=12`.
+- 열린 것: 이전 CURRENT_STATE 「13=13 재실측」은 파일과 불일치로 superseded. A5a 1/91은 보고만.
+- 다음: 오케스트레이터 마감.
+
+## 2026-08-27 — 웨이브 27 F3 gitlab (B2a·E2, 정본)
+- 한 일: 본문 한정 13→18, 원장 10→18, hex·§9·9999 목적지 교정, §13/A5a D2a 무식별. `AUDIT_DONE fixes=14`.
+- 열린 것: 형제 gaudiy·gaudiolab 삭제 행 식별자 잔존(범위 밖). 이전 fixes=5 기록은 파일과 불일치로 superseded.
+- 다음: 오케스트레이터 마감.
+
+## 2026-08-27 — 웨이브 27 F3 gaudiy 재실측 (B2a·E2)
+- 한 일: Family·Assets·Governance 한정 + Semantic constraint, 원장 19→22, §13 D2a 무식별, 1440px 2차 목적지. `AUDIT_DONE fixes=10`.
+- 열린 것: B1 sibling `1440px` 본문 사실화는 미수정. 형제 gaudiolab·gitlab 삭제 행에 식별자 잔존.
+- 다음: 오케스트레이터 마감.
+
+## 2026-08-27 — 웨이브 27 F3 gaudiolab 재실측 (B2a·E2)
+- 한 일: 본문 한정 17→21, 원장 21=21, live-extract 2차 목적지 철회, B3 2회 과대 철회, §13 D2a 무식별. `AUDIT_DONE fixes=12`.
+- 열린 것: 형제 gaudiy·gitlab 삭제 행에 식별자 잔존(이 감사 범위 밖).
+- 다음: 오케스트레이터 마감.
+
+## 2026-08-27 — 웨이브 27 F3 genie 착지 (B2a·E2)
+- 한 일: License 198·gloss 438 한정, 원장 18→23, A5 D2a 무식별, 로그 §3/§10·단어 수 6,202. `AUDIT_DONE fixes=8`. SHA `2e816085…`.
+- 열린 것: 게이트 7/144. 발행 카피 손실 안 보임. 형제 4브랜드 삭제 행은 감사 시점 무식별.
+- 다음: 오케스트레이터 마감.
+
+## 2026-08-27 — 웨이브 27 F3 gitlab (B2a·E2)
+- 한 일: Status Badge 그룹핑 한정, Scope 거짓 포인터 삭제, derived 원장 17→18, 로그 hex 목적지·B2a 18회 교정. `AUDIT_DONE fixes=5`.
+- 열린 것: 웨이브 27 F3 5기 감사 완료(gangnamunni·gaudiolab·gaudiy·genie·gitlab).
+- 다음: 오케스트레이터 마감.
+
+## 2026-08-27 — 웨이브 27 F3 genie 완료 (B2a·E2)
+- 한 일: License 198·gloss 438 한정, 원장 18→23, A5 D2a 무식별, 로그 목적지·F2·단어 수 동기화. `AUDIT_DONE fixes=8`.
+- 열린 것: 발행 카피 손실 안 보임(게이트 7/144). B1 sibling 승격 없음.
+- 다음: 오케스트레이터 마감. gitlab이 남으면 그쪽.
+
+## 2026-08-27 — 웨이브 27 F3 gaudiolab 완료 (B2a·E2)
+- 한 일: 한정 4문장+responsive 범위, 원장 17→21, live-extract·B3·D2a 로그 정정. `AUDIT_DONE fixes=10`.
+- 열린 것: 발행 라틴 손실 안 보임(게이트 6/201). 같은 웨이브는 gitlab이 남으면 그쪽.
+- 다음: 오케스트레이터 마감.
+
+## 2026-08-27 — 웨이브 27 F3 gangnamunni 재실측 (B2a·E2)
+- 한 일: 본문 한정 13=원장 13 재확인. Surface split 전문은 DESIGN 0인데 로그가 2차 목적지로 적혀 있어 둘째 절만 dual로 좁힘. `grep -cE` 원장을 `grep -oF`로 교체. `AUDIT_DONE fixes=12`.
+- 열린 것: 웨이브 27 F3 남은 gaudiolab·gitlab.
+- 다음: 남은 2브랜드 F3.
+
+## 2026-08-27 — 웨이브 27 F3 genie (B2a·E2)
+- 한 일: License 행 한정, derived 원장 18→22, A5 삭제 행 무식별, F1/F2 동기화. `AUDIT_DONE fixes=7`.
+- 열린 것: 웨이브 27 F3 남은 gaudiolab·gitlab.
+- 다음: 남은 2브랜드 F3.
+
+## 2026-08-27 — 웨이브 27 F3 gaudiy (B2a·E2)
+- 한 일: Family·Assets·Governance 한정 3, derived 원장 19→22, §13/Omission 무식별(D2a·E2d), sibling 1440px 2차 목적지 원장 교정. `AUDIT_DONE fixes=10`.
+- 열린 것: 본문 1440px 측정폭은 B1(범위 밖, 미수정). gaudiolab·gitlab 로그 삭제 행이 같은 D2a 형태.
+- 다음: 웨이브 27 나머지 F3(gaudiolab·genie·gitlab).
+
+## 2026-08-27 — 웨이브 27 F3 gangnamunni (B2a·E2)
+- 한 일: 산출물·원본만 대조해 B2a 3문장 한정, provenance derived 절 13행 신설, 원장/로그 계수 3쌍 교정. `AUDIT_DONE fixes=10`.
+- 열린 것: 웨이브 27 F3 남은 gaudiolab·genie·gitlab.
+- 다음: 남은 3브랜드 F3.
+
+## 2026-08-27 — 웨이브 27 F3 gaudiolab (B2a·E2)
+- 한 일: 한정 4문장+responsive 범위, 원장 17→21, live-extract·B3·D2a 로그 정정. `AUDIT_DONE fixes=10`.
+- 열린 것: 같은 웨이브 F3 잔여 4기. 발행 라틴 손실은 안 보임(6/201 바늘).
+- 다음: gangnamunni·gaudiy·genie·gitlab F3.
+
+## 2026-08-27 (grok) — 웨이브 27 F3 gaudiolab
+- 한 일: B2a 한정 4+1, derived 원장 17→21, live-extract/B3 로그 과대 주장 철회, §13 삭제 행 무식별. `AUDIT_DONE fixes=11`.
+- 열린 것: gaudiy·gitlab D2a(및 gitlab E2d)는 해당 F3 몫. 카탈로그 채택 아님.
+- 다음: 웨이브 27 나머지 F3(gangnamunni·gaudiy·genie·gitlab).
+
 ## 2026-08-27 (opus5) — main CI red 수리, Dependabot 폐지
 - 한 일: `ee445abc`가 테스트가 경로로 읽는 `reports/`를 untrack해 클린 체크아웃만 실패하던 것을 수리 — `reports/.gitignore`(`/*`+negation 115) 신설, `GATE_BOUND`를 파생으로 교체(`--sync-ignore`), 395파일 재추적, custody 테스트 신설. 워크트리 시뮬에서 137 failed → 0. `.github/dependabot.yml` 삭제 + PR 16건 close.
 - 열린 것: 스위트 중 `npm run build`가 추적 산출물을 덮어쓰는 기존 오염(컨트롤에서도 재현)과 `readiness-generator` 15s 타임아웃 여유. `.gitignore` negation 무효는 원래부터였고 `3b14d6b1`의 `add -f`가 그 증상이었다.

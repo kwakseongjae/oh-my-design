@@ -8,7 +8,7 @@
 
 강남언니 — carried in this contract as `Gangnamunni (강남언니)`, the Latin transliteration beside the Korean name rather than in place of it — is a Korean consumer service for finding and comparing medical-procedure information, hospitals, and event prices. This record states that description as widely documented public knowledge about the service rather than as a Gangnamunni statement quoted here; the color, type, geometry, and component values in this contract come from the live captures named below.
 
-This contract covers the two current public consumer-product web surfaces this record inspected on 2026-07-13: the home surface `https://www.gangnamunni.com/` and the events surface `https://www.gangnamunni.com/events`. A third surface was inspected on the same date, the official post at `https://blog.gangnamunni.com/post/welchis/`, and this contract does not treat it as a consumer-product surface; the source classifies it as documentation context. It does not treat either consumer surface as a proxy for the native app or for the Welchis PC back office.
+This contract covers the two current public consumer-product web surfaces this record inspected on 2026-07-13: the home surface `https://www.gangnamunni.com/` and the events surface `https://www.gangnamunni.com/events`. A third surface was inspected on the same date, the official post at `https://blog.gangnamunni.com/post/welchis/`, and this contract does not treat it as a consumer-product surface; the source classifies it as documentation context. It does not treat either consumer surface as a proxy for the native app or for the Welchis PC back office. That proxy refusal is a derived editorial implementation inference from the verified surfaces; it is not Gangnamunni-authored or a separately published UI specification.
 
 The official team describes Cell as the system for the consumer app across iOS, Android, and mobile web, while Welchis is a separate PC back-office system; the same official account separates the two because their users and interaction patterns differ. The company's design writing states a mission to make better medical services accessible to anyone and describes customer perspective as central to product work.
 
@@ -72,7 +72,7 @@ These avoidances are a derived editorial implementation inference from the verif
 <!-- design-md:claim foundations kind=rules-or-constraints lang=en -->
 ### Semantic color
 
-The five values below are current computed observations from the captured consumer-product surfaces, each recorded with the element it was read from. The role names are this contract's naming of those observations rather than published Gangnamunni role names.
+The five values below are current computed observations from the captured consumer-product surfaces, each recorded with the element it was read from. The role names are this contract's naming of those observations rather than published Gangnamunni role names; that naming is a derived editorial implementation inference from the verified surfaces, and it is not Gangnamunni-authored or a separately published UI specification.
 
 - **Canvas** (`#ffffff`): captured home feature-card action.
 - **Foreground** (`#131517`): captured home outline CTA and filter chip.
@@ -233,7 +233,7 @@ The three principles named above and the exclamation-mark permission are publish
 ### Terminology
 
 - `강남언니` is the product name. Where a Latin form is needed, this contract writes `Gangnamunni (강남언니)`, beside the Korean name rather than replacing it.
-- `Cell` names the design system for the consumer app across iOS, Android, and mobile web. `Welchis` names the separate PC back-office system. Do not use either name for the other's surfaces.
+- `Cell` names the design system for the consumer app across iOS, Android, and mobile web. `Welchis` names the separate PC back-office system. Do not use either name for the other's surfaces. That cross-name rule is a derived editorial implementation inference from the verified surfaces; it is not Gangnamunni-authored or a separately published UI specification. The two names themselves are published by the design team.
 
 <!-- design-md:section governance -->
 ## 7. Governance

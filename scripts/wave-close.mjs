@@ -12,7 +12,8 @@
  *   1. mirror drift   web/references vs design-md must be byte-identical
  *   2. process leak   migration vocabulary must not sit in portable bodies
  *   3. neon sync      serving replica catches up (fails closed without a credential)
- *   4. reclaim        finished work stops holding disk
+ *   4. done ledger    every migrated brand is recorded in DONE.txt
+ *   5. reclaim        finished work stops holding disk
  *
  *   node scripts/wave-close.mjs          # credential from .env.local or the env
  *   node scripts/wave-close.mjs --dry-run
@@ -59,6 +60,11 @@ const results = [
     notConfigured: 2,
     notConfiguredNote: "자격증명 없음 — 서빙 복제가 뒤처진 채로 남는다. .env.local에 DATABASE_URL을 넣어라",
   }),
+  // The wave runner reads migrated/DONE.txt to refuse ids that already passed.
+  // Its header asks for an append at wave close, which left the append to a
+  // person — and for six waves nobody did it. A wave that closes without
+  // recording itself is exactly what this step exists to catch.
+  step("done-ledger", [join(ROOT, "scripts", "check-done-ledger.mjs")]),
   step("reclaim", [join(ROOT, "scripts", "reclaim-disk.mjs"), "--run"], { optional: true }),
 ];
 

@@ -124,7 +124,7 @@ Every claim below is sourced from the single `home` surface (`https://www.genie.
 
 ## Derived-inference ledger (B2 / B2a)
 
-Every passage in the portable `DESIGN.md` that carries the derived-editorial qualification. The qualification itself stays in the body; this table is an index, not its home.
+Every passage in the portable `DESIGN.md` that carries the derived-editorial qualification. The qualification itself stays in the body; this table is an index, not its home. Measured against `DESIGN.md` with `grep -o 'derived editorial implementation inference' … | wc -l` (file-level, not `grep -c`): **23**. This table has **23** rows (E1 1:1). Narrower was FAIL — the prior 18-row index omitted Semantic color, the Elevation Ring-scope reading, Assets, Font-evidence License, and the tagline-gloss reading.
 
 | Portable location | Qualified material |
 |---|---|
@@ -137,12 +137,17 @@ Every passage in the portable `DESIGN.md` that carries the derived-editorial qua
 | Experience — Principles | All seven §12 principles |
 | Experience — Application rules | The grouping of both Do lists as application rules, and their rationales |
 | Experience — Avoid | The rationales in both Don't lists, and the scope-boundary prohibition |
+| Foundations — Semantic color | The characterizing phrases attached to three roles |
 | Foundations — Spacing | The reading of the compressed low end as rationed whitespace |
-| Foundations — Elevation | The whole shadow-philosophy paragraph |
+| Foundations — Elevation (Ring) | Reading the Ring row as a surface-level statement rather than a per-control treatment |
+| Foundations — Elevation (philosophy) | The whole shadow-philosophy paragraph |
 | Foundations — Motion | Durations, forbidden-motion rule, signature motions, and reduced-motion behavior, none of which has a motion sample behind it |
+| Typography — Font evidence / License | Treating `dotum` as a platform-supplied Korean Gothic face, not a Genie brand asset |
 | Typography — Family | The reading of `dotum` as chosen for small-size legibility and as the foundation of Korean-portal density |
 | Typography — Type rules | The four §3 principles, separated from the observable facts of the scale |
+| Typography — Assets | Reading album artwork as first-party catalog content |
 | Components — Surface state contract | The ten-row §14 contract read as this surface's state contract |
 | Components — How applicability is decided here | Every Reason cell in every per-component table |
 | Layout & Platforms | The Korean-portal column reading and the density-first whitespace policy |
-| Content & Locales | The voice reading, the register table, and the forbidden-register rule |
+| Content & Locales — tagline gloss | Reading the source's English gloss as a reader aid that never replaces the Korean label |
+| Content & Locales — voice / register | The voice reading, the register table, and the forbidden-register rule |

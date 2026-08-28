@@ -43,7 +43,7 @@ Portable Core: **pass** (`scripts/design-md-core.cjs` `evaluatePortableCore` →
 | §11 Brand Narrative 3문단 | 옮김 → `Experience` → `Scope` 4번째 문단 | 2018 창업, Tokyo, 石川裕也 (Yuya Ishikawa, CEO), Gaudiy Fanlink, ファン国家の創造, Sony Group + Bandai Namco Holdings, 松竹 (Shochiku) / 東映アニメーション (Toei Animation) / 東宝 (Toho), 2025 Pre-Series C 전부 보존. 증거 등급은 원본 닫는 주석대로 분할했다 — 파트너·펀딩은 라이브 news card 관측, 창업연도·CEO는 원본 자신이 "widely documented public facts … not directly quoted from a verified Gaudiy statement in this turn"이라 밝힌 계열. 해석(백커 로스터를 core proof point로, 모노크롬을 거부의 가시적 형태로, 비전 문구를 co-creation 재정의로)에 B2a 완전형 한정 인접. |
 | §11 서사가 토큰이 아니라는 경계 | 옮김 → `Experience` → `Scope` (문단 끝) | E1: standalone 해석에 필요한 경계는 본문에. |
 | §12 Principles 5항 (+ 각 UI implication) | 옮김 → `Experience` → `Principles` | 실측 legacy 5 = 산출 5. B2a 완전형 한정을 머리에 배치하고, 원본 주석이 editorial이라 지목한 "monochrome as conviction"을 그 문장에서 이름으로 지목했다. |
-| §13 Personas 3인 (佐藤 美咲 34 東京 / 田中 蓮 27 大阪 / Daniel Park 31 Tokyo) | **삭제 (sidecar 재수록도 안 함)** | D2. 원본 §13 머리글과 닫는 주석이 둘 다 fictional archetypes이며 이름은 illustrative라고 명시. 산출 `DESIGN.md`에서 세 이름·나이·도시 각 0회이고, 전기 문구(`licensing manager`, `anime studio`, `long-running franchise`)도 세 파일 어디에도 0회. 이름은 provenance `Omission ledger` 한 행과 이 로그 이 행에만 **삭제 대상 식별자로** 각 1회 남아 있다. `Experience` → `Audience`에는 원본이 스스로 publicly observable audiences라 부른 그룹(IP·엔터 권리자 / 일본 팬 커뮤니티 / 채용 대상 엔지니어·디자이너)만 남겼고, 그 그룹 읽기에도 B2a 완전형 한정을 붙였다. |
+| §13 Personas — fictional personas 3인, §13, D2 삭제 | **삭제 (sidecar 재수록도 안 함)** | D2·D2a. 원본 §13 머리글과 닫는 주석이 둘 다 fictional archetypes이며 이름은 illustrative라고 명시. 이름·나이·도시·전기는 산출 3파일에 재수록하지 않는다. `Experience` → `Audience`에는 원본이 스스로 publicly observable audiences라 부른 그룹(IP·엔터 권리자 / 일본 팬 커뮤니티 / 채용 대상 엔지니어·디자이너)만 남겼고, 그 그룹 읽기에도 B2a 완전형 한정을 붙였다. |
 | §14 States 9행 | 옮김 → `Components & States` → `State record` **+ 컴포넌트별 applicability 사유** | 이중 목적지(둘 다 portable 본문). 실측 legacy 9행 = 산출 9행, 값·카피 그대로("エラーが発生しました", "必須" 포함). 같은 내용을 근거로 Outline CTA의 loading(인라인 진행·스피너 오버레이 없음)·error(charcoal 인라인 메시지 + 필드 단위 검증)·success(간결한 인라인 확인 + inversion) 사유와, 세 컴포넌트의 disabled 사유(reduced-opacity + Faint Grey `#656565`)를 채웠다. graph 위임 없음. |
 | §14의 값 없는 서술(reduced-opacity, flat pulse, glitch/cut) | 옮김 → `State record` · 이름만 → `Governance` → `Recorded unresolved decisions` | 이중 목적지. 서술은 본문에 남기고, 값이 없다는 사실만 Governance에 값 없이 이름으로. 그럴듯한 값으로 채우지 않음. |
 | §15 Durations 3행 (`motion-fast` 120ms / `motion-standard` 200ms / `motion-slow` 320ms) | 옮김 → `Foundations` → `Motion` | 실측 3행 = 3행. 규칙집 제약 5의 삭제 범위는 **무출처 커브뿐**이고 duration은 브랜드마다 다르므로 보존. sibling이 transition/animation/duration/easing 샘플을 0건 기록했으므로 증거 등급 한정(B2a 완전형)을 이 절 머리에 붙였다. |
@@ -53,15 +53,15 @@ Portable Core: **pass** (`scripts/design-md-core.cjs` `evaluatePortableCore` →
 | B3 — 미해상 motion 승격 조건 | **신규 작성 → `Foundations` → `Motion` + `Governance`** | 원본에는 승격 조건 문장이 없다. 규칙집 B3이 요구하는 **다섯 증거 종류 전부**(transition properties · animation name · duration · easing · reduced-motion behavior)와 「컴포넌트별 computed 관측 후에만」 게이트를 본문에 적었다. "공식 출처로 검증될 때까지" 류 약화 문구 없음(실측 0회). E2c 대조: 다섯 종류 전문이 산출 `DESIGN.md`에 **2회**(`Foundations` → `Motion` 1회, `Governance` → 첫 unresolved 항목 1회), `provenance.md`에 0회임을 `grep -o … \| wc -l`로 파일별 확인한 뒤 이 행을 적었다. |
 | Footer 블록 (**Verified** / Tier 1 2개 URL / Tier 2 2개 시도 / Conflicts unresolved) | 분리 → provenance `Freshness`·`Sources` | freshness·출처 원장(E1). Tier 1 두 URL의 원문 범위 주석("corporate, live computed style" / "recruit special site, live computed style")과 Tier 2 결과 문자열("No designs found for 'gaudiy'"), 두-표면 variance 문장까지 verbatim 보존. |
 | 닫는 HTML 주석 (Sources — Philosophy Layer) | 분리 → provenance `Evidence class` **+ 옮김 → 본문의 증거 등급 한정** | 이중 목적지. 주석의 다섯 계층 구분(§1–9 live-inspect / §10 verbatim voice / §11 서사와 그 등급 분할 / §13 fictional / interpretive claims)은 provenance에 보존하고, 그 구분이 만들어 내는 한정은 Scope·Motion·State record·Components에 문장으로 있다. |
-| Sibling `.verification.md` — Proof 머리말·method·raw samples 20건·Conflict matrix 4행·Notes 3항 | 분리 → provenance | 증거 등급으로만 채택. **portable 토큰 승격 0건, 구조 분류 승격 0건**(B1). 실측: sibling raw samples 20건 = provenance `Raw samples` 20행; conflict matrix 4행 = 4행; Notes 3항(JP country / logo 995B / Gaudi-Figma 제외)은 provenance의 `Country note`·`Logo decision`·`Excluded third-party source` 세 절로. sibling 전용 값 `80px`·`100px`·`136px`·`30px`은 산출 `DESIGN.md`에서 각 0회이고 provenance에만 있다. |
+| Sibling `.verification.md` — Proof 머리말·method·raw samples 20건·Conflict matrix 4행·Notes 3항 | 분리 → provenance **+ 1440px 밴드 폭은 옮김 → portable `Layout & Platforms` → `Breakpoints`** | 증거 등급으로만 채택한 값이 대부분. 실측: sibling raw samples 20건 = provenance `Raw samples` 20행; conflict matrix 4행 = 4행; Notes 3항(JP country / logo 995B / Gaudi-Figma 제외)은 provenance의 `Country note`·`Logo decision`·`Excluded third-party source` 세 절로. sibling 전용 값 `80px`·`100px`·`136px`·`30px`은 산출 `DESIGN.md`에서 각 0회이고 provenance에만 있다. **예외(E2a):** sibling `1440×4474px` 밴드 폭 중 `1440px`는 본문 Breakpoints에 "the grey band measures 1440px across"로 **1회** 있다(`grep -oF 'measures 1440px' DESIGN.md`). 레거시 본문은 `~4474px`와 Desktop 범위 `1024-1440px`만 가진다. |
 | Sibling 전용 발행 문자열 4건 | 분리 → provenance (바이트 그대로) | A5는 sibling이 측정 대상으로 명기한 문자열에도 걸리므로 `Gaudiy Groupが松竹、東映アニメーション、東宝より追加調達…` · `デザインディレクター` · `Corporate IT` · `株式会社Gaudiy Group｜ファンと共に、時代を進める。` 4건 모두 바이트 그대로 보관. legacy 본문이 스스로 담은 라벨만 portable 본문에 올렸다. |
 | Sibling이 스스로 제외한 제3자 문자열 `Gaudi - Design System` | 분리 → provenance `Excluded third-party source` | A5a: 원본이 스스로 제외한 제3자 문자열은 바늘이 아니다. 제외 결정 자체는 증거 이력이므로 원장에 보존. |
 
 ## 최종 패스 기록
 
-**패스 1 — B2a 스캔.** 본문 완성 후 `DESIGN.md` 전체를 처음부터 다시 읽고, Principles 안팎을 불문하고 인과·해석·판단 문장마다 근거 class를 자문했다. 그 결과 아홉 자리를 고쳤다: (1) Scope 첫 문단의 Fanlink 제품 서술을 서사 문단 소속으로 명시, (2) Scope 3문단 한정에 emphasis-by-inversion·separation-by-bands·greys-as-ladder 세 독해를 이름으로 추가, (3) Scope 4문단의 「are editorial readings」 불완전 한정을 완전형으로 승격하고 co-creation 독해를 추가, (4) `Semantic color`에 역할 독해용 완전 한정 신설, (5) Font evidence의 `Official distributed asset` 행을 `Record scope`로 교체(원본에 `license`·`distributed`·`asset` 각 0회 — 원본이 세우지 않은 도메인을 미해상 gap으로 열거하지 않기 위해, D1a), (6) `Type roles` 한정에 hierarchy-signal·never-swap 독해 추가, (7) `Assets`에서 원본에 0회인 `photography` 제거, (8) `How to read this section` 한정을 role description과 일본어 라벨 옆 영문 독해까지 확장, (9) `Breakpoints` 한정의 범위를 touch targets·collapsing·image behavior로 확장하고 「generous tappable blocks」류를 원본 귀속 표현으로 되돌림. 최종 실측: 완전형 한정 **19자리 / 18개 표제**, 불완전 한정 0건(`grep -n "editorial reading"` 0건). 색인은 provenance `Derived editorial inventory` 19행에 있고 본문 실측과 같다.
+**패스 1 — B2a 스캔.** 본문 완성 후 `DESIGN.md` 전체를 처음부터 다시 읽고, Principles 안팎을 불문하고 인과·해석·판단 문장마다 근거 class를 자문했다. 그 결과 아홉 자리를 고쳤다: (1) Scope 첫 문단의 Fanlink 제품 서술을 서사 문단 소속으로 명시, (2) Scope 3문단 한정에 emphasis-by-inversion·separation-by-bands·greys-as-ladder 세 독해를 이름으로 추가, (3) Scope 4문단의 「are editorial readings」 불완전 한정을 완전형으로 승격하고 co-creation 독해를 추가, (4) `Semantic color`에 역할 독해용 완전 한정 신설, (5) Font evidence의 `Official distributed asset` 행을 `Record scope`로 교체(원본에 `license`·`distributed`·`asset` 각 0회 — 원본이 세우지 않은 도메인을 미해상 gap으로 열거하지 않기 위해, D1a), (6) `Type roles` 한정에 hierarchy-signal·never-swap 독해 추가, (7) `Assets`에서 원본에 0회인 `photography` 제거, (8) `How to read this section` 한정을 role description과 일본어 라벨 옆 영문 독해까지 확장, (9) `Breakpoints` 한정의 범위를 touch targets·collapsing·image behavior로 확장하고 「generous tappable blocks」류를 원본 귀속 표현으로 되돌림. 최종 실측(F3 후): 완전형 한정 **22자리 / 21개 표제**, 불완전 한정 0건(`grep -oF 'editorial reading' DESIGN.md` 0). 색인은 provenance `Derived editorial inventory` 22행에 있고 본문 실측과 같다. F3가 Family·Assets·Governance에 인접 완전형 3건을 신설하고 Semantic color 한정을 constraint까지 확장했다.
 
-**패스 2 — E2 대조.** 위 표의 각 행을 쓰기 전에 값이 실제로 어느 파일 어느 절에 있는지 `grep -o … | wc -l`(파일별)과 `awk` 블록 카운트로 확인했다. 기억으로 쓴 행은 없다. 이중 목적지는 두 목적지를 모두 적었다(logo, `tokens.note`, shadow, spacing/radius, §14 상태, §14 값 없는 서술, 닫는 주석). 준수 주장은 본문 실재를 확인한 것만 적었다 — B3 다섯 종류 전문 2회, primitive type 3종 동수, lineHeight 비율 2종, §14 9행, voice sample 3건, Do 8→9·Don't 8·Principles 5·traits 8·tone 5·breakpoint 3·elevation 4·type role 4.
+**패스 2 — E2 대조.** 위 표의 각 행을 쓰기 전에 값이 실제로 어느 파일 어느 절에 있는지 `grep -o … | wc -l`(파일별)과 `awk` 블록 카운트로 확인했다. 기억으로 쓴 행은 없다. 이중 목적지는 두 목적지를 모두 적었다(logo, `tokens.note`, shadow, spacing/radius, §14 상태, §14 값 없는 서술, 닫는 주석, sibling `1440px` 밴드 폭). 준수 주장은 본문 실재를 확인한 것만 적었다 — B3 다섯 종류 전문 2회, primitive type 3종 동수, lineHeight 비율 2종, §14 9행, voice sample 3건, Do 8→9·Don't 8·Principles 5·traits 8·tone 5·breakpoint 3·elevation 4·type role 4, B2a 완전형 22/22.
 
 ## 값 보존 실측 (산출 3파일 대조)
 
@@ -95,3 +95,55 @@ Portable Core: **pass** (`scripts/design-md-core.cjs` `evaluatePortableCore` →
 이 PASS를 적합성 증거로 인용하지 않는다. 이 게이트는 A5 손실·E1 좁은 원장·E2 허위 목적지·B1 분류 승격을 통과시킨 전력이 있고, 이 브랜드에서는 인용 문자열의 11.8%만 기계 대조했다. 나머지 88.2%에 대한 판단 근거는 위 A5a 손 스윕 행(추출 38 / 미생존 0 / 처리 0)이다.
 
 DONE migrated=1
+
+## Revision 2026-08-28 (wave27 review)
+
+Rulebook: `docs/design-md-weight/MIGRATION_RULEBOOK.md` **v12**. Trigger: semantic review FAIL 4, re-confirmed by the orchestrator. Four defects only. Token values, component-table structure, other state rows, B2a complete qualifiers, and the derived-inventory 1:1 were not opened. Source `web/references/gaudiy/DESIGN.md` and sibling `.verification.md` were not modified.
+
+`find` confirmed the six files before any count: dest `DESIGN.md` / `provenance.md` / `migration-log.md` / `audit-log.md`, source `DESIGN.md`, sibling `.verification.md`. Counts below are `grep -oF '<needle>' <file>` match counts, file by file. A file that exists and prints no match is 0 for that file.
+
+**1. A1 — restore the §11 Fanlink capability list.** Source `:313` records Gaudiy Fanlink as a fan-community platform that lets IP and entertainment brands run digital fan experiences — fan tokens, digital collectibles, community engagement — on top of blockchain rails. The portable Scope pointer and the narrative paragraph had kept only `digital fan experiences on blockchain rails`. Restored the source clause in both places (Scope first paragraph and Scope narrative). This is a source fact, not a reading, so no new B2a qualifier was attached.
+
+| needle | orig | dest after |
+|---|---:|---:|
+| `fan token` | 1 | 2 |
+| `collectible` | 2 | 2 |
+| `digital collectibles` | 1 | 2 |
+| `community engagement` | 1 | 2 |
+
+Source's second `collectible` is the §13 persona line; that occurrence stays deleted (D2). The two dest hits are the restored §11 clause, once in the Scope pointer and once in the narrative.
+
+**2. A1 / B1 — drop the sibling band-width as a body measurement.** Source has Desktop `1024-1440px` (`:245`) and body height `~4474px` (`:192`). It does not state a band width. Sibling has `1440×4474px full-width band`. The portable Breakpoints sentence had said `the grey band measures 1440px across`. That clause is removed. The Desktop range and `~4474px` stay. Provenance sibling-only row for `1440×4474px` is no longer a dual destination: the sample stays in the ledger.
+
+| needle | orig | sib | dest after | dest carries |
+|---|---:|---:|---:|---|
+| `1440px` | 1 | 0 | 1 | Desktop range `1024-1440px` only |
+| `measures 1440px` | 0 | 0 | 0 | — |
+| `1440×4474px` | 0 | 1 | 0 | provenance 2 (raw sample + sibling-only table) |
+| `~4474px` | 1 | — | 1 | Grid & Container |
+| `80px` / `100px` / `136px` / `30px` | 0 | 1 each | 0 each | provenance only |
+
+The earlier disposition row that treated the sibling band width as a portable Breakpoints destination is **SUPERSEDED** by this revision. Historical `audit-log.md` / this file still mention the old clause; those mentions are the defect record, not a body fact.
+
+**3. D1 — delete the invented mobile-app domain.** Source `mobile app` = 0, sibling 0. Source `Mobile` is the viewport-row name only. The Scope non-proxy list and the Font-evidence Outside-these-captures row had named `a mobile app`. Both names are deleted. The remaining named-outsides are source domains: Fanlink, Tech Blog, Gaudiy AI Lab, Member note, CEO'S note. No negative claim of the form "not a mobile app" was written.
+
+After this edit, dest `DESIGN.md` `a mobile app` = 0 and dest `mobile app` = 0. The earlier 값-보존 D1 row that defended `mobile/app(§8·§11)` is **SUPERSEDED**: those sections do not establish that domain.
+
+**4. C2 — close loading on destination-open controls.** Solid Black Inline CTA and Navigation Item open a destination and commit no operation. Their `error` rows were already `not-applicable` for that role reason; `loading` is now closed on the same criterion. Outline CTA stays `loading | applicable` because `カジュアル面談に申し込む` commits an application.
+
+Dest after, `grep -oF` on `DESIGN.md`:
+
+- `loading | applicable` = 1 (Outline CTA `:242`)
+- `loading | not-applicable` = 3 (Solid CTA `:220`, Round Close `:260`, Nav `:278`)
+- `error | applicable` = 1 (Outline CTA `:243`)
+- `error | not-applicable` = 3 (Solid CTA `:221`, Round Close `:261`, Nav `:279`)
+
+Destination pair (Solid CTA, Nav): loading and error now use the same role test. Round Close was already closed on both. Outline remains the one commit control. State-table rows: `not-applicable` 9 (was 7). How-to-read already stated that destination-open / immediate-dismissal closes operation-outcome; the two loading cells now match that sentence. `motion-slow` dest = 1, still in Foundations → Motion, no longer attached to a destination-open loading reason.
+
+**Line pointers.** dest `DESIGN.md` is still **453** lines (in-place edits, no insert/delete). Re-read every `DESIGN.md:<n>` pointer: audit-log `:174` Family qualifier, `:106` Semantic color qualifier, `:193` Assets qualifier, `:444` Governance qualifier — each still lands on that sentence. provenance and this log have no `DESIGN.md:<n>` pointers.
+
+**B2a 1:1 unchanged.** dest `derived editorial implementation inference` 22 / `not Gaudiy-authored` 22 / `separately published UI specification` 22. provenance derived inventory still 22 data rows. No qualifier was added or rewritten.
+
+**Not changed.** Token values, component-table structure, other state rows, Outline CTA commit opening, B2a sentences, source, sibling.
+
+Post-revision `DESIGN.md` SHA-256: `fa6df78bfcd70ef72ed129f2209256697ac82302fe6d17f54688ca2a4ee21c1f`.

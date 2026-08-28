@@ -25,7 +25,7 @@
 |---|---|---|
 | YAML identity (`id`, `name`, `display_name_kr`, `country`, `category`, `homepage`, `primary_color`) | 분리 → provenance · 옮김 → DESIGN.md | 이중 목적지. Portable 파일에 frontmatter 없음. `name`은 H1 `# Gaudio Lab Design System`. `display_name_kr` `가우디오랩`은 provenance Identity 표와 DESIGN.md `Scope` 첫 문장 양쪽(doc 1회 · provenance 6회 — Identity·sibling 전용 문자열·raw samples·Country sources에 각각). `primary_color` `#00b7ff`도 양쪽. |
 | YAML `logo.type: favicon` / `logo.slug` | 분리 → provenance (**브랜드 자산으로 승격하지 않음**) | Google favicon 프록시 URL. sibling `Country sources` 말미가 이 서비스를 브랜드 소유 출처에서 명시 제외한다. portable Assets에는 "카탈로그의 logo 항목은 3자 favicon 서비스이며 여기서 브랜드 자산으로 제시하지 않는다"는 경계 문장만 남겼다 — `favicon` 문자열은 doc 1회(그 경계 문장)이고 slug URL 자체는 doc 0회 · provenance 1회(`Identity` 표), 그 판단 근거는 provenance `Logo decision`. `type: favicon`은 컴포넌트가 아니라 `logo.type`이므로 A1b primitive type 집계에서 제외. |
-| YAML `verified` / `added` / `omd: 0.1` / `tokens.source: live-extract` / `tokens.extracted` / `components_harvested: true` | 분리 → provenance | freshness·증거 등급 원장(E1). 단 `live-extract`가 무엇을 덮는지(computed color·type·spacing·radius·border·shadow)는 standalone 해석에 필요해 DESIGN.md Foundations `Motion` 머리 문장으로도 남겼다 — 이중 목적지. |
+| YAML `verified` / `added` / `omd: 0.1` / `tokens.source: live-extract` / `tokens.extracted` / `components_harvested: true` | 분리 → provenance | freshness·증거 등급 원장(E1). 토큰 `live-extract` 자체는 provenance `Identity` 1회뿐(DESIGN.md **0** — `grep -o` 실측). Foundations `Motion` 머리 문장은 라이브 인스펙트가 computed color·type·spacing·radius·border·shadow를 덮는다는 범위만 적고 `live-extract` 문자열은 쓰지 않는다. 2차 목적지 철회. |
 | YAML `tokens.note` (긴 문자열) | 분리 → provenance | 원문 그대로 인용 블록. 안의 값(`#00b7ff`, `#111214`, `rgba(0,0,0,0.87)`, 3종 패밀리, shadowless)은 전부 DESIGN.md Foundations·Typography에 별도로 실려 있음을 같은 절에 대조해 적었다. |
 | YAML `tokens.colors` **10키** (`awk`로 `colors:` 블록의 들여쓰기 4칸 키를 세어 10) | 옮김 → Foundations `Semantic color` | brand/action 2 (`primary` `on-primary`) / ink·text 3 (`ink` `muted` `faint`) / surface 3 (`canvas` `surface` `hairline`) / dark 2 (`night` `ocean`) = 10. 네 표의 데이터 행 합계도 10(헤더 4행 제외). §2의 role 이름·설명과 `rgb(...)` 병기 표기까지 `Recorded use` 열에 보존. |
 | §2에 없는 11번째 ink `rgba(0,0,0,0.87)` (frontmatter `colors`에는 없고 §1·§2·§3 본문에만 있음) | 옮김 → Foundations `Semantic color` 별도 행 + Typography rules + Experience `Scope` | doc 5회(Scope 1 · Distinctive traits 1 · Application rules 1 · Semantic color 1 · Typography rules 1). §2가 두 검정을 레이어별로 나눠 둔 것을 병합하지 않고 "keep that split" 문장으로 유지. |
@@ -40,13 +40,13 @@
 | §4 Buttons / Navigation / Cards & Containers / List Items | 옮김 → Components & States | 8개 컴포넌트 레코드. 값(bg/fg/border/radius/padding/height/font/active)은 전부 원문대로. |
 | §9에만 있던 outline 버튼 `transparent` 배경 (legacy 295행, 파일 전체 1회) | **옮김 → Components `Outline (Secondary)`** (A3) | §9 삭제 시 함께 사라질 뻔한 유일한 고유 렌더 필드. §4 Outline 레코드에는 배경이 없었다. 산출 doc 1회. |
 | §9 Quick Color Reference (hex 10개 + `rgba(0,0,0,0.87)`) · Example Component Prompts 4개 · Iteration Guide 6항 | 삭제 | 도구용 재진술·복붙 프롬프트·도구별 workflow는 받을 슬롯이 없다. 삭제 전 §9의 토큰 전량을 나머지 파일과 기계 대조했고 **`transparent` 외 고유값 0건**이었다(§9 토큰 26종 — hex 10 · px 15 · `rgba(0,0,0,0.87)` 1 — 전부 §2–§5에 존재). 위 A3 행이 그 1건의 처분이다. |
-| §14 States **9행** | 옮김 → Components `State record` (+ 컴포넌트별 applicability 사유) | 이중 목적지(둘 다 portable 본문). 9행 값·카피 그대로(산출물 실측 9행). 원본 닫는 주석이 이 절에 출처를 배정하지 않으므로 표 바로 앞에 B2a 완전형 한정을 붙였다. 같은 내용을 근거로 6개 interactive 컴포넌트의 disabled/loading 사유를 채웠다(파란 액션의 opacity 페이드 = disabled, `motion-slow`/`motion-standard` 전환 = loading). graph 위임 없음. |
+| §14 States **9행** | 옮김 → Components `State record` (+ 컴포넌트별 applicability 사유) | 이중 목적지(둘 다 portable 본문). 9행 값·카피 그대로(산출물 실측 9행). 원본 닫는 주석이 이 절에 출처를 배정하지 않으므로 표 바로 앞에 B2a 완전형 한정을 붙였다. disabled는 파란 액션의 opacity 페이드로 6개 interactive에 사유를 채웠다. loading은 Watch the Film만 §15 hero/film reveal 근거로 applicable이고, Header CTA·Hero CTA·Outline·App Launcher·Nav는 커밋 없는 역할이라 not-applicable(웨이브 27 개정). graph 위임 없음. |
 | §14의 `"오류가 발생했습니다"` · `"필수"` | 옮김 → `State record` (바이트 그대로) | A5. 두 문자열은 브랜드 발행 카피가 아니라 **원본이 금지 예시로 쓴 문자열**이지만, §14 본문 보존 의무(A2) 대상이라 원문 그대로 남겼다. 각 doc 1회. |
 | §15 Durations 3행 (`motion-fast` 120ms / `motion-standard` 240ms / `motion-slow` 400ms) | 옮김 → Foundations `Motion` | 3행 그대로. 규칙집의 삭제 범위는 **무출처 커브뿐**이고 duration은 브랜드마다 다르므로 보존. 절 머리에 B2a 완전형 한정. |
 | §15 Easings — 역할 3개와 use | 옮김 → Foundations `Motion` | `ease-enter` / `ease-exit` / `ease-standard`와 각 용도 3행 보존. |
 | §15 Easings — **커브 값 3개** (`cubic-bezier(0.2, 0.6, 0.25, 1)`, `cubic-bezier(0.4, 0.0, 1, 1)`, `cubic-bezier(0.25, 0.1, 0.25, 1)`) | **삭제 → provenance `Omission ledger`에 verbatim 보관** | 무출처 커브. sibling의 method·19 raw samples 어디에도 transition·animation·duration·easing 관측이 없다. 특히 `cubic-bezier(0.4, 0.0, 1, 1)`은 `spec/omd-v0.1.md` 266행 예시 표의 값과 동일하며, 그 파일 259–263행이 스스로 이 커브들을 "비브랜드 구현 기본값"으로 규정하고 reference DESIGN.md로 옮기는 것을 금지한다. 원장 행에 세 값을 그대로 적었으므로 값 자체는 산출물에 살아 있다. |
 | §15 Motion rules 6문장 (functional·composed / Swiper 캐러셀 / hover·press opacity·scale / 밴드 crossfade / no bounce or spring / `prefers-reduced-motion: reduce`) | 옮김 → Foundations `Motion` | 6항 그대로. reduced-motion 계약 포함. |
-| B3 — 미해상 motion 승격 조건 | 신규 작성 → Foundations `Motion` + Governance | 원본에는 승격 조건 문장이 없다. 규칙집 B3이 요구하는 **다섯 증거 종류 전부**(transition properties · animation name · duration · easing · reduced-motion behavior)와 「컴포넌트별 computed 관측 후에만」 게이트, 그리고 부분 확인(커브 하나 / 프레임워크 문서 일치)이 이를 충족하지 못한다는 배제 문장을 본문에 적었다. **E2c 대조:** 이 전문이 산출 `DESIGN.md`에 실제로 2회 존재함을 `grep -o` 로 확인한 뒤 이 행을 적었다(Foundations `Motion` 1회 + Governance `Recorded unresolved decisions` 1회). |
+| B3 — 미해상 motion 승격 조건 | 신규 작성 → Foundations `Motion` + Governance | 원본에는 승격 조건 문장이 없다. 규칙집 B3이 요구하는 **다섯 증거 종류 전부**(transition properties · animation name · duration · easing · reduced-motion behavior)와 「컴포넌트별 computed 관측 후에만」 게이트는 DESIGN.md **2회**(Foundations `Motion` · Governance `Recorded unresolved decisions`). 부분 확인 배제 문장(`partial confirmation`)은 DESIGN.md **1회**(Foundations `Motion`만). 게이트+배제 전문을 2회라고 적지 않는다. |
 | §1 Visual Theme & Atmosphere — 표면 기술·색·타입·기하 | 옮김 → Experience `Scope` 2문단 | 값은 전부 보존하고 표면 3종에 붙여 뒀다. |
 | §1 인과·해석 문장(연구소가 소비자 제품에서 절제를 배웠다 / "blue means act" / engineered and trustworthy / 하이브리드 스택이 engineering-led의 tell / refusal of elevation / science-forward가 콘텐츠에 말하게 한다) | 옮김 → Experience `Scope` 3문단, 한정 부착 | B2a 완전형 인접 배치. 값 손실 없음 — 같은 관측(색·폰트·radius·shadow)은 Foundations·Typography·Components에 값으로 남아 있다. 원본 닫는 주석이 "one color, one action"·flat-and-fast·"sound is science first"를 스스로 editorial reading으로 지목한 사실도 그 문단에 적었다. |
 | §1 Key Characteristics **8항** | 옮김 → Experience `Distinctive traits` | 산출물 실측 8항. 항목 안에 든 해석(rationed, deliberate duality, MUI softness)에 B2a 완전형 한정을 머리에 배치. |
@@ -57,9 +57,9 @@
 | §10 Voice & Tone — 성격 규정 문단 + Context/Tone **5행** 표 | 옮김 → Content & Locales | 표 5행(헤더 제외) 그대로. voice 해석(precise·wonder-tinged·quietly authoritative, KO의 "warmer, almost poetic", evidence-over-adjectives)에 B2a 완전형 한정을 표 바로 앞에 붙였다. |
 | §10 Voice samples **3건** (verbatim) | 옮김 → Content & Locales | A5: 3건 전부 바이트 그대로. 한국어 원문이 라벨이고 영문 병기는 읽기 보조라는 경계를 목록 머리에 적었다. `*(verified live 2026-07-02, /company/brand)*` 류 표기만 provenance `Freshness`·`Surfaces`로 분리. |
 | §10 Forbidden register | 옮김 → Content & Locales | 원문 그대로(`"magic"` 포함). |
-| §11 Brand Narrative | 옮김 → Experience `Scope` 4문단 (+ provenance `Evidence class`) | 이중 목적지. Seoul 본사, 10주년 2025, 창업 circa 2015, 미션 전문, 태그라인, "Sound is science, from smartphone to movie theaters", "over 40 audio experts including 9 Ph.D", 제품 6종(GSA / Gaudio Sing / GTS·Gaudio Text Sync / LM1 / Gaudio Studio Pro / Gaudio Developers), 50M daily users, 16.9 billion KRW (~$13M) Series B, 119 IP, 35 partners, Genie Music·Melon·KT Alpha Shopping·META48, CES Innovation Awards 2026 4년 연속까지 전부 보존. **증거 등급을 원본 주석대로 3분할해 본문에 적었다** — 자사 페이지 인용 / 창업연도는 10주년에서 파생한 추론 / Seoul HQ는 "widely documented public knowledge". |
+| §11 Brand Narrative | 옮김 → Experience `Scope` 4문단 (+ provenance `Evidence class`) | 이중 목적지. Seoul 본사, **spun out of academic sound research**, 10주년 2025, 창업 circa 2015, 미션 전문, 태그라인, "Sound is science, from smartphone to movie theaters", "over 40 audio experts including 9 Ph.D", 제품 6종(GSA / Gaudio Sing / GTS·Gaudio Text Sync / LM1 / Gaudio Studio Pro / Gaudio Developers), 50M daily users, 16.9 billion KRW (~$13M) Series B, 119 IP, 35 partners, Genie Music·Melon·KT Alpha Shopping·META48, CES Innovation Awards 2026 4년 연속까지 전부 보존. **증거 등급을 원본 주석대로 3분할해 본문에 적었다** — 자사 페이지 인용 / 창업연도는 10주년에서 파생한 추론 / Seoul HQ는 "widely documented public knowledge". |
 | §12 Principles **5항** (+ 각 UI implication) | 옮김 → Experience `Principles` | 산출물 실측 5항. B2a 완전형 한정을 머리에 배치하고, 원본 주석이 editorial이라 지목한 "one color, one action"과 "sound is science first"를 그 한정 문장에서 이름으로 지목했다. |
-| §13 Personas **3인** (정민호 34 서울 / Sarah Nguyen 29 Los Angeles / 김하윤 41 판교) | **삭제 (sidecar 재수록도 안 함)** | D2. 원본 §13 머리글과 닫는 주석이 둘 다 fictional archetypes이며 이름은 illustrative라고 명시. 이름·나이·도시·전기를 portable 본문에서 전부 삭제했다(산출 `DESIGN.md`에서 세 이름 각 0회, `provenance.md`에서도 각 0회 — 실측). 이름·나이·도시는 **삭제 대상 식별자로 이 로그 행에만** 1회 남아 있다. Experience `Audience`에는 원본이 "publicly observable Gaudio Lab audiences"로 적은 그룹(audio/ML engineers · media & broadcast partners · consumer product teams)만 그룹 단위로 남겼고, 그 그룹을 이 제품의 audience로 읽는 행위에 B2a 한정을 붙였다. |
+| §13 Personas — fictional personas 3인, §13, D2 삭제 | **삭제 (sidecar 재수록도 안 함)** | D2·D2a. 원본 §13 머리글과 닫는 주석이 둘 다 fictional archetypes이며 이름은 illustrative라고 명시. 이름·나이·도시·전기는 승격도 원장 재수록도 하지 않는다(무식별 표기). Experience `Audience`에는 원본이 "publicly observable Gaudio Lab audiences"로 적은 그룹(audio/ML engineers · media & broadcast partners · consumer product teams)만 그룹 단위로 남겼고, 그 그룹을 이 제품의 audience로 읽는 행위에 B2a 한정을 붙였다. |
 | 하단 footer 블록 (**Verified** / Tier 1 3개 URL / Tier 2 2개 시도 / Conflicts unresolved) | 분리 → provenance | freshness·출처 원장(E1). Tier 1 3개 URL과 각 URL의 원문 범위 주석, Tier 2 두 시도의 결과 문자열(`0 DESIGN.md files — empty`, `not listed — generic trending grid only`)까지 provenance `Sources`에 보존. |
 | 닫는 HTML 주석 (Philosophy Layer 출처 배정) | 분리 → provenance `Evidence class` · 옮김 → DESIGN.md 각 절의 한정 | 이중 목적지. 이 주석이 이 마이그레이션의 뼈대다 — §1–9 / §10 / §11 / §13에는 출처를 배정하고 §14·§15에는 배정하지 않는다는 사실 자체를 provenance 표로 옮기고, 그 결과인 한정 문장을 해당 절 인접에 배치했다. |
 | Sibling `.verification.md` — Proof 머리말·method·**19 raw samples**·Tier 2 cross-check·Conflict matrix 5행·Country sources 4개 | 분리 → provenance | 증거 등급으로만 채택. **portable 토큰 승격 0건, 구조 분류 승격 0건**(B1). sibling 전용 값 `rgb(238,238,238)` · `rgba(255,255,255,0.2)` · `50%` · `0.15008px` · `Suit` · nav의 `rgb(0,0,0)`/`rgb(255,255,255)` 2면 판독 · `studio.gaudiolab.io`는 산출 `DESIGN.md`에서 각각 0회임을 실측했다. raw samples 19행은 provenance에 19행으로 보존(실측 19 = 19). |
@@ -70,24 +70,24 @@
 
 원본에는 컴포넌트별 상태 관측이 없다. 따라서 applicability는 **역할 의미**로만 판정했고, 미해상 시각 treatment는 값만 생략했다(C1). `not captured` / `not named`를 사유로 쓴 행은 0건이다.
 
-| 컴포넌트 | Kind | error / success | 의미상 사유 |
+| 컴포넌트 | Kind | loading / error / success | 의미상 사유 |
 |---|---|---|---|
-| Header CTA (Primary) | interactive | not-applicable | 연락 표면으로 데려가는 진입점이지 스스로 커밋하는 연산이 없다. §14의 form-validation / submitted는 그 표면의 필드가 보고한다. |
-| Hero CTA (Primary) | interactive | not-applicable | 같은 역할. |
-| Outline (Secondary) | interactive | not-applicable | 제품 목록으로 가는 목적지 링크. 요청 실패는 목록이 보고한다. |
-| Watch the Film (Overlay) | interactive | not-applicable | 필름을 여는 트리거. 재생 실패는 재생 표면이 보고한다. |
-| App Launcher (Icon) | interactive | not-applicable | 메뉴를 여는 dialog trigger. |
-| Nav Menu Item | interactive (`tab`) | not-applicable | 목적지 이동. 규칙집 C2가 tab·목적지 링크를 명시적으로 이 부류로 든다. active는 상태가 아니라 variant로 남겼다. |
+| Header CTA (Primary) | interactive | not-applicable | 연락 표면으로 데려가는 목적지 링크. 스스로 커밋하는 연산이 없다. loading도 같은 이유로 닫는다. §14의 form-validation / submitted는 그 표면의 필드가 보고한다. |
+| Hero CTA (Primary) | interactive | not-applicable | 같은 역할. loading도 같은 이유로 닫는다. |
+| Outline (Secondary) | interactive | not-applicable | 제품 목록으로 가는 목적지 링크. loading·요청 실패는 목록이 보고한다. |
+| Watch the Film (Overlay) | interactive | error/success not-applicable; loading applicable | 필름을 여는 트리거. 재생 실패는 재생 표면이 보고한다. loading은 §15가 hero/film reveal에 `motion-slow`를 배정한 근거가 있다. |
+| App Launcher (Icon) | interactive | not-applicable | 메뉴를 여는 dialog trigger. loading도 같은 이유로 닫는다. §15 `menu open`은 duration 용도이지 버튼 loading이 아니다. |
+| Nav Menu Item | interactive (`tab`) | not-applicable | 목적지 이동. 규칙집 C2가 tab·목적지 링크를 명시적으로 이 부류로 든다. loading도 같은 이유로 닫는다. active는 상태가 아니라 variant로 남겼다. |
 | News Card | **미선언 (C4)** | — | 원본이 표면 값과 그리드 내 위치만 적고 action·target·interaction treatment를 전혀 붙이지 않았다. interactive도 non-interactive도 근거가 없으므로 kind와 applicability map 자체를 생략했다. |
 | Product Row | **미선언 (C4)** | — | 같은 사유. §15의 "app-launcher pill rows … hover/press opacity/scale" 문장은 그룹 서술이라 Motion rules에 남기고 이 행의 상태 treatment로 승격하지 않았다. |
 
-interactive 6개 × 7상태 = 42행(실측 applicable 30 + not-applicable 12 = 42). `default`·`focus-visible`은 6개 전부 applicable. C3: "This is not a claim that state coverage is finished." 를 Components 머리에 명시했고 완료 주장 0건.
+interactive 6개 × 7상태 = 42행(실측 applicable 25 + not-applicable 17 = 42). `default`·`focus-visible`은 6개 전부 applicable. loading은 Watch the Film만 applicable이고 나머지 5는 커밋 없는 역할이라 not-applicable. C3: "This is not a claim that state coverage is finished." 를 Components 머리에 명시했고 완료 주장 0건.
 
 ## 최종 패스 기록
 
-**패스 1 — B2a 스캔.** 완성본을 처음부터 다시 읽고 Principles 안팎을 불문하고 인과·해석·판단 문장마다 근거 class를 자문했다. 한정을 붙인 자리는 **17곳**(산출 `DESIGN.md` 실측 17회)이고 — `provenance.md`의 같은 문자열 1회는 색인 표 머리에서 조문을 인용한 것이지 한정 자체가 아니다 —, 한정과 구분되는 evidence-class 경계 문장 9곳은 provenance `Derived editorial inventory`에 별도 표로 색인했다 — 두 계열을 합산해 세지 않는다. 재독에서 **새로 잡아 고친 자리 4곳**: (a) Scope 2문단의 "only chromatic accent"를 무조건 단언에서 출처 귀속으로, (b) Foundations `Semantic color`의 "palest echo of the brand blue"를 출처 귀속으로, (c) Foundations `Shape`의 "Two ideas are mixed deliberately"에서 의도 귀속 부분에 B2a 완전형 한정 신설, (d) `Font evidence`의 Poppins-900 행을 sibling 관측 기반 서술에서 legacy가 스스로 적은 "pushed to 900" 기반 + B2a 한정으로 교체(sibling 구조 관측이 본문 사실로 넘어가는 것을 막기 위함, B1). Principles 밖에서 잡힌 자리: Scope 3문단, Primary tasks 선정, Distinctive traits 머리, Audience 그룹화, Foundations Shape·Elevation·Motion, Typography rules와 Font evidence, Components의 kind/applicability 판정, State record, Layout의 두 문단, Content & Locales의 voice 성격 규정.
+**패스 1 — B2a 스캔.** 완성본을 처음부터 다시 읽고 Principles 안팎을 불문하고 인과·해석·판단 문장마다 근거 class를 자문했다. 한정을 붙인 자리는 **20곳**(산출 `DESIGN.md` 실측 20회)이고 — `provenance.md`의 같은 문자열 1회는 색인 표 머리에서 조문을 인용한 것이지 한정 자체가 아니다 —, 한정과 구분되는 evidence-class 경계 문장 9곳은 provenance `Derived editorial inventory`에 별도 표로 색인했다 — 두 계열을 합산해 세지 않는다. F3가 이어서 잡은 4곳 중 Scope 1문단의 마케팅-표면-비프록시 읽기는 웨이브 27 개정에서 D1로 문장 자체를 삭제해 이 20에 포함되지 않는다. 남은 3곳(Semantic role 읽기, Assets emotional-carrier, Forbidden register 성격 규정)과 responsive 한정의 comfortably-tappable 접기는 그 20에 포함된다. Principles 밖에서 잡힌 자리: Scope 3문단, Primary tasks 선정, Distinctive traits 머리, Audience 그룹화, Foundations Semantic·Shape·Elevation·Motion, Typography rules와 Font evidence와 Assets, Components의 kind/applicability 판정, State record, Layout의 두 문단, Content & Locales의 voice 성격 규정과 Forbidden register.
 
-**패스 2 — E2 대조.** 위 표의 각 행을 쓰기 전에 값이 실제로 어느 파일 어느 절에 있는지 `grep -o … | wc -l`(파일별)과 `awk` 블록 카운트로 확인했다. 기억으로 쓴 행은 없다. 이중 목적지는 두 목적지를 모두 적었다(identity, logo, `live-extract` 범위 문장, spacing, shadow, §14 상태, §11 서사, 닫는 주석). 준수 주장은 본문 실재를 확인한 것만 적었다 — B3 전문 2회, primitive type 4종 동수(button 5 · tab 1 · card 1 · listItem 1), lineHeight 비율 5종, §14 9행, voice sample 3건, sibling raw samples 19행, 한정 17회.
+**패스 2 — E2 대조.** 위 표의 각 행을 쓰기 전에 값이 실제로 어느 파일 어느 절에 있는지 `grep -o … | wc -l`(파일별)과 `awk` 블록 카운트로 확인했다. 기억으로 쓴 행은 없다. 이중 목적지는 두 목적지를 모두 적었다(identity, logo, spacing, shadow, §14 상태, §11 서사, 닫는 주석). `live-extract`는 provenance 단일(DESIGN.md 0). 준수 주장은 본문 실재를 확인한 것만 적었다 — B3 다섯 종류+게이트 2회 · 부분확인 배제 1회, primitive type 4종 동수(button 5 · tab 1 · card 1 · listItem 1), lineHeight 비율 5종, §14 9행, voice sample 3건, sibling raw samples 19행, 한정 20회.
 
 ## 값 보존 실측 (산출 3파일 대조)
 
@@ -98,7 +98,7 @@ interactive 6개 × 7상태 = 42행(실측 applicable 30 + not-applicable 12 = 4
 | unitless lineHeight (A1a) | `1.00` `1.46` `1.11` `1.56` `1.50` 5종 전부 비율로 생존. px 변환 0건(원본이 스스로 적은 px 등가만 괄호 병기). |
 | primitive type (A1b) | `Primitive type` 8행 = button 5 · tab 1 · card 1 · listItem 1 — legacy YAML 실측과 동수. |
 | `[FILL IN]` | legacy 0건, 산출 0건. 신규 작성 없음. |
-| C1 (`not captured`/`not named`를 not-applicable 사유로) | 0건. `not-applicable` 12행은 전부 역할 사유(목적지 링크 / dialog trigger / tab의 목적지 이동)로 닫혔다. |
+| C1 (`not captured`/`not named`를 not-applicable 사유로) | 0건. `not-applicable` 17행은 전부 역할 사유(목적지 링크 / dialog trigger / tab의 목적지 이동 — loading 포함)로 닫혔다. |
 | C3 | 완료 주장 0건. |
 | D1a (원본에 없는 도메인을 미해상 목록으로 열거) | Governance `Recorded unresolved decisions` 6항은 전부 원본이 존재를 세운 값이다 — easing curve, hover/press opacity·scale, disabled opacity, skeleton pulse, in-place progress indicator 두께, XL 16px 컨테이너. 원본에 없는 도메인(native-app·help-center·authenticated 류)은 명사구로도 열거하지 않았다. |
 
@@ -120,3 +120,19 @@ interactive 6개 × 7상태 = 42행(실측 applicable 30 + not-applicable 12 = 4
 **미생존 1건과 그 처분:** `Over 40 audio experts including 9 Ph.D` — §10이 대문자 O로 인용한 형태. 초안은 §11·주석의 소문자 형태(`over 40 audio experts…`)만 옮기고 §10의 evidence-framing 인용을 산문으로 압축했는데, A5는 대소문자 정규화도 손실로 본다. Content & Locales 첫 문단에 §10의 인용 형태를 그대로 복원했다(doc 1회). 나머지 61건은 1차 대조에서 이미 생존.
 
 **바늘에서 제외한 것과 그 이유:** 카피에 대한 서술(`nav, milestone stats, blog cards`, `Top nav menu items (light surface)` 같은 legacy 자신의 `use:` 라벨), UI 메타(`<h1>` `<h2>` `<h3>` `<a>` `<button>`), 점 경로·메서드(`document.fonts` · `getComputedStyle` · `waitUntil: domcontentloaded`), 폰트 스택(`Poppins` · `Roboto` · `Noto Sans KR` · `swiper-icons` · `__Poppins`), CSS·토큰 이름(`prefers-reduced-motion: reduce` · `motion-fast` · `ease-enter` · `cubic-bezier(...)`), 라이브러리명(`Swiper`), 그리고 **원본이 스스로 제3자로 배제한 문자열**(getdesign.md 페이지 제목과 테마 hex, refero.design의 `Browse 2,000+` / `"Minimal Design / Clean SaaS"`). 이들은 발행된 적 없는 산문이거나 브랜드 문자열이 아니므로 바늘로 세지 않았다.
+
+## Revision 2026-08-28 (wave27 review)
+
+Rulebook v12. Trigger: 의미 검토 FAIL 4, 오케스트레이터 독립 재확인. 토큰 값·컴포넌트 표 구조·state 표의 다른 행·남은 B2a 완전형·원본은 건드리지 않았다. 파일 존재는 `find`로 확인. 계수는 `grep -o <패턴> <파일> | wc -l`(파일별).
+
+**1. A1 — `spun out of academic sound research`.** 원본 §11 1회. 개정 전 산출 DESIGN/provenance/migration-log 0(검토자 재실측). 받을 슬롯은 Experience `Scope` 4문단(§11 서사 착지). 원본 표현 그대로 복원: "The source records the company as spun out of academic sound research." 원본이 세운 연혁 사실이므로 B2a를 붙이지 않았다. 개정 후: 원본 1 · DESIGN.md 1 · provenance.md 0 · 이 로그 3(§11 처분 행 + 이 절).
+
+**2. C2 — 커밋 없는 역할의 `loading`.** 개정 전 `loading | applicable` 6. Header CTA · Hero CTA · Outline · Nav Menu Item은 목적지 링크/`tab`, App Launcher는 메뉴 트리거. C2가 그 역할을 `not-applicable` 부류로 든다. Watch the Film만 §15 hero/film reveal에 `motion-slow` 근거가 있어 applicable 유지. 닫은 5행의 Reason은 관측 부재가 아니라 error와 같은 의미(커밋 연산 없음). 개정 후: `loading | applicable` 1 · `loading | not-applicable` 5 · `error | not-applicable` 6 · applicable 25 + not-applicable 17 = 42.
+
+**3. A4 — `motion-slow` 무근거 귀속.** 원본 §15 용도는 `Full-bleed band transitions, hero/film reveal`뿐. 개정 전 산출 7회 중 Header/Hero/Outline/Nav 4회가 연락·제품·내비 이동에 붙었다. C2로 그 4행을 닫으면서 귀속도 제거. 개정 후 DESIGN.md `motion-slow` 3: 표 용도(:157) · 밴드 crossfade(:174) · Watch the Film loading(:315). 원본 용도와 맞다.
+
+**4. D1 — `applications the company ships`.** 원본 `application` 0 · `studio.gaudiolab` 0(파일 존재, 빈 출력=0). sibling만 `studio.gaudiolab` 1(미조사 SaaS, provenance 원장). Scope 1문단이 원본이 안 세운 도메인을 "프록시가 아니다"로 적었다. 문장과 그에 붙었던 B2a 한정을 함께 지웠다. 개정 후 DESIGN.md `applications the company ships` 0(파일 존재). 이 절과 audit-log #1은 삭제된 문장을 mention으로 인용할 뿐 본문 복원이 아니다. provenance derived 원장 21→20(행 18 삭제, 구 19–21을 18–20으로 재번호). 본문 완전형 20 = 원장 20.
+
+**줄 포인터.** DESIGN.md 482행 불변. audit-log `DESIGN.md:9` / `:120` / `:226` / `:408` / `:416` / `:439` / `:147` / `:423`과 `provenance.md:45`는 같은 절을 가리킨다. 로그 `:28` / `:49` / `:62` / `:65` / `:88` / `:90`도 해당 행이다.
+
+**손대지 않은 것.** Watch the Film loading. 토큰 표·나머지 state 행. 남은 B2a 20문장. 원본 `web/references/gaudiolab/DESIGN.md`. sibling.

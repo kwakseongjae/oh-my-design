@@ -41,14 +41,14 @@ Both clauses reach the portable body: the first opens Foundations → Semantic c
 
 Counts below are `grep -oF <string> <file> | wc -l`, taken per file after the final edit. Occurrences inside this ledger's own explanatory prose are mentions of a string, not uses of the value; only the `DESIGN.md` column measures portable-body survival.
 
-- `name` `강남언니` is dual: this ledger + the portable body, where it stands byte-exact in the H1, in Experience → Scope, and in Content & Locales → Terminology. Measured: `DESIGN.md` = **5** (this includes the three occurrences inside `Gangnamunni (강남언니)`), `provenance.md` = 6.
+- `name` `강남언니` is dual: this ledger + the portable body, where it stands byte-exact in the H1, in Experience → Scope, and in Content & Locales → Terminology. Measured: `DESIGN.md` = **5** (this includes the three occurrences inside `Gangnamunni (강남언니)`), `provenance.md` = **5**.
 - `display_name_kr` `Gangnamunni (강남언니)` is dual: this ledger + the portable H1, Experience → Scope, and Content & Locales → Terminology, byte-exact in all three. The Latin form never replaces the Korean form. Measured: `DESIGN.md` = **3**, `provenance.md` = 3.
-- `primary_color` `#d54300` is **ledger-only**. The portable body carries the constraint that this value is catalog identity metadata rather than a current token, and deliberately not the hex itself. Measured: `DESIGN.md` = **0**, `provenance.md` = 4 (the Identity row plus this bullet's own quotations).
+- `primary_color` `#d54300` is **ledger-only**. The portable body carries the constraint that this value is catalog identity metadata rather than a current token, and deliberately not the hex itself. Measured: `DESIGN.md` = **0**, `provenance.md` = **3** (the Identity row, the `tokens.note` quotation, and this bullet).
 - `homepage` `https://www.gangnamunni.com` is dual: this ledger + Experience → Scope, which names the two read routes `https://www.gangnamunni.com/` and `https://www.gangnamunni.com/events`. Measured on the bare prefix: `DESIGN.md` = **2**, `provenance.md` = 11.
 - `logo` slug is ledger-only. The portable Assets subsection records that a favicon logo entry exists and states that its URL stays here. Measured on `favicon`: `DESIGN.md` = **1** (the word, no URL), `provenance.md` = 4.
 - `verified` `2026-07-13` is dual: this ledger/Freshness + Experience → Scope, which dates the inspection. Measured: `DESIGN.md` = **1**, `provenance.md` = 18.
 - `tokens.source: reconciled`, `tokens.extracted`, `omd: "0.1"`, `country`, `category` are ledger-only. Measured: `reconciled` `DESIGN.md` = **0** / `provenance.md` = 3; `consumer-tech` `DESIGN.md` = **0** / `provenance.md` = 2.
-- `components_harvested: true` is ledger-only as a field name (A1c); the portable Capture record states the same fact as prose. Measured: `DESIGN.md` = **0**, `provenance.md` = 4.
+- `components_harvested: true` is ledger-only as a field name (A1c); the portable Capture record states the same fact as prose. Measured: `DESIGN.md` = **0**, `provenance.md` = **3**.
 
 ## Freshness
 
@@ -223,3 +223,37 @@ Structural classifications in the sibling ("the Welchis blog is official documen
 - Uncaptured hover, focus, disabled, error, toast, and changed-pressed treatments are omitted. They are not `not-applicable` on that ground; applicability follows control meaning. State coverage is not claimed complete.
 - The official blog articles (Welchis platform split, design-chapter mission, UI-text guideline) are narrative and voice context. They are not token sources, and the record states that they do not establish a current native-app component catalogue, a current orange component token, a font-distribution notice, named personas, or an interaction/motion contract.
 - Pretendard's SIL Open Font License 1.1 describes the upstream font project. It is not a Gangnamunni distribution or license claim.
+
+## Portable derived-editorial scope (E1)
+
+The portable body carries **thirteen** derived-editorial readings, each closed by its own adjacent qualification. They are enumerated row by row here so the derivation scope can be read off this ledger. A single summary sentence would not do this job: the thirteen sit across Experience, Foundations, Typography, Components, Layout, and Content. This section records the scope of those qualifications; it does not re-host the portable clause (E1).
+
+| # | Derived reading the qualification covers | Portable line | Legacy origin | Placement |
+|---|---|---|---|---|
+| 1 | Experience → Scope — refusing to treat either inspected consumer surface as a proxy for the native app or the Welchis PC back office | `DESIGN.md:11` | source §1 / §5 / §8 native-app and back-office boundaries; the source never authorizes the two web captures as a native-app or Welchis stand-in | complete, closes the same paragraph, immediately after the proxy refusal |
+| 2 | Experience → Scope — the five section readings: research task ahead of ornamental branding; quiet captured layer; compact outline CTA and procedure chips that can be scanned quickly; public copy framed around confidence in a choice; design-team writing connecting that confidence to clear information; Cell and Welchis geometry kept apart | `DESIGN.md:17` | source §1 Visual Theme & Atmosphere interpretive framing + §11 Brand Narrative | complete, its own paragraph after the observed layer; values named as live-computed |
+| 3 | Experience → Primary tasks — reading the service purpose plus two captured controls as this contract's three primary tasks | `DESIGN.md:23` | source declares no task list; outcomes read from §1 service purpose and §4 controls | complete, precedes the three bullets; ends "separately published task model" |
+| 4 | Experience → Distinctive traits — the characterizing word *compact* and the evidence-domain reading that Cell surfaces and Welchis documentation are separate | `DESIGN.md:41` | source §1 Key Characteristics bullets 3–4 | complete, immediately after the list; the Cell/Welchis platform split it rests on stays attributed as published |
+| 5 | Experience → Principles — the *UI implication* attached to each headline, and the decision to read the three guideline restatements as this contract's design principles | `DESIGN.md:45` | source §12 Principles (3 + UI implications) and official UI-text guideline | complete, precedes the numbered list; headlines stay attributed as published |
+| 6 | Experience → Application rules — treating the four Do items as this contract's application rules | `DESIGN.md:53` | source §7 Do | complete, precedes the list |
+| 7 | Experience → Avoid — treating the four Don't items as this contract's avoidances | `DESIGN.md:62` | source §7 Don't | complete, precedes the list |
+| 8 | Foundations → Semantic color — naming Canvas / Foreground / Muted / Surface / Border as this contract's role names rather than published Gangnamunni role names | `DESIGN.md:75` | source §2 Color Palette & Roles (the five values and captured elements are observations) | complete, same paragraph as the role-naming sentence |
+| 9 | Typography & Assets → Family — the reuse rule that forbids blog `pretendard` and declared `commitMono` as the product family | `DESIGN.md:125` | source §3 evidence-class table + Don't | complete, immediately after the reuse bullet; table facts stay observations |
+| 10 | Components & States — the applicability judgments in the two tables and the role readings written into their Reason column | `DESIGN.md:148` | source §4 control records + Core §4.4 / C1 / C2 applied by this contract | complete, precedes the component records; ends "separately published state specification" |
+| 11 | Layout & Platforms — the transfer rule and the documentation-context classification drawn from the published Cell/Welchis split | `DESIGN.md:216` | source §5 Layout Principles + mid-file **Surface split** footer | complete, closes the same paragraph; the platform split itself stays attributed as published |
+| 12 | Content & Locales — reading the Apply / Avoid table as this contract's microcopy rules | `DESIGN.md:231` | source §10 Voice & Tone table (rows restated; guideline principles and the exclamation-mark permission stay attributed as published) | complete, immediately after the table |
+| 13 | Content & Locales → Terminology — the cross-name rule that forbids using `Cell` or `Welchis` for the other's surfaces | `DESIGN.md:236` | source §1 / §5 / §11 platform split (the two names are published; the naming rule is this contract's) | complete, closes the same bullet; the two names stay attributed as published |
+
+1:1 check against the portable body, measured over the final files. `grep -c` was **not** used. Every count below is `grep -o … | wc -l` and is stated per file:
+
+| Counted string | File | Method | Result |
+|---|---|---|---|
+| `derived editorial implementation inference` | `DESIGN.md` | `grep -o … \| wc -l` | 13 occurrences |
+| `not Gangnamunni-authored` | `DESIGN.md` | `grep -o … \| wc -l` | 13 occurrences |
+| `separately published UI specification` | `DESIGN.md` | `grep -o … \| wc -l` | 11 occurrences |
+| `separately published task model` | `DESIGN.md` | `grep -o … \| wc -l` | 1 occurrence (Primary tasks, row 3) |
+| `separately published state specification` | `DESIGN.md` | `grep -o … \| wc -l` | 1 occurrence (Components, row 10) |
+| lines carrying the clause | `DESIGN.md` | `grep -n` | 11, 17, 23, 41, 45, 53, 62, 75, 125, 148, 216, 231, 236 — 13 lines |
+| `derived editorial` (any form) | `provenance.md` | `grep -o … \| wc -l` | 2 — both in this inventory section (the heading prose and this table). Mentions of the portable clause, not portable uses (E1) |
+
+Occurrences (13) and lines (13) agree because no line carries the clause twice; that agreement is measured, not assumed. Eleven qualifications close on `separately published UI specification`; the other two close on a more specific published-object noun (`task model`, `state specification`) and still finish the evidence-class distinction. Rows in the table above: 13. Qualifications in the body: 13. No derived reading in the body is missing from this table, and no row here lacks a body reading.
