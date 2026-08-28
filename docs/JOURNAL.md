@@ -1,3 +1,78 @@
+## 2026-08-28 — 의미 검토 headspace
+- 한 일: 독립 검토(A·C·D). YAML 키 경로·§11 고유명사·C2 방향·페르소나 파생물 0·sibling 융합 0·F2 포인터 현행. **PASS**.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 30 나머지 브랜드 의미 검토.
+
+## 2026-08-28 — 의미 검토 hana
+- 한 일: 독립 검토(A·C·D, 웨이브 27 추가형 7–9). YAML 키 경로·§11 고유명사·C2 쌍닫힘·페르소나 파생물 0·sibling 융합 0·F2 포인터 현행. **PASS**.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 30 나머지 브랜드 의미 검토.
+
+## 2026-08-28 — 의미 검토 hackle
+- 한 일: 독립 검토(A·C·D). YAML 키 경로·§11 고유명사·C2 쌍닫힘·페르소나 파생물 0·sibling 융합 0·F2 포인터 현행. **PASS**.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 30 나머지 브랜드 의미 검토.
+
+## 2026-08-28 — 의미 검토 hashicorp
+- 한 일: 독립 검토(A·C·D). YAML 키 경로·§11 연혁·C2 쌍닫힘·페르소나 파생물 없음·sibling 융합 없음·F2 포인터 현행. **PASS**.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 30 나머지 브랜드 의미 검토.
+
+## 2026-08-28 — 의미 검토 hahow
+- 한 일: 독립 검토(A·C·D). YAML 키 경로·§11 고유명사·C2 쌍닫힘·페르소나 파생물 0·sibling 융합 0·F2 포인터 현행. **PASS**.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 30 나머지 브랜드 의미 검토.
+
+## 2026-08-28 — F3 감사 hahow
+- 한 일: B2a·E2 전담 감사. 본문 한정 24→26, 원장 26=26. palette-role·Type roles 신설, Surface state·Layout 주어 확장. 로그 목적지 11건 실측 교정. `AUDIT_DONE fixes=16`.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경.
+- 다음: 웨이브 30 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 headspace
+- 한 일: B2a·E2 전담 감사. 본문 한정 25→27, 원장 27=27. License·Type roles 신설, Family·Assets 주어 확장. 로그 목적지 9건 실측 교정. `AUDIT_DONE fixes=15`.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경.
+- 다음: 웨이브 30 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 hashicorp
+- 한 일: B2a·E2 전담 감사. 본문 한정 13→16, 원장 16=16. 로그 homepage DESIGN 9 허위 이중·Helios/Tier/Narrative 포인터 실측 교정. `AUDIT_DONE fixes=18`.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경.
+- 다음: 웨이브 30 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 hackle
+- 한 일: B2a·E2 전담 감사. 본문 한정 26→30, 원장 30=30. 로그 목적지(`full: 9999`, Do 61–68, C2/C4) 실측 교정. `AUDIT_DONE fixes=18`.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경.
+- 다음: 웨이브 30 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 hana
+- 한 일: B2a·E2 전담 감사. 본문 한정 27→30, 원장 30=30. 로그 줄포인터 5곳 교정. `AUDIT_DONE fixes=15`.
+- 열린 것: 없음. 토큰·표·구조·원본 무변경.
+- 다음: 웨이브 30 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — T2 이관 headspace
+- 한 일: legacy `web/references/headspace/DESIGN.md`를 Core v2로 이관. 규칙집 v12. B2a 25=25. §11 2010/Puddicombe/Italic/Colophon 착지. 커브 3 삭제·duration 유지.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 30 나머지 또는 F3.
+
+## 2026-08-28 — T2 이관 hahow
+- 한 일: legacy `web/references/hahow/DESIGN.md`를 Core v2로 이관. 규칙집 v12. B2a 24=24(`hahow-design` 닫힘). §11 好學校/learn-and-teach 착지. 커브 없음·B3 유지.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 30 나머지 또는 F3.
+
+## 2026-08-28 — T2 이관 hackle
+- 한 일: legacy `web/references/hackle/DESIGN.md`를 Core v2로 이관. 규칙집 v12. B2a 26=26. §11 서울/SDK/개발자 문서 착지. 커브 3 삭제·duration 유지.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 30 나머지(`hahow`·`hana`·`hashicorp`·`headspace`) 또는 F3.
+
+## 2026-08-28 — T2 이관 hashicorp
+- 한 일: legacy `web/references/hashicorp/DESIGN.md` → Core v2 초안 3파일. 규칙집 v12. 연혁·키 경로·Helios B2a 13=13. gate PASS.
+- 열린 것: F3 감사·의미 검토 대기. 원본 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 30 나머지 또는 F3.
+
+## 2026-08-28 — T2 이관 hana
+- 한 일: `web/references/hana/DESIGN.md`를 Core v2로 이관. 산출 `docs/design-md-weight/migrated/hana/` 3파일. 규칙집 v12. F1 27=27, F2 grep 대조, A5a 31/186.
+- 열린 것: 없음. 원본·sibling 미수정. 카탈로그 채택 아님. gate PASS, portable_core true.
+- 다음: F3 감사 또는 웨이브 검토.
+
 ## 2026-08-28 — 개정 govuk
 - 한 일: 웨이브 29 FAIL 3만 수정. vestibular/epilepsy 복원, `:97` sibling 융합 제거, native application/back-office 삭제. B2a 25=25. 줄 600→599, 포인터 전수 갱신.
 - 열린 것: 없음. 원본 미수정. 카탈로그 채택 아님.
