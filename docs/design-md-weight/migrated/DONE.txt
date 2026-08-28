@@ -187,3 +187,8 @@ intuit
 ipassmoney
 jandi
 jkopay
+jobkorea
+jobplanet
+jumpit
+kakaobank
+kakaogames

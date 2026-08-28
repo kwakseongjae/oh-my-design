@@ -1,3 +1,123 @@
+## 2026-08-28 — T2 의미 검토 kakaogames = PASS
+
+**한 일.** 독립 검토(A·C·D, 항목 7–10). YAML 키 경로·§11·C2 쌍닫힘·페르소나 미승격·융합/D1 dest 0·표면 귀속 착지.
+
+**열린 것.** 카탈로그 채택 아님. 산출 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 검토.
+
+## 2026-08-28 — T2 의미 검토 kakaobank = PASS
+
+**한 일.** 독립 검토(A·C·D, 항목 7–10). YAML 키 경로·§11·C2 방향·페르소나 미승격·융합/D1 dest 0·표면 귀속 착지.
+
+**열린 것.** 카탈로그 채택 아님. 산출 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 검토.
+
+## 2026-08-28 — T2 의미 검토 jobkorea = PASS
+
+**한 일.** 독립 검토(A·C·D, 항목 7–10). YAML 키 경로·§11·C2 방향·페르소나 미승격·융합/D1 dest 0·표면 귀속 착지.
+
+**열린 것.** 카탈로그 채택 아님. 산출 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 검토.
+
+## 2026-08-28 — T2 의미 검토 jobplanet = PASS
+
+**한 일.** 독립 검토(A·C·D, 항목 7–10). YAML 키 경로·§11·C2 쌍닫힘·페르소나 미승격·융합/D1 dest 0·표면 귀속 착지.
+
+**열린 것.** 카탈로그 채택 아님. 산출 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 검토.
+
+## 2026-08-28 — T2 의미 검토 jumpit = PASS
+
+**한 일.** 독립 검토(A·C·D, 항목 7–10). YAML 키 경로·§11·C2 쌍닫힘·페르소나 미승격·융합/D1 dest 0·표면 귀속 착지.
+
+**열린 것.** 카탈로그 채택 아님. 산출 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 검토.
+
+## 2026-08-28 — T2 F3 감사 jobkorea (B2a·E2)
+
+**한 일.** 산출·원본·sibling만 대조. 본문 31→32 / 원장 31→32. License 한정 신설 + 4곳 확장. 로그 dest·SHA 정정. `AUDIT_DONE fixes=27`.
+
+**열린 것.** 카탈로그 채택 아님. 의미 검토 대기.
+
+**다음.** 같은 웨이브의 다음 F3, 또는 jobkorea 의미 검토.
+
+## 2026-08-28 — T2 F3 감사 jobplanet (B2a·E2)
+
+**한 일.** 산출·원본·sibling만 대조. Scope ¶2 한정 범위 확장(34=34), provenance 행 2 동기화, 로그 목적지 16건 실측 교정. `AUDIT_DONE fixes=18`.
+
+**열린 것.** 카탈로그 채택 아님. 의미 검토 대기.
+
+**다음.** 같은 웨이브의 다음 F3, 또는 jobplanet 의미 검토.
+
+## 2026-08-28 — T2 F3 감사 kakaogames (B2a·E2)
+
+**한 일.** 산출·원본·sibling만 대조. 본문 22→23 / 원장 22→23. Motion 한정 신설 + 5곳 확장. 로그 dest·SHA 정정. `AUDIT_DONE fixes=17`.
+
+**열린 것.** 카탈로그 채택 아님. 의미 검토 대기.
+
+**다음.** 같은 웨이브의 다음 F3, 또는 의미 검토.
+
+## 2026-08-28 — T2 F3 감사 kakaobank (B2a·E2)
+
+**한 일.** 산출 3파일만 대조해 본문 완전형 24→29, 원장 29=29. 컴포넌트 옆 `is not` 5곳 신설. 로그 목적지 12행 실측 정정. `AUDIT_DONE fixes=36`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정. 의미 검토 대기.
+
+**다음.** 같은 웨이브의 다른 브랜드 F3, 또는 kakaobank 의미 검토.
+
+## 2026-08-28 — T2 F3 감사 jumpit (B2a·E2)
+
+**한 일.** 산출·원본만 대조. 본문 한정 24→26, 원장 26행 1:1. 로그 목적지 8행 정정. `AUDIT_DONE fixes=23`.
+
+**열린 것.** 카탈로그 채택 아님. sibling 없음.
+
+**다음.** 같은 웨이브 잔여 브랜드 이관·감사.
+
+## 2026-08-28 — T2 이관 jumpit (규칙집 v12)
+
+**한 일.** `web/references/jumpit/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/jumpit/{DESIGN,provenance,migration-log}.md`에 씀. 게이트 PASS, `portable_core:true`, B2a 24=24. §11 중간·2문단 결론 복원.
+
+**열린 것.** 카탈로그 채택 아님. F3 감사·의미 검토 대기.
+
+**다음.** 같은 웨이브의 다음 브랜드 이관, 또는 jumpit F3.
+
+## 2026-08-28 — T2 이관 kakaogames (규칙집 v12)
+
+**한 일.** `web/references/kakaogames/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/kakaogames/{DESIGN,provenance,migration-log}.md`에 씀. 게이트 PASS, `portable_core:true`, B2a 22=22.
+
+**열린 것.** 카탈로그 채택 아님. F3 감사·의미 검토 대기.
+
+**다음.** 같은 웨이브의 다음 브랜드 이관, 또는 kakaogames F3.
+
+## 2026-08-28 — T2 이관 jobplanet (규칙집 v12)
+
+**한 일.** `web/references/jobplanet/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/jobplanet/{DESIGN,provenance,migration-log}.md`에 씀. 게이트 PASS, `portable_core:true`, B2a 34=34.
+
+**열린 것.** 카탈로그 채택 아님. F3 감사·의미 검토 대기.
+
+**다음.** 같은 웨이브의 다음 브랜드 이관, 또는 jobplanet F3.
+
+## 2026-08-28 — T2 이관 jobkorea (규칙집 v12)
+
+**한 일.** `web/references/jobkorea/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/jobkorea/`에 DESIGN/provenance/migration-log를 썼다. 게이트 PASS, `portable_core:true`, B2a 31=31.
+**열린 것.** 카탈로그 채택 아님. 원본 `web/references/jobkorea/**` 미수정.
+**다음.** F3 감사 세션이 B2a·E2만 다시 본다.
+
+## 2026-08-28 — T2 이관 kakaogames
+- 한 일: `web/references/kakaogames/DESIGN.md` → `docs/design-md-weight/migrated/kakaogames/` Core v2 (규칙집 v12). B2a 22=22. gate PASS. portable_core true.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정. F3 감사 대기.
+- 다음: 감사 워커 또는 다음 브랜드.
+
+## 2026-08-28 — T2 이관 kakaobank
+- 한 일: legacy `web/references/kakaobank/DESIGN.md` → Core v2 3파일. 규칙집 v12. 게이트 PASS, portable_core true, B2a 24=24.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정. F3 감사 대기.
+- 다음: 웨이브 36 나머지 또는 F3.
+
 ## 2026-08-28 — 웨이브 27~35 완주 (opus5 오케스트레이터 · grok-4.6 워커/감사/검토)
 
 **한 일.** 9웨이브 45브랜드를 이관→게이트→F3→의미검토→개정→마감으로 완주. 원장 139→**178**(이관 175 + 골든 3).
