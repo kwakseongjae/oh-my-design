@@ -202,3 +202,8 @@ kcd
 kdan
 kia
 kintone
+kkbox
+kkday
+kmong
+krafton
+kraken

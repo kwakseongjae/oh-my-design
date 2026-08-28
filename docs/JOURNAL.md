@@ -1,3 +1,141 @@
+## 2026-08-28 — 웨이브 39 마감 (kkbox·kkday·kmong·krafton·kraken)
+
+**한 일.** 이관 5/5 게이트 PASS, F3 119건, 의미 검토 5/5 PASS(개정 0). 1:1 불변식 5/5 성립. `wave-close` 5단계 ok, DONE 209. 판정문 작성.
+
+**열린 것.** 규칙집 v12가 이번 런 판정 미흡수(`prompts/`에만 존재) — v13 승격 미정.
+
+**다음.** 웨이브 40 `krds · kream · kurly · kyobobook · lablup`부터. 사용자 지시로 39에서 정지.
+
+**주의.** 대기 루프 자기매칭 + PID 재사용으로 22분 헛대기 발생. 완료 판단은 `audit-log.md`의 `AUDIT_DONE`으로, 맨 PID 대기 금지.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 kmong
+
+**한 일.** 독립 검토 A·C·D + 추가형 7–11. 산출 4 + 원본 + sibling 대조. YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 미승격·use 긴 쪽·표면 귀속 착지. **PASS.**
+
+**열린 것.** 원본·sibling·산출 미수정. B2a·E2 미판정.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 kkday
+
+**한 일.** 독립 검토 A·C·D + 추가형 7–11. 산출 4 + 원본 대조. sibling 없음(미측정). YAML 키 경로·§11 결론·C2 방향·페르소나 미승격·use 긴 쪽·표면 귀속 착지. **PASS.**
+
+**열린 것.** 원본·산출 미수정. B2a·E2 미판정.
+
+**다음.** 같은 웨이브 잔여 검토(`kmong`·`kraken`).
+
+## 2026-08-28 — 웨이브 27형 의미 검토 kraken
+
+**한 일.** 독립 검토 A·C·D + 추가형 7–11. 산출 4 + 원본 + sibling 대조. YAML 키 경로·§11 결론·C2 방향·페르소나 미승격·use 긴 쪽·표면 귀속 착지. **PASS.**
+
+**열린 것.** 원본·sibling·산출 미수정. B2a·E2 미판정.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 krafton
+
+**한 일.** 독립 검토 A·C·D + 추가형 7–11. 산출 4 + 원본 + sibling 대조. YAML 키 경로·§11 결론·C2 방향·페르소나 미승격·use 긴 쪽·표면 귀속 착지. **PASS.**
+
+**열린 것.** 원본·sibling·산출 미수정. B2a·E2 미판정.
+
+**다음.** 같은 웨이브 잔여 검토(`kkday`·`kmong`·`kraken`).
+
+## 2026-08-28 — 웨이브 27형 의미 검토 kkbox
+
+**한 일.** 독립 검토 A·C·D + 추가형 7–11. 산출 4 + 원본 + sibling 대조. YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 미승격·use 긴 쪽·표면 귀속 착지. **PASS.**
+
+**열린 것.** 원본·sibling·산출 미수정. B2a·E2 미판정.
+
+**다음.** 같은 웨이브 잔여 검토(`kkday`·`kmong`·`krafton`·`kraken`).
+
+## 2026-08-28 — T2 F3 감사 kmong
+
+**한 일.** 산출 3파일+원본+sibling만 실측. B2a 23=23(기존 4 확장, 신설 0). 원장 23=23. 로그 목적지(homepage 11, `#92fa72` 4, Pretendard 22, `tokens.source: reconciled` P dest 2) 정정. `AUDIT_DONE fixes=22`.
+
+**열린 것.** 원본·sibling 미수정. 카탈로그 채택 아님. 토큰·표·구조 무변경.
+
+**다음.** 같은 웨이브 잔여 F3 또는 검토.
+
+## 2026-08-28 — T2 F3 감사 kkbox
+
+**한 일.** 산출 3파일+원본+sibling만 실측. B2a 26→27(Motion B3 신설 1 + 기존 5 확장). 원장 27=27. 로그 목적지·A5a 15·§11 exact-string P dest 0 정정. `AUDIT_DONE fixes=27`.
+
+**열린 것.** 원본·sibling 미수정. 카탈로그 채택 아님. 로그 §13 식별자 mention은 D2a 범위 밖.
+
+**다음.** 같은 웨이브 잔여 F3 또는 검토.
+
+## 2026-08-28 — T2 F3 감사 krafton
+
+**한 일.** B2a·E2 전담. 본문 29→30 / 원장 29→30. Motion `:148` 신설, 기존 한정 5건 확장, 로그 목적지 실측 정정. `AUDIT_DONE fixes=27`.
+
+**열린 것.** 원본·sibling 미수정. 카탈로그 채택 아님. 토큰·표·구조 무변경.
+
+**다음.** 같은 웨이브 잔여 F3 또는 검토.
+
+## 2026-08-28 — T2 F3 감사 kkday
+
+**한 일.** B2a·E2만. 본문 42→45 / 원장 45=45. `:150` duration-not-curve · `:240` photography · `:558` published-names 한정 신설. 로그 dest(homepage P 5, hex 18/17, prose-derived 3, `#BDBDBD` 5, spacing colon-12/16, `9999` 3, §11 발생 수) 정정. `AUDIT_DONE fixes=19`.
+
+**열린 것.** 로그 §13이 페르소나 이름 4개를 dest 0용으로 재열거(D2a, 범위 밖 보고만). 원본 미수정.
+
+**다음.** 같은 웨이브 잔여 F3 또는 검토.
+
+## 2026-08-28 — T2 F3 감사 kraken
+
+**한 일.** B2a·E2 전담. 본문 40=40 유지, 한정 5곳 확장(Semantic/Font wrap/Family/Capture/Layout). 원장 행 5·로그 목적지 14 실측 정정. `AUDIT_DONE fixes=24`.
+
+**열린 것.** 원본·sibling 미수정. 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여 F3 또는 검토.
+
+## 2026-08-28 — T2 F3 감사 kkbox
+
+**한 일.** 산출 3파일+원본+sibling만 실측. B2a 26→27(Motion B3 신설 1 + 기존 5 확장). 원장 27=27. 로그 목적지·A5a 15·§11 exact-string P dest 0 정정. `AUDIT_DONE fixes=27`.
+
+**열린 것.** 원본·sibling 미수정. 카탈로그 채택 아님. 로그 §13 식별자 mention은 D2a 범위 밖.
+
+**다음.** 같은 웨이브 잔여 F3 또는 검토.
+
+## 2026-08-28 — T2 이관 krafton
+
+**한 일.** `web/references/krafton/DESIGN.md` → Core v2. 산출 `docs/design-md-weight/migrated/krafton/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v12. F1 B2a 29=29 · F2 키 경로 대조 · gate PASS · portable_core true.
+
+**열린 것.** 원본·sibling 미수정. 카탈로그 채택 아님. F3 감사 대기.
+
+**다음.** 같은 웨이브 잔여 이관 또는 F3.
+
+## 2026-08-28 — T2 이관 kraken
+
+**한 일.** `web/references/kraken/DESIGN.md` → Core v2. 산출 `docs/design-md-weight/migrated/kraken/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v12. F1 B2a 40=40 · F2 키 경로 대조 · gate PASS · portable_core true.
+
+**열린 것.** 원본·sibling 미수정. 카탈로그 채택 아님. F3 감사 대기.
+
+**다음.** 같은 웨이브 잔여 이관 또는 F3.
+
+## 2026-08-28 — T2 이관 kmong
+
+**한 일.** `web/references/kmong/DESIGN.md` → Core v2. 산출 `docs/design-md-weight/migrated/kmong/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v12. F1 B2a 23=23 · F2 키 경로 대조 · gate PASS · portable_core true.
+
+**열린 것.** 원본·sibling 미수정. 카탈로그 채택 아님. F3 감사 대기.
+
+**다음.** 같은 웨이브 `krafton`·`kraken` 이관 또는 F3.
+
+## 2026-08-28 — T2 이관 kkday
+
+**한 일.** `web/references/kkday/DESIGN.md` → Core v2. 산출 `docs/design-md-weight/migrated/kkday/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v12. F1 B2a 42=42 · F2 키 경로 대조 · gate PASS · portable_core true.
+
+**열린 것.** 원본 미수정. sibling 없음. 카탈로그 채택 아님. F3 감사 대기.
+
+**다음.** 같은 웨이브 잔여 브랜드 이관 또는 F3.
+
+## 2026-08-28 — T2 이관 kkbox
+
+**한 일.** `web/references/kkbox/DESIGN.md` → Core v2. 산출 `docs/design-md-weight/migrated/kkbox/{DESIGN.md,provenance.md,migration-log.md}`. 규칙집 v12. F1 B2a 26=26 · F2 키 경로 대조 · gate PASS · portable_core true.
+
+**열린 것.** 원본·sibling 미수정. 카탈로그 채택 아님. F3 감사 대기.
+
+**다음.** 같은 웨이브 `kkday` 이관 또는 F3.
+
 ## 2026-08-28 — 웨이브 27형 의미 검토 kia
 
 **한 일.** 독립 검토(A·C·D, 항목 7–11). 산출 4+원본+sibling 대조. YAML 10색·8 spacing·4 rounded 키 경로 분리, C2 방향 일치, 페르소나 동기 미승격, YAML/§ 긴 쪽 병기. **PASS.**
