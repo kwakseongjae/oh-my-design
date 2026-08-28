@@ -192,3 +192,8 @@ jobplanet
 jumpit
 kakaobank
 kakaogames
+kakaopage
+kakaopay
+kakaot
+kb-kookmin
+kbank

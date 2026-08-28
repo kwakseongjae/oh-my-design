@@ -1,3 +1,131 @@
+## 2026-08-28 — 웨이브 37 개정 kakaot
+
+**한 일.** FAIL 1 확정 결함만. Caption Type roles `:199`에 원본 §3 `ETA sublabels` 복원. 줄 589 불변, B2a 35=35. `FIX_DONE kakaot fixes=1`.
+
+**열린 것.** 카탈로그 채택 아님. 원본 미수정.
+
+**다음.** 웨이브 37 잔여 처분 없음(나머지 4개 PASS).
+
+## 2026-08-28 — 웨이브 27형 의미 검토 kbank = PASS
+
+**한 일.** 독립 검토(A·C·D, 항목 7–10). YAML 키 경로·§11 결론·C2 쌍닫힘·§13 서비스 오디언스 원문 착지·sibling 전용·융합·표면 귀속 착지. 고치지 않음.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 kakaopage = PASS
+
+**한 일.** 독립 검토(A·C·D, 항목 7–10). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 미승격·sibling 전용·융합·표면 귀속 착지. 고치지 않음.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 kakaopay = PASS
+
+**한 일.** 독립 검토(A·C·D, 항목 7–10). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 미승격·sibling 전용·융합·표면 귀속 착지. 고치지 않음.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 kb-kookmin = PASS
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–10). YAML 7색·4 spacing·square 0·listItem 3 키 경로 착지, §11 결론·C2 쌍닫힘·페르소나 미승격·sibling 전용·융합 dest 0. 고치지 않음.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 다음 브랜드 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 kakaot = FAIL 1
+
+**한 일.** 독립 검토(A·C·D). YAML 키 경로·C2 쌍닫힘·페르소나 미승격·표면 귀속은 착지. 원본 §3 Caption `ETA sublabels`가 산출 네 파일 dest 0 — Heading Large §3 추가는 착지한 같은 충돌을 Caption에서 다르게 처리.
+
+**열린 것.** 카탈로그 채택 아님. 산출·원본 미수정.
+
+**다음.** 같은 웨이브 잔여 브랜드 검토 또는 개정 발주.
+
+## 2026-08-28 — T2 F3 감사 kbank 완료
+
+**한 일.** 산출물·원본·sibling만 대조해 B2a 한정 3곳 신설+3곳 확장(30→33) + 원장 1:1 + 로그 2차 목적지(inspected URL·favicon slug dest)와 줄 포인터 정정. `AUDIT_DONE fixes=32`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 F3 또는 검토.
+
+## 2026-08-28 — T2 F3 감사 kb-kookmin 완료
+
+**한 일.** 산출물·원본·sibling만 대조해 B2a 한정 3곳 확장(28=28) + 원장 3행 동기화 + 로그 2차 목적지(getdesign/refero DESIGN dest 0)와 줄 포인터 정정. `AUDIT_DONE fixes=18`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 F3 또는 검토.
+
+## 2026-08-28 — T2 F3 감사 kakaot 완료
+
+**한 일.** 산출물·원본만 대조해 B2a 한정 5곳 확장(35=35) + 원장 5행 동기화 + 로그 2차 목적지(`tokens.source: prose-derived` DESIGN dest 0) 정정. `AUDIT_DONE fixes=15`.
+
+**열린 것.** 카탈로그 채택 아님. 원본 미수정. sibling 없음.
+
+**다음.** 같은 웨이브 다음 브랜드 F3 또는 검토.
+
+## 2026-08-28 — T2 F3 감사 kakaopage 완료
+
+**한 일.** B2a·E2 전담 감사. 본문 23=원장 23 유지, 한정 6곳 확장(좁은 쪽). 로그 목적지 교정. `AUDIT_DONE fixes=26`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 F3 또는 검토.
+
+## 2026-08-28 — T2 F3 감사 kakaopay
+
+**한 일.** B2a·E2 전담 감사. Service card `:235` 한정에 14px ≠ public-body 읽기를 접어 넣음(28=28). 원장 행 23 동기화. 로그 목적지 15건 실측 교정. `AUDIT_DONE fixes=17`.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** 같은 웨이브 잔여 브랜드 F3 또는 의미 검토.
+
+## 2026-08-28 — T2 이관 kakaopage 완료
+
+**한 일.** legacy `web/references/kakaopage/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/kakaopage/{DESIGN,provenance,migration-log}.md` 작성. 규칙집 v12. gate PASS, portable_core true, B2a 23=23.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 이관 또는 F3 감사.
+
+## 2026-08-28 — T2 이관 kbank 완료
+
+**한 일.** legacy `web/references/kbank/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/kbank/{DESIGN,provenance,migration-log}.md` 작성. 규칙집 v12. gate PASS, portable_core true, B2a 30=30.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 이관 또는 F3 감사.
+
+## 2026-08-28 — T2 이관 kb-kookmin 완료
+
+**한 일.** legacy `web/references/kb-kookmin/DESIGN.md`를 Core v2로 옮겨 `docs/design-md-weight/migrated/kb-kookmin/{DESIGN,provenance,migration-log}.md` 작성. 규칙집 v12. gate PASS, portable_core true, B2a 28=28.
+
+**열린 것.** 카탈로그 채택 아님. 원본·sibling 미수정.
+
+**다음.** 같은 웨이브 다음 브랜드 이관 또는 F3 감사.
+
+## 2026-08-28 — T2 이관 kakaot
+
+**한 일.** 규칙집 v12로 `kakaot` Core v2 이관. 법인 WebFetch와 conventional 제품 토큰 분리. §11 2017/2015·결론 문장 Scope 착지. B2a 35=35. gate PASS, `portable_core:true`.
+
+**열린 것.** 카탈로그 채택 아님. F3·의미 검토 대기.
+
+**다음.** 같은 웨이브 다음 브랜드 또는 F3.
+
+## 2026-08-28 — T2 이관 kakaopay 완료
+
+**한 일.** `web/references/kakaopay/DESIGN.md` → `docs/design-md-weight/migrated/kakaopay/` Core v2 3파일. 규칙집 v12. gate PASS, B2a 28=28.
+
+**열린 것.** 카탈로그 채택 아님. F3·의미 검토 대기.
+
+**다음.** 같은 웨이브 잔여 브랜드 또는 F3.
+
 ## 2026-08-28 — T2 의미 검토 kakaogames = PASS
 
 **한 일.** 독립 검토(A·C·D, 항목 7–10). YAML 키 경로·§11·C2 쌍닫힘·페르소나 미승격·융합/D1 dest 0·표면 귀속 착지.

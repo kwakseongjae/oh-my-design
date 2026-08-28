@@ -57,3 +57,9 @@ Search·Modal·FAB는 그렇게 했다).
 서체를 Compact에, padding·height·font를 fin.ai에 붙였다.
 **값이 원본에 있다는 것과 그 표면의 값이라는 것은 다르다.** 값 grep·키 경로 대조·sibling
 대조가 전부 통과하므로, 표면 귀속은 문장을 읽어야만 지킬 수 있다.
+
+**같은 값의 두 기록이 다르면 긴 쪽이 완전형이다 (웨이브 37 kakaot).** 원본이 YAML과 §표에
+같은 항목을 각각 적을 때, YAML은 축약형이고 §표가 그것을 풀어 쓴 경우가 있다. kakaot 원본
+§3 `:136`은 Caption use를 `Timestamps, fine print, ETA sublabels`로 적는데 산출은 YAML 쪽
+`Timestamps, fine print`만 옮겨 도메인 용어 `ETA sublabels`를 잃었다(원본 1 / 산출 0).
+**두 기록을 다 읽고 긴 쪽을 옮겨라.** 값 자체는 양쪽에 있으므로 값 grep으로는 안 잡힌다.
