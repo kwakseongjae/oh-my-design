@@ -1,4 +1,96 @@
-## 2026-08-28 — 웨이브 33 개정 icook
+## 2026-08-28 — 웨이브 27형 의미 검토 imweb
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0. **PASS**.
+- 열린 것: 산출 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 34 나머지 의미 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 instacart
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0. **PASS**.
+- 열린 것: 산출 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 34 나머지 의미 검토.
+- `REVIEW_DONE instacart PASS`
+
+## 2026-08-28 — 웨이브 27형 의미 검토 ikala
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0. **PASS**.
+- 열린 것: 산출 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 34 나머지 의미 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 iicombined
+- 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0. **PASS**.
+- 열린 것: 산출 미수정. 카탈로그 채택 아님.
+- 다음: 웨이브 34 나머지 의미 검토.
+
+## 2026-08-28 — 웨이브 27형 의미 검토 inflearn
+- 한 일: 독립 검토 A·C·D. YAML 키 경로·§11·C2 쌍닫힘·페르소나/sibling/융합 0. **PASS**.
+- 열린 것: 카탈로그 채택 아님. 산출 미수정.
+- 다음: 웨이브 34 나머지 검토.
+- `REVIEW_DONE inflearn PASS`
+
+## 2026-08-28 — T2 F3 감사 inflearn
+- 한 일: B2a·E2 감사. 본문 21→27 / 원장 21→27. 로그 dest 15건 정정. `AUDIT_DONE fixes=32`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 34 나머지 게이트/감사.
+- SHA `a9f65f7b6a326366161a00fcb38f9f29ad4ebf23813788863c3172a33a8b95d6`
+
+## 2026-08-28 — T2 F3 감사 iicombined
+- 한 일: B2a·E2 감사. 본문 한정 33→35, 원장 1:1. 로그 dest 10건 정정. `AUDIT_DONE fixes=18`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 34 나머지 게이트/감사.
+- SHA `8fcf8324cf6dceff847147c56227325e5f52184143cbaffbfe0cd9236bc5e251`
+
+## 2026-08-28 — T2 F3 감사 ikala
+- 한 일: B2a·E2 감사. Shape workhorse 한정 확장. 로그 dest 6건 정정. `AUDIT_DONE fixes=8`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 34 나머지 게이트/감사.
+- SHA `bc7e06196b6999bc1675ae6c5eddf830812e67dfb82e3b5f7bd45e14371044f4`
+
+## 2026-08-28 — T2 F3 감사 imweb
+- 한 일: B2a·E2 전담 감사. Scope `:11`·Elevation `:145` 한정 범위 확장(+0). 로그 dest 9행 실측 교정. 35=35.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 34 나머지 감사.
+- `AUDIT_DONE fixes=12`
+
+## 2026-08-28 — T2 F3 감사 instacart
+- 한 일: B2a·E2 전담 감사. 본문 33→34 / 원장 34. 로그 dest 교정. `audit-log.md` 기록.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 34 나머지 감사.
+- `AUDIT_DONE fixes=20`
+
+## 2026-08-28 — 웨이브 34 게이트 정정 inflearn
+- 한 일: Type roles Course badge Size `11px`→`11`. 원본 `size: 11`·`11px` 0. 게이트 PASS.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 34 나머지 게이트/감사.
+- `FIX_DONE inflearn fixes=1`
+
+## 2026-08-28 — T2 이관 ikala
+- 한 일: legacy `web/references/ikala/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/ikala/{DESIGN.md,provenance.md,migration-log.md}`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정. F3 감사 대기.
+- 다음: 웨이브 34 나머지 브랜드 또는 감사.
+- `DONE migrated=1`
+
+## 2026-08-28 — T2 이관 instacart
+- 한 일: legacy `web/references/instacart/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/instacart/{DESIGN.md,provenance.md,migration-log.md}`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정. F3 감사 대기.
+- 다음: 웨이브 34 나머지 브랜드 또는 감사.
+- `DONE migrated=1`
+
+## 2026-08-28 — T2 이관 imweb
+- 한 일: legacy `web/references/imweb/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/imweb/{DESIGN.md,provenance.md,migration-log.md}`.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정. F3 감사 대기.
+- 다음: 웨이브 34 나머지 브랜드 또는 감사.
+- `DONE migrated=1`
+
+## 2026-08-28 — T2 마이그레이션 iicombined
+- 한 일: legacy `web/references/iicombined/DESIGN.md`를 Core v2로 이관. 규칙집 v12.
+- 열린 것: 카탈로그 채택 아님. F3 감사 대기.
+- 다음: F3 또는 웨이브 34 다음 브랜드.
+- `DONE migrated=1`
+
+## 2026-08-28 — T2 이관 inflearn
+- 한 일: legacy Inflearn DESIGN.md를 Core v2로 이관. 규칙집 v12. F1/F2 수행. §11 연혁·결론 문장 보존.
+- 열린 것: 게이트 `px:11px` 오탐 보고. F3 감사 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 34 나머지 브랜드 또는 F3.
+- `DONE migrated=1`
+
 - 한 일: A1 `recipe-card.fg` `#564e4a`를 Story Card Text 행으로 복원. 줄 포인터 전수 갱신.
 - 열린 것: 카탈로그 채택 아님. 원본 미수정.
 - 다음: 웨이브 33 마감 또는 다음 브랜드.
