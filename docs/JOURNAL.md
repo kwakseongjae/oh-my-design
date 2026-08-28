@@ -1,3 +1,99 @@
+## 2026-08-28 — 웨이브 33 개정 icook
+- 한 일: A1 `recipe-card.fg` `#564e4a`를 Story Card Text 행으로 복원. 줄 포인터 전수 갱신.
+- 열린 것: 카탈로그 채택 아님. 원본 미수정.
+- 다음: 웨이브 33 마감 또는 다음 브랜드.
+- `FIX_DONE icook fixes=1`
+
+## 2026-08-28 — 웨이브 33 의미 검토 igaworks
+- 한 일: 독립 검토 A·C·D(+7–9). 값 경로·§11·C2·페르소나 파생물·sibling 융합·발명 도메인 0. PASS.
+- 열린 것: 카탈로그 채택 아님. 고치지 않음.
+- 다음: 웨이브 33 나머지 브랜드 검토.
+- `REVIEW_DONE igaworks PASS`
+
+## 2026-08-28 — T2 의미 검토 idus
+- 한 일: 독립 검토(A·C·D, w27형 7–9). YAML 키 경로 분리·§11 서사·C2 방향·페르소나 파생물 0.
+- 열린 것: 없음. 고치지 않음. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지 브랜드 검토.
+- `REVIEW_DONE idus PASS`
+
+## 2026-08-28 — T2 의미 검토 ichef
+- 한 일: 독립 검토(A·C·D, w27형 7–9). YAML 키 경로 분리·§11 서사·C2 방향·페르소나 파생물 0.
+- 열린 것: 없음. 고치지 않음. sibling 없음. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지 브랜드 검토.
+- `REVIEW_DONE ichef PASS`
+
+## 2026-08-28 — T2 의미 검토 icook
+- 한 일: 독립 검토(A·C·D, w27형 7–9). YAML `recipe-card.fg` 키 경로 미착지 1건.
+- 열린 것: FAIL 1. 고치지 않음. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지 브랜드 검토 또는 개정.
+- `REVIEW_DONE icook FAIL 1`
+
+## 2026-08-28 — 웨이브 33 의미 검토 ibm
+- 한 일: 독립 검토 A·C·D(+w27형 7–9). YAML 키 경로·§11 연혁·C2 쌍닫힘·페르소나 파생물·sibling 융합 실측. 판정 PASS.
+- 열린 것: 개정 없음. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지 검토.
+- `REVIEW_DONE ibm PASS`
+
+## 2026-08-28 — T2 F3 감사 idus
+- 한 일: B2a·E2 전담 감사. 본문 한정 33→35(`:487`·`:506` 신설, `:11`·`:133` 확장). 로그 dest 9행 교정(`audit-log.md`, fixes=17).
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 검토.
+- `AUDIT_DONE fixes=17`
+
+## 2026-08-28 — T2 F3 감사 ichef
+- 한 일: B2a·E2 전담 감사. 본문 한정 31→32(`:246` 신설·`:132` 확장). 로그 dest 9행 교정(`audit-log.md`, fixes=14).
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님. sibling 없음.
+- 다음: 웨이브 33 검토.
+- `AUDIT_DONE fixes=14`
+
+## 2026-08-28 — T2 F3 감사 ibm
+- 한 일: B2a·E2 전담 감사. 본문 한정 21=21 유지(Spacing·Font 범위 확장). 로그 dest 5행 교정(`audit-log.md`, fixes=9).
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 검토.
+- `AUDIT_DONE fixes=9`
+
+## 2026-08-28 — T2 F3 감사 igaworks
+- 한 일: B2a·E2 전담 감사. 본문 한정 33=33 유지. 로그 dest 6행+F2 교정(`audit-log.md`, fixes=7). DESIGN 무수정.
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 검토.
+- `AUDIT_DONE fixes=7`
+
+## 2026-08-28 — T2 F3 감사 icook
+- 한 일: B2a·E2 전담 감사. Family/Motion 한정 범위 확장(+0). 로그 dest 14건 교정. 33=33.
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지 감사.
+- `AUDIT_DONE fixes=18`.
+
+## 2026-08-28 — T2 이관 igaworks
+- 한 일: legacy `web/references/igaworks/DESIGN.md` → Core v2 `docs/design-md-weight/migrated/igaworks/` (규칙집 v12). B2a 33=33. §11 mobile advertising attribution / AI Moat / we are the data layer 결론 Scope 착지.
+- 열린 것: F3 감사·의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 닫기(검토).
+- `DONE migrated=1`.
+
+## 2026-08-28 — T2 이관 icook
+- 한 일: legacy `web/references/icook/DESIGN.md` → Core v2 `docs/design-md-weight/migrated/icook/` (규칙집 v12). B2a 33=33. §11 2011/Polydice/愛料理/anyone can post a recipe 결론 Scope 착지.
+- 열린 것: F3 감사·의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지(`igaworks`) 이관.
+- `DONE migrated=1`.
+
+## 2026-08-28 — T2 이관 idus
+- 한 일: legacy `web/references/idus/DESIGN.md` → Core v2 `docs/design-md-weight/migrated/idus/` (규칙집 v12). B2a 33=33. §11 2014/텀블벅/hard-sell scarcity 결론 Scope 착지.
+- 열린 것: F3 감사·의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지(`igaworks`) 이관.
+- `DONE migrated=1`.
+
+## 2026-08-28 — T2 이관 ichef
+- 한 일: legacy `web/references/ichef/DESIGN.md` → Core v2 `docs/design-md-weight/migrated/ichef/` (규칙집 v12). prose-derived·라이브 미검·B2a 31=31. §11 2012/Mazendo/noodle-counter 결론 Scope 착지.
+- 열린 것: F3 감사·의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지(`icook·idus·igaworks`) 이관.
+- `DONE migrated=1`.
+
+## 2026-08-28 — T2 이관 ibm
+- 한 일: legacy `web/references/ibm/DESIGN.md` → Core v2 `docs/design-md-weight/migrated/ibm/` (규칙집 v12). Carbon 닫힘 B2a 21=21. §11 1911/1924 결론 문장 Scope 착지.
+- 열린 것: F3 감사·의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 33 나머지(`ichef·icook·idus·igaworks`) 이관.
+- `DONE migrated=1`.
+
 ## 2026-08-28 — 의미 검토 hyundaicard
 - 한 일: 독립 검토 A·C·D(+웨이브 27형 7–9). YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 본문 0·sibling 융합 0.
 - 열린 것: 없음. PASS.

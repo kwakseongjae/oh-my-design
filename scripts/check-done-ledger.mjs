@@ -16,7 +16,7 @@
  *   node scripts/check-done-ledger.mjs --fix     # append them, then report
  */
 
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -24,8 +24,13 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const MIGRATED = join(ROOT, "docs", "design-md-weight", "migrated");
 const LEDGER = join(MIGRATED, "DONE.txt");
 
+// A directory alone does not mean a migration happened. `migrate-reference.mjs
+// --print-prompt` creates the brand directory while only rendering a prompt, so
+// preparing the next wave's prompts used to make five unmigrated brands look
+// finished — and --fix wrote them into DONE.txt. The artifact is the evidence.
 const migrated = readdirSync(MIGRATED, { withFileTypes: true })
   .filter((e) => e.isDirectory())
+  .filter((e) => existsSync(join(MIGRATED, e.name, "DESIGN.md")))
   .map((e) => e.name)
   .sort();
 
