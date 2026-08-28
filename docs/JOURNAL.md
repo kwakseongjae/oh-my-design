@@ -1,3 +1,88 @@
+## 2026-08-28 — 개정 hogangnono
+- 한 일: 웨이브 31 FAIL 2. §11 결론 문장 Scope 복원, Outline Primitive type을 `not in the token set`으로 되돌림.
+- 열린 것: 없음. 원본 미수정. B2a 31=31. SHA `2a5136d75485e0f87c60d9d7230bf5ae96c826a38ec940a0a1ce561cdbca9334`.
+- 다음: 웨이브 31 wave-close (hubspot 개정도 완료).
+
+## 2026-08-28 — 개정 hubspot
+- 한 일: 웨이브 31 FAIL 1. Audience `:28`에서 페르소나 파생 `Solutions Partner agencies` 삭제. 도입 목록 네 그룹만 유지.
+- 열린 것: 없음. 원본 미수정. B2a 26=26. SHA `f3955b8a86af5a134ca32fd571c48bbbf5fe01fac5182bdc9b87054e8e8bbf06`.
+- 다음: 웨이브 31 남은 개정 hogangnono.
+
+## 2026-08-28 — 의미 검토 hp
+- 한 일: 독립 검토(A·C·D, 웨이브 27형 7–9). YAML 키경로·§11·C2 방향·sibling 융합·D1·페르소나 본문 파생물 실측 PASS.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 31 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 heydealer
+- 한 일: 독립 검토(A·C·D, 웨이브 27형 7–9). YAML 키경로·§11·C2·sibling 융합·D1·페르소나 파생물 실측 PASS.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 31 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 hogangnono
+- 한 일: 독립 검토(A·C·D, 웨이브 27형 7–9). YAML 키경로·C2·sibling 융합·D1·페르소나 본문은 실측 PASS. §11 결제거절 문장 소실 + Outline type 발명.
+- 열린 것: FAIL 2. 산출 미수정.
+- 다음: 개정 또는 웨이브 31 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 heptabase
+- 한 일: 독립 검토(A·C·D, 웨이브 27형 7–9). YAML 키경로·§11·C2·sibling 융합·D1·페르소나 파생물 실측 PASS.
+- 열린 것: 없음. 산출 미수정.
+- 다음: 웨이브 31 나머지 의미 검토.
+
+## 2026-08-28 — 의미 검토 hubspot
+- 한 일: 독립 검토(A·C·D, 웨이브 27형 7–9). YAML 키경로·§11·C2·sibling 융합·D1은 실측 PASS. Audience `Solutions Partner agencies`만 D2.
+- 열린 것: FAIL 1. 산출 미수정.
+- 다음: 개정 또는 웨이브 31 나머지 의미 검토.
+
+## 2026-08-28 — F3 감사 hp
+- 한 일: B2a·E2 전담 감사. 본문 완전형 30→33, 원장 30→33. Live computed·Assets logo·Search keep-both 신설 + Scope ¶2·¶3 확장. 로그 `#0096D6` 22→20 및 줄포인터 9행 교정. `AUDIT_DONE fixes=18`.
+- 열린 것: 카탈로그 채택 아님. 범위 밖 D2a 로그 A5a 전기 조각 mention. 의미 검토 대기.
+- 다음: 웨이브 31 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 hogangnono
+- 한 일: B2a·E2 전담 감사. 본문 한정 27→31, 원장 27→31. Photoswipe/배포서체/계약밖/Layout 재서술 신설 + Type roles 확장. 로그 dest 20·79–105·463·52–61 교정.
+- 열린 것: 카탈로그 채택 아님. 의미 검토 대기.
+- 다음: 웨이브 31 나머지 F3 또는 의미 검토.
+
+## 2026-08-28 — F3 감사 heptabase
+- 한 일: B2a·E2 전담 감사. 본문 완전형 29→32, 원장 32=32. 한정 신설 3·확장 3, 로그 목적지 9행 교정. `AUDIT_DONE fixes=16`. SHA `daae28f9…`.
+- 열린 것: 카탈로그 채택 아님. 범위 밖 B1 `:224` sibling 분류 인용, D2a 로그 A5a 전기 조각 mention.
+- 다음: 웨이브 31 나머지 감사 또는 의미 검토.
+
+## 2026-08-28 — T2 F3 감사 heydealer
+- 한 일: B2a·E2만. Scope `:9` 한정 확장, Official distributed asset `:186` 한정 신설, 원장 31=31, 로그 dest 9건(442·62–68·187/193·외부/실내·B3 534). `audit-log.md`. `AUDIT_DONE fixes=12`.
+- 열린 것: 의미 검토 대기. 카탈로그 채택 아님.
+- 다음: 웨이브 31 나머지 감사 또는 검토.
+
+## 2026-08-28 — 웨이브 31 F3 hubspot
+- 한 일: B2a·E2 전담 감사. 본문 24→26 / 원장 26=26. Semantic `:90`·Layout `:553` 한정 신설, Scope `:13` 접기. 로그 `full: 9999`·canvas P 73·spacing compact dest 교정. `AUDIT_DONE fixes=13`.
+- 열린 것: 카탈로그 채택 아님. 의미 검토 대기. Audience `Solutions Partner agencies`는 D2a 범위 밖 관찰.
+- 다음: 웨이브 31 나머지 감사 또는 의미 검토.
+
+## 2026-08-28 — T2 이관 hp
+- 한 일: legacy `web/references/hp/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/hp/{DESIGN,provenance,migration-log}.md`. 규칙집 v12. gate PASS / portable_core true / B2a 30=30.
+- 열린 것: 카탈로그 채택 아님. F3 감사·의미 검토 대기.
+- 다음: 웨이브 31 나머지 이관 또는 감사.
+
+## 2026-08-28 — T2 이관 hogangnono
+- 한 일: legacy `web/references/hogangnono/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/hogangnono/{DESIGN,provenance,migration-log}.md`. 규칙집 v12. gate PASS / portable_core true / B2a 27=27.
+- 열린 것: 카탈로그 채택 아님. F3 감사·의미 검토 대기.
+- 다음: 웨이브 31 나머지(`hp`) 이관 또는 감사.
+
+## 2026-08-28 — T2 이관 heydealer
+- 한 일: legacy `web/references/heydealer/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/heydealer/{DESIGN,provenance,migration-log}.md`. 규칙집 v12. gate PASS / portable_core true / B2a 30=30.
+- 열린 것: 카탈로그 채택 아님. F3 감사·의미 검토 대기.
+- 다음: 웨이브 31 나머지(`hogangnono·hp`) 이관 또는 감사.
+
+## 2026-08-28 — T2 이관 heptabase
+- 한 일: legacy `web/references/heptabase/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/heptabase/{DESIGN,provenance,migration-log}.md`. 규칙집 v12. gate PASS / portable_core true / B2a 29=29.
+- 열린 것: 카탈로그 채택 아님. F3 감사·의미 검토 대기.
+- 다음: 웨이브 31 나머지(`heydealer·hogangnono·hp·hubspot`) 이관.
+
+## 2026-08-28 — T2 이관 hubspot
+- 한 일: 규칙집 v12로 `web/references/hubspot/DESIGN.md` → `docs/design-md-weight/migrated/hubspot/{DESIGN,provenance,migration-log}.md`. Canvas 닫힘 B2a 24=24. §11 연혁 착지. 게이트 PASS.
+- 열린 것: 카탈로그 채택 아님. F3 감사·의미 검토 대기.
+- 다음: 웨이브 31 나머지 이관 또는 감사.
+
 ## 2026-08-28 — 의미 검토 headspace
 - 한 일: 독립 검토(A·C·D). YAML 키 경로·§11 고유명사·C2 방향·페르소나 파생물 0·sibling 융합 0·F2 포인터 현행. **PASS**.
 - 열린 것: 없음. 산출 미수정.

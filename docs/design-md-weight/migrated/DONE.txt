@@ -162,3 +162,8 @@ hahow
 hana
 hashicorp
 headspace
+heptabase
+heydealer
+hogangnono
+hp
+hubspot
