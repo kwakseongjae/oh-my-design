@@ -1,3 +1,165 @@
+## 2026-08-29 — 웨이브 43 마감, 안전 중단 (opus5)
+
+**한 일.** 웨이브 43 마감(F3 99 + 개정 7, 검토 7건은 이 런 최저). 원장 229/440. F3 무실행 2건을 `audit-log.md` 부재로 적발해 복구 — 기계 검사 3종은 그 상태에서도 전부 통과했다.
+
+**열린 것.** mailchimp 재검토 1건 미실행(중단 지시). krds known-open 5건. T3-3 레인 B 차단·채점 미착수. 푸시 승인 대기(origin/main 대비 10커밋).
+
+**다음.** mailchimp 재검토 → 웨이브 44 `makinarocks · mastercard · maum-ai · medibloc · megabox`.
+
+**발견.** 웨이브 43 결함 7건이 전부 소실형이고 발명형 0건 — 예방 층이 「만드는 결함」을 막았으니 남은 건 「빠뜨리는 결함」이고, 이건 워커 자가 대조로 잡아야 한다.
+
+## 2026-08-29 — mailchimp 산출물 개정 (의미 검토 FAIL 2)
+
+**한 일.** A1 소실 2건 복원. §11 고유 서사 연결문, §15 easing Use/시그니처 페어링. dest 재실측. limiter 22=22, `--gate-only` PASS.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 다음 브랜드 의미 검토 또는 개정.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 maicoin
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). FAIL 4 개정본 SHA `b27e27ed…` = `PASS`. YAML 키 경로·§11/모션/패딩 복원·C2 쌍닫힘·페르소나 파생물 0. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 다음 브랜드 의미 검토.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 lovable
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). FAIL 1 개정 이후 본문 SHA `35ec00…`. `PASS`. YAML 키 경로·§11 경계 구·C2 쌍닫힘·sibling 미승격·F2 dest 현행. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 다음 브랜드 의미 검토.
+
+## 2026-08-29 — maicoin 산출물 개정 (의미 검토 FAIL 4)
+
+**한 일.** A1 소실 4건 복원. §11 고유 서사, zh-TW dense-legibility, 모션 제약, §5 padding/whitespace 목적 절. dest 재실측. limiter 22=22, `--gate-only` PASS.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 다음 브랜드 의미 검토 또는 개정.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 mailchimp
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). `FAIL 2` — §11 고유 서사 연결문·§15 easing Use/시그니처 페어링 산출 dest 0. YAML 키 경로·C2 쌍닫힘·sibling 미승격은 비결함. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님. 개정 레인 대기.
+
+**다음.** mailchimp Scope/Motion에 두 결함 복원하거나 다음 브랜드 검토.
+
+## 2026-08-29 — lovable 산출물 개정 (의미 검토 FAIL 1)
+
+**한 일.** A1 소실 1건 복원. 원본 §11 `That product context is not evidence for private workspace controls` 를 Experience Scope에 사실 인용으로 되돌림. dest 재실측. limiter 22=22, `--gate-only` PASS.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 다음 브랜드 의미 검토 또는 개정.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 lunit
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). `PASS`. YAML 키 경로·수치·C2 쌍닫힘·proof 미승격·F2 dest 현행. sibling `.verification.md` ABSENT. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 다음 브랜드 의미 검토.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 maicoin
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). `FAIL 4` — §11 고유 서사·dense Traditional-Chinese·§15 가격 모션 제약·§5 edge-to-edge 산출 dest 0. YAML 키 경로·C2 쌍닫힘·sibling 미승격은 비결함. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님. 개정 레인 대기.
+
+**다음.** maicoin Scope/Family/Motion/Layout에 네 결함 복원하거나 다음 브랜드 검토.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 lotteon
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). `PASS`. YAML 키 경로·연혁 수치·C2 쌍닫힘·sibling 미승격·F2 dest 현행. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 다음 브랜드 의미 검토.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 lovable
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). `FAIL 1` — 원본 §11 `private workspace controls` 산출 4파일 dest 0. YAML 키 경로·C2 쌍닫힘·sibling 미승격은 비결함. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님. 개정 레인 대기.
+
+**다음.** lovable Scope에 §11 문서≠private workspace controls 경계 복원하거나 다음 브랜드 검토.
+
+## 2026-08-29 — T2 F3 감사 maicoin
+
+**한 일.** B2a·E2 전담 감사. 본문 완전형 22=22(좁은 이름 범위) — 한정 8줄 확장, 원장 8행 정렬, 로그 dest 9건 교정. SHA `5e73b989f70d58f6353ccb258afabe412e49d2ce86196242db9bd90b69a48328`. `AUDIT_DONE fixes=25`.
+
+**열린 것.** 카탈로그 채택 아님. 의미 검토 레인 미실행. A5a `Register now` SRC 3 / DESIGN 2는 범위 밖 보고.
+
+**다음.** 웨이브 43 나머지 F3 또는 의미 검토.
+
+## 2026-08-29 — T2 F3 감사 mailchimp
+
+**한 일.** B2a·E2 전담 감사. 본문 완전형 22=22(좁은 이름 범위) — 한정 4줄 확장, 원장 4행 정렬, 로그 dest 9건 교정. SHA `a90fc7724b7ba9aed9e59ce7ed6d0e40a8884ceeab13230423f2ceda82b59fd4`. `AUDIT_DONE fixes=17`.
+
+**열린 것.** 카탈로그 채택 아님. 의미 검토 레인 미실행.
+
+**다음.** 웨이브 43 나머지 F3 또는 의미 검토.
+
+## 2026-08-29 — T2 F3 감사 lunit
+
+**한 일.** B2a·E2 전담 감사. 본문 완전형 26=26(좁은 이름 범위+ferrari 절 제목) — 한정 8줄 확장, 원장 9건 정렬, 로그 dest 4건 교정. SHA `8b7504e3347db5430eab0e16816d2254b8f00bde29d7c8eaef08400824d65dcb`. `AUDIT_DONE fixes=21`.
+
+**열린 것.** 카탈로그 채택 아님. 의미 검토 레인 미실행.
+
+**다음.** 웨이브 43 나머지 F3 또는 의미 검토.
+
+## 2026-08-29 — T2 F3 감사 lovable
+
+**한 일.** B2a·E2 전담 감사. 본문 완전형 22=22(좁은 이름 범위) — 한정 4줄 확장, 원장 4행 정렬, 로그 dest 6건 교정. SHA `f6a3183572445a602b257f4a8d6872dbd100871bb7a936bb04c74812f9804945`. `AUDIT_DONE fixes=14`.
+
+**열린 것.** 카탈로그 채택 아님. 의미 검토 레인 미실행.
+
+**다음.** 웨이브 43 나머지 F3 또는 의미 검토.
+
+## 2026-08-29 — T2 마이그레이션 mailchimp
+
+**한 일.** `web/references/mailchimp/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/mailchimp/{DESIGN,provenance,migration-log}.md`. 규칙집 v12. gate PASS, portable_core true, B2a 22=22.
+
+**열린 것.** F3 미실행. 카탈로그 채택 아님.
+
+**다음.** 웨이브 43 나머지 또는 F3 감사.
+
+## 2026-08-29 — T2 F3 감사 lotteon
+
+**한 일.** B2a·E2 전담 감사. 본문 완전형 22=22(좁은 이름 범위) — 한정 8줄 확장, 원장 8행 정렬, 로그 dest 6건 교정. SHA `c521cfe81c9c481a00b83eec60a26c031cafc5c6bf29e019072b97191d29579f`. `AUDIT_DONE fixes=22`.
+
+**열린 것.** 카탈로그 채택 아님. 의미 검토 레인 미실행.
+
+**다음.** 웨이브 43 나머지 F3 또는 의미 검토.
+
+## 2026-08-29 — T2 마이그레이션 maicoin
+
+**한 일.** `web/references/maicoin/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/maicoin/{DESIGN,provenance,migration-log}.md`. 규칙집 v12. gate PASS, portable_core true, B2a 22=22.
+
+**열린 것.** F3 미실행. 카탈로그 채택 아님.
+
+**다음.** 웨이브 43 나머지 또는 F3 감사.
+
+## 2026-08-29 — T2 마이그레이션 lotteon
+
+**한 일.** `web/references/lotteon/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/lotteon/{DESIGN,provenance,migration-log}.md`. 규칙집 v12. gate PASS, portable_core true, B2a 22=22.
+
+**열린 것.** F3 미실행. 카탈로그 채택 아님.
+
+**다음.** 웨이브 43 나머지 또는 F3 감사.
+
+## 2026-08-29 — T2 마이그레이션 lovable
+
+**한 일.** `web/references/lovable/DESIGN.md`를 Core v2로 옮김. 산출 `docs/design-md-weight/migrated/lovable/{DESIGN,provenance,migration-log}.md`. 규칙집 v12. gate PASS, portable_core true, B2a 22=22.
+
+**열린 것.** F3 미실행. 카탈로그 채택 아님.
+
+**다음.** 웨이브 43 나머지(`lotteon` 이후) 또는 F3 감사.
+
 ## 2026-08-29 — 웨이브 42 마감(5/5 PASS), T3-3 레인 A 2기업 완주 (opus5)
 
 **한 일.** 웨이브 42를 잔여 없이 닫았다(F3 92 + 개정 10, 2차 전원 PASS). 원장 224/440. T3-3 레인 A apple·toss 24/24칸 완주($26). hubspot형 D2를 F3(탐지)에서 워커(예방)로 승격. 메모리 예산기·판정문 추출기 신설.
