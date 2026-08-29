@@ -191,9 +191,10 @@
  ],
  "resealedAt": "2026-08-26",
  "resealNote": "평가자 sol→composer-2.5 교체(사용자 결정). 근거 docs/reviews/t3-3-reseal-proposal-2026-08-26-opus5.md · 2026-08-26 파생 드리프트 정정으로 봉인 SHA 이동(1e79bd24 → a0528047). 근거 docs/reviews/t3-3-reseal-drift-2026-08-26-opus5.md",
- "RUBRIC_FROZEN_SHA": "a052804740a932341643bada088dbb55df1ff3c6",
- "frozenAt": "2026-08-26",
+ "RUBRIC_FROZEN_SHA": "bc5f47041f0fc6e8d45ef8f4b500f1e1860a1914",
+ "frozenAt": "2026-08-29",
  "pathResealedAt": "2026-08-29",
  "pathResealNote": "arm 호스트 호출 경로 재봉인(armHost.via → grok-build-cli:grok-4.6). 실행 게이트 11항은 전부 DONE 상태를 유지한다 — 바뀐 것은 호출 경로 문자열이고 게이트가 요구하는 산출물·봉인값은 그대로다. resealedAt(명부 스탬프)은 올리지 않는다. 파생 정정 2건: 8/26 스모크가 점유하던 본 실험 칸(lane-a/apple/omd/rep-1)을 03-runs-smoke-archive/로 비웠고, run.json 골격 216칸에 via 필드를 추가했다. 근거 docs/reviews/t3-3-reseal-armhost-2026-08-29-opus5.md (grok-4.6 Q1 APPROVE / Q2·Q3·Q4 REVISE)",
- "RUBRIC_FROZEN_SHA_status": "STALE — a0528047은 옛 via 상태를 봉인한다. 2026-08-29 경로 재봉인의 내용 커밋 SHA로 핀 커밋에서 옮긴다. 그 전에는 T3-3을 열지 않는다(§9)."
+ "RUBRIC_FROZEN_SHA_status": "CURRENT — bc5f47041f0fc6e8d45ef8f4b500f1e1860a1914 (내용 커밋 bc5f4704)가 arm 호스트 경로 재봉인을 포함한 트리를 봉인한다. 직전 a0528047은 옛 via 상태이며 그것으로 T3-3을 열지 않는다.",
+ "previousFrozenSha": "a052804740a932341643bada088dbb55df1ff3c6"
 }
