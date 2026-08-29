@@ -21,3 +21,8 @@ tools/node_modules
 # is preserved — an immutable store plus a manifest — rather than committing
 # images into the repo.
 03-runs/
+
+# 스모크 아카이브도 run 산출물이다 — 03-runs/와 같은 관리 정책을 따른다.
+# README만 추적해 처분 근거를 남기고, 산출물 자체는 커밋하지 않는다.
+03-runs-smoke-archive/*
+!03-runs-smoke-archive/README.md
