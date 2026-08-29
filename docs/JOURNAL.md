@@ -1,3 +1,189 @@
+## 2026-08-29 — 웨이브 42 마감(5/5 PASS), T3-3 레인 A 2기업 완주 (opus5)
+
+**한 일.** 웨이브 42를 잔여 없이 닫았다(F3 92 + 개정 10, 2차 전원 PASS). 원장 224/440. T3-3 레인 A apple·toss 24/24칸 완주($26). hubspot형 D2를 F3(탐지)에서 워커(예방)로 승격. 메모리 예산기·판정문 추출기 신설.
+
+**열린 것.** krds known-open 5건. T3-3 레인 B 차단(자격증명). 채점 미착수. 푸시 승인 대기(origin/main 대비 9커밋).
+
+**다음.** 웨이브 43 `lotteon · lovable · lunit · maicoin · mailchimp`.
+
+**발견.** 기계화 가능한 결함 계열은 3→1→0으로 사라졌으나 검토 결함은 9~12건에서 평평하다. 판단 영역은 층을 앞으로 옮기는 것 외에 수단이 없다.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 liner
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). FAIL 3 개정 이후 본문 SHA `7be3b18d…` = PASS. 직전 복원(§11 8바늘 / Plan name 17px / `#000000` nav links) dest≥1. 산출 미수정.
+
+**열린 것.** 없음(이 브랜드).
+
+**다음.** REVIEW_DONE liner PASS.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 loom
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). FAIL 3 개정 이후 본문 SHA `e568649e…` = PASS. 직전 복원(§11 서사 / §3 Notes / tracking warmth) dest≥1. 산출 미수정.
+
+**열린 것.** 없음(이 브랜드).
+
+**다음.** REVIEW_DONE loom PASS.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 likelion
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). D2 개정 이후 본문 SHA `b8721821…`. PASS. 산출 미수정.
+
+**열린 것.** 없음(이 브랜드).
+
+**다음.** REVIEW_DONE likelion PASS.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 lezhin
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). 개정본 SHA `00c5023a…` = PASS. 직전 FAIL 3(`8–12px` / Label 500-or-600 / `refero — not checked`) dest≥1. 산출 미수정.
+
+**열린 것.** 없음(이 브랜드).
+
+**다음.** REVIEW_DONE lezhin PASS.
+
+## 2026-08-29 — loom 개정 (FAIL 3)
+
+**한 일.** §11 서사 8바늘 Scope 복원, §3 Notes 긴 쪽 병기, tracking warmth 복원. dest 13행 갱신. limiter 22=22, gate-only PASS.
+
+**열린 것.** 없음(이 브랜드).
+
+**다음.** FIX_DONE loom fixed=3 logdest=13.
+
+## 2026-08-29 — liner 개정 (FAIL 3)
+
+**한 일.** §11 고유 8바늘 Scope 복원, §9 Plan name 17px와 `#000000` nav links 착지. dest 13행 갱신. limiter 24=24, gate-only PASS.
+
+**열린 것.** 없음(이 브랜드).
+
+**다음.** FIX_DONE liner fixed=3 logdest=13.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 liner
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). FAIL 3: §11 anti-hallucination·yellow line·passive curation A1, §9 Plan name 17px A3, nav links `#000000` A3. 산출 미수정.
+
+**열린 것.** 개정 대기.
+
+**다음.** 판정만. REVIEW_DONE liner FAIL 3.
+
+## 2026-08-29 — lezhin 개정 (FAIL 3)
+
+**한 일.** §9 `8–12px` 거터 착지, §3 Label 긴 쪽 병기, Named gaps `refero` 원문 복원. dest 13행 갱신. limiter 24=24, gate-only PASS.
+
+**열린 것.** 없음(이 브랜드).
+
+**다음.** FIX_DONE lezhin fixed=3 logdest=13.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 loom
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). FAIL 3: §11 design expression·lowers the barrier A1, §3 Notes YAML 짧은 쪽 item 11, tracking warmth A1. 산출 미수정.
+
+**열린 것.** 개정 대기.
+
+**다음.** 판정만. REVIEW_DONE loom FAIL 3.
+
+## 2026-08-29 — likelion 개정 (D2)
+
+**한 일.** Audience에서 §13 미완 슬롯 승격 삭제. dest 6행 갱신. limiter 24=24, gate-only PASS.
+
+**열린 것.** 없음(이 브랜드).
+
+**다음.** FIX_DONE likelion fixed=1 logdest=6.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 likelion
+
+**한 일.** 독립 검토(A·C·D). FAIL 1: Audience `public documentation visitors` D2 (hubspot형 소속 재구성 + §13 그룹 라벨 승격). 산출 미수정.
+
+**열린 것.** 개정 대기.
+
+**다음.** 판정만. REVIEW_DONE likelion FAIL 1.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 lguplus
+
+**한 일.** 독립 검토(A·C·D, 추가형 7–11). PASS. YAML 6색·spacing/rounded 키 분리, C2 쌍닫힘, 페르소나 파생물 0, sibling 90px 미승격. 산출 미수정.
+
+**열린 것.** 없음(이 브랜드).
+
+**다음.** 판정만. REVIEW_DONE lguplus PASS.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 lezhin
+
+**한 일.** 독립 검토(A·C·D). FAIL 3: §9 `8–12px` 거터 A3, §3 Label `500 or 600` 긴 쪽 A1 item 11, Named gaps `styles.refero.design` D1a. 산출 미수정.
+
+**열린 것.** 개정 대기.
+
+**다음.** 판정만. REVIEW_DONE lezhin FAIL 3.
+
+## 2026-08-29 — T2 F3 감사 loom
+
+**한 일.** B2a·E2 전담 감사. 본문 한정 8곳 확장(22=22), 원장 행 8곳 정렬, Compact `16px / 700` 오귀속·`8px base unit`/`Menu toggle` dest 0 교정, F2 재실측. `AUDIT_DONE fixes=20`. SHA `e693b2ae50f38425c15065e87cf64e4cb0da50a19c33bc00604a213be1b4b943`.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 감사 산출은 `docs/design-md-weight/migrated/loom/audit-log.md`.
+
+## 2026-08-29 — T2 F3 감사 liner
+
+**한 일.** B2a·E2 전담 감사. 본문 한정 8곳 확장(24=24), 원장 행 8곳+경계 1 정렬, D2a 거짓 라벨 주장 교정, F2 재실측. `AUDIT_DONE fixes=20`. SHA `202003b8619c723f3e24b538cb8d0a1ab146cc9935b33169b62de3affe56f0ae`.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 감사 산출은 `docs/design-md-weight/migrated/liner/audit-log.md`.
+
+## 2026-08-29 — T2 F3 감사 lezhin
+
+**한 일.** B2a·E2 전담 감사. 본문 한정 7곳(신설 1 → 23→24), 원장 행 7곳 정렬, label/caption/Direct dest·CSS 3건 E2a 교정. `AUDIT_DONE fixes=22`. SHA `937393836178ec1e06601ab8014cceb04ceec21b9d2bd4d4f9390983be6b8e68`.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 감사 산출은 `docs/design-md-weight/migrated/lezhin/audit-log.md`.
+
+## 2026-08-29 — T2 F3 감사 lguplus
+
+**한 일.** B2a·E2 전담 감사. 본문 한정 8곳 확장(22=22), 원장 행 8곳 정렬, §9 거짓 2차 목적지 교정, F2 재실측. `AUDIT_DONE fixes=20`. SHA `268ab3f5e2bb0ea8375fe4c11677bf3c447941a6afa267c0b7282c47d3e1fe44`.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 감사 산출은 `docs/design-md-weight/migrated/lguplus/audit-log.md`.
+
+## 2026-08-29 — T2 이관 liner
+
+**한 일.** `web/references/liner/DESIGN.md` → Core v2 이관. 산출 3파일, 규칙집 v12, B2a 24=24, gate PASS, portable_core true, A5a 23/0. SHA `dc1b0b348c6d4cdb23462ef13964697d56c07794d155ec1825e394254ede629e`.
+
+**열린 것.** 카탈로그 채택 아님. F3 미실행.
+
+**다음.** 웨이브 42 잔여 없음(liner가 마지막).
+
+## 2026-08-29 — T2 이관 loom
+
+**한 일.** `web/references/loom/DESIGN.md` → Core v2 이관. 산출 3파일, 규칙집 v12, B2a 22=22, gate PASS, portable_core true, A5a 12+12/0. SHA `b6375fee33f41311ec8664a4326b018b51c63cc006962a56a31f3f467e16bc79`.
+
+**열린 것.** 카탈로그 채택 아님. F3 미실행.
+
+**다음.** 웨이브 42 잔여 `liner`.
+
+## 2026-08-29 — T2 이관 likelion
+
+**한 일.** `web/references/likelion/DESIGN.md` → Core v2 이관. 산출 3파일, 규칙집 v12, B2a 22=22, gate PASS, portable_core true, A5a 6/6. SHA `8bda2292eeaf97ea2330ee20fc567c17d615a79817f3278c418845d83fa4e760`.
+
+**열린 것.** 카탈로그 채택 아님. F3 미실행.
+
+**다음.** 웨이브 42 잔여 `liner · loom`.
+
+## 2026-08-29 — T2 이관 lguplus
+
+**한 일.** `web/references/lguplus/DESIGN.md` → Core v2 이관. 산출 3파일, 규칙집 v12, B2a 22=22, gate PASS, A5a 9/9.
+
+**열린 것.** 카탈로그 채택 아님. F3 미실행.
+
+**다음.** 웨이브 42 잔여 `likelion · liner · loom`.
+
+## 2026-08-29 — T2 이관 lezhin
+
+**한 일.** `web/references/lezhin/DESIGN.md` → Core v2 산출 3파일. 규칙집 v12. gate PASS, portable_core true, limiter 23=23, YAML use 19/19. SHA `28d80e55654d9c7eff8c232f4ebae938e7e78f418138cd402f5f3d7c95806df4`.
+
+**열린 것.** 카탈로그 채택 아님. F3 미실행. 웨이브 42 잔여 `lguplus · likelion · liner · loom`.
+
+**다음.** 같은 웨이브 다음 브랜드.
+
 ## 2026-08-29 — 웨이브 40·41 마감, grok build 전환, T3-3 재봉인 (opus5)
 
 **한 일.** cursor-agent 우회를 접고 grok build CLI로 복귀(원설계 경로). 웨이브 40·41 마감 — F3 274건 + 개정 40건, 원장 209→**219/440**. 검사기 2종 신설로 기계:검토 비율을 3:12 → 17:9로 뒤집었다. T3-3 arm 호스트 재봉인(`bc5f4704` + 핀 `54aaf98a`), 레인 A apple 12/12 완주.
