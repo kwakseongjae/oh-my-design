@@ -1,6 +1,7 @@
-# 웨이브 36–45 착수표
+# 웨이브 36–50 착수표
 
-잔여 261브랜드 중 알파벳 순 50개. 완주 시 원장 **228 / 440 (51%)**.
+잔여 브랜드 중 알파벳 순 75개(웨이브 36–50). 완주 시 원장 **253 / 440 (58%)**.
+46–50은 2026-08-29 추가 — 사용자 지시로 웨이브 50까지 승인 없이 자율 진행한다.
 
 **골든 샘플 3개(`29cm` · `karrot` · `musinsa`)는 대상이 아니다.** `migrated/`에 없어서
 잔여 목록에 섞여 나오지만 `golden-samples/`에 있고 DONE.txt에 등재돼 있다. 웨이브 37을
@@ -18,6 +19,11 @@
 | 43 | lotteon · lovable · lunit · maicoin · mailchimp |
 | 44 | makinarocks · mastercard · maum-ai · medibloc · megabox |
 | 45 | meituan · melon · mercari · mercury · meta |
+| 46 | microsoft · mikan · mildang · millie · minimax |
+| 47 | mintlify · miricanvas · miro · mistral.ai · mixi |
+| 48 | modusign · moin · momoshop · money-forward · mongodb |
+| 49 | monzo · moreh · moze · muji · mustit |
+| 50 | mynavi · myrealtrip · naverpay · naverwebtoon · ncsoft |
 
 ## 착수 절차
 

@@ -1,3 +1,381 @@
+## 2026-08-29 — 웨이브 40·41 마감, grok build 전환, T3-3 재봉인 (opus5)
+
+**한 일.** cursor-agent 우회를 접고 grok build CLI로 복귀(원설계 경로). 웨이브 40·41 마감 — F3 274건 + 개정 40건, 원장 209→**219/440**. 검사기 2종 신설로 기계:검토 비율을 3:12 → 17:9로 뒤집었다. T3-3 arm 호스트 재봉인(`bc5f4704` + 핀 `54aaf98a`), 레인 A apple 12/12 완주.
+
+**열린 것.** krds §3/§4 열 절단 5건 known-open. T3-3 레인 B 차단(hallmark·uiuxpromax 이미지 채널 자격증명 없음). 규칙집 v12 본문은 이번 런 판정 미흡수.
+
+**다음.** 웨이브 42 `lezhin · lguplus · likelion · liner · loom`. T3-3 toss 완주 후 레인 A 2기업 정리.
+
+**발견.** 검토 1회는 결함을 열거하지 않고 표본추출한다 — PASS는 「이 패스에서 못 찾았다」다. 열거로 끝나는 계열은 기계로 옮겨야 전수가 된다.
+
+## 2026-08-29 — laundrygo 산출 개정 FAIL 1
+
+**한 일.** §2 Pure Black 제약 원문 복원. limiter 22=22, gate PASS. `FIX_DONE laundrygo fixed=1 logdest=3`.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여.
+
+## 2026-08-29 — laftel D2a 개정
+
+**한 일.** §13 삭제 행·감사 D2a 칸 무식별화. 산출 4파일에서 페르소나 3인 라벨 dest 0.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여.
+
+## 2026-08-29 — layerx 의미 검토 PASS
+
+**한 일.** FAIL 3 개정본 재검토. identity·Easings Use·이징 짝 착지, D2a 식별자 dest 0, YAML 키 경로·C2 쌍닫힘·페르소나 파생 없음. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여.
+
+## 2026-08-29 — laftel 의미 검토 FAIL 1
+
+**한 일.** FAIL 1 개정 본문 재검토. D2a 로그만 식별 라벨 재수록. YAML·§11·C2·본문 페르소나 잔존 없음. 산출 미수정.
+
+**열린 것.** 로그 `:41` 무식별 처분 개정.
+
+**다음.** 같은 웨이브 잔여.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 laundrygo = FAIL 1
+
+**한 일.** 독립 검토(A·C·D, 항목 7–11). 원본 `:84` Pure Black `not a softened navy`/`maximum-contrast` 산출 4파일+sibling dest 0. 산출 미수정.
+
+**열린 것.** 산출 미수정. B2a·E2 미판정.
+
+**다음.** 같은 웨이브 잔여.
+
+## 2026-08-29 — layerx 산출 개정 FAIL 3
+
+**한 일.** §11 identity 구절·§15 Use·이징 짝 복원, 로그 D2a 식별자 제거. limiter 49=49, gate PASS. `FIX_DONE layerx fixed=3 logdest=13`.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여.
+
+## 2026-08-29 — laftel 산출 개정 FAIL 1
+
+**한 일.** 원본 §11 여덟 고유 구를 Scope 서사에 복원. dest Super Secret 2 · Laftel Store 3 · `wc -w` 5608. limiter 23=23, gate PASS.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여.
+
+## 2026-08-29 — lamborghini 의미 검토 FAIL 1 개정
+
+**한 일.** D1 desktop-capture 플랫폼 귀속 제거. 원본 §8 미해상만. limiter 20=20. dest `16px 0px` D1/P0. gate PASS.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여.
+
+## 2026-08-29 — laundrygo 산출 개정 FAIL 4
+
+**한 일.** §11 글로벌 비전·가치 목록·창업 직업, §1 Pretendard hangul 근거 복원. dest 16행. limiter 22=22, gate PASS.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여.
+
+## 2026-08-29 — layerx FAIL 3 개정
+
+**한 일.** §11 identity 구절 복원, §15 Use·이징 짝 복원, 로그 D2a 식별자 제거. limiter 49=49, gate PASS. `FIX_DONE layerx fixed=3 logdest=13`.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여.
+
+## 2026-08-29 — laftel 산출 개정 (의미 검토 FAIL 1)
+
+**한 일.** 원본 §11 여덟 고유 구를 Scope 서사·provenance에 복원. dest 표 갱신. SHA `f60be695…`. 원장 23=23. limiter 1:1 OK. `--gate-only` PASS.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 layerx = FAIL 3
+
+**한 일.** FIX3 본문 독립 대조(A·C·D, 항목 7–11). §11 `engineer-led, mission-forward identity` 소실, §15 Easings Use·시그니처 이징 짝 미착지, 로그 D2a 식별자 재수록. 산출 미수정.
+
+**열린 것.** 산출 미수정. B2a·E2 미판정.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — T2 F3 감사 laundrygo
+
+**한 일.** B2a·E2 전담. 본문 완전형 13→22, 원장 22=22. YAML use 16/16. `#0ac290` dest 16. `AUDIT_DONE fixes=22`.
+
+**열린 것.** 카탈로그 채택 아님. 의미 검토 미실행.
+
+**다음.** 같은 웨이브 잔여.
+
+## 2026-08-29 — layerx E1 1:1
+
+**한 일.** 원장 헤더 스킵 + Motion 두 문장 줄 분리. 본문 48/원장 50 → 49=49. dest 줄 재실측. `FIX_DONE layerx e1=2`.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여.
+
+## 2026-08-29 — T2 F3 감사 lemonbase
+
+**한 일.** B2a·E2 전담. 본문 완전형 26→35, 원장 35=35. dest `#ffffff`/`#f1f5f9` 12. `AUDIT_DONE fixes=43`.
+
+**열린 것.** 카탈로그 채택 아님. 의미 검토 미실행.
+
+**다음.** 같은 웨이브 잔여 또는 의미 검토.
+
+## 2026-08-29 — F3 감사 lamborghini AUDIT_DONE fixes=20
+
+**한 일.** B2a 한정 8줄 확장(발생 +0) + 원장 8행 1:1 + 로그 dest `#000000`/`#969696`/`16px 0px`/`40px`. limiter 21=21. A1 복원 0.
+
+**열린 것.** 카탈로그 채택 아님. A5a compared 0/117은 범위 밖 보고만.
+
+**다음.** 같은 웨이브 잔여 F3.
+
+## 2026-08-29 — laftel F3 감사
+
+**한 일.** B2a 인접 한정 6(접힘, 신설 0) → 23=23. provenance 행 텍스트 4. 로그 dest 재실측. `AUDIT_DONE fixes=21`.
+
+**열린 것.** 카탈로그 채택 아님. 로그 D2a 식별 바늘·§11 서사 절단은 범위 밖 보고만.
+
+**다음.** 같은 웨이브 잔여 F3.
+
+## 2026-08-29 — laundrygo 게이트 2결함 개정
+
+**한 일.** `96px` 발명 제거, `배민프레시 대표` 복원. 원장 13행 표화. gate PASS, ledger 13=13.
+
+**열린 것.** 카탈로그 채택 아님. F3 미실행.
+
+**다음.** 같은 웨이브 잔여 또는 F3.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 krds = FAIL 8
+
+**한 일.** FIX3 본문 독립 대조(A·C·D, 항목 7–11). Type roles 4행 YAML/§3 병기 절단, Drop(2) Use 융합, Input/Select/Tag §4 Use 절단. 산출 미수정.
+
+**열린 것.** 산출 미수정. B2a·E2 미판정.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — layerx F3 감사
+
+**한 일.** B2a 인접 한정 7(신설 3). provenance sibling 실재·derived 49=49. 로그 dest 재실측. `AUDIT_DONE fixes=20`.
+
+**열린 것.** 카탈로그 채택 아님. 로그 D2a 식별자 열거는 범위 밖 보고만.
+
+**다음.** 같은 웨이브 잔여 F3.
+
+## 2026-08-29 — laftel T2 마이그레이션
+
+**한 일.** legacy `web/references/laftel/DESIGN.md`를 Core v2로 이관. 규칙집 v12. B2a 23=23, A5a 발행 카피 생존, gate PASS.
+
+**열린 것.** 카탈로그 채택 아님. F3 미실행.
+
+**다음.** F3 감사 워커 또는 같은 웨이브 잔여.
+
+## 2026-08-29 — layerx T2 마이그레이션
+
+**한 일.** legacy `web/references/layerx/DESIGN.md`를 Core v2로 이관. 규칙집 v12. B2a 46=46, A5a 바늘 24 생존, gate PASS.
+
+**열린 것.** 카탈로그 채택 아님. F3 미실행.
+
+**다음.** F3 감사 워커 또는 같은 웨이브 잔여.
+
+## 2026-08-29 — laundrygo T2 마이그레이션
+
+**한 일.** legacy `web/references/laundrygo/DESIGN.md`를 Core v2로 이관. 규칙집 v12. B2a 13=13, A5a 발행 카피 51 생존.
+
+**열린 것.** 카탈로그 채택 아님. F3 미실행.
+
+**다음.** F3 감사 워커 또는 같은 웨이브 잔여.
+
+## 2026-08-29 — lamborghini T2 마이그레이션
+
+**한 일.** legacy `web/references/lamborghini/DESIGN.md`를 Core v2로 이관. 규칙집 v12. gate PASS, B2a 21=21, A5a 발행 카피 9 생존.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** F3 감사 워커 또는 같은 웨이브 잔여.
+
+## 2026-08-29 — krds 산출 3라운드 개정
+
+**한 일.** FAIL 5 다섯 소실만 복원. Primary 5 `약한 강조` · Gray 40 `bg-disabled` · 기호 메트릭 · Body medium `<body>` · xxsmall `H5`. dest 11행 갱신. ledger 25=25, gate PASS.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — lablup 의미 검토 PASS
+
+**한 일.** FAIL 2 개정본 독립 대조. YAML 13색·spacing/rounded 키 경로, §11 두 구, YAML/§3 use 병기, C2 쌍닫힘, 페르소나 파생물 0, sibling 미승격, F2 dest 현행 일치. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — kyobobook 의미 검토 PASS
+
+**한 일.** FAIL 3 개정본 독립 대조. YAML 20색·spacing/rounded 키 경로, 고유 사실, C2 쌍닫힘, 페르소나 파생물 0, sibling 미승격, F2 dest 현행 일치. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 krds = FAIL 5
+
+**한 일.** FIX2 본문 독립 검토(A·C·D, 항목 7–11). Primary 5 `약한 강조`·Gray 40 `bg-disabled`·기호 메트릭 dest 0, Body medium `<body>`·xxsmall 적용 `H5` 절단.
+
+**열린 것.** 산출 미수정. B2a·E2 미판정.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — krds 2라운드 개정 (FAIL 5)
+
+**한 일.** §11 목적 두 구, 패턴 4종 가이드, `"놀라운"`, Locale 승격 해제, body-small YAML/§3 병기. dest 10행 갱신. ledger 25=25, gate PASS.
+
+**열린 것.** 카탈로그 채택 아님. 토큰·표·원본 무변경.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — kyobobook 2라운드 개정 (FAIL 3)
+
+**한 일.** A1 정체성·창업 지시 복원, D2 Audience 원본 세그먼트, B1 `portal H2` 강등. dest 10행 갱신. ledger 33=33, gate PASS.
+
+**열린 것.** 카탈로그 채택 아님. 토큰·표·원본 무변경.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — lablup 2라운드 개정 (FAIL 2)
+
+**한 일.** Scope 16px 절 융합 해제(`fallback stack`). A5a dest Latest news·Trusted by 1→2. ledger 31=31, gate PASS.
+
+**열린 것.** 카탈로그 채택 아님. 토큰·표·원본 무변경.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — kurly 의미 검토 PASS
+
+**한 일.** 독립 검토(A·C·D, 항목 7–11). YAML 키 경로·C2 쌍닫힘·페르소나 미승격·표면 귀속·F2 SHA 일치. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님. B2a·E2는 F3 범위.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 krds = FAIL 5
+
+**한 일.** 독립 검토 A·C·D + 추가형 7–11. 산출 4 + 원본 + sibling 대조. §11 목적 두 구 dest 0, 패턴 4종 가이드 dest 0(본문), 놀라운 dest 0, 페르소나 영문 모드→Locale English option, §3 `보조` use 절단.
+
+**열린 것.** 원본·sibling·산출 미수정. B2a·E2 미판정.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — krds 개정 (의미 검토 FAIL 8 + E1)
+
+**한 일.** Gray·System 토큰명, Warning 단계, Primary 60/70 병기, `small select`, 고유 사실 5구 복원. `1,934`·`16px icon` 본문 제거. D2a 로그 재열거 해제(A5 삭제 행만). 원장 헤더 스킵으로 25=25. gate PASS.
+
+**열린 것.** 토큰·컴포넌트 표·applicability·원본 무변경. 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — kurly 개정 E1 1:1
+
+**한 일.** 원장 머리 `Location`으로 교정, `:11` 두 읽기를 한 행으로 합침. 본문 20=원장 20. gate PASS.
+
+**열린 것.** 토큰·표·구조·원본 무변경. 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — lablup 개정 (의미 검토 FAIL 2)
+
+**한 일.** §11 창업 동기·Sovereign AI 범위 구 복원(사실 인용, 한정 없음). Type roles Section·Caption YAML use 병기. 본문 31=원장 31. gate PASS. `FIX_DONE lablup facts=2 use=2`.
+
+**열린 것.** 토큰·표·구조·원본 무변경. 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 lablup = FAIL 2
+
+**한 일.** 독립 검토 A·C·D + 추가형 7–11. 산출 4 + 원본 + sibling 대조. §11 제품범위·창업 동기 두 구 dest 0, Type roles YAML use 두 문자열 dest 0(같은 표 keep-both 불일치). C2 쌍닫힘·페르소나 미승격·sibling 융합 0·SHA 현행.
+
+**열린 것.** 원본·sibling·산출 미수정. B2a·E2 미판정.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — kyobobook 개정 D2a·E1
+
+**한 일.** 로그 §13/D2 행 무식별화. 본문 `:266`에 완전형 세 조각 부착. 식별자 3종 세 파일 0. 본문 33=원장 33.
+
+**열린 것.** 토큰·표·구조·원본 무변경. 카탈로그 채택 아님.
+
+**다음.** 같은 웨이브 잔여 브랜드 검토 또는 wave-close.
+
+## 2026-08-29 — 웨이브 27형 의미 검토 kurly = PASS
+
+**한 일.** 독립 검토 A·C·D + 추가형 7–11. 산출 4 + 원본 + sibling 대조. YAML 키 경로·§11 결론·C2 쌍닫힘·페르소나 미승격·use 긴 쪽·표면 귀속 착지. **PASS.**
+
+**열린 것.** 원본·sibling·산출 미수정. B2a·E2 미판정.
+
+**다음.** 같은 웨이브 잔여 없으면 wave-close.
+
+## 2026-08-29 — T2 F3 감사 kurly
+
+**한 일.** B2a·E2 전담. 본문 13→21 한정 신설 8+확장 4. 원장 21=21. 로그 dest 줄수→출현수(`desktop-only` dest 0, homepage P dest 2, FILL IN 169–177). `AUDIT_DONE fixes=36`. SHA `b2c6da0b8135630b80cdf2060be25398aa4f47c6728773f3d8b7aec9ff1b110a`.
+
+**열린 것.** 카탈로그 채택 아님. 토큰·표·구조 무변경.
+
+**다음.** 웨이브 40 잔여 브랜드 F3 또는 검토.
+
+## 2026-08-29 — T2 F3 감사 kyobobook
+
+**한 일.** B2a·E2 전담. 본문 32=32 한정 확장(신설 `:186` 커브 생략 + 9건 접기). 원장 33=33. 로그 dest(부분문자열 `1.2`/`1.5`, exact colon, Pretendard 15, `9px 14px` 8). `AUDIT_DONE fixes=34`. SHA `41832b11b65a5f7782aa7121ec44236f810ea98f1cce9e9e048b4f234a84935b`.
+
+**열린 것.** 카탈로그 채택 아님. `portal H2` B1 분류 침투는 범위 밖. 토큰·표·구조 무변경.
+
+**다음.** 웨이브 40 잔여 브랜드 F3 또는 검토.
+
+## 2026-08-29 — T2 F3 감사 krds
+
+**한 일.** B2a·E2 전담. 본문 25=25 한정 확장 2(Scope comparison-coordinates · Family fallback). A1 Tag/Tertiary/Badge 키 경로 복원 4. 원장·로그 dest 실측 정정. `AUDIT_DONE fixes=26`. SHA `a93085c3b5f35b5953350cfe333f7de1a1c2fae1aa85b2bc6fe14f005b43612e`.
+
+**열린 것.** 카탈로그 채택 아님. 토큰 역할표·표·구조 무변경.
+
+**다음.** 웨이브 40 잔여 브랜드 F3 또는 검토.
+
+## 2026-08-29 — T2 F3 감사 kream
+
+**한 일.** B2a·E2 전담. 본문 22=22 한정 확장 3(Semantic outlined-filter `#ffffff` · Type roles body `16` · Capture class-names). 원장 8행 맞춤. 로그 dest 줄수→출현수. `AUDIT_DONE fixes=22`. SHA `edf859a629e102219ea6673ee6dee190e5cffdc99d41288b32444cd250e38bfc`.
+
+**열린 것.** 카탈로그 채택 아님. 토큰·표·구조 무변경.
+
+**다음.** 웨이브 40 잔여 브랜드 F3 또는 검토.
+
+## 2026-08-29 — T2 F3 감사 lablup
+
+**한 일.** B2a·E2 전담 감사. 본문 한정 26→31, 원장 31=31. YAML `use` 10행 복원. 로그 착지 정정. `AUDIT_DONE fixes=30`.
+
+**열린 것.** 카탈로그 채택 아님. 의미 검토 미실행.
+
+**다음.** 웨이브 40 잔여 또는 lablup 의미 검토.
+
+## 2026-08-29 — T2 이관 kyobobook
+
+**한 일.** `web/references/kyobobook/DESIGN.md` → Core v2 3파일. 규칙집 v12. KDS published-spec B2a 32=32. 게이트 PASS, portable_core true. F1·F2 수행.
+
+**열린 것.** F3 미실행. 카탈로그 채택 아님.
+
+**다음.** 웨이브 40 잔여 `krds · kurly · lablup` 또는 kyobobook F3.
+
+## 2026-08-29 — T2 이관 kream
+
+**한 일.** `web/references/kream/DESIGN.md` → Core v2 3파일. 규칙집 v12. 게이트 PASS, portable_core true, B2a 22=22. F1·F2 수행.
+
+**열린 것.** F3 미실행. 카탈로그 채택 아님.
+
+**다음.** 웨이브 40 잔여 `krds · kurly · kyobobook · lablup` 또는 kream F3.
+
 ## 2026-08-28 — 웨이브 39 마감 (kkbox·kkday·kmong·krafton·kraken)
 
 **한 일.** 이관 5/5 게이트 PASS, F3 119건, 의미 검토 5/5 PASS(개정 0). 1:1 불변식 5/5 성립. `wave-close` 5단계 ok, DONE 209. 판정문 작성.
