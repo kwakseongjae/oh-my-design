@@ -64,7 +64,7 @@ Vercel이 2026-09-01 자사 에이전트가 design.md 파일 하나로 온브랜
 ## 상태
 
 - [x] content-runs 인프라 + 3-arm 프롬프트 준비
-- [ ] stripe 3-arm 실행 (웨이브 슬롯과 교차 실행 중)
-- [ ] compare.html 생성 + render-integrity 통과 확인
+- [x] stripe 3-arm 실행 완료 (2026-09-01, 총 $2.50 (1.22/0.53/0.74))
+- [x] compare.html 생성 + render-integrity 3/3 PASS
 - [ ] /design.md 프로덕션 배포 (커밋됨, 푸시 승인 대기)
 - [ ] 사람 창구 승인 → 촬영 → 포스팅
