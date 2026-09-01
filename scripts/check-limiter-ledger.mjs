@@ -24,8 +24,10 @@ const MIGRATED = "docs/design-md-weight/migrated";
 // 완전형 세 조각. 셋이 같은 줄에 있어야 한 건으로 센다.
 const FRAGMENTS = [
   /derived editorial (implementation inferences?|task models?|state specifications?)/i,
-  // 브랜드명은 여러 단어일 수 있다. 하이픈 앞을 단어 하나로 묶지 않는다.
-  /\bnot [^.;]{1,60}-authored/i,
+  // 브랜드명은 여러 단어일 수 있고(`not Kyobo Book Centre-authored`) 점도
+  // 들어간다(`not maum.ai-authored` — 웨이브 44에서 [^.;]가 이 브랜드를 통째로
+  // 0으로 만들었다). 문장 경계를 넘는 폭주만 막고 나머지는 허용한다.
+  /\bnot [A-Za-z0-9가-힣][A-Za-z0-9가-힣 .&'-]{0,58}-authored/i,
   /separately published/i,
 ];
 

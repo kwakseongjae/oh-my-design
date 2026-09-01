@@ -227,3 +227,8 @@ lovable
 lunit
 maicoin
 mailchimp
+makinarocks
+mastercard
+maum-ai
+medibloc
+megabox

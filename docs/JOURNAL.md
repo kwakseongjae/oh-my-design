@@ -1,8 +1,200 @@
+## 2026-09-02 — 웨이브 27형 의미 검토 megabox (재검토)
+
+**한 일.** 독립 검토(A·C·D만, 추가형 7–11). FAIL 2 개정본 SHA `e941b0e1…2509` = `PASS`. sibling `0px 10px`·예약 링크 4px 융합 dest 0. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님. 판정문·done-ledger·wave-close 대기.
+
+**다음.** megabox 판정문, 또는 웨이브 44 마감.
+
+## 2026-09-01 — megabox 산출물 개정 (의미 검토 FAIL 2)
+
+**한 일.** sibling 전용 `0px 10px` 본문 강등. 예약 링크 4px 융합 관측을 원본 `36px-high purple reservation **link**`로 되돌림. dest 12행 재실측. limiter 26=26, gate PASS.
+
+**열린 것.** 카탈로그 채택 아님. 재검토 대기.
+
+**다음.** megabox 재검토, 또는 판정문.
+
+## 2026-09-01 — 웨이브 27형 의미 검토 megabox
+
+**한 일.** 독립 검토(A·C·D만, 추가형 7–11). `FAIL 2`. `0px 10px` sibling 승격, 예약 링크 `4px` 융합 관측. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님. 개정 대기.
+
+**다음.** megabox FAIL 2 개정, 또는 판정문.
+
+## 2026-09-01 — 웨이브 27형 의미 검토 maum-ai
+
+**한 일.** 독립 검토(A·C·D만, 추가형 7–11). FAIL 2 개정본 SHA `18bbe35c…ee76` = `PASS`. YAML 키 경로·§3 Notes 병기·C2 쌍닫힘·페르소나 파생물 0·sibling 미승격. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** megabox 잔여, 또는 판정문.
+
+## 2026-09-01 — 웨이브 27형 의미 검토 medibloc
+
+**한 일.** 독립 재검토(A·C·D만, 추가형 7–11). FAIL 1 개정 후 `PASS`. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** megabox 첫 유효 검토.
+
+## 2026-09-01 — 일시 중단 (웨이브 44 마감 직전, opus5→fable 세션)
+
+**한 일.** omd:issue 스킬+7이슈 · render-integrity(T3 시각감사: figure UA 마진 실파손 1) · /design.md 공개 URL · stripe 3-arm 콘텐츠 런 · DESIGN.md 생태계 4축 조사 · 판단위계 문법 규명(바이트 동일 강제) · T3 재개 7페이즈 시드. 웨이브 44는 검토 3건만 남기고 전 단계 완료.
+
+**열린 것.** 웨이브 44 잔여 3검토(킬됨·무손상). 미커밋 15건. 우로보로스 버퍼 버그.
+
+**다음.** CURRENT_STATE 최상단 착수 순서 ①~④.
+
+## 2026-09-01 — 웨이브 27형 의미 검토 maum-ai
+
+**한 일.** 독립 재검토(A·C·D만, 추가형 7–11). FAIL 2 개정 후 `PASS`. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 다음 브랜드.
+
+## 2026-09-01 — 웨이브 27형 의미 검토 medibloc
+
+**한 일.** 독립 검토(A·C·D만). FAIL 1 개정본 SHA `e71aaf65465fa620ca340b2ee4b762b85cc9770a814edb4e5e6a404b18f19ad0` = `PASS`. YAML 키 경로·§3 Notes·C2 쌍닫힘·페르소나 파생물 0·sibling 미승격. 산출 미수정.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 다음 브랜드, 또는 다른 트랙.
+
+## 2026-09-01 — medibloc 산출물 개정 (FAIL 1)
+
+**한 일.** Type roles에 원본 §3 Notes 열 병기. YAML `use` dest 2 유지. §9 `60px Pretendard Bold white headline` Type roles 착지. dest 재실측·로그 4행 갱신. 37=37, `--gate-only` PASS. `FIX_DONE medibloc fixed=1 logdest=12`.
+
+**열린 것.** 재검토 대기. 카탈로그 채택 아님.
+
+**다음.** 개정 재검토, 또는 다음 브랜드.
+
+## 2026-09-01 — maum-ai 산출물 개정 (FAIL 2)
+
+**한 일.** YAML↔§표 use 병기, 폰트 충돌 병기, 발명 슬래시형 제거. dest 16행 갱신. 원장 25=25. `--gate-only` PASS.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 개정 후 재검토, 또는 다음 브랜드.
+
+## 2026-09-01 — 웨이브 27형 의미 검토 megabox
+
+**한 일.** 독립 검토(A·C·D만). `FAIL 1` — sibling `0px 10px` 본문 승격. 산출 미수정.
+
+**열린 것.** 이관 워커 개정 대기. 카탈로그 채택 아님.
+
+**다음.** 개정 후 재검토, 또는 다음 브랜드.
+
+## 2026-09-01 — 웨이브 27형 의미 검토 maum-ai
+
+**한 일.** 독립 검토(A·C·D만). `FAIL 2` — YAML↔§표 use 절단, 폰트 표기 충돌 불일치. 산출 미수정.
+
+**열린 것.** 이관 워커 개정 대기. 카탈로그 채택 아님.
+
+**다음.** 개정 후 재검토, 또는 다음 브랜드.
+
+## 2026-09-01 — E1 1:1 megabox
+
+**한 일.** 원장 헤더 `Portable location`→`Location`. 본문 26/원장 27 → 26=26 (186–211). 본문 미수정. `FIX_DONE megabox e1=0`.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 다음 T2 브랜드 또는 다른 F3.
+
+## 2026-09-01 — F3 감사 medibloc
+
+**한 일.** B2a·E2 전담. 한정 35→37, Motion B3·Layout notable 신설, 원장 1:1, 로그 dest 재실측(blog URL 줄, Primitive type 줄, §9 백틱 없는 2차 목적지 0회). `audit-log.md`. `AUDIT_DONE fixes=30`.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 다음 T2 브랜드 또는 다른 F3.
+
+## 2026-09-01 — F3 감사 megabox
+
+**한 일.** B2a·E2 전담. 한정 24→26, YAML `bg`/`border`/`states` 키 경로 복원, 원장 1:1, 로그 dest 재실측. `audit-log.md`. `AUDIT_DONE fixes=29`.
+
+**열린 것.** 카탈로그 채택 아님. B1 `0px 10px` sibling→본문 보고만.
+
+**다음.** 다음 T2 브랜드 또는 다른 F3.
+
+## 2026-09-01 — F3 감사 maum-ai
+
+**한 일.** B2a·E2 전담. 한정 20→25, Shape/Voice 불완전형 닫음, 원장 1:1 inventory 신설, 로그 dest 재실측(빈 줄·2차 목적지 0회 포함). `audit-log.md`. `AUDIT_DONE fixes=20`.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 다음 T2 브랜드 또는 다른 F3.
+
+## 2026-09-01 — F3 감사 mastercard
+
+**한 일.** B2a·E2 전담. 한정 22→24, disabled YAML 정확 문자열 복원, 원장 1:1, 로그 dest 재실측. `audit-log.md`. `AUDIT_DONE fixes=19`.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 다음 T2 브랜드 또는 다른 F3.
+
+## 2026-09-01 — F3 감사 makinarocks
+
+**한 일.** B2a·E2 전담. DESIGN.md 미수정(23=23). provenance Content/Principles 원장 2행 + migration-log dest 11건. `audit-log.md`. `AUDIT_DONE fixes=13`.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** 다음 T2 브랜드 또는 다른 F3.
+
+## 2026-09-01 — content-run stripe/omd
+
+**한 일.** 공개 콘텐츠 런 arm=omd, brand=stripe. 산출 `test-v2/content-runs/stripe/omd/{render.html,image.jpg,system.md,trace.md}`. T3-3 `03-runs` 미사용.
+
+**열린 것.** 비교 페이지는 오케스트레이터가 `build-compare.mjs stripe`로 합침.
+
+**다음.** 나머지 arm 완료 후 compare + render-integrity.
+
+## 2026-09-01 — T2 마이그레이션 megabox
+
+**한 일.** legacy `web/references/megabox/DESIGN.md` → Core v2 3파일. 규칙집 v12. gate-only PASS (compared 3/candidates 86), limiter 24=24, 고유표현 90/4 복원. F3 미실행.
+
+**열린 것.** 카탈로그 채택 아님.
+
+**다음.** F3 감사, 또는 다음 T2 브랜드.
+
+## 2026-09-01 — T2 마이그레이션 medibloc
+
+**한 일.** legacy `web/references/medibloc/DESIGN.md` → Core v2 3파일. 규칙집 v12. gate-only PASS, limiter 35=35, use 15/15, 고유표현 147/4 복원/잔여 0.
+
+**열린 것.** 카탈로그 채택 아님. F3 미실행. 웨이브 44 나머지.
+
+**다음.** megabox, 또는 F3 감사.
+
+## 2026-09-01 — content-run stripe/hallmark
+
+**한 일.** 공개 콘텐츠 런 arm=hallmark, brand=stripe. 산출 `test-v2/content-runs/stripe/hallmark/{render.html,image.jpg,system.md,trace.md}`. T3-3 `03-runs` 미사용.
+
+**열린 것.** 비교 페이지는 오케스트레이터가 `build-compare.mjs stripe`로 합침.
+
+**다음.** 나머지 arm 완료 후 compare + render-integrity.
+
+## 2026-09-01 — T2 마이그레이션 makinarocks
+
+**한 일.** legacy `web/references/makinarocks/DESIGN.md` → Core v2 3파일. 규칙집 v12. gate-only PASS, limiter 23=23, use 2/2, 고유표현 72/0.
+
+**열린 것.** 카탈로그 채택 아님. F3 미실행. 웨이브 44 나머지 브랜드.
+
+**다음.** mastercard · maum-ai · medibloc · megabox, 또는 F3 감사.
+
+## 2026-08-29 — mailchimp 재검토 PASS
+
+**한 일.** FAIL 2 개정본 독립 재검토. §11 서사 연결문·§15 easing Use 페어링 착지 확인. A·C·D·추가형 7–11에서 값 계열 결함 0.
+
+**열린 것.** krds known-open 5건. T3-3 레인 B 차단·채점 미착수. 푸시 승인 대기.
+
+**다음.** 웨이브 44 `makinarocks · mastercard · maum-ai · medibloc · megabox`.
+
 ## 2026-08-29 — 웨이브 43 마감, 안전 중단 (opus5)
 
 **한 일.** 웨이브 43 마감(F3 99 + 개정 7, 검토 7건은 이 런 최저). 원장 229/440. F3 무실행 2건을 `audit-log.md` 부재로 적발해 복구 — 기계 검사 3종은 그 상태에서도 전부 통과했다.
 
-**열린 것.** mailchimp 재검토 1건 미실행(중단 지시). krds known-open 5건. T3-3 레인 B 차단·채점 미착수. 푸시 승인 대기(origin/main 대비 10커밋).
+**열린 것.** mailchimp 재검토는 이 항목 작성 시점엔 미실행이었다(중단 지시). krds known-open 5건. T3-3 레인 B 차단·채점 미착수. 푸시 승인 대기(origin/main 대비 10커밋).
 
 **다음.** mailchimp 재검토 → 웨이브 44 `makinarocks · mastercard · maum-ai · medibloc · megabox`.
 
