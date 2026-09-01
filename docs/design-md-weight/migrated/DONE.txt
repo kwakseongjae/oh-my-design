@@ -232,3 +232,8 @@ mastercard
 maum-ai
 medibloc
 megabox
+meituan
+melon
+mercari
+mercury
+meta

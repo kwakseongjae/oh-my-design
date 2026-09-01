@@ -33,7 +33,10 @@ const FRAGMENTS = [
 
 // 원장 절: 「파생-편집」계열 제목 또는 B2a 원장. 표기 변형을 전부 받는다.
 const LEDGER_HEADING =
-  /^#{2,4}\s+.*(derived[- ]editorial|b2a\s+ledger).*(inventory|scope|ledger|qualifications)/i;
+  /^#{2,4}\s+.*(derived[- ]editorial|b2a\s+ledger|derived\s+inventory).*(inventory|scope|ledger|qualifications|b2a\s+sites)/i;
+// 표기 변형 5호(웨이브 45 meituan): «Derived inventory (portable B2a sites)» —
+// editorial도 ledger 인접도 없는 형태. 변형이 하나 더 나오면 제목 사냥을 포기하고
+// 워커 산출 규격에 절 제목을 고정하는 쪽으로 옮길 것.
 
 function countBody(md) {
   return md
@@ -53,8 +56,11 @@ function countLedger(prov) {
     if (/^#{2,4}\s/.test(l)) break;
     if (!l.startsWith("|")) continue;
     if (/^\|\s*:?-{2,}/.test(l)) continue; // 구분행
-    // 헤더행: 첫 셀이 표 머리말 상투어면 건너뛴다
-    if (/^\|\s*(#|no\.?|section|location|위치|절|항목)\s*\|/i.test(l)) continue;
+    // 헤더행: 첫 셀이 표 머리말 상투어면 건너뛴다.
+    // 규격 헤더 `| Location in DESIGN.md | Qualified reading |` (worker-addendum,
+    // 웨이브 45 E1 / 46+)도 받는다. `location`만 보면 첫 셀 전체가 그 단어일 때만
+    // 건너뛰어 규격 헤더가 데이터행으로 잡혔다.
+    if (/^\|\s*(#|no\.?|section|location(\s+in\s+DESIGN\.md)?|위치|절|항목)\s*\|/i.test(l)) continue;
     rows++;
     if (first === null) first = i + 1;
     last = i + 1;

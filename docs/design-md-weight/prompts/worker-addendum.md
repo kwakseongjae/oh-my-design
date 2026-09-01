@@ -85,3 +85,13 @@ likelion에서 같은 형태가 다시 나왔다.
   Primary tasks에 남겨 FAIL했다.
 - 제출 전 자가 점검: Audience와 Primary tasks의 각 항목을 원본에서 `grep -oF`로 찾아라.
   원본 출현수가 0이면 그 항목은 근거가 없다.
+
+## 파생-편집 원장 형식 고정 (웨이브 46+ — 표기 사냥 종료)
+
+원장 절 제목과 본문 형식이 여섯 가지로 갈라져 기계 검증이 계속 깨졌다(제목 5변형 + meituan의
+산문 열거). 이제 규격으로 고정한다:
+
+- 절 제목: 정확히 `## Derived editorial inventory`
+- 본문: **표** — 헤더 `| Location in DESIGN.md | Qualified reading |` + 완전형 한정 1건당
+  데이터행 1행. 산문 열거·괄호 계수·목록 금지.
+- 행 수 == 본문 완전형 한정 수 (1:1). 두 읽기가 한 문장에 있으면 한 행에 병기.
