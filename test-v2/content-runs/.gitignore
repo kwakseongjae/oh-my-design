@@ -1,0 +1,5 @@
+# 콘텐츠 런 산출물은 03-runs와 같은 커스터디 정책 — README와 도구만 추적한다.
+*
+!.gitignore
+!README.md
+!build-compare.mjs

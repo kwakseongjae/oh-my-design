@@ -43,6 +43,13 @@ function walk(dir, base = dir, out = []) {
   return out;
 }
 
+/** 단일 파일 쌍: 루트 DESIGN.md(정본, 도구가 읽는 프로젝트 계약)가
+ *  vercel.com/design.md 관례를 따라 사이트에서도 서빙된다. 같은 Vercel
+ *  루트 제약(web/ 밖을 못 읽음) 때문에 web/public/ 사본이 필요하다. */
+const FILE_PAIRS = [
+  { canonical: join(ROOT, "DESIGN.md"), mirror: join(ROOT, "web", "public", "design.md"), label: "DESIGN.md ↔ web/public/design.md" },
+];
+
 const canonFiles = new Set(walk(CANONICAL));
 const mirrorFiles = new Set(walk(MIRROR));
 
@@ -52,7 +59,11 @@ const differing = [...canonFiles]
   .filter((f) => mirrorFiles.has(f))
   .filter((f) => sha(join(CANONICAL, f)) !== sha(join(MIRROR, f)));
 
-const drifted = onlyCanonical.length + onlyMirror.length + differing.length;
+const pairDrift = FILE_PAIRS.filter(
+  (p) => !existsSync(p.mirror) || sha(p.canonical) !== sha(p.mirror),
+);
+
+const drifted = onlyCanonical.length + onlyMirror.length + differing.length + pairDrift.length;
 
 if (process.argv.includes("--fix")) {
   for (const f of [...onlyCanonical, ...differing]) {
@@ -60,10 +71,11 @@ if (process.argv.includes("--fix")) {
     mkdirSync(dirname(dst), { recursive: true });
     copyFileSync(join(CANONICAL, f), dst);
   }
+  for (const p of pairDrift) copyFileSync(p.canonical, p.mirror);
   // Files only in the mirror are NOT deleted here. A stray file is a question
   // for a person — it might be the only copy of something.
   console.log(JSON.stringify({
-    fixed: onlyCanonical.length + differing.length,
+    fixed: onlyCanonical.length + differing.length + pairDrift.length,
     onlyMirror: onlyMirror.length,
     note: onlyMirror.length ? "mirror-only files left in place — inspect them by hand" : "in sync",
   }, null, 1));
@@ -77,5 +89,6 @@ console.log(JSON.stringify({
   differing: differing.slice(0, 10),
   onlyCanonical: onlyCanonical.slice(0, 10),
   onlyMirror: onlyMirror.slice(0, 10),
+  filePairs: pairDrift.map((p) => p.label + " drifted"),
 }, null, 1));
 process.exit(drifted ? 1 : 0);
