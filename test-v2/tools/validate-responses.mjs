@@ -25,6 +25,7 @@ const lines = readFileSync(rp, "utf8").split("\n").filter((l) => l.trim());
 const problems = [];
 const seen = {}; // `${brand}|${rep}|${slot}` -> Set(axis)
 const posthoc = new Set();
+const ceilingSeen = {};
 let parsed = 0;
 
 let footer = null;
@@ -80,10 +81,11 @@ for (const r of key.rows) for (const slot of ["A", "B", "C"]) {
   coverage.push({ brand: r.brand, rep: r.rep, slot, missing });
 }
 const missingPosthoc = key.rows.filter((r) => !posthoc.has(`${r.brand}|${r.rep}`)).map((r) => `${r.brand}/${r.rep}`);
-const out = { lines: lines.length, parsed, problems, coverage: coverage.filter((c) => c.missing.length), missingPosthoc, ok: problems.length === 0 && coverage.every((c) => !c.missing.length) };
+const ceilingShort = (key.ceilingBrands || []).filter((b) => (ceilingSeen[b]?.size || 0) < 4).map((b) => `${b}:${ceilingSeen[b]?.size || 0}/4`);
+const out = { lines: lines.length, parsed, problems, coverage: coverage.filter((c) => c.missing.length), missingPosthoc, ceilingShort, ok: problems.length === 0 && coverage.every((c) => !c.missing.length) && ceilingShort.length === 0 };
 if (asJson) console.log(JSON.stringify(out, null, 1));
 else {
-  console.log(`lines ${out.lines} · parsed ${parsed} · schema 문제 ${problems.length} · 결측 슬롯 ${out.coverage.length} · postHoc 결측 ${missingPosthoc.length}`);
+  console.log(`lines ${out.lines} · parsed ${parsed} · schema 문제 ${problems.length} · 결측 슬롯 ${out.coverage.length} · postHoc 결측 ${missingPosthoc.length} · 천장 부족 ${ceilingShort.join(",") || "0"}`);
   for (const p of problems.slice(0, 30)) console.log("  ✗ " + p);
   for (const c of out.coverage.slice(0, 30)) console.log(`  · ${c.brand}/rep${c.rep}/${c.slot} 결측: ${c.missing.join(",")}`);
   console.log(`VALIDATE_${out.ok ? "OK" : "FAIL"}`);
