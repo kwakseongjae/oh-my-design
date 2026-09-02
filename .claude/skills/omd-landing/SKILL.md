@@ -65,6 +65,11 @@ DESIGN.md의 브랜드 사실(§1 서사·§Principles·§Voice)과 브리프에
 UA 기본 스타일 리셋(figure/blockquote 마진 — #78). 이미지는 `assets/` 상대 경로 또는 data URI.
 모션은 transform·opacity만, 지속 3단계 이하, `@media (prefers-reduced-motion: reduce)`에서 전부 정지.
 텍스트 최대 폭·타입 스케일·섹션 높이는 코덱스 수치 범위 안에서.
+**사진 위 글자에는 스크림이 있어야 한다** (LC-36 "압도는 읽혀야 한다"): 히어로·핀 스테이지·반전 섹션의 nav·wordmark·
+lead·CTA·포커스 링은 배경 픽셀 대비 WCAG 4.5:1(일반)·3:1(큰 텍스트·UI)을 넘겨야 하고, 그 수단은 토큰 색의 알파
+스크림(`::before`)과 포커스 링 halo다 — 첫 toss 런이 스크림 없이 nav 1.05:1·wordmark 1.07:1로 BLOCK 6을 받았다.
+`muted` 계열 토큰은 눈썹·법적 고지를 포함한 **어떤 본문 텍스트에도** 쓰지 않는다(3.0:1). 스크롤 리빌(`opacity:0`)은
+`<noscript>`와 `@media (scripting: none)`에서 전부 보이게 — JS 없이 빈 페이지는 결함이다.
 
 ### 5. 자평 루프 (최대 3회 — ①②가 FAIL 0이면 그 회차에서 멈춘다; 결함이 줄지 않으면 중단하고 보고)
 
