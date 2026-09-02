@@ -66,7 +66,7 @@ UA 기본 스타일 리셋(figure/blockquote 마진 — #78). 이미지는 `asse
 모션은 transform·opacity만, 지속 3단계 이하, `@media (prefers-reduced-motion: reduce)`에서 전부 정지.
 텍스트 최대 폭·타입 스케일·섹션 높이는 코덱스 수치 범위 안에서.
 
-### 5. 자평 루프 (최대 3회, 결함이 줄지 않으면 중단하고 보고)
+### 5. 자평 루프 (최대 3회 — ①②가 FAIL 0이면 그 회차에서 멈춘다; 결함이 줄지 않으면 중단하고 보고)
 
 ```
 ① node test-v2/tools/render-integrity.mjs <run>/render.html          # 결정론
