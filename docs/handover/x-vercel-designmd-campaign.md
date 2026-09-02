@@ -64,8 +64,8 @@ render-integrity·landing-integrity PASS를 내면 같은 명령으로 3열 비�
 ## 소재 2 — 랜딩 원페이지 편 (2026-09-02 실측 완료, 승인 대기)
 
 - 런: `test-v2/content-runs/landing/stripe/{hallmark,autopilot,landing}` — 같은 브리프(스크롤 원페이지 6~8섹션)·같은 모델(grok-4.6)·같은 이미지 채널(grok image_gen). `landing`은 새 `omd:landing` 스킬(실측 코덱스 기반).
-- 촬영 화면: `test-v2/content-runs/landing/stripe/compare.html`(3열 풀페이지, 상단 조건, 하단 고지) · 영상: `omd:showcase --compare` 산출 14초 2880×600 (scratchpad `showcase/stripe-landing-compare.mp4`; 최종본은 승인 후 재렌더).
-- 한국 편: `toss/{autopilot,hallmark,landing}` — 기준선 완료 후 같은 방식.
+- 촬영 화면: `test-v2/content-runs/landing/stripe/compare.html`(3열 풀페이지, 상단 조건, 하단 고지) · **최종 영상(2026-09-02 15:45, 리뷰 BLOCK 0 반영)**: `test-v2/content-runs/landing/stripe/showcase/compare-3arm.mp4`(14초 2880×600) · `landing-solo.mp4`/`.gif`(단독 세로 스크롤 12초, 2880×1800). git 무시 경로 — 로컬 보관.
+- 한국 편: `toss/{hallmark,autopilot,landing}` 완료 — `toss/compare.html` · `toss/showcase/compare-3arm.mp4` · `landing-solo.mp4`/`.gif`. 두 편 모두 landing arm 리뷰 BLOCK 0.
 
 **EN (메인, 영상 첨부):**
 > Same brief. Same model. Same image channel. Three harnesses.
