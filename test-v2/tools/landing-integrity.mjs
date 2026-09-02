@@ -109,8 +109,10 @@ function judge(m, reveals) {
   push("LI-4", topPct !== null && topPct > 45 ? "FAIL" : topPct === null ? "WARN" : "PASS", `display top ${topPct} %vh · ${m.fold.biggestText?.fontPx}px/${m.fold.biggestText?.weight} · left ${m.fold.biggestText?.leftPctVw} %vw · ${m.fold.biggestText?.align}`);
   const tr = secs.map((s) => s.textRatio); const maxTr = Math.max(...tr, 0);
   push("LI-5", maxTr > 0.45 ? "FAIL" : "PASS", `max section text ratio ${maxTr.toFixed(3)}`);
-  const empties = secs.map((s) => Math.max(0, 1 - s.textRatio - Math.min(1, s.assetRatio))); const minEmpty = Math.min(...empties, 1);
-  push("LI-6", minEmpty < 0.30 ? "FAIL" : "PASS", `min section empty ratio ${minEmpty.toFixed(2)} (median ${median(empties)?.toFixed(2)})`);
+  // LI-6은 코덱스 §5대로 **중앙값**이다 — 풀블리드 히어로(LC-1: 커버리지 ≥89%)는 빈 면이 0에 가까운 것이 정상이라
+  // 섹션별 최소값으로 재면 LC-1과 모순된다(첫 실행에서 stripe/autopilot 히어로가 그렇게 잡혔다).
+  const empties = secs.map((s) => Math.max(0, 1 - s.textRatio - Math.min(1, s.assetRatio))); const medEmpty = median(empties) ?? 1;
+  push("LI-6", medEmpty < 0.30 ? "FAIL" : "PASS", `median section empty ratio ${medEmpty.toFixed(2)} (min ${Math.min(...empties, 1).toFixed(2)})`);
   const bodyPx = (() => { const cand = m.fontHistogram.filter(([px]) => +px >= 12 && +px <= 19); return cand.length ? +cand[0][0] : null; })();
   const display = m.fold.biggestText?.fontPx ?? null;
   const ratio = display && bodyPx ? display / bodyPx : null;
