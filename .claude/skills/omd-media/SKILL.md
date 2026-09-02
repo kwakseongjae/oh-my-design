@@ -31,6 +31,18 @@ user-invocable: true
 | `recraft-api` | style 생성(참조 1–10장 → `style_id`, 레퍼런스별 1회) → `svg` 생성 | **svg** |
 | 없음 | 프롬프트 팩 + `assets/generated/QUEUE.md`(사람이 돌릴 목록) + 팔레트 추상 SVG 플레이스홀더 | — |
 
+grok-build 호출은 이 형태다(도그푸딩 2026-09-02에서 실패한 자유 조립 대신):
+
+```bash
+cat > "$RUN/media-hero.prompt" <<'EOF'
+image_gen 도구로 아래 프롬프트의 이미지를 1장 만들고, 결과 파일을 현재 디렉터리 기준 `assets/generated/hero/hero.jpg`에 저장(다른 곳에 저장됐으면 `cp`로 옮긴다).
+마지막 줄에 저장한 파일의 절대 경로를 출력해라.
+프롬프트: <PROMPTS.md의 원문>
+EOF
+grok --prompt-file "$RUN/media-hero.prompt" -m grok-4.6 --always-approve --cwd "$RUN" --output-format json > "$RUN/media-hero.out.json"
+# 비용은 응답 JSON의 total_cost_usd, 세션은 sessionId — 원장에 그대로 적는다
+```
+
 아이콘 세트는 Recraft가 없으면 **인라인 SVG로 직접 그린다**(24px 그리드, 1.5px 스트로크, DESIGN.md 색) — 이모지·아이콘 폰트 금지.
 얼굴 사진·로고 생성 금지(로고는 다운로드만). 스톡 CDN 금지.
 
@@ -41,7 +53,8 @@ user-invocable: true
 
 ## 4. 검증
 
-- 크기·비율이 프롬프트 팩과 맞는지(`sharp` 메타) · 팔레트 근접(상위 6빈 ΔE, `test-v2/tools/verify.mjs` 절차 — 레포 전용) — 어긋나면 1회 재생성.
+- **가로세로비**가 프롬프트 팩과 맞는지(`sips -g pixelWidth -g pixelHeight`(macOS) / `file` / `identify`; `sharp`는 설치본에 없다) — 픽셀 크기는 채널이 정한다(grok image_gen은 1280×720 고정)이므로 원장에 채널 상한을 적을 뿐 재생성 사유가 아니다. 비율이 어긋나면 1회 재생성.
+- 팔레트 근접(상위 6빈 ΔE)은 레포에서만 `test-v2/tools/verify.mjs`로 잰다 — 설치본에는 대응 명령이 없으므로 육안 검수 + 원장 기록으로 갈음.
 - 랜딩이면 `node test-v2/tools/landing-integrity.mjs`(설치본: `omd check landing`) LI-18~20(비디오 속성·스톡 호스트)이 통과해야 한다.
 
 ## 하드 룰

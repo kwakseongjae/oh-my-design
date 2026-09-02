@@ -17,10 +17,10 @@ user-invocable: true
 ### 1. 감지 (기계)
 
 ```bash
-node scripts/omd-setup-detect.mjs --json    # 레포
-omd setup detect --json                     # 설치본 (같은 스크립트를 패키지 루트에서 실행한다)
+omd setup detect --json                     # 설치본(기본) — 패키지 루트의 감지 스크립트를 실행한다
+node scripts/omd-setup-detect.mjs --json    # 이 레포 안에서 개발할 때만
 ```
-`scripts/omd-setup-detect.mjs`가 있으면 위 줄을, 없으면 아래 줄을 쓴다. 결과의 `channels[*].present`가 사실이다.
+설치본이 기본 경로다. 결과의 `channels[*].present`가 사실이다.
 `present: null`(claude-in-chrome 등)은 세션의 도구 목록에서 직접 확인한다. 이미 `.omd/config.json`이 있고
 `--redo`가 아니면 현재 설정을 보여 주고 바꿀지만 묻는다.
 
@@ -70,7 +70,7 @@ grok build로 에셋 5장을 생성하고 showcase 영상까지 냅니다."
 - `omd:media` / `omd-codex-image` — `media.image[0]`부터 시도, 실패 시 다음 채널, 전부 없으면 프롬프트 팩 + 큐.
 - `omd:landing` 3단계 에셋 — 같은 순서. `budgetUsdPerSet` 초과 시 중단하고 보고.
 - `omd:showcase` — `ffmpeg` 부재면 프레임 PNG만 남기고 안내.
-- `omd doctor` — 설정 요약을 한 줄로 보여 준다.
+- `omd doctor` — `.omd/config.json`이 있으면 채널·예산 요약을 한 줄로 보여 준다.
 
 ## 하드 룰
 

@@ -9,8 +9,9 @@ user-invocable: true
 
 한 페이지가 스크롤로 쌓이며 방문자를 압도하게 만든다. 카드 그리드를 늘어놓는 것이 아니라
 **하나의 시각 컨셉**이 히어로에서 태어나 섹션마다 다른 구도로 변주되다가 CTA에서 닫힌다.
-근거는 두 파일뿐이다: 프로젝트 `DESIGN.md`(브랜드가 정한 것)와
-`docs/design-excellence/landing-craft-codex.md`(실측으로 정한 것, 규칙 ID `LC-n`).
+근거는 두 파일뿐이다: 프로젝트 `DESIGN.md`(브랜드가 정한 것)와 **랜딩 크래프트 코덱스**(실측으로 정한 것, 규칙 ID `LC-n`).
+코덱스 위치 — 레포: `docs/design-excellence/landing-craft-codex.md` · 설치본: `node_modules/oh-my-design-cli/docs/design-excellence/landing-craft-codex.md`
+(둘 다 없으면 `node -p "require('path').dirname(require.resolve('oh-my-design-cli/package.json'))"`로 패키지 루트를 찾아 그 아래 `docs/design-excellence/`를 읽는다).
 둘 다 읽지 않았으면 시작하지 않는다.
 
 ## 입력
@@ -20,6 +21,15 @@ user-invocable: true
 2. 브리프 한 줄 이상: 방문자가 느껴야 할 것 + 해야 할 행동. 없으면 한 배치의 질문(최대 5개)으로 받는다.
    무인 모드(`unattended`)면 각 질문의 첫 선택지를 고르고 `trace.md`에 `autoSelected`로 남긴다.
 3. 코덱스 `landing-craft-codex.md` — 규칙 표를 그대로 읽고, 이 런에서 적용할 규칙 ID를 골라 storyboard에 적는다.
+
+## 런 디렉터리 (먼저 만든다)
+
+```bash
+SLUG=$(printf '%s' "<brand-or-brief>" | tr '[:upper:] ' '[:lower:]-' | tr -cd 'a-z0-9-' | cut -c1-40)
+RUN=.omd/runs/landing-$SLUG-$(date +%Y%m%d-%H%M)
+mkdir -p "$RUN/assets" && printf '%s\n' "<브리프 원문 그대로>" > "$RUN/task.md"
+```
+`<run>` = 위 `$RUN`. 산출은 전부 이 안에만 쓴다(`omd-harness`와 같은 관례, `.omd/runs/INDEX.md`에 한 줄 append).
 
 ## 산출 (run 디렉터리 안에만)
 
@@ -42,6 +52,8 @@ DESIGN.md의 브랜드 사실(§1 서사·§Principles·§Voice)과 브리프에
 컨셉은 형용사 나열이 아니라 페이지가 무엇을 "보여 주는가"다(예: "결제가 흐르는 배관을 단면으로 본다").
 아트디렉터는 컨셉·무드·에셋 방향·금지(코덱스의 anti-pattern + Vercel 「generated-design reflexes」류)를
 `concept.md`에 쓴다. 토큰을 새로 만들지 않는다.
+**호출 프롬프트에 이미 있는 에셋은 말로 서술해 넘긴다**(피사체·구도·주조색·빈 여백 위치, 픽셀 크기는 `sips -g pixelWidth -g pixelHeight`).
+아트디렉터는 이미지 파일을 `Read`로 열지 않는다 — 대용량 이미지 tool_result 뒤에서 세션이 멈춘 사례(도그푸딩 2026-09-02).
 
 ### 2. 스토리보드
 
