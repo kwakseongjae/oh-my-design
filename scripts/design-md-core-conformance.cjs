@@ -329,6 +329,16 @@ function explicitlyNegatesClaim(kind, value) {
     // this contract / document stops here — scope boundary, not self-denial
     "\\b(?:this\\s+(?:contract|document|reconstruction)|it)\\s+does\\s+not\\s+(?:treat|extend|reach|cover|speak)",
     "\\bdoes\\s+not\\s+(?:treat|extend|reach)\\b[^.]{0,40}?\\bas\\s+a\\s+proxy\\b",
+    // 2026-09-02 (wave 51 note, wave 45 mercury): two more attributed shapes.
+    // (a) A brand-behaviour negation — "note deliberately does not flood its product
+    //     chrome with the teal" — is a recorded brand fact about a UI element, not a
+    //     denial that a product surface exists. The negated verb is an action on the
+    //     product, not an existential verb about the scope.
+    // (b) The B2a limiter itself — "…; not <Brand>-authored or a separately published
+    //     UI specification" — is provenance talk and sits inside long scope sentences.
+    "\\bdoes\\s+not\\s+(?:flood|paint|fill|wash|drench|saturate|splash|spread|apply|push|cover|tint|colou?r)\\b",
+    "\\b(?:product|surface)\\s+(?:chrome|ui|bar|header|nav)\\b",
+    "-authored\\b|\\bseparately\\s+published\\b|\\bderived\\s+editorial\\b",
     // explicit evidence-boundary vocabulary (the original guard, kept)
     "\\b(?:evidence|proof|captur\\w*|observ\\w*|outside|beyond|coverage|verified|sample[sd]?)\\b",
     "근거|증거|관측|캡처|범위\\s*밖|証拠|観測|证据|證據",
