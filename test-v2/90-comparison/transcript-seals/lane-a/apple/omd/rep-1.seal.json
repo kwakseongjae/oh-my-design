@@ -1,0 +1,38 @@
+{
+  "runId": "lane-a-apple-rep-1",
+  "arm": "omd",
+  "lane": "lane-a",
+  "brand": "apple",
+  "repeat": 1,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/apple/<arm>/rep-1/system.md",
+      "sha256": "583eb0f00752f948587a69fd8316d3a76fefc15a61333a2a5bc03808ec4ecbbb"
+    }
+  ],
+  "sourceSha256": "583eb0f00752f948587a69fd8316d3a76fefc15a61333a2a5bc03808ec4ecbbb",
+  "transcriptSha256": "412a7ab236c60367610060c9eefff2363afd1da94953ecba6ffdef8f266e6ddc",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "8c6e386ab58008e3779b86fd6fb14a0c84d3e8f3a6cba29ac6e1da82cbd2cb1c",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-01T23:29:25Z",
+  "transcriptionEndedAt": "2026-09-01T23:29:25Z",
+  "verificationStartedAt": "2026-09-01T23:33:10Z",
+  "verificationEndedAt": "2026-09-01T23:33:10Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/apple/omd/rep-1.map.csv",
+  "mapSha256": "19dec9d0b1fbd4fd62ed58c16587a1bc6ba9cc2fe8756a9fb70c97ca2859726e",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 182,
+    "problems": [],
+    "attempts": 1,
+    "reverifiedAt": "2026-09-02T00:53:43.085Z",
+    "reverifiedBy": "orchestrator"
+  },
+  "verdict": "PASS"
+}

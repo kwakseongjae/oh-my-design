@@ -1,0 +1,193 @@
+Heading: Apple (대한민국) 홈 표면 시스템
+
+ derivation chain (PHILOSOPHY → DERIVE → TOKENS → COMPONENT SPECS → LAYOUT GRAMMAR).  
+Authority class: `repository-fact` from snapshot `2026-08-22T19-46-47-156Z` plus `agent-proposed-greenfield-decision` only where the pack requires a token the capture does not name. Unresolved values are omitted.
+
+Disposition: **establish** a surface-local system for this one home route. No project-root  is adopted (run writes stay inside this directory).
+
+
+Heading: Philosophy
+
+**Stance.** 홈의 첫 화면은 제품 월이 아니라, 지금 보여줄 한 종의 소개 경로다.
+
+- **P1 경로 유일.** 첫 접점에서 소개로 가는 동선을 하나만 연다. 얻는 것: 과업 완료. 희생: 다른 제품 밴드에 같은 동사 CTA를 되풀이하지 않음.
+- **P2 증거 밖 공백.** 캡처에 없는 가격·용량·카메라 수치·평점은 비운다. 얻는 것: 정직. 희생: 완결된 PDP처럼 보이는 밀도.
+- **P3 플레이트, 위젯 키트 아님.** 전폭 제품 플레이트와 필 버튼. 얻는 것: 이 홈의 장르. 희생: 카드 그리드·라운드 8px 키트.
+
+
+Heading: Derive (decision table)
+
+| ID | Category | Decision | Rationale |
+|---|---|---|---|
+|  | 모서리·표면 장르 | 장르 = **no-radius ink plates + hairline header**. 컨트롤만 `radiusPx: 980` 필. | desktop-1440 `header.heightPx` 44 + hairline; `primaryButton.radiusPx` 980. 카드 radius는 증거 없음. |
+|  | 그림자·엘리베이션 | rest/hover/selected 모두 그림자 없음. hover는 면 색만 바꿈. | 뷰포트에 카드 섀도 없음. 팩: hover must change surface. |
+|  | 색 밀도·악센트 | paper `oklch(0.971 0.003 286.4)`, ink `oklch(0.232 0.004 286.1)`, accent fill `oklch(0.563 0.193 256.2)`, outline `oklch(0.522 0.177 255.8)`. 악센트는 CTA 필/아웃라인만 (≲5%). | chrome `pageBackgroundRendered.hex` `#f5f5f7`, `bodyColor` `#1d1d1f`, outline `#0066cc`; filled CTA는 뷰포트 + imagery palette `#0071e3`. |
+|  | 타이포 위계 | display 56/600/66 desktop, 32/600 mobile; lede 28/400 desktop, 19/400 mobile. 한글 고딕 스택. display tracking 조이지 않음. | `typeScale` h2/p; 팩 5a Korean contract. `SF Pro KR`은 증거 family — 오프라인 로드 불가면 스택 폴백만, 대체 family를 그 폰트인 척하지 않음. |
+|  | 모션 | 폴드 위 영상 없음. duration 120/200/320ms, enter/exit 두 커브. transform/opacity만. | `motion.present: false`. |
+|  | 정보 밀도 | 히어로 = 제품명 + 한 줄 리드 + CTA 2. 스펙 표 없음. | 뷰포트 카피. P2. |
+|  | 레이아웃 문법 | **스크롤 내러티브의 전폭 제품 플레이트** (중앙 max). 카피 위 / 피겨 아래. 히어로 `min-height` 100vh 금지. | 뷰포트 구성. imagery c1 `docBox.h` 692. G6 회피. 카탈로그에 동일 해부 프리셋 없음 → no-preset 아래. |
+|  | 카피 보이스 | 화면 카피는 증거 문자열만. 구현 어휘 금지. 샘플 고지는 푸터 한 줄. | 팩 5b + P2. |
+|  | 프라이머리 CTA | 홈에서 `더 알아보기`만 `data-cta="primary"`. `iPhone 쇼핑하기`는 local. 아래 밴드에 `더 알아보기` 반복 금지. | 과업 = 소개 경로. 팩 primary uniqueness. |
+
+Unresolved (omitted from tokens and UI): official font files, shop inventory, prices.
+
+
+Heading: Tokens
+
+Comments are  back-references. CSS custom properties in `render.html` consume only these.
+
+```css
+:root {
+  --color-paper: oklch(0.971 0.003 286.4);       /* #f5f5f7 */
+  --color-header: oklch(0.986 0.003 286.4);      /* #fafafc */
+  --color-ink: oklch(0.232 0.004 286.1);         /* #1d1d1f */
+  --color-accent: oklch(0.522 0.177 255.8);      /* #0066cc outline */
+  --color-accent-fill: oklch(0.563 0.193 256.2); /* #0071e3 fill */
+  --color-accent-fill-hover: oklch(0.50 0.193 256.2); /* same hue, lower L */
+  --color-on-accent: oklch(0.99 0.003 286.4);    /* inverse ink, not #fff base */
+  --color-band-air: oklch(0.936 0.023 231.8);    /* MacBook Air plate #dbedf7 */
+  --color-muted: oklch(0.384 0.029 268.9);       /* #3d4353 */
+  --color-rule: oklch(0.91 0.004 286.4);         /* hairline */
+  --color-scrim: oklch(0 0 0 / 0.45);            /* C44 */
+  --color-alert: oklch(0.45 0.14 25);            /* form error, pack-required pair with paper */
+  --color-nav-hover: oklch(0.94 0.004 286.4);    /* surface hover */
+  --color-nav-open: oklch(0.92 0.006 286.4);
+  --color-accent-tint: oklch(0.563 0.193 256.2 / 0.08);
+
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 40px;
+  --space-section-sm: 2.5rem; --space-section: 4rem; --space-section-lg: 6rem;
+  --space-gutter: clamp(1rem, 4vw, 2.5rem);
+
+  --font-ui: "SF Pro KR", "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --size-display: clamp(2rem, 3.9vw, 3.5rem); /* 32–56 */
+  --leading-display: 1.18;
+  --weight-display: 600;
+  --size-lede: clamp(1.1875rem, 1.95vw, 1.75rem); /* 19–28 */
+  --leading-lede: 1.25;
+  --size-body: 1.0625rem;
+  --leading-body: 1.7;
+  --size-btn-d: 1.0625rem; /* 17 */
+  --size-btn-m: 0.875rem;  /* 14 */
+  --size-nav: 0.75rem;
+  --size-label: 0.75rem;
+  --tracking-label: 0.08em;
+
+  --radius-none: 0;
+  --radius-pill: 980px;
+  --header-h: 44px;
+  --header-h-m: 50px;
+  --control-h: 44px;
+  --hero-media-h: 692px; /* imagery c1 docBox.h desktop */
+
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --ease-enter: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+}
+```
+
+Contrast (sRGB of the source hex, WCAG 2.x): ink/paper 15.46; accent outline/paper 5.11; on-accent/fill 4.70.
+
+
+Heading: Component specs
+
+Presets used: **P-FN-02** (route focus), **P-FN-05** (empty search).  
+**no-preset: product-hero-plate** — catalog is bento / lookbook-join / magazine well; evidence is a centered full-bleed product plate. Anatomy is derived, not improvised from a widget card.
+
+Heading: Global header (canonical)
+
+- Anatomy: wordmark | desktop link row | search | bag | (viewport < 834px) menu disclosure.
+- Labels from desktop viewport only.
+- iPhone control is the only nav item that enters the intro path. Other labels are buttons that announce honest absence (`role="status"`), not fake routes.
+- Hit target ≥44px (C2) even when visual header is 44/50px.
+- States: default / hover (ink weight) / focus-visible (outline) / pressed / disabled. Menu: `aria-expanded`.
+- Current page: `aria-current="page"` on iPhone when intro view is showing.
+
+Heading: Button
+
+- Primary fill: `--color-accent-fill` / `--color-on-accent`, pill. Hover: `--color-accent-fill-hover`.
+- Local outline: transparent fill, `--color-accent` ink + 1px border. Border-width never changes (G39).
+- Height 44px, padding 12/16, type 17 desktop / 14 mobile (chrome `fontPx`).
+- States: default, hover, focus-visible, active (scale 0.98), disabled (opacity + `cursor: not-allowed` + `disabled`), loading (`aria-busy`, same label, no double-activate).
+- Exactly one `data-cta="primary"` per view.
+
+Heading: Search dialog (P-FN-05 for empty)
+
+- Native `<dialog>` + styled `::backdrop`. Restyled `input type="search"` (`appearance: none`).
+- Label stays visible (C12). Error: `aria-invalid` + `aria-describedby` + `role="alert"` + focus return (triad).
+- Empty: “이 조건의 제품이 없습니다.” + 검색 지우기.
+- Catalog = evidence product names only. `iPhone` / `iPhone 17 Pro` commit the intro path.
+
+Heading: Product-hero plate (no-preset)
+
+- Copy block (h1 + lede + CTA row) then figure. Media `object-fit: cover; object-position: center 70%` so the generated 1280×720 catalog shot reads as a bottom-cropped hero.
+- `img` width/height 1280×720, LCP image not lazy.
+- Alt = evidence c1 `alt` bytes.
+
+Heading: Honest-absence node
+
+- Visible sentence naming the withheld category (price, shop path, bag contents). Not a banner; lives where that datum would be.
+
+
+Heading: Layout grammar
+
+**Page: home (specified screen).**  
+Grammar: stacked full-bleed product plates, **중앙 max**.  
+Content back-calc: 1 hero plate (iPhone) + 1 peek plate (MacBook Air copy from the fold). Imagery count for the scored surface = 1 generated file (`image.jpg`). Wide viewport is filled by the plate, not by empty columns.
+
+**Page: iPhone intro (journey outcome, same HTML file).**  
+Same chrome. One plate: heading + lede + generated image + honest-absence for metrics. No extra product family.
+
+Viewports locked: 1440×900, 390×844, 320, 200% reflow. `overflow-x: clip`. Primary CTA remains in view at 390.
+
+
+Heading: Experience (portable groups)
+
+Heading: Experience
+
+- Surface: `https://www.apple.com/kr/` home, snapshot `2026-08-22T19-46-47-156Z`.
+- Primary task: 첫 화면에서 iPhone 소개 경로로 이동한다.
+- Locale: `ko-KR`.
+
+Heading: Foundations
+
+Tokens in §3. Reduced motion: animations/transitions none.
+
+Heading: Typography & Assets
+
+- Family authority: evidence `SF Pro KR`. Offline file not supplied → metadata only, stack fallback. No Inter/system-ui presented as SF Pro KR.
+- Image: `image.jpg`, Grok Imagine, relative path, no network.
+- Logo: inline SVG wordmark, not an external asset.
+
+Heading: Components & States
+
+Interactive: header buttons, primary CTA, local CTA, search field, dialog, menu. Seven-state applicability: default, hover, focus-visible, active, disabled, loading (CTA/search submit), error (search empty submit). Empty and success are route/search outcomes.  
+Non-interactive plates: no focus-visible contract (reason: not controls).
+
+Heading: Layout & Platforms
+
+Priority: desktop-1440 then mobile-390 (both captured). Min width 320. Touch 44px. 200% reflow via rem/clamp.
+
+Heading: Content & Locales
+
+`html lang="ko"`. `word-break: keep-all`. Hangul display tracking not tighter than −0.01em. Voice = evidence Korean strings.
+
+Heading: Governance
+
+- prompt-fact: 화면=홈, 과업=소개 경로 이동, 산출 3종, Imagine 채널.
+- repository-fact: evidence chrome/type/imagery/viewport copy.
+- agent-proposed: hover L-step, error chroma, motion tokens, dialog scrim.
+- unresolved: prices, shop catalog, hosted SF Pro KR files.
+- Unknown = absent at the smallest field.
+
+
+Heading: Journey verbs (acceptance)
+
+| Verb | Keyboard path | Programmatic evidence |
+|---|---|---|
+| 소개 경로로 이동 | Tab to `더 알아보기`, Enter/Space | `aria-busy` loading → intro view unhidden, `h1#page-title` focus, `role="status"` |
+| 검색 오류 | 검색 열기 → 빈 제출 | `aria-invalid`, `role="alert"`, focus on field |
+| 검색 빈 결과 | 증거에 없는 질의 제출 | `data-state="empty"` + P-FN-05 copy |
+| 쇼핑 경로 부재 | Tab to `iPhone 쇼핑하기`, Enter | local CTA, status names 쇼핑 경로 as withheld |

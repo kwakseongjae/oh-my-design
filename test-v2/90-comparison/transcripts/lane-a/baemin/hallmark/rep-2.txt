@@ -1,0 +1,38 @@
+Heading: 배달의민족 홈 — 시스템
+
+스냅샷 `2026-08-22T19-47-32-522Z`. 화면은 홈 하나. 과업은 앱 설치 경로(스토어 배지 또는 QR)를 여는 것.
+
+Heading: 위치
+
+ 1.1.0, 장르 playful, 매크로 Photographic, 테마 custom.
+DNA는 증거 캡처(데스크톱 1440×900, 모바일 390×844). 공식 마크는 텍스트 워드마크 `배달의민족`으로 대체.
+
+Heading: 토큰
+
+색은 OKLCH. 민트 `oklch(85.36% 0.1537 180.2)`는 액센트가 아니라 필드 페이퍼(`--color-field`). 액센트는 포커스·링크용 짙은 틸 `--color-accent`. 잉크·페이퍼·룰은 모두 민트 쪽으로 채도를 남긴다. 순수 `#000` / `#fff`는 쓰지 않는다.
+
+타입: 디스플레이 `Avenir Next Condensed` (한글은 `Apple SD Gothic Neo` / `Noto Sans KR`로 글리프 폴백). 바디는 애플 산돌고딕 네오 스택. 아웃라이어 모노는 QR 캡션 한 곳. 외부 폰트 요청 없음.
+
+간격은 4pt 스케일 `--space-3xs`…`--space-4xl`. 거터 `--page-gutter`. 히트 영역 `--hit` 44px.
+
+Heading: 구조
+
+1. 히어로 — 풀블리드 생성 사진 `image.jpg`. 왼쪽 큰 민트 헤드라인, 스토어 배지(데스크톱) / Get the App(모바일).
+2. 필드 폴드 — 민트 바닥. 증거에 있는 카피만: 식지 않도록, 음식배달, 배민클럽, 선물하기.
+3. 푸터 Ft2 — 워드마크 한 줄.
+
+네비 N1: 워드마크 + 우아한형제들 / 라이더 모집 / For foreigners. 목적지 URL은 증거에 없어 페이지 안으로만 둔다.
+
+Heading: 설치 경로
+
+데스크톱 App Store · Google Play · QR, 모바일 Get the App. 클릭하면 같은 로컬 `<dialog>`가 열린다. 다이얼로그 안 QR은 `https://www.baemin.com/`을 담은 모듈(열 때 네트워크 요청 없음). 스토어 주소는 증거에 없어 만들지 않았다.
+
+Heading: 상태 · 모션
+
+설치 버튼: default / hover / focus-visible / active / disabled / loading / error / success.
+포커스 링은 즉시. `prefers-reduced-motion`에서 공간 이동은 150ms 이하.
+히어로를 벗어나면 헤더 글자색이 필드 잉크로 바뀐다.
+
+Heading: 오프라인
+
+`render.html` +  + `image.jpg`. 구글 폰트·CDN·원격 이미지 없음. `figure, blockquote, ul, ol` 마진 리셋.

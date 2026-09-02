@@ -1,0 +1,82 @@
+Heading: 배달의민족 홈 — 표면 로컬 시스템
+
+스냅샷 `2026-08-22T19-47-32-522Z`. 화면은 홈 하나. 과업은 앱 설치 경로(스토어 배지 또는 QR)를 여는 것. 프로젝트 루트  쓰지 않는다 — 이 문서는 런 산출물이다 (`surface-local-only`).
+
+데이터는 만 쓴다. 코드북에만 있는 핵심 콘텐츠·이미지 역할은 추측해 지시로 올리지 않았다.
+
+Heading: Philosophy
+
+한 장의 캠페인 사진 위에서 설치 경로 하나만 연다.
+
+민트 필드와 두꺼운 고딕은 브랜드 신호이고, 카탈로그·요금·후기는 이 화면에 없다. 얻는 것: 첫 화면에서 설치가 보인다. 버리는 것: 상품 그리드, 여러 개의 동등한 주 버튼, 로고 그림 파일.
+
+Heading: Derive
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | paper `oklch(0.965 0.012 100)` | 측정 canvas `#f6f6f6`. 순수 흰 바탕 금지(G7). |
+|  | ink `oklch(0.22 0.03 165)` | 민트 위 본문. `#000` 대신 틸트 잉크. |
+|  | mint `oklch(0.837 0.156 178)` | 데스크톱 타입 컬러 `#0cefd3`. |
+|  | on-mint = 어두운 잉크 | 민트 면 위 흰 글자는 대비 실패. 증거 일부 흰 크롬은 쓰지 않음. |
+|  | on-photo 밝은 잉크 | 히어로 사진 위 워드마크·내비. |
+|  | 왼쪽 베일 | 민트 헤드라인이 사진 위에 앉는다. |
+|  | 한글 고딕 스택 | 로컬 페이스만. 네트워크 폰트 없음. |
+|  | display clamp 2–3.75rem / 800 | 측정 60px/800, 모바일 32px/800. |
+|  | 표면 장르: 풀블리드 사진 + 민트 플레이트(각 0) | 카드 타일 장르가 아님. |
+|  | 섹션 에어 2.5 / 4 / 6rem | 히어로→민트 전환. |
+|  | gutter clamp 1.25rem–9.75rem | 데스크톱 카피 x≈156px. |
+|  | 배지 radius 8px, 모바일 CTA pill | 측정 모바일 버튼 radius 9999. |
+|  | 히트 44px | 스토어 배지·QR·메뉴·닫기. |
+|  | 모션 120/200ms, transform·opacity만 | 대화상자·내비 패널. |
+
+Heading: Tokens
+
+`:root`에 위 값이 CSS 변수로 잠겨 있다. 컴포넌트는 `var(--color-*)`만 읽는다.
+
+Heading: Components
+
+- **no-preset: campaign-install-hero** — 과업이 설치 경로 열기인 캠페인 랜딩. 카탈로그 카드(P-CM-01)·룩북 조인(P-ED-03)은 데이터가 없다.
+- **P-FN-02** — `#page-title` 포커스 링 억제.
+- 설치 클러스터 `data-state="idle|open"`. 주 CTA 하나(`data-cta="primary"`). 구글 플레이·QR은 `data-cta="local"`. 모바일에서는 배지를 숨기고 같은 primary가 `Get the App`으로 보인다.
+- 대화상자: 연 경로 이름을 제목·status에 동시에 적는다. Escape·닫기·백드롭으로 닫고 트리거로 포커스를 되돌린다.
+- 워드마크는 텍스트 「배달의민족」. 공식 로고 파일 없음.
+
+상태 (인터랙티브): default / hover / focus-visible / active. disabled·loading은 이 화면에 없음(해당 없음: 제출 폼이 없다).
+
+Heading: Layout
+
+문법: 풀블리드 캠페인 → 민트 스크롤 밴드. 와이드 전략은 왼쪽 카피 맥스, 사진은 오른쪽 피사체(`object-position: 78% 50%`).
+
+콘텐츠 역산: 설치 컨트롤 3개(앱스토어·플레이·QR)는 데스크톱 프레임에 있다. 캐러셀 점 6개는 생성 이미지가 1장이라 만들지 않았다 — 없는 슬라이드를 점만 그리면 거짓이다.
+
+뷰포트: 1440 히어로 + 스토어 배지/QR. 390 `Get the App`. 320 가로 스크롤 없음(`overflow-x: clip`).
+
+Heading: Copy
+
+보이스: 짧은 캠페인 문장, 구현 어휘 없음. 헤드라인·레드는 데스크톱 프레임 카피. 민트 밴드는 증거 문구 「식지 않도록 / 오늘도 가장 앞서 뜨겁게 달립니다.」만.
+
+정직한 부재(푸터): 외부 사 주소, 공식 로고 파일, 회원 수·별점·가격.
+
+Heading: Journey (SELF-WALK)
+
+| 동사 | 키보드 | 증거 |
+|---|---|---|
+| 앱 설치 경로를 연다 | Tab으로 `data-cta="primary"` → Enter | `dialog` open, `#install[data-state=open]`, `role=status`가 「스토어 배지 설치 경로가 열렸습니다」 |
+| QR을 연다 | Tab으로 `aria-label="QR"` → Enter | 같은 대화상자, 제목·status가 「QR」 |
+| 닫는다 | Escape 또는 「닫기」 | `data-state=idle`, 포커스 복귀 |
+
+Heading: Honesty ledger
+
+- 공식 워드마크 그림 → 텍스트 대체 (화면 표시).
+- 우아한형제들 / 라이더 모집 / For foreigners URL → 없음 (푸터 `#unavailable`).
+- 스토어 실주소 → 열지 않음. 경로만 연다.
+- QR은 스토어 페이로드가 아닌 화면용 표식.
+- 회전 캠페인 다른 컷(브런치 등) → 대표 생성 이미지 1장만 씀.
+
+Heading: Critique (1 round)
+
+Philosophy 4 / Hierarchy 4 / Execution 4 / Specificity 4 / System Fidelity 4.
+
+grep: `transition: all` 없음. `min-height:100vh` 없음(100dvh 그리드, 센터 스택 아님). 네이티브 `<select>` 없음. 인라인 hex 없음. disabled opacity-only 없음.
+
+고친 것: `main`이 히어로만 감싸 민트 밴드가 랜드마크 밖이었음 → 홈 본문 전체로 확장.

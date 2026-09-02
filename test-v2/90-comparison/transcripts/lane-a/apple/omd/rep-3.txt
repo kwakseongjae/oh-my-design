@@ -1,0 +1,166 @@
+Heading: Apple 홈 Design System
+
+Portable projection of the surface-local system for the captured Korean Apple home. Unknowns are omitted at the smallest boundary. Values without a  are not used in code.
+
+Heading: Philosophy
+
+Stance: the first screen is a quiet product stage, not a storefront dashboard.
+
+- P1 Hardware on a still plate. Sacrifice decoration, cards-in-cards, and accent washes so one product can occupy the fold.
+- P2 One path off the fold. Sacrifice repeating primary verbs as global CTAs; the above-fold iPhone “더 알아보기” is the journey.
+- P3 Measured tokens only. Sacrifice invented metrics, prices, and sibling SKUs. If evidence does not carry a number, the surface stays empty there.
+
+Heading: Decision table
+
+| ID | Category | Decision | Rationale |
+| --- | --- | --- | --- |
+|  | Surface genre | No-radius ink plates (full-bleed stages + 2-up plates) | Capture stages are flush rectangles, not shadowed tiles. Genre–domain: editorial hardware, not ops density. |
+|  | Elevation | Rest = flat plate; hover = plate tint only; no drop shadow | Evidence has no card shadow. Hover must change surface (visual-quality §3) without a second genre. |
+|  | Layout grammar | P-ED-03 lookbook stages (iPhone, MacBook Air, iPad Air) then P-CM-07 2-up tiles (5 remaining products) | 8 named stages ≥5 (GS6). Hero image does not repeat in the grid (P-CM-07). |
+|  | Fold composition | Centered copy over figure, not a diptych | desktop-1440-viewport.png and imagery-01 place title/lede/CTAs above the family lineup. Contract diptych yields to this capture. |
+|  | Accent budget | One accent, outline+fill pair, ≲5% of viewport | chrome.primaryButton `#0066cc`; filled label from capture `더 알아보기`. |
+|  | Primary uniqueness | Exactly one `data-cta="primary"`: iPhone “더 알아보기” | Brief verb is 소개 경로로 이동. Other tiles use `data-cta="local"`. |
+|  | Shape | Control radius 980px; plates 0 | chrome.primaryButton.radiusPx = 980. |
+|  | Type | SF Pro KR as declared family; Hangul coverage via gothic fallbacks; weight 600 display / 400 body | typeScale.family `SF Pro KR`; live webfont is unresolved offline. |
+|  | Color | Paper `#f5f5f7`, ink `#1d1d1f`, header `#fafafc`, accent `#0066cc`, dark plate `#0b0b0c`, on-dark `#f5f5f7` | chrome + imagery palettes. Pure `#fff`/`#000` are not base tokens (G7). |
+|  | Dark outline | Accent on dark plates uses higher L of the same hue so body-size text stays ≥4.5:1 | `#0066cc` on `#0b0b0c` measures 3.53:1. Agent-proposed for contrast, not an Apple-published swatch. |
+|  | Motion | Fast 120ms / base 200ms; enter cubic-bezier(0.2,0,0,1); transform+opacity only | evidence.motion.present = false above the fold; tokens exist for hover/press only. |
+|  | Density | Hero display 56/32, lede 28/19, control 17/14, header 44/50 | desktop-1440 and mobile-390 typeScale + header.heightPx. |
+|  | Copy | Korean capture strings only; no prices | G46 / brief honesty. Voice: short product names, one lede, two CTAs. |
+|  | Wide strategy | Center max for stages; two columns added for promo tiles ≥735px | C32. 320px stacks tiles. |
+
+Heading: Experience
+
+- Scope: one local reconstruction of `https://www.apple.com/kr/` home from snapshot `2026-08-22T19-46-47-156Z`.
+- Primary task: from the first screen, move into the introduction path of one product (iPhone).
+- Supported locales: `ko-KR` (manifest.locale).
+- Not in scope: live Apple.com, account, cart checkout, prices, Vision / TV / 엔터테인먼트 / 액세서리 / 고객지원 destinations (those nav labels exist in the capture; their destinations are unresolved and render as unavailable).
+
+Heading: Foundations
+
+Tokens (CSS custom properties). Each value cites a .
+
+```css
+:root {
+  --color-paper: oklch(0.971 0.0027 286.4);          /* #f5f5f7 */
+  --color-header: oklch(0.986 0.0026 286.4);         /* #fafafc */
+  --color-ink: oklch(0.232 0.0038 286.1);            /* #1d1d1f */
+  --color-accent: oklch(0.522 0.1771 255.8);         /* #0066cc */
+  --color-on-accent: oklch(0.971 0.0027 286.4);      /* #f5f5f7 */
+  --color-plate-dark: oklch(0.150 0.0021 286.1);     /* #0b0b0c */
+  --color-on-dark: oklch(0.971 0.0027 286.4);        /* typeScale h3 */
+  --color-accent-on-dark: oklch(0.72 0.14 255.8);    
+  --color-plate-mba: oklch(0.936 0.0234 231.8);      /* #dbedf7 sample c2 */
+  --color-plate-ipad: oklch(0.867 0.0547 223.3);     /* #addcee sample c3 */
+  --color-rule: oklch(0.91 0.004 286);
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 40px; --space-8: 64px;
+  --space-9: 96px;
+  --space-gutter: clamp(16px, 4vw, 40px);
+  --radius-control: 980px;                           
+  --radius-plate: 0;
+  --header-h: 44px;                                  
+  --font: "SF Pro KR", "SF Pro Display", "SF Pro Text", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --motion-fast: 120ms; --motion-base: 200ms;        
+  --ease-enter: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+}
+```
+
+Measured contrast (sRGB, WCAG 2.x):
+
+- ink on paper 15.46:1
+- on-accent on accent 5.11:1
+- on-dark on plate-dark 18.07:1
+
+Reduced motion: all transitions collapse to 0ms.
+
+Heading: Typography & Assets
+
+| Role | Size | Weight | Line-height | Tracking | Color | Source |
+| --- | --- | --- | --- | --- | --- | --- |
+| Display (h1/h2 on light) | 56px / 32px | 600 | 66px / 37.7px | normal | ink | typeScale h2 |
+| Display on dark (h2) | 40px / 32px | 600 | 44px / 36px | normal / 0.064px | on-dark | typeScale h3 |
+| Lede | 28px / 19px | 400 | 35px / 25px | 0.196px / 0.228px | ink or on-dark | typeScale p |
+| Control | 17px / 14px | 400 | 1 | normal | accent or on-accent | primaryButton |
+| Korean | `word-break: keep-all`; Hangul tracking floor −0.01em |  |  |  |  | visual-quality 5a |
+
+Font availability: SF Pro KR is declared in evidence and is not loadable without network. The stack keeps the declared name first and falls through gothic faces that cover Hangul. Inter/Roboto/Poppins are not used.
+
+Imagery authority: one generated hero (`image.jpg`) for the iPhone family lineup. Prompt cites imagery sample c1 alt, palette `#f5f5f7`, luminanceGradient `brighter right`, and the desktop capture composition. Other stages have no local photograph — they use plate color only. License of the generated file is this run’s Imagine output.
+
+Logo: inline SVG wordmark, `currentColor`. No emoji icons.
+
+Heading: Components & States
+
+Preset IDs: P-ED-03 (lookbook stages), P-CM-07 (2-up home tiles), P-FN-02 (route focus), P-FN-05 (empty bag). no-preset: global global-nav — capture chrome, not a catalog preset.
+
+Heading: Button (P derived, C1–C10)
+
+Anatomy: label only (no icon on product CTAs). Pill. Min 44×44.
+
+| State | Applicability | Treatment |
+| --- | --- | --- |
+| default | yes | fill = accent + on-accent, or outline 1px accent |
+| hover | yes | fill darkens via `oklch` relative color; outline fills a 8% accent tint |
+| focus-visible | yes | 2px accent outline, offset 2px, instant |
+| active | yes | scale(0.98) |
+| disabled | yes | opacity 0.45 + cursor not-allowed + `disabled` |
+| loading | not-applicable | no async submit on this surface |
+| error / success | not-applicable | button is not a form validator |
+
+Border-width does not change between states. Focus is outline, not a thicker border.
+
+Heading: Global header
+
+Height 44 desktop / 50 mobile. Background header token. One `nav`. Desktop: inline links. ≤1099px: disclosure button (`aria-expanded`, `aria-controls`). Current destination: `aria-current="page"`. Icon controls (search, bag, menu) are 44×44.
+
+Heading: Product stage / tile
+
+Anatomy: kicker (optional wordmark) → title → lede → actions → optional figure. Media and text share width. Internal gaps 8 / 12 / 24 (title tight to lede; actions separated). Entire tile is not a click target when inner CTAs exist (C25).
+
+Heading: Dialogs (search, bag, unavailable)
+
+Native `<dialog>` with styled `::backdrop`. Empty bag uses P-FN-05 copy in user language. Search has a labelled input restyled from tokens (P0-2).
+
+Heading: Route heading (P-FN-02)
+
+On view change: `document.title`, `scrollTo(0,0)`, focus `#page-title` with visual ring suppressed.
+
+Heading: Layout & Platforms
+
+- Priority: 1440 (capture desktop-1440) → 390 (mobile-390) → 320 → 200% reflow.
+- `overflow-x: clip` on the root. `document.documentElement.scrollWidth <= clientWidth` is a product requirement.
+- Stages are full-bleed plates; copy sits in a content well `min(980px, 100% - 2*gutter)`.
+- Promo grid: 1 column <735px, 2 columns `minmax(0,1fr)` above (G50).
+- Touch: primary controls ≥44px.
+- 200% reflow: display headings `overflow-wrap: anywhere; min-width: 0`.
+- Skip link targets `#main`, never the primary CTA.
+- Exactly one `<main>` and one visible `<h1>` per view.
+
+Heading: Content & Locales
+
+- Language: Korean. `html lang="ko"`.
+- Voice: product name, one lede, two verbs. No implementation words on screen.
+- Terminology from capture: 더 알아보기, iPhone 쇼핑하기, 구입하기, nav labels as listed in data-inventory.
+- iPad stage preserves the italic “air” lockup from the capture (exception to G38a, repository-fact).
+- Formatting: no prices. Thousands separators are unused because no counts are shown.
+- Honesty (visible, once, in the footer): 이 화면에는 가격·재고·계정 정보가 없습니다.
+- Expansion: Hangul `keep-all`; buttons `white-space: nowrap` (G49).
+
+Heading: Governance
+
+Authority order: prompt-fact → repository-fact (evidence.json / capture) → agent-proposed-greenfield-decision → unresolved (omit).
+
+Unresolved and therefore absent:
+
+- SF Pro KR webfont files
+- prices, SKUs, stock, ratings
+- destinations for Vision, TV 및 홈, 엔터테인먼트, 액세서리, 고객지원
+- figure/ground subject boxes (desktop aggregate: 0/8 resolved; placement omitted)
+
+Exceptions:  (contrast lift on dark outline); italic “air” lockup.
+
+Extension policy: this document is a run-scoped portable description (). It is not a compiled  project  and carries no agent-authored projection hash.
+
+Unknown-absence rule: do not fill a hole with a nearby brand, a system font presented as SF Pro KR, or a guessed metric.

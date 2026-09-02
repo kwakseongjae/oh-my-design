@@ -1,0 +1,229 @@
+Heading: Design System: Apple KR Home
+
+Source:  `search.py --design-system` (pack workflow Step 2).
+Project: Apple KR Home
+Query (used): `light ecommerce product photography consumer electronics landing spacious white`
+Dials: `--variance 2 --motion 2 --density 2`
+
+This file is the pack design-system document plus the implementation binding required to render the captured home without network requests and without inventing values that are not in the evidence snapshot.
+
+
+Heading: Design Dials
+
+- **Variance:** 2/10 — Centered / Minimal
+- **Motion:** 2/10 — Subtle
+- **Density:** 2/10 — Spacious
+
+Rationale for dials (pack Step 1, bound to evidence):
+
+- Variance 2: first-screen composition is centered product photography with a single headline stack (`capture/desktop-1440-viewport.png`).
+- Motion 2: `evidence.json` → `surfaces.desktop-1440.motion.present = false` (“no video above the fold at capture time”).
+- Density 2: full-bleed product units with large type and empty field above the phones; pack density low = 24–96px spacing.
+
+
+Heading: Pattern
+
+Pack `--design-system` returned **Real-Time / Operations Landing** for the second query. That pattern (metrics, sandbox, status colors) does not describe this page.
+
+Domain search `--domain landing "hero product cta social-proof"` returned **Feature-Rich Showcase** as the closest product-homepage structure:
+
+- Section order: Hero (value prop) → feature/product units → CTA repetition
+- Primary CTA placement: Hero + after units
+- Color strategy: brand primary + card surfaces
+
+**Implemented page pattern (home only):**
+
+1. Global nav (chrome from viewport)
+2. First-screen iPhone unit (headline, lead, two CTAs, generated lineup image)
+3. Full-bleed MacBook Air unit
+4. Full-bleed iPad Air unit
+5. Two-up promo grid: MacBook Pro, Watch Series 11, AirPods Pro 3, iPad Pro
+
+Task path: first-screen primary CTA `더 알아보기` → `#iphone-intro` (same file, iPhone intro). No additional screens.
+
+
+Heading: Style
+
+Pack `--design-system` style: **Exaggerated Minimalism** (oversized type, black/white, single accent).
+
+Domain search `--domain style "minimalism light product photography"` also ranked **Minimalism & Swiss Style** (clean, spacious, geometric, sans-serif, essential). Swiss is the closer match to the captured home (light field, no giant 12rem type, no black canvas on the first screen).
+
+**Implemented style mix:**
+
+- Swiss/minimal: grid of product units, no decoration, no emoji icons, no shadows
+- Not exaggerated-minimalism giant type: type sizes come from evidence `typeScale`, not `clamp(3rem, 10vw, 12rem)`
+- Not vintage analog / 3D configurator (other style hits)
+
+Anti-patterns from pack output to avoid: cheap visuals; text-heavy pages; fast animations.
+
+
+Heading: Colors
+
+Heading: Pack `--design-system` table (not used as live tokens)
+
+| Role | Hex | CSS Variable |
+|------|-----|--------------|
+| Primary | `#18181B` | `--color-primary` |
+| On Primary | `#FFFFFF` | `--color-on-primary` |
+| Secondary | `#27272A` | `--color-secondary` |
+| Accent/CTA | `#F8FAFC` | `--color-accent` |
+| Background | `#000000` | `--color-background` |
+| Foreground | `#FAFAFA` | `--color-foreground` |
+| Muted | `#181818` | `--color-muted` |
+| Border | `#3F3F46` | `--color-border` |
+| Destructive | `#EF4444` | `--color-destructive` |
+| Ring | `#18181B` | `--color-ring` |
+
+*Pack notes: Pure black + white contrast.*
+
+`--domain color "ecommerce light product"` returned E-commerce green `#059669` and E-commerce Luxury gold `#A16207`. Neither appears in the snapshot.
+
+Heading: Live tokens (evidence only)
+
+| Token | Value | Evidence field |
+|------|-------|----------------|
+| `--color-page` | `#ffffff` | `surfaces.desktop-1440.chrome.pageBackgroundComputed` |
+| `--color-surface` | `#f5f5f7` | `pageBackgroundRendered.hex` (coverage 0.5744 desktop; 0.3451 mobile) |
+| `--color-header` | `#fafafc` | `chrome.header.background` |
+| `--color-ink` | `#1d1d1f` | `chrome.bodyColor` and `typeScale` h2/p color |
+| `--color-ink-on-dark` | `#f5f5f7` | `typeScale` h3 color |
+| `--color-cta` | `#0066cc` | `chrome.primaryButton.borderColor` / `color` |
+| `--color-on-cta` | `#ffffff` | filled CTA label color as rendered in viewport captures |
+| `--color-air` | `#dbedf7` | `imagery.samples[1]` (MacBook Air) palette |
+| `--color-ipad-air` | `#addcee` | `imagery.samples[2]` (iPad Air) palette, coverage 0.1701 |
+| `--color-dark` | `#000000` | `imagery.samples[3]` / `[6]` palette (MacBook Pro, iPad Pro) |
+| `--color-ring` | `#0066cc` | same as CTA; pack requires a visible focus ring |
+
+Header height: 44px desktop (`chrome.header.heightPx`), 50px mobile.
+
+Button: fill `outline` in chrome for `iPhone 쇼핑하기`; `radiusPx` 980; desktop `fontPx` 17 weight 400; mobile `fontPx` 14 weight 400. Filled `더 알아보기` uses the same `#0066cc` (no separate fill hex in chrome).
+
+Values not present in evidence are omitted (no invented hover hex, no gold/green pack ecommerce palette).
+
+
+Heading: Typography
+
+Heading: Pack `--design-system`
+
+- Heading: Rubik
+- Body: Nunito Sans
+- Google Fonts import (network): `fonts.googleapis.com/...Nunito+Sans...Rubik...`
+
+Heading: Domain supplement
+
+`--domain typography "clean professional modern"` → **Korean Modern** (Noto Sans KR) is the pack pairing for Korean sites. Also cannot be loaded: render must open with zero network requests.
+
+Heading: Live stack
+
+`evidence.json` `typeScale.family` = **SF Pro KR** on both surfaces.
+
+```css
+font-family: "SF Pro KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+```
+
+No `@import` of Google Fonts. If SF Pro KR is not installed, the UA system stack is used. This is a runtime fallback, not a substitute token.
+
+| Role | Desktop | Mobile | Source |
+|------|---------|--------|--------|
+| Product title (h2) | 56px / 600 / line-height 66.0045px / `#1d1d1f` | 32px / 600 / 37.7168px | `typeScale` h2 |
+| Dark-unit title | 40px / 600 / 44px / `#f5f5f7` | 32px / 600 / 36px | `typeScale` h3 |
+| Lead (p) | 28px / 400 / 35px / tracking 0.196px | 19px / 400 / 25px / tracking 0.228px | `typeScale` p |
+| CTA | 17px / 400 | 14px / 400 | `primaryButton` |
+| Document title | Apple (대한민국) | same | `source.title` |
+
+Pack Quick Reference still applies: body ≥16px on mobile is satisfied by 19px lead; sequential heading order; no level skip on the home view.
+
+
+Heading: Key effects
+
+Pack `--design-system` effects (`font-size: clamp(3rem 10vw 12rem)`, weight 900, tracking -0.05em) are **not applied**. They conflict with the measured type scale.
+
+Motion (dial 2, pack GSAP Scroll Reveal subtle):
+
+- Duration 150–300ms for control hover (pack UX / html-tailwind)
+- `prefers-reduced-motion: reduce` disables animation and smooth scroll
+- No GSAP CDN (offline constraint)
+- No above-the-fold video (`motion.present = false`)
+
+
+Heading: Icons
+
+`--domain icons "navigation search bag menu"`:
+
+| Need | Pack icon | Library |
+|------|-----------|---------|
+| Search | `magnifying-glass` | Phosphor outline |
+| Bag | `shopping-bag` | Phosphor outline |
+| Menu | `list` | Phosphor outline |
+
+Inline SVG, 18px glyph inside a 44×44px hit target. No emoji icons (pack CRITICAL).
+
+
+Heading: Stack (html-tailwind)
+
+`--stack html-tailwind "layout hero image button navigation responsive"` applied as CSS equivalents (no Tailwind CDN):
+
+- Responsive images: single local `image.jpg` (1280×720), `width`/`height` + `aspect-ratio` to limit CLS
+- `object-fit: contain; object-position: center bottom`
+- Fixed header `z-index: 50`; drawer `40`
+- Icon-only controls have `aria-label`
+- Mobile-first, then `768` / `1024`
+- Touch targets `min-height/min-width: 44px`
+- `cursor: pointer` on interactive elements
+- Visible `:focus-visible` ring
+
+
+Heading: UX checks used (pack Quick Reference §1–§3, §9)
+
+- Skip link to `#main`
+- Keyboard: Tab order follows visual order; Escape closes the mobile drawer
+- Contrast: `#1d1d1f` on `#f5f5f7`; `#ffffff` on `#0066cc`; `#f5f5f7` on `#000000`
+- Sticky header offset via header height tokens
+- One primary CTA per unit (`더 알아보기`), secondary outline (`iPhone 쇼핑하기` / `구입하기`)
+- No hover-only action
+- `touch-action: manipulation`
+
+
+Heading: Spacing
+
+Density dial 2 (spacious). 4/8pt scale:
+
+`--space-1` 8px · `--space-2` 16px · `--space-3` 24px · `--space-4` 32px · `--space-5` 48px · `--space-6` 64px
+
+Promo gutter 12px (4pt grid). Unit min-heights bound to evidence boxes where present: desktop iPhone unit image box height 692; promo tiles 580.
+
+
+Heading: Imagery
+
+Evidence method note: chrome and imagery are separate domains; imagery is a distribution, never one hero.
+
+Live generated image is the first-screen iPhone family lineup, because that is the photograph occupying the specified first screen (`desktop-1440-imagery-01` / `mobile-390-imagery-01`, alt names iPhone 17 Pro and the dual-camera pair). Other product photographs are not generated; those units are color fields + evidenced copy only.
+
+
+Heading: Copy (evidence / capture only)
+
+| Unit | Title | Lead | CTAs |
+|------|-------|------|------|
+| iPhone | iPhone | 최신 세대 iPhone을 만나보세요. | 더 알아보기 · iPhone 쇼핑하기 |
+| MacBook Air | MacBook Air | 이제 막강한 성능의 M5 탑재. | 더 알아보기 · 구입하기 |
+| iPad Air | iPad *air* | 이제 막강한 성능의 M4 탑재. | 더 알아보기 · 구입하기 |
+| MacBook Pro | MacBook Pro | 이제 M5, M5 Pro 또는 M5 Max 탑재. | 더 알아보기 · 구입하기 |
+| Watch | WATCH SERIES 11 | 당신의 건강을 살피는 궁극의 방법. | 더 알아보기 · 구입하기 |
+| AirPods | AirPods Pro 3 | 세계 최고의 인이어 액티브 노이즈 캔슬링. | 더 알아보기 · 구입하기 |
+| iPad Pro | iPad Pro | 첨단 AI 성능 및 판도를 바꾸는 역량. | 더 알아보기 · 구입하기 |
+
+Nav labels from `capture/desktop-1440-viewport.png`: 스토어, Mac, iPad, iPhone, Watch, Vision, AirPods, TV 및 홈, 엔터테인먼트, 액세서리, 고객지원.
+
+No prices, metrics, or other numerals were added.
+
+
+Heading: Pre-delivery checklist (pack)
+
+- [x] No emojis as icons (inline SVG)
+- [x] cursor-pointer on clickable elements
+- [x] Hover states 150–300ms
+- [x] Light-mode text contrast ≥ 4.5:1
+- [x] Focus states visible
+- [x] prefers-reduced-motion respected
+- [x] Responsive: 375 / 768 / 1024 / 1440 (verified surfaces in evidence: 390×844 and 1440×900)
+- [x] Render has no external network requests

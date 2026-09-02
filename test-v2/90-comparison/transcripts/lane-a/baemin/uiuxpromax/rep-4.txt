@@ -1,0 +1,140 @@
+Heading: Baemin Home — design system
+
+Surface: captured home (`https://www.baemin.com/`, snapshot `2026-08-22T19-47-32-522Z`). Task on this screen: open one app-install path (store badge or QR). No other screens.
+
+Pack:  2.0 (`search.py --design-system`, then domain/stack supplements). Stack for this run is standalone HTML — no network on first paint, so html-tailwind rules are applied as CSS tokens rather than a Tailwind CDN.
+
+Heading: Pack workflow
+
+Heading: Step 1 — requirements
+- Product: consumer food-delivery marketing home
+- Audience: Korean C-end, first visit on web, job is to leave for the app
+- Platform: desktop-1440 (1440×900) and mobile-390 (390×844)
+- Style keywords from capture: mint field, heavy type, full-bleed food photo, one primary install CTA
+
+Heading: Step 2 — `--design-system "food delivery consumer landing playful vibrant mint app download"`
+- Pattern: **App Store Style Landing** — platform CTAs + QR. Section list in the pack (device mockup, ratings, screenshot carousel) is not used: the brief is a single home, and the capture is a hero-centric photo, not an app-store gallery.
+- Style: **Vibrant & Block-based** — large type (32px+), 150–300ms motion, high contrast blocks
+- Pack default palette was appetizing orange (`#EA580C`) + trust blue. **Not applied.** Captured chrome binds primary to mint `#0cefd3`, on-primary `#000000`, canvas `#f6f6f6`.
+- Pack heading/body pair was Fredoka / Nunito via Google Fonts. **Not applied.** First render cannot request the network; captured `typeScale.family` is `-apple-system`.
+
+Heading: Step 3 — domain supplements
+- `landing` / hero-centric: full-bleed visual, one primary CTA, same hierarchy on mobile
+- `ux`: visible focus, 44px targets, dialog scrim, Esc/dismiss, `prefers-reduced-motion`
+- `icons`: Phosphor-style outline marks, no emoji icons (download, QR, menu, external)
+- `color`: industry orange ignored; mint taken from evidence `typeScale` / `primaryButton` / imagery palettes
+
+Heading: Step 4 — `--stack html-tailwind`
+- Mobile-first, then 768 / 1024 / 1440
+- Visibility by breakpoint (`Get the App` on small, store cluster on large) — same install target
+- Images declare width/height; hero uses `object-fit: cover`
+
+Heading: Token architecture
+
+Three layers (pack design-system skill). Components reference semantic names only.
+
+Heading: Primitive
+| Token | Value | Source |
+|---|---|---|
+| `--color-mint-500` | `#0cefd3` | desktop/mobile typeScale + mobile primaryButton |
+| `--color-mint-600` | `#0be5ca` | hover step from imagery `#0be5ca` / `#0ce5ca` |
+| `--color-black` | `#000000` | bodyColor, button label |
+| `--color-white` | `#ffffff` | store-badge fill, reversed wordmark |
+| `--color-canvas` | `#f6f6f6` | pageBackgroundComputed |
+| `--space-*` | 4px grid | pack 4/8 spacing |
+| `--duration` | `180ms` | pack 150–300ms band |
+| `--font-heading` / `--font-body` | `-apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif` | captured family + Korean fallback, local only |
+
+Heading: Semantic
+| Token | Maps to |
+|---|---|
+| `--color-primary` | mint-500 |
+| `--color-on-primary` | black |
+| `--color-background` | canvas |
+| `--color-foreground` | black |
+| `--color-surface` | white |
+| `--color-on-photo` | white (reversed wordmark on photography) |
+| `--color-ring` | mint-500 |
+
+Heading: Component
+| Token | Maps to |
+|---|---|
+| `--button-app-bg/fg/radius` | primary / on-primary / 9999 (mobile `Get the App`) |
+| `--store-badge-bg/fg/h` | surface / foreground / 48px |
+| `--header-h` | 72 → 96px (capture header geometry ~96 desktop) |
+
+Heading: Type
+
+| Role | Size / weight / line | Color | Breakpoint |
+|---|---|---|---|
+| Wordmark | 1.25–1.35rem / 800 / 1, tracking -0.06em | on-photo | all |
+| Hero title | 32px / 800 / 44.8px | primary | mobile (captured `p`) |
+| Hero title | 60px / 800 / 84px | primary | ≥1024 (captured `p`) |
+| Lede | 24px / 700 | primary | mobile (captured `h2`) |
+| Lede | 36px / 700 | primary | ≥1024 |
+| Get the App | 20px / 700 / 20px | on-primary | mobile (captured `button`) |
+| Nav | 13px / 500 | on-photo | ≥1024 |
+| Body | 16px / 400 / 1.5 | foreground | all |
+
+Official brand mark files are not used. Header identity is the text wordmark `배달의민족`. Store marks are text badges, not Apple/Google artwork.
+
+Heading: Layout
+
+- One viewport hero. No extra routes, no invented product sections.
+- Mobile: wordmark + menu, mint title/lede, pill CTA, full-bleed photo.
+- Desktop: 96px header, copy inset ~156px (captured headline `docBox.x`), store badges + QR, right-edge snap dots as chrome only (not a second screen).
+- Hero photograph is `image.jpg` (Grok Imagine). Left/top scrim keeps mint type above 3:1 on the wood table.
+- Breakpoints: default 390, `768`, `1024`, `1440`.
+
+Heading: Components
+
+Heading: Header
+- Reversed wordmark on photography (pack logo-usage: reversed on photo, clear space).
+- Desktop: three text links already on the capture (`우아한형제들`, `라이더 모집`, `For foreigners`) with an outline external glyph. Same-page hashes — they do not open a second product screen.
+- Mobile: 44×44 menu control → `#menu` sheet.
+
+Heading: Install path (the task)
+- Mobile primary: `Get the App` → `#install`
+- Desktop primary: App Store / Google Play text badges + QR button → `#install`
+- `#install:target` is the install path. It works with no JavaScript. Esc / scrim / 닫기 return to `#main`.
+- Sheet contains a QR figure plus App Store and Google Play text actions.
+- One primary action per breakpoint (pack `primary-action`).
+
+Heading: Store badge
+- White 48×(≥132) rectangle, 8px radius, two-line label, 8px gap, cursor-pointer, press scale 0.97.
+- QR sibling is 48×48, same surface.
+
+Heading: Dialog
+- Scrim ~52% black (pack 40–60%).
+- Sheet on primary mint, 24px radius, 48px actions.
+- Focus ring 3px mint, offset 3px.
+
+Heading: Motion & states
+
+- Hover/press 180ms, ease `cubic-bezier(0.2, 0.8, 0.2, 1)`
+- Press scale 0.95–1.00 band (pack scale-feedback)
+- `prefers-reduced-motion` collapses duration
+- Focus-visible on every control; skip link to `#main`
+
+Heading: Imagery
+
+- Representative image: `image.jpg` (1280×720 JPEG), local `src` only.
+- Role: hero food photograph for the first fold (salad bowl, wood table, right-weighted so type sits on the empty left).
+- Not a brand logo. Alt describes the food, not a campaign slogan.
+
+Heading: Constraints this run will not violate
+
+- First paint: no `@import` fonts, no CDN, no remote images.
+- Reset includes `figure`, `blockquote`, `ul`, `ol` margin/padding 0 (UA 1em/40px on figure broke measurement in prior benches).
+- No official Baemin mark file; no Apple/Google badge artwork.
+- Touch targets ≥44px; nav/CTA gaps ≥8px.
+- Unknown capture fields stay omitted (no invented ratings, screenshots carousel, or extra landing sections from the pack pattern).
+
+Heading: Anti-patterns avoided
+
+- Pack orange food palette over captured mint
+- Google Fonts on an offline first render
+- Emoji as icons
+- Hover-only install (mobile has a tap CTA)
+- Mixing filled/outline icon languages
+- Extra screens not in the brief

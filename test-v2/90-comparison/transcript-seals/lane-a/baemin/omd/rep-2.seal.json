@@ -1,0 +1,44 @@
+{
+  "runId": "lane-a-baemin-rep-2",
+  "arm": "omd",
+  "lane": "lane-a",
+  "brand": "baemin",
+  "repeat": 2,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/baemin/<arm>/rep-2/system.md",
+      "sha256": "87002cdb02c1874ed6f35256e903e055e5de9a659a695e7848161b9fe847257f"
+    }
+  ],
+  "sourceSha256": "87002cdb02c1874ed6f35256e903e055e5de9a659a695e7848161b9fe847257f",
+  "transcriptSha256": "3c5ecb6f38b10636ac354b68bf2dd7ec44fa6bf99d7aa450bab2e0457391a9b3",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "becf08f97cfd0a28052a6779171096649e7a6fef2ab581379382333f792a3c34",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T01:05:11Z",
+  "transcriptionEndedAt": "2026-09-02T01:05:11Z",
+  "verificationStartedAt": "2026-09-02T01:05:11Z",
+  "verificationEndedAt": "2026-09-02T01:05:11Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/baemin/omd/rep-2.map.csv",
+  "mapSha256": "6729cf96effe25d095dd8153e9763477b90f47bb62c3c2401713a284662de7f5",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 97,
+    "problems": [],
+    "attempts": 1
+  },
+  "verdict": "PASS",
+  "transcriptFile": "90-comparison/transcripts/lane-a/baemin/omd/rep-2.txt",
+  "submittedToScoring": true,
+  "supersedes": {
+    "artifact": "90-comparison/transcript-seals/lane-a/baemin/omd/rep-2.blocked.txt",
+    "verdict": "TRANSCRIPTION_BLOCKED",
+    "toolSha256": "73d13200a2903e68c63596caea33cbd53e35de1a1956e0f9da926c86c005cd41",
+    "reason": "the earlier verifier could not express a declared MARKER_DELETE inside a fenced block; TRANSCRIPTION.md §4.1 row 2 is now applied and declared."
+  }
+}

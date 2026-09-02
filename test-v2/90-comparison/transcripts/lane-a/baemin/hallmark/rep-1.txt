@@ -1,0 +1,56 @@
+Heading: 배달의민족 홈 —  Hum
+
+실험 브리프는 홈 한 화면, 과업은 앱 설치 경로(스토어 배지 또는 QR) 하나를 여는 것이다.  기본 플로를 따랐고, 카피는 스냅샷 증거에 있는 문장만 썼다.
+
+Heading: 추론 (브리프가 질문 게이트를 건너뛴 뒤)
+
+- Audience: 웹에서 앱을 받으려는 방문객
+- Use: App Store / Google Play / QR 중 하나를 연다
+- Tone: playful
+- Genre: playful → catalog theme **Hum**
+- Macrostructure: **Marquee Hero** (한 문장이 접힘면). 설치 CTA는 접힘면 아래와 좁은 폭 하단 바로 둔다.
+
+Heading: 구조
+
+| 축 | 선택 | 노브 |
+| --- | --- | --- |
+| Macro | Marquee Hero | H1 `size=xl`, `alignment=left-bias`, `underlay=single-rule-below` |
+| Nav | N12 Banner + retract | `fill=solid`, `dismiss=yes`, `bar=sticky` |
+| Enrichment | E8 photography, 접힘면 아래 `<figure>` | Tier C, `image.jpg`, 로고·문자 없음 |
+| CTA | C4 sticky (60rem 미만) + 스토어 버튼 | QR은 Play 스토어 URL |
+| Footer | Ft8 Marquee scroll | `32s`, 왼쪽, middot |
+
+배너 문구 `배달팁 무료 · 배민클럽`은 증거 타이틀에서 왔다. 히어로 `건강 관리 열정 식지 않도록`, 아래 문장 `샐러드, 지금 배민됩니다`도 스냅샷이다. 숫자 마케팅 주장은 없다.
+
+워드마크는 텍스트 `배달의민족`이다. 공식 로고 원본은 쓰지 않았다.
+
+Heading: 토큰
+
+모든 색과 서체는 `render.html` `:root` (동일 내용 )를 경유한다.
+
+- Paper: cream `oklch(97% 0.012 95)` — 순백 금지
+- Ink: `oklch(20% 0.012 250)` — 순흑 금지
+- Accents: pear / sky-cyan / coral. 배너는 pear 솔리드, 설치 밴드는 cyan tint, 푸터는 pear tint. 액센트 간 그라데이션 없음
+- Type: Plus Jakarta Sans (display+body, 파일 내 `@font-face`) + JetBrains Mono (QR 라벨·배너 링크, 2슬롯)
+- Space: 4pt 스케일 `--space-3xs` … `--space-4xl`
+- Radius: card 20px, pill 999px
+- Motion: `--ease-out` / `--ease-in` / `--ease-press`. 페이지당 세 개: 버튼 누름, 푸터 마퀴, 캐릭터 펄스+스타버스트
+
+한글 글리프는 임베드한 Latin 페이스에 없으므로 OS CJK로 그린다. 렌더 시 외부 폰트 CDN은 호출하지 않는다.
+
+Heading: 설치 경로
+
+1. App Store 버튼 → `https://apps.apple.com/kr/app/id378084485`
+2. Google Play 버튼 → `https://play.google.com/store/apps/details?id=com.sampleapp.woowa`
+3. QR (같은 Play URL) — 인라인 SVG, 클릭 가능
+4. 좁은 폭 하단 바 `Get the App` (증거 모바일 라벨)
+
+스토어 배지는 텍스트 버튼이다. Apple/Google 공식 뱃지 에셋을 넣지 않았다.
+
+Heading: 상태
+
+`.btn`은 default · hover · `:focus-visible` · `:active` · disabled · loading · error · success를 가진다. 포커스 링은 즉시 나타나고 애니메이션하지 않는다. `prefers-reduced-motion: reduce`에서 마퀴·펄스·스타버스트를 끈다.
+
+Heading: 셸
+
+히어로 헤드라인 왼쪽 가장자리, 밴드 안 제목, 네비 워드마크가 같은 `--shell` + `--page-gutter`를 쓴다. 이미지 그리드 트랙은 `minmax(0, 1fr)`. `html, body { overflow-x: clip }`. `figure, blockquote, ul, ol` 마진 리셋.

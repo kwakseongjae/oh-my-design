@@ -1,0 +1,62 @@
+studied: yes · DNA-source: image · snapshot: 2026-08-22T19-46-47-156Z
+Heading: Design — Apple (대한민국) home
+
+Locked design system. Future  runs read this file first; pages defer
+to it. Amend intentionally — the file is the rule.
+
+Genre: modern-minimal. Macrostructure: Photographic. Theme: studied-DNA.
+Locking this as the run’s system.
+
+Heading: System
+- Genre · modern-minimal
+- Macrostructure · Photographic
+- Theme · studied-DNA (source: image)
+- Axes · light / geometric-sans / cool
+
+Heading: Provenance
+- Source mode · image (evidence viewport + `desktop-1440-imagery-01`)
+- URL (capture origin, not fetched live) · https://www.apple.com/kr/
+- Date · 2026-08-29
+- Attestation · image-mode emission; public reference snapshot for this brand run
+- Confidence · Tokens are estimated from evidence colour fields (chrome + imagery palettes), not live CSS. Fonts are the measured `typeScale.family` (`SF Pro KR`) with named system fallbacks — no network faces. Rhythm is from a vision pass on `desktop-1440-viewport.png` / `mobile-390-viewport.png`.
+
+Heading: Tokens (canonical ·  is the source of truth)
+```css
+:root {
+  --color-paper:      oklch(97.071% 0.00265 286.35);
+  --color-paper-2:    oklch(98.566% 0.00264 286.35);
+  --color-ink:        oklch(23.158% 0.00381 286.10);
+  --color-ink-2:      oklch(40% 0.006 286.10);
+  --color-rule:       oklch(90% 0.005 286.35);
+  --color-accent:     oklch(52.197% 0.17709 255.83);
+  --color-accent-ink: oklch(98.5% 0.003 286.35);
+  --color-focus:      oklch(23.158% 0.00381 286.10);
+
+  --font-display: "SF Pro KR", "SF Pro Display", "SF Pro Text", "Apple SD Gothic Neo", sans-serif;
+  --font-body:    "SF Pro KR", "SF Pro Text", "Apple SD Gothic Neo", sans-serif;
+  --font-outlier: "SF Mono", ui-monospace, monospace;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;  --dur-base: 240ms;  --dur-slow: 320ms;
+
+  --radius-card: 12px;  --radius-pill: 980px;  --radius-input: 12px;
+}
+```
+
+Heading: CTA voice
+- Primary · fill `--color-accent` / ink `--color-accent-ink` · pill `980px` · padding `--space-xs` `--space-lg` · label `더 알아보기`
+- Secondary · outline `--color-accent` · same radius · label `iPhone 쇼핑하기`
+
+Heading: Motion stance
+- motion-cut · one CTA colour shift · no spatial hero reveal
+- Reduced-motion fallback · ≤150 ms opacity crossfade.
+
+Heading: Notes
+- Do not invent metrics, prices, or extra product folds.
+- Do not copy source photography; the fold uses a generated still cited from evidence `c1` alt + palette.
+- Do not carry a 4-column sitemap footer; Ft2 only, copy limited to evidence `source.title`.
+- Italic headers banned. Section eyebrows off.
+- Accent footprint stays in the two pills, not as a flood.
+
+Heading: Exports
+ (in this run directory) is the source of truth.

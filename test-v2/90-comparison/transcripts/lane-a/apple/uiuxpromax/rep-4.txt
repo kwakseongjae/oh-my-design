@@ -1,0 +1,382 @@
+
+This file is the run-local Master. Page rules for the specified screen (Home) are in the **Home page** section below. Those rules override Global Rules where they conflict. No other pages are in scope.
+
+
+**Project:** Apple KR Home
+**Category:** Consumer electronics brand homepage
+**Query:** `consumer electronics brand homepage product photography minimal spacious premium`
+**Design Dials:** Variance 2/10 (Centered / Minimal) | Motion 2/10 (Subtle) | Density 2/10 (Spacious)
+**Stack:** `html-tailwind` (implemented as a single offline HTML file; no CDN, no `@import` network fonts)
+**Surfaces in evidence:** desktop-1440 (1440×900), mobile-390 (390×844)
+
+
+Heading: Step 1 — Requirements (from brief + evidence)
+
+- **Product type:** Consumer electronics brand storefront (homepage)
+- **Screen:** Home (`https://www.apple.com/kr/`), snapshot `2026-08-22T19-46-47-156Z`
+- **Task on this screen:** from the first view, follow an introduction path for one product line
+- **Audience:** C-end visitors, locale `ko-KR`, color scheme `light`
+- **Style keywords:** product-first photography, centered, spacious, high-key
+- **Platform:** desktop-web + mobile-web (not native app)
+- **Motion in evidence:** `present: false` — no video above the fold at capture time
+
+
+Heading: Global Rules
+
+Heading: Color Palette (pack `--design-system` recommendation)
+
+| Role | Hex | CSS Variable |
+|------|-----|--------------|
+| Primary | `#1C1917` | `--color-primary` |
+| On Primary | `#FFFFFF` | `--color-on-primary` |
+| Secondary | `#44403C` | `--color-secondary` |
+| Accent/CTA | `#A16207` | `--color-accent` |
+| Background | `#FAFAF9` | `--color-background` |
+| Foreground | `#0C0A09` | `--color-foreground` |
+| Muted | `#E8ECF0` | `--color-muted` |
+| Border | `#D6D3D1` | `--color-border` |
+| Destructive | `#DC2626` | `--color-destructive` |
+| Ring | `#1C1917` | `--color-ring` |
+
+**Color Notes (pack):** Premium black + gold accent [Accent adjusted from #CA8A04 for WCAG 3:1]
+
+These pack hexes are **not applied** on the Home render. Pack rule `color-palette-from-product` plus evidence chrome replace them. See **Evidence-bound tokens**.
+
+Heading: Typography (pack `--design-system` recommendation)
+
+- **Heading Font:** Plus Jakarta Sans
+- **Body Font:** Plus Jakarta Sans
+- **Mood:** neumorphism, soft ui, monochromatic, cool grey, minimal, physical, depth, ceramic, system font, utility
+- **Best For:** Smart home controls, minimal tools, aesthetic dashboards, health monitors, brand showcase pages
+- **Google Fonts:** https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;1,400
+
+**CSS Import (pack, not used at runtime):**
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+```
+
+The first render must open with **no network requests**. Pack Google Fonts URLs are documentation only. Evidence family is `SF Pro KR`. Runtime stack: `"SF Pro KR", "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif`. This is a local/system stack, not a substitute face presented as SF Pro KR.
+
+Heading: Spacing Variables
+
+*Density: 2/10 — Spacious*
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--space-xs` | `4px` / `0.25rem` | Tight gaps |
+| `--space-sm` | `8px` / `0.5rem` | Icon gaps, inline spacing |
+| `--space-md` | `24px` / `1.5rem` | Standard padding |
+| `--space-lg` | `32px` / `2rem` | Section padding |
+| `--space-xl` | `48px` / `3rem` | Large gaps |
+| `--space-2xl` | `64px` / `4rem` | Section margins |
+| `--space-3xl` | `96px` / `6rem` | Hero padding |
+
+Heading: Shadow Depths
+
+| Level | Value | Usage |
+|-------|-------|-------|
+| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |
+| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Cards, buttons |
+| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Modals, dropdowns |
+| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | Hero images, featured cards |
+
+Home product bands do not use card shadows. Elevation is reserved; photography sits on flat color fields.
+
+
+Heading: Evidence-bound tokens (three-layer)
+
+Source: `test-v2/00-evidence/apple/evidence.json` chrome + typeScale. Values not present in evidence are omitted.
+
+Heading: Layer 1 — Primitive
+
+```css
+:root {
+  --color-white: #ffffff;          /* chrome.pageBackgroundComputed */
+  --color-header-bg: #fafafc;      /* chrome.header.background (desktop-1440) */
+  --color-surface: #f5f5f7;        /* chrome.pageBackgroundRendered.hex */
+  --color-ink: #1d1d1f;            /* chrome.bodyColor */
+  --color-link: #0066cc;           /* chrome.primaryButton.color / borderColor */
+  --color-on-link: #ffffff;
+  --color-mac-field: #dbedf7;      /* desktop-1440 imagery sample c2 palette */
+  --font-ui: "SF Pro KR", "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+  --radius-pill: 980px;            /* chrome.primaryButton.radiusPx */
+  --header-height-desktop: 44px;   /* chrome.header.heightPx desktop-1440 */
+  --header-height-mobile: 50px;    /* chrome.header.heightPx mobile-390 */
+  --type-h2-desktop: 56px;         /* typeScale h2.fontPx */
+  --type-h2-desktop-lh: 66.0045px;
+  --type-h2-desktop-w: 600;
+  --type-h2-mobile: 32px;
+  --type-h2-mobile-lh: 37.7168px;
+  --type-p-desktop: 28px;
+  --type-p-desktop-lh: 35px;
+  --type-p-desktop-ls: 0.196px;
+  --type-p-mobile: 19px;
+  --type-p-mobile-lh: 25px;
+  --type-p-mobile-ls: 0.228px;
+  --btn-font-desktop: 17px;
+  --btn-font-mobile: 14px;
+  --btn-weight: 400;
+}
+```
+
+Mobile header background in evidence is `null`. Do not invent a fill; inherit the page surface.
+
+Heading: Layer 2 — Semantic
+
+```css
+:root {
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-ink);
+  --color-primary: var(--color-link);
+  --color-on-primary: var(--color-on-link);
+  --color-hero-surface: var(--color-surface);
+  --color-header: var(--color-header-bg);
+  --color-ring: var(--color-link);
+}
+```
+
+Heading: Layer 3 — Component
+
+```css
+:root {
+  --button-radius: var(--radius-pill);
+  --button-outline-color: var(--color-primary);
+  --button-fill-bg: var(--color-primary);
+  --button-fill-fg: var(--color-on-primary);
+  --nav-z: 50;
+  --duration: 200ms;
+}
+```
+
+
+Heading: Component Specs
+
+Heading: Buttons
+
+Evidence `primaryButton` on both surfaces is **outline**: fill `null`, border/color `#0066cc`, radius `980`, weight `400`, label `iPhone 쇼핑하기`. Viewport shows a second above-fold control `더 알아보기` as the filled companion. Fill hex is not a separate chrome field; the only measured blue is `#0066cc`, so the filled variant uses that primitive.
+
+Desktop `fontPx` 17, mobile 14. Touch target ≥44×44px (pack Quick Reference §2). Cursor `pointer`. Transition 150–300ms. Visible focus ring 2–4px.
+
+```css
+.btn-fill {
+  background: var(--button-fill-bg);
+  color: var(--button-fill-fg);
+  border: 2px solid var(--button-fill-bg);
+  border-radius: var(--button-radius);
+  font-size: var(--btn-font-desktop);
+  font-weight: var(--btn-weight);
+  min-height: 44px;
+  padding: 8px 24px;
+  cursor: pointer;
+  transition: opacity 200ms ease, background-color 200ms ease;
+}
+.btn-outline {
+  background: transparent;
+  color: var(--button-outline-color);
+  border: 2px solid var(--button-outline-color);
+  border-radius: var(--button-radius);
+  font-size: var(--btn-font-desktop);
+  font-weight: var(--btn-weight);
+  min-height: 44px;
+  padding: 8px 24px;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+.btn-fill:focus-visible,
+.btn-outline:focus-visible {
+  outline: 3px solid var(--color-ring);
+  outline-offset: 3px;
+}
+```
+
+Pack MASTER default (`border-radius: 8px`, gold CTA, weight 600) is **not** used on Home. Evidence radius and weight win.
+
+Heading: Cards
+
+Not used on this Home first render. Product bands are full-bleed color fields, not cards.
+
+Heading: Inputs
+
+No forms on this screen. Search in the global bar is an icon-only control with `aria-label`.
+
+Heading: Modals
+
+Not used.
+
+Heading: Icons
+
+Pack default library: Phosphor, outline, consistent stroke. Used: `magnifying-glass`, `shopping-bag`, `list`. Inline SVG (no `@phosphor-icons/react` package, no emoji). Icon-only controls have `aria-label`. Hit area ≥44×44px.
+
+Heading: Logo
+
+Icon-only Apple mark in the global header (pack logo rules: icon-only for small UI, clear space, no stretch, no recolor, no effects). Minimum digital icon size 24px.
+
+
+Heading: Style Guidelines
+
+**Style:** Exaggerated Minimalism
+
+**Keywords:** Bold minimalism, oversized typography, high contrast, negative space, loud minimal, statement design
+
+**Best For:** Fashion, architecture, portfolios, agency landing pages, luxury brands, editorial
+
+**Key Effects (pack):** `font-size: clamp(3rem 10vw 12rem), font-weight: 900, letter-spacing: -0.05em, massive whitespace`
+
+Home **does not** apply weight 900 or 12rem clamp. Evidence type is weight `600` at 56px / 32px. Negative space and centered alignment are kept (dials variance 2, density 2).
+
+Heading: Page Pattern
+
+**Pattern Name:** Minimal Single Column *(pack `--design-system`)*
+
+- **Conversion Strategy:** Single CTA focus. Large typography. Lots of whitespace. No nav clutter. Mobile-first.
+- **CTA Placement:** Center, large CTA button
+- **Section Order:** 1. Hero headline, 2. Short description, 3. Benefit bullets (3 max), 4. CTA, 5. Footer
+
+**Landing supplement (`--domain landing` → Hero-Centric Design):**
+
+- 1. Full-bleed Hero (headline + visual)
+- 2. Single value prop strip
+- 3. Key benefit or proof
+- 4. Primary CTA
+- Hero is 60–80% above fold. Mobile: same hierarchy. One primary CTA; companion outline is secondary.
+
+Home uses Hero-Centric over benefit-bullet order: this screen is a product photograph + two paths, not a SaaS feature list. Benefit bullets are omitted (no such copy in evidence).
+
+
+Heading: Motion
+
+**Scroll Reveal** (Subtle) — Trigger: scroll (viewport enter) | Duration: 300-400ms | Easing: `power1.out`
+
+```js
+gsap.from(el, { opacity: 0, y: 12, duration: 0.35, ease: 'power1.out', scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none reverse' } });
+```
+
+**Framework notes:** Requires the ScrollTrigger plugin registered once via gsap.registerPlugin(ScrollTrigger)
+
+-  Keep the y offset small (8-16px) so it reads as a fade, not a slide
+-  Don't reveal below-the-fold content needed for SEO/crawlers as invisible-by-default without a no-JS fallback
+
+**Runtime on this render:** GSAP is a network dependency. First render uses CSS `opacity` / `transform` only, 200ms, with `@media (prefers-reduced-motion: reduce)` disabling motion. No GSAP script tag.
+
+Evidence: `motion.present = false`.
+
+
+Heading: Anti-Patterns (Do NOT Use)
+
+-  Cheap visuals
+-  Fast animations
+
+Heading: Additional Forbidden Patterns
+
+-  **Emojis as icons** — Use SVG icons (Heroicons, Lucide, Phosphor)
+-  **Missing cursor:pointer** — All clickable elements must have cursor:pointer
+-  **Layout-shifting hovers** — Avoid scale transforms that shift layout
+-  **Low contrast text** — Maintain 4.5:1 minimum contrast ratio
+-  **Instant state changes** — Always use transitions (150-300ms)
+-  **Invisible focus states** — Focus states must be visible for a11y
+-  **Google Fonts / CDN Tailwind at runtime** — first render is offline
+-  **Invented metrics** — prices, ratings, unmeasured hex, unmeasured type sizes
+-  **Extra screens** — Home only
+
+
+Heading: Stack guidelines (`html-tailwind`)
+
+| Guideline | Do | Don't |
+|-----------|----|-------|
+| Semantic colors | `var(--color-primary)` in components | Raw hex on each control |
+| Images | `width`/`height` or `aspect-ratio`; relative `src` | External image URLs |
+| Z-index | `z-index: 50` on sticky nav | Rely on DOM order |
+| Responsive | One DOM; `hidden` / desktop nav via CSS | Separate mobile and desktop page copies |
+| `@apply` | Not applicable (no Tailwind build) | Tailwind CDN |
+
+Breakpoints used: 390 (evidence mobile), 768, 1024, 1440 (evidence desktop). Pack also lists 375.
+
+
+Heading: UX validation (`--domain ux`)
+
+| Issue | Do |
+|-------|----|
+| Skip links | Skip to main content before global nav |
+| Heading hierarchy | `h1` then `h2` — do not skip |
+| Focus states | Visible ring on interactive elements |
+| Keyboard | Tab order matches visual order |
+| Sticky nav | Reserve header height so content is not covered |
+| Icon-only | `aria-label` on search, bag, menu |
+
+
+Heading: Imagery (Home)
+
+Evidence method note: chrome and imagery are separate domains; imagery is a **distribution across samples, never one hero**.
+
+The required generated image is the first-band product photograph used on Home. It is not a claim that other samples do not exist.
+
+**Cited evidence for the generated frame:**
+
+- `surfaces.desktop-1440.imagery.samples[0]` (`tag: c1`, file `capture/desktop-1440-imagery-01.png`)
+- `alt`: 왼쪽 상단의 프로 Fusion 카메라 시스템과 중앙의 Apple 로고가 보이는 딥 블루 색상 iPhone 17 Pro 뒷면…
+- `palette[0].hex`: `#f5f5f7` (coverage 0.7475)
+- `light.meanLuma`: 0.882
+- `light.luminanceGradient`: brighter right
+- Viewport composition from `capture/desktop-1440-viewport.png` / `capture/mobile-390-viewport.png`: four-phone lineup (deep blue / white / pink / silver edge), cropped at the bottom
+
+Pack banner art direction for this visual: **Photo-Based** + **3D / Sculptural**, website hero, text overlaid in HTML not in the bitmap.
+
+
+Heading: Home page
+
+Overrides Master where listed. Screen scope: Home first render only.
+
+Heading: Layout
+
+- Sticky global header (desktop 44px, mobile 50px)
+- Desktop: icon mark + text links + search + bag
+- Mobile: icon mark + search + bag + list (Phosphor `list`); same links inside a `<details>` drawer
+- Main: iPhone band (headline, one line of supporting copy, two CTAs, generated photograph)
+- Following band starts MacBook Air using copy visible in the viewport capture; no second generated image
+- Footer uses evidence `source.title` only
+
+Heading: Copy on this screen (from evidence captures / chrome)
+
+Present in viewport or chrome — used:
+
+- Document title: `Apple (대한민국)`
+- Nav: 스토어, Mac, iPad, iPhone, Watch, Vision, AirPods, TV 및 홈, 엔터테인먼트, 액세서리, 고객지원
+- iPhone headline / line: `iPhone` / `최신 세대 iPhone을 만나보세요.`
+- Paths: `더 알아보기`, `iPhone 쇼핑하기`
+- MacBook Air: `MacBook Air` / `이제 막강한 성능의 M5 탑재.` / `더 알아보기` / `구입하기`
+
+Not in evidence — omitted: prices, ratings, legal paragraphs, unmeasured slogans.
+
+Heading: Product introduction path
+
+The assigned task is to move from the first view into one product’s introduction. `더 알아보기` and `iPhone 쇼핑하기` are in-page links to `#iphone` on this same Home file. No extra routes.
+
+
+Heading: Brand (pack `brand` skill)
+
+Visual identity on Home is evidence chrome, not the pack gold/stone palette.
+
+| Element | Rule |
+|---------|------|
+| Logo | Icon-only, dark mono on light header, clear space ≥ mark height, no stretch |
+| Photography | High-key studio hardware, large negative space, subject rising from the lower edge |
+| Voice | Short product names and one supporting line; no marketing filler |
+
+
+Heading: Pre-Delivery Checklist
+
+Before delivering any UI code, verify:
+
+- [x] No emojis used as icons (use SVG instead)
+- [x] All icons from consistent icon set (Phosphor outline stroke)
+- [x] `cursor-pointer` on all clickable elements
+- [x] Hover states with smooth transitions (150-300ms)
+- [x] Light mode: text contrast 4.5:1 minimum (`#1d1d1f` on `#f5f5f7` / `#ffffff`)
+- [x] Focus states visible for keyboard navigation
+- [x] `prefers-reduced-motion` respected
+- [x] Responsive: 375px, 768px, 1024px, 1440px (evidence 390 / 1440 as primary)
+- [x] No content hidden behind fixed navbars
+- [x] No horizontal scroll on mobile
+- [x] No network requests from `render.html`
+- [x] Generated image referenced relatively as `image.jpg`

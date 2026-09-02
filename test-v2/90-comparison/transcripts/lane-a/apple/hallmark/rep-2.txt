@@ -1,0 +1,73 @@
+Heading: Design — Apple (대한민국) home
+
+Locked design system. Future  runs read this file first; pages defer
+to it. Amend intentionally — the file is the rule.
+
+studied: yes · DNA-source: image · snapshot: 2026-08-22T19-46-47-156Z
+
+Heading: System
+- Genre · editorial (silent default; brief named no SaaS / atmospheric / playful signal)
+- Macrostructure · Photographic
+- Theme · studied-DNA (source: image — `desktop-1440-viewport.png` + `desktop-1440-imagery-01.png`)
+- Axes · light / grotesk-sans / cool (cyan-blue accent)
+- Nav · N1b (always-solid · dropdowns none · product row)
+- Footer · Ft2 inline single line
+- Enrichment · E8 photography, Tier C generated still (lane A · Grok Imagine)
+
+Going with: audience = visitors of Apple (대한민국) home · use = from the first screen take one product intro path · tone = austere. Previous nav: none. This build: N1b, because the evidence first screen is a dense product-index bar, not a newspaper masthead.
+
+Heading: Provenance
+- Source mode · image (viewport + imagery captures). URL `https://www.apple.com/kr/` is the assigned public reference for this brand, not a live WebFetch.
+- Attestation · (b) public reference for the assigned brand on 2026-08-29.
+- Tokens are converted from evidence hex / typeScale / chrome. Fonts are role-based with the evidence family name first. Rhythm is from a vision pass on `desktop-1440-viewport.png` and `mobile-390-viewport.png`.
+-  chroma floor 0.005 is applied on near-neutral surfaces; the evidence hex is recorded beside each token.
+
+Heading: Tokens (canonical · `render.html` `:root` is the source of truth)
+
+Single-file first render: tokens live in `render.html` `:root`. No project-root  (run directory isolation).
+
+```css
+:root {
+  --color-paper:      oklch(97.07% 0.005 286.4); /* evidence pageBackgroundRendered #f5f5f7 */
+  --color-paper-2:    oklch(98.57% 0.005 286.4); /* evidence header.background #fafafc */
+  --color-ink:        oklch(23.16% 0.005 286.1); /* evidence bodyColor #1d1d1f */
+  --color-accent:     oklch(52.20% 0.1771 255.8); /* evidence primaryButton #0066cc */
+  --color-accent-ink: oklch(97.07% 0.005 286.4);
+  --color-focus:      oklch(23.16% 0.005 286.1);
+  --color-mac-paper:  oklch(97.10% 0.0059 239.8); /* evidence imagery-02 palette #f2f6f9 */
+  --color-mac-paper-2: oklch(93.57% 0.0234 231.8); /* evidence imagery-02 palette #dbedf7 */
+
+  --font-display: "SF Pro KR", "SF Pro Display", "SF Pro Text", -apple-system, "Apple SD Gothic Neo", BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body:    var(--font-display);
+
+  --text-display: 2rem;     /* evidence mobile h2 32px; desktop 56px at 60rem */
+  --text-lede:    1.1875rem; /* evidence mobile p 19px; desktop 28px at 60rem */
+  --text-btn:     0.875rem;  /* evidence mobile primaryButton.fontPx 14; desktop 17 */
+
+  --header-h: 3.125rem; /* evidence mobile header.heightPx 50; desktop 44 at 60rem */
+  --hero-min: 31.25rem; /* evidence mobile imagery-01 intrinsic h 500; desktop 692 at 60rem */
+  --radius-pill: 61.25rem; /* evidence primaryButton.radiusPx 980 */
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+}
+```
+
+Type weights 600 (h2/h3) and 400 (p, button) are from `chrome.typeScale` / `primaryButton.weight`. Line-heights 66.0045px / 35px (desktop) and 37.7168px / 25px (mobile) inform `--lh-display` / `--lh-lede`. No other chrome metrics were present; those slots stay unnamed.
+
+Heading: CTA voice
+- Primary · fill `--color-accent` · pill `--radius-pill` · label 더 알아보기 (viewport capture) · path `#iphone`
+- Secondary · outline `--color-accent` / transparent · same radius · label iPhone 쇼핑하기 (`chrome.primaryButton.label`)
+
+Heading: Motion stance
+- silent · CTA hover lift only (Photographic default-off; one primitive)
+- Reduced-motion fallback · ≤150 ms; spatial motion off.
+
+Heading: Exports
+`render.html` `:root` is the source of truth for this run.
+
+Heading: Notes
+- Anti-patterns not carried: purple-gradient hero, Inter-everywhere, 3-column icon tiles, fake browser/phone chrome, invented metrics, Lottie, aurora blobs.
+- Photographic catalog copy says “never centered display”; the studied DNA from the viewport is a centred overlay on a full-bleed product fold. Gate 6 yields to gate 57 (studied-DNA).
+- Nav destinations other than iPhone / MacBook Air have no URL in evidence; they remain first-screen chrome and hash to the folds that exist.
+- Representative image is structurally equivalent photography (Tier C), not a pixel copy of `desktop-1440-imagery-01.png`.

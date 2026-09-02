@@ -1,0 +1,71 @@
+Heading: Design — Apple (대한민국) home
+
+studied: yes · DNA-source: image
+source: test-v2/00-evidence/apple (snapshot 2026-08-22T19-46-47-156Z)
+
+Locked design system. Future  runs read this file first; pages defer
+to it. Amend intentionally — the file is the rule.
+
+Heading: System
+- Genre · editorial (silent default; no SaaS / atmospheric / playful signal in the brief)
+- Tone · austere
+- Macrostructure · Photographic (closest named; alt Catalogue)
+- Hero · H6 Photographic fold, knobs: image-area=full-bleed · caption=none · text=above
+- Nav · N1b, knobs: centre-links=11 · dropdowns=none · scroll=always-solid
+- Footer · Ft2, knobs: order=wordmark · separator=none · density=spaced
+- Theme · studied-DNA (source: image)
+- Axes · light / geometric-sans / cool (cyan-blue)
+- Enrichment · E8 Hero Photography · craft: tier-C generated still (Grok Imagine) · polish: none
+
+Heading: Provenance
+- Source mode · image (evidence captures; live URL was not fetched so the snapshot stays frozen)
+- Source · image (user-attached) — `desktop-1440-viewport.png` as the primary surface; `desktop-1440-imagery-01.png` as the first-fold photograph
+- Date · 2026-08-29
+- Attestation · image mode; evidence pack for a public brand home (`https://www.apple.com/kr/`, title `Apple (대한민국)`)
+- Confidence · Tokens are measured from evidence chrome and sampled from the desktop viewport PNG, then expressed in OKLCH. Fonts are the computed family from `chrome.typeScale` (`SF Pro KR`) with a system fallback so the file opens offline. Rhythm is from a vision pass on the captures.
+
+Heading: Tokens (canonical · inlined in `render.html`)
+```css
+:root {
+  --color-paper:      oklch(97.07% 0.0050 286.4); /* pageBackgroundRendered #f5f5f7; chroma floored 0.005 */
+  --color-paper-2:    oklch(98.57% 0.0050 286.4); /* header.background #fafafc */
+  --color-ink:        oklch(23.16% 0.0050 286.1); /* bodyColor #1d1d1f */
+  --color-ink-2:      oklch(40.00% 0.0050 286.1);
+  --color-rule:       oklch(90.00% 0.0050 286.4);
+  --color-accent:     oklch(56.29% 0.1933 256.2); /* sampled fill on desktop-1440-viewport #0071e3 */
+  --color-accent-outline: oklch(52.20% 0.1771 255.8); /* primaryButton.borderColor #0066cc */
+  --color-accent-ink: oklch(97.07% 0.0050 286.4);
+  --color-focus:      oklch(23.16% 0.0050 286.1);
+
+  --font-display: "SF Pro KR", "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body:    var(--font-display);
+
+  /* 4-pt spacing scale, named: --space-3xs … --space-4xl. See render.html.   */
+  /* Type: display 56px / 600 (desktop h2), lede 28px / 400 (desktop p).     */
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;  --dur-base: 240ms;  --dur-slow: 320ms;
+
+  --radius-card: 0;  --radius-pill: 980px;  --radius-input: 0;
+  --nav-height: 2.75rem; /* desktop header.heightPx 44; mobile 50px at ≤40rem */
+}
+```
+
+Heading: CTA voice
+- Primary · fill `--color-accent` · pill (`radiusPx` 980) · label `더 알아보기` (capture)
+- Secondary · outline `--color-accent-outline` · same radius · label `iPhone 쇼핑하기` (`chrome.primaryButton.label`)
+- Desktop type · 17px / 400; mobile · 14px / 400 (`primaryButton.fontPx`)
+
+Heading: Motion stance
+- Photographic default-off · button colour/transform only · no page reveal
+- Reduced-motion fallback · ≤150 ms; active translate removed
+
+Heading: Notes
+- Do not copy source photography. The first-fold image is a generated structural stand-in for `surfaces.desktop-1440.imagery.samples[0]`.
+- Do not invent metrics, prices, or below-fold product copy. Visible home copy used: `iPhone` / `최신 세대 iPhone을 만나보세요.` / the two CTAs / the 11 nav labels from `desktop-1440-viewport`.
+- Do not emit a 4-column Ft3 footer — the capture has no footer sitemap.
+- Do not switch to a catalog theme (gate 57). Centred product-unit is the DNA ( names this “Apple-product-page energy”); Photographic’s corner-caption default is overridden.
+- Anti-patterns not carried over: purple-gradient hero, Inter-everywhere, 3-column icon tiles, invented stats, re-drawn device chrome, N1a 2-link nav, Ft3 index footer.
+
+Heading: Exports
+`render.html` `:root` is the source of truth for this isolated run. No project-root  was written (run isolation).

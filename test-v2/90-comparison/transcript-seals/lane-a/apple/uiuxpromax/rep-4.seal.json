@@ -1,0 +1,38 @@
+{
+  "runId": "lane-a-apple-rep-4",
+  "arm": "uiuxpromax",
+  "lane": "lane-a",
+  "brand": "apple",
+  "repeat": 4,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/apple/<arm>/rep-4/system.md",
+      "sha256": "e5fae0d5c8e3c3a37fdc5680a8a61c9697f714e790e5f61cd52a2016b61a453d"
+    }
+  ],
+  "sourceSha256": "e5fae0d5c8e3c3a37fdc5680a8a61c9697f714e790e5f61cd52a2016b61a453d",
+  "transcriptSha256": "3e0ec24a5dd8322d4f50f0d80c0ea93f165d64f402df86162ca6f44788231438",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "8c6e386ab58008e3779b86fd6fb14a0c84d3e8f3a6cba29ac6e1da82cbd2cb1c",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T00:27:17Z",
+  "transcriptionEndedAt": "2026-09-02T00:27:17Z",
+  "verificationStartedAt": "2026-09-02T00:27:17Z",
+  "verificationEndedAt": "2026-09-02T00:27:17Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/apple/uiuxpromax/rep-4.map.csv",
+  "mapSha256": "8cf56a182fa1cc3dce7e830a668dd48221a9cd28c07da17d61d45170fe0893c7",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 323,
+    "problems": [],
+    "attempts": 1,
+    "reverifiedAt": "2026-09-02T00:53:43.084Z",
+    "reverifiedBy": "orchestrator"
+  },
+  "verdict": "PASS"
+}

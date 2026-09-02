@@ -1,0 +1,117 @@
+Heading: 배달의민족 홈 Design System
+
+이 문서는  팩의 유도 사슬(철학 → 결정 표 → 토큰 → 컴포넌트 명세 → 레이아웃 문법)을 따른다. 프로젝트 루트 를 채택하지 않는다. 이 런의 산출 위치 밖에는 쓰지 않는다.
+
+근거 클래스는 팩 계약의 다섯 가지다: `prompt-fact` · `repository-fact` · `verified-reference-inspiration` · `agent-proposed-greenfield-decision` · `unresolved`.
+
+Heading: Philosophy
+
+이 화면의 일은 캠페인 사진 위에서 **앱 설치 경로 하나를 여는 것**이다. 설치가 아닌 이야기는 쓰지 않는다.
+
+- **P1 과업 하나.** 설치 경로가 유일한 과업이다. 아래 접힘의 제품 카탈로그를 비워 과업을 가리지 않는다. (무엇을 얻는가: 키보드로 도달하는 설치 상태. 무엇을 희생하는가: 음식배달·배민클럽·선물하기 섹션의 미확인 본문.)
+- **P2 민트는 신호, 사진은 장.** 민트(`#0cefd3`)는 디스플레이 글자와 모바일 필 버튼에만 쓴다. 첫 폴드를 민트 면으로 깔지 않는다. (얻는 것: 증거 타이포 색이 사진 위에 남는다. 희생: 악센트 면적 5% 규칙을 캠페인 헤드라인에는 적용하지 않음 — 헤드라인 색은 증거.)
+- **P3 없는 값은 없다.** 스토어 URL, 평점, 건수, 미측정 폰트 패밀리 실명을 만들지 않는다. (얻는 것: 정직한 빈칸. 희생: 배지가 실제 스토어로 나가지 못함.)
+
+Heading: Derive
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | 화면은 홈 첫 폴드 하나. 문법: 카피/픽처 디프틱. | prompt-fact: 화면=홈. visual-quality-contract §4 제공 이미지는 디프틱. |
+|  | App Store · Google Play · QR · Get the App은 같은 설치 대화상자를 연다. | prompt-fact: 과업은 경로 **하나**를 연다. |
+|  | 데스크톱은 배지 행, 390은 Get the App 필. | repository-fact: desktop-1440 배지 관측, mobile-390 `primaryButton.label` = Get the App. |
+|  | 액센트 `#0cefd3` / `oklch(0.854 0.154 180.2)` 는 디스플레이와 Get the App 필. | repository-fact: `typeScale[].color`, `primaryButton.background`. |
+|  | 표면 장르: 풀블리드 사진 플레이트. 카드 타일 장르 금지. | 홈 첫 폴드 캡처. P-ED-03/P-MK-05/P-CM-07 미채택(아래 프리셋). |
+|  | 스토어 배지는 흰 플레이트, 사진 위에 뜬다. | . |
+|  | 모서리: 배지 8px, 필 9999px, 시트 16px. | repository-fact: `primaryButton.radiusPx` 9999. 배지·시트는 4pt 스케일 agent-proposed. |
+|  | 모션: 120/200/320ms, enter/exit 두 곡선, transform·opacity만. | 팩 motion 계약. 증거 `motion.present` = false. |
+|  | QR 페이로드는 `https://www.baemin.com/`. 스토어 URL은 비움. | repository-fact: `source.url`. 스토어 URL unresolved. |
+|  | 거터 `clamp(20px, 10.83vw, 156px)`. 헤더 96 / 126. 디스플레이 60/800/84 · 32/800/44.8. | repository-fact: imagery `docBox.x` 156·20, `header.heightPx`, typeScale. |
+|  | 한글 스택: Apple SD Gothic Neo / Noto Sans KR / Malgun Gothic / -apple-system. | 팩 locale typography + 증거 family `-apple-system`. Pretendard 파일 없음. |
+
+Heading: Foundations
+
+- **Paper** `#f6f6f6` / `oklch(0.973 0 89.9)` — `pageBackgroundComputed`.
+- **Ink** `#000000` / `oklch(0 0 0)` — `bodyColor`, `primaryButton.color`. 팩은 순수 검정을 베이스로 쓰지 말라고 하나, 이 값은 증거이므로 유지한다.
+- **Mint** `#0cefd3` / `oklch(0.854 0.154 180.2)` — 디스플레이·Get the App.
+- **On-photo** `oklch(1 0 89.9)` — 워드마크·내비. 캡처에서 흰 글자.
+- **Badge** `oklch(1 0 89.9)` — 흰 배지 플레이트.
+- **Scrim** `oklch(0 0 0 / 0.42)` — 민트 글자 대비용. 민트/검정 대비율 14.3:1 (Get the App). 민트/흰 1.47:1이므로 사진 위 민트는 스크림 뒤에서만.
+- **Space** 4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 2.5rem 섹션 에어. 거터 위 .
+- **Shape** 필 9999px, 배지 8px.
+- **Motion** `--motion-fast 120ms` · `--motion-base 200ms` · `--motion-slow 320ms`. `prefers-reduced-motion: reduce`에서 애니메이션·트랜지션 제거.
+- **Elevation** hover `0 8px 24px oklch(0 0 0 / 0.18)`. 사진 위 배지에만.
+
+Unresolved: 공식 브랜드 폰트 파일, 스토어 URL, 헤더 배경 hex(`header.background` = null).
+
+Heading: Typography & Assets
+
+- 패밀리: 위 . 외부 `@font-face` 없음. 네트워크 요청 없음.
+- Display: 32–60px clamp, weight 800, line-height 1.4 (`84/60`, `44.8/32`). `word-break: keep-all`. 트래킹 조이지 않음.
+- Sub (lede): 24px / 700 / mint. 증거 `h2`.
+- UI (Get the App): 20px / 700 / ink on mint. 증거 `primaryButton` + mobile `button` typeScale. family 증거는 Arial이나 한글 커버를 위해 같은 고딕 스택을 쓴다.
+- Wordmark: 24px / 800. 24는 증거 스텝, 800은 디스플레이 웨이트.
+- 이미지: `image.jpg` 1280×720. 레인 A Grok Imagine 1회 생성. 역할: 첫 폴드 풀블리드 사진. 텍스트·로고 없음. `aria-hidden` — 캠페인 문장은 `h1`이 담당.
+- 라이선스: 생성 이미지. 캡처 PNG를 페이지에 넣지 않음.
+- 아이콘: 인라인 SVG 한 세트. 이모지 없음.
+
+Heading: Components & States
+
+프리셋: **no-preset: campaign-install-fold**. P-ED-03 룩북은 컷 4장 이상(GS6). P-MK-05는 데이터 칩이 필요하나 집계 필드가 없다. P-CM-07 벤토는 셀 5+. 해부는 visual-quality-contract 디프틱 + 팩 버튼 규범(C1–C10).
+
+Heading: Wordmark
+비대화. 홈 앵커 `#main`.
+
+Heading: Nav
+데스크톱 인라인 링크 3개(우아한형제들 · 라이더 모집 · For foreigners). 목적지는 증거에 없어 `#main`에 머문다. 390에서 디스클로저. 상태: default / hover / focus-visible / expanded(`aria-expanded`).
+
+Heading: Store badge
+흰 플레이트. App Store · Google Play는 `data-cta="local"`. 상태: default / hover(표면+그림자) / focus-visible / active(scale 0.98). disabled 없음.
+
+Heading: QR 버튼
+같은 행의 정사각 배지. 데스크톱에서 유일한 `data-cta="primary"`. 같은 상태 행렬.
+
+Heading: Get the App
+필, radius 9999, mint/ink. 390에서만 보이고 그 뷰포트의 `data-cta="primary"`. 상태 동일. 히트 ≥44px.
+
+Heading: Install dialog
+native `<dialog>`. 상태: closed / open (`data-state`). 열림은 배지·QR·Get the App 실제 클릭/Enter/Space. 닫힘: 닫기 · Escape · 백드롭. 포커스는 오프너로 복귀. `role="status"`가 "앱 설치 경로를 열었습니다."를 알린다. 에러/로딩/성공 레코드는 이 과업에 해당 없음(비대화 이유: 네트워크 스토어 이동 없음).
+
+Heading: Skip link
+`#main`을 가리킨다. 프라이머리 CTA가 아니다.
+
+Heading: Layout & Platforms
+
+- 문법: 풀블리드 사진 위 좌측 카피 디프틱. 초광폭은 좌측 max(카피 웰), 사진은 잘리지 않게 `object-position`으로 그릇을 오른쪽에 둔다.
+- 우선 뷰포트: 1440×900, 390×844. 검수 320, 200% 리플로우.
+- 히어로 `min-height: 100svh`. 센터 스택이 아님(G6 비해당).
+- 터치 타깃 ≥44px.
+- `overflow-x: clip`.
+- 200%: display clamp가 32px 바닥.
+- 플랫폼 적응: 720px 미만에서 배지 행 숨기고 Get the App.
+
+Heading: Content & Locales
+
+- `html lang="ko"`. 로케일 전환 없음.
+- 보이스: 캠페인 헤드라인은 캡처·증거 alt 그대로. UI는 사용자 말(앱 설치, 닫기, 본문으로).
+- 사용한 카피 (증거·캡처만):
+  - 타이틀: 배달의민족 - 배달팁 무료 배민클럽 (`source.title`)
+  - 워드마크: 배달의민족
+  - h1: 건강 관리 열정 식지 않도록 (`imagery.samples` alt c1 + capture)
+  - lede: 샐러드, 지금 배민됩니다 ()
+  - Get the App (`primaryButton.label`)
+  - Download on the App Store / GET IT ON Google Play / QR ()
+  - 우아한형제들 · 라이더 모집 · For foreigners (같은 캡처)
+- 쓰지 않은 증거 alt: 음식배달, 배민클럽, 선물하기 — 본문이 없어 섹션을 만들지 않음.
+- 정직 문장(푸터): 스토어 주소는 이 화면에 없습니다. QR은 https://www.baemin.com/ 입니다.
+
+Heading: Governance
+
+- 권위: 브리프 과업 > 스냅샷 증거 JSON·캡처 > 팩 계약 > 에이전트 제안.
+- 이 런은 `establish`를 런 디렉터리 안에서만 수행한다. 프로젝트 과 루트 는 건드리지 않는다.
+- 컴파일러 claim 마커는 쓰지 않는다(팩: 에이전트 손수 금지).
+- Unknown = 그 필드만 비움. 스토어 URL, 공식 웹폰트, 헤더 배경, 아래 접힘 본문.
+- 확장: 없음.
+
+Heading: 프리셋 기록
+
+no-preset: campaign-install-fold — 카탈로그의 editorial/marketplace/commerce 프리셋이 요구하는 컷 수·집계 필드가 이 브리프·증거에 없다.
