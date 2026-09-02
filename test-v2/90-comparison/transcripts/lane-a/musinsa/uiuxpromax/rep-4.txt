@@ -1,0 +1,160 @@
+Heading: MUSINSA 상의 카테고리 — Design System
+
+Lane A / arm  / rep-4. Source:  `--design-system` plus domain searches, grounded on evidence chrome from snapshot `2026-08-22T19-50-15-466Z`.
+
+This file is the system for **one screen**: 상의 카테고리 (`/category/001`) after **one color filter (블랙)** has been applied to narrow the product grid. No other routes.
+
+Heading: Pack search record
+
+| Step | Command | Used |
+|------|---------|------|
+| 2 | `--design-system "fashion ecommerce apparel category listing content-dense korean streetwear"` `--variance 3` `--motion 3` `--density 8` `-p MUSINSA` | Pattern, style, type, density, anti-patterns |
+| 3 | `--domain color "fashion ecommerce luxury black white high contrast"` | Palette override |
+| 3 | `--domain product "ecommerce fashion listing filter category"` | Listing + filter-heavy grid |
+| 3 | `--domain style "minimalism fashion editorial high contrast"` | Exaggerated Minimalism / Swiss / monochrome |
+| 3 | `--domain typography "korean modern fashion clean"` | Noto Sans KR pairing |
+| 3 | `--domain ux "filter product grid accessibility loading"` | Alt, focus, loading, font-display |
+| 3 | `--domain icons "filter close heart search menu"` | Phosphor: magnifying-glass, x, heart, funnel, list |
+| 4 | `--stack html-tailwind "responsive grid filter layout"` | `gap-*`, responsive padding |
+
+`--persist` was not used (output stays in the run directory).
+
+Heading: Pack `--design-system` (raw)
+
+- Pattern: **Portfolio Grid** — visuals first, filter by category, fast loading.
+- Style: **Exaggerated Minimalism** — black/white, high contrast, statement type. Fashion-appropriate.
+- Density 8: 8–32px scale (listing, not marketing whitespace).
+- Motion 3: 150–200ms color/opacity; no GSAP (offline first render).
+- Typography: **Noto Sans KR / Noto Sans KR** (Korean Modern).
+- Anti-patterns: flat-without-depth, text-heavy pages, emoji-as-icon.
+
+The first `--design-system` color table (`#059669` emerald, `#ECFDF5` mint ground, note “category green + map accent”) is a directory/listing default. It does not match evidence chrome (`body #000`, page `#fefdfd`, header bar `#f5f5f5`, outline chip `#e0e0e0` / `#666`). **Color domain Result 4 (E-commerce Luxury) and Result 5 (Museum/Gallery)** plus evidence computed colors replace it.
+
+Heading: Three-layer tokens
+
+Primitive → semantic → component. Components never take raw hex.
+
+Heading: Primitive
+
+| Token | Value | Origin |
+|-------|-------|--------|
+| `--color-black` | `#000000` | Evidence body / nav / Exaggerated Minimalism |
+| `--color-white` | `#FFFFFF` | Style primary pair |
+| `--color-stone-50` | `#FEFDFD` | Evidence `pageBackgroundRendered.hex` desktop |
+| `--color-zinc-100` | `#F5F5F5` | Evidence header bar |
+| `--color-zinc-200` | `#E0E0E0` | Evidence outline button border |
+| `--color-zinc-500` | `#666666` | Evidence outline button color |
+| `--color-zinc-800` | `#1C1917` | Color domain: E-commerce Luxury primary |
+| `--color-red-600` | `#DC2626` | Pack destructive; discount numeral |
+| `--space-1…8` | 4 / 8 / 12 / 16 / 20 / 24 / 32 px | Density 8, 4pt grid |
+| `--text-11…20` | 11 / 12 / 13 / 14 / 16 / 20 | Evidence 13–14px chrome + listing title |
+| `--radius-chip` | 4px | Evidence `primaryButton.radiusPx` |
+| `--duration-fast` | 150ms | Pack + states-and-variants |
+| `--font-sans` | `"Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif` | Korean Modern **without network** (Google Fonts import forbidden on this render) |
+
+Heading: Semantic
+
+| Token | Maps to | Role |
+|-------|---------|------|
+| `--color-background` | `--color-stone-50` | Page |
+| `--color-foreground` | `--color-black` | Text |
+| `--color-primary` | `--color-black` | Nav, selected chip, CTA fill |
+| `--color-on-primary` | `--color-white` | On black |
+| `--color-muted` | `--color-zinc-100` | Filter rows |
+| `--color-muted-foreground` | `--color-zinc-500` | Secondary labels |
+| `--color-border` | `--color-zinc-200` | Chips, tabs, grid rules |
+| `--color-destructive` | `--color-red-600` | Sale % |
+| `--color-nav` | `--color-black` | Top bar |
+| `--target` | 44px | Touch minimum |
+
+Heading: Component
+
+| Token | Value |
+|-------|--------|
+| `--button-bg` / `--button-fg` | primary / on-primary |
+| `--chip-radius` | `--radius-chip` (4px) |
+| `--card-radius` | `0px` (listing tiles are flush; Swiss / monochrome) |
+| `--focus-ring` | 2px black offset 2px on background |
+
+Heading: Type
+
+| Role | Size | Weight | Line-height | Evidence / pack |
+|------|------|--------|-------------|-----------------|
+| Wordmark | 15px | 700 | 1 | Text wordmark `MUSINSA` — **no official logo asset** |
+| Page title `h1` | 20px | 700 | 1.2 | 상의 |
+| Subcat / chip / button | 13px | 400 / 700 current | 20px | Evidence button 13–14px |
+| Product title `h2` | 14px | 700 | 1.4 | Listing |
+| Brand | 12px | 400 | 1.4 | Listing |
+| Price | 14px | 700 | 1.4 | `tabular-nums` |
+| Meta (like, gender) | 12px | 400 | 1.4 | Listing |
+| Tag | 11px | 400 | 1.3 | Badge sm |
+
+Body never below 12px. Mobile body 14px to avoid iOS zoom.
+
+Heading: Color use
+
+- Surfaces: white cards on `#fefdfd`. Filter rows `#f5f5f5`.
+- Identity: black nav, black selected chip, black underline on current subcat (`전체`).
+- Sale: red numeral + `%` (color is not the only cue).
+- Likes: filled heart glyph + count (not color-only).
+- Selected color filter: swatch + label **블랙** + `aria-pressed="true"` + applied chip `컬러 블랙`.
+
+Accent gold from Luxury palette (`#A16207`) is unused — evidence chrome has no gold.
+
+Heading: Layout
+
+- Breakpoints: 390 / 768 / 1024 / 1440 (pack §5).
+- Grid: 2 → 3 → 4 → 6 columns. Images flush (`gap: 0`), 5:6 media (evidence tile ~240×288).
+- Filter stack: subcat → brand → color → material → benefit chips → dropdowns → applied chip → result tabs → count.
+- Sticky black nav 52px. Content not trapped under it.
+- Horizontal rows scroll; no page-level horizontal scroll.
+
+Heading: Components & states
+
+| Component | Default | Hover | Active | Selected | Disabled |
+|-----------|---------|-------|--------|----------|----------|
+| Nav icon button | transparent, 44×44 | white 8% | scale 0.96 | — | opacity 0.5 |
+| Color swatch | label + dot | — | — | 1px black outline + `aria-pressed` | — |
+| Applied chip | black pill + X | X 12% white | — | — | — |
+| Outline chip / drop | white, 4px radius, `#e0e0e0` | — | — | black border + weight 600 | — |
+| Product card | no radius, hairline grid | — | — | — | — |
+| Wish | 44×44 overlay | white fill | — | `aria-pressed` + red stroke | — |
+| Focus | 2px black ring, 2px offset | | | | |
+
+Transitions: color/background 150ms ease-in-out; transform 200ms ease-out. `prefers-reduced-motion: reduce` zeros duration.
+
+Heading: Filter contract (this screen’s job)
+
+One filter, already on: **컬러 = 블랙**.
+
+- First paint: `body[data-filter="black"]` hides non-black tiles in CSS (works with JS off).
+- Visible tiles are evidence items whose name contains 블랙, plus the generated catalog still (`image.jpg`) for `롤업 레이어드 크롭 반팔티 [블랙]`.
+- Count live region reports visible cards (`3개` on load).
+- Clearing the chip sets `data-filter="all"` and restores the unfiltered evidence set.
+- Empty filter values (아이보리, 네이비, …) announce an empty message; recovery is 필터 해제.
+
+Unfiltered snapshot count `350,441` is **not** restated as a filtered total — this reconstruction only contains sampled evidence tiles.
+
+Heading: Imagery
+
+- `image.jpg` — Grok Imagine, 3:4, black rolled-sleeve tee, cafe daylight. Used as the first black-tile photograph. No brand marks.
+- Other tiles — local JPEG data URIs derived from  (heart overlay cropped). No `image.msscdn.net` at runtime.
+- Alt text = evidence `alt` / product title.
+
+Heading: Accessibility (pack §1–3)
+
+- Skip link → `#products`.
+- `h1` 상의, product names `h2`.
+- Icon-only controls have `aria-label` (menu, search, like, cart, clear filter).
+- Color filter: text label + swatch (not color alone).
+- Focus visible, 44px targets, 8px+ gaps on chip rows.
+- `aria-live="polite"` on count.
+- `lang="ko"`. Viewport does not disable zoom.
+
+Heading: Stack notes (`html-tailwind`)
+
+Standalone HTML, tokens as CSS variables (Tailwind utilities inlined — no CDN). Grid gaps via parent `gap` / hairline borders, not per-card margins. Responsive padding `--spacing-gutter` 16px → 24px.
+
+Heading: Out of scope
+
+Other Musinsa stores (BEAUTY, OUTLET, …), PDP, cart, login, and any screen not in the brief.

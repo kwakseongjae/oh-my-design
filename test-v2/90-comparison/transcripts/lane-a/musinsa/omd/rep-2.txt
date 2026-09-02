@@ -1,0 +1,114 @@
+Heading: 상의 카테고리 로컬 표면 계약
+
+이 문서는 프로젝트 루트  아니다. T3-3 산출물 `system.md`이며, 스냅샷 `2026-08-22T19-50-15-466Z`의 상의 카테고리 한 화면에만 적용한다. 공식 로고 원본은 쓰지 않고 텍스트 워드마크 `MUSINSA`로 대체한다.
+
+Heading: 철학
+
+상의 목록은 옷을 먼저 보여 준다. 필터는 그 그리드를 줄이는 도구이고, 페이지를 바꾸지 않는다.
+
+1. **사진이 면적을 차지한다.** 카탈로그 문법을 얻기 위해 히어로 카피·프로모 밴드를 희생한다. ()
+2. **필터는 한 차원, 같은 자리.** 새 화면·모달을 희생하고, 칩 하나로 그리드가 줄어든 결과가 그 자리에서 보여야 한다. ()
+3. **없는 숫자는 칸을 비운다.** 풍성한 카드(가짜 전체 건수, 캡처에 없는 정가)를 희생한다. ()
+
+Heading: 결정 표
+
+| ID | 결정 | 근거 |
+| --- | --- | --- |
+|  | 표면 장르 = 무반경 미디어 타일 + 헤어라인 밴드. 그림자 타일 금지. | 캡처 그리드는 간격 0, 이미지 모서리 0. 커머스여도 이 표면은 타일이지 카드 키트가 아니다. |
+|  | 엘리베이션 rest=없음, hover=미디어 위 잉크 8% 스크림, selected=2px 잉크 링. | 캡처에 그림자가 없다. hover는 면을 바꿔야 한다(이동만 금지). |
+|  | 악센트는 세일가·좋아요 한 색. 면적 ≲5%. 선택 칩은 악센트가 아니라 잉크 반전. | 캡처의 빨간 가격이 유일한 강한 색. 선택과 세일을 같은 빨강으로 칠하면 신호가 섞인다. |
+|  | 컨트롤 반경 4px, 미디어 반경 0. | chrome `radiusPx: 4`. 이미지에 반경을 주면 타일이 위젯이 된다. |
+|  | 컬러 칩이 유일한 과업 필터. `전체` 기본. 활성 필터가 있을 때만 초기화 노출. | 브리프 동사: 필터를 하나 적용해 그리드를 좁힌다. 프리셋 P-FN-04. |
+|  | 종류 탭은 `aria-current`만 있는 현재 카테고리 표시(전체). 다른 종류로 화면을 추가하지 않는다. | 브리프에 없는 화면 금지. 종류를 두 번째 필터로 열면 과업이 둘로 갈라진다. |
+|  | 결과 줄은 「상의 · {색} · 수록된 순서 · N개」. N은 DOM에 남은 카드 수. | P-FN-06. 캡처의 350,441은 표본 12장과 불일치하므로 쓰지 않는다. |
+|  | 가격·브랜드·성별은 뷰포트에 보인 6장만. 나머지 6장은 상품명·이미지만. | unknown = 그 필드만 생략. |
+|  | 정가 취소선 없음. 할인율+판매가만 캡처에 있다. | P-CM-06의 정가 슬롯은 값이 없어 비움. |
+|  | 한글 고딕 한 패밀리. 디스플레이는 크기·웨이트로만 위계. 트래킹 바닥 −0.01em. | visual-quality-contract 5a. 로컬 스택: Pretendard Variable / Apple SD Gothic Neo / Noto Sans KR. |
+|  | 본문 14/1.7, 디스플레이 clamp 1.5–1.75rem / 1.2, 라벨 11px 넓은 트래킹. | chrome typeScale h2=14/21. 디스플레이는 캡처의 「상의」 크기. |
+|  | 모션: fast 120 / base 200 / slow 320, ease-out 진입, ease-in 탈출. transform·opacity만. | 스킬 모션 토큰. 캡처에 영상 없음. |
+|  | 레이아웃 문법 = 고정 트랙 카탈로그 격자. 1440=6, 390=3, 320=2. `minmax(0,1fr)`. | 캡처 docBox 240×6, 모바일 124×3. GS6: 격자 최소 콘텐츠 12장(표본 전부). |
+|  | 초광폭 전략 = 좌측 max 없이 전폭 타일(고밀도). 콘텐츠 웰은 본문·푸터만. | C32 컬럼 추가. 카탈로그가 에디토리얼 웰이면 사진이 줄어든다. |
+
+Heading: 토큰
+
+주석은 결정 ID. 값은 `render.html` `:root`와 동일해야 한다.
+
+```css
+--color-paper: oklch(0.991 0.005 90);     /* 캡처 #fefdfd */
+--color-ink: oklch(0.22 0.012 260);       /* 순수 #000 금지(G7) */
+--color-ink-fg: oklch(0.991 0.005 90);
+--color-band: oklch(0.961 0.008 90);      /* 헤더 밴드 #f5f5f5 */
+--color-muted: oklch(0.52 0.012 260);     /* chrome #666666 */
+--color-rule: oklch(0.90 0.008 260);      /* chrome #e0e0e0 */
+--color-chip: oklch(0.97 0.006 90);
+--color-media: oklch(0.96 0.005 90);
+--color-accent: oklch(0.58 0.22 25);      /* 세일/좋아요 */
+--color-accent-ink: oklch(0.99 0.005 90);
+--color-focus: oklch(0.35 0.04 260);
+--space-1..8: 4 / 8 / 12 / 16 / 24 / 40 / 64 / 96px;  /* 4pt + section air */
+--gutter: clamp(12px, 2.4vw, 24px);
+--radius-control: 4px;                    
+--radius-card: 0px;
+--font-ui: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+--dur-fast/base/slow, --ease-out, --ease-in; 
+```
+
+전경/배경은 쌍으로만 쓴다: paper/ink, ink/ink-fg, accent/accent-ink, band/ink.
+
+Heading: 컴포넌트 명세
+
+프리셋: P-CM-01(상품 타일), P-FN-04(필터 칩), P-FN-05(빈 결과), P-FN-06(결과 수). 리스트박스 정렬은 캡처에 대안이 없어 no-preset — 정적 라벨 「무신사 추천」.
+
+Heading: 상품 타일 (P-CM-01 파생, 토큰 )
+
+해부: 미디어(5:6, `minmax(0,1fr)`) → 브랜드 라벨 → 상품명 2줄 → 가격(최대 웨이트) → 메타(성별·배지). 좌측 정렬 공유. 내부 CTA 없음(C25: 상세 화면이 브리프에 없음). 하트는 장식 `aria-hidden`.
+
+상태: default / hover(스크림) / 그리드에서 숨김은 `hidden`(포커스 제거). focus-visible은 타일이 링크가 아니므로 not-applicable.
+
+Heading: 컬러 필터 칩 (P-FN-04, )
+
+역할 = 필터만. `전체` 기본 `aria-pressed="true"`. 활성은 잉크 면 반전. 히트 44px. 네이비·아이보리는 표본 0건 → 빈 결과(P-FN-05). 초기화는 필터가 있을 때만.
+
+상태 매트릭스: default / hover(칩 면) / focus-visible(즉시 아웃라인) / active(scale) / pressed(반전) / disabled 없음.
+
+Heading: 빈 결과 (P-FN-05)
+
+문장: 「이 색의 상품이 없습니다」 + 필터 해제 1개. 일러스트 없음.
+
+Heading: 레이아웃 문법
+
+페이지 하나. 격자 카탈로그 ().
+
+1. 스킵 링크 → `#main`
+2. 잉크 탑바 52px (워드마크 + 채널 + 로그인 `data-cta="primary"`)
+3. 밴드: 제목 「상의」 유일한 `h1`
+4. 종류 행(현재=전체, 링크 아님)
+5. 컬러 필터 행 (과업)
+6. 결과 줄 + `role="status"`
+7. 상품 격자
+8. 푸터 표본 고지 한 줄
+
+1440에서 접힘: 제목·컬러 칩·첫 타일 행이 보여야 한다. 히어로 없음.
+
+Heading: 상태 = 과업 동사
+
+| 동사 | 키보드 | 프로그램 증거 |
+| --- | --- | --- |
+| 필터를 하나 적용해 그리드를 좁힌다 | Tab으로 컬러 칩 → Space/Enter | `aria-pressed` 이동, 카드 `hidden`, `role="status"` 문구, `data-state="filtered"` |
+| 전체로 되돌린다 | 초기화 버튼 또는 「전체」 칩 | `aria-pressed` on 전체, 12장 표시, 초기화 `hidden` |
+| 0건 색을 고른다 | 「네이비」 또는 「아이보리」 | 빈 결과 영역 표시, 그리드 0 |
+
+개발자 상태 스위처 없음.
+
+Heading: 카피
+
+- 언어: ko. `word-break: keep-all`.
+- 화면 어휘: 상의, 컬러, 전체, 상품, 원. 파일명·필드명 금지.
+- 푸터 한 줄만 표본 고지.
+
+Heading: 거버넌스
+
+- prompt-fact: 화면=상의 카테고리, 과업=필터 1개, 스냅샷 핸들.
+- repository-fact: evidence.json 크롬·팔레트·alt, viewport PNG.
+- agent-proposed-greenfield-decision: OKLCH 근사(캡처 hex → G7 준수), 로컬 표면 토큰.
+- unresolved (코드에 없음): 공식 로고 파일, 전체 카탈로그 규모, 정가, 소재/브랜드 필터 값.

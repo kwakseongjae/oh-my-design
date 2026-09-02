@@ -1,0 +1,104 @@
+Heading: Musinsa 상의 — design system
+
+Snapshot `2026-08-22T19-50-15-466Z`. One surface: category `001` (상의). One task: apply a single color filter and narrow the product grid.
+
+Heading: Pack workflow
+
+Skill:  (html-tailwind stack, no network).
+
+1. Requirements: Korean fashion marketplace category listing; C-end shoppers; desktop-1440 and mobile-390; first render already filtered.
+2. `--design-system` (density 8, variance 3, motion 3): Marketplace / Directory pattern, Exaggerated Minimalism (fashion), e-commerce type pairing Rubik + Nunito Sans.
+3. Domain searches: product `ecommerce fashion catalog`; style `minimalism content-first catalog`; color `ecommerce fashion retail`; typography `ecommerce clean shopping`; ux `filter product grid accessibility`; icons Phosphor (`magnifying-glass`, `x`, `heart`, `funnel`, `list`); stack `html-tailwind` (gap utilities, space-y, responsive images).
+4. Design-system skill: three-layer tokens (primitive → semantic → component) and state table (hover / focus / active / disabled).
+5. ui-styling skill: skip-link, `focus-visible` ring, `aria-pressed` on toggles, live region, `prefers-reduced-motion`, 44px tap.
+
+Runtime cannot fetch Google Fonts. Pack pairing is recorded; the render uses a Pretendard-first system stack from evidence chrome.
+
+Heading: Synthesis
+
+| Pack said | This render |
+|---|---|
+| Marketplace: search/filter is the conversion path | Color filter is the only applied control |
+| Exaggerated Minimalism: black / white, one accent | Ink `#000` on paper `#fefdfd`; accent is sale red `#e60012` |
+| Density 8 | Tight catalog grid, 8–32px spacing |
+| Motion 3 | 180ms color/border only |
+| Fashion rose / emerald palettes from `--design-system` | Not used. Chrome tokens come from evidence (`header` `#000` / `#f5f5f5`, chip `#e0e0e0` / `#666`, radius 4) |
+| Rubik / Nunito Sans via CSS `@import` | Forbidden (network). System stack. |
+| Phosphor icons, no emoji-as-icon | Inline SVG, 1.5px stroke |
+| Official brand marks | Text wordmark `MUSINSA` only |
+
+Heading: Tokens
+
+Heading: Primitive
+
+| Token | Value | Source |
+|---|---|---|
+| `--ink-0` | `#000000` | body / type |
+| `--paper-1` | `#fefdfd` | desktop pageBackgroundRendered |
+| `--paper-2` | `#f5f5f5` | header / rails |
+| `--line-0` | `#e0e0e0` | chip border |
+| `--sale` | `#e60012` | sale price in the captured grid |
+| `--ship` | `#1565c0` | 무배당발 line |
+| `--radius-sm` | `4px` | primaryButton.radiusPx |
+| `--header-h` | `52px` | header.heightPx |
+| `--tap` | `44px` | pack touch-target-size |
+| `--duration` | `180ms` | pack 150–300ms |
+
+Heading: Semantic
+
+`--color-background` ← paper-1 · `--color-foreground` ← ink-0 · `--color-primary` ← ink-0 · `--color-muted` ← paper-2 · `--color-border` ← line-0 · `--color-accent` ← sale · `--color-ring` ← ink-0
+
+Heading: Component
+
+Header: primary fill, on-primary type, 52px.
+Chip / facet: outline, 4px or pill, muted type, hover border → ink.
+Swatch: 16px dot + label; pressed = weight 700 + 2px ring on the dot (color is not the only cue).
+Card: 0 radius, 240:288 media, heart overlay, tabular prices.
+
+Heading: Type
+
+Evidence: Pretendard Variable 14 / 21 for headings, 14 / 20 button, 13 chip.
+Scale: 11 tag · 12 brand/meta · 13 name/chip · 14 price/body · 20–22 category title.
+Weight: 400 body, 600–700 name and selected filter.
+Line-height 1.5. Product names clamp to 2 lines.
+
+Heading: Layout
+
+Mobile-first (pack §5).
+
+| Breakpoint | Grid | Notes |
+|---|---|---|
+| default (390) | 3 columns | matches captured mobile-390 |
+| 768 | 4 columns | utils appear in the top bar |
+| 1280 | 6 columns | matches captured desktop-1440 |
+
+Rails scroll horizontally. Sticky 52px header. No extra screens.
+
+Heading: Components
+
+- **Top bar** — menu, `MUSINSA` wordmark, channel row, utility icon buttons (search / like / my / bag), login outline.
+- **Category title** — `h1` 상의.
+- **Type tabs** — 전체 current.
+- **Brand / material rails** — labels + overflow pills.
+- **Color filter** — the one applied control. First paint: `블랙` `aria-pressed="true"`.
+- **Benefit / facet chips** — outline, SVG where the live site used emoji.
+- **Applied chip** — `블랙` + clear. `aria-live="polite"` restates count.
+- **Product card** — media, wish, brand, name (`h2`), price, likes, tags, 옵션 / gender, optional 무배당발 line.
+
+States (pack states-and-variants): default → hover (border/color 180ms) → `focus-visible` 2px ring → active. Disabled not used. Empty: “이 컬러에 맞는 상품이 없습니다.”
+
+Heading: Filter task
+
+First render is already narrowed: five dark tops from the snapshot remain; two white tops stay in the DOM with `hidden`. Clearing 블랙 restores them. Switching to a color with no cards hits the empty state. Count is the visible card count, not the unfiltered `350,441` from the snapshot.
+
+Heading: Imagery
+
+`image.jpg` is the representative generated catalog still (black seersucker check shirt, 3:4, Grok Imagine). It is the first card media. Other cards use inline SVG garments on evidence palette fills so the HTML does not request the network. No official logo files.
+
+Heading: Accessibility (pack §1–2)
+
+Skip link. `h1` → `h2`. Icon-only controls have `aria-label`. Filter group labelled. Pressed state is text weight + ring, not color alone. Tap targets 44px. `aria-live` on result changes. `prefers-reduced-motion` zeroes transitions.
+
+Heading: Anti-patterns avoided
+
+Emoji-as-icon. Google Fonts `@import`. Raw hex in components after the primitive layer. Hover-only actions. Missing alt on the generated still. Extra screens not in the brief.

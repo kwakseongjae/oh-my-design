@@ -1,0 +1,141 @@
+Heading: 상의 카테고리 — surface-local design system
+
+스냅샷 `2026-08-22T19-50-15-466Z` · 표면 desktop-1440 / mobile-390 · 과업: 필터 하나를 적용해 상품 그리드를 좁힌다.
+
+프로젝트 루트  쓰지 않는다. 이 문서는 이 런의 `render.html`만 묶는다 (`surface-local-only`).
+
+Heading: Philosophy
+
+**사진이 상품이고, 필터가 유일한 과업이다.**
+
+스냅샷의 상의 카테고리는 히어로 카피 없이 소분류 칩과 사진 그리드로 열린다. 이 화면은 그 입장을 유지한다.
+
+| 원칙 | 얻는 것 | 희생하는 것 |
+| --- | --- | --- |
+| P1 사진 우선 | 접힌 화면에서 상품 컷이 바로 읽힘 | 히어로 스테이트먼트, 섹션 에어, 그림자 타일 |
+| P2 필터 하나 | 소분류 칩 한 줄이 그리드를 실제로 줄임 | 브랜드·컬러·소재 다중 패싯, 정렬 콤보 |
+| P3 스냅샷만 | 뷰포트에 있는 가격·브랜드·후기만 표시 | 추정 가격, 350,441개 같은 그리드 불일치 수치, 공식 로고 원본 |
+
+Heading: Derive
+
+| ID | 결정 | 근거 |
+| --- | --- | --- |
+|  | `--radius-card: 0` | 스냅샷 상품 컷은 맞붙은 직각 플레이트. 라운드 카드는 위젯 키트가 된다. |
+|  | 표면 장르: hairline-rule band + flush photo plate | 필터 줄 `#f5f5f5` 밴드, 그리드는 전폭. shadowed tile과 섞지 않음. |
+|  | elevation rest/hover = none | 호버는 미디어 면 틴트만. 카드 lift 금지 (C24). |
+|  | 그리드 6 / 4 / 3 / 2열, `minmax(0,1fr)` | 데스크톱 스냅샷 6열. 390은 3열. 320은 2열. auto-fit 금지. |
+|  | 디스플레이 스텝 `clamp(1.75rem … 2rem)` · 바디 0.875rem | 한글 고딕 한 가족. 라틴 세리프 폴백 금지. 디스플레이 ≥2× 바디. tracking −0.01em 바닥. |
+|  | 소분류 칩 활성 = 잉크 언더라인 + weight 700 | 스냅샷 `전체` 탭 마크. 솔리드 반전 칩과 동시에 쓰지 않음. |
+|  | 악센트 = 세일 레드 한 슬롯, 면적 ≲5% | 스냅샷 할인율 색. 하트·할인율만 사용. |
+|  | 컨트롤 반경 4px | evidence `primaryButton.radiusPx`. 카드에는 적용하지 않음. |
+|  | 히트 44px | C28. 시각 밀도는 유지하되 칩·메뉴·로그인은 min 44. |
+|  | 가격·후기·성별은 뷰포트에 보인 카드만 | 아래 접힌 상품은 이름(과 있는 경우 브랜드)만. |
+|  | 결과 수는 이 파일의 샘플 N | 스냅샷의 350,441을 그리드 카운트로 재사용하지 않음. |
+|  | 워드마크는 텍스트 `MUSINSA` | 공식 로고 원본 금지. |
+
+Heading: Tokens
+
+```css
+--color-paper: oklch(0.991 0.004 90);       /* 렌더 배경 ≈ #fefdfd */
+--color-ink: oklch(0.22 0.014 260);         /* 순수 #000 대신 */
+--color-muted: oklch(0.52 0.012 260);
+--color-band: oklch(0.962 0.006 90);        /* header #f5f5f5 밴드 */
+--color-chip: oklch(0.978 0.005 90);
+--color-rule: oklch(0.90 0.008 90);         /* #e0e0e0 */
+--color-header: oklch(0.18 0.010 260);
+--color-header-ink: oklch(0.985 0.004 90);
+--color-header-muted: oklch(0.78 0.010 260);
+--color-header-hover: oklch(0.985 0.004 90 / 0.08);
+--color-accent: oklch(0.58 0.22 25);        
+--color-accent-ink: oklch(0.99 0.004 90);
+--color-focus: oklch(0.45 0.12 250);
+--font-ui: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+--space-1…24: 4pt 스케일, 섹션 에어 2.5 / 4 / 6rem 포함
+--radius-control: 4px;                      
+--radius-card: 0px;                         
+--duration-fast/base: 120 / 200ms
+--ease-out: cubic-bezier(0.2, 0.8, 0.2, 1)
+```
+
+컴포넌트는 `var(--color-*)`만 읽는다. 인라인 hex 없음.
+
+Heading: Components
+
+프리셋 먼저 고른다 (GS8).
+
+Heading: Filter chips — P-FN-04 파생, 토큰 
+
+- 역할: 소분류 필터 단일. 정적 배지와 혼용하지 않음.
+- 해부: `role="group"` + `aria-pressed` 버튼. 기본 활성 = 전체.
+- 상태: default / hover(면 chip) / pressed(언더라인+700) / focus-visible / active(scale 0.98).
+- 필터 해제: 기본에서 `hidden`, 활성 필터가 있을 때만 노출.
+- 빈 소분류(니트/스웨터, 후드, 맨투맨, 피케)는 그리드를 0으로 줄이고 P-FN-05로 간다.
+
+Heading: Product card — P-CM-01 파생, 토큰 
+
+- 해부: 미디어(5:6) → 브랜드 eyebrow → 상품명 2줄 클램프 → 가격(최대 웨이트) → 메타.
+- 세일: 할인율(악센트) + 세일가. 정가가 스냅샷에 없으면 만들지 않음 (P-CM-06, ).
+- 전체 클릭 카드, 내부 CTA 없음 (C25).
+- 생성 이미지 `image.jpg`는 「베이직 언발 오프숄더 긴팔티 차콜」 카드의 샘플 컷.
+
+Heading: Result line — P-FN-06
+
+- `role="status"`: `수록된 샘플 12개 · 소분류 전체` / `{소분류} · 샘플 N개`.
+
+Heading: Empty — P-FN-05
+
+- 문장: `이 조건의 상품이 없습니다.` + `필터 해제` 1개.
+- 표면: dashed rule. 이모지·일러스트 없음.
+
+Heading: Header / login
+
+- 워드마크 텍스트. 스토어 구분은 링크가 아니라 이름만 (추가 화면 없음).
+- `로그인 / 회원가입` = 유일한 primary (`data-cta="primary"`). 목적지 화면은 이 과업에 없다.
+- 좁은 폭: 메뉴 디스클로저 (`aria-expanded` + `#store-nav`).
+
+Heading: Layout grammar
+
+**고밀도 카탈로그 격자.** 초광폭 전략: 컬럼 추가 (C32).
+
+콘텐츠 역산: 스냅샷 imagery 12장 → 카드 12. 6열 문법이 요구하는 셀을 채운다. 캐러셀·벤토·매거진 문법은 쓰지 않음 (GS6).
+
+```
+skip → header 52px → h1 「상의」 → filter band → status → 6-col grid → footer
+```
+
+그리드는 좌우 거터 없이 전폭. 타이틀·필터·상태·푸터만 `--gutter`.
+
+Heading: States
+
+| 상태 | 도달 | 기계 증거 |
+| --- | --- | --- |
+| default | 첫 로드 | `#grid[data-state=default]`, 칩 `전체` `aria-pressed=true`, 카드 12 |
+| filtered | 소분류 칩 Enter/Space | `#grid[data-state=filtered]`, 해당 칩 pressed, 다른 카드 `hidden`, status 갱신 |
+| empty | 니트/스웨터 등 빈 칩 | `#grid[data-state=empty]` + `#empty` 표시, status `샘플 0개` |
+
+개발자 상태 스위처 없음.
+
+Heading: Honesty
+
+- 상품명·알트는 evidence.json 샘플과 데스크톱 뷰포트에 보인 브랜드/가격/후기만.
+- 카테고리 전체 상품 수, 스냅샷에 없는 가격·후기, 공식 로고 원본: 푸터에서 이름을 밝히고 비움.
+- `image.jpg`는 생성 샘플 컷이며 라이브 상품 사진이 아니다.
+
+Heading: Self-walk
+
+| 동사 | 키보드 | 증거 |
+| --- | --- | --- |
+| 필터를 하나 적용해 상품 그리드를 좁힌다 | Tab으로 `반소매 티셔츠` 칩 → Space/Enter | `aria-pressed="true"`, 반소매가 아닌 카드 `hidden`, status가 `반소매 티셔츠 · 샘플 4개`, `data-state="filtered"` |
+| 빈 조건에서 돌아온다 | `니트/스웨터` 적용 후 `필터 해제` | 그리드 12장 복귀, reset `hidden` |
+
+Heading: Critique (1 round)
+
+| Axis | Score | Note |
+| --- | --- | --- |
+| Philosophy | 4 | 사진+필터. 히어로를 만들지 않음. |
+| Hierarchy | 4 | 상의 → 칩 → 사진 → 가격. 2초 안에 읽힘. |
+| Execution | 4 | 토큰 페어, 44px, focus-visible, UA 리셋. |
+| Specificity | 4 | 무신사 상의 밀도. 제네릭 샵 히어로 아님. |
+| System Fidelity | 4 |  추적. 3열 아이콘 타일/퍼플 그라데이션 없음. |
+
+Slop grep: `transition: all` 없음, `<select` 없음, `100vh` 없음, 상태 간 border-width 변경 없음, 인라인 hex 없음.
