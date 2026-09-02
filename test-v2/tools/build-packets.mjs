@@ -174,8 +174,11 @@ for (const session of order.sessions) {
       if (ceil?.sufficient) {
         const cdir = join(dir, "rows", `_ceiling-${brand}`);
         mkdirSync(cdir, { recursive: true });
+        // RUBRIC §4.3: 적격 풀이 4를 넘으면 식별 결과를 보지 않은 채 build 순서 앞 4개(manifest.usedForCb)만 C_b에 쓴다.
+        // 나머지 자극을 패킷에 넣으면 평가자가 그것까지 채점하고 C_b 분모가 흔들린다 — 청크 2 첫 조립에서 잡았다(2026-09-02).
+        const useSet = new Set(ceil.usedForCb || []);
         const labels = [];
-        for (const b of ceil.built) {
+        for (const b of ceil.built.filter((x) => useSet.has(x.label))) {
           const src = join(CMP, b.output);
           const name = `${b.label}.png`;
           copyFileSync(src, join(cdir, name)); manifest.files[`rows/_ceiling-${brand}/${name}`] = sha(readFileSync(src)); labels.push(name);

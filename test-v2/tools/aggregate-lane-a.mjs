@@ -125,8 +125,10 @@ function evidenceFor(brand, arm, rep, cellKey) {
   return { score: 0.7 * numeric + 0.3 * semantic, numeric, semantic, ratings };
 }
 function ceilingC(brand) {
+  // §4.3: C_b 분모는 manifest.usedForCb(4개)뿐. 평가자가 그 밖의 자극에 답했더라도 세지 않는다.
+  const used = new Set((Object.values(ceilingManifest.results).find((r) => r.brand === brand)?.usedForCb || []).map((l) => `${l}.png`));
   const stimuli = new Set();
-  for (const ev of EVALS) for (const s of Object.keys(CEIL[ev]?.[brand] || {})) stimuli.add(s);
+  for (const ev of EVALS) for (const s of Object.keys(CEIL[ev]?.[brand] || {})) if (used.has(s) || used.has(s.replace(/\.png$/, ""))) stimuli.add(s);
   if (!stimuli.size) return null;
   let correct = 0, total = 0;
   for (const s of stimuli) for (const ev of EVALS) { const a = CEIL[ev]?.[brand]?.[s]; if (a === undefined) continue; total++; if (a === brand) correct++; }

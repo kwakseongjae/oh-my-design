@@ -1,0 +1,125 @@
+{
+ "evaluator": "grok-4.6",
+ "lane": "A",
+ "chunk": 2,
+ "brands": [
+  "figma",
+  "karrot",
+  "musinsa"
+ ],
+ "ceilingBrands": [
+  "figma",
+  "karrot",
+  "musinsa"
+ ],
+ "rows": [
+  {
+   "brand": "figma",
+   "rep": 1,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "hallmark",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "figma",
+   "rep": 2,
+   "slots": {
+    "A": "hallmark",
+    "B": "omd",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "figma",
+   "rep": 3,
+   "slots": {
+    "A": "omd",
+    "B": "uiuxpromax",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "figma",
+   "rep": 4,
+   "slots": {
+    "A": "hallmark",
+    "B": "omd",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "karrot",
+   "rep": 1,
+   "slots": {
+    "A": "hallmark",
+    "B": "omd",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "karrot",
+   "rep": 2,
+   "slots": {
+    "A": "hallmark",
+    "B": "uiuxpromax",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "karrot",
+   "rep": 3,
+   "slots": {
+    "A": "hallmark",
+    "B": "omd",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "karrot",
+   "rep": 4,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "omd",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "musinsa",
+   "rep": 1,
+   "slots": {
+    "A": "omd",
+    "B": "uiuxpromax",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "musinsa",
+   "rep": 2,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "hallmark",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "musinsa",
+   "rep": 3,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "hallmark",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "musinsa",
+   "rep": 4,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "omd",
+    "C": "hallmark"
+   }
+  }
+ ]
+}
