@@ -60,6 +60,8 @@ DESIGN.md에서 재현하는 `omd:landing` 스킬을 **같은 브리프·같은 
 | 브랜드 | arm | 페이지 vh | 섹션 | 폴드 커버리지 | render | landing-integrity | 비용 | 비고 |
 |---|---|---:|---:|---:|---|---|---:|---|
 | stripe | autopilot | 6.05 | 8 | (핀 스테이지) | PASS | FAIL 2 (LI-2 0.63 vh · LI-8 12px) | $0.44 | 기준선 |
+| stripe | hallmark | 7.9 | 8 | (핀 스테이지) | PASS | FAIL 0 | $1.80 | 기준선 — 랜딩 브리프에서는 코덱스 기계 규칙을 통과, 폴드 규모·컨셉 밀도는 비교 페이지에서 |
 | stripe | **landing** | **12.05** | 8 | **100%, 4변 블리드** | PASS | **FAIL 0** (2회차 수렴, LI-9 1건 자가 수정) | $0.51 | 컨셉 "money layer cutaway", 에셋 5장(히어로+4), 반전 1섹션, reduced-motion OK |
+| toss | **landing** | **12.05** | 8 | 100% | PASS | **FAIL 0** (WARN 1) | 체인 로그 | 컨셉 "일상 책상", 라이트 그라운드 유지, 한국어 카피, 반전 없음 |
 
 독립 재검증(오케스트레이터): render PASS · LI FAIL 0 · 스크롤 여정 후 숨은 요소 0 · reduced-motion에서 스크롤 없이 전부 표시.
