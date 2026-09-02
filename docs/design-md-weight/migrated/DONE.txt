@@ -237,3 +237,8 @@ melon
 mercari
 mercury
 meta
+microsoft
+mikan
+mildang
+millie
+minimax
