@@ -1,0 +1,124 @@
+{
+ "evaluator": "grok-4.6",
+ "lane": "A",
+ "chunk": 3,
+ "brands": [
+  "naver",
+  "toss",
+  "wanted"
+ ],
+ "ceilingBrands": [
+  "naver",
+  "toss"
+ ],
+ "rows": [
+  {
+   "brand": "naver",
+   "rep": 1,
+   "slots": {
+    "A": "omd",
+    "B": "hallmark",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "naver",
+   "rep": 2,
+   "slots": {
+    "A": "hallmark",
+    "B": "omd",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "naver",
+   "rep": 3,
+   "slots": {
+    "A": "omd",
+    "B": "uiuxpromax",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "naver",
+   "rep": 4,
+   "slots": {
+    "A": "hallmark",
+    "B": "omd",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "toss",
+   "rep": 1,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "omd",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "toss",
+   "rep": 2,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "omd",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "toss",
+   "rep": 3,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "omd",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "toss",
+   "rep": 4,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "omd",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "wanted",
+   "rep": 1,
+   "slots": {
+    "A": "omd",
+    "B": "hallmark",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "wanted",
+   "rep": 2,
+   "slots": {
+    "A": "hallmark",
+    "B": "omd",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "wanted",
+   "rep": 3,
+   "slots": {
+    "A": "hallmark",
+    "B": "uiuxpromax",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "wanted",
+   "rep": 4,
+   "slots": {
+    "A": "hallmark",
+    "B": "uiuxpromax",
+    "C": "omd"
+   }
+  }
+ ]
+}
