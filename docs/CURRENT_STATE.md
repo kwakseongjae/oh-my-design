@@ -3,6 +3,7 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
+- 갱신: 2026-09-02 · **웨이브 49 마감(마라톤)** — done 5/5 · $9.57 · LLM 249분 · 판정문 `docs/reviews/t2-1-wave49-2026-09-02-grok.md`(자동 생성, 검수 전).
 - 갱신: 2026-09-02 · **15:30 체크포인트**: 전사 60/108(karrot 12/12 재검증 PASS, 커밋 `34e84df4`). 생산 78/108(musinsa 6/12 진행). 웨이브 49 4/5 done(muji 진행). 랜딩: toss AC 4 충족(r2 BLOCK 0); stripe 개정 후 **오케스트레이터 독립 실측**(`stripe/landing/qa/round2-orchestrator/glyph-audit.mjs`, 명목 글자색 vs 글리프 뒤 배경 픽셀 — 안티앨리어스 픽셀을 그대로 대비에 넣던 첫 시도는 소형 글자를 과소평가해 폐기) — 히어로 텍스트 전부 ≥4.75:1(4.5 미만 0%), no-JS hidden 0, 포커스 링 잔여 1건(1440 nav CTA 32% <3:1, min 2.57) → 마이크로 개정 라운드 3 실행 중. 디자이너 리뷰 에이전트는 무산출 25~90분이 반복돼 stripe r2는 오케스트레이터 실측으로 대체(에이전트 3기 중단).
 - 갱신: 2026-09-02 · **landing/stripe 개정 라운드 2 (BLOCK 6)**: `render.html` + `concept.md` 가정 1줄. `.hero::before` 캔버스 알파 스크림 · ghost CTA canvas-alpha fill + hairline-hover border · 포커스 2겹 canvas halo · noscript + `scripting: none`. `render-integrity` PASS · `landing-integrity` FAIL 0 · page 12.05 vh. 글리프 픽셀 대비 B1–B4·B6 전부 0% below floor. WARN·FYI 미수정. `FIX_DONE brand=stripe arm=landing blocks_fixed=6`.
 - 갱신: 2026-09-02 · **웨이브 48 마감(14:25) + effort A/B 결론**: 5/5 done, 63분, $7.22, 검토 FAIL 1/5(momoshop 1). 검토 effort 기본(48) vs high(46·47): FAIL율 1/5 = 1/5·1/5, 검토 소요 avg 11분 = 11·10분, 비용 $0.22 = $0.22 — **차이 없음**. 웨이브 44·45의 3/5·5/5 → 1/5 급감은 예방 조항(worker-addendum 전문) 복원 효과로 확정. 마라톤은 현 설정(F3 high·검토 기본·8-wide) 유지, 개입 없이 계속. 원장 254/440. 웨이브 벽시계 59~63분·$7~9로 안정.
