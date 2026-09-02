@@ -272,3 +272,12 @@ nota
 nrise
 nvidia
 note
+octopusenergy
+ohouse
+oliveyoung
+ollama
+omnichat
+onestore
+opencode.ai
+palantir
+panasonic

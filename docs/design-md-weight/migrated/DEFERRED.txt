@@ -1,1 +1,2 @@
 
+openpoint  # wave 52 2026-09-02 human:fix-cap — 오케스트레이터 판정 대기
