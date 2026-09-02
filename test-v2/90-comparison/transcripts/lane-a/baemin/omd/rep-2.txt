@@ -1,0 +1,95 @@
+Heading: 배달의민족 홈 — surface-local system
+
+Disposition: **surface-local-only**. This is a benchmark first-render, not a project  adoption. Tokens live in `render.html` `:root` and are cited here with . Official logo files are not part of the system.
+
+Preset: **P-ED-03** lookbook scroll narrative (cover photograph → mint plates). Not P-CM-07 (no SKU grid in the snapshot).
+
+Heading: Philosophy
+
+**Mint is the field; black is the mark; the fold’s only job is to open an install path.**
+
+1. **P1 — Field, not accent.** Mint occupies whole chapters so the photograph can be food, not a branded banner. Sacrifice: a small-dot accent budget, purple-SaaS gradients, and a card kit used on every surface.
+2. **P2 — One install path owns the fold.** Store badge or QR is the journey. Sacrifice: extra product CTAs, counters, and testimonials above the fold.
+3. **P3 — Hangul gothic weight is the display face.** No Latin serif, no logo file. Sacrifice: a decorative display family and tight Latin tracking on Korean.
+
+Heading: Decision table
+
+| ID | Category | Decision | Why |
+| --- | --- | --- | --- |
+|  | Surface genre | Photo bleed + mint ink plates. Radius 0 on plates. Controls are the only rounded forms. | Snapshot chrome: full-viewport photo then mint chapters. A radius+border widget kit would flatten both. |
+|  | Color | Paper `#f3f6f6` (tinted from computed `#f6f6f6`). Ink `#141c1a`. Mint `#0cefd3` (evidence type/button). Badge paper `#f7fffd`. No raw `#000`/`#fff` bases. | Evidence chrome + G7. |
+|  | Accent budget | Mint is paper on inverted chapters, not a 5% chip. Signal on photo is mint type; signal on mint is ink doodles. | Snapshot uses mint as a field. |
+|  | Radius | Badge `8px`. Get-the-App pill `999px` (evidence `radiusPx: 9999`). Dialog `16px`. Plates `0`. | Controls ≠ plates. |
+|  | Elevation | Rest: none. Hover: badge fill shift. Dialog: one shadow token. No hover-lift on plates. | Flat campaign language. |
+|  | Layout grammar | Cover: left copy / right photograph (diptych, not a centered stack). Chapters: left title, right doodle. Wide strategy: left-max. | Visual-quality fold; C32; G6 avoided (`100dvh`, not `100vh` center-stack). |
+|  | Primary CTA | Exactly one visible: desktop QR control; mobile “Get the App”. Store badges are `data-cta="local"`. | Brief verb; C3. |
+|  | Spacing | 4px scale through section air `4rem` / `6rem`. Gutter `clamp(20px, 4vw, 64px)`. | Token floor. |
+|  | Type | One gothic stack covering Hangul. Display 800, `clamp(2rem, 4.2vw, 3.75rem)`, line-height 1.3. Body 1rem / 1.7. Label 0.75rem. | Evidence 60/800/84 on desktop, 32/800 mobile; Hangul contract. |
+|  | Tracking | Hangul `0` (floor −0.01em). `word-break: keep-all`. | Locale typography. |
+|  | Motion | 120 / 200 / 320ms. Enter `cubic-bezier(0.2, 0.7, 0.2, 1)`, exit `cubic-bezier(0.4, 0, 1, 1)`. Transform/opacity only. | Pack motion tokens. |
+
+Heading: Tokens (implemented as `:root` in `render.html`)
+
+```css
+--color-paper: #f3f6f6;          
+--color-ink: #141c1a;            
+--color-mint: #0cefd3;           /* evidence */
+--color-on-mint: #141c1a;
+--color-on-photo: #0cefd3;
+--color-badge-paper: #f7fffd;
+--color-badge-ink: #141c1a;
+--color-header: #f7fffd;
+--color-scrim: oklch(0.18 0.03 180 / 0.55);
+--radius-badge: 8px;             
+--radius-pill: 999px;
+--space-gutter: clamp(20px, 4vw, 64px);
+--space-section: 4rem;
+--font: "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", Pretendard, -apple-system, sans-serif;
+--duration-base: 200ms;
+```
+
+Components read only `var(--*)`.
+
+Heading: Components (before code)
+
+Heading: Wordmark — no-preset (official mark forbidden)
+Text “배달의민족”, display weight, header color. Not an image.
+
+Heading: Store badge — no-preset (install path, not P-CM-01)
+Anatomy: 48× min 44px control, 8px radius, badge paper/ink, nowrap label. States: default / hover (fill) / focus-visible (outline) / active (scale) / disabled (opacity + cursor + native). Apple/Google marks are not used; labels are “App Store” / “Google Play”. `data-cta="local"`. Opens the install dialog.
+
+Heading: QR control — no-preset
+48×48 finder-pattern icon. `data-cta="primary"` on desktop. Accessible name includes the brief verb: “QR로 앱 설치 경로 열기”.
+
+Heading: Get the App — evidence primary on mobile
+Pill, mint fill, on-mint ink, 20px/700. `data-cta="primary"` on small viewports only (the desktop QR is hidden). Same dialog.
+
+Heading: Install dialog
+Native `<dialog>`. States: `data-state="closed|open"`. Title “앱 설치 경로”. Contains the QR figure and the two store labels. Close control. `role="status"` announces “앱 설치 경로를 열었습니다.” Escape / backdrop close via native dialog.
+
+Heading: Nav — snapshot chrome, not a generic app shell
+Three labels from the snapshot. Destinations were not in evidence; in-page fragments only. Mobile: disclosure (`aria-expanded`, `aria-controls`), 44px toggle. Off-canvas panel, not a hamburger+sidebar app.
+
+Heading: Chapter title + doodle
+Display 800 on mint. Doodles are inline SVG, `aria-hidden`. No emoji feature icons (G30).
+
+Heading: Layout grammar (this page only)
+
+Cover (hero) → 음식배달 → 배민클럽 → 선물하기. Four beats (GS6). Content back-calc: one generated photograph + three evidence-labeled plates. Do not invent B마트/쇼핑/페이 copy from filenames.
+
+Hero fold at 1440: wordmark, headline, lede, install path, all in view. Copy max ~20ch per line on the display heading.
+
+Heading: Journey
+
+Verb: **앱 설치 경로를 연다**.
+
+| Path | Keyboard | Programmatic evidence |
+| --- | --- | --- |
+| Desktop QR or store badge | Tab to control, Enter/Space | `dialog[data-state="open"]`, status text |
+| Mobile Get the App | Tab to pill, Enter/Space | same |
+
+No developer state switcher. No second route.
+
+Heading: Honesty
+
+Named absences render where a reader would look: logo (wordmark instead), store URLs (panel copy), gift purchase URL (status on the local control). Footer holds one quiet sample line.

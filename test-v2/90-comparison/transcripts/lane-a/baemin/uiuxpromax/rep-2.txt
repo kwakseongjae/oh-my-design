@@ -1,0 +1,209 @@
+Heading: Baemin Home — design system
+
+Arm:  · Lane A · snapshot `2026-08-22T19-47-32-522Z`  
+Surface: home only (`https://www.baemin.com/`). Task: open one app-install path (store badge or QR).
+
+This document is the pack run record plus the tokens used in `render.html`. It does not add screens.
+
+Heading: Pack workflow ()
+
+Python 3.11. Search script:
+
+
+Heading: Step 1 — requirements
+
+| Slot | Value |
+|------|--------|
+| Product | Consumer food-delivery marketplace (C-end, ko-KR) |
+| Screen | Home, first viewport |
+| Task | Open App Store / Google Play / QR (one path) |
+| Style keywords | playful, vibrant, mint, large type, photo-first |
+| Stack | `html-tailwind` semantics, inlined CSS (no network) |
+| Platforms | desktop-1440 (1440×900), mobile-390 (390×844) |
+
+Heading: Step 2 — `--design-system`
+
+```bash
+python3 scripts/search.py "food delivery marketplace consumer playful vibrant mint" \
+  --design-system -p "Baemin Home" -f markdown
+```
+
+Returned:
+
+- Pattern: Marketplace / Directory (search-as-CTA)
+- Style: Vibrant & Block-based (bold, energetic, large type 32px+, 200–300ms)
+- Colors: generic food-delivery orange (`#EA580C`) + trust blue (`#2563EB`) on `#FFF7ED`
+- Type pairing: Fredoka / Nunito (Google Fonts URL)
+- Effects: 48px+ section gaps, bold hover, scroll-snap, 200–300ms
+- Anti-patterns: muted colors, low energy
+
+`--persist` was not used (outputs stay in this run directory only).
+
+Heading: Step 3 — domain searches
+
+| Need | Query | Takeaway used |
+|------|--------|----------------|
+| Color | `mint cyan teal food delivery` | Catalog still prefers orange for “food delivery”. Closest cyan row is Healthcare (`#0891B2` / `#22D3EE`). Not used as a substitute brand fact. |
+| Landing | `hero app download cta` | **App Store Style Landing** + **Hero-Centric Design**: full-bleed hero, store badges + QR in the hero, one primary CTA. Marketplace search-bar CTA discarded — it is not this home. |
+| UX | `cta accessibility touch target focus` | 44×44 targets, 8px gaps, visible focus ring, no hover-only. |
+| Type | `bold playful extra-bold sans` | Playful Creative (Fredoka/Nunito) and Bold Statement. Offline render cannot fetch Google Fonts. |
+| Icons | `download qrcode store` | Phosphor `download-simple` for the mobile CTA. No emoji icons. |
+| UX gate | `animation accessibility z-index loading` | z-index scale 0/20/100/1000; reduced-motion; no decorative infinite motion. |
+
+Heading: Step 4 — stack `html-tailwind`
+
+Responsive images (`width`/`height` + `object-fit`), `hidden`/`flex` by breakpoint, test 375 / 768 / 1024 / 1440. Tailwind CDN is a network request, so tokens are inlined as CSS variables instead of a CDN stylesheet.
+
+Heading: Evidence binding (product color, not catalog orange)
+
+Pack rule `color-palette-from-product` + evidence chrome win over the generic orange row.
+
+From  (snapshot `2026-08-22T19-47-32-522Z`):
+
+| Token | Evidence | Notes |
+|-------|----------|--------|
+| Primary | `#0cefd3` | Desktop type + mobile “Get the App” fill |
+| On-primary | `#000000` | Mobile CTA label |
+| Page canvas (computed) | `#f6f6f6` | Body background under the photo |
+| Body color | `#000000` | |
+| Hero type desktop | 60px / 800 / 84px, family `-apple-system` | `p` in chrome typeScale |
+| Hero type mobile | 32px / 800 / 44.8px | |
+| Header | 96px desktop, 126px mobile | geometry |
+| CTA radius | 9999 | pill |
+| CTA label (mobile) | `Get the App` | repeats: 1 |
+| Wordmark | text `배달의민족` | official mark not used |
+
+Hero copy paired with the generated still (`image.jpg`), both from the same snapshot family:
+
+- `아침의 여유 / 식지 않도록`
+- `브런치, 지금 배민됩니다`
+
+Chrome links on the home (not extra screens): `우아한형제들`, `라이더 모집`, `For foreigners`.
+
+Heading: Three-layer tokens
+
+Primitive → semantic → component. Components never take raw hex.
+
+Heading: Primitive
+
+```css
+--color-mint-500: #0cefd3;
+--color-ink-900: #000000;
+--color-paper-50: #f6f6f6;
+--color-paper-0: #ffffff;
+--space-*: 4px grid (4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 / 64);
+--font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
+             "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+--duration-fast: 160ms;
+--duration-base: 220ms;
+```
+
+Fredoka/Nunito from the pack are mapped onto this system stack so the first render has zero font network requests (`font-loading` / FOIT). Weight 800 carries the playful extra-bold mood.
+
+Heading: Semantic
+
+```css
+--color-background: var(--color-paper-50);
+--color-foreground: var(--color-ink-900);
+--color-primary: var(--color-mint-500);
+--color-on-primary: var(--color-ink-900);
+--color-on-photo: var(--color-mint-500);
+--color-wordmark: var(--color-paper-0);
+--color-ring: var(--color-mint-500);
+```
+
+Light surface only. Evidence is `colorScheme: light`. Dark tokens are not invented.
+
+Heading: Component
+
+| Component | Token | Value |
+|-----------|--------|--------|
+| Header | `--header-h` | 126px mobile / 96px desktop |
+| Wordmark | text, weight 800, white on photo | min size > 24px |
+| Hero title | `--size-hero` | 32 / 60 |
+| Store badge | white plate, 10px radius, min 44×44 | App Store · Google Play · QR |
+| Get the App | `--button-primary-bg` + pill | mobile only |
+| Dialog | `--z-overlay: 100`, radius 20px | install path |
+| Focus | 3px solid `--color-ring` | never removed |
+
+Heading: Layout
+
+Hero-centric (landing search). One viewport, one primary action.
+
+```
+desktop-1440
+┌──────────────────────────────────────────────┐
+│ 배달의민족          우아한형제들 | 라이더 모집 | For foreigners │
+│  아침의 여유                     [photo]      │
+│  식지 않도록                                  │
+│  브런치, 지금 배민됩니다                       │
+│  [App Store] [Google Play] [QR]               │
+│                       ▾                       │
+└──────────────────────────────────────────────┘
+
+mobile-390
+┌─────────────────────┐
+│ 배달의민족        ≡ │
+│ 아침의 여유         │
+│ 식지 않도록         │
+│ 브런치, 지금 배민됩니다 │
+│ [ Get the App ↓ ]   │
+│          ▾          │
+└─────────────────────┘
+```
+
+Breakpoints used: 768 (nav / CTA swap), 1440 (header inset). Pack 375/768/1024/1440; evidence surfaces 390 and 1440.
+
+Heading: Components & states
+
+| Control | Default | Hover | Active | Focus | Disabled |
+|---------|---------|-------|--------|-------|----------|
+| Get the App | mint / black | brightness 1.04 | scale 0.97 | ring 3px | n/a |
+| Store badge | white plate | lift 1px | scale 0.98 | ring 3px | n/a |
+| QR | 44×44 white | same | same | ring + aria-label | n/a |
+| Dialog close | text button | — | — | ring | n/a |
+| Icon-only menu | 44×44 | — | — | ring + `aria-expanded` | n/a |
+
+Store badges are reconstructed chrome (text + inline SVG), not downloaded platform or brand assets.
+
+Heading: Interaction — install path
+
+Opening **one** of: App Store badge, Google Play badge, QR, or mobile **Get the App**.
+
+- Native `<dialog showModal()>`. Esc dismisses. Focus moves to Close, returns to the opener.
+- `aria-live="polite"` announces which path opened.
+- No `https://` store URLs — first render and the dialog stay offline.
+- Touch targets ≥ 44px, gap ≥ 8px.
+- `touch-action: manipulation`.
+- `prefers-reduced-motion` zeros transitions.
+
+z-index: base 0 · header 20 · overlay 100 · skip 1000.
+
+Heading: Imagery
+
+`image.jpg` is the hero still (Grok Imagine, 16:9, 1280×720). Local `src="image.jpg"` only. Width/height set to avoid CLS. No lazy-load on LCP. No official logo in the frame.
+
+Heading: Anti-patterns avoided
+
+- Catalog orange as if it were this product
+- Google Fonts / CDN / remote images
+- Official 배달의민족 mark (text wordmark instead)
+- Extra screens (클럽, 선물하기, listings)
+- Emoji as icons
+- Focus outline removed
+- Hover-only install
+- Invented copy outside the snapshot chrome
+
+Heading: Pre-delivery (pack checklist, web)
+
+- [x] No emoji icons; inline SVG
+- [x] `cursor: pointer` on controls (`button`)
+- [x] 150–300ms hover (160 / 220)
+- [x] Large hero type contrast on photo + left scrim
+- [x] Visible `:focus-visible`
+- [x] `prefers-reduced-motion`
+- [x] 390 and 1440 layouts
+- [x] 44px targets
+- [x] Skip link
+- [x] Sequential headings (`h1` then dialog `h2`)
+- [x] figure / blockquote / ul / ol margin reset

@@ -1,0 +1,190 @@
+Heading: Apple KR Home Design System
+
+This document is the  portable contract for this run. It is a
+surface-local system derived from the frozen snapshot, not Apple's published
+design-system site. Unresolved values are omitted rather than filled.
+
+Heading: Experience
+
+**Scope.** One consumer surface: the Korean Apple home (`https://www.apple.com/kr/`, snapshot `2026-08-22T19-46-47-156Z`). The first render is that home. The only additional view is the intro path for the first product plate.
+
+**Primary task.** From the first screen, move into the introduction path of one product kind.
+
+**Stance.** The home is an entrance to one product introduction. Reproduce the measured first plate; open that plate's intro; leave every unmeasured product fact blank.
+
+**Principles (each names a sacrifice).**
+
+- P1 Honesty over catalog completeness. If a price, spec, or count is not in the snapshot, the screen names the missing category instead of inventing a number.
+- P2 One journey over a long homepage. Extra product plates and a store/checkout are sacrificed so the graded verb stays reachable on one primary control.
+- P3 Measured chrome over reinterpretation. Color, type metrics, header height, and pill radius come from `evidence.json` chrome. Unmeasured spacing uses the pack 4pt scale and is labelled as proposed.
+
+**Source classes used.** `prompt-fact` (brief: home, intro path, snapshot handle). `repository-fact` (evidence chrome, imagery alts, viewport copy, manifest). `agent-proposed-greenfield-decision` (unmeasured spacing, motion durations, compact nav type). `unresolved` (SF Pro KR files, prices, destinations of nav items other than the intro path).
+
+Heading: Foundations
+
+Heading: Decision table
+
+| ID | Category | Decision | Rationale |
+|---|---|---|---|
+|  | Surface genre | No-radius full-bleed plates | Snapshot home is stacked product plates, not shadowed tiles or hairline magazine cards. Genre–domain: visual catalog. |
+|  | Elevation | Rest = none; hover on controls = fill/border shift, not drop shadow | Captured header and hero are flat. Elevation tokens exist so hover is a surface change (visual-quality contract). |
+|  | Color density | Paper `#f5f5f7` + ink `#1d1d1f` + one accent `#0066cc` | `pageBackgroundRendered.hex`, `bodyColor`, `primaryButton.color` on desktop-1440. Accent is signal (pills), not a wash. |
+|  | Shape | Pill radius `980px` on CTAs; plates `0` | `primaryButton.radiusPx` is 980. Plates have no measured radius. |
+|  | Type hierarchy | Display 56/32 (h2), lede 28/19 (p), control 17/14, weight 600/400 | desktop-1440 / mobile-390 `typeScale` and `primaryButton`. Weight 600 is measured; the pack display floor ≥700 is not applied because it would contradict chrome. |
+|  | Tracking | `normal` on Hangul | `typeScale.letterSpacing` is `normal`. Korean contract forbids tight display tracking. |
+|  | Layout grammar | Scroll-narrative cover plate (P-ED-03 cover only) + hash intro | One generated image; bento/magazine/carousel fail GS6 content back-calculation. Wide strategy: center max. |
+|  | Home composition | Stacked copy-above-figure, not a diptych | Viewport and imagery-01 show centered copy then hardware. Snapshot wins over the generic diptych heuristic. |
+|  | Copy voice | Snapshot labels verbatim; no marketing numbers | Viewport: “iPhone”, “최신 세대 iPhone을 만나보세요.”, “더 알아보기”, “iPhone 쇼핑하기”. |
+|  | Motion | 120ms / 200ms, transform+opacity only | Pack motion tokens. Reduced-motion freezes to the end state. |
+|  | Unmeasured space | 4pt role scale with section air 2.5 / 4 / 6rem | Pack token floor. Not in chrome; agent-proposed. |
+
+Heading: Color pairs (never a lone accent)
+
+Values are the measured hex, also stored as OKLCH for the token floor. Contrast is computed pair-wise.
+
+| Token | Hex (evidence) | OKLCH | Pair |
+|---|---|---|---|
+| `--color-paper` | `#f5f5f7` | `oklch(0.971 0.0027 285.7)` | page / hero ground |
+| `--color-header` | `#fafafc` | `oklch(0.986 0.0027 285.6)` | header fill |
+| `--color-ink` | `#1d1d1f` | `oklch(0.232 0.0038 286.0)` | text on paper 15.46:1 |
+| `--color-accent` | `#0066cc` | `oklch(0.522 0.1772 255.8)` | outline CTA; text on paper 5.11:1 |
+| `--color-on-accent` | `#f5f5f7` | same as paper | text on accent fill 5.11:1 |
+| `--color-rule` | — | `oklch(0.90 0.004 286)` | header hairline; **agent-proposed** (not measured) |
+
+`#ffffff` is the computed page background and is not used as a base token (G7). `#000000` appears in some imagery palettes as photograph interiors; it is not a UI base.
+
+Heading: Spacing (4pt roles)
+
+`--space-1` 4px · `--space-2` 8px · `--space-3` 12px · `--space-4` 16px · `--space-5` 20px · `--space-6` 24px · `--space-section-sm` 2.5rem · `--space-section` 4rem · `--space-section-lg` 6rem · `--gutter: clamp(1.25rem, 4vw, 2.5rem)`. Header height `--header-h: 44px` desktop / `50px` mobile (chrome.header.heightPx).
+
+Heading: Motion
+
+`--duration-fast: 120ms` · `--duration-base: 200ms` · `--ease-enter: cubic-bezier(0.22, 1, 0.36, 1)` · `--ease-exit: cubic-bezier(0.4, 0, 1, 1)`. Animate transform/opacity only.
+
+Heading: Typography & Assets
+
+**Observed family.** `typeScale.family` = `SF Pro KR`. That face is not bundled in this run (unresolved load). The stack names it first, then Hangul-covering gothic fallbacks required by the pack Korean contract. No network `@font-face`.
+
+```
+"SF Pro KR", "SF Pro Display", "SF Pro Text", "Apple SD Gothic Neo",
+"Pretendard Variable", Pretendard, "Noto Sans KR", "Apple Gothic",
+"Malgun Gothic", sans-serif
+```
+
+| Role | Desktop | Mobile | Weight | Line-height | Color |
+|---|---|---|---|---|---|
+| display (h1/h2) | 56px | 32px | 600 | 66px / 37.7px | ink / on dark `#f5f5f7` for h3 |
+| lede (hero p) | 28px | 19px | 400 | 35px / 25px | ink |
+| control | 17px | 14px | 400 | — | accent or on-accent |
+| label/nav | 12px | 12px | 400 | 1.3 | ink | agent-proposed compact chrome |
+
+Hangul: `word-break: keep-all`. Display headings also `overflow-wrap: anywhere; min-width: 0`. No italic display. Numbers inside Korean may use tabular figures.
+
+**Imagery.** One generated catalog photograph (`image.jpg`, 1472×704) stands in for desktop-1440 imagery sample `c1` / `hero_iphone_family`. Alt text is the evidence alt (truncated as stored). Decorative SVG in chrome is `aria-hidden`. No logo file was provided; the wordmark is an inline glyph + accessible name “Apple”.
+
+**License / authority.** Snapshot captures are evidence, not redistributed in the render. The generated image is produced in this run for the first plate. Font files are not shipped.
+
+Heading: Components & States
+
+Presets used: **P-ED-03** (lookbook cover plate, token slots from ), **P-FN-02** (route focus). Global nav is **no-preset: observed chrome** — the snapshot bar is the product chrome, not a catalog widget.
+
+Interactive components declare the seven-state map. Non-interactive plates do not get a fictional focus contract.
+
+Heading: Global header (no-preset: observed chrome)
+
+Anatomy: wordmark · primary links · search · bag. Mobile: wordmark · search · bag · disclosure. Height 44/50px, fill `--color-header`.
+
+| State | Applicability |
+|---|---|
+| default | yes |
+| hover | yes (link color/weight; surface change on icon buttons) |
+| focus-visible | yes (outline on controls, not on programmatic heading focus) |
+| active | yes (pressed scale on icon buttons) |
+| disabled | not-applicable — header controls that have no destination stay enabled and announce absence |
+| loading | not-applicable |
+| error | not-applicable |
+
+Search and bag are real buttons. They do not invent a search index or a cart; they write a `role="status"` sentence that names the missing category.
+
+Heading: Button (pill)
+
+Anatomy: label only (no icon on the two hero actions). Min hit 44×44. Radius `--radius-pill: 980px`. Fill vs outline is a variant, not a second component.
+
+| State | Primary fill | Outline |
+|---|---|---|
+| default | accent fill, on-accent text | transparent, accent border/text |
+| hover | darker accent (oklch lightness −0.05), same border-width | accent tint fill |
+| focus-visible | 2px accent outline, offset 3px, immediate | same |
+| active | scale 0.98 | scale 0.98 |
+| disabled | opacity + `cursor: not-allowed` + native `disabled` | same |
+| loading | not-applicable (no async submit) | — |
+| error / success | not-applicable on the control; page-level `role="alert"` / `role="status"` | — |
+
+Primary uniqueness: one `data-cta="primary"` per view (“더 알아보기” on home). “iPhone 쇼핑하기” is `data-cta="local"` and must not reuse the primary verb.
+
+Heading: Product plate (P-ED-03 cover)
+
+Anatomy: centered display title → lede → CTA row → full-width figure. Non-interactive except the CTA row. States: default only. Intro view reuses the plate and adds a prose well (CJK ~40ch) plus honest-absence sentences where price/spec would sit.
+
+Heading: Route announcement
+
+P-FN-02: on view change, `document.title` updates, `scrollTo(0,0)`, `#page-title` receives focus with `tabindex="-1"` and no visible ring.
+
+Heading: Layout & Platforms
+
+**Grammar.** Home = one cover plate. Intro = same plate + prose well. Not bento (needs ≥5 cells), not magazine (needs ≥4 images), not carousel (one image).
+
+**Wide strategy.** Center max. Copy well `max-width: 40em`. Figure `max-width: 72rem`. Background plate is full bleed; controls stay in the well (C37).
+
+**Viewports.** 1440 (full nav), 390 (50px header, 32/19 type, disclosure nav), 320 (no horizontal document scroll, `overflow-x: clip`). 200% reflow: buttons wrap, heading `overflow-wrap: anywhere`, hit targets stay ≥44px.
+
+**Touch.** Icon controls and CTAs min 44px. Inline prose links are the exception named by the skill.
+
+**Overflow.** `document.documentElement.scrollWidth <= clientWidth` is a product requirement at 320 / 390 / 1440.
+
+**Platforms.** This run is a single static HTML file. No native apps.
+
+Heading: Content & Locales
+
+**Locale.** `ko-KR` as captured. `<html lang="ko">`. No locale switcher (not in the brief).
+
+**Voice.** Snapshot Korean. Implementation words (file names, field names, “evidence.json”) never appear on screen.
+
+**Locked strings (repository-fact).**
+
+- Document title (home): `Apple (대한민국)`
+- Hero title: `iPhone`
+- Hero lede: `최신 세대 iPhone을 만나보세요.`
+- Primary: `더 알아보기`
+- Local: `iPhone 쇼핑하기`
+- Nav labels visible in the desktop viewport: `스토어`, `Mac`, `iPad`, `iPhone`, `Watch`, `Vision`, `AirPods`, `TV 및 홈`, `엔터테인먼트`, `액세서리`, `고객지원`
+
+**Intro body.** Uses the stored alt of imagery sample c1. Truncation in the fixture is preserved; it is not completed from memory.
+
+**Honest-absence sentences (user language).**
+
+- Price: `가격은 이 스냅샷에 없습니다.`
+- Specs/counts: `저장 용량과 비교 수치는 이 스냅샷에 없습니다.`
+- Shop: `이 화면에서는 구매 절차를 제공하지 않습니다.`
+- Search / bag: named as unavailable categories in `role="status"`.
+
+**Footer.** One quiet sample line, not a banner: this reconstruction is a specimen of the snapshot, not a live store.
+
+**Formatting.** No prices to format. Do not emit invented “10×” claims (G46).
+
+Heading: Governance
+
+**Authority order.** Brief prompt-facts → snapshot evidence → this document's agent-proposed tokens → pack visual-quality / slop gates. A later preference does not exist for this run.
+
+**Unknown-absence.** Omit at the smallest field. Do not substitute Inter, a generic commerce card, or a live apple.com fetch.
+
+**Consequential unresolved.**
+
+- SF Pro KR webfont files (stack fallback only).
+- Destinations for Store/Mac/iPad/Watch/Vision/AirPods/TV/entertainment/accessories/support.
+- Price, SKU, storage, and comparison metrics.
+- Subject separation for imagery sample c1 (`subject.resolved: false`).
+
+**Extension policy.** No  field is overridden. Compiler claim markers are not hand-written; this file is the experiment  projection of the run, not an adopted  package.
+
+**Exceptions.** Display weight stays 600 (measured) instead of the pack ≥700 floor. Home composition stays stacked (measured) instead of a copy/figure diptych.

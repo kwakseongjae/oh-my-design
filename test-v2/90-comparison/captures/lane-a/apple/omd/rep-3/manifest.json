@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "apple",
+  "arm": "omd",
+  "rep": 3,
+  "source": "test-v2/03-runs/lane-a/apple/omd/rep-3/render.html",
+  "sourceSha": "sha256:8c1c95edb47cabf28f69dbba68bff5076eb6595914658eb73fcea86b5fe881cf",
+  "capturedAt": "2026-09-02T00:38:03.057Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:0666804dafeb5637b212a5f5ea127b7fd6e370e409f0f4a0ede1a69db4b0eac9",
+      "bytes": 246313,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:e22570160369c8ff2aec18c6f3d7a11fc10c86a45b33f726eb2bf35ac7aa3047",
+      "bytes": 72714,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

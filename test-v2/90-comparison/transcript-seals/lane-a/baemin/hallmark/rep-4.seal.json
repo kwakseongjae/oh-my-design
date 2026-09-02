@@ -1,0 +1,40 @@
+{
+  "runId": "lane-a-baemin-rep-4",
+  "arm": "hallmark",
+  "lane": "lane-a",
+  "brand": "baemin",
+  "repeat": 4,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/baemin/<arm>/rep-4/system.md",
+      "sha256": "04d5f4b39d19ffb829244ee6fe50637589b6a48b218213a5f07a3259fbe1eeb5"
+    }
+  ],
+  "sourceSha256": "04d5f4b39d19ffb829244ee6fe50637589b6a48b218213a5f07a3259fbe1eeb5",
+  "transcriptSha256": "be8afe2fbb660ade4c8b8f536b526f60e5604ed1f4c59a757699babba3c71d9f",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "8c6e386ab58008e3779b86fd6fb14a0c84d3e8f3a6cba29ac6e1da82cbd2cb1c",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T00:27:07Z",
+  "transcriptionEndedAt": "2026-09-02T00:27:07Z",
+  "verificationStartedAt": "2026-09-02T00:30:23Z",
+  "verificationEndedAt": "2026-09-02T00:30:23Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/baemin/hallmark/rep-4.map.csv",
+  "mapSha256": "12beaea9a7aa27b40c4c991888e89d02d0aed7c3a81a672b60a8f29cb5c16b17",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 51,
+    "problems": [],
+    "attempts": 1,
+    "reverifiedAt": "2026-09-02T00:53:43.086Z",
+    "reverifiedBy": "orchestrator"
+  },
+  "verdict": "PASS",
+  "transcriptFile": "90-comparison/transcripts/lane-a/baemin/hallmark/rep-4.txt",
+  "submittedToScoring": true
+}

@@ -33,6 +33,7 @@ const COMPARISON = resolve(HERE, "..", "90-comparison");
 const order = JSON.parse(readFileSync(join(COMPARISON, "arm-order.json"), "utf8"));
 const config = JSON.parse(readFileSync(join(COMPARISON, "run-config.json"), "utf8"));
 const EVALUATORS = config.evaluators.map((e) => e.id);
+const CHUNKS = config.scoring?.chunking?.chunks ?? null;
 
 /** The six permutations of three arms, in a fixed order so the mapping is stable. */
 const ARMS = ["omd", "hallmark", "uiuxpromax"];
@@ -64,9 +65,12 @@ for (const [i, evaluator] of EVALUATORS.entries()) {
     });
     sessions.push({
       evaluator,
+      chunks: CHUNKS,
       lane,
       lanePosition: lanes.indexOf(lane) + 1,
-      // One session per (evaluator, lane). Scores from different sessions are
+      // One session per (evaluator, lane, chunk) — 2026-09-01 판정 Q4로 치환됨.
+      // 청크는 run-config.scoring.chunking의 사전 선언을 그대로 실어 실행 단위와
+      // 선언이 어긋나지 않게 한다. Scores from different sessions are
       // never pooled across lanes — that is §1, enforced structurally by
       // lanes.mjs on the output side and by session boundaries here.
       runs: rows.length,

@@ -67,11 +67,23 @@ const TOKEN_PATTERNS = [
 ];
 
 /** §7.1.6 — commands and URLs are compared byte for byte. */
-const CODE_PATTERNS = [
-  ["fenced", /```[\s\S]*?```/g],
+const FENCE_PATTERNS = [["fenced", /```[\s\S]*?```/g]];
+const INLINE_CODE_PATTERNS = [
   ["inlineCode", /`[^`\n]+`/g],
   ["url", /\bhttps?:\/\/[^\s)>\]]+/g],
 ];
+
+/** Source text with every declared deletion span (byte ranges, §6.1) removed. */
+function applyDeclaredDeletions(text, spans, offsets) {
+  if (!spans.length) return text;
+  let out = "";
+  for (let i = 0; i < text.length; i++) {
+    const at = offsets[i];
+    if (spans.some((d) => at >= d.start && at < d.end)) continue;
+    out += text[i];
+  }
+  return out;
+}
 
 /**
  * §7.1.8 — strings and structural markers that reveal which arm produced the
@@ -81,8 +93,10 @@ const CODE_PATTERNS = [
 const FORBIDDEN = [
   [/\bomd\b|oh-my-design/i, "arm name: omd"],
   [/\bhallmark\b/i, "arm name: hallmark"],
-  [/ui\s*-?\s*ux\s*pro\s*max|uiuxpromax/i, "arm name: UIUX Pro Max"],
-  [/\bD-\d{2,}\b/, "decision ID"],
+  // 2026-09-02: `ui-ux-pro-max` (하이픈)과 `D-P1-2` (omd 결정 ID 실제 형식)를 놓치고 있었다.
+  // 파일럿 apple/omd rep-2·3·4가 결정 ID를 실은 채 PASS했고, baemin 전사자가 그것을 잡았다.
+  [/ui[\s_-]*ux[\s_-]*pro[\s_-]*max|uiuxpromax/i, "arm name: UIUX Pro Max"],
+  [/\bD-P?\d+-\d+\b|\bD-\d{2,}\b/, "decision ID"],
   [/design-md:section/i, "section marker"],
   [/^---\s*$/m, "YAML frontmatter fence"],
   [/\[[0-9;]*m/, "ANSI escape"],
@@ -246,9 +260,24 @@ export function verifyTranscription({ source, transcript, map, seal }) {
     }
   };
 
+  // 6 (fenced) — a fenced block is one token, so a declared MARKER_DELETE inside it
+  // (`/* D-P1-2 */` in a CSS token block) used to register as an *added* block, which
+  // nothing can license. §4.1 row 2 orders exactly that deletion, so the block is
+  // compared byte for byte against the source *after* the declared spans are removed:
+  // a declared in-fence deletion matches, an undeclared in-fence edit still shows up
+  // as one block missing and one added. (2026-09-02, baemin/omd/rep-2 fail-close.)
+  {
+    const applied = applyDeclaredDeletions(srcText, declaredSpans, offsets);
+    const a = tokensWithOffsets(headingNormalise(applied).normalised, FENCE_PATTERNS);
+    const b = tokensWithOffsets(trText, FENCE_PATTERNS);
+    const { missing, added } = sequenceDiff(a, b);
+    if (added.length) fail("7.1.6", `transcript adds or alters ${added.length} fenced block(s) beyond the declared deletions`);
+    if (missing.length) fail("7.1.7", `${missing.length} fenced block(s) lost or altered outside declared deletions`);
+  }
+
   // 5·6·7 — content-bearing tokens and code survive in order, except where the
   // mapping declares a deletion that covers them.
-  for (const [label, patterns] of [["7.1.5", TOKEN_PATTERNS], ["7.1.6", CODE_PATTERNS]]) {
+  for (const [label, patterns] of [["7.1.5", TOKEN_PATTERNS], ["7.1.6", INLINE_CODE_PATTERNS]]) {
     // Compared against the source *after* §2.1's own transform, so the ordinal
     // that §2.1 orders removed is not counted as content loss.
     const { missing, added } = sequenceDiff(tokensWithOffsets(srcNormalised, patterns), tokensWithOffsets(trText, patterns));
@@ -328,7 +357,27 @@ if (process.argv.includes("--selftest")) {
   const tr6 = Buffer.from("설명이다.\n\n```md\n## 3. Typography\n```\n");
   const map6 = Buffer.from(header + "r1,x,O000001,1,0-60,KEEP,,T000001,1,ok\n");
 
+  // 2026-09-02 반례 3 (baemin/omd/rep-2): 펜스 안 결정 ID 주석은 §4.1 2행이 삭제를 명령한다.
+  // 선언된 in-fence 삭제는 통과해야 하고, 선언 없는 in-fence 편집은 여전히 차단돼야 한다.
+  const src7s = "토큰이다.\n\n```css\n:root {\n  --ink: #1d1d1f; /* D-P1-2 */\n}\n```\n";
+  const src7 = Buffer.from(src7s);
+  const tr7 = Buffer.from("토큰이다.\n\n```css\n:root {\n  --ink: #1d1d1f; \n}\n```\n");
+  const spanStart = Buffer.byteLength(src7s.slice(0, src7s.indexOf("/* D-P1-2 */")), "utf8");
+  const spanEnd = spanStart + Buffer.byteLength("/* D-P1-2 */", "utf8");
+  const map7 = Buffer.from(header +
+    `r1,x,O000001,1,0-${spanStart - 1},KEEP,,T000001,1,ok\n` +
+    `r1,x,O000002,2,${spanStart}-${spanEnd},MARKER_DELETE,abc,T000002,2,ok\n`);
+  const tr7bad = Buffer.from("토큰이다.\n\n```css\n:root {\n  --ink: #1d1d1e; /* D-P1-2 */\n}\n```\n");
+  const map7bad = Buffer.from(header + `r1,x,O000001,1,0-${spanEnd + 8},KEEP,,T000001,1,ok\n`);
+
+  // 2026-09-02 반례 4: 탐지기가 놓치던 두 표지 — 실제 omd 결정 ID 형식과 하이픈 arm 이름.
+  const src8 = Buffer.from("결정 D-P2-1 은 유지. 팩은 ui-ux-pro-max 였다.\n");
+  const map8 = Buffer.from(header + "r1,x,O000001,1,0-60,KEEP,,T000001,1,ok\n");
+
   const cases = [
+    { name: "펜스 안 선언된 결정 ID 삭제는 통과", got: verifyTranscription({ source: src7, transcript: tr7, map: map7, seal: sealOf(src7, tr7, map7) }), want: "PASS" },
+    { name: "펜스 안 선언 없는 편집은 차단", got: verifyTranscription({ source: src7, transcript: tr7bad, map: map7bad, seal: sealOf(src7, tr7bad, map7bad) }), want: "TRANSCRIPTION_BLOCKED" },
+    { name: "D-P2-1 · ui-ux-pro-max 가 남으면 차단", got: verifyTranscription({ source: src8, transcript: src8, map: map8, seal: sealOf(src8, src8, map8) }), want: "TRANSCRIPTION_BLOCKED" },
     { name: "§2.1 그대로 따른 전사는 통과해야 한다", got: verifyTranscription({ source: src1, transcript: tr1, map: map1, seal: sealOf(src1, tr1, map1) }), want: "PASS" },
     { name: "색 순서를 바꾸면 차단", got: verifyTranscription({ source: src2, transcript: tr2, map: map2, seal: sealOf(src2, tr2, map2) }), want: "TRANSCRIPTION_BLOCKED" },
     { name: "선언된 삭제가 무관한 손실을 면제하지 않는다", got: verifyTranscription({ source: src3, transcript: tr3, map: map3, seal: sealOf(src3, tr3, map3) }), want: "TRANSCRIPTION_BLOCKED" },

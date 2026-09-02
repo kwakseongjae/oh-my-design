@@ -1,0 +1,90 @@
+Heading: Design — Apple (대한민국) 홈 첫 화면
+
+Locked design system. Future  runs read this file first; pages defer
+to it. Amend intentionally — the file is the rule.
+
+Going with: audience = 대한민국 Apple 사이트 방문자 · use = 첫 화면에서 iPhone 소개 경로로 이동 · tone = austere.
+
+Genre: editorial. Macrostructure: Photographic. Theme: studied-DNA (source: image). Nav: N1b. Footer: Ft2.
+
+Heading: Provenance
+
+- Source mode · image (evidence captures, not a live fetch)
+- Snapshot · `2026-08-22T19-46-47-156Z`
+- Evidence · `test-v2/00-evidence/apple/` (`evidence.json`, `manifest.json`, `capture/desktop-1440-viewport.png`, `capture/mobile-390-viewport.png`, `capture/desktop-1440-imagery-01.png`)
+- Source URL recorded in evidence · `https://www.apple.com/kr/`
+- Attestation · public reference for this reconstruction run
+- Confidence · chrome tokens and type metrics taken from `evidence.json`; visible labels taken from the viewport captures. Imagery subject from `surfaces.desktop-1440.imagery.samples[0].alt`. Unresolved fields omitted.
+
+Heading: System
+
+- Genre · editorial
+- Macrostructure · Photographic
+- Theme · studied-DNA (source: image)
+- Axes · light / grotesk-sans / cool
+- Enrichment · E8 Hero Photography, tier-C generated still
+- Nav · N1b Canonical SaaS three-section (always-solid · dropdowns none)
+- Footer · Ft2 Inline-rule single line
+- Motion · none (editorial / photographic default-off)
+
+Heading: Tokens (canonical ·  is the source of truth)
+
+```css
+:root {
+  --color-paper:      oklch(97.071% 0.005 286.35); /* from #f5f5f7, chroma floor 0.005 */
+  --color-paper-2:    oklch(98.566% 0.005 286.35); /* from #fafafc header */
+  --color-paper-air:  oklch(93.574% 0.0234 231.85); /* from imagery sample c2 #dbedf7 */
+  --color-ink:        oklch(23.158% 0.005 286.1);  /* from #1d1d1f */
+  --color-rule:       oklch(82% 0.005 286.35);
+  --color-accent:     oklch(52.197% 0.1771 255.83); /* from #0066cc */
+  --color-accent-ink: oklch(97.071% 0.005 286.35);
+  --color-focus:      oklch(23.158% 0.005 286.1);
+
+  --font-display: "SF Pro KR", "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --font-body:    "SF Pro KR", "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --font-outlier: ui-monospace, "SF Mono", monospace;
+
+  --text-display: 3.5rem; /* evidence desktop h2 56px */
+  --text-lede:    1.75rem; /* evidence desktop p 28px */
+  --text-btn:     1.0625rem; /* evidence button 17px */
+  --nav-height:   2.75rem; /* evidence header 44px */
+  --radius-pill:  980px; /* evidence primaryButton.radiusPx */
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+}
+```
+
+Heading: CTA voice
+
+- Primary · fill `--color-accent` on `--color-accent-ink` type · pill `--radius-pill` · label `더 알아보기` (viewport capture)
+- Secondary · outline `--color-accent` · same radius · label `iPhone 쇼핑하기` (`chrome.primaryButton.label`)
+- Evidence fill of the outline control · `outline` · `borderColor`/`color` `#0066cc` · `fontPx` 17 · `weight` 400
+
+Heading: Motion stance
+
+- silent
+- Reduced-motion fallback · ≤150 ms opacity crossfade.
+
+Heading: Copy that is in evidence
+
+- Title · Apple (대한민국)
+- Hero · iPhone
+- Lede · 최신 세대 iPhone을 만나보세요.
+- First-fold path · 더 알아보기
+- First-fold shop · iPhone 쇼핑하기
+- Next-band peek (first viewport) · MacBook Air · 이제 막강한 성능의 M5 탑재. · 구입하기
+- Nav · 스토어 · Mac · iPad · iPhone · Watch · Vision · AirPods · TV 및 홈 · 엔터테인먼트 · 액세서리 · 고객지원
+
+No metrics were supplied. None were invented.
+
+Heading: Notes
+
+- Anti-patterns not carried over: centred-everything hero (gate 6), 4-column sitemap footer (gate 43), fake device chrome (gate 47), invented stats (gate 46), section eyebrows (gate 54), live network fonts.
+- Single-family SF Pro KR is the design (evidence `typeScale.family`), not a pairing.
+- `#ffffff` computed paper was not used as the surface; rendered modal `#f5f5f7` is paper.
+- Representative image is a generated still from imagery sample c1 fields, not a pixel copy of the capture.
+
+Heading: Exports
+
+ (in this run directory) is the source of truth.

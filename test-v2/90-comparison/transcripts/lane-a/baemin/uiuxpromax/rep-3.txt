@@ -1,0 +1,135 @@
+Heading: Baemin Home — Design System
+
+Snapshot `2026-08-22T19-47-32-522Z`. Surface: home only (`https://www.baemin.com/`). Task: open one app-install path (store badge or QR).
+
+Generated with the  pack (`--design-system`, then domain/stack searches). Tokens follow the pack’s three-layer architecture. Values that the live snapshot measured override the pack’s generic food-delivery orange, because this run reconstructs a specific brand home — not a stock on-demand template.
+
+Heading: Pack query
+
+```
+food delivery consumer landing playful vibrant mint photography app install
+--design-system -p "Baemin Home" --variance 7 --motion 3 --density 3
+```
+
+| Dial | Value | Reading |
+|------|-------|---------|
+| Variance | 7/10 | Balanced / modern, slightly bold |
+| Motion | 3/10 | Subtle (evidence: no above-fold video) |
+| Density | 3/10 | Spacious marketing (24–96px rhythm) |
+
+Heading: Pack recommendations (kept as structure)
+
+- **Product:** Food Delivery / On-Demand → style **Vibrant & Block-based**
+- **Landing pattern:** **App Store Style Landing** + **Hero-Centric Design**
+  - Hero with headline + visual occupying most of the fold
+  - Platform-specific CTAs (App Store + Play) and a QR
+  - One primary install action; no extra screens
+- **Typography pairing (pack):** Korean Modern = Noto Sans KR / Noto Sans KR; also Fredoka + Nunito
+- **Color pairing (pack default):** appetizing orange `#EA580C` + trust blue — **not applied to paint**. See primitives below.
+- **Stack:** `html-tailwind` rules used as constraints (responsive images, no bounce spam, same content across breakpoints, visibility via media queries)
+- **Icons:** Phosphor-style outline SVGs, no emoji icons
+- **Motion snippet:** scroll-reveal 300–400ms `power1.out` — unused on this single-fold page; hover/press stay 150–220ms
+
+Heading: Evidence overrides (why paint is mint, not orange)
+
+Desktop-1440 chrome from the snapshot:
+
+- Computed page background `#f6f6f6`
+- Display type `#0cefd3`, 60px / weight 800 / line-height 84px, `-apple-system`
+- Section title `#0cefd3`, 24px / 700
+- Header height 96px
+- Primary button above the fold: none (install is store badges + QR)
+
+Mobile-390 chrome:
+
+- Header height 126px
+- Primary button: label `Get the App`, fill `#0cefd3`, ink `#000000`, radius 9999, 20px / 700
+- Display type 32px / 800 / line-height 44.8px
+
+The pack’s Food Delivery palette is the industry default. The snapshot’s type, button, and imagery palettes are mint (`#0cefd3` coverage 0.88–0.96 on sampled GIFs). Reconstruction uses the measured mint as primary.
+
+Google Fonts URLs from the pack are **not loaded**. The page must open with zero network requests, so the type stack matches the snapshot’s `-apple-system` and a Korean system fallback.
+
+Heading: Layer 1 — Primitive
+
+| Token | Value |
+|-------|--------|
+| `--color-mint-400` | `#0cefd3` |
+| `--color-mint-500` | `#0be5ca` |
+| `--color-black` | `#000000` |
+| `--color-white` | `#ffffff` |
+| `--color-canvas` | `#f6f6f6` |
+| `--space-1` … `--space-9` | 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 px |
+| `--font-sans` | `-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif` |
+| `--radius-sm` / `--radius-md` / `--radius-pill` | 8 / 12 / 9999px |
+| `--duration-fast` / `--duration-normal` | 150ms / 220ms |
+| `--z-base` / `--z-header` / `--z-overlay` / `--z-sheet` / `--z-skip` | 0 / 20 / 40 / 50 / 100 |
+
+Heading: Layer 2 — Semantic
+
+| Token | Resolves to |
+|-------|-------------|
+| `--color-background` | canvas `#f6f6f6` |
+| `--color-foreground` | black |
+| `--color-primary` | mint-400 |
+| `--color-on-primary` | black (4.5:1+ on mint) |
+| `--color-hero-type` | mint-400 |
+| `--color-on-hero` | white |
+| `--color-ring` | mint-400 |
+| `--spacing-gutter` | `clamp(20px, 10.8vw, 156px)` (headline `docBox.x = 156`) |
+| `--type-display` | `clamp(32px, 5vw, 60px)` |
+| `--type-lede` | `clamp(22px, 3.2vw, 36px)` |
+
+Heading: Layer 3 — Component
+
+| Component | Tokens / spec |
+|-----------|----------------|
+| Header | height 96px (126px <768px), transparent over hero, white wordmark **배달의민족** (text, not a logo file) |
+| Display heading | 60/800/84 desktop; 32/800/44.8 mobile; mint; tracking −0.05em |
+| Store badge | white fill, black ink, 8px radius, min 44×44, 8px gap |
+| QR control | 44×44 white tile, SVG mark, same install target as badges |
+| Get the App | mint fill, black ink, pill, 20/700 — mobile primary |
+| Install sheet | `#install` :target panel; no network; close returns to `#main` |
+| Focus | 3px mint ring, 3px offset; never `outline: none` |
+| Motion | transform/opacity only; `prefers-reduced-motion` zeros duration |
+
+Heading: Screen (home only)
+
+One fold. No gift / club / pay / extra routes.
+
+1. Transparent header: wordmark + 우아한형제들 · 라이더 모집 · For foreigners
+2. Full-bleed hero photograph (`image.jpg`)
+3. Mint campaign lines from the snapshot: **건강 관리 열정 식지 않도록** / **샐러드, 지금 배민됩니다**
+4. App Store badge, Google Play badge, QR — each `href="#install"`
+5. Mobile: the same cluster plus **Get the App**
+
+Opening any badge, the QR, or Get the App reveals the install sheet. That is the task path.
+
+Heading: Imagery
+
+- Representative image: `image.jpg` (Grok Imagine, 16:9, 1280×720)
+- Role: hero photograph of a packed salad in a clear takeout box
+- No official brand mark inside the image; no raster store logos
+
+Heading: Anti-patterns (pack + this run)
+
+- Do not load Google Fonts, CDN CSS, or remote images
+- Do not use emoji as icons
+- Do not mix the pack’s orange palette onto this mint snapshot
+- Do not add screens the brief did not name
+- Do not drop focus rings
+- Do not use hover-only install (click/tap + :target)
+- Do not ship store badges under 44px
+
+Heading: Pre-delivery (pack checklist, web)
+
+- [x] SVG icons, no emoji
+- [x] `cursor: pointer` on clickable elements
+- [x] Hover/press 150–220ms
+- [x] Body contrast on mint/white ≥ 4.5:1
+- [x] Visible `:focus-visible`
+- [x] `prefers-reduced-motion`
+- [x] Layout at 390 and 1440
+- [x] CSS reset includes `figure`, `blockquote`, `ul`, `ol` margin
+- [x] Hero image has width/height (CLS)
+- [x] z-index scale, no `z-index: 9999`

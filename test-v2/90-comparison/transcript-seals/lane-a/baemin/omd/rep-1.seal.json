@@ -1,0 +1,40 @@
+{
+  "runId": "lane-a-baemin-rep-1",
+  "arm": "omd",
+  "lane": "lane-a",
+  "brand": "baemin",
+  "repeat": 1,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/baemin/<arm>/rep-1/system.md",
+      "sha256": "54742a62f7b68c1df7c74df6521d80ab98f8fdb0e49f01681647af6f81c9f23b"
+    }
+  ],
+  "sourceSha256": "54742a62f7b68c1df7c74df6521d80ab98f8fdb0e49f01681647af6f81c9f23b",
+  "transcriptSha256": "c977d1901a259e40112b5cfbf9be0d97bdcabe536363f39d02b9f056314f3b7c",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "8c6e386ab58008e3779b86fd6fb14a0c84d3e8f3a6cba29ac6e1da82cbd2cb1c",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T00:27:07Z",
+  "transcriptionEndedAt": "2026-09-02T00:27:07Z",
+  "verificationStartedAt": "2026-09-02T00:30:23Z",
+  "verificationEndedAt": "2026-09-02T00:30:23Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/baemin/omd/rep-1.map.csv",
+  "mapSha256": "c170dccf54682a6093dcb9c1b5dd459d6ca94eaab6af89af9267bb170f7310f0",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 114,
+    "problems": [],
+    "attempts": 1,
+    "reverifiedAt": "2026-09-02T00:53:43.086Z",
+    "reverifiedBy": "orchestrator"
+  },
+  "verdict": "PASS",
+  "transcriptFile": "90-comparison/transcripts/lane-a/baemin/omd/rep-1.txt",
+  "submittedToScoring": true
+}

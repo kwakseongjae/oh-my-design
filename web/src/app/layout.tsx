@@ -36,7 +36,7 @@ export const viewport = {
 export const metadata: Metadata = {
   title: "oh-my-design — DESIGN.md for AI coding agents",
   description:
-    "One DESIGN.md spec. 440 quality-graded brand references: 141 verified_v2, 159 partial, and 140 legacy snapshots. The bundle ships 22 skills and 19 specialist definitions; Cursor 2.4+ receives 21 native Agent Skills. MIT open source.",
+    "One DESIGN.md spec. 440 quality-graded brand references: 141 verified_v2, 159 partial, and 140 legacy snapshots. The bundle ships 23 skills and 19 specialist definitions; Cursor 2.4+ receives 22 native Agent Skills. MIT open source.",
   keywords: [
     "design system",
     "DESIGN.md",
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "oh-my-design — DESIGN.md for AI coding agents",
     description:
-      "440 quality-graded references: 141 verified_v2, 159 partial, 140 legacy. 21 shipped skills · 18 specialist definitions · channel-aware install.",
+      "440 quality-graded references: 141 verified_v2, 159 partial, 140 legacy. 23 shipped skills · 19 specialist definitions · channel-aware install.",
     images: ["/twitter-image.png"],
   },
 };
@@ -159,7 +159,7 @@ export default function RootLayout({
                     priceCurrency: "USD",
                   },
                   featureList: [
-                    "21 product skills and 18 specialist agent definitions",
+                    "23 product skills and 19 specialist agent definitions",
                     "Native project skills for Claude Code, Codex, OpenCode, and Cursor 2.4+",
                     "440 quality-graded references: 141 verified_v2, 159 partial, and 140 legacy snapshots",
                     "verified_v2 references recommended for public demos",

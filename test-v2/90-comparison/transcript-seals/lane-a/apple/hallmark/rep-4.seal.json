@@ -1,0 +1,38 @@
+{
+  "runId": "lane-a-apple-rep-4",
+  "arm": "hallmark",
+  "lane": "lane-a",
+  "brand": "apple",
+  "repeat": 4,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/apple/<arm>/rep-4/system.md",
+      "sha256": "d15220b1852a6166e11d9fb818a1af5d1d67d8cb8e503203551073b184131954"
+    }
+  ],
+  "sourceSha256": "d15220b1852a6166e11d9fb818a1af5d1d67d8cb8e503203551073b184131954",
+  "transcriptSha256": "cbbc542b1ab7a8a68c55d4ce05d9df08e0b3e07c947d20bdaa67954b924bec50",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "8c6e386ab58008e3779b86fd6fb14a0c84d3e8f3a6cba29ac6e1da82cbd2cb1c",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T00:27:17Z",
+  "transcriptionEndedAt": "2026-09-02T00:27:17Z",
+  "verificationStartedAt": "2026-09-02T00:27:17Z",
+  "verificationEndedAt": "2026-09-02T00:27:17Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/apple/hallmark/rep-4.map.csv",
+  "mapSha256": "4ef74a93c397aae0babb7e73a5471347e944872469bea69d67ab3d03bb18b747",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 53,
+    "problems": [],
+    "attempts": 2,
+    "reverifiedAt": "2026-09-02T00:53:43.085Z",
+    "reverifiedBy": "orchestrator"
+  },
+  "verdict": "PASS"
+}

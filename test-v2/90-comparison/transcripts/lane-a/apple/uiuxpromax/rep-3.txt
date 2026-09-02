@@ -1,0 +1,301 @@
+Heading: Design System: Apple Home
+
+Source:  pack `--design-system` (markdown), then bound to evidence for this screen.
+Query: `consumer electronics ecommerce homepage premium minimal photography-first`
+Dials: `--variance 2 --motion 2 --density 2`
+Project: Apple Home
+Stack: `html-tailwind` (single-file HTML; no network)
+
+This file is the pack MASTER for the run. Values measured in evidence are labeled **evidence**. Pack recommendations that were not used on the live surface are labeled **pack / unused**. Empty cells mean the evidence field was absent.
+
+
+Heading: Design Dials
+
+- **Variance:** 2/10 — Centered / Minimal
+- **Motion:** 2/10 — Subtle
+- **Density:** 2/10 — Spacious
+
+Evidence `surfaces.desktop-1440.motion.present` is `false` (`no video above the fold at capture time`). Motion on the live surface is limited to 150–300ms state transitions from the pack UX table. GSAP was returned by the pack and is unused: the first render cannot load a network script.
+
+
+Heading: Pattern
+
+- **Name:** Minimal Single Column
+- **Conversion Focus:** Single CTA focus. Large typography. Lots of whitespace. Mobile-first.
+- **CTA Placement:** Center, large CTA button
+- **Color Strategy (pack):** Minimalist: Brand + white + accent. Buttons: High contrast 7:1+. Text: Black/Dark grey
+- **Sections (pack):** 1. Hero headline, 2. Short description, 3. Benefit bullets (3 max), 4. CTA, 5. Footer
+
+**Screen binding:** the specified screen is Home (`https://www.apple.com/kr/`). Evidence first viewport is a product-hero column (headline + short line + two CTAs + family photograph), then the next product band. Benefit bullets and footer are **absent** in evidence and are not invented.
+
+Landing-domain search (`hero product cta photography`) returned Product Demo + Features first. The live surface keeps the pack Minimal Single Column + evidence hero, not a demo video (motion is false).
+
+
+Heading: Style
+
+- **Name:** Exaggerated Minimalism
+- **Mode Support:** Light ✓ Full | Dark ✓ Full
+- **Keywords:** Bold minimalism, oversized typography, high contrast, negative space
+- **Best For:** Fashion, architecture, portfolios, agency landing pages, luxury brands, editorial
+- **Performance:** Excellent | **Accessibility:** WCAG AA
+
+Style-domain search also ranked **Minimalism & Swiss Style** (monochrome, sans-serif, grid, no unnecessary decoration). The live surface follows that checklist more closely than fashion-editorial serif, because evidence type is a sans family and the photograph is the statement.
+
+Style search results not used: Vintage Analog, Voice-First Multimodal, Zero Interface.
+
+
+Heading: Colors
+
+Heading: Pack `--design-system` table (E-commerce Luxury)
+
+| Role | Hex | CSS Variable | Used on live surface |
+|------|-----|--------------|----------------------|
+| Primary | `#1C1917` | `--color-primary` | unused (evidence has `#1d1d1f` / `#0066cc`) |
+| On Primary | `#FFFFFF` | `--color-on-primary` | fill-button text |
+| Secondary | `#44403C` | `--color-secondary` | unused |
+| Accent/CTA | `#A16207` | `--color-accent` | unused |
+| Background | `#FAFAF9` | `--color-background` | unused |
+| Foreground | `#0C0A09` | `--color-foreground` | unused |
+| Muted | `#E8ECF0` | `--color-muted` | unused |
+| Border | `#D6D3D1` | `--color-border` | unused |
+| Destructive | `#DC2626` | `--color-destructive` | unused (no destructive control) |
+| Ring | `#1C1917` | `--color-ring` | unused |
+
+Heading: Evidence chrome (live primitives)
+
+| Token | Value | Evidence field |
+|-------|-------|----------------|
+| `--color-page-computed` | `#ffffff` | `surfaces.desktop-1440.chrome.pageBackgroundComputed` |
+| `--color-page-rendered` | `#f5f5f7` | `surfaces.desktop-1440.chrome.pageBackgroundRendered.hex` (coverage 0.5744) |
+| `--color-ink` | `#1d1d1f` | `surfaces.desktop-1440.chrome.bodyColor` and `typeScale` h2/p |
+| `--color-header` | `#fafafc` | `surfaces.desktop-1440.chrome.header.background` |
+| `--color-header-mobile` | (empty) | `surfaces.mobile-390.chrome.header.background` is `null` |
+| `--color-cta` | `#0066cc` | `surfaces.*.chrome.primaryButton.borderColor` and `.color` |
+| `--color-cta-fill` | (empty) | primaryButton.fill is `"outline"`; fill background is `null` |
+| `--color-on-dark-heading` | `#f5f5f7` | `typeScale` h3 color |
+| `--color-hero-photo-ground` | `#f5f5f7` | `imagery.samples[0].palette[0].hex` (coverage 0.7475 desktop) |
+| `--color-air-band` | `#dbedf7` | `imagery.samples[1].palette[1].hex` (MacBook Air sample c2) |
+
+Color-domain search (`ecommerce premium minimal`) returned the same luxury stone/gold palette as `--design-system`. Gold accent is **not** applied on the live surface because evidence primaryButton is `#0066cc`.
+
+
+Heading: Typography
+
+Heading: Pack `--design-system`
+
+- **Heading:** Cormorant
+- **Body:** Montserrat
+- **Google Fonts URL:** `https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap`
+
+**Unused on the live surface.** The first render cannot make a network font request. Evidence family is `SF Pro KR` and is not bundled.
+
+Heading: Evidence type scale (live)
+
+Desktop-1440:
+
+| tag | fontPx | weight | family | lineHeight | letterSpacing | color |
+|-----|--------|--------|--------|------------|---------------|-------|
+| h2 | 56 | 600 | SF Pro KR | 66.0045px | normal | `#1d1d1f` |
+| h3 | 40 | 600 | SF Pro KR | 44px | normal | `#f5f5f7` |
+| p | 28 | 400 | SF Pro KR | 35px | 0.196px | `#1d1d1f` |
+
+Mobile-390:
+
+| tag | fontPx | weight | family | lineHeight | letterSpacing | color |
+|-----|--------|--------|--------|------------|---------------|-------|
+| h2 | 32 | 600 | SF Pro KR | 37.7168px | normal | `#1d1d1f` |
+| h3 | 32 | 600 | SF Pro KR | 36px | 0.064px | `#f5f5f7` |
+| p | 19 | 400 | SF Pro KR | 25px | 0.228px | `#1d1d1f` |
+
+Button: desktop `fontPx` 17 weight 400; mobile `fontPx` 14 weight 400.
+
+Nav size is **empty** in evidence. Pack base body is 16px; live nav uses that pack base and does not invent a measured nav px.
+
+Typography-domain search (`premium modern sans`) returned Satoshi/General Sans (DM Sans Google stand-in), Inter, Bodoni Moda/Jost. None are loaded.
+
+Runtime stack (unavailable family named, not substituted as if it were the face):
+
+```css
+font-family: "SF Pro KR", "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+```
+
+
+Heading: Key effects (pack)
+
+`font-size: clamp(3rem 10vw 12rem), font-weight: 900, letter-spacing: -0.05em, massive whitespace`
+
+**Partially unused.** Evidence heading is 56px / 32px at weight 600, not weight 900 giant type. Whitespace and centered single-column hero are kept.
+
+
+Heading: Motion (pack, unused runtime)
+
+**Scroll Reveal** (Subtle) — 300-400ms, `power1.out`, GSAP + ScrollTrigger.
+
+Live surface: no GSAP, no decorative loop, `prefers-reduced-motion` honored. Hero image is `loading="eager"` (above the fold). Pack lazy-load rule applies only below the fold; there is no second generated image.
+
+
+Heading: Avoid (Anti-patterns)
+
+From `--design-system`:
+
+- Vibrant & Block-based
+- Playful colors
+
+Product-domain search (`ecommerce electronics`) recommended Vibrant & Block-based as the generic e-commerce primary style. That recommendation is an anti-pattern for this query and is not used. E-commerce Luxury / photography-first / Swiss minimal is the selected path.
+
+
+Heading: Token architecture (pack `design-system` three-layer)
+
+Live CSS uses this mapping. Raw hex appears only in primitives.
+
+Heading: Primitive
+
+```css
+--color-white: #ffffff;
+--color-gray-hero: #f5f5f7;
+--color-header: #fafafc;
+--color-ink: #1d1d1f;
+--color-link: #0066cc;
+--color-air: #dbedf7;
+--space-1: 4px;
+--space-2: 8px;
+--space-4: 16px;
+--space-6: 24px;
+--space-8: 32px;
+--radius-pill: 980px;
+--header-h-desktop: 44px;
+--header-h-mobile: 50px;
+--duration: 200ms;
+--z-skip: 100;
+--z-header: 50;
+--z-menu: 40;
+```
+
+`980px` radius and header heights are evidence (`primaryButton.radiusPx`, `header.heightPx`). Spacing 4/8 scale is pack Layout & Spacing.
+
+Heading: Semantic
+
+```css
+--color-background: var(--color-gray-hero);
+--color-foreground: var(--color-ink);
+--color-primary: var(--color-link);
+--color-on-primary: var(--color-white);
+--color-surface-header: var(--color-header);
+--spacing-section: var(--space-8);
+```
+
+Heading: Component
+
+```css
+--button-fg: var(--color-primary);
+--button-border: var(--color-primary);
+--button-fill-bg: var(--color-primary);
+--button-fill-fg: var(--color-on-primary);
+--button-radius: var(--radius-pill);
+--button-font-desktop: 17px;
+--button-font-mobile: 14px;
+--nav-z: var(--z-header);
+```
+
+Heading: Button states (evidence + pack)
+
+| State | Outline (evidence primaryButton) | Fill (visible in capture; fill hex empty) |
+|-------|----------------------------------|-------------------------------------------|
+| Default | border `#0066cc`, color `#0066cc`, fill `null` | background uses `--color-primary` (same evidence blue; not a second measured fill) |
+| Hover | opacity 0.85 (pack 150–300ms; no evidence hover hex) | same |
+| Focus | 2px ring `--color-primary` offset 2px (pack `focus-states`) | same |
+| Active | scale 0.98 (pack `scale-feedback`) | same |
+| Disabled | unused | unused |
+
+
+Heading: Layout
+
+| Token | Desktop-1440 | Mobile-390 |
+|-------|--------------|------------|
+| Viewport | 1440×900 | 390×844 |
+| Header height | 44px | 50px |
+| Hero imagery box | y 44, 3008×692, aspect 4.347, clipped | y 48, 734×500, aspect 1.468, clipped |
+| Breakpoints used | pack 375 / 768 / 1024 / 1440; evidence surfaces 390 and 1440 | |
+
+Pack `html-tailwind` stack: `fixed` nav with `z-50`; `hidden md:flex` for desktop links vs mobile menu; icon-only controls have `aria-label`; hero image declares aspect-ratio to limit CLS.
+
+
+Heading: Navigation & copy (evidence only)
+
+Page title: `Apple (대한민국)` (`source.title`). Locale: `ko-KR`.
+
+Primary button label: `iPhone 쇼핑하기` (`chrome.primaryButton.label`). Repeats: 1 desktop, 2 mobile.
+
+Other strings on the specified screen are taken from evidence captures (`capture/desktop-1440-viewport.png`, `capture/mobile-390-viewport.png`), not invented:
+
+- Hero heading: `iPhone`
+- Hero line: `최신 세대 iPhone을 만나보세요.`
+- Second hero control: `더 알아보기`
+- Next band heading: `MacBook Air`
+- Next band line: `이제 막강한 성능의 M5 탑재.`
+- Next band controls (mobile capture): `더 알아보기`, `구입하기`
+- Desktop global nav: `스토어`, `Mac`, `iPad`, `iPhone`, `Watch`, `Vision`, `AirPods`, `TV 및 홈`, `엔터테인먼트`, `액세서리`, `고객지원`
+
+Task path: from this first screen, the iPhone CTAs (`더 알아보기`, `iPhone 쇼핑하기`) and the `iPhone` nav item go to `#iphone` on the same page. No extra screens.
+
+
+Heading: Imagery
+
+Representative image for this screen is the first above-fold sample:
+
+- `surfaces.desktop-1440.imagery.samples[0]`
+- tag `c1`, file `capture/desktop-1440-imagery-01.png`
+- alt (truncated in evidence): `왼쪽 상단의 프로 Fusion 카메라 시스템과 중앙의 Apple 로고가 보이는 딥 블루 색상 iPhone 17 Pro 뒷면, 왼쪽 상단의 듀얼 `
+- palette[0] `#f5f5f7`, light `meanLuma` 0.882, `luminanceGradient` `brighter right`
+- `subject.resolved` false — placement omitted (aggregate `figureGroundResolved` `0/8`)
+
+Live file: `image.jpg` (Grok Imagine). HTML references it relatively. No other generated image.
+
+
+Heading: Icons
+
+Pack default: Phosphor outline (`magnifying-glass`, `shopping-bag`, `list`). Inlined as SVG. No emoji. Icon-only buttons use `aria-label`.
+
+
+Heading: UX rules applied (pack Quick Reference + domain search)
+
+- Skip link to `#main`
+- Sequential headings (`h1` hero, `h2` next band)
+- Visible focus rings; do not remove outline without replacement
+- Keyboard tab order matches visual order
+- Touch targets ≥ 44×44px; ≥ 8px gap
+- `cursor: pointer` on clickable elements
+- `touch-action: manipulation`
+- `prefers-reduced-motion`
+- z-index scale 40 / 50 / 100 (not 9999)
+- Hero image eager; width/height via aspect-ratio
+- No hover-only primary action
+
+
+Heading: Pre-Delivery Checklist
+
+- [x] No emojis as icons (SVG)
+- [x] cursor-pointer on clickable elements
+- [x] Hover states 150–300ms
+- [x] Light mode text contrast from evidence `#1d1d1f` on `#f5f5f7` / `#ffffff`
+- [x] Focus states visible
+- [x] prefers-reduced-motion respected
+- [x] Responsive: 375px, 768px, 1024px, 1440px (evidence 390 / 1440)
+
+
+Heading: Pack commands run
+
+```text
+python3 scripts/search.py "consumer electronics ecommerce homepage premium minimal photography-first" --design-system -f markdown -p "Apple Home" --variance 2 --motion 2 --density 2
+python3 scripts/search.py "hero product cta photography" --domain landing
+python3 scripts/search.py "accessibility navigation skip-link focus touch" --domain ux
+python3 scripts/search.py "minimalism photography-first" --domain style
+python3 scripts/search.py "premium modern sans" --domain typography
+python3 scripts/search.py "ecommerce premium minimal" --domain color
+python3 scripts/search.py "ecommerce electronics" --domain product
+python3 scripts/search.py "hero navigation button responsive" --stack html-tailwind
+python3 scripts/search.py "search bag menu" --domain icons
+python3 scripts/search.py "animation accessibility z-index loading" --domain ux
+```
+
+`--persist` was not used (would write  outside this run directory).

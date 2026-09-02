@@ -23,6 +23,13 @@ import { fileURLToPath } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const MIGRATED = join(ROOT, "docs", "design-md-weight", "migrated");
 const LEDGER = join(MIGRATED, "DONE.txt");
+// 마라톤(무인 웨이브)이 사람 판정으로 넘긴 브랜드는 DEFERRED.txt에 사유와 함께 적힌다.
+// 산출물은 있지만 양 레인 통과가 아니므로 DONE이 아니고, "기록 없는 디렉터리"도 아니다.
+const DEFERRED = join(MIGRATED, "DEFERRED.txt");
+const deferred = new Set(
+  (existsSync(DEFERRED) ? readFileSync(DEFERRED, "utf8") : "")
+    .split("\n").map((l) => l.trim().split(/\s+/)[0]).filter((l) => l && !l.startsWith("#")),
+);
 
 // A directory alone does not mean a migration happened. `migrate-reference.mjs
 // --print-prompt` creates the brand directory while only rendering a prompt, so
@@ -39,7 +46,7 @@ const recorded = new Set(
   body.split("\n").map((l) => l.trim()).filter((l) => l && !l.startsWith("#")),
 );
 
-const missing = migrated.filter((id) => !recorded.has(id));
+const missing = migrated.filter((id) => !recorded.has(id) && !deferred.has(id));
 
 if (missing.length && process.argv.includes("--fix")) {
   writeFileSync(LEDGER, `${body.replace(/\n+$/, "")}\n${missing.join("\n")}\n`, "utf8");
@@ -49,6 +56,7 @@ const fixed = missing.length && process.argv.includes("--fix");
 console.log(JSON.stringify({
   migrated: migrated.length,
   recorded: recorded.size,
+  deferred: deferred.size,
   missing: fixed ? [] : missing,
   ...(fixed ? { appended: missing } : {}),
 }, null, 1));

@@ -1,0 +1,161 @@
+Heading: Baemin Home — design system
+
+화면: 홈 (`https://www.baemin.com/`). 과업: 앱 설치 경로(스토어 배지 또는 QR) 하나를 연다. 스냅샷 `2026-08-22T19-47-32-522Z`. 표면 desktop-1440 · mobile-390.
+
+이 문서는  팩의 `--design-system` + domain/stack 검색을 따른 뒤, 스냅샷 크롬 값으로 토큰만 고정한 결과다. 공식 로고 원본은 쓰지 않고 텍스트 워드마크 `배달의민족`으로 대체한다. `render.html`은 외부 네트워크 없이 열린다.
+
+Heading: Pack workflow
+
+1. 요구 분석 — 소비자 배달 앱의 마케팅 홈. C-end. 키워드: playful, vibrant, mint. 스택: 단독 HTML (html-tailwind 가이드를 인라인 CSS로 적용). 플랫폼: 데스크톱 웹 + 모바일 웹.
+2. `--design-system` (필수)
+
+
+결과 요약:
+
+| 축 | 팩 추천 | 이 런에서 |
+|---|---|---|
+| Pattern | App Store Style Landing | 채택. 히어로에 App Store / Google Play / QR. 모바일은 Get the App. |
+| Style | Vibrant & Block-based | 채택. 큰 타입, 풀블리드 히어로, 높은 대비. |
+| Color | 식욕 오렌지 `#EA580C` + 신뢰 블루 | **기각.** 스냅샷 크롬이 mint `#0cefd3` / ink `#000` / canvas `#f6f6f6`. |
+| Type | Fredoka + Nunito (Google Fonts) | **기각(로드).** 오프라인 제약이므로 `-apple-system` / `system-ui`. 스냅샷 family와 같음. |
+| Effects | 큰 섹션 간격, 200–300ms, 볼드 호버 | 채택. |
+
+3. 보충 검색
+
+- `--domain landing "hero download CTA QR store badge"` → App Store Style Landing, Hero-Centric Design.
+- `--domain ux "touch target accessibility focus CTA"` → 44×44, focus ring, 8px 간격, `touch-action: manipulation`.
+- `--domain color "mint cyan vibrant consumer"` → 팩 CSV의 cyan은 헬스케어/워터 계열. 브랜드 mint는 스냅샷 값을 primitive로 둔다.
+- `--domain typography "playful bold korean consumer"` → Noto Sans KR 추천. CDN을 쓰지 못해 시스템 산세리프 스택으로 대응.
+- `--domain icons "download qrcode store"` → Phosphor outline. 이모지 아이콘 금지. 인라인 SVG.
+- `--stack html-tailwind "landing hero responsive"` → `srcset`/`sizes`, 브레이크포인트 375/768/1024/1440. 이 런은 대표 이미지 1장이라 `object-fit: cover` + width/height 선언으로 CLS를 막는다.
+
+4. 랜딩 패턴 합성
+
+Hero-Centric(위 접힘 = 헤드라인 + 비주얼 + 단일 과업 CTA) + App Store Style(스토어 배지와 QR을 히어로 CTA로). 브리프에 없는 화면·리뷰 캐러셀·기능 그리드는 만들지 않는다.
+
+Heading: Token architecture
+
+팩 `design-system` 스킬의 3층 (primitive → semantic → component). 컴포넌트에서 raw hex를 직접 쓰지 않는다.
+
+Heading: Primitive
+
+| Token | Value | Source |
+|---|---|---|
+| `--color-mint-500` | `#0cefd3` | desktop/mobile typeScale, mobile primaryButton, imagery palette |
+| `--color-mint-400` | `#0cf6d9` | imagery secondary mint |
+| `--color-ink-900` | `#000000` | bodyColor, badge/on-primary |
+| `--color-paper-50` | `#f6f6f6` | pageBackgroundComputed |
+| `--color-paper-0` | `#ffffff` | store badge fill |
+| `--font-size-32` | `32px` / weight 800 / line 44.8px | mobile `p` |
+| `--font-size-60` | `60px` / weight 800 / line 84px | desktop `p` |
+| `--font-size-20` | `20px` / weight 700 | mobile Get the App |
+| `--radius-pill` | `9999px` | mobile primaryButton |
+| `--space-*` | 4px 그리드 | 팩 Layout §5 |
+| `--duration` | 160–220ms | 팩 Animation 150–300ms |
+
+Heading: Semantic
+
+| Token | Maps to |
+|---|---|
+| `--color-primary` | mint-500 |
+| `--color-on-primary` | ink-900 |
+| `--color-headline` | mint-500 (사진 위 헤드라인) |
+| `--color-background` | paper-50 |
+| `--color-foreground` | ink-900 |
+| `--color-inverse` | paper-0 (배지·워드마크) |
+
+Heading: Component
+
+| Token | Maps to |
+|---|---|
+| `--header-height` | 72px / 96px (desktop chrome heightPx 96) |
+| `--button-bg` / `--button-fg` / `--button-radius` | Get the App |
+| `--badge-bg` / `--badge-height` / `--badge-radius` | 스토어 배지 48×, 10px 라운드 |
+| `--touch` | 44px |
+
+팩이 준 오렌지 팔레트는 스냅샷과 충돌하므로 primitive에 넣지 않았다.
+
+Heading: Type
+
+- 스택: `-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Apple SD Gothic Neo", sans-serif`
+- 헤드라인 800, 리드 700, 배지/CTA 700, 내비 600
+- 본문 최소 16px. 모바일 헤드라인 32px, 데스크톱 60px/84px
+- 자간 헤드라인 `-0.03em`. 스냅샷 letterSpacing은 `normal`이나 한글 extra-bold가 퍼지지 않게만 당긴다
+- Google Fonts `@import` 없음 (첫 렌더 네트워크 0)
+
+Heading: Color use
+
+- 히어로 카피: mint on dimmed photo. 생성 사진의 왼쪽 우드가 밝아 대비를 위해 왼쪽 스크림을 둔다. 스크림은 장식이 아니라 큰 텍스트 가독성.
+- Get the App: mint fill, black label. 스냅샷 그대로. 큰 텍스트·CTA라 4.5:1을 목표로 한다.
+- 스토어 배지: white fill, black label. 사진 위에서 배지가 CTA임을 색이 아니라 형태(배지 + 워드)로 알린다.
+- 포커스 링: 3px solid ink, offset 3px. `outline: none`만 두고 대체 없는 금지.
+
+Heading: Components
+
+**Wordmark.** 텍스트 `배달의민족`. 이미지 로고 파일 없음.
+
+**Header.** 절대 위치로 히어로 위에 얹는다. 데스크톱: 우아한형제들 / 라이더 모집 / For foreigners + 외부 아이콘. 모바일: 햄버거, 오프캔버스 드로어(닫힌 상태는 뷰포트 밖).
+
+**Hero.** 한 화면. `figure`는 `inset: 0; margin: 0; width/height: 100%`. 대표 이미지 `image.jpg`는 `object-fit: cover; object-position: 82% 48%`로 그릇을 오른쪽에 둔다. `width`/`height` 속성으로 CLS 방지.
+
+**Install path (과업).**
+- ≥768px: App Store 배지, Google Play 배지, QR 버튼. 배지는 스토어 검색으로 연다. QR은 같은 문서의 `dialog`를 연다.
+- <768px: Get the App 필 버튼 → 같은 `dialog` (큰 QR + 스토어 링크).
+- 터치 타깃 ≥44px, 배지 간격 8px.
+
+**QR dialog.** 네이티브 `<dialog>`. 닫기 / Escape / backdrop. QR은 인라인 SVG (네트워크 QR API 없음). `figure` 마진 0.
+
+**Chevron.** 장식. `prefers-reduced-motion`이면 정지.
+
+Heading: Motion
+
+- 호버/프레스 160ms, 드로어 220ms, ease-out
+- transform/opacity만
+- 애니메이션 1개(쉐브론). 감소 모션에서는 전부 끔
+- 로딩 스피너 없음 (로컬 파일)
+
+Heading: Layout
+
+- 모바일 퍼스트. 전환 768px. 검증 포인트 390 × 844, 1440 × 900
+- `100vw` 금지. 히어로 높이는 `100dvh` (+ `100vh` 폴백)
+- `overflow-x: hidden` on html/body
+- 거터 20px → 64px
+- 히어로 카피 max-width 740px, 데스크톱 왼쪽 정렬
+
+Heading: Accessibility (팩 §1–§3)
+
+- skip link → `#install`
+- 헤딩 h1 하나. 다이얼로그 h2
+- 의미 있는 이미지에 alt. QR에 `aria-label`
+- 아이콘 버튼에 이름 (메뉴, QR, 닫기)
+- 포커스 링 유지
+- 줌 비활성 메타 없음
+- 색만으로 설치 경로를 구분하지 않음 (배지 워드 + QR 도형 + 버튼 라벨)
+
+Heading: Anti-patterns (팩 + 이 런)
+
+- 뮤트 그레이 온 그레이
+- 이모지 아이콘
+- 공식 브랜드 마크 파일
+- 브리프에 없는 섹션(선물하기, 클럽, 리뷰, 프라이싱)
+- Google Fonts / CDN / 원격 이미지
+- `figure`/`ul` UA 마진을 살린 채 `width: 100%`
+
+Heading: File map
+
+| File | Role |
+|---|---|
+| `render.html` | 실행 가능한 첫 렌더. 로컬 `image.jpg`만 참조 |
+| `image.jpg` | 히어로 음식 사진. Grok Imagine 16:9 |
+|  | 이 문서 |
+| `trace.md` | 이미지 프롬프트·세션·sha256·재시도 |
+
+Heading: Pre-delivery (팩 체크리스트 중 이 화면에 해당)
+
+- [x] SVG 아이콘, 이모지 없음
+- [x] cursor/pressed 피드백, 레이아웃 점프 없는 scale
+- [x] 터치 ≥44px, 간격 ≥8px
+- [x] 포커스 링
+- [x] reduced-motion
+- [x] figure/blockquote/ul/ol margin 0
+- [x] 390 / 1440 레이아웃 전환

@@ -1,0 +1,42 @@
+{
+  "brand": "toss",
+  "surface": "desktop-1440",
+  "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/03-runs/lane-a/toss/omd/rep-4/image.jpg",
+  "evidenceCapturedAt": "2026-08-22T19:51:46.001Z",
+  "paletteSource": "capture/desktop-1440-imagery-01.png",
+  "fields": [
+    {
+      "field": "aspect",
+      "eligible": true,
+      "error": 0.1001,
+      "score": 0
+    },
+    {
+      "field": "meanLuma",
+      "eligible": true,
+      "error": 0.052,
+      "score": 74
+    },
+    {
+      "field": "dynamicRange",
+      "eligible": true,
+      "error": 0.02,
+      "score": 90
+    },
+    {
+      "field": "subjectCentre",
+      "eligible": false,
+      "reason": "source placement omitted — fewer than the resolved-sample floor"
+    },
+    {
+      "field": "palette",
+      "eligible": true,
+      "error": 3.0984,
+      "score": 87.61
+    }
+  ],
+  "eligibleCount": 4,
+  "usable": true,
+  "numericScore": 62.9,
+  "note": "fields are same-day snapshot adherence, not brand invariants"
+}

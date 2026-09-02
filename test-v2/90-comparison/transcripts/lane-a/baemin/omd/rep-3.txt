@@ -1,0 +1,87 @@
+Heading: 배달의민족 홈 — surface-local system
+
+스냅샷 `2026-08-22T19-47-32-522Z`의 홈 한 화면. 과업은 **앱 설치 경로(스토어 배지 또는 QR) 하나를 연다.** 공식 로고 원본은 쓰지 않는다. 이 문서는 그 화면이 소비하는 로컬 계약이다.
+
+Disposition: `surface-local-only`. 프로젝트 루트  만들지 않는다.
+
+Preset: **P-ED-03 룩북 스크롤 내러티브** (커버 광폭 → 민트 플레이트 컷 반복). 히어로 카피/피규어는 증거 사진 위에 겹친 변형이며, 해부(표지 → 컷 → 캡션)는 유지한다.
+
+
+Heading: Philosophy
+
+한 화면에 설치 경로 하나만 연다. 홈은 식욕을 주는 사진과 민트 플레이트 이야기이되, 첫 과업은 스토어 배지 또는 QR이다.
+
+원칙 (얻는 것 / 버리는 것):
+
+- **P1 설치가 유일한 1차 행동.** 히어로에 primary CTA 하나. 상품권 구매 같은 다른 화면의 버튼은 이 과업에 없으므로 두지 않는다.
+- **P2 사진이 식욕, 민트가 말.** 표지는 실사, 이하는 민트 면 + 선화. 카드 키트·아이콘 타일로 장르를 바꾸지 않는다.
+- **P3 없는 값은 비운다.** 스토어 URL, 가게 수, 별점, 우아한형제들/라이더/외국인 화면은 스냅샷에 없다. 자리만 정직하게 비운다.
+
+Heading: Derive
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | paper `oklch(0.972 0.007 110)` | 증거 computed canvas `#f6f6f6`. 순수 흰 기단 금지(G7). |
+|  | ink `oklch(0.22 0.03 160)` | 민트 위 본문 대비. 순수 검정 기단 금지. |
+|  | mint plate `oklch(0.86 0.155 175)` | 증거 실측 `#0cefd3`. 면 색이지 악센트가 아니다. |
+|  | photo type = mint | 표지 헤드라인 색. 악센트 면적 예산은 포커스 링·QR 테두리에만. |
+|  | 표면 장르 = 민트 잉크 플레이트 + 풀블리드 사진 | 그림자 타일/헤어라인 밴드 금지. |
+|  | 배지 radius 10 / Get the App pill 999 | 증거: 스토어 칩은 각진 라운드, 모바일 앱 버튼은 필. |
+|  | 모션 120/200/320, enter cubic(0.2,0,0,1) | transform·opacity만. `transition: all` 금지. |
+|  | 한글 고딕 스택, keep-all, display tracking −0.01em | locale 계약. Pretendard가 없으면 Apple SD Gothic Neo. |
+|  | 레이아웃 = 스크롤 내러티브, 초광폭은 좌측 max | 표지 카피는 왼쪽, 사진은 면 전체. 중앙 스택 히어로 금지(G6). |
+|  | 설치 경로는 `<dialog>` | 새 화면을 만들지 않고 같은 홈에서 연다. |
+
+Heading: Tokens
+
+주석은 . 페이지는 `var(--*)`만 읽는다.
+
+- `--color-paper` , `--color-ink` , `--color-mint` 
+- `--color-photo-type` , `--color-badge` / `--color-badge-ink` 배지 쌍
+- `--fs-display` clamp 2rem–3.75rem (≥2× body 1.125rem) 
+- `--space-6/7/8` = 40/64/96 (2.5 / 4 / 6rem 구간 공기)
+- `--gutter` clamp(20px, 5vw, 72px)
+- `--t-fast/base/slow`, `--ease-enter/exit` 
+- `--hit` 44px
+
+Heading: Components
+
+Heading: 워드마크
+텍스트 「배달의민족」. 로고 파일 없음. 표지 위 밝은 글, 민트 구간은 ink (`is-mint`).
+
+Heading: 설치 CTA — no-preset: store-badge
+프리셋에 스토어 배지가 없다. 해부: 라벨 / (QR은) 미니 코드 아이콘. 상태: default / hover(면 변화) / focus-visible(즉시 링) / active(scale 0.97) / open(`aria-expanded` + 링) / disabled는 다이얼로그 안 스토어 주소 없음 버튼. 접근 이름: 「앱 설치 경로 열기」(브리프 동사). `data-cta="primary"` 하나. Google Play·QR은 `data-cta="local"`.
+
+Heading: 설치 다이얼로그
+native `<dialog>`. 열림 = 과업 성공 상태. `role="status"`로 「앱 설치 경로를 열었습니다.」 외부 스토어 URL은 disabled + not-allowed + 낮은 대비 채움.
+
+Heading: 내비
+한 개의 `nav`. 세 링크는 푸터의 정직 부재 문장으로만 이동. 모바일은 disclosure (`aria-expanded`).
+
+Heading: Layout grammar
+
+P-ED-03. 패널: 표지 → 오늘도 달립니다 → 음식배달 → 배달팁 무료 → 식료품 → 초신속 배달 → 선물하기. 카피는 증거 화면에서 읽은 문장만. 320 / 390 / 1440에서 가로 문서 스크롤 없음 (`overflow-x: clip`).
+
+Heading: Journey (SELF-WALK)
+
+| 동사 | 키보드 | 프로그램 증거 |
+|---|---|---|
+| 앱 설치 경로 하나를 연다 | Tab → primary(또는 Google Play / QR) → Enter/Space | `dialog[open]`, `aria-expanded="true"`, `data-state="open"`, `role="status"` 문구 |
+
+Heading: Honesty
+
+- 공식 로고 없음, 텍스트 워드마크.
+- 스토어 URL 없음 → 다이얼로그 안에서 연다. 코드는 스냅샷 출처 `https://www.baemin.com/` 을 담는다.
+- 우아한형제들 / 라이더 모집 / For foreigners 화면 없음.
+- 가격·별점·가게 수 없음.
+- 생성 이미지 `image.jpg`는 표지 음식 사진. 네트워크 폰트/CDN 없음.
+
+Heading: Critique (one round)
+
+- Philosophy 4 — 설치 경로가 첫 과업으로 남는다.
+- Hierarchy 4 — 헤드라인 → 레데 → 배지.
+- Execution 3 — 민트 면이 커서 악센트 5% 규칙은 면/악센트를 분리해 지킴.
+- Specificity 4 — 민트 + 실사 + 선화.
+- System Fidelity 4 — 값에 . 3열 아이콘 카드 없음.
+
+Slop grep: `100vh` 없음(G6), `transition: all` 없음(G10), `<select` 없음(G28), 상태 간 border-width 변경 없음(G39), 인라인 hex 없음(G48, `var(--color-*)`).

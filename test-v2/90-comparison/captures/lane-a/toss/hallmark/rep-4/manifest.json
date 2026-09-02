@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "toss",
+  "arm": "hallmark",
+  "rep": 4,
+  "source": "test-v2/03-runs/lane-a/toss/hallmark/rep-4/render.html",
+  "sourceSha": "sha256:377bd3f74a54b919ee83c9d1c89bf15140057b610961a62938e85a292fabde1e",
+  "capturedAt": "2026-09-02T00:37:33.230Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:35137ad8da4471bf104ae6c3d359a45f8b1f6aaec3b46bfac8c9400406211abb",
+      "bytes": 1496530,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:8292731d82f27f332fdcb2722e44cbd34262d6e1d35ac7b083a39b729d9a0365",
+      "bytes": 325491,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,264 @@
+Heading: Design System: Apple
+
+Pack:  (`search.py --design-system` + domain/stack searches).
+Screen: home (`https://www.apple.com/kr/`). Task: from the first screen, follow one product introduction path.
+Snapshot: `2026-08-22T19-46-47-156Z`. Surfaces used: `desktop-1440`, `mobile-390`.
+
+This file is the pack markdown design-system document, then evidence-grounded token overrides. Hex, px, and labels below are either pack search output or a cited evidence field. Uncited values are left empty.
+
+
+Heading: Step 1 — Requirements (pack)
+
+- **Product type:** consumer electronics / e-commerce product homepage (from brief URL + evidence `source.title` = `Apple (대한민국)`).
+- **Audience:** C-end, locale `ko-KR` (`evidence.method.locale`).
+- **Style keywords from evidence:** light (`method.colorScheme`), high-key photography (`desktop-1440.imagery.samples[0].light.meanLuma` = 0.882), spacious hero (`samples[0].areaShare` = 1.6061).
+- **Stack:** single offline HTML file. Pack stack id `html-tailwind` for guidelines only — no Tailwind CDN (render must open with zero network).
+- **Platform:** desktop-web + mobile web. Evidence viewports 1440×900 and 390×844.
+- **Motion:** `surfaces.*.motion.present` = false; `note` = `no video above the fold at capture time`. Dial `--motion 1`.
+
+
+Heading: Step 2 — `--design-system` (required)
+
+Query used:
+
+```bash
+python3 scripts/search.py "consumer electronics ecommerce landing light mode minimal product" \
+  --design-system -p "Apple" -f markdown --variance 2 --motion 1 --density 2
+```
+
+Dials from evidence, not taste: variance 2 (centered hero in `capture/desktop-1440-viewport.png`); motion 1 (`motion.present` = false); density 2 (hero `areaShare` 1.6061, spacious).
+
+First query (`consumer electronics hardware product homepage light minimal photography`) returned a **dark** palette (`--color-background: #000000`). Evidence `method.colorScheme` is `light` and `chrome.pageBackgroundRendered.hex` is `#f5f5f7`, so that output was discarded and the command was re-run with `light mode` in the query (pack tip: re-run `--design-system` when style/color is wrong).
+
+Heading: Design Dials
+
+- **Variance:** 2/10 — Centered / Minimal
+- **Motion:** 1/10 — Subtle
+- **Density:** 2/10 — Spacious
+
+Heading: Pattern
+
+- **Name:** Minimal Single Column
+- **Conversion Focus:** Single CTA focus. Large typography. Lots of whitespace. No nav clutter. Mobile-first.
+- **CTA Placement:** Center, large CTA button
+- **Color Strategy:** Minimalist: Brand + white #FFFFFF + accent. Buttons: High contrast 7:1+. Text: Black/Dark grey
+- **Sections:** 1. Hero headline, 2. Short description, 3. Benefit bullets (3 max), 4. CTA, 5. Footer
+
+Benefit bullets: **empty** — no bullet copy in evidence.json. Section omitted.
+
+Heading: Style
+
+- **Name:** Exaggerated Minimalism
+- **Mode Support:** Light ✓ Full | Dark ✓ Full
+- **Keywords:** Bold minimalism, oversized typography, high contrast, negative space, loud minimal, statement design
+- **Best For:** Fashion, architecture, portfolios, agency landing pages, luxury brands, editorial
+- **Performance:**  Excellent | **Accessibility:** ✓ WCAG AA
+
+Heading: Colors (pack recommendation — not applied where evidence already has a hex)
+
+| Role | Pack hex | CSS variable |
+|------|----------|----------------|
+| Primary | `#171717` | `--color-primary` |
+| On Primary | `#FFFFFF` | `--color-on-primary` |
+| Secondary | `#404040` | `--color-secondary` |
+| Accent/CTA | `#A16207` | `--color-accent` |
+| Background | `#FFFFFF` | `--color-background` |
+| Foreground | `#171717` | `--color-foreground` |
+| Muted | `#E8ECF0` | `--color-muted` |
+| Border | `#E5E5E5` | `--color-border` |
+| Destructive | `#DC2626` | `--color-destructive` |
+| Ring | `#171717` | `--color-ring` |
+
+Pack note: *Minimal black + accent gold [Accent adjusted from #D4AF37 for WCAG 3:1]*.
+
+**Do not paint the render with `#A16207`.** That hex is not in evidence. See overrides below.
+
+Heading: Typography (pack)
+
+- **Heading:** Rubik
+- **Body:** Nunito Sans
+- **Mood:** ecommerce, clean, shopping, product, retail, conversion
+- **Google Fonts URL:** (pack emitted an `@import` URL — **not used**; render has no network)
+
+Heading: Key Effects (pack)
+
+`font-size: clamp(3rem 10vw 12rem), font-weight: 900, letter-spacing: -0.05em, massive whitespace`
+
+Evidence type is weight `600` for headings and `400` for body — pack 900 is **not** applied.
+
+Heading: Motion (pack, `--motion 1`)
+
+**Scroll Reveal** (Subtle) — Duration 300–400ms, `power1.out`. Pack attached a GSAP snippet. **Not inlined from a CDN.** CSS-only `opacity` / `transform` 200ms, with `prefers-reduced-motion: reduce` disabling it.
+
+Heading: Avoid (pack)
+
+- Flat design without depth
+- Text-heavy pages
+
+
+Heading: Step 3 — Domain searches
+
+Heading: `landing` / `hero-centric` (used)
+
+**Pattern Name:** Hero-Centric Design  
+**Section Order:** 1. Full-bleed Hero (headline + visual), 2. Single value prop strip, 3. Key benefit or proof, 4. Primary CTA  
+**Primary CTA Placement:** Hero dominant (center/bottom) + Sticky nav CTA  
+**Color Strategy:** Hero: High-impact visual. Minimal text. CTA 7:1 contrast.  
+**Conversion Optimization:** One primary CTA. Hero is 60–80% above fold. Mobile: same hierarchy.
+
+This is the page recipe for `render.html`. Minimal Single Column (Step 2) and Hero-Centric agree: one hero, one product path, no extra screens.
+
+Other landing hits (Product Demo + Features, Comparison Table, Reviews, 3D Configurator, Feature-Rich Showcase) would add sections the brief did not ask for. Not used.
+
+Heading: `product` / `consumer electronics ecommerce`
+
+- E-commerce → landing pattern Feature-Rich Showcase (not used; extra cards).
+- E-commerce Luxury → Liquid Glass (not used; no glass tokens in evidence).
+
+Heading: `style` / `minimalism light photography`
+
+Kept: **Exaggerated Minimalism** (matches Step 2) and **Minimalism & Swiss Style** (grid, sans, high contrast). Discarded: Vintage Analog, Trust & Authority, Neumorphism — none match evidence chrome.
+
+Heading: `color`
+
+- `electronics consumer light` → **0 hits**. Closest terms were unrelated (`electrician`, …). No fallback palette invented from that miss.
+- `ecommerce` → green/orange and luxury gold palettes. Not used (conflict with evidence button `#0066cc`).
+- `minimal light` → same gold accent as Step 2. Not used.
+
+Heading: `typography` / `professional modern sans ecommerce`
+
+1. Modern Professional — Poppins + Open Sans (Google Fonts; unused).
+2. E-commerce Clean — Rubik + Nunito Sans (Step 2; unused, network).
+3. Korean Modern — Noto Sans KR (locale match, still a Google Font; unused as a network import).
+
+Render font stack starts with evidence `SF Pro KR`.
+
+Heading: `ux` / `animation accessibility z-index loading` (pre-delivery)
+
+- Loading states: skeleton/spinner — no async in this file; omitted.
+- Continuous animation: do not decorate.
+- Z-index scale: 10 / 20 / 50 (skip 50, header 20, main 10).
+- Lazy load below-fold only. Hero image is eager; intro image is the same file so no second request.
+
+Heading: `ux` / `primary action navigation landing`
+
+- Sticky nav must not cover content → `padding-top` = header height (50px mobile, 44px at 1440).
+- Breadcrumbs: not for a flat home. Empty.
+- Back button: hash `#product-intro` keeps history.
+
+Heading: `icons` / `shop cart store`
+
+Phosphor `ShoppingBag` / `ShoppingCart`, outline, 20px. Inlined as SVG (no `@phosphor-icons/react`). No emoji icons.
+
+
+Heading: Step 4 — Stack `html-tailwind`
+
+Guidelines kept: mobile-first; test 375 / 768 / 1024 / 1440; responsive padding; `srcset`/`sizes` when multiple files exist (this run has one image — `width`/`height` declared instead). Tailwind utility CDN is **not** loaded.
+
+
+Heading: Evidence-grounded token overrides
+
+Pack `design-system` skill: primitive → semantic → component. Primitives that exist in evidence replace pack hexes. Missing evidence values stay empty (no invented hover hex, no invented nav list in JSON).
+
+Heading: Primitive (from evidence.json)
+
+| Token | Value | Source |
+|-------|--------|--------|
+| `--color-white` | `#ffffff` | `chrome.pageBackgroundComputed` |
+| `--color-surface` | `#f5f5f7` | `chrome.pageBackgroundRendered.hex` (coverage 0.5744 desktop / 0.3451 mobile) |
+| `--color-header` | `#fafafc` | `chrome.header.background` (desktop; mobile header.background is **null**) |
+| `--color-ink` | `#1d1d1f` | `chrome.bodyColor` and `typeScale` h2/p color |
+| `--color-ink-on-dark` | `#f5f5f7` | `typeScale` h3 color |
+| `--color-cta` | `#0066cc` | `chrome.primaryButton.borderColor` and `.color` |
+| `--color-cta-fill` | *(empty)* | `chrome.primaryButton.background` is `null`; `fill` is `outline` |
+| `--radius-cta` | `980px` | `chrome.primaryButton.radiusPx` |
+| `--font-ui` | `SF Pro KR` | `typeScale.*.family` |
+| `--header-h-desktop` | `44px` | `surfaces.desktop-1440.chrome.header.heightPx` |
+| `--header-h-mobile` | `50px` | `surfaces.mobile-390.chrome.header.heightPx` |
+
+Type scale (do not invent extra steps):
+
+| Surface | tag | fontPx | weight | lineHeight | letterSpacing | color |
+|---------|-----|--------|--------|------------|---------------|-------|
+| desktop-1440 | h2 | 56 | 600 | 66.0045px | normal | `#1d1d1f` |
+| desktop-1440 | h3 | 40 | 600 | 44px | normal | `#f5f5f7` |
+| desktop-1440 | p | 28 | 400 | 35px | 0.196px | `#1d1d1f` |
+| mobile-390 | h2 | 32 | 600 | 37.7168px | normal | `#1d1d1f` |
+| mobile-390 | h3 | 32 | 600 | 36px | 0.064px | `#f5f5f7` |
+| mobile-390 | p | 19 | 400 | 25px | 0.228px | `#1d1d1f` |
+
+Button type: desktop 17px / 400; mobile 14px / 400. Label `iPhone 쇼핑하기`. Repeats: 1 desktop, 2 mobile.
+
+Hero imagery (representative image): `surfaces.desktop-1440.imagery.samples[0]` (tag `c1`, y=44).
+
+- `alt`: 왼쪽 상단의 프로 Fusion 카메라 시스템과 중앙의 Apple 로고가 보이는 딥 블루 색상 iPhone 17 Pro 뒷면, 왼쪽 상단의 듀얼
+- `palette`: `#f5f5f7` 0.7475, `#f6f7f9` 0.0173, `#faf5f4` 0.0166, `#fbfbfc` 0.0159, `#3d4353` 0.0119, `#feedec` 0.0094
+- `light.meanLuma`: 0.882; `luminanceGradient`: brighter right
+- `aspect`: 4.347 (intrinsic 3008×692). Generate tool closest ratio: 16:9. HTML `object-fit: contain`.
+- `subject.resolved`: false — placement omitted (aggregate `figureGroundResolved` `0/8`; `subjectNote`: fewer than 4 resolved samples — placement omitted).
+
+Copy used in the render (capture pixels, not JSON strings):
+
+| String | Source |
+|--------|--------|
+| `Apple (대한민국)` | `source.title` |
+| `iPhone 쇼핑하기` | `chrome.primaryButton.label` |
+| `iPhone` (hero heading) | `capture/desktop-1440-viewport.png` / `mobile-390-viewport.png` / `desktop-1440-imagery-01.png` |
+| `최신 세대 iPhone을 만나보세요.` | same captures |
+| `더 알아보기` | same captures; JSON only records `buttonCandidatesAboveFold` = 2 / 4, not this label |
+
+JSON does not list global nav labels. Pack pattern says no nav clutter. Header is wordmark + sticky CTA only.
+
+Heading: Semantic
+
+```css
+--color-background: var(--color-surface);   /* evidence rendered page, not pack #FFFFFF */
+--color-foreground: var(--color-ink);
+--color-primary: var(--color-cta);          /* evidence outline blue, not pack #171717 / gold */
+--color-on-primary: var(--color-white);
+--color-border: var(--color-cta);
+--color-ring: var(--color-cta);
+```
+
+Pack `--color-accent: #A16207` — **empty / unused**.
+
+Heading: Component
+
+```css
+--button-bg: transparent;                   /* fill = outline, background null */
+--button-fg: var(--color-cta);
+--button-border: var(--color-cta);
+--button-radius: var(--radius-cta);
+--button-font-desktop: 17px;
+--button-font-mobile: 14px;
+--button-weight: 400;
+--header-bg: var(--color-header);
+--header-height: var(--header-h-mobile);    /* 44px from 1440px */
+```
+
+The second above-fold candidate (`더 알아보기`) is the introduction path (`#product-intro`). It uses `--color-cta` as fill so no new hex is invented; the JSON-designated primary remains the outline `iPhone 쇼핑하기`.
+
+
+Heading: Page (one screen)
+
+1. Skip link → `#main`
+2. Sticky header (44/50px) — wordmark `Apple`, sticky outline CTA
+3. Hero (60–80% of first viewport): heading `iPhone`, value line, two candidates, `image.jpg`
+4. `#product-intro` — same file, product introduction path (alt from sample `c1`)
+5. Footer — `source.title` only
+
+No second route. No MacBook / Watch / other product tiles.
+
+
+Heading: Pre-delivery (pack)
+
+- [x] No emojis as icons
+- [x] `cursor: pointer` on clickable elements
+- [x] Hover 150–300ms, no layout shift
+- [x] Light text `#1d1d1f` on `#f5f5f7` (contrast > 4.5:1)
+- [x] Visible focus rings 2px
+- [x] `prefers-reduced-motion`
+- [x] Breakpoints include 375 and 1440
+- [x] Touch targets ≥ 44px
+- [x] Hero image has width/height (1280×720)
+- [x] Zero network requests

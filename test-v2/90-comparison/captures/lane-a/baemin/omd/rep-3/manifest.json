@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "baemin",
+  "arm": "omd",
+  "rep": 3,
+  "source": "test-v2/03-runs/lane-a/baemin/omd/rep-3/render.html",
+  "sourceSha": "sha256:46c2ad07e0c7db4e3a427c184864a8488772e8a969a394e2c8c6de2c65363886",
+  "capturedAt": "2026-09-02T00:36:33.366Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:59b916a10de1843c77bbb34161fb70e088e4c451d3efa31c8d2a7c0750c32e32",
+      "bytes": 1597512,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:e0ec6d1db60e8eb8a5e31f530229fda1fb8352a09e9d4cfca18a6b59005165e1",
+      "bytes": 415283,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

@@ -10,8 +10,8 @@
    "hallmark",
    "uiuxpromax"
   ],
-  "via": "cursor-agent:cursor-grok-4.6-high-fast",
-  "note": "2026-08-26 — grok 직접 CLI 대신 cursor-agent 경유. 모델은 봉인값 그대로 grok-4.6."
+  "via": "grok-build-cli:grok-4.6",
+  "note": "2026-08-29 — Grok Build 한도가 초기화되어 직접 CLI로 복귀한다(`grok -p --model grok-4.6`, 응답 modelUsage 문자열 `grok-4.6-build`). 2026-08-26에 cursor-agent를 경유한 유일한 이유가 402였고 그 조건이 사라졌다. 봉인 모델값 grok-4.6은 세 경로 내내 불변이다. 사용자 결정."
  },
  "laneA": {
   "imageGeneration": "Grok Imagine",
@@ -25,22 +25,16 @@
   {
    "id": "grok-4.6",
    "vendor": "xai",
-   "via": "cursor-agent:cursor-grok-4.6-high-fast",
-   "role": "채점 + 최종 승인권"
-  },
-  {
-   "id": "composer-2.5",
-   "vendor": "anysphere",
-   "via": "cursor-agent:composer-2.5",
+   "via": "grok-build-cli:grok-4.6",
    "role": "채점",
-   "replaces": "sol(openai-codex)",
-   "reason": "사용자 결정 2026-08-26 — sol 은퇴 및 비용"
+   "note": "2026-09-01 사용자 결정 — cursor-agent 경유 폐기, arm 호스트와 같은 직접 CLI 경로. 계열이 arm 호스트(xai)와 같으나 세 arm이 전부 xai 호스트라 자기계열 대비가 arm 간에 존재하지 않는다(§3.2 C2 논리 유지)."
   },
   {
    "id": "sonnet5",
    "vendor": "anthropic",
-   "via": "cursor-agent:claude-sonnet-5-thinking-high",
-   "role": "채점"
+   "via": "claude-agent:sonnet",
+   "role": "채점",
+   "note": "2026-09-01 사용자 결정 — cursor-agent 경유 폐기, Claude Agent 서브에이전트 경로. Claude OAuth 주간 사용량 80% 도달 시 채점 청크 신규 투입 중지."
   }
  ],
  "scoring": {
@@ -48,11 +42,39 @@
   "seed": 20260823,
   "chosenHere": true,
   "why": "루브릭이 값을 지정하지 않는다. 채점은 재현 가능해야 하므로 온도 0과 arm 순서와 같은 시드를 쓴다. 다른 값을 쓰려면 실행 전에 이 파일을 바꾸고 SHA를 다시 기록한다.",
-  "note": "온도 0이 결정성을 보장하지는 않는다. 같은 프롬프트로 두 번 채점해 불일치가 나오면 그대로 기록한다."
+  "note": "온도 0이 결정성을 보장하지는 않는다. 같은 프롬프트로 두 번 채점해 불일치가 나오면 그대로 기록한다.",
+  "chunking": {
+   "declaredAt": "2026-09-01",
+   "scheme": "브랜드 3개 × 4청크 (사전 선언 — 실행 중 임의 분할 금지)",
+   "chunks": [
+    [
+     "apple",
+     "baemin",
+     "coupang"
+    ],
+    [
+     "figma",
+     "karrot",
+     "musinsa"
+    ],
+    [
+     "naver",
+     "toss",
+     "wanted"
+    ]
+   ],
+   "rule": "(평가자, 레인, 청크)당 1세션 — 기존 「(평가자, 레인)당 1세션」의 치환이다(2026-09-01 판정 Q4 집행). 세션 내 표시순서는 scoring-order.json, 청크 소속은 각 세션 행의 chunks 필드. 청크 경계에서 Claude 80% 게이트 확인.",
+   "reserve": {
+    "purpose": "§4.3 결함 존재 불일치 칸의 1회 재채점 전용 — 채점 분모에 불포함",
+    "rule": "동일 봉인 조건(온도 0·시드·표시순서), 재채점 후에도 불일치면 disputed로 별도 집계"
+   }
+  }
  },
  "independenceLimits": [
-  "평가자 3종은 공개 웹을 공유한다. 높은 α를 사람 합의의 대체값으로 읽지 않는다 (RUBRIC.md §3.7).",
-  "평가자 3종은 같은 서빙 플랫폼(cursor)을 지나고 그중 composer-2.5는 그 플랫폼 사업자 자신의 모델이다. 계열 3종은 여전히 다르고 arm 호스트가 xAI라 자기 산출물 채점도 아니지만, 「서로 다른 계열 3종」이 곧 「서로 독립인 3종」이 아니라는 경고가 한 겹 두꺼워진다 (RUBRIC.md §3.2a). 리포트 첫 절에 기재한다.",
+  "평가자 2종은 공개 웹을 공유한다. 높은 α를 사람 합의의 대체값으로 읽지 않는다 (RUBRIC §3.7).",
+  "grok-4.6 평가자는 arm 호스트와 같은 계열·같은 서빙 경로(grok-build-cli)다. 세 arm이 전부 xai 호스트라 arm 간 대비는 식별 불가하나, 같은-경로 친화는 절편 흡수 주장 없이 리포트 첫 절의 한계로 적는다 (§3.2a-2, C4).",
+  "전사자 opus5·최종 검수자 Fable 5가 평가자 sonnet5와 같은 anthropic 계열이다. 전사 통제는 §3.3, 검수는 채점 후 단계 — 계열 중첩 자체를 리포트에 기재한다.",
+  "패널 2인은 |own|=0이면서 다른 역할과 겹치지 않던 제3계열(anysphere)을 잃었다. α 미달은 INCONCLUSIVE로 받는다 — 임계 하향으로 피하지 않는다.",
   "천장 측정은 학습 기억을 섞는다. 5개 브랜드에서만 자극이 충분하다 (figma·karrot·musinsa·naver·toss)."
  ],
  "selfPreference": {
@@ -77,12 +99,21 @@
   "semanticVerifier": "WAIVED — TRANSCRIPTION.md §5.2·§7.2. 미검증 항목 2종은 리포트 한계 절에 적는다.",
   "machineVerifier": {
    "path": "test-v2/tools/transcribe-verify.mjs",
-   "sha256": "73d13200a2903e68c63596caea33cbd53e35de1a1956e0f9da926c86c005cd41",
+   "sha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
    "runBy": "전사자가 아닌 실행 관리자",
    "selftest": "7/7 (grok-4.6 반례 4건 포함)"
   },
   "reportSentence": "문서 축 중립 전사는 평가자 sonnet5와 같은 anthropic 계열의 별개 인스턴스 opus5가 수행한다. 채점 세션·메모리는 공유하지 않으나 계열 독립 조건은 충족하지 못한다. 전사 왜곡은 허용 변환 세 가지와 fail-close, 전수 기계 검증으로 통제했고 비기계 의미 검증은 두지 않았다. 이 상관을 채점 사전확률과 같은 줄에 두지 않는다."
  },
- "resealedAt": "2026-08-26",
- "resealNote": "평가자 1자리 교체(sol→composer-2.5)와 호출 경로 기록. 임계값·가중치·결측 규칙·프롬프트·온도·시드·arm 순서는 불변. 근거 docs/reviews/t3-3-reseal-proposal-2026-08-26-opus5.md · 2026-08-26 파생 드리프트 정정(grok-4.6 판정 Q1 APPROVE / Q2·Q3·Q4 REVISE): scoring-order.json 재생성 유지, RUBRIC §3.2 표 4자리 라벨 정정, TRANSCRIPTION §5 전제 재작성, generatedAt을 명부 봉인일에서 유도, independenceLimits에 §3.2a 추가. 근거 docs/reviews/t3-3-reseal-drift-2026-08-26-opus5.md"
+ "resealedAt": "2026-09-01",
+ "resealNote": "평가자 명부 재봉인: 3인(cursor-agent 경유) → 2인(grok-4.6 grok-build 직접 + sonnet5 claude-agent), composer-2.5 제외. 사용자 결정 2026-09-01. 판정 docs/reviews/t3-panel-reseal-2026-09-01-opus5.md (Q1·Q2·Q4 REVISE 집행 포함: §3.2 본문 2인 재작성, 집계 분모 4×2·1/2, 2인 결함 합의 사전 선언, TRANSCRIPTION:173 BLOCK 명시 번복, independenceLimits 현행화, 청킹 (평가자,레인,청크) 치환, scoring-order 청크 필드). 직전 이력: 평가자 1자리 교체(sol→composer-2.5)와 호출 경로 기록. 임계값·가중치·결측 규칙·프롬프트·온도·시드·arm 순서는 불변. 근거 docs/reviews/t3-3-reseal-proposal-2026-08-26-opus5.md · 2026-08-26 파생 드리프트 정정(grok-4.6 판정 Q1 APPROVE / Q2·Q3·Q4 REVISE):",
+ "pathResealedAt": "2026-08-29",
+ "pathResealNote": "arm 호스트 호출 경로만 교체: armHost.via cursor-agent:cursor-grok-4.6-high-fast → grok-build-cli:grok-4.6. 봉인 모델값 grok-4.6·vendor xai 불변, 평가자 3종 via 불변, 임계값·가중치·결측 규칙·프롬프트·온도·시드·arm 순서 불변. 2026-08-26에 cursor-agent를 경유한 유일한 이유는 Grok Build 402였고 8/29 초기화로 소멸. resealedAt(명부 스탬프)은 올리지 않는다 — 명부는 8/26 그대로다. 파생: scoring-order.json·arm-order.json 재생성 바이트 동일이나 실행 칸 잔류는 0이 아니었다(레인A·apple·omd·rep-1의 8/26 스모크 산물을 03-runs-smoke-archive/로 이관하고 칸을 골격으로 되돌림). run.json 골격 216칸에 via 필드 추가 — 실행 시 model과 함께 기입한다. 근거 docs/reviews/t3-3-reseal-armhost-2026-08-29-opus5.md (grok-4.6 판정 Q1 APPROVE / Q2·Q3·Q4 REVISE)",
+ "panelResealedAt": "2026-09-01",
+ "panelResealNote": "평가자 3인(cursor-agent 경유 grok-4.6/composer-2.5/sonnet5) → 2인(grok-build 직접 + claude-agent sonnet5). 제거: composer-2.5 (사용자 결정 2026-09-01, 이전 명부: grok-4.6, composer-2.5, sonnet5). 함의: 패널 2계열(xai/anthropic)로 축소 — §3.2a 독립성 경고 갱신 필요, 3-rater α 임계의 2-rater 재정의 필요, scoring-order.json 재생성 필요(명부가 표시순서 salt 입력). 전사자 opus5·최종 검수자 Fable 5가 평가자 sonnet5와 동계열(anthropic)인 한계를 §3.2a에 확장 기재한다. 판정 전까지 T3-3은 닫힌다.",
+ "independenceLimitsHistory": [
+  "평가자 3종은 공개 웹을 공유한다. 높은 α를 사람 합의의 대체값으로 읽지 않는다 (RUBRIC.md §3.7).",
+  "평가자 3종은 같은 서빙 플랫폼(cursor)을 지나고 그중 composer-2.5는 그 플랫폼 사업자 자신의 모델이다. 계열 3종은 여전히 다르고 arm 호스트가 xAI라 자기 산출물 채점도 아니지만, 「서로 다른 계열 3종」이 곧 「서로 독립인 3종」이 아니라는 경고가 한 겹 두꺼워진다 (RUBRIC.md §3.2a). 리포트 첫 절에 기재한다.",
+  "천장 측정은 학습 기억을 섞는다. 5개 브랜드에서만 자극이 충분하다 (figma·karrot·musinsa·naver·toss)."
+ ]
 }

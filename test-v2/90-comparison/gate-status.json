@@ -51,7 +51,8 @@
     "파일럿 교정 실행 2026-08-26 — 결함 2건 발견·교정 (viewport 배열 표기, 코드 목록 12종 전사). 근거 docs/reviews/t3-3-pilot-calibration-2026-08-26-opus5.md"
    ],
    "open": [],
-   "closedBy": "opus5 (재봉인 평가자 3종으로 실행)"
+   "closedBy": "opus5 (재봉인 평가자 3종으로 실행)",
+   "evidence2026_09_01": "명부 재봉인 반영: 평가자 2종(grok-4.6 grok-build 직접·sonnet5 claude-agent), scoring-order 4세션(2×2, 청크 필드 포함, 레인 교차 보존), 채점 프롬프트·온도·시드 봉인 유지. 기존 evidence 문자열은 3인 명부 시점의 이력."
   },
   {
    "n": 7,
@@ -65,7 +66,7 @@
    "open": [],
    "evidence": [
     "TRANSCRIPTION.md §5 (전사자·격리·WAIVED·리포트 문장)",
-    "transcribe-verify.mjs sha256:73d13200a2903e68c63596caea33cbd53e35de1a1956e0f9da926c86c005cd41 (자체 테스트 7/7)",
+    "transcribe-verify.mjs sha256:ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3 (자체 테스트 7/7)",
     "run-config.json transcriber 블록",
     "docs/reviews/rubric-2026-08-23-verifier-confirm.md"
    ],
@@ -75,7 +76,8 @@
    "n": 8,
    "item": "레인별 독립 채점 세션, 교차 레인 순서와 난수 표시 순서 동결",
    "state": "DONE",
-   "evidence": "90-comparison/scoring-order.json — 6세션(평가자 3 × 레인 2), 세션당 36 run, 레인 순서 A→B/B→A/A→B 교차, 표시 순서는 생성 순서와 다른 salt"
+   "evidence": "90-comparison/scoring-order.json — 6세션(평가자 3 × 레인 2), 세션당 36 run, 레인 순서 A→B/B→A/A→B 교차, 표시 순서는 생성 순서와 다른 salt",
+   "evidence2026_09_01": "명부 재봉인 반영: 평가자 2종(grok-4.6 grok-build 직접·sonnet5 claude-agent), scoring-order 4세션(2×2, 청크 필드 포함, 레인 교차 보존), 채점 프롬프트·온도·시드 봉인 유지. 기존 evidence 문자열은 3인 명부 시점의 이력."
   },
   {
    "n": 9,
@@ -189,8 +191,12 @@
   "docs/reviews/rubric-2026-08-23-verifier-resubmit.md",
   "docs/reviews/rubric-2026-08-23-verifier-confirm.md"
  ],
- "resealedAt": "2026-08-26",
+ "resealedAt": "2026-09-01",
  "resealNote": "평가자 sol→composer-2.5 교체(사용자 결정). 근거 docs/reviews/t3-3-reseal-proposal-2026-08-26-opus5.md · 2026-08-26 파생 드리프트 정정으로 봉인 SHA 이동(1e79bd24 → a0528047). 근거 docs/reviews/t3-3-reseal-drift-2026-08-26-opus5.md",
- "RUBRIC_FROZEN_SHA": "a052804740a932341643bada088dbb55df1ff3c6",
- "frozenAt": "2026-08-26"
+ "RUBRIC_FROZEN_SHA": "65f778e86110f3305397a329cd4c4f78c9a45e0e",
+ "frozenAt": "2026-09-02",
+ "pathResealedAt": "2026-08-29",
+ "pathResealNote": "arm 호스트 호출 경로 재봉인(armHost.via → grok-build-cli:grok-4.6). 실행 게이트 11항은 전부 DONE 상태를 유지한다 — 바뀐 것은 호출 경로 문자열이고 게이트가 요구하는 산출물·봉인값은 그대로다. resealedAt(명부 스탬프)은 올리지 않는다. 파생 정정 2건: 8/26 스모크가 점유하던 본 실험 칸(lane-a/apple/omd/rep-1)을 03-runs-smoke-archive/로 비웠고, run.json 골격 216칸에 via 필드를 추가했다. 근거 docs/reviews/t3-3-reseal-armhost-2026-08-29-opus5.md (grok-4.6 Q1 APPROVE / Q2·Q3·Q4 REVISE)",
+ "RUBRIC_FROZEN_SHA_status": "CURRENT — 65f778e8 (내용 커밋)가 2인 패널 재봉인 트리를 봉인. 채점 개방.",
+ "previousFrozenSha": "bc5f47041f0fc6e8d45ef8f4b500f1e1860a1914"
 }

@@ -1,0 +1,233 @@
+Heading: Apple Home Design System
+
+Portable projection for this run’s specified screen: Apple KR home
+(`https://www.apple.com/kr/`, snapshot `2026-08-22T19-46-47-156Z`).
+Compiler claim markers are omitted: this mission cannot adopt into a
+project-root  without writing outside the run directory.
+
+Disposition: **establish** (no pre-existing system in the run; the brief
+requires a design-system document). Source classes are named per decision.
+
+Heading: Experience
+
+**Scope.** One consumer route: the captured home. First paint is the iPhone
+family band. The only product journey the brief names is: from that first
+band, open the introduction path for one product family.
+
+**Primary task.** Activate **더 알아보기** on the iPhone band and arrive at
+an iPhone introduction region in the same document.
+
+**Philosophy (stance).** Each scroll unit carries one product family and one
+intro action. The system sacrifices comparison tables, price grids, and extra
+product pages the snapshot does not authorize. Chrome is measured; imagery is
+a distribution, never a single brand-defining photograph.
+
+Principles (what is gained / what is given up):
+
+- P1 **One family per band.** Gain a readable first task. Give up stacking
+  several products into one hero.
+- P2 **Measured chrome over remembered Apple.** Gain tokens that resolve to
+  evidence. Give up loading SF Pro KR, drawing brand marks on devices, and
+  any number not in `evidence.json`.
+- P3 **Intro path over storefront.** Gain a keyboard-reachable introduction.
+  Give up a shop, search hits, and a bag — those records are absent.
+
+Supported prompt facts: screen = 홈; task = 소개 경로 이동; locale visible
+in evidence `ko-KR`; title `Apple (대한민국)`.
+
+Heading: Foundations
+
+Heading: Decision table
+
+| ID | Category | Decision | Rationale |
+|---|---|---|---|
+|  | Layout grammar | P-ED-03 lookbook scroll narrative: cover band → next family plate. Content back-calc: 8 desktop imagery samples, 10 mobile. Only the cover band uses the generated still. | Brief is the home scroll; extra routes forbidden. |
+|  | Surface genre | Hairline-rule bands, no card radius kit. Product units are full-bleed plates, not shadowed tiles. | Viewport is stacked plates; commerce cards would be a genre miss (visual-quality §5e editorial). |
+|  | Wide strategy | Center-max for intro copy; cover band is full bleed with copy over the empty field of the still. | C32 editorial; Apple home is not left-max product chrome. |
+|  | Paper / ink | Paper `oklch(0.971 0.003 286.4)` from rendered modal `#f5f5f7` (coverage 0.5744). Ink `oklch(0.232 0.004 286.1)` from `bodyColor` `#1d1d1f`. Header `oklch(0.986 0.003 286.4)` `#fafafc`. | chrome.pageBackgroundRendered vs computed `#ffffff`: use the rendered modal as paper; do not treat `#ffffff`/`#000000` as base (G7). |
+|  | Accent | Outline chrome `#0066cc` → `oklch(0.522 0.177 255.8)`. Fill from imagery samples that contain `#0071e3` → `oklch(0.563 0.193 256.2)`. Accent is signal on pills only (≲5%). | `chrome.primaryButton` is outline; viewport also shows a filled sibling. Fill hex is taken from sampled palettes, not invented. |
+|  | Shape | Pill radius `980px` (`chrome.primaryButton.radiusPx`). No card radius. | Snapshot buttons are stadiums. |
+|  | Elevation | Rest = flat plate. Hover on pills = fill/border shift, not drop shadow. | Hairline-band genre; no tile shadows. |
+|  | Motion | Duration base 200ms / fast 120ms; enter ease `cubic-bezier(0.2, 0, 0, 1)`. Transform/opacity only. `prefers-reduced-motion: reduce` disables. Capture `motion.present: false` — no hero video. | Pack motion tokens; evidence has no above-fold video. |
+|  | Density | Display 56px / lede 28px desktop; 32px / 19px at 390. Header 44px / 50px. | chrome.typeScale and header.heightPx. |
+|  | Copy voice | Viewport sentences only. No slogan invention. UI copy in Korean. | prompt + capture; pack §5b. |
+|  | Honesty | Prices, ratings, inventory, search hits, bag lines: named absence where those slots would be. Device photography does not reproduce a centered Apple mark even though c1 alt names one. | unknown = absent. |
+
+Heading: Tokens ( back-references)
+
+```
+--color-paper:           oklch(0.971 0.003 286.4); /* #f5f5f7 */
+--color-ink:             oklch(0.232 0.004 286.1); /* #1d1d1f */
+--color-header:          oklch(0.986 0.003 286.4); /* #fafafc */
+--color-accent:          oklch(0.522 0.177 255.8); /* #0066cc */
+--color-cta-fill:        oklch(0.563 0.193 256.2); /* #0071e3 */
+--color-cta-on:          oklch(0.971 0.003 286.4); /* pair with fill */
+--color-band-air-top:    oklch(0.971 0.006 239.8); /* c2 #f2f6f9 */
+--color-band-air-bottom: oklch(0.936 0.023 231.8); /* c2 #dbedf7 */
+--color-nav:             oklch(0.232 0.004 286.1);
+--radius-pill:          61.25rem;                 /* 980px */
+--space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+--space-4: 1rem;    --space-5: 1.25rem; --space-6: 1.5rem;
+--space-section: 2.5rem; --space-section-md: 4rem; --space-section-lg: 6rem;
+--gutter: clamp(1rem, 4vw, 2.5rem);
+--duration-fast: 120ms; --duration-base: 200ms; --duration-slow: 320ms;
+--ease-enter: cubic-bezier(0.2, 0, 0, 1);
+--ease-exit:  cubic-bezier(0.4, 0, 1, 1);
+--font-size-display: clamp(2rem, 1.4rem + 1.8vw, 3.5rem); /* 32–56 */
+--font-size-lede:    clamp(1.1875rem, 0.95rem + 1.1vw, 1.75rem); /* 19–28 */
+--font-size-ui:      clamp(0.875rem, 0.8rem + 0.35vw, 1.0625rem); /* 14–17 */
+--header-height: 2.75rem; /* 44px; 3.125rem / 50px below 834px */
+```
+
+Foreground/background pairs (never a lone accent): ink on paper; ink on
+header; cta-on on cta-fill; accent on paper for outline; ink on band-air.
+
+Unresolved (omitted, not faked): nav type size (typeScale has h2/h3/p only
+— UI uses measured button `fontPx`); desktop c1 subject box; any price.
+
+Heading: Typography & Assets
+
+**Family.** Evidence names `SF Pro KR` on h2/h3/p. This offline render
+cannot fetch it. The live specimen is omitted. Metrics (size, weight 600
+display / 400 lede, line-height 1.18 display, letter-spacing near 0) stay.
+Runtime stack, Hangul coverage (pack locale rule):
+
+`"SF Pro KR", "SF Pro Text", "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif`
+
+No Latin serif fallback. `word-break: keep-all`. Hangul tracking not below
+−0.01em (evidence is `normal` / `0.196px` on desktop p).
+
+**Roles.** Display = measured h2. Lede = measured p. UI = measured
+primaryButton font. Label = nav, smaller tracking only on Latin fragments.
+
+**Imagery.** One generated still, `image.jpg`, is the home cover photograph
+and the intro figure. Prompt cites `desktop-1440.imagery.samples[0]` (tag
+`c1`): alt, palette `#f5f5f7` coverage 0.7475, meanLuma 0.882, p05 0.26,
+p50 0.961, p95 0.965, dynamicRange 0.705, luminanceGradient `brighter right`,
+aspect 4.347, intrinsic 3008×692. `subject.resolved` is false — no
+center/box numbers in the prompt. Logo on the device (named in alt) is not
+drawn. Other sampled photographs are not copied; the MacBook Air plate uses
+c2 palette tokens only.
+
+**Logo / icon.** Header mark is chrome reconstruction of the captured
+global nav, not a licensed asset file. Icons are one stroke family, inline
+SVG.
+
+**Motion media.** None above the fold (`motion.present: false`).
+
+Heading: Components & States
+
+Preset: **P-ED-03** (lookbook scroll) for home; **P-FN-02** for the intro
+route focus; **P-FN-05** for empty search. No-preset: global nav (catalog
+has no Apple-style hairline global bar) — anatomy below.
+
+Heading: Global header (no-preset: apple-home-chrome)
+
+Anatomy: leading mark · text links · search · bag. Mobile adds a disclosure
+control. Height tokens from evidence. Interactive states on icon buttons:
+default / hover / focus-visible / active / disabled. Non-interactive
+wordmark: default only (reason: it is a home link with the same five states
+as a text link). `aria-current="page"` on iPhone when the intro view is
+shown.
+
+Heading: Pill button (derived from evidence primaryButton + C1–C10)
+
+Anatomy: label only, stadium radius, min 44×44 on touch. Variants: filled
+(primary journey) and outline (local / shop).
+
+| State | Filled | Outline | Applicability |
+|---|---|---|---|
+| default | cta-fill / cta-on | transparent / accent, 1px accent border | yes |
+| hover | darker fill (oklch L 0.50), no extra shadow | paper-tint fill | yes |
+| focus-visible | 2px accent outline, offset 2px, immediate | same | yes |
+| active | scale 0.98 | scale 0.98 | yes |
+| disabled | opacity + `cursor: not-allowed` + `disabled` | same | yes |
+| loading | n/a — no async submit on this surface | — | not-applicable (no network write) |
+| error | n/a | — | not-applicable (buttons are not fields) |
+
+Border-width does not change across states. Primary uniqueness: one
+`data-cta="primary"` — iPhone **더 알아보기**. Shop and other bands use
+`data-cta="local"` or `submit`. Snapshot copy reuses the string 더 알아보기
+on later bands; those controls are local and do not open extra screens.
+
+Heading: Search field (restyled native)
+
+`appearance: none`. Height matches the adjacent submit pill. States:
+default / hover / focus-visible / disabled. Error/success: empty submit
+uses P-FN-05 copy, `role="alert"`, focus remains on the field with
+`aria-describedby`. No native unstyled search.
+
+Heading: Product band
+
+Anatomy: copy stack (title, lede, CTA row) over or above a figure. Home
+iPhone band overlays copy on the generated still. MacBook Air band is a
+palette plate without a second generated photograph.
+
+Heading: Intro region
+
+`role="region"` labelled by the visible h1. Contains the same still, the
+viewport lede, and an honest shop absence. Route change: title, scroll
+reset, h1 focus with visual ring suppressed (P-FN-02, G19).
+
+Heading: Layout & Platforms
+
+**Priority.** 1440 (desktop-1440 evidence) and 390 (mobile-390 evidence),
+then 320 and 200% reflow as pack gates.
+
+**Home grammar (P-ED-03).** Cover (iPhone) then the next family plate
+(MacBook Air), matching the first captured viewport. No hamburger+sidebar
+app shell. Overflow-x: clip. Image tracks `minmax(0, 1fr)`.
+
+**Breakpoints.** Header disclosure below 834px (header height 50px at 390).
+CTA row wraps as a group; each pill `white-space: nowrap` (G49).
+
+**Touch.** Task controls ≥44px on the 390/320 viewports. Desktop may use
+the visually shorter pill.
+
+**200% reflow.** Display headings `overflow-wrap: anywhere; min-width: 0`.
+Measure for intro prose is the center well, not full bleed.
+
+**Platforms named.** Light color-scheme only (`method.colorScheme`). Dark
+is unresolved and not shipped.
+
+Heading: Content & Locales
+
+**Locale.** `ko` on `<html lang>`. Voice: the captured Korean sentences,
+not a translation layer.
+
+**Terminology (from evidence / viewport, not invented):**
+iPhone, 더 알아보기, iPhone 쇼핑하기, MacBook Air, 구입하기,
+Apple (대한민국).
+
+**Formatting.** No prices (absent). No star ratings (absent).
+
+**Scripts.** Hangul + Latin product names. keep-all. Body/footer line-height
+1.65; display 1.18 (measured 66.0045/56).
+
+**Expansion.** German/English expansion is not in scope (single locale).
+
+**Honesty lines (footer, once):** 가격·재고·평점은 증거에 없다. 세션은
+비로그인이다. 대표 사진은 생성 이미지이며 기기 위 워드마크는 그리지 않았다.
+
+Heading: Governance
+
+**Authority priority.** (1) brief bytes in `task.md` (2) snapshot evidence
+(3) this system (4) pack gates. A pack uniqueness rule does not overwrite
+captured button labels; it does restrict which control is `data-cta="primary"`
+and which destinations exist.
+
+**Provenance classes used.** `prompt-fact`, `repository-fact` (evidence),
+`agent-proposed-greenfield-decision` (hover darkening, nav type size
+fallback to button fontPx), `unresolved`.
+
+**Unknown-absence.** Smallest field: omit. No `[FILL IN]`, no Inter stand-in
+for SF Pro KR, no fake subject coordinates.
+
+**Exceptions.** Compiler adopt skipped — experiment write-scope is this
+directory only.  is the portable document the brief asked for.
+
+**Consequential unresolved.** Official webfont files and license; shop
+catalog; search index; bag contents; subject geometry for desktop c1.
+
+**Changes this run.** Establish tokens from chrome + sampled palettes;
+one generated cover still; one intro journey in a single HTML file.

@@ -1,0 +1,85 @@
+Heading: 배달의민족 홈 — studied DNA
+
+ v1.1.0. Snapshot `2026-08-22T19-47-32-522Z` 캡처에서 추출한 DNA로 홈 한 화면만 재구성했다. 카탈로그 테마(Hum 등)로 회전하지 않는다.
+
+Heading: 추론 (게이트 질문 생략)
+
+실험 브리프가 산출물 3종과 과업을 고정했으므로 Audience / Use / Tone 질문은 한 번 묻지 않고 추론했다.
+
+- Audience: 웹 홈에서 앱을 설치하려는 사람
+- Use: 스토어 배지 또는 QR 중 하나 열기
+- Tone: playful (소비자 배달 앱)
+- Genre: playful
+- Macrostructure: Photographic
+- Theme: studied-DNA (source: image)
+- Nav: N1 워드마크 + 링크 3개 (이전 빌드 없음)
+- Footer: Ft5 Statement
+- Enrichment: E8 히어로 사진, Tier C (레인 A · Grok Imagine)
+
+Heading: 표면
+
+- desktop-1440: 왼쪽 캠페인 카피 + 스토어 배지/QR, 오른쪽 음식 사진
+- mobile-390: 같은 카피, `Get the App` 필이 설치 다이얼로그를 연다
+
+워드마크는 텍스트 `배달의민족`. 공식 로고 원본은 쓰지 않았다.
+
+Heading: 토큰
+
+모든 색과 서체는 `var(--token)`. 렌더 시 네트워크 폰트/CDN 없음.
+
+| 역할 | 토큰 | 값 |
+| --- | --- | --- |
+| paper (민트 밴드) | `--color-paper` | `oklch(86.4% 0.168 174)` — 증거 `#0cefd3` |
+| ink | `--color-ink` | `oklch(18% 0.022 174)` |
+| hero type | `--color-hero-type` | paper와 동일 민트, 사진 위 오버레이 |
+| accent-ink | `--color-accent-ink` | 민트 필 위 본문 |
+| badge | `--color-badge` / `--color-badge-ink` | 스토어 칩 |
+| display / body | `--font-display` / `--font-body` | Apple SD Gothic Neo, Noto Sans KR (증거 `-apple-system`) |
+| outlier | `--font-outlier` | QR 캡션 한 곳 |
+| space | `--space-3xs` … `--space-4xl` | 4pt 스케일 |
+| radius | `--radius-pill` 999px (`Get the App` 실측) | `--radius-badge` 8px |
+
+민트는 아래 접힘의 *paper*다. 액센트 하이라이터로 면을 칠하지 않는다.
+
+Heading: 카피 (증거에 있는 것만)
+
+- 히어로: `건강 관리 열정 식지 않도록` / `샐러드, 지금 배민됩니다`
+- 내비 라벨: `우아한형제들` · `라이더 모집` · `For foreigners`
+- 섹션: 음식배달, 배민클럽, 식료품은 기본!, 생수부터 라면…, 초신속 배달, 선물하기
+- 모바일 CTA: `Get the App`
+- 선물 CTA: `기업용 상품권 구매하기` (새 화면 없이 설치 경로를 연다)
+- 푸터 문장: `지금 배민됩니다`
+
+숫자 자랑, 후기, 없는 화면은 만들지 않았다.
+
+Heading: 설치 경로
+
+한 가지면 충분하다. 이 빌드는 세 갈래를 같은 과업에 묶었다.
+
+1. App Store 배지 → `https://apps.apple.com/kr/app/id378084485`
+2. Google Play 배지 → `https://play.google.com/store/apps/details?id=com.sampleapp.woowa.baemin`
+3. QR 버튼 / `Get the App` → `<dialog>` 안의 인라인 QR (페이로드는 App Store URL, 네트워크 QR API 없음)
+
+첫 페인트는 `image.jpg`와 인라인 CSS/SVG만 쓴다.
+
+Heading: 상태
+
+`.btn` / `.store` / `.qr-open`: default, hover(`hover: hover`), `:focus-visible`, `:active`, disabled, loading, error, success.
+
+모달은 네이티브 `<dialog showModal()>`. 포커스 링은 즉시, 3px `--color-focus`.
+
+Heading: 모션
+
+세 개 이하: CTA 1px 리프트, 다이얼로그 등장, 로딩 스피너. `transform`/`opacity`만. `prefers-reduced-motion: reduce`에서 공간 이동 제거.
+
+Heading: 반응형
+
+`html, body { overflow-x: clip }`. 이미지 트랙 `minmax(0, 1fr)`. 클릭 라벨 `white-space: nowrap`. 히트 44px. 320 / 375 / 414 / 768 기준.
+
+Heading: 금지 지킨 것
+
+- 공식 로고 파일 없음
+- 가짜 폰/브라우저 크롬 없음
+- 이탤릭 헤더 없음
+- 섹션 번호/눈썹 없음
+- UA 리셋에 `figure, blockquote, ul, ol` 마진 포함

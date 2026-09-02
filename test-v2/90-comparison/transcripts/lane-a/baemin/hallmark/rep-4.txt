@@ -1,0 +1,60 @@
+Heading: 배달의민족 홈 — studied DNA
+
+Evidence snapshot `2026-08-22T19-47-32-522Z`의 desktop-1440 / mobile-390 캡처에서 뽑은 시스템. 카탈로그 테마로 갈아끼우지 않는다. 웹폰트 CDN은 쓰지 않는다 — `render.html`은 네트워크 없이 열려야 한다.
+
+Heading: 한 줄
+
+풀블리드 음식 사진 위에 민트 디스플레이 타입을 왼쪽 정렬하고, 그 아래 스토어 배지 또는 QR(모바일은 Get the App)로 앱 설치 경로 하나를 연다.
+
+Heading: 장르 · 매크로
+
+- Genre: editorial (라이프스타일 푸드 캠페인. 카드형 playful/Hum 거절)
+- Macrostructure: Photographic
+- Hero: H6 full-bleed, 카피는 왼쪽 오버레이 (원 캡처 DNA)
+- Nav: N1 wordmark + 텍스트 링크 3개, 흰 바/CTA 버튼 없음
+- Footer: Ft2 한 줄
+- Enrichment: E8 사진, Tier C (Grok Imagine `image.jpg`)
+
+Heading: 색 (OKLCH, 앵커 hue 175)
+
+| 토큰 | 값 | 역할 |
+| --- | --- | --- |
+| `--color-paper` | `oklch(96% 0.012 175)` | 배지·다이얼로그·콜로폰 |
+| `--color-ink` | `oklch(20% 0.02 175)` | 본문·배지 글자 |
+| `--color-photo-ink` | `oklch(86% 0.16 175)` | 히어로 헤드라인 (캡처 `#0cefd3`) |
+| `--color-accent` | 동일 민트 | 모바일 Get the App 필 |
+| `--color-accent-ink` | `oklch(20% 0.02 175)` | 민트 필 위 글자 |
+| `--color-focus` | `oklch(48% 0.14 175)` | `:focus-visible` 즉시 링 |
+| `--color-wordmark` | `oklch(97% 0.01 175)` | 워드마크 (로고 원본 없음) |
+
+순수 `#000` / `#fff` 없음. 액센트 필은 모바일 CTA 한 곳. 큰 민트 타입은 사진 위 캠페인 잉크다.
+
+Heading: 타입
+
+- Display: Avenir Next Condensed → Apple SD Gothic Neo (한글)
+- Body: Apple SD Gothic Neo → Noto Sans KR
+- 헤드 이탤릭 없음. 디스플레이 `line-height: 1.08`
+- 오프라인 제약으로 Google Fonts 없음
+
+Heading: 공간 · 모션
+
+4pt 스케일 (`--space-3xs` … `--space-4xl`). 히어로 `padding-block-end`가 start보다 큼. `html, body { overflow-x: clip }`. figure / blockquote / ul / ol 마진 리셋.
+
+모션은 버튼 `translateY`만. `transition-all` 없음. `prefers-reduced-motion: reduce`에서 이동 제거.
+
+Heading: 설치 경로
+
+과업은 스토어 배지 또는 QR 하나를 여는 것.
+
+- Desktop ≥ 60rem: App Store · Google Play · QR 칩 → `<dialog>` 
+- Mobile: Get the App 필 → 같은 다이얼로그 (QR + 스토어)
+- 공식 브랜드 마크 원본 없음. 워드마크는 텍스트 `배달의민족`
+
+Heading: 카피 (캡처에 있는 것만)
+
+- 건강 관리 열정 식지 않도록
+- 샐러드, 지금 배민됩니다
+- 우아한형제들 · 라이더 모집 · For foreigners
+- App Store / Google Play / Get the App
+
+발명 수치 없음. 추가 화면 없음.

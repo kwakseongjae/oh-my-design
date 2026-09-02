@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "coupang",
+  "arm": "hallmark",
+  "rep": 4,
+  "source": "test-v2/03-runs/lane-a/coupang/hallmark/rep-4/render.html",
+  "sourceSha": "sha256:692e68c05d45a47f0e6ded88e4400166e0cfc1cd0b23d7c147375dc24a55ea95",
+  "capturedAt": "2026-09-02T00:37:05.369Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:f27d50a55e45c60c2b4c7aae5172b404adf73763e93e478b1c57e05ff95aef9f",
+      "bytes": 688566,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:581b3e2c493e503657bfc36bfe0d2311ec920d9137d7d142cf9513d7551d8ac5",
+      "bytes": 177693,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

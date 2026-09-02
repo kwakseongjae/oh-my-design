@@ -1,6 +1,6 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 21-skill + 18-sub-agent bundle; Cursor receives 21 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 440 DESIGN.md references: 141 verified_v2, 159 partial, and 140 legacy. Use verified_v2 references for public demos.
+> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 21-skill + 18-sub-agent bundle; Cursor receives 22 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 440 DESIGN.md references: 141 verified_v2, 159 partial, and 140 legacy. Use verified_v2 references for public demos.
 
 ## What
 
@@ -51,7 +51,7 @@ When `omd:harness` activates, it runs three new steps **before** any reference q
 
 The `omd-master` sub-agent reads `prefilled_slots` on INTAKE and skips its slot-gate entirely, jumping straight to PROPOSE_PLAN. Net effect: the conversation feels like a senior designer who already read your repo, not an interrogation.
 
-## The 22 skills (Claude Code, Codex, OpenCode)
+## The 23 skills (Claude Code, Codex, OpenCode)
 
 Core flow (7):
 - **omd:apply** — Authoritative DESIGN.md context for every UI task. Routes complex requests to specialist sub-agents.
