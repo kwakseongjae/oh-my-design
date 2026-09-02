@@ -121,3 +121,4 @@ test-v2/90-comparison/sessions/_test/
 
 # T3 첫 캡처 PNG는 render.html에서 결정론적으로 재생성된다(바이트 동일 확인) — 매니페스트·verify.json만 커밋
 test-v2/90-comparison/captures/**/*.png
+.omd/archive/
