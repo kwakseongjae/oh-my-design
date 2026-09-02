@@ -54,3 +54,12 @@ DESIGN.md에서 재현하는 `omd:landing` 스킬을 **같은 브리프·같은 
 
 세 arm 모두 "짧은 페이지 + 작은 인셋 히어로" — 코덱스가 잰 압도적 원페이지(10~16 vh, 폴드 커버리지 89~130%)와
 정반대 서명이다. 이 브리프는 원페이지 요구가 없었으므로 결함이 아니라 **출발점**이고, `landing` arm이 갈라야 할 거리다.
+
+## 랜딩 브리프 실측 (2026-09-02, 같은 브리프·grok-4.6·image_gen)
+
+| 브랜드 | arm | 페이지 vh | 섹션 | 폴드 커버리지 | render | landing-integrity | 비용 | 비고 |
+|---|---|---:|---:|---:|---|---|---:|---|
+| stripe | autopilot | 6.05 | 8 | (핀 스테이지) | PASS | FAIL 2 (LI-2 0.63 vh · LI-8 12px) | $0.44 | 기준선 |
+| stripe | **landing** | **12.05** | 8 | **100%, 4변 블리드** | PASS | **FAIL 0** (2회차 수렴, LI-9 1건 자가 수정) | $0.51 | 컨셉 "money layer cutaway", 에셋 5장(히어로+4), 반전 1섹션, reduced-motion OK |
+
+독립 재검증(오케스트레이터): render PASS · LI FAIL 0 · 스크롤 여정 후 숨은 요소 0 · reduced-motion에서 스크롤 없이 전부 표시.
