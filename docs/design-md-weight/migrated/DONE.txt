@@ -242,3 +242,8 @@ mikan
 mildang
 millie
 minimax
+mintlify
+miricanvas
+miro
+mistral.ai
+mixi
