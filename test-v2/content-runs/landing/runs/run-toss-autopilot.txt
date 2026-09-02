@@ -1,0 +1,33 @@
+너는 하네스 비교 콘텐츠 런의 arm 실행자다. arm = **autopilot**, 브랜드 = **toss**. 런 종류 = **랜딩 원페이지**(test-v2/content-runs/landing/README.md).
+
+이 런은 공개 콘텐츠(영상 시연)용이며 **봉인된 T3-3 실험이 아니다.** test-v2/03-runs를 읽거나 쓰지 마라.
+
+## 네가 쓰는 팩 (이것만)
+`benchmarks/ui-resolve-bench/fixtures/competitor-skills-2.0/omd-autopilot-v2/`
+이 팩이 정한 워크플로를 그대로 따라라. 다른 arm(hallmark, omd-landing)의 팩·산출물을 읽으면 무효다.
+브랜드 참고 자료: web/references/toss/DESIGN.md (읽어도 된다 — 세 arm 공통).
+
+## 브리프 — 토스 · 스크롤 원페이지 (세 arm 공통, 바이트 동일)
+
+- 브랜드: 토스 (toss.im). 금융 슈퍼앱. 대상: 앱을 아직 안 써본 20~40대 일반 사용자.
+- 화면: **스크롤 원페이지 랜딩**, 데스크톱 1440 기준 + 모바일 390 대응.
+- 과업: 방문자가 첫 화면에서 "내 돈 관리가 이렇게 쉬워진다"를 체감하고, 스크롤 끝에서 앱 다운로드로 이동한다.
+- 구성(6~8섹션): 히어로(앱 화면 목업은 네가 그린 추상 UI로, 실제 앱 캡처 금지) · 핵심 기능 3개(송금·소비 관리·
+  투자 같은 축, 각 섹션 전용 에셋) · 안심/보안 섹션 · 일상 장면 섹션(사람 얼굴 없는 사물·공간 이미지) ·
+  다운로드 CTA · 푸터.
+- 컨셉·구도·에셋: 토스 사이트를 베끼지 말고 이 브랜드가 쓸 법한 **하나의 시각 컨셉**으로 페이지가 쌓이게.
+  히어로 대표 이미지 1장 + 섹션 에셋 3~5장은 네 이미지 생성 도구로(얼굴 금지). 아이콘은 인라인 SVG.
+- 모션: 스크롤 리빌, 고정(pinned) 섹션 최대 1개, 히어로 진입 모션. `prefers-reduced-motion`에서 전부 꺼진다.
+  외부 라이브러리·네트워크 요청 금지.
+- 카피: 한국어, 존댓말. 실제 toss.im 문장을 그대로 쓰지 않는다. 가상 사용자 수·금액 수치 금지.
+- 금지: 토스 로고 원본 사용, 실제 앱 캡처, 브리프에 없는 페이지 추가.
+- 하단 작은 글씨: `비공식 생성 컨셉 — 토스와 무관합니다 (Unofficial generated concept)`.
+
+## 출력 위치 (여기 밖에 쓰지 마라)
+`test-v2/content-runs/landing/toss/autopilot/` — render.html · assets/(생성 이미지) · system.md · trace.md(이미지 프롬프트 원문, 세션 식별자, 산출물 sha256, 재시도 여부). render.html은 assets/ 이미지를 상대 경로로 참조하거나 data URI로 인라인한다(외부 요청 0).
+
+## 자가 확인 (제출 전)
+- `node test-v2/tools/render-integrity.mjs test-v2/content-runs/landing/toss/autopilot/render.html` → PASS가 아니면 고치고 다시 실행. 결과를 trace.md에 붙여라.
+- 1440·390 두 폭에서 첫 화면과 각 섹션이 잘리거나 겹치지 않는지 스스로 스크린샷으로 확인해라.
+
+끝나면 마지막 줄에 `CONTENT_RUN_DONE brand=toss arm=autopilot outputs=<n>`을 출력해라.

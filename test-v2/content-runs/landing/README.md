@@ -1,0 +1,45 @@
+# content-runs/landing — 「압도적 원페이지」 스킬 테스트 셋업 (2026-09-02)
+
+목적: affinity.studio급 스크롤 기반 랜딩(구도·에셋 배치·컨셉이 한 페이지에서 폭발하는 것)을
+DESIGN.md에서 재현하는 `omd:landing` 스킬을 **같은 브리프·같은 모델·같은 이미지 채널**로
+기존 arm과 나란히 놓고 검증한다. 봉인 벤치(`03-runs`)와 무관하며 수치·순위 주장에 쓰지 않는다.
+상위 규칙은 `../README.md`(비공식 고지·브랜드 태그 금지·봉인 수치 미언급).
+
+## arm
+
+| arm | 팩 | 역할 |
+|---|---|---|
+| `autopilot` | `benchmarks/ui-resolve-bench/fixtures/competitor-skills-2.0/omd-autopilot-v2/` | omd 현행 기준선 |
+| `hallmark` | `benchmarks/ui-resolve-bench/fixtures/competitor-skills-2.0/hallmark/` | 외부 기준선 |
+| `landing` | `skills/omd-landing/` (+ `.claude/agents/omd-art-director.md`) | 검증 대상 — 코덱스 `docs/design-excellence/landing-craft-codex.md` |
+
+실행자: grok build CLI(`grok --prompt-file … -m grok-4.6 --always-approve`), 이미지 채널 = grok `image_gen`.
+프롬프트는 `runs/run-<brand>-<arm>.txt`로 조립한다(브리프 본문은 세 arm에 바이트 동일).
+
+## 브리프
+
+- `briefs/stripe.md` — 미국 편. 결제 인프라, 개발자 대상, 데스크톱 1440 + 모바일 390 스크롤 원페이지.
+- `briefs/toss.md` — 한국 편. 금융 슈퍼앱, 일반 사용자 대상, 한국어 카피.
+
+두 브리프 모두 **원페이지 스크롤 저니**(6~8섹션)를 요구하고, 사이트를 베끼는 것이 아니라 그 브랜드가
+쓸 법한 컨셉·카피·에셋을 새로 만든다. 로고 원본 금지(텍스트 워드마크). 하단 unofficial 고지.
+
+## 산출 (arm마다 `<brand>/<arm>/`)
+
+`render.html`(외부 요청 0, 단독) · `assets/`(생성 이미지, 히어로 1 + 섹션 3~5) · `system.md`(디자인 시스템 설명,
+형식 자유) · `trace.md`(이미지 프롬프트 원문·세션 id·sha256·재시도) · `landing` arm만 추가로
+`storyboard.md`(섹션별 컨셉·구도·에셋 계획·스크롤 연출 표).
+
+## 검증 (전 arm 동일, 기계 우선)
+
+1. `node ../../tools/render-integrity.mjs <brand>/*/render.html` — 1440·390 전수 PASS.
+2. `node ../../tools/landing-integrity.mjs <brand>/*/render.html` — 코덱스에서 기계화한 규칙(섹션 리듬·
+   에셋:텍스트 비율·타입 스케일·모션 토큰·reduced-motion) — 코덱스 완성 후 작성.
+3. `omd-designer-review` 에이전트(오케스트레이터 수동 호출) — BLOCK 0.
+4. 스크롤 시연 영상: `omd:showcase`(작성 예정) 또는 `build-scroll-compare.mjs` 프레임 캡처 → mp4.
+5. 비교 페이지 `compare.html` (3열, 상단 조건 명시, 하단 고지).
+
+## 수용 기준 (시드 AC 4)
+
+두 브리프 모두 `landing` arm이 1·2·3 PASS + 시연 영상 + 비교 페이지. 정성 판단(“압도적인가”)은
+사용자가 비교 페이지에서 한다 — 이 문서는 그 판단의 입력을 만드는 것까지다.
