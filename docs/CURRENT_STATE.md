@@ -3,6 +3,8 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
+- 갱신: 2026-09-02 · **17:00**: `text-contrast.mjs`(#86 검출 층) 6런 실측 — stripe/landing PASS, toss/landing은 잔여 2+1건 → 마이크로 개정 r3($0.22) → PASS; 기준선 4런은 FAIL 2~29 + no-JS 숨김 3~9(표: landing README). 두 landing arm 모두 render·landing-integrity·text-contrast·designer-review 전부 통과. 최종 toss 비교 페이지·영상 재생성 중. 웨이브 51(10-wide) 워커 8기 진행, T3 86/108.
+- 갱신: 2026-09-02 · **landing/toss 개정 라운드 3 (마이크로, CTA 포커스+ghost 라벨)**: `render.html` `.hero-copy` CTA 두 개만. `:focus-visible` canvas 3px halo + `foreground` `#191f28` 2px 링. ghost 「먼저 둘러보기」 라벨 `foreground`. 12.05 vh·구도·에셋·카피 불변. `render-integrity` PASS · `landing-integrity` FAIL 0 · `text-contrast.mjs` **PASS fail=0** (ghost min 13.35). `FIX_DONE brand=toss arm=landing blocks_fixed=2`.
 - 갱신: 2026-09-02 · **웨이브 36~50 표 전부 마감(16:35)** — 마라톤이 46~50을 무인으로 닫았다(각 59~67분, $7~9, 검토 FAIL 0~2/5 전부 개정 후 PASS, deferred 0). 원장 **264/440**. 웨이브 51부터 알파벳순 10브랜드(neosapience…nvidia) — 첫 10-wide 웨이브, 메모리 예산이 동시성을 정한다. T3: 81/108, musinsa/omd/rep-4 2h07m 행(hang) → 종료·40분 상한 러너(`chain-timeout.sh`)로 재실행 중. 2.0.1 PR #88 대기(사용자 npm publish).
 - 갱신: 2026-09-02 · **웨이브 50 마감(마라톤)** — done 5/5 · $8.36 · LLM 243분 · 판정문 `docs/reviews/t2-1-wave50-2026-09-02-grok.md`(자동 생성, 검수 전).
 - 갱신: 2026-09-02 · **2.0.1 릴리즈 준비 완료(16:00, 커밋 `f3bfd490`, 브랜치 푸시, PR 대기)**: 스킬 5종 번들 편입(27/26/20), 카운트 10표면 싱크, CHANGELOG, doctor 필수 목록, 설치 검증 4채널 전부 OK, build·lint·test(1402+891)·mirror-drift·release-hygiene 전부 green. 선행 차단 3건 수정(omd-issue 이후 red였던 테스트, web cli-docs, sync-runtime-mirrors 드리프트). **남은 것 = 사용자 `npm publish`(인증) → PR 머지(main 배포)**. `text-contrast.mjs` 신설(#86 검출 층).

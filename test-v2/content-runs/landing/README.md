@@ -89,7 +89,7 @@ DESIGN.md에서 재현하는 `omd:landing` 스킬을 **같은 브리프·같은 
 | stripe | **landing** | **PASS**, no-JS 0 | 히어로 텍스트 전부 ≥4.75:1, 포커스 링 ≥3.4:1 |
 | stripe | autopilot | FAIL 29, no-JS 7 | 다크 히어로 텍스트 전부 2.19:1(wordmark·nav·h1·lede·CTA), 포커스 링 2.53, JS 없이 7블록 비표시 |
 | stripe | hallmark | FAIL 5, no-JS 3 | CTA 라벨 2.02:1 ×2, JS 없이 3블록 비표시 |
-| toss | **landing** | FAIL 4(→ 개정 r3 진행), no-JS 0 | 히어로 CTA 2개 포커스 링 2.26·2.38(사진 위) · ghost 라벨 4.44~4.48 경계 — nav·wordmark·h1·lead 전부 통과 |
+| toss | **landing** | **PASS**(개정 r3 후, $0.22), no-JS 0 | r3 전: 히어로 CTA 2개 포커스 링 2.26·2.38(사진 위) · ghost 라벨 4.44~4.48 경계 → r3 후 라벨 13.4:1, 링 전부 ≥3:1 |
 | toss | autopilot | FAIL 13, no-JS 9 | nav 2.93~3.51, CTA 3.71, 포커스 링 1.5~1.8, JS 없이 9블록 비표시 |
 | toss | hallmark | FAIL 2, no-JS 0 | 사진 위 캡션 1.05 / 1.99 |
 
