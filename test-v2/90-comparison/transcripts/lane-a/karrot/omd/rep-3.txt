@@ -1,0 +1,143 @@
+Heading: 당근 검색 결과 — 로컬 디자인 시스템
+
+스냅샷 `2026-08-22T19-49-29-044Z`, 표면 desktop-1440 / mobile-390.
+과업: 검색 결과에서 매물 카드 하나를 열어 상세로 이동한다.
+프리셋 카탈로그: marketplace + commerce + fundamentals ().
+
+이 문서는 실행 가능한 `render.html`이 소비하는 계약이다. 스냅샷에 없는 판매자·본문·채팅·공식 로고는 값으로 승격하지 않는다.
+
+Heading: Philosophy
+
+한 문장: 동네 중고 검색 결과는 사진을 훑고 가격을 비교한 뒤 카드 한 장을 열어 확인하는 도구이지, 브랜드 히어로나 신뢰 배지를 늘어놓는 지면이 아니다.
+
+원칙 (각 원칙은 희생을 포함한다).
+
+- **P1 사진이 스캔의 단위다.** 정방형 미디어가 카드 면적의 대부분을 차지한다. 카드 크롬·배지·내부 CTA를 희생한다.
+- **P2 한 번의 활성화로 상세.** 카드 전체가 히트 영역이다. 그리드 안에 채팅/찜 버튼을 넣지 않는다.
+- **P3 스냅샷에 없는 것은 비운다.** 캡처에 보인 제목·가격·동네·시간만 싣는다. 판매자 신뢰 점수, 별점, 재고 문장을 만들지 않는다.
+
+Heading: Derive
+
+| ID | 결정 | 값 | 근거 |
+|---|---|---|---|
+|  | 모서리 | 컨트롤 8px, 미디어 12px, 검색/칩 pill | evidence `primaryButton.radiusPx=8`. 미디어 라운드는 캡처 썸네일. |
+|  | 표면 장르 | 흰 종이 + 라운드 미디어 타일. 카드 박스/그림자 없음 | 캡처 그리드는 사진-아래-카피이지 섀도 타일이 아님. 장르 1개 유지. |
+|  | 엘리베이션 | rest 없음. hover는 미디어 brightness. 팝오버만 가벼운 그림자 | 캡처에 카드 그림자가 없음. 팝오버만 떠야 함. |
+|  | 악센트 | `#ff6f0f`, 워드마크만. 뷰포트 5% 미만 | 캡처 워드마크 중앙값. 채운 CTA·선택 링에는 쓰지 않음. |
+|  | 종이/잉크 | paper `#ffffff`, ink `#1a1c20`, fill 동일 잉크 | evidence `pageBackgroundComputed`, `bodyColor`. |
+|  | 메타 | `#6f7480` (≥4.5:1). 캡처 메타는 더 연했음 | G40. 캡처 `#a6aab1`은 본문 대비용이 아님. |
+|  | 타이포 | 한글 고딕 스택. h1 28/24·700. 제목 16·400. 가격 16·700. 버튼 14·700 | evidence typeScale + P-CM-01 가격 최대 웨이트. |
+|  | 한글 | `keep-all`, 디스플레이 트래킹 −0.01em 바닥, 본문 leading 1.65 | 로케일 타이포 계약. Latin −0.03em 금지. |
+|  | 밀도 | 1440에서 사이드바+4열, 갭 16px. 390에서 2열 갭 16px | evidence docBox: 248.5 칸, x 간격 16. 모바일 171.5·x=16/202.5. |
+|  | 레이아웃 문법 | 카탈로그 그리드 (마스터-디테일은 같은 문서의 상태 전환) | 캡처가 행 리스트(P-MK-01)가 아니라 사진 그리드. |
+|  | 초광폭 | 컬럼 추가 (4열), 중앙 max 아님 | GS5. 우측을 비우지 않음. |
+|  | 모션 | 120/200ms, enter/exit 곡선 2개, transform·opacity만 | 스킬 모션 토큰. `transition: all` 금지. |
+|  | 카피 | 캡처 문자열만. 구현 어휘 화면 금지 | 제목/가격/끌올/필터 라벨은 뷰포트에서 전사. |
+|  | 정직 | 푸터 1줄 + 상세의 부재 문장 | 샘플 고지를 섹션마다 반복하지 않음. |
+
+Heading: Tokens
+
+`:root`에만 선언한다. 컴포넌트는 `var(--*)`만 읽는다.
+
+- 색: `--color-paper`, `--color-ink`, `--color-ink-inverse`, `--color-accent`, `--color-meta`, `--color-muted`, `--color-rule`, `--color-chip`, `--color-search`, `--color-fill`, `--color-focus`
+- 모서리: `--radius-control` 8px, `--radius-media` 12px, `--radius-pill`
+- 공간: 4/8/12/16/24/40/64 + `--gutter: clamp(16px, 3vw, 32px)`
+- 타입: `--font` Apple SD Gothic Neo / Noto Sans KR / Malgun Gothic / -apple-system. `--fs-display` 28→24. 가격 tabular-nums
+- 모션: `--duration-fast` 120ms, `--duration-base` 200ms, `--ease-enter`, `--ease-exit`
+- 타깃: `--target` 44px
+
+워드마크 악센트 `#ff6f0f`의 흰 배경 대비율은 2.79이다. 본문이 아니라 디스플레이 워드마크에만 쓴다 ().
+
+Heading: Component specs
+
+코드 전에 고른 프리셋. 해부는 유지하고 토큰만 이 표로 채운다.
+
+Heading: 검색 결과 카드 — P-CM-01 파생 (P-MK-01 행이 아님)
+
+캡처가 정방형 사진 그리드라 P-MK-01(~88px 썸네일 행)을 쓰지 않는다. 기록: 해부는 P-CM-01, 메타 한 줄은 마켓플레이스(동네 · 시간).
+
+- 순서: 미디어 1:1 → 제목 2줄 클램프 → 가격(카드 안 최대 웨이트) → 메타
+- 전체 클릭, 내부 CTA 없음 (C25)
+- hover: 미디어 brightness. focus-visible: 잉크 링
+- `data-cta="local"`. 상태 `data-state`는 카드가 아니라 main의 results/detail
+
+Heading: 위치 리스트박스 — P-FN-01
+
+네이티브 select 없음 (G28). 트리거 버튼 + `role="listbox"` + `aria-activedescendant`.
+옵션은 스냅샷에 있는 `서울시 강동구 천호동`만. 다른 동네를 만들지 않음.
+
+Heading: 필터 — P-FN-04 / 커스텀 라디오·체크
+
+카테고리 라디오·거래가능 체크는 `appearance: none` + 토큰 마크.
+`초기화`는 조건이 있을 때만 노출 (P-FN-04). 라벨 문자열은 캡처 그대로.
+
+Heading: 빈 결과 — P-FN-05
+
+카테고리/연관어가 0건이면 “이 조건의 매물이 없습니다” + 필터 해제 1개. 일러스트 없음.
+
+Heading: 결과 수 — P-FN-06
+
+“서울시 강동구 천호동 · 이 화면에 실린 매물 8건”. 8은 폴드에 전사한 레코드 수이며 전체 서비스 총량이 아니다.
+
+Heading: 라우트 포커스 — P-FN-02
+
+상세 진입 시 `document.title` 갱신, 스크롤 0, `#page-title` 프로그램 포커스, 시각 링 억제.
+
+Heading: 사용하지 않은 프리셋
+
+- P-MK-02 거래 상태 배지 — 스냅샷 그리드에 판매중/예약중/완료 라벨 없음. `no-preset`이 아니라 **미사용**.
+- P-MK-03 신뢰 지표 — 점수 없음. 발명 금지.
+- P-MK-04 채팅 미리보기 — 상세 스냅샷 없음. 상세에 “본문·판매자·채팅이 없습니다”.
+- P-MK-05 히어로+데이터 블록 — 이 화면은 검색 결과이지 홈 히어로가 아님.
+- 검색 필: `no-preset: search-pill` — 캡처 크롬을 재현. 토큰 슬롯만 /.
+
+Heading: Layout grammar
+
+페이지: **사이드바 필터 + 카탈로그 그리드**. 상세는 같은 HTML의 `data-state="detail"` (새 제품 화면을 추가하지 않음). 와이드 상세는 P-FN-03 파생 — 사진 좌, 가격·메타·부재 문장 우.
+
+콘텐츠 역산: 그리드 8칸. 캡처 폴드에 제목·가격이 보인 매물만. 이미지 샘플 9–12는 메타가 폴드 밖이라 제목/가격을 만들지 않고 생략.
+
+- 1440: 필터 260px + 4열, 미디어 갭 16px
+- 960–1199: 3열
+- 390: 필터는 오버레이, 2열, 위치 버튼 가로 배치
+- 320: 2열 `minmax(0,1fr)`, `overflow-x: clip`
+- 200% 리플로우: 클램프 거터, 제목 `overflow-wrap: anywhere`
+
+Chrome: 텍스트 워드마크 “당근”. 공식 로고 원본 없음.
+
+Primary CTA: 채워진 `현 위치로 설정` 하나 (`data-cta="primary"`). 카드는 local. 검색 제출은 `data-cta="submit"`. 기기 위치는 스냅샷에 없으므로 버튼을 눌러도 천호동을 유지하고 그 부재를 알린다.
+
+Heading: Content & honesty
+
+보이스: 짧은 한글. 필터/위치/연관 검색어는 캡처 라벨 그대로.
+
+데이터 경계:
+
+- 있음: 검색어 노트북, 위치 서울시 강동구 천호동, 매물 8건의 제목·가격·시간, 카테고리 목록, 연관 검색어
+- 없음: 판매자, 본문, 채팅, 거래 상태 enum, 공식 로고, 폴드 아래 매물 제목
+
+상세에 없는 필드는 빈 칸을 추정 카피로 채우지 않고 한 문장으로 비운다.
+
+Heading: States (과업 동사 = 상태)
+
+브리프 동사: **열다**, **상세로 이동한다**.
+
+| 상태 | 키보드 | 프로그램 증거 |
+|---|---|---|
+| 결과 | 기본 뷰 | `main[data-state=results]`, h1 = “노트북” 검색 결과 |
+| 상세 | 카드에 Tab → Enter | `main[data-state=detail]`, h1 = 매물 제목, `role=region`, title 갱신, `#page-title` 포커스(링 없음) |
+| 결과로 | 검색 결과 버튼 또는 Escape | results로 복귀 |
+| 빈 결과 | 카테고리 유아동 또는 연관어 맥북 | `#empty` 표시, status 0건 |
+| 위치 리스트박스 | 트리거 Enter/Arrow | `aria-expanded`, `aria-activedescendant` |
+| 현 위치 부재 | 현 위치로 설정 | status 알림, 천호동 유지 |
+
+로딩 스위처·Show state 라디오 없음 (P0-1).
+
+Heading: Unknowns
+
+- 폴드 아래 매물 제목/가격
+- 판매자·본문·채팅
+- 공식 로고 에셋 (텍스트 워드마크로 대체)
+- 기기 GPS
+
+승격하지 않는다.

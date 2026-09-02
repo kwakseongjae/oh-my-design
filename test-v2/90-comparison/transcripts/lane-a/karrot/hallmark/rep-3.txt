@@ -1,0 +1,63 @@
+Heading: System — karrot search results ( / Hum)
+
+Isolated T3-3 arm run. Tokens live in `render.html` `:root` because this experiment may write only inside this directory.
+
+Heading: Inference
+
+Going with: audience = nearby used-laptop shoppers · use = open one listing from search results · tone = utilitarian-playful. Genre: playful (consumer community marketplace). Catalog theme: Hum (the playful cluster’s only theme).
+
+Heading: Fingerprint
+
+| Slot | Pick |
+| --- | --- |
+| Macrostructure | Catalogue |
+| Theme | Hum — light cream paper · rounded-sans · multi-accent (pear / cyan / coral) |
+| Nav | N13 Inline ⌘K search pill (centred pill, grouped results, footer hints) |
+| Footer | Ft8 Marquee scroll (32s, left, middot) |
+| Feature | F6 Product card grid (1/1, 4-up desktop / 2-up phone, price under name, View) |
+| Section head | S2 Hanging |
+| Location CTA | C1 Outlined chip |
+| Enrichment | E8 photography, Tier C (Grok Imagine) on listing 1; Tier A CSS-art on the rest |
+| Motion primitives | card lift · Hum press button · footer marquee |
+
+Previous nav: none (first run in this output dir). This build: N13, because the brief is a search surface.
+
+Heading: Surfaces
+
+One HTML file, two views, no extra screens:
+
+1. Search results — inventory header `“노트북” 검색 결과`, location, filters, 8 listing cards from the snapshot.
+2. Listing detail — opened from a card (or from ⌘K). Image, title, price, neighbourhood, time. Back is `검색 결과로`.
+
+Wordmark is the text `당근`. No official mark.
+
+Heading: Type
+
+- Display / body: Plus Jakarta Sans 400–700, embedded as woff2 (offline). Hangul glyphs fall through to `Apple SD Gothic Neo` / `Noto Sans KR` / `Malgun Gothic`.
+- Outlier (≤ 2 slots): JetBrains Mono on the 연관 검색어 label and the command-palette group label.
+- Scale: major third from 16px. Inventory title uses `--text-display-s` (Catalogue has no marquee display).
+- Headings roman. Tabular numerals on prices.
+
+Heading: Colour (OKLCH, named tokens only)
+
+Cream paper `oklch(97% 0.012 95)`, cool ink `oklch(20% 0.012 250)`, pear accent, cyan secondary, coral pop. No pure white paper, no pure black ink. Accent-ink is the same cool ink (pear is light). Focus is cyan at `oklch(48% 0.16 235)`.
+
+Heading: Space & layout
+
+4pt scale `--space-3xs`…`--space-3xl`. Left-biased: filter rail + catalogue on desktop; stacked on small screens. Image tracks use `minmax(0, 1fr)`. Root `overflow-x: clip`. Card radius 20px, pills 999px, inputs 12px.
+
+Heading: Interaction
+
+Hum `.btn` press (edge shadow, lift on hover, press down on active). Cards: colour-shift tint 6% → 12% plus 4px lift. Command palette: ⌘K / pill, Esc, arrows, Enter. Eight states coded on `.btn` and `.searchpill` (default, hover, focus, active, disabled, loading, error, success). Focus rings are instant `:focus-visible`. `prefers-reduced-motion: reduce` collapses spatial motion.
+
+Heading: Copy
+
+Listing titles, prices, neighbourhood, bump times, related terms, and filter labels come from snapshot `2026-08-22T19-49-29-044Z`. No invented counts, testimonials, or seller copy.
+
+Heading: Image
+
+`image.jpg` is the representative listing photo for the first card and its detail. Other cards use CSS laptop placeholders so the file stays offline.
+
+Heading: Slop test
+
+Pre-emit: P4 H4 E4 S4 R4 V4. Gates 40–41, 42–45, 46–49, 30, 34, 50–57 treated as pass after token lift and mobile filter collapse.   /  at repo root were not written (output isolation).

@@ -1,0 +1,41 @@
+{
+  "runId": "lane-a-karrot-rep-3",
+  "arm": "hallmark",
+  "lane": "lane-a",
+  "brand": "karrot",
+  "repeat": 3,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/karrot/<arm>/rep-3/system.md",
+      "sha256": "d61f2092e0aef2c9248734c2404c5f6e1642dd30894c884d1fcac032f1f7fe74"
+    }
+  ],
+  "sourceSha256": "d61f2092e0aef2c9248734c2404c5f6e1642dd30894c884d1fcac032f1f7fe74",
+  "transcriptSha256": "8b13f10f7660a0d9377acd7bbc3e4643948c7b9d8acef82b045edc835f95414a",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "becf08f97cfd0a28052a6779171096649e7a6fef2ab581379382333f792a3c34",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T06:22:16Z",
+  "transcriptionEndedAt": "2026-09-02T06:22:16Z",
+  "verificationStartedAt": "2026-09-02T06:22:16Z",
+  "verificationEndedAt": "2026-09-02T06:22:16Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/karrot/hallmark/rep-3.map.csv",
+  "mapSha256": "d08805e21c8bd8acd9768a2152789b705c4e80b66cefe5588f06ae613693152c",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 68,
+    "problems": [],
+    "attempts": 1,
+    "verifiedAt": "2026-09-02T06:22:16Z",
+    "verifiedBy": "orchestrator",
+    "declaredSpans": 4
+  },
+  "verdict": "PASS",
+  "transcriptFile": "90-comparison/transcripts/lane-a/karrot/hallmark/rep-3.txt",
+  "submittedToScoring": true
+}
