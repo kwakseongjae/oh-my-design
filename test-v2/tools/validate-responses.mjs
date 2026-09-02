@@ -36,6 +36,15 @@ lines.forEach((l, i) => {
   let j;
   try { j = JSON.parse(l); } catch { problems.push(`L${i + 1}: JSON 파싱 실패`); return; }
   parsed++;
+  // 천장 자극 답(§4.3)은 행(rep)이 아니라 브랜드 단위다 — ceiling stimulus 줄은 브랜드·자극명만 검사한다.
+  if (j.axis === "identification" && j.identification?.stimulus) {
+    if (!(key.ceilingBrands || []).includes(j.brand)) problems.push(`L${i + 1}: 천장 없는 브랜드의 자극 답 ${j.brand}`);
+    const c = j.identification.confidence;
+    if (!j.identification.brand) problems.push(`L${i + 1}: 천장 답 brand 없음`);
+    if (!(typeof c === "number" && c >= 0 && c <= 100)) problems.push(`L${i + 1}: 천장 답 confidence 0–100 아님`);
+    (ceilingSeen[j.brand] ||= new Set()).add(j.identification.stimulus);
+    return;
+  }
   const row = key.rows.find((r) => r.brand === j.brand && Number(r.rep) === Number(j.rep));
   if (!row) { problems.push(`L${i + 1}: 키에 없는 행 ${j.brand}/${j.rep}`); return; }
   if (j.postHocGuess) { posthoc.add(`${j.brand}|${j.rep}`); return; }
