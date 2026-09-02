@@ -189,7 +189,9 @@ for (const arm of ARMS) {
   const Tb = BRANDS.map((b) => a.brands[b].Tbar);
   a.totalMean = Tb.every((t) => t !== null) ? mean(Tb) : null;
   for (const k of Object.keys(W)) {
-    const Bk = BRANDS.filter((b) => !cells.find((c) => c.arm === arm && c.brand === b)?.axes[k]?.na);
+    // B_k = 그 축이 성립하는 브랜드. 아직 채점되지 않은 칸(axes[k] 부재)은 "성립 안 함"도 "성립"도 아니므로 분모에서 뺀다 —
+    // 부분 집계에서 미채점 브랜드가 |B_k|로 잡히던 것을 고쳤다(2026-09-02).
+    const Bk = BRANDS.filter((b) => cells.some((c) => c.arm === arm && c.brand === b && !c.abandon && c.axes[k] && !c.axes[k].na));
     const vals = Bk.map((b) => a.brands[b][k]);
     a.macro[k] = { Bk: Bk.length, M: vals.length && vals.every((v) => v !== null) ? mean(vals) : null };
   }
