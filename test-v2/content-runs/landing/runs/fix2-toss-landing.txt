@@ -1,0 +1,12 @@
+너는 랜딩 콘텐츠 런의 arm 실행자다. arm = **landing**, 브랜드 = **toss**. 이번 과업은 **마이크로 개정(라운드 3)** — 아래 두 가지만 고친다.
+
+대상: test-v2/content-runs/landing/toss/landing/render.html. 봉인 벤치·다른 arm 디렉터리는 읽지 마라.
+
+결정론 도구 실측(`node test-v2/tools/text-contrast.mjs test-v2/content-runs/landing/toss/landing/render.html`):
+1. 히어로 CTA 두 개("앱 받기", "먼저 둘러보기")의 포커스 링(#3182f6)이 1440 폭에서 사진 위에 놓여 링 픽셀 100%가 3:1 미만(min 2.26 / 2.38). nav·wordmark의 링은 3.5 이상으로 통과 — 즉 CTA 자리의 배경(스크림이 옅어지는 영역)만 문제다. → 그 두 CTA의 `:focus-visible` 표시를 어떤 배경에서도 3:1 이상으로: 예) canvas색 halo 3px + `foreground-strong`(#191f28) 2px 링, 또는 CTA 영역까지 스크림을 진하게. DESIGN.md 토큰만.
+2. ghost 버튼 "먼저 둘러보기" 라벨(#3182f6, 15px)이 버튼 채움 위에서 min 4.44~4.48:1로 4.5:1 경계 — 라벨 색을 더 진한 토큰(예 `foreground-strong` 또는 DESIGN.md의 진한 blue 토큰)으로 바꾸거나 버튼 채움을 canvas 불투명으로. 토큰만.
+다른 줄은 바꾸지 마라(12.05 vh·구도·에셋·카피 불변).
+
+검증(전부 실행·보고): render-integrity PASS · landing-integrity FAIL 0 · `text-contrast.mjs` 위 명령 재실행 → toss/landing 이 `PASS`(fail 0)여야 한다. 출력 전문을 보고에 붙여라. loop-trace.json 에 round 4 항목을 덧붙여라.
+
+끝나면 마지막 줄에 `FIX_DONE brand=toss arm=landing blocks_fixed=2` 를 출력해라.

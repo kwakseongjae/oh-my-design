@@ -102,7 +102,8 @@ for (const f of files) {
         const before = await p2.screenshot({ clip: { x: 0, y: 0, ...vp } });
         await p2.evaluate((i) => document.querySelector(`[data-fx="${i}"]`).focus({ focusVisible: true }), fx.i); await p2.keyboard.press("Shift"); await p2.waitForTimeout(120);
         const after = await p2.screenshot({ clip: { x: 0, y: 0, ...vp } });
-        const ringColor = await p2.evaluate((i) => { const cs = getComputedStyle(document.querySelector(`[data-fx="${i}"]`)); const c = (cs.outlineColor !== "rgba(0, 0, 0, 0)" ? cs.outlineColor : cs.boxShadow).match(/[\d.]+/g); return c ? c.slice(0, 3).map(Number) : [0, 0, 255]; }, fx.i);
+        // 링 색 = outline·box-shadow 색들 중 채도(max−min 채널)가 가장 큰 것. halo(흰색)가 먼저 나열되면 그걸 링으로 잡던 버그(2026-09-02 toss) 수정.
+        const ringColor = await p2.evaluate((i) => { const el = document.querySelector(`[data-fx="${i}"]`); const cs = getComputedStyle(el); const cols = []; for (const src of [cs.outlineColor, cs.boxShadow, cs.borderColor]) for (const m of (src || "").matchAll(/rgba?\(([^)]+)\)/g)) { const v = m[1].split(",").map(Number); if (v.length >= 3 && (v[3] === undefined || v[3] > 0.2)) cols.push(v.slice(0, 3)); } cols.sort((a, b) => (Math.max(...b) - Math.min(...b)) - (Math.max(...a) - Math.min(...a))); return cols[0] || [0, 0, 255]; }, fx.i);
         const m = await p2.evaluate(eval(MEASURE), { a: after.toString("base64"), bb: before.toString("base64"), targets: [{ id: fx.i, ring: true, el: "focus", text: fx.text, floor: 3, large: true, color: ringColor, rect: { x: 0, y: 0, w: vp.width, h: vp.height } }] });
         if (m[0].glyphPx >= 20) rings.push(m[0]);
         await p2.evaluate((i) => document.querySelector(`[data-fx="${i}"]`).blur(), fx.i);
@@ -130,5 +131,5 @@ else for (const r of results) {
     for (const t of v.rings) console.log(`  ${tag.padEnd(9)} ${t.pctBelow > THRESH_PCT ? "FAIL" : "ok  "} focus            ring  min ${String(t.min).padStart(5)} avg ${String(t.avg).padStart(5)} <3:   ${String(t.pctBelow).padStart(5)}%  "${t.text}"`);
   }
 }
-console.log(`\nTEXT_CONTRAST_DONE files=${results.length} fail=${results.filter((r) => r.fatal || r.fails?.length).length}`);
+(asJson ? console.error : console.log)(`\nTEXT_CONTRAST_DONE files=${results.length} fail=${results.filter((r) => r.fatal || r.fails?.length).length}`);
 process.exit(anyFail ? 1 : 0);

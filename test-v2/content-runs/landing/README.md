@@ -79,3 +79,18 @@ DESIGN.md에서 재현하는 `omd:landing` 스킬을 **같은 브리프·같은 
 
 - round 1 (`reviews/stripe-landing-review.md`, 글리프 픽셀 단위 측정): **BLOCK 6** — 같은 계열(스크림 부재): lead 100% 글리프 <4.5:1, ghost CTA 99.7% <3:1, wordmark+nav 100% <3:1, h1@390 16.4% <3:1, reveal no-JS 12/13 블록 비표시, 포커스 링 98% <3:1. 브랜드 계약 위반은 0(토큰·radius·폰트 전부 적합) — "화이트 캔버스에서 잰 팔레트를 사진 위에 그대로 썼다"가 원인. 다크 섹션(`.global`)은 통과. WARN 6 · FYI 8.
 - 개정 r2(grok, `runs/fix-stripe-landing.txt`, $0.19): 그라디언트 스크림(사진 유지), ghost CTA 채움, 포커스 halo, noscript. 오케스트레이터 실측(`qa/round2-orchestrator/`, 명목색 vs 배경 픽셀): 텍스트 전부 ≥4.75:1·0% 미달, no-JS 0 hidden; 잔여 = 1440 nav CTA 포커스 링 32% <3:1 → 마이크로 개정 r3($0.13) → min 3.83, 0%. **BLOCK 0** (`reviews/stripe-landing-review.md` §Round 2). → **stripe: 시드 AC 4 충족**. 리뷰 에이전트는 2회 연속 무산출로 오케스트레이터 스크립트가 대체 — 이 스크립트가 LI-24 후보(#86).
+
+## 텍스트 대비 실측 — `test-v2/tools/text-contrast.mjs` (2026-09-02 16:45, 6런, 1440·390)
+
+명목 글자색 vs 글리프 뒤 배경 픽셀(WCAG), 포커스 링(링 색 픽셀만, 3:1), no-JS 숨김. FAIL = 어느 요소든 임계 미만 글리프 픽셀 >5%.
+
+| 브랜드 | arm | 결과 | 주요 항목 |
+|---|---|---|---|
+| stripe | **landing** | **PASS**, no-JS 0 | 히어로 텍스트 전부 ≥4.75:1, 포커스 링 ≥3.4:1 |
+| stripe | autopilot | FAIL 29, no-JS 7 | 다크 히어로 텍스트 전부 2.19:1(wordmark·nav·h1·lede·CTA), 포커스 링 2.53, JS 없이 7블록 비표시 |
+| stripe | hallmark | FAIL 5, no-JS 3 | CTA 라벨 2.02:1 ×2, JS 없이 3블록 비표시 |
+| toss | **landing** | FAIL 4(→ 개정 r3 진행), no-JS 0 | 히어로 CTA 2개 포커스 링 2.26·2.38(사진 위) · ghost 라벨 4.44~4.48 경계 — nav·wordmark·h1·lead 전부 통과 |
+| toss | autopilot | FAIL 13, no-JS 9 | nav 2.93~3.51, CTA 3.71, 포커스 링 1.5~1.8, JS 없이 9블록 비표시 |
+| toss | hallmark | FAIL 2, no-JS 0 | 사진 위 캡션 1.05 / 1.99 |
+
+읽는 법: 이 도구는 디자이너 리뷰의 BLOCK 계열(사진 위 대비·no-JS)을 결정론으로 잡는다(#86 LI-24~26). 기준선 4런의 결함은 이 브리프의 산출을 그대로 잰 것이고, 봉인 벤치와 무관하며 순위·수치 주장에 쓰지 않는다. 도구 버그 2건(lazy 이미지 decode 대기, halo를 링 색으로 오인)은 이 6런에서 잡아 고쳤다.
