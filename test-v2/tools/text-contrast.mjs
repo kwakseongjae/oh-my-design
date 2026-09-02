@@ -31,6 +31,7 @@ const VPS = String(opt("viewport", "1440x900,390x844")).split(",").map((s) => { 
 const files = argv.filter((a, i) => !a.startsWith("--") && !(i > 0 && /^--(viewport|out)$/.test(argv[i - 1])));
 if (!files.length) { console.error("usage: text-contrast.mjs <render.html...> [--viewport 1440x900,390x844] [--json] [--out <dir>]"); process.exit(2); }
 const THRESH_PCT = 5;
+const dbg = (m) => process.env.TC_DEBUG && process.stderr.write(`[tc ${new Date().toTimeString().slice(0,8)}] ${m}\n`);
 
 const MEASURE = `async ({ a, bb, targets }) => {
   const load = async (x) => { const im = new Image(); im.src = 'data:image/png;base64,' + x; await im.decode(); const c = document.createElement('canvas'); c.width = im.width; c.height = im.height; const g = c.getContext('2d'); g.drawImage(im, 0, 0); return g; };
@@ -63,11 +64,13 @@ for (const f of files) {
   const r = { file: f, viewports: {}, fails: [] };
   for (const vp of VPS) {
     const tag = `${vp.width}x${vp.height}`;
+    dbg(`${basename(dirname(abs))} ${tag} text…`);
     const ctx = await browser.newContext({ viewport: vp, deviceScaleFactor: 1, colorScheme: "light" });
     const page = await ctx.newPage();
     try {
       await page.goto("file://" + abs, { waitUntil: "load", timeout: 20000 });
-      await page.evaluate(() => Promise.all([...document.images].map((i) => (i.complete ? 1 : i.decode().catch(() => 1)))));
+      // lazy 이미지는 스크롤 전엔 절대 로드되지 않아 decode()가 영원히 대기한다(2026-09-02 toss/autopilot에서 50분 정지) — 1.5초 상한.
+      await page.evaluate(() => Promise.race([Promise.all([...document.images].map((i) => (i.complete ? 1 : i.decode().catch(() => 1)))), new Promise((r) => setTimeout(r, 1500))]));
       await page.waitForTimeout(800);
       const targets = await page.evaluate(() => {
         const vh = innerHeight; const out = []; let k = 0;
@@ -93,7 +96,9 @@ for (const f of files) {
       await p2.goto("file://" + abs, { waitUntil: "load", timeout: 20000 }); await p2.waitForTimeout(800);
       const focusables = await p2.evaluate(() => { const vh = innerHeight; const els = [...document.querySelectorAll('a[href],button,[tabindex]:not([tabindex="-1"]),input,select,textarea')].filter((e) => { const rr = e.getBoundingClientRect(); return rr.top >= 0 && rr.bottom <= vh && rr.width > 0; }); els.forEach((e, i) => e.setAttribute("data-fx", String(i))); return els.slice(0, 10).map((e, i) => ({ i, text: e.textContent.trim().slice(0, 20) || e.tagName.toLowerCase() })); });
       const rings = [];
+      dbg(`${basename(dirname(abs))} ${tag} focus ×${focusables.length}`);
       for (const fx of focusables) {
+        dbg(`  focus ${fx.i} ${fx.text}`);
         const before = await p2.screenshot({ clip: { x: 0, y: 0, ...vp } });
         await p2.evaluate((i) => document.querySelector(`[data-fx="${i}"]`).focus({ focusVisible: true }), fx.i); await p2.keyboard.press("Shift"); await p2.waitForTimeout(120);
         const after = await p2.screenshot({ clip: { x: 0, y: 0, ...vp } });
@@ -108,6 +113,7 @@ for (const f of files) {
       for (const t of rings) if (t.pctBelow > THRESH_PCT) r.fails.push(`${tag} focus "${t.text}" ${t.pctBelow}% of ring px < 3:1 (min ${t.min})`);
     } catch (e) { r.fails.push(`${tag} FATAL ${String(e).split("\n")[0]}`); await ctx.close().catch(() => {}); }
   }
+  dbg(`${basename(dirname(abs))} nojs`);
   // no-JS
   const ctxN = await browser.newContext({ viewport: VPS[0], javaScriptEnabled: false }); const pn = await ctxN.newPage();
   try { await pn.goto("file://" + abs, { waitUntil: "load", timeout: 20000 }); await pn.waitForTimeout(500); r.nojs = await pn.evaluate(() => [...document.querySelectorAll("body *")].filter((e) => { const cs = getComputedStyle(e); return +cs.opacity < 0.1 && e.getBoundingClientRect().height > 100; }).length); if (r.nojs > 0) r.fails.push(`no-JS: ${r.nojs} large element(s) hidden (opacity<0.1) without script`); } catch (e) { r.fails.push(`nojs FATAL ${String(e).split("\n")[0]}`); }
