@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "figma",
+  "arm": "hallmark",
+  "rep": 1,
+  "source": "test-v2/03-runs/lane-a/figma/hallmark/rep-1/render.html",
+  "sourceSha": "sha256:f7485e4efb9ecafa0465a3431b05065ae5b3771a96b9163abcae3dfc7dcae73b",
+  "capturedAt": "2026-09-02T03:20:42.568Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:15b6b8c7320bbf3e507899baebe44a782702094590db97a143c6b79927fa1ec9",
+      "bytes": 174005,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:fb8cbdf293ca7d9713a51e64d4409c7021e389575fa2f3710ec64c6394f80712",
+      "bytes": 113834,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}
