@@ -1,0 +1,98 @@
+Heading: coupang home — studied DNA
+
+ v1.1.0. Source: evidence capture `desktop-1440` / snapshot `2026-08-22T19-48-17-298Z`. Catalog themes are suspended. This file is the portable system for `render.html`.
+
+Going with: audience = Korean shoppers on the marketplace home · use = type a query in the search field and land on a product list · tone = utilitarian.
+
+Genre: commerce utilitarian (consumer marketplace). Macrostructure: Ecosystem Index. Nav: N12 banner + retracting bar, search as C2. Hero: H6 photographic fold. Pitch: F6 product cards. Section head: S4 inline. Footer: Ft1 mast-headed.
+
+Previous nav: none (first  emit in this run dir). This build: N12, because the captured home stacks a promo band above a search-led bar.
+
+Enrichment: generated still for the campaign fold (Grok Imagine, lane A). No official wordmark asset — typeset `coupang` in the wordmark face.
+
+Heading: Surface
+
+- Paper band: light >85, warm oat (hue ~80).
+- Accent: warm orange-brown, hue 48, small-to-recurring footprint (wordmark, search ring, kicker).
+- Second accent: category blue, hue 264, confined to the hanging category slab and cart badge.
+- Density: dense chrome, photographic fold, then a product rail.
+- Asymmetry: left-biased campaign type over a full-bleed still; promo rail on the right.
+
+Heading: Type
+
+Offline stack (no network `@font-face`):
+
+| Role | Token | Face |
+| --- | --- | --- |
+| Display / body | `--font-display`, `--font-body` | Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic |
+| Wordmark outlier | `--font-wordmark` | Avenir Next, Segoe UI, Apple SD Gothic Neo |
+
+Two families. Headings roman. Prices use `tabular-nums` on the body face. Scale is a major third from 16px. Hero headline capped at `--text-display` (≤ 50 characters).
+
+Heading: Colour tokens
+
+Use only these. Do not inline OKLCH or hex in components.
+
+```css
+--color-paper: oklch(98.6% 0.006 80);
+--color-paper-2: oklch(96.2% 0.008 80);
+--color-paper-3: oklch(93.4% 0.010 80);
+--color-rule: oklch(86% 0.012 75);
+--color-rule-2: oklch(72% 0.045 62);
+--color-neutral: oklch(46% 0.016 55);
+--color-muted: oklch(42% 0.018 55);
+--color-ink: oklch(22% 0.020 50);
+--color-ink-2: oklch(30% 0.018 50);
+--color-accent: oklch(55% 0.16 48);
+--color-accent-ink: oklch(99% 0.01 80);
+--color-focus: oklch(46% 0.18 48);
+--color-category: oklch(58% 0.15 264);
+--color-category-hover: oklch(52% 0.15 264);
+--color-category-ink: oklch(99% 0.012 264);
+--color-error: oklch(54% 0.20 25);
+--color-error-ink: oklch(99% 0.01 80);
+--color-success: oklch(46% 0.12 145);
+```
+
+Accent-as-fill always pairs with the matching `*-ink` token.
+
+Heading: Space and motion
+
+4pt scale `--space-3xs` … `--space-3xl`. Easings: `--ease-out`, `--ease-in`, `--ease-in-out`. Durations: 120 / 220 / 420ms. Animate `transform` and `opacity` only. `prefers-reduced-motion: reduce` collapses spatial motion to ≤150ms. Focus rings are instant, 2px `--color-focus`, never animated.
+
+Heading: Chrome
+
+1. Dual promo band (N12 banner, dismiss = none).
+2. Utility row: 즐겨찾기 · 입점신청 · 로그인 · 회원가입 · 고객센터 · 판매자 가입.
+3. Bar: hanging category slab, typeset wordmark, search form, 마이쿠팡, 장바구니.
+4. Service strip: 쿠팡플레이, 로켓배송, 로켓프레시, 다시 구매, 쿠팡비즈, 로켓직구, 골드박스, 이달의신상, 입점신청.
+
+The primary action is the search field, not a filled marketing button.
+
+Heading: Search — the job
+
+The CTA is the form (C2). Scope select + query + submit share one 44px-tall control. Border width stays 1px in every state.
+
+| State | Treatment |
+| --- | --- |
+| default | paper fill, accent ring on the form |
+| hover | paper-2 fill on the field |
+| focus-visible | 2px focus outline, offset 1px |
+| active | same as focus |
+| disabled | opacity 0.55, not-allowed, native disabled |
+| loading | data-state on the form |
+| error | error border colour + hint (“검색어가 비어 있습니다…”) + aria-invalid |
+| success | lands on the product list; silent besides the list itself |
+
+Empty submit stays on home. A non-empty query hides home and shows a product list in the same file. No network. Wordmark returns home.
+
+Heading: Imagery
+
+`image.jpg` is the campaign still for the photographic fold (picnic drinks in front of an outdoor stage). Product tiles below the fold are token swatches, not stock photos. Do not drop in the official logo file.
+
+Heading: Do not
+
+- Load fonts, images, or scripts from the network.
+- Invent conversion stats, membership counts, or delivery percentages.
+- Recreate browser chrome, or put an italic word inside a heading.
+- Add screens beyond home and the search-driven product list.

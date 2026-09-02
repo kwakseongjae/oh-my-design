@@ -1,0 +1,41 @@
+{
+  "runId": "lane-a-coupang-rep-3",
+  "arm": "omd",
+  "lane": "lane-a",
+  "brand": "coupang",
+  "repeat": 3,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/coupang/<arm>/rep-3/system.md",
+      "sha256": "dc9d56a0d546a7d4f0fcd5e9e361578dc0dea4fa8a8a8991c5746e0eeba5f8cd"
+    }
+  ],
+  "sourceSha256": "dc9d56a0d546a7d4f0fcd5e9e361578dc0dea4fa8a8a8991c5746e0eeba5f8cd",
+  "transcriptSha256": "c55378c6ffa26c7c9eb59601265b4a0b902d0e565d8ba293585fcaf1182bf829",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "becf08f97cfd0a28052a6779171096649e7a6fef2ab581379382333f792a3c34",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T03:01:27Z",
+  "transcriptionEndedAt": "2026-09-02T03:01:27Z",
+  "verificationStartedAt": "2026-09-02T03:07:22Z",
+  "verificationEndedAt": "2026-09-02T03:07:22Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/coupang/omd/rep-3.map.csv",
+  "mapSha256": "03c94b8df4b26f185866e64d8aa25416dfd61255e01e2944cb1f1974b77b27a8",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 208,
+    "problems": [],
+    "attempts": 1,
+    "verifiedAt": "2026-09-02T03:07:22Z",
+    "verifiedBy": "orchestrator",
+    "declaredSpans": 35
+  },
+  "verdict": "PASS",
+  "transcriptFile": "90-comparison/transcripts/lane-a/coupang/omd/rep-3.txt",
+  "submittedToScoring": true
+}

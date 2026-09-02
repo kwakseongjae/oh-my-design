@@ -1,0 +1,41 @@
+{
+  "runId": "lane-a-coupang-rep-2",
+  "arm": "omd",
+  "lane": "lane-a",
+  "brand": "coupang",
+  "repeat": 2,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/coupang/<arm>/rep-2/system.md",
+      "sha256": "f87f3cc455332ee382930dc6a42067f9e2daf74064de828a50fbfdf1f2670246"
+    }
+  ],
+  "sourceSha256": "f87f3cc455332ee382930dc6a42067f9e2daf74064de828a50fbfdf1f2670246",
+  "transcriptSha256": "034efd158b46134dc8a8ac771d4539ddf5ae61cda4eed56352b59c577b51bbbd",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "becf08f97cfd0a28052a6779171096649e7a6fef2ab581379382333f792a3c34",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T03:00:36Z",
+  "transcriptionEndedAt": "2026-09-02T03:00:36Z",
+  "verificationStartedAt": "2026-09-02T03:07:22Z",
+  "verificationEndedAt": "2026-09-02T03:07:22Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/coupang/omd/rep-2.map.csv",
+  "mapSha256": "ac779bdd0ae9ed14cbf1a84316f026efbb54d4822601de29c0c1916fb84ee0a6",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 135,
+    "problems": [],
+    "attempts": 1,
+    "verifiedAt": "2026-09-02T03:07:22Z",
+    "verifiedBy": "orchestrator",
+    "declaredSpans": 22
+  },
+  "verdict": "PASS",
+  "transcriptFile": "90-comparison/transcripts/lane-a/coupang/omd/rep-2.txt",
+  "submittedToScoring": true
+}

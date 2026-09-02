@@ -1,0 +1,176 @@
+Heading: 쿠팡 홈 검색 표면 Design System
+
+스냅샷 `2026-08-22T19-48-17-298Z` · 표면 desktop-1440 (1440×900) · 과업: 검색창에 질의를 입력해 상품 목록으로 이동한다.
+
+이 문서는  유도 사슬(철학 → 결정 표 → 토큰 → 컴포넌트 명세 → 레이아웃 문법)의 런 산출이다. 프로젝트 루트 는 실험 칸 밖 쓰기가 금지되어 여기에 적는다.
+
+Heading: 철학
+
+**검색이 홈의 일이다.** 쿠팡 홈은 캠페인 사진이 넓지만, 이 런의 성공은 검색창에서 질의를 넣고 상품 목록에 도착하는 한 동작이다.
+
+- **P1 검색 우선.** 한 화면의 제출 동사는 「검색」 하나다. 로그인·장바구니·상세는 과업 밖이므로 새 화면으로 열지 않는다. 얻는 것: 키보드로 끝나는 과업. 버리는 것: 쇼핑몰 전체 맵.
+- **P2 카탈로그 밀도.** 커머스는 카드 경계와 가격 위계로 읽힌다. 얻는 것: 목록에서 상품이 물건으로 보인다. 버리는 것: 매거진 여백, 둥근 위젯 키트.
+- **P3 스냅샷만 데이터.** 이름·가격·배지는 캡처 홈에 보인 값만 쓴다. 평점·후기 수·재고는 스냅샷에 없어 비운다. 얻는 것: 정직한 목록. 버리는 것: 채워 넣은 별점.
+
+Heading: 결정 표
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | 주 제출은 검색 버튼 `data-cta="submit"`. 페이지 레벨 primary fill CTA는 두지 않는다. | P1. 브리프 동사는 검색이다. |
+|  | 홈과 목록은 같은 문서의 뷰. 헤더·검색은 고정, `#main`만 교체. | 브리프 화면은 홈 하나. 목록은 과업의 도착점이지 추가 사이트맵이 아니다. |
+|  | 카테고리는 검색 범위 리스트박스(P-FN-01). 카테고리 전용 페이지는 만들지 않는다. | P1, GS5. |
+|  | 표면 장르: 각진 아웃라인 카드. `--radius-card: 0px`, `--radius-control: 2px`. | 캡처 상품 타일이 각지고, 제네릭 12px 키트를 피한다. |
+|  | 엘리베이션 rest=없음, hover=약한 그림자, selected=악센트 2px 링. | 커머스 카드. hover는 면/보더/그림자 중 하나 이상(계약 §3). |
+|  | 악센트는 검색 보더·카테고리 면·선택 링. 히어로 전체를 악센트로 칠하지 않는다. | 악센트 ≤5% 신호. 캡처의 파란 카테고리 칸은 크롬 식별자라 유지하되 한 덩어리만. |
+|  | 색은 OKLCH. 페이퍼 `#fefefe` 근사, 잉크는 `#212b36` 근사. 순수 `#000`/`#fff` 금지. 뉴트럴에 채도 0.008–0.018. | evidence.chrome + G7/G22. |
+|  | 한글 고딕 한 패밀리. 디스플레이는 크기·웨이트로만 계층. tracking 바닥 −0.01em. 본문 leading 1.65. | 계약 5a. evidence typeScale: Apple SD Gothic Neo 24/700, 20/400, 11/400. |
+|  | 모션: 120/200/320ms, enter/exit 두 곡선. transform·opacity만. `prefers-reduced-motion` 필수. | 스킬 모션 토큰. |
+|  | 정보 밀도: 홈은 히어로+레일+발견+한 개 카테고리 모듈. 목록은 4열 카드. | 캡처 홈 접힘 + P-CM-01. |
+|  | 카피: 구현 어휘 금지. 결과 수는 「N건」. 평점 없음은 문장으로 비운다. | P3, GS4, P-FN-06. |
+|  | 가격이 캡처에 없는 타일(물티슈·발견 타일)은 가격 칸을 생략한다. 0원·임의가를 넣지 않는다. | P3, unknown=absent. |
+|  | 공식 로고 파일 없음. 워드마크는 `coupang` 텍스트, 마지막 글자만 브랜드 그린. | 실험 금지 + evidence 워드마크 역할. |
+
+Heading: 데이터 목록
+
+진실 원천:  ·  ·  (desktop-1440). 픽스처 JSON·OpenAPI는 없다.
+
+| 엔티티 | 출처 | 쓰는 필드 | 비운 필드 |
+|---|---|---|---|
+| 크롬 | evidence.chrome | 배경 `#fefefe`, 헤더 높이 70, 타입 24/20/11, 본문색 `#212b36` / `#7b7b7b` | primaryButton=null |
+| 히어로 이미지 | capture viewport + imagery-01 구도 | 페스티벌 피크닉 광질·전경 음료 군집. 생성본 `image.jpg` | 농심·웰치스 등 로고 |
+| 상품 | 홈 모듈에 보인 이름·가격·배지 | name, price?, badge?, category | 평점, 후기 수, 재고, 이미지 원본 |
+| 검색 | 브리프 | 질의 문자열, 범위(전체/여성패션/남성패션/식품) | 서버 엔드포인트 |
+
+Heading: 토큰
+
+주석은 결정 ID. 페이지는 `var(--*)`만 읽는다.
+
+```css
+--color-paper: oklch(0.993 0.004 90);          /* evidence #fefefe */
+--color-paper-2: oklch(0.972 0.008 90);
+--color-ink: oklch(0.28 0.022 250);            /* #212b36 */
+--color-ink-strong: oklch(0.20 0.018 250);
+--color-muted: oklch(0.46 0.014 250);          /* #7b7b7b보다 한 단 어둡게, 4.5:1 */
+--color-rule: oklch(0.90 0.010 250);
+--color-chip: oklch(0.96 0.012 250);
+--color-accent: oklch(0.48 0.19 264);          /* 캡처 검색/카테고리 블루, 대비용으로 내림 */
+--color-on-accent: oklch(0.99 0.004 90);
+--color-brand: oklch(0.52 0.14 45);            /* 워드마크 브라운 */
+--color-brand-mark: oklch(0.64 0.17 145);      /* 마지막 글자 그린 */
+--color-sale: oklch(0.52 0.18 28);
+--color-fashion: oklch(0.62 0.12 8);
+--space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+--space-5: 20px; --space-6: 24px; --space-7: 32px; --space-8: 40px;
+--space-section: 2.5rem; --space-section-lg: 4rem;
+--space-gutter: clamp(16px, 4vw, 40px);
+--radius-control: 2px; 
+--radius-card: 0px;
+--control-h: 44px;
+--fs-body: 0.875rem; /* 14px */
+--fs-display: clamp(1.75rem, 1.2vw + 1.2rem, 2.5rem); /* ≥2× body */
+--duration-fast: 120ms; --duration-base: 200ms; --duration-slow: 320ms;
+```
+
+Heading: 컴포넌트 명세
+
+프리셋 우선 (GS8).
+
+Heading: 검색 필드 (no-preset: 쿠팡 홈 검색창 — 카탈로그에 커머스 검색 콤보 없음)
+
+해부: 범위 리스트박스 | 입력 | 제출(돋보기). 높이 `--control-h`. 보더 1px accent, 상태 간 보더 두께 불변. 포커스는 `outline`. 레이블은 입력 옆 스크린리더용으로 유지(C12). 빈 제출은 blur가 아니라 submit에서 검사, 포커스 복귀 + `aria-invalid` + `role="alert"` (C16).
+
+상태: default / hover / focus-visible / error / disabled. loading 없음(로컬 필터).
+
+Heading: 범위 리스트박스 — P-FN-01 파생, 토큰  /
+
+옵션: 전체, 여성패션, 남성패션, 식품. 트리거+listbox, `aria-activedescendant`, Escape=취소, Enter/Space/Tab=커밋.
+
+Heading: 상품 카드 — P-CM-01 파생, 토큰  /  /
+
+해부: 미디어(1:1, minmax(0,1fr)) → 카테고리 eyebrow → 이름 2줄 클램프 → 가격(있으면 최대 웨이트) → 배지 한 줄. 내부 CTA 없음(C25). 평점 행 없음().
+
+Heading: 필터 칩 — P-FN-04 파생
+
+홈 여성패션 키워드. 활성은 면 반전. 히트 ≥44px. 「전체」가 기본.
+
+Heading: 빈 결과 — P-FN-05
+
+「이 검색어의 상품이 없습니다」 + 검색어 지우기 한 개.
+
+Heading: 결과 수 — P-FN-06
+
+「전체 · 「질의」 상품 N건 · 수록된 순서」.
+
+Heading: 라우트 포커스 — P-FN-02
+
+목록 진입 시 `#page-title`에 프로그램 포커스, 시각 링 억제, `document.title` 갱신, `scrollTo(0,0)`.
+
+Heading: 레이아웃 문법
+
+**홈: 크롬 + 히어로 디픽(캠페인 컷 / 레일) + 발견 2칸 + 카테고리 모듈(좌 플레인트 + 우 2×2 카드).**
+
+콘텐츠 역산: 히어로 레일 6칸(캡처), 발견 2칸, 여성패션 카드 4칸. 벤토 5칸 문법은 쓰지 않는다(GS6). 초광폭 전략: 좌측 맥스 크롬, 본문 중앙 최대 1440.
+
+**목록: 결과 정의 라인 + 4열 카드 그리드.** 고정 브레이크 1/2/4열, `auto-fit` 금지.
+
+Heading: 과업 동사 (SELF-WALK)
+
+| 동사 | 키보드 | 프로그램 증거 |
+|---|---|---|
+| 검색창에 질의를 입력한다 | Tab으로 `#q` → 입력 | `#q` value, `data-state` on form |
+| 상품 목록으로 이동한다 | Enter 또는 검색 버튼 Space/Enter | `body[data-view=results]`, `#page-title` 텍스트, `role=status` 「N건」, 카드 리스트 |
+
+빈 질의 제출은 에러 상태(포커스+alert+aria-invalid). 0건은 P-FN-05.
+
+Heading: Experience
+
+- 범위: 쿠팡 홈(desktop-1440)과 그 홈에서 출발하는 검색 결과 목록.
+- 주 과업: 검색창에 질의를 입력해 상품 목록으로 이동한다.
+- 지원 로케일: ko-KR.
+- 만들지 않는 것: 로그인, 장바구니, 상품 상세, 결제, 브리프에 없는 추가 랜딩.
+
+Heading: Foundations
+
+위에 적은 색·간격·모양·모션. 대비율: 본문 ink/paper ≥4.5:1, 큰 제목·아이콘·포커스 ≥3:1. 악센트 면에는 `--color-on-accent`.
+
+Heading: Typography & Assets
+
+- 패밀리: `"Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif`. 네트워크 폰트 없음.
+- 대표 이미지: `image.jpg` (Grok Imagine, 페스티벌 피크닉, 로고 없음). 홈 히어로 LCP.
+- 상품 미디어: 인라인 SVG/CSS. 캡처 원본 사진·공식 로고 파일 사용 안 함.
+- 아이콘: 한 스트로크 SVG.
+
+Heading: Components & States
+
+인터랙티브 7상태 적용:
+
+| 컴포넌트 | default | hover | focus-visible | active | disabled | loading | error/success |
+|---|---|---|---|---|---|---|---|
+| 검색 입력 | y | y | y | y | y | n/a 로컬 | error=빈제출 |
+| 검색 제출 | y | y | y | y | y | n/a | n/a |
+| 리스트박스 | y | y | y | y | y | n/a | n/a |
+| 칩 | y | y | y | y | n/a | n/a | n/a |
+| 히어로 레일 | y | y | y | y | n/a | n/a | selected |
+| 카드 | y | y | n/a 비링크 | n/a | n/a | n/a | n/a |
+
+비인터랙티브(워드마크 텍스트, 푸터): 포커스 계약 없음.
+
+Heading: Layout & Platforms
+
+- 우선 뷰포트: 1440×900 (evidence). 검증 폭 320 / 390 / 1440. 200% 리플로우에서 문서 가로 스크롤 없음.
+- `overflow-x: clip`. 그리드 트랙 `minmax(0, 1fr)`.
+- 터치 타깃 짧은 변 ≥44px.
+- 히어로 `min-height: 100vh` 금지.
+
+Heading: Content & Locales
+
+- 언어: 한국어. `html lang=ko`. `word-break: keep-all`.
+- 가격: 천 단위 + `원`.
+- 보이스: 짧은 안내, 반말 금지, 구현 단어 금지.
+- 정직 문장(푸터): 이름·가격의 출처와 평점 부재.
+
+Heading: Governance
+
+- 출처 등급: chrome·카피는 `repository-fact`(evidence). 생성 히어로는 `agent-proposed-greenfield-decision`(구도만 증거, 피사체는 새로). 미해결 평점은 `unresolved` → 토큰/카피/UI에 값 없음.
+- 권한: 이 런 디렉터리만 기록. 루트  채택 없음.
+- 변경: 검색 과업이 깨지면 시각보다 동선을 고친다.
