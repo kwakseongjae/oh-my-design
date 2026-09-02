@@ -81,7 +81,7 @@ if (!compare) {
   const info = await captureFrames(inputs[0], join(work, "a"), LABEL);
   encode(join(work, "a"), OUT);
   if (flag("gif")) encodeGif(OUT, OUT.replace(/\.mp4$/, ".gif"));
-  console.log(`SHOWCASE_DONE ${OUT} frames=${info.frames} doc=${info.docH}px ${Math.round((Date.now() - t0) / 1000)}s`);
+  console.log(`SHOWCASE_DONE ${OUT} frames=${info.frames} doc=${info.docH}px video=${SECONDS}s wall=${Math.round((Date.now() - t0) / 1000)}s`);
 } else {
   const dirs = [];
   for (let i = 0; i < inputs.length; i++) { const d = join(work, `in${i}`); const info = await captureFrames(inputs[i], d, LABELS[i] || basename(dirname(resolve(inputs[i])))); dirs.push({ d, info }); }
@@ -91,6 +91,6 @@ if (!compare) {
   const r = spawnSync("ffmpeg", args, { encoding: "utf8" });
   if (r.status !== 0) { console.error(r.stderr.slice(-800)); process.exit(4); }
   if (flag("gif")) encodeGif(OUT, OUT.replace(/\.mp4$/, ".gif"));
-  console.log(`SHOWCASE_DONE ${OUT} arms=${parts.length} ${Math.round((Date.now() - t0) / 1000)}s`);
+  console.log(`SHOWCASE_DONE ${OUT} arms=${parts.length} video=${SECONDS}s wall=${Math.round((Date.now() - t0) / 1000)}s`);
 }
 rmSync(work, { recursive: true, force: true });

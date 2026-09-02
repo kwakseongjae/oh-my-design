@@ -1,6 +1,8 @@
 ---
 name: omd:issue
 description: "oh-my-design 사용 중 불만·결함·아쉬운 점을 구조화된 GitHub 이슈로 접수하고, 쌓인 이슈를 배치로 처리한다. 사용자 모드('이슈 등록해줘', '이거 불편한데 신고할래', '버그 리포트', 'file an issue', '기능 요청')와 내부 도그푸딩 모드(스킬을 돌리다 미흡한 부분을 발견한 오케스트레이터·서브에이전트가 직접 접수) 둘 다 지원. '이슈 처리해줘', 'process feedback', '쌓인 피드백 정리'는 배치 처리 verb로 트리거."
+argument-hint: "[file|list|process [--dry-run]] — 기본 file"
+user-invocable: true
 ---
 <!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
 
@@ -97,10 +99,13 @@ gh issue list -R kwakseongjae/oh-my-design --label skill-feedback --state open \
 **돌고 있는 작업이 있으면 그것을 먼저 끝내고 시작한다.** 이 verb는 유휴 시간·작업 단위
 사이·사용자가 명시 요청했을 때 실행한다.
 
+`--dry-run`이면 아래 2의 **재현·분류까지만** 하고 처리 계획표(이슈 번호·판정·예정 조치)를 낸다 — 코멘트·라벨·닫기·커밋 금지.
+
 1. `list`로 열린 `skill-feedback` 이슈를 오래된 순으로 가져온다.
 2. 이슈마다:
-   - **재현** — 본문의 재현 서술을 실제로 실행한다. 재현 안 되면 그 사실과 시도한
-     것을 코멘트로 남기고 `question` 라벨 후 다음으로.
+   - **재현** — 본문의 재현 서술을 실제로 실행한다. 재현 환경이 레포 전용(벤치·내부 도구)이라 설치본에서
+     원리적으로 불가하면 `needs-repo-env` 라벨로 분류하고 큐에 남긴다. 제보 내용이 부족해 재현이 안 되는
+     경우에만 그 사실과 시도한 것을 코멘트로 남기고 `question` 라벨 후 다음으로.
    - **분류** — 중복이면 원본에 링크 걸고 `duplicate` 닫기. 의도된 동작이면 근거
      (스킬 문서·스펙 조항)를 코멘트로 남기고 `wontfix` 닫기.
    - **수정** — 고칠 수 있으면 고친다. 교정은 **그것을 일관되게 강제할 수 있는 가장

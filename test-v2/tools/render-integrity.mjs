@@ -87,8 +87,10 @@ for (const file of args) {
         // 화면 안에서 시작해 우측 경계를 **가로지르는** 요소다.
         const fullyOff = rect.left >= cw - 2;
         const contained = clippedBy(el) || cs.position === "fixed";
-        if (fullyOff && contained) {
-          if (info.length < 4) info.push({ check: "offcanvas", detail: `${label(el)} right=${Math.round(rect.right)} (의도된 오프캔버스로 판정)` });
+        // 2026-09-02 도그푸딩 #9: contained 판정을 fullyOff 분기에만 쓰면 가로 스크롤러(LC-15, overflow-x:auto 트랙) 안에서
+        // 우측 경계를 가로지르는 항목이 전부 escape FAIL이었다. 클리핑 조상이 있으면 어느 분기든 파손이 아니다.
+        if (contained) {
+          if (info.length < 4) info.push({ check: fullyOff ? "offcanvas" : "scroller", detail: `${label(el)} right=${Math.round(rect.right)} (${fullyOff ? "의도된 오프캔버스" : "클리핑 조상 안의 가로 스크롤"}로 판정)` });
         } else if (!fullyOff && problems.filter((p) => p.check === "escape").length < 6) {
           problems.push({ check: "escape", detail: `${label(el)} right=${Math.round(rect.right)} (clientWidth ${cw})` });
         }

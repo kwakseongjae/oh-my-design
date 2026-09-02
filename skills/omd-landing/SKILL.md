@@ -90,7 +90,7 @@ lead·CTA·포커스 링은 배경 픽셀 대비 WCAG 4.5:1(일반)·3:1(큰 텍
 ② node test-v2/tools/landing-integrity.mjs <run>/render.html  (설치본: omd check landing <run>/render.html)     # 코덱스 기계 규칙
 ②′ node test-v2/tools/text-contrast.mjs <run>/render.html     (설치본: omd check contrast <run>/render.html)    # 사진·그라디언트 위 텍스트·포커스 링·no-JS (첫 두 런의 BLOCK 계열)
 ③ 스크린샷: 1440·390 × 섹션 경계마다 → 구도·여백·겹침을 눈으로 대조 (storyboard와)
-④ omd-designer-review (BLOCK만 집계)
+④ `omd-designer-review` 서브에이전트 스폰(Agent, 입력: `<run>/render.html` 절대경로 + 프로젝트 DESIGN.md 경로 + 도구 호출 상한 20회·15분·review.md 골격 먼저 — BLOCK만 집계)
 ```
 FAIL 항목만 지목해 고친다(전면 재생성 금지). 회차별 (①결함·②위반·②′대비 FAIL·④BLOCK) 수를 `loop-trace.json`에.
 같은 rule ID가 2회 연속 FAIL이면 멈추고 `omd:issue`로 접수한다.
@@ -117,6 +117,9 @@ FAIL 항목만 지목해 고친다(전면 재생성 금지). 회차별 (①결�
 
 - DESIGN.md에 없는 토큰·브랜드 사실 발명 금지. 코덱스에 없는 "취향" 규칙 발명 금지 — 근거 없는 판단은
   `concept.md`에 「가정」으로 표시한다.
+- **코덱스 수치와 DESIGN.md 토큰이 충돌하면 DESIGN.md가 이긴다**(예: 코덱스 LC-21 display:body 3.0×↑ vs 토스 h1 36/body 14 = 2.57×).
+  코덱스 범위 미달은 `concept.md`에 「가정」으로 남기고 토큰을 늘리지 않는다. Motion 토큰이 없는 DESIGN.md(다수)에서는
+  코덱스 LC-29/30의 값(300/400ms 등)을 **「로컬 확장」으로 표시**해 쓴다.
 - 실제 사이트 카피·캡처·로고 원본 사용 금지. 통계 수치 발명 금지.
 - 하나의 페이지만 만든다. 페이지를 늘리는 요구는 `omd:autopilot`(멀티페이지)로 보낸다.
 - 이 스킬은 생성기다. 판정은 도구와 `omd-designer-review`가 한다 — 스스로 "좋다"고 쓰지 않는다.
