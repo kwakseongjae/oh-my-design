@@ -7,7 +7,9 @@
 > grok-4.6 반박 3회(REVISE → REVISE → **FREEZE**)를 거쳤고, 판정 이후 **본문 규칙은
 > 더 고치지 않는다.** 결과를 본 뒤 임계값·가중치·결측 규칙을 바꾸지 않는다.
 >
-> **`RUBRIC_FROZEN_SHA` = `65f778e86110f3305397a329cd4c4f78c9a45e0e`** (기록 2026-09-02). §9 실행 게이트 11/11 DONE이며 그 커밋이
+> **`RUBRIC_FROZEN_SHA` = `b6b3ee59b2bc564113d616779caf3d32ae076664`** (기록 2026-09-02 저녁). 직전 값 `65f778e8…`에 §4.5
+> `N/A-evidence`(naver 근거 축, 판정 `docs/reviews/t3-naver-evidence-axis-2026-09-02.md`)를 더한
+> 트리다 — 청크 3 점수를 보기 전에 봉인했다. `65f778e8…`는 §9 실행 게이트 11/11 DONE이며 그 커밋이
 > 2026-09-01 패널 재봉인(평가자 2인: grok-4.6 grok-build 직접 + sonnet5 claude-agent)과 판정
 > Q1·Q2·Q4 집행 전량을 봉인한다. **T3-3 채점을 열 수 있다.** 직전 값 `bc5f4704…`는 3인
 > cursor-agent 패널 트리를 봉인하며 그것으로는 열지 않는다.
