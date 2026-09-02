@@ -74,3 +74,8 @@ DESIGN.md에서 재현하는 `omd:landing` 스킬을 **같은 브리프·같은 
 - 개정(grok, `runs/fix-toss-landing.txt`, $0.36): BLOCK 6만 지목 수정 — 스크림·halo·muted→body·noscript+scripting:none. render PASS · LI FAIL 0 · 12.05 vh 유지. 스크림이 강해 사진이 옅어졌다(트레이드오프, 비교 페이지에서 판단).
 - round 2 (`reviews/toss-landing-review.md` §Round 2): **BLOCK 0** — B1 nav 6.81:1 · B2 wordmark 15.6 · B3 lead 5.37 · B4 muted 0노드 · B5 포커스 3.62~3.71 · B6 no-JS 렌더 바이트 동일. 회귀 없음(스크림 토큰색, 12.05 vh 유지). FYI 2(포커스 halo box-shadow는 DESIGN.md 그림자 절제와 충돌 — concept.md 가정에 기록 필요). round-1 WARN 13·FYI 11은 재측정 안 함. → **toss: 시드 AC 4 충족**(render PASS · LI FAIL 0 · designer-review BLOCK 0 · 시연 영상 · 비교 페이지).
 - 비교 페이지 `toss/compare.html`(3열) · 3-arm 시연 영상(14초) 생성 — 두 브랜드 모두 3 arm 완비.
+
+## 디자이너 리뷰 · 개정 라운드(stripe) — 2026-09-02
+
+- round 1 (`reviews/stripe-landing-review.md`, 글리프 픽셀 단위 측정): **BLOCK 6** — 같은 계열(스크림 부재): lead 100% 글리프 <4.5:1, ghost CTA 99.7% <3:1, wordmark+nav 100% <3:1, h1@390 16.4% <3:1, reveal no-JS 12/13 블록 비표시, 포커스 링 98% <3:1. 브랜드 계약 위반은 0(토큰·radius·폰트 전부 적합) — "화이트 캔버스에서 잰 팔레트를 사진 위에 그대로 썼다"가 원인. 다크 섹션(`.global`)은 통과. WARN 6 · FYI 8.
+- 개정(grok, `runs/fix-stripe-landing.txt`): 그라디언트 스크림(toss 의 평면 스크림이 사진을 옅게 만든 트레이드오프를 피하려고), ghost CTA 채움, 포커스 halo, noscript. 진행 중 → round 2.
