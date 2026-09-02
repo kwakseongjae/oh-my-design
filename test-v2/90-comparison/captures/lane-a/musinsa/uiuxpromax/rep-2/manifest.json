@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "musinsa",
+  "arm": "uiuxpromax",
+  "rep": 2,
+  "source": "test-v2/03-runs/lane-a/musinsa/uiuxpromax/rep-2/render.html",
+  "sourceSha": "sha256:26702f9856493efbc98af32e9e9ba3cbd67516dbc94ea6844ae2aee4ee6321f7",
+  "capturedAt": "2026-09-02T08:31:53.981Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:97aefa01379231678a57951114e8ff896e8fdeb1b926292fbb079a989e2c856c",
+      "bytes": 185841,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:eace37cffcdf90087d1a0a3706971e4ccab2d4a2d0ac91ba8caefe2b46793717",
+      "bytes": 80490,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

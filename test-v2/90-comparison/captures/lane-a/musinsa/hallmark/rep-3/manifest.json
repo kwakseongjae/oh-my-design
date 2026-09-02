@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "musinsa",
+  "arm": "hallmark",
+  "rep": 3,
+  "source": "test-v2/03-runs/lane-a/musinsa/hallmark/rep-3/render.html",
+  "sourceSha": "sha256:34eeb228a79461b5eb6e351043c23eeb4426835417f4b0c810d53e664fb14a5d",
+  "capturedAt": "2026-09-02T08:31:48.716Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:fdce8a314c77d47ac928742e00d0fc39ce391dcc2a721d23819e412b4408ded3",
+      "bytes": 127544,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:75c34a1aee9c522691bb8621c73ee081c6c82da6ecb7af91abbe446a9517f056",
+      "bytes": 61987,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}
