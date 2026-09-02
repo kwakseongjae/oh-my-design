@@ -1,0 +1,339 @@
+
+When building a specific page, first check .
+If that file exists, its rules **override** this Master file.
+If not, strictly follow the rules below.
+
+This file is the  `--design-system` persistence format (), plus the home-page override the pack requires before implementation. Values marked **evidence** come from  or the matching capture. Values marked **pack** come from the bundled search database. Values not in evidence are left blank rather than filled.
+
+
+**Project:** Toss
+**Category:** Fintech/Crypto (pack `--design-system` category)
+**Page:** home (`https://toss.im/`, snapshot `2026-08-22T19-51-46-001Z`)
+**Stack for this render:** single-file HTML + inline CSS (offline; no network). Pack stack search used `html-tailwind`.
+
+
+Heading: Retrieval used (pack workflow)
+
+Heading: Step 1 — Requirements (from the brief + evidence only)
+
+- **Product type:** consumer fintech homepage (source.title `토스`, source.url `https://toss.im/`)
+- **Audience:** C-end, locale `ko-KR`, unauthenticated (`session.authenticated: false`)
+- **Platform:** web, two captured surfaces — `desktop-1440` 1440×900, `mobile-390` 390×844
+- **Task on this screen:** select one item in the top nav and move
+- **Style keywords from capture:** light canvas, oversized white type on a full-bleed still, sparse chrome
+
+Heading: Step 2 — `--design-system` (required)
+
+```
+python3  "fintech consumer banking homepage landing minimal light" \
+  --design-system -p "Toss" -f markdown --persist --page "home" --force
+```
+
+Pack database recommendation (recorded, **not** applied as brand fact where it contradicts evidence):
+
+| Slot | Pack value |
+|------|------------|
+| Pattern | Minimal Single Column |
+| Style | Exaggerated Minimalism |
+| Primary | `#F59E0B` |
+| Background | `#0F172A` |
+| Heading/body font | IBM Plex Sans |
+| CTA | `#8B5CF6` |
+| Notes | Gold trust + purple tech |
+| Anti-patterns | Playful design; unclear fees; AI purple/pink gradients |
+
+Heading: Step 2b — Persist
+
+- 
+-  (pack default: 800px single column)
+
+Home override below **replaces** that 800px/dark-gold page file. Evidence viewport is 1440-wide, light canvas, top nav.
+
+Heading: Step 3 — Domain searches
+
+| Need | Query | Applied pick |
+|------|-------|----------------|
+| landing | `hero navigation cta homepage` | **Hero-Centric Design** (full-bleed hero + sticky nav CTA). Enterprise Gateway noted for mega-menu, not used — dropdown contents are not in evidence. |
+| ux | `navigation accessibility dropdown header` | Skip link; keyboard tab order = visual order; sticky nav + padding compensation; no breadcrumbs (flat home). |
+| ux | `animation accessibility z-index loading` | z-index scale 10/20/40/50; `prefers-reduced-motion`; no decorative infinite motion. |
+| icons | `navigation menu hamburger` | Phosphor **list** (drawer), **caret-down** (KOR), **x** (close). Outline, regular. |
+| color | `fintech banking` | Two palettes (Fintech/Crypto gold-dark, Banking navy-light). **Neither hex set is copied into tokens.** Tokens use evidence hexes only. |
+| typography | `professional modern sans` | Pack Korean Modern = Noto Sans KR (network). **Not loaded.** Intended family is evidence `Toss Product Sans OTF`. |
+
+Heading: Step 4 — Stack `html-tailwind`
+
+- Fixed nav `z-50`, dropdown `z-40`
+- `hidden md:flex` / drawer on small screens — same labels, not different content
+- Breakpoints to test: 320 / 375 / 768 / 1024 / 1280 / 1440
+- Responsive padding: tighter on 390, wider on 1440
+- Offline constraint: no Tailwind CDN, no Google Fonts `@import`. Tokens inlined as CSS variables.
+
+
+Heading: Global Rules
+
+Heading: Color Palette (applied)
+
+Evidence values only. Pack gold/purple/dark slate is **not** in this table.
+
+| Role | Hex | CSS Variable | Source |
+|------|-----|--------------|--------|
+| Canvas | `#fdfdfe` | `--color-background` | `surfaces.desktop-1440.chrome.pageBackgroundRendered.hex` |
+| Canvas (mobile capture) | `#fefefe` | `--color-background-mobile` | `surfaces.mobile-390.chrome.pageBackgroundRendered.hex` |
+| Body color (computed) | `#000000` | `--color-foreground` | `chrome.bodyColor` |
+| On-hero type | `#ffffff` | `--color-on-hero` | typeScale `h2.color`, `p.color` |
+| Button foreground | `#333840` | `--color-button-fg` | `primaryButton.color` (matches sampled nav ink) |
+| Button background (JSON) | `#07194c` | — | `primaryButton.background` — **not used in render**; conflicts with the light pill in `desktop-1440-viewport.png` |
+| Button background (applied) | `#f2f3f6` | `--color-button-bg` | sampled from  CTA pill (verify surface) |
+| Header fill | `#ffffff` | `--color-header` | sampled header band of the same viewport |
+| Imagery near-white | `#fdfdfe` | `--color-image-0` | `imagery.samples[0].palette[0].hex` |
+| Imagery cool 1 | `#e5ebf2` | `--color-image-1` | `imagery.samples[0].palette[1].hex` |
+| Imagery cool 2 | `#eaeef5` | `--color-image-2` | `imagery.samples[0].palette[2].hex` |
+| Imagery cool 3 | `#f3f5fa` | `--color-image-3` | `imagery.samples[0].palette[3].hex` |
+| Imagery deep | `#010204` | `--color-image-4` | `imagery.samples[0].palette[4].hex` |
+| Imagery steel | `#7a848c` | `--color-image-5` | `imagery.samples[0].palette[5].hex` |
+| Mark (logo) | `#004aff` | `--color-mark` | sampled blue cluster in viewport header — **not** an evidence.json field |
+| Pack primary (unused) | `#F59E0B` | — | `--design-system` only |
+| Destructive | | `--color-destructive` | **blank** — not in evidence |
+| Ring | `#333840` | `--color-ring` | reused button foreground; no dedicated ring token in evidence |
+
+**Color Notes:** Light marketing canvas. Hero type is white over the still. Do not paint the page with the pack Fintech/Crypto dark gold set.
+
+Heading: Typography
+
+- **Intended heading/body family (evidence):** `Toss Product Sans OTF` (`typeScale[*].family`)
+- **Loaded family:** none. Offline file; the font file is not in the snapshot. Stack: `"Toss Product Sans OTF", "Toss Product Sans", system-ui, sans-serif`
+- **Pack heading/body (unused):** IBM Plex Sans / Noto Sans KR (would require network)
+- **Mood (pack):** financial, trustworthy, professional
+
+| Role | Size | Weight | Line-height | Letter-spacing | Color | Source |
+|------|------|--------|-------------|----------------|-------|--------|
+| Hero line desktop | `80px` | `700` | `96px` | `normal` | `#ffffff` | `desktop-1440.chrome.typeScale` tag `h2` |
+| Hero line mobile | `40px` | `700` | `46px` | `normal` | `#ffffff` | `mobile-390.chrome.typeScale` tag `h2` |
+| Body/supporting | `16px` | `400` | `25.6px` | `-0.32px` | `#ffffff` | `desktop-1440` tag `p` |
+| Button | `16px` | `500` | `25.6px` | `-0.32px` | `#333840` | `desktop-1440` tag `button` |
+
+Nav label size is **blank** (not a typeScale row). Render uses the button size `16px` / weight `500` as the only nearby chrome size.
+
+Heading: Spacing Variables
+
+Pack 4px scale (used only where evidence has no measurement):
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--space-xs` | `4px` | Tight gaps (pack) |
+| `--space-sm` | `8px` | Icon gaps; pack touch-spacing minimum |
+| `--space-md` | `16px` | Standard padding (pack) |
+| `--space-lg` | `24px` | Section padding (pack) |
+| `--space-xl` | `32px` | Large gaps (pack) |
+| `--space-2xl` | `48px` | Section margins (pack) |
+| `--space-3xl` | `64px` | Equals desktop header height (evidence `header.heightPx` 64) |
+
+Evidence geometry (not invented):
+
+| Token | Value | Source |
+|-------|-------|--------|
+| `--header-height-desktop` | `64px` | `desktop-1440.chrome.header.heightPx` |
+| `--header-height-mobile` | `56px` | `mobile-390.chrome.header.heightPx` |
+| `--button-radius` | `12px` | `primaryButton.radiusPx` |
+| `--touch-min` | `44px` | pack `touch-target-size` (Apple 44×44) |
+
+Hero corner radius: **blank** in evidence.json. Render clips with pack `--space-lg` (24px), not claimed as a captured radius.
+
+Heading: Shadow Depths
+
+Pack defaults. No shadow token in evidence (header background is null / white).
+
+| Level | Value | Usage |
+|-------|-------|-------|
+| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |
+| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Dropdown |
+| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Drawer |
+| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | — |
+
+Heading: Motion
+
+| Token | Value | Source |
+|-------|-------|--------|
+| `--duration-fast` | `150ms` | pack state transitions |
+| `--duration-normal` | `200ms` | pack |
+| `--duration-ui-max` | `300ms` | pack Quick Reference §7 |
+| `--ease-out` | `ease-out` | pack enter |
+| Hero video duration | `4.05` | `desktop-1440.motion.duration` |
+| Autoplay / loop / muted | `true` / `true` / `true` | `desktop-1440.motion` |
+| Motion magnitude | `0.0025` | evidence; cutCount `0` |
+| `prefers-reduced-motion` | reduce transitions to ~0.01ms | pack + Quick Reference |
+
+
+Heading: Three-layer tokens (design-system skill)
+
+```css
+:root {
+  /* Primitive — evidence hexes only */
+  --color-white-canvas: #fdfdfe;
+  --color-white-mobile: #fefefe;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-ink-button: #333840;
+  --color-navy-recorded: #07194c; /* recorded; not mapped to a component */
+  --color-pill: #f2f3f6;
+  --color-cool-1: #e5ebf2;
+  --color-cool-2: #eaeef5;
+  --color-cool-3: #f3f5fa;
+  --color-deep: #010204;
+  --color-steel: #7a848c;
+  --color-mark: #004aff;
+
+  /* Semantic */
+  --color-background: var(--color-white-canvas);
+  --color-foreground: var(--color-black);
+  --color-on-hero: var(--color-white);
+  --color-header: var(--color-white);
+  --color-button-bg: var(--color-pill);
+  --color-button-fg: var(--color-ink-button);
+  --color-ring: var(--color-ink-button);
+
+  /* Component */
+  --header-height: var(--header-height-desktop);
+  --button-bg: var(--color-button-bg);
+  --button-fg: var(--color-button-fg);
+  --button-radius: 12px;
+  --nav-z: 50;
+  --dropdown-z: 40;
+  --drawer-z: 50;
+}
+@media (max-width: 767px) {
+  :root { --header-height: var(--header-height-mobile); }
+}
+```
+
+Raw hex is not repeated inside components — they reference these variables.
+
+
+Heading: Home page overrides
+
+Replaces  (pack 800px / low density / centered CTA).
+
+- **Surface:** `desktop-1440` and `mobile-390` of `https://toss.im/`
+- **Layout:** full-bleed hero under a full-width top bar. Not 800px centered column.
+- **Nav (viewport, verify):** `서비스` · `비즈니스` · `회사소개` · `뉴스룸` · `채용` · `KOR` · `앱 다운로드`
+- **Task:** activating `서비스` moves to `#서비스` (the hero on this same home). No extra screens.
+- **Hero copy (viewport):** `금융부터 일상까지` / `마침내` / `토스 하나로`
+- **Primary chrome CTA:** `앱 다운로드` (JSON label is character-split `앱 다운로드`; viewport shows one pill). Destination URL **blank**.
+- **Imagery:** one generated still, `image.jpg`, 16:9, relative path. Evidence `method.note`: imagery is a distribution across samples, never one hero — the still is generated from sample[0] palette + lighting + the capture composition, not copied from the capture file.
+- **Do not add** below-fold product sections whose copy is not on the specified first screen.
+
+
+Heading: Component specs
+
+Heading: Header
+
+| Property | Desktop | Mobile |
+|----------|---------|--------|
+| Height | 64px | 56px |
+| Background | `--color-header` | same |
+| Position | sticky `top: 0`, `z-index: 50` | same |
+| Body offset | padding-top = header height | same |
+| Mobile control | — | Phosphor `list` / `x`, 44×44, `aria-label` required (icon-only) |
+
+Heading: Top nav
+
+- Desktop: horizontal text links, `cursor: pointer`, hover 150–200ms color/weight only (no layout-shifting scale).
+- Current item: `aria-current="page"` (pack `nav-state-active` — not color alone).
+- `서비스` is the task target: `href="#서비스"`.
+- Other labels are present and focusable; they have no extra page bodies in this run.
+- `KOR` is a disclosed control (`aria-haspopup="listbox"`). Only `KOR` is evidenced — no extra locales.
+- Skip link: “본문으로” → `#서비스`.
+
+Heading: Primary button (`앱 다운로드`)
+
+| State | Background | Text | Border | Shadow |
+|-------|------------|------|--------|--------|
+| Default | `var(--button-bg)` | `var(--button-fg)` | none | none |
+| Hover | same, opacity 0.92 | same | none | none |
+| Focus-visible | same | same | 2px ring `--color-ring`, 2px offset | none |
+| Active | same, opacity 0.88 | same | none | none |
+| Disabled | — | — | — | — (not evidenced) |
+| Loading | — | — | — | — (not evidenced) |
+
+Radius 12px, font 16/500. Fill is the viewport pill, not JSON `#07194c`.
+
+Heading: Hero
+
+- Media: `image.jpg`, `width="1920"` `height="1080"` from `imagery.samples[0].intrinsic` / `motion.intrinsic`.
+- `alt=""` — evidence `alt` is empty; heading carries the text (decorative under the overlay).
+- Overlay type: evidence h2 metrics, marked up as `h1` so heading order starts at 1 (pack heading-hierarchy).
+- Lighting reference for the still: `light.luminanceGradient` = `brighter left`, `meanLuma` 0.652.
+
+Heading: Drawer (mobile)
+
+- Phosphor `list` opens, `x` closes.
+- Esc closes; focus trap; return focus to the toggle (shadcn/Radix pattern, implemented in HTML).
+- Same five labels as desktop. Pack: do not ship different content per breakpoint.
+
+
+Heading: Brand (pack `brand` template, evidence-only fill)
+
+Heading: Quick reference
+
+| Element | Value |
+|---------|-------|
+| Primary (applied) | `#fdfdfe` canvas / `#ffffff` on-hero / `#333840` chrome ink |
+| Mark | `#004aff` (capture sample) |
+| Primary font | Toss Product Sans OTF (declared; not embedded) |
+| Voice | **blank** — no voice fields in evidence |
+
+Heading: Imagery guidelines (for the generated still)
+
+From pack banner-design + brand AI prompt block, filled with evidence:
+
+- Lighting: brighter left (`imagery.samples[0].light.luminanceGradient`)
+- Palette: `#fdfdfe` `#e5ebf2` `#eaeef5` `#f3f5fa` `#010204` `#7a848c`
+- Aspect: 1.778 (`samples[0].aspect`), 1920×1080
+- Kind: video still (`samples[0].kind` = `video`, `src` = `https://static.toss.im/assets/toss-im/asset/intro-main.mp4`)
+- Subject JSON: `resolved: false` — prompt describes the capture composition; it does not invent a named person or a second scene
+- Banner-design: no text in the bitmap; HTML overlays the headline
+- Do not download Pinterest. Lane A channel is Grok Imagine, not the pack Gemini path.
+
+Heading: Logo
+
+- Wordmark `toss` + droplet mark, as in the viewport.
+- Don'ts (pack): no rotate, no unofficial recolor, no extra shadow.
+
+
+Heading: Image generation prompt (verbatim)
+
+See `trace.md` for the same string, the evidence fields it cites, and the Imagine session path.
+
+
+Heading: Style guidelines
+
+**Applied pattern:** Hero-Centric Design (landing search), not pack Minimal Single Column.
+
+**Pack style name (database):** Exaggerated Minimalism — keep oversized type and whitespace; drop the dark canvas and 900-weight clamp the database attached.
+
+**Key effects used:** large hero type (80px / 40px), whitespace around the still, 150–200ms chrome transitions.
+
+**Key effects not used:** `font-weight: 900`, `clamp(3rem 10vw 12rem)` — those are pack, not evidence.
+
+
+Heading: Anti-patterns (Do NOT Use)
+
+- Pack: playful design; unclear fees; AI purple/pink gradients
+- Pack: emojis as icons; missing `cursor: pointer`; layout-shifting hover; contrast below 4.5:1 for body; instant state changes; invisible focus
+- This run: extra screens not in the brief; hexes not in evidence.json or the verify capture; Google Fonts / CDN; treating pack Fintech/Crypto gold as Toss; inventing a service mega-menu
+- Evidence `method.note`: do not collapse imagery to “the one hero photo” as if the funnel were complete (`desktop-1440.imagery.attrition.suspect: true`, only 2 samples)
+
+
+Heading: Pre-delivery checklist
+
+- [x] No emojis as icons (Phosphor SVG)
+- [x] `cursor: pointer` on clickable chrome
+- [x] Hover 150–300ms, no layout shift
+- [x] Hero overlay `#ffffff` on the still; chrome `#333840` on `#ffffff` / `#f2f3f6`
+- [x] `:focus-visible` ring
+- [x] `prefers-reduced-motion`
+- [x] Breakpoints include 375 and 1440
+- [x] Sticky header compensated with padding
+- [x] No horizontal scroll intent on 390
+- [x] Single file, no network requests
+- [x] `서비스` is selectable in the top nav and moves to `#서비스`

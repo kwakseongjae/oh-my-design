@@ -1,0 +1,89 @@
+Heading: Design — toss.im home
+
+Locked design system. Future  runs read this file first; pages defer
+to it. Amend intentionally — the file is the rule.
+
+studied: yes · DNA-source: image · snapshot 2026-08-22T19-51-46-001Z
+
+Heading: System
+- Genre · modern-minimal
+- Macrostructure · Marquee Hero
+- Theme · studied-DNA (source:  + https://toss.im/)
+- Axes · light / grotesk-sans / cool
+- Nav · N1b SaaS three-section · knobs: centre-links=5, dropdowns=none, scroll=always-solid, CTA=fill only
+- Footer · Ft2 Inline-rule single line
+- Enrichment · E8 photography · Tier C generated still (`image.jpg`)
+
+Heading: Provenance
+Extracted from evidence image captures of https://toss.im/ (title 토스) as a public
+reference for this assigned brand rebuild on 2026-08-29. Snapshot handle
+`2026-08-22T19-51-46-001Z`. Surface pair: desktop-1440 (1440×900) and
+mobile-390 (390×844).
+
+Tokens that cite `evidence.json` / `manifest.json` /  are exact or
+sampled from those files. Fonts are named from `chrome.typeScale.family`.
+Rhythm below the first fold is unknown — the first-render brief is the home
+fold only.
+
+Heading: Tokens (canonical ·  is the source of truth)
+```css
+:root {
+  --color-paper:      oklch(99.4% 0.0013 286.4); /* #fdfdfe pageBackgroundRendered */
+  --color-paper-2:    oklch(96.4% 0.0041 271.4); /* sampled CTA fill #f2f3f6 */
+  --color-ink:        oklch(33.9% 0.0156 259.8); /* typeScale button #333840 */
+  --color-ink-2:      oklch(33.6% 0.0178 248.4); /* sampled nav */
+  --color-on-photo:   oklch(100% 0.0001 89.9);   /* typeScale h2 #ffffff */
+  --color-mark:       oklch(61.3% 0.2071 255.7); /* sampled logo ~#0080fc */
+  --color-accent:     var(--color-mark);
+  --color-accent-ink: var(--color-on-photo);
+  --color-focus:      var(--color-mark);
+  --color-rule:       oklch(91% 0.006 260);
+
+  --font-display: "Toss Product Sans OTF", "Toss Product Sans", ui-sans-serif, sans-serif;
+  --font-body:    "Toss Product Sans OTF", "Toss Product Sans", ui-sans-serif, sans-serif;
+
+  --text-display: 5rem;      /* desktop h2 80px / 96px */
+  --text-display-s: 2.5rem;  /* mobile h2 40px / 46px */
+  --header-h: 4rem;          /* 64px */
+  --header-h-m: 3.5rem;      /* 56px */
+  --radius-cta: 0.75rem;     /* 12px */
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;  --dur-base: 240ms;  --dur-slow: 320ms;
+}
+```
+
+Heading: CTA voice
+- Primary · paper-2 fill · radius 12px · 16px / weight 500 / tracking −0.32px · label 앱 다운로드
+- Detector conflict: `chrome.primaryButton.background` is `#07194c`; the captured
+  viewport shows a light pill. The visible fill follows the capture sample, not
+  the detector hex.
+- Secondary · none in fold (CTA lives in the nav)
+
+Heading: Motion stance
+- Silent · two primitives: CTA background shift · sheet/lang open
+- Evidence video (`intro-main.mp4`, 1920×1080, 4.05s, autoplay loop muted) is
+  not shipped: first render cannot make network requests. The generated still
+  stands in.
+- Reduced-motion fallback · ≤150 ms opacity / no spatial press
+
+Heading: Copy (only strings in the snapshot)
+- Nav · 서비스 · 비즈니스 · 회사소개 · 뉴스룸 · 채용
+- Locale control · KOR
+- Headline · 금융부터 일상까지 / 마침내 / 토스 하나로
+- Wordmark · toss
+
+Submenu destinations under 서비스 are not in the snapshot. The control selects
+the 서비스 hash on this same home fold; no extra screens.
+
+Heading: Notes
+- Do not carry over: detector-garbled CTA label (`앱 다운로드` is the visible
+  string); `#07194c` as the visible 앱 다운로드 fill; remote `static.toss.im`
+  video/poster URLs; invented stats; invented product-list copy.
+- Single family is the capture (`Toss Product Sans OTF` on h2, p, and button).
+  No webfont file is bundled; the token names the family and falls back.
+- Imagery samples did not resolve figure/ground (`subject.resolved: false`).
+  The generated still follows the capture composition, not a named person.
+
+Heading: Exports
+ (in this run directory) is the source of truth.

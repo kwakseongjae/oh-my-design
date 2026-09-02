@@ -1,0 +1,41 @@
+{
+  "runId": "lane-a-toss-rep-2",
+  "arm": "omd",
+  "lane": "lane-a",
+  "brand": "toss",
+  "repeat": 2,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/toss/<arm>/rep-2/system.md",
+      "sha256": "0d58481cb341e84d86394a846654230ec4462b0983b032747a15009acac72f8d"
+    }
+  ],
+  "sourceSha256": "0d58481cb341e84d86394a846654230ec4462b0983b032747a15009acac72f8d",
+  "transcriptSha256": "877e5b65aa98c183beff84d9e4a76f6233911c3a8c3a177c32f5653a7b2c3ee9",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "becf08f97cfd0a28052a6779171096649e7a6fef2ab581379382333f792a3c34",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T13:19:04Z",
+  "transcriptionEndedAt": "2026-09-02T13:19:04Z",
+  "verificationStartedAt": "2026-09-02T13:19:04Z",
+  "verificationEndedAt": "2026-09-02T13:19:04Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/toss/omd/rep-2.map.csv",
+  "mapSha256": "044e7fbc002b64232c9aae419bea9e46bd8a008894b99b46f9bb91233bcbaa04",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 236,
+    "problems": [],
+    "attempts": 2,
+    "verifiedAt": "2026-09-02T13:19:04Z",
+    "verifiedBy": "orchestrator",
+    "declaredSpans": 44
+  },
+  "verdict": "PASS",
+  "transcriptFile": "90-comparison/transcripts/lane-a/toss/omd/rep-2.txt",
+  "submittedToScoring": true
+}

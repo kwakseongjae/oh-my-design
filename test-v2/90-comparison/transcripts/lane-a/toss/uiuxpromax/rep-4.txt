@@ -1,0 +1,338 @@
+Heading: Toss home —  design system
+
+Pack workflow:  Step 1 (requirements) → Step 2 (`--design-system`) → Step 3 (domain searches) → Step 4 (`--stack html-tailwind`). Token layers follow the pack `design-system` skill (primitive → semantic → component). States follow pack . Icons from pack  (Phosphor outline).
+
+This document binds pack recommendations to **measured evidence** from  (snapshot `2026-08-22T19-51-46-001Z`). Values not in evidence are left empty or marked as pack-only. Pack palette/type suggestions that contradict a measured field are recorded, then overridden.
+
+Screen in scope: home (`https://toss.im/`). Task: select one item in the top nav (`서비스`) and move. No other screens.
+
+`--persist` was not used (would write  outside this run directory unless pointed here; required system doc is this file).
+
+
+Heading: Step 1 — Requirements
+
+| Slot | Value | Source |
+|------|--------|--------|
+| Product type | Consumer fintech superapp marketing home | brief URL `https://toss.im/` + `evidence.json` `source.title` = `토스` |
+| Audience | C-end, `ko-KR` | `manifest.json` `locale` |
+| Platform | Web, two surfaces | `desktop-1440` 1440×900, `mobile-390` 390×844 |
+| Stack | Single-file HTML + inline CSS (`html-tailwind` rules, no CDN) | required output `render.html`, offline |
+| Style keywords | Light, high-luma, oversized white type on a still photographic hero | evidence chrome + imagery |
+| Motion | Present, autoplay, loop, muted, almost still | `surfaces.desktop-1440.motion` (`motionMagnitude` 0.0025) |
+
+
+Heading: Step 2 — Pack `--design-system` (verbatim)
+
+Query: `fintech consumer superapp landing minimal clean Korean finance`  
+Command (from pack root ):
+
+```
+python3  "fintech consumer superapp landing minimal clean Korean finance" --design-system -p "Toss" -f markdown --motion 1 --density 3
+```
+
+Dials: `--motion 1` because evidence `motionMagnitude` is 0.0025 (almost still). `--density 3` because the captured first render is a spacious marketing home, not a dashboard.
+
+Heading: Design System: Toss
+
+Heading: Design Dials
+- **Motion:** 1/10 — Subtle
+- **Density:** 3/10 — Spacious
+
+Heading: Pattern
+- **Name:** Minimal Single Column
+- **Conversion Focus:** Single CTA focus. Large typography. Lots of whitespace. No nav clutter. Mobile-first.
+- **CTA Placement:** Center, large CTA button
+- **Color Strategy:** Minimalist: Brand + white #FFFFFF + accent. Buttons: High contrast 7:1+. Text: Black/Dark grey
+- **Sections:** 1. Hero headline, 2. Short description, 3. Benefit bullets (3 max), 4. CTA, 5. Footer
+
+Heading: Style
+- **Name:** Exaggerated Minimalism
+- **Mode Support:** Light  Full | Dark  Full
+- **Keywords:** Bold minimalism, oversized typography, high contrast, negative space, loud minimal, statement design
+- **Best For:** Fashion, architecture, portfolios, agency landing pages, luxury brands, editorial
+- **Performance:**  Excellent | **Accessibility:**  WCAG AA
+
+Heading: Colors
+| Role | Hex | CSS Variable |
+|------|-----|--------------|
+| Primary | `#F59E0B` | `--color-primary` |
+| On Primary | `#0F172A` | `--color-on-primary` |
+| Secondary | `#FBBF24` | `--color-secondary` |
+| Accent/CTA | `#8B5CF6` | `--color-accent` |
+| Background | `#0F172A` | `--color-background` |
+| Foreground | `#F8FAFC` | `--color-foreground` |
+| Muted | `#272F42` | `--color-muted` |
+| Border | `#334155` | `--color-border` |
+| Destructive | `#EF4444` | `--color-destructive` |
+| Ring | `#F59E0B` | `--color-ring` |
+
+*Notes: Gold trust + purple tech*
+
+Heading: Typography
+- **Heading:** Noto Sans KR
+- **Body:** Noto Sans KR
+- **Mood:** korean, modern, clean, professional, multilingual, readable
+- **Best For:** Korean sites, K-beauty, K-pop, Korean businesses, multilingual
+- **Google Fonts:** `https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap`
+
+Heading: Key Effects
+font-size: clamp(3rem 10vw 12rem), font-weight: 900, letter-spacing: -0.05em, massive whitespace
+
+Heading: Motion
+**Scroll Reveal** (Subtle) — Duration 300–400ms, `power1.out`. Not wired as GSAP in `render.html` (offline, no network). Evidence motion is a muted looping video with `motionMagnitude` 0.0025; the first render is a still (`image.jpg`). `prefers-reduced-motion` is honored.
+
+Heading: Avoid (Anti-patterns)
+- Playful design
+- Unclear fees
+- AI purple/pink gradients
+
+
+Heading: Step 3 — Domain searches used
+
+| Domain | Query | Takeaway applied |
+|--------|--------|------------------|
+| `landing` | `hero navigation cta header` | **Hero-Centric Design** (full-bleed hero + sticky-nav CTA). Overrides pack “Minimal Single Column / no nav clutter / no extra sections beyond hero” because the captured home has a top nav and the brief task is to select `서비스` there. Benefit bullets / footer from the default pattern are **not built** (out of first render). |
+| `style` | `minimalism clean light` | Keep **Exaggerated Minimalism** for oversized hero type; keep **Minimalism & Swiss Style** for the quiet header (subtle hover 200–250ms). |
+| `color` | `fintech finance minimal light` | Pack fintech rows are dark gold/navy. Not used for page surfaces — evidence is light. Banking/Traditional Finance (`Background #F8FAFC`) is the closest pack row to the measured page; still overridden by `#fdfdfe` / `#fefefe`. Personal Finance Tracker `--color-secondary` `#3B82F6` is used **only** for the unmeasured logo mark. |
+| `typography` | `professional modern clean sans Korean` | **Korean Modern / Noto Sans KR** as fallback stack. Intended family is evidence `Toss Product Sans OTF`. No Google Fonts request (offline render). |
+| `ux` | `navigation accessibility dropdown header` | Skip link, keyboard, heading hierarchy, sticky nav compensation via remaining `dvh` under header. Breadcrumbs skipped (flat home). |
+| `ux` | `animation accessibility z-index loading` | z-index scale 10 / 40 / 50; no decorative continuous animation; no skeleton (nothing async). |
+| `icons` | `navigation menu chevron` | Phosphor outline: `List`, `CaretDown` (from  rows), `X` from the Phosphor set (icon-only close). No emoji. |
+| `stack html-tailwind` | `navigation header hero dropdown` | `z-50` nav, `z-40` drawer. |
+| `stack html-tailwind` | `button focus reduced-motion touch-target` | `min-h/min-w 44px`, `focus-visible` ring, `prefers-reduced-motion`. |
+
+
+Heading: Evidence overrides (measured only)
+
+Empty = not in evidence. Do not invent.
+
+Heading: Chrome — `surfaces.desktop-1440.chrome` (mirrored at root `chrome`)
+
+| Token | Value |
+|-------|--------|
+| `pageBackgroundRendered.hex` | `#fdfdfe` (coverage 0.1625, source: modal colour of captured viewport) |
+| `bodyColor` | `#000000` |
+| `header.heightPx` | `64` |
+| `header.background` | empty (`null`) |
+| `primaryButton.fill` | `solid` |
+| `primaryButton.background` | `#07194c` (computed sample) |
+| `primaryButton.color` | `#333840` |
+| `primaryButton.radiusPx` | `12` |
+| `primaryButton.fontPx` | `16` |
+| `primaryButton.weight` | `500` |
+| `primaryButton.label` | reconstructed as `앱 다운로드` from the split capture string `앱 다운로드앱 다운로드` |
+| type `h2` | 80px / 700 / `Toss Product Sans OTF` / line-height 96px / letter-spacing `normal` / `#ffffff` |
+| type `p` | 16px / 400 / same family / 25.6px / `-0.32px` / `#ffffff` |
+| type `button` | 16px / 500 / same family / 25.6px / `-0.32px` / `#333840` |
+
+**Computed vs capture conflict:** `primaryButton.background` `#07194c` on `#333840` text fails contrast and does not match  (light pill). Render uses a light fill from the imagery palette (`#e5ebf2`) and keeps the measured text color, radius, size, and weight. `#07194c` is stored as `--color-sample-navy`, not painted as the download chip.
+
+Heading: Chrome — `surfaces.mobile-390.chrome`
+
+| Token | Value |
+|-------|--------|
+| `pageBackgroundRendered.hex` | `#fefefe` (coverage 0.207) |
+| `header.heightPx` | `56` |
+| `primaryButton` | empty (`null`); `buttonCandidatesAboveFold` = 0 |
+| type `h2` | 40px / 700 / `Toss Product Sans OTF` / 46px / `normal` / `#ffffff` |
+
+Heading: Imagery — `surfaces.desktop-1440.imagery` (verify before using; attrition `suspect`, only 2 samples)
+
+Sample `c1` (, kind `video`, src `https://static.toss.im/assets/toss-im/asset/intro-main.mp4`):
+
+| Field | Value |
+|-------|--------|
+| aspect | 1.778 |
+| intrinsic | 1920×1080 |
+| palette | `#fdfdfe` 0.1568, `#e5ebf2` 0.0494, `#eaeef5` 0.0414, `#f3f5fa` 0.0372, `#010204` 0.0248, `#7a848c` 0.022 |
+| meanLuma | 0.652 |
+| p05 / p50 / p95 | 0.049 / 0.759 / 1 |
+| dynamicRange | 0.951 |
+| luminanceGradient | brighter left (`dx` -0.265, `dy` -0.141) |
+| subject | unresolved (`figureGroundResolved` 0/2; placement omitted) |
+
+`method.note`: chrome and imagery are separate evidence domains; imagery is a distribution across samples, never one hero.
+
+Mobile imagery: 12 samples analysed, `figureGroundResolved` 2/12, placement omitted. Later-sample alts (`내 자산 모아보기`, `판매량 늘리고 싶다면`) are not used (not the home first render).
+
+Heading: Motion — `surfaces.desktop-1440.motion`
+
+| Field | Value |
+|-------|--------|
+| present / autoplay / loop / muted | true / true / true / true |
+| duration | 4.05s |
+| motionMagnitude | 0.0025 |
+| cutCount | 0 |
+| poster | `intro-main-poster.webp` (not fetched; offline) |
+
+Hero still (`image.jpg`) replaces the autoplay video so `render.html` has no network media.
+
+Heading: Labels from capture (not in JSON chrome)
+
+From  and :
+
+- Wordmark: `toss`
+- Nav: `서비스`, `비즈니스`, `회사소개`, `뉴스룸`, `채용`
+- Locale chip: `KOR`
+- Hero line: `금융부터 일상까지 마침내 토스 하나로`
+- Mobile: hamburger control; same hero line stacked
+
+Logo mark blue hex: **empty** (not in evidence JSON). Render uses pack Personal Finance Tracker `--color-secondary` `#3B82F6` for the mark only. Path geometry of the mark is unmeasured.
+
+Hero frame corner radius, page gutter, wordmark size: **empty**. Render uses pack density-3 spacing (`--space-4` / `--space-6`) for gutter and hero radius; not claimed as captured px.
+
+
+Heading: Three-layer tokens (pack `design-system` architecture)
+
+Primitives that are not measured stay unnamed. Semantic aliases never point at the discarded dark-gold pack row (`#F59E0B` / `#0F172A`).
+
+```css
+/* === PRIMITIVES (evidence) === */
+:root {
+  --color-white-fd: #fdfdfe;
+  --color-white-fe: #fefefe;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-ink-33: #333840;
+  --color-mist-e5: #e5ebf2;
+  --color-mist-ea: #eaeef5;
+  --color-mist-f3: #f3f5fa;
+  --color-ink-01: #010204;
+  --color-steel-7a: #7a848c;
+  --color-sample-navy: #07194c; /* stored; not painted on the download chip */
+
+  --font-ui: "Toss Product Sans OTF", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --font-size-16: 16px;
+  --font-size-40: 40px;
+  --font-size-80: 80px;
+  --line-25: 25.6px;
+  --line-46: 46px;
+  --line-96: 96px;
+  --tracking-body: -0.32px;
+  --weight-400: 400;
+  --weight-500: 500;
+  --weight-700: 700;
+
+  --header-desktop: 64px;
+  --header-mobile: 56px;
+  --radius-cta: 12px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+
+  --duration-fast: 150ms;
+  --duration-ui: 200ms;
+  --duration-slow: 300ms;
+
+  --z-base: 0;
+  --z-content: 10;
+  --z-dropdown: 40;
+  --z-nav: 50;
+}
+
+/* pack-only primitive for the unmeasured logo mark */
+:root {
+  --color-blue-500: #3B82F6;
+}
+
+/* === SEMANTIC === */
+:root {
+  --color-background: var(--color-white-fd);
+  --color-foreground: var(--color-black);
+  --color-on-hero: var(--color-white);
+  --color-muted: var(--color-mist-e5);
+  --color-border: var(--color-mist-ea);
+  --color-logo: var(--color-blue-500);
+  --color-ring: var(--color-ink-33);
+}
+
+/* === COMPONENTS === */
+:root {
+  --header-height: var(--header-mobile);
+  --header-bg: var(--color-white);
+  --button-download-bg: var(--color-muted);
+  --button-download-fg: var(--color-ink-33);
+  --button-download-radius: var(--radius-cta);
+  --hero-headline-size: var(--font-size-40);
+  --hero-headline-line: var(--line-46);
+}
+@media (min-width: 1024px) {
+  :root {
+    --header-height: var(--header-desktop);
+    --hero-headline-size: var(--font-size-80);
+    --hero-headline-line: var(--line-96);
+  }
+}
+```
+
+
+Heading: Components (pack specs × this screen)
+
+Heading: Header
+- Height: 56 mobile / 64 desktop (evidence).
+- Three regions: logo · primary nav · utilities (`KOR`, `앱 다운로드`).
+- Background empty in JSON; painted `var(--color-white)` so sticky nav does not show the hero through it (pack sticky-nav: do not obscure content).
+- Mobile: logo + Phosphor `List` (`aria-label` 메뉴 열기). Drawer `z-40`, nav `z-50` (html-tailwind stack).
+- Active item: weight 700 (pack UX Active State). Do not rely on color alone — `aria-current="page"`.
+
+Heading: Navigation (task surface)
+- Desktop: text links `서비스` `비즈니스` `회사소개` `뉴스룸` `채용` (from viewport capture).
+- `서비스` is the selectable item. Click → `history.pushState` to `#서비스` (pack: do not silently reset the stack), set `aria-current`, move focus to the destination heading.
+- Other labels stay visible for chrome fidelity. They do not open extra screens (brief: home only).
+- Keyboard: Tab order = visual order; Escape closes drawer; skip link to `#main`.
+- Touch: min 44×44px (stack `min-h-[44px] min-w-[44px]`).
+
+Heading: Button `앱 다운로드`
+- Pack variant mapping: secondary chip (`gray-100` analog = `--color-muted`), not pack `default` (primary navy/gold).
+- Size visual: pack `lg` height 48px is the nearest named size that still meets 44px; font 16 / weight 500 from evidence.
+- States (pack ): hover 150ms ease-in-out; `focus-visible` ring 2px + 2px offset; active scale 0.95–1.00 band via 0.98; disabled unused.
+
+Heading: Hero
+- One generated photograph (`image.jpg`), aspect 1.778 (16:9), `object-fit: cover`.
+- Subject placement: omitted (unresolved in JSON).
+- Headline overlay: evidence type scale, white, bottom of frame. Capture line `금융부터 일상까지 마침내 토스 하나로`. Desktop: three spans in a row; mobile: stacked (viewport).
+- Markup uses `h1` for pack heading-hierarchy (single page title). Evidence tag on this type size is `h2`.
+- No autoplay video (offline). Motion magnitude 0.0025 → treat as still; honor `prefers-reduced-motion`.
+
+Heading: Icons
+- Phosphor outline, one stroke family, no emoji.
+- Icon-only controls have `aria-label`.
+
+
+Heading: Page inventory (home only)
+
+| Region | Purpose |
+|--------|---------|
+| Skip link | Keyboard bypass of nav |
+| Header | Logo, five nav labels, locale, download |
+| Main / hero | First render of toss.im home |
+| `#서비스` | In-file destination after selecting 서비스 (heading only; no invented body) |
+| Mobile drawer | Same five labels + download |
+
+No footer, no benefit bullets, no extra marketing sections — those pack landing sections are out of the captured first render.
+
+
+Heading: Stack notes (`html-tailwind`)
+
+- Tailwind utilities are **inlined as CSS** so the file opens with zero network.
+- No `@import` fonts, no CDN, no remote images.
+- Breakpoints: pack 375 / 768 / 1024 / 1440 plus evidence surfaces 390 and 1440. Desktop nav at `lg` (1024px).
+- `min-h-dvh` on the root; hero uses remaining viewport under the header.
+
+
+Heading: Pre-delivery checklist (pack)
+
+- [x] No emojis as icons (inline SVG)
+- [x] `cursor: pointer` on clickable elements
+- [x] Hover/focus 150–300ms
+- [x] Light text contrast: hero headline `#ffffff` on photographic ground; nav `#000000` on `#fdfdfe` / `#ffffff`
+- [x] Visible `focus-visible` rings
+- [x] `prefers-reduced-motion`
+- [x] Responsive 375 / 768 / 1024 / 1440
+- [x] Touch targets ≥ 44px
+- [x] Skip link + heading hierarchy (`h1` once per view)

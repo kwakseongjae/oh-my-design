@@ -1,0 +1,79 @@
+Heading: Design — toss.im home
+
+Locked design system. Future  runs read this file first; pages defer
+to it. Amend intentionally — the file is the rule.
+
+studied: yes · DNA-source: image (evidence capture)
+source-url: https://toss.im/ · snapshot: 2026-08-22T19-51-46-001Z
+
+Heading: System
+- Genre · modern-minimal
+- Macrostructure · Marquee Hero
+- Theme · studied-DNA (source: image + evidence chrome)
+- Axes · light >85 / geometric-sans / cool (cyan-blue)
+- Nav · N1b SaaS three-section · knobs: centre links=5 · dropdowns=none · scroll=always-solid · CTA pair=locale + fill
+- Footer · Ft2 Inline-rule single line · knobs: order=wordmark · separator=none · density=spaced
+- Hero · H1 Marquee over E8 photography · knobs: size=xxl · alignment=left-bias · underlay=none
+- Enrichment · E8 Hero Photography · Tier C generated still (offline stand-in for intro-main poster)
+- Polish · none
+- Motion · CTA hover lift · drawer open · one hero opacity reveal
+
+Heading: Provenance
+Extracted from evidence captures under  for snapshot
+`2026-08-22T19-51-46-001Z`, plus `evidence.json` chrome / typeScale / imagery
+palette. Image-mode study of  and
+. Attestation: public reference for the brand
+named in this brief (toss).
+
+Tokens from evidence chrome and sampled capture pixels. Fonts: evidence names
+`Toss Product Sans OTF` for h2, p, and button — one family is the design.
+Rhythm from a vision pass on the viewport captures. Below-fold copy and any
+서비스 하위 항목 not visible in the captures are omitted (unknown means absent).
+
+Heading: Tokens (canonical ·  is the source of truth)
+```css
+:root {
+  --color-paper:      oklch(99.43% 0.0013 286.4); /* evidence pageBackgroundRendered #fdfdfe */
+  --color-paper-2:    oklch(96.42% 0.0041 271.4); /* capture CTA fill #f2f3f6 */
+  --color-ink:        oklch(33.91% 0.0156 259.8); /* evidence primaryButton.color #333840 */
+  --color-ink-strong: oklch(8.37% 0.0118 255.9); /* imagery palette #010204 */
+  --color-rule:       oklch(94.64% 0.0013 286.4);
+  --color-accent:     oklch(50.42% 0.2765 263.7); /* sampled from viewport logo mark */
+  --color-accent-ink: oklch(99.43% 0.0013 286.4);
+  --color-focus:      oklch(50.42% 0.2765 263.7);
+  --font-display: "Toss Product Sans OTF", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --font-body:    "Toss Product Sans OTF", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms; --dur-base: 240ms; --dur-slow: 320ms;
+  --radius-card: 24px; --radius-pill: 12px; --radius-input: 12px;
+}
+```
+
+Header height: 64px desktop / 56px mobile (`chrome.header.heightPx`).
+Display: 80px / 700 / line-height 96px / #ffffff desktop; 40px / 700 /
+line-height 46px mobile (`typeScale h2`). Body/UI: 16px / 400–500 /
+letter-spacing -0.32px. CTA radius 12px.
+
+`chrome.primaryButton.background` `#07194c` was not used for the visible
+앱 다운로드 pill — the viewport capture shows fill `#f2f3f6` and text `#333840`.
+Verify-based: capture wins over the geometry extractor for that fill.
+
+Heading: CTA voice
+- Primary · paper-2 fill · ink text · radius 12px · 16px / 500 · label 앱 다운로드
+- Secondary · none in fold (Marquee: no CTA in the photograph)
+
+Heading: Motion stance
+- CTA hover lift · drawer slide · one hero opacity reveal
+- Reduced-motion fallback · ≤150 ms opacity crossfade
+- Evidence hero motion (autoplay muted loop, 4.05s, 1920×1080, cutCount 0) is a
+  video the offline render cannot request; the generated still stands in
+
+Heading: Notes
+- Do not invent 서비스 submenu products, metrics, testimonials, or a year in the footer
+- Do not load webfonts over the network; intended face is Toss Product Sans OTF
+- Do not redraw browser or phone chrome around the hero photograph
+- Do not add screens beyond home + the five captured nav destinations
+- Anti-patterns skipped from the source: none of the capture's chrome was a 3-feature grid, gradient headline, or Ft3 sitemap
+
+Heading: Exports
+ (in this project) is the source of truth.

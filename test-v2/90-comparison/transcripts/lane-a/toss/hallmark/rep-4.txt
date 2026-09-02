@@ -1,0 +1,75 @@
+Heading: Design — 토스
+
+Locked design system. Future  runs read this file first; pages defer
+to it. Amend intentionally — the file is the rule.
+
+Heading: System
+- Genre · editorial
+- Macrostructure · Photographic
+- Theme · studied-DNA (source: image · snapshot `2026-08-22T19-51-46-001Z`)
+- Axes · light >85 / roman grotesque / cool indigo-navy
+- Nav · N1b (centre-links=5 · dropdowns=none · frost-on-scroll · outlined chip CTA)
+- Footer · Ft2
+- Enrichment · E8 photography, Tier C (Grok Imagine)
+
+Heading: Provenance
+Extracted from evidence captures (image mode), not a live fetch.
+- Source:  · URL recorded as `https://toss.im/`
+- Surfaces: desktop-1440 (1440×900) · mobile-390 (390×844)
+- Date: 2026-08-29
+- Attestation: public reference captures supplied with the brief
+- Confidence: paper, ink, type family, header height, button radius, and hero copy are from `evidence.json` chrome / typeScale plus the viewport PNGs. Rhythm is from the vision pass on those PNGs. Hero still is generated, not copied from capture.
+
+Heading: Tokens (canonical · inlined in `render.html` `:root`)
+```css
+:root {
+  --color-paper:      oklch(99.43% 0.005 286.4);   /* #fdfdfe, chroma lifted to 0.005 */
+  --color-paper-2:    oklch(97.01% 0.007 268.5);   /* #f3f5fa */
+  --color-hero-ink:   oklch(99.5% 0.005 264.7);    /* typeScale h2 #ffffff, tinted */
+  --color-ink:        oklch(8.37% 0.0118 255.9);   /* imagery #010204 — not #000000 */
+  --color-ink-2:      oklch(33.91% 0.0156 259.8);  /* primaryButton.color #333840 */
+  --color-rule:       oklch(93.75% 0.0115 252.1);  /* #e5ebf2 */
+  --color-muted:      oklch(60.77% 0.0169 241.9);  /* #7a848c */
+  --color-accent:     oklch(23.85% 0.0974 264.7);  /* primaryButton.background #07194c */
+  --color-accent-ink: oklch(99.5% 0.005 264.7);
+  --color-focus:      oklch(23.85% 0.0974 264.7);
+
+  --font-display: "Toss Product Sans OTF", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --font-body:    var(--font-display);
+
+  --text-base: 1rem;                 /* button fontPx 16 */
+  --text-display: clamp(2rem, 10.25vw, 5rem); /* 40px at 390 · 80px at ≥780 */
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+
+  --radius-pill: 0.75rem;            /* primaryButton.radiusPx 12 */
+  --nav-height: 4rem;                /* header.heightPx 64 desktop; 56 on small */
+}
+```
+
+Heading: CTA voice
+- Primary · outlined chip on `--color-paper` · ink-2 label · radius 12px · label `앱 다운로드`
+- Secondary · none in the capture (not invented)
+
+Heading: Motion stance
+- silent on the photographic fold (macrostructure: photographs do the work)
+- 1 primitive: nav frost on scroll; micro colour shift on links/chip
+- Reduced-motion fallback · ≤150 ms; spinner animation dropped
+
+Heading: Copy (only strings present in evidence / viewport)
+- Wordmark · toss
+- Title · 토스
+- Nav · 서비스 · 비즈니스 · 회사소개 · 뉴스룸 · 채용 · KOR
+- Hero · 금융부터 일상까지 · 마침내 · 토스 하나로
+- Destinations reuse the nav labels. No metrics.
+
+Heading: Notes
+Anti-patterns not carried over:
+- Do not invent proof stats, store badges, or mega-menu items absent from evidence.
+- Do not copy capture photography; the hero still is a generated structural equivalent.
+- Do not ship Ft3 four-column sitemap or N1a two-link chrome.
+- Do not load remote fonts, images, or icon CDNs. Render must open offline.
+
+Heading: Exports
+Tokens live in `render.html` `:root`. No Tailwind / DTCG / shadcn export on this single-file build.

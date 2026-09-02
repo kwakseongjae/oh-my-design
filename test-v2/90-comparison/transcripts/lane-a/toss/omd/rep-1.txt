@@ -1,0 +1,217 @@
+Heading: Toss Home Design System
+
+This document is the  portable contract for this run. It is a
+surface-local system derived from the frozen snapshot, not Toss’s published
+design-system site. Unresolved values are omitted rather than filled.
+
+Heading: Experience
+
+**Scope.** One consumer surface: the Toss home (`https://toss.im/`, snapshot
+`2026-08-22T19-51-46-001Z`). The first render is that home. The only additional
+view is the destination of the top-nav item **서비스**.
+
+**Primary task.** From the top nav, select 서비스 and move to that destination.
+
+**Stance.** The home is an entrance to one nav destination. Reproduce the
+measured first plate; open 서비스; leave every unmeasured service name blank.
+
+**Principles (each names a sacrifice).**
+
+- P1 Honesty over catalog completeness. If a service name, count, or store
+  URL is not in the snapshot, the screen names the missing category instead of
+  inventing a list.
+- P2 One journey over a long homepage. Later marketing plates (shopping stills,
+  app screens) are sacrificed so the graded verb stays reachable on the
+  observed 서비스 control.
+- P3 Measured chrome over reinterpretation. Color, type metrics, header height,
+  and CTA radius come from `evidence.json` chrome and the verify-basis
+  viewports. Unmeasured spacing uses the pack 4pt scale and is labelled as
+  proposed.
+
+**Source classes used.** `prompt-fact` (brief: home, 서비스 from top nav,
+snapshot handle). `repository-fact` (evidence chrome, imagery alts, viewport
+copy, palettes, manifest). `agent-proposed-greenfield-decision` (unmeasured
+inset, hero radius, motion durations, compact breakpoint). `unresolved`
+(Toss Product Sans files, open 서비스 mega-menu items, app-store URL,
+`primaryButton.background` `#07194c` which contradicts the visible pill).
+
+Heading: Foundations
+
+Heading: Decision table
+
+| ID | Category | Decision | Rationale |
+|---|---|---|---|
+|  | Surface genre | Large-radius inset media plate on paper | Viewport home is a rounded photograph sitting on `#fdfdfe`, not shadowed tiles or hairline magazine cards. Genre–domain: cinematic marketing cover. |
+|  | Elevation | Rest = none; hover on controls = fill shift, not drop shadow | Captured header and hero are flat. Elevation tokens exist so hover is a surface change (visual-quality contract). |
+|  | Color density | Paper `#fdfdfe` + chrome ink `#333840` + one accent `#1078fd` | `pageBackgroundRendered.hex`, `typeScale.button.color`, logo pixels sampled from `desktop-1440-viewport.png`. Accent is the mark only, not a wash. |
+|  | Shape | CTA radius `12px`; hero plate `32px` | `primaryButton.radiusPx` is 12. Hero corner is unmeasured; 32px is 4pt-scale proposed. |
+|  | Type hierarchy | Display 80/40 (h2), control 16, weight 700/500/400 | desktop-1440 / mobile-390 `typeScale` and `primaryButton`. Display step is 5× body on desktop (pack ≥2×). |
+|  | Tracking | `normal` on Hangul display; body `-0.32px` as measured | `typeScale.h2.letterSpacing` is `normal`. Korean contract forbids tighter display tracking. Body `-0.32px` is measured on `p`. |
+|  | Layout grammar | Scroll-narrative cover plate (P-ED-03 cover only) + hash 서비스 | One generated image; bento/magazine/carousel fail GS6 content back-calculation. Wide strategy: center max, inset plate. |
+|  | Home composition | Overlay copy on full-bleed figure, not a diptych | Viewport and imagery-01 show the headline on the photograph. Snapshot wins over the generic diptych heuristic. |
+|  | Copy voice | Snapshot labels verbatim; no marketing numbers | Viewport: “toss”, “서비스”, “비즈니스”, “회사소개”, “뉴스룸”, “채용”, “KOR”, “앱 다운로드”, “금융부터 일상까지 마침내 토스 하나로”. |
+|  | Motion | 120ms / 200ms, transform+opacity only | Pack motion tokens. Reduced-motion freezes to the end state. Video autoplay from evidence is not shipped (no network). |
+|  | Unmeasured space | 4pt role scale with section air 2.5 / 4 / 6rem | Pack token floor. Not in chrome; agent-proposed. |
+|  | CTA fill | Pill fill `#f2f3f6`, not `#07194c` | Viewport sampling of the 앱 다운로드 pill. Computed `primaryButton.background` is recorded as unresolved. |
+
+Heading: Color pairs (never a lone accent)
+
+Values are measured hex, also stored as OKLCH for the token floor. Contrast is
+computed pair-wise.
+
+| Token | Hex (evidence or sample) | OKLCH | Pair |
+|---|---|---|---|
+| `--color-paper` | `#fdfdfe` | `oklch(0.994 0.0014 284.2)` | page / service well |
+| `--color-header` | `#fdfdfe` | same as paper | header fill (capture header sampled `#ffffff`; G7, use paper) |
+| `--color-ink` | `#333840` | `oklch(0.339 0.0157 259.8)` | chrome text on paper ~10.7:1 |
+| `--color-cta` | `#f2f3f6` | `oklch(0.964 0.0043 271.1)` | 앱 다운로드 fill; ink on cta ~9.4:1 |
+| `--color-accent` | `#1078fd` | `oklch(0.598 0.2165 258.3)` | logo mark only |
+| `--color-on-media` | typeScale h2 `#ffffff` | `oklch(1 0.0001 260)` | overlay text; not a page base |
+| `--color-scrim` | imagery `#010204` at 40% | `oklch(0.084 0.0118 255.9)` | agent-proposed bottom fade for overlay contrast |
+| `--color-rule` | — | `oklch(0.90 0.004 271)` | listbox border; **agent-proposed** |
+
+`#000000` is `bodyColor` in chrome and is not used as a UI base (G7). `#07194c`
+is computed button fill and is not consumed.
+
+Heading: Spacing (4pt roles)
+
+`--space-1` 4px · `--space-2` 8px · `--space-3` 12px · `--space-4` 16px ·
+`--space-5` 20px · `--space-6` 24px · `--space-section-sm` 2.5rem ·
+`--space-section` 4rem · `--space-section-lg` 6rem ·
+`--gutter: clamp(1rem, 2.2vw, 1.5rem)`. Header height `--header-h: 64px`
+desktop / `56px` mobile (`chrome.header.heightPx`).
+
+Heading: Motion
+
+`--duration-fast: 120ms` · `--duration-base: 200ms` ·
+`--ease-enter: cubic-bezier(0.22, 1, 0.36, 1)` ·
+`--ease-exit: cubic-bezier(0.4, 0, 1, 1)`. Animate transform/opacity only.
+
+Heading: Typography & Assets
+
+**Observed family.** `typeScale.family` = `Toss Product Sans OTF`. That face is
+not bundled in this run (unresolved load). The stack names it first, then
+Hangul-covering gothic fallbacks required by the pack Korean contract. No
+network `@font-face`.
+
+```
+"Toss Product Sans OTF", "Pretendard Variable", Pretendard,
+"Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif
+```
+
+| Role | Desktop | Mobile | Weight | Line-height | Color |
+|---|---|---|---|---|---|
+| display (h1) | 80px | 40px | 700 | 96px / 46px | on-media / ink on service |
+| control / nav | 16px | 16px | 500 | 25.6px | ink |
+| body (measured p) | 16px | 16px | 400 | 25.6px | on-media on home; ink on service |
+| label | 12px | 12px | 500 | 1.3 | ink muted | agent-proposed footer |
+
+Hangul: `word-break: keep-all`. Display headings also `overflow-wrap: anywhere;
+min-width: 0`. No italic display.
+
+**Imagery.** One generated still (`image.jpg`, 1280×800) stands in for
+desktop-1440 imagery sample `c1` (`intro-main.mp4` frame). Evidence `alt` is
+empty; the render alt describes the capture without naming a person. Decorative
+SVG in chrome is `aria-hidden`. No logo file was provided; the mark is an
+inline drop + accessible name “토스”.
+
+**License / authority.** Snapshot captures are evidence, not redistributed in
+the render. The generated image is produced in this run for the first plate.
+Font files are not shipped.
+
+Heading: Components & States
+
+Presets used: **P-ED-03** (lookbook cover plate, token slots from ),
+**P-FN-01** (KOR listbox), **P-FN-02** (route focus). Global nav is
+**no-preset: observed chrome** — the snapshot bar is the product chrome, not a
+catalog widget.
+
+Interactive components declare the seven-state map. Non-interactive plates do
+not get a fictional focus contract.
+
+Heading: Global header (no-preset: observed chrome)
+
+Anatomy: mark+wordmark · primary links · KOR listbox · 앱 다운로드. Mobile:
+wordmark · disclosure. Height 64/56px, fill `--color-header`.
+
+| State | Applicability |
+|---|---|
+| default | yes |
+| hover | yes (fill on CTA and listbox; background on links) |
+| focus-visible | yes (outline on controls, not on programmatic heading focus) |
+| active | yes (pressed scale on buttons) |
+| disabled | not-applicable — header controls that have no destination stay enabled and announce absence |
+| loading | not-applicable |
+| error | not-applicable |
+
+Heading: Button (12px radius pill)
+
+Anatomy: label only on 앱 다운로드. Min hit 44×44. Radius `--radius-pill: 12px`.
+Fill `#f2f3f6`. One visible primary, `data-cta="primary"`.
+
+| State | Fill CTA |
+|---|---|
+| default | cta fill, ink text |
+| hover | darker cta (`oklch` lightness −0.03), same border-width |
+| focus-visible | accent outline, 2px, instant |
+| active | scale 0.98 |
+| disabled | not used |
+| loading / error / success | not-applicable |
+
+Heading: Listbox (P-FN-01) — KOR
+
+Only `KOR` is in the snapshot. The control is a custom listbox (G28). Other
+locales are unnamed and absent. Escape keeps the value.
+
+Heading: Cover plate (P-ED-03 cover)
+
+Anatomy: media + overlay copy well. Image has explicit width/height. Overlay
+h1 is the single heading. On the 서비스 view the photograph hides and the same
+h1 restyles to ink on paper.
+
+Heading: Layout & Platforms
+
+**Grammar.** Cover plate, center-max, inset by `--gutter`. 서비스 destination
+is a paper well on the same route (`#service`), not a second HTML file.
+
+**Viewports.** 1440 / 390 / 320 / 200% reflow. `overflow-x: clip`. Nav labels
+do not wrap (nowrap). Touch controls ≥44px on 390/320.
+
+**Compact chrome.** Below 860px the inline links collapse into a disclosure
+(agent-proposed; 390 capture shows a hamburger and no above-fold CTA).
+
+**Platforms named.** Desktop-1440 and mobile-390 as captured. No app shell.
+
+Heading: Content & Locales
+
+**Voice.** Snapshot Korean, casual-clear. Implementation words stay off-screen.
+
+**Locale.** `ko-KR` as captured. `html lang="ko"`. The KOR control does not
+invent a second locale.
+
+**Copy on screen (verbatim from viewport or named alt).**
+
+- Wordmark: toss (accessible name 토스)
+- Nav: 서비스, 비즈니스, 회사소개, 뉴스룸, 채용
+- Tools: KOR, 앱 다운로드
+- Home h1: 금융부터 일상까지 마침내 토스 하나로
+- Service lede: 내 자산 모아보기 (`mobile-390-imagery-10` alt)
+
+**Honesty (visible).** App-store path, other nav destinations, open 서비스
+menu items, and any count/price are named as absent where a reader would
+expect them. Footer holds one sample line.
+
+Heading: Governance
+
+**Authority priority.** Brief → snapshot evidence → pack contract → proposed
+tokens. A proposed token never overrides a measured one.
+
+**Unknown-absence.** Omit at the smallest field. Do not promote
+`primaryButton.background` `#07194c`, Toss Product Sans files, or uncaptured
+mega-menu products.
+
+**Consequential unresolved.** Font files; store URL; 서비스 menu members other
+than the nav label itself; later-page imagery as extra screens.
+
+**Application priority.** Tokens in `:root` only. Pages consume. No second
+stylesheet.
