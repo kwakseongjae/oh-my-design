@@ -27,7 +27,11 @@ const seen = {}; // `${brand}|${rep}|${slot}` -> Set(axis)
 const posthoc = new Set();
 let parsed = 0;
 
+let footer = null;
 lines.forEach((l, i) => {
+  // 평가자가 마지막 줄에 SCORING_DONE 을 파일에도 쓰는 경우가 있다(grok chunk-1). 데이터가 아니라 종료 표지이므로
+  // 오류로 세지 않고 기록만 한다. 그 밖의 비JSON 줄은 여전히 문제다.
+  if (/^SCORING_DONE\b/.test(l.trim())) { footer = l.trim(); return; }
   let j;
   try { j = JSON.parse(l); } catch { problems.push(`L${i + 1}: JSON 파싱 실패`); return; }
   parsed++;

@@ -1,0 +1,121 @@
+{
+ "evaluator": "grok-4.6",
+ "lane": "A",
+ "chunk": 1,
+ "brands": [
+  "apple",
+  "baemin",
+  "coupang"
+ ],
+ "ceilingBrands": [],
+ "rows": [
+  {
+   "brand": "apple",
+   "rep": 1,
+   "slots": {
+    "A": "omd",
+    "B": "uiuxpromax",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "apple",
+   "rep": 2,
+   "slots": {
+    "A": "hallmark",
+    "B": "uiuxpromax",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "apple",
+   "rep": 3,
+   "slots": {
+    "A": "hallmark",
+    "B": "omd",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "apple",
+   "rep": 4,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "hallmark",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "baemin",
+   "rep": 1,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "hallmark",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "baemin",
+   "rep": 2,
+   "slots": {
+    "A": "hallmark",
+    "B": "uiuxpromax",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "baemin",
+   "rep": 3,
+   "slots": {
+    "A": "hallmark",
+    "B": "uiuxpromax",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "baemin",
+   "rep": 4,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "omd",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "coupang",
+   "rep": 1,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "hallmark",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "coupang",
+   "rep": 2,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "omd",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "coupang",
+   "rep": 3,
+   "slots": {
+    "A": "omd",
+    "B": "hallmark",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "coupang",
+   "rep": 4,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "omd",
+    "C": "hallmark"
+   }
+  }
+ ]
+}
