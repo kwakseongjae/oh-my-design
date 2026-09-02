@@ -72,5 +72,5 @@ DESIGN.md에서 재현하는 `omd:landing` 스킬을 **같은 브리프·같은 
 
 - round 1 (`toss/landing/review.md`): **BLOCK 6** — 히어로 사진 위 크롬 대비(nav 1.05~1.30:1, wordmark 1.07:1, lead 3.05:1, 포커스 링 1.38:1; 원인 = 스크림 부재), `muted` 본문 사용 3.0:1, `.reveal{opacity:0}`에 noscript 없음. WARN 13 · FYI 11. 기계 검사 두 종은 이 결함들을 못 본다 → 이슈 #86(LI-24~26)·#87(루프에 리뷰 자동 호출).
 - 개정(grok, `runs/fix-toss-landing.txt`, $0.36): BLOCK 6만 지목 수정 — 스크림·halo·muted→body·noscript+scripting:none. render PASS · LI FAIL 0 · 12.05 vh 유지. 스크림이 강해 사진이 옅어졌다(트레이드오프, 비교 페이지에서 판단).
-- round 2 리뷰 진행 중.
+- round 2 (`reviews/toss-landing-review.md` §Round 2): **BLOCK 0** — B1 nav 6.81:1 · B2 wordmark 15.6 · B3 lead 5.37 · B4 muted 0노드 · B5 포커스 3.62~3.71 · B6 no-JS 렌더 바이트 동일. 회귀 없음(스크림 토큰색, 12.05 vh 유지). FYI 2(포커스 halo box-shadow는 DESIGN.md 그림자 절제와 충돌 — concept.md 가정에 기록 필요). round-1 WARN 13·FYI 11은 재측정 안 함. → **toss: 시드 AC 4 충족**(render PASS · LI FAIL 0 · designer-review BLOCK 0 · 시연 영상 · 비교 페이지).
 - 비교 페이지 `toss/compare.html`(3열) · 3-arm 시연 영상(14초) 생성 — 두 브랜드 모두 3 arm 완비.
