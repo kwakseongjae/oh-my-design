@@ -120,6 +120,10 @@ function evidenceFor(brand, arm, rep, cellKey) {
   const vp = join(CAPS, brand, arm, `rep-${rep}`, "verify.json");
   let numeric = 0, usable = false;
   if (existsSync(vp)) { const v = JSON.parse(read(vp)); usable = v.usable !== false; numeric = usable ? Number(v.numericScore) || 0 : 0; }
+  // §4.2: eligible 수치 필드 <2 인 스냅샷은 "비교 입력 불충분"이다. naver는 첫 캡처에 대표 이미지가 없어(C-NAVER-H1) verify가
+  // 0필드로 unusable — 이 축을 0점으로 세면 세 arm을 같이 깎는 것이 아니라 스냅샷 결손을 arm에 전가하는 것이다. 처리(재정규화 N/A
+  // vs 0점)는 재봉인 판정 사안이므로 판정 전까지 이 칸·축은 미채점(total null)으로 두고 리포트에 이유를 남긴다(2026-09-02).
+  if (existsSync(vp) && !usable) return { missing: true, reason: "EVIDENCE_UNUSABLE — snapshot has <2 eligible numeric fields; treatment pending reseal verdict", numeric: null };
   const ratings = EVALS.map((ev) => R[ev]?.[cellKey]?.evidence?.evidenceSemantic?.rating);
   if (ratings.some((r) => !Number.isInteger(r))) return { missing: true, numeric };
   const semantic = mean(ratings.map((r) => r * 25));
@@ -165,7 +169,7 @@ for (const brand of BRANDS) for (const arm of ARMS) for (let rep = 1; rep <= 4; 
   cell.axes.document = documentFor(cellKey);
   const avail = Object.entries(W).filter(([k]) => !cell.axes[k].na);
   const missing = avail.filter(([k]) => cell.axes[k].missing);
-  cell.missingAxes = missing.map(([k]) => k);
+  cell.missingAxes = missing.map(([k]) => k + (cell.axes[k].reason ? ` (${cell.axes[k].reason.split(" — ")[0]})` : ""));
   if (missing.length) { cell.total = null; cells.push(cell); continue; }
   const num = avail.reduce((a, [k, w]) => a + w * cell.axes[k].score, 0);
   const den = avail.reduce((a, [, w]) => a + w, 0);
