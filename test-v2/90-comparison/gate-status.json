@@ -66,7 +66,7 @@
    "open": [],
    "evidence": [
     "TRANSCRIPTION.md §5 (전사자·격리·WAIVED·리포트 문장)",
-    "transcribe-verify.mjs sha256:73d13200a2903e68c63596caea33cbd53e35de1a1956e0f9da926c86c005cd41 (자체 테스트 7/7)",
+    "transcribe-verify.mjs sha256:ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3 (자체 테스트 7/7)",
     "run-config.json transcriber 블록",
     "docs/reviews/rubric-2026-08-23-verifier-confirm.md"
    ],

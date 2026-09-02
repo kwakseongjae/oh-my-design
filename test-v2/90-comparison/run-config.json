@@ -99,7 +99,7 @@
   "semanticVerifier": "WAIVED — TRANSCRIPTION.md §5.2·§7.2. 미검증 항목 2종은 리포트 한계 절에 적는다.",
   "machineVerifier": {
    "path": "test-v2/tools/transcribe-verify.mjs",
-   "sha256": "73d13200a2903e68c63596caea33cbd53e35de1a1956e0f9da926c86c005cd41",
+   "sha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
    "runBy": "전사자가 아닌 실행 관리자",
    "selftest": "7/7 (grok-4.6 반례 4건 포함)"
   },
