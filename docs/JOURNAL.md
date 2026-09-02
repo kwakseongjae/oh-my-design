@@ -1,8 +1,24 @@
+## 2026-09-02 — landing/stripe 개정 라운드 3 (nav CTA 포커스)
+
+**한 일.** `render.html` `.nav-bar` 우상단 canvas-alpha 스크림만. 글리프 감사 focus 1440 "Start now" `<3:0%` (min 3.83). integrity PASS / FAIL 0, 12.05 vh.
+
+**열린 것.** 오케스트레이터 재실측. WARN·FYI 미수정.
+
+**다음.** 라운드 3 검수.
+
+## 2026-09-02 — landing/stripe 개정 라운드 2 (BLOCK 6)
+
+**한 일.** `test-v2/content-runs/landing/stripe/landing/render.html` BLOCK 6건만 수정(스크림·ghost fill·포커스 halo·noscript). concept.md 가정 10 한 줄. integrity PASS / FAIL 0, 12.05 vh 유지.
+
+**열린 것.** WARN 6·FYI 8은 미수정. 재리뷰는 오케스트레이터.
+
+**다음.** 디자이너 재리뷰.
+
 ## 2026-09-02 (오후) — 방향 전환: 마라톤 무인화 · 랜딩 스킬 실전 · T3 청크 1 채점
 
 **한 일.** 안전 중단 → 사용자 결정(이관 완주 우선·opus 허용·SuperGrok Heavy·푸시 승인·T3 병행·2.0.1+임팩트 콘텐츠 목표) → 러너 내구성(재시도·gatefix·폴백)+마라톤 드라이버 가동(웨이브 46 자동 마감 $6.83). 우로보로스 1MB 원인(CURRENT_STATE 1.8MB) 수정 후 인터뷰 5라운드 → 시드. PR #85 → main, /design.md 라이브. 랜딩 크래프트 코덱스(5사이트 실측)·landing-integrity(LI-1~23)·omd:landing/art-director·setup/media/showcase 스킬·부채 ④·F6 최소형. 랜딩 6런 완료(landing arm 12 vh·폴드 100%), 리뷰 BLOCK 6 → 개정. T3: 검증기 재봉인, 전사 48/108, 청크 1 양 평가자 채점(α 낮음 → 재채점 대상 34).
 
-**열린 것.** 웨이브 47 마감 후 STOP → 검토 effort 기본값으로 재가동(A/B). 리뷰 r1(stripe)·r2(toss) 결과. 청크 2 입력(karrot·musinsa 생산). 2.0.1 릴리즈·카운트 싱크·npm(사용자 인증). X/Threads 소재 승인.
+**열린 것 (15:50 갱신).** effort A/B 끝(차이 없음 → 예방 조항 효과). 랜딩 두 브리프 AC 4 충족(toss r2 BLOCK 0, stripe 오케스트레이터 실측 BLOCK 0), 최종 영상 `content-runs/landing/*/showcase/`, 사용자에게 전달. `text-contrast.mjs` 신설(#86). 2.0.1 릴리즈 준비 에이전트 가동(퍼블리시·커밋 없음). 남은 것: 청크 2·3 채점(musinsa 생산 마무리 중), 웨이브 50+, 사용자 승인(릴리즈·X/Threads).
 
 **다음.** 마라톤 재가동 → 청크 2·3 채점 → rescore 세션 → 집계·Fable 검수 → 릴리즈 2.0.1 → 콘텐츠 게시.
 
