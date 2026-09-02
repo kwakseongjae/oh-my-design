@@ -19,7 +19,7 @@
  *   - 단독 표기 결함: rescore 응답에서 표기하지 않았던 평가자가 같은 동일성으로 표기하면 확정,
  *     아니면 disputed(계수 제외·병기). rescore가 없으면 pending으로 남기고 총점은 계산하되 "partial" 표시.
  *   - 평가자 한쪽 결측 축: 있는 쪽만으로 평균하지 않는다 — 그 칸·축은 미채점(§7 결측)이고
- *     리포트에 열거한다. 총점은 그 축을 빼고 재정규화하지 않는다(재정규화는 N/A-ceiling 전용).
+ *     리포트에 열거한다. 총점은 그 축을 빼고 재정규화하지 않는다(재정규화는 N/A-ceiling·N/A-evidence 전용).
  *   - 식별력 정답: identification.brand가 대상 브랜드 id와 같으면 1, "모름"·다른 브랜드는 0.
  *   - α: Krippendorff (2 관측자). 존재 여부 = 두 평가자 결함 동일성 합집합을 단위로 한 nominal(1/0);
  *     severity = 확정 결함의 ordinal(P0<P1<P2 → 0<1<2); 0–4 평정 = ordinal; 9지선다 = nominal.
@@ -123,7 +123,8 @@ function evidenceFor(brand, arm, rep, cellKey) {
   // §4.2: eligible 수치 필드 <2 인 스냅샷은 "비교 입력 불충분"이다. naver는 첫 캡처에 대표 이미지가 없어(C-NAVER-H1) verify가
   // 0필드로 unusable — 이 축을 0점으로 세면 세 arm을 같이 깎는 것이 아니라 스냅샷 결손을 arm에 전가하는 것이다. 처리(재정규화 N/A
   // vs 0점)는 재봉인 판정 사안이므로 판정 전까지 이 칸·축은 미채점(total null)으로 두고 리포트에 이유를 남긴다(2026-09-02).
-  if (existsSync(vp) && !usable) return { missing: true, reason: "EVIDENCE_UNUSABLE — snapshot has <2 eligible numeric fields; treatment pending reseal verdict", numeric: null };
+  // 판정 2026-09-02 (docs/reviews/t3-naver-evidence-axis-2026-09-02.md, q1=a): 근거 축 N/A-evidence — §4.5식 재정규화, B_k에서 제외.
+  if (existsSync(vp) && !usable) return { na: true, reason: "N/A-evidence (snapshot has <2 eligible numeric fields; C-NAVER-H1)" };
   const ratings = EVALS.map((ev) => R[ev]?.[cellKey]?.evidence?.evidenceSemantic?.rating);
   if (ratings.some((r) => !Number.isInteger(r))) return { missing: true, numeric };
   const semantic = mean(ratings.map((r) => r * 25));
