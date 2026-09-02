@@ -14,3 +14,4 @@ landing/*
 !landing/runs/
 !landing/runs/*.txt
 !landing/runs/chain.sh
+!landing/build-compare.mjs
