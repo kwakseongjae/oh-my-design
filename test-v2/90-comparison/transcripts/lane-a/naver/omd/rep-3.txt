@@ -1,0 +1,99 @@
+Heading: NAVER 홈 표면 계약
+
+형식 자유 디자인 시스템 설명. 이 문서는 `render.html`이 소비하는 값의 근거이며, 프로젝트 루트  아니다. 권위는 브리프(홈, 검색어 입력 → 검색 결과 이동)와  스냅샷 `2026-08-22T19-51-00-372Z`에 있다.
+
+Heading: Philosophy
+
+한 문장: **검색 칸이 홈의 유일한 과업이고, 나머지는 캡처된 포털 문법을 재구성하되 실시간 데이터인 척하지 않는다.**
+
+원칙 (무엇을 얻고 무엇을 버리는가):
+
+- **P1 과업 우선.** 검색어를 넣고 결과로 가는 길이 키보드만으로도 끝나야 한다. 바로가기·로그인·광고는 같은 화면에 남기되 새 화면을 열지 않는다.
+- **P2 포털 밀도.** 스냅샷의 흰 지면 + 둥근 보드 + 초록 검색 테두리를 유지한다. 랜딩형 센터 스택·디스플레이 세리프·넓은 히어로 여백은 버린다.
+- **P3 정직한 부재.** 스냅샷에 없는 상품 가격·실시간 기사 본문·공식 로고 원본은 만들지 않는다. 그 자리는 빈 칸 문장으로 남긴다.
+
+Heading: Derive
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | 표면 장르 = 헤어라인 라운드 보드 on near-white paper | 스냅샷 보드 1px 룰 + 배경 `#fefefe`. 앱 셸·그림자 타일 아님. |
+|  | 악센트는 검색 테두리·로그인 면·LIVE 칩. 면적 ≲5% | 실측 primary `#03c75a`. 악센트를 히어로 배경으로 쓰지 않음. |
+|  | 반지름을 역할로 나눔: 검색 pill 999 / 카드 16 / 컨트롤 8 | 같은 radius+border를 전 컴포넌트에 반복하지 않기 위함. |
+|  | 워드마크는 텍스트 `N` / `NAVER`. 공식 마크 원본 없음 | 브리프 금지. |
+|  | 한글 고딕 한 패밀리. 디스플레이는 크기·무게로만 위계 | 실측 `-apple-system` 14.7px. 세리프 폴백 금지. `keep-all`, tracking ≥ −0.01em. |
+|  | 정보 밀도 = 포털. 섹션 간격 2.5rem, 거터 clamp | 와이드에서 40% 공백이 남지 않게 2열(본문+로그인). |
+|  | 모션 120/200ms, transform·opacity만, reduced-motion 절단 | 과업 화면에 장식 리빌 없음. |
+|  | 레이아웃 문법 = 검색-우선 포털 그리드 | 1440: 본문+레일. 390: 1열. 히어로는 카피/피규어 디프틱. |
+|  | 결과 뷰는 같은 문서의 상태. 별도 제품 화면 없음 | 브리프 화면 = 홈. 과업 동사는 상태. |
+|  | 카피 레지스터 = 사용자 한국어. 구현 어휘 화면 금지 | 샘플·스냅샷 고지는 푸터 한 줄. |
+
+미해결(생략): 공식 로고 벡터, 데스크톱 히어로 미디어 실측(샘플 0장), 실시간 검색 색인, 쇼핑 상품 필드.
+
+Heading: Tokens
+
+주석은 ID 역참조. `render.html` `:root`와 동일.
+
+```css
+--color-paper: oklch(0.993 0.004 140);     
+--color-ink: oklch(0.28 0.014 140);        
+--color-accent: oklch(0.76 0.17 155);      
+--color-accent-ink: oklch(0.995 0.01 155);
+--radius-pill: 999px;                      
+--radius-card: 16px;
+--radius-control: 8px;
+--fs-body: 15px;                           
+--fs-display: clamp(1.85rem, 1.5rem + 1vw, 2.2rem); /* ≥2× body */
+--lh-body: 1.7;
+--space-section: 2.5rem;                   
+--dur-base: 200ms;                         
+```
+
+전경/배경은 항상 쌍으로 쓴다. 악센트 면 위의 글자는 `--color-accent-ink`, 광고 다크 플레이트는 `--color-ad-ink`.
+
+Heading: Components
+
+프리셋: `P-FN-01` 전체언론사 리스트박스, `P-FN-02` 결과 뷰 포커스(제목 링 억제), `P-FN-05` 스냅샷에 없는 칸의 빈 상태, `P-FN-06` 결과 수 정의 줄. 검색 칸은 no-preset: 포털 검색 필드는 카탈로그에 없음 — 스냅샷 기하(높이 52, pill, 악센트 2px 테두리)에서 유도.
+
+| 컴포넌트 | 해부 | 상태 |
+|---|---|---|
+| 검색 필드 | 워드마크 N · 검색어 · 검색(submit) · AI(local) | default / hover / focus-visible / error(빈 제출) / 결과 이동 후 ok |
+| 검색 결과 리스트 | 정의 줄 · status · 샘플 3건 | results. 제목에 질의 반영. 실시간 색인 아님을 명시 |
+| 바로가기 | 아이콘 면 44 + 라벨 | default / hover / active. 새 화면 없음 |
+| 뉴스스탠드 | 탭 · 리스트박스 · 이름 그리드 | tab selected, listbox expanded/selected. 로고 원본 없음 |
+| 로그인 | 카피 · primary 면 버튼 · 보조 링크 | default / hover / focus-visible. 과업 밖 |
+| 히어로 | 키커 · 리드 · 제목 · figure(image.jpg) | 비대화. 대표 생성 이미지 슬롯 |
+
+인터랙티브는 default / hover / focus-visible / active / disabled를 가진다. 검색 제출은 `data-cta="submit"`, 로그인은 `data-cta="primary"` 하나, 반복 컨트롤은 `data-cta="local"`.
+
+Heading: Layout grammar
+
+페이지: **검색-우선 포털 그리드** ().
+
+- 1440: 거터 안 1280. 본문 1fr + 레일 350. 히어로 카피|피규어.
+- 390 / 320: 1열. 바로가기는 줄바꿈. 언론사 그리드 3→2열. `minmax(0,1fr)`.
+- 초광폭 전략: 중앙 max 1280.
+- 콘텐츠 역산: 히어로 이미지 1(대표 생성), 바로가기 10, 언론사 이름 24(스냅샷 1쪽). 캐러셀·벤토 문법은 데이터가 없어 쓰지 않음.
+
+Heading: Journey (SELF-WALK)
+
+브리프 동사:
+
+1. **검색어를 입력한다** — Tab으로 `#q`에 들어간다. 값이 생기면 입력 칸에 보인다.
+2. **검색 결과로 이동한다** — Enter 또는 `검색`(submit). `#view-results`가 열리고 `document.title`이 `{질의} — NAVER`로 바뀌며 `#results-title`에 프로그램 포커스(링 없음). `role="status"`가 질의를 읽는다. 빈 제출은 `aria-invalid` + `role="alert"` + 포커스 복귀.
+
+홈으로: 워드마크 `N` (`aria-label="NAVER 홈"`).
+
+Heading: Honesty ledger
+
+| 범주 | 처리 |
+|---|---|
+| 공식 로고 | 없음. 텍스트 N / NAVER |
+| 실시간 검색 | 없음. 로컬 샘플 3건, 정의 줄에 명시 |
+| 상품 가격·재고 | 없음. 쇼핑·관심 아이템 칸에 부재 문장 |
+| 엔터/스포츠/게임/경제 본문 | 스냅샷에 없어 빈 칸 |
+| 이용자 수·평점 | 만들지 않음 |
+| 기사 헤드라인·언론사 이름 | 스냅샷 재구성. 푸터에서 날짜 고지 |
+
+Heading: Stack projection
+
+Vanilla HTML/CSS. 토큰은 `:root` 커스텀 속성. 상태는 `data-state` / `aria-*`. 외부 네트워크 요청 없음. 대표 이미지는 같은 디렉터리 `image.jpg`.

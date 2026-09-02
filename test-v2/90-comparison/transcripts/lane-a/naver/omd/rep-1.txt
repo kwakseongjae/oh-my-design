@@ -1,0 +1,104 @@
+Heading: 네이버 홈 표면 시스템
+
+스냅샷 `2026-08-22T19-51-00-372Z` · 화면 홈 · 과업: 검색어를 입력해 검색 결과로 이동한다.
+
+프로젝트 루트  쓰지 않는다. 이 문서가 이번 런의 시스템 설명이다.
+
+Heading: Philosophy
+
+검색이 유일한 과업인 포털 보드. 한 칸의 입력으로 결과 화면에 닿게 하고, 나머지 모듈은 스냅샷에 보인 정보판이다.
+
+1. **검색이 먼저다.** 얻는 것: 브리프 동사(입력 → 이동)가 키보드만으로 닫힌다. 희생: 메일·카페·로그인 같은 스냅샷 크롬은 새 화면을 열지 않는다.
+2. **스냅샷이 데이터 천장이다.** 얻는 것: 기사·가격·건수를 지어내지 않는다. 희생: 엔터/스포츠 칸과 쇼핑 9페이지는 빈 칸으로 남긴다.
+3. **헤어라인 보드.** 얻는 것: 포털 홈의 밀도. 희생: 히어로 스택, 그라데이션, 센터드 랜딩.
+
+장르: 라운드 외곽선 보드(hairline-rule boards). 악센트는 검색 링과 로그인 채움 신호.
+
+와이드 전략: 컬럼 추가 — 좌 콘텐츠 스택 + 우 유틸/광고 22rem, 최대 72rem 중앙.
+
+Heading: Derive
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | 검색 제출만 `data-cta="submit"`. 로그인은 스냅샷의 유일한 솔리드 채움이라 `data-cta="primary"`이나 화면을 추가하지 않는다. | 원칙 1, 브리프 동사 |
+|  | 홈과 검색 결과는 같은 헤더·같은 검색 필드를 쓴다. 결과 화면은 브리프 과업의 도착지이지 추가 제품이 아니다. | 원칙 1 |
+|  | 바로가기·페이·알림·장바구니·AI는 정직한 부재 문장을 `role="status"`로만 알린다. | 원칙 1, 브리프에 없는 화면 금지 |
+|  | 본문 문자열은 evidence.json chrome + desktop-1440 / viewport-1440 캡처에 보인 것만. | 원칙 2 |
+|  | 언론사 묶음은 같은 스냅샷의 두 프레임을 1/2페이지로 쓴다. 캡처의 「1/4」은 나머지 2칸이 없어 2로 줄인다. | 원칙 2 |
+|  | 검색 코퍼스는 스냅샷에 보인 헤드라인·언론사·바로가기·광고 문구. 네트워크 검색 없음. | 원칙 2 |
+|  | 면: paper `#fefefe` / ink `#2e2e2e` / accent `#03c75a` (evidence chrome). 순수 `#fff`/`#000` 금지. | 원칙 3, 측정값 |
+|  | 모서리: 검색 필 999px, 보드 12px, 컨트롤 8px. 엘리베이션은 호버 한 단만. | 스냅샷 기하 |
+|  | 한글 고딕 한 스택. 디스플레이는 크기·무게로만 올린다. 트래킹 조이지 않는다. | locale 계약 |
+|  | 모션: 120/200/320ms, enter/exit 두 곡선, transform·opacity만. 과업 화면이라 스크롤 리빌 없음. | 과업 화면, C38 |
+|  | 악센트 면은 로그인 버튼과 검색 제출에만. 검색 링은 보더 신호. | 원칙 3 |
+
+Heading: Tokens
+
+```css
+--color-paper: oklch(0.995 0.004 95); /* evidence #fefefe */
+--color-ink: oklch(0.30 0.008 95);    /* evidence #2e2e2e */
+--color-accent: oklch(0.72 0.17 155); /* evidence #03c75a */
+--color-on-accent: oklch(0.995 0.012 155);
+--color-search: var(--color-accent);  
+--color-emphasis: oklch(0.42 0.18 255); /* 스냅샷 헤드라인 강조 */
+--color-rule / --color-chip / --color-muted / --color-banner / --color-ad / --color-whale / --color-live / --color-error / --color-focus
+--space-1..8, --space-section 2.5rem, --space-section-lg 4rem, --gutter clamp(1rem, 3vw, 2.5rem)
+--radius-control 8px; --radius-card 12px; --radius-pill 999px; 
+--control-h 48px; --search-h 52px; /* 인풋=인접 버튼 */
+--font: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif; 
+--fs-display: clamp(1.375rem, 2.1vw, 2rem); /* ≥2× body */
+--lh-body: 1.7; --lh-display: 1.22;
+--duration-fast 120ms; --duration-base 200ms; --duration-slow 320ms; 
+```
+
+전경/배경은 쌍으로만 쓴다. 컴포넌트에 토큰 밖 hex 없음.
+
+Heading: Components
+
+- **검색 필** — no-preset: 포털 검색 필은 카탈로그에 없음. C11–C16. 라벨 `검색어`(sr), 플레이스홀더 스냅샷 문구, 제출 `검색 결과로 이동` (`data-cta="submit"`). 상태: default / hover(칩) / focus-visible(아웃라인, 보더 두께 불변) / error(링+alert+aria-invalid) / loading(면 칩+제출 disabled) / disabled(로딩 중).
+- **커스텀 리스트박스** — P-FN-01. `전체언론사` + 현재 페이지 언론사. Escape는 값 유지 취소.
+- **빈 결과** — P-FN-05. 정직한 문장 + 검색어 지우고 홈으로.
+- **결과 수** — P-FN-06. 「수록된 순서 · N건」.
+- **결과 행** — P-FN-03 가로형 미디어 카드. 매트리스 항목만 `image.jpg`.
+- **라우트 포커스** — P-FN-02. `#page-title` 포커스, 시각 링 억제, `document.title` 갱신, 스크롤 리셋.
+- **뉴스스탠드 탭** — 스냅샷 라벨. 언론사편집만 데이터, 나머지 칸은 정직한 빈 상태.
+- **로그인** — 스냅샷 카피. `data-cta="primary"`. 화면 추가 없음.
+- **웨일 다이얼로그** — 스냅샷 카피. 마스코트 원본 대신 문자 `W`. 닫기 가능.
+
+아이콘은 한 스트로크 SVG. 공식 로고 경로·이미지 없음. 워드마크는 `N` / `NAVER` / `pay` / `SUMMIT`.
+
+Heading: Layout grammar
+
+**홈:** 2컬럼 포털 보드. 좌: 프로모(카피|피겨 디프틱) → 뉴스스탠드 그리드 → 쇼핑 크롬. 우: 로그인 → 분양 플레이트 → 라이프워크 띠. 콘텐츠 역산: 언론사 셀 24×2(두 프레임), 바로가기 11, 프로모 이미지 1.
+
+**검색 결과:** 같은 헤더 아래 단일 컬럼 리스트. 홈 보드를 숨기고(`hidden`+`inert`) 결과만 연다.
+
+반응: 320 / 390 / 1440, 200% 리플로우. `overflow-x: clip`. 터치 타깃 ≥44px.
+
+Heading: States (journey verbs)
+
+브리프 동사: **검색어를 입력해 검색 결과로 이동한다.**
+
+| 상태 | 도달 | 기계 증거 |
+|---|---|---|
+| default | 첫 페인트, 홈 | `form[data-state=default]`, `main[data-state=home]` |
+| error | 빈 제출 | `aria-invalid`, `#search-help[role=alert]`, 포커스 필드 |
+| loading | 질의 제출 직후 | `form[data-state=loading]`, 제출 `disabled` |
+| success | 질의 일치 | `main[data-state=results]`, 건수 라인, 결과 행 |
+| empty | 질의 불일치 | `.empty[data-state=empty]`, 해제 버튼 |
+| disabled | 로딩 중 제출, 첫/끝 페이지 화살표 | `disabled` + `cursor: not-allowed` + 색 뮤트 |
+
+키보드: Tab → 검색어 → Enter. 또는 Tab → `검색 결과로 이동`.
+
+Heading: Honesty
+
+- 실시간 검색·로그인·설치 파일·공식 로고 없음.
+- 푸터에 샘플 고지 한 줄.
+- 캡처에 없는 칸은 그 칸에서 이름을 밝히고 비운다.
+
+Heading: Provenance
+
+- 색·타입 스케일:  chrome (repository-fact)
+- 카피·모듈 배치: , ,  (repository-fact)
+- 대표 이미지: 레인 A Grok Imagine, 프로모 슬롯 (agent-proposed, 스냅샷 구도)
+- 미해결: 공식 워드마크 기하, 데스크톱 이미저리 샘플 0건(사이즈 플로어), 검색 결과 원문 레이아웃(스냅샷에 결과 화면 없음)

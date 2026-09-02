@@ -1,0 +1,75 @@
+Heading: 시스템 — NAVER 홈 (Ecosystem Index)
+
+추론: 청중 = 한국어로 웹을 찾는 사람 · 과업 = 검색어를 넣고 결과로 이동 · 톤 = utilitarian.
+장르 editorial. 매크로 Ecosystem Index. 테마 custom(팩에 Garden 토큰 파일이 없고, 증거 주색 `#03c75a`가 앵커).
+내비 N12(안내 배너 + 유틸 바). 푸터 Ft1. 검색은 C2 인라인 폼. 대표 사진은 E8(생성 스틸 1장).
+
+이 칸 밖(, , 프로젝트 루트)에는 쓰지 않았다. 토큰은 아래와 `render.html` `:root`가 같다.
+
+Heading: 토큰
+
+색은 OKLCH만. 액센트 하나(녹, 색상각 ~149.5°). 종이·잉크는 같은 각으로 틴트. 순수 `#fff`/`#000` 없음.
+
+| 토큰 | 값 | 역할 |
+| --- | --- | --- |
+| `--color-paper` | `oklch(98.4% 0.008 149.5)` | 지면. 증거 캔버스 `#fefefe`에 가깝게, 크로마만 살림 |
+| `--color-paper-2` | `oklch(96.2% 0.010 149.5)` | 한 단 낮은 면 |
+| `--color-paper-3` | `oklch(93.8% 0.018 90)` | 배너. 스냅샷 크림 띠 |
+| `--color-ink` | `oklch(28% 0.012 149.5)` | 본문. 증거 `#2e2e2e`에 틴트 |
+| `--color-muted` | `oklch(48% 0.014 149.5)` | 보조 문장 |
+| `--color-accent` | `oklch(72.5% 0.19 149.5)` | 검색 링. 증거 `#03c75a`의 OKLCH, 채도 0.20 상한에 맞춤 |
+| `--color-accent-fill` | `oklch(42% 0.14 149.5)` | 검색·로그인 채움. `#03c75a` 위 흰 글자는 대비 2.25:1이라 쓰지 않음 |
+| `--color-accent-ink` | `oklch(98.5% 0.010 149.5)` | 채움 위 글자 |
+| `--color-focus` | `oklch(46% 0.20 149.5)` | `:focus-visible` 즉시 링. 애니메이션 없음 |
+| `--color-error` | `oklch(50% 0.18 25)` | 빈 검색. 색만으로 알리지 않음(문구 + `aria-invalid`) |
+| `--color-media-*` | 증거 모바일 팔레트 `#cbd3dd` 계열 | 쇼핑 칸 자리 표시. 사진 아님 |
+
+간격 4pt(`--space-3xs`…`--space-2xl`). 글자 크기 5단. 이징 `--ease-out` / `--ease-in` / `--ease-in-out`. 시간 `--dur-micro` 120ms · `--dur-short` 220ms · `--dur-long` 420ms.
+
+Heading: 글자
+
+네트워크 폰트 없음. 표시 `--font-display`: Iowan Old Style / Palatino / 명조 로컬. 본문 `--font-body`: Apple SD Gothic Neo / Noto Sans KR. 숫자 `--font-outlier`: SF Mono, `tabular-nums`. 제목은 항상 roman.
+
+워드마크는 텍스트 `NAVER`. 검색 칸의 `N`도 글자. 공식 로고 파일·트레이싱 없음.
+
+Heading: 화면
+
+지정 화면은 홈 하나. 메일·카페·가입 같은 다른 화면은 없음.
+
+1. **N12 배너** — 한 줄 안내, 닫기. 스크롤에 배너는 문서 흐름으로 사라지고 바만 sticky.
+2. **검색(C2)** — 홈의 일. 라벨은 `검색어`(시각 숨김). 플레이스홀더는 형식을 힌트할 뿐 라벨을 대체하지 않음. 제출 시 `#q=`로 결과 뷰.
+3. **바로가기** — 메일…치지직. 같은 문서의 앵커만.
+4. **대표 이미지** — `image.jpg`. 캡션은 생성 스틸이라고 밝힘. 캠페인 카피·로고 없음.
+5. **뉴스스탠드** — 언론사 이름 텍스트. 로고 셀 없음. 쪽 번호는 실제 배열 길이에서만.
+6. **로그인 칸** — 버튼만. 로그인 화면으로 가지 않음.
+7. **쇼핑(F6)** — 이름 + 자리색. 가격은 없음(`—`). 지어낸 할인가 없음.
+8. **검색 결과** — 같은 `render.html`. 외부 색인 없음. 홈에 있는 이름과 맞으면 목록, 아니면 빈 상태 3박자.
+
+빈 검색: “검색어가 비어 있습니다. 찾고 싶은 말을 입력한 뒤 다시 검색하세요.”
+
+Heading: 상태 (검색 필드·검색 버튼·로그인)
+
+| 상태 | 처리 |
+| --- | --- |
+| default | 1px 테두리, 종이 배경 |
+| hover | `@media (hover: hover)`에서 면만 `paper-2`. 테두리 두께 불변 |
+| focus-visible | 2px 링 즉시. outline 슬롯을 미리 잡음 |
+| active | `translateY(1px)` |
+| disabled | 투명 0.5 + `not-allowed` (이 화면 기본 제출은 비활성 아님) |
+| loading | 로컬 이동이라 스피너 없음. 클래스는 토큰으로 준비 |
+| error | 테두리 색 + 도움말 교체 + `aria-invalid` |
+| success | 결과 뷰가 피드백. 토스트 없음 |
+
+히트 영역 44px. `prefers-reduced-motion: reduce`면 공간 이동을 150ms 이하 페이드로.
+
+Heading: 움직임
+
+에디토리얼이라 기본은 정지. 배너 닫기, 포커스, 버튼 누름만. `transition-all` 없음. 캐러셀 자동 재생 없음.
+
+Heading: 금지한 것
+
+- 공식 로고·웨일 마스코트·언론사 마크
+- 외부 URL (`@import`, 웹폰트, CDN 이미지)
+- 지어낸 이용자 수·속도·할인
+- 검색 결과 화면을 새 HTML로 쪼개기
+- UA 기본 `figure`/`blockquote`/`ul`/`ol` 마진 잔존

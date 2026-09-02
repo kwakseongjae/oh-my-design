@@ -1,0 +1,94 @@
+Heading: Garden · NAVER home (search)
+
+catalog run. Genre editorial. Tone utilitarian. Macrostructure Ecosystem Index. Theme Garden (light paper, roman-serif display, leaf-green accent ~150°).
+
+Inferred because the brief is a locked experiment arm, not a conversation:
+
+- Audience — Korean web users opening the portal to look something up.
+- Use — type a query and land on search results. That is the only job.
+- Tone — utilitarian.
+
+Hero enrichment is none. The hero is the search form (C2). `image.jpg` sits in the featured rail (E8 still), not as a marketing illustration.
+
+Nav is N12 (cream tint banner + retracting bar). Footer is Ft2 (one rule, one line). Official marks are text: `NAVER`, the search `N`, and `pay`.
+
+The file must open with no network. Faces are `local()` bindings named Garden Display / Garden Body / Garden Outlier — not a CDN.
+
+Heading: Tokens
+
+All colour and type in `render.html` go through these names. Do not inline OKLCH or a raw `font-family` in components.
+
+Heading: Colour (OKLCH, hue 150 unless noted)
+
+| Token | Value | Role |
+| --- | --- | --- |
+| `--color-paper` | `oklch(98.4% 0.008 150)` | Page |
+| `--color-paper-2` | `oklch(96.2% 0.010 150)` | Hover fill, ticker |
+| `--color-paper-3` | `oklch(93.5% 0.012 150)` | Shortcut hover |
+| `--color-rule` | `oklch(86% 0.014 150)` | Hairline |
+| `--color-rule-2` | `oklch(78% 0.012 150)` | Ghost button edge |
+| `--color-neutral` | `oklch(48% 0.018 150)` | Meta |
+| `--color-muted` | `oklch(38% 0.016 150)` | Placeholder |
+| `--color-ink` | `oklch(24% 0.018 150)` | Text |
+| `--color-ink-2` | `oklch(32% 0.016 150)` | Secondary text |
+| `--color-accent` | `oklch(45% 0.14 150)` | Links, selected marks |
+| `--color-accent-bright` | `oklch(72% 0.19 150)` | Search outline only (not text) |
+| `--color-accent-deep` | `oklch(38% 0.13 150)` | Fill hover |
+| `--color-accent-fill` | `oklch(45% 0.14 150)` | Primary button fill |
+| `--color-accent-ink` | `oklch(98.4% 0.008 150)` | Text on fill |
+| `--color-focus` | `oklch(38% 0.13 150)` | `:focus-visible` ring |
+| `--color-error` | `oklch(48% 0.18 25)` | Invalid field |
+| `--color-live` | `oklch(48% 0.18 25)` | LIVE chip |
+| `--color-banner` | `oklch(96.2% 0.022 95)` | N12 strip |
+| `--color-banner-ink` | `oklch(28% 0.04 50)` | Banner text |
+| `--color-scrim` | `oklch(24% 0.018 150 / 0.35)` | Dialog backdrop |
+
+Bright green on paper fails body contrast, so text and fills use the darker accent. The bright step is border-only.
+
+Heading: Type
+
+| Token | Binding |
+| --- | --- |
+| `--font-display` | Garden Display → Iowan Old Style / Palatino / Georgia. Wordmark only. |
+| `--font-body` | Garden Body → Apple SD Gothic Neo / Noto Sans CJK KR / Malgun Gothic. UI and heads. |
+| `--font-outlier` | Garden Outlier → SF Mono / Menlo / Consolas. Search `N` only. |
+
+Heads are roman. Scale is a major third from 16 px. Display on this page never exceeds `--text-display-s` — Ecosystem Index has no marquee headline.
+
+Heading: Space, radius, motion, z
+
+4 pt scale `--space-3xs` … `--space-3xl`. Control height 48 px. Radii 4 / 8 / 12 / pill. Garden duration scale ~1.2×: 140 / 260 / 500 ms. Easings `--ease-out`, `--ease-in`, `--ease-in-out`. Z: base 1, raised 10, dropdown 100, sticky 200, sticky-nav 300, modal 400.
+
+`html` and `body` use `overflow-x: clip`. Image tracks use `minmax(0, 1fr)`.
+
+Heading: Surfaces
+
+1. **Home** — banner, utility bar, search, shortcuts, featured still, newsstand, login, shopping category names.
+2. **Results** — same search chrome; query echoed; three local rows (웹 / 뉴스 / 이미지). No live index.
+
+Shortcuts, press names, login, and shopping tabs do not leave the file. Empty shopping SKUs are omitted: the snapshot crop has no prices in the brief.
+
+Heading: Search states
+
+The field keeps `border-width: 1px` in every state.
+
+| State | Treatment |
+| --- | --- |
+| default | Paper fill, bright accent outline |
+| hover | `--color-paper-2` |
+| focus-visible | Instant 2 px `--color-focus` outline |
+| active | Same as focus |
+| disabled | Opacity 0.55, `not-allowed` |
+| loading | Submit label “검색 중”, button disabled ~180 ms |
+| error | Error border + helper copy |
+| success | Accent outline after results land |
+
+Helper slot is `min-height: 1lh` so an error does not shove the page.
+
+Heading: Imagery
+
+`image.jpg` is a generated still for the featured module. Alt text describes the photograph (table, cup, linen, plant), not the adjacent ad copy from the snapshot.
+
+Heading: Offline
+
+No webfonts, no remote images, no outbound links. `xmlns` on the SVG sprite is a namespace, not a request.

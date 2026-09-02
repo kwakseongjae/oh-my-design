@@ -1,0 +1,126 @@
+Heading: 네이버 홈 검색 표면 — 디자인 시스템
+
+스냅샷 `2026-08-22T19-51-00-372Z` · 화면: 홈 · 과업: 검색어를 입력해 검색 결과로 이동한다.  
+출처 등급은 결정마다 밝힌다. 공식 로고 원본은 쓰지 않고 텍스트 워드마크로 대체한다.
+
+Heading: Philosophy
+
+**검색이 홈이다.** 이 표면은 목적지를 구경하는 랜딩이 아니라, 질의를 받아 결과로 넘기는 포털 시작점이다.
+
+원칙 (각 원칙은 얻는 것 / 버리는 것을 같이 적는다):
+
+1. **질의 우선 (P1).** 검색 알약을 시각·키보드·의미의 1순위로 둔다. 얻는 것: 과업 도달. 버리는 것: 풀블리드 히어로, 화면 중앙 스택, 검색을 장식 아래 숨기는 구성.
+2. **신호로서의 초록 (P2).** 실측 악센트 `#03c75a`는 검색 링·워드마크·로그인 채움에만 쓴다. 얻는 것: 스냅샷 식별력. 버리는 것: 그라데이션, 악센트 면적 장식, 보라/시안 기본값.
+3. **밀도 밴드 (P3).** 바로가기·뉴스스탠드·로그인은 검색을 방해하지 않는 정보 밴드다. 얻는 것: 포털 특유의 격자 밀도. 버리는 것: 카드 키트 반복, 3열 아이콘-헤드라인 타일, 와이드 여백으로 비우는 레이아웃.
+
+장르: **헤어라인 룰 밴드** (포털 크롬). 섀도 타일 키트와 잉크 플레이트 매거진은 쓰지 않는다.
+
+Heading: Derive
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | 여정 동사 = `입력` → `이동`. 상태는 개발자 스위처가 아니라 검색 폼의 실제 제출이다. | 브리프 과업; 팩 PRODUCT_BUILD §2 |
+|  | 제출 컨트롤 `data-cta="submit"`. 로그인·배너·바로가기는 `data-cta="local"`이며 새 화면을 열지 않는다. | 브리프에 없는 화면 추가 금지 |
+|  | 검색 알약 높이 52px, 내부 입력/제출 44px. 포커스는 보더 두께가 아니라 `outline`. | C9·C2·G39 |
+|  | paper `#fefefe` / ink `#2e2e2e` / accent `#03c75a`. 순수 `#000`/`#fff` 베이스 금지. | evidence chrome; G7 |
+|  | 검색 알약 radius 999px (모바일 실측 주버튼 28px와 같은 필 계열). 패널 radius 12px. 로그인 8px. | evidence primaryButton.radiusPx 28; 스냅샷 알약 |
+|  | 악센트는 링·워드마크·로그인 채움. 뉴스 그리드는 헤어라인만. | P2; G23 |
+|  | 1440: 좌 뉴스 + 우 로그인 (컬럼 추가). 390/320: 단일 컬럼, 바로가기는 가로 스크롤이 아니라 줄바꿈. | C32; 스냅샷 2열 |
+|  | 한글 고딕 스택, body 14.7px, display ≥2×, keep-all, 트래킹 하한 −0.01em. | evidence typeScale; locale 계약 |
+|  | 모션: 120/200/320ms, transform·opacity만. `prefers-reduced-motion`에서 0. | 팩 motion 토큰 |
+|  | 대표 이미지 = 스냅샷 홈 프로모의 매트리스 3열 구도를 새로 촬영한 것. 로고·글자 없음. | 필수 산출물 2; 로고 금지 |
+|  | 검색 결과는 스냅샷에 없으므로 보기용 예시로 표기. 실검색 건수를 단정하지 않는다. | unknown = absent |
+|  | 프리셋: P-FN-01 언론사 리스트박스, P-FN-02 결과 포커스, P-FN-05 빈 질의, P-FN-06 결과 수 정의. 뉴스 밴드는 no-preset(포털 스탠드 격자 — 카탈로그에 없음). | GS8 |
+
+Heading: Tokens
+
+주석의  없는 값은 쓰지 않는다.
+
+```css
+--color-paper: #fefefe;          /* desktop pageBackgroundRendered */
+--color-paper-warm: #f6f1e8;     /* 상단 안내 밴드 (스냅샷 크림) */
+--color-ink: #2e2e2e;            /* bodyColor */
+--color-ink-mute: #6b6b6b;       /* ink 틴트 */
+--color-rule: #e8e8e8;           /* 헤어라인 */
+--color-chip: #f4f4f4;           /* 뉴스 티커 면 */
+--color-accent: #03c75a;         /* mobile primaryButton */
+--color-accent-ink: #f7fff9;     /* on-accent 쌍 */
+--color-live: #e11d2e;           /* LIVE 마크 — 악센트와 분리 */
+--color-note: #f3f4f6;           /* 로컬 안내 면 */
+--radius-pill: 999px;            
+--radius-panel: 12px;            
+--radius-control: 8px;           
+--space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+--space-5: 24px; --space-6: 40px;
+--space-section: 2.5rem;         /* 섹션 공기 */
+--gutter: clamp(16px, 3.2vw, 40px);
+--text-body: 14.7px;             
+--text-display: clamp(1.85rem, 1.2vw + 1.4rem, 2.15rem);
+--font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo",
+  "Noto Sans KR", "Malgun Gothic", sans-serif;
+--motion-fast: 120ms; --motion-base: 200ms; --motion-slow: 320ms;
+--ease-enter: cubic-bezier(0.2, 0.7, 0.2, 1);
+--ease-exit: cubic-bezier(0.4, 0, 1, 1);
+```
+
+전경/배경은 항상 쌍으로 쓴다: paper+ink, accent+accent-ink, live+paper.
+
+Heading: Components
+
+코드보다 명세가 앞선다.
+
+**SearchPill** (no-preset: 포털 검색 알약 — 카탈로그에 없음, 스냅샷 크롬에서 유도)  
+해부: 라벨 마크 `N` → 입력 → 제출 `검색` → 로컬 `AI`.  
+상태: default / hover(면 chip) / focus-visible(알약 outline) / error(aria-invalid + alert) / disabled(제출 중) / success(결과 뷰). 보더 두께 불변.
+
+**ServiceRail**  
+바로가기 10개. 아이콘은 인라인 SVG 한 스트로크. 공식 심볼 없음. 클릭은 로컬이며 화면을 바꾸지 않는다.
+
+**PromoDiptych**  
+카피 | `image.jpg`. 이미지 1280×720 고정, lazy 아님. 프리셋 P-FN-03의 가로 미디어를 와이드 프로모로 파생 (토큰 ).
+
+**NewsStand** (no-preset: 포털 언론사 격자)  
+탭 `aria-selected` + P-FN-01 리스트박스(전체언론사). 그리드 6×4, 헤어라인. 페이지 표시는 스냅샷의 `1/4` 패턴을 로컬 2페이지로만 재현(제공된 이름만).
+
+**LoginPlate**  
+로컬 CTA. 새 로그인 화면 없음. 누르면 status로 범위 밖임을 알린다.
+
+**ResultList**  
+P-FN-06 정의 줄 + 예시 3건. 각 건에 `보기용 예시`. 상세 화면 없음.
+
+**EmptyQuery**  
+P-FN-05: "검색어를 입력해 주세요." + 입력으로 포커스 반환. 3채널(색, 텍스트, aria-invalid).
+
+Heading: Layout grammar
+
+페이지 문법: **검색 밴드 + 2열 포털 보드**.
+
+콘텐츠 역산: 바로가기 10, 프로모 1, 언론사 격자 24칸, 로그인 1. 캐러셀/벤토/매거진 문법은 고르지 않음(GS6).
+
+초광폭: 중앙 max 1280px, 거터 clamp. 1440에서 보드가 뷰포트의 40% 이상을 비우지 않게 2열을 채운다.
+
+뷰포트: 320 / 390 / 1440 / 200% 리플로우. `overflow-x: clip`. 터치 타깃 최소 44px.
+
+Heading: Journey (SELF-WALK)
+
+| 동사 | 키보드 경로 | 프로그램 증거 |
+|---|---|---|
+| 검색어를 입력한다 | Skip → 검색어 필드, 문자 입력 | `#q` value, `aria-invalid` 없음 |
+| 검색 결과로 이동한다 | 필드에서 Enter, 또는 Tab → 검색 → Enter/Space | `body[data-view=results]`, `#view-results` hidden 해제, `document.title` 갱신, `#page-title` 포커스(시각 링 억제), `role=status`가 질의와 예시 건수를 말함 |
+| 빈 질의 | 빈 채 Enter | `data-state=error`, 포커스 `#q`, `#q-error[role=alert]` |
+| 홈으로 | 워드마크 Enter | `data-view=home`, 결과 뷰 hidden |
+
+Heading: Honesty
+
+- 공식 로고·웨일 심볼·언론사 마크 원본 없음. 이름은 텍스트.
+- 검색 히트 수·실시간 순위·로그인 세션은 스냅샷에 없어 단정하지 않음.
+- 결과 3건은 푸터와 각 카드에 `보기용 예시`.
+- 바로가기·로그인·다운로드는 과업 화면이 아니므로 새 라우트를 만들지 않음.
+
+Heading: Critique (1 round)
+
+축: Philosophy 4 / Hierarchy 4 / Execution 4 / Specificity 5 / System Fidelity 4.
+
+게이트 스윕 요약: G1 한글 고딕 스택(세리프 폴백 없음). G6 100vh 히어로 없음. G7 베이스는 `#fefefe`/`#2e2e2e`. G10 `transition: all` 없음. G19 `:focus-visible` + `#page-title` 링 억제. G28 native select 없음. G39 보더 두께 고정, disabled=opacity+cursor+attr. G42 포털 검색 크롬이지 기본 nav 아님. G48 색은 토큰만. GS3 상태 스위처 없음. GS8 프리셋 ID 기록.
+
+남은 긴장: 스냅샷의 초록 로그인 면은 악센트 예산(G23)을 압박한다. 재구성 충실을 위해 유지하고, 검색 제출을 유일한 `data-cta="submit"`으로 구분해 과업 신호를 분리했다.
