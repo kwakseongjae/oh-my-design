@@ -1,0 +1,62 @@
+Heading: System — Figma home (studied DNA)
+
+ v1.1.0 · genre modern-minimal · macrostructure Workbench · theme studied-DNA (source: evidence image, snapshot `2026-08-22T19-48-41-602Z`).
+
+Going with: audience = designers and product teams who share a canvas · use = enter free signup from the home CTA · tone = technical.
+
+Heading: Pre-flight
+
+No project tokens, fonts, or motion library in the run directory. Full  stack introduced. Existing chrome measurements from evidence only.
+
+Heading: DNA (from the captured home, not a catalog swap)
+
+- Paper is white. Ink is black. Accent *is* ink — filled primary, outlined secondary. modern-minimal loosens pure white and zero-chroma neutrals.
+- Header is a solid white bar, ~78 px, hairline bottom. Wordmark is the text `Figma` (official mark not used).
+- Type: roman sans, display 56 px / 36 px on small, weight 400, tracking −1.25 px, line-height 1. Hangul falls back to Apple SD Gothic Neo / Noto Sans KR. Latin is Geist, embedded in `render.html` so the file opens with no network.
+- Radius 8 px on controls. Primary fill is ink; ghost is paper with an ink border.
+- Hero is left headline, centre stacked product canvases, right `시작하기`. Mobile stacks title then image; the header keeps `지금 무료로 시작하기`.
+- Copy on the surface is taken from the capture: headline, nav labels, cookie notice, CTA verbs. No invented metrics, logos, or testimonials.
+
+Heading: Structure
+
+- Macrostructure: Workbench — the product canvas *is* the proof.
+- Hero: H8 mockup-split knobs `frame=floating-no-frame` (no re-drawn browser chrome), `tilt=1.5°` desktop only, `count=stack-of-3` expressed as one generated still.
+- Enrichment: E4 floating no-frame, tier C generated still (`image.jpg`). LCP image, `fetchpriority="high"`, not lazy.
+- Nav: N1b SaaS three-section. Centre links 5, dropdowns 2, scroll always-solid. Previous nav: none. This build: N1b, first run and the captured bar is that shape.
+- Footer: Ft2 inline rule, single line. Not a four-column index.
+- Motion: CTA hover lift + dropdown open. `prefers-reduced-motion` collapses spatial motion.
+
+Heading: Tokens
+
+Named in `:root` of `render.html` and in . Colours and faces are referenced only as `var(--token)`.
+
+| Role | Token | Value |
+|---|---|---|
+| Paper | `--color-paper` | `oklch(100% 0 0)` |
+| Ink / accent | `--color-ink` / `--color-accent` | `oklch(0% 0 0)` |
+| Accent text | `--color-accent-ink` | `oklch(100% 0 0)` |
+| Focus on paper | `--color-focus` | `oklch(48% 0.17 255)` |
+| Focus on ink fill | `--color-focus-on-ink` | `oklch(100% 0 0)` |
+| Radius | `--radius-md` | `0.5rem` (8 px) |
+| Display size | `--text-display` | `3.5rem` (56 px) |
+| Banner | `--banner-height` | `4.9rem` |
+
+Spacing is the 4 pt scale (`--space-3xs` … `--space-4xl`). Easings are `--ease-out` / `--ease-in` / `--ease-in-out`. Durations `--dur-micro` / `--dur-short` / `--dur-long`.
+
+Heading: Components and states
+
+Primary and ghost buttons implement default, hover (fine pointer only), `:focus-visible`, `:active`, disabled, loading, error, success. Inputs keep 1 px border in every state; focus uses outline, not a thicker border. Height is 44 px to match adjacent buttons. Helper slot keeps `min-height: 1lh`.
+
+Auth is a `<dialog>` on the same home — not a second screen. `지금 무료로 시작하기` and `시작하기` open it in signup mode. Email is required; invalid format is explained on blur and on submit.
+
+Cookie notice matches the capture copy. Dismiss hides it for the session. It does not navigate.
+
+Heading: Image
+
+`image.jpg` is the representative still for the hero canvas stack: gem picker, wellness sliders, violet poster, white table, no brand mark. Generated on lane A via Grok Imagine. See `trace.md`.
+
+Heading: Constraints honoured
+
+- One screen: home. Signup and menu are states of that screen.
+- No official logo asset; text wordmark only.
+- `render.html` has no external network requests. Figure, blockquote, ul, ol margins are reset.

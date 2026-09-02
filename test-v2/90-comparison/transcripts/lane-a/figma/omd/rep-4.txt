@@ -1,0 +1,97 @@
+Heading: Figma 홈 — 표면 로컬 시스템
+
+스냅샷 `2026-08-22T19-48-41-602Z` (`https://www.figma.com/` → `ko-kr`)의 홈 한 화면.
+과업은 **지금 무료로 시작하기**를 눌러 가입 흐름에 진입하는 것. 브리프에 없는 화면은 만들지 않았다.
+
+처분: `surface-local-only`. 프로젝트 루트 를 채택하지 않는다. 값은 이 문서와 `render.html` `:root`만 쓴다.
+
+Heading: 데이터 인벤토리
+
+1. 제공 픽스처: 없음 ( 없음).
+2. 선언 계약: 없음.
+3. 벤치 증거:  ·  ·  desktop-1440 / mobile-390.
+
+쓴 것: 크롬 카피(내비·CTA·헤드라인·쿠키 문장), 타입 스케일(h1 56/36, weight 400), 헤더 높이 ~78px, 컨트롤 radius 8px, 지면 흰 계열, 히어로 구도(좌 카피 / 중 피규어 / 우 로컬 CTA). 이미지는 레인 A Grok Imagine 1장(`image.jpg`).
+
+쓰지 않은 것: 요금 숫자, 후기, 공식 로고 원본, 가입 이후 단계(소셜 로그인·비밀번호). 화면 하단 푸터에 그 부재를 적었다.
+
+Heading: 철학
+
+흰 종이 위에 제품 화면이 먼저 보이게 하고, 가입은 헤더의 검정 단추 한 번으로 시작한다.
+
+| 원칙 | 얻는 것 | 버리는 것 |
+|---|---|---|
+| P1 스냅샷 지면 | 흰 바탕, 헤어라인 헤더, 큰 가벼운 제목 | 퍼플 그라데이션, 장식 악센트 면적, 가짜 실적 |
+| P2 과업만 상태 | CTA → 가입 진입이 키보드로 도달 | 브리프에 없는 화면, 개발자 상태 스위처 |
+| P3 한글 고딕 + 텍스트 워드마크 | Hangul 커버, 로고 원본 없음 | 세리프 폴백, 공식 마크 트레이싱 |
+
+Heading: 결정 표
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | 표면 장르 = hairline-rule bands. paper/ink 쌍, 카드 섀도우 없음 | 캡처 헤더 흰 면 + 1px 룰. 스냅샷이 타일이 아님 |
+|  | 디스플레이 36–56px, weight 400, tracking −0.01em, leading 1.2 | evidence h1 56/36 weight 400. 한글 트래킹 바닥은 팩 −0.01em |
+|  | 히어로 문법 = 카피/피규어 디프틱 + 우측 로컬 CTA | desktop-1440 뷰포트. 100vh 센터 스택 금지 |
+|  | 컨트롤 radius 8px, 히어로 CTA 16px | 쿠키 버튼 실측 8px. 히어로 시작하기는 더 큰 라운드 |
+|  | 프라이머리 1개: `지금 무료로 시작하기` (`data-cta="primary"`). 히어로 `시작하기`는 local | 팩 primary uniqueness. 스냅샷에 둘 다 있음 |
+|  | 악센트는 포커스 링만 (cobalt, 면적 ≲5%) | 크롬 CTA는 잉크 필. 커서 표본 `#0030cb`/`#56d7ff`에서 신호색만 |
+|  | 가입은 같은 문서의 패널(히든 홈 + 가입 폼). 새 라우트 파일 없음 | 화면=홈. 과업=가입 진입 |
+|  | 워드마크는 텍스트 `Figma`. 공식 로고 원본 금지 | 브리프 금지 조항 |
+|  | 폰트 1패밀리: Pretendard / Apple SD Gothic Neo / Noto Sans KR | 한글 고딕. 외부 네트워크 폰트 없음 |
+|  | 모션: fast 120 / base 200 / slow 320, enter/exit 두 커브, transform·opacity만 | 팩 모션 토큰. reduced-motion 폴백 |
+
+Heading: 토큰
+
+`render.html` `:root`. 컴포넌트는 `var(--color-*)`만 읽는다.
+
+- 색: `--color-paper` / `--color-ink` / `--color-chip` / `--color-rule` / `--color-inverse`+`--color-on-inverse` / `--color-accent`+`--color-on-accent` / `--color-danger` 쌍
+- 공간: 4pt 역할명 + `--space-section` 4rem + `--space-section-lg` 6rem + `--space-gutter` clamp
+- 타입: 디스플레이 clamp 2.25–3.5rem, 본문 1.125rem, 라벨 0.75rem uppercase
+- 컨트롤 높이 44px 바닥, `--control-h` 2.75rem, 히어로 `--control-h-lg` 3.5rem
+
+Heading: 컴포넌트
+
+프리셋: **no-preset: home-hero-diptych** — 카탈로그는 커머스 카드·매거진 웰이고, 이 스냅샷은 좌 카피·중 피규어·우 로컬 CTA다. 해부는 visual-quality §4 디프틱 + 실측. 라우트 포커스는 **P-FN-02**.
+
+| 컴포넌트 | 상태 | 기하 |
+|---|---|---|
+| 헤더 워드마크·내비 | default / hover / focus-visible | 헤더 80px, 내비 항목 ≥44px |
+| Primary CTA | default / hover / focus-visible / active / disabled | 높이 ≥44, radius 8 |
+| 히어로 local CTA | 위와 동일, 데스크톱만 | 높이 3.5rem, radius 16 |
+| 쿠키 배너 | open / closed (닫기·허용·거절이 닫음) | 데스크 우하단 카드, 모바일 하단 풀폭 |
+| 모바일 메뉴 | closed / open (`aria-expanded`) | 헤더 아래 잉크 플레이트. 항목은 스냅샷 라벨만 |
+| 가입 폼 | entered / error / success | 인풋 높이 = 제출 버튼, 에러 슬롯 1lh, focus+describedby+alert |
+
+Heading: 레이아웃 문법
+
+페이지 하나. 와이드 전략: 좌측 카피 고정폭, 피규어가 남은 열을 채움 (C32 좌측 max).
+
+- 홈: 헤어라인 헤더 → 히어로 디프틱 → 푸터. 쿠키는 고정 오버레이(모달 아님 — 헤더 CTA를 가리지 않음).
+- 가입: 같은 헤더, 본문 웰 ~36rem, 이메일 + 계속. 소셜 로그인·비밀번호는 부재 문장.
+
+콘텐츠 역산: 대표 이미지 1장(브리프 필수). 매거진/벤토/캐러셀을 고르지 않음 (GS6).
+
+Heading: 과업 SELF-WALK
+
+| 동사 | 키보드 경로 | 프로그램 증거 |
+|---|---|---|
+| 무료 시작 CTA를 누른다 | Tab으로 `data-cta="primary"` → Enter | `enterSignup()` |
+| 가입 흐름에 진입한다 | 위 동작의 결과 | `#signup-panel` 표시, `data-state="entered"`, `document.title` = `가입 — Figma`, h1 텍스트 `가입`, 포커스 `#page-title` (시각 링 억제) |
+| (폼) 이메일을 제출한다 | 가입 패널에서 필드 입력 → 계속 | 실패: `aria-invalid` + `#email-error[role=alert]` + 포커스 복귀. 성공: `#signup-status`가 주소와 함께 진입을 알림 |
+
+Heading: 정직성
+
+- 로고: 텍스트 워드마크만.
+- 요금·후기·공식 마크: 푸터 한 줄.
+- 쿠키 세부 설정 화면: 스냅샷에 없음 — `쿠키 설정`을 누르면 그 문장만 연다.
+- 데스크톱 메가메뉴 내용: 스냅샷에 라벨만 있음. 하위 항목을 만들지 않음.
+
+Heading: 비평 (1회)
+
+축 (1–5): Philosophy 4 / Hierarchy 4 / Execution 4 / Specificity 4 / System Fidelity 4.
+
+이 화면은 스냅샷의 흰 지면·가벼운 대형 제목·검정 CTA를 유지한다. 3열 아이콘 카드·퍼플 그라데이션·센터 스택 히어로는 없다.
+
+슬롭 게이트 스위프: G6(`100vh` 없음) G10(`transition: all` 없음) G28(네이티브 select 없음) G39(border-width 고정, disabled=opacity+cursor+attr) G48(컴포넌트는 var만) G19(`:focus-visible`, 제목 링 억제). G7은 paper/ink를 순수 #fff/#000 대신 OKLCH로 두어 회피. G42 헤어라인 헤더는 스냅샷 크롬이라 목적 있는 재현으로 둔다.
+
+P0 스위처 없음. 네이티브 미스타일 라디오/셀렉트 없음.

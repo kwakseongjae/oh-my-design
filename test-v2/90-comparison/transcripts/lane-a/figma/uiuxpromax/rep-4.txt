@@ -1,0 +1,117 @@
+Heading: Figma 홈 — design system ( arm)
+
+화면: 홈 (`https://www.figma.com/`). 과업: **지금 무료로 시작하기 / 시작하기**를 눌러 가입 흐름에 진입. 스냅샷 `2026-08-22T19-48-41-602Z`. 브리프에 없는 화면은 만들지 않았다. 가입은 홈 위 모달이다.
+
+Heading: Pack workflow
+
+팩  순서대로 실행했다.
+
+1. 요구 분석 — SaaS 디자인 협업 캔버스, C-end + 팀, ko-KR 홈, 스택은 단일 HTML(오프라인).
+2. `--design-system` — 쿼리 `SaaS design collaboration canvas creative tool landing homepage`. 반환: Soft UI Evolution, Archivo + Space Grotesk, 다크 퍼플 `#7C3AED`. `canvas` 키워드가 Event/Conference 패턴을 끌어와 스냅샷과 어긋났다.
+3. 도메인 보강
+   - `style` minimalism light spacious saas → **Minimalism & Swiss Style** (흑백, 여백, sans).
+   - `product` SaaS design tool → Productivity / Remote Work → Soft UI Evolution + Minimalism, Hero + CTA.
+   - `landing` hero CTA signup → 필드 ≤ 3, 폼 CTA.
+   - `ux` form signup accessibility → 라벨, 제출 피드백, alt, role=alert, 4.5:1.
+   - `typography` → Korean Modern (Noto Sans KR) 후보. 네트워크 금지라 로컬 시스템 스택으로 투영.
+   - `icons` → Phosphor outline (`x`, `list`).
+   - `--stack html-tailwind` → 시맨틱 컬러 토큰, 아이콘 버튼 `aria-label`.
+4. 스냅샷 크롬이 토큰을 이긴다. desktop-1440 / mobile-390 실측: 배경 `#ffffff`, 헤더 높이 78.4px, CTA 검정 필, 쿠키 버튼 radius 8px, h1 56/36px weight 400, tracking `-1.25px`. 팩의 다크 퍼플 팔레트는 쓰지 않았다.
+
+Heading: 원칙
+
+- 스타일: Minimalism & Swiss + Soft UI Evolution의 얕은 깊이(쿠키 섀도, 8–22px radius).
+- 로고: 공식 마크 금지 → 텍스트 워드마크 `Figma`.
+- 아이콘: SVG only, 이모지 없음.
+- 한 화면 기본 CTA 하나: 무료 시작. 쿠키는 비모달이라 헤더 CTA를 가리지 않는다.
+- 네트워크: Google Fonts / CDN / 원격 이미지 없음. 히어로는 로컬 `image.jpg`.
+
+Heading: Tokens (primitive → semantic → component)
+
+Heading: Primitive
+
+| Token | Value |
+| --- | --- |
+| `--color-white` | `#ffffff` |
+| `--color-black` | `#000000` |
+| `--color-gray-55` | `#555555` |
+| `--color-gray-e5` | `#e5e5e5` |
+| `--color-gray-cc` | `#cccccc` |
+| `--color-red-600` | `#dc2626` |
+| `--space-*` | 4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 |
+| `--radius-sm/md/lg/pill` | 8 / 12 / 16 / 999 |
+| `--duration` | 180ms (150–300ms 밴드) |
+| `--font` | `ui-sans-serif, system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", Helvetica, Arial, sans-serif` |
+
+Heading: Semantic
+
+| Role | Token | Value |
+| --- | --- | --- |
+| Background | `--color-background` | white |
+| Foreground | `--color-foreground` | black |
+| Primary / CTA | `--color-primary` / `--color-on-primary` | black / white |
+| Secondary | outline black on white | |
+| Inverse surface (쿠키, 드로어) | black / white | |
+| Border | `--color-border` | `#e5e5e5` |
+| Input border | `#cccccc` (landing 가이드) | |
+| Destructive | `--color-destructive` | `#dc2626` |
+| Focus ring | `--color-ring` | black; 역전 면은 white |
+
+Heading: Component
+
+| Component | Default | Hover | Active | Focus | Disabled / loading |
+| --- | --- | --- | --- | --- | --- |
+| `.btn-primary` | bg black, fg white, pill | `#1a1a1a` | scale 0.98 | 2px ring + 3px offset | opacity 0.5, `aria-busy` |
+| `.btn-secondary` | white + 1px black | `#f5f5f5` | scale 0.98 | ring | — |
+| `.btn-hero` | primary, 72× min, radius 22, 18px | 동일 | 동일 | 동일 | — |
+| `.btn-on-dark` | white on black, radius 8 | `#f3f3f3` | — | white ring | — |
+| Input | 48px 높이, radius 8 | — | — | black border + 3px halo | `aria-invalid` red |
+| Cookie | 비모달 `role=dialog` | — | — | — | dismiss → `hidden` |
+| Signup | native `<dialog>.showModal()` | — | Esc / close | 포커스 트랩 | 제출 후 status |
+
+Heading: Type
+
+스냅샷 typeScale을 브레이크포인트에 투영. 외부 웹폰트 없음.
+
+| Role | Desktop 1440 | Mobile 390 |
+| --- | --- | --- |
+| h1 | 56 / 56, tracking -1.25px, weight 400 | 36 / 36 |
+| h2 (가입) | 24 / 28.8, tracking -0.66px | 24 |
+| Body / button | 16–18, line 1.5 | 14–16, 본문 ≥16px on inputs |
+| Header | 16, 높이 78px | 14 on CTA pill |
+
+Heading: Layout
+
+- 브레이크포인트: 390 / 768 / 1024 / 1440.
+- 헤더 sticky, 본문은 `min-height: calc(100dvh - 78px)`.
+- 데스크톱 히어로 3열: 헤드라인 · `image.jpg` · `시작하기`.
+- 모바일: 헤드라인 → 이미지. 무료 시작은 헤더 필 CTA.
+- 히어로 이미지 `width/height` + `aspect-ratio`로 CLS 방지.
+- `figure, blockquote, ul, ol { margin: 0 }` — UA 기본 마진 제거.
+- `dialog { margin: auto }` — 리셋이 네이티브 가운데 정렬을 지우지 않게 복구.
+
+Heading: 가입 흐름 (같은 화면)
+
+1. `지금 무료로 시작하기` 또는 `시작하기` → `<dialog id="signup">`.
+2. 라벨 붙은 이메일 1필드 (landing: 필드 ≤ 3).
+3. 검증 실패: `aria-invalid` + `role="alert"` 근접 메시지.
+4. 성공: 버튼 `aria-busy` → 400ms 후 status “가입 흐름에 진입했습니다.”
+5. Esc / 닫기 / backdrop. 닫으면 트리거로 포커스 복귀.
+
+쿠키는 스냅샷에 있어 재현하되 `aria-modal="false"` — 헤더 무료 시작 CTA를 막지 않는다.
+
+Heading: Motion / a11y
+
+- 150–300ms, transform/opacity만. `prefers-reduced-motion`에서 duration 0.
+- 터치 44×44, `cursor: pointer`, `touch-action: manipulation`.
+- Skip link, 헤딩 순서 h1→h2, 아이콘 버튼 `aria-label`.
+- 본문 대비율 흑/백 ≥ 4.5:1. 색만으로 오류를 알리지 않음.
+- 줌 비활성 없음 (`width=device-width, initial-scale=1`).
+
+Heading: Anti-patterns 회피
+
+팩 체크리스트 + 스냅샷 제약: 이모지 아이콘, placeholder-only 라벨, 호버-only 핵심 동작, 공식 로고 원본, 외부 네트워크, 브리프 밖 페이지, 쿠키를 모달로 올려 CTA 차단.
+
+Heading: 대표 이미지
+
+`image.jpg` — 스냅샷 히어로의 겹친 제품 목업(보석 그리드 / 웰니스 카드 / 포스터)을 Grok Imagine으로 재구성. 브랜드 마크 없음. 프롬프트·해시·세션은 `trace.md`.

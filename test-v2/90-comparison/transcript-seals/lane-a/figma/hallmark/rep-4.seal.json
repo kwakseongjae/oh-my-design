@@ -1,0 +1,41 @@
+{
+  "runId": "lane-a-figma-rep-4",
+  "arm": "hallmark",
+  "lane": "lane-a",
+  "brand": "figma",
+  "repeat": 4,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/figma/<arm>/rep-4/system.md",
+      "sha256": "b4d1bc3138feb94f03fa0812042d789ac1b8eccb51d5376c9b455c18f4533c91"
+    }
+  ],
+  "sourceSha256": "b4d1bc3138feb94f03fa0812042d789ac1b8eccb51d5376c9b455c18f4533c91",
+  "transcriptSha256": "f3cf0973f208c841bbcbad02c12678cf1a0465f90c293924b598e1540a6aba9a",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "becf08f97cfd0a28052a6779171096649e7a6fef2ab581379382333f792a3c34",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T03:31:03Z",
+  "transcriptionEndedAt": "2026-09-02T03:31:03Z",
+  "verificationStartedAt": "2026-09-02T03:31:03Z",
+  "verificationEndedAt": "2026-09-02T03:31:03Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/figma/hallmark/rep-4.map.csv",
+  "mapSha256": "e5de716de15fde8d0874072d7ec6055490249830d0830fca48dad80e38f3e354",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 78,
+    "problems": [],
+    "attempts": 1,
+    "verifiedAt": "2026-09-02T03:31:03Z",
+    "verifiedBy": "orchestrator",
+    "declaredSpans": 4
+  },
+  "verdict": "PASS",
+  "transcriptFile": "90-comparison/transcripts/lane-a/figma/hallmark/rep-4.txt",
+  "submittedToScoring": true
+}

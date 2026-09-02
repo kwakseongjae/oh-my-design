@@ -1,0 +1,75 @@
+Heading: 홈 화면 시스템 — Figma (스냅샷 `2026-08-22T19-48-41-602Z`)
+
+지정 화면은 홈 한 장이다. 과업은 **무료 시작 CTA를 눌러 가입 흐름에 진입**하는 것이다. 공식 로고 원본은 쓰지 않고 텍스트 워드마크 `Figma`로 대체한다.
+
+Heading: 표면
+
+| 표면 | 크기 | 첫 폴드에 보이는 것 |
+|---|---|---|
+| desktop-1440 | 1440×900 | 제품 내비, 3행 헤드라인, 겹친 제품 UI 목업, 시작하기, 쿠키 패널 |
+| mobile-390 | 390×844 | 워드마크 + 무료 시작 + 메뉴, 헤드라인, 목업, 쿠키 시트 |
+
+Heading: 토큰
+
+모든 색·글꼴·간격은 이름 있는 커스텀 프로퍼티만 참조한다. 런타임 네트워크 폰트는 없다. 라틴은 파일에 임베드한 Geist, 한글은 시스템 CJK 폴백이다.
+
+```css
+--color-paper: oklch(100% 0 0);
+--color-paper-2: oklch(96.8% 0.004 264);
+--color-ink: oklch(18% 0.012 264);
+--color-accent: var(--color-ink);          /* 액센트 = 잉크. 채운 CTA */
+--color-accent-ink: oklch(100% 0 0);
+--color-accent-hover: oklch(10% 0.014 264);
+--color-focus: oklch(62% 0.16 250);        /* 검정 버튼 위에서도 3:1 */
+--color-cookie: oklch(18% 0.012 264);
+--color-cookie-ink: oklch(99% 0.002 264);
+--font-display / --font-body: Geist Canvas + Apple SD Gothic Neo / Noto Sans KR
+--space-*: 4pt 스케일 (2 / 4 / 8 / 12 / 16 / 24 / 40 / 64 / 96)
+--radius-md: 12px; --radius-xl: 20px
+--nav-height: 4.9rem;                      /* 스냅샷 헤더 ~78px */
+--control-h: 2.75rem;                      /* 44px 터치 바닥 */
+```
+
+흰 종이 + 거의 검정 잉크는 스냅샷의 모노크롬 크롬이다. 포커스만 차가운 청색이다.
+
+Heading: 타입
+
+- 헤드라인: weight 400, `letter-spacing: -0.022em`, `line-height: 1.02`, italic 없음.
+- desktop `h1` 56px(3.5rem) 3행 — `무한한 / 창의성을 위한 / 지능형 캔버스`.
+- mobile `h1` 36px 근처 (`clamp` 하한 2.25rem).
+- UI 라벨 14–16px. 클릭 가능한 문자열은 `white-space: nowrap`.
+
+Heading: 레이아웃
+
+스플릿 스튜디오. 데스크톱은 세 칸: 카피 | 목업 | 시작하기. 가운데 트랙은 `minmax(0, 1fr)`이라 이미지가 뷰포트를 밀지 않는다. 히어로는 `min-height: calc(100svh - var(--nav-height))`이고 가운데 정렬이 아니다. 패딩은 아래가 위보다 크다.
+
+내비는 워드마크 왼쪽, 제품 링크가 바로 옆, 로그인·영업 문의·무료 시작이 오른쪽. 좁은 폭에서는 링크와 로그인을 접고 햄버거만 남긴다.
+
+Heading: 컴포넌트
+
+**채워진 CTA** (`btn--fill`) — `지금 무료로 시작하기`(헤더), `시작하기`(히어로). 둘 다 같은 가입 대화상자를 연다.
+
+**외곽 CTA** — `영업팀에 문의`.
+
+**텍스트 버튼** — `로그인` (같은 대화상자를 로그인 제목으로 연다).
+
+**쿠키 패널** — 스냅샷 카피 그대로. `모든 쿠키 허용` / `쿠키 허용 안 함` / 닫기는 패널만 숨긴다. 헤더 CTA는 가리지 않는다.
+
+**가입 대화상자** (`<dialog>`) — 이메일 주소 + `계정 만들기`. 서버가 없으므로 유효한 이메일이면 로컬에서 가입 흐름 진입을 표시한다. Escape·백드롭·닫기로 종료.
+
+상태 8종을 버튼과 입력에 둔다: default, hover(`hover: hover`), `:focus-visible`(즉시), `:active`, disabled, loading, error, success. 입력 테두리 두께는 1px로 고정.
+
+Heading: 모션
+
+로드 페이드는 없다(첫 캡처가 빈 화면이 되지 않게). 호버 1px 이동과 대화상자만. `transform`/`opacity`만. `prefers-reduced-motion: reduce`에서 150ms 이하.
+
+Heading: 이미지
+
+`image.jpg`는 히어로 목업이다. 흰 스튜디오 바닥에 겹친 제품 창 — 앞면은 보석 그리드, 뒤는 피치 그라데이션 슬라이더. 로고·브라우저 크롬·워터마크 없음. LCP이므로 `fetchpriority="high"`, lazy 없음.
+
+Heading: 금지·제약
+
+- 외부 URL 없음. 폰트는 data URI, 이미지는 같은 폴더의 `image.jpg`.
+- 공식 마크 대신 워드마크.
+- 수치·고객 수·후기는 스냅샷에 없어서 만들지 않음.
+- `html, body { overflow-x: clip }`. `figure, blockquote, ul, ol` 마진 리셋.

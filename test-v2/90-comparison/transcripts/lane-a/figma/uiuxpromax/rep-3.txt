@@ -1,0 +1,130 @@
+Heading: Design system — Figma home (, lane A, rep-3)
+
+Single-screen reconstruction of `https://www.figma.com/` (snapshot `2026-08-22T19-48-41-602Z`). Task on this screen: the free-start CTA opens a signup dialog. No extra routes.
+
+Pack: 
+CLI: 
+
+Heading: Requirements (Step 1)
+
+| Slot | Value |
+|------|--------|
+| Product | Design collaboration SaaS / creative tool |
+| Audience | Designers, PMs, engineers on the public marketing home |
+| Platform | Web, desktop-1440 and mobile-390 |
+| Stack | Offline HTML + CSS + JS (html-tailwind rules, no CDN) |
+| Locale | ko-KR copy from the captured surface |
+
+Heading: Pack `--design-system` (Step 2)
+
+Query: `saas design collaboration creative tool landing modern minimal` `-p Figma`
+
+| Axis | Pack recommendation |
+|------|---------------------|
+| Pattern | Minimal Single Column — one primary CTA, large type, whitespace |
+| Style | Flat Design — no shadows/gradients, 150–200ms color/opacity hover |
+| Colors | Primary `#6366F1`, accent `#059669`, background `#F5F3FF`, foreground `#312E81` |
+| Type | Archivo + Space Grotesk (Minimalist Portfolio) |
+| Anti-patterns | Excessive animation; dark mode by default |
+
+Heading: Domain follow-ups (Step 3)
+
+- **product** `saas productivity tool` → Productivity Tool, Flat + micro-interactions; landing: Interactive Product Demo / Hero + Features + CTA.
+- **style** `minimalism flat editorial` → Exaggerated Minimalism (black/white, oversized type) sits closer to the captured home than indigo-tinted Micro SaaS.
+- **landing** `hero-centric saas` → Hero-Centric Design: full-bleed visual 60–80% of the fold, sticky nav CTA, one primary action.
+- **color** `saas professional` → Micro SaaS indigo table (same as `--design-system`); B2B navy is a runner-up.
+- **typography** `minimal designer creative` → Archivo / Space Grotesk.
+- **ux** `form modal accessibility focus cta` → visible labels, focus rings, submit loading→success, `role="alert"` on errors, alt text.
+- **icons** Phosphor outline: `X`, `List` (hamburger). Inlined as SVG so the file stays offline.
+- **stack html-tailwind** → do not bounce multiple elements.
+
+Heading: Tokens actually used in `render.html`
+
+Three-layer mapping (design-system skill). Evidence chrome from  overrides pack hex where the captured surface already measured a value.
+
+Heading: Primitive
+
+| Token | Value | Source |
+|-------|--------|--------|
+| canvas | `#ffffff` | evidence `pageBackgroundRendered` / viewport |
+| ink | `#000000` | evidence type / CTA fill on free-start |
+| pack indigo | `#6366F1` | `--design-system` primary, used as focus ring only |
+| pack accent | `#059669` | reserved; not a second CTA |
+| radius | `8px` | evidence `primaryButton.radiusPx` |
+| radius-full | `9999px` | viewport free-start / 시작하기 capsules |
+| space | 4px grid | design-system primitive scale |
+| duration | 180ms | Flat Design 150–200ms band |
+| shadow | `none` | Flat Design |
+
+Heading: Semantic
+
+```css
+--color-primary: #000000;          /* free-start fill — 7:1+ on white */
+--color-on-primary: #ffffff;
+--color-background: #ffffff;       /* evidence canvas; pack #F5F3FF not used on this surface */
+--color-foreground: #000000;
+--color-ring: #6366F1;             /* pack primary, keyboard focus only */
+--color-destructive: #dc2626;
+--color-cookie: #000000;
+```
+
+Why the canvas is white, not pack `#F5F3FF`: the captured home is a white editorial field with a black capsule CTA. Exaggerated Minimalism (style search) agrees. Indigo stays on the focus ring so the pack palette is present without painting a second product.
+
+Heading: Type
+
+Pack pairing is Archivo (heading) + Space Grotesk (body). `render.html` must open with no network, so both map to:
+
+`ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif`
+
+Measured scale from evidence, used as-is:
+
+| Role | Desktop | Mobile |
+|------|---------|--------|
+| h1 | 56px / 56px / -1.25px / 400 | 36px / 36px / -1.25px / 400 |
+| h2 (dialog) | 24–30px / 400 / -0.66px | 24px |
+| body / button | 16–18px | 14–16px |
+| header | 78.4px → 78px | 64px |
+
+Heading: Component
+
+| Component | Default | Hover | Active | Focus | Disabled |
+|-----------|---------|-------|--------|-------|----------|
+| Primary button | black fill, white type, pill | `#1a1a1a` | scale 0.98 | indigo ring 2px | opacity 0.5 |
+| Outline | 1px black, white fill | muted fill | scale 0.98 | indigo ring | opacity 0.5 |
+| Ghost | transparent | muted fill | — | indigo ring | — |
+| Input | 44px min, `#cccccc` border (landing form rule) | `#9ca3af` | — | ring | — |
+| Dialog | 16px radius, 50% black scrim | — | Esc / backdrop close | first field | — |
+
+Touch targets ≥44px. Icon-only controls have `aria-label`.
+
+Heading: Screen
+
+Home only.
+
+1. Sticky header: text wordmark `Figma` (no official mark), desktop nav (제품 / 솔루션 / 커뮤니티 / 리소스 / 가격), 로그인, 영업팀에 문의, **지금 무료로 시작하기**.
+2. Hero-centric fold: headline `무한한 창의성을 위한 지능형 캔버스`, representative image `image.jpg`, desktop **시작하기**.
+3. Cookie card from the capture (dismissible so the CTA remains usable).
+4. Signup `<dialog>` — same document, not a second page. Email + 계속. Loading then success copy. Fields ≤ 3 (landing Lead Magnet + Form).
+5. Mobile menu `<dialog>` with labels visible on the captured 390 overlay. Items do not navigate off home.
+
+Heading: Motion
+
+Transforms and colors only. 180ms ease. `prefers-reduced-motion` zeros duration. html-tailwind: no bounce.
+
+Heading: Offline / integrity
+
+- No `@import`, no Google Fonts, no CDN, no remote images.
+- Reset sets `margin: 0; padding: 0` on `figure`, `blockquote`, `ul`, `ol` (UA `figure { margin: 1em 40px }` overflows a 100% hero).
+- `img` has width/height and `max-width: 100%`.
+- Body font stack is sans-serif (not Times).
+
+Heading: Pre-delivery (pack checklist, web-scoped)
+
+- [x] SVG icons, no emoji
+- [x] `cursor: pointer` on buttons
+- [x] 150–300ms hover
+- [x] Light text contrast ≥ 4.5:1 (black on white, white on black)
+- [x] Visible `:focus-visible`
+- [x] Reduced motion
+- [x] 375 / 768 / 1024 / 1440 breakpoints (mobile-first from 390)
+- [x] One primary CTA family (free-start / 시작하기)

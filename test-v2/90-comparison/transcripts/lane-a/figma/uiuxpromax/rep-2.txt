@@ -1,0 +1,145 @@
+Heading: Figma home — design system ()
+
+Arm  / lane A / brand `figma` / `rep-2`.
+Snapshot `2026-08-22T19-48-41-602Z`. Surface: desktop-1440 (1440×900), mobile-390 (390×844).
+Screen: home only. Task: primary free-start CTA enters signup.
+
+Heading: Pack workflow
+
+Skill:  → `--design-system` first, then domain/stack searches. Stack for this deliverable is standalone HTML (html-tailwind rules, no CDN).
+
+Heading: Step 1 — requirements
+
+- Product: SaaS design / collaboration tool (C-end + teams)
+- Platform: marketing home, web, ko-KR
+- Job: reconstruct the captured home; clicking 무료 시작 CTA opens signup
+- Constraint: first render opens with zero network; official mark replaced by the text wordmark `Figma`
+
+Heading: Step 2 — `--design-system`
+
+| Pass | Query | Pack pattern | Why not used as-is |
+|------|-------|--------------|--------------------|
+| 1 | `saas design collaboration tool creative software landing modern` | Event/Conference Landing, indigo `#6366F1`, Outfit/Work Sans | Event sections (speakers, agenda) are not this home |
+| 2 | `saas productivity design software collaboration platform landing minimal white` | App Store Style Landing, teal `#0D9488` + orange CTA, Roboto | Store-download CTAs / QR are not this home |
+
+`--design-system` is required but its first hits were the wrong product family. Domain searches (Step 3) selected the system that is actually used in `render.html`.
+
+Heading: Step 3 — domain searches (resolved)
+
+- **product** `saas design tool collaboration` → Productivity Tool + SaaS (General). Styles: Flat + Minimalism. Landing: Interactive Product Demo / Hero + Features + CTA.
+- **landing** `hero-centric` → **Hero-Centric Design**. Order: full-bleed hero (headline + visual) → value strip → proof → CTA. Primary CTA in hero + sticky nav. Hero is 60–80% of the fold. One primary CTA, 7:1 contrast.
+- **style** `exaggerated minimalism` → **Exaggerated Minimalism** + **Minimalism & Swiss Style**. Black `#000` / white `#FFF`, oversized type, negative space, geometric sans, no decorative shadow.
+- **color** `black white high contrast` → **Museum/Gallery**: bg `#FAFAFA` / fg `#09090B` / primary `#18181B`. Mapped onto captured chrome (bg `#FFFFFF`, fg `#000000`) rather than the teal App Store palette.
+- **typography** pack heading/body: Outfit / Work Sans, then Roboto. Captured face is `figmaSans` at weight 400. Render uses a **local system stack** (no Google Fonts CSS) so the file stays offline.
+- **ux** form labels, submit feedback, alt text, contrast, heading order, aria names, keyboard, skip link, loading buttons, z-index scale.
+- **icons** Phosphor outline: `list`, `x`. Inlined as SVG (no npm, no emoji).
+- **stack html-tailwind** no bounce spam; hide/show at breakpoints instead of forking content.
+
+Heading: Step 4 — stack
+
+Standalone HTML + CSS variables. Tailwind CDN is a network request, so utilities are expressed as authored CSS that follows the same tokens.
+
+Heading: Resolved style
+
+| Slot | Choice |
+|------|--------|
+| Pattern | Hero-Centric Design |
+| Style | Exaggerated Minimalism × Swiss (flat chrome, no elevation on controls) |
+| Color | Museum/Gallery mapped to captured white/black |
+| Type | Geometric sans, weight 400, tight display tracking |
+| Motion | 150–200ms color/opacity/scale; `prefers-reduced-motion` kills animation |
+| Anti-patterns | No event/app-store chrome, no teal/orange pack primary, no dark-first, no emoji icons, no official logo file |
+
+Heading: Three-layer tokens
+
+Primitive → semantic → component. No raw hex in component rules; `render.html` uses `var(--…)`.
+
+Heading: Primitive
+
+| Token | Value | Source |
+|-------|-------|--------|
+| `--color-black` | `#000000` | captured body / CTA fill |
+| `--color-white` | `#FFFFFF` | captured page background (desktop coverage 0.6668) |
+| `--color-zinc-200` | `#E4E4E7` | museum border, header hairline |
+| `--color-red-600` | `#DC2626` | pack destructive |
+| `--text-56` / `--text-36` | 56px / 36px | captured `h1` desktop / mobile |
+| `--text-16` / `--text-14` | 16px / 14px | captured button / mobile body |
+| `--radius-8` | 8px | captured primary button radius |
+| `--duration-fast` | 160ms | pack 150–200ms |
+
+Heading: Semantic
+
+| Token | Value |
+|-------|-------|
+| `--color-background` | `var(--color-white)` |
+| `--color-foreground` | `var(--color-black)` |
+| `--color-primary` | `var(--color-black)` |
+| `--color-on-primary` | `var(--color-white)` |
+| `--color-border` | `var(--color-zinc-200)` |
+| `--color-ring` | `var(--color-black)` |
+| `--color-surface-inverse` | `var(--color-black)` |
+
+Heading: Component
+
+| Token | Value |
+|-------|-------|
+| `--button-bg` / `--button-fg` | primary / on-primary |
+| `--button-radius` | 8px |
+| `--button-min-h` | 44px (touch) |
+| `--dialog-radius` | 16px |
+| `--header-h` | 78px (captured 78.4) |
+
+Heading: Type scale (captured)
+
+| Role | Desktop | Mobile |
+|------|---------|--------|
+| h1 | 56 / 56 / -1.25px / 400 / `#000` | 36 / 36 / -1.25px / 400 |
+| h2 | 30 / 36 / -0.66px | 24 / 28.8 |
+| body / button | 16–18 | 14 |
+
+Pack Exaggerated Minimalism wants weight 900; captured home is 400. Weight follows capture. Size and tracking follow capture. Offline font stack replaces `figmaSans` / Google CSS.
+
+Heading: Components
+
+Button, input, dialog from pack .
+
+| Component | Default | Hover | Active | Disabled | Notes |
+|-----------|---------|-------|--------|----------|-------|
+| Primary CTA | black fill, white text, r=8 | zinc-800 | scale 0.98 | opacity 0.5, no pointer | Header `지금 무료로 시작하기`; hero `시작하기` (desktop) |
+| Outline | white, 1px black | muted fill | — | — | `영업팀에 문의` |
+| Ghost inverse | white on black cookie | zinc-100 | — | — | cookie pair |
+| Input | 48px, label + `for` | — | ring 3px | — | email, not placeholder-only |
+| Dialog | 420px, scrim 50% | — | — | — | escape + overlay + close |
+| Cookie | inverse surface, r=20 | — | — | — | captured copy; does not cover header CTA |
+
+z-index scale: base 0 / header 40 / cookie 100 / menu 200 / dialog 1000.
+
+Heading: Layout
+
+- Mobile-first. Breakpoint 1024px for the 1440 hero row.
+- Header sticky; wordmark is the string `Figma` (no official mark).
+- Hero: headline left, generated `image.jpg` center, `시작하기` right on desktop. Mobile keeps the same nodes; hero CTA hides with CSS (`html-tailwind` hide/show, not a second page).
+- Signup is a dialog on this home, not a second screen.
+- `figure, blockquote, ul, ol { margin: 0; padding: 0; }` in the reset — UA list/figure margins broke measurement in this bench.
+
+Heading: Interaction / a11y (pack §1–3)
+
+- One conversion job: header and hero start buttons open the same signup dialog.
+- Visible email label, error in `role="alert"`, submit → disable + spinner → success text.
+- Skip link, heading order h1 then h2, icon-only controls have `aria-label`.
+- Focus rings 3px black. Keyboard: Tab order, Escape closes dialog / menu / cookie.
+- Contrast: black on white and white on black exceed 4.5:1.
+- Touch ≥ 44px. `cursor: pointer` on clickable nodes. `touch-action: manipulation`.
+- `prefers-reduced-motion: reduce` disables transition/animation.
+- Viewport meta does not disable zoom.
+
+Heading: Image
+
+`image.jpg` is the lane-A Grok Imagine still for the hero figure (stacked product cards on white). Prompt, session id, sha256, retry flag: `trace.md`. No official logo in the prompt.
+
+Heading: Out of scope
+
+- No extra routes (pricing, blog, docs).
+- No Google Fonts, CDN, or remote images in `render.html`.
+- No official Figma logo asset.
+- Pack teal/indigo/event/app-store first hits are recorded above and not painted.

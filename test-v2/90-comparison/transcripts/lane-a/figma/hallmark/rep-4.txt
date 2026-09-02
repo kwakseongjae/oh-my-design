@@ -1,0 +1,70 @@
+Heading: Figma home —  system
+
+Snapshot `2026-08-22T19-48-41-602Z`. Surface: desktop-1440 and mobile-390. Task: the free-start control opens the signup flow. Home only.
+
+Going with: audience = designers and product teams on the Korean marketing home · use = press 지금 무료로 시작하기 / 시작하기 and enter signup · tone = utilitarian. Genre: modern-minimal (SaaS platform). If any of those is wrong, the page should be redirected, not restyled in place.
+
+Heading: Route
+
+First  run in this output directory. Catalog/custom fork did not fire; the brief is a reconstruction from a capture, so the theme route is **studied-DNA**, not Coral/Cobalt.
+
+- Macrostructure: Workbench
+- Hero: H8 Mockup split — knobs `frame=floating-no-frame`, `tilt=0°`, `screenshot=stack-of-3`
+- Enrichment: E4 floating no-frame, Tier C generated still (`image.jpg`) plus Tier A CSS tiles below the fold
+- Nav: N1b SaaS three-section — knobs `links=5`, `dropdowns=1`, `scroll=always-solid`. Previous nav: none. This build: N1b, because the capture chrome is wordmark / centre cluster / login + outline + fill.
+- Footer: Ft2 inline single line
+- Motion primitives (cap 3): CTA hover lift · dialog scale+fade · hamburger sheet. Reduced motion collapses spatial motion to ≤150ms opacity.
+
+Heading: Tokens
+
+All colour and type in `render.html` go through named custom properties. No mid-render hex. Offline constraint: no Google Fonts, no CDN.
+
+| Role | Token | Value |
+| --- | --- | --- |
+| Paper | `--color-paper` | `oklch(99.2% 0.004 264)` |
+| Ink | `--color-ink` | `oklch(16% 0.016 264)` |
+| Fill CTA | `--color-accent` | `oklch(18% 0.018 264)` |
+| CTA text | `--color-accent-ink` | `oklch(99% 0.004 264)` |
+| Focus | `--color-focus` | `oklch(46% 0.16 255)` |
+| Display / body | `--font-display`, `--font-body` | Avenir Next, Segoe UI fallback |
+| Wordmark | `--font-wordmark` | Futura, then Avenir Next |
+| Space | `--space-3xs` … `--space-3xl` | 4pt scale |
+| Radius | `--radius-sm` 8px · `--radius-xl` 20px · `--radius-pill` | capture cookie 8px, header pills, large 시작하기 |
+| Ease | `--ease-out` / `--ease-in` / `--ease-in-out` | named only |
+| Z | `--z-base` … `--z-toast` | six named layers |
+
+Axes for diversification: light / geometric-sans / cool.
+
+Type scale from the capture, not invented: home `h1` 56px / 36px, weight 400, tracking about `-1.25px`, line-height 1. Display cap is `clamp(2.25rem, 3.2vw + 1rem, 3.5rem)` so the Korean line “무한한 창의성을 위한 지능형 캔버스” stays inside the 21–50 character bracket.
+
+Heading: Chrome from the capture
+
+Wordmark is the word `Figma`. Official mark is not used.
+
+Header: 제품 · 솔루션 · 커뮤니티 · 리소스 · 가격 · 로그인 · 영업팀에 문의 · 지금 무료로 시작하기. Mobile: the same free-start control plus a sheet listing 디자인 및 탐색, 제품 제작 및 출시, AI 업무 흐름, Release Notes, 다운로드, then 요금제 (요금 정책, 엔터프라이즈, 오거니제이션, 프로페셔널) and 활용 방법.
+
+Hero statement is the captured headline. The stacked canvases are the generated still. The large 시작하기 control sits to the right of the still on desktop and under it on small viewports.
+
+Cookie copy and the two actions (모든 쿠키 허용 / 쿠키 허용 안 함) match the overlay in the capture. It is dismissible so the header free-start control stays reachable.
+
+Workbench tiles below the fold use the capture `alt` strings as captions. Palettes are named tokens taken from the evidence samples (brunch red, linen, brush, cursor blue/cyan, path cyan/magenta, weave, mosaic, camp, map). No invented metrics, quotes, or logo wall.
+
+Heading: Signup
+
+`지금 무료로 시작하기` and `시작하기` open a native `<dialog>` on this same home. Fields: labelled email, 계속, 닫기. Empty or malformed email sets `aria-invalid` and an instruction in the helper slot. Valid submit marks the control `data-state="success"`. No second route.
+
+Heading: States
+
+Primary controls implement default, hover (fine pointer only), `:focus-visible` (instant ring, no animation), `:active`, disabled, `data-state="loading"`, `data-state="error"`, `data-state="success"`. Inputs keep 1px border width in every state. Hit targets ≥ 44px.
+
+Heading: Constraints this file records
+
+- Page opens with no network request. `image.jpg` is relative.
+- CSS reset zeroes `figure`, `blockquote`, `ul`, `ol` (and headings/paragraphs) so UA margins cannot shift the first paint.
+- `html, body { overflow-x: clip }` — never `hidden`.
+- Clickable labels use `white-space: nowrap`.
+- Image-bearing tracks use `minmax(0, 1fr)`.
+- Display wrapping uses `overflow-wrap: anywhere; min-width: 0`.
+- Headings are roman.
+- No re-drawn browser or phone chrome.
+-  and  stay inside this run’s HTML/stamp; nothing is written at the project root.

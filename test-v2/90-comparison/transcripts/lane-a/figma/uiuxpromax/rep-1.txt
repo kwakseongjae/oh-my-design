@@ -1,0 +1,146 @@
+Heading: Design system — Figma home (lane A, , rep-1)
+
+화면은 홈 하나. 과업은 무료 시작 CTA로 가입 흐름에 진입하는 것이다. 스냅샷 `2026-08-22T19-48-41-602Z`, 표면 desktop-1440 / mobile-390.
+
+이 문서는  팩 워크플로(요구 분석 → `--design-system` → domain/stack 검색 → 구현)의 산출이고, 크롬 수치는 증거 에서만 가져왔다. 공식 로고 원본은 쓰지 않고 텍스트 워드마크 `Figma`로 대체한다.
+
+Heading: Pack workflow
+
+Heading: Step 1 — 요구
+
+| 항목 | 값 |
+|------|----|
+| Product type | Design collaboration SaaS / canvas tool |
+| Audience | 디자이너·제품·개발 협업 |
+| Platform | Web, 첫 렌더 단일 HTML |
+| Stack | html-tailwind 가이드를 따르되, 오프라인이라 Tailwind CDN 없이 CSS 변수로 구현 |
+| Locale | ko-KR |
+| Style keywords | white, editorial, high contrast, oversized type, sticky nav CTA |
+
+Heading: Step 2 — `--design-system` (dials: variance 2, motion 3, density 2)
+
+쿼리: `minimal white editorial landing page design collaboration tool high contrast`
+
+| 축 | 팩 추천 |
+|----|---------|
+| Pattern | Hero + Features + CTA (히어로 헤드라인/이미지, 스티키 내비 CTA, 하단 CTA) |
+| Style | Exaggerated Minimalism — 큰 타이포, 고대비, 여백. Swiss/minimal 계열 |
+| Color (팩 원안) | Primary `#0F172A`, Accent `#0369A1`, Background `#F8FAFC` |
+| Typography (팩 원안) | Playfair Display / Source Serif 4 (Google Fonts URL은 오프라인 금지라 로드하지 않음) |
+| Motion | Subtle page transition 200–300ms, `power1.inOut`, 입력 차단 금지 |
+| Density | Spacious (마케팅 랜딩) |
+| Avoid | Cluttered interface, no presence |
+
+`--domain style "minimalism swiss editorial white"` 1순위도 Exaggerated Minimalism: 검정/흰색, 악센트 하나, 거대한 여백.
+
+`--domain typography "minimal swiss geometric sans professional"` 1순위는 **Minimal Swiss / Inter + Inter**. 증거 패밀리 `figmaSans`와 맞으므로 세리프 추천은 버리고 이 페어링을 택한다. 외부 `@import`는 하지 않고 `ui-sans-serif, system-ui, Apple SD Gothic Neo, Noto Sans KR` 스택으로 Inter 자리를 대체한다.
+
+`--domain color "minimal black white professional saas"`에서 랜딩에 맞는 값은 Architecture/Museum 계열의 흰 배경 + 검정 전경. 스냅샷 렌더 배경은 `#ffffff`(coverage 0.6668 desktop).
+
+`--domain product` 1순위 Remote Work/Collaboration Tool → landing pattern Feature-Rich Showcase / Hero+Features+CTA. 브리프가 홈·CTA만 지정하므로 피처 그리드는 만들지 않고 히어로+스티키 CTA만 남긴다.
+
+`--domain landing`의 가입 패턴은 Lead Magnet + Form(필드 ≤3). 가입은 새 화면이 아니라 홈 위 `dialog`로 진입한다.
+
+`--stack html-tailwind`: semantic color names, `focus-visible` 링, `@apply` 남용 금지.
+
+`--domain ux`: 라벨/`for`, focus-visible, submit 피드백, alt, `role=alert`, 4.5:1, 색만으로 상태 전달 금지, h1 다음 건너뛰기 없음.
+
+`--domain icons`: Phosphor `list` / `x` / caret. 이모지 아이콘 금지. SVG 인라인.
+
+Heading: Step 2 보정 — 증거가 이기는 필드
+
+팩 원안 네이비/세리프는 이 스냅샷의 홈과 어긋난다. 아래는 증거 크롬으로 덮어쓴 값이다. 팩 규칙은 구조·a11y·모션·밀도에 남긴다.
+
+| 토큰 | 팩 원안 | 증거 | 구현 |
+|------|---------|------|------|
+| background | `#F8FAFC` | `#ffffff` (viewport modal) | `#ffffff` |
+| foreground / h1 | `#020617` | `#000000`, h1 56/400/-1.25px | `#000000` |
+| header | — | bg `#ffffff`, height 78.4px | 78.4px sticky |
+| control radius | swiss 0px vs pack 8px 혼재 | cookie 버튼 `radiusPx: 8` | `--radius-control: 8px` |
+| header CTA | accent `#0369A1` | 스냅샷: 검정 필, 흰 글 | 검정 필 필 버튼 |
+| 본문 폰트 | Playfair / Inter URL | `figmaSans` | 시스템 sans (오프라인) |
+| 로고 | 공식 자산 | — | 텍스트 워드마크 `Figma` |
+
+타입 스케일 (desktop-1440 / mobile-390):
+
+| 역할 | desktop | mobile |
+|------|---------|--------|
+| h1 | 56px / 56px / -1.25px / 400 | 36px / 36px / -1.25px / 400 |
+| h2 | 30px / 36px / -0.66px | 24px / 28.8px / -0.66px |
+| nav/control | 16px | 14–16px |
+| hero 시작하기 | 18–22px, 흰 글 | 헤더 CTA로 대체 |
+| cookie 본문 | 흰 글, 검정 면 | 동일, 스택 버튼 |
+
+Heading: Three-layer tokens
+
+Primitive → semantic → component. 컴포넌트에 raw hex를 직접 쓰지 않는다.
+
+```css
+/* primitive */
+--color-black: #000000;
+--color-white: #ffffff;
+--color-line: #e6e6e6;
+--space-2: 8px; /* 8dp 리듬 */
+--text-h1: 56px;
+--radius-control: 8px;
+--radius-pill: 999px;
+--duration: 180ms;
+
+/* semantic */
+--color-bg: var(--color-white);
+--color-fg: var(--color-black);
+--color-primary: var(--color-black);
+--color-on-primary: var(--color-white);
+
+/* component */
+--button-bg: var(--color-primary);
+--button-fg: var(--color-on-primary);
+--button-radius: var(--radius-pill);
+--input-radius: var(--radius-control);
+--header-h: 78.4px;
+```
+
+라이트만 구현한다. 스냅샷 `colorScheme: light`.
+
+Heading: 홈 구조 (이 화면만)
+
+1. Skip link → `#main`
+2. Sticky header: 워드마크, 제품/솔루션/커뮤니티/리소스/가격, 로그인, 영업팀에 문의, **지금 무료로 시작하기**
+3. Hero: h1 `무한한 창의성을 위한 지능형 캔버스`, 대표 이미지 `image.jpg`, desktop **시작하기**
+4. Cookie 안내 (스냅샷에 존재). 닫기/허용/거부 모두 같은 패널만 숨긴다.
+5. 가입 `dialog` — 홈 위 오버레이. 이메일 → 비밀번호. 필드 2개.
+
+모바일(≤767): 워드마크 + 무료 시작 + 리스트 아이콘 드로어. h1 36px. 히어로 이미지는 플로우 배치.
+
+Heading: 컴포넌트
+
+| 컴포넌트 | 기본 | hover | active | disabled | focus-visible |
+|----------|------|-------|--------|----------|---------------|
+| Primary CTA | bg primary, fg on-primary, min 44×44 | ink-soft | scale 0.97 | opacity 0.45 | 2px ring offset 3 |
+| Outline | 1px black, white fill | #f5f5f5 | scale 0.97 | — | 동일 |
+| Cookie action | white on black, radius 8 | #f3f3f3 | — | — | 동일 |
+| Input | 48px 높이, 1px #cfcfcf | — | — | — | black border + ring |
+| Dialog | 16px radius, 45% scrim | — | — | — | 닫기 44px |
+
+상태: CTA 클릭 → dialog `showModal` (포커스 트랩, Escape 닫기). 이메일 공란/형식 오류는 `role="alert"`. 1단계 통과 카피: `가입 흐름에 진입했습니다`. 제출 중 버튼 disabled + 레이블 변경.
+
+Heading: Motion
+
+150–300ms, transform/opacity만. `prefers-reduced-motion: reduce`면 transition 제거. 헤더 CTA는 sticky라 스크롤과 무관하게 과업이 가능하다.
+
+Heading: Imagery
+
+`image.jpg`는 레인 A 고정 채널 Grok Imagine. 히어로 figure에만 쓴다. width/height 864×1152로 CLS 방지. 네트워크 요청 없음(`src="image.jpg"`). 공식 마크 없음.
+
+Heading: Offline / a11y 제약
+
+- 외부 URL, 웹폰트, CDN, 분석 스크립트 없음
+- 의미 있는 이미지에 alt
+- 아이콘 버튼에 aria-label
+- 키보드 포커스 순서 = 시각 순서
+- 본문 16px, 터치 44px, 대비율 검정/흰색 ≥ 4.5:1
+- 가입 필드는 placeholder-only 금지, `label for=` 사용
+
+Heading: Anti-patterns 적용
+
+쓰지 않음: 이모지 아이콘, hover-only 과업, outline 제거, 구글 폰트 import, 공식 로고 파일, 브리프에 없는 라우트.

@@ -1,0 +1,41 @@
+{
+  "runId": "lane-a-figma-rep-2",
+  "arm": "uiuxpromax",
+  "lane": "lane-a",
+  "brand": "figma",
+  "repeat": 2,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/figma/<arm>/rep-2/system.md",
+      "sha256": "b0382f7c056c97de1f3f3f78cee7e65f84e0099e512f42a43d013a86a252ba3b"
+    }
+  ],
+  "sourceSha256": "b0382f7c056c97de1f3f3f78cee7e65f84e0099e512f42a43d013a86a252ba3b",
+  "transcriptSha256": "b07314d9dafab570fb4137b6fb7070d212f5740f24e4871d85a70d3fd0edd7aa",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "becf08f97cfd0a28052a6779171096649e7a6fef2ab581379382333f792a3c34",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T03:31:32Z",
+  "transcriptionEndedAt": "2026-09-02T03:31:32Z",
+  "verificationStartedAt": "2026-09-02T03:31:32Z",
+  "verificationEndedAt": "2026-09-02T03:31:32Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/figma/uiuxpromax/rep-2.map.csv",
+  "mapSha256": "72b5680be6f4c8cc5fdf172e065fce0e73b55b7af80fa87c4f08fd3c37458916",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 127,
+    "problems": [],
+    "attempts": 1,
+    "verifiedAt": "2026-09-02T03:31:32Z",
+    "verifiedBy": "orchestrator",
+    "declaredSpans": 4
+  },
+  "verdict": "PASS",
+  "transcriptFile": "90-comparison/transcripts/lane-a/figma/uiuxpromax/rep-2.txt",
+  "submittedToScoring": true
+}

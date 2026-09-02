@@ -1,0 +1,63 @@
+Heading: System — Figma home ( · lane A · rep-1)
+
+잠긴 스냅샷 `2026-08-22T19-48-41-602Z`의 홈만 다룬다. 카탈로그 테마 대신, 스냅샷이 준 흰 종이·먹 잉크·필 CTA를 커스텀 토큰으로 잠갔다. 공식 마크는 쓰지 않고 텍스트 워드마크 `Figma`만 쓴다.
+
+Heading: Inferences
+
+- Audience: 디자인·코드·AI를 한 캔버스에서 다루는 사람.
+- Use: 상단 또는 히어로의 무료 시작 CTA로 가입 흐름에 들어간다.
+- Tone / genre: modern-minimal (SaaS / platform).
+- Macrostructure: Split Studio. Hero는 H8 mockup-split, 프레임 없음, 기울기 0°.
+- Nav: N1b (제품 · 솔루션 · 커뮤니티 · 리소스 · 가격 / 로그인 · 영업팀에 문의 · 지금 무료로 시작하기). 드롭다운 내용은 스냅샷에 없어 만들지 않았다.
+- Footer: Ft2 한 줄.
+- Enrichment: E4, Tier C 생성 스틸 `image.jpg`. 브라우저 크롬은 그리지 않는다.
+
+Heading: Tokens
+
+모든 색과 서체는 `render.html` `:root`의 이름만 참조한다.
+
+| Token | Value | Role |
+|---|---|---|
+| `--color-paper` | `oklch(99.4% 0.006 90)` | 페이지 면. 스냅샷 모달은 `#ffffff`. |
+| `--color-ink` | `oklch(18% 0.012 90)` | 본문·워드마크. 순수 `#000`은 쓰지 않음. |
+| `--color-accent` | same as ink | 채운 CTA. 장르가 허용하는 먹 필. |
+| `--color-accent-ink` | paper | 필 버튼 글자. |
+| `--color-focus` | `oklch(52% 0.14 250)` | 밝은 면 위 포커스. |
+| `--color-focus-on-ink` | `oklch(92% 0.03 90)` | 먹 버튼 위 포커스. |
+| `--color-canvas-*` | blue / cyan / pink / green | 아래쪽 작업 샘플. UI 액센트가 아님. |
+| `--font-display` | Avenir Next, Trebuchet MS | 헤드. 오프라인 제약으로 웹폰트 없음. |
+| `--font-body` | Helvetica Neue, Segoe UI | UI·본문. |
+| `--font-outlier` | ui-monospace, SF Mono | 워드마크만. |
+| `--nav-height` | `4.9rem` | 스냅샷 헤더 78.4px. |
+| `--control-height` | `2.75rem` | 입력과 버튼을 같은 높이. |
+| `--radius-md` | `0.75rem` | 필 CTA. 쿠키 배너 실측 8px과 구분. |
+
+스페이싱은 4pt 척도 `--space-3xs` … `--space-3xl`. 이징은 `--ease-out` / `--ease-in` / `--ease-in-out`. 모션은 `--dur-micro` 120ms, `--dur-short` 220ms, `--dur-long` 420ms. `prefers-reduced-motion: reduce`에서 공간 이동은 150ms 이하 페이드.
+
+Heading: Type
+
+스냅샷 `h1`은 데스크톱 56px / 자간 -1.25px / 무게 400, 모바일 36px. `--text-display`는 `clamp(2.25rem, 2.4vw + 1.2rem, 3.5rem)`, 행간 1.05, `font-style: normal`. 헤드라인 원문은 스냅샷 그대로: 「무한한 창의성을 위한 지능형 캔버스」. 부제·수치는 스냅샷에 없어 넣지 않았다.
+
+Heading: Chrome
+
+- 데스크톱 1440: 흰 바, 하단 헤어라인, 왼쪽 워드마크, 가운데 5링크, 오른쪽 로그인 / 아웃라인 / 필 CTA.
+- 모바일 390: 워드마크 · 지금 무료로 시작하기 · 햄버거. 시트 항목은 모바일 뷰포트에 열린 메뉴에서 읽은 라벨만 쓴다.
+- 쿠키 배너는 과업 CTA를 가리므로 넣지 않았다.
+
+Heading: Components and states
+
+버튼 8상태: default, hover (`@media (hover: hover)`), `:focus-visible`, `:active`, `:disabled`, `data-state=loading|error|success`. 포커스 링은 즉시, 2px, offset 2px. 클릭 가능한 라벨은 `white-space: nowrap`.
+
+가입 뷰는 같은 파일 안의 `#view-account`. 이메일 한 칸, 레이블은 필드 위, 헬퍼 슬롯은 `min-height: 1lh`, 테두리 두께는 상태에서 바뀌지 않는다. 유효성 검사는 blur. 이 미리보기는 메일을 보내지 않는다.
+
+Heading: Imagery
+
+대표 이미지 `image.jpg`는 히어로 LCP. `loading=lazy` 없음. 아래 두 칸은 인라인 SVG(커서 경로, 분홍 면 위 청록 곡선). 가짜 브라우저/폰 프레임 없음.
+
+Heading: Motion
+
+페이지당 프리미티브 셋: (1) 히어로 입장 reveal, (2) 필 CTA hover 1.5px, (3) 가입 제출 로딩 틱. `transition-all` 없음.
+
+Heading: Out of scope
+
+가격·소셜 프루프·고객 로고·가입 이후 단계는 브리프에 없어 만들지 않았다.
