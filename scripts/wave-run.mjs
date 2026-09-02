@@ -54,6 +54,13 @@ const CONC = String(opt("concurrency", "auto"));
 const MAX = Number(opt("max", 5));
 const REREVIEW = String(opt("rereview", "scoped"));
 const EFFORT = opt("effort", null);
+// 스테이지별 effort (없으면 --effort). 워커는 기본 유지, F3·검토만 낮추는 실험이 가능하게.
+const EFFORT_BY = { worker: opt("effort-worker", null), f3: opt("effort-f3", null), review: opt("effort-review", null), fix: opt("effort-fix", null), mechfix: opt("effort-fix", null), gatefix: opt("effort-fix", null) };
+// 마라톤 내구성: 402/429/5xx·비정상 종료는 백오프 후 재시도, 소진되면 claude -p(opus) 폴백(옵션).
+const RETRIES = Number(opt("retries", 3));
+const BACKOFF = String(opt("backoff", "300,900,1800")).split(",").map((s) => Number(s.trim()) || 300);
+const FALLBACK = String(opt("fallback", "none")); // none | claude
+const FALLBACK_MODEL = String(opt("fallback-model", "opus"));
 const DRY = flag("dry-run");
 const PRINT = opt("print", null);
 const SET = String(opt("set", ""));
@@ -103,6 +110,8 @@ function prompt(brand, stage, extra = {}) {
       return P("fix-template.md").replaceAll("{{brand}}", brand).replace("{{verdict}}", () => extra.verdict ?? "") + diet;
     case "mechfix":
       return P("mechfix-template.md").replaceAll("{{brand}}", brand).replace("{{report}}", () => extra.report ?? "") + diet;
+    case "gatefix":
+      return P("gatefix-template.md").replaceAll("{{brand}}", brand).replace("{{report}}", () => extra.report ?? "") + diet;
     default:
       throw new Error(`unknown stage ${stage}`);
   }
@@ -129,6 +138,7 @@ function mech(brand) {
   const r = {
     gate: gate.verdict,
     gateProblems: (gate.problems || []).map((p) => p.check || String(p)),
+    gateProblemsFull: gate.problems || [],
     limiter: { ok: lim.status === 0, line: (lim.stdout || lim.stderr).trim() },
     use: { ok: use.status === 0, line: (use.stdout || use.stderr).trim() },
     conformance,
@@ -154,14 +164,15 @@ for (const sig of ["SIGINT", "SIGTERM", "SIGHUP"]) {
   });
 }
 
-function grokCall(brand, label, text, { approve }) {
+function grokCall(brand, label, text, { approve, effort }) {
   const pf = join(SCRATCH, `${label}-${brand}.txt`);
   const oj = join(SCRATCH, `${label}-${brand}.out.json`);
   const ot = join(SCRATCH, `${label}-${brand}.out`);
   writeFileSync(pf, text);
   const args = ["--prompt-file", pf, "-m", MODEL, "--cwd", ROOT, "--output-format", "json"];
   if (approve) args.push("--always-approve");
-  if (EFFORT) args.push("--reasoning-effort", String(EFFORT));
+  const eff = effort ?? EFFORT;
+  if (eff) args.push("--reasoning-effort", String(eff));
   const t0 = Date.now();
   return new Promise((res) => {
     const child = spawn("grok", args, { cwd: ROOT, stdio: ["ignore", "pipe", "pipe"] });
@@ -187,7 +198,37 @@ function grokCall(brand, label, text, { approve }) {
   });
 }
 
-const SENT = { worker: /DONE migrated=1/, f3: /AUDIT_DONE/, review: /REVIEW_DONE/, fix: /FIX_DONE/, mechfix: /FIX_DONE/ };
+// claude -p 폴백 — grok이 재시도 후에도 죽었을 때만. 같은 프롬프트, 같은 sentinel. 쓰기 단계는
+// 권한 생략(프롬프트가 범위를 제한한다), 검토는 "고치지 마라"가 프롬프트에 있다.
+// 비용은 Claude OAuth 주간 한도에서 나간다 — 사용자 80% 가드 대상. 마라톤은 옵션으로만 켠다.
+function claudeCall(brand, label, text) {
+  const oj = join(SCRATCH, `${label}-${brand}.claude.out.json`);
+  const ot = join(SCRATCH, `${label}-${brand}.out`);
+  const bin = process.env.CLAUDE_BIN || "claude";
+  const args = ["-p", "--model", FALLBACK_MODEL, "--output-format", "json", "--dangerously-skip-permissions"];
+  const t0 = Date.now();
+  return new Promise((res) => {
+    const child = spawn(bin, args, { cwd: ROOT, stdio: ["pipe", "pipe", "pipe"] });
+    children.add(child);
+    child.on("exit", () => children.delete(child));
+    let out = "", err = "";
+    child.stdout.on("data", (d) => (out += d));
+    child.stderr.on("data", (d) => (err += d));
+    child.on("error", (e) => { err += String(e); });
+    child.stdin.end(text);
+    child.on("close", (code) => {
+      writeFileSync(oj, out + (err ? "\n--- stderr ---\n" + err : ""));
+      let j = null;
+      try { j = JSON.parse(out); } catch { /* 비정상 출력 */ }
+      const textOut = j?.result ?? out;
+      writeFileSync(ot, textOut);
+      res({ code, sec: Math.round((Date.now() - t0) / 1000), text: textOut, cost: typeof j?.total_cost_usd === "number" ? j.total_cost_usd : null, turns: j?.num_turns ?? null, http: null, outFile: ot, via: `claude:${FALLBACK_MODEL}` });
+    });
+  });
+}
+
+const SENT = { worker: /DONE migrated=1/, f3: /AUDIT_DONE/, review: /REVIEW_DONE/, fix: /FIX_DONE/, mechfix: /FIX_DONE/, gatefix: /FIX_DONE/ };
+const RETRYABLE = new Set([402, 408, 425, 429, 500, 502, 503, 504, 529]);
 
 const METRICS = join(ROOT, "docs/design-md-weight/metrics", `wave-${WAVE}.jsonl`);
 function metric(o) {
@@ -291,14 +332,39 @@ async function runBrand(brand) {
   };
   const call = async (stage, label, text, approve) => {
     st.lastAttempt = stage; save();
-    const r = await withSlot(`${brand} ${label}`, () => grokCall(brand, label, text, { approve }));
-    const ok = r.code === 0 && SENT[stage].test(r.text) && !(r.http && r.http >= 400);
-    metric({ brand, stage: label, sec: r.sec, cost: r.cost, turns: r.turns, ok, http: r.http, code: r.code });
-    rec(label, r, ok ? "ok" : `fail code=${r.code} http=${r.http ?? "-"}`);
-    if (!ok) { consecutiveGrokFail++; if (consecutiveGrokFail >= 2 && !abort) { abort = true; log("⛔ grok 호출 2회 연속 실패 — 새 호출을 멈춘다 (진행 중인 호출은 마친다)"); } }
+    const isOk = (r) => r.code === 0 && SENT[stage].test(r.text) && !(r.http && r.http >= 400);
+    let r, ok = false, via = "grok";
+    for (let attempt = 0; attempt <= RETRIES; attempt++) {
+      if (abort && attempt > 0) break;
+      const lab = attempt ? `${label}.retry${attempt}` : label;
+      r = await withSlot(`${brand} ${lab}`, () => grokCall(brand, lab, text, { approve, effort: EFFORT_BY[stage] }));
+      ok = isOk(r);
+      metric({ brand, stage: lab, via: "grok", sec: r.sec, cost: r.cost, turns: r.turns, ok, http: r.http, code: r.code });
+      rec(lab, r, ok ? "ok" : `fail code=${r.code} http=${r.http ?? "-"}`);
+      log(`${ok ? "✓" : "✗"} ${brand} ${lab} ${Math.round(r.sec / 60)}분${r.cost != null ? ` $${r.cost.toFixed(2)}` : ""}${r.http ? ` http=${r.http}` : ""}`);
+      if (ok) break;
+      // 산출물이 이미 완성돼 있는데 종료 코드만 이상한 경우(millie: code=1, 33턴, 파일 3종 존재)는
+      // 재시도로 $1을 태우지 말고 게이트가 판단하게 둔다 — 워커 단계만.
+      if (stage === "worker" && r.code !== 0 && !r.http && ["DESIGN.md", "provenance.md", "migration-log.md"].every((f) => existsSync(join(MIGRATED, brand, f)))) {
+        log(`  ${brand} worker 종료 코드 ${r.code}이지만 산출 3종이 있다 — 게이트로 넘긴다`); ok = true; break;
+      }
+      const retryable = (r.http && RETRYABLE.has(r.http)) || (r.code !== 0 && !r.http);
+      if (!retryable || attempt === RETRIES) break;
+      const wait = BACKOFF[Math.min(attempt, BACKOFF.length - 1)];
+      log(`  ${brand} ${label} ${wait}s 뒤 재시도 (${attempt + 1}/${RETRIES})`);
+      await sleep(wait * 1000);
+    }
+    if (!ok && FALLBACK === "claude") {
+      log(`  ${brand} ${label} → claude -p ${FALLBACK_MODEL} 폴백`);
+      r = await withSlot(`${brand} ${label}.claude`, () => claudeCall(brand, label, text));
+      ok = isOk(r); via = r.via;
+      metric({ brand, stage: `${label}.claude`, via, sec: r.sec, cost: r.cost, turns: r.turns, ok, http: null, code: r.code });
+      rec(`${label}.claude`, r, ok ? "ok" : `fail code=${r.code}`);
+      log(`${ok ? "✓" : "✗"} ${brand} ${label}.claude ${Math.round(r.sec / 60)}분${r.cost != null ? ` $${r.cost.toFixed(2)}` : ""}`);
+    }
+    if (!ok) { consecutiveGrokFail++; if (consecutiveGrokFail >= 2 && !abort) { abort = true; log("⛔ 호출 2회 연속 실패(재시도·폴백 포함) — 새 호출을 멈춘다 (진행 중인 호출은 마친다)"); } }
     else consecutiveGrokFail = 0;
-    log(`${ok ? "✓" : "✗"} ${brand} ${label} ${Math.round(r.sec / 60)}분${r.cost != null ? ` $${r.cost.toFixed(2)}` : ""}${r.http ? ` http=${r.http}` : ""}`);
-    return { ...r, ok };
+    return { ...r, ok, via };
   };
   const mechStages = new Set(["gate1", "gate2", "gate3", "remeasure"]);
 
@@ -311,9 +377,18 @@ async function runBrand(brand) {
         st.stage = r.ok ? "gate1" : "blocked:grok"; break;
       }
       case "gate1": {
-        const m = mech(brand); st.gate1 = m.report;
-        log(`${brand} gate1 ${m.gate} · ${m.limiter.line.split("\n")[0].trim()}`);
-        st.stage = m.gate === "PASS" ? "f3" : "human:gate1"; break;
+        const m = mech(brand); st.gate1 = m.report; st.gateProblems = m.gateProblemsFull;
+        log(`${brand} gate1 ${m.gate}${m.gateProblems.length ? " " + m.gateProblems.join(",") : ""} · ${m.limiter.line.split("\n")[0].trim()}`);
+        if (m.gate === "PASS") st.stage = "f3";
+        else if (!st.gatefixed) { st.gatefixReturn = "gate1"; st.stage = "gatefix"; }
+        else st.stage = "human:gate1";
+        break;
+      }
+      case "gatefix": {
+        st.gatefixed = true;
+        const report = JSON.stringify(st.gateProblems ?? [], null, 1);
+        const r = await call("gatefix", "gatefix", prompt(brand, "gatefix", { report }), true);
+        st.stage = r.ok ? (st.gatefixReturn || "gate1") : "blocked:grok"; break;
       }
       case "f3": {
         const r = await call("f3", "f3", prompt(brand, "f3"), true);
@@ -322,8 +397,9 @@ async function runBrand(brand) {
       case "gate2": {
         const m = mech(brand); st.gate2 = m.report;
         log(`${brand} gate2 ${m.ok ? "OK" : "FAIL"}\n${m.report.replace(/^/gm, "      ")}`);
+        st.gateProblems = m.gateProblemsFull;
         if (m.ok) st.stage = "review";
-        else if (m.gate !== "PASS") st.stage = "human:gate2";
+        else if (m.gate !== "PASS") { if (!st.gatefixed) { st.gatefixReturn = "gate2"; st.stage = "gatefix"; } else st.stage = "human:gate2"; }
         else if (!st.mechfixed) st.stage = "mechfix";
         else st.stage = "human:mech";
         break;
