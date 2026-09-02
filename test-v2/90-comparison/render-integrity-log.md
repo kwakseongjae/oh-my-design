@@ -8,3 +8,4 @@ Phase 6 검수·성장 루프(omd:issue)의 입력으로 쓴다. 축 1 채점은
 | 2026-09-02 | baemin/hallmark/rep-1 | escape | marquee형 `<span>` 뷰포트 이탈 |
 | 2026-09-02 | baemin/uiuxpromax/rep-2 | escape | marquee형 `<img>` 뷰포트 이탈 |
 | 2026-09-02 | figma/hallmark/rep-1 | escape | `<path>` right=1455 (clientWidth 1440) — SVG 15px 이탈 |
+| 2026-09-02 | karrot/hallmark/rep-3 | escape | marquee형 `<span>` 뷰포트 이탈 right=1503 (clientWidth 1440) |
